@@ -1,0 +1,190 @@
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --border-color: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #b1bac4;
+    --accent-blue: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-red: #f85149;
+    --accent-orange: #d29922;
+    --accent-purple: #bc8cff;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero {
+    width: 100%;
+    max-width: 800px;
+    padding: 60px 20px 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero h1 {
+    color: var(--accent-purple);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.hero .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.narrative {
+    width: 100%;
+    max-width: 700px;
+    padding: 40px 20px;
+    font-size: 1.15rem;
+}
+
+.narrative p {
+    margin-bottom: 1.8rem;
+}
+
+.scene-direction {
+    font-style: italic;
+    color: var(--text-secondary);
+    padding: 15px 20px;
+    border-left: 4px solid var(--border-color);
+    background: rgba(22, 27, 34, 0.5);
+    border-radius: 0 4px 4px 0;
+}
+
+figure {
+    margin: 40px 0;
+    padding: 0;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 30px rgba(188, 140, 255, 0.15); /* Purple glow */
+}
+
+figcaption {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 0 20px;
+}
+
+/* Prism override */
+pre[class*="language-"] {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    margin: 30px 0 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* Interactive Modules */
+.interactive-module {
+    margin: 50px 0;
+    padding: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.interactive-module h3 {
+    margin-top: 0;
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+}
+
+.module-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    background: var(--bg-color);
+    border: 1px solid #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+canvas {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    cursor: crosshair;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.action-btn {
+    background-color: #21262d;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.action-btn:hover {
+    background-color: #30363d;
+    border-color: var(--text-secondary);
+}
+
+.action-btn.primary {
+    background-color: rgba(63, 185, 80, 0.1);
+    color: var(--accent-green);
+    border-color: rgba(63, 185, 80, 0.4);
+}
+.action-btn.primary:hover {
+    background-color: rgba(63, 185, 80, 0.2);
+    border-color: var(--accent-green);
+}
+
+.action-btn.secondary {
+    background-color: rgba(88, 166, 255, 0.1);
+    color: var(--accent-blue);
+    border-color: rgba(88, 166, 255, 0.4);
+}
+.action-btn.secondary:hover {
+    background-color: rgba(88, 166, 255, 0.2);
+    border-color: var(--accent-blue);
+}
+
+.status-readout {
+    width: 100%;
+    text-align: center;
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}

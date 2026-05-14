@@ -1,0 +1,5296 @@
+{
+  "T_9_25": {
+    "graph_name": "T_9_25",
+    "vertex": 3,
+    "degree": 5,
+    "total_v5_colorings": 1152,
+    "num_true_counterexamples": 24,
+    "counterexample_analyses": [
+      {
+        "index": 0,
+        "canonical": [
+          1,
+          2,
+          3,
+          5,
+          4,
+          5,
+          4,
+          2,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 1,
+        "canonical": [
+          1,
+          2,
+          4,
+          5,
+          3,
+          5,
+          3,
+          2,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 2,
+        "canonical": [
+          1,
+          3,
+          2,
+          5,
+          4,
+          5,
+          4,
+          3,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 3,
+        "canonical": [
+          1,
+          3,
+          4,
+          5,
+          2,
+          5,
+          2,
+          3,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 4,
+        "canonical": [
+          1,
+          4,
+          2,
+          5,
+          3,
+          5,
+          3,
+          4,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 5,
+        "canonical": [
+          1,
+          4,
+          3,
+          5,
+          2,
+          5,
+          2,
+          4,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 6,
+        "canonical": [
+          2,
+          1,
+          3,
+          5,
+          4,
+          5,
+          4,
+          1,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 7,
+        "canonical": [
+          2,
+          1,
+          4,
+          5,
+          3,
+          5,
+          3,
+          1,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.07718820861678,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 8,
+        "canonical": [
+          2,
+          3,
+          1,
+          5,
+          4,
+          5,
+          4,
+          3,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.8549659863945579,
+            0.9801743197278913
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.1729182335711971
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 9,
+        "canonical": [
+          2,
+          3,
+          4,
+          5,
+          1,
+          5,
+          1,
+          3,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.6189328231292517,
+            0.7209736394557823,
+            2.375418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.08943050281584206,
+            0.08943050281584206
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 10,
+        "canonical": [
+          2,
+          4,
+          1,
+          5,
+          3,
+          5,
+          3,
+          4,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.8549659863945579,
+            0.9801743197278913
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.1729182335711971
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 11,
+        "canonical": [
+          2,
+          4,
+          3,
+          5,
+          1,
+          5,
+          1,
+          4,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.9353911564625851,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            42.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10651664129045664,
+            0.10651664129045664
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 12,
+        "canonical": [
+          3,
+          1,
+          2,
+          5,
+          4,
+          5,
+          4,
+          1,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.481155045351474,
+            1.7033772675736962,
+            1.9916425736961452
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.5219280948873621,
+            1.5219280948873621,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10033386531652996,
+            0.10033386531652996
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 13,
+        "canonical": [
+          3,
+          1,
+          4,
+          5,
+          2,
+          5,
+          2,
+          1,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.6189328231292517,
+            0.7209736394557823,
+            2.375418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.08943050281584206,
+            0.08943050281584206
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 14,
+        "canonical": [
+          3,
+          2,
+          1,
+          5,
+          4,
+          5,
+          4,
+          2,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.8549659863945579,
+            0.9801743197278913
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.1729182335711971
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 15,
+        "canonical": [
+          3,
+          2,
+          4,
+          5,
+          1,
+          5,
+          1,
+          2,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.6189328231292517,
+            0.7209736394557823,
+            2.375418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.08943050281584206,
+            0.08943050281584206
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 16,
+        "canonical": [
+          3,
+          4,
+          1,
+          5,
+          2,
+          5,
+          2,
+          4,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.8549659863945579,
+            0.9801743197278913
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.1729182335711971
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 17,
+        "canonical": [
+          3,
+          4,
+          2,
+          5,
+          1,
+          5,
+          1,
+          4,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.9353911564625851,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            42.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10651664129045664,
+            0.10651664129045664
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 18,
+        "canonical": [
+          4,
+          1,
+          2,
+          5,
+          3,
+          5,
+          3,
+          1,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.6189328231292517,
+            0.7209736394557823,
+            2.375418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.08943050281584206,
+            0.08943050281584206
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 19,
+        "canonical": [
+          4,
+          1,
+          3,
+          5,
+          2,
+          5,
+          2,
+          1,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.6189328231292517,
+            0.7209736394557823,
+            2.375418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.08943050281584206,
+            0.08943050281584206
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 20,
+        "canonical": [
+          4,
+          2,
+          1,
+          5,
+          3,
+          5,
+          3,
+          2,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.8549659863945579,
+            0.9801743197278913
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.1729182335711971
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 21,
+        "canonical": [
+          4,
+          2,
+          3,
+          5,
+          1,
+          5,
+          1,
+          2,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.6189328231292517,
+            0.7209736394557823,
+            2.375418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.5219280948873621
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.08943050281584206,
+            0.08943050281584206
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 22,
+        "canonical": [
+          4,
+          3,
+          1,
+          5,
+          2,
+          5,
+          2,
+          3,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.8549659863945579,
+            0.9801743197278913
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10778545178825848,
+            0.1729182335711971
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 23,
+        "canonical": [
+          4,
+          3,
+          2,
+          5,
+          1,
+          5,
+          1,
+          3,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 0.6189328231292517,
+          "local_magic_gem_v": 0.08333333333333333,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.07789426375360005,
+          "local_entropy_v": 1.9219280948873623,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.14516262175994715,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            0.5560076530612246,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            2.321928094887362,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.11396822776218515,
+            0.10651664129045664
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            0.6189328231292517,
+            1.2589328231292518,
+            0.9353911564625851,
+            1.2236564625850341
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            42.0,
+            42.0
+          ],
+          "entropy": [
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623,
+            1.9219280948873623
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.07789426375360005,
+            0.07789426375360005,
+            0.10651664129045664,
+            0.10651664129045664
+          ],
+          "length": 3
+        }
+      }
+    ],
+    "aggregates": {
+      "unsafe": {
+        "global_magic_gem": {
+          "mean": 0.7995323129251702,
+          "std": 0.30099929678827003,
+          "min": 0.5560076530612246,
+          "max": 1.2236564625850341,
+          "n": 72
+        },
+        "potts_energy": {
+          "mean": 34.333333333333336,
+          "std": 5.436502143433364,
+          "min": 30.0,
+          "max": 42.0,
+          "n": 72
+        },
+        "local_entropy_v": {
+          "mean": 2.055261428220696,
+          "std": 0.18856180831641264,
+          "min": 1.9219280948873623,
+          "max": 2.321928094887362,
+          "n": 72
+        },
+        "electrostatic_v": {
+          "mean": 0.09945971093541396,
+          "std": 0.015549553463044432,
+          "min": 0.07789426375360005,
+          "max": 0.11396822776218515,
+          "n": 72
+        },
+        "defect_interaction": {
+          "mean": 0.7738852908812804,
+          "std": 0.36827344052412186,
+          "min": 0.4060058497098381,
+          "max": 1.2771000152893355,
+          "n": 72
+        },
+        "electric_gradient_v": {
+          "mean": 0.17596490745326795,
+          "std": 0.024859425809769152,
+          "min": 0.14516262175994715,
+          "max": 0.20604259534422978,
+          "n": 72
+        },
+        "chain_ruggedness": {
+          "mean": 3.75,
+          "std": 1.25,
+          "min": 2.5,
+          "max": 5.0,
+          "n": 48
+        },
+        "chain_tension": {
+          "mean": 5.0,
+          "std": 0.0,
+          "min": 5.0,
+          "max": 5.0,
+          "n": 48
+        }
+      },
+      "safe": {
+        "global_magic_gem": {
+          "mean": 1.1202164233749055,
+          "std": 0.531874846529294,
+          "min": 0.6189328231292517,
+          "max": 2.375418083900227,
+          "n": 96
+        },
+        "potts_energy": {
+          "mean": 28.145833333333332,
+          "std": 6.726779762428842,
+          "min": 10.0,
+          "max": 42.0,
+          "n": 96
+        },
+        "local_entropy_v": {
+          "mean": 1.7844280948873628,
+          "std": 0.18998355191963334,
+          "min": 1.5219280948873621,
+          "max": 1.9219280948873623,
+          "n": 96
+        },
+        "electrostatic_v": {
+          "mean": 0.09376078043055987,
+          "std": 0.023731629058849436,
+          "min": 0.07789426375360005,
+          "max": 0.1729182335711971,
+          "n": 96
+        },
+        "defect_interaction": {
+          "mean": 0.41982442829255784,
+          "std": 0.2717609800094772,
+          "min": 0.0,
+          "max": 1.2771000152893355,
+          "n": 96
+        },
+        "electric_gradient_v": {
+          "mean": 0.1666371438922825,
+          "std": 0.028260341858721255,
+          "min": 0.14516262175994715,
+          "max": 0.22197457487204877,
+          "n": 96
+        },
+        "chain_ruggedness": {
+          "mean": 3.697368421052631,
+          "std": 0.8826257205132547,
+          "min": 2.5,
+          "max": 5.0,
+          "n": 38
+        },
+        "chain_tension": {
+          "mean": 4.605263157894737,
+          "std": 1.2883991226203837,
+          "min": 3.0,
+          "max": 8.0,
+          "n": 38
+        }
+      }
+    }
+  },
+  "T_9_35": {
+    "graph_name": "T_9_35",
+    "vertex": 6,
+    "degree": 4,
+    "total_v5_colorings": 1320,
+    "num_true_counterexamples": 24,
+    "counterexample_analyses": [
+      {
+        "index": 0,
+        "canonical": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          3,
+          5,
+          2,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 1,
+        "canonical": [
+          1,
+          2,
+          4,
+          3,
+          5,
+          4,
+          5,
+          2,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 2,
+        "canonical": [
+          1,
+          3,
+          2,
+          4,
+          5,
+          2,
+          5,
+          3,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 3,
+        "canonical": [
+          1,
+          3,
+          4,
+          2,
+          5,
+          4,
+          5,
+          3,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 4,
+        "canonical": [
+          1,
+          4,
+          2,
+          3,
+          5,
+          2,
+          5,
+          4,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 5,
+        "canonical": [
+          1,
+          4,
+          3,
+          2,
+          5,
+          3,
+          5,
+          4,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 6,
+        "canonical": [
+          2,
+          1,
+          3,
+          4,
+          5,
+          3,
+          5,
+          1,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 7,
+        "canonical": [
+          2,
+          1,
+          4,
+          3,
+          5,
+          4,
+          5,
+          1,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 8,
+        "canonical": [
+          2,
+          3,
+          1,
+          4,
+          5,
+          1,
+          5,
+          3,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.9974319727891157,
+            1.5668764172335605
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            41.0,
+            41.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.12254700843449531,
+            0.12254700843449531
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 9,
+        "canonical": [
+          2,
+          3,
+          4,
+          1,
+          5,
+          4,
+          5,
+          3,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.8478911564625851,
+            0.9101743197278911
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.22072883459452186
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 10,
+        "canonical": [
+          2,
+          4,
+          1,
+          3,
+          5,
+          1,
+          5,
+          4,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.9974319727891157,
+            1.5668764172335605
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            41.0,
+            41.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.12254700843449531,
+            0.12254700843449531
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 11,
+        "canonical": [
+          2,
+          4,
+          3,
+          1,
+          5,
+          3,
+          5,
+          4,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.8478911564625851,
+            0.9101743197278911
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.22072883459452186
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 12,
+        "canonical": [
+          3,
+          1,
+          2,
+          4,
+          5,
+          2,
+          5,
+          1,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            1.585668934240363,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 13,
+        "canonical": [
+          3,
+          1,
+          4,
+          2,
+          5,
+          4,
+          5,
+          1,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            2.103195861678005,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.10682840888397424,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 14,
+        "canonical": [
+          3,
+          2,
+          1,
+          4,
+          5,
+          1,
+          5,
+          2,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.9974319727891157,
+            1.5668764172335605
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            41.0,
+            41.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.12254700843449531,
+            0.12254700843449531
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 15,
+        "canonical": [
+          3,
+          2,
+          4,
+          1,
+          5,
+          4,
+          5,
+          2,
+          5
+        ],
+        "merge_colors": [
+          4
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 4,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.8478911564625851,
+            0.9101743197278911
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.22072883459452186
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 16,
+        "canonical": [
+          3,
+          4,
+          1,
+          2,
+          5,
+          1,
+          5,
+          4,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.9974319727891157,
+            1.5668764172335605
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            41.0,
+            41.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.12254700843449531,
+            0.12254700843449531
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 17,
+        "canonical": [
+          3,
+          4,
+          2,
+          1,
+          5,
+          2,
+          5,
+          4,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.8478911564625851,
+            0.9101743197278911
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.22072883459452186
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 18,
+        "canonical": [
+          4,
+          1,
+          2,
+          3,
+          5,
+          2,
+          5,
+          1,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            2.103195861678005,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.10682840888397424,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 19,
+        "canonical": [
+          4,
+          1,
+          3,
+          2,
+          5,
+          3,
+          5,
+          1,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            2.0011550453514744,
+            2.103195861678005,
+            2.450418083900227
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "entropy": [
+            1.5,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.10682840888397424,
+            0.10682840888397424
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 20,
+        "canonical": [
+          4,
+          2,
+          1,
+          3,
+          5,
+          1,
+          5,
+          2,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.9974319727891157,
+            1.5668764172335605
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            41.0,
+            41.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.12254700843449531,
+            0.12254700843449531
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 21,
+        "canonical": [
+          4,
+          2,
+          3,
+          1,
+          5,
+          3,
+          5,
+          2,
+          5
+        ],
+        "merge_colors": [
+          3
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 3,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.8478911564625851,
+            0.9101743197278911
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.22072883459452186
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 22,
+        "canonical": [
+          4,
+          3,
+          1,
+          2,
+          5,
+          1,
+          5,
+          3,
+          5
+        ],
+        "merge_colors": [
+          1
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 1,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.9974319727891157,
+            1.5668764172335605
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            41.0,
+            41.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.12254700843449531,
+            0.12254700843449531
+          ],
+          "length": 3
+        }
+      },
+      {
+        "index": 23,
+        "canonical": [
+          4,
+          3,
+          2,
+          1,
+          5,
+          2,
+          5,
+          3,
+          5
+        ],
+        "merge_colors": [
+          2
+        ],
+        "opt_dist": 2,
+        "num_unsafe_paths": 2,
+        "safe_path_found": true,
+        "safe_path_dist": 3,
+        "base_metrics": {
+          "global_magic_gem": 1.041155045351474,
+          "local_magic_gem_v": 0.32000000000000006,
+          "potts_energy": 30.0,
+          "electrostatic_v": 0.11578654064288796,
+          "local_entropy_v": 1.5,
+          "defect_interaction": 0.4060058497098381,
+          "electric_gradient_v": 0.17816874987658704,
+          "num_color5": 3
+        },
+        "chain_data": [
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 3.0,
+            "surface_tension": 6.0
+          },
+          {
+            "color_a": 2,
+            "chain_size": 2,
+            "ruggedness": 2.5,
+            "surface_tension": 5.0
+          }
+        ],
+        "unsafe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            0.8411550453514739,
+            2.1166425736961454
+          ],
+          "potts": [
+            30.0,
+            31.0,
+            31.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            3
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.1702330255141107,
+            0.1702330255141107
+          ]
+        },
+        "safe_profile": {
+          "magic_gem": [
+            1.041155045351474,
+            1.041155045351474,
+            0.8478911564625851,
+            0.9101743197278911
+          ],
+          "potts": [
+            30.0,
+            30.0,
+            20.0,
+            10.0
+          ],
+          "entropy": [
+            1.5,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "color5_count": [
+            3,
+            3,
+            2,
+            1
+          ],
+          "electrostatic_v": [
+            0.11578654064288796,
+            0.11578654064288796,
+            0.15356003279309557,
+            0.22072883459452186
+          ],
+          "length": 3
+        }
+      }
+    ],
+    "aggregates": {
+      "unsafe": {
+        "global_magic_gem": {
+          "mean": 1.3329842214663643,
+          "std": 0.5601132681667292,
+          "min": 0.8411550453514739,
+          "max": 2.1166425736961454,
+          "n": 72
+        },
+        "potts_energy": {
+          "mean": 30.666666666666668,
+          "std": 0.4714045207910317,
+          "min": 30.0,
+          "max": 31.0,
+          "n": 72
+        },
+        "local_entropy_v": {
+          "mean": 1.8333333333333333,
+          "std": 0.23570226039551584,
+          "min": 1.5,
+          "max": 2.0,
+          "n": 72
+        },
+        "electrostatic_v": {
+          "mean": 0.15208419722370314,
+          "std": 0.025666319109474915,
+          "min": 0.11578654064288796,
+          "max": 0.1702330255141107,
+          "n": 72
+        },
+        "defect_interaction": {
+          "mean": 0.5610352883330578,
+          "std": 0.10962236733402235,
+          "min": 0.4060058497098381,
+          "max": 0.6385500076446677,
+          "n": 72
+        },
+        "electric_gradient_v": {
+          "mean": 0.20025143323526112,
+          "std": 0.015614815149713782,
+          "min": 0.17816874987658704,
+          "max": 0.2112927749145982,
+          "n": 72
+        },
+        "chain_ruggedness": {
+          "mean": 3.0,
+          "std": 0.0,
+          "min": 3.0,
+          "max": 3.0,
+          "n": 24
+        },
+        "chain_tension": {
+          "mean": 6.0,
+          "std": 0.0,
+          "min": 6.0,
+          "max": 6.0,
+          "n": 24
+        }
+      },
+      "safe": {
+        "global_magic_gem": {
+          "mean": 1.4314094830640591,
+          "std": 0.5431377682556587,
+          "min": 0.8478911564625851,
+          "max": 2.450418083900227,
+          "n": 96
+        },
+        "potts_energy": {
+          "mean": 28.5625,
+          "std": 7.326908880967471,
+          "min": 10.0,
+          "max": 41.0,
+          "n": 96
+        },
+        "local_entropy_v": {
+          "mean": 1.5,
+          "std": 0.4330127018922193,
+          "min": 1.0,
+          "max": 2.0,
+          "n": 96
+        },
+        "electrostatic_v": {
+          "mean": 0.12769289254995567,
+          "std": 0.028066690157300497,
+          "min": 0.10682840888397424,
+          "max": 0.22072883459452186,
+          "n": 96
+        },
+        "defect_interaction": {
+          "mean": 0.41815695904711525,
+          "std": 0.2693890045178553,
+          "min": 0.0,
+          "max": 1.044555857354506,
+          "n": 96
+        },
+        "electric_gradient_v": {
+          "mean": 0.1971882219655233,
+          "std": 0.021896320350314816,
+          "min": 0.17816874987658704,
+          "max": 0.2353204457345207,
+          "n": 96
+        },
+        "chain_ruggedness": {
+          "mean": 3.8333333333333326,
+          "std": 0.8059606997693186,
+          "min": 2.6666666666666665,
+          "max": 5.0,
+          "n": 39
+        },
+        "chain_tension": {
+          "mean": 4.923076923076923,
+          "std": 1.6390212117432705,
+          "min": 3.0,
+          "max": 8.0,
+          "n": 39
+        }
+      }
+    }
+  }
+}

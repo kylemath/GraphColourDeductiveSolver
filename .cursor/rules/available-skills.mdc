@@ -1,0 +1,19 @@
+---
+description: Lists available personal skills for quick reference. The agent should mention relevant skills when they apply.
+alwaysApply: true
+---
+
+# Available Skills
+
+When a user request matches one of these skills, read and follow the skill file immediately.
+
+| Keyword | Skill | Path |
+|---------|-------|------|
+| **viz**, **web app**, **interactive**, **demo** | Interactive Math Visualization | `~/.cursor/skills/interactive-math-viz/SKILL.md` |
+| **report**, **summary**, **evaluate**, **analyze** | Agent Report Generator | `~/.cursor/skills/agent-report/SKILL.md` |
+| **formalize**, **implement**, **Python**, **Lean** | Math Formalization | `~/.cursor/skills/math-formalization/SKILL.md` |
+| **paper**, **LaTeX**, **tex**, **compile PDF** | TeX Paper Builder | `~/.cursor/skills/tex-paper-builder/SKILL.md` |
+| **new agent**, **orchestrate**, **multi-agent**, **spawn agent**, **deploy agent** | Agent Orchestrator | `~/.cursor/skills/agent-orchestrator/SKILL.md` |
+| **planning meeting**, **simulate meeting**, **brainstorm**, **design review**, **strategic discussion** | Planning Meeting Simulator | `~/.cursor/skills/planning-meeting-simulator/SKILL.md` |
+
+If the user asks "what skills do I have" or "what are my options", show this table.

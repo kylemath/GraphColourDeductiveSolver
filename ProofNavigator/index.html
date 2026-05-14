@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof Navigator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== HEADER BAR ===== -->
+  <header id="header">
+    <div class="header-left">
+      <span class="logo">&#9670;</span>
+      <h1>Proof Navigator</h1>
+      <span class="project-name" id="project-name">Four Colour Theorem</span>
+    </div>
+    <div class="header-center">
+      <div class="global-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="global-progress-fill"></div>
+        </div>
+        <span class="progress-text" id="global-progress-text">0 / 0 proved</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" id="btn-expand-all" title="Expand all">&#9698;</button>
+      <button class="icon-btn" id="btn-collapse-all" title="Collapse all">&#9699;</button>
+      <button class="icon-btn" id="btn-add-root" title="Add root node">+</button>
+      <button class="icon-btn" id="btn-export" title="Export JSON">&#8681;</button>
+      <button class="icon-btn" id="btn-import" title="Import JSON">&#8679;</button>
+      <button class="icon-btn" id="btn-reset" title="Reset to default">&#8635;</button>
+      <input type="file" id="import-file" accept=".json" hidden>
+    </div>
+  </header>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <main id="main">
+
+    <!-- ===== LEFT: PROOF TREE ===== -->
+    <section id="tree-panel" class="panel">
+      <div class="panel-header">
+        <h2>Proof Tree</h2>
+        <div class="legend">
+          <span class="legend-item"><span class="dot dot-unstarted"></span>Unstarted</span>
+          <span class="legend-item"><span class="dot dot-exploring"></span>Exploring</span>
+          <span class="legend-item"><span class="dot dot-in-progress"></span>In Progress</span>
+          <span class="legend-item"><span class="dot dot-blocked"></span>Blocked</span>
+          <span class="legend-item"><span class="dot dot-proved"></span>Proved</span>
+          <span class="legend-item"><span class="dot dot-killed"></span>Killed</span>
+        </div>
+      </div>
+      <div id="tree-container" class="tree-scroll">
+        <!-- Tree nodes rendered by tree.js -->
+      </div>
+    </section>
+
+    <!-- ===== RIGHT: DETAIL PANEL ===== -->
+    <section id="detail-panel" class="panel">
+      <!-- Empty state -->
+      <div id="detail-empty" class="detail-empty">
+        <div class="empty-icon">&#9670;</div>
+        <p>Select a node to view details</p>
+      </div>
+
+      <!-- Populated state -->
+      <div id="detail-content" class="detail-content" hidden>
+        <!-- Section: Header -->
+        <div class="detail-header">
+          <div class="detail-title-row">
+            <h2 id="detail-title" contenteditable="true"></h2>
+            <select id="detail-status" class="status-select">
+              <option value="unstarted">Unstarted</option>
+              <option value="exploring">Exploring</option>
+              <option value="in-progress">In Progress</option>
+              <option value="blocked">Blocked</option>
+              <option value="proved">Proved</option>
+              <option value="killed">Killed</option>
+            </select>
+          </div>
+          <div class="detail-id" id="detail-id"></div>
+        </div>
+
+        <!-- Section: Formal Statement -->
+        <div class="detail-section">
+          <h3>Formal Statement</h3>
+          <textarea id="detail-statement" class="mono-area" placeholder="e.g. ∀ planar G, χ(G) ≤ 4"></textarea>
+        </div>
+
+        <!-- Section: Approach -->
+        <div class="detail-section">
+          <h3>Approach / Strategy</h3>
+          <textarea id="detail-approach" placeholder="Describe the proof strategy for this node..."></textarea>
+        </div>
+
+        <!-- Section: Kill Criteria -->
+        <div class="detail-section collapsible">
+          <h3 class="collapse-toggle">Kill Criteria <span class="caret">&#9654;</span></h3>
+          <div class="collapse-body">
+            <textarea id="detail-kill" placeholder="Under what conditions do we abandon this track?"></textarea>
+          </div>
+        </div>
+
+        <!-- Section: Linked Files -->
+        <div class="detail-section collapsible">
+          <h3 class="collapse-toggle">Linked Files <span class="caret">&#9654;</span></h3>
+          <div class="collapse-body">
+            <div id="detail-files" class="file-list"></div>
+            <div class="add-row">
+              <input id="new-file-input" type="text" placeholder="path/to/file.lean">
+              <button id="btn-add-file" class="small-btn">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Evidence / Computations -->
+        <div class="detail-section collapsible">
+          <h3 class="collapse-toggle">Evidence <span class="caret">&#9654;</span></h3>
+          <div class="collapse-body">
+            <textarea id="detail-evidence" placeholder="Computational results, counter-examples, data..."></textarea>
+          </div>
+        </div>
+
+        <!-- Section: Progress -->
+        <div class="detail-section">
+          <h3>Sub-goal Progress</h3>
+          <div class="detail-progress-row">
+            <div class="progress-bar detail-bar">
+              <div class="progress-fill" id="detail-progress-fill"></div>
+            </div>
+            <span id="detail-progress-text" class="progress-text"></span>
+          </div>
+        </div>
+
+        <!-- Section: Actions -->
+        <div class="detail-actions">
+          <button id="btn-add-child" class="action-btn">+ Add Sub-goal</button>
+          <button id="btn-delete-node" class="action-btn danger">Delete Node</button>
+        </div>
+
+        <!-- Section: Notes / Journal -->
+        <div class="detail-section">
+          <h3>Notes</h3>
+          <div id="detail-notes" class="notes-list"></div>
+          <div class="add-row">
+            <input id="new-note-input" type="text" placeholder="Add a note...">
+            <button id="btn-add-note" class="small-btn">+ Add</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== BOTTOM: JOURNAL ===== -->
+  <section id="journal-panel">
+    <div class="journal-header" id="journal-toggle">
+      <h3>Activity Journal</h3>
+      <span class="caret" id="journal-caret">&#9660;</span>
+    </div>
+    <div id="journal-body" class="journal-body">
+      <div id="journal-entries"></div>
+    </div>
+  </section>
+
+  <!-- ===== ADD/EDIT MODAL ===== -->
+  <div id="modal-overlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3 id="modal-title">Add Node</h3>
+      <label>Title</label>
+      <input id="modal-node-title" type="text" placeholder="Node title">
+      <label>Formal Statement</label>
+      <textarea id="modal-node-statement" class="mono-area" placeholder="Mathematical statement"></textarea>
+      <label>Approach</label>
+      <textarea id="modal-node-approach" placeholder="Proof strategy"></textarea>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="action-btn">Cancel</button>
+        <button id="modal-confirm" class="action-btn primary">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="tree.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

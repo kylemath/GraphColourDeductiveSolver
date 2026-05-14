@@ -1,0 +1,102 @@
+% sections/01-introduction.tex
+
+\section{Introduction}\label{sec:introduction}
+
+The Four Colour Theorem (4CT), that every planar graph admits a proper
+$4$-coloring, was first proved by Appel and Haken~\cite{appel1977}
+using an unavoidable set of 1,476 reducible configurations, each
+verified by computer. A cleaner proof by Robertson, Sanders, Seymour,
+and Thomas~\cite{robertson1997} reduced the set to 633 configurations,
+but the essential reliance on exhaustive computation remains. In the
+half-century since, no ``human-readable'' proof has emerged.
+
+A fundamentally different strategy proceeds \emph{constructively}: begin
+with the easy Five Colour Theorem, then systematically eliminate the
+fifth color via Kempe chain swaps. Kempe's 1879 ``proof'' used exactly
+this strategy; Heawood's 1890 counterexample showed only that a
+particular swap could merge two chains, not that the strategy itself
+fails. Mathewson~\cite{mathewson2025constructive} revived and formalized this line of
+attack. An inductive proof architecture based on vertex removal and
+lifting achieves a nearly complete proof: six lemmas are proved,
+covering all cases except when the removed vertex $v$ has degree 4 or 5
+and all five colors appear among its neighbors. In this critical case,
+one must show that the 5-coloring of $G - v$ can be reconfigured,
+via a sequence of Kempe swaps, into a coloring where two neighbors of
+$v$ share a color, freeing a color for $v$.
+
+\subsection{The Avoidance Problem}
+
+The central obstacle is \emph{avoidance}: during reconfiguration, one
+must avoid Kempe swaps that merge the two chains incident to $v$, as
+such merges destroy the degree of freedom needed to recolor $v$.
+Conjecture~5.5 of the constructive architecture asserted that
+BFS-optimal paths in the reconfiguration graph $\R(G - v, 5)$ always
+avoid such unsafe swaps. Exhaustive enumeration at $n = 9$ disproves this
+conjecture: for the triangulations $T_{9,25}$ and $T_{9,35}$, \emph{all}
+optimal-length paths from certain 5-colorings to the nearest 4-coloring
+pass through at least one unsafe swap~\cite{mathewson2025}.
+
+The counterexamples refute only the optimality claim, not the
+constructive strategy itself: in every case, \emph{safe} non-optimal paths
+exist, requiring one or two extra steps. This led to the revised
+Conjecture~5.5$'$ (Safe Path Existence): for every 5-coloring of a
+planar triangulation and every vertex $v$, there exists a
+reconfiguration path to a 4-coloring that avoids all swaps merging
+chains incident to $v$.
+
+\subsection{Why Physics?}
+
+What distinguishes safe paths from unsafe ones? If we assign each
+coloring an energy via some functional, the reconfiguration graph becomes
+a discrete energy surface, and safe versus unsafe paths trace distinct
+trajectories. We argue that anti-ferromagnetic spin models and disordered
+systems provide the discriminating tools.
+
+A proper $k$-coloring of a
+graph $G$ is precisely a ground state of the anti-ferromagnetic Potts
+model on $G$ at zero temperature. The chromatic polynomial $P(G, k)$ is
+the zero-temperature partition function. Kempe chain reconfiguration is
+the natural dynamics of this system: a Kempe $(a,b)$-swap flips a
+connected cluster of spins in the $(a,b)$-subgraph, which is exactly
+the Swendsen-Wang cluster update restricted to two colors.
+
+We strengthen this connection by embedding the four colors at the
+vertices of a regular tetrahedron in $\mathbb{R}^3$, with the fifth
+color at the centroid. In this embedding, each Kempe swap becomes a
+$180^\circ$ rotation in $\mathrm{SO}(3)$, the symmetry group of the
+tetrahedron maps isomorphically to $S_4$, and the entire reconfiguration
+process becomes a walk through a space of $\mathrm{SO}(3)$-valued gauge
+fields on the graph. This links the constructive 4CT to Kauffman's reformulation via the
+Penrose evaluation~\cite{kauffman1990} and, more broadly, to
+topological quantum field theory (TQFT).
+
+\subsection{Contributions}
+
+In this paper we:
+\begin{enumerate}[label=(\roman*)]
+  \item Define eight energy functionals for the reconfiguration graph,
+    drawn from anti-ferromagnetic Potts models, polyhedral covariance
+    (Magic Gems~\cite{mathewson2025}), electrostatic charge flow,
+    protein folding landscapes, and surface tension
+    (Section~\ref{sec:methods}).
+  \item Evaluate these functionals on the first known counterexamples to
+    Conjecture~5.5 at $n = 9$ (Section~\ref{sec:results}).
+  \item Identify three discriminating signatures: local entropy, Magic
+    Gem energy trajectories, and surface tension rigidity.
+  \item Formalize the \emph{Surface Tension Rigidity Conjecture}: chains
+    with zero-variance normalized surface tension are merge-prone.
+  \item Discuss connections to the Penrose evaluation, sheaf cohomology,
+    chromatic polynomials, and the discharging method
+    (Section~\ref{sec:discussion}).
+\end{enumerate}
+
+\subsection{Outline}
+
+Section~\ref{sec:background} reviews Kempe chains, the constructive 4CT
+architecture, the reconfiguration graph, and the relevant physical
+models. Section~\ref{sec:methods} defines all eight energy functionals
+with the tetrahedral color embedding. Section~\ref{sec:results} presents
+computational results on the $n = 9$ counterexamples.
+Section~\ref{sec:discussion} develops connections to TQFT, sheaf
+cohomology, chromatic polynomials, and discharging.
+Section~\ref{sec:conclusion} summarizes and poses open questions.

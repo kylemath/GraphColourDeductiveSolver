@@ -1,0 +1,1056 @@
+{
+  "Basic (1 rule)": {
+    "unavoidable_count": 967,
+    "natural_groups": {
+      "0": 1,
+      "1": 6,
+      "2": 42,
+      "3": 252,
+      "4": 666
+    },
+    "estimated_rsst_configs": 1406402,
+    "hierarchical_clusters": [
+      {
+        "cluster_id": 1,
+        "size": 114,
+        "mean_features": {
+          "n_major": 3.0,
+          "n_minor": 2.0,
+          "min_nbr": 6.0,
+          "max_nbr": 11.61,
+          "mean_nbr": 8.59,
+          "deg6_count": 2.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 3.0,
+          "max_minor_run": 1.5,
+          "deg_variance": 5.5
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.49,
+          "mean_nbr": 0.41,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.5,
+          "deg_variance": 1.27
+        },
+        "example_patterns": [
+          "DP(5; 6,6,8,8,11)",
+          "DP(5; 6,6,8,8,12)",
+          "DP(5; 6,6,8,9,11)",
+          "DP(5; 6,6,8,9,12)",
+          "DP(5; 6,6,8,10,11)"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "size": 187,
+        "mean_features": {
+          "n_major": 2.7,
+          "n_minor": 2.3,
+          "min_nbr": 6.0,
+          "max_nbr": 10.25,
+          "mean_nbr": 7.59,
+          "deg6_count": 2.3,
+          "deg7_count": 0.75,
+          "deg8p_count": 1.94,
+          "max_minor_run": 1.82,
+          "deg_variance": 3.39
+        },
+        "std_features": {
+          "n_major": 0.56,
+          "n_minor": 0.56,
+          "min_nbr": 0.0,
+          "max_nbr": 1.38,
+          "mean_nbr": 0.51,
+          "deg6_count": 0.56,
+          "deg7_count": 0.7,
+          "deg8p_count": 0.71,
+          "max_minor_run": 0.79,
+          "deg_variance": 1.94
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,6)",
+          "DP(5; 6,6,6,6,7)",
+          "DP(5; 6,6,6,6,8)",
+          "DP(5; 6,6,6,6,9)",
+          "DP(5; 6,6,6,6,10)"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "size": 325,
+        "mean_features": {
+          "n_major": 4.0,
+          "n_minor": 1.0,
+          "min_nbr": 6.0,
+          "max_nbr": 11.41,
+          "mean_nbr": 9.2,
+          "deg6_count": 1.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 4.0,
+          "max_minor_run": 1.0,
+          "deg_variance": 3.83
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.81,
+          "mean_nbr": 0.58,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 1.14
+        },
+        "example_patterns": [
+          "DP(5; 6,8,8,8,8)",
+          "DP(5; 6,8,8,8,9)",
+          "DP(5; 6,8,8,8,10)",
+          "DP(5; 6,8,8,8,11)",
+          "DP(5; 6,8,8,8,12)"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "size": 196,
+        "mean_features": {
+          "n_major": 4.0,
+          "n_minor": 1.0,
+          "min_nbr": 6.0,
+          "max_nbr": 11.62,
+          "mean_nbr": 8.77,
+          "deg6_count": 1.0,
+          "deg7_count": 1.0,
+          "deg8p_count": 3.0,
+          "max_minor_run": 1.0,
+          "deg_variance": 4.57
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.48,
+          "mean_nbr": 0.4,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 1.08
+        },
+        "example_patterns": [
+          "DP(5; 6,7,8,8,11)",
+          "DP(5; 6,7,8,8,12)",
+          "DP(5; 6,7,8,9,11)",
+          "DP(5; 6,7,8,9,12)",
+          "DP(5; 6,7,8,10,11)"
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "size": 145,
+        "mean_features": {
+          "n_major": 4.0,
+          "n_minor": 1.0,
+          "min_nbr": 6.0,
+          "max_nbr": 10.27,
+          "mean_nbr": 7.95,
+          "deg6_count": 1.0,
+          "deg7_count": 1.71,
+          "deg8p_count": 2.29,
+          "max_minor_run": 1.0,
+          "deg_variance": 2.76
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 1.18,
+          "mean_nbr": 0.4,
+          "deg6_count": 0.0,
+          "deg7_count": 0.62,
+          "deg8p_count": 0.62,
+          "max_minor_run": 0.0,
+          "deg_variance": 1.57
+        },
+        "example_patterns": [
+          "DP(5; 6,7,7,7,7)",
+          "DP(5; 6,7,7,7,8)",
+          "DP(5; 6,7,7,7,9)",
+          "DP(5; 6,7,7,7,10)",
+          "DP(5; 6,7,7,7,11)"
+        ]
+      }
+    ],
+    "kmeans_clusters": [
+      {
+        "cluster_id": 0,
+        "size": 143,
+        "mean_features": {
+          "n_major": 3.73,
+          "n_minor": 1.27,
+          "min_nbr": 6.0,
+          "max_nbr": 9.56,
+          "mean_nbr": 7.64,
+          "deg6_count": 1.27,
+          "deg7_count": 1.52,
+          "deg8p_count": 2.21,
+          "max_minor_run": 1.06,
+          "deg_variance": 1.87
+        },
+        "std_features": {
+          "n_major": 0.45,
+          "n_minor": 0.45,
+          "min_nbr": 0.0,
+          "max_nbr": 0.92,
+          "mean_nbr": 0.41,
+          "deg6_count": 0.45,
+          "deg7_count": 0.73,
+          "deg8p_count": 0.8,
+          "max_minor_run": 0.24,
+          "deg_variance": 0.83
+        },
+        "example_patterns": [
+          "DP(5; 6,6,7,7,7)",
+          "DP(5; 6,6,7,7,8)",
+          "DP(5; 6,6,7,7,9)",
+          "DP(5; 6,6,7,7,10)",
+          "DP(5; 6,6,7,7,11)"
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "size": 238,
+        "mean_features": {
+          "n_major": 4.0,
+          "n_minor": 1.0,
+          "min_nbr": 6.0,
+          "max_nbr": 11.63,
+          "mean_nbr": 8.69,
+          "deg6_count": 1.0,
+          "deg7_count": 1.18,
+          "deg8p_count": 2.82,
+          "max_minor_run": 1.0,
+          "deg_variance": 4.62
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.5,
+          "mean_nbr": 0.41,
+          "deg6_count": 0.0,
+          "deg7_count": 0.4,
+          "deg8p_count": 0.4,
+          "max_minor_run": 0.0,
+          "deg_variance": 1.06
+        },
+        "example_patterns": [
+          "DP(5; 6,7,7,7,12)",
+          "DP(5; 6,7,7,8,12)",
+          "DP(5; 6,7,7,9,12)",
+          "DP(5; 6,7,7,10,11)",
+          "DP(5; 6,7,7,10,12)"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "size": 204,
+        "mean_features": {
+          "n_major": 2.95,
+          "n_minor": 2.05,
+          "min_nbr": 6.0,
+          "max_nbr": 11.42,
+          "mean_nbr": 8.33,
+          "deg6_count": 2.05,
+          "deg7_count": 0.29,
+          "deg8p_count": 2.66,
+          "max_minor_run": 1.55,
+          "deg_variance": 5.14
+        },
+        "std_features": {
+          "n_major": 0.22,
+          "n_minor": 0.22,
+          "min_nbr": 0.0,
+          "max_nbr": 0.71,
+          "mean_nbr": 0.47,
+          "deg6_count": 0.22,
+          "deg7_count": 0.5,
+          "deg8p_count": 0.51,
+          "max_minor_run": 0.54,
+          "deg_variance": 1.48
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,9,12)",
+          "DP(5; 6,6,6,10,12)",
+          "DP(5; 6,6,6,11,12)",
+          "DP(5; 6,6,6,12,12)",
+          "DP(5; 6,6,7,7,12)"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "size": 324,
+        "mean_features": {
+          "n_major": 4.0,
+          "n_minor": 1.0,
+          "min_nbr": 6.0,
+          "max_nbr": 11.42,
+          "mean_nbr": 9.2,
+          "deg6_count": 1.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 4.0,
+          "max_minor_run": 1.0,
+          "deg_variance": 3.84
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.79,
+          "mean_nbr": 0.57,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 1.13
+        },
+        "example_patterns": [
+          "DP(5; 6,8,8,8,9)",
+          "DP(5; 6,8,8,8,10)",
+          "DP(5; 6,8,8,8,11)",
+          "DP(5; 6,8,8,8,12)",
+          "DP(5; 6,8,8,9,8)"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "size": 58,
+        "mean_features": {
+          "n_major": 2.19,
+          "n_minor": 2.81,
+          "min_nbr": 6.0,
+          "max_nbr": 9.52,
+          "mean_nbr": 7.19,
+          "deg6_count": 2.81,
+          "deg7_count": 0.48,
+          "deg8p_count": 1.71,
+          "max_minor_run": 2.55,
+          "deg_variance": 2.44
+        },
+        "std_features": {
+          "n_major": 0.68,
+          "n_minor": 0.68,
+          "min_nbr": 0.0,
+          "max_nbr": 1.34,
+          "mean_nbr": 0.42,
+          "deg6_count": 0.68,
+          "deg7_count": 0.56,
+          "deg8p_count": 0.74,
+          "max_minor_run": 0.75,
+          "deg_variance": 1.55
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,6)",
+          "DP(5; 6,6,6,6,7)",
+          "DP(5; 6,6,6,6,8)",
+          "DP(5; 6,6,6,6,9)",
+          "DP(5; 6,6,6,6,10)"
+        ]
+      }
+    ],
+    "largest_cluster_size": 324
+  },
+  "Standard (6 rules)": {
+    "unavoidable_count": 45,
+    "natural_groups": {
+      "0": 1,
+      "1": 6,
+      "2": 32,
+      "3": 6
+    },
+    "estimated_rsst_configs": 8500,
+    "hierarchical_clusters": [
+      {
+        "cluster_id": 1,
+        "size": 3,
+        "mean_features": {
+          "n_major": 3.0,
+          "n_minor": 2.0,
+          "min_nbr": 6.0,
+          "max_nbr": 8.0,
+          "mean_nbr": 7.07,
+          "deg6_count": 2.0,
+          "deg7_count": 0.67,
+          "deg8p_count": 2.33,
+          "max_minor_run": 2.0,
+          "deg_variance": 0.85
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.09,
+          "deg6_count": 0.0,
+          "deg7_count": 0.47,
+          "deg8p_count": 0.47,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.08
+        },
+        "example_patterns": [
+          "DP(5; 6,6,7,8,8)",
+          "DP(5; 6,6,8,7,8)",
+          "DP(5; 6,6,8,8,8)"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "size": 9,
+        "mean_features": {
+          "n_major": 2.33,
+          "n_minor": 2.67,
+          "min_nbr": 6.0,
+          "max_nbr": 7.89,
+          "mean_nbr": 6.64,
+          "deg6_count": 2.67,
+          "deg7_count": 1.67,
+          "deg8p_count": 0.67,
+          "max_minor_run": 2.33,
+          "deg_variance": 0.65
+        },
+        "std_features": {
+          "n_major": 0.47,
+          "n_minor": 0.47,
+          "min_nbr": 0.0,
+          "max_nbr": 0.74,
+          "mean_nbr": 0.16,
+          "deg6_count": 0.47,
+          "deg7_count": 0.67,
+          "deg8p_count": 0.47,
+          "max_minor_run": 0.47,
+          "deg_variance": 0.41
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,7,7)",
+          "DP(5; 6,6,6,7,8)",
+          "DP(5; 6,6,6,7,9)",
+          "DP(5; 6,6,7,6,7)",
+          "DP(5; 6,6,7,6,8)"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "size": 7,
+        "mean_features": {
+          "n_major": 0.86,
+          "n_minor": 4.14,
+          "min_nbr": 6.0,
+          "max_nbr": 9.0,
+          "mean_nbr": 6.6,
+          "deg6_count": 4.14,
+          "deg7_count": 0.14,
+          "deg8p_count": 0.71,
+          "max_minor_run": 4.14,
+          "deg_variance": 2.08
+        },
+        "std_features": {
+          "n_major": 0.35,
+          "n_minor": 0.35,
+          "min_nbr": 0.0,
+          "max_nbr": 2.0,
+          "mean_nbr": 0.4,
+          "deg6_count": 0.35,
+          "deg7_count": 0.35,
+          "deg8p_count": 0.45,
+          "max_minor_run": 0.35,
+          "deg_variance": 2.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,6)",
+          "DP(5; 6,6,6,6,7)",
+          "DP(5; 6,6,6,6,8)",
+          "DP(5; 6,6,6,6,9)",
+          "DP(5; 6,6,6,6,10)"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "size": 7,
+        "mean_features": {
+          "n_major": 2.0,
+          "n_minor": 3.0,
+          "min_nbr": 6.0,
+          "max_nbr": 11.71,
+          "mean_nbr": 7.97,
+          "deg6_count": 3.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 2.0,
+          "max_minor_run": 3.0,
+          "deg_variance": 6.37
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.45,
+          "mean_nbr": 0.25,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 1.16
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,8,12)",
+          "DP(5; 6,6,6,9,12)",
+          "DP(5; 6,6,6,10,11)",
+          "DP(5; 6,6,6,10,12)",
+          "DP(5; 6,6,6,11,11)"
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "size": 19,
+        "mean_features": {
+          "n_major": 2.0,
+          "n_minor": 3.0,
+          "min_nbr": 6.0,
+          "max_nbr": 10.21,
+          "mean_nbr": 7.23,
+          "deg6_count": 3.0,
+          "deg7_count": 0.32,
+          "deg8p_count": 1.68,
+          "max_minor_run": 2.58,
+          "deg_variance": 3.15
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 1.2,
+          "mean_nbr": 0.25,
+          "deg6_count": 0.0,
+          "deg7_count": 0.46,
+          "deg8p_count": 0.46,
+          "max_minor_run": 0.49,
+          "deg_variance": 1.38
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,7,10)",
+          "DP(5; 6,6,6,7,11)",
+          "DP(5; 6,6,6,7,12)",
+          "DP(5; 6,6,6,8,8)",
+          "DP(5; 6,6,6,8,9)"
+        ]
+      }
+    ],
+    "kmeans_clusters": [
+      {
+        "cluster_id": 0,
+        "size": 6,
+        "mean_features": {
+          "n_major": 0.83,
+          "n_minor": 4.17,
+          "min_nbr": 6.0,
+          "max_nbr": 8.5,
+          "mean_nbr": 6.5,
+          "deg6_count": 4.17,
+          "deg7_count": 0.17,
+          "deg8p_count": 0.67,
+          "max_minor_run": 4.17,
+          "deg_variance": 1.47
+        },
+        "std_features": {
+          "n_major": 0.37,
+          "n_minor": 0.37,
+          "min_nbr": 0.0,
+          "max_nbr": 1.71,
+          "mean_nbr": 0.34,
+          "deg6_count": 0.37,
+          "deg7_count": 0.37,
+          "deg8p_count": 0.47,
+          "max_minor_run": 0.37,
+          "deg_variance": 1.42
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,6)",
+          "DP(5; 6,6,6,6,7)",
+          "DP(5; 6,6,6,6,8)",
+          "DP(5; 6,6,6,6,9)",
+          "DP(5; 6,6,6,6,10)"
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "size": 16,
+        "mean_features": {
+          "n_major": 2.0,
+          "n_minor": 3.0,
+          "min_nbr": 6.0,
+          "max_nbr": 9.62,
+          "mean_nbr": 7.1,
+          "deg6_count": 3.0,
+          "deg7_count": 0.38,
+          "deg8p_count": 1.62,
+          "max_minor_run": 2.56,
+          "deg_variance": 2.38
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.93,
+          "mean_nbr": 0.23,
+          "deg6_count": 0.0,
+          "deg7_count": 0.48,
+          "deg8p_count": 0.48,
+          "max_minor_run": 0.5,
+          "deg_variance": 1.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,7,9)",
+          "DP(5; 6,6,6,7,10)",
+          "DP(5; 6,6,6,7,11)",
+          "DP(5; 6,6,6,8,8)",
+          "DP(5; 6,6,6,8,9)"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "size": 13,
+        "mean_features": {
+          "n_major": 1.92,
+          "n_minor": 3.08,
+          "min_nbr": 6.0,
+          "max_nbr": 11.69,
+          "mean_nbr": 7.72,
+          "deg6_count": 3.08,
+          "deg7_count": 0.15,
+          "deg8p_count": 1.77,
+          "max_minor_run": 2.92,
+          "deg_variance": 5.75
+        },
+        "std_features": {
+          "n_major": 0.27,
+          "n_minor": 0.27,
+          "min_nbr": 0.0,
+          "max_nbr": 0.46,
+          "mean_nbr": 0.34,
+          "deg6_count": 0.27,
+          "deg7_count": 0.36,
+          "deg8p_count": 0.42,
+          "max_minor_run": 0.47,
+          "deg_variance": 1.19
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,12)",
+          "DP(5; 6,6,6,7,12)",
+          "DP(5; 6,6,6,8,11)",
+          "DP(5; 6,6,6,8,12)",
+          "DP(5; 6,6,6,9,11)"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "size": 3,
+        "mean_features": {
+          "n_major": 3.0,
+          "n_minor": 2.0,
+          "min_nbr": 6.0,
+          "max_nbr": 8.0,
+          "mean_nbr": 7.07,
+          "deg6_count": 2.0,
+          "deg7_count": 0.67,
+          "deg8p_count": 2.33,
+          "max_minor_run": 2.0,
+          "deg_variance": 0.85
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.09,
+          "deg6_count": 0.0,
+          "deg7_count": 0.47,
+          "deg8p_count": 0.47,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.08
+        },
+        "example_patterns": [
+          "DP(5; 6,6,7,8,8)",
+          "DP(5; 6,6,8,7,8)",
+          "DP(5; 6,6,8,8,8)"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "size": 7,
+        "mean_features": {
+          "n_major": 2.43,
+          "n_minor": 2.57,
+          "min_nbr": 6.0,
+          "max_nbr": 7.57,
+          "mean_nbr": 6.6,
+          "deg6_count": 2.57,
+          "deg7_count": 1.86,
+          "deg8p_count": 0.57,
+          "max_minor_run": 2.29,
+          "deg_variance": 0.45
+        },
+        "std_features": {
+          "n_major": 0.49,
+          "n_minor": 0.49,
+          "min_nbr": 0.0,
+          "max_nbr": 0.49,
+          "mean_nbr": 0.15,
+          "deg6_count": 0.49,
+          "deg7_count": 0.64,
+          "deg8p_count": 0.49,
+          "max_minor_run": 0.45,
+          "deg_variance": 0.18
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,7,7)",
+          "DP(5; 6,6,6,7,8)",
+          "DP(5; 6,6,7,6,7)",
+          "DP(5; 6,6,7,6,8)",
+          "DP(5; 6,6,7,7,7)"
+        ]
+      }
+    ],
+    "largest_cluster_size": 16
+  },
+  "Extended (12 rules)": {
+    "unavoidable_count": 7,
+    "natural_groups": {
+      "0": 1,
+      "1": 6
+    },
+    "estimated_rsst_configs": 560,
+    "hierarchical_clusters": [
+      {
+        "cluster_id": 1,
+        "size": 2,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 8.5,
+          "mean_nbr": 6.5,
+          "deg6_count": 4.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 1.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 1.04
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.5,
+          "mean_nbr": 0.1,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.4
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,8)",
+          "DP(5; 6,6,6,6,9)"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "size": 2,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 10.5,
+          "mean_nbr": 6.9,
+          "deg6_count": 4.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 1.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 3.28
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.5,
+          "mean_nbr": 0.1,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.72
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,10)",
+          "DP(5; 6,6,6,6,11)"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "size": 1,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 12.0,
+          "mean_nbr": 7.2,
+          "deg6_count": 4.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 1.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 5.76
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.0,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,12)"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "size": 1,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 7.0,
+          "mean_nbr": 6.2,
+          "deg6_count": 4.0,
+          "deg7_count": 1.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 0.16
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.0,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,7)"
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "size": 1,
+        "mean_features": {
+          "n_major": 0.0,
+          "n_minor": 5.0,
+          "min_nbr": 6.0,
+          "max_nbr": 6.0,
+          "mean_nbr": 6.0,
+          "deg6_count": 5.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 5.0,
+          "deg_variance": 0.0
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.0,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,6)"
+        ]
+      }
+    ],
+    "kmeans_clusters": [
+      {
+        "cluster_id": 0,
+        "size": 1,
+        "mean_features": {
+          "n_major": 0.0,
+          "n_minor": 5.0,
+          "min_nbr": 6.0,
+          "max_nbr": 6.0,
+          "mean_nbr": 6.0,
+          "deg6_count": 5.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 5.0,
+          "deg_variance": 0.0
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.0,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,6)"
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "size": 1,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 7.0,
+          "mean_nbr": 6.2,
+          "deg6_count": 4.0,
+          "deg7_count": 1.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 0.16
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.0,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,7)"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "size": 2,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 11.5,
+          "mean_nbr": 7.1,
+          "deg6_count": 4.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 1.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 4.88
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.5,
+          "mean_nbr": 0.1,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.88
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,11)",
+          "DP(5; 6,6,6,6,12)"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "size": 2,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 8.5,
+          "mean_nbr": 6.5,
+          "deg6_count": 4.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 1.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 1.04
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.5,
+          "mean_nbr": 0.1,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.4
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,8)",
+          "DP(5; 6,6,6,6,9)"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "size": 1,
+        "mean_features": {
+          "n_major": 1.0,
+          "n_minor": 4.0,
+          "min_nbr": 6.0,
+          "max_nbr": 10.0,
+          "mean_nbr": 6.8,
+          "deg6_count": 4.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 1.0,
+          "max_minor_run": 4.0,
+          "deg_variance": 2.56
+        },
+        "std_features": {
+          "n_major": 0.0,
+          "n_minor": 0.0,
+          "min_nbr": 0.0,
+          "max_nbr": 0.0,
+          "mean_nbr": 0.0,
+          "deg6_count": 0.0,
+          "deg7_count": 0.0,
+          "deg8p_count": 0.0,
+          "max_minor_run": 0.0,
+          "deg_variance": 0.0
+        },
+        "example_patterns": [
+          "DP(5; 6,6,6,6,10)"
+        ]
+      }
+    ],
+    "largest_cluster_size": 2
+  }
+}

@@ -1,0 +1,1112 @@
+[
+  {
+    "graph_edges": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "graph_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "vertex": 3,
+    "degree": 5,
+    "colouring": {
+      "0": 1,
+      "1": 2,
+      "2": 3,
+      "3": 5,
+      "4": 4,
+      "5": 5,
+      "6": 4,
+      "7": 2,
+      "8": 5
+    },
+    "neighbours": [
+      0,
+      1,
+      2,
+      4,
+      6
+    ],
+    "neighbour_colours": {
+      "0": 1,
+      "1": 2,
+      "2": 3,
+      "4": 4,
+      "6": 4
+    },
+    "merge_info": {
+      "4": {
+        "nbrs_in_ba5": [
+          4,
+          6
+        ],
+        "num_distinct_chains": 2,
+        "chain_sizes": [
+          2,
+          2
+        ]
+      }
+    },
+    "bfs_path_length": 3,
+    "path_details": [
+      {
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ],
+        "chain_size": 2,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          4,
+          5
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          4,
+          6
+        ]
+      },
+      {
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ],
+        "chain_size": 1,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          2
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          2,
+          4
+        ]
+      }
+    ],
+    "verification": {
+      "safe_path_exists": false,
+      "paths_checked": 2,
+      "unsafe_count": 2,
+      "reason": "exhausted"
+    }
+  },
+  {
+    "graph_edges": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "graph_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "vertex": 3,
+    "degree": 5,
+    "colouring": {
+      "0": 1,
+      "1": 2,
+      "2": 4,
+      "3": 5,
+      "4": 3,
+      "5": 5,
+      "6": 3,
+      "7": 2,
+      "8": 5
+    },
+    "neighbours": [
+      0,
+      1,
+      2,
+      4,
+      6
+    ],
+    "neighbour_colours": {
+      "0": 1,
+      "1": 2,
+      "2": 4,
+      "4": 3,
+      "6": 3
+    },
+    "merge_info": {
+      "3": {
+        "nbrs_in_ba5": [
+          4,
+          6
+        ],
+        "num_distinct_chains": 2,
+        "chain_sizes": [
+          2,
+          2
+        ]
+      }
+    },
+    "bfs_path_length": 3,
+    "path_details": [
+      {
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ],
+        "chain_size": 2,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          4,
+          5
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          4,
+          6
+        ]
+      },
+      {
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ],
+        "chain_size": 1,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          2
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          2,
+          4
+        ]
+      }
+    ],
+    "verification": {
+      "safe_path_exists": false,
+      "paths_checked": 2,
+      "unsafe_count": 2,
+      "reason": "exhausted"
+    }
+  },
+  {
+    "graph_edges": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "graph_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "vertex": 3,
+    "degree": 5,
+    "colouring": {
+      "0": 1,
+      "1": 3,
+      "2": 2,
+      "3": 5,
+      "4": 4,
+      "5": 5,
+      "6": 4,
+      "7": 3,
+      "8": 5
+    },
+    "neighbours": [
+      0,
+      1,
+      2,
+      4,
+      6
+    ],
+    "neighbour_colours": {
+      "0": 1,
+      "1": 3,
+      "2": 2,
+      "4": 4,
+      "6": 4
+    },
+    "merge_info": {
+      "4": {
+        "nbrs_in_ba5": [
+          4,
+          6
+        ],
+        "num_distinct_chains": 2,
+        "chain_sizes": [
+          2,
+          2
+        ]
+      }
+    },
+    "bfs_path_length": 3,
+    "path_details": [
+      {
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ],
+        "chain_size": 2,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          4,
+          5
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          4,
+          6
+        ]
+      },
+      {
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ],
+        "chain_size": 1,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          2
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          2,
+          4
+        ]
+      }
+    ],
+    "verification": {
+      "safe_path_exists": false,
+      "paths_checked": 2,
+      "unsafe_count": 2,
+      "reason": "exhausted"
+    }
+  },
+  {
+    "graph_edges": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "graph_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "vertex": 6,
+    "degree": 4,
+    "colouring": {
+      "0": 1,
+      "1": 2,
+      "2": 3,
+      "3": 4,
+      "4": 5,
+      "5": 3,
+      "6": 5,
+      "7": 2,
+      "8": 5
+    },
+    "neighbours": [
+      0,
+      1,
+      2,
+      5
+    ],
+    "neighbour_colours": {
+      "0": 1,
+      "1": 2,
+      "2": 3,
+      "5": 3
+    },
+    "merge_info": {
+      "3": {
+        "nbrs_in_ba5": [
+          2,
+          5
+        ],
+        "num_distinct_chains": 2,
+        "chain_sizes": [
+          2,
+          2
+        ]
+      }
+    },
+    "bfs_path_length": 3,
+    "path_details": [
+      {
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ],
+        "chain_size": 2,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          2,
+          8
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          2,
+          5
+        ]
+      },
+      {
+        "step": 1,
+        "swap_pair": [
+          3,
+          4
+        ],
+        "chain_size": 1,
+        "is_a5": false,
+        "is_14": true,
+        "is_unsafe": false,
+        "swapped_vertices": [
+          3
+        ]
+      }
+    ],
+    "verification": {
+      "safe_path_exists": false,
+      "paths_checked": 2,
+      "unsafe_count": 2,
+      "reason": "exhausted"
+    }
+  },
+  {
+    "graph_edges": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "graph_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "vertex": 6,
+    "degree": 4,
+    "colouring": {
+      "0": 1,
+      "1": 2,
+      "2": 4,
+      "3": 3,
+      "4": 5,
+      "5": 4,
+      "6": 5,
+      "7": 2,
+      "8": 5
+    },
+    "neighbours": [
+      0,
+      1,
+      2,
+      5
+    ],
+    "neighbour_colours": {
+      "0": 1,
+      "1": 2,
+      "2": 4,
+      "5": 4
+    },
+    "merge_info": {
+      "4": {
+        "nbrs_in_ba5": [
+          2,
+          5
+        ],
+        "num_distinct_chains": 2,
+        "chain_sizes": [
+          2,
+          2
+        ]
+      }
+    },
+    "bfs_path_length": 3,
+    "path_details": [
+      {
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ],
+        "chain_size": 2,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          2,
+          8
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          2,
+          5
+        ]
+      },
+      {
+        "step": 1,
+        "swap_pair": [
+          3,
+          4
+        ],
+        "chain_size": 1,
+        "is_a5": false,
+        "is_14": true,
+        "is_unsafe": false,
+        "swapped_vertices": [
+          3
+        ]
+      }
+    ],
+    "verification": {
+      "safe_path_exists": false,
+      "paths_checked": 2,
+      "unsafe_count": 2,
+      "reason": "exhausted"
+    }
+  },
+  {
+    "graph_edges": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "graph_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "vertex": 6,
+    "degree": 4,
+    "colouring": {
+      "0": 1,
+      "1": 3,
+      "2": 2,
+      "3": 4,
+      "4": 5,
+      "5": 2,
+      "6": 5,
+      "7": 3,
+      "8": 5
+    },
+    "neighbours": [
+      0,
+      1,
+      2,
+      5
+    ],
+    "neighbour_colours": {
+      "0": 1,
+      "1": 3,
+      "2": 2,
+      "5": 2
+    },
+    "merge_info": {
+      "2": {
+        "nbrs_in_ba5": [
+          2,
+          5
+        ],
+        "num_distinct_chains": 2,
+        "chain_sizes": [
+          2,
+          2
+        ]
+      }
+    },
+    "bfs_path_length": 3,
+    "path_details": [
+      {
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ],
+        "chain_size": 2,
+        "is_a5": true,
+        "is_14": false,
+        "is_unsafe": true,
+        "swapped_vertices": [
+          2,
+          8
+        ],
+        "merge_prone": true,
+        "num_chains_at_v": 2,
+        "v_nbrs_in_ba5": [
+          2,
+          5
+        ]
+      },
+      {
+        "step": 1,
+        "swap_pair": [
+          2,
+          4
+        ],
+        "chain_size": 1,
+        "is_a5": false,
+        "is_14": true,
+        "is_unsafe": false,
+        "swapped_vertices": [
+          3
+        ]
+      }
+    ],
+    "verification": {
+      "safe_path_exists": false,
+      "paths_checked": 2,
+      "unsafe_count": 2,
+      "reason": "exhausted"
+    }
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "total_patterns": 156327,
+  "structural": {
+    "total": 156327,
+    "structurally_unavoidable": 37275,
+    "structurally_avoidable": 119052,
+    "has_major_neighbour": 97278,
+    "capacity_distribution": {
+      "0": 3125,
+      "1/5": 6250,
+      "2/5": 8125,
+      "3/5": 10125,
+      "4/5": 9650
+    }
+  },
+  "rsst_baseline": 141099,
+  "greedy_trail": [
+    {
+      "step": 1,
+      "rule": "A: 1/5\u2192d=6",
+      "num_active": 1,
+      "unavoidable": 155303
+    },
+    {
+      "step": 2,
+      "rule": "B: 1/5\u2192d\u22657",
+      "num_active": 2,
+      "unavoidable": 123959
+    }
+  ],
+  "greedy_relaxed_trail": [
+    {
+      "step": 1,
+      "rule": "A: 1/5\u2192d=6",
+      "num_active": 1,
+      "unavoidable": 153202
+    },
+    {
+      "step": 2,
+      "rule": "B: 1/5\u2192d\u22657",
+      "num_active": 2,
+      "unavoidable": 99634
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+% sections/03-methods.tex
+
+\section{Methods: Energy Functionals for the Reconfiguration Graph}
+\label{sec:methods}
+
+We define eight energy functionals on $\R(G, 5)$. Each functional
+assigns a real number to a proper 5-coloring $c \colon V \to \{1,
+\ldots, 5\}$, or to a specific Kempe chain within $c$. Together, they
+provide complementary views of the reconfiguration landscape.
+
+\subsection{The Tetrahedral Color Embedding}\label{sec:tet-embed}
+
+We embed the five colors in $\mathbb{R}^3$ as follows:
+\begin{equation}\label{eq:tet-embed}
+  \ve{1} = (1,1,1), \quad
+  \ve{2} = (1,-1,-1), \quad
+  \ve{3} = (-1,1,-1), \quad
+  \ve{4} = (-1,-1,1), \quad
+  \ve{5} = (0,0,0).
+\end{equation}
+
+\begin{proposition}[Tetrahedral geometry]\label{prop:tet-geom}
+The vectors $\ve{1}, \ldots, \ve{4}$ form the vertices of a regular
+tetrahedron with:
+\begin{enumerate}[label=(\alph*)]
+  \item Pairwise distance: $\norm{\ve{a} - \ve{b}} = 2\sqrt{2}$ for
+    all $a \neq b \in \{1,2,3,4\}$.
+  \item Centroid at the origin:
+    $\frac{1}{4}(\ve{1} + \ve{2} + \ve{3} + \ve{4}) = \vc{0}$.
+  \item Inner product: $\ip{\ve{a}}{\ve{b}} = -1$ for $a \neq b$ and
+    $\ip{\ve{a}}{\ve{a}} = 3$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Direct computation. For distinct $a, b \in \{1,2,3,4\}$, exactly two of
+the three coordinates differ in sign, giving
+$\norm{\ve{a} - \ve{b}}^2 = 0 + 4 + 4 = 8$ (up to permutation), so
+$\norm{\ve{a} - \ve{b}} = 2\sqrt{2}$. The centroid is
+$(1+1-1-1, 1-1+1-1, 1-1-1+1)/4 = \vc{0}$. The inner product follows:
+$\ip{\ve{a}}{\ve{b}} = (+1) + (-1) + (-1) = -1$, since exactly
+one coordinate agrees in sign and two disagree.
+\end{proof}
+
+The fifth color $\ve{5} = \vc{0}$ sits at the centroid, representing a
+``defect'' or ``unresolved'' color. A 4-coloring uses only
+$\ve{1}, \ldots, \ve{4}$; a 5-coloring has at least one vertex at the
+origin.
+
+\begin{proposition}[Kempe swaps as rotations]\label{prop:kempe-rotation}
+For distinct $a, b \in \{1,2,3,4\}$, let $R_{ab}$ denote the
+$180^\circ$ rotation in $\mathrm{SO}(3)$ about the axis
+$\vc{n}_{ab} = \frac{1}{2}(\ve{a} + \ve{b})$ (the midpoint of the
+tetrahedral edge from $\ve{a}$ to $\ve{b}$). Then $R_{ab}$ exchanges
+$\ve{a} \leftrightarrow \ve{b}$ and simultaneously exchanges
+$\ve{c} \leftrightarrow \ve{d}$, where
+$\{c,d\} = \{1,2,3,4\} \setminus \{a,b\}$. It fixes
+$\ve{5} = \vc{0}$. Since the vertices of a Kempe $(a,b)$-chain carry
+only colors $a$ and $b$, the exchange of $c$ and $d$ is vacuous on the
+chain, and $R_{ab}$ faithfully models the Kempe swap.
+\end{proposition}
+
+\begin{proof}
+The axis $\vc{n}_{ab}$ passes through both the midpoint of the
+edge $\ve{a}\ve{b}$ and the centroid (origin) of the tetrahedron.
+A $180^\circ$ rotation about this axis exchanges $\ve{a}$ and
+$\ve{b}$. Because the axis also passes through the midpoint of the
+opposite edge $\ve{c}\ve{d}$, the rotation simultaneously exchanges
+$\ve{c}$ and $\ve{d}$. Since $\ve{5} = \vc{0}$ lies on every axis
+through the origin, it is fixed. For an explicit check, take
+$a = 1$, $b = 2$: $\vc{n}_{12} = (1, 0, 0)$, and the rotation
+$R_{12} = \operatorname{diag}(1, -1, -1)$ sends
+$(1,1,1) \mapsto (1,-1,-1) = \ve{2}$ and
+$(-1,1,-1) \mapsto (-1,-1,1) = \ve{4}$. The other four cases
+follow by the symmetry of the tetrahedron. On a Kempe $(a,b)$-chain,
+only colors $a$ and $b$ appear, so the exchange of $c$ and $d$ is
+vacuous.
+\end{proof}
+
+The six Kempe swap types $\{(1,2), (1,3), (1,4), (2,3), (2,4),
+(3,4)\}$ pair into three complementary pairs — $(1,2)$ with $(3,4)$,
+$(1,3)$ with $(2,4)$, and $(1,4)$ with $(2,3)$ — sharing the same
+rotation axis. There are thus only three distinct $180^\circ$
+rotations, and they generate the Klein four-group
+$V_4 \cong \mathbb{Z}_2^2$ inside $\mathrm{SO}(3)$. As permutations
+of the color set $\{1,2,3,4\}$, however, the six Kempe swap types
+are the six transpositions in the symmetric group $S_4$, which
+generate $S_4$ in its entirety. We note that $S_4$ is the full
+symmetry group of the tetrahedron (including reflections); its
+rotation subgroup is $A_4$.
+
+\subsection{Magic Gem Covariance Energy}\label{sec:mg-energy}
+
+Inspired by the Magic Gem framework~\cite{mathewson2025}, we define a
+local covariance energy that measures the imbalance of the tetrahedral
+color vectors in each vertex neighborhood.
+
+\begin{definition}[Local Magic Gem energy]\label{def:mg-local}
+For a vertex $v$ with coloring $c$ and closed neighborhood
+$N[v] = \{v\} \cup \{u : u \sim v\}$, define
+\begin{equation}\label{eq:mg-local}
+  E_{\mathrm{MG}}(v, c) =
+  \left\lVert
+    \frac{1}{\abs{N[v]}} \sum_{u \in N[v]} \ve{c(u)}
+  \right\rVert^2.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Global Magic Gem energy]\label{def:mg-global}
+\begin{equation}\label{eq:mg-global}
+  E_{\mathrm{MG}}(G, c) = \sum_{v \in V} E_{\mathrm{MG}}(v, c).
+\end{equation}
+\end{definition}
+
+\begin{remark}\label{rem:mg-interp}
+$E_{\mathrm{MG}}(v, c) = 0$ if and only if the color vectors in the
+closed neighborhood of $v$ are ``balanced,'' i.e., their centroid is
+the origin. For a vertex of degree 3 colored with all four colors in
+its closed neighborhood, this is exactly satisfied. A vertex with
+color-5 neighbors contributes zero vectors to the
+centroid sum, which may increase or decrease $E_{\mathrm{MG}}$
+depending on the existing color distribution. Thus $E_{\mathrm{MG}}$
+penalizes both low chromatic diversity
+(many neighbors sharing the same color) and the presence of the fifth
+color.
+\end{remark}
+
+\subsection{Anti-Ferromagnetic Potts Hamiltonian}\label{sec:potts}
+
+\begin{definition}[Extended Potts Hamiltonian]\label{def:potts-ham}
+\begin{equation}\label{eq:potts-ham}
+  H(c) = J \sum_{(u,v) \in E} \delta_{c(u), c(v)}
+         + h \sum_{v \in V} \delta_{c(v), 5},
+\end{equation}
+where $J > 0$ is the anti-ferromagnetic coupling and $h > 0$ is the
+fifth-color penalty field. (We note the sign convention differs from
+Section~\ref{sec:phys-models}, which uses $H = -J\sum\delta$ with
+$J < 0$; the two conventions agree: both penalize monochromatic edges.)
+\end{definition}
+
+For proper colorings, the first term vanishes identically ($J$-term
+$= 0$), so the Hamiltonian reduces to
+$H(c) = h \cdot \abs{\{v : c(v) = 5\}}$. The energy simply counts
+defects (color-5 vertices), weighted by $h$. A 4-coloring has $H = 0$.
+
+\begin{remark}\label{rem:potts-chromatic}
+For the standard $q$-state anti-ferromagnetic Potts model (without
+the $h$-term), the zero-temperature partition function recovers the
+chromatic polynomial:
+\begin{equation}
+  P(G, q) = \lim_{\beta \to \infty} Z(G, q, \beta),
+    \qquad
+  Z = \sum_c e^{-\beta J \sum_{E} \delta_{c(u),c(v)}}.
+\end{equation}
+With the fifth-color penalty ($h > 0$), the zero-temperature limit
+of the extended partition function counts proper 4-colorings (only
+colors $1, \ldots, 4$), not the full chromatic polynomial in $q$.
+At finite temperature, $Z$ weights ``near-colorings'' by their defect
+density.
+\end{remark}
+
+\subsection{Electrostatic Charge Flow}\label{sec:electrostatic}
+
+We model the fifth color as a charge and study its electrostatic
+potential on the graph.
+
+\begin{definition}[Charge density and potential]\label{def:charge}
+Define the charge density $\rho \colon V \to \{0, 1\}$ by
+$\rho(v) = \delta_{c(v), 5}$. Let $L = D - A$ be the graph Laplacian,
+where $D$ is the degree matrix and $A$ is the adjacency matrix. The
+electrostatic potential is
+\begin{equation}\label{eq:potential}
+  \phi = L^+ \rho,
+\end{equation}
+where $L^+$ denotes the Moore-Penrose pseudoinverse.
+\end{definition}
+
+\begin{definition}[Discrete electric field magnitude]\label{def:e-field}
+The maximum discrete electric field magnitude at vertex $v$ is
+\begin{equation}\label{eq:e-field}
+  \mathcal{E}(v) = \max_{u \sim v} \abs{\phi(v) - \phi(u)},
+\end{equation}
+where $\phi = L^+ \rho$ is the electrostatic potential from
+Definition~\ref{def:charge}. (We write $\phi$ for the potential and
+$\mathcal{E}$ for the field to avoid notational clash with the vertex
+set $V$ and the energy functionals $E$.)
+\end{definition}
+
+The potential $\phi$ diffuses the charge density across the graph via
+the Laplacian, giving a smooth measure of how ``close'' each vertex is
+to color-5 defects. High $\mathcal{E}(v)$ indicates that $v$ sits at
+the boundary between a defect-rich and defect-poor region.
+
+\subsection{Surface Tension}\label{sec:surface-tension}
+
+Surface tension quantifies the boundary cost of a Kempe chain.
+
+\begin{definition}[Surface tension of a Kempe chain]\label{def:surface-tension}
+For a Kempe $(a,b)$-chain $K$ in coloring $c$, the \emph{surface
+tension} is
+\begin{equation}\label{eq:surface-tension}
+  \sigma(K) = \abs{\{(u, v) \in E : u \in K,\; v \notin K\}},
+\end{equation}
+the number of boundary edges. The \emph{normalized surface tension} is
+\begin{equation}\label{eq:normalized-st}
+  \bar{\sigma}(K) = \frac{\sigma(K)}{\abs{K}}.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Surface tension rigidity]\label{def:st-rigidity}
+For a coloring $c$ and color pair $(a,b)$, let
+$K_1, \ldots, K_m$ be the Kempe $(a,b)$-chains. The \emph{surface
+tension rigidity} is
+\begin{equation}\label{eq:st-rigidity}
+  \Gamma_{ab}(c) =
+  \operatorname{Var}\bigl(\bar{\sigma}(K_1), \ldots,
+  \bar{\sigma}(K_m)\bigr),
+\end{equation}
+where $\operatorname{Var}$ denotes the population variance. (We use
+$\Gamma$ rather than $\rho$ to avoid conflict with the charge density
+of Definition~\ref{def:charge}.) For $m = 1$ (a single chain),
+$\Gamma_{ab}(c) = 0$ by convention.
+\end{definition}
+
+\begin{remark}\label{rem:st-interpretation}
+$\Gamma_{ab}(c) = 0$ means all chains in the $(a,b)$-subgraph have the
+same normalized boundary cost — they are ``equally rigid.'' We will see
+(Section~\ref{sec:results}) that this rigidity is a signature of
+merge-prone configurations.
+\end{remark}
+
+\subsection{Local Entropy}\label{sec:entropy}
+
+\begin{definition}[Local chromatic entropy]\label{def:entropy}
+For a vertex $v$ with $\deg(v) = d$, define the local entropy
+\begin{equation}\label{eq:entropy}
+  S(v, c) = -\sum_{a=1}^{5} p_a \log p_a,
+  \qquad
+  p_a = \frac{\abs{\{u \sim v : c(u) = a\}}}{\deg(v)},
+\end{equation}
+with the convention $0 \log 0 = 0$. The global entropy is
+$S(G, c) = \sum_v S(v, c)$.
+\end{definition}
+
+High local entropy at $v$ means the colors of $v$'s neighbors are
+uniformly distributed; low entropy means they are concentrated on one
+or two colors. We note that this definition uses the open neighborhood
+$N(v)$ (unlike the Magic Gem energy, which uses the closed
+neighborhood $N[v]$), and that $p_{c(v)} = 0$ always holds for proper
+colorings, so the effective sum has at most $k - 1$ nonzero terms.
+We will see that unsafe colorings tend to have higher local entropy
+near the critical vertex.
+
+\subsection{Chain Ruggedness (Activation Energy)}
+\label{sec:ruggedness}
+
+\begin{definition}[Chain ruggedness]\label{def:ruggedness}
+The \emph{ruggedness} (or activation energy) of a Kempe chain $K$ is
+\begin{equation}\label{eq:ruggedness}
+  \mathcal{A}(K) = \frac{\sigma(K)}{\abs{K}^{2/3}},
+\end{equation}
+where $\sigma(K)$ is the surface tension
+(Definition~\ref{def:surface-tension}). We caution that the exponent
+$2/3$ is borrowed from the classical isoperimetric inequality in
+$\mathbb{R}^3$ ($S \geq C \cdot V^{2/3}$) and has no rigorous
+justification for general graphs: for planar graphs, the discrete
+isoperimetric exponent is $1/2$, and for arbitrary graphs it depends
+on the expansion properties. The choice of $2/3$ is a modeling
+decision motivated by the three-dimensional tetrahedral embedding
+of the color space, not by the graph's intrinsic geometry.
+\end{definition}
+
+By analogy with protein folding~\cite{levinthal1969}, a high activation
+energy corresponds to a large barrier that must be overcome to
+reconfigure the chain. Low ruggedness chains are ``floppy'' and easily
+swapped; high ruggedness chains resist reconfiguration.
+
+\subsection{Defect Interaction Energy}\label{sec:defect-energy}
+
+\begin{definition}[Defect interaction]\label{def:defect-interaction}
+For a coloring $c$ and decay parameter $\lambda > 0$, the defect
+interaction energy is
+\begin{equation}\label{eq:defect-interaction}
+  E_{\text{defect}}(c) =
+  \sum_{\substack{\{v, w\} \subseteq V,\; v \neq w \\ c(v) = c(w) = 5}}
+  e^{-\lambda \cdot d_G(v, w)},
+\end{equation}
+where the sum is over unordered pairs of distinct vertices and
+$d_G(v, w)$ is the graph distance.
+\end{definition}
+
+This Yukawa-type interaction penalizes clustered defects.
+For proper colorings, no two color-5 vertices are adjacent (that would
+violate properness), so the minimum pairwise distance is $2$ and the
+strongest interaction is $e^{-2\lambda}$.
+Concentrated defects create localized stress that may force unsafe
+swaps during reconfiguration.
+
+\subsection{Computational Pipeline}\label{sec:pipeline}
+
+All energy functionals were computed on the complete set of proper
+5-colorings of every planar triangulation on $n \leq 9$ vertices.
+Triangulations were generated using the plantri canonical construction
+path method (Whitney's theorem guarantees a unique planar embedding for
+3-connected graphs), stored as adjacency lists, and verified against
+known counts (OEIS A000109). Proper colorings were enumerated
+via exhaustive backtracking with symmetry reduction. Kempe chains,
+reconfiguration graphs, and BFS distances were computed using standard
+graph algorithms implemented in Python with NetworkX. The full
+enumeration at $n = 9$ (50 triangulations, ${\sim}282{,}300$
+colorings) completes in approximately four minutes on a single core.
+Extension to $n = 10$ (233 triangulations, ${\sim}2{,}000{,}000$
+colorings) requires approximately two hours.

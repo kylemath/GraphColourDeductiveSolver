@@ -1,0 +1,238 @@
+{
+  "num_patterns": 1855,
+  "num_candidate_rules": 46,
+  "candidate_rule_names": [
+    "A: 1/20 \u2192 deg=6",
+    "A: 1/10 \u2192 deg=6",
+    "A: 1/5 \u2192 deg=6",
+    "A: 1/20 \u2192 deg=7",
+    "A: 1/10 \u2192 deg=7",
+    "A: 1/5 \u2192 deg=7",
+    "A: 1/20 \u2192 deg=8",
+    "A: 1/10 \u2192 deg=8",
+    "A: 1/5 \u2192 deg=8",
+    "A: 1/20 \u2192 deg=9",
+    "A: 1/10 \u2192 deg=9",
+    "A: 1/5 \u2192 deg=9",
+    "A: 1/20 \u2192 deg=10",
+    "A: 1/10 \u2192 deg=10",
+    "A: 1/5 \u2192 deg=10",
+    "A: 1/20 \u2192 deg=11",
+    "A: 1/10 \u2192 deg=11",
+    "A: 1/5 \u2192 deg=11",
+    "A: 1/20 \u2192 deg=12",
+    "A: 1/10 \u2192 deg=12",
+    "A: 1/5 \u2192 deg=12",
+    "B: 1/20 \u2192 deg>=7",
+    "B: 1/10 \u2192 deg>=7",
+    "B: 1/5 \u2192 deg>=7",
+    "B: 1/20 \u2192 deg>=8",
+    "B: 1/10 \u2192 deg>=8",
+    "B: 1/5 \u2192 deg>=8",
+    "B: 1/20 \u2192 deg>=9",
+    "B: 1/10 \u2192 deg>=9",
+    "B: 1/5 \u2192 deg>=9",
+    "C: 1/20 \u2192 flanked-6",
+    "C: 1/20 \u2192 double-flanked-6",
+    "C: 1/10 \u2192 flanked-6",
+    "C: 1/10 \u2192 double-flanked-6",
+    "D: 1/20 \u2192 major when >=2 major",
+    "D: 1/10 \u2192 major when >=2 major",
+    "D: 1/20 \u2192 major when >=3 major",
+    "D: 1/10 \u2192 major when >=3 major",
+    "D: 1/20 \u2192 major when >=4 major",
+    "D: 1/10 \u2192 major when >=4 major",
+    "D: 1/20 \u2192 deg6 when >=1 major",
+    "D: 1/10 \u2192 deg6 when >=1 major",
+    "D: 1/20 \u2192 deg6 when >=2 major",
+    "D: 1/10 \u2192 deg6 when >=2 major",
+    "D: 1/20 \u2192 deg6 when >=3 major",
+    "D: 1/10 \u2192 deg6 when >=3 major"
+  ],
+  "greedy_trail": [
+    {
+      "step": 1,
+      "rule": "B: 1/5 \u2192 deg>=7",
+      "num_active": 1,
+      "unavoidable": 967
+    },
+    {
+      "step": 2,
+      "rule": "A: 1/5 \u2192 deg=6",
+      "num_active": 2,
+      "unavoidable": 0
+    }
+  ],
+  "pareto_frontier": [
+    {
+      "rules": 0,
+      "unavoidable": 1855
+    },
+    {
+      "rules": 1,
+      "unavoidable": 967
+    },
+    {
+      "rules": 2,
+      "unavoidable": 0
+    }
+  ],
+  "z3_results": {
+    "3": {
+      "status": "sat",
+      "active_rules": [
+        2,
+        5,
+        26
+      ],
+      "active_rule_names": [
+        "A: 1/5 \u2192 deg=6",
+        "A: 1/5 \u2192 deg=7",
+        "B: 1/5 \u2192 deg>=8"
+      ],
+      "num_active": 3,
+      "unavoidable_count": 0,
+      "elapsed": 0.14969801902770996
+    },
+    "5": {
+      "status": "sat",
+      "active_rules": [
+        2,
+        4,
+        5,
+        17,
+        26
+      ],
+      "active_rule_names": [
+        "A: 1/5 \u2192 deg=6",
+        "A: 1/10 \u2192 deg=7",
+        "A: 1/5 \u2192 deg=7",
+        "A: 1/5 \u2192 deg=11",
+        "B: 1/5 \u2192 deg>=8"
+      ],
+      "num_active": 5,
+      "unavoidable_count": 0,
+      "elapsed": 0.6382200717926025
+    },
+    "8": {
+      "status": "sat",
+      "active_rules": [
+        2,
+        8,
+        11,
+        20,
+        23,
+        38,
+        39,
+        45
+      ],
+      "active_rule_names": [
+        "A: 1/5 \u2192 deg=6",
+        "A: 1/5 \u2192 deg=8",
+        "A: 1/5 \u2192 deg=9",
+        "A: 1/5 \u2192 deg=12",
+        "B: 1/5 \u2192 deg>=7",
+        "D: 1/20 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 deg6 when >=3 major"
+      ],
+      "num_active": 8,
+      "unavoidable_count": 0,
+      "elapsed": 0.21481108665466309
+    },
+    "10": {
+      "status": "sat",
+      "active_rules": [
+        2,
+        5,
+        6,
+        8,
+        11,
+        20,
+        26,
+        38,
+        39,
+        45
+      ],
+      "active_rule_names": [
+        "A: 1/5 \u2192 deg=6",
+        "A: 1/5 \u2192 deg=7",
+        "A: 1/20 \u2192 deg=8",
+        "A: 1/5 \u2192 deg=8",
+        "A: 1/5 \u2192 deg=9",
+        "A: 1/5 \u2192 deg=12",
+        "B: 1/5 \u2192 deg>=8",
+        "D: 1/20 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 deg6 when >=3 major"
+      ],
+      "num_active": 10,
+      "unavoidable_count": 0,
+      "elapsed": 0.20780277252197266
+    },
+    "15": {
+      "status": "sat",
+      "active_rules": [
+        2,
+        5,
+        6,
+        8,
+        10,
+        11,
+        20,
+        26,
+        38,
+        39,
+        45
+      ],
+      "active_rule_names": [
+        "A: 1/5 \u2192 deg=6",
+        "A: 1/5 \u2192 deg=7",
+        "A: 1/20 \u2192 deg=8",
+        "A: 1/5 \u2192 deg=8",
+        "A: 1/10 \u2192 deg=9",
+        "A: 1/5 \u2192 deg=9",
+        "A: 1/5 \u2192 deg=12",
+        "B: 1/5 \u2192 deg>=8",
+        "D: 1/20 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 deg6 when >=3 major"
+      ],
+      "num_active": 11,
+      "unavoidable_count": 0,
+      "elapsed": 0.19664502143859863
+    },
+    "None": {
+      "status": "sat",
+      "active_rules": [
+        2,
+        5,
+        6,
+        8,
+        10,
+        11,
+        20,
+        26,
+        38,
+        39,
+        45
+      ],
+      "active_rule_names": [
+        "A: 1/5 \u2192 deg=6",
+        "A: 1/5 \u2192 deg=7",
+        "A: 1/20 \u2192 deg=8",
+        "A: 1/5 \u2192 deg=8",
+        "A: 1/10 \u2192 deg=9",
+        "A: 1/5 \u2192 deg=9",
+        "A: 1/5 \u2192 deg=12",
+        "B: 1/5 \u2192 deg>=8",
+        "D: 1/20 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 major when >=4 major",
+        "D: 1/10 \u2192 deg6 when >=3 major"
+      ],
+      "num_active": 11,
+      "unavoidable_count": 0,
+      "elapsed": 0.19541716575622559
+    }
+  }
+}

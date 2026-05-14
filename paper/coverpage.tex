@@ -1,0 +1,47 @@
+% coverpage.tex — Title, author, abstract, classification
+
+\title{\textbf{Physical Energy Functionals for Kempe Chain Reconfiguration:\\
+Spin Glasses, Magic Gems, and the Four Colour Theorem}\\[1em]
+\large \today}
+
+\author{Kyle Elliott Mathewson}
+
+\date{}
+
+\maketitle
+
+\begin{abstract}
+We introduce physical energy functionals for the Kempe chain
+reconfiguration graph of planar triangulations, drawing on
+anti-ferromagnetic Potts models, polyhedral covariance (Magic Gems),
+electrostatic charge flow, and protein folding energy landscapes. By
+embedding the four colors at the vertices of a regular tetrahedron in
+$\mathbb{R}^3$ and assigning the fifth color to the centroid, each Kempe
+$(a,b)$-swap becomes a $180^\circ$ rotation in $\mathrm{SO}(3)$,
+linking the constructive Four Colour Theorem to topological quantum
+field theory. We define eight energy functionals (including Magic Gem
+covariance, local entropy, surface tension rigidity, and defect
+interaction) and evaluate them on the first known counterexamples to
+BFS-optimal avoidance (Conjecture~5.5) discovered at $n = 9$ vertices.
+Three principal findings emerge: (1)~local entropy cleanly discriminates
+safe from unsafe reconfiguration paths ($\Delta = +0.271$); (2)~Magic
+Gem energy trajectories expose kinetic trap structure analogous to
+protein misfolding, with greedy descent leading to merge-prone basins;
+and (3)~surface tension rigidity (the variance of normalized boundary
+size across Kempe chains) provides a combinatorial signature of
+merge-prone configurations. We formalize these observations as the
+Surface Tension Rigidity Conjecture, which we note was subsequently
+falsified at $n \geq 10$, though the local entropy and kinetic trap
+signatures persist. We discuss connections to the Penrose evaluation,
+sheaf cohomology, chromatic polynomials, and the discharging method.
+\end{abstract}
+
+\vspace{1em}
+\noindent\textbf{MSC 2020:} 05C15 (primary), 82B20 (secondary).\\
+\noindent\textbf{Keywords:} Four Colour Theorem, Kempe chains, reconfiguration graph, Potts model, energy functional, Magic Gems, surface tension.
+
+\vspace{0.5em}
+\noindent\textbf{Code availability:} All computational code (Python, NetworkX) is available at \url{https://github.com/kylemathewson/KempeReconfigurationEnergy}. The complete enumeration pipeline for planar triangulations through $n = 10$ is in \texttt{compute/kempe/}.
+
+\thispagestyle{empty}
+\newpage

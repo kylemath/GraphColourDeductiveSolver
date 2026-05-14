@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Four Colour Theorem — An Interactive Exploration</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>The Four Colour Theorem</h1>
+    <p class="subtitle">An Interactive Step-by-Step Exploration</p>
+  </header>
+
+  <nav id="tab-bar" role="tablist" aria-label="Main sections">
+    <button class="tab active" data-tab="intro" role="tab" aria-selected="true">1. The Problem</button>
+    <button class="tab" data-tab="maps" role="tab">2. Maps &amp; Graphs</button>
+    <button class="tab" data-tab="euler" role="tab">3. Euler &amp; Bounds</button>
+    <button class="tab" data-tab="history" role="tab">4. Historical Journey</button>
+    <button class="tab" data-tab="kempe" role="tab">5. Kempe Chains</button>
+    <button class="tab" data-tab="proof" role="tab">6. The Proof</button>
+    <button class="tab" data-tab="modern" role="tab">7. Modern Advances</button>
+    <button class="tab" data-tab="interactive" role="tab">8. Try It Yourself</button>
+  </nav>
+
+  <!-- ===== TAB 1: INTRODUCTION ===== -->
+  <section id="tab-intro" class="tab-panel active" role="tabpanel">
+    <div class="panel-content">
+      <h2>Framing the Problem</h2>
+      <div class="card highlight">
+        <h3>The Four Colour Theorem</h3>
+        <blockquote>
+          Every map drawn on a plane (or equivalently, on a sphere) can be coloured
+          using at most <strong>four colours</strong> such that no two adjacent regions
+          — regions sharing a common boundary segment, not just a point — have the same colour.
+        </blockquote>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Formal Statement</h3>
+          <p>
+            For every planar graph <em>G</em>:
+          </p>
+          <div class="math-block">&chi;(G) &le; 4</div>
+          <p>
+            where &chi;(G) denotes the <strong>chromatic number</strong> — the
+            minimum number of colours needed to properly colour the vertices of <em>G</em>.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Key Definitions</h3>
+          <table class="def-table">
+            <tr><td><strong>Planar Graph</strong></td><td>A graph that can be embedded in the plane without edge crossings</td></tr>
+            <tr><td><strong>Chromatic Number</strong></td><td>&chi;(G) = minimum colours for a proper vertex colouring</td></tr>
+            <tr><td><strong>Proper Colouring</strong></td><td>No two adjacent vertices share the same colour</td></tr>
+            <tr><td><strong>k-colourable</strong></td><td>A graph admitting a proper colouring with at most k colours</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card demo-card">
+        <h3>See It in Action</h3>
+        <p>Click the regions of this simple map to colour them. Can you do it with only four colours?</p>
+        <div class="demo-area">
+          <canvas id="intro-map-canvas" width="600" height="400"></canvas>
+          <div class="demo-controls">
+            <span class="label">Pick a colour:</span>
+            <button class="colour-btn" data-colour="0" style="background:#e74c3c;" title="Red"></button>
+            <button class="colour-btn" data-colour="1" style="background:#3498db;" title="Blue"></button>
+            <button class="colour-btn" data-colour="2" style="background:#2ecc71;" title="Green"></button>
+            <button class="colour-btn" data-colour="3" style="background:#f1c40f;" title="Yellow"></button>
+            <button class="btn-sm" id="intro-reset">Reset</button>
+            <button class="btn-sm" id="intro-auto">Auto-Colour</button>
+          </div>
+          <p class="demo-status" id="intro-status"></p>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <span></span>
+        <button class="btn-next" data-next="maps">Next: Maps &amp; Graphs &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAB 2: MAPS TO GRAPHS ===== -->
+  <section id="tab-maps" class="tab-panel" role="tabpanel">
+    <div class="panel-content">
+      <h2>From Maps to Graphs</h2>
+
+      <div class="card">
+        <h3>The Dual Graph</h3>
+        <p>
+          Every map can be converted to a <strong>dual graph</strong>:
+        </p>
+        <ul>
+          <li>Each region becomes a <strong>vertex</strong></li>
+          <li>Two vertices are connected by an <strong>edge</strong> if and only if their regions share a boundary</li>
+        </ul>
+        <p>
+          This transformation is the bridge between cartography and graph theory.
+          Colouring the map is equivalent to colouring the vertices of the dual graph.
+        </p>
+      </div>
+
+      <div class="card demo-card">
+        <h3>Interactive: Map &harr; Dual Graph</h3>
+        <p>Watch how a map transforms into its dual graph. Click <strong>Step</strong> to advance.</p>
+        <div class="demo-area">
+          <div class="dual-canvases">
+            <div>
+              <h4>Map</h4>
+              <canvas id="dual-map-canvas" width="360" height="320"></canvas>
+            </div>
+            <div class="arrow-col">&rArr;</div>
+            <div>
+              <h4>Dual Graph</h4>
+              <canvas id="dual-graph-canvas" width="360" height="320"></canvas>
+            </div>
+          </div>
+          <div class="demo-controls">
+            <button class="btn-sm" id="dual-step">Step</button>
+            <button class="btn-sm" id="dual-reset">Reset</button>
+            <button class="btn-sm" id="dual-auto">Auto-Play</button>
+          </div>
+          <p class="demo-status" id="dual-status">Click "Step" to begin the transformation.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Planarity</h3>
+        <p>
+          A graph is <strong>planar</strong> if it can be drawn in the plane without edge crossings.
+          The <strong>Kuratowski-Wagner Theorem</strong> states that a graph is planar if and only if
+          it does not contain K<sub>5</sub> (the complete graph on 5 vertices) or K<sub>3,3</sub>
+          (the complete bipartite graph on 3+3 vertices) as a <em>minor</em>.
+        </p>
+        <div class="mini-figures">
+          <div>
+            <canvas id="k5-canvas" width="180" height="180"></canvas>
+            <p class="caption">K<sub>5</sub> — not planar</p>
+          </div>
+          <div>
+            <canvas id="k33-canvas" width="180" height="180"></canvas>
+            <p class="caption">K<sub>3,3</sub> — not planar</p>
+          </div>
+          <div>
+            <canvas id="k4-canvas" width="180" height="180"></canvas>
+            <p class="caption">K<sub>4</sub> — planar</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-prev" data-next="intro">&larr; Previous</button>
+        <button class="btn-next" data-next="euler">Next: Euler &amp; Bounds &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAB 3: EULER & BOUNDS ===== -->
+  <section id="tab-euler" class="tab-panel" role="tabpanel">
+    <div class="panel-content">
+      <h2>Euler's Formula &amp; Colour Bounds</h2>
+
+      <div class="two-col">
+        <div class="card highlight">
+          <h3>Euler's Formula</h3>
+          <div class="math-block">V &minus; E + F = 2</div>
+          <p>For any connected planar graph embedded in the plane:</p>
+          <ul>
+            <li><strong>V</strong> = number of vertices</li>
+            <li><strong>E</strong> = number of edges</li>
+            <li><strong>F</strong> = number of faces (including the outer face)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Key Corollary</h3>
+          <p>For a simple planar graph with V &ge; 3:</p>
+          <div class="math-block">E &le; 3V &minus; 6</div>
+          <p>
+            This implies every planar graph has a vertex of degree at most 5.
+            This seemingly small fact is the foundation of every proof of the Four Colour Theorem.
+          </p>
+        </div>
+      </div>
+
+      <div class="card demo-card">
+        <h3>Interactive: Verify Euler's Formula</h3>
+        <p>Select a planar graph and see Euler's formula in action.</p>
+        <div class="demo-area">
+          <div class="euler-selector">
+            <label for="euler-graph-select">Graph:</label>
+            <select id="euler-graph-select">
+              <option value="tetrahedron">Tetrahedron (K₄)</option>
+              <option value="cube">Cube</option>
+              <option value="octahedron">Octahedron</option>
+              <option value="dodecahedron">Dodecahedron</option>
+              <option value="icosahedron">Icosahedron</option>
+            </select>
+          </div>
+          <canvas id="euler-canvas" width="400" height="350"></canvas>
+          <div id="euler-stats" class="stats-grid">
+            <!-- filled by JS -->
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>The Five Colour Theorem (Heawood, 1890)</h3>
+        <p>
+          Before the Four Colour Theorem was proven, <strong>Percy Heawood</strong> proved
+          every planar graph is <strong>5-colourable</strong>. The proof is elegant and uses induction:
+        </p>
+        <ol class="proof-steps">
+          <li>Every planar graph has a vertex <em>v</em> of degree &le; 5 (from Euler's formula).</li>
+          <li>Remove <em>v</em>; colour the remaining graph by induction.</li>
+          <li>If deg(<em>v</em>) &le; 4, there is a spare colour for <em>v</em>.</li>
+          <li>If deg(<em>v</em>) = 5, use a <strong>Kempe chain argument</strong> to free up a colour.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>Heawood Conjecture for Higher Genus Surfaces</h3>
+        <p>For a surface of genus <em>g</em> &gt; 0, the maximum chromatic number is:</p>
+        <div class="math-block">H(g) = &lfloor;(7 + &radic;(1 + 48g)) / 2&rfloor;</div>
+        <table class="def-table">
+          <tr><th>Surface</th><th>Genus g</th><th>H(g)</th></tr>
+          <tr><td>Sphere</td><td>0</td><td>4 (Four Colour Theorem)</td></tr>
+          <tr><td>Torus</td><td>1</td><td>7</td></tr>
+          <tr><td>Double Torus</td><td>2</td><td>8</td></tr>
+          <tr><td>Triple Torus</td><td>3</td><td>9</td></tr>
+        </table>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-prev" data-next="maps">&larr; Previous</button>
+        <button class="btn-next" data-next="history">Next: Historical Journey &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAB 4: HISTORY ===== -->
+  <section id="tab-history" class="tab-panel" role="tabpanel">
+    <div class="panel-content">
+      <h2>A Historical Journey</h2>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1852</div>
+          <div class="tl-body">
+            <h4>Francis Guthrie's Conjecture</h4>
+            <p>
+              While colouring a map of the counties of England, Francis Guthrie noticed
+              that four colours seemed to suffice. He posed the question to his brother
+              Frederick, who passed it to Augustus De Morgan.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1879</div>
+          <div class="tl-body">
+            <h4>Kempe's "Proof"</h4>
+            <p>
+              Alfred Kempe published what he believed was a complete proof. Though later
+              shown to be flawed, he introduced the crucial concept of <strong>Kempe chains</strong>
+              — maximal connected subgraphs using exactly two colours — which remains central
+              to every proof of the theorem.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1890</div>
+          <div class="tl-body">
+            <h4>Heawood Finds the Error</h4>
+            <p>
+              Percy Heawood identified the flaw in Kempe's argument: the Kempe chain
+              swapping procedure can interfere with itself. He salvaged the method to prove
+              the <strong>Five Colour Theorem</strong> instead.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1913</div>
+          <div class="tl-body">
+            <h4>Birkhoff Introduces Reducibility</h4>
+            <p>
+              George Birkhoff developed the concept of <strong>reducible configurations</strong>
+              — subgraph patterns that cannot appear in a minimal counterexample.
+              This became one of the two pillars of the eventual proof.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1922</div>
+          <div class="tl-body">
+            <h4>Franklin's Partial Result</h4>
+            <p>
+              Philip Franklin proved the Four Colour Theorem holds for all maps with at most 25 regions,
+              extending the verified frontier.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1969</div>
+          <div class="tl-body">
+            <h4>Heesch's Discharging Method</h4>
+            <p>
+              Heinrich Heesch developed the <strong>discharging method</strong>, the second
+              pillar of the proof. By assigning "charges" to vertices and redistributing them,
+              one can show that certain configurations are <em>unavoidable</em>.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item highlight-tl">
+          <div class="tl-year">1976</div>
+          <div class="tl-body">
+            <h4>Appel &amp; Haken: The Computer-Assisted Proof</h4>
+            <p>
+              Kenneth Appel and Wolfgang Haken proved the theorem — the <strong>first major
+              theorem requiring computer assistance</strong>. They showed that 1,476 configurations
+              form an unavoidable set, and each is reducible. The computer checked each configuration
+              over approximately 1,200 hours of computation.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1997</div>
+          <div class="tl-body">
+            <h4>Robertson, Sanders, Seymour &amp; Thomas</h4>
+            <p>
+              A greatly simplified proof using only <strong>633 configurations</strong> and
+              <strong>32 discharging rules</strong> (vs. 487 in the original). Computer
+              verification took roughly 3 hours on 1990s hardware.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2005</div>
+          <div class="tl-body">
+            <h4>Gonthier's Formal Verification in Coq</h4>
+            <p>
+              Georges Gonthier produced a fully machine-verified proof using the <strong>Coq
+              proof assistant</strong>. Every logical step is checked by the computer, making the
+              proof a verifiable <em>certificate</em> that eliminates concerns about programming bugs.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-prev" data-next="euler">&larr; Previous</button>
+        <button class="btn-next" data-next="kempe">Next: Kempe Chains &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAB 5: KEMPE CHAINS ===== -->
+  <section id="tab-kempe" class="tab-panel" role="tabpanel">
+    <div class="panel-content">
+      <h2>Kempe Chains</h2>
+
+      <div class="card">
+        <h3>What Is a Kempe Chain?</h3>
+        <blockquote>
+          A <strong>Kempe chain</strong> is a maximal connected subgraph containing only
+          vertices of two specific colours.
+        </blockquote>
+        <p>
+          Swapping the two colours within a Kempe chain always preserves the validity of the colouring.
+          This operation is the engine behind both the Five Colour Theorem proof and the
+          eventual Four Colour Theorem proof.
+        </p>
+      </div>
+
+      <div class="card demo-card">
+        <h3>Interactive: Kempe Chain Swap</h3>
+        <p>
+          Below is a coloured graph. Pick two colours to identify a Kempe chain, then click a vertex
+          to highlight the chain containing it. Press <strong>Swap</strong> to flip the colours.
+        </p>
+        <div class="demo-area">
+          <canvas id="kempe-canvas" width="600" height="420"></canvas>
+          <div class="demo-controls">
+            <span class="label">Chain colours:</span>
+            <select id="kempe-c1">
+              <option value="0">Red</option>
+              <option value="1" selected>Blue</option>
+              <option value="2">Green</option>
+              <option value="3">Yellow</option>
+            </select>
+            <span>&amp;</span>
+            <select id="kempe-c2">
+              <option value="0">Red</option>
+              <option value="1">Blue</option>
+              <option value="2" selected>Green</option>
+              <option value="3">Yellow</option>
+            </select>
+            <button class="btn-sm" id="kempe-find">Highlight Chain</button>
+            <button class="btn-sm" id="kempe-swap">Swap</button>
+            <button class="btn-sm" id="kempe-reset">Reset</button>
+          </div>
+          <p class="demo-status" id="kempe-status">Select two colours then click a vertex to find a Kempe chain.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Why Kempe's Original Proof Fails</h3>
+        <p>
+          Kempe's 1879 argument for the Four Colour Theorem required performing
+          <em>two</em> Kempe chain swaps when a degree-5 vertex was encountered.
+          The error: the second swap can undo the effect of the first, because the
+          two chains may share vertices. Heawood noticed this subtle interference in 1890.
+        </p>
+        <div class="insight">
+          <strong>Key Insight:</strong> For five colours, only one swap is ever needed,
+          which is why the Five Colour Theorem proof works. For four colours, we need the
+          full machinery of reducibility and discharging.
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-prev" data-next="history">&larr; Previous</button>
+        <button class="btn-next" data-next="proof">Next: The Proof &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAB 6: THE PROOF ===== -->
+  <section id="tab-proof" class="tab-panel" role="tabpanel">
+    <div class="panel-content">
+      <h2>The Appel-Haken Proof Structure</h2>
+
+      <div class="card highlight">
+        <h3>Proof by Contradiction</h3>
+        <ol class="proof-steps large">
+          <li><strong>Assume</strong> a minimal counterexample <em>G</em> exists — the smallest planar graph that is not 4-colourable.</li>
+          <li><strong>Discharging</strong> shows <em>G</em> must contain one of ~1,500 specific configurations.</li>
+          <li><strong>Reducibility</strong> shows each such configuration cannot appear in a minimal counterexample.</li>
+          <li><strong>Contradiction</strong>: <em>G</em> cannot exist. Every planar graph is 4-colourable.</li>
+        </ol>
+      </div>
+
+      <div class="three-col">
+        <div class="card">
+          <h3>1. Discharging</h3>
+          <p>
+            Assign an initial "charge" to each vertex:
+          </p>
+          <div class="math-block">charge(v) = 6 &minus; deg(v)</div>
+          <p>
+            By Euler's formula, the total charge is always positive (equals 12 for maximal planar graphs).
+            Discharging rules redistribute charge without changing the total.
+            After redistribution, any vertex still holding positive charge must contain
+            a specific configuration from the unavoidable set.
+          </p>
+        </div>
+        <div class="card">
+          <h3>2. Unavoidable Sets</h3>
+          <p>
+            An <strong>unavoidable set</strong> is a collection of configurations such that
+            <em>every</em> planar graph must contain at least one.
+          </p>
+          <p>
+            The discharging argument constructs such a set. Appel-Haken used 1,476 configurations;
+            RSST later reduced this to 633.
+          </p>
+        </div>
+        <div class="card">
+          <h3>3. Reducibility</h3>
+          <p>
+            A configuration is <strong>reducible</strong> if any graph containing it cannot
+            be a minimal counterexample. This is checked by verifying that any 4-colouring
+            of the boundary ring can be extended to the interior.
+          </p>
+          <p>
+            For a ring of size <em>k</em>, up to 4<sup>k</sup> colourings must be checked —
+            this is where the computer is essential.
+          </p>
+        </div>
+      </div>
+
+      <div class="card demo-card">
+        <h3>Interactive: Discharging Visualisation</h3>
+        <p>
+          Watch how charges are assigned and redistributed on a planar graph.
+          Positive-charge vertices (green) must contain a reducible configuration.
+        </p>
+        <div class="demo-area">
+          <canvas id="discharge-canvas" width="600" height="400"></canvas>
+          <div class="demo-controls">
+            <button class="btn-sm" id="discharge-init">1. Assign Charges</button>
+            <button class="btn-sm" id="discharge-run">2. Discharge</button>
+            <button class="btn-sm" id="discharge-reset">Reset</button>
+          </div>
+          <p class="demo-status" id="discharge-status">Click "Assign Charges" to begin.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Computational Requirements</h3>
+        <table class="def-table">
+          <tr><th>Aspect</th><th>Appel-Haken (1976)</th><th>RSST (1997)</th></tr>
+          <tr><td>Configurations</td><td>1,476</td><td><strong>633</strong></td></tr>
+          <tr><td>Discharging Rules</td><td>487</td><td><strong>32</strong></td></tr>
+          <tr><td>Max Ring Size</td><td>14</td><td>14</td></tr>
+          <tr><td>Computer Time</td><td>~1,200 hours</td><td><strong>~3 hours</strong></td></tr>
+        </table>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-prev" data-next="kempe">&larr; Previous</button>
+        <button class="btn-next" data-next="modern">Next: Modern Advances &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAB 7: MODERN ADVANCES ===== -->
+  <section id="tab-modern" class="tab-panel" role="tabpanel">
+    <div class="panel-content">
+      <h2>Modern Advances</h2>
+
+      <div class="card">
+        <h3>Robertson-Sanders-Seymour-Thomas (1997)</h3>
+        <p>
+          The RSST proof was a major simplification. By carefully selecting configurations
+          and discharging rules, they reduced the proof's complexity dramatically:
+        </p>
+        <div class="comparison-bars">
+          <div class="bar-group">
+            <span class="bar-label">Configurations</span>
+            <div class="bar-track">
+              <div class="bar bar-ah" style="width:100%"><span>1,476</span></div>
+            </div>
+            <div class="bar-track">
+              <div class="bar bar-rsst" style="width:42.9%"><span>633</span></div>
+            </div>
+          </div>
+          <div class="bar-group">
+            <span class="bar-label">Discharging Rules</span>
+            <div class="bar-track">
+              <div class="bar bar-ah" style="width:100%"><span>487</span></div>
+            </div>
+            <div class="bar-track">
+              <div class="bar bar-rsst" style="width:6.6%"><span>32</span></div>
+            </div>
+          </div>
+          <div class="bar-group">
+            <span class="bar-label">Computer Hours</span>
+            <div class="bar-track">
+              <div class="bar bar-ah" style="width:100%"><span>1,200 h</span></div>
+            </div>
+            <div class="bar-track">
+              <div class="bar bar-rsst" style="width:0.25%"><span>3 h</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="legend">
+          <span class="legend-item"><span class="swatch bar-ah"></span> Appel-Haken (1976)</span>
+          <span class="legend-item"><span class="swatch bar-rsst"></span> RSST (1997)</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Formal Verification — Gonthier (2005)</h3>
+        <p>
+          Georges Gonthier used the <strong>Coq proof assistant</strong> with the
+          <strong>SSReflect</strong> extension to create a fully machine-verified proof.
+        </p>
+        <div class="verify-grid">
+          <div class="verify-item">
+            <div class="verify-icon">&#x2713;</div>
+            <h4>Coq Proof Assistant</h4>
+            <p>Interactive theorem prover with dependent types</p>
+          </div>
+          <div class="verify-item">
+            <div class="verify-icon">&#x2713;</div>
+            <h4>SSReflect</h4>
+            <p>Extension for small-scale reflection proofs</p>
+          </div>
+          <div class="verify-item">
+            <div class="verify-icon">&#x2713;</div>
+            <h4>Four Colour Library</h4>
+            <p>Complete formalisation of graph theory and the proof</p>
+          </div>
+          <div class="verify-item">
+            <div class="verify-icon">&#x2713;</div>
+            <h4>Machine Verification</h4>
+            <p>Every logical inference checked automatically</p>
+          </div>
+        </div>
+        <div class="insight">
+          <strong>Significance:</strong> The proof is now a mathematical <em>object</em>
+          that can be mechanically verified, eliminating all concerns about programming bugs
+          or human error in case analysis. No human-checkable proof exists to this day.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Practical Applications</h3>
+        <div class="app-grid">
+          <div class="app-item">
+            <div class="app-icon">&#x1F5FA;</div>
+            <h4>Map Colouring</h4>
+            <p>The original motivation — colouring geographic maps with minimal colours.</p>
+          </div>
+          <div class="app-item">
+            <div class="app-icon">&#x1F4BB;</div>
+            <h4>Register Allocation</h4>
+            <p>Compilers use graph colouring to assign variables to CPU registers.</p>
+          </div>
+          <div class="app-item">
+            <div class="app-icon">&#x1F4F6;</div>
+            <h4>Frequency Assignment</h4>
+            <p>Wireless networks assign frequencies to avoid interference between adjacent cells.</p>
+          </div>
+          <div class="app-item">
+            <div class="app-icon">&#x1F4C5;</div>
+            <h4>Scheduling</h4>
+            <p>Scheduling problems with conflict constraints map directly to graph colouring.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-prev" data-next="proof">&larr; Previous</button>
+        <button class="btn-next" data-next="interactive">Next: Try It Yourself &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAB 8: INTERACTIVE ===== -->
+  <section id="tab-interactive" class="tab-panel" role="tabpanel">
+    <div class="panel-content">
+      <h2>Try It Yourself</h2>
+
+      <div class="card demo-card">
+        <h3>Graph Colouring Playground</h3>
+        <p>
+          Choose a graph below, then colour it using the fewest colours.
+          The algorithm panel on the right shows how DSATUR would colour it optimally.
+        </p>
+        <div class="demo-area">
+          <div class="playground-controls">
+            <label for="playground-graph">Graph:</label>
+            <select id="playground-graph">
+              <option value="petersen">Petersen Graph</option>
+              <option value="cycle6">Cycle C₆</option>
+              <option value="k4">Complete K₄</option>
+              <option value="dodecahedron">Dodecahedron</option>
+              <option value="grid">4×4 Grid</option>
+              <option value="usa">US States (Western)</option>
+            </select>
+            <button class="btn-sm" id="playground-solve">DSATUR Solve</button>
+            <button class="btn-sm" id="playground-step">Step</button>
+            <button class="btn-sm" id="playground-clear">Clear Colours</button>
+          </div>
+          <div class="playground-area">
+            <div class="playground-canvas-wrap">
+              <canvas id="playground-canvas" width="700" height="500"></canvas>
+            </div>
+            <div class="playground-info" id="playground-info">
+              <h4>Graph Info</h4>
+              <div id="playground-stats"></div>
+              <h4>Algorithm Log</h4>
+              <div id="playground-log" class="algo-log"></div>
+            </div>
+          </div>
+          <div class="demo-controls">
+            <span class="label">Your colour:</span>
+            <button class="colour-btn active" data-colour="0" style="background:#e74c3c;" title="Red"></button>
+            <button class="colour-btn" data-colour="1" style="background:#3498db;" title="Blue"></button>
+            <button class="colour-btn" data-colour="2" style="background:#2ecc71;" title="Green"></button>
+            <button class="colour-btn" data-colour="3" style="background:#f1c40f;" title="Yellow"></button>
+          </div>
+          <p class="demo-status" id="playground-status">Select a graph and click on vertices to colour them.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Summary &amp; Key Takeaways</h3>
+        <div class="math-block" style="font-size:1.2rem;">Every planar graph G satisfies &chi;(G) &le; 4</div>
+        <table class="def-table">
+          <tr><th>Concept</th><th>Description</th></tr>
+          <tr><td>Planar Graph</td><td>Embeddable in plane without crossings</td></tr>
+          <tr><td>Chromatic Number</td><td>Minimum colours for proper vertex colouring</td></tr>
+          <tr><td>Kempe Chain</td><td>Maximal 2-coloured connected subgraph</td></tr>
+          <tr><td>Reducibility</td><td>Configuration cannot be in minimal counterexample</td></tr>
+          <tr><td>Unavoidability</td><td>Every planar graph contains some configuration from the set</td></tr>
+          <tr><td>Discharging</td><td>Charge redistribution proving unavoidability</td></tr>
+        </table>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-prev" data-next="modern">&larr; Previous</button>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Agent 1012 &mdash; Four Colour Theorem Interactive Demo &mdash; Graph Colouring Project</p>
+  </footer>
+
+  <script src="graph.js"></script>
+  <script src="animations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

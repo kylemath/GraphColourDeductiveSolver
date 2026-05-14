@@ -1,0 +1,454 @@
+/* app.js — State persistence, event wiring, detail panel, journal */
+
+/* ===== STATE MANAGEMENT ===== */
+const State = (() => {
+  const STORAGE_KEY = 'proofNavigator_tree';
+  const JOURNAL_KEY = 'proofNavigator_journal';
+  let tree = null;
+  let journal = [];
+
+  function init() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try { tree = JSON.parse(saved); } catch (e) { tree = JSON.parse(JSON.stringify(DEFAULT_TREE)); }
+    } else {
+      tree = JSON.parse(JSON.stringify(DEFAULT_TREE));
+    }
+    const savedJournal = localStorage.getItem(JOURNAL_KEY);
+    if (savedJournal) {
+      try { journal = JSON.parse(savedJournal); } catch (e) { journal = []; }
+    }
+  }
+
+  function save() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tree));
+    localStorage.setItem(JOURNAL_KEY, JSON.stringify(journal));
+  }
+
+  function reset() {
+    tree = JSON.parse(JSON.stringify(DEFAULT_TREE));
+    journal = [];
+    save();
+  }
+
+  function getTree() { return tree; }
+  function setTree(t) { tree = t; save(); }
+  function getJournal() { return journal; }
+
+  function addJournalEntry(action, nodeName) {
+    const entry = {
+      time: new Date().toISOString(),
+      action: action,
+      node: nodeName || ''
+    };
+    journal.unshift(entry);
+    if (journal.length > 500) journal.length = 500;
+    save();
+  }
+
+  function exportJSON() {
+    const data = { tree, journal, exportedAt: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'proof-navigator-' + new Date().toISOString().slice(0, 10) + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function importJSON(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (data.tree) { tree = data.tree; }
+        if (data.journal) { journal = data.journal; }
+        save();
+        location.reload();
+      } catch (err) {
+        alert('Invalid JSON file.');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  return { init, save, reset, getTree, setTree, getJournal, addJournalEntry, exportJSON, importJSON };
+})();
+
+
+/* ===== DETAIL PANEL ===== */
+const Detail = (() => {
+  let currentNode = null;
+  let autoSaveTimer = null;
+
+  function show(node) {
+    currentNode = node;
+    const empty = document.getElementById('detail-empty');
+    const content = document.getElementById('detail-content');
+    empty.hidden = true;
+    content.hidden = false;
+
+    document.getElementById('detail-title').textContent = node.title;
+    document.getElementById('detail-id').textContent = 'id: ' + node.id;
+    document.getElementById('detail-status').value = node.status;
+    document.getElementById('detail-statement').value = node.statement || '';
+    document.getElementById('detail-approach').value = node.approach || '';
+    document.getElementById('detail-kill').value = node.killCriteria || '';
+    document.getElementById('detail-evidence').value = node.evidence || '';
+
+    renderFiles(node);
+    renderNotes(node);
+    renderProgress(node);
+  }
+
+  function hide() {
+    currentNode = null;
+    document.getElementById('detail-empty').hidden = false;
+    document.getElementById('detail-content').hidden = true;
+  }
+
+  function getCurrent() { return currentNode; }
+
+  function renderFiles(node) {
+    const container = document.getElementById('detail-files');
+    container.innerHTML = '';
+    (node.files || []).forEach((f, i) => {
+      const div = document.createElement('div');
+      div.className = 'file-item';
+      div.innerHTML = '<span>' + escapeHtml(f) + '</span><button class="remove-btn" data-idx="' + i + '">&times;</button>';
+      div.querySelector('.remove-btn').addEventListener('click', () => {
+        node.files.splice(i, 1);
+        scheduleAutoSave();
+        renderFiles(node);
+      });
+      container.appendChild(div);
+    });
+  }
+
+  function renderNotes(node) {
+    const container = document.getElementById('detail-notes');
+    container.innerHTML = '';
+    (node.notes || []).forEach((n) => {
+      const div = document.createElement('div');
+      div.className = 'note-item';
+      const timeStr = new Date(n.time).toLocaleString();
+      div.innerHTML = '<div class="note-time">' + timeStr + '</div><div class="note-text">' + escapeHtml(n.text) + '</div>';
+      container.appendChild(div);
+    });
+  }
+
+  function renderProgress(node) {
+    const leaves = Tree.countLeaves(node);
+    const proved = Tree.countByStatus(node, 'proved');
+    const pct = leaves > 0 ? Math.round((proved / leaves) * 100) : 0;
+    document.getElementById('detail-progress-fill').style.width = pct + '%';
+    document.getElementById('detail-progress-text').textContent = proved + ' / ' + leaves + ' proved';
+  }
+
+  function scheduleAutoSave() {
+    if (autoSaveTimer) clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(() => {
+      State.save();
+      Tree.refreshTree();
+      updateGlobalProgress();
+    }, 400);
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  return { show, hide, getCurrent, renderFiles, renderNotes, renderProgress, scheduleAutoSave, escapeHtml };
+})();
+
+
+/* ===== JOURNAL ===== */
+function renderJournal() {
+  const container = document.getElementById('journal-entries');
+  container.innerHTML = '';
+  const entries = State.getJournal();
+  entries.slice(0, 100).forEach(e => {
+    const div = document.createElement('div');
+    div.className = 'journal-entry';
+    const timeStr = new Date(e.time).toLocaleString();
+    div.innerHTML = '<span class="je-time">' + timeStr + '</span> '
+      + '<span class="je-action">' + Detail.escapeHtml(e.action) + '</span>'
+      + (e.node ? ' <span class="je-node">' + Detail.escapeHtml(e.node) + '</span>' : '');
+    container.appendChild(div);
+  });
+}
+
+
+/* ===== GLOBAL PROGRESS ===== */
+function updateGlobalProgress() {
+  const tree = State.getTree();
+  const stats = Tree.getStats(tree);
+  const pct = stats.leaves > 0 ? Math.round((stats.proved / stats.leaves) * 100) : 0;
+  document.getElementById('global-progress-fill').style.width = pct + '%';
+  document.getElementById('global-progress-text').textContent =
+    stats.proved + ' / ' + stats.leaves + ' proved  (' + stats.total + ' nodes)';
+}
+
+
+/* ===== MODAL ===== */
+function showModal(title, onConfirm) {
+  document.getElementById('modal-overlay').hidden = false;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-node-title').value = '';
+  document.getElementById('modal-node-statement').value = '';
+  document.getElementById('modal-node-approach').value = '';
+  document.getElementById('modal-node-title').focus();
+
+  const confirmBtn = document.getElementById('modal-confirm');
+  const newConfirm = confirmBtn.cloneNode(true);
+  confirmBtn.parentNode.replaceChild(newConfirm, confirmBtn);
+  newConfirm.addEventListener('click', () => {
+    const t = document.getElementById('modal-node-title').value.trim();
+    if (!t) return;
+    onConfirm({
+      title: t,
+      statement: document.getElementById('modal-node-statement').value.trim(),
+      approach: document.getElementById('modal-node-approach').value.trim()
+    });
+    hideModal();
+  });
+}
+
+function hideModal() {
+  document.getElementById('modal-overlay').hidden = true;
+}
+
+function generateId() {
+  return 'n-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 6);
+}
+
+
+/* ===== INITIALIZATION ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  State.init();
+
+  Tree.setCallbacks(
+    (node) => { Detail.show(node); },
+    () => { State.save(); updateGlobalProgress(); }
+  );
+
+  // Initial render
+  const tree = State.getTree();
+  Tree.render(document.getElementById('tree-container'), tree, 0);
+  updateGlobalProgress();
+  renderJournal();
+
+  /* ---- Detail panel: auto-save on changes ---- */
+  const fieldMap = [
+    { el: 'detail-statement', key: 'statement' },
+    { el: 'detail-approach', key: 'approach' },
+    { el: 'detail-kill', key: 'killCriteria' },
+    { el: 'detail-evidence', key: 'evidence' }
+  ];
+
+  fieldMap.forEach(({ el, key }) => {
+    document.getElementById(el).addEventListener('input', () => {
+      const node = Detail.getCurrent();
+      if (!node) return;
+      node[key] = document.getElementById(el).value;
+      Detail.scheduleAutoSave();
+    });
+  });
+
+  // Title edit
+  document.getElementById('detail-title').addEventListener('blur', () => {
+    const node = Detail.getCurrent();
+    if (!node) return;
+    const newTitle = document.getElementById('detail-title').textContent.trim();
+    if (newTitle && newTitle !== node.title) {
+      State.addJournalEntry('Renamed to "' + newTitle + '"', node.title);
+      node.title = newTitle;
+      Detail.scheduleAutoSave();
+    }
+  });
+
+  // Status change
+  document.getElementById('detail-status').addEventListener('change', (e) => {
+    const node = Detail.getCurrent();
+    if (!node) return;
+    const oldStatus = node.status;
+    node.status = e.target.value;
+    State.addJournalEntry('Status: ' + oldStatus + ' \u2192 ' + node.status, node.title);
+    State.save();
+    Tree.refreshTree();
+    updateGlobalProgress();
+    renderJournal();
+    Detail.renderProgress(node);
+  });
+
+  // Add file
+  document.getElementById('btn-add-file').addEventListener('click', () => {
+    const node = Detail.getCurrent();
+    if (!node) return;
+    const input = document.getElementById('new-file-input');
+    const path = input.value.trim();
+    if (!path) return;
+    if (!node.files) node.files = [];
+    node.files.push(path);
+    input.value = '';
+    State.save();
+    Detail.renderFiles(node);
+  });
+
+  // Add note
+  const addNote = () => {
+    const node = Detail.getCurrent();
+    if (!node) return;
+    const input = document.getElementById('new-note-input');
+    const text = input.value.trim();
+    if (!text) return;
+    if (!node.notes) node.notes = [];
+    node.notes.unshift({ time: new Date().toISOString(), text });
+    input.value = '';
+    State.addJournalEntry('Note: ' + text.slice(0, 60), node.title);
+    State.save();
+    Detail.renderNotes(node);
+    renderJournal();
+  };
+
+  document.getElementById('btn-add-note').addEventListener('click', addNote);
+  document.getElementById('new-note-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') addNote();
+  });
+
+  // Add child
+  document.getElementById('btn-add-child').addEventListener('click', () => {
+    const node = Detail.getCurrent();
+    if (!node) return;
+    showModal('Add Sub-goal to "' + node.title + '"', (data) => {
+      const child = {
+        id: generateId(),
+        title: data.title,
+        statement: data.statement,
+        status: 'unstarted',
+        approach: data.approach,
+        killCriteria: '',
+        files: [],
+        notes: [],
+        evidence: '',
+        expanded: false,
+        children: []
+      };
+      Tree.addChild(node.id, child);
+      State.addJournalEntry('Created sub-goal "' + data.title + '"', node.title);
+      State.save();
+      Tree.refreshTree();
+      updateGlobalProgress();
+      renderJournal();
+      Detail.show(node);
+    });
+  });
+
+  // Add root-level node
+  document.getElementById('btn-add-root').addEventListener('click', () => {
+    const tree = State.getTree();
+    showModal('Add Node to Root', (data) => {
+      const child = {
+        id: generateId(),
+        title: data.title,
+        statement: data.statement,
+        status: 'unstarted',
+        approach: data.approach,
+        killCriteria: '',
+        files: [],
+        notes: [],
+        evidence: '',
+        expanded: false,
+        children: []
+      };
+      Tree.addChild(tree.id, child);
+      State.addJournalEntry('Created "' + data.title + '"', tree.title);
+      State.save();
+      Tree.refreshTree();
+      updateGlobalProgress();
+      renderJournal();
+    });
+  });
+
+  // Delete node
+  document.getElementById('btn-delete-node').addEventListener('click', () => {
+    const node = Detail.getCurrent();
+    if (!node) return;
+    const tree = State.getTree();
+    if (node.id === tree.id) { alert('Cannot delete root node.'); return; }
+    if (!confirm('Delete "' + node.title + '" and all its children?')) return;
+    State.addJournalEntry('Deleted "' + node.title + '"', '');
+    Tree.deleteNode(tree, node.id);
+    Detail.hide();
+    State.save();
+    Tree.refreshTree();
+    updateGlobalProgress();
+    renderJournal();
+  });
+
+  // Collapsible sections
+  document.querySelectorAll('.collapse-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      const body = toggle.nextElementSibling;
+      if (body) body.classList.toggle('open');
+    });
+  });
+
+  // Journal toggle
+  document.getElementById('journal-toggle').addEventListener('click', () => {
+    document.getElementById('journal-body').classList.toggle('open');
+    document.getElementById('journal-caret').classList.toggle('open');
+  });
+
+  // Modal cancel
+  document.getElementById('modal-cancel').addEventListener('click', hideModal);
+  document.getElementById('modal-overlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modal-overlay')) hideModal();
+  });
+
+  // Header buttons
+  document.getElementById('btn-expand-all').addEventListener('click', () => {
+    Tree.expandAll(State.getTree());
+    State.save();
+    Tree.refreshTree();
+  });
+
+  document.getElementById('btn-collapse-all').addEventListener('click', () => {
+    const tree = State.getTree();
+    tree.expanded = true;
+    if (tree.children) tree.children.forEach(c => Tree.collapseAll(c));
+    State.save();
+    Tree.refreshTree();
+  });
+
+  document.getElementById('btn-export').addEventListener('click', () => {
+    State.exportJSON();
+    State.addJournalEntry('Exported project to JSON', '');
+    renderJournal();
+  });
+
+  document.getElementById('btn-import').addEventListener('click', () => {
+    document.getElementById('import-file').click();
+  });
+
+  document.getElementById('import-file').addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+      State.importJSON(e.target.files[0]);
+    }
+  });
+
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    if (!confirm('Reset to default? All changes will be lost.')) return;
+    State.reset();
+    location.reload();
+  });
+
+  // Keyboard: Enter on new-file-input
+  document.getElementById('new-file-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('btn-add-file').click();
+  });
+});

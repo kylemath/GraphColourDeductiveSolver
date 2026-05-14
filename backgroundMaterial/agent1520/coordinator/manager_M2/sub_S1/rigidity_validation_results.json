@@ -1,0 +1,747 @@
+{
+  "phase1": {
+    "max_n": 8,
+    "global": {
+      "rigid_mp": 9168,
+      "rigid_safe": 9264,
+      "flex_mp": 20112,
+      "flex_safe": 0
+    },
+    "local": {
+      "rigid_mp": 10128,
+      "rigid_safe": 9264,
+      "flex_mp": 19152,
+      "flex_safe": 0
+    },
+    "by_n": {
+      "4": {
+        "num_graphs": 1,
+        "total_cases": 0,
+        "merge_prone": 0,
+        "safe": 0,
+        "global": {
+          "rigid_mp": 0,
+          "rigid_safe": 0,
+          "flex_mp": 0,
+          "flex_safe": 0
+        },
+        "local": {
+          "rigid_mp": 0,
+          "rigid_safe": 0,
+          "flex_mp": 0,
+          "flex_safe": 0
+        }
+      },
+      "5": {
+        "num_graphs": 1,
+        "total_cases": 0,
+        "merge_prone": 0,
+        "safe": 0,
+        "global": {
+          "rigid_mp": 0,
+          "rigid_safe": 0,
+          "flex_mp": 0,
+          "flex_safe": 0
+        },
+        "local": {
+          "rigid_mp": 0,
+          "rigid_safe": 0,
+          "flex_mp": 0,
+          "flex_safe": 0
+        }
+      },
+      "6": {
+        "num_graphs": 2,
+        "total_cases": 480,
+        "merge_prone": 480,
+        "safe": 0,
+        "global": {
+          "rigid_mp": 336,
+          "rigid_safe": 0,
+          "flex_mp": 144,
+          "flex_safe": 0
+        },
+        "local": {
+          "rigid_mp": 336,
+          "rigid_safe": 0,
+          "flex_mp": 144,
+          "flex_safe": 0
+        }
+      },
+      "7": {
+        "num_graphs": 5,
+        "total_cases": 4440,
+        "merge_prone": 3672,
+        "safe": 768,
+        "global": {
+          "rigid_mp": 1128,
+          "rigid_safe": 768,
+          "flex_mp": 2544,
+          "flex_safe": 0
+        },
+        "local": {
+          "rigid_mp": 1272,
+          "rigid_safe": 768,
+          "flex_mp": 2400,
+          "flex_safe": 0
+        }
+      },
+      "8": {
+        "num_graphs": 14,
+        "total_cases": 33624,
+        "merge_prone": 25128,
+        "safe": 8496,
+        "global": {
+          "rigid_mp": 7704,
+          "rigid_safe": 8496,
+          "flex_mp": 17424,
+          "flex_safe": 0
+        },
+        "local": {
+          "rigid_mp": 8520,
+          "rigid_safe": 8496,
+          "flex_mp": 16608,
+          "flex_safe": 0
+        }
+      }
+    },
+    "local_counterexamples": [
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 4,
+        "degree": 4,
+        "color_a": 4,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 3,
+        "degree": 4,
+        "color_a": 3,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          2,
+          3,
+          5,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 4,
+        "degree": 4,
+        "color_a": 3,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          2,
+          4,
+          3,
+          5,
+          3
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 3,
+        "degree": 4,
+        "color_a": 4,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          2,
+          4,
+          5,
+          4,
+          3
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 4,
+        "degree": 4,
+        "color_a": 4,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          3,
+          2,
+          4,
+          5,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 3,
+        "degree": 4,
+        "color_a": 2,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          3,
+          2,
+          5,
+          2,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 4,
+        "degree": 4,
+        "color_a": 2,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          3,
+          4,
+          2,
+          5,
+          2
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 3,
+        "degree": 4,
+        "color_a": 4,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          3,
+          4,
+          5,
+          4,
+          2
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 4,
+        "degree": 4,
+        "color_a": 3,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          4,
+          2,
+          3,
+          5,
+          3
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 3,
+        "degree": 4,
+        "color_a": 2,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          4,
+          2,
+          5,
+          2,
+          3
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 4,
+        "degree": 4,
+        "color_a": 2,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          4,
+          3,
+          2,
+          5,
+          2
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 3,
+        "degree": 4,
+        "color_a": 3,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          4,
+          3,
+          5,
+          3,
+          2
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 2,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          2,
+          3,
+          2,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 3,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          2,
+          3,
+          4,
+          3
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 2,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          2,
+          4,
+          2,
+          3
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 4,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          2,
+          4,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 3,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          3,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 2,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          3,
+          2,
+          4,
+          2
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 4,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          3.0,
+          2.0
+        ],
+        "all_tensions": [
+          3.0,
+          2.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          3,
+          4,
+          2,
+          4
+        ]
+      },
+      {
+        "type": "local_flex_but_merge_prone",
+        "graph": "T_6_0",
+        "vertex": 1,
+        "degree": 5,
+        "color_a": 3,
+        "local_rigidity": 0.25,
+        "incident_tensions": [
+          2.0,
+          3.0
+        ],
+        "all_tensions": [
+          2.0,
+          3.0
+        ],
+        "num_incident": 2,
+        "canonical": [
+          1,
+          5,
+          3,
+          4,
+          3,
+          2
+        ]
+      }
+    ]
+  },
+  "phase2_n9": {
+    "global": {
+      "rigid_mp": 25056,
+      "rigid_safe": 65856,
+      "flex_mp": 175728,
+      "flex_safe": 720
+    },
+    "local": {
+      "rigid_mp": 34512,
+      "rigid_safe": 66576,
+      "flex_mp": 166272,
+      "flex_safe": 0
+    },
+    "local_counterexamples": [
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 7,
+        "degree": 4,
+        "color_a": 3,
+        "local_rig": 0.25,
+        "inc_tensions": [
+          3.0,
+          2.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 6,
+        "degree": 4,
+        "color_a": 4,
+        "local_rig": 0.25,
+        "inc_tensions": [
+          3.0,
+          2.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 5,
+        "degree": 4,
+        "color_a": 3,
+        "local_rig": 0.25,
+        "inc_tensions": [
+          3.0,
+          2.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 7,
+        "degree": 4,
+        "color_a": 3,
+        "local_rig": 0.027777777777777804,
+        "inc_tensions": [
+          2.3333333333333335,
+          2.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 5,
+        "degree": 4,
+        "color_a": 3,
+        "local_rig": 0.0625,
+        "inc_tensions": [
+          3.0,
+          2.5
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 7,
+        "degree": 4,
+        "color_a": 4,
+        "local_rig": 0.0625,
+        "inc_tensions": [
+          2.5,
+          2.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 7,
+        "degree": 4,
+        "color_a": 4,
+        "local_rig": 0.25,
+        "inc_tensions": [
+          3.0,
+          2.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 6,
+        "degree": 4,
+        "color_a": 3,
+        "local_rig": 0.0625,
+        "inc_tensions": [
+          2.5,
+          3.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 6,
+        "degree": 4,
+        "color_a": 3,
+        "local_rig": 0.0625,
+        "inc_tensions": [
+          2.5,
+          2.0
+        ]
+      },
+      {
+        "type": "flex mp",
+        "graph": "T_9_0",
+        "vertex": 7,
+        "degree": 4,
+        "color_a": 3,
+        "local_rig": 0.25,
+        "inc_tensions": [
+          3.0,
+          2.0
+        ]
+      }
+    ]
+  }
+}

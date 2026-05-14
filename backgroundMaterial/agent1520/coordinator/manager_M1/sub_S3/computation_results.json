@@ -1,0 +1,6180 @@
+{
+  "9": {
+    "n": 9,
+    "num_graphs": 50,
+    "generation_time_s": 1.2,
+    "total_colourings_tested": 347448,
+    "total_a5_swaps": 172281,
+    "total_14_swaps": 267495,
+    "total_merge_prone": 17562,
+    "total_bfs_avoided": 17023,
+    "total_bfs_used_unsafe": 539,
+    "counterexamples": [
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_0",
+        "vertex": 3,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 2, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 2, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 2, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_6",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 2, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 2, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 2, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 4,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_7",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 2,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_8",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c4_(1, 2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 2,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_25",
+        "vertex": 5,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(2, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(2, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(2, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_27",
+        "vertex": 1,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_35",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(2, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(2, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(2, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(2, 2, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(2, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(2, 2, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_37",
+        "vertex": 1,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c4_(1, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(1, 1, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_41",
+        "vertex": 6,
+        "degree": 4,
+        "colour_type": "d4_c3_(2, 2, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 4,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 7,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 7,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 7,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 7,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 7,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_43",
+        "vertex": 7,
+        "degree": 4,
+        "colour_type": "d4_c2_(1, 1, 2, 2)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 2,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 3,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 3)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 2, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 3, 3)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 3, 4)",
+        "step": 1,
+        "swap_pair": [
+          4,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 2, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          2,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 0,
+        "swap_pair": [
+          1,
+          5
+        ]
+      },
+      {
+        "graph": "T_9_44",
+        "vertex": 5,
+        "degree": 5,
+        "colour_type": "d5_c3_(1, 1, 3, 4, 4)",
+        "step": 1,
+        "swap_pair": [
+          3,
+          5
+        ]
+      }
+    ],
+    "by_degree": {
+      "4": {
+        "a5_swaps": 65175,
+        "merge_prone": 6925,
+        "avoided": 6608,
+        "used_unsafe": 317
+      },
+      "5": {
+        "a5_swaps": 46754,
+        "merge_prone": 10637,
+        "avoided": 10415,
+        "used_unsafe": 222
+      }
+    },
+    "by_colour_type": {
+      "d4_c3_(1, 2, 3, 3)": {
+        "count": 381,
+        "merge_prone": 381,
+        "avoided": 359,
+        "used_unsafe": 22
+      },
+      "d4_c4_(1, 2, 3, 4)": {
+        "count": 439,
+        "merge_prone": 439,
+        "avoided": 366,
+        "used_unsafe": 73
+      },
+      "d4_c3_(1, 2, 4, 4)": {
+        "count": 365,
+        "merge_prone": 365,
+        "avoided": 355,
+        "used_unsafe": 10
+      },
+      "d4_c3_(1, 2, 2, 3)": {
+        "count": 417,
+        "merge_prone": 417,
+        "avoided": 393,
+        "used_unsafe": 24
+      },
+      "d4_c3_(1, 3, 4, 4)": {
+        "count": 358,
+        "merge_prone": 358,
+        "avoided": 348,
+        "used_unsafe": 10
+      },
+      "d4_c3_(1, 2, 2, 4)": {
+        "count": 410,
+        "merge_prone": 410,
+        "avoided": 386,
+        "used_unsafe": 24
+      },
+      "d4_c3_(1, 3, 3, 4)": {
+        "count": 388,
+        "merge_prone": 388,
+        "avoided": 377,
+        "used_unsafe": 11
+      },
+      "d4_c3_(1, 1, 2, 3)": {
+        "count": 491,
+        "merge_prone": 491,
+        "avoided": 465,
+        "used_unsafe": 26
+      },
+      "d4_c3_(2, 3, 4, 4)": {
+        "count": 341,
+        "merge_prone": 341,
+        "avoided": 331,
+        "used_unsafe": 10
+      },
+      "d4_c3_(1, 1, 2, 4)": {
+        "count": 483,
+        "merge_prone": 483,
+        "avoided": 457,
+        "used_unsafe": 26
+      },
+      "d4_c3_(2, 3, 3, 4)": {
+        "count": 370,
+        "merge_prone": 370,
+        "avoided": 359,
+        "used_unsafe": 11
+      },
+      "d4_c3_(1, 1, 3, 4)": {
+        "count": 477,
+        "merge_prone": 477,
+        "avoided": 451,
+        "used_unsafe": 26
+      },
+      "d4_c3_(2, 2, 3, 4)": {
+        "count": 449,
+        "merge_prone": 449,
+        "avoided": 437,
+        "used_unsafe": 12
+      },
+      "d5_c4_(1, 2, 3, 4, 4)": {
+        "count": 1042,
+        "merge_prone": 1042,
+        "avoided": 1022,
+        "used_unsafe": 20
+      },
+      "d5_c3_(1, 2, 2, 4, 4)": {
+        "count": 487,
+        "merge_prone": 487,
+        "avoided": 485,
+        "used_unsafe": 2
+      },
+      "d5_c3_(1, 2, 2, 3, 3)": {
+        "count": 503,
+        "merge_prone": 503,
+        "avoided": 499,
+        "used_unsafe": 4
+      },
+      "d5_c4_(1, 2, 3, 3, 4)": {
+        "count": 1118,
+        "merge_prone": 1118,
+        "avoided": 1094,
+        "used_unsafe": 24
+      },
+      "d5_c3_(1, 3, 3, 4, 4)": {
+        "count": 463,
+        "merge_prone": 463,
+        "avoided": 463,
+        "used_unsafe": 0
+      },
+      "d5_c4_(1, 2, 2, 3, 4)": {
+        "count": 1231,
+        "merge_prone": 1231,
+        "avoided": 1203,
+        "used_unsafe": 28
+      },
+      "d5_c3_(1, 1, 2, 4, 4)": {
+        "count": 503,
+        "merge_prone": 503,
+        "avoided": 488,
+        "used_unsafe": 15
+      },
+      "d5_c3_(1, 1, 2, 3, 3)": {
+        "count": 519,
+        "merge_prone": 519,
+        "avoided": 502,
+        "used_unsafe": 17
+      },
+      "d5_c3_(2, 3, 3, 4, 4)": {
+        "count": 424,
+        "merge_prone": 424,
+        "avoided": 424,
+        "used_unsafe": 0
+      },
+      "d5_c4_(1, 1, 2, 3, 4)": {
+        "count": 1401,
+        "merge_prone": 1401,
+        "avoided": 1369,
+        "used_unsafe": 32
+      },
+      "d5_c3_(1, 1, 3, 4, 4)": {
+        "count": 496,
+        "merge_prone": 496,
+        "avoided": 481,
+        "used_unsafe": 15
+      },
+      "d5_c3_(1, 1, 2, 2, 3)": {
+        "count": 542,
+        "merge_prone": 542,
+        "avoided": 521,
+        "used_unsafe": 21
+      },
+      "d5_c3_(2, 2, 3, 4, 4)": {
+        "count": 432,
+        "merge_prone": 432,
+        "avoided": 430,
+        "used_unsafe": 2
+      },
+      "d5_c3_(1, 1, 3, 3, 4)": {
+        "count": 504,
+        "merge_prone": 504,
+        "avoided": 487,
+        "used_unsafe": 17
+      },
+      "d5_c3_(1, 1, 2, 2, 4)": {
+        "count": 532,
+        "merge_prone": 532,
+        "avoided": 511,
+        "used_unsafe": 21
+      },
+      "d5_c3_(2, 2, 3, 3, 4)": {
+        "count": 440,
+        "merge_prone": 440,
+        "avoided": 436,
+        "used_unsafe": 4
+      },
+      "d4_c2_(2, 2, 3, 3)": {
+        "count": 236,
+        "merge_prone": 236,
+        "avoided": 234,
+        "used_unsafe": 2
+      },
+      "d4_c2_(2, 2, 4, 4)": {
+        "count": 220,
+        "merge_prone": 220,
+        "avoided": 219,
+        "used_unsafe": 1
+      },
+      "d4_c2_(3, 3, 4, 4)": {
+        "count": 192,
+        "merge_prone": 192,
+        "avoided": 192,
+        "used_unsafe": 0
+      },
+      "d4_c2_(1, 1, 3, 3)": {
+        "count": 294,
+        "merge_prone": 294,
+        "avoided": 285,
+        "used_unsafe": 9
+      },
+      "d4_c2_(1, 1, 4, 4)": {
+        "count": 278,
+        "merge_prone": 278,
+        "avoided": 270,
+        "used_unsafe": 8
+      },
+      "d4_c2_(1, 1, 2, 2)": {
+        "count": 336,
+        "merge_prone": 336,
+        "avoided": 324,
+        "used_unsafe": 12
+      }
+    },
+    "merge_prone_chain_sizes": {
+      "1": 17112,
+      "3": 84,
+      "2": 366
+    },
+    "swap_type_at_merge_prone_steps": {
+      "(a,5)-swap safe": 17023
+    },
+    "total_computation_time_s": 83.1,
+    "avoidance_rate": "17023/17562"
+  }
+}

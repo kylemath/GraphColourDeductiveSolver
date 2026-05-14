@@ -1,0 +1,65 @@
+% sections/06-conclusion.tex
+
+\section{Conclusion}\label{sec:conclusion}
+
+We have introduced eight energy functionals for the Kempe chain
+reconfiguration graph (Section~\ref{sec:methods}), grounded in the
+tetrahedral color embedding. These functionals provide complementary
+views of the reconfiguration process, connecting graph coloring to
+anti-ferromagnetic spin models, polyhedral geometry, and discrete
+potential theory.
+
+\paragraph{Principal findings.}
+Evaluation on the counterexamples at $n = 9$
+(Section~\ref{sec:results}) identified three discriminating signatures:
+(1)~local entropy at the critical vertex is systematically higher for
+unsafe swaps; (2)~the Magic Gem energy landscape exhibits a two-basin
+kinetic trap structure separating safe from unsafe paths; and
+(3)~surface tension rigidity correlates with merge-proneness at $n = 9$,
+though this signal was subsequently falsified at $n \geq 10$.
+
+\paragraph{The Surface Tension Rigidity Conjecture.}
+We formalized finding~(3) as
+Conjecture~\ref{conj:st-rigidity}: zero surface tension rigidity is
+a sufficient condition for a Kempe swap to be unsafe. This conjecture
+held perfectly at $n = 9$, and we speculated about connections to sheaf
+cohomology and the Penrose evaluation
+(Section~\ref{sec:discussion}), though these remain unverified.
+Subsequent computation at $n \geq 10$ falsified the conjecture: the
+correlation between zero rigidity and merge-proneness breaks down at
+larger scales (see Remark~\ref{rem:st-falsified}). The local entropy
+discrimination and kinetic trap structure, by contrast, persist in the
+extended dataset.
+
+\paragraph{Open questions.}
+\begin{itemize}
+  \item \textbf{Persistence:} Do the local entropy discrimination and
+    kinetic trap structure persist at all scales? Enumeration at
+    $n = 10$ (${\sim}1.9$ million cases) is consistent with
+    persistence, but the Surface Tension Rigidity Conjecture fails at
+    this scale (Remark~\ref{rem:st-falsified}).
+  \item \textbf{Refined indicators:} Can surface tension be combined
+    with local entropy or Magic Gem energy into a composite indicator
+    that persists where surface tension alone does not?
+  \item \textbf{TQFT:} Does the conjectured correspondence between
+    Magic Gem energy basins and Penrose evaluation signs
+    (Section~\ref{sec:tqft}) extend beyond $n = 9$? Even a positive
+    answer would require substantial additional work to yield a
+    rigorous proof of Safe Path Existence.
+  \item \textbf{Composite functionals:} Can the eight functionals be
+    combined into a single ``reconfiguration potential'' whose gradient
+    flow always finds safe paths? Constructing such a potential and
+    proving it works would be a major undertaking beyond the scope of
+    the present descriptive analysis.
+\end{itemize}
+
+\paragraph{Broader perspective.}
+The energy functionals introduced here are descriptive tools
+(Section~\ref{sec:limitations}): they reveal structure in the
+reconfiguration landscape but do not, by themselves, prove that safe
+paths exist. Two of the three discriminating signatures (local entropy
+and kinetic traps) persist at $n = 10$, while the third (surface
+tension rigidity) does not. The connections to TQFT, sheaf cohomology,
+chromatic polynomials, and discharging remain speculative. Whether these
+analogies can be developed into rigorous proof techniques is an open
+question that the present work does not resolve.

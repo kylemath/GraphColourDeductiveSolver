@@ -1,0 +1,35 @@
+---
+description: Project conventions for the Graph Colouring / Four Colour Theorem research project
+alwaysApply: true
+---
+
+# Graph Colour Project Conventions
+
+## Environment
+- Always use virtual environments for pip install — never install globally
+- Python venv at project root: `python3 -m venv .venv && source .venv/bin/activate`
+
+## Agent System
+- Agents are numbered (e.g., Agent 1007, Agent 1012, Agent 1221)
+- Each agent gets a folder: `backgroundMaterial/agent[ID]/`
+- Agent reports are named `agent[ID]Report.md`
+- Sub-reports: `sub_[topic].md` alongside the main report
+
+## File Structure
+- Web demos: `folder/index.html` + separated `.css` and `.js` files, zero dependencies
+- Reports and plans: `.md` files with mathematical notation
+- Formalizations: `compute/` for Python, `lean4/` for Lean 4
+- Strategy documents: `SolvingFrameworkPlan/`
+- Proof navigator state: `ProofNavigator/`
+
+## Code Conventions
+- Never remove features or code that might be used elsewhere
+- Python: type hints, docstrings, test against known mathematical results
+- JavaScript: zero external dependencies, dark theme, canvas with devicePixelRatio
+- Lean 4: track `sorry` count, comment each sorry with TODO
+
+## Mathematical Writing
+- Use `$...$` for inline math in Markdown
+- Rate feasibility explicitly: Low / Medium-Low / Medium / Medium-High / High
+- Every analysis ends with concrete next steps
+- Be honest about uncertainty — "speculative" not "might work"

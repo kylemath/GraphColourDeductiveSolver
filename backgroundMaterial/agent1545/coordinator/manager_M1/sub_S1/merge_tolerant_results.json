@@ -1,0 +1,2770 @@
+{
+  "bfs_summary": {
+    "total_counterexamples": 48,
+    "total_harmless": 48,
+    "total_harmful": 0,
+    "total_any_harmless": 0,
+    "by_graph": {
+      "T_9_25_v3": {
+        "total_ces": 24,
+        "all_harmless": 24,
+        "any_harmless": 0,
+        "all_harmful": 0
+      },
+      "T_9_35_v6": {
+        "total_ces": 24,
+        "all_harmless": 24,
+        "any_harmless": 0,
+        "all_harmful": 0
+      }
+    },
+    "total_time_s": 2.0,
+    "detail_count": 48
+  },
+  "exhaustive_summary": {
+    "total_ces": 48,
+    "extensible": 48,
+    "not_extensible": 0,
+    "total_time_s": 2.1
+  },
+  "exhaustive_details": [
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 4,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 2,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 4,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 2,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 3,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 4,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 1,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 4,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 1,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 3,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 2,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 4,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 4,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 1,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 2,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 2,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 1,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 3,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 1,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 2,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "3": 4,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 4,
+        "3": 3,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 2,
+        "3": 4,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 4,
+        "3": 2,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 2,
+        "3": 3,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 3,
+        "3": 2,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 3,
+        "3": 4,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 4,
+        "3": 3,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 1,
+        "3": 4,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 4,
+        "3": 1,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 1,
+        "3": 3,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 3,
+        "3": 1,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 2,
+        "3": 4,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 4,
+        "3": 2,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "3": 4,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 4,
+        "3": 1,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 1,
+        "3": 2,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 2,
+        "3": 1,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 3,
+        "3": 2,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 1,
+        "3": 3,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 3,
+        "3": 1,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 1,
+        "3": 2,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 2,
+        "3": 1,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "bfs_target_extensible": true,
+      "any_bfs_target_extensible": true,
+      "any_reachable_extensible": true,
+      "num_bfs_targets": 2
+    }
+  ],
+  "ce_details": [
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "4": 4,
+        "6": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 2,
+          "2": 5,
+          "4": 5,
+          "6": 4
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 4,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 2,
+        "2": 4,
+        "4": 3,
+        "6": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 2,
+          "2": 5,
+          "4": 5,
+          "6": 3
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 2,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 3,
+        "2": 2,
+        "4": 4,
+        "6": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 3,
+          "2": 5,
+          "4": 5,
+          "6": 4
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 4,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 3,
+        "2": 4,
+        "4": 2,
+        "6": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 3,
+          "2": 5,
+          "4": 5,
+          "6": 2
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 2,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 4,
+        "2": 2,
+        "4": 3,
+        "6": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 4,
+          "2": 5,
+          "4": 5,
+          "6": 3
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 3,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 4,
+        "2": 3,
+        "4": 2,
+        "6": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 4,
+          "2": 5,
+          "4": 5,
+          "6": 2
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 1,
+        "2": 3,
+        "4": 4,
+        "6": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 1,
+          "2": 5,
+          "4": 5,
+          "6": 4
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 4,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 1,
+        "2": 4,
+        "4": 3,
+        "6": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 1,
+          "2": 5,
+          "4": 5,
+          "6": 3
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 1,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 3,
+        "2": 1,
+        "4": 4,
+        "6": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 3,
+          "2": 5,
+          "4": 5,
+          "6": 4
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 4,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 3,
+        "2": 4,
+        "4": 1,
+        "6": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 3,
+          "2": 5,
+          "4": 5,
+          "6": 1
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 1,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 4,
+        "2": 1,
+        "4": 3,
+        "6": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 4,
+          "2": 5,
+          "4": 5,
+          "6": 3
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 3,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 4,
+        "2": 3,
+        "4": 1,
+        "6": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 4,
+          "2": 5,
+          "4": 5,
+          "6": 1
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 2,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 1,
+        "2": 2,
+        "4": 4,
+        "6": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 1,
+          "2": 5,
+          "4": 5,
+          "6": 4
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 4,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 1,
+        "2": 4,
+        "4": 2,
+        "6": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 1,
+          "2": 5,
+          "4": 5,
+          "6": 2
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "3": 5,
+        "4": 4,
+        "5": 5,
+        "6": 4,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "4": 4,
+        "6": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 2,
+          "2": 5,
+          "4": 5,
+          "6": 4
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 4,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 2,
+        "2": 4,
+        "4": 1,
+        "6": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 2,
+          "2": 5,
+          "4": 5,
+          "6": 1
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 1,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 4,
+        "2": 1,
+        "4": 2,
+        "6": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 4,
+          "2": 5,
+          "4": 5,
+          "6": 2
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 2,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 4,
+        "2": 2,
+        "4": 1,
+        "6": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 4,
+          "2": 5,
+          "4": 5,
+          "6": 1
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 2,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 1,
+        "2": 2,
+        "4": 3,
+        "6": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 1,
+          "2": 5,
+          "4": 5,
+          "6": 3
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 1,
+        "2": 3,
+        "4": 2,
+        "6": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 1,
+          "2": 5,
+          "4": 5,
+          "6": 2
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 1,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 2,
+        "2": 1,
+        "4": 3,
+        "6": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 2,
+          "2": 5,
+          "4": 5,
+          "6": 3
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 3,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 2,
+        "2": 3,
+        "4": 1,
+        "6": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 2,
+          "2": 5,
+          "4": 5,
+          "6": 1
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 1,
+        "3": 5,
+        "4": 2,
+        "5": 5,
+        "6": 2,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 3,
+        "2": 1,
+        "4": 2,
+        "6": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 3,
+          "2": 5,
+          "4": 5,
+          "6": 2
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_25",
+      "vertex": 3,
+      "degree": 5,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 2,
+        "3": 5,
+        "4": 1,
+        "5": 5,
+        "6": 1,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 3,
+        "2": 2,
+        "4": 1,
+        "6": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 3,
+          "2": 5,
+          "4": 5,
+          "6": 1
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "3": 4,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "5": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 2,
+          "2": 5,
+          "5": 3
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 1,
+        "1": 2,
+        "2": 4,
+        "3": 3,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 2,
+        "2": 4,
+        "5": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 2,
+          "2": 5,
+          "5": 4
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 2,
+        "3": 4,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 3,
+        "2": 2,
+        "5": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 3,
+          "2": 5,
+          "5": 2
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 1,
+        "1": 3,
+        "2": 4,
+        "3": 2,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 3,
+        "2": 4,
+        "5": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 3,
+          "2": 5,
+          "5": 4
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 2,
+        "3": 3,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 4,
+        "2": 2,
+        "5": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 4,
+          "2": 5,
+          "5": 2
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 1,
+        "1": 4,
+        "2": 3,
+        "3": 2,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 1,
+        "1": 4,
+        "2": 3,
+        "5": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 1,
+          "1": 4,
+          "2": 5,
+          "5": 3
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 3,
+        "3": 4,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 1,
+        "2": 3,
+        "5": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 1,
+          "2": 5,
+          "5": 3
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 2,
+        "1": 1,
+        "2": 4,
+        "3": 3,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 1,
+        "2": 4,
+        "5": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 1,
+          "2": 5,
+          "5": 4
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 1,
+        "3": 4,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 3,
+        "2": 1,
+        "5": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 3,
+          "2": 5,
+          "5": 1
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 2,
+        "1": 3,
+        "2": 4,
+        "3": 1,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 3,
+        "2": 4,
+        "5": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 3,
+          "2": 5,
+          "5": 4
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 1,
+        "3": 3,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 4,
+        "2": 1,
+        "5": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 4,
+          "2": 5,
+          "5": 1
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 2,
+        "1": 4,
+        "2": 3,
+        "3": 1,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 2,
+        "1": 4,
+        "2": 3,
+        "5": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 2,
+          "1": 4,
+          "2": 5,
+          "5": 3
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 2,
+        "3": 4,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 1,
+        "2": 2,
+        "5": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 1,
+          "2": 5,
+          "5": 2
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 3,
+        "1": 1,
+        "2": 4,
+        "3": 2,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 1,
+        "2": 4,
+        "5": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 1,
+          "2": 5,
+          "5": 4
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "3": 4,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "5": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 2,
+          "2": 5,
+          "5": 1
+        },
+        "free_colours_final": [
+          4
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 3,
+        "1": 2,
+        "2": 4,
+        "3": 1,
+        "4": 5,
+        "5": 4,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 2,
+        "2": 4,
+        "5": 4
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 2,
+          "2": 5,
+          "5": 4
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 1,
+        "3": 2,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 4,
+        "2": 1,
+        "5": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 4,
+          "2": 5,
+          "5": 1
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 3,
+        "1": 4,
+        "2": 2,
+        "3": 1,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 4,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 3,
+        "1": 4,
+        "2": 2,
+        "5": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 3,
+          "1": 4,
+          "2": 5,
+          "5": 2
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 1,
+        "2": 2,
+        "5": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 1,
+          "2": 5,
+          "5": 2
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 4,
+        "1": 1,
+        "2": 3,
+        "3": 2,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 1,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 1,
+        "2": 3,
+        "5": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 1,
+          "2": 5,
+          "5": 3
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 1,
+        "3": 3,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 2,
+        "2": 1,
+        "5": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 2,
+          "2": 5,
+          "5": 1
+        },
+        "free_colours_final": [
+          3
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 4,
+        "1": 2,
+        "2": 3,
+        "3": 1,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 2,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 2,
+        "2": 3,
+        "5": 3
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 2,
+          "2": 5,
+          "5": 3
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 1,
+        "3": 2,
+        "4": 5,
+        "5": 1,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 3,
+        "2": 1,
+        "5": 1
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 3,
+          "2": 5,
+          "5": 1
+        },
+        "free_colours_final": [
+          2
+        ],
+        "harmless": true
+      }
+    },
+    {
+      "graph": "T_9_35",
+      "vertex": 6,
+      "degree": 4,
+      "colouring": {
+        "0": 4,
+        "1": 3,
+        "2": 2,
+        "3": 1,
+        "4": 5,
+        "5": 2,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      },
+      "nbr_colours": {
+        "0": 4,
+        "1": 3,
+        "2": 2,
+        "5": 2
+      },
+      "all_harmless": true,
+      "any_harmless": true,
+      "num_paths": 2,
+      "sample_path": {
+        "nbr_colours_final": {
+          "0": 4,
+          "1": 3,
+          "2": 5,
+          "5": 2
+        },
+        "free_colours_final": [
+          1
+        ],
+        "harmless": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,1887 @@
+======================================================================
+INDEPENDENT VERIFICATION — Kempe Reconfiguration MTL Claims
+Written from scratch.  No code from compute/kempe/.
+======================================================================
+
+Running sanity checks...
+  200 Kempe swaps verified proper ✓
+  K4 has 120 proper 5-colourings ✓
+  All sanity checks passed ✓
+
+Generating planar triangulations...
+  n=4: 1 triangulation(s) ✓
+  n=5: 1 triangulation(s) ✓
+  n=6: 2 triangulation(s) ✓
+  n=7: 5 triangulation(s) ✓
+  n=8: 14 triangulation(s) ✓
+  n=9: 50 triangulation(s) ✓
+  Total: 73 triangulations across n=4..9
+
+======================================================================
+PHASE 1: MTL check on every ≤4-colouring of G-v
+======================================================================
+
+── n = 4  (1 graph(s)) ──
+
+  Graph 1: degrees [3, 3, 3, 3]
+    v=0 deg=3: 60 cols, 60 ≤4c, 0 prob | MTL ✗ FAIL (0p/60f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=1 deg=3: 60 cols, 60 ≤4c, 0 prob | MTL ✗ FAIL (0p/60f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=2 deg=3: 60 cols, 60 ≤4c, 0 prob | MTL ✗ FAIL (0p/60f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=3 deg=3: 60 cols, 60 ≤4c, 0 prob | MTL ✗ FAIL (0p/60f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+
+── n = 5  (1 graph(s)) ──
+
+  Graph 1: degrees [3, 3, 4, 4, 4]
+    v=0 deg=3: 120 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=1 deg=4: 180 cols, 180 ≤4c, 0 prob | MTL ✗ FAIL (0p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=2 deg=3: 120 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=3 deg=4: 180 cols, 180 ≤4c, 0 prob | MTL ✗ FAIL (0p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=4 deg=4: 180 cols, 180 ≤4c, 0 prob | MTL ✗ FAIL (0p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+
+── n = 6  (2 graph(s)) ──
+
+  Graph 1: degrees [3, 3, 4, 4, 5, 5]
+    v=0 deg=4: 360 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=3: 240 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=2 deg=4: 360 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=3: 240 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=4 deg=5: 540 cols, 420 ≤4c, 120 prob | MTL ✗ FAIL (0p/420f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=5 deg=5: 540 cols, 420 ≤4c, 120 prob | MTL ✗ FAIL (0p/420f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+
+  Graph 2: degrees [4, 4, 4, 4, 4, 4]
+    v=0 deg=4: 420 cols, 300 ≤4c, 0 prob | MTL ✓ (300p/0f)
+    v=1 deg=4: 420 cols, 300 ≤4c, 0 prob | MTL ✓ (300p/0f)
+    v=2 deg=4: 420 cols, 300 ≤4c, 0 prob | MTL ✓ (300p/0f)
+    v=3 deg=4: 420 cols, 300 ≤4c, 0 prob | MTL ✓ (300p/0f)
+    v=4 deg=4: 420 cols, 300 ≤4c, 0 prob | MTL ✓ (300p/0f)
+    v=5 deg=4: 420 cols, 300 ≤4c, 0 prob | MTL ✓ (300p/0f)
+  ✓ All MTL checks pass for this graph
+
+── n = 7  (5 graph(s)) ──
+
+  Graph 1: degrees [3, 3, 3, 5, 5, 5, 6]
+    v=0 deg=5: 1080 cols, 480 ≤4c, 240 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 1080 cols, 480 ≤4c, 240 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 1080 cols, 480 ≤4c, 240 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 1620 cols, 900 ≤4c, 720 prob | MTL ✗ FAIL (0p/900f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 480 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=3: 480 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=6 deg=3: 480 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 2: degrees [3, 3, 4, 4, 4, 6, 6]
+    v=0 deg=4: 720 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 720 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=4: 720 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 1620 cols, 900 ≤4c, 720 prob | MTL ✗ FAIL (0p/900f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 1620 cols, 900 ≤4c, 720 prob | MTL ✗ FAIL (0p/900f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=5 deg=3: 480 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=6 deg=3: 480 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 3: degrees [3, 3, 4, 4, 5, 5, 6]
+    v=0 deg=4: 720 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=3: 480 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=2 deg=3: 480 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=3 deg=5: 1080 cols, 480 ≤4c, 240 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 1080 cols, 480 ≤4c, 240 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 720 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=6: 1620 cols, 900 ≤4c, 720 prob | MTL ✗ FAIL (0p/900f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 4: degrees [3, 4, 4, 4, 5, 5, 5]
+    v=0 deg=3: 780 cols, 420 ≤4c, 0 prob | MTL ✗ FAIL (360p/60f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=1 deg=4: 840 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=2 deg=4: 840 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=3 deg=4: 840 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=4 deg=5: 1260 cols, 660 ≤4c, 120 prob | MTL ✗ FAIL (360p/300f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=5 deg=5: 1260 cols, 660 ≤4c, 120 prob | MTL ✗ FAIL (360p/300f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=5: 1260 cols, 660 ≤4c, 120 prob | MTL ✗ FAIL (360p/300f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+
+  Graph 5: degrees [4, 4, 4, 4, 4, 5, 5]
+    v=0 deg=4: 1020 cols, 540 ≤4c, 0 prob | MTL ✗ FAIL (360p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=4: 1020 cols, 540 ≤4c, 0 prob | MTL ✗ FAIL (360p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 1020 cols, 540 ≤4c, 0 prob | MTL ✗ FAIL (360p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=4: 1020 cols, 540 ≤4c, 0 prob | MTL ✗ FAIL (360p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=4: 1020 cols, 540 ≤4c, 0 prob | MTL ✗ FAIL (360p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=5 deg=5: 1200 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=6 deg=5: 1200 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+
+── n = 8  (14 graph(s)) ──
+
+  Graph 1: degrees [3, 3, 3, 4, 5, 6, 6, 6]
+    v=0 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 2: degrees [3, 3, 3, 4, 5, 5, 6, 7]
+    v=0 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 4860 cols, 1860 ≤4c, 3000 prob | MTL ✗ FAIL (0p/1860f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 3: degrees [3, 3, 3, 3, 6, 6, 6, 6]
+    v=0 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=6 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 4: degrees [3, 3, 4, 4, 5, 5, 6, 6]
+    v=0 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 3780 cols, 1380 ≤4c, 1080 prob | MTL ✗ FAIL (360p/1020f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 3780 cols, 1380 ≤4c, 1080 prob | MTL ✗ FAIL (360p/1020f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 1560 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=5 deg=4: 1680 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=6 deg=3: 1560 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=4: 1680 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 5: degrees [3, 4, 4, 4, 5, 5, 5, 6]
+    v=0 deg=5: 2400 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=1 deg=5: 3060 cols, 1140 ≤4c, 360 prob | MTL ✗ FAIL (480p/660f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 3060 cols, 1140 ≤4c, 360 prob | MTL ✗ FAIL (480p/660f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 3600 cols, 1200 ≤4c, 600 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 2040 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2040 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1800 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=7 deg=4: 2040 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 6: degrees [3, 3, 4, 4, 4, 5, 6, 7]
+    v=0 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 4860 cols, 1860 ≤4c, 3000 prob | MTL ✗ FAIL (0p/1860f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 7: degrees [3, 3, 4, 4, 4, 4, 7, 7]
+    v=0 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 4860 cols, 1860 ≤4c, 3000 prob | MTL ✗ FAIL (0p/1860f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=7: 4860 cols, 1860 ≤4c, 3000 prob | MTL ✗ FAIL (0p/1860f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=5 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=6 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 8: degrees [3, 4, 4, 4, 4, 5, 6, 6]
+    v=0 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 1680 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=2 deg=4: 2340 cols, 900 ≤4c, 0 prob | MTL ✗ FAIL (360p/540f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 3780 cols, 1380 ≤4c, 1080 prob | MTL ✗ FAIL (360p/1020f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 3780 cols, 1380 ≤4c, 1080 prob | MTL ✗ FAIL (360p/1020f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 1680 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=6 deg=3: 1560 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=4: 1680 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 9: degrees [4, 4, 4, 4, 4, 4, 6, 6]
+    v=0 deg=4: 2580 cols, 1020 ≤4c, 0 prob | MTL ✓ (1020p/0f)
+    v=1 deg=4: 2580 cols, 1020 ≤4c, 0 prob | MTL ✓ (1020p/0f)
+    v=2 deg=4: 2580 cols, 1020 ≤4c, 0 prob | MTL ✓ (1020p/0f)
+    v=3 deg=6: 3660 cols, 1260 ≤4c, 0 prob | MTL ✓ (1260p/0f)
+    v=4 deg=6: 3660 cols, 1260 ≤4c, 0 prob | MTL ✓ (1260p/0f)
+    v=5 deg=4: 2580 cols, 1020 ≤4c, 0 prob | MTL ✓ (1020p/0f)
+    v=6 deg=4: 2580 cols, 1020 ≤4c, 0 prob | MTL ✓ (1020p/0f)
+    v=7 deg=4: 2580 cols, 1020 ≤4c, 0 prob | MTL ✓ (1020p/0f)
+  ✓ All MTL checks pass for this graph
+
+  Graph 10: degrees [3, 3, 4, 4, 5, 5, 5, 7]
+    v=0 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=3 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=7: 4860 cols, 1860 ≤4c, 3000 prob | MTL ✗ FAIL (0p/1860f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=7 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 11: degrees [3, 3, 4, 4, 5, 5, 6, 6]
+    v=0 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=3 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=5: 2160 cols, 480 ≤4c, 480 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 1440 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=6: 3240 cols, 960 ≤4c, 1440 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 960 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 12: degrees [3, 3, 4, 5, 5, 5, 5, 6]
+    v=0 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=3: 1560 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=2 deg=3: 1560 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=3 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=6: 3780 cols, 1380 ≤4c, 1080 prob | MTL ✗ FAIL (360p/1020f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=4: 1680 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 13: degrees [3, 3, 5, 5, 5, 5, 5, 5]
+    v=0 deg=3: 1560 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=1 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=5: 2520 cols, 720 ≤4c, 240 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 1560 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+
+  Graph 14: degrees [4, 4, 4, 4, 5, 5, 5, 5]
+    v=0 deg=4: 2280 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 2280 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=4: 2280 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=5: 2760 cols, 840 ≤4c, 240 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 2760 cols, 840 ≤4c, 240 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 2760 cols, 840 ≤4c, 240 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=5: 2760 cols, 840 ≤4c, 240 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=4: 2280 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+── n = 9  (50 graph(s)) ──
+
+  Graph 1: degrees [3, 3, 3, 4, 4, 5, 6, 7, 7]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 2: degrees [3, 3, 3, 4, 5, 5, 6, 6, 7]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 3: degrees [3, 3, 3, 3, 5, 5, 6, 7, 7]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 4: degrees [3, 3, 3, 4, 4, 5, 6, 7, 7]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 5: degrees [3, 3, 3, 4, 4, 6, 6, 6, 7]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 6: degrees [3, 3, 3, 3, 4, 6, 6, 7, 7]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 7: degrees [3, 3, 3, 4, 4, 6, 6, 6, 7]
+    v=0 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 8: degrees [3, 3, 4, 4, 4, 6, 6, 6, 6]
+    v=0 deg=6: 7200 cols, 1200 ≤4c, 1200 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=6: 7200 cols, 1200 ≤4c, 1200 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 9180 cols, 2340 ≤4c, 2880 prob | MTL ✗ FAIL (480p/1860f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 9180 cols, 2340 ≤4c, 2880 prob | MTL ✗ FAIL (480p/1860f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=5 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=7 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 9: degrees [3, 3, 4, 4, 4, 5, 6, 6, 7]
+    v=0 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=5 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=8 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 10: degrees [3, 3, 4, 4, 5, 5, 6, 6, 6]
+    v=0 deg=6: 7200 cols, 1200 ≤4c, 1200 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 9180 cols, 2340 ≤4c, 2880 prob | MTL ✗ FAIL (480p/1860f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 7200 cols, 1200 ≤4c, 1200 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=7 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=8 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 11: degrees [3, 3, 4, 4, 4, 5, 6, 6, 7]
+    v=0 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 7020 cols, 1860 ≤4c, 1560 prob | MTL ✗ FAIL (360p/1500f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=5 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=8 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 12: degrees [3, 4, 4, 4, 4, 5, 6, 6, 6]
+    v=0 deg=6: 9180 cols, 2340 ≤4c, 2880 prob | MTL ✗ FAIL (480p/1860f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 9180 cols, 2340 ≤4c, 2880 prob | MTL ✗ FAIL (480p/1860f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=5: 4800 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=3 deg=6: 7200 cols, 1200 ≤4c, 1200 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 5400 cols, 1200 ≤4c, 0 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=8 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 13: degrees [3, 3, 3, 4, 5, 5, 5, 7, 7]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 14: degrees [3, 3, 3, 4, 4, 5, 5, 7, 8]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 15: degrees [3, 3, 3, 4, 4, 5, 5, 7, 8]
+    v=0 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 16: degrees [3, 3, 3, 4, 4, 5, 6, 6, 8]
+    v=0 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 17: degrees [3, 3, 3, 3, 5, 5, 6, 6, 8]
+    v=0 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 18: degrees [3, 3, 3, 4, 4, 5, 6, 6, 8]
+    v=0 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 19: degrees [3, 3, 3, 4, 5, 5, 5, 6, 8]
+    v=0 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=5 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 20: degrees [3, 3, 3, 4, 5, 5, 6, 6, 7]
+    v=0 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=5 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=8 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 21: degrees [3, 4, 4, 4, 4, 5, 5, 6, 7]
+    v=0 deg=6: 7320 cols, 1320 ≤4c, 0 prob | MTL ✓ (1320p/0f)
+    v=1 deg=5: 7740 cols, 2100 ≤4c, 600 prob | MTL ✗ FAIL (1320p/780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 7740 cols, 2100 ≤4c, 600 prob | MTL ✗ FAIL (1320p/780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=3 deg=7: 10980 cols, 2580 ≤4c, 2400 prob | MTL ✗ FAIL (1320p/1260f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=4: 5160 cols, 1080 ≤4c, 0 prob | MTL ✓ (1080p/0f)
+    v=5 deg=4: 5160 cols, 1080 ≤4c, 0 prob | MTL ✓ (1080p/0f)
+    v=6 deg=3: 4980 cols, 1380 ≤4c, 0 prob | MTL ✗ FAIL (1320p/60f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=7 deg=4: 5160 cols, 1080 ≤4c, 0 prob | MTL ✓ (1080p/0f)
+    v=8 deg=4: 5160 cols, 1080 ≤4c, 0 prob | MTL ✓ (1080p/0f)
+
+  Graph 22: degrees [3, 3, 4, 4, 4, 5, 5, 7, 7]
+    v=0 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=5 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=7 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=8 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 23: degrees [3, 3, 4, 4, 5, 5, 5, 6, 7]
+    v=0 deg=6: 9180 cols, 2340 ≤4c, 2880 prob | MTL ✗ FAIL (480p/1860f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4800 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=2 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 10800 cols, 2400 ≤4c, 4200 prob | MTL ✗ FAIL (600p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=5 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=8 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 24: degrees [3, 4, 4, 4, 4, 5, 5, 6, 7]
+    v=0 deg=6: 9180 cols, 2340 ≤4c, 2880 prob | MTL ✗ FAIL (480p/1860f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=5: 4800 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=3 deg=7: 10800 cols, 2400 ≤4c, 4200 prob | MTL ✗ FAIL (600p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 5400 cols, 1200 ≤4c, 0 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=8 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 25: degrees [3, 3, 3, 5, 5, 5, 6, 6, 6]
+    v=0 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=5 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+
+  Graph 26: degrees [3, 4, 4, 4, 5, 5, 5, 6, 6]
+    v=0 deg=5: 5520 cols, 840 ≤4c, 480 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 6840 cols, 1440 ≤4c, 1200 prob | MTL ✗ FAIL (360p/1080f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=6: 8280 cols, 1680 ≤4c, 2280 prob | MTL ✗ FAIL (360p/1320f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 8280 cols, 1680 ≤4c, 2280 prob | MTL ✗ FAIL (360p/1320f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 4560 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 4560 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 3480 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=7 deg=5: 5520 cols, 840 ≤4c, 480 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=4: 4560 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+
+  Graph 27: degrees [4, 4, 4, 4, 4, 5, 5, 6, 6]
+    v=0 deg=5: 6600 cols, 1320 ≤4c, 240 prob | MTL ✗ FAIL (1080p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 6600 cols, 1320 ≤4c, 240 prob | MTL ✗ FAIL (1080p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=6: 8580 cols, 1980 ≤4c, 1560 prob | MTL ✗ FAIL (840p/1140f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 8580 cols, 1980 ≤4c, 1560 prob | MTL ✗ FAIL (840p/1140f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=4: 5280 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (840p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 5940 cols, 1500 ≤4c, 0 prob | MTL ✗ FAIL (840p/660f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=6 deg=4: 5280 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (840p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=4: 5940 cols, 1500 ≤4c, 0 prob | MTL ✗ FAIL (840p/660f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 4] nbr=[1, 2, 4]
+    v=8 deg=4: 5280 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (840p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 28: degrees [3, 3, 4, 5, 5, 5, 5, 6, 6]
+    v=0 deg=6: 7200 cols, 1200 ≤4c, 1200 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 7200 cols, 1200 ≤4c, 1200 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=7 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+
+  Graph 29: degrees [3, 3, 4, 5, 5, 5, 5, 5, 7]
+    v=0 deg=5: 4800 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=1 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 10800 cols, 2400 ≤4c, 4200 prob | MTL ✗ FAIL (600p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=5 deg=4: 4080 cols, 600 ≤4c, 0 prob | MTL ✗ FAIL (480p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+    v=7 deg=5: 6120 cols, 1200 ≤4c, 720 prob | MTL ✗ FAIL (600p/600f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 3600 cols, 600 ≤4c, 0 prob | MTL ✓ (600p/0f)
+
+  Graph 30: degrees [3, 4, 4, 5, 5, 5, 5, 5, 6]
+    v=0 deg=5: 5520 cols, 840 ≤4c, 480 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 6840 cols, 1440 ≤4c, 1200 prob | MTL ✗ FAIL (360p/1080f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 6840 cols, 1440 ≤4c, 1200 prob | MTL ✗ FAIL (360p/1080f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 8280 cols, 1680 ≤4c, 2280 prob | MTL ✗ FAIL (360p/1320f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 5520 cols, 840 ≤4c, 480 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=5 deg=5: 5520 cols, 840 ≤4c, 480 prob | MTL ✗ FAIL (360p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 3480 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=7 deg=4: 4560 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=4: 4560 cols, 720 ≤4c, 0 prob | MTL ✗ FAIL (360p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 31: degrees [4, 4, 4, 4, 5, 5, 5, 5, 6]
+    v=0 deg=5: 6900 cols, 1620 ≤4c, 840 prob | MTL ✗ FAIL (600p/1020f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 6900 cols, 1620 ≤4c, 840 prob | MTL ✗ FAIL (600p/1020f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=5: 6240 cols, 1080 ≤4c, 480 prob | MTL ✗ FAIL (720p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=6: 8040 cols, 1560 ≤4c, 1920 prob | MTL ✗ FAIL (600p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=4: 5040 cols, 840 ≤4c, 0 prob | MTL ✗ FAIL (600p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 6240 cols, 1080 ≤4c, 480 prob | MTL ✗ FAIL (720p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 5040 cols, 840 ≤4c, 0 prob | MTL ✗ FAIL (600p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=4: 5040 cols, 840 ≤4c, 0 prob | MTL ✗ FAIL (600p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=8 deg=4: 5040 cols, 840 ≤4c, 0 prob | MTL ✗ FAIL (600p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+  Graph 32: degrees [3, 3, 4, 4, 4, 4, 6, 6, 8]
+    v=0 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 33: degrees [3, 3, 4, 4, 4, 5, 6, 6, 7]
+    v=0 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 34: degrees [3, 3, 4, 4, 4, 5, 5, 7, 7]
+    v=0 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 35: degrees [3, 3, 4, 4, 4, 5, 5, 6, 8]
+    v=0 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 36: degrees [3, 3, 4, 4, 4, 4, 5, 7, 8]
+    v=0 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 37: degrees [3, 3, 4, 4, 4, 5, 5, 6, 8]
+    v=0 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 38: degrees [3, 3, 4, 4, 5, 5, 5, 6, 7]
+    v=0 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=8 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 39: degrees [3, 4, 4, 4, 4, 4, 5, 7, 7]
+    v=0 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=8 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 40: degrees [3, 4, 4, 4, 4, 5, 5, 6, 7]
+    v=0 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 7020 cols, 1860 ≤4c, 1560 prob | MTL ✗ FAIL (360p/1500f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=3 deg=7: 11340 cols, 2820 ≤4c, 5520 prob | MTL ✗ FAIL (360p/2460f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=7 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=8 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+
+  Graph 41: degrees [3, 3, 4, 4, 4, 4, 4, 8, 8]
+    v=0 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=5 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=6 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 42: degrees [4, 4, 4, 4, 4, 4, 4, 7, 7]
+    v=0 deg=4: 6780 cols, 1980 ≤4c, 0 prob | MTL ✗ FAIL (1800p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=4: 6780 cols, 1980 ≤4c, 0 prob | MTL ✗ FAIL (1800p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 6780 cols, 1980 ≤4c, 0 prob | MTL ✗ FAIL (1800p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=7: 10920 cols, 2520 ≤4c, 0 prob | MTL ✓ (2520p/0f)
+    v=4 deg=7: 10920 cols, 2520 ≤4c, 0 prob | MTL ✓ (2520p/0f)
+    v=5 deg=4: 6780 cols, 1980 ≤4c, 0 prob | MTL ✗ FAIL (1800p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=4: 6780 cols, 1980 ≤4c, 0 prob | MTL ✗ FAIL (1800p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=7 deg=4: 6780 cols, 1980 ≤4c, 0 prob | MTL ✗ FAIL (1800p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=8 deg=4: 6780 cols, 1980 ≤4c, 0 prob | MTL ✗ FAIL (1800p/180f)
+      FAIL ex: used=[1, 2, 3] nbr=[1, 2, 3]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+
+  Graph 43: degrees [3, 3, 4, 4, 5, 5, 6, 6, 6]
+    v=0 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 3360 cols, 360 ≤4c, 0 prob | MTL ✓ (360p/0f)
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+
+  Graph 44: degrees [3, 3, 4, 5, 5, 5, 5, 6, 6]
+    v=0 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=4: 4680 cols, 960 ≤4c, 0 prob | MTL ✗ FAIL (480p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=3 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=7 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+
+  Graph 45: degrees [4, 4, 4, 4, 4, 4, 6, 6, 6]
+    v=0 deg=6: 8820 cols, 2100 ≤4c, 1440 prob | MTL ✗ FAIL (1620p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 5460 cols, 1380 ≤4c, 0 prob | MTL ✓ (1380p/0f)
+    v=2 deg=4: 5460 cols, 1380 ≤4c, 0 prob | MTL ✓ (1380p/0f)
+    v=3 deg=6: 8820 cols, 2100 ≤4c, 1440 prob | MTL ✗ FAIL (1620p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=6: 8820 cols, 2100 ≤4c, 1440 prob | MTL ✗ FAIL (1620p/480f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 5460 cols, 1380 ≤4c, 0 prob | MTL ✓ (1380p/0f)
+    v=6 deg=4: 5460 cols, 1380 ≤4c, 0 prob | MTL ✓ (1380p/0f)
+    v=7 deg=4: 5460 cols, 1380 ≤4c, 0 prob | MTL ✓ (1380p/0f)
+    v=8 deg=4: 5460 cols, 1380 ≤4c, 0 prob | MTL ✓ (1380p/0f)
+
+  Graph 46: degrees [3, 3, 4, 4, 5, 5, 5, 6, 7]
+    v=0 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=3 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=7: 9720 cols, 1920 ≤4c, 6000 prob | MTL ✗ FAIL (120p/1800f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 47: degrees [3, 3, 4, 4, 5, 5, 5, 5, 8]
+    v=0 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=3 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=8: 14580 cols, 3780 ≤4c, 10800 prob | MTL ✗ FAIL (0p/3780f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 48: degrees [3, 3, 4, 4, 5, 5, 6, 6, 6]
+    v=0 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=2 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+    v=3 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=5: 4320 cols, 480 ≤4c, 960 prob | MTL ✗ FAIL (120p/360f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=6: 6480 cols, 960 ≤4c, 2880 prob | MTL ✗ FAIL (120p/840f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=4: 2880 cols, 240 ≤4c, 0 prob | MTL ✗ FAIL (120p/120f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 1920 cols, 120 ≤4c, 0 prob | MTL ✓ (120p/0f)
+
+  Graph 49: degrees [3, 3, 3, 5, 5, 5, 6, 6, 6]
+    v=0 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=1 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=2 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+    v=3 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=4 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=6 deg=6: 7560 cols, 1440 ≤4c, 2160 prob | MTL ✗ FAIL (480p/960f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=7 deg=5: 5040 cols, 720 ≤4c, 480 prob | MTL ✗ FAIL (480p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=3: 3120 cols, 480 ≤4c, 0 prob | MTL ✓ (480p/0f)
+
+  Graph 50: degrees [4, 4, 4, 5, 5, 5, 5, 5, 5]
+    v=0 deg=4: 4440 cols, 480 ≤4c, 0 prob | MTL ✗ FAIL (240p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=1 deg=4: 4440 cols, 480 ≤4c, 0 prob | MTL ✗ FAIL (240p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=2 deg=5: 6000 cols, 960 ≤4c, 960 prob | MTL ✗ FAIL (240p/720f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=3 deg=5: 6000 cols, 960 ≤4c, 960 prob | MTL ✗ FAIL (240p/720f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=4 deg=5: 6000 cols, 960 ≤4c, 960 prob | MTL ✗ FAIL (240p/720f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=5 deg=5: 6000 cols, 960 ≤4c, 960 prob | MTL ✗ FAIL (240p/720f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=6 deg=5: 6000 cols, 960 ≤4c, 960 prob | MTL ✗ FAIL (240p/720f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+    v=7 deg=5: 6000 cols, 960 ≤4c, 960 prob | MTL ✗ FAIL (240p/720f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+    v=8 deg=4: 4440 cols, 480 ≤4c, 0 prob | MTL ✗ FAIL (240p/240f)
+      FAIL ex: used=[1, 2, 3, 4] nbr=[1, 2, 3, 4]
+      FAIL ex: used=[1, 2, 3, 5] nbr=[1, 2, 3, 5]
+
+
+======================================================================
+PHASE 2: BFS reachability (n ≤ 8)
+======================================================================
+
+── n = 4  (1 graph(s)) ──
+
+  Graph 1:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: no problematic 5-colourings
+
+── n = 5  (1 graph(s)) ──
+
+  Graph 1:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: no problematic 5-colourings
+    v=4: no problematic 5-colourings
+
+── n = 6  (2 graph(s)) ──
+
+  Graph 1:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: no problematic 5-colourings
+    v=4: 120 prob, 120/120 reached | ✓ all reachable  (0.0s)
+    v=5: 120 prob, 120/120 reached | ✓ all reachable  (0.0s)
+
+  Graph 2:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: no problematic 5-colourings
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+
+── n = 7  (5 graph(s)) ──
+
+  Graph 1:
+    v=0: 240 prob, 240/240 reached | ✓ all reachable  (0.1s)
+    v=1: 240 prob, 240/240 reached | ✓ all reachable  (0.1s)
+    v=2: 240 prob, 240/240 reached | ✓ all reachable  (0.1s)
+    v=3: 720 prob, 720/720 reached | ✓ all reachable  (0.2s)
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+
+  Graph 2:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 720 prob, 720/720 reached | ✓ all reachable  (0.2s)
+    v=4: 720 prob, 720/720 reached | ✓ all reachable  (0.2s)
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+
+  Graph 3:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 240 prob, 240/240 reached | ✓ all reachable  (0.1s)
+    v=4: 240 prob, 240/240 reached | ✓ all reachable  (0.1s)
+    v=5: no problematic 5-colourings
+    v=6: 720 prob, 720/720 reached | ✓ all reachable  (0.2s)
+
+  Graph 4:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: no problematic 5-colourings
+    v=4: 120 prob, 120/120 reached | ✓ all reachable  (0.1s)
+    v=5: 120 prob, 120/120 reached | ✓ all reachable  (0.1s)
+    v=6: 120 prob, 120/120 reached | ✓ all reachable  (0.1s)
+
+  Graph 5:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: no problematic 5-colourings
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+
+── n = 8  (14 graph(s)) ──
+
+  Graph 1:
+    v=0: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=1: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=2: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=3: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 2:
+    v=0: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=1: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=2: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=3: 3000 prob, 3000/3000 reached | ✓ all reachable  (0.5s)
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 3:
+    v=0: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=1: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=2: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=3: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 4:
+    v=0: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=1: 240 prob, 240/240 reached | ✓ all reachable  (0.2s)
+    v=2: 1080 prob, 1080/1080 reached | ✓ all reachable  (0.4s)
+    v=3: 1080 prob, 1080/1080 reached | ✓ all reachable  (0.4s)
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 5:
+    v=0: no problematic 5-colourings
+    v=1: 360 prob, 360/360 reached | ✓ all reachable  (0.3s)
+    v=2: 360 prob, 360/360 reached | ✓ all reachable  (0.3s)
+    v=3: 600 prob, 600/600 reached | ✓ all reachable  (0.4s)
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 6:
+    v=0: no problematic 5-colourings
+    v=1: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=2: no problematic 5-colourings
+    v=3: 3000 prob, 3000/3000 reached | ✓ all reachable  (0.5s)
+    v=4: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 7:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 3000 prob, 3000/3000 reached | ✓ all reachable  (0.5s)
+    v=4: 3000 prob, 3000/3000 reached | ✓ all reachable  (0.5s)
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 8:
+    v=0: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 1080 prob, 1080/1080 reached | ✓ all reachable  (0.4s)
+    v=4: 1080 prob, 1080/1080 reached | ✓ all reachable  (0.4s)
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 9:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: no problematic 5-colourings
+    v=4: no problematic 5-colourings
+    v=5: no problematic 5-colourings
+    v=6: no problematic 5-colourings
+    v=7: no problematic 5-colourings
+
+  Graph 10:
+    v=0: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=4: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=5: no problematic 5-colourings
+    v=6: 3000 prob, 3000/3000 reached | ✓ all reachable  (0.5s)
+    v=7: no problematic 5-colourings
+
+  Graph 11:
+    v=0: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=4: 480 prob, 480/480 reached | ✓ all reachable  (0.2s)
+    v=5: no problematic 5-colourings
+    v=6: 1440 prob, 1440/1440 reached | ✓ all reachable  (0.3s)
+    v=7: no problematic 5-colourings
+
+  Graph 12:
+    v=0: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=4: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=5: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=6: 1080 prob, 1080/1080 reached | ✓ all reachable  (0.4s)
+    v=7: no problematic 5-colourings
+
+  Graph 13:
+    v=0: no problematic 5-colourings
+    v=1: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=2: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=3: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=4: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=5: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=6: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=7: no problematic 5-colourings
+
+  Graph 14:
+    v=0: no problematic 5-colourings
+    v=1: no problematic 5-colourings
+    v=2: no problematic 5-colourings
+    v=3: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=4: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=5: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=6: 240 prob, 240/240 reached | ✓ all reachable  (0.3s)
+    v=7: no problematic 5-colourings
+
+
+======================================================================
+SUMMARY
+======================================================================
+Triangulations tested:     73
+Vertex removals (Phase 1): 618
+≤4-colourings checked:     507960
+Phase 1 MTL failures:      294300
+Phase 2 BFS checks:        168
+Phase 2 unreachable:       0
+Total runtime:             22.2s
+
+VERDICT: Phase 1 found ≤4-colourings where v has no free
+  colour in the used set (294300 cases).
+  HOWEVER, Phase 2 confirms all problematic 5-colourings
+  can reach a good state.  The failing 4-colourings may
+  not be reachable from problematic starts.
