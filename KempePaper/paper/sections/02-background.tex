@@ -1,0 +1,171 @@
+% sections/02-background.tex
+
+\section{Background}\label{sec:background}
+
+\subsection{Kempe Chains and the Constructive 4CT Architecture}
+\label{sec:kempe-architecture}
+
+\begin{definition}[Proper coloring]\label{def:proper-coloring}
+A \emph{proper $k$-coloring} of a graph $G = (V, E)$ is a function
+$c \colon V \to \{1, 2, \ldots, k\}$ such that $c(u) \neq c(v)$ for
+every edge $(u, v) \in E$.
+\end{definition}
+
+\begin{definition}[Kempe chain]\label{def:kempe-chain}
+Given a proper $k$-coloring $c$ and two colors $a \neq b$, the
+\emph{$(a,b)$-subgraph} is the subgraph of $G$ induced by vertices
+colored $a$ or $b$. A \emph{Kempe $(a,b)$-chain} is a connected
+component of this subgraph. A \emph{Kempe swap} on a chain $K$
+exchanges colors $a$ and $b$ on all vertices of $K$, producing a new
+proper coloring.
+\end{definition}
+
+The constructive approach to the 4CT proceeds by induction on $|V|$.
+Every planar graph has a vertex $v$ with $\deg(v) \leq 5$. Remove $v$
+to obtain $G' = G - v$; by induction, $G'$ has a proper 4-coloring.
+We attempt to extend this to $G$ by coloring $v$:
+
+\begin{itemize}
+  \item \textbf{Case 1} ($\deg(v) \leq 3$): At most three colors appear
+    among the neighbors of $v$, so a fourth is available. \checkmark
+  \item \textbf{Case 2} ($\deg(v) = 4$ or $5$, fewer than 4 distinct
+    colors among neighbors): A free color exists. \checkmark
+  \item \textbf{Case 3} ($\deg(v) = 4$ or $5$, all 4 colors appear
+    among neighbors): No color is immediately available. We must
+    reconfigure the coloring of $G'$ to free a color for $v$.
+\end{itemize}
+
+Case~3 is the heart of the problem. The standard proof of the
+4CT~\cite{robertson1997} resolves it via an unavoidable set of
+reducible configurations. We pursue an alternative approach: begin
+with a 5-coloring of $G'$ (which the Five Colour Theorem provides)
+and seek a sequence of Kempe swaps that reduces it to a 4-coloring.
+Crucially, this sequence must avoid \emph{unsafe} swaps.
+
+\begin{definition}[Unsafe swap]\label{def:unsafe-swap}
+A Kempe $(a,b)$-swap on a chain $K$ is \emph{unsafe} (with respect to
+vertex $v$) if performing the swap causes two previously disjoint
+Kempe chains (in some color pair involving $a$ or $b$) to merge into a
+single chain, where both original chains contain a neighbor of $v$.
+Such a merge destroys the separability needed to free a color for $v$.
+\end{definition}
+
+\begin{conjecture}[Conjecture 5.5 — BFS-Optimal Avoidance; DISPROVED]
+\label{conj:55}
+For every 5-coloring $c$ of a planar triangulation $G'$ and every
+vertex $v$, there exists a BFS-optimal path in $\R(G', 5)$ from $c$ to
+a 4-coloring that avoids all unsafe swaps with respect to $v$.
+\end{conjecture}
+
+This conjecture is false: at $n = 9$, exhaustive enumeration reveals that the triangulations $T_{9,25}$ and $T_{9,35}$ exhibit colorings where \emph{every} optimal-length path passes through an unsafe swap (Section~\ref{sec:ce-data}).
+
+\begin{conjecture}[Conjecture 5.5$'$ — Safe Path Existence]
+\label{conj:55prime}
+For every 5-coloring $c$ of a planar triangulation $G'$ and every
+vertex $v$, there exists a path in $\R(G', 5)$ from $c$ to a
+4-coloring that avoids all unsafe swaps with respect to $v$.
+\end{conjecture}
+
+Conjecture~\ref{conj:55prime} remains open and would suffice for the
+constructive proof.
+
+\subsection{The Reconfiguration Graph}\label{sec:reconfig-graph}
+
+\begin{definition}[Reconfiguration graph]\label{def:reconfig-graph}
+The \emph{reconfiguration graph} $\R(G, k)$ has as vertices the set
+of all proper $k$-colorings of $G$, with an edge between two colorings
+$c$ and $c'$ if $c'$ is obtained from $c$ by a single Kempe swap.
+\end{definition}
+
+For a fixed graph $G$ and $k \geq \chi(G)$, the structure of $\R(G, k)$
+encodes the entire landscape of recoloring moves. The BFS distance
+$d(c, c')$ in $\R(G, k)$ gives the minimum number of Kempe swaps
+required to transform $c$ into $c'$. A path from a 5-coloring to a
+4-coloring corresponds to a sequence of swaps that eliminates the fifth
+color.
+
+\paragraph{The ALL-PATHS census.}
+An exhaustive census of all reconfiguration paths for planar
+triangulations at $n \leq 9$ yields the following:
+\begin{itemize}
+  \item At $n \leq 8$: of the 42{,}168 (graph, coloring, vertex)
+    triples tested, 87.6\% are \emph{universal} (every optimal path is
+    safe). The remaining
+    12.4\% are \emph{mixed}: some optimal paths are safe, some are not.
+    No triple has all optimal paths unsafe.
+  \item At $n = 9$: a qualitative change occurs. Forty-eight
+    counterexample colorings (across two triangulations) have \emph{all}
+    optimal paths passing through unsafe swaps. All 48 have
+    $d_{\text{opt}} = 2$ and $d_{\text{safe}} = 3$.
+\end{itemize}
+
+The gap $d_{\text{safe}} - d_{\text{opt}} = 1$ is the minimum
+possible nonzero value: the safe detour adds exactly one swap.
+
+\subsection{Physical Models for Discrete Optimization}
+\label{sec:phys-models}
+
+\paragraph{The Anti-Ferromagnetic Potts Model.}
+The $q$-state Potts model on a graph $G = (V, E)$ assigns to each
+vertex a spin $\sigma_v \in \{1, \ldots, q\}$ with Hamiltonian
+\begin{equation}\label{eq:potts}
+  H(\sigma) = -J \sum_{(u,v) \in E} \delta_{\sigma_u, \sigma_v}.
+\end{equation}
+For $J < 0$ (anti-ferromagnetic), ground states are proper
+$q$-colorings. The partition function at inverse temperature $\beta$ is
+$Z(G, q, \beta) = \sum_\sigma e^{-\beta H(\sigma)}$. In the
+zero-temperature limit ($\beta \to \infty$), all non-proper-coloring
+terms are exponentially suppressed, so $Z$ converges to the number of
+proper $q$-colorings:
+$P(G, q) = \lim_{\beta \to \infty} Z(G, q, \beta)$.
+The Potts model provides a natural energy landscape on colorings.
+The Swendsen-Wang algorithm~\cite{swendsen1987} identifies random
+connected components via Fortuin-Kasteleyn bond percolation and
+recolors each component uniformly at random; a Kempe $(a,b)$-swap
+recolors a deterministic connected component of the $(a,b)$-subgraph
+by exchanging two specific colors. The structural parallel is that
+both operations act on connected components of a subgraph, but
+Swendsen-Wang uses stochastic bonding, acts on all components
+simultaneously, and draws new colors uniformly, whereas Kempe swaps
+are deterministic, local, and restricted to two colors.
+
+\paragraph{Protein Folding and Kinetic Traps.}
+Levinthal's paradox~\cite{levinthal1969} observes that a protein cannot
+find its native fold by random search through the astronomical number of
+conformations. Instead, the energy landscape is \emph{funneled}: a
+hierarchy of kinetic traps guides the chain toward the native state.
+Misfolded proteins correspond to deep local minima (kinetic traps) that
+are thermodynamically metastable. By analogy (not formal equivalence), a greedy (BFS-optimal)
+reconfiguration path may descend into a ``trap'' where all
+continuations involve unsafe swaps, while a safe path corresponds
+to a folding pathway that avoids misfolding. We caution that this
+is a heuristic motivation: protein folding occurs in a continuous,
+high-dimensional energy landscape, whereas Kempe reconfiguration is
+discrete and combinatorial.
+
+\paragraph{Magic Gems.}
+The Magic Gem framework~\cite{mathewson2025} defines a covariance-based
+energy for combinatorial objects by embedding discrete labels into
+geometric space and measuring local imbalance. Originally developed for
+magic squares (arXiv:2512.09170), the framework can be adapted to
+graph colorings by replacing the integer-grid embedding with the
+tetrahedral embedding of Section~\ref{sec:tet-embed}. The Magic Gem energy
+quantifies how far a coloring deviates from local ``balance'' — a
+condition that, for anti-ferromagnetic systems, favors maximal
+chromatic diversity in each neighborhood.
+
+\paragraph{TQFT and the Penrose Evaluation.}
+Kauffman~\cite{kauffman1990} showed that the 4CT is equivalent to a
+statement about the Penrose evaluation of planar trivalent graphs: every
+bridgeless planar trivalent graph evaluates to a nonzero value. This
+connects graph coloring to the Turaev-Viro invariants~\cite{turaev1992}
+of 3-manifolds via the representation theory of $\mathrm{SU}(2)$ at
+level 2 (equivalently, the Jones polynomial at a fourth root of unity).
+Our tetrahedral embedding is suggestive of this connection: the four
+color vectors form an orbit of the tetrahedral rotation group $A_4$
+inside the standard (spin-1) representation of $\mathrm{SO}(3)$ on
+$\mathbb{R}^3$, and the $180^\circ$ rotations that model Kempe swaps
+(Proposition~\ref{prop:kempe-rotation}) are elements of this subgroup.
+Whether this can be promoted to a rigorous link with the
+$6j$-symbol calculus of the Turaev-Viro theory remains an open
+question.

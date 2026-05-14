@@ -1,0 +1,220 @@
+% sections/05-discussion.tex
+
+\section{Discussion}\label{sec:discussion}
+
+The energy functionals introduced in Section~\ref{sec:methods} are
+descriptive tools: they characterize the reconfiguration landscape but
+do not, by themselves, prove that safe paths exist. Their value lies
+in revealing \emph{structure} — potential connections to established
+mathematical frameworks that may eventually yield rigorous results.
+We sketch four speculative connections below, to topological quantum
+field theory, sheaf cohomology, chromatic polynomials, and discharging.
+None of the correspondences below have been made rigorous; they are
+presented as potential research directions, not as established results.
+
+\subsection{Connection to TQFT and the Penrose Evaluation
+  {\normalfont\textmd{[Speculative]}}}
+\label{sec:tqft}
+
+The observations in this subsection are heuristic analogies; no
+rigorous correspondence has been established.
+
+The tetrahedral embedding (Section~\ref{sec:tet-embed}) maps the four
+colors to vectors in $\mathbb{R}^3$ that span the spin-1
+(adjoint) representation of $\mathfrak{so}(3)$. In this representation:
+
+\begin{itemize}
+  \item A proper 4-coloring of a planar triangulation corresponds to a
+    spin network state — an assignment of $\mathfrak{so}(3)$
+    representations to the edges of the dual graph.
+  \item A Kempe $(a,b)$-swap corresponds to a $6j$-symbol recoupling:
+    the $180^\circ$ rotation (Proposition~\ref{prop:kempe-rotation})
+    exchanges two basis vectors, which is analogous to the action of a
+    recoupling coefficient in the Turaev-Viro state
+    sum~\cite{turaev1992} (though the correspondence has not been made
+    rigorous).
+  \item The Penrose evaluation $\Pen(G)$~\cite{kauffman1990} of a
+    bridgeless planar trivalent graph counts the number of proper
+    3-edge-colorings (equivalently, proper 4-face-colorings of the
+    dual), weighted by signs. Kauffman proved that $\Pen(G) \neq 0$
+    is equivalent to the 4CT.
+\end{itemize}
+
+The Magic Gem covariance energy can be interpreted heuristically as a
+\emph{continuous relaxation} of the Penrose state sum. While $\Pen(G)$
+counts discrete colorings with signs, $E_{\mathrm{MG}}(G, c)$ measures
+how far a given coloring is from the balanced (zero-centroid) condition
+that characterizes contributions to $\Pen(G)$; the analogy is
+suggestive but has not been verified. It is tempting to conjecture that the
+two-basin structure observed in Section~\ref{sec:kinetic-trap}
+corresponds to the sign structure in the Penrose evaluation —
+Basin~A to opposite-sign contributions, Basin~B to same-sign — but we
+have no direct evidence for this correspondence. If it can be made
+precise, it would connect the kinetic trap structure to the
+nonvanishing of $\Pen(G)$.
+
+\begin{remark}\label{rem:tqft-rigidity}
+We speculate that surface tension rigidity
+(Definition~\ref{def:st-rigidity}) might characterize degeneracy in the
+TQFT state space: zero-variance surface tension would correspond to
+Kempe chains that are rigid under the $\mathrm{SO}(3)$ action. However,
+the Surface Tension Rigidity Conjecture was falsified at $n \geq 10$
+(Remark~\ref{rem:st-falsified}), so any such characterization would
+need to be substantially revised.
+\end{remark}
+
+\subsection{Connection to Sheaf Cohomology}\label{sec:sheaf}
+
+Cellular sheaves on graphs~\cite{ghrist2014} provide a cohomological
+framework for constraint satisfaction. We outline a potential
+formalization here; no results in this paper depend on it, and we do not
+establish any sheaf-theoretic theorems. Given a graph $G = (V, E)$ and
+a proper $k$-coloring $c$, define a sheaf $\mathcal{F}_c$ as follows:
+\begin{itemize}
+  \item To each vertex $v$, assign the stalk $\mathcal{F}_c(v)$: the
+    set of colors available to $v$ given the coloring of its neighbors.
+  \item To each edge $(u, v)$, assign the restriction map: the
+    constraint that $c(u) \neq c(v)$.
+\end{itemize}
+The zeroth cohomology $H^0(G, \mathcal{F}_c)$ encodes global colorings
+consistent with the local constraints. The first cohomology
+$H^1(G, \mathcal{F}_c)$ measures obstructions to extending local
+colorings globally.
+
+We note one suggestive (but unproven) analogy with surface tension:
+\begin{itemize}
+  \item The boundary edges of a Kempe chain $K$ are precisely the
+    edges in the \v{C}ech nerve of the sheaf cover restricted to the
+    $(a,b)$-subgraph.
+  \item Rigidity ($\Gamma_{ab} = 0$) means all chains have the same
+    normalized boundary. We speculate that this corresponds to maximally
+    constrained restriction maps and hence nonzero $H^1$, but we have
+    not verified this correspondence, and the Surface Tension Rigidity
+    Conjecture itself was falsified at $n \geq 10$.
+  \item Motivated by the $n = 9$ data (where the correspondence held),
+    we tentatively define: a coloring sheaf has \emph{planar-positivity}
+    if no Kempe chain in any color pair has rigid surface tension.
+    Whether planar-positivity implies trivial $H^1$ obstructions to
+    reconfiguration — let alone safe path existence — remains entirely
+    open.
+\end{itemize}
+
+\subsection{Connection to Chromatic Polynomials}
+\label{sec:chromatic}
+
+The Potts partition function
+(Section~\ref{sec:potts}) provides a bridge between the energy
+landscape and the chromatic polynomial:
+\begin{equation}\label{eq:potts-bridge}
+  P(G, q) = \lim_{\beta \to \infty} Z(G, q, \beta).
+\end{equation}
+The chromatic polynomial evaluates via deletion-contraction:
+$P(G, q) = P(G - e, q) - P(G / e, q)$ for any edge $e$. Each term in
+this recursion corresponds to a ``channel'' in the reconfiguration
+graph — either the edge $e$ is bichromatic (deletion) or monochromatic
+(contraction).
+
+We speculate that the two-basin structure in the energy landscape
+(Section~\ref{sec:kinetic-trap}) may correspond to the sign structure
+in deletion-contraction — Basin~A to contraction channels where the
+edge constraint is tight, Basin~B to deletion channels where the
+constraint is relaxed. This analogy is suggestive but unverified: we
+have not shown that individual basins align with specific
+deletion-contraction terms.
+
+\begin{remark}
+The chromatic polynomial $P(G, q)$ has roots on the real line that
+accumulate at $q = 4$ for planar graphs (the Beraha conjecture). Whether
+this accumulation point is related to the kinetic trap structure observed
+in Section~\ref{sec:kinetic-trap} is an open question; we have no
+evidence connecting the two.
+\end{remark}
+
+\subsection{Connection to Discharging}\label{sec:discharging}
+
+The discharging method — used in both proofs of the
+4CT~\cite{appel1977, robertson1997} — assigns charges to vertices and
+faces, then redistributes charge via local rules to derive
+contradictions. The electrostatic potential
+(Section~\ref{sec:electrostatic}) generalizes this:
+
+\begin{itemize}
+  \item The initial charge assignment $\rho(v) = \delta_{c(v), 5}$ is
+    analogous to the standard initial charge $6 - \deg(v)$ in
+    discharging, but defined on \emph{colorings} rather than on the
+    graph structure.
+  \item The Laplacian diffusion $V = L^+ \rho$ is a continuous analog
+    of the discrete charge redistribution rules.
+  \item The electric field gradient $\nabla E(v)$ identifies vertices
+    where the charge distribution is most uneven — potential locations
+    for discharging rules that resolve the fifth color.
+\end{itemize}
+
+More speculatively, surface tension was initially hypothesized to guide
+the search for smaller unavoidable sets. However, the falsification of
+the Surface Tension Rigidity Conjecture at $n \geq 10$
+(Remark~\ref{rem:st-falsified}) undermines this idea: rigid surface
+tension does not reliably identify the hard cases at larger scales. A
+revised version of this speculation would need a different indicator —
+perhaps the local entropy or kinetic trap signatures that do persist.
+
+Separately, the Magic Gem energy might serve as a \emph{reducibility
+criterion}: the Magic Gem energy of a boundary coloring, viewed as a
+function of possible interior extensions, could in principle detect
+non-extendability via high energy barriers. We have not tested this
+idea computationally.
+
+\subsection{Limitations}\label{sec:limitations}
+
+We acknowledge several limitations of the present approach:
+
+\begin{enumerate}
+  \item \textbf{Descriptive, not prescriptive.} The energy functionals
+    characterize the landscape but do not directly produce safe paths.
+    A prescriptive version would require proving that gradient descent
+    on, say, $E_{\mathrm{MG}}$ with a ridge-crossing heuristic always
+    finds a safe path.
+
+  \item \textbf{Continuous vs.\ discrete.} The tetrahedral embedding
+    and Laplacian potential are continuous objects defined on a discrete
+    graph. The continuous approximation cannot capture all discrete
+    merge constraints. In particular, the surface tension rigidity
+    condition (Definition~\ref{def:st-rigidity}) is a
+    \emph{combinatorial} statement that the continuous energy
+    functionals can only approximate.
+
+  \item \textbf{Overlapping distributions.} While local entropy and
+    surface tension rigidity discriminate well on the $n = 9$
+    counterexamples, the distributions of safe and unsafe values
+    overlap for all individual metrics. A composite score combining
+    multiple functionals would likely improve discrimination, but we
+    have not optimized such a combination.
+
+  \item \textbf{Small sample size for energy analysis.} The energy
+    functional analysis in
+    Sections~\ref{sec:discriminating}--\ref{sec:kinetic-trap} is
+    verified only at $n = 9$ (48 counterexample colorings across 2
+    triangulations). Subsequent enumeration at $n = 10$ tested
+    approximately 1.9 million cases and found safe paths in 100\% of
+    instances, with maximum safe detour cost
+    $d_{\text{safe}} - d_{\text{opt}} = 1$, providing further evidence
+    for safe path existence but on a broader dataset than the energy
+    functional analysis was originally applied to.
+
+  \item \textbf{Surface Tension Rigidity Conjecture falsified.}
+    The Surface Tension Rigidity Conjecture
+    (Conjecture~\ref{conj:st-rigidity}) was falsified by subsequent
+    computation at $n \geq 10$. While zero surface tension rigidity
+    correlates with merge-proneness at $n = 9$, this correlation breaks
+    down at larger scales. The conjecture as stated is false; however,
+    the local entropy discrimination and kinetic trap structure continue
+    to hold in the extended dataset.
+
+  \item \textbf{Code--paper definition alignment.} The computational
+    implementations of surface tension, ruggedness, and entropy use
+    slightly different conventions than the formal definitions given in
+    Section~\ref{sec:methods} (see the Methods appendix for details on
+    discretization choices). All results presented in this paper use
+    the definitions as specified in the paper text; where the code
+    diverges, the paper definitions govern.
+\end{enumerate}
