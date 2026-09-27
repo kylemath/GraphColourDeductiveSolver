@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graph Colour — Four Colour Theorem</title>
+  <meta name="description" content="Project site for a constructive approach to the Four Colour Theorem: an interactive exploration, the inspiration story, and the proof navigator.">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="site-nav">
+    <a class="brand" href="#overview">
+      <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      Graph Colour
+    </a>
+    <nav aria-label="Site">
+      <a href="#overview">Overview</a>
+      <a href="#explore">Explore</a>
+      <a href="#inspiration">Inspiration</a>
+      <a href="#navigator">Proof</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="overview" class="overview">
+      <div class="overview-inner">
+        <p class="eyebrow">Four Colour Theorem</p>
+        <h1>A constructive colouring of planar graphs</h1>
+        <p class="lead">
+          Every planar graph <span class="math">G</span> satisfies <span class="math">χ(G) ≤ 4</span>.
+          This site gathers the working material for a constructive proof: an interactive account of the classical theorem, the physical picture that suggested the argument, and a live map of the proof tree.
+        </p>
+        <div class="cards">
+          <a class="card" href="#explore">
+            <span class="card-kicker">01</span>
+            <h2>Explore</h2>
+            <p>Maps and dual graphs, Euler’s formula, Kempe chains, discharging, and a colouring playground for the classical theorem.</p>
+          </a>
+          <a class="card" href="#inspiration">
+            <span class="card-kicker">02</span>
+            <h2>Inspiration</h2>
+            <p>The background story. Kempe swaps as charge flow on an anti-ferromagnetic Potts model, lifted to an SO(3) rotation of a tetrahedral magic gem.</p>
+          </a>
+          <a class="card" href="#navigator">
+            <span class="card-kicker">03</span>
+            <h2>Proof</h2>
+            <p>The proof tree for this project. Track statements, approaches, kill criteria, and what is proved, blocked, or still open.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="explore" class="exhibit exhibit-app">
+      <div class="kicker">
+        <h2>Explore</h2>
+        <p>Interactive introduction to the Four Colour Theorem</p>
+      </div>
+      <iframe
+        class="frame frame-app"
+        src="explore/index.html"
+        title="Interactive Four Colour Theorem exploration"
+      ></iframe>
+    </section>
+
+    <section id="inspiration" class="exhibit">
+      <div class="kicker">
+        <h2>Inspiration</h2>
+        <p>Background story — spin glasses, Kempe chains, and magic gems</p>
+      </div>
+      <iframe
+        id="story-frame"
+        class="frame frame-story"
+        src="story/index.html"
+        title="Background inspiration story"
+        scrolling="no"
+      ></iframe>
+    </section>
+
+    <section id="navigator" class="exhibit exhibit-app">
+      <div class="kicker">
+        <h2>Proof</h2>
+        <p>Editable proof tree. Changes stay in this browser.</p>
+      </div>
+      <iframe
+        class="frame frame-app"
+        src="navigator/index.html"
+        title="Proof Navigator"
+      ></iframe>
+    </section>
+  </main>
+
+  <script src="site.js"></script>
+</body>
+</html>

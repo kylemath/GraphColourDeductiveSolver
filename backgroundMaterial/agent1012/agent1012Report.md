@@ -61,7 +61,7 @@ The Agent 1007 problem set is an excellent reference that weaves together the hi
 
 ## 2. Summary of the Interactive Web Demo
 
-I created a self-contained web application in `backgroundMaterial/agent1012/` comprising five files (2,688 lines total) that present the Four Colour Theorem as a step-by-step interactive exploration.
+I created a self-contained web application comprising five files (2,688 lines total) that present the Four Colour Theorem as a step-by-step interactive exploration. It now lives at `docs/explore/` and is linked from the project site.
 
 ### 2.1 Architecture
 
@@ -73,7 +73,7 @@ I created a self-contained web application in `backgroundMaterial/agent1012/` co
 | `animations.js` | 705 | Six interactive demo controllers: intro map colouring, dual graph step-through, Euler formula explorer, Kempe chain manipulator, discharging visualiser, and full colouring playground |
 | `app.js` | 96 | Tab switching, navigation, lazy initialisation, high-DPI canvas scaling |
 
-No external dependencies are required — the app runs by opening `index.html` in any modern browser.
+No external dependencies are required — the app runs from `docs/explore/index.html`, linked as Explore on the project site.
 
 ### 2.2 The Eight Tabs
 

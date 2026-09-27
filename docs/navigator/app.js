@@ -4,25 +4,47 @@
 const State = (() => {
   const STORAGE_KEY = 'proofNavigator_tree';
   const JOURNAL_KEY = 'proofNavigator_journal';
+  const memory = new Map();
   let tree = null;
   let journal = [];
+  let persistent = true;
+
+  function storageGet(key) {
+    if (!persistent) return memory.has(key) ? memory.get(key) : null;
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      persistent = false;
+      return memory.has(key) ? memory.get(key) : null;
+    }
+  }
+
+  function storageSet(key, value) {
+    memory.set(key, value);
+    if (!persistent) return;
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      persistent = false;
+    }
+  }
 
   function init() {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved = storageGet(STORAGE_KEY);
     if (saved) {
       try { tree = JSON.parse(saved); } catch (e) { tree = JSON.parse(JSON.stringify(DEFAULT_TREE)); }
     } else {
       tree = JSON.parse(JSON.stringify(DEFAULT_TREE));
     }
-    const savedJournal = localStorage.getItem(JOURNAL_KEY);
+    const savedJournal = storageGet(JOURNAL_KEY);
     if (savedJournal) {
       try { journal = JSON.parse(savedJournal); } catch (e) { journal = []; }
     }
   }
 
   function save() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(tree));
-    localStorage.setItem(JOURNAL_KEY, JSON.stringify(journal));
+    storageSet(STORAGE_KEY, JSON.stringify(tree));
+    storageSet(JOURNAL_KEY, JSON.stringify(journal));
   }
 
   function reset() {
@@ -73,7 +95,9 @@ const State = (() => {
     reader.readAsText(file);
   }
 
-  return { init, save, reset, getTree, setTree, getJournal, addJournalEntry, exportJSON, importJSON };
+  function canPersist() { return persistent; }
+
+  return { init, save, reset, getTree, setTree, getJournal, addJournalEntry, exportJSON, importJSON, canPersist };
 })();
 
 
@@ -208,12 +232,15 @@ function showModal(title, onConfirm) {
   newConfirm.addEventListener('click', () => {
     const t = document.getElementById('modal-node-title').value.trim();
     if (!t) return;
-    onConfirm({
-      title: t,
-      statement: document.getElementById('modal-node-statement').value.trim(),
-      approach: document.getElementById('modal-node-approach').value.trim()
-    });
-    hideModal();
+    try {
+      onConfirm({
+        title: t,
+        statement: document.getElementById('modal-node-statement').value.trim(),
+        approach: document.getElementById('modal-node-approach').value.trim()
+      });
+    } finally {
+      hideModal();
+    }
   });
 }
 
@@ -240,6 +267,10 @@ document.addEventListener('DOMContentLoaded', () => {
   Tree.render(document.getElementById('tree-container'), tree, 0);
   updateGlobalProgress();
   renderJournal();
+  if (!State.canPersist()) {
+    const label = document.getElementById('project-name');
+    if (label) label.textContent = 'Changes last until reload — export JSON to keep them';
+  }
 
   /* ---- Detail panel: auto-save on changes ---- */
   const fieldMap = [

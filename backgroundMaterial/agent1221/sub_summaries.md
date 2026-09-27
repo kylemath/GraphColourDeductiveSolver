@@ -58,7 +58,7 @@ SPARK's key advantage over DSATUR is the Kempe repair phase: rather than accepti
 
 ## Document 3: index.html
 
-**Source:** `backgroundMaterial/agent1012/index.html` (711 lines)  
+**Source:** `docs/explore/index.html` (711 lines)  
 **Type:** Interactive single-page web application
 
 The HTML file is the structural backbone of the interactive demo described in Agent 1012's report. It is a semantic, accessibility-annotated document with 8 tabbed sections (`role="tabpanel"`, ARIA attributes on the tab bar), supported by three JavaScript files (`graph.js`, `animations.js`, `app.js`) and one stylesheet (`styles.css`), with zero external dependencies.

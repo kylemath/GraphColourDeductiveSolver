@@ -1,0 +1,251 @@
+:root {
+  --bg: #0d1117;
+  --bg-raised: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-dim: #b1bac4;
+  --text-faint: #7d8590;
+  --accent: #58a6ff;
+  --purple: #bc8cff;
+  --nav-h: 3.25rem;
+  --kicker-h: 2.75rem;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: var(--nav-h);
+  padding: 0 1.25rem;
+  background: rgba(13, 17, 23, 0.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.mark {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  width: 14px;
+  height: 14px;
+}
+
+.mark i {
+  display: block;
+  border-radius: 1px;
+}
+
+.mark i:nth-child(1) { background: #f85149; }
+.mark i:nth-child(2) { background: #58a6ff; }
+.mark i:nth-child(3) { background: #3fb950; }
+.mark i:nth-child(4) { background: #d29922; }
+
+.site-nav nav {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+
+.site-nav nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.92rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.site-nav nav a:hover,
+.site-nav nav a.is-active {
+  color: var(--text);
+  background: #21262d;
+}
+
+.site-nav nav a.is-active {
+  color: var(--accent);
+}
+
+.overview {
+  scroll-margin-top: var(--nav-h);
+  border-bottom: 1px solid var(--border);
+}
+
+.overview-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 3.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--purple);
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.overview h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+}
+
+.lead {
+  margin: 0 0 2rem;
+  max-width: 62ch;
+  color: var(--text-dim);
+  font-size: 1.08rem;
+}
+
+.math {
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-style: italic;
+  color: var(--text);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+
+.card {
+  display: block;
+  padding: 1.15rem 1.15rem 1.25rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  min-height: 100%;
+}
+
+.card:hover {
+  border-color: #58a6ff;
+}
+
+.card-kicker {
+  display: block;
+  margin-bottom: 0.7rem;
+  color: var(--text-faint);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.card h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.exhibit {
+  scroll-margin-top: var(--nav-h);
+}
+
+.kicker {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--kicker-h);
+  padding: 0.7rem 1.25rem;
+  background: var(--bg-raised);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.kicker h2 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.kicker p {
+  margin: 0;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: var(--bg);
+}
+
+.frame-story {
+  min-height: 70vh;
+  overflow: hidden;
+}
+
+.frame-app {
+  height: calc(100vh - var(--nav-h) - var(--kicker-h));
+  min-height: 520px;
+}
+
+@media (max-width: 800px) {
+  .cards { grid-template-columns: 1fr; }
+  .kicker { flex-direction: column; gap: 0.15rem; align-items: flex-start; }
+  .kicker p { text-align: left; }
+  .overview-inner { padding-top: 2.5rem; }
+}
+
+@media (max-width: 640px) {
+  :root { --nav-h: 4.5rem; }
+
+  .site-nav {
+    height: auto;
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 0.1rem;
+    padding: 0.4rem 0.75rem 0.3rem;
+  }
+
+  .brand { flex: 1 0 100%; }
+
+  .site-nav nav {
+    width: 100%;
+    gap: 0.1rem;
+  }
+
+  .site-nav nav a {
+    padding: 0.28rem 0.45rem;
+    font-size: 0.84rem;
+  }
+}

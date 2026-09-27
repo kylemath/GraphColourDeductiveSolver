@@ -2,7 +2,7 @@
 
 ## Original Task
 
-Review Agent 1221's report (agent1221Report.md and 4 sub-reports) evaluating 11 proof strategies and 20 cross-domain areas for the Four Colour Theorem project. Apply a viability/feasibility threshold to identify the most promising options. Produce a detailed integration plan for adding these filtered options to the ProofNavigator web application (currently at `ProofNavigator/`), specifying what new nodes, sub-goals, and metadata to add or update in the proof tree data structure (`data.js`).
+Review Agent 1221's report (agent1221Report.md and 4 sub-reports) evaluating 11 proof strategies and 20 cross-domain areas for the Four Colour Theorem project. Apply a viability/feasibility threshold to identify the most promising options. Produce a detailed integration plan for adding these filtered options to the ProofNavigator web application (currently at `docs/navigator/`), specifying what new nodes, sub-goals, and metadata to add or update in the proof tree data structure (`data.js`).
 
 ## Context
 

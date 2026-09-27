@@ -1,6 +1,8 @@
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+[hidden] { display: none !important; }
+
 :root {
   --bg-0: #0d1117;
   --bg-1: #161b22;
@@ -560,6 +562,8 @@ textarea:focus { border-color: var(--accent); }
   justify-content: center;
   z-index: 100;
 }
+
+.modal-overlay[hidden] { display: none; }
 
 .modal {
   background: var(--bg-1);
