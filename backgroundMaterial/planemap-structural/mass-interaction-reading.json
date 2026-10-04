@@ -1,0 +1,1658 @@
+{
+  "scope": "Component interactions on order17 graph0 at roots4 and8 only. Three-move paths and target distances are diagnostics, not a new rank or proposal to lengthen the two-swap candidate. No selector, general lemma or complexity claim.",
+  "order": 17,
+  "graph_index": 0,
+  "ascii": "17 bcdef,afghc,abhid,acijke,adklf,aelmgb,bfmnh,bgnoic,chojd,diopk,djpqle,ekqmf,flqng,gmqpoh,hnpji,jonqk,kpnml",
+  "ascii_sha256": "1203efa037ee84da877d10d6f94b4d81f4224dab98ffb995de0abb125fb2b3c5",
+  "checker_sha256": "fcbf6ccc4ac78a269f8375447dedaf8c14ab9d8e17f0cbd1c963b861fdb58865",
+  "inputs": {
+    "mass-macro.py": "b4afec7b22f0153310fd345db3831782d0056702e79c81119b06d4e611eeb4b0",
+    "mass-macro-results.json": "42bf13cdb9d87d952d89982fd2778cd407e7e5ae5c353d2cdb33fda5891b9c80"
+  },
+  "roots": {
+    "4": {
+      "root": 4,
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "boundary": [
+        0,
+        3,
+        10,
+        11,
+        5
+      ],
+      "orbits": 54,
+      "non_target": 38,
+      "non_target_q_histogram": {
+        "101": 2,
+        "109": 2,
+        "119": 2,
+        "129": 2,
+        "143": 5,
+        "145": 4,
+        "147": 2,
+        "150": 2,
+        "151": 2,
+        "153": 2,
+        "154": 2,
+        "155": 2,
+        "163": 4,
+        "167": 1,
+        "171": 4
+      },
+      "stuck_states": [
+        {
+          "coloring": [
+            0,
+            1,
+            2,
+            3,
+            2,
+            0,
+            3,
+            1,
+            0,
+            1,
+            0,
+            3,
+            1,
+            2,
+            3,
+            2
+          ],
+          "rank": [
+            1,
+            143,
+            1878
+          ],
+          "profile": [
+            {
+              "pair": [
+                0,
+                1
+              ],
+              "contribution": 13,
+              "components": [
+                {
+                  "vertices": [
+                    0,
+                    1,
+                    6,
+                    13
+                  ],
+                  "boundary": [
+                    0
+                  ],
+                  "exterior_size": 3,
+                  "contribution": 9
+                },
+                {
+                  "vertices": [
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "boundary": [
+                    10,
+                    11
+                  ],
+                  "exterior_size": 2,
+                  "contribution": 4
+                }
+              ]
+            },
+            {
+              "pair": [
+                0,
+                2
+              ],
+              "contribution": 9,
+              "components": [
+                {
+                  "vertices": [
+                    0,
+                    2,
+                    5,
+                    6,
+                    11,
+                    16
+                  ],
+                  "boundary": [
+                    0,
+                    5,
+                    11
+                  ],
+                  "exterior_size": 3,
+                  "contribution": 9
+                },
+                {
+                  "vertices": [
+                    9,
+                    14
+                  ],
+                  "boundary": [],
+                  "exterior_size": 2,
+                  "contribution": 0
+                }
+              ]
+            },
+            {
+              "pair": [
+                0,
+                3
+              ],
+              "contribution": 13,
+              "components": [
+                {
+                  "vertices": [
+                    0,
+                    3,
+                    9,
+                    15
+                  ],
+                  "boundary": [
+                    0,
+                    3
+                  ],
+                  "exterior_size": 2,
+                  "contribution": 4
+                },
+                {
+                  "vertices": [
+                    6,
+                    7,
+                    11,
+                    12
+                  ],
+                  "boundary": [
+                    11
+                  ],
+                  "exterior_size": 3,
+                  "contribution": 9
+                }
+              ]
+            },
+            {
+              "pair": [
+                1,
+                2
+              ],
+              "contribution": 36,
+              "components": [
+                {
+                  "vertices": [
+                    1,
+                    2,
+                    5,
+                    8,
+                    10,
+                    13,
+                    14,
+                    16
+                  ],
+                  "boundary": [
+                    5,
+                    10
+                  ],
+                  "exterior_size": 6,
+                  "contribution": 36
+                }
+              ]
+            },
+            {
+              "pair": [
+                1,
+                3
+              ],
+              "contribution": 36,
+              "components": [
+                {
+                  "vertices": [
+                    1,
+                    3,
+                    7,
+                    8,
+                    10,
+                    12,
+                    13,
+                    15
+                  ],
+                  "boundary": [
+                    3,
+                    10
+                  ],
+                  "exterior_size": 6,
+                  "contribution": 36
+                }
+              ]
+            },
+            {
+              "pair": [
+                2,
+                3
+              ],
+              "contribution": 36,
+              "components": [
+                {
+                  "vertices": [
+                    2,
+                    3,
+                    5,
+                    7,
+                    12,
+                    14,
+                    15,
+                    16
+                  ],
+                  "boundary": [
+                    3,
+                    5
+                  ],
+                  "exterior_size": 6,
+                  "contribution": 36
+                }
+              ]
+            }
+          ],
+          "distinct_first_successors": [
+            {
+              "coloring": [
+                0,
+                1,
+                2,
+                3,
+                2,
+                0,
+                3,
+                0,
+                1,
+                0,
+                1,
+                3,
+                1,
+                2,
+                3,
+                2
+              ],
+              "rank": [
+                1,
+                163,
+                1898
+              ],
+              "self_mod_color": false,
+              "profile": [
+                {
+                  "pair": [
+                    0,
+                    1
+                  ],
+                  "contribution": 13,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        1,
+                        6,
+                        13
+                      ],
+                      "boundary": [
+                        0
+                      ],
+                      "exterior_size": 3,
+                      "contribution": 9
+                    },
+                    {
+                      "vertices": [
+                        8,
+                        9,
+                        10,
+                        11
+                      ],
+                      "boundary": [
+                        10,
+                        11
+                      ],
+                      "exterior_size": 2,
+                      "contribution": 4
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    2
+                  ],
+                  "contribution": 17,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        2,
+                        5,
+                        6,
+                        8,
+                        14
+                      ],
+                      "boundary": [
+                        0,
+                        5
+                      ],
+                      "exterior_size": 4,
+                      "contribution": 16
+                    },
+                    {
+                      "vertices": [
+                        10,
+                        16
+                      ],
+                      "boundary": [
+                        10
+                      ],
+                      "exterior_size": 1,
+                      "contribution": 1
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    3
+                  ],
+                  "contribution": 25,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        3,
+                        6,
+                        7,
+                        8,
+                        10,
+                        12,
+                        15
+                      ],
+                      "boundary": [
+                        0,
+                        3,
+                        10
+                      ],
+                      "exterior_size": 5,
+                      "contribution": 25
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    2
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        2,
+                        5,
+                        9,
+                        11,
+                        13,
+                        14,
+                        16
+                      ],
+                      "boundary": [
+                        5,
+                        11
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    3
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        3,
+                        7,
+                        9,
+                        11,
+                        12,
+                        13,
+                        15
+                      ],
+                      "boundary": [
+                        3,
+                        11
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    2,
+                    3
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        2,
+                        3,
+                        5,
+                        7,
+                        12,
+                        14,
+                        15,
+                        16
+                      ],
+                      "boundary": [
+                        3,
+                        5
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "coloring": [
+                0,
+                1,
+                2,
+                3,
+                2,
+                0,
+                3,
+                1,
+                0,
+                1,
+                0,
+                3,
+                1,
+                2,
+                3,
+                2
+              ],
+              "rank": [
+                1,
+                143,
+                1878
+              ],
+              "self_mod_color": true,
+              "profile": [
+                {
+                  "pair": [
+                    0,
+                    1
+                  ],
+                  "contribution": 13,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        1,
+                        6,
+                        13
+                      ],
+                      "boundary": [
+                        0
+                      ],
+                      "exterior_size": 3,
+                      "contribution": 9
+                    },
+                    {
+                      "vertices": [
+                        8,
+                        9,
+                        10,
+                        11
+                      ],
+                      "boundary": [
+                        10,
+                        11
+                      ],
+                      "exterior_size": 2,
+                      "contribution": 4
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    2
+                  ],
+                  "contribution": 9,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        2,
+                        5,
+                        6,
+                        11,
+                        16
+                      ],
+                      "boundary": [
+                        0,
+                        5,
+                        11
+                      ],
+                      "exterior_size": 3,
+                      "contribution": 9
+                    },
+                    {
+                      "vertices": [
+                        9,
+                        14
+                      ],
+                      "boundary": [],
+                      "exterior_size": 2,
+                      "contribution": 0
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    3
+                  ],
+                  "contribution": 13,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        3,
+                        9,
+                        15
+                      ],
+                      "boundary": [
+                        0,
+                        3
+                      ],
+                      "exterior_size": 2,
+                      "contribution": 4
+                    },
+                    {
+                      "vertices": [
+                        6,
+                        7,
+                        11,
+                        12
+                      ],
+                      "boundary": [
+                        11
+                      ],
+                      "exterior_size": 3,
+                      "contribution": 9
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    2
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        2,
+                        5,
+                        8,
+                        10,
+                        13,
+                        14,
+                        16
+                      ],
+                      "boundary": [
+                        5,
+                        10
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    3
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        3,
+                        7,
+                        8,
+                        10,
+                        12,
+                        13,
+                        15
+                      ],
+                      "boundary": [
+                        3,
+                        10
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    2,
+                    3
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        2,
+                        3,
+                        5,
+                        7,
+                        12,
+                        14,
+                        15,
+                        16
+                      ],
+                      "boundary": [
+                        3,
+                        5
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "coloring": [
+                0,
+                1,
+                2,
+                3,
+                2,
+                0,
+                3,
+                1,
+                2,
+                1,
+                0,
+                3,
+                1,
+                0,
+                3,
+                2
+              ],
+              "rank": [
+                1,
+                167,
+                1902
+              ],
+              "self_mod_color": false,
+              "profile": [
+                {
+                  "pair": [
+                    0,
+                    1
+                  ],
+                  "contribution": 25,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        1,
+                        6,
+                        8,
+                        13,
+                        14
+                      ],
+                      "boundary": [
+                        0
+                      ],
+                      "exterior_size": 5,
+                      "contribution": 25
+                    },
+                    {
+                      "vertices": [
+                        10,
+                        11
+                      ],
+                      "boundary": [
+                        10,
+                        11
+                      ],
+                      "exterior_size": 0,
+                      "contribution": 0
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    2
+                  ],
+                  "contribution": 9,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        2,
+                        5,
+                        6,
+                        11,
+                        16
+                      ],
+                      "boundary": [
+                        0,
+                        5,
+                        11
+                      ],
+                      "exterior_size": 3,
+                      "contribution": 9
+                    },
+                    {
+                      "vertices": [
+                        9,
+                        14
+                      ],
+                      "boundary": [],
+                      "exterior_size": 2,
+                      "contribution": 0
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    3
+                  ],
+                  "contribution": 25,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        3
+                      ],
+                      "boundary": [
+                        0,
+                        3
+                      ],
+                      "exterior_size": 0,
+                      "contribution": 0
+                    },
+                    {
+                      "vertices": [
+                        6,
+                        7,
+                        11,
+                        12,
+                        14,
+                        15
+                      ],
+                      "boundary": [
+                        11
+                      ],
+                      "exterior_size": 5,
+                      "contribution": 25
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    2
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        2,
+                        5,
+                        8,
+                        9,
+                        10,
+                        13,
+                        16
+                      ],
+                      "boundary": [
+                        5,
+                        10
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    3
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        3,
+                        7,
+                        8,
+                        10,
+                        12,
+                        13,
+                        15
+                      ],
+                      "boundary": [
+                        3,
+                        10
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    2,
+                    3
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        2,
+                        3,
+                        5,
+                        7,
+                        9,
+                        12,
+                        15,
+                        16
+                      ],
+                      "boundary": [
+                        3,
+                        5
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "coloring": [
+                0,
+                1,
+                2,
+                3,
+                2,
+                3,
+                0,
+                1,
+                0,
+                1,
+                3,
+                0,
+                1,
+                2,
+                3,
+                2
+              ],
+              "rank": [
+                1,
+                163,
+                1898
+              ],
+              "self_mod_color": false,
+              "profile": [
+                {
+                  "pair": [
+                    0,
+                    1
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        1,
+                        7,
+                        8,
+                        9,
+                        10,
+                        12,
+                        13
+                      ],
+                      "boundary": [
+                        0,
+                        10
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    2
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        2,
+                        5,
+                        7,
+                        9,
+                        12,
+                        14,
+                        16
+                      ],
+                      "boundary": [
+                        0,
+                        5
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    0,
+                    3
+                  ],
+                  "contribution": 13,
+                  "components": [
+                    {
+                      "vertices": [
+                        0,
+                        3,
+                        9,
+                        15
+                      ],
+                      "boundary": [
+                        0,
+                        3
+                      ],
+                      "exterior_size": 2,
+                      "contribution": 4
+                    },
+                    {
+                      "vertices": [
+                        6,
+                        7,
+                        11,
+                        12
+                      ],
+                      "boundary": [
+                        11
+                      ],
+                      "exterior_size": 3,
+                      "contribution": 9
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    2
+                  ],
+                  "contribution": 36,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        2,
+                        5,
+                        8,
+                        10,
+                        13,
+                        14,
+                        16
+                      ],
+                      "boundary": [
+                        5,
+                        10
+                      ],
+                      "exterior_size": 6,
+                      "contribution": 36
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    1,
+                    3
+                  ],
+                  "contribution": 25,
+                  "components": [
+                    {
+                      "vertices": [
+                        1,
+                        3,
+                        6,
+                        8,
+                        10,
+                        11,
+                        13,
+                        15
+                      ],
+                      "boundary": [
+                        3,
+                        10,
+                        11
+                      ],
+                      "exterior_size": 5,
+                      "contribution": 25
+                    }
+                  ]
+                },
+                {
+                  "pair": [
+                    2,
+                    3
+                  ],
+                  "contribution": 17,
+                  "components": [
+                    {
+                      "vertices": [
+                        2,
+                        3
+                      ],
+                      "boundary": [
+                        3
+                      ],
+                      "exterior_size": 1,
+                      "contribution": 1
+                    },
+                    {
+                      "vertices": [
+                        5,
+                        6,
+                        11,
+                        14,
+                        15,
+                        16
+                      ],
+                      "boundary": [
+                        5,
+                        11
+                      ],
+                      "exterior_size": 4,
+                      "contribution": 16
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "target_distance_diagnostic": 4,
+          "three_move_diagnostic": [
+            {
+              "pair": [
+                0,
+                1
+              ],
+              "component": [
+                0,
+                1,
+                6,
+                13
+              ],
+              "coloring": [
+                0,
+                1,
+                2,
+                3,
+                2,
+                0,
+                3,
+                0,
+                1,
+                0,
+                1,
+                3,
+                1,
+                2,
+                3,
+                2
+              ],
+              "rank": [
+                1,
+                163,
+                1898
+              ]
+            },
+            {
+              "pair": [
+                0,
+                2
+              ],
+              "component": [
+                0,
+                2,
+                5,
+                6,
+                8,
+                14
+              ],
+              "coloring": [
+                0,
+                1,
+                2,
+                3,
+                2,
+                0,
+                3,
+                0,
+                1,
+                2,
+                1,
+                3,
+                1,
+                2,
+                3,
+                0
+              ],
+              "rank": [
+                1,
+                147,
+                1882
+              ]
+            },
+            {
+              "pair": [
+                2,
+                3
+              ],
+              "component": [
+                2,
+                3,
+                7,
+                10,
+                14,
+                15
+              ],
+              "coloring": [
+                0,
+                1,
+                2,
+                3,
+                3,
+                0,
+                3,
+                0,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                3,
+                0
+              ],
+              "rank": [
+                1,
+                101,
+                1836
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "8": {
+      "root": 8,
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "boundary": [
+        2,
+        7,
+        14,
+        9,
+        3
+      ],
+      "orbits": 54,
+      "non_target": 38,
+      "non_target_q_histogram": {
+        "107": 1,
+        "111": 1,
+        "123": 2,
+        "127": 4,
+        "131": 2,
+        "133": 2,
+        "141": 4,
+        "143": 2,
+        "147": 2,
+        "149": 2,
+        "150": 2,
+        "151": 2,
+        "153": 2,
+        "154": 2,
+        "155": 2,
+        "163": 4,
+        "171": 2
+      },
+      "stuck_states": []
+    }
+  },
+  "paired_observation_collision": {
+    "root4_coloring": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      1,
+      0,
+      1,
+      0,
+      3,
+      1,
+      2,
+      3,
+      2
+    ],
+    "root8_coloring": [
+      0,
+      1,
+      2,
+      3,
+      1,
+      2,
+      3,
+      0,
+      2,
+      0,
+      3,
+      0,
+      2,
+      1,
+      3,
+      1
+    ],
+    "root4_profile": {
+      "sigma": [
+        [
+          0,
+          1,
+          2,
+          0,
+          3
+        ],
+        [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              0
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          [
+            [
+              0,
+              3,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            [
+              2,
+              4
+            ]
+          ]
+        ]
+      ],
+      "component_descriptors": [
+        [
+          [
+            [
+              0,
+              1
+            ],
+            2
+          ],
+          [
+            [
+              3
+            ],
+            3
+          ]
+        ],
+        [
+          [
+            [
+              0
+            ],
+            3
+          ],
+          [
+            [
+              2,
+              3
+            ],
+            2
+          ]
+        ],
+        [
+          [
+            [],
+            2
+          ],
+          [
+            [
+              0,
+              3,
+              4
+            ],
+            3
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            6
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              4
+            ],
+            6
+          ]
+        ],
+        [
+          [
+            [
+              2,
+              4
+            ],
+            6
+          ]
+        ]
+      ],
+      "pair_contributions": [
+        13,
+        13,
+        9,
+        36,
+        36,
+        36
+      ]
+    },
+    "root8_profile": {
+      "sigma": [
+        [
+          0,
+          1,
+          2,
+          0,
+          3
+        ],
+        [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              0
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          [
+            [
+              0,
+              3,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            [
+              2,
+              4
+            ]
+          ]
+        ]
+      ],
+      "component_descriptors": [
+        [
+          [
+            [
+              0,
+              1
+            ],
+            4
+          ],
+          [
+            [
+              3
+            ],
+            1
+          ]
+        ],
+        [
+          [
+            [
+              0
+            ],
+            3
+          ],
+          [
+            [
+              2,
+              3
+            ],
+            2
+          ]
+        ],
+        [
+          [
+            [
+              0,
+              3,
+              4
+            ],
+            5
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            6
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              4
+            ],
+            6
+          ]
+        ],
+        [
+          [
+            [],
+            2
+          ],
+          [
+            [
+              2,
+              4
+            ],
+            4
+          ]
+        ]
+      ],
+      "pair_contributions": [
+        17,
+        13,
+        25,
+        36,
+        36,
+        16
+      ]
+    },
+    "same_sigma": true,
+    "same_lex_rank": [
+      1,
+      143
+    ],
+    "root4_color_class_sizes": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "root8_color_class_sizes": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "root8_decreasing_move": {
+      "pair": [
+        0,
+        2
+      ],
+      "component": [
+        0,
+        2,
+        5,
+        7,
+        12,
+        13
+      ],
+      "successor": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        0,
+        0,
+        2,
+        3,
+        0,
+        2,
+        1,
+        3,
+        1
+      ],
+      "rank": [
+        1,
+        127,
+        1862
+      ]
+    }
+  }
+}
