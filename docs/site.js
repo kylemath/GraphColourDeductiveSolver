@@ -1,37 +1,37 @@
 (function () {
-  const story = document.getElementById('story-frame');
-
-  function fitStory() {
+  function fitFrame(frame) {
     let doc;
     try {
-      doc = story.contentDocument;
+      doc = frame.contentDocument;
     } catch (err) {
       return;
     }
-    if (!doc || !doc.documentElement) return;
-    const h = Math.max(
-      doc.documentElement.scrollHeight,
-      doc.body ? doc.body.scrollHeight : 0
-    );
-    story.style.height = (h + 4) + 'px';
+    if (!doc || !doc.body) return;
+    // Measure the body, not the root: the root never reports less than the
+    // frame's current height, so a frame sized too tall could never shrink.
+    const h = doc.body.scrollHeight;
+    frame.style.height = (h + 4) + 'px';
   }
 
-  function bindStory() {
-    fitStory();
-    const doc = story.contentDocument;
+  function bindFrame(frame) {
+    const fit = () => fitFrame(frame);
+    fit();
+    const doc = frame.contentDocument;
     if (!doc || !doc.body) return;
     if (window.ResizeObserver) {
-      const observer = new ResizeObserver(fitStory);
+      const observer = new ResizeObserver(fit);
       observer.observe(doc.body);
     }
     doc.querySelectorAll('img').forEach((img) => {
-      if (!img.complete) img.addEventListener('load', fitStory);
+      if (!img.complete) img.addEventListener('load', fit);
     });
-    window.setTimeout(fitStory, 250);
-    window.setTimeout(fitStory, 1000);
+    window.setTimeout(fit, 250);
+    window.setTimeout(fit, 1000);
   }
 
-  story.addEventListener('load', bindStory);
+  document.querySelectorAll('iframe.frame-story').forEach((frame) => {
+    frame.addEventListener('load', () => bindFrame(frame));
+  });
 
   const links = Array.from(document.querySelectorAll('.site-nav nav a[href^="#"]'));
   const sections = links

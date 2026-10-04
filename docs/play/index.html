@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Long Table</title>
+  <meta name="description" content="A play in one long night: three colleagues piece together rumours of a structural Four Colour proof and brainstorm the last gate until dawn.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --bucky: #58a6ff;
+      --kamper: #3fb950;
+      --appken: #d29922;
+      --theo: #bc8cff;
+      --rosa: #f85149;
+      --napkin: #f3ecdc;
+      --napkin-ink: #2b2a27;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+    .script { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1rem 4rem; }
+    .title { text-align: center; margin-bottom: 1.5rem; }
+    .eyebrow {
+      margin: 0 0 0.6rem;
+      color: var(--theo);
+      font: 650 0.8rem/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 0.4rem; font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; }
+    .subtitle { margin: 0; color: var(--dim); font-style: italic; }
+    .toc {
+      margin: 0 0 2rem;
+      padding: 1rem 1.25rem;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+    .toc strong { display: block; margin-bottom: 0.4rem; color: var(--faint); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem; }
+    .toc ol { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+    .toc a { color: var(--dim); text-decoration: none; }
+    .toc a:hover { color: var(--text); }
+    .toc .source { display: block; margin-top: 0.6rem; color: var(--faint); }
+    .toc .source a { color: var(--bucky); }
+    h2 {
+      margin: 3rem 0 1.25rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 1.55rem;
+      letter-spacing: -0.01em;
+    }
+    h3 { margin: 2.25rem 0 1rem; color: var(--dim); font-size: 1.15rem; font-style: italic; font-weight: 500; }
+    p { margin: 0 0 1rem; }
+    hr.break { border: 0; height: 10px; margin: 2.5rem auto; width: 64px;
+      background: linear-gradient(90deg, var(--rosa) 0 25%, var(--bucky) 25% 50%, var(--kamper) 50% 75%, var(--appken) 75%);
+      border-radius: 2px; opacity: 0.75; }
+    .persona { padding-left: 0.9rem; border-left: 3px solid var(--who, var(--border)); color: var(--dim); }
+    .persona strong { color: var(--who); font-variant: small-caps; letter-spacing: 0.04em; font-size: 1.1em; }
+    .stage { margin: 1.25rem 0 1.25rem 1.5rem; color: var(--dim); font-style: italic; }
+    .stage em { font-style: normal; }
+    .cue { font-style: normal; font-variant: small-caps; letter-spacing: 0.04em; color: var(--who); }
+    .line { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0 1rem; margin: 0 0 0.85rem; }
+    .speaker {
+      padding-top: 0.12rem;
+      color: var(--who);
+      font-variant: small-caps;
+      font-weight: 650;
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+    .line p { margin: 0; }
+    .dir { color: var(--faint); font-style: italic; }
+    .thought {
+      margin: 1rem 0 1.25rem 1.5rem;
+      padding: 0.7rem 1rem;
+      background: color-mix(in srgb, var(--who) 8%, var(--raised));
+      border-left: 3px solid var(--who);
+      border-radius: 0 8px 8px 0;
+      color: var(--dim);
+      font-style: italic;
+    }
+    .thought .who {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--who);
+      font: 600 0.72rem/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+    .napkin {
+      margin: 1.5rem auto;
+      max-width: 40rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--napkin);
+      color: var(--napkin-ink);
+      border-radius: 3px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: rotate(-0.6deg);
+      overflow-x: auto;
+    }
+    .napkin:nth-of-type(even) { transform: rotate(0.5deg); }
+    .napkin pre { margin: 0; font: 0.86rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    code { font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text); background: var(--raised); padding: 0.05em 0.3em; border-radius: 4px; }
+    a { color: var(--bucky); }
+    .c-bucky { --who: var(--bucky); }
+    .c-kamper { --who: var(--kamper); }
+    .c-appken { --who: var(--appken); }
+    .c-theo { --who: var(--theo); }
+    .c-rosa { --who: var(--rosa); }
+    @media (max-width: 640px) {
+      body { font-size: 1rem; }
+      .script { padding-top: 2.25rem; }
+      .toc ol { columns: 1; }
+      .line { grid-template-columns: 1fr; }
+      .speaker { text-align: left; }
+      .stage, .thought { margin-left: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <article class="script">
+<header class="title"><p class="eyebrow">Four Colour Theorem</p><h1>The Long Table</h1>
+<p class="subtitle">A play in one long night, for three voices and a café</p>
+</header>
+<nav class="toc" aria-label="Scenes"><strong>Scenes</strong><ol>
+<li><a href="#dramatis-personae">Dramatis Personae</a></li>
+<li><a href="#the-set">The Set</a></li>
+<li><a href="#prologue-the-floor">Prologue: The Floor</a></li>
+<li><a href="#scene-one-water-cooler-fragments">Scene One: Water-Cooler Fragments</a></li>
+<li><a href="#scene-two-the-pieces-on-the-table">Scene Two: The Pieces on the Table</a></li>
+<li><a href="#scene-three-the-dawning">Scene Three: The Dawning</a></li>
+<li><a href="#scene-four-soup-and-everything-after">Scene Four: Soup, and Everything After</a></li>
+<li><a href="#scene-five-the-locked-room">Scene Five: The Locked Room</a></li>
+<li><a href="#scene-six-rosa">Scene Six: Rosa</a></li>
+<li><a href="#epilogue-three-roads">Epilogue: Three Roads</a></li>
+</ol><span class="source">Plain-text script: <a href="../story/the-long-table.md">the-long-table.md</a></span></nav>
+<hr class="break" aria-hidden="true">
+<h2 id="dramatis-personae">Dramatis Personae</h2>
+<p class="persona c-bucky"><strong>Bucky</strong> Mid-forties. Computer scientist who spent ten years on verified compilers, then moved to the formal-methods group of a large lab. Keeps a fountain pen and a mechanical keyboard in the same bag. Believes anything worth saying can be type-checked. Is privately afraid that this belief has made him a worse listener.</p>
+<p class="persona c-kamper"><strong>Kamper</strong> Early sixties. Pure mathematician in combinatorics and topology, emerita in all but title. Has read Kempe's 1879 paper in the original journal binding and Heawood's 1890 reply more times than she will admit. Distrusts the word "obviously." Distrusts the word "almost" even more.</p>
+<p class="persona c-appken"><strong>Appken</strong> Late thirties. Former physics PhD who became a quantitative analyst. Has run derivatives desks, risk models, and one notorious backtest that turned out to be right. Thinks in payoffs, hedges, and what happens in the tail. Talks fastest when he is least sure.</p>
+<p class="persona c-theo"><strong>Theo</strong> The evening closer at the café. Twenty-two. Studying for a statistics exam he keeps not studying for.</p>
+<p class="persona c-rosa"><strong>Rosa</strong> The morning baker. Fifty. Has a key, a radio, and no patience for anyone still sitting at a table when the dough needs the counter.</p>
+<p class="stage">Offstage, never seen: three colleagues of our trio, each said to be working on the same old problem. Over the evening they are called "the Lean one," "the counting one," and "the replay one." By morning these names will have stopped mattering.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="the-set">The Set</h2>
+<p class="stage">A café called <strong>The Gamut</strong>, inside a converted print shop. The ceiling is high and the original iron press still stands in one corner, painted black and roped off like a museum piece. A long communal table of reclaimed oak runs down the centre. Upstage left is a smaller round table under a hanging brass lamp, half-hidden behind a tall shelf of bread baskets and jars of coffee beans. This is where the play happens.</p>
+<p class="stage">The floor is the café's pride: hexagonal and pentagonal tiles in four colours, terracotta red, slate blue, mustard yellow and bottle green. They are laid in a pattern a local artist called "a map of nowhere." Near the till, if you look closely, two red tiles share an edge.</p>
+<p class="stage">A large antique county map hangs in the front window, its counties hand-tinted in four soft watercolours. A chalkboard menu reads: TODAY: CARDAMOM BUN. SOUP: ROASTED SQUASH. WIFI: ask Theo.</p>
+<p class="stage">Light moves through the night as a running clock. At rise it is early-October afternoon gold, then blue dusk, then sodium-orange streetlight through the window, then darkness lit only by the brass lamp, and finally the grey-violet of the hour before sunrise.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="prologue-the-floor">Prologue: The Floor</h2>
+<p class="stage">4:40 p.m. Gold light. The café is busy: laptops, a toddler, two students arguing over a problem set. <span class="cue c-theo">Theo</span> is behind the counter, his statistics textbook face-down beside the register.</p>
+<p class="stage"><span class="cue c-kamper">Kamper</span> enters first, unwinding a long scarf. She does not look for a table. She looks at the floor. She stops near the till and crouches, knees protesting, staring at the two red tiles sharing an edge.</p>
+<div class="line c-theo"><span class="speaker">Theo</span><p>You okay, ma'am?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(not looking up)</span> Your floor isn't properly coloured.</p></div>
+<div class="line c-theo"><span class="speaker">Theo</span><p>It's... tile?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Two reds touching. There. Right where everyone's feet go. <span class="dir">(She stands.)</span> It's fine. It's a very human mistake. People have been making it for a hundred and fifty years.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Every time. Every café, every bathroom, every cathedral floor. I can't walk on a tiling without auditing it. Forty years of this and still no cure.</aside>
+<p class="stage">She orders a black coffee and a cardamom bun and takes the round table under the brass lamp, the one behind the bread shelf. It is the table you choose when you want to be found only by the people you're expecting.</p>
+<p class="stage"><span class="cue c-bucky">Bucky</span> enters, already talking into an earbud.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(into the earbud)</span> No, the build passed. The build passed. I'm saying a passing build isn't a reason to... yes. Yes. I'll look tonight. <span class="dir">(He taps the earbud off, sees KAMPER, and lights up.)</span> Kamper.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Bucky. You look like a man who's been told a build passed.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>You heard that.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The whole room heard it. The toddler is now sceptical of continuous integration.</p></div>
+<p class="stage">He orders a flat white and sits. A moment later <span class="cue c-appken">Appken</span> arrives, overcoat over a hoodie, phone in hand, scrolling as he walks. He nearly collides with the iron press.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Sorry. Sorry. <span class="dir">(to the press)</span> Sorry. <span class="dir">(He sees the others.)</span> Oh good, you're both here. I thought this might be the wrong Gamut.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>There's more than one?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>There's a Gamut Wellness in the strip mall. I went there first. Someone tried to sell me a crystal.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Did you buy it?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I hedged. I bought a smaller crystal.</p></div>
+<p class="stage">He orders a double espresso and a soup and sits. The brass lamp makes a warm circle around the three of them. Outside the light is beginning to slant.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="scene-one-water-cooler-fragments">Scene One: Water-Cooler Fragments</h2>
+<p class="stage">5:00 p.m. The gold has deepened. The café hums.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So. Who goes first.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Goes first with what?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Oh, come on. You both texted me "need to talk, not on Slack." Nobody says "not on Slack" unless it's either a resignation or gossip.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Or both.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Or both. Which is it?</p></div>
+<p class="stage">A pause. Each of them waits for another to lay down a card.</p>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>If I say it first and I'm wrong, I'm the guy who got excited about a rumour. If I say it first and I'm right, I'm the guy who spread it. Either way I'd rather someone else went first.</aside>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>They're both waiting for me. Fine. I'm old. I'm allowed to be the fool.</aside>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I heard something about the Four Colour problem.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> puts his phone face-down. <span class="cue c-bucky">Bucky</span>, who had been stirring his flat white, stops.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(slowly)</span> So did I.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(a beat)</span> So did I.</p></div>
+<p class="stage">Silence. Someone at the long table laughs at a video. The espresso machine shrieks.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Well. That's either a coincidence or a conspiracy, and I'm too tired for a conspiracy.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Who did you hear it from?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Not <em>from</em>. <em>Around</em>. A seminar coffee break two weeks ago. A young man I'd never met was explaining something to a postdoc, and I heard the phrase "Heawood's boundary." Nobody says "Heawood's boundary" by accident. I edged over by the biscuits and listened for as long as decency allowed.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>How long does decency allow?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Two biscuits. Three if they're small.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What did you hear in three small biscuits?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(hesitating)</span> I want to be careful. I heard parts. They were talking about someone else's work, a colleague, the one who does the counting arguments. I'll call her the counting one. Apparently she has proved, in a proof assistant and compiled, that every spherical map on at most eleven vertices is four-colourable.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> nods quickly. <span class="cue c-appken">Appken</span> frowns.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Eleven vertices? That's... I'm sorry, isn't that tiny? Couldn't you just brute-force every graph up to eleven vertices on a laptop?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(pleased he asked)</span> That's the point. She didn't brute-force it. That's what made me eat the third biscuit. It's a counting argument, not an enumeration.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Careful. You only heard the end of the sentence. Reconstruct it, don't invent it.</aside>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> As I understood it, she sharpened the Euler-type bound for these maps. Instead of the usual inequality she got one with a "plus two" in a useful place. Edges plus two is at most vertices plus faces. And then...</p></div>
+<p class="stage">She reaches for a paper napkin, takes a pencil from her coat pocket, and writes:</p>
+<figure class="napkin"><pre>e + 2  ≤  s + f        (s = vertices that actually have edges)</pre></figure>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> Suppose every vertex has degree at least five. Each edge has two ends, so five times s is at most two e. Every face has at least three sides, so three f is at most two e. Substitute, and...</p></div>
+<p class="stage">She writes quickly. <span class="cue c-bucky">Bucky</span> leans in. <span class="cue c-appken">Appken</span> leans in further, competitively.</p>
+<figure class="napkin"><pre>5s ≤ 2e    →  e ≥ 5s/2
+3f ≤ 2e    →  f ≤ 2e/3
+e + 2 ≤ s + 2e/3   →   s ≥ e/3 + 2  ≥  5s/6 + 2
+                   →   s ≥ 12</pre></figure>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(tapping the napkin)</span> Twelve. If every vertex has degree at least five, you need at least twelve vertices. So below twelve, there is always a vertex of degree four or less.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And degree four or less you can always... handle?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's the other half. That's where Kempe comes in. The <em>correct</em> part of Kempe.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(quietly, almost to himself)</span> Gate A.</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> and <span class="cue c-appken">Appken</span> both look at him.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>What did you say?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(caught)</span> Gate A. It's... that's what they call it. The degree-four extension. I heard it called Gate A.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>Well. There goes my card.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p><em>Gate</em> A. Like there's a Gate B.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>There's a Gate B. The eleven-vertex result is Gate B. There's a C, D, E, F.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(sitting back)</span> Where did <em>you</em> hear this?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The Lean hack evening last Thursday. The PlaneMap people. I was there to help a student with a build problem. Mathlib version mismatch, the usual misery. Someone at the next table had a laptop open, and I saw a file called <code>FourColorExtension.lean</code>. Compiled. Green check. I nearly fell off my stool.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><em>Four colour.</em> Compiled.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's what I thought. That's what I thought for about six hours. Then I went home and realised I'd only seen the filename.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(gently)</span> And the file proves?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The theorem in that file is called... <code>four_color_extension</code>. Its job is to say that if you have a four-colouring of a spherical map with one vertex deleted, and that vertex has degree at most four, you can extend the colouring to the whole map.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's Kempe's argument. The part he got right.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Right. But formally. Spherically. With an actual separation lemma about alternating walks, not a picture. I heard someone call it <code>alternating_walks_intersect</code>. You have four neighbours in rotation order. If two opposite pairs are joined by bichromatic chains, the chains have to cross. They can't, so one of them isn't connected, and you swap.</p></div>
+<p class="stage">He draws on a second napkin, faster and less tidily than <span class="cue c-kamper">Kamper</span>. It shows a square of four dots around a centre and two crossing paths, one of them struck through.</p>
+<figure class="napkin"><pre>        v1 (red)
+          |
+v4 (grn)--r--v2 (blue)
+          |
+        v3 (yel)
+
+red–yellow chain v1 → v3   AND   blue–green chain v2 → v4
+           cannot both exist on a sphere.
+     swap one  →  a colour opens up for r.</pre></figure>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(examining it like a grade)</span> Acceptable.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>High praise.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It is. Do you know what the subtle part is?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The subtle part is that it's a <em>spherical</em> theorem. It doesn't hold for graphs in general. A graph where every subgraph has a vertex of degree at most four is not automatically four-colourable. K5 is a counterexample: every vertex has degree four and it needs five colours. Somebody wrote that right into the plan, in bold, so nobody would overclaim.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Good. Someone on that team has been bitten before. That's the scar tissue you want.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(who has been quiet, eating soup)</span> Okay. Okay. I have to say something and I'm worried it's going to make me sound like an idiot.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's the only kind of thing worth saying at this table.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>My piece is different. Mine is about the stuff that <em>didn't</em> work.</p></div>
+<p class="stage">He wipes his mouth and pulls his phone back over. He scrolls but doesn't show them the screen.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd)</span> I was at a dinner. Finance people, a couple of ex-academics, someone's partner who does topology. And the topology partner, very drunk on an excellent Barolo, starts telling the table about a friend, the replay one, I'll call him, who does all the computation for this group. Huge amounts of it. And the thing she kept coming back to was that they <em>kill</em> things. They have a list of dead conjectures, and they're proud of it.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(nodding)</span> The navigator tree.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The what?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>They have a website, a proof navigator. It's a tree. Every node is a claim or a sub-goal, and every node has a status: proved, in progress, exploring, blocked, killed. Killed nodes stay in the tree. They don't delete them.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(delighted)</span> Like a trade blotter where you keep the losing trades on the screen.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Like a proper notebook.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Right. So, according to my Barolo source, there was a conjecture called "swap sufficiency." Something about only needing swaps among four of five colours...</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Using only colours one to four, never touching the fifth, when going from five colours to four.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That. Dead at nine vertices. Forty-eight counterexamples.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(quietly)</span> Good. Good that they found them.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And something called "surface tension rigidity," which I assumed was a cocktail, also dead. And a whole branch involving topological quantum field theory, which was dead because some symbols had the wrong signs.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Six-j symbols.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That, yes. Then she said the thing that's been rattling round my head for a week. She said, "And the whole constructive proof is ninety-five percent done."</p></div>
+<p class="stage">A beat. <span class="cue c-kamper">Kamper</span> puts her cup down very carefully.</p>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>There it is. Ninety-five percent. That number has been said about this problem in every decade since 1879. Somewhere a ghost in a frock coat is nodding.</aside>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>Ninety-five percent of what, measured how? Lines of proof? Lemmas? Sorries?</aside>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>They both flinched. Why did they both flinch? It's a good number. If a strategy were ninety-five percent built I'd fund it.</aside>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Ninety-five percent.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's what she said.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>When was this dinner?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Last month. But she was quoting something older. A wrap-up document, I think. Spring.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(carefully)</span> Then I suspect she was quoting a document that said the remaining five percent was a single lemma. And that the same document added, in the next sentence, that the last five percent might be as hard as the whole theorem.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(slowly)</span> ...How did you know that?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Because anyone honest would have written it.</p></div>
+<p class="stage">A pause. <span class="cue c-appken">Appken</span> laughs, a little embarrassed.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>She did say that too. I didn't put it on the blotter.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Selective memory.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Survivorship bias. It's a professional hazard. The ninety-five survives, the caveat dies.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The caveat always dies first. It doesn't fit in a tweet.</p></div>
+<p class="stage"><span class="cue c-theo">Theo</span> arrives with a refill of water and glances at the napkins.</p>
+<div class="line c-theo"><span class="speaker">Theo</span><p>Is that... homework?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Something like that.</p></div>
+<div class="line c-theo"><span class="speaker">Theo</span><p>Good luck. <span class="dir">(He goes.)</span></p></div>
+<aside class="thought c-theo"><span class="who">Theo, inside</span>Three grown adults drawing dots on napkins at five o'clock on a Tuesday. I'm going to be like that one day. Or I'm going to fail statistics.</aside>
+<hr class="break" aria-hidden="true">
+<h2 id="scene-two-the-pieces-on-the-table">Scene Two: The Pieces on the Table</h2>
+<p class="stage">5:45 p.m. Blue dusk has begun. The long table is half-empty. The toddler has gone. The window map has dimmed to grey and yellow.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay. I want to organise this. If this were a desk meeting I'd put up a whiteboard. Can we... can somebody list what's real?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"Real" meaning compiled?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Real" meaning <em>true</em>. Compiled is a subset.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Compiled is the subset I can check.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Fine. Three columns. <span class="dir">(He takes a fresh napkin.)</span> Compiled. Computed. Rumoured.</p></div>
+<p class="stage">He draws the columns. This becomes the most important napkin of the night, though none of them knows it yet.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Compiled. One: they rebuilt plane maps inside Lean on top of Mathlib. Retooled it. There's a structure called <code>SphericalMap</code>: a finite simple graph, a cyclic rotation at each vertex, and a "filling" property.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What's filling?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(hesitating)</span> I... think it's the condition that makes it a sphere and not some other surface. Something about even sets of edges bounding regions.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Mod-two cycles bound. Every even edge-combination is a boundary of faces. That's what makes a sphere a sphere combinatorially: no handles for a cycle to wrap around.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Yes. That. And the important part is that they don't assume planarity as an axiom. They <em>construct</em> these maps, and they <em>prove</em> the filling property for the constructed ones. No oracle.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>That's the part that impressed me most, and I can't make either of them feel it. Not assuming the planar oracle. Ten years ago half the formalisations I reviewed hid their hardest lemma in an axiom and called it a "standard fact."</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Two?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Two: the Five Colour Theorem compiles. For spherical maps, for their generated plane maps. And I heard the axiom audit comes back with just the three standard ones: propositional extensionality, choice, quotient soundness. Nothing extra smuggled in.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Kempe's theorem, with Heawood's correction, done right.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Done right. Three: Gate A, degree-four extension, compiled. Four: Gate B, the eleven-vertex result, compiled. The rank bound, elimination certificates, all of it. There's even a certificate whose length is bounded by the number of edges.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(writing)</span> Five?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Five is a small thing, but I like it. An <em>executable</em> Kempe swap. Real code inside the proof assistant: find the component, swap the colours, and a proof that it equals the mathematical notion of reachability and preserves properness. With a cost accounting: n cubed adjacency checks for n rounds.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Why do you like that?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Because the whole point, the way I heard it, isn't just to prove colourings exist. The finish line is an <em>algorithm</em>. A polynomial-time four-colouring algorithm, proved correct inside Lean, that you can actually run. Then they race it against DSATUR, against SAT solvers, against genetic algorithms and random search.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> stops writing.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Wait. They want to <em>benchmark</em> it?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's the finish line as I heard it. Not "a proof exists." A proof that <em>gives you the colouring</em>, step by step, with a proof that it terminates in polynomially many steps. Then actually benchmark it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(grinning)</span> That's a backtest. They want a proof with a backtest.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(dry)</span> Appel and Haken had a backtest. It took twelve hundred hours on a mainframe.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Different backtest. They backtested the <em>proof</em>. This one is backtesting the <em>colouring</em>.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>He's right, and it's a distinction I hadn't let myself make. Appel–Haken, Robertson–Sanders–Seymour–Thomas, Gonthier: all of them say "the configurations are reducible, and here is a machine that checks each one." None of them says "here is a rule you could teach a child, and the rule always finishes." That's what I miss when I teach it. You can't explain the 1976 proof to a sixteen-year-old. You can only explain what it <em>checks</em>.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay. Compiled column: five things. Computed column. That's mine, mostly. <span class="dir">(He looks at his phone.)</span> The replay one. The killed conjectures I've given you. Then the one that's been eating my week.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Kittell.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> looks up sharply.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You heard about Kittell?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I heard the word. I didn't know what it meant. Someone at the hack night said, "Did it survive Kittell?" the way you'd ask if a startup survived a recession.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Kittell's graph. Twenty-three vertices. It's a famous one: a planar graph built to show that a certain naive Kempe-swap strategy can loop forever.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(fast now)</span> Right. And the replay one did, from scratch, an independent replay: took the graph, checked planarity, and for each degree-five vertex (there are fifteen) deleted it, enumerated <em>every</em> proper four-colouring of what was left, up to renaming colours, and then built the whole graph of Kempe swaps between those colourings.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Every colouring?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Six thousand three hundred and fifty root-colouring states across the fifteen roots. And the good news first, which I'm told is unusual for this group...</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(smiling despite herself)</span> Go on.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Every root's swap graph was connected. And from <em>every</em> state, you can reach a colouring where the five neighbours of the deleted vertex use only three colours. That means a colour is free and you can put the vertex back. And in at most <em>four</em> moves. Every single one.</p></div>
+<p class="stage">A pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's... that's good.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's good. Now the bad news. Which, honestly, is the interesting part.</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>This is the part I've been trying to explain to my wife for a week. She nodded at the right places, but I could see her pricing my sanity.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd)</span> Suppose you want a <em>rule</em>. Not a search, a rule. "When you see this, do that." The natural thing is to look only at the boundary: the five neighbours, their colours, and for each pair of colours, which neighbours are connected to which by chains of that pair. Six colour pairs, so six partitions of the five neighbours. That's your signature. They called it sigma.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The boundary information. What Kempe himself looked at.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Right. Across all fifteen roots there are forty distinct sigmas. Forty situations. And here's the first problem: two concrete colourings with the <em>same</em> sigma can have <em>different</em> sets of next sigmas. Sigma isn't a complete description. Two people can look at the same screen and be in different markets.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The abstraction isn't a bisimulation.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I don't know what that word means, but I believe you.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It means the coarse view doesn't predict the fine view's next step.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Then yes, exactly that. So they played a game. It's a robust game. You must choose <em>one</em> boundary action, a colour pair and which boundary vertices you swap through, that works for <em>every</em> concrete colouring hiding behind that sigma. Then they did backward induction. Start from the target signatures, the winners. Add any signature that has an action all of whose possible results are already winners. Repeat until nothing changes.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The attractor.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The robust attractor. It captures thirty-five of the forty. Five lose. Five sigmas from which no single boundary-only rule is guaranteed to work.</p></div>
+<p class="stage">He writes it in the "Computed" column:</p>
+<figure class="napkin"><pre>KITTELL (23 v, 63 e, 15 degree-5 roots)
+  6,350 states; every one reaches target in ≤ 4 swaps   ✓
+  boundary signature σ: 40 signatures
+  robust boundary game: 35 win / 5 LOSE</pre></figure>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd)</span> So: the colourings are fine, but the <em>rule</em> that only looks at the boundary isn't. And I want to be careful, because she was very careful at the dinner even drunk: it doesn't say the theorem is false. It says <em>that kind of rule</em> can't be the whole story.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That kind of rule is Kempe's kind of rule. That's 1879 failing again, in a new costume.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It gets better. If you <em>don't pool</em> the roots, if you play the game separately for each root, eleven of the fifteen roots have zero losing signatures. Perfect. Four roots still lose five each. Roots three, thirteen, seventeen, twenty-one.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So <em>which root</em> you choose matters.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Which root you choose matters.</p></div>
+<p class="stage">They sit with that. The light outside has gone fully blue. <span class="cue c-theo">Theo</span> switches on the overhead pendants. The brass lamp is now one warm circle among several.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(after a while)</span> And the "Rumoured" column?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(looking at it, empty)</span> I was going to put "ninety-five percent."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Don't.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(crossing out a pencil mark that isn't there)</span> I won't.</p></div>
+<hr class="break" aria-hidden="true">
+<h2 id="scene-three-the-dawning">Scene Three: The Dawning</h2>
+<p class="stage">6:40 p.m. Full dark outside. The long table is mostly empty now: one student asleep on her textbook, a couple sharing a slice of cake. The window map is lit only by the streetlamp, its four watercolours turned to four greys.</p>
+<p class="stage"><span class="cue c-bucky">Bucky</span> has his laptop out but hasn't opened it. <span class="cue c-kamper">Kamper</span> is turning the "Compiled / Computed" napkin around with one finger.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Let me say back what I think we have, and you tell me where I'm lying.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Deal.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Degree four or less, compiled. Fewer than twelve vertices, compiled. Five colours, compiled, the honest way. So any counterexample to the Four Colour Theorem, any smallest one, would have to be a sphere where every vertex has degree at least five, with at least twelve vertices.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Right.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's not new. Heawood knew that in 1890. That's the boundary that broke Kempe. It's where I'd expect the boundary to be.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(quietly)</span> "Heawood's boundary."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Which is the phrase that made me eat three biscuits. Because the young man said it in a particular way. Not "we're stuck at Heawood's boundary," but "the <em>verified</em> advance reaches Heawood's boundary." As in: everything up to here is now machine-checked, with no gaps, by people who wrote down what they <em>didn't</em> know. And the next step is new mathematics.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So the ninety-five percent...</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Is a matter of what you're counting. If you count the infrastructure, the build, the definitions, the lemmas, maybe it's ninety-five. If you count the <em>idea</em>, you've got everything Kempe and Heawood had, rebuilt to modern standards, and the cliff is exactly where it was.</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>That's a sobering re-mark. My position is the same but my valuation just dropped forty percent. No, it didn't drop. I mis-marked it in the first place.</aside>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>But it's not exactly where it was.</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> raises an eyebrow.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(cont'd, opening his laptop)</span> I mean, the cliff is the same height. But Kempe and Heawood didn't know <em>what shape</em> the next step had to be. Here, I think they've written down the shape. That's what Gate D is.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay, so what's Gate D? You keep saying gates like I'm supposed to know the floor plan.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I only saw the table of gates on someone's screen. Let me try to recall it honestly. <span class="dir">(He types briefly, then stops himself.)</span> No, I'm not going to look it up. I'll say what I remember and you two correct me.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's the spirit of the evening.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>A is degree four. B is the twelve-vertex thing. C is "boundary semantics": defining exactly what information you're allowed to look at around one candidate configuration, and what moves are legal. D is the hard one: a <em>uniform</em> reduction with a <em>progress measure</em>. E is "general theorem, plus executable, plus polynomial." F is getting from ordinary planar graphs, the kind you'd draw, to their spherical maps.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And D is the gap.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>D is the gap. I remember the line: "this is the mathematical four-colour gap." It said that in the table.</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> pulls the napkin back and turns it over. On the clean side she writes, slowly:</p>
+<figure class="napkin"><pre>GATE D
+  T  : spherical triangulation, every degree ≥ 5  (so ≥ 12 vertices)
+  r  : a degree-5 vertex we choose  (&quot;root&quot;)
+  H  = T − r ;  r&#x27;s five neighbours B, in cyclic order
+  c  : a proper 4-colouring of H
+  move: pick 2 colours, pick ONE connected component of that 2-colour
+        subgraph, swap the colours on that component  (a Kempe swap)
+  target: B uses ≤ 3 colours  →  r gets the missing colour</pre></figure>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Is that it?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's the game they replayed on Kittell. Yes.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And what do they want to <em>prove</em> about it?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>This is the part I remember most clearly because it gave me chills. It's quantified. There are fixed constants, C and k, and two procedures. <em>Select</em> looks at T and picks a root. <em>Step</em> looks at the current state and makes a move. And for <em>every</em> triangulation in the class, and for <em>every</em> four-colouring of T minus the selected root, Step reaches a target in at most C times n to the k moves.</p></div>
+<p class="stage">He writes it under <span class="cue c-kamper">Kamper</span>'s block.</p>
+<figure class="napkin"><pre>∃ C, k, Select, Step   (all polynomial-time)
+∀ T  (min degree 5 triangulation)
+   r := Select(T)
+   ∀ proper 4-colouring c of T − r
+       Step reaches a target in ≤ C·|V(T)|^k Kempe swaps</pre></figure>
+<p class="stage">A long silence. <span class="cue c-appken">Appken</span> reads it twice.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's stronger than the theorem.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(pleased)</span> Yes.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's a lot stronger than the theorem. The theorem just needs <em>one</em> good colouring. This says every colouring of the smaller graph can be walked to a good one, quickly, by a rule.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>They wrote that too. "A root-selection strengthening." They're clear that if it fails, the Four Colour Theorem doesn't fail. Only this route does. Then they'd fall back to a weaker version.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Which is?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Something about certificates. Instead of "every colouring works," the recursion hands you a colouring <em>plus a certificate</em> that it's in the winning region. The certificate has to be <em>preserved</em> by the recursion, and its existence has to be <em>proved</em>, not assumed. They had a line about circularity: if your invariant is just "this colouring is extendible," you've smuggled the theorem in as a premise.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(nodding slowly)</span> Yes. That's the trap. That's always the trap.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And the "progress measure" part?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Each move has to make a number go down. Actually a pair of numbers, (p, q), compared lexicographically. P is coarse, some structural potential. Q is a finer rank to make progress on plateaus where p doesn't move. Both bounded by a polynomial. And...</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And you can't use "distance to the target" as the rank.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(surprised)</span> How did you know?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Because it's circular. Distance to a target is only finite if the target is reachable, which is what you're trying to prove. And computing it means searching every colouring, which is exponential. It's the first thing a clever student would suggest, and the first thing an honest referee would reject.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(slowly, half to himself)</span> "A rank equal to distance is circular until reachability is proved."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Was that a quote?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I... think the Barolo woman said it? I think she was quoting. I didn't understand it at the time.</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>That's the line I wrote on my hand in the taxi and then washed off. God, I washed it off.</aside>
+<p class="stage"><span class="cue c-kamper">Kamper</span> sits back. She looks at the three napkins in a row: the twelve-vertex counting, <span class="cue c-bucky">Bucky</span>'s crossing chains, and now Gate D.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I want to say something, and I want you both to stop me if it's sentimental.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>We'll stop you.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>For a hundred and fifty years the problem has been "is this true?" Since 1976 we've known it's true. Since 2005 we've known it's true to the standard of a proof assistant. What nobody has had is a <em>why</em> that fits in a head. What these people have done, the three of them, independently, in pieces, is reduce the problem of <em>why</em> to something that fits on a napkin.</p></div>
+<p class="stage">She taps the Gate D napkin.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> That's not ninety-five percent. That's not any percent. But it's the first time in my life I've seen the hard part <em>isolated</em>. Clean. Quantified. With a known fixture to test against and a list of the things that don't count.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's not sentimental.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's a little sentimental.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's a little sentimental.</p></div>
+<p class="stage">They're quiet. <span class="cue c-theo">Theo</span> passes with a cloth, wiping the empty long table. He glances at their corner.</p>
+<div class="line c-theo"><span class="speaker">Theo</span><p>We close at eleven, just so you know. Kitchen closes at eight if you want food.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(not looking up)</span> Three more soups.</p></div>
+<div class="line c-theo"><span class="speaker">Theo</span><p>Three soups. <span class="dir">(He goes.)</span></p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I didn't want soup.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You're going to want soup.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>He's right. I'm going to want soup. I'm not going home.</aside>
+<p class="stage">Pause. Then <span class="cue c-bucky">Bucky</span> says it.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>They're close.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>They're at the cliff.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>They're close to <em>having a cliff they can climb</em>. That's what I mean. Everyone before them was standing in fog. They've cleared the fog.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(very quietly)</span> And there are three of them. And there are three of us.</p></div>
+<p class="stage">Another pause. It lands.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Appken.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm just saying.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You're saying we should <em>compete</em> with our colleagues.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm saying, <em>help</em>. Different angle. They're working through gates, in a certain order, with certain tools. We have different tools. I'm not proposing we scoop anyone. I'm proposing we bring them something they don't have.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Like what?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(spreading his hands)</span> I don't know yet. That's what the soup is for.</p></div>
+<hr class="break" aria-hidden="true">
+<h2 id="scene-four-soup-and-everything-after">Scene Four: Soup, and Everything After</h2>
+<h3>i. The Price of a Colouring</h3>
+<p class="stage">7:30 p.m. Three bowls of roasted squash soup steam on the round table. The napkins have been weighted down with sugar sachets so the soup doesn't land on Gate D. Outside, a tram passes and its light slides across the window map.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(spoon in the air)</span> Okay, here's my first thing, and I want you to tell me why it's stupid.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Gladly.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The robust game they played on Kittell, with backward induction from the targets. Layer zero is the winners. Layer one is anything that has a move guaranteed to land in layer zero. Layer two, and so on.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The attractor.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's an options lattice. That's exactly how you price an American option. You start at expiry, where the payoff is known, and you walk backwards. At each node you ask whether the best thing you can do is exercise or wait. The value at each node is the value of the best action. "Layer j" <em>is</em> a price. It's the number of moves to guaranteed exercise.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And that's the distance to the target. Which is circular.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Which is circular <em>if you compute it by walking the lattice</em>. Yes. Yes. Exactly. That's the thing that hit me during the soup.</p></div>
+<p class="stage">He puts the spoon down.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd)</span> Nobody on a desk prices an option by simulating every path of the world. You can't. You need a <em>formula</em>. A closed form, or something cheap that's guaranteed to agree with the lattice where it matters. Black–Scholes isn't "simulate every price path," it's "here's a function of five numbers you can see right now." The trick that makes it work is finding the right <em>state variables</em>. The handful of observable quantities the price depends on.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So you're saying: don't compute the rank by search. Find a potential that's cheap to compute and <em>provably</em> goes down.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>A supermartingale. Well, there's no randomness, so...</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A Lyapunov function. A potential.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>A potential. A number you can compute from the state in polynomial time, which is zero at the targets, and for which, from every non-target state, <em>some</em> legal Kempe swap makes it strictly smaller. And it can't be secretly "distance to target." It has to come from something you can see.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(slowly)</span> The p and q.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The p and q. Exactly. That's what they're asking for. They wrote down the shape of the pricing formula, and they're waiting for someone to find the state variables.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>He's not wrong. It's an old idea in a new suit, but the suit matters. Mathematicians say "find a monovariant" and students stare at us. He says "price it," and I can see the whole structure: what's observable, what's the payoff, what's the hedge.</aside>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Here's why it's not stupid. Here's why it's <em>testable</em>. Tonight, if we wanted. We have, well, the replay one has, all 6,350 states for Kittell. Every state, every move. Any candidate potential you write down, you can check in seconds: does every non-target state have at least one move that makes it go down?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>A backtest.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>A backtest. Which kills bad potentials fast. It can't prove a good one, because a potential that survives Kittell might die on the next graph. But it's a cheap kill.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Like the boundary signature.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Exactly like the signature. Sigma was <em>already</em> a candidate state variable. Kittell killed it. Five losing signatures.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> goes very still.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Say that again.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Sigma was a candidate state variable, and Kittell killed it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>No. The <em>way</em> it died. Two colourings with the same sigma had different futures.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Same signature, different successor sets. Yes.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(standing up, which startles THEO across the room)</span> That's an <em>incomplete market</em>.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Sit down.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(sitting)</span> Sorry. That's an incomplete market. In finance, if two states of the world look identical in every price you can observe, but they pay off differently, you <em>can't hedge</em>. There's risk you can't see. The fix is never "try harder with the same instruments." The fix is to <em>add an instrument</em>. You find the security whose price differs between those two states, and you add it to what you observe. Then the market is complete and the hedge exists.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(laughing)</span> That's CEGAR.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's what?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Counterexample-guided abstraction refinement. It's what model checkers do. You've got a huge state space and you abstract it: you only look at some features. You try to prove the property on the abstraction. If it fails, you look at <em>why</em>: you find the spurious counterexample, a place where two concrete states got merged that shouldn't have been. Then you refine the abstraction with <em>just enough</em> new information to split them. Repeat.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(pointing at him with a spoon)</span> That's adding an instrument.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's adding an instrument!</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(dry)</span> You've each just discovered that you work in the same field.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>But it's actually concrete. Here's what you do. Kittell gives you collisions: specific pairs of concrete colourings with the same sigma and different futures. For each collision, you ask what <em>cheapest</em> extra piece of information tells them apart. Something about the exterior, not just the boundary. Something about how the chains are nested. Something about what happens two moves ahead. You add exactly that, recompute the robust game, and see if the five losers become winners.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And you'll find that it works.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(surprised)</span> Isn't that good?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You'll find that it works on Kittell, because Kittell is one finite graph and you can always refine until every state is distinguished. If you refine all the way, sigma <em>is</em> the full colouring and the game is trivially won. You'll have built a lookup table and called it a rule.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> deflates a little.</p>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>She's right. That's the failure mode. You overfit the abstraction to the fixture until the abstraction is the fixture.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's overfitting. That's literally the backtest problem. You torture the data until it confesses.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>So the refinement has to stay <em>bounded</em>. It has to be a fixed amount of extra information, no matter how large the triangulation gets. That's the real test, not Kittell.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Okay. Okay. So the question is: is there any <em>bounded</em> extra information that's likely to be enough? Something with a structural reason to be small?</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> pulls the crossing-chains napkin towards her. She looks at it for a long time.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Yes. Maybe. There's a reason it might be small.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> and <span class="cue c-appken">Appken</span> wait.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> Chains of disjoint colour pairs can't cross. That's the whole engine of the degree-four argument. Red–yellow and blue–green can't cross on a sphere. So around a boundary of five vertices, the way the chains connect them isn't arbitrary. It's <em>non-crossing</em>. Planar. Nested, like parentheses.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Non-crossing partitions.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Non-crossing partitions. And the number of non-crossing partitions of five points is...</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Catalan. Forty-two.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Forty-two. That's tiny. Even if you record, for each of the six colour pairs, how the boundary is partitioned, and you add <em>how those partitions sit relative to each other</em> as nested curves on the sphere... it's still a bounded amount of data. It doesn't grow with the graph. The exterior is enormous, but what the exterior <em>can do to the boundary</em> is constrained by topology to a bounded menu.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So sigma was the right <em>kind</em> of thing, just missing the nesting.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Possibly. That's a conjecture, and it's ours, and it's probably wrong in an interesting way. I'd want to know whether the five losing Kittell signatures disappear when you add the nesting order. If they don't, it's dead, and we learn which <em>other</em> bounded thing to try.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(already writing)</span> Refinement candidate one: sigma plus relative nesting of bichromatic chain-curves around the root. Test: robust game on Kittell, pooled and per-root. Kill condition: any losing signature remains.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You write like a lab notebook.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I write like someone who's been burned by a lab notebook.</p></div>
+<h3>ii. Choosing the Strike</h3>
+<p class="stage">8:20 p.m. The soup bowls are empty. <span class="cue c-theo">Theo</span> is wiping down the espresso machine. The student who was asleep has gone. One other customer, a man reading a paperback, lingers at the window.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay, the roots. I keep thinking about the roots.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Eleven good, four bad.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Eleven good, four bad. If I hold fifteen options and I only need one to pay off, that's a portfolio. You don't need every root to work. You need <em>one</em>. Hedging across roots. Whatever colouring you're handed, you pick the root that's in the money.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You can't.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Why not?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Look at the quantifiers. <span class="dir">(She taps the Gate D napkin.)</span> Select looks at T, only at T. Then it picks r. <em>Then</em> you're handed a colouring of T minus r. The colouring comes from recursion on a smaller graph, which only exists <em>after</em> you've removed r.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> reads it. His face falls, then recovers.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I have to choose my strike before the market opens.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You have to choose your strike before the market opens.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(quietly)</span> Huh. That's... that's actually a harder trade. Fine. Fine. Then the root has to be selected <em>structurally</em>. From the shape of T alone.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Couldn't you cheat? Delete r, recurse, get c. If r is bad for c, then use c to recolour... no. You'd need a colouring of T minus some <em>other</em> root r′, and c is a colouring of the wrong graph.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You could restrict c to T minus r minus r′ and put r back... but then you're asking for a two-vertex extension, which is a different game with a different target. It's not crazy. But it's a different candidate, and it needs its own invariant. Write it on the "later" napkin.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(writing)</span> "Later: two-root re-selection after recursion. Needs own target definition and invariant. Don't conflate with Select(T)."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>So, structurally. From T alone. How do you pick a root in a minimum-degree-five triangulation?</p></div>
+<p class="stage">She smiles. It's the smile of someone who has been waiting forty years for this question at a café.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> You discharge.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I don't know what that means, and I suspect it's not what it means in my world.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>In your world it means you've lost your job. In mine it's the oldest trick in the book. In a triangulation, give every vertex a charge of six minus its degree. Euler's formula says the total charge is exactly twelve. Always. Positive.</p></div>
+<p class="stage">She writes:</p>
+<figure class="napkin"><pre>charge(v) = 6 − deg(v)
+Σ charge  = 12    (every spherical triangulation)</pre></figure>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> Degree-five vertices are positive, plus one each. Degree six is zero. Seven and higher are negative. So in a min-degree-five triangulation, the positive charge lives <em>only</em> on degree-five vertices. Then you write rules that move charge around, from fives to their neighbours or along paths, without creating or destroying any. Since the total is twelve, at the end <em>somewhere</em> still has positive charge. And the rules are designed so that any vertex left with positive charge must have a particular local neighbourhood.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's how the 1976 proof found its unavoidable set.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And Robertson–Sanders–Seymour–Thomas. Discharging tells you that one of 633 configurations must appear. Then the computer checks that each one is reducible. Discharging is the "somewhere"; reducibility is the "and then."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So you want to use discharging for the "somewhere" part, but replace the six hundred and thirty-three "and then"s with...</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>With one rule. Step. The Kempe escape. We don't need 633 configurations that are each reducible by their own bespoke computation. We need discharging to put positive charge on <em>some</em> degree-five vertex whose neighbourhood is good enough for <em>one uniform Step</em> to work.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>If this works it's beautiful. If it doesn't, it's beautiful for about a week. That's the usual ratio.</aside>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So the unavoidable set becomes... "good roots."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The unavoidable set becomes a short list of local <em>root types</em>, and maybe a very short one. If you're lucky, one sentence: "the selected root is a degree-five vertex with at most this many degree-five neighbours," or "a degree-five vertex adjacent to a degree-six vertex," or whatever the charge dictates.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And you'd test it the same way.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The same way. Here's the first thing I want to know when I get home. On Kittell, roots three, thirteen, seventeen and twenty-one were bad. Do they look <em>different</em>, locally? Their neighbours' degrees, their second neighbourhood. If the four bad roots share a local pattern the eleven good ones don't, then a charge rule that never lands on that pattern is a candidate Select.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>And if they don't look different?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Then the badness isn't local, and either Step needs more exterior information, or the rule has to be bolder. Also interesting.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(writing on his own napkin now, a new one)</span> Wait. Wait wait wait.</p></div>
+<p class="stage">He holds it up. He has written:</p>
+<figure class="napkin"><pre>p = charge structure (coarse)  ← Kamper
+q = refined-signature rank     ← Bucky</pre></figure>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd)</span> The lexicographic pair. p and q. P is the coarse structural potential, q is the fine plateau rank. What if p is the <em>discharging</em> thing, some structural quantity about where we are relative to the root's local type, and q is a rank on the <em>refined</em> signature, the bounded abstraction? Then the measure is made of <em>your</em> two things.</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> and <span class="cue c-bucky">Bucky</span> look at the napkin.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's... not wrong. That's the interface. Select is Kamper's discharging. The information Step looks at is my refined sigma. The progress measure is your price.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Three pieces.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Three pieces.</p></div>
+<p class="stage">Silence.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(slowly)</span> We're doing the same thing they did.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>What do you mean?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Three people. Each with a piece. Narrow channels between them. Building something none of them could see whole.</p></div>
+<p class="stage"><span class="cue c-theo">Theo</span>, crossing with a mop bucket, slows down near their table, catches a few words, and keeps going.</p>
+<aside class="thought c-theo"><span class="who">Theo, inside</span>There's a guy in my stats class who does that too. Talks about his "framework." I think he's going to be a billionaire or homeless.</aside>
+<h3>iii. What Would Kill It</h3>
+<p class="stage">9:30 p.m. The man with the paperback has gone. The café is empty except for our three and <span class="cue c-theo">Theo</span>. Outside it's fully night: orange streetlight, a cyclist, a dog walker. <span class="cue c-theo">Theo</span> turns off the pendants over the long table. The round table's brass lamp stays on, because nobody ever thinks to turn it off; it's on its own switch behind the bread shelf.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I want to spend some time on how this dies.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's a very you sentence.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's the only honest sentence in mathematics. If it can't die, it isn't saying anything.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The candidate already says how it dies. A <em>kill witness</em>: one triangulation where <em>every</em> degree-five root has some colouring of T minus r that can't reach a target. Then no Select can work, at least not for "every colouring."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>A single counterexample.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>One. And they were careful: if you find the smallest one in a range you searched, it's "smallest within that range," not "the smallest that exists." They'd written that out.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I like these people more every hour.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay, so let's red-team. Where would I <em>expect</em> the candidate to break?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Kempe locking. There are colourings where you're stuck in a small corner of the swap graph. There's a node in their tree, I'm told: "Tilley order-12 Kempe-locked triangulation." Status "blocked." Something about a twelve-vertex triangulation where some Kempe classes don't connect.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Twelve. That's the icosahedron's size.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's the icosahedron's size. Twelve vertices, all of degree five. The smallest possible min-degree-five triangulation, the sharp example for Gate B. And it's <em>perfectly symmetric</em>. Every root looks like every other root.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So Select is useless there. Any root is the same root.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Any root is the same root. Root selection can't save you. If the icosahedron has a bad colouring at one root, by symmetry it has one at every root.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(sitting up)</span> So the icosahedron is the first stress test for <em>Step</em>, not Select. It's the one place where Kamper's idea gets no help, so Step has to carry everything.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Has anyone run it?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I don't know. I heard the icosahedron is listed as a sharpness example, and that the Lean <em>encoding</em> of it is still on the to-do list. That's not the same as running the Kempe game on it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Then that's a test. Icosahedron, delete a vertex, enumerate colourings, play the game. Twelve vertices, small. That's an afternoon.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Less. That's a coffee.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And after the icosahedron, everything else of minimum degree five up to some size. Fourteen, fifteen, sixteen vertices... There are generators that list all triangulations with a minimum degree. You'd find your kill witness, if it's small, within a week.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's the out-of-sample test.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's a falsification sweep. It's not a proof. A thousand graphs passing is a thousand graphs passing.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>In my world, a thousand passing backtests is how you lose a billion dollars.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>In mine, it's how you lose a reputation. Mertens. Pólya. Skewes.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Merge-tolerant lifting.</p></div>
+<p class="stage">They look at him.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(cont'd)</span> That was the old one. In the spring. "1.9 million cases, zero failures." It was the remaining gap in the old route. And they didn't trust it. They moved to the gates <em>because</em> a million cases wasn't a reason.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>That's the thing that made me want to work with them, if I'm honest. Not the green checkmarks. The fact that they walked away from a million passing cases because it wasn't a proof.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay. Second way it dies: the polynomial bound.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Go on.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Even if every colouring reaches a target, what if the number of moves needed grows faster than any polynomial? Kittell said four moves at twenty-three vertices. What if there's a family where it's two to the n?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Then a particular bound dies, not all bounds. They were careful about that too. "A growing required distance can kill a proposed particular polynomial bound without killing all bounds." Unless it's exponential, in which case the polynomial objective dies but four-colourability doesn't.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's a term-structure question. How does the maximum distance grow with n? I'd plot it. For every min-degree-five triangulation up to some size, the worst-case number of moves to a target, at the best root. If it looks flat, or logarithmic, or linear, you'd guess the shape of the bound, and maybe the shape of the potential.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Because the potential has to be at least the distance.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Because the price has to be at least the time to exercise. If I see the curve of worst-case distances, I know roughly how big p and q have to range. It tells me which family of formulas to look in.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(writing)</span> "Term structure of Kempe distance: worst-case moves-to-target vs n, best root, all min-degree-5 triangulations up to N. Shapes the (p,q) search."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Third way it dies: we fool ourselves about what "move" means.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Meaning?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The candidate says <em>one</em> connected component swapped per move. Not "swap all the red–blue chains." Not "swap the chain and also fix the other one." One component. Kempe's error in 1879 was doing two swaps at once and assuming they didn't interfere. If anyone ever writes "and simultaneously," I want a red pen.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What about bundling moves into packages? Like, if you know the target is always within four, you treat "any sequence of up to four swaps" as one macro-action?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's legitimate as long as you still execute the swaps one at a time and the proof accounts for each one. It's like an endgame tablebase. You precompute short combos. But the number of four-move sequences grows with the graph, so the macro has to be <em>described</em>, not enumerated.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And interior swaps. Components that don't touch the boundary at all. The Kittell boundary-action model excluded them. Swapping a chain far away can still change which boundary vertices are <em>connected</em>, because it reroutes other chains.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So the far-away part of the market moves the near-by prices.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's one way to put it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(writing)</span> "Interior swaps as instruments. Possibly necessary. Watch the cost."</p></div>
+<h3>iv. Why a Rule</h3>
+<p class="stage">10:45 p.m. <span class="cue c-theo">Theo</span> has stacked the chairs on every table except theirs. The floor is half-mopped; the mop bucket stands near the iron press. He approaches, apologetic.</p>
+<div class="line c-theo"><span class="speaker">Theo</span><p>Hey, um. We close in fifteen. I'm going to start on the back. Just... let yourselves out the front? It locks behind you.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(not looking up)</span> Absolutely. Five minutes.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Five minutes.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Thank you, Theo. You've been very patient.</p></div>
+<div class="line c-theo"><span class="speaker">Theo</span><p>No worries. <span class="dir">(He hesitates.)</span> Is it... is it a real problem? The thing you're doing?</p></div>
+<p class="stage">They all look up at once. A small moment.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's a real problem. It was solved before you were born. And we're trying to solve it again, better.</p></div>
+<div class="line c-theo"><span class="speaker">Theo</span><p>Better how?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>So that you could understand why it's true.</p></div>
+<div class="line c-theo"><span class="speaker">Theo</span><p><span class="dir">(considering)</span> That sounds like statistics. Everything's true, and nobody can tell you why.</p></div>
+<p class="stage">He goes into the back. A door swings. The sound of bins, then a fridge being restocked.</p>
+<aside class="thought c-theo"><span class="who">Theo, inside</span>Fifteen minutes. Then I'll check. Then I'll go home and open the textbook. Definitely.</aside>
+<p class="stage"><span class="cue c-bucky">Bucky</span> looks after him.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>He's right, you know.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>About statistics? Usually.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>About why. I came into formal methods because I thought the answer to "why" was "because the checker says so." And then I spent ten years watching people write proofs that the checker loved and <em>nobody</em> understood. Tens of thousands of lines. Fine, it's true. But I can't <em>teach</em> it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Gonthier's proof.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Gonthier's proof is a masterpiece. I'd frame it. But it verifies the 1990s strategy: it trusts nothing, and it was never trying to explain. The checker is a witness, not a teacher.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The 1976 proof caused a philosophical crisis. People asked whether a proof that no human can check <em>is</em> a proof. Tymoczko wrote the paper. Half my colleagues were furious, the other half were relieved.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And now it's the same argument with AI.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Exactly the same argument. "If the machine says so, do we know it?" Fifty years later, and the machine is a different shape, and people are just as furious.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's why I like what these people are doing. They use the machine for <em>both</em> ends: verify every step in Lean, <em>and</em> insist the result be a rule a person can read. The checker is there so you can trust the rule. The rule is there so you can understand it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>In my world we'd call that model governance. The model can be as clever as it likes, but someone on the risk committee has to be able to read the policy in a page, or it doesn't trade.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A page. I'd settle for a page.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What would the page say?</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> is quiet for a moment.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Something like: "Every map has a place where charge collects. At that place there's a five-sided hub. Remove it, colour the rest, and then, as long as the hub's neighbours use all four colours, find the chain that's in the way and flip it. This list of three numbers always goes down when you do. So you finish. Put the hub back in the colour that's free."</p></div>
+<p class="stage">Silence.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(softly)</span> I'd trade that.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I'd verify that.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I'd teach it. God, I'd teach it.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>I'm sixty-three. I'd like to teach it before I'm seventy. That's not a sentiment I'll say out loud.</aside>
+<p class="stage">In the back, the fridge door closes. The back door opens. Night air, the sound of bins being wheeled into the alley. The back door closes. A key turns. <span class="cue c-theo">Theo</span>, believing the three of them have long since let themselves out the front, which locks behind you, is gone. The overhead lights on a timer click off. Only the brass lamp over the round table, on its own switch, behind the bread shelf, stays lit.</p>
+<p class="stage">None of the three notices.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="scene-five-the-locked-room">Scene Five: The Locked Room</h2>
+<h3>i. Midnight</h3>
+<p class="stage">12:10 a.m. The café is dark except for the warm circle of the brass lamp. Chairs stand upside down on every other table like a forest of legs. The mop bucket waits by the iron press. The window map is a black rectangle with a streetlamp behind it. Inside the circle of light, the round table is covered: eleven napkins, two receipts, the back of a menu card. Three empty cups, three empty bowls, one untouched cardamom bun.</p>
+<p class="stage">They have not noticed the dark. In their circle of light, the room has simply stopped existing.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Okay. Can I say the thing I've been not saying?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's the whole evening, isn't it.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The finish line isn't just a theorem. It's an <em>executable</em> solver. Which means whatever rule we find has to be extractable. Not "there exists a move that lowers p," but "here is the move, computed in polynomial time."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Naturally.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Not naturally! That's where proofs go to die in Lean. "There exists" is free. Classical choice gives it to you. "Here it is" costs you an algorithm. I heard the Gate B certificate is like this: they prove a certificate <em>exists</em>, but finding it uses classical choice. It's not yet an executable certificate search. And they <em>say</em> so. They track the difference.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So whatever the three of us invent has to come with its own extraction.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Yes. And that's where I think the machine can help in a different way. Not search for proofs: search for <em>rules</em>. Train something, a small decision tree or a little SAT-synthesised policy, on all the small cases. Make it tiny. Then read it. Then <em>prove</em> it.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Rules from data.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Rules from data, then proofs of the rules. Like how you'd find a conjecture by staring at a table, but the table has a million rows and the stare is automated. The danger is the same as before. The learned rule has to be <em>small</em>, or it's a lookup table in a trench coat.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(laughing)</span> A lookup table in a trench coat.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I've reviewed so many papers that were a lookup table in a trench coat.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I've <em>written</em> papers that were a lookup table in a trench coat. In 1987. I'm not proud.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>She's never told anyone that. I can tell. She's told us because it's midnight and we're the only people in the world.</aside>
+<h3>ii. Two in the Morning</h3>
+<p class="stage">2:05 a.m. A police car passes outside without stopping; blue light flicks briefly across the ceiling. Nobody looks up. <span class="cue c-appken">Appken</span> has taken off his overcoat and is wearing only the hoodie. <span class="cue c-kamper">Kamper</span> has put her scarf back on. <span class="cue c-bucky">Bucky</span>'s laptop is open, but he's using it as a lamp to read napkins, not to type.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>There's something we haven't talked about and I want to put it on the table so it doesn't ambush us later.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Go.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Every few years someone tells me the Four Colour Theorem is "really" a statement about something else. Tait: three-colouring the edges of cubic maps. Flows: nowhere-zero four-flows. Chromatic polynomials: the polynomial of a planar triangulation never vanishes at four. Algebraic versions: Alon–Tarsi, or the vector cross-product formulation. All true. All lovely. Their navigator has nodes for most of them.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>But.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>But a reformulation is a translation, not a proof. It moves the difficulty to a different room. It never makes it smaller. The plan says so in so many words: none of those reformulations supply the missing structural theorem.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So why bring it up?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Because at two in the morning one of us is going to say "but what if we did it with flows" and I want to have already said: fine, but only if it gives us a <em>potential</em>. A translation is only worth its weight if the new room has a better ruler in it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>A change of numéraire.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I have no idea what that is.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>When a price is hard to compute in dollars, you price it in units of some other asset where the maths is clean. The value doesn't change, but the formula gets simple. That's what a good reformulation does. It changes the numéraire.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(nodding slowly)</span> Then I'll allow it. Change of numéraire, <em>only</em> if the new unit gives us p or q.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Write that on the "later" napkin.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The later napkin is full.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Use the menu.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> writes on the back of the menu card: "Tait/flow reformulation: ONLY IF it gives a potential. Change of numéraire."</p>
+<h3>iii. Three in the Morning</h3>
+<p class="stage">3:20 a.m. The quietest point of the night. The fridge hums in the back. <span class="cue c-kamper">Kamper</span> has her eyes closed but is not asleep. <span class="cue c-bucky">Bucky</span> is eating the cardamom bun, which has gone stale, without noticing. <span class="cue c-appken">Appken</span> is staring at the window map.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Can I tell you something embarrassing?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's three in the morning. Everything's embarrassing.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I left physics because I wanted something with an answer. Markets have answers. Every evening at five there's a number, and you were right or you weren't. And it's been twelve years of answers, and none of them...</p></div>
+<p class="stage">He stops.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(eyes still closed)</span> None of them were <em>true</em>.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>None of them were true. They were <em>correct</em>. That's not the same.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(quietly)</span> I know.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Tonight's the first time in twelve years I've thought about something that would still be true after the market closes.</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>That's a very stupid thing to say to two people I've known for four years only from conferences and email. I'd say it again.</aside>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The market's closed now.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(looking around, seeing the dark café for the first time)</span> ...Huh. When did that happen?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(also looking around)</span> Where's Theo?</p></div>
+<p class="stage">Pause. All three take in the upturned chairs, the dark counter, the silence.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I believe Theo has gone home.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Are we locked in?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(standing, walking to the front door, trying it)</span> It opens from the inside. It just locks behind you.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So we're not locked in.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>We're not locked in. We're just... still here.</p></div>
+<p class="stage">He comes back. Sits. A long beat. Nobody moves to go.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Well. If we're not locked in, there's no hurry.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> laughs, the tired laugh of someone who's past being tired. <span class="cue c-appken">Appken</span> puts his head down on his arms for a moment, then lifts it again.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay. Then let's write down the plan.</p></div>
+<h3>iv. The Plan</h3>
+<p class="stage">4:30 a.m. The menu card, flipped to a fresh section, has become the master document. <span class="cue c-bucky">Bucky</span> writes; the others dictate. The handwriting deteriorates as the list goes on.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Rules for the plan. Theirs, basically. Each proposal must name: graph class, move relation, invariant, measure, input colouring family, coverage statement, and a falsifying witness. I'm stealing that. It's the best checklist I've heard in years.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Steal it. Credit it.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Credit it. Okay. Three threads.</p></div>
+<p class="stage">He writes. <span class="cue c-kamper">Kamper</span> and <span class="cue c-appken">Appken</span> read over his shoulders, so the stage picture is three heads bent into one circle of light.</p>
+<figure class="napkin"><pre>THREAD K  (Kamper)  — SELECT
+  Discharging from charge 6−deg, total 12.
+  Goal: a short list of root types such that charge always
+        lands on one, AND those types are good for Step.
+  Tonight&#x27;s first test: compare local neighbourhoods of
+        Kittell roots 3,13,17,21 (bad) vs the 11 good roots.
+  Kill: bad and good roots locally indistinguishable.
+
+THREAD B  (Bucky)   — WHAT STEP SEES
+  Refine σ with BOUNDED extra info: nesting order of
+        bichromatic chain-curves around the root (non-crossing,
+        Catalan-small).  Then maybe 2-step interaction bits.
+  Test: robust boundary game on Kittell, pooled and per-root.
+  Then: icosahedron (Select is useless there — Step alone).
+  Kill: losing signatures survive, OR refinement grows with n.
+
+THREAD A  (Appken)  — THE MEASURE (p, q)
+  Look for a cheap potential, NOT distance-to-target.
+  p from structure (Thread K), q from refined σ (Thread B).
+  Backtest: on all Kittell states, does every non-target state
+        have a legal single-component swap that lowers (p,q)?
+  Plot worst-case distance vs n (&quot;term structure&quot;) on small
+        min-degree-5 triangulations to shape the search.
+  Kill: any non-target state with no decreasing move.
+
+LATER (do not conflate):
+  - two-root re-selection after recursion
+  - interior (non-boundary) swaps as instruments
+  - macro-moves of bounded length, described not enumerated
+  - Tait/flow ONLY IF it yields a potential
+  - extraction: every &quot;exists a move&quot; must become &quot;here is the move&quot;
+
+NOT ALLOWED:
+  - &quot;and simultaneously&quot;
+  - distance-to-target as a rank
+  - &quot;extendible&quot; as an invariant
+  - calling a passing sweep a proof</pre></figure>
+<p class="stage"><span class="cue c-bucky">Bucky</span> puts down the pen. They look at it.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's a good term sheet.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's a good <em>research plan</em>. It's honest about where it dies.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Should we... send this to them? The three of them?</p></div>
+<p class="stage">A pause. The real question of the evening.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Not tonight. Not yet. We send them <em>results</em>. Even negative ones. Especially negative ones. A list of ideas from three people at a café is a list of ideas from three people at a café. They have plenty of ideas. What they don't have is three more people who have already <em>killed</em> some of them.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Bring them a dead conjecture, not a live hunch.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Bring them a dead conjecture, properly labelled. That's the most useful gift in mathematics.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>There it is. The thing I came here to learn without knowing it. Not how to be right. How to hand someone a well-made failure.</aside>
+<h3>v. Five-Forty</h3>
+<p class="stage">5:40 a.m. Without anyone noticing, the black rectangle of the window has become very dark blue. The streetlamp outside clicks off on its timer. The window map's four watercolours are faintly, faintly visible again, as shapes if not yet colours.</p>
+<p class="stage"><span class="cue c-kamper">Kamper</span> is asleep, upright, scarf around her chin. <span class="cue c-appken">Appken</span> is drawing a small triangulated sphere on the last napkin. <span class="cue c-bucky">Bucky</span> is watching him.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(whispering)</span> What's that?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(whispering)</span> Icosahedron. I've never drawn one. I wanted to see it.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Every vertex looks the same.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Every vertex looks the same. Nowhere for charge to hide. If our rule works here, it works because Step is good, not because we were clever about where to stand.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's a fair test.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It's the fairest test there is. It's the market with no information.</p></div>
+<p class="stage">He writes tiny numbers on the twelve vertices, then colours a few with a pen: R, B, Y, G.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="scene-six-rosa">Scene Six: Rosa</h2>
+<p class="stage">6:52 a.m. The window is grey-violet and brightening. The four watercolours of the county map can now be told apart. A key turns in the BACK door. A radio, playing an old soul song, enters before anyone does. Then <span class="cue c-rosa">Rosa</span>: flour-dusted apron, canvas bag, hair tied back. She flicks on the kitchen lights, which spill out through the swinging door, sets down her bag, and walks into the front of the café to turn on the ovens' display lights. She stops.</p>
+<p class="stage">Three people at the round table under the brass lamp. One asleep. Two with pens. Eleven napkins, two receipts, a menu card, a stale bun.</p>
+<p class="stage">A long beat.</p>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p><span class="dir">(not a scream exactly, but close)</span> ...WHAT.</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> wakes with a jolt. <span class="cue c-appken">Appken</span> drops his pen. <span class="cue c-bucky">Bucky</span> stands up so fast his chair tips back against the bread shelf, which shakes; one jar of coffee beans rocks and settles.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Good morning!</p></div>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p><em>Good morning?</em> How did you... we're <em>closed</em>. We've been closed since eleven. Did you break in?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>We were already in.</p></div>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p>That's <em>worse</em>.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(rising with dignity, adjusting her scarf)</span> Madam, I apologise sincerely. The young man, Theo, very kindly told us to let ourselves out. We... failed to.</p></div>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p>For eight <em>hours</em>?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(looking at the window, and for the first time seeing the morning)</span> ...Apparently.</p></div>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p><span class="dir">(looking at the napkins)</span> What is all this?</p></div>
+<p class="stage">A beat. The three look at each other.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>A term sheet.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>A research plan.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A floor.</p></div>
+<p class="stage"><span class="cue c-rosa">Rosa</span> stares at them. Her radio plays on in the kitchen.</p>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p>Out. All three. I've got forty croissants to laminate and I need this table. <em>Out.</em></p></div>
+<p class="stage">They gather the napkins frantically. <span class="cue c-kamper">Kamper</span> folds them into her coat pocket with the care of someone handling a manuscript. <span class="cue c-appken">Appken</span> rescues the menu card. <span class="cue c-bucky">Bucky</span> shuts his laptop and tries to put the chair back down, then realises he should put it up on the table like all the others, then can't decide, and <span class="cue c-rosa">Rosa</span> takes it out of his hands and does it herself.</p>
+<p class="stage">They file towards the front door. <span class="cue c-kamper">Kamper</span> stops on the floor near the till, at the two red tiles that share an edge.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Oh. Rosa, one more thing...</p></div>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p><em>OUT.</em></p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Those two red tiles. If you ever retile, it's a single swap. Red and blue, on the little red-and-blue patch that contains the left one. Just that piece. It doesn't reach the other red tile, and the rest of the floor won't notice. I checked last night, while Appken was talking about bonds.</p></div>
+<div class="line c-rosa"><span class="speaker">Rosa</span><p><span class="dir">(arms folded, flour on her elbows)</span> I'll tell the owner.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Thank you.</p></div>
+<aside class="thought c-rosa"><span class="who">Rosa, inside</span>Every year it's someone. Last year it was a poet who wrote on the bathroom wall. At least these ones only want to fix the floor.</aside>
+<p class="stage">The front door opens. Cold air. The first bird. The three step out onto the pavement. The door closes and locks behind them.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="epilogue-three-roads">Epilogue: Three Roads</h2>
+<p class="stage">7:02 a.m. The street outside The Gamut. The café sits on a corner where three streets meet at uneven angles: one runs uphill towards the university, one runs downhill towards the river and the financial district, and one runs flat along the tram line towards the old residential blocks. Above the rooftops to the east, a line of bright gold is about to break. The sky is the colour that has no name, between violet and blue and grey.</p>
+<p class="stage">The three stand in the middle of the meeting point, blinking.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(looking at the three streets)</span> Degree three.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Hm?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>This corner. Three roads. It's a vertex of degree three. The easy case.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(smiling, exhausted)</span> Any colour's free.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Tait would like it. It's cubic.</p></div>
+<p class="stage">They laugh, too much, the way you laugh at seven in the morning when you haven't slept.</p>
+<p class="stage">A pause. Nobody wants to be the first to go.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So. Email.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Email.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Today.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Today. Results, not hunches. Even if it's "my thing is dead."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><em>Especially</em> if it's "my thing is dead."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And properly labelled: the class, the move, the measure, the witness.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The checklist.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The checklist.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> takes a step towards the uphill road, towards the university and its lab, then turns back.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I'm going to refine sigma. The nesting of the chain-curves around the root, the non-crossing structure, nothing else. Then I'll run the robust game on Kittell, pooled and per-root. If those five losers turn into winners and the extra data stays bounded, I'll go straight to the icosahedron. If they don't, I'll tell you exactly which collision survived, and why.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>I want to be right. No. I want to know. Those aren't the same. Remember they aren't the same.</aside>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(cont'd, aloud, to both)</span> I'm terrified it'll work on the first try. Then I won't trust it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's the right thing to be terrified of.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> nods, turns, and walks uphill. He walks fast, then faster, laptop bag bumping against his hip. Near the top he takes out his phone and starts typing, and stops walking to type, and starts again.</p>
+<p class="stage"><span class="cue c-appken">Appken</span> turns towards the downhill road, towards the river and the glass towers, then hesitates.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm going to price it. The pair, p and q. Not distance, nothing circular, something I could compute from what's on the board. I'll take every Kittell state and check whether every non-target state has a swap that brings the price down. And I'm going to plot the term structure: worst-case moves against size, for every small triangulation where every vertex has degree at least five. If the curve is flat, I'll know what kind of formula to look for.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And if it's not flat?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Then I'll know what kind of formula <em>not</em> to look for. That's worth just as much. Half of finance is knowing which models to never use again.</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>I'm going to call in sick. I've never called in sick. I'm going to call in sick and price a colouring.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd)</span> I'm so nervous I feel like I'm about to go on a trading floor for the first time. That's... that's a good feeling. I'd forgotten it was a good feeling.</p></div>
+<p class="stage">He walks downhill, overcoat over one arm, and doesn't look back until the corner, where he does, and lifts the menu card like a flag. Then he's gone.</p>
+<p class="stage"><span class="cue c-kamper">Kamper</span> stands alone at the meeting point of three roads. The gold breaks over the rooftops. The first direct sunlight of the day hits the café window behind her, and the antique county map lights up in its four soft colours, red, blue, yellow, green, every county touching its neighbours, none of them the same.</p>
+<p class="stage">She turns to look at it.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(to herself, quietly)</span> Charge six minus degree. Twelve in total. Somewhere it collects.</p></div>
+<p class="stage">She touches the folded napkins in her coat pocket.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> Roots three, thirteen, seventeen, twenty-one. Show me what's different about you.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Forty years I've been waiting for someone to put the hard part on a napkin. And now there are three teams... no. Six people. Two halves of one table that haven't met yet. I'll be the first email. I'll make sure it's a good one. And if my rule dies by lunchtime, I'll make sure it dies <em>well</em>.</aside>
+<p class="stage">She takes the flat road, along the tram line, towards home. The first tram of the morning comes up behind her, and she doesn't take it. She wants the walk. She wants to count the paving stones and check whether they're properly coloured.</p>
+<p class="stage">Behind her, inside The Gamut, <span class="cue c-rosa">Rosa</span>'s radio plays. The ovens light. A croissant tray slides in. On the floor by the till, two red tiles still share an edge, for now.</p>
+<p class="stage">The sun is fully up.</p>
+<p><strong>END OF PLAY</strong></p>
+<hr class="break" aria-hidden="true">
+<h3>Author's note on the rumours</h3>
+<p>Every technical "rumour" the three characters pass around comes from the project's own records as of 4 October 2026. The sources are the Structural Four Colour plan, the Gate-D candidate, the Proof Navigator tree, and the earlier wrap-up plan. Proved results are described as compiled. The Kittell numbers come from the independent replay. Gate D is described as open, because it is. The three threads at the end are the characters' own research proposals, and each one comes with its own kill condition. They are offered in the spirit of the plan's rule: a proposal must name its graph class, move relation, invariant, measure, input family, coverage statement and falsifying witness.</p>
+  </article>
+  <script>
+    // Embedded with auto-height on the project page: scroll the parent, not this frame.
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var target = document.querySelector(link.getAttribute('href'));
+        var frame = null;
+        try { frame = window.frameElement; } catch (err) {}
+        if (!target || !frame) return;
+        event.preventDefault();
+        var top = window.parent.scrollY + frame.getBoundingClientRect().top + target.getBoundingClientRect().top - 72;
+        window.parent.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
