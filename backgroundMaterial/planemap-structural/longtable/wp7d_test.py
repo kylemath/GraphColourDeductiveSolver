@@ -77,15 +77,28 @@ def part1(rot, r):
                 if j in rset and pit_of[j] != pit_of[i] and R[j] < R[i]:
                     inter.append({"from": i, "via": x, "via_R": R[x], "to": j, "R": [R[i], R[j]]})
     # independent switches: apply pit k's toggle vertex set, if it is a component, in each region state
+    # (a) fixed-set availability, now over BOTH representatives of every pit's toggle
     joint = Counter()
-    toggle_sets = [frozenset(tg["toggle_moves"][0][1]) for tg in toggles if tg["toggle_moves"]]
+    reps = {k: [frozenset(K) for _, K in tg["toggle_moves"]] for k, tg in enumerate(toggles)}
     for i in region:
-        for S in toggle_sets:
+        for k, sets in reps.items():
             for pr, K, x in s.info[i]["moves"]:
-                if frozenset(K) == S and x != i:
-                    where = "region-same-pit" if x in rset and pit_of[x] == pit_of[i] else \
-                            "region-other-pit" if x in rset else "rim" if x in set(rim) else "elsewhere"
+                if frozenset(K) in sets and x != i:
+                    where = ("own-pit toggle" if k == pit_of[i] else "OTHER-pit toggle set is a component") + \
+                            (" -> region" if x in rset else " -> rim" if x in set(rim) else " -> elsewhere")
                     joint[where] += 1
+    # (b) two-step composition: from each region state, apply any legal first move, recompute components,
+    #     then ask whether some OTHER pit's toggle representative is a legal second move
+    composed = Counter()
+    for i in region:
+        for _, K1, x in s.info[i]["moves"]:
+            if x == i:
+                continue
+            for _, K2, y in s.info[x]["moves"]:
+                for k, sets in reps.items():
+                    if k != pit_of[i] and frozenset(K2) in sets and y != x:
+                        composed["first move " + ("own toggle" if frozenset(K1) in reps[pit_of[i]] else "other")
+                                 + "; second move = other pit's toggle set" + (" -> region" if y in rset else "")] += 1
     return {"root": r, "region": region, "strict_traps": trap_states, "twins": twin_states,
             "pits": pits, "toggles": toggles, "rim_size": len(rim),
             "connectors": {str(j): {"R": R[j], "pits": touch[j]} for j in connectors},
@@ -93,7 +106,8 @@ def part1(rot, r):
             "stabiliser_order": len(stab), "trap_orbit": orbit(trap_states[0]) if trap_states else [],
             "twin_orbit": orbit(twin_states[0]) if twin_states else [],
             "trap_to_own_twin_by_symmetry": trap_twin_by_symmetry,
-            "inter_pit_macros": inter, "toggle_sets_applied_in_region": dict(joint)}
+            "inter_pit_macros": inter, "toggle_sets_applied_in_region": dict(joint),
+            "two_step_other_pit_toggles": dict(composed)}
 
 
 def part2(traces):
@@ -122,10 +136,11 @@ def part2(traces):
                                       "colorings": [list(c1), list(c2)]})
             rows.append({"order": row["order"], "graph_index": row["graph_index"], "root": r, "run": k,
                          "warnings": len(warned), "distinct_chi": len(set(chi.values())),
+                         "max_fibre": max(Counter(chi.values()).values()),
                          "stabiliser_order": len(stab)})
     return {"runs_checked": len(rows), "c7d_kills": kills, "c7d_survives": not kills,
             "distinct_chi_values_observed": len(chis), "max_warnings_per_chi_in_a_run":
-            max(r["warnings"] - r["distinct_chi"] + 1 for r in rows), "rows": rows}
+            max(r["max_fibre"] for r in rows), "rows": rows}
 
 
 def main():
@@ -150,7 +165,8 @@ def main():
               f"(R {sorted({v['R'] for v in d['spurs'].values()})}); |Stab| {d['stabiliser_order']}; "
               f"trap orbit {len(d['trap_orbit'])}, twin orbit {len(d['twin_orbit'])}; "
               f"trap->own twin by symmetry {d['trap_to_own_twin_by_symmetry']}; "
-              f"inter-pit macros {len(d['inter_pit_macros'])}; toggle sets applied in region {d['toggle_sets_applied_in_region']}")
+              f"inter-pit macros {len(d['inter_pit_macros'])}; toggle sets applied in region {d['toggle_sets_applied_in_region']}; "
+              f"two-step: {d['two_step_other_pit_toggles']}")
         for tg in d["toggles"]:
             print("   pit", tg["trap"], tg["twin"], "toggle", tg["toggle_moves"])
     print(f"C7d: {p2['runs_checked']} runs, kills {len(p2['c7d_kills'])}, distinct chi {p2['distinct_chi_values_observed']}, "

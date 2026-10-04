@@ -43,3 +43,18 @@ The claim: within a run, warned colourings with equal χ, where χ = (Stab(r)-or
 **Two open questions, both needing graphs beyond this corpus**, which require joint agreement:
 1. Can pits multiply without symmetry, through independent interior toggles? That would break C7d.
 2. Can a ring contain more pits than the root stabiliser has elements? That would break any symmetry-based bound.
+
+## Addendum: the math team's two reporting clarifications
+
+The math team's review (`2026-10-04-math-to-longtable-c7d-review-complete.md`) keeps the C7d result under the declaration and amendment actually tested, with the timing disclosure. No rerun of C7d is needed. Two reporting fixes are applied in `wp7d_test.py`, and `wp7d-results.json` is regenerated.
+
+1. **Exact fibre size.** The maximum number of warnings sharing one χ in a run is now computed directly, with a Counter. Before, it was the upper bound warnings − distinct χ + 1. The exact maximum is **3**, the same value: the three-trap witness attains it.
+2. **Switch scope.** The earlier check used only the first stored representative of each pit's toggle. It now tests both representatives, the two-vertex chain at the opposite hub and its complementary six-vertex component, and adds a two-step composition test:
+   - **Fixed-set availability, both representatives:** in all 10 dead-end states at each root, the only toggle set that is a legal component is the pit's own. That is 20 cases per root, two representatives each. **No other pit's toggle set is a component, in either representative.**
+   - **Two-step composition, recomputed:** from every dead-end state, after *every* legal first move with components recomputed, no other pit's toggle representative is a legal second move. That is **0 cases** at both roots.
+
+**Scope.** The composition test covers two steps starting from the dead-end region. It does not cover longer sequences, or switches started from the rim.
+
+**A candidate structural reason, as a hypothesis only.** All five toggles at a root pass through the **same vertex**, the opposite hub. A toggle {h, x} is a two-vertex component in some pair exactly when x is the only neighbour of h in its colour, and h is the only neighbour of x in h's colour. Toggles of different pits use different neighbours x of the same h. Applying any of them recolours h, which changes the uniqueness conditions the others depend on.
+
+If that is the mechanism, interior variants at this fixture cannot accumulate because their switches **share a vertex**. Independent accumulation would need toggles on disjoint vertex sets. The precise hypotheses, and whether they can be stated without the fixture's symmetry, are the next thing to write down. Per the math team's guidance, they will be recorded as hypotheses, not generalised by symmetry.
