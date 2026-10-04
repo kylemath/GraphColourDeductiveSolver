@@ -47,6 +47,11 @@
 
 ### WP7: the singleton-chain interaction (answers Q1)
 
+> **Update, 4 October, late.** The math team released WP7 with a correction: Π alone cannot separate states with the same σ. WP7 was declared (`longtable/WP7-declaration.md`, commit `880c323`) and tested on discovery (`longtable/WP7-results.md`):
+> - **Exact statements:** locality (Lemma 7.1), re-partition (Lemma 7.2), and Kempe's full-lock lemma (Lemma 7.4).
+> - **Conjecture 7.3, mass dominance, is refuted** by the order-17, graph-3 short-circuit traps.
+> - **Next:** the dynamic re-partition question below. Meanwhile, breadcrumb descent (the user's idea, swept by the math team) passes all 1,586 roots with at most 4 warnings. Its warning bound is the main open obligation.
+
 **Statement first, then test.** Define the *singleton triangle* Π(c): for every pair {x, y} of singleton colours on B, the {x, y}-component containing the x-singleton also contains the y-singleton. A conjectured mechanism to test:
 - when Π holds, every swap of a chain that touches the repeated colour merges mass into those three linking chains, which raises q;
 - this is why the first step out is uphill.
