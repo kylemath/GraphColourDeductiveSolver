@@ -1,0 +1,99 @@
+{
+  "graph_name": "T_9_35",
+  "vertex": 6,
+  "degree": 4,
+  "n_nodes": 9,
+  "n_edges": 21,
+  "limit_s": 600.0,
+  "generate_seconds": 1.1972795,
+  "enumerate_seconds": 0.005298124999999931,
+  "n_all_proper_5": 7200,
+  "n_c_vertex_5": 1440,
+  "n_S_loaded": 24,
+  "n_in_S": 24,
+  "n_outside": 1416,
+  "sanity": {
+    "colouring": "0:1,1:2,2:3,3:4,4:5,5:3,6:5,7:2,8:5",
+    "in_S": true,
+    "proper_on_G": true,
+    "c_vertex": 5,
+    "bfs_seconds": 0.0006775410000001703,
+    "colours_on_H": 5,
+    "safety_seconds": 1.2666000000161048e-05,
+    "status": "path",
+    "opt_dist": 2,
+    "one_shortest_unsafe": true,
+    "end_colours": 4,
+    "longer": {
+      "search_seconds": 0.0010035830000001411,
+      "returned": true,
+      "length": 3,
+      "is_step_safe": true,
+      "end_colours": 4,
+      "length_is_opt_plus_1": true
+    },
+    "universal": {
+      "seconds": 0.006458417000000161,
+      "status": "every_shortest_unsafe",
+      "safe_path_exists": false,
+      "reason": "exhausted",
+      "paths_checked": 2,
+      "path_length_nodes": null
+    },
+    "universal_seconds": 0.006460291000000007
+  },
+  "n_finished_one_path": 1416,
+  "stopped_reason": null,
+  "one_path_complete": true,
+  "n_one_shortest_path_unsafe": 8,
+  "n_one_shortest_path_safe": 1408,
+  "n_no_bfs_path": 0,
+  "n_opt_plus_1_safe": 8,
+  "n_longer_returned_but_is_step_unsafe": 0,
+  "n_longer_returned_wrong_shape": 0,
+  "n_longer_none": 0,
+  "n_unsafe_seen": 8,
+  "opt_dist_hist": {
+    "0": 240,
+    "1": 792,
+    "2": 384
+  },
+  "one_path_cpu_seconds": 0.15223423999999697,
+  "longer_cpu_seconds": 0.01047854199999998,
+  "universal": {
+    "attempted": true,
+    "probe_n": 8,
+    "probe_seconds": 0.05062112600000024,
+    "probe_mean_seconds": 0.00632764075000003,
+    "probe_max_seconds": 0.006594458000000136,
+    "projected_seconds_on_unsafe_set": 0.05062112600000024,
+    "projected_seconds_remaining_calls": 0.0,
+    "remaining_seconds_at_decision": 598.569447959,
+    "probe_statuses": {
+      "has_safe_shortest": 8
+    },
+    "probe_paths_checked": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "status": "complete",
+    "n_every_shortest_path_unsafe": 0,
+    "n_has_safe_shortest_among_unsafe_sample": 8,
+    "n_inconclusive_max_paths": 0,
+    "n_other": 0,
+    "n_unsafe_finished": 8,
+    "n_excluded_by_safe_bfs_path": 1408,
+    "status_counts": {
+      "has_safe_shortest": 8
+    },
+    "universal_seconds": 0.05062112600000024
+  },
+  "elapsed_seconds": 1.4306198330000002,
+  "n_colourings_finished": 1416
+}

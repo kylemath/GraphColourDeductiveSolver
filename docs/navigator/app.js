@@ -97,7 +97,51 @@ const State = (() => {
 
   function canPersist() { return persistent; }
 
-  return { init, save, reset, getTree, setTree, getJournal, addJournalEntry, exportJSON, importJSON, canPersist };
+  function applyPlanningBoard(board) {
+    const rev = board.revision || 0;
+    if (rev <= (tree.planningRevision || 0)) return false;
+    for (const patch of board.patches || []) {
+      if (patch.op === 'insert') {
+        if (!patch.node || Tree.findNode(tree, patch.node.id)) continue;
+        const parent = Tree.findNode(tree, patch.parentId);
+        if (!parent) continue;
+        parent.children = parent.children || [];
+        parent.children.push(patch.node);
+        parent.expanded = true;
+        continue;
+      }
+      const node = Tree.findNode(tree, patch.id);
+      if (!node) continue;
+      if (patch.status) node.status = patch.status;
+      if (patch.evidence != null) node.evidence = patch.evidence;
+      if (patch.approach) node.approach = patch.approach;
+      if (patch.killCriteria != null) node.killCriteria = patch.killCriteria;
+      if (patch.statement) node.statement = patch.statement;
+      if (patch.files) {
+        node.files = node.files || [];
+        for (const f of patch.files) {
+          if (!node.files.includes(f)) node.files.push(f);
+        }
+      }
+      if (patch.notes) {
+        node.notes = node.notes || [];
+        for (const n of patch.notes) {
+          if (!node.notes.some(x => x.time === n.time && x.text === n.text)) node.notes.push(n);
+        }
+      }
+    }
+    for (const entry of board.journal || []) {
+      if (!journal.some(x => x.time === entry.time && x.action === entry.action)) {
+        journal.unshift(entry);
+      }
+    }
+    if (journal.length > 500) journal.length = 500;
+    tree.planningRevision = rev;
+    save();
+    return true;
+  }
+
+  return { init, save, reset, getTree, setTree, getJournal, addJournalEntry, exportJSON, importJSON, canPersist, applyPlanningBoard };
 })();
 
 
@@ -262,15 +306,27 @@ document.addEventListener('DOMContentLoaded', () => {
     () => { State.save(); updateGlobalProgress(); }
   );
 
-  // Initial render
-  const tree = State.getTree();
-  Tree.render(document.getElementById('tree-container'), tree, 0);
-  updateGlobalProgress();
-  renderJournal();
+  function renderAll() {
+    const tree = State.getTree();
+    Tree.render(document.getElementById('tree-container'), tree, 0);
+    updateGlobalProgress();
+    renderJournal();
+  }
+
+  renderAll();
   if (!State.canPersist()) {
     const label = document.getElementById('project-name');
     if (label) label.textContent = 'Changes last until reload — export JSON to keep them';
   }
+
+  // planning.json is the agent-editable board. A higher revision overlays
+  // status, evidence, notes, and new nodes onto localStorage.
+  fetch('planning.json', { cache: 'no-store' })
+    .then(res => res.ok ? res.json() : null)
+    .then(board => {
+      if (board && State.applyPlanningBoard(board)) renderAll();
+    })
+    .catch(() => {});
 
   /* ---- Detail panel: auto-save on changes ---- */
   const fieldMap = [

@@ -1,0 +1,333 @@
+{
+  "definition": "D-reducible means the maximal consistent set of bad ring edge-colourings in {-1,0,1} is empty. A signed non-crossing matching is a Kempe interchange on the ring: for each colour theta, every proper 4-colouring of the ring, up to translation in the Klein group, is kept with the colourings that fit the same matching. This is the RSST ring-colour closure.",
+  "literature": "Robertson, Sanders, Seymour, Thomas, The Four-Colour Theorem, J. Combin. Theory Ser. B 70 (1997), 2-44, section 3.",
+  "ring_size_bound": 6,
+  "elapsed_seconds": 0.0321,
+  "cycle_colouring_counts": {
+    "C4_vertex": 84,
+    "C5_vertex": 240,
+    "C6_vertex": 732,
+    "C5_vertex_up_to_colour_permutation": 10,
+    "C6_vertex_up_to_colour_permutation": 31,
+    "C5_edge": 243,
+    "C6_edge": 729
+  },
+  "birkhoff_diamond": {
+    "ring_size": 6,
+    "interior": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "edge_colourings": 729,
+    "extendable_edge_colourings": 96,
+    "bad_edge_colourings": 633,
+    "maximal_consistent_bad": 0,
+    "bad_examples": [],
+    "consistent_bad_colourings": [],
+    "d_reducible": true,
+    "vertex_ring_colourings": 732,
+    "vertex_direct_extensions": 384,
+    "vertex_direct_failures": 348,
+    "full_vertex_colourings": 576,
+    "interior_degrees": {
+      "6": 5,
+      "7": 5,
+      "8": 5,
+      "9": 5
+    },
+    "edge_count": 21,
+    "internal_triangles": 12,
+    "disk_triangulation": true,
+    "vertex_ring_colourings_up_to_colour_permutation": 31
+  },
+  "degree5_vertex": {
+    "ring_size": 5,
+    "interior": [
+      5
+    ],
+    "edge_colourings": 243,
+    "extendable_edge_colourings": 30,
+    "bad_edge_colourings": 213,
+    "maximal_consistent_bad": 30,
+    "bad_examples": [
+      [
+        -1,
+        -1,
+        0,
+        -1,
+        1
+      ],
+      [
+        -1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        -1,
+        -1,
+        1
+      ],
+      [
+        -1,
+        0,
+        -1,
+        1,
+        -1
+      ],
+      [
+        -1,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "consistent_bad_colourings": [
+      [
+        -1,
+        -1,
+        0,
+        -1,
+        1
+      ],
+      [
+        -1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        -1,
+        -1,
+        1
+      ],
+      [
+        -1,
+        0,
+        -1,
+        1,
+        -1
+      ],
+      [
+        -1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        -1,
+        1,
+        -1,
+        -1,
+        0
+      ],
+      [
+        -1,
+        1,
+        -1,
+        0,
+        -1
+      ],
+      [
+        -1,
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        -1,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      [
+        0,
+        1,
+        -1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        1,
+        1,
+        -1,
+        1
+      ],
+      [
+        1,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      [
+        1,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      [
+        1,
+        -1,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        -1,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        -1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
+        -1
+      ],
+      [
+        1,
+        1,
+        -1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        1,
+        -1
+      ]
+    ],
+    "d_reducible": false,
+    "vertex_ring_colourings": 240,
+    "vertex_direct_extensions": 120,
+    "vertex_direct_failures": 120,
+    "full_vertex_colourings": 120,
+    "interior_degrees": {
+      "5": 5
+    },
+    "vertex_ring_colourings_up_to_colour_permutation": 10,
+    "named_witness_in_consistent_bad_set": true
+  },
+  "naive_component_swap_not_the_test": {
+    "birkhoff_diamond_failures": 0,
+    "degree5_failures": 0,
+    "note": "Free swaps of every bichromatic ring component, including isolated vertices. Not the D-reducibility test."
+  },
+  "degree4_checksum": {
+    "edge_colourings": 81,
+    "extendable_edge_colourings": 15,
+    "maximal_consistent_bad": 0,
+    "d_reducible": true,
+    "vertex_ring_colourings": 84,
+    "vertex_direct_failures": 24
+  },
+  "claims": {
+    "birkhoff_diamond_d_reducible": true,
+    "degree5_vertex_d_reducible": false,
+    "degree5_consistent_bad": 30,
+    "diamond_extendable_edge_colourings": 96
+  }
+}

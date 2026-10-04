@@ -1,0 +1,389 @@
+{
+ "journal": [
+  {
+   "time": "2026-09-27T21:27:59Z",
+   "action": "Agent 1720 main planning team issued wave 1: 14 groups under 5 managers covering Tracks 1\u20137, the Lean foundation, a new discharging track, and a survey of other deductive routes. Nothing is checked off before the critic gate.",
+   "node": "4ct"
+  }
+ ],
+ "patches": [
+  {
+   "op": "insert",
+   "parentId": "track1",
+   "node": {
+    "id": "t1-safe-plus1",
+    "title": "Safe path of length d+1, all triangulations n\u226410",
+    "statement": "For every triangulation G with n\u226410, every v with deg v\u2208{4,5}, every proper 5-colouring with c(v)=5: a K1-safe path of length \u2264 d+1 to a \u22644-colouring of G\u2212v exists, d the BFS distance.",
+    "status": "exploring",
+    "approach": "Agent 1720 group K4, manager M-Kempe.",
+    "killCriteria": "One instance with no K1-safe path of length \u2264 d+1.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "op": "insert",
+   "parentId": "track1",
+   "node": {
+    "id": "t1-monotone",
+    "title": "Monotone Kempe reduction",
+    "statement": "From every proper 5-colouring of a planar triangulation there is a Kempe sequence along which the size of colour class 5 never increases and reaches 0.",
+    "status": "exploring",
+    "approach": "Agent 1720 group K5, manager M-Kempe. Tested on n\u226410.",
+    "killCriteria": "One colouring where no monotone sequence exists.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "op": "insert",
+   "parentId": "track1",
+   "node": {
+    "id": "t1-kempe-class-d5",
+    "title": "Four-colour Kempe classes at a degree-5 vertex",
+    "statement": "For every triangulation G and degree-5 vertex v, every Kempe class of 4-colourings of G\u2212v that uses 4 colours on N(v) contains a colouring using \u22643 colours on N(v). This is Kempe's induction with unrestricted swap sequences.",
+    "status": "exploring",
+    "approach": "Agent 1720 group K6, manager M-Kempe. Compute n\u226411; literature Heawood, Errera, Kittell, Tilley.",
+    "killCriteria": "One written triangulation, vertex, and Kempe class with no fixable colouring.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "op": "insert",
+   "parentId": "track2",
+   "node": {
+    "id": "t2-degenerate",
+    "title": "P(G,k)>0 for d-degenerate G, k\u2265d+1",
+    "statement": "Written proofs for degenerate, outerplanar, series-parallel, and planar k\u22656 positivity, plus the strongest k=4 restricted-family statement provable here.",
+    "status": "exploring",
+    "approach": "Agent 1720 group A2, manager M-Algebra.",
+    "killCriteria": "A written proof has a gap the critic can point to.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "op": "insert",
+   "parentId": "track3",
+   "node": {
+    "id": "t3-tait",
+    "title": "Tait colourings = nowhere-zero 4-flows = P(T,4)/4",
+    "statement": "Check on the dual of every triangulation n\u226410 and write the planar duality proof.",
+    "status": "exploring",
+    "approach": "Agent 1720 group D1, manager M-Duality.",
+    "killCriteria": "A count mismatch on some T.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "op": "insert",
+   "parentId": "track3",
+   "node": {
+    "id": "t3-alon-tarsi",
+    "title": "Algebraic edge-colouring (Alon\u2013Tarsi)",
+    "statement": "Test whether a sign-invariant graph-polynomial identity gives a deductive non-vanishing proof for planar cubic 3-edge-colouring.",
+    "status": "exploring",
+    "approach": "Agent 1720 group D3, manager M-Duality.",
+    "killCriteria": "Sign cancellation shows no invariant exists on small graphs.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "op": "insert",
+   "parentId": "4ct",
+   "node": {
+    "id": "track8",
+    "title": "Track 8: Discharging and reducibility",
+    "statement": "Audit and extend the discharging and reducibility code (Plan 1). Minimum: a verified D-reducibility check of the Birkhoff diamond.",
+    "status": "exploring",
+    "approach": "Agent 1720 group S3, manager M-Frontier.",
+    "killCriteria": "Existing code misstates what it computes and cannot be repaired within the wave.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md",
+     "SolvingFrameworkPlan/Plan1_RefinedDischarging.md",
+     "compute/discharging/"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "op": "insert",
+   "parentId": "4ct",
+   "node": {
+    "id": "routes-1720",
+    "title": "Survey: deductive routes not in the roadmap",
+    "statement": "Tait-Hamiltonian, Hadwiger, vector cross product, Birkhoff\u2013Lewis equations, Eliahou, Matiyasevich, perfect-matching forms, RSST, Gonthier. Recommend at most three new tracks.",
+    "status": "exploring",
+    "approach": "Agent 1720 group S4, manager M-Frontier.",
+    "killCriteria": "Critic finds no recommended route is more than a restatement.",
+    "files": [
+     "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+    ],
+    "notes": [
+     {
+      "time": "2026-09-27T21:27:59Z",
+      "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+     }
+    ]
+   }
+  },
+  {
+   "id": "t1-1",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t2-2",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t2-3",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t2-4",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t3-1",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t3-2",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t4-1",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t4-2",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t4-3",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t5-1",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t6-1",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "f1",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "f2",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "f3",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t7-1",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  },
+  {
+   "id": "t7-2",
+   "status": "exploring",
+   "files": [
+    "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
+   ],
+   "notes": [
+    {
+     "time": "2026-09-27T21:27:59Z",
+     "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
+    }
+   ]
+  }
+ ]
+}

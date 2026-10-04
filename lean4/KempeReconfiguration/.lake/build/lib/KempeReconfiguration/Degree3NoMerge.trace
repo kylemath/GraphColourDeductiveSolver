@@ -1,0 +1,8 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=././.lake/packages/Cli/.lake/build/lib:././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/LeanSearchClient/.lake/build/lib:././.lake/packages/plausible/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib DYLD_LIBRARY_PATH= /Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.15.0/bin/lean -DautoImplicit=false ././././KempeReconfiguration/Degree3NoMerge.lean -R ./././. -o ././.lake/build/lib/KempeReconfiguration/Degree3NoMerge.olean -i ././.lake/build/lib/KempeReconfiguration/Degree3NoMerge.ilean -c ././.lake/build/ir/KempeReconfiguration/Degree3NoMerge.c --json",
+   "level": "trace"},
+  {"message":
+   "././././KempeReconfiguration/Degree3NoMerge.lean:36:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.adj_same_chain':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"}],
+ "depHash": "13563935034579650560"}

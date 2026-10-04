@@ -21,9 +21,10 @@ import KempeReconfiguration.Basic
 namespace KempeReconfiguration
 
 variable {V : Type*} [Fintype V] [DecidableEq V]
+variable {k : ℕ}
 
 /-- A triangulation is a maximal planar graph: |E| = 3|V| - 6 and planar. -/
-class Triangulation (G : SimpleGraph V) where
+class Triangulation (G : SimpleGraph V) [DecidableRel G.Adj] where
   -- TODO: sorry — Mathlib lacks a full planar graph API.
   -- Axiomatize the key property we need: in a triangulation,
   -- the link (open neighbourhood) of a degree-3 vertex forms K_3.
@@ -39,8 +40,7 @@ theorem adj_same_chain
     (hu : c u = a ∨ c u = target)
     (hw : c w = a ∨ c w = target) :
     inSameKempeChain G c a target u w := by
-  exact SimpleGraph.Reachable.intro _
-    (SimpleGraph.Walk.cons (by exact ⟨hadj, hu, hw⟩) SimpleGraph.Walk.nil)
+  exact ⟨SimpleGraph.Walk.cons ⟨hadj, hu, hw⟩ SimpleGraph.Walk.nil⟩
 
 /-- The Degree-3 No-Merge Lemma.
 

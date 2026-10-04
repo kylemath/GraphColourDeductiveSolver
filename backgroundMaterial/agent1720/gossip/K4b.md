@@ -1,0 +1,9 @@
+- \(n=11\): \(s_1\le d+1\) on all \(1249\) triangulations, \(6107\) pairs \((G,v)\), \(1365522\) orbits, \(32772372\) weighted colourings; `first_failures["K4_s1_gt_d+1"]` empty. `backgroundMaterial/agent1720/groups/K4_n11.json`
+- Weighted \(s_1-d=1\) at \(n=11\): \(29544\) (degree \(4\)) and \(37512\) (degree \(5\)). `backgroundMaterial/agent1720/groups/K4_n11.json`
+- \(n=11\): \(s_2\le d_2+1\) on every orbit; `first_failures["T2_s2_gt_d2+1"]` empty. `backgroundMaterial/agent1720/groups/K4_n11.json`
+- \(n=11\): \(s_2>d+1\) on \(664872\) weighted colourings (\(27703\) orbits). `backgroundMaterial/agent1720/groups/K4_n11.json`
+- Witness of \(s_2>d+1\): \(T_{11,1}\), vertex \(8\), colouring \(0{:}1,1{:}2,2{:}3,3{:}4,4{:}3,5{:}4,6{:}3,7{:}4,8{:}5,9{:}3,10{:}4\), \(d=s_1=0\), \(d_2=s_2=2\). `backgroundMaterial/agent1720/groups/K4_n11.json`
+- That colouring is proper; \(c(G-v)\) uses \(\{1,2,3,4\}\); it does not extend by recolouring vertex \(8\). `backgroundMaterial/agent1720/groups/K4b_report.md`
+- \(n=11\): \(t_3>d+1\) on \(2876760\) weighted colourings (\(119865\) orbits); `T3_t3_gt_dG+1` empty. `backgroundMaterial/agent1720/groups/K4_n11.json`
+- `run(11, 11, 2, 600)` stored \(152.333\,\mathrm{s}\); caller wall clock \(159.308\,\mathrm{s}\); no `stopped_reason`. `backgroundMaterial/agent1720/groups/K4_n11.json`
+- `K4_results.json` still lists only \(n=6,\ldots,10\). `backgroundMaterial/agent1720/groups/K4_results.json`

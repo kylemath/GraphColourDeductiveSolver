@@ -1,0 +1,1225 @@
+{
+ "structural_checks": [
+  {
+   "name": "icosahedron",
+   "n": 12,
+   "m": 30,
+   "planar": true,
+   "is_triangulation": true,
+   "degrees": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+   ],
+   "expected_n_m": [
+    12,
+    30
+   ],
+   "ok": true
+  },
+  {
+   "name": "Errera",
+   "n": 17,
+   "m": 45,
+   "planar": true,
+   "is_triangulation": true,
+   "degrees": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    6,
+    6,
+    6,
+    6,
+    6
+   ],
+   "expected_n_m": [
+    17,
+    45
+   ],
+   "ok": true
+  },
+  {
+   "name": "Kittell",
+   "n": 23,
+   "m": 65,
+   "planar": false,
+   "is_triangulation": false,
+   "degrees": [
+    4,
+    4,
+    4,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    7,
+    7,
+    9
+   ],
+   "expected_n_m": [
+    23,
+    63
+   ],
+   "ok": false
+  }
+ ],
+ "named_results": [
+  {
+   "name": "icosahedron",
+   "n": 12,
+   "m": 30,
+   "degree_sequence": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+   ],
+   "vertices": [
+    {
+     "v": 0,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 1,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 2,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 3,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 4,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 5,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 6,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 7,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 8,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 9,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 10,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    },
+    {
+     "v": 11,
+     "n_colourings_mod_S4": 20,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 1,
+     "bad_witnesses": []
+    }
+   ],
+   "elapsed_seconds": 0.03
+  },
+  {
+   "name": "Errera",
+   "n": 17,
+   "m": 45,
+   "degree_sequence": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    6,
+    6,
+    6,
+    6,
+    6
+   ],
+   "vertices": [
+    {
+     "v": 0,
+     "n_colourings_mod_S4": 100,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 3,
+     "bad_witnesses": []
+    },
+    {
+     "v": 1,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 3,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 4,
+     "n_colourings_mod_S4": 100,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 3,
+     "bad_witnesses": []
+    },
+    {
+     "v": 5,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 7,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 10,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 11,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 12,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 14,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 15,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    },
+    {
+     "v": 16,
+     "n_colourings_mod_S4": 80,
+     "n_classes": 1,
+     "n_classes_mixed": 1,
+     "n_classes_only_le3": 0,
+     "n_bad_classes": 0,
+     "max_kempe_distance_to_fix": 2,
+     "bad_witnesses": []
+    }
+   ],
+   "elapsed_seconds": 0.14
+  }
+ ],
+ "brute_force_crosscheck": [
+  [
+   "T_7_1",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_7_1",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_7_2",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_7_2",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_7_2",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_7_3",
+   0,
+   1,
+   0
+  ],
+  [
+   "T_7_3",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_7_3",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_7_4",
+   0,
+   1,
+   0
+  ],
+  [
+   "T_7_4",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_8_1",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_8_2",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_8_2",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_8_3",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_8_3",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_8_3",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_8_4",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_8_4",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_8_5",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_8_7",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_8_8",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_8_8",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_8_9",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_8_9",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_8_9",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_8_9",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_8_10",
+   0,
+   1,
+   0
+  ],
+  [
+   "T_8_10",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_8_10",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_8_10",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_8_10",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_8_10",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_8_11",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_8_11",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_8_11",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_8_13",
+   0,
+   1,
+   0
+  ],
+  [
+   "T_8_13",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_8_13",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_8_13",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_1",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_2",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_2",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_3",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_3",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_4",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_4",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_6",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_7",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_7",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_7",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_8",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_8",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_9",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_9",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_10",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_10",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_10",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_11",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_12",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_13",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_14",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_15",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_15",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_16",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_16",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_19",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_19",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_19",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_19",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_20",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_20",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_20",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_21",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_21",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_23",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_23",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_24",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_25",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_25",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_26",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_27",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_28",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_28",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_28",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_29",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_29",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_30",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_30",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_30",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_30",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_31",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_31",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_32",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_32",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_33",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_33",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_33",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_34",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_34",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_34",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_35",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_35",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_36",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_36",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_36",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_37",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_37",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_37",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_37",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_37",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_38",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_38",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_39",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_39",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_39",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_39",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_41",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_42",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_42",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_43",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_43",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_43",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_44",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_44",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_44",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_44",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_44",
+   7,
+   1,
+   0
+  ],
+  [
+   "T_9_46",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_46",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_48",
+   1,
+   1,
+   0
+  ],
+  [
+   "T_9_48",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_48",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_48",
+   6,
+   1,
+   0
+  ],
+  [
+   "T_9_49",
+   0,
+   1,
+   0
+  ],
+  [
+   "T_9_49",
+   2,
+   1,
+   0
+  ],
+  [
+   "T_9_49",
+   3,
+   1,
+   0
+  ],
+  [
+   "T_9_49",
+   4,
+   1,
+   0
+  ],
+  [
+   "T_9_49",
+   5,
+   1,
+   0
+  ],
+  [
+   "T_9_49",
+   6,
+   1,
+   0
+  ]
+ ]
+}

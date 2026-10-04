@@ -19,6 +19,7 @@ import KempeReconfiguration.Basic
 namespace KempeReconfiguration
 
 variable {V : Type*} [Fintype V] [DecidableEq V]
+variable {k : ℕ}
 
 /-- If c(v) ∉ {a, b}, then v is not in the bichromatic subgraph B_{a,b}.
     Therefore v has no edges in B_{a,b}, and removing v doesn't change

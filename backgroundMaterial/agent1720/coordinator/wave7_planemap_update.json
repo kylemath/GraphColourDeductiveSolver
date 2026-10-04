@@ -1,0 +1,126 @@
+{
+  "journal": [
+    {
+      "time": "2026-10-03T23:32:00Z",
+      "action": "The current-Mathlib PlaneMap stack now proves closed-walk face-sum parity, alternating-walk Heawood separation, degree-five neighbour rotation, and five_color_extension across any deleted vertex of degree at most five. DeleteVertex proves strict component-size decrease and colouring assembly; FiveColorExamples proves every PlaneMap 6 is five-colourable. The global five_color_theorem remains open on generated PlaneMap reconstruction for deleted components and a recursive low-degree premise that does not assume face-length preservation. This is not the Four Colour Theorem.",
+      "node": "foundation"
+    }
+  ],
+  "patches": [
+    {
+      "id": "foundation",
+      "status": "in-progress",
+      "approach": "The local topological and Kempe extension stack is complete on current Mathlib. Finish the global theorem by reconstructing generated PlaneMaps for deleted components, transporting colourability across finite relabelings, and proving a hereditary recursive degree-at-most-five interface. Keep the five-to-four problem separate.",
+      "files": [
+        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md",
+        "backgroundMaterial/agent1720/groups/PlaneEven_status.md",
+        "backgroundMaterial/agent1720/critic/planemap_gate.md",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColor.lean",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/DeleteVertex.lean"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T23:32:00Z",
+          "text": "FiveColorExamples and the PlaneMapFiveColor axiom audit build on Lean 4.35.0-rc3. No global five_color_theorem is declared."
+        }
+      ],
+      "evidence": "lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorExamples MathlibTest.PlaneMapFiveColor exits 0. Audited main theorems use only propext, Classical.choice, and Quot.sound. New proof sources contain no sorry, admit, axiom declaration, or native_decide."
+    },
+    {
+      "id": "f3",
+      "status": "proved",
+      "notes": [
+        {
+          "time": "2026-10-03T23:32:00Z",
+          "text": "degree_five_neighbour_rotation now enumerates all five neighbours cyclically from degree five alone; no triangulation or facial-triangle hypothesis is used."
+        }
+      ],
+      "evidence": "The core euler_sphere, edge_bound, and exists_degree_le_five theorems compile. FiveColorSeparation adds degree_five_neighbour_rotation. The existing degree bound still assumes n >= 3 and face lengths at least three, so a hereditary induction interface remains open."
+    },
+    {
+      "id": "f4",
+      "status": "proved",
+      "notes": [
+        {
+          "time": "2026-10-03T23:32:00Z",
+          "text": "The original Lean 4.15 package remains unchanged. Current Mathlib additionally compiles the Kempe ports together with the proved PlaneMap separation theorem."
+        }
+      ],
+      "evidence": "The v4.15 graph-theoretic package still compiles. In the current-Mathlib checkout, Coloring/Kempe.lean and Coloring/FiveColorExtension.lean compile and are consumed by PlaneMap/FiveColor.lean."
+    },
+    {
+      "id": "f-jordan-even",
+      "status": "proved",
+      "approach": "Constructor induction proves even_is_face_sum. JordanWalkParity applies it to the mod-two edge multiplicity of arbitrary closed walks, enabling direct local separation without a global cycle partition.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanWalkParity.lean",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorSeparation.lean"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T23:32:00Z",
+          "text": "The Five Colour route uses a closed walk directly. No ConnectedCycleCut constructor or global cycle_two_sides theorem is required."
+        }
+      ],
+      "evidence": "walkEdgeCoeff_is_face_sum, face_coeff_eq_along_disjoint_walk, closed_walk_separates, and alternating_walks_intersect compile."
+    },
+    {
+      "id": "f-heawood-bridge",
+      "title": "Closed-walk Heawood separation bridge",
+      "statement": "For cyclically ordered, distinctly coloured neighbours of a degree-five vertex, bichromatic reachability for the first alternating pair excludes reachability for the second pair after deleting the centre.",
+      "status": "proved",
+      "approach": "Close the first bichromatic walk through the centre, express its mod-two edge multiplicity as a face sum, and propagate face coefficients along any disjoint second walk. The odd middle boundary edge gives a contradiction.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanWalkParity.lean",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorSeparation.lean",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColor.lean"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T23:32:00Z",
+          "text": "The connected-cycle proposal is superseded for this application by the more direct closed-walk parity argument."
+        }
+      ],
+      "evidence": "heawood_hopposite and degree_five_neighbour_rotation compile. PlaneMap/FiveColor.lean bridges actual Kempe bichromatic reachability to the induced-graph statement and proves five_color_extension."
+    },
+    {
+      "id": "f-planemap-delete",
+      "title": "Generated component reconstruction after deletion",
+      "statement": "After deleting a vertex, every connected component is strictly smaller and colourings assemble; the remaining task is to represent each component, up to finite relabeling, by a generated PlaneMap suitable for strong induction.",
+      "status": "in-progress",
+      "approach": "Reuse the proved graph-level deletion API. Construct rotation restrictions and Fin m relabelings componentwise, then prove Generated from construction history or adopt a carrier redesign with a proved equivalence.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/DeleteVertex.lean",
+        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T23:32:00Z",
+          "text": "Deletion may disconnect. Strict size decrease and colouring assembly are proved; Generated component closure and colourability transport across relabeling are not."
+        }
+      ],
+      "evidence": "deleteVertexGraph, delete_components_smaller, colour_delete_of_components, and five_color_of_delete_components compile. No delete_component_has_plane_map theorem exists yet."
+    },
+    {
+      "id": "f5-lean",
+      "title": "Five Colour Theorem in Lean",
+      "statement": "Every generated PlaneMap has a proper Fin 5 vertex colouring.",
+      "status": "in-progress",
+      "approach": "Use strong induction with five_color_extension and the proved component assembly. Supply generated component PlaneMaps and a recursive degree-at-most-five interface without assuming face-length preservation under deletion.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColor.lean",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/DeleteVertex.lean",
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorExamples.lean",
+        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T23:32:00Z",
+          "text": "The local degree-at-most-five extension and six-vertex theorem are compiled. The global induction theorem remains absent."
+        }
+      ],
+      "evidence": "five_color_extension, delete_components_smaller, colour_delete_of_components, five_color_of_delete_components, and five_colorable_six_vertices compile. There is no global five_color_theorem declaration."
+    }
+  ]
+}

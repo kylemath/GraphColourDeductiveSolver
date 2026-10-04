@@ -1,0 +1,286 @@
+{
+  "group": "S2",
+  "manager": "M-Frontier",
+  "verdict": "killed",
+  "stand_in": {
+    "name": "constant cellular sheaf",
+    "stalk": "F_2^2",
+    "restrictions": "identity",
+    "coboundary": "(delta x)_uv = x_u + x_v over F_2",
+    "relation": "A 0-cochain is a proper 4-colouring iff (delta x)_e != 0 for every edge. H^0 is the kernel, not that set."
+  },
+  "witness": {
+    "graph": "K4",
+    "vertices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ambient": "(F_2^2)^4",
+    "c1": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "c2": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "sum": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "c1_proper": true,
+    "c2_proper": true,
+    "sum_proper": false,
+    "zero_proper": false,
+    "n_proper_4_colourings": 24,
+    "cardinality_is_prime_power": false,
+    "closed_under_addition": false,
+    "contains_zero": false
+  },
+  "K4": {
+    "graph": "K4",
+    "n": 4,
+    "m": 6,
+    "planar": true,
+    "four_colourable": true,
+    "n_proper_colourings": 24,
+    "dim_C0": 8,
+    "dim_C1": 12,
+    "rank_delta_F2": 6,
+    "rank_delta_R": 6,
+    "ranks_agree": true,
+    "dim_H0": 2,
+    "dim_H1": 6,
+    "H1_vanishes": false,
+    "n_global_sections": 4,
+    "n_proper_global_sections": 0,
+    "global_sections": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    ]
+  },
+  "K5": {
+    "graph": "K5",
+    "n": 5,
+    "m": 10,
+    "planar": false,
+    "four_colourable": false,
+    "n_proper_colourings": 0,
+    "dim_C0": 10,
+    "dim_C1": 20,
+    "rank_delta_F2": 8,
+    "rank_delta_R": 8,
+    "ranks_agree": true,
+    "dim_H0": 2,
+    "dim_H1": 12,
+    "H1_vanishes": false,
+    "n_global_sections": 4,
+    "n_proper_global_sections": 0,
+    "global_sections": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    ]
+  },
+  "kill_test_met": true,
+  "elapsed_seconds": 0.003337040999999999
+}

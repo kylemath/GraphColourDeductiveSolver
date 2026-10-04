@@ -1,0 +1,10 @@
+- Chain equality is a theorem: `bichromatic_reachable_iff_induce_delete`. `KempeReconfiguration/ChainEquality.lean`.
+- If \(c(v)\notin\{a,b\}\) and \(u,w\neq v\), reachability in \(B_{a,b}(G,c)\) matches \(B_{a,b}\) of `G.induce` on \(V\setminus\{v\}\). Same file.
+- `inSameKempeChain_iff_induce_delete` is that biconditional under the Kempe-chain name. Same file.
+- Paper colour \(5\) is the case `colour5_bichromatic_reachable_iff_induce_delete`, with \(c(v)=(4:\mathrm{Fin}\,5)\) and \(a,b\neq 4\). Same file.
+- The reachable set of \(u\neq v\) equals the off-\(v\) reachable set in the induced graph: `bichromatic_reachableSet_eq_induce_delete`. Same file.
+- `Subgraph.deleteVerts {v}` on the top bichromatic subgraph has the same spanning graph as \(B_{a,b}(G,c)\): `bichromaticSubgraph_eq_deleteVerts_spanningCoe`. Same file.
+- `colour5_isolated_in_bichromatic_14` is still isolation only. `ChainLifting.lean`.
+- `bichromatic_adj_delete_irrelevant` is still `rfl` and does not mention deletion. `ChainLifting.lean`.
+- `lake build` in `lean4/KempeReconfiguration` exited \(0\) in \(0.91\,\mathrm{s}\). No tactic `sorry` in `ChainEquality.lean`. `groups/Lchain_report.md`.
+- Mathlib `cache` sha256 `c68da8b8…cb171a5` was not replaced. `BUILD_NOTES.md`.

@@ -1,0 +1,32 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=././.lake/packages/Cli/.lake/build/lib:././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/LeanSearchClient/.lake/build/lib:././.lake/packages/plausible/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib DYLD_LIBRARY_PATH= /Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.15.0/bin/lean -DautoImplicit=false ././././KempeReconfiguration/Degree4Extend.lean -R ./././. -o ././.lake/build/lib/KempeReconfiguration/Degree4Extend.olean -i ././.lake/build/lib/KempeReconfiguration/Degree4Extend.ilean -c ././.lake/build/ir/KempeReconfiguration/Degree4Extend.c --json",
+   "level": "trace"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:43:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.walk_colours_ab':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:65:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.mem_kempeChain_self':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:93:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.adjacent_ab_same_chain':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:122:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.kempeSwap_flips_a':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:128:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.kempeSwap_exchanges_b':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:167:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.exists_nonadj_of_not_pairwise':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:328:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.four_distinct_card':\n  [Fintype V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:379:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.apexAdj_symm':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/Degree4Extend.lean:388:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.apexAdj_loopless':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"}],
+ "depHash": "15084087977829584322"}

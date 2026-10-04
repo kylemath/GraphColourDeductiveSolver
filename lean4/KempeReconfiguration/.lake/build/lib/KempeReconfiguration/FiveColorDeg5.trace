@@ -1,0 +1,14 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=././.lake/packages/Cli/.lake/build/lib:././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/LeanSearchClient/.lake/build/lib:././.lake/packages/plausible/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib DYLD_LIBRARY_PATH= /Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.15.0/bin/lean -DautoImplicit=false ././././KempeReconfiguration/FiveColorDeg5.lean -R ./././. -o ././.lake/build/lib/KempeReconfiguration/FiveColorDeg5.olean -i ././.lake/build/lib/KempeReconfiguration/FiveColorDeg5.ilean -c ././.lake/build/ir/KempeReconfiguration/FiveColorDeg5.c --json",
+   "level": "trace"},
+  {"message":
+   "././././KempeReconfiguration/FiveColorDeg5.lean:55:21: unused variable `hv1x`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/FiveColorDeg5.lean:56:5: unused variable `hv3x`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/FiveColorDeg5.lean:56:21: unused variable `hv4x`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"}],
+ "depHash": "9181796088029518395"}

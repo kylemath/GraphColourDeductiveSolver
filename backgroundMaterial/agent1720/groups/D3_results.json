@@ -1,0 +1,464 @@
+{
+ "definition": "sign(phi) = product over vertices v of sgn(colours of the three edges of phi in the planar rotation at v); signed count = sum_phi sign(phi)",
+ "colours": [
+  0,
+  1,
+  2
+ ],
+ "command": "/Users/fulkanjou/GraphColour/.venv/bin/python compute/flows/a1720_alon_tarsi.py 8",
+ "sanity": {
+  "K4_tait": 6,
+  "K4_signed": 6,
+  "K4_positive": 6,
+  "K4_negative": 0,
+  "K4_sample": {
+   "edges": [
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     2,
+     1
+    ],
+    [
+     0,
+     3,
+     2
+    ],
+    [
+     1,
+     2,
+     2
+    ],
+    [
+     1,
+     3,
+     1
+    ],
+    [
+     3,
+     2,
+     0
+    ]
+   ],
+   "local": [
+    {
+     "vertex": 0,
+     "colours": [
+      0,
+      2,
+      1
+     ],
+     "sign": -1
+    },
+    {
+     "vertex": 1,
+     "colours": [
+      2,
+      1,
+      0
+     ],
+     "sign": -1
+    },
+    {
+     "vertex": 2,
+     "colours": [
+      1,
+      0,
+      2
+     ],
+     "sign": -1
+    },
+    {
+     "vertex": 3,
+     "colours": [
+      1,
+      0,
+      2
+     ],
+     "sign": -1
+    }
+   ],
+   "product": 1
+  }
+ },
+ "per_n": {
+  "4": {
+   "count": 1,
+   "all_same_sign_within_each_graph": true,
+   "common_signs": [
+    1
+   ],
+   "tait_min": 6,
+   "tait_max": 6,
+   "signed_min": 6,
+   "signed_max": 6,
+   "abs_signed_equals_tait": true,
+   "elapsed_seconds": 0.059
+  },
+  "5": {
+   "count": 1,
+   "all_same_sign_within_each_graph": true,
+   "common_signs": [
+    -1
+   ],
+   "tait_min": 6,
+   "tait_max": 6,
+   "signed_min": -6,
+   "signed_max": -6,
+   "abs_signed_equals_tait": true,
+   "elapsed_seconds": 0.001
+  },
+  "6": {
+   "count": 2,
+   "all_same_sign_within_each_graph": true,
+   "common_signs": [
+    1
+   ],
+   "tait_min": 6,
+   "tait_max": 24,
+   "signed_min": 6,
+   "signed_max": 24,
+   "abs_signed_equals_tait": true,
+   "elapsed_seconds": 0.001
+  },
+  "7": {
+   "count": 5,
+   "all_same_sign_within_each_graph": true,
+   "common_signs": [
+    -1
+   ],
+   "tait_min": 6,
+   "tait_max": 30,
+   "signed_min": -30,
+   "signed_max": -6,
+   "abs_signed_equals_tait": true,
+   "elapsed_seconds": 0.004
+  },
+  "8": {
+   "count": 14,
+   "all_same_sign_within_each_graph": true,
+   "common_signs": [
+    1
+   ],
+   "tait_min": 6,
+   "tait_max": 72,
+   "signed_min": 6,
+   "signed_max": 72,
+   "abs_signed_equals_tait": true,
+   "elapsed_seconds": 0.016
+  }
+ },
+ "graphs": {
+  "4": [
+   {
+    "name": "T_4_0",
+    "dual_vertices": 4,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   }
+  ],
+  "5": [
+   {
+    "name": "T_5_0",
+    "dual_vertices": 6,
+    "tait": 6,
+    "signed": -6,
+    "positive": 0,
+    "negative": 6,
+    "all_same_sign": true,
+    "common_sign": -1,
+    "induced_sign": -1,
+    "factorizations": 1
+   }
+  ],
+  "6": [
+   {
+    "name": "T_6_0",
+    "dual_vertices": 8,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_6_1",
+    "dual_vertices": 8,
+    "tait": 24,
+    "signed": 24,
+    "positive": 24,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 4
+   }
+  ],
+  "7": [
+   {
+    "name": "T_7_0",
+    "dual_vertices": 10,
+    "tait": 6,
+    "signed": -6,
+    "positive": 0,
+    "negative": 6,
+    "all_same_sign": true,
+    "common_sign": -1,
+    "induced_sign": -1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_7_1",
+    "dual_vertices": 10,
+    "tait": 6,
+    "signed": -6,
+    "positive": 0,
+    "negative": 6,
+    "all_same_sign": true,
+    "common_sign": -1,
+    "induced_sign": -1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_7_2",
+    "dual_vertices": 10,
+    "tait": 6,
+    "signed": -6,
+    "positive": 0,
+    "negative": 6,
+    "all_same_sign": true,
+    "common_sign": -1,
+    "induced_sign": -1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_7_3",
+    "dual_vertices": 10,
+    "tait": 24,
+    "signed": -24,
+    "positive": 0,
+    "negative": 24,
+    "all_same_sign": true,
+    "common_sign": -1,
+    "induced_sign": -1,
+    "factorizations": 4
+   },
+   {
+    "name": "T_7_4",
+    "dual_vertices": 10,
+    "tait": 30,
+    "signed": -30,
+    "positive": 0,
+    "negative": 30,
+    "all_same_sign": true,
+    "common_sign": -1,
+    "induced_sign": -1,
+    "factorizations": 5
+   }
+  ],
+  "8": [
+   {
+    "name": "T_8_0",
+    "dual_vertices": 12,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_8_1",
+    "dual_vertices": 12,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_8_2",
+    "dual_vertices": 12,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_8_3",
+    "dual_vertices": 12,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_8_4",
+    "dual_vertices": 12,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_8_5",
+    "dual_vertices": 12,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_8_6",
+    "dual_vertices": 12,
+    "tait": 6,
+    "signed": 6,
+    "positive": 6,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 1
+   },
+   {
+    "name": "T_8_7",
+    "dual_vertices": 12,
+    "tait": 24,
+    "signed": 24,
+    "positive": 24,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 4
+   },
+   {
+    "name": "T_8_8",
+    "dual_vertices": 12,
+    "tait": 24,
+    "signed": 24,
+    "positive": 24,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 4
+   },
+   {
+    "name": "T_8_9",
+    "dual_vertices": 12,
+    "tait": 24,
+    "signed": 24,
+    "positive": 24,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 4
+   },
+   {
+    "name": "T_8_10",
+    "dual_vertices": 12,
+    "tait": 24,
+    "signed": 24,
+    "positive": 24,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 4
+   },
+   {
+    "name": "T_8_11",
+    "dual_vertices": 12,
+    "tait": 30,
+    "signed": 30,
+    "positive": 30,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 5
+   },
+   {
+    "name": "T_8_12",
+    "dual_vertices": 12,
+    "tait": 72,
+    "signed": 72,
+    "positive": 72,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 12
+   },
+   {
+    "name": "T_8_13",
+    "dual_vertices": 12,
+    "tait": 18,
+    "signed": 18,
+    "positive": 18,
+    "negative": 0,
+    "all_same_sign": true,
+    "common_sign": 1,
+    "induced_sign": 1,
+    "factorizations": 3
+   }
+  ]
+ },
+ "mixed_sign_graphs": [],
+ "checks": {
+  "matches_d1_tait": true,
+  "rotation_reversal_checks": true,
+  "every_colouring_same_sign_within_its_graph": true,
+  "one_sign_across_all_colourings": false,
+  "sign_equals_minus_one_to_n": true,
+  "induced_colouring_matches": true
+ },
+ "sign_identity": "every Tait colouring of the dual has sign (-1)^n",
+ "signs_seen": [
+  -1,
+  1
+ ],
+ "orientation_audit": {
+  "range": "n<=11",
+  "graphs": 1555,
+  "failures": [],
+  "elapsed_seconds": 0.808
+ },
+ "elapsed_seconds": 0.898
+}

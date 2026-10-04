@@ -1,0 +1,224 @@
+{
+ "name": "Fritsch",
+ "source": {
+  "house_of_graphs_id": 1088,
+  "house_of_graphs_url": "https://houseofgraphs.org/graphs/1088",
+  "house_of_graphs_api": "https://houseofgraphs.org/api/graphs/1088",
+  "canonical_form": "HEutZhj",
+  "mathworld_url": "https://mathworld.wolfram.com/FritschGraph.html",
+  "mathworld_statement": "The Fritsch graph is the planar graph on nine vertices that tangles the Kempe chains in Kempe's coloring algorithm and thus provides an example of how Kempe's 1879 proof fails. MathWorld calls the Fritsch graph and the Soifer graph the smallest such counterexamples, and cites House of Graphs 1088."
+ },
+ "structural": {
+  "n": 9,
+  "m": 21,
+  "simple": true,
+  "symmetric_listing": true,
+  "connected": true,
+  "planar": true,
+  "n_faces": 14,
+  "face_lengths": [
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "all_faces_triangles": true,
+  "euler_characteristic": 2,
+  "m_equals_3n_minus_6": true,
+  "degrees": [
+   4,
+   4,
+   4,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5
+  ],
+  "degree5_vertices": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "ok": true
+ },
+ "cache_isomorphs_n9": [
+  "T_9_49"
+ ],
+ "edges": [
+  [
+   0,
+   3
+  ],
+  [
+   0,
+   4
+  ],
+  [
+   0,
+   5
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   1,
+   7
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   2,
+   5
+  ],
+  [
+   2,
+   6
+  ],
+  [
+   2,
+   7
+  ],
+  [
+   2,
+   8
+  ],
+  [
+   3,
+   4
+  ],
+  [
+   3,
+   5
+  ],
+  [
+   3,
+   7
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   4,
+   8
+  ],
+  [
+   5,
+   6
+  ],
+  [
+   5,
+   7
+  ],
+  [
+   6,
+   8
+  ],
+  [
+   7,
+   8
+  ]
+ ],
+ "kc5": {
+  "n_degree5_vertices": 6,
+  "n_bad_classes": 0,
+  "max_kempe_distance_to_fix": 2,
+  "n_classes": 6,
+  "vertices": [
+   {
+    "v": 3,
+    "n_colourings_mod_S4": 8,
+    "n_classes": 1,
+    "n_classes_mixed": 1,
+    "n_classes_only_le3": 0,
+    "n_bad_classes": 0,
+    "max_kempe_distance_to_fix": 2,
+    "bad_witnesses": [],
+    "elapsed_seconds": 0.0
+   },
+   {
+    "v": 4,
+    "n_colourings_mod_S4": 8,
+    "n_classes": 1,
+    "n_classes_mixed": 1,
+    "n_classes_only_le3": 0,
+    "n_bad_classes": 0,
+    "max_kempe_distance_to_fix": 2,
+    "bad_witnesses": [],
+    "elapsed_seconds": 0.0
+   },
+   {
+    "v": 5,
+    "n_colourings_mod_S4": 8,
+    "n_classes": 1,
+    "n_classes_mixed": 1,
+    "n_classes_only_le3": 0,
+    "n_bad_classes": 0,
+    "max_kempe_distance_to_fix": 2,
+    "bad_witnesses": [],
+    "elapsed_seconds": 0.0
+   },
+   {
+    "v": 6,
+    "n_colourings_mod_S4": 8,
+    "n_classes": 1,
+    "n_classes_mixed": 1,
+    "n_classes_only_le3": 0,
+    "n_bad_classes": 0,
+    "max_kempe_distance_to_fix": 2,
+    "bad_witnesses": [],
+    "elapsed_seconds": 0.0
+   },
+   {
+    "v": 7,
+    "n_colourings_mod_S4": 8,
+    "n_classes": 1,
+    "n_classes_mixed": 1,
+    "n_classes_only_le3": 0,
+    "n_bad_classes": 0,
+    "max_kempe_distance_to_fix": 2,
+    "bad_witnesses": [],
+    "elapsed_seconds": 0.0
+   },
+   {
+    "v": 8,
+    "n_colourings_mod_S4": 8,
+    "n_classes": 1,
+    "n_classes_mixed": 1,
+    "n_classes_only_le3": 0,
+    "n_bad_classes": 0,
+    "max_kempe_distance_to_fix": 2,
+    "bad_witnesses": [],
+    "elapsed_seconds": 0.0
+   }
+  ]
+ },
+ "status": "computed",
+ "elapsed_seconds": 0.01
+}

@@ -1,0 +1,504 @@
+{
+ "group": "D2b",
+ "penrose_eval_is": "Tait count",
+ "penrose_eval_is_independent_state_sum": false,
+ "track4_is_reformulation_of_four_colour_theorem": true,
+ "command": "PYTHONPATH=/Users/fulkanjou/GraphColour /Users/fulkanjou/GraphColour/.venv/bin/python compute/topology/a1720_penrose_state_sum.py",
+ "script_output": "backgroundMaterial/agent1720/groups/D2_results.json",
+ "elapsed_seconds": 0.8098,
+ "deadline_seconds": 540.0,
+ "stopped_early": false,
+ "required_max_n": 8,
+ "computed_through_n": 11,
+ "graphs_checked": 1555,
+ "sign_law": "For the rotation used by plane_dual_rotation, Pen_epsilon(T*) = (-1)^n * Tait(T*) = (-1)^{|V(T*)|/2} * Tait(T*). Every Tait colouring has that one sign.",
+ "sign_law_failures": 0,
+ "cancellation_on_cached_duals": 0,
+ "script_mismatch_count": 0,
+ "script_mismatch_meaning": "D2_results.json counts a mismatch only when signed != (-1)^n * tait or the D1 checksum fails. That list is empty.",
+ "graphs_with_signed_ne_tait": 1305,
+ "graphs_with_signed_ne_tait_meaning": "The 1305 odd-order triangulations, where signed = -tait. No cancellation and no D1 disagreement.",
+ "per_n": {
+  "4": {
+   "count": 1,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": 1,
+   "tait_min": 6,
+   "tait_max": 6,
+   "signed_min": 6,
+   "signed_max": 6,
+   "elapsed_seconds": 0.0003
+  },
+  "5": {
+   "count": 1,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": -1,
+   "tait_min": 6,
+   "tait_max": 6,
+   "signed_min": -6,
+   "signed_max": -6,
+   "elapsed_seconds": 0.0033
+  },
+  "6": {
+   "count": 2,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": 1,
+   "tait_min": 6,
+   "tait_max": 24,
+   "signed_min": 6,
+   "signed_max": 24,
+   "elapsed_seconds": 0.0005
+  },
+  "7": {
+   "count": 5,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": -1,
+   "tait_min": 6,
+   "tait_max": 30,
+   "signed_min": -30,
+   "signed_max": -6,
+   "elapsed_seconds": 0.0013
+  },
+  "8": {
+   "count": 14,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": 1,
+   "tait_min": 6,
+   "tait_max": 72,
+   "signed_min": 6,
+   "signed_max": 72,
+   "elapsed_seconds": 0.0049
+  },
+  "9": {
+   "count": 50,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": -1,
+   "tait_min": 6,
+   "tait_max": 126,
+   "signed_min": -126,
+   "signed_max": -6,
+   "elapsed_seconds": 0.0195
+  },
+  "10": {
+   "count": 233,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": 1,
+   "tait_min": 6,
+   "tait_max": 264,
+   "signed_min": 6,
+   "signed_max": 264,
+   "elapsed_seconds": 0.1031
+  },
+  "11": {
+   "count": 1249,
+   "complete": true,
+   "all_match_sign_formula": true,
+   "common_sign": -1,
+   "tait_min": 6,
+   "tait_max": 510,
+   "signed_min": -510,
+   "signed_max": -6,
+   "elapsed_seconds": 0.6596
+  }
+ },
+ "d1_checksum": {
+  "n_le_9_file": "backgroundMaterial/agent1720/groups/D1_results.json",
+  "n_le_9_checked": 73,
+  "n_le_9_mismatches": 0,
+  "n_10_11_file": "backgroundMaterial/agent1720/groups/D1_n11.json",
+  "n_10_11_checked": 1482,
+  "n_10_11_mismatches": 0
+ },
+ "penrose_eval_on_duals_n_le_8": {
+  "graphs": 23,
+  "penrose_eval_equals_tait": 23,
+  "penrose_eval_equals_count_tait_colourings": 23,
+  "penrose_eval_equals_signed": 17,
+  "odd_n_where_penrose_eval_equals_signed": 0,
+  "rows": [
+   {
+    "name": "T_4_0",
+    "n": 4,
+    "dual_vertices": 4,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_5_0",
+    "n": 5,
+    "dual_vertices": 6,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": -6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": false
+   },
+   {
+    "name": "T_6_0",
+    "n": 6,
+    "dual_vertices": 8,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_6_1",
+    "n": 6,
+    "dual_vertices": 8,
+    "penrose_eval": 24,
+    "count_tait_colourings": 24,
+    "tait": 24,
+    "signed": 24,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_7_0",
+    "n": 7,
+    "dual_vertices": 10,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": -6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": false
+   },
+   {
+    "name": "T_7_1",
+    "n": 7,
+    "dual_vertices": 10,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": -6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": false
+   },
+   {
+    "name": "T_7_2",
+    "n": 7,
+    "dual_vertices": 10,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": -6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": false
+   },
+   {
+    "name": "T_7_3",
+    "n": 7,
+    "dual_vertices": 10,
+    "penrose_eval": 24,
+    "count_tait_colourings": 24,
+    "tait": 24,
+    "signed": -24,
+    "pen_eq_tait": true,
+    "pen_eq_signed": false
+   },
+   {
+    "name": "T_7_4",
+    "n": 7,
+    "dual_vertices": 10,
+    "penrose_eval": 30,
+    "count_tait_colourings": 30,
+    "tait": 30,
+    "signed": -30,
+    "pen_eq_tait": true,
+    "pen_eq_signed": false
+   },
+   {
+    "name": "T_8_0",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_1",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_2",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_3",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_4",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_5",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_6",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 6,
+    "count_tait_colourings": 6,
+    "tait": 6,
+    "signed": 6,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_7",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 24,
+    "count_tait_colourings": 24,
+    "tait": 24,
+    "signed": 24,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_8",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 24,
+    "count_tait_colourings": 24,
+    "tait": 24,
+    "signed": 24,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_9",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 24,
+    "count_tait_colourings": 24,
+    "tait": 24,
+    "signed": 24,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_10",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 24,
+    "count_tait_colourings": 24,
+    "tait": 24,
+    "signed": 24,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_11",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 30,
+    "count_tait_colourings": 30,
+    "tait": 30,
+    "signed": 30,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_12",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 72,
+    "count_tait_colourings": 72,
+    "tait": 72,
+    "signed": 72,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   },
+   {
+    "name": "T_8_13",
+    "n": 8,
+    "dual_vertices": 12,
+    "penrose_eval": 18,
+    "count_tait_colourings": 18,
+    "tait": 18,
+    "signed": 18,
+    "pen_eq_tait": true,
+    "pen_eq_signed": true
+   }
+  ]
+ },
+ "named_planar_cubic_clockwise_rotation": [
+  {
+   "name": "K4",
+   "vertices": 4,
+   "penrose_eval": 6,
+   "tait": 6,
+   "signed": 6
+  },
+  {
+   "name": "triangular prism",
+   "vertices": 6,
+   "penrose_eval": 6,
+   "tait": 6,
+   "signed": -6
+  },
+  {
+   "name": "cube",
+   "vertices": 8,
+   "penrose_eval": 24,
+   "tait": 24,
+   "signed": 24
+  },
+  {
+   "name": "prism C5",
+   "vertices": 10,
+   "penrose_eval": 30,
+   "tait": 30,
+   "signed": -30
+  },
+  {
+   "name": "prism C6",
+   "vertices": 12,
+   "penrose_eval": 72,
+   "tait": 72,
+   "signed": 72
+  },
+  {
+   "name": "Frucht",
+   "vertices": 12,
+   "penrose_eval": 6,
+   "tait": 6,
+   "signed": 6
+  },
+  {
+   "name": "prism C7",
+   "vertices": 14,
+   "penrose_eval": 126,
+   "tait": 126,
+   "signed": -126
+  },
+  {
+   "name": "prism C8",
+   "vertices": 16,
+   "penrose_eval": 264,
+   "tait": 264,
+   "signed": 264
+  },
+  {
+   "name": "prism C9",
+   "vertices": 18,
+   "penrose_eval": 510,
+   "tait": 510,
+   "signed": -510
+  },
+  {
+   "name": "prism C10",
+   "vertices": 20,
+   "penrose_eval": 1032,
+   "tait": 1032,
+   "signed": 1032
+  },
+  {
+   "name": "dodecahedron",
+   "vertices": 20,
+   "penrose_eval": 60,
+   "tait": 60,
+   "signed": 60,
+   "icosahedron_P4": 240,
+   "P4_over_4": 60
+  }
+ ],
+ "controls": {
+  "K4_embedding_tait": 6,
+  "K4_embedding_signed": 6,
+  "K4_brute_matches": true,
+  "K4_rotations": 16,
+  "K4_signed_plus_6": 8,
+  "K4_signed_minus_6": 8,
+  "K4_cancelled": 0,
+  "one_vertex_reversal_negates": true,
+  "K33": {
+   "systems": 64,
+   "n_cancelled": 64,
+   "example": {
+    "bits": "000000",
+    "tait": 12,
+    "signed": 0
+   }
+  },
+  "Petersen": {
+   "tait": 0,
+   "signed": 0,
+   "planar": false
+  }
+ },
+ "library_audit": {
+  "planarity_flag_mismatches": [
+   {
+    "name": "Pappus graph",
+    "vertices": 18,
+    "edges": 27,
+    "cubic": true,
+    "flag_planar": true,
+    "actually_planar": false,
+    "flag_matches": false,
+    "isomorphic_to_cube": false
+   }
+  ],
+  "not_cubic": [
+   "K4-expanded (8v)",
+   "Cube-expanded (12v)"
+  ]
+ }
+}

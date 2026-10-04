@@ -1,0 +1,10 @@
+- `Degree4Extend.lean` builds with tactic `sorry` count $0$. `lake build` exit $0$, wall $2.08\,\mathrm{s}$, 21:26:48Z. `KempeReconfiguration.lean`.
+- `kempeSwap_preserves_proper` was not edited. Cache binary unchanged (sha256 `c68da8b8…171a5`). `Basic.lean`, `BUILD_NOTES.md`.
+- `kempeChain` is the reachable component of $B_{a,b}$. `kempeSwap_chain_proper` feeds it to `kempeSwap_preserves_proper`. `Degree4Extend.lean`.
+- Four vertices, not pairwise adjacent, yield a non-adjacent pair: `exists_nonadj_of_not_pairwise`. `Degree4Extend.lean`.
+- An $(a,b)$-edge puts its ends in one chain (`adjacent_ab_same_chain`). The same chain does not free a colour (`kempeSwap_same_chain_keeps_both`). `Degree4Extend.lean`.
+- If the chain of the $a$-vertex misses the $b$-vertex, the swap is proper, both ends become $b$, and the four neighbours use at most $3$ colours: `degree4_kempe_frees_colour`. `Degree4Extend.lean`.
+- That colouring extends across `none`, joined only to those four, coloured $a$: `degree4_apex_extension`. `Degree4Extend.lean`.
+- If either of two fixed pairs is chain-separated, one swap frees a colour: `degree4_frees_of_some_separated_pair`. The disjunction is a hypothesis. `Degree4Extend.lean`.
+- A set of at most $3$ colours in $\mathrm{Fin}\, 4$ omits a colour, with no swap: `exists_free_colour_of_card_le_three`. `Degree4Extend.lean`.
+- No planar embedding was used. Existence of a separated pair is not a theorem. `Degree4Extend.lean`.

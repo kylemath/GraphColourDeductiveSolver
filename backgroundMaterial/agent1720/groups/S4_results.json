@@ -1,0 +1,103 @@
+{
+  "elapsed_seconds": 25.199492833,
+  "atlas_n_le_7": {
+    "graphs": 1253,
+    "by_order": {
+      "0": 1,
+      "1": 1,
+      "2": 2,
+      "3": 4,
+      "4": 11,
+      "5": 34,
+      "6": 156,
+      "7": 1044
+    },
+    "not_4_colourable": 66,
+    "not_4_colourable_by_order": {
+      "5": 1,
+      "6": 6,
+      "7": 59
+    },
+    "not_4_colourable_with_K5_subdivision": 66,
+    "counterexamples": []
+  },
+  "triangulations_n4_11": {
+    "counts": {
+      "4": 1,
+      "5": 1,
+      "6": 2,
+      "7": 5,
+      "8": 14,
+      "9": 50,
+      "10": 233,
+      "11": 1249
+    },
+    "plantri_expected": {
+      "4": 1,
+      "5": 1,
+      "6": 2,
+      "7": 5,
+      "8": 14,
+      "9": 50,
+      "10": 233,
+      "11": 1249
+    },
+    "counts_match_plantri": true,
+    "min_degree_histogram": {
+      "4": {
+        "3": 1,
+        "4": 0,
+        "ge5": 0
+      },
+      "5": {
+        "3": 1,
+        "4": 0,
+        "ge5": 0
+      },
+      "6": {
+        "3": 1,
+        "4": 1,
+        "ge5": 0
+      },
+      "7": {
+        "3": 4,
+        "4": 1,
+        "ge5": 0
+      },
+      "8": {
+        "3": 12,
+        "4": 2,
+        "ge5": 0
+      },
+      "9": {
+        "3": 45,
+        "4": 5,
+        "ge5": 0
+      },
+      "10": {
+        "3": 221,
+        "4": 12,
+        "ge5": 0
+      },
+      "11": {
+        "3": 1215,
+        "4": 34,
+        "ge5": 0
+      }
+    },
+    "nonplanar": [],
+    "K5_subdivision": [],
+    "planar_and_K5_subdivision": [],
+    "not_4_colourable": []
+  },
+  "icosahedron": {
+    "n": 12,
+    "edges": 30,
+    "min_degree": 5,
+    "max_degree": 5,
+    "planar": true,
+    "maximal_planar_edge_count": true,
+    "K5_subdivision": false,
+    "four_colourable": true
+  }
+}

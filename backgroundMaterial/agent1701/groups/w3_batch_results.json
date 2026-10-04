@@ -1,0 +1,1221 @@
+{
+  "graph_name": "T_9_35",
+  "vertex": 6,
+  "degree": 4,
+  "max_extra": 3,
+  "limit_s": 600.0,
+  "load_seconds": 0.00048154200000000147,
+  "generate_seconds": 1.108354,
+  "elapsed_seconds": 1.16413075,
+  "n_exhaustive_entries": 24,
+  "n_ce_entries": 24,
+  "n_degree4_entries": 3,
+  "n_unique": 24,
+  "first_seen_in": {
+    "exhaustive_details": 24,
+    "ce_details": 0,
+    "counterexample_details_deg4": 0
+  },
+  "n_ran": 24,
+  "n_path": 24,
+  "n_none": 0,
+  "n_no_bfs_path": 0,
+  "n_unfinished_attempt": 0,
+  "stopped_reason": null,
+  "lengths": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "all_found_longer_than_bfs": true,
+  "results": [
+    {
+      "index": 0,
+      "colouring": "0:1,1:2,2:3,3:4,4:5,5:3,6:5,7:2,8:5",
+      "source": "exhaustive_details",
+      "is_published": true,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.000721624999999948,
+      "opt_dist": 2,
+      "search_seconds": 0.0012086669999999966,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.0019422499999999232
+    },
+    {
+      "index": 1,
+      "colouring": "0:1,1:2,2:4,3:3,4:5,5:4,6:5,7:2,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0007348750000000237,
+      "opt_dist": 2,
+      "search_seconds": 0.0010164999999999758,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            3,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.0017618750000001349
+    },
+    {
+      "index": 2,
+      "colouring": "0:1,1:3,2:2,3:4,4:5,5:2,6:5,7:3,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0005348750000000457,
+      "opt_dist": 2,
+      "search_seconds": 0.0016855410000000681,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.002230249999999989
+    },
+    {
+      "index": 3,
+      "colouring": "0:1,1:3,2:4,3:2,4:5,5:4,6:5,7:3,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0007018329999999295,
+      "opt_dist": 2,
+      "search_seconds": 0.0016129999999998645,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.002324457999999918
+    },
+    {
+      "index": 4,
+      "colouring": "0:1,1:4,2:2,3:3,4:5,5:2,6:5,7:4,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0004921669999999878,
+      "opt_dist": 2,
+      "search_seconds": 0.0024434580000001205,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            3,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.002946582999999947
+    },
+    {
+      "index": 5,
+      "colouring": "0:1,1:4,2:3,3:2,4:5,5:3,6:5,7:4,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0006589580000000428,
+      "opt_dist": 2,
+      "search_seconds": 0.002326749999999933,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.002995792000000108
+    },
+    {
+      "index": 6,
+      "colouring": "0:2,1:1,2:3,3:4,4:5,5:3,6:5,7:1,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0006284579999999984,
+      "opt_dist": 2,
+      "search_seconds": 0.0011217500000000324,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.0017597910000000105
+    },
+    {
+      "index": 7,
+      "colouring": "0:2,1:1,2:4,3:3,4:5,5:4,6:5,7:1,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0007381660000000956,
+      "opt_dist": 2,
+      "search_seconds": 0.0011360409999998655,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            3,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.0018837499999999618
+    },
+    {
+      "index": 8,
+      "colouring": "0:2,1:3,2:1,3:4,4:5,5:1,6:5,7:3,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.00033366700000003746,
+      "opt_dist": 2,
+      "search_seconds": 0.0022746250000000856,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.002618334000000111
+    },
+    {
+      "index": 9,
+      "colouring": "0:2,1:3,2:4,3:1,4:5,5:4,6:5,7:3,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.000726833999999954,
+      "opt_dist": 2,
+      "search_seconds": 0.002207249999999883,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "vertices": [
+            8
+          ]
+        }
+      ],
+      "item_seconds": 0.0029437500000000227
+    },
+    {
+      "index": 10,
+      "colouring": "0:2,1:4,2:1,3:3,4:5,5:1,6:5,7:4,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.00030320800000005477,
+      "opt_dist": 2,
+      "search_seconds": 0.0015422080000000449,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.0018548750000000336
+    },
+    {
+      "index": 11,
+      "colouring": "0:2,1:4,2:3,3:1,4:5,5:3,6:5,7:4,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0006799169999998078,
+      "opt_dist": 2,
+      "search_seconds": 0.0017016659999999906,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            3,
+            5
+          ],
+          "vertices": [
+            8
+          ]
+        }
+      ],
+      "item_seconds": 0.002391249999999845
+    },
+    {
+      "index": 12,
+      "colouring": "0:3,1:1,2:2,3:4,4:5,5:2,6:5,7:1,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0005423749999999838,
+      "opt_dist": 2,
+      "search_seconds": 0.001979167000000004,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            3,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "vertices": [
+            3
+          ]
+        }
+      ],
+      "item_seconds": 0.0025310419999999834
+    },
+    {
+      "index": 13,
+      "colouring": "0:3,1:1,2:4,3:2,4:5,5:4,6:5,7:1,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.000721957999999967,
+      "opt_dist": 2,
+      "search_seconds": 0.0018264580000000308,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            3,
+            4
+          ]
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.002559332999999997
+    },
+    {
+      "index": 14,
+      "colouring": "0:3,1:2,2:1,3:4,4:5,5:1,6:5,7:2,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.00030716699999988606,
+      "opt_dist": 2,
+      "search_seconds": 0.0023477080000000594,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.002666083999999902
+    },
+    {
+      "index": 15,
+      "colouring": "0:3,1:2,2:4,3:1,4:5,5:4,6:5,7:2,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0007317909999999817,
+      "opt_dist": 2,
+      "search_seconds": 0.002255458999999904,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "vertices": [
+            8
+          ]
+        }
+      ],
+      "item_seconds": 0.0029973329999999354
+    },
+    {
+      "index": 16,
+      "colouring": "0:3,1:4,2:1,3:2,4:5,5:1,6:5,7:4,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.00030308299999992627,
+      "opt_dist": 2,
+      "search_seconds": 0.0009314580000001627,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.0012444999999998707
+    },
+    {
+      "index": 17,
+      "colouring": "0:3,1:4,2:2,3:1,4:5,5:2,6:5,7:4,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0004984169999999732,
+      "opt_dist": 2,
+      "search_seconds": 0.001008791999999925,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            8
+          ]
+        }
+      ],
+      "item_seconds": 0.001516709000000116
+    },
+    {
+      "index": 18,
+      "colouring": "0:4,1:1,2:2,3:3,4:5,5:2,6:5,7:1,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0005509999999999682,
+      "opt_dist": 2,
+      "search_seconds": 0.0027636250000000473,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            3,
+            5
+          ],
+          "vertices": [
+            3,
+            4
+          ]
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.003324459000000113
+    },
+    {
+      "index": 19,
+      "colouring": "0:4,1:1,2:3,3:2,4:5,5:3,6:5,7:1,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0006695829999998626,
+      "opt_dist": 2,
+      "search_seconds": 0.002351833000000081,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            4
+          ],
+          "vertices": [
+            0,
+            7
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            3,
+            4
+          ]
+        },
+        {
+          "pair": [
+            2,
+            4
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.0030311249999999124
+    },
+    {
+      "index": 20,
+      "colouring": "0:4,1:2,2:1,3:3,4:5,5:1,6:5,7:2,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.00032208300000013956,
+      "opt_dist": 2,
+      "search_seconds": 0.0015810830000000387,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.0019127080000000962
+    },
+    {
+      "index": 21,
+      "colouring": "0:4,1:2,2:3,3:1,4:5,5:3,6:5,7:2,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.000735750000000035,
+      "opt_dist": 2,
+      "search_seconds": 0.0017498750000000118,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            3
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            3,
+            5
+          ],
+          "vertices": [
+            8
+          ]
+        }
+      ],
+      "item_seconds": 0.0024953750000000774
+    },
+    {
+      "index": 22,
+      "colouring": "0:4,1:3,2:1,3:2,4:5,5:1,6:5,7:3,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.000305875000000011,
+      "opt_dist": 2,
+      "search_seconds": 0.0009614579999999151,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            4
+          ]
+        }
+      ],
+      "item_seconds": 0.0012778340000001442
+    },
+    {
+      "index": 23,
+      "colouring": "0:4,1:3,2:2,3:1,4:5,5:2,6:5,7:3,8:5",
+      "source": "exhaustive_details",
+      "is_published": false,
+      "proper_on_T": true,
+      "proper_on_H": true,
+      "colours_on_H": 5,
+      "bfs_seconds": 0.0004789999999998962,
+      "opt_dist": 2,
+      "search_seconds": 0.0010645840000000906,
+      "status": "path",
+      "returned": "path",
+      "path_length": 3,
+      "longer_than_bfs": true,
+      "end_colours": 4,
+      "steps": [
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "vertices": [
+            2,
+            3
+          ]
+        },
+        {
+          "pair": [
+            1,
+            5
+          ],
+          "vertices": [
+            4
+          ]
+        },
+        {
+          "pair": [
+            2,
+            5
+          ],
+          "vertices": [
+            8
+          ]
+        }
+      ],
+      "item_seconds": 0.0015542079999999459
+    }
+  ]
+}

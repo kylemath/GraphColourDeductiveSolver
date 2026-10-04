@@ -1,0 +1,131 @@
+{
+  "statement": "A simple maximal plane graph on n>=3 vertices is 3-vertex-colourable if and only if every degree is even.",
+  "cache": "compute/data/triangulations_n4_11.json",
+  "graphs": 1555,
+  "eulerian": 7,
+  "disagreements": [],
+  "sat_disagreements": [],
+  "eulerian_names": [
+    "T_6_1",
+    "T_8_12",
+    "T_9_47",
+    "T_10_221",
+    "T_10_226",
+    "T_11_1220",
+    "T_11_1242"
+  ],
+  "construction_errors": [],
+  "kill_met": false,
+  "by_n": {
+    "4": {
+      "count": 1,
+      "plantri": 1,
+      "eulerian": 0,
+      "three_colourable": 0,
+      "both": 0,
+      "neither": 1,
+      "construction_ok": 0
+    },
+    "5": {
+      "count": 1,
+      "plantri": 1,
+      "eulerian": 0,
+      "three_colourable": 0,
+      "both": 0,
+      "neither": 1,
+      "construction_ok": 0
+    },
+    "6": {
+      "count": 2,
+      "plantri": 2,
+      "eulerian": 1,
+      "three_colourable": 1,
+      "both": 1,
+      "neither": 1,
+      "construction_ok": 1
+    },
+    "7": {
+      "count": 5,
+      "plantri": 5,
+      "eulerian": 0,
+      "three_colourable": 0,
+      "both": 0,
+      "neither": 5,
+      "construction_ok": 0
+    },
+    "8": {
+      "count": 14,
+      "plantri": 14,
+      "eulerian": 1,
+      "three_colourable": 1,
+      "both": 1,
+      "neither": 13,
+      "construction_ok": 1
+    },
+    "9": {
+      "count": 50,
+      "plantri": 50,
+      "eulerian": 1,
+      "three_colourable": 1,
+      "both": 1,
+      "neither": 49,
+      "construction_ok": 1
+    },
+    "10": {
+      "count": 233,
+      "plantri": 233,
+      "eulerian": 2,
+      "three_colourable": 2,
+      "both": 2,
+      "neither": 231,
+      "construction_ok": 2
+    },
+    "11": {
+      "count": 1249,
+      "plantri": 1249,
+      "eulerian": 2,
+      "three_colourable": 2,
+      "both": 2,
+      "neither": 1247,
+      "construction_ok": 2
+    }
+  },
+  "first_eulerian": {
+    "name": "T_6_1",
+    "degrees": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "backtrack_colouring": [
+      0,
+      0,
+      1,
+      2,
+      1,
+      2
+    ],
+    "face_sign_colouring": [
+      0,
+      0,
+      1,
+      2,
+      1,
+      2
+    ]
+  },
+  "first_odd_degree": {
+    "name": "T_4_0",
+    "degrees": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "three_colourable": false
+  },
+  "elapsed_seconds": 0.1845
+}

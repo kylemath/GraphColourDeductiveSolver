@@ -35,14 +35,14 @@ theorem never_revert_pointwise
     simp only [kempeSwap] at h
     split at h
     · split at h
-      · exact absurd h.symm hta
+      · exact absurd h.symm htb
       · split at h
-        · exact absurd h.symm htb
+        · exact absurd h.symm hta
         · exact h
     · exact h
   · intro h
-    have hva : c v ≠ a := fun ha => hta (ha ▸ h)
-    have hvb : c v ≠ b := fun hb => htb (hb ▸ h)
+    have hva : c v ≠ a := fun ha => hta (h.symm.trans ha)
+    have hvb : c v ≠ b := fun hb => htb (h.symm.trans hb)
     rw [kempeSwap_preserves_other c S a b v hva hvb]
     exact h
 

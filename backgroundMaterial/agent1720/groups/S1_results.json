@@ -1,0 +1,243 @@
+{
+  "group": "S1",
+  "track": 5,
+  "statement": "mu(G) >= 3",
+  "tolerance": 1e-08,
+  "elapsed_sec": 0.0007586660000000051,
+  "graphs": [
+    {
+      "graph": "K4",
+      "n": 4,
+      "n_edges": 6,
+      "nonedges": [],
+      "matrix": [
+        [
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "kernel_basis_rows": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "kernel_residual": 0.0,
+      "sign_pattern_ok": true,
+      "spectrum": {
+        "eigenvalues": [
+          -3.999999999999999,
+          -9.900788585315607e-17,
+          -1.2053399157949573e-33,
+          4.059358001450236e-16
+        ],
+        "singular_values": [
+          4.0,
+          8.326672684688674e-17,
+          2.4074500614001894e-48,
+          9.114294537470244e-80
+        ],
+        "n_negative": 1,
+        "corank": 3,
+        "n_positive": 0,
+        "max_abs_corank_eigenvalue": 4.059358001450236e-16,
+        "numerical_rank": 1
+      },
+      "strong_arnold": {
+        "tested": true,
+        "holds": true,
+        "constraint_rank": 6,
+        "sym_dimension": 6,
+        "n_constraints": 10,
+        "method": "integer kernel basis, rank over Q of u_i^T S u_j on diagonal and edges"
+      },
+      "support_map": {
+        "admissible_dimension": 0,
+        "kernel_dimension": 0,
+        "smallest_singular_value": null,
+        "holds": true
+      },
+      "mu_at_least": 3,
+      "certificate_ok": true
+    },
+    {
+      "graph": "octahedral",
+      "n": 6,
+      "n_edges": 12,
+      "nonedges": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "matrix": [
+        [
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0
+        ]
+      ],
+      "kernel_basis_rows": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "kernel_residual": 0.0,
+      "sign_pattern_ok": true,
+      "spectrum": {
+        "eigenvalues": [
+          -4.0,
+          -2.0717087427208752e-18,
+          2.0717087427208752e-18,
+          2.9977970132555835e-16,
+          1.9999999999999996,
+          2.0
+        ],
+        "singular_values": [
+          4.000000000000001,
+          2.0000000000000004,
+          2.0,
+          3.4371042896723986e-16,
+          7.251204124803399e-18,
+          2.2604580696541557e-49
+        ],
+        "n_negative": 1,
+        "corank": 3,
+        "n_positive": 2,
+        "max_abs_corank_eigenvalue": 2.9977970132555835e-16,
+        "numerical_rank": 3
+      },
+      "strong_arnold": {
+        "tested": true,
+        "holds": true,
+        "constraint_rank": 6,
+        "sym_dimension": 6,
+        "n_constraints": 18,
+        "method": "integer kernel basis, rank over Q of u_i^T S u_j on diagonal and edges"
+      },
+      "support_map": {
+        "admissible_dimension": 3,
+        "kernel_dimension": 0,
+        "smallest_singular_value": 2.8284271247461903,
+        "holds": true
+      },
+      "mu_at_least": 3,
+      "certificate_ok": true
+    }
+  ],
+  "all_ok": true
+}

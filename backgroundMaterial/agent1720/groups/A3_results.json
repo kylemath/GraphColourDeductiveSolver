@@ -1,0 +1,362 @@
+{
+  "group": "A3",
+  "statement": "A simple plane triangulation is 3-vertex-colourable if and only if every vertex degree is even.",
+  "checker": "Exhaustive backtracking in three_colour; colours {0,1,2}; first search vertex fixed at 0. Degree parity is not a prune. constructive_colouring implements the Z/3Z orientation on all-even graphs.",
+  "graphs_checked": 1555,
+  "backtrack_nodes": 16794,
+  "elapsed_seconds": 0.050807,
+  "verdict": "agree",
+  "by_n": {
+    "4": {
+      "graphs": 1,
+      "all_degrees_even": 0,
+      "even_and_3colourable": 0,
+      "odd_degree_and_3colourable": 0
+    },
+    "5": {
+      "graphs": 1,
+      "all_degrees_even": 0,
+      "even_and_3colourable": 0,
+      "odd_degree_and_3colourable": 0
+    },
+    "6": {
+      "graphs": 2,
+      "all_degrees_even": 1,
+      "even_and_3colourable": 1,
+      "odd_degree_and_3colourable": 0
+    },
+    "7": {
+      "graphs": 5,
+      "all_degrees_even": 0,
+      "even_and_3colourable": 0,
+      "odd_degree_and_3colourable": 0
+    },
+    "8": {
+      "graphs": 14,
+      "all_degrees_even": 1,
+      "even_and_3colourable": 1,
+      "odd_degree_and_3colourable": 0
+    },
+    "9": {
+      "graphs": 50,
+      "all_degrees_even": 1,
+      "even_and_3colourable": 1,
+      "odd_degree_and_3colourable": 0
+    },
+    "10": {
+      "graphs": 233,
+      "all_degrees_even": 2,
+      "even_and_3colourable": 2,
+      "odd_degree_and_3colourable": 0
+    },
+    "11": {
+      "graphs": 1249,
+      "all_degrees_even": 2,
+      "even_and_3colourable": 2,
+      "odd_degree_and_3colourable": 0
+    }
+  },
+  "eulerian": [
+    {
+      "name": "T_6_1",
+      "n": 6,
+      "index": 1,
+      "degrees": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "backtracker_colouring": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        2
+      ],
+      "constructive_status": "ok",
+      "constructive_colouring": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        1
+      ],
+      "constructive_proper": true,
+      "P3": 6
+    },
+    {
+      "name": "T_8_12",
+      "n": 8,
+      "index": 12,
+      "degrees": [
+        6,
+        6,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "backtracker_colouring": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "constructive_status": "ok",
+      "constructive_colouring": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1
+      ],
+      "constructive_proper": true,
+      "P3": 6
+    },
+    {
+      "name": "T_9_47",
+      "n": 9,
+      "index": 47,
+      "degrees": [
+        6,
+        4,
+        6,
+        6,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "backtracker_colouring": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        0,
+        2,
+        1
+      ],
+      "constructive_status": "ok",
+      "constructive_colouring": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1,
+        2
+      ],
+      "constructive_proper": true,
+      "P3": 6
+    },
+    {
+      "name": "T_10_221",
+      "n": 10,
+      "index": 221,
+      "degrees": [
+        8,
+        8,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "backtracker_colouring": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "constructive_status": "ok",
+      "constructive_colouring": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1
+      ],
+      "constructive_proper": true,
+      "P3": 6
+    },
+    {
+      "name": "T_10_226",
+      "n": 10,
+      "index": 226,
+      "degrees": [
+        6,
+        6,
+        6,
+        6,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "backtracker_colouring": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        0
+      ],
+      "constructive_status": "ok",
+      "constructive_colouring": [
+        0,
+        0,
+        2,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        0
+      ],
+      "constructive_proper": true,
+      "P3": 6
+    },
+    {
+      "name": "T_11_1220",
+      "n": 11,
+      "index": 1220,
+      "degrees": [
+        8,
+        4,
+        6,
+        6,
+        4,
+        4,
+        6,
+        4,
+        4,
+        4,
+        4
+      ],
+      "backtracker_colouring": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        0,
+        2,
+        1,
+        2,
+        1
+      ],
+      "constructive_status": "ok",
+      "constructive_colouring": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1,
+        2,
+        1,
+        2
+      ],
+      "constructive_proper": true,
+      "P3": 6
+    },
+    {
+      "name": "T_11_1242",
+      "n": 11,
+      "index": 1242,
+      "degrees": [
+        6,
+        6,
+        6,
+        6,
+        4,
+        4,
+        6,
+        4,
+        4,
+        4,
+        4
+      ],
+      "backtracker_colouring": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "constructive_status": "ok",
+      "constructive_colouring": [
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "constructive_proper": true,
+      "P3": 6
+    }
+  ],
+  "odd_degree_but_3colourable": [],
+  "even_degree_but_not_3colourable": [],
+  "disagreement_with_stored_P3": [],
+  "data_faults": [],
+  "anchors": {
+    "K4_not_3colourable": true,
+    "T_6_1_all_degrees_4": true
+  }
+}

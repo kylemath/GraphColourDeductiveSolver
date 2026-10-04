@@ -1,0 +1,26 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=././.lake/packages/Cli/.lake/build/lib:././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/LeanSearchClient/.lake/build/lib:././.lake/packages/plausible/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib DYLD_LIBRARY_PATH= /Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.15.0/bin/lean -DautoImplicit=false ././././KempeReconfiguration/ChainLifting.lean -R ./././. -o ././.lake/build/lib/KempeReconfiguration/ChainLifting.olean -i ././.lake/build/lib/KempeReconfiguration/ChainLifting.ilean -c ././.lake/build/ir/KempeReconfiguration/ChainLifting.c --json",
+   "level": "trace"},
+  {"message":
+   "././././KempeReconfiguration/ChainLifting.lean:27:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.vertex_not_in_bichromatic':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/ChainLifting.lean:43:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.bichromatic_adj_delete_irrelevant':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/ChainLifting.lean:46:5: unused variable `hva`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/ChainLifting.lean:46:21: unused variable `hvb`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/ChainLifting.lean:47:15: unused variable `hu`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/ChainLifting.lean:47:28: unused variable `hw`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././././KempeReconfiguration/ChainLifting.lean:60:0: automatically included section variable(s) unused in theorem 'KempeReconfiguration.colour5_isolated_in_bichromatic_14':\n  [Fintype V]\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype V] [DecidableEq V] in theorem ...\nnote: this linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"}],
+ "depHash": "16708401556251872042"}

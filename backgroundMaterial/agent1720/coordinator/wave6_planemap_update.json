@@ -1,0 +1,193 @@
+{
+  "journal": [
+    {
+      "time": "2026-10-03T07:25:00Z",
+      "action": "PlaneMap/Jordan and the conditional degree-five Kempe stack compile without sorry. Euler, the edge bound, degree at most five, neighbour rotation, even_is_face_sum, cycleEdgeCoeff_is_face_sum, local no-cross separation, and five_color_degree_five under hopposite are Lean theorems. The complete Lean Five Colour Theorem remains open on the connected Kempe-cycle bridge and vertex-deletion induction carrier. This is not the Four Colour Theorem.",
+      "node": "foundation"
+    }
+  ],
+  "patches": [
+    {
+      "id": "foundation",
+      "status": "in-progress",
+      "approach": "The combinatorial PlaneMap foundation is compiled on current Mathlib. Finish the Lean Five Colour Theorem through a connected Kempe-cycle separation theorem and a deletion/component induction carrier. Keep the five-to-four problem separate.",
+      "files": [
+        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md",
+        "backgroundMaterial/agent1720/groups/PlaneEven_status.md",
+        "backgroundMaterial/agent1720/critic/planemap_gate.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T07:25:00Z",
+          "text": "Current gate: PlaneMap/JordanTwoSides and the full Kempe package build. The complete Lean Five Colour induction is not yet assembled."
+        }
+      ],
+      "evidence": "Current Mathlib: lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanTwoSides exited 0 in 0.86s. Kempe v4.15.0 package: lake build exited 0 in 0.53s. No project proof in the gated modules uses sorry, admit, or axiom."
+    },
+    {
+      "id": "f3",
+      "status": "proved",
+      "statement": "For generated combinatorial PlaneMap objects, prove Euler's formula, E <= 3V - 6 under face length at least 3, and existence of a vertex of degree at most 5.",
+      "approach": "Constructor induction on Vertex, Grow, and Split; face-length and degree handshaking identities supply the corollaries.",
+      "files": [
+        "SimpleGraph/PlaneMap.lean",
+        "SimpleGraph/PlaneMap/Construction.lean",
+        "SimpleGraph/PlaneMap/RotationSystem.lean"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T07:25:00Z",
+          "text": "Scope is the generated PlaneMap API, not a Kuratowski-minor IsPlanar predicate."
+        }
+      ],
+      "evidence": "Compiled theorems euler_sphere, edge_bound, exists_degree_le_five, triangulation_edge_count, and neighbour_rotation. The current PlaneMap/Jordan top build exits 0."
+    },
+    {
+      "id": "f4",
+      "status": "proved",
+      "statement": "Kempe component swaps preserve proper colouring; a colouring extends across a degree-at-most-four vertex.",
+      "approach": "Use bichromatic connected components and a missing colour on at most four neighbour colours.",
+      "files": [
+        "lean4/KempeReconfiguration/KempeReconfiguration/Basic.lean",
+        "lean4/KempeReconfiguration/KempeReconfiguration/ChainEquality.lean",
+        "lean4/KempeReconfiguration/KempeReconfiguration/FiveColor.lean"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-03T07:25:00Z",
+          "text": "This closes the graph-theoretic conditional lemmas, not the plane separation needed at degree five."
+        }
+      ],
+      "evidence": "kempeSwap_preserves_proper, bichromatic_reachable_iff_induce_delete, and five_color_degree_at_most_four compile in the v4.15.0 package."
+    },
+    {
+      "op": "insert",
+      "parentId": "foundation",
+      "node": {
+        "id": "f-planemap-core",
+        "title": "Lean PlaneMap core",
+        "statement": "Generated combinatorial plane maps satisfy Euler's formula, the planar edge bound, a degree-at-most-five lemma, triangulation counts, and neighbour rotation.",
+        "status": "proved",
+        "approach": "Rotation systems with faces as faceNext orbits; constructor induction on Vertex, Grow, and Split.",
+        "killCriteria": "A build failure, a forbidden placeholder, or a constructor that violates a stated count.",
+        "files": [
+          "SimpleGraph/PlaneMap.lean",
+          "SimpleGraph/PlaneMap/RotationSystem.lean",
+          "SimpleGraph/PlaneMap/Construction.lean",
+          "SimpleGraph/PlaneMap/Examples.lean"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-03T07:25:00Z",
+            "text": "Critic gate accepted the compiled core. This is infrastructure, not a colouring theorem."
+          }
+        ],
+        "evidence": "Current Mathlib build exits 0. Cycle maps and the tetrahedron are constructor-checked. No sorry, admit, or axiom.",
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "foundation",
+      "node": {
+        "id": "f-jordan-even",
+        "title": "Even sets and local combinatorial Jordan separation",
+        "statement": "Every even edge combination is a mod-two sum of face boundaries; cycle edges are such a sum; its face-sum sides have no cross edge and are preserved by avoiding walks.",
+        "status": "proved",
+        "approach": "Constructor induction for even_is_face_sum, followed by face-coefficient propagation.",
+        "killCriteria": "A generated PlaneMap with an even edge set not in the face-boundary span, or a cross edge between the defined sum-sides.",
+        "files": [
+          "SimpleGraph/PlaneMap/JordanEven.lean",
+          "SimpleGraph/PlaneMap/JordanCycle.lean",
+          "SimpleGraph/PlaneMap/JordanTwoSides.lean"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-03T07:25:00Z",
+            "text": "The current CycleCut may be disconnected; no global reachability partition is claimed."
+          }
+        ],
+        "evidence": "even_is_face_sum, cycleEdgeCoeff_is_face_sum, no_cross_edge_sum_sides, and walk_stays_on_sum_side compile. JordanTwoSides top build exits 0.",
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "foundation",
+      "node": {
+        "id": "f-heawood-bridge",
+        "title": "Connected Kempe-cycle separation bridge",
+        "statement": "A bichromatic path between the first opposite neighbour pair at a degree-five vertex creates a connected cycle that separates the second opposite pair, yielding hopposite.",
+        "status": "exploring",
+        "approach": "Construct ConnectedCycleCut from Walk.IsCycle, relate opposite rotation sectors to opposite face-sum coefficients, then rule out an avoiding bichromatic path.",
+        "killCriteria": "A valid degree-five plane-map configuration satisfying the hypotheses but admitting both opposite bichromatic connections.",
+        "files": [
+          "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md",
+          "SimpleGraph/PlaneMap/JordanCycle.lean",
+          "SimpleGraph/PlaneMap/JordanTwoSides.lean"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-03T07:25:00Z",
+            "text": "Use a connected cycle API; do not assert cycle_two_sides for every current CycleCut."
+          }
+        ],
+        "evidence": "Inputs already compile: cycleEdgeCoeff_is_face_sum, opposite_sectors_of_pentagon, no_cross_edge_sum_sides, and five_color_degree_five under hopposite.",
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "foundation",
+      "node": {
+        "id": "f-planemap-delete",
+        "title": "PlaneMap deletion and component induction",
+        "statement": "After deleting a low-degree vertex, every connected component inherits a smaller generated plane map and the component colourings assemble into a proper colouring of the deleted graph.",
+        "status": "exploring",
+        "approach": "Prototype component restriction, a disconnected spherical-map carrier, and direct Generated deletion closure; select one at a critic design gate.",
+        "killCriteria": "The proposed carrier assumes deletion preserves connectedness or introduces planarity/generatedness as an axiom.",
+        "files": [
+          "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-03T07:25:00Z",
+            "text": "This is the largest remaining infrastructure task for the Lean Five Colour induction."
+          }
+        ],
+        "evidence": "No delete/induce theorem currently exists under SimpleGraph/PlaneMap. The plan requires a compiling design prototype before a proof implementation.",
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "f5",
+      "node": {
+        "id": "f5-lean",
+        "title": "Five Colour Theorem in Lean",
+        "statement": "Every generated PlaneMap with face lengths at least three has a proper Fin 5 vertex colouring.",
+        "status": "in-progress",
+        "approach": "Strong induction after the connected Kempe-cycle bridge and deletion/component carrier compile.",
+        "killCriteria": "A remaining assumption in the final theorem named hopposite, cycle_two_sides, IsPlanar, or Triangulation; or a forbidden proof placeholder.",
+        "files": [
+          "lean4/KempeReconfiguration/KempeReconfiguration/FiveColor.lean",
+          "lean4/KempeReconfiguration/KempeReconfiguration/FiveColorDeg5.lean",
+          "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-03T07:25:00Z",
+            "text": "The prose Five Colour proof is accepted on the parent node. This child tracks the still-open Lean theorem."
+          }
+        ],
+        "evidence": "Degree-at-most-four and degree-five-under-hopposite compile. The final induction and topological bridge do not yet exist.",
+        "expanded": false,
+        "children": []
+      }
+    }
+  ]
+}

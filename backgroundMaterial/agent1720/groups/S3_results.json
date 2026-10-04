@@ -1,0 +1,175 @@
+{
+  "definition": "RSST 1997, section 3: the free completion is D-reducible when the maximal consistent subset of the ring edge-colourings that do not extend to a tri-colouring is empty. Edge-colours are {-1,0,1}.",
+  "ring_size_bound": 6,
+  "elapsed_seconds": 0.0176,
+  "birkhoff_diamond": {
+    "ring_size": 6,
+    "interior": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "edge_colourings": 729,
+    "extend_to_tri_colouring": 96,
+    "bad": 633,
+    "maximal_consistent_bad": 0,
+    "consistent_witnesses": [],
+    "d_reducible": true,
+    "ring_vertex_colourings": 732,
+    "extend_directly": 384,
+    "fail_directly": 348,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        7,
+        9
+      ]
+    ],
+    "interior_degrees": {
+      "6": 5,
+      "7": 5,
+      "8": 5,
+      "9": 5
+    },
+    "edge_count": 21,
+    "internal_triangles": 12,
+    "induced_ring": true
+  },
+  "degree5_vertex": {
+    "ring_size": 5,
+    "interior": [
+      5
+    ],
+    "edge_colourings": 243,
+    "extend_to_tri_colouring": 30,
+    "bad": 213,
+    "maximal_consistent_bad": 30,
+    "consistent_witnesses": [
+      [
+        -1,
+        -1,
+        0,
+        -1,
+        1
+      ],
+      [
+        -1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        -1,
+        -1,
+        1
+      ]
+    ],
+    "d_reducible": false,
+    "ring_vertex_colourings": 240,
+    "extend_directly": 120,
+    "fail_directly": 120
+  },
+  "degree4_vertex_sanity": {
+    "ring_size": 4,
+    "interior": [
+      4
+    ],
+    "edge_colourings": 81,
+    "extend_to_tri_colouring": 15,
+    "bad": 66,
+    "maximal_consistent_bad": 0,
+    "consistent_witnesses": [],
+    "d_reducible": true,
+    "ring_vertex_colourings": 84,
+    "extend_directly": 60,
+    "fail_directly": 24
+  },
+  "claims": {
+    "birkhoff_diamond_d_reducible": true,
+    "degree5_vertex_not_d_reducible": true,
+    "degree4_vertex_d_reducible": true
+  }
+}

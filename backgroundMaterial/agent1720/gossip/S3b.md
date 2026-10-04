@@ -1,0 +1,6 @@
+- `S3_results.json` defines D-reducibility with no Kempe swaps; under that predicate the Birkhoff diamond has $348$ non-extensions out of $732$. `groups/S3_results.json`
+- The RSST signed-matching closure is in `compute/discharging/a1720_d_reducible_kempe.py`. Diamond: $729$ ring edge-colourings, $96$ extend, maximal consistent bad set empty. `groups/S3b_results.json`
+- Degree-5 hub, ring $5$: $243$ edge-colourings, $30$ extend, consistent bad set has $30$, one of them $(-1,-1,0,-1,1)$. Not D-reducible. `groups/S3b_results.json`
+- Up to permutation of the four vertex colours: $31$ colourings of $C_6$ and $10$ of $C_5$. `groups/S3b_results.json`
+- Free swaps of every bichromatic ring component, including isolated vertices, leave $0$ failures on both configurations, so that graph is not the RSST test. `groups/S3b_results.json`
+- Degree-4 hub checksum of the same function: $81$ edge-colourings, $15$ extend, consistent bad set empty; $24$ of $84$ vertex colourings do not extend. `groups/S3b_report.md`

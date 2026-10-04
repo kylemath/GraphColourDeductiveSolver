@@ -1,0 +1,9 @@
+import KempeReconfiguration.Basic
+import KempeReconfiguration.NeverRevert
+import KempeReconfiguration.ChainLifting
+import KempeReconfiguration.ChainEquality
+import KempeReconfiguration.Degree3NoMerge
+import KempeReconfiguration.Degree4Extend
+import KempeReconfiguration.FiveColor
+import KempeReconfiguration.FiveColorDeg5
+import KempeReconfiguration.Main

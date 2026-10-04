@@ -1,0 +1,12 @@
+- Route: a simple plane triangulation is $3$-vertex-colourable iff it is Eulerian. `groups/S4b_report.md`
+- Proved by a noncrossing Eulerian circuit coloured $1,2,3$; subcircuit lengths are divisible by $3$. `groups/S4b_report.md`
+- Citation: Tsai and West, https://faculty.math.illinois.edu/~west/pubs/eultri.pdf . `groups/S4b_report.md`
+- Kill test not met: $0$ disagreements on all $1555$ cached triangulations, $n=4,\ldots,11$. `groups/S4b_results.json`
+- Backtrack and Glucose3 agree. Exactly $7$ graphs are Eulerian, and those $7$ are the $3$-colourable ones. `groups/S4b_results.json`
+- The seven are $T_{6,1}$, $T_{8,12}$, $T_{9,47}$, $T_{10,221}$, $T_{10,226}$, $T_{11,1220}$, $T_{11,1242}$. `groups/S4b_results.json`
+- Counts of Eulerian graphs for $n=4,\ldots,11$: $0,0,1,0,1,1,2,2$. `groups/S4b_results.json`
+- $T_{4,0}=K_4$ has degrees $3$ and is not $3$-colourable, so both sides fail together. `groups/S4b_results.json`
+- Face-sign labelling gave a proper $3$-colouring on each of the seven. `compute/discovery/a1720_s4b.py`
+- Wall clock $0.1845$ s. `groups/S4b_results.json`
+- Doubling every edge of $K_4$ is plane and Eulerian and has chromatic number $4$; its faces are not triangles. `groups/S4b_report.md`
+- This does not prove the Four Colour Theorem. Feasibility of that extension: Low. `groups/S4b_report.md`
