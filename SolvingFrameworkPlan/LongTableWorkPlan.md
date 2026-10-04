@@ -12,7 +12,79 @@
 - the corpus sweep, quantifier review, support transport and filling proofs (math and scale-up);
 - status words, revision 39 and the ledger (navigator).
 
-**Execution awaits the user's release.** Nothing below starts before then, and acceptance is never inferred from silence.
+**Execution awaits the user's release.** Nothing below starts before then, and acceptance is never inferred from silence. *(Released 4 October; see progress below.)*
+
+## Progress, 4 October evening
+
+### Work packages
+
+| WP | State | Evidence |
+|---|---|---|
+| WP1 invariance argument | Written; awaiting the math team's quantifier review. The empirical check agrees: in all 118 graphs, failing roots form unions of automorphism orbits. | `longtable/InvarianceNote.md`, `automorphisms.json` |
+| WP2 regression fixtures | All 32 checks pass. The graph-36 permutation runs show (σ, β) changing outcome under relabelling while mass-macro results do not. | `regressions.json`, report 1 |
+| WP3 adversary | Built. It consumes the published mass table and reproduces the anchor-rule failure. | `adversary.py`, report 2 |
+| WP4 candidate sets | S0, S1+ and S1− each contain a failing root in some tested graph, so their every-member guarantees fail. No graph has every root failing. Discovery on orders 12–18 found no simple local-degree rule worth freezing. S2 is not specified. **Orders 19–20 are untouched.** | report 2 |
+| WP4b broadening (two predeclared rounds) | Eight alternative ranks shrink discovery failures to the single orbit {4, 6} of order 17, graph 0; none reaches zero, so none advanced. Two rank variants (rep and Lonly) are refuted outright. | `broaden-discovery*.json`, report 3 |
+| WP5 completion review | Done. The math team prefers the direct coefficient proof; `FaceCorner.lean` now gives faces of length ≥ 3 at minimum degree two. | `EdgeInsertionReview.md` |
+| WP6 errata | Done for the documents and both plays. | — |
+| Root 4 versus root 8 | Done, and replicated by the math team (`MathLongTableResponse3.md`). | `compare-roots.json`, report 3 |
+| Trap demo | Published at `docs/trap/` and linked from the site. | `trap_demo_data.py` |
+
+### What the trap taught us
+
+1. **The failure is a basin, not a plateau.** Escaping the trap at root 4 takes three swaps, with R climbing +20 first. Root 8's stuck states escape in two swaps with a climb of at most +4.
+2. **The trap is the tidiest state nearby.** It is the minimum of every tested cheap score over its whole two-swap neighbourhood, so reweighting a monotone "tidiness" score cannot help. Crediting boundary-linking chains (q − k·links) also changed nothing.
+3. **Its boundary is fully locked.** Each singleton is chained to another boundary vertex in all three of its pairs, and the repeated colour is chained through a singleton. The math team's pair profile adds detail: at root 4 the three pairs of singleton colours (12, 13, 23) each contribute 36, from one chain of exterior mass 6 joining two singletons. Root 8's colouring has the same σ and the same q, but a different profile, and it descends in one swap.
+4. **New: avoidance is exact at this fixture.** At each failing root (4, 6, 9, 14) of order 17, graph 0, every colouring except the trap itself descends to a target along a strictly decreasing two-swap path that never enters the trap. For example, 53 of 54 colourings descend at root 4. So at this fixture, "the recursion never hands over this one colouring" is exactly the missing condition. This is finite evidence, not a certificate: the condition still has to be named, checkable, preserved by deletion and reconstruction, and not a restatement of extendibility.
+
+### Our answers to the math team's three questions
+
+- **Q2, the joint rank-and-set gate:** we **accept** it. Freeze the rank and the equivariant candidate set together, require zero bad members in discovery (orders 12–18), and use orders 19–20 once for the frozen pair. We will not amend the screening protocol or reuse holdout results.
+- **Q1, isolating one interaction:** taken up as WP7 below.
+- **Q3, the precise Jordan lemma on repeated face walks:** taken up as WP10 below. We accept that `alternating_walks_intersect` does not apply directly, since it is a centred-star theorem. We also adopt their termination measure: the number of missing vertex pairs, bounded by choose(s, 2).
+
+## Next work packages (proposed, in order)
+
+### WP7: the singleton-chain interaction (answers Q1)
+
+**Statement first, then test.** Define the *singleton triangle* Π(c): for every pair {x, y} of singleton colours on B, the {x, y}-component containing the x-singleton also contains the y-singleton. A conjectured mechanism to test:
+- when Π holds, every swap of a chain that touches the repeated colour merges mass into those three linking chains, which raises q;
+- this is why the first step out is uphill.
+
+**Test.**
+- Count Π across all non-target states at the 279 discovery roots, comparing two-swap-stuck states, one-swap-stuck states and the rest.
+- Report whether Π, possibly with the repeated-colour chain condition, separates the trap from root 8's same-σ, same-q colouring.
+
+**Deliverable:** a stated interaction lemma *with quantifiers*, or a counterexample state that refutes the mechanism. Target distance stays diagnostic only.
+
+### WP8: a joint rank-and-set candidate (only if WP7 suggests one)
+
+- Freeze the rank and an equivariant candidate set together.
+- Discovery gate: zero bad members on orders 12–18.
+- Then evaluate on orders 19–20 exactly once.
+- Hand any survivor to the math team for the official sweep.
+
+### WP9: from avoidance to a certificate
+
+1. **Is the trap ever produced?** Run a concrete, fully specified recursive colouring (degree-≤4 extension plus two-swap descent at a fixed good-root rule) on the corpus graphs, and record whether it ever hands a trap colouring to a failing root. This gives evidence about what the recursion produces; it is not a proof.
+2. **Name a candidate.** Look for a checkable property P that excludes all four trap states at order 17, graph 0 (and later traps), implies that a two-swap descent exists, and could plausibly be reproduced on reconstruction. Candidate shapes include "Π fails" and "some singleton is free in some pair after one swap".
+3. **Report or stop.** Report P with its preservation obligation stated, or stop if every natural P is just a restatement of extendibility.
+
+### WP10: the Jordan lemma statement for chord availability (answers Q3)
+
+State the lemma for a face of length ≥ 4 in a connected, full-support spherical map, covering:
+- choosing corners when the face walk repeats vertices;
+- extracting a simple cycle from the face walk plus a hypothetical diagonal;
+- why that cycle separates the two ends of the other diagonal, using the proved even-set/Jordan separation result rather than the star theorem.
+
+**Deliverable:** a statement for the math team to formalise or reject.
+
+### Not planned
+
+- Longer macros.
+- New observation games.
+- Orders beyond 20 (pending joint agreement).
+- Any status words; the navigator assigns those.
 
 ## Ground rules
 
