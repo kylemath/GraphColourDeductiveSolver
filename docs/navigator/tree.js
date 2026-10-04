@@ -53,8 +53,9 @@ const Tree = (() => {
 
     // Child count badge
     if (hasChildren) {
-      const proved = countByStatus(node, 'proved');
-      const total = countLeaves(node);
+      const stats = node.active === false ? null : getStats(node);
+      const proved = stats ? stats.proved : countByStatus(node, 'proved');
+      const total = stats ? stats.leaves : countLeaves(node);
       const badge = document.createElement('span');
       badge.className = 'node-count';
       badge.textContent = proved + '/' + total;
@@ -194,12 +195,21 @@ const Tree = (() => {
 
   /* ---- Global stats ---- */
   function getStats(node) {
-    const leaves = countLeaves(node);
-    const proved = countByStatus(node, 'proved');
-    const killed = countByStatus(node, 'killed');
-    const inProgress = countByStatus(node, 'in-progress');
-    const exploring = countByStatus(node, 'exploring');
-    return { leaves, proved, killed, inProgress, exploring, total: countAll(node) };
+    const result = { leaves: 0, proved: 0, killed: 0, inProgress: 0, exploring: 0, total: 0 };
+    function visit(current) {
+      if (current.active === false) return;
+      result.total++;
+      const children = (current.children || []).filter(child => child.active !== false);
+      if (!children.length) {
+        result.leaves++;
+        const key = current.status === 'in-progress' ? 'inProgress' : current.status;
+        if (['proved', 'killed', 'inProgress', 'exploring'].includes(key)) result[key]++;
+      } else {
+        children.forEach(visit);
+      }
+    }
+    visit(node);
+    return result;
   }
 
   function getSelectedId() { return selectedId; }

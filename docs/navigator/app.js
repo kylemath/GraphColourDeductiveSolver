@@ -100,18 +100,39 @@ const State = (() => {
   function applyPlanningBoard(board) {
     const rev = board.revision || 0;
     if (rev <= (tree.planningRevision || 0)) return false;
+    const previousRevision = tree.planningRevision || 0;
     for (const patch of board.patches || []) {
+      if (patch.revision != null && patch.revision <= previousRevision) continue;
       if (patch.op === 'insert') {
         if (!patch.node || Tree.findNode(tree, patch.node.id)) continue;
         const parent = Tree.findNode(tree, patch.parentId);
         if (!parent) continue;
         parent.children = parent.children || [];
-        parent.children.push(patch.node);
+        const index = Number.isInteger(patch.index)
+          ? Math.max(0, Math.min(patch.index, parent.children.length))
+          : parent.children.length;
+        parent.children.splice(index, 0, JSON.parse(JSON.stringify(patch.node)));
         parent.expanded = true;
         continue;
       }
       const node = Tree.findNode(tree, patch.id);
       if (!node) continue;
+      if (patch.op === 'move') {
+        const parent = Tree.findNode(tree, patch.parentId);
+        const previous = Tree.findParent(tree, patch.id);
+        // Preserve the node and its history; reject root moves and cycles.
+        if (!parent || !previous || Tree.findNode(node, parent.id)) continue;
+        previous.children = previous.children.filter(child => child.id !== node.id);
+        parent.children = parent.children || [];
+        const index = Number.isInteger(patch.index)
+          ? Math.max(0, Math.min(patch.index, parent.children.length))
+          : parent.children.length;
+        parent.children.splice(index, 0, node);
+        continue;
+      }
+      if (patch.title != null) node.title = patch.title;
+      if (patch.expanded != null) node.expanded = patch.expanded;
+      if (patch.active != null) node.active = patch.active;
       if (patch.status) node.status = patch.status;
       if (patch.evidence != null) node.evidence = patch.evidence;
       if (patch.approach) node.approach = patch.approach;
@@ -207,8 +228,9 @@ const Detail = (() => {
   }
 
   function renderProgress(node) {
-    const leaves = Tree.countLeaves(node);
-    const proved = Tree.countByStatus(node, 'proved');
+    const stats = node.active === false ? null : Tree.getStats(node);
+    const leaves = stats ? stats.leaves : Tree.countLeaves(node);
+    const proved = stats ? stats.proved : Tree.countByStatus(node, 'proved');
     const pct = leaves > 0 ? Math.round((proved / leaves) * 100) : 0;
     document.getElementById('detail-progress-fill').style.width = pct + '%';
     document.getElementById('detail-progress-text').textContent = proved + ' / ' + leaves + ' proved';

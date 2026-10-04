@@ -1,6 +1,6 @@
 {
-  "revision": 33,
-  "updatedAt": "2026-10-03T23:56:52Z",
+  "revision": 34,
+  "updatedAt": "2026-10-04T12:00:00-06:00",
   "journal": [
     {
       "time": "2026-09-27T19:45:00Z",
@@ -19,7 +19,7 @@
     },
     {
       "time": "2026-09-27T21:27:59Z",
-      "action": "Agent 1720 main planning team issued wave 1: 14 groups under 5 managers covering Tracks 1\u20137, the Lean foundation, a new discharging track, and a survey of other deductive routes. Nothing is checked off before the critic gate.",
+      "action": "Agent 1720 main planning team issued wave 1: 14 groups under 5 managers covering Tracks 1–7, the Lean foundation, a new discharging track, and a survey of other deductive routes. Nothing is checked off before the critic gate.",
       "node": "4ct"
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "time": "2026-10-02T20:38:30Z",
-      "action": "Critic gate on K4\u2013K6: s1<=d+1 holds as a computation on triangulations n=6..10 and does not 4-colour G. Strict monotone reduction is dead on T_5_0. Non-strict monotone reduction and KC5 hold as computations through n=11, including the icosahedron and Errera's degree-5 vertices. Given Meyniel 1978, Kempe reducibility of 5-colourings to 4-colourings is a reformulation of 4CT. Nothing here is a theorem. Track 1 is not killed.",
+      "action": "Critic gate on K4–K6: s1<=d+1 holds as a computation on triangulations n=6..10 and does not 4-colour G. Strict monotone reduction is dead on T_5_0. Non-strict monotone reduction and KC5 hold as computations through n=11, including the icosahedron and Errera's degree-5 vertices. Given Meyniel 1978, Kempe reducibility of 5-colourings to 4-colourings is a reformulation of 4CT. Nothing here is a theorem. Track 1 is not killed.",
       "node": "track1"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "time": "2026-10-02T21:14:31Z",
-      "action": "Critic gate on D2 and S4. The Penrose evaluation in the repository is a Tait count; the signed state sum equals (-1)^n times that count through n=11, with no cancellation, so Track 4 is a reformulation of 4CT. Haj\u00f3s at k=5, odd Hadwiger at t=5, and a Petersen minor in every snark are recorded as open low-feasibility routes. Every triangulation having a vertex of degree at most 4 is dead: the icosahedron has minimum degree 5.",
+      "action": "Critic gate on D2 and S4. The Penrose evaluation in the repository is a Tait count; the signed state sum equals (-1)^n times that count through n=11, with no cancellation, so Track 4 is a reformulation of 4CT. Hajós at k=5, odd Hadwiger at t=5, and a Petersen minor in every snark are recorded as open low-feasibility routes. Every triangulation having a vertex of degree at most 4 is dead: the icosahedron has minimum degree 5.",
       "node": "4ct"
     },
     {
@@ -176,6 +176,11 @@
       "time": "2026-10-03T23:56:52Z",
       "action": "Compiled the general Five Colour Theorem for every generated PlaneMap with no face-length premise. The proved spherical carrier closes deletion, including disconnected graphs; an unconditional positive low-degree theorem and edge-count induction finish the proof. Guarded axiom audits and applications compile. Mathlib contribution cleanup and four-colour work remain separate.",
       "node": "f5-lean"
+    },
+    {
+      "time": "2026-10-04T12:00:00-06:00",
+      "node": "structural-four-colour",
+      "action": "Consolidated active A–F route: degree-four extension, eleven-vertex theorem, elimination certificates, and executable component swap compile and pass audits. Preserved earlier tracks as inactive history. First quantified degree-five candidate and independent Kittell replay are research evidence; general Four Colour, algorithm, and polynomial complexity remain open."
     }
   ],
   "patches": [
@@ -202,7 +207,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -227,7 +233,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -252,7 +259,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -262,7 +270,7 @@
         "title": "Reconcile navigator with the repo",
         "statement": "For each proof-tree node, state whether a cited file exists and whether prior reports support a status other than unstarted. Recommendations are not applied until the critic gate.",
         "status": "exploring",
-        "approach": "Agent 1701 task F1, manager M-Foundation. Tracks 2\u20137 stay unstarted unless the audit cites files.",
+        "approach": "Agent 1701 task F1, manager M-Foundation. Tracks 2–7 stay unstarted unless the audit cites files.",
         "killCriteria": "Critic gate rejects the audit as unverifiable.",
         "files": [
           "backgroundMaterial/agent1701/tasks/F1.md"
@@ -276,7 +284,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -301,7 +310,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "t1-spec-d4",
@@ -317,7 +327,8 @@
           "text": "Critic gate accepted the specification. The conjecture is not proved and is not killed."
         }
       ],
-      "evidence": "Spec accepted 2026-09-27. Statement quantifies over every shortest path in R(G-v,5), with the bridge test at the pre-swap colouring. Agent 1419 asserts a degree-4 failure on T_9,35 at vertex 6 (24 colourings where every optimal path is unsafe) in backgroundMaterial/agent1419/coordinator/manager_M1/sub_S1/S1_report.md. That file does not contain the edge set or a path, so the conjecture is not marked killed."
+      "evidence": "Spec accepted 2026-09-27. Statement quantifies over every shortest path in R(G-v,5), with the bridge test at the pre-swap colouring. Agent 1419 asserts a degree-4 failure on T_9,35 at vertex 6 (24 colourings where every optimal path is unsafe) in backgroundMaterial/agent1419/coordinator/manager_M1/sub_S1/S1_report.md. That file does not contain the edge set or a path, so the conjecture is not marked killed.",
+      "revision": 33
     },
     {
       "id": "t1-spec-d5",
@@ -332,7 +343,8 @@
           "text": "Critic gate accepted the specification. Observation R (equivalence with 4CT) is not established."
         }
       ],
-      "evidence": "Spec accepted 2026-09-27. The degree-5 link is a 5-cycle with five splittable non-adjacent pairs (compute/kempe/degree5_analysis.py). The conjecture is not proved. The manager plan to prove degree 4 first was withdrawn at the gate."
+      "evidence": "Spec accepted 2026-09-27. The degree-5 link is a 5-cycle with five splittable non-adjacent pairs (compute/kempe/degree5_analysis.py). The conjecture is not proved. The manager plan to prove degree 4 first was withdrawn at the gate.",
+      "revision": 33
     },
     {
       "id": "f-spec-lean",
@@ -347,7 +359,8 @@
           "text": "Critic gate accepted the specification. Not a proof of the Five Colour Theorem."
         }
       ],
-      "evidence": "Spec accepted 2026-09-27. kempeSwap_preserves_proper (Basic.lean) and never_revert (NeverRevert.lean) are Lean proofs with no sorry tactic; they were not compiled in this wave. ChainLifting.lean proves isolation of colour 5 in the {1,2,3,4} bichromatic subgraph, not equality of chains in G and G-v. No Five Colour Theorem file is in the repo."
+      "evidence": "Spec accepted 2026-09-27. kempeSwap_preserves_proper (Basic.lean) and never_revert (NeverRevert.lean) are Lean proofs with no sorry tactic; they were not compiled in this wave. ChainLifting.lean proves isolation of colour 5 in the {1,2,3,4} bichromatic subgraph, not equality of chains in G and G-v. No Five Colour Theorem file is in the repo.",
+      "revision": 33
     },
     {
       "id": "audit-1701",
@@ -362,7 +375,8 @@
           "text": "Critic gate accepted the audit and refused to mark track1, t1-1, or track4 in progress. Fifteen linked paths are missing. The six Plan 2 lemmas have argument files. The executive summary near-complete-proof line was refused as hot air."
         }
       ],
-      "evidence": "Audit accepted 2026-09-27. Fifteen unique linked paths are missing. Foundation and f5 stay unstarted: F5_FiveColorTheorem.lean is absent. Tracks 2, 3, 5, 6, and 7 stay unstarted. track4 stays unstarted at the gate even though compute/topology/penrose_eval.py exists: a Python file is not track progress."
+      "evidence": "Audit accepted 2026-09-27. Fifteen unique linked paths are missing. Foundation and f5 stay unstarted: F5_FiveColorTheorem.lean is absent. Tracks 2, 3, 5, 6, and 7 stay unstarted. track4 stays unstarted at the gate even though compute/topology/penrose_eval.py exists: a Python file is not track progress.",
+      "revision": 33
     },
     {
       "id": "t1-witness-935",
@@ -378,7 +392,8 @@
           "text": "Critic accepted the witness. Edges of generate_triangulations(9)[35] match the JSON record. The length-2 path meets the kill test."
         }
       ],
-      "evidence": "Accepted 2026-09-27. T_9_35 has 21 edges; vertex 6 has degree 4 and neighbours 0,1,2,5. Colouring 0:1, 1:2, 2:3, 3:4, 4:5, 5:3, 6:5, 7:2, 8:5. First step swaps (3,5)-chain {2,8} while neighbours 2 and 5 lie in distinct (3,5)-chains."
+      "evidence": "Accepted 2026-09-27. T_9_35 has 21 edges; vertex 6 has degree 4 and neighbours 0,1,2,5. Colouring 0:1, 1:2, 2:3, 3:4, 4:5, 5:3, 6:5, 7:2, 8:5. First step swaps (3,5)-chain {2,8} while neighbours 2 and 5 lie in distinct (3,5)-chains.",
+      "revision": 33
     },
     {
       "id": "t1-spec-d4",
@@ -388,7 +403,8 @@
           "text": "The universal degree-4 statement met its kill criterion. The dead end is recorded on t1-conj-d4. This node remains the specification."
         }
       ],
-      "evidence": "Spec accepted 2026-09-27. The universal statement is a dead end: on T_9_35, vertex 6, one shortest path swaps the (3,5)-chain {2,8}. See t1-conj-d4. The specification document is kept."
+      "evidence": "Spec accepted 2026-09-27. The universal statement is a dead end: on T_9_35, vertex 6, one shortest path swaps the (3,5)-chain {2,8}. See t1-conj-d4. The specification document is kept.",
+      "revision": 33
     },
     {
       "id": "t1-spec-d5",
@@ -398,7 +414,8 @@
           "text": "The universal degree-5 statement met its kill criterion on one colouring of T_9_25. Recorded on t1-conj-d5. Observation R is not established."
         }
       ],
-      "evidence": "Spec accepted 2026-09-27. The universal degree-5 statement is a dead end on one colouring of T_9_25 at vertex 3; see t1-conj-d5. Observation R is not established. Track 1 is not killed."
+      "evidence": "Spec accepted 2026-09-27. The universal degree-5 statement is a dead end on one colouring of T_9_25 at vertex 3; see t1-conj-d5. Observation R is not established. Track 1 is not killed.",
+      "revision": 33
     },
     {
       "op": "insert",
@@ -423,7 +440,8 @@
         "evidence": "On T_9_35 = generate_triangulations(9)[35], vertex 6, one shortest path swaps {2,8}. Of 1440 proper 5-colourings with c(6)=5, the stored set S of 24 has every shortest path unsafe, and each of those 24 has a K1-safe path of length 3 (1.164s). Of the other 1416, zero have every shortest path unsafe (1.431s). These counts are computations on one triangulation, not a theorem.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -448,7 +466,8 @@
         "evidence": "On T_9_25 = generate_triangulations(9)[25], vertex 3, one shortest path swaps the (4,5)-chain {4,5} while vertex 3 bridges {4,5} and {6,8}. Of 1248 proper 5-colourings with c(3)=5, 24 have every shortest path unsafe, and each of those 24 has a K1-safe path of length opt_dist+1 (6.536s). Another 120 have some unsafe shortest path and still have a safe shortest path.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -474,18 +493,19 @@
         "evidence": "W3: 24/24 stored colourings have a K1-safe path of length 3, elapsed 1.164s. W4: 1440 proper 5-colourings with c(6)=5, 24 in S, 1416 outside, elapsed 1.057s. W5: of the 1416, 8 have one unsafe shortest path, 0 have every shortest path unsafe, and those 8 have a safe path of length opt_dist+1, elapsed 1.431s.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
       "parentId": "track1",
       "node": {
         "id": "t1-safe-plus1",
-        "title": "Safe path of length d+1, all triangulations n\u226410",
-        "statement": "For every triangulation G with n\u226410, every v with deg v\u2208{4,5}, every proper 5-colouring with c(v)=5: a K1-safe path of length \u2264 d+1 to a \u22644-colouring of G\u2212v exists, d the BFS distance.",
+        "title": "Safe path of length d+1, all triangulations n≤10",
+        "statement": "For every triangulation G with n≤10, every v with deg v∈{4,5}, every proper 5-colouring with c(v)=5: a K1-safe path of length ≤ d+1 to a ≤4-colouring of G−v exists, d the BFS distance.",
         "status": "exploring",
         "approach": "Agent 1720 group K4, manager M-Kempe.",
-        "killCriteria": "One instance with no K1-safe path of length \u2264 d+1.",
+        "killCriteria": "One instance with no K1-safe path of length ≤ d+1.",
         "files": [
           "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
         ],
@@ -498,7 +518,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -508,7 +529,7 @@
         "title": "Monotone Kempe reduction",
         "statement": "From every proper 5-colouring of a planar triangulation there is a Kempe sequence along which the size of colour class 5 never increases and reaches 0.",
         "status": "exploring",
-        "approach": "Agent 1720 group K5, manager M-Kempe. Tested on n\u226410.",
+        "approach": "Agent 1720 group K5, manager M-Kempe. Tested on n≤10.",
         "killCriteria": "One colouring where no monotone sequence exists.",
         "files": [
           "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
@@ -522,7 +543,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -530,9 +552,9 @@
       "node": {
         "id": "t1-kempe-class-d5",
         "title": "Four-colour Kempe classes at a degree-5 vertex",
-        "statement": "For every triangulation G and degree-5 vertex v, every Kempe class of 4-colourings of G\u2212v that uses 4 colours on N(v) contains a colouring using \u22643 colours on N(v). This is Kempe's induction with unrestricted swap sequences.",
+        "statement": "For every triangulation G and degree-5 vertex v, every Kempe class of 4-colourings of G−v that uses 4 colours on N(v) contains a colouring using ≤3 colours on N(v). This is Kempe's induction with unrestricted swap sequences.",
         "status": "exploring",
-        "approach": "Agent 1720 group K6, manager M-Kempe. Compute n\u226411; literature Heawood, Errera, Kittell, Tilley.",
+        "approach": "Agent 1720 group K6, manager M-Kempe. Compute n≤11; literature Heawood, Errera, Kittell, Tilley.",
         "killCriteria": "One written triangulation, vertex, and Kempe class with no fixable colouring.",
         "files": [
           "backgroundMaterial/agent1720/tasks/wave1_tasks.md"
@@ -546,15 +568,16 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
       "parentId": "track2",
       "node": {
         "id": "t2-degenerate",
-        "title": "P(G,k)>0 for d-degenerate G, k\u2265d+1",
-        "statement": "Written proofs for degenerate, outerplanar, series-parallel, and planar k\u22656 positivity, plus the strongest k=4 restricted-family statement provable here.",
+        "title": "P(G,k)>0 for d-degenerate G, k≥d+1",
+        "statement": "Written proofs for degenerate, outerplanar, series-parallel, and planar k≥6 positivity, plus the strongest k=4 restricted-family statement provable here.",
         "status": "exploring",
         "approach": "Agent 1720 group A2, manager M-Algebra.",
         "killCriteria": "A written proof has a gap the critic can point to.",
@@ -570,7 +593,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -578,7 +602,7 @@
       "node": {
         "id": "t3-tait",
         "title": "Tait colourings = nowhere-zero 4-flows = P(T,4)/4",
-        "statement": "Check on the dual of every triangulation n\u226410 and write the planar duality proof.",
+        "statement": "Check on the dual of every triangulation n≤10 and write the planar duality proof.",
         "status": "exploring",
         "approach": "Agent 1720 group D1, manager M-Duality.",
         "killCriteria": "A count mismatch on some T.",
@@ -594,14 +618,15 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
       "parentId": "track3",
       "node": {
         "id": "t3-alon-tarsi",
-        "title": "Algebraic edge-colouring (Alon\u2013Tarsi)",
+        "title": "Algebraic edge-colouring (Alon–Tarsi)",
         "statement": "Test whether a sign-invariant graph-polynomial identity gives a deductive non-vanishing proof for planar cubic 3-edge-colouring.",
         "status": "exploring",
         "approach": "Agent 1720 group D3, manager M-Duality.",
@@ -618,7 +643,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -644,7 +670,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -652,7 +679,7 @@
       "node": {
         "id": "routes-1720",
         "title": "Survey: deductive routes not in the roadmap",
-        "statement": "Tait-Hamiltonian, Hadwiger, vector cross product, Birkhoff\u2013Lewis equations, Eliahou, Matiyasevich, perfect-matching forms, RSST, Gonthier. Recommend at most three new tracks.",
+        "statement": "Tait-Hamiltonian, Hadwiger, vector cross product, Birkhoff–Lewis equations, Eliahou, Matiyasevich, perfect-matching forms, RSST, Gonthier. Recommend at most three new tracks.",
         "status": "exploring",
         "approach": "Agent 1720 group S4, manager M-Frontier.",
         "killCriteria": "Critic finds no recommended route is more than a restatement.",
@@ -668,7 +695,8 @@
         "evidence": "",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "t1-1",
@@ -681,7 +709,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t2-2",
@@ -694,7 +723,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t2-3",
@@ -707,7 +737,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t2-4",
@@ -720,7 +751,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t3-1",
@@ -733,7 +765,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t3-2",
@@ -746,7 +779,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t4-1",
@@ -759,7 +793,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t4-2",
@@ -772,7 +807,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t4-3",
@@ -785,7 +821,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t5-1",
@@ -798,7 +835,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t6-1",
@@ -811,7 +849,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "f1",
@@ -824,7 +863,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "f2",
@@ -837,7 +877,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "f3",
@@ -850,7 +891,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t7-1",
@@ -863,7 +905,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t7-2",
@@ -876,7 +919,8 @@
           "time": "2026-09-27T21:27:59Z",
           "text": "Issued by the Agent 1720 main planning team, wave 1. Not accepted until the critic gate."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "op": "insert",
@@ -902,7 +946,8 @@
         "evidence": "T_8_13 has one real root in (3,4), isolating interval [172205197/47749058, 149476032/41446715], about 3.606, and P(T_8_13,4)=72. Counts of triangulations with a root in (3,4): 0 for n<=7, then 1, 2, 22, 138 for n=8,9,10,11. Royle, arXiv:math/0511304, proves roots of planar triangulations get arbitrarily close to 4.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "t2-2",
@@ -918,7 +963,8 @@
           "text": "Critic accepted the n<=11 computation. The node asked for n<=20; that range was not run."
         }
       ],
-      "evidence": "All 1555 triangulations on 4<=n<=11 vertices have P(G,4)>0, matching a brute-force colouring count. Tutte's golden identity holds on each, checked in Q(sqrt(5)). Total time 39.2s. Not a theorem, and not the n<=20 range."
+      "evidence": "All 1555 triangulations on 4<=n<=11 vertices have P(G,4)>0, matching a brute-force colouring count. Tutte's golden identity holds on each, checked in Q(sqrt(5)). Total time 39.2s. Not a theorem, and not the n<=20 range.",
+      "revision": 33
     },
     {
       "id": "t7-1",
@@ -932,7 +978,8 @@
           "text": "Database exists through n=11, not n=25."
         }
       ],
-      "evidence": "Exact chromatic polynomials for every triangulation with n<=11, stored as coefficient lists. The n<=25 range was not computed."
+      "evidence": "Exact chromatic polynomials for every triangulation with n<=11, stored as coefficient lists. The n<=25 range was not computed.",
+      "revision": 33
     },
     {
       "id": "t7-2",
@@ -946,7 +993,8 @@
           "text": "Real roots isolated for n<=11. The root-bounding approach is killed on t2-root-bound."
         }
       ],
-      "evidence": "Largest non-integer real root below 4 in the database is about 3.617, on T_11_1244. No non-integer real root >=4 appears for n<=11."
+      "evidence": "Largest non-integer real root below 4 in the database is about 3.617, on T_11_1244. No non-integer real root >=4 appears for n<=11.",
+      "revision": 33
     },
     {
       "id": "t1-safe-plus1",
@@ -962,7 +1010,8 @@
           "text": "Critic: kill not met on n=6..10. The K1-safe target does not 4-colour G. n=11 was not run."
         }
       ],
-      "evidence": "On triangulations n=6..10, s1-d is 0 or 1 (304 graphs, 129171 colour orbits). T_6_0 vertex 0, colouring 0:5,1:1,2:2,3:3,4:4,5:2, has d=s1=0 but d2=s2=2, so a K1-safe 4-colouring of G-v does not extend to G. Separately, s2<=d2+1 held on this same run; that observation is not a theorem."
+      "evidence": "On triangulations n=6..10, s1-d is 0 or 1 (304 graphs, 129171 colour orbits). T_6_0 vertex 0, colouring 0:5,1:1,2:2,3:3,4:4,5:2, has d=s1=0 but d2=s2=2, so a K1-safe 4-colouring of G-v does not extend to G. Separately, s2<=d2+1 held on this same run; that observation is not a theorem.",
+      "revision": 33
     },
     {
       "id": "t1-monotone",
@@ -978,7 +1027,8 @@
           "text": "Critic: non-strict statement not killed. The strict variant is t1-strict-mono."
         }
       ],
-      "evidence": "monotone_failures=0 on every triangulation n<=11. max_plateau for n=4..11 is 0,1,2,3,3,4,4,5. The n=11 block took 49.82s. Not a theorem."
+      "evidence": "monotone_failures=0 on every triangulation n<=11. max_plateau for n=4..11 is 0,1,2,3,3,4,4,5. The n=11 block took 49.82s. Not a theorem.",
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1004,7 +1054,8 @@
         "evidence": "T_5_0, colouring (1,2,3,5,4). The swap of colours (3,4) on chain {2} reaches (1,2,4,5,4) and leaves the size of colour 5 equal to 1. least_plateau_bound is 1.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "t1-1",
@@ -1020,7 +1071,8 @@
           "text": "Critic: n<=11 computation accepted. The node asked for n<=12. The universal sentence is a reformulation given Meyniel 1978, not a theorem proved here."
         }
       ],
-      "evidence": "Every triangulation n<=11 has a connected 5-colouring Kempe graph, and every class contains a 4-colouring. n=11: 1249 graphs, 263977 orbits, 31677120 labelled colourings, 9.12s. Meyniel, J. Combin. Theory B 24 (1978) 251-258, says planar 5-colourings form one Kempe class. Given that citation, Kempe reducibility to a 4-colouring is equivalent to 4CT. Meyniel's proof is not in this repository."
+      "evidence": "Every triangulation n<=11 has a connected 5-colouring Kempe graph, and every class contains a 4-colouring. n=11: 1249 graphs, 263977 orbits, 31677120 labelled colourings, 9.12s. Meyniel, J. Combin. Theory B 24 (1978) 251-258, says planar 5-colourings form one Kempe class. Given that citation, Kempe reducibility to a 4-colouring is equivalent to 4CT. Meyniel's proof is not in this repository.",
+      "revision": 33
     },
     {
       "id": "t1-kempe-class-d5",
@@ -1037,7 +1089,8 @@
           "text": "Critic: 0 bad classes on the graphs that were checked. Kittell was not a valid triangulation in the file. Errera does not kill KC5."
         }
       ],
-      "evidence": "n<=11: 0 bad classes (n=11: 2747 degree-5 pairs, 2785 classes, 0.69s). Icosahedron: 12 vertices, 0 bad, distance at most 1. Errera: 12 degree-5 vertices, 0 bad, max distance 3. Errera kills Kempe's two-swap procedure, not KC5. Universal KC5 would inductively prove 4CT and is stronger than 4CT. Not proved. Tilley, arXiv:1809.02807, is cited as a conjecture that a Birkhoff diamond is needed for Kempe-locking."
+      "evidence": "n<=11: 0 bad classes (n=11: 2747 degree-5 pairs, 2785 classes, 0.69s). Icosahedron: 12 vertices, 0 bad, distance at most 1. Errera: 12 degree-5 vertices, 0 bad, max distance 3. Errera kills Kempe's two-swap procedure, not KC5. Universal KC5 would inductively prove 4CT and is stronger than 4CT. Not proved. Tilley, arXiv:1809.02807, is cited as a conjecture that a Birkhoff diamond is needed for Kempe-locking.",
+      "revision": 33
     },
     {
       "id": "track1",
@@ -1048,7 +1101,8 @@
           "text": "Strategy revision: the root sentence is a reformulation of 4CT given Meyniel 1978. It is not killed and not proved. The K1-safe length bound is the wrong inductive target."
         }
       ],
-      "evidence": "See t1-1. A 4-colouring of G-v reached by a K1-safe path need not 4-colour G; witness on t1-safe-plus1."
+      "evidence": "See t1-1. A 4-colouring of G-v reached by a K1-safe path need not 4-colour G; witness on t1-safe-plus1.",
+      "revision": 33
     },
     {
       "id": "t1-safe-plus1",
@@ -1062,7 +1116,8 @@
         "backgroundMaterial/agent1720/groups/K4b_report.md",
         "backgroundMaterial/agent1720/groups/K4_n11.json"
       ],
-      "evidence": "On triangulations n=6..11, s1-d is 0 or 1. n=11: 1249 graphs, 6107 pairs, 1365522 orbits, 32772372 weighted colourings, 152.3s inside a 159.4s run. first_failures K4_s1_gt_d+1 is empty, and s2<=d2+1 also holds. s2<=d+1 fails; one witness is T_11_1 vertex 8, colouring 0:1,1:2,2:3,3:4,4:3,5:4,6:3,7:4,8:5,9:3,10:4, with d=s1=0 and d2=s2=2. K4_results.json was not overwritten."
+      "evidence": "On triangulations n=6..11, s1-d is 0 or 1. n=11: 1249 graphs, 6107 pairs, 1365522 orbits, 32772372 weighted colourings, 152.3s inside a 159.4s run. first_failures K4_s1_gt_d+1 is empty, and s2<=d2+1 also holds. s2<=d+1 fails; one witness is T_11_1 vertex 8, colouring 0:1,1:2,2:3,3:4,4:3,5:4,6:3,7:4,8:5,9:3,10:4, with d=s1=0 and d2=s2=2. K4_results.json was not overwritten.",
+      "revision": 33
     },
     {
       "id": "t1-kempe-class-d5",
@@ -1077,7 +1132,8 @@
         "backgroundMaterial/agent1720/groups/K6_kittell.json",
         "compute/kempe/a1720_k6_kittell.py"
       ],
-      "evidence": "Sage's Kittell graph is a planar triangulation: 23 vertices, 63 edges, 42 triangular faces. KC5 at all 15 degree-5 vertices has 0 bad classes. Longest Kempe distance to a 3-coloured link is 4, at vertices 9 and 17. Elapsed 0.31s. Sources: Sage smallgraphs.py and MathWorld. This does not prove KC5 for every planar triangulation."
+      "evidence": "Sage's Kittell graph is a planar triangulation: 23 vertices, 63 edges, 42 triangular faces. KC5 at all 15 degree-5 vertices has 0 bad classes. Longest Kempe distance to a 3-coloured link is 4, at vertices 9 and 17. Elapsed 0.31s. Sources: Sage smallgraphs.py and MathWorld. This does not prove KC5 for every planar triangulation.",
+      "revision": 33
     },
     {
       "id": "t3-tait",
@@ -1092,7 +1148,8 @@
         "backgroundMaterial/agent1720/groups/D1b_report.md",
         "backgroundMaterial/agent1720/groups/D1_n11.json"
       ],
-      "evidence": "For every triangulation n<=11, labelled Tait colourings of the dual equal nowhere-zero Z2xZ2-flows, equal nowhere-zero Z4-flows, and equal P(T,4)/4. n=10: 233 graphs, Tait counts 6-264, 2.25s. n=11: 1249 graphs, Tait counts 6-510, 20.18s. No mismatches. Every dual has edge-connectivity 3, so Jaeger's 4-edge-connected 4-flow theorem does not apply. The universal planar 4-flow statement is equivalent to 4CT."
+      "evidence": "For every triangulation n<=11, labelled Tait colourings of the dual equal nowhere-zero Z2xZ2-flows, equal nowhere-zero Z4-flows, and equal P(T,4)/4. n=10: 233 graphs, Tait counts 6-264, 2.25s. n=11: 1249 graphs, Tait counts 6-510, 20.18s. No mismatches. Every dual has edge-connectivity 3, so Jaeger's 4-edge-connected 4-flow theorem does not apply. The universal planar 4-flow statement is equivalent to 4CT.",
+      "revision": 33
     },
     {
       "id": "f-spec-lean",
@@ -1103,7 +1160,8 @@
           "text": "Critic: the Kempe library now compiles. Not a proof of the Five Colour Theorem."
         }
       ],
-      "evidence": "lake build completed in 2.2s on 2 October 2026, toolchain leanprover/lean4:v4.15.0, Mathlib oleans already cached. Modules built: Basic (kempeSwap_preserves_proper), NeverRevert (never_revert), ChainLifting (colour5_isolated_in_bichromatic_14), Degree3NoMerge, Main. No sorry tactic. Warnings are unused section variables. Degree3NoMerge assumes a Triangulation class instead of proving the degree-3 link is a triangle. Chain lifting does not prove chain equality in G and G-v."
+      "evidence": "lake build completed in 2.2s on 2 October 2026, toolchain leanprover/lean4:v4.15.0, Mathlib oleans already cached. Modules built: Basic (kempeSwap_preserves_proper), NeverRevert (never_revert), ChainLifting (colour5_isolated_in_bichromatic_14), Degree3NoMerge, Main. No sorry tactic. Warnings are unused section variables. Degree3NoMerge assumes a Triangulation class instead of proving the degree-3 link is a triangle. Chain lifting does not prove chain equality in G and G-v.",
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1129,7 +1187,8 @@
         "evidence": "P(K4) has 24 elements. A finite vector space has prime-power order. Proper colourings c1=((0,0),(0,1),(1,0),(1,1)) and c2=((0,0),(1,0),(0,1),(1,1)) sum to a repeated colour, and zero is not proper. Elapsed 0.003s.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "track6",
@@ -1140,7 +1199,8 @@
           "text": "Vector-space form killed on t6-vector. The constant-sheaf H^1 computation was refused as a kill. The set-valued form is a reformulation and is not a new task."
         }
       ],
-      "evidence": "See t6-vector. The constant sheaf with stalk F_2^2 has dim H^0=2 and dim H^1=6 on K4, and dim H^1=12 on K5. Its sections are monochromatic. That does not test a colouring sheaf. A set-valued sheaf whose sections are the proper 4-colourings restates 4-colourability. No easier cocycle was defined."
+      "evidence": "See t6-vector. The constant sheaf with stalk F_2^2 has dim H^0=2 and dim H^1=6 on K4, and dim H^1=12 on K5. Its sections are monochromatic. That does not test a colouring sheaf. A set-valued sheaf whose sections are the proper 4-colourings restates 4-colourability. No easier cocycle was defined.",
+      "revision": 33
     },
     {
       "id": "t6-1",
@@ -1155,7 +1215,8 @@
           "text": "Constant-sheaf cohomology computed on K4 and K5. Not a kill of a colouring sheaf."
         }
       ],
-      "evidence": "K4: dim H^0=2, dim H^1=6, rank 6 over both F_2 and R, 0 proper global sections. K5: dim H^0=2, dim H^1=12, |P(K5)|=0."
+      "evidence": "K4: dim H^0=2, dim H^1=6, rank 6 over both F_2 and R, 0 proper global sections. K5: dim H^0=2, dim H^1=12, |P(K5)|=0.",
+      "revision": 33
     },
     {
       "id": "f1",
@@ -1169,7 +1230,8 @@
       "files": [
         "lean4/FourColor/Foundation/F1_ColoringBasics.lean"
       ],
-      "evidence": "lake env lean -DautoImplicit=false lean4/FourColor/Foundation/F1_ColoringBasics.lean exited 0 in 0.9s, using the Kempe project's Mathlib v4.15 checkout. Theorems: K4_colorable_four, K4_not_colorable_three, K4_chromaticNumber. Mathlib v4.15 has no Colorable.card_le_of_pairwise_adj; the second non-3-colourability proof uses the same pigeonhole. No sorry."
+      "evidence": "lake env lean -DautoImplicit=false lean4/FourColor/Foundation/F1_ColoringBasics.lean exited 0 in 0.9s, using the Kempe project's Mathlib v4.15 checkout. Theorems: K4_colorable_four, K4_not_colorable_three, K4_chromaticNumber. Mathlib v4.15 has no Colorable.card_le_of_pairwise_adj; the second non-3-colourability proof uses the same pigeonhole. No sorry.",
+      "revision": 33
     },
     {
       "id": "track5",
@@ -1184,7 +1246,8 @@
         "backgroundMaterial/agent1720/groups/S1_report.md",
         "backgroundMaterial/agent1720/critic/s1_gate.md"
       ],
-      "evidence": "If mu<=3 implies chi<=mu+1, then every planar graph has chi<=4. The converse uses: mu<=3 iff planar (Colin de Verdiere 1990), minor-monotonicity, mu(K_t)>=t-1, and that K4-minor-free graphs are 3-colourable. Those hypotheses are cited, not proved here. chi<=mu+1 for mu<=4 is cited via Hadwiger for K6, which uses 4CT. Open for mu>=5."
+      "evidence": "If mu<=3 implies chi<=mu+1, then every planar graph has chi<=4. The converse uses: mu<=3 iff planar (Colin de Verdiere 1990), minor-monotonicity, mu(K_t)>=t-1, and that K4-minor-free graphs are 3-colourable. Those hypotheses are cited, not proved here. chi<=mu+1 for mu<=4 is cited via Hadwiger for K6, which uses 4CT. Open for mu>=5.",
+      "revision": 33
     },
     {
       "id": "t5-1",
@@ -1199,7 +1262,8 @@
           "text": "Critic: two corank-3 certificates accepted. Not a computation of mu for a range of triangulations."
         }
       ],
-      "evidence": "-J on K4 has eigenvalues about -4,0,0,0. -A on the octahedron has eigenvalues about -4,0,0,0,2,2. Both have corank 3, one negative eigenvalue, and Strong Arnold rank 6 over Q. all_ok true. Elapsed 0.08s. Hence mu(K4)>=3 and mu(octahedron)>=3."
+      "evidence": "-J on K4 has eigenvalues about -4,0,0,0. -A on the octahedron has eigenvalues about -4,0,0,0,2,2. Both have corank 3, one negative eigenvalue, and Strong Arnold rank 6 over Q. all_ok true. Elapsed 0.08s. Hence mu(K4)>=3 and mu(octahedron)>=3.",
+      "revision": 33
     },
     {
       "id": "f-spec-lean",
@@ -1212,7 +1276,8 @@
           "time": "2026-10-02T21:01:24Z",
           "text": "L1 report accepted. Isolation of colour 5 is not equality of Kempe chains in G and G-v. The build does not close that obligation."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "f1",
@@ -1225,7 +1290,8 @@
           "time": "2026-10-02T21:01:24Z",
           "text": "L1 report: F1 elaborated in 0.876s on the Kempe Mathlib checkout. The FourColor Lake package was not configured."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t3-alon-tarsi",
@@ -1242,7 +1308,8 @@
           "text": "Critic: no cancellation inside a graph for n<=8. Not a non-vanishing proof."
         }
       ],
-      "evidence": "23 duals, n=4..8, 0.104s. every_colouring_same_sign_within_its_graph is true. mixed_sign_graphs is empty. |signed|=Tait on every graph: signed equals Tait on 17 graphs and equals -Tait on 6. Signs are +1 for n=4,6,8 and -1 for n=5,7. Ellingham-Goddyn 1996: planar cubic 3-edge-colourable graphs are 3-edge-choosable. That assumes a colouring."
+      "evidence": "23 duals, n=4..8, 0.104s. every_colouring_same_sign_within_its_graph is true. mixed_sign_graphs is empty. |signed|=Tait on every graph: signed equals Tait on 17 graphs and equals -Tait on 6. Signs are +1 for n=4,6,8 and -1 for n=5,7. Ellingham-Goddyn 1996: planar cubic 3-edge-colourable graphs are 3-edge-choosable. That assumes a colouring.",
+      "revision": 33
     },
     {
       "id": "t2-degenerate",
@@ -1257,7 +1324,8 @@
           "text": "Critic: the written degeneracy proofs are accepted. P(G,4)>0 for all planar graphs is not proved."
         }
       ],
-      "evidence": "Proved in A2_report.md: d-degenerate graphs satisfy the product lower bound, hence P(G,k)>0 for integers k>=d+1. Outerplanar and series-parallel graphs are 2-degenerate. Simple planar graphs are 5-degenerate, so P(G,k)>0 for integers k>=6. Simple planar graphs on at most 11 vertices are 4-degenerate, so P(G,k)>0 for integers k>=5. Every 3-tree has P(G,k)=k(k-1)(k-2)(k-3)^{n-3}, so P(G,4)=24."
+      "evidence": "Proved in A2_report.md: d-degenerate graphs satisfy the product lower bound, hence P(G,k)>0 for integers k>=d+1. Outerplanar and series-parallel graphs are 2-degenerate. Simple planar graphs are 5-degenerate, so P(G,k)>0 for integers k>=6. Simple planar graphs on at most 11 vertices are 4-degenerate, so P(G,k)>0 for integers k>=5. Every 3-tree has P(G,k)=k(k-1)(k-2)(k-3)^{n-3}, so P(G,4)=24.",
+      "revision": 33
     },
     {
       "id": "t2-3",
@@ -1272,7 +1340,8 @@
           "text": "Critic: the written degeneracy proofs are accepted. P(G,4)>0 for all planar graphs is not proved."
         }
       ],
-      "evidence": "Every outerplanar graph is a subgraph of a 2-tree. A maximal outerplanar graph on n>=3 vertices has P(G,k)=k(k-1)(k-2)^{n-2}. Hence P(G,4)>0. Proof in A2_report.md section (O)."
+      "evidence": "Every outerplanar graph is a subgraph of a 2-tree. A maximal outerplanar graph on n>=3 vertices has P(G,k)=k(k-1)(k-2)^{n-2}. Hence P(G,4)>0. Proof in A2_report.md section (O).",
+      "revision": 33
     },
     {
       "id": "t2-4",
@@ -1287,7 +1356,8 @@
           "text": "Critic: the written degeneracy proofs are accepted. P(G,4)>0 for all planar graphs is not proved."
         }
       ],
-      "evidence": "Every series-parallel graph in the two-terminal sense of A2_report.md is 2-degenerate, so P(G,4)>0 by the product bound. Duffin's K4-minor characterisation is cited and not used."
+      "evidence": "Every series-parallel graph in the two-terminal sense of A2_report.md is 2-degenerate, so P(G,4)>0 by the product bound. Duffin's K4-minor characterisation is cited and not used.",
+      "revision": 33
     },
     {
       "id": "t1-kempe-class-d5",
@@ -1302,7 +1372,8 @@
           "text": "Critic: Fritsch = T_9_49, 0 bad classes. Already inside the n<=11 census. Tilley's order-12 graph was not tested."
         }
       ],
-      "evidence": "n<=11: 0 bad classes. Icosahedron: 0 bad. Errera degree-5 vertices: 0 bad, max distance 3. Kittell: 23 vertices, 63 edges, 15 degree-5 vertices, 0 bad classes, max distance 4. Fritsch (House of Graphs 1088) is T_9_49: 9 vertices, 21 edges, six degree-5 vertices, 0 bad classes, max distance 2, 0.01s. MathWorld says it tangles Kempe's 1879 argument; it does not kill KC5. Tilley's order-12 Kempe-locked triangulation has no edge list here and was not encoded. Universal KC5 is not proved."
+      "evidence": "n<=11: 0 bad classes. Icosahedron: 0 bad. Errera degree-5 vertices: 0 bad, max distance 3. Kittell: 23 vertices, 63 edges, 15 degree-5 vertices, 0 bad classes, max distance 4. Fritsch (House of Graphs 1088) is T_9_49: 9 vertices, 21 edges, six degree-5 vertices, 0 bad classes, max distance 2, 0.01s. MathWorld says it tangles Kempe's 1879 argument; it does not kill KC5. Tilley's order-12 Kempe-locked triangulation has no edge list here and was not encoded. Universal KC5 is not proved.",
+      "revision": 33
     },
     {
       "id": "track8",
@@ -1319,7 +1390,8 @@
           "text": "Critic: Birkhoff diamond D-reducible; degree-5 vertex not. The old checker used the wrong diamond."
         }
       ],
-      "evidence": "RSST 1997 test: maximal consistent set of bad ring edge-colourings in {-1,0,1} is empty. Birkhoff diamond: 729 colourings, 96 extend, bad set empty, 0.0176s. Degree-5 vertex: 30 bad colourings remain. Degree-4 vertex: bad set empty. Direct extension fails for 348 of 732 vertex colourings of the diamond ring. reducibility_checker.py uses one interior vertex of degree 6, not the diamond. Not the 633 configurations and not a proof of 4CT."
+      "evidence": "RSST 1997 test: maximal consistent set of bad ring edge-colourings in {-1,0,1} is empty. Birkhoff diamond: 729 colourings, 96 extend, bad set empty, 0.0176s. Degree-5 vertex: 30 bad colourings remain. Degree-4 vertex: bad set empty. Direct extension fails for 348 of 732 vertex colourings of the diamond ring. reducibility_checker.py uses one interior vertex of degree 6, not the diamond. Not the 633 configurations and not a proof of 4CT.",
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1327,7 +1399,7 @@
       "node": {
         "id": "t8-birkhoff",
         "title": "Birkhoff diamond is D-reducible",
-        "statement": "The free completion of the Birkhoff diamond has an empty maximal consistent set of bad ring edge-colourings, in the sense of Robertson\u2013Sanders\u2013Seymour\u2013Thomas 1997.",
+        "statement": "The free completion of the Birkhoff diamond has an empty maximal consistent set of bad ring edge-colourings, in the sense of Robertson–Sanders–Seymour–Thomas 1997.",
         "status": "in-progress",
         "approach": "Accepted computation on one configuration. A single degree-5 vertex fails the same test.",
         "killCriteria": "A nonzero maximal consistent set of bad ring colourings for this diamond.",
@@ -1344,7 +1416,8 @@
         "evidence": "729 edge-colourings in {-1,0,1}, 96 extend to a tri-colouring, maximal consistent bad set empty. Four interior vertices of degree 5, ring size 6, 21 edges. Elapsed 0.0176s.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "track4",
@@ -1360,7 +1433,8 @@
           "text": "Critic: reformulation of 4CT via Tait colouring. Not killed and not proved."
         }
       ],
-      "evidence": "penrose_eval returns count_tait_colourings. On all 1555 triangulations n<=11 the Levi-Civita sign-sum equals (-1)^n times the Tait count. No mismatches. 0.81s. K3,3 cancels on all 64 rotation systems. The Pappus graph is flagged planar in the library and is not."
+      "evidence": "penrose_eval returns count_tait_colourings. On all 1555 triangulations n<=11 the Levi-Civita sign-sum equals (-1)^n times the Tait count. No mismatches. 0.81s. K3,3 cancels on all 64 rotation systems. The Pappus graph is flagged planar in the library and is not.",
+      "revision": 33
     },
     {
       "id": "t4-1",
@@ -1375,14 +1449,15 @@
           "text": "Signed state sum checked through n=11."
         }
       ],
-      "evidence": "See track4. Petersen Tait count 0. K4 signed count 6."
+      "evidence": "See track4. Petersen Tait count 0. K4 signed count 6.",
+      "revision": 33
     },
     {
       "op": "insert",
       "parentId": "routes-1720",
       "node": {
         "id": "route-hajos5",
-        "title": "Haj\u00f3s conjecture at k=5",
+        "title": "Hajós conjecture at k=5",
         "statement": "Every graph with no subdivision of K5 is 4-colourable.",
         "status": "exploring",
         "approach": "Open. Catlin killed the cases k>=7. Feasibility Low.",
@@ -1401,7 +1476,8 @@
         "evidence": "1253 graphs of order at most 7: 66 are not 4-colourable and each has a K5 subdivision. 1555 cached triangulations: none is a counterexample. 25.2s.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1426,7 +1502,8 @@
         "evidence": "S4 cites arXiv:2512.20392 as killing general t and leaving t=5 open in the abstract. No computation in this repository tests odd minors.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1451,14 +1528,15 @@
         "evidence": "A Petersen-minor theorem would imply every snark is non-planar, hence the Tait form of 4CT. The converse is false: non-planarity is weaker than a Petersen minor.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
       "parentId": "4ct",
       "node": {
         "id": "min-deg-4",
-        "title": "Every triangulation has a vertex of degree \u22644",
+        "title": "Every triangulation has a vertex of degree ≤4",
         "statement": "Every planar triangulation has a vertex of degree at most 4.",
         "status": "killed",
         "approach": "Killed by the icosahedron.",
@@ -1476,7 +1554,8 @@
         "evidence": "The icosahedron has 12 vertices, 30 edges, and every degree equal to 5. It is planar and a triangulation, and it is 4-colourable. Among cached triangulations n<=11, none has minimum degree 5 or more.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "track4",
@@ -1489,7 +1568,8 @@
           "time": "2026-10-02T21:15:09Z",
           "text": "Second run agrees. 1305 odd-order triangulations have signed sum equal to minus the Tait count. Sign-law failures: 0."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1514,7 +1594,8 @@
         "evidence": "State-reducibility uses no Kempe switch. The paper says the Birkhoff half is a supercomputer computation, later rewritten to run on a laptop from stored colourings. anc/ contains BirkhoffResults.mx (54kB), PlanarSixCaps.mx (2.2MB), ReducerColoredCaps.mx (310kB), and three notebooks. Mathematica is not installed. The generating notebook for BirkhoffResults.mx is absent. The other 632 RSST configurations would still be a computer check. A Kempe-state-reducible pentagon is a conjecture.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "f5",
@@ -1529,7 +1610,8 @@
           "text": "Critic: prose proof accepted. Not a Lean file."
         }
       ],
-      "evidence": "Every finite simple planar graph is 5-colourable. For v>=3, e<=3v-6, so some vertex has degree at most 5. Degree at most 4 extends by a missing colour. Degree 5 uses one Kempe swap on a separated pair of neighbours (Heawood 1890), written out as Branch A and Branch B. Diestel Theorems 4.1.1 and 4.2.9 are cited. All 1555 cached triangulations n<=11 have e=3n-6 and minimum degree at most 5 (0.015s). F5_FiveColorTheorem.lean does not exist."
+      "evidence": "Every finite simple planar graph is 5-colourable. For v>=3, e<=3v-6, so some vertex has degree at most 5. Degree at most 4 extends by a missing colour. Degree 5 uses one Kempe swap on a separated pair of neighbours (Heawood 1890), written out as Branch A and Branch B. Diestel Theorems 4.1.1 and 4.2.9 are cited. All 1555 cached triangulations n<=11 have e=3n-6 and minimum degree at most 5 (0.015s). F5_FiveColorTheorem.lean does not exist.",
+      "revision": 33
     },
     {
       "id": "foundation",
@@ -1540,7 +1622,8 @@
           "text": "The Five Colour Theorem is proved in prose on f5. The Lean formalization is not started."
         }
       ],
-      "evidence": "See f5. The Kempe library compiles the swap lemma, not this induction. No plane-embedding or Euler formula is in Lean."
+      "evidence": "See f5. The Kempe library compiles the swap lemma, not this induction. No plane-embedding or Euler formula is in Lean.",
+      "revision": 33
     },
     {
       "id": "f-spec-lean",
@@ -1553,7 +1636,8 @@
       "files": [
         "lean4/KempeReconfiguration/KempeReconfiguration/ChainEquality.lean"
       ],
-      "evidence": "kempeSwap_preserves_proper and never_revert compile. ChainEquality.lean proves that if c(v) is not in {a,b} and u,w are distinct from v, then u and w lie in the same (a,b)-Kempe chain of G if and only if they do in G induced on V minus v. No sorry. The colour-5 case is colour5_bichromatic_reachable_iff_induce_delete, with paper colour 5 encoded as 4 in Fin 5. This does not prove the Five Colour Theorem."
+      "evidence": "kempeSwap_preserves_proper and never_revert compile. ChainEquality.lean proves that if c(v) is not in {a,b} and u,w are distinct from v, then u and w lie in the same (a,b)-Kempe chain of G if and only if they do in G induced on V minus v. No sorry. The colour-5 case is colour5_bichromatic_reachable_iff_induce_delete, with paper colour 5 encoded as 4 in Fin 5. This does not prove the Five Colour Theorem.",
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1577,7 +1661,8 @@
         "evidence": "Theorem bichromatic_reachable_iff_induce_delete, also stated as inSameKempeChain_iff_induce_delete. The vertex is isolated in the bichromatic subgraph by vertex_not_in_bichromatic, so reachability never uses it. lake build of the package includes this import and was reported exit 0 in 0.91s.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1603,7 +1688,8 @@
         "evidence": "Necessity: colours alternate around the link, so the degree is even. Sufficiency: the dual is bipartite, edges are oriented with the black face on the left, and Z/3Z colours are independent of the path because every cycle has signed length divisible by 3. Seven cached triangulations have all degrees even: T_6_1, T_8_12, T_9_47, T_10_221, T_10_226, T_11_1220, T_11_1242. Each has P(G,3)=6. No odd-degree triangulation in the 1555 is 3-colourable. 0.051s.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "route-gauge-2412",
@@ -1617,7 +1703,8 @@
           "text": "Critic: reducer extracted. Full cap census blocked on the .mx dumps. Cap (47,3) only was checked against the printed table."
         }
       ],
-      "evidence": "Birkhoff diamond: product of 21 matchings beginning M[34,36,13,15] and ending M[27,26,6,5], twelve degree-3 vertices, six boundary pairs. Type C reducer: M[2,1,12,11]M[4,3,14,13]M[6,5,13,15]M[8,7,16,18]M[10,9,18,17]M[15,14,17,16]. Printed cap (47,3) passes the notebook colour checks. The 7210 coloured caps are Import of BirkhoffResults.mx, PlanarSixCaps.mx, and ReducerColoredCaps.mx. Those files are on disk and were not decoded. Mathematica is absent. The paper's counts 34179, 3744, and 7210 were not recomputed."
+      "evidence": "Birkhoff diamond: product of 21 matchings beginning M[34,36,13,15] and ending M[27,26,6,5], twelve degree-3 vertices, six boundary pairs. Type C reducer: M[2,1,12,11]M[4,3,14,13]M[6,5,13,15]M[8,7,16,18]M[10,9,18,17]M[15,14,17,16]. Printed cap (47,3) passes the notebook colour checks. The 7210 coloured caps are Import of BirkhoffResults.mx, PlanarSixCaps.mx, and ReducerColoredCaps.mx. Those files are on disk and were not decoded. Mathematica is absent. The paper's counts 34179, 3744, and 7210 were not recomputed.",
+      "revision": 33
     },
     {
       "id": "t2-eulerian-tri",
@@ -1631,7 +1718,8 @@
           "time": "2026-10-02T21:25:50Z",
           "text": "Second proof accepted: Tsai-West noncrossing Eulerian circuit. Same seven graphs. Glucose3 agrees with the backtrack. 0.18s."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t8-birkhoff",
@@ -1645,7 +1733,8 @@
           "time": "2026-10-02T21:27:19Z",
           "text": "Second implementation agrees. Degree-5 witness (-1,-1,0,-1,1) is in the bad set. Free component swaps are a different, weaker test."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1670,7 +1759,8 @@
         "evidence": "Theorems degree4_kempe_frees_colour and degree4_apex_extension. The swap calls kempeSwap_preserves_proper, which was not changed. degree4_frees_of_some_separated_pair assumes one of two pairs is chain-separated. No sorry. The olean is present. lake build was reported exit 0 in 2.08s.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1696,7 +1786,8 @@
         "evidence": "local_lemma on all 24 triples; orientation audit 1555 graphs, 0 failures, 0.808s; census n<=8 has no mixed signs.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "t3-alon-tarsi",
@@ -1708,7 +1799,8 @@
       ],
       "files": [
         "backgroundMaterial/agent1720/critic/d3_sign_gate.md"
-      ]
+      ],
+      "revision": 33
     },
     {
       "id": "t1-witness-935",
@@ -1718,7 +1810,8 @@
           "time": "2026-10-02T23:10:00Z",
           "text": "The witness task is closed. Degree-4 universal BFS avoidance remains killed on t1-conj-d4."
         }
-      ]
+      ],
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1742,7 +1835,8 @@
         "evidence": "arXiv:1809.02807 and https://www.mdpi.com/2227-7390/6/12/309 describe the graph and give no adjacency list.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "foundation",
@@ -1759,7 +1853,8 @@
           "text": "Current gate: PlaneMap/JordanTwoSides and the full Kempe package build. The complete Lean Five Colour induction is not yet assembled."
         }
       ],
-      "evidence": "Current Mathlib: lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanTwoSides exited 0 in 0.86s. Kempe v4.15.0 package: lake build exited 0 in 0.53s. No project proof in the gated modules uses sorry, admit, or axiom."
+      "evidence": "Current Mathlib: lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanTwoSides exited 0 in 0.86s. Kempe v4.15.0 package: lake build exited 0 in 0.53s. No project proof in the gated modules uses sorry, admit, or axiom.",
+      "revision": 33
     },
     {
       "id": "f3",
@@ -1777,7 +1872,8 @@
           "text": "Scope is the generated PlaneMap API, not a Kuratowski-minor IsPlanar predicate."
         }
       ],
-      "evidence": "Compiled theorems euler_sphere, edge_bound, exists_degree_le_five, triangulation_edge_count, and neighbour_rotation. The current PlaneMap/Jordan top build exits 0."
+      "evidence": "Compiled theorems euler_sphere, edge_bound, exists_degree_le_five, triangulation_edge_count, and neighbour_rotation. The current PlaneMap/Jordan top build exits 0.",
+      "revision": 33
     },
     {
       "id": "f4",
@@ -1795,7 +1891,8 @@
           "text": "This closes the graph-theoretic conditional lemmas, not the plane separation needed at degree five."
         }
       ],
-      "evidence": "kempeSwap_preserves_proper, bichromatic_reachable_iff_induce_delete, and five_color_degree_at_most_four compile in the v4.15.0 package."
+      "evidence": "kempeSwap_preserves_proper, bichromatic_reachable_iff_induce_delete, and five_color_degree_at_most_four compile in the v4.15.0 package.",
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1822,7 +1919,8 @@
         "evidence": "Current Mathlib build exits 0. Cycle maps and the tetrahedron are constructor-checked. No sorry, admit, or axiom.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1848,7 +1946,8 @@
         "evidence": "even_is_face_sum, cycleEdgeCoeff_is_face_sum, no_cross_edge_sum_sides, and walk_stays_on_sum_side compile. JordanTwoSides top build exits 0.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1874,7 +1973,8 @@
         "evidence": "Inputs already compile: cycleEdgeCoeff_is_face_sum, opposite_sectors_of_pentagon, no_cross_edge_sum_sides, and five_color_degree_five under hopposite.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1898,7 +1998,8 @@
         "evidence": "No delete/induce theorem currently exists under SimpleGraph/PlaneMap. The plan requires a compiling design prototype before a proof implementation.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "op": "insert",
@@ -1924,7 +2025,8 @@
         "evidence": "Degree-at-most-four and degree-five-under-hopposite compile. The final induction and topological bridge do not yet exist.",
         "expanded": false,
         "children": []
-      }
+      },
+      "revision": 33
     },
     {
       "id": "foundation",
@@ -1943,7 +2045,8 @@
           "text": "FiveColorExamples and the PlaneMapFiveColor axiom audit build on Lean 4.35.0-rc3. No global five_color_theorem is declared."
         }
       ],
-      "evidence": "lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorExamples MathlibTest.PlaneMapFiveColor exits 0. Audited main theorems use only propext, Classical.choice, and Quot.sound. New proof sources contain no sorry, admit, axiom declaration, or native_decide."
+      "evidence": "lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorExamples MathlibTest.PlaneMapFiveColor exits 0. Audited main theorems use only propext, Classical.choice, and Quot.sound. New proof sources contain no sorry, admit, axiom declaration, or native_decide.",
+      "revision": 33
     },
     {
       "id": "f3",
@@ -1954,7 +2057,8 @@
           "text": "degree_five_neighbour_rotation now enumerates all five neighbours cyclically from degree five alone; no triangulation or facial-triangle hypothesis is used."
         }
       ],
-      "evidence": "The core euler_sphere, edge_bound, and exists_degree_le_five theorems compile. FiveColorSeparation adds degree_five_neighbour_rotation. The existing degree bound still assumes n >= 3 and face lengths at least three, so a hereditary induction interface remains open."
+      "evidence": "The core euler_sphere, edge_bound, and exists_degree_le_five theorems compile. FiveColorSeparation adds degree_five_neighbour_rotation. The existing degree bound still assumes n >= 3 and face lengths at least three, so a hereditary induction interface remains open.",
+      "revision": 33
     },
     {
       "id": "f4",
@@ -1965,7 +2069,8 @@
           "text": "The original Lean 4.15 package remains unchanged. Current Mathlib additionally compiles the Kempe ports together with the proved PlaneMap separation theorem."
         }
       ],
-      "evidence": "The v4.15 graph-theoretic package still compiles. In the current-Mathlib checkout, Coloring/Kempe.lean and Coloring/FiveColorExtension.lean compile and are consumed by PlaneMap/FiveColor.lean."
+      "evidence": "The v4.15 graph-theoretic package still compiles. In the current-Mathlib checkout, Coloring/Kempe.lean and Coloring/FiveColorExtension.lean compile and are consumed by PlaneMap/FiveColor.lean.",
+      "revision": 33
     },
     {
       "id": "f-jordan-even",
@@ -1982,7 +2087,8 @@
           "text": "The Five Colour route uses a closed walk directly. No ConnectedCycleCut constructor or global cycle_two_sides theorem is required."
         }
       ],
-      "evidence": "walkEdgeCoeff_is_face_sum, face_coeff_eq_along_disjoint_walk, closed_walk_separates, and alternating_walks_intersect compile."
+      "evidence": "walkEdgeCoeff_is_face_sum, face_coeff_eq_along_disjoint_walk, closed_walk_separates, and alternating_walks_intersect compile.",
+      "revision": 33
     },
     {
       "id": "f-heawood-bridge",
@@ -2001,7 +2107,8 @@
           "text": "The connected-cycle proposal is superseded for this application by the more direct closed-walk parity argument."
         }
       ],
-      "evidence": "heawood_hopposite and degree_five_neighbour_rotation compile. PlaneMap/FiveColor.lean bridges actual Kempe bichromatic reachability to the induced-graph statement and proves five_color_extension."
+      "evidence": "heawood_hopposite and degree_five_neighbour_rotation compile. PlaneMap/FiveColor.lean bridges actual Kempe bichromatic reachability to the induced-graph statement and proves five_color_extension.",
+      "revision": 33
     },
     {
       "id": "f-planemap-delete",
@@ -2019,7 +2126,8 @@
           "text": "Deletion may disconnect. Strict size decrease and colouring assembly are proved; Generated component closure and colourability transport across relabeling are not."
         }
       ],
-      "evidence": "deleteVertexGraph, delete_components_smaller, colour_delete_of_components, and five_color_of_delete_components compile. No delete_component_has_plane_map theorem exists yet."
+      "evidence": "deleteVertexGraph, delete_components_smaller, colour_delete_of_components, and five_color_of_delete_components compile. No delete_component_has_plane_map theorem exists yet.",
+      "revision": 33
     },
     {
       "id": "f5-lean",
@@ -2039,7 +2147,8 @@
           "text": "The local degree-at-most-five extension and six-vertex theorem are compiled. The global induction theorem remains absent."
         }
       ],
-      "evidence": "five_color_extension, delete_components_smaller, colour_delete_of_components, five_color_of_delete_components, and five_colorable_six_vertices compile. There is no global five_color_theorem declaration."
+      "evidence": "five_color_extension, delete_components_smaller, colour_delete_of_components, five_color_of_delete_components, and five_colorable_six_vertices compile. There is no global five_color_theorem declaration.",
+      "revision": 33
     },
     {
       "id": "foundation",
@@ -2058,7 +2167,8 @@
           "text": "The final theorem now exists and compiles for every generated PlaneMap, with no additional face-length, triangulation, or separation premise. This does not assert representation of every geometrically planar graph."
         }
       ],
-      "evidence": "lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem MathlibTest.PlaneMapFiveColor exits 0. Guarded audits report only propext, Classical.choice, and Quot.sound. Proof sources contain no sorry, admit, axiom declarations, or native_decide."
+      "evidence": "lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem MathlibTest.PlaneMapFiveColor exits 0. Guarded audits report only propext, Classical.choice, and Quot.sound. Proof sources contain no sorry, admit, axiom declarations, or native_decide.",
+      "revision": 33
     },
     {
       "id": "f3",
@@ -2069,7 +2179,8 @@
           "text": "SphericalDegree.exists_pos_degree_le_five proves the hereditary low-degree interface without face-length or connectedness assumptions. Rank-nullity and face counting handle isolated vertices and short faces."
         }
       ],
-      "evidence": "SphericalDegree.edge_card_bound and exists_pos_degree_le_five compile and pass guarded axiom audits; the earlier conditional Euler degree bound remains available."
+      "evidence": "SphericalDegree.edge_card_bound and exists_pos_degree_le_five compile and pass guarded axiom audits; the earlier conditional Euler degree bound remains available.",
+      "revision": 33
     },
     {
       "id": "f-planemap-delete",
@@ -2090,7 +2201,8 @@
           "text": "The generated-component reconstruction proposal is superseded for this application. No claim that arbitrary deleted components have generated PlaneMap construction histories is needed or made."
         }
       ],
-      "evidence": "fills_eraseRotation, subgraph_closed, and isolate_closed compile and pass guarded axiom audits. The three-vertex path centre-deletion application compiles."
+      "evidence": "fills_eraseRotation, subgraph_closed, and isolate_closed compile and pass guarded axiom audits. The three-vertex path centre-deletion application compiles.",
+      "revision": 33
     },
     {
       "id": "f5-lean",
@@ -2112,7 +2224,380 @@
           "text": "PlaneMap.five_color_theorem and exists_five_colouring are general compiled theorems. Symbolic paths/cycles, tetrahedron, disconnected deletion, and six-clique exclusion checks compile. No Four Colour claim or PR."
         }
       ],
-      "evidence": "lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem MathlibTest.PlaneMapFiveColor exits 0. Guarded audits report only propext, Classical.choice, and Quot.sound. Proof sources contain no sorry, admit, axiom declarations, or native_decide."
+      "evidence": "lake build Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem MathlibTest.PlaneMapFiveColor exits 0. Guarded audits report only propext, Classical.choice, and Quot.sound. Proof sources contain no sorry, admit, axiom declarations, or native_decide.",
+      "revision": 33
+    },
+    {
+      "op": "insert",
+      "parentId": "4ct",
+      "index": 0,
+      "node": {
+        "id": "structural-four-colour",
+        "title": "Active route: structural constructive Four Colour",
+        "status": "in-progress",
+        "statement": "Every finite simple spherical map has an executable four-colouring with proved termination and polynomial cost, without a large configuration census.",
+        "approach": "Finish A/B; attack one quantified degree-five candidate; keep implementation and the ordinary-planar representation bridge alongside it.",
+        "files": [
+          "SolvingFrameworkPlan/StructuralFourColourPlan.md",
+          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+        ],
+        "evidence": "",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": [
+          {
+            "id": "structural-gate-a",
+            "title": "A: degree-four extension",
+            "status": "proved",
+            "statement": "A four-colouring of M minus x extends when M is spherical and degree(x) ≤ 4.",
+            "approach": "Use alternating separation and one legal component exchange.",
+            "files": [
+              "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourColorExtension.lean"
+            ],
+            "evidence": "four_color_extension compiled; standard-three axiom guard in MathlibTest/PlaneMapFourColor.lean.",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": []
+          },
+          {
+            "id": "structural-gate-b",
+            "title": "B: spherical elimination and order at most eleven",
+            "status": "proved",
+            "statement": "Spherical elimination certificates imply four-colourability; every spherical map with at most eleven labels has such a certificate.",
+            "approach": "Sharpen incidence rank by one; minimum positive degree five forces at least twelve nonisolated vertices; induct on edges.",
+            "files": [
+              "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalSmallOrder.lean",
+              "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourColorSmallOrder.lean",
+              "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourEliminationOrder.lean",
+              "../mathlib4-planemap/MathlibTest/PlaneMapFourColor.lean"
+            ],
+            "evidence": "Compiled sharper Euler bound, twelve-vertex threshold, small-order theorem, certificate soundness and length bound. K4 and disconnected surviving-edge tests pass. Witness existence is not an executable solver.",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": []
+          },
+          {
+            "id": "structural-gate-c",
+            "title": "C: boundary semantics for one candidate",
+            "status": "in-progress",
+            "statement": "Specify and prove restriction, move soundness, and extension semantics for the chosen patch with explicit exterior information.",
+            "approach": "Keep this proportional to the candidate; reducibility of a patch does not establish coverage.",
+            "files": [
+              "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+            ],
+            "evidence": "Independent Kittell replay gives 6,350 states; five of forty pooled signatures lose the restricted robust boundary-action game. Computational research, not a Lean theorem.",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": []
+          },
+          {
+            "id": "structural-gate-d",
+            "title": "D: uniform reduction and coverage",
+            "status": "exploring",
+            "statement": "Prove a structural reduction for every remaining minimum-degree-five core with a computable invariant and bounded well-founded progress.",
+            "approach": "Attack the exact root-selecting Kempe escape candidate or its independently specified recursive-certificate alternative. The universal-colouring candidate is stronger than 4CT.",
+            "files": [
+              "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+            ],
+            "evidence": "OPEN: no uniform root selection, exterior rank, coverage proof, or polynomial bound. Root-specific Kittell boundary games succeed at eleven roots and fail at four in the restricted model.",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": []
+          },
+          {
+            "id": "structural-gate-e",
+            "title": "E: general spherical theorem",
+            "status": "unstarted",
+            "statement": "Every SphericalMap has a proper Fin 4 colouring without additional extension or coverage premises.",
+            "approach": "Compose proved coverage, deletion closure, local reconstruction, and induction. D must be discharged first.",
+            "files": [
+              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+            ],
+            "evidence": "",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": []
+          },
+          {
+            "id": "structural-algorithm",
+            "title": "Executable construction, termination, and cost",
+            "status": "in-progress",
+            "statement": "Return a proper four-colouring with proved termination and a polynomial bound for the actual chosen representation.",
+            "approach": "Implement finite carriers, low-degree selection, reconstruction, and the D rule; account for all work.",
+            "files": [
+              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+            ],
+            "evidence": "",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": [
+              {
+                "id": "structural-component",
+                "title": "Executable component and Kempe swap",
+                "status": "proved",
+                "statement": "Finite component extraction agrees with reachability; executable component swap preserves proper colouring.",
+                "approach": "Expand a finite frontier for card(V) rounds and prove equality to reachability.",
+                "files": [
+                  "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/FiniteReachability.lean",
+                  "../mathlib4-planemap/MathlibTest/PlaneMapFiniteReachability.lean"
+                ],
+                "evidence": "Build, guarded evaluations, kernel decide checks, and axiom audits pass. n³ is an abstract full-scan adjacency-slot charge, not a whole-solver runtime bound.",
+                "killCriteria": "",
+                "notes": [],
+                "expanded": true,
+                "active": true,
+                "children": []
+              },
+              {
+                "id": "structural-reconstruct",
+                "title": "Executable A/B carrier and reconstruction",
+                "status": "unstarted",
+                "statement": "Compute spherical elimination carriers and reconstruct a concrete four-colouring.",
+                "approach": "Separate classical witness existence from executable data; prove agreement with A/B interfaces.",
+                "files": [
+                  "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+                ],
+                "evidence": "",
+                "killCriteria": "",
+                "notes": [],
+                "expanded": true,
+                "active": true,
+                "children": []
+              },
+              {
+                "id": "structural-complexity",
+                "title": "Global termination and polynomial complexity",
+                "status": "unstarted",
+                "statement": "Bound every selection, invariant, move, deletion, and reconstruction operation and their total number.",
+                "approach": "Compose outer deletion and inner D measure. Certificate length alone does not prove solver complexity.",
+                "files": [
+                  "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+                ],
+                "evidence": "",
+                "killCriteria": "",
+                "notes": [],
+                "expanded": true,
+                "active": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "structural-gate-f",
+            "title": "F: ordinary planar graph representation",
+            "status": "unstarted",
+            "statement": "Transport a chosen ordinary planarity representation to an agreeing spherical carrier, including disconnected graphs.",
+            "approach": "Prove drawing or minor-exclusion to embedding and filling; proceed alongside D.",
+            "files": [
+              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+            ],
+            "evidence": "",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": []
+          },
+          {
+            "id": "structural-benchmarks",
+            "title": "Benchmarks against DSATUR, SAT, genetic, and random solvers",
+            "status": "unstarted",
+            "statement": "Measure correctness and performance on declared shared datasets after the constructive proof and cost theorem.",
+            "approach": "Report preprocessing, adverse instances, failures, hardware, and comparable budgets.",
+            "files": [
+              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+            ],
+            "evidence": "",
+            "killCriteria": "",
+            "notes": [],
+            "expanded": true,
+            "active": true,
+            "children": []
+          }
+        ]
+      },
+      "revision": 34
+    },
+    {
+      "op": "insert",
+      "parentId": "4ct",
+      "node": {
+        "id": "historical-research",
+        "title": "Historical research and previous routes",
+        "status": "exploring",
+        "statement": "Preserved earlier experiments, failures, and reformulations; excluded from active progress statistics.",
+        "approach": "Retain all IDs, notes, and statuses for reference.",
+        "files": [
+          "SolvingFrameworkPlan/NovelProofExploration.md"
+        ],
+        "evidence": "",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": false,
+        "active": false,
+        "children": []
+      },
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track1",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track2",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track3",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track4",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track5",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track6",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track7",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "track8",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "f-spec-lean",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "audit-1701",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "routes-1720",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "min-deg-4",
+      "parentId": "historical-research",
+      "revision": 34
+    },
+    {
+      "op": "move",
+      "id": "f2",
+      "parentId": "structural-gate-f",
+      "revision": 34
+    },
+    {
+      "id": "4ct",
+      "title": "Structural constructive Four Colour",
+      "status": "in-progress",
+      "active": true,
+      "statement": "Construct an executable four-colouring for every finite simple spherical map, prove termination and polynomial cost without a large configuration census, then extend to ordinary planar graphs and benchmark.",
+      "approach": "The active A–F execution route replaces the seven-track exploration. A/B and Five Colour are checked; the degree-five coverage theorem, full algorithm, complexity, and representation bridge remain open.",
+      "files": [
+        "SolvingFrameworkPlan/StructuralFourColourPlan.md",
+        "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+      ],
+      "revision": 34
+    },
+    {
+      "id": "foundation",
+      "title": "Checked foundation: spherical and generated Five Colour",
+      "status": "proved",
+      "statement": "Every SphericalMap and generated PlaneMap is five-colourable. Spanning-subgraph deletion preserves the spherical carrier.",
+      "approach": "Proved separation, spherical filling, hereditary degree bound, and edge-count induction. Ordinary geometric planarity is a separate bridge.",
+      "expanded": false,
+      "revision": 34
+    },
+    {
+      "id": "f3",
+      "title": "Spherical rank and degree bounds",
+      "status": "proved",
+      "statement": "The spherical rank inequalities imply positive degree at most five; the sharpened bound forces twelve nonisolated vertices when all positive degrees are at least five.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalSmallOrder.lean"
+      ],
+      "revision": 34
+    },
+    {
+      "id": "f4",
+      "title": "Kempe swaps and spherical degree-four extension",
+      "status": "proved",
+      "statement": "Kempe swaps preserve properness; four-colour deletion extends at degree at most four in a spherical map.",
+      "approach": "Use proved alternating separation. Do not infer abstract 4-degenerate graphs are four-colourable.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourColorExtension.lean"
+      ],
+      "revision": 34
+    },
+    {
+      "id": "f5",
+      "title": "General spherical and generated Five Colour theorem",
+      "status": "proved",
+      "statement": "SphericalMap.five_color_theorem and PlaneMap.five_color_theorem hold without extra connectedness or face-length premises.",
+      "evidence": "Compiled and standard-three axiom audited; source baseline committed and hash-recorded.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorTheorem.lean"
+      ],
+      "revision": 34
+    },
+    {
+      "id": "f2",
+      "title": "Ordinary planar input to spherical carrier",
+      "status": "unstarted",
+      "statement": "Choose a planarity representation and prove it supplies an agreeing spherical rotation/filling certificate.",
+      "approach": "Generated history, geometric drawing, and forbidden-minor planarity are distinct interfaces; no unproved conversion is assumed.",
+      "revision": 34
+    },
+    {
+      "id": "historical-research",
+      "active": false,
+      "expanded": false,
+      "revision": 34
     }
   ]
 }
