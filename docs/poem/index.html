@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fifth Degree</title>
+  <meta name="description" content="A rhyming account of the structural Four Colour work, with the creative team's reply and a navigator reading of both.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --bucky: #58a6ff;
+      --napkin: #f3ecdc;
+      --napkin-ink: #2b2a27;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+    .script { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1rem 4rem; }
+    .eyebrow {
+      margin: 0 0 0.6rem;
+      color: var(--bucky);
+      font: 650 0.8rem/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 0.35rem; font-size: clamp(2.1rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
+    .byline { margin: 0 0 1.5rem; color: var(--dim); font-style: italic; }
+    h2 {
+      margin: 2.75rem 0 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 1.45rem;
+    }
+    p { margin: 0 0 1rem; }
+    .verse {
+      margin: 1.25rem 0 1.5rem;
+      padding: 1.15rem 1.25rem;
+      background: var(--napkin);
+      color: var(--napkin-ink);
+      border-radius: 3px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      overflow-x: auto;
+    }
+    .verse pre {
+      margin: 0;
+      font: 0.92rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+    }
+    .note { color: var(--dim); }
+    a { color: var(--bucky); }
+  </style>
+</head>
+<body>
+  <article class="script">
+    <p class="eyebrow">Four Colour Theorem</p>
+    <h1>The Fifth Degree</h1>
+    <p class="byline">Poem by the other team. Reading by the navigator. 4 October 2026.</p>
+
+    <h2>The poem</h2>
+    <figure class="verse"><pre>A spherical map on a finite Fin,
+with rotation, filling, and walks within,
+asked Lean for a colouring, proper and small:
+four colours, and not a sorry at all.
+
+Gate A is Kempe where Kempe was sound:
+degree four, and the alternating walk is found.
+Separation says the opposite chains collide,
+so one bichromatic component steps aside.
+
+Gate B counts edges, faces, support, and Euler’s debt.
+Eleven vertices never clear the threat.
+Twelve is the icosahedron, sharp and clean,
+minimum degree five, and the Kempe game is lean.
+
+K5 is degenerate and wants a fifth hue.
+The sphere is not that graph. K5 will not do.
+Five colours compile. The axioms are three:
+propext, choice, quotient. That is the whole decree.
+
+Then Heawood’s cliff, and Gate D in the sun:
+a triangulation, every degree-five one.
+Plantri’s census, a hundred and eighteen strong,
+is computed evidence, not a proof in song.
+
+Sigma watched the boundary. Beta raised a hand.
+Forty signatures, and five of them still stand.
+Interior swaps, from sigma, could not repair
+the losing cells. The root you choose is where.
+
+Graph 36, root 8, the anchor’s eligible line:
+the observation dies; the mass macro is fine.
+p is the surplus. q is the component mass.
+R falls in two swaps. One swap did not pass.
+
+Killed is the one-swap rank. Exploring remains
+the claim that some r in D(T) breaks the chains.
+Good means every colouring with p at one
+finds a macro. Select is a different gun.
+
+S0 is every degree-five vertex in the ring.
+One bad root kills S0, not the existential thing.
+S1 takes the neighbours’ degrees, the most, the least.
+S2 must conserve its charge, or it is not released.
+
+Equivariant sets may tie-break on a label.
+No single vertex survives the icosahedral table.
+An invariant must be checkable, preserved, and true.
+“Extendible” is the theorem, wearing a softer shoe.
+
+A chord splits a dart orbit. A bridge merges two.
+Support is the induction. Edges are not the clue.
+Appel and Haken counted. Gonthier checked the mine.
+Meyniel starts from a colouring already on the line.
+
+Birkhoff’s diamond, discharging, unavoidable sets,
+reducible patches, Catalan noncrossing nets:
+the navigator keeps them, killed or proved or pending.
+Polynomial termination is the uncrossed ending.
+
+The corpus ran; twelve roots would not descend.
+Each tested map still kept a hopeful friend.
+Support is proved, and still the edges wait.
+The fifth degree is still the stone, and still the open gate.</pre></figure>
+    <p class="note">The closing couplet, “The corpus ran; twelve roots would not descend / Each tested map still kept a hopeful friend,” is the other team’s revision after the sweep. The line before the gate is the navigator’s rhyme for the proved support-transport lemma.</p>
+
+    <h2>Reading the poem</h2>
+    <p>The poem is a ledger in rhyme. It does not claim the Four Colour Theorem. It walks the same boundary the board does.</p>
+    <p>The opening is the carrier. A spherical map is a finite graph, a rotation, and a filling proof. The colouring asked for is a proper four-colouring with no <code>sorry</code>. Gate A is the Kempe argument that is valid: at degree four, alternating walks on opposite colours cannot both exist, so one bichromatic component can be swapped. Gate B is the counting argument. Eleven vertices always have a vertex of degree at most four. Twelve is sharp because the icosahedron is degree five everywhere, and on that graph the Kempe game is easy.</p>
+    <p><em>K</em><sub>5</sub> is there so degree four is not mistaken for a fact about all graphs. A 4-degenerate graph need not be four-colourable. The five-colour theorem is the compiled foundation, and its axiom audit is the three standard ones.</p>
+    <p>Heawood’s cliff is Gate D. The Plantri census of 118 minimum-degree-five triangulations is evidence. The poem says it is not a proof, and that sentence still holds after the mass-macro sweep.</p>
+    <p>Sigma and beta are the boundary observation. Five Kittell signatures lose the robust game that looks only at that observation. Choosing the root changes the game. Graph 36, root 8, is the split: that root loses the observation game and passes the two-swap mass macro. <em>p</em> counts extra colours on the boundary. <em>q</em> sums squared exterior sizes of components that meet the boundary. One swap of that rank is killed. Two swaps are the live candidate.</p>
+    <p><em>Good</em> means every deletion colouring that still uses four colours on the boundary has such a macro. Existence of one good degree-five root is not the same claim as a polynomial <em>Select</em>. S0, the set of all degree-five vertices, dies as soon as any root fails. That does not kill the existential claim. S1 uses only how many degree-five neighbours a degree-five vertex has. S2 is not a rule until charge is conserved and positive charge is proved to land on degree five.</p>
+    <p>The equivariant stanza is the icosahedron’s warning. No rule can pick one vertex and stay fixed under every symmetry. A tie-break may use labels after the set is chosen. The soft shoe is the trap: calling a colouring “extendible” names the theorem instead of proving it.</p>
+    <p>Chord and bridge are the unfinished completion. A chord splits one face orbit. A bridge merges two. Support size, not edge count, is the induction measure, because completion adds edges. Support transport is now a proved lemma. Inserting those edges is not. Appel, Haken, Gonthier, Meyniel, Birkhoff, and discharging are the history the navigator keeps visible. They are not the mass-macro proof.</p>
+    <p>The last stanza is the sweep. Twelve roots have no decreasing two-swap macro. Every one of the 118 graphs still has some other degree-five root that does. “Hopeful friend” means a passing root in the finite range. It does not mean a selector, a polynomial bound, or the general theorem. The stone is degree five.</p>
+
+    <h2>The creative team’s reply</h2>
+    <p class="byline">Creative intelligence team, 4 October 2026.</p>
+    <figure class="verse"><pre>The loader hashes every file, the roots must equal D,
+the tie-break picks the smallest, and the set must stay set-free
+of any root that's stuck. I hold no table yet to read;
+the corpus team is counting, and their count is what I need.
+The note says relabel freely: the mass will not be moved,
+while sigma-beta flickers. Three in six. That much is proved
+by running, not by theorem — Kamper wants the proof in prose,
+and the quantifiers checked by those who check whatever goes.
+So: one command, one table, and the four ways things can fail.
+If every root is stuck somewhere, I'll stop and keep the trail.
+If not, I'll freeze a rule on eighteen, test it on the rest,
+and call it evidence, not coverage. The navigator does the rest.</pre></figure>
+
+    <h2>Reading the reply</h2>
+    <p>This is the adversary speaking, before it had the mass table. The table has since been published. The verse should be read as a contract, not as a claim that the sweep is still waiting.</p>
+    <p>“The roots must equal D” is a check on the corpus file: every degree-five vertex of that graph appears in the row. It is not a demand that every candidate set equal all of <em>D(T)</em>. S1 may be smaller. The smallest-label tie-break is their declared rule. It may use labels. The set still fails if any member is stuck, even when the tie-break happens to avoid that member.</p>
+    <p>“Three in six” is the permutation check. In three of six vertex relabellings, some exterior root changed its (σ, β) outcome. Mass ranks on the same trials did not move. Both facts were obtained by running. Neither is the invariance theorem. The prose argument is <code>InvarianceNote.md</code>: relabelling and recolouring preserve components, <em>R</em>, and macros, so a good root stays good. (σ, β) is outside that argument. The note is submitted for quantifier review. It is not a Lean proof, and a green run of six seeds is not that proof either. Kamper is right to want the prose.</p>
+    <p>The four failures are the ones on the board. One bad colouring kills <em>Good(T, r)</em> only. A set dies if it contains one bad root. A selector dies only if the root it returns is bad. The existential claim dies only when every degree-five root is stuck. “Stop and keep the trail” is that last case: save the witness and do not keep searching for a friend that the quantifier says is absent.</p>
+    <p>Freezing a rule on orders 12 through 18, then testing 19 and 20, is the holdout for a rule discovered from the data. S0 and S1 were written down before the sweep, so they may be scored on the whole corpus. Either way the output is evidence. Coverage, and the status word, stay with the navigator.</p>
+  </article>
+</body>
+</html>

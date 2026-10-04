@@ -1,6 +1,6 @@
 {
-  "revision": 38,
-  "updatedAt": "2026-10-04T18:23:16.602928+00:00",
+  "revision": 40,
+  "updatedAt": "2026-10-04T13:14:00-06:00",
   "journal": [
     {
       "time": "2026-09-27T19:45:00Z",
@@ -206,6 +206,16 @@
       "time": "2026-10-04T18:23:16.602928+00:00",
       "node": "structural-component-mass-two-swap",
       "action": "Reviewed afternoon sequel without counting fictional experiments as findings. Replayed all eight exterior roots; tested bounded two-swap descent of the explicit mass formula on graph36/root8. Added finite evidence and an agent-to-agent handoff; no proved or killed status changed."
+    },
+    {
+      "time": "2026-10-04T18:51:00Z",
+      "node": "structural-mass-descent",
+      "action": "Revision 39 records existential mass-macro descent under the joint execution plan. One-swap mass stays killed and the graph-36 two-swap check stays computed. Polynomial selection is a separate unstarted obligation. Long Table has accepted the adversary and candidate-set work. Math corpus and filling proofs remain proposed. The name D2 is not reused. No proved status was downgraded."
+    },
+    {
+      "time": "2026-10-04T19:14:00Z",
+      "node": "structural-mass-descent",
+      "action": "User released joint-plan execution. Long Table's accepted share is recorded: S0 and S1 are predeclared and unevaluated, S2 waits for a written rule, and the adversary is unstarted. Mass-descent invariance is a required written argument. The corpus remains unrun. No proved status changed."
     }
   ],
   "patches": [
@@ -3421,6 +3431,325 @@
         "approach": "A fixed formula plus bounded macros; no target-distance rank.",
         "killCriteria": "A non-target state with no decreasing two-swap sequence kills this specific formula/coverage claim for its chosen root."
       }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-d",
+      "revision": 39,
+      "node": {
+        "id": "structural-mass-descent",
+        "title": "Mass-macro descent",
+        "status": "exploring",
+        "statement": "For every finite simple spherical triangulation T of minimum degree at least 5, some degree-5 vertex r satisfies Good(T,r): every proper 4-colouring of T−r with p=1 has a sequence of at most two single-component swaps after which R is strictly smaller. Intermediate ranks may rise. Stop when p=0; q need not be 0.",
+        "approach": "Existential claim only: for every T there exists r in D(T). Exterior roots of one anchor are a regression set, not the quantifier. Polynomial Select is a separate node. The rank is the existing component-mass formula, encoded as R=(6n²+1)p+q.",
+        "files": [
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
+          "SolvingFrameworkPlan/MassMacroLedgerReply.md",
+          "backgroundMaterial/planemap-structural/component-mass-results.json",
+          "backgroundMaterial/planemap-structural/afternoon-checks.json"
+        ],
+        "evidence": "One-swap descent is killed at order-20 graph 36, root 8. Two-swap descent is computed only on that fixture. The corpus has not been run. 0≤R≤12n²+1, so a true claim needs at most that many macros. Across six colour pairs there are at most 3(n−1) bichromatic components; (6n)² is a conservative bound on testing one- and two-move sequences, not a proved solver cost. A failure does not refute four-colourability or bare reachability. The name D2 is the historical Penrose node and is not reused.",
+        "killCriteria": "The existential claim dies only when every degree-5 root has a colouring with no decreasing macro. One bad root kills only Good(T,r). A set dies if it contains one bad root. A selector dies only if the root it returns is bad. Do not lengthen the macro past two to raise the pass rate.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "move",
+      "id": "structural-component-mass-rank",
+      "parentId": "structural-mass-descent",
+      "revision": 39
+    },
+    {
+      "op": "move",
+      "id": "structural-component-mass-two-swap",
+      "parentId": "structural-mass-descent",
+      "revision": 39
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-d",
+      "revision": 39,
+      "node": {
+        "id": "structural-mass-select",
+        "title": "Polynomial selection, separate from descent",
+        "status": "unstarted",
+        "statement": "A polynomial Select(T) returning a good degree-5 root, or a polynomial nonempty equivariant set S(T) whose every member is good, followed by deterministic tie-break.",
+        "approach": "The set must be equivariant. The tie-break may use labels. A single vertex cannot be fixed by every automorphism of a vertex-transitive graph such as the icosahedron.",
+        "files": [
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+        ],
+        "evidence": "Root 8 of graph 36 fails (σ, β) and passes the tested two-swap mass macro, so the other seven (σ, β) roots are not this selection target. (σ, β) depends on label-sensitive normalization.",
+        "killCriteria": "The specified Select or tie-break returns a root that is not good. S(T)=D(T) fails as soon as any root fails; that is stronger than the existential claim and does not by itself refute it.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-mass-descent",
+      "revision": 39,
+      "node": {
+        "id": "structural-mass-corpus",
+        "title": "Mass-macro sweep at every degree-5 root",
+        "status": "unstarted",
+        "statement": "On all 118 minimum-degree-5 triangulations through order 20, test Good(T,r) at every degree-5 root, not only exterior roots.",
+        "approach": "Proposed for the math and scale-up team. Continue through a graph after one bad root so the existential claim can be classified. Stop and report if every degree-5 root on a graph fails.",
+        "files": [
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
+          "backgroundMaterial/planemap-structural/SearchReport.md"
+        ],
+        "evidence": "Not run. A complete pass is computed evidence, not a proof. Empty colouring families are not existence proofs. Do not extend to order 21 merely to avoid a failure.",
+        "killCriteria": "A saved colouring at every degree-5 root of one T with no decreasing macro.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-d-root",
+      "revision": 39,
+      "node": {
+        "id": "structural-graph36-sigma-beta",
+        "title": "Graph 36 observation game, separate from mass descent",
+        "status": "computed",
+        "statement": "At order-20 graph 36, anchor 0 has exterior degree-5 roots 8, 10, 11, 13, 14, 15, 16 and 19. Only root 8 loses (σ, β).",
+        "approach": "Recorded computation of the fixed observation game. It is label-sensitive and is not a structural candidate set for mass-macro descent.",
+        "files": [
+          "backgroundMaterial/planemap-structural/afternoon-checks.json",
+          "backgroundMaterial/planemap-structural/afternoon-checks.py"
+        ],
+        "evidence": "afternoon-checks.json. The other seven roots win (σ, β). Root 8 still passes the two-swap component-mass check, so these two tests prefer different roots.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-d",
+      "revision": 39,
+      "node": {
+        "id": "structural-candidate-set",
+        "title": "Equivariant structural candidate set",
+        "status": "unstarted",
+        "statement": "A polynomial nonempty equivariant S(T) contained in D(T) such that every member is good for mass-macro descent, then a deterministic tie-break.",
+        "approach": "Long Table accepted this work. Freeze a rule before testing it on graphs held out from its discovery. S0=D(T) is a baseline whose every-member guarantee fails when any root fails. A charge proposal must conserve total charge and prove that every positive receiver has degree 5. Extrema need a proved nonempty D(T).",
+        "files": [
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+        ],
+        "evidence": "No formula is stated yet. (σ, β) success is not this set.",
+        "killCriteria": "S contains a root that is not good, or the tie-break returns such a root. Charge that is not conserved, or that can leave positive charge on a vertex of degree other than 5, is not a degree-5 selector.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-d",
+      "revision": 39,
+      "node": {
+        "id": "structural-rule-adversary",
+        "title": "Rule adversary",
+        "status": "unstarted",
+        "statement": "A loader that classifies a rule as one bad root, a set containing a bad root, a selector that returns a bad root, or every degree-5 root bad, and points at the witness.",
+        "approach": "Long Table accepted this work. It reads the shared fixture format and does not assign navigator statuses. Before the mass table exists, recompute only named regressions: graph 36's eight exterior roots, its three one-swap minima and two-swap escapes, and the icosahedron.",
+        "files": [
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+        ],
+        "evidence": "No tool is in the repository yet.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-triangulation-completion",
+      "revision": 39,
+      "node": {
+        "id": "structural-support-relabel",
+        "title": "Support transport to Fin s",
+        "status": "unstarted",
+        "statement": "For an edge-containing spherical map, transport the nonisolated support to a SphericalMap on Fin s, including rotation, filling, degrees, and colouring restriction.",
+        "approach": "Proposed for the math and scale-up team. Not accepted by silence and not started.",
+        "files": [
+          "SolvingFrameworkPlan/TriangulationCompletionObligation.md",
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+        ],
+        "evidence": "Specified in TriangulationCompletionObligation.md. subgraph_closed keeps the original labels and does not prove this.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-triangulation-completion",
+      "revision": 39,
+      "node": {
+        "id": "structural-edge-insertion",
+        "title": "Chord and bridge insertion statement",
+        "status": "exploring",
+        "statement": "Distinct nonadjacent endpoints keep the added edge simple. Still open: eligible corners under faceNext, filling, a chord splitting one face dart-orbit, and a bridge merging two face dart-orbits. Cut vertices and repeated face walks need their own existence lemma.",
+        "approach": "Statement under review. Not Lean. Each insertion raises the edge count; outer colouring induction uses support size, which completion preserves. Adding edges does not preserve Kempe components.",
+        "files": [
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
+          "SolvingFrameworkPlan/TriangulationCompletionObligation.md"
+        ],
+        "evidence": "Simplicity does not wait on a diagonal-existence theorem. Joining components does not insert into a face the two components already share.",
+        "killCriteria": "A spherical map where every attempted chord or bridge loses filling, or no eligible corner exists before a connected triangulation is reached.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "id": "structural-component-mass-two-swap",
+      "revision": 39,
+      "evidence": "Computed only at order-20 graph 36, root 8: all 131 non-target orbits decrease within two swaps, including the three one-swap local minima. This fixture passed. The universal mass-macro node is still exploring. This same root loses (σ, β)."
+    },
+    {
+      "id": "structural-d-recursive",
+      "revision": 39,
+      "evidence": "One possible restriction of mass-macro descent to induction-produced colourings. It is not yet an invariant, not the only restricted-input idea, and not the active attack. A usable certificate must be polynomial-time checkable, imply the required escape, and be preserved by completion, deletion, and reconstruction. Extendible is not that certificate."
+    },
+    {
+      "id": "structural-gate-d",
+      "revision": 39,
+      "evidence": "Active attack: existential mass-macro descent, still exploring. One-swap mass is killed. Two-swap mass is computed only at graph 36, root 8, which loses (σ, β) while the other seven exterior roots win that observation game. Polynomial selection, the corpus, an equivariant candidate set, completion, and the general theorem are open. The name D2 is not reused."
+    },
+    {
+      "id": "structural-candidate-set",
+      "revision": 40,
+      "status": "exploring",
+      "files": [
+        "SolvingFrameworkPlan/LongTableWorkPlan.md",
+        "SolvingFrameworkPlan/LongTableResponseRev39.md"
+      ],
+      "evidence": "User released execution on 4 October 2026. Long Table accepted this share. S0 and S1 are predeclared and unevaluated. S2 stays unspecified. No mass-macro pass set exists yet, so none of these sets has been tested.",
+      "approach": "Judge sets against mass-macro pass sets, not against (σ, β). Freeze any data-suggested rule before testing it on orders 19–20. Orders 12–18 may be used for description only."
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-candidate-set",
+      "revision": 40,
+      "node": {
+        "id": "structural-s0",
+        "title": "S0: every degree-5 vertex",
+        "status": "exploring",
+        "statement": "S0(T) = D(T). In a minimum-degree-5 triangulation, Euler gives at least 12 degree-5 vertices.",
+        "approach": "Baseline declared before the mass table exists. Its every-member guarantee fails when any root fails. That does not kill the existential claim, which fails only when every root fails.",
+        "files": [
+          "SolvingFrameworkPlan/LongTableWorkPlan.md"
+        ],
+        "evidence": "Not evaluated. The useful output, once the corpus exists, is the per-graph fraction of good roots.",
+        "killCriteria": "Any degree-5 root that is not good kills the every-member guarantee. It does not kill mass-macro existence.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-candidate-set",
+      "revision": 40,
+      "node": {
+        "id": "structural-s1",
+        "title": "S1: extremal degree-5 neighbourhoods",
+        "status": "exploring",
+        "statement": "S1+ is the degree-5 vertices with the most degree-5 neighbours. S1− is those with the fewest. Both are nonempty once D(T) is, and equivariant because the count is.",
+        "approach": "Predeclared before any mass-macro corpus result. Tie-break may use labels. Every member must be good.",
+        "files": [
+          "SolvingFrameworkPlan/LongTableWorkPlan.md"
+        ],
+        "evidence": "Not evaluated.",
+        "killCriteria": "Either extremal set contains a root that is not good, or the tie-break returns such a root.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-candidate-set",
+      "revision": 40,
+      "node": {
+        "id": "structural-s2",
+        "title": "S2: charge redistribution",
+        "status": "unstarted",
+        "statement": "A charge rule that returns only degree-5 vertices, with total charge conserved, an equivariant rule, and a nonempty positive set.",
+        "approach": "Not evaluated until the redistribution rules, conservation, equivariance, the degree-5 restriction, and nonemptiness are all written. Total charge 12 does not by itself force positive receivers to have degree 5.",
+        "files": [
+          "SolvingFrameworkPlan/LongTableWorkPlan.md",
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+        ],
+        "evidence": "No rule is stated.",
+        "killCriteria": "Charge is not conserved, a positive receiver need not have degree 5, or the resulting set contains a root that is not good.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-mass-descent",
+      "revision": 40,
+      "node": {
+        "id": "structural-mass-invariance",
+        "title": "Mass descent is isomorphism invariant",
+        "status": "exploring",
+        "statement": "Graph relabelling and global colour permutation preserve B, bichromatic component sizes, legal macros, and R. Good(T,r) transports along isomorphisms. The (σ, β) game does not.",
+        "approach": "Written argument first. Permutation checks on graph 36 are implementation tests, not the proof. Exact automorphism orbits are optional.",
+        "files": [
+          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
+          "SolvingFrameworkPlan/LongTableWorkPlan.md"
+        ],
+        "evidence": "The argument is required before anyone treats a mass-macro pass set as a structural candidate set. It is not yet written in the repository.",
+        "killCriteria": "A relabelled or recoloured copy of a good root whose mass-macro outcome changes.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "id": "structural-mass-corpus",
+      "revision": 40,
+      "approach": "User released execution. Still the math and scale-up team's proposed share; this ledger does not start the sweep. Test every degree-5 root. After one bad root, finish that graph. Stop if every degree-5 root fails. Each record should carry order, zero-based index, ASCII and its hash, orbit count, non-target count, one-swap stuck count, two-swap stuck count, and the first two-swap witness colouring with successor ranks. Do not go to order 21 unless that extension is agreed after this sweep.",
+      "evidence": "Not run. A pass would be computed evidence, not a proof."
+    },
+    {
+      "id": "structural-rule-adversary",
+      "revision": 40,
+      "files": [
+        "SolvingFrameworkPlan/LongTableWorkPlan.md",
+        "SolvingFrameworkPlan/LongTableResponseRev39.md"
+      ],
+      "evidence": "User released Long Table to build it. No tool is in the repository yet. Until the mass table exists it may recompute only graph 36 and the icosahedron."
+    },
+    {
+      "id": "structural-gate-d",
+      "revision": 40,
+      "evidence": "Execution of the joint plan is released. Existential mass-macro descent is exploring and unproved. One-swap mass is killed. Two-swap mass is computed only at graph 36, root 8. S0 and S1 are declared and unevaluated. The corpus, the adversary, S2, and completion proofs have not started. The name D2 is not reused."
     }
   ]
 }

@@ -28,6 +28,7 @@ CAST = {"BUCKY": "bucky", "KAMPER": "kamper", "APPKEN": "appken", "THEO": "theo"
 CAST_RE = re.compile(r"\b(" + "|".join(CAST) + r")\b")
 SPEECH_RE = re.compile(r"^\*\*([A-Z][A-Z ]*)\*\*:\s*(.*)$")
 THOUGHT_RE = re.compile(r"^>\s*\*([A-Za-z]+), inside:\*\s*(.*)$")
+IMG_RE = re.compile(r"^!\[([^\]]*)\]\(([^)]+)\)$")
 
 
 def slug(text):
@@ -75,6 +76,18 @@ def render(md):
                 i += 1
             i += 1
             out.append(f'<figure class="napkin"><pre>{html.escape(chr(10).join(body))}</pre></figure>')
+            continue
+        m = IMG_RE.match(line.strip())
+        if m:
+            alt, src = m.group(1), m.group(2)
+            out.append(
+                '<figure class="set-photo"><img src="'
+                + html.escape(src, quote=True)
+                + '" alt="'
+                + html.escape(alt, quote=True)
+                + '" width="960" height="535" decoding="async"></figure>'
+            )
+            i += 1
             continue
         if line.startswith("# "):
             out.append(f'<header class="title"><p class="eyebrow">Four Colour Theorem</p><h1>{inline(line[2:])}</h1>')
@@ -264,6 +277,14 @@ TEMPLATE = """<!DOCTYPE html>
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-style: normal;
+    }
+    .set-photo { margin: 0 0 1.25rem; }
+    .set-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
     }
     .napkin {
       margin: 1.5rem auto;

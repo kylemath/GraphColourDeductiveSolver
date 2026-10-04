@@ -22,6 +22,8 @@
 
 ## The Set
 
+![The Gamut in the afternoon: a four-colour tile floor, a hand-tinted county map in the window, and a chalkboard that reads cardamom bun, roasted squash, and wifi, ask Theo.](gamut-set.jpg)
+
 *A café called **The Gamut**, inside a converted print shop. The ceiling is high and the original iron press still stands in one corner, painted black and roped off like a museum piece. A long communal table of reclaimed oak runs down the centre. Upstage left is a smaller round table under a hanging brass lamp, half-hidden behind a tall shelf of bread baskets and jars of coffee beans. This is where the play happens.*
 
 *The floor is the café's pride: hexagonal and pentagonal tiles in four colours, terracotta red, slate blue, mustard yellow and bottle green. They are laid in a pattern a local artist called "a map of nowhere." Near the till, if you look closely, two red tiles share an edge.*
