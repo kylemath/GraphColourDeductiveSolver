@@ -693,17 +693,21 @@ GATE D
 
 **BUCKY**: Non-crossing partitions.
 
-**KAMPER**: Non-crossing partitions. And the number of non-crossing partitions of five points is...
+**KAMPER**: Non-crossing partitions. Which would make it a tiny menu, a few dozen shapes at most, and... *(She stops.)* No. Wait. I'm cheating.
 
-**BUCKY**: Catalan. Forty-two.
+**BUCKY**: Where?
 
-**KAMPER**: Forty-two. That's tiny. Even if you record, for each of the six colour pairs, how the boundary is partitioned, and you add *how those partitions sit relative to each other* as nested curves on the sphere... it's still a bounded amount of data. It doesn't grow with the graph. The exterior is enormous, but what the exterior *can do to the boundary* is constrained by topology to a bounded menu.
+**KAMPER**: *Disjoint* pairs. Red–yellow can't cross blue–green. But look at the boundary we care about: five neighbours, four colours, so one colour repeats. The chains that matter there are things like red–yellow and red–blue. They *share* red. Chains that share a colour share vertices. They can touch. They can cross. The topology that fences in Kempe's degree-four case doesn't fence these in.
 
-**APPKEN**: So sigma was the right *kind* of thing, just missing the nesting.
+**APPKEN**: So no tiny menu.
 
-**KAMPER**: Possibly. That's a conjecture, and it's ours, and it's probably wrong in an interesting way. I'd want to know whether the five losing Kittell signatures disappear when you add the nesting order. If they don't, it's dead, and we learn which *other* bounded thing to try.
+**KAMPER**: Not from that argument. Counting what *would* fit on a menu proves nothing. Whatever extra information we add, someone has to define it, including for chains that share a colour, and then prove it's enough.
 
-**BUCKY**: *(already writing)* Refinement candidate one: sigma plus relative nesting of bichromatic chain-curves around the root. Test: robust game on Kittell, pooled and per-root. Kill condition: any losing signature remains.
+**APPKEN**: So sigma might be missing something, but we don't know what.
+
+**KAMPER**: Exactly that. I'd still like to see whether some nesting data repairs the five losing Kittell signatures. As an experiment, not a promise. If it doesn't, it's dead, and we learn which *other* thing to try.
+
+**BUCKY**: *(already writing)* Refinement candidate one: sigma plus some relative nesting of bichromatic chain-curves around the root. First: define it for chains that share a colour. Test: robust game on Kittell, pooled and per-root. Kill condition: any losing signature remains.
 
 **APPKEN**: You write like a lab notebook.
 
@@ -1116,8 +1120,9 @@ THREAD K  (Kamper)  — SELECT
 
 THREAD B  (Bucky)   — WHAT STEP SEES
   Refine σ with BOUNDED extra info: nesting order of
-        bichromatic chain-curves around the root (non-crossing,
-        Catalan-small).  Then maybe 2-step interaction bits.
+        bichromatic chain-curves around the root (must be
+        DEFINED for chains sharing a colour; no Catalan
+        shortcut).  Then maybe 2-step interaction bits.
   Test: robust boundary game on Kittell, pooled and per-root.
   Then: icosahedron (Select is useless there — Step alone).
   Kill: losing signatures survive, OR refinement grows with n.
@@ -1283,7 +1288,7 @@ NOT ALLOWED:
 
 *BUCKY takes a step towards the uphill road, towards the university and its lab, then turns back.*
 
-**BUCKY**: I'm going to refine sigma. The nesting of the chain-curves around the root, the non-crossing structure, nothing else. Then I'll run the robust game on Kittell, pooled and per-root. If those five losers turn into winners and the extra data stays bounded, I'll go straight to the icosahedron. If they don't, I'll tell you exactly which collision survived, and why.
+**BUCKY**: I'm going to refine sigma. The nesting of the chain-curves around the root, defined properly this time, including the chains that share a colour, nothing else. Then I'll run the robust game on Kittell, pooled and per-root. If those five losers turn into winners and the extra data stays bounded, I'll go straight to the icosahedron. If they don't, I'll tell you exactly which collision survived, and why.
 
 > *Bucky, inside:* I want to be right. No. I want to know. Those aren't the same. Remember they aren't the same.
 

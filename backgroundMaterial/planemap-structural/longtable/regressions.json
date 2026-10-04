@@ -1,0 +1,1638 @@
+{
+ "scope": "Named regression fixtures only (graph 36 order 20, icosahedron). Not a corpus result, not coverage, no status claims.",
+ "formula_version": "mass-macro v1: R=(6n^2+1)p+q, macro<=2, components recomputed",
+ "inputs": {
+  "triangulations-min5-20.txt": "0448892c06a8bab0b855e47892139ffd934504767d4adf08a16490a5b45efbbe",
+  "search-results.json": "c859d9c8215a08ac331370eb682c048cd6bcd860ca3cc26c922ff801f640de50",
+  "afternoon-checks.json": "232b3a0c454944ad944daf4d1a791ac457d53a7caa8c0d183b337a0bbd46b3d7",
+  "component-mass-results.json": "db92e8605d59c8cc3e3beca05fd531eacd4f3cbaa360454adaba5a6bb061412b",
+  "icosahedron-fixture.json": "d228fe29cc03b60e94f2e9b4146dc62f2772bb5c2412b2221cada5eae01d92c6"
+ },
+ "checkers": {
+  "mass_core.py": "7e7d27296d14f8d097b4e0fe4770dcdd30d4ce36f1af807ffd4123b80d3d8bc1",
+  "regressions.py": "004e720ab67e9a724d2f36f2400bf986eeeb8de080bbb1b9bd0f40608aa3ab56"
+ },
+ "seed": 20261004,
+ "all_passed": true,
+ "checks": [
+  {
+   "check": "order-20 corpus file hash equals census input_sha256",
+   "ok": true,
+   "detail": "0448892c06a8bab0b855e47892139ffd934504767d4adf08a16490a5b45efbbe"
+  },
+  {
+   "check": "graph 36 ASCII equals afternoon-checks record",
+   "ok": true
+  },
+  {
+   "check": "graph 36 ASCII equals component-mass record",
+   "ok": true
+  },
+  {
+   "check": "graph 36 ASCII equals census record",
+   "ok": true
+  },
+  {
+   "check": "exterior degree-five roots of anchor 0",
+   "ok": true,
+   "detail": [
+    8,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "check": "(sigma,beta) root 8 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 198,
+    "groups": 55,
+    "losing_groups": 5,
+    "winning_rounds": 3
+   }
+  },
+  {
+   "check": "(sigma,beta) root 10 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 178,
+    "groups": 59,
+    "losing_groups": 0,
+    "winning_rounds": 4
+   }
+  },
+  {
+   "check": "(sigma,beta) root 11 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 148,
+    "groups": 55,
+    "losing_groups": 0,
+    "winning_rounds": 3
+   }
+  },
+  {
+   "check": "(sigma,beta) root 13 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 133,
+    "groups": 58,
+    "losing_groups": 0,
+    "winning_rounds": 2
+   }
+  },
+  {
+   "check": "(sigma,beta) root 14 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 138,
+    "groups": 48,
+    "losing_groups": 0,
+    "winning_rounds": 2
+   }
+  },
+  {
+   "check": "(sigma,beta) root 15 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 143,
+    "groups": 58,
+    "losing_groups": 0,
+    "winning_rounds": 3
+   }
+  },
+  {
+   "check": "(sigma,beta) root 16 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 158,
+    "groups": 61,
+    "losing_groups": 0,
+    "winning_rounds": 5
+   }
+  },
+  {
+   "check": "(sigma,beta) root 19 matches afternoon-checks",
+   "ok": true,
+   "detail": {
+    "coloring_orbits": 138,
+    "groups": 54,
+    "losing_groups": 0,
+    "winning_rounds": 3
+   }
+  },
+  {
+   "check": "only root 8 loses (sigma,beta) among exterior roots",
+   "ok": true
+  },
+  {
+   "check": "root 8 orbit and non-target counts",
+   "ok": true,
+   "detail": [
+    198,
+    131
+   ]
+  },
+  {
+   "check": "root 8 vertex order matches component-mass",
+   "ok": true
+  },
+  {
+   "check": "root 8 one-swap stuck orbits = 3",
+   "ok": true,
+   "detail": 3
+  },
+  {
+   "check": "root 8 one-swap stuck colourings identical to published",
+   "ok": true
+  },
+  {
+   "check": "first stuck rank (1,190) with successor ranks as published",
+   "ok": true,
+   "detail": {
+    "rank": [
+     1,
+     190
+    ],
+    "successors": [
+     [
+      1,
+      190
+     ],
+     [
+      1,
+      206
+     ],
+     [
+      1,
+      207
+     ],
+     [
+      1,
+      211
+     ],
+     [
+      1,
+      228
+     ]
+    ]
+   }
+  },
+  {
+   "check": "root 8 two-swap stuck orbits = 0",
+   "ok": true,
+   "detail": 0
+  },
+  {
+   "check": "published two-swap escapes replay as legal decreasing macros",
+   "ok": true
+  },
+  {
+   "check": "relabelling 0: mass counts and rank multiset invariant",
+   "ok": true,
+   "detail": [
+    198,
+    131,
+    3,
+    0
+   ]
+  },
+  {
+   "check": "relabelling 1: mass counts and rank multiset invariant",
+   "ok": true,
+   "detail": [
+    198,
+    131,
+    3,
+    0
+   ]
+  },
+  {
+   "check": "relabelling 2: mass counts and rank multiset invariant",
+   "ok": true,
+   "detail": [
+    198,
+    131,
+    3,
+    0
+   ]
+  },
+  {
+   "check": "relabelling 3: mass counts and rank multiset invariant",
+   "ok": true,
+   "detail": [
+    198,
+    131,
+    3,
+    0
+   ]
+  },
+  {
+   "check": "relabelling 4: mass counts and rank multiset invariant",
+   "ok": true,
+   "detail": [
+    198,
+    131,
+    3,
+    0
+   ]
+  },
+  {
+   "check": "relabelling 5: mass counts and rank multiset invariant",
+   "ok": true,
+   "detail": [
+    198,
+    131,
+    3,
+    0
+   ]
+  },
+  {
+   "check": "colour permutations leave R unchanged (25 states x 4 permutations)",
+   "ok": true
+  },
+  {
+   "check": "icosahedron: 20 orbits at every root",
+   "ok": true
+  },
+  {
+   "check": "icosahedron: target within one swap at every root",
+   "ok": true
+  },
+  {
+   "check": "icosahedron: every root good under the two-swap mass macro",
+   "ok": true,
+   "detail": {
+    "one_swap_stuck_by_root": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  }
+ ],
+ "graph36_sigma_beta": [
+  {
+   "root": 8,
+   "boundary": [
+    1,
+    7,
+    16,
+    9,
+    2
+   ],
+   "coloring_orbits": 198,
+   "groups": 55,
+   "losing_groups": 5,
+   "winning_rounds": 3
+  },
+  {
+   "root": 10,
+   "boundary": [
+    3,
+    9,
+    17,
+    18,
+    11
+   ],
+   "coloring_orbits": 178,
+   "groups": 59,
+   "losing_groups": 0,
+   "winning_rounds": 4
+  },
+  {
+   "root": 11,
+   "boundary": [
+    3,
+    10,
+    18,
+    12,
+    4
+   ],
+   "coloring_orbits": 148,
+   "groups": 55,
+   "losing_groups": 0,
+   "winning_rounds": 3
+  },
+  {
+   "root": 13,
+   "boundary": [
+    6,
+    12,
+    18,
+    19,
+    14
+   ],
+   "coloring_orbits": 133,
+   "groups": 58,
+   "losing_groups": 0,
+   "winning_rounds": 2
+  },
+  {
+   "root": 14,
+   "boundary": [
+    6,
+    13,
+    19,
+    15,
+    7
+   ],
+   "coloring_orbits": 138,
+   "groups": 48,
+   "losing_groups": 0,
+   "winning_rounds": 2
+  },
+  {
+   "root": 15,
+   "boundary": [
+    7,
+    14,
+    19,
+    17,
+    16
+   ],
+   "coloring_orbits": 143,
+   "groups": 58,
+   "losing_groups": 0,
+   "winning_rounds": 3
+  },
+  {
+   "root": 16,
+   "boundary": [
+    7,
+    15,
+    17,
+    9,
+    8
+   ],
+   "coloring_orbits": 158,
+   "groups": 61,
+   "losing_groups": 0,
+   "winning_rounds": 5
+  },
+  {
+   "root": 19,
+   "boundary": [
+    13,
+    18,
+    17,
+    15,
+    14
+   ],
+   "coloring_orbits": 138,
+   "groups": 54,
+   "losing_groups": 0,
+   "winning_rounds": 3
+  }
+ ],
+ "graph36_root8_mass": {
+  "root": 8,
+  "boundary_cyclic_order": [
+   1,
+   7,
+   16,
+   9,
+   2
+  ],
+  "coloring_orbits": 198,
+  "non_target": 131,
+  "empty_family": false,
+  "vacuous_non_target": false,
+  "one_swap_stuck": 3,
+  "two_swap_stuck": 0,
+  "good_macro2": true,
+  "one_swap_first_stuck": {
+   "vertex_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "coloring": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    0,
+    3,
+    0,
+    3,
+    0,
+    3,
+    1,
+    3,
+    1,
+    2,
+    1,
+    0
+   ],
+   "rank": [
+    1,
+    190
+   ],
+   "integer_rank": 2591,
+   "one_step": [
+    {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      0,
+      1,
+      3,
+      7,
+      10,
+      12,
+      14,
+      16,
+      18,
+      19
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      0,
+      3,
+      0,
+      3,
+      1,
+      3,
+      1,
+      2,
+      1,
+      0
+     ],
+     "rank": [
+      1,
+      190
+     ]
+    },
+    {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      12
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      2,
+      3,
+      0,
+      3,
+      1,
+      3,
+      1,
+      0,
+      1,
+      2
+     ],
+     "rank": [
+      1,
+      206
+     ]
+    },
+    {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      10,
+      17,
+      19
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      2,
+      3,
+      0,
+      3,
+      1,
+      3,
+      1,
+      0,
+      1,
+      2
+     ],
+     "rank": [
+      1,
+      206
+     ]
+    },
+    {
+     "pair": [
+      0,
+      3
+     ],
+     "component": [
+      0,
+      5,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      19
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      0,
+      3,
+      0,
+      3,
+      1,
+      3,
+      1,
+      2,
+      1,
+      0
+     ],
+     "rank": [
+      1,
+      190
+     ]
+    },
+    {
+     "pair": [
+      1,
+      2
+     ],
+     "component": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      14
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      0,
+      3,
+      0,
+      3,
+      1,
+      3,
+      2,
+      1,
+      2,
+      0
+     ],
+     "rank": [
+      1,
+      207
+     ]
+    },
+    {
+     "pair": [
+      1,
+      2
+     ],
+     "component": [
+      16,
+      17,
+      18
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      0,
+      3,
+      0,
+      3,
+      1,
+      3,
+      2,
+      1,
+      2,
+      0
+     ],
+     "rank": [
+      1,
+      207
+     ]
+    },
+    {
+     "pair": [
+      1,
+      3
+     ],
+     "component": [
+      1,
+      5
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      3,
+      2,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      3,
+      1,
+      3,
+      2,
+      3,
+      0
+     ],
+     "rank": [
+      1,
+      211
+     ]
+    },
+    {
+     "pair": [
+      1,
+      3
+     ],
+     "component": [
+      3,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16,
+      18
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      3,
+      2,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      3,
+      1,
+      3,
+      2,
+      3,
+      0
+     ],
+     "rank": [
+      1,
+      211
+     ]
+    },
+    {
+     "pair": [
+      2,
+      3
+     ],
+     "component": [
+      2,
+      9,
+      15,
+      17
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      3,
+      0,
+      3,
+      0,
+      2,
+      0,
+      2,
+      1,
+      3,
+      1,
+      2,
+      1,
+      0
+     ],
+     "rank": [
+      1,
+      228
+     ]
+    },
+    {
+     "pair": [
+      2,
+      3
+     ],
+     "component": [
+      4,
+      5,
+      6,
+      11,
+      13
+     ],
+     "successor": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      3,
+      0,
+      3,
+      0,
+      2,
+      0,
+      2,
+      1,
+      3,
+      1,
+      2,
+      1,
+      0
+     ],
+     "rank": [
+      1,
+      228
+     ]
+    }
+   ]
+  },
+  "one_swap_stuck_colorings": [
+   [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    0,
+    3,
+    0,
+    3,
+    0,
+    3,
+    1,
+    3,
+    1,
+    2,
+    1,
+    0
+   ],
+   [
+    0,
+    1,
+    2,
+    1,
+    3,
+    2,
+    3,
+    0,
+    3,
+    0,
+    2,
+    1,
+    2,
+    1,
+    3,
+    2,
+    1,
+    3,
+    0
+   ],
+   [
+    0,
+    1,
+    2,
+    3,
+    1,
+    3,
+    2,
+    0,
+    0,
+    1,
+    2,
+    0,
+    1,
+    3,
+    1,
+    3,
+    2,
+    3,
+    0
+   ]
+  ],
+  "one_swap_stuck_escapes": [
+   [
+    [
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      6,
+      14
+     ],
+     [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      0,
+      3,
+      0,
+      3,
+      1,
+      3,
+      2,
+      1,
+      2,
+      0
+     ],
+     [
+      1,
+      207
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      3,
+      7,
+      10,
+      14,
+      17,
+      19
+     ],
+     [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      0,
+      3,
+      1,
+      3,
+      1,
+      3,
+      2,
+      1,
+      2,
+      0
+     ],
+     [
+      1,
+      168
+     ]
+    ]
+   ],
+   [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      2,
+      5
+     ],
+     [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      3,
+      2,
+      3,
+      2,
+      0,
+      1,
+      0,
+      1,
+      3,
+      0,
+      1,
+      3,
+      2
+     ],
+     [
+      1,
+      204
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      3,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      3,
+      2,
+      3,
+      2,
+      0,
+      1,
+      0,
+      1,
+      3,
+      1,
+      0,
+      3,
+      2
+     ],
+     [
+      0,
+      239
+     ]
+    ]
+   ],
+   [
+    [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      4,
+      7,
+      12,
+      13,
+      15,
+      19
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      1,
+      3,
+      2,
+      0,
+      1,
+      0,
+      2,
+      0,
+      1,
+      3,
+      1,
+      3,
+      2,
+      3,
+      0
+     ],
+     [
+      1,
+      219
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      1,
+      3,
+      0,
+      2,
+      1,
+      2,
+      0,
+      2,
+      1,
+      3,
+      1,
+      3,
+      0,
+      3,
+      2
+     ],
+     [
+      0,
+      264
+     ]
+    ]
+   ]
+  ]
+ },
+ "permutation_regressions": [
+  {
+   "perm": [
+    6,
+    19,
+    0,
+    18,
+    14,
+    4,
+    13,
+    17,
+    7,
+    2,
+    10,
+    16,
+    11,
+    3,
+    15,
+    8,
+    12,
+    9,
+    1,
+    5
+   ],
+   "image_root": 7,
+   "mass_counts": [
+    198,
+    131,
+    3,
+    0
+   ],
+   "rank_multiset_equal": true,
+   "sigma_beta_losing_by_image_root": {
+    "7": 5,
+    "10": 0,
+    "16": 0,
+    "3": 0,
+    "15": 0,
+    "8": 0,
+    "12": 0,
+    "5": 0
+   }
+  },
+  {
+   "perm": [
+    4,
+    18,
+    11,
+    19,
+    0,
+    9,
+    16,
+    15,
+    6,
+    13,
+    1,
+    14,
+    10,
+    2,
+    3,
+    17,
+    12,
+    8,
+    5,
+    7
+   ],
+   "image_root": 6,
+   "mass_counts": [
+    198,
+    131,
+    3,
+    0
+   ],
+   "rank_multiset_equal": true,
+   "sigma_beta_losing_by_image_root": {
+    "6": 0,
+    "1": 0,
+    "14": 5,
+    "2": 0,
+    "3": 0,
+    "17": 0,
+    "12": 0,
+    "7": 0
+   }
+  },
+  {
+   "perm": [
+    1,
+    17,
+    19,
+    13,
+    3,
+    6,
+    7,
+    4,
+    16,
+    2,
+    12,
+    5,
+    9,
+    15,
+    14,
+    0,
+    10,
+    18,
+    8,
+    11
+   ],
+   "image_root": 16,
+   "mass_counts": [
+    198,
+    131,
+    3,
+    0
+   ],
+   "rank_multiset_equal": true,
+   "sigma_beta_losing_by_image_root": {
+    "16": 5,
+    "12": 0,
+    "5": 0,
+    "15": 0,
+    "14": 0,
+    "0": 0,
+    "10": 5,
+    "11": 0
+   }
+  },
+  {
+   "perm": [
+    13,
+    8,
+    1,
+    17,
+    6,
+    2,
+    7,
+    4,
+    5,
+    10,
+    12,
+    16,
+    18,
+    15,
+    3,
+    0,
+    19,
+    14,
+    9,
+    11
+   ],
+   "image_root": 5,
+   "mass_counts": [
+    198,
+    131,
+    3,
+    0
+   ],
+   "rank_multiset_equal": true,
+   "sigma_beta_losing_by_image_root": {
+    "5": 5,
+    "12": 0,
+    "16": 0,
+    "15": 0,
+    "3": 0,
+    "0": 0,
+    "19": 5,
+    "11": 0
+   }
+  },
+  {
+   "perm": [
+    1,
+    13,
+    10,
+    14,
+    7,
+    2,
+    3,
+    4,
+    18,
+    11,
+    8,
+    0,
+    15,
+    5,
+    19,
+    6,
+    12,
+    9,
+    16,
+    17
+   ],
+   "image_root": 18,
+   "mass_counts": [
+    198,
+    131,
+    3,
+    0
+   ],
+   "rank_multiset_equal": true,
+   "sigma_beta_losing_by_image_root": {
+    "18": 5,
+    "8": 0,
+    "0": 0,
+    "5": 0,
+    "19": 0,
+    "6": 0,
+    "12": 0,
+    "17": 0
+   }
+  },
+  {
+   "perm": [
+    12,
+    0,
+    1,
+    15,
+    7,
+    2,
+    13,
+    8,
+    3,
+    4,
+    11,
+    19,
+    6,
+    14,
+    5,
+    9,
+    17,
+    16,
+    10,
+    18
+   ],
+   "image_root": 3,
+   "mass_counts": [
+    198,
+    131,
+    3,
+    0
+   ],
+   "rank_multiset_equal": true,
+   "sigma_beta_losing_by_image_root": {
+    "3": 5,
+    "11": 0,
+    "19": 0,
+    "14": 0,
+    "5": 0,
+    "9": 0,
+    "17": 0,
+    "18": 0
+   }
+  }
+ ],
+ "sigma_beta_relabelling_diagnostic": {
+  "relabellings_changing_some_exterior_root_outcome": 3,
+  "note": "Diagnostic only. (sigma,beta) is label-sensitive by construction; a change is expected behaviour, not an implementation error."
+ },
+ "icosahedron": [
+  {
+   "root": 0,
+   "boundary_cyclic_order": [
+    1,
+    5,
+    11,
+    7,
+    8
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 1,
+   "boundary_cyclic_order": [
+    0,
+    8,
+    2,
+    6,
+    5
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 2,
+   "boundary_cyclic_order": [
+    1,
+    8,
+    9,
+    3,
+    6
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 3,
+   "boundary_cyclic_order": [
+    2,
+    9,
+    10,
+    4,
+    6
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 4,
+   "boundary_cyclic_order": [
+    3,
+    10,
+    11,
+    5,
+    6
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 5,
+   "boundary_cyclic_order": [
+    4,
+    11,
+    0,
+    1,
+    6
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 6,
+   "boundary_cyclic_order": [
+    5,
+    1,
+    2,
+    3,
+    4
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 7,
+   "boundary_cyclic_order": [
+    11,
+    10,
+    9,
+    8,
+    0
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 8,
+   "boundary_cyclic_order": [
+    7,
+    9,
+    2,
+    1,
+    0
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 9,
+   "boundary_cyclic_order": [
+    8,
+    7,
+    10,
+    3,
+    2
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 10,
+   "boundary_cyclic_order": [
+    9,
+    7,
+    11,
+    4,
+    3
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  },
+  {
+   "root": 11,
+   "boundary_cyclic_order": [
+    5,
+    4,
+    10,
+    7,
+    0
+   ],
+   "coloring_orbits": 20,
+   "non_target": 10,
+   "empty_family": false,
+   "vacuous_non_target": false,
+   "one_swap_stuck": 0,
+   "two_swap_stuck": 0,
+   "good_macro2": true,
+   "max_target_distance": 1
+  }
+ ]
+}

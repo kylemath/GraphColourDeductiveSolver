@@ -327,11 +327,11 @@ Kamper: 4:30.
 
 **KAMPER**: And the leak says...
 
-**BUCKY**: The audit says their bit, beta, repairs all four: 3, 13, 17, 21, with lookup ranks of at most four or five. So they found a better instrument than mine. Fine. But it also says no common interior swap and no common repeated-colour swap repairs the old five losers. That kills two of our "later" items from last night.
+**BUCKY**: The audit says their bit, beta, repairs all four: 3, 13, 17, 21, with lookup ranks of at most four or five. So they found a better instrument than mine. Fine. It also says no *common* interior swap and no *common* repeated-colour swap, chosen from sigma alone, repairs the old five losers.
 
 **APPKEN**: *(wincing)* "Interior swaps as instruments. Possibly necessary."
 
-**BUCKY**: Dead, at least in that form. In the common-action game, anyway. Two: the icosahedron. My assistant found twenty colourings per root, all within one swap. The audit independently says the same. Easy. My "fairest test there is" was the easiest test there is.
+**BUCKY**: Not dead. Narrower than that. It kills one shortcut: a single interior swap you can pick from the boundary summary alone. A policy that sees the whole colouring can still use interior swaps. That napkin stays on "later." Two: the icosahedron. My assistant found twenty colourings per root, all within one swap. The audit independently says the same. Easy. My "fairest test there is" was the easiest test there is.
 
 **KAMPER**: *(gently)* You were right that root selection can't help there. You were wrong that it would be hard. Half-right is a respectable fraction before dawn.
 
@@ -407,7 +407,7 @@ Kamper: 4:30.
 
 **BUCKY**: And if all six lose?
 
-**KAMPER**: Then the boundary-plus-beta observation is too weak at graph 36 regardless of root, and Appken's full-state potential is the only live shape.
+**KAMPER**: Then the boundary-plus-beta observation is too weak at graph 36 regardless of root, and Appken's full-state potential is one live shape. Not the only one: memory, short macros and other observations are all still open.
 
 **APPKEN**: Either way we learn something.
 
@@ -576,3 +576,7 @@ WRITE TO THE TEAM TONIGHT: the dead list, the fixtures, an offer.
 ### Author's note
 
 The two documents the characters read are the project's 4 October 2026 progress report and the audit of it, presented in the story as leaks. Every technical claim attributed to them comes from those texts. Several things are invented for the story and are not project findings: the characters' own results from the day (Bucky's nesting refinement, Appken's potentials and their failures at order sixteen, and Kamper's first-ring degree comparison). The real record of what has been checked is in the Proof Navigator.
+
+**Postscript, after the teams' replies.** Some lines in both plays have been corrected since publication. Catalan 42 does not constrain chains that share a colour. Interior swaps are not dead; only the common-action shortcut is. And "only live shape" is now "one live shape."
+
+Kamper's question was also answered by a real replay. At graph 36, all seven other exterior roots win the (σ, β) game; only root 8 loses. Root 8 nevertheless passes the tested two-swap component-mass descent, so "find one of the other seven" was the wrong objective for that formula. The (σ, β) game also turns out to depend on vertex labels: under random relabellings of graph 36, its outcome changes at some roots, while the mass-macro results do not.

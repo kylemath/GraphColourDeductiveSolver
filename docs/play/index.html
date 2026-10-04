@@ -522,12 +522,14 @@ red–yellow chain v1 → v3   AND   blue–green chain v2 → v4
 <p class="stage"><span class="cue c-bucky">Bucky</span> and <span class="cue c-appken">Appken</span> wait.</p>
 <div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> Chains of disjoint colour pairs can't cross. That's the whole engine of the degree-four argument. Red–yellow and blue–green can't cross on a sphere. So around a boundary of five vertices, the way the chains connect them isn't arbitrary. It's <em>non-crossing</em>. Planar. Nested, like parentheses.</p></div>
 <div class="line c-bucky"><span class="speaker">Bucky</span><p>Non-crossing partitions.</p></div>
-<div class="line c-kamper"><span class="speaker">Kamper</span><p>Non-crossing partitions. And the number of non-crossing partitions of five points is...</p></div>
-<div class="line c-bucky"><span class="speaker">Bucky</span><p>Catalan. Forty-two.</p></div>
-<div class="line c-kamper"><span class="speaker">Kamper</span><p>Forty-two. That's tiny. Even if you record, for each of the six colour pairs, how the boundary is partitioned, and you add <em>how those partitions sit relative to each other</em> as nested curves on the sphere... it's still a bounded amount of data. It doesn't grow with the graph. The exterior is enormous, but what the exterior <em>can do to the boundary</em> is constrained by topology to a bounded menu.</p></div>
-<div class="line c-appken"><span class="speaker">Appken</span><p>So sigma was the right <em>kind</em> of thing, just missing the nesting.</p></div>
-<div class="line c-kamper"><span class="speaker">Kamper</span><p>Possibly. That's a conjecture, and it's ours, and it's probably wrong in an interesting way. I'd want to know whether the five losing Kittell signatures disappear when you add the nesting order. If they don't, it's dead, and we learn which <em>other</em> bounded thing to try.</p></div>
-<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(already writing)</span> Refinement candidate one: sigma plus relative nesting of bichromatic chain-curves around the root. Test: robust game on Kittell, pooled and per-root. Kill condition: any losing signature remains.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Non-crossing partitions. Which would make it a tiny menu, a few dozen shapes at most, and... <span class="dir">(She stops.)</span> No. Wait. I'm cheating.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Where?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><em>Disjoint</em> pairs. Red–yellow can't cross blue–green. But look at the boundary we care about: five neighbours, four colours, so one colour repeats. The chains that matter there are things like red–yellow and red–blue. They <em>share</em> red. Chains that share a colour share vertices. They can touch. They can cross. The topology that fences in Kempe's degree-four case doesn't fence these in.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So no tiny menu.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Not from that argument. Counting what <em>would</em> fit on a menu proves nothing. Whatever extra information we add, someone has to define it, including for chains that share a colour, and then prove it's enough.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So sigma might be missing something, but we don't know what.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Exactly that. I'd still like to see whether some nesting data repairs the five losing Kittell signatures. As an experiment, not a promise. If it doesn't, it's dead, and we learn which <em>other</em> thing to try.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(already writing)</span> Refinement candidate one: sigma plus some relative nesting of bichromatic chain-curves around the root. First: define it for chains that share a colour. Test: robust game on Kittell, pooled and per-root. Kill condition: any losing signature remains.</p></div>
 <div class="line c-appken"><span class="speaker">Appken</span><p>You write like a lab notebook.</p></div>
 <div class="line c-bucky"><span class="speaker">Bucky</span><p>I write like someone who's been burned by a lab notebook.</p></div>
 <h3>ii. Choosing the Strike</h3>
@@ -737,8 +739,9 @@ q = refined-signature rank     ← Bucky</pre></figure>
 
 THREAD B  (Bucky)   — WHAT STEP SEES
   Refine σ with BOUNDED extra info: nesting order of
-        bichromatic chain-curves around the root (non-crossing,
-        Catalan-small).  Then maybe 2-step interaction bits.
+        bichromatic chain-curves around the root (must be
+        DEFINED for chains sharing a colour; no Catalan
+        shortcut).  Then maybe 2-step interaction bits.
   Test: robust boundary game on Kittell, pooled and per-root.
   Then: icosahedron (Select is useless there — Step alone).
   Kill: losing signatures survive, OR refinement grows with n.
@@ -833,7 +836,7 @@ NOT ALLOWED:
 <div class="line c-bucky"><span class="speaker">Bucky</span><p>The checklist.</p></div>
 <div class="line c-kamper"><span class="speaker">Kamper</span><p>The checklist.</p></div>
 <p class="stage"><span class="cue c-bucky">Bucky</span> takes a step towards the uphill road, towards the university and its lab, then turns back.</p>
-<div class="line c-bucky"><span class="speaker">Bucky</span><p>I'm going to refine sigma. The nesting of the chain-curves around the root, the non-crossing structure, nothing else. Then I'll run the robust game on Kittell, pooled and per-root. If those five losers turn into winners and the extra data stays bounded, I'll go straight to the icosahedron. If they don't, I'll tell you exactly which collision survived, and why.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I'm going to refine sigma. The nesting of the chain-curves around the root, defined properly this time, including the chains that share a colour, nothing else. Then I'll run the robust game on Kittell, pooled and per-root. If those five losers turn into winners and the extra data stays bounded, I'll go straight to the icosahedron. If they don't, I'll tell you exactly which collision survived, and why.</p></div>
 <aside class="thought c-bucky"><span class="who">Bucky, inside</span>I want to be right. No. I want to know. Those aren't the same. Remember they aren't the same.</aside>
 <div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(cont'd, aloud, to both)</span> I'm terrified it'll work on the first try. Then I won't trust it.</p></div>
 <div class="line c-appken"><span class="speaker">Appken</span><p>That's the right thing to be terrified of.</p></div>
