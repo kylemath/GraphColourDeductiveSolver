@@ -37,3 +37,7 @@ yarn-error.log*
 *.log
 logs/
 
+# Lean Lake. Package checkouts are nested git repos. Recording them without
+# .gitmodules makes GitHub Pages fail with "No url found for submodule path".
+.lake/
+
