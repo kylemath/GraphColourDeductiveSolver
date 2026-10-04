@@ -12,9 +12,10 @@ hash recorded by the census.  Outcomes follow JointMassMacroExecutionPlan.md:
 Checks:
   sigma-beta : bit-search-results.json, failure = losing_groups > 0.  Label-sensitive: a
                (sigma,beta) result is a fact about one labelling, not about the graph.
-  mass       : a per-root mass-macro table published by the corpus team (pass --mass-table).
-               Expected layout mirrors the census: orders[].graphs_checked[].{graph_index,
-               ascii, roots[]}; a root fails when its --mass-good-field is false.
+  mass       : mass-macro-results.json published by the corpus team (MassMacroCorpusReport.md):
+               orders[].graphs_checked[].{graph_index, ascii, ascii_sha256, roots[]}, per-root
+               outcome "passes" or "fails"; ascii_sha256 is UTF-8 of the line without newline.
+               Its whole-file hash is checked against mass-macro-SHA256SUMS.
 
 Reports facts only; the navigator assigns statuses.
 """
@@ -104,8 +105,24 @@ def load_table(path, failed, corpus):
         for g in o["graphs_checked"]:
             key = (o["order"], g["graph_index"])
             assert corpus[key] == g["ascii"], f"ASCII mismatch at {key}"
+            if "ascii_sha256" in g:
+                assert hashlib.sha256(g["ascii"].encode()).hexdigest() == g["ascii_sha256"], key
+            assert not g.get("no_start_coloring_roots"), f"empty colouring family at {key}"
             table[key] = {r["root"]: failed(r) for r in g["roots"]}
     return table
+
+
+def manifest_hash(manifest, name):
+    for line in Path(manifest).read_text().splitlines():
+        digest, _, file = line.partition("  ")
+        if Path(file).name == name:
+            return digest
+    raise KeyError(name)
+
+
+def mass_outcome(r):
+    assert r["outcome"] in ("passes", "fails"), r["outcome"]
+    return r["outcome"] == "fails"
 
 
 # ---------------------------------------------------------------- adversary
@@ -146,8 +163,8 @@ def evaluate(rule_name, corpus, table, source):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", choices=["sigma-beta", "mass"], default="sigma-beta")
-    ap.add_argument("--mass-table", type=Path, help="Published per-root mass-macro table (corpus team).")
-    ap.add_argument("--mass-good-field", default="good_macro2")
+    ap.add_argument("--mass-table", type=Path, default=FIXTURES / "mass-macro-results.json",
+                    help="Published per-root mass-macro table (corpus team).")
     ap.add_argument("--rules", nargs="*", default=list(RULES))
     ap.add_argument("--max-order", type=int, default=20,
                     help="Evaluate only orders <= this (holdout: discovery uses <= 18).")
@@ -159,10 +176,10 @@ def main():
         table = load_table(source, lambda r: r["losing_groups"] > 0, corpus)
         note = "(sigma,beta) is label-sensitive; results describe the Plantri labelling only."
     else:
-        if not args.mass_table:
-            ap.error("--check mass needs --mass-table (the corpus team's published table)")
         source = args.mass_table
-        table = load_table(source, lambda r: not r[args.mass_good_field], corpus)
+        assert sha(source) == manifest_hash(FIXTURES / "mass-macro-SHA256SUMS", Path(source).name), \
+            "mass table does not match mass-macro-SHA256SUMS"
+        table = load_table(source, mass_outcome, corpus)
         note = "Mass-macro goodness is isomorphism-invariant (InvarianceNote.md)."
     table = {k: v for k, v in table.items() if k[0] <= args.max_order}
     results = [evaluate(name, corpus, table, Path(source).name) for name in args.rules]
@@ -172,7 +189,8 @@ def main():
            "inputs": {Path(source).name: sha(source), "search-results.json": sha(FIXTURES / "search-results.json")},
            "checkers": {p.name: sha(p) for p in (HERE / "adversary.py", HERE / "mass_core.py")},
            "results": results}
-    output = args.output or HERE / f"adversary-{args.check}.json"
+    suffix = "" if args.max_order == 20 else f"-max{args.max_order}"
+    output = args.output or HERE / f"adversary-{args.check}{suffix}.json"
     output.write_text(json.dumps(out, indent=1) + "\n")
     for res in results:
         c, f = res["counts"], res["first_failures"]
