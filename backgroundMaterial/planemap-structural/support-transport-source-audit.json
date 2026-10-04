@@ -1,0 +1,315 @@
+{
+  "module_count": 43,
+  "linked_upstream_artifacts": 111948,
+  "excluded_custom_artifacts": 493,
+  "modules": [
+    "Mathlib.Combinatorics.SimpleGraph.Coloring.Kempe",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.ErasePermutation",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.RotationSystem",
+    "Mathlib.Combinatorics.SimpleGraph.Coloring.FiniteReachability",
+    "Mathlib.Combinatorics.SimpleGraph.Coloring.FiveColorExtension",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Construction",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap",
+    "MathlibTest.PlaneMapFiniteReachability",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Examples",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Jordan",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanFace",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanGrow",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanSides",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanSplit",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanEven",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanCycle",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanTwoSides",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanWalkParity",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalMap",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorSeparation",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Icosahedron",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.RotationDelete",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDegree",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalFiveColor",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColor",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorExtension",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDelete",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalSmallOrder",
+    "MathlibTest.PlaneMapIcosahedron",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.DegreeFiveOutside",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.DeleteVertex",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiniteFourExtension",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorSmallOrder",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SupportTransport",
+    "MathlibTest.PlaneMapIndependentChecks",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorExamples",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourEliminationOrder",
+    "MathlibTest.PlaneMapDegreeFiveOutside",
+    "MathlibTest.PlaneMapFiniteFourColor",
+    "MathlibTest.PlaneMapSupportTransport",
+    "MathlibTest.PlaneMapFiveColor",
+    "MathlibTest.PlaneMapFourColor"
+  ],
+  "status": "passed",
+  "module_results": [
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.Coloring.Kempe",
+      "status": "passed",
+      "source_sha256": "5814169be7a212784df024519c9338ccb3a360e413f6982f00014566b50d7152",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.ErasePermutation",
+      "status": "passed",
+      "source_sha256": "b20d15fb0ec2a25d9855989e9a75a485c639b81b133fca51c72e4a83464d313b",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.RotationSystem",
+      "status": "passed",
+      "source_sha256": "e851d035e9a7399840124fb17a88200b2be223e727cea25e76c5d189a28c1761",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.Coloring.FiniteReachability",
+      "status": "passed",
+      "source_sha256": "01feb877713aede4766351d61b757fb8f330fc2c587d4727ccc9904f3d2819d3",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.Coloring.FiveColorExtension",
+      "status": "passed",
+      "source_sha256": "bbd893538cf4e94f495cd5157fb44db5bb83e01640e4bc1e4e39887ab8486bd1",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Construction",
+      "status": "passed",
+      "source_sha256": "94cc24ea3097543f97820858b1218306e4c5120ea6ea5e46bf32a4885a8c62b1",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap",
+      "status": "passed",
+      "source_sha256": "4331c9217e249242cc0f3b17d855fc990c261aa2e3cab531af4c835c45027789",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "MathlibTest.PlaneMapFiniteReachability",
+      "status": "passed",
+      "source_sha256": "3456dd52e40bbe0b7b505c1b1c1b778a3c6763148ece1ce67de99b87d3e1fa2e",
+      "guarded_axiom_report_count": 6
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Examples",
+      "status": "passed",
+      "source_sha256": "c1b57d47396b3f64e2cfa90febaf937356b52a34b83c0af463a2712135240403",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Jordan",
+      "status": "passed",
+      "source_sha256": "e0cf1c1c56d68fdec4ad54d26ee8799b34e9d13a1b20939ab42a2d98ee6bd43d",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanFace",
+      "status": "passed",
+      "source_sha256": "dd229261eff9ba4aaff18055bf10e1bb85a31a9b9a8befdfe1c22ba0f297e343",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanGrow",
+      "status": "passed",
+      "source_sha256": "15f487ce84999d0af0731897fbd191a1b078b78d89e35d0bdcd18b1cc5c5b11f",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanSides",
+      "status": "passed",
+      "source_sha256": "40787e61bdaa9610d9fea925fa73939d5d31b88927c1e1f9ef640ee906c52923",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanSplit",
+      "status": "passed",
+      "source_sha256": "d1e0277fe3386a8dedd158c2a3351396987c39b78432981248b297a4e2670f1b",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanEven",
+      "status": "passed",
+      "source_sha256": "5166b32760c6f28479e08fac2cff913710da83992a9e72063e071a88f117a2fb",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanCycle",
+      "status": "passed",
+      "source_sha256": "f0c0a1c511e9363cbe93705ef7535fe3533cad72397303b3bacc01551d026c00",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanTwoSides",
+      "status": "passed",
+      "source_sha256": "f5600d3d5abec7f2940ef29378bc3d3982db67da2bc51fa81c2793c7eb925ae5",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanWalkParity",
+      "status": "passed",
+      "source_sha256": "05f60eb83343795cff3c7bc27b8bbe6af95dddb4425184ef798a140b35376d85",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalMap",
+      "status": "passed",
+      "source_sha256": "0afa89a48fef78933557549415f82b00f493ab450d9bc16ca67664dbbc9adb73",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorSeparation",
+      "status": "passed",
+      "source_sha256": "ea01f73f8be5d2071c18184d71136e789104f412ac1c4442ab77fa5224529812",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Icosahedron",
+      "status": "passed",
+      "source_sha256": "4bd7c5e0b28b1cddc0c36d535ee5f0d79c1a43ab7f06787a660e9ac558ddf77a",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.RotationDelete",
+      "status": "passed",
+      "source_sha256": "589e4e637007fea1f74fb6cbaec07227932b6b1d1a9bf7b1eac2b47356d483ec",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDegree",
+      "status": "passed",
+      "source_sha256": "2faa9f7cf2d1ceaab3efec4dbc8b4611a7f75357768aaf73e20e5b70e93c0f54",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalFiveColor",
+      "status": "passed",
+      "source_sha256": "eee06da16f90f4a21f9d5284e7b5a23941c55740ac64513a0298f84a4ea2f0cb",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColor",
+      "status": "passed",
+      "source_sha256": "efbb92223e8dce97daa3b15bf1599446b2bc473aff064de5dcfa72f2c7def83f",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorExtension",
+      "status": "passed",
+      "source_sha256": "05fa8ec37cf25f2ace32c2911e2dd375bf79dac447ecd367ce82f97c57973dcb",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDelete",
+      "status": "passed",
+      "source_sha256": "c4f294834f3c29350eb717b54960719dd5a7e6fc7d6a666c3bacd0c483c3faf2",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalSmallOrder",
+      "status": "passed",
+      "source_sha256": "baca98acf203fecc8bcdfdf6bf2ee195e7c1996adb4f3b2b2728541e07d60743",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "MathlibTest.PlaneMapIcosahedron",
+      "status": "passed",
+      "source_sha256": "4b897b8edcdbc73f455a1566d7687638df9ac076a0acb2fed40c6917b5a8a9ff",
+      "guarded_axiom_report_count": 7
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.DegreeFiveOutside",
+      "status": "passed",
+      "source_sha256": "f3141e9ff23a18966714e5727501f6621ea4a71954f4431a6fcb3a3c61eaadd5",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.DeleteVertex",
+      "status": "passed",
+      "source_sha256": "8554f743e44144178ed7b5e903d9eeb5c8ee62cea219695b982d8bbc3688a968",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiniteFourExtension",
+      "status": "passed",
+      "source_sha256": "3c09cc28e7a4aabc57a58bbea2fd015fa69fcdafb54731e399eca0be459736c7",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem",
+      "status": "passed",
+      "source_sha256": "4c924a4f4b44a768016a204d0bbd61dd21ace737301b819dd71ecff3e0597a96",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorSmallOrder",
+      "status": "passed",
+      "source_sha256": "9533ea18734b67e3f1eb3700e586eac1114b676374590a602c3e58d65086b4c1",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SupportTransport",
+      "status": "passed",
+      "source_sha256": "b6760700291a4699e98780aff1f9c63f41789d14b730e477b7b4eaca45398d1e",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "MathlibTest.PlaneMapIndependentChecks",
+      "status": "passed",
+      "source_sha256": "949c768568a3b2d4de89939a233b8a9e12a3651ff6899cb634625e64cc2bf126",
+      "guarded_axiom_report_count": 2
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorExamples",
+      "status": "passed",
+      "source_sha256": "77f8c74f8de1bfe65cca3820d7c4f12b5139871a3a7d8b21687e035d661f6c2e",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourEliminationOrder",
+      "status": "passed",
+      "source_sha256": "fc45b5210d5d0d1cb3cf872c6d8b0f4aec475dae96df62c715924130763a3363",
+      "guarded_axiom_report_count": 0
+    },
+    {
+      "module": "MathlibTest.PlaneMapDegreeFiveOutside",
+      "status": "passed",
+      "source_sha256": "c49eef002ea94588c9e72fffd8078245586a78239f2339510d7cb6b9b0e08015",
+      "guarded_axiom_report_count": 3
+    },
+    {
+      "module": "MathlibTest.PlaneMapFiniteFourColor",
+      "status": "passed",
+      "source_sha256": "c389e70aab8653bd7696a15ff798043b110d79e86f719043f8a953059f475940",
+      "guarded_axiom_report_count": 7
+    },
+    {
+      "module": "MathlibTest.PlaneMapSupportTransport",
+      "status": "passed",
+      "source_sha256": "ee863eaa7106ab478c2ebd58cf6f1f241f599d64037fbfe04dfbb2fd75a56aa1",
+      "guarded_axiom_report_count": 5
+    },
+    {
+      "module": "MathlibTest.PlaneMapFiveColor",
+      "status": "passed",
+      "source_sha256": "bb14229342f2f3af4e8e8ebd32330eff8f71c4c44d7cb4340b9c41f493324c4f",
+      "guarded_axiom_report_count": 10
+    },
+    {
+      "module": "MathlibTest.PlaneMapFourColor",
+      "status": "passed",
+      "source_sha256": "cc26033541f4fd0465bc5e472827ddfb7e794d76656b0e7e193d71830e524855",
+      "guarded_axiom_report_count": 11
+    }
+  ],
+  "source_hashes_unchanged_after_build": true,
+  "audit_date": "2026-10-04",
+  "toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "build_mode": "single dependency-ordered source rebuild"
+}
