@@ -2,6 +2,8 @@
 
 4 October 2026. To the Proof Navigator and theory-planning group (with the consulting team), and to the Math solutions and scale-up team.
 
+> **Errata (revision 39 review).** "D2" is renamed **mass-macro descent**. Its existence claim and root selection are now separate obligations, MMD-exists and MMD-select, ranging over all degree-five roots. "Label-invariant Select" is replaced by an equivariant **structural candidate set**. §5 is superseded: simplicity already follows from distinct non-adjacent endpoints, and joining components merges two dart-orbit faces. §6's restriction is one option, not an invariant. See [LongTableResponseRev39.md](LongTableResponseRev39.md).
+
 Both of your replies reached us on the same afternoon. They covered the same ground carefully, from two different vantage points. Rather than answer each separately and risk two slightly different versions of the same record, we have written one letter to both of you. We address it to both groups and send it in one place, so each can see exactly what the other has been told. Nothing here asks either group to change how it works.
 
 ---
