@@ -1,0 +1,325 @@
+{
+ "scope": "WP9 local-determinacy test on orders 12-18; finite evidence, no status claims.",
+ "orders": "12-18",
+ "roots": 279,
+ "failing_roots": 6,
+ "radii": {
+  "1": {
+   "distinct_codes": 12,
+   "mixed_codes": 3,
+   "LD_survives": false,
+   "mixed_examples": [
+    [
+     [
+      [
+       12,
+       0,
+       0,
+       true
+      ],
+      [
+       12,
+       0,
+       1,
+       true
+      ],
+      [
+       12,
+       0,
+       2,
+       true
+      ],
+      [
+       12,
+       0,
+       3,
+       true
+      ],
+      [
+       12,
+       0,
+       4,
+       true
+      ],
+      [
+       12,
+       0,
+       5,
+       true
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       16,
+       1,
+       3,
+       true
+      ],
+      [
+       16,
+       1,
+       6,
+       true
+      ],
+      [
+       16,
+       1,
+       8,
+       true
+      ],
+      [
+       16,
+       1,
+       11,
+       true
+      ],
+      [
+       17,
+       0,
+       9,
+       false
+      ],
+      [
+       17,
+       0,
+       14,
+       false
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       17,
+       0,
+       4,
+       false
+      ],
+      [
+       17,
+       0,
+       6,
+       false
+      ],
+      [
+       17,
+       1,
+       7,
+       true
+      ],
+      [
+       17,
+       1,
+       13,
+       true
+      ],
+      [
+       18,
+       1,
+       0,
+       true
+      ],
+      [
+       18,
+       1,
+       5,
+       true
+      ]
+     ]
+    ]
+   ],
+   "failing_roots": [
+    {
+     "root": [
+      17,
+      3,
+      3
+     ],
+     "class_size": 16,
+     "passing_roots_sharing_code": 14
+    },
+    {
+     "root": [
+      17,
+      3,
+      13
+     ],
+     "class_size": 16,
+     "passing_roots_sharing_code": 14
+    },
+    {
+     "root": [
+      17,
+      0,
+      9
+     ],
+     "class_size": 44,
+     "passing_roots_sharing_code": 42
+    },
+    {
+     "root": [
+      17,
+      0,
+      14
+     ],
+     "class_size": 44,
+     "passing_roots_sharing_code": 42
+    },
+    {
+     "root": [
+      17,
+      0,
+      4
+     ],
+     "class_size": 17,
+     "passing_roots_sharing_code": 15
+    },
+    {
+     "root": [
+      17,
+      0,
+      6
+     ],
+     "class_size": 17,
+     "passing_roots_sharing_code": 15
+    }
+   ],
+   "failing_roots_sharing_code_with_another_root": 6
+  },
+  "2": {
+   "distinct_codes": 80,
+   "mixed_codes": 0,
+   "LD_survives": true,
+   "mixed_examples": [],
+   "failing_roots": [
+    {
+     "root": [
+      17,
+      0,
+      4
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      0,
+      6
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      0,
+      9
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      0,
+      14
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      3,
+      3
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      3,
+      13
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    }
+   ],
+   "failing_roots_sharing_code_with_another_root": 6
+  },
+  "3": {
+   "distinct_codes": 81,
+   "mixed_codes": 0,
+   "LD_survives": true,
+   "mixed_examples": [],
+   "failing_roots": [
+    {
+     "root": [
+      17,
+      0,
+      4
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      0,
+      6
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      0,
+      9
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      0,
+      14
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      3,
+      3
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    },
+    {
+     "root": [
+      17,
+      3,
+      13
+     ],
+     "class_size": 2,
+     "passing_roots_sharing_code": 0
+    }
+   ],
+   "failing_roots_sharing_code_with_another_root": 6
+  }
+ },
+ "checkers": {
+  "wp9_test.py": "f372a95131875d142a34d3b0c24c610a3f9381ec8542dc0ac4a92fc96de9724e",
+  "WP9-local-determinacy-declaration.md": "962314253e9f2d91ce48638303aedd722df77cea176bc9450efc48ae5d3785e5"
+ },
+ "inputs": {
+  "mass-macro-results.json": "42bf13cdb9d87d952d89982fd2778cd407e7e5ae5c353d2cdb33fda5891b9c80"
+ }
+}
