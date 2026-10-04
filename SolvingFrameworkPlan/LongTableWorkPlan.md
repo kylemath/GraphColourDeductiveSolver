@@ -62,6 +62,17 @@
 
 **Deliverable:** a stated interaction lemma *with quantifiers*, or a counterexample state that refutes the mechanism. Target distance stays diagnostic only.
 
+> **Update, 4 October (evening, later):**
+> - **WP7b:** H-A and H-B refuted; H-C survives but is not distinctive.
+> - **WP7c:** injective pattern charging refuted, by the twins at order 17, graph 3.
+> - **WP7d:** the fixture structure.
+>   - It has five pits of trap and twin, ten connectors at R 1873, ten spurs at R 1866, and stabiliser order 10.
+>   - The toggles are two-vertex chains at the opposite hub, and they never combine.
+>   - C7d has no kill in 39 runs, with an exact maximum fibre of 3.
+> - **WP7e:** Lemma S (one toggle per hub) is proved by hand for every vertex of degree ≥ 5 outside N[r]. It is sent to the math team for checking and possible Lean work.
+> - **Next, pending joint agreement:** targeted search for C7d failure with distant hubs.
+> - The WP7 Lean lemmas 7.1, 7.2 and 7.4 compile (Proof Navigator revision 45).
+
 ### WP8: a joint rank-and-set candidate (only if WP7 suggests one)
 
 - Freeze the rank and an equivariant candidate set together.
