@@ -1,5 +1,7 @@
 # WP7f results: every warned non-strict state is one hub toggle from a warned trap
 
+> **Erratum (Proof Navigator, revision 48).** The run-shape table originally said 30 and 9. The results file `wp7f-results.json` has always recorded **29 runs of shape 1 + 0 and 10 of shape 3 + 1**. The table is now corrected; the earlier messages are left as written.
+
 Long Table, 4 October 2026. This follows [WP7f-declaration.md](WP7f-declaration.md), committed before the check (`ae27388`). The run is `wp7f_test.py`, which writes `wp7f-results.json`, on the math team's 39 warned runs. These are facts, not status claims.
 
 ## Result
@@ -8,8 +10,8 @@ Long Table, 4 October 2026. This follows [WP7f-declaration.md](WP7f-declaration.
 
 | Run shape (strict + non-strict warnings) | Runs | Where |
 |---|---:|---|
-| 1 + 0 | 30 | order 17, graph 0 roots 4, 6, 9 and 14; order 17, graph 3 roots 3 and 13 (single-trap runs); order 20, graph 7 roots 7 and 11; order 20, graph 60 root 3; order 20, graph 62 root 15; order 20, graph 63 roots 3 and 15 |
-| 3 + 1 | 9 | order 17, graph 3 roots 3 and 13 |
+| 1 + 0 | 29 | order 17, graph 0 roots 4, 6, 9 and 14; order 17, graph 3 roots 3 and 13 (single-trap runs); order 20, graph 7 roots 7 and 11; order 20, graph 60 root 3; order 20, graph 62 root 15; order 20, graph 63 roots 3 and 15 |
+| 3 + 1 | 10 | order 17, graph 3 roots 3 and 13 (five runs each) |
 
 - There is at most **1** non-strict warning per run, and every run uses at most **one** toggle.
 - At root 3 the toggles are {13, 16}, {12, 13}, {6, 13}, {7, 13} and {13, 14}. At root 13 they are {3, 10}, {3, 9}, {3, 4}, {0, 3} and {2, 3}. Each contains the opposite hub.
