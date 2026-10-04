@@ -45,3 +45,17 @@ These facts are already computed for the demo. They are listed so the test can r
 - the number of distinct χ values observed.
 
 Any extension beyond the existing corpus, aimed at finding a C7d failure, requires joint agreement first.
+
+## Amendment before running (after the math team's reply)
+
+The math team independently confirmed the fixture counts: 5 trap/twin pairs, 10 crossed connectors at R = 1873, and 10 spurs at R = 1866. They also confirmed that one four-warning run warns three traps and one twin, so multiplicity is essential. The demo caption is corrected: the spurs are not dead ends.
+
+**What C7d risks, stated explicitly.** Two finite-looking objects fail in opposite ways:
+- **Stab(r)-orbits of complete colourings** have bounded size, at most 10, but **the number of orbits is not bounded**.
+- **The boundary-pattern quotient Pat** has finitely many values, but **its fibres can contain arbitrarily many interior variants**.
+
+C7d bets on a combination: χ takes finitely many values (from Pat, up to symmetry, plus τ), and **within one run** each χ-fibre of warned colourings lies in a **single** orbit. So C7d asserts that a run never warns two non-symmetric interior variants with the same χ.
+
+That is exactly where the pattern quotient's unbounded fibres would show up. The order-17, graph-3 fixture is consistent with this only because its trap/twin variants differ in τ. Nothing here suggests the bet holds on larger graphs. Its failure would be a witness of non-symmetric interior variants within one run, which is the useful outcome.
+
+The protocol is unchanged.
