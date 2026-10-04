@@ -1,0 +1,672 @@
+{
+  "scope": "Finite replays of existing root observations and a bounded two-swap experiment for the specific component-mass formula; no uniform coverage theorem.",
+  "order": 20,
+  "graph_index_zero_based": 36,
+  "ascii": "20 bcdef,afghic,abijd,acjkle,adlmf,aemgb,bfmnoh,bgopqi,bhqjc,ciqrkd,djrsl,dksme,elsngf,gmsto,gntph,hotrq,hprji,jqptsk,krtnml,nsrpo",
+  "anchor": 0,
+  "eligible_roots": [
+    8,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    19
+  ],
+  "root_replays": [
+    {
+      "root": 8,
+      "boundary": [
+        1,
+        7,
+        16,
+        9,
+        2
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "coloring_orbits": 198,
+      "groups": 55,
+      "losing_groups": 5,
+      "winning_rounds": 3
+    },
+    {
+      "root": 10,
+      "boundary": [
+        3,
+        9,
+        17,
+        18,
+        11
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "coloring_orbits": 178,
+      "groups": 59,
+      "losing_groups": 0,
+      "winning_rounds": 4
+    },
+    {
+      "root": 11,
+      "boundary": [
+        3,
+        10,
+        18,
+        12,
+        4
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "coloring_orbits": 148,
+      "groups": 55,
+      "losing_groups": 0,
+      "winning_rounds": 3
+    },
+    {
+      "root": 13,
+      "boundary": [
+        6,
+        12,
+        18,
+        19,
+        14
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "coloring_orbits": 133,
+      "groups": 58,
+      "losing_groups": 0,
+      "winning_rounds": 2
+    },
+    {
+      "root": 14,
+      "boundary": [
+        6,
+        13,
+        19,
+        15,
+        7
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "coloring_orbits": 138,
+      "groups": 48,
+      "losing_groups": 0,
+      "winning_rounds": 2
+    },
+    {
+      "root": 15,
+      "boundary": [
+        7,
+        14,
+        19,
+        17,
+        16
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19
+      ],
+      "coloring_orbits": 143,
+      "groups": 58,
+      "losing_groups": 0,
+      "winning_rounds": 3
+    },
+    {
+      "root": 16,
+      "boundary": [
+        7,
+        15,
+        17,
+        9,
+        8
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19
+      ],
+      "coloring_orbits": 158,
+      "groups": 61,
+      "losing_groups": 0,
+      "winning_rounds": 5
+    },
+    {
+      "root": 19,
+      "boundary": [
+        13,
+        18,
+        17,
+        15,
+        14
+      ],
+      "vertex_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "coloring_orbits": 138,
+      "groups": 54,
+      "losing_groups": 0,
+      "winning_rounds": 3
+    }
+  ],
+  "component_mass_two_swap_checks": [
+    {
+      "start": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        3,
+        2,
+        0,
+        3,
+        0,
+        3,
+        0,
+        3,
+        1,
+        3,
+        1,
+        2,
+        1,
+        0
+      ],
+      "two_swap_decrease": {
+        "start": [
+          0,
+          1,
+          2,
+          1,
+          2,
+          3,
+          2,
+          0,
+          3,
+          0,
+          3,
+          0,
+          3,
+          1,
+          3,
+          1,
+          2,
+          1,
+          0
+        ],
+        "rank": [
+          1,
+          190
+        ],
+        "first_move": [
+          1,
+          2,
+          [
+            1,
+            2,
+            3,
+            4,
+            6,
+            14
+          ]
+        ],
+        "intermediate": [
+          0,
+          1,
+          2,
+          1,
+          2,
+          3,
+          2,
+          0,
+          3,
+          0,
+          3,
+          0,
+          3,
+          1,
+          3,
+          2,
+          1,
+          2,
+          0
+        ],
+        "intermediate_rank": [
+          1,
+          207
+        ],
+        "second_move": [
+          0,
+          1,
+          [
+            0,
+            1,
+            3,
+            7,
+            10,
+            14,
+            17,
+            19
+          ]
+        ],
+        "end": [
+          0,
+          1,
+          2,
+          1,
+          2,
+          3,
+          2,
+          0,
+          3,
+          0,
+          3,
+          1,
+          3,
+          1,
+          3,
+          2,
+          1,
+          2,
+          0
+        ],
+        "end_rank": [
+          1,
+          168
+        ]
+      }
+    },
+    {
+      "start": [
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        3,
+        0,
+        3,
+        0,
+        2,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        3,
+        0
+      ],
+      "two_swap_decrease": {
+        "start": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2,
+          3,
+          0,
+          3,
+          0,
+          2,
+          1,
+          2,
+          1,
+          3,
+          2,
+          1,
+          3,
+          0
+        ],
+        "rank": [
+          1,
+          167
+        ],
+        "first_move": [
+          0,
+          2,
+          [
+            0,
+            2,
+            5
+          ]
+        ],
+        "intermediate": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2,
+          3,
+          2,
+          3,
+          2,
+          0,
+          1,
+          0,
+          1,
+          3,
+          0,
+          1,
+          3,
+          2
+        ],
+        "intermediate_rank": [
+          1,
+          204
+        ],
+        "second_move": [
+          0,
+          1,
+          [
+            0,
+            1,
+            3,
+            11,
+            12,
+            13,
+            14
+          ]
+        ],
+        "end": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2,
+          3,
+          2,
+          3,
+          2,
+          0,
+          1,
+          0,
+          1,
+          3,
+          1,
+          0,
+          3,
+          2
+        ],
+        "end_rank": [
+          0,
+          239
+        ]
+      }
+    },
+    {
+      "start": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        3,
+        2,
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        3,
+        1,
+        3,
+        2,
+        3,
+        0
+      ],
+      "two_swap_decrease": {
+        "start": [
+          0,
+          1,
+          2,
+          3,
+          1,
+          3,
+          2,
+          0,
+          0,
+          1,
+          2,
+          0,
+          1,
+          3,
+          1,
+          3,
+          2,
+          3,
+          0
+        ],
+        "rank": [
+          1,
+          188
+        ],
+        "first_move": [
+          0,
+          1,
+          [
+            0,
+            1,
+            4,
+            7,
+            12,
+            13,
+            15,
+            19
+          ]
+        ],
+        "intermediate": [
+          0,
+          1,
+          2,
+          3,
+          1,
+          3,
+          2,
+          0,
+          1,
+          0,
+          2,
+          0,
+          1,
+          3,
+          1,
+          3,
+          2,
+          3,
+          0
+        ],
+        "intermediate_rank": [
+          1,
+          219
+        ],
+        "second_move": [
+          0,
+          2,
+          [
+            0,
+            2
+          ]
+        ],
+        "end": [
+          0,
+          1,
+          2,
+          3,
+          1,
+          3,
+          0,
+          2,
+          1,
+          2,
+          0,
+          2,
+          1,
+          3,
+          1,
+          3,
+          0,
+          3,
+          2
+        ],
+        "end_rank": [
+          0,
+          264
+        ]
+      }
+    }
+  ],
+  "all_non_targets_have_decrease_within_two_swaps": true
+}

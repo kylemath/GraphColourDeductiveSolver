@@ -1,6 +1,6 @@
 {
-  "revision": 36,
-  "updatedAt": "2026-10-04T11:53:18-06:00",
+  "revision": 38,
+  "updatedAt": "2026-10-04T18:23:16.602928+00:00",
   "journal": [
     {
       "time": "2026-09-27T19:45:00Z",
@@ -196,6 +196,16 @@
       "time": "2026-10-04T11:53:18-06:00",
       "node": "structural-gate-d",
       "action": "Executed the degree-five attack: tested common interior/repeated-colour moves, named an exterior connectivity bit, verified finite refined policies, searched the stated full-class kill witness through order twenty, and falsified the first exterior-anchor robust rank rule. Added genuine spherical icosahedron and executable degree-four extension; no general Four Colour claim."
+    },
+    {
+      "time": "2026-10-04T18:14:21.706305+00:00",
+      "action": "Unified all 41 source checks, corrected the final executable-extension API description, and falsified one explicit full-state component-mass potential on graph36/root8. Added the witness beside the existing live Gate D branches; no proved status changed.",
+      "node": "structural-component-mass-rank"
+    },
+    {
+      "time": "2026-10-04T18:23:16.602928+00:00",
+      "node": "structural-component-mass-two-swap",
+      "action": "Reviewed afternoon sequel without counting fictional experiments as findings. Replayed all eight exterior roots; tested bounded two-swap descent of the explicit mass formula on graph36/root8. Added finite evidence and an agent-to-agent handoff; no proved or killed status changed."
     }
   ],
   "patches": [
@@ -3360,6 +3370,57 @@
       "revision": 36,
       "id": "structural-four-colour",
       "evidence": "All 41 custom source modules and guarded tests passed against freshly rebuilt custom dependencies, with source hashes rechecked. New results include the spherical icosahedron, computed degree-four extension, and six exterior-root availability theorem. Uniform degree-five escape and the general theorem remain open."
+    },
+    {
+      "revision": 37,
+      "op": "insert",
+      "parentId": "structural-d-root",
+      "node": {
+        "id": "structural-component-mass-rank",
+        "title": "Boundary surplus and component-mass rank",
+        "status": "killed",
+        "statement": "At selected root 8 of the order-20 graph-36 fixture, every non-target proper deletion colouring has a single Kempe component swap strictly decreasing lex(boundary colour surplus, sum of squared exterior component sizes).",
+        "evidence": "Three local minima among 198 colouring orbits (131 non-target). First rank (1,190), all successor ranks equal or larger. Includes interior swaps. The specific formula is killed; general Kempe escape and Four Colour remain open.",
+        "files": [
+          "SolvingFrameworkPlan/PlayResearchReview.md",
+          "backgroundMaterial/planemap-structural/component-mass.py",
+          "backgroundMaterial/planemap-structural/component-mass-results.json"
+        ],
+        "notes": [],
+        "children": [],
+        "expanded": true,
+        "active": true,
+        "approach": "Evaluate a specified polynomial-range formula on full states, without target-distance or attractor ranks.",
+        "killCriteria": "One proper non-target colouring with no strictly decreasing legal single-component swap."
+      }
+    },
+    {
+      "revision": 37,
+      "id": "structural-four-colour",
+      "evidence": "A unified dependency-ordered source rebuild passed all 41 custom modules and guarded tests, with 493 cached custom artifacts excluded and all source hashes unchanged. Degree-five escape, polynomial complexity, triangulation completion and the general theorem remain open."
+    },
+    {
+      "revision": 38,
+      "op": "insert",
+      "parentId": "structural-d-root",
+      "node": {
+        "id": "structural-component-mass-two-swap",
+        "title": "Two-swap component-mass descent on graph36/root8",
+        "status": "computed",
+        "statement": "Every non-target proper deletion-colouring orbit of this one fixture has a sequence of at most two Kempe component swaps strictly decreasing the explicit boundary-surplus/component-mass formula.",
+        "evidence": "Independent replay: seven of eight eligible exterior roots win the fixed observation game. All three single-swap component-mass local minima admit a decreasing two-swap sequence. The strict single-swap conjecture stays killed; uniform macro coverage and a polynomial solver remain unproved.",
+        "files": [
+          "SolvingFrameworkPlan/AfternoonAgentResponse.md",
+          "backgroundMaterial/planemap-structural/afternoon-checks.py",
+          "backgroundMaterial/planemap-structural/afternoon-checks.json"
+        ],
+        "notes": [],
+        "children": [],
+        "active": true,
+        "expanded": true,
+        "approach": "A fixed formula plus bounded macros; no target-distance rank.",
+        "killCriteria": "A non-target state with no decreasing two-swap sequence kills this specific formula/coverage claim for its chosen root."
+      }
     }
   ]
 }

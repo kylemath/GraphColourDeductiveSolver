@@ -1,0 +1,358 @@
+Unified source rebuild, 4 October 2026
+All custom artifacts excluded; every listed module compiled from source.
+Guarded axiom reports are checked during compilation of the test modules.
+
+Mathlib.Combinatorics.SimpleGraph.Coloring.Kempe : passed
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:68:29: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [kempeSwap, hv, hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:124:16: warning: This simp argument is unused:
+  hv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hu, hcu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:126:16: warning: This simp argument is unused:
+  hv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hu, hcu, Ne.symm hab]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:135:12: warning: This simp argument is unused:
+  hu
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hv, hcv]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:137:12: warning: This simp argument is unused:
+  hu
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hv, hcv, Ne.symm hab]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:251:28: warning: This simp argument is unused:
+  hya
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [kempeSwap, hyS, hy]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:283:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.coe_neighbourColourFinset`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:287:31: warning: This simp argument is unused:
+  Finset.mem_image
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [neighbourColourFinset, mem_neighborFinset, Set.mem_image, mem_neighborSet]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:287:49: warning: This simp argument is unused:
+  mem_neighborFinset
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [neighbourColourFinset, Finset.mem_image, Set.mem_image, mem_neighborSet]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:290:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.neighbourColourFinset_card_le_degree`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:303:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.isProperColouring_induce_iff`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:386:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.five_colorable_of_card_le_five`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.ErasePermutation : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.RotationSystem : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.Coloring.FiniteReachability : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.Coloring.FiveColorExtension : passed
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:56:21: warning: Variable name `hv1x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hv1x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:57:5: warning: Variable name `hv3x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hv3x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:57:21: warning: Variable name `hv4x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hv4x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.Construction : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap : passed
+
+
+MathlibTest.PlaneMapFiniteReachability : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.Examples : passed
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:31:8: warning: This simp argument is unused:
+  pathGraph_adj
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [bot_adj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:31:23: warning: This simp argument is unused:
+  bot_adj
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pathGraph_adj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:44:14: warning: This simp argument is unused:
+  pathGraph_adj
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Fin.val_last] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:44:29: warning: This simp argument is unused:
+  Fin.val_last
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pathGraph_adj] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:116:2: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:287:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.Jordan : passed
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:455:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:455:30: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:456:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:456:43: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:531:4: warning: Unused tactic linter: `change growDart u (.inl d) = growDart u (.inl e)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanFace : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanGrow : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanSides : passed
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanSides.lean:259:23: warning: This simp argument is unused:
+  add_sub_cancel
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Dart.symm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanSplit : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanEven : passed
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean:161:5: warning: Variable name `hface` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hface
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean:164:6: warning: Variable name `d` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _d
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean:164:8: warning: Variable name `e` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _e
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanCycle : passed
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:88:6: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [hxv]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:93:6: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [hxv]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:214:16: warning: This simp argument is unused:
+  eq_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:302:5: warning: Variable name `hdeg` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hdeg
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:304:5: warning: Variable name `h0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:304:27: warning: Variable name `h1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:305:5: warning: Variable name `h2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:305:24: warning: Variable name `h3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:306:5: warning: Variable name `hv0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hv0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanTwoSides : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanWalkParity : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalMap : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorSeparation : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.Icosahedron : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.RotationDelete : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDegree : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalFiveColor : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColor : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorExtension : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDelete : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalSmallOrder : passed
+
+
+MathlibTest.PlaneMapIcosahedron : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.DegreeFiveOutside : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.DeleteVertex : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiniteFourExtension : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorSmallOrder : passed
+
+
+MathlibTest.PlaneMapIndependentChecks : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorExamples : passed
+
+
+Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourEliminationOrder : passed
+
+
+MathlibTest.PlaneMapDegreeFiveOutside : passed
+
+
+MathlibTest.PlaneMapFiniteFourColor : passed
+
+
+MathlibTest.PlaneMapFiveColor : passed
+
+
+MathlibTest.PlaneMapFourColor : passed
+
+
