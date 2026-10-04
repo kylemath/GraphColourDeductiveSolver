@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Afternoon Call</title>
+  <meta name="description" content="A sequel to The Long Table: a day of work with AI helpers, two leaked documents, and a video call that rewrites the plan.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --bucky: #58a6ff;
+      --kamper: #3fb950;
+      --appken: #d29922;
+      --theo: #bc8cff;
+      --rosa: #f85149;
+      --napkin: #f3ecdc;
+      --napkin-ink: #2b2a27;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+    .script { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1rem 4rem; }
+    .title { text-align: center; margin-bottom: 1.5rem; }
+    .eyebrow {
+      margin: 0 0 0.6rem;
+      color: var(--theo);
+      font: 650 0.8rem/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 0.4rem; font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; }
+    .subtitle { margin: 0; color: var(--dim); font-style: italic; }
+    .toc {
+      margin: 0 0 2rem;
+      padding: 1rem 1.25rem;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+    .toc strong { display: block; margin-bottom: 0.4rem; color: var(--faint); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem; }
+    .toc ol { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+    .toc a { color: var(--dim); text-decoration: none; }
+    .toc a:hover { color: var(--text); }
+    .toc .source { display: block; margin-top: 0.6rem; color: var(--faint); }
+    .toc .source a { color: var(--bucky); }
+    h2 {
+      margin: 3rem 0 1.25rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 1.55rem;
+      letter-spacing: -0.01em;
+    }
+    h3 { margin: 2.25rem 0 1rem; color: var(--dim); font-size: 1.15rem; font-style: italic; font-weight: 500; }
+    p { margin: 0 0 1rem; }
+    hr.break { border: 0; height: 10px; margin: 2.5rem auto; width: 64px;
+      background: linear-gradient(90deg, var(--rosa) 0 25%, var(--bucky) 25% 50%, var(--kamper) 50% 75%, var(--appken) 75%);
+      border-radius: 2px; opacity: 0.75; }
+    .persona { padding-left: 0.9rem; border-left: 3px solid var(--who, var(--border)); color: var(--dim); }
+    .persona strong { color: var(--who); font-variant: small-caps; letter-spacing: 0.04em; font-size: 1.1em; }
+    .stage { margin: 1.25rem 0 1.25rem 1.5rem; color: var(--dim); font-style: italic; }
+    .stage em { font-style: normal; }
+    .cue { font-style: normal; font-variant: small-caps; letter-spacing: 0.04em; color: var(--who); }
+    .line { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0 1rem; margin: 0 0 0.85rem; }
+    .speaker {
+      padding-top: 0.12rem;
+      color: var(--who);
+      font-variant: small-caps;
+      font-weight: 650;
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+    .line p { margin: 0; }
+    .dir { color: var(--faint); font-style: italic; }
+    .thought {
+      margin: 1rem 0 1.25rem 1.5rem;
+      padding: 0.7rem 1rem;
+      background: color-mix(in srgb, var(--who) 8%, var(--raised));
+      border-left: 3px solid var(--who);
+      border-radius: 0 8px 8px 0;
+      color: var(--dim);
+      font-style: italic;
+    }
+    .thought .who {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--who);
+      font: 600 0.72rem/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+    .napkin {
+      margin: 1.5rem auto;
+      max-width: 40rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--napkin);
+      color: var(--napkin-ink);
+      border-radius: 3px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: rotate(-0.6deg);
+      overflow-x: auto;
+    }
+    .napkin:nth-of-type(even) { transform: rotate(0.5deg); }
+    .napkin pre { margin: 0; font: 0.86rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    code { font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text); background: var(--raised); padding: 0.05em 0.3em; border-radius: 4px; }
+    a { color: var(--bucky); }
+    .c-bucky { --who: var(--bucky); }
+    .c-kamper { --who: var(--kamper); }
+    .c-appken { --who: var(--appken); }
+    .c-theo { --who: var(--theo); }
+    .c-rosa { --who: var(--rosa); }
+    .c-assistant { --who: #8b949e; }
+    .screen {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      background: #010409;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--dim);
+      font: 0.92rem/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      box-shadow: 0 0 0 4px #161b2266, 0 8px 24px rgba(0, 0, 0, 0.4);
+      overflow-wrap: anywhere;
+    }
+    .screen p { margin: 0 0 0.6rem; }
+    .screen p:last-child { margin-bottom: 0; }
+    .screen p:first-child { color: var(--faint); font-size: 0.8rem; letter-spacing: 0.03em; }
+    .screen strong { color: var(--text); }
+    .next { margin: 3rem 0 0; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .next a { display: inline-block; padding: 0.6rem 1.1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--raised); color: var(--text); text-decoration: none; }
+    .next a:hover { border-color: var(--bucky); }
+    @media (max-width: 640px) {
+      body { font-size: 1rem; }
+      .script { padding-top: 2.25rem; }
+      .toc ol { columns: 1; }
+      .line { grid-template-columns: 1fr; }
+      .speaker { text-align: left; }
+      .stage, .thought { margin-left: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <article class="script">
+<header class="title"><p class="eyebrow">Four Colour Theorem</p><h1>The Afternoon Call</h1>
+<p class="subtitle">A sequel to The Long Table: three rooms, two leaks, one video call</p>
+</header>
+<nav class="toc" aria-label="Scenes"><strong>Scenes</strong><ol>
+<li><a href="#dramatis-personae">Dramatis Personae</a></li>
+<li><a href="#the-set">The Set</a></li>
+<li><a href="#part-one-three-rooms">Part One: Three Rooms</a></li>
+<li><a href="#part-two-the-thread">Part Two: The Thread</a></li>
+<li><a href="#part-three-the-call">Part Three: The Call</a></li>
+<li><a href="#coda-evening">Coda: Evening</a></li>
+</ol><span class="source">Plain-text script: <a href="../story/the-afternoon-call.md">the-afternoon-call.md</a></span></nav>
+<hr class="break" aria-hidden="true">
+<h2 id="dramatis-personae">Dramatis Personae</h2>
+<p class="persona c-bucky"><strong>Bucky</strong> The computer scientist. Has not slept. Has showered, which he considers the same thing.</p>
+<p class="persona c-kamper"><strong>Kamper</strong> The mathematician. Slept for ninety minutes in an armchair and woke with a proof sketch printed on her cheek by the folded napkins in her coat pocket.</p>
+<p class="persona c-appken"><strong>Appken</strong> The quant. Called in sick for the first time in twelve years. Is not sick.</p>
+<p class="persona c-assistant"><strong>The Assistants</strong> Each of them works with an AI helper on a laptop. On stage these are one voice in three rooms, written as ASSISTANT. Each is courteous and quick. Each asks, at least once, whether a result has actually been checked.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="the-set">The Set</h2>
+<p class="stage">The stage is divided into three rooms, each lit separately. They are never in the same light until the call, and even then only through screens.</p>
+<p class="stage">Stage left is <strong>Bucky's flat</strong>: a spare bedroom turned home office. A whiteboard covered in boxes and arrows, a standing desk, two monitors, and a mechanical keyboard loud enough to count as a fourth character. A mug reads "IT COMPILES."</p>
+<p class="stage">Centre is <strong>Appken's apartment</strong>: high floor, glass wall, six monitors in a curved arc, and a grey cat named Theta asleep on a radiator. A whiteboard that came with the flat has been used for the first time today.</p>
+<p class="stage">Stage right is <strong>Kamper's study</strong>: floor-to-ceiling books, a green-shaded desk lamp, a kettle on a side table because the kitchen is too far away, and a laptop she treats with suspicion. Pinned to a corkboard with a single drawing pin are the eleven napkins from last night, flattened under a dictionary for an hour first.</p>
+<p class="stage">The light runs from late morning to early evening. Through the windows of all three rooms the same sun crosses the same sky.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="part-one-three-rooms">Part One: Three Rooms</h2>
+<h3>i. Bucky, 10:40 a.m.</h3>
+<p class="stage">Stage left comes up. <span class="cue c-bucky">Bucky</span> sits at the standing desk, which he has lowered all the way so that it is a sitting desk. The <span class="cue c-assistant">Assistant</span>'s replies appear on his right monitor. He reads them aloud, half to himself.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Okay. Again. The robust game. Signatures are sigma plus the nesting order of the bichromatic chain-curves around the root. Same rules as their replay: one common action per signature, must work for every concrete colouring behind it. Pooled first, then per root.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Done. With nesting added, the pooled Kittell game splits into more signatures, as expected. Some of the original five losing signatures now win. Not all. Per root, two of the four difficult roots are now fully repaired. The other two still have losing signatures.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Which two survive?</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Roots 3 and 17 still lose. Roots 13 and 21 are repaired. Before you write that down, two caveats. First, I computed the nesting order from the embedding in the replay file, and I haven't independently checked the rotation system against a second source. Second, this is a finite table. A repaired root here means "a lookup strategy exists," not "a formula exists."</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>It said the thing. The thing I'd say in a code review. I've been training people for ten years to say that sentence, and a laptop says it unprompted.</aside>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Write it up as a kill. "Nesting order alone is not enough: two of four difficult roots survive." Label it with the class, the move, the observation and the witness. Use their checklist.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Writing it as a negative result. Do you want me to also run the icosahedron?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(sitting up)</span> Yes. Twelve vertices, all degree five. Every root looks the same. That's the stress test for Step.</p></div>
+<p class="stage">The keyboard clatters. A pause. The <span class="cue c-assistant">Assistant</span>'s reply appears.</p>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Icosahedron: at each of the twelve roots there are 20 deletion colourings up to renaming colours. Every one of them is at most one swap from a target. I'd describe it as easy, not stressful.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> stares at the screen.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>One swap.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>One swap. Its symmetry means root selection can't help, but it also means there's very little room for a colouring to get stuck. It's the sharp example for Euler counting. It doesn't seem to be a hard example for Kempe escape.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>I said "the fairest test there is" at five forty this morning. Out loud. To two people I respect. I said it with the confidence of a man who had been awake for twenty-two hours.</aside>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(to the room)</span> Well. That's the second thing I was wrong about today, and it's not lunchtime.</p></div>
+<p class="stage">He writes on the whiteboard: "ICOSAHEDRON: EASY. NOT A STRESS TEST. (me, wrong, 5:40 a.m.)"</p>
+<h3>ii. Appken, 12:15 p.m.</h3>
+<p class="stage">Centre comes up. <span class="cue c-appken">Appken</span> stands in front of the six monitors in socks, holding a bowl of cereal. Theta the cat watches from the radiator. Every monitor shows a different plot. Most of them are red.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Potential one, dead. Potential two, dead. Potential three... <span class="dir">(he squints)</span> ...dead in a really embarrassing way.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Potential three decreases on most moves, but there are 14 non-target Kittell states where every legal swap leaves it unchanged or raises it. So it isn't a strict progress measure.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It's a stop-loss that doesn't stop anything.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>That's one way to put it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay. Potential four. Same idea, but the count is on the <em>full</em> state, not the boundary summary. For each repeated colour on the boundary, count the chains that block each way of freeing it, and weight by how many boundary vertices each chain touches.</p></div>
+<p class="stage">He types. He eats cereal. He types.</p>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Potential four, Kittell backtest: every non-target state has at least one legal single-component swap that strictly lowers it. Zero failures across all 6,350 states.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> puts the cereal down very slowly.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Zero.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Zero on Kittell. I want to be careful about what that means. It is one graph. Kittell is already known to be easy in the full state, since every state reaches a target in at most four moves. Lots of potentials can survive an easy fixture. This is a necessary test, not a sufficient one.</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>A model that survives one backtest is a model that hasn't met the market yet. I know this. I've fired people for not knowing this.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay. Out of sample. The thing Kamper called the falsification sweep. Every triangulation where every vertex has degree at least five, for as many orders as we can do this afternoon. Worst-case moves to a target, at the best root. The term structure.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>I can install a triangulation generator and enumerate minimum-degree-five triangulations by order. Twelve through sixteen should finish in under an hour here. Beyond that, the colouring enumeration grows quickly.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Do twelve to sixteen.</p></div>
+<p class="stage">Lights shift slightly to suggest time passing. Theta changes radiators.</p>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Done through order sixteen. Every Kempe class at every degree-five root contains a target in this range, and the worst-case full-state distances stay small, flat-looking rather than growing. Potential four survives most graphs but fails on two at order sixteen. There are states where no swap lowers it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(not deflated, almost pleased)</span> There it is. There's the market.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Do you want me to characterise the failures?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Yes. And save them as fixtures. Those are the most valuable things I've made today.</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>Two years ago I'd have been gutted. Today I've got two named graphs where my idea breaks. I've never been so happy to lose money that doesn't exist.</aside>
+<h3>iii. Kamper, 2:30 p.m.</h3>
+<p class="stage">Stage right comes up. <span class="cue c-kamper">Kamper</span> sits at her desk in a cardigan, a pot of tea at her elbow and the laptop open at arm's length. A pad of graph paper lies in front of her, covered in her handwriting. The napkins are on the corkboard behind her.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Read me the neighbourhoods again. The four bad roots first, then the eleven good ones. Degrees of the five neighbours, in cyclic order.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>For roots 3, 13, 17 and 21, here are the neighbour degree sequences. For the eleven good roots, here are theirs. The short answer to your question is that the first-ring degree sequences don't separate the two groups. Two of the bad roots have the same first-ring pattern as good roots.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The second ring?</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>The second ring is more varied, but with fifteen roots and four bad ones I'd be overfitting if I claimed a separating pattern. Any rule that separates them in the second ring will be a rule fitted to four examples.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(dry)</span> You sound like a referee I once had. I hated him. He was right.</p></div>
+<p class="stage">She pulls the graph paper towards her.</p>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>First-ring degree doesn't separate them. So whatever makes those four roots hard isn't local in the cheap sense. Then charge can't simply avoid them by degree. The rule has to be bolder, or it has to choose on something other than degree.</aside>
+<p class="stage">She writes, speaking as she goes, more to herself than to the machine.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Charge six minus degree. Total twelve. In a minimum-degree-five triangulation, only fives carry positive charge, so there are at least twelve fives, plus one more for every unit of excess degree above six. Now take any vertex, an anchor, and its closed neighbourhood: itself and its neighbours. How many fives must lie <em>outside</em> that star?</p></div>
+<p class="stage">She works. Tea goes cold.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> The star has at most one plus its degree vertices... Degree sum outside the star, against the Euler count... <span class="dir">(a long pause)</span> At least five. At least five and a half, honestly, which in integers is six, if this step is legitimate, and I don't yet trust this step.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Do you want me to check the step formally, or test it on the generated triangulations?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Test it. If it fails on a single graph I'll know where I cheated.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>On every minimum-degree-five triangulation I have through order sixteen, every vertex has at least six degree-five vertices outside its closed neighbourhood. That's a check, not a proof.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Then the proof is my job. <span class="dir">(She circles "≥ 6" twice.)</span> Good. That means a root rule never runs out of candidates far from any anchor. It doesn't mean any of them is <em>good</em>.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Availability is not quality. That's the whole of combinatorics in four words, and I keep forgetting it after lunch.</aside>
+<p class="stage">She looks at the corkboard of napkins. Then at the clock. 3:38 p.m. She reaches for her phone, intending to email the others her half-proof. Instead she finds a message from <span class="cue c-appken">Appken</span> in the group chat, a single link with no comment. That's unlike him.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="part-two-the-thread">Part Two: The Thread</h2>
+<p class="stage">3:40 p.m. All three rooms are lit at once, dimly, each figure lit mainly by a screen. They read in silence. The text they read appears on the screen above the stage.</p>
+<figure class="screen"><p>r/math · Posted 2h ago</p><p><strong>Rumour: a team is closing in on an "explainable" Four Colour proof, and the leaked docs are surprisingly honest</strong></p><p>A blog post (not affiliated with the group) says a mixed human/agent team has been rebuilding the Four Colour Theorem's foundations in Lean, aiming for a <em>rule-based</em> proof without the 633-configuration census, plus an algorithm with a polynomial bound. Two documents allegedly from the project are circulating: a progress report dated 4 October and a separate audit of that report. Links in comments. I can't verify either. Treat accordingly.</p><p>Top comment: AI SOLVES 4 COLOUR THEOREM?!?!</p><p>↳ Reply: It was solved in 1976. Read the post.</p><p>↳ Reply: Read the docs. They literally say the key gate is open. Every second paragraph is "this does not prove X."</p><p>↳ Reply: honestly the most self-skeptical leak I've ever read. whoever wrote it has been burned before</p></figure>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(to his monitors, under his breath)</span> Oh no.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(to his monitors, under his breath)</span> Oh no.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(to her laptop, under her breath)</span> Oh, how lovely.</p></div>
+<p class="stage">They each click a different comment. Each of them sees only what they click.</p>
+<p class="stage"><span class="cue c-kamper">Kamper</span> follows the first link and finds the progress report. She reads it slowly, in full, glasses pushed up, pen in hand as if marking a thesis.</p>
+<figure class="screen"><p>Structural Four Colour execution plan · 4 October 2026 (leaked)</p><p>…<code>Icosahedron.lean</code> now supplies a genuine <code>SphericalMap 12</code> with thirty edges, twenty triangular faces, degree five everywhere… Its filling proof uses a finite linear coefficient certificate checked by the kernel.</p><p>…The named bit beta asks whether the smallest remaining vertex lies in a canonical {1,3} component meeting the boundary. On the four difficult Kittell roots, (sigma,beta) admits verified common-action lookup strategies. The bit is not a preserved invariant, and finite attractor tables are not a uniform rank formula.</p><p>…The reachability kill-witness search through order twenty checked all 118 generated minimum-degree-five triangulations: none supplied a targetless class at any root.</p><p>…Stress testing finds a first failure of the smallest eligible exterior-root rule at order twenty, graph 36, root 8…</p><p>…The newly compiled six_le_degreeFiveOutside theorem guarantees at least six eligible exterior degree-five roots per nonisolated anchor; it proves availability, not that any particular root admits the desired rank.</p></figure>
+<p class="stage"><span class="cue c-kamper">Kamper</span> stops at the last paragraph. She reads it three times. She looks up at the "≥ 6" circled twice on her graph paper.</p>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Six. Compiled. Someone did my afternoon this week, and did it in Lean, and wrote "availability, not rank" next to it, the same sentence I wrote at three o'clock. I don't know whether I'm deflated or vindicated. I think the right word is "accompanied."</aside>
+<p class="stage">Meanwhile <span class="cue c-bucky">Bucky</span> and <span class="cue c-appken">Appken</span>, in their separate rooms, have both clicked the second link. It is a different document: an audit of the report by a second team. They read it at the same time without knowing it.</p>
+<figure class="screen"><p>Navigator audit (leaked)</p><p>The summary is accurate, and it changes the research odds. Gate D is still open. The new evidence makes a small Kempe-class counterexample unlikely and makes a one-bit observation rank less likely to be the proof.</p><p>…I did not rebuild Lean or rerun the Plantri census. The recorded source rebuild now lists 41 custom modules as passed…</p><p>…The icosahedron is easy: 20 deletion-colouring orbits at each of 12 roots, every one within one swap. It does not stress root selection.</p><p>…On Kittell, no common interior swap and no common repeated-colour swap repairs the old five losing signatures. Adding the bit … does repair roots 3, 13, 17, and 21, with lookup ranks at most 4, 5, 4, and 4. Hiding the root leaves 10 of 80 refined observations losing.</p><p>…The kill-witness search covers the 118 Plantri minimum-degree-five triangulations from order 12 through 20: 1,586 roots, 244,051 colouring orbits, 1,626 Kempe classes. Every class contains a three-colour boundary.</p><p>…The first explicit rule … fails at order 20, graph 36, root 8. Five of 55 observations lose. All 198 concrete colourings still reach a target. Kittell passes this rule, so Kittell is no longer the adversarial fixture for it.</p><p>…My credence that every Kempe class at every degree-five root contains an extendible colouring … moves from about even to roughly three to one.</p><p>…Quotient games are now a good way to kill proposed observations and a poor way to expect the theorem.</p><p>…The useful next fixture is graph 36, root 8, not another Kittell signature and not the icosahedron. A proposed rank should be a formula on those five losing observations.</p></figure>
+<p class="stage"><span class="cue c-bucky">Bucky</span> reaches the icosahedron line and laughs once, sharply, alone in his flat. He turns and looks at his own whiteboard: "ICOSAHEDRON: EASY. NOT A STRESS TEST."</p>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>Twenty orbits. Every one within one swap. My laptop said exactly that at 10:52 this morning. Someone else's team got the same number independently. That's not embarrassing. That's a replication.</aside>
+<p class="stage"><span class="cue c-appken">Appken</span> reaches the last line and puts his hand flat on the desk. Theta the cat lifts her head.</p>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>"A proposed rank should be a formula on those five losing observations." That's my job description. Someone wrote my job description in a leaked audit.</aside>
+<p class="stage">Then <span class="cue c-appken">Appken</span> reaches the credence line.</p>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>Three to one. Seventy-five percent. Seventy-five percent we get there.</aside>
+<p class="stage">He is already typing in the group chat.</p>
+<figure class="screen"><p>Group chat · Long Table</p><p>Appken: CALL. NOW. 4:30? I have a link. Also a cat.</p><p>Bucky: 4:30. Read the audit?</p><p>Appken: YES</p><p>Kamper: I read a progress report. Is there also an audit?</p><p>Bucky: …there's an audit.</p><p>Kamper: 4:30.</p></figure>
+<hr class="break" aria-hidden="true">
+<h2 id="part-three-the-call">Part Three: The Call</h2>
+<h3>i. Three Rectangles</h3>
+<p class="stage">4:30 p.m. All three rooms are fully lit. Above the stage a video-call grid appears: three rectangles, each showing a face. <span class="cue c-bucky">Bucky</span> in front of his whiteboard. <span class="cue c-appken">Appken</span> in front of six monitors, the cat in the lower corner of the frame. <span class="cue c-kamper">Kamper</span> in front of her corkboard of napkins, slightly too close to the camera, the green lamp making her look like a portrait.</p>
+<p class="stage">Each actor speaks into their own laptop. They never look at each other, only at the audience, which is the camera.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Can you hear me? I can hear me.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>We can hear you.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I can see all of you. I can also see your cat.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's Theta.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Of course it is.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Okay. Before anyone says anything exciting, ground rules. These are leaks. We didn't ask for them. They aren't ours. We don't repost them, we don't quote them anywhere, and if we use anything from them, we say where it came from when we write to the team.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(nodding firmly)</span> Agreed. And we write to them <em>today</em>. Directly. With our own results, properly labelled. It would be indecent to sit on what we know they're doing and not offer what we've done.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Agreed. Agreed. Can I be exciting now?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Be exciting.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><em>Seventy-five percent.</em></p></div>
+<p class="stage">A pause.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Seventy-five percent of what?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The audit. "Credence moves from about even to three to one." Three to one, seventy-five percent. Up from fifty.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Read the sentence again.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(reading)</span> "My credence that every Kempe class at every degree-five root contains an extendible colouring, for minimum-degree-five triangulations, moves from about even to roughly three to one."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's a credence in a <em>statement</em>. Not in a proof. And not in this route. And the statement is stronger than the Four Colour Theorem, which we already know is true.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's the next row in the same table. "Medium-High as a statement, Low as a proof."</p></div>
+<aside class="thought c-appken"><span class="who">Appken, inside</span>Selective memory. Again. The seventy-five survives, the caveat dies. Twice in two days. I need a sticky note on my monitor.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(laughing at himself)</span> I did it again. I marked the position at the headline.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You did. But it's still a real update. I'd have said "about even" too, before today. A small counterexample, one Kempe class with no target, felt plausible. Now there's none in sixteen hundred classes.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Sixteen twenty-six.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I don't have that number. My leak doesn't have it.</p></div>
+<p class="stage">A beat. They realise.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Wait. What did you read?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A progress report. Fourth of October. Gates, the icosahedron compiled, a bit called beta, a search through order twenty, a rule that fails at graph 36, and <span class="dir">(she glances at her graph paper)</span> a theorem I spent my afternoon half-proving.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>We read the audit of that report. Someone else's team checked it line by line.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(delighted)</span> They audit each other?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>They audit each other. And the auditor says what they <em>didn't</em> check: they didn't rebuild Lean, they didn't rerun the census. And the two newest degree-five files rely on the test file's axiom guard, which the auditor didn't recheck.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(quietly)</span> That's the most beautiful sentence anyone has said to me this year.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Okay. We each have half the elephant again. Let's do the napkin thing. Screen-share.</p></div>
+<h3>ii. What Each of Them Did Today</h3>
+<p class="stage"><span class="cue c-bucky">Bucky</span> shares his screen. A shared document appears above the stage, a digital napkin titled "LONG TABLE: DAY 1." They fill it as they talk.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Me first, because mine are mostly kills. One: I refined sigma with the nesting order of the chain-curves around the root. Kittell, per root: it repairs 13 and 21. Roots 3 and 17 still lose. So nesting alone isn't the missing information.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And the leak says...</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The audit says their bit, beta, repairs all four: 3, 13, 17, 21, with lookup ranks of at most four or five. So they found a better instrument than mine. Fine. But it also says no common interior swap and no common repeated-colour swap repairs the old five losers. That kills two of our "later" items from last night.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(wincing)</span> "Interior swaps as instruments. Possibly necessary."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Dead, at least in that form. In the common-action game, anyway. Two: the icosahedron. My assistant found twenty colourings per root, all within one swap. The audit independently says the same. Easy. My "fairest test there is" was the easiest test there is.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(gently)</span> You were right that root selection can't help there. You were wrong that it would be hard. Half-right is a respectable fraction before dawn.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Thank you. Three, and this is the one that matters to me. The audit says, and I'm paraphrasing because I promised not to quote: quotient games are good for <em>killing</em> proposed observations and bad for <em>expecting</em> the theorem. A concrete policy can keep making progress while the coarse observation repeats.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What does that do to your plan?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It turns my refinement engine around. I was using it to look for the <em>right</em> abstraction. It should be a <em>weapon</em>. Anyone proposes a rule, root choice plus observation plus rank, and the engine hunts for the first graph where the rule's quotient game loses. Like their order-20 result. A kill machine.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A referee machine.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>A referee machine. A bad one at first. It'll get better.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>There's a version of me from five years ago who would have been crushed that his abstraction wasn't the answer. This version is thrilled that it's a good gun. Maybe that's growth. Maybe it's sleep deprivation.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Me. <span class="dir">(He shares a plot.)</span> Three potentials dead on Kittell. A fourth on the full state, not the boundary summary, survives all 6,350 Kittell states. Then I ran the term structure: every minimum-degree-five triangulation through order sixteen. Everything reaches a target, distances stay small, and the curve looks flat. They went to twenty, so of course they did. But here's the part I'm proud of: potential four <em>dies</em> on two graphs at order sixteen. Saved as fixtures.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Good. Good. You're proud of the death.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm proud of the death. And then I read: "Kittell passes this rule, so Kittell is no longer the adversarial fixture for it." Last night we were treating Kittell like it was the whole market. It's one ticker. The live fixture is graph 36, root 8. Five of 55 observations lose, but all 198 actual colourings still reach a target.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So the colourings are fine and the summary is broken.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The colourings are fine and the summary is broken. Which is <em>exactly</em> the incomplete-market thing. And the audit says the rank should be a <em>formula</em> on those five losing observations, not another lookup table. That's... <span class="dir">(he gestures at his screen)</span> ...that's what I'm for.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Where does potential four stand on graph 36?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I don't know. I don't have graph 36. I only went to sixteen. That's my first job tonight: get to order twenty and point potential four at graph 36, root 8. If it lowers on those five observations, great. If not, it's dead and I know exactly where.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Write the kill condition.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(typing)</span> "Kill: any of the 198 concrete colourings at graph 36, root 8, from which no legal single-component swap lowers potential four."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Me. <span class="dir">(She holds her graph paper up to the camera. It's illegible.)</span> Two things. One is a disappointment and one is a coincidence. The disappointment: Kittell's four bad roots aren't separated by their first-ring degree patterns. Two of them look exactly like good roots. So a charge rule that picks roots by the degrees of their neighbours can't simply avoid them.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And the second ring?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Too few examples. Four bad roots. Any rule I fit to them is a rule fitted to four points. My assistant scolded me about it, quite properly.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>And the coincidence?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I spent the afternoon trying to prove that, in a minimum-degree-five triangulation, every vertex has at least six degree-five vertices outside its closed neighbourhood. Charge arithmetic. I got to "five and a half, round up" and didn't trust the last step. Then I opened the report, and there it is. <code>six_le_degreeFiveOutside</code>. Compiled. With the sentence underneath: "proves availability, not that any particular root admits the desired rank."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The audit gives the counting. Degree sum outside the star, plus two e plus twelve, at most six s.</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> freezes. Then she looks down at her graph paper, finds a line, and circles something.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(very quietly)</span> Two e plus twelve. That's where I dropped a term. I used the vertex count where I needed the edge count.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Forty years of this, and the last step of my afternoon was handed back to me through a leaked audit read aloud by a computer scientist over a video call. Whatever happens to this problem, I'm going to remember this moment.</aside>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So you proved it.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I <em>nearly</em> proved it, and someone else proved it properly, and the machine checked it. That's better.</p></div>
+<h3>iii. The Rule That Died, and Why</h3>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Okay. The rule that failed at graph 36. Kamper, your report has the rule. What exactly was it?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Take the smallest anchor. Look outside its closed neighbourhood for degree-five vertices; there are at least six, by the theorem. Pick the smallest one. Then play the boundary summary plus beta.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Smallest.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Smallest <em>label</em>.</p></div>
+<p class="stage">A pause. <span class="cue c-kamper">Kamper</span> is clearly about to say something. The other two wait for it.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's not structural. That's alphabetical. They needed <em>a</em> rule to test, and they picked the simplest one that's fully defined, which is the right thing to do for a first stress test. But "smallest label" is the vertex equivalent of choosing a stock by its ticker symbol. There's no reason the charge should care what we called a vertex.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(lighting up)</span> So the failure of smallest-label doesn't tell you charge-based selection fails.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It tells you smallest-label fails. Precisely that. And it gives me a beautiful question. At graph 36 there are at least six eligible roots outside the anchor's star, by the theorem. Root 8 loses. What about the other five? If <em>any</em> of them survives the beta game, then the question becomes whether charge can find it without being told the answer.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>And if all six lose?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Then the boundary-plus-beta observation is too weak at graph 36 regardless of root, and Appken's full-state potential is the only live shape.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Either way we learn something.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Either way, we learn something specific. That's the only kind of evening I want.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Kill condition?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Kill: every eligible exterior degree-five root at graph 36 loses the (sigma, beta) robust game. Then no root rule over that observation survives graph 36."</p></div>
+<h3>iv. The Shape That Got More Plausible</h3>
+<div class="line c-appken"><span class="speaker">Appken</span><p>There's one more thing in the audit. Path likelihoods. The line that moved most wasn't the one I wanted. "Retreat to certificates only for colourings the induction itself produces": it was "the fallback," and now it's "the more plausible shape."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Meaning: don't prove <em>every</em> colouring at the root can escape. Prove that the colourings your own recursion <em>hands</em> you come with a certificate, and that the certificate survives the recursion.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>In my language, you don't price every possible state of the world. You price the states your own book can reach. Path-dependent.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And in mine, that's a stronger induction hypothesis. Which is a very old trick. If you can't prove P(n) by induction, try proving something stronger, because then you have more to work with at each step. Thomassen's five-list-colouring proof does exactly that: it strengthens the hypothesis until the induction can carry itself.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>But the invariant has to be proved and preserved. And it can't just be "this colouring is extendible."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Never "extendible." That's the trap. It has to be something you can <em>check</em> that <em>implies</em> extendible, and that the reconstruction step <em>reproduces</em>.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(slowly)</span> So potential four, or whatever replaces it, isn't just a rank. It's a candidate invariant. "The recursion always hands you a colouring where potential-four-style progress is available." And then I'd have to show that when you put the vertex back, the new colouring has that property too.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Yes. That's precisely the shape. And it's precisely where everyone has failed for a hundred and fifty years, so do it carefully.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Carefully. Got it. <span class="dir">(He writes it down.)</span> "Careful."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Can I add the boring part?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The boring parts are where proofs actually live.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Triangulation completion. Everything in Gate D is stated for triangulations. Real spherical maps aren't triangulations. You have to add edges to make one, prove it's still a sphere, colour it, then delete the edges again. Deleting is free; colourings restrict. <em>Adding</em> edges needs a new spherical carrier and a new filling proof. And the audit points out that the induction measure has to change. Completion adds edges, so "edges strictly decrease" stops working. It has to be support size: the number of vertices that actually have edges.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That sounds like plumbing.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's plumbing on the critical path. If D is ever solved for triangulations only, this is the pipe between that and the real theorem. It's Lean work. It's exactly my kind of misery. And it can proceed beside D, so it won't step on anyone's toes.</p></div>
+<aside class="thought c-bucky"><span class="who">Bucky, inside</span>Kamper gets to chase the beautiful rule. Appken gets to price the impossible thing. I get to prove that adding an edge to a sphere leaves a sphere. And I'm happier about it than either of them would believe.</aside>
+<h3>v. Day Two</h3>
+<p class="stage">5:40 p.m. The light in all three rooms has gone gold, the same low October gold as the café the afternoon before. The shared document above the stage has filled. <span class="cue c-bucky">Bucky</span> reads it aloud. The others make small corrections.</p>
+<figure class="napkin"><pre>LONG TABLE: DAY 2 PLAN
+Rule: results not hunches. Name class, move, invariant, measure,
+      input family, coverage, falsifying witness.
+Rule: the leaks are not ours. Cite them, don&#x27;t spread them.
+
+THREAD K (Kamper): STRUCTURAL SELECT AT GRAPH 36
+  Finish the six-outside proof by hand (the 2e + 12 term).
+  At order 20, graph 36: test every eligible exterior root
+    in the (σ, β) robust game, not just root 8.
+  If one survives: can a charge rule find it unaided?
+  Kill: all eligible roots lose → (σ, β) too weak at graph 36.
+
+THREAD A (Appken): A FORMULA, NOT A TABLE
+  Extend the sweep to order 20.
+  Point potential 4 (full state) at graph 36, root 8:
+    the 5 losing observations, the 198 colourings.
+  Then try it as an INVARIANT for induction-produced colourings:
+    does reconstruction reproduce it?
+  Kill: any colouring at graph 36 root 8 with no lowering swap.
+  Keep: the two order-16 failures as named fixtures.
+
+THREAD B (Bucky): KILL MACHINE + COMPLETION PIPE
+  Turn the refinement engine into an adversary:
+    rule in → first failing graph out.
+  Point it at Kamper&#x27;s rule and Appken&#x27;s potential first.
+  Lean: triangulation completion. Support relabelling first
+    (easy half), then filling after adding edges (real half).
+    Induction measure → support size.
+  Kill: completion breaks filling for some map → need
+    direct coverage of non-triangulations instead.
+
+DEAD TODAY (labelled, to send):
+  - nesting order alone (Kittell roots 3, 17 survive)
+  - icosahedron as a stress test (easy: 1 swap)
+  - potentials 1–3 (Kittell); potential 4 (two order-16 graphs)
+  - first-ring degree pattern as a root filter (Kittell)
+  - &quot;75%&quot; (Appken, again)
+
+WRITE TO THE TEAM TONIGHT: the dead list, the fixtures, an offer.</pre></figure>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You put "seventy-five percent" on the dead list.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's a dead conjecture. Properly labelled.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(laughing)</span> Fair.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Who writes the email to the team?</p></div>
+<p class="stage">A pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>You. You're the one they'd want to hear from.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You. You'll make it sound like it was worth reading.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(a long breath)</span> All right. I'll draft it tonight. I'll send it to both of you first. And it will be short. Three paragraphs. What we tried, what died, what we'd like to try next if they'll have us.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"If they'll have us."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>They have a very good team. They may not need three more people who spent a night in a café. But they might want our dead conjectures, and our fixtures. And if they want us, we'll be useful in different directions from theirs. Narrow channels, three different instruments.</p></div>
+<aside class="thought c-kamper"><span class="who">Kamper, inside</span>Last night I said I'd like to teach it before seventy. Tonight I'd settle for being one line in the history of who tried. It's a good line to be in.</aside>
+<h3>vi. Sign-off</h3>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I want to say something un-quant-like.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Go on.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Reading that audit was the most exciting thing that's happened to me in a decade. Not because it's close. Because it's <em>honest</em>. Every paragraph says what it knows and what it doesn't. I've read a thousand investment memos and not one of them told me where it would die.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's the thing that gets me too. Forty-one modules rebuilt, and the auditor still writes, "I didn't rebuild this myself." That's the whole culture in one sentence. Trust, but write down exactly how much.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>When I was young, the Four Colour argument was about whether you could trust a computer. Now it seems to be about whether you can trust a <em>team</em>: people and machines, auditing each other, keeping their dead ends on the board. I think I prefer this argument.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Same time tomorrow?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Same time tomorrow. Results, not hunches.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Results, not hunches.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(to the cat)</span> Theta, say goodbye.</p></div>
+<p class="stage">Theta does not say goodbye. Theta leaves the frame.</p>
+<p class="stage">The call ends. The three rectangles above the stage go dark one by one: first <span class="cue c-appken">Appken</span>'s, then <span class="cue c-bucky">Bucky</span>'s, then <span class="cue c-kamper">Kamper</span>'s.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="coda-evening">Coda: Evening</h2>
+<p class="stage">6:15 p.m. Three rooms, three lamps, the sky in every window turning the same deep blue.</p>
+<p class="stage">Stage left: <span class="cue c-bucky">Bucky</span> opens a new file. At the top he types, "Triangulation completion: support relabelling." Beneath that: <code>theorem</code>, and stops, and smiles, and keeps typing.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(to the ASSISTANT)</span> Let's start with the easy half. And tell me the moment I'm assuming something I haven't proved.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>I will. You're already assuming the completed map is simple. Want to state that as a hypothesis or prove it?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(grinning)</span> Prove it.</p></div>
+<p class="stage">Centre: <span class="cue c-appken">Appken</span> stands before the six monitors. One shows a progress bar: "Enumerating min-degree-5 triangulations: order 17…" He sticks a yellow sticky note on the bezel of the middle monitor. It reads: <strong>"CREDENCE IN WHAT?"</strong></p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(to the ASSISTANT)</span> When we get to graph 36, wake me. Wake me even if it's bad. <em>Especially</em> if it's bad.</p></div>
+<p class="stage">Theta returns and sits on the keyboard. The progress bar does not mind.</p>
+<p class="stage">Stage right: <span class="cue c-kamper">Kamper</span> sits at her desk with a fresh sheet of graph paper. At the top she writes, slowly: "Dear colleagues." Then crosses it out. Then writes: "Dear colleagues, we have some dead conjectures for you." Then, smiling, she leaves it.</p>
+<p class="stage">She glances up at the corkboard. The eleven napkins from the café. In the centre is the Gate D napkin, her own handwriting from twenty-four hours ago. She takes a pencil and, very small, beside "∀ proper 4-colouring c," writes: "or only the ones we make?"</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(to herself)</span> Six outside the star. Two e plus twelve. Graph 36, root 8. Show me your neighbours.</p></div>
+<p class="stage">Three lamps. Three screens. The same blue sky. In each window a single bright point appears, the first star, or a planet, or an aeroplane. None of them can tell which, and none of them looks up long enough to check.</p>
+<p><strong>END</strong></p>
+<hr class="break" aria-hidden="true">
+<h3>Author's note</h3>
+<p>The two documents the characters read are the project's 4 October 2026 progress report and the audit of it, presented in the story as leaks. Every technical claim attributed to them comes from those texts. Several things are invented for the story and are not project findings: the characters' own results from the day (Bucky's nesting refinement, Appken's potentials and their failures at order sixteen, and Kamper's first-ring degree comparison). The real record of what has been checked is in the Proof Navigator.</p>
+<p class="next"><a href="index.html">Back to The Long Table →</a></p>
+  </article>
+  <script>
+    // Embedded with auto-height on the project page: scroll the parent, not this frame.
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var target = document.querySelector(link.getAttribute('href'));
+        var frame = null;
+        try { frame = window.frameElement; } catch (err) {}
+        if (!target || !frame) return;
+        event.preventDefault();
+        var top = window.parent.scrollY + frame.getBoundingClientRect().top + target.getBoundingClientRect().top - 72;
+        window.parent.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

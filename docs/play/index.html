@@ -124,6 +124,25 @@
     .c-appken { --who: var(--appken); }
     .c-theo { --who: var(--theo); }
     .c-rosa { --who: var(--rosa); }
+    .c-assistant { --who: #8b949e; }
+    .screen {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      background: #010409;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--dim);
+      font: 0.92rem/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      box-shadow: 0 0 0 4px #161b2266, 0 8px 24px rgba(0, 0, 0, 0.4);
+      overflow-wrap: anywhere;
+    }
+    .screen p { margin: 0 0 0.6rem; }
+    .screen p:last-child { margin-bottom: 0; }
+    .screen p:first-child { color: var(--faint); font-size: 0.8rem; letter-spacing: 0.03em; }
+    .screen strong { color: var(--text); }
+    .next { margin: 3rem 0 0; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .next a { display: inline-block; padding: 0.6rem 1.1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--raised); color: var(--text); text-decoration: none; }
+    .next a:hover { border-color: var(--bucky); }
     @media (max-width: 640px) {
       body { font-size: 1rem; }
       .script { padding-top: 2.25rem; }
@@ -839,6 +858,7 @@ NOT ALLOWED:
 <hr class="break" aria-hidden="true">
 <h3>Author's note on the rumours</h3>
 <p>Every technical "rumour" the three characters pass around comes from the project's own records as of 4 October 2026. The sources are the Structural Four Colour plan, the Gate-D candidate, the Proof Navigator tree, and the earlier wrap-up plan. Proved results are described as compiled. The Kittell numbers come from the independent replay. Gate D is described as open, because it is. The three threads at the end are the characters' own research proposals, and each one comes with its own kill condition. They are offered in the spirit of the plan's rule: a proposal must name its graph class, move relation, invariant, measure, input family, coverage statement and falsifying witness.</p>
+<p class="next"><a href="afternoon.html">Continue: The Afternoon Call →</a></p>
   </article>
   <script>
     // Embedded with auto-height on the project page: scroll the parent, not this frame.

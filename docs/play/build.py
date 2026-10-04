@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render docs/story/the-long-table.md as the styled play page docs/play/index.html.
+"""Render the play scripts in docs/story as styled pages in docs/play.
 
 Run from anywhere:  python3 docs/play/build.py
 """
@@ -8,12 +8,25 @@ import re
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SOURCE = HERE.parent / "story" / "the-long-table.md"
-OUTPUT = HERE / "index.html"
+STORY = HERE.parent / "story"
+PAGES = [
+    {
+        "source": "the-long-table.md",
+        "output": "index.html",
+        "next": ("afternoon.html", "Continue: The Afternoon Call"),
+        "description": "A play in one long night: three colleagues piece together rumours of a structural Four Colour proof and brainstorm the last gate until dawn.",
+    },
+    {
+        "source": "the-afternoon-call.md",
+        "output": "afternoon.html",
+        "next": ("index.html", "Back to The Long Table"),
+        "description": "A sequel to The Long Table: a day of work with AI helpers, two leaked documents, and a video call that rewrites the plan.",
+    },
+]
 
-CAST = {"BUCKY": "bucky", "KAMPER": "kamper", "APPKEN": "appken", "THEO": "theo", "ROSA": "rosa"}
+CAST = {"BUCKY": "bucky", "KAMPER": "kamper", "APPKEN": "appken", "THEO": "theo", "ROSA": "rosa", "ASSISTANT": "assistant"}
 CAST_RE = re.compile(r"\b(" + "|".join(CAST) + r")\b")
-SPEECH_RE = re.compile(r"^\*\*([A-Z]+)\*\*:\s*(.*)$")
+SPEECH_RE = re.compile(r"^\*\*([A-Z][A-Z ]*)\*\*:\s*(.*)$")
 THOUGHT_RE = re.compile(r"^>\s*\*([A-Za-z]+), inside:\*\s*(.*)$")
 
 
@@ -43,6 +56,16 @@ def render(md):
         line = lines[i]
         if not line.strip():
             i += 1
+            continue
+        if line.startswith("```screen"):
+            body = []
+            i += 1
+            while i < len(lines) and not lines[i].startswith("```"):
+                if lines[i].strip():
+                    body.append(f"<p>{inline(lines[i])}</p>")
+                i += 1
+            i += 1
+            out.append(f'<figure class="screen">{"".join(body)}</figure>')
             continue
         if line.startswith("```"):
             body = []
@@ -85,10 +108,10 @@ def render(md):
             i += 1
             continue
         m = SPEECH_RE.match(line)
-        if m and m.group(1) in CAST:
+        if m and m.group(1) in CAST or (m and section == "Dramatis Personae"):
             who, rest = m.group(1), m.group(2)
             if section == "Dramatis Personae":
-                out.append(f'<p class="persona c-{CAST[who]}"><strong>{who.title()}</strong> {inline(rest)}</p>')
+                out.append(f'<p class="persona c-{CAST.get(who, "assistant")}"><strong>{who.title()}</strong> {inline(rest)}</p>')
             else:
                 out.append(
                     f'<div class="line c-{CAST[who]}"><span class="speaker">{who.title()}</span><p>{inline(rest)}</p></div>'
@@ -108,18 +131,32 @@ def render(md):
     return "\n".join(out), toc
 
 
-def main():
-    body, toc = render(SOURCE.read_text())
+def build(page_spec):
+    source = STORY / page_spec["source"]
+    body, toc = render(source.read_text())
     toc_html = "\n".join(f'<li><a href="#{sid}">{html.escape(name)}</a></li>' for sid, name in toc)
     nav = (
         '<nav class="toc" aria-label="Scenes"><strong>Scenes</strong><ol>\n'
         + toc_html
-        + '\n</ol><span class="source">Plain-text script: <a href="../story/the-long-table.md">the-long-table.md</a></span></nav>'
+        + f'\n</ol><span class="source">Plain-text script: <a href="../story/{source.name}">{source.name}</a></span></nav>'
     )
+    href, label = page_spec["next"]
+    body += f'\n<p class="next"><a href="{href}">{html.escape(label)} →</a></p>'
     body = body.replace("</header>", "</header>\n" + nav, 1)
-    page = TEMPLATE.replace("{{BODY}}", body)
-    OUTPUT.write_text(page)
-    print(f"wrote {OUTPUT.relative_to(HERE.parent.parent)}")
+    title = re.search(r"^# (.+)$", source.read_text(), re.M).group(1)
+    page = (
+        TEMPLATE.replace("{{TITLE}}", html.escape(title))
+        .replace("{{DESCRIPTION}}", html.escape(page_spec["description"], quote=True))
+        .replace("{{BODY}}", body)
+    )
+    output = HERE / page_spec["output"]
+    output.write_text(page)
+    print(f"wrote {output.relative_to(HERE.parent.parent)}")
+
+
+def main():
+    for page_spec in PAGES:
+        build(page_spec)
 
 
 TEMPLATE = """<!DOCTYPE html>
@@ -127,8 +164,8 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Long Table</title>
-  <meta name="description" content="A play in one long night: three colleagues piece together rumours of a structural Four Colour proof and brainstorm the last gate until dawn.">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
   <style>
     :root {
       --bg: #0d1117;
@@ -248,6 +285,25 @@ TEMPLATE = """<!DOCTYPE html>
     .c-appken { --who: var(--appken); }
     .c-theo { --who: var(--theo); }
     .c-rosa { --who: var(--rosa); }
+    .c-assistant { --who: #8b949e; }
+    .screen {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      background: #010409;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--dim);
+      font: 0.92rem/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      box-shadow: 0 0 0 4px #161b2266, 0 8px 24px rgba(0, 0, 0, 0.4);
+      overflow-wrap: anywhere;
+    }
+    .screen p { margin: 0 0 0.6rem; }
+    .screen p:last-child { margin-bottom: 0; }
+    .screen p:first-child { color: var(--faint); font-size: 0.8rem; letter-spacing: 0.03em; }
+    .screen strong { color: var(--text); }
+    .next { margin: 3rem 0 0; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .next a { display: inline-block; padding: 0.6rem 1.1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--raised); color: var(--text); text-decoration: none; }
+    .next a:hover { border-color: var(--bucky); }
     @media (max-width: 640px) {
       body { font-size: 1rem; }
       .script { padding-top: 2.25rem; }
