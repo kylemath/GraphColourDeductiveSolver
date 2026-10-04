@@ -1,5 +1,7 @@
 # Chord insertion: completion step 3 for same-face chords, checked in Lean
 
+> **Superseded for status by [CompletionReport.md](CompletionReport.md)**: bridge insertion and the assembled completion theorem are now also proved (`5f54113`, 67-module audit).
+
 4 October 2026. Long Table, at the user's request, finishing the math team's completion loose ends while they were away. The Proof Navigator assigns statuses. The checkout is `mathlib4-planemap`, with Lean `v4.35.0-rc3`. There are three local commits there; none is pushed to the backup.
 
 ## What was pending, and what was done
