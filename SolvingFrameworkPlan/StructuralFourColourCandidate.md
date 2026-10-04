@@ -12,7 +12,7 @@ The first candidate is the following quantified assertion:
 
 This is deliberately a **root-selection strengthening** of four-colourability. It does not require every degree-five root to work, but it requires every colouring at the selected root to work. That universal colouring quantifier is a Kempe-class obligation. Failure of the candidate would not refute the Four Colour Theorem or the overall structural objective. The fallback is to constrain the input to a constructively specified reachable family of recursively produced colourings; the invariant describing that family must itself be proved and preserved. Merely calling the family “extendible” is circular.
 
-The triangulation restriction requires a separate proved completion/restriction interface for arbitrary spherical maps. Finite enumeration may falsify this research candidate or validate examples; it does not establish universal coverage.
+The triangulation restriction requires the separately stated [support-carrier and triangulation-completion obligations](TriangulationCompletionObligation.md). They include proved filling preservation under edge addition and a support-size induction measure, since completion can increase the edge count. Finite enumeration may falsify this research candidate or validate examples; it does not establish universal coverage.
 
 ## Invariant, information, and measure obligations
 
@@ -47,3 +47,21 @@ Repeating the robust game separately at each root, rather than pooling signature
 Instead of demanding all Kempe classes at a selected root extend, define a computable abstraction alpha(T,r,c) and its concrete action semantics. Define W0 as target abstractions; W(j+1) adds states with a legal abstract action whose **every concretization successor** belongs to Wj. A certificate consists of the least attained layer j together with a certified action. This is an explicit robust-attractor condition, not a synonym for colouring existence.
 
 The alternative induction interface is: the recursively executed deletion algorithm returns (c, certificate alpha(T,r,c) ∈ Wj) at the root selected by a proved structural rule, with j and all action/extraction costs polynomially bounded. We must prove the recursive algorithm can produce this stronger output and that its reconstruction preserves the next required certificate. For our finite Kittell fixture, W is genuinely computed and root selection gives a nonempty successful range. For arbitrary spherical maps, existence and preservation of certificates are **unproved**, and computing W by enumerating all global colourings supplies no polynomial algorithm. A universal lemma saying only “an extendible colouring exists” would be the original theorem's obligation in disguise; it must not be accepted as a coverage proof.
+
+
+## Current attack: an exterior bit and a bounded kill-witness search
+
+The [interior-escape report](../backgroundMaterial/planemap-structural/InteriorEscapeReport.md) tests every common labelled interior action and every repeated-colour boundary action on the twenty losing root/signature cells. None gives a common one-step escape into the old robust winning set. Nevertheless the directly computed bit beta, testing whether the smallest remaining vertex's canonical {1,3} component meets the boundary, repairs every root-specific Kittell robust game using the original boundary actions. Verified finite lookup ranks at roots 3,13,17,21 are respectively at most 4,5,4,4. Hiding the root still leaves ten of eighty refined observations losing.
+
+This refutes the inference that failure of those one-step actions rules out observation refinement. Beta is an observation, not a preserved invariant or a universal rank. The tables are obtained by exhaustive finite analysis; they do not supply polynomial root selection or a solver complexity theorem.
+
+The distinction between the quotient game and actual policies is essential: a losing robust attractor excludes a policy with a strictly decreasing observation-only rank and a common-action guarantee against arbitrary represented successors. A concrete memoryless policy could revisit an observation while its hidden concrete state progresses. The quotient failure alone does not disprove every such actual policy.
+
+The icosahedron has twenty deletion-colouring orbits at each of its twelve roots, all reaching a target within one swap. Its original boundary-action game wins at every root. The [Plantri search report](../backgroundMaterial/planemap-structural/SearchReport.md) checks all 118 minimum-degree-five triangulations through order twenty, comprising 1,586 root instances, 244,051 colouring orbits, and 1,626 Kempe classes. Every checked class contains a target. This searches the stated kill witness rather than assuming class connectivity; some deletion graphs have multiple Kempe classes. No claim beyond that finite range or about polynomial growth follows.
+
+
+## First root rule: available but insufficient for the refined rank
+
+The explicit rule fixes the smallest-labelled anchor and selects the smallest degree-five root outside its closed neighbourhood. `DegreeFiveOutside.lean` proves there are at least six eligible roots in any minimum-positive-degree-five spherical core. The proof combines the degree deficit outside the anchor's star with spherical sparsity; it does not assume a triangulation or graph census.
+
+The [anchor-rule experiment](../backgroundMaterial/planemap-structural/AnchorRuleReport.md) tests this rule with the fixed sigma-plus-beta robust observation. It succeeds on 117 of 118 fixtures but fails at order twenty, graph 36, root 8. Its 198 colouring orbits give 55 observations, five of which remain in a certified robust losing set. All 198 concrete colourings still reach a target in the full Kempe graph. Thus availability is proved, the restricted root/rank rule is falsified, and the full quantified escape candidate remains open. Twelve of the 46 failing root instances in the bit stress test are genuinely exterior, so moving the seed outside the boundary does not by itself repair the model.

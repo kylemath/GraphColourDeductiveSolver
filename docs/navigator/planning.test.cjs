@@ -66,7 +66,7 @@ const statsFixture = {id: 's', status: 'exploring', children: [
  {id: 'visible', status: 'in-progress'},
  {id: 'branch', status: 'exploring', children: [{id: 'off', active: false, status: 'killed'}]}
 ]};
-assert.deepEqual(clone(Tree.getStats(statsFixture)), {leaves:2, proved:0, killed:0, inProgress:1, exploring:1, total:3});
+assert.deepEqual(clone(Tree.getStats(statsFixture)), {leaves:2, proved:0, killed:0, inProgress:1, exploring:1, computed:0, total:3});
 assert.equal(Tree.getStats({id: 'off-root', active: false, children: statsFixture.children}).total, 0);
 State.setTree(original);
 State.save();
@@ -96,6 +96,7 @@ if (integrationPath) {
   for (const old of flatten(before)) {
    const n = Tree.findNode(State.getTree(), old.id);
    assert(n, 'preserve old ID: ' + old.id);
+   if(old.status === 'proved') assert.equal(n.status, 'proved', 'preserve checked green: '+old.id);
    for (const note of old.notes || []) assert((n.notes || []).some(x => x.time === note.time && x.text === note.text), 'preserve history: ' + old.id);
   }
   const expected = new Map();
@@ -116,7 +117,7 @@ if (integrationPath) {
   for (const [id, parentId] of parents) if (Tree.findNode(State.getTree(), id)) assert.equal(Tree.findParent(State.getTree(), id)?.id, parentId);
   const root = State.getTree();
   assert.equal(root.id, '4ct');
-  assert.equal(root.title, 'Structural constructive Four Colour');
+  assert.equal(root.title, 'Four Colour Theorem');
   assert.equal(root.active, true);
   assert.equal(Tree.findNode(root, 'structural-four-colour').active, true);
   assert.equal(Tree.findNode(root, 'structural-gate-a').status, 'proved');
@@ -124,13 +125,38 @@ if (integrationPath) {
   assert.equal(Tree.findNode(root, 'structural-gate-d').status, 'exploring');
   assert.equal(Tree.findNode(root, 'structural-gate-e').status, 'unstarted');
   assert.equal(Tree.findNode(root, 'historical-research').active, false);
+  assert.equal(Tree.findNode(root, 'historical-research').title, 'Route integration log');
+  for(let i=1;i<=8;i++) {
+   assert.equal(Tree.findParent(root, 'track'+i).id, '4ct');
+   assert.equal(Tree.findNode(root, 'track'+i).active, true);
+  }
+  assert.equal(Tree.findNode(root, 'foundation').status, 'proved');
+  assert.equal(Tree.findNode(root, 'f5-lean').status, 'proved');
   assert.equal(Tree.findParent(root, 'f2').id, 'structural-gate-f');
+  assert.equal(Tree.findParent(root, 'structural-a-extension').id, 'structural-gate-a');
+  assert.equal(Tree.findNode(root, 'structural-a-extension').status, 'proved');
+  assert.equal(Tree.findNode(root, 'structural-b-eleven').status, 'proved');
+  assert.equal(Tree.findNode(root, 'structural-b-certificate').status, 'proved');
+  assert.equal(Tree.findNode(root, 'structural-b-icosahedron').status, 'proved');
+  assert.equal(Tree.findNode(root, 'structural-c-kittell').status, 'computed');
+  assert.equal(Tree.findNode(root, 'structural-c-sigma').status, 'killed');
+  assert.equal(Tree.findParent(root, 'structural-c-semantics').id, 'structural-gate-c');
+  assert.equal(Tree.findNode(root, 'structural-c-semantics').status, 'unstarted');
+  assert.equal(Tree.findNode(root, 'structural-d-root').status, 'exploring');
+  assert.equal(Tree.findParent(root, 'structural-d-recursive').id, 'structural-gate-d');
+  assert.equal(root.planningRevision, integration.revision);
   const result = JSON.stringify(root);
   assert.equal(State.applyPlanningBoard(integration), false);
   assert.equal(JSON.stringify(State.getTree()), result);
   console.log(label + ' integration passed; active statistics:', clone(Tree.getStats(root)));
  }
  verifyIntegration(original, 'Fresh default');
+ const board35={revision:35,patches:integration.patches.filter(p=>(p.revision||33)<=35),journal:[]};
+ State.setTree(clone(original));State.applyPlanningBoard(board35);
+ const cache35=clone(State.getTree());
+ Tree.findNode(cache35,'track2').notes.push({time:'2026-10-04T12:00:00Z',text:'Preserve revision35 user note'});
+ verifyIntegration(cache35,'Revision-35 cached');
+ assert.equal(Tree.findParent(State.getTree(),'track2').id,'4ct');
  // Reconstruct the actual revision-33 cached tree by applying its actual board.
  // Add a representative user note/status to test preservation across migration.
  const existing = { revision:33, patches:integration.patches.filter(p => p.revision != null && p.revision <= 33), journal:[] };
@@ -154,6 +180,6 @@ if (integrationPath) {
  assert.equal(Tree.findNode(State.getTree(), 'track1').status, 'in-progress');
  assert.equal(Tree.findNode(State.getTree(), untouched.id).status, 'in-progress');
  assert.deepEqual(clone(Tree.findNode(State.getTree(), 'track1').localStatusHistory), tracked.localStatusHistory);
- assert.equal(Tree.findParent(State.getTree(), 'track1').id, 'historical-research');
+ assert.equal(Tree.findParent(State.getTree(), 'track1').id, '4ct');
 }
 console.log('Navigator regression checks passed: real data migration, title/active updates, ordering, history/ID preservation, revision idempotence, cycle guards, inactive statistics, persistence.');

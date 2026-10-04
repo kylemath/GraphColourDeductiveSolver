@@ -195,7 +195,7 @@ const Tree = (() => {
 
   /* ---- Global stats ---- */
   function getStats(node) {
-    const result = { leaves: 0, proved: 0, killed: 0, inProgress: 0, exploring: 0, total: 0 };
+    const result = { leaves: 0, proved: 0, killed: 0, inProgress: 0, exploring: 0, computed: 0, total: 0 };
     function visit(current) {
       if (current.active === false) return;
       result.total++;
@@ -203,7 +203,7 @@ const Tree = (() => {
       if (!children.length) {
         result.leaves++;
         const key = current.status === 'in-progress' ? 'inProgress' : current.status;
-        if (['proved', 'killed', 'inProgress', 'exploring'].includes(key)) result[key]++;
+        if (['proved', 'killed', 'inProgress', 'exploring', 'computed'].includes(key)) result[key]++;
       } else {
         children.forEach(visit);
       }

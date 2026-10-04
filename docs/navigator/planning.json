@@ -1,6 +1,6 @@
 {
-  "revision": 34,
-  "updatedAt": "2026-10-04T12:00:00-06:00",
+  "revision": 36,
+  "updatedAt": "2026-10-04T11:53:18-06:00",
   "journal": [
     {
       "time": "2026-09-27T19:45:00Z",
@@ -181,6 +181,21 @@
       "time": "2026-10-04T12:00:00-06:00",
       "node": "structural-four-colour",
       "action": "Consolidated active A–F route: degree-four extension, eleven-vertex theorem, elimination certificates, and executable component swap compile and pass audits. Preserved earlier tracks as inactive history. First quantified degree-five candidate and independent Kittell replay are research evidence; general Four Colour, algorithm, and polynomial complexity remain open."
+    },
+    {
+      "time": "2026-10-04T17:30:00Z",
+      "node": "structural-four-colour",
+      "action": "Audit of the integrated route. Hash check of 35 custom sources passed. Degree-four extension, the e+2 rank bound, the twelve-vertex threshold, four-colourability through eleven vertices, and elimination-certificate soundness are compiled Lean theorems with the standard three axioms. The Kittell replay (6,350 states, distance at most 4) is a computation. The memoryless boundary policy is killed (5 of 40 pooled signatures). Root-selecting Kempe escape and the recursive certificate alternative stay open. This is not the general Four Colour Theorem."
+    },
+    {
+      "time": "2026-10-04T11:53:18-06:00",
+      "node": "4ct",
+      "action": "Restored the original research tracks as live sibling branches and integrated structural four-colouring as an extension of the existing lab manual. Audited revisions 33–35: no proved status downgrade. Previous collapsed/excluded placement obscured greens; their status and history are preserved."
+    },
+    {
+      "time": "2026-10-04T11:53:18-06:00",
+      "node": "structural-gate-d",
+      "action": "Executed the degree-five attack: tested common interior/repeated-colour moves, named an exterior connectivity bit, verified finite refined policies, searched the stated full-class kill witness through order twenty, and falsified the first exterior-anchor robust rank rule. Added genuine spherical icosahedron and executable degree-four extension; no general Four Colour claim."
     }
   ],
   "patches": [
@@ -2598,6 +2613,753 @@
       "active": false,
       "expanded": false,
       "revision": 34
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-a",
+      "revision": 35,
+      "node": {
+        "id": "structural-a-rotation",
+        "title": "Cyclic enumeration of four neighbours",
+        "status": "proved",
+        "statement": "A degree-four vertex has a cyclic enumeration of its neighbour set from the rotation, with no triangulation hypothesis.",
+        "approach": "Adapt the degree-five neighbour-orbit argument to period 4.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourColorExtension.lean"
+        ],
+        "evidence": "degree_four_neighbour_rotation is in FourColorExtension.lean. Source hash matches PlaneMapFourColorAudit.sha256.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-a",
+      "revision": 35,
+      "node": {
+        "id": "structural-a-extension",
+        "title": "four_color_extension",
+        "status": "proved",
+        "statement": "SphericalMap.four_color_extension: a proper Fin 4 colouring of M minus x extends when degree(x) ≤ 4.",
+        "approach": "Missing neighbour colour extends directly. Four distinct neighbour colours use one Kempe swap; four_colour_hopposite blocks both opposite connections.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourColorExtension.lean",
+          "../mathlib4-planemap/MathlibTest/PlaneMapFourColor.lean"
+        ],
+        "evidence": "Compiled. MathlibTest/PlaneMapFourColor.lean guards axioms propext, Classical.choice, and Quot.sound. This is not a theorem about abstract 4-degenerate graphs.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-b",
+      "revision": 35,
+      "node": {
+        "id": "structural-b-rank",
+        "title": "Sharpened rank bound e + 2 ≤ s + f",
+        "status": "proved",
+        "statement": "For an edge-containing spherical map, edges + 2 ≤ support size + faces.",
+        "approach": "Incidence image misses a coordinate because incidence sums to zero; the constant face function lies in the boundary kernel.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalSmallOrder.lean"
+        ],
+        "evidence": "edge_card_bound_two compiles and is axiom-guarded. The older edge_card_bound remains the five-colour e+1 inequality.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-b",
+      "revision": 35,
+      "node": {
+        "id": "structural-b-twelve",
+        "title": "Minimum positive degree five forces 12 nonisolated vertices",
+        "status": "proved",
+        "statement": "If every nonisolated vertex has degree at least 5, the support has at least 12 vertices.",
+        "approach": "Combine e+2 ≤ s+f with 2e ≥ 5s and 2e ≥ 3f. Short faces are excluded from the degree hypothesis, not assumed.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalSmallOrder.lean"
+        ],
+        "evidence": "twelve_le_support_of_min_degree_five compiles. No connectedness or triangulation premise.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-b",
+      "revision": 35,
+      "node": {
+        "id": "structural-b-eleven",
+        "title": "Four-colourability through eleven vertices",
+        "status": "proved",
+        "statement": "Every SphericalMap and generated PlaneMap on at most 11 labels is 4-colourable.",
+        "approach": "Every edge-containing spanning subgraph has a positive-degree vertex of degree at most 4; induct by isolate_closed.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourColorSmallOrder.lean",
+          "../mathlib4-planemap/MathlibTest/PlaneMapFourColor.lean"
+        ],
+        "evidence": "four_color_of_order_le_eleven compiles for both carriers. Tests cover the tetrahedron, symbolic paths, and a five-vertex path whose centre deletion keeps two disconnected edges.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-b",
+      "revision": 35,
+      "node": {
+        "id": "structural-b-certificate",
+        "title": "Elimination certificate soundness and length",
+        "status": "proved",
+        "statement": "A FourEliminationOrder colours the map, and its length is at most the initial edge count.",
+        "approach": "Each step isolates a degree-at-most-four vertex and applies four_color_extension. exists_fourEliminationOrder is classical existence, not a search procedure.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FourEliminationOrder.lean"
+        ],
+        "evidence": "colorable, length_le_edges, and exists_fourEliminationOrder_of_order_le_eleven are axiom-guarded. Executable reconstruction is structural-reconstruct.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-b",
+      "revision": 35,
+      "node": {
+        "id": "structural-b-icosahedron",
+        "title": "Spherical icosahedron sharpness example",
+        "status": "unstarted",
+        "statement": "Encode the icosahedron as a SphericalMap on 12 vertices, degree 5 at every vertex, so it lies outside the eleven-vertex corollary.",
+        "approach": "The classical counts are 12 vertices, 30 edges, and 20 faces. A Lean carrier is not yet in the tests.",
+        "files": [
+          "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+        ],
+        "evidence": "Not a compiled example. The eleven-vertex theorem does not depend on it.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-c",
+      "revision": 35,
+      "node": {
+        "id": "structural-c-kittell",
+        "title": "Kittell replay fixture",
+        "status": "computed",
+        "statement": "On the 23-vertex Kittell triangulation, record per-root Kempe distances and boundary signatures. This is a computation, not a colouring theorem.",
+        "approach": "Replay the stored edge list independently: planarity, colourings modulo renaming, component moves, and target distance.",
+        "files": [
+          "backgroundMaterial/planemap-structural/replay.py",
+          "backgroundMaterial/planemap-structural/replay-results.json",
+          "backgroundMaterial/agent1720/groups/K6_kittell.json"
+        ],
+        "evidence": "replay-results.json: n=23, m=63, planar. Fifteen roots, 6,350 states, each Kempe graph reaches a target in at most 4 moves. SHA256 of the replay output is in backgroundMaterial/planemap-structural/SHA256SUMS. Not a Lean proof.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-c",
+      "revision": 35,
+      "node": {
+        "id": "structural-c-sigma",
+        "title": "Memoryless boundary-action policy",
+        "status": "killed",
+        "statement": "A policy that sees only the canonical boundary colouring and the six bichromatic boundary partitions, and plays one common boundary action, does not solve the pooled Kittell signatures.",
+        "approach": "Robust attractor on the quotient sigma. Components disjoint from the boundary are outside this action model.",
+        "files": [
+          "backgroundMaterial/planemap-structural/replay-results.json",
+          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+        ],
+        "evidence": "Forty pooled signatures; 35 enter the robust attractor and 5 remain losing. Root-specific games clear roots 2,4,5,8,9,12,14,16,18,20,22 and leave five losing signatures at roots 3,13,17,21. This kills that information restriction only.",
+        "killCriteria": "Met for this policy. A full-exterior, root-specific, or multi-move rule is a different statement.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-c",
+      "revision": 35,
+      "node": {
+        "id": "structural-c-semantics",
+        "title": "Lean boundary semantics for the exterior-aware patch",
+        "status": "unstarted",
+        "statement": "Prove restriction, legal component exchange, and extension for one patch whose moves may use the exterior graph, rotation, and colouring.",
+        "approach": "Keep the interface proportional to the Gate D candidate. Reducibility of one patch does not prove coverage.",
+        "files": [
+          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+        ],
+        "evidence": "No Lean restriction or gluing theorem for this patch is in the audited modules.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-d",
+      "revision": 35,
+      "node": {
+        "id": "structural-d-root",
+        "title": "Root-selecting Kempe escape",
+        "status": "exploring",
+        "statement": "There exist fixed C,k and procedures Select and Step such that, on every spherical triangulation of minimum degree at least 5, Select picks one degree-5 root and Step takes every proper 4-colouring of the deletion to a 3-colour boundary in C·n^k legal component exchanges.",
+        "approach": "The universal quantifier over deletion colourings is stronger than four-colourability. Failure would not refute the Four Colour Theorem.",
+        "files": [
+          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+        ],
+        "evidence": "No Select rule, progress rank, or coverage proof. Kittell supplies no kill witness: every tested state reaches a target. The boundary-only policy fails at four of fifteen roots.",
+        "killCriteria": "One triangulation in which every degree-5 root has a Kempe component of the deletion containing no target colouring.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-d",
+      "revision": 35,
+      "node": {
+        "id": "structural-d-recursive",
+        "title": "Recursive winning-certificate alternative",
+        "status": "exploring",
+        "statement": "A deletion algorithm returns a colouring plus a robust-attractor certificate at a structurally chosen root, with polynomial layer and action cost, and reconstruction preserves the next certificate.",
+        "approach": "W0 is the target abstractions; W(j+1) adds abstract actions whose every concretization successor is already winning. Existence of an extendible colouring is not this certificate.",
+        "files": [
+          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+        ],
+        "evidence": "The Kittell fixture has a computed attractor. Existence and preservation for arbitrary spherical maps are unproved.",
+        "killCriteria": "A proposed certificate whose preservation fails on reconstruction, or whose only proof is four-colourability itself.",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "id": "structural-four-colour",
+      "revision": 35,
+      "evidence": "Audit 4 Oct 2026: 35 custom modules match PlaneMapFourColorAudit.sha256. Gates A and B compile with only propext, Classical.choice, and Quot.sound. Kittell replay is a separate computation. The general spherical Four Colour Theorem is open at the degree-five core.",
+      "notes": [
+        {
+          "time": "2026-10-04T17:30:00Z",
+          "text": "Independent audit accepted the compiled A/B scope and split the integrated Lean, replay, and candidate obligations into child nodes. The eleven-vertex theorem is not the general theorem."
+        }
+      ]
+    },
+    {
+      "id": "structural-gate-a",
+      "revision": 35,
+      "evidence": "four_color_extension and degree_four_neighbour_rotation compile. Axiom guard: propext, Classical.choice, Quot.sound."
+    },
+    {
+      "id": "structural-gate-b",
+      "revision": 35,
+      "evidence": "edge_card_bound_two, twelve_le_support_of_min_degree_five, four_color_of_order_le_eleven, and FourEliminationOrder.colorable compile. Certificate existence is classical. The icosahedron is not yet a spherical Lean example."
+    },
+    {
+      "id": "structural-gate-c",
+      "revision": 35,
+      "status": "in-progress",
+      "evidence": "The memoryless boundary policy is killed on the Kittell quotient. The replay fixture is recorded. Lean restriction and gluing for an exterior-aware patch are unstarted."
+    },
+    {
+      "id": "structural-gate-d",
+      "revision": 35,
+      "evidence": "Two research statements are open: root-selecting escape for every colouring at one root, and the recursive certificate alternative. Neither is a premise of the general theorem."
+    },
+    {
+      "id": "4ct",
+      "revision": 35,
+      "evidence": "Standing on 4 Oct 2026: Five Colour for spherical and generated plane maps is proved. Four colours extend through degree four and through eleven vertices. A minimum-positive-degree-five core on at least twelve vertices is the open theorem.",
+      "notes": [
+        {
+          "time": "2026-10-04T17:30:00Z",
+          "text": "Navigator revision 35 records the integrated A/B theorems, the Kittell fixture, the killed boundary-only policy, and the two Gate D candidates."
+        }
+      ]
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "foundation",
+      "parentId": "4ct",
+      "index": 0
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "structural-four-colour",
+      "parentId": "4ct",
+      "index": 1
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track1",
+      "parentId": "4ct",
+      "index": 2
+    },
+    {
+      "revision": 36,
+      "id": "track1",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track2",
+      "parentId": "4ct",
+      "index": 3
+    },
+    {
+      "revision": 36,
+      "id": "track2",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track3",
+      "parentId": "4ct",
+      "index": 4
+    },
+    {
+      "revision": 36,
+      "id": "track3",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track4",
+      "parentId": "4ct",
+      "index": 5
+    },
+    {
+      "revision": 36,
+      "id": "track4",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track5",
+      "parentId": "4ct",
+      "index": 6
+    },
+    {
+      "revision": 36,
+      "id": "track5",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track6",
+      "parentId": "4ct",
+      "index": 7
+    },
+    {
+      "revision": 36,
+      "id": "track6",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track7",
+      "parentId": "4ct",
+      "index": 8
+    },
+    {
+      "revision": 36,
+      "id": "track7",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "track8",
+      "parentId": "4ct",
+      "index": 9
+    },
+    {
+      "revision": 36,
+      "id": "track8",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "routes-1720",
+      "parentId": "4ct"
+    },
+    {
+      "revision": 36,
+      "id": "routes-1720",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "min-deg-4",
+      "parentId": "4ct"
+    },
+    {
+      "revision": 36,
+      "id": "min-deg-4",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "audit-1701",
+      "parentId": "4ct"
+    },
+    {
+      "revision": 36,
+      "id": "audit-1701",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "op": "move",
+      "id": "f-spec-lean",
+      "parentId": "foundation"
+    },
+    {
+      "revision": 36,
+      "id": "f-spec-lean",
+      "active": true,
+      "expanded": false
+    },
+    {
+      "revision": 36,
+      "id": "historical-research",
+      "title": "Route integration log",
+      "active": false,
+      "expanded": false,
+      "statement": "Records the navigator reorganization and its correction. Earlier mathematical tracks are restored as live branches of the original research tree.",
+      "approach": "This metadata node has no mathematical obligation and is excluded from leaf counts.",
+      "notes": [
+        {
+          "time": "2026-10-04T11:53:18-06:00",
+          "text": "Revision 36 restores the previous research branches alongside the new structural branch. No proved status was downgraded in revisions 34 or 35; relocation under an excluded collapsed ancestor obscured their visibility."
+        }
+      ]
+    },
+    {
+      "revision": 36,
+      "id": "4ct",
+      "title": "Four Colour Theorem",
+      "active": true,
+      "expanded": true,
+      "statement": "A living research tree toward a new structural, constructive Four Colour proof, with termination and complexity proved and an ordinary-planar representation bridge.",
+      "approach": "Preserve the original branches, successes, counterexamples, and pruning record. The structural branch extends the checked Five Colour and Kempe separation work; it is the current execution focus, not a replacement for the lab manual.",
+      "notes": [
+        {
+          "time": "2026-10-04T11:53:18-06:00",
+          "text": "Integrated the structural route as a sibling of the earlier tracks. All original IDs and notes remain; Five Colour theorems remain proved. Computed evidence and unproved new obligations retain their distinct statuses."
+        }
+      ]
+    },
+    {
+      "revision": 36,
+      "id": "foundation",
+      "active": true,
+      "expanded": true,
+      "notes": [
+        {
+          "time": "2026-10-04T11:53:18-06:00",
+          "text": "The Five Colour theorem, deletion closure, spherical low-degree result, and compiled separation lemmas remain green. The ordinary-planarity representation bridge is still unproved and is tracked by f2 under structural-gate-f; it was not a checked Five Colour theorem."
+        }
+      ]
+    },
+    {
+      "revision": 36,
+      "id": "structural-four-colour",
+      "title": "Structural four-colouring from the checked spherical foundation",
+      "active": true,
+      "expanded": true,
+      "approach": "Extend foundation/f4 and the degree-four Kempe work in track1. Gates A/B supply checked infrastructure. Attack the named degree-five candidate before further patch semantics; preserve links to earlier failures and alternative routes.",
+      "notes": [
+        {
+          "time": "2026-10-04T11:53:18-06:00",
+          "text": "Provenance: foundation → spherical deletion and separation → degree-four extension → minimum-degree-five core. Earlier Kempe counterexamples constrain the quantifiers; the new branch remains part of that context."
+        }
+      ]
+    },
+    {
+      "revision": 36,
+      "id": "f1",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f3",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f4",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f5",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f-planemap-core",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f-jordan-even",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f-heawood-bridge",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f-planemap-delete",
+      "status": "proved"
+    },
+    {
+      "revision": 36,
+      "id": "f5-lean",
+      "status": "proved"
+    },
+    {
+      "id": "structural-b-icosahedron",
+      "revision": 36,
+      "status": "proved",
+      "statement": "Icosahedron.sphericalMap is a SphericalMap 12 with 30 edges, 20 triangular faces, support size 12, and degree five at every vertex.",
+      "evidence": "Built and standard-three axiom guarded. Filling follows from a kernel-checked finite linear coefficient certificate, not a planarity oracle or enumeration of edge combinations.",
+      "files": [
+        "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Icosahedron.lean",
+        "../mathlib4-planemap/MathlibTest/PlaneMapIcosahedron.lean"
+      ]
+    },
+    {
+      "id": "structural-gate-b",
+      "revision": 36,
+      "evidence": "The checked A/B results remain proved. The genuine spherical icosahedron sharpness example now also compiles. Classical elimination existence is distinct from executable carrier construction."
+    },
+    {
+      "id": "structural-c-sigma",
+      "revision": 36,
+      "title": "Boundary-signature rank and robust common-action guarantee",
+      "statement": "The old boundary observation has losing robust quotient states, so no common-action policy with a strictly decreasing rank depending only on that observation solves all representatives.",
+      "evidence": "The 35/40 robust attractor calculation rules out that rank-and-guarantee model. It does not automatically refute every concrete memoryless policy: hidden state can progress while the same observation recurs.",
+      "notes": [
+        {
+          "time": "2026-10-04T11:53:18-06:00",
+          "text": "Narrowed the killed statement to the guarantee actually established by the quotient experiment. A quotient adversary can change representatives between moves; concrete executions cannot."
+        }
+      ]
+    },
+    {
+      "id": "structural-reconstruct",
+      "revision": 36,
+      "status": "in-progress",
+      "statement": "Implement automatic spherical deletion carriers and low-degree selection, then compose the executable extension into the small-order solver.",
+      "evidence": "The local degree-at-most-four extension is executable, including computed cyclic enumeration. Automatic carrier construction and the complete eleven-vertex solver remain open."
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-reconstruct",
+      "revision": 36,
+      "node": {
+        "id": "structural-local-program",
+        "title": "Executable degree-four extension and cyclic enumeration",
+        "status": "proved",
+        "statement": "finiteFourColorExtend computes a proper Fin 4 colouring from a spherical map with executable adjacency, a degree-at-most-four vertex, and its proper deletion colouring. No supplied neighbour enumeration is required.",
+        "evidence": "Finite tuple search computes the cyclic enumeration and its inverse. Correctness is proved. Guarded evaluation checks singleton extension, positive four-neighbour rotation search, and a nontrivial component swap. A complete degree-four spherical swap execution fixture remains outstanding.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiniteFourExtension.lean",
+          "../mathlib4-planemap/MathlibTest/PlaneMapFiniteFourColor.lean"
+        ],
+        "notes": [],
+        "children": [],
+        "expanded": true,
+        "active": true,
+        "approach": "",
+        "killCriteria": ""
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-d-root",
+      "revision": 36,
+      "node": {
+        "id": "structural-exterior-bit",
+        "title": "Exterior bit: finite Kittell policies",
+        "status": "computed",
+        "statement": "Refine sigma by whether the smallest remaining vertex belongs to a canonical {1,3} component meeting the boundary, retaining root identity.",
+        "evidence": "All four difficult Kittell roots have verified robust lookup policies with maximum ranks 4,5,4,4. The bit is an observation, not a preserved invariant; finite tables do not supply a uniform rank formula.",
+        "files": [
+          "backgroundMaterial/planemap-structural/InteriorEscapeReport.md",
+          "backgroundMaterial/planemap-structural/results.json",
+          "backgroundMaterial/planemap-structural/escape.py"
+        ],
+        "notes": [],
+        "children": [],
+        "expanded": true,
+        "active": true,
+        "approach": "",
+        "killCriteria": ""
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-d-root",
+      "revision": 36,
+      "node": {
+        "id": "structural-root-census",
+        "title": "Quantified kill-witness search through order twenty",
+        "status": "computed",
+        "statement": "Search for one minimum-degree-five spherical triangulation such that every degree-five root has a targetless deletion Kempe class.",
+        "evidence": "No witness among 118 generated triangulations, 1,586 roots, 244,051 colouring orbits, and 1,626 classes. Every checked class reaches a target. This is finite research evidence, not a uniform theorem or complexity proof.",
+        "files": [
+          "backgroundMaterial/planemap-structural/SearchReport.md",
+          "backgroundMaterial/planemap-structural/search-results.json",
+          "backgroundMaterial/planemap-structural/search.py"
+        ],
+        "notes": [],
+        "children": [],
+        "expanded": true,
+        "active": true,
+        "approach": "",
+        "killCriteria": ""
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-gate-d",
+      "revision": 36,
+      "node": {
+        "id": "structural-triangulation-completion",
+        "title": "Support reduction and edge-addition completion",
+        "status": "unstarted",
+        "statement": "Transport the nonisolated support to a spherical carrier; prove same-support triangulation completion and graph inclusion; use support-size induction because adding edges invalidates direct edge-count recursion.",
+        "evidence": "Precise lemmas and colouring transport obligations are written before use. subgraph_closed deletes edges and does not prove the required edge-addition theorem.",
+        "files": [
+          "SolvingFrameworkPlan/TriangulationCompletionObligation.md"
+        ],
+        "notes": [],
+        "children": [],
+        "expanded": true,
+        "active": true,
+        "approach": "",
+        "killCriteria": ""
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-d-root",
+      "revision": 36,
+      "node": {
+        "id": "structural-anchor-rule",
+        "title": "First exterior-anchor rule with the fixed bit",
+        "status": "killed",
+        "statement": "Select the smallest degree-five vertex outside the smallest anchor’s closed neighbourhood and demand a robust sigma-plus-beta policy with an observation-only decreasing rank.",
+        "evidence": "Fails at order 20, graph 36, root 8: 198 colouring orbits, 55 observations, five losing groups. All 198 states still reach a target in the full Kempe graph. This kills the restricted rule/rank hypothesis, not the full candidate or actual memoryless policies.",
+        "files": [
+          "backgroundMaterial/planemap-structural/AnchorRuleReport.md",
+          "backgroundMaterial/planemap-structural/anchor-rule-results.json",
+          "backgroundMaterial/planemap-structural/anchor-rule.py"
+        ],
+        "notes": [],
+        "children": [],
+        "expanded": true,
+        "active": true,
+        "approach": "",
+        "killCriteria": ""
+      }
+    },
+    {
+      "id": "structural-gate-d",
+      "revision": 36,
+      "evidence": "The explicit exterior bit repairs the difficult Kittell quotient fixtures, but a first uniform root rule fails at order twenty. Full Kempe reachability survives every tested root through twenty; uniform reduction, rank, and polynomial cost remain unproved."
+    },
+    {
+      "revision": 36,
+      "op": "insert",
+      "parentId": "structural-d-root",
+      "node": {
+        "id": "structural-six-outside",
+        "title": "At least six eligible exterior degree-five roots",
+        "status": "proved",
+        "statement": "In a spherical map of minimum positive degree five, every nonisolated anchor has at least six degree-five vertices outside its closed neighbourhood.",
+        "approach": "Combine spherical sparsity with the degree sum outside the anchor’s closed star.",
+        "evidence": "six_le_degreeFiveOutside and exists_degree_five_outside compile with guarded standard-three axiom reports. This proves availability only; the first eligible-root robust rank rule fails independently.",
+        "files": [
+          "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/DegreeFiveOutside.lean",
+          "../mathlib4-planemap/MathlibTest/PlaneMapDegreeFiveOutside.lean"
+        ],
+        "notes": [],
+        "children": [],
+        "active": true,
+        "expanded": true,
+        "killCriteria": ""
+      }
+    },
+    {
+      "revision": 36,
+      "id": "structural-four-colour",
+      "evidence": "All 41 custom source modules and guarded tests passed against freshly rebuilt custom dependencies, with source hashes rechecked. New results include the spherical icosahedron, computed degree-four extension, and six exterior-root availability theorem. Uniform degree-five escape and the general theorem remain open."
     }
   ]
 }

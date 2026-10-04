@@ -1,7 +1,7 @@
 {
-  "module_count": 35,
+  "module_count": 41,
   "linked_upstream_artifacts": 111948,
-  "excluded_custom_artifacts": 423,
+  "excluded_custom_artifacts": 467,
   "modules": [
     "Mathlib.Combinatorics.SimpleGraph.Coloring.Kempe",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.ErasePermutation",
@@ -23,6 +23,7 @@
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.JordanWalkParity",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalMap",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorSeparation",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.Icosahedron",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.RotationDelete",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDegree",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalFiveColor",
@@ -30,16 +31,25 @@
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorExtension",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDelete",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalSmallOrder",
+    "MathlibTest.PlaneMapIcosahedron",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.DeleteVertex",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiniteFourExtension",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorTheorem",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourColorSmallOrder",
     "MathlibTest.PlaneMapIndependentChecks",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FiveColorExamples",
     "Mathlib.Combinatorics.SimpleGraph.PlaneMap.FourEliminationOrder",
+    "MathlibTest.PlaneMapFiniteFourColor",
     "MathlibTest.PlaneMapFiveColor",
-    "MathlibTest.PlaneMapFourColor"
+    "MathlibTest.PlaneMapFourColor",
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.DegreeFiveOutside",
+    "MathlibTest.PlaneMapDegreeFiveOutside"
   ],
   "status": "passed",
+  "additional_source_modules_without_cached_artifacts": [
+    "Mathlib/Combinatorics/SimpleGraph/PlaneMap/DegreeFiveOutside.lean",
+    "MathlibTest/PlaneMapDegreeFiveOutside.lean"
+  ],
   "source_hashes_unchanged_after_build": true,
   "toolchain": "leanprover/lean4:v4.35.0-rc3"
 }

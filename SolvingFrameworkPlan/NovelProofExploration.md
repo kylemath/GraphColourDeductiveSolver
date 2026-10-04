@@ -1,6 +1,6 @@
 # Novel Proof Exploration: A Pipeline D-Only Strategy
 
-> Historical exploration plan. The active route since 4 October 2026 is [Structural Four Colour execution plan](StructuralFourColourPlan.md), with its [quantified Gate-D candidate](StructuralFourColourCandidate.md). The navigator retains these earlier tracks in its inactive history branch.
+> The navigator preserves this exploration and its branching/pruning record as live research tracks. The [Structural Four Colour execution plan](StructuralFourColourPlan.md) and [quantified Gate-D candidate](StructuralFourColourCandidate.md) extend the checked foundation in a new sibling branch; they do not replace this lab manual.
 
 **Project:** Graph Colouring — Four Colour Theorem  
 **Date:** 17 February 2026  

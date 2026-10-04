@@ -203,6 +203,7 @@ html, body {
 .dot-in-progress { background: var(--accent); }
 .dot-blocked { background: var(--orange); }
 .dot-proved { background: var(--green); }
+.dot-computed { background: var(--cyan); }
 .dot-killed { background: var(--red); }
 
 /* ===== TREE NODES ===== */
@@ -259,6 +260,7 @@ html, body {
 .node-status.in-progress { background: var(--accent-dim); border-color: var(--accent); }
 .node-status.blocked { background: var(--orange-dim); border-color: var(--orange); }
 .node-status.proved { background: var(--green-dim); border-color: var(--green); }
+.node-status.computed { background: var(--cyan-dim); border-color: var(--cyan); }
 .node-status.killed { background: var(--red-dim); border-color: var(--red); }
 
 .node-title {
