@@ -20,6 +20,18 @@ reaches a target (a singleton freed in some pair).  L = 0 at targets by conventi
   rep    lex(p, q restricted to the three pairs containing the repeated boundary colour)
   Lonly  lex(p, L)                          lock count alone
 
+ROUND 2 (declared after round-1 discovery results, before any round-2 run).  Round 1 left only
+the orbit {4, 6} of order 17 graph 0 failing under lock, lockq and lin.  Round 2 variants:
+  Lall    every boundary vertex v (singletons and both repeated-colour vertices) and colour
+          x != c(v): count pairs where v's (c(v), x)-component meets B outside v.  0..15.
+  links   number of (pair, component) with |K meet B| >= 2, i.e. boundary-linking chains.
+  lockL   lex(p, L, lin)
+  linq    lex(p, lin, q)
+  Lallq   lex(p, Lall, q)
+  linksq  lex(p, links, q)
+  linksl  lex(p, links, lin)
+Same protocol, run with --round 2; round-1 results are not rerun or altered.
+
 Protocol (also frozen):
   1. Discovery: orders 12-18 only.  Report failing roots and graphs with every root failing.
   2. Any variant with zero failing roots on discovery advances to holdout orders 19-20.
@@ -35,6 +47,7 @@ from pathlib import Path
 from mass_core import FIXTURES, HERE, PAIRS, degree_five, parse_ascii, RootState
 
 VARIANTS = ["base", "lock", "lockq", "lin", "full", "rep", "Lonly"]
+VARIANTS2 = ["base", "lockL", "linq", "Lallq", "linksq", "linksl"]
 
 
 def components(state, c):
@@ -66,7 +79,8 @@ def ranks(state, i):
     q = sum(len(K - Bset) ** 2 for _, K in comps if K & Bset)
     lin = sum(len(K - Bset) for _, K in comps if K & Bset)
     full = sum(len(K) ** 2 for _, K in comps if K & Bset)
-    L, rep = 0, 0
+    L, rep, Lall = 0, 0, 0
+    links = sum(1 for _, K in comps if len(K & Bset) >= 2)
     if p == 1:
         counts = {x: cols.count(x) for x in set(cols)}
         repeated = next(x for x, k in counts.items() if k == 2)
@@ -85,17 +99,23 @@ def ranks(state, i):
                 K = where[(tuple(sorted((a, x))), j)]
                 if (K & Bset) - {j}:
                     L += 1
+        for j in B:
+            for x in range(4):
+                if x != c[j] and (where[(tuple(sorted((c[j], x))), j)] & Bset) - {j}:
+                    Lall += 1
     n2 = state.n * state.n
     return {"base": (p, q), "lock": (p, L, q), "lockq": (p, q + n2 * L), "lin": (p, lin),
-            "full": (p, full), "rep": (p, rep), "Lonly": (p, L)}
+            "full": (p, full), "rep": (p, rep), "Lonly": (p, L),
+            "lockL": (p, L, lin), "linq": (p, lin, q), "Lallq": (p, Lall, q),
+            "linksq": (p, links, q), "linksl": (p, links, lin)}
 
 
-def root_failures(rot, r):
+def root_failures(rot, r, variants):
     s = RootState(rot, r)
     rk = [ranks(s, i) for i in range(len(s.C))]
     nxt = [[t for _, _, t in s.info[i]["moves"]] for i in range(len(s.C))]
     out = {}
-    for v in VARIANTS:
+    for v in variants:
         stuck = []
         for i in range(len(s.C)):
             if rk[i][v][0] != 1:
@@ -120,7 +140,7 @@ def run(orders, variants):
             rot = parse_ascii(g["ascii"])
             per = {}
             for r in degree_five(rot):
-                f, V = root_failures(rot, r)
+                f, V = root_failures(rot, r, variants)
                 per[r] = f
                 if "base" in variants:
                     published = next(x for x in g["roots"] if x["root"] == r)
@@ -139,18 +159,21 @@ def run(orders, variants):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--stage", choices=["discovery", "holdout"], required=True)
+    ap.add_argument("--round", type=int, choices=[1, 2], default=1)
     args = ap.parse_args()
-    disc_path = HERE / "broaden-discovery.json"
+    variants = VARIANTS if args.round == 1 else VARIANTS2
+    tag = "" if args.round == 1 else "-round2"
+    disc_path = HERE / f"broaden-discovery{tag}.json"
     if args.stage == "discovery":
-        res = run(set(range(12, 19)), VARIANTS)
-        out = {"stage": "discovery", "orders": "12-18", "variants": VARIANTS, "results": res}
+        res = run(set(range(12, 19)), variants)
+        out = {"stage": "discovery", "round": args.round, "orders": "12-18", "variants": variants, "results": res}
         path = disc_path
     else:
         disc = json.loads(disc_path.read_text())
-        advancing = [v for v in VARIANTS if not disc["results"][v]["failing_roots"]]
+        advancing = [v for v in variants if v != "base" and not disc["results"][v]["failing_roots"]]
         res = run({19, 20}, advancing) if advancing else {}
-        out = {"stage": "holdout", "orders": "19-20", "advancing": advancing, "results": res}
-        path = HERE / "broaden-holdout.json"
+        out = {"stage": "holdout", "round": args.round, "orders": "19-20", "advancing": advancing, "results": res}
+        path = HERE / f"broaden-holdout{tag}.json"
     out["scope"] = ("Long Table exploratory screen of predeclared alternative ranks under the two-swap macro. "
                     "Finite evidence only; no status claims; survivors go to the corpus team.")
     out["checkers"] = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
