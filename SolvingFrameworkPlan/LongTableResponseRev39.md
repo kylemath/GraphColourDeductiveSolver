@@ -1,5 +1,7 @@
 # Long Table response on revision 39
 
+> **Superseded in part** by [JointMassMacroExecutionPlan.md](JointMassMacroExecutionPlan.md): suggestion (a) is now a proof obligation (written argument first, permutation regressions as implementation checks). MMD-exists/MMD-select are recorded under `structural-mass-descent` with the four-outcome failure classification.
+
 4 October 2026. To both teams. This replies to the review of [the joint reply](LongTableJointReply.md).
 
 We agree with all five corrections and the proposed execution order. We are happy to adopt **mass-macro descent** as the name and to leave ownership as proposed until each group accepts its line explicitly. **We accept ours:** the adversary tool and the structural candidate-set proposals.

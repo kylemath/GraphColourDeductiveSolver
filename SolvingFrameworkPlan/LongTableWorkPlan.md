@@ -1,88 +1,158 @@
 # Long Table work plan: adversary and structural candidate sets
 
-4 October 2026. Our accepted share of the revision-39 plan: **the adversary** and **structural candidate-set proposals**. The corpus implementation, quantifier review, support transport and filling proofs belong to the scale-up team. The evidence and status ledger belongs to the navigator group. We do not rerun the census.
+4 October 2026, revised to conform to [JointMassMacroExecutionPlan.md](JointMassMacroExecutionPlan.md) (the joint plan). Where this plan and the joint plan differ, the joint plan governs.
+
+**Our share,** explicitly accepted:
+- adversary tooling;
+- structural candidate-set proposals;
+- our own errata;
+- statement review for the completion bridge.
+
+**Not ours:**
+- the corpus sweep, quantifier review, support transport and filling proofs (math and scale-up);
+- status words, revision 39 and the ledger (navigator).
+
+**Execution awaits the user's release.** Nothing below starts before then, and acceptance is never inferred from silence.
 
 ## Ground rules
 
-- Python standard library only, in the style of the existing `backgroundMaterial/planemap-structural/*.py` scripts.
-- **Inputs:**
-  - The Plantri corpus `triangulations-min5-{12..20}.txt`, with line hashes checked against `search-results.json`.
-  - Published result files.
-  - Recomputation is allowed only for a single named graph, for regression or debugging.
-- **Outputs:** JSON with a `scope` line stating what is *not* established, input hashes, and full witnesses: the colouring, the root, every successor rank.
-- Every proposal uses the checklist: class, move, invariant, measure, input family, coverage, witness.
-- No status words. We report results; the navigator group assigns status.
-- Commit only our own files.
+- **Naming:** navigator id `structural-mass-descent`, "mass-macro descent" in prose. Never "D2", which identifies the historical signed Penrose work.
+- **The contract** is the joint plan's, verbatim:
+  - p = max(0, #colours on B − 3);
+  - q = Σ |K∖B|² over all six pairs and every component meeting B;
+  - R = (6n²+1)p + q;
+  - macros of at most two whole-component swaps, recomputing components after the first. Intermediate ranks may rise; the final rank must strictly fall. Stop at p = 0.
+- **Graph identity:** order, zero-based graph index, exact ASCII rotation, and the hash of that ASCII. Whole-file hashes are checked against `search-results.json`. These are file hashes, not line hashes, and we will not invent a line-hash convention.
+- **Every result file states:**
+  - its scope;
+  - input and checker hashes;
+  - the formula version and macro bound;
+  - the root;
+  - total colouring orbits and the non-target count;
+  - the outcome.
+- **Every failure witness gives:**
+  - the full colouring with its vertex order;
+  - the start rank;
+  - all one- and two-step successor ranks, with enough component and move data to certify completeness.
+- **Empty colouring families** are reported explicitly, never as vacuous passes.
+- **Tooling:** standard library only. Any other dependency is named.
+- **Wording:** we report factual pass/fail outcomes, and the navigator assigns statuses.
+- **Files:** we commit only our own files, and we do not edit shared files while another team owns an update.
 
-## WP1: Adversary (`adversary.py`)
+## Failure classification (joint plan, used everywhere)
 
-Purpose: rule in, first failing graph out, reported with a replayable witness.
+| Observation | Refutes |
+|---|---|
+| A colouring with no decreasing macro at root r | `Good(T, r)` |
+| A proposed set S(T) contains one failing root | The every-member guarantee of that set |
+| The stated tie-break/Select actually returns a failing root | That selector only |
+| Every degree-five root has a failing colouring | The existential mass-macro claim |
 
-1. **Corpus loader.** Read every order file, check each line against the recorded input hashes, and parse the rotation format used by `component-mass.py`.
-2. **Rule interface.** A rule is a function `candidates(rotation) -> set of roots`, plus a named check per root. The checks are:
-   - the (σ, β) robust game, reused from `bit-search.py`;
-   - mass-macro descent at macro length 1 and length 2.
-3. **Classification,** per correction 2 of the review:
-   - (i) the root fails;
-   - (ii) the candidate set contains a failing root, so the selector fails;
-   - (iii) every degree-five root fails, which is a kill witness for MMD-exists.
-4. **Regression gate,** which must pass before any new result is reported:
-   - Smallest-label exterior root with (σ, β): reproduce the order-20, graph-36, root-8 failure, 5 of 55 losing.
-   - Graph 36: reproduce that only root 8 loses (σ, β) among the 8 eligible roots.
-   - Graph 36, root 8, mass-macro length 1: exactly 3 stuck orbits, the first at rank (1,190).
-   - Length 2: no stuck orbits.
-   - Icosahedron: every root passes trivially.
-5. **Consume, don't recompute.** Once the corpus team publishes per-root mass-macro results, the adversary reads them. Until then it computes per-graph results only for regression fixtures.
+None of these refutes Four Colour or bare Kempe reachability.
 
-**Done when:** all regression cases are reproduced from the corpus files alone, and one command evaluates any candidate set over the corpus.
+## WP1: Invariance argument (first, on paper)
 
-## WP2: Structural candidate sets
+Write a short proof that mass descent is invariant under graph relabelling and global colour permutation.
+- Both bijections preserve B, bichromatic components and their sizes, the legal one- and two-swap macros, and therefore R.
+- So Good(T, r) transports along isomorphisms, and counterexamples transport with it.
+- Note explicitly that the label-sensitive (σ, β) game does **not** inherit this.
 
-Purpose: nonempty, isomorphism-equivariant sets S(T) ⊆ D(T), with deterministic tie-breaking, that contain only passing roots.
+Deliverable: a section in our first report, for the math team's quantifier review. Exact automorphism-orbit computation is an optional diagnostic, not a prerequisite.
 
-1. **Check suggestion (a) first.**
-   - Relabel each of the 118 graphs by a random permutation and permute colours.
-   - Confirm that the mass-macro pass set maps to itself on a sample of graphs that includes graph 36.
-   - Compute automorphism orbits of D(T) and confirm each pass set is a union of orbits.
-   - If this fails, report it to both teams before proposing any candidate set.
-2. **Describe the pass sets,** once the corpus table exists. For each graph record:
-   - |D(T)|, the pass set, and how many orbits it spans;
-   - simple structural data per root: degree-5 neighbour count, the second-ring degree multiset, distances to other degree-5 vertices, and charge after a fixed discharging rule.
+## WP2: Regression fixtures (named graphs only)
 
-   This is description, not fitting. Any rule found here must then be tested on graphs not used to find it, such as orders 21 and up if they are generated.
-3. **Proposals,** each stated in symbols with a one-line proof that it is nonempty:
-   - **S0:** all of D(T). This is the baseline, and it fails exactly when MMD-exists fails.
-   - **S1:** arg max or arg min of the number of degree-5 neighbours over D(T).
-   - **S2:** the degree-5 vertices that receive positive final charge under a stated discharging rule. Nonemptiness follows from total charge 12.
-   - **S3+:** whatever WP2.2 suggests, with the rule written down before it is evaluated.
-4. **Report,** for each proposal: the first failing graph with its witness, or "passes the corpus through order 20". Include the cost of computing the set. Passing is evidence, not coverage.
+Reproduce only these fixtures, from the corpus files and published results:
 
-**Done when:** at least S0–S2 are evaluated against the corpus pass sets, with witnesses or pass statements filed for the ledger.
+1. Graph 36 (order 20, zero-based index 36): the eight exterior degree-five roots of anchor 0 are 8, 10, 11, 13, 14, 15, 16, 19. Only root 8 loses (σ, β), with 5 of 55 observations losing.
+2. Graph 36, root 8, mass descent:
+   - 198 orbits, of which 131 are non-target;
+   - with one swap, exactly 3 stuck orbits, the first at rank (1,190) with successors (1,190), (1,206), (1,207), (1,211) and (1,228);
+   - with two swaps, every non-target orbit decreases, matching the stored intermediate states in `afternoon-checks.json`.
+3. The icosahedron: every root passes, with a target within one swap.
 
-## WP3: Housekeeping on our own documents
+**Also:**
+- **Permutation regressions:** randomly relabel the vertices and colours of graph 36, then confirm that the counts and outcomes at the image root are unchanged. This catches implementation errors; it does not prove anything.
+- **No second whole-corpus enumeration.**
 
-- Add an errata note to [LongTableJointReply.md](LongTableJointReply.md):
-  - rename D2 to mass-macro descent;
-  - point to the revision-39 corrections;
-  - mark §5 as superseded by the corrected statement.
-- Revise the plays, keeping their fiction labelled:
+**Done when:** all named fixtures reproduce with hashes recorded, and the shared report format is confirmed with the math team. That is the joint plan's regression checkpoint.
+
+## WP3: Adversary (`adversary.py`)
+
+- **Loader:** reads the per-root mass-macro results the math team publishes, and the existing (σ, β) results, with file hashes checked. Until the mass table exists, it only recomputes the WP2 fixtures.
+- **Rule interface:** a candidate set `S(rotation) -> set of roots`, an optional tie-break, and the named check it targets: mass descent or (σ, β). The two are never mixed silently.
+- **Output:** one command classifies a rule into the four outcomes above. It gives the first failing graph per outcome, with a pointer to the underlying witness in the published files. It reports the cost of computing S separately.
+
+**Done when:** it reproduces the known (σ, β) smallest-label failure at graph 36, root 8 from published results. After that, it classifies S0 and S1 against the mass table once that table exists.
+
+## WP4: Structural candidate sets
+
+Every proposal must state, before evaluation:
+- its definition in symbols;
+- a proof that it is nonempty;
+- a proof of S(T) ⊆ D(T);
+- a proof of equivariance;
+- the tie-break;
+- the check it targets.
+
+- **Nonemptiness of D(T):** in a triangulation with minimum degree five, Euler gives Σ(6 − deg v) = 12. Only degree-five vertices contribute positively, so |D(T)| ≥ 12 + Σ_{deg v ≥ 7}(deg v − 6) ≥ 12. We will write this out in full.
+- **S0 = D(T):** the baseline. Its every-member guarantee fails when *any* root fails. That is not the existential claim, which needs every root to fail. Its useful output is the per-graph fraction and the structure of the failing roots.
+- **S1 (predeclared now):** S1⁺ = arg max and S1⁻ = arg min over D(T) of the number of degree-five neighbours. Both are nonempty because D(T) is, and equivariant because degree is.
+- **S2 (deferred until fully specified):**
+  - the actual redistribution rules;
+  - a proof that total charge is conserved;
+  - equivariance;
+  - a proof that every positive receiver has degree five (charge 12 alone does not give this);
+  - nonemptiness.
+
+  S2 is not evaluated until all five are written down.
+- **Holdout:**
+  - Descriptive root statistics, such as second-ring degrees, distances between degree-five vertices and charge, are examined on orders 12–18 only.
+  - Any rule they suggest is frozen in writing, then tested on orders 19–20.
+  - S0 and S1 are declared before any mass results exist, so they may be evaluated on the whole corpus.
+  - Extending past order 20 needs the joint agreement the plan requires.
+
+## WP5: Completion statement review
+
+Review the math team's statements as they are drafted:
+- support transport to `Fin s`;
+- corner insertion under the actual `faceNext` convention;
+- bridge insertion merging two face dart-orbits;
+- chord insertion splitting one face dart-orbit;
+- existence of eligible insertions, including cut vertices and repeated face walks.
+
+We will respond in short files and will not author Lean on that track.
+
+## WP6: Our own errata
+
+*The two document errata below were applied on 4 October, before release, because they correct our own wording. The play edits wait for release.*
+
+- [LongTableJointReply.md](LongTableJointReply.md):
+  - the D2 name is withdrawn in favour of `structural-mass-descent`;
+  - the "no objection means agreed" sentence is withdrawn;
+  - the S0 claim "fails exactly when MMD fails" is withdrawn.
+- [LongTableResponseRev39.md](LongTableResponseRev39.md): its suggestion (a) is replaced by the WP1 proof obligation.
+- The plays:
   - remove the Catalan-42 claim;
-  - take interior swaps off the "DEAD" list;
+  - take interior swaps off "DEAD";
   - change "only live shape" to "one live shape";
   - change "label-invariant" to "structural candidate set";
   - add a note that root 8 passes the tested mass macro.
-- Offer, but do not insist on, a second reading of revision 39's quantifiers.
 
-## Order of work and dependencies
+  They remain labelled fiction.
 
-1. WP3 errata (immediate).
-2. WP1 steps 1–4, which need only files already on record.
-3. WP2.1, the invariance check, using the WP1 tooling.
-4. **Wait** for the corpus team's per-root mass-macro table.
-5. WP2.2–2.4.
-6. Report findings to both teams as one file, and play revisions at any point.
+## Order of work
 
-## Stop rules
+1. After release: WP6 (documents) and WP1 (invariance argument).
+2. WP2 regressions. Then **regression checkpoint**: confirm the format with the math team.
+3. WP3 adversary on the fixtures and published (σ, β) results.
+4. **Wait** for the math team's mass-macro corpus table.
+5. WP3 on mass results; WP4 S0/S1 evaluation; WP4 descriptive statistics on orders 12–18 only.
+6. One joint report to both teams in `SolvingFrameworkPlan/`.
 
-- If MMD-exists is killed by the corpus (a class (iii) graph): stop WP2. Send the witness, and help inspect it for a structural move lemma. Do not lengthen the macro.
-- If WP2.1 finds pass sets that are not invariant: stop, and report before going further.
+WP5 runs whenever the math team posts statements.
+
+## Stop rules (joint plan §6)
+
+- **Every degree-five root fails on some graph:** stop all candidate-set fitting for this formula. Help inspect the full witness for a move mechanism or missing interaction. Do not lengthen the macro or rename an attractor rank as a formula.
+- **The corpus passes:** more sweeps are not progress. Our next useful output is a candidate structural lemma for the decrease, or a frozen selector with its own proof obligations.
+- **A permutation regression changes an outcome:** treat it as an implementation bug, stop, and report before any further results.
