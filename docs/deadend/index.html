@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dead-End Region</title>
+  <meta name="description" content="Interactive demo: the dead-end region of a symmetric triangulation, its trap and twin colourings, and breadcrumb runs that find a way out.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --sunken: #010409;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --accent: #58a6ff;
+      --good: #3fb950;
+      --bad: #f85149;
+      --warn: #d29922;
+      --twin: #bc8cff;
+      --c0: #f85149;
+      --c1: #58a6ff;
+      --c2: #e3b341;
+      --c3: #3fb950;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+    .wrap { max-width: 1480px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .intro { max-width: 1120px; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--twin); font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+    h2 { margin: 0; font: 600 1.25rem/1.3 var(--serif); }
+    p { margin: 0 0 .9rem; color: var(--dim); max-width: 74ch; }
+    p strong { color: var(--text); }
+    code { font: .88em var(--mono); background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); }
+    a { color: var(--accent); }
+    .lead { font-size: 1.04rem; }
+    .roots { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1rem; align-items: center; }
+    .roots span.label { color: var(--faint); font-size: .85rem; margin-right: .25rem; }
+    .chip { font: 600 .85rem var(--sans); color: var(--text); background: var(--raised); border: 1px solid var(--border);
+            border-radius: 999px; padding: .28rem .7rem; cursor: pointer; }
+    .chip .tag { font-weight: 500; font-size: .72rem; margin-left: .3rem; }
+    .chip.fail .tag { color: var(--bad); }
+    .chip.pass .tag { color: var(--good); }
+    .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(320px, 1fr); gap: 1rem; align-items: start; }
+    .viz { display: grid; gap: 1rem; min-width: 0; }
+    .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+    .side { display: grid; gap: .8rem; min-width: 0; }
+    .panel { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .9rem; min-width: 0; }
+    .panel h3 { margin: 0 0 .5rem; font: 600 .78rem var(--sans); color: var(--faint); letter-spacing: .07em; text-transform: uppercase; }
+    svg { display: block; width: 100%; height: auto; }
+    .readout { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin-top: .6rem; font: .86rem var(--mono); color: var(--dim); }
+    .readout b { color: var(--text); font-weight: 600; }
+    .status { display: inline-block; font: 600 .78rem var(--sans); padding: .15rem .55rem; border-radius: 999px; }
+    .status.target { background: #3fb95026; color: var(--good); }
+    .status.ok { background: #58a6ff22; color: var(--accent); }
+    .status.shallow { background: #d2992226; color: var(--warn); }
+    .status.trap { background: #f8514930; color: var(--bad); }
+    .status.twin { background: #bc8cff2a; color: var(--twin); }
+    .moves { display: grid; gap: .35rem; margin-top: .4rem; }
+    .move { display: flex; justify-content: space-between; gap: .75rem; align-items: center; text-align: left; width: 100%;
+            font: .84rem var(--sans); color: var(--text); background: var(--sunken); border: 1px solid var(--border);
+            border-radius: 8px; padding: .4rem .6rem; cursor: pointer; }
+    .move:hover { border-color: var(--accent); }
+    .move .delta { font: 600 .84rem var(--mono); white-space: nowrap; }
+    .delta.down { color: var(--good); } .delta.up { color: var(--bad); } .delta.flat { color: var(--faint); }
+    .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px; vertical-align: -.05rem; margin-right: .12rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin-top: .5rem; font-size: .78rem; color: var(--faint); }
+    .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -.08rem; }
+    .card { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .85rem 1rem; }
+    .card .kick { font: 600 .74rem var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+    .card h4 { margin: .2rem 0 .5rem; font: 600 1.08rem var(--serif); }
+    .card p { font-size: .9rem; margin-bottom: .6rem; }
+    .btn { font: 600 .85rem var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 8px;
+           padding: .45rem .85rem; cursor: pointer; margin: .15rem .35rem .15rem 0; }
+    .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn.small { padding: .3rem .6rem; font-size: .8rem; }
+    .btn:disabled { opacity: .45; cursor: default; }
+    select { font: .85rem var(--sans); background: var(--sunken); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: .35rem .5rem; }
+    .narr { min-height: 2.6rem; margin-top: .6rem; padding: .55rem .7rem; background: var(--sunken); border-radius: 8px; font-size: .88rem; color: var(--dim); }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin: .4rem 0 .2rem; }
+    .stat { background: var(--sunken); border-radius: 8px; padding: .45rem .5rem; }
+    .stat b { display: block; font: 600 1.2rem var(--serif); color: var(--text); }
+    .stat span { font-size: .72rem; color: var(--faint); }
+    .twins { display: flex; flex-wrap: wrap; gap: .3rem; }
+    .foot { margin-top: 2.5rem; }
+    .foot p { color: var(--faint); font-size: .82rem; }
+    @media (max-width: 1180px) { .stage { grid-template-columns: 1fr; } }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">Breadcrumb descent · order 17, graph 3</p>
+    <h1>The Dead-End Region</h1>
+    <p class="lead">
+      In <a href="../trap/index.html">The Tidy Trap</a> a single colouring blocked descent. Here, in a very symmetric triangulation
+      (20 symmetries), root 3 is a degree-five <strong>hub</strong>: all five of its neighbours have degree five, ringed by
+      degree-six vertices. At this root the dead end is a whole <strong>region</strong>: ten colourings from which every strictly
+      downhill sequence of two-swap steps runs into a trap before it can reach a finished state. These are also exactly the ten
+      colourings that breadcrumb runs leave warnings on.
+    </p>
+    <p>
+      Only five of them are strict <strong>traps</strong> (R = 1842): no two-swap step goes downhill at all. The other five are
+      <strong>twins</strong> (R = 1850): each has a downhill two-swap step, but only into its trap. A trap and its twin differ by one
+      two-vertex chain at the <em>opposite</em> hub (vertex 13 when the root is 3), and they have exactly the same boundary chain pattern.
+      That is why the warning-charging idea failed here. Breadcrumb descent still gets out
+      every time. Replay its recorded runs and watch the warnings drop.
+    </p>
+  </div>
+
+  <div class="roots" id="roots"><span class="label">Root:</span></div>
+
+  <div class="stage">
+    <div class="viz">
+      <div class="grid">
+        <div class="panel">
+          <h3>The map, with the root deleted</h3>
+          <svg id="map" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Triangulation drawing with the current colouring"></svg>
+          <div class="legend">
+            <span><i style="border:1.5px dashed var(--text)"></i>deleted root</span>
+            <span><i style="border:2px solid var(--text)"></i>boundary</span>
+            <span><i style="border:2px solid var(--twin)"></i>vertices that differ from the twin</span>
+          </div>
+          <div class="readout" id="readout"></div>
+        </div>
+        <div class="panel">
+          <h3>The landscape: every colouring at this root</h3>
+          <svg id="land" viewBox="0 0 520 380" role="img" aria-label="States by swaps to target and score R"></svg>
+          <div class="legend">
+            <span><i style="background:var(--good)"></i>target</span>
+            <span><i style="background:var(--accent)"></i>descends</span>
+            <span><i style="background:var(--bad)"></i>trap</span>
+            <span><i style="background:var(--twin)"></i>dead end (twin)</span>
+            <span>✕ warning</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>The dead-end region as a network of swaps</h3>
+        <svg id="net" viewBox="-1.75 -1.15 3.5 2.3" style="max-height:520px" role="img" aria-label="Network of the dead-end region and its neighbours"></svg>
+        <div class="legend">
+          <span><i style="background:var(--bad)"></i>trap</span>
+          <span><i style="background:var(--twin)"></i>twin (also a dead end)</span>
+          <span><i style="background:var(--accent)"></i>neighbour that descends</span>
+          <span><i style="background:var(--good)"></i>neighbour that is a target</span>
+          <span>thick line = trap and twin with the same boundary pattern · labels show R</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Legal Kempe swaps from here</h3>
+        <div class="moves" id="moves"></div>
+      </div>
+    </div>
+
+    <aside class="side" aria-label="Explanations and controls">
+      <h2>Inside the dead end</h2>
+      <div class="card">
+        <span class="kick">The region at this root</span>
+        <h4 id="regionTitle">Ten dead ends, five pairs</h4>
+        <div class="stats" id="stats"></div>
+        <p id="regionText" style="margin:.4rem 0 0"></p>
+      </div>
+      <div class="card">
+        <span class="kick">Breadcrumb descent · recorded runs</span>
+        <h4>Replay a run with warnings</h4>
+        <p>Each run descends greedily. On reaching a dead end it leaves a warning (✕) and steps back one link. If it is back at its
+          start with nowhere to go, it makes one bounded three-swap escape. These are the math team's frozen runs, replayed exactly.</p>
+        <select id="runSel" aria-label="Choose a run"></select>
+        <div style="margin-top:.4rem">
+          <button class="btn" id="play">Play</button>
+          <button class="btn ghost" id="step">Step</button>
+          <button class="btn ghost" id="reset">Reset</button>
+        </div>
+        <div class="narr" id="runNarr">Pick a run and press play.</div>
+      </div>
+      <div class="card">
+        <span class="kick">Why charging failed</span>
+        <h4>Twins the boundary cannot see</h4>
+        <p>Each trap and its twin have the same boundary colours, the same chain connections along the boundary and through the graph,
+          and the same exterior flags. They differ only inside the graph, at the opposite hub and one of its neighbours. Click a pair, then flip between them.</p>
+        <div class="twins" id="twins"></div>
+        <div class="narr" id="twinNarr">No pair selected.</div>
+      </div>
+      <div class="card">
+        <span class="kick">The shape of the graph</span>
+        <h4>A symmetric hub</h4>
+        <p>Roots 3 and 13 are the only roots of this graph whose descent can fail, and they are images of each other under its symmetries.
+          Each is a degree-five vertex whose neighbours all have degree five, surrounded by five degree-six vertices.</p>
+        <button class="btn ghost" id="hub">Highlight the hub</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="foot">
+    <p>Data: every colouring (up to renaming colours) at every degree-five root of Plantri triangulation 17/3, from
+      <code>deadend_demo_data.py</code>. The breadcrumb runs replay the frozen policy <code>breadcrumb-v1-global-min-depth3-canonical-lex</code>
+      and are checked against the math team's <code>breadcrumb-warning-traces.json</code>. Swap distances are diagnostic only. This is finite
+      evidence about one graph, not a proof; the warning bound for breadcrumb descent is still open. Details:
+      <code>longtable/WP7c-results.md</code>.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const D = window.DEADEND_DATA;
+  const COLORS = ['var(--c0)', 'var(--c1)', 'var(--c2)', 'var(--c3)'];
+  const NAMES = ['red', 'blue', 'yellow', 'green'];
+  const PAIRS = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const $ = (id) => document.getElementById(id);
+
+  let root = '3', R = null, display = null, current = 0;
+  let highlight = null, twinMark = null, hubOn = false;
+  let run = null, runIdx = 0, runTimer = null, warned = new Set(), trail = [];
+
+  function setup(r) {
+    root = String(r); R = D.roots[root];
+    R.index = new Map(R.states.map((s, i) => [s.c.join(''), i]));
+    R.adj = R.V.map((v) => D.rot[v].filter((w) => w !== R.root).map((w) => R.V.indexOf(w)));
+    R.Bi = R.B.map((v) => R.V.indexOf(v));
+    R.regionSet = new Set(R.region);
+    R.trapSet = new Set(R.traps);
+    stopRun(); run = null; warned = new Set(); trail = []; twinMark = null;
+    fillRuns(); fillTwins(); fillRegion();
+  }
+  const canon = (c) => { const m = new Map(); return c.map((x) => { if (!m.has(x)) m.set(x, m.size); return m.get(x); }); };
+  function components(c) {
+    const out = [];
+    for (const [a, b] of PAIRS) {
+      const pending = new Set(); c.forEach((x, i) => { if (x === a || x === b) pending.add(i); });
+      while (pending.size) {
+        const seed = Math.min(...pending); pending.delete(seed); const comp = [seed];
+        for (let k = 0; k < comp.length; k++) for (const j of R.adj[comp[k]]) if (pending.has(j)) { pending.delete(j); comp.push(j); }
+        out.push({ a, b, comp });
+      }
+    }
+    return out;
+  }
+  function bestPermutation(target, prev) {
+    if (!prev) return target.slice();
+    let best = null, bestScore = -1; const perms = [];
+    (function gen(a, rest) { if (!rest.length) perms.push(a); rest.forEach((x, k) => gen(a.concat([x]), rest.filter((_, j) => j !== k))); })([], [0,1,2,3]);
+    for (const p of perms) { let s = 0; target.forEach((x, i) => { if (p[x] === prev[i]) s++; }); if (s > bestScore) { bestScore = s; best = p; } }
+    return target.map((x) => best[x]);
+  }
+  function goTo(i, keep) { current = i; display = keep ? bestPermutation(R.states[i].c, display) : R.states[i].c.slice(); highlight = null; render(); }
+  function applyMove(m) {
+    const set = new Set(m.comp);
+    display = display.map((x, i) => set.has(i) ? (x === m.a ? m.b : x === m.b ? m.a : x) : x);
+    current = R.index.get(canon(display).join('')); highlight = null; render();
+  }
+  function kindOf(i) {
+    const s = R.states[i];
+    if (s.p === 0) return ['target', 'target: a colour is free'];
+    if (R.trapSet.has(i)) return ['trap', 'trap: no two-swap descent'];
+    if (R.regionSet.has(i)) return ['twin', 'dead end: every downhill path ends in a trap'];
+    if (s.stuck1) return ['shallow', 'needs a two-swap macro'];
+    return ['ok', 'one swap lowers R'];
+  }
+  const colourOf = (i) => {
+    const k = kindOf(i)[0];
+    return k === 'target' ? 'var(--good)' : k === 'trap' ? 'var(--bad)' : k === 'twin' ? 'var(--twin)' : k === 'shallow' ? 'var(--warn)' : 'var(--accent)';
+  };
+
+  // ---------------------------------------------------------------- panels
+  function renderRoots() {
+    const box = $('roots'); box.querySelectorAll('button').forEach((b) => b.remove());
+    Object.keys(D.roots).map(Number).sort((a, b) => a - b).forEach((r) => {
+      const d = D.roots[r];
+      const b = document.createElement('button');
+      b.className = 'chip ' + (d.region.length ? 'fail' : 'pass');
+      b.setAttribute('aria-pressed', String(String(r) === root));
+      b.innerHTML = r + '<span class="tag">' + (d.region.length ? 'dead end' : 'clear') + '</span>';
+      b.onclick = () => { setup(r); goTo(R.region.length ? R.traps[0] : 0, false); };
+      box.appendChild(b);
+    });
+  }
+  function renderMap() {
+    const svg = $('map'); svg.innerHTML = '';
+    const pos = D.pos, rot = D.rot, r = R.root, B = new Set(R.B);
+    const hi = highlight ? new Set(highlight.comp.map((i) => R.V[i])) : null;
+    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
+      const tr = v === r || w === r, on = hi && hi.has(v) && hi.has(w);
+      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1], stroke: on ? 'var(--text)' : tr ? 'var(--faint)' : '#3d444d',
+        'stroke-width': on ? 0.022 : 0.009, 'stroke-dasharray': tr ? '0.03 0.025' : 'none' }, svg);
+    }
+    for (let v = 0; v < rot.length; v++) {
+      const [x, y] = pos[v];
+      if (hubOn && rot[v].length === 6) el('circle', { cx: x, cy: y, r: 0.085, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012, 'stroke-dasharray': '0.02 0.015' }, svg);
+      if (v === r) {
+        el('circle', { cx: x, cy: y, r: 0.055, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
+        const t = el('text', { x, y: y + 0.018, 'text-anchor': 'middle', 'font-size': 0.05, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg); t.textContent = '?';
+        continue;
+      }
+      const i = R.V.indexOf(v), diff = twinMark && twinMark.has(v);
+      const g = el('g', {}, svg);
+      el('circle', { cx: x, cy: y, r: diff ? 0.062 : 0.05, fill: COLORS[display[i]],
+        stroke: diff ? 'var(--twin)' : (hi && hi.has(v)) || B.has(v) ? 'var(--text)' : 'var(--bg)',
+        'stroke-width': diff ? 0.024 : hi && hi.has(v) ? 0.02 : B.has(v) ? 0.014 : 0.008 }, g);
+      const t = el('text', { x, y: y + 0.016, 'text-anchor': 'middle', 'font-size': 0.042, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)' }, g);
+      t.textContent = v;
+      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[display[i]];
+    }
+  }
+  function landscapeCoords() {
+    const W = 520, H = 380, L = 54, Rm = 14, T = 16, Bm = 40;
+    const maxd = Math.max(...R.states.map((s) => s.d));
+    const nonT = R.states.filter((s) => s.p === 1).map((s) => s.R);
+    const lo = Math.min(...nonT) - 8, hi = Math.max(...nonT) + 8;
+    const xOf = (d) => L + (W - L - Rm) * (d + 0.5) / (maxd + 1);
+    const yOf = (s) => s.p === 0 ? H - Bm + 8 : T + (H - Bm - T - 30) * (1 - (s.R - lo) / (hi - lo));
+    const cols = {}; R.states.forEach((s, i) => { (cols[s.d] = cols[s.d] || []).push(i); });
+    const xs = {};
+    Object.values(cols).forEach((ids) => {
+      ids.sort((a, b) => R.states[a].R - R.states[b].R); const placed = [];
+      ids.forEach((i) => { const y = yOf(R.states[i]); const near = placed.filter((p) => Math.abs(p - y) < 9).length;
+        xs[i] = xOf(R.states[i].d) + (near % 2 ? 1 : -1) * Math.ceil(near / 2) * 10; placed.push(y); });
+    });
+    return { W, H, L, T, Bm, maxd, lo, hi, xOf, yOf, xs };
+  }
+  function renderLand() {
+    const svg = $('land'); svg.innerHTML = '';
+    const C = landscapeCoords();
+    for (let d = 0; d <= C.maxd; d++) {
+      el('line', { x1: C.xOf(d), y1: C.T, x2: C.xOf(d), y2: C.H - C.Bm + 16, stroke: '#21262d' }, svg);
+      el('text', { x: C.xOf(d), y: C.H - 8, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg)
+        .textContent = d === 0 ? 'target' : d + (d === 1 ? ' swap' : ' swaps');
+    }
+    el('text', { x: 12, y: (C.T + C.H - C.Bm) / 2, 'font-size': 11, fill: 'var(--faint)', 'font-family': 'var(--sans)',
+      transform: 'rotate(-90 12 ' + (C.T + C.H - C.Bm) / 2 + ')', 'text-anchor': 'middle' }, svg).textContent = 'score R (lower = tidier)';
+    [C.lo + 8, Math.round((C.lo + C.hi) / 2), C.hi - 8].forEach((v) => {
+      el('text', { x: C.L - 6, y: C.yOf({ p: 1, R: v }) + 4, 'text-anchor': 'end', 'font-size': 10, fill: 'var(--faint)', 'font-family': 'var(--mono)' }, svg).textContent = v;
+    });
+    R.states.forEach((s, i) => s.next.forEach((j) => {
+      if (j <= i) return; const on = i === current || j === current;
+      el('line', { x1: C.xs[i], y1: C.yOf(s), x2: C.xs[j], y2: C.yOf(R.states[j]), stroke: on ? '#8b949e' : '#1c2128', 'stroke-width': on ? 1.3 : 0.7 }, svg);
+    }));
+    for (let k = 1; k < trail.length; k++) {
+      const a = trail[k - 1], b = trail[k];
+      el('line', { x1: C.xs[a], y1: C.yOf(R.states[a]), x2: C.xs[b], y2: C.yOf(R.states[b]), stroke: 'var(--text)', 'stroke-width': 2.2 }, svg);
+    }
+    R.states.forEach((s, i) => {
+      const c = el('circle', { cx: C.xs[i], cy: C.yOf(s), r: i === current ? 7.5 : 5, fill: colourOf(i),
+        stroke: i === current ? 'var(--text)' : 'var(--bg)', 'stroke-width': i === current ? 2.5 : 1, style: 'cursor:pointer' }, svg);
+      el('title', {}, c).textContent = 'colouring ' + i + ' · R ' + s.R + ' · ' + kindOf(i)[1];
+      c.addEventListener('click', () => { stopRun(); goTo(i, true); });
+      if (warned.has(i)) el('text', { x: C.xs[i], y: C.yOf(s) - 9, 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 700, fill: 'var(--text)' }, svg).textContent = '✕';
+    });
+  }
+  function renderNet() {
+    const svg = $('net'); svg.innerHTML = '';
+    if (!R.region.length) {
+      el('text', { x: 0, y: 0, 'text-anchor': 'middle', 'font-size': 0.09, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg)
+        .textContent = 'No dead-end region at root ' + root + ': every colouring descends.';
+      return;
+    }
+    const P = R.net, nodes = R.region.concat(R.ring), inSet = new Set(nodes);
+    const twinPair = new Map(); R.patternGroups.forEach(([a, b]) => { twinPair.set(a, b); twinPair.set(b, a); });
+    nodes.forEach((a) => R.states[a].next.forEach((b) => {
+      if (!inSet.has(b) || b <= a) return;
+      const both = R.regionSet.has(a) && R.regionSet.has(b), twins = twinPair.get(a) === b;
+      el('line', { x1: P[a][0], y1: P[a][1], x2: P[b][0], y2: P[b][1], stroke: twins ? 'var(--twin)' : both ? '#8b949e' : '#30363d',
+        'stroke-width': twins ? 0.03 : both ? 0.012 : 0.007 }, svg);
+    }));
+    for (let k = 1; k < trail.length; k++) {
+      const a = trail[k - 1], b = trail[k];
+      if (P[a] && P[b]) el('line', { x1: P[a][0], y1: P[a][1], x2: P[b][0], y2: P[b][1], stroke: 'var(--text)', 'stroke-width': 0.022, 'stroke-dasharray': '0.04 0.02' }, svg);
+    }
+    nodes.forEach((i) => {
+      const s = R.states[i], reg = R.regionSet.has(i);
+      const g = el('g', { style: 'cursor:pointer' }, svg);
+      el('circle', { cx: P[i][0], cy: P[i][1], r: reg ? 0.075 : 0.05, fill: colourOf(i),
+        stroke: i === current ? 'var(--text)' : 'var(--bg)', 'stroke-width': i === current ? 0.025 : 0.01 }, g);
+      if (reg) el('text', { x: P[i][0], y: P[i][1] + 0.022, 'text-anchor': 'middle', 'font-size': 0.055, 'font-weight': 700, fill: '#0d1117', 'font-family': 'var(--mono)' }, g)
+        .textContent = s.R - 1800;
+      if (warned.has(i)) el('text', { x: P[i][0] + 0.07, y: P[i][1] - 0.06, 'font-size': 0.09, 'font-weight': 700, fill: 'var(--text)' }, g).textContent = '✕';
+      el('title', {}, g).textContent = 'colouring ' + i + ' · R ' + s.R + ' · ' + kindOf(i)[1];
+      g.addEventListener('click', () => { stopRun(); goTo(i, true); });
+    });
+    el('text', { x: -1.7, y: -1.05, 'font-size': 0.05, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg)
+      .textContent = 'numbers inside region nodes: R − 1800';
+  }
+  function renderReadout() {
+    const s = R.states[current], [cls, txt] = kindOf(current);
+    $('readout').innerHTML = '<span>colours on B <b>' + new Set(R.Bi.map((i) => display[i])).size + '</b></span>' +
+      '<span>p <b>' + s.p + '</b></span><span>q <b>' + s.q + '</b></span><span>R <b>' + s.R + '</b></span>' +
+      '<span>swaps to target <b>' + s.d + '</b></span><span class="status ' + cls + '">' + txt + '</span>';
+  }
+  function renderMoves() {
+    const box = $('moves'); box.innerHTML = '';
+    const s = R.states[current];
+    if (s.p === 0) {
+      const free = [0,1,2,3].filter((x) => !R.Bi.some((i) => display[i] === x));
+      box.innerHTML = '<p style="margin:0">Target: the neighbours use three colours, so the root takes <strong>' + NAMES[free[0]] + '</strong>.</p>'; return;
+    }
+    const B = new Set(R.Bi);
+    components(display).map((m) => {
+      const set = new Set(m.comp);
+      const after = display.map((x, i) => set.has(i) ? (x === m.a ? m.b : x === m.b ? m.a : x) : x);
+      const j = R.index.get(canon(after).join(''));
+      return { ...m, j, dR: R.states[j].R - s.R, touches: m.comp.filter((i) => B.has(i)).map((i) => R.V[i]) };
+    }).filter((m) => m.j !== current).sort((x, y) => x.dR - y.dR).forEach((m) => {
+      const b = document.createElement('button'); b.className = 'move';
+      const verts = m.comp.map((i) => R.V[i]).sort((a, c) => a - c);
+      const dcls = m.dR < 0 ? 'down' : m.dR > 0 ? 'up' : 'flat';
+      const into = R.regionSet.has(m.j) ? (R.trapSet.has(m.j) ? ' · into a trap' : ' · into the dead end') : R.states[m.j].p === 0 ? ' · frees a colour' : '';
+      b.innerHTML = '<span><span class="swatch" style="background:' + COLORS[m.a] + '"></span><span class="swatch" style="background:' + COLORS[m.b] +
+        '"></span> swap the ' + NAMES[m.a] + '–' + NAMES[m.b] + ' chain {' + verts.join(', ') + '}' +
+        (m.touches.length ? ' · touches B at ' + m.touches.join(', ') : ' · interior') + into + '</span>' +
+        '<span class="delta ' + dcls + '">ΔR ' + (m.dR > 0 ? '+' : '') + m.dR + '</span>';
+      b.onmouseenter = () => { highlight = m; renderMap(); };
+      b.onmouseleave = () => { highlight = null; renderMap(); };
+      b.onclick = () => { stopRun(); twinMark = null; applyMove(m); };
+      box.appendChild(b);
+    });
+  }
+  function render() { renderRoots(); renderMap(); renderLand(); renderNet(); renderReadout(); renderMoves(); }
+
+  // ---------------------------------------------------------------- side cards
+  function fillRegion() {
+    const n = R.states.filter((s) => s.p === 1).length;
+    const twinCount = R.region.length - R.traps.length;
+    $('stats').innerHTML = [
+      [R.region.length, 'dead ends'], [R.traps.length, 'traps'], [twinCount, 'twins'], [R.ring.length, 'states one swap away']
+    ].map(([v, t]) => '<div class="stat"><b>' + v + '</b><span>' + t + '</span></div>').join('');
+    $('regionTitle').textContent = R.region.length ? 'Ten dead ends, five pairs' : 'No dead end here';
+    $('regionText').innerHTML = R.region.length
+      ? 'Of the ' + n + ' unfinished colourings at root ' + root + ', ' + R.region.length + ' cannot descend to a target without passing through a trap. ' +
+        'The region is a small, tightly linked cluster. From each trap the cheapest way out takes three swaps, and breadcrumb runs that enter the region leave at most four warnings.'
+      : 'Every one of the ' + n + ' unfinished colourings at root ' + root + ' descends to a target. Breadcrumb runs never warn here.';
+  }
+  function fillRuns() {
+    const sel = $('runSel'); sel.innerHTML = '';
+    if (!R.runs || !R.runs.length) { sel.innerHTML = '<option>No runs with warnings at this root</option>'; sel.disabled = true; $('play').disabled = $('step').disabled = true; return; }
+    sel.disabled = false; $('play').disabled = $('step').disabled = false;
+    R.runs.forEach((r, k) => {
+      const o = document.createElement('option'); o.value = k;
+      o.textContent = 'Run ' + (k + 1) + ': start R ' + R.states[r.start].R + ' · ' + r.warnings.length + ' warning' + (r.warnings.length > 1 ? 's' : '');
+      sel.appendChild(o);
+    });
+    sel.onchange = () => loadRun(+sel.value);
+  }
+  function loadRun(k) {
+    stopRun(); run = R.runs[k]; runIdx = 0; warned = new Set(); trail = [run.start]; twinMark = null;
+    goTo(run.start, false);
+    narrate('Start at colouring ' + run.start + ' (R ' + R.states[run.start].R + ', ' + kindOf(run.start)[0] + '). Warnings so far: none.');
+  }
+  function narrate(t) { $('runNarr').textContent = t; }
+  function stepRun() {
+    if (!run) loadRun(+$('runSel').value || 0);
+    if (runIdx >= run.events.length) { stopRun(); return; }
+    const e = run.events[runIdx++];
+    if (e.t === 'move') { trail.push(e.to); goTo(e.to, true);
+      narrate('Downhill to colouring ' + e.to + ' (R ' + R.states[e.to].R + ')' + (R.regionSet.has(e.to) ? ': inside the dead-end region.' : R.states[e.to].p === 0 ? ': a colour is free. Done.' : '.')); }
+    if (e.t === 'warn') { warned.add(e.at); render();
+      narrate('Dead end at colouring ' + e.at + ' (R ' + R.states[e.at].R + '). Leave a warning ✕ here. Warnings: ' + warned.size + '.'); }
+    if (e.t === 'back') { trail.push(e.to); goTo(e.to, true);
+      narrate('Step back one link to colouring ' + e.to + ' and look for another downhill route that avoids the warnings.'); }
+    if (e.t === 'wave2') { trail.push(e.to); goTo(e.to, true);
+      narrate('Back at the start with nowhere to go: second wave. Jump up to three swaps to colouring ' + e.to + ' (R ' + R.states[e.to].R + '), the lowest unwarned state within reach.'); }
+    if (runIdx >= run.events.length) { stopRun(); narrate($('runNarr').textContent + ' Run finished with ' + warned.size + ' warning' + (warned.size > 1 ? 's' : '') + '.'); }
+  }
+  function stopRun() { if (runTimer) clearInterval(runTimer); runTimer = null; }
+  $('play').onclick = () => { loadRun(+$('runSel').value || 0); runTimer = setInterval(stepRun, 1400); };
+  $('step').onclick = () => { stopRun(); stepRun(); };
+  $('reset').onclick = () => { stopRun(); loadRun(+$('runSel').value || 0); };
+
+  function fillTwins() {
+    const box = $('twins'); box.innerHTML = '';
+    if (!R.patternGroups || !R.patternGroups.length) { box.innerHTML = '<span style="color:var(--faint);font-size:.85rem">No twins at this root.</span>'; return; }
+    R.patternGroups.forEach((pair, k) => {
+      const [a, b] = pair.slice().sort((x, y) => R.states[x].R - R.states[y].R);
+      const btn = document.createElement('button'); btn.className = 'btn ghost small';
+      btn.textContent = 'Pair ' + (k + 1);
+      let showing = a;
+      btn.onclick = () => {
+        stopRun(); run = null; trail = []; warned = new Set();
+        showing = current === a ? b : a;
+        const other = showing === a ? b : a;
+        goTo(showing, true);
+        const cb = R.states[other].c;
+        // vertices where the two canonical colourings disagree after best matching
+        const shownDisplay = display, otherDisplay = bestPermutation(cb, shownDisplay);
+        twinMark = new Set(R.V.filter((v, i) => shownDisplay[i] !== otherDisplay[i]));
+        renderMap();
+        $('twinNarr').innerHTML = 'Showing the <strong>' + (R.trapSet.has(showing) ? 'trap' : 'twin') + '</strong> (R ' + R.states[showing].R +
+          '). Its partner (R ' + R.states[other].R + ') differs only at vertices <strong>' + [...twinMark].join(' and ') +
+          '</strong>, ringed in purple. The boundary pattern is identical. Click again to flip.';
+      };
+      box.appendChild(btn);
+    });
+  }
+  $('hub').onclick = () => { hubOn = !hubOn; $('hub').textContent = hubOn ? 'Hide the hub' : 'Highlight the hub'; renderMap(); };
+
+  setup(3);
+  goTo(R.traps[0], false);
+})();
+</script>
+</body>
+</html>
