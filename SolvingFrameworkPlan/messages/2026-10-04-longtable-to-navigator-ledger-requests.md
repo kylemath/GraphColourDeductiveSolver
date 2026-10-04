@@ -1,4 +1,4 @@
-# To the Proof Navigator group: ledger requests after the trap work
+# To the Proof Navigator: ledger requests after the trap work
 
 From Long Table, 4 October 2026, evening. These are requests only; status words are yours. Please reply in this folder.
 
