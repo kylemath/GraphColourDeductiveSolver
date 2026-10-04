@@ -29,7 +29,12 @@
     }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .wrap { max-width: 1480px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .intro { max-width: 1120px; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(320px, 1fr); gap: 1rem; align-items: start; }
+    .viz { display: grid; gap: 1rem; min-width: 0; }
+    .solutions { display: grid; gap: .8rem; min-width: 0; }
+    .solutions > h2 { margin: 0; }
     .eyebrow { margin: 0 0 .5rem; color: #bc8cff; font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
     h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
     h2 { margin: 2.25rem 0 .75rem; font: 600 1.25rem/1.3 var(--serif); }
@@ -68,18 +73,20 @@
     .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px; vertical-align: -.05rem; margin-right: .12rem; }
     .legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin-top: .5rem; font-size: .78rem; color: var(--faint); }
     .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -.08rem; }
-    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .card { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; }
+    .cards { display: grid; grid-template-columns: 1fr; gap: .8rem; }
+    .card { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .85rem 1rem; }
     .card .kick { font: 600 .74rem var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
     .card h4 { margin: .2rem 0 .5rem; font: 600 1.08rem var(--serif); }
-    .card p { font-size: .92rem; }
+    .card p { font-size: .9rem; margin-bottom: .6rem; }
     .card.honest { border-style: dashed; }
     .btn { font: 600 .85rem var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 8px;
            padding: .45rem .85rem; cursor: pointer; margin: .15rem .35rem .15rem 0; }
     .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn:disabled { opacity: .45; cursor: default; }
-    table { border-collapse: collapse; width: 100%; font-size: .84rem; margin-top: .5rem; }
-    th, td { text-align: left; padding: .35rem .5rem; border-bottom: 1px solid var(--border); }
+    table { border-collapse: collapse; width: 100%; font-size: .78rem; margin-top: .55rem; table-layout: fixed; }
+    th, td { text-align: center; padding: .28rem .1rem; border-bottom: 1px solid var(--border); }
+    th:first-child, td:first-child { text-align: left; width: 5.4rem; }
+    td.cur { background: #58a6ff22; }
     th { color: var(--faint); font-weight: 600; }
     td.pass { color: var(--good); }
     td.fail { color: var(--bad); }
@@ -88,6 +95,10 @@
             font-size: .88rem; color: var(--dim); }
     .foot { margin-top: 2.5rem; font-size: .82rem; color: var(--faint); }
     .foot p { color: var(--faint); font-size: .82rem; }
+    @media (max-width: 1180px) {
+      .stage { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 820px) {
       .grid, .cards { grid-template-columns: 1fr; }
     }
@@ -95,6 +106,7 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="intro">
   <p class="eyebrow">Mass-macro descent · order 17, graph 0</p>
   <h1>The Tidy Trap</h1>
   <p class="lead">
@@ -108,8 +120,12 @@
     has the same blind spot. Pick a root, click states in the landscape, or play swaps yourself.
   </p>
 
+  </div>
+
   <div class="roots" id="roots"><span class="label">Root:</span></div>
 
+  <div class="stage">
+  <div class="viz">
   <div class="grid">
     <div class="panel">
       <h3>The map, with the root deleted</h3>
@@ -133,11 +149,13 @@
     </div>
   </div>
 
-  <div class="panel" style="margin-top:1rem">
+  <div class="panel">
     <h3>Legal Kempe swaps from here</h3>
     <div class="moves" id="moves"></div>
   </div>
+  </div>
 
+  <aside class="solutions" aria-label="Ways around the trap">
   <h2>Three ways around the trap, and one that fails</h2>
   <div class="cards">
     <div class="card">
@@ -175,6 +193,9 @@
       <p style="margin:0">A score that always works does exist: "number of two-swap steps to a target". But computing it means already knowing the
         answer, which is the circular rank the plan rules out.</p>
     </div>
+  </div>
+
+  </aside>
   </div>
 
   <div class="foot">
@@ -420,12 +441,13 @@
     });
   }
   function renderTable() {
-    const rows = Object.keys(D.roots).map(Number).sort((a, b) => a - b).map((r) => {
-      const d = D.roots[r];
-      return '<tr' + (String(r) === root ? ' class="current"' : '') + '><td>' + r + '</td><td class="' + (d.pass ? 'pass' : 'fail') + '">' +
-        (d.pass ? 'pass' : 'trap') + '</td><td class="' + (d.passLin ? 'pass' : 'fail') + '">' + (d.passLin ? 'pass' : 'trap') + '</td><td>' + d.maxd + '</td></tr>';
-    });
-    $('rootTable').innerHTML = '<tr><th>root</th><th>published R</th><th>linear mass</th><th>deepest</th></tr>' + rows.join('');
+    const rs = Object.keys(D.roots).map(Number).sort((a, b) => a - b);
+    const cur = (r) => (String(r) === root ? ' cur' : '');
+    const mark = (ok) => (ok ? '✓' : '✗');
+    $('rootTable').innerHTML =
+      '<tr><th>root</th>' + rs.map((r) => '<th class="' + cur(r) + '">' + r + '</th>').join('') + '</tr>' +
+      '<tr><td>published R</td>' + rs.map((r) => '<td class="' + (D.roots[r].pass ? 'pass' : 'fail') + cur(r) + '">' + mark(D.roots[r].pass) + '</td>').join('') + '</tr>' +
+      '<tr><td>linear mass</td>' + rs.map((r) => '<td class="' + (D.roots[r].passLin ? 'pass' : 'fail') + cur(r) + '">' + mark(D.roots[r].passLin) + '</td>').join('') + '</tr>';
   }
   function render() { renderRoots(); renderMap(); renderLand(); renderReadout(); renderMoves(); renderTable(); }
 
