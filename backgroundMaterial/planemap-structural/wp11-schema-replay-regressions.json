@@ -1,0 +1,49 @@
+{
+  "scope": "pre-release checks on three declared schema examples only; no discovery",
+  "tamper_checks": [
+    {
+      "case": "omitted proper colouring",
+      "rejected": true,
+      "reason": "incomplete colouring state set"
+    },
+    {
+      "case": "omitted eligible failing root",
+      "rejected": true,
+      "reason": "missing/duplicate failing root"
+    },
+    {
+      "case": "missing macro endpoint",
+      "rejected": true,
+      "reason": "incomplete macro endpoint set"
+    },
+    {
+      "case": "wrong feature",
+      "rejected": true,
+      "reason": "state features/rank"
+    },
+    {
+      "case": "wrong degree-five root list",
+      "rejected": true,
+      "reason": "incomplete degree-five root set"
+    },
+    {
+      "case": "invalid whole component",
+      "rejected": true,
+      "reason": "swap is not an entire active component"
+    },
+    {
+      "case": "out-of-domain weight",
+      "rejected": true,
+      "reason": "weight outside tier 1"
+    },
+    {
+      "case": "inconsistent input rotation",
+      "rejected": true,
+      "reason": "ASCII/rotation disagreement"
+    }
+  ],
+  "colour_permutation_feature_checks": 480,
+  "component_swap_equivariance_checks": 4080,
+  "complementary_component_checks": 100,
+  "root13_regression": "awaiting Long Table fixture"
+}

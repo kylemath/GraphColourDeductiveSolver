@@ -1,0 +1,80 @@
+{
+  "scope": "named schema fixtures only; no WP11 discovery",
+  "checker_sha256": "598795a7bbc03d668d95a400d00c6669bbb782a60c07deafe4a6af7f78fc7ed5",
+  "results": [
+    {
+      "kind": "all_roots_fail_witness",
+      "checked": [
+        {
+          "root": 4,
+          "macro_endpoints": 57
+        }
+      ],
+      "file": "backgroundMaterial/planemap-structural/longtable/wp11-schema-examples/all-roots-fail-17-0-root4-q.json",
+      "sha256": "7a62bdcd0f9971318fd8c034959b1ac8db26a029c4c1a15f93bd9d8ba96e949e"
+    },
+    {
+      "kind": "existential_fail_witness",
+      "checked": [
+        {
+          "root": 0,
+          "macro_endpoints": 52
+        },
+        {
+          "root": 1,
+          "macro_endpoints": 57
+        },
+        {
+          "root": 4,
+          "macro_endpoints": 52
+        },
+        {
+          "root": 5,
+          "macro_endpoints": 57
+        },
+        {
+          "root": 7,
+          "macro_endpoints": 52
+        },
+        {
+          "root": 8,
+          "macro_endpoints": 57
+        },
+        {
+          "root": 9,
+          "macro_endpoints": 52
+        },
+        {
+          "root": 10,
+          "macro_endpoints": 52
+        },
+        {
+          "root": 12,
+          "macro_endpoints": 57
+        },
+        {
+          "root": 13,
+          "macro_endpoints": 52
+        },
+        {
+          "root": 15,
+          "macro_endpoints": 52
+        },
+        {
+          "root": 16,
+          "macro_endpoints": 52
+        }
+      ],
+      "file": "backgroundMaterial/planemap-structural/longtable/wp11-schema-examples/existential-fail-17-1-L.json",
+      "sha256": "b59d098eb2128ad43cef7e36a5b7050df80b287102d1b52535995c8cfc3e527a"
+    },
+    {
+      "kind": "pass",
+      "root": 0,
+      "independently_enumerated_states": 20,
+      "descent_witnesses": 10,
+      "file": "backgroundMaterial/planemap-structural/longtable/wp11-schema-examples/pass-icosahedron-root0-q.json",
+      "sha256": "cb14549ca03f89ac4b317871c14552eef8ea5dcb7671c6b1a6358e80a135f545"
+    }
+  ]
+}
