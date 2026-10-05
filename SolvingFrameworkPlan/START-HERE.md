@@ -101,11 +101,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 **Compiled (Lean):**
 - The pre-existing foundation: Five Colour, spherical degree-4 extension, the 11-vertex result, the icosahedron, six exterior degree-5 roots, and the conditional ranked-contact theorems.
 - **Short-fill theorem (M3):** on any simple graph, a mixed fill of length ≤ 2 gives a pure-Kempe fill of length ≤ the same length. `SimpleGraph.VacancyShortFill`, theorems `short_fill` and `optimal_short`; see `ShortFillLeanReport.md`.
-- **Lemma L3 (three-move obstruction):** if no pure fill exists within 3 swaps but a 3-move path does, then that path starts with a slide, and every two-swap finish after the slide uses the slid colour. `SimpleGraph.VacancyThreeMoveObstruction`; see `docs/reports/ThreeMoveLeanReport.md`. The fresh 85-module audit passed.
-- Belt helpers: the 14 opening words, and the potential/budget lemma. Task B progress, not yet the full theorem: the recurrence moves, all-n termination for a normalised doubled-0 opening, and the D and S caps.
-
-**Fully proved Lean drafts, outside the build and pending Math's acceptance:**
-- `SimpleGraph.BeltDraft.belt_unequal` (`longtable/lean-drafts/`): unequal-pole belt walk at hole u₀, at most 2n slides, poles fixed. No `sorry`; standard axioms. It depends on Team A's `BeltVacancyTeamA` and Math's `BeltCapsMath`.
+- **Lemma L3 (three-move obstruction):** if no pure fill exists within 3 swaps but a 3-move path does, then that path starts with a slide, and every two-swap finish after the slide uses the slid colour. `SimpleGraph.VacancyThreeMoveObstruction`; see `docs/reports/ThreeMoveLeanReport.md`. - **Unequal-pole belt walk** (revision 82): `SimpleGraph.TwoPoleBeltWalk.belt_unequal_at`. For every n ≥ 5, every belt hole and every proper 4-colouring with unequal pole colours, at most 2n singleton slides reach a filled belt hole, with the pole colours preserved. Florek is not a dependency. The fresh **95-module** audit passed with standard axioms only (`docs/reports/BeltLeanReport.md`, `belt-lean/`). Equal poles and pole holes are outside this theorem. Further belt work waits behind VH∃.
 
 **Hand proofs pending Math's review:**
 - Theorem P (`longtable/swarm/pole-hole-noflorek.md`): the no-singleton pole case without Florek.
@@ -113,6 +109,9 @@ Never write "proved" for computation. Never generalise a finite pass.
 - κ is unbounded by ℓ in general (E1–E4, `longtable/wp19/beyond-short-fill.md`).
 
 **Accepted hand proofs:**
+- **Interior-witness lift** (Math 16:45, `docs/reports/MathInteriorWitnessReview.md`): a side path lifts only when every hole stays off the separating triangle. So a smallest failure has no interior witness. Four-connectivity of a smallest failure is not proved.
+- **Three-cut core:** for order ≥ 5, having no separating triangle is the same as being 4-connected ($K_4$ excepted). The spanning-tree paragraph in connectivity (C) is not part of the core; it was withdrawn at 17:00 in favour of citing Euler.
+- **Fixed-hole theorem** (Math 16:59, `docs/reports/MathFixedHoleReview.md`; the Navigator has not yet recorded it): a degree-5 vertex of a separating triangle fills within 2 Kempe swaps at the fixed hole, for every colouring. **Math's corollary:** every vertex of every separating triangle in a VH∃ failure has degree ≥ 6, because the apex-$a$ fan at a degree-5 separator vertex is a good pair.
 - **Belt theorem** (`longtable/swarm/belt-joined.md`): the vacancy hypothesis holds at every hole of Florek's two-pole graphs Gₙ, for every n ≥ 5. Unequal poles fill by slides alone within 2n moves. The no-singleton pole-hole case **cites Florek's Theorem 3.1**, and the identification with Florek's graph family is also cited.
 - **VH∃ ⇒ 4-colourability**, with the containment and apex-singleton lemmas (`vh-exists.md`).
 - **Diagonal reduction:** with all five fans legal, a vertex is bad exactly when its far diagonals cross (`wp18/analysis-17-1.md`).
@@ -140,25 +139,25 @@ Never write "proved" for computation. Never generalise a finite pass.
 - The WP19 setting (planar triangulations, 4 colours) is **not** covered by these examples. There, the saved data show κ ≤ 5 and κ − ℓ ≤ 2, and no start without a pure fill.
 - **Lemma L4** tightens L3 [hand].
 
-**Hand pages from the 11:08 creative session, pending Math review** (`docs/working/creative-intel-2026-10-05/DIRECTOR.md`):
-- **Interior-witness lift** [hand]: a filling path that stays off a separating triangle lifts, so a smallest failure has no interior witness on one. $H_2$ is a success. For order $\ge 5$, $3$-vertex cuts are identified with separating triangles (the $3$-connectedness write-up was re-lined at 16:43; no correction).
-- **Fixed-hole theorem** [hand], 16:43 (`interface/fixed-hole-two-swaps.md`): at a degree-$5$ vertex of a separating triangle, every colouring fills within $2$ Kempe swaps at the fixed hole, whatever the interior. This closes the double-lock sentence. The lift therefore extends to paths whose first landing on the triangle is at a $T$-degree-$5$ vertex. Still open: a landing at $T$-degree $\ge 6$, and the carry across an inner triangle.
-- **Belt potential, off the belt** [computed on the saved $24{:}7228$ path]: the untouched-set size falls on the mixed path ($23,22,16,12$) and does not fall on the five-swap path ($23,15,9,4,4,10$). It is not a controller. The lift does not rise to Medium.
-- **Defect theorem** [hand]: every proper colouring of a $5$-cycle has a singleton. A rewrite on that word does not name the link after the apex slide, and the two fan chords do not force a path in $T-v$ to miss a crossing.
+**Hand pages pending Math review** (`docs/working/creative-intel-2026-10-05/`):
+- **Face-avoiding reduction** [hand], 17:00 (`interface/face-avoiding-reduction.md`). This strengthens VH∃ to VH_𝒞: for every triangulation with a face φ such that every vertex off φ has degree ≥ 5, some degree-5 vertex off φ, with a legal fan, fills every start with every hole kept off φ. A smallest failure of VH_𝒞 has no separating triangle, so it is 4-connected. Both the landing gap and the carry gap disappear. The cost is that VH_𝒞 is a stronger statement, untested with degree-4 vertices on φ. Exploratory reading (post hoc, undeclared, random flips, orders 13–18): 1308 of 1308 (T, φ) pass with pure fills, including 402 with one or two degree-4 vertices on φ; no member had three (`longtable/explore-vhphi/`).
+- **4-cycle** (`interface/four-cycle-reduction.md`): hand restriction lemma, and a game class closed under 3- and 4-cycle reductions. The free-adversary game is **killed** (exploratory) on an order-16 member, pending an audit replay. The 4-cut question itself is still open.
+- **Belt potential, off the belt** [computed on the saved 24:7228 path]: killed, and the line stays stopped.
+- **Defect theorem** [hand]: every proper colouring of a 5-cycle has a singleton. This does not by itself give the fill.
 
 **Open:**
 - VH∃ itself, and U∃.
 - Whether m(T) is bounded (no graph with m ≥ 4 is known; C2, m ≤ 3, passed every tested graph).
 - M1 (ℓ ≤ 4) as a universal statement.
-- A Florek-free proof of the belt's pole case.
-- Lean for the belt walk.
+- A Florek-free proof of the belt's pole case (Theorem P is pending review).
+- Four-connectivity of a smallest VH∃ failure. It holds for VH_𝒞 if the reduction is accepted.
 
 ## 7. Active work
 
 | Owner | Task |
 |---|---|
-| Math | **Task B:** compile the unequal-pole belt walk in Lean. Done so far: the recurrence moves, the D and S caps, and doubled-0 termination. Still to do: integrating the controller, the openings and the symmetry. Math wants Long Table's skeleton statement/API, kept outside the build, with derived transitions rather than assumed ones. |
-| Long Table | Line 1 of `VHExistsAttack.md`. Next: a landing on a separating triangle at $T$-degree $\ge 6$ (re-route or stop before $F$), then the carry in (D) of `interface/interior-witness.md`. Pending Math review: the interior-witness lift, the fixed-hole theorem, the killed off-belt potential, and the defect theorem (`docs/working/creative-intel-2026-10-05/`). The belt Lean drafts and a constant bound for Theorem P stay side projects unless line 1 or line 2 of `VHExistsAttack.md` needs them. |
+| Math | Task B is done (unequal poles compiled). Next: package the clique-component and interior-path lift lemmas, with the fixed-hole lemma and the legal-fan corollary, in the next structural formalisation. |
+| Long Table | Line 1 of `VHExistsAttack.md`, in the VH_𝒞 frame: (i) a 4-ring adversary constrained by a fixed far side (Birkhoff-style connection patterns); (ii) members of 𝒞 with three degree-4 vertices on φ. The double-lock task is closed; the carry is moot under VH_𝒞. The belt drafts and Theorem P stay side projects. |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
 | Navigator | Record the actual decisions. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |
