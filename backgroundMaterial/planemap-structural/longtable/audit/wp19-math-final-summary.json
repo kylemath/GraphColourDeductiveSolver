@@ -1,0 +1,286 @@
+{
+  "P1": {
+    "graphs": 2070,
+    "pairs": 155593,
+    "distinct_starts": 12407317,
+    "all_hole_states": 24256441,
+    "memberships": 25133655,
+    "m_hist": {
+      "2": 1768,
+      "1": 302
+    },
+    "U": {
+      "true": 2070,
+      "false": 0,
+      "null": 0
+    },
+    "max_l": 4,
+    "max_k": 5,
+    "producer_seconds": 420.8,
+    "replay_seconds": 445.57,
+    "peak_worker_KiB": 27824,
+    "certificate_stats": {
+      "graphs_checked": 2070,
+      "graphs_interrupted": 0,
+      "graphs_unresolved": 0,
+      "kills_on_unresolved_graphs": [],
+      "kills_verified": {},
+      "pairs": 155593,
+      "u_fail_classes_verified": 320,
+      "u_fail_missing_truncated": 0,
+      "warnings": [],
+      "witnesses_missing_truncated": 0,
+      "witnesses_verified": 23340
+    },
+    "statements": {
+      "M1": {
+        "killed": [],
+        "passed": 2070,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "M2": {
+        "killed": [],
+        "passed": 2070,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "M3": {
+        "killed": [],
+        "passed": 2070,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C1": {
+        "killed": [],
+        "passed": 2070,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C2": {
+        "killed": [],
+        "passed": 2070,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C3": {
+        "killed": [],
+        "passed": 2025,
+        "unresolved": 0,
+        "not_applicable": 45,
+        "killed_count": 0
+      },
+      "U_exists": {
+        "killed": [],
+        "passed": 2070,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      }
+    },
+    "raw_sha256": "ab6923ca1455146b251558b8eb613eaa558a002407beccb967385c1a1b9cc188",
+    "input_sha256": "d233b4efafdd3510f133760d9d918beab70e7496759aef512fb302cbd594bafa"
+  },
+  "P2": {
+    "graphs": 843,
+    "pairs": 60960,
+    "distinct_starts": 3521784,
+    "all_hole_states": 6651930,
+    "memberships": 7127350,
+    "m_hist": {
+      "2": 692,
+      "1": 151
+    },
+    "U": {
+      "true": 843,
+      "false": 0,
+      "null": 0
+    },
+    "max_l": 4,
+    "max_k": 5,
+    "producer_seconds": 350.9,
+    "replay_seconds": 287.35,
+    "peak_worker_KiB": 25904,
+    "certificate_stats": {
+      "graphs_checked": 843,
+      "graphs_interrupted": 0,
+      "graphs_unresolved": 0,
+      "kills_on_unresolved_graphs": [],
+      "kills_verified": {},
+      "pairs": 60960,
+      "u_fail_classes_verified": 181,
+      "u_fail_missing_truncated": 0,
+      "warnings": [],
+      "witnesses_missing_truncated": 0,
+      "witnesses_verified": 9805
+    },
+    "statements": {
+      "M1": {
+        "killed": [],
+        "passed": 843,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "M2": {
+        "killed": [],
+        "passed": 843,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "M3": {
+        "killed": [],
+        "passed": 843,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C1": {
+        "killed": [],
+        "passed": 843,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C2": {
+        "killed": [],
+        "passed": 843,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C3": {
+        "killed": [],
+        "passed": 786,
+        "unresolved": 0,
+        "not_applicable": 57,
+        "killed_count": 0
+      },
+      "U_exists": {
+        "killed": [],
+        "passed": 843,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      }
+    },
+    "raw_sha256": "e3036b12420f7d4eac9c5770106c2f7be5e469d72439f16ee0ec0d6b7b2c1f54",
+    "input_sha256": {
+      "triangulations-min5-21.txt": "5c20395802df3f98d81d1cf2cc68c3995ac5f1b0f8438da9b0ac281cdeeb1c6d",
+      "triangulations-min5-22.txt": "6137dc19b7a036ae42388153ca23b93ae7cbb8f03280718529834a18ae7df2d7"
+    }
+  },
+  "P3": {
+    "graphs": 7290,
+    "pairs": 564852,
+    "distinct_starts": 59030791,
+    "all_hole_states": 118602673,
+    "memberships": 119769407,
+    "m_hist": {
+      "2": 6277,
+      "1": 1012,
+      "3": 1
+    },
+    "U": {
+      "true": 7290,
+      "false": 0,
+      "null": 0
+    },
+    "max_l": 4,
+    "max_k": 5,
+    "producer_seconds": 3558.5,
+    "replay_seconds": 3163.11,
+    "peak_worker_KiB": 37920,
+    "certificate_stats": {
+      "graphs_checked": 7290,
+      "graphs_interrupted": 0,
+      "graphs_unresolved": 0,
+      "kills_on_unresolved_graphs": [],
+      "kills_verified": {
+        "C1": 1,
+        "C3": 1,
+        "M2": 1
+      },
+      "pairs": 564852,
+      "u_fail_classes_verified": 1298,
+      "u_fail_missing_truncated": 0,
+      "warnings": [],
+      "witnesses_missing_truncated": 0,
+      "witnesses_verified": 109162
+    },
+    "statements": {
+      "M1": {
+        "killed": [],
+        "passed": 7290,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "M2": {
+        "killed": [
+          [
+            24,
+            7228
+          ]
+        ],
+        "passed": 7289,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 1
+      },
+      "M3": {
+        "killed": [],
+        "passed": 7290,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C1": {
+        "killed": [
+          [
+            24,
+            6406
+          ]
+        ],
+        "passed": 7289,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 1
+      },
+      "C2": {
+        "killed": [],
+        "passed": 7290,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      },
+      "C3": {
+        "killed": [
+          [
+            24,
+            6406
+          ]
+        ],
+        "passed": 7200,
+        "unresolved": 0,
+        "not_applicable": 89,
+        "killed_count": 1
+      },
+      "U_exists": {
+        "killed": [],
+        "passed": 7290,
+        "unresolved": 0,
+        "not_applicable": 0,
+        "killed_count": 0
+      }
+    },
+    "raw_sha256": "30efe4e37251e62c6666a6756df754380be57af3cfe2412d9ff988e3dc2f0c2a",
+    "input_sha256": "ad041818b6d65b5b7a63d5e93c5cfa3824f749bda6c014459fc283aaa0bd7cfc"
+  }
+}
