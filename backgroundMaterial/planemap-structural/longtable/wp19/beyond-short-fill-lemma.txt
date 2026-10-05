@@ -1,0 +1,58 @@
+input wp19-counterexamples.json sha256 ee851f411a483b6af786284e9d7368ef550b849672c9b30dad9fa9f93e4e8318
+
+=== 24:6406  (14114 deletion states over all holes; 1.7s)
+  joint (ell, kappa), all colourings of T - v, v of degree 5 (no fan filter):
+     (0, 0) 3458
+     (1, 1) 2676
+     (2, 2) 786
+     (3, 3) 64
+     (3, 4) 4
+     (4, 4) 4
+  nofill states: 0
+   ('kappa=3', 'Conjecture B pattern present (h not in K1, face vertex rho)') 46
+   ('kappa=3', 'K1 avoids sigma') 84
+   ('kappa=3', 'a Kempe first move is on a shortest path') 64
+   ('kappa=3', 'decompositions S K1 K2') 264
+   ('kappa=3', 'every decomposition: u has a rho-nbr in H_t (L4c)') 36
+   ('kappa=3', 'h in K1') 88
+   ('kappa=3', 'h not in K1') 92
+   ('kappa=3', 'h not in K1 and L4a structure holds') 92
+   ('kappa=3', 'starts') 64
+   ('kappa>3', 'Conjecture B pattern present (h not in K1, face vertex rho)') 4
+   ('kappa>3', 'a Kempe first move is on a shortest path') 0
+   ('kappa>3', 'decompositions S K1 K2') 8
+   ('kappa>3', 'every decomposition: u has a rho-nbr in H_t (L4c)') 4
+   ('kappa>3', 'h in K1') 4
+   ('kappa>3', 'h not in K1') 4
+   ('kappa>3', 'h not in K1 and L4a structure holds') 4
+   ('kappa>3', 'starts') 4
+
+=== 24:7228  (18195 deletion states over all holes; 2.1s)
+  joint (ell, kappa), all colourings of T - v, v of degree 5 (no fan filter):
+     (0, 0) 4800
+     (1, 1) 3577
+     (2, 2) 993
+     (3, 3) 70
+     (3, 4) 11
+     (3, 5) 4
+     (4, 4) 5
+  nofill states: 0
+   ('kappa=3', 'Conjecture B pattern present (h not in K1, face vertex rho)') 27
+   ('kappa=3', 'K1 avoids sigma') 18
+   ('kappa=3', 'a Kempe first move is on a shortest path') 70
+   ('kappa=3', 'decompositions S K1 K2') 120
+   ('kappa=3', 'every decomposition: u has a rho-nbr in H_t (L4c)') 61
+   ('kappa=3', 'h in K1') 52
+   ('kappa=3', 'h not in K1') 50
+   ('kappa=3', 'h not in K1 and L4a structure holds') 50
+   ('kappa=3', 'starts') 70
+   ('kappa>3', 'Conjecture B pattern present (h not in K1, face vertex rho)') 15
+   ('kappa>3', 'a Kempe first move is on a shortest path') 0
+   ('kappa>3', 'decompositions S K1 K2') 38
+   ('kappa>3', 'every decomposition: u has a rho-nbr in H_t (L4c)') 15
+   ('kappa>3', 'h in K1') 19
+   ('kappa>3', 'h not in K1') 19
+   ('kappa>3', 'h not in K1 and L4a structure holds') 19
+   ('kappa>3', 'starts') 15
+
+ell = 3 starts by kappa over both graphs: {(3,): 134, (4,): 15, (5,): 4}

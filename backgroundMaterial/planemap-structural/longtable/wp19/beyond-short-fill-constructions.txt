@@ -1,0 +1,111 @@
+beyond-short-fill constructions: ell = 3, kappa = nofill
+vertex names for the prism examples: ['a0', 'a1', 'a2', 'b0', 'b1', 'b2', 'h'] (+ z1, z2 apices)
+
+=== E1 prism + degree-3 hole (planar, 3 colours): n = 7, |E| = 12, k = 3, hole h, deg(hole) = 3
+  plane rotation system given; V - E + F = 2 (2 = planar)
+  start s: {'a0': 0, 'a1': 1, 'a2': 2, 'b0': 2, 'b1': 0, 'b2': 1}
+  link colours of hole: [0, 1, 2]  target? False
+  Kempe class of s in G - hole: 1 state(s) up to renaming; targets in class: 0
+  s Kempe-frozen (every swap is a global renaming): True
+  kappa = nofill (Kempe class exhausted, 1 states); ell = 3
+  shortest mixed path (canonical-label moves): ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+    slide 6->0 carrying 0                    hole a0: link colours [1, 2, 2, 0]
+    swap {2,0} on [2]                        hole a0: link colours [1, 0, 2, 0]
+    swap {1,2} on [1]                        hole a0: link colours [2, 0, 2, 0]
+  anatomy: 6 (slide, K1, K2) decompositions with ell(t) = 2
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['a2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['a2'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['b0', 'b1', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['b0'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': ['b0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['a0', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['b1', 'b2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['a0', 'a2', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['b1'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+  joint (ell, kappa) over ALL colourings of G - hole (None = unreachable / nofill): [((0, 0), 1), ((3, None), 1)] [0.0s]
+
+=== E2.1 E1 joined with K_1 (k = 4): n = 8, |E| = 19, k = 4, hole h, deg(hole) = 4
+  start s: {'a0': 0, 'a1': 1, 'a2': 2, 'b0': 2, 'b1': 0, 'b2': 1, 'z1': 3}
+  link colours of hole: [0, 1, 2, 3]  target? False
+  Kempe class of s in G - hole: 1 state(s) up to renaming; targets in class: 0
+  s Kempe-frozen (every swap is a global renaming): True
+  kappa = nofill (Kempe class exhausted, 1 states); ell = 3
+  shortest mixed path (canonical-label moves): ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+    slide 6->0 carrying 0                    hole a0: link colours [1, 2, 2, 0, 3]
+    swap {2,0} on [2]                        hole a0: link colours [1, 0, 2, 0, 3]
+    swap {1,2} on [1]                        hole a0: link colours [2, 0, 2, 0, 3]
+  anatomy: 6 (slide, K1, K2) decompositions with ell(t) = 2
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['a2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['a2'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['b0', 'b1', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['b0'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': ['b0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['a0', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['b1', 'b2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['a0', 'a2', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['b1'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+  joint (ell, kappa) over ALL colourings of G - hole (None = unreachable / nofill): [((0, 0), 1), ((3, None), 1)] [0.0s]
+
+=== E2.2 E1 joined with K_2 (k = 5): n = 9, |E| = 27, k = 5, hole h, deg(hole) = 5
+  start s: {'a0': 0, 'a1': 1, 'a2': 2, 'b0': 2, 'b1': 0, 'b2': 1, 'z1': 3, 'z2': 4}
+  link colours of hole: [0, 1, 2, 3, 4]  target? False
+  Kempe class of s in G - hole: 1 state(s) up to renaming; targets in class: 0
+  s Kempe-frozen (every swap is a global renaming): True
+  kappa = nofill (Kempe class exhausted, 1 states); ell = 3
+  shortest mixed path (canonical-label moves): ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+    slide 6->0 carrying 0                    hole a0: link colours [1, 2, 2, 0, 3, 4]
+    swap {2,0} on [2]                        hole a0: link colours [1, 0, 2, 0, 3, 4]
+    swap {1,2} on [1]                        hole a0: link colours [2, 0, 2, 0, 3, 4]
+  anatomy: 6 (slide, K1, K2) decompositions with ell(t) = 2
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['a2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['a2'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['b0', 'b1', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['b0'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': ['b0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['a0', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['b1', 'b2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['a0', 'a2', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['b1'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+  joint (ell, kappa) over ALL colourings of G - hole (None = unreachable / nofill): [((0, 0), 1), ((3, None), 1)] [0.0s]
+
+=== E2.3 E1 joined with K_3 (k = 6): n = 10, |E| = 36, k = 6, hole h, deg(hole) = 6
+  start s: {'a0': 0, 'a1': 1, 'a2': 2, 'b0': 2, 'b1': 0, 'b2': 1, 'z1': 3, 'z2': 4, 'z3': 5}
+  link colours of hole: [0, 1, 2, 3, 4, 5]  target? False
+  Kempe class of s in G - hole: 1 state(s) up to renaming; targets in class: 0
+  s Kempe-frozen (every swap is a global renaming): True
+  kappa = nofill (Kempe class exhausted, 1 states); ell = 3
+  shortest mixed path (canonical-label moves): ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+    slide 6->0 carrying 0                    hole a0: link colours [1, 2, 2, 0, 3, 4, 5]
+    swap {2,0} on [2]                        hole a0: link colours [1, 0, 2, 0, 3, 4, 5]
+    swap {1,2} on [1]                        hole a0: link colours [2, 0, 2, 0, 3, 4, 5]
+  anatomy: 6 (slide, K1, K2) decompositions with ell(t) = 2
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['a2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['a2'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['b0', 'b1', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['b0'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': ['b0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['a0', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'a1', 'sigma': 1, 'pair': (0, 1), 'K1': ['b1', 'b2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['a0', 'a2', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['b1'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+
+=== E3 E1 + apex z1 + edge h-b2 (k = 4, deg(hole) = 5): n = 8, |E| = 20, k = 4, hole h, deg(hole) = 5
+  start s: {'a0': 0, 'a1': 1, 'a2': 2, 'b0': 2, 'b1': 0, 'b2': 1, 'z1': 3}
+  link colours of hole: [0, 1, 2, 1, 3]  target? False
+  Kempe class of s in G - hole: 1 state(s) up to renaming; targets in class: 0
+  s Kempe-frozen (every swap is a global renaming): True
+  kappa = nofill (Kempe class exhausted, 1 states); ell = 3
+  shortest mixed path (canonical-label moves): ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+    slide 6->0 carrying 0                    hole a0: link colours [1, 2, 2, 0, 3]
+    swap {2,0} on [2]                        hole a0: link colours [1, 0, 2, 0, 3]
+    swap {1,2} on [1]                        hole a0: link colours [2, 0, 2, 0, 3]
+  anatomy: 4 (slide, K1, K2) decompositions with ell(t) = 2
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['a2'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['a2'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'a0', 'sigma': 0, 'pair': (0, 2), 'K1': ['b0', 'b1', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 2, 'rho_nbrs_u': ['a2', 'b0'], 'rho_nbrs_u_in_K1': ['b0'], 'rho_nbrs_u_in_Ht': ['b0'], 'K1_meets_Nh': ['b0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['b0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['a0', 'a2', 'h'], 'sigma_in_pair': True, 'h_in_K1': True, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['a0'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': ['a0'], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+     {'u': 'b0', 'sigma': 2, 'pair': (0, 2), 'K1': ['b1'], 'sigma_in_pair': True, 'h_in_K1': False, 'n_K2': 2, 'rho': 0, 'rho_nbrs_u': ['a0', 'b1'], 'rho_nbrs_u_in_K1': ['b1'], 'rho_nbrs_u_in_Ht': ['a0'], 'K1_meets_Nh': [], 'J_has_rho_nbr_h': True, 'common_rho_nbr_hu': ['a0']}
+  joint (ell, kappa) over ALL colourings of G - hole (None = unreachable / nofill): [((0, 0), 1), ((3, None), 1)] [0.0s]
+
+=== E4 ladder C3 x P2 + hole (planar, k = 3): n = 7: kappa = nofill (class 1), ell = 3, path ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+
+=== E4 ladder C3 x P3 + hole (planar, k = 3): n = 10: kappa = nofill (class 1), ell = 3, path ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+
+=== E4 ladder C3 x P4 + hole (planar, k = 3): n = 13: kappa = nofill (class 1), ell = 3, path ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+
+=== E4 ladder C3 x P5 + hole (planar, k = 3): n = 16: kappa = nofill (class 1), ell = 3, path ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+
+=== E4 ladder C3 x P6 + hole (planar, k = 3): n = 19: kappa = nofill (class 1), ell = 3, path ['S->0', 'K{1,2}[2]', 'K{0,2}[1]']
+
+=== planar 4-colour attempts (icosahedron-based; negative)
+  icosahedron: 10 4-colourings up to renaming; Kempe class sizes [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] (every 4-colouring is Kempe-frozen)
+  icosahedron, hole = vertex 0: deg(hole) = 5, joint (ell, kappa) = [((0, 0), 10), ((1, 1), 10)]
+  icosahedron with edge 0-1 replaced by a degree-4 vertex: deg(hole) = 4, joint (ell, kappa) = [((0, 0), 12), ((1, 1), 6)]
+  icosahedron with face-edges 0-1, 1-2 removed, degree-5 vertex in the pentagon: deg(hole) = 5, joint (ell, kappa) = [((0, 0), 14), ((1, 1), 12)]

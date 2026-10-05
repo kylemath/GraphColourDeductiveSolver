@@ -19,9 +19,9 @@ Math has accepted VH∃ ⇒ 4-colourability as a hand argument. VH∃ itself is 
 | Team | Also called | Owns | Does not own |
 |---|---|---|---|
 | **Long Table** | Creative Intel; "longtable" in filenames | Hand proof pages and structural ideas; adversary tooling; declarations and producers for experiments (WP-numbers); its own errata; Lean **drafts** with `sorry`, outside the build (if the rules amendment is adopted) | Lean proofs in the accepted build; acceptance; status words |
-| **Math** | Math solutions and scale-up team; "math superintel" | Acceptance or refusal of results; proof review; Lean formalisation and the module audit (83 custom modules); written go-aheads for experiment phases; executing released phases; corpus sweeps | Long Table's source pages (it reports corrections instead of editing them) |
+| **Math** | Math solutions and scale-up team; "math superintel" | Acceptance or refusal of results; proof review; Lean formalisation and the module audit (85 custom modules). Its internal parallel agents are `belt_team_a` and `belt_team_b`. The live Lean checkout is `/Users/fulkanjou/mathlib4-planemap`, and committed source snapshots are in the artifact directories.; written go-aheads for experiment phases; executing released phases; corpus sweeps | Long Table's source pages (it reports corrections instead of editing them) |
 | **Proof Navigator** | Navigator; ledger; the swarm web frontend | The status ledger and the web app `docs/navigator/` (`planning.json`, revision numbers, journal); status words (proved / compiled / exploring / killed) | Running experiments; editing proof pages |
-| **Independent audit** | The audit chat; Teams A and B | Independent replays and checkers that import no team code; adversarial review; `longtable/audit/` | Producers; the source pages of other teams |
+| **Independent audit** | The audit chat, with its own competing Teams A and B. These are **not** Math's `belt_team_a` and `belt_team_b`. | Independent replays and checkers that import no team code; adversarial review; `longtable/audit/` | Producers; the source pages of other teams |
 | **Night swarm** | "Gremlins" | Overnight exploratory agents run by the user. Fast, less careful. Wrote `SolvingFrameworkPlan/docs/working/NightHandoff.md` and `longtable/swarm/*` notes. | Their outputs are **leads, not evidence**. Re-check before citing. Their runs on orders 20–26 are disclosed in `longtable/night-swarm-outputs.sha256`. |
 
 The user is the final authority, and releases computations.
@@ -40,7 +40,7 @@ The user is the final authority, and releases computations.
 | Swarm and proof notes | `longtable/swarm/` (e.g. `belt-joined.md`, `vh-exists.md`, `hole-induction.md`, `fan-link.md`) |
 | WP18 and WP19 | `longtable/WP18-*`, `longtable/wp18/`, `longtable/WP19-*`, `longtable/wp19/` |
 | Audit checkers and reviews | `longtable/audit/` |
-| Lean | `lean4/`; Math's overlays in `backgroundMaterial/planemap-structural/short-fill-lean/` and `belt-lean-preparation/` |
+| Lean | Live checkout: `/Users/fulkanjou/mathlib4-planemap`. In this repo: `lean4/`, plus Math's artifact snapshots in `backgroundMaterial/planemap-structural/short-fill-lean/`, `three-move-lean/` and `belt-lean-preparation/` |
 | Long Table Lean drafts (outside the build) | `longtable/lean-drafts/` |
 | Navigator web app | `docs/navigator/` |
 | Plays and stories (fiction) | `docs/play/`, `docs/story/` |
@@ -100,7 +100,8 @@ Never write "proved" for computation. Never generalise a finite pass.
 **Compiled (Lean):**
 - The pre-existing foundation: Five Colour, spherical degree-4 extension, the 11-vertex result, the icosahedron, six exterior degree-5 roots, and the conditional ranked-contact theorems.
 - **Short-fill theorem (M3):** on any simple graph, a mixed fill of length ≤ 2 gives a pure-Kempe fill of length ≤ the same length. `SimpleGraph.VacancyShortFill`, theorems `short_fill` and `optimal_short`; see `ShortFillLeanReport.md`.
-- Belt helpers: the 14 opening words, and the potential/budget lemma.
+- **Lemma L3 (three-move obstruction):** if no pure fill exists within 3 swaps but a 3-move path does, then that path starts with a slide, and every two-swap finish after the slide uses the slid colour. `SimpleGraph.VacancyThreeMoveObstruction`; see `docs/reports/ThreeMoveLeanReport.md`. The fresh 85-module audit passed.
+- Belt helpers: the 14 opening words, and the potential/budget lemma. Task B progress, not yet the full theorem: the recurrence moves, all-n termination for a normalised doubled-0 opening, and the D and S caps.
 
 **Accepted hand proofs:**
 - **Belt theorem** (`longtable/swarm/belt-joined.md`): the vacancy hypothesis holds at every hole of Florek's two-pole graphs Gₙ, for every n ≥ 5. Unequal poles fill by slides alone within 2n moves. The no-singleton pole-hole case **cites Florek's Theorem 3.1**, and the identification with Florek's graph family is also cited.
@@ -108,7 +109,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 - **Diagonal reduction:** with all five fans legal, a vertex is bad exactly when its far diagonals cross (`wp18/analysis-17-1.md`).
 - **Lemma A** and the one-way Lemma E (`wp18/mechanism.md`).
 - **An infinite family with m = 3** (`TriangleSumM3Family.md`, order 14k+3).
-- **Lemma L3** is submitted and awaiting review (`wp19/counterexample-analysis.md`).
+- **The axis-symmetry conjecture S is refuted** (`docs/reports/TriangleSumSymmetryCounterexample.md`). H₂ in the triangle-sum family has order 31, m = 3 and trivial automorphism group. Its interface is a unique separating triangle, so a 4-connected version of the conjecture is still open.
 
 **Finite results, accepted on their stated inputs:**
 - WP11 discovery and validation.
@@ -125,6 +126,11 @@ Never write "proved" for computation. Never generalise a finite pass.
 - M2: κ ≤ ℓ + 1 (24:7228).
 - The cascade claim "fails exactly in configuration X".
 
+**New hand results from Long Table, 5 October** (`longtable/wp19/beyond-short-fill.md`; not yet reviewed by Math):
+- **κ is not bounded by any function of ℓ in general.** A 7-vertex planar graph with 3 colours has a start with ℓ = 3 and κ = ∞ (E1). Variants give a degree-5 hole, 4 colours (non-planar), and planar ladders. Long Table re-checked E1 independently.
+- The WP19 setting (planar triangulations, 4 colours) is **not** covered by these examples. There, the saved data show κ ≤ 5 and κ − ℓ ≤ 2, and no start without a pure fill.
+- **Lemma L4** tightens L3 [hand].
+
 **Open:**
 - VH∃ itself, and U∃.
 - Whether m(T) is bounded (no graph with m ≥ 4 is known; C2, m ≤ 3, passed every tested graph).
@@ -136,7 +142,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 
 | Owner | Task |
 |---|---|
-| Math | **Task B:** compile the unequal-pole belt walk in Lean (Φ induction, caps, the n = 5 case). It is slow at the graph transitions and the termination proof. |
+| Math | **Task B:** compile the unequal-pole belt walk in Lean. Done so far: the recurrence moves, the D and S caps, and doubled-0 termination. Still to do: integrating the controller, the openings and the symmetry. Math wants Long Table's skeleton statement/API, kept outside the build, with derived transitions rather than assumed ones. |
 | Long Table | Lean skeleton drafts for Task B (`longtable/lean-drafts/`); a Florek-free proof of the pole case (`swarm/pole-hole-noflorek.md`); short-fill theory beyond length 2 (`wp19/beyond-short-fill.md`); structure of 24:6406 and 24:7228 |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
 | Navigator | Record the actual decisions. No upgrade from finite checks. |

@@ -249,7 +249,7 @@ A hand proof that exactly two extra swaps are needed is not given.
   - w has colour ρ.
   - *Support:* only the four κ = 5 starts of 24:7228. These two graphs contain no other start with κ − ℓ ≥ 2.
   - *Status:* necessity only; nothing here suggests a sufficient condition.
-- **Conjecture S (axis symmetry).** If m(T) ≥ 3, then T has an orientation-preserving involution (a half-turn) each of whose two fixed points is either a degree-6 vertex or the midpoint of an edge joining two degree-6 vertices.
+- **Conjecture S (axis symmetry)** — *[Refuted 5 October by Math: H₂ of the triangle-sum family has order 31, m = 3 and trivial automorphism group; see `SolvingFrameworkPlan/docs/reports/TriangleSumSymmetryCounterexample.md`. The interface there is a separating triangle, so a 4-connected version is still open.]* If m(T) ≥ 3, then T has an orientation-preserving involution (a half-turn) each of whose two fixed points is either a degree-6 vertex or the midpoint of an edge joining two degree-6 vertices.
   - *Support:* 17:1 (fixed vertex 3, fixed edge 6–14) and 24:6406 (fixed edges 2–11 and 6–16). Two examples only; whether m = 2 graphs also often have such a half-turn was not checked, so the conjecture may have little discriminating power.
 
 Neither conjecture is evidence for or against VH∃, U∃, M1 or C2.
