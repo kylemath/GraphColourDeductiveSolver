@@ -5,7 +5,9 @@ Long Table (Creative Intel), 5 October 2026, 17:22 MDT. Answers Math's 17:15 req
 - the restriction lemma of `four-cycle-reduction.md` §1;
 - the accepted triangle reduction (Math, 17:15).
 
-Math has not reviewed this page. The computations at the end are exploratory and post hoc.
+Math reviewed §1–§2 at 17:29 (see the status note). §2b has not been reviewed. The computations at the end are exploratory and post hoc.
+
+> **Status note, 17:36.** The original §2(a) used one ordinary-edge graph $B^\ast$, and that construction is **withdrawn**. Math found two defects (17:27): ordinary edges are not pair-specific, and crossing same-unused-colour bridges cannot be drawn as edges. §2 below has been repaired with pair-labelled bridges and a Jordan argument on the two paths' own bridges. **The reference proof is Math's `docs/reports/MathTraceGameLiftReview.md`**, which uses pair-specific graphs $H_P,B_P$ and coloured snapshot gadgets. It states that the triangle and induced-4-cycle lifts are valid after the correction. §2b, the 5-cycle extension, has not been reviewed. For a pentagon it needs either the two-path Jordan argument used here, or pentagon snapshot gadgets.
 
 ## 0. Why the free game was the wrong model
 
@@ -50,13 +52,24 @@ $\mathrm{VH}^{\rm tr}_\varphi(G)$ asks for a degree-5 vertex $v\notin V(\varphi)
 
 *Membership.* The faces of $A$ are the faces of $G$ on the $A$-side, together with the face $Q$. Vertices of $A\setminus Q$ keep their $G$-neighbourhoods, and they are off $\varphi\subseteq B$, so their degrees are $\ge5$. Also $B\setminus Q\neq\emptyset$, which gives the order.
 
-*Induced bits.* Take a position of the $G$-game: a state with hole $h\in A\setminus Q$, and $\varphi$-bits if $\varphi$ is a quadrilateral. Let $B^\ast$ be $B$ with one virtual edge, drawn inside the face $\varphi$, for each set $\varphi$-bit, joining that opposite pair. For a pair $P$ relevant on $Q$, define the $Q$-bit of $P$ as "the opposite $P$-vertices of $Q$ are joined by a $P$-path in $B^\ast-h$ whose internal vertices lie in $B\setminus Q$".
+*Induced bits (repaired 17:29 after Math's 17:27 review).* Take a position of the $G$-game: a state with hole $h\in A\setminus Q$, and $\varphi$-bits if $\varphi$ is a quadrilateral.
 
-*(a) Admissible.* Two virtual edges with disjoint colour pairs on crossing diagonals of $\varphi$ are excluded by $\varphi$-admissibility. Two on the same diagonal share the colour of its ends. So the virtual edges can be drawn inside $\varphi$ without crossings, and $B^\ast$ is a plane disc. Two set $Q$-bits on different diagonals of $Q$ with disjoint pairs would be vertex-disjoint paths joining alternating boundary points of that disc. Jordan forbids this, exactly as in Math's trace lemma.
+The bridges are **pair-labelled**. For each colour pair $P$, let $B_P$ be the graph on the $P$-coloured vertices of $B-h$ with the edges of $B$ between them. Add one labelled bridge edge for each set $\varphi$-bit **of the pair $P$**, joining its opposite pair. A bridge edge of pair $R\neq P$ is never an edge of $B_P$.
 
-*(b) Moves match.* Consider a $G$-move by the player at $h\in A\setminus Q$: a swap of the $G$-game component, including any $\varphi$-merge from a set $\varphi$-bit. Restricted to $A$, it is the $A$-component $K$ or $K\cup K'$. By the restriction lemma (`four-cycle-reduction.md` §1, with $B^\ast$ in place of $B$), it is $K\cup K'$ exactly when the $Q$-bit of $P$ is set. That is the $A$-game's rule. A slide inside $A\setminus Q$ is the same move in both games.
+The earlier draft used ordinary virtual edges, and that was wrong. An $\{\alpha,\delta\}$-bridge joins two $\alpha$-vertices, so as an ordinary edge it would also serve an $\{\alpha,\varepsilon\}$-path. Math caught this.
 
-*(c) Dynamics match.* After a swap in $P$, the $P$-coloured and $\bar P$-coloured vertex sets of $B$ are unchanged (frozen-pair fact). The $\varphi$-bits of $P$ and $\bar P$ are kept by the $G$-game. So the $Q$-bits of $P$ and $\bar P$ are unchanged, which is what the $A$-game requires. The other $Q$-bits take some admissible values by (a), and the $A$-adversary may choose any admissible values. After a slide nothing in $B^\ast$ changes, so every $Q$-bit is kept.
+For a pair $P$ relevant on $Q$, define the $Q$-bit of $P$ to be set exactly when the opposite $P$-vertices of $Q$ are joined by a path in $B_P$ whose internal vertices lie in $B\setminus Q$. Such a path may be a single bridge edge.
+
+*(a) Admissible.* Suppose two set $Q$-bits lie on different diagonals of $Q$ and have disjoint pairs $P$ and $R$. Take witnessing paths $\pi_P$ in $B_P$ and $\pi_R$ in $B_R$. They share no vertex, because their colours are disjoint. Draw in the disc $B$ only the bridge edges these two paths use, each as a curve inside the face $\varphi$.
+- A $P$-bridge and an $R$-bridge on crossing diagonals of $\varphi$ are excluded by $\varphi$-admissibility.
+- Both cannot lie on the same diagonal: its two ends carry one colour, and the disjoint pairs $P$ and $R$ cannot both contain it.
+- On a 4-face a relevant pair meets $\varphi$ in exactly one opposite pair, so it has at most one bridge, and each path uses at most one bridge edge.
+
+So the drawing of $\pi_P\cup\pi_R$ is planar. Its two curves join alternating boundary points of the disc $B$ and are disjoint, which Jordan forbids. Math's coloured snapshot gadgets (`MathTraceGameLiftReview.md`, when written) give an alternative realisation of every admissible state.
+
+*(b) Moves match.* Consider a $G$-move by the player at $h\in A\setminus Q$: a swap of the $G$-game component, including any $\varphi$-merge from a set $\varphi$-bit. Restricted to $A$, it is the $A$-component $K$ or $K\cup K'$. The $G$-game component of pair $P$ is a component of $G_P$ plus the $P$-labelled $\varphi$-bridges. By the restriction lemma (`four-cycle-reduction.md` §1, applied to that pair graph), it is $K\cup K'$ exactly when the $Q$-bit of $P$ is set. That is the $A$-game's rule. A slide inside $A\setminus Q$ is the same move in both games.
+
+*(c) Dynamics match.* After a swap in $P$, the $P$-coloured and $\bar P$-coloured vertex sets of $B$ are unchanged (frozen-pair fact). The $\varphi$-bits of $P$ and $\bar P$ are kept by the $G$-game. So the $Q$-bits of $P$ and $\bar P$ are unchanged, which is what the $A$-game requires. The other $Q$-bits take some admissible values by (a), and the $A$-adversary may choose any admissible values. Concretely, $B_P$ and $B_{\bar P}$ have unchanged vertex sets and edges, and their labelled bridges are kept. After a slide nothing in any $B_P$ changes, so every $Q$-bit is kept.
 
 *(d) Starts and fills.* A start of $G$ restricts to a start of $A$, and its induced bits are admissible. The $A$-strategy wins from every admissible bit assignment. At the final hole, $N_G(h)=N_A(h)$, so the link is the same and the fill is the same.
 
@@ -68,6 +81,26 @@ When a $G$-component meets $\varphi$ and $A_1\setminus F$, it contains every ver
 
 **[hand] Corollary.** A least-order failure of $\mathrm{VH}^{\rm tr}$ on $\mathcal C^{\rm tr}$ has no separating triangle and no separating 4-cycle. Without separating triangles, every separating 4-cycle is induced: a chord would split it into two triangles, both facial, and the cycle would then bound two faces on one side.
 
+## 2b. The 5-cycle lift (17:29, hand, pending review)
+
+**Runs.** On a face of length $k\le5$, the vertices coloured from a pair $P$ form at most two runs: maximal blocks that are consecutive on the face. Three runs would need three separating vertices, so $k\ge6$. Each run is connected through the face's own edges. A pair is **relevant** when it has exactly two runs, and its bit says that the two runs are joined through the far side in $P$, by pair-labelled paths as in §2. A set of bits is **admissible** when no two set bits have disjoint pairs whose runs **alternate** around the face, meaning one pair's runs lie in different gaps between the other's runs. For $k=4$ this is exactly §1.
+
+**[hand] Theorem.** Extend $\mathcal C^{\rm tr}$ to allow $\varphi$ to be an induced 5-cycle, provided that **at least two vertices lie on the non-$\varphi$ side of it**. Let $Q$ be an induced separating 5-cycle of $G$, and let $A$ be the side away from $\varphi$, with $|A\setminus Q|\ge2$. Then a trace-game win on $(A,Q)$ lifts to $(G,\varphi)$.
+
+*Proof.* As in §2, with three changes.
+- In the restriction step, each run lies in one $A$-component. At most two runs per pair means at most two $A$-components meet $Q$ in that pair, so the restriction is $K$ or $K\cup K'$.
+- In (a), disjoint-pair paths joining alternating runs are vertex-disjoint curves joining alternating boundary arcs of the disc. Jordan forbids them. The only bridges used are those of the two pairs, and they do not cross, by admissibility on $\varphi$.
+- The dynamics are the frozen-pair fact. ∎
+
+**Why wheels are excluded [computed, exploratory].** If $A\setminus Q$ is a single vertex $u$, then $Q=N(u)$ and $A$ is the 5-wheel. In the trace game on the 5-wheel, the player has no slide, since every neighbour of $u$ is on $\varphi$. Every fan at $u$ loses $3$ of $36$ (start, bit) positions. So the wheel would be a failure of the extended hypothesis, and it must be outside the class. That loses nothing: a separating 5-cycle that is a vertex neighbourhood is never reduced.
+
+**[hand] Corollary.** A least-order failure of the extended $\mathrm{VH}^{\rm tr}$ has:
+- no separating triangle;
+- no separating 4-cycle;
+- no separating 5-cycle with at least two vertices on each side.
+
+That is cyclic 5-connectivity, as for classical minimal counterexamples, but here for the move hypothesis. Chords of a 5-cycle would create a separating 3- or 4-cycle, unless the cycle bounds faces on one side.
+
 ## 3. Exploratory readings [computed, exploratory, post hoc, undeclared]
 
 The user approved downloading plantri 5.8 in this session. The source is from Brendan McKay's site; the tarball's SHA-256 is `e78a944116fec9f2c9f5e484206276cc2b0043bae803e9815f4b2683614629b8`. It was built locally and is not committed. Orders are $\le18$. The code is in `longtable/explore-vhphi/`.
@@ -76,6 +109,8 @@ The user approved downloading plantri 5.8 in this session. The source is from Br
 2. **Quadrilateral faces, free game, exhaustive in one family.** The family is $G=T-st$ with $T$ from `plantri -c4m4 n`, $n\le18$, $\varphi$ the merged face induced, and off-$\varphi$ degrees $\ge5$. That gives $4004$ (graph, edge) members. The free game fails only on $16{:}1-st$, where $16{:}1$ is the second `plantri -m5 16` triangulation and $s,t$ are adjacent degree-6 vertices; the two such edges are equivalent. The random search had found the same member.
 3. **Realised far sides on that member.** The far sides were the two diagonals and every chordless disc triangulation with $1$–$5$ interior vertices (`plantri -P4`), in all $8$ alignments: $2146$ glued graphs. All $50$ (vertex, fan) pairs at the ten degree-5 vertices off $\varphi$ stay pure-good in every one.
 4. **Trace game on that member, pure.** Every fan at every degree-5 vertex off $\varphi$ wins from every start and every admissible initial bit assignment; for example, vertex $2$, fan $0$ wins $168$ of $168$. Since the trace game is weaker than the free game, **the pure trace game passes on all $4004$ members of reading 2.**
+
+5. **All 4-face and 5-face members from `plantri -m4`** (17:44). Members are $G=T-x$, where $\deg x\in\{4,5\}$, the link is chordless, every vertex outside $N[x]$ has degree $\ge5$, and wheels are excluded. $T$ ranges over orders $12$–$18$, so $G$ has order $11$–$17$. Every chordless $k$-face member arises this way. The trace game (`vhphi_trace_members.py`) passes with pure fills on all **$2002$** members: $940$ with a 4-face and $1062$ with a 5-face. There are no failures. The 5-wheel fails, as expected, which is why it is excluded.
 
 So the 4-ring obstruction found by the free game is not realised by any small far side, and it disappears under the trace constraint.
 

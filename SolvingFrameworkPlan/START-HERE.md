@@ -113,6 +113,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 - **Three-cut core:** for order ≥ 5, having no separating triangle is the same as being 4-connected ($K_4$ excepted). The spanning-tree paragraph in connectivity (C) is not part of the core; it was withdrawn at 17:00 in favour of citing Euler.
 - **Fixed-hole theorem** (Math 16:59, `docs/reports/MathFixedHoleReview.md`; recorded in revision 83): a degree-5 vertex of a separating triangle fills within 2 Kempe swaps at the fixed hole, for every colouring. **Math's corollary:** every vertex of every separating triangle in a VH∃ failure has degree ≥ 6, because the apex-$a$ fan at a degree-5 separator vertex is a good pair.
 - **Face-avoiding triangle reduction** (Math 17:15, `docs/reports/MathTriangleCarryResearch.md`): a least-order failure of the stronger VH_𝒞 is 4-connected. This is not proved for plain VH∃. Math's lemmas: the 4-connected core has no face with three degree-4 vertices, and its order is ≥ 11 (`MathFourConnectedResearch.md`). Math also proved a degree-6 separator hole with a 4+4 split fills within 3 swaps (`MathHighDegreeLandingResearch.md`).
+- **Math 17:27–17:29** (`docs/reports/MathVHCoreAdvance.md`). Mobility: a degree-5 hole fills in one swap or reaches any chosen neighbour by ≤ 1 swap and 1 slide. A degree-5 vertex next to a degree-≤4 vertex fills every start in ≤ 3 pure swaps, so every legal fan there is good. Core members have order ≥ 12. **Compiled:** `VacancyCliqueLift` and `VacancyProtectedLift` (99-module audit). **Finite:** the free 4-ring game kill on 16:1 − st was replayed independently by Math (revision 84). The trace-game lift is valid after the pair-specific correction (`MathTraceGameLiftReview.md`); the Navigator has not accepted our page as written.
 - **Belt theorem** (`longtable/swarm/belt-joined.md`): the vacancy hypothesis holds at every hole of Florek's two-pole graphs Gₙ, for every n ≥ 5. Unequal poles fill by slides alone within 2n moves. The no-singleton pole-hole case **cites Florek's Theorem 3.1**, and the identification with Florek's graph family is also cited.
 - **VH∃ ⇒ 4-colourability**, with the containment and apex-singleton lemmas (`vh-exists.md`).
 - **Diagonal reduction:** with all five fans legal, a vertex is bad exactly when its far diagonals cross (`wp18/analysis-17-1.md`).
@@ -141,8 +142,8 @@ Never write "proved" for computation. Never generalise a finite pass.
 - **Lemma L4** tightens L3 [hand].
 
 **Hand pages pending Math review** (`docs/working/creative-intel-2026-10-05/`):
-- **Trace-game 4-ring reduction** [hand], 17:22 (`interface/trace-game-reduction.md`). The far side is modelled by Math's trace states as bridge bits. Swaps in P freeze the P and P̄ bits (frozen-pair fact). A trace-game win across a separating 4-cycle lifts, so a least failure of VH^tr has no separating 3- or 4-cycle. The free-adversary game of `four-cycle-reduction.md` was the wrong model, and its kill is post hoc (revision 83).
-- **Exploratory readings** (post hoc; plantri 5.8, orders ≤ 18; `longtable/explore-vhphi/`). Triangle faces: 435 of 435 4-connected members of 𝒞 pass with pure fills. Free quad game: 4004 members of the form T − e, failing only on 16:1 − st. On that member, all 50 pairs survive 2146 real far sides, and the trace game passes. So the pure trace game passes on all 4004 members. An audit replay has been requested.
+- **Trace-game reduction** (`interface/trace-game-reduction.md`). §1–§2 have been corrected to pair-labelled bridges, and Math's review is the reference proof. §2b is a new extension to non-neighbourhood separating 5-cycles; wheels are excluded because they lose. §2b has not been reviewed. Free-game kill: post hoc, one member.
+- **Exploratory readings** (post hoc; plantri 5.8, orders ≤ 18; `longtable/explore-vhphi/`). Triangle faces: 435 of 435 4-connected members of 𝒞 pass with pure fills. Free quad game: 4004 members of the form T − e, failing only on 16:1 − st. On that member, all 50 pairs survive 2146 real far sides, and the trace game passes. So the pure trace game passes on all 4004 members. An audit replay has been requested. Trace game on every chordless 4-face and 5-face member from `plantri -m4` (T of order 12–18): 2002 of 2002 pass.
 - **Belt potential, off the belt** [computed on the saved 24:7228 path]: killed, and the line stays stopped.
 - **Defect theorem** [hand]: every proper colouring of a 5-cycle has a singleton. This does not by itself give the fill.
 
@@ -157,8 +158,8 @@ Never write "proved" for computation. Never generalise a finite pass.
 
 | Owner | Task |
 |---|---|
-| Math | Package the clique-component and interior-fill lift lemmas (elaborating; full audit next), with the fixed-hole lemma and the legal-fan corollary. Review the trace-game reduction. |
-| Long Table | Line 1 of `VHExistsAttack.md`: (i) the bridge-state count for a separating 5-cycle that is not a neighbourhood; (ii) a hand win in the trace game at a degree-5 vertex far from φ. Pending review: the trace-game reduction. The belt drafts and Theorem P stay side projects. |
+| Math | The mobility/short-fill boundary reduction in Lean, then the higher-degree frontier or the global branching trap. |
+| Long Table | Line 1: the core. In order: (i) an exploratory test of apex-at-neighbour fans at 5–5 and 5–6 edges (Wernicke's pair); (ii) component counts of the move graph on small core members; (iii) a literature check (Tilley Kempe-locking; Fisk–Mohar degree). See `docs/working/creative-intel-2026-10-05/core-brainstorm.md`. Pending review: §2b of the trace page. |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
 | Navigator | Record the actual decisions. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |

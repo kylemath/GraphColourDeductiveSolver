@@ -26,3 +26,7 @@ Usage: `python3 vhphi_explore.py SEED ORDERS TRIES`, `python3 vhphi_quad_explore
 - `vhphi_farside.py`: glues the 2 diagonals and all chordless `plantri -P4` discs with 1-5 interior
   vertices, in 8 alignments, into that member -> `farside-order16.json`. All 50 pairs are pure-good in all 2146.
 - `vhphi_trace_game.py`: trace-constrained pure game on that member -> `trace-game-order16.json`. Every fan wins.
+
+## 17:44 additions
+- `vhphi_trace_k.py`: trace game on k-faces (k = 4, 5) with run-based bits; `plantri -P5`/`-P4` discs -> `trace-k5-7-13-pure.json`, `trace-k4-5-13-pure.json`. The 5-wheel fails (3 of 36 positions per fan), so wheels are excluded.
+- `vhphi_trace_members.py`: every member T - x (deg x in {4,5}, chordless link) from `plantri -m4 n`, n = 8..18 -> `trace-members-<n>.json`. 2002 of 2002 pure-pass.
