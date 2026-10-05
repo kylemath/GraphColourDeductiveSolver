@@ -201,11 +201,11 @@ CanonicalColouring = Tuple[int, ...]  # hashable form, sorted by vertex
 
 | Document | Location | What it contains |
 |----------|----------|-----------------|
-| Plan 2 overview | `SolvingFrameworkPlan/Plan2_KempeSwapGame.md` | Original 4-phase plan, mathematical foundation, risk matrix |
-| Plan 2 poster | `SolvingFrameworkPlan/Gemini_Generated_Image_5zs1vf5zs1vf5zs1.png` | Visual overview of all phases and success criteria |
-| Novel Proof Exploration | `SolvingFrameworkPlan/NovelProofExploration.md` | Agent 1221's 7-track framework (Plan 2 = Track 1) |
-| Solving Proof Strategy | `SolvingFrameworkPlan/SolvingProofStrategy.md` | Agent 1221's full automated proof discovery architecture |
-| **This document** | `SolvingFrameworkPlan/ExecutiveSummary_Plan2_Status.md` | Current status and handoff guide |
+| Plan 2 overview | `SolvingFrameworkPlan/docs/working/Plan2_KempeSwapGame.md` | Original 4-phase plan, mathematical foundation, risk matrix |
+| Plan 2 poster | `SolvingFrameworkPlan/docs/working/images/Gemini_Generated_Image_5zs1vf5zs1vf5zs1.png` | Visual overview of all phases and success criteria |
+| Novel Proof Exploration | `SolvingFrameworkPlan/docs/working/NovelProofExploration.md` | Agent 1221's 7-track framework (Plan 2 = Track 1) |
+| Solving Proof Strategy | `SolvingFrameworkPlan/docs/core/SolvingProofStrategy.md` | Agent 1221's full automated proof discovery architecture |
+| **This document** | `SolvingFrameworkPlan/docs/working/ExecutiveSummary_Plan2_Status.md` | Current status and handoff guide |
 
 ### Agent reports (read for detailed findings)
 

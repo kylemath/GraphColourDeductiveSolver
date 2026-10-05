@@ -166,7 +166,7 @@ The slides fail because each N(u)∖7 uses three colours: N(6)∖7 is coloured (
 
 ## 5. Conjectures (for a future declaration; untested)
 
-> **Outcome after WP19 (5 October; `SolvingFrameworkPlan/MathWP19Results.md`, `MathWP19Counterexamples.md`):**
+> **Outcome after WP19 (5 October; `SolvingFrameworkPlan/docs/reports/MathWP19Results.md`, `MathWP19Counterexamples.md`):**
 > - **C1 and C3 are killed** by 24:6406, which has m = 3 (58 pairs with L = 3 and 12 with L = 4) and two degree-7 vertices. So 17:1 is not the only m = 3 graph, and m ≥ 3 is not confined to graphs with degrees 5 and 6 only.
 > - **C2 (m ≤ 3) passed** on all 10,203 WP19 graphs; its universal statement remains open.
 >

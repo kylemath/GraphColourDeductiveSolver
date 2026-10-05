@@ -34,7 +34,7 @@ Goal: a structural, executable Four Colour proof without a large configuration c
    - **explicit user approval**;
    - then run discovery on orders 12–18, freeze the survivors, and run one validation pass on orders 19–20.
 2. **Route B** (`longtable/WP10-route-B-draft-declaration.md`): a draft that recommends B1 (classical C-reducibility). Unreleased, with no owner.
-3. **Proposed, unreleased:** large adversarial search beyond order 20 (Programme 3, which includes the radius-3 and distant-hub tests); a minimal unavoidable set (Programme 2). See `messages/2026-10-04-longtable-to-math-three-audacious-searches.md`.
+3. **Proposed, unreleased:** large adversarial search beyond order 20 (Programme 3, which includes the radius-3 and distant-hub tests); a minimal unavoidable set (Programme 2). See `messages/2026-10-04/2026-10-04_1730_longtable_to_math_three-audacious-searches.md`.
 
 ## Working rules (all are hard-won)
 

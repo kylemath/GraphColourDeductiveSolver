@@ -247,7 +247,7 @@ WP5 runs whenever the math team posts statements.
 
 ## Update, 5 October: the vacancy route
 
-The overnight handoff (`NightHandoff.md`, revision 70) moves the proposed proof from fixed-root contact to the vacancy induction in `longtable/swarm/hole-induction.md`. Long Table's next work is set out in `LongTableNextAttack.md`, and the positions sent to both teams are in `messages/2026-10-05-longtable-to-math-and-navigator-retreat-positions.md`. In order:
+The overnight handoff (`NightHandoff.md`, revision 70) moves the proposed proof from fixed-root contact to the vacancy induction in `longtable/swarm/hole-induction.md`. Long Table's next work is set out in `LongTableNextAttack.md`, and the positions sent to both teams are in `messages/2026-10-05/2026-10-05_0000_longtable_to_math+navigator_retreat-positions.md`. In order:
 
 1. Validation report and WP7 wording: sent 5 October.
 2. The \(A_\rho\) tile with outer \(u\)-vertex \(\tau\), by hand, then one page for every hole of \(G_{3k+2}\), for math review.

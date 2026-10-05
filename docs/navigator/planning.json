@@ -257,7 +257,7 @@
         "killCriteria": "Critic gate rejects the specification, or a counterexample kills Conjecture 5.5.",
         "files": [
           "backgroundMaterial/agent1701/tasks/K1.md",
-          "SolvingFrameworkPlan/ExecutiveSummary_Plan2_Status.md"
+          "SolvingFrameworkPlan/docs/working/ExecutiveSummary_Plan2_Status.md"
         ],
         "notes": [
           {
@@ -283,7 +283,7 @@
         "killCriteria": "Critic gate rejects the specification, or evidence shows the case is equivalent to 4CT with no shorter attack.",
         "files": [
           "backgroundMaterial/agent1701/tasks/K2.md",
-          "SolvingFrameworkPlan/ExecutiveSummary_Plan2_Status.md"
+          "SolvingFrameworkPlan/docs/working/ExecutiveSummary_Plan2_Status.md"
         ],
         "notes": [
           {
@@ -693,7 +693,7 @@
         "killCriteria": "Existing code misstates what it computes and cannot be repaired within the wave.",
         "files": [
           "backgroundMaterial/agent1720/tasks/wave1_tasks.md",
-          "SolvingFrameworkPlan/Plan1_RefinedDischarging.md",
+          "SolvingFrameworkPlan/docs/working/Plan1_RefinedDischarging.md",
           "compute/discharging/"
         ],
         "notes": [
@@ -1878,7 +1878,7 @@
       "status": "in-progress",
       "approach": "The combinatorial PlaneMap foundation is compiled on current Mathlib. Finish the Lean Five Colour Theorem through a connected Kempe-cycle separation theorem and a deletion/component induction carrier. Keep the five-to-four problem separate.",
       "files": [
-        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md",
+        "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md",
         "backgroundMaterial/agent1720/groups/PlaneEven_status.md",
         "backgroundMaterial/agent1720/critic/planemap_gate.md"
       ],
@@ -1995,7 +1995,7 @@
         "approach": "Construct ConnectedCycleCut from Walk.IsCycle, relate opposite rotation sectors to opposite face-sum coefficients, then rule out an avoiding bichromatic path.",
         "killCriteria": "A valid degree-five plane-map configuration satisfying the hypotheses but admitting both opposite bichromatic connections.",
         "files": [
-          "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md",
+          "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md",
           "SimpleGraph/PlaneMap/JordanCycle.lean",
           "SimpleGraph/PlaneMap/JordanTwoSides.lean"
         ],
@@ -2022,7 +2022,7 @@
         "approach": "Prototype component restriction, a disconnected spherical-map carrier, and direct Generated deletion closure; select one at a critic design gate.",
         "killCriteria": "The proposed carrier assumes deletion preserves connectedness or introduces planarity/generatedness as an axiom.",
         "files": [
-          "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+          "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md"
         ],
         "notes": [
           {
@@ -2049,7 +2049,7 @@
         "files": [
           "lean4/KempeReconfiguration/KempeReconfiguration/FiveColor.lean",
           "lean4/KempeReconfiguration/KempeReconfiguration/FiveColorDeg5.lean",
-          "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+          "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md"
         ],
         "notes": [
           {
@@ -2068,7 +2068,7 @@
       "status": "in-progress",
       "approach": "The local topological and Kempe extension stack is complete on current Mathlib. Finish the global theorem by reconstructing generated PlaneMaps for deleted components, transporting colourability across finite relabelings, and proving a hereditary recursive degree-at-most-five interface. Keep the five-to-four problem separate.",
       "files": [
-        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md",
+        "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md",
         "backgroundMaterial/agent1720/groups/PlaneEven_status.md",
         "backgroundMaterial/agent1720/critic/planemap_gate.md",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColor.lean",
@@ -2153,7 +2153,7 @@
       "approach": "Reuse the proved graph-level deletion API. Construct rotation restrictions and Fin m relabelings componentwise, then prove Generated from construction history or adopt a carrier redesign with a proved equivalence.",
       "files": [
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/DeleteVertex.lean",
-        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+        "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md"
       ],
       "notes": [
         {
@@ -2174,7 +2174,7 @@
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColor.lean",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/DeleteVertex.lean",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorExamples.lean",
-        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+        "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md"
       ],
       "notes": [
         {
@@ -2194,7 +2194,7 @@
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalMap.lean",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalDelete.lean",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalDegree.lean",
-        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+        "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md"
       ],
       "notes": [
         {
@@ -2228,7 +2228,7 @@
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/RotationDelete.lean",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalMap.lean",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalDelete.lean",
-        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+        "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md"
       ],
       "notes": [
         {
@@ -2251,7 +2251,7 @@
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalDegree.lean",
         "../mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalDelete.lean",
         "../mathlib4-planemap/MathlibTest/PlaneMapFiveColor.lean",
-        "SolvingFrameworkPlan/PlaneMapFiveColorLeanPlan.md"
+        "SolvingFrameworkPlan/docs/core/PlaneMapFiveColorLeanPlan.md"
       ],
       "notes": [
         {
@@ -2273,8 +2273,8 @@
         "statement": "Every finite simple spherical map has an executable four-colouring with proved termination and polynomial cost, without a large configuration census.",
         "approach": "Finish A/B; attack one quantified degree-five candidate; keep implementation and the ordinary-planar representation bridge alongside it.",
         "files": [
-          "SolvingFrameworkPlan/StructuralFourColourPlan.md",
-          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+          "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md",
+          "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
         ],
         "evidence": "",
         "killCriteria": "",
@@ -2324,7 +2324,7 @@
             "statement": "Specify and prove restriction, move soundness, and extension semantics for the chosen patch with explicit exterior information.",
             "approach": "Keep this proportional to the candidate; reducibility of a patch does not establish coverage.",
             "files": [
-              "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+              "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
             ],
             "evidence": "Independent Kittell replay gives 6,350 states; five of forty pooled signatures lose the restricted robust boundary-action game. Computational research, not a Lean theorem.",
             "killCriteria": "",
@@ -2340,7 +2340,7 @@
             "statement": "Prove a structural reduction for every remaining minimum-degree-five core with a computable invariant and bounded well-founded progress.",
             "approach": "Attack the exact root-selecting Kempe escape candidate or its independently specified recursive-certificate alternative. The universal-colouring candidate is stronger than 4CT.",
             "files": [
-              "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+              "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
             ],
             "evidence": "OPEN: no uniform root selection, exterior rank, coverage proof, or polynomial bound. Root-specific Kittell boundary games succeed at eleven roots and fail at four in the restricted model.",
             "killCriteria": "",
@@ -2356,7 +2356,7 @@
             "statement": "Every SphericalMap has a proper Fin 4 colouring without additional extension or coverage premises.",
             "approach": "Compose proved coverage, deletion closure, local reconstruction, and induction. D must be discharged first.",
             "files": [
-              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+              "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md"
             ],
             "evidence": "",
             "killCriteria": "",
@@ -2372,7 +2372,7 @@
             "statement": "Return a proper four-colouring with proved termination and a polynomial bound for the actual chosen representation.",
             "approach": "Implement finite carriers, low-degree selection, reconstruction, and the D rule; account for all work.",
             "files": [
-              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+              "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md"
             ],
             "evidence": "",
             "killCriteria": "",
@@ -2404,7 +2404,7 @@
                 "statement": "Compute spherical elimination carriers and reconstruct a concrete four-colouring.",
                 "approach": "Separate classical witness existence from executable data; prove agreement with A/B interfaces.",
                 "files": [
-                  "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+                  "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md"
                 ],
                 "evidence": "",
                 "killCriteria": "",
@@ -2420,7 +2420,7 @@
                 "statement": "Bound every selection, invariant, move, deletion, and reconstruction operation and their total number.",
                 "approach": "Compose outer deletion and inner D measure. Certificate length alone does not prove solver complexity.",
                 "files": [
-                  "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+                  "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md"
                 ],
                 "evidence": "",
                 "killCriteria": "",
@@ -2438,7 +2438,7 @@
             "statement": "Transport a chosen ordinary planarity representation to an agreeing spherical carrier, including disconnected graphs.",
             "approach": "Prove drawing or minor-exclusion to embedding and filling; proceed alongside D.",
             "files": [
-              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+              "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md"
             ],
             "evidence": "",
             "killCriteria": "",
@@ -2454,7 +2454,7 @@
             "statement": "Measure correctness and performance on declared shared datasets after the constructive proof and cost theorem.",
             "approach": "Report preprocessing, adverse instances, failures, hardware, and comparable budgets.",
             "files": [
-              "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+              "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md"
             ],
             "evidence": "",
             "killCriteria": "",
@@ -2477,7 +2477,7 @@
         "statement": "Preserved earlier experiments, failures, and reformulations; excluded from active progress statistics.",
         "approach": "Retain all IDs, notes, and statuses for reference.",
         "files": [
-          "SolvingFrameworkPlan/NovelProofExploration.md"
+          "SolvingFrameworkPlan/docs/working/NovelProofExploration.md"
         ],
         "evidence": "",
         "killCriteria": "",
@@ -2574,8 +2574,8 @@
       "statement": "Construct an executable four-colouring for every finite simple spherical map, prove termination and polynomial cost without a large configuration census, then extend to ordinary planar graphs and benchmark.",
       "approach": "The active A–F execution route replaces the seven-track exploration. A/B and Five Colour are checked; the degree-five coverage theorem, full algorithm, complexity, and representation bridge remain open.",
       "files": [
-        "SolvingFrameworkPlan/StructuralFourColourPlan.md",
-        "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+        "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md",
+        "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
       ],
       "revision": 34
     },
@@ -2773,7 +2773,7 @@
         "statement": "Encode the icosahedron as a SphericalMap on 12 vertices, degree 5 at every vertex, so it lies outside the eleven-vertex corollary.",
         "approach": "The classical counts are 12 vertices, 30 edges, and 20 faces. A Lean carrier is not yet in the tests.",
         "files": [
-          "SolvingFrameworkPlan/StructuralFourColourPlan.md"
+          "SolvingFrameworkPlan/docs/core/StructuralFourColourPlan.md"
         ],
         "evidence": "Not a compiled example. The eleven-vertex theorem does not depend on it.",
         "killCriteria": "",
@@ -2818,7 +2818,7 @@
         "approach": "Robust attractor on the quotient sigma. Components disjoint from the boundary are outside this action model.",
         "files": [
           "backgroundMaterial/planemap-structural/replay-results.json",
-          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+          "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
         ],
         "evidence": "Forty pooled signatures; 35 enter the robust attractor and 5 remain losing. Root-specific games clear roots 2,4,5,8,9,12,14,16,18,20,22 and leave five losing signatures at roots 3,13,17,21. This kills that information restriction only.",
         "killCriteria": "Met for this policy. A full-exterior, root-specific, or multi-move rule is a different statement.",
@@ -2839,7 +2839,7 @@
         "statement": "Prove restriction, legal component exchange, and extension for one patch whose moves may use the exterior graph, rotation, and colouring.",
         "approach": "Keep the interface proportional to the Gate D candidate. Reducibility of one patch does not prove coverage.",
         "files": [
-          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+          "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
         ],
         "evidence": "No Lean restriction or gluing theorem for this patch is in the audited modules.",
         "killCriteria": "",
@@ -2860,7 +2860,7 @@
         "statement": "There exist fixed C,k and procedures Select and Step such that, on every spherical triangulation of minimum degree at least 5, Select picks one degree-5 root and Step takes every proper 4-colouring of the deletion to a 3-colour boundary in C·n^k legal component exchanges.",
         "approach": "The universal quantifier over deletion colourings is stronger than four-colourability. Failure would not refute the Four Colour Theorem.",
         "files": [
-          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+          "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
         ],
         "evidence": "No Select rule, progress rank, or coverage proof. Kittell supplies no kill witness: every tested state reaches a target. The boundary-only policy fails at four of fifteen roots.",
         "killCriteria": "One triangulation in which every degree-5 root has a Kempe component of the deletion containing no target colouring.",
@@ -2881,7 +2881,7 @@
         "statement": "A deletion algorithm returns a colouring plus a robust-attractor certificate at a structurally chosen root, with polynomial layer and action cost, and reconstruction preserves the next certificate.",
         "approach": "W0 is the target abstractions; W(j+1) adds abstract actions whose every concretization successor is already winning. Existence of an extendible colouring is not this certificate.",
         "files": [
-          "SolvingFrameworkPlan/StructuralFourColourCandidate.md"
+          "SolvingFrameworkPlan/docs/core/StructuralFourColourCandidate.md"
         ],
         "evidence": "The Kittell fixture has a computed attractor. Existence and preservation for arbitrary spherical maps are unproved.",
         "killCriteria": "A proposed certificate whose preservation fails on reconstruction, or whose only proof is four-colourability itself.",
@@ -3316,7 +3316,7 @@
         "statement": "Transport the nonisolated support to a spherical carrier; prove same-support triangulation completion and graph inclusion; use support-size induction because adding edges invalidates direct edge-count recursion.",
         "evidence": "Precise lemmas and colouring transport obligations are written before use. subgraph_closed deletes edges and does not prove the required edge-addition theorem.",
         "files": [
-          "SolvingFrameworkPlan/TriangulationCompletionObligation.md"
+          "SolvingFrameworkPlan/docs/core/TriangulationCompletionObligation.md"
         ],
         "notes": [],
         "children": [],
@@ -3392,7 +3392,7 @@
         "statement": "At selected root 8 of the order-20 graph-36 fixture, every non-target proper deletion colouring has a single Kempe component swap strictly decreasing lex(boundary colour surplus, sum of squared exterior component sizes).",
         "evidence": "Three local minima among 198 colouring orbits (131 non-target). First rank (1,190), all successor ranks equal or larger. Includes interior swaps. The specific formula is killed; general Kempe escape and Four Colour remain open.",
         "files": [
-          "SolvingFrameworkPlan/PlayResearchReview.md",
+          "SolvingFrameworkPlan/docs/working/PlayResearchReview.md",
           "backgroundMaterial/planemap-structural/component-mass.py",
           "backgroundMaterial/planemap-structural/component-mass-results.json"
         ],
@@ -3420,7 +3420,7 @@
         "statement": "Every non-target proper deletion-colouring orbit of this one fixture has a sequence of at most two Kempe component swaps strictly decreasing the explicit boundary-surplus/component-mass formula.",
         "evidence": "Independent replay: seven of eight eligible exterior roots win the fixed observation game. All three single-swap component-mass local minima admit a decreasing two-swap sequence. The strict single-swap conjecture stays killed; uniform macro coverage and a polynomial solver remain unproved.",
         "files": [
-          "SolvingFrameworkPlan/AfternoonAgentResponse.md",
+          "SolvingFrameworkPlan/docs/working/AfternoonAgentResponse.md",
           "backgroundMaterial/planemap-structural/afternoon-checks.py",
           "backgroundMaterial/planemap-structural/afternoon-checks.json"
         ],
@@ -3443,8 +3443,8 @@
         "statement": "For every finite simple spherical triangulation T of minimum degree at least 5, some degree-5 vertex r satisfies Good(T,r): every proper 4-colouring of T−r with p=1 has a sequence of at most two single-component swaps after which R is strictly smaller. Intermediate ranks may rise. Stop when p=0; q need not be 0.",
         "approach": "Existential claim only: for every T there exists r in D(T). Exterior roots of one anchor are a regression set, not the quantifier. Polynomial Select is a separate node. The rank is the existing component-mass formula, encoded as R=(6n²+1)p+q.",
         "files": [
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
-          "SolvingFrameworkPlan/MassMacroLedgerReply.md",
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md",
+          "SolvingFrameworkPlan/docs/reports/MassMacroLedgerReply.md",
           "backgroundMaterial/planemap-structural/component-mass-results.json",
           "backgroundMaterial/planemap-structural/afternoon-checks.json"
         ],
@@ -3479,7 +3479,7 @@
         "statement": "A polynomial Select(T) returning a good degree-5 root, or a polynomial nonempty equivariant set S(T) whose every member is good, followed by deterministic tie-break.",
         "approach": "The set must be equivariant. The tie-break may use labels. A single vertex cannot be fixed by every automorphism of a vertex-transitive graph such as the icosahedron.",
         "files": [
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md"
         ],
         "evidence": "Root 8 of graph 36 fails (σ, β) and passes the tested two-swap mass macro, so the other seven (σ, β) roots are not this selection target. (σ, β) depends on label-sensitive normalization.",
         "killCriteria": "The specified Select or tie-break returns a root that is not good. S(T)=D(T) fails as soon as any root fails; that is stronger than the existential claim and does not by itself refute it.",
@@ -3500,7 +3500,7 @@
         "statement": "On all 118 minimum-degree-5 triangulations through order 20, test Good(T,r) at every degree-5 root, not only exterior roots.",
         "approach": "Proposed for the math and scale-up team. Continue through a graph after one bad root so the existential claim can be classified. Stop and report if every degree-5 root on a graph fails.",
         "files": [
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md",
           "backgroundMaterial/planemap-structural/SearchReport.md"
         ],
         "evidence": "Not run. A complete pass is computed evidence, not a proof. Empty colouring families are not existence proofs. Do not extend to order 21 merely to avoid a failure.",
@@ -3544,7 +3544,7 @@
         "statement": "A polynomial nonempty equivariant S(T) contained in D(T) such that every member is good for mass-macro descent, then a deterministic tie-break.",
         "approach": "Long Table accepted this work. Freeze a rule before testing it on graphs held out from its discovery. S0=D(T) is a baseline whose every-member guarantee fails when any root fails. A charge proposal must conserve total charge and prove that every positive receiver has degree 5. Extrema need a proved nonempty D(T).",
         "files": [
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md"
         ],
         "evidence": "No formula is stated yet. (σ, β) success is not this set.",
         "killCriteria": "S contains a root that is not good, or the tie-break returns such a root. Charge that is not conserved, or that can leave positive charge on a vertex of degree other than 5, is not a degree-5 selector.",
@@ -3565,7 +3565,7 @@
         "statement": "A loader that classifies a rule as one bad root, a set containing a bad root, a selector that returns a bad root, or every degree-5 root bad, and points at the witness.",
         "approach": "Long Table accepted this work. It reads the shared fixture format and does not assign navigator statuses. Before the mass table exists, recompute only named regressions: graph 36's eight exterior roots, its three one-swap minima and two-swap escapes, and the icosahedron.",
         "files": [
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md"
         ],
         "evidence": "No tool is in the repository yet.",
         "killCriteria": "",
@@ -3586,8 +3586,8 @@
         "statement": "For an edge-containing spherical map, transport the nonisolated support to a SphericalMap on Fin s, including rotation, filling, degrees, and colouring restriction.",
         "approach": "Proposed for the math and scale-up team. Not accepted by silence and not started.",
         "files": [
-          "SolvingFrameworkPlan/TriangulationCompletionObligation.md",
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+          "SolvingFrameworkPlan/docs/core/TriangulationCompletionObligation.md",
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md"
         ],
         "evidence": "Specified in TriangulationCompletionObligation.md. subgraph_closed keeps the original labels and does not prove this.",
         "killCriteria": "",
@@ -3608,8 +3608,8 @@
         "statement": "Distinct nonadjacent endpoints keep the added edge simple. Still open: eligible corners under faceNext, filling, a chord splitting one face dart-orbit, and a bridge merging two face dart-orbits. Cut vertices and repeated face walks need their own existence lemma.",
         "approach": "Statement under review. Not Lean. Each insertion raises the edge count; outer colouring induction uses support size, which completion preserves. Adding edges does not preserve Kempe components.",
         "files": [
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
-          "SolvingFrameworkPlan/TriangulationCompletionObligation.md"
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md",
+          "SolvingFrameworkPlan/docs/core/TriangulationCompletionObligation.md"
         ],
         "evidence": "Simplicity does not wait on a diagonal-existence theorem. Joining components does not insert into a face the two components already share.",
         "killCriteria": "A spherical map where every attempted chord or bridge loses filling, or no eligible corner exists before a connected triangulation is reached.",
@@ -3639,8 +3639,8 @@
       "revision": 40,
       "status": "exploring",
       "files": [
-        "SolvingFrameworkPlan/LongTableWorkPlan.md",
-        "SolvingFrameworkPlan/LongTableResponseRev39.md"
+        "SolvingFrameworkPlan/docs/core/LongTableWorkPlan.md",
+        "SolvingFrameworkPlan/docs/reports/LongTableResponseRev39.md"
       ],
       "evidence": "User released execution on 4 October 2026. Long Table accepted this share. S0 and S1 are predeclared and unevaluated. S2 stays unspecified. No mass-macro pass set exists yet, so none of these sets has been tested.",
       "approach": "Judge sets against mass-macro pass sets, not against (σ, β). Freeze any data-suggested rule before testing it on orders 19–20. Orders 12–18 may be used for description only."
@@ -3656,7 +3656,7 @@
         "statement": "S0(T) = D(T). In a minimum-degree-5 triangulation, Euler gives at least 12 degree-5 vertices.",
         "approach": "Baseline declared before the mass table exists. Its every-member guarantee fails when any root fails. That does not kill the existential claim, which fails only when every root fails.",
         "files": [
-          "SolvingFrameworkPlan/LongTableWorkPlan.md"
+          "SolvingFrameworkPlan/docs/core/LongTableWorkPlan.md"
         ],
         "evidence": "Not evaluated. The useful output, once the corpus exists, is the per-graph fraction of good roots.",
         "killCriteria": "Any degree-5 root that is not good kills the every-member guarantee. It does not kill mass-macro existence.",
@@ -3677,7 +3677,7 @@
         "statement": "S1+ is the degree-5 vertices with the most degree-5 neighbours. S1− is those with the fewest. Both are nonempty once D(T) is, and equivariant because the count is.",
         "approach": "Predeclared before any mass-macro corpus result. Tie-break may use labels. Every member must be good.",
         "files": [
-          "SolvingFrameworkPlan/LongTableWorkPlan.md"
+          "SolvingFrameworkPlan/docs/core/LongTableWorkPlan.md"
         ],
         "evidence": "Not evaluated.",
         "killCriteria": "Either extremal set contains a root that is not good, or the tie-break returns such a root.",
@@ -3698,8 +3698,8 @@
         "statement": "A charge rule that returns only degree-5 vertices, with total charge conserved, an equivariant rule, and a nonempty positive set.",
         "approach": "Not evaluated until the redistribution rules, conservation, equivariance, the degree-5 restriction, and nonemptiness are all written. Total charge 12 does not by itself force positive receivers to have degree 5.",
         "files": [
-          "SolvingFrameworkPlan/LongTableWorkPlan.md",
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md"
+          "SolvingFrameworkPlan/docs/core/LongTableWorkPlan.md",
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md"
         ],
         "evidence": "No rule is stated.",
         "killCriteria": "Charge is not conserved, a positive receiver need not have degree 5, or the resulting set contains a root that is not good.",
@@ -3720,8 +3720,8 @@
         "statement": "Graph relabelling and global colour permutation preserve B, bichromatic component sizes, legal macros, and R. Good(T,r) transports along isomorphisms. The (σ, β) game does not.",
         "approach": "Written argument first. Permutation checks on graph 36 are implementation tests, not the proof. Exact automorphism orbits are optional.",
         "files": [
-          "SolvingFrameworkPlan/JointMassMacroExecutionPlan.md",
-          "SolvingFrameworkPlan/LongTableWorkPlan.md"
+          "SolvingFrameworkPlan/docs/core/JointMassMacroExecutionPlan.md",
+          "SolvingFrameworkPlan/docs/core/LongTableWorkPlan.md"
         ],
         "evidence": "The argument is required before anyone treats a mass-macro pass set as a structural candidate set. It is not yet written in the repository.",
         "killCriteria": "A relabelled or recoloured copy of a good root whose mass-macro outcome changes.",
@@ -3741,8 +3741,8 @@
       "id": "structural-rule-adversary",
       "revision": 40,
       "files": [
-        "SolvingFrameworkPlan/LongTableWorkPlan.md",
-        "SolvingFrameworkPlan/LongTableResponseRev39.md"
+        "SolvingFrameworkPlan/docs/core/LongTableWorkPlan.md",
+        "SolvingFrameworkPlan/docs/reports/LongTableResponseRev39.md"
       ],
       "evidence": "User released Long Table to build it. No tool is in the repository yet. Until the mass table exists it may recompute only graph 36 and the icosahedron."
     },

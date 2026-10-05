@@ -36,7 +36,7 @@ Start counts are per (v, τ), so a colouring that is proper on several fans is c
 
 ## Chronology
 
-1. 23:29, 4 October, commit `3fce037`: the producer, checker and regressions are committed. The same commit accidentally included seven files that the audit chat had staged: `CreativeIntelCoordinationPlan.md`, `GremlinAudit.md`, `messages/2026-10-04-audit-to-longtable-next-steps.md`, `audit/gremlin-check.py` and its results, and `swarm/unequal-a-rho-tile-audit.md`. Their content is the audit chat's and is unchanged; the audit chat has acknowledged this.
+1. 23:29, 4 October, commit `3fce037`: the producer, checker and regressions are committed. The same commit accidentally included seven files that the audit chat had staged: `CreativeIntelCoordinationPlan.md`, `GremlinAudit.md`, `messages/2026-10-04/2026-10-04_2329_audit_to_longtable_next-steps.md`, `audit/gremlin-check.py` and its results, and `swarm/unequal-a-rho-tile-audit.md`. Their content is the audit chat's and is unchanged; the audit chat has acknowledged this.
 2. **P1, P2 and P3 then ran on the user's instruction.** The user stated in chat that the math team had replied with a go-ahead and that orders above 20 are allowed. **No go-ahead message from the math team exists in `messages/`.** The Proof Navigator's revision 73 (5 October) records WP18 as unstarted and not released. These outputs are therefore producer runs made under the user's release. Math's written go-ahead, naming this declaration, has not been seen.
 3. Commit `12ca2ba`: P4 (order 22) was added, and then run.
 4. After the runs, the audit chat's certificate contract (`CreativeIntelCoordinationPlan.md` §WP18) asked for:
@@ -69,11 +69,11 @@ Inputs: P1 and P2 come from `wp11-run-manifest.json`. P3 and P4 come from `wp17-
 
 ## Independent replay by the audit chat (5 October)
 
-`audit/wp18_independent.py` → `audit/wp18-independent-results.json`, reviewed in `SolvingFrameworkPlan/IndependentWP18AndBeltReview.md`. It imports neither the producer nor our checker.
+`audit/wp18_independent.py` → `audit/wp18-independent-results.json`, reviewed in `SolvingFrameworkPlan/docs/reports/IndependentWP18AndBeltReview.md`. It imports neither the producer nor our checker.
 
 - **m(17:1) = 3 is independently confirmed.** Every legal pair was checked. All 786 distinct admitted starts over the twelve degree-5 roots were enumerated, and every start count and histogram on all 60 fans was reproduced. The per-root profile is (3,3,4,4,4).
 - All 67,335 witnesses from P1–P4 were replayed, and every shorter path was excluded exhaustively.
-- *[Superseded the same day by a complete replay, `SolvingFrameworkPlan/FullWP18Replay.md`.]* All 68,890 pairs on all 961 graphs were re-enumerated independently: 3,765,835 distinct admitted states and 7,618,165 fan memberships. Every start count, histogram, pair maximum L and graph minimum m agrees. **The upper bounds are now independently reproduced:** m(T) ≤ 2 on every graph except 17:1, and every tested start has distance ≤ 4. These are finite computations on the supplied graphs, not universal claims. Reproducer: `audit/wp18_full_replay.py` → `audit/wp18-full-replay-results.json`.
+- *[Superseded the same day by a complete replay, `SolvingFrameworkPlan/docs/reports/FullWP18Replay.md`.]* All 68,890 pairs on all 961 graphs were re-enumerated independently: 3,765,835 distinct admitted states and 7,618,165 fan memberships. Every start count, histogram, pair maximum L and graph minimum m agrees. **The upper bounds are now independently reproduced:** m(T) ≤ 2 on every graph except 17:1, and every tested start has distance ≤ 4. These are finite computations on the supplied graphs, not universal claims. Reproducer: `audit/wp18_full_replay.py` → `audit/wp18-full-replay-results.json`.
 
 ## Known producer limitations, to fix in a future version
 

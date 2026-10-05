@@ -2,7 +2,7 @@
 
 Long Table, 5 October 2026. A hand-proof page for review by the math team. Nothing here is a status change. "Proved" is used only where the argument is written out in full on this page. Machine checks are on the 118 WP11 manifest graphs of orders 12, 14–20 only. Orders 19–20 are the spent WP11/WP18 holdout, and every number from them is a labelled secondary reading. The script is `vh_exists_check.py`, the output is `vh-exists-check.txt` (SHA-256 `f3e9e372…b068b4`; script `38053390…039328`).
 
-The quantifier order follows the independent review (`SolvingFrameworkPlan/IndependentWP18AndBeltReview.md`, section "VH-exists and its two lemmas"). For every minimum-degree-5 spherical triangulation, **there exist a degree-5 vertex and a legal fan**, chosen before any colouring. Then **every admitted colouring** must have a finite mixed path to some target hole. Slides may leave $v$ and may change the degree of the hole. Where this page differs from that review, it says so: see Remark 2.3, which shows that letting the pair depend on the whole family of inductive colourings is *equivalent*, not weaker.
+The quantifier order follows the independent review (`SolvingFrameworkPlan/docs/reports/IndependentWP18AndBeltReview.md`, section "VH-exists and its two lemmas"). For every minimum-degree-5 spherical triangulation, **there exist a degree-5 vertex and a legal fan**, chosen before any colouring. Then **every admitted colouring** must have a finite mixed path to some target hole. Slides may leave $v$ and may change the degree of the hole. Where this page differs from that review, it says so: see Remark 2.3, which shows that letting the pair depend on the whole family of inductive colourings is *equivalent*, not weaker.
 
 ---
 

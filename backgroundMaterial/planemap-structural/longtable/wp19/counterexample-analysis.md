@@ -7,7 +7,7 @@ Long Table, 5 October 2026. This is a structural analysis of the two saved WP19 
   - both graph records, from `../audit/wp19-counterexamples.json` (sha256 `ee851f41…`);
   - the 17:1 rotation, from `../wp18/wp18-P1.json`;
   - for §A.4 only, the *saved* m values of order-24 graphs one flip away, from `wp19-P3.json`.
-- Moves, canonical labels and the roles (a0, b, a2, g, d), P, Q, C₀, D₂ and X follow `../wp18/mechanism.md` and `../../../../SolvingFrameworkPlan/MathShortFillTheorem.md`.
+- Moves, canonical labels and the roles (a0, b, a2, g, d), P, Q, C₀, D₂ and X follow `../wp18/mechanism.md` and `../../../../SolvingFrameworkPlan/docs/reports/MathShortFillTheorem.md`.
 - Vertices are zero-based. The script's printed colours are each state's canonical labels.
 
 Labels used throughout:

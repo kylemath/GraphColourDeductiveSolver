@@ -1,6 +1,6 @@
 # Team onboarding: start here after a restart
 
-Last updated 5 October 2026 by Long Table. Read this page first, then the latest messages. Every claim below points to its source. If this page disagrees with a newer message, the message wins: update this page.
+Last updated 5 October 2026 by Long Table (layout reorganised the same day; see `PATHMAP.md`). Read this page first, then the latest messages. Every claim below points to its source. If this page disagrees with a newer message, the message wins: update this page.
 
 ## 1. The goal
 
@@ -22,7 +22,7 @@ Math has accepted VH∃ ⇒ 4-colourability as a hand argument. VH∃ itself is 
 | **Math** | Math solutions and scale-up team; "math superintel" | Acceptance or refusal of results; proof review; Lean formalisation and the module audit (83 custom modules); written go-aheads for experiment phases; executing released phases; corpus sweeps | Long Table's source pages (it reports corrections instead of editing them) |
 | **Proof Navigator** | Navigator; ledger; the swarm web frontend | The status ledger and the web app `docs/navigator/` (`planning.json`, revision numbers, journal); status words (proved / compiled / exploring / killed) | Running experiments; editing proof pages |
 | **Independent audit** | The audit chat; Teams A and B | Independent replays and checkers that import no team code; adversarial review; `longtable/audit/` | Producers; the source pages of other teams |
-| **Night swarm** | "Gremlins" | Overnight exploratory agents run by the user. Fast, less careful. Wrote `SolvingFrameworkPlan/NightHandoff.md` and `longtable/swarm/*` notes. | Their outputs are **leads, not evidence**. Re-check before citing. Their runs on orders 20–26 are disclosed in `longtable/night-swarm-outputs.sha256`. |
+| **Night swarm** | "Gremlins" | Overnight exploratory agents run by the user. Fast, less careful. Wrote `SolvingFrameworkPlan/docs/working/NightHandoff.md` and `longtable/swarm/*` notes. | Their outputs are **leads, not evidence**. Re-check before citing. Their runs on orders 20–26 are disclosed in `longtable/night-swarm-outputs.sha256`. |
 
 The user is the final authority, and releases computations.
 
@@ -30,26 +30,31 @@ The user is the final authority, and releases computations.
 
 | What | Path |
 |---|---|
-| Messages between teams | `SolvingFrameworkPlan/messages/` |
-| Plans and reports | `SolvingFrameworkPlan/*.md` |
+| **This page** | `SolvingFrameworkPlan/START-HERE.md` |
+| Messages between teams (messages only) | `SolvingFrameworkPlan/messages/YYYY-MM-DD/` (rules in `messages/README.md`) |
+| Governing plans | `SolvingFrameworkPlan/docs/core/` |
+| Results, reviews, acceptances | `SolvingFrameworkPlan/docs/reports/` |
+| Working notes, swarm output, drafts | `SolvingFrameworkPlan/docs/working/` |
+| Old path → new path (5 October reorganisation) | `SolvingFrameworkPlan/PATHMAP.md` |
 | Long Table's code, proofs and data | `backgroundMaterial/planemap-structural/longtable/`, with its own `SHA256SUMS` |
 | Swarm and proof notes | `longtable/swarm/` (e.g. `belt-joined.md`, `vh-exists.md`, `hole-induction.md`, `fan-link.md`) |
-| WP18 (fan-selection length m(T)) | `longtable/WP18-*`, `longtable/wp18/` |
-| WP19 (pre-registered conjectures) | `longtable/WP19-*`, `longtable/wp19/` |
+| WP18 and WP19 | `longtable/WP18-*`, `longtable/wp18/`, `longtable/WP19-*`, `longtable/wp19/` |
 | Audit checkers and reviews | `longtable/audit/` |
-| Lean | `lean4/FourColor`, `lean4/KempeReconfiguration`; Math's overlays in `backgroundMaterial/planemap-structural/short-fill-lean/` and `belt-lean-preparation/` |
+| Lean | `lean4/`; Math's overlays in `backgroundMaterial/planemap-structural/short-fill-lean/` and `belt-lean-preparation/` |
 | Long Table Lean drafts (outside the build) | `longtable/lean-drafts/` |
 | Navigator web app | `docs/navigator/` |
-| Plays and stories (fiction about the project) | `docs/play/`, `docs/story/` |
+| Plays and stories (fiction) | `docs/play/`, `docs/story/` |
 
 ## 4. Communication protocol
 
-- **One message is one new file** in `SolvingFrameworkPlan/messages/`. Never edit another team's message; reply in a new file.
-- **Filename:** `YYYY-MM-DD-<from>-to-<to>[-and-<to>]-<subject>.md`. The team tokens are `longtable`, `math`, `navigator` and `audit`.
-- **Headings** name the recipients, e.g. "To the Math solutions and scale-up team" or "To the Proof Navigator".
-- **Silence is not acceptance.** A relayed verbal go-ahead is not a go-ahead.
-- **Corrections** to another team's page go in a message. The owner edits the page.
-- **Commits:** commit only your own files, by explicit path. Run `git diff --cached --name-only` first: other chats may have staged files in the shared index. Use the attribution line the harness requires.
+- **Messages and documents are separate.**
+  - A message goes in `messages/YYYY-MM-DD/`, named `YYYY-MM-DD_HHMM_<from>_to_<to>[+<to>]_<subject>.md`.
+  - The message must start with the header block: From (team and agent name), To, Sent (date and time, MDT), Replies to, and Asks for.
+  - Anything longer than a handoff is a document in `docs/core`, `docs/reports` or `docs/working`, which the message links to. Full rules: `messages/README.md`.
+- **Team tokens:** `longtable` (Creative Intel), `math`, `navigator`, `audit`, `swarm` and `user`. Join several recipients with `+`.
+- **Never edit another team's message.** Reply in a new file. Silence is not acceptance. A relayed verbal go-ahead is not a go-ahead.
+- **Corrections** to another team's document go in a message. The owner edits the document.
+- **Commits:** commit only your own files, by explicit path. Run `git diff --cached --name-only` first. Use the attribution line the harness requires.
 
 ## 5. Conventions
 
@@ -80,7 +85,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 - States: hole = 4, and colours are canonical by first occurrence.
 - Moves: whole-component Kempe swaps (singletons allowed) and singleton slides. A state is filled when the hole's link uses at most 3 colours.
 
-**Pending rules amendment** (`messages/2026-10-05-longtable-to-math-audit-and-navigator-rules-amendment.md`, awaiting the user):
+**Pending rules amendment** (`messages/2026-10-05/2026-10-05_1007_longtable_to_math+audit+navigator_rules-amendment.md`, awaiting the user):
 - exploratory and confirmatory tiers;
 - a standing release under a 2 CPU-hour cap;
 - shared Lean statement drafting;
@@ -139,8 +144,8 @@ Never write "proved" for computation. Never generalise a finite pass.
 
 ## 8. Restart checklist
 
-1. Read this page, then `ls -t SolvingFrameworkPlan/messages | head -20`, and read every message addressed to your team that is newer than this page.
-2. Read your team's plan: Long Table uses `LongTableWorkPlan.md`, `LongTableNextAttack.md` and `CreativeIntelCoordinationPlan.md`. Math and the audit have their own reports.
+1. Read this page. Then list recent messages with `ls -t SolvingFrameworkPlan/messages/*/ | head -30` (or `ls SolvingFrameworkPlan/messages/$(date +%F)`), and read every message addressed to your team that is newer than this page.
+2. Read your team's plan: Long Table uses `docs/core/LongTableWorkPlan.md`, `docs/core/LongTableNextAttack.md` and `docs/core/CreativeIntelCoordinationPlan.md`. Math and the audit have their own reports.
 3. Check `git status` and `git log --oneline -15`. Do not commit files you did not write.
 4. Verify hashes before relying on outputs: `shasum -a 256 -c SHA256SUMS` in `longtable/`.
 5. Before running anything: is there a declaration, a written go-ahead naming its commit, and a user release (or, if adopted, the cost-capped standing release)?
