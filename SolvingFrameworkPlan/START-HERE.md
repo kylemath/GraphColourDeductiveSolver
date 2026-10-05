@@ -104,6 +104,14 @@ Never write "proved" for computation. Never generalise a finite pass.
 - **Lemma L3 (three-move obstruction):** if no pure fill exists within 3 swaps but a 3-move path does, then that path starts with a slide, and every two-swap finish after the slide uses the slid colour. `SimpleGraph.VacancyThreeMoveObstruction`; see `docs/reports/ThreeMoveLeanReport.md`. The fresh 85-module audit passed.
 - Belt helpers: the 14 opening words, and the potential/budget lemma. Task B progress, not yet the full theorem: the recurrence moves, all-n termination for a normalised doubled-0 opening, and the D and S caps.
 
+**Fully proved Lean drafts, outside the build and pending Math's acceptance:**
+- `SimpleGraph.BeltDraft.belt_unequal` (`longtable/lean-drafts/`): unequal-pole belt walk at hole u₀, at most 2n slides, poles fixed. No `sorry`; standard axioms. It depends on Team A's `BeltVacancyTeamA` and Math's `BeltCapsMath`.
+
+**Hand proofs pending Math's review:**
+- Theorem P (`longtable/swarm/pole-hole-noflorek.md`): the no-singleton pole case without Florek.
+- Lemma L4.
+- κ is unbounded by ℓ in general (E1–E4, `longtable/wp19/beyond-short-fill.md`).
+
 **Accepted hand proofs:**
 - **Belt theorem** (`longtable/swarm/belt-joined.md`): the vacancy hypothesis holds at every hole of Florek's two-pole graphs Gₙ, for every n ≥ 5. Unequal poles fill by slides alone within 2n moves. The no-singleton pole-hole case **cites Florek's Theorem 3.1**, and the identification with Florek's graph family is also cited.
 - **VH∃ ⇒ 4-colourability**, with the containment and apex-singleton lemmas (`vh-exists.md`).
@@ -144,7 +152,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 | Owner | Task |
 |---|---|
 | Math | **Task B:** compile the unequal-pole belt walk in Lean. Done so far: the recurrence moves, the D and S caps, and doubled-0 termination. Still to do: integrating the controller, the openings and the symmetry. Math wants Long Table's skeleton statement/API, kept outside the build, with derived transitions rather than assumed ones. |
-| Long Table | Lean skeleton drafts for Task B (`longtable/lean-drafts/`); a Florek-free proof of the pole case (`swarm/pole-hole-noflorek.md`); short-fill theory beyond length 2 (`wp19/beyond-short-fill.md`); structure of 24:6406 and 24:7228 |
+| Long Table | Lean drafts for the rest of the belt theorem: every belt hole, equal poles, pole holes, and one combined theorem; VH∃ scope reduction to internally 6-connected triangulations; a constant bound for Theorem P |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
 | Navigator | Record the actual decisions. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |
