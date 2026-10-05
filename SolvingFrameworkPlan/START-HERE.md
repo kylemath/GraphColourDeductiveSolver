@@ -111,7 +111,8 @@ Never write "proved" for computation. Never generalise a finite pass.
 **Accepted hand proofs:**
 - **Interior-witness lift** (Math 16:45, `docs/reports/MathInteriorWitnessReview.md`): a side path lifts only when every hole stays off the separating triangle. So a smallest failure has no interior witness. Four-connectivity of a smallest failure is not proved.
 - **Three-cut core:** for order ≥ 5, having no separating triangle is the same as being 4-connected ($K_4$ excepted). The spanning-tree paragraph in connectivity (C) is not part of the core; it was withdrawn at 17:00 in favour of citing Euler.
-- **Fixed-hole theorem** (Math 16:59, `docs/reports/MathFixedHoleReview.md`; the Navigator has not yet recorded it): a degree-5 vertex of a separating triangle fills within 2 Kempe swaps at the fixed hole, for every colouring. **Math's corollary:** every vertex of every separating triangle in a VH∃ failure has degree ≥ 6, because the apex-$a$ fan at a degree-5 separator vertex is a good pair.
+- **Fixed-hole theorem** (Math 16:59, `docs/reports/MathFixedHoleReview.md`; recorded in revision 83): a degree-5 vertex of a separating triangle fills within 2 Kempe swaps at the fixed hole, for every colouring. **Math's corollary:** every vertex of every separating triangle in a VH∃ failure has degree ≥ 6, because the apex-$a$ fan at a degree-5 separator vertex is a good pair.
+- **Face-avoiding triangle reduction** (Math 17:15, `docs/reports/MathTriangleCarryResearch.md`): a least-order failure of the stronger VH_𝒞 is 4-connected. This is not proved for plain VH∃. Math's lemmas: the 4-connected core has no face with three degree-4 vertices, and its order is ≥ 11 (`MathFourConnectedResearch.md`). Math also proved a degree-6 separator hole with a 4+4 split fills within 3 swaps (`MathHighDegreeLandingResearch.md`).
 - **Belt theorem** (`longtable/swarm/belt-joined.md`): the vacancy hypothesis holds at every hole of Florek's two-pole graphs Gₙ, for every n ≥ 5. Unequal poles fill by slides alone within 2n moves. The no-singleton pole-hole case **cites Florek's Theorem 3.1**, and the identification with Florek's graph family is also cited.
 - **VH∃ ⇒ 4-colourability**, with the containment and apex-singleton lemmas (`vh-exists.md`).
 - **Diagonal reduction:** with all five fans legal, a vertex is bad exactly when its far diagonals cross (`wp18/analysis-17-1.md`).
@@ -140,8 +141,8 @@ Never write "proved" for computation. Never generalise a finite pass.
 - **Lemma L4** tightens L3 [hand].
 
 **Hand pages pending Math review** (`docs/working/creative-intel-2026-10-05/`):
-- **Face-avoiding reduction** [hand], 17:00 (`interface/face-avoiding-reduction.md`). This strengthens VH∃ to VH_𝒞: for every triangulation with a face φ such that every vertex off φ has degree ≥ 5, some degree-5 vertex off φ, with a legal fan, fills every start with every hole kept off φ. A smallest failure of VH_𝒞 has no separating triangle, so it is 4-connected. Both the landing gap and the carry gap disappear. The cost is that VH_𝒞 is a stronger statement, untested with degree-4 vertices on φ. Exploratory reading (post hoc, undeclared, random flips, orders 13–18): 1308 of 1308 (T, φ) pass with pure fills, including 402 with one or two degree-4 vertices on φ; no member had three (`longtable/explore-vhphi/`).
-- **4-cycle** (`interface/four-cycle-reduction.md`): hand restriction lemma, and a game class closed under 3- and 4-cycle reductions. The free-adversary game is **killed** (exploratory) on an order-16 member, pending an audit replay. The 4-cut question itself is still open.
+- **Trace-game 4-ring reduction** [hand], 17:22 (`interface/trace-game-reduction.md`). The far side is modelled by Math's trace states as bridge bits. Swaps in P freeze the P and P̄ bits (frozen-pair fact). A trace-game win across a separating 4-cycle lifts, so a least failure of VH^tr has no separating 3- or 4-cycle. The free-adversary game of `four-cycle-reduction.md` was the wrong model, and its kill is post hoc (revision 83).
+- **Exploratory readings** (post hoc; plantri 5.8, orders ≤ 18; `longtable/explore-vhphi/`). Triangle faces: 435 of 435 4-connected members of 𝒞 pass with pure fills. Free quad game: 4004 members of the form T − e, failing only on 16:1 − st. On that member, all 50 pairs survive 2146 real far sides, and the trace game passes. So the pure trace game passes on all 4004 members. An audit replay has been requested.
 - **Belt potential, off the belt** [computed on the saved 24:7228 path]: killed, and the line stays stopped.
 - **Defect theorem** [hand]: every proper colouring of a 5-cycle has a singleton. This does not by itself give the fill.
 
@@ -150,14 +151,14 @@ Never write "proved" for computation. Never generalise a finite pass.
 - Whether m(T) is bounded (no graph with m ≥ 4 is known; C2, m ≤ 3, passed every tested graph).
 - M1 (ℓ ≤ 4) as a universal statement.
 - A Florek-free proof of the belt's pole case (Theorem P is pending review).
-- Four-connectivity of a smallest VH∃ failure. It holds for VH_𝒞 if the reduction is accepted.
+- Four-connectivity of a smallest plain VH∃ failure. It is accepted for VH_𝒞 (Math 17:15). For VH^tr, separating 4-cycles are also excluded, pending review. VH_𝒞 and VH^tr themselves are open.
 
 ## 7. Active work
 
 | Owner | Task |
 |---|---|
-| Math | Task B is done (unequal poles compiled). Next: package the clique-component and interior-path lift lemmas, with the fixed-hole lemma and the legal-fan corollary, in the next structural formalisation. |
-| Long Table | Line 1 of `VHExistsAttack.md`, in the VH_𝒞 frame: (i) a 4-ring adversary constrained by a fixed far side (Birkhoff-style connection patterns); (ii) members of 𝒞 with three degree-4 vertices on φ. The double-lock task is closed; the carry is moot under VH_𝒞. The belt drafts and Theorem P stay side projects. |
+| Math | Package the clique-component and interior-fill lift lemmas (elaborating; full audit next), with the fixed-hole lemma and the legal-fan corollary. Review the trace-game reduction. |
+| Long Table | Line 1 of `VHExistsAttack.md`: (i) the bridge-state count for a separating 5-cycle that is not a neighbourhood; (ii) a hand win in the trace game at a degree-5 vertex far from φ. Pending review: the trace-game reduction. The belt drafts and Theorem P stay side projects. |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
 | Navigator | Record the actual decisions. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |

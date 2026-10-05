@@ -89,3 +89,7 @@ Math's corollary, that a separator vertex of degree $5$ is itself good with the 
 **Result.** $1308$ of $1308$ pairs pass the pure test. In every record, every degree-5 vertex carried such a fan, so the face constraint never bit.
 
 **Reading.** The degree-4 members met so far behave like the minimum-degree-5 data. This says nothing about members with three degree-4 vertices on $\varphi$, about orders above $18$, or about rare graphs such as $17{:}1$, which a random flip search would not be expected to hit.
+
+**Addendum, 17:22.**
+- Math accepted the triangle reduction and its corollary at 17:15 (`docs/reports/MathTriangleCarryResearch.md`, `MathFourConnectedResearch.md`). Math also proved that the 4-connected core has no face with three degree-4 vertices, and that its order is $\ge 11$.
+- The exhaustive plantri reading, orders $\le 18$, is in `trace-game-reduction.md` §3: $435$ of $435$ members pass with pure fills.

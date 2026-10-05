@@ -59,3 +59,8 @@ The adversary is stronger than any real far side. In the real triangulation $T$,
 - The triangle reduction (`face-avoiding-reduction.md`) is untouched. Its triangle faces have no adversary.
 - Lemma 1 (4-cycle restriction) and the slide lift are hand facts. Any later 4-cut reduction will use them.
 - **[lead]** The adversary should be constrained by a fixed far side: the merge pattern is a function of the far side's graph and of its colouring, which evolves with the swaps. One honest form quantifies over far sides: "for every disc $B$ glued along $Q$" with interior degrees $\ge5$. That is the original statement on $T$ unless a finite set of boundary behaviours is enough. Birkhoff's 4-ring argument is the classical template: in a 4-ring, the far side can only realise the two Kempe-connection patterns of the quadrilateral. Not started.
+
+**Addendum, 17:22.**
+- The Navigator records the §3 kill as post hoc, not a ledger kill. It concerns only the free adversary.
+- `trace-game-reduction.md` replaces the free adversary with Math's trace states plus the frozen-pair fact. It proves the 4-cycle lift for that game [hand].
+- On the §3 member, the trace game passes, and every far side tried keeps every pair good [exploratory].

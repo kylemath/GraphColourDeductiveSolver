@@ -15,3 +15,14 @@ independent replay before it is cited.
 
 Usage: `python3 vhphi_explore.py SEED ORDERS TRIES`, `python3 vhphi_quad_explore.py SEED ORDERS TRIES`,
 `python3 vhphi_quad_mixed.py vhphi-quad-explore-seedN.json 0`.
+
+## 17:22 additions (user approved downloading plantri 5.8 in this session)
+- plantri 5.8 source: https://users.cecs.anu.edu.au/~bdm/plantri/plantri58.tar.gz, SHA-256
+  e78a944116fec9f2c9f5e484206276cc2b0043bae803e9815f4b2683614629b8. Built locally (cc -O3); not committed.
+- `vhphi_plantri.py`: exhaustive triangle-face reading on `plantri -c4m4 n -a`, n = 7..18 ->
+  `plantri-c4m4-<n>.json`. 435 members, all pure-pass.
+- `vhphi_quad_plantri.py`: free quad game on T - st with T from -c4m4, n = 12..18 -> `quad-plantri-<n>.json`.
+  4004 members; the free game fails only on 16:1 - st (two symmetric edges).
+- `vhphi_farside.py`: glues the 2 diagonals and all chordless `plantri -P4` discs with 1-5 interior
+  vertices, in 8 alignments, into that member -> `farside-order16.json`. All 50 pairs are pure-good in all 2146.
+- `vhphi_trace_game.py`: trace-constrained pure game on that member -> `trace-game-order16.json`. Every fan wins.
