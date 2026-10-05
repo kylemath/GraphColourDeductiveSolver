@@ -17,7 +17,7 @@ The status of each part is as follows.
 | belt | equal | at most one Kempe swap, no slides | **[hand]** for every $n\ge5$ (§3) |
 | pole | link already uses $\le3$ colours | none | **[hand]** |
 | pole | some colour occurs once on the link | one slide, then a belt row above | **[hand]** (§2) |
-| pole | every colour occurs $\ge2$ times on the link | Kempe swaps only | **[cited]** Florek Thm 3.1 plus an explicit target **[hand]**; **[computed]** at $n=5,8,11$, at most 3 moves |
+| pole | every colour occurs $\ge2$ times on the link | Kempe swaps only | **[hand, pending Math review]** `pole-hole-noflorek.md` (Theorem P): at most $3(n_0-2)+n-3$ swaps reach a fill or a ring singleton, with $b$ never recoloured. This needs no Florek. Previously **[cited]** Florek Thm 3.1. **[computed]** checked at $n=5..11$, with at most 6 swaps used by the strategy and at most 3 moves by BFS. |
 
 **Is $n=3k+2$ needed?** Not by any argument on this page.
 
@@ -25,7 +25,7 @@ The status of each part is as follows.
 - The unequal-pole walk never uses $n \bmod 3$.
 - Florek's Theorem 3.1 is stated for all $n\ge5$, with bounds that depend on $n\bmod 3$.
 
-So the theorem as stated is proved for all $n\ge5$, modulo the citation in the last row. The computation covers $n=5,\dots,11$, which includes every residue mod 3 (see §9).
+So the theorem as stated is proved for all $n\ge5$. *[5 October: the last row now has its own hand proof, `pole-hole-noflorek.md`, which is pending Math review. Once accepted, the belt theorem no longer depends on Florek. The identification with Florek's family is still needed, but only to connect this result to his paper.]* The computation covers $n=5,\dots,11$, which includes every residue mod 3 (see §9).
 
 ## 1. Conventions
 

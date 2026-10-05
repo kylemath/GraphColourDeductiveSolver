@@ -1,0 +1,36 @@
+===== G_5: proper colourings of G_n - a: 480 labelled (20 up to colour permutation)
+  no-singleton pole starts: 0 labelled = 0 orbits under colour permutation
+===== G_6: proper colourings of G_n - a: 1200 labelled (50 up to colour permutation)
+  no-singleton pole starts: 0 labelled = 0 orbits under colour permutation
+===== G_7: proper colourings of G_n - a: 2688 labelled (112 up to colour permutation)
+  no-singleton pole starts: 0 labelled = 0 orbits under colour permutation
+===== G_8: proper colourings of G_n - a: 7824 labelled (326 up to colour permutation)
+  no-singleton pole starts: 768 labelled = 32 orbits under colour permutation
+  strategy (T1/F/K/S) ends good in every start; all lemmas and forced colours asserted
+  swaps used: {1: 768} (max 1; hand bound 3(n0-2)+n-3)
+  rule sequences: {'T1': 768}
+  starts not fixed by one Kempe swap: 0 labelled = 0 orbits
+===== G_9: proper colourings of G_n - a: 18528 labelled (772 up to colour permutation)
+  no-singleton pole starts: 3312 labelled = 138 orbits under colour permutation
+  strategy (T1/F/K/S) ends good in every start; all lemmas and forced colours asserted
+  swaps used: {1: 3096, 2: 216} (max 2; hand bound 3(n0-2)+n-3)
+  rule sequences: {'T1': 3024, 'K': 216, 'S+K': 72}
+  starts not fixed by one Kempe swap: 0 labelled = 0 orbits
+  lemma use: {'R junction tested': 576}
+===== G_10: proper colourings of G_n - a: 49008 labelled (2042 up to colour permutation)
+  no-singleton pole starts: 15120 labelled = 630 orbits under colour permutation
+  strategy (T1/F/K/S) ends good in every start; all lemmas and forced colours asserted
+  swaps used: {1: 13920, 2: 1200} (max 2; hand bound 3(n0-2)+n-3)
+  rule sequences: {'T1': 13320, 'F+T1': 960, 'K': 840}
+  starts not fixed by one Kempe swap: 0 labelled = 0 orbits
+  lemma use: {'R junction tested': 2880}
+===== G_11: proper colourings of G_n - a: 124608 labelled (5192 up to colour permutation)
+  no-singleton pole starts: 58608 labelled = 2442 orbits under colour permutation
+  strategy (T1/F/K/S) ends good in every start; all lemmas and forced colours asserted
+  swaps used: {1: 35640, 2: 13080, 3: 5796, 4: 3264, 5: 636, 6: 192} (max 6; hand bound 3(n0-2)+n-3)
+  rule sequences: {'T1': 36168, 'F+T1': 9288, 'K': 4224, 'F+F+T1': 3120, 'K+T1': 2232, 'F+K+T1': 1344, 'F+K': 840, 'K+F+T1': 576, 'F+F+F+T1': 264, 'F+K+F+T1': 192, 'S+K': 156, 'S+K+T1': 108, 'K+K+T1': 48, 'K+K': 48}
+  starts not fixed by one Kempe swap: 792 labelled = 33 orbits
+    their rule sequences: {'F+T1': 792}; swaps used: {3: 792}
+    example (b=0): u = 01201230213, v = 23123121321
+  lemma use: {'R junction tested': 32592}
+summary: no-singleton orbits by n: {5: 0, 6: 0, 7: 0, 8: 32, 9: 138, 10: 630, 11: 2442}; every one handled by the case table; nothing run for n >= 12
