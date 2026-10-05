@@ -20,7 +20,7 @@ Nothing proves that a core member has a good pair. Every fixed swap budget and e
 
 **Cheap test.** Do apex-at-neighbour fans at 5–5 and 5–6 edges stay good on all saved and plantri graphs? The bad vertices of $17{:}1$ and $24{:}6406$ are the critical cases.
 
-## B. Topological invariant (Fisk–Mohar degree)
+## B. Topological invariant (Fisk–Mohar degree) — weakened, see `literature-check.md` §3
 
 A colouring maps the sphere onto the boundary of the tetrahedron, and the map has a degree; I recall that Mohar proved Kempe invariance mod 12, following Fisk. With a hole, each tetrahedron face gets a local degree.
 - The differences between local degrees are fixed by the link word.
@@ -76,3 +76,9 @@ Each needs a declared WP. This is the cheapest way to avoid investing in a false
 - **U is also out for A.** U (each $T^\ast$-class has an unlocked member) fails at $22$ pairs of $17{:}1$, whose vertices all have degree $5$ or $6$. So every fan apex there is a Wernicke neighbour, and U cannot carry the Wernicke lemma.
 - **C is answered by saved data, and is circular as a route.** `swarm/vh-exists-check.txt` reports `Mcomp=1` on all $118$ graphs: the full move graph is connected. But a fill exists only if $T$ is colourable, so "connected implies reaches fill" presupposes the conclusion. **Meta-point:** a proof of VH∃ has to construct a path from the $T^\ast$-start. Mixing or counting arguments help only when tied to a locally certifiable target, such as "every component contains an unlocked state", which can be checked without knowing a fill exists.
 - **Consequence for A.** A Wernicke lemma would need a structural argument at the 5–5 or 5–6 edge: Jordan arguments plus the slide to the apex. Data cannot rank candidate lemmas while every pair is good. Discriminating statistics are needed: shortest fill length, U, pure versus mixed.
+
+
+**17:52.** In `literature-check.md`:
+- the Mohar–Salas mod-12 invariance needs a three-colourable (Eulerian) triangulation, so it does not apply to minimum-degree-5 graphs, and idea B is weakened;
+- Tilley's Kempe-locking is confirmed as the right vocabulary for idea E;
+- the Inoue et al. 2026 paper uses obstructing cycles of length $\le5$, the same cut sizes as our trace-game reductions.
