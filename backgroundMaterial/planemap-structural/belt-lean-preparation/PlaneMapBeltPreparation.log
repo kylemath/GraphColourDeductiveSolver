@@ -1,0 +1,14 @@
+theorem SimpleGraph.VacancyPotential.budget.{u_1} : ∀ {S : Type u_1} {R : S → S → Prop} (good target : S → Prop)
+  (potential : S → ℕ) (slack : ℕ),
+  (∀ (s : S),
+      good s →
+        (∃ n t, SimpleGraph.VacancyPotential.Path R n s t ∧ target t ∧ n ≤ potential s + slack) ∨
+          ∃ n t,
+            SimpleGraph.VacancyPotential.Path R n s t ∧
+              good t ∧ potential t < potential s ∧ n + potential t ≤ potential s) →
+    ∀ (s : S), good s → ∃ n t, SimpleGraph.VacancyPotential.Path R n s t ∧ target t ∧ n ≤ potential s + slack :=
+<not imported>
+theorem SimpleGraph.BeltOpeningWords.classification : ∀ (p q r s : Fin 4),
+  SimpleGraph.BeltOpeningWords.ProperWord p q r s ∧ SimpleGraph.BeltOpeningWords.UnfilledWord p q r s ↔
+    (p, q, r, s) ∈ SimpleGraph.BeltOpeningWords.openings :=
+<not imported>
