@@ -4,20 +4,20 @@ Updated 5 October 2026 after the WP19 package (`e7172ca`) and Math execution han
 
 ## Role correction and execution decision
 
-The user clarified that this chat IS Math and explicitly released continued autonomous work. Earlier references to a separate Math owner were mistaken. This chat now owns the WP19 package review, written go-ahead, execution, result acceptance and proof review. The written decision is `messages/2026-10-05-math-to-longtable-and-navigator-wp19-go-ahead.md`: P1 and P2 released under package `e7172ca`; P3 waits for the required cost/result checkpoint. WP18 finite results and the unequal-pole hand proof are accepted within the scopes stated there. Long Table rests.
+The user clarified that this chat IS Math and explicitly released continued autonomous work. Earlier references to a separate Math owner were mistaken. This chat now owns the WP19 package review, written go-ahead, execution, result acceptance and proof review. The written decision is `messages/2026-10-05-math-to-longtable-and-navigator-wp19-go-ahead.md`: P1 and P2 released under package `e7172ca`; P3 was subsequently released in `81b2bf7` after the complete P1 replay and its cost checkpoint. WP18 finite results and the unequal-pole hand proof are accepted within the scopes stated there. Long Table rests.
 
 ## Current objective
 
-Review the new proof claims around VH∃ and the structure of graph 17:1, and obtain explicit acceptance of the completed finite WP18 replay and the joined belt theorem. Prepare a precise future test only after its claims and evidence dependencies are settled. Do not reopen the completed belt opening/termination tasks or launch another census.
+Complete the released WP19 P1/P2/P3 runs and independent replays, report each preregistered statement with its exact finite scope, and preserve the accepted proof implications and requested mechanism corrections. This chat is Math. Long Table is resting. Do not reopen completed belt tasks or extend beyond the declared orders.
 
 ## Completed work and remaining dependencies
 
 | Work | Current position | Remaining action |
 | --- | --- | --- |
-| WP18 P1–P4 | Fully independently reproduced: 961 graphs, 68,890 pairs, every histogram and maximum/minimum; m=3 only on 17:1, m<=2 elsewhere, every admitted start within four moves on these files | Math's written acceptance of the finite statement; producer limitations must be repaired before a future run |
+| WP18 P1–P4 | Fully independently reproduced: 961 graphs, 68,890 pairs, every histogram and maximum/minimum; m=3 only on 17:1, m<=2 elsewhere, every admitted start within four moves on these files | Accepted by this Math chat in `8dffb45`; WP19 resource/accounting revisions reviewed and regressions passed |
 | Missing A_rho tile | Written, independently checked and adopted by Long Table | No re-derivation needed |
-| Eight doubled-0 openings and termination | Both parallel teams completed both tasks; root hand review and separate constructive replay pass | Math review of the assembled theorem; no new local gap is being asserted |
-| Joined belt theorem | `longtable/swarm/belt-joined.md` passed the audit's hand review; unequal-pole belt holes fill by slides within 2n for every n>=5; equal-pole star also checks | Exact family identification and Florek pole-deletion theorem remain cited dependencies; Math acceptance, not a self-contained re-proof |
+| Eight doubled-0 openings and termination | Both parallel teams completed both tasks; root hand review and separate constructive replay pass | Accepted hand review by this Math chat; no new local gap is being asserted |
+| Joined belt theorem | `longtable/swarm/belt-joined.md` passed the audit's hand review; unequal-pole belt holes fill by slides within 2n for every n>=5; equal-pole star also checks | Exact family identification and Florek pole-deletion theorem remain cited dependencies; Acceptance within the stated citation scope, not a self-contained re-proof |
 | Named belt regression | All 947 unequal starts on existing G5/G8/G11 pass the root strategy, with proper final fillings and fixed poles; Long Table also reports n=6,7,9,10 checks | Distinguish chosen strategy lengths 4/10/14 from shortest lengths 2/4/6 |
 | Corrections and reporting | Validation report sent, WP7 narrowed, fan classification located, 21-vertex two-swap mixed escape corrected, F32/F42 identified as root-zero deletion enumeration | WP11 still awaits Math's semantic acceptance; exploratory rank sweeps remain labelled as such |
 | WP12 | Withdrawn and unreleased | Keep stopped |
@@ -49,7 +49,7 @@ U∃ asks for one degree-five vertex and one legal fan such that every Kempe cla
 4. Why all legal-fan, simplicity, degree-four Jordan-split and small-order conditions are satisfied.
 5. What the 41 failing pairs and 118 successful graphs actually say. The graph-level existential observation is post hoc and supplies no universal proof.
 
-The audit should review the actual checker implementation before reproducing the claimed U∃ totals. Reuse existing graph files; do not launch a fresh-order test.
+Completed: `MathVHAndMechanismReview.md` accepts the conditional route, and `math_vh_review.py` independently reproduces all 7,930 old pairs, 41 U-failing pairs, and U∃ on all 118 graphs. This is a post hoc finite observation. The newly released WP19 phases supply the separately declared statistics checks.
 
 ## Corrections acknowledged
 
@@ -72,3 +72,9 @@ Nothing new runs until the agreed written review and release are in hand. No n>=
 ## Next checkpoint
 
 The next audit handoff should contain the U∃ implication review, diagonal/witness review, narrowed mechanism claims, and any corrections requested from Long Table. Separately record Math's actual acceptance decisions and its written WP19 execution go-ahead. The package already exists; review it rather than requesting another draft. When a released phase finishes, obtain its hashes, cost and interruption report and independently replay its outcomes. Keep the existing belt proof and WP18 evidence as completed deliverables with their remaining acceptance/citation dependencies explicit.
+
+## Execution checkpoint, 5 October
+
+P1 finished on all 2,070 order-23 graphs in 420.8 seconds, with no interruption or truncation. The certificate checker and complete independent replay passed. All seven statements passed on these graphs; m=1 on 302, m=2 on 1,768, U∃ true throughout. P2's 843-graph producer and certificate checks have finished; complete replay is running. P3 was approved under unchanged package e7172ca after P1's actual cost report and is running on all 7,290 order-24 graphs. User release is already explicit; do not ask again.
+
+The hand reviews are complete in `MathVHAndMechanismReview.md`; no universal vacancy or unlocking hypothesis is proved. The next checkpoint is the independently verified P2/P3 outputs, final seven-statement reports, hashes, resource/interruption evidence and a consolidated message to Long Table/Navigator. No further order or work package is part of this release.
