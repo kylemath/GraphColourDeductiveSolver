@@ -1,0 +1,24 @@
+theorem SimpleGraph.VacancyThreeMoveObstruction.first_is_slide.{u_1, u_2} : ∀ {V : Type u_1} {C : Type u_2}
+  [inst : DecidableEq V] [inst_1 : DecidableEq C] (G : SimpleGraph V) {h : V} {c : V → C} {t : V × (V → C)},
+  SimpleGraph.VacancySlide.ProperOff G h c →
+    ¬SimpleGraph.VacancyShortFill.PureFill G h c 3 →
+      SimpleGraph.VacancyShortFill.MixedPath G 3 (h, c) t →
+        SimpleGraph.VacancyShortFill.Target G t.1 t.2 →
+          ∃ u,
+            G.Adj h u ∧
+              SimpleGraph.VacancySlide.UniqueAt G h u c ∧
+                SimpleGraph.VacancyShortFill.MixedPath G 2 (u, SimpleGraph.VacancySlide.slide h u c) t :=
+<not imported>
+theorem SimpleGraph.VacancyThreeMoveObstruction.first_pair_contains_slide_colour.{u_1, u_2} : ∀ {V : Type u_1}
+  {C : Type u_2} [inst : DecidableEq V] [inst_1 : DecidableEq C] (G : SimpleGraph V) {h u : V} {c d : V → C} {a b : C}
+  {S : Set V},
+  SimpleGraph.VacancySlide.ProperOff G h c →
+    ¬SimpleGraph.VacancyShortFill.PureFill G h c 3 →
+      G.Adj h u →
+        SimpleGraph.VacancySlide.UniqueAt G h u c →
+          a ≠ b →
+            SimpleGraph.VacancyShortFill.Whole G u (SimpleGraph.VacancySlide.slide h u c) a b S →
+              SimpleGraph.VacancyShortFill.KempeStep G u
+                  (SimpleGraph.VacancyShortFill.swap (SimpleGraph.VacancySlide.slide h u c) a b S) d →
+                SimpleGraph.VacancyShortFill.Target G u d → c u = a ∨ c u = b :=
+<not imported>

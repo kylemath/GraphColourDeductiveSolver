@@ -1,0 +1,147 @@
+{
+  "scope": "old17:1 only; no new-order graph generated",
+  "seed_sha256": "865ae62655a1b54d1c2a82c2ac3909db3eb76eefcdd823b72b47acda67f3d0e6",
+  "all_triangles_facial": true,
+  "triangles": 30,
+  "automorphisms": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    [
+      9,
+      8,
+      2,
+      3,
+      10,
+      15,
+      14,
+      7,
+      1,
+      0,
+      4,
+      11,
+      16,
+      13,
+      6,
+      5,
+      12
+    ],
+    [
+      4,
+      12,
+      11,
+      3,
+      0,
+      5,
+      6,
+      13,
+      16,
+      10,
+      9,
+      2,
+      1,
+      7,
+      14,
+      15,
+      8
+    ],
+    [
+      10,
+      16,
+      11,
+      3,
+      9,
+      15,
+      14,
+      13,
+      12,
+      4,
+      0,
+      2,
+      8,
+      7,
+      6,
+      5,
+      1
+    ]
+  ],
+  "backtracking_nodes": 70,
+  "faces": [
+    {
+      "face": [
+        3,
+        4,
+        11
+      ],
+      "remaining_connected": true,
+      "remaining_original_degree_histogram": {
+        "5": 11,
+        "6": 3
+      },
+      "nonidentity_image": [
+        [
+          3,
+          10,
+          11
+        ],
+        [
+          3,
+          0,
+          2
+        ],
+        [
+          3,
+          9,
+          2
+        ]
+      ],
+      "stabilizer_size": 1
+    },
+    {
+      "face": [
+        1,
+        2,
+        7
+      ],
+      "remaining_connected": true,
+      "remaining_original_degree_histogram": {
+        "5": 10,
+        "6": 4
+      },
+      "nonidentity_image": [
+        [
+          8,
+          2,
+          7
+        ],
+        [
+          12,
+          11,
+          13
+        ],
+        [
+          16,
+          11,
+          13
+        ]
+      ],
+      "stabilizer_size": 1
+    }
+  ]
+}

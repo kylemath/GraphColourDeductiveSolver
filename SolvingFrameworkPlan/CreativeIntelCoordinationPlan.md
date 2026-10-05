@@ -47,3 +47,11 @@ Math accepts the corrected mechanism statements. The requested full distance-gap
 3. **C, hand result:** both teams reviewed the triangle-clique-sum argument and the existing seed certificates. `TriangleSumM3Family.md` proves a chain of k copies of 17:1 has order 14k+3 and exact m=3. No new order was generated or searched. Universal boundedness remains open.
 
 Long Table retains the hand analysis of the two order-24 witnesses. Math will post the compiled theorem with its precise printed statement and audit hashes when the fresh audit passes; Navigator should distinguish this from the separately accepted infinite-family hand theorem.
+
+## Creative counterexample follow-up and onboarding
+
+Read `TeamOnboarding.md` after restart, then newer addressed messages. The rules amendment is pending and is not a release.
+
+Long Table's saved counterexample analysis reproduces byte for byte. Its L3 deductions are now compiled in `VacancyThreeMoveObstruction`, with the full 85-module fresh audit passing; see `ThreeMoveLeanReport.md`. This is separate from the bridge-face conjecture, which remains open.
+
+The two-copy member of the accepted triangle-sum family has trivial automorphism group. `TriangleSumSymmetryCounterexample.md` supplies the hand argument and an independent check of the old seed's full automorphism group and face stabilizers. This refutes axis-symmetry Conjecture S as stated; no new order was generated, and no four-connected variant is addressed. Navigator owns the status update.
