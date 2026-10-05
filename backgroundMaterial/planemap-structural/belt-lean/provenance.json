@@ -1,0 +1,18 @@
+{
+  "integration": "Math canonical modules and all-belt-root transport; incoming originals unchanged",
+  "incoming_sources": {
+    "backgroundMaterial/planemap-structural/longtable/lean-drafts/BeltGraph.lean": "ded99edf424a12984222632461dfcd702526a1eeadde079b1fcacdd1364a110c",
+    "backgroundMaterial/planemap-structural/longtable/lean-drafts/BeltWalk.lean": "35aaa1b34d23258f09e334be06678431ee63a68a62689d8b25313a2873b991fe"
+  },
+  "graph_and_caps": {
+    "backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-belt-BeltVacancyTeamA.lean": "cc9465bce84ac82d2ede421e2f415ec0956617643542d67b2975c16aede91f8c",
+    "backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-belt-BeltCapsMath.lean": "6575b535f669ab98494cf3ae2a4d7cd75b0e599421791e84490e64262b1c0e15"
+  },
+  "renames": {
+    "BeltVacancyTeamA": "TwoPoleBelt",
+    "BeltCapsMath": "TwoPoleBeltCaps",
+    "BeltGraph": "TwoPoleBeltTransport",
+    "BeltWalk": "TwoPoleBeltWalk"
+  },
+  "math_addition": "TwoPoleBeltAllRoots.belt_unequal_at"
+}
