@@ -1,0 +1,22 @@
+== Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyPotential.lean
+== Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltOpeningWords.lean
+== Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltVacancyTeamA.lean
+== Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltCapsMath.lean
+== BeltGraph.lean
+== BeltWalk.lean
+== AxiomCheck.lean
+@SimpleGraph.BeltDraft.belt_unequal : ∀ {n : ℕ},
+  5 ≤ n →
+    ∀ (c : SimpleGraph.BeltVacancyTeamA.Vertex n → SimpleGraph.BeltVacancyTeamA.Colour),
+      SimpleGraph.VacancySlide.ProperOff (SimpleGraph.BeltDraft.G n) (SimpleGraph.BeltVacancyTeamA.Vertex.u 0) c →
+        c SimpleGraph.BeltVacancyTeamA.Vertex.a ≠ c SimpleGraph.BeltVacancyTeamA.Vertex.b →
+          ∃ k t,
+            SimpleGraph.VacancyPotential.Path SimpleGraph.BeltDraft.SlideStep k
+                (SimpleGraph.BeltVacancyTeamA.Vertex.u 0, c) t ∧
+              k ≤ 2 * n ∧
+                SimpleGraph.BeltDraft.Filled t ∧
+                  SimpleGraph.VacancySlide.ProperOff (SimpleGraph.BeltDraft.G n) t.1 t.2 ∧
+                    SimpleGraph.BeltDraft.IsBelt t.1 ∧
+                      t.2 SimpleGraph.BeltVacancyTeamA.Vertex.a = c SimpleGraph.BeltVacancyTeamA.Vertex.a ∧
+                        t.2 SimpleGraph.BeltVacancyTeamA.Vertex.b = c SimpleGraph.BeltVacancyTeamA.Vertex.b
+== done
