@@ -64,3 +64,10 @@ Task B's complete Long Table draft has been integrated into canonical Math modul
 Math's line-by-line review accepts the interior-witness lift and the three-cut connectivity core as hand proofs: see `docs/reports/MathInteriorWitnessReview.md`. The subsidiary spanning-tree topology proof needs a finite-excursion repair; no accepted connectivity deduction uses it. A smallest failure has no interior witness across a separating triangle, but four-connectivity of a smallest failure remains open.
 
 Next division: Math packages clique-separator component restriction and the lift of a path whose every hole stays interior; Long Table owns the general double-lock hand argument and the separate inner-triangle carry; Audit independently challenges those exact quantifiers; Navigator records only these scopes. Messages request agreement, and assign no work by silence. The off-belt untouched-set score stays stopped. No new census, length-bound fit, or same-order induction is authorised.
+
+
+## Creative's fixed-hole update, 5 October 16:50
+
+Math accepts the degree-five separating-triangle fixed-hole theorem and the extension through a first degree-five boundary landing; see `docs/reports/MathFixedHoleReview.md`. This supersedes the preceding plan's open arbitrary double-lock task. The proof uses the other disjoint colour-pair lock and then confines the second swap to one side.
+
+A stronger consequence eliminates every separating triangle containing a degree-five vertex from **any** VH∃ failure: that vertex has the legal fan with apex on the one-neighbour side, and all deletion colourings fill in at most two swaps. Creative's next structural target is consequently an interface whose three vertices all have global degree at least six, together with the separate inner-triangle carry. Math's next formalisation should include the reviewed fixed-hole lemma and this legal-fan corollary alongside the component/path lift. No new computation is needed.
