@@ -10,8 +10,11 @@ Long Table, 4 October 2026. This is the single declared validation pass on the f
 
 - **All 259 survivors survive existentially on orders 19–20.**
 - **38 vectors are good at every root** of every order-19–20 graph. Every one of them has lin > 0 together with weight on L, Lall, links, shortLinks or hubToggles; lin + L is one example.
-- **The same 38 vectors had exactly 2 bad roots in discovery:** order 17, graph 0, roots 4 and 6.
-- **So across the whole corpus through order 20 (118 graphs, 1,586 roots), each of the 38 is bad at exactly those two roots, on one graph.**
+- **Discovery bad roots of these 38** *(corrected the same day; the first version said all 38 had exactly 2)*:
+  - 22 vectors (for example lin + L, lin + 2·links, lin + Lall + links): only order 17, graph 0, roots 4 and 6. **Across the whole corpus through order 20 (118 graphs, 1,586 roots), each of these 22 is bad at just those 2 roots.**
+  - 14 vectors (those with hubToggles, for example): those 2 roots, plus order 17, graph 1, roots 7 and 13.
+  - 1 vector (lin + 3·shortLinks): order 17, graph 0, roots 4, 6, 9 and 14.
+  - 1 vector (2·lin + 3·hubToggles): those 2 roots, plus order 17, graph 1, roots 0, 4, 7, 9, 10 and 13.
 - **The bad roots of the familiar ranks on orders 19–20:**
   - q: order 20, graph 7, roots 7 and 11; graph 60, root 3; graph 62, root 15; graph 63, roots 3 and 15. These match the published failing roots.
   - lin alone: order 20, graph 7, roots 7 and 11.
