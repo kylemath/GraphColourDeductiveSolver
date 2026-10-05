@@ -30,3 +30,4 @@ Usage: `python3 vhphi_explore.py SEED ORDERS TRIES`, `python3 vhphi_quad_explore
 ## 17:44 additions
 - `vhphi_trace_k.py`: trace game on k-faces (k = 4, 5) with run-based bits; `plantri -P5`/`-P4` discs -> `trace-k5-7-13-pure.json`, `trace-k4-5-13-pure.json`. The 5-wheel fails (3 of 36 positions per fan), so wheels are excluded.
 - `vhphi_trace_members.py`: every member T - x (deg x in {4,5}, chordless link) from `plantri -m4 n`, n = 8..18 -> `trace-members-<n>.json`. 2002 of 2002 pure-pass.
+- `wernicke_apex.py` (17:46): apex-at-5/6-neighbour fans on `plantri -m5 n`, n <= 18 -> `wernicke-<n>.json`. 1307 of 1307 pure-good; uninformative, because every pair is good in all data.

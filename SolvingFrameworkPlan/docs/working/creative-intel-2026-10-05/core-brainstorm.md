@@ -69,3 +69,10 @@ Each needs a declared WP. This is the cheapest way to avoid investing in a false
 1. A's test.
 2. C's count.
 3. A literature check on Tilley, Mohar and Fisk, before B or E.
+
+## First readings (17:46, exploratory, post hoc)
+
+- **A's test is uninformative.** At every degree-5 vertex of every `plantri -m5` triangulation of order $\le18$, every apex-at-5/6-neighbour fan is pure-good: $1307$ of $1307$ (`longtable/explore-vhphi/wernicke_apex.py`). But every pair is good in all saved data, so the test could not discriminate.
+- **U is also out for A.** U (each $T^\ast$-class has an unlocked member) fails at $22$ pairs of $17{:}1$, whose vertices all have degree $5$ or $6$. So every fan apex there is a Wernicke neighbour, and U cannot carry the Wernicke lemma.
+- **C is answered by saved data, and is circular as a route.** `swarm/vh-exists-check.txt` reports `Mcomp=1` on all $118$ graphs: the full move graph is connected. But a fill exists only if $T$ is colourable, so "connected implies reaches fill" presupposes the conclusion. **Meta-point:** a proof of VH∃ has to construct a path from the $T^\ast$-start. Mixing or counting arguments help only when tied to a locally certifiable target, such as "every component contains an unlocked state", which can be checked without knowing a fill exists.
+- **Consequence for A.** A Wernicke lemma would need a structural argument at the 5–5 or 5–6 edge: Jordan arguments plus the slide to the apex. Data cannot rank candidate lemmas while every pair is good. Discriminating statistics are needed: shortest fill length, U, pure versus mixed.
