@@ -1,0 +1,31 @@
+{
+  "scope": "mutations of the named smoke output only; all checksums resealed; no search",
+  "cases": [
+    {
+      "case": "omitted colouring with corrected state count",
+      "rejected": true,
+      "reason": "omitted/duplicated proper state"
+    },
+    {
+      "case": "omitted root proof",
+      "rejected": true,
+      "reason": "root proof partition incomplete"
+    },
+    {
+      "case": "invalid decreasing endpoint index",
+      "rejected": true,
+      "reason": "endpoint index"
+    },
+    {
+      "case": "incomplete hard-state endpoints",
+      "rejected": true,
+      "reason": "incomplete hard-state macro endpoint set"
+    },
+    {
+      "case": "false all-roots summary",
+      "rejected": true,
+      "reason": "summary differs from certificate proofs"
+    }
+  ],
+  "checker_sha256": "4b61c125b0ccb00698616464eb7b2b812debfdd133017eafdd4dfc00c15d94e9"
+}
