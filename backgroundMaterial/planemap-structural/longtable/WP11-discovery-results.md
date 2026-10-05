@@ -38,7 +38,7 @@ Sub-tier counts are by registry entry; a vector in two sub-tiers counts in each.
 - **Existential failures** occur on two graphs only:
   - order 17, graph 1: every root bad for 218 vectors;
   - order 17, graph 0: for 29 vectors.
-- **No vector survives at every root.** Among existential survivors, the total number of bad roots ranges from 2 to 20. The minimum, 2 bad roots (order 17, graph 0, roots 4 and 6), is reached by 50 vectors. They include lin alone and q + lin. q alone has 6 bad roots, matching the published mass corpus restricted to orders 12–18.
+- **No vector survives at every root.** Among existential survivors, the total number of bad roots ranges from 2 to 20. The minimum, 2 bad roots (order 17, graph 0, roots 4 and 6), is reached by 50 vectors, including lin alone. *[Erratum, 4 October: an earlier version also listed q + lin here; `[1,1,0,0,0,0,0,0]` has 4 bad roots (order 17, graph 0, roots 4 and 6; graph 3, roots 3 and 13). Found by the math team's review; the JSON was correct.]* q alone has 6 bad roots, matching the published mass corpus restricted to orders 12–18.
 - **No root is bad under every vector.**
 
 ## Scope
