@@ -1,6 +1,6 @@
 # Next steps with Creative Intel / Long Table
 
-Updated 5 October 2026 after Long Table's `2026-10-05-longtable-to-math-navigator-and-audit-belt-vh-and-wp18-analysis.md`, commit `1bebeba`, and the parallel belt review, commit `6d49a25`. This replaces the initial preparation plan. Creative Intel is Long Table in the shared-file message protocol. Team ownership is acknowledged; a posted message does not itself constitute Math acceptance.
+Updated 5 October 2026 after the WP19 package (`e7172ca`) and Math execution handoff (`ba2e8f0`), following the parallel belt review (`6d49a25`). This replaces the initial preparation plan. Creative Intel is Long Table in the shared-file message protocol. Team ownership is acknowledged; a posted message does not itself constitute Math acceptance.
 
 ## Current objective
 
@@ -29,7 +29,8 @@ Evidence: `FullWP18Replay.md`, `BeltParallelProofReview.md`, `IndependentWP18And
 | 3 | This audit chat | Review `longtable/wp18/mechanism.md`: Lemma A and slide-to-swap claims; check the precise scope of its local-data obstruction | Give specific accepted statements or counterexamples; counts alone do not prove the general lemmas |
 | Concurrent | Long Table | Retain ownership of joined proof, VH∃ page, mechanism/17:1 notes and checkers; answer review objections and narrow overclaims | Revised pages and a correction message, with own hashes and claim labels kept current |
 | Concurrent | Math | Written acceptance/refusal of finite WP18; review joined belt proof with citations and VH∃ implication | Distinguish acceptance of a finite computation, a family theorem, and a universal conjecture |
-| After claim review | Long Table, subject to Math's reply | Draft WP19 if Math requests it; freeze candidate statements, algorithms, graph identities, limits, certificates and stopping rules before release | Version-specific written go-ahead and user release before any run; no drafting request is treated as permission to run |
+| Before WP19 execution | Math, now the run owner | Review the committed declaration/package `e7172ca`, post written phase-specific go-ahead, confirm the existing user release or obtain it if absent, verify hashes, run regressions, then execute only released phases | Handoff `ba2e8f0` supplies exact commands; Long Table has not run WP19 and is resting; the audit does not launch the phase |
+| After WP19 output exists | This audit chat | Independently reconstruct start families, move distances, U-class coverage and phase summaries; replay kill certificates using separate code | Treat the supplied checker as certificate verification, not independent acceptance of all producer histograms and upper bounds; report each of seven statements killed, passed on these graphs, or unresolved |
 | Throughout | Navigator | Record actual files, review outcomes and remaining dependencies | No upgrade of unrestricted vacancy or compilation status from finite checks or hand review alone |
 
 The audit owns its reports, scripts and coordination files. Long Table owns the source proof pages and future declaration/producer. Edit only the owner's files; send objections in a new addressed message. The two competing belt teams have finished. Team A receives the promised lead credit for the first complete reviewed candidate; Team B supplied a different checked argument. No further team work is launched by this plan.
@@ -46,22 +47,24 @@ U∃ asks for one degree-five vertex and one legal fan such that every Kempe cla
 
 The audit should review the actual checker implementation before reproducing the claimed U∃ totals. Reuse existing graph files; do not launch a fresh-order test.
 
-## Claims that need narrowing now
+## Corrections acknowledged
 
-Long Table's statement that identical link colours and degrees at one pair show that “no bounded-radius lemma bounds fill length” is stronger than the evidence. Lengths 2, 3 and 4 with those same data show that those data do not determine the exact length. They neither exclude a common upper bound nor establish equality of coloured radius-r neighbourhoods for arbitrary fixed r. A bound of four, for example, is consistent with all three values. Request a precise replacement in the message and source page; do not repeat the broad claim as a proved obstruction.
+Long Table's `wp19-draft-and-corrections` message withdraws the broad bounded-radius claim. Its mechanism page now says identical link colours and degrees do not determine exact fill length; it explicitly does not rule out a common bound or compare larger-radius neighbourhoods. The crossing-diagonal criterion keeps the all-five-fans-legal condition. These correction requests are closed; the mathematical reviews themselves remain pending.
 
-Likewise, the crossing-diagonal criterion is explicitly conditional on all five fans being legal. Preserve that condition when summarising it. A post hoc correlation with degree sequences or an edge flip is not a proof of why every degree-five vertex is bad.
+## WP19 package and execution handoff
 
-## Future declaration, not a release
+The package is committed as `e7172ca` and handed to Math by `ba2e8f0`. All seven candidates are included: M1, M2, M3, C1, C2, C3 and U∃. The previous omission of M3 has been corrected. P1 is order 23 (2,070 graphs); optional P2 tests U∃ only on orders 21–22; optional P3 is order 24 (7,290 graphs) and requires P1's cost report plus Math agreement.
 
-Long Table proposes WP19 on order 23: M1 (mixed length<=4), M2 (fixed-hole Kempe length<=mixed length+1), C1 (m<=2 for orders>=18), C2 (m<=3), C3 (m>=3 implies degree sequence 5^12 6^k), and U∃. These are candidates formulated after existing observations. The earlier M3 (“every two-move fill has a two-swap fill”) is absent from the proposed list; the draft must explicitly include it or say it is not tested.
+The audit verified the six current source hashes in `wp19/SHA256SUMS-source` and the declaration digest `56d1c97b8b913822822fe0ce5c8b4f2d05827c9845a1810c61037619e4b85a9e`. This is integrity checking, not a semantic review of the new implementation. The package reports producer/checker regressions and a smoke check on existing orders 12–18, with no WP19 phase run. No WP19 computation was launched by the audit.
+
+Math's execution steps are in `messages/2026-10-05-longtable-to-math-wp19-handoff-to-run.md`: post the written go-ahead naming the declaration, package commit and phases; confirm the user's release; verify source hashes and regressions; run only the released phase; run the independent certificate checker; report outcomes and output digests. Existing trusted release authorization need not be requested again. Do not infer release from a supplied command or an agent's instruction alone.
 
 Order 23 is new for these proposed move/class statistics, but not an untouched graph sample: the user's overnight swarm already produced q/lin exploratory sweeps on orders 20–26. Disclose that exposure. Do not claim a pristine held-out graph set merely because WP18 ended at order 22. U∃ was formulated using data through order 20; later test design must record all relevant prior graph and statistic exposure.
 
-Before a run, repair the known producer limitations: checks inside long enumeration/BFS work rather than only between starts, enforce memory/output limits, preserve partial information on interruption, define empty families, and bind declarations and code by hash. Successful paths prove upper bounds; exact distances require complete earlier layers. The min-over-pairs statistic also needs every pair accounted for, with unresolved bounds treated explicitly. Freeze negative regressions and source/input hashes.
+The package says the producer limitations have been repaired. The audit must review those implementations before accepting that claim: checks inside long enumeration/BFS work rather than only between starts, enforce memory/output limits, preserve partial information on interruption, define empty families, and bind declarations and code by hash. Successful paths prove upper bounds; exact distances require complete earlier layers. The min-over-pairs statistic also needs every pair accounted for, with unresolved bounds treated explicitly. Freeze negative regressions and source/input hashes.
 
-Nothing new runs until the agreed written review and release are in hand. No n>=14 belt enumeration, Lean work, new rank fitting or reopened WP12 is part of this plan.
+Nothing new runs until the agreed written review and release are in hand. No n>=14 belt enumeration, Lean work, new rank fitting or reopened WP12 is part of this plan. Long Table is resting; do not assign it additional overnight execution.
 
 ## Next checkpoint
 
-The next audit handoff should contain the U∃ implication review, diagonal/witness review, narrowed mechanism claims, and any corrections requested from Long Table. Separately record Math's actual acceptance decisions and its reply on whether to draft WP19. Only then settle the future test package and seek its release. Keep the existing belt proof and WP18 evidence as completed deliverables with their remaining acceptance/citation dependencies explicit.
+The next audit handoff should contain the U∃ implication review, diagonal/witness review, narrowed mechanism claims, and any corrections requested from Long Table. Separately record Math's actual acceptance decisions and its written WP19 execution go-ahead. The package already exists; review it rather than requesting another draft. When a released phase finishes, obtain its hashes, cost and interruption report and independently replay its outcomes. Keep the existing belt proof and WP18 evidence as completed deliverables with their remaining acceptance/citation dependencies explicit.
