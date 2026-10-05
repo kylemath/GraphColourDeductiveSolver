@@ -1,0 +1,540 @@
+{
+  "witness21": {
+    "vertices": 21,
+    "edges": 57,
+    "faces": 38,
+    "minimum_degree": 5,
+    "single_swaps": 16,
+    "all_single_swaps_frozen": true,
+    "ordered_pairs": 224,
+    "frozen_pairs": 172,
+    "verified_fill": "swap (0,3) on {0}; swap (0,1) on {2,4,6,7,12,13,14,16,17}; slide 1->6; fill 6 with 2",
+    "minimum_kempe_swaps_with_slides": 2,
+    "two_swap_direct_fills": 0,
+    "three_swap_direct_fill_exists": true
+  },
+  "witness14": {
+    "edges": 36,
+    "minimum_degree": 5,
+    "single_kempe_components": 11,
+    "single_move_fills": 0,
+    "legal_first_slides": [
+      6,
+      7,
+      12
+    ],
+    "minimum_mixed_moves": 2,
+    "two_move_fill_example": [
+      "swap ((0, 2), [1])",
+      "swap ((0, 3), [2, 3, 7, 10, 13])",
+      0
+    ],
+    "two_move_sequences_that_fill": 36,
+    "scope": "one explicit fan-proper start, not the best vertex/fan statistic"
+  },
+  "A_rho_tile": [
+    {
+      "rho": 2,
+      "tau": 3,
+      "u_i_minus_2": 2,
+      "v_i_minus_3": 3,
+      "steps": [
+        [
+          "v0",
+          [
+            1,
+            2,
+            3,
+            2,
+            0
+          ],
+          "u0"
+        ],
+        [
+          "u0",
+          [
+            0,
+            2,
+            3,
+            2,
+            1
+          ],
+          "u-1"
+        ]
+      ],
+      "final_hole": "u-1",
+      "final_link": [
+        0,
+        1,
+        2,
+        0,
+        2
+      ]
+    },
+    {
+      "rho": 2,
+      "tau": 3,
+      "u_i_minus_2": 3,
+      "v_i_minus_3": 2,
+      "steps": [
+        [
+          "v0",
+          [
+            1,
+            2,
+            3,
+            2,
+            0
+          ],
+          "u0"
+        ],
+        [
+          "u0",
+          [
+            0,
+            2,
+            3,
+            2,
+            1
+          ],
+          "u-1"
+        ],
+        [
+          "u-1",
+          [
+            0,
+            1,
+            2,
+            0,
+            3
+          ],
+          "v-1"
+        ],
+        [
+          "v-1",
+          [
+            1,
+            0,
+            2,
+            1,
+            3
+          ],
+          "v-2"
+        ]
+      ],
+      "final_hole": "v-2",
+      "final_link": [
+        1,
+        2,
+        3,
+        2,
+        0
+      ]
+    },
+    {
+      "rho": 3,
+      "tau": 2,
+      "u_i_minus_2": 3,
+      "v_i_minus_3": 2,
+      "steps": [
+        [
+          "v0",
+          [
+            1,
+            3,
+            2,
+            3,
+            0
+          ],
+          "u0"
+        ],
+        [
+          "u0",
+          [
+            0,
+            3,
+            2,
+            3,
+            1
+          ],
+          "u-1"
+        ]
+      ],
+      "final_hole": "u-1",
+      "final_link": [
+        0,
+        1,
+        3,
+        0,
+        3
+      ]
+    },
+    {
+      "rho": 3,
+      "tau": 2,
+      "u_i_minus_2": 2,
+      "v_i_minus_3": 3,
+      "steps": [
+        [
+          "v0",
+          [
+            1,
+            3,
+            2,
+            3,
+            0
+          ],
+          "u0"
+        ],
+        [
+          "u0",
+          [
+            0,
+            3,
+            2,
+            3,
+            1
+          ],
+          "u-1"
+        ],
+        [
+          "u-1",
+          [
+            0,
+            1,
+            3,
+            0,
+            2
+          ],
+          "v-1"
+        ],
+        [
+          "v-1",
+          [
+            1,
+            0,
+            3,
+            1,
+            2
+          ],
+          "v-2"
+        ]
+      ],
+      "final_hole": "v-2",
+      "final_link": [
+        1,
+        3,
+        2,
+        3,
+        0
+      ]
+    }
+  ],
+  "existing_kempe_distance": {
+    "graphs": 118,
+    "orders": {
+      "12": 1,
+      "14": 1,
+      "15": 1,
+      "16": 3,
+      "17": 4,
+      "18": 12,
+      "19": 23,
+      "20": 73
+    },
+    "roots": 1586,
+    "roots_with_unreachable": 0,
+    "targetless_classes": 0,
+    "root_max_distance_histogram": {
+      "1": 63,
+      "2": 1249,
+      "3": 250,
+      "4": 24
+    },
+    "best_root_distance_histogram": {
+      "1": 8,
+      "2": 106,
+      "3": 3,
+      "4": 1
+    },
+    "scope": "read existing JSON and inspected producer; not an independent move-graph replay"
+  },
+  "independent_icosahedron_replay": {
+    "vertices": 12,
+    "fans": 60,
+    "deletion_orbits_per_vertex": 20,
+    "orbits_per_fan": 8,
+    "per_fan_slide_distances": {
+      "0": 2,
+      "1": 3,
+      "2": 3
+    },
+    "maximum_kempe_distance": 1
+  },
+  "independent_order17_graph1_replay": {
+    "roots": [
+      {
+        "root": 0,
+        "states": 68,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 1,
+        "states": 63,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 4,
+        "states": 68,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 5,
+        "states": 68,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 7,
+        "states": 63,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 8,
+        "states": 63,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 9,
+        "states": 68,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 10,
+        "states": 68,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 12,
+        "states": 63,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 13,
+        "states": 63,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 15,
+        "states": 68,
+        "maximum_swaps": 4
+      },
+      {
+        "root": 16,
+        "states": 63,
+        "maximum_swaps": 4
+      }
+    ],
+    "best_root_worst_swaps": 4,
+    "scope": "fixed hole; arbitrary deletion starts; no slide or selected-fan restriction"
+  },
+  "independent_generated_graph_validation": {
+    "graphs_checked": 244,
+    "failures": [],
+    "scope": "simplicity, connectivity, spherical triangular rotation, degree metadata; non-isomorphism not rechecked"
+  },
+  "existing_scale_sweeps": [
+    {
+      "order": 20,
+      "graphs": 73,
+      "roots": 1001,
+      "existential_survivors": 259,
+      "q_bad_roots": 6,
+      "q_graphs_without_good_root": 0,
+      "lin_bad_roots": 2,
+      "lin_graphs_without_good_root": 0,
+      "scope": "existing producer output only; no independent sweep replay"
+    },
+    {
+      "order": 21,
+      "graphs": 192,
+      "roots": 2714,
+      "existential_survivors": 259,
+      "q_bad_roots": 10,
+      "q_graphs_without_good_root": 0,
+      "lin_bad_roots": 9,
+      "lin_graphs_without_good_root": 0,
+      "scope": "existing producer output only; no independent sweep replay"
+    },
+    {
+      "order": 22,
+      "graphs": 651,
+      "roots": 9478,
+      "existential_survivors": 258,
+      "q_bad_roots": 31,
+      "q_graphs_without_good_root": 0,
+      "lin_bad_roots": 18,
+      "lin_graphs_without_good_root": 0,
+      "scope": "existing producer output only; no independent sweep replay"
+    },
+    {
+      "order": 23,
+      "graphs": 2070,
+      "roots": 31119,
+      "existential_survivors": 258,
+      "q_bad_roots": 71,
+      "q_graphs_without_good_root": 0,
+      "lin_bad_roots": 28,
+      "lin_graphs_without_good_root": 0,
+      "scope": "existing producer output only; no independent sweep replay"
+    },
+    {
+      "order": 24,
+      "graphs": 7290,
+      "roots": 112977,
+      "existential_survivors": 258,
+      "q_bad_roots": 334,
+      "q_graphs_without_good_root": 0,
+      "lin_bad_roots": 201,
+      "lin_graphs_without_good_root": 0,
+      "scope": "existing producer output only; no independent sweep replay"
+    },
+    {
+      "order": 25,
+      "graphs": 25381,
+      "roots": 405465,
+      "existential_survivors": 258,
+      "q_bad_roots": 1245,
+      "q_graphs_without_good_root": 0,
+      "lin_bad_roots": 727,
+      "lin_graphs_without_good_root": 0,
+      "scope": "existing producer output only; no independent sweep replay"
+    },
+    {
+      "order": 26,
+      "graphs": 91441,
+      "roots": 1504769,
+      "existential_survivors": 258,
+      "q_bad_roots": 3714,
+      "q_graphs_without_good_root": 0,
+      "lin_bad_roots": 2133,
+      "lin_graphs_without_good_root": 0,
+      "scope": "existing producer output only; no independent sweep replay"
+    }
+  ],
+  "wp14-theory/check_lock.json": {
+    "stats": {
+      "p1_states": 11714,
+      "T1_ok": 11714,
+      "T2_roots_ok": 279,
+      "hard": 172,
+      "locked": 2300,
+      "T3_ok": 2300
+    }
+  },
+  "wp14-theory/rank_probe.json": {},
+  "wp14-theory/hard_census.json": {
+    "hard_states": 172
+  },
+  "wp17-last-roots/checks3.json": {},
+  "existing_holdout": {
+    "12-18": {
+      "roots": 279,
+      "graphs": 22,
+      "max_distance_histogram": {
+        "1": 50,
+        "2": 195,
+        "3": 16,
+        "4": 18
+      },
+      "bad_roots_by_rank": {
+        "const": 34,
+        "L": 18,
+        "q": 6,
+        "lin": 2,
+        "lin+L": 2,
+        "lin+2links": 2,
+        "lin+Lall+links": 2
+      }
+    },
+    "19-20": {
+      "roots": 1307,
+      "graphs": 96,
+      "max_distance_histogram": {
+        "2": 1054,
+        "3": 234,
+        "1": 13,
+        "4": 6
+      },
+      "bad_roots_by_rank": {
+        "const": 240,
+        "q": 6,
+        "lin": 2,
+        "L": 6
+      }
+    },
+    "21-21": {
+      "roots": 2714,
+      "graphs": 192,
+      "max_distance_histogram": {
+        "2": 2133,
+        "3": 524,
+        "4": 34,
+        "1": 23
+      },
+      "bad_roots_by_rank": {
+        "const": 558,
+        "q": 10,
+        "L": 34,
+        "lin": 9,
+        "lin+L": 8,
+        "lin+2links": 8,
+        "lin+Lall+links": 8,
+        "lex(lin+L,-hub)": 8,
+        "lex(lin+L,-distSum)": 6,
+        "2(lin+L)-hub": 8,
+        "2L-hub": 4,
+        "L+links-hub": 4,
+        "lex(2L-hub,lin)": 4,
+        "lin+linNoRho": 5,
+        "lex(lin+linNoRho,L)": 5,
+        "lin+linNoRho+L": 4,
+        "2lin+2L+linNoRho": 4,
+        "lex(lin+L,linNoRho)": 4
+      }
+    },
+    "22-22": {
+      "roots": 9478,
+      "graphs": 651,
+      "max_distance_histogram": {
+        "2": 7268,
+        "3": 2065,
+        "4": 100,
+        "5": 1,
+        "1": 44
+      },
+      "bad_roots_by_rank": {
+        "const": 2166,
+        "q": 31,
+        "lin+linNoRho": 20,
+        "lin+linNoRho+L": 12,
+        "lex(lin+linNoRho,L)": 18,
+        "L": 101,
+        "lin": 18,
+        "2L-hub": 13,
+        "L+links-hub": 14,
+        "lin+L": 9,
+        "lin+2links": 9,
+        "lin+Lall+links": 9,
+        "2lin+2L+linNoRho": 2,
+        "lex(lin+L,linNoRho)": 2,
+        "lex(2L-hub,lin)": 8,
+        "lex(lin+L,-hub)": 4,
+        "2(lin+L)-hub": 4
+      }
+    }
+  },
+  "WP11_manifest": {
+    "files_checked": 1309,
+    "mismatches": []
+  }
+}
