@@ -1,0 +1,49 @@
+{
+  "complete": true,
+  "fresh_extension_overlay": "/var/folders/96/tdgbk_pj3w744zvj8v3x11xr0000gn/T/team-b-short-fill-fresh-978d14jr/lib",
+  "frozen_module_count": 79,
+  "frozen_manifest_sha256": "ebc389fd59e8ebf4b49d6da2892a437230a83eeaabb9eac9a5de90438ee2ce52",
+  "lean": "/Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean",
+  "sources": [
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancySlide.lean",
+      "snapshot": "team-b-lean-vacancy-slide.lean",
+      "sha256": "4f761c2fc38ace56f7a67179203bff28280ba5f3b8a0d82aefa0c51e84dbaa96",
+      "exit_code": 0,
+      "command": [
+        "/Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean",
+        "-o",
+        "/var/folders/96/tdgbk_pj3w744zvj8v3x11xr0000gn/T/team-b-short-fill-fresh-978d14jr/lib/Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancySlide.olean",
+        "Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancySlide.lean"
+      ]
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFillTeamB.lean",
+      "snapshot": "team-b-lean-short-fill.lean",
+      "sha256": "e6e5181c33ba53a5440d8a845b766909405b301ae0fbf0b4cbfe5abee43f1a38",
+      "exit_code": 0,
+      "command": [
+        "/Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean",
+        "-o",
+        "/var/folders/96/tdgbk_pj3w744zvj8v3x11xr0000gn/T/team-b-short-fill-fresh-978d14jr/lib/Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFillTeamB.olean",
+        "Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFillTeamB.lean"
+      ]
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/MathlibTest/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFillTeamB.lean",
+      "snapshot": "team-b-lean-short-fill-test.lean",
+      "sha256": "2eba53d7d193a4a6e528dae91ff69bd7102f01e2c8a41b84195e7fcba53ad93c",
+      "exit_code": 0,
+      "command": [
+        "/Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean",
+        "MathlibTest/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFillTeamB.lean"
+      ]
+    }
+  ],
+  "guarded_standard_axiom_reports": 9,
+  "axioms_expected": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ]
+}

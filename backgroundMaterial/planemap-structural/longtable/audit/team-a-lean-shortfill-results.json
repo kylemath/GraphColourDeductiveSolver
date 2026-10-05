@@ -1,0 +1,32 @@
+{
+  "scope": "Fresh source compilation of baseline VacancySlide, actual whole-component short-fill theorem and kernel-checking tests; frozen 79 dependencies only",
+  "frozen_manifest": "/tmp/planemap-audit-20261004-ranked-root/manifest.json",
+  "frozen_manifest_sha256": "ebc389fd59e8ebf4b49d6da2892a437230a83eeaabb9eac9a5de90438ee2ce52",
+  "extension_overlay": "/var/folders/96/tdgbk_pj3w744zvj8v3x11xr0000gn/T/planemap-team-a-lean-shortfill-9lx1dkkm/lib",
+  "lean_version": "Lean (version 4.35.0-rc3, arm64-apple-darwin24.6.0, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)",
+  "checks": [
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancySlide.lean",
+      "source_sha256": "4f761c2fc38ace56f7a67179203bff28280ba5f3b8a0d82aefa0c51e84dbaa96",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-VacancySlide-compile.txt",
+      "olean_sha256": "58df91727080d4f0de2648fba7e3b07e2be520931b0abc2f73c8ea837d3b4c02"
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFillTeamA.lean",
+      "source_sha256": "38ac324a0f87f1cc2ffa8ce766964dcbac4f31179794b2bd21d87a3f3b4dfe48",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-VacancyShortFillTeamA-compile.txt",
+      "olean_sha256": "40b050b4c07149db88a07482efe66294b4a0c177dd206697ea89e53c3b4a5c77"
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/MathlibTest/PlaneMapVacancyShortFillTeamA.lean",
+      "source_sha256": "12352d4fd6277ed9103b7e3770832718f1f88357d167701de880f30d5d1374ee",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-PlaneMapVacancyShortFillTeamA-compile.txt",
+      "olean_sha256": "5c4ac29652ca0d4986f52914fbdc8c3b39f20102f0cbef4628e66ce525ae1f16"
+    }
+  ],
+  "seconds": 2.72,
+  "complete": true
+}

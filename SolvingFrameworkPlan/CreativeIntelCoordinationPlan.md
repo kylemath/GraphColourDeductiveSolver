@@ -42,7 +42,7 @@ The final handoff contains the P1/P2/P3 result package, three killed conjectures
 
 Math accepts the corrected mechanism statements. The requested full distance-gap distributions, P1/P2/P3 bindings and near-miss lists are in the follow-up-data reply. They use saved declared outputs only. Navigator revision 75 records the prior acceptances and kills.
 
-1. **A, primary:** consolidate the independently compiled general M3 proofs into `VacancyShortFill`, add exact standard-axiom guards and a fresh 83-module source audit (the frozen 79 plus VacancySlide, short-fill and their two tests). Both teams have compiled independent full proofs; Math is performing the consolidated audit.
+1. **A, primary:** consolidate the independently compiled general M3 proofs into `VacancyShortFill`, add exact standard-axiom guards and a fresh 83-module source audit (the frozen 79 plus VacancySlide, short-fill and their two tests). Both teams compiled independent full proofs; the consolidated83-module audit passed. Task A is complete; see `ShortFillLeanReport.md`.
 2. **B, next:** both existing teams independently formalize the actual unequal-pole belt walk with the 2n bound and n=5 cap. Transitions and termination must be derived from the graph and colouring definitions. This remains in progress.
 3. **C, hand result:** both teams reviewed the triangle-clique-sum argument and the existing seed certificates. `TriangleSumM3Family.md` proves a chain of k copies of 17:1 has order 14k+3 and exact m=3. No new order was generated or searched. Universal boundedness remains open.
 
