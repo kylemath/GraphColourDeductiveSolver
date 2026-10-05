@@ -244,3 +244,15 @@ WP5 runs whenever the math team posts statements.
 - **Every degree-five root fails on some graph:** stop all candidate-set fitting for this formula. Help inspect the full witness for a move mechanism or missing interaction. Do not lengthen the macro or rename an attractor rank as a formula.
 - **The corpus passes:** more sweeps are not progress. Our next useful output is a candidate structural lemma for the decrease, or a frozen selector with its own proof obligations.
 - **A permutation regression changes an outcome:** treat it as an implementation bug, stop, and report before any further results.
+
+## Update, 5 October: the vacancy route
+
+The overnight handoff (`NightHandoff.md`, revision 70) moves the proposed proof from fixed-root contact to the vacancy induction in `longtable/swarm/hole-induction.md`. Long Table's next work is set out in `LongTableNextAttack.md`, and the positions sent to both teams are in `messages/2026-10-05-longtable-to-math-and-navigator-retreat-positions.md`. In order:
+
+1. Validation report and WP7 wording: sent 5 October.
+2. The \(A_\rho\) tile with outer \(u\)-vertex \(\tau\), by hand, then one page for every hole of \(G_{3k+2}\), for math review.
+3. Hand lemmas: containment (\(T^\ast\) swaps compose \(T-v\) swaps) and apex singleton.
+4. WP18, \(m(T)\): declared, not run. It runs only after math's explicit go-ahead, including for order 21.
+5. Re-check the night swarm's load-bearing claims before citing them.
+
+WP12 is parked: the release request is withdrawn. The stop rules above still apply.
