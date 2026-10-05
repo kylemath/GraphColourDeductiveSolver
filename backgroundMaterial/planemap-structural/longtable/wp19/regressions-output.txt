@@ -1,0 +1,20 @@
+icosahedron 12:0: n=12 pairs=60 m=1 U_exists=True U_pairs=60 kills=[] seconds=0.03 peak_rss_kb=17184
+  ell <= 1 and kappa <= 1 everywhere, L = 1 at 60 pairs, U at every pair: OK
+  vh_exists_check agrees on 12:0: |S|, T* classes, all-locked classes at 60 pairs; U-failing pairs 0
+  WP18 wp18-P1.json agrees on 12:0: L, L_at_least, starts at 60 pairs; m=1
+  invariance 12:0: pair (8,3) start [0, 1, 2, 1, 2, 3, 0, 3, 4, 0, 1, 2] perm [1, 3, 2, 0]: ell=1 kappa=1 locked=False (raw BFS agrees)
+dipyramid 14 (order14_fan_check.py): n=14 pairs=60 m=2 U_exists=True U_pairs=60 kills=[] seconds=0.08 peak_rss_kb=19808
+  start [0, 1, 4, 1, 2, 1, 3, 1, 3, 2, 0, 3, 2, 0] at (v=2, fan 0): ell = 2, kappa = 2, locked: OK
+  vh_exists_check agrees on dipyramid: |S|, T* classes, all-locked classes at 60 pairs; U-failing pairs 0
+  invariance dipyramid: pair (7,0) start [0, 1, 1, 2, 1, 3, 1, 4, 2, 3, 0, 2, 0, 3] perm [1, 0, 3, 2]: ell=1 kappa=1 locked=False (raw BFS agrees)
+17:1: n=17 pairs=60 m=3 U_exists=True U_pairs=38 kills=[] seconds=0.19 peak_rss_kb=20064
+  m = 3 and 38 of 60 pairs satisfy U: OK
+  vh_exists_check agrees on 17:1: |S|, T* classes, all-locked classes at 60 pairs; U-failing pairs 22
+  WP18 wp18-P1.json agrees on 17:1: L, L_at_least, starts at 60 pairs; m=3
+  invariance 17:1: pair (10,3) start [0, 1, 2, 3, 1, 3, 2, 3, 0, 1, 4, 2, 0, 3, 1, 2, 0] perm [3, 2, 1, 0]: ell=2 kappa=2 locked=True (raw BFS agrees)
+22:93: n=22 pairs=65 m=2 U_exists=True U_pairs=63 kills=[] seconds=1.19 peak_rss_kb=24688
+  start [0, 1, 2, 1, 3, 2, 3, 0, 3, 0, 3, 2, 1, 2, 1, 2, 1, 4, 0, 3, 0, 2] at v = 17 (in S(17, tau_i) for i in [1, 2, 4]): ell = 4, kappa = 5: OK
+  vh_exists_check agrees on 22:93: |S|, T* classes, all-locked classes at 65 pairs; U-failing pairs 2
+  WP18 wp18-P4.json agrees on 22:93: L, L_at_least, starts at 65 pairs; m=2
+  invariance 22:93: pair (14,1) start [0, 1, 2, 1, 3, 2, 3, 2, 0, 1, 3, 2, 0, 1, 4, 3, 2, 0, 1, 2, 0, 3] perm [3, 2, 1, 0]: ell=1 kappa=1 locked=False (raw BFS agrees)
+ALL WP19 REGRESSIONS PASSED

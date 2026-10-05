@@ -59,7 +59,13 @@ Each phase is one pass with no tuning between phases. A kill in an earlier phase
 - **Interruptions:** an interrupted graph keeps every completed pair and its partial counts, and is marked interrupted. That is inconclusive, never a pass.
 - **Empty start families:** a pair with no starts is recorded as `empty`, never as L = −1.
 - **Output:** at most 1 GB per phase, enforced. Past the limit, witnesses are dropped and the phase is marked `truncated`, but counts continue.
-- **Memory:** this is **not enforced by code**. The peak resident memory per worker is recorded with `resource.getrusage`.
+- **Memory:** at most 8 GB per worker, **enforced** *[revised 5 October, following `CreativeIntelCoordinationPlan.md`]*. The same in-loop hook that checks deadlines reads the worker's peak resident memory (`resource.getrusage`). Past 8 GB the graph stops and is recorded as interrupted with reason `memory`, keeping its partial counts. Peak memory is reported for every graph.
+- **Accounting for every pair:** every legal pair of every graph appears in the output with its start count (or `empty`), its histograms, and either an exact L or a lower bound `L_at_least` with the reason (`capped` or `interrupted`). m(T) is reported as exact only when every pair is resolved. Otherwise it is reported as `m_at_least`, with the unresolved pairs listed. A statement is never counted as passed on a graph with unresolved pairs.
+  - An interrupted graph still lists every legal pair. Pairs not reached carry `unresolved_reason: interrupted` and null counts.
+  - Empty start families (`empty: true`) are excluded from the minimum that defines m(T).
+  - `graph_index` is 0-based in input order.
+  - `input_sha256` is the SHA-256 of the raw input bytes: plantri stdout, or the file.
+- **Binding by hash:** each phase output records the SHA-256 of this declaration, of every producer source file, and of the plantri input. The checker refuses an output whose declaration hash differs from this file's committed version. The math team's go-ahead must name the commit that contains this file, the producer and the checker.
 
 ## Output and certificates
 

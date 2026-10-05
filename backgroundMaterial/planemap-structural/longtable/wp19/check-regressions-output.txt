@@ -1,0 +1,80 @@
+== Independent reference values (own code) vs. recorded project values ==
+icosahedron: 60 legal pairs                                    PASS
+icosahedron: 8 starts and L=1 at every pair                    PASS
+icosahedron: kappa <= 1 everywhere                             PASS
+icosahedron: U holds at every pair                             PASS
+order 14: a locked start with l = 2 exists (108 such starts)   PASS
+17:1: m = 3 (got 3)                                            PASS
+17:1: 38 of 60 pairs satisfy U (got 38 of 60)                  PASS
+17:1 v=0 tau0: hist l = {0:6,1:16,2:7,3:2,4:2}                 PASS
+colour-renaming invariance on one random start per graph       PASS
+
+== Valid fixtures must be accepted ==
+valid: icosahedron 12:0                                        PASS  expected=accept codes=[]
+valid: order 14 dipyramid 14:0                                 PASS  expected=accept codes=[]
+valid: 17:1 (22 verified u_fail classes, L>=3 witnesses)       PASS  expected=accept codes=[]
+17:1: u_fail classes verified = 22 (got 22)                    PASS
+
+== Malformed fixtures must be rejected ==
+reject: improper witness start                                 PASS  expected=reject:witness codes=['witness']
+       pair (0, 0) witness start: state improper
+reject: improper start in an M1 kill                           PASS  expected=reject:kill_M1 codes=['kill_M1']
+       kill start for (0, 0): state improper
+reject: non-closed u_fail_class (one locked start, 14:0)       PASS  expected=reject:u_fail codes=['u_fail']
+       pair (0, 0) class not closed under T*-swaps
+reject: verified 17:1 class with one member dropped            PASS  expected=reject:u_fail codes=['u_fail']
+       pair (0, 2) class not closed under T*-swaps
+reject: closed class containing an unlocked member (14:0)      PASS  expected=reject:u_fail codes=['u_fail']
+       pair (0, 0) class contains an unlocked member
+reject: u_fail_class of another pair (hole not at v)           PASS  expected=reject:u_fail codes=['u_fail']
+       pair (1, 0) class member: hole is not at v=1
+reject: M1 kill on an l=1 start (icosahedron)                  PASS  expected=reject:kill_M1 codes=['kill_M1']
+       M1: start fills within 4 mixed moves
+reject: M1 kill on an l=4 start (17:1)                         PASS  expected=reject:kill_M1 codes=['kill_M1']
+       M1: start fills within 4 mixed moves
+reject: C2 kill on the icosahedron (all l <= 1)                PASS  expected=reject:kill_C2 codes=['kill_C2']
+       C2: pair (0, 0) start fills within 3 mixed moves
+reject: C2 kill on 17:1 (m = 3, some pair fills in 3)          PASS  expected=reject:kill_C2 codes=['kill_C2']
+       C2: pair (0, 1) start fills within 3 mixed moves
+reject: C1 kill on 17:1 (layers fine, but order < 18)          PASS  expected=reject:kill_C1 codes=['kill_C1']
+       C1: order 17 < 18, statement does not apply
+   ...and the rejection reason is the order, not the layers    PASS
+reject: C3 kill on 17:1 (no vertex of degree >= 7)             PASS  expected=reject:kill_C3 codes=['kill_C3']
+       C3: no vertex of degree >= 7
+reject: C2 per_pair with an l=2 start                          PASS  expected=reject:kill_C2 codes=['kill_C2']
+       C2: pair (0, 0) start fills within 3 mixed moves
+reject: M2 lower kill where kappa <= l+1                       PASS  expected=reject:kill_M2 codes=['kill_M2']
+       M2: Kempe-only fill within depth 5
+reject: M2 nofill kill where the Kempe class has a fill        PASS  expected=reject:kill_M2 codes=['kill_M2']
+       M2 nofill: Kempe-only closure contains a fill
+reject: M3 kill where kappa = 2                                PASS  expected=reject:kill_M3 codes=['kill_M3']
+       M3: Kempe-only fill within 2 moves
+reject: U_exists kill on 17:1 (38 pairs have U)                PASS  expected=reject:kill_U_exists codes=['kill_U_exists']
+       U_exists: 38 legal pairs lack a verified u_fail_class
+reject: witness path with an extra move                        PASS  expected=reject:witness codes=['witness']
+       pair (0, 0) path does not end filled
+reject: witness path that does not end filled                  PASS  expected=reject:witness codes=['witness']
+       pair (0, 0) path does not end filled
+reject: one legal pair missing (icosahedron)                   PASS  expected=reject:coverage codes=['coverage']
+       pair set mismatch: missing [(0, 0)] extra []
+reject: extra pair at a degree-6 vertex (14:0)                 PASS  expected=reject:coverage codes=['coverage']
+       pair set mismatch: missing [] extra [(5, 0)]
+reject: chords not those of the named fan                      PASS  expected=reject:chords codes=['chords']
+       pair (0, 0) chords [[1, 3], [2, 4]] != ((1, 3), (1, 4))
+reject: wrong declaration_sha256 (refused)                     PASS  expected=reject:declaration_sha256 codes=['declaration_sha256']
+       REFUSED: declaration_sha256 '0000000000000000000000000000000000000000000000000000000000000000' != recomputed 56d1c97b8b913822822fe0ce5c8b4f2d05827c984
+   ...and the file is refused before any graph is read         PASS
+reject: unresolved pair but m still exact                      PASS  expected=reject:m_exact codes=['m_exact']
+       m must be null when pairs are unresolved
+accept: unresolved pair with m null (counted unresolved)       PASS  expected=accept codes=[]
+   ...graph counted as unresolved, not as passing              PASS
+reject: pair with a reason not listed in unresolved_pairs      PASS  expected=reject:None codes=['L', 'm_exact', 'unresolved']
+       unresolved pair (0, 0) has non-null L
+       capped pair (0, 0) has L_at_least 4 != cap+1
+reject: wrong ascii_sha256                                     PASS  expected=reject:ascii_hash codes=['ascii_hash']
+       ascii_sha256 mismatch
+reject: m_at_least not min of L_at_least                       PASS  expected=reject:m_at_least codes=['m_at_least']
+       m_at_least 2 != min L_at_least 3
+
+TOTAL: 44 checks, 44 passed, 0 failed
+Note: Upper bounds (exact L where no witness is given, m, hist_l, hist_k, start counts, tstar_classes, locked_classes, U==true verdicts) are PRODUCER CLAIMS and are not re-derived by this checker; only certificates are verified.
