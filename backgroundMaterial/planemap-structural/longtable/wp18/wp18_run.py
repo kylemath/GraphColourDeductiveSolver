@@ -1,9 +1,10 @@
 """WP18 producer: one pass per phase, no tuning. See ../WP18-fan-selection-length-declaration.md.
 
-Usage: wp18_run.py P1|P2|P3 [--procs N]
+Usage: wp18_run.py P1|P2|P3|P4 [--procs N]
 P1: discovery graphs (orders 12, 14-18) from ../wp11-run-manifest.json
 P2: validation graphs (orders 19-20) from the same manifest (secondary, not a holdout)
 P3: order 21, ../wp17-last-roots/triangulations-min5-21.txt (sha256 checked)
+P4: order 22 (optional phase of the declaration), triangulations-min5-22.txt (sha256 checked)
 Writes wp18-<phase>.json. Limits: 30 min per graph, 6 h per phase.
 """
 import argparse
@@ -22,6 +23,8 @@ PER_GRAPH = 30 * 60
 PER_PHASE = 6 * 3600
 ORDER21 = HERE.parent / "wp17-last-roots" / "triangulations-min5-21.txt"
 ORDER21_SHA = "5c20395802df3f98d81d1cf2cc68c3995ac5f1b0f8438da9b0ac281cdeeb1c6d"
+ORDER22 = HERE.parent / "wp17-last-roots" / "triangulations-min5-22.txt"
+ORDER22_SHA = "6137dc19b7a036ae42388153ca23b93ae7cbb8f03280718529834a18ae7df2d7"
 
 
 def graphs(phase):
@@ -29,9 +32,10 @@ def graphs(phase):
         m = json.loads((HERE.parent / "wp11-run-manifest.json").read_text())
         key = "discovery_graphs" if phase == "P1" else "validation_graphs"
         return [(g["order"], g["graph_index"], g["ascii"]) for g in m[key]]
-    raw = ORDER21.read_bytes()
-    assert hashlib.sha256(raw).hexdigest() == ORDER21_SHA, "order-21 input hash mismatch"
-    return [(21, i, line) for i, line in enumerate(raw.decode().splitlines()) if line.strip()]
+    path, sha, order = (ORDER21, ORDER21_SHA, 21) if phase == "P3" else (ORDER22, ORDER22_SHA, 22)
+    raw = path.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == sha, f"order-{order} input hash mismatch"
+    return [(order, i, line) for i, line in enumerate(raw.decode().splitlines()) if line.strip()]
 
 
 def work(args):
@@ -50,7 +54,7 @@ def work(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", choices=["P1", "P2", "P3"])
+    ap.add_argument("phase", choices=["P1", "P2", "P3", "P4"])
     ap.add_argument("--procs", type=int, default=12)
     a = ap.parse_args()
     gs = graphs(a.phase)
