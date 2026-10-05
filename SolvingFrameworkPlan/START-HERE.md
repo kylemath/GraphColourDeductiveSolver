@@ -140,6 +140,12 @@ Never write "proved" for computation. Never generalise a finite pass.
 - The WP19 setting (planar triangulations, 4 colours) is **not** covered by these examples. There, the saved data show κ ≤ 5 and κ − ℓ ≤ 2, and no start without a pure fill.
 - **Lemma L4** tightens L3 [hand].
 
+**Hand pages from the 11:08 creative session, pending Math review** (`docs/working/creative-intel-2026-10-05/DIRECTOR.md`):
+- **Interior-witness lift** [hand]: a filling path that stays off a separating triangle lifts, so a smallest failure has no interior witness on one. $H_2$ is a success. For order $\ge 5$, $3$-vertex cuts are identified with separating triangles (the $3$-connectedness write-up was re-lined at 16:43; no correction).
+- **Fixed-hole theorem** [hand], 16:43 (`interface/fixed-hole-two-swaps.md`): at a degree-$5$ vertex of a separating triangle, every colouring fills within $2$ Kempe swaps at the fixed hole, whatever the interior. This closes the double-lock sentence. The lift therefore extends to paths whose first landing on the triangle is at a $T$-degree-$5$ vertex. Still open: a landing at $T$-degree $\ge 6$, and the carry across an inner triangle.
+- **Belt potential, off the belt** [computed on the saved $24{:}7228$ path]: the untouched-set size falls on the mixed path ($23,22,16,12$) and does not fall on the five-swap path ($23,15,9,4,4,10$). It is not a controller. The lift does not rise to Medium.
+- **Defect theorem** [hand]: every proper colouring of a $5$-cycle has a singleton. A rewrite on that word does not name the link after the apex slide, and the two fan chords do not force a path in $T-v$ to miss a crossing.
+
 **Open:**
 - VH∃ itself, and U∃.
 - Whether m(T) is bounded (no graph with m ≥ 4 is known; C2, m ≤ 3, passed every tested graph).
@@ -152,7 +158,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 | Owner | Task |
 |---|---|
 | Math | **Task B:** compile the unequal-pole belt walk in Lean. Done so far: the recurrence moves, the D and S caps, and doubled-0 termination. Still to do: integrating the controller, the openings and the symmetry. Math wants Long Table's skeleton statement/API, kept outside the build, with derived transitions rather than assumed ones. |
-| Long Table | Lean drafts for the rest of the belt theorem: every belt hole, equal poles, pole holes, and one combined theorem; VH∃ scope reduction to internally 6-connected triangulations; a constant bound for Theorem P |
+| Long Table | Line 1 of `VHExistsAttack.md`. Next: a landing on a separating triangle at $T$-degree $\ge 6$ (re-route or stop before $F$), then the carry in (D) of `interface/interior-witness.md`. Pending Math review: the interior-witness lift, the fixed-hole theorem, the killed off-belt potential, and the defect theorem (`docs/working/creative-intel-2026-10-05/`). The belt Lean drafts and a constant bound for Theorem P stay side projects unless line 1 or line 2 of `VHExistsAttack.md` needs them. |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
 | Navigator | Record the actual decisions. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |
