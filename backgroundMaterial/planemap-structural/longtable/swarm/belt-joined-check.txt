@@ -1,0 +1,38 @@
+===== G_5: |V|=12, |E|=30 (3|V|-6=30)
+belt degrees [5], pole degrees 5,5
+automorphisms: rotation True, ring swap True, reflection True
+explicit block colouring AB: proper True; restricted to G-a, u-ring colours [1, 2, 3] (filled target: True)
+[belt hole u0] orbits 20 (labelled 480); equal-pole 1, unequal 19
+  equal-pole orbit: star size 3; slides+Kempe BFS distance 1
+  unequal: every start classified and filled by the table walk; opening cases {'F0': 10, 'O1': 2, 'O1R': 2, 'O2': 1, 'O3a': 2, 'O3aR': 2}
+  linear-interval invariant and potential drop (4 or 6) checked at every landing; most landings in one walk 2
+  step rows used: {'D': 1, 'Sτ1': 4, 'Z1:filled': 4, 'Z3:filled': 4, 'fill': 1}
+  longest table walk 4 slides (O1: Sτ1@3 Z1:filled); slides-only BFS shortest-walk maximum 2
+[pole hole a] orbits 20 (labelled 480); filled 10; singleton on u-ring 10 (slide to a belt hole, then table walk / star: all filled); no singleton 0
+[Florek 3.1 check] Kempe classes among colourings of G_5-a (orbits): 1
+===== G_8: |V|=18, |E|=48 (3|V|-6=48)
+belt degrees [5], pole degrees 8,8
+automorphisms: rotation True, ring swap True, reflection True
+explicit block colouring AAAA: proper True; restricted to G-a, u-ring colours [1, 2] (filled target: True)
+[belt hole u0] orbits 122 (labelled 2928); equal-pole 1, unequal 121
+  equal-pole orbit: star size 4; slides+Kempe BFS distance 1
+  unequal: every start classified and filled by the table walk; opening cases {'F0': 48, 'O1': 12, 'O1R': 12, 'O2': 17, 'O3a': 4, 'O3aR': 4, 'O3b': 12, 'O3bR': 12}
+  linear-interval invariant and potential drop (4 or 6) checked at every landing; most landings in one walk 4
+  step rows used: {'D': 41, 'S0': 48, 'Sρτ-A': 4, 'Sρτ-A:fill': 10, 'Sρτ-B': 10, 'Sτ1': 14, 'Z1:filled': 8, 'Z3:filled': 2, 'Z4:filled': 4, 'Z6:filled': 8, 'fill': 41}
+  longest table walk 10 slides (O2: D@0 D@2 D@4 D@6 fill); slides-only BFS shortest-walk maximum 4
+[pole hole a] orbits 326 (labelled 7824); filled 46; singleton on u-ring 248 (slide to a belt hole, then table walk / star: all filled); no singleton 32
+  no-singleton starts: one Kempe swap at the pole gives a fill or a u-ring singleton in 32/32; slides+Kempe BFS max distance 3
+[Florek 3.1 check] Kempe classes among colourings of G_8-a (orbits): 1
+===== G_11: |V|=24, |E|=66 (3|V|-6=66)
+belt degrees [5], pole degrees 11,11
+automorphisms: rotation True, ring swap True, reflection True
+explicit block colouring AAAAB: proper True; restricted to G-a, u-ring colours [1, 2, 3] (filled target: True)
+[belt hole u0] orbits 808 (labelled 19392); equal-pole 1, unequal 807
+  equal-pole orbit: star size 5; slides+Kempe BFS distance 1
+  unequal: every start classified and filled by the table walk; opening cases {'F0': 462, 'O1': 46, 'O1R': 46, 'O2': 81, 'O3a': 46, 'O3aR': 46, 'O3b': 40, 'O3bR': 40}
+  linear-interval invariant and potential drop (4 or 6) checked at every landing; most landings in one walk 5
+  step rows used: {'D': 141, 'S0': 120, 'Sρτ-A': 12, 'Sρτ-A:fill': 28, 'Sρτ-B': 56, 'Sτ1': 88, 'Z1:filled': 16, 'Z3:filled': 6, 'Z4:filled': 8, 'Z5:filled': 8, 'Z6:filled': 6, 'Z7:filled': 20, 'Z9:filled': 92, 'fill': 161}
+  longest table walk 14 slides (O1: Sρτ-B@9 Sρτ-A@6 Sρτ-B@4 Z1:filled); slides-only BFS shortest-walk maximum 6
+[pole hole a] orbits 5192 (labelled 124608); filled 462; singleton on u-ring 2288 (slide to a belt hole, then table walk / star: all filled); no singleton 2442
+  no-singleton starts: one Kempe swap at the pole gives a fill or a u-ring singleton in 2409/2442; slides+Kempe BFS max distance 3
+[Florek 3.1 check] Kempe classes among colourings of G_11-a (orbits): 1

@@ -1,0 +1,133 @@
+Move-word classification of shortest fills, orders 12-22 (961 graphs), distinct starts
+per degree-5 vertex (a start proper on several fans counted once; per-fan totals = 3x for
+every 4-colour start, because all three singleton-apex fans are legal there).
+
+Fill length by gap flag (p13: bg-path 1~3 present; p14: bd-path 1~4 present):
+  (0,): 1839670
+  (1, 'gap', False, 'p13', False, 'p14', False): 615157
+  (1, 'gap', False, 'p13', False, 'p14', True): 462046
+  (1, 'gap', False, 'p13', True, 'p14', False): 462046
+  (2, 'gap', True, 'p13', True, 'p14', True): 380253
+  (3, 'gap', True, 'p13', True, 'p14', True): 6531
+  (4, 'gap', True, 'p13', True, 'p14', True): 132
+
+l = 1 starts: which single moves fill (K = Kempe pair class, S = slide to middle/side):
+  ('Kbg', 'Smid'): 123437
+  ('Kbg', 'Smid', 'Sside'): 68036
+  ('Kbg', 'Sside'): 585780
+  ('Kbg',): 761996
+
+l = 2: 380253 starts
+  starts admitting each word as a shortest fill:
+    KK: 380253
+    KS: 300469
+    SK: 218362
+    SS: 64877
+  starts with NO all-Kempe shortest fill: 0
+  final hole degree sets (over all shortest fills of a start):
+    [5]: 226154
+    [5, 6]: 122667
+    [5, 7]: 18313
+    [5, 6, 7]: 6786
+    [5, 8]: 4393
+    [5, 6, 8]: 1352
+    [5, 9]: 308
+    [5, 7, 8]: 156
+    [5, 6, 9]: 83
+    [5, 6, 7, 8]: 31
+    [5, 6, 7, 9]: 4
+    [5, 7, 9]: 4
+    [5, 6, 8, 9]: 1
+    [5, 8, 9]: 1
+  most common link-pattern sequences (deg:colour counts), starts admitting each:
+    5:2111 > 5:2111 > 5:221: 380253
+    5:2111 > 5:2111 > 6:321: 129479
+    5:2111 > 6:2211 > 6:321: 86948
+    5:2111 > 6:2211 > 5:221: 28234
+    5:2111 > 5:2111 > 7:331: 25294
+    5:2111 > 6:3111 > 6:321: 24512
+    5:2111 > 7:3211 > 7:331: 14848
+    5:2111 > 5:2111 > 8:431: 5862
+    5:2111 > 8:3311 > 8:431: 2110
+    5:2111 > 8:4211 > 8:431: 1969
+    5:2111 > 7:3211 > 6:321: 1893
+    5:2111 > 8:3311 > 5:221: 720
+
+l = 3: 6531 starts
+  starts admitting each word as a shortest fill:
+    KKK: 6392
+    SKK: 5917
+    KKS: 4616
+    KSK: 4595
+    SKS: 2232
+    SSK: 2222
+    SSS: 1202
+    KSS: 511
+  starts with NO all-Kempe shortest fill: 139
+  final hole degree sets (over all shortest fills of a start):
+    [5, 6]: 3344
+    [5]: 1352
+    [5, 6, 7]: 840
+    [5, 7]: 621
+    [5, 6, 8]: 130
+    [5, 8]: 130
+    [6]: 70
+    [5, 7, 8]: 15
+    [5, 6, 9]: 6
+    [5, 9]: 6
+    [5, 6, 7, 8]: 5
+    [6, 7]: 5
+    [8]: 3
+    [6, 8]: 2
+    [7]: 2
+  most common link-pattern sequences (deg:colour counts), starts admitting each:
+    5:2111 > 5:2111 > 5:2111 > 5:221: 6405
+    5:2111 > 6:2211 > 6:2211 > 6:222: 2571
+    5:2111 > 5:2111 > 5:2111 > 6:321: 2268
+    5:2111 > 6:2211 > 6:2211 > 6:321: 1975
+    5:2111 > 5:2111 > 6:2211 > 6:321: 1962
+    5:2111 > 6:2211 > 5:2111 > 5:221: 1387
+    5:2111 > 6:2211 > 6:2211 > 5:221: 1387
+    5:2111 > 5:2111 > 6:3111 > 6:321: 671
+    5:2111 > 7:2221 > 7:2221 > 7:322: 453
+    5:2111 > 6:2211 > 6:3111 > 6:321: 452
+    5:2111 > 5:2111 > 5:2111 > 7:331: 407
+    5:2111 > 5:2111 > 7:3211 > 7:331: 407
+
+l = 4: 132 starts
+  starts admitting each word as a shortest fill:
+    SKKK: 132
+    KKKK: 131
+    KSKK: 122
+    SSKK: 116
+    SKKS: 94
+    SKSK: 94
+    KKKS: 81
+    KKSK: 81
+    SSKS: 70
+    SKSS: 60
+    SSSK: 59
+    KSKS: 51
+    KSSK: 51
+    KSSS: 25
+    SSSS: 20
+    KKSS: 7
+  starts with NO all-Kempe shortest fill: 1
+  final hole degree sets (over all shortest fills of a start):
+    [5, 6]: 89
+    [5, 6, 7]: 34
+    [5, 6, 8]: 5
+    [5, 6, 7, 8]: 4
+  most common link-pattern sequences (deg:colour counts), starts admitting each:
+    5:2111 > 5:2111 > 5:2111 > 5:2111 > 5:221: 132
+    5:2111 > 5:2111 > 6:2211 > 6:2211 > 6:222: 82
+    5:2111 > 6:2211 > 6:2211 > 6:2211 > 6:222: 70
+    5:2111 > 5:2111 > 6:2211 > 6:2211 > 6:321: 66
+    5:2111 > 6:3111 > 6:2211 > 6:2211 > 6:222: 55
+    5:2111 > 6:2211 > 6:2211 > 6:2211 > 6:321: 54
+    5:2111 > 6:2211 > 6:2211 > 5:2111 > 5:221: 53
+    5:2111 > 6:2211 > 6:2211 > 6:2211 > 5:221: 53
+    5:2111 > 6:2211 > 5:2111 > 5:2111 > 5:221: 52
+    5:2111 > 5:2111 > 5:2111 > 5:2111 > 6:321: 49
+    5:2111 > 6:3111 > 6:2211 > 6:2211 > 6:321: 49
+    5:2111 > 5:2111 > 5:2111 > 6:2211 > 6:321: 47

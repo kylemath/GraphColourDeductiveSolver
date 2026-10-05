@@ -1,0 +1,96 @@
+Optimal first moves at gap starts (distinct starts), orders 12-22
+
+l = 2: 380253 gap starts. Starts admitting each optimal first move:
+  ad:{a2}          355112
+  ad:{a0,d}        351484
+  S:side           196542
+  bd:{}            135962
+  bd:{b,d}         134833
+  gd:{}            132564
+  gd:{g,d}         122480
+  ab:{}            98595
+  ab:{a0,b,a2}     98052
+  ad:{}            63422
+  S:b              44699
+  most frequent optimal-first-move sets at l = 2:
+      69501  ad:{a0,d} ad:{a2}
+      41434  S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{} gd:{g,d} gd:{}
+      27738  S:side ad:{a0,d} ad:{a2}
+      24564  S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2}
+      17954  S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+      15099  ad:{a0,d} ad:{a2} bd:{b,d} bd:{} gd:{g,d} gd:{}
+      13699  ad:{a0,d} ad:{a2} gd:{g,d} gd:{}
+      13568  ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2}
+      11425  ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+       8730  ad:{a0,d} ad:{a2} ad:{}
+       8427  S:side ab:{a0,b,a2} ab:{}
+       8099  S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2} ad:{}
+       6895  S:b S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{} gd:{g,d} gd:{}
+       6399  S:b ad:{a0,d} ad:{a2} gd:{g,d} gd:{}
+       6389  S:side ad:{a0,d} ad:{a2} ad:{}
+       5455  ad:{a0,d} ad:{a2} gd:{}
+       4687  S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+       4548  S:b ad:{a0,d} ad:{a2} ad:{}
+       3941  S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2} bd:{b,d} bd:{} gd:{g,d} gd:{}
+       3342  ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2} ad:{}
+       3176  S:side ad:{a0,d} ad:{a2} gd:{g,d} gd:{}
+       3019  ab:{a0,b,a2} ab:{}
+       2802  S:side ad:{a0,d} ad:{a2} ad:{} bd:{b,d} bd:{} gd:{g,d} gd:{}
+       2484  S:side ad:{a0,d} ad:{a2} ad:{} bd:{b,d} bd:{}
+       2448  S:b S:side ad:{a0,d} ad:{a2} ad:{}
+
+l = 3: 6531 gap starts. Starts admitting each optimal first move:
+  ad:{a0,d}        6320
+  ad:{a2}          6315
+  S:side           5651
+  S:b              3105
+  bd:{}            1978
+  bd:{b,d}         1970
+  gd:{}            1036
+  gd:{g,d}         1036
+  ab:{}            703
+  ab:{a0,b,a2}     682
+  ad:{}            552
+  most frequent optimal-first-move sets at l = 3:
+       1267  S:side ad:{a0,d} ad:{a2}
+       1006  S:b S:side ad:{a0,d} ad:{a2}
+        652  S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+        576  S:b S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+        559  S:b S:side ad:{a0,d} ad:{a2} gd:{g,d} gd:{}
+        269  ad:{a0,d} ad:{a2}
+        251  S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2}
+        236  ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+        227  S:b S:side ad:{a0,d} ad:{a2} ad:{}
+        184  S:side ad:{a0,d} ad:{a2} gd:{g,d} gd:{}
+        121  S:side
+        113  S:b ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+        108  S:b ad:{a0,d} ad:{a2}
+        101  S:b S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{} gd:{g,d} gd:{}
+        100  S:side ad:{a0,d} ad:{a2} ad:{}
+         79  S:b S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2}
+         71  S:b S:side ad:{a0,d} ad:{a2} ad:{} bd:{b,d} bd:{}
+         56  S:b S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+         53  S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+         52  S:b S:side ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2} gd:{g,d} gd:{}
+         44  S:b S:side ad:{a0,d} ad:{a2} ad:{} gd:{g,d} gd:{}
+         34  S:side ab:{} ad:{a0,d} ad:{a2}
+         29  ab:{a0,b,a2} ab:{} ad:{a0,d} ad:{a2}
+         28  S:side ab:{a0,b,a2} ab:{}
+         25  S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{} gd:{g,d} gd:{}
+
+l = 4: 132 gap starts. Starts admitting each optimal first move:
+  ad:{a2}          131
+  ad:{a0,d}        131
+  S:b              119
+  S:side           111
+  bd:{}            7
+  bd:{b,d}         7
+  ad:{}            1
+  most frequent optimal-first-move sets at l = 4:
+         89  S:b S:side ad:{a0,d} ad:{a2}
+         21  S:b ad:{a0,d} ad:{a2}
+         13  S:side ad:{a0,d} ad:{a2}
+          7  S:b S:side ad:{a0,d} ad:{a2} bd:{b,d} bd:{}
+          1  S:b S:side
+          1  S:b S:side ad:{a0,d} ad:{a2} ad:{}
+

@@ -256,3 +256,17 @@ The overnight handoff (`NightHandoff.md`, revision 70) moves the proposed proof 
 5. Re-check the night swarm's load-bearing claims before citing them.
 
 WP12 is parked: the release request is withdrawn. The stop rules above still apply.
+
+### Update, 5 October (later): agent team results
+
+Four Long Table agents produced the following. The audit chat reviews; math accepts.
+
+- `longtable/swarm/belt-joined.md`: the belt theorem by hand for every hole of \(G_n\), \(n\ge5\). The one exception is the no-singleton pole case, which cites Florek 3.1. It is checked on \(n=5..11\).
+- `longtable/swarm/vh-exists.md`: the VH∃ induction, the lemmas, the Kempe-class form, and the candidate U∃.
+- `longtable/wp18/analysis-17-1.md`: the diagonal reduction, and why 17:1 has m = 3.
+- `longtable/wp18/mechanism.md`: Lemma A; Kempe swaps, not slides, do the work.
+
+Next:
+1. Answer reviews of the belt page.
+2. Draft WP19 (order 23) only if math asks for it.
+3. Try for a hand proof of the no-singleton pole case without Florek.

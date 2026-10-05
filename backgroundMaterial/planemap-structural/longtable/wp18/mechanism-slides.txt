@@ -1,0 +1,21 @@
+(1) Lemma E check over all gap starts (orders 12-22):
+  ('KPd_fail_implies_Xd', True): 386916
+  ('KPg_fail_implies_Xg', True): 386916
+  ('Xg,KPg', False, True): 239777
+  ('Xg,KPg', True, False): 65413
+  ('Xg,KPg', True, True): 81726
+
+(2) Slide-needed starts (pure-Kempe length kappa > mixed length l):
+  count: 140; by l: {3: 139, 4: 1}; kappa - l: {1: 140}
+    optimal first moves ('S:side(deg 6)',): 110
+    optimal first moves ('S:side(deg 5)',): 6
+    optimal first moves ('S:b(deg 7)',): 4
+    optimal first moves ('S:b(deg 7)', 'S:side(deg 5)'): 4
+    optimal first moves ('S:b(deg 7)', 'S:side(deg 6)'): 4
+    optimal first moves ('S:b(deg 8)', 'S:side(deg 6)'): 3
+    optimal first moves ('S:b(deg 8)',): 3
+    optimal first moves ('S:side(deg 7)',): 2
+    optimal first moves ('S:side(deg 5)', 'S:side(deg 7)'): 2
+    optimal first moves ('S:b(deg 6)', 'S:side(deg 5)', 'S:side(deg 6)'): 1
+    optimal first moves ('S:side(deg 5)', 'S:side(deg 6)'): 1
+  smallest example: order 17 graph 0 v 2 l 3 kappa 4 start [0, 1, 4, 2, 1, 3, 2, 3, 1, 3, 0, 2, 0, 1, 0, 2, 3]

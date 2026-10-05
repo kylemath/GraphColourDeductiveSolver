@@ -66,3 +66,20 @@ Start counts are per (v, τ), so a colouring that is proper on several fans is c
 - P4 `44b69b35…c4cc4`
 
 Inputs: P1 and P2 come from `wp11-run-manifest.json`. P3 and P4 come from `wp17-last-roots/triangulations-min5-{21,22}.txt`, whose hashes match the recorded `plantri -m5 -a` outputs (`5c203958…`, `6137dc19…`).
+
+## Independent replay by the audit chat (5 October)
+
+`audit/wp18_independent.py` → `audit/wp18-independent-results.json`, reviewed in `SolvingFrameworkPlan/IndependentWP18AndBeltReview.md`. It imports neither the producer nor our checker.
+
+- **m(17:1) = 3 is independently confirmed.** Every legal pair was checked. All 786 distinct admitted starts over the twelve degree-5 roots were enumerated, and every start count and histogram on all 60 fans was reproduced. The per-root profile is (3,3,4,4,4).
+- All 67,335 witnesses from P1–P4 were replayed, and every shorter path was excluded exhaustively.
+- *[Superseded the same day by a complete replay, `SolvingFrameworkPlan/FullWP18Replay.md`.]* All 68,890 pairs on all 961 graphs were re-enumerated independently: 3,765,835 distinct admitted states and 7,618,165 fan memberships. Every start count, histogram, pair maximum L and graph minimum m agrees. **The upper bounds are now independently reproduced:** m(T) ≤ 2 on every graph except 17:1, and every tested start has distance ≤ 4. These are finite computations on the supplied graphs, not universal claims. Reproducer: `audit/wp18_full_replay.py` → `audit/wp18-full-replay-results.json`.
+
+## Known producer limitations, to fix in a future version
+
+These were found by the audit. The historical source (`3fce037`, `12ca2ba`) is left as it is. None of them affects these outputs, which have positive start counts and no interruptions.
+
+1. Deadlines are checked only between starts, not during enumeration or breadth-first search.
+2. The memory and output-size limits are declared but not enforced.
+3. An interruption discards the graph's partial counts instead of recording them.
+4. An empty start family would be given L = −1. It should be recorded explicitly as empty.
