@@ -1,0 +1,38 @@
+{
+ "checker": "wp19_check.py (independent, stdlib only)",
+ "declaration_sha256_recomputed": "56d1c97b8b913822822fe0ce5c8b4f2d05827c9845a1810c61037619e4b85a9e",
+ "results": [
+  {
+   "failures": [],
+   "info": {
+    "declaration_sha256": "56d1c97b8b913822822fe0ce5c8b4f2d05827c9845a1810c61037619e4b85a9e",
+    "file": "wp19-P1.json",
+    "input_sha256_claimed": "d233b4efafdd3510f133760d9d918beab70e7496759aef512fb302cbd594bafa",
+    "input_sha256_matches_declared_P1": true,
+    "input_sha256_recomputed": "not checked (no --input given)",
+    "source_sha256": {
+     "mass_core.py": "7e7d27296d14f8d097b4e0fe4770dcdd30d4ce36f1af807ffd4123b80d3d8bc1",
+     "wp18/wp18_core.py": "ae4af476b263756d03249dffedefbb2a0553f418c9cb6108e75e8109ef15ac1d",
+     "wp19/wp19_core.py": "b1bb9b931d00f2f553b59d24b0258aa2581abb32c8f57ab1f3b0473153a91a9e",
+     "wp19/wp19_run.py": "53aaa4d2f62d639eef44c1a893fbc2a7bf93948122e1b49d53fb33224dad984f"
+    },
+    "truncated": false
+   },
+   "producer_claims_not_verified": "Upper bounds (exact L where no witness is given, m, hist_l, hist_k, start counts, tstar_classes, locked_classes, U==true verdicts) are PRODUCER CLAIMS and are not re-derived by this checker; only certificates are verified.",
+   "stats": {
+    "graphs_checked": 2070,
+    "graphs_interrupted": 0,
+    "graphs_unresolved": 0,
+    "kills_on_unresolved_graphs": [],
+    "kills_verified": {},
+    "pairs": 155593,
+    "u_fail_classes_verified": 320,
+    "u_fail_missing_truncated": 0,
+    "warnings": [],
+    "witnesses_missing_truncated": 0,
+    "witnesses_verified": 23340
+   }
+  }
+ ],
+ "total_failures": 0
+}
