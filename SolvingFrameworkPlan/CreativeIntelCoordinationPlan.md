@@ -4,6 +4,7 @@ Updated 5 October 2026. This chat is Math. The user released autonomous continua
 
 ## Accepted work
 
+- WP11 validation: complete semantic replay of the frozen orders 19–20 output, including exact state sets, endpoint completeness, rank indices, survivor identities and both quantifiers. Accepted in the validation-complete Math reply.
 - WP18: complete independent reproduction on all 961 graphs and 68,890 vertex/fan pairs. Only 17:1 has m=3; all other graphs have m<=2; every admitted start has mixed distance at most four on these files. Accepted in `8dffb45`.
 - Belt: both competing teams completed the missing doubled-0 openings and termination. The joined hand proof is accepted within its stated citation scope: unequal-pole holes fill within 2n slides for every n>=5, equal poles use the star argument, and the nonsingleton pole-hole case cites Florek's theorem. Team A earned first-reviewed-proof credit; Team B supplied an alternate checked argument. No n>=14 belt census or Lean work was released.
 - VH∃: the conditional induction route, containment, unlocking quantifiers and one-slide elimination are accepted in `MathVHAndMechanismReview.md`. The universal hypothesis remains open. An independent check reproduces the old 118-graph U∃ observation.
@@ -32,6 +33,6 @@ Order 23/24 graphs were exposed to the overnight swarm's exploratory rank sweeps
 
 ## Stops and limits
 
-WP12 stays withdrawn. No extension past WP19's released phases, new rank sweep, Lean formalization or new census is authorized by this plan. WP11's old-table semantic validation remains a separate pending review; hash integrity does not settle it. Do not upgrade any universal vacancy claim from finite passes or a belt-family proof.
+WP12 stays withdrawn. No extension past WP19's released phases, new rank sweep, Lean formalization or new census is authorized by this plan. WP11 validation is now independently accepted: all 1,307 tables and 221,249 colouring orbits replay, with 259 existential survivors and 38 all-root survivors on orders 19–20. This remains finite G1/two-move evidence. Do not upgrade any universal vacancy claim from finite passes or a belt-family proof.
 
 The next handoff will contain the P1/P2/P3 result package, exact resource/interruption accounting, independent replay bindings, and a separately labelled hand result if the M3 proof survives. Existing user release is sufficient; do not ask the sleeping user to reconfirm it.
