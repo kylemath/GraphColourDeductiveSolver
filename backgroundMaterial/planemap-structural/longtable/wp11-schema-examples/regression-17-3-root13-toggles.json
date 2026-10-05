@@ -1,0 +1,654 @@
+{
+ "schema": "wp11-regression-v1",
+ "graph": {
+  "order": 17,
+  "graph_index": 3,
+  "ascii": "17 bcdef,afghic,abijd,acjke,adklf,aelmgb,bfmnh,bgnoi,bhopjc,cipkd,djple,ekpqmf,flqng,gmqoh,hnqpi,ioqlkj,lponm",
+  "ascii_sha256": "fc113c7406aad52dadfbfbf5af36a04a59cee94b78c109dcbe6d5f90567c0b29"
+ },
+ "root": 13,
+ "opposite_hub": 3,
+ "vertex_order": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  14,
+  15,
+  16
+ ],
+ "boundary_cyclic_order": [
+  6,
+  12,
+  16,
+  14,
+  7
+ ],
+ "features": [
+  "q",
+  "lin",
+  "L",
+  "Lall",
+  "links",
+  "shortLinks",
+  "repMass",
+  "hubToggles"
+ ],
+ "pits": [
+  {
+   "trap_state": 19,
+   "trap_coloring": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    3,
+    0,
+    3,
+    0,
+    1,
+    0,
+    1,
+    2,
+    3
+   ],
+   "pair": [
+    1,
+    3
+   ],
+   "two_vertex_component": [
+    3,
+    9
+   ],
+   "complementary_component": [
+    1,
+    5,
+    7,
+    11,
+    14,
+    16
+   ],
+   "raw_endpoint_two_vertex_swap": [
+    0,
+    1,
+    2,
+    3,
+    2,
+    3,
+    2,
+    3,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    3
+   ],
+   "raw_endpoint_complementary_swap": [
+    0,
+    3,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    0,
+    3,
+    0,
+    3,
+    0,
+    3,
+    2,
+    1
+   ],
+   "raw_vertices_changed": [
+    2,
+    6
+   ],
+   "global_renaming_between_raw_endpoints": {
+    "0": 0,
+    "1": 3,
+    "2": 2,
+    "3": 1
+   },
+   "canonical_endpoint": [
+    0,
+    1,
+    2,
+    3,
+    2,
+    3,
+    2,
+    3,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    3
+   ],
+   "twin_state": 98,
+   "endpoint_features": {
+    "q": 115,
+    "lin": 25,
+    "L": 9,
+    "Lall": 13,
+    "links": 6,
+    "shortLinks": 1,
+    "repMass": 43,
+    "hubToggles": 3
+   },
+   "endpoint_rank_pq": [
+    1,
+    115
+   ],
+   "trap_rank_pq": [
+    1,
+    107
+   ]
+  },
+  {
+   "trap_state": 29,
+   "trap_coloring": [
+    0,
+    1,
+    2,
+    1,
+    3,
+    2,
+    3,
+    0,
+    3,
+    0,
+    2,
+    0,
+    1,
+    2,
+    1,
+    3
+   ],
+   "pair": [
+    1,
+    3
+   ],
+   "two_vertex_component": [
+    3,
+    4
+   ],
+   "complementary_component": [
+    1,
+    6,
+    8,
+    12,
+    15,
+    16
+   ],
+   "raw_endpoint_two_vertex_swap": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    0,
+    3,
+    0,
+    2,
+    0,
+    1,
+    2,
+    1,
+    3
+   ],
+   "raw_endpoint_complementary_swap": [
+    0,
+    3,
+    2,
+    1,
+    3,
+    2,
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    3,
+    2,
+    3,
+    1
+   ],
+   "raw_vertices_changed": [
+    2,
+    6
+   ],
+   "global_renaming_between_raw_endpoints": {
+    "0": 0,
+    "1": 3,
+    "2": 2,
+    "3": 1
+   },
+   "canonical_endpoint": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    0,
+    3,
+    0,
+    2,
+    0,
+    1,
+    2,
+    1,
+    3
+   ],
+   "twin_state": 48,
+   "endpoint_features": {
+    "q": 115,
+    "lin": 25,
+    "L": 9,
+    "Lall": 13,
+    "links": 6,
+    "shortLinks": 1,
+    "repMass": 43,
+    "hubToggles": 3
+   },
+   "endpoint_rank_pq": [
+    1,
+    115
+   ],
+   "trap_rank_pq": [
+    1,
+    107
+   ]
+  },
+  {
+   "trap_state": 52,
+   "trap_coloring": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    0,
+    3,
+    1,
+    2,
+    3,
+    0,
+    2,
+    0,
+    1
+   ],
+   "pair": [
+    0,
+    3
+   ],
+   "two_vertex_component": [
+    0,
+    3
+   ],
+   "complementary_component": [
+    6,
+    7,
+    8,
+    11,
+    12,
+    15
+   ],
+   "raw_endpoint_two_vertex_swap": [
+    3,
+    1,
+    2,
+    0,
+    1,
+    2,
+    3,
+    0,
+    3,
+    1,
+    2,
+    3,
+    0,
+    2,
+    0,
+    1
+   ],
+   "raw_endpoint_complementary_swap": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    0,
+    3,
+    0,
+    1,
+    2,
+    0,
+    3,
+    2,
+    3,
+    1
+   ],
+   "raw_vertices_changed": [
+    2,
+    6
+   ],
+   "global_renaming_between_raw_endpoints": {
+    "3": 0,
+    "1": 1,
+    "2": 2,
+    "0": 3
+   },
+   "canonical_endpoint": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    0,
+    3,
+    0,
+    1,
+    2,
+    0,
+    3,
+    2,
+    3,
+    1
+   ],
+   "twin_state": 47,
+   "endpoint_features": {
+    "q": 115,
+    "lin": 25,
+    "L": 9,
+    "Lall": 13,
+    "links": 6,
+    "shortLinks": 1,
+    "repMass": 43,
+    "hubToggles": 3
+   },
+   "endpoint_rank_pq": [
+    1,
+    115
+   ],
+   "trap_rank_pq": [
+    1,
+    107
+   ]
+  },
+  {
+   "trap_state": 76,
+   "trap_coloring": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    3,
+    2,
+    3,
+    0,
+    1,
+    0,
+    2,
+    0,
+    2,
+    3,
+    1
+   ],
+   "pair": [
+    2,
+    3
+   ],
+   "two_vertex_component": [
+    2,
+    3
+   ],
+   "complementary_component": [
+    5,
+    6,
+    7,
+    11,
+    14,
+    15
+   ],
+   "raw_endpoint_two_vertex_swap": [
+    0,
+    1,
+    3,
+    2,
+    1,
+    3,
+    2,
+    3,
+    0,
+    1,
+    0,
+    2,
+    0,
+    2,
+    3,
+    1
+   ],
+   "raw_endpoint_complementary_swap": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    2,
+    0,
+    1,
+    0,
+    3,
+    0,
+    3,
+    2,
+    1
+   ],
+   "raw_vertices_changed": [
+    2,
+    6
+   ],
+   "global_renaming_between_raw_endpoints": {
+    "0": 0,
+    "1": 1,
+    "3": 2,
+    "2": 3
+   },
+   "canonical_endpoint": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    2,
+    0,
+    1,
+    0,
+    3,
+    0,
+    3,
+    2,
+    1
+   ],
+   "twin_state": 54,
+   "endpoint_features": {
+    "q": 115,
+    "lin": 25,
+    "L": 9,
+    "Lall": 13,
+    "links": 6,
+    "shortLinks": 1,
+    "repMass": 43,
+    "hubToggles": 3
+   },
+   "endpoint_rank_pq": [
+    1,
+    115
+   ],
+   "trap_rank_pq": [
+    1,
+    107
+   ]
+  },
+  {
+   "trap_state": 96,
+   "trap_coloring": [
+    0,
+    1,
+    2,
+    3,
+    2,
+    3,
+    2,
+    0,
+    3,
+    0,
+    1,
+    0,
+    1,
+    1,
+    2,
+    3
+   ],
+   "pair": [
+    1,
+    3
+   ],
+   "two_vertex_component": [
+    3,
+    10
+   ],
+   "complementary_component": [
+    1,
+    5,
+    8,
+    12,
+    14,
+    16
+   ],
+   "raw_endpoint_two_vertex_swap": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    0,
+    3,
+    0,
+    3,
+    0,
+    1,
+    1,
+    2,
+    3
+   ],
+   "raw_endpoint_complementary_swap": [
+    0,
+    3,
+    2,
+    3,
+    2,
+    1,
+    2,
+    0,
+    1,
+    0,
+    1,
+    0,
+    3,
+    3,
+    2,
+    1
+   ],
+   "raw_vertices_changed": [
+    2,
+    6
+   ],
+   "global_renaming_between_raw_endpoints": {
+    "0": 0,
+    "1": 3,
+    "2": 2,
+    "3": 1
+   },
+   "canonical_endpoint": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    0,
+    3,
+    0,
+    3,
+    0,
+    1,
+    1,
+    2,
+    3
+   ],
+   "twin_state": 16,
+   "endpoint_features": {
+    "q": 115,
+    "lin": 25,
+    "L": 9,
+    "Lall": 13,
+    "links": 6,
+    "shortLinks": 1,
+    "repMass": 43,
+    "hubToggles": 3
+   },
+   "endpoint_rank_pq": [
+    1,
+    115
+   ],
+   "trap_rank_pq": [
+    1,
+    107
+   ]
+  }
+ ],
+ "producer": {
+  "wp11_regression_root13.py": "324b1416cd16a4f03e956e9195286a188e34060be1a74bd5a6299f11eecac251",
+  "wp11_cert.py": "78f189a23abd68c3e58a6d9647ebd0b053e8706c025b5f8c1e73edd0d01056ea",
+  "mass_core.py": "7e7d27296d14f8d097b4e0fe4770dcdd30d4ce36f1af807ffd4123b80d3d8bc1"
+ },
+ "note": "Pre-release regression; reproduces the published WP7d toggles. Not a WP11 search output."
+}

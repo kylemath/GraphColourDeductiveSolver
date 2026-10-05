@@ -1,0 +1,14941 @@
+{
+ "schema": "wp11-run-manifest-v1",
+ "declaration": "WP11-rank-synthesis-tier1-declaration.md (version 2, inline overrides)",
+ "features": [
+  "q",
+  "lin",
+  "L",
+  "Lall",
+  "links",
+  "shortLinks",
+  "repMass",
+  "hubToggles"
+ ],
+ "rank": "lexicographic (p, sum_i w_i f_i); macro <= 2 whole active component swaps; endpoint must decrease",
+ "quantifiers": {
+  "primary": "for all T exists r in D(T) for all non-target c exists decreasing macro",
+  "secondary": "for all T for all r in D(T) ...",
+  "root_choice": "recorded as a witness only; not a selector"
+ },
+ "weight_registry": [
+  {
+   "id": 0,
+   "subtier": "1a",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 1,
+   "subtier": "1a",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 2,
+   "subtier": "1a",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 3,
+   "subtier": "1a",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 4,
+   "subtier": "1a",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 5,
+   "subtier": "1a",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 6,
+   "subtier": "1a",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 7,
+   "subtier": "1a",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 8,
+   "subtier": "1b",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 9,
+   "subtier": "1b",
+   "weights": [
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 10,
+   "subtier": "1b",
+   "weights": [
+    1,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 11,
+   "subtier": "1b",
+   "weights": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 12,
+   "subtier": "1b",
+   "weights": [
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 13,
+   "subtier": "1b",
+   "weights": [
+    2,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 14,
+   "subtier": "1b",
+   "weights": [
+    3,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 15,
+   "subtier": "1b",
+   "weights": [
+    3,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 16,
+   "subtier": "1b",
+   "weights": [
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 17,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 18,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 19,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 20,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 21,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 22,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 23,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 24,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 25,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 26,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 27,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 28,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 29,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 30,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 31,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 32,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 33,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 34,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 35,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 36,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 37,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 38,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 39,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 40,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 41,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 42,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 43,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 44,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 45,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 46,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 47,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 48,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 49,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 50,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 51,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 52,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 53,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 54,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 55,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 56,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 57,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 58,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 59,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 60,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 61,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 62,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 63,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 64,
+   "subtier": "1b",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 65,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 66,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 67,
+   "subtier": "1b",
+   "weights": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 68,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 69,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 70,
+   "subtier": "1b",
+   "weights": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 71,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 72,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 73,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 74,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 75,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 76,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 77,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 78,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 79,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 80,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 81,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 82,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 83,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 84,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 85,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 86,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 87,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 88,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 89,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 90,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 91,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 92,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 93,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 94,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 95,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 96,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 97,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 98,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 99,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 100,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 101,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 102,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 103,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 104,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 105,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 106,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 107,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 108,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 109,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 110,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 111,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 112,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 113,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 114,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 115,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 116,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 117,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 118,
+   "subtier": "1b",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 119,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 120,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 121,
+   "subtier": "1b",
+   "weights": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 122,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 123,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 124,
+   "subtier": "1b",
+   "weights": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 125,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 126,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 127,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    3,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 128,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 129,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 130,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    3,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 131,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 132,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    2,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 133,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 134,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 135,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 136,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 137,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 138,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 139,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 140,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 141,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 142,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 143,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 144,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 145,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 146,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 147,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 148,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 149,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 150,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 151,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 152,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 153,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 154,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 155,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 156,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 157,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 158,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 159,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 160,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 161,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 162,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 163,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 164,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 165,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 166,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 167,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 168,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 169,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 170,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 171,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 172,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 173,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 174,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 175,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    3,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 176,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 177,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    2,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    2,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 178,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 179,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 180,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 181,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 182,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 183,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 184,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 185,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 186,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 187,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 188,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 189,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 190,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 191,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 192,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 193,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 194,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 195,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 196,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 197,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 198,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 199,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 200,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 201,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 202,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 203,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 204,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 205,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 206,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 207,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 208,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 209,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 210,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 211,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 212,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 213,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    2,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 214,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 215,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 216,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 217,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 218,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 219,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 220,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 221,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 222,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 223,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 224,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 225,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 226,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 227,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 228,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 229,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 230,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 231,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 232,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 233,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 234,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 235,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 236,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 237,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 238,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    3,
+    0
+   ]
+  },
+  {
+   "id": 239,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 240,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    2,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    2,
+    0
+   ]
+  },
+  {
+   "id": 241,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 242,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 243,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 244,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 245,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 246,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 247,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    3
+   ]
+  },
+  {
+   "id": 248,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 249,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    2
+   ]
+  },
+  {
+   "id": 250,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 251,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 252,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": 253,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "id": 254,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1
+   ]
+  },
+  {
+   "id": 255,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 256,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "id": 257,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    1
+   ]
+  },
+  {
+   "id": 258,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    2
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    2
+   ]
+  },
+  {
+   "id": 259,
+   "subtier": "1b",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 260,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 261,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 262,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 263,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 264,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 265,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 266,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 267,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 268,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 269,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 270,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 271,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 272,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 273,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 274,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 275,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 276,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 277,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 278,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 279,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 280,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 281,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 282,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 283,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 284,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 285,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 286,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 287,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 288,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 289,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 290,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 291,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 292,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 293,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 294,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 295,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 296,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 297,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 298,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 299,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 300,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 301,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 302,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 303,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 304,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 305,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 306,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 307,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 308,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 309,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 310,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 311,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 312,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 313,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 314,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 315,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 316,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 317,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 318,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 319,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 320,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 321,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 322,
+   "subtier": "1c",
+   "weights": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 323,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 324,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 325,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 326,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 327,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 328,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 329,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 330,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 331,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 332,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 333,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 334,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 335,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 336,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 337,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 338,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 339,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 340,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 341,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 342,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 343,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 344,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 345,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 346,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 347,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 348,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 349,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 350,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 351,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 352,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 353,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 354,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 355,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 356,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 357,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 358,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 359,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 360,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 361,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 362,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 363,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 364,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 365,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 366,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 367,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 368,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 369,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 370,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 371,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 372,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 373,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 374,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 375,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 376,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 377,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 378,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 379,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 380,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 381,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 382,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 383,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 384,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 385,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 386,
+   "subtier": "1c",
+   "weights": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 387,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 388,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 389,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 390,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 391,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 392,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 393,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 394,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 395,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 396,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 397,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 398,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 399,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 400,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 401,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 402,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 403,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 404,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 405,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 406,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 407,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 408,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 409,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 410,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 411,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 412,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 413,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 414,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 415,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 416,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 417,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 418,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 419,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 420,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 421,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 422,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 423,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 424,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 425,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 426,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 427,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 428,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 429,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 430,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 431,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 432,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 433,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 434,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 435,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 436,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 437,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 438,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 439,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 440,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 441,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 442,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 443,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 444,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 445,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 446,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 447,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 448,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 449,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 450,
+   "subtier": "1c",
+   "weights": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 451,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 452,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 453,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 454,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 455,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 456,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 457,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 458,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 459,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 460,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 461,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 462,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 463,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 464,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 465,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 466,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 467,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 468,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 469,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 470,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 471,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 472,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 473,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 474,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 475,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 476,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 477,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 478,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 479,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 480,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 481,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 482,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 483,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 484,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 485,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 486,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 487,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 488,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 489,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 490,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 491,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 492,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 493,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 494,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 495,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 496,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 497,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 498,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 499,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 500,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 501,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 502,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 503,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 504,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 505,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 506,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 507,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 508,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 509,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 510,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "id": 511,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 512,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 513,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 514,
+   "subtier": "1c",
+   "weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "proportional_class": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  }
+ ],
+ "distinct_weight_vectors": 479,
+ "distinct_proportional_classes": 423,
+ "discovery_graphs": [
+  {
+   "order": 12,
+   "graph_index": 0,
+   "ascii": "12 bcdef,afghc,abhid,acije,adjkf,aekgb,bfklh,bglic,chljd,dilke,ejlgf,gkjih",
+   "ascii_sha256": "18f3ae8edbfdc2a1d787f7a7a6f9a45f0d9c921ee1b1e1d325747c605b27cfc2",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ]
+  },
+  {
+   "order": 14,
+   "graph_index": 0,
+   "ascii": "14 bcdef,afghc,abhid,acije,adjkf,aeklgb,bflmh,bgmic,chmnjd,dinke,ejnlf,fknmg,glnih,imlkj",
+   "ascii_sha256": "5e3b6a9ad95cbf7b520ad765cb949ce78d0c8ca3df672c438b50a422a6b3d3ac",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13
+   ]
+  },
+  {
+   "order": 15,
+   "graph_index": 0,
+   "ascii": "15 bcdefg,aghic,abijd,acjke,adklf,aelmg,afmhb,bgmni,bhnjc,cinokd,djole,ekomf,flonhg,hmoji,jnmlk",
+   "ascii_sha256": "a1a98d8a32bdf27fc49be0bf88848493767cbaf02e7c6560fee30a1d7045b9f9",
+   "degree_five_roots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14
+   ]
+  },
+  {
+   "order": 16,
+   "graph_index": 0,
+   "ascii": "16 bcdef,afghc,abhijd,acjke,adklf,aelmgb,bfmnh,bgnic,chnoj,ciokd,djople,ekpmf,flpng,gmpoih,inpkj,konml",
+   "ascii_sha256": "d074fffa13328712dd0d32165e65e4ccd8d72c9957aceb7716ae5d44ee5b1e13",
+   "degree_five_roots": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    14,
+    15
+   ]
+  },
+  {
+   "order": 16,
+   "graph_index": 1,
+   "ascii": "16 bcdef,afghc,abhijd,acjke,adklf,aelmgb,bfmnh,bgnic,chnoj,ciopkd,djple,ekpmf,flpong,gmoih,inmpj,jomlk",
+   "ascii_sha256": "f5f3e07775f99479d0d37ba3433aa6ffed3c6fea9f7b01dc97813ad1d75b59a4",
+   "degree_five_roots": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14,
+    15
+   ]
+  },
+  {
+   "order": 16,
+   "graph_index": 2,
+   "ascii": "16 bcdef,afghijc,abjkd,ackle,adlmf,aemgb,bfmnh,bgnoi,bhopj,bipkc,cjpld,dkponme,elngf,gmloh,hnlpi,iolkj",
+   "ascii_sha256": "1496ca777ed7d735745f3cc1f4fdd563593453979b10b5151368e55e5cd6ff75",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15
+   ]
+  },
+  {
+   "order": 17,
+   "graph_index": 0,
+   "ascii": "17 bcdef,afghc,abhid,acijke,adklf,aelmgb,bfmnh,bgnoic,chojd,diopk,djpqle,ekqmf,flqng,gmqpoh,hnpji,jonqk,kpnml",
+   "ascii_sha256": "1203efa037ee84da877d10d6f94b4d81f4224dab98ffb995de0abb125fb2b3c5",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    4,
+    6,
+    8,
+    9,
+    11,
+    12,
+    14,
+    15,
+    16
+   ]
+  },
+  {
+   "order": 17,
+   "graph_index": 1,
+   "ascii": "17 bcdef,afghc,abhijd,acjkle,adlmf,aemgb,bfmnoh,bgoic,chopj,cipkd,djpql,dkqnme,elngf,gmlqo,gnqpih,ioqkj,kponl",
+   "ascii_sha256": "2fe8965933d252df3d2a60c67f41f2dfa780abbdf3055074acf2ccf2d4a30f4f",
+   "degree_five_roots": [
+    0,
+    1,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16
+   ]
+  },
+  {
+   "order": 17,
+   "graph_index": 2,
+   "ascii": "17 bcdefg,aghic,abijd,acjke,adklf,aelmg,afmnhb,bgnopi,bhpjc,cipkd,djpoqle,ekqmf,flqng,gmqoh,hnqkp,hokji,konml",
+   "ascii_sha256": "e923cd1e1082626c94cee304201fcb161666b25dead7c40ec9f3e769e87510e6",
+   "degree_five_roots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+   ]
+  },
+  {
+   "order": 17,
+   "graph_index": 3,
+   "ascii": "17 bcdef,afghic,abijd,acjke,adklf,aelmgb,bfmnh,bgnoi,bhopjc,cipkd,djple,ekpqmf,flqng,gmqoh,hnqpi,ioqlkj,lponm",
+   "ascii_sha256": "fc113c7406aad52dadfbfbf5af36a04a59cee94b78c109dcbe6d5f90567c0b29",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    14,
+    16
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 0,
+   "ascii": "18 bcdef,afghc,abhid,acije,adjklf,aelmgb,bfmnh,bgnoic,chopjd,dipke,ejpql,ekqrmf,flrng,gmroh,hnrqpi,ioqkj,kporl,lqonm",
+   "ascii_sha256": "f8c472502e3ea453e374561dd25c38f7c2963970fcbcb57807dc001e7f780dad",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    3,
+    6,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 1,
+   "ascii": "18 bcdef,afghic,abijkd,ackle,adlmnf,aengb,bfnoh,bgopi,bhpjc,cipqk,cjqld,dkqme,elqrn,emrogf,gnrph,horqji,jprmlk,mqpon",
+   "ascii_sha256": "c5de0026f198de1e2c23a5c4d69aac31382b617121e23088e035acee951f60c3",
+   "degree_five_roots": [
+    0,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 2,
+   "ascii": "18 bcdef,afghc,abhid,acijke,adklmnf,aengb,bfnoh,bgopic,chpjd,dipqk,djqle,ekqrm,elron,emogf,gnmrph,horqji,jprlk,lqpom",
+   "ascii_sha256": "60fea2c200a6e13673cc708937a10cef33cdd068de4737a73182fdacd06f060b",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 3,
+   "ascii": "18 bcdef,afghic,abijd,acjkle,adlmnf,aengb,bfnoh,bgopi,bhpjc,cipkd,djpql,dkqme,elqrn,emrogf,gnrph,horqkji,kprml,mqpon",
+   "ascii_sha256": "21d154923d6ff2515507a8705623696c86f9d834b614217715d6e26d3f83e56c",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 4,
+   "ascii": "18 bcdef,afghc,abhid,acijkle,adlmf,aemgb,bfmnh,bgnoic,chojd,diopk,djpql,dkqme,elqrngf,gmroh,hnrpji,jorqk,kprml,mqpon",
+   "ascii_sha256": "39856c962ed44a11377a3b0b67e4e1fecbd7e3020a669eb847819a650ec34f85",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    13,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 5,
+   "ascii": "18 bcdef,afghc,abhijkd,ackle,adlmf,aemngb,bfnoh,bgoic,chopj,cipqk,cjqrld,dkrme,elrnf,fmrqpog,gnpih,ionqj,jpnrk,kqnml",
+   "ascii_sha256": "338d23a93bfb4481bfdc5d65a0980e51f8d8a76277280e14e4a1b596524aa4e5",
+   "degree_five_roots": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 6,
+   "ascii": "18 bcdefg,aghic,abijd,acjkle,adlmf,aemng,afnhb,bgnopi,bhpjc,cipkd,djpql,dkqrme,elrnf,fmrohg,hnrqp,hoqkji,kporl,lqonm",
+   "ascii_sha256": "edd6b96cdaac3d0915a78622964f8594921d058585d8123b24e207bd45e3a654",
+   "degree_five_roots": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12,
+    14,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 7,
+   "ascii": "18 bcdefg,aghijc,abjkd,acklme,admnf,aenog,afohb,bgopqi,bhqrj,birkc,cjrld,dkrqm,dlqpne,empof,fnphg,honmq,hpmlri,iqlkj",
+   "ascii_sha256": "d33974ccd34e004602c13b405a711f23f2ac04b58f519657b375ac93ae3ee386",
+   "degree_five_roots": [
+    2,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 8,
+   "ascii": "18 bcdefg,aghic,abijd,acjkle,adlmf,aemng,afnohb,bgopqi,bhqjc,ciqkd,djqpl,dkprme,elrnf,fmrog,gnrph,horlkq,hpkji,lponm",
+   "ascii_sha256": "ceb55de67360de5ba74e774ca8c53420f422b97a5c3b8f37055ad3a790943d87",
+   "degree_five_roots": [
+    1,
+    2,
+    4,
+    5,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 9,
+   "ascii": "18 bcdefg,aghic,abijd,acjkle,adlmf,aemng,afnohb,bgopi,bhpjc,cipkd,djpql,dkqrme,elrnf,fmrog,gnrqph,hoqkji,kporl,lqonm",
+   "ascii_sha256": "5e15ad04e96dd0de90756f3862c69518fb80181ab62d68ed303bd40b878b1be6",
+   "degree_five_roots": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 10,
+   "ascii": "18 bcdef,afghc,abhid,acijklme,admnf,aengb,bfnopqrh,bgric,chrjd,dirqk,djqpl,dkpom,dlone,emogf,gnmlp,golkq,gpkjr,gqjih",
+   "ascii_sha256": "67e31585c316fff25996c9f2cecbe14a05d89f62839eff62e773de1e4685d61f",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 18,
+   "graph_index": 11,
+   "ascii": "18 bcdef,afghijc,abjkd,ackle,adlmf,aemngb,bfnoh,bgopi,bhpqj,biqkc,cjqld,dkqme,elqrnf,fmrog,gnrph,horqi,iprmlkj,mqpon",
+   "ascii_sha256": "10d32106d4d22b24ed7b1cb002b30f91e5634745d637fa21d5c190c7b38c5bdb",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17
+   ]
+  }
+ ],
+ "validation_graphs": [
+  {
+   "order": 19,
+   "graph_index": 0,
+   "ascii": "19 bcdef,afghc,abhid,acijke,adklmnf,aengb,bfnoh,bgopqic,chqjd,diqrk,djrle,ekrsm,elspon,emogf,gnmph,homsq,hpsrji,jqslk,lrqpm",
+   "ascii_sha256": "746c54266feb75cc79e5ce42044a749418a75c90c3b637b9fcf020f46200e52c",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 1,
+   "ascii": "19 bcdef,afghc,abhid,acijke,adklmf,aemgb,bfmnh,bgnoic,chojd,diopk,djpqle,ekqrm,elrngf,gmrsoh,hnspji,josqk,kpsrl,lqsnm,nrqpo",
+   "ascii_sha256": "927d536d28b28b2029544cab23fac79f1af310426082eacc274a4d5fe35a6c12",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    11,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 2,
+   "ascii": "19 bcdef,afghc,abhid,acijke,adklf,aelmgb,bfmnh,bgnoic,chojd,diopk,djpqle,ekqrmf,flrng,gmrsoh,hnspji,josqk,kpsrl,lqsnm,nrqpo",
+   "ascii_sha256": "ee630171a384c7ea6a3c9692eda694ed794f1014fb8298d41282bd02f90c5a1c",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    4,
+    6,
+    8,
+    9,
+    12,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 3,
+   "ascii": "19 bcdef,afghc,abhid,acijke,adklmf,aemngb,bfnoh,bgopic,chpjd,dipqk,djqle,ekqrsm,elsnf,fmsog,gnsrph,horqji,jprlk,lqpos,lronm",
+   "ascii_sha256": "2bd27bcc49701f43df1b767ff94ef896a3bb82c47a83a6170a54f6699891d4b8",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    6,
+    8,
+    9,
+    10,
+    12,
+    13,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 4,
+   "ascii": "19 bcdef,afghc,abhid,acijkle,adlmf,aemgb,bfmnh,bgnoic,chojd,diopk,djpql,dkqrme,elrngf,gmrsoh,hnspji,josqk,kpsrl,lqsnm,nrqpo",
+   "ascii_sha256": "9e326110e9c5aef972f67e85664d0644d9121fef74d7590b3efce4ebfd45e935",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 5,
+   "ascii": "19 bcdef,afghic,abijd,acjkle,adlmnof,aeogb,bfoph,bgpqi,bhqjc,ciqkd,djqrl,dkrme,elrsn,emspo,enpgf,gonsqh,hpsrkji,kqsml,mrqpn",
+   "ascii_sha256": "3f2e1163a5da58b2ea38eaafb9484374912656b924e7ee7da168b96965b6ac00",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 6,
+   "ascii": "19 bcdef,afghic,abijd,acjkle,adlmnf,aengb,bfnoh,bgopi,bhpqjc,ciqkd,djqrl,dkrme,elrsn,emsogf,gnsph,hosqi,ipsrkj,kqsml,mrqpon",
+   "ascii_sha256": "7dde10952388915f80fd2c144eaff6f58f78513cf69624cd37691e3fa45f5f0c",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    17
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 7,
+   "ascii": "19 bcdef,afghic,abijd,acjkle,adlmnf,aengb,bfnoh,bgopi,bhpqjc,ciqkd,djqrl,dkrme,elrsn,emsogf,gnsph,hosrqi,iprkj,kqpsml,mrpon",
+   "ascii_sha256": "7d7f35d5463537c5797763b9c2433991875eb07e5b035366f4c616e98e9307d6",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    14,
+    16,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 8,
+   "ascii": "19 bcdef,afghic,abijd,acjkle,adlmnf,aengb,bfnoh,bgopi,bhpjc,cipqkd,djqrl,dkrme,elrsn,emsogf,gnsqph,hoqji,jposrk,kqsml,mrqon",
+   "ascii_sha256": "bbea02bb505fe42598f53f7353d284cde578d6289f0fcaeb2224278b76842a15",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    15,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 9,
+   "ascii": "19 bcdef,afghic,abijd,acjklme,admnf,aengb,bfnoh,bgopi,bhpjc,cipkd,djpql,dkqrm,dlrne,emrsogf,gnsph,hosqkji,kpsrl,lqsnm,nrqpo",
+   "ascii_sha256": "7b790664d2b7eccd2a2cc08f54776fa0ee7200745f57945e12b1b7267f437d17",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 10,
+   "ascii": "19 bcdefg,aghijc,abjkd,ackle,adlmf,aemng,afnhb,bgnoi,bhopj,bipqkc,cjqld,dkqrsme,elsnf,fmsohg,hnsrpi,iorqj,jprlk,lqpos,lronm",
+   "ascii_sha256": "ee9dba2a3be8b148e975041bcd73594da172f2f748dd75ae1f36053105d7183a",
+   "degree_five_roots": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    12,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 11,
+   "ascii": "19 bcdefg,aghic,abijkd,ackle,adlmf,aemng,afnhb,bgnoi,bhopjc,cipqk,cjqld,dkqrsme,elsnf,fmsohg,hnsrpi,iorqj,jprlk,lqpos,lronm",
+   "ascii_sha256": "448b6835a48fe98999c3b273a881563e1caa7aa37bd2a1ee2c193188a68279b9",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 12,
+   "ascii": "19 bcdef,afghic,abijd,acjklme,admnf,aengb,bfnoh,bgopi,bhpqjc,ciqkd,djqrl,dkrsm,dlsone,emogf,gnmsph,hosrqi,iprkj,kqpsl,lrpom",
+   "ascii_sha256": "6e898c7cc04589633eb0f79aebb232caed86afa41eb2cdb6b11d23fc13c002df",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    13,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 13,
+   "ascii": "19 bcdef,afghijc,abjkd,acklmne,adnof,aeogb,bfoph,bgpqi,bhqrsj,biskc,cjsld,dksrm,dlrqn,dmqpoe,enpgf,gonqh,hpnmri,iqmls,irlkj",
+   "ascii_sha256": "4fd9e3e9ad41fd9817874bebfd7d0ecae53ce3ecdd70c6d41478afb8c2cab6b6",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 14,
+   "ascii": "19 bcdef,afghic,abijd,acjkle,adlmf,aemgb,bfmnh,bgnopqi,bhqjc,ciqrkd,djrsl,dksonme,elngf,gmloh,hnlsp,hosrq,hprji,jqpsk,krpol",
+   "ascii_sha256": "e38a38bb1f94171d031abbc9f948aa58d2eb61fb4ed8f5cda071aa659756a571",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    8,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 15,
+   "ascii": "19 bcdef,afghic,abijd,acjke,adklmf,aemgb,bfmnh,bgnopqi,bhqjc,ciqrkd,djrsle,eksonm,elngf,gmloh,hnlsp,hosrq,hprji,jqpsk,krpol",
+   "ascii_sha256": "c274c8c701a2bbd408799e1569e38bc0c001730ad6fda1bbcb538fcd34e52934",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    5,
+    6,
+    8,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 16,
+   "ascii": "19 bcdef,afghic,abijd,acjkle,adlmnf,aengb,bfnoh,bgopqri,bhrjc,cirkd,djrqsl,dksme,elspon,emogf,gnmph,homsq,hpskr,hqkji,kqpml",
+   "ascii_sha256": "437558887f31789c0dfb27a75a0b0547753bcdb94a300b62c6b312adb92a789f",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    8,
+    9,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 17,
+   "ascii": "19 bcdefg,aghijc,abjkd,ackle,adlmnf,aenog,afohb,bgopi,bhpqrsj,biskc,cjsld,dksrme,elrqn,emqpof,fnphg,honqi,ipnmr,iqmls,irlkj",
+   "ascii_sha256": "aead44d230cb34ee13c464244ff240b1667c545121fae03ad301271320ec3bff",
+   "degree_five_roots": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 18,
+   "ascii": "19 bcdefg,aghic,abijd,acjkle,adlmnf,aenog,afohb,bgopqrsi,bhsjc,ciskd,djsrl,dkrqme,elqpn,empof,fnphg,honmq,hpmlr,hqlks,hrkji",
+   "ascii_sha256": "4bcf25a536bc8a94bad68be968a8974957e092415d670642f6253f46929aa61a",
+   "degree_five_roots": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 19,
+   "ascii": "19 bcdefg,aghic,abijd,acjke,adklf,aelmg,afmnohb,bgopqi,bhqjc,ciqkd,djqprsle,eksmf,flsng,gmsro,gnrph,horkq,hpkji,kpons,krnml",
+   "ascii_sha256": "165f97c234c338bc661871eebf63b830ff7599aa10db4a0c48d488bf43e3520b",
+   "degree_five_roots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 20,
+   "ascii": "19 bcdef,afghijc,abjkd,ackle,adlmf,aemngb,bfnoh,bgopi,bhpqj,biqrkc,cjrld,dkrme,elrsnf,fmsog,gnsph,hosqi,ipsrj,jqsmlk,mrqpon",
+   "ascii_sha256": "dd44027c7c55c9892eaee126111b15f84a88cc6cca74bedc091188db5e99de21",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 21,
+   "ascii": "19 bcdef,afghijc,abjkd,ackle,adlmf,aemngb,bfnoh,bgopi,bhpqj,biqrkc,cjrld,dkrme,elrqsnf,fmsog,gnsph,hosqi,ipsmrj,jqmlk,mqpon",
+   "ascii_sha256": "56065c0a5f2c047bcf152fe9eab6992ec8cd2ca41eec72aba7581ce33179f498",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 19,
+   "graph_index": 22,
+   "ascii": "19 bcdef,afghijc,abjkd,ackle,adlmf,aemnogb,bfoph,bgpqi,bhqrj,birkc,cjrld,dkrme,elrnf,fmrso,fnspg,gosqh,hpsri,iqsnmlkj,nrqpo",
+   "ascii_sha256": "ae2f7f94a905fb0dc1f15530173ec9eec4427b4d5035e0c4e399306c0e932122",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 0,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmnof,aeogb,bfoph,bgpqri,bhrjc,cirkd,djrsl,dksme,elstn,emtqpo,enpgf,gonqh,hpntr,hqtskji,krtml,msrqn",
+   "ascii_sha256": "b718211f151afb95e4685ffa6b7c2f5ec365e21137b44696ce6bc2b2dbd70002",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 1,
+   "ascii": "20 bcdef,afghc,abhid,acijke,adklmnf,aengb,bfnoh,bgopqric,chrjd,dirsk,djsle,ekstm,eltpon,emogf,gnmph,homtq,hptsr,hqsji,jrqtlk,lsqpm",
+   "ascii_sha256": "b91e25f237203e65e19af31564b6136e198af768dab52022f837404f299cba0b",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 2,
+   "ascii": "20 bcdefg,aghic,abijd,acjkle,adlmnf,aenog,afohb,bgopi,bhpqrjc,cirkd,djrsl,dksme,elstn,emtqpof,fnphg,honqi,ipntr,iqtskj,krtml,msrqn",
+   "ascii_sha256": "76751b7a219723deb30579116b080e976ed6eb1ba55a099c0833638b637190a9",
+   "degree_five_roots": [
+    1,
+    2,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 3,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklf,aelmngb,bfnoh,bgopqri,bhrjc,cirkd,djrqsle,eksmf,flstn,fmtog,gntph,hotsq,hpskr,hqkji,kqptml,mspon",
+   "ascii_sha256": "a3963e9cd0b5fde39dc4d706a67dbd3b9aab152e111f5201fd9c5df2ad706b8b",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 4,
+   "ascii": "20 bcdef,afghc,abhijkld,aclme,admnf,aengb,bfnoph,bgpic,chpqj,ciqrk,cjrstl,cktmd,dltne,emtsogf,gnsrqp,goqih,iporj,jqosk,kront,ksnml",
+   "ascii_sha256": "40950f29b9db06459ea9c2873c901aa3146d038c43b656b2a960b14b1792e2c2",
+   "degree_five_roots": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    11,
+    12,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 5,
+   "ascii": "20 bcdef,afghic,abijkld,aclme,admnf,aengb,bfnoh,bgopi,bhpqjc,ciqrk,cjrsl,cksmd,dlsne,emsogf,gnstph,hotqi,iptrj,jqtsk,krtonml,osrqp",
+   "ascii_sha256": "831c6d51571993608e93612e11569256cdca0b8fdff72ff5e581b28b993b687b",
+   "degree_five_roots": [
+    0,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 6,
+   "ascii": "20 bcdef,afghc,abhijkd,ackle,adlmf,aemngb,bfnoph,bgpic,chpqj,ciqrk,cjrld,dkrsme,elsnf,fmsog,gnstp,gotqih,iptrj,jqtslk,lrtonm,osrqp",
+   "ascii_sha256": "b02234efaeb3b7ebc3f2a809b4d313b5061c534369aeb255316a13b2171c549d",
+   "degree_five_roots": [
+    0,
+    1,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 7,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklf,aelmngb,bfnoph,bgpqi,bhqjc,ciqkd,djqrle,ekrmf,flrsn,fmsog,gnstp,gotqh,hptrkji,kqtsml,mrton,osrqp",
+   "ascii_sha256": "eaf8271c8e7283188162aba8a7fa4f4b87e360757c41c2059abbff9c9272bacc",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 8,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklf,aelmgb,bfmnh,bgnopi,bhpqjc,ciqrkd,djrle,ekrsmf,flsng,gmsoh,hnstp,hotqi,iptrj,jqtslk,lrtonm,osrqp",
+   "ascii_sha256": "73b510c325fdd706ede423516741be3c9850a5a2ec86410181aad317d28a4d67",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 9,
+   "ascii": "20 bcdef,afghc,abhid,acije,adjkf,aeklgb,bflmnh,bgnopic,chpqjd,diqke,ejqrlf,fkrmg,glrsn,gmsoh,hnstp,hotqi,iptrkj,kqtsml,mrton,osrqp",
+   "ascii_sha256": "59a220e5777b8e5737b66e2d5a32afb42276cd3d1740be59c14173c2c17ee064",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 10,
+   "ascii": "20 bcdef,afghic,abijkd,ackle,adlmf,aemgb,bfmnh,bgnopi,bhpjc,cipqrk,cjrsld,dksme,elsngf,gmstoh,hntqp,hoqji,jpotr,jqtsk,krtnml,nsrqo",
+   "ascii_sha256": "075a087a8a77ea42eae0a5e3d62a26161a0e1263529b264bdfe794c0e31ec4f4",
+   "degree_five_roots": [
+    0,
+    3,
+    4,
+    5,
+    6,
+    8,
+    11,
+    14,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 11,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmnof,aeogb,bfoph,bgpqi,bhqjc,ciqrkd,djrsl,dksme,elstn,emtpo,enpgf,gontrqh,hprji,jqptsk,krtml,msrpn",
+   "ascii_sha256": "15cc2b7cd47fab2f975b2cb596e87b29c30c99fe47202cdfb7696f5a8a00b591",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 12,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmnof,aeogb,bfoph,bgpqi,bhqjc,ciqkd,djqrsl,dksme,elstn,emtpo,enpgf,gontrqh,hprkji,kqpts,krtml,msrpn",
+   "ascii_sha256": "8af145285c8dca609a24b7763a56408cfa40359e2fa7e886465d668928f7ae27",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 13,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmnf,aengb,bfnoh,bgopi,bhpjc,cipkd,djpql,dkqrme,elrsn,emsogf,gnstph,hotqkji,kptrl,lqtsm,mrton,osrqp",
+   "ascii_sha256": "79c77dbc4c422fcdce66f11ca583756b5dc834969014167c3d9af5207a910d38",
+   "degree_five_roots": [
+    0,
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 14,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmf,aemngb,bfnoh,bgopi,bhpjc,cipkd,djpql,dkqrme,elrsnf,fmsog,gnstph,hotqkji,kptrl,lqtsm,mrton,osrqp",
+   "ascii_sha256": "f725b221d659dfed9b2b3dbcab6f21dcefe522e7ca10c727e375915c79bdfc29",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    13,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 15,
+   "ascii": "20 bcdefg,aghijc,abjkd,acklme,admnf,aenopg,afphb,bgpqi,bhqrj,birkc,cjrld,dkrsm,dlsne,emstof,fntqp,foqhg,hpotri,iqtslkj,lrtnm,nsrqo",
+   "ascii_sha256": "fc31f667489a5cc472425a1faca20a85f9522484daf3fe62fbe32225f3a67a25",
+   "degree_five_roots": [
+    2,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 16,
+   "ascii": "20 bcdef,afghic,abijkd,ackle,adlmnf,aengb,bfnoph,bgpqi,bhqjc,ciqrk,cjrsld,dksme,elson,emogf,gnmstp,gotqh,hptrji,jqtsk,krtoml,osrqp",
+   "ascii_sha256": "e8d9c6bf204d9445df9b065ce12bae0b377dc5419af8996841c8b358ccb975e1",
+   "degree_five_roots": [
+    0,
+    3,
+    5,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    15,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 17,
+   "ascii": "20 bcdef,afghic,abijkd,ackle,adlmnf,aengb,bfnoh,bgopi,bhpjc,cipqk,cjqrsld,dksme,elstn,emtogf,gntrqph,hoqji,jpork,kqots,krtml,msron",
+   "ascii_sha256": "6c814389f43d174b2171578faf77c627ac9186d9be7dd56476ed52af06170609",
+   "degree_five_roots": [
+    0,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 18,
+   "ascii": "20 bcdef,afghic,abijkd,ackle,adlmnf,aengb,bfnoph,bgpqi,bhqjc,ciqrk,cjrsld,dksme,elston,emogf,gnmtp,gotqh,hptrji,jqtsk,krtml,msrqpo",
+   "ascii_sha256": "d68fcb732487e74d7a2a936d89f708a2ba56fc4725a60ab361d704c0f1c27dbb",
+   "degree_five_roots": [
+    0,
+    3,
+    5,
+    7,
+    8,
+    9,
+    11,
+    13,
+    14,
+    15,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 19,
+   "ascii": "20 bcdefg,aghijc,abjkd,ackle,adlmnf,aenog,afohb,bgopi,bhpqj,biqkc,cjqld,dkqrme,elrsn,emsof,fnstphg,hotqi,iptrlkj,lqtsm,mrton,osrqp",
+   "ascii_sha256": "9c7c9c91e802f738647ea3940c355bdef304b89fd1d932a3cc890dcc4d030562",
+   "degree_five_roots": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    15,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 20,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklmf,aemngb,bfnoh,bgopqi,bhqjc,ciqrskd,djsle,ekstm,eltnf,fmtog,gntph,hotrq,hprji,jqpts,jrtlk,lsrponm",
+   "ascii_sha256": "c63cf0ee9b363e464eeb36feefd20d665b2da4aba2b610427306335a94a0eaf1",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    6,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 21,
+   "ascii": "20 bcdefg,aghic,abijkd,ackle,adlmf,aemnog,afohb,bgopqi,bhqjc,ciqrk,cjrsld,dksme,elsnf,fmstpo,fnphg,hontq,hptrji,jqtsk,krtnml,nsrqp",
+   "ascii_sha256": "1a249ce8eccac216beca838025fabf4f64d19877faa59b1438d636e6d42fed7f",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    6,
+    8,
+    9,
+    11,
+    12,
+    14,
+    15,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 22,
+   "ascii": "20 bcdefg,aghic,abijd,acjkle,adlmf,aemnog,afohb,bgopqi,bhqjc,ciqrkd,djrsl,dksme,elsnf,fmstpo,fnphg,hontq,hptrji,jqtsk,krtnml,nsrqp",
+   "ascii_sha256": "a7a586986770d45f4866a32a55d632fc52040ad48fe8164c9c0f49d57d513e00",
+   "degree_five_roots": [
+    1,
+    2,
+    4,
+    6,
+    8,
+    10,
+    11,
+    12,
+    14,
+    15,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 23,
+   "ascii": "20 bcdefg,aghijc,abjkd,acklme,admnf,aenog,afohb,bgopi,bhpqj,biqrkc,cjrld,dkrsm,dlstne,emtpof,fnphg,hontqi,iptsrj,jqslk,lrqtm,msqpn",
+   "ascii_sha256": "6e970b8759814c580879a4e25283a6a56998359e445b68bf3236a1a871d80c8e",
+   "degree_five_roots": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    14,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 24,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklmf,aemgb,bfmnoh,bgopi,bhpqrjc,cirkd,djrle,ekrsm,elsngf,gmsto,gntph,hotqi,iptsr,iqslkj,lrqtnm,nsqpo",
+   "ascii_sha256": "b800ffe24b14acc75c7b4ebe92f4526bed89cac86a68b4ea19ffa01a4a4d55cd",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    5,
+    7,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 25,
+   "ascii": "20 bcdef,afghic,abijd,acjklme,admnf,aenogb,bfoph,bgpqrsi,bhsjc,ciskd,djsrl,dkrqm,dlqtne,emtof,fntpg,gotqh,hptmlr,hqlks,hrkji,mqpon",
+   "ascii_sha256": "ef6bd5b64481bb28c4ce3e384d76a4f441f51dffe3bd090b2e3bc70e88711c39",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 26,
+   "ascii": "20 bcdef,afghijc,abjkd,acklmne,adnof,aeogb,bfoph,bgpqi,bhqrstj,bitkc,cjtld,dktsm,dlsrn,dmrqpoe,enpgf,gonqh,hpnri,iqnms,irmlt,islkj",
+   "ascii_sha256": "c2b44a9662b0cd6b1b3a7e0981bbe4cc491055d5549d324e885f6e9493c6856f",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 27,
+   "ascii": "20 bcdef,afghic,abijkd,ackle,adlmnf,aengb,bfnoph,bgpqi,bhqrjc,cirsk,cjsld,dksme,elsrton,emogf,gnmtp,gotqh,hptri,iqtmsj,jrmlk,mrqpo",
+   "ascii_sha256": "fefbfef4fbf5f40a479d4073a14a0567ddd3261d4de4fdea5d595d9e421a6aab",
+   "degree_five_roots": [
+    0,
+    3,
+    5,
+    7,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 28,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmnf,aengb,bfnoph,bgpqi,bhqrj,birskc,cjsld,dksme,elsrton,emogf,gnmtp,gotqh,hptri,iqtmsj,jrmlk,mrqpo",
+   "ascii_sha256": "63994ca8a326f0f9d1019814cc1b51c9b36d9c4da8b5617a213602daf0440fe4",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    5,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 29,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklmf,aemgb,bfmnoh,bgopqi,bhqjc,ciqrkd,djrle,ekrstnm,elngf,gmlto,gntph,hotsq,hpsrji,jqslk,lrqpt,lspon",
+   "ascii_sha256": "56f36290c7796394d510c4f5d504504b46773cbeb62b48429186bfc5b41b9025",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    5,
+    8,
+    10,
+    12,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 30,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklmnf,aengb,bfnoph,bgpqi,bhqrsjc,ciskd,djsle,eksrtm,elton,emogf,gnmtp,gotqh,hptri,iqtls,irlkj,lrqpom",
+   "ascii_sha256": "7bd92bf1f3701b4c9b06b9e274290fad45c080e0dda744bf173bf054413b6314",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    5,
+    7,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 31,
+   "ascii": "20 bcdef,afghc,abhijd,acjke,adklmf,aemgb,bfmnh,bgnopic,chpqrj,cirkd,djrle,ekrqstm,eltngf,gmtoh,hntsp,hosqi,ipslr,iqlkj,lqpot,lsonm",
+   "ascii_sha256": "5c5292a2d7705c1aaa90b6460b2f754654b925b0778dc22b7f5cc87a80e2015c",
+   "degree_five_roots": [
+    0,
+    1,
+    3,
+    5,
+    6,
+    9,
+    10,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 32,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmf,aemgb,bfmnoh,bgopqi,bhqjc,ciqkd,djqrl,dkrsme,elsngf,gmsto,gntph,hotrq,hprkji,kqptsl,lrtnm,nsrpo",
+   "ascii_sha256": "a29f02e92d990ce430d6070c8cb1be98ba65c972e935b82337683a65621c8121",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    8,
+    9,
+    10,
+    13,
+    14,
+    15,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 33,
+   "ascii": "20 bcdef,afghic,abijd,acjklme,admnf,aengb,bfnoph,bgpqri,bhrjc,cirkd,djrql,dkqstm,dltne,emtogf,gntsp,gosqh,hpslkr,hqkji,lqpot,lsonm",
+   "ascii_sha256": "ff897aab34e114919d191c1f3371bb4c6b8a309c5ec636bc9e2f81a88f05ac9b",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    8,
+    9,
+    10,
+    12,
+    14,
+    15,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 34,
+   "ascii": "20 bcdef,afghic,abijd,acjklme,admnf,aengb,bfnoph,bgpqri,bhrjc,cirkd,djrqsl,dkstm,dltne,emtogf,gntsp,gosqh,hpskr,hqkji,kqpotl,lsonm",
+   "ascii_sha256": "b663939ad6683d35464751ed461bf0bec1772fc2ce852aa0b5d6aadd54523d12",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    8,
+    9,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 35,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmf,aemgb,bfmnoh,bgopqi,bhqjc,ciqrkd,djrstl,dktme,eltngf,gmtso,gnsph,hosrq,hprji,jqpsk,krpont,ksnml",
+   "ascii_sha256": "c0cb231b7db0228deb5535cb739fd73c626613aef1aa9f60a63cd49ce03590ec",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    8,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 36,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmf,aemgb,bfmnoh,bgopqi,bhqjc,ciqrkd,djrsl,dksme,elsngf,gmsto,gntph,hotrq,hprji,jqptsk,krtnml,nsrpo",
+   "ascii_sha256": "99662dab746c6d7981981d2d09c213d79b4a5144b64af12a65cecf40c65d476f",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    8,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 37,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmf,aemgb,bfmnh,bgnopqi,bhqjc,ciqkd,djqprsl,dksme,elstngf,gmtoh,hntrp,horkq,hpkji,kpots,krtml,msron",
+   "ascii_sha256": "8aa8c65b60c21ec8e47acd5ad6cf72aab55fdaf536c0c64f40a23d004ad43ab6",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    8,
+    9,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 38,
+   "ascii": "20 bcdef,afghic,abijd,acjklme,admnf,aenogb,bfoph,bgpqri,bhrjc,cirkd,djrqsl,dkstm,dltne,emtof,fntspg,gosqh,hpskr,hqkji,kqpotl,lsonm",
+   "ascii_sha256": "d8c4e3a5b1db0bd8dcd4f763ec410f0c891073dd09a5c6281fe0f5d4bad4e814",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    9,
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 39,
+   "ascii": "20 bcdef,afghic,abijd,acjkle,adlmf,aemngb,bfnoh,bgopqi,bhqjc,ciqrkd,djrsl,dksme,elsnf,fmstog,gntph,hotrq,hprji,jqptsk,krtnml,nsrpo",
+   "ascii_sha256": "fc221e567ea594ae18bee2b7bcb7c389efeada83ed5a32809bc75dd78613d07f",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 40,
+   "ascii": "20 bcdef,afghijc,abjkd,acklme,admnf,aengb,bfnoh,bgopi,bhpqrj,birkc,cjrld,dkrqstm,dltne,emtogf,gntsph,hosqi,ipslr,iqlkj,lqpot,lsonm",
+   "ascii_sha256": "ee2f2ce1415e4d363affa61e350a28728904ae1dae04b5d4dde8236d0ba99336",
+   "degree_five_roots": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 41,
+   "ascii": "20 bcdefg,aghijc,abjkd,ackle,adlmnf,aenog,afohb,bgopqi,bhqrj,birkc,cjrld,dkrsme,elstn,emtpof,fnphg,hontq,hptsri,iqslkj,lrqtm,msqpn",
+   "ascii_sha256": "e7fd08a1f2e1f8224a321935c7950217032e4a5d669e0c66389d9d1eff31ece5",
+   "degree_five_roots": [
+    2,
+    3,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12,
+    14,
+    15,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 42,
+   "ascii": "20 bcdefg,aghijc,abjkd,ackle,adlmnf,aenog,afohb,bgopi,bhpqrj,birkc,cjrld,dkrsme,elstn,emtpof,fnphg,hontqi,iptsr,iqslkj,lrqtm,msqpn",
+   "ascii_sha256": "974c5364cb376e71ce398d203aa130958a348eb804941eca10335934f0afe795",
+   "degree_five_roots": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12,
+    14,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 43,
+   "ascii": "20 bcdefg,aghijkc,abkld,aclme,admnof,aeopg,afphb,bgpqi,bhqrsj,bistk,bjtlc,cktmd,dltsne,emsro,enrqpf,foqhg,hpori,iqons,irnmtj,jsmlk",
+   "ascii_sha256": "58b5af8ac1ddee21c806ca7ca7325fcc7b774fc5bebe90cbbb4f5c0edeaa3a90",
+   "degree_five_roots": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 44,
+   "ascii": "20 bcdefgh,ahijkc,abkld,aclme,admnf,aenog,afoph,agpib,bhpqj,biqrstk,bjtlc,cktmd,dltsne,emsrof,fnrqpg,goqih,iporj,jqons,jrnmt,jsmlk",
+   "ascii_sha256": "9d1025909e7bbcf068376af16457c01878563e6178ffb57b3d6a4847a556b219",
+   "degree_five_roots": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 45,
+   "ascii": "20 bcdefg,aghijc,abjkd,ackle,adlmf,aemng,afnohb,bgopqi,bhqrj,birkc,cjrsld,dkstme,eltnf,fmtog,gntph,hotsq,hpsri,iqskj,krqptl,lsponm",
+   "ascii_sha256": "be4ef87aae7d7599ab96b5abd4f4be607421e42f27911bfe61dda3ea3cf8530c",
+   "degree_five_roots": [
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 46,
+   "ascii": "20 bcdefg,aghijc,abjkd,ackle,adlmnf,aenog,afophb,bgpqri,bhrsj,biskc,cjsld,dksrme,elrqtn,emtof,fntpg,gotqh,hptmr,hqmlsi,irlkj,mqpon",
+   "ascii_sha256": "7efb058ab46f6c7443beabc7f33ed6abc8b12bca67da01949e7c3638eb970346",
+   "degree_five_roots": [
+    2,
+    3,
+    5,
+    8,
+    9,
+    10,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 47,
+   "ascii": "20 bcdefg,aghic,abijkld,aclme,admnf,aenog,afophb,bgpqi,bhqjc,ciqrk,cjrsl,ckstmd,dltne,emtof,fntspg,gosrqh,hprji,jqpsk,krpotl,lsonm",
+   "ascii_sha256": "f5894d3c2fd186480461e2aded87f463ba59e4b9a9344e4ddd33cac900d31981",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 48,
+   "ascii": "20 bcdefg,aghic,abijkld,aclme,admnf,aenog,afohb,bgopi,bhpjc,cipqk,cjqrl,ckrsmd,dlsne,emstof,fntphg,hotqji,jptrk,kqtsl,lrtnm,nsrqpo",
+   "ascii_sha256": "01ad0708a954898e424a356124dde26ae846c9eda96c69c3821a566a664a06c3",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 49,
+   "ascii": "20 bcdefg,aghic,abijkld,aclme,admnf,aenog,afohb,bgopqi,bhqjc,ciqrk,cjrsl,ckstmd,dltne,emtpof,fnphg,hontsrq,hprji,jqpsk,krptl,lspnm",
+   "ascii_sha256": "599a75a43c15007eec954776a8d66cd0c3b43bb5a84d0249586b4082c3f8b21a",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12,
+    14,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 50,
+   "ascii": "20 bcdefg,aghic,abijkld,aclme,admnf,aenog,afohb,bgopi,bhpjc,cipqk,cjqrl,ckrsmd,dlsne,emsof,fnstphg,hotqji,jptrk,kqtsl,lrtonm,osrqp",
+   "ascii_sha256": "baa7b29bc459a800deae212f4bbbcbb17edcbd8b5d6a22a8dce5680152286ef7",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 51,
+   "ascii": "20 bcdefg,aghic,abijkld,aclme,admnf,aenog,afohb,bgopqi,bhqjc,ciqrk,cjrsl,ckstmd,dltne,emtof,fntphg,hotsrq,hprji,jqpsk,krptl,lsponm",
+   "ascii_sha256": "2ac06be7e2e1bc808510c282d170aede317b24a5edfe63c7d338f2969a726826",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12,
+    13,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 52,
+   "ascii": "20 bcdefg,aghic,abijkld,aclme,admnf,aenog,afophb,bgpqi,bhqjc,ciqrk,cjrsl,ckstmd,dltne,emtof,fntpg,gotsrqh,hprji,jqpsk,krptl,lsponm",
+   "ascii_sha256": "3222b2077fb8d01d488db90ace20c9ed43412ce549d01b53ae2781ae25b2afc7",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 53,
+   "ascii": "20 bcdefg,aghic,abijkld,aclme,admnf,aenog,afohb,bgopqi,bhqjc,ciqrk,cjrsl,ckstmd,dltne,emtof,fntsphg,hosrq,hprji,jqpsk,krpotl,lsonm",
+   "ascii_sha256": "bb6013fcd1a766cb00e0165e978d0c767f1b834095e60e21414b1194993434ce",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 54,
+   "ascii": "20 bcdefg,aghic,abijklmd,acmne,adnof,aeopg,afphb,bgpqi,bhqjc,ciqrk,cjrsl,ckstm,cltnd,dmtoe,entpf,fotsrqhg,hprji,jqpsk,krptl,lsponm",
+   "ascii_sha256": "81795b36aff4d1b8858f81620eb8dc1419d0ee06baeea025e6687e0d00c8551f",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 55,
+   "ascii": "20 bcdefg,aghijc,abjkld,aclme,admnf,aenog,afohb,bgopi,bhpqj,biqkc,cjqrsl,ckstmd,dltne,emtof,fntsrphg,horqi,iprkj,kqpos,krotl,lsonm",
+   "ascii_sha256": "8aa08324cd294ad5df774c414373447a9607a3cb0a44395a96c786c56cd7615d",
+   "degree_five_roots": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    12,
+    13,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 56,
+   "ascii": "20 bcdefg,aghijc,abjkd,ackle,adlmf,aemng,afnhb,bgnoi,bhopj,bipqkc,cjqrsld,dksme,elsnf,fmsrtohg,hntpi,iotqj,jptrk,kqtns,krnml,nrqpo",
+   "ascii_sha256": "1054aa16016c9a7c6db105c67d7b3e9c9b43856afaac991c5a85faea628886ca",
+   "degree_five_roots": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 57,
+   "ascii": "20 bcdefg,aghic,abijkd,ackle,adlmf,aemng,afnhb,bgnoi,bhopjc,cipqk,cjqrsld,dksme,elsnf,fmsrtohg,hntpi,iotqj,jptrk,kqtns,krnml,nrqpo",
+   "ascii_sha256": "a17a2aed62d326f2930507edaa8549d9cddc6548121ca266cbeddcf42916a0c3",
+   "degree_five_roots": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 58,
+   "ascii": "20 bcdefg,aghic,abijd,acjkle,adlmf,aemng,afnhb,bgnoi,bhopjc,cipqkd,djqrsl,dksme,elsnf,fmsrtohg,hntpi,iotqj,jptrk,kqtns,krnml,nrqpo",
+   "ascii_sha256": "b55a4cccd100824944fc4c8d2851550fb83dc7a1cd9a23b58af2519d07eac753",
+   "degree_five_roots": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 59,
+   "ascii": "20 bcdef,afghc,abhid,acijklmne,adnof,aeogb,bfopqrsth,bgtic,chtjd,ditsk,djsrl,dkrqm,dlqpn,dmpoe,enpgf,gonmq,gpmlr,gqlks,grkjt,gsjih",
+   "ascii_sha256": "90474b831e2302dba6f9d6278511dd855c0b58d3e3175cdc24673d8022e40157",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 60,
+   "ascii": "20 bcdef,afghic,abijd,acjke,adklf,aelmngb,bfnoh,bgopqi,bhqrjc,cirkd,djrle,ekrsmf,flstn,fmtog,gntph,hotsq,hpsri,iqslkj,lrqptm,mspon",
+   "ascii_sha256": "f07f7de46b0086ee575218afa87c31bd86ec1e370cb7f28a44def67f623b004a",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 61,
+   "ascii": "20 bcdef,afghc,abhid,acije,adjkf,aeklmgb,bfmnoh,bgopqic,chqjd,diqke,ejqrlf,fkrsm,flsng,gmsto,gntph,hotrq,hprkji,kqptsl,lrtnm,nsrpo",
+   "ascii_sha256": "329d289248b9efaec5bd2d30df58dc6754581dd857fa4071e9f421f8462d6b12",
+   "degree_five_roots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 62,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemngb,bfnoh,bgopi,bhpqj,biqrkc,cjrld,dkrme,elrsnf,fmsog,gnstph,hotqi,iptrj,jqtsmlk,mrton,osrqp",
+   "ascii_sha256": "471b846e5690ff03a4e84363c45917e4248d3eb05f05582378899b49ade1fbf9",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 63,
+   "ascii": "20 bcdef,afghijkc,abkld,aclme,admnf,aenogb,bfoph,bgpqi,bhqrj,birsk,bjslc,cksmd,dlsne,emsrtof,fntpg,gotqh,hptri,iqtnsj,jrnmlk,nrqpo",
+   "ascii_sha256": "a820524827690b24ceeb6ce7717fe8f6fa3fb7c5342438227402cfc5c7ddc039",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 64,
+   "ascii": "20 bcdef,afghijkc,abkld,aclme,admnf,aenogb,bfoph,bgpqi,bhqrj,birnsk,bjslc,cksmd,dlsne,emsjrtof,fntpg,gotqh,hptri,iqtnj,jnmlk,nrqpo",
+   "ascii_sha256": "d18e9c20f2d4383360dd65f0bb383a910342f75f00228b424f2127832ba9f7fc",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 65,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemnogb,bfoph,bgpqi,bhqrj,birkc,cjrld,dkrsme,elsnf,fmsto,fntpg,gotqh,hptsri,iqslkj,lrqtnm,nsqpo",
+   "ascii_sha256": "5d4b5df045eca957124b1ba168a9b13c34136b8d1a123116c817157bca8201cd",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 66,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemnogb,bfoph,bgpqi,bhqrj,birkc,cjrsld,dksme,elsnf,fmsto,fntpg,gotqh,hptsri,iqskj,krqtnml,nsqpo",
+   "ascii_sha256": "eaa2f67744bfeeb3d67612ad4e809d2952a5f53b7e5101c72409a801e210993d",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 67,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemnogb,bfoph,bgpqi,bhqrj,birskc,cjsld,dksme,elsnf,fmsto,fntpg,gotqh,hptri,iqtsj,jrtnmlk,nsrqpo",
+   "ascii_sha256": "960b26ddf6b3ba5027552a2dd5d0c261771dc9163aac62468f52d1cc218f3be2",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 68,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemnogb,bfoph,bgpqi,bhqrj,birskc,cjsld,dksme,elsnf,fmsrto,fntpg,gotqh,hptri,iqtnsj,jrnmlk,nrqpo",
+   "ascii_sha256": "500859c1c36228a5b830b5445cd92716d59095a38c3b642c2b7648a7d704ebfe",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 69,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemnogb,bfoph,bgpqi,bhqrj,birnskc,cjsld,dksme,elsnf,fmsjrto,fntpg,gotqh,hptri,iqtnj,jnmlk,nrqpo",
+   "ascii_sha256": "aa4fcb2f72ef5ad787f9efc70458de5e01d7f594d1be3fdf784c637859584a53",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 70,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemnogb,bfoph,bgpqi,bhqrj,birskc,cjsld,dksme,elsrnf,fmrto,fntpg,gotqh,hptri,iqtnmsj,jrmlk,nrqpo",
+   "ascii_sha256": "2c1217bc38a2af335ed917917e38b655974c51fc4613d295072878fa89c58dfb",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 71,
+   "ascii": "20 bcdef,afghijc,abjkd,ackle,adlmf,aemngb,bfnoph,bgpqi,bhqrj,birkc,cjrld,dkrme,elrsnf,fmsog,gnstp,gotqh,hptri,iqtsmlkj,mrton,osrqp",
+   "ascii_sha256": "a20984b4b67c5c9b1a42f93427ed4510146914b05d42ac21cf134cf9d7dae2f6",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 72,
+   "ascii": "20 bcdef,afghijkc,abkld,aclme,admnf,aengb,bfnoph,bgpqi,bhqrj,birsk,bjslc,cksmd,dlsne,emsogf,gnstp,gotqh,hptri,iqtsj,jrtonmlk,osrqp",
+   "ascii_sha256": "0c8153e6e347d85e7dea1c1a8e90474b64216de7a19c681546d2ca687e2ac660",
+   "degree_five_roots": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    19
+   ]
+  }
+ ],
+ "validation_disclosure": "orders 19-20 were inspected in earlier research; a fixed out-of-discovery pass, run once, no re-tuning",
+ "bound_files": {
+  "WP11-rank-synthesis-tier1-declaration.md": "7a467837f2fcdcabea6e688016ae32fe254d71da611cc9a47ce36ed672b919cb",
+  "mass_core.py": "7e7d27296d14f8d097b4e0fe4770dcdd30d4ce36f1af807ffd4123b80d3d8bc1",
+  "wp11_cert.py": "78f189a23abd68c3e58a6d9647ebd0b053e8706c025b5f8c1e73edd0d01056ea",
+  "wp11_search.py": "aebcdb297cc88a66eb95b4c7033374213ac69b2db24d3ec4e38a70a493164ad2",
+  "wp11_regression_root13.py": "324b1416cd16a4f03e956e9195286a188e34060be1a74bd5a6299f11eecac251",
+  "wp11_manifest.py": "737e9f29b79cdd0f4c8b6aca5b3c086ae8fe0c6c5eaada241a02778b4ad9e08e",
+  "../wp11-independent-replay.py": "598795a7bbc03d668d95a400d00c6669bbb782a60c07deafe4a6af7f78fc7ed5",
+  "../wp11-independent-replay-regressions.py": "390613d9ceb844b4001686f907744df539f121e5e254eca249e8d71fc5ddb74a",
+  "../mass-macro-results.json": "42bf13cdb9d87d952d89982fd2778cd407e7e5ae5c353d2cdb33fda5891b9c80",
+  "../search-results.json": "c859d9c8215a08ac331370eb682c048cd6bcd860ca3cc26c922ff801f640de50",
+  "../triangulations-min5-12.txt": "1f9630174b17141a035316992c75f8f8c2caf3e3fd2af5e05c4e4189fc0f57fb",
+  "../triangulations-min5-13.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "../triangulations-min5-14.txt": "4611ebbe01984181af07acdea8fcc002c2676bac46963f62adf9e4b59ced46a3",
+  "../triangulations-min5-15.txt": "b6c1d0fb19e518062d3838ebc8fc806718fcdbe53feb88c984abbea4be3c13ff",
+  "../triangulations-min5-16.txt": "d63ba3c0715f03751b3230623e0a938cc43deb3aa1fd6e53539df002c6ecc38e",
+  "../triangulations-min5-17.txt": "d7c3388b7513f53a51af95ecedf4194ee54c0eab4a3c26d4c6d3e52917c562a3",
+  "../triangulations-min5-18.txt": "5bd34ca6981df1078817224ba627509f5e49b53527888ba819610f4fa27bb344",
+  "../triangulations-min5-19.txt": "40d3d910690d4ba042e9e0a8b05009be0261f1b59b4a46b4c3b06a81ac7d47b5",
+  "../triangulations-min5-20.txt": "0448892c06a8bab0b855e47892139ffd934504767d4adf08a16490a5b45efbbe"
+ },
+ "status": "frozen before any run; release requires the math team's replay check and the user's explicit approval"
+}

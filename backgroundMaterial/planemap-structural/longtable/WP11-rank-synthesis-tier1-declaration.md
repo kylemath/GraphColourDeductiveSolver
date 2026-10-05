@@ -1,4 +1,6 @@
-# WP11 declaration (for review): rank synthesis, tier 1
+# WP11 declaration (for review): rank synthesis, tier 1 — version 2
+
+> The Version 2 amendments at the end override any earlier wording. The superseded passages are marked *[v2]* inline.
 
 Long Table, 4 October 2026. **For the math team's review. Nothing runs before their explicit go-ahead and the user's.** This answers the request in `2026-10-04-math-to-navigator-and-longtable-contact-complete.md`. Status words are the Proof Navigator's.
 
@@ -12,8 +14,8 @@ WP11 searches, within a declared finite family, for **alternative ranks** for wh
 
 ## The model (fixed)
 
-- **Graphs:** the existing Plantri minimum-degree-five triangulations. **Discovery uses orders 12–18 (22 graphs); the holdout is orders 19–20 (96 graphs), run once.** No orders beyond 20.
-- **States:** at a root r, the proper four-colourings of T − r, taken up to global colour renaming. Features are colour-invariant (below), so this matches the math team's named-colour model state for state.
+- **Graphs:** the existing Plantri minimum-degree-five triangulations. **Discovery uses orders 12–18 (22 graphs). Validation uses orders 19–20 (96 graphs), run once.** *[v2]* Orders 19–20 have been inspected in earlier research, so they are a fixed out-of-discovery validation pass, not unseen data. No orders beyond 20.
+- **States:** at a root r, the proper four-colourings of T − r, taken up to global colour renaming. *[v2]* States **represent colour-permutation orbits.** The equivariance argument is in the Version 2 amendments, §2. Moves are serialised in named-colour coordinates, with no renaming between moves. The bridge to the named-state Lean model remains a formal obligation.
 - **Moves:** exchange two colours on one whole bichromatic component, interior components included.
 - **Macros:** at most two moves, with components recomputed after the first. Only the macro **endpoint** must decrease, and intermediate states may increase.
 - **Targets:** states with p = 0 (at most three colours on B = N(r)).
@@ -63,7 +65,11 @@ Results are written as JSON, with input and checker hashes.
   - for every non-target state at r: the colouring, in the vertex order of T − r; its feature vector; and one witness macro, given as move 1 (colour pair, component vertex set), move 2 (same, or none), and the endpoint colouring with its feature vector.
 
   A replayer recomputes the components and features independently and checks legality and the lexicographic decrease.
-- **For a failing w**, a witness graph T and, **for every** root r ∈ D(T): one stuck colouring at r, its feature vector, and the complete list of macro endpoints (each with move descriptions and feature vectors), none of them lower. A replayer recomputes the full macro neighbourhood and confirms there is no decrease.
+- **For a failing w** *[v2]*, there are two separate kinds:
+  - `existential_fail_witness`: **every** root r ∈ D(T), each with one stuck colouring and its complete macro-endpoint list;
+  - `all_roots_fail_witness`: **one** bad root, with the same data.
+
+  The replayer independently recomputes every endpoint set and the degree-five root set. For a pass, it independently enumerates the full state set and compares it exactly. See Version 2 amendments, §1, and schema `wp11-cert-v1`.
 - **For a whole tier:** the list of all w with their outcome and the pointer to each certificate.
 
 **Infeasibility of a tier** means only that no w in that declared finite set, under this model and grammar, passes discovery. It says nothing about other features, larger weights, other macro lengths, or structural ranks in general.
