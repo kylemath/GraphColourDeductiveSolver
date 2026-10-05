@@ -1,0 +1,40 @@
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:31:8: warning: This simp argument is unused:
+  pathGraph_adj
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [bot_adj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:31:23: warning: This simp argument is unused:
+  bot_adj
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pathGraph_adj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:44:14: warning: This simp argument is unused:
+  pathGraph_adj
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Fin.val_last] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:44:29: warning: This simp argument is unused:
+  Fin.val_last
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pathGraph_adj] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:116:2: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:287:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲

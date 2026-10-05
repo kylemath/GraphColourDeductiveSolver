@@ -1,0 +1,8 @@
+theorem SimpleGraph.VacancyShortFill.short_fill.{u_1, u_2} : ∀ {V : Type u_1} {C : Type u_2} (G : SimpleGraph V)
+  [inst : DecidableEq V] [inst_1 : DecidableEq C] {h : V} {c : V → C} {n : ℕ} {t : V × (V → C)},
+  ProperOff G h c → n ≤ 2 → MixedPath G n (h, c) t → Target G t.1 t.2 → PureFill G h c n :=
+<not imported>
+theorem SimpleGraph.VacancyShortFill.optimal_short.{u_1, u_2} : ∀ {V : Type u_1} {C : Type u_2} (G : SimpleGraph V)
+  [inst : DecidableEq V] [inst_1 : DecidableEq C] {h : V} {c : V → C} {n : ℕ},
+  ProperOff G h c → n ≤ 2 → MixedOptimal G h c n → PureOptimal G h c n :=
+<not imported>

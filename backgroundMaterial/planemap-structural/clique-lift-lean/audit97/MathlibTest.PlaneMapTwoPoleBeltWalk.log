@@ -1,0 +1,16 @@
+theorem SimpleGraph.TwoPoleBeltWalk.belt_unequal_at : ∀ {n : ℕ},
+  5 ≤ n →
+    ∀ (h : SimpleGraph.TwoPoleBelt.Vertex n),
+      SimpleGraph.TwoPoleBeltWalk.IsBelt h →
+        ∀ (c : SimpleGraph.TwoPoleBelt.Vertex n → SimpleGraph.TwoPoleBelt.Colour),
+          SimpleGraph.VacancySlide.ProperOff (SimpleGraph.TwoPoleBeltWalk.G n) h c →
+            c SimpleGraph.TwoPoleBelt.Vertex.a ≠ c SimpleGraph.TwoPoleBelt.Vertex.b →
+              ∃ k t,
+                SimpleGraph.VacancyPotential.Path SimpleGraph.TwoPoleBeltWalk.SlideStep k (h, c) t ∧
+                  k ≤ 2 * n ∧
+                    SimpleGraph.TwoPoleBeltWalk.Filled t ∧
+                      SimpleGraph.VacancySlide.ProperOff (SimpleGraph.TwoPoleBeltWalk.G n) t.1 t.2 ∧
+                        SimpleGraph.TwoPoleBeltWalk.IsBelt t.1 ∧
+                          t.2 SimpleGraph.TwoPoleBelt.Vertex.a = c SimpleGraph.TwoPoleBelt.Vertex.a ∧
+                            t.2 SimpleGraph.TwoPoleBelt.Vertex.b = c SimpleGraph.TwoPoleBelt.Vertex.b :=
+<not imported>

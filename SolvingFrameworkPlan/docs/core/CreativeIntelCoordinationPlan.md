@@ -71,3 +71,15 @@ Next division: Math packages clique-separator component restriction and the lift
 Math accepts the degree-five separating-triangle fixed-hole theorem and the extension through a first degree-five boundary landing; see `docs/reports/MathFixedHoleReview.md`. This supersedes the preceding plan's open arbitrary double-lock task. The proof uses the other disjoint colour-pair lock and then confines the second swap to one side.
 
 A stronger consequence eliminates every separating triangle containing a degree-five vertex from **any** VH∃ failure: that vertex has the legal fan with apex on the one-neighbour side, and all deletion colourings fill in at most two swaps. Creative's next structural target is consequently an interface whose three vertices all have global degree at least six, together with the separate inner-triangle carry. Math's next formalisation should include the reviewed fixed-hole lemma and this legal-fan corollary alongside the component/path lift. No new computation is needed.
+
+
+## Parallel structural advance and Creative check-in
+
+The user authorised broad parallel work without waiting for team replies. Three Math teams produced mutually checked hand reductions; the root compiled clique-component and protected whole-path lifting and passed fresh 97- then 99-module audits. Consolidated review: `docs/reports/MathVHCoreAdvance.md`.
+
+Creative's face-avoiding triangle reduction is accepted; its four-connected relative base case is a stronger sufficient target for VH∃. Boundary degree-four vertices adjacent to degree-five roots give good pairs by mobility plus M3; targetless projections must expand through degree-five regions. Core members have order at least twelve, and failures with a degree-four protected vertex have order at least thirteen. No universal fill follows yet. The saved free-adversary game kill was independently reproduced on its single fixed member; broader exploratory counts were not replayed or accepted.
+
+Current division: Math reviews Creative's constrained trace-game lift and formalises actual structural lemmas; Creative pursues realizable evolving four-ring connections and hand wins in the relative core; Audit independently checks certificates; Navigator records exact scopes. Higher-degree frontier escape, the global branching trap, and the remaining boundary-degree-four case are the mathematical gaps. Work continues asynchronously; no new census is assigned.
+
+
+The constrained trace-game lift has a complete repaired hand proof in `MathTraceGameLiftReview.md`. Creative's literal virtual-edge construction was rejected: it can cross and leak connections into the wrong colour pair. Pair-specific connectivity plus coloured planar snapshot gadgets fixes the composition and frozen-bit argument. Its universal game hypothesis remains open. The mobility bridge now eliminates entire off-face degree-five regions adjoining a protected degree-four vertex; this strengthens the earlier one-fan result to all deletion starts at roots in such a region.

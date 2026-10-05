@@ -1,0 +1,13 @@
+theorem SimpleGraph.VacancyCliqueLift.interior_fill_lift.{u_1, u_2} : ∀ {V : Type u_1} {C : Type u_2}
+  (G : SimpleGraph V) [inst : DecidableEq V] [inst_1 : DecidableEq C] {A F : Set V},
+  SimpleGraph.VacancyCliqueLift.Boundary G A F →
+    SimpleGraph.VacancyCliqueLift.Clique G F →
+      ∀ {n : ℕ} {s t : V × (V → C)} {g : V → C},
+        SimpleGraph.VacancyCliqueLift.InteriorPath G A F n s t →
+          (∀ v ∈ A, g v = s.2 v) →
+            SimpleGraph.VacancySlide.ProperOff G s.1 g →
+              SimpleGraph.VacancyShortFill.Target (SimpleGraph.VacancyCliqueLift.sideGraph G A) t.1 t.2 →
+                ∃ e,
+                  SimpleGraph.VacancyShortFill.MixedPath G n (s.1, g) (t.1, e) ∧
+                    SimpleGraph.VacancySlide.ProperOff G t.1 e ∧ SimpleGraph.VacancyShortFill.Target G t.1 e :=
+<not imported>

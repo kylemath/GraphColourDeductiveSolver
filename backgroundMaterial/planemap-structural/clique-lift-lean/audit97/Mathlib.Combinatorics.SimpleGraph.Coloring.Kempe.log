@@ -1,0 +1,81 @@
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:68:29: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [kempeSwap, hv, hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:124:16: warning: This simp argument is unused:
+  hv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hu, hcu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:126:16: warning: This simp argument is unused:
+  hv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hu, hcu, Ne.symm hab]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:135:12: warning: This simp argument is unused:
+  hu
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hv, hcv]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:137:12: warning: This simp argument is unused:
+  hu
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hv, hcv, Ne.symm hab]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:251:28: warning: This simp argument is unused:
+  hya
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [kempeSwap, hyS, hy]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:283:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.coe_neighbourColourFinset`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:287:31: warning: This simp argument is unused:
+  Finset.mem_image
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [neighbourColourFinset, mem_neighborFinset, Set.mem_image, mem_neighborSet]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:287:49: warning: This simp argument is unused:
+  mem_neighborFinset
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [neighbourColourFinset, Finset.mem_image, Set.mem_image, mem_neighborSet]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:290:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.neighbourColourFinset_card_le_degree`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:303:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.isProperColouring_induce_iff`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:386:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.five_colorable_of_card_le_five`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
