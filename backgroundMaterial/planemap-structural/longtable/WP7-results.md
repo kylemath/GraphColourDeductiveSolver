@@ -35,7 +35,7 @@ So 7.3 fails as a necessary condition. It is also unspecific: 376 states that de
 
 - **There are at least two kinds of trap in the discovery range:**
   - **Long-chain traps** (order 17, graph 0): each singleton pair is linked by a heavy exterior chain, and every repeated-colour swap merges mass into the other repeated-colour pairs.
-  - **Short-circuit traps** (order 17, graph 3): the singletons are linked through the boundary itself, so q sees almost no mass in the singleton pairs at all.
+  - **Short-circuit traps** (order 17, graph 3): the minimum-mass singleton pair is linked through the boundary itself, so q sees almost no mass in that pair *[narrowed 5 October: under full singleton lock the other singleton links need exterior vertices; see the erratum above]*.
 - **No linkage pattern can separate traps from ordinary stuck states.** Lemma 7.4 forces the full lock at every one-swap-stuck state. The paired fixture also shows that equal linkage with different sizes can go either way.
 - **No single inequality on chain masses does it either**, judging by the two trap types. A size-based explanation would have to treat boundary-routed links differently from exterior links. Under the q formula, that is exactly the distinction being lost: a link through the boundary contributes 0.
 

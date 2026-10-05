@@ -43,7 +43,7 @@ fan = [f for f in legal_fans(rot, ix["U0"]) if {tuple(sorted(f[1])), tuple(sorte
 assert len(fan) == 1, "fan {N L0, N L1} not legal"
 row = {"v": ix["U0"], "chords": [list(fan[0][1]), list(fan[0][2])], "L": 2,
        "witness": {"start": list(st), "moves": [list(x) for x in path]}}
-assert wp18_check.check_witness(rot, row) == "ok"
+assert wp18_check.check_row(rot, row, 6) == ("exact", 2)
 print("order 14 dipyramid start: ell = 2, witness replays")
 
 # 3. Malformed witnesses must be rejected.
@@ -53,8 +53,18 @@ r2 = json.loads(json.dumps(row)); r2["witness"]["moves"][0] = ["S", ix["S"]]    
 r3 = json.loads(json.dumps(row)); r3["witness"]["moves"] = r3["witness"]["moves"][:1]; r3["L"] = 1   # one move does not fill
 for r in (r1, r2, r3):
     try:
-        wp18_check.check_witness(rot, r)
+        wp18_check.check_row(rot, r, 6)
     except ValueError:
         bad += 1
 assert bad == 3, bad
 print("malformed witnesses rejected: 3 of 3")
+
+# 4. Amended checker (5 October): coverage, fan identity, and exact-depth exclusion on P-files
+#    are exercised in wp18_check.main; here, a start with ell = 2 must fail a claim of L = 3.
+r4 = json.loads(json.dumps(row)); r4["L"] = 3; r4["witness"]["moves"] = r4["witness"]["moves"] + [["S", ix["S"]]]
+try:
+    wp18_check.check_row(rot, r4, 6)
+    raise AssertionError("over-claimed L accepted")
+except ValueError:
+    pass
+print("over-claimed L = 3 on an ell = 2 start rejected")

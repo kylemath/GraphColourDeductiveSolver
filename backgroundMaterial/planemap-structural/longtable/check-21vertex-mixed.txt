@@ -1,0 +1,5 @@
+edges 57 faces 38
+start link at 1 [0, 2, 3, 0, 1, 2, 0, 3, 1]
+swap (0,3) on [0] ; swap (0,1) on [2, 4, 6, 7, 12, 13, 14, 16, 17] ; link at 1 [3, 2, 3, 1, 0, 2, 0, 3, 0]
+slide 1 -> 6; link at 6 [1, 3, 0, 3, 0] ; free colours [2]
+filled: proper 4-colouring of all 21 vertices after 2 swaps + 1 slide
