@@ -1,0 +1,195 @@
+{
+  "scope": "input/manifest and named root-13 regression replay only; no WP11 search",
+  "manifest_sha256": "365a9578cb89bfd71a9f4d33a683de281872e3c896b32df54ef06100a9aca198",
+  "fixture_sha256": "c94ef640b2abcd79011802af4faabb6a8ddd304e2198aa69d6b7709e21d32aaf",
+  "checked_bound_files": 19,
+  "registry_entries": 515,
+  "distinct_weight_vectors": 479,
+  "proportional_classes": 423,
+  "discovery_graphs": 22,
+  "validation_graphs": 96,
+  "root13_proper_colouring_orbits": 100,
+  "root13_pits": [
+    {
+      "trap_coloring": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        3,
+        2,
+        3,
+        0,
+        3,
+        0,
+        1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "trap_state_as_published": 19,
+      "twin_state_as_published": 98,
+      "component_sizes": [
+        2,
+        6
+      ],
+      "trap_macro_endpoints": 77,
+      "twin_macro_endpoints": 77,
+      "trap_rank": [
+        1,
+        107
+      ],
+      "twin_rank": [
+        1,
+        115
+      ]
+    },
+    {
+      "trap_coloring": [
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        3,
+        0,
+        3,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        3
+      ],
+      "trap_state_as_published": 29,
+      "twin_state_as_published": 48,
+      "component_sizes": [
+        2,
+        6
+      ],
+      "trap_macro_endpoints": 77,
+      "twin_macro_endpoints": 77,
+      "trap_rank": [
+        1,
+        107
+      ],
+      "twin_rank": [
+        1,
+        115
+      ]
+    },
+    {
+      "trap_coloring": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2,
+        3,
+        0,
+        2,
+        0,
+        1
+      ],
+      "trap_state_as_published": 52,
+      "twin_state_as_published": 47,
+      "component_sizes": [
+        2,
+        6
+      ],
+      "trap_macro_endpoints": 77,
+      "twin_macro_endpoints": 77,
+      "trap_rank": [
+        1,
+        107
+      ],
+      "twin_rank": [
+        1,
+        115
+      ]
+    },
+    {
+      "trap_coloring": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        3,
+        2,
+        3,
+        0,
+        1,
+        0,
+        2,
+        0,
+        2,
+        3,
+        1
+      ],
+      "trap_state_as_published": 76,
+      "twin_state_as_published": 54,
+      "component_sizes": [
+        2,
+        6
+      ],
+      "trap_macro_endpoints": 77,
+      "twin_macro_endpoints": 77,
+      "trap_rank": [
+        1,
+        107
+      ],
+      "twin_rank": [
+        1,
+        115
+      ]
+    },
+    {
+      "trap_coloring": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        3,
+        2,
+        0,
+        3,
+        0,
+        1,
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "trap_state_as_published": 96,
+      "twin_state_as_published": 16,
+      "component_sizes": [
+        2,
+        6
+      ],
+      "trap_macro_endpoints": 77,
+      "twin_macro_endpoints": 77,
+      "trap_rank": [
+        1,
+        107
+      ],
+      "twin_rank": [
+        1,
+        115
+      ]
+    }
+  ],
+  "checker_sha256": "0027e917c3faf4778c8280e5abc63c630cd846df38a4f2459bc144da4f78a758"
+}
