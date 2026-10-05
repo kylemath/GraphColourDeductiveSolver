@@ -52,13 +52,14 @@ def main():
     table = json.loads((FIXTURES / "mass-macro-results.json").read_text())
     reg = registry()
     bound = ["WP11-rank-synthesis-tier1-declaration.md", "mass_core.py", "wp11_cert.py", "wp11_search.py",
-             "wp11_regression_root13.py", "wp11_manifest.py",
+             "wp11_regression_root13.py", "wp11_manifest.py", "wp11_check_output.py",
              "../wp11-independent-replay.py", "../wp11-independent-replay-regressions.py",
+             "../wp11-pre-release-check.py",
              "../mass-macro-results.json", "../search-results.json"]
     bound += [f"../triangulations-min5-{n}.txt" for n in range(12, 21)]
     manifest = {
         "schema": "wp11-run-manifest-v1",
-        "declaration": "WP11-rank-synthesis-tier1-declaration.md (version 2, inline overrides)",
+        "declaration": "WP11-rank-synthesis-tier1-declaration.md (version 2, inline overrides; version 2.1 certificate storage)",
         "features": FEATURES,
         "rank": "lexicographic (p, sum_i w_i f_i); macro <= 2 whole active component swaps; endpoint must decrease",
         "quantifiers": {"primary": "for all T exists r in D(T) for all non-target c exists decreasing macro",

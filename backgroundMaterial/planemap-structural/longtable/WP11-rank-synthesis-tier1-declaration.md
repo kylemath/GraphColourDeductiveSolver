@@ -145,3 +145,20 @@ With every weight ≤ 3, Q = 3(12n² + 9n + 48) bounds s_w, and the rank is repr
 - **If a rank survives,** the math team's plan applies: a generic ranked-macro contact wrapper, then formal bounds for that rank. It is never presented as a proof of the mass hypothesis.
 
 **Release still requires** the math team's schema check and the user's explicit approval. Route B, the radius-3 and distant-hub searches, and orders beyond 20 remain unreleased.
+
+## Version 2.1: certificate storage (after the math team's final pre-release review; still not released)
+
+This section implements §1 and does not change the model, grammar, registry or quantifiers. It overrides the per-certificate layout above only where the two differ.
+
+- **Shared tables.** For each (graph, root) the producer writes one weight-independent table (`wp11-table-v1`, gzip). It holds:
+  - the complete canonical state set, with p and the eight features;
+  - for each non-target state, one macro to a target; or, for a *hard* state (no macro reaches a target), its **complete** list of 1- and 2-move endpoints, with their features.
+
+  Every table is hashed and indexed.
+- **Indexed certificates** (`wp11-cert-v1-indexed`), one entry per weight vector, cover **every graph and every eligible root**:
+  - a good root gives, for each hard state, the index of a lower endpoint in that state's complete list;
+  - a bad root gives a stuck hard state.
+
+  An existential pass is therefore covered by a good root in every graph, and an all-roots pass by every root. `existential_fail_witness` and `all_roots_fail_witness` are separate fields.
+- **Results** record every registry id and sub-tier for each vector, the certificate and table hashes and, for validation, the frozen discovery-result digest and its exact survivor lists. Existing output is never overwritten; an authorised rerun takes a new `--label` and records the earlier outputs for its stage.
+- **Smoke stage.** `--stage smoke` runs the certificate path on the four named schema fixtures (icosahedron; order 17, graphs 0, 1 and 3) with e1 (q) and e3 (L) only. These reproduce published results; it is not a discovery run. `wp11_check_output.py` is Long Table's own consistency check; the math team's replayer remains the independent one.

@@ -1,6 +1,6 @@
 {
  "schema": "wp11-run-manifest-v1",
- "declaration": "WP11-rank-synthesis-tier1-declaration.md (version 2, inline overrides)",
+ "declaration": "WP11-rank-synthesis-tier1-declaration.md (version 2, inline overrides; version 2.1 certificate storage)",
  "features": [
   "q",
   "lin",
@@ -14917,14 +14917,16 @@
  ],
  "validation_disclosure": "orders 19-20 were inspected in earlier research; a fixed out-of-discovery pass, run once, no re-tuning",
  "bound_files": {
-  "WP11-rank-synthesis-tier1-declaration.md": "7a467837f2fcdcabea6e688016ae32fe254d71da611cc9a47ce36ed672b919cb",
+  "WP11-rank-synthesis-tier1-declaration.md": "321183d63b7ace68c089495e081953320fe4f6cdba4d5b413e80b88bef52d89c",
   "mass_core.py": "7e7d27296d14f8d097b4e0fe4770dcdd30d4ce36f1af807ffd4123b80d3d8bc1",
   "wp11_cert.py": "78f189a23abd68c3e58a6d9647ebd0b053e8706c025b5f8c1e73edd0d01056ea",
-  "wp11_search.py": "aebcdb297cc88a66eb95b4c7033374213ac69b2db24d3ec4e38a70a493164ad2",
+  "wp11_search.py": "e48bcab99cac8239b993a90a071356f9fd24fde79907a528826d6f52f662315d",
   "wp11_regression_root13.py": "324b1416cd16a4f03e956e9195286a188e34060be1a74bd5a6299f11eecac251",
-  "wp11_manifest.py": "737e9f29b79cdd0f4c8b6aca5b3c086ae8fe0c6c5eaada241a02778b4ad9e08e",
+  "wp11_manifest.py": "6df4bd70bdb5091c558a9ca5d593d69ed321adadd20401dac846aecd37edcc7b",
+  "wp11_check_output.py": "db1cc99743b6594b401707769a1cd3f39ad9221fe54be4037e6e7633a41fcb12",
   "../wp11-independent-replay.py": "598795a7bbc03d668d95a400d00c6669bbb782a60c07deafe4a6af7f78fc7ed5",
   "../wp11-independent-replay-regressions.py": "390613d9ceb844b4001686f907744df539f121e5e254eca249e8d71fc5ddb74a",
+  "../wp11-pre-release-check.py": "0027e917c3faf4778c8280e5abc63c630cd846df38a4f2459bc144da4f78a758",
   "../mass-macro-results.json": "42bf13cdb9d87d952d89982fd2778cd407e7e5ae5c353d2cdb33fda5891b9c80",
   "../search-results.json": "c859d9c8215a08ac331370eb682c048cd6bcd860ca3cc26c922ff801f640de50",
   "../triangulations-min5-12.txt": "1f9630174b17141a035316992c75f8f8c2caf3e3fd2af5e05c4e4189fc0f57fb",
