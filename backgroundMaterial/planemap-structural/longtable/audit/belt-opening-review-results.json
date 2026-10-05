@@ -1,0 +1,231 @@
+{
+  "scope": "five-position local truth table plus existing named G5 regression",
+  "local_non_target_patterns": [
+    {
+      "link": [
+        0,
+        1,
+        0,
+        2,
+        3
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        1,
+        0,
+        3,
+        2
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        1,
+        2,
+        0,
+        3
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        1,
+        2,
+        3,
+        1
+      ],
+      "doubled": 1
+    },
+    {
+      "link": [
+        0,
+        1,
+        2,
+        3,
+        2
+      ],
+      "doubled": 2
+    },
+    {
+      "link": [
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        1,
+        3,
+        2,
+        1
+      ],
+      "doubled": 1
+    },
+    {
+      "link": [
+        0,
+        1,
+        3,
+        2,
+        3
+      ],
+      "doubled": 3
+    },
+    {
+      "link": [
+        0,
+        2,
+        0,
+        3,
+        1
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        2,
+        3,
+        0,
+        1
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        2,
+        3,
+        2,
+        1
+      ],
+      "doubled": 2
+    },
+    {
+      "link": [
+        0,
+        3,
+        0,
+        2,
+        1
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        3,
+        2,
+        0,
+        1
+      ],
+      "doubled": 0
+    },
+    {
+      "link": [
+        0,
+        3,
+        2,
+        3,
+        1
+      ],
+      "doubled": 3
+    }
+  ],
+  "counts_by_doubled_colour": {
+    "0": 8,
+    "1": 2,
+    "2": 2,
+    "3": 2
+  },
+  "G5_rotation": "12 cgfed,hijkl,adhlg,aeihc,afjid,agkje,aclkf,blcdi,bhdej,biefk,bjfgl,bkgch",
+  "G5_deletion_orbits": 20,
+  "proper_omitted_opening_examples": {
+    "0": {
+      "vertex_order": [
+        "a",
+        "b",
+        "u0",
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "hole": "u0",
+      "state": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        1,
+        3,
+        2,
+        0,
+        3,
+        2,
+        0
+      ],
+      "link": [
+        0,
+        1,
+        2,
+        0,
+        3
+      ]
+    },
+    "1": {
+      "vertex_order": [
+        "a",
+        "b",
+        "u0",
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "hole": "u0",
+      "state": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        0,
+        2,
+        3
+      ],
+      "link": [
+        0,
+        1,
+        2,
+        3,
+        1
+      ]
+    }
+  }
+}
