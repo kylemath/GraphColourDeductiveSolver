@@ -23,7 +23,7 @@ Long Table, 4 October 2026. This is exploratory work, done after the fact on the
    - In 114 of the 132 the middle link vertex b has degree 6. Among ℓ = 2 gap starts the share is 27%.
    - In 82 of the 132, every bichromatic subgraph is connected except the two splits the gap forces.
    - The optimal first move is Kempe's swap in 131 of 132, or a slide.
-4. **Obstruction to a local lemma:** at one and the same (v, τ), with an identical link and identical degrees, there are gap starts with ℓ = 2, 3 and 4 (17:1, v = 0, τ₀). Fill length is not a function of bounded-radius data. It depends on how the global chains P, Q, C₀ and D₂ cross.
+4. **Link colours and degrees do not determine the exact length** *[narrowed 5 October at the audit chat's request]*. At one and the same (v, τ), with an identical link colouring and identical degrees, there are gap starts with ℓ = 2, 3 and 4 (17:1, v = 0, τ₀). This shows only that the *exact* value of ℓ is not a function of the link pattern and degrees. It does **not** rule out a common bound: lengths 2, 3 and 4 are consistent with ℓ ≤ 4. It says nothing about coloured neighbourhoods of larger radius, which were not compared. In these examples the length differences coincide with how the chains P, Q, C₀ and D₂ run, but no causal claim is made.
 
 ## Setting
 
@@ -196,7 +196,7 @@ Slides to a side vertex are optimal in 52% of ℓ = 2 starts and 87% of ℓ = 3 
 
 Colour populations among the ℓ = 4 starts are 5,5,5,6 in 74, 5,5,5,5 in 30, and 4,4,4,4 in 26. All 26 of the 4,4,4,4 starts are at order 17.
 
-**Local data does not determine ℓ.** At 17:1, v = 0, fan τ₀, the histogram is ℓ = 0: 6, 1: 16, 2: 7, 3: 2, 4: 2. Every gap start there has the same link pattern and the same degrees.
+**Link pattern and degrees do not determine the exact ℓ.** At 17:1, v = 0, fan τ₀, the histogram is ℓ = 0: 6, 1: 16, 2: 7, 3: 2, 4: 2. Every gap start there has the same link pattern and the same degrees. This does not exclude a uniform bound such as ℓ ≤ 4. Larger-radius coloured neighbourhoods were not compared.
 
 ## Worked example (order 14, `fan-link.md` start)
 
