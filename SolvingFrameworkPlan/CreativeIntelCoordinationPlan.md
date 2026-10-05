@@ -1,61 +1,67 @@
 # Next steps with Creative Intel / Long Table
 
-4 October 2026. User-requested coordination following Long Table commit 833e0f7 and `GremlinAudit.md`. This plan divides preparation and review work. It does not release WP18 experiments or change navigator statuses. Creative Intel is the Long Table team in the existing message protocol.
+Updated 5 October 2026 after Long Table's `2026-10-05-longtable-to-math-navigator-and-audit-belt-vh-and-wp18-analysis.md`, commit `1bebeba`, and the parallel belt review, commit `6d49a25`. This replaces the initial preparation plan. Creative Intel is Long Table in the shared-file message protocol. Team ownership is acknowledged; a posted message does not itself constitute Math acceptance.
 
-## First objective
+## Current objective
 
-Finish a reviewable belt-family argument while making WP18 capable of certifying its claimed bounds. Preserve the gremlin team's useful exploratory work, with exact domains and independent checks. Keep fixed-hole swaps, moving-hole paths and chosen-fan bounds distinct.
+Review the new proof claims around VH∃ and the structure of graph 17:1, and obtain explicit acceptance of the completed finite WP18 replay and the joined belt theorem. Prepare a precise future test only after its claims and evidence dependencies are settled. Do not reopen the completed belt opening/termination tasks or launch another census.
 
-## Work division
+## Completed work and remaining dependencies
 
-| Owner | Work | Concrete deliverable | Completion condition |
-|---|---|---|---|
-| Creative Intel / Long Table | Adopt or challenge the independently checked A_rho transition; assemble the belt argument | One hand-proof page for every hole of G_(3k+2), linking each component lemma | Explicit pole-hole, equal-pole belt-hole and unequal-pole belt-hole cases; opening coverage, tile coverage, monotone traversal, cap termination and small-ring overlap cases all accounted for |
-| Creative Intel / Long Table | Amend WP18 and implement its producer and certificate output | Revised declaration, bounded BFS producer, regressions, manifest and checker interface | Exact start/pair coverage; lower-bound evidence as well as successful paths; cap and interruption reporting specified; no experiment before math's explicit go-ahead |
-| Creative Intel / Long Table | Reconcile its own reports and inventory existing exploratory evidence | Short correction reply and evidence inventory | WP7's remaining broad short-circuit sentence narrowed; stale classification complaint withdrawn; F32/F42 scope described as root-zero deletion enumeration; saved sweeps labelled exploratory |
-| This chat: independent audit | Maintain a separately implemented replay checker | `longtable/audit/gremlin-check.py` and `gremlin-check-results.json`; later a separate WP18 certificate checker | No imports of producer move code; validate input graph, start, whole components, slides, fill, pair coverage and lower-bound completeness |
-| This chat: proof review | Review the joined belt argument and exact VH-exists quantifiers | Adversarial review with named gaps or checked arguments | Establish what is a local lemma, what terminates globally, and what suffices for induction; no proof status inferred from a finite pass |
-| Math team, by relayed request | Independently replay WP11; review belt proof, VH-exists and amended WP18 | Explicit acceptance or corrections; experimental go-ahead if appropriate | Integrity hashes alone do not count as semantic acceptance; experimental approval identifies the revised declaration/version |
-| Proof Navigator, by relayed request | Reconcile handoff and evidence references | Corrected report/ledger references | Separate two-swap mixed escape from three-swap fixed-hole escape; preserve the vacancy branch as open unless math supplies a proof |
+| Work | Current position | Remaining action |
+| --- | --- | --- |
+| WP18 P1–P4 | Fully independently reproduced: 961 graphs, 68,890 pairs, every histogram and maximum/minimum; m=3 only on 17:1, m<=2 elsewhere, every admitted start within four moves on these files | Math's written acceptance of the finite statement; producer limitations must be repaired before a future run |
+| Missing A_rho tile | Written, independently checked and adopted by Long Table | No re-derivation needed |
+| Eight doubled-0 openings and termination | Both parallel teams completed both tasks; root hand review and separate constructive replay pass | Math review of the assembled theorem; no new local gap is being asserted |
+| Joined belt theorem | `longtable/swarm/belt-joined.md` passed the audit's hand review; unequal-pole belt holes fill by slides within 2n for every n>=5; equal-pole star also checks | Exact family identification and Florek pole-deletion theorem remain cited dependencies; Math acceptance, not a self-contained re-proof |
+| Named belt regression | All 947 unequal starts on existing G5/G8/G11 pass the root strategy, with proper final fillings and fixed poles; Long Table also reports n=6,7,9,10 checks | Distinguish chosen strategy lengths 4/10/14 from shortest lengths 2/4/6 |
+| Corrections and reporting | Validation report sent, WP7 narrowed, fan classification located, 21-vertex two-swap mixed escape corrected, F32/F42 identified as root-zero deletion enumeration | WP11 still awaits Math's semantic acceptance; exploratory rank sweeps remain labelled as such |
+| WP12 | Withdrawn and unreleased | Keep stopped |
 
-This is the proposed division to be acknowledged by an explicit Long Table reply. A posted message or silence is not team acceptance. This chat owns the audit, new local tile note and coordination files; Long Table owns its declaration, producer, assembly and reports. Avoid editing another team's current files concurrently.
+Evidence: `FullWP18Replay.md`, `BeltParallelProofReview.md`, `IndependentWP18AndBeltReview.md`, and their hash manifests. The unrestricted vacancy hypothesis remains unproved; finite passes and the belt family do not establish it. Navigator owns ledger statuses.
 
-## Immediate handoff: reuse work already done
+## Updated division and order of work
 
-Creative Intel should read `GremlinAudit.md` and `longtable/swarm/unequal-a-rho-tile-audit.md` before writing a replacement tile. The local transition is:
+| Priority | Owner | Task and concrete deliverable | Acceptance condition |
+| --- | --- | --- | --- |
+| 1 | This audit chat | Adversarial review of `longtable/swarm/vh-exists.md`, especially U∃, induction, containment, class quantifiers, and its checker's contract | A named proof gap or a reviewed implication with all quantifiers explicit; separate hand lemmas from the 118-graph observation |
+| 2 | This audit chat | Review `longtable/wp18/analysis-17-1.md`: monochromatic diagonal reduction, legal-fan condition, crossing criterion, symmetry argument and vertex-7 distance-three certificate | Reconstruct the combinatorial reduction and independently exclude shorter paths for the cited witness; do not infer all-vertex structure from partial symmetry |
+| 3 | This audit chat | Review `longtable/wp18/mechanism.md`: Lemma A and slide-to-swap claims; check the precise scope of its local-data obstruction | Give specific accepted statements or counterexamples; counts alone do not prove the general lemmas |
+| Concurrent | Long Table | Retain ownership of joined proof, VH∃ page, mechanism/17:1 notes and checkers; answer review objections and narrow overclaims | Revised pages and a correction message, with own hashes and claim labels kept current |
+| Concurrent | Math | Written acceptance/refusal of finite WP18; review joined belt proof with citations and VH∃ implication | Distinguish acceptance of a finite computation, a family theorem, and a universal conjecture |
+| After claim review | Long Table, subject to Math's reply | Draft WP19 if Math requests it; freeze candidate statements, algorithms, graph identities, limits, certificates and stopping rules before release | Version-specific written go-ahead and user release before any run; no drafting request is treated as permission to run |
+| Throughout | Navigator | Record actual files, review outcomes and remaining dependencies | No upgrade of unrestricted vacancy or compilation status from finite checks or hand review alone |
 
-    v_i -> u_i -> u_{i-1}.
+The audit owns its reports, scripts and coordination files. Long Table owns the source proof pages and future declaration/producer. Edit only the owner's files; send objections in a new addressed message. The two competing belt teams have finished. Team A receives the promised lead credit for the first complete reviewed candidate; Team B supplied a different checked argument. No further team work is launched by this plan.
 
-If the unchanged colour of u_{i-2} is rho, the new link is (0,1,rho,0,rho), and the hole fills. If it is tau, continue
+## U∃ review: exact questions
 
-    u_{i-1} -> v_{i-1} -> v_{i-2},
+U∃ asks for one degree-five vertex and one legal fan such that every Kempe class of the smaller fan triangulation contains an unlocked member: a colouring whose restriction to the original deletion fills in one Kempe swap. The reviewed route must justify:
 
-returning the prepared shape (1,rho,tau,rho,0). Review this lemma, then spend the remaining hand work on global coverage and termination. A checked local transition does not by itself finish the belt theorem. Florek's pole-hole result needs its exact hypotheses and a properly sourced target restriction; avoid claiming historical novelty without a literature check.
+1. Why a colouring of the smaller graph can be chosen by induction without circular use of the desired theorem on the original graph.
+2. Why every relevant smaller-graph class is covered, and why its Kempe path transfers to legal component swaps in the original deletion.
+3. Why “each class has an unlocked member” suffices even though not every start is itself unlocked. A result about immediate fill length is not a result about the total excursion length.
+4. Why all legal-fan, simplicity, degree-four Jordan-split and small-order conditions are satisfied.
+5. What the 41 failing pairs and 118 successful graphs actually say. The graph-level existential observation is post hoc and supplies no universal proof.
 
-The independent checker already reproduces the icosahedron's 60 fan cases, the order-14 start's exact distance two and 36 successful sequences, the 21-vertex escape and the order-17 graph-1 fixed-hole distance four. Reuse these as named regressions rather than duplicating a census.
+The audit should review the actual checker implementation before reproducing the claimed U∃ totals. Reuse existing graph files; do not launch a fresh-order test.
 
-## WP18 certificate contract to agree before a run
+## Claims that need narrowing now
 
-1. Graph identity: full rotation, source index, input hash and a checked simple spherical triangulation. Enumerate every degree-five vertex and every legal fan, recording even empty start families explicitly. Explain their treatment rather than taking an unexplained vacuous maximum.
-2. Start identity: hole plus a proper colouring, its vertex order, the two fan chords and confirmation they are bichromatic. Added fan chords constrain the starts only; moves run in the current deletion of the original graph.
-3. Move identity: colour pair and the complete component vertex set for a swap; old/new hole and transferred colour for a slide. Check properness and target conditions independently. Canonical state keys must include the hole.
-4. Successful-path certificates prove upper bounds. Exact distances also need completeness of all earlier BFS layers. A failure of m(T)<=2 requires, for every legal pair, a specific admitted start and a complete exclusion of fills at depths zero, one and two. A length-three path alone is insufficient.
-5. Capped distances are lower bounds, possibly infinite. A complete depth-six search without a target excludes length at most two; it does not refute VH-exists. A resource interruption that leaves a required layer incomplete is inconclusive. Do not require a successful shortest-path witness where no path has been found.
-6. For exact m(T), distinguish resolved pair values from unresolved pair lower bounds. Report an exact minimum only when those lower bounds cannot beat the best resolved pair. Do not turn omitted or interrupted pairs into passes.
-7. Before asking for release, commit regressions for the icosahedron, published order-14 start, malformed witnesses, high-degree landing holes, colour-renaming invariance, fan-chord handling and cap/interruption distinctions. Freeze the producer/checker input contract and code hashes.
+Long Table's statement that identical link colours and degrees at one pair show that “no bounded-radius lemma bounds fill length” is stronger than the evidence. Lengths 2, 3 and 4 with those same data show that those data do not determine the exact length. They neither exclude a common upper bound nor establish equality of coloured radius-r neighbourhoods for arbitrary fixed r. A bound of four, for example, is consistent with all three values. Request a precise replacement in the message and source page; do not repeat the broad claim as a proved obstruction.
 
-This chat will independently check the certificate contract and fixture outputs before broad runs. Creative Intel should send the revised declaration to math and obtain an explicit response before P1. Order 21 remains the declared held-out statistic check; existing rank sweeps on that order must remain disclosed. Nothing in this plan broadens the approved experiment scope.
+Likewise, the crossing-diagonal criterion is explicitly conditional on all five fans being legal. Preserve that condition when summarising it. A post hoc correlation with degree sequences or an edge flip is not a proof of why every degree-five vertex is bad.
 
-## Corrections to relay
+## Future declaration, not a release
 
-- The 21-vertex colouring needs two Kempe swaps when slides are allowed. Its original fixed-hole target requires three. The 172 frozen pairs among 224 do not kill a two-swap mixed strategy. The graph has 57 edges and 38 faces, not 63 and 42.
-- Revision 72 already links the fan-word classification. The older missing-file complaint is stale.
-- F32/F42 output scope is deletion colouring at root zero; do not conflate it with full-graph enumeration or a proof of a slide bridge.
-- Existing q/lin sweeps report an existential passing root on every checked graph through order 26. Their whole-census conclusions are still producer reports, not independently accepted results. A failed root does not kill an existential root theorem.
-- The WP11 manifest has been checked for integrity here; math's independent semantic replay is still its own acceptance step.
+Long Table proposes WP19 on order 23: M1 (mixed length<=4), M2 (fixed-hole Kempe length<=mixed length+1), C1 (m<=2 for orders>=18), C2 (m<=3), C3 (m>=3 implies degree sequence 5^12 6^k), and U∃. These are candidates formulated after existing observations. The earlier M3 (“every two-move fill has a two-swap fill”) is absent from the proposed list; the draft must explicitly include it or say it is not tested.
 
-## Order of work and next checkpoint
+Order 23 is new for these proposed move/class statistics, but not an untouched graph sample: the user's overnight swarm already produced q/lin exploratory sweeps on orders 20–26. Disclose that exposure. Do not claim a pristine held-out graph set merely because WP18 ended at order 22. U∃ was formulated using data through order 20; later test design must record all relevant prior graph and statistic exposure.
 
-First, Creative Intel acknowledges the division and returns any conflicts with its current work. Then belt assembly and WP18 preparation proceed independently. This chat reviews each submitted artifact; math reviews the resulting proof and declaration. Broad WP18 runs follow only its explicit go-ahead and stay inside the declared resource limits.
+Before a run, repair the known producer limitations: checks inside long enumeration/BFS work rather than only between starts, enforce memory/output limits, preserve partial information on interruption, define empty families, and bind declarations and code by hash. Successful paths prove upper bounds; exact distances require complete earlier layers. The min-over-pairs statistic also needs every pair accounted for, with unresolved bounds treated explicitly. Freeze negative regressions and source/input hashes.
 
-The next checkpoint is a reply containing: the adopted or rejected tile lemma; the joined belt-proof path and remaining gaps; amended WP18 declaration/code hashes and regression output; any math acceptance/go-ahead received; and a list of corrections relayed. Preserve WP12's withdrawal. Navigator statuses, play edits and new rank fitting are not tasks in this handoff.
+Nothing new runs until the agreed written review and release are in hand. No n>=14 belt enumeration, Lean work, new rank fitting or reopened WP12 is part of this plan.
+
+## Next checkpoint
+
+The next audit handoff should contain the U∃ implication review, diagonal/witness review, narrowed mechanism claims, and any corrections requested from Long Table. Separately record Math's actual acceptance decisions and its reply on whether to draft WP19. Only then settle the future test package and seek its release. Keep the existing belt proof and WP18 evidence as completed deliverables with their remaining acceptance/citation dependencies explicit.
