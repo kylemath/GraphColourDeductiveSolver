@@ -1,0 +1,213 @@
+{
+  "scope": "saved WP19 outputs only; no new graph/search phase",
+  "binding_manifest": "wp19/WP19-verified-output-manifest.json",
+  "gap_conventions": "membership counts one start per admitted fan; distinct counts each canonical (hole,colouring) once per graph",
+  "near_miss_definition": "exactly one or two degree5 vertices have some legal fan with L<=2; all others have every legal fan L>=3",
+  "method": "Zero weighted gap implies every gap is zero by kappa>=ell. Positive-gap graphs are independently replayed to obtain joint/deduplicated counts.",
+  "seconds": 78.32,
+  "phases": {
+    "P1": {
+      "m_hist": {
+        "2": 1768,
+        "1": 302
+      },
+      "max_ell": 4,
+      "U_failing_pairs": 320,
+      "m3_graphs": [],
+      "membership_gaps": {
+        "0": 25133100,
+        "1": 555
+      },
+      "distinct_start_gaps": {
+        "0": 12407132,
+        "1": 185
+      },
+      "near_misses": [
+        {
+          "order": 23,
+          "graph_index": 460,
+          "degree5_vertices": 17,
+          "good_vertices": [
+            15,
+            18
+          ],
+          "bad_vertices": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            8,
+            10,
+            12,
+            13,
+            14,
+            16,
+            17,
+            19,
+            20,
+            21
+          ],
+          "m": 2,
+          "vertex_min_L": {
+            "0": 3,
+            "2": 4,
+            "4": 3,
+            "6": 3,
+            "7": 3,
+            "8": 3,
+            "10": 3,
+            "12": 3,
+            "13": 3,
+            "14": 3,
+            "15": 2,
+            "16": 3,
+            "17": 3,
+            "18": 2,
+            "19": 3,
+            "20": 3,
+            "21": 3
+          }
+        }
+      ],
+      "raw_sha256": "ab6923ca1455146b251558b8eb613eaa558a002407beccb967385c1a1b9cc188",
+      "archive_sha256": "d9a629c0714c6456443152214627c768508099a485d2eb08110a7769e10cea41",
+      "positive_gap_graphs": 80
+    },
+    "P2": {
+      "m_hist": {
+        "2": 692,
+        "1": 151
+      },
+      "max_ell": 4,
+      "U_failing_pairs": 181,
+      "m3_graphs": [],
+      "membership_gaps": {
+        "0": 7126978,
+        "1": 372
+      },
+      "distinct_start_gaps": {
+        "0": 3521660,
+        "1": 124
+      },
+      "near_misses": [],
+      "raw_sha256": "e3036b12420f7d4eac9c5770106c2f7be5e469d72439f16ee0ec0d6b7b2c1f54",
+      "archive_sha256": "7c599a42764b2b8224c4e3973cbcdf8e22c65c9a116053effdeaa588bc15ade7",
+      "positive_gap_graphs": 50
+    },
+    "P3": {
+      "m_hist": {
+        "2": 6277,
+        "1": 1012,
+        "3": 1
+      },
+      "max_ell": 4,
+      "U_failing_pairs": 1298,
+      "m3_graphs": [
+        [
+          24,
+          6406
+        ]
+      ],
+      "membership_gaps": {
+        "0": 119766851,
+        "1": 2544,
+        "2": 12
+      },
+      "distinct_start_gaps": {
+        "0": 59029939,
+        "1": 848,
+        "2": 4
+      },
+      "near_misses": [
+        {
+          "order": 24,
+          "graph_index": 256,
+          "degree5_vertices": 15,
+          "good_vertices": [
+            9,
+            16
+          ],
+          "bad_vertices": [
+            0,
+            2,
+            5,
+            7,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            21,
+            23
+          ],
+          "m": 2,
+          "vertex_min_L": {
+            "0": 3,
+            "2": 3,
+            "5": 3,
+            "7": 3,
+            "9": 2,
+            "10": 3,
+            "11": 3,
+            "12": 3,
+            "14": 3,
+            "15": 3,
+            "16": 2,
+            "17": 3,
+            "18": 3,
+            "21": 3,
+            "23": 3
+          }
+        },
+        {
+          "order": 24,
+          "graph_index": 3032,
+          "degree5_vertices": 15,
+          "good_vertices": [
+            4,
+            5
+          ],
+          "bad_vertices": [
+            1,
+            3,
+            6,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            19,
+            21,
+            22
+          ],
+          "m": 2,
+          "vertex_min_L": {
+            "1": 3,
+            "3": 3,
+            "4": 2,
+            "5": 2,
+            "6": 3,
+            "10": 3,
+            "11": 3,
+            "12": 3,
+            "14": 3,
+            "15": 3,
+            "16": 3,
+            "17": 3,
+            "19": 3,
+            "21": 3,
+            "22": 3
+          }
+        }
+      ],
+      "raw_sha256": "30efe4e37251e62c6666a6756df754380be57af3cfe2412d9ff988e3dc2f0c2a",
+      "archive_sha256": "904cac3495b191fc89f6a36aa59a659a62ff731fdd48ca9a6985289ad87cbdb7",
+      "positive_gap_graphs": 400
+    }
+  }
+}
