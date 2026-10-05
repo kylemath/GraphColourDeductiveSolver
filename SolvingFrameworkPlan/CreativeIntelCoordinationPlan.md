@@ -2,6 +2,10 @@
 
 Updated 5 October 2026 after the WP19 package (`e7172ca`) and Math execution handoff (`ba2e8f0`), following the parallel belt review (`6d49a25`). This replaces the initial preparation plan. Creative Intel is Long Table in the shared-file message protocol. Team ownership is acknowledged; a posted message does not itself constitute Math acceptance.
 
+## Role correction and execution decision
+
+The user clarified that this chat IS Math and explicitly released continued autonomous work. Earlier references to a separate Math owner were mistaken. This chat now owns the WP19 package review, written go-ahead, execution, result acceptance and proof review. The written decision is `messages/2026-10-05-math-to-longtable-and-navigator-wp19-go-ahead.md`: P1 and P2 released under package `e7172ca`; P3 waits for the required cost/result checkpoint. WP18 finite results and the unequal-pole hand proof are accepted within the scopes stated there. Long Table rests.
+
 ## Current objective
 
 Review the new proof claims around VH∃ and the structure of graph 17:1, and obtain explicit acceptance of the completed finite WP18 replay and the joined belt theorem. Prepare a precise future test only after its claims and evidence dependencies are settled. Do not reopen the completed belt opening/termination tasks or launch another census.
