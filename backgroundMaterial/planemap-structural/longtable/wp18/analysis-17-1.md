@@ -166,6 +166,12 @@ The slides fail because each N(u)∖7 uses three colours: N(6)∖7 is coloured (
 
 ## 5. Conjectures (for a future declaration; untested)
 
+> **Outcome after WP19 (5 October; `SolvingFrameworkPlan/MathWP19Results.md`, `MathWP19Counterexamples.md`):**
+> - **C1 and C3 are killed** by 24:6406, which has m = 3 (58 pairs with L = 3 and 12 with L = 4) and two degree-7 vertices. So 17:1 is not the only m = 3 graph, and m ≥ 3 is not confined to graphs with degrees 5 and 6 only.
+> - **C2 (m ≤ 3) passed** on all 10,203 WP19 graphs; its universal statement remains open.
+>
+> The statements below are kept as preregistered. Their finite observations keep their original scope, orders 12–22.
+
 - **C1 (17:1 is sporadic).** Every minimum-degree-5 triangulation of order ≥ 18 has m(T) ≤ 2.
   - At risk: the minimum fraction of good vertices falls from 0.62 to 0.29 over orders 20–22 (observed after the fact).
 - **C2 (bound).** Every T has m(T) ≤ 3.

@@ -10,7 +10,7 @@ Long Table, 4 October 2026. This is exploratory work, done after the fact on the
    - Every one of the 380,253 starts with fill length ℓ = 2 has a pure Kempe shortest fill, KK.
    - At ℓ = 3, 6,392 of 6,531 starts have KKK.
    - At ℓ = 4, 131 of 132 starts have KKKK.
-   - Slides shorten the fill in exactly 140 starts, and always by exactly one move.
+   - Slides shorten the fill in exactly 140 starts, and always by exactly one move. This holds on orders 12–22 only; at order 24 a slide saves two moves (24:7228, see Conjecture M status).
    - The first move is therefore *not* always a slide. A slide comes first in every shortest fill only for those 140 starts.
 2. **Proved:**
    - ℓ ≤ 1 exactly when the start is not in the gap case. In the gap case, no single move fills, slides included (Lemma A).
@@ -81,7 +81,7 @@ So every shortest-fill word ending in S has a twin of equal length ending in K. 
 3. Swapping K creates no σ. Hence u is still the unique σ on link(w), and the slide to u is legal.
 4. The two orders change the same vertices to the same colours. ∎
 
-**Corollary (two moves).** Suppose a start has a 2-move fill of the form KS, SS, or SK where the swap avoids the slid colour. Then it has a KK fill.
+**Corollary (two moves).** *[Superseded 5 October by Math's accepted hand theorem, `SolvingFrameworkPlan/MathShortFillTheorem.md`: on any finite simple graph with a finite palette, ℓ ≤ 2 implies κ = ℓ. That theorem proves M3 and closes the open SK sub-cases below. Math's review also supplied the missing step in the SS → SK reduction (when the colour x missing at the final hole equals σ, the original {σ, γ}-component is {u, t}, and swapping it already fills at h). The partial argument is kept below for the record.]* Suppose a start has a 2-move fill of the form KS, SS, or SK where the swap avoids the slid colour. Then it has a KK fill.
 
 *Proof.*
 
@@ -124,7 +124,7 @@ The converse fails. Observed: X holds in both orders at 25,141 gap starts with �
 
 *Proof.* The repeated colour of the new link is γ, on g and a0. The singleton between them is d. The two chains of the new gap test are δβ from d to b, which is Q and unchanged, and δα from d to a2. Then apply `fan-link.md` to the new link. ∎
 
-So the "pure Kempe" fill is a *cascade*. Each swap rotates the middle by ±2 around the 5-cycle and keeps one of the two old chains. It fails to finish only when the recoloured component C₀ or D₂ manufactures the opposite chain, which happens exactly in configuration X. This is Heawood's objection to Kempe, met one step at a time. Iterating only the four α-swaps (ag and ad at a0 and at a2) reaches the optimum in the following share of starts (`mechanism-iter.txt`):
+So the "pure Kempe" fill is a *cascade*. Each swap rotates the middle by ±2 around the 5-cycle and keeps one of the two old chains. It can fail to finish only when the recoloured component C₀ or D₂ manufactures the opposite chain, and by Lemma E that requires configuration X. *[Corrected 5 October: an earlier version said this happens "exactly in configuration X". The converse is false. On 17:0, hole 0, the start (4,0,1,2,0,3,1,2,3,1,3,1,2,3,0,2,0) has both halves of X, yet Kempe's pair fills: K(0,1, seed 4) then K(0,2, seed 1). See `SolvingFrameworkPlan/MathVHAndMechanismReview.md` and `audit/math-mechanism-review-results.json`. Only the necessary direction holds.]* This is Heawood's objection to Kempe, met one step at a time. Iterating only the four α-swaps (ag and ad at a0 and at a2) reaches the optimum in the following share of starts (`mechanism-iter.txt`):
 
 | ℓ | Starts where the α-cascade reaches the optimum |
 |---|---:|
@@ -209,7 +209,7 @@ The dipyramid start is h = U₀ with link (U₁, N, U₅, L₀, L₁) coloured (
 
 ## What would be needed for a bound, and the obstruction
 
-A lemma of the form "gap ⇒ ℓ ≤ k" for every T is exactly a bounded form of VH∃ at degree 5. It would make the degree-5 step of `swarm/hole-induction.md` unconditional, so it cannot be expected from link-local reasoning.
+A uniform lemma of the form "every gap start at every degree-5 hole of every T has ℓ ≤ k" is **stronger than** VH∃, not equivalent to it *[corrected 5 October following Math's review]*. It implies a bounded existential version of VH∃. VH∃ itself asks for only one (v, τ) per graph and allows arbitrarily long paths. Either would make the degree-5 step of `swarm/hole-induction.md` unconditional.
 
 Lemma E reduces ℓ ≤ 2 to the absence of configuration X, and X is a statement about global chains. Configuration X is necessary for ℓ ≥ 3 but not sufficient: 25,141 starts with ℓ = 2 have it. Lemma F shows that each swap re-creates the same type of question (one chain inherited, one possibly manufactured).
 
@@ -229,7 +229,14 @@ The literature on Kempe cycling, Gethner–Springer on iterating Kempe's argumen
 
 *Suggested scope:* every graph of `plantri -m5 -a 23`, all v, all legal τ. The input hash is to be recorded before the run.
 
-*Status:* observed on orders 12–22 only, after the fact: the maximum ℓ is 4, the maximum κ − ℓ is 1 (in 140 starts), and M3 holds in all 380,253 ℓ = 2 starts. M3 is partly proved (Corollary above). M1 and M2 are not proved.
+*Status (historical):* observed on orders 12–22 only, after the fact: the maximum ℓ is 4, the maximum κ − ℓ is 1 (in 140 starts), and M3 holds in all 380,253 ℓ = 2 starts.
+
+*Status after WP19 (5 October; `SolvingFrameworkPlan/MathWP19Results.md`):*
+- **M2 is killed** by 24:7228 (v = 17, fan 0). That start has exact ℓ = 3 and κ = 5, so one slide saves two Kempe swaps. The observation "slides save at most one move", true on orders 12–22, does not hold in general and is withdrawn.
+- **M3 is a theorem**, in a stronger form: ℓ ≤ 2 implies κ = ℓ on any finite simple graph (`MathShortFillTheorem.md`). It uses whole Kempe components, singleton components included, and singleton slides as defined there.
+- **M1 passed** on all WP19 graphs (orders 21–24). Its universal statement remains open.
+
+The finite counts above keep their original scope, orders 12–22.
 
 ## Files (all in `wp18/`)
 
