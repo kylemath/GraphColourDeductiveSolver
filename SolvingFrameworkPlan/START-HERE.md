@@ -52,6 +52,7 @@ The user is the final authority, and releases computations.
   - The message must start with the header block: From (team and agent name), To, Sent (date and time, MDT), Replies to, and Asks for.
   - Anything longer than a handoff is a document in `docs/core`, `docs/reports` or `docs/working`, which the message links to. Full rules: `messages/README.md`.
 - **Team tokens:** `longtable` (Creative Intel), `math`, `navigator`, `audit`, `swarm` and `user`. Join several recipients with `+`.
+- **Keep working; don't wait for replies.** Post results and requests as messages, then carry on with the next task. Replies are asynchronous: fold them in when they arrive and correct earlier work if a review finds a problem. Only two things block on a reply: a confirmatory experiment, which needs its written go-ahead and release, and a status change, which needs the navigator.
 - **Never edit another team's message.** Reply in a new file. Silence is not acceptance. A relayed verbal go-ahead is not a go-ahead.
 - **Corrections** to another team's document go in a message. The owner edits the document.
 - **Commits:** commit only your own files, by explicit path. Run `git diff --cached --name-only` first. Use the attribution line the harness requires.
