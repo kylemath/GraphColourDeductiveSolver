@@ -1,0 +1,39 @@
+{
+  "base_sha256": "d228fe29cc03b60e94f2e9b4146dc62f2772bb5c2412b2221cada5eae01d92c6",
+  "fixtures": [
+    {
+      "file": "/tmp/isolated-fixtures-work/F32.json",
+      "sha256": "883dc194d62dee80a334e4a61d5cce0224879b10baff5461ac85bd6f2bcea94f",
+      "connected": true,
+      "vertices": 32,
+      "edges": 90,
+      "faces": 60,
+      "degree_histogram": {
+        "5": 12,
+        "6": 20
+      },
+      "incidence_rank_zmod2": 31,
+      "face_boundary_rank_zmod2": 59,
+      "cycle_space_dimension": 59,
+      "degree_five_vertices_independent": true
+    },
+    {
+      "file": "/tmp/isolated-fixtures-work/F42.json",
+      "sha256": "cb9966d42583c24e88d42f3173fcce81960d41a9d6605ed73882ce7bfc2d553d",
+      "connected": true,
+      "vertices": 42,
+      "edges": 120,
+      "faces": 80,
+      "degree_histogram": {
+        "5": 12,
+        "6": 30
+      },
+      "incidence_rank_zmod2": 41,
+      "face_boundary_rank_zmod2": 79,
+      "cycle_space_dimension": 79,
+      "degree_five_vertices_independent": true
+    }
+  ],
+  "colourings_enumerated": 0,
+  "producer_searches_run": 0
+}
