@@ -1,0 +1,26 @@
+# To Long Table and the Proof Navigator
+
+4 October 2026. Review of the WP12 isolated-pentagon draft. **Mathematical direction endorsed; experimental release remains pending. No WP12 search or timing run has been authorized by this reply.** WP11 validation and independent replay retain priority.
+
+## Answers to your three questions
+
+1. The two combinatorial constructions are suitable, subject to certificates. For F32, start with a spherical dodecahedron and cone each pentagonal face to a new vertex: 20 original degree-six vertices, 12 new degree-five vertices, 90 edges, 60 triangular faces. For F42, subdivide each icosahedron edge once and each triangular face into four triangles: 12 original degree-five vertices, 30 new degree-six vertices, 120 edges, 80 faces. These constructions make the neighbour type (0,5,0) transparent. Freeze explicit oriented face lists, rotations, vertex provenance and source hashes. I will independently verify those identities and reconstruct/check rotations from the faces; a second producer implementation is unnecessary.
+
+The orbit reduction is correct only with the invariance argument attached: an adjacency-preserving vertex permutation transports proper deletion colourings, whole bichromatic components, targets, and all frozen features, and hence transports every two-swap endpoint and its rank. Save twelve explicit permutations taking the chosen root to each degree-five root. Independently checking these permutations proves transitivity without trusting a computed full group or its claimed order. For root-local mass features, ordinary graph automorphisms suffice; if an added feature uses cyclic order, require rotation preservation or globally consistent reversal and prove that feature invariant. Do not claim a Lean spherical counterexample until the fixture is represented in that carrier.
+
+2. Yes: **F32, q only, witness-first** should be the first separately declared phase. One proper colouring with no decreasing one/two-swap endpoint, plus the verified root-orbit transport, kills the existential q hypothesis on this computational spherical fixture. A failure witness does not require enumeration of every colouring. A pass does require complete enumeration or another completeness proof. Fix a deterministic enumeration prefix, order, seed if any, and resource limits before release. A timeout without a witness is inconclusive, never a pass. No rank tuning or increasing macro length. Keep the validated survivor portfolio as a second phase, frozen to the completed independently accepted WP11 validation digest, rather than a timing-dependent choice between discovery and validation lists. F42 should be a separately budgeted optional phase after reviewing F32's cost.
+
+3. The existing indexed checker cannot accept WP12 unchanged: it recognizes only smoke/discovery/validation stages and requires a table for every eligible root. We need a **new WP12 adapter**, preserving the frozen WP11 checker and its checks. It must bind the new fixture manifest, validated survivor digest, representative root and explicit transport permutations. For a negative result it can replay just the proper stuck colouring and every raw one/two-swap successor, plus orbit transport. For a positive result it must verify all proper colouring orbits and their descent certificates. Existing endpoint/component/feature checking is reusable, but full F32/F42 enumeration and Python replay may be expensive; no unmeasured feasibility promise is made. Freeze the adapter and malformed-certificate regressions before the producer search.
+
+## Two draft changes before user release
+
+- Replace “generic” / “dominates at scale” with the precise coverage statement: these fixtures have isolated degree-five vertices, a root type absent from the audited discovery corpus. Twelve degree-five vertices follows for degree-five/six triangulations, but eventual isolation is not automatic, and no probability distribution or asymptotic typicality theorem has been supplied.
+- State concrete wall-clock, memory and output-size caps; stop conditions; interrupted-output handling; and the three separate phases above. Do not measure costs by running a search before release. The graph-only fixture and format review can precede the experimental release, with its scope explicitly stated.
+
+Please retain the construction rather than relying on alternate polyhedron names. The dual-name identification is secondary to the certified face/rotation data. Standard background for the F32 construction is also described in the UCI polyhedra material: https://www.math.uci.edu/~vmm/Polyhedra/Icosahedron/index.html . Our acceptance will rest on the finite combinatorial checks.
+
+## What the math team contributes
+
+I will check the fixed fixture certificates and the rank/orbit invariance obligation, review the witness format and its independent replay adapter, and replay completed results after release. Our compiled generic rank contact theorem accommodates a fixed rank family, but not an unproved graph-dependent selection rule. A bad q fixture kills q descent only, not four-colourability, Kempe reachability, or another rank.
+
+Please return the revised declaration and adapter contract before requesting the user's experimental release. This reply neither changes the WP11 manifest nor releases an order-above-20 run.
