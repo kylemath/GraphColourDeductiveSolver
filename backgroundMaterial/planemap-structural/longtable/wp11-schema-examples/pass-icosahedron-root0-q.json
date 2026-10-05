@@ -1,0 +1,1490 @@
+{
+ "schema": "wp11-cert-v1",
+ "kind": "pass",
+ "features": [
+  "q",
+  "lin",
+  "L",
+  "Lall",
+  "links",
+  "shortLinks",
+  "repMass",
+  "hubToggles"
+ ],
+ "weights": [
+  1,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "rank": "lexicographic (p, sum_i w_i f_i)",
+ "macro_bound": 2,
+ "moves": "whole active bichromatic components, interior allowed; components recomputed after move 1",
+ "colour_coordinates": "moves named in the colours of the colouring they act on; no renaming between moves",
+ "graph": {
+  "source": "icosahedron-fixture.json",
+  "order": 12,
+  "graph_index": null,
+  "ascii": null,
+  "ascii_sha256": null,
+  "rotation": [
+   [
+    1,
+    5,
+    11,
+    7,
+    8
+   ],
+   [
+    0,
+    8,
+    2,
+    6,
+    5
+   ],
+   [
+    1,
+    8,
+    9,
+    3,
+    6
+   ],
+   [
+    2,
+    9,
+    10,
+    4,
+    6
+   ],
+   [
+    3,
+    10,
+    11,
+    5,
+    6
+   ],
+   [
+    4,
+    11,
+    0,
+    1,
+    6
+   ],
+   [
+    5,
+    1,
+    2,
+    3,
+    4
+   ],
+   [
+    11,
+    10,
+    9,
+    8,
+    0
+   ],
+   [
+    7,
+    9,
+    2,
+    1,
+    0
+   ],
+   [
+    8,
+    7,
+    10,
+    3,
+    2
+   ],
+   [
+    9,
+    7,
+    11,
+    4,
+    3
+   ],
+   [
+    5,
+    4,
+    10,
+    7,
+    0
+   ]
+  ]
+ },
+ "producer": {
+  "wp11_cert.py": "78f189a23abd68c3e58a6d9647ebd0b053e8706c025b5f8c1e73edd0d01056ea",
+  "mass_core.py": "7e7d27296d14f8d097b4e0fe4770dcdd30d4ce36f1af807ffd4123b80d3d8bc1"
+ },
+ "note": "Schema example reproducing a published result; not a WP11 search output.",
+ "degree_five_roots": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11
+ ],
+ "root": 0,
+ "vertex_order": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11
+ ],
+ "boundary_cyclic_order": [
+  1,
+  5,
+  11,
+  7,
+  8
+ ],
+ "state_count": 20,
+ "states": [
+  {
+   "coloring": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3,
+    0,
+    2,
+    3,
+    2,
+    3
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    2,
+    0
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    2,
+    3
+   ],
+   "p": 1,
+   "features": {
+    "q": 52,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 1
+   },
+   "rank": [
+    1,
+    52
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    "intermediate": null,
+    "move2": null,
+    "endpoint": [
+     1,
+     0,
+     1,
+     0,
+     2,
+     3,
+     1,
+     2,
+     3,
+     2,
+     3
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     0,
+     1,
+     2,
+     3,
+     0,
+     2,
+     3,
+     2,
+     3
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3,
+    1,
+    3,
+    2,
+    3,
+    0
+   ],
+   "p": 1,
+   "features": {
+    "q": 44,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 3
+   },
+   "rank": [
+    1,
+    44
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      3,
+      4,
+      7,
+      11
+     ]
+    },
+    "intermediate": [
+     1,
+     0,
+     1,
+     0,
+     2,
+     3,
+     0,
+     3,
+     2,
+     3,
+     1
+    ],
+    "move2": {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      2,
+      7,
+      9
+     ]
+    },
+    "endpoint": [
+     1,
+     2,
+     1,
+     0,
+     2,
+     3,
+     2,
+     3,
+     0,
+     3,
+     1
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     0,
+     2,
+     1,
+     3,
+     1,
+     3,
+     2,
+     3,
+     0
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    0,
+    2,
+    1,
+    3,
+    0,
+    2,
+    3,
+    1,
+    3
+   ],
+   "p": 1,
+   "features": {
+    "q": 44,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 3
+   },
+   "rank": [
+    1,
+    44
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      3,
+      5,
+      7,
+      10
+     ]
+    },
+    "intermediate": [
+     1,
+     0,
+     1,
+     2,
+     0,
+     3,
+     1,
+     2,
+     3,
+     0,
+     3
+    ],
+    "move2": {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      2,
+      8
+     ]
+    },
+    "endpoint": [
+     1,
+     2,
+     1,
+     2,
+     0,
+     3,
+     1,
+     0,
+     3,
+     0,
+     3
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     0,
+     1,
+     2,
+     3,
+     0,
+     2,
+     3,
+     2,
+     3
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    0,
+    2,
+    1,
+    3,
+    0,
+    3,
+    2,
+    1,
+    3
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    0,
+    2,
+    1,
+    3,
+    1,
+    3,
+    2,
+    3,
+    0
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    3,
+    0,
+    2,
+    3,
+    1,
+    2
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    3,
+    0,
+    2,
+    3,
+    1,
+    3
+   ],
+   "p": 1,
+   "features": {
+    "q": 52,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 1
+   },
+   "rank": [
+    1,
+    52
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      4,
+      5,
+      7,
+      10
+     ]
+    },
+    "intermediate": [
+     1,
+     0,
+     2,
+     1,
+     0,
+     3,
+     1,
+     2,
+     3,
+     0,
+     3
+    ],
+    "move2": {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      2,
+      3,
+      8,
+      10
+     ]
+    },
+    "endpoint": [
+     1,
+     2,
+     0,
+     1,
+     0,
+     3,
+     1,
+     0,
+     3,
+     2,
+     3
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     2,
+     0,
+     2,
+     3,
+     0,
+     2,
+     3,
+     1,
+     3
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    3,
+    1,
+    2,
+    0,
+    3,
+    2
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    3,
+    1,
+    3,
+    0,
+    3,
+    2
+   ],
+   "p": 1,
+   "features": {
+    "q": 52,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 1
+   },
+   "rank": [
+    1,
+    52
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      4,
+      5,
+      7,
+      9
+     ]
+    },
+    "intermediate": [
+     1,
+     0,
+     2,
+     1,
+     0,
+     3,
+     0,
+     3,
+     1,
+     3,
+     2
+    ],
+    "move2": {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      2,
+      3
+     ]
+    },
+    "endpoint": [
+     1,
+     2,
+     0,
+     1,
+     0,
+     3,
+     0,
+     3,
+     1,
+     3,
+     2
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     2,
+     0,
+     2,
+     3,
+     2,
+     3,
+     0,
+     3,
+     1
+    ],
+    "endpoint_features": {
+     "q": 44,
+     "lin": 16,
+     "L": 5,
+     "Lall": 11,
+     "links": 4,
+     "shortLinks": 1,
+     "repMass": 18,
+     "hubToggles": 3
+    },
+    "endpoint_rank": [
+     1,
+     44
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    3,
+    2,
+    3,
+    0,
+    1,
+    3
+   ],
+   "p": 1,
+   "features": {
+    "q": 52,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 1
+   },
+   "rank": [
+    1,
+    52
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      4,
+      5,
+      9,
+      10
+     ]
+    },
+    "intermediate": [
+     1,
+     0,
+     2,
+     1,
+     0,
+     3,
+     2,
+     3,
+     1,
+     0,
+     3
+    ],
+    "move2": {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      2,
+      3,
+      7,
+      10
+     ]
+    },
+    "endpoint": [
+     1,
+     2,
+     0,
+     1,
+     0,
+     3,
+     0,
+     3,
+     1,
+     2,
+     3
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     2,
+     0,
+     2,
+     3,
+     2,
+     3,
+     0,
+     1,
+     3
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    3,
+    3,
+    2,
+    0,
+    1,
+    2
+   ],
+   "p": 1,
+   "features": {
+    "q": 44,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 3
+   },
+   "rank": [
+    1,
+    44
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      4,
+      5,
+      9,
+      10
+     ]
+    },
+    "intermediate": [
+     1,
+     0,
+     2,
+     1,
+     0,
+     3,
+     3,
+     2,
+     1,
+     0,
+     2
+    ],
+    "move2": {
+     "pair": [
+      0,
+      3
+     ],
+     "component": [
+      2,
+      5,
+      6
+     ]
+    },
+    "endpoint": [
+     1,
+     3,
+     2,
+     1,
+     3,
+     0,
+     3,
+     2,
+     1,
+     0,
+     2
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     2,
+     0,
+     1,
+     3,
+     1,
+     2,
+     0,
+     3,
+     2
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    2,
+    3,
+    0,
+    2,
+    3,
+    1,
+    3
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    2,
+    3,
+    2,
+    3,
+    0,
+    1,
+    3
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    0,
+    2,
+    3,
+    2,
+    3,
+    0,
+    3,
+    1
+   ],
+   "p": 1,
+   "features": {
+    "q": 44,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 3
+   },
+   "rank": [
+    1,
+    44
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      9
+     ]
+    },
+    "intermediate": null,
+    "move2": null,
+    "endpoint": [
+     1,
+     0,
+     2,
+     0,
+     2,
+     3,
+     2,
+     3,
+     1,
+     3,
+     1
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     2,
+     1,
+     2,
+     3,
+     2,
+     3,
+     0,
+     3,
+     0
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    1,
+    2,
+    0,
+    3,
+    0
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    1,
+    2,
+    3,
+    0,
+    3
+   ],
+   "p": 1,
+   "features": {
+    "q": 44,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 3
+   },
+   "rank": [
+    1,
+    44
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2
+     ]
+    },
+    "intermediate": null,
+    "move2": null,
+    "endpoint": [
+     1,
+     0,
+     2,
+     1,
+     2,
+     3,
+     1,
+     2,
+     3,
+     0,
+     3
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     2,
+     0,
+     2,
+     3,
+     0,
+     2,
+     3,
+     1,
+     3
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    1,
+    3,
+    0,
+    3,
+    0
+   ],
+   "p": 1,
+   "features": {
+    "q": 52,
+    "lin": 16,
+    "L": 5,
+    "Lall": 11,
+    "links": 4,
+    "shortLinks": 1,
+    "repMass": 18,
+    "hubToggles": 1
+   },
+   "rank": [
+    1,
+    52
+   ],
+   "witness": {
+    "move1": {
+     "pair": [
+      0,
+      1
+     ],
+     "component": [
+      1,
+      2,
+      4,
+      7,
+      9,
+      11
+     ]
+    },
+    "intermediate": [
+     1,
+     0,
+     2,
+     0,
+     2,
+     3,
+     0,
+     3,
+     1,
+     3,
+     1
+    ],
+    "move2": {
+     "pair": [
+      0,
+      2
+     ],
+     "component": [
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    "endpoint": [
+     1,
+     2,
+     0,
+     2,
+     0,
+     3,
+     0,
+     3,
+     1,
+     3,
+     1
+    ],
+    "endpoint_canonical": [
+     0,
+     1,
+     2,
+     1,
+     2,
+     3,
+     2,
+     3,
+     0,
+     3,
+     0
+    ],
+    "endpoint_features": {
+     "q": 0,
+     "lin": 0,
+     "L": 0,
+     "Lall": 0,
+     "links": 0,
+     "shortLinks": 0,
+     "repMass": 0,
+     "hubToggles": 1
+    },
+    "endpoint_rank": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "coloring": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    3,
+    2,
+    3,
+    0,
+    3,
+    0
+   ],
+   "p": 0,
+   "features": {
+    "q": 0,
+    "lin": 0,
+    "L": 0,
+    "Lall": 0,
+    "links": 0,
+    "shortLinks": 0,
+    "repMass": 0,
+    "hubToggles": 1
+   },
+   "rank": [
+    0,
+    0
+   ]
+  }
+ ]
+}

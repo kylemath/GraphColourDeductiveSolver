@@ -81,3 +81,61 @@ Long Table computes the features and runs the search with the `mass_core` code. 
   3. holdout behaviour.
 
   We will report both quantifiers, keeping the existential one as primary, as requested.
+
+---
+
+## Version 2 amendments (after the math team's review; still not released)
+
+This version responds to `2026-10-04-math-to-longtable-and-navigator-rank-synthesis-review.md`. Where they conflict, these amendments override the text above.
+
+**Quantifiers.** The existential-root statement is **primary**; the all-roots statement is secondary. A surviving rank is its own conjecture. It is not new evidence for the original mass hypothesis, since (p, q) already survives existentially.
+
+### 1. Certificates certify completeness, not only legality
+
+The schema is `wp11-cert-v1`; see `wp11_cert.py` and the examples in `wp11-schema-examples/`.
+
+- **Pass.** The certificate lists the chosen root, the full degree-five root set, and **every** canonical deletion-colouring state at that root, each with features, rank and, for non-targets, one witness macro. The replayer must independently:
+  - enumerate the proper deletion colourings modulo global colour names and compare the exact state set;
+  - derive the degree-five root set from the rotation;
+  - recompute chain membership and properness after each move, with components recomputed between moves.
+- **Two failure kinds, in separate fields:**
+  - `all_roots_fail_witness`: one bad root, with one stuck colouring and its **complete** list of 1- and 2-move endpoints;
+  - `existential_fail_witness`: **every** degree-five root, each with a stuck colouring and its complete endpoint list.
+
+  The replayer recomputes every endpoint set independently and does not trust the supplied lists.
+- **Registry and hashes:** graph ASCII and hash, producer hashes, and the frozen feature/weight registry, in every certificate.
+
+### 2. What the colour quotient preserves
+
+States **represent colour-permutation orbits**. The equivariance argument: a global colour permutation π maps each active {a,b}-component of c to the active {π(a),π(b)}-component of π∘c, and commutes with swapping it. It preserves p, every feature (all are aggregates over unordered pairs), and therefore the rank. The component recomputed after move 1 maps in the same way, so a macro and its decrease transport along π. Relabelling of T acts analogously (WP1, `InvarianceNote.md`).
+
+**Moves are serialised in named-colour coordinates.** Move 1 acts on the listed start colouring; the intermediate is the raw named result; move 2 acts on that raw intermediate; the endpoint is raw, with its canonical form for identity. There is **no renaming between moves**.
+
+**Regressions to add before release:** complementary-component and global-renaming checks, including the root-13 toggle case. The quotient-to-named-state bridge in Lean remains a formal obligation.
+
+### 3. Feature counting, made precise
+
+- **Active components.** A component is a connected component of the subgraph induced on vertices coloured a or b. Vertices of other colours are not part of it. f1, f2, f5, f6 and f7 count each active component once per unordered pair.
+- **f6** counts a component that lies **entirely inside B** and has at least two boundary vertices. A component with a boundary-only path that also visits exterior vertices does not count.
+- **f8** counts each two-vertex active component once per unordered pair, when at least one endpoint lies outside N[r], and once even when both do.
+- **ρ:** at a non-target boundary, ρ is the uniquely repeated colour, and the singletons are the three singly occurring boundary vertices.
+- **At targets:** f1 to f7 are 0 by convention, and f8 is still computed.
+
+**Bounds**, with short proofs (components of one pair are disjoint and the boundary has 5 vertices):
+- f1, f7 ≤ 6n² (per pair, Σ|K∖B|² ≤ (Σ|K|)² ≤ n²);
+- f2 ≤ 6n;
+- f3 ≤ 9;
+- f4 ≤ 15;
+- f5, f6 ≤ 12 (at most 2 components per pair meet B in ≥ 2 of the 5 vertices);
+- f8 ≤ 3n (at most n/2 disjoint two-vertex components per pair).
+
+With every weight ≤ 3, Q = 3(12n² + 9n + 48) bounds s_w, and the rank is represented by (Q + 1)p + s_w ≤ 2Q + 1. **This bounds the number of decreasing macros only conditionally on universal descent.** It says nothing about root selection or the cost of this search. The bounds will be checked in the implementation.
+
+### 4. Validation and accounting
+
+- **Orders 19–20 have been inspected in earlier research.** They are a fixed out-of-discovery validation pass, not unseen data. The **full survivor list is frozen before that pass**, and there is no re-tuning.
+- **Duplicates:** the 515 sub-tier entries include duplicate and proportional vectors. Computation may be deduplicated, but the output preserves every declared sub-tier membership.
+- **Infeasibility** is limited to this domain, quantifier and model. No broader conclusion follows.
+- **If a rank survives,** the math team's plan applies: a generic ranked-macro contact wrapper, then formal bounds for that rank. It is never presented as a proof of the mass hypothesis.
+
+**Release still requires** the math team's schema check and the user's explicit approval. Route B, the radius-3 and distant-hub searches, and orders beyond 20 remain unreleased.
