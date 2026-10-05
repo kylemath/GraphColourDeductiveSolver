@@ -1,0 +1,77 @@
+{
+  "scope": "named old graphs12:0,14:0,17:0,17:1 only",
+  "counts": {
+    "Lemma_A_four_colour_states": 1378,
+    "Lemma_E_gap_states": 494,
+    "Xg_true_but_KPg_fills": 80,
+    "full_X_true_but_KPg_fills": 80
+  },
+  "interlock_converse_counterexample": {
+    "order": 17,
+    "graph_index": 0,
+    "hole": 0,
+    "start": [
+      4,
+      0,
+      1,
+      2,
+      0,
+      3,
+      1,
+      2,
+      3,
+      1,
+      3,
+      1,
+      2,
+      3,
+      0,
+      2,
+      0
+    ],
+    "roles": {
+      "a0": 4,
+      "b": 5,
+      "a2": 1,
+      "g": 2,
+      "d": 3
+    },
+    "colours": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "C0": [
+      4,
+      11,
+      16
+    ],
+    "D2": [
+      1,
+      7,
+      12,
+      14,
+      15,
+      16
+    ],
+    "Xg": true,
+    "Xd": true,
+    "KPg_fills": true,
+    "path": [
+      [
+        "K",
+        0,
+        1,
+        4
+      ],
+      [
+        "K",
+        0,
+        2,
+        1
+      ]
+    ]
+  },
+  "conclusion": "Lemma E necessity passes; Xg does not imply KPg failure"
+}
