@@ -1,0 +1,39 @@
+{
+  "complete": true,
+  "scope": "Two helpers only, not the unequal-pole belt theorem",
+  "base_manifest_sha256": "e8554550585b8385acbe884a892bca2719e3c4fd7da99de898ff6412f4ff5d05",
+  "lean_path": [
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/Cli/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/batteries/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/Qq/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/aesop/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/plausible/.lake/build/lib/lean",
+    "/var/folders/96/tdgbk_pj3w744zvj8v3x11xr0000gn/T/planemap-belt-preparation-audit-9fkllo_r/lib",
+    "/Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/lib/lean"
+  ],
+  "checks": [
+    {
+      "source": "Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyPotential.lean",
+      "sha256": "ded8092324f5faed8d1165c41081277c1d32e0b8250a4b5ec9c0c042c2dab488",
+      "exit_code": 0,
+      "log": "VacancyPotential.log"
+    },
+    {
+      "source": "Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltOpeningWords.lean",
+      "sha256": "0edb23753e0ddf00ac10a3f6f9f5c8a426f5eecd91ee3f501ac82471303a5d60",
+      "exit_code": 0,
+      "log": "BeltOpeningWords.log"
+    },
+    {
+      "source": "MathlibTest/PlaneMapBeltPreparation.lean",
+      "sha256": "87a94b15bc27608ef6220008171e995d08fd2241e5fc367f3a24226f5f82e190",
+      "exit_code": 0,
+      "log": "PlaneMapBeltPreparation.log"
+    }
+  ],
+  "sources_stable": true,
+  "seconds": 3.589
+}
