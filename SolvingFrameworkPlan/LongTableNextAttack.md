@@ -87,6 +87,8 @@ Through order 20, every Kempe class at every degree-5 root contains a three-colo
 - **Find (not kill):** the smallest \(T\) with \(m(T)\ge 2\), and the smallest with \(m(T)\ge 3\). Order 14 is the first place to look, by §2.
 - **What would matter:** if \(m(T)\le 2\) on all of 12–18 while \(\max_{(v,\tau)}\) grows, then "at a well-chosen \((v,\tau)\), two mixed moves" becomes a bounded, proof-shaped candidate. It is different from the budgets already killed, which were budgets at every start or at frozen later holes. If \(m(T)\) grows with order, that candidate dies and we report it.
 
+**Result, 5 October (`longtable/WP18-results.md`):** the candidate "m(T) ≤ 2" is **killed** in P1 by order 17, graph 1. At all 60 (v, τ) pairs there, some start needs at least 3 moves, and a separate depth-2 check confirms it. 17:1 is the only m = 3 graph among the 961 graphs on orders 12–22. On every other graph m(T) is 1 or 2, and no start anywhere needs more than 4 moves. "At most 4 moves" was observed after the run, so it would need a new declaration and orders above 22 before it could count. Next: why 17:1 is special (reading existing outputs only).
+
 ### C. Hand lemmas (Long Table writes; math decides what to compile)
 
 1. **Containment** (§1).

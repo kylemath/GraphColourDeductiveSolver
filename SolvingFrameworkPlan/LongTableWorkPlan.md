@@ -252,7 +252,7 @@ The overnight handoff (`NightHandoff.md`, revision 70) moves the proposed proof 
 1. Validation report and WP7 wording: sent 5 October.
 2. The \(A_\rho\) tile with outer \(u\)-vertex \(\tau\), by hand, then one page for every hole of \(G_{3k+2}\), for math review.
 3. Hand lemmas: containment (\(T^\ast\) swaps compose \(T-v\) swaps) and apex singleton.
-4. WP18, \(m(T)\): declared, not run. It runs only after math's explicit go-ahead, including for order 21.
+4. WP18, \(m(T)\): run 5 October after the go-ahead (orders 12–22). It killed "m(T) ≤ 2" at 17:1; see `longtable/WP18-results.md`.
 5. Re-check the night swarm's load-bearing claims before citing them.
 
 WP12 is parked: the release request is withdrawn. The stop rules above still apply.
