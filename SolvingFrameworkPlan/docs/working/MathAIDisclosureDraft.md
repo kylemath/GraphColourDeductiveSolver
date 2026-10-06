@@ -1,0 +1,8 @@
+# Draft: AI-assistance disclosure for the PlaneMap pull requests (FOR THE USER TO APPROVE; not to be used until approved)
+
+Math team draft, 6 October 2026. The teams do not decide whether, where or how this is used. Check Mathlib's current contribution guidelines for its AI-use policy before opening any PR, and adapt the wording to whatever it requires; the paragraph below makes only claims that are true of this project.
+
+**Pull request description paragraph (draft).**
+This development was carried out by Kyle Mathewson with substantial assistance from AI coding assistants (Claude, by Anthropic), which drafted and revised Lean definitions, statements and proofs, and ran builds and checks under his direction. Every declaration in this PR was compiled with Lean and Mathlib; the PR files contain no `sorry` and no `native_decide`, and the printed axioms of the main theorems are `propext`, `Classical.choice` and `Quot.sound`. The statements were reviewed by the author, and the source files were independently rebuilt and checked by a separate review process before submission. The author takes responsibility for the contents of this PR.
+
+**Open choices for the user.** (a) Whether to name the assistant and vendor in the PR text or only say "AI assistance"; (b) whether the commit messages keep the `Co-Authored-By` trailers; (c) whether the module docstrings mention it; (d) the same question for the VH∃ paper's acknowledgements and arXiv's policy on machine-generated content. (e) The sentence "reviewed by the author" is only true if the user has in fact reviewed the statements; edit it to match what is true.
