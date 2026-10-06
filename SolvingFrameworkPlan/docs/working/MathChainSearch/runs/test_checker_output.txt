@@ -1,0 +1,5 @@
+icosahedron: 60 states, chain-length histogram {0: 60}; Theorem A shifts ok=True; Prop 1 step ok=True
+hand case: no such colouring exists (skipped)
+reference (DFS) agrees with checker on 300 regenerated certificates
+mutation tests: 40 certificates (length>=3), 1520 mutations, 1221 rejected, 299 benign recolourings accepted with unchanged length
+ALL TESTS PASSED
