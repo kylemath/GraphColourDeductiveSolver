@@ -270,6 +270,8 @@ if (integrationPath) {
     ['structural-n-disc-search','structural-math-t3-attack','exploring'],
     ['structural-l4-p-lean','structural-math-horizon','compiled'],
     ['structural-equal-pole','structural-vacancy','exploring'],
+    ['structural-belt-all-holes-lean','structural-math-horizon','in-progress'],
+    ['structural-n-subtargets-killed','structural-math-t3-attack','killed'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
     ['structural-deg6-split','structural-vhe-obstruction','proved'],
@@ -303,7 +305,7 @@ if (integrationPath) {
   assert.deepEqual(pc.broken, []);
   assert.equal(
     Tree.findNode(root, 'structural-wp21').title,
-    'WP21: D1 and P on a fresh order, sample and adversarial search (announced; version 2 package planned, not started)'
+    'WP21: D1 and P on a fresh order, sample and adversarial search (version 2 announced, not started)'
   );
   assert.equal(Tree.isWorking('structural-wp20'), true);
   assert.equal(Tree.isWorking('structural-math-horizon'), true);

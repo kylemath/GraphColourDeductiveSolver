@@ -1,7 +1,12 @@
 {
-  "revision": 96,
-  "updatedAt": "2026-10-06T08:34:00-06:00",
+  "revision": 97,
+  "updatedAt": "2026-10-06T08:39:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T14:48:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 97 records the belt vacancy theorem for the explicit graph as built in Lean and in progress pending an audit; the equal-pole node stays exploring. It records the audit's adversarial review of the (N) line: (N) is D1 restricted to rigid states and closes neither D1 nor the vacancy hypothesis; two sub-targets are marked killed, four more are noted; the disc generator is uncensused; errors E1 to E3 are listed. Coordinator direction: (N) sub-targets paused until WP20 P1 reports, new ones pre-registered, Math fixes E1 and E2 and commits its scripts, the audit validates disc_gen2. New gate: unreviewed Math worker pages are not evidence. WP21 version 2 hashes were checked on disk and the version 1 hashes are superseded. The audit's 0840 message was written about 08:32. The axiom_sweep_exit query stays open. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T14:38:00Z",
       "node": "structural-l4-p-lean",
@@ -8241,6 +8246,176 @@
       ],
       "id": "structural-vacancy",
       "revision": 96
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 97,
+      "node": {
+        "id": "structural-belt-all-holes-lean",
+        "title": "Lean: belt vacancy theorem at every hole of G_n (built, not yet in the audit)",
+        "status": "in-progress",
+        "statement": "SimpleGraph.TwoPoleBeltPoleHole.belt_theorem_all_holes: for the explicit graph TwoPoleBelt.graph n with n at least 5, four colours, every hole h and every colouring proper off h, there is a mixed path (Kempe swaps and slides) of length at most 6n to a state whose hole link misses a colour. Built from equal_u, equal_v, belt_complete, pole_a_complete and pole_b_complete, using Theorem P and belt_unequal_at. Scope: the explicit graph only. Linking it to Florek's family of triangulations and plugging it into the general hole-induction framework is not done, so it is not VH-exists progress beyond the belt family. The 6n bound is loose.",
+        "approach": "Math reports compiled, not in the audit; the 105-module audit and the 116-module L4/P audit do not contain these modules. Held at in-progress until an audit includes them.",
+        "files": [
+          "backgroundMaterial/planemap-structural/lean-belt-equal/SHA256SUMS",
+          "backgroundMaterial/planemap-structural/lean-belt-equal/build.log",
+          "backgroundMaterial/planemap-structural/lean-belt-equal/test.log",
+          "SolvingFrameworkPlan/docs/working/MathBeltCaseMap.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0832_math_to_navigator+longtable+audit+coordination_lean-belt-theorem-all-holes.md"
+        ],
+        "evidence": "Checked by the navigator: SHA256SUMS verify in the artifact; no sorry, admit or native_decide in the artifact sources by grep; the build log ends successfully (3202 jobs, a build count); guard output prints exactly propext, Classical.choice, Quot.sound for the eight constants shown, including belt_theorem_all_holes. Not rebuilt, statement not compared with the hand text, and the 95-module belt source audit was not rerun.",
+        "killCriteria": "",
+        "notes": [
+          {
+            "time": "2026-10-06T14:48:00Z",
+            "text": "Revision 97. Becomes compiled when a module audit includes these three modules. The equal-pole node structural-equal-pole is not upgraded until then, and even then only for the explicit graph."
+          }
+        ],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/lean-belt-equal/SHA256SUMS",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0832_math_to_navigator+longtable+audit+coordination_lean-belt-theorem-all-holes.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97: Math built the belt vacancy theorem at every hole of the explicit graph in Lean (node structural-belt-all-holes-lean), including the equal-pole cases, not audited. Math also reports belt-joined.md section 3 correct, with the v_i hole not written out in the hand text. This node stays exploring until an audit includes that module; the link to Florek's family is still not done."
+        }
+      ],
+      "id": "structural-equal-pole",
+      "revision": 97
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-t3-attack",
+      "revision": 97,
+      "node": {
+        "id": "structural-n-subtargets-killed",
+        "title": "(N) sub-targets \"exactly one Case II\" and \"at least one Case II\"",
+        "status": "killed",
+        "statement": "Two proposed routes to (N) are false: \"exactly one of the two neighbours is Case II\" (an order-17 artefact) and \"at least one of the two is Case II\". Case I by Case I occurs at order 23 (2 of 14 locked discs, with N holding) and at order 24 (6 of 26). This kills the routes, not (N).",
+        "approach": "Killed by exhibited discs, found by Math and independently reproduced by Long Table's N-Prove team with its own code on discs of Math's order-23 list. Caveat from the audit: the discs come from a generator (disc_gen2) not yet validated against an independent census.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathNCaseI.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0756_longtable_to_math+navigator+audit+coordination_N-prove-T3star.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0837_audit_to_coordination+navigator+math+longtable_adversarial-review-N-trace-termination.md"
+        ],
+        "evidence": "Two teams agree on the order-23 discs. (N) itself is not touched.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "statement": "Statement (N) is open. The audit's adversarial review (message 0837, commit 202351c; reading, not a replay): (N) is D1 restricted to rigid triply locked states. Non-rigid triply locked states exist (17:0) and are covered only by data. D1 implies a pure fill at every degree-5 hole, which is stronger than the vacancy hypothesis. So a proof of (N) closes neither D1 nor VH-exists. D1 itself is under declared test in WP20 P1.",
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97, audit review findings. (1) Six (N) sub-targets were proposed and killed or refuted in about 12 hours, each refitted on the same discs of orders 17 to 24: exactly one Case II; at least one Case II (both killed above); (G*) and T3* (false at order 24, T3* being (G*) in Case I); Ib never occurs at a triply locked state (false at order 24, 4 of 52 neighbours); the Ib half of the blocking pattern (refuted by Math 08:31, the other half vacuous in the data). Math's new candidate, the branching swap at c2 breaking the chain {D,alpha}, holds in 4 of 4 Ib cases, and the audit calls it the next one in line. The latter four are noted here, not marked killed: their evidence is Math's order-24 certificates, whose generation is uncensused and whose scripts are not in the repository. (2) All discs of orders 18 to 24 come from Math's disc_gen2, not checked against an independent census; Long Table re-reads Math's lists and does not regenerate them. (3) Hand checks by the audit found correct: Prop R and the triangle count (conditional on tau = -1), the single-flip blocking rule. (4) Errors in the pages: E1, Theorem U2 on the termination page says a B-failure is at order less than N, but it can be at the root, so the bound is at most N and \"VH-exists below N implies B succeeds at N\" is false as written; E2, the link 5-cycle has 10 orbits of colourings under renaming, not 2 (2 only with rotations and reflections added); E3, N-Counter section 0.1 says exhaustive for Math's disc lists, which is exhaustive over the lists and not over the triangulations. Order 24 is now spent for (N); order-25 discs split by hash would be a holdout."
+        },
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97, coordinator direction (relayed in chat, stamped 08:50; the machine clock read 08:37 when this revision was written): (N) sub-targets are paused until WP20 P1 reports; any new sub-target is pre-registered before it meets fresh discs; Math fixes E1 and E2 and commits its order-24 scripts; the audit validates disc_gen2 against plantri (rigid discs at orders 17 and 18 should match an independent enumeration exactly) and offers to re-verify the four order-24 certificates once Math commits its scripts or states its definitions of Case I, Ia and Ib. This is direction recorded, not an acceptance of any result."
+        }
+      ],
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/N-trace-termination-adversarial-review.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0837_audit_to_coordination+navigator+math+longtable_adversarial-review-N-trace-termination.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0831_math_to_longtable+navigator+audit+coordination_N-IaIb-corrections.md"
+      ],
+      "id": "structural-math-t3-attack",
+      "revision": 97
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97: Math 08:31 (worker report, not reviewed): two claims in Long Table's 07:56 and 07:58 messages are false at order 24, namely that Ib never occurs at a triply locked state and the Ib half of the blocking pattern. Prop R and the triangle count were checked by hand by Math and by the audit and are correct. Long Table's pages n-prove.md and n-counter.md are to be corrected by their owner. Details are on structural-math-t3-attack."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathNIaIb.md"
+      ],
+      "id": "structural-n-pinch-t3",
+      "revision": 97
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97: Math 08:27 (worker report, not reviewed line by line): the rule version A_R and the backtracking version B halt on every input [hand]. B returns a colouring or a minimal VH-exists counterexample, so B fails only at a real counterexample. Running time is O(N squared) plus a sum over the degree-5 levels, worst case exponential in N; polynomial only where every degree-5 level is covered. With a constant K and a polynomial rule, O(N to the K+2); the best derivable K is 2 on separating triangles, and K = 5 is a data-based conjecture. No polynomial abstraction is known. Math corrected its earlier plan: the degree-5-next-to-degree-4 theorem is vacuous at degree-5 levels. Audit errors E1 and E2 above apply to this page and are to be fixed by Math, so the page is not accepted. Termination is not settled and nothing polynomial is claimed."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathTerminationUnconditional.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0827_math_to_navigator+longtable+audit+coordination_termination-unconditional.md"
+      ],
+      "id": "structural-math-t5",
+      "revision": 97
+    },
+    {
+      "title": "WP21: D1 and P on a fresh order, sample and adversarial search (version 2 announced, not started)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0829_longtable_to_navigator+math+audit+user+coordination_WP21-version-2-announcement.md",
+        "backgroundMaterial/planemap-structural/longtable/wp_check_shards.py",
+        "backgroundMaterial/planemap-structural/longtable/wp21_pipeline.sh"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97. Long Table announced WP21 version 2 at 08:29 (package commit 24e3551), superseding version 1 (bbf0edf, 21:43), with no go-ahead issued, by the user's waiver. The navigator checked all twelve hashes in the announcement against the files on disk and all equal: declaration v2 8fdd1aa5b50542c1da508efb6f6a637e7ad2ceafbaca4e1c99511316485db441, producer d1_confirm.py bb350d3b, runner 2961bed1, wp21_search.py v2 b905888e, launcher 0c7fcc61, d1_check21.py v2 93975b05, sharded checker ed941b99, selector 7ed04b3d, seeds 18419a8d, report script bf157327, pipeline 5873ed8c, phase-A selection 24e381cb, and the order-26 list hash as declared. The statements D1 and P, the sample rule, the search parameters and the caps are unchanged. The version 1 hashes (9fd6d7e6 declaration, d1_check21 e0b78e20) are superseded. Regressions reported by Long Table and reproduced by its lead: runner 42 of 42, checker 29 of 29 (written blind to the producer and runner); not tested: SIGKILL of the scheduler, a reboot, 12-worker runs, order-25 or 26 data. One episode on the record: a first rerun of the checker suite gave 11 of 29 because the declaration was edited while it ran, and passed 29 of 29 once stable. Sequencing: the version 2 pipeline waits for WP20 P1 to finish and be checked, and the untracked order-26 list was moved aside to a .hold file so the old pipeline stops at its hash check; the order-26 list therefore needs restoring by the version 2 pipeline, and its hash must equal 88acad11 when it runs. Nothing has run on WP21 data. The audit replay is the gate for success. Status stays unstarted."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 97
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97: chunks 0 and 1 are done and chunk 2 is running; Long Table reports no D1 or P kill in chunks 0 and 1, which are intermediate and not results. D1 itself is under this declared test, with the result expected about 11:15 to 11:45, after which the audit replay and the checker decide. The audit's review finds that a proof of (N) would not settle D1, so the P1 result decides what happens to the (N) line."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 97
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97, new gate: unreviewed Math worker pages are not evidence. Math marks its worker reports as not reviewed line by line, and the audit counts them as accumulating. Until Math, the audit or the navigator has reviewed a page, the ledger records its claims as exploring at most, never as proved, killed or compiled, with the exception of a certificate the audit has re-verified or a Lean artifact that passes an independent module audit. The ledger tracks such pages: MathTraceFourConnAttack, MathNAttack, MathNDiscSearch, MathNPinchT3, MathNCaseI, MathNGstar, MathNIaIb, MathConfinementAttack, MathCleanVertexAttack, MathTerminationPlan, MathTerminationUnconditional. Two more are the first run: the audit's own L4 and Theorem P rebuild, and Math's belt build, which is in progress awaiting an audit."
+        }
+      ],
+      "id": "structural-math-horizon",
+      "revision": 97
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97: the audit message 0840 was written about 08:32 (commit 89b9d74), not 08:40; it said so itself at 08:37. The file keeps its name because revision 96 cites it. The query about axiom_sweep_exit 1 in the audit manifest stays open: nobody has said what returned 1."
+        }
+      ],
+      "id": "structural-l4-p-lean",
+      "revision": 97
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:48:00Z",
+          "text": "Revision 97: the belt theorem at every hole of the explicit graph is built in Lean and not audited; WP21 version 2 is announced and not started; the audit review says a proof of (N) closes neither D1 nor the vacancy hypothesis. No change to the vacancy hypothesis."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 97
     }
   ]
 }
