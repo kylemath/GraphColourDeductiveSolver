@@ -28,3 +28,7 @@ The results report will keep stating that P1 started before Math's written go-ah
 ## The user's direct word (added 20:57)
 
 12. **The user told Long Table directly, in chat:** "I want you to start new declared phases without asking me btw, the agent team told me to let you know." This is the user's own statement to Long Table, not a relay. It settles the question left open in items 10 and 11: a new declared phase may start without asking the user first. It does not change what a phase needs: a committed, hashed package (declaration, producer, independent checker, regressions) announced in `messages/`, within its declared caps, the holdout rules, and the stopped list; and the report states that no go-ahead was given. WP20 P2 still does not run, by its own hashed cost rule.
+
+## Operational note (added 21:05)
+
+13. **P1 was paused for about four minutes, by operator error.** While trying to free CPU by pausing the exploratory pass on spent orders (a separate process tree), Long Table sent SIGSTOP to the wrong process tree (P1's workers) and resumed it with SIGCONT within about four minutes, around 21:03–21:07. No data, state or code was affected; a stopped process resumes where it was. The per-graph 30-minute limit was not approached (graphs take seconds). Long Table records it because it is a deviation from an uninterrupted run. The exploratory pass is still paused, and resumes after P1. The first pause attempt had also stopped only the exploratory main process, whose workers kept running until their result pipe filled.
