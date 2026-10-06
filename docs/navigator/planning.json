@@ -1,7 +1,12 @@
 {
-  "revision": 136,
-  "updatedAt": "2026-10-06T16:00:00-06:00",
+  "revision": 137,
+  "updatedAt": "2026-10-06T16:35:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T22:35:00Z",
+      "node": "structural-rstar-frame-lean",
+      "action": "Revision 137 records the frame theorem four_color_of_RStarFrame and the diamond and 2.122 certificates as built with the audit's statement reads passed and the machine check J12 pending; Conjecture M refuted on Studio data (not independently checked); the sage QA runs, edge-deletion classes and historical traps (exploratory); paths 5 and 8 stopped by their rules and path 9's stop rule triggered except P9-F; Math's honest no-mechanism answer for the hybrid; the single order-22 F-cycle; Fellow F's lemmas reviewed by Math. Leaderboard unchanged. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T22:00:00Z",
       "node": "structural-rstar-lean-link-d",
@@ -12173,6 +12178,227 @@
         {
           "time": "2026-10-06T22:00:00Z",
           "text": "Revision 136, leaderboard: studiomath +300 (the R* reduction compiled in Lean, no sorry, standard axioms, in an audit: J10/J11 PASSED, the audit sees the condition met). studiocompute +60 (J10 f0f7005 and J11 ef83ddb, requested runs of the audit's check with outputs posted; coordinator ruling: one award per replay role). audit +30 (the requested hand re-derivation of the no-frozen-DL lemma, report posted 15:31; same rule as the E2 and R5-cubed re-derivations). Not scored: the no-frozen-DL lemma itself (no recorded conjecture killed), the D-reducibility certificates (unaudited), one-star results and the census (exploratory data), Fellow F and Math's unreviewed notes. Totals: longtable 50, math 180, audit 150, studiointel 150, studiomath 810, studiocompute 330, intern-C 30, others 0."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-rstar-lean-link-d",
+      "revision": 137,
+      "node": {
+        "id": "structural-rstar-frame-lean",
+        "title": "Lean: frame theorem four_color_of_RStarFrame, R* for Occ-free core triangulations implies 4CT (built; statement read PASS by the audit; machine check J12 pending)",
+        "status": "in-progress",
+        "statement": "RStarFrame: every spherical map T with 0 < m, connected, triangulated, minimum degree at least 5, NoSep, DiamondFree and Conf2122Free (no DiamondM/DiamondP Occ and no C2122M/C2122P Occ) has a degree-5 vertex v with PureClean T v. four_color_of_RStarFrame: RStarFrame implies every spherical map is 4-colourable. \"Diamond-free\" here means Occ-free, a LARGER class than RSST \"no appearance\" until the appears-to-Occ bridge is compiled, so the hypothesis is STRONGER than the RSST-sense one.",
+        "approach": "Studio Math c709e85 (merged b4b617d): steps C (Occ to ConfigOcc) and D, four occurrence reductions, FrameF3.lean, inside four_color_of_smaller_gate (J11-audited); uses the diamond and 2.122 certificates. Also R* sanity checks (icosahedron; two radius-5 certificates with PureFill 5 compiled) and the frozen statement list StudioMathStatements.md.",
+        "evidence": "Audit 16:18 (0a804bc): statement read PASS, pending J12's machine check. RStarFrame matches Part A; the proof never uses \"appears\", so it is sound without the bridge; Occ checked against the diamond's free completion (20 rotation facts, RSST 0.7322), DiamondP its mirror; both diamond orientations exhibited in the icosahedron. Findings (none affects soundness): F1 docstring should say \"no Occ of the diamond or 2.122\", not \"diamond-free\"; F2 Part A2 says four cases but lists three; F3 no 2.122 Occ instance exhibited (if its rotation data were inconsistent, Conf2122Free would exclude nothing; still sound, but stronger than intended); F4 \"no fill within 4\" for the radius-5 certificates is computed (radius_bfs.py and the audit's replay), not compiled. J12 (extended commands) routed to Studio compute.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1618_audit_to_coordination+studiomath+navigator_RStarFrame-statement-PASS-and-J12-extended.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1625_studiomath_to_coordination+audit+math+navigator_steps-C-D-frame-theorem-sanity-checks-statement-list.md",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameF3.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathStatements.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:35:00Z",
+            "text": "Revision 137: built, statement read PASS, J12 pending. Not \"compiled\" in the ledger's sense until J12's verdict."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-dred-lean-certs",
+      "revision": 137,
+      "title": "Lean: D-reducibility certificates for the Birkhoff diamond and RSST 2.122 (built; statements reviewed by the audit; steps C and D built; J12 pending)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1551_audit_to_coordination+studiomath+navigator_D-reducibility-certificates-statement-review-and-J12.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1625_studiomath_to_coordination+audit+math+navigator_steps-C-D-frame-theorem-sanity-checks-statement-list.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: the audit's statement review (15:51): ConfigOcc and the headline colorable theorems state D-reducibility soundly (the nbr table is an upper bound, the sound direction); ConfigOcc adopted as the occurrence interface. Steps C and D are now built (c709e85). The machine check is J12, pending. Status unchanged: built, audit pending."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-path-1-class-census",
+      "revision": 137,
+      "node": {
+        "id": "structural-conj-m",
+        "title": "Conjecture M (intern D): merges of Kempe classes need few unfilled bridge states (refuted on Studio data; not independently checked)",
+        "status": "computed",
+        "statement": "Intern D (cycle 3, 03f2083): a bound on the unfilled bridge states needed when a vertex deletion merges Kempe classes (strong and weak forms).",
+        "approach": "Studio compute (f6731dd, merged 8b213d7) [exploratory]: bridge.py with kmap_m on every merging vertex deletion, orders 12 to 20.",
+        "evidence": "Fails in both forms: at order 14 (the only graph, a degree-5 hole) the one merged pair needs 2 unfilled states; at order 20 degree-5 merged pairs need up to 16, and the weak form fails at 573 of 585 merging degree-5 holes.",
+        "killCriteria": "An independent recheck of the order-14 instance would make this a recorded kill.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-classes/README.md",
+          "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-classes/bridge-summary.jsonl",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D-cycle3.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:35:00Z",
+            "text": "Revision 137: recorded as refuted by computation [exploratory], status computed; \"killed\" once someone else rechecks the order-14 instance (the 50-point kill bounty also needs that independent check)."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-path-1-class-census",
+      "revision": 137,
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/sage-qa-runs/README.md",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/sage-qa-runs/mergenum-summary.jsonl",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/sage-qa-runs/mergenum-summary-21-23.jsonl",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1608_studiointel_to_coordination+math+navigator_order23-census-and-graph-id-correction.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1609_studiointel_to_coordination+navigator_reconciliation-smallest-rho5-order.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: [exploratory] sage QA runs (21419c8, d661127): run 2, link-touching-only moves give no targetless class through order 20 (depth 2 to 3 at 16 holes; the four radius-5 certificates unchanged at depth 5); run 4, every multi-class T has merge number 1 through order 23 (some single vertex deletion merges all its classes; kappa(T) up to 53 at order 23). Order-23 census (Studio intel 16:08): no targetless class, one radius-5 hole (in a diamond-containing graph); the smallest order with radius 5 is 22, not 23 (Studio intel's own reconciliation, 9ddc565)."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-2-controls",
+      "revision": 137,
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-classes/README.md",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/sage-qa-runs/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: [exploratory] edge deletions create new Kempe classes (7eb54a1: 16 edge orbits at orders 17 and 20, with representatives): the planar positive control works. Sage QA run 1: those new edge classes are NOT frozen (each state has 3 to 5 of 6 bichromatic pairs connected)."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-3-constructed",
+      "revision": 137,
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/historical-traps/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: [exploratory] historical traps (91cd22c): Errera (order 17) and Kittell (order 23) are in the core class; no targetless class and no new class at any degree-5 hole, but kappa(T - v) = 1 everywhere, so this only re-checks colourability (not evidence for R* in the plan's sense). Poussin has minimum degree 4 (not core)."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-5-mohar-salas",
+      "revision": 137,
+      "status": "killed",
+      "title": "Path 5: sphere analogue of the Mohar-Salas invariant (closed by its stop rule)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1554_longtable_to_coordination+audit+math+navigator_path-5-closed.md",
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/path5-tait-sign-invariant.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: closed by its stop rule (Long Table bd415c4) [hand, unreviewed; exploratory check]: the node-sign sum mod 4 depends on the link word only, and mod 8 adds only the disc parity bit already killed; on the three multi-class instances the invariant is constant on every class. Only a non-linear invariant is left; none suggested."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-8-min-radius",
+      "revision": 137,
+      "status": "killed",
+      "title": "Path 8: min-over-v radius (\"R*-radius\") (stopped by its rule)",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-census/rstar-radius.jsonl"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: stopped by its own stop rule (Studio, d735fb0, rstar_radius.py) [exploratory]."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-9-stuck-structure",
+      "revision": 137,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1614_math_to_coordination+navigator+audit+studiointel+longtable_path9-lemmas-and-stop-rule.md",
+        "SolvingFrameworkPlan/docs/working/MathPath9StuckClass.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1600_math_to_coordination+navigator+audit+studiointel_leak-coupling-negative-results.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: Math 16:14: Lemmas E (exact one-step closure: eight link-meeting components), T (tangle), X (forced crossing) and R (silent swaps) [hand, unreviewed]; none shrinks the 2-ball colour-pattern space, so the stop rule is triggered for the pattern space, except the decisive Studio check P9-F (forced local patterns and closure fixpoint; queued). Math 16:00: leak-coupling negative results."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-7-fullerene",
+      "revision": 137,
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: the C70 dual: the site builder finds max radius 3, not 4 as reported elsewhere; reconciliation pending."
+        }
+      ]
+    },
+    {
+      "id": "structural-route-b-kempe-reducible",
+      "revision": 137,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1615_math_to_coordination+studiointel+navigator+audit+longtable_hybrid-lemma-mechanism-honest-answer.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1629_math_to_coordination+navigator+audit+longtable+studiointel_distant-holes-lemma-clear-no.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: hybrid H-lemma (R* for core triangulations free of the diamond and 2.122): Math 16:15, an honest answer, sees no proof mechanism; the exclusions remove exactly the degree-5 clusters that local proofs use. The configuration-free data are thin: 1, 1, 4 and 2 graphs at orders 22 to 25. Three deciding Studio checks are queued on Studio Intel: (a) counts of configuration-free graphs, (b) the corridor test (do hardest lock paths run through the configurations?), (c) the flat-annulus kappa(T - v) test on large configuration-free graphs. Every radius-5 hole found so far lies in a graph containing the diamond or 2.122. Math 16:29: a \"distant holes\" lemma is a clear no (it reduces to a two-vertex Kempe argument)."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 137,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1555_math_to_coordination+navigator+audit_FellowF-reviewed.md",
+        "SolvingFrameworkPlan/docs/working/MathReviewFellowF.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1607_studiointel_to_coordination+math+fellowF_the-single-F-cycle.md",
+        "backgroundMaterial/planemap-structural/studiointel/fcycle/fcycle_order22.json",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle4.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: Fellow F's Lemmas O, Gamma and LC and the catalogue: reviewed CORRECT by Math (15:55; wording: F is a partial injection; 15 divides every cycle length proved directly; Gamma gives divisibility by 30); one gap in Lemma W (only one direction proved). Interns A (cycle 5, O and LC), B (cycle 3) and C (cycle 4, Gamma, no gap) also read them. So O, Gamma and LC are proved by hand (Math review); C* stays open. Studio intel F-cycle census [exploratory]: over 975 (5,5,6,5,6) holes at orders 16 to 22 and 388 in the certificate graphs, exactly one F-cycle exists (order 22, hole of class (5,6,5,6,5)): 20 states up to renaming (labelled length 60, consistent with O and Gamma), radii 8 states at 2, 8 at 3, 4 at 4, 8 silent first moves, and its class fills (not targetless). The radius-5 certificate states lie on F-paths, not cycles."
+        }
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 137,
+      "files": [
+        "docs/cages/index.html"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137: site: a Cages and Diamonds page (da22af0: C60/C70 duals, the Birkhoff diamond's ring colourings, the order-22 F-cycle)."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 137,
+      "notes": [
+        {
+          "time": "2026-10-06T22:35:00Z",
+          "text": "Revision 137, leaderboard: no change. Nothing in this revision is a bounty the audit has cleared: the frame theorem and the certificates wait for J12; the audit's statement reads are readings, not replays (ruling of revision 127); Conjecture M's kill has no independent check yet. Pending a coordinator ruling: Studio intel withdrew its own \"smallest radius-5 order is 23\" (16:09, 9ddc565) before anyone else reported it, which matches the 50-point withdrawal item (the navigator records withdrawals); not paid this revision, per the instruction to pay only audit-cleared items. Totals unchanged: studiomath 810, studiocompute 330, math 180, audit 150, studiointel 150, longtable 50, intern-C 30, others 0."
         }
       ]
     }
