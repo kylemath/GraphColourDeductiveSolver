@@ -76,3 +76,7 @@ R3 states always have a,b-component of size 3 and a non-DL image (r = 3..6). For
 ## 7. Ledger
 
 [hand]: Lemma A and B verified; Steps 1-4; Theorem H (radius <= 3 at icosahedral holes, all r); the explicit swaps; why infinite orbits are harmless. [computed]: pattern counts, transition table, K sizes, hairpin barriers, radii r = 3..6, 50 flipped graphs, T4 tables and geodesics. [open]: radius 2 for all r >= 4 (hairpin barrier existence), a bounded-ball automaton for holes with degree-6 neighbours, any absolute R beyond icosahedral holes (R >= 4 from T4).
+
+## Erratum and review status (6 Oct, after `MathReviewArTheoremH.md`)
+
+An independent review worker rederived Steps 1–4 of Theorem H and confirmed them over all colourings of A_3..A_9 (verdict CORRECT). Two wording fixes: (1) Step 4 does use the existence of the lock path P2, as a Jordan curve separating x_0 from x_2 and x_3, so the phrase "no lock path beyond first/last vertex" is imprecise; (2) the distinctness of the vertices w_t (which follows from the absence of a separating triangle) must be stated as a hypothesis of the theorem. Neither uses the A_r structure or degrees beyond ring 1.
