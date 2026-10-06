@@ -1,0 +1,45 @@
+== EulerSharp
+== VacancyIcosahedral
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyIcosahedral.lean:826:4: warning: Unused tactic linter: `change M.Adj (w (t + 4 + s)) (w (t + s))` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+== RStar
+== SideTriangle
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:447:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.lift_faceNext_keptFace`:
+  hN
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hN in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:470:5: warning: Variable name `hu` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:561:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.far_ends`:
+  hc
+  spec
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc spec in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:580:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.T_faceNext_three`:
+  hc
+  hN
+  spec
+  hpq
+  hqr
+  hrp
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc hN spec hpq hqr hrp in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:648:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.kept_facial`:
+  htri
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit htri in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+== RStarCore
+exit 0
