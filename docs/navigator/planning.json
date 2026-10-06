@@ -1,7 +1,12 @@
 {
-  "revision": 87,
-  "updatedAt": "2026-10-05T20:52:00-06:00",
+  "revision": 88,
+  "updatedAt": "2026-10-05T21:25:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T03:30:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 88 records the Lean generalisation of mobility as built with standard axioms and not yet audited, so in progress and not compiled; first-attack reports from Math on the trace hypotheses and on statement (N), with no proof and no counterexample, unreviewed; the WP21 draft package; the P1 pause on the record; and Math's step back from go-aheads. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T02:58:00Z",
       "node": "structural-vacancy",
@@ -7420,6 +7425,130 @@
         "active": true,
         "children": []
       }
+    },
+    {
+      "title": "Lean: mobility generalised by ring rotation and colour renaming (built, not yet in the audit)",
+      "statement": "SimpleGraph.SphericalMap.vacancy_mobility_general removes the Pattern hypothesis of vacancy_mobility_normalized by cyclic port shift and colour renaming. It takes one new hypothesis: consecutive ports are adjacent in the graph, besides the existing rotation condition. So it covers every hole whose link is a 5-cycle. The derivation of that adjacency from the SphericalMap axioms is not compiled, so it is not yet the statement for every degree-5 hole of a spherical map.",
+      "evidence": "Checked on disk: the new source and guarded test contain no sorry; build.log reports success (1325 jobs); SHA256SUMS verify; axioms for the theorem and ring_normalize are propext, Classical.choice, Quot.sound. The 1325 is a build job count, not an audit module count; no audit count exists yet, and Math says it is not in the audit. Held at in-progress because compiled requires the audit. Becomes compiled when a module audit includes it.",
+      "files": [
+        "backgroundMaterial/planemap-structural/mobility-general-lean/SHA256SUMS",
+        "backgroundMaterial/planemap-structural/mobility-general-lean/axioms-and-statement.log",
+        "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2053_math_to_navigator+longtable+audit+coordination_mobility-general-compiled.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T03:30:00Z",
+          "text": "Revision 88: verified against the artifact files. Not marked compiled: audit pending. Next on this line (Math): derive the ring adjacency from rotation and face data, then the boundary reduction. Not started."
+        }
+      ],
+      "id": "structural-mobility-general-lean",
+      "revision": 88
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-t2",
+      "revision": 88,
+      "node": {
+        "id": "structural-math-t2-attack",
+        "title": "First attack on four-connectivity and the trace hypotheses: no proof, no counterexample",
+        "status": "exploring",
+        "statement": "Neither the trace-game hypothesis nor four-connectivity of a least plain failure is proved or refuted. The sharpest open lemma is pentagram confinement: in the four-connected core with protected triangle, some off-face degree-5 vertex has all its targetless states sharing a repeat vertex. A proof would give VH_C and hence plain VH-exists.",
+        "approach": "Worker report, labelled hand or computed by the worker, not yet reviewed by Math line by line. Good-pair criterion in the core: a degree-5 root has a good fan iff its targetless states share a repeat vertex. Four routes to four-connectivity fail where the path may land on the separating triangle. In the minimum-degree-5 class the 5-cycle hypothesis excludes only the 5-wheel (worker; Math quick check agrees). Icosahedron check is one graph and has no universal content.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathTraceFourConnAttack.md",
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2056_math_to_navigator+longtable+audit+coordination_trace-fourconn-attack-no-proof.md"
+        ],
+        "evidence": "No census was run. Nothing here changes a status. Math asked Long Table for a view on pentagram confinement; any census-style data needs a declaration.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-t3",
+      "revision": 88,
+      "node": {
+        "id": "structural-math-t3-attack",
+        "title": "First attack on statement (N): neither proved nor refuted",
+        "status": "exploring",
+        "statement": "Statement (N) of D1 in the rigid triply locked case is open. Worker results: a duality lemma between pair subgraph components and complementary paths, an exact first-order unlock criterion, and Prop N1 that (N) holds unless two tree paths meet specified components, which happens in all four rigid states on 17:1. A third-order target T3 is open. Each of two components needs a vertex of degree at least 6 under a type II assumption.",
+        "approach": "Worker report, unreviewed by Math line by line, so exploring only. The duality lemma had 0 mismatches in about 145k tests at orders 12 to 18, which is a check and not a proof. The counterexample search by building discs was not done. (N) alone is not shown to imply the Four Colour Theorem.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathNAttack.md",
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2107_math_to_navigator+longtable+audit+coordination_N-attack-no-proof.md"
+        ],
+        "evidence": "No declared experiment. No status change. Math ranks the pentagram confinement lemma above this line.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T03:30:00Z",
+          "text": "Revision 88: tasks 2 and 3 now have first-attack reports, both unreviewed and both without proof or counterexample. Task 4 has one theorem built and awaiting audit. Math 20:56 chose the pentagram confinement lemma as its next target."
+        }
+      ],
+      "id": "structural-math-horizon",
+      "revision": 88
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/wp20/P1-run.log",
+        "backgroundMaterial/planemap-structural/longtable/wp20/CHRONOLOGY.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T03:30:00Z",
+          "text": "Revision 88: P1 is still running. The log read 7000 of 25381 graphs at 4547 s wall when last read (21:22). The coordinator reports a measured cost of about 39 CPU-hours and an ETA near 23:45; I did not find these figures in a committed file, so they are the coordinator's. This is about six times the 6 CPU-hour rule, so P2 stays out by the declaration. Chronology addenda in CHRONOLOGY.md: the user's direct word to Long Table at 20:57 that new declared phases may start without asking (items 12), and a pause of P1 of about four minutes around 21:03 to 21:07 by operator error (SIGSTOP of the wrong process tree, SIGCONT within minutes; no data or code affected; the pause is on the record). The results report is not in. The exploratory pass on spent orders is paused until P1 ends; its output is not declared data."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 88
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-sep-d1",
+      "revision": 88,
+      "node": {
+        "id": "structural-wp21",
+        "title": "WP21: D1 and P on a fresh order, sample and adversarial search (draft, not announced)",
+        "status": "unstarted",
+        "statement": "A declared package, drafted and committed (202e1cb), for a frozen-hash sample of order 26 (4,578 of 91,441 graphs, phase A) and an adversarial edge-flip search (phase B, 12 chains of 400 flips). It tests the same D1 and P statements as WP20. Nothing has run on declared data.",
+        "approach": "Declaration SHA-256 a8e9cd1c53ec7f1e1ad60776efe768afb9a5c8d8169a88a4f8d359cd78463367 as on disk now. Caps: phase A 12 CPU-hours, phase B 24. Estimates 9 and 14. Under the user's waiver no go-ahead is issued; the gate is the complete hashed package announced in messages, and the report must say no go-ahead was given. Not announced yet, and the checker is described as an adaptation. It starts after P1 uses the CPUs. A pass would say only that no counterexample occurs among the sampled graphs. Phase B says nothing about graphs it did not visit and is not a holdout test.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/WP21-declaration.md",
+          "backgroundMaterial/planemap-structural/longtable/wp21_sample.py",
+          "backgroundMaterial/planemap-structural/longtable/wp21_search.py"
+        ],
+        "evidence": "Status unstarted: draft only. Success needs the report, an audit replay and Math's review. Costs are Long Table estimates.",
+        "killCriteria": "",
+        "notes": [
+          {
+            "time": "2026-10-06T03:30:00Z",
+            "text": "Revision 88: the hash was read from disk. It may change if Long Table edits the declaration before announcing it; the announcement must name the final hash."
+          }
+        ],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T03:30:00Z",
+          "text": "Revision 88: Math 20:51 no longer issues or withholds go-aheads (message 2026-10-05_2051_math_to_..._math-no-longer-gates.md). Earlier go-aheads stand. Math says its reviews are information. Gates therefore require Math's review as evidence where it exists, and an audit replay for run results; where Math has no review the ledger states that."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 88
     }
   ]
 }
