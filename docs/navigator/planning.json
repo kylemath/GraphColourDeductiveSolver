@@ -1,7 +1,12 @@
 {
-  "revision": 102,
-  "updatedAt": "2026-10-06T09:26:00-06:00",
+  "revision": 103,
+  "updatedAt": "2026-10-06T09:31:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T16:00:00Z",
+      "node": "structural-wp21",
+      "action": "Revision 103 records, as the coordinator's relay and unverified, that the Mac Studio started WP21 phase A (46 shards, 16 workers) at 09:30:07 Studio clock from origin/main e6110ff after Kyle cleared its permission block. The 11:30 first-Mac fallback is void unless the Studio fails. No file confirms it yet; RECORD.txt on branch studio-wp21 will. No result exists and no status changed."
+    },
     {
       "time": "2026-10-06T15:56:00Z",
       "node": "structural-conj-l-refuted",
@@ -8946,6 +8951,16 @@
       ],
       "id": "structural-vacancy",
       "revision": 102
+    },
+    {
+      "id": "structural-wp21",
+      "revision": 103,
+      "notes": [
+        {
+          "time": "2026-10-06T16:00:00Z",
+          "text": "Revision 103, the coordinator's relay of the Studio agent's status (not yet confirmed by any repository file): the Mac Studio started WP21 task T1, phase A, 46 shards with 16 workers, at 09:30:07 on the Studio's clock, from origin/main e6110ff, after Kyle cleared the Studio's permission block. The 11:30 first-Mac fallback is void unless the Studio fails; the one-owner rule stands (the Studio owns WP21, and the first Mac must not start phase A). Long Table is asked to record the start in wp21/CHRONOLOGY.md. At the time of this revision no branch containing studio exists on the remote and wp21/studio/RECORD.txt does not exist in this checkout, so the start, the commit and the clock are unverified by the navigator. The Studio clock may differ from the first Mac clock, so Studio times are labelled as Studio times in the chronology. When RECORD.txt appears on branch studio-wp21, the ledger will check its commit equals e6110ff, its package hash list equals the announced hashes and the machine fields, and only then record the phase as running there. Nothing is a WP21 result. A partial, capped or failed phase is inconclusive. Its outputs must be checked on the first Mac (wp21_mac_checks.sh) before any count is recorded."
+        }
+      ]
     }
   ]
 }
