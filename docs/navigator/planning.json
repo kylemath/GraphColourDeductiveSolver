@@ -1,7 +1,12 @@
 {
-  "revision": 127,
-  "updatedAt": "2026-10-06T14:18:00-06:00",
+  "revision": 128,
+  "updatedAt": "2026-10-06T14:19:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T20:20:00Z",
+      "node": "structural-pathway-sprint",
+      "action": "Revision 128 applies the coordinator's leaderboard rulings (studiocompute added, 30 for the P1 replay T2; Math's 30 stands) and records the Studio's relayed rebuild of the Lean snapshot 8299419 (118 modules, 0 nonstandard axioms) as a second-machine re-check pending its evidence files and the audit's decision. No status changed."
+    },
     {
       "time": "2026-10-06T20:50:00Z",
       "node": "structural-wp20",
@@ -10721,6 +10726,26 @@
       ],
       "id": "structural-pathway-d",
       "revision": 127
+    },
+    {
+      "id": "dissemination-mathlib-planemap",
+      "revision": 128,
+      "notes": [
+        {
+          "time": "2026-10-06T20:20:00Z",
+          "text": "Revision 128, the coordinator's relay (no file yet; evidence to be pushed under lean-8299419/ on branch studio-wp21, which does not contain it at 14:18): the Mac Studio rebuilt the Lean snapshot 8299419 and reports all 118 modules pass and 1,903 constants with 0 nonstandard axioms. Recorded as a second-machine re-check of the Lean results the paper cites, not yet verified by the navigator. Whether it counts as a re-audit is the audit's decision; until then the audited sets remain the 105-module and the audit's 116-module audits."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 128,
+      "notes": [
+        {
+          "time": "2026-10-06T20:20:00Z",
+          "text": "Revision 128, coordinator rulings on the leaderboard: Math keeps the 30 points for the requested check of intern B; the Studio compute session is added as team studiocompute and receives 30 for T2, the requested replay of WP20 P1 whose report and digest are posted; J4, a digest comparison, scores nothing; further requested and reported Studio compute replays score 30 each."
+        }
+      ]
     }
   ]
 }
