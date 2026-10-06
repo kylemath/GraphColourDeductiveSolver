@@ -11,7 +11,7 @@ S=$PWD
 P=Mathlib/Combinatorics/SimpleGraph/PlaneMap
 [ -d "$W/Mathlib" ] || cp -c -R "$B/.lake/build/lib/lean/Mathlib" "$W/Mathlib"
 LP=$W:$(ls -d $B/.lake/packages/*/.lake/build/lib/lean | tr '\n' ':')
-for f in EulerSharp VacancyIcosahedral RStar; do
+for f in EulerSharp VacancyIcosahedral RStar SideTriangle; do
   echo "== $f"
   nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 done
