@@ -1,0 +1,29 @@
+WP21-declaration.md: OK
+d1_confirm.py: OK
+wp_shard_runner.py: OK
+wp21_search.py: OK
+wp_launch.py: OK
+d1_check21.py: OK
+wp_check_shards.py: OK
+wp21_sample.py: OK
+wp21_seeds.py: OK
+wp_report.py: OK
+wp21/sample-A-m5-26.txt: OK
+WP20-D1-declaration.md: OK
+d1_check.py: OK
+wp20/input-m5-25.txt: OK
+wp_merge.py: OK
+wp_compare_outputs.py: OK
+2026-10-06 09:30:07 package hashes verified; WP21 version 2 on this machine; workers 16
+planned 46 shards (graphs) in /Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/wp21/A-run
+2026-10-06 09:30:07 phase A run start
+2026-10-06 10:13:27 phase A run ended (exit 0): shards done 46/46  state complete  counts {"done": 46}  damaged []  cpu_done 34312.1s cpu_wasted 0.0s cap 43200.0
+wrote wp21/A-m5-26.json (4578 graphs)
+2026-10-06 10:33:25 phase A sharded check OK (the subset-rule check needs the full order-26 list and is done on the other machine)
+seeds (selection-file indices): [3454, 3716, 4271, 2138, 3024, 2042, 2048, 2084, 2811, 1535, 291, 2050] objectives: [490, 460, 373, 330, 175, 90, 84, 84, 56, 51, 46, 40] seeds file sha256: 6582d4e8df98174f1ce887f90ad654708d7d2a466b2767822a9e436586db7065
+planned 12 shards (chains) in /Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/wp21/B-run
+2026-10-06 10:33:26 phase B run start
+2026-10-06 11:19:51 phase B run ended (exit 0): shards done 12/12  state complete  counts {"done": 12}  damaged []  cpu_done 30686.9s cpu_wasted 0.0s cap 86400.0
+evaluated graphs 4812 sep_bad 1626 d1_kills 0 p_kills 0 locked 6158 max chain objective 1000
+2026-10-06 11:38:29 phase B sharded check OK
+2026-10-06 11:38:30 STUDIO WP21 DONE

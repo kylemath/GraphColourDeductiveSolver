@@ -1,0 +1,26 @@
+@[expose] def SimpleGraph.SphericalMap.PureClean : {n : ℕ} → SimpleGraph.SphericalMap n → Fin n → Prop :=
+fun {n} T r =>
+  ∀ (c : Fin n → Fin 4),
+    SimpleGraph.VacancySlide.ProperOff T.graph r c → ∃ m, SimpleGraph.VacancyShortFill.PureFill T.graph r c m
+@SimpleGraph.SphericalMap.four_color_of_global_Rstar : ∀ {n : ℕ},
+  (∀ (n : ℕ) (T : SimpleGraph.SphericalMap n),
+      0 < n →
+        T.graph.Connected →
+          T.Triangulated → (∀ (x : Fin n), 5 ≤ T.graph.degree x) → ∃ r, T.graph.degree r = 5 ∧ T.PureClean r) →
+    ∀ (M : SimpleGraph.SphericalMap n), M.graph.Colorable 4
+@SimpleGraph.SphericalMap.pureClean_of_theorem_H : ∀ {n : ℕ} (T : SimpleGraph.SphericalMap n),
+  T.Triangulated →
+    ∀ {h : Fin n},
+      T.graph.degree h = 5 →
+        (∀ (u : Fin n), T.Adj h u → T.graph.degree u = 5) → T.NoSeparatingTriangleAt h → T.PureClean h
+@SimpleGraph.SphericalMap.pureClean_of_theorem_HP : ∀ {n : ℕ} (T : SimpleGraph.SphericalMap n),
+  T.Triangulated →
+    ∀ {h p : Fin n},
+      T.graph.degree h = 5 →
+        T.Adj h p →
+          (∀ (u : Fin n), T.Adj h u → u ≠ p → T.graph.degree u = 5) → T.NoSeparatingTriangleAt h → T.PureClean h
+'SimpleGraph.SphericalMap.four_color_of_global_Rstar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.pureClean_of_theorem_H' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.pureClean_of_theorem_HP' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 8; nonstandard: 0; []
+exit 0
