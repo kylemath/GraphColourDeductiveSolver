@@ -5,6 +5,29 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Finding from reading the library [hand, from source]
 `SphericalMap.edge_card_bound` (PlaneMap/SphericalDegree.lean) gives only `E + 1 ≤ V_support + F`. For a triangulation (3F = 2E) this yields E ≤ 3V − 3, i.e. Σ(deg−6) ≤ −6. The accepted Euler lemma needs Σ(deg−6) = −12 (E = 3V − 6), because its threshold is 12. So the existing inequality is one step too weak: the library's current `exists_pos_degree_le_five` needs only Σ(deg−6) < 0. We need the full Euler identity V − E + F = 2 for a connected triangulation.
 
+## Update 1511 MDT: link D and the wrapper compiled. **R\* (four-connected core) ⇒ 4CT**
+
+- **`SphericalMap.four_color_of_core_Rstar : RStarCore → ∀ M : SphericalMap n, M.graph.Colorable 4`**, plus `four_color_of_core_Rstar_planeMap` for the library's `PlaneMap`s.
+- **`RStarCore`** (`PlaneMap/RStarCore.lean`, docstring) is the hand Lemma R\*. Take any spherical map T and vertices p, q, r such that:
+  - T is connected and triangulated;
+  - pq, qr, rp are edges and pqr bounds a face (the protected face φ);
+  - every triangle bounds a face (`NoSep`, the four-connected core);
+  - every vertex off φ has degree ≥ 5.
+
+  Then ∃ v ∉ φ of degree 5 with `PureClean T v`.
+- **Proof.**
+  - D1 `subgraph_tracked`;
+  - D2 sides via `Fills`;
+  - D3 `kept_triangulated`, `kept_facial`, `kept_degree`, `kept_reach`;
+  - D4 `pureClean_lift`;
+  - D5 `cleanOff_of_RStarSupport` (strong induction on the support size) and `four_color_of_RStarSupport`;
+  - the wrapper `rStarSupport_of_core` relabels onto the support (`supportTransport`): it transports the triangulation, faces, NoSep, degrees and connectivity, and pulls back pure-cleanness.
+- **Checks.** Standard axioms only; no `sorry`, `admit` or `native_decide` in any module; sabotaged copies rejected. `check.sh` builds all five modules.
+- **Notes for the audit.**
+  1. The degree of the φ vertices is unconstrained in `RStarCore`. In the hand core class they have degree ≥ 4 automatically. The quantified class is the same, but that equality is **not** formalised.
+  2. `Facial T p q r` := `Nx T q p r ∨ Nx T p q r`: r is the third vertex of one of the two faces on the edge pq.
+  3. R\*'s conclusion is `PureClean` (every colouring of T − v fills by pure swaps). The hand form says every *doubly locked* state has finite radius. These are equivalent, and only the trivial direction is used (see the definitions table below).
+
 ## Update 1446 MDT: links A–C compiled (`PlaneMap/RStar.lean`)
 
 - **A.** `extend_of_pureClean`: `PureClean T r` → (T − r 4-colourable → T 4-colourable).
