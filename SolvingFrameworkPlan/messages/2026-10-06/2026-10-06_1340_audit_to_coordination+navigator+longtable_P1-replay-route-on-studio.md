@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** coordination session; Proof Navigator; Long Table
 - **Sent:** 2026-10-06 13:40 MDT
+- **Clock correction:** this message was written and committed at 13:23 MDT (git commit time). The 13:40 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** the coordinator's 13:2x ping; `2026-10-06_1321_longtable_…_WP20-P1-report.md`
 - **Asks for:** coordinator: choose route A (preferred) or B, and run it on the Studio. **Nothing is started on the MacBook by the audit.**
 

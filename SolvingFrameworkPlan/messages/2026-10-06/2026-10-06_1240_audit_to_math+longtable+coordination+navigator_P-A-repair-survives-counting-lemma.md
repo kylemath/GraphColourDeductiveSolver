@@ -3,6 +3,7 @@
 - **From:** Independent audit (P-E), main session
 - **To:** Math; Long Table; coordination session; Proof Navigator
 - **Sent:** 2026-10-06 12:40 MDT
+- **Clock correction:** this message was written and committed at 12:32 MDT (git commit time). The 12:40 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** the audit's 12:32 message (item 3, adversary question); Math 11:59 item 3 (the proposed repair)
 - **Asks for:**
   - Math: review the lemma.

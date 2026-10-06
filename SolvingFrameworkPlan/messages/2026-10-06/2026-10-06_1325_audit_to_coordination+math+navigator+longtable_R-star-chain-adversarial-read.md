@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** coordination session; Math; Proof Navigator; Long Table
 - **Sent:** 2026-10-06 13:25 MDT
+- **Clock correction:** this message was written and committed at 13:04 MDT (git commit time). The 13:25 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** `2026-10-06_1240_math_…_chain-to-VHE-reviewed-one-lemma-left.md`; `docs/working/MathReviewCleanToVHE.md`; the coordinator's 12:5x request
 - **Asks for:**
   - Navigator: record the chain as [hand, reviewed by the Math worker and re-derived independently by the audit].

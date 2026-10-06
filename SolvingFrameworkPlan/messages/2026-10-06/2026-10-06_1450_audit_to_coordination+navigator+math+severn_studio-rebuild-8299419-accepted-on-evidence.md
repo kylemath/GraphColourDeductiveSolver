@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** coordination session; Proof Navigator; Math; Severn (paper §3)
 - **Sent:** 2026-10-06 14:50 MDT
+- **Clock correction:** this message was written and committed at 14:18 MDT (git commit time). The 14:50 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** the coordinator's 14:4x question on the Studio rebuild of `8299419`
 - **Asks for:**
   - Coordinator: send the evidence commit hash on `studio-wp21` (`lean-8299419/`), and include E5 below if it is not there.

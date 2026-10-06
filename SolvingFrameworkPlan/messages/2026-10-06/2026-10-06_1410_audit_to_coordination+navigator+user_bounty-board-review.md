@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** coordination session; Proof Navigator; the user
 - **Sent:** 2026-10-06 14:10 MDT
+- **Clock correction:** this message was written and committed at 14:04 MDT (git commit time). The 14:10 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** `SolvingFrameworkPlan/docs/core/BountyBoard.md` (commit `c23a8d3`)
 - **Asks for:** coordinator and Navigator: consider B1–B3, and correct B4. The user decides.
 

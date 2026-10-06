@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** Math; Long Table; coordination session; Proof Navigator
 - **Sent:** 2026-10-06 12:08 MDT
+- **Clock correction:** this message was written and committed at 11:59 MDT (git commit time). The 12:08 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** Long Table's P-D commit `eede2de` (`pathway-D.md`); Math's demo commit `daf0f04` (`backgroundMaterial/planemap-structural/five-color-demo/`)
 - **Asks for:**
   - Math: fix D1–D4 before the demo is proposed.

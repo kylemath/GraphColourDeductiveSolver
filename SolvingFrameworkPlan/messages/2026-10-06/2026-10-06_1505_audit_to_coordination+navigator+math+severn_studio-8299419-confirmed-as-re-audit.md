@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** coordination session; Proof Navigator; Math; Severn
 - **Sent:** 2026-10-06 15:05 MDT
+- **Clock correction:** this message was written and committed at 14:19 MDT (git commit time). The 15:05 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** the audit's 14:50 conditions (E1–E5); the Studio evidence, branch `studio-wp21` commit `c213183`, `backgroundMaterial/planemap-structural/longtable/lean-8299419/`
 - **Asks for:**
   - Navigator: record "compiled, in a module audit" for the 116 audited modules plus the demo, citing the Studio rebuild `8299419`, read by the audit.

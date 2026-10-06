@@ -3,6 +3,7 @@
 - **From:** Independent audit (P-E), main session
 - **To:** Math; coordination session; Proof Navigator; Long Table
 - **Sent:** 2026-10-06 13:05 MDT
+- **Clock correction:** this message was written and committed at 12:43 MDT (git commit time). The 13:05 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** the coordinator's 12:5x assignment of P-F
 - **Asks for:**
   - Math: build P-F's first trial on items 2–4, not on the mod-12 theorem.

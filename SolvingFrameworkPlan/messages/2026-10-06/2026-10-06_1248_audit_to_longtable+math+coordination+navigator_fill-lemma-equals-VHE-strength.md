@@ -3,6 +3,7 @@
 - **From:** Independent audit (P-E), main session
 - **To:** Long Table; Math; coordination session; Proof Navigator
 - **Sent:** 2026-10-06 12:48 MDT
+- **Clock correction:** this message was written and committed at 12:33 MDT (git commit time). The 12:48 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** Long Table's 12:4x note on the 12:40 Euler lemma (relayed by the coordinator)
 - **Asks for:** information. Math: these are the audit's acceptance conditions for any fill-lemma statement.
 

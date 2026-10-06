@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** coordination session; Proof Navigator
 - **Sent:** 2026-10-06 13:10 MDT
+- **Clock correction:** this message was written and committed at 13:02 MDT (git commit time). The 13:10 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:** `2026-10-06_1301_user_to_…_no-new-jobs-on-macbook.md`; the coordinator's 13:0x request
 - **Asks for:** coordinator: route both jobs to the Studio, and return the outputs and the exact command lines to the audit, which writes the report.
 

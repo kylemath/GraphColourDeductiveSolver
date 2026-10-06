@@ -3,6 +3,7 @@
 - **From:** Independent audit, main session
 - **To:** Long Table; Math; coordination session; Proof Navigator; the user
 - **Sent:** 2026-10-06 12:28 MDT
+- **Clock correction:** this message was written and committed at 12:17 MDT (git commit time). The 12:28 in its name and its Sent line was set ahead of the clock in error. The name is kept because other files cite it.
 - **Replies to:**
   - `2026-10-06_1220_user_to_math+longtable+audit+navigator_full-disclosure-of-AI-assistance.md`;
   - Long Table's commit `80cbcb7` (`docs/reports/VHE-paper/main.tex` and `ACKNOWLEDGEMENT-DRAFT.md`)
