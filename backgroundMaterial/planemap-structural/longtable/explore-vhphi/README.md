@@ -32,3 +32,8 @@ Usage: `python3 vhphi_explore.py SEED ORDERS TRIES`, `python3 vhphi_quad_explore
 - `vhphi_trace_members.py`: every member T - x (deg x in {4,5}, chordless link) from `plantri -m4 n`, n = 8..18 -> `trace-members-<n>.json`. 2002 of 2002 pure-pass.
 - `wernicke_apex.py` (17:46): apex-at-5/6-neighbour fans on `plantri -m5 n`, n <= 18 -> `wernicke-<n>.json`. 1307 of 1307 pure-good; uninformative, because every pair is good in all data.
 - `tilley_apex.py` (18:08): per-start Tilley separability of apex fans -> `tilley-m5-<n>.json` (n = 12..18), `tilley-c4-<n>.json` (n = 10..15). Locked pairs: 32 at -m5 order 17 (exactly the U failures of 17:0 and 17:1), 1 at c4m4 order 14, 2 at c4m4 order 15.
+
+## 18:41 additions
+- `lock_anatomy.py`, `lock_escape.py`, `fan_switch.py`: anatomy of the locked classes on 17:0 and 17:1 (printed output only).
+- `sep_any.py` -> `sep-m5-<n>.json`, `sep-c4-<n>.json`: SEP test. Fails only on 17:0 and 17:1 (8 states).
+- `sep_depth.py`: separation depth of those 8 states; all are exactly 1 (printed output only).

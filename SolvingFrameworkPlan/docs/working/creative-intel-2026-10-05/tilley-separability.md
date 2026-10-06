@@ -69,3 +69,30 @@ Orders 17–18 of `-m5`, and order 15 of `-c4m4`: see §5.
 > **TS$_v$ (post hoc, open).** In a minimum-degree-5 triangulation, every degree-5 vertex $x$ has a neighbour $y$ with legal apex fan such that no Kempe class of $T/xy$ is locked in $T-xy$.
 
 TS$_v$ sits between TS (refuted) and TS∃ (open, equivalent on the data to U∃). It implies that every degree-5 vertex carries a pure-good pair. Tilley's theorem puts every edge of a minimum counterexample under a whole-edge lock. TS$_v$ says that, class by class, every degree-5 vertex has an incident edge that escapes. It was formulated after the data, so a fair test needs a declaration and fresh orders.
+
+## 7. How the locks are escaped (18:41, exploratory, post hoc, undeclared)
+
+Code: `longtable/explore-vhphi/` — `lock_anatomy.py`, `lock_escape.py`, `fan_switch.py`, `sep_any.py`, `sep_depth.py`. Orders $\le18$ for `-m5`, $10$–$14$ for `-c4m4`.
+
+**Anatomy of a lock (17:1, $22$ pairs).** Each locked pair has exactly **one** locked class, of size $6$. Its three bichromatic chains $\{1,k\}$ through $x$ and $y$ are the same connected sets (size $9$ in most cases; two pairs, $(x,y)=(10,15)$ and $(15,10)$, have a size-$7$ chain). **Every locked class still has a pure fill at the hole $x$**, reached by swaps in $T-x$ that Tilley's changes in $T-xy$ cannot make.
+
+**The escape always leaves $S$ through exactly one chord.** On $17{:}0$ ($10$ locked classes) and $17{:}1$ ($22$), the shortest pure escape takes $2$ swaps for $24$ classes and $3$ swaps for $8$, and **the first swap always makes exactly one fan chord monochromatic**, never both and never none. This is the observation recorded in `vh-exists.md` ("every path to $F$ must break a chord"), now with a count.
+
+**Fan switching.** After the first swap, the state is admitted by exactly $3$ fans. This is automatic: an unfilled link has pattern $(2,1,1,1)$, and each singleton colour picks one fan. In $32$ of $32$ locked classes it is **separable for at least two of those three fans** ($27$ for all three).
+
+**SEP (the fan-free statement).** *Every unfilled state at a degree-5 hole is Tilley-separable for at least one of its admitting fans.*
+- Holds with **no exception** on: all `-m5` triangulations of orders $12,14,15,16,18$ ($9{,}568$ states), and all `-c4m4` triangulations of orders $10$–$14$ ($173{,}000$ states).
+- **Fails only on $17{:}0$ and $17{:}1$**: $8$ states at $4$ vertices (two states each at $17{:}0$ vertices $4$ and $6$ and $17{:}1$ vertices $5$ and $15$), locked for all three admitting fans.
+- **Every one of those $8$ has separation depth exactly $1$.** One pure swap at the hole reaches a state separable for some admitting fan.
+
+**D1 (conjecture, post hoc).** *Every unfilled state at a degree-5 hole is separable for some admitting fan, or is one pure Kempe swap away from such a state.* True on all data above, hence a state-level, fan-free refinement of U∃. By the bridge in §1, D1 implies a pure fill at every degree-5 hole for every deletion colouring, with the sequence "one swap, then a Tilley sequence in the contraction $T/xy_j$, then fill". That is the strong pure form at degree-5 holes, which `vh-exists-check.txt` already reports as `deg5_KD_bad=0`. D1 explains it in terms of a statement about contractions.
+
+**What this does and does not buy.**
+- It localises the whole difficulty. A hand proof of D1 would need to show that no state is locked for all three admitting fans **and** all of its one-swap neighbours. The observed exceptions are all at $17{:}0$ and $17{:}1$, the two graphs that already carry every U failure, and nothing in the data says they are sporadic.
+- It is stated for deletion states of $T$ alone, not for the induced $T^\ast$ starts that the induction supplies. The two coincide, because the starts of fan $j$ are exactly the colourings admitted by $\tau_j$.
+- It uses only pure swaps at a fixed degree-5 hole. Slides, mobility and the protected face play no part, so it complements Math's route and does not depend on it.
+- It was formulated after the data. A fair test needs a declaration and fresh orders. It is **not** evidence.
+
+**Next (Long Table).**
+1. Hand-analyse one doubly-locked state at $17{:}1$ vertex $5$: write out its link word, the three admitting fans, the three chain systems, and the swap that escapes. That is the smallest concrete object a proof of D1 must handle.
+2. Test D1 on `-c4m4` order $15$ and on rare 4-connected shapes, to see whether depth $1$ survives.

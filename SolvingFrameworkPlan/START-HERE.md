@@ -144,6 +144,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 **Hand pages pending Math review** (`docs/working/creative-intel-2026-10-05/`):
 - **Trace-game reduction** (`interface/trace-game-reduction.md`). §1–§2 have been corrected to pair-labelled bridges, and Math's review is the reference proof. §2b is a new extension to non-neighbourhood separating 5-cycles; wheels are excluded because they lose. §2b has not been reviewed. Free-game kill: post hoc, one member.
 - **Exploratory readings** (post hoc; plantri 5.8, orders ≤ 18; `longtable/explore-vhphi/`). Triangle faces: 435 of 435 4-connected members of 𝒞 pass with pure fills. Free quad game: 4004 members of the form T − e, failing only on 16:1 − st. On that member, all 50 pairs survive 2146 real far sides, and the trace game passes. So the pure trace game passes on all 4004 members. An audit replay has been requested. Trace game on every chordless 4-face and 5-face member from `plantri -m4` (T of order 12–18): 2002 of 2002 pass.
+- **Tilley separability** (`docs/working/creative-intel-2026-10-05/tilley-separability.md`, §7; literature in `literature-check.md`). Bridge [hand]: the apex fan at a degree-5 vertex gives T/xy, and a Tilley Kempe sequence separating x from y gives a pure fill at x. Exploratory, post hoc, orders ≤ 18: every locked class on 17:0 and 17:1 escapes in 2–3 pure swaps, and the first swap always breaks exactly one fan chord. A fan-free statement SEP (every unfilled degree-5 state is separable for some admitting fan) holds everywhere tested except 8 states on 17:0 and 17:1, each exactly one swap from a separable state. Conjecture D1 (separable, or one swap from separable) is consistent with all data. It is not evidence.
 - **Belt potential, off the belt** [computed on the saved 24:7228 path]: killed, and the line stays stopped.
 - **Defect theorem** [hand]: every proper colouring of a 5-cycle has a singleton. This does not by itself give the fill.
 
@@ -159,7 +160,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 | Owner | Task |
 |---|---|
 | Math | The mobility/short-fill boundary reduction in Lean, then the higher-degree frontier or the global branching trap. |
-| Long Table | Line 1: the core. In order: (i) an exploratory test of apex-at-neighbour fans at 5–5 and 5–6 edges (Wernicke's pair); (ii) component counts of the move graph on small core members; (iii) a literature check (Tilley Kempe-locking; Fisk–Mohar degree). See `docs/working/creative-intel-2026-10-05/core-brainstorm.md`. Pending review: §2b of the trace page. |
+| Long Table | Line 1: the core. (i) Hand-analyse one doubly-locked state on 17:1 (vertex 5) as the smallest object a proof of D1 must handle; (ii) test D1 on `-c4m4` order 15 and rare 4-connected shapes; (iii) read Inoue et al. for a VH analogue of their flat-region argument. Pending review: §2b of the trace page. See `docs/working/creative-intel-2026-10-05/core-brainstorm.md`, `literature-check.md`, `tilley-separability.md`. |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
 | Navigator | Record the actual decisions. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |
