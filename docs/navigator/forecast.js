@@ -40,3 +40,25 @@
   poll();
   setInterval(poll, 60000);
 })();
+
+// Leaderboard chip: reads leaderboard.json (kept by the Navigator from the bounty board).
+(function () {
+  var host = document.getElementById('leaderboard');
+  if (!host) return;
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
+  fetch('leaderboard.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (b) {
+    var teams = (b.teams || []).slice().sort(function (x, y) { return y.points - x.points; });
+    var lead = teams[0];
+    var rows = teams.map(function (t, i) { return '<tr><td>' + (i + 1) + '</td><td>' + esc(t.name) + '</td><td class="lb-pts">' + t.points + '</td></tr>'; }).join('');
+    var bounties = (b.open_bounties || []).map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('');
+    host.innerHTML = '<button type="button" class="forecast-chip lb-chip" aria-expanded="false">' +
+      '<span class="forecast-label">Leader</span><span class="forecast-value">' + esc(lead.name) + ' ' + lead.points + '</span></button>' +
+      '<div class="forecast-pop" hidden><p class="forecast-q">Bounty leaderboard</p>' +
+      '<p class="forecast-by">Navigator revision ' + esc(b.revision) + ' · updated ' + esc(String(b.updated).slice(0, 16).replace('T', ' ')) + ' · points only on ledger evidence</p>' +
+      '<table class="lb-table"><thead><tr><th>#</th><th>Team</th><th>Points</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+      '<h4>Open bounties</h4><ul>' + bounties + '</ul></div>';
+    var btn = host.querySelector('button'), pop = host.querySelector('.forecast-pop');
+    btn.addEventListener('click', function (e) { e.stopPropagation(); var open = pop.hidden; pop.hidden = !open; btn.setAttribute('aria-expanded', String(open)); });
+    document.addEventListener('click', function (e) { if (!host.contains(e.target)) { pop.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  }).catch(function () { host.hidden = true; });
+})();

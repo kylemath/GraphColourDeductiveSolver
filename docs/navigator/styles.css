@@ -771,3 +771,8 @@ textarea:focus { border-color: var(--accent); }
 .forecast-q { margin: 0 0 4px; color: #e6edf3; }
 .forecast-by { margin: 0; color: #8b949e; font-size: 11px; }
 @media (max-width: 700px) { .forecast-label { display: none; } }
+.lb-chip { background: var(--green-dim); border-color: var(--green); }
+.lb-chip .forecast-label { color: var(--green); }
+.lb-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.lb-table th, .lb-table td { text-align: left; padding: 3px 6px; border-bottom: 1px solid var(--border); }
+.lb-table .lb-pts { text-align: right; font-family: var(--mono); }

@@ -49,13 +49,13 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 |---|---:|
 | longtable | 0 |
 | math | 30 |
-| audit | 30 |
+| audit | 90 |
 | studiointel | 0 |
 | studiomath | 510 |
-| studiocompute | 210 |
+| studiocompute | 240 |
 | intern-A | 0 |
 | intern-B | 0 |
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 131 (6 October, 14:58 MDT). Revision 131 paid the Theorem HP Lean bounty (200) to studiomath on the audit's J8 verdict, and a fixed 30-point requested-replay award (J9) to studiocompute; earlier awards are in the revision 125 to 130 messages.
+Totals as of Navigator revision 132 (6 October, 15:08 MDT). Revision 132 paid the audit 30 for its WP20 P1 replay (J3) and 30 for the requested re-derivation of the E2-after-AB criterion, and studiocompute 30 for running J3; earlier awards are in the revision 125 to 131 messages.
