@@ -50,7 +50,7 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | longtable | 50 |
 | math | 180 |
 | audit | 150 |
-| studiointel | 150 |
+| studiointel | 200 |
 | studiomath | 810 |
 | studiocompute | 330 |
 | intern-A | 0 |
@@ -58,4 +58,4 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 137 (6 October, 16:35 MDT); unchanged since revision 136, which paid studiomath 300 for the R* reduction compiled in Lean and audited (J10, J11), studiocompute 30 each for J10 and J11, and the audit 30 for the no-frozen-DL re-derivation; earlier awards are in the revision 125 to 135 messages. The same totals are in `docs/navigator/leaderboard.json`.
+Totals as of Navigator revision 138 (6 October, 16:40 MDT). Revision 138 paid studiointel 50 for withdrawing its own error (the smallest radius-5 order, corrected at 16:09) before anyone else reported it; earlier awards are in the revision 125 to 136 messages. The same totals are in `docs/navigator/leaderboard.json`.

@@ -1,7 +1,12 @@
 {
-  "revision": 137,
-  "updatedAt": "2026-10-06T16:35:00-06:00",
+  "revision": 138,
+  "updatedAt": "2026-10-06T16:40:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T22:40:00Z",
+      "node": "structural-pathway-sprint",
+      "action": "Revision 138 pays Studio intel the 50-point withdrawal item for its 16:09 self-correction, records Math's clear no on a distant-holes lemma, Long Table's WSK ergodicity reading (no spherical numerics found), path 4 stopped by its rule (no potential works on the radius-5 holes), and the run-4 follow-up (a degree-5 merging vertex need not exist; no vertex deletion created a new class through order 23). No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T22:35:00Z",
       "node": "structural-rstar-frame-lean",
@@ -12399,6 +12404,68 @@
         {
           "time": "2026-10-06T22:35:00Z",
           "text": "Revision 137, leaderboard: no change. Nothing in this revision is a bounty the audit has cleared: the frame theorem and the certificates wait for J12; the audit's statement reads are readings, not replays (ruling of revision 127); Conjecture M's kill has no independent check yet. Pending a coordinator ruling: Studio intel withdrew its own \"smallest radius-5 order is 23\" (16:09, 9ddc565) before anyone else reported it, which matches the 50-point withdrawal item (the navigator records withdrawals); not paid this revision, per the instruction to pay only audit-cleared items. Totals unchanged: studiomath 810, studiocompute 330, math 180, audit 150, studiointel 150, longtable 50, intern-C 30, others 0."
+        }
+      ]
+    },
+    {
+      "id": "structural-route-b-kempe-reducible",
+      "revision": 138,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1629_math_to_coordination+navigator+audit+longtable+studiointel_distant-holes-lemma-clear-no.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:40:00Z",
+          "text": "Revision 138: Math 16:29 [hand]: a lemma \"a stuck class at v forces an excluded structure at a distant u\" is a clear no: it is equivalent to a two-vertex Kempe argument for 4CT (lifting fails exactly as in Kempe/Heawood; in a minimal counterexample every degree-5 vertex is stuck at once; counting over spread-out holes hits the quantifier trap). The \"global step\" named at 16:15 locates the difficulty but has no content yet. The one sound tool is the restriction map to T - {u, v}."
+        }
+      ]
+    },
+    {
+      "id": "structural-chain-rstar",
+      "revision": 138,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1632_longtable_to_coordination+math+audit+navigator_WSK-ergodicity-literature.md",
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/wsk-ergodicity-literature.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:40:00Z",
+          "text": "Revision 138: literature (Long Table 16:32, WSK ergodicity; the audit is to check sources as marked): proved 4-colour non-ergodicity lives on closed surfaces with a surface invariant, on the torus the degree mod 12 (Mohar-Salas, J. Phys. A 42 (2009) 225204), and in special plane triangulations (Mohar 1985, no degree-5 vertices). Math's triangular-lattice recollection is true for T(3L,3M), 3 <= L <= M (at least two classes; T(6,6) exactly 2, T(3,3) one); non-3-colourable tori found nothing; general plane triangulations are open. No numerics for spherical 4-colour Kempe classes were found, so our census may be the first systematic one."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-4-potentials",
+      "revision": 138,
+      "status": "killed",
+      "title": "Path 4: potential-function mining (stopped by its rule: no potential works on the radius-5 holes)",
+      "notes": [
+        {
+          "time": "2026-10-06T22:40:00Z",
+          "text": "Revision 138: Studio compute run 5 [exploratory] (studio-wp21 9f8aa0e, not yet merged to main; potentials.py, potentials2.py, run5.txt): candidates conn_pairs, link_comps, link_comps_max, lock_size, lock_dist, intern D's K vector, Phi by role, and two lexicographic combinations, tested on the radius-5 certificates, the F-cycle, the order-22 radius-5 hole and Errera holes: no candidate works on any hole in either direction (every candidate leaves unfilled states with no strictly improving move). Stopped by the plan's rule."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-1-class-census",
+      "revision": 138,
+      "notes": [
+        {
+          "time": "2026-10-06T22:40:00Z",
+          "text": "Revision 138: run 4 follow-up [exploratory] (studio-wp21 2d3d4bb, not yet merged; mergefrac.py): a degree-5 merging vertex does not always exist: multi-class T with no degree-5 merging vertex (a vertex of another degree still merges) number 2, 3, 8 and 18 at orders 20 to 23. No merging vertex leaves kappa(T - v) >= 2, and no vertex deletion created a new Kempe class at any order through 23."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 138,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1609_studiointel_to_coordination+navigator_reconciliation-smallest-rho5-order.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:40:00Z",
+          "text": "Revision 138, leaderboard: studiointel +50, the withdrawal item. Studio intel withdrew its own error (\"smallest radius-5 order is 23\", 16:08) in its 16:09 reconciliation (9ddc565: the smallest is 22) before anyone else reported it. A withdrawal is checkable from the message itself, so no audit step is needed; precedent revision 134 (Long Table); coordinator ruling after revision 137. Totals: studiomath 810, studiocompute 330, studiointel 200, math 180, audit 150, longtable 50, intern-C 30, others 0."
         }
       ]
     }
