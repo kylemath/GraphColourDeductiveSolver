@@ -1,0 +1,14 @@
+E2 records: 666 ; in the four radius-5 graphs: see rows
+500 ('deg(w0,w1,w3)', (5, 5, 6), 'all>=6', False, 'locks after AB', (False, False))
+80 ('deg(w0,w1,w3)', (5, 5, 5), 'all>=6', False, 'locks after AB', (False, False))
+24 ('deg(w0,w1,w3)', (5, 6, 5), 'all>=6', False, 'locks after AB', (True, False))
+24 ('deg(w0,w1,w3)', (6, 5, 5), 'all>=6', False, 'locks after AB', (False, True))
+10 ('deg(w0,w1,w3)', (8, 6, 6), 'all>=6', True, 'locks after AB', (True, True))
+10 ('deg(w0,w1,w3)', (6, 8, 6), 'all>=6', True, 'locks after AB', (True, True))
+4 ('deg(w0,w1,w3)', (8, 6, 6), 'all>=6', True, 'locks after AB', (False, True))
+4 ('deg(w0,w1,w3)', (6, 8, 6), 'all>=6', True, 'locks after AB', (True, False))
+3 ('deg(w0,w1,w3)', (5, 8, 7), 'all>=6', False, 'locks after AB', (True, False))
+3 ('deg(w0,w1,w3)', (8, 5, 7), 'all>=6', False, 'locks after AB', (False, True))
+2 ('deg(w0,w1,w3)', (8, 6, 6), 'all>=6', True, 'locks after AB', (True, False))
+2 ('deg(w0,w1,w3)', (6, 8, 6), 'all>=6', True, 'locks after AB', (False, True))
+examples with all three >= 6: [{"graph": "cert-8a23ee3ec7b2bb33", "hole": 6, "sense": 1, "X": [2, 0, 1, 18, 10], "W": [5, 8, 7, 24, 9], "deg_w0_w1_w3": [8, 6, 6], "locks_after_AB": [true, true]}, {"graph": "cert-8a23ee3ec7b2bb33", "hole": 6, "sense": -1, "X": [1, 0, 2, 10, 18], "W": [8, 5, 9, 24, 7], "deg_w0_w1_w3": [6, 8, 6], "locks_after_AB": [true, true]}, {"graph": "cert-8a23ee3ec7b2bb33", "hole": 6, "sense": 1, "X": [2, 0, 1, 18, 10], "W": [5, 8, 7, 24, 9], "deg_w0_w1_w3": [8, 6, 6], "locks_after_AB": [true, true]}]
