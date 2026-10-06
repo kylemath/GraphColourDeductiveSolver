@@ -5,6 +5,45 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Finding from reading the library [hand, from source]
 `SphericalMap.edge_card_bound` (PlaneMap/SphericalDegree.lean) gives only `E + 1 ≤ V_support + F`. For a triangulation (3F = 2E) this yields E ≤ 3V − 3, i.e. Σ(deg−6) ≤ −6. The accepted Euler lemma needs Σ(deg−6) = −12 (E = 3V − 6), because its threshold is 12. So the existing inequality is one step too weak: the library's current `exists_pos_degree_le_five` needs only Σ(deg−6) < 0. We need the full Euler identity V − E + F = 2 for a connected triangulation.
 
+## Design 1518 MDT: one D-reducibility interface (the diamond and 2.122 are instances)
+
+**Done:** F1 + frame + F4 (`MinimalFrame.lean`, commit 3db558c).
+
+**Configuration data, finite and decidable.** `Config` consists of:
+- ring size k and interior size m;
+- an interior adjacency table `Fin m → Fin m → Bool`;
+- a ring–interior adjacency table `Fin k → Fin m → Bool`;
+- the ring order r_0 … r_(k−1) (a cycle).
+
+The diamond has k = 6, m = 4. 2.122 has k = 7.
+
+**Occurrence in T** (`Occurs T K ρ ι`):
+- ρ : Fin k → Fin n and ι : Fin m → Fin n are jointly injective;
+- consecutive ring vertices are adjacent;
+- interior adjacencies equal the tables;
+- every T-neighbour of an interior vertex is a ring or interior vertex, so the degrees are the table degrees;
+- an orientation condition: the ring is the boundary walk of the disc that contains the interior.
+
+The exact wording is to be agreed with the audit.
+
+**Certificate: Birkhoff's D-reducibility, as a checked Boolean.**
+- E₀ is the set of proper ring colourings κ : Fin k → Fin 4 that extend to the interior (a finite search).
+- κ ∈ E_(t+1) if κ ∈ E_t, or for some pair partition π = {a,b}|{c,d} the following holds. For every **consistent chain structure** S, meaning partitions of the {a,b}- and {c,d}-coloured ring vertices that are jointly non-crossing and contain the ring edges, some union of S's {a,b}-classes (or {c,d}-classes) when flipped gives κ′ ∈ E_t.
+- D-reducible means every proper ring colouring lies in E_N.
+- This is the classical D (Birkhoff, Heesch). A `Bool` checker `dred K`, proved sound once and run by `decide`, makes each configuration a one-line instance: `theorem diamond_dred : dred diamond = true := by decide`. C-reducible configurations, with a reducer, would be a later extension of the same interface.
+
+**Soundness** (`colorable_of_occurs`): Occurs T K ρ ι, `dred K`, and G := T − interior colourable together imply T colourable. Plug-in to the frame: G has smaller support, so the induction hypothesis gives the colouring of G. The proof needs four pieces:
+- **G0 (ring face):** after deleting the interior with `subgraph_tracked`, the ring is a face boundary of G. This is the k-cycle version of D3's LB, and uses the same potential argument.
+- **G1 (face Jordan):** disjoint walks in G joining alternating vertices of one face boundary meet. Proof: insert a star vertex in the face, using a freed interior label, a bridge and then chords via `split`, and apply the library's `alternating_walks_intersect` at the star. **F2 needs the same lemma for a 4-face**, so it is built first.
+- **C1 (chain structure is consistent):** the actual Kempe components of a colouring of G, restricted to the ring, form a jointly non-crossing structure, by G1.
+- **C2 (flip realisation):** flipping a union of ring classes is realised by swapping the corresponding whole components of G, with `KempeStep`s and `properOff`-style lemmas.
+
+**Order.** G1, then G0, then C1/C2 with the checker and its soundness, then the instances: the diamond, then 2.122. F2 reuses G1 and the 4-cycle version of G0, plus the Birkhoff case analysis.
+
+**Open with the audit and Math.**
+- The occurrence definition, especially the orientation and whether ring chords are allowed.
+- Whether 2.122 is D-reducible or only C-reducible. If only C-reducible, the reducer extension is needed.
+
 ## Plan 1513 MDT: the classical minimal-counterexample frame (coordinator's redirect)
 
 **Goal.** `four_color_of_frame_Rstar`: R\* assumed only for connected triangulations with
