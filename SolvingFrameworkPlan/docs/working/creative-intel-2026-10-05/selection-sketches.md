@@ -54,3 +54,7 @@ The script is `sel_selection.py` (stdlib; reuses `pb_lib`, Math's `graphs.py`, a
   - J2 as an alternative 4CT-sufficient target, reduced by Proposition J to "no double-DL class";
   - X4 as a data-level guide;
   - S(n,r) as a new sharp family for the adversary.
+
+## Caveat added 6 Oct, evening (the coordinator's census, Studio, orders 12–22)
+
+About 97% of degree-5 hole instances have a single Kempe class of T − v. There, R*_v only re-checks colourability. So radius data from single-class holes, including most of the figures above (T4 − v is a single class of 1,632 colourings), **is not evidence for R***. Only multi-class instances count. Selection statements should be judged on multi-class holes.
