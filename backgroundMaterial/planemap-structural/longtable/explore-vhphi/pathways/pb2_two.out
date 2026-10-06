@@ -1,0 +1,22 @@
+== T4: Wernicke edges 5-5: 18, 5-6: 24
+  5-5: two-hole distance hist over all (edge,state): {0: 380, 1: 564, 2: 412, 3: 128, 4: 32}; best-first-fill: {'v(deg5) first': 306, 'u(deg5) first': 1002, 'neither fillable at start': 168, 'swap before fill': 40}
+  5-6: two-hole distance hist over all (edge,state): {0: 520, 1: 1154, 2: 1120, 3: 260, 4: 12}; best-first-fill: {'u(deg5) first': 1988, 'swap before fill': 80, 'v(deg6) first': 566, 'neither fillable at start': 432}
+  deg-5 one-hole states: (R, least d2 over the hole's Wernicke partners) -> count: {(0, 0): 264, (1, 0): 128, (1, 1): 160, (2, 1): 110, (2, 2): 52, (3, 2): 42, (3, 3): 4, (4, 2): 8, (4, 3): 18}
+  ('5-5', 'hole deg5'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 792, (1, 0): 100, (1, 1): 764, (2, 1): 136, (2, 2): 348, (3, 2): 44, (3, 3): 100, (4, 2): 4, (4, 3): 36, (4, 4): 44}
+  ('5-6', 'hole deg5'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 528, (1, 0): 36, (1, 1): 540, (2, 1): 28, (2, 2): 298, (3, 2): 36, (3, 3): 50, (4, 2): 8, (4, 3): 34, (4, 4): 4}
+  ('5-6', 'hole deg6'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 520, (1, 0): 100, (1, 1): 814, (2, 1): 198, (2, 2): 544, (3, 2): 112, (3, 3): 132, (4, 3): 28, (4, 4): 8, (5, 3): 4, (5, 4): 4}
+== order14: Wernicke edges 5-5: 24, 5-6: 12
+  5-5: two-hole distance hist over all (edge,state): {0: 456, 1: 504, 2: 48}; best-first-fill: {'u(deg5) first': 804, 'v(deg5) first': 168, 'neither fillable at start': 36}
+  5-6: two-hole distance hist over all (edge,state): {0: 216, 1: 312, 2: 120}; best-first-fill: {'u(deg5) first': 504, 'v(deg6) first': 120, 'neither fillable at start': 24}
+  deg-5 one-hole states: (R, least d2 over the hole's Wernicke partners) -> count: {(0, 0): 240, (1, 0): 120, (1, 1): 84, (2, 1): 36}
+  ('5-5', 'hole deg5'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 960, (1, 0): 120, (1, 1): 696, (2, 1): 120, (2, 2): 24}
+  ('5-6', 'hole deg5'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 240, (1, 0): 24, (1, 1): 180, (2, 2): 36}
+  ('5-6', 'hole deg6'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 216, (1, 0): 24, (1, 1): 192, (2, 1): 60, (2, 2): 108}
+== A_3: Wernicke edges 5-5: 20, 5-6: 20
+  5-5: two-hole distance hist over all (edge,state): {0: 780, 1: 660, 2: 500}; best-first-fill: {'u(deg5) first': 1420, 'neither fillable at start': 120, 'v(deg5) first': 360, 'swap before fill': 40}
+  5-6: two-hole distance hist over all (edge,state): {0: 760, 1: 1160, 2: 820, 3: 40}; best-first-fill: {'u(deg5) first': 2060, 'v(deg6) first': 480, 'neither fillable at start': 240}
+  deg-5 one-hole states: (R, least d2 over the hole's Wernicke partners) -> count: {(0, 0): 480, (1, 0): 180, (1, 1): 140, (2, 1): 100, (2, 2): 80, (3, 2): 20}
+  ('5-5', 'hole deg5'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 1600, (1, 0): 240, (1, 1): 840, (2, 1): 160, (2, 2): 460, (3, 2): 100}
+  ('5-6', 'hole deg5'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 800, (1, 0): 40, (1, 1): 480, (2, 1): 20, (2, 2): 260}
+  ('5-6', 'hole deg6'): (one-hole radius R, two-hole d2 after uncolouring the other end) -> count: {(0, 0): 760, (1, 0): 160, (1, 1): 880, (2, 1): 220, (2, 2): 420, (3, 2): 120, (3, 3): 40}
+cpu 1.9

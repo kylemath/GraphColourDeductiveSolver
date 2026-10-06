@@ -30,3 +30,53 @@ No colouring walks on the order-42 or order-14 graphs beyond structure (order 14
 
 ## Verdict: MUTATED (the walk as stated is a fixed path and cannot cycle; what is dead is the target)
 The walk is sound where D5 meets a good vertex, but that is a graph condition that fails on T4, order 14 and isolated-pentagon graphs. Next variants: (a) P-B': extend mobility to a degree-6 hole under a local hypothesis (a singleton neighbour colour) so the walk can cross degree-6 vertices; (b) P-B'': enlarge the good class to mixed link types (e.g. five-ring with one or two degree-6 neighbours) proved by a Theorem-H style hand argument, with T4 holes as the test (all have max radius 4, so the bound for such classes is at least 4 on these graphs); (c) fold into P-A: the discharging must produce a vertex in a class that is non-empty in T4.
+
+## Update (6 Oct, afternoon)
+Long Table research subagent, `date` = Tue 6 Oct 2026 12:35 MDT (machine clock). New scripts and outputs only: `explore-vhphi/pathways/pb2_lib.py`, `pb2_mob6.py`, `pb2_walk6.py`, `pb2_two.py`, `pb2_belt.py`, each with a `.out` file. Own code, stdlib, one process, about 53 CPU-seconds in total. Every number is [exploratory, these graphs only]: exact over all canonical states on T4 (order 17), order 14 (= belt G_6) and A_3, and on the belts G_5..G_14 (one belt hole and the pole). The pentakis dodecahedron (order 32; all 12 degree-5 holes are (6^5)) is SAMPLED only: up to 150 distinct states per hole from a random Kempe walk.
+
+**Definition.** k-mobility at a hole h of degree d: for every state and every chosen neighbour y, at most k Kempe swaps in G-h make y's colour a singleton on N(h). The hole then moves by giving h that colour and uncolouring y. A fill met on the way also counts.
+
+### Line A: degree-6 mobility. Verdict: it works almost always, but there is still no target, and on T4 no target exists at all
+- [hand] A move with 0 swaps works exactly when y's colour is already a singleton on the link. Every failure needs y's colour at least twice on the 6-cycle link.
+- **T4, holes of degree 6.** There are 2412 unfilled (state, neighbour) pairs. With at most 1 swap: 2086 succeed (842 bare moves, 514 after one swap, 730 one-swap fills). With 2 swaps: 302 more. **24 fail even with 2 swaps (1.0%).** So 1-mobility and 2-mobility both fail at degree 6.
+  - The 24 failures sit at holes 2, 8, 9, 10 and 11, in states of pure radius 3, 4 or 5.
+  - Their link patterns (y first, a = y's colour): abacdc, abacbd, abacad, ababcd, abcacd. So y's colour occurs 2 or 3 times on the link.
+  - Order 14, A_3 and the pentakis sample have **0** failures with at most 2 swaps.
+  - At degree-5 holes (T4, A_3, order 14) every pair succeeds with at most 1 swap, consistent with compiled mobility.
+- **Radius by hole on T4.** The maximum pure radius per hole is 4 at all 12 degree-5 holes. At the 5 degree-6 holes it is **3, 3, 4, 4, 5** (holes 2 and 11, 10 and 8, 9). **No hole of T4, of either degree, has maximum radius at most 2.**
+- **Walk with degree-6 moves allowed.** One hole-move is at most 1 swap followed by a slide to any neighbour. Start from each of T4's 26 radius-4 states.
+  - With degree-5 moves only: 12 states reach radius <= 2 in 1 hole-move and 14 need 2.
+  - With degree-5 and degree-6 moves: 24 states need 1 hole-move and 2 need 2. The radius-greedy walk never cycles.
+  - But one hole-move costs up to 2 elementary moves, so 1 hole-move plus radius 2 is still at most 4. No elementary gain. The earlier finding stands: mixed-game distance differs from pure radius at only 8 T4 states, and there by 1.
+- **Decreasing quantity: none found apart from R itself (circular).**
+- **Precise obstruction to any colouring-independent target on T4.** Every hole of T4 has maximum radius >= 3. Any target class that meets T4 therefore carries a bound of at least 3. A walk to it costs >= 1 move, so it never beats the direct radius of 4. Degree-6 holes are no refuge: the worst hole of T4 is the degree-6 hole 9, at radius 5.
+
+### Line B: Wernicke two-hole game. Verdict: the choice helps every radius-4 state, but the worst case is still 4
+- **Game.** Both ends of a 5-5 or 5-6 edge are uncoloured. Moves are Kempe swaps in G-{u,v}. Filling either end with a free colour is free, after which the exact one-hole radius of the other end is paid. d2 = least number of swaps to a full colouring.
+- **Maximum d2.** T4: **4** (44 two-hole states have d2 = 4: 32 at 5-5 edges and 12 at 5-6 edges). Order 14: 2. A_3: 3. So the worst case equals the one-hole worst case on all three graphs.
+- **Uncolouring a partner of a one-hole state** (an added move: the vacancy game has no uncolour move). Refilling the partner with its old colour is one option, so d2 <= R always.
+  - On T4, each of the 26 radius-4 states improves when the best Wernicke partner is uncoloured: **8 reach d2 = 2 and 18 reach d2 = 3. None stays at 4.**
+  - Over all degree-5 states the gain is at most 2.
+  - Which end to fill first: filling the degree-5 end first is optimal in most states (T4: 2990 of 4582 two-hole states). Swaps before any fill are needed in 120 + 600 states, counting those where neither end can be filled at the start.
+- **Reading.**
+  - [exploratory] On T4, the d2 = 4 two-hole states are exactly the uncolourings of one-hole states of radius >= 4 at an unlucky partner. They come from the pairs (R, d2) = (4, 4) and (5, 4); no one-hole state of radius <= 3 maps to d2 = 4.
+  - So whether the two-hole game helps depends on choosing the partner from the colouring. That choice is not colouring-independent, the same defect as R-greedy.
+  - [hand] The gain comes from the extra uncolour move, which changes the game. It is not a target for the vacancy game itself.
+
+### Coordinator input: the audit's 12:40 lemma class (a degree-5 hole with at most one neighbour of degree >= 12)
+- [hand] VH∃ is existential, so an unavoidable class needs no walk. On every graph here with maximum degree < 12, every degree-5 hole is in the class.
+- [exploratory] Maximum radius at class holes: T4 **4** (all 12), order 14: 2, A_3: 2 or 3.
+- **Belt G_n**, where the one free neighbour is the pole, of degree n. The belt holes are all in the class.
+  - Belt-hole maximum pure radius: 1 (n = 5, 7) and **2** (n = 6, 8, 9, 10, 11, 12, 13, 14).
+  - The pole hole (degree n, not in the class): maximum radius 1, 2, 1, 3, 3, 3, 3 for n = 5..11, and 4 for n = 12, 13, 14.
+  - So the high-degree neighbour is not what makes holes hard here. The class's hard case is bounded-degree T4-type structure, and its bound must be >= 4. This confirms the coordinator's reading.
+
+### Proposed target, or the obstruction
+**No colouring-independent target class can beat the direct bound on T4. A target class for P-B needs a fill bound of at least 4, which is the open Conjecture R on those classes.** P-B adds nothing beyond "some degree-5 hole of the unavoidable class has bounded radius". It reduces to P-A, with the class from the audit's 12:40 lemma and a bound of at least 4. Recommend closing P-B as a separate pathway.
+
+**Not checked.**
+- No hand proof of any of these counts; no hand check of the traces.
+- No degree-6 graphs beyond T4, A_3 and the pentakis sample. No order-22/23 (6^5) graphs: plantri and gen_tri are not on this machine. Pentakis was not enumerated in full.
+- No two-hole game on the belts.
+- Belt pole data are exact, but only one belt hole was computed per n; the other belt holes were assumed equivalent by symmetry.
+- No search for 1-mobility at degree 6 under an extra local hypothesis that would exclude the 24 failures.

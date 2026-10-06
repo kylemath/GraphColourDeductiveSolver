@@ -1,0 +1,13 @@
+== T4: per-hole max pure radius {0: 4, 1: 4, 2: 3, 5: 4, 3: 4, 4: 4, 6: 4, 10: 4, 7: 4, 11: 3, 8: 4, 9: 5, 15: 4, 12: 4, 13: 4, 14: 4, 16: 4}
+  deg-6 move failures (>2 swaps): (hole, state radius, pattern, #y-colour in link) -> count: {(2, 3, 'abacdc', 2): 4, (2, 3, 'abacbd', 2): 2, (10, 3, 'abacad', 3): 2, (10, 4, 'ababcd', 2): 2, (11, 3, 'abacdc', 2): 4, (11, 3, 'abacbd', 2): 2, (8, 3, 'abacad', 3): 2, (8, 4, 'ababcd', 2): 2, (9, 4, 'abacad', 3): 2, (9, 5, 'abcacd', 2): 2}
+  deg5-only: 26 states of radius 4 at deg-5 holes; least #hole-moves to R<=2: {1: 12, 2: 14}; R-greedy outcome: {'ok1': 12, 'ok2': 14}
+  deg5+6: 26 states of radius 4 at deg-5 holes; least #hole-moves to R<=2: {1: 24, 2: 2}; R-greedy outcome: {'ok1': 24, 'ok2': 2}
+== order14: per-hole max pure radius {0: 2, 1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2, 7: 2, 8: 2, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2}
+  deg-6 move failures (>2 swaps): (hole, state radius, pattern, #y-colour in link) -> count: {}
+  deg5-only: 36 states of radius 2 at deg-5 holes; least #hole-moves to R<=2: {0: 36}; R-greedy outcome: {'ok0': 36}
+  deg5+6: 36 states of radius 2 at deg-5 holes; least #hole-moves to R<=2: {0: 36}; R-greedy outcome: {'ok0': 36}
+== A_3: per-hole max pure radius {0: 2, 1: 2, 2: 2, 3: 2, 4: 2, 5: 3, 6: 3, 7: 3, 8: 3, 9: 3, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 3, 16: 3}
+  deg-6 move failures (>2 swaps): (hole, state radius, pattern, #y-colour in link) -> count: {}
+  deg5-only: 20 states of radius 3 at deg-5 holes; least #hole-moves to R<=2: {1: 20}; R-greedy outcome: {'ok1': 20}
+  deg5+6: 20 states of radius 3 at deg-5 holes; least #hole-moves to R<=2: {1: 20}; R-greedy outcome: {'ok1': 20}
+cpu 1.8

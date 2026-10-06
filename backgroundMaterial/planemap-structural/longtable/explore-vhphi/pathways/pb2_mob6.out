@@ -1,0 +1,79 @@
+== T4: n=17, degree counts {5: 12, 6: 5}
+  holes of degree 5: 12; max pure radius per hole [(4, 12)] (radius:#holes)
+    neighbour degree 5: 1576 (state,neighbour) pairs; cost hist {'fill1': 332, 'move0': 940, 'move1': 304}
+    neighbour degree 6: 1034 (state,neighbour) pairs; cost hist {'fill1': 244, 'move0': 626, 'move1': 164}
+  holes of degree 6: 5; max pure radius per hole [(3, 2), (4, 2), (5, 1)] (radius:#holes)
+    neighbour degree 5: 1944 (state,neighbour) pairs; cost hist {'fill1': 598, 'fill2': 144, 'move0': 690, 'move1': 434, 'move2': 64, 'none<=2': 14}
+    neighbour degree 6: 468 (state,neighbour) pairs; cost hist {'fill1': 132, 'fill2': 58, 'move0': 152, 'move1': 80, 'move2': 36, 'none<=2': 10}
+    deg-6 link patterns (y first; a=y's colour), outcome counts:
+      ababcd: {'ok2': 44, 'ok<=1': 160, 'none<=2': 4}
+      abacad: {'ok2': 42, 'ok<=1': 66, 'none<=2': 6}
+      abacbd: {'ok<=1': 184, 'ok2': 64, 'none<=2': 4}
+      abacdb: {'ok<=1': 208}
+      abacdc: {'ok<=1': 180, 'ok2': 52, 'none<=2': 8}
+      abcabd: {'ok<=1': 220, 'ok2': 76}
+      abcacd: {'ok2': 24, 'ok<=1': 100, 'none<=2': 2}
+      abcadb: {'ok<=1': 126}
+      abcbcd: {'ok<=1': 208}
+      abcbdb: {'ok<=1': 114}
+      abcbdc: {'ok<=1': 252}
+      abcdbc: {'ok<=1': 148}
+      abcdcb: {'ok<=1': 120}
+== order14: n=14, degree counts {5: 12, 6: 2}
+  holes of degree 5: 12; max pure radius per hole [(2, 12)] (radius:#holes)
+    neighbour degree 5: 960 (state,neighbour) pairs; cost hist {'fill1': 312, 'move0': 576, 'move1': 72}
+    neighbour degree 6: 240 (state,neighbour) pairs; cost hist {'fill1': 96, 'move0': 144}
+  holes of degree 6: 2; max pure radius per hole [(2, 2)] (radius:#holes)
+    neighbour degree 5: 384 (state,neighbour) pairs; cost hist {'fill1': 132, 'fill2': 36, 'move0': 144, 'move1': 72}
+    deg-6 link patterns (y first; a=y's colour), outcome counts:
+      abacad: {'ok<=1': 36, 'ok2': 12}
+      abacbd: {'ok<=1': 48}
+      abcabd: {'ok<=1': 96}
+      abcacd: {'ok2': 24}
+      abcadb: {'ok<=1': 24}
+      abcbdb: {'ok<=1': 48}
+      abcbdc: {'ok<=1': 48}
+      abcdbc: {'ok<=1': 48}
+== A_3: n=17, degree counts {5: 12, 6: 5}
+  holes of degree 5: 12; max pure radius per hole [(2, 10), (3, 2)] (radius:#holes)
+    neighbour degree 5: 1800 (state,neighbour) pairs; cost hist {'fill1': 440, 'move0': 1040, 'move1': 320}
+    neighbour degree 6: 800 (state,neighbour) pairs; cost hist {'fill1': 200, 'move0': 520, 'move1': 80}
+  holes of degree 6: 5; max pure radius per hole [(3, 5)] (radius:#holes)
+    neighbour degree 5: 1840 (state,neighbour) pairs; cost hist {'fill1': 700, 'fill2': 100, 'move0': 640, 'move1': 340, 'move2': 60}
+    neighbour degree 6: 920 (state,neighbour) pairs; cost hist {'fill1': 310, 'fill2': 140, 'move0': 310, 'move1': 140, 'move2': 20}
+    deg-6 link patterns (y first; a=y's colour), outcome counts:
+      ababcd: {'ok2': 80, 'ok<=1': 240}
+      abacad: {'ok<=1': 90}
+      abacbd: {'ok<=1': 160, 'ok2': 80}
+      abacdb: {'ok<=1': 320}
+      abacdc: {'ok<=1': 360, 'ok2': 80}
+      abcabd: {'ok<=1': 80, 'ok2': 80}
+      abcacd: {'ok<=1': 120}
+      abcadb: {'ok<=1': 120}
+      abcbcd: {'ok<=1': 320}
+      abcbdb: {'ok<=1': 90}
+      abcbdc: {'ok<=1': 240}
+      abcdbc: {'ok<=1': 80}
+      abcdcb: {'ok<=1': 220}
+cpu so far 1.4
+== pentakis (32), SAMPLED <=150 distinct states per hole by random Kempe walk: n=32, degree counts {5: 12, 6: 20}
+  holes of degree 5: 12
+    neighbour degree 6: 2335 (state,neighbour) pairs; cost hist {'fill1': 866, 'move0': 1401, 'move1': 68}
+  holes of degree 6: 20
+    neighbour degree 5: 6300 (state,neighbour) pairs; cost hist {'fill1': 3240, 'fill2': 789, 'move0': 1386, 'move1': 885}
+    neighbour degree 6: 6300 (state,neighbour) pairs; cost hist {'fill1': 2342, 'fill2': 95, 'move0': 3192, 'move1': 671}
+    deg-6 link patterns (y first; a=y's colour), outcome counts:
+      ababcd: {'ok<=1': 956, 'ok2': 10}
+      abacad: {'ok<=1': 1002, 'ok2': 132}
+      abacbd: {'ok2': 373, 'ok<=1': 933}
+      abacdb: {'ok<=1': 966}
+      abacdc: {'ok<=1': 516, 'ok2': 8}
+      abcabd: {'ok<=1': 1614, 'ok2': 206}
+      abcacd: {'ok<=1': 498, 'ok2': 155}
+      abcadb: {'ok<=1': 653}
+      abcbcd: {'ok<=1': 966}
+      abcbdb: {'ok<=1': 1134}
+      abcbdc: {'ok<=1': 1306}
+      abcdbc: {'ok<=1': 910}
+      abcdcb: {'ok<=1': 262}
+cpu 5.6
