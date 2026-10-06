@@ -57,3 +57,15 @@ Orders 17–18 of `-m5`, and order 15 of `-c4m4`: see §5.
 **Reading.** Per-pair separability is false in general and rare. Every graph tested still has separable pairs. That is the known U∃ evidence, now in Tilley's vocabulary.
 
 **What this means for the brainstorm.** The diamond-lemma test did not isolate the Birkhoff diamond. The loose "diamond-near" flag is set on most pairs: $680$ of $780$ at order $18$. A sharper test would match Tilley's exact $K_{xy}$ (the diamond with $x,y$ as its specified endpoints), which needs his figure.
+
+## 6. Structure of the locks on $17{:}0$ and $17{:}1$ (18:10, exploratory, post hoc)
+
+- **No radius-1 degree signature separates locked pairs from separable ones.** The signature is (degree of $y$, number of degree-6 neighbours of $x$, degrees of the two chord ends). Every signature that occurs locked also occurs separable. The locks are not determined by local degrees, so a Wernicke-style lemma must use information beyond radius $1$.
+- **Every degree-5 vertex keeps a fully separable fan.**
+  - $17{:}0$: vertices $2,8,9,14,15,16$ have all fans separable, vertices $0,1,4,6,11,12$ are mixed, and none has all fans locked.
+  - $17{:}1$: vertices $7,13$ have all fans separable, the other ten are mixed, and none has all fans locked.
+  - At every other `-m5` order $\le18$ there are no locks at all.
+
+> **TS$_v$ (post hoc, open).** In a minimum-degree-5 triangulation, every degree-5 vertex $x$ has a neighbour $y$ with legal apex fan such that no Kempe class of $T/xy$ is locked in $T-xy$.
+
+TS$_v$ sits between TS (refuted) and TS∃ (open, equivalent on the data to U∃). It implies that every degree-5 vertex carries a pure-good pair. Tilley's theorem puts every edge of a minimum counterexample under a whole-edge lock. TS$_v$ says that, class by class, every degree-5 vertex has an incident edge that escapes. It was formulated after the data, so a fair test needs a declaration and fresh orders.
