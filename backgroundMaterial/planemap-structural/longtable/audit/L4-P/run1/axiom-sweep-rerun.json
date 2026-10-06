@@ -1,0 +1,10 @@
+{
+  "why": "run1/manifest.json records axiom_sweep_exit=1. That exit came from the sweep file that audit_l4p.py generated in-run, which had Lean syntax errors (a match/else layout error and an untyped mutable counter), so the sweep never evaluated. The 'sorry' text in the original output was Lean refusing to #eval an ill-formed expression, not a finding about Math's modules. The rebuild itself (116/116 exit 0) is unaffected. The sweep file was then corrected (run1/AxiomSweep.lean) and run against the same rebuilt overlay; it exited 0 at about 08:30 and again at the time below, with identical output.",
+  "command": "lake env lean run1/AxiomSweep.lean with LEAN_PATH's .lake/build/lib/lean replaced by the run1 overlay (custom oleans hidden, rebuilt from source)",
+  "exit": 0,
+  "output": "modules found: 9 of 9; constants checked: 123; nonstandard: 0; []",
+  "AxiomSweep.lean_sha256": "4008d85ff42c0a4122b1e00a55188f51a3da8cc8ec5d825002ea5e53570b924d",
+  "axiom-sweep-output.txt_sha256": "38dccdfdc17630d14f7c85dc247316a996080c5db97d89def79554b01bd1b35a",
+  "reconfirmed_at": "2026-10-06 08:37 MDT",
+  "manifest_json_left_unchanged": "kept as the script wrote it, as the record of the in-run failure"
+}

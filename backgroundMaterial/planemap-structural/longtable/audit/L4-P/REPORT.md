@@ -57,6 +57,10 @@ The audit read the definitions and statements; it did not re-derive the proofs. 
 - Upstream Mathlib `.olean` files were reused, not rebuilt.
 - No `lake build` of the whole repository.
 - The audit checks compilation, axioms, hashes and statement shape. It does not check that the hand text is optimal.
+- **The axiom-sweep exit code in `run1/manifest.json` is 1, and that is an artefact of the audit's own tooling, not a finding.**
+  - The sweep file that `audit_l4p.py` generated during the run was ill-formed Lean, so it never evaluated. Its "depends on 'sorry'" text was Lean refusing to `#eval` a broken expression.
+  - The corrected `run1/AxiomSweep.lean` was run against the same rebuilt overlay. It exits 0 with the result stated above, twice, with identical output.
+  - This is recorded in `run1/axiom-sweep-rerun.json`. The manifest is left as the script wrote it, and the generator in `audit_l4p.py` is fixed.
 - One false start is recorded here for completeness. The first attempt hid upstream `Coloring/*` build files by directory, and failed loudly on `Coloring.Kempe` (missing `Coloring.Vertex`). That run was discarded; `run1/` is the corrected run.
 
 ## Files

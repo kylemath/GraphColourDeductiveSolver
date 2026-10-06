@@ -63,15 +63,16 @@ for i, m in enumerate(order, 1):
 # Axiom sweep over every non-internal constant declared in the new source modules.
 ax = out/'AxiomSweep.lean'
 srcnew = [m for m in new if not m.startswith('MathlibTest')]
-ax.write_text('import ' + '\nimport '.join(srcnew) + '\nopen Lean Elab Command in\n#eval show CommandElabM Unit from do\n'
-  '  let env ← getEnv\n  let mods : List Name := [' + ', '.join('`' + m for m in srcnew) + ']\n'
-  '  let idxs := mods.filterMap env.getModuleIdx?\n  let mut n := 0\n  let mut bad := #[]\n'
-  '  for (c, _) in env.constants.toList do\n'
-  '    match env.getModuleIdxFor? c with\n    | some i => if idxs.contains i && !c.isInternal then\n'
-  '        n := n + 1\n        let axs ← liftCoreM (collectAxioms c)\n'
-  '        for a in axs do\n          if a != ``propext && a != ``Classical.choice && a != ``Quot.sound then bad := bad.push (c, a)\n'
-  '      else pure ()\n    | none => pure ()\n'
-  '  logInfo m!"constants checked: {n}; nonstandard: {bad.size}; {bad.toList.take 20}"\n')
+ax.write_text(''.join('import ' + m + '\n' for m in srcnew) + 'open Lean Elab Command\n'
+  'def auditMods : List Name := [' + ', '.join('`' + m for m in srcnew) + ']\n'
+  '#eval show CommandElabM Unit from do\n  let env ← getEnv\n  let idxs := auditMods.filterMap env.getModuleIdx?\n'
+  '  let mut n : Nat := 0\n  let mut bad : Array (Name × Name) := #[]\n'
+  '  for (c, _) in env.constants.toList do\n    if let some i := env.getModuleIdxFor? c then\n'
+  '      if idxs.contains i && !c.isInternal then\n        n := n + 1\n'
+  '        let axs ← liftCoreM (collectAxioms c)\n        for a in axs do\n'
+  '          if a != ``propext && a != ``Classical.choice && a != ``Quot.sound then\n            bad := bad.push (c, a)\n'
+  '  logInfo m!"modules found: {idxs.length} of {auditMods.length}; constants checked: {n}; nonstandard: {bad.size}; {bad.toList.take 20}"\n')
+# Fixed after run1: the first version of this generator emitted ill-formed Lean (see run1/axiom-sweep-rerun.json).
 if not fails:
     r = subprocess.run(['lean', str(ax)], cwd=repo, capture_output=True, text=True)
     (out/'axiom-sweep-output.txt').write_text(r.stdout + r.stderr); meta['axiom_sweep_exit'] = r.returncode
