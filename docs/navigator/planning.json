@@ -1,7 +1,12 @@
 {
-  "revision": 118,
-  "updatedAt": "2026-10-06T12:34:00-06:00",
+  "revision": 119,
+  "updatedAt": "2026-10-06T12:44:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T18:50:00Z",
+      "node": "structural-pathway-sprint",
+      "action": "Revision 119 records: the reduction from Lemma R* (some clean vertex off the protected face) to VH-exists, reviewed correct by a Math worker with L3 re-derived by Math, held at exploring until Math re-derives the L5 repair or the audit's read finds no gap; the Euler lemma (at least 12 degree-5 vertices with at most one neighbour of degree at least 12) proved by hand, written by the audit and accepted by Math's own review; the audit's exact replay of the (6^5) radius-3 kill; the audit's acceptance conditions for a fill lemma, which is at least as hard as VH-exists; Math's vacancy D-reducibility proposal; P-B closed into P-A; the Tilley locking route killed as a restatement; P-D's lock criterion (hand, pending Math) and the kill of Variant X; P-F added on the user's approval with unverified literature; Math's copyright header edit and the L4 and Theorem P reconciliation. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T18:40:00Z",
       "node": "dissemination-vhe-paper",
@@ -9946,6 +9951,180 @@
           "text": "Revision 118: a new writing team, SquireTeamSevern (message token severn), was started by the coordinator on the user's instruction at about 12:33 to draft Sections 2 to 7 of the paper. Long Table still leads the paper and owns Section 1; Math writes the Lean section; the audit reads adversarially. Severn is a contributor, not an owner of status words, and every claim it drafts falls under the navigator's claim check against this ledger before the user is asked to post. Source: the coordinator's relay; no Severn message file exists yet."
         }
       ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 119,
+      "node": {
+        "id": "structural-chain-rstar",
+        "title": "Reduction: Lemma R* implies VH_C, VH-exists and 4-colourability (hand, reviewed by a Math worker; audit read pending)",
+        "status": "exploring",
+        "statement": "Lemma R*: in every 4-connected triangulation of the relative class (minimum degree 5 except up to two degree-4 vertices on the protected face phi), some degree-5 vertex off phi has the property that every doubly locked state there reaches a filled state by finitely many whole-component Kempe swaps. Claimed chain: L1 Theorem A; L2 Corollary B (no 4-connectivity needed, every legal fan); L3 finite radius implies clean (an unfilled state that is not doubly locked fills in one swap at the fixed hole); L4 clean implies a phi-good fan (uses only the easy direction of B, so not Theorem A); L5 a clean vertex off phi in every least failure implies VH_C, conditional on the radius and Euler lemmas holding on the relative class (a hand repair gives at least 9 - n4, at least 7, suitable degree-5 vertices off phi); L6 VH_C implies plain VH-exists (take any face as phi; the move graph is a subgraph). With the accepted face-avoiding reduction (least VH_C failure 4-connected), R* would give VH_C, VH-exists and 4-colourability. R* is about one vertex per graph and needs no radius bound. Lemma R* is OPEN.",
+        "approach": "Math 12:40: an independent review worker that wrote none of the claims marked L1 to L6 CORRECT (MathReviewCleanToVHE.md); Math re-derived L3 itself and read the rest; Math has NOT re-derived the L5 Euler repair. Definitions settled: targetless, good and clean use slides and swaps relative to phi (holes stay off phi, slides into phi forbidden, swaps may recolour phi); the Kempe radius uses swaps only at a fixed hole. Corrections to Math's 12:33 list: the route does not rest on the unreviewed direction of Corollary B, and \"swaps compatible with phi\" was a misreading (VH_C restricts holes and slides, not swaps).",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathReviewCleanToVHE.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1240_math_to_coordination+navigator+longtable+audit_chain-to-VHE-reviewed-one-lemma-left.md"
+        ],
+        "evidence": "Recorded as exploring, not proved, because the reduction carries the whole Four Colour Theorem on one open lemma and two of its supports are not fully checked: Math has not re-derived the L5 repair, and the audit's adversarial read (asked for, especially L5 and L6) is pending. It becomes proved, as a conditional theorem, when Math re-derives L5 or the audit's read finds no gap. R* itself stays open whatever happens here.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-a",
+      "revision": 119,
+      "node": {
+        "id": "structural-euler-lemma",
+        "title": "Euler lemma: at least 12 degree-5 vertices with at most one neighbour of degree at least 12",
+        "status": "proved",
+        "statement": "In every simple sphere triangulation of minimum degree 5, some degree-5 vertex has at most one neighbour of degree at least 12; strengthened, at least 12 degree-5 vertices have this property, so at least 9 lie off a protected face. The proof is a count from sum(deg - 6) = -12 (4-connectivity not used). The constant 12 is what this crude count gives; the data (orders 12 to 24 and pentakis) show the second-largest neighbour degree at the best vertex is at most 7, which is evidence about those graphs only. Sharp in one sense: on the belt every degree-5 vertex has exactly one high neighbour.",
+        "approach": "Audit 12:40 [hand]; Math 12:33 reviewed it line by line itself and ACCEPTED it [hand], and added the strengthening (at least 12 such vertices) [hand], which the audit is asked to check. A hand repair for the relative class (at least 9 - n4 vertices off phi) is by a Math worker and not re-derived by Math.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1240_audit_to_math+longtable+coordination+navigator_P-A-repair-survives-counting-lemma.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1233_math_to_audit+coordination+navigator+longtable_Euler-lemma-accepted-strengthened.md"
+        ],
+        "evidence": "Proved by hand: written by the audit, accepted by Math's own line-by-line review. Not compiled. The strengthening awaits the audit's check. The lemma says where to look; it does not make the problem finite or local (audit 12:48).",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-a",
+      "revision": 119,
+      "node": {
+        "id": "structural-vacancy-d-reducibility",
+        "title": "Vacancy D-reducibility of radius-2 configurations (Math's proposed statement for P-A)",
+        "status": "exploring",
+        "statement": "A configuration K (a degree-5 vertex, its link and second ring, degrees at most 11, boundary ring R) is vacancy-D-reducible if, for every state at v and every planar-consistent outside connection pattern (non-crossing partitions of each colour pair's ring vertices, compatible across complementary pairs, as in Birkhoff-Heesch D-reducibility), some finite sequence of whole-component Kempe swaps fills v, the pattern updated after each swap. Claim: an unavoidable family of such configurations makes the vertex clean, hence VH-exists via the reduction chain. Kill tests in order: T4's holes with second rings (if not reducible, the statement fails or needs radius 3), the icosahedral 2-ball, the (6^5) 2-ball.",
+        "approach": "Math 12:35. The classical method's shape (unavoidable set plus D-reducibility) applied to a different property; radius-1 data cannot suffice (Kempe's error, Heawood's example), so radius-2 balls. A finite check per configuration, size unknown until the checker exists. Math is building the checker and an independent verifier; if test (a) needs more than about 10 CPU-minutes it is pre-registered for the Studio. Long Table and the audit are asked for objections first.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1235_math_to_longtable+coordination+audit+navigator_right-statement-vacancy-D-reducibility.md"
+        ],
+        "evidence": "A proposal; no checker or result yet.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:50:00Z",
+          "text": "Revision 119. (1) Audit 12:32 replayed Math's (6^5) kill exactly with its own code (4.7 CPU-seconds, plantri orders 21 to 23 plus pentakis): radius 3 at (6,6,6,6,6) holes only at orders 22 and 23, 69 doubly locked states, no targetless state, the per-class table matching field for field. K-S3 \"(6^5) has radius 2\" is now killed by an independently replayed certificate. One counting slip in MathSixFiveHole.md section 4 (1 versus 2 order-22 holes with no doubly locked state; totals agree). The audit also checked by hand that every degree-5 hole of the belt G_n has class (5,5,5,5,n), so no finite list bounding all five ring-1 degrees covers the belts. (2) The Euler lemma (child node) makes the family finite apart from one free ring-1 vertex. (3) The audit's 12:48 note: a fill lemma for that class C is VH-exists with the choice of vertex restricted, so at least as hard as VH-exists, never easier; no walk is needed. Correction: order-14 holes have maximum radius 2; radius 4 is T4 only, at all 12 holes; both graphs lie in C (all degrees at most 6), which is why the pair is the test. The audit's acceptance conditions for any fill-lemma statement: (a) a bound of at least 4 even when all ring-1 degrees are at most 6 (T4); (b) not local, since the radius is not a function of the colouring of the ball (K-S4, replayed), so a proof must use global structure; (c) the free vertex (belt G_n, handled only for G_n by the compiled belt theorem); (d) the A_r family and its one-flip variants. (4) Math's target Lemma P-A* (four ring-1 degrees at most 11, one free) and the proposed vacancy D-reducibility statement (child node). Math (12:35) and Long Table (relayed) agree that on T4 and the order-14 graph every hole qualifies, so the content is a fill lemma for bounded-degree links that covers T4."
+        }
+      ],
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/pathway-adversary/sixfive_check.py",
+        "backgroundMaterial/planemap-structural/longtable/audit/pathway-adversary/out-pb-check.json",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1232_audit_to_math+coordination+navigator+longtable_P-E-sixfive-replay-and-belt-argument.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1248_audit_to_longtable+math+coordination+navigator_fill-lemma-equals-VHE-strength.md"
+      ],
+      "id": "structural-pathway-a",
+      "revision": 119
+    },
+    {
+      "title": "P-B: walk the hole to a good place (closed: reduces to P-A)",
+      "notes": [
+        {
+          "time": "2026-10-06T18:50:00Z",
+          "text": "Revision 119: Long Table 12:37 recommends closing P-B into P-A. Exploratory on T4, the order-14 antiprism, A_3 and belts G_5 to G_14 (pentakis sampled), about 53 CPU-seconds: on T4 every hole of either degree has worst-case radius at least 3 (4 at all degree-5 holes; 3, 3, 4, 4, 5 at the five degree-6 holes), so any target needs a bound of at least 4, which is Conjecture R on that class. Degree-6 mobility on T4: 24 of 2,412 (state, neighbour) pairs fail even with 2 swaps; the only decreasing quantity found is the radius itself (circular). The Wernicke two-hole game [cited: Wernicke 1904] has the same worst case. On the belts the holes next to the pole have radius at most 2 while the pole hole rises to 4 at n = 12 to 14. VH-exists chooses the vertex directly, so no walk is needed (Long Table, Math and the audit agree). Recorded as a pathway that reduces to P-A, not a proof result and not a refutation; the node is kept for the record."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/pathway-B.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1237_longtable_to_coordination+math+audit+navigator+user_pathway-B-closed-reduces-to-PA.md"
+      ],
+      "id": "structural-pathway-b",
+      "revision": 119
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:50:00Z",
+          "text": "Revision 119: Long Table 12:39. Lock criterion in the Tait dual [hand, written by a Long Table sub-agent, read step by step by the Long Table lead, NOT yet reviewed by Math]: with Z1 the (beta, gamma)-path leaving the pentagon by e(j+2) and Z2 the (beta, delta)-path leaving by e(j+4), lock 1 holds iff Z1 returns by e(j+1) and lock 2 iff Z2 returns by e(j), otherwise each returns by e(j+3); it is Lemma D read in the dual; code re-check 0 mismatches on 3,682 states. Corollary [hand]: lock 2 at s gives lock 1 at F(s). Variant X KILLED on T4 [exploratory]: no rule reading the graph within distance 2 of the hole decides whether F keeps both locks (3 of 212 keys clash at distance 2). No monotone quantity: all 20 candidates fail on T4. Shortest fills from the 26 radius-4 states follow 63 patterns. Reading: whether a lock persists depends on colours at distance at least 3, so a proof needs a global Jordan-type argument about the two lock cycles; the lemma is offered as the tool for Math's 74-pattern automaton."
+        }
+      ],
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/explore-vhphi/pathways/pd2_lock_proof.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1239_longtable_to_math+audit+coordination+navigator+user_pathway-D-lock-criterion-hand-proof-variant-X-killed.md"
+      ],
+      "id": "structural-pathway-d",
+      "revision": 119
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 119,
+      "node": {
+        "id": "structural-tilley-route-killed",
+        "title": "Route \"targetless implies Tilley locking implies Birkhoff diamond\" (killed: restates known results)",
+        "status": "killed",
+        "statement": "Killed as a route to VH-exists: a targetless component forces only class-level (first-order) locks at the five edges at the hole, which is the known SEP/D1 statement, not Tilley's whole-edge locking; the step \"locked implies Birkhoff diamond\" is Tilley's open conjecture, which alone already implies the Four Colour Theorem without the vacancy machinery.",
+        "approach": "Math 12:37, worker report; Math did not re-derive the hand items. Tilley's definition [cited, arXiv:1809.02807, read from the HTML extraction, not line by line]. [computed, exact] on A_3, A_4, A_5 none of the doubly locked state and singleton-edge pairs lies in a locked Tilley class, and no edge of A_3, T4 or W6 is whole-edge locked. Point to check: T4 has locked Tilley classes on 18 edges with a degree-5 endpoint, yet every T4 state fills, so class-level locks do not imply targetless; how this sits with Tilley's remark (cited, not checked) that endpoints of a diamond-locked edge have degree at least 6 is unresolved.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathTilleyRoute.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1237_math_to_navigator+longtable+audit+coordination_Tilley-route-killed.md"
+        ],
+        "evidence": "Killed on a logical reading (the middle step is an open conjecture that already implies the goal), not on a counterexample. The separate Tilley bridge (structural-tilley-bridge, proved) is unaffected.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 119,
+      "node": {
+        "id": "structural-pathway-f",
+        "title": "P-F: topological degree and Fisk's invariant",
+        "status": "exploring",
+        "statement": "A side pathway approved by the user: use a topological degree or Fisk-type invariant of 4-colourings of triangulations to constrain doubly locked states or targetless components.",
+        "approach": "Owner: Math. Adversary and literature check: the audit. Literature attributions (Fisk 1977; Mohar) are recalled and UNVERIFIED and must not be cited until the audit checks them.",
+        "files": [],
+        "evidence": "Source: the coordinator's relay of the user's approval; no message file for P-F exists yet. No sketch posted.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:50:00Z",
+          "text": "Revision 119: Math 12:31 applied the chosen copyright header by explicit path to the 52 audited source files that had none (43 of the 105-module set and the 9 audited L4 and Theorem P sources); each diff adds exactly 5 lines and all 52 rebuild; new hashes in audit-101/SHA256SUMS-copyright-header-edit.txt. Not changed and listed: 27 audited files whose header names \"Mathlib contributors\" as copyright holder (audit-101/files-with-other-copyright-holder.txt; the user's call) and 22 unaudited files. Published: local commit bcff6cd, backup branch current now at 8299419 (parent 907e2eb: header lines plus the 11 audited L4 and Theorem P files). Mathlib preparation stops here, as the user decided. Math also reconciled the L4 and Theorem P status with the ledger: they are compiled and audited (the audit's 116-module audit); still unaudited are belt_theorem_all_holes and the VacancyHyp modules."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1231_math_to_coordination+audit+navigator+longtable_copyright-header-and-L4-P-audit-reconciled.md"
+      ],
+      "id": "dissemination-mathlib-planemap",
+      "revision": 119
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:50:00Z",
+          "text": "Revision 119: the chain from a fill lemma to VH-exists has been reviewed (child node structural-chain-rstar); the single open lemma is R*, and P-A* via the Euler lemma and the vacancy D-reducibility checker are the current attacks on it. P-B is closed into P-A, the Tilley route is killed, P-D has a hand lock criterion pending review, and P-F is added on the user's approval."
+        }
+      ],
+      "id": "structural-pathway-sprint",
+      "revision": 119
     }
   ]
 }
