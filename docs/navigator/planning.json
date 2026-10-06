@@ -1,7 +1,12 @@
 {
-  "revision": 86,
-  "updatedAt": "2026-10-05T20:49:00-06:00",
+  "revision": 87,
+  "updatedAt": "2026-10-05T20:52:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T02:58:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 87 records the user's 20:51 decision: Math's written go-ahead is no longer required for a declared run, Math still reviews and the navigator still gates, and long-horizon tasks are delegated to Math. It also records Math's 20:49 acceptance of the pentagon trace lift (section 2b) by hand, conditional on the open pentagon hypothesis. The Lean mobility generalisation is in progress, nothing compiled. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T02:55:00Z",
       "node": "structural-vacancy",
@@ -7258,6 +7263,163 @@
       ],
       "id": "structural-vacancy",
       "revision": 86
+    },
+    {
+      "status": "proved",
+      "title": "Trace lift across a separating 5-cycle (section 2b; conditional on the open pentagon hypothesis)",
+      "statement": "The lift is proved by hand: a trace-game win lifts across an induced separating 5-cycle whose far side has at least two interior vertices (wheels excluded). It is conditional on the extended trace-game hypothesis for protected faces of length 5, which is open. The exploratory 2002 of 2002 pass is not evidence for it.",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2049_math_to_longtable+navigator+audit_trace-2b-accepted-and-scope.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T02:58:00Z",
+          "text": "Revision 87: Math 20:49 accepted the pentagon paragraph (commit bf58cf8) [hand]: disjoint two-run pairs on a pentagon always alternate, so admissibility excludes both bits and the two-path Jordan argument closes as for the quadrilateral. Conditional on the open hypothesis; a proved lift, not a proved hypothesis. Pentagon gadgets are not needed."
+        }
+      ],
+      "id": "structural-trace-five-cycle",
+      "revision": 87
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T02:58:00Z",
+          "text": "Revision 87, user decision 20:51 MDT (message 2026-10-05_2051_user_...math-go-ahead-waived-long-horizon-tasks.md): Math's written go-ahead is no longer a precondition for a declared run. A run needs a committed, hashed declaration, producer, independent checker and regressions, and its report states that no Math go-ahead was given. Math still reviews results and the navigator still gates status. Unchanged: declaration first, no tuning between phases, capped or interrupted runs are inconclusive, holdouts, the stopped list, declared caps (no cost limit stated)."
+        },
+        {
+          "time": "2026-10-06T02:58:00Z",
+          "text": "Math 20:51 reads this as: it no longer issues or withholds go-aheads, and its reviews are information for the navigator and coordination session. Earlier go-aheads (WP20 P1, 20:42) stand as written. The user's message says Math still reviews. The ledger therefore keeps Math's review as the evidence the navigator weighs before marking success, and records when no review exists. Math asked who now issues the go-ahead that START-HERE section 5 requires; that question is the coordinator's."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 87
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-vacancy",
+      "revision": 87,
+      "node": {
+        "id": "structural-math-horizon",
+        "title": "Tasks delegated to Math (long horizon, user, 20:51)",
+        "status": "in-progress",
+        "statement": "The user delegated these to Math, with no deadline and in its own order: (1) VH-exists itself, a proof or a structural counterexample; (2) four-connectivity of a smallest plain VH-exists failure and the open trace-game hypotheses; (3) D1 statement (N) or a global replacement; (4) the Lean frontier; (5) termination and a polynomial algorithm; (6) anything Math judges higher value, reported by message.",
+        "approach": "Start points are the accepted pieces: mobility, fixed-hole theorem, face-avoiding reduction, degree-6-or-more separator vertices, core order at least 12. Math reports by message as results land. Long Table and audit supply experiments and replays on request. Only task 4 has started.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2051_user_to_math+longtable+navigator+audit_math-go-ahead-waived-long-horizon-tasks.md",
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2050_math_to_longtable+navigator+audit_following-coordinator-lean-worker-started.md"
+        ],
+        "evidence": "Nothing here is a result. Each task becomes a node when it has a statement and an outcome.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 87,
+      "node": {
+        "id": "structural-mobility-general-lean",
+        "title": "Lean: mobility generalised by ring rotation and colour renaming",
+        "status": "in-progress",
+        "statement": "Remove the normalized restriction of vacancy_mobility_normalized, so the mobility theorem applies to any ring and colouring, by rotation and renaming. This is the mobility/short-fill boundary reduction.",
+        "approach": "A Lean worker writes VacancyMobilityGeneral.lean in the live checkout (new file only) and artifacts go to backgroundMaterial/planemap-structural/mobility-general-lean/. Nothing compiled yet.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2050_math_to_longtable+navigator+audit_following-coordinator-lean-worker-started.md"
+        ],
+        "evidence": "Compiled only with no sorry, standard axioms, and a passing audit. Until then this is in progress.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 87,
+      "node": {
+        "id": "structural-math-t1",
+        "title": "VH-exists: proof or structural counterexample",
+        "status": "unstarted",
+        "statement": "VH-exists is open. No proof and no counterexample is recorded.",
+        "approach": "Delegated to Math by the user, 20:51.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2051_user_to_math+longtable+navigator+audit_math-go-ahead-waived-long-horizon-tasks.md"
+        ],
+        "evidence": "No result.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 87,
+      "node": {
+        "id": "structural-math-t2",
+        "title": "Four-connectivity of a plain failure, and the trace-game hypotheses",
+        "status": "unstarted",
+        "statement": "Open. The trace lifts are proved but conditional on these hypotheses.",
+        "approach": "Delegated to Math by the user, 20:51.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2051_user_to_math+longtable+navigator+audit_math-go-ahead-waived-long-horizon-tasks.md"
+        ],
+        "evidence": "No result.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 87,
+      "node": {
+        "id": "structural-math-t3",
+        "title": "D1: statement (N) or a global argument",
+        "status": "unstarted",
+        "statement": "Open. The reduction to (N) is accepted; (N) is not settled.",
+        "approach": "Delegated to Math by the user, 20:51.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2051_user_to_math+longtable+navigator+audit_math-go-ahead-waived-long-horizon-tasks.md"
+        ],
+        "evidence": "No result.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 87,
+      "node": {
+        "id": "structural-math-t5",
+        "title": "Termination and a polynomial algorithm for the vacancy induction",
+        "status": "unstarted",
+        "statement": "Not started; waits on VH-exists unless a route appears sooner.",
+        "approach": "Delegated to Math by the user, 20:51.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2051_user_to_math+longtable+navigator+audit_math-go-ahead-waived-long-horizon-tasks.md"
+        ],
+        "evidence": "No result.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
     }
   ]
 }

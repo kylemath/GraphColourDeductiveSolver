@@ -260,7 +260,9 @@ if (integrationPath) {
   assert.equal(Tree.findNode(root, 'structural-m3-family').status, 'proved');
   for (const [id, parent, status] of [
     ['structural-trace-lift','structural-vhe-obstruction','proved'],
-    ['structural-trace-five-cycle','structural-trace-lift','exploring'],
+    ['structural-trace-five-cycle','structural-trace-lift','proved'],
+    ['structural-math-horizon','structural-vacancy','in-progress'],
+    ['structural-mobility-general-lean','structural-math-horizon','in-progress'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
     ['structural-deg6-split','structural-vhe-obstruction','proved'],
     ['structural-tilley','structural-vacancy','exploring'],
