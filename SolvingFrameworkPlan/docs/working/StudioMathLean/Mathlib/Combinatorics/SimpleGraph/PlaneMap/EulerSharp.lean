@@ -31,9 +31,10 @@ def highSet : Finset V := univ.filter fun v => 12 ≤ G.degree v
 def goodSet : Finset V :=
   univ.filter fun v => G.degree v = 5 ∧ ((highSet G).filter (G.Adj v)).card ≤ 1
 
-theorem good_card_ge_twelve (hmin : ∀ v, 5 ≤ G.degree v)
+/-- The counting core, allowing degree-four vertices: each costs two. -/
+theorem good_card_add_two_four (hmin : ∀ v, 4 ≤ G.degree v)
     (hE : 2 * G.edgeFinset.card + 12 ≤ 6 * Fintype.card V) :
-    12 ≤ (goodSet G).card := by
+    12 ≤ (goodSet G).card + 2 * (univ.filter fun v => G.degree v = 4).card := by
   classical
   set H := highSet G with hH
   set A : Finset V := univ.filter fun v => G.degree v = 5 with hA
@@ -70,17 +71,25 @@ theorem good_card_ge_twelve (hmin : ∀ v, 5 ≤ G.degree v)
   -- Claim 2
   have hdeg : ∑ v, G.degree v = 2 * G.edgeFinset.card := G.sum_degrees_eq_twice_card_edges
   have hpt : ∀ v, ((G.degree v : ℤ) - 6) ≥
-      -(if G.degree v = 5 then (1:ℤ) else 0) + (if v ∈ H then (G.degree v : ℤ) - 6 else 0) := by
+      -(if G.degree v = 5 then (1:ℤ) else 0) +
+        ((if v ∈ H then (G.degree v : ℤ) - 6 else 0) - (if G.degree v = 4 then (2:ℤ) else 0)) := by
     intro v
     have := hmin v
     by_cases h5 : G.degree v = 5
     · have : v ∉ H := by simp [hH, highSet]; omega
       simp [h5, this]
-    · by_cases hv : v ∈ H
-      · simp [h5, hv]
-      · simp [h5, hv]; omega
+    · by_cases h4 : G.degree v = 4
+      · have : v ∉ H := by simp [hH, highSet]; omega
+        simp [h4, this]
+      · by_cases hv : v ∈ H
+        · simp [h5, h4, hv]
+        · simp [h5, h4, hv]; omega
   have hsum := Finset.sum_le_sum (s := univ) (fun v _ => hpt v)
-  rw [Finset.sum_add_distrib, Finset.sum_neg_distrib] at hsum
+  rw [Finset.sum_add_distrib, Finset.sum_neg_distrib, Finset.sum_sub_distrib] at hsum
+  have e5 : ∑ v, (if G.degree v = 4 then (2:ℤ) else 0) =
+      2 * ((univ.filter fun v => G.degree v = 4).card : ℤ) := by
+    rw [← Finset.sum_filter]; simp [mul_comm]
+  rw [e5] at hsum
   have e1 : ∑ v, (if G.degree v = 5 then (1:ℤ) else 0) = (A.card : ℤ) := by
     simp [hA, Finset.sum_boole]
   have e2 : ∑ v, (if v ∈ H then (G.degree v : ℤ) - 6 else 0) =
@@ -103,6 +112,49 @@ theorem good_card_ge_twelve (hmin : ∀ v, 5 ≤ G.degree v)
   have h1' : (2 * B.card : ℤ) ≤ (∑ h ∈ H, G.degree h : ℕ) := by exact_mod_cast h1
   have hsplit' : ((goodSet G).card : ℤ) + B.card = A.card := by exact_mod_cast hsplit
   push_cast at h1' hs
+  omega
+
+theorem good_card_ge_twelve (hmin : ∀ v, 5 ≤ G.degree v)
+    (hE : 2 * G.edgeFinset.card + 12 ≤ 6 * Fintype.card V) :
+    12 ≤ (goodSet G).card := by
+  have h := good_card_add_two_four G (fun v => le_trans (by norm_num) (hmin v)) hE
+  have h0 : (univ.filter fun v => G.degree v = 4).card = 0 :=
+    Finset.card_eq_zero.mpr (Finset.filter_eq_empty_iff.mpr (fun v _ e => by
+      have := hmin v; omega))
+  omega
+
+/-- **Relative-class counting.** Let `φ` have at most three vertices, every vertex off `φ`
+have degree at least five, and every vertex on `φ` degree at least four. If `2E + 12 ≤ 6V`,
+then at least `9 - n₄` good vertices lie off `φ`, where `n₄` counts the degree-four vertices
+on `φ`. -/
+theorem good_off_add_four (φ : Finset V) (hφ : φ.card ≤ 3)
+    (hdeg : ∀ v, 5 ≤ G.degree v ∨ (v ∈ φ ∧ G.degree v = 4))
+    (hE : 2 * G.edgeFinset.card + 12 ≤ 6 * Fintype.card V) :
+    9 ≤ ((goodSet G).filter (· ∉ φ)).card + (φ.filter fun v => G.degree v = 4).card := by
+  classical
+  have h := good_card_add_two_four G (fun v => by rcases hdeg v with h | h <;> omega) hE
+  have hF : (univ.filter fun v => G.degree v = 4) = φ.filter fun v => G.degree v = 4 := by
+    ext v
+    simp only [mem_filter, mem_univ, true_and]
+    constructor
+    · intro e
+      rcases hdeg v with h | h
+      · omega
+      · exact ⟨h.1, e⟩
+    · exact fun h => h.2
+  rw [hF] at h
+  have hsplit := Finset.card_filter_add_card_filter_not (s := goodSet G) (p := (· ∉ φ))
+  have hon : ((goodSet G).filter fun v => ¬ v ∉ φ) ⊆ φ.filter fun v => G.degree v = 5 := by
+    intro v hv
+    simp only [mem_filter, not_not, goodSet, mem_univ, true_and] at hv ⊢
+    exact ⟨hv.2, hv.1.1⟩
+  have hdisj : Disjoint (φ.filter fun v => G.degree v = 5) (φ.filter fun v => G.degree v = 4) := by
+    rw [Finset.disjoint_filter]; intro v _ e; omega
+  have hunion := Finset.card_union_of_disjoint hdisj
+  have hsub : (φ.filter fun v => G.degree v = 5) ∪ (φ.filter fun v => G.degree v = 4) ⊆ φ :=
+    Finset.union_subset (Finset.filter_subset _ _) (Finset.filter_subset _ _)
+  have h1 := Finset.card_le_card hon
+  have h2 := Finset.card_le_card hsub
   omega
 
 end StudioMath
@@ -238,6 +290,18 @@ theorem twelve_light_fives (d : M.Dart)
   StudioMath.good_card_ge_twelve M.graph hmin
     (by simpa using twice_edges_add_twelve_le M d htri)
 
+/-- **Euler lemma, relative class.** In a spherical triangulation whose vertices off the
+set `φ` (at most three vertices, e.g. the protected face) have degree at least five and whose
+vertices on `φ` have degree at least four, at least `9 - n₄` vertices off `φ` have degree five
+and at most one neighbour of degree at least twelve. -/
+theorem relative_light_fives (d : M.Dart)
+    (htri : ∀ f : M.Face, M.rotation.faceLength f = 3) (φ : Finset (Fin n)) (hφ : φ.card ≤ 3)
+    (hdeg : ∀ v, 5 ≤ M.graph.degree v ∨ (v ∈ φ ∧ M.graph.degree v = 4)) :
+    9 ≤ ((StudioMath.goodSet M.graph).filter (· ∉ φ)).card +
+      (φ.filter fun v => M.graph.degree v = 4).card :=
+  StudioMath.good_off_add_four M.graph φ hφ hdeg
+    (by simpa using twice_edges_add_twelve_le M d htri)
+
 end SimpleGraph.SphericalMap
 
 /-- **Non-vacuity of the Euler lemma.** Its hypotheses hold on the icosahedron. -/
@@ -247,3 +311,15 @@ theorem SimpleGraph.Icosahedron.twelve_light_fives_icosahedron :
     ⟨(0, 1), (show SimpleGraph.Icosahedron.graph.Adj 0 1 by decide)⟩
     (fun f => SimpleGraph.Icosahedron.sphericalMap_triangular f)
     (fun v => (SimpleGraph.Icosahedron.sphericalMap_degree v).ge)
+
+/-- **Non-vacuity of the relative form** (with `n₄ = 0`): the icosahedron with `φ` the face
+`{0, 1, 5}`. -/
+theorem SimpleGraph.Icosahedron.relative_light_fives_icosahedron :
+    9 ≤ ((StudioMath.goodSet SimpleGraph.Icosahedron.sphericalMap.graph).filter
+        (· ∉ ({0, 1, 5} : Finset (Fin 12)))).card +
+      (({0, 1, 5} : Finset (Fin 12)).filter
+        fun v => SimpleGraph.Icosahedron.sphericalMap.graph.degree v = 4).card :=
+  SimpleGraph.Icosahedron.sphericalMap.relative_light_fives
+    ⟨(0, 1), (show SimpleGraph.Icosahedron.graph.Adj 0 1 by decide)⟩
+    (fun f => SimpleGraph.Icosahedron.sphericalMap_triangular f) _ (by decide)
+    (fun v => Or.inl (SimpleGraph.Icosahedron.sphericalMap_degree v).ge)
