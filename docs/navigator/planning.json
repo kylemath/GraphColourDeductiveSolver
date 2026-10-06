@@ -1,7 +1,12 @@
 {
-  "revision": 124,
-  "updatedAt": "2026-10-06T14:04:00-06:00",
+  "revision": 125,
+  "updatedAt": "2026-10-06T14:07:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T20:08:00Z",
+      "node": "structural-pathway-sprint",
+      "action": "Revision 125 records the bounty board as a standing navigator duty: a leaderboard in every revision message, scored on ledger evidence only. All teams start at 0 and no qualifying item has been recorded since 14:03. Studio Math's Lean design is pending until merged. No status changed."
+    },
     {
       "time": "2026-10-06T20:05:00Z",
       "node": "structural-chain-rstar",
@@ -10563,6 +10568,19 @@
       ],
       "id": "structural-vacancy",
       "revision": 124
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 125,
+      "files": [
+        "SolvingFrameworkPlan/docs/core/BountyBoard.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:08:00Z",
+          "text": "Revision 125: the user, via the coordinator, set up a bounty board for Lemma R* (docs/core/BountyBoard.md, commit c23a8d3, from 14:03 on 6 October). The navigator keeps the leaderboard in every revision message from revision 125 on, scoring only on ledger evidence at a recorded revision, never on claims; nothing before 14:03 counts; reviews and pre-registrations score nothing by the board's table. Leaderboard at revision 125: all teams 0 (no qualifying item since 14:03). Pending, not recorded: Studio Math's Lean design for the Euler lemma and Theorem H (branch studio-math, dc4f013, design only, one uncompiled draft; edge_card_bound one step short of the sharp Euler count, per the coordinator), to be recorded when merged."
+        }
+      ]
     }
   ]
 }
