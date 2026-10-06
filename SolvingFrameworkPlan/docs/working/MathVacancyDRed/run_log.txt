@@ -1,0 +1,18 @@
+T4 r = 2 v = 4 link [0, 3, 8, 9, 5] ring [1, 2, 7, 12, 13, 14, 10]
+  K - v: 12 vertices, ring 7; colourings 182, unfilled 94, K-nodes 890
+   {'colourings': 182, 'unfilled': 94, 'knodes': 890, 'reducible': True, 'depth': 7, 'hist': {1: 46, 2: 23, 3: 7, 4: 8, 5: 4, 6: 4, 7: 2}, 'cpu_build': 0.02, 'cpu_solve': 0.0, 'rounds': 8}
+A3 r = 2 v = 0 link [1, 2, 3, 4, 5] ring [6, 7, 8, 9, 10]
+  K - v: 10 vertices, ring 5; colourings 50, unfilled 30, K-nodes 150
+   {'colourings': 50, 'unfilled': 30, 'knodes': 150, 'reducible': True, 'depth': 3, 'hist': {1: 15, 2: 10, 3: 5}, 'cpu_build': 0.0, 'cpu_solve': 0.0, 'rounds': 4}
+pentakis r = 2 v = 0 link [12, 16, 20, 24, 28] ring [1, 14, 2, 18, 3, 22, 4, 26, 5, 30]
+  K - v: 15 vertices, ring 10; colourings 1320, unfilled 550, K-nodes 16260
+   {'colourings': 1320, 'unfilled': 550, 'knodes': 16260, 'reducible': False, 'depth': None, 'hist': {1: 180, 'inf': 370}, 'cpu_build': 0.43, 'cpu_solve': 0.03, 'rounds': 3}
+T4 r = 1 v = 4 link [0, 3, 8, 9, 5] ring [0, 3, 8, 9, 5]
+  K - v: 5 vertices, ring 5; colourings 10, unfilled 5, K-nodes 25
+   {'colourings': 10, 'unfilled': 5, 'knodes': 25, 'reducible': False, 'depth': None, 'hist': {'inf': 5}, 'cpu_build': 0.0, 'cpu_solve': 0.0, 'rounds': 2}
+T4 r = 3 v = 4 link [0, 3, 8, 9, 5] ring [6, 11, 16, 15]
+  K - v: 16 vertices, ring 4; colourings 132, unfilled 84, K-nodes 344
+   {'colourings': 132, 'unfilled': 84, 'knodes': 344, 'reducible': True, 'depth': 4, 'hist': {1: 52, 2: 26, 3: 4, 4: 2}, 'cpu_build': 0.01, 'cpu_solve': 0.0, 'rounds': 5}
+pentakis r = 3 v = 0 link [12, 16, 20, 24, 28] ring [6, 15, 7, 19, 8, 23, 9, 27, 10, 31]
+  K - v: 25 vertices, ring 10; colourings 18420, unfilled 7710, K-nodes 224710
+   {'colourings': 18420, 'unfilled': 7710, 'knodes': 224710, 'reducible': True, 'depth': 7, 'hist': {1: 4830, 2: 1820, 3: 580, 4: 250, 5: 130, 6: 80, 7: 20}, 'cpu_build': 9.56, 'cpu_solve': 1.22, 'rounds': 8}
