@@ -1,7 +1,12 @@
 {
-  "revision": 112,
-  "updatedAt": "2026-10-06T11:52:00-06:00",
+  "revision": 113,
+  "updatedAt": "2026-10-06T11:55:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T18:00:00Z",
+      "node": "structural-pathway-c",
+      "action": "Revision 113 records the first pathway reports. P-C is killed as stated, on Math's hand argument (every legal fan admits a targetless state if one exists, via Theorem A) with a computed exploratory check, and the audit's independent note that the induction does not let us choose the colouring; the audit has not replayed Math's computation. Its only reformulation is equivalent to clean-vertex existence. P-A survives as a reformulation: the icosahedral class is not unavoidable (pentakis dodecahedron, found by Math and the audit independently), (6,6,6,6,6) must be in any list and has radius 2 at the pentakis hole, and the radius-by-class table is exploratory and post hoc. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T17:55:00Z",
       "node": "structural-pathway-sprint",
@@ -9608,6 +9613,68 @@
       ],
       "id": "structural-vacancy",
       "revision": 112
+    },
+    {
+      "status": "killed",
+      "title": "P-C: freedom in the fan and in T* (killed as stated)",
+      "evidence": "Killed as stated, supported by: (1) Math's hand argument (11:52, MathPathwaysPAPC.md): a colouring of T*_j is exactly a colouring of T minus v with the apex x_j a ring singleton; every unfilled state has three singleton positions, so three fans admit it; if a targetless component exists, Theorem A puts all five repeat indices in it, so every legal fan admits a targetless state, and fan freedom cannot avoid it (this is Corollary B again). Theorem A comes from MathConfinementAttack and was re-derived as correct by a Math worker at 09:01; neither it nor this argument has been reviewed by the audit. (2) Math's computed check [exploratory, post hoc, orders 12 to 18, 279 degree-5 holes, legal fans only]: \"some fan has every admitted state within one swap\" fails at 187 of 279 holes, and at 4 holes even the best fan admits a radius-4 state. (3) The audit's independent quantifier note (11:53, c67c574): the sprint text's premise that the induction lets us choose the colouring partly through T* is wrong; the induction hands over an arbitrary colouring of T*, and only its Kempe class is free, so Birkhoff-Lewis counting over colourings cannot give the needed statement unless T* has a single Kempe class. The audit has not replayed Math's computation. Kill labelled by these supports.",
+      "notes": [
+        {
+          "time": "2026-10-06T18:00:00Z",
+          "text": "Revision 113. The only reformulation Math keeps is P-C prime: for some legal fan, every Kempe class of colourings of T*_tau (equivalently every colouring of T minus v with the apex a ring singleton) contains a state that fills. Math (11:53, hand) shows P-C prime is equivalent to the vertex being clean (Corollary B), so P-C adds nothing beyond clean-vertex existence; the fan freedom matters only in finite-radius statistics. On the belt G_n, P-C prime holds in mixed form by the compiled belt_theorem_all_holes (the pure form is not claimed). Audit adversary plan for P-C prime: T* with several Kempe classes, Florek's belt first, then the order-17 and order-24 bad-root graphs."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathPathwaysPAPC.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1152_math_to_coordination+navigator+longtable+audit+user_pathways-PA-PC-first-report.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1153_audit_to_coordination+math+longtable+navigator_P-E-preliminary-adversary-notes.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1153_math_to_coordination+audit+navigator+longtable_PA-PC-reply-to-adversary-notes.md"
+      ],
+      "id": "structural-pathway-c",
+      "revision": 113
+    },
+    {
+      "title": "P-A: good neighbourhoods plus discharging (survives as a reformulation; first discharging plan fails)",
+      "notes": [
+        {
+          "time": "2026-10-06T18:00:00Z",
+          "text": "Revision 113, Math 11:52 and 11:53 and the audit 11:53 (P-E). The first discharging plan fails: the icosahedral class (5,5,5,5,5) is NOT unavoidable. The pentakis dodecahedron (order 32, degrees 5 and 6, no 5-5 edge) and the Goldberg-type family have only (6,6,6,6,6) holes, so every unavoidable list must contain (6,6,6,6,6) or a class it lies in. Found independently by Math and the audit [hand, plus checked by the audit's pentakis.py]; the claim \"(5^5) is unavoidable\" is killed, recorded as a note, not a separate node. The audit adds that Theorem H's class is absent from every minimum-degree-5 triangulation of orders 14 to 16 and from most graphs at orders 17 to 22 [exploratory, plantri], and that \"next to a degree at most 4 vertex\" is vacuous in the core. [exploratory, post hoc] radius by link class over all minimum-degree-5 triangulations of orders 12 to 20 plus the pentakis dodecahedron: 28 classes, no targetless class, maximum radius 4 in exactly six classes ((5,5,5,5,6), (5,5,5,6,6), (5,5,5,6,7), (5,5,6,5,6), (5,5,6,5,7), (5,6,5,6,6)); (5,5,5,5,5) maximum 3, consistent with Theorem H; (6,6,6,6,6) maximum 2. Pentakis hole, by Math and independently by the audit: 4840 states of T minus x up to renaming, 3190 filled, 1520 at radius 1, 130 at radius 2 (130 doubly locked, all radius 2), none targetless. P-A thus reduces to Conjecture R class by class. Math's hand reading: the local parameter that controls the chains in a Theorem-H-style proof is the outer degree of the ring-1 vertices (with no separating triangle), not the link degree sequence as such; the next trial is a Theorem-H-style argument for (6,6,6,6,6) holes. The audit's structural risk: a link class is local but fill length depends on global chains; nothing yet says a class determines a uniform bound; its adversary plan embeds claimed-good classes in A_r-type rings and the belt. Literature (Wernicke 1904, Franklin 1922, Lebesgue 1940) is recalled by the audit, unverified, and not checked by Math; not to be cited yet. Status stays exploring."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathPathwaysPAPC.md",
+        "backgroundMaterial/planemap-structural/longtable/audit/pathway-adversary/pentakis.py",
+        "backgroundMaterial/planemap-structural/longtable/audit/pathway-adversary/out-pentakis-radius.json",
+        "backgroundMaterial/planemap-structural/longtable/audit/pathway-adversary/out-link-classes.json",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1152_math_to_coordination+navigator+longtable+audit+user_pathways-PA-PC-first-report.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1153_audit_to_coordination+math+longtable+navigator_P-E-preliminary-adversary-notes.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1153_math_to_coordination+audit+navigator+longtable_PA-PC-reply-to-adversary-notes.md"
+      ],
+      "id": "structural-pathway-a",
+      "revision": 113
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:00:00Z",
+          "text": "Revision 113: the audit's preliminary adversary notes (c67c574, under 1 CPU-minute, files in longtable/audit/pathway-adversary/): the pentakis requirement on P-A, the quantifier trap in P-C, and advance notes for P-B (any decreasing quantity must be checked against the A_r F-orbits, which cycle with period 60 while every state stays locked) and P-D (a degree-5 hole is a pentagonal face of the dual cubic graph; the parity lemma is the natural first invariant)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1153_audit_to_coordination+math+longtable+navigator_P-E-preliminary-adversary-notes.md"
+      ],
+      "id": "structural-pathway-e",
+      "revision": 113
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:00:00Z",
+          "text": "Revision 113: first reports. P-C killed as stated (Math's hand argument with a computed check and the audit's quantifier note; not replayed by the audit); its reformulation P-C prime is equivalent to clean-vertex existence. P-A survives as a reformulation reducing to Conjecture R class by class; the icosahedral class is not unavoidable. P-B and P-D sketches have not been posted."
+        }
+      ],
+      "id": "structural-pathway-sprint",
+      "revision": 113
     }
   ]
 }

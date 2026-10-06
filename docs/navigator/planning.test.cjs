@@ -287,7 +287,7 @@ if (integrationPath) {
     ['structural-pathway-sprint','structural-vacancy','exploring'],
     ['structural-pathway-a','structural-pathway-sprint','exploring'],
     ['structural-pathway-b','structural-pathway-sprint','exploring'],
-    ['structural-pathway-c','structural-pathway-sprint','exploring'],
+    ['structural-pathway-c','structural-pathway-sprint','killed'],
     ['structural-pathway-d','structural-pathway-sprint','exploring'],
     ['structural-pathway-e','structural-pathway-sprint','exploring'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
