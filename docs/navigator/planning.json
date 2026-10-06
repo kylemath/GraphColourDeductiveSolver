@@ -1,7 +1,12 @@
 {
-  "revision": 113,
-  "updatedAt": "2026-10-06T11:55:00-06:00",
+  "revision": 114,
+  "updatedAt": "2026-10-06T11:59:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T18:02:00Z",
+      "node": "dissemination",
+      "action": "Revision 114 records the user's two commissions: the VH-exists paper (Long Table leads, Math co-authors and reviews, the audit reads adversarially) and the PlaneMap library made ready for Mathlib with a Five Colour demonstration (Math leads, the audit replays). Both are in progress under a new dissemination parent. arXiv posting and Mathlib pull requests need the user's explicit go-ahead. New gate: the navigator checks every claim of the paper against the ledger before the user is asked to post it. No status changed."
+    },
     {
       "time": "2026-10-06T18:00:00Z",
       "node": "structural-pathway-c",
@@ -9675,6 +9680,81 @@
       ],
       "id": "structural-pathway-sprint",
       "revision": 113
+    },
+    {
+      "op": "insert",
+      "parentId": "4ct",
+      "revision": 114,
+      "node": {
+        "id": "dissemination",
+        "title": "Dissemination: the VH-exists paper and PlaneMap for Mathlib",
+        "status": "in-progress",
+        "statement": "Two write-up commissions from the user (11:55, quoted: \"I do want to commission the write up from the team of the VHE paper, and I also want to get our plane-map work in mathlib ready for submission with 5 colour proof demo\"). Both run alongside the pathway sprint, not instead of it.",
+        "approach": "Nothing is posted publicly (arXiv) or submitted (a Mathlib pull request) without the user's explicit go-ahead at that moment; the user decides when and under whose name. These are outward-facing steps.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1156_coordination_to_longtable+math+audit+navigator+user_commission-VHE-paper-and-mathlib-planemap.md"
+        ],
+        "evidence": "No deliverable exists yet; first outlines are due by message within two hours of 11:56.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "dissemination",
+      "revision": 114,
+      "node": {
+        "id": "dissemination-vhe-paper",
+        "title": "The VH-exists paper (a dated record of what is solid)",
+        "status": "in-progress",
+        "statement": "A LaTeX paper (main.tex plus a README on how it was built) at SolvingFrameworkPlan/docs/reports/VHE-paper/, in this order: the vacancy induction and VH-exists implies 4-colourability with the containment and apex-singleton lemmas; what is compiled in Lean with module audit counts and axiom statements; what a least failure must look like (fixed-hole theorem, face-avoiding reduction, degree-6 split, Theorem H as hand); negative results (Conjecture L, radius at most 3, the killed fitted statements); finite evidence with exact scope (WP18, WP19, and WP20 P1 and WP21 only once their checks are complete, otherwise stated as pending); open problems (VH-exists, Conjecture R, the pathways). Every claim carries its label.",
+        "approach": "Lead: Long Table (owns the hand pages). Co-author for Lean and reviews: Math. Adversarial reader: the audit. Rules: no claim stronger than the ledger; finite results never generalised; the night swarm's outputs are leads only; authorship and acknowledgements are for the user. arXiv posting needs the user's explicit go-ahead.",
+        "files": [
+          "SolvingFrameworkPlan/docs/reports/VHE-paper/main.tex",
+          "SolvingFrameworkPlan/docs/reports/VHE-paper/README.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1156_coordination_to_longtable+math+audit+navigator+user_commission-VHE-paper-and-mathlib-planemap.md"
+        ],
+        "evidence": "GATE (navigator): before the user is asked to post the paper, the navigator checks every claim in main.tex against this ledger: each statement's label must match the node's status and scope (compiled only where an audit includes the module; hand only where accepted, naming who reviewed; finite results with their exact graphs and checks; killed statements with their certificates and who replayed them; open items marked open). Any claim stronger than the ledger, or a finite result stated beyond its graphs, blocks the request to post until corrected. The audit's adversarial reading is a separate gate.",
+        "killCriteria": "",
+        "notes": [
+          {
+            "time": "2026-10-06T18:02:00Z",
+            "text": "Revision 114: commissioned. A short main.tex (25 lines) and README.md (4 lines) appeared at 11:56 in commit d3ff0d7. That commit's message is the audit's plan for its adversarial reading, but it also contains Long Table's paper outline, pathway-B.md and a Long Table message, so it looks like two teams' files committed together; the owners should confirm. The files are an outline, not a draft, and the navigator has not reviewed them."
+          }
+        ],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "dissemination",
+      "revision": 114,
+      "node": {
+        "id": "dissemination-mathlib-planemap",
+        "title": "PlaneMap made ready for Mathlib, with a Five Colour demonstration",
+        "status": "in-progress",
+        "statement": "From the live checkout /Users/fulkanjou/mathlib4-planemap (outside this repository; about 86 files and 21,000 lines under Mathlib/Combinatorics/SimpleGraph/PlaneMap/): (1) a submission plan splitting the library into a dependency-ordered series of small pull requests (foundations first: rotation systems, the Jordan curve files, spherical maps, deletion and insertion; then the Five Colour Theorem; then vacancy and belt results), each with files and line count; (2) out of scope: team-specific scratch modules (*TeamA, *TeamB, BeltCapsMath, untracked files), anything with sorry and anything not audited; (3) Mathlib readiness for the first PRs: naming and style, module docstrings, lint-style and linters clean, no native_decide, no new axioms, minimal imports, builds on current Mathlib master, with a rebase list; (4) a short readable Five Colour demonstration file (and a MathlibTest or Archive entry per convention) stating and proving the theorem for finite planar maps from the library, with a paragraph on what planar means here and a worked example; (5) an independent build and lint replay by the audit of the first PR series and the demo before anything is proposed to the user.",
+        "approach": "Lead: Math (owns Lean and the module audit). Independent check: the audit. Mathlib pull requests need the user's explicit go-ahead; the user decides when and under whose name each is opened.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1156_coordination_to_longtable+math+audit+navigator+user_commission-VHE-paper-and-mathlib-planemap.md"
+        ],
+        "evidence": "GATE: nothing is proposed to the user for submission until the audit's independent build and lint replay of the first PR series and the demo has passed. The Five Colour Theorem in Lean is already in the ledger as proved (node f5-lean); the demo must state its hypotheses exactly as the compiled statement does. The live checkout path is outside this repository, so the path check does not cover it.",
+        "killCriteria": "",
+        "notes": [
+          {
+            "time": "2026-10-06T18:02:00Z",
+            "text": "Revision 114: commissioned. No plan or file exists yet."
+          }
+        ],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
     }
   ]
 }
