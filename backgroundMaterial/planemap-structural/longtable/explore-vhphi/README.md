@@ -37,3 +37,4 @@ Usage: `python3 vhphi_explore.py SEED ORDERS TRIES`, `python3 vhphi_quad_explore
 - `lock_anatomy.py`, `lock_escape.py`, `fan_switch.py`: anatomy of the locked classes on 17:0 and 17:1 (printed output only).
 - `sep_any.py` -> `sep-m5-<n>.json`, `sep-c4-<n>.json`: SEP test. Fails only on 17:0 and 17:1 (8 states).
 - `sep_depth.py`: separation depth of those 8 states; all are exactly 1 (printed output only).
+- `lock_rigid.py`, `dl_state.py` (18:42): rigidity/equitability of locked classes (printed output only). 192/192 locked members have colour classes 4,4,4,4 in T - x; 164/192 have all three chains equal to full colour pairs.

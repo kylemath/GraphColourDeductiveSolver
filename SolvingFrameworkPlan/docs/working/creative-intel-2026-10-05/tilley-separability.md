@@ -96,3 +96,16 @@ Code: `longtable/explore-vhphi/` — `lock_anatomy.py`, `lock_escape.py`, `fan_s
 **Next (Long Table).**
 1. Hand-analyse one doubly-locked state at $17{:}1$ vertex $5$: write out its link word, the three admitting fans, the three chain systems, and the swap that escapes. That is the smallest concrete object a proof of D1 must handle.
 2. Test D1 on `-c4m4` order $15$ and on rare 4-connected shapes, to see whether depth $1$ survives.
+
+## 8. Locked classes are rigid and equitable (18:42, exploratory, post hoc, undeclared)
+
+Code: `longtable/explore-vhphi/lock_rigid.py`, `dl_state.py`. The graphs are $17{:}0$ and $17{:}1$ only; these are the only `-m5` graphs of order $\le18$ with locks.
+
+- **Equitable.** In **all $192$** locked members ($60$ on $17{:}0$, $132$ on $17{:}1$, where a member is one canonical colouring in a locked class), the colouring of $T-x$ has colour classes of size exactly $4,4,4,4$. $T-x$ has $16$ vertices, so this is the most balanced colouring possible. These graphs have many unbalanced colourings, and none of them is locked.
+- **Rigid.** In $164$ of the $192$ members ($56$ and $108$), each of the three chains $\{c(y),k\}$ through $x$ and $y$ is the **entire** vertex set of the two colours, together with $x$. For those members, every Kempe change in $T-xy$ is a global colour transposition and nothing else.
+- **Worked example (17:1, $x=5$, doubly-locked).** Link of $x$ is $(0,4,12,6,1)$ with degrees $(5,5,5,6,5)$ and word $(0,2,1,3,1)$. Singletons sit at positions $0,1,3$, so the admitting fans have apexes $0,4,6$. The classes are $\{0,7,9,11\},\{1,10,12,14\},\{2,4,13,15\},\{3,6,8,16\}$. For each of the three fans, all three chains from the apex have size $9$ and contain $x$, so each is a full colour pair plus $x$. In $T-x$, deleting $x$ splits those chains. The four escape swaps found all act on the pieces of a chain that $x$ was holding together, changing $4$ or $6$ vertices, and each lands in a state separable for one fan.
+
+**Reading.**
+- A lock is not a vague "no chain can be broken". In every observed case it is an equitable colouring whose bichromatic subgraphs in $T-xy$ are connected only because $x$ closes them, and the escape is a swap in $T-x$ of a piece that $x$ was holding together. This matches "the escape always breaks exactly one chord" in §7.
+- **Counting lead.** If an equitable-only lock is general, a lock needs a $4$-colouring with all four classes of size $(n-1)/4$ in $T-x$, together with the connectivity of all three chains. Planar bipartite counting ($e\le 2v-4$ per connected bichromatic piece) could bound this. Not attempted.
+- **What is not shown.** The equitable property is data on two graphs of order $17$, where $16$ divides evenly by $4$. A lock at an order where $(n-1)$ is not a multiple of $4$ would test it: the conjecture would predict near-equitable, and the data has none to check. It is not proved, and it may be an accident of these two graphs.
