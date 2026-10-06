@@ -280,7 +280,7 @@ In short: the mobility theorem assumes every face of the map is a triangle; the 
 % REP/MathHighDegreeLandingResearch.md, REP/MathVHCoreAdvance.md, WK/MathRadiusGeometry.md, WK/MathReviewArTheoremH.md, MSG/..._1102_math_...
 % Ledger: structural-fixed-hole-triangle, structural-face-reduction, structural-deg5-mobility, structural-deg6-split, structural-trace-lift,
 % structural-theorem-h = proved (accepted by hand). All results below are hand proofs accepted by Math; none is audited.
-Every result in this section is a hand proof accepted by Math. In several cases Math's acceptance rested on a review by one of its sub-agents rather than on a re-derivation by the accepting session; we say so where the record says so. None has been checked by a human.
+Every result in this section is a hand proof accepted by Math, except the Tait lock criterion of Section~\ref{sec:tait}, which Math has not yet reviewed. In several cases Math's acceptance rested on a review by one of its sub-agents rather than on a re-derivation by the accepting session; we say so where the record says so. None has been checked by a human.
 
 \subsection{Separating triangles}
 \begin{lemma}[connectivity core; \lab{hand}]
@@ -367,6 +367,18 @@ The following are accepted hand results whose use depends on open hypotheses.
 % Ledger structural-d1-rigid = proved ("what is accepted is the reduction, not D1"); WP20 declaration LT/WP20-D1-declaration.md for D1.
 \end{itemize}
 
+\subsection{The edge-colouring view of a lock}\label{sec:tait}
+Identify the colours with $\mathbb Z_2\times\mathbb Z_2$, and give each edge $uw$ of $T-v$ the colour $c(u)+c(w)\neq0$. Its dual is then a proper 3-edge-colouring (a Tait colouring) of the dual graph $H$ of $T-v$, in which every node except the pentagon node $P$ meets one edge of each colour; a vertex colouring is recovered from it up to translation. \lab{cited}~\cite{tait1880,saatykainen}
+% LT/explore-vhphi/pathways/pd2_lock_proof.md "Notation (Tait)"; WK/creative-intel-2026-10-05/pathway-D.md section 1 and line 31 (dictionary [cited] per the audit's 12:08 notes; ledger structural-pathway-d note rev 116).
+Let the link of the unfilled state $s$ read $(\alpha,\mu,\alpha,c(a),c(b))$ at $x_j,\dots,x_{j+4}$, with $m=x_{j+1}$, $a=x_{j+3}$, $b=x_{j+4}$. Put $\beta=\alpha+\mu$, $\gamma=\alpha+c(a)$, $\delta=\alpha+c(b)$, and let $e_t$ be the edge of $P$ dual to $x_tx_{t+1}$; then $e_j,e_{j+1},e_{j+3}$ have colour $\beta$, $e_{j+2}$ has $\gamma$ and $e_{j+4}$ has $\delta$.
+\begin{lemma}[Tait lock criterion; \lab{hand}, not yet reviewed]\label{lem:tait}
+Let $Z_1$ be the $(\beta,\gamma)$-path of $H$ that leaves $P$ by $e_{j+2}$, and $Z_2$ the $(\beta,\delta)$-path that leaves $P$ by $e_{j+4}$. Then the lock from $m$ to $a$ holds if and only if $Z_1$ returns to $P$ by $e_{j+1}$, and the lock from $m$ to $b$ holds if and only if $Z_2$ returns by $e_j$; otherwise each returns by $e_{j+3}$. Consequently, if $s$ has the lock from $m$ to $b$, then $F(s)$ has its first lock (from its middle vertex to its $a$-vertex), because $F$ leaves the $(\beta,\delta)$ 2-factor unchanged.
+\end{lemma}
+% LT/explore-vhphi/pathways/pd2_lock_proof.md (Claim and proof); MSG/..._1239_longtable_..._pathway-D-lock-criterion-hand-proof-variant-X-killed.md items 1 and Corollary (commit f2e3ae7).
+% Ledger rev 119: "Tait lock criterion and its corollary: [hand], by a Long Table sub-agent, read by the lead, not yet reviewed by Math".
+% Code re-check (not part of the proof): 0 mismatches on 3,682 states (T4, A_3, A_4).
+The proof is a Jordan-curve argument in the dual: $Z_1$ closed through $P$ crosses no $\delta$-edge, so it separates $m$ from $a$ exactly when the lock fails. It was written by a Long Table sub-agent and read step by step by Long Table; Math has not yet reviewed it. So whether $F$ keeps both locks reduces to a single chain condition.
+
 \section{Negative results}\label{sec:neg}
 % Ledger nodes: structural-wp18-bound-two, structural-wp19-c1, -c3, -m2, structural-axis-symmetry, structural-slide-ranks,
 % structural-free-quad-game, structural-vh-lock-persistence, structural-conj-l-refuted, structural-conj-r-radius3-killed,
@@ -448,6 +460,13 @@ On 6 October the work moved from search to short, testable proof ideas (``pathwa
 % MSG/..._1159_math_... item 3; checked by hand by the audit, MSG/..._1232_audit_... item 3.
 \item \emph{The free adversary on a separating 4-cycle}, killed on one member \lab{computed}: on the order-16 member $16{:}1-st$, all 50 candidate pairs lose the free game. The real far side is not a free adversary, and the corrected trace game is not refuted.
 % REP/MathVHCoreAdvance.md "Independently checked finite game kill"; ledger structural-free-quad-game = killed ("stands as one member").
+\item \emph{Walk the hole to a good place (P-B) reduces to P-A} \lab{computed}, exploratory: on $T_4$ every hole of degree 5 or 6 has worst-case radius at least 3 (4 at all twelve degree-5 holes; 3, 3, 4, 4, 5 at the five degree-6 holes), so no target class beats the direct bound, and since VH$\exists$ chooses the vertex, no walk is needed.
+% MSG/..._1237_longtable_..._pathway-B-closed-reduces-to-PA.md "Verdict"; ledger rev 119 "P-B: closed into P-A ... recorded as a reduction, not a refutation".
+\item \emph{Tait invariants (P-D)} \lab{computed}, exploratory: no cycle-count or parity invariant of the Tait colouring separates doubly locked from filled states, and none is preserved by $F$.
+% Ledger structural-pathway-d note rev 116 (audit 12:08: "The invariant kill ... is accepted as stated"); WK/creative-intel-2026-10-05/pathway-D.md line 25.
+\item \emph{Variant X (P-D), killed on $T_4$} \lab{computed}, exploratory: on the 234 doubly locked states of $T_4$, no rule that reads the colours within distance 2 of $v$ decides whether $F$ keeps both locks (3 of 212 keys clash).
+% MSG/..._1239_longtable_... item 2; ledger rev 119 "Variant X: killed on T4 [exploratory]".
+% Audit 1305 (Fisk / Mohar-Salas degree invariants, parity only) left out: not recorded by the Navigator at revision 119.
 \end{itemize}
 \emph{Lesson.} A fill bound is not a function of local degrees: the lock paths are global. Any proof must use global structure, such as the Jordan curves of the lock paths or arguments in the style of Theorem~P.
 % MSG/..._1248_audit_... item 3(b).
@@ -533,10 +552,9 @@ Everything in this section is \lab{open}.
 \begin{itemize}
 \item \emph{Good neighbourhoods plus discharging (P-A).} Prove a fill bound for every degree-5 hole whose link has four vertices of degree at most 11 and one of arbitrary degree; Section~\ref{sec:failure} shows such holes always exist. Any such lemma must allow radius at least 4 ($T_4$), cannot be local to a ball of fixed radius around the hole, must handle a neighbour of unbounded degree as in the belt, and must survive the $A_r$ family and its one-flip variants.
 % MSG/..._1233_math_... item 3 (Lemma P-A*); MSG/..._1248_audit_... item 3 (acceptance conditions). Ledger structural-pathway-a (exploring).
-\item \emph{Walk the hole to a good place (P-B).} Mobility moves the hole freely, but on $T_4$ and an order-14 graph no hole of a known good class is reachable, and a (6,6,6,6,6) hole has no degree-5 neighbour.
-% MSG/..._1200_audit_... items 1 and 3; ledger structural-pathway-b (exploring).
-\item \emph{Edge-colouring view (P-D).} Translate holes, locks and swaps into Tait colourings of the dual cubic graph and look for a parity invariant. A short fill criterion holds there; the invariants tried so far do not separate locked from filled states.
-% Ledger structural-pathway-d note rev 116 (audit 12:08 on pathway-D.md). The Tait dictionary is classical [cited]: VERIFY a source (the audit suggests Tait 1880 or a standard text).
+\item \emph{Edge-colouring view (P-D).} In Tait language the two locks are two two-colour paths through the pentagon node (Lemma~\ref{lem:tait}, \lab{hand}, not yet reviewed). Parity invariants and local rules fail (Section~\ref{sec:neg}), so whether a lock persists depends on colours at distance 3 or more from the hole; what is needed is a global, Jordan-type argument about the two lock paths.
+% MSG/..._1239_longtable_... "Reading"; P-B was closed into P-A at revision 119.
+% Ledger structural-pathway-d notes rev 116 and 119.
 \end{itemize}
 
 \begin{thebibliography}{99}
@@ -552,6 +570,8 @@ Everything in this section is \lab{open}.
 \bibitem{kempe1879} A.~B.~Kempe, On the geographical problem of the four colours, \emph{Amer. J. Math.} 2 (1879). % VERIFY
 \bibitem{meyniel1978} H.~Meyniel, Les 5-colorations d'un graphe planaire forment une classe de commutation unique, \emph{J. Combin. Theory Ser. B} 24 (1978). % VERIFY; the repo names the theorem but gives no reference
 \bibitem{robertson1997} N.~Robertson, D.~P.~Sanders, P.~Seymour and R.~Thomas, The four-colour theorem, \emph{J. Combin. Theory Ser. B} 70 (1997). % VERIFY pages
+\bibitem{saatykainen} T.~L.~Saaty and P.~C.~Kainen, \emph{The Four-Color Problem: Assaults and Conquest}, McGraw--Hill (1977). % VERIFY all details; named in pd2_lock_proof.md and pathway-D.md without a reference
+\bibitem{tait1880} P.~G.~Tait, Remarks on the colouring of maps, \emph{Proc. Roy. Soc. Edinburgh} 10 (1880). % VERIFY all details; named as "Tait 1880" in the repo
 \bibitem{tilley2018} J.~Tilley, Kempe-locking configurations, \emph{Mathematics} 6(12):309 (2018); arXiv:1809.02807. % from literature-check.md section 2
 \end{thebibliography}
 \end{document}
