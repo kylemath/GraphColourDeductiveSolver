@@ -8,7 +8,7 @@ Points go to results that **survive checking**, in either direction. A proof and
 
 ## The target
 
-Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. The reduction R\* ⇒ VH_C ⇒ VH∃ ⇒ 4-colourability is proved by hand and re-derived by the audit. R\* holds when at most one neighbour of the hole has degree ≥ 6 **if Theorems H and HP hold**; both are hand proofs with two Math-team reviews, not audited and not compiled. **Open: two or more neighbours of degree ≥ 6.**
+Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. The reduction R\* ⇒ VH_C ⇒ VH∃ ⇒ 4-colourability is proved by hand and re-derived by the audit. R\* holds when at most one neighbour of the hole has degree ≥ 6, by Theorem H (compiled in Lean and audited, revision 130) and Theorem HP (re-derived by the audit by hand; its Lean form is built and awaits the audit's verdict). **Open: two or more neighbours of degree ≥ 6**, where core-class states of Kempe radius 5 have been found (pending the audit's replay).
 
 ## Bounties
 
