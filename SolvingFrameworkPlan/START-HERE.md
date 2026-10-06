@@ -131,7 +131,7 @@ Never write "proved" for computation. Never generalise a finite pass.
   - Orders 21–24: U∃ holds on every graph.
 
 **Killed:**
-- Every fixed Kempe-swap budget at a frozen hole.
+- At the frozen 21-vertex hole: slides alone (k = 0), and one Kempe swap then slides (k = 1). A uniform fixed swap budget for every colouring is **open**, not killed (Navigator revision 120).
 - Fitted ranks: q, lin and others.
 - m ≤ 2 (17:1; C1 by 24:6406).
 - C3: m ≥ 3 only with degrees 5 and 6.

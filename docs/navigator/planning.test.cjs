@@ -96,7 +96,7 @@ if (integrationPath) {
   for (const old of flatten(before)) {
    const n = Tree.findNode(State.getTree(), old.id);
    assert(n, 'preserve old ID: ' + old.id);
-   if(old.status === 'proved') assert.equal(n.status, 'proved', 'preserve checked green: '+old.id);
+   if(old.status === 'proved') assert(['proved','compiled'].includes(n.status), 'preserve checked green (proved may become compiled, never weaker): '+old.id);
    for (const note of old.notes || []) assert((n.notes || []).some(x => x.time === note.time && x.text === note.text), 'preserve history: ' + old.id);
   }
   const expected = new Map();
@@ -131,7 +131,7 @@ if (integrationPath) {
    assert.equal(Tree.findNode(root, 'track'+i).active, true);
   }
   assert.equal(Tree.findNode(root, 'foundation').status, 'proved');
-  assert.equal(Tree.findNode(root, 'f5-lean').status, 'proved');
+  assert.equal(Tree.findNode(root, 'f5-lean').status, 'compiled');
   assert.equal(Tree.findParent(root, 'f2').id, 'structural-gate-f');
   assert.equal(Tree.findParent(root, 'structural-a-extension').id, 'structural-a-rotation');
   assert.equal(Tree.findNode(root, 'structural-a-extension').status, 'proved');

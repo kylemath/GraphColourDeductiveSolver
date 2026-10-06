@@ -1,7 +1,12 @@
 {
-  "revision": 119,
-  "updatedAt": "2026-10-06T12:44:00-06:00",
+  "revision": 120,
+  "updatedAt": "2026-10-06T12:56:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T19:00:00Z",
+      "node": "dissemination-vhe-paper",
+      "action": "Revision 120 rules on the three conflicts flagged by Severn's draft of sections 2 to 7: the Five Colour Theorem node is corrected to compiled (all its modules are in the 105-module audit); START-HERE's 'every fixed Kempe-swap budget killed' is corrected to the ledger's scope (k = 0 and one swap then slides killed at the frozen 21-vertex hole, a uniform bound open); the 4-connected core has order at least 12. It also records Math's first vacancy D-reducibility results (T4 and icosahedral 2-balls reducible, pentakis 2-ball not), pending the audit; the audit's literature check and degree data for P-F; and P1's checker progress. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T18:50:00Z",
       "node": "structural-pathway-sprint",
@@ -10125,6 +10130,96 @@
       ],
       "id": "structural-pathway-sprint",
       "revision": 119
+    },
+    {
+      "status": "compiled",
+      "notes": [
+        {
+          "time": "2026-10-06T19:00:00Z",
+          "text": "Revision 120, ruling on Severn's conflict 2: the Five Colour Theorem in Lean is compiled in the ledger's sense. The modules FiveColorTheorem, FiveColor, SphericalFiveColor, FiveColorSeparation, FiveColorExtension, FiveColorExamples and the test PlaneMapFiveColor are all in the 105-module audit manifest (audit-101/manifest.json, checked), with no sorry and standard axioms. The node said proved because it was recorded before the status word compiled existed. The paper uses [compiled]. Scope: graphs presented as a plane or spherical map; nothing proves that an abstractly planar graph admits one."
+        }
+      ],
+      "files": [
+        "backgroundMaterial/planemap-structural/audit-101/manifest.json",
+        "SolvingFrameworkPlan/docs/reports/Lean105ModuleAudit.md"
+      ],
+      "id": "f5-lean",
+      "revision": 120
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:00:00Z",
+          "text": "Revision 120, ruling on Severn's conflict 1: the ledger stands and START-HERE section 6 was too broad. What is killed: k = 0 (slides alone; slides preserve colour counts) and k = 1 then slides at the frozen 21-vertex hole (all 16 one-step swaps stay frozen). A uniform fixed bound k for every colouring is open (exploring): two named swaps then a slide fill that same colouring. The WP18 and WP19 kills of specific length bounds (fan-selection length at most 2, kappa at most ell + 1) are separate nodes. START-HERE section 6 is corrected to say this. The paper must not state \"every fixed Kempe-swap budget is killed\"."
+        }
+      ],
+      "id": "structural-swap-budget",
+      "revision": 120
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:00:00Z",
+          "text": "Revision 120, ruling on Severn's conflict 3: the bound is order at least 12. MathFourConnectedResearch.md Proposition 9 (order at least 11) is the earlier result; MathVHCoreAdvance.md item 5, accepted by Math at 17:29 on 5 October, excludes orders 10 and 11 as well, so it supersedes Proposition 9. The ledger and START-HERE both say 12; the paper uses 12, citing MathVHCoreAdvance.md."
+        }
+      ],
+      "id": "structural-face-reduction",
+      "revision": 120
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1244_severn_to_longtable+math+audit+navigator+coordination_paper-sections-2-7-draft.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T19:00:00Z",
+          "text": "Revision 120: Severn drafted sections 2 to 7 in main.tex (commit 8fd126b), 23 pages in the default layout, every claim labelled and sourced in comments, built from ledger revision 117; WP20 P1 and WP21 written as pending with placeholders and no numbers. Navigator rulings on its three CONFLICT comments: (1) do not say every fixed swap budget is killed; say k = 0 and k = 1-then-slides are killed at the frozen 21-vertex hole and a uniform fixed bound is open; (2) the Five Colour Theorem is [compiled] (node f5-lean corrected to compiled); (3) the 4-connected core has order at least 12 (MathVHCoreAdvance.md, superseding Proposition 9's 11). The Euler lemma Severn used is in the ledger since revision 119 as proved by hand (written by the audit, accepted by Math's own review); keep it, labelled [hand]. Since revision 117: L4 and Theorem P compiled and audited (Math confirmed); the R* reduction is exploring (not a theorem yet); P-B closed into P-A; P-C killed as stated; the Tilley route killed; vacancy D-reducibility results computed and pending the audit's replay. The coordinator decided the preamble gets the 1in geometry margin (Long Table applies). The navigator's claim-by-claim check of the full draft is still to run before the user is asked to post."
+        }
+      ],
+      "id": "dissemination-vhe-paper",
+      "revision": 120
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:00:00Z",
+          "text": "Revision 120, Math 12:43 (worker built the checker; Math reran the T4 case and read the soundness argument): [computed, exploratory, PENDING the audit's independent implementation and adversarial read of soundness]. Game: the r-ball K around v with a simple boundary ring; states are proper 4-colourings of K - v with four link colours (not required to extend); for each of the three colour splits the outside is a non-crossing perfect matching of the ring edges crossing the split; the player picks a split, the adversary reveals its matching, the player swaps one whole component; the other two matchings are re-chosen by the adversary; components wholly outside K are never swapped by the player; the three matchings need not come from one common outside; value is the min-max number of swaps to a link with at most 3 colours. Soundness [hand, Math's reading, to be attacked by the audit]: any T containing K with the same ring realises one matching per split, so if K is reducible, every state at v in T fills within the game depth. Verifier: 36 explicit triangulations, real components matched allowed matchings and the real radius never exceeded the abstract value, 0 violations. Results: T4 hole 4 radius-1 ball not reducible (Kempe's error, as expected); T4 2-ball REDUCIBLE, depth 7 (real radius 4); T4 3-ball (the whole graph) reducible, depth 4; icosahedral 2-ball (A_3 and A_4 centre) reducible, depth 3 (a machine version of Theorem H, tight); pentakis (6^5) 2-ball NOT reducible (180 of 550 unfilled colourings won in 1 swap, 370 lost); pentakis 3-ball (graph-specific) reducible, depth 7. Not shown: that every ball type passes, any unavoidable family, a generic (6^5) result; each configuration was checked on one explicit embedding. Next (Math): a game with one common outside for the three matchings; enumerate the 2-ball configurations with link degrees in 5 to 11; ask Long Table for a discharging argument."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathVacancyDRed/README.md",
+        "SolvingFrameworkPlan/docs/working/MathVacancyDRed/vdred.py",
+        "SolvingFrameworkPlan/docs/working/MathVacancyDRed/verify.py",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1243_math_to_coordination+audit+navigator+longtable_vacancy-D-reducibility-first-results.md"
+      ],
+      "id": "structural-vacancy-d-reducibility",
+      "revision": 120
+    },
+    {
+      "statement": "A side pathway: use a degree or winding invariant of 4-colourings (as simplicial maps to the boundary of the tetrahedron) to constrain doubly locked states or targetless components. Literature, as checked by the audit (13:05): Mohar and Salas, J. Phys. A 42 (2009) 225204, arXiv:0901.1010, Theorem 3.4 (degree mod 12 is a Kempe invariant for three-colourable triangulations of a closed oriented surface) and Proposition 3.2; Mohar, \"Kempe equivalence of colorings\", Graph Theory in Paris, Birkhauser 2006 (page range recalled, not verified), Theorem 4.4 (all 4-colourings of a three-colourable planar graph are Kempe equivalent); Fisk, \"Geometric coloring theory\", Adv. Math. 24 (1977) 298-340, cited by Mohar and Salas for \"degree divisible by 12 implies Kempe equivalent\" on three-colourable triangulations (that their reference is the 1977 paper is not verified). None applies to our class: a minimum-degree-5 triangulation has odd-degree vertices and is never three-colourable. In the hole setting the degree is not defined as for closed surfaces; a winding of the link walk in K4 must be defined around a removed point.",
+      "approach": "Owner: Math. Audit as adversary and literature check. Audit data [exploratory, all 23 minimum-degree-5 triangulations of orders 12 to 18, 101 Kempe classes, about 1 CPU-minute]: only the parity of the degree is constant on every Kempe class; mod 3, 4, 6, 8, 12 vary on 55, 33, 55, 59, 61 classes; parity is not determined by the graph (14:0 has an even and an odd class); the icosahedron has 10 singleton classes, |deg| = 3. Adversary tests for any proposed invariant: constant along the A_3 period-60 orbit, and separating doubly locked from filled states on T4 and A_3 to A_5 (P-D's parity features already failed the latter).",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/pathway-adversary/pf_degree.py",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1305_audit_to_math+coordination+navigator+longtable_P-F-literature-check-and-degree-data.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T19:00:00Z",
+          "text": "Revision 120: the recalled attribution \"Fisk 1977 and Mohar on Kempe equivalence\" is corrected by the audit: the mod-12 Kempe invariant is Mohar and Salas 2009, not Mohar 2006, and all three results need three-colourable triangulations. Only degree parity survives Kempe changes in our data."
+        }
+      ],
+      "id": "structural-pathway-f",
+      "revision": 120
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:00:00Z",
+          "text": "Revision 120: the independent --all check had done 18,345 of 25,381 graphs at 12:53 (coordinator's figure). No result yet."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 120
     }
   ]
 }
