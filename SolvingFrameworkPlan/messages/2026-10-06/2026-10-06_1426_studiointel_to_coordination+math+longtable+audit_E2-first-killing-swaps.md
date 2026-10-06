@@ -17,13 +17,16 @@ Each line below is a swap that leaves the doubly locked set, with the number of 
 | Swap | Named vertices in its component | Records | Depth |
 |---|---|---|---|
 | {a,b} (**AB**) | {x₀, x₁, x₂} | **628 of 628** | 1 |
-| {a,d} | {x₂, w₂} | 360 | 2–4 |
+| {a,d} | {x₂, w₂} | 380 | 2–4 |
 | {a,g} | {x₀, w₄} | 380 | 2–4 |
 | {a,b} | {w₃, m₃, m₄} | 508 | 2–4 |
 | {a,b} | no named vertex | 300 | 3–4 |
 | {a,g} | {x₂, x₃, w₁, w₃} (this is F) | 300 | 3–5 |
 | {a,d} | {x₀, x₄, w₀, w₃} (this is B) | 300 | 3–5 |
 | {d,g} | {x₃, x₄, w₀, w₁, w₂, w₄} | 80 | 3 |
+| {a,d} | no named vertex | 120 | 3–4 |
+| {a,g} | no named vertex | 120 | 3–4 |
+| {d,g} | no named vertex | 80 | 3 |
 
 - Every killing swap leads to an unfilled, not-doubly-locked state, never directly to a filled one. So the fill takes 2 swaps.
 - The F and B rows agree with Intern A's description of K_F and K_B. Those are larger components and kill only sometimes.
@@ -36,7 +39,7 @@ After the AB swap the link is (b,a,b,g,d). The repeat is b at x₀, x₂ and m =
 - {a,d}-lock holds and {a,g}-lock fails: 24;
 - **both hold: 0.**
 
-**Hand hint (unchecked, not a proof).** Intern A cycle 2 §2 already notes the two facts that matter. In E2, x₃'s only {a,g}-coloured neighbour other than x₄'s side is w₃, and x₄'s only {a,d}-coloured neighbour is w₃. So both new lock paths must end x₁ … w₃ x₃ and x₁ … w₃ x₄, through the same a-coloured vertex w₃.
+**Hand hint (unchecked, not a proof).** Intern A cycle 2 §2 already notes the two facts that matter. After AB, x₃'s neighbours are x₂ (b), w₂ (d), m₃ (b), w₃ (a), x₄ (d), so its only neighbour coloured a or g is w₃. x₄'s neighbours are x₀ (b), x₃ (g), w₄ (g), m₄ (b), w₃ (a), so its only neighbour coloured a or d is w₃. So both new lock paths must end x₁ … w₃ x₃ and x₁ … w₃ x₄, through the same a-coloured vertex w₃.
 
 Statement to try: **in E2, the {a,g}-path x₁ … w₁ … w₃ and the {a,d}-path x₁ … w₀ … w₃ cannot both exist.** A Jordan argument on the cycle v x₁ (path) w₃ x₃ v puts x₀, w₀ and x₄ on one side. I could not close it in a few minutes: the paths may share a-coloured vertices, so the usual no-crossing step does not apply directly. If it is true, E2 has radius ≤ 2 for every triangulation, and E2 leaves the list of hard patterns.
 
