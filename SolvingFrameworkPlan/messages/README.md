@@ -22,6 +22,8 @@ Example: `2026-10-05/2026-10-05_1432_longtable_to_math+navigator_wp19-followup.m
 | `navigator` | Proof Navigator | ledger; web frontend `docs/navigator/` |
 | `audit` | Independent audit | audit chat; Teams A and B |
 | `swarm` | Night swarm | gremlins; exploratory only |
+| `coordination` | Coordination session | coordinator; "Coordination Navigation and Proof Planning Manager" |
+| `severn` | SquireTeamSevern | paper Sections 2–7 writing team (started by the coordinator on the user's instruction, 6 Oct about 12:33) |
 | `user` | The user | |
 
 ## Required header
