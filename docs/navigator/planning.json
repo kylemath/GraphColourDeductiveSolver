@@ -1,7 +1,12 @@
 {
-  "revision": 129,
-  "updatedAt": "2026-10-06T14:26:00-06:00",
+  "revision": 130,
+  "updatedAt": "2026-10-06T14:45:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T20:45:00Z",
+      "node": "structural-chain-rstar",
+      "action": "Revision 130 records the audit's Lean verdicts J5 to J7 as passed: the Euler lemma (minimum-degree-5 form and the relative class link L5 needs) and Theorem H from triangulation hypotheses are compiled and audited, non-vacuous on the icosahedron. Theorem HP in Lean is built and Studio-checked (J8), audit pending. Studio intel Phase C found four core-class states of Kempe radius exactly 5 (computed, pending the audit's replay); R* is not refuted. Phase D is approved, not started. The audit's P1 replay J3 is running. Leaderboard: studiomath +280, studiocompute +120. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T20:30:00Z",
       "node": "dissemination-mathlib-planemap",
@@ -10682,7 +10687,6 @@
         }
       ],
       "files": [
-        "SolvingFrameworkPlan/docs/working/StudioMathLean/EulerCounting.lean",
         "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1406_studiomath_to_coordination+math+navigator+audit_Euler-counting-lemma-compiled.md",
         "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1445_audit_to_coordination+studiomath+navigator_Euler-counting-Lean-statement-read-and-studio-check.md"
       ],
@@ -10877,6 +10881,251 @@
       ],
       "id": "structural-pathway-sprint",
       "revision": 129
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-euler-lemma",
+      "revision": 130,
+      "node": {
+        "id": "structural-euler-lemma-lean",
+        "title": "Lean: Euler lemma, minimum-degree-5 form and relative class (compiled and audited, J5 to J7)",
+        "status": "compiled",
+        "statement": "SphericalMap.twelve_light_fives (minimum degree 5: at least 12 degree-5 vertices with at most one neighbour of degree at least 6) with edge_card_bound_sharp (E + 2 <= n + F, no connectivity assumed); and the relative-class form SphericalMap.relative_light_fives: on a triangulation, for any set phi of at most 3 vertices with every vertex of degree at least 5 or of degree 4 on phi, at least 9 - n4 good vertices lie off phi (n4 = number of degree-4 vertices on phi). The relative form is the counting input of link L5 of the R* chain.",
+        "approach": "Studio Math (branch studio-math, commits 536ffbc, 849a228, daa4e1d; file EulerSharp.lean, one copy of goodSet after EulerCounting.lean was deleted). Single-file checks against the Studio build of the audited snapshot 8299419, run by the Studio compute session on the audit's commands (J5 4afe683, J6 e9e02f2, J7 c3fd7ed on studio-wp21), verdicts by the audit.",
+        "evidence": "Audit verdicts J5 PASSED (14:26, 10c3744), J6 PASSED (b726a87), J7 PASSED (8a74fd6): shasum OK, escape-hatch grep empty, builds exit 0, per-file axiom sweeps 0 nonstandard (EulerSharp 14, 15, 19 constants), planted sorry detected; printed statements equal the audit's reading. Non-vacuity on the icosahedron: twelve_light_fives_icosahedron; relative_light_fives_icosahedron with phi = {0,1,5}, where n4 = 0 (the degree-4 branch is not exercised by any instance; the audit calls that a nice-to-have, not a condition).",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1426_audit_to_coordination+studiomath+navigator+severn_J5-verdict-Euler-and-H-Lean-check-passed.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1429_audit_to_coordination+studiomath+navigator+severn_J6-verdict-Theorem-H-compiled-and-audited.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1432_audit_to_coordination+studiomath+navigator+severn_J7-verdict-relative-Euler-lemma-compiled-and-audited.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1429_studiomath_to_coordination+audit+navigator+math_relative-class-Euler-lemma-compiled.md",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/SHA256SUMS"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T20:45:00Z",
+            "text": "Revision 130: compiled and audited. Wording: \"twelve_light_fives and edge_card_bound_sharp: compiled, audited (J5, J6); relative_light_fives: compiled and audited (J7, c3fd7ed), the counting input of link L5 of the R* chain\". The R* chain itself stays [hand]; only this counting piece is compiled."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-euler-lemma",
+      "revision": 130,
+      "title": "Euler lemma: at least 12 degree-5 vertices with at most one neighbour of degree at least 6 (hand; Lean compiled and audited)",
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: the Lean version (both the minimum-degree-5 form and the relative class link L5 needs) is compiled and audited (J5, J6, J7); see the child node structural-euler-lemma-lean. The revision 129 caveat (not the relative form) is answered by relative_light_fives."
+        },
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130, path fix: docs/working/StudioMathLean/EulerCounting.lean was deleted by Studio Math in 849a228 (duplicate definitions removed; its content is in EulerSharp.lean). The path is dropped from the revision 127 record; the file stays in git history at 7178c2d."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1426_audit_to_coordination+studiomath+navigator+severn_J5-verdict-Euler-and-H-Lean-check-passed.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1432_audit_to_coordination+studiomath+navigator+severn_J7-verdict-relative-Euler-lemma-compiled-and-audited.md"
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-theorem-h",
+      "revision": 130,
+      "node": {
+        "id": "structural-theorem-h-lean",
+        "title": "Lean: Theorem H from triangulation hypotheses (compiled and audited, J6; non-vacuous on the icosahedron)",
+        "status": "compiled",
+        "statement": "SphericalMap.theorem_H: M.Triangulated -> degree h = 5 -> (every neighbour u of h has degree 5) -> NoSeparatingTriangleAt h -> ProperOff M.graph h c -> PureFill M.graph h c 3. Every proper colouring of T - h fills within 3 pure Kempe swaps. NoSeparatingTriangleAt h (every edge between two neighbours of h joins rotation-consecutive neighbours) is weaker than the hand hypothesis, so the compiled theorem is slightly stronger; the audit confirmed it as the right formal hypothesis (14:28).",
+        "approach": "Studio Math, VacancyIcosahedral.lean (commit 849a228): IcoBall is derived by icoBall_of_triangulated (no longer a hypothesis); the only planar input is the audited vacancy_alternation.",
+        "evidence": "Audit J6 PASSED (14:29, b726a87) on the Studio outputs e9e02f2 (studio-wp21): shasum OK, grep empty, exit 0, 36 constants in VacancyIcosahedral with 0 nonstandard, negative control detected. Non-vacuity: theorem_H_icosahedron discharges every hypothesis at vertex 0 of the icosahedron, and sampleColouring_unfilled shows the colouring uses four colours on the link. J5 (10c3744) earlier passed ico_fill under the hypothesis IcoBall.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1429_audit_to_coordination+studiomath+navigator+severn_J6-verdict-Theorem-H-compiled-and-audited.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1428_audit_to_coordination+studiomath+navigator+severn_NoSeparatingTriangleAt-confirmed-J6-criteria.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1427_studiomath_to_coordination+audit+navigator+math_Theorem-H-from-triangulation-and-non-vacuity.md",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/SHA256SUMS"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T20:45:00Z",
+            "text": "Revision 130: compiled and audited. Wording: \"Theorem H: compiled and audited (J6, e9e02f2) from graph hypotheses (triangulated; the hole and all its neighbours of degree 5; no separating triangle through the hole), non-vacuous on the icosahedron; every proper colouring fills within 3 pure Kempe swaps.\" The audit's S2 and S3 are answered."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-theorem-h",
+      "revision": 130,
+      "title": "Theorem H: icosahedral holes have Kempe radius at most 3 (proved by hand; Lean compiled and audited, J6)",
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: the Lean version is compiled and audited from triangulation hypotheses (J6), non-vacuous on the icosahedron; see structural-theorem-h-lean. Intern C (cycle 2) found no gap in the hand proof."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1429_audit_to_coordination+studiomath+navigator+severn_J6-verdict-Theorem-H-compiled-and-audited.md"
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-theorem-hp",
+      "revision": 130,
+      "node": {
+        "id": "structural-theorem-hp-lean",
+        "title": "Lean: Theorem HP from triangulation hypotheses (built and Studio-checked as J8; audit verdict pending)",
+        "status": "in-progress",
+        "statement": "SphericalMap.theorem_HP: M.Triangulated, degree h = 5, p a neighbour of h with every other neighbour of degree 5 (nothing assumed of p), NoSeparatingTriangleAt h; then every proper 4-colouring of T - h fills within 6 whole-component Kempe swaps (PureFill ... 6).",
+        "approach": "Studio Math (commit 51f222b, merged 24563a3): the hand proof step for step (Lemmas 1 to 3, F- and B-starvation, AB, the termination table); two-ball by hpBall_of_triangulated; non-vacuity theorem_HP_icosahedron.",
+        "evidence": "Studio Math reports check.sh passes, standard axioms only, no sorry/admit/native_decide, a sabotaged copy rejected. The Studio compute session posted the J8 outputs (studio-wp21 072367c, 14:39) on the audit's commands. The audit has not yet given a J8 verdict. Not compiled in the ledger's sense until it does.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1438_studiomath_to_coordination+audit+navigator+math+severn_Theorem-HP-compiled.md",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/SHA256SUMS"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T20:45:00Z",
+            "text": "Revision 130: built and Studio-checked (J8 outputs posted), audit verdict pending. No status word until the audit's verdict."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-theorem-hp",
+      "revision": 130,
+      "title": "Theorem HP: a degree-5 hole with four degree-5 neighbours and one neighbour of any degree has radius at most 6 (hand, re-derived by the audit; Lean built, audit pending)",
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: Lean version built by Studio Math (51f222b) and Studio-checked as J8; audit verdict pending (child node structural-theorem-hp-lean). Intern C (two cycles) found no gap in the hand proof."
+        }
+      ]
+    },
+    {
+      "id": "structural-chain-rstar",
+      "revision": 130,
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: the counting input of link L5 (relative_light_fives, at least 9 - n4 good vertices off phi) is compiled and audited (J7). The chain L1 to L6 stays proved by hand (audit re-derivation); the 300-point Lean bounty for the six links is not met by one piece. Theorem H is compiled and audited (J6); Theorem HP is built, audit pending (J8). Open: two or more neighbours of degree at least 6."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1432_audit_to_coordination+studiomath+navigator+severn_J7-verdict-relative-Euler-lemma-compiled-and-audited.md"
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "index": 1,
+      "revision": 130,
+      "node": {
+        "id": "structural-rstar-phase-c",
+        "title": "R* tabu search, Phase C (studiointel, pre-registered): four core-class states of Kempe radius exactly 5, audit replay pending",
+        "status": "computed",
+        "statement": "Phase C statement S2': some degree-5 hole in the core class (sphere triangulation, minimum degree 5, no separating triangle) has a state of Kempe radius at least 5; also S1 (a targetless class, a counterexample to R*).",
+        "approach": "Declared before it ran (declaration committed e9d62ba, merged 2effe65; 7,200 CPU-s cap; tabu search from four seeds; checker check.py does not import the producer). Phase D (C++ engine, exact regression 0 mismatches on 190 holes; 4 CPU-h; declaration 1196925, merged 9563e33) is approved and starts after Phase C ends; not started.",
+        "evidence": "Four certificates on main under studiointel/run-C-2026-10-06/cert/ (commits 06b158a, 8fb57bf, ac52b5b): 91a307d1 (order 28, hole 22, link degrees (5,5,6,5,6)); 8a23ee3e and 62661a3f (order 28, hole 23, (5,6,6,6,5), two tabu steps apart, possibly isomorphic, not checked); 80b930d1 (order 32, hole 23, (7,5,6,5,6)). Each: core class by core_check.py; check.py lb at 5 OK and at 6 FAIL, so radius exactly 5 [computed, the team's own checker]. No targetless class: every degree-5 vertex of these graphs is clean in the producer's table, so R* is not refuted and VH-exists is untouched. The audit's independent replay (replay_radius.py, 5f41435; commands 4aebc9d and 6447074) is queued on the Studio; no verdict yet.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1427_studiointel_to_coordination+navigator+audit+math+longtable_radius-5-state-certificate.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1428_studiointel_to_coordination+navigator+audit+math+longtable_two-more-radius-5-certificates-three-six-neighbours.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1438_studiointel_to_coordination+navigator+audit+math_fourth-radius-5-certificate-order-32.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1450_studiointel_to_coordination+navigator+audit+math+longtable_declaration-phase-C-tabu.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1437_studiointel_to_coordination+navigator+audit+math+longtable_declaration-phase-D-fast-engine.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1430_audit_to_coordination+studiointel+navigator_radius-5-replay-commands.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1438_audit_to_coordination+studiointel+navigator_radius-5-replay-fourth-certificate.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1428_math_to_coordination+studiomath+studiointel+audit_radius-5-consistent-with-game-C6.md",
+          "backgroundMaterial/planemap-structural/studiointel/run-C-2026-10-06/cert/91a307d1852a1764.graph.json",
+          "backgroundMaterial/planemap-structural/studiointel/run-C-2026-10-06/cert/80b930d1540e4ee3.graph.json"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T20:45:00Z",
+            "text": "Revision 130: computed, pending audit replay. All four holes have two or more neighbours of degree at least 6 (the open case of R*). Math (14:28): consistent with the (5,5,6,5,6) game depth 14; no claim of Math's is falsified; job C6 added. Kills nothing recorded as a conjecture (maximum radius 4 was data, not a claim)."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-rstar-adversary-search",
+      "revision": 130,
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: superseded as the live search by Phase C (structural-rstar-phase-c), which found radius-5 states in the core class (computed, pending audit replay). This node's finite negative stands for its 131 graphs."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 130,
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: Studio intel Phase C found a state of radius exactly 5 at a (5,5,6,5,6) hole (order 28; pattern dgdbg at P1, inside intern B's closed set of 20) [computed, pending audit replay]; Math: consistent with that class's game depth 14 (test C6). Intern A cycle 3 [hand, unreviewed]: in E2, if both locks hold after AB then w3 has degree at least 6; so E2 has radius at most 2 when w3 has degree 5; the case of w3 of degree at least 6 is open. Long Table 14:30 (1a6e183) [hand, unreviewed]: an exact lock criterion after AB via the W-swap; gap reduced to two P-paths."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle3.md"
+      ]
+    },
+    {
+      "id": "structural-conj-r-prereg",
+      "revision": 130,
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: Studio intel Phase C reports four core-class states of Kempe radius exactly 5 (orders 28 and 32) [computed, pending audit replay]. If replayed, the radius is not bounded by 4 in the core class, and Conjecture R, if true, needs a bound of at least 5 (Math 14:28). This kills no recorded conjecture: radius at most 4 was an empirical pattern, not a claim. The radius-3 kill (T4) stands."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1427_studiointel_to_coordination+navigator+audit+math+longtable_radius-5-state-certificate.md"
+      ]
+    },
+    {
+      "id": "structural-wp20",
+      "revision": 130,
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: the audit's own P1 replay J3 (route A) has been running on the Studio since 14:14:44, due about 15:05; outputs go to studio-wp21 and the audit writes the verdict. T2 (identical, J4) stays recorded as a reproduction, not the audit's replay."
+        }
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 130,
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130: Severn (1183d8e, 14:24) replaced the section 3 caveat with the re-audit wording and added the Lean Euler lemma and Theorem H as \"built, audit pending\". That label is now out of date: Severn may write \"compiled and audited\" for twelve_light_fives with edge_card_bound_sharp (J5, J6), for relative_light_fives (J7), and for theorem_H from graph hypotheses, non-vacuous on the icosahedron (J6); ico_fill under IcoBall is superseded by theorem_H. Theorem HP in Lean: \"built, audit pending\" (J8). The radius-5 states: \"computed, pending audit replay\", if cited at all."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1424_severn_to_audit+navigator+longtable+math+coordination_paper-reaudit-and-lean-euler-H.md"
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 130,
+      "notes": [
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130, interns (Sonnet, hand only; files in docs/working/interns-2026-10-06/): A (cycle 3) E2 after AB partially closed: both locks holding forces deg w3 >= 6, so E2 has radius <= 2 when w3 has degree 5; open otherwise [hand, unreviewed]. B: in (5,5,6,5,6) HP's automaton has a closed set of 20 states and AB is never available (checked correct by Math). C: no gap in HP or H (two cycles). D: the coset-curvature potential is killed on data (Studio intel 14:10: no separation of radius-4 from radius-2 states, not monotone along shortest fills)."
+        },
+        {
+          "time": "2026-10-06T20:45:00Z",
+          "text": "Revision 130, leaderboard: studiomath +200 (Theorem H compiled in Lean, in the audit's check J6) and +80 (Euler lemma compiled in Lean, J5 and J6); the relative class (J7) is part of the same 80, and HP (200) waits for the J8 verdict. studiocompute +120: J5, J6, J7 and J8 are four separate coordinator-requested runs of the audit's check on distinct file sets, each with verbatim outputs posted on studio-wp21 (4afe683, e9e02f2, c3fd7ed, 072367c); under B1 a requested replay pays 30 on a posted report whatever the verdict (J4 was a digest comparison and scored nothing). Not scored: the radius-5 certificates (150, on the audit's replay only). Totals: math 30, audit 30, studiomath 310, studiocompute 180, intern-C 30, others 0."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle3.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D.md",
+        "SolvingFrameworkPlan/docs/core/BountyBoard.md"
+      ]
     }
   ]
 }

@@ -51,11 +51,11 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | math | 30 |
 | audit | 30 |
 | studiointel | 0 |
-| studiomath | 30 |
-| studiocompute | 60 |
+| studiomath | 310 |
+| studiocompute | 180 |
 | intern-A | 0 |
 | intern-B | 0 |
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 129 (6 October, 14:26 MDT). Awards so far are the fixed 30-point reward for requested independent re-derivations (see the revision 127 message for items and evidence).
+Totals as of Navigator revision 130 (6 October, 14:45 MDT). Revision 130 paid the Lean bounties for Theorem H (200) and the Euler lemma (80) to studiomath on the audit's verdicts J5 to J7, and four fixed 30-point requested-replay awards (J5 to J8) to studiocompute; see the revision 130 message for items and evidence.
