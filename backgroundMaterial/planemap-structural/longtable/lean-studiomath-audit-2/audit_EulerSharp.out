@@ -1,0 +1,16 @@
+@SimpleGraph.SphericalMap.twelve_light_fives : ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n) (d : M.Dart),
+  (∀ (f : M.Face), M.rotation.faceLength f = 3) →
+    (∀ (v : Fin n), 5 ≤ M.graph.degree v) → 12 ≤ (StudioMath.goodSet M.graph).card
+@SimpleGraph.SphericalMap.edge_card_bound_sharp : ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n) (d : M.Dart),
+  Fintype.card ↑M.graph.edgeSet + 2 ≤ n + Fintype.card M.Face
+SimpleGraph.Icosahedron.twelve_light_fives_icosahedron : 12 ≤
+  (StudioMath.goodSet SimpleGraph.Icosahedron.sphericalMap.graph).card
+@[expose] def StudioMath.goodSet.{u_1} : {V : Type u_1} →
+  [Fintype V] → (G : SimpleGraph V) → [DecidableRel G.Adj] → Finset V :=
+fun {V} [Fintype V] G [DecidableRel G.Adj] =>
+  {v | G.degree v = 5 ∧ (Finset.filter (G.Adj v) (StudioMath.highSet G)).card ≤ 1}
+@[expose] def StudioMath.highSet.{u_1} : {V : Type u_1} →
+  [Fintype V] → (G : SimpleGraph V) → [DecidableRel G.Adj] → Finset V :=
+fun {V} [Fintype V] G [DecidableRel G.Adj] => {v | 12 ≤ G.degree v}
+file constants checked: 15; nonstandard: 0; []
+exit 0
