@@ -1,8 +1,8 @@
 % VH-exists paper: a dated record of what is solid. SKELETON (outline stage), 6 Oct 2026.
 % Every claim carries one label: [hand] [compiled] [computed] [cited] [open].
-% No claim stronger than the Navigator's ledger. Author: Kyle Mathewson (the user's statement, relayed 12:06). Acknowledgement of AI assistance: full disclosure (Option A of ACKNOWLEDGEMENT-DRAFT.md), chosen by the user 6 Oct 2026; model names/versions still to decide.
+% No claim stronger than the Navigator's ledger. Author: Kyle Mathewson (the user's statement, relayed 12:06). Acknowledgement of AI assistance: full disclosure section (user's decision 12:20, 6 Oct 2026); Kyle approves the final wording before posting.
 \documentclass[11pt]{article}
-\usepackage{amsmath,amssymb,amsthm,hyperref}
+\usepackage{amsmath,amssymb,amsthm,hyperref,url}
 \newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}\newtheorem{conjecture}{Conjecture}
 \newcommand{\lab}[1]{\textsf{[#1]}}
 \title{The vacancy induction for the Four Colour Theorem:\\ a dated record of what is solid}
@@ -10,6 +10,15 @@
 \date{6 October 2026 (draft outline)}
 \begin{document}\maketitle
 \begin{abstract}TODO after sections 1--6 are drafted. States only what the ledger supports.\end{abstract}
+\section*{How this paper was made: disclosure of AI authorship}
+\textbf{This work was produced by a team of AI agents, not by a human mathematician working alone.} The mathematics (definitions, hand proofs, counterexamples), the Lean~4 formalisation, the computations and the text of this paper were produced by instances of Claude, an AI model family by Anthropic, run through Claude Code in several separate sessions with named roles: \emph{Long Table} (hand proofs and exploratory experiments), \emph{Math} (proof review, Lean formalisation, module audit, written go-aheads for experiments), \emph{Audit} (independent replays and adversarial review), \emph{Navigator} (the status ledger and its status words), a \emph{coordinator} session (sequencing between teams), and a \emph{night swarm} of overnight exploratory agents whose outputs are used only as leads. Several of these sessions delegated sub-tasks to further short-lived AI sub-agents, for example to write checkers blind to the producer's code. The model versions varied between sessions and were not recorded uniformly [\textsc{to complete if wanted}].
+
+\textbf{Kyle Mathewson is the author and is responsible for the claims.} What he did, as recorded in the message history: he set the research direction and the standing rules (which experiments may run, caps, who may release them), decided the division of work and the authority of the coordinating session, approved outward-facing steps such as downloading software, decided authorship and this disclosure, and received the reports. [\textsc{Kyle: add or correct what you did in your own words.}] He did not write the proofs or the code, and the proofs have not been checked by a human referee.
+
+\textbf{How results were checked.} Each claim carries one label. \lab{compiled} means a Lean development with no \texttt{sorry} and only the standard axioms, rechecked by a module audit run by the Audit team. \lab{hand} means a written argument reviewed by another AI session, not by a human referee. \lab{computed} means a declared experiment whose producer was checked by a separately written checker, with the declaration hashed before the run, and which says only ``on these graphs''. \lab{cited} is taken from the literature and was read by AI agents, not by the author. \lab{open} is not claimed. The labels come from this process, and the Navigator's ledger gives each result's status word; no claim here is stronger than that ledger. Reviews among AI sessions can share blind spots, which is why the \lab{hand} results should be read as unrefereed.
+
+\textbf{Record.} The full repository, with every message between the teams, the declarations, hashes, code and outputs, is at \url{https://github.com/kylemath/GraphColourDeductiveSolver} [\textsc{confirm public before posting}]. Anything in this paper can be traced to a dated file there.
+
 \section{The vacancy induction and the hypothesis VH$\exists$}
 TODO: definitions; theorem VH$\exists\Rightarrow$ 4-colourability; containment and apex-singleton lemmas. \lab{hand}/\lab{compiled}
 \section{What is compiled in Lean}
@@ -22,6 +31,4 @@ TODO: Conjecture L refuted (W6; $A_r$ orbits that still fill in 2--3 swaps); rad
 TODO: WP18, WP19; WP20 P1 and WP21 only once their checks are complete, else ``pending''. Results ``on these graphs'' only. \lab{computed}
 \section{Open problems}
 TODO: VH$\exists$; Conjecture R; the pathways. \lab{open}
-\section*{Acknowledgement of AI assistance}
-The mathematical arguments, Lean formalisations and computations in this paper were developed with extensive assistance from Claude, an AI system by Anthropic, used as several cooperating sessions under the author's direction. The author directed the research, chose what to pursue, and takes responsibility for the claims. Results marked \lab{compiled} were checked by the Lean kernel; results marked \lab{hand} have been reviewed only by other AI sessions and not by a human referee.
 \end{document}

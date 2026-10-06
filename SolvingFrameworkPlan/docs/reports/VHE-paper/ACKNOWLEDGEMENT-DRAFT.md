@@ -1,22 +1,9 @@
-# Acknowledgement of AI assistance
+# Disclosure of AI authorship: full text for the user's approval
 
-**DECIDED (user, chat, 6 Oct 2026): "full disclosure about AI" = Option A, now in `main.tex`. Still open: naming models/versions; wording for arXiv's own AI-use field; the Mathlib PR.**
+**Status: DRAFT. The user approves the final wording before anything is posted.** The same text is in `main.tex` as a prominent section placed right after the abstract (not a footnote). User decisions: author Kyle Mathewson (12:06); full disclosure (12:20).
 
-Not part of `main.tex` until the user approves one option (or writes their own). Written by Long Table; the decision is the user's.
+Items marked in the text for Kyle: (1) what he did, in his own words; (2) whether to give model names and versions; (3) confirm the repository is public before posting.
 
-## What actually happened (facts the paragraph must not contradict)
-Hand proofs, Lean files, experiments and drafts were produced by several Claude (Anthropic) sessions working as separate teams (Long Table, Math, Audit, Navigator, a coordinator), under the user's direction. Lean files compile; hand results are reviewed by another session, not by a human referee. Finite computations were run on the user's machines. No human mathematician has yet checked the hand proofs.
+Point to check in the text against the record: the roles (Long Table, Math, Audit, Navigator, coordinator, night swarm) and what each did are taken from `SolvingFrameworkPlan/START-HERE.md` section 2; the check labels from its section 3; the statement that no human referee has seen the hand proofs is true as of 6 Oct 2026 unless Kyle says otherwise.
 
-## Option A (full disclosure, recommended as the safest)
-"The mathematical arguments, Lean formalisations and computations in this paper were developed with extensive assistance from Claude, an AI system by Anthropic, used as several cooperating sessions under the author's direction. The author directed the research, chose what to pursue, and takes responsibility for the claims. Results marked [compiled] were checked by the Lean kernel; results marked [hand] have been reviewed only by other AI sessions and not by a human referee."
-
-## Option B (short)
-"The author used Claude (Anthropic) to develop proofs, Lean code and computations; the author is responsible for the content."
-
-## Option C (user's own wording)
-Replace with the user's text.
-
-## Points to decide
-1. Which option, and where it goes (acknowledgements, or also a separate AI-use statement, since arXiv and journals each have their own policy).
-2. Whether to name the model(s) and version(s).
-3. The same disclosure for any Mathlib pull request (Mathlib has its own expectations).
+The paragraph itself: see section "How this paper was made: disclosure of AI authorship" in `main.tex`.
