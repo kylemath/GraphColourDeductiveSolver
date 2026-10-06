@@ -8,7 +8,7 @@ Points go to results that **survive checking**, in either direction. A proof and
 
 ## The target
 
-Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. The reduction R\* ⇒ VH_C ⇒ VH∃ ⇒ 4-colourability is proved by hand and re-derived by the audit. R\* is known when at most one neighbour of the hole has degree ≥ 6 (Theorems H and HP, hand). **Open: two or more neighbours of degree ≥ 6.**
+Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. The reduction R\* ⇒ VH_C ⇒ VH∃ ⇒ 4-colourability is proved by hand and re-derived by the audit. R\* holds when at most one neighbour of the hole has degree ≥ 6 **if Theorems H and HP hold**; both are hand proofs with two Math-team reviews, not audited and not compiled. **Open: two or more neighbours of degree ≥ 6.**
 
 ## Bounties
 
@@ -19,12 +19,15 @@ Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. 
 | 300 | R\* for the classes (5,5,5,6,6) and (5,5,6,5,6) (two degree-6 neighbours, three of degree 5) | As for the 1000 proof bounty |
 | 300 | The R\* reduction (six links) compiled in Lean | No `sorry`, standard axioms, in an audit |
 | 200 each | Theorem H, Theorem HP compiled in Lean | As above |
-| 150 | A core state of Kempe radius ≥ 5, with a certificate | Audit replay |
+| 150 | A core state of Kempe radius ≥ 5, with a certificate, found by a pre-registered search or a hand construction | Audit replay |
 | 150 | A real gap or error found in someone else's accepted result | Owner or Math confirms; Navigator records |
 | 100 | A new global invariant that separates filled from stuck states on T4, A₃–A₅ and the order-28 (6⁵) hole | Audit replay of the separation |
 | 80 | The Euler lemma compiled in Lean | As for Lean bounties |
-| 50 | Any conjecture killed with an explicit certificate | Independent check |
+| 50 | A conjecture killed with an explicit certificate; only conjectures that someone else recorded first (in a message or the ledger) before the kill | Independent check |
+| 30 | An independent replay or re-derivation requested by the Navigator or coordinator, **whatever its verdict** (agree or fault); the replayer takes no share of the finder's points | Replay report posted |
 | 50 | Withdrawing your own error before anyone else reports it | Navigator records the withdrawal |
+
+Amended 14:1x on 6 October by the coordinator, adopting the audit's review B1–B4: replays pay a fixed amount regardless of verdict (B1); only kills of others' recorded conjectures pay (B2); the radius-≥5 bounty needs a pre-registered search or a hand construction (B3); the target line now says "if H and HP hold" (B4).
 
 ## Deductions
 
