@@ -5,6 +5,38 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Finding from reading the library [hand, from source]
 `SphericalMap.edge_card_bound` (PlaneMap/SphericalDegree.lean) gives only `E + 1 ≤ V_support + F`. For a triangulation (3F = 2E) this yields E ≤ 3V − 3, i.e. Σ(deg−6) ≤ −6. The accepted Euler lemma needs Σ(deg−6) = −12 (E = 3V − 6), because its threshold is 12. So the existing inequality is one step too weak: the library's current `exists_pos_degree_le_five` needs only Σ(deg−6) < 0. We need the full Euler identity V − E + F = 2 for a connected triangulation.
 
+## Plan 1513 MDT: the classical minimal-counterexample frame (coordinator's redirect)
+
+**Goal.** `four_color_of_frame_Rstar`: R\* assumed only for connected triangulations with
+- minimum degree ≥ 5,
+- no separating triangle,
+- no separating 4-cycle,
+- no Birkhoff diamond
+
+implies that every spherical map is 4-colourable.
+
+**Design change: induct on colourability, not on clean vertices.** The current `four_color_of_core_Rstar` threads a protected face through a clean-vertex induction because R\* is stated relative to φ. For a frame that excludes reducible configurations, the natural proof is the classical one: strong induction on the support size, over all spherical maps.
+
+**Step 0. Reduce to the hard class.** `four_color_of_triangulated_five_extension` already handles degree ≤ 4 and completion, so we may assume a connected triangulation T of minimum degree 5. Then dispatch:
+
+| case | argument | library pieces | new work | difficulty |
+|---|---|---|---|---|
+| **F1** separating triangle F | Both kept sides `keep_b` and `keep_(b+1)` are smaller spherical maps (D3, already compiled for either b) and so are colourable by induction. Every edge of T lies on one side. Permute the second colouring to agree on F's three distinct colours, and glue. **No Kempe chains.** | D1–D3 (`subgraph_tracked`, `kept_*`), `supportTransport` | covering lemma, permutation, gluing | medium |
+| **F2** separating 4-cycle abcd | Birkhoff: colour each side with a chord added in its 4-face (or with a pair identified). Match the ring patterns; a mismatch is repaired by one Kempe swap on one side, whose failure gives a Jordan separation of the other pair. | D2's potential generalises to any even cycle; `RotationSystem.split` / `SphericalChordInsert` to insert a chosen chord; Jordan across a face via `alternating_walks_intersect` after stellar insertion (`RotationInsert`) | sides of a 4-cycle (D2/D3 generalised to a 4-face), inserting a *chosen* chord, face Jordan lemma, the Kempe case analysis | **hard** (days) |
+| **F3** Birkhoff diamond (ring 6, four interior vertices of degree 5) | D-reducibility: delete the 4 interior vertices, colour the remainder G − K (smaller), then show every ring-6 colouring that occurs can be Kempe-modified in G − K to one that extends into K. This is a finite enumeration over ring colourings × planar chain patterns. | `KempeStep`, the clique-lift style restriction, Jordan non-crossing of chains outside the ring | recognising the configuration; deleting K (isolate ×4); the ring-6 colouring table; the planar chain-matching lemma; the per-colouring Kempe certificates (decide-style) | **very hard** (a week or more) |
+| **F4** otherwise | R\* gives a pure-clean degree-5 v. Colour T − v (smaller) and fill (`extend_of_pureClean`). | link A | none | easy |
+
+**Order and honest estimate.**
+1. F1 together with the colourability frame and F4. That gives `four_color_of_frame_Rstar_triangles`, with R\* asked only for triangulations with no separating triangle: an alternative to link D with no protected face.
+2. F2.
+3. F3.
+
+Each piece is pushed as it compiles. F3 is the largest single formalisation in this project so far. The Lean design of a reusable "D-reducible configuration ⇒ minimal counterexample avoids it" interface (ring, ring colourings, chain patterns) should come first, because RSST-style lists would reuse it.
+
+**Hypotheses to check with Math and the audit before F2/F3.**
+- The precise definition of "Birkhoff diamond" in `Fin n` language. Proposal: four vertices u1..u4 of degree 5 forming two triangles u1u2u3 and u2u3u4 that share the edge u2u3, with a ring of 6 distinct vertices.
+- Whether "no separating 4-cycle" should allow the trivial 4-cycles around a degree-4 vertex. They are excluded anyway by minimum degree 5.
+
 ## Update 1511 MDT: link D and the wrapper compiled. **R\* (four-connected core) ⇒ 4CT**
 
 - **`SphericalMap.four_color_of_core_Rstar : RStarCore → ∀ M : SphericalMap n, M.graph.Colorable 4`**, plus `four_color_of_core_Rstar_planeMap` for the library's `PlaneMap`s.
