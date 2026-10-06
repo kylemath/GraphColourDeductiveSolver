@@ -120,3 +120,20 @@ Details, commands and hashes: `lock-counting.md`.
 - **A lead from the data.** For the full order-17 members $(E_{234},S_1)$ is $(19,21)$ or $(20,20)$ against a forest ceiling of $21$, so the complementary forests are almost spanning trees. Not pursued.
 
 **Status of the equitability conjecture.** Near-equitability holds in every locked member found ($210$ in total) and is unproved. The counting attempt fell short of balance, so it stands as a pattern, not a lemma.
+
+## 10. D1 survives the 4-connected scan to order 16 (D1-test team, 19:01; counts recomputed by the lead from the JSON)
+
+Full report, commands and hashes: `d1-test-report.md`. Exploratory, post hoc, undeclared.
+
+| Family | Order | Degree-5 vertices | States | SEP-bad |
+|---|---|---|---|---|
+| `-c4m4` | 15 | 26,654 | 983,192 | 0 |
+| `-c4m4` | 16 | 138,627 | 7,072,063 | 0 |
+
+- The records cover the $6{,}161$ (order $15$) and $30{,}672$ (order $16$) graphs that have a degree-5 vertex. The remaining $83$ and $254$ graphs of the $6{,}244$ and $30{,}926$ in the plantri families have none and contribute no states. The team's report quotes the family sizes.
+- **Birkhoff diamond split, `-c4m4` orders $12$–$16$.** No bad state with or without a diamond. Diamond graphs: $13,38,153,650,3065$; the others: $74,275,1204,5594,27861$.
+- **Separation depth, `-m5`.** Orders $16$ and $18$ have no bad states. Order $17$ has the known $8$, all at depth exactly $1$. **No state of depth $\ge2$ was found anywhere**, so D1 has no counterexample in this data.
+- **Flips of the order-17 graphs.** Twelve single edge flips stay minimum degree $5$ and 4-connected. All twelve results are already in the plantri list: $17{:}0$ flips only to $17{:}1$; $17{:}1$ flips to $17{:}0$ and $17{:}3$; $17{:}2$ flips only to itself ($2$ flips); $17{:}3$ flips only to $17{:}1$ ($5$ flips). SEP fails at $4$ states on $17{:}0$ and $4$ on $17{:}1$, and on neither $17{:}2$ nor $17{:}3$. No new locked or SEP-failing graph appears.
+- **Not tested:** orders above $18$; graphs with separating triangles or degree-3 vertices; multi-step flips; flips of the order-18 graphs; `-c4m4` orders $17$–$18$. The two new scripts were checked only by internal asserts.
+
+**Reading.** SEP fails only on $17{:}0$ and $17{:}1$ throughout $8$ million states, so these two graphs are the only exceptions found, and each exception is one swap deep. D1 is the right conjecture to carry, and it still needs a declared test on fresh orders before it counts as more than a pattern.

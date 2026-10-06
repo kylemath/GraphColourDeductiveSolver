@@ -38,3 +38,10 @@ Usage: `python3 vhphi_explore.py SEED ORDERS TRIES`, `python3 vhphi_quad_explore
 - `sep_any.py` -> `sep-m5-<n>.json`, `sep-c4-<n>.json`: SEP test. Fails only on 17:0 and 17:1 (8 states).
 - `sep_depth.py`: separation depth of those 8 states; all are exactly 1 (printed output only).
 - `lock_rigid.py`, `dl_state.py` (18:42): rigidity/equitability of locked classes (printed output only). 192/192 locked members have colour classes 4,4,4,4 in T - x; 164/192 have all three chains equal to full colour pairs.
+
+## 2026-10-05 D1-test additions (exploratory, post hoc; not committed)
+- `sep_any.py` run unchanged on `plantri -c4m4` orders 15 (6244 graphs) and 16 (all 30926 graphs, no subsample) -> `sep-c4-15.json`, `sep-c4-16.json`: 0 SEP-bad states.
+- `d1_diamond.py` -> `d1-diamond-split.json`: SEP split by presence of a Birkhoff diamond, c4m4 orders 12-16 (0 bad states in either part).
+- `d1_flips.py` -> `d1-flips-m5-17.json`: edge flips of the four `-m5 17` graphs that stay min-degree 5 and 4-connected; all 12 results match plantri-listed graphs (no new graph); SEP per graph.
+- `sep_depth.py` re-run on `-m5` 16, 17, 18 (logs `run-d1-depth-m5-*.log`): 17 gives depth 1 for all 8 states; 16 and 18 have no bad states.
+- Report: SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/d1-test-report.md
