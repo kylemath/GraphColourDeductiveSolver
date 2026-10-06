@@ -46,3 +46,16 @@ The table's diamond test (`analyse.py`, own code) and `rsst_check.py` (Studio in
 | rho 5 (all) | 9 | 2/9 | 5/9 | 7/9 |
 
 Across orders 17-25, every rho >= 4 graph except a few contains a diamond somewhere, and almost every one contains 2.122. The hole lies in a diamond less often as rho grows.
+
+## Graphs containing neither the diamond nor 2.122 (`neither.py`, `neither.jsonl`)
+Graph-level containment was tested on every graph of each order (Studio intel's rsst_contain.py, commit 7f99280).
+
+| order | graphs | graphs with neither | rho histogram over their hole classes | max rho |
+|---|---|---|---|---|
+| 12-21 | all | 0 | - | - |
+| 22 | 649 | 1 | rho2: 1 | 2 |
+| 23 | 2054 | 1 | rho2: 1 | 2 |
+| 24 | 7209 | 4 | rho2: 11, rho3: 1 | 3 |
+| 25 | 24963 | 2 | rho2: 6, rho3: 4 | 3 |
+
+No graph with neither configuration has a rho >= 4 hole, up to order 25. Among the rho-5 classes, the one graph without a diamond (order 25, index 4830) contains 2.122. The one without 2.122 (order 24, index 7192) contains a diamond.
