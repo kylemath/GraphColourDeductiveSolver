@@ -137,3 +137,23 @@ Full report, commands and hashes: `d1-test-report.md`. Exploratory, post hoc, un
 - **Not tested:** orders above $18$; graphs with separating triangles or degree-3 vertices; multi-step flips; flips of the order-18 graphs; `-c4m4` orders $17$–$18$. The two new scripts were checked only by internal asserts.
 
 **Reading.** SEP fails only on $17{:}0$ and $17{:}1$ throughout $8$ million states, so these two graphs are the only exceptions found, and each exception is one swap deep. D1 is the right conjecture to carry, and it still needs a declared test on fresh orders before it counts as more than a pattern.
+
+## 11. D1 by hand in the rigid triply locked case (D1-Hand team, 20:17; algebra and data checked by the lead)
+
+Full report: `d1-hand-attack.md`. Orders $\le17$ only. Labels as in that report. The lead rechecked the algebra by hand, and recomputed the component and cycle counts for all $8$ SEP-bad states with independent code (`hand_verify.py`); they agree.
+
+**Setting.** A state with ring word $(D,\alpha,D,\beta,\gamma)$ is admitted by the three fans at the singletons ($M$ at $\alpha$, $L$ at $\beta$, $R$ at $\gamma$). "Rigid triply locked" means locked for all three fans with every chain a full colour pair plus $x$.
+
+**Proved [hand].**
+- **First-order lock.** Fan $M$ is locked to first order iff $u_1\sim u_3$ in $[\alpha,\beta]$ (P13) and $u_1\sim u_4$ in $[\alpha,\gamma]$ (P14); $L$ iff P13; $R$ iff P14.
+- **Jordan splits.** P13 forces $u_2$ into a different component of $[D,\gamma]$ than $u_0,u_4$. P14 forces $u_0$ into a different component of $[D,\beta]$ than $u_2,u_3$.
+- **Identities.** I1: $\sum_{\text{pairs}}(\text{components}-\text{cyclomatic})=8$, which is Euler's formula for $T-x$. I2: for each class, $\mathrm{exc}_i=(n-1)+r_i-3n_i-\kappa_i$ with $\mathrm{exc}_i=\sum(\deg_T v-5)\ge0$.
+- **Rigid triply locked states.** All six pair subgraphs of $T-x$ are forests, the component vector is forced to $(1,2,2,1,1,1)$, and $n_D,n_\beta,n_\gamma\le(n-4)/3$, $n_\alpha\le(n-3)/3$. With $\sum n_i=n-1$ this gives: **impossible at $n=12,14,15$; slack $1$ at $16$; sizes forced to $(4,4,4,4)$ at $n=17$; forced to $(4,5,4,4)$ at $n=18$; slack $2$ at $19$.** So the order-17 equitability is a corollary of all three fans being locked at once, not of a single chain, and it is not a balance theorem for $n\ge19$.
+- **One-swap neighbourhood.** For a rigid triply locked state it is exactly two states, $\nu_\gamma c$ (swap the $u_2$-component of $[D,\gamma]$) and $\nu_\beta c$. In the first only the fan at $u_0$ can unlock, in the second only the fan at $u_2$, and both are legal. Neither neighbour is rigid: each has a cycle in $[\alpha,\gamma]$ or $[\alpha,D]$.
+- **Reduction.** D1 on a rigid triply locked state is equivalent to: **(N)** $\nu_\gamma c$ is separable for the fan at $u_0$, or $\nu_\beta c$ is separable for the fan at $u_2$.
+
+**Data [exploratory].** All $16$ neighbours of the $8$ SEP-bad states unlock exactly the predicted fan. No chain is broken at first order. The Kempe distance in $G$ is exactly $4$ in every case: three swaps avoiding $x$, then one touching $x$ or $y$. The $28$ non-rigid locked members all have the middle fan as apex, with one cycle in $[\beta,\gamma]$ and one extra ring-free $[D,\alpha]$ component. Among the $128$ locked states only the locked sets $\{L\},\{R\},\{M\},\{L,M\},\{M,R\},\{L,M,R\}$ occur; $\{L,R\}$ without $M$ never does.
+
+**Obstruction (honest).** Jordan separation, forests and degree counting do not rule out both neighbours staying locked and non-rigid, and such states exist at $17{:}0$. Resolving (N) needs a Jordan-type fact at **third order**, or a global input. D1 for all minimum-degree-5 triangulations would imply VH∃ (via the §1 bridge, which Math has not yet checked) and hence the Four Colour Theorem, so no purely local proof is expected.
+
+**Predictions this makes (checkable).** A rigid triply locked state cannot exist at orders $12,14,15$ and has forced sizes at $17$ and $18$. The exploratory runs on the spent orders agree with this where tested ($0$ SEP-bad states at orders $12$–$16$ and $18$; $8$ at order $21$; $2$ at order $22$).

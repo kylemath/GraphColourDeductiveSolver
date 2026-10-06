@@ -45,3 +45,4 @@ Usage: `python3 vhphi_explore.py SEED ORDERS TRIES`, `python3 vhphi_quad_explore
 - `d1_flips.py` -> `d1-flips-m5-17.json`: edge flips of the four `-m5 17` graphs that stay min-degree 5 and 4-connected; all 12 results match plantri-listed graphs (no new graph); SEP per graph.
 - `sep_depth.py` re-run on `-m5` 16, 17, 18 (logs `run-d1-depth-m5-*.log`): 17 gives depth 1 for all 8 states; 16 and 18 have no bad states.
 - Report: SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/d1-test-report.md
+- 20:17 `d1hand_*.py` (D1-Hand team: swaps, fan, path, pure, table, states, identity, lib) and `hand_verify.py` (lead's independent check of the 8 SEP-bad states). Exploratory, orders <= 17.
