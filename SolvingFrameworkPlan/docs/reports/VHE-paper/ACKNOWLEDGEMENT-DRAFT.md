@@ -4,5 +4,5 @@ The disclosure is now Section 1 of `main.tex`, "How this work was produced", wit
 
 **Still with the user before anything is posted:**
 1. Their own description of what they did (bracketed in the text).
-2. F7: whether to link the repository and its message history. This is left as a placeholder.
+2. F7 is decided (user, 12:30): link the public repository and the Lean repository. A tagged release will be made at posting; the tag name is a placeholder until then.
 3. Approval of the final wording.
