@@ -26,7 +26,7 @@ These were checked by web lookup; the original papers were not opened (JSTOR and
   - The definition, as quoted in expositions: deleting a vertex set X disconnects only if |X| ≥ 6, or |X| = 5 and one component is a single vertex.
   - **A hand argument (Birkhoff's ring-5 reduction), longer than (a)**, but classical and computer-free.
 - **(c) No Birkhoff diamond (ring size 6, four interior vertices of degree 5).**
-  - Birkhoff 1913 proved it reducible, the first reducible configuration. It is the standard example; see also J. Tilley, "The Birkhoff diamond as double agent", arXiv:1809.02807.
+  - Birkhoff 1913 proved it reducible, the first reducible configuration. It is the standard example; see also J. A. Tilley, "Kempe-locking configurations", *Mathematics* 6(12):309 (2018) (arXiv:1809.02807, first titled "The Birkhoff diamond as double agent").
   - **A finite case analysis over the ring-6 colourings**, done by hand in 1913 and trivially machine-checkable.
   - **Not verified here:** whether it is D-reducible or needs a reduction (C-reducible), and the exact form RSST use.
 - **Formalisation.** Gonthier's Coq proof (*Notices AMS* 55(11) (2008) 1382–1393) formalises the full RSST proof, so these facts are machine-checked there. **Not verified here:** in which file, and in what form (the audit could not confirm a file named `birkhoff.v`).
@@ -62,9 +62,7 @@ Formalising (b) and (c) is real work. Gonthier's development already contains th
 
 ## 4. Route C pointer
 
-Tilley's papers study exactly R\*-min's question: Kempe-locked colourings at degree-5 vertices of minimal counterexamples.
-- "Kempe-locking configurations", *Mathematics* 6(12):309 (2018); arXiv:1809.02807.
-- "The Birkhoff diamond as double agent".
+Tilley's paper studies exactly R\*-min's question: Kempe-locked colourings at degree-5 vertices of minimal counterexamples. It is **one paper**: J. A. Tilley, "Kempe-locking configurations", *Mathematics* 6(12):309 (2018), arXiv:1809.02807. The arXiv versions (v1 8 September 2018, v2 21 March 2019) carry the earlier title "The Birkhoff diamond as double agent", and the arXiv abstract says it was retitled for *Mathematics*. This was checked on the arXiv and RePEc/IDEAS pages.
 
 **Long Table should read these first.** Whether R\*-min, or a Kempe-locking version of it, is known or known to be hard is exactly what they address.
 
