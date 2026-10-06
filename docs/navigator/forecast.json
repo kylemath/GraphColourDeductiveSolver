@@ -1,8 +1,8 @@
 {
   "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-06T15:20:00-06:00",
-  "probability": 0.035,
+  "updated": "2026-10-06T15:30:00-06:00",
+  "probability": 0.03,
   "components": [
     {
       "label": "R* is true in the core class (some degree-5 vertex is pure-clean)",
@@ -24,9 +24,12 @@
     "Compiled and audited in Lean: Euler lemma (both forms), Theorem H, Theorem HP, and R* (global form) => 4CT.",
     "R* holds whenever at most one neighbour of the hole has degree >= 6 (H, HP).",
     "No targetless class anywhere: WP20 P1 (all 25,381 order-25 graphs, reproduced on a second machine), WP21, and the pre-registered adversary searches.",
-    "Route B (small computer-checked Kempe-reducible set) opened as a second path to R*."
+    "Route B (small computer-checked Kempe-reducible set) opened as a second path to R*.",
+    "Math claims [unreviewed] R* at every hole with three consecutive degree-5 neighbours (covers T4's class and two radius-5 classes); review and machine test running.",
+    "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
+    "R* is (as far as we can tell) Tilley's published D-resolvability conjecture (JGAA 2017), open since 2017 and stronger than 4-colourability: we are attacking a recognised open problem, not a new lemma.",
     "Route B as a pure vacancy set is dead: on the RSST configurations, vacancy-reducibility is weaker than classical D-reducibility (8 of the first 11 classically reducible configurations fail at every degree-5 vertex).",
     "Radius 5 confirmed in the core by the audit's replay (three distinct states); 13 more radius-5 graphs found; radius grows with order.",
     "Every local route so far has died: link classes, 2-balls, the 74-pattern automaton, Conjecture L, fixed radius bounds.",
@@ -59,6 +62,11 @@
       "time": "2026-10-06T15:20:00-06:00",
       "p": 0.035,
       "note": "Formal chain essentially closed (up); pure-vacancy Route B killed on RSST data (down); hybrid Route B' and the Birkhoff filters now being tested."
+    },
+    {
+      "time": "2026-10-06T15:30:00-06:00",
+      "p": 0.03,
+      "note": "R* identified as Tilley's published open conjecture (down); three-fives claim and the diamond/2.122 pattern pending checks (up if they hold). Net -0.5 point."
     }
   ]
 }
