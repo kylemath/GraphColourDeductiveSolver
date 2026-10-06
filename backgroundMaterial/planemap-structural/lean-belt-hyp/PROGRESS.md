@@ -1,0 +1,3 @@
+- No Lean definition of the vacancy hypothesis existed in the checkout (only prose in longtable/swarm/hole-induction.md and the docstring of belt_theorem_all_holes). Defined VacancyAt / VacancyHyp in TwoPoleBeltVacancyHypDef.lean.
+- Built Def + belt link file; belt_theorem_all_holes gives VacancyAt (graph n) (6n) h at every hole definitionally (guard test checks this).
+- No SphericalMap realisation of the belt exists (SphericalMap lives on Fin m with rotation system and Fills; belt uses an inductive Vertex n). Only an iso-transfer lemma was added.
