@@ -5,6 +5,34 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Finding from reading the library [hand, from source]
 `SphericalMap.edge_card_bound` (PlaneMap/SphericalDegree.lean) gives only `E + 1 ≤ V_support + F`. For a triangulation (3F = 2E) this yields E ≤ 3V − 3, i.e. Σ(deg−6) ≤ −6. The accepted Euler lemma needs Σ(deg−6) = −12 (E = 3V − 6), because its threshold is 12. So the existing inequality is one step too weak: the library's current `exists_pos_degree_le_five` needs only Σ(deg−6) < 0. We need the full Euler identity V − E + F = 2 for a connected triangulation.
 
+## Update 1609 MDT: steps C and D compiled; sanity checks; statement list frozen
+
+**Step C.** `OccToRing.lean` plus the four generated pairs `DiamondM/P` and `C2122M/P` (each a `…Cert` and an `…Occ`, made by `gen_occ.py`).
+- `X.configOcc`: an `Occ T ring int` in a triangulation gives the deleted map `G` with the ring as a face (`ConfigOcc`) and smaller support.
+- `X.colorable_of_occ`: the occurrence is reducible.
+- ε = −1 uses the identity ring order; ε = +1 uses the reversed order.
+
+**Step D.** `FrameF3.lean`, `four_color_of_RStarFrame : RStarFrame → ∀ M, M.graph.Colorable 4`. `RStarFrame` asks R\* only for `NoSep` triangulations that are free of both orientations of the diamond and of 2.122. The proof:
+- separating triangle → F1;
+- occurrence → its certificate;
+- otherwise → the pure-clean vertex (F4).
+
+`rStarFrame_of_noSepTri` shows that `RStarFrame` is weaker than `RStarNoSepTri`.
+
+**Sanity checks.**
+- `RStarSanity.lean`, on the icosahedron:
+  - it is in the R\* class, and every vertex is pure-clean;
+  - both diamond orientations occur, so `Occ` is not vacuous and the icosahedron is outside `RStarFrame`'s class;
+  - 2.122 does not occur.
+- `RadiusFive.lean`: the two audited radius-5 certificate states (`80b930d1…` hole 23, `91a307d1…` hole 22) satisfy the formal `PureFill … 5`, by explicit whole-component paths. `radius_bfs.py` independently gives distance exactly 5 under the same semantics. That lower bound is computed only.
+
+**Checks.**
+- All new theorems have axioms [propext, Classical.choice, Quot.sound].
+- Sabotaged copies are rejected: a dropped exclusion, a wrong ring order, a bound of 4, and a truncated component.
+- `check.sh` compiles all 23 modules in order.
+
+**Statement list:** `../StudioMathStatements.md`. Part A covers the model assumptions, the headline statements and the gaps. Part B is every theorem, extracted by `extract_statements.py`.
+
 ## Design 1518 MDT: one D-reducibility interface (the diamond and 2.122 are instances)
 
 **Done:** F1 + frame + F4 (`MinimalFrame.lean`, commit 3db558c).
