@@ -10,7 +10,7 @@
 
 | Machine | Task | Shards | Caps |
 |---|---|---|---|
-| first Mac | WP20 P1 attempt 2, chunks 4–9 (running), then `d1_check21`-independent `d1_check.py --all` on the merged output, then the report | graphs 10,156–25,380 (chunks 4–9 of 2,539) | as declared |
+| first Mac | WP20 P1 attempt 2, chunks 4–9 (running), then `d1_check.py --all` (the independent checker) on the merged output, then the report | graphs 10,156–25,380 (chunks 4–9 of 2,539) | as declared |
 | **Studio, T1** | **WP21 phase A** (4,578 order-26 graphs), its sharded independent check, the phase-B seeds, **phase B** (12 chains), its sharded check | A: 46 shards of 100 graphs (0–45), all on the Studio; B: 12 chain shards (0–11), all on the Studio | A 43,200 CPU-s; B 86,400 CPU-s; chain 6,000 CPU-s; 30 min per graph |
 | **Studio, T2** (after T1) | **Independent replay of WP20 P1** (order 25, every graph) with the unchanged producer and declaration, compared with the first Mac **by content digest** (the ~100 MB output need not be shipped) | 254 shards of 100 graphs (0–253) | 216,000 CPU-s (P1 cost about 140,000 on the first Mac) |
 | first Mac, later | the subset-rule check and the sharded independent check of the Studio's phase A and B outputs (`wp21_mac_checks.sh`), and the digest comparison for T2 | — | — |
