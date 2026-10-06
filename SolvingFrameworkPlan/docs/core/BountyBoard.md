@@ -48,7 +48,7 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | Team | Points |
 |---|---:|
 | longtable | 50 |
-| math | 30 |
+| math | 180 |
 | audit | 120 |
 | studiointel | 150 |
 | studiomath | 510 |
@@ -58,4 +58,4 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 134 (6 October, 15:25 MDT). Revision 134 paid longtable 50 for withdrawing its own literature error before anyone else reported it, and the audit 30 for the requested re-derivation of Theorem R5³; earlier awards are in the revision 125 to 133 messages. The same totals are in `docs/navigator/leaderboard.json`.
+Totals as of Navigator revision 135 (6 October, 15:30 MDT). Revision 135 paid math 150 for the (5,5,5,6,6) class (Theorem R5³, under the 150-per-class ruling); earlier awards are in the revision 125 to 134 messages. The same totals are in `docs/navigator/leaderboard.json`.

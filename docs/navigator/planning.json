@@ -1,7 +1,12 @@
 {
-  "revision": 134,
-  "updatedAt": "2026-10-06T15:25:00-06:00",
+  "revision": 135,
+  "updatedAt": "2026-10-06T15:30:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T21:30:00Z",
+      "node": "structural-theorem-r5cubed",
+      "action": "Revision 135 records the machine kill test of Theorem R5-cubed (0 violations on orders 12 to 22 and the certificate graphs), the scope note that its cases form a Birkhoff diamond, Studio Math's D-reducibility interface design, and the coordinator's 150-per-class ruling. Leaderboard: math +150. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T21:25:00Z",
       "node": "structural-chain-rstar",
@@ -11738,6 +11743,59 @@
         {
           "time": "2026-10-06T21:25:00Z",
           "text": "Revision 134, leaderboard: longtable +50 (withdrew its own error, the 15:04 \"no source states R*\", at 15:14 before anyone else reported it; the audit's 15:12 pointer to Tilley's 2018 paper did not report that error). audit +30 (the requested adversarial re-derivation of Theorem R5-cubed, report posted 15:14). Not scored: R5-cubed itself (accepted and re-derived, but the 300-point item names both (5,5,5,6,6) and (5,5,6,5,6) and the board has no partial award; it pays in full when (5,5,6,5,6) is proved); four_color_of_core_Rstar (300 on the audit's J10 verdict); Route B data and the disc-parity kill (own idea, no bounty item); the Tilley finding itself (no bounty item). Totals: longtable 50, math 30, audit 120, studiointel 150, studiomath 510, studiocompute 270, intern-C 30, others 0."
+        }
+      ]
+    },
+    {
+      "id": "structural-theorem-r5cubed",
+      "revision": 135,
+      "title": "Theorem R5-cubed: three consecutive degree-5 neighbours give radius at most 7 (proved by hand: Math review and audit re-derivation; machine kill test passed)",
+      "files": [
+        "backgroundMaterial/planemap-structural/studiointel/r55566_test.py",
+        "backgroundMaterial/planemap-structural/studiointel/r55566_violations.json",
+        "backgroundMaterial/planemap-structural/studiointel/gentri/SOURCE.txt"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:30:00Z",
+          "text": "Revision 135: Studio intel's independent machine kill test passed (c5d0954, merged dcb7818) [computed, exploratory, a kill test, not a proof]: r55566_test.py on every 4-connected minimum-degree-5 triangulation of orders 12 to 22 (gen_tri, gentri/) and every certificate graph; per the coordinator's relay, 6,256 holes with three consecutive degree-5 neighbours and 264,947 doubly locked states, 0 violations (r55566_violations.json is the empty list), observed maximum radius 5 against the bound 7. Not replayed by the audit; the hand proof is what carries the status."
+        },
+        {
+          "time": "2026-10-06T21:30:00Z",
+          "text": "Revision 135, scope note (coordinator): three consecutive degree-5 neighbours of a degree-5 vertex form a Birkhoff diamond with it, so in the minimal-counterexample frame R5-cubed's cases are already excluded by classical reducibility; the vacancy route and the frame cover the same ground here. R5-cubed matters for the vacancy route (VH-exists) and as a Kempe-chain proof of those cases, not as new ground toward 4CT."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 135,
+      "notes": [
+        {
+          "time": "2026-10-06T21:30:00Z",
+          "text": "Revision 135: the adjacent class (5,5,5,6,6) is settled by Theorem R5-cubed (proved by hand; kill test passed); under the coordinator's 15:19 ruling the two-class item pays 150 per class, and the (5,5,5,6,6) half is paid to Math. The non-adjacent class (5,5,6,5,6) is open, with a replayed radius-5 state."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-lean-link-d",
+      "revision": 135,
+      "files": [
+        "SolvingFrameworkPlan/docs/working/StudioMathLean/PLAN.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:30:00Z",
+          "text": "Revision 135: Studio Math's design (PLAN.md): a reusable Lean interface \"D-reducible configuration => a minimal counterexample avoids it\" (ring, ring colourings, chain patterns), to be built before F3 (the Birkhoff diamond: delete the four interior degree-5 vertices, colour G - K, and certify by finite enumeration over ring-6 colourings and planar chain patterns that each can be Kempe-modified to extend), so RSST-style lists can reuse it. F2 (separating 4-cycle) and F3 are not built; Studio Math rates F3 very hard (a week or more). Design only."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 135,
+      "notes": [
+        {
+          "time": "2026-10-06T21:30:00Z",
+          "text": "Revision 135, leaderboard: math +150 (the (5,5,5,6,6) half of the two-class item, now 150 per class by the coordinator's ruling, board 0f1c1d4: Theorem R5-cubed accepted by Math's independent review, re-derived by the audit, recorded proved by the navigator in revision 134; kill test passed). The proof was written by a Math worker and reviewed by another Math worker; the points go to the team. Not scored: the kill test (exploratory, not a requested replay with a report message; no bounty item), Studio Math's interface design. Totals: longtable 50, math 180, audit 120, studiointel 150, studiomath 510, studiocompute 270, intern-C 30, others 0."
         }
       ]
     }
