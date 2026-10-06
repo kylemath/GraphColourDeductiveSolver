@@ -1,28 +1,58 @@
 {
-  "question": "Will this project complete a structural proof of the Four Colour Theorem as planned: Lemma R* proved in the open case (degree-5 holes with two or more neighbours of degree >= 6, 4-connected core), audited, with the reduction R* => 4CT compiled in Lean?",
+  "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-06T14:58:00-06:00",
-  "probability": 0.03,
+  "updated": "2026-10-06T15:16:00-06:00",
+  "probability": 0.04,
   "components": [
-    { "label": "R* is true (some degree-5 vertex of every core triangulation is pure-clean)", "p": 0.85 },
-    { "label": "This team finds a proof of the open case, given R* is true", "p": 0.04 },
-    { "label": "The formal chain (link D, core-class R* => 4CT) compiles and passes audit", "p": 0.8 }
+    {
+      "label": "R* is true in the core class (some degree-5 vertex is pure-clean)",
+      "p": 0.8
+    },
+    {
+      "label": "We prove it, by Route A or Route B, given it is true",
+      "p": 0.06
+    },
+    {
+      "label": "The formal chain closes: core-class R* => 4CT compiled and audited (link D compiled 15:12, audit pending)",
+      "p": 0.9
+    }
   ],
   "evidence_for": [
+    "Link D compiles end to end: four_color_of_RStarSupport (core-class R* => every planar map 4-colourable), standard axioms, audit pending.",
     "The reduction R* => VH_C => VH-exists => 4CT is proved by hand and re-derived by the audit.",
     "Compiled and audited in Lean: Euler lemma (both forms), Theorem H, Theorem HP, and R* (global form) => 4CT.",
     "R* holds whenever at most one neighbour of the hole has degree >= 6 (H, HP).",
-    "No targetless class anywhere: WP20 P1 (all 25,381 order-25 graphs, reproduced on a second machine), WP21, and the pre-registered adversary searches."
+    "No targetless class anywhere: WP20 P1 (all 25,381 order-25 graphs, reproduced on a second machine), WP21, and the pre-registered adversary searches.",
+    "Route B (small computer-checked Kempe-reducible set) opened as a second path to R*."
   ],
   "evidence_against": [
+    "Radius 5 confirmed in the core by the audit's replay (three distinct states); 13 more radius-5 graphs found; radius grows with order.",
     "Every local route so far has died: link classes, 2-balls, the 74-pattern automaton, Conjecture L, fixed radius bounds.",
     "Kempe radius 5 occurs in the open case (four certificates, pending audit replay); the bound keeps rising with order.",
     "The open case is where Kempe's 1879 argument failed; every known proof needs hundreds of reducible configurations.",
-    "The audit judges R* at least as strong as VH-exists: the reduction sharpened the target but did not shrink it."
+    "The audit judges R* at least as strong as VH-exists: the reduction sharpened the target but did not shrink it.",
+    "Literature check: no source states R*; it may be false."
   ],
   "history": [
-    { "time": "2026-10-05T20:40:00-06:00", "p": 0.02, "note": "Start of coordination: VH-exists open, reduction not yet proved." },
-    { "time": "2026-10-06T13:15:00-06:00", "p": 0.03, "note": "R* reduction re-derived by the audit; H and HP proved by hand." },
-    { "time": "2026-10-06T14:58:00-06:00", "p": 0.03, "note": "Lean chain compiled and audited, but radius-5 states found in the open case; net unchanged." }
+    {
+      "time": "2026-10-05T20:40:00-06:00",
+      "p": 0.02,
+      "note": "Start of coordination: VH-exists open, reduction not yet proved."
+    },
+    {
+      "time": "2026-10-06T13:15:00-06:00",
+      "p": 0.03,
+      "note": "R* reduction re-derived by the audit; H and HP proved by hand."
+    },
+    {
+      "time": "2026-10-06T14:58:00-06:00",
+      "p": 0.03,
+      "note": "Lean chain compiled and audited, but radius-5 states found in the open case; net unchanged."
+    },
+    {
+      "time": "2026-10-06T15:16:00-06:00",
+      "p": 0.04,
+      "note": "Link D compiled (formal factor up); Route B branch added; radius 5 confirmed and literature gives no support for R* (truth factor down). Net +1 point."
+    }
   ]
 }
