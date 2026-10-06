@@ -317,7 +317,7 @@ if (integrationPath) {
   assert.deepEqual(pc.broken, []);
   assert.equal(
     Tree.findNode(root, 'structural-wp21').title,
-    'WP21: D1 and P on order 26 (phase A produced on the Studio and checked once there; not cross-checked)'
+    'WP21: D1 and P on order 26 (phases A and B produced on the Studio and checked once there; not cross-checked)'
   );
   assert.equal(Tree.isWorking('structural-wp20'), true);
   assert.equal(Tree.isWorking('structural-math-horizon'), true);

@@ -1,7 +1,12 @@
 {
-  "revision": 110,
-  "updatedAt": "2026-10-06T11:43:00-06:00",
+  "revision": 111,
+  "updatedAt": "2026-10-06T11:48:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T17:50:00Z",
+      "node": "structural-wp21",
+      "action": "Revision 111 records WP21 phase B by evidence on studio-wp21 (98358d0): four output hashes equal RECORD.txt, the run completed within its cap, the Studio's sharded check is OK on all 25 ranges; producer counts 4812 graphs, 0 D1 kills, 0 P kills, 1626 SEP-bad at depth 1. Checked once on the producing machine, not cross-checked, so no result; an adversarial search can only report what it visited. The Studio's P1 replay (T2) started at 11:45:13 by relay. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T17:46:00Z",
       "node": "structural-wp21",
@@ -9417,6 +9422,31 @@
       ],
       "id": "structural-vacancy",
       "revision": 110
+    },
+    {
+      "title": "WP21: D1 and P on order 26 (phases A and B produced on the Studio and checked once there; not cross-checked)",
+      "notes": [
+        {
+          "time": "2026-10-06T17:50:00Z",
+          "text": "Revision 111, phase B BY EVIDENCE on branch origin/studio-wp21, commit 98358d0 on top of 5b86c4a (read with git show, not checked out). The sha256 of B.json (edf0bb57...3376), B-evaluated.txt (def852ac...17e4d1), B-log.json (f1d8e011...b9c2) and seeds-B.txt (6582d4e8...7065) on the branch equal the hashes listed in RECORD.txt of the phase A commit. Run ledger: state complete, cpu_done 30,686.9 s, none wasted, not capped (cap 86,400). B-report-numbers.md binds the declaration 8fdd1aa5, the evaluated-graph list def852ac as input and the producers d1_confirm.py bb350d3b and wp21_search.py b905888e (both the announced v2 hashes), and carries the WP21 tag. Producer counts: 4812 evaluated graphs, all complete; 77,786 degree-5 vertices; 35,346,675 unfilled states, all with a legal admitting fan, no_legal_fan 0; SEP-bad 1626, all at depth 1, in 115 graphs; filled_neighbour_for_bad 0; D1 kills 0; P kills 0; P capped 0; locked classes 6158 in 413 graphs. B-log.json gives the best objective per chain, the maximum 1000 on chain 1; with no kill and no state of depth 2 or more, the objective is 20 times SEP-bad plus locked classes, so 1000 is not a kill signal. Studio sharded check: B-check.log ends CHECK OK (all 25 ranges); its global record binds checker 93975b05, output edf0bb57 and input def852ac, status ok, unresolved 0. Status: produced on the Studio and checked once there; the first-Mac cross-check is pending; NO RESULT. Phase B is an adversarial search: a pass would say only that this search, as declared, found no D1 or P counterexample among the 4812 graphs it evaluated, nothing about order 26 as a whole."
+        },
+        {
+          "time": "2026-10-06T17:50:00Z",
+          "text": "Revision 111, the coordinator's relay: the Studio started task T2 at 11:45:13 (pid 32591, 254 shards), a REPLAY of WP20 P1 with the unchanged producer and declaration, to be compared with the first Mac by content digest. It is not original data and contributes no new result; a difference between the two machines is reported, not smoothed. Not yet verified by any file."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 111
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:50:00Z",
+          "text": "Revision 111: the Studio's replay of P1 (T2) started at 11:45:13 by the coordinator's relay, 254 shards; it is a replay, compared by digest, and the P1 result still waits for Long Table's --all check and the audit replay."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 111
     }
   ]
 }
