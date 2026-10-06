@@ -21,3 +21,27 @@
 - **Every multi-class T has merge number 1**: some single vertex deletion merges all its Kempe classes. kappa(T) reaches 45 at order 20, 35 at 21, 42 at 22 and 53 at 23.
 - Graphs with kappa(T) = 1 (merge number 0): 1 at 16, 1 at 17, 5 at 20, 2 at 21, 8 at 22, 12 at 23.
 - In orders 12-20, the first merging vertex in label order has degree 5 in 73 graphs, 6 in 35, 7 in 2 and 8 in 1.
+
+## Run 4 follow-up: which single deletions merge all of T's classes (`mergefrac.py`, `mergefrac.jsonl`)
+- For every multi-class T at orders 12-23, every vertex v: does deleting v merge all of T's Kempe classes into one class of T - v?
+- Fraction of vertices that merge all classes, by degree of v:
+  - degree 5: 1.0 up to order 17, 0.949 at 18, then 0.97 at 20-23;
+  - degree 6: 1.0 up to 20, then 0.987-0.996;
+  - degree 7+: 1.0 up to 20, then 0.994-1.0.
+- Multi-class T with NO merging vertex of degree 5 (a non-degree-5 vertex still merges): 2 at order 20, 3 at 21, 8 at 22, 18 at 23. So a degree-5 merging vertex does not always exist.
+- No merging vertex ever leaves kappa(T - v) >= 2.
+- No vertex deletion created a new class anywhere: 0 in every order.
+
+## Run 5: candidate potentials on hard holes (`potentials2.py`, `run5.txt`; first pass `potentials.py`)
+- Test: for each candidate Phi, the number of UNFILLED states of T - v from which no single Kempe move strictly lowers Phi ("lower"), or strictly raises it ("raise"). A move into a filled state always counts as progress. A candidate works iff 0 states are stuck.
+- Candidates (coordinator's list, built on Studio intel's coset_potential.py conventions): conn_pairs, link_comps, link_comps_max, lock_size, lock_dist, Intern D's K vector, and Phi by role (beta/gamma/delta, with k(u) = 6 - deg). Plus the lexicographic combinations (1,2,3) and (3,1,2).
+- Holes:
+  - the four radius-5 certificates (91a307 h22, 8a23ee h23, 62661a h23, 80b930 h23);
+  - Studio intel's F-cycle hole (fcycle/fcycle_order22.json, hole 15, main 22ff272);
+  - the census order-22 rho-5 hole (plantri index 93, hole 17);
+  - Errera's two rho-3 holes (0, 4).
+- **No candidate works on any hole, in either direction.** The fewest stuck states:
+  - lock_size, lowered: 9 / 2 / 2 / 7 / 4 / 2 / 10 / 10 stuck, out of 737 / 1095 / 1095 / 2713 / 144 / 202 / 60 / 60 unfilled (same hole order as above);
+  - lock_dist, lowered: 6 / 2 / 2 / 7 / 4 / 2 / 0 / 0. It is 0 at Errera's holes only.
+  - lex_3_1_2 is close to lock_size.
+- link_comps and link_comps_max are constant on unfilled states at every hole, so every unfilled state is stuck for them.
