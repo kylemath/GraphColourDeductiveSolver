@@ -1,7 +1,12 @@
 {
-  "revision": 130,
-  "updatedAt": "2026-10-06T14:45:00-06:00",
+  "revision": 131,
+  "updatedAt": "2026-10-06T14:58:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T20:58:00Z",
+      "node": "structural-chain-rstar",
+      "action": "Revision 131 records Theorem HP in Lean as compiled and audited (J8) and the global form of R* implies 4CT (links A to C, four_color_of_global_Rstar) as compiled and audited (J9), conditional on an open GLOBAL hypothesis; link D, the core-class reduction, is in progress. Studio intel withdrew \"AB kills E2\" as a general candidate on the radius-5 graphs; Studio intel and Studio compute are paused; Phase D runs unattended, unverified. Interns A to D cycle notes recorded. Leaderboard: studiomath +200, studiocompute +30. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T20:45:00Z",
       "node": "structural-chain-rstar",
@@ -11125,6 +11130,176 @@
         "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle3.md",
         "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D.md",
         "SolvingFrameworkPlan/docs/core/BountyBoard.md"
+      ]
+    },
+    {
+      "id": "structural-theorem-hp-lean",
+      "revision": 131,
+      "status": "compiled",
+      "title": "Lean: Theorem HP from triangulation hypotheses (compiled and audited, J8)",
+      "evidence": "Audit J8 PASSED (14:40, 6222b27) on the Studio outputs 072367c: shasum OK, grep empty, exit 0, 76 constants with 0 nonstandard (theorem_HP and theorem_HP_icosahedron use the three standard axioms; hp_cases propext only), negative control caught; one unused-tactic linter warning (line 826, hygiene). The statement matches the audit's hand re-derivation; hp_cases is the hand case analysis (R1, R3, B- and F-starvation) by decide. Non-vacuity: theorem_HP_icosahedron at vertex 0, where p has degree 5; no instance with a high-degree p (nice to have, not a condition).",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1440_audit_to_coordination+studiomath+navigator+severn_J8-verdict-Theorem-HP-compiled-and-audited.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: compiled and audited. Wording: \"Theorem HP (theorem_HP): compiled and audited (J8, 072367c), from graph hypotheses: triangulated, hole of degree 5, four neighbours of degree 5, one neighbour of any degree, no separating triangle through the hole. Every proper colouring fills within 6 pure Kempe swaps. Hand proof re-derived independently by Studio Math and by the audit.\""
+        }
+      ]
+    },
+    {
+      "id": "structural-theorem-hp",
+      "revision": 131,
+      "title": "Theorem HP: a degree-5 hole with four degree-5 neighbours and one neighbour of any degree has radius at most 6 (hand, re-derived by the audit; Lean compiled and audited, J8)",
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: the Lean version is compiled and audited (J8); see structural-theorem-hp-lean."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1440_audit_to_coordination+studiomath+navigator+severn_J8-verdict-Theorem-HP-compiled-and-audited.md"
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "index": 0,
+      "revision": 131,
+      "node": {
+        "id": "structural-rstar-lean-global",
+        "title": "Lean: global R* implies every spherical map is 4-colourable (links A to C, compiled and audited, J9; GLOBAL hypothesis, not the core-class R*)",
+        "status": "compiled",
+        "statement": "four_color_of_global_Rstar: if every connected spherical triangulation of minimum degree at least 5 (with 0 < n) has a degree-5 vertex r with PureClean T r (every proper colouring of T - r reaches a filled state by finitely many pure Kempe swaps), then every spherical map is 4-colourable. Also extend_of_pureClean, pureClean_iff_locked, pureClean_of_theorem_H and pureClean_of_theorem_HP (the latter two only at H- and HP-class holes; \"every min-5 triangulation has such a hole\" is false, pentakis dodecahedron). The hypothesis is GLOBAL: it asks for a pure-clean vertex in every minimum-degree-5 triangulation, including those with separating triangles, so it is stronger than the core-class R* of the chain. It is open, and at least as strong as VH-exists (audit 13:25).",
+        "approach": "Studio Math, RStar.lean (11a40d7, merged c47ef19), through the library's audited four_color_of_triangulated_five_extension; no fans, VH_C or VH-exists needed (plan 14:41, PLAN.md definitions table).",
+        "evidence": "Audit J9 PASSED (14:49, a6f4168) on the Studio outputs 398931c: shasum OK for EulerSharp, RStar, VacancyIcosahedral; grep empty; three builds exit 0 (compiled in a copy-on-write clone of the build, accepted); sweeps 19, 76 and 8 constants, 0 nonstandard; negative control caught. PureClean holding vacuously at a vertex with no colouring of the deletion does not weaken the theorem.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1449_audit_to_coordination+studiomath+navigator+severn_J9-verdict-global-Rstar-implies-4CT-compiled.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1446_studiomath_to_coordination+audit+navigator+math_Rstar-links-A-C-compiled.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1441_studiomath_to_coordination+audit+navigator+math_plan-Rstar-implies-4CT-in-Lean.md",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/RStar.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/PLAN.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T20:58:00Z",
+            "text": "Revision 131: compiled and audited, conditional on an OPEN, GLOBAL hypothesis. Wording (audit): \"Compiled and audited (J9, 398931c): if every connected minimum-degree-5 spherical triangulation has a degree-5 vertex at which every proper colouring of the deletion reaches a filled state by finitely many pure Kempe swaps, then every spherical map is 4-colourable. The reduction of this hypothesis to four-connected triangulations (link D) is pending. The hypothesis itself is open.\" Not the 300-point R* reduction."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "index": 1,
+      "revision": 131,
+      "node": {
+        "id": "structural-rstar-lean-link-d",
+        "title": "Lean: link D, from the core-class R* to the global hypothesis (separating-triangle lift, relative class; in progress)",
+        "status": "in-progress",
+        "statement": "Reduce the global PureClean hypothesis of four_color_of_global_Rstar to four-connected members of the relative class (the R* of the chain), so that core-class R* implies 4CT in Lean.",
+        "approach": "Studio Math plan (14:46): D1 rotation-tracking subgraph_closed; D2 algebraic sides of a non-facial triangle; D3 isolate the far side, triangulated with F a face; D4 lift PureClean by VacancyCliqueLift; D5 strong induction on order. Counting input: relative_light_fives (J7).",
+        "evidence": "Nothing compiled for link D yet.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1446_studiomath_to_coordination+audit+navigator+math_Rstar-links-A-C-compiled.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T20:58:00Z",
+            "text": "Revision 131: started by Studio Math. With links A to C (J9) and the audit's check, this would meet the 300-point bounty for the R* reduction in Lean."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-chain-rstar",
+      "revision": 131,
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: Lean: links A to C compiled and audited (J9) in a GLOBAL-hypothesis form (structural-rstar-lean-global); link D, the core-class reduction, in progress. Theorems H and HP are both compiled and audited (J6, J8). The chain stays proved by hand; R* itself is open."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1449_audit_to_coordination+studiomath+navigator+severn_J9-verdict-global-Rstar-implies-4CT-compiled.md"
+      ]
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 131,
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: Studio intel (14:52, b4adda8) [computed, exploratory, post hoc, about 10 CPU-s]: on the four radius-5 graphs, 32 E2 records have deg w0, w1, w3 all at least 6, and in 20 of them both locks hold after AB (radius still 2 or 3). So \"AB kills E2\" is withdrawn as a general candidate (it held on the 32 small graphs only). Intern A cycle 4 [hand, unreviewed]: if deg w0 = 5 or deg w1 = 5, AB makes E2 non-DL (radius at most 2); consistent with all 666 records. Intern B cycle 2 [hand]: ring-3 anatomy of the radius-5 state (91a307d1, hole 22): in dgdbg every extra neighbour of a free vertex is coloured a or b, forced by colours, so HP's AB* condition is violated."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1452_studiointel_to_coordination+math+longtable_E2-cycle4-degree-check.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle4.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-B-cycle2.md"
+      ]
+    },
+    {
+      "id": "structural-rstar-phase-c",
+      "revision": 131,
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: Studio intel and the Studio compute session are paused (the user, tokens). Phase D runs unattended (approved, 4 CPU-h); its outputs are unverified until verify_cert.sh and the audit. The audit's radius-5 replay has not been posted, so the four states stay computed, pending audit replay. Intern D cycle 2 [hand-read]: 62661a3f has the same hole-23 face list and state as 8a23ee3e; common structure of the radius-5 states proposed as Conjecture C5 (radius at least 5 only if c(w) = mu, the outer neighbours of m carry alpha, c(a), c(b), and the two chains from m to w share an internal vertex); exploring, untested."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D-cycle2.md"
+      ]
+    },
+    {
+      "id": "structural-wp20",
+      "revision": 131,
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: the audit's P1 replay J3 has no posted outputs on main yet (Studio compute session paused); still pending."
+        }
+      ]
+    },
+    {
+      "id": "structural-tait-lock-criterion",
+      "revision": 131,
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: intern C cycle 3 [hand]: no gap in the Tait lock criterion and its F corollary (a second independent check after Math's review)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle3.md"
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 131,
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131: Severn (0d7336d, 14:46) applied revision 130 (19 pages). Navigator claim check: (1) theorem_HP is now compiled and audited (J8), not \"built, audit pending\"; (2) §4 says Theorems H and HP have \"two independent Math-team hand reviews, not audited\": HP was re-derived by hand by the audit (revision 127) and H's hypotheses were read by the audit by hand (J6 criteria), and both Lean forms are now audited, so \"not audited\" must go; (3) the R* section must add the J9 result in the audit's wording: a compiled conditional theorem with an OPEN, GLOBAL hypothesis, not \"R* is all that remains\", link D pending; (4) the rest (R* search, radius-5 pending, WP20 P1 wording, Tait lock criterion [hand]) agrees with the ledger. The audit (14:48) checked the six VERIFY citations (Birkhoff 115-128; Tait needs Severn's choice)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1446_severn_to_navigator+audit+longtable+math+coordination+studiomath+studiointel_paper-revision-130-and-verify.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1448_audit_to_severn+coordination+navigator_six-citation-checks.md"
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 131,
+      "notes": [
+        {
+          "time": "2026-10-06T20:58:00Z",
+          "text": "Revision 131, leaderboard: studiomath +200 (Theorem HP compiled in Lean, audit J8 passed). studiocompute +30 (J9, a requested run of the audit's check with outputs posted, 398931c; same B1 ruling as J5 to J8). Not scored: links A to C (the 300 needs the core-class reduction, link D); Studio intel's withdrawal of \"AB kills E2\" (its 14:14 claim was scoped to 32 graphs and was not wrong; a candidate generalisation dropped on new data is not an error withdrawn); intern cycles (unreviewed or no-gap reports not requested as replays this cycle). Totals: math 30, audit 30, studiomath 510, studiocompute 210, intern-C 30, others 0."
+        }
       ]
     }
   ]
