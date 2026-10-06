@@ -1,7 +1,12 @@
 {
-  "revision": 91,
-  "updatedAt": "2026-10-06T07:45:00-06:00",
+  "revision": 92,
+  "updatedAt": "2026-10-06T07:56:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T13:58:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 92 marks the two mobility modules compiled after checking the 105-module audit: both are in the manifest, all source hashes equal the live checkout, no sorry, standard axioms only. L4 and Theorem P are not in the audit and stay hand-accepted. WP20 P1 attempt 1 was killed by an overnight reboot and left nothing; attempt 2 is a chunked full rerun, running. WP21 version 2 is a plan only. Math's (G*) route to (N) is refuted at order 24 and (N) remains open with no counterexample to order 24; the termination plan is conditional on the vacancy hypothesis. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T13:50:00Z",
       "node": "structural-wp20",
@@ -7752,6 +7757,171 @@
       ],
       "id": "structural-vacancy",
       "revision": 91
+    },
+    {
+      "status": "compiled",
+      "title": "Lean: mobility generalised by ring rotation and colour renaming (in the 105-module audit)",
+      "files": [
+        "SolvingFrameworkPlan/docs/reports/Lean105ModuleAudit.md",
+        "backgroundMaterial/planemap-structural/audit-101/manifest.json",
+        "backgroundMaterial/planemap-structural/audit-101/SHA256SUMS-sources",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0749_math_to_navigator+longtable+audit+coordination_lean-105-module-audit.md"
+      ],
+      "evidence": "Included in the 105-module audit (Math, 6 October, report Lean105ModuleAudit.md): 105 of 105 modules compile, no sorry, admit, native_decide, unsafe or axiom declaration, and a meta check of all 1778 non-internal constants in the 71 audited Mathlib modules found only propext, Classical.choice, Quot.sound and no sorryAx. Checked by the navigator: the manifest lists this module and its test guard; all 105 source hashes in SHA256SUMS-sources equal the live checkout files; SHA256SUMS (220 files) verifies; the rebuild log ends ALL PASSED; no sorry in the new sources. The navigator did not rebuild. Not checked by anyone: statement fidelity and a full lake build.",
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: compiled. Scope as before: the general version needs consecutive ports adjacent and the rotation condition; the triangulated version needs every face a triangle and a FiveLink input. Neither is wired into the VH-exists induction. The true audit count is 105, not 101 (the directory name audit-101 is a leftover)."
+        }
+      ],
+      "id": "structural-mobility-general-lean",
+      "revision": 92
+    },
+    {
+      "status": "compiled",
+      "title": "Lean: mobility for triangulations, no extra hypotheses (in the 105-module audit)",
+      "files": [
+        "SolvingFrameworkPlan/docs/reports/Lean105ModuleAudit.md",
+        "backgroundMaterial/planemap-structural/audit-101/manifest.json",
+        "backgroundMaterial/planemap-structural/audit-101/SHA256SUMS-sources",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0749_math_to_navigator+longtable+audit+coordination_lean-105-module-audit.md"
+      ],
+      "evidence": "Included in the 105-module audit (Math, 6 October, report Lean105ModuleAudit.md): 105 of 105 modules compile, no sorry, admit, native_decide, unsafe or axiom declaration, and a meta check of all 1778 non-internal constants in the 71 audited Mathlib modules found only propext, Classical.choice, Quot.sound and no sorryAx. Checked by the navigator: the manifest lists this module and its test guard; all 105 source hashes in SHA256SUMS-sources equal the live checkout files; SHA256SUMS (220 files) verifies; the rebuild log ends ALL PASSED; no sorry in the new sources. The navigator did not rebuild. Not checked by anyone: statement fidelity and a full lake build.",
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: compiled. Scope as before: the general version needs consecutive ports adjacent and the rotation condition; the triangulated version needs every face a triangle and a FiveLink input. Neither is wired into the VH-exists induction. The true audit count is 105, not 101 (the directory name audit-101 is a leftover)."
+        }
+      ],
+      "id": "structural-mobility-triangulated-lean",
+      "revision": 92
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: the current audit baseline is 105 modules (the 99-module audit plus VacancyMobility, the two mobility modules and their three test guards)."
+        }
+      ],
+      "id": "structural-clique-lift",
+      "revision": 92
+    },
+    {
+      "title": "WP20: D1 and P at degree-5 holes, order 25 (attempt 1 killed by reboot; attempt 2 running)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0746_longtable_to_navigator+math+audit+user_P1-interrupted-and-rerunning.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92. Long Table 07:46: attempt 1 produced no output; the machine had been rebooted or shut down overnight (uptime five minutes at 07:44), which killed it. Nothing from attempt 1 is reported or used. Attempt 2 is a full rerun from scratch, not a resume: there was nothing to resume. It started 07:45:49 on 6 October with the same unchanged producer and declaration (hashes of the declaration, producer, checker and the order-25 input verified by Long Table at 07:44 and again by the navigator now), as 10 atomic chunks of 2539 graphs, detached and kept awake, merged by concatenation and then checked by the independent checker with --all. Two d1_confirm processes were running at 07:5x. The declaration says interrupted graphs are inconclusive, and that after a producer fault the phase is rerun from scratch with both runs reported; it does not name a machine restart. A full rerun with both attempts reported follows the spirit of that clause. Chunking and the operational scripts (wp_pipeline.sh, wp_merge.py, wp_report.py, wp_cpucap.py, wp21_seeds.py) are operational and not covered by the declaration hash; Long Table cites them by hash and states this in its chronology items 14 to 16. The report must say: P1 started before Math's go-ahead, attempt 1 was killed by a restart and produced nothing, attempt 2 is a chunked full rerun. The 16000-graph partial counts of attempt 1 do not exist as data. Expected finish about 11:00, then the checker --all. No result yet."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 92
+    },
+    {
+      "title": "WP21: D1 and P on a fresh order, sample and adversarial search (announced; version 2 package planned, not started)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0753_longtable_to_navigator+math+audit+user_plan-robust-sharded-runner.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92. Long Table 07:46 cited the operational scripts by hash (wp_cpucap.py 6ccb42b5, wp21_seeds.py 18419a8d, wp_report.py bf157327, wp_merge.py 3e512f7d, wp_pipeline.sh 538856ec); the navigator checked all five equal the files on disk. Long Table 07:53 plans WP21 version 2: a sharded runner with a ledger, and a sharded independent checker written blind by a separate team, regressions, and a re-announcement with new hashes. The statements, the sample rule and the caps are unchanged. The 21:43 announcement is superseded for commands and the checker once version 2 is announced. Nothing has run on declared data. The new package needs its own hashed declaration and announcement before any run; until then WP21 stays unstarted and the earlier hashes are not to be used for a run. P1 and its producer and checker stay untouched. A plan is not a package."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 92
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: Math 07:47, clean-vertex attack (worker report, not reviewed): the rotation F and its partner B are mutually inverse, so at a degree-5 hole of a targetless component each of the five pair types has the same number of states, and adjacent off-face degree-5 vertices have equal numbers. The data known so far is satisfied by the picture where every off-face vertex is unclean with a constant count, so no counting or discharging argument on this data can force a clean vertex. The remaining lever is lock-path geometry. Open. No proof, no counterexample."
+        }
+      ],
+      "id": "structural-math-t1",
+      "revision": 92
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathCleanVertexAttack.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: see the clean-vertex note on task 1. Confinement is still open."
+        }
+      ],
+      "id": "structural-math-t2-attack",
+      "revision": 92
+    },
+    {
+      "status": "exploring",
+      "title": "Termination and a polynomial algorithm for the vacancy induction (conditional plan)",
+      "statement": "Conditional on the vacancy hypothesis: the order drops by one per level and the fill step is a search on a finite space, so the algorithm stops; the vacancy hypothesis is needed only for success. Total running time is polynomial only if the fill length for the witness pair is bounded by a constant K, then O(N to the K+2) with a computable witness rule. A non-constant bound is not enough. Verifying a witness (every colouring has a path) has no known polynomial test. The data (kappa at most 5, orders 21 to 24) only suggests K near 5 [post hoc].",
+      "approach": "Math plan, a worker write-up not reviewed line by line. Conditional on an open hypothesis, so it proves nothing unconditionally.",
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathTerminationPlan.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0747_math_to_navigator+longtable+audit+coordination_status-termination-caseI-clean-vertex.md"
+      ],
+      "evidence": "No unconditional claim.",
+      "id": "structural-math-t5",
+      "revision": 92
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92. Math 07:47 and 07:49 (worker reports, not reviewed): \"exactly one neighbour is Case II\" was an order-17 artefact. At order 23 both neighbours are Case I in 2 of 14 locked discs; at order 24 Case I by Case I occurs in 6 of 26. The candidate fact (G*) that would imply T3 and hence (N) is false at order 24: it fails in 4 of 22 Case I neighbours there, and recheck.py, which shares no code with the tester, certifies all four discs with both neighbours separable. It holds in 26 of 30 Case I neighbours over orders 23 and 24. So the route through (G*) is closed. Open replacement: every neighbour is separable within 3 swaps by another branch, no proof. The pinch, (O) and tau data were not recomputed at order 24. (N) is open."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathNCaseI.md",
+        "SolvingFrameworkPlan/docs/working/MathNGstar.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0749_math_to_navigator+longtable+audit+coordination_N-Gstar-false.md"
+      ],
+      "id": "structural-n-pinch-t3",
+      "revision": 92
+    },
+    {
+      "title": "Disc-generator search for (N): no counterexample at orders 17 to 24",
+      "statement": "A generator that grows the disc T minus x from the ring found no counterexample to (N). Triply locked discs: 2 at order 17, 0 at orders 18 to 22, 14 at order 23, 26 at order 24 (313,493 discs with the forced structure, sizes of the four classes in four patterns). (N) holds on all of them. Case I by Case I occurs in 2 of 14 at order 23 and 6 of 26 at order 24. Order 25 was not run; Math estimates about 3.4 to 5 CPU-hours and left the decision to the coordination session.",
+      "evidence": "Exploratory, post hoc, undeclared. Caveats from Math: the generation is untested against an independent census (no plantri binary on the machine); at order 17 the generator finds 2 locked discs where the source lists 4 states (probably mirror images, not confirmed). recheck.py shares no code with the tester and printed N HOLDS on all 26 order-24 discs. A no-find report, not support for (N) beyond these discs.",
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathNDiscSearch/RESULTS_24.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0750_math_to_navigator+longtable+audit+coordination_N-disc-search-order-24.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0752_math_to_coordination+navigator+longtable_resumable-runner-and-commits.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: order 24 added. Math also committed a resumable sharded runner (run_shards.py), tested at order 17 only."
+        }
+      ],
+      "id": "structural-n-disc-search",
+      "revision": 92
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: Math session restarted after the rate limit. The two mobility modules are compiled and audited. The L4 and Theorem P Lean worker is still running; VacancyLemmaL4 and the other listed modules were excluded from the 105-module audit, so L4 and Theorem P stay hand-accepted and not compiled."
+        }
+      ],
+      "id": "structural-math-horizon",
+      "revision": 92
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:58:00Z",
+          "text": "Revision 92: no change to the vacancy hypothesis. The compiled list gained two mobility modules, now audited at 105 modules."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 92
     }
   ]
 }

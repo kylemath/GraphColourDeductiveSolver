@@ -262,11 +262,11 @@ if (integrationPath) {
     ['structural-trace-lift','structural-vhe-obstruction','proved'],
     ['structural-trace-five-cycle','structural-trace-lift','proved'],
     ['structural-math-horizon','structural-vacancy','in-progress'],
-    ['structural-mobility-general-lean','structural-math-horizon','in-progress'],
+    ['structural-mobility-general-lean','structural-math-horizon','compiled'],
     ['structural-math-t2-attack','structural-math-t2','exploring'],
     ['structural-math-t3-attack','structural-math-t3','exploring'],
     ['structural-wp21','structural-sep-d1','unstarted'],
-    ['structural-mobility-triangulated-lean','structural-math-horizon','in-progress'],
+    ['structural-mobility-triangulated-lean','structural-math-horizon','compiled'],
     ['structural-n-disc-search','structural-math-t3-attack','exploring'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
@@ -282,7 +282,7 @@ if (integrationPath) {
   }
   assert.equal(
     Tree.findNode(root, 'structural-wp21').title,
-    'WP21: D1 and P on order 26, sample then adversarial search (announced, not started)'
+    'WP21: D1 and P on a fresh order, sample and adversarial search (announced; version 2 package planned, not started)'
   );
   assert.equal(Tree.isWorking('structural-wp20'), true);
   assert.equal(Tree.isWorking('structural-math-horizon'), true);
