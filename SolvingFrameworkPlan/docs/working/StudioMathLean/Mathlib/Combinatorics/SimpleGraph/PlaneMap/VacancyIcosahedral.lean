@@ -758,3 +758,814 @@ theorem theorem_H_icosahedron : PureFill sphericalMap.graph 0 sampleColouring 3 
     (fun u _ => sphericalMap_degree u) noSeparatingTriangle_zero sampleColouring_proper
 
 end SimpleGraph.Icosahedron
+
+/-! ## Theorem HP: four link vertices of degree five, one free -/
+
+namespace SimpleGraph.VacancyIcosahedral
+
+set_option synthInstance.maxHeartbeats 400000 in
+set_option synthInstance.maxSize 4096 in
+/-- The doubly locked ring words at a hole with one free port `k`: `R1`, `R3`, or a word
+killed by B-starvation (`k ≠ 0`) or F-starvation (`k ≠ 2`). -/
+lemma hp_cases : ∀ (k : Fin 5) (a0 a1 a2 a3 a4 : Fin 4),
+    a0 ≠ 0 → a0 ≠ 1 → a1 ≠ 1 → a1 ≠ 0 → a2 ≠ 0 → a2 ≠ 2 → a3 ≠ 2 → a3 ≠ 3 →
+    a4 ≠ 3 → a4 ≠ 0 →
+    (k ≠ 0 → a4 ≠ a0) → (k ≠ 1 → a0 ≠ a1) → (k ≠ 2 → a1 ≠ a2) → (k ≠ 3 → a2 ≠ a3) →
+    (k ≠ 4 → a3 ≠ a4) →
+    (k ≠ 1 → a0 = 2 ∨ a1 = 2) → (k ≠ 1 → a0 = 3 ∨ a1 = 3) → (k ≠ 3 → a2 = 1 ∨ a3 = 1) →
+    (k ≠ 4 → a3 = 1 ∨ a4 = 1) →
+    (a0 = 2 ∧ a1 = 3 ∧ a2 = 1 ∧ a3 = 0 ∧ a4 = 1) ∨
+    (a0 = 3 ∧ a1 = 2 ∧ a2 = 3 ∧ a3 = 1 ∧ a4 = 2) ∨
+    (k ≠ 0 ∧ a0 = 3 ∧ a4 = 1) ∨ (k ≠ 2 ∧ a1 = 2 ∧ a2 = 1) := by
+  decide +kernel
+
+/-- Colour renaming after an F move (`0,3,1,2 ↦ 0,1,2,3`). -/
+def renF : Fin 4 ≃ Fin 4 := ⟨![0, 2, 3, 1], ![0, 3, 1, 2], by decide, by decide⟩
+/-- Colour renaming after a B move (`0,2,3,1 ↦ 0,1,2,3`). -/
+def renB : Fin 4 ≃ Fin 4 := ⟨![0, 3, 1, 2], ![0, 2, 3, 1], by decide, by decide⟩
+/-- The ring word `R1 = (g,d,b,a,b)`. -/
+def wR1 : Fin 5 → Fin 4 := ![2, 3, 1, 0, 1]
+/-- The ring word `R3 = (d,g,d,b,g)`. -/
+def wR3 : Fin 5 → Fin 4 := ![3, 2, 3, 1, 2]
+
+end SimpleGraph.VacancyIcosahedral
+
+namespace SimpleGraph.SphericalMap
+open VacancySlide VacancyShortFill VacancyMobility VacancyIcosahedral
+variable {n : Nat} (M : SphericalMap n)
+
+/-- The two-ball of a hole whose link vertices other than `L.port k` have degree five. -/
+structure HPBall (h : Fin n) (L : FiveLink M.graph h) (w : Fin 5 → Fin n) (k : Fin 5) :
+    Prop where
+  nbr : ∀ t, t ≠ k → ∀ u, M.Adj (L.port t) u ↔
+    u = h ∨ u = L.port (t+4) ∨ u = L.port (t+1) ∨ u = w (t+4) ∨ u = w t
+  adjl : ∀ t, M.Adj (L.port t) (w t)
+  adjr : ∀ t, M.Adj (L.port (t+1)) (w t)
+  ringP : ∀ t, M.Adj (L.port t) (L.port (t+1))
+  ring : ∀ t, t ≠ k → M.Adj (w (t+4)) (w t)
+  off : ∀ t i, w t ≠ L.port i
+  offh : ∀ t, w t ≠ h
+  rot : ∀ i : Fin 5, M.rotation.next ⟨(h,L.port i),port_adj M.graph L i⟩ =
+    ⟨(h,L.port (i+1)),port_adj M.graph L (i+1)⟩
+
+variable {M}
+
+theorem HPBall.shift {h : Fin n} {L : FiveLink M.graph h} {w : Fin 5 → Fin n} {k : Fin 5}
+    (B : HPBall M h L w k) (s : Fin 5) :
+    HPBall M h (FiveLink.shift M L s) (fun t => w (t+s)) (k - s) := by
+  have c4 : ∀ t : Fin 5, t + 4 + s = t + s + 4 := fun t => add_right_comm _ _ _
+  have c1 : ∀ t : Fin 5, t + 1 + s = t + s + 1 := fun t => add_right_comm _ _ _
+  have hk : ∀ t : Fin 5, t ≠ k - s → t + s ≠ k := fun t ht e => ht (by rw [← e]; abel)
+  refine ⟨fun t ht u => ?_, fun t => B.adjl (t+s), fun t => ?_, fun t => ?_, fun t ht => ?_,
+    fun t i => B.off _ _, fun t => B.offh _, fun i => ?_⟩
+  · change M.Adj (L.port (t + s)) u ↔ u = h ∨ u = L.port (t + 4 + s) ∨
+      u = L.port (t + 1 + s) ∨ u = w (t + 4 + s) ∨ u = w (t + s)
+    rw [c4, c1]; exact B.nbr (t+s) (hk t ht) u
+  · change M.Adj (L.port (t + 1 + s)) (w (t + s)); rw [c1]; exact B.adjr _
+  · change M.Adj (L.port (t + s)) (L.port (t + 1 + s)); rw [c1]; exact B.ringP _
+  · change M.Adj (w (t + 4 + s)) (w (t + s)); rw [c4]; exact B.ring _ (hk t ht)
+  · have key : ∀ j j' : Fin 5, j' = j + 1 →
+        M.rotation.next ⟨(h, L.port j), port_adj M.graph L j⟩ =
+          ⟨(h, L.port j'), port_adj M.graph L j'⟩ := by
+      rintro j j' rfl; exact B.rot j
+    exact key (i + s) (i + 1 + s) (by abel)
+
+section Moves
+variable {h : Fin n} {L : FiveLink M.graph h} {w : Fin 5 → Fin n} {k : Fin 5}
+  {c : Fin n → Fin 4}
+
+/-- F on `R1`: the image, read in the frame shifted by three, has ring word `R3`. -/
+theorem moveF_R1 (B : HPBall M h L w k) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR1 t)
+    (lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)) :
+    ∃ d, KempeStep M.graph h c d ∧ ProperOff M.graph h d ∧
+      Pattern M.graph (FiveLink.shift M L 3) (fun v => renF (d v)) ∧
+      ∀ t, renF (d (w (t+3))) = wR3 t := by
+  classical
+  have sep := vacancy_alternation M L pat B.rot
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  have e0 : c (w 0) = 2 := by simpa [wR1] using ring 0
+  have e1 : c (w 1) = 3 := by simpa [wR1] using ring 1
+  have e2 : c (w 2) = 1 := by simpa [wR1] using ring 2
+  have e3 : c (w 3) = 0 := by simpa [wR1] using ring 3
+  have e4 : c (w 4) = 1 := by simpa [wR1] using ring 4
+  obtain ⟨K, hK, hKm⟩ : ∃ K : Set (Fin n), Whole M.graph h c 0 2 K ∧
+      ∀ v, v ∈ K ↔ (pairGraph M.graph h c 0 2).Reachable (L.port 2) v :=
+    ⟨_, whole_component M.graph h c 0 2 (L.port 2) ⟨pn 2, Or.inl c2⟩, fun _ => Iff.rfl⟩
+  have x2K : L.port 2 ∈ K := (hKm _).mpr Reachable.rfl
+  have x0K : L.port 0 ∉ K := fun hin => (sep.right lock2).1 ((hKm _).mp hin).symm
+  have x3K : L.port 3 ∈ K :=
+    whole_closed M.graph hK x2K (by simpa using B.ringP 2) ⟨pn 3, Or.inr c3⟩
+  have w0K : w 0 ∉ K := fun hin =>
+    x0K (whole_closed M.graph hK hin (B.adjl 0).symm ⟨pn 0, Or.inl c0⟩)
+  have w3K : w 3 ∈ K := whole_closed M.graph hK x3K (B.adjl 3) ⟨B.offh 3, Or.inl e3⟩
+  set d := swap c 0 2 K with hd
+  have d0 : d (L.port 0) = 0 := by rw [hd, swap_out x0K, c0]
+  have d1 : d (L.port 1) = 1 := by
+    rw [hd, swap_other (by rw [c1]; decide) (by rw [c1]; decide), c1]
+  have d2 : d (L.port 2) = 2 := by rw [hd, swap_in x2K, c2]; decide
+  have d3 : d (L.port 3) = 0 := by rw [hd, swap_in x3K, c3]; decide
+  have d4 : d (L.port 4) = 3 := by
+    rw [hd, swap_other (by rw [c4]; decide) (by rw [c4]; decide), c4]
+  have dw0 : d (w 0) = 2 := by rw [hd, swap_out w0K, e0]
+  have dw1 : d (w 1) = 3 := by
+    rw [hd, swap_other (by rw [e1]; decide) (by rw [e1]; decide), e1]
+  have dw2 : d (w 2) = 1 := by
+    rw [hd, swap_other (by rw [e2]; decide) (by rw [e2]; decide), e2]
+  have dw3 : d (w 3) = 2 := by rw [hd, swap_in w3K, e3]; decide
+  have dw4 : d (w 4) = 1 := by
+    rw [hd, swap_other (by rw [e4]; decide) (by rw [e4]; decide), e4]
+  refine ⟨d, ⟨0, 2, K, by decide, hK, rfl⟩, properOff_swap M.graph hc hK, fun i => ?_,
+    fun t => ?_⟩
+  · change renF (d (L.port (i + 3))) = gapWord i
+    fin_cases i <;> simp [d0, d1, d2, d3, d4, renF, gapWord]
+  · fin_cases t <;> simp [dw0, dw1, dw2, dw3, dw4, renF, wR3]
+
+/-- F on `R3`: the image, read in the frame shifted by three, has ring word `R1`. -/
+theorem moveF_R3 (B : HPBall M h L w k) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR3 t)
+    (lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)) :
+    ∃ d, KempeStep M.graph h c d ∧ ProperOff M.graph h d ∧
+      Pattern M.graph (FiveLink.shift M L 3) (fun v => renF (d v)) ∧
+      ∀ t, renF (d (w (t+3))) = wR1 t := by
+  classical
+  have sep := vacancy_alternation M L pat B.rot
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  have e0 : c (w 0) = 3 := by simpa [wR3] using ring 0
+  have e1 : c (w 1) = 2 := by simpa [wR3] using ring 1
+  have e2 : c (w 2) = 3 := by simpa [wR3] using ring 2
+  have e3 : c (w 3) = 1 := by simpa [wR3] using ring 3
+  have e4 : c (w 4) = 2 := by simpa [wR3] using ring 4
+  obtain ⟨K, hK, hKm⟩ : ∃ K : Set (Fin n), Whole M.graph h c 0 2 K ∧
+      ∀ v, v ∈ K ↔ (pairGraph M.graph h c 0 2).Reachable (L.port 2) v :=
+    ⟨_, whole_component M.graph h c 0 2 (L.port 2) ⟨pn 2, Or.inl c2⟩, fun _ => Iff.rfl⟩
+  have x2K : L.port 2 ∈ K := (hKm _).mpr Reachable.rfl
+  have x0K : L.port 0 ∉ K := fun hin => (sep.right lock2).1 ((hKm _).mp hin).symm
+  have x3K : L.port 3 ∈ K :=
+    whole_closed M.graph hK x2K (by simpa using B.ringP 2) ⟨pn 3, Or.inr c3⟩
+  have w1K : w 1 ∈ K :=
+    whole_closed M.graph hK x2K (by simpa using B.adjr 1) ⟨B.offh 1, Or.inr e1⟩
+  have w4K : w 4 ∉ K := fun hin =>
+    x0K (whole_closed M.graph hK hin (by simpa using (B.adjr 4).symm) ⟨pn 0, Or.inl c0⟩)
+  set d := swap c 0 2 K with hd
+  have d0 : d (L.port 0) = 0 := by rw [hd, swap_out x0K, c0]
+  have d1 : d (L.port 1) = 1 := by
+    rw [hd, swap_other (by rw [c1]; decide) (by rw [c1]; decide), c1]
+  have d2 : d (L.port 2) = 2 := by rw [hd, swap_in x2K, c2]; decide
+  have d3 : d (L.port 3) = 0 := by rw [hd, swap_in x3K, c3]; decide
+  have d4 : d (L.port 4) = 3 := by
+    rw [hd, swap_other (by rw [c4]; decide) (by rw [c4]; decide), c4]
+  have dw0 : d (w 0) = 3 := by
+    rw [hd, swap_other (by rw [e0]; decide) (by rw [e0]; decide), e0]
+  have dw1 : d (w 1) = 0 := by rw [hd, swap_in w1K, e1]; decide
+  have dw2 : d (w 2) = 3 := by
+    rw [hd, swap_other (by rw [e2]; decide) (by rw [e2]; decide), e2]
+  have dw3 : d (w 3) = 1 := by
+    rw [hd, swap_other (by rw [e3]; decide) (by rw [e3]; decide), e3]
+  have dw4 : d (w 4) = 2 := by rw [hd, swap_out w4K, e4]
+  refine ⟨d, ⟨0, 2, K, by decide, hK, rfl⟩, properOff_swap M.graph hc hK, fun i => ?_,
+    fun t => ?_⟩
+  · change renF (d (L.port (i + 3))) = gapWord i
+    fin_cases i <;> simp [d0, d1, d2, d3, d4, renF, gapWord]
+  · fin_cases t <;> simp [dw0, dw1, dw2, dw3, dw4, renF, wR1]
+
+/-- B on `R1`: the image, read in the frame shifted by two, has ring word `R3`. -/
+theorem moveB_R1 (B : HPBall M h L w k) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR1 t)
+    (lock1 : (pairGraph M.graph h c 1 2).Reachable (L.port 1) (L.port 3)) :
+    ∃ d, KempeStep M.graph h c d ∧ ProperOff M.graph h d ∧
+      Pattern M.graph (FiveLink.shift M L 2) (fun v => renB (d v)) ∧
+      ∀ t, renB (d (w (t+2))) = wR3 t := by
+  classical
+  have sep := vacancy_alternation M L pat B.rot
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  have e0 : c (w 0) = 2 := by simpa [wR1] using ring 0
+  have e1 : c (w 1) = 3 := by simpa [wR1] using ring 1
+  have e2 : c (w 2) = 1 := by simpa [wR1] using ring 2
+  have e3 : c (w 3) = 0 := by simpa [wR1] using ring 3
+  have e4 : c (w 4) = 1 := by simpa [wR1] using ring 4
+  obtain ⟨K, hK, hKm⟩ : ∃ K : Set (Fin n), Whole M.graph h c 0 3 K ∧
+      ∀ v, v ∈ K ↔ (pairGraph M.graph h c 0 3).Reachable (L.port 0) v :=
+    ⟨_, whole_component M.graph h c 0 3 (L.port 0) ⟨pn 0, Or.inl c0⟩, fun _ => Iff.rfl⟩
+  have x0K : L.port 0 ∈ K := (hKm _).mpr Reachable.rfl
+  have x2K : L.port 2 ∉ K := fun hin => (sep.left lock1).1 ((hKm _).mp hin).symm
+  have x4K : L.port 4 ∈ K :=
+    whole_closed M.graph hK x0K (by simpa using (B.ringP 4).symm) ⟨pn 4, Or.inr c4⟩
+  have w3K : w 3 ∈ K :=
+    whole_closed M.graph hK x4K (by simpa using B.adjr 3) ⟨B.offh 3, Or.inl e3⟩
+  have w1K : w 1 ∉ K := fun hin =>
+    x2K (whole_closed M.graph hK hin (by simpa using (B.adjr 1).symm) ⟨pn 2, Or.inl c2⟩)
+  set d := swap c 0 3 K with hd
+  have d0 : d (L.port 0) = 3 := by rw [hd, swap_in x0K, c0]; decide
+  have d1 : d (L.port 1) = 1 := by
+    rw [hd, swap_other (by rw [c1]; decide) (by rw [c1]; decide), c1]
+  have d2 : d (L.port 2) = 0 := by rw [hd, swap_out x2K, c2]
+  have d3 : d (L.port 3) = 2 := by
+    rw [hd, swap_other (by rw [c3]; decide) (by rw [c3]; decide), c3]
+  have d4 : d (L.port 4) = 0 := by rw [hd, swap_in x4K, c4]; decide
+  have dw0 : d (w 0) = 2 := by
+    rw [hd, swap_other (by rw [e0]; decide) (by rw [e0]; decide), e0]
+  have dw1 : d (w 1) = 3 := by rw [hd, swap_out w1K, e1]
+  have dw2 : d (w 2) = 1 := by
+    rw [hd, swap_other (by rw [e2]; decide) (by rw [e2]; decide), e2]
+  have dw3 : d (w 3) = 3 := by rw [hd, swap_in w3K, e3]; decide
+  have dw4 : d (w 4) = 1 := by
+    rw [hd, swap_other (by rw [e4]; decide) (by rw [e4]; decide), e4]
+  refine ⟨d, ⟨0, 3, K, by decide, hK, rfl⟩, properOff_swap M.graph hc hK, fun i => ?_,
+    fun t => ?_⟩
+  · change renB (d (L.port (i + 2))) = gapWord i
+    fin_cases i <;> simp [d0, d1, d2, d3, d4, renB, gapWord]
+  · fin_cases t <;> simp [dw0, dw1, dw2, dw3, dw4, renB, wR3]
+
+/-- B on `R3`: the image, read in the frame shifted by two, has ring word `R1`. -/
+theorem moveB_R3 (B : HPBall M h L w k) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR3 t)
+    (lock1 : (pairGraph M.graph h c 1 2).Reachable (L.port 1) (L.port 3)) :
+    ∃ d, KempeStep M.graph h c d ∧ ProperOff M.graph h d ∧
+      Pattern M.graph (FiveLink.shift M L 2) (fun v => renB (d v)) ∧
+      ∀ t, renB (d (w (t+2))) = wR1 t := by
+  classical
+  have sep := vacancy_alternation M L pat B.rot
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  have e0 : c (w 0) = 3 := by simpa [wR3] using ring 0
+  have e1 : c (w 1) = 2 := by simpa [wR3] using ring 1
+  have e2 : c (w 2) = 3 := by simpa [wR3] using ring 2
+  have e3 : c (w 3) = 1 := by simpa [wR3] using ring 3
+  have e4 : c (w 4) = 2 := by simpa [wR3] using ring 4
+  obtain ⟨K, hK, hKm⟩ : ∃ K : Set (Fin n), Whole M.graph h c 0 3 K ∧
+      ∀ v, v ∈ K ↔ (pairGraph M.graph h c 0 3).Reachable (L.port 0) v :=
+    ⟨_, whole_component M.graph h c 0 3 (L.port 0) ⟨pn 0, Or.inl c0⟩, fun _ => Iff.rfl⟩
+  have x0K : L.port 0 ∈ K := (hKm _).mpr Reachable.rfl
+  have x2K : L.port 2 ∉ K := fun hin => (sep.left lock1).1 ((hKm _).mp hin).symm
+  have x4K : L.port 4 ∈ K :=
+    whole_closed M.graph hK x0K (by simpa using (B.ringP 4).symm) ⟨pn 4, Or.inr c4⟩
+  have w0K : w 0 ∈ K := whole_closed M.graph hK x0K (B.adjl 0) ⟨B.offh 0, Or.inr e0⟩
+  have w2K : w 2 ∉ K := fun hin =>
+    x2K (whole_closed M.graph hK hin (B.adjl 2).symm ⟨pn 2, Or.inl c2⟩)
+  set d := swap c 0 3 K with hd
+  have d0 : d (L.port 0) = 3 := by rw [hd, swap_in x0K, c0]; decide
+  have d1 : d (L.port 1) = 1 := by
+    rw [hd, swap_other (by rw [c1]; decide) (by rw [c1]; decide), c1]
+  have d2 : d (L.port 2) = 0 := by rw [hd, swap_out x2K, c2]
+  have d3 : d (L.port 3) = 2 := by
+    rw [hd, swap_other (by rw [c3]; decide) (by rw [c3]; decide), c3]
+  have d4 : d (L.port 4) = 0 := by rw [hd, swap_in x4K, c4]; decide
+  have dw0 : d (w 0) = 0 := by rw [hd, swap_in w0K, e0]; decide
+  have dw1 : d (w 1) = 2 := by
+    rw [hd, swap_other (by rw [e1]; decide) (by rw [e1]; decide), e1]
+  have dw2 : d (w 2) = 3 := by rw [hd, swap_out w2K, e2]
+  have dw3 : d (w 3) = 1 := by
+    rw [hd, swap_other (by rw [e3]; decide) (by rw [e3]; decide), e3]
+  have dw4 : d (w 4) = 2 := by
+    rw [hd, swap_other (by rw [e4]; decide) (by rw [e4]; decide), e4]
+  refine ⟨d, ⟨0, 3, K, by decide, hK, rfl⟩, properOff_swap M.graph hc hK, fun i => ?_,
+    fun t => ?_⟩
+  · change renB (d (L.port (i + 2))) = gapWord i
+    fin_cases i <;> simp [d0, d1, d2, d3, d4, renB, gapWord]
+  · fin_cases t <;> simp [dw0, dw1, dw2, dw3, dw4, renB, wR1]
+
+end Moves
+
+section Chains
+variable {h : Fin n} {L : FiveLink M.graph h} {w : Fin 5 → Fin n} {k : Fin 5}
+  {c : Fin n → Fin 4}
+
+lemma after_move {d : Fin n → Fin 4} {σ : Fin 4 ≃ Fin 4} {b : Nat}
+    (step : KempeStep M.graph h c d) (f : PureFill M.graph h (fun v => σ (d v)) b) :
+    PureFill M.graph h c (b+1) := by
+  have f' := pureFill_rename M.graph σ.symm f
+  simp only [Equiv.symm_apply_apply] at f'
+  exact prepend M.graph step f'
+
+/-- B-starvation: if `x_0` has degree five and outer colours `3, 1`, then B, then a fill. -/
+theorem killB (B : HPBall M h L w k) (hk : k ≠ 0) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) (e0 : c (w 0) = 3) (e4 : c (w 4) = 1)
+    (lock1 : (pairGraph M.graph h c 1 2).Reachable (L.port 1) (L.port 3)) :
+    PureFill M.graph h c 2 := by
+  classical
+  have sep := vacancy_alternation M L pat B.rot
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have pne : ∀ i j, i ≠ j → L.port i ≠ L.port j := fun i j hij e => hij (L.injective e)
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  obtain ⟨K, hK, hKm⟩ : ∃ K : Set (Fin n), Whole M.graph h c 0 3 K ∧
+      ∀ v, v ∈ K ↔ (pairGraph M.graph h c 0 3).Reachable (L.port 0) v :=
+    ⟨_, whole_component M.graph h c 0 3 (L.port 0) ⟨pn 0, Or.inl c0⟩, fun _ => Iff.rfl⟩
+  have x0K : L.port 0 ∈ K := (hKm _).mpr Reachable.rfl
+  have x2K : L.port 2 ∉ K := fun hin => (sep.left lock1).1 ((hKm _).mp hin).symm
+  have x4K : L.port 4 ∈ K :=
+    whole_closed M.graph hK x0K (by simpa using (B.ringP 4).symm) ⟨pn 4, Or.inr c4⟩
+  have w0K : w 0 ∈ K := whole_closed M.graph hK x0K (B.adjl 0) ⟨B.offh 0, Or.inr e0⟩
+  set d := swap c 0 3 K with hd
+  have d0 : d (L.port 0) = 3 := by rw [hd, swap_in x0K, c0]; decide
+  have d1 : d (L.port 1) = 1 := by
+    rw [hd, swap_other (by rw [c1]; decide) (by rw [c1]; decide), c1]
+  have d2 : d (L.port 2) = 0 := by rw [hd, swap_out x2K, c2]
+  have d3 : d (L.port 3) = 2 := by
+    rw [hd, swap_other (by rw [c3]; decide) (by rw [c3]; decide), c3]
+  have d4 : d (L.port 4) = 0 := by rw [hd, swap_in x4K, c4]; decide
+  have dw0 : d (w 0) = 0 := by rw [hd, swap_in w0K, e0]; decide
+  have dw4 : d (w 4) = 1 := by
+    rw [hd, swap_other (by rw [e4]; decide) (by rw [e4]; decide), e4]
+  have step : KempeStep M.graph h c d := ⟨0, 3, K, by decide, hK, rfl⟩
+  have hd' : ProperOff M.graph h d := properOff_swap M.graph hc hK
+  have fill : PureFill M.graph h d 1 := by
+    apply fill_of_isolated M.graph hd' (port_adj M.graph L 3) (t := L.port 0) (rho := 3)
+    · intro y ey eq
+      obtain ⟨i, rfl⟩ := (L.neighbours y).mp ey
+      fin_cases i <;> simp [d0, d1, d2, d3, d4] at eq ⊢
+    · rw [d3]; decide
+    · exact pne 3 0 (by decide)
+    · intro v ev eq
+      obtain ⟨i, rfl⟩ := (L.neighbours v).mp ev
+      fin_cases i <;> simp [d0, d1, d2, d3, d4] at eq ⊢
+    · intro z hz
+      have hb := hz.2.2.2
+      rw [d3] at hb
+      rcases (B.nbr 0 (Ne.symm hk) z).mp hz.1 with rfl | rfl | rfl | rfl | rfl
+      · exact absurd rfl hz.2.2.1
+      · simp [d4] at hb
+      · simp [d1] at hb
+      · simp [dw4] at hb
+      · simp [dw0] at hb
+  exact prepend M.graph step fill
+
+/-- F-starvation: if `x_2` has degree five and outer colours `2, 1`, then F, then a fill. -/
+theorem killF (B : HPBall M h L w k) (hk : k ≠ 2) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) (e1 : c (w 1) = 2) (e2 : c (w 2) = 1)
+    (lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)) :
+    PureFill M.graph h c 2 := by
+  classical
+  have sep := vacancy_alternation M L pat B.rot
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have pne : ∀ i j, i ≠ j → L.port i ≠ L.port j := fun i j hij e => hij (L.injective e)
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  obtain ⟨K, hK, hKm⟩ : ∃ K : Set (Fin n), Whole M.graph h c 0 2 K ∧
+      ∀ v, v ∈ K ↔ (pairGraph M.graph h c 0 2).Reachable (L.port 2) v :=
+    ⟨_, whole_component M.graph h c 0 2 (L.port 2) ⟨pn 2, Or.inl c2⟩, fun _ => Iff.rfl⟩
+  have x2K : L.port 2 ∈ K := (hKm _).mpr Reachable.rfl
+  have x0K : L.port 0 ∉ K := fun hin => (sep.right lock2).1 ((hKm _).mp hin).symm
+  have x3K : L.port 3 ∈ K :=
+    whole_closed M.graph hK x2K (by simpa using B.ringP 2) ⟨pn 3, Or.inr c3⟩
+  have w1K : w 1 ∈ K :=
+    whole_closed M.graph hK x2K (by simpa using B.adjr 1) ⟨B.offh 1, Or.inr e1⟩
+  set d := swap c 0 2 K with hd
+  have d0 : d (L.port 0) = 0 := by rw [hd, swap_out x0K, c0]
+  have d1 : d (L.port 1) = 1 := by
+    rw [hd, swap_other (by rw [c1]; decide) (by rw [c1]; decide), c1]
+  have d2 : d (L.port 2) = 2 := by rw [hd, swap_in x2K, c2]; decide
+  have d3 : d (L.port 3) = 0 := by rw [hd, swap_in x3K, c3]; decide
+  have d4 : d (L.port 4) = 3 := by
+    rw [hd, swap_other (by rw [c4]; decide) (by rw [c4]; decide), c4]
+  have dw1 : d (w 1) = 0 := by rw [hd, swap_in w1K, e1]; decide
+  have dw2 : d (w 2) = 1 := by
+    rw [hd, swap_other (by rw [e2]; decide) (by rw [e2]; decide), e2]
+  have step : KempeStep M.graph h c d := ⟨0, 2, K, by decide, hK, rfl⟩
+  have hd' : ProperOff M.graph h d := properOff_swap M.graph hc hK
+  have fill : PureFill M.graph h d 1 := by
+    apply fill_of_isolated M.graph hd' (port_adj M.graph L 4) (t := L.port 2) (rho := 2)
+    · intro y ey eq
+      obtain ⟨i, rfl⟩ := (L.neighbours y).mp ey
+      fin_cases i <;> simp [d0, d1, d2, d3, d4] at eq ⊢
+    · rw [d4]; decide
+    · exact pne 4 2 (by decide)
+    · intro v ev eq
+      obtain ⟨i, rfl⟩ := (L.neighbours v).mp ev
+      fin_cases i <;> simp [d0, d1, d2, d3, d4] at eq ⊢
+    · intro z hz
+      have hb := hz.2.2.2
+      rw [d4] at hb
+      rcases (B.nbr 2 (Ne.symm hk) z).mp hz.1 with rfl | rfl | rfl | rfl | rfl
+      · exact absurd rfl hz.2.2.1
+      · simp [d1] at hb
+      · simp [d3] at hb
+      · simp [dw1] at hb
+      · simp [dw2] at hb
+  exact prepend M.graph step fill
+
+/-- `R3` with the free port a singleton (`k = 3, 4`): the three-vertex AB swap, then a fill. -/
+theorem chainR3_34 (B : HPBall M h L w k) (hk : k = 3 ∨ k = 4) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR3 t) : PureFill M.graph h c 2 := by
+  classical
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have pne : ∀ i j, i ≠ j → L.port i ≠ L.port j := fun i j hij e => hij (L.injective e)
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  have e0 : c (w 0) = 3 := by simpa [wR3] using ring 0
+  have e1 : c (w 1) = 2 := by simpa [wR3] using ring 1
+  have e2 : c (w 2) = 3 := by simpa [wR3] using ring 2
+  have e3 : c (w 3) = 1 := by simpa [wR3] using ring 3
+  have e4 : c (w 4) = 2 := by simpa [wR3] using ring 4
+  have k0 : (0 : Fin 5) ≠ k := by rcases hk with rfl | rfl <;> decide
+  have k1 : (1 : Fin 5) ≠ k := by rcases hk with rfl | rfl <;> decide
+  have k2 : (2 : Fin 5) ≠ k := by rcases hk with rfl | rfl <;> decide
+  obtain ⟨J, hJ, hJm⟩ : ∃ J : Set (Fin n), Whole M.graph h c 0 1 J ∧
+      ∀ v, v ∈ J ↔ (pairGraph M.graph h c 0 1).Reachable (L.port 1) v :=
+    ⟨_, whole_component M.graph h c 0 1 (L.port 1) ⟨pn 1, Or.inr c1⟩, fun _ => Iff.rfl⟩
+  have Jsub : ∀ v, v ∈ J → v = L.port 0 ∨ v = L.port 1 ∨ v = L.port 2 := by
+    intro v hv
+    refine reachable_invariant (H := pairGraph M.graph h c 0 1)
+      (P := fun v => v = L.port 0 ∨ v = L.port 1 ∨ v = L.port 2) ?_
+      (Or.inr (Or.inl rfl)) ((hJm v).mp hv)
+    intro a b e ha
+    have hb := e.2.2.2
+    rcases ha with rfl | rfl | rfl
+    · rcases (B.nbr 0 k0 b).mp e.1 with rfl | rfl | rfl | rfl | rfl
+      · exact absurd rfl e.2.2.1
+      · simp [c4] at hb
+      · simp
+      · simp [e4] at hb
+      · simp [e0] at hb
+    · rcases (B.nbr 1 k1 b).mp e.1 with rfl | rfl | rfl | rfl | rfl
+      · exact absurd rfl e.2.2.1
+      · simp
+      · simp
+      · simp [e0] at hb
+      · simp [e1] at hb
+    · rcases (B.nbr 2 k2 b).mp e.1 with rfl | rfl | rfl | rfl | rfl
+      · exact absurd rfl e.2.2.1
+      · simp
+      · simp [c3] at hb
+      · simp [e1] at hb
+      · simp [e2] at hb
+  have x1J : L.port 1 ∈ J := (hJm _).mpr Reachable.rfl
+  have x0J : L.port 0 ∈ J :=
+    whole_closed M.graph hJ x1J (by simpa using (B.ringP 0).symm) ⟨pn 0, Or.inl c0⟩
+  have x2J : L.port 2 ∈ J :=
+    whole_closed M.graph hJ x1J (by simpa using B.ringP 1) ⟨pn 2, Or.inl c2⟩
+  have x3J : L.port 3 ∉ J := fun hin => by
+    rcases Jsub _ hin with e | e | e <;> exact pne _ _ (by decide) e
+  have x4J : L.port 4 ∉ J := fun hin => by
+    rcases Jsub _ hin with e | e | e <;> exact pne _ _ (by decide) e
+  have wJ : ∀ t, w t ∉ J := fun t hin => by
+    rcases Jsub _ hin with e | e | e <;> exact B.off t _ e
+  set f := swap c 0 1 J with hf
+  have f0 : f (L.port 0) = 1 := by rw [hf, swap_in x0J, c0]; decide
+  have f1 : f (L.port 1) = 0 := by rw [hf, swap_in x1J, c1]; decide
+  have f2 : f (L.port 2) = 1 := by rw [hf, swap_in x2J, c2]; decide
+  have f3 : f (L.port 3) = 2 := by rw [hf, swap_out x3J, c3]
+  have f4 : f (L.port 4) = 3 := by rw [hf, swap_out x4J, c4]
+  have fw2 : f (w 2) = 3 := by rw [hf, swap_out (wJ 2), e2]
+  have fw3 : f (w 3) = 1 := by rw [hf, swap_out (wJ 3), e3]
+  have fw4 : f (w 4) = 2 := by rw [hf, swap_out (wJ 4), e4]
+  have step : KempeStep M.graph h c f := ⟨0, 1, J, by decide, hJ, rfl⟩
+  have hf' : ProperOff M.graph h f := properOff_swap M.graph hc hJ
+  have uniq : UniqueAt M.graph h (L.port 1) f := by
+    intro y ey eq
+    obtain ⟨i, rfl⟩ := (L.neighbours y).mp ey
+    fin_cases i <;> simp [f0, f1, f2, f3, f4] at eq ⊢
+  rcases hk with rfl | rfl
+  · -- k = 3: isolate x_4 in the {0,3} pair graph
+    have fill : PureFill M.graph h f 1 := by
+      apply fill_of_isolated M.graph hf' (port_adj M.graph L 1) (t := L.port 4) (rho := 3) uniq
+      · rw [f1]; decide
+      · exact pne 1 4 (by decide)
+      · intro v ev eq
+        obtain ⟨i, rfl⟩ := (L.neighbours v).mp ev
+        fin_cases i <;> simp [f0, f1, f2, f3, f4] at eq ⊢
+      · intro z hz
+        have hb := hz.2.2.2
+        rw [f1] at hb
+        rcases (B.nbr 4 (by decide) z).mp hz.1 with rfl | rfl | rfl | rfl | rfl
+        · exact absurd rfl hz.2.2.1
+        · simp [f3] at hb
+        · simp [f0] at hb
+        · simp [fw3] at hb
+        · simp [fw4] at hb
+    exact prepend M.graph step fill
+  · -- k = 4: isolate x_3 in the {0,2} pair graph
+    have fill : PureFill M.graph h f 1 := by
+      apply fill_of_isolated M.graph hf' (port_adj M.graph L 1) (t := L.port 3) (rho := 2) uniq
+      · rw [f1]; decide
+      · exact pne 1 3 (by decide)
+      · intro v ev eq
+        obtain ⟨i, rfl⟩ := (L.neighbours v).mp ev
+        fin_cases i <;> simp [f0, f1, f2, f3, f4] at eq ⊢
+      · intro z hz
+        have hb := hz.2.2.2
+        rw [f1] at hb
+        rcases (B.nbr 3 (by decide) z).mp hz.1 with rfl | rfl | rfl | rfl | rfl
+        · exact absurd rfl hz.2.2.1
+        · simp [f2] at hb
+        · simp [f4] at hb
+        · simp [fw2] at hb
+        · simp [fw3] at hb
+    exact prepend M.graph step fill
+
+theorem chainR1_012 (B : HPBall M h L w k) (hk : k = 0 ∨ k = 1 ∨ k = 2)
+    (hc : ProperOff M.graph h c) (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR1 t) :
+    PureFill M.graph h c 3 := by
+  by_cases lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_right_missing M.graph L hc pat lock2)
+  by_cases lock1 : (pairGraph M.graph h c 1 2).Reachable (L.port 1) (L.port 3)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_left_missing M.graph L hc pat lock1)
+  rcases hk with rfl | rfl | rfl
+  · obtain ⟨d, step, hd, pat', ring'⟩ := moveB_R1 B hc pat ring lock1
+    exact after_move step (chainR3_34 (B.shift 2) (by decide) (properOff_rename _ renB hd)
+      pat' ring')
+  · obtain ⟨d, step, hd, pat', ring'⟩ := moveF_R1 B hc pat ring lock2
+    exact after_move step (chainR3_34 (B.shift 3) (by decide) (properOff_rename _ renF hd)
+      pat' ring')
+  · obtain ⟨d, step, hd, pat', ring'⟩ := moveF_R1 B hc pat ring lock2
+    exact after_move step (chainR3_34 (B.shift 3) (by decide) (properOff_rename _ renF hd)
+      pat' ring')
+
+theorem chainR3_02 (B : HPBall M h L w k) (hk : k = 0 ∨ k = 2)
+    (hc : ProperOff M.graph h c) (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR3 t) :
+    PureFill M.graph h c 4 := by
+  by_cases lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_right_missing M.graph L hc pat lock2)
+  by_cases lock1 : (pairGraph M.graph h c 1 2).Reachable (L.port 1) (L.port 3)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_left_missing M.graph L hc pat lock1)
+  rcases hk with rfl | rfl
+  · obtain ⟨d, step, hd, pat', ring'⟩ := moveF_R3 B hc pat ring lock2
+    exact after_move step (chainR1_012 (B.shift 3) (by decide) (properOff_rename _ renF hd)
+      pat' ring')
+  · obtain ⟨d, step, hd, pat', ring'⟩ := moveB_R3 B hc pat ring lock1
+    exact after_move step (chainR1_012 (B.shift 2) (by decide) (properOff_rename _ renB hd)
+      pat' ring')
+
+theorem chainR1_34 (B : HPBall M h L w k) (hk : k = 3 ∨ k = 4)
+    (hc : ProperOff M.graph h c) (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR1 t) :
+    PureFill M.graph h c 5 := by
+  by_cases lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_right_missing M.graph L hc pat lock2)
+  by_cases lock1 : (pairGraph M.graph h c 1 2).Reachable (L.port 1) (L.port 3)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_left_missing M.graph L hc pat lock1)
+  rcases hk with rfl | rfl
+  · obtain ⟨d, step, hd, pat', ring'⟩ := moveF_R1 B hc pat ring lock2
+    exact after_move step (chainR3_02 (B.shift 3) (by decide) (properOff_rename _ renF hd)
+      pat' ring')
+  · obtain ⟨d, step, hd, pat', ring'⟩ := moveB_R1 B hc pat ring lock1
+    exact after_move step (chainR3_02 (B.shift 2) (by decide) (properOff_rename _ renB hd)
+      pat' ring')
+
+theorem chainR3_1 (B : HPBall M h L w k) (hk : k = 1)
+    (hc : ProperOff M.graph h c) (pat : Pattern M.graph L c) (ring : ∀ t, c (w t) = wR3 t) :
+    PureFill M.graph h c 6 := by
+  by_cases lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_right_missing M.graph L hc pat lock2)
+  subst hk
+  obtain ⟨d, step, hd, pat', ring'⟩ := moveF_R3 B hc pat ring lock2
+  exact after_move step (chainR1_34 (B.shift 3) (by decide) (properOff_rename _ renF hd)
+    pat' ring')
+
+/-- **Theorem HP, normalised.** With the link word `0,1,0,2,3` and one free port, every proper
+colouring fills within six pure Kempe swaps. -/
+theorem hp_fill_normalized (B : HPBall M h L w k) (hc : ProperOff M.graph h c)
+    (pat : Pattern M.graph L c) : PureFill M.graph h c 6 := by
+  classical
+  have pn : ∀ i, L.port i ≠ h := fun i => (port_adj M.graph L i).ne.symm
+  have pne : ∀ i j, i ≠ j → L.port i ≠ L.port j := fun i j hij e => hij (L.injective e)
+  have c0 : c (L.port 0) = 0 := by simpa [gapWord] using pat 0
+  have c1 : c (L.port 1) = 1 := by simpa [gapWord] using pat 1
+  have c2 : c (L.port 2) = 0 := by simpa [gapWord] using pat 2
+  have c3 : c (L.port 3) = 2 := by simpa [gapWord] using pat 3
+  have c4 : c (L.port 4) = 3 := by simpa [gapWord] using pat 4
+  by_cases lock2 : (pairGraph M.graph h c 1 3).Reachable (L.port 1) (L.port 4)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_right_missing M.graph L hc pat lock2)
+  by_cases lock1 : (pairGraph M.graph h c 1 2).Reachable (L.port 1) (L.port 3)
+  swap
+  · exact fill_mono M.graph (by norm_num) (one_fill_of_left_missing M.graph L hc pat lock1)
+  have E1 : k ≠ 1 → c (w 0) = 2 ∨ c (w 1) = 2 := fun hk => by
+    obtain ⟨u, hu⟩ := first_step M.graph lock1 (pne 1 3 (by decide))
+    have hcu := step_colour M.graph hc hu c1
+    rcases (B.nbr 1 (Ne.symm hk) u).mp hu.1 with rfl | rfl | rfl | rfl | rfl
+    · exact absurd rfl hu.2.2.1
+    · simp [c0] at hcu
+    · simp [c2] at hcu
+    · left; simpa using hcu
+    · right; exact hcu
+  have E2 : k ≠ 1 → c (w 0) = 3 ∨ c (w 1) = 3 := fun hk => by
+    obtain ⟨u, hu⟩ := first_step M.graph lock2 (pne 1 4 (by decide))
+    have hcu := step_colour M.graph hc hu c1
+    rcases (B.nbr 1 (Ne.symm hk) u).mp hu.1 with rfl | rfl | rfl | rfl | rfl
+    · exact absurd rfl hu.2.2.1
+    · simp [c0] at hcu
+    · simp [c2] at hcu
+    · left; simpa using hcu
+    · right; exact hcu
+  have E3 : k ≠ 3 → c (w 2) = 1 ∨ c (w 3) = 1 := fun hk => by
+    obtain ⟨u, hu⟩ := first_step M.graph lock1.symm (pne 3 1 (by decide))
+    have hcu := step_colour' M.graph hc hu c3
+    rcases (B.nbr 3 (Ne.symm hk) u).mp hu.1 with rfl | rfl | rfl | rfl | rfl
+    · exact absurd rfl hu.2.2.1
+    · simp [c2] at hcu
+    · simp [c4] at hcu
+    · left; simpa using hcu
+    · right; exact hcu
+  have E4 : k ≠ 4 → c (w 3) = 1 ∨ c (w 4) = 1 := fun hk => by
+    obtain ⟨u, hu⟩ := first_step M.graph lock2.symm (pne 4 1 (by decide))
+    have hcu := step_colour' M.graph hc hu c4
+    rcases (B.nbr 4 (Ne.symm hk) u).mp hu.1 with rfl | rfl | rfl | rfl | rfl
+    · exact absurd rfl hu.2.2.1
+    · simp [c3] at hcu
+    · simp [c0] at hcu
+    · left; simpa using hcu
+    · right; exact hcu
+  have pwl : ∀ t, c (w t) ≠ c (L.port t) := fun t => (hc (B.adjl t) (pn t) (B.offh t)).symm
+  have pwr : ∀ t, c (w t) ≠ c (L.port (t+1)) := fun t => (hc (B.adjr t) (pn _) (B.offh t)).symm
+  have hw : ∀ t, t ≠ k → c (w (t+4)) ≠ c (w t) := fun t ht =>
+    hc (B.ring t ht) (B.offh _) (B.offh _)
+  rcases hp_cases k (c (w 0)) (c (w 1)) (c (w 2)) (c (w 3)) (c (w 4))
+      (by simpa [c0] using pwl 0) (by simpa [c1] using pwr 0)
+      (by simpa [c1] using pwl 1) (by simpa [c2] using pwr 1)
+      (by simpa [c2] using pwl 2) (by simpa [c3] using pwr 2)
+      (by simpa [c3] using pwl 3) (by simpa [c4] using pwr 3)
+      (by simpa [c4] using pwl 4) (by simpa [c0] using pwr 4)
+      (fun hk => by simpa using hw 0 (Ne.symm hk)) (fun hk => by simpa using hw 1 (Ne.symm hk))
+      (fun hk => by simpa using hw 2 (Ne.symm hk)) (fun hk => by simpa using hw 3 (Ne.symm hk))
+      (fun hk => by simpa using hw 4 (Ne.symm hk))
+      E1 E2 E3 E4 with
+    ⟨e0, e1, e2, e3, e4⟩ | ⟨e0, e1, e2, e3, e4⟩ | ⟨hk, e0, e4⟩ | ⟨hk, e1, e2⟩
+  · have ring : ∀ t, c (w t) = wR1 t := fun t => by
+      fin_cases t <;> simp [wR1, e0, e1, e2, e3, e4]
+    have hk : k = 0 ∨ k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 :=
+      (show ∀ j : Fin 5, j = 0 ∨ j = 1 ∨ j = 2 ∨ j = 3 ∨ j = 4 by decide) k
+    rcases hk with rfl | rfl | rfl | rfl | rfl
+    · exact fill_mono M.graph (by norm_num) (chainR1_012 B (by decide) hc pat ring)
+    · exact fill_mono M.graph (by norm_num) (chainR1_012 B (by decide) hc pat ring)
+    · exact fill_mono M.graph (by norm_num) (chainR1_012 B (by decide) hc pat ring)
+    · exact fill_mono M.graph (by norm_num) (chainR1_34 B (by decide) hc pat ring)
+    · exact fill_mono M.graph (by norm_num) (chainR1_34 B (by decide) hc pat ring)
+  · have ring : ∀ t, c (w t) = wR3 t := fun t => by
+      fin_cases t <;> simp [wR3, e0, e1, e2, e3, e4]
+    have hk : k = 0 ∨ k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 :=
+      (show ∀ j : Fin 5, j = 0 ∨ j = 1 ∨ j = 2 ∨ j = 3 ∨ j = 4 by decide) k
+    rcases hk with rfl | rfl | rfl | rfl | rfl
+    · exact fill_mono M.graph (by norm_num) (chainR3_02 B (by decide) hc pat ring)
+    · exact chainR3_1 B rfl hc pat ring
+    · exact fill_mono M.graph (by norm_num) (chainR3_02 B (by decide) hc pat ring)
+    · exact fill_mono M.graph (by norm_num) (chainR3_34 B (by decide) hc pat ring)
+    · exact fill_mono M.graph (by norm_num) (chainR3_34 B (by decide) hc pat ring)
+  · exact fill_mono M.graph (by norm_num) (killB B hk hc pat e0 e4 lock1)
+  · exact fill_mono M.graph (by norm_num) (killF B hk hc pat e1 e2 lock2)
+
+end Chains
+end SimpleGraph.SphericalMap
+
+namespace SimpleGraph.SphericalMap
+open VacancySlide VacancyShortFill VacancyMobility VacancyIcosahedral
+variable {n : Nat} (M : SphericalMap n)
+
+/-- Theorem HP over the two-ball data, for every proper colouring. -/
+theorem hp_fill {h : Fin n} {L : FiveLink M.graph h} {w : Fin 5 → Fin n} {k : Fin 5}
+    (B : HPBall M h L w k) {c : Fin n → Fin 4} (hc : ProperOff M.graph h c) :
+    PureFill M.graph h c 6 := by
+  classical
+  by_cases surj : ∀ x : Fin 4, ∃ i, c (L.port i) = x
+  · obtain ⟨k0, inj, hk⟩ := ring_normalize (fun i => c (L.port i))
+      (fun i => hc (B.ringP i) (port_adj M.graph L i).ne.symm (port_adj M.graph L _).ne.symm)
+      surj
+    let σ : Fin 4 ≃ Fin 4 := Equiv.ofBijective _ (Finite.injective_iff_bijective.mp inj)
+    have pat : Pattern M.graph (FiveLink.shift M L k0) (fun v => σ (c v)) := fun i => hk i
+    have fill := hp_fill_normalized (B.shift k0) (properOff_rename _ σ hc) pat
+    have := pureFill_rename M.graph σ.symm fill
+    simpa using this
+  · push Not at surj
+    obtain ⟨x, hx⟩ := surj
+    refine ⟨0, by decide, c, PurePath.nil _, x, ?_⟩
+    intro v ev
+    obtain ⟨i, rfl⟩ := (L.neighbours v).mp ev
+    exact hx i
+
+/-- **The two-ball of Theorem HP from triangulation data.** On a triangulation, a hole whose
+link is listed in rotation order, whose link vertices other than `L.port k` have degree five,
+and through which no separating triangle passes, has an `HPBall` with free port `k`. -/
+theorem hpBall_of_triangulated (htri : M.Triangulated) {h : Fin n} (L : FiveLink M.graph h)
+    (ring : ∀ i : Fin 5, M.graph.Adj (L.port i) (L.port (i+1)))
+    (rot : ∀ i : Fin 5,
+      M.rotation.next ⟨(h,L.port i),port_adj M.graph L i⟩ =
+        ⟨(h,L.port (i+1)),port_adj M.graph L (i+1)⟩)
+    (k : Fin 5) (hlink : ∀ i, i ≠ k → M.graph.degree (L.port i) = 5)
+    (hsep : M.NoSeparatingTriangleAt h) :
+    ∃ w : Fin 5 → Fin n, HPBall M h L w k := by
+  classical
+  have i41 : ∀ t : Fin 5, t + 4 + 1 = t := by decide
+  have i14 : ∀ t : Fin 5, t + 1 + 4 = t := by decide
+  have R : ∀ t, Nx M h (L.port t) (L.port (t+1)) := fun t => nx_of_dart (rot t)
+  have A1 : ∀ t, Nx M (L.port (t+1)) h (L.port t) := fun t => (nx_tri htri (R t)).1
+  have A2 : ∀ t, Nx M (L.port t) (L.port (t+1)) h := fun t => (nx_tri htri (R t)).2
+  let w : Fin 5 → Fin n := fun t =>
+    (M.rotation.next ⟨(L.port (t+1), L.port t), (ring t).symm⟩).snd
+  have W : ∀ t, Nx M (L.port (t+1)) (L.port t) (w t) := fun t => ⟨(ring t).symm, rfl⟩
+  have B2 : ∀ t, Nx M (L.port t) (w t) (L.port (t+1)) := fun t => (nx_tri htri (W t)).2
+  have A1' : ∀ t, Nx M (L.port t) h (L.port (t+4)) := fun t => by
+    have := A1 (t+4); rwa [i41] at this
+  have W' : ∀ t, Nx M (L.port t) (L.port (t+4)) (w (t+4)) := fun t => by
+    have := W (t+4); rwa [i41] at this
+  have C := fun t (ht : t ≠ k) => chain5 (hlink t ht) (B2 t) (A2 t) (A1' t) (W' t)
+  have adjw : ∀ t, M.Adj (L.port t) (w t) := fun t => nx_adj_left (B2 t)
+  have adjw' : ∀ t, M.Adj (L.port (t+1)) (w t) := fun t => nx_adj_right (W t)
+  -- a chord of the link at `h` joins rotation-consecutive ports only
+  have chord : ∀ i j, M.Adj (L.port i) (L.port j) → j = i + 1 ∨ i = j + 1 := by
+    intro i j e
+    rcases hsep _ _ (port_adj M.graph L i) (port_adj M.graph L j) e with r | r
+    · rw [rot i] at r
+      exact Or.inl (L.injective
+        (show L.port (i+1) = L.port j from congrArg (fun d : M.Dart => d.snd) r)).symm
+    · rw [rot j] at r
+      exact Or.inr (L.injective
+        (show L.port (j+1) = L.port i from congrArg (fun d : M.Dart => d.snd) r)).symm
+  refine ⟨w, ⟨fun t ht u => ⟨fun hu => ?_, fun hu => ?_⟩, adjw, adjw', ring,
+    fun t ht => ?_, fun t i => ?_, fun t => ?_, rot⟩⟩
+  · rcases (C t ht).2.2 u hu with e | e | e | e | e
+    · exact Or.inr (Or.inr (Or.inr (Or.inr e)))
+    · exact Or.inr (Or.inr (Or.inl e))
+    · exact Or.inl e
+    · exact Or.inr (Or.inl e)
+    · exact Or.inr (Or.inr (Or.inr (Or.inl e)))
+  · rcases hu with rfl | rfl | rfl | rfl | rfl
+    · exact (port_adj M.graph L t).symm
+    · exact nx_adj_right (A1' t)
+    · exact ring t
+    · exact nx_adj_right (W' t)
+    · exact adjw t
+  · exact (nx_adj_right (nx_tri htri (C t ht).1).1).symm
+  · obtain ⟨j, rfl⟩ : ∃ j, i = t + j := ⟨i - t, by abel⟩
+    intro e
+    have hj : j = 0 ∨ j = 1 ∨ j = 2 ∨ j = 3 ∨ j = 4 :=
+      (show ∀ j : Fin 5, j = 0 ∨ j = 1 ∨ j = 2 ∨ j = 3 ∨ j = 4 by decide) j
+    rcases hj with rfl | rfl | rfl | rfl | rfl
+    · rw [add_zero] at e
+      exact (adjw t).ne e.symm
+    · exact (adjw' t).ne e.symm
+    · exact (show ∀ s : Fin 5, ¬ (s + 2 = s + 1 ∨ s = s + 2 + 1) by decide) t
+        (chord t (t+2) (e ▸ adjw t))
+    · exact (show ∀ s : Fin 5, ¬ (s + 3 = s + 1 ∨ s = s + 3 + 1) by decide) t
+        (chord t (t+3) (e ▸ adjw t))
+    · exact (show ∀ s : Fin 5, ¬ (s + 4 = s + 1 + 1 ∨ s + 1 = s + 4 + 1) by decide) t
+        (chord (t+1) (t+4) (e ▸ adjw' t))
+  · by_cases ht : t = k
+    · have ht1 : t + 1 ≠ k := fun e =>
+        (show ∀ s : Fin 5, s + 1 ≠ s by decide) t (e.trans ht.symm)
+      have := (C (t+1) ht1).2.1.2.2.2.2.2.2.2.2.1
+      rw [i14] at this
+      exact fun e => this e.symm
+    · exact (C t ht).2.1.2.1
+
+/-- **Theorem HP on a triangulation.** Let `M` be a spherical triangulation and `h` a vertex of
+degree five such that all its neighbours except possibly one, `p`, have degree five, with no
+separating triangle through `h`. Then every proper four-colouring of `M - h` reaches a filled
+hole by at most six whole-component Kempe swaps. Nothing is assumed about `p`. -/
+theorem theorem_HP (htri : M.Triangulated) {h p : Fin n} (hdeg : M.graph.degree h = 5)
+    (hp : M.Adj h p) (hlink : ∀ u, M.Adj h u → u ≠ p → M.graph.degree u = 5)
+    (hsep : M.NoSeparatingTriangleAt h) {c : Fin n → Fin 4} (hc : ProperOff M.graph h c) :
+    PureFill M.graph h c 6 := by
+  obtain ⟨L, ring, rot⟩ := M.exists_rotation_link htri (M.linkOfDegree hdeg)
+  obtain ⟨k, rfl⟩ := (L.neighbours p).mp hp
+  obtain ⟨w, B⟩ := M.hpBall_of_triangulated htri L ring rot k
+    (fun i hi => hlink _ (port_adj M.graph L i) (fun e => hi (L.injective e))) hsep
+  exact M.hp_fill B hc
+
+end SimpleGraph.SphericalMap
+
+namespace SimpleGraph.Icosahedron
+open VacancySlide VacancyShortFill SphericalMap
+
+/-- **Non-vacuity of Theorem HP**, with free neighbour `p = 1` (which happens to have degree
+five on the icosahedron). -/
+theorem theorem_HP_icosahedron : PureFill sphericalMap.graph 0 sampleColouring 6 :=
+  sphericalMap.theorem_HP sphericalMap_triangulated (p := 1) (sphericalMap_degree 0)
+    (show graph.Adj 0 1 by decide) (fun u _ _ => sphericalMap_degree u)
+    noSeparatingTriangle_zero sampleColouring_proper
+
+end SimpleGraph.Icosahedron

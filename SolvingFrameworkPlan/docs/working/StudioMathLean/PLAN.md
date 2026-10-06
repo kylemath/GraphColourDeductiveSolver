@@ -13,6 +13,27 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Open decision for the coordinator
 The hole-fill statements need the plane-map carrier (rotation, outer ring w_t) rather than a bare `SimpleGraph`. I will ask the Math team (Lean owner) how `Vacancy*` states it before writing Piece 3.
 
+## Update 1438 MDT: Theorem HP compiled (same file, `VacancyIcosahedral.lean`)
+
+- **`SphericalMap.theorem_HP`.**
+  - Hypotheses: `M.Triangulated`; `degree h = 5`; a neighbour p of h; every other neighbour of h has degree 5; `NoSeparatingTriangleAt h`.
+  - Conclusion: every proper 4-colouring of T − h has `PureFill ... 6`.
+  - **Nothing is assumed about p**, not even degree ≥ 5.
+- **Structure**, following `MathHighDegreeNeighbour.md` §2:
+  - `HPBall`: the two-ball with free port k, the rotation included, plus a shift lemma.
+  - `moveF_R1`, `moveF_R3`, `moveB_R1`, `moveB_R3` (Lemma 3): each image, read in the frame shifted by 3 or 2 after a colour renaming, has the other ring word. The free port moves to k − 3 or k − 2 (= k + 3).
+  - `killB`, `killF` (B- and F-starvation) and `chainR3_34` (AB at k = 3, 4): Lemma 2.
+  - `hp_cases`: Lemma 1 for every k, by `decide` over 5·4⁵ cases. It concludes R1, R3, B-killable (k ≠ 0) or F-killable (k ≠ 2).
+  - Chains with the hand termination table's bounds:
+    - `chainR3_34`: ≤ 2;
+    - `chainR1_012`: ≤ 3;
+    - `chainR3_02`: ≤ 4;
+    - `chainR1_34`: ≤ 5;
+    - `chainR3_1`: ≤ 6.
+  - `hp_fill_normalized` → `hp_fill` (any colouring) → `hpBall_of_triangulated` → `theorem_HP`.
+- **Non-vacuity:** `Icosahedron.theorem_HP_icosahedron`, at vertex 0 with p = 1.
+- **Checks:** `#print axioms` lists propext, Classical.choice and Quot.sound only, and `hp_cases` uses propext only. No `sorry`. A sabotaged copy (wrong frame shift in `chainR3_1`) was rejected.
+
 ## Update 1429 MDT: relative-class Euler lemma (audit S1)
 
 - `StudioMath.good_card_add_two_four`: the counting core with degree-4 vertices allowed, each costing two. It shows 12 ≤ good + 2·n₄. `good_card_ge_twelve` is now its corollary.
