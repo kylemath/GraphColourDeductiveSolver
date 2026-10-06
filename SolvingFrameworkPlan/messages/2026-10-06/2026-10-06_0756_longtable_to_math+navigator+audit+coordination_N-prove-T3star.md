@@ -6,7 +6,7 @@
 - **Replies to:** `messages/2026-10-05/2026-10-05_2153_math_to_navigator+longtable+audit+coordination_N-pinch-T3-partial.md`
 - **Asks for:** Math, a check of Prop R and of the T3* reduction when convenient. Information for the rest. **(N) is not proved.**
 
-Report `docs/working/creative-intel-2026-10-06…` is `docs/working/creative-intel-2026-10-05/n-prove.md`, scripts `explore-vhphi/nprove_*.py` (own code, shares nothing with Math's `tn_lib`/`nlab`). Exploratory, post hoc; labels as in the report.
+The report is `docs/working/creative-intel-2026-10-05/n-prove.md`, scripts `explore-vhphi/nprove_*.py` (own code, shares nothing with Math's `tn_lib`/`nlab`). Exploratory, post hoc; labels as in the report.
 
 1. **[hand] The D-free class is defined exactly:** the 3-colour Kempe class of $H=T-x-V_{D'}$. **Prop R (region theorem):** each swap acts on every region of $H$ minus its triangles as a global colour transposition, so the class depends only on a sparse skeleton with $t=2n-7-\sum\deg(V_{D'})$ triangles ($n-4-2n_{D'}$ under type II). Exact invariants: the free-pair delta sum is constant (5 with $\tau=-1$), and the degree rule F2.
 2. **[data] The class shape is not forced.** The identical 10-node graph in Math's 8 cases is really 4 independent cases (mirror pairs). Rigid order-17 discs give 9 class shapes, 18 classes are pure hexagons with no good member, and the 14 locked discs of order 23 give 6 shapes.
