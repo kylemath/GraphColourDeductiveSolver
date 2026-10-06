@@ -154,16 +154,16 @@
     <div class="box">
       <h4>Studio results so far <span class="lab">[exploratory, Mac Studio; not audited]</span></h4>
       <ul>
-        <li>IPR duals of 32 to 52 vertices (<code>backgroundMaterial/planemap-structural/studiointel/ipr/ipr_32_52.pc</code>, run by <code>studiointel/ipr_run.py</code>): 10,275 of 15,204 holes done.
-          ρ = 2 at 38 holes, ρ = 3 at 10,214, ρ = 4 at 23, and <strong>never ρ = 5</strong>. No hole has a class that can never be filled.</li>
+        <li>IPR duals of 32 to 52 vertices (<code>backgroundMaterial/planemap-structural/studiointel/ipr/ipr_32_52.pc</code>, run by <code>studiointel/ipr_run.py</code>): all 1,267 graphs, 15,204 holes (final, Studio intel 72be413).
+          ρ = 2 at 38 holes, ρ = 3 at 15,132, ρ = 4 at 34 (all in cages of orders 47–51), and <strong>never ρ = 5</strong>. No hole has a class that can never be filled.</li>
         <li>Tabu search over configuration-free graphs with 37 to 42 vertices reached at best ρ = 4.</li>
         <li>Radius 5 first appears at order 22. Every ρ = 5 hole found so far lies in a graph with a Birkhoff diamond or 2.122. One example: order 23, graph 742, hole 11, link degrees (5,6,5,7,5), a graph with 2 diamonds.</li>
         <li>In the exhaustive census (<code>backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-census/README.md</code>, Studio commit 2ea1a3f), <strong>no hole of radius 4 or more occurs in a graph with neither a diamond nor 2.122, through order 25</strong>.
-          Such graphs are rare there: 1, 1, 4 and 2 graphs at orders 22 to 25, all with ρ ≤ 3. Configuration-free radius 4 is reported only at larger order (the C70 dual, and the tabu runs).</li>
+          Such graphs are rare there: 1, 1, 4 and 2 graphs at orders 22 to 25, all with ρ ≤ 3. Configuration-free radius 4 appears only at larger order (IPR cages of orders 47–51, the tabu runs at n = 37–52, and 7 of 222 holes in a random configuration-free sample at n = 56–62; never 5).</li>
       </ul>
     </div>
-    <div class="box bad" id="c70flag">
-      <h4>One number does not agree <span class="lab">[computed here, disagrees with a Studio report]</span></h4>
+    <div class="box" id="c70flag">
+      <h4>A number we corrected <span class="lab">[resolved]</span></h4>
       <ul><li id="c70text"></li></ul>
     </div>
 
@@ -603,9 +603,9 @@
     // the C70 note
     const c70 = D.cages.find((g) => g.name === 'C70');
     const mx = Math.max(...c70.holes.map((h) => h.summary.maxRadius));
-    $('c70text').innerHTML = 'The Studio report says the C70 dual has radius 4. This page’s builder, run on the same planar-code file (graph index ' + D.planarCode.index37 + ', 37 vertices), finds a largest radius of <strong>' + mx +
+    $('c70text').innerHTML = 'This page’s builder, run on the same planar-code file (graph index ' + D.planarCode.index37 + ', 37 vertices), finds a largest radius of <strong>' + mx +
       '</strong> at every degree-five hole of the C70 dual, and <strong>' + Math.max(...D.cages.find((g) => g.name === 'C60').holes.map((h) => h.summary.maxRadius)) + '</strong> at every hole of the C60 dual <span class="lab">[computed]</span>. ' +
-      'The radius here is the fewest whole-chain swaps to a filled colouring, the same quantity as Studio’s "1 + distance to a non-doubly-locked state". The difference is not explained. Until it is, treat "the C70 dual has radius 4" as unconfirmed, and note that the 23 holes of radius 4 in the Studio table may lie in other cages.';
+      'Studio intel had reported radius 4 for the C70 dual; it traced this to its own error (b22e36b): the radius-4 graph was a configuration-free neighbour of C70 one flip away, not C70 itself. The C70 dual has radius 3 at all 12 holes, as computed here.';
     load(); renderAll(); pickLib(0);
   })();
 

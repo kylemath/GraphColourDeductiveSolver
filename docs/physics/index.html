@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Spin-Glass View</title>
+  <meta name="description" content="How Kempe chains are the cluster moves of a four-state antiferromagnet, what the physics and mathematics literature knows about torus versus sphere, and an in-browser demo that flips clusters on a small sphere triangulation.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --sunken: #010409;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --accent: #58a6ff;
+      --good: #3fb950;
+      --bad: #f85149;
+      --warn: #d29922;
+      --twin: #bc8cff;
+      --c0: #f85149;
+      --c1: #58a6ff;
+      --c2: #e3b341;
+      --c3: #3fb950;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+    .wrap { max-width: 1480px; margin: 0 auto; padding: 2.5rem 1rem 3rem; overflow-x: hidden; }
+    .intro { max-width: 1120px; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--twin); font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+    h2 { margin: 0; font: 600 1.25rem/1.3 var(--serif); }
+    h2.story-h { font-size: 1.55rem; margin: 0 0 .6rem; }
+    p { margin: 0 0 .9rem; color: var(--dim); max-width: 74ch; overflow-wrap: anywhere; }
+    p strong, li strong { color: var(--text); }
+    code { font: .88em var(--mono); background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); overflow-wrap: anywhere; }
+    a { color: var(--accent); overflow-wrap: anywhere; }
+    .lead { font-size: 1.04rem; }
+    .lab { font: 600 .74rem var(--mono); color: var(--warn); }
+    .roots { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.4rem; align-items: center; }
+    .roots span.label { color: var(--faint); font-size: .85rem; margin-right: .25rem; }
+    .chip { font: 600 .85rem var(--sans); color: var(--text); background: var(--raised); border: 1px solid var(--border);
+            border-radius: 999px; padding: .28rem .7rem; cursor: pointer; text-decoration: none; display: inline-block; }
+    .chip .tag { font-weight: 500; font-size: .72rem; margin-left: .3rem; color: var(--faint); }
+    .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    .story { margin: 0 0 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); scroll-margin-top: .5rem; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(320px, 1fr); gap: 1rem; align-items: start; }
+    .viz { display: grid; gap: 1rem; min-width: 0; }
+    .side { display: grid; gap: .8rem; min-width: 0; }
+    .panel { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .9rem; min-width: 0; }
+    .panel h3 { margin: 0 0 .5rem; font: 600 .78rem var(--sans); color: var(--faint); letter-spacing: .07em; text-transform: uppercase; }
+    svg { display: block; width: 100%; height: auto; }
+    .readout { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin-top: .6rem; font: .86rem var(--mono); color: var(--dim); align-items: center; }
+    .readout b { color: var(--text); font-weight: 600; }
+    .status { display: inline-block; font: 600 .78rem var(--sans); padding: .15rem .55rem; border-radius: 999px; }
+    .status.target { background: #3fb95026; color: var(--good); }
+    .status.ok { background: #58a6ff22; color: var(--accent); }
+    .status.trap { background: #f8514930; color: var(--bad); }
+    .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px; vertical-align: -.05rem; margin-right: .12rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin-top: .5rem; font-size: .78rem; color: var(--faint); }
+    .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -.08rem; }
+    .card { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .85rem 1rem; min-width: 0; }
+    .card .kick { font: 600 .74rem var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+    .card h4 { margin: .2rem 0 .5rem; font: 600 1.08rem var(--serif); }
+    .card p { font-size: .9rem; margin-bottom: .6rem; }
+    .btn { font: 600 .85rem var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 8px;
+           padding: .5rem .85rem; cursor: pointer; margin: .15rem .35rem .15rem 0; }
+    .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn:disabled { opacity: .45; cursor: default; }
+    .narr { min-height: 2.6rem; margin-top: .6rem; padding: .55rem .7rem; background: var(--sunken); border-radius: 8px; font-size: .88rem; color: var(--dim); overflow-wrap: anywhere; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin: .4rem 0 .2rem; }
+    .stat { background: var(--sunken); border-radius: 8px; padding: .45rem .5rem; }
+    .stat b { display: block; font: 600 1.2rem var(--serif); color: var(--text); }
+    .stat span { font-size: .72rem; color: var(--faint); }
+    .box { background: var(--raised); border: 1px solid var(--border); border-left: 3px solid var(--warn); border-radius: 8px; padding: .7rem 1rem; margin: 0 0 1rem; max-width: 1120px; }
+    .box h4 { margin: 0 0 .4rem; font: 600 .95rem var(--sans); color: var(--text); }
+    .box ul { margin: 0; padding-left: 1.1rem; color: var(--dim); font-size: .9rem; }
+    .box li { margin-bottom: .3rem; overflow-wrap: anywhere; }
+    .box p { font-size: .9rem; }
+    .box p:last-child { margin-bottom: 0; }
+    .box.bad { border-left-color: var(--bad); }
+    .box.twin { border-left-color: var(--twin); }
+    .rowchips { display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0 .6rem; }
+    .small { font-size: .84rem; }
+    .lvl { margin: .5rem 0 .2rem; font: 600 .74rem var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+
+    /* tables */
+    .tablewrap { max-width: 1120px; margin: 0 0 1rem; }
+    table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+    th { text-align: left; font: 600 .74rem var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: .45rem .7rem; border-bottom: 1px solid var(--border); }
+    td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); color: var(--dim); vertical-align: top; overflow-wrap: anywhere; }
+    td strong { color: var(--text); }
+    td.num, th.num { text-align: right; font-family: var(--mono); white-space: nowrap; }
+    td:first-child { color: var(--text); }
+    .read { display: inline-block; font: 600 .72rem var(--sans); padding: .1rem .5rem; border-radius: 999px; white-space: nowrap; }
+    .read.full { background: #3fb95026; color: var(--good); }
+    .read.abstract { background: #58a6ff22; color: var(--accent); }
+    .read.second { background: #d2992230; color: var(--warn); }
+    .read.unchecked { background: #f8514930; color: var(--bad); }
+    .sbar { display: inline-block; height: .6rem; border-radius: 3px; background: var(--bad); vertical-align: middle; min-width: 2px; }
+
+    /* figure */
+    .fig { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 1120px; margin: 0 0 1rem; }
+    .fig .panel p { font-size: .88rem; margin: .5rem 0 0; }
+    .fig svg { max-height: 230px; }
+    .foot { margin-top: 2.5rem; }
+    .foot p { color: var(--faint); font-size: .82rem; max-width: 110ch; }
+
+    @media (max-width: 1180px) { .stage { grid-template-columns: 1fr; } }
+    @media (max-width: 820px) { .stats { grid-template-columns: repeat(2, 1fr); } .fig { grid-template-columns: minmax(0, 1fr); } }
+    @media (max-width: 640px) {
+      .rtable thead { display: none; }
+      .rtable, .rtable tbody, .rtable tr, .rtable td { display: block; width: 100%; }
+      .rtable tr { border: 1px solid var(--border); border-radius: 8px; margin-bottom: .6rem; padding: .35rem 0; background: var(--raised); }
+      .rtable td { border: 0; padding: .25rem .8rem; }
+      .rtable td[data-l]::before { content: attr(data-l); display: block; font: 600 .68rem var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+      .rtable td.num { text-align: left; white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">Potts antiferromagnet · cluster moves · sphere versus torus</p>
+    <h1>The Spin-Glass View</h1>
+    <p class="lead">
+      Our problem has a second name in physics. Give every vertex of a planar triangulation one of four colours, charge one unit of energy for every edge whose two ends match, and you have the
+      <strong>four-state Potts antiferromagnet</strong>. A proper four-colouring is a state of zero energy: a <strong>ground state</strong>. A Kempe swap, which exchanges two colours on one connected two-colour chain,
+      is exactly the cluster move that physicists use to stir such a system without raising its energy. This page sets the two vocabularies side by side, says what the literature has proved on a torus and on a sphere,
+      lets you flip clusters yourself, and reports what we measured about the energy landscape.
+    </p>
+    <p>
+      Labels: <span class="lab">[computed here]</span> was recomputed by this page's build script, <span class="lab">[exploratory]</span> comes from a Studio or team run that has not been audited, <span class="lab">[open]</span> means nobody knows.
+      Companion pages: <a href="../cages/index.html">Cages and Diamonds</a> (the same order-22 graph) and <a href="../66666/index.html">The Six-Ring Trap</a>.
+    </p>
+  </div>
+
+  <div class="roots"><span class="label">Jump to:</span>
+    <a class="chip" href="#s1">1 · Dictionary</a>
+    <a class="chip" href="#s2">2 · Torus and sphere</a>
+    <a class="chip" href="#s3">3 · Flip a cluster</a>
+    <a class="chip" href="#s4">4 · Glassy landscapes</a>
+    <a class="chip" href="#ideas">5 · Ideas under test</a>
+    <a class="chip" href="#s6">6 · What this means</a>
+  </div>
+
+  <!-- ====================================================================== 1. DICTIONARY -->
+  <section class="story" id="s1">
+    <p class="eyebrow">Section 1</p>
+    <h2 class="story-h">The dictionary</h2>
+    <p class="lead">
+      Delete a vertex of degree five from a triangulation and four-colour what is left. The deleted vertex is the <strong>hole</strong>, and its five neighbours are the <strong>link</strong>.
+      The hole can be filled when the link uses at most three colours: the fourth colour is free for the hole. In physics language the hole is a <strong>defect</strong>: a spot where the lattice has the wrong coordination number
+      (five neighbours where the flat triangular lattice has six). On a sphere there must be at least twelve such defects, because the charges 6 − degree add up to 12.
+    </p>
+    <div class="tablewrap">
+      <table class="rtable">
+        <thead><tr><th style="width:50%">Our language</th><th>Physics language</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Our language">A proper 4-colouring of the triangulation</td><td data-l="Physics language">A zero-temperature ground state of the 4-state Potts antiferromagnet</td></tr>
+          <tr><td data-l="Our language">A Kempe swap (exchange two colours on one two-colour chain)</td><td data-l="Physics language">A Wang–Swendsen–Kotecký (WSK) cluster flip</td></tr>
+          <tr><td data-l="Our language">One Kempe class (every colouring reachable from every other by swaps)</td><td data-l="Physics language">Ergodic dynamics: the cluster moves can visit every ground state</td></tr>
+          <tr><td data-l="Our language">A stuck class: a Kempe class with no filled colouring</td><td data-l="Physics language">Broken ergodicity: a trapped basin that the dynamics cannot leave</td></tr>
+          <tr><td data-l="Our language">The radius ρ of a colouring: the fewest swaps to a filled colouring</td><td data-l="Physics language">How far a state sits from the "filled" ground states, counted in cluster flips</td></tr>
+          <tr><td data-l="Our language">The hole at a deleted degree-5 vertex</td><td data-l="Physics language">A defect (a disclination) in the otherwise six-coordinated lattice</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      A stuck class is what a spin-glass physicist would call a metastable basin: the system sits in a zero-energy state, every allowed move leads to another zero-energy state, and none of them is a state in which the defect disappears.
+      <span class="lab">[computed here: none of the graphs below has one]</span> Whether one can exist on a sphere triangulation of minimum degree five is the open question the project is circling
+      (Tilley's D-resolvability conjecture, Section 2).
+    </p>
+  </section>
+
+  <!-- ====================================================================== 2. TORUS vs SPHERE -->
+  <section class="story" id="s2">
+    <p class="eyebrow">Section 2</p>
+    <h2 class="story-h">Torus versus sphere: what is proved</h2>
+    <p class="lead">
+      The cleanest known obstruction to ergodicity lives on the torus, and it lives there because of the shape of the surface. On a torus some chains can wind around a loop that cannot be shrunk, and a winding number survives every swap.
+      On a sphere every loop shrinks to a point, and no such number is known.
+    </p>
+    <div class="fig">
+      <div class="panel">
+        <h3>Torus: loops that cannot shrink</h3>
+        <svg viewBox="0 0 320 200" role="img" aria-label="Schematic torus with a loop around the hole and a loop around the tube">
+          <ellipse cx="160" cy="100" rx="130" ry="80" fill="#0d1117" stroke="#7d8590" stroke-width="2"/>
+          <ellipse cx="160" cy="100" rx="52" ry="24" fill="#010409" stroke="#7d8590" stroke-width="2"/>
+          <ellipse cx="160" cy="100" rx="91" ry="52" fill="none" style="stroke: var(--c1)" stroke-width="3.5"/>
+          <ellipse cx="69" cy="100" rx="12" ry="42" fill="none" style="stroke: var(--c3)" stroke-width="3.5"/>
+          <text x="160" y="196" text-anchor="middle" font-size="11" fill="#7d8590" font-family="sans-serif">blue winds round the hole · green winds round the tube</text>
+        </svg>
+        <p>A chain can close up around the hole or around the tube, and neither loop can be pulled to a point. On a three-colourable (Eulerian) torus triangulation, the degree of a colouring modulo 12 does not change under Kempe swaps
+          <span class="lab">[proved in Mohar–Salas 2009]</span>.</p>
+      </div>
+      <div class="panel">
+        <h3>Sphere: every loop shrinks</h3>
+        <svg viewBox="0 0 320 200" role="img" aria-label="Schematic sphere with nested loops shrinking to a point">
+          <circle cx="160" cy="96" r="84" fill="#0d1117" stroke="#7d8590" stroke-width="2"/>
+          <ellipse cx="160" cy="122" rx="70" ry="20" fill="none" style="stroke: var(--c1)" stroke-width="3.5"/>
+          <ellipse cx="160" cy="88" rx="46" ry="12" fill="none" style="stroke: var(--c1)" stroke-width="3" opacity=".75"/>
+          <ellipse cx="160" cy="62" rx="22" ry="6" fill="none" style="stroke: var(--c1)" stroke-width="2.5" opacity=".55"/>
+          <circle cx="160" cy="46" r="3" style="fill: var(--c1)"/>
+          <text x="160" y="196" text-anchor="middle" font-size="11" fill="#7d8590" font-family="sans-serif">a loop slides up and shrinks to a point: no winding number</text>
+        </svg>
+        <p>A chain loop can always be shrunk through the surface, so the torus mechanism has nothing to grip. Whether another quantity plays that role is <span class="lab">[open]</span>.</p>
+      </div>
+    </div>
+    <p class="small" style="max-width:1120px">Schematic figure only: no colouring is drawn.</p>
+
+    <div class="tablewrap">
+      <table class="rtable">
+        <thead><tr><th style="width:26%">Setting</th><th>Result</th><th style="width:22%">Source</th><th style="width:9%">Read</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Setting">3-colourable (Eulerian) triangulations of a closed orientable surface</td>
+            <td data-l="Result"><strong>The degree of a 4-colouring mod 12 is a Kempe invariant</strong> (Thm 3.4). There is more than one class iff some colouring has degree ≡ 6 mod 12 (Cor 3.5, which uses Fisk's theorem on that surface).</td>
+            <td data-l="Source">B. Mohar, J. Salas, "A new Kempe invariant and the (non)-ergodicity of the Wang–Swendsen–Kotecký algorithm", <em>J. Phys. A: Math. Theor.</em> 42 (2009) 225204, arXiv:0901.1010</td>
+            <td data-l="Read"><span class="read abstract">abstract</span> plus a summary of the ar5iv text</td></tr>
+          <tr><td data-l="Setting">Torus T(3L,3M), 3 ≤ L ≤ M</td>
+            <td data-l="Result"><strong>At least two Kempe classes, so WSK for the 4-state antiferromagnet is not ergodic.</strong> T(6,6): 305,192 colourings of degree 0, 45 with |deg| = 6, 1 with |deg| = 18, giving exactly 2 classes. T(3,3): 1 class (too few faces for degree 6).</td>
+            <td data-l="Source">same</td><td data-l="Read"><span class="read abstract">abstract</span> plus a summary</td></tr>
+          <tr><td data-l="Setting">Triangular-lattice tori in general</td>
+            <td data-l="Result">The paper says WSK ergodicity is open for q = 4, 5, 6 (q ≥ 7 known ergodic, q = 2 trivially not).</td>
+            <td data-l="Source">same</td><td data-l="Read"><span class="read abstract">abstract</span> plus a summary</td></tr>
+          <tr><td data-l="Setting">Eulerian triangulations of the sphere, projective plane and torus</td>
+            <td data-l="Result">All 4-colourings of degree divisible by 12 are Kempe equivalent. On the sphere this means a single class.</td>
+            <td data-l="Source">S. Fisk, "Geometric coloring theory", <em>Adv. Math.</em> 24 (1977) 298–340 (Fisk 1977)</td>
+            <td data-l="Read"><span class="read second">second-hand</span> via Mohar 2006 and Mohar–Salas</td></tr>
+          <tr><td data-l="Setting">Planar G with χ(G) &lt; k</td>
+            <td data-l="Result">One Kempe class of k-colourings (Cor 4.5). Meyniel: all 5-colourings of a planar graph form one class (Meyniel 1978).</td>
+            <td data-l="Source">B. Mohar, "Kempe equivalence of colorings", in <em>Graph Theory: Trends in Mathematics</em>, Birkhäuser 2006, 287–297; H. Meyniel, <em>JCTB</em> 24 (1978) 251–257</td>
+            <td data-l="Read">Mohar <span class="read full">full</span> · Meyniel <span class="read second">second-hand</span></td></tr>
+          <tr><td data-l="Setting">Plane triangulations, 4 colours, not Eulerian</td>
+            <td data-l="Result"><strong>More than one class can occur.</strong> Mohar's "akempic" triangulations have 4 odd vertices, every degree divisible by 3, and a frozen colouring. 3-sums give arbitrarily many classes. Degrees divisible by 3 mean no degree-5 vertex.</td>
+            <td data-l="Source">B. Mohar, <em>Discrete Math.</em> 54 (1985) 23–29 (Mohar 1985)</td>
+            <td data-l="Read"><span class="read second">abstract or second-hand</span></td></tr>
+          <tr><td data-l="Setting">Plane triangulations with exactly two odd-degree vertices</td>
+            <td data-l="Result">Kempe equivalence of their 4-colourings is <strong>an open problem</strong>. A talk proves a weaker version. It also proves that all k-colourings (k ≥ 3) of a 3-colourable projective-planar triangulation are Kempe equivalent.</td>
+            <td data-l="Source">A. Nakamoto (joint with N. Matsumoto, K. Wakayama), ICMS talk abstract, 2025</td>
+            <td data-l="Read"><span class="read abstract">abstract</span> (PDF text)</td></tr>
+          <tr><td data-l="Setting">Two-pole plane triangulations G<sub>n</sub> (our belts)</td>
+            <td data-l="Result">At least ⌊n/6⌋ Kempe classes; one class after deleting a pole.</td>
+            <td data-l="Source">J. Florek, arXiv:2511.00485 (2025)</td>
+            <td data-l="Read"><span class="read abstract">abstract</span></td></tr>
+          <tr><td data-l="Setting">Degree-5 vertices: R*<sub>v</sub></td>
+            <td data-l="Result"><strong>Tilley's D-resolvability conjecture (open)</strong>, stated to be stronger than 4CT.</td>
+            <td data-l="Source">J. Tilley, <em>JGAA</em> 21(4) (2017) 649–661</td>
+            <td data-l="Read"><span class="read abstract">abstract</span> (full text by a sub-agent)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box">
+      <h4>Summary of the literature read <span class="lab">[Long Table reading job; sources marked as above]</span></h4>
+      <ul>
+        <li>For 4 colours, the only proved non-ergodicity results are on <strong>closed surfaces with an invariant tied to the surface</strong> (torus, degree mod 12) and on <strong>special plane triangulations</strong>
+          (Mohar's akempic family, with degrees divisible by 3 and so no degree-5 vertex; Florek's belts).</li>
+        <li>On the sphere, every single-class result needs extra structure: Eulerian, χ &lt; k, or 4-critical (Feghali 2022, as listed in the source note). General plane triangulations remain open, for example the two-odd-vertex case.</li>
+        <li><strong>Our position:</strong> general sphere triangulations with degree-5 vertices are <span class="lab">[open]</span>. Numerics found in the literature are on tori (the T(6,6) counts), on named graphs and greedy runs (Tilley 2017), and on belts (Florek 2025).
+          <strong>No spherical WSK or Kempe-class numerics were found</strong>, so our census (orders 12 to 26) may be the first systematic sphere data. <span class="read unchecked">unchecked</span>: a targeted search could still find something.</li>
+        <li>Why the torus mechanism does not transfer <span class="lab">[hand judgement, unchecked]</span>: the degree is defined on a closed surface and is invariant only for Eulerian triangulations, and the value 6 mod 12 is realised by colourings that wind round non-contractible cycles.
+          A minimum-degree-5 sphere triangulation has 12 or more odd vertices, so the invariant is not available. Long Table also found that no disc version of the degree is a Kempe invariant (<code>disc-degree-parity.md</code>, <code>path5-tait-sign-invariant.md</code>, as named in the source note).
+          This does not show that flat regions on a sphere are safe: a sphere obstruction would need a different mechanism.</li>
+      </ul>
+      <p class="small" style="margin:.6rem 0 0">Source note: <code>SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/wsk-ergodicity-literature.md</code>; message <code>SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1632_longtable_to_coordination+math+audit+navigator_WSK-ergodicity-literature.md</code>. The audit of these sources is still to come.</p>
+    </div>
+  </section>
+
+  <!-- ====================================================================== 3. FLIP A CLUSTER -->
+  <section class="story" id="s3">
+    <p class="eyebrow">Section 3</p>
+    <h2 class="story-h">Flip a cluster</h2>
+    <p class="lead">
+      Pick a vertex, then a second colour. The page outlines the connected two-colour chain through that vertex (the <strong>Kempe chain</strong>, the physicist's <strong>cluster</strong>). Click the outlined chain, or press
+      <em>Flip it</em>, and the two colours trade places along it. The dashed circle marked "?" is the deleted degree-five vertex. When its five neighbours (ringed in white) use three colours or fewer, the hole can be filled.
+      Everything below is computed in your browser from the graph; nothing is simulated beyond the flips you make.
+    </p>
+    <div class="stage">
+      <div class="viz">
+        <div class="panel">
+          <h3 id="gtitle">The graph</h3>
+          <svg id="gmap" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Planar triangulation with the current colouring"></svg>
+          <div class="legend">
+            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole (degree 5)</span>
+            <span><i style="border:2px solid var(--text)"></i>link</span>
+            <span><i style="border:2px solid var(--twin)"></i>chain you would flip</span>
+            <span><i style="border:2px dotted var(--text)"></i>chain just flipped</span>
+          </div>
+          <div class="readout" id="greadout"></div>
+        </div>
+      </div>
+      <aside class="side" aria-label="Demo controls">
+        <div class="card">
+          <span class="kick">Which graph</span>
+          <div class="rowchips" id="gchips"></div>
+          <p id="gblurb" class="small" style="margin:.2rem 0 0"></p>
+          <div class="stats" id="gstats"></div>
+        </div>
+        <div class="card">
+          <span class="kick">Start state</span>
+          <div class="rowchips" id="schips"></div>
+          <span class="kick">Your flip</span>
+          <p class="small" id="gpick" style="margin:.3rem 0">Click a vertex.</p>
+          <div class="rowchips" id="colbtns"></div>
+          <button class="btn" id="gflip" disabled>Flip it</button>
+          <button class="btn ghost" id="gclear" disabled>Clear</button>
+        </div>
+        <div class="card">
+          <span class="kick">Let the dynamics run</span>
+          <button class="btn" id="grand">Random WSK step</button>
+          <button class="btn ghost" id="grand50">× 50</button>
+          <button class="btn ghost" id="greset">Reset</button>
+          <div class="narr" id="gnarr" aria-live="polite">Pick a start state, or press Random WSK step. A random step picks one two-colour chain uniformly from all of them and flips it.</div>
+        </div>
+      </aside>
+    </div>
+    <p class="small" style="max-width:1120px;margin-top:.8rem">
+      The demo graphs are built and checked by <code>docs/physics/build_data.py</code> <span class="lab">[computed here]</span>: each is a triangulation of the sphere (Euler's formula holds, every edge lies in two faces, every vertex link is one cycle),
+      has minimum degree 5 and no separating triangle, and is drawn without crossings. The radius of every colouring and the lock test are computed for all colourings in the build, and the page looks them up.
+    </p>
+  </section>
+
+  <!-- ====================================================================== 4. GLASSY LANDSCAPES -->
+  <section class="story" id="s4">
+    <p class="eyebrow">Section 4</p>
+    <h2 class="story-h">Glassy landscapes: what we measured</h2>
+    <p class="lead">
+      Picture the colourings that cannot yet be filled as a landscape, and the radius as altitude: filled states are the valleys, and a swap is a step. A proof by <em>descent</em> would need a simple score that some single swap
+      always lowers, from every unfilled state. A state where no swap lowers the score is a <strong>local minimum</strong>, or in the physicists' word, <strong>stuck</strong>.
+      The plain finding of Studio compute run 5 <span class="lab">[exploratory]</span> is that <strong>the energy landscape has local minima for every simple energy we tried</strong>.
+    </p>
+    <div class="box">
+      <h4>Run 5: eleven candidate scores on the hard holes <span class="lab">[exploratory, Mac Studio; not audited]</span></h4>
+      <ul>
+        <li>Test: for each score, count the unfilled states of T − v from which <em>no single Kempe swap lowers it</em>. A swap into a filled state always counts as progress. A score works only if that count is 0.</li>
+        <li>The scores: connected pairs, link components, lock size (total lock-chain size), lock distance, intern D's K vector, Φ by role, and lexicographic combinations of these.</li>
+        <li><strong>No score works on any of the eight holes</strong>, except that lock distance has no stuck state at Errera's two holes (it does at the other six). Link components are constant on unfilled states, so every unfilled state is stuck for them.</li>
+        <li>Closest overall: total lock-chain size, with 2 to 10 stuck states per hole out of 60 to 2,713 unfilled states (table below). So path 4 (find a potential that some swap always lowers) <strong>stopped by its rule</strong>.</li>
+      </ul>
+      <p class="small" style="margin:.5rem 0 0">Files: <code>backgroundMaterial/planemap-structural/longtable/studio-explore/sage-qa-runs/README.md</code> (Run 5), <code>run5.txt</code>, <code>potentials.py</code>, <code>potentials2.py</code> (Studio commit 9f8aa0e on branch studio-wp21);
+        Navigator revision 138 (<code>SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1633_navigator_..._revision-138.md</code>).</p>
+    </div>
+    <div class="tablewrap">
+      <table class="rtable" id="r5table">
+        <thead><tr><th>Hole</th><th class="num">Unfilled states</th><th class="num">Stuck: lock size</th><th class="num">Stuck: lock distance</th><th>Stuck share, lock size</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="box">
+      <h4>Three more landscape facts <span class="lab">[exploratory, Studio sage-QA runs; same README]</span></h4>
+      <ul>
+        <li><strong>Link-touching moves alone never created a stuck class</strong> (Run 2). Restricting the moves to chains that meet the link, at every degree-5 hole of orders 12 to 20 (882 holes) and on the four radius-5 certificates, leaves no class without a filled state, and the depth is unchanged except 2 to 3 at 16 holes.</li>
+        <li><strong>No vertex deletion ever created a new Kempe class</strong> (Run 4 and its follow-up): over every multi-class T at orders 12 to 23, deleting a vertex never produced a class that was not already there. A single deleted vertex that merges all of T's classes always exists (some vertex of degree 5, 6 or more),
+          though a <em>degree-5</em> merging vertex does not always exist (2, 3, 8 and 18 multi-class graphs without one at orders 20 to 23).</li>
+        <li><strong>Edge deletion does create new classes, and they are not frozen</strong> (Run 1). There are 17 new classes in 16 edge orbits, each with exactly 6 states, and every state has 3, 4 or 5 connected colour pairs out of 6. The sage's guess that they are rigid colourings was not borne out.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====================================================================== 5. IDEAS -->
+  <section class="story" id="ideas">
+    <p class="eyebrow">Section 5</p>
+    <h2 class="story-h">Ideas under test (the project lead's)</h2>
+    <p class="lead">Two ideas from the project lead, written down as questions. They are ideas, not results: nothing here has been tested as a proof route, and the one test that exists is marked.</p>
+
+    <div class="box twin">
+      <h4>(i) Derivatives of charge</h4>
+      <p><strong>The idea.</strong> Discharging uses a charge 6 − degree at every vertex, and on a sphere the charges sum to 12. Read this as a discrete curvature, and discharging as a discrete curvature flow (a combinatorial Ricci flow).
+        Its first derivative is a flux (charge moving along an edge) and its second is a Laplacian (the difference between a vertex and the average of its neighbours).</p>
+      <p><strong>The Kempe-dynamics version.</strong> So far we ask for a score that <em>some single swap</em> lowers (first order). The second-order version asks that <em>some sequence of two or three swaps</em> lowers it: a lookahead.
+        Studio compute tested it <span class="lab">[exploratory; sage-qa-runs/, main ec92cd5]</span> on the four radius-5 certificates, the F-cycle hole, the order-22 radius-5 hole and Errera's two holes.
+        For the score (lock size, then lock distance), some sequence of <strong>at most 3 swaps</strong> lowers it or fills the hole at every unfilled state. Two swaps are not always enough: 5 states need 3.
+        The number needed does <strong>not</strong> grow with the radius. Most states four or five swaps from a fill can lower the score in one.</p>
+      <p><strong>Conjecture K3</strong> <span class="lab">[open; scale test queued on the Studio]</span>: from every unfilled state at a degree-5 hole, at most 3 swaps lower (lock size, lock distance) or fill.
+        Because the score is a non-negative whole number, K3 at every hole would imply that every degree-5 vertex can always be refilled (Tilley's every-vertex form).
+        So it is almost certainly too strong to prove easily, and it may fail on larger graphs. But it is crisp and testable: the Studio is checking every state at least four swaps from a fill in the exhaustive census, orders 20–26.</p>
+      <p><strong>The catch.</strong> The distance to a fill is trivially such a potential, since it drops by one at every swap along a shortest fill. So a useful score has to be computable locally, from a bounded neighbourhood of the hole.</p>
+    </div>
+
+    <div class="box twin">
+      <h4>(ii) Charge teleporting by cutting and gluing</h4>
+      <p><strong>The idea.</strong> In Perelman's Ricci flow with surgery, trouble spots are cut out and capped, and the flow continues on what remains. Can charge, or the hole, be moved by cutting and regluing the sphere?</p>
+      <ul>
+        <li><strong>(a) Short separating cycles.</strong> The 4CT proof already cuts along short separating cycles (necks), and our core class is "no necks".</li>
+        <li><strong>(b) Cutting along a lock chain.</strong> A lock chain plus the hole forms a closed curve. Cutting along it splits the sphere into two discs whose boundary uses only two colours, apart from the hole. Swaps strictly inside one disc do not touch the other. Could one induct on the smaller disc?
+          (Careful point, added by this page: a swap in a colour pair that includes one of the two boundary colours can cross the boundary at a single vertex.)</li>
+        <li><strong>(c) Moving the vacancy</strong> to another degree-5 vertex (path 6). By Meyniel, this only measures cost.</li>
+        <li><strong>(d) The monotone quantity.</strong> Perelman needed a quantity that never goes the wrong way and survives surgery. That is exactly what run 5 failed to find.</li>
+      </ul>
+    </div>
+
+    <div class="box" id="verdict">
+      <h4>Advisor's assessment <span class="lab">[advice relayed by the coordinator; not a ledger result]</span></h4>
+      <p><strong>Idea 1(a), discharging as a flow: no content.</strong> Discharging is a static redistribution that proves some configuration exists; nothing flows in time. Combinatorial Ricci flow acts on circle-packing radii, not on colourings. Dropped.</p>
+      <p><strong>Idea 1(b), k-step descent: circular as posed</strong>, because distance-to-fill already descends in one step. It is only meaningful for a locally computable energy (a bounded neighbourhood of the hole plus which lock chains exist and where they end).
+        An experiment is queued on the Studio: for the best energy (total lock-chain size), find the least k such that some k-swap sequence lowers it. If k ≤ 2 everywhere, "two swaps always shrink the locks" becomes a lemma to try. If k tracks the radius, the idea is circular and closed.</p>
+      <p><strong>Idea 2(a), cutting along short cycles:</strong> already done classically (the core class has no necks).
+        <strong>2(b), cutting along a lock chain:</strong> this is Kempe's own picture, and it gives the opposite of leverage. The disc inside the lock curve is inert: swaps inside it cannot touch either lock, and swapping the curve itself only rotates the locks (Errera's cycle).
+        It does give a pruning lemma: while a lock stands, its disc is inert, so any filling sequence must swap a component outside both lock curves. That lemma is worth half a day by hand plus a check on the radius-5 certificates.
+        <strong>2(c), moving the vacancy:</strong> measures cost, proves nothing.
+        <strong>2(d), Perelman:</strong> the honest end of the analogy. His key was a global monotone quantity; the known global quantities on colourings are constant on Kempe classes, so this is the open problem restated.</p>
+      <p><strong>Verdict:</strong> two cheap experiments are worth doing this week (k-step descent, inert-disc lemma). Neither is a route to a proof; either sharpens the paper or closes a line cleanly. The rest is metaphor.</p>
+      <p><strong>What the experiments found</strong> <span class="lab">[exploratory]</span>.
+        <em>k-step descent:</em> at most 3 swaps everywhere tested, not tracking the radius; this became Conjecture K3 above.
+        <em>Inert disc:</em> the advisor's pruning claim is <strong>false</strong>. Intern A showed by hand that a shortest fill can begin with a swap strictly inside a lock disc (<code>docs/working/InternA-inert-disc.md</code>).
+        Studio compute then scanned all 81,564 shortest-fill moves at orders 17–20 and found exactly one real instance: order 20, plantri index 51, hole 1, a state three swaps from a fill whose first swap flips a single vertex inside the disc. The audit replay is pending.
+        Such moves are rare: none occur at the eight hardest holes, and none at states four or more swaps from a fill.</p>
+    </div>
+  </section>
+
+  <!-- ====================================================================== 6. MEANING -->
+  <section class="story" id="s6">
+    <p class="eyebrow">Section 6</p>
+    <h2 class="story-h">What this means</h2>
+    <p class="lead">
+      The physics language fits exactly: colourings are ground states, Kempe swaps are cluster flips, and a stuck class is broken ergodicity. The torus mechanism does not transfer to the sphere, because it needs a winding number that a sphere does not have.
+      Nobody, including us, has a quantity that rules out traps on the sphere.
+    </p>
+    <div class="box twin">
+      <h4>The cleanest empirical conjecture to come out of all this <span class="lab">[exploratory]</span></h4>
+      <p>Deleting a vertex of any degree never creates a new Kempe class. It held for every multi-class triangulation T from order 12 to order 23 (Studio run 4 and its follow-up). It is the statement most likely to interest experts, and it is a statement about data, not a proof.</p>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p><strong>Where each number comes from.</strong>
+      <em>Demo graphs.</em> <code>docs/physics/build_data.py</code> imports no project code. The icosahedron is built from its standard 20-face list. The order-22 graph (hole 15, link degrees 5, 6, 5, 6, 5) is read from the face list stored in <code>docs/cages/data.js</code>,
+      which the cages page builder took from <code>origin/studio-intel:backgroundMaterial/planemap-structural/studiointel/fcycle/fcycle_order22.json</code> (graph id <code>tri22.txt#020304050600</code>). Both are rechecked here as triangulations of the sphere with minimum degree 5 and no separating triangle, laid out by a Tutte drawing with an assert that no edges cross
+      (layout code copied from <code>docs/cages/build_data.py</code>). The build enumerates every proper 4-colouring of T − hole up to renaming (20 for the icosahedron, 252 for the order-22 graph), forms the Kempe classes by whole-component swaps (one class each),
+      finds the radius by breadth-first search from the filled states, and cross-checks the doubly locked test against "no single swap fills it" for every colouring. The order-22 numbers (252 colourings, one class, radii 2, 3, 4 for 40, 8, 4 colourings, 52 doubly locked) match the cages page.
+      <em>Literature.</em> Everything in the tables of Section 2 is quoted from Long Table's reading note, with its reading marks (full, abstract, second-hand, unchecked); this page did not read the papers and adds no references.
+      <em>Studio numbers.</em> The run 5 table is parsed by the build script from <code>run5.txt</code>, and the build asserts the "2 to 10" and "60 to 2,713" ranges; the other Studio facts are quoted from the README of <code>sage-qa-runs</code>. None has been audited.
+      The advisor's assessment in Section 5 is advice, not a ledger result.
+      <strong>Disclosure:</strong> this page was built by an AI agent (Claude), and the research it reports was produced by AI agents (Claude) working under Kyle Mathewson's direction. That includes the proofs, the code, the computations and the text. See the project's disclosure.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const D = window.PHYSICS_DATA;
+  const COLORS = ['var(--c0)', 'var(--c1)', 'var(--c2)', 'var(--c3)'];
+  const NAMES = ['red', 'blue', 'yellow', 'green'];
+  const PAIRS = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const $ = (id) => document.getElementById(id);
+  const fmt = (x) => x.toLocaleString('en');
+  const sw = (a) => '<span class="swatch" style="background:' + COLORS[a] + '"></span>';
+
+  // ---------------------------------------------------------------- run 5 table
+  (function () {
+    const tb = $('r5table').querySelector('tbody');
+    D.run5.forEach((r) => {
+      const tr = document.createElement('tr');
+      const share = 100 * r.lock_size / r.unfilled;
+      tr.innerHTML = '<td data-l="Hole">' + r.name + '</td><td class="num" data-l="Unfilled states">' + fmt(r.unfilled) + '</td><td class="num" data-l="Stuck: lock size">' + r.lock_size +
+        '</td><td class="num" data-l="Stuck: lock distance">' + r.lock_dist + '</td><td data-l="Stuck share, lock size"><span class="sbar" style="width:' + Math.max(2, share * 5) + 'px"></span> ' + share.toFixed(1) + '%</td>';
+      tb.appendChild(tr);
+    });
+  })();
+
+  // ---------------------------------------------------------------- the demo
+  const canonKey = (c) => { const m = [-1, -1, -1, -1]; let k = 0, s = ''; for (const x of c) { if (m[x] < 0) m[x] = k++; s += m[x]; } return s; };
+  let gi = 1, G, V, vIdx, adj, L, byKey, startIdx = 0, c, sel = null, c2 = null, last = null, steps = 0, seen = new Set(), startList = [];
+
+  function loadGraph(i) {
+    gi = i; G = D.graphs[i];
+    V = []; for (let v = 0; v < G.order; v++) if (v !== G.hole) V.push(v);
+    vIdx = new Map(V.map((v, k) => [v, k]));
+    adj = V.map((v) => G.rot[v].filter((w) => w !== G.hole).map((w) => vIdx.get(w)));
+    L = G.link.map((v) => vIdx.get(v));
+    byKey = new Map(G.all.map((s, k) => [s.join(''), k]));
+    startList = [];
+    const f = G.rho.indexOf(0);
+    startList.push({ c: G.all[f], label: 'filled', rho: 0, dl: false });
+    G.start.forEach((s) => startList.push({ c: s.c, label: 'ρ = ' + s.rho + (s.dl ? ' · doubly locked' : ''), rho: s.rho, dl: s.dl }));
+    startIdx = startList.length - 1;
+    setState(startList[startIdx].c);
+  }
+  function setState(cc) { c = cc.slice(); sel = null; c2 = null; last = null; steps = 0; seen = new Set([canonKey(c)]); }
+
+  function compOf(start, a, b) {
+    const s = new Set([start]), st = [start];
+    while (st.length) { const u = st.pop(); for (const j of adj[u]) if (!s.has(j) && (c[j] === a || c[j] === b)) { s.add(j); st.push(j); } }
+    return s;
+  }
+  function allComps() {
+    const out = [];
+    for (const [a, b] of PAIRS) {
+      const done = new Set();
+      for (let s = 0; s < V.length; s++) {
+        if (done.has(s) || (c[s] !== a && c[s] !== b)) continue;
+        const comp = compOf(s, a, b); comp.forEach((x) => done.add(x)); out.push({ a, b, comp });
+      }
+    }
+    return out;
+  }
+  function flip(comp, a, b) { comp.forEach((i) => { c[i] = c[i] === a ? b : a; }); seen.add(canonKey(c)); steps++; }
+  const info = () => { const k = byKey.get(canonKey(c)); return { rho: G.rho[k], dl: !!G.dlflag[k], idx: k }; };
+  const nLink = () => new Set(L.map((i) => c[i])).size;
+  const cluster = () => (sel === null || c2 === null) ? null : compOf(sel, c[sel], c2);
+
+  function narr(t) { $('gnarr').innerHTML = t; }
+  function renderChips() {
+    const gc = $('gchips'); gc.innerHTML = '';
+    D.graphs.forEach((g, i) => {
+      const b = document.createElement('button'); b.className = 'chip'; b.setAttribute('aria-pressed', String(i === gi));
+      b.innerHTML = g.label; b.onclick = () => { loadGraph(i); renderAll(); narr('Graph changed. Pick a start state, or press Random WSK step.'); }; gc.appendChild(b);
+    });
+    const sc = $('schips'); sc.innerHTML = '';
+    startList.forEach((s, i) => {
+      const b = document.createElement('button'); b.className = 'chip'; b.setAttribute('aria-pressed', String(i === startIdx));
+      b.textContent = s.label; b.onclick = () => { startIdx = i; setState(s.c); renderAll(); narr('Stored start state loaded.'); }; sc.appendChild(b);
+    });
+    $('gblurb').textContent = G.blurb;
+    const sm = G.summary;
+    $('gstats').innerHTML = [[G.order + '', 'vertices'], [G.edges + '', 'edges'], [fmt(sm.colourings), 'colourings of T − hole'], [sm.classes + '', 'Kempe class' + (sm.classes > 1 ? 'es' : '')]]
+      .map(([v, t]) => '<div class="stat"><b>' + v + '</b><span>' + t + '</span></div>').join('');
+    $('gtitle').textContent = G.label + ' · link degrees round the hole ' + G.linkDeg.join(', ');
+  }
+  function renderPick() {
+    const box = $('colbtns'); box.innerHTML = '';
+    if (sel === null) { $('gpick').textContent = 'Click a vertex.'; $('gflip').disabled = true; $('gclear').disabled = true; return; }
+    $('gpick').innerHTML = 'Vertex ' + V[sel] + ' is ' + sw(c[sel]) + NAMES[c[sel]] + '. Flip its chain with which other colour?';
+    [0,1,2,3].filter((x) => x !== c[sel]).forEach((x) => {
+      const b = document.createElement('button'); b.className = 'chip'; b.setAttribute('aria-pressed', String(x === c2));
+      b.innerHTML = sw(x) + NAMES[x]; b.onclick = () => { c2 = x; renderAll(); }; box.appendChild(b);
+    });
+    $('gflip').disabled = false; $('gclear').disabled = false;
+  }
+  function renderMap() {
+    const svg = $('gmap'); svg.innerHTML = '';
+    const pos = G.pos, rot = G.rot, cl = cluster(), rN = 0.047, fs = 0.039;
+    const cl0 = cl ? new Set([...cl].map((i) => V[i])) : null, lt = last ? new Set([...last].map((i) => V[i])) : null;
+    const lk = new Set(G.link);
+    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
+      const th = v === G.hole || w === G.hole, on = cl0 && cl0.has(v) && cl0.has(w), onl = lt && lt.has(v) && lt.has(w);
+      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1], stroke: on ? 'var(--twin)' : onl ? 'var(--text)' : th ? 'var(--faint)' : '#3d444d',
+        'stroke-width': on ? 0.024 : onl ? 0.014 : 0.009, 'stroke-dasharray': th ? '0.03 0.025' : onl && !on ? '0.02 0.02' : 'none' }, svg);
+    }
+    for (let v = 0; v < rot.length; v++) {
+      const [x, y] = pos[v];
+      if (v === G.hole) {
+        el('circle', { cx: x, cy: y, r: rN * 1.1, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
+        el('text', { x, y: y + fs * 0.4, 'text-anchor': 'middle', 'font-size': fs * 1.2, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg).textContent = '?';
+        continue;
+      }
+      const i = vIdx.get(v), g = el('g', { style: 'cursor:pointer' }, svg);
+      const inC = cl0 && cl0.has(v), inL = lt && lt.has(v), isLink = lk.has(v), isSel = sel === i;
+      if (isSel) el('circle', { cx: x, cy: y, r: rN * 1.7, fill: 'none', stroke: 'var(--text)', 'stroke-width': 0.01, 'stroke-dasharray': '0.025 0.02' }, g);
+      el('circle', { cx: x, cy: y, r: rN * 1.45, fill: 'transparent' }, g);
+      el('circle', { cx: x, cy: y, r: isLink ? rN * 1.1 : rN, fill: COLORS[c[i]],
+        stroke: inC ? 'var(--twin)' : isLink ? 'var(--text)' : inL ? 'var(--text)' : 'var(--bg)',
+        'stroke-width': inC ? 0.026 : isLink ? 0.015 : inL ? 0.014 : 0.008, 'stroke-dasharray': inL && !inC && !isLink ? '0.015 0.015' : 'none' }, g);
+      el('text', { x, y: y + fs * 0.37, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)', 'pointer-events': 'none' }, g).textContent = v;
+      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[c[i]] + (isLink ? ' · link' : '');
+      g.addEventListener('click', () => onVertex(i));
+    }
+  }
+  function renderReadout() {
+    const I = info(), nl = nLink(), cls = allComps().length;
+    let st;
+    if (nl <= 3) { const free = [0,1,2,3].find((x) => !L.some((i) => c[i] === x)); st = '<span class="status target">filled: the hole takes ' + NAMES[free] + '</span>'; }
+    else st = I.dl ? '<span class="status trap">doubly locked: no single swap fills it</span>' : '<span class="status ok">not doubly locked: one swap fills it</span>';
+    $('greadout').innerHTML = '<span>link colours <b>' + nl + '</b> (filled = at most 3)</span>' + st +
+      '<span>swaps to fill, ρ <b>' + I.rho + '</b></span><span>chains available <b>' + cls + '</b></span><span>steps <b>' + steps + '</b></span>' +
+      '<span>distinct states seen <b>' + seen.size + '</b> of ' + fmt(G.summary.colourings) + '</span>';
+  }
+  function renderAll() { renderChips(); renderPick(); renderMap(); renderReadout(); }
+  function onVertex(i) {
+    const cl = cluster();
+    if (cl && cl.has(i)) { doFlip(); return; }
+    sel = i; c2 = [0,1,2,3].find((x) => x !== c[i]); renderAll();
+    narr('Chain of ' + cluster().size + (cluster().size === 1 ? ' vertex' : ' vertices') + ' in ' + NAMES[c[i]] + ' and ' + NAMES[c2] + ' outlined. Click it, or press Flip it.');
+  }
+  function doFlip() {
+    const cl = cluster(); if (!cl) return;
+    const a = c[sel], b = c2; flip(cl, a, b); last = new Set(cl); c2 = a;
+    renderAll();
+    const nl = nLink();
+    narr('Flipped ' + cl.size + ' vertices (' + NAMES[a] + ' and ' + NAMES[b] + ' traded places). ' + (nl <= 3 ? 'The link now uses ' + nl + ' colours: the hole can be filled.' : 'The link uses ' + nl + ' colours.'));
+  }
+  function randomStep(quiet) {
+    const cs = allComps(), m = cs[Math.floor(Math.random() * cs.length)];
+    flip(m.comp, m.a, m.b); last = m.comp; sel = null; c2 = null;
+    if (!quiet) { renderAll(); narr('Random step ' + steps + ': flipped a ' + NAMES[m.a] + '–' + NAMES[m.b] + ' chain of ' + m.comp.size + (m.comp.size === 1 ? ' vertex' : ' vertices') + '.'); }
+  }
+  $('gflip').onclick = doFlip;
+  $('gclear').onclick = () => { sel = null; c2 = null; renderAll(); narr('Selection cleared.'); };
+  $('grand').onclick = () => randomStep(false);
+  $('grand50').onclick = () => { for (let k = 0; k < 50; k++) randomStep(true); renderAll(); narr('50 random cluster flips done. Distinct states seen so far: ' + seen.size + ' of ' + fmt(G.summary.colourings) + '.'); };
+  $('greset').onclick = () => { setState(startList[startIdx].c); renderAll(); narr('Back to the stored start state.'); };
+
+  loadGraph(1); renderAll();
+  window.__physics = { get c() { return c.slice(); }, info, allComps: () => allComps().length, onVertex, randomStep: () => randomStep(false) };
+})();
+</script>
+</body>
+</html>
