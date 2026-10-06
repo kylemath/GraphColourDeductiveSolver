@@ -1,0 +1,21 @@
+WP21-declaration.md: OK
+d1_confirm.py: OK
+wp_shard_runner.py: OK
+wp21_search.py: OK
+wp_launch.py: OK
+d1_check21.py: OK
+wp_check_shards.py: OK
+wp21_sample.py: OK
+wp21_seeds.py: OK
+wp_report.py: OK
+wp21/sample-A-m5-26.txt: OK
+WP20-D1-declaration.md: OK
+d1_check.py: OK
+wp20/input-m5-25.txt: OK
+wp_merge.py: OK
+wp_compare_outputs.py: OK
+planned 254 shards (graphs) in /Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/wp20/replay-run
+2026-10-06 11:45:13 replay run start (workers 16)
+2026-10-06 14:14:10 replay run ended (exit 0): shards done 254/254  state complete  counts {"done": 254}  damaged []  cpu_done 137385.9s cpu_wasted 0.0s cap 216000.0
+wrote wp20/replay-P1-m5-25.json (25381 graphs)
+2026-10-06 14:14:16 REPLAY DONE; digest in wp20/replay/DIGEST.json
