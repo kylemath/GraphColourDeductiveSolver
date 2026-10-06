@@ -1,7 +1,12 @@
 {
-  "revision": 120,
-  "updatedAt": "2026-10-06T12:56:00-06:00",
+  "revision": 121,
+  "updatedAt": "2026-10-06T12:58:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T19:05:00Z",
+      "node": "structural-pathway-f",
+      "action": "Revision 121 records P-F as killed (degree parity is the only Kempe-class invariant, by Math's hand proof, and no degree datum sees filling, by Math's worker; the audit's data agree), and K-A1, the (6,6,6,6,6) automaton has a closed trap and gives no bound, with a new radius-4 (6,6,6,6,6) hole at order 28, both Math computations not yet replayed by the audit. Severn's paper follows the revision 120 rulings. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T19:00:00Z",
       "node": "dissemination-vhe-paper",
@@ -10220,6 +10225,59 @@
       ],
       "id": "structural-wp20",
       "revision": 120
+    },
+    {
+      "status": "killed",
+      "title": "P-F: topological degree and Fisk's invariant (killed)",
+      "evidence": "Killed as a route, supported by: (1) [hand, Math's own proof] degree parity is a Kempe invariant of 4-colourings of every sphere triangulation (compute the degree with a triple containing the swapped pair; every affected triangle reverses orientation, so the degree changes by an even number); higher moduli are not invariant, consistent with the audit's data and with Mohar-Salas needing three-colourable triangulations. (2) [hand plus computed, Math worker, MathPathwayPF-degree.md] at a hole all degree data reduce to an integer N and the reduced oriented link triangle (m, epsilon); a swap through the link changes N by an amount not determined by the link colouring (one T4 pattern gives 7 values); T4's radius-4 doubly locked states share (N, epsilon) with 96 radius-2 states; every tested hole has a single Kempe class, so no class invariant can be tested against a targetless class there. (3) The audit's 13:05 literature check and data (only parity is a Kempe-class invariant on orders 12 to 18). Verdict: the only invariant is parity, constant on whole Kempe classes, and it says nothing about whether a filled state is reachable. Not replayed by the audit: item (2). Math cites nothing from Fisk or Mohar 2006 (its worker read only the Mohar-Salas abstract).",
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathPathwayPF-degree.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1254_math_to_coordination+audit+navigator+longtable_PF-killed-automaton-killed-paper-answers.md"
+      ],
+      "id": "structural-pathway-f",
+      "revision": 121
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-a",
+      "revision": 121,
+      "node": {
+        "id": "structural-sixfive-automaton-killed",
+        "title": "K-A1: the (6,6,6,6,6) ring-connection automaton gives no radius bound (killed)",
+        "status": "killed",
+        "statement": "The 74-pattern automaton at (6,6,6,6,6) holes (link and 10-ring colouring, plus for each of the three colour splits a non-crossing partition of the ring vertices into outside joins) has a closed trap for the adversary: 5,650 abstract states that stay doubly locked, so no bound R follows. Hand facts behind it: each split gives its own non-crossing join pattern and planarity does not couple the splits, so the \"same side of both curves\" rule of MathSixFiveHole.md section 9 is wrong as stated. With at most 2 outside joins per split there is no trap and every pattern resolves in 7 steps (game value 7), but no graph hypothesis is known that gives that. New: a (6,6,6,6,6) hole with a doubly locked state of radius 4 on an order-28 triangulation (minimum degree 5, no separating triangle, sphere checked), confirmed by two of Math's codes; this kills \"radius at most 3 at (6^5) holes\". Hill-climbing to order 34 found nothing above 4 and no state that never fills. Erratum: \"radius 2 iff a ball-contained breaker\" is false (282 radius-2 states have none).",
+        "approach": "Math worker page MathSixFiveAutomaton.md, about 9 CPU-minutes; soundness check against the 2,338 real doubly locked states at (6^5) holes of orders 22 and 23: the abstract bound never undercounts the true radius, but 764 real states (including 68 of the 69 radius-3 states) sit in the trap. Some scripts are committed; the 68 MB of state pickles are not.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathSixFiveAutomaton.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1254_math_to_coordination+audit+navigator+longtable_PF-killed-automaton-killed-paper-answers.md"
+        ],
+        "evidence": "Killed as a proof strategy by a computed closed trap and by a finite counterexample (radius 4 at order 28). Neither is replayed by the audit yet. Consistent with the vacancy D-reducibility checker, which also gives the adversary independent joins per split and also fails on the (6^5) 2-ball; Math's common-outside refinement addresses exactly this.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:05:00Z",
+          "text": "Revision 121: K-A1 (child node) kills the (6^5) automaton as a source of a bound, and a radius-4 (6^5) hole at order 28 kills \"radius at most 3 at (6^5) holes\" (Math, two codes, not replayed by the audit). Math's answers to the paper's section 3 agree with the revision 120 rulings: Five Colour compiled (in both the 105-module audit and the audit's 116-module audit), core order at least 12; Math's line-by-line check of section 3's Lean names is queued for a free worker."
+        }
+      ],
+      "id": "structural-pathway-a",
+      "revision": 121
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:05:00Z",
+          "text": "Revision 121: Severn applied the revision 120 rulings (commits 83f158e and 5afb0bf; 17 pages; CONFLICT comments removed; P-F audit data added to section 5; vacancy D-reducibility in section 7 as an open direction pending the audit). Severn may now move from comments into section 5, with these labels: P-F killed as a route (degree parity is a Kempe invariant [hand, Math's own proof]; that no degree datum sees filling [hand and computed, Math worker, not replayed by the audit]); K-A1, the (6^5) automaton has a closed trap and gives no bound [computed, exploratory, Math worker, not replayed by the audit]; a radius-4 (6^5) hole at order 28 [computed, two Math codes, not replayed by the audit], killing \"radius at most 3 at (6^5) holes\". Not to be stated: anything about Fisk or Mohar 2006 beyond the audit's corrected citations."
+        }
+      ],
+      "id": "dissemination-vhe-paper",
+      "revision": 121
     }
   ]
 }
