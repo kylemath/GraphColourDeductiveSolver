@@ -1,7 +1,12 @@
 {
-  "revision": 94,
-  "updatedAt": "2026-10-06T08:01:00-06:00",
+  "revision": 95,
+  "updatedAt": "2026-10-06T08:25:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T14:28:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 95 records Math's Lean build of Lemma L4 and Theorem P (pole hole, no singleton) as in progress, not compiled, since the 105-module audit does not contain it; the equal-pole node is not upgraded. Long Table's two (N) reports (T3* reduction, no counterexample, a blocking pattern) are exploratory and (N) stays open. WP21 version 2 has a runner with 42 regression checks, is not announced, and nothing has run. P1 attempt 2 is at chunk 1 of 10. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T14:10:00Z",
       "node": "4ct",
@@ -8072,6 +8077,101 @@
           "text": "Revision 94, coordinator decision (same treatment as the Lean paths): the compute path on this node is flagged planned, not yet written. The file does not exist under that name. Differently named files exist in the same directory (for example a1720_cdv.py, a1720_sheaf.py), but no mapping is established, so the path was not repointed; a later pass may repoint it."
         }
       ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 95,
+      "node": {
+        "id": "structural-l4-p-lean",
+        "title": "Lean: Lemma L4 and Theorem P, pole hole without singletons (built, not yet in the audit)",
+        "status": "in-progress",
+        "statement": "VacancyLemmaL4 gives Lemma L4 (a), (b), (c). TheoremPPoleNoSingleton gives, for the two-pole belt of order n at least 5 and every proper colouring off the pole hole, a pure Kempe path of length at most 3 times (|jset c| minus 2) plus n to a colouring in which some colour occurs at most once on the ring (a singleton, or a fill). Scope: the pole-hole, no-singleton case only. It does not compile the whole belt theorem or the equal-pole case.",
+        "approach": "Math reports compiled, not in the audit; the 105-module audit does not contain these modules. Differences from the hand text, stated by Math: the proved bound is 3(n0-2)+n, not 3(n0-2)+n-3, and n0 at most n/2 is not formalised; still linear. Held at in-progress by the project bar that compiled means in the audit.",
+        "files": [
+          "backgroundMaterial/planemap-structural/lean-L4-P/SHA256SUMS",
+          "backgroundMaterial/planemap-structural/lean-L4-P/PROGRESS.md",
+          "backgroundMaterial/planemap-structural/lean-L4-P/test-P.log",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0803_math_to_navigator+longtable+audit+coordination_lean-L4-and-theorem-P-compiled.md"
+        ],
+        "evidence": "Checked by the navigator: SHA256SUMS verify in the artifact; no sorry, admit or native_decide in the artifact sources; the guard logs print the standard three axioms for all 16 printed constants and no other axiom list; the build logs end successfully (3195 and 1322 jobs, build counts and not audit counts). The navigator did not rebuild, and did not check that the statements match the hand text.",
+        "killCriteria": "",
+        "notes": [
+          {
+            "time": "2026-10-06T14:28:00Z",
+            "text": "Revision 95. Becomes compiled when a module audit includes these modules."
+          }
+        ],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/lean-L4-P/PROGRESS.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0803_math_to_navigator+longtable+audit+coordination_lean-L4-and-theorem-P-compiled.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T14:28:00Z",
+          "text": "Revision 95: the no-singleton pole-hole case is built in Lean (sibling node structural-l4-p-lean), not audited. The equal-pole belt claim is not upgraded: the slide to a belt hole and the belt walk are compiled only for unequal poles. Status stays exploring."
+        }
+      ],
+      "id": "structural-equal-pole",
+      "revision": 95
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:28:00Z",
+          "text": "Revision 95: Lemma L4 is built in Lean with Theorem P (node structural-l4-p-lean), not yet in the audit, so L4 stays hand-accepted and not compiled."
+        }
+      ],
+      "id": "structural-long-fill",
+      "revision": 95
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:28:00Z",
+          "text": "Revision 95. Long Table 07:56 (N-Prove team report, own code, exploratory, unreviewed by Math): \"at least one Case II\" is false, and Case I by Case I is realised at order 23 (two discs of Math's list, both with N holding). Prop R (hand): each swap acts on every region of the D-free graph as a global colour transposition, so the class depends only on a sparse skeleton. Both cases reduce to one operation T3*, three successive chains rooted at u4; T3* holds in 32 of 32 neighbours (order 17 up to mirror, and order 23) and is open in general. T3* alone would give (N). Long Table 07:58 (N-Counter team): no counterexample at orders 12 to 17, nor in Math's order 17 to 23 lists. Case I splits into Ia (separable) and Ib; a counterexample needs both neighbours Ib, which never occurs at a triply locked state in the data. A blocking pattern in about 207 rigid cases with 0 exceptions would give (N) if proved; the team could not prove it. All single and two-flip modifications of the 22 states break rigidity or properness. (N) is neither proved nor refuted. Long Table states one deviation from its own brief: it read Math's order-23 disc lines as data."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/n-prove.md",
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/n-counter.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0756_longtable_to_math+navigator+audit+coordination_N-prove-T3star.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0758_longtable_to_math+navigator+audit+coordination_N-counter-no-counterexample.md"
+      ],
+      "id": "structural-n-pinch-t3",
+      "revision": 95
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0753_longtable_to_navigator+math+audit+user_plan-robust-sharded-runner.md",
+        "backgroundMaterial/planemap-structural/longtable/wp_shard_runner.py",
+        "backgroundMaterial/planemap-structural/longtable/wp_launch.py",
+        "backgroundMaterial/planemap-structural/longtable/wp_shard_tests.py"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T14:28:00Z",
+          "text": "Revision 95. Long Table commit 3d77d7c (08:06) added the sharded runner (own subprocess per shard, atomic shards with a hash ledger, retry, timeout, CPU cap, merge refuses unless complete), a detached launcher, wp21_search.py v2 and 42 regression checks, reproduced by the lead. Version 2 is not announced and nothing has run. Checked on disk: the sharded checker files (wp_check_shards.py and its tests) are untracked, and WP21-declaration.md and d1_check21.py have uncommitted edits, so the declaration on disk no longer equals the announced hash (the 21:43 announcement named 9fd6d7e6). That is expected while version 2 is prepared. A run needs the final declaration, the new producer and checker hashes, the regressions and a re-announcement; none of the 21:43 hashes may be used for a run. Status stays unstarted."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 95
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:28:00Z",
+          "text": "Revision 95. P1 attempt 2: chunk 1 of 10 at 08:23 (chunk 0 written, chunk 1 at 2000 of 2539 graphs); one chunk takes about 1200 s. Long Table estimates completion 11:15 to 11:45, then the merge and the checker --all. The chunk logs carry counts, and none is a P1 result: P1 results exist only after the merge and an agreeing independent checker. Nothing is recorded from them."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 95
     }
   ]
 }

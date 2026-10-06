@@ -268,6 +268,7 @@ if (integrationPath) {
     ['structural-wp21','structural-sep-d1','unstarted'],
     ['structural-mobility-triangulated-lean','structural-math-horizon','compiled'],
     ['structural-n-disc-search','structural-math-t3-attack','exploring'],
+    ['structural-l4-p-lean','structural-math-horizon','in-progress'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
     ['structural-deg6-split','structural-vhe-obstruction','proved'],
