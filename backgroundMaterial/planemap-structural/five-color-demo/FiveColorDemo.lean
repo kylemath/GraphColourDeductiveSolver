@@ -13,8 +13,9 @@ public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.Icosahedron
 
 ## The theorem
 
-Every planar graph can have its vertices coloured with five colours so that
-adjacent vertices receive different colours. In this library the statement is
+Every graph presented as a plane map can have its vertices coloured with five
+colours so that adjacent vertices receive different colours. In this library the
+statement is
 
 ```
 theorem SimpleGraph.PlaneMap.five_color_theorem {n : ℕ} (M : PlaneMap n) :
@@ -48,9 +49,12 @@ orbits of `faceNext` on darts.
   assumed. `SphericalMap.ofPlaneMap` shows every `PlaneMap` is one, using the
   proved `JordanEven` theorem.
 
-The scope boundary is that the theorem is about graphs given with such a map;
-there is no theorem here that an abstractly planar (for instance Kuratowski or
-Jordan-curve defined) graph admits one.
+Relation to planarity: a graph drawn in the plane or on the sphere has such a
+map (read off the clockwise orders), so the theorem applies to every graph that
+comes with one. What is proved is the colouring statement for graphs *given*
+a `PlaneMap` or `SphericalMap`. What is not proved is that an abstractly planar
+graph (defined by Kuratowski minors, or by a topological embedding) admits such a
+map; that representation theorem is not part of this development.
 
 ## The worked example
 
@@ -58,7 +62,8 @@ The icosahedron is supplied in `Mathlib.Combinatorics.SimpleGraph.PlaneMap.Icosa
 as an explicit `SphericalMap 12`: twelve vertices, thirty edges, twenty triangular
 faces, with the rotation and the `Fills` certificate checked by the kernel. Below
 we apply the Five Colour Theorem to it to get a 5-colouring, then compare with
-an explicit colouring given by a table and checked by `decide`.
+the colouring extracted from the theorem. (An independent table checked by `decide`
+lives in the test file, as a sanity check only.)
 -/
 
 @[expose] public section
@@ -69,36 +74,11 @@ namespace SimpleGraph.Icosahedron
 theorem icosahedron_colorable_five : sphericalMap.graph.Colorable 5 :=
   sphericalMap.five_color_theorem
 
-/-- A five-colouring of the icosahedron, extracted from the theorem
-(noncomputable, as it comes from an existence proof). -/
-noncomputable def theoremColouring : Fin 12 → Fin 5 :=
-  Classical.choose
-    (by obtain ⟨c⟩ := icosahedron_colorable_five
-        exact ⟨c, fun _ _ h => c.valid h⟩ :
-      ∃ c : Fin 12 → Fin 5, ∀ u v, graph.Adj u v → c u ≠ c v)
-
-theorem theoremColouring_valid (u v : Fin 12) (h : graph.Adj u v) :
-    theoremColouring u ≠ theoremColouring v :=
-  (Classical.choose_spec
-    (by obtain ⟨c⟩ := icosahedron_colorable_five
-        exact ⟨c, fun _ _ h => c.valid h⟩ :
-      ∃ c : Fin 12 → Fin 5, ∀ u v, graph.Adj u v → c u ≠ c v)) u v h
-
-/-- An explicit colouring, computable and printable (it happens to use four
-colours, as the icosahedron is four-colourable). -/
-def explicitColouring : Fin 12 → Fin 5 := ![0, 1, 0, 1, 0, 2, 3, 1, 2, 3, 2, 3]
-
-/-- The explicit table is proper, checked by kernel evaluation. -/
-theorem explicitColouring_valid :
-    ∀ u v, graph.Adj u v → explicitColouring u ≠ explicitColouring v := by
-  decide
-
-#eval (List.finRange 12).map explicitColouring
-
-/-- The final statement for the demonstration: the icosahedron, as a spherical
-map, has a proper colouring with five colours, in function form. -/
+/-- A five-colouring of the icosahedron, obtained from the Five Colour Theorem
+(`sphericalMap.five_color_theorem`) alone. -/
 theorem icosahedron_five_colouring :
-    ∃ c : Fin 12 → Fin 5, ∀ u v, sphericalMap.graph.Adj u v → c u ≠ c v :=
-  ⟨explicitColouring, explicitColouring_valid⟩
+    ∃ c : Fin 12 → Fin 5, ∀ u v, sphericalMap.graph.Adj u v → c u ≠ c v := by
+  obtain ⟨c⟩ := icosahedron_colorable_five
+  exact ⟨c, fun _ _ h => c.valid h⟩
 
 end SimpleGraph.Icosahedron

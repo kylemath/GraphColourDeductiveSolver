@@ -1,0 +1,19 @@
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorDemo.lean: hash cmd 12: # A demonstration of the Five Colour Theorem for plane maps
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorDemo.lean: hash cmd 14: ## The theorem
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorDemo.lean: hash cmd 29: ## What "planar" means here
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/FiveColorDemo.lean: hash cmd 59: ## The worked example
+MathlibTest/PlaneMapFiveColorDemo.lean: long line 10
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 11: #guard_msgs in
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 12: #print axioms PlaneMap.five_color_theorem
+MathlibTest/PlaneMapFiveColorDemo.lean: long line 14
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 15: #guard_msgs in
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 16: #print axioms Icosahedron.icosahedron_colorable_five
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 26: #guard_msgs in
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 27: #print axioms explicitColouring_valid
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 30: #guard_msgs in
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 31: #eval (List.finRange 12).map explicitColouring
+MathlibTest/PlaneMapFiveColorDemo.lean: long line 33
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 34: #guard_msgs in
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 35: #print axioms Icosahedron.icosahedron_five_colouring
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 38: #guard_msgs in
+MathlibTest/PlaneMapFiveColorDemo.lean: hash cmd 39: #check @PlaneMap.five_color_theorem
