@@ -2,6 +2,7 @@ module
 
 public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.SphericalDegree
 public import Mathlib.Combinatorics.Enumerative.DoubleCounting
+public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.Icosahedron
 
 /-!
 # The sharp Euler bound for algebraic spherical maps
@@ -238,3 +239,11 @@ theorem twelve_light_fives (d : M.Dart)
     (by simpa using twice_edges_add_twelve_le M d htri)
 
 end SimpleGraph.SphericalMap
+
+/-- **Non-vacuity of the Euler lemma.** Its hypotheses hold on the icosahedron. -/
+theorem SimpleGraph.Icosahedron.twelve_light_fives_icosahedron :
+    12 ≤ (StudioMath.goodSet SimpleGraph.Icosahedron.sphericalMap.graph).card :=
+  SimpleGraph.Icosahedron.sphericalMap.twelve_light_fives
+    ⟨(0, 1), (show SimpleGraph.Icosahedron.graph.Adj 0 1 by decide)⟩
+    (fun f => SimpleGraph.Icosahedron.sphericalMap_triangular f)
+    (fun v => (SimpleGraph.Icosahedron.sphericalMap_degree v).ge)
