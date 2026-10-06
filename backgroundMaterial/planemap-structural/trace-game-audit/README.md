@@ -1,0 +1,1 @@
+Independent Math replay of one saved order-16 pure trace-game member. No new graph enumeration. The checker source uses frozen original paths, checks both source input digests, and imports no producer modules. Archived inputs here have identical bytes. See MathTraceGameReplayReport.md for exact rules, quantifiers, caps, counts and unreplayed broader claims.

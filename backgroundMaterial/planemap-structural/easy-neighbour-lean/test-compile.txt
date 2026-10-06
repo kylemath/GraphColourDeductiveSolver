@@ -1,0 +1,28 @@
+theorem SimpleGraph.VacancyEasyNeighbour.singleton_easy.{u_1, u_2} : ∀ {V : Type u_1} {C : Type u_2} (G : SimpleGraph V)
+  [DecidableEq V] [inst : DecidableEq C] {h u : V} {c : V → C},
+  ProperOff G h c → G.Adj h u → UniqueAt G h u c → EasyAt G u → PureFill G h c 2 :=
+<not imported>
+theorem SimpleGraph.VacancyEasyNeighbour.mobility_easy_protected.{u_1, u_2} : ∀ {V : Type u_1} {C : Type u_2}
+  (G : SimpleGraph V) [inst : DecidableEq V] [inst_1 : DecidableEq C] {Z : Set V} {h u : V} {c : V → C},
+  ProperOff G h c →
+    h ∉ Z →
+      G.Adj h u →
+        OneSwapAt G h c ∨ SlideAccess G h u c →
+          EasyAt G u →
+            ∃ n ≤ 3,
+              ∃ d,
+                PurePath G h n c d ∧
+                  VacancyCliqueLift.ProtectedPath G Set.univ Z n (h, c) (h, d) ∧ ProperOff G h d ∧ Target G h d :=
+<not imported>
+theorem SimpleGraph.VacancyEasyNeighbour.easy_of_degree_le_three.{u_1} : ∀ {V : Type u_1} (G : SimpleGraph V)
+  [inst : Fintype V] [DecidableEq V] [inst_2 : DecidableRel G.Adj] (u : V), G.degree u ≤ 3 → EasyAt G u :=
+<not imported>
+def SimpleGraph.VacancyEasyNeighbour.OneSwapAt.{u_1, u_2} : {V : Type u_1} →
+  {C : Type u_2} → SimpleGraph V → [DecidableEq C] → V → (V → C) → Prop :=
+fun {V} {C} G [DecidableEq C] h c => Target G h c ∨ ∃ d, KempeStep G h c d ∧ Target G h d
+def SimpleGraph.VacancyEasyNeighbour.EasyAt.{u_1, u_2} : {V : Type u_1} →
+  {C : Type u_2} → SimpleGraph V → [DecidableEq C] → V → Prop :=
+fun {V} {C} G [DecidableEq C] u => ∀ (c : V → C), ProperOff G u c → OneSwapAt G u c
+def SimpleGraph.VacancyEasyNeighbour.SlideAccess.{u_1, u_2} : {V : Type u_1} →
+  {C : Type u_2} → SimpleGraph V → [DecidableEq C] → V → V → (V → C) → Prop :=
+fun {V} {C} G [DecidableEq C] h u c => UniqueAt G h u c ∨ ∃ d, KempeStep G h c d ∧ UniqueAt G h u d

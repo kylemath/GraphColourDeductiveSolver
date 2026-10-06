@@ -1,0 +1,1 @@
+Native spherical actual degree-four fill, original-hole M3 replacement, protected path and normalized five-neighbour integration. Source snapshots correspond to the full fresh 105-source audit in ../vacancy-formalisation-audit/. Arbitrary five-cycle colour/rotation normalization is not included. No additional axioms or proof placeholders.

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "scope": "two-module extension; full audit belongs to root",
+  "baseline_modules": 99,
+  "baseline_manifest_sha256": "9cda8098a14458ff207fd905730cff620149273bffcb922d57e18388b2fb6042",
+  "baseline_source_hashes_verified": true,
+  "source_hashes": {
+    "Mathlib.Combinatorics.SimpleGraph.PlaneMap.VacancyEasyNeighbour": "7312c87fdaf67ff39db942bdaa95a1eb7a523b8df4ee1f4c45193ac807c5cb20",
+    "MathlibTest.PlaneMapVacancyEasyNeighbour": "20a02ee1f1990b8a5d0677d945387bcc26c888fd0272bf7a599ad1005b191e06"
+  },
+  "sources_stable": true,
+  "axiom_guards": 8,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "seconds": 3.044,
+  "lean_path": [
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/Cli/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/batteries/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/Qq/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/aesop/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/plausible/.lake/build/lib/lean",
+    "/tmp/planemap-easy-neighbour-extension/lib",
+    "/Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/lib/lean"
+  ]
+}

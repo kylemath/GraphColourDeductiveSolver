@@ -1,0 +1,39 @@
+{
+  "complete": true,
+  "scope": "Actual D/S caps and original-column preservation; full belt walk not compiled",
+  "baseline_manifest_sha256": "e8554550585b8385acbe884a892bca2719e3c4fd7da99de898ff6412f4ff5d05",
+  "lean_path": [
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/Cli/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/batteries/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/Qq/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/aesop/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/proofwidgets/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/importGraph/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+    "/Users/fulkanjou/mathlib4-planemap/.lake/packages/plausible/.lake/build/lib/lean",
+    "/var/folders/96/tdgbk_pj3w744zvj8v3x11xr0000gn/T/planemap-belt-caps-audit-towkkkw8/lib",
+    "/Users/fulkanjou/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/lib/lean"
+  ],
+  "checks": [
+    {
+      "source": "Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltVacancyTeamA.lean",
+      "sha256": "cc9465bce84ac82d2ede421e2f415ec0956617643542d67b2975c16aede91f8c",
+      "exit_code": 0,
+      "log": "BeltVacancyTeamA-output.txt"
+    },
+    {
+      "source": "Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltCapsMath.lean",
+      "sha256": "6575b535f669ab98494cf3ae2a4d7cd75b0e599421791e84490e64262b1c0e15",
+      "exit_code": 0,
+      "log": "BeltCapsMath-output.txt"
+    },
+    {
+      "source": "MathlibTest/PlaneMapBeltCapsMath.lean",
+      "sha256": "20d9ce1fbf5d8d28130d5b0467d11e491f65c12684f436cf05ee668ba721c0ee",
+      "exit_code": 0,
+      "log": "PlaneMapBeltCapsMath-output.txt"
+    }
+  ],
+  "sources_stable": true,
+  "seconds": 4.565
+}
