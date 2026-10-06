@@ -146,7 +146,7 @@ const DEFAULT_TREE = {
       expanded: false,
       children: [
         { id: "t2-1", title: "Formalize P(G,k) in Lean 4", statement: "P(G,k) via deletion-contraction.", status: "unstarted", approach: "Define recursively. Prove P(G-e,k) - P(G/e,k) identity.", killCriteria: "", files: ["lean4/FourColor/Track2_ChromaticPoly/"], plannedFiles: ["lean4/FourColor/Track2_ChromaticPoly/"], notes: [], evidence: "", expanded: false, children: [] },
-        { id: "t2-2", title: "Compute roots for planar triangulations n\u226420", statement: "Find all real roots of P(G,k) for small planar graphs.", status: "unstarted", approach: "SageMath symbolic computation.", killCriteria: "Root in (3,4) found", files: ["compute/chromatic/root_finder.py"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t2-2", title: "Compute roots for planar triangulations n\u226420", statement: "Find all real roots of P(G,k) for small planar graphs.", status: "unstarted", approach: "SageMath symbolic computation.", killCriteria: "Root in (3,4) found", files: ["compute/chromatic/root_finder.py"], plannedFiles: ["compute/chromatic/root_finder.py"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t2-3", title: "Prove P(G,4)>0 for outerplanar", statement: "Outerplanar graphs: P(G,4) > 0.", status: "unstarted", approach: "Outerplanar = treewidth \u2264 2. Should be tractable.", killCriteria: "Stalls > 6 weeks", files: [], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t2-4", title: "Prove P(G,4)>0 for series-parallel", statement: "Series-parallel graphs: P(G,4) > 0.", status: "unstarted", approach: "Extend outerplanar result.", killCriteria: "Stalls > 6 weeks", files: [], notes: [], evidence: "", expanded: false, children: [] }
       ]
@@ -198,7 +198,7 @@ const DEFAULT_TREE = {
       evidence: "",
       expanded: false,
       children: [
-        { id: "t5-1", title: "Compute \u03BC(G) for small planar graphs", statement: "SDP computation of Colin de Verdi\u00e8re invariant.", status: "unstarted", approach: "Python + CVXPY.", killCriteria: "Counterexample", files: ["compute/spectral/colin_de_verdiere.py"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t5-1", title: "Compute \u03BC(G) for small planar graphs", statement: "SDP computation of Colin de Verdi\u00e8re invariant.", status: "unstarted", approach: "Python + CVXPY.", killCriteria: "Counterexample", files: ["compute/spectral/colin_de_verdiere.py"], plannedFiles: ["compute/spectral/colin_de_verdiere.py"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t5-2", title: "Formalize \u03BC(G) in Lean 4", statement: "Define via matrix optimization with transversality.", status: "unstarted", approach: "Lean 4 definition.", killCriteria: "", files: ["lean4/FourColor/Track5_Spectral/"], plannedFiles: ["lean4/FourColor/Track5_Spectral/"], notes: [], evidence: "", expanded: false, children: [] }
       ]
     },
@@ -214,7 +214,7 @@ const DEFAULT_TREE = {
       evidence: "",
       expanded: false,
       children: [
-        { id: "t6-1", title: "Compute sheaf cohomology for small graphs", statement: "H^0, H^1 of candidate colouring sheaves.", status: "unstarted", approach: "Python linear algebra.", killCriteria: "H^1 \u2260 0 for planar G", files: ["compute/topology/sheaf_cohomology.py"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t6-1", title: "Compute sheaf cohomology for small graphs", statement: "H^0, H^1 of candidate colouring sheaves.", status: "unstarted", approach: "Python linear algebra.", killCriteria: "H^1 \u2260 0 for planar G", files: ["compute/topology/sheaf_cohomology.py"], plannedFiles: ["compute/topology/sheaf_cohomology.py"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t6-2", title: "Formalize cellular sheaves on graphs", statement: "Lean 4 formalization of sheaves on graphs.", status: "unstarted", approach: "New Lean 4 library. Would be useful to community.", killCriteria: "Stalls > 6 weeks", files: ["lean4/FourColor/Track6_Sheaf/"], plannedFiles: ["lean4/FourColor/Track6_Sheaf/"], notes: [], evidence: "", expanded: false, children: [] }
       ]
     },
@@ -230,9 +230,9 @@ const DEFAULT_TREE = {
       evidence: "",
       expanded: false,
       children: [
-        { id: "t7-1", title: "Build chromatic polynomial database", statement: "P(G,k) for all planar triangulations n \u2264 25.", status: "unstarted", approach: "Tensor network contraction.", killCriteria: "", files: ["compute/discovery/tensor_network.py"], notes: [], evidence: "", expanded: false, children: [] },
-        { id: "t7-2", title: "Chromatic root atlas", statement: "Plot all roots in C, especially near k=4.", status: "unstarted", approach: "Python + matplotlib.", killCriteria: "", files: ["compute/chromatic/root_finder.py"], notes: [], evidence: "", expanded: false, children: [] },
-        { id: "t7-3", title: "Train GDL model", statement: "Predict Kempe reducibility from graph structure.", status: "unstarted", approach: "PyTorch Geometric. 3-WL architecture.", killCriteria: "Accuracy < 80%", files: ["compute/discovery/gnn_coloring.py"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t7-1", title: "Build chromatic polynomial database", statement: "P(G,k) for all planar triangulations n \u2264 25.", status: "unstarted", approach: "Tensor network contraction.", killCriteria: "", files: ["compute/discovery/tensor_network.py"], plannedFiles: ["compute/discovery/tensor_network.py"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t7-2", title: "Chromatic root atlas", statement: "Plot all roots in C, especially near k=4.", status: "unstarted", approach: "Python + matplotlib.", killCriteria: "", files: ["compute/chromatic/root_finder.py"], plannedFiles: ["compute/chromatic/root_finder.py"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t7-3", title: "Train GDL model", statement: "Predict Kempe reducibility from graph structure.", status: "unstarted", approach: "PyTorch Geometric. 3-WL architecture.", killCriteria: "Accuracy < 80%", files: ["compute/discovery/gnn_coloring.py"], plannedFiles: ["compute/discovery/gnn_coloring.py"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t7-4", title: "Analyze learned features", statement: "What graph features does the model use?", status: "unstarted", approach: "Attribution analysis.", killCriteria: "No interpretable features", files: [], notes: [], evidence: "", expanded: false, children: [] }
       ]
     },

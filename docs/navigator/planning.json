@@ -1,7 +1,12 @@
 {
-  "revision": 93,
-  "updatedAt": "2026-10-06T07:59:00-06:00",
+  "revision": 94,
+  "updatedAt": "2026-10-06T08:01:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T14:10:00Z",
+      "node": "4ct",
+      "action": "Revision 94 flags the six broken compute python paths in the original plan nodes (t2-2, t5-1, t6-1, t7-1, t7-2, t7-3) as planned, not yet written, as for the Lean paths. They were not repointed, since no mapping from the old names to the a1720_ files is established. The path check still fails on any other missing path. No status changed."
+    },
     {
       "time": "2026-10-06T14:03:00Z",
       "node": "4ct",
@@ -8005,6 +8010,66 @@
         {
           "time": "2026-10-06T14:03:00Z",
           "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "t2-2",
+      "revision": 94,
+      "notes": [
+        {
+          "time": "2026-10-06T14:10:00Z",
+          "text": "Revision 94, coordinator decision (same treatment as the Lean paths): the compute path on this node is flagged planned, not yet written. The file does not exist under that name. Differently named files exist in the same directory (for example a1720_cdv.py, a1720_sheaf.py), but no mapping is established, so the path was not repointed; a later pass may repoint it."
+        }
+      ]
+    },
+    {
+      "id": "t5-1",
+      "revision": 94,
+      "notes": [
+        {
+          "time": "2026-10-06T14:10:00Z",
+          "text": "Revision 94, coordinator decision (same treatment as the Lean paths): the compute path on this node is flagged planned, not yet written. The file does not exist under that name. Differently named files exist in the same directory (for example a1720_cdv.py, a1720_sheaf.py), but no mapping is established, so the path was not repointed; a later pass may repoint it."
+        }
+      ]
+    },
+    {
+      "id": "t6-1",
+      "revision": 94,
+      "notes": [
+        {
+          "time": "2026-10-06T14:10:00Z",
+          "text": "Revision 94, coordinator decision (same treatment as the Lean paths): the compute path on this node is flagged planned, not yet written. The file does not exist under that name. Differently named files exist in the same directory (for example a1720_cdv.py, a1720_sheaf.py), but no mapping is established, so the path was not repointed; a later pass may repoint it."
+        }
+      ]
+    },
+    {
+      "id": "t7-1",
+      "revision": 94,
+      "notes": [
+        {
+          "time": "2026-10-06T14:10:00Z",
+          "text": "Revision 94, coordinator decision (same treatment as the Lean paths): the compute path on this node is flagged planned, not yet written. The file does not exist under that name. Differently named files exist in the same directory (for example a1720_cdv.py, a1720_sheaf.py), but no mapping is established, so the path was not repointed; a later pass may repoint it."
+        }
+      ]
+    },
+    {
+      "id": "t7-2",
+      "revision": 94,
+      "notes": [
+        {
+          "time": "2026-10-06T14:10:00Z",
+          "text": "Revision 94, coordinator decision (same treatment as the Lean paths): the compute path on this node is flagged planned, not yet written. The file does not exist under that name. Differently named files exist in the same directory (for example a1720_cdv.py, a1720_sheaf.py), but no mapping is established, so the path was not repointed; a later pass may repoint it."
+        }
+      ]
+    },
+    {
+      "id": "t7-3",
+      "revision": 94,
+      "notes": [
+        {
+          "time": "2026-10-06T14:10:00Z",
+          "text": "Revision 94, coordinator decision (same treatment as the Lean paths): the compute path on this node is flagged planned, not yet written. The file does not exist under that name. Differently named files exist in the same directory (for example a1720_cdv.py, a1720_sheaf.py), but no mapping is established, so the path was not repointed; a later pass may repoint it."
         }
       ]
     }
