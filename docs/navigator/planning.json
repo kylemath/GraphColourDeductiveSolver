@@ -1,7 +1,17 @@
 {
-  "revision": 100,
-  "updatedAt": "2026-10-06T09:22:00-06:00",
+  "revision": 102,
+  "updatedAt": "2026-10-06T09:26:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T15:56:00Z",
+      "node": "structural-conj-l-refuted",
+      "action": "Revision 102 marks Conjecture L killed as stated, on explicit finite certificates checked independently by three parties: W6 (chain exactly 6) and A_3 to A_5 (exhaustive census 120, 120, 360 colourings with infinite period-60 all-locked F-orbits; the icosahedron has none), replayed by the audit with its own code and rebuilt A_r graphs, and checked by Math's own checker. The A_r graphs have minimum degree 5; 4-connectivity was computed by Math for A_3 only and not by the audit. The vacancy hypothesis is untouched (Kempe radius 2 or 3). Conjecture R, a bounded Kempe radius, is an open conjecture pre-registered as S2 and not run. A labelling slip in l-attack.md is noted. No status was upgraded from finite data other than the kill of a universal claim by an exhibited counterexample."
+    },
+    {
+      "time": "2026-10-06T15:48:00Z",
+      "node": "structural-vh-lock-persistence",
+      "action": "Revision 101 records Math's pre-registered chain search (22 certified chains of length 6 to 10, all on graphs with degree-3 vertices, accepted by Math's own checker and by the navigator's rerun), Long Table's S2 pre-registration (not run), the WP21 announcement addendum (orchestration hashes, sequencing departure, replay label, Studio blocked with an 11:30 fallback and a one-owner rule), and the P1 progress. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T15:40:00Z",
       "node": "structural-conj-l-refuted",
@@ -8773,6 +8783,169 @@
       ],
       "id": "structural-vacancy",
       "revision": 100
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-vh-lock-persistence",
+      "revision": 101,
+      "node": {
+        "id": "structural-conj-l-search",
+        "title": "Pre-registered search: chains of length 6 or more on general triangulations (Math)",
+        "status": "computed",
+        "statement": "Math's pre-registered search found 22 certified chains of length at least 6 (7 in band B, orders 20 to 29, and 15 in band C, orders 30 to 40; longest 10 on 40 vertices), and none in band A at length 6 (best 5). Every certified graph has vertices of degree 3 (8 to 19 vertices of degree below 5 each). Chain lengths grow with n (5, 7, 10 by band), consistent with no absolute bound. The bound N = 5 is falsified; no infinite chain is shown by this search.",
+        "approach": "Pre-registered before the data; the checker was written without reading the searcher. Navigator check: the committed checker.py run now ACCEPTS all 22 certificates (one length 10, eighteen length 6, three length 7). The checker code was not reviewed by the navigator. Math's caveat: the lock definition is taken from MathConfinementAttack Step 1 and the checker uses the same reading; it was confirmed against Long Table's and the audit's definitions in the next revision. Second pre-registered search with global minimum degree at least 5 is running; Math says it can no longer decide L and will be reported as data only.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathChainSearch/checker.py",
+          "SolvingFrameworkPlan/docs/working/MathChainSearch/certs_len_ge6/C_00815_n40_len10.json",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0919_math_to_navigator+longtable+audit+coordination_conjecture-L-falsified-as-stated.md"
+        ],
+        "evidence": "Computed, exact on the stated graphs. These graphs are not in the core (degree-3 vertices), so by themselves they do not speak to minimum-degree-5 triangulations.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/WP22-S2-preregistration.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0922_longtable_to_coordination+navigator+math+audit+user_announcement-addendum-orchestration-and-departure.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T15:48:00Z",
+          "text": "Revision 101: Long Table 09:22 addendum to the version 2 announcement. It lists the orchestration files by hash (wp21_studio.sh 7558b47c, wp20_replay_studio.sh a772b271, wp21_mac_checks.sh 047f5c4a, wp_compare_outputs.py 6d62589f, PACKAGE-SHA256SUMS 2bfdf5d2, each equal to the files on disk when the navigator checked them in revision 100), states the sequencing departure explicitly (the declaration and announcement say the pipeline runs after P1; the Studio plan runs it during P1; recorded in wp21/CHRONOLOGY.md item 4 and to be repeated in the WP21 report), and labels the Studio's P1 run a replay that contributes no new result (wp20/CHRONOLOGY.md item 17). Studio status: blocked, its own permission classifier denied launching T1, waiting on Kyle; nothing is running there and no remote branch containing studio existed at 09:21. Fallback, agreed by the coordinator: if the Studio has not started T1 by 11:30, the first Mac runs WP21 with wp21_pipeline.sh after P1 finishes; whichever machine starts phase A first owns WP21 and the other must not start it, so it cannot run twice. The record of which machine produced and which checked each output stays a gate. Nothing has run on WP21 data."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 101
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-vh-lock-persistence",
+      "revision": 101,
+      "node": {
+        "id": "structural-conj-r-prereg",
+        "title": "S2: Kempe radii and Conjecture R, pre-registered, not run",
+        "status": "unstarted",
+        "statement": "Conjecture R (repaired from L): there is an absolute R such that every doubly locked state at a degree-5 hole reaches a filled state within R pure Kempe swaps, with the radius infinite exactly when the Kempe class is targetless. S2 is the pre-registered search (S2a hill-climb, S2b exhaustive census of stated symmetric families). It has never been run and its code does not exist yet.",
+        "approach": "Pre-registration WP22-S2-preregistration.md, SHA-256 c8ae2f62ce5d0729f493b5ab22b481c590d650f89abba1ab1574ffdf35ca166e (checked equal on disk). Seeds wp22|s2a|t001 to t040, 120 CPU-seconds per tag, depth 6, 20,000 states, orders at most 30. The kill is an exhaustively closed Kempe class of T minus v with no filled state, re-verified by a separate verifier and then rechecked against the project's protected-face definitions. Long Table says S2 was formulated after the Conjecture L data, so any bound read from those values is post hoc. It will be written, tested, committed and hashed in an addendum before any run, and nothing runs until WP20 P1 has reported.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/WP22-S2-preregistration.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0921_longtable_to_coordination+navigator+math+audit+user_status-hashes-and-S2-preregistration.md"
+        ],
+        "evidence": "A plan, not a result.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:48:00Z",
+          "text": "Revision 101: Long Table 09:21 reports 4 of 10 chunks done at 09:21, no D1 or P kill so far and every SEP-bad state at depth 1, intermediate and not a result; expected finish about 11:30, then d1_check.py --all, the report and the digest for the Studio replay comparison."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 101
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:48:00Z",
+          "text": "Revision 101: the coordinator corrected the timestamp of its plan message (file name 0932, true time about 09:23); the plan is dated by its content in this ledger."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 101
+    },
+    {
+      "status": "killed",
+      "title": "Conjecture L killed as stated: certificates W6 and A_3 to A_5, confirmed by three independent checks",
+      "statement": "Conjecture L (an absolute bound N on chains of consecutive doubly locked F-iterates, lock persistence) is false as stated. Certificates: W6, a 20-vertex plane triangulation (degrees 3 to 8) with a degree-5 hole, chain of length exactly 6; and A_3, A_4, A_5, stacked-antiprism triangulations on 17, 22 and 27 vertices with minimum degree 5 (degrees 5 and 6 only), where an exhaustive census over all proper colourings with x0 fixed finds 120, 120 and 360 colourings whose F-orbit has period exactly 60 with every state doubly locked, so the chain is infinite. The icosahedron A_2 has none. So L fails inside the minimum-degree-5 class the induction uses. Not stated by the audit: 4-connectivity. Math computed that A_3 has no separating triangle (all 30 triangles are faces), hence is 4-connected by the accepted three-cut core; this was not checked for A_4 and A_5 and not by the audit. Core version in the sense of 4-connectivity is therefore refuted for A_3 only on Math's computation. VH-exists is untouched: complete Kempe classes have radius 2 on W6 (127 states, 63 filled), 2 or 3 on A_3 (100 states, 40 filled), and 2 on every infinite-chain state of A_4 and A_5.",
+      "evidence": "Three independent confirmations. (1) Long Table's lead verifier, run again by the navigator (same two lines). (2) Math 09:24: its own checker, written without reading Long Table's code, ACCEPTs W6 (length 6) and A_3 (chain 300 at the cap 300; Math did not separately recompute the period 60), and its own breadth-first search gives Kempe distance 3 on A_3. Math also found 22 chains of length 6 to 10 on graphs with degree-3 vertices (revision 101). (3) The independent audit 09:26 (commit c39f1b3): own code from Math's definitions, no team code, A_r rebuilt by the audit, every graph checked as a sphere triangulation and every colouring as proper; W6 exactly 6, A_3 period exactly 60, and the exhaustive censuses 120, 120, 360. The audit SHA256SUMS verify. A finite counterexample refuted a universal claim and has now been independently checked, so killed. The refutation concerns L only; the audit notes that Conjecture R (bounded Kempe radius) is stronger than clean-vertex existence and is essentially the pure-Kempe form of Math's P(K, R), and should be pre-registered, which Long Table has done as S2.",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/conjecture-L/REPORT.md",
+        "backgroundMaterial/planemap-structural/longtable/audit/conjecture-L/l_check.py",
+        "backgroundMaterial/planemap-structural/longtable/audit/conjecture-L/kempe_radius.py",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0926_audit_to_coordination+navigator+math+longtable_conjecture-L-refutation-replayed.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0924_math_to_longtable+coordination+navigator+audit_L-certificates-checked-and-conjecture-R.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T15:56:00Z",
+          "text": "Revision 102: killed. Scope as in the statement. A labelling slip in l-attack.md section 0 noted by the audit: the listed link colour sequence and repeat indices correspond to x0 = 5 (link 5, 1, 13, 8, 3), not the stated x0 = 13; it is a rotation of labels with no effect on any claim, and Long Table owns the fix."
+        }
+      ],
+      "id": "structural-conj-l-refuted",
+      "revision": 102
+    },
+    {
+      "status": "killed",
+      "title": "Conjecture L (lock persistence): killed as stated; the F-orbit structure remains",
+      "statement": "Conjecture L is killed as stated (node structural-conj-l-refuted), including in the minimum-degree-5 class. What survives: the F bookkeeping (repeat index runs 0, 3, 1, 4, 2; after five steps the singleton colours are cyclically permuted), Lemma 1 (the inherited lock persists exactly one step), Lemma 2 (the crossing condition, necessary, satisfiable) and Lemma 3 (a closed locked F-orbit gives an infinite chain). An all-locked periodic F-orbit does not make a Kempe component targetless: on A_3 to A_5 the radius is 2 or 3. The conditional implication \"targetless implies infinite F-chain\" is untouched and its converse fails. The repaired claim, Conjecture R (bounded Kempe radius, or finiteness of the radius for every doubly locked state), is an open conjecture, pre-registered as S2 and not run; the audit and Math both note it is stronger than clean-vertex existence, and for all triangulations it is at least as hard as an elementary Kempe-style proof of the Four Colour Theorem.",
+      "notes": [
+        {
+          "time": "2026-10-06T15:56:00Z",
+          "text": "Revision 102: this node was the open lead of the clean-vertex route (revision 98). It is now a killed line. The route to clean-vertex existence through lock persistence is closed; the remaining levers named by Math are lock-path geometry and Conjecture R. The vacancy hypothesis, cleanness and confinement stay open."
+        }
+      ],
+      "id": "structural-vh-lock-persistence",
+      "revision": 102
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:56:00Z",
+          "text": "Revision 102: lock persistence (L) is now killed by a checked certificate, so the F-chain route is closed; K4 to K6 (Jordan crossing alone, a Z5-symmetric chain, counting lock lengths) remain proposed lines on unreviewed pages, now moot for the route."
+        }
+      ],
+      "id": "structural-vh-killed-lines",
+      "revision": 102
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:56:00Z",
+          "text": "Revision 102: confinement and clean-vertex existence stay open. Lock persistence is killed; the repaired Conjecture R is an open conjecture, not a route known to be easier. Math will attack R by hand next and starts no new (N) sub-targets."
+        }
+      ],
+      "id": "structural-math-t2-attack",
+      "revision": 102
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:56:00Z",
+          "text": "Revision 102: Conjecture L is killed (see structural-vh-lock-persistence). Nothing is proved or refuted for the vacancy hypothesis. Conjecture R is the open successor."
+        }
+      ],
+      "id": "structural-math-t1",
+      "revision": 102
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:56:00Z",
+          "text": "Revision 102: Math has checked Long Table's certificates against its own definitions and with its own checker, and the audit has replayed them, so the Conjecture L refutation is audit-confirmed. Math's task 2 (the clean-vertex route) now continues through Conjecture R and lock-path geometry."
+        }
+      ],
+      "id": "structural-math-horizon",
+      "revision": 102
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:56:00Z",
+          "text": "Revision 102: Conjecture L killed as stated, in the minimum-degree-5 class; the vacancy hypothesis is untouched (Kempe radius 2 or 3 on every certificate). Conjecture R is open."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 102
     }
   ]
 }
