@@ -1,7 +1,12 @@
 {
-  "revision": 106,
-  "updatedAt": "2026-10-06T09:55:00-06:00",
+  "revision": 107,
+  "updatedAt": "2026-10-06T10:26:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T16:30:00Z",
+      "node": "structural-conj-r-prereg",
+      "action": "Revision 107 records Math's Lean definition of the vacancy hypothesis and its belt instance (built, not audited, in progress); Theorem H on icosahedral holes (a hand proof pending review, not accepted); Math's pre-registered radius census (hashes checked, nothing run); Long Table's S2 (WP22) package addendum (hashes checked on disk; S2b and S2c validation runs were the declared content, so the declared run is a replay and only S2a meets unseen data); T4 recomputed by Math as 4-connected. The overlap between the two radius efforts is flagged and an independent check is gated for each. P1 is at chunk 7 of 10 with no kill in finished chunks, intermediate; no Studio report yet. No status was upgraded from finite data. Relayed late in the same revision: the Studio reports WP21 phase A produced (46 of 46 shards, 4578 graphs, 09:30:07 to 10:13:27, exit 0), unchecked and unconfirmed by any repository file, so no result."
+    },
     {
       "time": "2026-10-06T16:00:00Z",
       "node": "structural-conj-r-prereg",
@@ -9091,6 +9096,151 @@
       ],
       "id": "structural-vacancy",
       "revision": 106
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 107,
+      "node": {
+        "id": "structural-vacancy-hyp-lean",
+        "title": "Lean: the vacancy hypothesis defined, proved for the belt (built, not yet in the audit)",
+        "status": "in-progress",
+        "statement": "No Lean definition of the vacancy hypothesis existed before. New: VacancyAt G B h (every colouring proper off h has a mixed path of slides and Kempe swaps, hole free to move, of length at most B to a state with a missing colour at the hole, proper off the final hole) and VacancyHyp G (every hole, no bound), with of_bounded, the conclusion that the whole graph is properly 4-colourable, and transfer along isomorphisms. Proved: vacancyAt_belt (5 at most n, bound 6n) and vacancyHyp_belt for the explicit belt graph, and the conditional vacancyHyp_sphericalMap_of_iso (the isomorphism with a spherical map does not exist yet). Mismatches stated by Math: a mixed path with a moving hole, not the fixed-hole pure form; no spherical, minimum-degree-5 clause; only a trivial protected-face statement; no SphericalMap realisation of the belt. To use it in the induction: build a SphericalMap isomorphic to the belt, prove Triangulated and minimum degree 5, and state the induction step to consume VacancyHyp.",
+        "approach": "Math reports compiled, not in an audit. Navigator checks on disk: SHA256SUMS in lean-belt-hyp verify, the build log ends successfully (3207 jobs, a build count), the guard output prints exactly the standard three axioms for the declarations shown (two lines truncate in my grep and were not read in full), and no sorry was found by grep. No audit report lists these modules; the 105 and 116 module audits do not. Held at in-progress. It is a statement about the explicit belt graph and is not progress on the vacancy hypothesis for general triangulations.",
+        "files": [
+          "backgroundMaterial/planemap-structural/lean-belt-hyp/SHA256SUMS",
+          "backgroundMaterial/planemap-structural/lean-belt-hyp/PROGRESS.md",
+          "backgroundMaterial/planemap-structural/lean-belt-hyp/build.log",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0958_math_to_navigator+longtable+audit+coordination_lean-vacancy-hypothesis-belt-and-T4-core.md"
+        ],
+        "evidence": "Becomes compiled when a module audit includes TwoPoleBeltVacancyHypDef, TwoPoleBeltVacancyHyp, the belt-theorem modules and their tests.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:30:00Z",
+          "text": "Revision 107: Math 09:58 recomputed from the face list that T4 has 30 triangles, all faces, so no separating triangle, and minimum degree 5. T4 is therefore 4-connected by the accepted three-cut core and the radius-4 state is a core example. The navigator has not independently recomputed this; the audit replay of the radius table is still pending."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0958_math_to_navigator+longtable+audit+coordination_lean-vacancy-hypothesis-belt-and-T4-core.md"
+      ],
+      "id": "structural-conj-r-radius3-killed",
+      "revision": 107
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-conj-r-prereg",
+      "revision": 107,
+      "node": {
+        "id": "structural-theorem-h",
+        "title": "Theorem H: icosahedral holes have Kempe radius at most 3 (hand proof pending review)",
+        "status": "exploring",
+        "statement": "Worker claim, hand proof NOT reviewed line by line by Math: at a degree-5 hole whose five neighbours also have degree 5 every doubly locked state has Kempe radius at most 3. It uses only the ball around the hole, so it would hold on A_r for every r. Mechanism: doubly locked states have one of three local ring-1 patterns R1, R2, R3; R2 dies after one F step, R3 is broken by recolouring three link vertices, and F sends R1 to R3 or to a non-locked state, so on an infinite F-orbit every second state is locally breakable. Bound 3 is sharp for the argument (A_3 has 10 radius-3 states). T4 has radius 4 because its hole has two adjacent degree-6 link vertices, which makes step 1 fail (partly hand, checked on two states). Open: radius 2 for all r at least 4; a bounded-ball treatment of holes with degree-6 neighbours; any bound beyond icosahedral holes (at least 4 from T4).",
+        "approach": "Math ran an independent numerical check (its own script, random flips of A_3 and A_4 keeping minimum degree 5, then exhaustive radii): 28 graphs, 11 holes with five degree-5 neighbours, radii of 705 doubly locked states {2: 684, 3: 21}, none above 3, no targetless class. That tests the claim and does not prove it. Math's conditional reading: if H holds, such a hole is clean by Corollary B, but only in a protected-face-compatible form (the check so far covers faces disjoint from the closed neighbourhood of the hole), and only for triangulations containing a degree-5 vertex with five degree-5 neighbours; it says nothing for the general case. Killed lines in the page: \"the a,b-swap of x1's component always breaks the lock\", \"the barrier is the recoloured lock path\", \"radius 2 from local data\", and the verbatim extension of H to degree-6 neighbours (not claimed).",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathRadiusGeometry.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1009_math_to_navigator+longtable+audit+coordination_radius-geometry-theorem-H.md"
+        ],
+        "evidence": "Recorded as a hand proof pending Math and audit review, as Math asked. Not accepted. Conjecture R stays open. Lemmas A and B of Long Table's A_r page were checked line by line by the worker (Lemma B needs the computed hypothesis F4s = pi s sigma and says nothing about radius).",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-conj-r-prereg",
+      "revision": 107,
+      "node": {
+        "id": "structural-radius-census-math",
+        "title": "Math pre-registration: exhaustive radius census, minimum degree 5, orders 12 to 24 (package committed, nothing run)",
+        "status": "unstarted",
+        "statement": "Statement S-R: every doubly locked state at every degree-5 hole of every plane triangulation of minimum degree 5, orders 12 to 24 (separating triangles allowed and flagged), has finite Kempe radius. Kill KILL-3: a hole with an unreached class, announced only after the partition-based verifier recomputes it and the protected-face definitions are rechecked. No prediction registered for the maximum radius per order; the order 17 row must contain radius 4 (T4) or the tool is wrong. A pass would mean only that no unreached class occurs among these graphs and holes.",
+        "approach": "Commit 1867067, nothing run on declared data. Hashes in the message equal the files on disk: PREREG_DRAFT.md e605bb7f, census.cpp 126181bc, gen_tri.cpp 19a9ba07, run_census.py 2b643392, verify_census.py a75f95f6, tests.py 7646621c (all six checked by the navigator). Caps: orders 12 to 24 only, at most 2,000,000 canonical colourings per hole (capped holes inconclusive), at most 14 cores, 3 retries per shard; estimate 15 to 20 CPU-minutes. Math's own generator does not use plantri; the expected graph counts (73, 192, 651, 2070, 7290 at orders 20 to 24; correction: 73, not 71, at order 20) are fixed from plantri output and must match exactly or that order is void. Verification after the run: the verifier on every record at orders up to 20, every tenth at 21 to 24, every record with maximum radius at least 4 and every kill. Math asks the coordinator to route the run to the Studio when free, about midday. No Math go-ahead is needed (standing rules).",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathRadiusCensus/PREREG_DRAFT.md",
+          "SolvingFrameworkPlan/docs/working/MathRadiusCensus/tests.py",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1014_math_to_coordination+longtable+navigator+audit_PREREGISTRATION-radius-census-R.md"
+        ],
+        "evidence": "A plan with committed code. Success needs an independent check by a party other than Math's own verifier, per the gate below. The package commit is the commit containing the message; Math said it would be recorded in a later message.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/wp22/PACKAGE-SHA256SUMS",
+        "backgroundMaterial/planemap-structural/longtable/WP22-S2-preregistration.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1009_longtable_to_coordination+navigator+math+audit+user_S2-package-addendum-commands-and-disclosure.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T16:30:00Z",
+          "text": "Revision 107, Long Table 10:09 addendum, S2 (WP22) package, commit 305c8f4 (verifier e089432, addendum 95181a8). Navigator check: wp22/PACKAGE-SHA256SUMS lists 11 files and all verify; its own hash equals c294e496; the eleven file hashes in the addendum (preregistration revision 3 1d2651c2, interface revision 2 3528ab32, wp22_radius 1d57cc1e, wp22_search 7dadd318, wp22_census 21e28044, wp22_s2c 40cbba42, wp22_runner de5cfbb8, wp22_studio.sh 84217309, wp22_tests 84d47221, wp22v_verify 43e0a21a, wp22v_tests 9fdb3811) equal the files on disk. The addendum says the list has 12 lines; the file has 11 entries (the addendum counts the list file itself), a counting difference, not a hash difference. Regressions reported and reproduced by the lead: build suite 18 of 18, verifier suite 32 of 32 (written blind to the search code), and the verifier recomputed all 3720 records of the search team's census with 0 mismatches. DISCLOSURE, recorded as stated: S2b and S2c are so cheap that the validation runs were the full declared content, so their outcomes were seen before the addendum (S2b: 3720 doubly locked states, radii {2: 3700, 3: 20}, no infinite radius; S2c over Math's 24 certificates: 165 doubly locked states, radii {2: 154, 3: 11}); S2a had only smoke runs. Therefore the declared Studio run of S2b and S2c is a replay and only S2a will meet unseen data. Size: S2a 4800 CPU-seconds (80 CPU-minutes), scheduler cap 6000, orders at most 30, minimum degree at least 4 (so it includes degree-4 vertices, unlike Math's census); S2b about 3 CPU-seconds; S2c about 1. Nothing runs before WP20 P1 has reported; it is to run on the Studio after WP21 T1 and T2. Long Table asks the Navigator to record the disclosure; recorded."
+        },
+        {
+          "time": "2026-10-06T16:30:00Z",
+          "text": "Revision 107, overlap between Math's radius census and Long Table's S2: both test finiteness of the Kempe radius of doubly locked states. Math says the two do not overlap (S2a a hill-climb on minimum degree at least 4 up to order 30, S2b the A_r census, Math's census exhaustive over minimum-degree-5 triangulations of orders 12 to 24); they do share the question, the T4 and A_r regression cases, and the Studio. Both teams are asked, in the revision message, to state in one message how they avoid duplicate work (who runs what on which machine and in what order, and which cases both reproduce as a cross-check). Gate: each tool's output is checked independently of the tool that produced it. Long Table has a blind verifier for S2 (wp22v) and Math has verify_census.py written inside the same package; success of either needs an independent check, for Math's census by the audit or by Long Table's verifier on a shared sample, and the audit replay of a sample for both. The shared regression set (T4 radius table, A_2 to A_6 centres) is already reproduced by both tools."
+        }
+      ],
+      "id": "structural-conj-r-prereg",
+      "revision": 107
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:30:00Z",
+          "text": "Revision 107: chunks 0 to 6 of 10 are done on disk at 10:23 and chunk 7 is running. No finished chunk logs a D1 or P kill. One observation, stated as a fact and not as a kill: the chunk 6 line reports no_legal_fan 420 (earlier chunks reported 0); no_legal_fan is a counted category in the declaration's accounting, handled separately from kills, and the report must list it. These are intermediate chunk logs, not a P1 result."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 107
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:30:00Z",
+          "text": "Revision 107: no report from the Studio at 10:23 (the coordinator has asked for status); no branch containing studio exists on the remote and no RECORD.txt from the Studio has been seen. The Studio start (09:30:07, pid 22416) remains the coordinator's relay. Nothing is recorded as a WP21 result."
+        },
+        {
+          "time": "2026-10-06T16:32:00Z",
+          "text": "Coordinator's relay of the Studio agent's corrected report at 10:23:49 MDT, not confirmed by any repository file (no studio branch, no RECORD.txt or output from the Studio seen by the navigator): phase A ran 09:30:07 to 10:13:27 (43 min 20 s wall), exit 0, 46 of 46 shards done, state complete, damaged none, cpu_done 34312.1 s, cpu_wasted 0.0 s, cap 43200 s, and wrote wp21/A-m5-26.json (4578 graphs). Not claimed by the Studio: that wp_merge.py and wp_compare_outputs.py passed; they are unverified. The Studio's sharded check of phase A is running, and the first-Mac wp21_mac_checks.sh check has not run. Phase A is therefore produced and not checked: no result and no pass. Under the gates, the phase A numbers are recorded only after the independent checker agrees on a machine other than the producer, with the machine and commit taken from RECORD.txt. This replaces the earlier note in this revision that no report had arrived."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 107
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:30:00Z",
+          "text": "Revision 107: Math's tasks now include the Lean vacancy-hypothesis definition (in progress, unaudited), Theorem H (hand, pending review) and a pre-registered radius census (package committed, not run)."
+        }
+      ],
+      "id": "structural-math-horizon",
+      "revision": 107
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:30:00Z",
+          "text": "Revision 107: the vacancy hypothesis now has a Lean definition and a belt instance, in progress and unaudited; it remains open in general. T4 is a core example of radius 4 on Math's computation."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 107
     }
   ]
 }
