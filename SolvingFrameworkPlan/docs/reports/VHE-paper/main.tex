@@ -154,7 +154,7 @@ By Lemma~\ref{lem:containment}, $\mathrm{VH}(v,\tau)$ holds if and only if every
 % Ledger: structural-tilley-bridge = proved (Math 20:42, REP/MathCreativeCatchUpReview.md).
 
 \paragraph{Why slides are allowed.} The proofs of the Four Colour Theorem that close show that a minimal counterexample contains no reducible configuration from a large unavoidable set, in the line of Birkhoff~\cite{birkhoff1913,appel1977,robertson1997}. The proof of Robertson, Sanders, Seymour and Thomas was formally verified in Coq~\cite{gonthier}, and a recent paper finds linearly many reducible configurations~\cite{inoue2026}. \lab{cited}
-% vh-exists.md section 4.5; literature-check.md sections 1 and 'Sources'; Gonthier (2005) and RSST from repo background notes (grep). VERIFY all.
+% vh-exists.md section 4.5; literature-check.md sections 1 and 'Sources'; RSST, Appel-Haken, Kempe, Heawood details from paper/references.bib (repo). VERIFY: Gonthier and Birkhoff details.
  Kempe's argument at a degree-5 vertex performs two swaps at once, and Heawood showed that the second chain can be blocked~\cite{kempe1879,heawood1890}. \lab{cited} VH$\exists$ uses the single configuration ``one degree-5 vertex'' and gets past that objection only by allowing unboundedly long, non-local paths: Kempe chains anywhere, and slides that leave the link.
 % vh-exists.md section 4.5 "Remark on the classical route"; repo summary "Kempe (1879) performed two chain swaps at once, and Heawood (1890) showed that the second chain..." (grep of SolvingFrameworkPlan, background notes).
 Reading the hole as a fifth colour used once, slides are exactly the two-colour swaps whose component is one edge, so VH is Meyniel's theorem (all 5-colourings of a planar graph are Kempe-equivalent) restricted to the colourings that use the fifth colour at most once, and Meyniel's paths leave that set~\cite{meyniel1978}. \lab{hand}
@@ -256,6 +256,18 @@ For $n\ge5$ and every colouring $c$ proper off the pole $a$, at most $3(n_0-2)+n
 Lean name: \texttt{SimpleGraph.TheoremPPole.theoremP}. It needs no no-singleton hypothesis, so it is stronger than the hand statement. The hand bound $3(n_0-2)+n-3$ and the bound $n_0\le n/2$ are not formalised. This is the pole-hole case only; the equal-pole case is not covered by any audited module.
 % L4-P/REPORT.md; MSG/..._0803_math_... "Differences from the hand text"; ledger structural-equal-pole = exploring.
 
+\subsection{Holes and Euler counting (6 October, afternoon)}\label{sec:lean-late}
+These results were written in Lean on the second machine and passed the independent audit's own checks there (a full build, an axiom sweep and a negative control). \lab{compiled}
+% Navigator revision 130 (MSG/..._1444_navigator_..._revision-130.md), section "Paper".
+% Audit verdicts: J5 PASSED (10c3744), J6 PASSED (b726a87), J7 PASSED (8a74fd6); outputs e9e02f2, c3fd7ed on studio-wp21.
+\begin{itemize}
+\item \texttt{SimpleGraph.SphericalMap.theorem\_H}: Theorem~\ref{thm:H}, stated from graph hypotheses (the map is triangulated, $h$ and every neighbour of $h$ have degree 5, and no separating triangle passes through $h$); the icosahedral structure of the two-ball is derived (\texttt{icoBall\_of\_triangulated}). It is non-vacuous on the icosahedron. It supersedes the earlier form \texttt{ico\_fill}, which assumed that structure as a hypothesis.
+\item \texttt{SimpleGraph.SphericalMap.twelve\_light\_fives}: in a triangulated spherical map of minimum degree 5, at least 12 degree-5 vertices have at most one neighbour of degree at least 12; with \texttt{edge\_card\_bound\_sharp}, $|E|+2\le n+|F|$ for any map with an edge, no connectivity assumed.
+\item \texttt{relative\_light\_fives}: the same count in the relative class of Section~\ref{sec:failure}, giving at least $9-n_4$ such vertices off $\varphi$, where $n_4$ is the number of degree-4 vertices on $\varphi$. This is the counting input of one link of the conditional reduction of Section~\ref{sec:failure}; the reduction itself remains \lab{hand}.
+\end{itemize}
+\texttt{SimpleGraph.SphericalMap.theorem\_HP} (Theorem~\ref{thm:HP}, radius at most 6, nothing assumed about the fifth neighbour) is built and checked on the second machine; the audit's verdict is pending, so it is not labelled \lab{compiled}. \lab{built, audit pending}
+% Revision 130: structural-theorem-hp-lean in-progress; commits 51f222b, merged 24563a3; J8 outputs posted (072367c), no verdict.
+
 \subsection{Built, not audited}\label{sec:lean-unaudited}
 Two further results are built in Lean with no \texttt{sorry} and only the standard axioms, by Math's own checks, but are in no module audit. They are therefore \emph{not} labelled \lab{compiled} here. The ledger marks them in progress.
 % Ledger: structural-belt-all-holes-lean, structural-vacancy-hyp-lean = in-progress ("built, not yet in the audit").
@@ -286,7 +298,7 @@ In short: the mobility theorem assumes every face of the map is a triangle; the 
 % REP/MathHighDegreeLandingResearch.md, REP/MathVHCoreAdvance.md, WK/MathRadiusGeometry.md, WK/MathReviewArTheoremH.md, MSG/..._1102_math_...
 % Ledger: structural-fixed-hole-triangle, structural-face-reduction, structural-deg5-mobility, structural-deg6-split, structural-trace-lift,
 % structural-theorem-h = proved (accepted by hand). All results below are hand proofs accepted by Math; none is audited.
-Every result in this section is a hand proof accepted by Math, except the Tait lock criterion of Section~\ref{sec:tait}, which Math has not yet reviewed. In several cases Math's acceptance rested on a review by one of its sub-agents rather than on a re-derivation by the accepting session; we say so where the record says so. None has been checked by a human.
+Every result in this section is a hand proof accepted by Math; three of them also have Lean versions (Section~\ref{sec:lean-late}). In several cases Math's acceptance rested on a review by one of its sub-agents rather than on a re-derivation by the accepting session; we say so where the record says so. None has been checked by a human.
 
 \subsection{Separating triangles}
 \begin{lemma}[connectivity core; \lab{hand}]
@@ -352,17 +364,15 @@ Let $v$ have degree $5$, let all five neighbours of $v$ have degree $5$, and let
 \end{theorem}
 % WK/MathRadiusGeometry.md item 1 and "Erratum": distinctness of the w_t is a hypothesis. Ledger structural-theorem-h = proved,
 % title "accepted by hand, not compiled, not audited". MSG/..._1102_math_... item 1.
-The proof classifies the colours on the outer ring forced by the two lock paths into three patterns, and gives an explicit lock-breaking swap for two of them. Status: accepted by Math on the strength of an independent review by a Math sub-agent and Math's own numerical check; Math has not re-derived it line by line. It is not compiled and not audited. The theorem does not extend verbatim to holes with a degree-6 neighbour (Section~\ref{sec:neg}).
-A Lean version, \texttt{SimpleGraph.SphericalMap.ico\_fill}, gives a pure fill within 3 swaps from every colouring proper off the hole. It is compiled for holes whose two-ball has the icosahedral structure, stated as a hypothesis (\texttt{IcoBall}); its derivation from the degree conditions is pending. \lab{built, audit pending}
-% MSG/..._1520_audit_..._Euler-and-H-Lean-statements-and-studio-check.md item S2 (wording used exactly); Studio Math 14:19 (commit 536ffbc, WK/StudioMathLean/).
-% Single-file check only; the audit's Studio check and the non-vacuity instance (S3) are outstanding. Not [compiled] until the Navigator records it.
+The proof classifies the colours on the outer ring forced by the two lock paths into three patterns, and gives an explicit lock-breaking swap for two of them. Status of the hand proof: two independent Math-team hand reviews (a Math worker; Studio Math), not audited. A Lean version from graph hypotheses is compiled and audited, and non-vacuous on the icosahedron (\texttt{theorem\_H}, Section~\ref{sec:lean-late}). The theorem does not extend verbatim to holes with a degree-6 neighbour (Section~\ref{sec:neg}).
+% Revision 124 (two hand reviews) and revision 130 (theorem_H compiled and audited, J6; supersedes ico_fill under IcoBall).
 % MSG/..._1102_math_... item 1 ("Math's reading"); WK/MathRadiusGeometry.md section 3 "Not covered".
 
 \paragraph{Where good holes may be.} Every spherical triangulation of minimum degree 5 has at least $12$ degree-5 vertices with at most one neighbour of degree $\ge12$. \lab{hand}
 % Lemma: MSG/..._1240_audit_..._P-A-repair-survives-counting-lemma.md (at least one such vertex); strengthened to at least 12 and accepted
-% by Math, MSG/..._1233_math_..._Euler-lemma-accepted-strengthened.md. Not yet recorded by the Navigator at revision 118.
-A Lean version, \texttt{SimpleGraph.SphericalMap.twelve\_light\_fives} (with the sharp bound \texttt{edge\_card\_bound\_sharp}), proves it for spherical maps whose faces all have length 3 and whose vertices all have degree at least 5. \lab{built, audit pending} It does not cover the relative class with degree-4 vertices on $\varphi$.
-% MSG/..._1520_audit_... items 1 and S1; WK/StudioMathLean/EulerSharp.lean.
+% by Math, MSG/..._1233_math_..._Euler-lemma-accepted-strengthened.md. Ledger structural-euler-lemma = proved [hand] since revision 119.
+It is also compiled and audited in Lean, together with its relative-class form (\texttt{twelve\_light\_fives}, \texttt{relative\_light\_fives}; Section~\ref{sec:lean-late}). \lab{compiled}
+% Navigator revision 130 (MSG/..._1444_navigator_..._revision-130.md), section "Paper".
 This only says where to look. A fill lemma for every hole of that class would imply VH$\exists$, so it is at least as hard.
 % MSG/..._1248_audit_..._fill-lemma-equals-VHE-strength.md item 1.
 
@@ -370,7 +380,8 @@ This only says where to look. A fill lemma for every hole of that class would im
 Let $v$ have degree $5$, let four of its neighbours have degree $5$, and let the fifth have any degree. Then every doubly locked state at $v$ has Kempe radius at most $6$; in particular $v$ is clean.
 \end{theorem}
 % Navigator revision 122 (MSG/..._1312_navigator_..._revision-122.md): structural-theorem-hp = proved [hand].
-Status, as for Theorem~\ref{thm:H}: accepted on a Math review worker's verdict (correct, with two wording fixes); not compiled and not audited. The computed claims on its source page are unverified, and its order-22 example is not cited here because no face list has been published. It does not cover holes with two or more neighbours of degree at least $6$.
+Status of the hand proof: two independent Math-team hand reviews (a Math worker; Studio Math), not audited. A Lean version is built, audit pending (Section~\ref{sec:lean-late}).
+% Revision 124 (wording); revision 130 (structural-theorem-hp-lean in-progress). The computed claims on its source page are unverified, and its order-22 example is not cited here because no face list has been published. It does not cover holes with two or more neighbours of degree at least $6$.
 
 \subsection{A conditional reduction to one lemma}
 \paragraph{Lemma R$^\ast$} (\lab{open}). In every 4-connected member of the class $\mathcal C$, some degree-5 vertex off $\varphi$ has every doubly locked state reach a filled state by finitely many Kempe swaps.
@@ -380,7 +391,7 @@ Lemma R$^\ast$ implies $\mathrm{VH}_{\mathcal C}$, hence VH$\exists$, hence 4-co
 \end{theorem}
 % Navigator revision 122: structural-chain-rstar = proved as a conditional theorem; six links reviewed by a Math worker and re-derived independently by the audit (13:25).
 % Inputs: MathTriangleCarryResearch.md, VacancyCliqueLift, MathFourConnectedResearch.md Prop 1, the order bound, Theorem A (vh-exists.md). Source page WK/MathReviewCleanToVHE.md.
-The six links of this chain were reviewed by a Math sub-agent and re-derived independently by the audit. \textbf{Nothing about the Four Colour Theorem is proved by this:} Lemma R$^\ast$ is open, and it is at least as strong as VH$\exists$, not weaker.
+The six links of this chain were reviewed by a Math sub-agent and re-derived independently by the audit. \textbf{Nothing about the Four Colour Theorem is proved by this:} Lemma R$^\ast$ is open, and it is at least as strong as VH$\exists$, not weaker. Only the counting input of one link is compiled (\texttt{relative\_light\_fives}).
 
 \subsection{Conditional lifts and reductions}
 The following are accepted hand results whose use depends on open hypotheses.
@@ -398,13 +409,13 @@ The following are accepted hand results whose use depends on open hypotheses.
 Identify the colours with $\mathbb Z_2\times\mathbb Z_2$, and give each edge $uw$ of $T-v$ the colour $c(u)+c(w)\neq0$. Its dual is then a proper 3-edge-colouring (a Tait colouring) of the dual graph $H$ of $T-v$, in which every node except the pentagon node $P$ meets one edge of each colour; a vertex colouring is recovered from it up to translation. \lab{cited}~\cite{tait1880,saatykainen}
 % LT/explore-vhphi/pathways/pd2_lock_proof.md "Notation (Tait)"; WK/creative-intel-2026-10-05/pathway-D.md section 1 and line 31 (dictionary [cited] per the audit's 12:08 notes; ledger structural-pathway-d note rev 116).
 Let the link of the unfilled state $s$ read $(\alpha,\mu,\alpha,c(a),c(b))$ at $x_j,\dots,x_{j+4}$, with $m=x_{j+1}$, $a=x_{j+3}$, $b=x_{j+4}$. Put $\beta=\alpha+\mu$, $\gamma=\alpha+c(a)$, $\delta=\alpha+c(b)$, and let $e_t$ be the edge of $P$ dual to $x_tx_{t+1}$; then $e_j,e_{j+1},e_{j+3}$ have colour $\beta$, $e_{j+2}$ has $\gamma$ and $e_{j+4}$ has $\delta$.
-\begin{lemma}[Tait lock criterion; \lab{hand}, not yet reviewed]\label{lem:tait}
+\begin{lemma}[Tait lock criterion; \lab{hand}]\label{lem:tait}
 Let $Z_1$ be the $(\beta,\gamma)$-path of $H$ that leaves $P$ by $e_{j+2}$, and $Z_2$ the $(\beta,\delta)$-path that leaves $P$ by $e_{j+4}$. Then the lock from $m$ to $a$ holds if and only if $Z_1$ returns to $P$ by $e_{j+1}$, and the lock from $m$ to $b$ holds if and only if $Z_2$ returns by $e_j$; otherwise each returns by $e_{j+3}$. Consequently, if $s$ has the lock from $m$ to $b$, then $F(s)$ has its first lock (from its middle vertex to its $a$-vertex), because $F$ leaves the $(\beta,\delta)$ 2-factor unchanged.
 \end{lemma}
 % LT/explore-vhphi/pathways/pd2_lock_proof.md (Claim and proof); MSG/..._1239_longtable_..._pathway-D-lock-criterion-hand-proof-variant-X-killed.md items 1 and Corollary (commit f2e3ae7).
-% Ledger rev 119: "Tait lock criterion and its corollary: [hand], by a Long Table sub-agent, read by the lead, not yet reviewed by Math".
+% Revision 124: structural-tait-lock-criterion = proved [hand], on Math's own line-by-line review; not audited.
 % Code re-check (not part of the proof): 0 mismatches on 3,682 states (T4, A_3, A_4).
-The proof is a Jordan-curve argument in the dual: $Z_1$ closed through $P$ crosses no $\delta$-edge, so it separates $m$ from $a$ exactly when the lock fails. It was written by a Long Table sub-agent and read step by step by Long Table; Math has not yet reviewed it. So whether $F$ keeps both locks reduces to a single chain condition.
+The proof is a Jordan-curve argument in the dual: $Z_1$ closed through $P$ crosses no $\delta$-edge, so it separates $m$ from $a$ exactly when the lock fails. It was written by a Long Table sub-agent and reviewed line by line by Math; it is not audited. So whether $F$ keeps both locks reduces to a single chain condition.
 
 \section{Negative results}\label{sec:neg}
 % Ledger nodes: structural-wp18-bound-two, structural-wp19-c1, -c3, -m2, structural-axis-symmetry, structural-slide-ranks,
@@ -487,6 +498,10 @@ On 6 October the work moved from search to short, testable proof ideas (``pathwa
 \item \emph{The (6,6,6,6,6) ring automaton (K-A1), killed} \lab{computed}, exploratory: an automaton on the 74 ring patterns has a closed adversary trap of 5,650 abstract states that stay doubly locked, so it gives no radius bound. This is Math's worker computation, not replayed by the audit.
 % WK/MathSixFiveAutomaton.md; Math a277616 message item 2; Navigator revision 121 (MSG/..._1258_navigator_..._revision-121.md), node structural-sixfive-automaton-killed.
 \item \emph{``Radius at most 3 at (6,6,6,6,6) holes'', killed} \lab{computed}: an order-28 triangulation of minimum degree 5 with no separating triangle has a doubly locked state of radius 4 at a (6,6,6,6,6) hole, confirmed by two of Math's programs and not replayed by the audit. This kills only that statement; Conjecture~R stays \lab{open}.
+\item \emph{Adversary search for a failure of Lemma R$^\ast$} (pre-registered, Studio Intel) \lab{computed}: on 131 graphs evaluated completely (six exact graphs in Phase A, and 125 flip neighbours visited by three seeded hill-climbs in Phase B, orders 27--42, degrees 5--7, no separating triangle), no Kempe class was targetless and the maximum radius was 4. One further graph hit the state cap and is inconclusive. This is a finite negative about those graphs only.
+% MSG/..._1436_studiointel_..._Rstar-adversary-search-results.md; Navigator revision 129 ("computed, a finite negative"); pre-registration MSG/..._1405_studiointel_... (released, cap 6,600 CPU-s).
+\item \emph{Radius 5 in the core class} \lab{computed}, pending the audit's replay: a later declared phase (Phase C) found four doubly locked states of Kempe radius exactly 5 in triangulations of minimum degree 5 with no separating triangle (orders 28 and 32). Every degree-5 vertex of those graphs is clean, so Lemma R$^\ast$ is not refuted. If the replay agrees, Conjecture~R, if true, needs a bound of at least 5.
+% Navigator revision 130 "Studio Intel Phase C" (certificates 91a307d1, 8a23ee3e, 62661a3f, 80b930d1; the two order-28 (5,6,6,6,5) ones possibly isomorphic); audit replay replay_radius.py (5f41435) queued.
 % WK/MathSixFiveAutomaton.md (faces there); Navigator revision 121 item 3 of "what may now go into section 5".
 \item \emph{``Bound the degrees of all five link vertices'', killed} \lab{hand}. In the belt $G_n$ every degree-5 vertex has one neighbour of degree $n$, so any finite list that bounds all five link degrees misses the belt family.
 % MSG/..._1159_math_... item 3; checked by hand by the audit, MSG/..._1232_audit_... item 3.
@@ -546,14 +561,15 @@ On these graphs: M1, M3, C2 and U$\exists$ passed with no unresolved case; M2 wa
 % REP/MathWP19Results.md "Seven fixed statements", "Independent verification", "Integrity and release"; START-HERE.md section 6 (kappa - l = 2 on 4 starts).
 M3 also has the general proof of Theorem~\ref{thm:M3}; M1, C2 and U$\exists$ remain \lab{open} as universal statements.
 
-\subsection{WP20 P1 and WP21: pending}
-\textbf{Pending; to be completed when the checks report.} Neither run has a result yet, and no number from them is cited here.
+\subsection{WP20 P1 and WP21}
 % Ledger: structural-wp20, structural-wp21 = in-progress; Navigator rev 118 "WP20 P1 and WP21 are pending: no result yet".
 \begin{itemize}
-\item \emph{WP20 P1} tests D1 and statement P (every unfilled state at a degree-5 hole has a pure fill) on every graph of order 25. The producer run is complete and merged; the independent checker over every graph, and then the audit's replay, have not reported. P1 started before Math's written go-ahead and was interrupted once by a machine restart. \textbf{[PLACEHOLDER: results per statement, with D1 kills listed with their P verdict and filled-neighbour count, once \texttt{d1\_check.py --all} and the audit replay pass.]}
+\item \emph{WP20 P1} tests D1 and statement P (every unfilled state at a degree-5 hole has a pure fill) on all 25,381 triangulations of order 25 and minimum degree 5. Status: \textbf{independently checked; audit replay and review pending.} The independent checker recomputed every graph and found no mismatch, and a full replay on a second machine reproduced the output exactly (identical digest). On these 25,381 graphs: 0 D1 kills, 0 P kills, 0 capped, 0 interrupted; 658 states not separable for any admitting fan, all one swap from a separable state, in 70 graphs; 5,448 locked classes. The 1,140 states with no legal admitting fan are excluded from D1; under one reading of the declaration P is untested on them, under the other it is tested with 0 kills. D1 and P are post hoc statements, and this is their first test on fresh data. P1 started before Math's written go-ahead, and its first attempt was lost to a machine restart. \lab{computed}
+% Navigator revision 123 (status wording and counts, MSG/..._1323_navigator_..._revision-123-WP20-P1.md); revision 127 (T2 replay, J4 digest IDENTICAL, overall 39f1396e...4723d7);
+% revision 130 (audit replay J3 running). Report MSG/..._1321_longtable_..._WP20-P1-report.md. Not yet "passed".
 % LT/WP20-D1-declaration.md (statements D1, P); MSG/..._1135_longtable_..._status-P1-produced-check-running.md (numbers there are provisional, not cited);
 % LT/wp20/CHRONOLOGY.md; START-HERE.md section 6 (go-ahead chronology).
-\item \emph{WP21} tests D1 and P at order 26: phase A on a frozen hash sample, phase B by adversarial search. Both phases were produced and checked once on the second machine; the cross-machine checks have not run. A phase-B pass would say only that this search found no counterexample among the graphs it evaluated. \textbf{[PLACEHOLDER: per-phase results after the cross-checks.]}
+\item \emph{WP21} tests D1 and P at order 26: phase A on a frozen hash sample, phase B by adversarial search. Both phases were produced and checked once on the second machine; the cross-machine checks have not run, so there is no result. A phase-B pass would say only that this search found no counterexample among the graphs it evaluated. \textbf{[PLACEHOLDER: per-phase results after the cross-checks.]}
 % LT/WP21-declaration.md (phases A, B); ledger structural-wp21 note rev 111 ("NO RESULT").
 \end{itemize}
 
@@ -568,9 +584,8 @@ Everything in this section is \lab{open}.
 % START-HERE.md sections 1 and 6 "Open".
 \item \textbf{U$\exists$.} Every triangulation of minimum degree 5 has a pair at which every Kempe class of $T^\ast_\tau$ contains a state that is filled or is filled by one swap of $T-v$. It implies VH$\exists$ with pure paths and is the degree-5 analogue of the degree-4 step. It passed on every graph of orders 21--24 (WP19).
 % vh-exists.md section 5 item 12 and "Most promising"; REP/MathWP19Results.md.
-\item \textbf{Conjecture R.} There is an absolute $R$ such that every doubly locked state at a degree-5 hole of a triangulation has Kempe radius at most $R$. By $T_4$, $R\ge4$. Its finite form, that no Kempe class at a degree-5 hole is targetless, is equivalent to every degree-5 hole being clean. Theorem~\ref{thm:H} proves $R\le3$ at icosahedral holes. Kempe classes of planar 4-colourings need not be unique, so R is a statement beyond the Four Colour Theorem.
-% l-attack.md section 3 "Conjecture R"; WK/MathConjectureR.md sections 1 and 5 (the non-uniqueness of Kempe classes is "cited from memory, not rechecked" there).
-% VERIFY: non-uniqueness of Kempe classes (Fisk-type examples; Mohar and Salas) -- literature-check.md section 3 summarises Mohar-Salas only for three-colourable triangulations.
+\item \textbf{Conjecture R.} There is an absolute $R$ such that every doubly locked state at a degree-5 hole of a triangulation has Kempe radius at most $R$. By $T_4$, $R\ge4$; four states of radius 5 await the audit's replay (Section~\ref{sec:neg}). Its finite form, that no Kempe class at a degree-5 hole is targetless, is equivalent to every degree-5 hole being clean. Theorem~\ref{thm:H} proves $R\le3$ at icosahedral holes. Kempe classes of planar 4-colourings need not be unique: Florek's graphs $G_n$ with $n\equiv2\pmod 3$ have Kempe-isolated 4-colourings~\cite{florek2025} \lab{cited}. So R is a statement beyond the Four Colour Theorem.
+% l-attack.md section 3 "Conjecture R"; WK/MathConjectureR.md sections 1 and 5; non-uniqueness resolved from WK/PaperReading.md "Florek, arXiv:2511.00485" (2n constant, Kempe-isolated colourings when n = 2 mod 3).
 \item \textbf{Four-connectivity of a plain failure.} Is a least failure of VH$\exists$ 4-connected? It is for the face-avoiding form (Section~\ref{sec:failure}). The trace-game hypotheses, for separating 4-cycles and for separating 5-cycles, are the missing step for a stronger reduction.
 % Ledger structural-math-t2 (unstarted), structural-math-t2-attack (exploring); START-HERE.md section 6 "Open".
 \item \textbf{D1 and statement (N).} D1 (every unfilled degree-5 state is separable for some admitting fan, or one swap from such a state) and statement (N) in its rigid case.
@@ -586,7 +601,7 @@ Everything in this section is \lab{open}.
 \begin{itemize}
 \item \emph{Good neighbourhoods plus discharging (P-A).} Prove a fill bound for every degree-5 hole whose link has four vertices of degree at most 11 and one of arbitrary degree; Section~\ref{sec:failure} shows such holes always exist. Any such lemma must allow radius at least 4 ($T_4$), cannot be local to a ball of fixed radius around the hole, must handle a neighbour of unbounded degree as in the belt, and must survive the $A_r$ family and its one-flip variants.
 % MSG/..._1233_math_... item 3 (Lemma P-A*); MSG/..._1248_audit_... item 3 (acceptance conditions). Ledger structural-pathway-a (exploring).
-\item \emph{Edge-colouring view (P-D).} In Tait language the two locks are two two-colour paths through the pentagon node (Lemma~\ref{lem:tait}, \lab{hand}, not yet reviewed). Parity invariants and local rules fail (Section~\ref{sec:neg}), so whether a lock persists depends on colours at distance 3 or more from the hole; what is needed is a global, Jordan-type argument about the two lock paths.
+\item \emph{Edge-colouring view (P-D).} In Tait language the two locks are two two-colour paths through the pentagon node (Lemma~\ref{lem:tait}, \lab{hand}). Parity invariants and local rules fail (Section~\ref{sec:neg}), so whether a lock persists depends on colours at distance 3 or more from the hole; what is needed is a global, Jordan-type argument about the two lock paths.
 % MSG/..._1239_longtable_... "Reading"; P-B was closed into P-A at revision 119.
 % Ledger structural-pathway-d notes rev 116 and 119.
 \item \emph{Vacancy D-reducibility.} Math has proposed a finite game on the 2-ball around a hole, in the spirit of D-reducibility, as a P-A statement. First runs found the 2-balls of $T_4$ and of an icosahedral hole reducible, and the pentakis (6,6,6,6,6) 2-ball not reducible. These are \lab{computed}, exploratory, and await the audit's replay; that a reducible ball forces a fill rests only on Math's hand reading, and no unavoidable family is known. A refinement found 4 of the 8 2-balls with degrees in $\{5,6\}$ reducible (one of them, (5,5,6,5,6), not yet through the verifier), and every degree sequence with three or more 6s fails, so 2-balls alone cannot cover the class of Section~\ref{sec:failure} \lab{computed}, exploratory, not replayed by the audit. The claim that two of the matchings determine the third is false; Math's \emph{matching realisability conjecture} (every matching triple is realised; proved to ring 6) is \lab{open}, and is distinct from the Jacobsthal count conjecture.
@@ -596,18 +611,18 @@ Everything in this section is \lab{open}.
 
 \begin{thebibliography}{99}
 % Bibliographic details: from the repository's notes (literature-check.md; the LaTeX bibliography entries found by grep in the repo for appel1977 and robertson1997;
-% Florek arXiv number from REP/BeltParallelProofReview.md). Everything marked VERIFY was not checked against the original.
-\bibitem{appel1977} K.~Appel and W.~Haken, Every planar map is four colorable. Part~I: Discharging, \emph{Illinois J. Math.} 21 (1977). % VERIFY pages 429--490
-\bibitem{birkhoff1913} G.~D.~Birkhoff, The reducibility of maps, \emph{Amer. J. Math.} 35 (1913). % VERIFY
+% Florek arXiv number from REP/BeltParallelProofReview.md). Entries without a VERIFY mark were taken from the repository bibliography paper/references.bib; none was checked against the original by a human.
+\bibitem{appel1977} K.~Appel and W.~Haken, Every planar map is four colorable. Part~I: Discharging, \emph{Illinois J. Math.} 21(3) (1977) 429--490. % paper/references.bib
+\bibitem{birkhoff1913} G.~D.~Birkhoff, The reducibility of maps, \emph{Amer. J. Math.} 35 (1913). % VERIFY pages: repo notes give both 114--128 and 115--128
 \bibitem{mohar2009} B.~Mohar and J.~Salas, A new Kempe invariant and the (non)-ergodicity of the Wang--Swendsen--Koteck\'y algorithm, \emph{J. Phys. A} 42 (2009) 225204; arXiv:0901.1010. % literature-check.md section 3; journal number from Navigator revision 120 (audit 13:05)
 \bibitem{plantri} G.~Brinkmann and B.~D.~McKay, \texttt{plantri} (program), version 5.8. % VERIFY citation form
-\bibitem{florek2025} J.~Florek, arXiv:2511.00485. % VERIFY title, year; the repo cites the arXiv number only
+\bibitem{florek2025} J.~Florek, arXiv:2511.00485 (2025). % year from WK/PaperReading.md ("the 2025 paper"); VERIFY title
 \bibitem{gonthier} G.~Gonthier, Formal proof---the Four-Colour Theorem, \emph{Notices Amer. Math. Soc.} 55 (2008). % VERIFY; repo notes date the Coq formalisation 2005
-\bibitem{heawood1890} P.~J.~Heawood, Map-colour theorem, \emph{Quart. J. Pure Appl. Math.} 24 (1890). % VERIFY
+\bibitem{heawood1890} P.~J.~Heawood, Map-colour theorem, \emph{Quart. J. Pure Appl. Math.} 24 (1890) 332--338. % paper/references.bib
 \bibitem{inoue2026} Y.~Inoue, K.~Kawarabayashi, A.~Miyashita, B.~Mohar, C.~Thomassen and M.~Thorup, The Four Color Theorem with linearly many reducible configurations and near-linear time coloring, arXiv:2603.24880 (2026). % from literature-check.md section 1
-\bibitem{kempe1879} A.~B.~Kempe, On the geographical problem of the four colours, \emph{Amer. J. Math.} 2 (1879). % VERIFY
-\bibitem{meyniel1978} H.~Meyniel, Les 5-colorations d'un graphe planaire forment une classe de commutation unique, \emph{J. Combin. Theory Ser. B} 24 (1978). % VERIFY; the repo names the theorem but gives no reference
-\bibitem{robertson1997} N.~Robertson, D.~P.~Sanders, P.~Seymour and R.~Thomas, The four-colour theorem, \emph{J. Combin. Theory Ser. B} 70 (1997). % VERIFY pages
+\bibitem{kempe1879} A.~B.~Kempe, On the geographical problem of the four colours, \emph{Amer. J. Math.} 2(3) (1879) 193--200. % paper/references.bib
+\bibitem{meyniel1978} H.~Meyniel, Les 5-colorations d'un graphe planaire forment une classe de commutation unique, \emph{J. Combin. Theory Ser. B} 24(3) (1978) 251--257. % paper/references.bib
+\bibitem{robertson1997} N.~Robertson, D.~P.~Sanders, P.~Seymour and R.~Thomas, The four-colour theorem, \emph{J. Combin. Theory Ser. B} 70(1) (1997) 2--44. % paper/references.bib
 \bibitem{saatykainen} T.~L.~Saaty and P.~C.~Kainen, \emph{The Four-Color Problem: Assaults and Conquest}, McGraw--Hill (1977). % VERIFY all details; named in pd2_lock_proof.md and pathway-D.md without a reference
 \bibitem{tait1880} P.~G.~Tait, Remarks on the colouring of maps, \emph{Proc. Roy. Soc. Edinburgh} 10 (1880). % VERIFY all details; named as "Tait 1880" in the repo
 \bibitem{tilley2018} J.~Tilley, Kempe-locking configurations, \emph{Mathematics} 6(12):309 (2018); arXiv:1809.02807. % from literature-check.md section 2
