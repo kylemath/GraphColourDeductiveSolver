@@ -38,7 +38,7 @@ He did not write the proofs, the code or this text. He did not review the hand p
 
 \textbf{How the results were checked, and by whom.} All checking was done by AI sessions or by the Lean kernel; none was done by a human. Every claim carries one label.
 \begin{itemize}
-\item \lab{compiled}: proved in Lean~4 with no \texttt{sorry} and only Lean's standard axioms, and included in the module audit. The Lean kernel certifies that the formal statement is proved. It does not certify that the formal statement means what the prose in this paper says; that match was checked only by AI sessions, and it is the main remaining risk in trusting a \lab{compiled} result.
+\item \lab{compiled}: proved in Lean~4 with no \texttt{sorry} and only Lean's standard axioms, and included in a module audit (Section~\ref{sec:lean}). The Lean kernel certifies that the formal statement is proved. It does not certify that the formal statement means what the prose in this paper says; that match was checked only by AI sessions, and it is the main remaining risk in trusting a \lab{compiled} result.
 \item \lab{hand}: a written proof reviewed by a different AI session. No human referee has checked any of these. AI reviewers can share blind spots, so treat these as unrefereed.
 \item \lab{computed}: an experiment whose statement, programs and limits were fixed and hashed before it ran, whose output was checked by a second implementation written separately by another AI session (and in some cases a third, by Audit), and which claims only what happened on the graphs it ran.
 \item \lab{cited}: taken from the published literature as summarised by the agents; consult the original.
