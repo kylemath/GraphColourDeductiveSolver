@@ -1,0 +1,202 @@
+{
+ "graph": "26 bcdef,afghic,abijd,acjke,adklf,aelmgb,bfmnh,bgnoi,bhopjc,cipqrkd,djrsle,ekstumf,flung,gmuoh,hnuvwxpi,ioxqj,jpxyr,jqyzsk,krztl,lszvu,ltvonm,outzw,ovzyx,owyqp,qxwzr,rywvts",
+ "hole": 13,
+ "link": [
+  6,
+  12,
+  20,
+  14,
+  7
+ ],
+ "start_phi": [
+  24,
+  10
+ ],
+ "start_dist": 5,
+ "states": 980,
+ "rho": 5,
+ "by_depth": {
+  "1": {
+   "sequences": 6,
+   "sequences_first_lowering_here": 0,
+   "end_filled": 0,
+   "min_lock_size_among_nonfilled_ends": 24,
+   "end_phi_histogram": {
+    "(24, 14)": 2,
+    "(25, 14)": 2,
+    "(25, 16)": 2
+   },
+   "distinct_states_at_end": 3
+  },
+  "2": {
+   "sequences": 28,
+   "sequences_first_lowering_here": 0,
+   "end_filled": 0,
+   "min_lock_size_among_nonfilled_ends": 24,
+   "end_phi_histogram": {
+    "(24, 10)": 12,
+    "(25, 14)": 4,
+    "(25, 16)": 4,
+    "(26, 20)": 4,
+    "(27, 24)": 4
+   },
+   "distinct_states_at_end": 5
+  },
+  "3": {
+   "sequences": 152,
+   "sequences_first_lowering_here": 0,
+   "end_filled": 0,
+   "min_lock_size_among_nonfilled_ends": 24,
+   "end_phi_histogram": {
+    "(24, 14)": 40,
+    "(25, 14)": 32,
+    "(25, 16)": 40,
+    "(26, 12)": 16,
+    "(26, 18)": 8,
+    "(27, 14)": 16
+   },
+   "distinct_states_at_end": 7
+  },
+  "4": {
+   "sequences": 808,
+   "sequences_first_lowering_here": 80,
+   "end_filled": 0,
+   "min_lock_size_among_nonfilled_ends": 8,
+   "end_phi_histogram": {
+    "(14, 0)": 16,
+    "(16, 7)": 16,
+    "(20, 5)": 16,
+    "(21, 12)": 8,
+    "(23, 5)": 8,
+    "(24, 10)": 216,
+    "(25, 12)": 32,
+    "(25, 14)": 112,
+    "(25, 16)": 112,
+    "(26, 12)": 32,
+    "(26, 20)": 112,
+    "(27, 24)": 112,
+    "(8, 0)": 16
+   },
+   "distinct_states_at_end": 8
+  }
+ },
+ "least_k_by_enumeration": 4,
+ "one_lowering_sequence": [
+  {
+   "pair": [
+    1,
+    3
+   ],
+   "component": [
+    1,
+    7
+   ],
+   "phi_after": [
+    25,
+    14
+   ]
+  },
+  {
+   "pair": [
+    0,
+    1
+   ],
+   "component": [
+    0,
+    4,
+    11,
+    20
+   ],
+   "phi_after": [
+    26,
+    20
+   ]
+  },
+  {
+   "pair": [
+    0,
+    2
+   ],
+   "component": [
+    2,
+    8,
+    14,
+    19,
+    20,
+    22
+   ],
+   "phi_after": [
+    25,
+    16
+   ]
+  },
+  {
+   "pair": [
+    0,
+    1
+   ],
+   "component": [
+    0,
+    2,
+    4,
+    9,
+    11,
+    17,
+    19,
+    25
+   ],
+   "phi_after": [
+    8,
+    0
+   ]
+  }
+ ],
+ "example_end_phi": [
+  8,
+  0
+ ],
+ "example_end_dist": 1,
+ "k3cpp": {
+  "hole": 13,
+  "states": 980,
+  "max_dist": 5,
+  "tested_states": 7,
+  "leastk_hist": {
+   "1": 6,
+   "4": 1
+  },
+  "max_k": 4,
+  "k_ge4": 1,
+  "first_k_ge4": {
+   "k": 4,
+   "dist": 5,
+   "colouring": {
+    "6": 0,
+    "1": 1,
+    "5": 2,
+    "7": 3,
+    "12": 3,
+    "0": 0,
+    "2": 2,
+    "8": 0,
+    "4": 1,
+    "11": 0,
+    "14": 2,
+    "20": 1,
+    "3": 3,
+    "9": 1,
+    "15": 3,
+    "10": 2,
+    "18": 3,
+    "19": 2,
+    "21": 3,
+    "22": 0,
+    "23": 1,
+    "16": 2,
+    "17": 0,
+    "25": 1,
+    "24": 3
+   }
+  }
+ }
+}

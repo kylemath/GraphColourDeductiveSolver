@@ -1,0 +1,708 @@
+{
+ "graph": "heawood1890.json",
+ "n": 25,
+ "edges": 69,
+ "kappa_T_cpp_krad": 12,
+ "kappa_T_cpp_kclass": 12,
+ "kappa_T_python": 12,
+ "states_T": 292,
+ "degree5_holes": [
+  {
+   "hole": 0,
+   "name": "B1",
+   "link": [
+    "G1",
+    "R2",
+    "G2",
+    "R1",
+    "Y1"
+   ],
+   "kappa_T_minus_v": 2,
+   "targetless": 0,
+   "rho": 2,
+   "states": 578,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 188,
+     "filled": 112,
+     "radius": 2
+    },
+    {
+     "size": 390,
+     "filled": 180,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 2,
+    "targetless": 0,
+    "rho": 2,
+    "states": 578
+   },
+   "kclass_cpp": {
+    "kappa": 2,
+    "targetless": 0,
+    "states": 578
+   },
+   "agree": true
+  },
+  {
+   "hole": 1,
+   "name": "B2",
+   "link": [
+    "G2",
+    "R2",
+    "Y3",
+    "R3",
+    "Y2"
+   ],
+   "kappa_T_minus_v": 2,
+   "targetless": 0,
+   "rho": 2,
+   "states": 628,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 208,
+     "filled": 112,
+     "radius": 2
+    },
+    {
+     "size": 420,
+     "filled": 180,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 2,
+    "targetless": 0,
+    "rho": 2,
+    "states": 628
+   },
+   "kclass_cpp": {
+    "kappa": 2,
+    "targetless": 0,
+    "states": 628
+   },
+   "agree": true
+  },
+  {
+   "hole": 3,
+   "name": "B4",
+   "link": [
+    "R4",
+    "G4",
+    "R5",
+    "Y5",
+    "G5"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 598,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 598,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 598
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 598
+   },
+   "agree": true
+  },
+  {
+   "hole": 5,
+   "name": "B6",
+   "link": [
+    "G5",
+    "Y5",
+    "G6",
+    "R6",
+    "Y6"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 538,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 538,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 538
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 538
+   },
+   "agree": true
+  },
+  {
+   "hole": 7,
+   "name": "G2",
+   "link": [
+    "R1",
+    "B1",
+    "R2",
+    "B2",
+    "Y2"
+   ],
+   "kappa_T_minus_v": 2,
+   "targetless": 0,
+   "rho": 2,
+   "states": 548,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 248,
+     "filled": 112,
+     "radius": 2
+    },
+    {
+     "size": 300,
+     "filled": 180,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 2,
+    "targetless": 0,
+    "rho": 2,
+    "states": 548
+   },
+   "kclass_cpp": {
+    "kappa": 2,
+    "targetless": 0,
+    "states": 548
+   },
+   "agree": true
+  },
+  {
+   "hole": 8,
+   "name": "G3",
+   "link": [
+    "R3",
+    "B3",
+    "Y1",
+    "R1",
+    "Y2"
+   ],
+   "kappa_T_minus_v": 2,
+   "targetless": 0,
+   "rho": 2,
+   "states": 518,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 188,
+     "filled": 112,
+     "radius": 2
+    },
+    {
+     "size": 330,
+     "filled": 180,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 2,
+    "targetless": 0,
+    "rho": 2,
+    "states": 518
+   },
+   "kclass_cpp": {
+    "kappa": 2,
+    "targetless": 0,
+    "states": 518
+   },
+   "agree": true
+  },
+  {
+   "hole": 10,
+   "name": "G5",
+   "link": [
+    "R4",
+    "B4",
+    "Y5",
+    "B6",
+    "Y6"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 598,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 598,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 598
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 598
+   },
+   "agree": true
+  },
+  {
+   "hole": 11,
+   "name": "G6",
+   "link": [
+    "R6",
+    "B6",
+    "Y5",
+    "R5",
+    "Y4"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 648,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 648,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 648
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 648
+   },
+   "agree": true
+  },
+  {
+   "hole": 12,
+   "name": "R1",
+   "link": [
+    "B1",
+    "G2",
+    "Y2",
+    "G3",
+    "Y1"
+   ],
+   "kappa_T_minus_v": 2,
+   "targetless": 0,
+   "rho": 2,
+   "states": 768,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 480,
+     "filled": 180,
+     "radius": 2
+    },
+    {
+     "size": 288,
+     "filled": 112,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 2,
+    "targetless": 0,
+    "rho": 2,
+    "states": 768
+   },
+   "kclass_cpp": {
+    "kappa": 2,
+    "targetless": 0,
+    "states": 768
+   },
+   "agree": true
+  },
+  {
+   "hole": 16,
+   "name": "R5",
+   "link": [
+    "B4",
+    "G4",
+    "Y4",
+    "G6",
+    "Y5"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 538,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 538,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 538
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 538
+   },
+   "agree": true
+  },
+  {
+   "hole": 17,
+   "name": "R6",
+   "link": [
+    "Y4",
+    "B5",
+    "Y6",
+    "B6",
+    "G6"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 598,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 598,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 598
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 598
+   },
+   "agree": true
+  },
+  {
+   "hole": 18,
+   "name": "V",
+   "link": [
+    "B3",
+    "R3",
+    "Y3",
+    "G4",
+    "R4"
+   ],
+   "kappa_T_minus_v": 3,
+   "targetless": 0,
+   "rho": 2,
+   "states": 708,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 256,
+     "filled": 104,
+     "radius": 2
+    },
+    {
+     "size": 420,
+     "filled": 180,
+     "radius": 2
+    },
+    {
+     "size": 32,
+     "filled": 8,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 3,
+    "targetless": 0,
+    "rho": 2,
+    "states": 708
+   },
+   "kclass_cpp": {
+    "kappa": 3,
+    "targetless": 0,
+    "states": 708
+   },
+   "agree": true
+  },
+  {
+   "hole": 19,
+   "name": "Y1",
+   "link": [
+    "G1",
+    "B1",
+    "R1",
+    "G3",
+    "B3"
+   ],
+   "kappa_T_minus_v": 2,
+   "targetless": 0,
+   "rho": 2,
+   "states": 608,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 248,
+     "filled": 112,
+     "radius": 2
+    },
+    {
+     "size": 360,
+     "filled": 180,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 2,
+    "targetless": 0,
+    "rho": 2,
+    "states": 608
+   },
+   "kclass_cpp": {
+    "kappa": 2,
+    "targetless": 0,
+    "states": 608
+   },
+   "agree": true
+  },
+  {
+   "hole": 20,
+   "name": "Y2",
+   "link": [
+    "G2",
+    "B2",
+    "R3",
+    "G3",
+    "R1"
+   ],
+   "kappa_T_minus_v": 2,
+   "targetless": 0,
+   "rho": 2,
+   "states": 668,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 420,
+     "filled": 180,
+     "radius": 2
+    },
+    {
+     "size": 248,
+     "filled": 112,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 2,
+    "targetless": 0,
+    "rho": 2,
+    "states": 668
+   },
+   "kclass_cpp": {
+    "kappa": 2,
+    "targetless": 0,
+    "states": 668
+   },
+   "agree": true
+  },
+  {
+   "hole": 22,
+   "name": "Y4",
+   "link": [
+    "G4",
+    "B5",
+    "R6",
+    "G6",
+    "R5"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 598,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 598,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 598
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 598
+   },
+   "agree": true
+  },
+  {
+   "hole": 23,
+   "name": "Y5",
+   "link": [
+    "G5",
+    "B4",
+    "R5",
+    "G6",
+    "B6"
+   ],
+   "kappa_T_minus_v": 1,
+   "targetless": 0,
+   "rho": 2,
+   "states": 648,
+   "filled": 292,
+   "classes_cpp": [
+    {
+     "size": 648,
+     "filled": 292,
+     "radius": 2
+    }
+   ],
+   "python": {
+    "kappa": 1,
+    "targetless": 0,
+    "rho": 2,
+    "states": 648
+   },
+   "kclass_cpp": {
+    "kappa": 1,
+    "targetless": 0,
+    "states": 648
+   },
+   "agree": true
+  }
+ ],
+ "heawood_colouring_at_V": {
+  "hole": "V",
+  "link_colours": "brygr",
+  "class_size": 420,
+  "class_filled": 180,
+  "class_radius": 2,
+  "dist_from_heawood_colouring": 2,
+  "cpp_query": {
+   "class_size": 420,
+   "class_filled": 180,
+   "class_radius": 2,
+   "dist": 2
+  },
+  "shortest_filling_sequence": [
+   {
+    "pair": "gr",
+    "component": [
+     "G1",
+     "G2",
+     "G3",
+     "R1",
+     "R2",
+     "R3"
+    ],
+    "component_current_colours": [
+     "G1:g",
+     "G2:g",
+     "G3:g",
+     "R1:r",
+     "R2:r",
+     "R3:r"
+    ],
+    "link_after": "bgygr",
+    "dist_after": 1
+   },
+   {
+    "pair": "ry",
+    "component": [
+     "G1",
+     "G2",
+     "G3",
+     "R4",
+     "R5",
+     "R6",
+     "Y1",
+     "Y2",
+     "Y4",
+     "Y5",
+     "Y6"
+    ],
+    "component_current_colours": [
+     "G1:r",
+     "G2:r",
+     "G3:r",
+     "R4:r",
+     "R5:r",
+     "R6:r",
+     "Y1:y",
+     "Y2:y",
+     "Y4:y",
+     "Y5:y",
+     "Y6:y"
+    ],
+    "link_after": "bgygy",
+    "dist_after": 0
+   }
+  ],
+  "all_shortest_first_moves": [
+   {
+    "pair": "gr",
+    "component": [
+     "G1",
+     "G2",
+     "G3",
+     "R1",
+     "R2",
+     "R3"
+    ]
+   },
+   {
+    "pair": "gr",
+    "component": [
+     "G4",
+     "G5",
+     "G6",
+     "R4",
+     "R5",
+     "R6"
+    ]
+   }
+  ]
+ }
+}

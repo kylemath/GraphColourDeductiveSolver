@@ -1,0 +1,120 @@
+{
+ "covers": true,
+ "proper": true,
+ "hole_degree": 5,
+ "frame_j": 1,
+ "frame_j_claimed": 1,
+ "link": [
+  0,
+  6,
+  7,
+  8,
+  2
+ ],
+ "link_colours": [
+  0,
+  3,
+  2,
+  3,
+  1
+ ],
+ "doubly_locked": true,
+ "radius": 3,
+ "radius_claimed": 3,
+ "lock1_path": [
+  7,
+  14,
+  19,
+  12,
+  3,
+  2
+ ],
+ "lock1_shortest_paths": 2,
+ "lock1_chain_is_tree": false,
+ "lock2_path": [
+  7,
+  15,
+  19,
+  13,
+  5,
+  0
+ ],
+ "lock2_shortest_paths": 1,
+ "lock2_chain_is_tree": true,
+ "component_in_D1": true,
+ "D1_membership_per_lock1_path": [
+  {
+   "path": [
+    7,
+    14,
+    19,
+    12,
+    3,
+    2
+   ],
+   "inside": true
+  },
+  {
+   "path": [
+    7,
+    14,
+    19,
+    18,
+    10,
+    2
+   ],
+   "inside": false
+  }
+ ],
+ "D2_membership_per_lock2_path": [
+  {
+   "path": [
+    7,
+    15,
+    19,
+    13,
+    5,
+    0
+   ],
+   "inside": false
+  }
+ ],
+ "component_in_D2": false,
+ "component_meets_link": false,
+ "component_meets_lock_paths": false,
+ "component_meets_lock_chains": false,
+ "first_moves": [
+  {
+   "pair": [
+    0,
+    3
+   ],
+   "after_DL": true,
+   "after_frame": 1,
+   "after_radius": 2
+  }
+ ],
+ "internA": {
+  "roles": {
+   "a": 3,
+   "b": 2,
+   "g": 1,
+   "d": 0
+  },
+  "x2_degree": 5,
+  "w1": [
+   16
+  ],
+  "w1_colours": [
+   1
+  ],
+  "w2": [
+   9
+  ],
+  "w2_colours": [
+   0
+  ],
+  "component_is_bd_component_of_w2": false
+ },
+ "pass": true
+}

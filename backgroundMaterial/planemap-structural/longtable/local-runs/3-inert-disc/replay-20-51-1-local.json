@@ -1,0 +1,146 @@
+{
+ "hole": 1,
+ "states": 178,
+ "rho": 3,
+ "counts": {
+  "DL_states": 1,
+  "moves_checked": 7,
+  "moves_offlink": 2,
+  "QexS": 1,
+  "QexS_dist3_L1": 1,
+  "Qex": 1,
+  "Qex_dist3_L1": 1
+ },
+ "examples": [],
+ "detail": [
+  {
+   "state_dist": 3,
+   "frame_j": 1,
+   "pair_colours": [
+    0,
+    2
+   ],
+   "component": [
+    9,
+    10
+   ],
+   "lock1_simple_paths": 2,
+   "lock2_simple_paths": 1,
+   "inside_D1_per_lock1_path": [
+    [
+     [
+      7,
+      14,
+      19,
+      12,
+      3,
+      2
+     ],
+     true
+    ],
+    [
+     [
+      7,
+      14,
+      19,
+      18,
+      10,
+      2
+     ],
+     false
+    ]
+   ],
+   "inside_D2_per_lock2_path": [
+    [
+     [
+      7,
+      15,
+      19,
+      13,
+      5,
+      0
+     ],
+     false
+    ]
+   ],
+   "image_dist": 2,
+   "flags": {
+    "Qall_L1": false,
+    "QallA_L1": false,
+    "Qchain_L1": false,
+    "QexS_L1": false,
+    "Qex_L1": false,
+    "Qall_L2": false,
+    "QallA_L2": false,
+    "Qchain_L2": false,
+    "QexS_L2": false,
+    "Qex_L2": false
+   }
+  },
+  {
+   "state_dist": 3,
+   "frame_j": 1,
+   "pair_colours": [
+    0,
+    3
+   ],
+   "component": [
+    11
+   ],
+   "lock1_simple_paths": 2,
+   "lock2_simple_paths": 1,
+   "inside_D1_per_lock1_path": [
+    [
+     [
+      7,
+      14,
+      19,
+      12,
+      3,
+      2
+     ],
+     true
+    ],
+    [
+     [
+      7,
+      14,
+      19,
+      18,
+      10,
+      2
+     ],
+     false
+    ]
+   ],
+   "inside_D2_per_lock2_path": [
+    [
+     [
+      7,
+      15,
+      19,
+      13,
+      5,
+      0
+     ],
+     false
+    ]
+   ],
+   "image_dist": 2,
+   "flags": {
+    "Qall_L1": false,
+    "QallA_L1": false,
+    "Qchain_L1": false,
+    "QexS_L1": true,
+    "Qex_L1": true,
+    "Qall_L2": false,
+    "QallA_L2": false,
+    "Qchain_L2": false,
+    "QexS_L2": false,
+    "Qex_L2": false
+   }
+  }
+ ],
+ "path_enum_truncated": false,
+ "dist_of_state": 3
+}
