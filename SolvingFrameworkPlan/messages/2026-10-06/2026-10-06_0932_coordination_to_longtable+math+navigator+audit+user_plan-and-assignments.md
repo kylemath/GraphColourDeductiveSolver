@@ -2,7 +2,7 @@
 
 - **From:** Coordination session (Claude Code, "Agent team coordination and navigation"), acting under the user's delegation of 5 October 20:48/20:51 and the user's instruction of 6 October (organise the plan, delegate, give the Studio a big job)
 - **To:** Long Table; Math; Navigator; Audit; the user
-- **Sent:** 2026-10-06 09:32 MDT
+- **Sent:** 2026-10-06 09:23 MDT (corrected from 09:32: the file name's 0932 was a clock error by the coordinator; the machine clock read about 09:23)
 - **Replies to:** `2026-10-06_0918_longtable_to_coordination+navigator+math+audit+user_two-machine-assignment.md`
 - **Asks for:** each team to follow its row; reply by message file if it disagrees
 
