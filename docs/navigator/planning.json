@@ -1,7 +1,12 @@
 {
-  "revision": 95,
-  "updatedAt": "2026-10-06T08:25:00-06:00",
+  "revision": 96,
+  "updatedAt": "2026-10-06T08:34:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T14:38:00Z",
+      "node": "structural-l4-p-lean",
+      "action": "Revision 96 marks Lemma L4 and Theorem P (pole hole, no singleton, belt) compiled on the independent 116-module audit, with the audit's scope limits: stronger than the hand text, bound +n, and not covering the equal-pole case, the belt assembly, n0 at most n/2 or the degree-5 four-colour corollary. The equal-pole node stays exploring. One audit manifest field (axiom sweep exit 1) is unexplained. The audit's pre-registered replay plan for WP20 P1 is recorded as a success gate. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T14:28:00Z",
       "node": "structural-vacancy",
@@ -8172,6 +8177,70 @@
       ],
       "id": "structural-wp20",
       "revision": 95
+    },
+    {
+      "status": "compiled",
+      "title": "Lean: Lemma L4 and Theorem P, pole hole without singletons (independent 116-module audit passed)",
+      "statement": "VacancyLemmaL4 gives l4a, l4b, l4b_le and l4c. TheoremPPoleNoSingleton gives theoremP: for the two-pole belt of order n at least 5 and every proper colouring off the pole hole, a pure Kempe path of length at most 3 times (|jset c| minus 2) plus n (natural subtraction: n when |jset c| is below 2) to a colouring in which some of the 4 colours occurs at most once on the ring. theoremP needs no no-singleton hypothesis, and l4b needs no no-pure-fill premise, so both are stronger than the hand text. NOT covered: the equal-pole case and the assembly of the whole belt theorem, n0 at most n/2, and the hand corollary \"impossible at a degree-5 hole with 4 colours\" (still hand). The bound is +n, not +n-3.",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/L4-P/REPORT.md",
+        "backgroundMaterial/planemap-structural/longtable/audit/L4-P/audit_l4p.py",
+        "backgroundMaterial/planemap-structural/longtable/audit/L4-P/run1/manifest.json",
+        "backgroundMaterial/planemap-structural/longtable/audit/L4-P/SHA256SUMS",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0840_audit_to_navigator+math+longtable+coordination_L4-and-theorem-P-audit-passed.md"
+      ],
+      "evidence": "Independent audit (commit 89b9d74), own script, no Math script run: 116 of 116 modules rebuilt from source, all exit 0, with the 135-file custom set derived from git against upstream Mathlib commit 300d0e5 and 901 cached custom build files hidden; the 11 new sources equal Math's artifact and the live checkout and did not change during the run; grep for sorry, admit, native_decide, axiom, unsafe, implemented_by, extern, opaque, ofReduceBool finds nothing; the audit's own axiom sweep covers 123 constants of 9 modules and finds only propext, Classical.choice, Quot.sound; a planted sorry negative control is caught. Checked by the navigator: the audit files verify (SHA256SUMS), the manifest says status passed with 116 modules, 0 failed and 0 sources changed, the rebuild output shows 116 exit 0, the sweep output reads 9 of 9 modules, 123 constants, 0 nonstandard, the control prints sorryAx for the planted theorem, and all 11 new sources equal Math's artifact hashes. One loose end: the manifest records axiom_sweep_exit 1 although the sweep output shows no error; it is unexplained and the audit should say why. The navigator did not rebuild. Limits stated by the audit: upstream Mathlib oleans reused, no whole-repository lake build, statements read and not re-derived.",
+      "notes": [
+        {
+          "time": "2026-10-06T14:38:00Z",
+          "text": "Revision 96: compiled, on the independent audit. The scope limits above bind this status. structural-equal-pole stays exploring."
+        }
+      ],
+      "id": "structural-l4-p-lean",
+      "revision": 96
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:38:00Z",
+          "text": "Revision 96: the independent audit passed L4 and Theorem P for the pole hole without singletons. This node is not upgraded: the equal-pole case, the assembly of the belt theorem, n0 at most n/2 and the degree-5 four-colour corollary are not covered. Status stays exploring."
+        }
+      ],
+      "id": "structural-equal-pole",
+      "revision": 96
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:38:00Z",
+          "text": "Revision 96: Lemma L4 (l4a, l4b, l4b_le, l4c) is compiled and independently audited (node structural-l4-p-lean). The hand corollary for a degree-5 hole with 4 colours is not formalised and stays hand. L3 stays compiled; the WP19-setting boundedness question stays open."
+        }
+      ],
+      "id": "structural-long-fill",
+      "revision": 96
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/WP20-P1-audit-replay-plan.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T14:38:00Z",
+          "text": "Revision 96, new gate. The independent audit pre-registered its replay of P1 at 08:27 (commit 003c289), before reading any attempt-2 output (only chunks 0 and 1 existed and it had not opened them). Third implementation, written from the declaration and output format only, importing neither the producer nor Long Table's checker. Steps: hash bindings; merge integrity over indices 0 to 25380; per-vertex accounting identities; every witness and certificate re-verified; full recount of every flagged graph; its own fixed 1 percent sample (sha256 of \"AUDIT-WP20-P1-\" and the index, first 8 hex, mod 100 equal 0), plus the declared 2 percent sample. It runs after Long Table's checker --all, on at most 2 workers. Verdict: all checks agree means the producer counts are replayed on the stated graphs, never more than no counterexample among the order-25 graphs run; any mismatch means the phase result is not accepted until explained. WP20 success therefore needs, in order: all chunks, merge, Long Table checker --all, this audit replay, a report with the chronology, and Math's review as evidence. Progress: chunk 2 of 10 at 08:3x."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 96
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T14:38:00Z",
+          "text": "Revision 96: the compiled list gains L4 and Theorem P (pole hole, no singleton), independently audited at 116 modules. Newer messages not yet recorded here (Math belt vacancy theorem commit f0d03ab, Math (N) Ia/Ib note, Long Table WP21 version 2 announcement, Math termination) are for revision 97 and are not treated as results."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 96
     }
   ]
 }
