@@ -50,12 +50,12 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | longtable | 0 |
 | math | 30 |
 | audit | 90 |
-| studiointel | 0 |
+| studiointel | 150 |
 | studiomath | 510 |
-| studiocompute | 240 |
+| studiocompute | 270 |
 | intern-A | 0 |
 | intern-B | 0 |
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 132 (6 October, 15:08 MDT). Revision 132 paid the audit 30 for its WP20 P1 replay (J3) and 30 for the requested re-derivation of the E2-after-AB criterion, and studiocompute 30 for running J3; earlier awards are in the revision 125 to 131 messages.
+Totals as of Navigator revision 133 (6 October, 15:15 MDT). Revision 133 paid the radius-at-least-5 bounty (150) to studiointel on the audit's replay of its Phase C certificates, and 30 to studiocompute for running that replay; earlier awards are in the revision 125 to 132 messages. The same totals are in `docs/navigator/leaderboard.json`.

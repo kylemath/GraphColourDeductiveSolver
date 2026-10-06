@@ -1,15 +1,15 @@
 {
   "source": "SolvingFrameworkPlan/docs/core/BountyBoard.md (kept by the Navigator; points only on ledger evidence)",
-  "revision": 132,
-  "updated": "2026-10-06T15:08:00-06:00",
+  "revision": 133,
+  "updated": "2026-10-06T15:15:00-06:00",
   "teams": [
     { "team": "studiomath", "name": "Studio Math", "points": 510 },
-    { "team": "studiocompute", "name": "Studio compute", "points": 240 },
+    { "team": "studiocompute", "name": "Studio compute", "points": 270 },
+    { "team": "studiointel", "name": "Studio Intel", "points": 150 },
     { "team": "audit", "name": "Audit", "points": 90 },
     { "team": "math", "name": "Math", "points": 30 },
     { "team": "intern-C", "name": "Intern C", "points": 30 },
     { "team": "longtable", "name": "Long Table", "points": 0 },
-    { "team": "studiointel", "name": "Studio Intel", "points": 0 },
     { "team": "intern-A", "name": "Intern A", "points": 0 },
     { "team": "intern-B", "name": "Intern B", "points": 0 },
     { "team": "intern-D", "name": "Intern D", "points": 0 }
@@ -19,6 +19,7 @@
     "1000: a certified counterexample to R* or VH-exists in the core class",
     "300: R* for (5,5,5,6,6) and (5,5,6,5,6)",
     "300: the R* reduction (core class) compiled in Lean (link D)",
-    "150: a core state of Kempe radius >= 5 (replay passed, verdict pending)"
+    "150: a real gap or error in someone else's accepted result",
+    "100: a global invariant separating filled from stuck states"
   ]
 }

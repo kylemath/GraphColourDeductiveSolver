@@ -1,7 +1,12 @@
 {
-  "revision": 132,
-  "updatedAt": "2026-10-06T15:08:00-06:00",
+  "revision": 133,
+  "updatedAt": "2026-10-06T15:15:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T21:15:00Z",
+      "node": "structural-rstar-phase-c",
+      "action": "Revision 133 records the audit's replay of the radius-5 certificates as passed (three distinct core-class states of Kempe radius exactly 5; two certificates are the same); Phase D's 13 more radius-5 graphs as computed and not replayed, including holes with two neighbours of degree at least 6 when one has degree 7 or 8; the user's explore-mode decision; Long Table's literature finding that R* is not known; the audit's claim read of the 7-page paper. Leaderboard: studiointel +150, studiocompute +30. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T21:08:00Z",
       "node": "structural-wp20",
@@ -11431,6 +11436,130 @@
       ],
       "files": [
         "SolvingFrameworkPlan/docs/core/MaximiseSuccessPlan.md"
+      ]
+    },
+    {
+      "id": "structural-rstar-phase-c",
+      "revision": 133,
+      "title": "R* tabu search, Phase C (studiointel, pre-registered): Kempe radius exactly 5 occurs in the core class (three distinct certificates, replayed by the audit)",
+      "evidence": "The audit's independent replay PASSED (15:04, 9b75735; outputs 4cd27b3 from the Studio run at 15:03:13; checker replay_radius.py 9ee7ba9a, stdlib, no team imports; all eight certificate files equal the hashes read on main). Self-test on T4 matched {0:22, 1:25, 2:15, 3:4, 4:2}; a radius-4 state certifies at 4 and fails at 5. Each certificate: core class (sphere triangulation, minimum degree 5, 0 separating triangles), degree-5 hole, a proper, unfilled, doubly locked state, exact radius 5 by BFS over whole-component Kempe swaps. 91a307d1 (order 28, hole 22, class (5,5,6,5,6)); 8a23ee3e = 62661a3f (isomorphic with the hole fixed, byte-identical states: one certificate under two names; order 28, hole 23, three neighbours of degree 6); 80b930d1 (order 32, hole 23, class (7,5,6,5,6) up to reflection). Control: 91a307d1 claimed at 6 gives pass false. Phase C ended 14:54:56 at its caps; L(A_3), n = 47, resolved exactly: max rho 3; no targetless class anywhere.",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1504_audit_to_coordination+navigator+studiointel+math_radius-5-certificates-REPLAY-PASS.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1503_studiointel_to_coordination+navigator+audit+math_phase-C-final-and-phase-D-radius-5-certificates.md",
+        "backgroundMaterial/planemap-structural/longtable/audit-radius5-replay-studio/shasums.txt",
+        "backgroundMaterial/planemap-structural/studiointel/run-C-2026-10-06/runlog.txt"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133: Kempe radius 5 occurs in the core class: certificates replayed by the audit [computed, on these graphs]. Three distinct states, every hole with two or three neighbours of degree at least 6 (open case, consistent with H and HP). Each state fills, so R* is not refuted; Conjecture R, if true, needs a bound of at least 5. The pre-registration is Studio intel's record (declaration e9d62ba committed 14:23, before the first certificate 06b158a at 14:27); the audit did not check it."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "index": 3,
+      "revision": 133,
+      "node": {
+        "id": "structural-rstar-phase-d",
+        "title": "Phase D (studiointel, fast engine; running): 13 more radius-5 graphs at order 28, own checker only, not replayed",
+        "status": "computed",
+        "statement": "Route E (fail fast): tabu searches with the C++ engine from a radius-5 graph and at order 47, and exact analyses of A_9 to A_12; looking for radius at least 6 or a targetless class.",
+        "approach": "Declared (1196925, merged 9563e33; 4 CPU-h), started 14:55:37 after Phase C; running unattended. Under the user's 15:05 explore mode, further variants need no pre-registration and are [exploratory].",
+        "evidence": "D61 (tabu from 8a23ee3e): 6,669 graphs of order 28; rho 2: 35,398, 3: 63,493, 4: 10,531, 5: 14. Thirteen new certificates in run-D-2026-10-06/cert/, each passing verify_cert.sh (core class; check.py lb 5 OK, lb 6 FAIL), so radius exactly 5 by the team's own checker. New link classes at radius 5 include holes with only TWO neighbours of degree at least 6, one of degree 7 or 8: (5,7,6,5,5) [5b7066bf, 59998957, 2a9ef333], (5,8,6,5,5) [1e5c2429, c4510399], (5,6,5,5,8) [d93bf28c]; and three-neighbour classes (5,5,6,6,8), (5,6,6,5,6), (6,5,8,5,6), (7,5,6,6,5), (5,6,5,7,7). The pure (5,5,5,6,6) and (5,5,6,5,6) classes reach 5 only at 91a307d1. D71 (from L(T4), n = 47): 86 graphs, rho 3 or 4. A_9 and A_10: rho 2 at every hole; A_11 and A_12 running. Max rho still 5; no radius-6 state, no targetless class.",
+        "killCriteria": "A replayed certificate of a targetless class in the core class kills R* (1000 points).",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1503_studiointel_to_coordination+navigator+audit+math_phase-C-final-and-phase-D-radius-5-certificates.md",
+          "backgroundMaterial/planemap-structural/studiointel/run-D-2026-10-06/cert/"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T21:15:00Z",
+            "text": "Revision 133: computed by the team's own checker, exploratory until the audit replays a representative of each new hole class (Studio intel asks for one per class). Not scored."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-rstar-adversary-search",
+      "revision": 133,
+      "notes": [
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133: L(A_3), inconclusive here at the 400,000-state cap, is resolved by Phase C's exact run (cap 1.5M): max rho 3."
+        }
+      ]
+    },
+    {
+      "id": "structural-conj-r-prereg",
+      "revision": 133,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1504_audit_to_coordination+navigator+studiointel+math_radius-5-certificates-REPLAY-PASS.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133: the audit replayed three distinct core-class states of Kempe radius exactly 5 (orders 28 and 32). So the radius is not bounded by 4 in the core class; Conjecture R, if true, needs a bound of at least 5. Phase D reports 13 more radius-5 graphs (not replayed) and none at 6."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 133,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1504_audit_to_coordination+navigator+studiointel+math_radius-5-certificates-REPLAY-PASS.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1503_studiointel_to_coordination+navigator+audit+math_phase-C-final-and-phase-D-radius-5-certificates.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133: replayed by the audit: radius 5 at a (5,5,6,5,6) hole (91a307d1). Phase D [computed, own checker, not replayed]: radius 5 also with exactly two neighbours of degree at least 6 when one has degree 7 or 8 ((5,7,6,5,5), (5,8,6,5,5), (5,6,5,5,8)); the pure (5,5,5,6,6) class has not reached 5 in the data."
+        }
+      ]
+    },
+    {
+      "id": "structural-chain-rstar",
+      "revision": 133,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1504_longtable_to_coordination+audit+math+navigator_literature-is-R-star-known.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133: literature (Long Table, job C, 15:04; audit asked to check the sources): no source states R* for a degree-5 vertex as a theorem, conjecture or open problem (not exhaustive); the known Kempe-equivalence theorems (Mohar 2006 Cor. 4.5, Meyniel, Fisk, Feghali on 4-critical graphs) do not reach T - v; Kempe classes are genuinely multiple (Mohar 1985; Florek 2025 on the belt family), so R* must be per-class; R* is at least as hard as the Four Colour Theorem and could be false. New remark [hand, unreviewed]: T - v has no Kempe-frozen 4-colouring (edge count 3n' - 8 below the 3n' - 6 needed), so a singleton-class counterexample is impossible."
+        }
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 133,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1502_audit_to_severn+coordination+navigator_claim-read-7-page-summary.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133: the audit's claim read of the 7-page summary (15:02): sound overall; Severn to fix C1 (Theorem HP must state \"no separating triangle through v\", as the compiled theorem_HP does), C2 (the chain sketch does not use the Euler lemma: a least failure is 4-connected and R* gives the clean vertex directly), C3 (the audit did not run the 8299419 rebuild or J5 to J9: Studio runs, accepted or judged by the audit), C4 (WP20 P1: audit replay done, REPLAY AGREES; only Math's review pending), C5 (degree parity invariant [hand]; nothing more invariant only [computed]), C6 (scope of the three Conjecture L checks; Jacobsthal count not replayed beyond r = 5). The navigator checked these against the ledger and adopts them as its claim check. Also: the radius-5 sentence may now say \"certificates replayed by the audit\" (three distinct states, orders 28 and 32)."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 133,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1505_user_to_all_explore-mode.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133, the user's explore-mode decision (15:05, quoted in the message: \"throw caution to the wind and be less careful as we setout on this explore\"): exploratory Studio computation needs no pre-registration or release (label [exploratory], commit code and outputs; up to 12 CPU-h and 16 cores per run); sketches labelled [sketch] are welcome; more parallel workers across routes A, B, C, E; Studio branches merged without waiting for review. Unchanged: status words and bounty points still need the audit's check; no new computation on the MacBook; nothing posted outside the repository without the user's word. For the ledger: [exploratory] and [sketch] outputs are recorded as exploring or computed with that label and are never upgraded without the audit."
+        },
+        {
+          "time": "2026-10-06T21:15:00Z",
+          "text": "Revision 133, leaderboard: studiointel +150 (a core state of radius at least 5 with a certificate, found by a pre-registered search, Phase C; the audit's replay passed 15:04). studiocompute +30 (the requested run of the audit's radius-5 replay, outputs posted 4cd27b3); the audit takes no share, as it said. Coordinator ruling recorded: one award per replay role (the audit writes the checker and the verdict, studiocompute runs it). Not scored: Phase D certificates (not replayed; the 150 is paid once), Long Table's literature note (no bounty item). Totals: math 30, audit 90, studiointel 150, studiomath 510, studiocompute 270, intern-C 30, others 0."
+        }
       ]
     }
   ]
