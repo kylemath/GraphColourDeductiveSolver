@@ -1,7 +1,12 @@
 {
-  "revision": 122,
-  "updatedAt": "2026-10-06T13:12:00-06:00",
+  "revision": 123,
+  "updatedAt": "2026-10-06T13:23:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T19:25:00Z",
+      "node": "structural-wp20",
+      "action": "Revision 123 records the WP20 P1 report: on all 25,381 order-25 minimum-degree-5 triangulations the independent checker agrees with the producer on every graph (CHECK OK, 0 unresolved), with 0 D1 kills, 0 P kills, 658 SEP-bad states all at depth 1 and 1,140 no_legal_fan states reported under both readings. Status: produced and independently checked, not yet passed, pending the audit's replay (to run on the Studio) and Math's review; the digest comparison with the Studio's replay is not computed. Also the Studio's hash audit of the Lean snapshot 8299419 (relay). No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T19:15:00Z",
       "node": "structural-chain-rstar",
@@ -10390,6 +10395,43 @@
       ],
       "id": "dissemination-vhe-paper",
       "revision": 122
+    },
+    {
+      "title": "WP20: D1 and P at degree-5 holes, order 25 (P1 produced and independently checked; audit replay and Math review pending)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1321_longtable_to_math+audit+navigator+coordination+user_WP20-P1-report.md",
+        "backgroundMaterial/planemap-structural/longtable/wp20/P1-report-numbers.md",
+        "backgroundMaterial/planemap-structural/longtable/wp20/P1-check.log",
+        "backgroundMaterial/planemap-structural/longtable/wp20/CHRONOLOGY.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T19:25:00Z",
+          "text": "Revision 123, WP20 P1 report (Long Table 13:21, commit 2bf9464), checked against the files. P1-check.log ends \"graphs in input: 25381, graphs recomputed in check set: 25381, unresolved (producer interrupted/non-complete): 0\" and \"CHECK OK: no mismatch\" (the independent checker d1_check.py 98c6bcf7, written blind, --all, 14 workers, 11:34:56 to 13:19:54). P1-report-numbers.md binds the declaration 8758a9f8, the input 92e482ed, the producer bb350d3b and the output e68c44a3 (117 MB, not in git; the navigator did not re-hash it, under the no-new-jobs rule). Counts, on these 25,381 graphs only: 405,465 degree-5 vertices, all complete; 142,792,092 unfilled states; D1 kills 0; P kills 0; P capped 0; interrupted 0; SEP-bad 658, all at depth 1, in 70 graphs; filled_neighbour_for_bad 0 (every SEP-bad state rescued by a separable unfilled neighbour); locked classes 5,448 in 1,619 graphs; no_legal_fan 1,140 (chunks 6, 7, 8), with both readings stated: reading 1 (the declaration's \"excluded from every statement\") leaves them untested by D1 and P, reading 2 (P on every unfilled state, as the format document and both programs implement) tests P on them with 0 kills. Chronology as stated: P1 started before Math's written go-ahead; attempt 1 paused about four minutes by operator error and then killed by an overnight restart with no output; attempt 2 a chunked full rerun, merged by concatenation, every graph recomputed by the checker; the Studio's T2 is a replay; P2 does not run by the declaration's cost rule. STATUS: produced and independently checked (a second implementation agrees on every graph). It is NOT recorded as passed until the remaining gates are met: (a) the audit's pre-registered replay (third implementation, own 1 percent sample, flagged graphs), which cannot run on the MacBook under the 13:01 rule and must be routed to the Studio; (b) Math's review against the declaration and its 20:42 conditions; and, for reproducibility only, (c) the digest comparison of the P1 output with the Studio's T2 replay, not yet computed. When (a) and (b) agree, the ledger records: computed, no D1 or P counterexample among the 25,381 order-25 minimum-degree-5 triangulations, under reading 2 for no_legal_fan and with the 1,140 states untested under reading 1; D1 and P post hoc, this being their first test on fresh data; never a proof, since D1 for all such triangulations would imply the Four Colour Theorem."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 123
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:25:00Z",
+          "text": "Revision 123: WP20 P1 reports no D1 or P kill and no SEP-bad state of depth 2 or more on all 25,381 order-25 graphs, independently checked; pending the audit replay and Math's review (see structural-wp20). D1 and SEP stay exploring: a finite pass on fresh data is not a proof. Observed after the fact: the SEP-bad states have near-equitable colour classes ((6,6,6,6) in 594, (5,6,6,7) in 64)."
+        }
+      ],
+      "id": "structural-sep-d1",
+      "revision": 123
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:25:00Z",
+          "text": "Revision 123, the coordinator's relay of the Studio session (no file seen by the navigator): the Studio hash-audited the backup snapshot 8299419 and accounted for all 118 files; 52 differ from the audited sources only by the copyright block. This bears on the paper's Lean citations; Mathlib preparation stays on hold."
+        }
+      ],
+      "id": "dissemination-mathlib-planemap",
+      "revision": 123
     }
   ]
 }
