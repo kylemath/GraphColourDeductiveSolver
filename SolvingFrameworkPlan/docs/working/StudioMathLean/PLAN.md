@@ -12,3 +12,15 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 
 ## Open decision for the coordinator
 The hole-fill statements need the plane-map carrier (rotation, outer ring w_t) rather than a bare `SimpleGraph`. I will ask the Math team (Lean owner) how `Vacancy*` states it before writing Piece 3.
+
+## Drafts awaiting the PlaneMap build (uncompiled, not results)
+
+- `EulerSharp.draft.lean`: piece 2. The library's `edge_card_bound` loses 1 because it never uses the fact that the coordinate sum kills the incidence image (each edge has two ends). Adding that gives `E + 2 ≤ n + F` with **no connectivity hypothesis**. For a triangulation this is `2E + 12 ≤ 6n`, and composing with `good_card_ge_twelve` gives the full Euler lemma (`twelve_light_fives`).
+- `VacancyIcosahedral.draft.lean`: Theorem H in the library's vacancy language (`FiveLink`, `PureFill`, `Alternation`). The statement is: every proper colouring at an icosahedral hole fills within **3 pure Kempe swaps**.
+  - Ring words: R1/R2/R3 come from a `decide` over 4^5 ring words.
+  - R2: F, then a fill.
+  - R3: AB, then a fill.
+  - R1: F, then the three-vertex {0,3} swap, then a fill.
+  - Jordan: R1 and R2 use `vacancy_alternation`.
+  - Transport to arbitrary colourings copies `vacancy_mobility_general`.
+- All dependencies are in PlaneMap snapshot 8299419, which the powerhouse is building. Compiling is then a single-file check against its oleans.
