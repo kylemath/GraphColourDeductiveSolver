@@ -1,7 +1,12 @@
 {
-  "revision": 131,
-  "updatedAt": "2026-10-06T14:58:00-06:00",
+  "revision": 132,
+  "updatedAt": "2026-10-06T15:08:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T21:08:00Z",
+      "node": "structural-wp20",
+      "action": "Revision 132 records the audit's pre-registered WP20 P1 replay as agreeing (0 faults; three implementations agree), leaving Math's review as the last WP20 gate; the audit's hand re-derivations of the Tait lock criterion and of Long Table's E2-after-AB criterion (now unconditional; the gap M3 and N3 open); the audit's framing that core-class R* is a reformulation of the whole open problem; Studio Math's link D pieces D1 to D3b (built, unaudited); Route B as a new planned branch; the paper as a 7-page summary. Leaderboard: audit +60, studiocompute +30. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T20:58:00Z",
       "node": "structural-chain-rstar",
@@ -11300,6 +11305,132 @@
           "time": "2026-10-06T20:58:00Z",
           "text": "Revision 131, leaderboard: studiomath +200 (Theorem HP compiled in Lean, audit J8 passed). studiocompute +30 (J9, a requested run of the audit's check with outputs posted, 398931c; same B1 ruling as J5 to J8). Not scored: links A to C (the 300 needs the core-class reduction, link D); Studio intel's withdrawal of \"AB kills E2\" (its 14:14 claim was scoped to 32 graphs and was not wrong; a candidate generalisation dropped on new data is not an error withdrawn); intern cycles (unreviewed or no-gap reports not requested as replays this cycle). Totals: math 30, audit 30, studiomath 510, studiocompute 210, intern-C 30, others 0."
         }
+      ]
+    },
+    {
+      "id": "structural-wp20",
+      "revision": 132,
+      "title": "WP20: D1 and P at degree-5 holes, order 25 (P1 checked by three implementations, the audit's pre-registered replay agrees; Math review pending)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1457_audit_to_coordination+navigator+math+longtable+severn_WP20-P1-audit-replay-REPLAY-AGREES.md",
+        "wp20-j3/README.md",
+        "wp20-j3/out/compare-result.json"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:08:00Z",
+          "text": "Revision 132: the audit's pre-registered P1 replay J3 (route A; its own code, hashes d0fc8759 and 511cf77e equal to the package; run on the Studio 14:14:44 to 14:53:25, exit 0; input SHA-256 e68c44a3...793e equal to Long Table's report) gives REPLAY AGREES, 0 faults: merge integrity and accounting identities hold on all 25,381 graphs; 870 graphs (70 flagged, 273 audit sample, 539 declared sample) recounted field by field, all equal; witnesses 658 SEP-bad, 0 D1 kills, 0 P kills. Three implementations now agree on P1 (producer, Long Table's --all checker, the audit's replay), plus the Studio's identical content-digest replay (T2/J4). Gates: Long Table's check, the second-machine reproduction and the audit replay are met; Math's review of the report is the remaining gate (none on file), so the node stays in-progress, not yet a recorded finite result. Small evidence gap E1 (not a fault): out/run.log is listed in wp20-j3/SHA256SUMS but not committed (gitignored); force-add requested. Scope: these 25,381 order-25 graphs only."
+        }
+      ]
+    },
+    {
+      "id": "structural-tait-lock-criterion",
+      "revision": 132,
+      "title": "Tait lock criterion and its corollary (hand, Long Table; Math review; re-derived by the audit)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1456_audit_to_longtable+math+coordination+navigator_Tait-lock-criterion-verified.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:08:00Z",
+          "text": "Revision 132: the audit re-derived pd2_lock_proof.md step by step by hand (14:56; colours, Step 0 non-crossing, Step 1 cut argument, Step 2 Jordan curve, mirrors): correct. Label [hand, Long Table; re-derived by the audit], given the classical Tait facts [cited]. Intern C cycle 3 also found no gap."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 132,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1455_audit_to_longtable+math+coordination+navigator_E2-AB-lemma-verified.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1456_audit_to_longtable+math+coordination+navigator_Tait-lock-criterion-verified.md",
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/e2-ab-tait-reduction.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:08:00Z",
+          "text": "Revision 132: E2-after-AB exact criterion (Long Table 1a6e183, e2-ab-tait-reduction.md): [hand, Long Table; re-derived by the audit] (14:55), now unconditional after the audit's re-derivation of the Tait lock criterion (14:56). What was verified: AB swaps gamma and delta along W; the seven W-nodes and six hooks; lock 2 of s holds iff M1 or M3, lock 1 iff N3 or N4; and AB leaves E2 doubly locked (fails to kill) iff M3 and N3, i.e. a (beta,gamma)-path Y1 and a (beta,delta)-path Y2 both run from e3 to w0w1 off W; degrees of x3, x4 unused. NOT verified: Consequence 1's picture of Y1, Y2 wrapping round w3 when deg w3 = 6 (it rests on intern A's rotation at w3), and intern A's cycle 3-4 lemmas. The gap (no DL E2 state with M3 and N3) is open, and Studio intel's data show AB does not always kill E2 (revision 131). Nothing about the sub-case is proved."
+        }
+      ]
+    },
+    {
+      "id": "structural-chain-rstar",
+      "revision": 132,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1454_longtable_to_coordination+math+audit+navigator+user_selection-angle-and-scale-of-the-gap.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1455_longtable_to_coordination+math+audit+navigator_R-star-selection-page.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1453_coordination_to_math+longtable+audit+studiomath+studiointel+navigator+severn_focus-orders.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:08:00Z",
+          "text": "Revision 132: scale of the gap, recorded on the audit's 13:25 framing (restated by Long Table 14:54 and adopted in the coordinator's 15:02 correction to the focus orders): core-class R* implies the Four Colour Theorem, so it is a clean reformulation of the WHOLE open problem in swap-only, one-vertex form, not a small remaining gap; the open case (two or more neighbours of degree at least 6) carries all the difficulty. Long Table's selection page (rstar-selection.md, 14:55) [hand, nothing computed]: the open rows cannot be selected away (the pentakis dodecahedron has only (6,6,6,6,6) holes, and no 2-ball with three or more 6s is clean), so a selection proof of R* is an unavoidable set of pure-clean configurations with rings beyond 5 plus discharging; the Tilley route does not need R*. Audit asked to attack its sections 3 and 4."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-lean-link-d",
+      "revision": 132,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1454_studiomath_to_coordination+audit+navigator_link-D1-subgraph-tracked-compiled.md",
+        "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:08:00Z",
+          "text": "Revision 132: Studio Math reports D1 (subgraph_tracked, 14:54), D2 (algebraic sides of a non-facial triangle via Fills, b17e16a), D3a and D3b (the kept side of a separating triangle is a triangulation with the triangle as a face: kept_triangulated, kept_facial; f6e7e92) built in PlaneMap/SideTriangle.lean, standard axioms and no sorry by its own check.sh. Not audited: the audit will check link D as a whole when D5 lands. D4 (lift PureClean) and D5 (induction) remain."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 132,
+      "node": {
+        "id": "structural-route-b-kempe-reducible",
+        "title": "Route B: a small computer-checked set of Kempe-reducible (pure-clean) configurations plus discharging (planned, not started)",
+        "status": "unstarted",
+        "statement": "Every core triangulation (minimum degree 5, no separating triangle) contains one configuration from a small finite set, each shown pure-clean (every colouring of its boundary fills by pure Kempe swaps inside it) by a checked computation; with link D this would give core-class R* and so the Four Colour Theorem. A deliberate change of goal: it gives up \"no configuration census\" for a small, machine-checked census (Lean if possible).",
+        "approach": "Coordinator's plan (df885ed, MaximiseSuccessPlan.md), routes A to E: A structural R* (current), B this node, C literature first, D the formal chain (link D), E fail fast (Phase D adversary). Route B owners: Studio Intel (engine, when resumed), Studio Math (Lean certificates), Math (discharging rules from the Euler lemma), interns (candidate configurations by hand). Long Table's selection page (14:55) explains why configurations larger than a 2-ball are needed.",
+        "evidence": "None yet: a plan only.",
+        "killCriteria": "A core triangulation family avoiding every candidate configuration, or a candidate shown not pure-clean by a replayed certificate.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/MaximiseSuccessPlan.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1455_longtable_to_coordination+math+audit+navigator_R-star-selection-page.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T21:08:00Z",
+            "text": "Revision 132: new branch node from the coordinator's plan. Not started. The forecast meter beside the top bar is the coordinator's judgement, not a ledger status."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 132,
+      "title": "The VH-exists paper: a 7-page summary of the route (a dated record of what is solid)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1500_severn_to_longtable+navigator+audit+math+coordination_paper-restructured-as-summary.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:08:00Z",
+          "text": "Revision 132: Severn restructured the paper as a 7-page summary (84d2619, on the user's brief); cut material stays in the repository and in git history at 8eea2e5. Navigator claim check of the new text is owed (asked 15:00). Already known: the WP20 P1 status line may now say the audit's pre-registered replay agrees (three implementations), with Math's review pending; the R* text must carry the audit's framing that core-class R* is a reformulation of the whole open problem."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 132,
+      "notes": [
+        {
+          "time": "2026-10-06T21:08:00Z",
+          "text": "Revision 132, leaderboard: audit +30 for the WP20 P1 pre-registered replay J3 (its own independent implementation, requested in the WP20 gates and routed by the coordinator; report posted 14:57); studiocompute +30 for running J3 on request with outputs posted (wp20-j3/), the same execution award as J5 to J9; audit +30 for the requested adversarial re-derivation of the E2-after-AB criterion (focus orders 14:53: \"attack every front-1 claim\"), with its Tait lock criterion re-derivation counted as part of that one review, not a second award. Not scored: Studio Math link D pieces (unaudited; the 300 needs the whole link in an audit); Long Table's selection and scale-of-the-gap pages (no bounty item); the E2 lemma itself (a partial, the sub-case is not proved). Totals: math 30, audit 90, studiomath 510, studiocompute 240, intern-C 30, others 0."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/core/MaximiseSuccessPlan.md"
       ]
     }
   ]
