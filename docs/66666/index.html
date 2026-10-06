@@ -121,7 +121,9 @@
       <span class="lab">[computed, exploratory]</span>. So no argument that uses only local information can bound the radius here. A real graph
       shows the cost: below is an order-28 triangulation with a doubly locked state of <strong>radius 4</strong>
       <span class="lab">[computed]</span>. That is why the team is now looking for <strong>global invariants</strong>. Whether
-      any bound on the radius exists (Conjecture R) is still <span class="lab">[open]</span>.
+      any bound on the radius exists (Conjecture R) is still <span class="lab">[open]</span>. The proof route needs less than a
+      bound: only that in each graph <strong>one</strong> degree-five vertex has every doubly locked state reach a filled state in finitely many
+      swaps (Lemma R*). A uniform bound is not required.
     </p>
   </div>
 
@@ -221,7 +223,8 @@
         <p>The order-28 example kills the guess "radius ≤ 3 at (6,6,6,6,6) holes" and nothing more. The highest radius known at any hole
           is still 4. Real graphs here do not use the trap's resets, and no colouring that can never be filled has been found
           <span class="lab">[computed, exploratory]</span>. A bound would need information that survives a swap, which is a global question.
-          Conjecture R (some bound on the radius) stays <span class="lab">[open]</span>.</p>
+          Conjecture R (some bound on the radius) stays <span class="lab">[open]</span>. The proof route needs only Lemma R*: a finite
+          radius at one degree-five vertex per graph, not a uniform bound <span class="lab">[open]</span>.</p>
         <button class="btn ghost" id="ring">Highlight the ring</button>
       </div>
     </aside>
@@ -233,10 +236,14 @@
       independently by <code>docs/66666/build_data.py</code>, which imports none of Math's code. It enumerates every 4-colouring of T − 0 up to
       renaming and uses whole-chain Kempe swaps (single vertices allowed). The results agree with Math's: 121 doubly locked states, with radii
       117 × 2, 3 × 3 and 1 × 4, and the radius-4 state has ring pattern <code>dgdgdbabgb</code>. One observation of ours, unchecked: a radius-2 state here has ring pattern
-      <code>gadbdabagd</code> (<code>gadgdabagb</code> read the other way round), and both are on Math's list of patterns not yet seen.
-      The 74 patterns and the trap come from <code>MathSixFiveHole.md</code> and <code>MathSixFiveAutomaton.md</code>. The ledger entries
+      <code>gadbdabagd</code>, in Math's frame (link read 1 to 5 in face-list order, roles a, b, g, d at x0, x1, x3, x4, ring read from w0).
+      By Math's mirror argument (hand, addendum to <code>MathSixFiveAutomaton.md</code>) its mirror <code>gadgdabagb</code> is realised too,
+      so two patterns are still unseen: <code>gadbdabagb</code> and <code>gadgdabagd</code>.
+      The 74 ring patterns come from <code>SolvingFrameworkPlan/docs/working/MathSixFiveHole.md</code>. The 5,650-state trap (K-A1) and the
+      order-28 radius-4 hole come from <code>SolvingFrameworkPlan/docs/working/MathSixFiveAutomaton.md</code>. The ledger entries
       (Navigator revision 121, <code>SolvingFrameworkPlan/messages/2026-10-06/</code>) are K-A1 killed [computed, exploratory] and radius 4 at a
-      (6⁵) hole [computed], neither replayed by the audit. Conjecture R is [open]. Definitions: <code>START-HERE.md</code> §5 and
+      (6⁵) hole [computed], neither replayed by the audit. Conjecture R is [open]. Lemma R* is in
+      <code>SolvingFrameworkPlan/docs/working/MathReviewCleanToVHE.md</code>. Definitions: <code>START-HERE.md</code> §5 and
       <code>l-attack.md</code> §1. This is finite evidence about one graph, not a proof. The demo was built by an AI agent (Claude), as is
       most of this project.</p>
   </div>
@@ -249,7 +256,7 @@
   const COLORS = ['var(--c0)', 'var(--c1)', 'var(--c2)', 'var(--c3)'];
   const NAMES = ['red', 'blue', 'yellow', 'green'];
   const PAIRS = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
-  const UNSEEN = new Set(['gadbdabagb', 'gadbdabagd', 'gadgdabagb', 'gadgdabagd']);
+  const UNSEEN = new Set(['gadbdabagb', 'gadgdabagd']);
   const svgNS = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
   const $ = (id) => document.getElementById(id);
@@ -494,7 +501,7 @@
     const nHere = Object.keys(here).length;
     $('patText').innerHTML = 'This graph realises <strong>' + nHere + '</strong> of the 74. ' +
       (cur ? 'Current state: <code>' + cur + '</code>.' : 'The current state is not doubly locked, so it has no pattern.') +
-      ' Patterns underlined in amber are the four Math lists as not yet seen in any graph (pattern strings depend on which way round the ring is read).';
+      ' Patterns underlined in amber are the two still unseen in any graph. Math listed four; this graph realises <code>gadbdabagd</code>, and its mirror image <code>gadgdabagb</code> then follows (Math, hand).';
   }
   function render() { renderRoots(); renderMap(); renderLand(); renderNet(); renderReadout(); renderMoves(); renderPats(); }
 

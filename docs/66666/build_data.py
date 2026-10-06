@@ -55,61 +55,79 @@ assert min(deg) >= 5 and not sep
 link = rot[HOLE]  # cyclic order around the hole
 assert sorted(link) == [1, 2, 3, 4, 5] and all(deg[x] == 6 for x in link)
 
-# ---------------------------------------------------------------- Tutte layout
-# Fix the face farthest (graph distance) from the hole as the outer triangle.
-dist0 = {HOLE: 0}; q = collections.deque([HOLE])
-while q:
-    u = q.popleft()
-    for w in adj[u]:
-        if w not in dist0: dist0[w] = dist0[u] + 1; q.append(w)
-def tutte(weight):
-    A = np.zeros((len(inner), len(inner))); bvec = np.zeros((len(inner), 2))
-    for v in inner:
-        i = idx[v]
-        for w in adj[v]:
-            wt = weight(v, w); A[i, i] += wt
-            if w in idx: A[i, idx[w]] -= wt
-            else: bvec[i] += wt * pos[w]
-    sol = np.linalg.solve(A, bvec)
-    for v in inner: pos[v] = sol[idx[v]]
-def layout(outer):
-    global pos, inner, idx
-    pos = np.zeros((n, 2))
-    for k, v in enumerate(outer):
-        ang = -np.pi / 2 + 2 * np.pi * k / 3
-        pos[v] = [np.cos(ang), np.sin(ang)]
-    inner = [v for v in range(n) if v not in outer]
-    idx = {v: i for i, v in enumerate(inner)}
-    tutte(lambda v, w: 1.0)
-    for _ in range(12):
-        L = {(v, w): float(np.hypot(*(pos[v] - pos[w]))) for v in range(n) for w in adj[v]}
-        tutte(lambda v, w: L[(v, w)])
-    return min(float(np.hypot(*(pos[u] - pos[w]))) for u in range(n) for w in range(u + 1, n))
-# Positive edge weights keep a Tutte (convex-combination) drawing planar (Floater).
-# Reweighting by edge length spreads the crowded middle; the outer face is the one
-# whose drawing has the largest minimum vertex spacing.
-best = max(FACES, key=lambda f: (round(layout(list(f)), 4), -min(f)))
-outer = list(best); spacing = layout(outer)
-print('outer face', outer, 'min spacing', round(spacing, 3))
+# ---------------------------------------------------------------- layout
+# 1. Weighted Tutte drawing: outer triangle fixed on a circle, each inner vertex a
+#    positive-weight average of its neighbours (planar by Floater's theorem). Weights
+#    exp(-alpha * depth of neighbour) pull vertices toward the outside; a few rounds of
+#    edge-length reweighting even out edge lengths. Outer face, alpha and rounds are
+#    chosen to maximise min(vertex gap, 2 * vertex-to-edge gap).
+# 2. Hill-climb: move one inner vertex at a time (seeded RNG), keep the move only if
+#    every face keeps its orientation and the spacing score does not drop.
+# 3. Rescale to fill the viewBox; assert no two edges cross.
+Ea = np.array(sorted(edges)); Fa = np.array(FACES)
+def gaps(P):
+    dd = np.hypot(P[:, None, 0] - P[None, :, 0], P[:, None, 1] - P[None, :, 1])
+    vv = dd[np.triu_indices(n, 1)].min()
+    A_, B_ = P[Ea[:, 0]], P[Ea[:, 1]]; D_ = B_ - A_; L_ = (D_ * D_).sum(1)
+    t = np.clip(((P[None, :, :] - A_[:, None, :]) * D_[:, None, :]).sum(2) / L_[:, None], 0, 1)
+    Q_ = A_[:, None, :] + t[:, :, None] * D_[:, None, :]
+    de = np.hypot(*(P[None, :, :] - Q_).transpose(2, 0, 1))
+    de[np.arange(len(Ea)), Ea[:, 0]] = 9; de[np.arange(len(Ea)), Ea[:, 1]] = 9
+    return float(vv), float(de.min())
+def score(P):
+    vv, ve = gaps(P); return min(vv, 2 * ve)
+def fit(P):
+    lo, hi = P.min(0), P.max(0); return (P - (lo + hi) / 2) * (2.08 / float((hi - lo).max()))
+def signs(P):
+    a, b, c = P[Fa[:, 0]], P[Fa[:, 1]], P[Fa[:, 2]]
+    return np.sign((b[:, 0] - a[:, 0]) * (c[:, 1] - a[:, 1]) - (b[:, 1] - a[:, 1]) * (c[:, 0] - a[:, 0]))
 def crossings(P):
-    E = sorted(edges); bad = 0
     def ccw(a, b, c): return (P[b][0]-P[a][0])*(P[c][1]-P[a][1]) - (P[b][1]-P[a][1])*(P[c][0]-P[a][0])
-    for (a, b), (c, d) in itertools.combinations(E, 2):
-        if len({a, b, c, d}) < 4: continue
-        if ccw(a, b, c) * ccw(a, b, d) < 0 and ccw(c, d, a) * ccw(c, d, b) < 0: bad += 1
+    bad = 0
+    for (a, b), (c, d) in itertools.combinations(sorted(edges), 2):
+        if len({a, b, c, d}) == 4 and ccw(a, b, c) * ccw(a, b, d) < 0 and ccw(c, d, a) * ccw(c, d, b) < 0: bad += 1
     return bad
-assert crossings(pos) == 0
-# radial stretch about the inner centroid; kept only if the drawing stays crossing-free
-base = pos.copy(); cen = base[inner].mean(axis=0)
-for ex in (0.45, 0.55, 0.65, 0.75, 1.0):
-    P = base.copy()
-    for v in inner:
-        dv = base[v] - cen; r = np.hypot(*dv)
-        P[v] = cen + dv * (r ** (ex - 1) if r > 1e-9 else 1)
-    if crossings(P) == 0:
-        pos = P; print('radial exponent', ex,
-            'min spacing', round(min(float(np.hypot(*(pos[u]-pos[w]))) for u in range(n) for w in range(u+1, n)), 3)); break
-# hole position: barycentre of its link (it was deleted, so draw it there)
+def tutte_layout(outer, alpha, rounds):
+    P = np.zeros((n, 2))
+    for k, v in enumerate(outer):
+        ang = -np.pi / 2 + 2 * np.pi * k / 3; P[v] = [np.cos(ang), np.sin(ang)]
+    depth = {v: 0 for v in outer}; qq = collections.deque(outer)
+    while qq:
+        u = qq.popleft()
+        for w in adj[u]:
+            if w not in depth: depth[w] = depth[u] + 1; qq.append(w)
+    inner = [v for v in range(n) if v not in outer]; ix = {v: i for i, v in enumerate(inner)}
+    def solve(wf):
+        A = np.zeros((len(inner), len(inner))); b = np.zeros((len(inner), 2))
+        for v in inner:
+            i = ix[v]
+            for w in adj[v]:
+                x = wf(v, w); A[i, i] += x
+                if w in ix: A[i, ix[w]] -= x
+                else: b[i] += x * P[w]
+        s_ = np.linalg.solve(A, b)
+        for v in inner: P[v] = s_[ix[v]]
+    base = lambda v, w: float(np.exp(-alpha * depth[w]))
+    solve(base)
+    for _ in range(rounds):
+        Lm = {(v, w): float(np.hypot(*(P[v] - P[w]))) for v in range(n) for w in adj[v]}
+        solve(lambda v, w: base(v, w) * Lm[(v, w)])
+    return fit(P)
+plain = tutte_layout(list(FACES[-1]), 0.0, 0)
+cands = [(score(tutte_layout(list(f), al, r)), list(f), al, r) for f in FACES for al in (0, 0.4, 0.8, 1.2, 1.6) for r in (0, 6)]
+_, outer, alpha, rounds = max(cands, key=lambda c: c[0])
+pos = tutte_layout(outer, alpha, rounds); S0 = signs(pos); cur = score(pos)
+rng = np.random.default_rng(1); movable = [v for v in range(n) if v not in outer]
+for it in range(6000):
+    v = movable[rng.integers(len(movable))]; Z = pos.copy(); Z[v] += rng.normal(0, 0.03, 2)
+    if (signs(Z) != S0).any(): continue
+    s_ = score(Z)
+    if s_ >= cur: pos, cur = Z, s_
+pos = fit(pos)
+assert (signs(pos) == S0).all() and crossings(pos) == 0
+print('layout: outer', outer, 'alpha', alpha, 'rounds', rounds, 'gaps (vertex, vertex-edge): plain Tutte',
+      [round(x, 3) for x in gaps(plain)], 'final', [round(x, 3) for x in gaps(pos)])
+
 # ---------------------------------------------------------------- colourings of T - v
 V = [v for v in range(n) if v != HOLE]           # vertex order for colour strings
 order = []                                        # BFS order for backtracking
