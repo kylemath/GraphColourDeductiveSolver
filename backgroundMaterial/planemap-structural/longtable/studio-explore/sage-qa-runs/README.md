@@ -45,3 +45,20 @@
   - lock_dist, lowered: 6 / 2 / 2 / 7 / 4 / 2 / 0 / 0. It is 0 at Errera's holes only.
   - lex_3_1_2 is close to lock_size.
 - link_comps and link_comps_max are constant on unfilled states at every hole, so every unfilled state is stuck for them.
+
+## Run 5 follow-up (A): least k for k-step descent (`potentials3.py --leastk`, `leastk.txt`)
+- For every unfilled state, the least k such that some sequence of k swaps reaches a strictly lower value or a filled state. The histogram is given per hole, with the joint distribution against the state's distance to the filled set.
+- Holes: as in run 5.
+- **k <= 3 everywhere.**
+  - lex (lock_size, lock_dist): k <= 2 at all four certificates and both Errera holes. k = 3 for only 5 states: 4 at the F-cycle hole, 1 at the order-22 rho-5 hole.
+  - lock_size alone: k = 3 at the same 5 states.
+  - lock_dist alone: k = 3 at 1 state each of 8a23ee and 62661a, and 1 of order-22.
+- **k does not track the radius.** Most states at distance 4-5 have k = 1, and the k = 2 or 3 states sit at distances 2-5.
+
+## (B) inert-disc check (`inertdisc.py`, `inertdisc.txt`, `inertdisc-91a307-interior.json`)
+- Every swap on a shortest filling sequence out of a DL state is checked: 1,155 / 1,042 / 1,042 / 3,834 swaps at the certificates, 220 at the F-cycle hole, 120 + 120 at Errera.
+- Lock curve: v plus a shortest path m ~ a (resp. m ~ b) inside the lock chain. Disc: the side containing x_{j+2} (a stated convention).
+- Violation: the swapped component meets no lock chain and lies wholly inside a disc.
+- Nearly all violations are swaps of the component containing x_{j+2} itself, which lies in the disc by this convention.
+- **Genuine interior violations (component off the link): 4, all at certificate 91a307 hole 22.** They are 2 states (frames 2 and 4) at distance 3, each with a shortest-fill swap of component {18} or {7, 8, 18} strictly inside lock disc 2. The full colourings are in `inertdisc-91a307-interior.json`.
+- Every other hole has 0 genuine violations.
