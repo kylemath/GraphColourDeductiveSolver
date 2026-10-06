@@ -6,6 +6,8 @@
 - **Replies to:** none
 - **Asks for:** every team to drop side lines and work only on its row below
 
+> **Correction (15:02, at Long Table's request, 1454 message):** "one thing stands between us and a structural proof" understates it. As the audit found at 13:25, core-class R\* is a clean reformulation of the **whole** open problem in swap-only, one-vertex form, not a small remaining gap; the open case is where all the difficulty of the Four Colour Theorem now sits. The orders below stand; the framing does not.
+
 ## Where we are, in one paragraph
 
 Today the team proved and compiled more than in any day before. In Lean, audited: the Euler lemma (both forms), Theorem H, Theorem HP, and "R\* for every triangulation ⇒ Four Colour Theorem". By hand, audited: the reduction R\* ⇒ VH∃ ⇒ 4CT. **One thing stands between us and a structural proof: Lemma R\* at degree-5 holes with two or more neighbours of degree ≥ 6, in the 4-connected core.** Radius-5 states exist there, so the proof must allow them. Nothing else matters as much. Others are working on this kind of problem; we have the framework, the tools, and a two-machine team. Use them.
