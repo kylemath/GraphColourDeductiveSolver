@@ -1,0 +1,15 @@
+link degrees in [5,5]: 1 configurations (formula (k^5+5k^3+4k)/10 = 1)
+link degrees in [5,6]: 8 configurations (formula (k^5+5k^3+4k)/10 = 8)
+link degrees in [5,7]: 39 configurations (formula (k^5+5k^3+4k)/10 = 39)
+link degrees in [5,8]: 136 configurations (formula (k^5+5k^3+4k)/10 = 136)
+link degrees in [5,9]: 377 configurations (formula (k^5+5k^3+4k)/10 = 377)
+link degrees in [5,10]: 888 configurations (formula (k^5+5k^3+4k)/10 = 888)
+link degrees in [5,11]: 1855 configurations (formula (k^5+5k^3+4k)/10 = 1855)
+(5, 5, 5, 5, 5) ring 5 | vdred: True 3 {1: 15, 2: 10, 3: 5} | joint: True 3 {1: 15, 2: 10, 3: 5} | 0.0s
+(5, 5, 5, 5, 6) ring 6 | vdred: True 6 {1: 23, 2: 15, 3: 3, 4: 2, 5: 2, 6: 1} | joint: True 6 {1: 23, 2: 15, 3: 3, 4: 2, 5: 2, 6: 1} | 0.0s
+(5, 5, 5, 6, 6) ring 7 | vdred: True 7 {1: 46, 2: 23, 3: 7, 4: 8, 5: 4, 6: 4, 7: 2} | joint: True 7 {1: 46, 2: 23, 3: 9, 4: 6, 5: 4, 6: 4, 7: 2} | 0.1s
+(5, 5, 6, 5, 6) ring 7 | vdred: False None {1: 37, 2: 21, 'inf': 28} | joint: True 14 {1: 37, 2: 21, 3: 3, 4: 8, 5: 2, 6: 2, 7: 2, 8: 1, 9: 1, 10: 2, 11: 2, 12: 2, 13: 2, 14: 1} | 0.1s
+(5, 5, 6, 6, 6) ring 8 | vdred: False None {1: 71, 2: 30, 3: 4, 4: 2, 'inf': 59} | joint: False None {1: 71, 2: 30, 3: 5, 4: 4, 'inf': 56} | 0.3s
+(5, 6, 5, 6, 6) ring 8 | vdred: False None {1: 82, 2: 47, 3: 3, 4: 2, 'inf': 56} | joint: False None {1: 82, 2: 47, 3: 5, 4: 8, 'inf': 48} | 0.4s
+(5, 6, 6, 6, 6) ring 9 | vdred: False None {1: 126, 2: 46, 3: 6, 4: 4, 5: 4, 6: 5, 'inf': 135} | joint: False None {1: 126, 2: 46, 3: 14, 4: 5, 'inf': 135} | 1.2s
+(6, 6, 6, 6, 6) ring 10 | vdred: False None {1: 180, 'inf': 370} | joint: False None {1: 180, 'inf': 370} | 2.5s
