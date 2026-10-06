@@ -3,6 +3,9 @@
 WP20-output-format.md only.  Standard library only.
 
 usage:  d1_check.py OUTPUT.json PLANTRI_STDOUT DECLARATION.md [--workers K] [--all]
+        d1_check21.py OUTPUT.json PLANTRI_STDOUT DECLARATION.md --range LO HI [--no-global]
+            (check set = exactly graphs LO <= index < HI, each recomputed; exit 0 ok, 1 mismatch,
+             2 incomplete/invalid range; used by wp_check_shards.py)
         d1_check.py --selftest ORDER [--plantri PATH] [--workers K]
 
 Two independent code paths live here:
@@ -572,9 +575,11 @@ def work(task):
     return index, verts, mywits, msgs
 
 
-def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False):
+def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False, rng=None, no_global=False):
     """returns (list_of_problems, stats dict)"""
     P = []
+    incomplete = []
+    do_global = rng is None or not no_global
     log = (lambda s: None) if quiet else (lambda s: print(s, flush=True))
     # 1. hashes
     if out.get("declaration_sha256") != sha256_file(decl_path):
@@ -594,7 +599,16 @@ def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False):
     graphs = parse_plantri(plantri_path)
     if any(g[1] != order for g in graphs):
         P.append("FAULT plantri input contains graphs of order other than %r" % order)
+    if rng is not None:
+        lo, hi = rng
+        if lo < 0 or lo > hi:
+            incomplete.append("invalid range %d..%d" % (lo, hi))
+        elif hi > len(graphs):
+            incomplete.append("range %d..%d extends past the %d graphs of the input" % (lo, hi, len(graphs)))
+    inr = (lambda i: True) if rng is None else (lambda i: rng[0] <= i < rng[1])
     for i, (line, n, rot) in enumerate(graphs):
+        if not (do_global or inr(i)):
+            continue
         if not triangulation_ok(n, rot):
             P.append("FAULT graph %d is not a valid minimum-degree-5 spherical triangulation" % i)
     og = out.get("graphs", [])
@@ -609,6 +623,8 @@ def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False):
     chk = set()
     unresolved = 0
     for i, (line, n, rot) in enumerate(graphs):
+        if not (do_global or inr(i)):
+            continue
         g = byidx.get(i)
         if g is None:
             P.append("FAULT graph %d missing from output" % i)
@@ -619,6 +635,17 @@ def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False):
         pv = [v["x"] for v in g.get("vertices", [])]
         if g.get("status") == "complete" and pv != deg5:
             P.append("MISMATCH graph %d vertex list %r != degree-5 vertices %r" % (i, pv, deg5))
+        if rng is not None:
+            # range mode: the check set is exactly the range, every graph recomputed
+            if not inr(i):
+                continue
+            chk.add(i)
+            if g.get("status") != "complete":
+                unresolved += 1
+            for v in g.get("vertices", []):
+                if v.get("status") == "interrupted":
+                    unresolved += 1
+            continue
         if g.get("status") != "complete":
             chk.add(i)
             unresolved += 1
@@ -636,17 +663,18 @@ def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False):
     for kind, field in (("sep_bad", "sep_bad"), ("d1_kills", "d1_kills"), ("p_kills", "p_kills")):
         tot = sum(v.get(field, 0) or 0 for g in og for v in g.get("vertices", []))
         nw = len(W.get(kind, []))
-        if not trunc and tot != nw:
+        if do_global and not trunc and tot != nw:
             P.append("MISMATCH total %s: sum of vertex counts %d, witnesses listed %d" % (field, tot, nw))
     wby = {}
     for kind in ("sep_bad", "d1_kills", "p_kills"):
         for w in W.get(kind, []):
             wby.setdefault(w.get("index"), {"sep_bad": [], "d1_kills": [], "p_kills": []})[kind].append(w)
     tasks = []
-    for i in sorted(chk | set(k for k in wby if isinstance(k, int) and 0 <= k < len(graphs))):
+    extra_w = set() if rng is not None else set(k for k in wby if isinstance(k, int) and 0 <= k < len(graphs))
+    for i in sorted(chk | extra_w):
         line, n, rot = graphs[i]
         tasks.append((i, n, rot, wby.get(i, {})))
-    for k in wby:
+    for k in (wby if do_global else ()):
         if not (isinstance(k, int) and 0 <= k < len(graphs)):
             P.append("FAULT witness refers to non-existent graph index %r" % (k,))
     log("checking %d graphs (check set %d, with witnesses %d) on %d workers" %
@@ -685,7 +713,8 @@ def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False):
                     P.append("MISMATCH graph %d %s witness missing from producer: %r" % (index, kind, w))
                 for w in sorted(b - a, key=str):
                     P.append("MISMATCH graph %d %s witness not found by checker: %r" % (index, kind, w))
-    return P, {"checked": nchecked, "graphs": len(graphs), "unresolved": unresolved}
+    return P, {"checked": nchecked, "graphs": len(graphs), "unresolved": unresolved,
+               "incomplete": incomplete}
 
 
 # ===================================================================== selftest
@@ -803,7 +832,25 @@ def main():
     ap.add_argument("--subset-mod", type=int, default=20)
     ap.add_argument("--full-sha", default=None, help="expected SHA-256 of the full file given to --subset-of")
     ap.add_argument("--sample-mod", type=int, default=20)
+    ap.add_argument("--range", type=int, nargs=2, metavar=("LO", "HI"), default=None,
+                    help="check exactly the graphs with LO <= index < HI (all recomputed)")
+    ap.add_argument("--no-global", action="store_true",
+                    help="with --range: skip the whole-file structural checks (triangulation validity, "
+                         "accounting and witness totals of other graphs); the driver runs them once as RANGE 0..0")
+    ap.add_argument("--die-with-parent", type=int, metavar="PID", default=None, help=argparse.SUPPRESS)
     a = ap.parse_args()
+    if a.die_with_parent is not None:
+        import threading, time
+        ppid = a.die_with_parent      # the driver's pid: exit if we are no longer its child
+        if os.getppid() != ppid:
+            os._exit(3)
+
+        def _watch():
+            while True:
+                time.sleep(0.5)
+                if os.getppid() != ppid:
+                    os._exit(3)
+        threading.Thread(target=_watch, daemon=True).start()
     EXPECT_SHA[0] = a.expect_input_sha
     SAMPLE_MOD[0] = a.sample_mod
     if a.selftest is not None:
@@ -829,9 +876,24 @@ def main():
         print("subset rule verified: %d of %d graphs (tag %s, mod %d)" % (len(have), len(full), a.subset_tag, a.subset_mod))
     with open(outp) as f:
         out = json.load(f)
-    P, st = check_output(out, pl, decl, a.workers, a.all)
+    rng = tuple(a.range) if a.range else None
+    P, st = check_output(out, pl, decl, a.workers, a.all, rng=rng, no_global=a.no_global)
     for p in P:
         print(p)
+    if rng is not None:
+        tag = "RANGE %d..%d" % rng
+        print("graphs in input: %d, graphs recomputed in range: %d, unresolved (producer interrupted/non-complete): %d"
+              % (st["graphs"], st["checked"], st["unresolved"]))
+        if st["unresolved"]:
+            print("NOTE: unresolved vertices/graphs are inconclusive and were not compared count-for-count")
+        if P:
+            print("%s FAILED: %d problem(s)" % (tag, len(P)))
+            return 1
+        if st["incomplete"]:
+            print("%s INCOMPLETE: %s" % (tag, "; ".join(st["incomplete"])))
+            return 2
+        print("%s OK%s" % (tag, " (whole-file global checks skipped)" if a.no_global else ""))
+        return 0
     print("graphs in input: %d, graphs recomputed in check set: %d, unresolved (producer interrupted/non-complete): %d"
           % (st["graphs"], st["checked"], st["unresolved"]))
     if st["unresolved"]:
