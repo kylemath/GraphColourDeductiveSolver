@@ -67,3 +67,11 @@ In H, the link vertex x_t is a face through P, lying between e_{t−1} and e_t, 
 - New [hand, unreviewed]: the normal form (§1), closure under P-path swaps (§2), and the Y-lock conditions (§3).
 - Classical: the dictionary itself, and Heawood's 1890 observation that the two Kempe chains from m interfere, which §1 restates.
 - Not a proof of anything about R*. It reformulates "targetless" as a closed system of meander conditions, which a global (Jordan) argument would have to contradict.
+
+## 6. A crisp statement to kill first: Conjecture Y (added 6 Oct, after §1–5)
+
+**Conjecture Y.** For every doubly locked state s at a degree-5 hole of a triangulation, at least one of Y1(s) and Y2(s) is not doubly locked. Since Y1(s) and Y2(s) are unfilled, one more swap would then fill.
+
+- **Why it would matter.** Y1 and Y2 are in the Kempe class (§2). So Conjecture Y would make every class at every degree-5 hole non-targetless, which is R* everywhere and hence VH∃. It is therefore almost certainly too strong. That is why it should be killed first, as cheaply as possible.
+- **What Y1 is in vertex terms [hand].** Y1 translates one side of Y1 by δ. Up to renaming colours, take the side holding b and x_j. On that side it swaps every {α, c(b)}-component and every {μ, c(a)}-component. This is a composite of Kempe swaps, possibly many. So the observed Kempe radii of 4 (T4) do not refute Conjecture Y: one Y-move can cost several swaps.
+- **Kill test (Studio, ≤ 10 CPU-min, exploratory).** On every doubly locked state of T4, A_3, A_4, A_5 and the order-28 (6^5) hole, compute Y1(s) and Y2(s) and test each for double locking. A state where both stay doubly locked kills Conjecture Y. Record those states, and test the weaker form: "some move among Z1, Z2, Y1, Y2 and W, applied at most twice, reaches a state that is not doubly locked".
