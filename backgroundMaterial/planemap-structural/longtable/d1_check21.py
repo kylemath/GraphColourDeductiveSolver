@@ -588,8 +588,8 @@ def check_output(out, plantri_path, decl_path, workers, check_all, quiet=False):
         P.append("FAULT plantri stdout hash differs from the hash pre-registered for order %d" % order)
     if EXPECT_SHA[0] and ish != EXPECT_SHA[0]:
         P.append("FAULT plantri input hash differs from the expected hash %s" % EXPECT_SHA[0])
-    if out.get("wp") != "WP21":
-        P.append("FAULT wp field is not WP21")
+    if not (out.get("wp") == "WP21" or (out.get("wp") == "WP20" and out.get("phase") == "A")):
+        P.append("FAULT wp field is not WP21 (WP20 is accepted for phase A only)")
     # 2. parse
     graphs = parse_plantri(plantri_path)
     if any(g[1] != order for g in graphs):

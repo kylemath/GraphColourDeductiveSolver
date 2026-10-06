@@ -31,7 +31,7 @@ WP20 P1 tests D1 and P on order 25 exhaustively. It cannot reach rare graphs at 
 ## Resource limits and caps
 
 - **Time:** at most 30 minutes per graph (checked inside enumeration and breadth-first search), and 12 hours of wall time per phase.
-- **CPU:** phase A at most **12 CPU-hours**; phase B at most **24 CPU-hours** (each chain also has a 6,000-CPU-second cap, after which it stops). A phase that reaches its cap stops and is reported as capped. Capped is inconclusive, never a pass. Estimates, from WP20 timing at order 22 and the P1 run so far, are about 9 CPU-hours for A and about 14 for B.
+- **CPU:** phase A at most **12 CPU-hours**; phase B at most **24 CPU-hours** (each chain also has a 6,000-CPU-second cap, after which it stops). A phase that reaches its cap stops and is reported as capped. Capped is inconclusive, never a pass. Estimates: WP20 P1 measured about 5.5 CPU-seconds per order-25 graph (25,979 worker CPU-seconds for its first ~4,700 graphs), and cost grows about 1.3 times per order, so about 7 CPU-seconds per order-26 graph. That is about 9 CPU-hours for A ($4{,}578\times7$ s) and about 9 for B ($4{,}812\times7$ s); the caps leave margin.
 - **Memory:** at most 8 GB per worker, enforced in the loop. **Output:** at most 1 GB per phase.
 - **Interruptions:** interrupted graphs keep their completed vertices and are marked interrupted; inconclusive, never a pass.
 
@@ -39,8 +39,24 @@ WP20 P1 tests D1 and P on order 25 exhaustively. It cannot reach rare graphs at 
 
 - **Producer:** `d1_confirm.py` (unchanged, SHA-256 `bb350d3b9579b984188a270a58d682562d170dc41c159ac4528a340fbd1fd0b5`). Phase A runs it on the selection file; phase B calls its `analyse_graph` unchanged.
 - **Driver:** `wp21_search.py` (phase B only), and `wp21_sample.py` (phase A input).
-- **Checker:** `d1_check21.py`, an adaptation of the WP20 independent checker, which imports no producer code. It adds: an independent check that every graph is a valid minimum-degree-5 spherical triangulation (simple, symmetric, $3n-6$ edges, every directed edge in one triangular face, $2n-4$ faces); a flag verifying that the phase-A input equals exactly the rule-selected lines of the full list; and flags for the expected input hash and sample rule. Check set: every graph with a SEP-bad state, a kill, or an unresolved vertex; the graphs whose index satisfies $\mathrm{int}(\mathrm{sha256}(\texttt{"WP21-"}+\mathrm{str}(i))_{\text{first 8 hex}},16)\bmod20=0$; and, for phase B, the 20 graphs of greatest objective. Where the cost is at most 6 CPU-hours the checker runs with `--all`.
+- **Checker:** `d1_check21.py`, an adaptation of the WP20 independent checker, which imports no producer code. It adds: an independent check that every graph is a valid minimum-degree-5 spherical triangulation (simple, symmetric, $3n-6$ edges, every directed edge in one triangular face, $2n-4$ faces); a flag verifying that the phase-A input equals exactly the rule-selected lines of the full list; and flags for the expected input hash and sample rule. **Both phases are checked with `--all`**, so every graph is recomputed independently (estimated 2 CPU-seconds per order-26 graph, about 3 CPU-hours for each phase). If a phase's check would cost more than 6 CPU-hours, the check set is instead: every graph with a SEP-bad state, a kill, or an unresolved vertex, plus the graphs whose index satisfies $\mathrm{int}(\mathrm{sha256}(\texttt{"WP21-"}+\mathrm{str}(i))_{\text{first 8 hex}},16)\bmod20=0$.
+- **Output tag.** Phase A runs the unchanged WP20 producer, which writes `"wp": "WP20"` in its output; the WP21 checker accepts that tag for phase A only (it requires `"wp": "WP21"` for phase B). The producer file is not edited.
 - **Binding by hash:** every output records the SHA-256 of this declaration, of every producer and driver source file, and of its input. The checker refuses a different declaration hash.
+
+## Commands (run in `backgroundMaterial/planemap-structural/longtable/`; `P` is the plantri 5.8 binary)
+
+```
+P -m5 -a 26 > wp21/full-m5-26.txt            # sha256 must equal 88acad11...76a8
+python3 wp21_sample.py wp21/full-m5-26.txt wp21/sample-A-m5-26.txt     # sha256 of the selection must equal 24e381cb...ba31
+python3 d1_confirm.py --phase A --order 26 --decl WP21-declaration.md --workers 14 \
+        --out wp21/A-m5-26.json --input-file wp21/sample-A-m5-26.txt
+python3 d1_check21.py wp21/A-m5-26.json wp21/sample-A-m5-26.txt WP21-declaration.md --all --workers 14 \
+        --subset-of wp21/full-m5-26.txt --full-sha 88acad1180f8dafa35f7f0d03deb220f2266c746e6ea1fa70e76e10ec32276a8
+# phase B: wp21/seeds-B.txt = the 12 seeds chosen by the rule above (written by a script; its hash is reported)
+python3 wp21_search.py --seeds wp21/seeds-B.txt --out-prefix wp21/B --chains 12 --steps 400 \
+        --seed-tag WP21 --cpu-seconds 6000 --workers 12
+python3 d1_check21.py wp21/B.json wp21/B-evaluated.txt WP21-declaration.md --all --workers 14
+```
 
 ## Regressions (committed and passing before phase A)
 
