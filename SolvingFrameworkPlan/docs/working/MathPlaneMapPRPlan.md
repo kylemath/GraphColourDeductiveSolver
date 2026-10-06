@@ -160,3 +160,12 @@ Lean toolchain: the checkout pins `leanprover/lean4:v4.35.0-rc3`; current upstre
 5. **Unaudited or duplicated material in the closure**: none excluded in the Five Colour closure; `Examples` (552 lines) is imported by `JordanSides`; `RankPortfolio` is the only tracked-and-unaudited module (not in any early PR). Audit covers compile and axioms, not lint or statement intent.
 6. **Churn**: the working tree is moving (37 untracked files, `FiveColorDemo` just added); PR files must be frozen by commit hash and re-audited from the tracked blobs, not the working tree.
 7. **Authors/licence**: generic "Mathlib contributors" headers must be replaced by real names; the user decides under whose name each PR is opened.
+
+## 6. Mathlib's AI-use rule (added 6 October, after the user's full-disclosure decision)
+
+Quoted in full in `PR-DISCLOSURE.md` (source: "Contributing to mathlib", section "Use of AI", <https://leanprover-community.github.io/contribute/index.html>, read 6 October 2026). It changes the plan in four ways:
+1. Kyle writes every PR description, review reply and Zulip post himself ("Using an LLM when writing comments on GitHub or Zulip is not allowed: use your own words").
+2. Each PR carries the `LLM-generated` label and states the AI use in its description.
+3. Kyle must understand and be able to justify every PR's contents without AI before opening it, so PR size is limited by what he can read.
+4. The Zulip RFC comes before PR 1.
+The series is permitted on these terms, not forbidden.
