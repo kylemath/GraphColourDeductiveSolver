@@ -28,7 +28,7 @@ Orders 19–24 are spent for confirmatory use (`START-HERE.md` §5). They are **
 
 **Recorded, not tested as statements:**
 - **SEP count:** the number of SEP-bad states per graph and per vertex, with every SEP-bad state's witness. SEP itself ("no SEP-bad state") is already false at 17:0 and 17:1 and is **not** a pre-registered statement.
-- **Depth of SEP-bad states:** the least number of pure swaps from a SEP-bad state to a state that is separable or filled, computed by breadth-first search to depth 3 (`depth: 1`, `2`, `3`, or `>3`). A depth $\ge2$ is a D1 kill by definition.
+- **Depth of SEP-bad states:** the least number of pure swaps from a SEP-bad state to a **good** state (unfilled, with a legal admitting fan, separable for some admitting legal fan; a filled state is traversed but is never the target), computed by breadth-first search over all states to depth 3 (`depth: 1`, `2`, `3`, or `>3`). A depth $\ge2$ is a D1 kill by definition.
 - **Locks:** the number of locked apex classes (Tilley), and for each its colour-class sizes in $T-x$. Recorded only.
 - A state whose search exceeded any limit is `inconclusive`, never a pass.
 

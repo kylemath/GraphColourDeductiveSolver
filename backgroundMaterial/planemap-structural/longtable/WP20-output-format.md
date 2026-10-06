@@ -42,3 +42,12 @@ Part of the WP20 declaration (`WP20-D1-declaration.md`). The producer writes one
 ```
 
 `filled_neighbour_for_bad` counts SEP-bad states that have at least one filled pure neighbour (recorded, not good). `depth` counts only SEP-bad states. Vertices of degree other than 5 are omitted.
+
+## Clarifications (added 5 October 2026 before any declared run, after the independent checker's ambiguity list)
+
+- `p_capped` counts **unfilled states** that lie in a pure-Kempe component of more than 200,000 states; `p_kills` excludes them; a vertex has status `capped` exactly when `p_capped > 0`.
+- `d1_kills` and `p_kills` count states, not classes. `d1_kills` equals `sep_bad` minus `depth["1"]`.
+- A Kempe swap of a single-vertex component to an unused colour counts as a swap, in $T-x$ and in $G$. A neighbour equal to the state up to renaming is allowed.
+- `locked_classes` ranges over all colourings of $G_j$, including those whose restriction to $T-x$ is filled or has no admitting fan.
+- `legal_fans` indices $j$ are positions in the plantri rotation at $x$ as printed ($r_0$ is the first listed neighbour).
+- An interrupted vertex or graph is not compared count for count by the checker; it is reported as unresolved.
