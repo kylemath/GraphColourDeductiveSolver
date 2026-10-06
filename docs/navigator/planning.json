@@ -1,7 +1,12 @@
 {
-  "revision": 114,
-  "updatedAt": "2026-10-06T11:59:00-06:00",
+  "revision": 115,
+  "updatedAt": "2026-10-06T12:00:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T18:06:00Z",
+      "node": "dissemination-vhe-paper",
+      "action": "Revision 115 corrects revision 114: commit d3ff0d7 is not on main (the audit reset it); the navigator's commit 8bdd402 swept Long Table's staged paper outline and pathway-B files into a navigator commit by mistake. Content unchanged, attribution wrong, history not rewritten. No status changed."
+    },
     {
       "time": "2026-10-06T18:02:00Z",
       "node": "dissemination",
@@ -9755,6 +9760,16 @@
         "active": true,
         "children": []
       }
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 115,
+      "notes": [
+        {
+          "time": "2026-10-06T18:06:00Z",
+          "text": "Revision 115. Correction to the note above (same revision): commit d3ff0d7 is not on main; the audit reset it and recommitted its own files as ac374b1, leaving Long Table's staged files (the paper outline main.tex and README.md, pathway-B.md, a Long Table message and the explore-vhphi/pathways/pb_* scripts and outputs) in the shared index. The navigator's revision 114 commit 8bdd402 then included those Long Table files by mistake, because it committed the whole index after checking it. Their content is Long Table's and unchanged; only the commit attribution is wrong. No history is rewritten (a later commit eede2de sits on top). Long Table owns those files."
+        }
+      ]
     }
   ]
 }
