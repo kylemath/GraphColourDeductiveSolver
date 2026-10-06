@@ -41,18 +41,18 @@ Definitions are taken from the written pages (`MathNDiscSearch/README.md`, `Math
 | 21 | 192 | 5,146 | 5,146 | 0 | 0 | 0 |
 | 22 | 651 | 15,840 | 15,840 | 0 | 0 | 0 |
 | 23 | 2,070 | 78,005 | 78,005 | 0 | 0 | 120 |
-| 24 | 7,290 | *running* | 313,493 | | | |
+| 24 | 7,290 | 313,493 | 313,493 | 0 | 0 | 520 (not lock-checked) |
 
 **Generator convention.** One line per class of labelled ring, with mirror images identified and the ring direction kept. It is not "up to reversed labelling": that would halve the counts, which the audit computes as `classes_mirror_identified` (38, 37, 85, 784, 2,573, …).
 
 **Negative control.** The audit dropped one order-17 line, deleted an edge in a second and recoloured a third. The comparison then reports 3 classes missing and rejects the two corrupted lines ("not a triangulation", "improper"/"not rigid").
 
-**Scope.** This validates the generator's completeness and soundness for the stated object class at orders ≤ 23. It does not test the Prop 3 size targets as a separate claim. They are, however, tested implicitly: the audit's census does not use Prop 3, and finds no rigid disc that Prop 3 pruning would have lost.
+**Scope.** This validates the generator's completeness and soundness for the stated object class at orders ≤ 24. It does not test the Prop 3 size targets as a separate claim. They are, however, tested implicitly: the audit's census does not use Prop 3, and finds no rigid disc that Prop 3 pruning would have lost.
 
 **Ring-chord states (scope note).**
 - The generator forbids ring chords, so rigid states with an illegal fan are outside its object class by design.
 - At order 23 there are 120 such labelled states; at orders ≤ 22 there are none.
-- `chord_states.py` tests whether any of them is locked at every *legal* admitting fan. That would be a D1-relevant state that the (N) setup never sees. *Running; result to follow.*
+- `chord_states.py` tests whether any of them is locked at every *legal* admitting fan. That would be a D1-relevant state that the (N) setup never sees. **Result.** At order 22 there are 0 such states. At order 23, all 120 have at least one legal admitting fan, and **none is locked at every legal admitting fan**: each is separable at one of them. So the exclusion loses no D1-relevant locked state at orders ≤ 23 (`out/chord-states-22-23.jsonl`).
 
 ## 3. The four order-24 certificates and the Case table
 
@@ -102,4 +102,6 @@ Locks are complete Kempe-class searches in G = T − x u_i; no cap was hit.
 - `out/case-walk-locked24.jsonl`
 - `out/case-walk-cert24.jsonl`
 
-Cost so far: about 30 CPU-minutes, single process.
+Cost: about 2.3 CPU-hours in total, single process. Order 24 alone took 6,246 s on the plantri side and 502 s for the discs (`out/census-24-timing.txt`).
+
+**Not done:** the lock check of the 520 ring-chord states at order 24. It would cost about 1.7 CPU-hours, and the audit will run it if asked.
