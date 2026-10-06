@@ -295,7 +295,7 @@ if (integrationPath) {
     ['structural-chain-rstar','structural-pathway-sprint','proved'],
     ['structural-theorem-hp','structural-pathway-a','proved'],
     ['structural-tait-lock-criterion','structural-pathway-d','proved'],
-    ['structural-rstar-adversary-search','structural-chain-rstar','unstarted'],
+    ['structural-rstar-adversary-search','structural-chain-rstar','computed'],
     ['structural-rstar-two-six','structural-chain-rstar','exploring'],
     ['structural-tilley-route-killed','structural-pathway-sprint','killed'],
     ['structural-euler-lemma','structural-pathway-a','proved'],

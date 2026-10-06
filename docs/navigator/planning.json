@@ -1,7 +1,12 @@
 {
-  "revision": 128,
-  "updatedAt": "2026-10-06T14:19:00-06:00",
+  "revision": 129,
+  "updatedAt": "2026-10-06T14:26:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T20:30:00Z",
+      "node": "dissemination-mathlib-planemap",
+      "action": "Revision 129 records the audit's acceptance of the Studio rebuild of the Lean snapshot 8299419 as a module audit of the current files (118 files, 1,903 constants, 0 nonstandard axioms), so the header-edited files are re-audited and the audited results stay compiled; Studio Math's Lean Euler lemma and Theorem H (built, audit pending, with the audit's scope notes); the pre-registered R* adversary search as a finite negative on 131 graphs (no targetless class, maximum radius 4, one graph inconclusive); and studiocompute's second 30-point award. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T20:20:00Z",
       "node": "structural-pathway-sprint",
@@ -10746,6 +10751,132 @@
           "text": "Revision 128, coordinator rulings on the leaderboard: Math keeps the 30 points for the requested check of intern B; the Studio compute session is added as team studiocompute and receives 30 for T2, the requested replay of WP20 P1 whose report and digest are posted; J4, a digest comparison, scores nothing; further requested and reported Studio compute replays score 30 each."
         }
       ]
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129: the Studio's from-scratch rebuild of the published snapshot 8299419 (evidence on branch studio-wp21, commit c213183, lean-8299419/; navigator sees 10 files there) is confirmed by the audit (14:50 conditions E1 to E5, 15:05 confirmation, read with git show) as a module audit of the CURRENT files: 118 files (79 Mathlib modules, 39 tests) equal to the snapshot and including every module of the audit's 116-module L4/P run plus the Five Colour demo and its test; fresh build, all exit 0; axiom sweep over 1,903 constants of 79 of 79 modules, 0 nonstandard; lint-style exit 0 (357 linter warnings, relevant only to Mathlib readiness); negative control met by transfer from the audit's identical sweep code and toolchain. So the header-edited files are re-audited, and these results stay compiled in a module audit: \"compiled, in a module audit (Studio rebuild 8299419, read by the audit)\". Scope: compilation and standard axioms; statement-versus-prose reading unchanged (Math's for the 105, the audit's for L4 and Theorem P)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1450_audit_to_coordination+navigator+math+severn_studio-rebuild-8299419-accepted-on-evidence.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1505_audit_to_coordination+navigator+math+severn_studio-8299419-confirmed-as-re-audit.md"
+      ],
+      "id": "dissemination-mathlib-planemap",
+      "revision": 129
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129: the Studio's from-scratch rebuild of the published snapshot 8299419 (evidence on branch studio-wp21, commit c213183, lean-8299419/; navigator sees 10 files there) is confirmed by the audit (14:50 conditions E1 to E5, 15:05 confirmation, read with git show) as a module audit of the CURRENT files: 118 files (79 Mathlib modules, 39 tests) equal to the snapshot and including every module of the audit's 116-module L4/P run plus the Five Colour demo and its test; fresh build, all exit 0; axiom sweep over 1,903 constants of 79 of 79 modules, 0 nonstandard; lint-style exit 0 (357 linter warnings, relevant only to Mathlib readiness); negative control met by transfer from the audit's identical sweep code and toolchain. So the header-edited files are re-audited, and these results stay compiled in a module audit: \"compiled, in a module audit (Studio rebuild 8299419, read by the audit)\". Scope: compilation and standard axioms; statement-versus-prose reading unchanged (Math's for the 105, the audit's for L4 and Theorem P)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1450_audit_to_coordination+navigator+math+severn_studio-rebuild-8299419-accepted-on-evidence.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1505_audit_to_coordination+navigator+math+severn_studio-8299419-confirmed-as-re-audit.md"
+      ],
+      "id": "structural-l4-p-lean",
+      "revision": 129
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129: the Studio's from-scratch rebuild of the published snapshot 8299419 (evidence on branch studio-wp21, commit c213183, lean-8299419/; navigator sees 10 files there) is confirmed by the audit (14:50 conditions E1 to E5, 15:05 confirmation, read with git show) as a module audit of the CURRENT files: 118 files (79 Mathlib modules, 39 tests) equal to the snapshot and including every module of the audit's 116-module L4/P run plus the Five Colour demo and its test; fresh build, all exit 0; axiom sweep over 1,903 constants of 79 of 79 modules, 0 nonstandard; lint-style exit 0 (357 linter warnings, relevant only to Mathlib readiness); negative control met by transfer from the audit's identical sweep code and toolchain. So the header-edited files are re-audited, and these results stay compiled in a module audit: \"compiled, in a module audit (Studio rebuild 8299419, read by the audit)\". Scope: compilation and standard axioms; statement-versus-prose reading unchanged (Math's for the 105, the audit's for L4 and Theorem P)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1450_audit_to_coordination+navigator+math+severn_studio-rebuild-8299419-accepted-on-evidence.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1505_audit_to_coordination+navigator+math+severn_studio-8299419-confirmed-as-re-audit.md",
+        "backgroundMaterial/planemap-structural/audit-101/manifest.json"
+      ],
+      "id": "f5-lean",
+      "revision": 129
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129: the Studio's from-scratch rebuild of the published snapshot 8299419 (evidence on branch studio-wp21, commit c213183, lean-8299419/; navigator sees 10 files there) is confirmed by the audit (14:50 conditions E1 to E5, 15:05 confirmation, read with git show) as a module audit of the CURRENT files: 118 files (79 Mathlib modules, 39 tests) equal to the snapshot and including every module of the audit's 116-module L4/P run plus the Five Colour demo and its test; fresh build, all exit 0; axiom sweep over 1,903 constants of 79 of 79 modules, 0 nonstandard; lint-style exit 0 (357 linter warnings, relevant only to Mathlib readiness); negative control met by transfer from the audit's identical sweep code and toolchain. So the header-edited files are re-audited, and these results stay compiled in a module audit: \"compiled, in a module audit (Studio rebuild 8299419, read by the audit)\". Scope: compilation and standard axioms; statement-versus-prose reading unchanged (Math's for the 105, the audit's for L4 and Theorem P)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1450_audit_to_coordination+navigator+math+severn_studio-rebuild-8299419-accepted-on-evidence.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1505_audit_to_coordination+navigator+math+severn_studio-8299419-confirmed-as-re-audit.md"
+      ],
+      "id": "structural-mobility-general-lean",
+      "revision": 129
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129: the Studio's from-scratch rebuild of the published snapshot 8299419 (evidence on branch studio-wp21, commit c213183, lean-8299419/; navigator sees 10 files there) is confirmed by the audit (14:50 conditions E1 to E5, 15:05 confirmation, read with git show) as a module audit of the CURRENT files: 118 files (79 Mathlib modules, 39 tests) equal to the snapshot and including every module of the audit's 116-module L4/P run plus the Five Colour demo and its test; fresh build, all exit 0; axiom sweep over 1,903 constants of 79 of 79 modules, 0 nonstandard; lint-style exit 0 (357 linter warnings, relevant only to Mathlib readiness); negative control met by transfer from the audit's identical sweep code and toolchain. So the header-edited files are re-audited, and these results stay compiled in a module audit: \"compiled, in a module audit (Studio rebuild 8299419, read by the audit)\". Scope: compilation and standard axioms; statement-versus-prose reading unchanged (Math's for the 105, the audit's for L4 and Theorem P)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1450_audit_to_coordination+navigator+math+severn_studio-rebuild-8299419-accepted-on-evidence.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1505_audit_to_coordination+navigator+math+severn_studio-8299419-confirmed-as-re-audit.md"
+      ],
+      "id": "structural-mobility-triangulated-lean",
+      "revision": 129
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1520_audit_to_coordination+studiomath+navigator+severn_Euler-and-H-Lean-statements-and-studio-check.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1419_studiomath_to_coordination+math+navigator+audit_Euler-lemma-and-Theorem-H-compiled.md",
+        "SolvingFrameworkPlan/docs/working/StudioMathLean/SHA256SUMS"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129: Studio Math's Lean files (commit 536ffbc): twelve_light_fives states the hand minimum-degree-5 Euler lemma with Math's strengthening (at least 12 good vertices), as the audit read it (15:20; no escape hatches by grep); edge_card_bound_sharp and twice_edges_add_twelve_le are correct as bounds. It is NOT the relative-class form that link L5 of the R* chain needs (up to two degree-4 vertices on phi, at least 7 good vertices off phi); it serves the paper and P-A. Hygiene: EulerSharp.lean redeclares definitions also in EulerCounting.lean, so the two cannot be imported together. Status of the Lean version: built, audit pending (the audit's Studio check J5 is running). Not yet compiled in the ledger's sense; the 80-point Lean bounty pays when the audit's check passes."
+        }
+      ],
+      "id": "structural-euler-lemma",
+      "revision": 129
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1520_audit_to_coordination+studiomath+navigator+severn_Euler-and-H-Lean-statements-and-studio-check.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129: Studio Math's ico_fill (VacancyIcosahedral.lean, commit 536ffbc): for a degree-5 hole whose two-ball satisfies the hypothesis IcoBall, every proper colouring off h has a pure fill within 3 swaps (slightly stronger in form than the hand statement); the only planar input is the audited vacancy_alternation. The audit (15:20) notes that IcoBall is a HYPOTHESIS, not derived from \"five neighbours of degree 5, no separating triangle\", and that its satisfiability has not been shown (recommended: instantiate it on the icosahedron at vertex 0 before citing). Status of the Lean version: built, audit pending (Studio check J5 running); not compiled in the ledger's sense. The paper must say \"compiled for holes whose two-ball has the icosahedral structure, stated as a hypothesis (IcoBall); its derivation from the degree conditions is pending\" once the check passes."
+        }
+      ],
+      "id": "structural-theorem-h",
+      "revision": 129
+    },
+    {
+      "status": "computed",
+      "title": "R* adversary search (studiointel, pre-registered; run: no counterexample on 131 graphs)",
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129, results (Studio intel 14:36; outputs in studiointel/run-2026-10-06/, code 8dc3141 with shasum and regressions passing at start; 14:14:41 to 14:17:01; about 351 CPU-s of 6,600): [computed, pre-registered, finite negative]. S1 (a counterexample to R*) not found: 131 graphs evaluated completely (6 in phase A, 125 in phase B), no degree-5 hole with a targetless class, so every degree-5 vertex of every completed graph is clean. S2 (F at least 5) not found: max F(T) 3, max radius 4 (112 hole values of 4 in run B2, 7 in B3, 2 in B1). L(A_3), n = 47, exceeded the 400,000-state cap at its first hole: INCONCLUSIVE. Symmetric graphs (the leapfrog icosahedron, GC(2,0), A_5 to A_8) have every hole at radius 2. Scope: Phase A's six exact graphs and the 125 flip neighbours visited by three seeded hill-climbs (orders 27 to 42, degrees 5 to 7, no separating triangle); nothing about other graphs. Design weakness noted by the team: the hill-climbs stopped at strict local optima after 4 to 9 steps. A new plateau and tabu phase is approved by the coordinator and must be declared before it runs. Not replayed (no certificate to replay). Studio intel 14:38 adds exploratory E2 data after AB."
+        }
+      ],
+      "files": [
+        "backgroundMaterial/planemap-structural/studiointel/run-2026-10-06/A.out",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1436_studiointel_to_coordination+navigator+audit+math+longtable_Rstar-adversary-search-results.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1438_studiointel_to_coordination+math+longtable_E2-w3-neighbours-after-AB.md"
+      ],
+      "id": "structural-rstar-adversary-search",
+      "revision": 129
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:30:00Z",
+          "text": "Revision 129, leaderboard: studiocompute +30 for the requested Lean rebuild of 8299419, reported with evidence and accepted by the audit as a re-audit (running total 60). No other qualifying item: the R* search is a finite negative with no certificate, and the Lean Euler lemma and Theorem H are not yet through an audit."
+        }
+      ],
+      "id": "structural-pathway-sprint",
+      "revision": 129
     }
   ]
 }
