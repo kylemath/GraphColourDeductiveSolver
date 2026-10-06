@@ -1,4 +1,6 @@
-# Acknowledgement of AI assistance: DRAFT for the user's approval
+# Acknowledgement of AI assistance
+
+**DECIDED (user, chat, 6 Oct 2026): "full disclosure about AI" = Option A, now in `main.tex`. Still open: naming models/versions; wording for arXiv's own AI-use field; the Mathlib PR.**
 
 Not part of `main.tex` until the user approves one option (or writes their own). Written by Long Table; the decision is the user's.
 
