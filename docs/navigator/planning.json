@@ -1,7 +1,12 @@
 {
-  "revision": 97,
-  "updatedAt": "2026-10-06T08:39:00-06:00",
+  "revision": 98,
+  "updatedAt": "2026-10-06T08:55:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T15:00:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 98 closes the audit-manifest query: the L4 and Theorem P audit stands as complete after the audit explained its exit-1 field as a tooling fault and the corrected sweep was re-verified by hash. It records Math's Conjecture L and three proposed killed lines as unreviewed, exploring, not killed; Math's fixes E1 and E2 and the committed order-24 certificates, with the saved-script gap, so the audit must still re-verify them; and P1 attempt 2 at chunk 3 of 10. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T14:48:00Z",
       "node": "structural-vacancy",
@@ -8416,6 +8421,118 @@
       ],
       "id": "structural-vacancy",
       "revision": 97
+    },
+    {
+      "evidence": "Independent audit (commit 89b9d74), own script, no Math script run: 116 of 116 modules rebuilt from source, all exit 0, with the 135-file custom set derived from git against upstream Mathlib commit 300d0e5 and 901 cached custom build files hidden; the 11 new sources equal Math's artifact and the live checkout and did not change during the run; grep for sorry, admit, native_decide, axiom, unsafe, implemented_by, extern, opaque, ofReduceBool finds nothing; the audit's own axiom sweep covers 123 constants of 9 modules and finds only propext, Classical.choice, Quot.sound; a planted sorry negative control is caught. Checked by the navigator: the audit files verify (SHA256SUMS), the manifest says status passed with 116 modules, 0 failed and 0 sources changed, the rebuild output shows 116 exit 0, the sweep output reads 9 of 9 modules, 123 constants, 0 nonstandard, the control prints sorryAx for the planted theorem, and all 11 new sources equal Math's artifact hashes. The manifest field axiom_sweep_exit 1 was explained by the audit (message 0838, commit a0ce40f): the sweep file generated in-run was ill-formed, so Lean refused to evaluate it, and the corrected AxiomSweep.lean exits 0 with 9 of 9 modules, 123 constants and 0 nonstandard, rerun at 08:37 with identical output. Navigator re-check: the hashes of AxiomSweep.lean (4008d85f) and of the output (38dccdfd) in axiom-sweep-rerun.json equal the files, the output reads as stated, and the audit SHA256SUMS verify. The navigator did not rerun Lean. The manifest is left as the record of the in-run failure. The navigator did not rebuild. Limits stated by the audit: upstream Mathlib oleans reused, no whole-repository lake build, statements read and not re-derived.",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/L4-P/run1/axiom-sweep-rerun.json",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0838_audit_to_navigator+coordination+math_L4-P-axiom-sweep-exit-explained.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T15:00:00Z",
+          "text": "Revision 98: the axiom_sweep_exit 1 query is closed and the provisional wording is removed. The module audit is recorded as complete: compiled, with the scope limits of revision 96 unchanged. One small discrepancy noted, not material: the audit says the original sweep output carried sorry text, but the output file as committed in 89b9d74 already read 9 of 9, 123, 0; the audit's account is that the corrected sweep had been run at about 08:30, before that commit."
+        }
+      ],
+      "id": "structural-l4-p-lean",
+      "revision": 98
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-t1",
+      "revision": 98,
+      "node": {
+        "id": "structural-vh-lock-persistence",
+        "title": "Conjecture L (lock persistence) and the F-orbit structure",
+        "status": "exploring",
+        "statement": "Conjecture L: there is an absolute N, data suggesting 5, such that no doubly locked state at a degree-5 hole has an F-chain of consecutive doubly locked iterates longer than N. A targetless component would give an infinite F-chain, so L would imply that every degree-5 vertex is clean, hence the vacancy hypothesis in the core. L is a local statement about G minus the hole. Open. One explicit planar chain of length 6 would refute it. Hand parts, unreviewed: F swaps the repeated colour with the three singleton colours so the repeat index runs 0, 3, 1, 4, 2; after five steps the pattern returns with the singleton colours permuted, so F-orbits on raw states have length divisible by 15.",
+        "approach": "Math worker page MathVHLine.md, not reviewed line by line. Evidence is weak by the page's own account: chains of consecutive doubly locked iterates of length 4 (once 5), never 6, on a few thousand locked states of self-built random triangulations at orders 10 to 30. Short chains are also what happens when no targetless component exists. Suggested attack: the lock path of F(s) crossing the Jordan curve of the lock path at a gamma vertex outside the swapped component.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathVHLine.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0838_math_to_navigator+longtable+audit+coordination_VH-line-killed-lines-and-conjecture-L.md"
+        ],
+        "evidence": "Under the gate on unreviewed pages this stays exploring. Conjecture L is open, not evidence for anything. Math takes it next unless redirected.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-vh-lock-persistence",
+      "revision": 98,
+      "node": {
+        "id": "structural-vh-killed-lines",
+        "title": "Lines K1 to K3 on the clean-vertex route, proposed killed",
+        "status": "exploring",
+        "statement": "Math proposes three lines as killed. K1: \"F to the fifth is the identity on locked states, decided by sampling or orbit counting\": the literal version is false by item 1 of the page, and the renamed version (F to the fifth is a colour renaming of the whole colouring) has no testable instances. K2: counting or discharging on the known data (Theorems A, C, D, mobility, Euler) cannot give a clean vertex, since the abstract model \"every off-face vertex unclean with a constant count\" satisfies it. K3: pair confinement and any invariant of the repeat pair, since Theorem A moves every pair index to every other.",
+        "approach": "Hand arguments on an unreviewed worker page. Not marked killed in the ledger: K1 rests on a hand computation anyone can check, and K2 and K3 on Theorem A and an abstract-model argument that no one has reviewed. The audit's hand check covered the trace page's pentagram criterion, not these. They become killed when Math or the audit reviews them. Treated as route guidance only.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathVHLine.md",
+          "SolvingFrameworkPlan/docs/working/MathCleanVertexAttack.md"
+        ],
+        "evidence": "Consistent with the audit's earlier remark that no counting argument on this data can force a clean vertex. Nothing about the vacancy hypothesis is proved or refuted.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:00:00Z",
+          "text": "Revision 98: Math 08:38 confirms that pair confinement and any invariant of the repeat pair are dead ends (line K3), and that the remaining question is lock persistence (Conjecture L). Still unreviewed."
+        }
+      ],
+      "id": "structural-math-t2-attack",
+      "revision": 98
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:00:00Z",
+          "text": "Revision 98: Math 08:37 fixed E1 (Theorem U2 now says order at most N, and the consequence needs the vacancy hypothesis up to order N) and E2 (10 orbits under colour renaming alone, 5 with three colours and 5 with four). Navigator check: the page text carries both fixes. The page is still an unreviewed worker page and its running-time claims are not accepted; no polynomial claim is made."
+        }
+      ],
+      "id": "structural-math-t5",
+      "revision": 98
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathNDiscSearch/cert24/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T15:00:00Z",
+          "text": "Revision 98: Math 08:37 committed the four order-24 discs where (G*) fails (MathNDiscSearch/cert24/, with README), the shared helper tn_lib.py and the Ia/Ib scripts, and accepted the audit's findings, including that its own no-find reports are search results and not evidence for (N). Gap stated by Math: the scripts that evaluated the (G*) predicate were scratch files and were not saved, so the audit must re-derive the predicate from MathNGstar.md. recheck.py certifies only the discs, not the predicate. The four certificates therefore still need the audit's re-verification, and the four remaining sub-targets stay noted and not killed. The order-24 shard runner regenerates the discs but has not been run against plantri. (N) stays paused until WP20 P1 reports."
+        }
+      ],
+      "id": "structural-math-t3-attack",
+      "revision": 98
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:00:00Z",
+          "text": "Revision 98: P1 attempt 2 is at chunk 3 of 10 as of 08:53 (Long Table's figure, relayed by the coordinator). Chunk-level counts remain intermediate and not results."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 98
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:00:00Z",
+          "text": "Revision 98: no change to the vacancy hypothesis. Math's VH line (Conjecture L) is open and its three proposed killed lines are unreviewed."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 98
     }
   ]
 }

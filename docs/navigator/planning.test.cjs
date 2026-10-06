@@ -272,6 +272,8 @@ if (integrationPath) {
     ['structural-equal-pole','structural-vacancy','exploring'],
     ['structural-belt-all-holes-lean','structural-math-horizon','in-progress'],
     ['structural-n-subtargets-killed','structural-math-t3-attack','killed'],
+    ['structural-vh-lock-persistence','structural-math-t1','exploring'],
+    ['structural-vh-killed-lines','structural-vh-lock-persistence','exploring'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
     ['structural-deg6-split','structural-vhe-obstruction','proved'],
