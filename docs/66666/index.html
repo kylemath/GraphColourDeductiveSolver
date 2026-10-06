@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Six-Ring Trap</title>
+  <meta name="description" content="Interactive demo: a degree-five hole whose five neighbours all have degree six, the 74 ring patterns, the automaton's closed trap, and an order-28 colouring four swaps from any filled state.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --sunken: #010409;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --accent: #58a6ff;
+      --good: #3fb950;
+      --bad: #f85149;
+      --warn: #d29922;
+      --twin: #bc8cff;
+      --c0: #f85149;
+      --c1: #58a6ff;
+      --c2: #e3b341;
+      --c3: #3fb950;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+    .wrap { max-width: 1480px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .intro { max-width: 1120px; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--twin); font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+    h2 { margin: 0; font: 600 1.25rem/1.3 var(--serif); }
+    p { margin: 0 0 .9rem; color: var(--dim); max-width: 74ch; }
+    p strong { color: var(--text); }
+    code { font: .88em var(--mono); background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); }
+    a { color: var(--accent); }
+    .lead { font-size: 1.04rem; }
+    .lab { font: 600 .74rem var(--mono); color: var(--warn); white-space: nowrap; }
+    .roots { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1rem; align-items: center; }
+    .roots span.label { color: var(--faint); font-size: .85rem; margin-right: .25rem; }
+    .chip { font: 600 .85rem var(--sans); color: var(--text); background: var(--raised); border: 1px solid var(--border);
+            border-radius: 999px; padding: .28rem .7rem; cursor: pointer; }
+    .chip .tag { font-weight: 500; font-size: .72rem; margin-left: .3rem; color: var(--faint); }
+    .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(320px, 1fr); gap: 1rem; align-items: start; }
+    .viz { display: grid; gap: 1rem; min-width: 0; }
+    .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+    .side { display: grid; gap: .8rem; min-width: 0; }
+    .panel { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .9rem; min-width: 0; }
+    .panel h3 { margin: 0 0 .5rem; font: 600 .78rem var(--sans); color: var(--faint); letter-spacing: .07em; text-transform: uppercase; }
+    svg { display: block; width: 100%; height: auto; }
+    .readout { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin-top: .6rem; font: .86rem var(--mono); color: var(--dim); }
+    .readout b { color: var(--text); font-weight: 600; }
+    .status { display: inline-block; font: 600 .78rem var(--sans); padding: .15rem .55rem; border-radius: 999px; }
+    .status.target { background: #3fb95026; color: var(--good); }
+    .status.ok { background: #58a6ff22; color: var(--accent); }
+    .status.trap { background: #f8514930; color: var(--bad); }
+    .status.twin { background: #bc8cff2a; color: var(--twin); }
+    .moves { display: grid; gap: .35rem; margin-top: .4rem; }
+    .move { display: flex; justify-content: space-between; gap: .75rem; align-items: center; text-align: left; width: 100%;
+            font: .84rem var(--sans); color: var(--text); background: var(--sunken); border: 1px solid var(--border);
+            border-radius: 8px; padding: .4rem .6rem; cursor: pointer; }
+    .move:hover { border-color: var(--accent); }
+    .move .delta { font: 600 .84rem var(--mono); white-space: nowrap; }
+    .delta.down { color: var(--good); } .delta.up { color: var(--bad); } .delta.flat { color: var(--faint); }
+    .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px; vertical-align: -.05rem; margin-right: .12rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin-top: .5rem; font-size: .78rem; color: var(--faint); }
+    .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -.08rem; }
+    .card { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .85rem 1rem; }
+    .card .kick { font: 600 .74rem var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+    .card h4 { margin: .2rem 0 .5rem; font: 600 1.08rem var(--serif); }
+    .card p { font-size: .9rem; margin-bottom: .6rem; }
+    .btn { font: 600 .85rem var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 8px;
+           padding: .45rem .85rem; cursor: pointer; margin: .15rem .35rem .15rem 0; }
+    .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn:disabled { opacity: .45; cursor: default; }
+    .narr { min-height: 2.6rem; margin-top: .6rem; padding: .55rem .7rem; background: var(--sunken); border-radius: 8px; font-size: .88rem; color: var(--dim); }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin: .4rem 0 .2rem; }
+    .stat { background: var(--sunken); border-radius: 8px; padding: .45rem .5rem; }
+    .stat b { display: block; font: 600 1.2rem var(--serif); color: var(--text); }
+    .stat span { font-size: .72rem; color: var(--faint); }
+    .pats { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.6rem, 1fr)); gap: .2rem; margin: .3rem 0 .5rem; }
+    .pat { font: .68rem var(--mono); padding: .12rem .2rem; border-radius: 4px; text-align: center; color: var(--faint);
+           background: var(--sunken); border: 1px solid transparent; cursor: default; letter-spacing: .02em; }
+    .pat.here { color: var(--text); border-color: #30363d; }
+    .pat.cur { border-color: var(--twin); color: var(--twin); }
+    .pat.unseen { text-decoration: underline dotted var(--warn); }
+    .foot { margin-top: 2.5rem; }
+    .foot p { color: var(--faint); font-size: .82rem; }
+    @media (max-width: 1180px) { .stage { grid-template-columns: 1fr; } }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">(6,6,6,6,6) hole · order 28</p>
+    <h1>The Six-Ring Trap</h1>
+    <p class="lead">
+      Delete a degree-five vertex (the <strong>hole</strong>) and four-colour what is left. The hole can be filled once its five
+      neighbours (its <strong>link</strong>) use at most three colours. A colouring that uses all four is <strong>doubly locked</strong> when
+      two two-colour chains block the obvious Kempe swaps. Its <strong>radius</strong> is the number of whole-chain Kempe swaps
+      needed to reach a filled state. In <a href="../trap/index.html">The Tidy Trap</a> and
+      <a href="../deadend/index.html">The Dead-End Region</a> the hard holes sat among degree-five neighbours. This page is about a hole whose five neighbours all have <strong>degree six</strong>.
+    </p>
+    <p>
+      For a hole whose neighbours all have degree five, Theorem H works because the locks leave only <strong>3</strong> possible
+      colourings of the surrounding ring. Around a (6,6,6,6,6) hole the ring has ten vertices, and the locks allow
+      <strong>74</strong> ring colourings <span class="lab">[hand + computed]</span>. No swap that stays inside the link breaks
+      a lock for any of them <span class="lab">[computed]</span>. Every small swap that could break one touches a ring vertex, and
+      ring vertices always have neighbours further out, so the chain can leak.
+    </p>
+    <p>
+      Math built a finite automaton that tracks the 74 patterns and the possible chain connections outside the ring. It has a
+      <strong>closed trap</strong> of 5,650 abstract states: the outside can keep answering so that the locks never break, forever
+      <span class="lab">[computed, exploratory]</span>. So no argument that uses only local information can bound the radius here. A real graph
+      shows the cost: below is an order-28 triangulation with a doubly locked state of <strong>radius 4</strong>
+      <span class="lab">[computed]</span>. That is why the team is now looking for <strong>global invariants</strong>. Whether
+      any bound on the radius exists (Conjecture R) is still <span class="lab">[open]</span>.
+    </p>
+  </div>
+
+  <div class="roots" id="roots"><span class="label">Jump to:</span></div>
+
+  <div class="stage">
+    <div class="viz">
+      <div class="grid">
+        <div class="panel">
+          <h3>The map, with the hole deleted</h3>
+          <svg id="map" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Triangulation drawing with the current colouring"></svg>
+          <div class="legend">
+            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole (vertex 0)</span>
+            <span><i style="border:2px solid var(--text)"></i>link (all degree 6)</span>
+            <span><i style="border:2px dotted var(--faint)"></i>ring of ten</span>
+            <span><i style="border:2px solid var(--twin)"></i>lock chains</span>
+          </div>
+          <div class="readout" id="readout"></div>
+        </div>
+        <div class="panel">
+          <h3>The landscape: every colouring at this hole</h3>
+          <svg id="land" viewBox="0 0 520 380" role="img" aria-label="All states by swaps to a filled state"></svg>
+          <div class="legend">
+            <span><i style="background:var(--good)"></i>filled</span>
+            <span><i style="background:var(--accent)"></i>not doubly locked (one swap fills)</span>
+            <span><i style="background:var(--bad)"></i>doubly locked</span>
+            <span><i style="background:var(--twin)"></i>radius 4</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Every shortest way out of the radius-4 state</h3>
+        <svg id="net" viewBox="-1.75 -0.95 3.5 1.9" style="max-height:440px" role="img" aria-label="Layered network of all shortest swap sequences from the radius-4 state to filled states"></svg>
+        <div class="legend">
+          <span><i style="background:var(--twin)"></i>radius-4 start</span>
+          <span><i style="background:var(--bad)"></i>doubly locked</span>
+          <span><i style="background:var(--accent)"></i>one swap from filled</span>
+          <span><i style="background:var(--good)"></i>filled</span>
+          <span>columns = swaps still needed · click a node</span>
+        </div>
+        <p class="caption" style="margin:.6rem 0 0;font-size:.86rem"><strong>No short cut.</strong> The radius-4 state has only three different
+          swap neighbours (several swaps give the same colouring up to renaming), and all three are doubly locked with radius 3. They are the only
+          radius-3 states in the whole class, and each one is locked with the repeated colour in a different place on the link. Every shortest route
+          therefore needs two more swaps before a lock can be broken at all. The network shows all of them: 1, 3, 4, 7 and 7 states at
+          distances 4, 3, 2, 1 and 0.</p>
+      </div>
+      <div class="panel">
+        <h3>Legal Kempe swaps from here</h3>
+        <div class="moves" id="moves"></div>
+      </div>
+    </div>
+
+    <aside class="side" aria-label="Explanations and controls">
+      <h2>Inside the six-ring</h2>
+      <div class="card">
+        <span class="kick">This hole · recomputed for this page</span>
+        <h4>One Kempe class, 1,118 colourings</h4>
+        <div class="stats" id="stats"></div>
+        <p id="classText" style="margin:.4rem 0 0"></p>
+      </div>
+      <div class="card">
+        <span class="kick">Walk it</span>
+        <h4>Take the shortest way out</h4>
+        <p>Start at the radius-4 state and follow one shortest route to a filled state. Watch the purple lock chains: they survive the first
+          two swaps, a lock breaks at the third, and the fourth fills the hole.</p>
+        <button class="btn" id="play">Play</button>
+        <button class="btn ghost" id="step">Step</button>
+        <button class="btn ghost" id="reset">Reset</button>
+        <button class="btn ghost" id="locks">Hide locks</button>
+        <div class="narr" id="narr">Press play.</div>
+      </div>
+      <div class="card">
+        <span class="kick">Why Theorem H stops · Lemma 1</span>
+        <h4>74 ring patterns instead of 3</h4>
+        <p>After rotating so the link reads <code>a b a g d</code>, the locks force only four conditions on the ten ring colours
+          (read <code>w0 m1 w1 … w4 m0</code>). Together with properness they leave these 74 patterns <span class="lab">[hand + computed]</span>.
+          Bright patterns occur in a doubly locked state of this graph. The current state's pattern is outlined.</p>
+        <div class="pats" id="pats"></div>
+        <p id="patText" style="font-size:.84rem;margin:0"></p>
+      </div>
+      <div class="card">
+        <span class="kick">Math's automaton · K-A1, killed</span>
+        <h4>A trap the outside can hold forever</h4>
+        <p>The automaton's state is a link colouring, a ring colouring and, for each of the three ways to split the colours into two pairs,
+          a non-crossing pattern of chain joins outside the ring. We choose swaps and an adversary chooses the unknown outside joins.
+          The greatest set the adversary never has to leave has <strong>5,650 states on 370 ball colourings</strong>, and it contains a lock-consistent start
+          for <strong>every one of the 74 patterns</strong>. In every trap state that state's lock is still present
+          <span class="lab">[computed, exploratory]</span>.</p>
+        <p>The leak is the reset: a swap that reaches the ring recolours part of the outside, so the joins of the other two splits are
+          unknown again. With at most two outside joins per split there is no trap, and every pattern is settled within 7 steps. Three joins
+          trap 66 patterns, and four trap all 74 <span class="lab">[computed]</span>.</p>
+        <p style="margin:0">This card restates Math's result. The trap was not recomputed for this page, and the audit has not replayed it.</p>
+      </div>
+      <div class="card">
+        <span class="kick">Where this leaves us</span>
+        <h4>Local is not enough</h4>
+        <p>The order-28 example kills the guess "radius ≤ 3 at (6,6,6,6,6) holes" and nothing more. The highest radius known at any hole
+          is still 4. Real graphs here do not use the trap's resets, and no colouring that can never be filled has been found
+          <span class="lab">[computed, exploratory]</span>. A bound would need information that survives a swap, which is a global question.
+          Conjecture R (some bound on the radius) stays <span class="lab">[open]</span>.</p>
+        <button class="btn ghost" id="ring">Highlight the ring</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="foot">
+    <p>Graph: the order-28 face list in <code>SolvingFrameworkPlan/docs/working/MathSixFiveAutomaton.md</code> §4 (minimum degree 5, no
+      separating triangle, hole 0 with link 1–5 all of degree 6). The colourings, Kempe graph, locks and radii on this page were recomputed
+      independently by <code>docs/66666/build_data.py</code>, which imports none of Math's code. It enumerates every 4-colouring of T − 0 up to
+      renaming and uses whole-chain Kempe swaps (single vertices allowed). The results agree with Math's: 121 doubly locked states, with radii
+      117 × 2, 3 × 3 and 1 × 4, and the radius-4 state has ring pattern <code>dgdgdbabgb</code>. One observation of ours, unchecked: a radius-2 state here has ring pattern
+      <code>gadbdabagd</code> (<code>gadgdabagb</code> read the other way round), and both are on Math's list of patterns not yet seen.
+      The 74 patterns and the trap come from <code>MathSixFiveHole.md</code> and <code>MathSixFiveAutomaton.md</code>. The ledger entries
+      (Navigator revision 121, <code>SolvingFrameworkPlan/messages/2026-10-06/</code>) are K-A1 killed [computed, exploratory] and radius 4 at a
+      (6⁵) hole [computed], neither replayed by the audit. Conjecture R is [open]. Definitions: <code>START-HERE.md</code> §5 and
+      <code>l-attack.md</code> §1. This is finite evidence about one graph, not a proof. The demo was built by an AI agent (Claude), as is
+      most of this project.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const D = window.SIXRING_DATA;
+  const COLORS = ['var(--c0)', 'var(--c1)', 'var(--c2)', 'var(--c3)'];
+  const NAMES = ['red', 'blue', 'yellow', 'green'];
+  const PAIRS = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
+  const UNSEEN = new Set(['gadbdabagb', 'gadbdabagd', 'gadgdabagb', 'gadgdabagd']);
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const $ = (id) => document.getElementById(id);
+
+  const S = D.states, V = D.V, H = D.hole;
+  const vIdx = new Map(V.map((v, i) => [v, i]));
+  const adj = V.map((v) => D.rot[v].filter((w) => w !== H).map((w) => vIdx.get(w)));
+  const L = D.link.map((v) => vIdx.get(v));
+  const linkSet = new Set(D.link);
+  const ringSet = new Set(); D.link.forEach((x) => D.rot[x].forEach((w) => { if (w !== H && !linkSet.has(w)) ringSet.add(w); }));
+  const index = new Map(S.map((s, i) => [s.c.join(''), i]));
+  const START = D.start;
+  const radius3 = S.map((s, i) => i).filter((i) => S[i].d === 3);
+
+  let current = START, display = S[START].c.slice(), highlight = null, showLocks = true, ringOn = false;
+  let path = null, pathIdx = 0, timer = null, trail = [];
+
+  const canon = (c) => { const m = new Map(); return c.map((x) => { if (!m.has(x)) m.set(x, m.size); return m.get(x); }); };
+  function components(c) {
+    const out = [];
+    for (const [a, b] of PAIRS) {
+      const pending = new Set(); c.forEach((x, i) => { if (x === a || x === b) pending.add(i); });
+      while (pending.size) {
+        const seed = Math.min(...pending); pending.delete(seed); const comp = [seed];
+        for (let k = 0; k < comp.length; k++) for (const j of adj[comp[k]]) if (pending.has(j)) { pending.delete(j); comp.push(j); }
+        out.push({ a, b, comp });
+      }
+    }
+    return out;
+  }
+  function compOf(c, start, a, b) {
+    const seen = new Set([start]), st = [start];
+    while (st.length) { const u = st.pop(); for (const j of adj[u]) if (!seen.has(j) && (c[j] === a || c[j] === b)) { seen.add(j); st.push(j); } }
+    return seen;
+  }
+  // locks (l-attack.md section 1): repeat index j, m = x_{j+1}; lock 1 joins m to x_{j+3}, lock 2 joins m to x_{j+4}
+  function locks(c) {
+    const lc = L.map((i) => c[i]);
+    if (new Set(lc).size < 4) return null;
+    const j = [0,1,2,3,4].find((t) => lc[t] === lc[(t + 2) % 5]);
+    const m = L[(j + 1) % 5], a = L[(j + 3) % 5], b = L[(j + 4) % 5];
+    const k1 = compOf(c, m, c[m], c[a]), k2 = compOf(c, m, c[m], c[b]);
+    return { j, m, a, b, l1: k1.has(a), l2: k2.has(b), k1, k2 };
+  }
+  function bestPermutation(target, prev) {
+    if (!prev) return target.slice();
+    let best = null, bestScore = -1; const perms = [];
+    (function gen(a, rest) { if (!rest.length) perms.push(a); rest.forEach((x, k) => gen(a.concat([x]), rest.filter((_, j) => j !== k))); })([], [0,1,2,3]);
+    for (const p of perms) { let s = 0; target.forEach((x, i) => { if (p[x] === prev[i]) s++; }); if (s > bestScore) { bestScore = s; best = p; } }
+    return target.map((x) => best[x]);
+  }
+  function goTo(i, keep) { current = i; display = keep ? bestPermutation(S[i].c, display) : S[i].c.slice(); highlight = null; render(); }
+  function applyMove(m) {
+    const set = new Set(m.comp);
+    display = display.map((x, i) => set.has(i) ? (x === m.a ? m.b : x === m.b ? m.a : x) : x);
+    current = index.get(canon(display).join('')); highlight = null; render();
+  }
+  function kindOf(i) {
+    const s = S[i];
+    if (s.d === 0) return ['target', 'filled: a colour is free'];
+    if (s.d === 4) return ['twin', 'doubly locked · radius 4'];
+    if (s.k === 'dl') return ['trap', 'doubly locked · radius ' + s.d];
+    return ['ok', s.k === 'locked1' ? 'one lock only · one swap fills' : 'no lock · one swap fills'];
+  }
+  const colourOf = (i) => {
+    const k = kindOf(i)[0];
+    return k === 'target' ? 'var(--good)' : k === 'trap' ? 'var(--bad)' : k === 'twin' ? 'var(--twin)' : 'var(--accent)';
+  };
+
+  // ---------------------------------------------------------------- panels
+  function renderRoots() {
+    const box = $('roots'); box.querySelectorAll('button').forEach((b) => b.remove());
+    const items = [[START, 'radius 4', 'the deepest state']].concat(radius3.map((i, k) => [i, 'radius 3', 'neighbour ' + (k + 1)]));
+    items.forEach(([i, tag, name]) => {
+      const b = document.createElement('button'); b.className = 'chip';
+      b.setAttribute('aria-pressed', String(i === current));
+      b.innerHTML = name + '<span class="tag">' + tag + '</span>';
+      b.onclick = () => { stopPath(); trail = []; goTo(i, i !== START); };
+      box.appendChild(b);
+    });
+  }
+  function renderMap() {
+    const svg = $('map'); svg.innerHTML = '';
+    const pos = D.pos, rot = D.rot;
+    const hi = highlight ? new Set(highlight.comp.map((i) => V[i])) : null;
+    const lk = showLocks ? locks(display) : null;
+    const lockV = new Set();
+    if (lk) { if (lk.l1) lk.k1.forEach((i) => lockV.add(V[i])); if (lk.l2) lk.k2.forEach((i) => lockV.add(V[i])); }
+    const inLock = (v, w) => lk && ((lk.l1 && lk.k1.has(vIdx.get(v)) && lk.k1.has(vIdx.get(w))) || (lk.l2 && lk.k2.has(vIdx.get(v)) && lk.k2.has(vIdx.get(w))));
+    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
+      const tr = v === H || w === H, on = hi && hi.has(v) && hi.has(w), lockE = !tr && inLock(v, w);
+      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1],
+        stroke: on ? 'var(--text)' : lockE ? 'var(--twin)' : tr ? 'var(--faint)' : '#3d444d',
+        'stroke-width': on ? 0.022 : lockE ? 0.02 : 0.009, 'stroke-dasharray': tr ? '0.03 0.025' : 'none' }, svg);
+    }
+    for (let v = 0; v < rot.length; v++) {
+      const [x, y] = pos[v];
+      if (ringOn && ringSet.has(v)) el('circle', { cx: x, cy: y, r: 0.075, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012, 'stroke-dasharray': '0.02 0.015' }, svg);
+      if (v === H) {
+        el('circle', { cx: x, cy: y, r: 0.05, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
+        const t = el('text', { x, y: y + 0.018, 'text-anchor': 'middle', 'font-size': 0.05, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg); t.textContent = '?';
+        continue;
+      }
+      const i = vIdx.get(v), lock = lockV.has(v), isLink = linkSet.has(v);
+      const g = el('g', {}, svg);
+      el('circle', { cx: x, cy: y, r: isLink ? 0.052 : 0.045, fill: COLORS[display[i]],
+        stroke: (hi && hi.has(v)) || isLink ? 'var(--text)' : lock ? 'var(--twin)' : 'var(--bg)',
+        'stroke-width': hi && hi.has(v) ? 0.02 : isLink ? 0.016 : lock ? 0.014 : 0.008 }, g);
+      el('text', { x, y: y + 0.015, 'text-anchor': 'middle', 'font-size': 0.04, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)' }, g)
+        .textContent = v;
+      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[display[i]] + (isLink ? ' · link' : ringSet.has(v) ? ' · ring' : '');
+    }
+  }
+  function landscapeCoords() {
+    const W = 520, Hh = 380, Lm = 16, Rm = 10, T = 14, Bm = 34;
+    const cols = 5, cw = (W - Lm - Rm) / cols, step = 6.6;
+    const per = Math.floor((cw - 8) / step);
+    const xy = {};
+    const byD = {}; S.forEach((s, i) => (byD[s.d] = byD[s.d] || []).push(i));
+    const rank = (i) => ({ target: 0, ok: 1, trap: 2, twin: 3 }[kindOf(i)[0]]);
+    Object.keys(byD).forEach((d) => {
+      const ids = byD[d].sort((a, b) => rank(a) - rank(b) || (S[a].j ?? -1) - (S[b].j ?? -1) || a - b);
+      const n = ids.length, rows = Math.ceil(n / per), wide = Math.min(per, n);
+      ids.forEach((i, k) => {
+        const r = Math.floor(k / per), c = k % per;
+        const x0 = Lm + cw * (4 - d) + cw / 2 - (wide - 1) * step / 2;
+        xy[i] = [n === 1 ? Lm + cw * (4 - d) + cw / 2 : x0 + c * step, Hh - Bm - 6 - r * step - (n < 6 ? 120 : 0)];
+      });
+    });
+    return { W, Hh, Lm, cw, T, Bm, xy, byD };
+  }
+  let LC = null;
+  function renderLand() {
+    const svg = $('land'); svg.innerHTML = '';
+    const C = LC || (LC = landscapeCoords());
+    for (let d = 0; d <= 4; d++) {
+      const xc = C.Lm + C.cw * (4 - d) + C.cw / 2;
+      el('text', { x: xc, y: C.Hh - 16, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg)
+        .textContent = d === 0 ? 'filled' : d + (d === 1 ? ' swap' : ' swaps');
+      el('text', { x: xc, y: C.Hh - 3, 'text-anchor': 'middle', 'font-size': 10, fill: 'var(--faint)', 'font-family': 'var(--mono)' }, svg)
+        .textContent = (C.byD[d] || []).length + ' states';
+    }
+    el('text', { x: C.W / 2, y: C.T, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg)
+      .textContent = '← further from filled · swaps to a filled state · closer →';
+    S[current].next.forEach((j) => {
+      el('line', { x1: C.xy[current][0], y1: C.xy[current][1], x2: C.xy[j][0], y2: C.xy[j][1], stroke: '#8b949e', 'stroke-width': 0.8 }, svg);
+    });
+    for (let k = 1; k < trail.length; k++) {
+      const a = trail[k - 1], b = trail[k];
+      el('line', { x1: C.xy[a][0], y1: C.xy[a][1], x2: C.xy[b][0], y2: C.xy[b][1], stroke: 'var(--text)', 'stroke-width': 2 }, svg);
+    }
+    S.forEach((s, i) => {
+      const big = s.d >= 3 || i === current;
+      const c = el('circle', { cx: C.xy[i][0], cy: C.xy[i][1], r: i === current ? 6 : big ? 5 : 2.9, fill: colourOf(i),
+        stroke: i === current ? 'var(--text)' : 'none', 'stroke-width': 2, style: 'cursor:pointer' }, svg);
+      el('title', {}, c).textContent = 'colouring ' + i + ' · ' + kindOf(i)[1];
+      c.addEventListener('click', () => { stopPath(); goTo(i, true); });
+    });
+  }
+  // layered network of all shortest routes from START
+  const layers = [[START]];
+  while (true) {
+    const nx = new Set();
+    layers[layers.length - 1].forEach((u) => S[u].next.forEach((w) => { if (S[w].d === S[u].d - 1) nx.add(w); }));
+    if (!nx.size) break; layers.push([...nx].sort((a, b) => a - b));
+  }
+  const NP = {}; const dagE = [];
+  layers.forEach((ly, k) => ly.forEach((i, r) => { NP[i] = [-1.5 + k * 0.75, (r - (ly.length - 1) / 2) * 0.24]; }));
+  layers.forEach((ly, k) => { if (k + 1 < layers.length) ly.forEach((u) => S[u].next.forEach((w) => { if (layers[k + 1].includes(w)) dagE.push([u, w]); })); });
+  // order layers to reduce crossings (barycentre of parents)
+  for (let k = 1; k < layers.length; k++) {
+    const bary = (w) => { const ps = dagE.filter(([u, x]) => x === w).map(([u]) => NP[u][1]); return ps.reduce((a, b) => a + b, 0) / ps.length; };
+    layers[k].sort((a, b) => bary(a) - bary(b)).forEach((i, r) => { NP[i][1] = (r - (layers[k].length - 1) / 2) * 0.24; });
+  }
+  function renderNet() {
+    const svg = $('net'); svg.innerHTML = '';
+    dagE.forEach(([a, b]) => {
+      const on = a === current || b === current;
+      el('line', { x1: NP[a][0], y1: NP[a][1], x2: NP[b][0], y2: NP[b][1], stroke: on ? '#8b949e' : '#30363d', 'stroke-width': on ? 0.014 : 0.008 }, svg);
+    });
+    for (let k = 1; k < trail.length; k++) {
+      const a = trail[k - 1], b = trail[k];
+      if (NP[a] && NP[b]) el('line', { x1: NP[a][0], y1: NP[a][1], x2: NP[b][0], y2: NP[b][1], stroke: 'var(--text)', 'stroke-width': 0.022, 'stroke-dasharray': '0.04 0.02' }, svg);
+    }
+    layers.forEach((ly, k) => {
+      el('text', { x: -1.5 + k * 0.75, y: -0.86, 'text-anchor': 'middle', 'font-size': 0.055, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg)
+        .textContent = (4 - k) === 0 ? 'filled' : (4 - k) + ' to go';
+      ly.forEach((i) => {
+        const g = el('g', { style: 'cursor:pointer' }, svg);
+        el('circle', { cx: NP[i][0], cy: NP[i][1], r: k === 0 ? 0.08 : 0.06, fill: colourOf(i),
+          stroke: i === current ? 'var(--text)' : 'var(--bg)', 'stroke-width': i === current ? 0.025 : 0.01 }, g);
+        const lk = locks(S[i].c);
+        if (lk) el('text', { x: NP[i][0], y: NP[i][1] + 0.02, 'text-anchor': 'middle', 'font-size': 0.05, 'font-weight': 700, fill: '#0d1117', 'font-family': 'var(--mono)' }, g)
+          .textContent = 'j' + lk.j;
+        el('title', {}, g).textContent = 'colouring ' + i + ' · ' + kindOf(i)[1] + (lk ? ' · repeat index ' + lk.j : '');
+        g.addEventListener('click', () => { stopPath(); goTo(i, true); });
+      });
+    });
+    el('text', { x: -1.7, y: 0.9, 'font-size': 0.045, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg)
+      .textContent = 'jN inside a node: the repeated link colour sits at x_N and x_N+2 (link read 1, 2, 3, 4, 5)';
+  }
+  function renderReadout() {
+    const s = S[current], [cls, txt] = kindOf(current), lk = locks(display);
+    $('readout').innerHTML = '<span>colours on link <b>' + new Set(L.map((i) => display[i])).size + '</b></span>' +
+      (lk ? '<span>repeat at <b>x' + lk.j + ', x' + ((lk.j + 2) % 5) + '</b></span><span>lock 1 <b>' + (lk.l1 ? 'yes' : 'no') + '</b></span><span>lock 2 <b>' + (lk.l2 ? 'yes' : 'no') + '</b></span>' : '') +
+      '<span>swaps to filled <b>' + s.d + '</b></span><span class="status ' + cls + '">' + txt + '</span>';
+  }
+  function renderMoves() {
+    const box = $('moves'); box.innerHTML = '';
+    const s = S[current];
+    if (s.d === 0) {
+      const free = [0,1,2,3].filter((x) => !L.some((i) => display[i] === x));
+      box.innerHTML = '<p style="margin:0">Filled: the link uses three colours, so the hole takes <strong>' + NAMES[free[0]] + '</strong>.</p>'; return;
+    }
+    const ringI = new Set([...ringSet].map((v) => vIdx.get(v))), linkI = new Set(L);
+    components(display).map((m) => {
+      const set = new Set(m.comp);
+      const after = display.map((x, i) => set.has(i) ? (x === m.a ? m.b : x === m.b ? m.a : x) : x);
+      const j = index.get(canon(after).join(''));
+      return { ...m, j, dd: S[j].d - s.d, link: m.comp.some((i) => linkI.has(i)), ring: m.comp.some((i) => ringI.has(i)) };
+    }).filter((m) => m.j !== current).sort((x, y) => x.dd - y.dd || x.comp.length - y.comp.length).forEach((m) => {
+      const b = document.createElement('button'); b.className = 'move';
+      const verts = m.comp.map((i) => V[i]).sort((a, c) => a - c);
+      const dcls = m.dd < 0 ? 'down' : m.dd > 0 ? 'up' : 'flat';
+      const into = S[m.j].d === 0 ? ' · fills the hole' : S[m.j].k === 'dl' ? ' · still doubly locked' : '';
+      const where = m.link ? ' · touches the link' : m.ring ? ' · touches the ring' : ' · far side';
+      b.innerHTML = '<span><span class="swatch" style="background:' + COLORS[m.a] + '"></span><span class="swatch" style="background:' + COLORS[m.b] +
+        '"></span> swap the ' + NAMES[m.a] + '–' + NAMES[m.b] + ' chain {' + (verts.length > 9 ? verts.slice(0, 9).join(', ') + ', … ' + verts.length + ' vertices' : verts.join(', ')) + '}' +
+        where + into + '</span><span class="delta ' + dcls + '">radius ' + S[m.j].d + '</span>';
+      b.onmouseenter = () => { highlight = m; renderMap(); };
+      b.onmouseleave = () => { highlight = null; renderMap(); };
+      b.onclick = () => { stopPath(); applyMove(m); };
+      box.appendChild(b);
+    });
+  }
+  function renderPats() {
+    const here = D.summary.patternsHere, cur = S[current].pat;
+    $('pats').innerHTML = D.summary.patterns74.map((p) =>
+      '<span class="pat' + (here[p] ? ' here' : '') + (p === cur ? ' cur' : '') + (UNSEEN.has(p) ? ' unseen' : '') + '" title="' + p +
+      (here[p] ? ' · ' + here[p] + ' doubly locked state' + (here[p] > 1 ? 's' : '') + ' here' : ' · not in this graph') +
+      (UNSEEN.has(p) ? ' · on Math’s list of patterns not yet seen' : '') + '">' + p + '</span>').join('');
+    const nHere = Object.keys(here).length;
+    $('patText').innerHTML = 'This graph realises <strong>' + nHere + '</strong> of the 74. ' +
+      (cur ? 'Current state: <code>' + cur + '</code>.' : 'The current state is not doubly locked, so it has no pattern.') +
+      ' Patterns underlined in amber are the four Math lists as not yet seen in any graph (pattern strings depend on which way round the ring is read).';
+  }
+  function render() { renderRoots(); renderMap(); renderLand(); renderNet(); renderReadout(); renderMoves(); renderPats(); }
+
+  function fillStats() {
+    const sm = D.summary;
+    $('stats').innerHTML = [[sm.colourings, 'colourings'], [sm.filled, 'filled'], [sm.dl, 'doubly locked'], [sm.maxRadius, 'max radius']]
+      .map(([v, t]) => '<div class="stat"><b>' + v.toLocaleString('en') + '</b><span>' + t + '</span></div>').join('');
+    $('classText').innerHTML = 'Up to renaming colours, T − 0 has ' + sm.colourings.toLocaleString('en') + ' four-colourings, all in a single Kempe class. ' +
+      'Every unfilled state that is not doubly locked is one swap from filled. The ' + sm.dl + ' doubly locked states have radius 2 (' + sm.dlHist['2'] +
+      '), 3 (' + (sm.dlHist['3'] || 0) + ') or 4 (' + (sm.dlHist['4'] || 0) + ') <span class="lab">[computed]</span>.';
+  }
+
+  // ---------------------------------------------------------------- walk a shortest route
+  function shortestPath() {
+    const p = [START];
+    while (S[p[p.length - 1]].d > 0) { const u = p[p.length - 1]; p.push(S[u].next.filter((w) => S[w].d === S[u].d - 1).sort((a, b) => a - b)[0]); }
+    return p;
+  }
+  function narrate(t) { $('narr').innerHTML = t; }
+  function loadPath() { stopPath(); path = shortestPath(); pathIdx = 0; trail = [START]; goTo(START, false);
+    narrate('Radius-4 state. The link reads ' + L.map((i) => NAMES[display[i]]).join(', ') + ': four colours, both locks present.'); }
+  function stepPath() {
+    if (!path) loadPath();
+    if (pathIdx + 1 >= path.length) { stopPath(); return; }
+    const to = path[++pathIdx];
+    const m = components(display).find((mv) => { const set = new Set(mv.comp);
+      const after = display.map((x, i) => set.has(i) ? (x === mv.a ? mv.b : x === mv.b ? mv.a : x) : x);
+      return index.get(canon(after).join('')) === to; });
+    applyMove(m); trail.push(to); render();
+    const lk = locks(display), left = S[to].d;
+    narrate('Swap ' + pathIdx + ': the ' + NAMES[m.a] + '–' + NAMES[m.b] + ' chain of ' + m.comp.length + ' vertices. ' +
+      (left === 0 ? 'The link now uses three colours. <strong>Filled.</strong>'
+        : lk && lk.l1 && lk.l2 ? 'Still doubly locked (repeat now at x' + lk.j + '). ' + left + ' to go.'
+        : 'A lock is broken. One more swap fills the hole.'));
+    if (pathIdx + 1 >= path.length) stopPath();
+  }
+  function stopPath() { if (timer) clearInterval(timer); timer = null; }
+  $('play').onclick = () => { loadPath(); timer = setInterval(stepPath, 1600); };
+  $('step').onclick = () => { stopPath(); stepPath(); };
+  $('reset').onclick = () => { loadPath(); };
+  $('locks').onclick = () => { showLocks = !showLocks; $('locks').textContent = showLocks ? 'Hide locks' : 'Show locks'; renderMap(); };
+  $('ring').onclick = () => { ringOn = !ringOn; $('ring').textContent = ringOn ? 'Hide the ring' : 'Highlight the ring'; renderMap(); };
+
+  fillStats();
+  goTo(START, false);
+})();
+</script>
+</body>
+</html>
