@@ -1,7 +1,12 @@
 {
-  "revision": 133,
-  "updatedAt": "2026-10-06T15:15:00-06:00",
+  "revision": 134,
+  "updatedAt": "2026-10-06T15:25:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T21:25:00Z",
+      "node": "structural-chain-rstar",
+      "action": "Revision 134 cites Tilley (JGAA 21(4) 2017) on every R* node: the vertex property R* needs is, as far as we can tell, his D-resolvability, and his open conjecture (every degree-5 vertex) implies R* (one vertex); our contribution is the reduction, H, HP, the Euler lemma and the hard-case analysis. It records four_color_of_core_Rstar as built (audit J10 pending), Theorem R5-cubed as proved by hand (Math review and the audit's re-derivation; machine test pending), the minimal-counterexample frame (our local theorems are vacuous there), Route B as a pure vacancy set killed on RSST data with hybrid B' under test, and Long Table's killed disc-parity invariant. Leaderboard: longtable +50, audit +30. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T21:15:00Z",
       "node": "structural-rstar-phase-c",
@@ -11559,6 +11564,180 @@
         {
           "time": "2026-10-06T21:15:00Z",
           "text": "Revision 133, leaderboard: studiointel +150 (a core state of radius at least 5 with a certificate, found by a pre-registered search, Phase C; the audit's replay passed 15:04). studiocompute +30 (the requested run of the audit's radius-5 replay, outputs posted 4cd27b3); the audit takes no share, as it said. Coordinator ruling recorded: one award per replay role (the audit writes the checker and the verdict, studiocompute runs it). Not scored: Phase D certificates (not replayed; the 150 is paid once), Long Table's literature note (no bounty item). Totals: math 30, audit 90, studiointel 150, studiomath 510, studiocompute 270, intern-C 30, others 0."
+        }
+      ]
+    },
+    {
+      "id": "structural-chain-rstar",
+      "revision": 134,
+      "title": "Reduction: Lemma R* implies VH_C, VH-exists and 4-colourability (conditional theorem, hand; R* open, implied by Tilley's D-resolvability conjecture, 2017)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1514_longtable_to_coordination+audit+math+navigator+user_CORRECTION-R-star-is-Tilley-D-resolvability.md",
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/literature-rstar-deep.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1512_math_to_coordination+studiointel+studiomath+navigator+audit_hybrid-frame-diamond-subsumes-our-local-results.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1512_audit_to_coordination+math+longtable+studiomath+navigator_minimal-counterexample-frame-sources-and-consequence.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1511_math_to_coordination+studiomath+studiointel+navigator+audit_minimal-counterexample-frame.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: citation: the vertex property R* needs (every Kempe class of 4-colourings of T - v contains a colouring whose link at the degree-5 vertex v uses at most three colours) is, as far as we can tell, Tilley's D-resolvability: Tilley, \"D-resolvability of vertices in planar graphs\", J. Graph Algorithms Appl. 21(4) (2017) 649-661, doi:10.7155/jgaa.00433. Tilley's open conjecture asks that EVERY degree-5 vertex be D-resolvable (he notes it is stronger than 4-colourability); R* asks for ONE such vertex per core triangulation. So Tilley's conjecture implies R*, and R* is the weaker statement, still open (Severn's reading e0ca812, adopted by the coordinator). Found by Long Table (a589190; abstract verified by Long Table, full-text match reported by its sub-agent; the audit is to check the definition match against the full text). The vertex property is therefore not ours. Our contribution is the reduction R* => VH-exists => 4CT (hand, re-derived by the audit; the core form built in Lean, J10 pending), Theorems H and HP (compiled and audited), the Euler lemma (compiled and audited), and the analysis of the hard cases. Every R* node, the paper and the bounty board cite Tilley 2017. Long Table's 15:04 \"no source states R*\" is withdrawn by Long Table."
+        },
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: minimal-counterexample frame (Math 15:11, audit 15:12, Math 15:12) [hand, cited classical facts]: a minimal counterexample is internally 6-connected with minimum degree 5 and no Birkhoff diamond (Birkhoff 1913; sources checked by the audit), so 4CT follows from R*-min (R* restricted to that class) by minimality alone, with no fan, relative class or link D. Math's sobering consequence [hand]: a diamond-free triangulation has no degree-5 vertex with three consecutive degree-5 neighbours, so Theorems H, HP and R5-cubed apply only at vertices inside a Birkhoff diamond and are vacuous in that frame; the whole difficulty sits in diamond-free, internally 6-connected neighbourhoods (classes such as (5,5,6,5,6), (5,5,6,6,6), (6^5)). The audit asked Math to confirm its frame section; status unchanged."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-lean-link-d",
+      "revision": 134,
+      "title": "Lean: core-class R* implies 4CT, four_color_of_core_Rstar; also F1 + F4, four_color_of_RStar_noSepTri (built; audit J10 pending)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1511_studiomath_to_coordination+audit+navigator+math+severn_core-Rstar-implies-4CT-compiled.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1506_studiomath_to_coordination+audit+navigator+math_core-class-Rstar-implies-4CT-compiled-support-form.md",
+        "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/RStarCore.lean",
+        "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean",
+        "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/MinimalFrame.lean",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1516_studiomath_to_coordination+audit+navigator+math_frame-F1-F4-compiled.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1516_audit_to_studiomath+coordination+studiointel+navigator_Lean-ready-definitions-diamond-4cycle-conf2122.md"
+      ],
+      "evidence": "Studio Math (7a3cf9e, merged 1c9342b): four_color_of_core_Rstar : RStarCore -> every SphericalMap is 4-colourable (and the plane-map form). RStarCore: every connected triangulation with a facial triangle pqr, every triangle facial, and degree at least 5 off {p,q,r} has a degree-5 vertex v off {p,q,r} with PureClean T v. Links D1 to D5 in SideTriangle.lean (four_color_of_RStarSupport first, 15:06), the wrapper in RStarCore.lean. Studio Math's check.sh: standard axioms only, no sorry/admit/native_decide in the five modules, sabotaged copies rejected. Notes for the audit: phi-vertex degrees unconstrained (the same class in the hand core, not formalised); PureClean is the every-colouring form. Also MinimalFrame.lean (3db558c, 15:16): four_color_of_RStar_noSepTri (F1 + F4): every connected min-5 triangulation with no separating triangle having a degree-5 PureClean vertex anywhere implies 4CT (weaker hypothesis than RStarCore; rStarNoSepTri_of_core); F1 colours across a separating triangle without Kempe chains. F2 (separating 4-cycle) and F3 (Birkhoff diamond, 2.122) next, from the audit's Lean-ready definitions (12decfa: the Birkhoff diamond is RSST 0.7322). The audit's single check J10 of link D, the wrapper and possibly MinimalFrame is pending.",
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: built, Studio-checked by Studio Math, audit J10 pending. Not \"compiled\" in the ledger's sense until the audit's verdict; the 300-point Lean bounty for the reduction pays then."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-lean-global",
+      "revision": 134,
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: citation: the vertex property R* needs (every Kempe class of 4-colourings of T - v contains a colouring whose link at the degree-5 vertex v uses at most three colours) is, as far as we can tell, Tilley's D-resolvability: Tilley, \"D-resolvability of vertices in planar graphs\", J. Graph Algorithms Appl. 21(4) (2017) 649-661, doi:10.7155/jgaa.00433. Tilley's open conjecture asks that EVERY degree-5 vertex be D-resolvable (he notes it is stronger than 4-colourability); R* asks for ONE such vertex per core triangulation. So Tilley's conjecture implies R*, and R* is the weaker statement, still open (Severn's reading e0ca812, adopted by the coordinator). Found by Long Table (a589190; abstract verified by Long Table, full-text match reported by its sub-agent; the audit is to check the definition match against the full text). Here PureClean at a vertex corresponds, as far as we can tell, to Tilley's D-resolvability of that vertex."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "index": 2,
+      "revision": 134,
+      "node": {
+        "id": "structural-theorem-r5cubed",
+        "title": "Theorem R5-cubed: three consecutive degree-5 neighbours give radius at most 7 (proved by hand: Math review and audit re-derivation; machine test pending)",
+        "status": "proved",
+        "statement": "A degree-5 hole v with three consecutive link vertices of degree 5, the other two of any degree, and no separating triangle through the ball: every doubly locked state has pure Kempe radius at most 7 (at most 6 for two positions). Holds in the relative class too. Contains Theorem H and HP's class (5,5,5,5,*).",
+        "approach": "The new move G (swap the {g,d}-component of x3, confined to {x3,x4}) with rules G-F and G-B, plus F- and B-starvation and the HP termination table (MathRstar55566.md).",
+        "evidence": "Math worker's claimed hand proof (940336c, 15:11), unreviewed by Math; the audit re-derived every step by hand and finds it CORRECT (15:14, 09a1074), including the starvation steps Math flagged. Math's independent review (15:16, e02b90c): CORRECT. Machine kill test (the review's corrected section 7 spec) not yet run.",
+        "killCriteria": "A doubly locked state at such a hole with radius above 7, or a named swap step failing in the machine test.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1511_math_to_coordination+navigator+audit+studiomath+studiointel_claimed-proof-three-consecutive-fives.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1514_audit_to_math+coordination+navigator+studiointel_R5cubed-re-derived-correct.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1516_math_to_navigator+coordination+audit+studiomath_Theorem-R5-three-fives-reviewed-correct.md",
+          "SolvingFrameworkPlan/docs/working/MathRstar55566.md",
+          "SolvingFrameworkPlan/docs/working/MathReviewRstar55566.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T21:25:00Z",
+            "text": "Revision 134: proved by hand: the Math worker's proof, Math's independent review worker (15:16, CORRECT, wording fixes only; corrected machine spec in its section 7) and the audit's independent re-derivation (15:14, CORRECT). The machine kill test is still pending and stays a kill test. Coverage (audit): covers (5,5,5,6,6) and T4's (5,5,5,5,6) and (5,5,5,6,6) holes, so R* holds on T4; does NOT cover T4's (5,5,6,6,6) holes, nor any of the three replayed radius-5 certificates ((5,5,6,5,6), (5,5,6,6,6), (7,5,6,5,6)); the classes (5,5,5,7,6) and (5,5,5,8,6) are Phase D data, not replayed. Not enough for R*: the pentakis dodecahedron has no 5-5 edge. In the minimal-counterexample frame it is vacuous (a diamond is present: Math 15:12)."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 134,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1514_audit_to_math+coordination+navigator+studiointel_R5cubed-re-derived-correct.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1514_longtable_to_coordination+audit+math+navigator+user_CORRECTION-R-star-is-Tilley-D-resolvability.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: Theorem R5-cubed (in progress; re-derived by the audit) covers the adjacent class (5,5,5,6,6), half of the 300-point item; the non-adjacent class (5,5,6,5,6) stays open. Citation: the vertex property is, as far as we can tell, Tilley's D-resolvability (JGAA 2017); Tilley's conjecture implies R*."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-phase-c",
+      "revision": 134,
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: citation: the vertex property R* needs (every Kempe class of 4-colourings of T - v contains a colouring whose link at the degree-5 vertex v uses at most three colours) is, as far as we can tell, Tilley's D-resolvability: Tilley, \"D-resolvability of vertices in planar graphs\", J. Graph Algorithms Appl. 21(4) (2017) 649-661, doi:10.7155/jgaa.00433. Tilley's open conjecture asks that EVERY degree-5 vertex be D-resolvable (he notes it is stronger than 4-colourability); R* asks for ONE such vertex per core triangulation. So Tilley's conjecture implies R*, and R* is the weaker statement, still open (Severn's reading e0ca812, adopted by the coordinator). Found by Long Table (a589190; abstract verified by Long Table, full-text match reported by its sub-agent; the audit is to check the definition match against the full text). A radius-5 state is not a \"difficult\" state in Tilley's sense: each fills."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-phase-d",
+      "revision": 134,
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: citation: the vertex property R* needs (every Kempe class of 4-colourings of T - v contains a colouring whose link at the degree-5 vertex v uses at most three colours) is, as far as we can tell, Tilley's D-resolvability: Tilley, \"D-resolvability of vertices in planar graphs\", J. Graph Algorithms Appl. 21(4) (2017) 649-661, doi:10.7155/jgaa.00433. Tilley's open conjecture asks that EVERY degree-5 vertex be D-resolvable (he notes it is stronger than 4-colourability); R* asks for ONE such vertex per core triangulation. So Tilley's conjecture implies R*, and R* is the weaker statement, still open (Severn's reading e0ca812, adopted by the coordinator). Found by Long Table (a589190; abstract verified by Long Table, full-text match reported by its sub-agent; the audit is to check the definition match against the full text). Tilley's own evidence (per the sub-agent): exhaustive class checks on the Errera, Fritsch, Heawood, Kittell, Poussin and Soifer graphs, and over 200,000 greedy-start runs to order 125."
+        }
+      ]
+    },
+    {
+      "id": "structural-route-b-kempe-reducible",
+      "revision": 134,
+      "status": "exploring",
+      "title": "Route B: computer-checked configurations plus discharging (pure-vacancy form killed on RSST data; hybrid B' under test)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1508_math_to_coordination+studiointel+longtable+audit_routeB-what-vacancy-freedom-changes.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1509_math_to_coordination+studiomath+studiointel+navigator+audit_routeB-candidate-set-and-first-batch.md",
+        "backgroundMaterial/planemap-structural/studiointel/routeb/kred.py",
+        "backgroundMaterial/planemap-structural/studiointel/routeb/rsst/SOURCE.md",
+        "backgroundMaterial/planemap-structural/studiointel/hard_birkhoff_filters.txt",
+        "backgroundMaterial/planemap-structural/studiointel/hard_rsst_contain.jsonl",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1512_math_to_coordination+studiointel+studiomath+navigator+audit_hybrid-frame-diamond-subsumes-our-local-results.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: Studio intel [exploratory]: an independent re-implementation of the vacancy D-reducibility game (kred.py, reproduces Math's 2-ball table exactly) run on the RSST unavoidable set (633 configurations, sha256 1c92fc28...): of the 18 configurations evaluated so far (rings 6 to 10), 15 are not vacancy-reducible at any degree-5 vertex tested; only 0.7322, 2.122 and 0.79077722 have vacancy-reducible vertices. So vacancy-reducibility is weaker than classical D-reducibility (vacancy needs a fill from EVERY colouring of K - v; classical needs some extension: Math 15:12), and Route B as a pure vacancy set is killed on these data [computed, exploratory, partial]. Hybrid Route B' (classical reductions as exclusions plus R* on the rest; Math agreed 15:12): Studio intel's filters on 115 hard graphs (106 Phase C/D graphs plus seeds) find every one containing RSST configuration 0.7322 or 2.122 (navigator tally of hard_rsst_contain.jsonl), and 23 surviving the diamond and separating-cycle filters (hard_birkhoff_filters.txt) [exploratory, small graphs only]. Math's candidate unavoidable set (Lemma W, Theorem U) is [hand, unreviewed]. Studio Math's minimal-counterexample frame: F1 + F4 built (see the link D node). Fellow F (alternating class) was started per the coordinator; no file on main yet. RSST 0.7322 is the Birkhoff diamond (audit 12decfa)."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-f",
+      "revision": 134,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1513_longtable_to_coordination+audit+math+navigator_sketch-killed-disc-degree-parity.md",
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/disc-degree-parity.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: Long Table [sketch, killed] (592dc3d): a disc version of Tutte's degree parity is not a Kempe invariant of T - v (in T4 - v six swaps return to the same link word with every face parity flipped; one Kempe class of 1,632 colourings, 168 words with both bit values). By-product [hand]: for a component meeting the link, odd(K) equals the change in link edges of that pair, a parity rule limiting one-swap recolourings."
+        }
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 134,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1514_longtable_to_coordination+audit+math+navigator+user_CORRECTION-R-star-is-Tilley-D-resolvability.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134: the paper must cite Tilley 2017 (JGAA 21(4) 649-661) wherever R* appears, say that the vertex property R* needs is, as far as we can tell, Tilley's D-resolvability, and that Tilley's open conjecture (every degree-5 vertex) implies R* (one vertex), so R* is weaker and still open; Severn's e0ca812 does this and applies C1-C6, and the navigator's claim check of it agrees with the ledger; and present our contribution as the reduction, H, HP, the Euler lemma and the hard-case analysis. four_color_of_core_Rstar: \"built, audit pending\" until J10."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 134,
+      "notes": [
+        {
+          "time": "2026-10-06T21:25:00Z",
+          "text": "Revision 134, leaderboard: longtable +50 (withdrew its own error, the 15:04 \"no source states R*\", at 15:14 before anyone else reported it; the audit's 15:12 pointer to Tilley's 2018 paper did not report that error). audit +30 (the requested adversarial re-derivation of Theorem R5-cubed, report posted 15:14). Not scored: R5-cubed itself (accepted and re-derived, but the 300-point item names both (5,5,5,6,6) and (5,5,6,5,6) and the board has no partial award; it pays in full when (5,5,6,5,6) is proved); four_color_of_core_Rstar (300 on the audit's J10 verdict); Route B data and the disc-parity kill (own idea, no bounty item); the Tilley finding itself (no bounty item). Totals: longtable 50, math 30, audit 120, studiointel 150, studiomath 510, studiocompute 270, intern-C 30, others 0."
         }
       ]
     }

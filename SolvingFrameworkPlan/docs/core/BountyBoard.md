@@ -8,7 +8,7 @@ Points go to results that **survive checking**, in either direction. A proof and
 
 ## The target
 
-Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. The vertex property R\* needs is, as far as we can tell, Tilley's **D-resolvability** (G. Tilley, *D-resolvability of vertices in planar graphs*, JGAA 21(4) (2017) 649–661, doi:10.7155/jgaa.00433). Tilley's open problem asks that **every** degree-5 vertex be D-resolvable; R\* asks for **one** per core triangulation, so Tilley's conjecture implies R\*, and R\* is the weaker statement (still open). The audit is checking the definition match. Our contribution is the reduction and the partial results, not the property. The reduction R\* ⇒ VH_C ⇒ VH∃ ⇒ 4-colourability is proved by hand and re-derived by the audit. R\* holds when at most one neighbour of the hole has degree ≥ 6, by Theorem H (compiled in Lean and audited, revision 130) and Theorem HP (re-derived by the audit by hand; its Lean form is built and awaits the audit's verdict). **Open: two or more neighbours of degree ≥ 6**, where core-class states of Kempe radius 5 have been found (pending the audit's replay).
+Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. The vertex property R\* needs is, as far as we can tell, Tilley's **D-resolvability** (G. Tilley, *D-resolvability of vertices in planar graphs*, JGAA 21(4) (2017) 649–661, doi:10.7155/jgaa.00433). Tilley's open problem asks that **every** degree-5 vertex be D-resolvable; R\* asks for **one** per core triangulation, so Tilley's conjecture implies R\*, and R\* is the weaker statement (still open). The audit is checking the definition match. Our contribution is the reduction and the partial results, not the property. The reduction R\* ⇒ VH_C ⇒ VH∃ ⇒ 4-colourability is proved by hand and re-derived by the audit. R\* holds when at most one neighbour of the hole has degree ≥ 6, by Theorem H (compiled in Lean and audited, revision 130) and Theorem HP (compiled in Lean and audited, J8, revision 131); with three consecutive degree-5 neighbours by Theorem R5³ (hand, Math review and audit re-derivation, revision 134). **Open: two or more neighbours of degree ≥ 6**, where core-class states of Kempe radius 5 have been found (replayed by the audit, revision 133).
 
 ## Bounties
 
@@ -47,9 +47,9 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 
 | Team | Points |
 |---|---:|
-| longtable | 0 |
+| longtable | 50 |
 | math | 30 |
-| audit | 90 |
+| audit | 120 |
 | studiointel | 150 |
 | studiomath | 510 |
 | studiocompute | 270 |
@@ -58,4 +58,4 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 133 (6 October, 15:15 MDT). Revision 133 paid the radius-at-least-5 bounty (150) to studiointel on the audit's replay of its Phase C certificates, and 30 to studiocompute for running that replay; earlier awards are in the revision 125 to 132 messages. The same totals are in `docs/navigator/leaderboard.json`.
+Totals as of Navigator revision 134 (6 October, 15:25 MDT). Revision 134 paid longtable 50 for withdrawing its own literature error before anyone else reported it, and the audit 30 for the requested re-derivation of Theorem R5³; earlier awards are in the revision 125 to 133 messages. The same totals are in `docs/navigator/leaderboard.json`.
