@@ -5,6 +5,29 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Finding from reading the library [hand, from source]
 `SphericalMap.edge_card_bound` (PlaneMap/SphericalDegree.lean) gives only `E + 1 ≤ V_support + F`. For a triangulation (3F = 2E) this yields E ≤ 3V − 3, i.e. Σ(deg−6) ≤ −6. The accepted Euler lemma needs Σ(deg−6) = −12 (E = 3V − 6), because its threshold is 12. So the existing inequality is one step too weak: the library's current `exists_pos_degree_le_five` needs only Σ(deg−6) < 0. We need the full Euler identity V − E + F = 2 for a connected triangulation.
 
+## Update 1446 MDT: links A–C compiled (`PlaneMap/RStar.lean`)
+
+- **A.** `extend_of_pureClean`: `PureClean T r` → (T − r 4-colourable → T 4-colourable).
+- **`four_color_of_global_Rstar`.**
+  - Hypothesis: **every** connected spherical triangulation of minimum degree 5 has a pure-clean vertex of degree 5.
+  - Conclusion: every `SphericalMap` is 4-colourable.
+  - **This assumes the clean-vertex property for all min-5 triangulations, not only for the 4-connected relative-class core.** The core version needs link D.
+- **B.** `pureClean_iff_locked`: it suffices to check the colourings with no fill within one swap.
+- **C.** `pureClean_of_theorem_H`, `pureClean_of_theorem_HP`. These hold only at holes of the H/HP classes. "Every min-5 triangulation has an H- or HP-class vertex" is **false** (the pentakis dodecahedron has only (6⁵) holes), so C is not a four-colour theorem.
+- **Axioms:** standard only. `check.sh` now compiles the three modules in order into a copy-on-write clone of the built Mathlib tree.
+
+**Definitions: library notion versus hand notion (for the audit).**
+
+| hand | library / here | match |
+|---|---|---|
+| state at hole v | `c : Fin n → Fin 4` with `ProperOff G v c`; the value at v is ignored | same (an extra dummy value) |
+| Kempe swap | `KempeStep`: a whole component of `pairGraph` (the two-colour subgraph of G − v), colours exchanged | same |
+| fill F (link uses ≤ 3 colours) | `Target G v c`: some colour is missing on N(v) | same (4 colours) |
+| radius r(s) ≤ m | `PureFill G v c m`: a pure swap path of length ≤ m to a `Target` state | same |
+| pure-clean / KD(v) | `PureClean T v` | same |
+| doubly locked | not defined. `pureClean_iff_locked` uses "no `PureFill` within 1" instead. By the hand Step 1 and the one-swap analysis, an unfilled state fails to fill within one swap exactly when both locks hold. **That equivalence is not formalised**, and is not needed: the hypothesis is stated as `PureClean`. | stated form is the stronger or equal one |
+| R\*'s "finitely many swaps" | `∃ m, PureFill ... m` | same |
+
 ## Plan
 1. **Piece 1: counting lemma** (`EulerCounting.lean`, compiled, `good_card_ge_twelve`). Pure `SimpleGraph` statement: min degree ≥ 5 and 2E + 12 ≤ 6V imply at least 12 degree-5 vertices with at most one neighbour of degree ≥ 12. Needs only Mathlib (handshake `sum_degrees_eq_twice_card_edges`, double counting). Can be built and checked in isolation with a single-file `lake env lean`, which is light.
 2. **Piece 2: sharp Euler bound** for the `SphericalMap` carrier, all faces of length 3 and a connected graph: `2E + 12 ≤ 6V`. Two extra facts beyond `edge_card_bound`: rank(incidence) = V − 1 (connected graph) and dim ker(boundary) = 1 (dual connected, which follows from connectivity of the graph). Alternative: derive E ≤ 3V − 6 from a quadrangulation or girth argument. I have not chosen yet. This is the real work.
@@ -12,6 +35,30 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 
 ## Open decision for the coordinator
 The hole-fill statements need the plane-map carrier (rotation, outer ring w_t) rather than a bare `SimpleGraph`. I will ask the Math team (Lean owner) how `Vacancy*` states it before writing Piece 3.
+
+## Plan 1441 MDT: "R* implies the Four Colour Theorem" in Lean
+
+**Finding that shortens the chain.** The library already compiles
+`SphericalMap.four_color_of_triangulated_five_extension` (`SphericalFourContact.lean`, in the audited 8299419 set):
+- **Gate hypothesis:** `TriangulatedFiveExtension`. Every connected spherical triangulation T of minimum degree 5 has a degree-5 vertex r with (T − r 4-colourable → T 4-colourable).
+- **Conclusion:** every `SphericalMap` is 4-colourable.
+
+R*'s conclusion at v is *every colouring of T − v reaches a fill by pure swaps*. That gives the gate's implication at r = v immediately: colour T − v, swap to a fill, then put the missing colour on v.
+
+So for **R* ⇒ 4CT** the fan machinery is not needed: VH_C, φ-good fans, VH∃, T\*_τ, mixed moves and Theorem A. Those links (L1, L2, L4, L6 and vh-exists Theorem A) are needed only for VH∃ itself as a hypothesis, which is weaker than R*. The formal chain is:
+
+| link | statement in the library's language | uses (compiled) | difficulty |
+|---|---|---|---|
+| **A. pure-clean ⇒ gate** | `PureClean T r` := ∀ c, `ProperOff T.graph r c` → ∃ m, `PureFill T.graph r c m`. Then `(∀ T conn. tri. min-5, ∃ r, deg r = 5 ∧ PureClean T r)` → every `SphericalMap` is 4-colourable. | `four_color_of_triangulated_five_extension`, `PureFill`/`Target` | easy (hours) |
+| **B. DL form** | "every colouring with no fill within one swap fills eventually" ⇔ `PureClean`. This is L3, and trivial: a doubly locked state has radius ≥ 2, and the others fill in ≤ 1. | none | trivial |
+| **C. light vertices are clean** | `theorem_H` / `theorem_HP` ⇒ `PureClean` at a degree-5 vertex with ≤ 1 neighbour of degree ≥ 6 and no separating triangle through it. Corollary: 4CT holds if every connected min-5 triangulation has such a vertex (conditional, but fully compiled). | this branch's `theorem_H`, `theorem_HP` | easy |
+| **D. L5, separating-triangle reduction** | `RStar` := every connected triangulation T with a facial triangle φ, every vertex off φ of degree ≥ 5 and on φ of degree ≥ 4, and **no separating triangle** (`∀ triangle, facial`), has a degree-5 v ∉ φ with `PureClean T v`. Then `RStar` ⇒ every connected min-5 triangulation has a pure-clean degree-5 vertex. Proof: induction on order. At a separating triangle F, build the side A not containing φ as a `SphericalMap` with F as a face (isolate the far side's vertices and transport the support). Apply `RStar` to (A, F), using `relative_light_fives` only if the counting form is wanted. Lift pure-cleanness by `VacancyCliqueLift.interior_fill_lift`. | `isolate_closed`, `supportTransport`, `VacancyCliqueLift`, `JordanSides` | **hard** (days). The new content is the side map: after isolating B − F, the region face must be the triangle F. |
+| **E. assembly** | `RStar` → every `SphericalMap` (and `PlaneMap`) is 4-colourable. | A + D | easy once D is done |
+| (optional) **F. VH∃ ⇒ 4CT** | needs T\*_τ (isolate v, insert two chosen chords into the pentagon), mixed paths, and the containment lemma | `isolate_closed`, `RotationSystem.split`, `MixedPath` | medium–hard; not on the R* path |
+
+**Hypothesis to settle with the audit before D.** "4-connected" for (T, φ) is stated as "every triangle of T is facial". This matches `NoSeparatingTriangleAt`, used globally. The relative class allows degree 4 on φ. Its Euler side is `relative_light_fives`, which is already compiled.
+
+**Order of work.** A + B + C now, then D, then E. F only on request.
 
 ## Update 1438 MDT: Theorem HP compiled (same file, `VacancyIcosahedral.lean`)
 
