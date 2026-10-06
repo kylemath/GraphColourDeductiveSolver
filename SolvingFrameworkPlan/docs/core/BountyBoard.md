@@ -48,13 +48,13 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | Team | Points |
 |---|---:|
 | longtable | 0 |
-| math | 0 |
-| audit | 0 |
+| math | 30 |
+| audit | 30 |
 | studiointel | 0 |
-| studiomath | 0 |
+| studiomath | 30 |
 | intern-A | 0 |
 | intern-B | 0 |
-| intern-C | 0 |
+| intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 126 (6 October, 14:07 MDT). No item has qualified since 14:03; reviews, plans and pre-registrations do not score.
+Totals as of Navigator revision 127 (6 October, 14:18 MDT). Awards so far are the fixed 30-point reward for requested independent re-derivations (see the revision 127 message for items and evidence).

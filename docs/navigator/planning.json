@@ -1,7 +1,12 @@
 {
-  "revision": 126,
-  "updatedAt": "2026-10-06T14:07:00-06:00",
+  "revision": 127,
+  "updatedAt": "2026-10-06T14:18:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T20:50:00Z",
+      "node": "structural-wp20",
+      "action": "Revision 127 records that WP20 P1 is reproduced exactly on the Mac Studio (replay digest identical to the transferred first-Mac file's digest), with the audit's own replay running and Math's review still pending; Theorem HP re-derived by hand by the audit (now audited by hand, not compiled); Theorem H reviewed again by intern C (not audited); the Euler lemma built in Lean by Studio Math with the audit's reading of its scope; the two-degree-6 case of R* opened as a node with Math's obstruction and certification plan and the interns' checked findings; intern D's potential killed on data. Leaderboard awards follow the amended board (8dbcaf5)."
+    },
     {
       "time": "2026-10-06T20:10:00Z",
       "node": "structural-pathway-sprint",
@@ -10614,6 +10619,108 @@
       ],
       "id": "structural-sixfive-automaton-killed",
       "revision": 126
+    },
+    {
+      "title": "WP20: D1 and P at degree-5 holes, order 25 (P1 independently checked and reproduced exactly on a second machine; audit replay and Math review pending)",
+      "notes": [
+        {
+          "time": "2026-10-06T20:50:00Z",
+          "text": "Revision 127, verified on branch studio-wp21 with git show (not checked out). T2, the Studio's REPLAY of P1: 254 of 254 shards, state complete, damaged none, cpu_done 137,385.9 s of a 216,000 cap, none wasted, 11:45:13 to 14:14:10 (replay/pipeline.log, commit 71bf0e1). J4 (commit e090ee1, wp20/studio-j4/README.md): on the Studio, the transferred first-Mac P1 file (sha256 e68c44a3...793e) was digested with wp_compare_outputs.py (6d62589f, the PACKAGE-SHA256SUMS entry) and compared with the replay output: IDENTICAL, exit 0. The navigator compared the two DIGEST.json files on the branch: equal as JSON, overall_sha256 39f1396ee1988d38e94d4252e45170521259b8d9fc27dbb11ed241bb4e4723d7, witness_sha256 df0263f1...b90b, 10 blocks of 2539, 25,381 graphs. So P1 is reproduced exactly by the same producer on a different machine. This is reproducibility, not a third implementation. Gates still open: (a) the audit's pre-registered replay J3 (route A, its own implementation), running on the Studio since 14:14:44; (b) Math's review. Gate (c), the digest comparison, is now met. Status unchanged: produced, independently checked and reproduced; not yet passed."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1340_audit_to_coordination+navigator+longtable_P1-replay-route-on-studio.md"
+      ],
+      "id": "structural-wp20",
+      "revision": 127
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:50:00Z",
+          "text": "Revision 127: Theorem HP is now re-derived by hand by the INDEPENDENT AUDIT (14:30): every step correct, including Lemma 1 for k = 1, 2, 3, the easy kills, Lemma 3 and the termination table; the audit explains why this automaton closes (every move is a starvation kill reading two outer colours of a degree-5 vertex, an AB kill closed inside the ball, or an F/B step fixed by adjacency, so no leak and no trap, unlike K-A1). Intern C (two cycles) also found no gap. So HP now has: a Math review worker, Studio Math, intern C and the audit. Status: proved by hand, audited by hand re-derivation; NOT compiled. Scope: deg v = 5, four link vertices of degree exactly 5, deg p at least 5 arbitrary (deg p = 4 on phi is covered by the degree-at-most-4 result in the relative class), chordless link with distinct w_t. Not covered: two or more link vertices of degree 6 to 11 (T4's (5,5,5,6,6) holes, the (6^5) holes). Consistent with T4's (5,5,5,5,6) holes of radius 4. Its computed claims are still unverified and its order-22 example still lacks a face list."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1430_audit_to_math+coordination+navigator+studiomath_Theorem-HP-re-derived.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle2.md"
+      ],
+      "id": "structural-theorem-hp",
+      "revision": 127
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:50:00Z",
+          "text": "Revision 127: intern C's second cycle also found no gap in Theorem H. H now has hand reviews by a Math worker, Studio Math and intern C; the audit has NOT yet re-derived H. Status unchanged: proved by hand, not audited, not compiled."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1430_audit_to_math+coordination+navigator+studiomath_Theorem-HP-re-derived.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle2.md"
+      ],
+      "id": "structural-theorem-h",
+      "revision": 127
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:50:00Z",
+          "text": "Revision 127: Studio Math reports the Euler counting lemma compiled in Lean (commit 7178c2d, docs/working/StudioMathLean/EulerCounting.lean, theorem StudioMath.good_card_ge_twelve). The audit read the statement by hand (14:45): it states the minimum-degree-5 lemma correctly and is not vacuous (the icosahedron satisfies it), but it does NOT give the relative-class form that link L5 of the R* chain needs (up to two degree-4 vertices on phi; at least 9 - n4 good vertices off phi). Not in any module audit; the audit's independent build check is routed to the Studio. Status of the node unchanged (proved by hand); the Lean version is recorded as built, not audited, not yet compiled in the ledger's sense."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/StudioMathLean/EulerCounting.lean",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1406_studiomath_to_coordination+math+navigator+audit_Euler-counting-lemma-compiled.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1445_audit_to_coordination+studiomath+navigator_Euler-counting-Lean-statement-read-and-studio-check.md"
+      ],
+      "id": "structural-euler-lemma",
+      "revision": 127
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "revision": 127,
+      "node": {
+        "id": "structural-rstar-two-six",
+        "title": "R* when two link vertices have degree 6: classes (5,5,5,6,6) and (5,5,6,5,6)",
+        "status": "exploring",
+        "statement": "The open case of R* with exactly two degree-6 neighbours and three of degree 5. Hand obstruction [hand, Math worker, unreviewed, MathTwoSixNeighbours.md]: HP's moves (F, B, AB, with leaks branched adversarially) give no bound for either class: in the adjacent class (5,5,5,6,6) the adversary can stay on a 20-state set (two F-cycles of length 10 joined by AB), and every adjacent-class state off it has radius at most 4; in the non-adjacent class (5,5,6,5,6) the 28 survivors of one-move kills form a closed set. The missing ingredient is memory of outside connections across moves, which the vacancy D-reducibility game tracks. Intern B's argument that in the non-adjacent class every link triple contains a degree-6 vertex (so no AB kill is available) is CORRECT by Math's hand check. Intern A (cycles 1 and 2) checked by Math: correct on the degree-free starvation facts and the 10 patterns; wrong on \"starvation fails at degree 6\", on \"gdbbb and dgdag are the residue\" and on \"m3, m4 unconstrained\".",
+        "approach": "Plan (Math 14:10): certify the joint game's machine strategies instead of a ring-3 hand argument: the joint game reports (5,5,5,6,6) reducible at depth 7 and (5,5,6,5,6) at depth 14 (the latter not yet verifier-checked); needed are (a) an independent implementation of the joint game, (b) exported strategy trees checked by an independent checker, (c) a verifier check of the (5,5,6,5,6) pass, (d) separate handling of non-simple 2-ball rings (separating 4-cycles through v), (e) the audit's soundness review of the game. If those succeed, the 300-point sub-case is settled by a machine-checked certificate plus a hand soundness argument, labelled [computed + hand]. Studio intel data [computed, exploratory, post hoc, 32 graphs]: in pattern E2 the AB swap leaves the doubly locked set in all 628 records (both new locks fail in 580, one in 48, both hold in 0), every killing swap leads to an unfilled non-locked state, so E2 fills in 2 swaps on these graphs; a hand proof of \"both new locks cannot hold\" is open.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathTwoSixNeighbours.md",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A.md",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle2.md",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-B.md",
+          "backgroundMaterial/planemap-structural/studiointel/e2_kills.py",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1410_math_to_coordination+navigator+audit+studiomath+studiointel_two-six-hand-obstruction-and-intern-A-corrections.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1410_math_to_coordination+audit+navigator+studiomath_intern-B-checked-and-plan-for-two-six-classes.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1426_studiointel_to_coordination+math+longtable+audit_E2-first-killing-swaps.md"
+        ],
+        "evidence": "Open. No proof and no counterexample. A realised state of the 20-state set whose whole Kempe class has no filled state would be a counterexample; every such state seen so far fills, T4's within 4 swaps.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:50:00Z",
+          "text": "Revision 127: intern D's coset-curvature potential (intern-D.md) is killed as a separator on three holes [computed, exploratory, post hoc]: Studio intel (14:10, coset_potential.py, under 1 CPU-second) found the role vector K and every Phi take the same values at the largest radius as at smaller radii (T4: the radius-4 states share K = (3,2,3,3) with 4 radius-2 states; order 28: the radius-4 state shares K with a radius-3 state), and every Phi moves both up and down along shortest fills on T4 and order 28. Studio intel also corrected intern D's labelling (Phi as defined depends on which colour is called 0). Not replayed independently."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D.md",
+        "backgroundMaterial/planemap-structural/studiointel/coset_potential.py",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1410_studiointel_to_coordination+math+longtable+audit_coset-curvature-potential-table.md"
+      ],
+      "id": "structural-pathway-d",
+      "revision": 127
     }
   ]
 }
