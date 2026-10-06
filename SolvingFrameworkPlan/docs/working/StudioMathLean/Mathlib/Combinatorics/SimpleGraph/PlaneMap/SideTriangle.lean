@@ -294,7 +294,7 @@ theorem onSide_adj (T : SphericalMap n) {p q r : Fin n} {c : T.Face → ZMod 2}
 theorem exists_onSide (T : SphericalMap n) (htri : T.Triangulated) {p q r : Fin n}
     (hpq : T.Adj p q) (hqr : T.Adj q r) (hrp : T.Adj r p) (hnf : ¬ Facial T p q r)
     {c : T.Face → ZMod 2} (hc : TriPotential T p q r c) (b : ZMod 2) :
-    ∃ z, (z ≠ p ∧ z ≠ q ∧ z ≠ r) ∧ OnSide T c b z := by
+    ∃ z, (z ≠ p ∧ z ≠ q ∧ z ≠ r) ∧ (∃ y, T.Adj z y) ∧ OnSide T c b z := by
   classical
   have h1 := hpq.ne; have h2 := hqr.ne; have h3 := hrp.ne
   let d0 : T.Dart := ⟨(p, q), hpq⟩
@@ -308,7 +308,8 @@ theorem exists_onSide (T : SphericalMap n) (htri : T.Triangulated) {p q r : Fin 
   -- the face of a dart `u → v` of the triangle has its third vertex off the triangle
   have third : ∀ (u v : Fin n) (huv : T.Adj u v),
       (u = p ∧ v = q ∨ u = q ∧ v = p) →
-      ∃ z, (z ≠ p ∧ z ≠ q ∧ z ≠ r) ∧ OnSide T c (c (T.faceOf ⟨(u,v),huv⟩)) z := by
+      ∃ z, (z ≠ p ∧ z ≠ q ∧ z ≠ r) ∧ (∃ y, T.Adj z y) ∧
+        OnSide T c (c (T.faceOf ⟨(u,v),huv⟩)) z := by
     intro u v huv huv'
     let z := (T.rotation.next ⟨(v,u),huv.symm⟩).snd
     have hN : Nx T v u z := ⟨huv.symm, rfl⟩
@@ -334,16 +335,16 @@ theorem exists_onSide (T : SphericalMap n) (htri : T.Triangulated) {p q r : Fin 
       change T.rotation.faceOf (T.rotation.next ⟨(z,v),hvz.symm⟩) = _ at f2
       rw [e1] at f1; rw [e2] at f2
       exact f2.trans f1
-    refine ⟨z, hz, ?_⟩
+    refine ⟨z, hz, ⟨u, hzu'⟩, ?_⟩
     have := onSide_of_dart T hc hz ⟨(z,u),hzu'⟩ rfl
     rwa [hface] at this
   have two : ∀ a : ZMod 2, a = b ∨ a + 1 = b := by
     intro a; revert a b; decide
   rcases two (c (T.faceOf d0)) with e | e
-  · obtain ⟨z, hz, hs⟩ := third p q hpq (Or.inl ⟨rfl, rfl⟩)
-    exact ⟨z, hz, e ▸ hs⟩
-  · obtain ⟨z, hz, hs⟩ := third q p hpq.symm (Or.inr ⟨rfl, rfl⟩)
-    refine ⟨z, hz, ?_⟩
+  · obtain ⟨z, hz, hy, hs⟩ := third p q hpq (Or.inl ⟨rfl, rfl⟩)
+    exact ⟨z, hz, hy, e ▸ hs⟩
+  · obtain ⟨z, hz, hy, hs⟩ := third q p hpq.symm (Or.inr ⟨rfl, rfl⟩)
+    refine ⟨z, hz, hy, ?_⟩
     have : c (T.faceOf ⟨(q,p),hpq.symm⟩) = b := by
       have hj : c (T.faceOf d0.symm) = 1 + c (T.faceOf d0) := by
         have := zmod2_swap _ _ _ hjump.symm; exact this
@@ -679,5 +680,318 @@ theorem kept_facial : Facial N p q r := by
 
 end Map
 end Kept
+
+/-! ## D3c, D4. Degrees, connectivity, and lifting cleanness -/
+
+section Lift
+open RotationSystem VacancyCliqueLift VacancySlide VacancyShortFill VacancyMobility
+  VacancyIcosahedral
+
+variable {T : SphericalMap n} {p q r : Fin n} {c : T.Face → ZMod 2} {b : ZMod 2}
+
+/-- The triangle as a vertex set. -/
+def triSet (p q r : Fin n) : Set (Fin n) := {x | x = p ∨ x = q ∨ x = r}
+
+theorem keep_nbr (hc : TriPotential T p q r c) {x y : Fin n} (hx : x ∈ keep T c b p q r)
+    (hxoff : x ≠ p ∧ x ≠ q ∧ x ≠ r) (hxy : T.Adj x y) : y ∈ keep T c b p q r := by
+  have hon : OnSide T c b x := by
+    rcases hx with h | h | h | h
+    · exact absurd h hxoff.1
+    · exact absurd h hxoff.2.1
+    · exact absurd h hxoff.2.2
+    · exact h
+  by_cases hy : y ≠ p ∧ y ≠ q ∧ y ≠ r
+  · exact Or.inr (Or.inr (Or.inr (onSide_adj T hc hxoff hy hxy hon)))
+  · simp only [not_and_or, not_not] at hy
+    exact inF_keep hy
+
+theorem keep_boundary (hc : TriPotential T p q r c) :
+    Boundary T.graph (keep T c b p q r) (triSet p q r) := by
+  refine ⟨fun x hx => inF_keep hx, fun u w hu hw huw => ?_⟩
+  by_contra hoff
+  have hoff' : u ≠ p ∧ u ≠ q ∧ u ≠ r := by
+    have : ¬ (u = p ∨ u = q ∨ u = r) := hoff
+    tauto
+  exact hw (keep_nbr hc hu hoff' huw)
+
+theorem tri_clique (hpq : T.Adj p q) (hqr : T.Adj q r) (hrp : T.Adj r p) :
+    Clique T.graph (triSet p q r) :=
+  fun _ _ hu hv huv => adj_corners hpq hqr hrp hu hv huv
+
+theorem kept_neighborSet (hc : TriPotential T p q r c) {N : SphericalMap n}
+    (hN : N.graph = sideGraph T.graph (keep T c b p q r)) {x : Fin n}
+    (hx : x ∈ keep T c b p q r) (hxoff : x ≠ p ∧ x ≠ q ∧ x ≠ r) :
+    N.graph.neighborSet x = T.graph.neighborSet x := by
+  ext y
+  simp only [mem_neighborSet, hN, sideGraph]
+  exact ⟨fun h => h.1, fun h => ⟨h, hx, keep_nbr hc hx hxoff h⟩⟩
+
+theorem kept_degree (hc : TriPotential T p q r c) {N : SphericalMap n}
+    (hN : N.graph = sideGraph T.graph (keep T c b p q r)) {x : Fin n}
+    (hx : x ∈ keep T c b p q r) (hxoff : x ≠ p ∧ x ≠ q ∧ x ≠ r) :
+    N.graph.degree x = T.graph.degree x := by
+  rw [← card_neighborSet_eq_degree, ← card_neighborSet_eq_degree, ← Nat.card_eq_fintype_card,
+    ← Nat.card_eq_fintype_card, kept_neighborSet hc hN hx hxoff]
+
+theorem dropped_degree {N : SphericalMap n}
+    (hN : N.graph = sideGraph T.graph (keep T c b p q r)) {x : Fin n}
+    (hx : x ∉ keep T c b p q r) : N.graph.degree x = 0 := by
+  rw [← card_neighborSet_eq_degree, Fintype.card_eq_zero_iff]
+  refine ⟨fun ⟨y, hy⟩ => ?_⟩
+  have : N.graph.Adj x y := hy
+  rw [hN] at this
+  exact hx this.2.1
+
+theorem kept_reach (hc : TriPotential T p q r c) (hpq : T.Adj p q) (hqr : T.Adj q r)
+    (hrp : T.Adj r p) {N : SphericalMap n}
+    (hN : N.graph = sideGraph T.graph (keep T c b p q r)) {a : Fin n}
+    (ha : a ∈ keep T c b p q r) (hreach : T.graph.Reachable a p) : N.graph.Reachable a p := by
+  obtain ⟨W⟩ := hreach
+  suffices key : ∀ {a y : Fin n} (W : T.graph.Walk a y), y = p → a ∈ keep T c b p q r →
+      N.graph.Reachable a p from key W rfl ha
+  intro a y W
+  induction W with
+  | nil => intro hy _; rw [hy]
+  | @cons a a' y hadj W ih =>
+    intro hy ha
+    by_cases hoff : a ≠ p ∧ a ≠ q ∧ a ≠ r
+    · have ha' := keep_nbr hc ha hoff hadj
+      have hN' : N.graph.Adj a a' := by rw [hN]; exact ⟨hadj, ha, ha'⟩
+      exact hN'.reachable.trans (ih hy ha')
+    · simp only [not_and_or, not_not] at hoff
+      by_cases hap : a = p
+      · rw [hap]
+      · have hT := adj_corners hpq hqr hrp hoff (Or.inl rfl) hap
+        have hN' : N.graph.Adj a p := by
+          rw [hN]; exact ⟨hT, ha, inF_keep (Or.inl rfl)⟩
+        exact hN'.reachable
+
+/-- Lift a pure side path: components meeting the outside are isolated singletons there and are
+skipped; the others lift through the clique interface. -/
+theorem side_pure_lift {G : SimpleGraph (Fin n)} {A Fs : Set (Fin n)} (bd : Boundary G A Fs)
+    (cl : Clique G Fs) {h : Fin n} {m : ℕ} {c d : Fin n → Fin 4}
+    (path : PurePath (sideGraph G A) h m c d) {g : Fin n → Fin 4}
+    (eq : ∀ x, x ∈ A → g x = c x) :
+    ∃ m' e, PurePath G h m' g e ∧ ∀ x, x ∈ A → e x = d x := by
+  classical
+  induction path generalizing g with
+  | nil c => exact ⟨0, g, .nil _, eq⟩
+  | @cons k c c1 d step rest ih =>
+    obtain ⟨a, b, S, hab, whole, rfl⟩ := step
+    by_cases hS : S ⊆ A
+    · obtain ⟨e1, st, agree⟩ := kempe_lift_agree G bd cl eq ⟨a, b, S, hab, whole, hS, rfl⟩
+      obtain ⟨m', e, p', agree'⟩ := ih agree
+      exact ⟨m' + 1, e, .cons st p', agree'⟩
+    · obtain ⟨w, hwS, hwA⟩ := Set.not_subset.mp hS
+      obtain ⟨s, act, mem⟩ := whole
+      have iso : ∀ u, ¬ (pairGraph (sideGraph G A) h c a b).Adj w u := fun u e => hwA e.1.2.1
+      have hsw : s = w := by
+        by_contra hne
+        obtain ⟨u, hu⟩ := first_step (sideGraph G A) ((mem w).mp hwS).symm (Ne.symm hne)
+        exact iso u hu
+      subst hsw
+      have hout : ∀ x, x ∈ A → x ∉ S := by
+        intro x hx hxS
+        by_cases hxs : s = x
+        · subst hxs; exact hwA hx
+        · obtain ⟨u, hu⟩ := first_step (sideGraph G A) ((mem x).mp hxS) hxs
+          exact iso u hu
+      have eq' : ∀ x, x ∈ A → g x = swap c a b S x := fun x hx => by
+        rw [swap_out (hout x hx)]; exact eq x hx
+      exact ih eq'
+
+/-- **D4.** A pure-clean vertex of the kept map, off the triangle, is pure-clean in `T`. -/
+theorem pureClean_lift (hc : TriPotential T p q r c) (hpq : T.Adj p q) (hqr : T.Adj q r)
+    (hrp : T.Adj r p) {N : SphericalMap n} (hN : N.graph = sideGraph T.graph (keep T c b p q r))
+    {v : Fin n} (hv : v ∈ keep T c b p q r) (hvoff : v ≠ p ∧ v ≠ q ∧ v ≠ r)
+    (hpc : PureClean N v) : PureClean T v := by
+  classical
+  intro g hg
+  have hle : N.graph ≤ T.graph := by rw [hN]; exact fun _ _ e => e.1
+  have hg' : ProperOff N.graph v g := fun x y e hx hy => hg (hle e) hx hy
+  obtain ⟨m, k, _, d, path, tgt⟩ := hpc g hg'
+  rw [hN] at path tgt
+  obtain ⟨m', e, path', agree⟩ :=
+    side_pure_lift (keep_boundary hc) (tri_clique hpq hqr hrp) path (fun _ _ => rfl)
+  have hvF : v ∉ triSet p q r := by
+    show ¬ (v = p ∨ v = q ∨ v = r)
+    rintro (h | h | h)
+    exacts [hvoff.1 h, hvoff.2.1 h, hvoff.2.2 h]
+  exact ⟨m', m', le_rfl, e, path', target_lift T.graph (keep_boundary hc) hv hvF agree tgt⟩
+
+end Lift
+
+/-! ## D5. The separating-triangle induction -/
+
+section Induction
+open RotationSystem VacancyCliqueLift VacancyIcosahedral
+
+/-- Every triangle of `T` bounds a face (`T` has no separating triangle). -/
+def NoSep (T : SphericalMap n) : Prop :=
+  ∀ x y z, T.Adj x y → T.Adj y z → T.Adj z x → Facial T x y z
+
+/-- The relative class with protected face `p q r`, stated on the support: a triangulation,
+connected on its non-isolated vertices, whose non-isolated vertices off the face have degree at
+least five. -/
+def RelClass (T : SphericalMap n) (p q r : Fin n) : Prop :=
+  T.Triangulated ∧ T.Adj p q ∧ T.Adj q r ∧ T.Adj r p ∧ Facial T p q r ∧
+  (∀ x, x ≠ p → x ≠ q → x ≠ r → T.graph.degree x = 0 ∨ 5 ≤ T.graph.degree x) ∧
+  (∀ x y, 0 < T.graph.degree x → 0 < T.graph.degree y → T.graph.Reachable x y)
+
+/-- A pure-clean vertex of degree five off the face `p q r`. -/
+def CleanOff (T : SphericalMap n) (p q r : Fin n) : Prop :=
+  ∃ v, v ≠ p ∧ v ≠ q ∧ v ≠ r ∧ T.graph.degree v = 5 ∧ PureClean T v
+
+/-- Lemma R\* for the four-connected core, stated on the support. -/
+def RStarSupport : Prop :=
+  ∀ (m : ℕ) (T : SphericalMap m) (p q r : Fin m), RelClass T p q r → NoSep T → CleanOff T p q r
+
+/-- The three corners of a face lie on one face. -/
+theorem facial_darts {T : SphericalMap n} (htri : T.Triangulated) {p q r : Fin n}
+    (hf : Facial T p q r) : ∃ dφ : T.Dart, ∀ w, (w = p ∨ w = q ∨ w = r) →
+      ∃ e : T.Dart, e.fst = w ∧ T.faceOf e = T.faceOf dφ := by
+  rcases hf with h | h
+  · -- face of `p → q`: darts `p → q`, `q → r`, `r → p`
+    obtain ⟨hqp, hqr, e1⟩ := nx_dart h
+    obtain ⟨hrq, hrp, e2⟩ := nx_dart (nx_tri htri h).1
+    let d : T.Dart := ⟨(p, q), hqp.symm⟩
+    have f1 : T.faceOf ⟨(q, r), hqr⟩ = T.faceOf d := by
+      rw [← e1]; exact T.rotation.face_of_face_next d
+    have f2 : T.faceOf ⟨(r, p), hrp⟩ = T.faceOf d := by
+      rw [← f1, ← e2]; exact T.rotation.face_of_face_next (⟨(q, r), hqr⟩ : T.Dart)
+    refine ⟨d, fun w hw => ?_⟩
+    rcases hw with rfl | rfl | rfl
+    · exact ⟨d, rfl, rfl⟩
+    · exact ⟨_, rfl, f1⟩
+    · exact ⟨_, rfl, f2⟩
+  · -- face of `q → p`: darts `q → p`, `p → r`, `r → q`
+    obtain ⟨hpq, hpr, e1⟩ := nx_dart h
+    obtain ⟨hrp, hrq, e2⟩ := nx_dart (nx_tri htri h).1
+    let d : T.Dart := ⟨(q, p), hpq.symm⟩
+    have f1 : T.faceOf ⟨(p, r), hpr⟩ = T.faceOf d := by
+      rw [← e1]; exact T.rotation.face_of_face_next d
+    have f2 : T.faceOf ⟨(r, q), hrq⟩ = T.faceOf d := by
+      rw [← f1, ← e2]; exact T.rotation.face_of_face_next (⟨(p, r), hpr⟩ : T.Dart)
+    refine ⟨d, fun w hw => ?_⟩
+    rcases hw with rfl | rfl | rfl
+    · exact ⟨_, rfl, f1⟩
+    · exact ⟨d, rfl, rfl⟩
+    · exact ⟨_, rfl, f2⟩
+
+/-- The number of non-isolated vertices. -/
+noncomputable def supportSize (T : SphericalMap n) : ℕ :=
+  (Finset.univ.filter fun x => 0 < T.graph.degree x).card
+
+/-- **D5, support form.** Lemma R\* in the core gives a pure-clean vertex of degree five off the
+protected face in every member of the relative class. -/
+theorem cleanOff_of_RStarSupport (hR : RStarSupport) :
+    ∀ (T : SphericalMap n) (p q r : Fin n), RelClass T p q r → CleanOff T p q r := by
+  classical
+  intro T
+  generalize hk : supportSize T = k
+  induction k using Nat.strong_induction_on generalizing T with
+  | h k ih =>
+  intro p q r hrel
+  by_cases hns : NoSep T
+  · exact hR n T p q r hrel hns
+  obtain ⟨htri, hpq, hqr, hrp, hfac, hdeg, hconn⟩ := hrel
+  simp only [NoSep, not_forall] at hns
+  obtain ⟨x, y, z, hxy, hyz, hzx, hnf⟩ := hns
+  obtain ⟨c, hc⟩ := exists_triPotential T hxy hyz hzx
+  obtain ⟨dφ, hφ⟩ := facial_darts htri hfac
+  set b : ZMod 2 := c (T.faceOf dφ) + 1 with hb
+  have hbne : ∀ e : T.Dart, T.faceOf e = T.faceOf dφ → c (T.faceOf e) ≠ b := by
+    intro e he h
+    rw [he, hb] at h
+    exact (show ∀ a : ZMod 2, a ≠ a + 1 by decide) _ h
+  obtain ⟨N, hN, hle, spec⟩ := subgraph_tracked T (sideGraph T.graph (keep T c b x y z))
+    (fun _ _ e => e.1)
+  -- vertices kept off the separating triangle are off the protected face
+  have off_phi : ∀ w, w ∈ keep T c b x y z → (w ≠ x ∧ w ≠ y ∧ w ≠ z) →
+      w ≠ p ∧ w ≠ q ∧ w ≠ r := by
+    intro w hw hoff
+    have hon : OnSide T c b w := by
+      rcases hw with h | h | h | h
+      exacts [absurd h hoff.1, absurd h hoff.2.1, absurd h hoff.2.2, h]
+    have key : ¬ (w = p ∨ w = q ∨ w = r) := by
+      intro hwφ
+      obtain ⟨e, he, hf⟩ := hφ w hwφ
+      exact hbne e hf (hon e he)
+    tauto
+  have hNadj : ∀ {u v : Fin n}, T.Adj u v → u ∈ keep T c b x y z → v ∈ keep T c b x y z →
+      N.graph.Adj u v := fun h hu hv => by rw [hN]; exact ⟨h, hu, hv⟩
+  have hxk : x ∈ keep T c b x y z := inF_keep (Or.inl rfl)
+  have hyk : y ∈ keep T c b x y z := inF_keep (Or.inr (Or.inl rfl))
+  have hzk : z ∈ keep T c b x y z := inF_keep (Or.inr (Or.inr rfl))
+  have hkeepdeg : ∀ w, 0 < N.graph.degree w → w ∈ keep T c b x y z := by
+    intro w hw
+    obtain ⟨u, hu⟩ := N.graph.degree_pos_iff_exists_adj w |>.mp hw
+    rw [hN] at hu; exact hu.2.1
+  have hrelN : RelClass N x y z := by
+    refine ⟨kept_triangulated hc hN hle spec htri hxy hyz hzx, hNadj hxy hxk hyk,
+      hNadj hyz hyk hzk, hNadj hzx hzk hxk, kept_facial hc hN hle spec htri hxy hyz hzx, ?_, ?_⟩
+    · intro w h1 h2 h3
+      by_cases hw : w ∈ keep T c b x y z
+      · rw [kept_degree hc hN hw ⟨h1, h2, h3⟩]
+        obtain ⟨n1, n2, n3⟩ := off_phi w hw ⟨h1, h2, h3⟩
+        exact hdeg w n1 n2 n3
+      · exact Or.inl (dropped_degree hN hw)
+    · intro u v hu hv
+      have hTx : 0 < T.graph.degree x := T.graph.degree_pos_iff_exists_adj x |>.mpr ⟨y, hxy⟩
+      have reach : ∀ w, 0 < N.graph.degree w → N.graph.Reachable w x := by
+        intro w hw
+        have hwk := hkeepdeg w hw
+        have hTw : 0 < T.graph.degree w :=
+          lt_of_lt_of_le hw (SimpleGraph.degree_le_of_le hle)
+        exact kept_reach hc hxy hyz hzx hN hwk (hconn w x hTw hTx)
+      exact (reach u hu).trans (reach v hv).symm
+  -- the far side loses a non-isolated vertex
+  have hlt : supportSize N < k := by
+    rw [← hk]
+    obtain ⟨z0, hz0, ⟨y0, hy0⟩, hon0⟩ := exists_onSide T htri hxy hyz hzx hnf hc (b + 1)
+    have hz0k : z0 ∉ keep T c b x y z := by
+      rintro (h | h | h | h)
+      · exact hz0.1 h
+      · exact hz0.2.1 h
+      · exact hz0.2.2 h
+      · have := h ⟨(z0, y0), hy0⟩ rfl
+        rw [hon0 ⟨(z0, y0), hy0⟩ rfl] at this
+        exact (show ∀ a : ZMod 2, a + 1 ≠ a by decide) b this
+    apply Finset.card_lt_card
+    refine ⟨fun w hw => ?_, fun hsub => ?_⟩
+    · simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hw ⊢
+      exact lt_of_lt_of_le hw (SimpleGraph.degree_le_of_le hle)
+    · have hmem : z0 ∈ Finset.univ.filter (fun x => 0 < T.graph.degree x) := by
+        simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+        exact T.graph.degree_pos_iff_exists_adj z0 |>.mpr ⟨y0, hy0⟩
+      have := hsub hmem
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and] at this
+      rw [dropped_degree hN hz0k] at this
+      exact lt_irrefl 0 this
+  obtain ⟨v, hvx, hvy, hvz, hv5, hvc⟩ := ih _ hlt N rfl x y z hrelN
+  have hvk := hkeepdeg v (by omega)
+  have hvoff : v ≠ x ∧ v ≠ y ∧ v ≠ z := ⟨hvx, hvy, hvz⟩
+  obtain ⟨n1, n2, n3⟩ := off_phi v hvk hvoff
+  refine ⟨v, n1, n2, n3, ?_, pureClean_lift hc hxy hyz hzx hN hvk hvoff hvc⟩
+  rw [← kept_degree hc hN hvk hvoff]; exact hv5
+
+/-- **R\* in the core (support form) implies the Four Colour Theorem.** -/
+theorem four_color_of_RStarSupport (hR : RStarSupport) {n : ℕ} (M : SphericalMap n) :
+    M.graph.Colorable 4 := by
+  refine four_color_of_global_Rstar (fun m T hm hconn htri hdeg => ?_) M
+  classical
+  let x : Fin m := ⟨0, hm⟩
+  obtain ⟨y, hxy⟩ := T.graph.degree_pos_iff_exists_adj x |>.mp (by have := hdeg x; omega)
+  let z := (T.rotation.next ⟨(y, x), hxy.symm⟩).snd
+  have hN : Nx T y x z := ⟨hxy.symm, rfl⟩
+  have hyz : T.Adj y z := nx_adj_right hN
+  have hzx : T.Adj z x := nx_adj_right (nx_tri htri hN).1
+  have hrel : RelClass T x y z :=
+    ⟨htri, hxy, hyz, hzx, Or.inl hN, fun w _ _ _ => Or.inr (hdeg w),
+      fun u v _ _ => hconn.preconnected u v⟩
+  obtain ⟨v, -, -, -, hv5, hvc⟩ := cleanOff_of_RStarSupport hR T x y z hrel
+  exact ⟨v, hv5, hvc⟩
+
+end Induction
 
 end SimpleGraph.SphericalMap
