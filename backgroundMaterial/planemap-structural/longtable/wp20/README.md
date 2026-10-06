@@ -5,7 +5,7 @@
 - `timing-m5-20.json`, `timing-m5-22.json`: producer output for cost extrapolation (order 22 is the first 120 graphs only). **Exploratory, post hoc, spent orders.** Order 20: 0 SEP-bad. Order 22 (120 graphs): 2 SEP-bad, both depth 1.
 - Phase outputs for P1 (order 25) will be written here after the go-ahead and release.
 
-## Exploratory readings on the spent orders 19-23 (21:36; post hoc, not declared data)
+## Exploratory readings on the spent orders 19-23 (21:40; post hoc, not declared data)
 
 Producer `d1_confirm.py` (unchanged), declaration hash `8758a9f8…`, every graph of each order; then the independent checker `d1_check.py --all` recomputed **every graph** and found no mismatch.
 
