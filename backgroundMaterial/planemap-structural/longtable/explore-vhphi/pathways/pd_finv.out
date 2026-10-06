@@ -1,0 +1,6 @@
+[exploratory] fraction of states where the feature CHANGES under F^steps (DL = state is doubly locked):
+  F^1 DL    {'ksort': '1818/2148', 'ksum': '1620/2148', 'ksum%2': '1032/2148', 'chains': '1620/2148', 'chains%2': '1032/2148'}
+  F^1 notDL {'ksort': '1206/3504', 'ksum': '1044/3504', 'ksum%2': '408/3504', 'chains': '1044/3504', 'chains%2': '408/3504'}
+  F^2 DL    {'ksort': '1350/2148', 'ksum': '1152/2148', 'ksum%2': '252/2148', 'chains': '1152/2148', 'chains%2': '252/2148'}
+  F^2 notDL {'ksort': '744/3504', 'ksum': '456/3504', 'ksum%2': '408/3504', 'chains': '456/3504', 'chains%2': '408/3504'}
+[exploratory] identity test: chains - ksum by status: {'DL': {8: 2148}, 'notDL': {8: 3504}}

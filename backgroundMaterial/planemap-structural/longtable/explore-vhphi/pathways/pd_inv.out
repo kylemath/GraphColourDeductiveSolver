@@ -1,0 +1,40 @@
+[exploratory] state counts by (graph@hole, status):
+   ('A_2', 'FILLED') 60
+   ('A_2', 'UNL2') 60
+   ('A_3', 'DL') 264
+   ('A_3', 'FILLED') 480
+   ('A_3', 'UNL1') 240
+   ('A_3', 'UNL2') 96
+   ('A_4', 'DL') 648
+   ('A_4', 'FILLED') 2400
+   ('A_4', 'UNL1') 1584
+   ('A_4', 'UNL2') 888
+   ('T4', 'DL') 1404
+   ('T4', 'FILLED') 1584
+   ('T4', 'UNL1') 1512
+   ('T4', 'UNL2') 216
+[exploratory] feature ksort              DL values 8, FILLED values 11, UNL values 11; DL∩FILLED=7, DL∩UNL=7
+     DL values: {(0, 0, 0): 516, (0, 0, 1): 432, (0, 0, 2): 192, (0, 1, 1): 312, (0, 1, 2): 192, (1, 1, 1): 24, (1, 1, 2): 432, (1, 1, 3): 216}
+[exploratory] feature ksum               DL values 8, FILLED values 16, UNL values 14; DL∩FILLED=8, DL∩UNL=7
+     DL values: {('A_3', 1): 72, ('A_3', 2): 192, ('A_4', 4): 432, ('A_4', 5): 216, ('T4', 0): 516, ('T4', 1): 360, ('T4', 2): 312, ('T4', 3): 216}
+[exploratory] feature ksum%2             DL values 2, FILLED values 2, UNL values 2; DL∩FILLED=2, DL∩UNL=2
+     DL values: {0: 1452, 1: 864}
+     shared with FILLED: {0: (1452, 2412), 1: (864, 2112)}
+[exploratory] feature krel(b;gd,bd,bg)   DL values 13, FILLED values 22, UNL values 19; DL∩FILLED=12, DL∩UNL=11
+[exploratory] feature krel%2             DL values 8, FILLED values 8, UNL values 8; DL∩FILLED=8, DL∩UNL=8
+     DL values: {(0, 0, 0): 708, (0, 0, 1): 144, (0, 1, 0): 192, (0, 1, 1): 528, (1, 0, 0): 288, (1, 0, 1): 108, (1, 1, 0): 108, (1, 1, 1): 240}
+[exploratory] feature chains             DL values 8, FILLED values 16, UNL values 14; DL∩FILLED=8, DL∩UNL=7
+     DL values: {('A_3', 10): 192, ('A_3', 9): 72, ('A_4', 12): 432, ('A_4', 13): 216, ('T4', 10): 312, ('T4', 11): 216, ('T4', 8): 516, ('T4', 9): 360}
+[exploratory] feature chains%2           DL values 2, FILLED values 2, UNL values 2; DL∩FILLED=2, DL∩UNL=2
+     DL values: {0: 1452, 1: 864}
+     shared with FILLED: {0: (1452, 2412), 1: (864, 2112)}
+[exploratory] feature dist               DL values 1, FILLED values 1, UNL values 1; DL∩FILLED=0, DL∩UNL=1
+     DL values: {2: 2316}
+[exploratory] feature ksum-chains        DL values 3, FILLED values 4, UNL values 4; DL∩FILLED=3, DL∩UNL=3
+     DL values: {('A_3', -8): 264, ('A_4', -8): 648, ('T4', -8): 1404}
+     shared with FILLED: {('A_3', -8): (264, 480), ('A_4', -8): (648, 2400), ('T4', -8): (1404, 1584)}
+[exploratory] feature P-cycle len/2 %2   DL values 2, FILLED values 2, UNL values 2; DL∩FILLED=2, DL∩UNL=2
+     DL values: {0: 240, 1: 2076}
+     shared with FILLED: {0: (240, 2772), 1: (2076, 1752)}
+[exploratory] cpu seconds 3.0
+python3 pd_inv.py  2.34s user 0.03s system 77% cpu 3.060 total
