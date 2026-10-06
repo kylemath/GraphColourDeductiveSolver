@@ -92,6 +92,20 @@ When a $G$-component meets $\varphi$ and $A_1\setminus F$, it contains every ver
 - In (a), disjoint-pair paths joining alternating runs are vertex-disjoint curves joining alternating boundary arcs of the disc. Jordan forbids them. The only bridges used are those of the two pairs, and they do not cross, by admissibility on $\varphi$.
 - The dynamics are the frozen-pair fact. ∎
 
+**Bridge endpoints and non-crossing on a pentagon [hand; added 20:40 in response to Math's 20:42 review].**
+
+*Endpoints.* Let $P$ be a pair with exactly two runs on the face $\varphi=(q_0,\dots,q_4)$. A **run** is a maximal block of cyclically consecutive face vertices coloured from $P$. Consecutive face vertices are adjacent in $G$ (the face is an induced cycle) and have different colours, so a run is a path in the pair graph, hence lies in one $P$-component. The bridge of $P$ is a relation between the **two runs**, not between two chosen vertices: it says the two runs lie in one $P$-component of the far side. Any $u\in$ run$_1$ and $v\in$ run$_2$ serve as endpoints, because each run is already connected inside $G_P$. So the pair-labelled graph $H_P$ is $G_P$ together with one abstract connection between the two runs, labelled $P$ and appearing in no other $H_R$.
+
+*Non-crossing.* Two bridges occur together in a drawing only through the Jordan argument of §2(a). That argument needs a pair $P$ and a pair $R$ with **disjoint colour sets**, both bits set, whose witness paths $\pi_P\subset B_P$ and $\pi_R\subset B_R$ are vertex-disjoint. By pair labelling, $\pi_P$ uses at most the $P$-bridge and $\pi_R$ at most the $R$-bridge, and each path uses its bridge at most once (a path is simple, and each pair has one bridge). Choose the endpoints of the $P$-hop in the two $P$-runs, and those of the $R$-hop in the two $R$-runs. They are distinct vertices, because $P$ and $R$ have disjoint colours.
+- If the runs of $R$ lie in the **same gap** between the runs of $P$ (that is, they do not alternate), then the two endpoints of the $R$-hop lie on one arc cut off by the endpoints of the $P$-hop, for **every** choice of endpoints. Two chords of the disc $\varphi$ whose endpoints do not alternate can be drawn disjointly inside the face.
+- If the runs **alternate**, $\varphi$-admissibility forbids both $\varphi$-bits being set, so this situation does not arise for the $\varphi$-bridges.
+
+The face interior contains no vertex or edge of $G$, so the two hop curves meet no actual edge. Replace each hop in $\pi_P,\pi_R$ by its curve. The result is two disjoint curves in the disc $B$ (with $\varphi$ drawn inside it), and their endpoints lie in the runs of $P$ and $R$ on $Q$. If these runs alternate on $Q$, the curves join alternating boundary points of $B$, which Jordan forbids. So two set $Q$-bits of disjoint pairs with alternating $Q$-runs do not occur: the induced $Q$-bits are admissible.
+
+*Pairs that share a colour.* Pairs $P,R$ with a common colour are not constrained by admissibility, and nothing is claimed for them. This is the reason the argument is pair-by-pair: the labelled graphs $H_P$ and $H_R$ never exchange hops, as in Math's snapshot-gadget construction for the quadrilateral.
+
+*What this does not cover.* A pentagon pair with three or more runs cannot occur (it would need six or more face vertices). A pentagon realisation by snapshot gadgets, as Math gave for the quadrilateral, is not written here; the pair-labelled argument above replaces it.
+
 **Why wheels are excluded [computed, exploratory].** If $A\setminus Q$ is a single vertex $u$, then $Q=N(u)$ and $A$ is the 5-wheel. In the trace game on the 5-wheel, the player has no slide, since every neighbour of $u$ is on $\varphi$. Every fan at $u$ loses $3$ of $36$ (start, bit) positions. So the wheel would be a failure of the extended hypothesis, and it must be outside the class. That loses nothing: a separating 5-cycle that is a vertex neighbourhood is never reduced.
 
 **[hand] Corollary.** A least-order failure of the extended $\mathrm{VH}^{\rm tr}$ has:
