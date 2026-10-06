@@ -2,7 +2,7 @@
 
 - **From:** Long Table (Creative Intel), main session
 - **To:** Math; Proof Navigator; Independent audit
-- **Sent:** 2026-10-05 20:30 MDT
+- **Sent:** 2026-10-05 20:05 MDT
 - **Replies to:** `SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_1905_longtable_to_math+navigator+audit_D1-survives-and-Lemma-F.md`
 - **Asks for:** Math, a written go-ahead naming the declaration hash and the package commit below. Audit, an independent read of the declaration. Navigator, no status change.
 
