@@ -1,0 +1,357 @@
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:181:0: `five_color_degree_five_separated` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:214:0: `five_color_degree_five` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:50:0: `five_color_degree_five_swap` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:61:21: Variable name `hv1x` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:62:21: Variable name `hv4x` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/FiveColorExtension.lean:62:5: Variable name `hv3x` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:120:6: `simp [hu, hv, hcu, hcv]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:126:4: `simp [ite_eq_right hv]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:129:16: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:131:16: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:137:4: `simp [ite_eq_right hu]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:140:12: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:142:12: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:145:4: `simp [ite_eq_right hu, ite_eq_right hv]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:256:28: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:273:0: `exists_missing_colour_on` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:288:0: `coe_neighbourColourFinset` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:288:0: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.coe_neighbourColourFinset`:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:292:31: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:292:49: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:295:0: `neighbourColourFinset_card_le_degree` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:295:0: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.neighbourColourFinset_card_le_degree`:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:300:0: `neighbourColourFinset_card_le_of_degree_le_four` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:306:0: `isProperColouring_induce_iff` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:308:0: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.isProperColouring_induce_iff`:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:319:0: `five_color_degree_at_most_four` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:347:6: `simp [hu, hvx]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:356:8: `simp [hu, hv]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:358:8: `simp [hu, hv]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:389:0: `five_colorable_of_card_le_five` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:391:0: automatically included section variable(s) unused in theorem `SimpleGraph.Kempe.five_colorable_of_card_le_five`:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/Kempe.lean:73:29: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/KempeBoundary.lean:19:0: `swap_removes_singleton_boundary_colour` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/KempeBoundary.lean:38:0: `boundary_card_le_three_of_missing` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/Coloring/KempeMass.lean:40:4: `simp [kempeSwap, hv, hca, hcb, Ne.symm ha, Ne.symm hb]` is a flexible tactic modifying `⊢`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltOpeningWords.lean:11:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:116:2: Try this: 
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:287:6: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:31:23: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:31:8: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:44:14: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:44:29: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:51:8: `simp [pathGraph_adj, Fin.val_castSucc, Fin.val_last] at h` is a flexible tactic modifying `h`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Examples.lean:64:8: `simp [pathGraph_adj, Fin.val_castSucc, Fin.val_last] at h` is a flexible tactic modifying `h`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/FaceChord.lean:11:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/FaceChord.lean:93:33: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/FaceChord.lean:93:36: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/FaceChord.lean:93:52: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/FaceChord.lean:93:55: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/FaceChord.lean:95:41: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/FaceChord.lean:95:44: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:31:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:455:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:455:30: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:456:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:456:43: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/Jordan.lean:531:4: Unused tactic linter: `change growDart u (.inl d) = growDart u (.inl e)` does nothing
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:214:16: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:302:5: Variable name `hdeg` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:304:27: Variable name `h1` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:304:5: Variable name `h0` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:305:24: Variable name `h3` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:305:5: Variable name `h2` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:306:5: Variable name `hv0` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:35:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:88:6: `simp` already closes the goal
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanCycle.lean:93:6: `simp` already closes the goal
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean:161:5: Variable name `hface` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean:164:6: Variable name `d` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean:164:8: Variable name `e` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanEven.lean:30:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanFace.lean:26:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanSides.lean:259:23: This simp argument is unused:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/JordanSplit.lean:28:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/RotationBoundary.lean:26:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/RotationBridgeFills.lean:28:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/RotationSplit.lean:25:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/RotationSplitFills.lean:28:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/SingletonExterior.lean:19:0: `singleton_chain_two_exterior` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalMassContact.lean:24:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/SphericalRankedContact.lean:21:5: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/SupportTransport.lean:13:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/SupportTransport.lean:83:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleBasic.lean:82:0: automatically included section variable(s) unused in theorem `SimpleGraph.TheoremPPole.cvb`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleChain.lean:67:0: automatically included section variable(s) unused in theorem `SimpleGraph.TheoremPPole.delta_add`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleChain.lean:67:17: Variable name `hn` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleCut.lean:30:0: automatically included section variable(s) unused in theorem `SimpleGraph.TheoremPPole.val_one'`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleCut.lean:54:0: automatically included section variable(s) unused in theorem `SimpleGraph.TheoremPPole.delta_zero`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleCut.lean:74:68: Variable name `hc` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleDegen.lean:131:33: Variable name `Pj` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleDegen.lean:131:36: Variable name `Qj` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleFlip.lean:93:0: automatically included section variable(s) unused in theorem `SimpleGraph.TheoremPPole.xj_eq`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleRules.lean:106:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleRules.lean:106:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleRules.lean:106:62: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleRules.lean:61:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleRules.lean:61:32: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TheoremPPoleRules.lean:61:52: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:12:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:127:13: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:127:26: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:145:39: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:146:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:146:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:157:23: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:157:43: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:157:57: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:158:28: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:158:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:158:62: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:169:23: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:169:43: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:169:57: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:170:28: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:170:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:170:62: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:181:33: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:182:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:182:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:203:13: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:203:26: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:204:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:204:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:204:40: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:204:44: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:205:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:205:38: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:205:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:249:13: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:249:26: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:250:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:250:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:250:40: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:250:44: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:251:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:251:38: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:251:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:253:51: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:253:55: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:336:23: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:336:53: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:337:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:337:32: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:337:52: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:337:66: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:367:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:367:61: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:368:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:368:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:368:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:369:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:369:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:369:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:369:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:429:39: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:430:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:430:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:441:23: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:441:43: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:441:57: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:442:28: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:442:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:442:62: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:453:33: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:454:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:454:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:467:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:467:61: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:468:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:468:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:468:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:469:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:469:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:469:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:469:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:520:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:520:61: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:521:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:521:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:521:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:522:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:522:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:522:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:522:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:525:19: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:525:23: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:525:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:525:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:542:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:542:61: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:543:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:543:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:543:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:544:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:544:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:544:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:544:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:547:19: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:547:23: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:547:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:547:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:586:23: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:586:43: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:586:57: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:587:28: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:587:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:587:62: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:600:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:600:61: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:601:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:601:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:601:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:602:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:602:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:602:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:602:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:604:53: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:604:57: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:675:13: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:675:26: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:675:44: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:675:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:676:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:676:38: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:676:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:676:62: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:676:66: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:677:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:677:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:698:48: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:698:61: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:699:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:699:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:699:40: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:700:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:700:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:700:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:700:46: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:700:64: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBelt.lean:700:68: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltAllRoots.lean:10:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltCaps.lean:11:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltCaps.lean:21:36: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltCaps.lean:22:21: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltCaps.lean:23:22: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltCaps.lean:41:66: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltTransport.lean:106:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltTransport.lean:121:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltTransport.lean:129:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltTransport.lean:138:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltTransport.lean:16:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltTransport.lean:86:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltTransport.lean:96:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:1071:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:1126:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:128:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:1323:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:137:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:151:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:154:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:159:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:16:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:160:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:160:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:181:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:182:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:182:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:198:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:199:18: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:233:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:234:17: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:259:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:260:17: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:336:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:337:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:347:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:606:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:617:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:633:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:634:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:653:21: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:677:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:699:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:719:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:730:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:733:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:755:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:767:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:775:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/TwoPoleBeltWalk.lean:809:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyCliqueLift.lean:10:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:121:0: `split_walk` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:135:0: `whole_s_of_no_rho` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:262:0: `active_swap_iff` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:263:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyLemmaL4.active_swap_iff`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:263:6: Overlapping instance parameters in `active_swap_iff`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:271:0: `pairGraph_swap` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:272:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyLemmaL4.pairGraph_swap`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:272:6: Overlapping instance parameters in `pairGraph_swap`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:279:0: `peel` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:38:0: `active_t` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:38:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyLemmaL4.active_t`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:42:0: `active_s` does not use the following hypotheses in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:42:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyLemmaL4.active_s`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:45:0: `active_t_colour` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:45:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyLemmaL4.active_t_colour`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:50:0: `whole_reach` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:52:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyLemmaL4.whole_reach`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:58:0: `whole_mem_of_reach` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:59:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyLemmaL4.whole_mem_of_reach`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:65:0: `reach_t_to_s` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:83:0: `split_aux` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyLemmaL4.lean:83:70: Variable name `hu` is not explicitly referenced.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:12:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:259:33: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:259:37: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:259:47: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:259:51: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:260:33: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:260:37: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:260:47: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:260:51: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:261:19: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:261:28: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:261:47: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:261:56: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:44:45: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:44:51: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobility.lean:44:57: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:27:0: `properOff_rename` does not use the following hypotheses in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:27:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyMobility.properOff_rename`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:31:0: `uniqueAt_rename` does not use the following hypotheses in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:31:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyMobility.uniqueAt_rename`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:35:0: `pairGraph_rename` does not use the following hypotheses in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:35:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyMobility.pairGraph_rename`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:40:0: `whole_rename` does not use the following hypotheses in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:47:0: `swap_rename` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:47:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyMobility.swap_rename`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:55:0: `kempeStep_rename` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:60:0: `target_rename` does not use the following hypotheses in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:60:0: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyMobility.target_rename`:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:65:0: `purePath_rename` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:72:0: `pureFill_rename` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyMobilityGeneral.lean:77:0: `approach_rename` does not use the following hypothesis in its type:
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyPotential.lean:10:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyPotential.lean:24:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyProtectedLift.lean:10:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFill.lean:12:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFill.lean:352:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFill.lean:357:100: This line exceeds the 100 character limit, please shorten it!
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFill.lean:391:50: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFill.lean:391:56: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFill.lean:399:28: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyShortFill.lean:421:42: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyThreeMoveObstruction.lean:10:0: The module doc-string for a file should be the first command after the imports.
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyThreeMoveObstruction.lean:26:29: missing space in the source
+warning: Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyThreeMoveObstruction.lean:34:29: missing space in the source
