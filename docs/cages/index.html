@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cages and Diamonds</title>
+  <meta name="description" content="Interactive demo: fullerene-dual cages with no Birkhoff diamond, the diamond's ring colourings that extend or need a swap, and the single cycle of states at a (5,5,6,5,6) hole.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --sunken: #010409;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --accent: #58a6ff;
+      --good: #3fb950;
+      --bad: #f85149;
+      --warn: #d29922;
+      --twin: #bc8cff;
+      --c0: #f85149;
+      --c1: #58a6ff;
+      --c2: #e3b341;
+      --c3: #3fb950;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+    .wrap { max-width: 1480px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .intro { max-width: 1120px; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--twin); font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+    h2 { margin: 0; font: 600 1.25rem/1.3 var(--serif); }
+    h2.story-h { font-size: 1.55rem; margin: 0 0 .6rem; }
+    p { margin: 0 0 .9rem; color: var(--dim); max-width: 74ch; overflow-wrap: anywhere; }
+    p strong { color: var(--text); }
+    code { font: .88em var(--mono); background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); overflow-wrap: anywhere; }
+    a { color: var(--accent); }
+    .lead { font-size: 1.04rem; }
+    .lab { font: 600 .74rem var(--mono); color: var(--warn); }
+    .roots { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.4rem; align-items: center; }
+    .roots span.label { color: var(--faint); font-size: .85rem; margin-right: .25rem; }
+    .chip { font: 600 .85rem var(--sans); color: var(--text); background: var(--raised); border: 1px solid var(--border);
+            border-radius: 999px; padding: .28rem .7rem; cursor: pointer; text-decoration: none; display: inline-block; }
+    .chip .tag { font-weight: 500; font-size: .72rem; margin-left: .3rem; color: var(--faint); }
+    .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    .story { margin: 0 0 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); scroll-margin-top: .5rem; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(320px, 1fr); gap: 1rem; align-items: start; }
+    .viz { display: grid; gap: 1rem; min-width: 0; }
+    .side { display: grid; gap: .8rem; min-width: 0; }
+    .panel { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .9rem; min-width: 0; }
+    .panel h3 { margin: 0 0 .5rem; font: 600 .78rem var(--sans); color: var(--faint); letter-spacing: .07em; text-transform: uppercase; }
+    svg { display: block; width: 100%; height: auto; }
+    .readout { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin-top: .6rem; font: .86rem var(--mono); color: var(--dim); }
+    .readout b { color: var(--text); font-weight: 600; }
+    .status { display: inline-block; font: 600 .78rem var(--sans); padding: .15rem .55rem; border-radius: 999px; }
+    .status.target { background: #3fb95026; color: var(--good); }
+    .status.ok { background: #58a6ff22; color: var(--accent); }
+    .status.trap { background: #f8514930; color: var(--bad); }
+    .status.twin { background: #bc8cff2a; color: var(--twin); }
+    .status.warn { background: #d2992230; color: var(--warn); }
+    .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px; vertical-align: -.05rem; margin-right: .12rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin-top: .5rem; font-size: .78rem; color: var(--faint); }
+    .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -.08rem; }
+    .card { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .85rem 1rem; min-width: 0; }
+    .card .kick { font: 600 .74rem var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+    .card h4 { margin: .2rem 0 .5rem; font: 600 1.08rem var(--serif); }
+    .card p { font-size: .9rem; margin-bottom: .6rem; }
+    .btn { font: 600 .85rem var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 8px;
+           padding: .45rem .85rem; cursor: pointer; margin: .15rem .35rem .15rem 0; }
+    .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn:disabled { opacity: .45; cursor: default; }
+    .narr { min-height: 2.6rem; margin-top: .6rem; padding: .55rem .7rem; background: var(--sunken); border-radius: 8px; font-size: .88rem; color: var(--dim); overflow-wrap: anywhere; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin: .4rem 0 .2rem; }
+    .stat { background: var(--sunken); border-radius: 8px; padding: .45rem .5rem; }
+    .stat b { display: block; font: 600 1.2rem var(--serif); color: var(--text); }
+    .stat span { font-size: .72rem; color: var(--faint); }
+    .box { background: var(--raised); border: 1px solid var(--border); border-left: 3px solid var(--warn); border-radius: 8px; padding: .7rem 1rem; margin: 0 0 1rem; max-width: 1120px; }
+    .box h4 { margin: 0 0 .4rem; font: 600 .95rem var(--sans); color: var(--text); }
+    .box ul { margin: 0; padding-left: 1.1rem; color: var(--dim); font-size: .9rem; }
+    .box li { margin-bottom: .3rem; overflow-wrap: anywhere; }
+    .box.bad { border-left-color: var(--bad); }
+    .bars { display: grid; gap: .3rem; margin-top: .3rem; }
+    .bar { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 5.2rem; gap: .5rem; align-items: center; font: .8rem var(--mono); color: var(--dim); }
+    .bar .fill { height: .9rem; border-radius: 3px; min-width: 2px; }
+    .rowchips { display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0 .6rem; }
+    .small { font-size: .84rem; }
+    .lvl { margin: .5rem 0 .2rem; font: 600 .74rem var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+    .cls { display: inline-flex; gap: 2px; align-items: center; padding: .25rem .4rem; border-radius: 8px; background: var(--sunken); border: 1px solid var(--border); cursor: pointer; }
+    .cls i { width: .72rem; height: .72rem; border-radius: 50%; display: inline-block; }
+    .cls[aria-pressed="true"] { border-color: var(--text); box-shadow: 0 0 0 1px var(--text) inset; }
+    .cls.l0 { border-color: #3fb95088; } .cls.lx { border-color: #d2992288; }
+    select { font: .85rem var(--sans); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 8px; padding: .4rem .5rem; width: 100%; max-width: 100%; }
+    .strip { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .5rem; }
+    .strip button { width: 1.9rem; height: 1.9rem; border-radius: 50%; border: 2px solid transparent; font: 600 .7rem var(--mono); color: #0d1117; cursor: pointer; padding: 0; }
+    .strip button.sil { border: 2px dotted var(--twin); box-shadow: 0 0 0 2px var(--bg) inset; }
+    .strip button.cur { border-color: var(--text); }
+    .strip button.cur.sil { border-style: solid; }
+    .moves { display: grid; gap: .35rem; margin-top: .4rem; }
+    .mv { display: flex; justify-content: space-between; gap: .75rem; align-items: center; text-align: left; width: 100%;
+            font: .82rem var(--sans); color: var(--text); background: var(--sunken); border: 1px solid var(--border);
+            border-radius: 8px; padding: .4rem .6rem; cursor: default; flex-wrap: wrap; }
+    .mv.silent { border-color: var(--twin); }
+    .tagsil { font: 600 .72rem var(--sans); color: var(--twin); background: #bc8cff2a; padding: .1rem .45rem; border-radius: 999px; white-space: nowrap; }
+    .foot { margin-top: 2.5rem; }
+    .foot p { color: var(--faint); font-size: .82rem; max-width: 110ch; }
+    @media (max-width: 1180px) { .stage { grid-template-columns: 1fr; } }
+    @media (max-width: 820px) { .stats { grid-template-columns: repeat(2, 1fr); } .bar { grid-template-columns: 4.6rem minmax(0, 1fr) 4.6rem; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">Fullerene duals · the Birkhoff diamond · one rotating cycle</p>
+    <h1>Cages and Diamonds</h1>
+    <p class="lead">
+      Delete a degree-five vertex (the <strong>hole</strong>) and four-colour what is left. The hole can be filled once its five
+      neighbours (its <strong>link</strong>) use at most three colours. A <strong>Kempe swap</strong> picks two colours and exchanges them on one whole
+      connected two-colour component. The <strong>radius</strong> ρ of a colouring is the fewest swaps that reach a filled colouring.
+      A colouring is <strong>doubly locked</strong> when no single swap fills it. The proof route needs only <strong>Lemma R*</strong>: in every
+      core triangulation (4-connected, minimum degree 5) some degree-five vertex has every Kempe class of T − v containing a filled colouring
+      <span class="lab">[open]</span>.
+    </p>
+    <p>
+      Classical proofs of the Four Colour Theorem avoid a global argument like R* by listing <strong>reducible configurations</strong>. This page tells three linked stories.
+      First, some graphs seem to have no hard holes at all: the duals of fullerene molecules. Second, they contain none of the classical configurations, and
+      the diamond shows how a classical reduction works. Third, in a graph that does contain diamonds there is one hole where a single cycle of colourings rotates.
+      The earlier pages are <a href="../66666/index.html">The Six-Ring Trap</a>, <a href="../trap/index.html">The Tidy Trap</a> and
+      <a href="../deadend/index.html">The Dead-End Region</a>.
+    </p>
+  </div>
+
+  <div class="roots"><span class="label">Jump to:</span>
+    <a class="chip" href="#s1">1 · Cages</a>
+    <a class="chip" href="#s2">2 · The diamond</a>
+    <a class="chip" href="#s3">3 · One cycle</a>
+  </div>
+
+  <!-- ====================================================================== 1. CAGES -->
+  <section class="story" id="s1">
+    <p class="eyebrow">Story 1</p>
+    <h2 class="story-h">Cages: fullerene duals</h2>
+    <p class="lead">
+      A <strong>fullerene dual</strong> is a triangulation with only degree-five and degree-six vertices. Euler's formula forces exactly <strong>twelve</strong> of degree five.
+      <strong>IPR</strong> (isolated pentagon rule) means no two degree-five vertices are adjacent. These are the duals of carbon fullerenes: the C60 dual has 32 vertices and the C70 dual has 37.
+      In an IPR cage every neighbour of a hole has degree six, so every hole is a (6,6,6,6,6) hole, the case of <a href="../66666/index.html">The Six-Ring Trap</a>
+      <span class="lab">[computed here]</span>. A cage contains no Birkhoff diamond and no RSST configuration 2.122, because both need adjacent degree-five vertices.
+      Call such a graph <strong>configuration-free</strong> <span class="lab">[computed here: 0 and 0]</span>.
+    </p>
+    <div class="box">
+      <h4>Studio results so far <span class="lab">[exploratory, Mac Studio; not audited]</span></h4>
+      <ul>
+        <li>IPR duals of 32 to 52 vertices (<code>backgroundMaterial/planemap-structural/studiointel/ipr/ipr_32_52.pc</code>, run by <code>studiointel/ipr_run.py</code>): 10,275 of 15,204 holes done.
+          ρ = 2 at 38 holes, ρ = 3 at 10,214, ρ = 4 at 23, and <strong>never ρ = 5</strong>. No hole has a class that can never be filled.</li>
+        <li>Tabu search over configuration-free graphs with 37 to 42 vertices reached at best ρ = 4.</li>
+        <li>Radius 5 first appears at order 22. Every ρ = 5 hole found so far lies in a graph with a Birkhoff diamond or 2.122. One example: order 23, graph 742, hole 11, link degrees (5,6,5,7,5), a graph with 2 diamonds.</li>
+        <li>In the exhaustive census (<code>backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-census/README.md</code>, Studio commit 2ea1a3f), <strong>no hole of radius 4 or more occurs in a graph with neither a diamond nor 2.122, through order 25</strong>.
+          Such graphs are rare there: 1, 1, 4 and 2 graphs at orders 22 to 25, all with ρ ≤ 3. Configuration-free radius 4 is reported only at larger order (the C70 dual, and the tabu runs).</li>
+      </ul>
+    </div>
+    <div class="box bad" id="c70flag">
+      <h4>One number does not agree <span class="lab">[computed here, disagrees with a Studio report]</span></h4>
+      <ul><li id="c70text"></li></ul>
+    </div>
+
+    <div class="stage">
+      <div class="viz">
+        <div class="panel">
+          <h3>The cage, with the hole deleted</h3>
+          <svg id="cmap" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Fullerene dual drawing with the current colouring"></svg>
+          <div class="legend">
+            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole</span>
+            <span><i style="border:2px solid var(--text)"></i>link (all degree 6)</span>
+            <span><i style="border:2px solid var(--twin)"></i>chain just swapped</span>
+            <span><i style="border:2px solid var(--bad)"></i>clash (two neighbours, one colour)</span>
+          </div>
+          <div class="readout" id="creadout"></div>
+        </div>
+        <div class="panel">
+          <h3>Every colouring at this hole, by swaps to a filled one</h3>
+          <div class="bars" id="cdist"></div>
+          <p class="small" id="cdisttext" style="margin:.6rem 0 0"></p>
+        </div>
+      </div>
+      <aside class="side" aria-label="Cage controls">
+        <div class="card">
+          <span class="kick">This cage · recomputed for this page</span>
+          <h4 id="ctitle"></h4>
+          <div class="rowchips" id="cchips"></div>
+          <div class="stats" id="cstats"></div>
+          <p id="ctext" style="margin:.4rem 0 0"></p>
+        </div>
+        <div class="card">
+          <span class="kick">Reduction demo</span>
+          <h4>Choose a state, then fill the hole</h4>
+          <p>Pick a stored start state, or press <em>Random state</em> to scramble the current colouring with random Kempe swaps. You can also colour by hand: press <em>Colour by hand</em>, then click a vertex to change its colour.
+            The shortest fill is found by a search over all colourings (done in your browser for new states).</p>
+          <div class="rowchips" id="lchips"></div>
+          <button class="btn" id="crandom">Random state</button>
+          <button class="btn ghost" id="chand">Colour by hand</button>
+          <button class="btn ghost" id="csolve">Find a shortest fill</button><br>
+          <button class="btn" id="cplay">Play</button>
+          <button class="btn ghost" id="cstep">Step</button>
+          <button class="btn ghost" id="creset">Reset</button>
+          <div class="narr" id="cnarr">Pick a start state.</div>
+        </div>
+        <div class="card">
+          <span class="kick">What this shows</span>
+          <h4>Cages are easy so far</h4>
+          <p>At every hole of both cages the worst colouring needs only a few swaps (see the bars). No colouring is stuck forever, and a cage is one Kempe class at each hole it was checked at
+            <span class="lab">[computed]</span>. The Studio numbers above say the same for most IPR duals up to 52 vertices, and ρ = 5 never appears
+            <span class="lab">[exploratory]</span>. This is finite evidence about a small family of very symmetric graphs. It is not a proof of anything.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====================================================================== 2. DIAMOND -->
+  <section class="story" id="s2">
+    <p class="eyebrow">Story 2</p>
+    <h2 class="story-h">The Birkhoff diamond</h2>
+    <p class="lead">
+      The <strong>Birkhoff diamond</strong> (Birkhoff, 1913) is the classic reducible configuration. Four vertices of degree five form two triangles that share an edge. Its two centres touch each other and both tips; the tips do not touch.
+      Cut it out and what surrounds it is a <strong>ring of six</strong> vertices. A configuration is <strong>D-reducible</strong> when every proper colouring of the ring
+      either <strong>extends directly</strong> to the four inside vertices, or Kempe swaps <strong>outside</strong> the ring turn it into one that does, <strong>whatever the outside looks like</strong>.
+      Then a smallest counterexample cannot contain the configuration. The same holds for RSST configuration 2.122 (Robertson, Sanders, Seymour and Thomas, 1997), which is the diamond with one centre raised to degree six.
+      Tilley (JGAA, 2017) studies the related notion of D-resolvability.
+    </p>
+    <p id="dtext"></p>
+    <div class="stage">
+      <div class="viz">
+        <div class="panel">
+          <h3>The diamond in its ring</h3>
+          <svg id="dmap" viewBox="-1.4 -1.4 2.8 2.8" role="img" aria-label="Birkhoff diamond inside a hexagonal ring, with outside chains drawn as arcs"></svg>
+          <div class="legend">
+            <span><i style="background:var(--faint)"></i>inside vertex, colour unknown</span>
+            <span><i style="border:2px dashed var(--text)"></i>outside chain (arcs outside the ring)</span>
+            <span><i style="border:2px solid var(--twin)"></i>blocks to be swapped</span>
+          </div>
+          <div class="readout" id="dreadout"></div>
+        </div>
+        <div class="panel">
+          <h3>All 31 ring colourings, up to renaming colours</h3>
+          <div id="dlist"></div>
+          <p class="small" style="margin:.6rem 0 0">Each box shows the six ring colours in order 1 to 6. Green edge: extends directly. Amber edge: needs a swap outside, at the level shown by the heading (level L means L rounds of the closure).</p>
+        </div>
+      </div>
+      <aside class="side" aria-label="Diamond controls">
+        <div class="card">
+          <span class="kick">Step through</span>
+          <h4>One ring colouring at a time</h4>
+          <button class="btn ghost" id="dprev">Previous</button>
+          <button class="btn" id="dnext">Next</button>
+          <button class="btn ghost" id="dtour">Tour all 31</button>
+          <div class="narr" id="dnarr"></div>
+        </div>
+        <div class="card" id="dswapcard">
+          <span class="kick">If it does not extend</span>
+          <h4>Pick what the outside looks like</h4>
+          <p>The outside is unknown, but it is a planar graph, so chains of two colours cannot cross. Choose how the outside joins the ring vertices by chains (arcs on the left). Every choice has a flip that reaches a colouring at a lower level, and level 0 extends.</p>
+          <select id="dsel" aria-label="Outside chain pattern"></select>
+          <p class="small" id="dflip" style="margin:.6rem 0"></p>
+          <button class="btn" id="dapply">Apply the flip</button>
+          <button class="btn ghost" id="dundo">Undo</button>
+        </div>
+        <div class="card">
+          <span class="kick">The hybrid idea · exploratory, not proved</span>
+          <h4>Do the classical part the classical way</h4>
+          <p>Take a smallest counterexample T to the Four Colour Theorem. Remove from the picture everything that classical reducibility already handles: separating cycles of length 3 and 4,
+            the diamond, 2.122 and a few more. What is left has minimum degree 5 and none of these configurations. Then try the <strong>global</strong> Kempe argument (Lemma R*) at a degree-five vertex.</p>
+          <p>Math's observation <span class="lab">[hand, unreviewed]</span>: with no diamond, a degree-five vertex has no three consecutive degree-five neighbours, and two adjacent degree-five neighbours force a degree-six vertex beside them.
+            So the local theorems for five-heavy holes say nothing new in this frame. All the difficulty sits in holes like (6,6,6,6,6) and (5,5,6,5,6). The excluded list must stay small and hand-provable, or nothing is left to prove.</p>
+          <p style="margin:0">The cages are the first weak support: configuration-free graphs where every hole fills in few swaps <span class="lab">[exploratory]</span>.
+            The step from "this works in the graphs we looked at" to "it works in every graph with none of these configurations" is <span class="lab">[open]</span>.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====================================================================== 3. F-CYCLE -->
+  <section class="story" id="s3">
+    <p class="eyebrow">Story 3</p>
+    <h2 class="story-h">The (5,5,6,5,6) hard case and its one rotating cycle</h2>
+    <p class="lead">
+      Read the five neighbours of a degree-five hole around the hole. If their degrees are 5, 5, 6, 5, 6 in cyclic order (equivalently 5, 6, 5, 6, 5), the hole is a <strong>(5,5,6,5,6) hole</strong>.
+      It is one of the hard classes left once diamonds are excluded. In a doubly locked colouring the link repeats one colour, say α, at two positions two apart. The <strong>F move</strong> swaps the {α, c(x<sub>j+3</sub>)} chain
+      of x<sub>j+2</sub>, the next link vertex after the repeat. The result is again a colouring of this kind, with the frame turned by three places.
+    </p>
+    <p>
+      Fellow F proved three facts <span class="lab">[hand; reviewed by interns, not audited]</span>. <strong>Lemma O:</strong> F-orbits of doubly locked colourings are finite paths, or cycles whose length is a multiple of 15.
+      <strong>Lemma Γ:</strong> in a Kempe class with no filled colouring ("targetless") every F-cycle has length divisible by 30, and the class holds two kinds of cycle joined together, so it has <strong>at least 60 colourings</strong>.
+      <strong>Lemma LC:</strong> a lock chain of one state is the lock chain of the next. Whether such a targetless class can exist at all (<strong>Lemma C*</strong>) is <span class="lab">[open]</span>.
+    </p>
+    <div class="box">
+      <h4>What the data show <span class="lab">[exploratory, Studio intel]</span></h4>
+      <ul>
+        <li>The F-cycle census over 975 holes of this type (<code>fcycle/fcycle_census_gentri16_22.json</code> on branch <code>origin/studio-intel</code>) found exactly <strong>one F-cycle</strong>: order 22, hole 15, labelled length 60, 20 colourings up to renaming.</li>
+        <li>That class is <strong>not targetless</strong>: it contains filled colourings. The cycle's 20 states have ρ = 2 (8 states), 3 (8 states) and 4 (4 states).</li>
+        <li>The graph contains <strong>5 Birkhoff diamonds</strong>, so it would be excluded by classical reduction. 8 of the 20 states have a <strong>silent</strong> first move toward a fill: a swap of a chain that touches no link vertex.</li>
+      </ul>
+    </div>
+    <div class="stage">
+      <div class="viz">
+        <div class="panel">
+          <h3>The order-22 graph, hole 15 deleted</h3>
+          <svg id="fmap" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Order 22 triangulation with the current colouring"></svg>
+          <div class="legend">
+            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole</span>
+            <span><i style="border:2px solid var(--text)"></i>link (degrees 5,6,5,6,5)</span>
+            <span><i style="border:2px solid var(--twin)"></i>chain just swapped</span>
+            <span><i style="border:2px dashed var(--text)"></i>chain about to be swapped</span>
+            <span><i style="border:2px solid var(--warn)"></i>in a diamond</span>
+          </div>
+          <div class="readout" id="freadout"></div>
+        </div>
+        <div class="panel">
+          <h3>The 20 states of the cycle, in F order</h3>
+          <div class="strip" id="fstrip"></div>
+          <div class="legend">
+            <span><i style="background:var(--accent)"></i>ρ = 2</span>
+            <span><i style="background:var(--warn)"></i>ρ = 3</span>
+            <span><i style="background:var(--bad)"></i>ρ = 4</span>
+            <span><i style="border:2px dotted var(--twin)"></i>has a silent first move toward a fill</span>
+          </div>
+        </div>
+      </div>
+      <aside class="side" aria-label="Cycle controls">
+        <div class="card">
+          <span class="kick">Walk the cycle</span>
+          <h4>One F move at a time</h4>
+          <button class="btn ghost" id="fprev">Previous</button>
+          <button class="btn" id="fnext">Next</button>
+          <button class="btn ghost" id="fplay">Play</button>
+          <button class="btn ghost" id="fdia">Show diamonds</button>
+          <div class="narr" id="fnarr"></div>
+        </div>
+        <div class="card">
+          <span class="kick">Shortest fill from this state</span>
+          <h4 id="ffilltitle"></h4>
+          <div class="moves" id="ffirst"></div>
+          <button class="btn" id="ffill" style="margin-top:.5rem">Walk the shortest fill</button>
+          <button class="btn ghost" id="fback" style="margin-top:.5rem">Back to the cycle</button>
+          <p class="small" style="margin:.5rem 0 0">The walk prefers silent moves and, among them, the smallest chain. A silent move is invisible to the link: no link vertex changes colour.</p>
+        </div>
+        <div class="card">
+          <span class="kick">Why this is interesting</span>
+          <h4>The cycle is not a trap</h4>
+          <p>A targetless class would have to keep every state doubly locked forever. Here the cycle exists, but from every one of its states a short sequence of swaps reaches a filled colouring, and for 8 of the 20 the first swap does not touch the link at all.
+            The exits sit away from the link, which is why a purely local rule at the link cannot see them. One graph with one cycle proves nothing about Lemma C*.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p><strong>Where each number comes from.</strong> All "recomputed" figures are produced by <code>docs/cages/build_data.py</code>, which imports no project code.
+      <em>Cages.</em> The planar code <code>backgroundMaterial/planemap-structural/studiointel/ipr/ipr_32_52.pc</code> (buckygen 1.1, Brinkmann and coauthors; <code>SOURCE.md</code> in that folder gives the command)
+      holds 1,267 graphs. This builder decodes the one graph with 32 vertices (the C60 dual; it is not first in the file) and the one with 37 (the C70 dual), rebuilds the faces from the rotations,
+      and checks Euler's formula, every edge in two faces, every vertex link a single cycle, minimum degree 5, no separating triangle, exactly 12 degree-five vertices, no two adjacent (IPR), and that the graph has no Birkhoff diamond and no 2.122.
+      For each hole class it enumerates every proper 4-colouring of T − v up to renaming (4,840 for C60 and 20,900 or 21,550 for C70), builds whole-component Kempe swaps (single vertices allowed) and finds ρ by breadth-first search.
+      Hole classes are grouped by an isomorphism invariant (degree profile by distance); the C60 profile is one class of 12 holes, and the C70 profile has two classes of 2 and 10. The builder runs every hole of each cage and asserts the same ρ histogram within each profile class.
+      <em>Diamond.</em> The configuration is RSST entry 0.7322 and 2.122 is the entry of that name, as read by the independent audit (<code>SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1516_audit_to_studiomath+coordination+studiointel+navigator_Lean-ready-definitions-diamond-4cycle-conf2122.md</code> §3–§4).
+      The builder computes every ring colouring, the ones that extend by exhaustive search, and Birkhoff's D-closure as described in <code>2026-10-06_1535_studiomath_to_coordination+audit+math_diamond-and-2122-D-reducible-independent-check-and-F2-note.md</code>:
+      a colouring is good at the next level if, for some split of the four colours into two pairs, <em>every</em> pair of chain partitions that is jointly non-crossing and contains the ring edges admits a flip of a union of blocks into the good set.
+      It finds <strong>31 classes, 16 extending, and closure rounds of 4, 3, 4, 3, 1</strong> for the diamond, and <strong>91 classes, 39 extending, rounds 7, 6, 9, 12, 9, 9</strong> for 2.122. These match Studio Math's counts exactly <span class="lab">[computed, exploratory]</span>.
+      Studio Math reports the same certificates compiled in Lean (<code>2026-10-06_1548_studiomath_..._diamond-and-2122-D-reducibility-certificates-compiled.md</code>); the independent audit of that step is still pending, and the link from "a diamond appears in T" to the ring form is not yet formalised.
+      The ring drawing is planar (checked). The hybrid frame is Math's message <code>2026-10-06_1512_math_to_coordination+...hybrid-frame-diamond-subsumes-our-local-results.md</code>.
+      <em>F-cycle.</em> Faces, hole, link and the 20 states come from <code id="fsrc"></code>. The builder rechecks the triangulation (as above, 22 vertices), enumerates all 252 colourings of T − 15 (one Kempe class),
+      follows the F move (<code>fcycle_census.py</code>: swap the {α, c(x<sub>j+3</sub>)} component of x<sub>j+2</sub>) from the first state and gets a labelled orbit of length 60 and exactly Studio intel's 20 states up to renaming,
+      all doubly locked. ρ comes out 8, 8, 4 for ρ = 2, 3, 4, matching the file's radii state by state. Exactly 8 states have a first move toward a fill whose chain touches no link vertex, the same 8 as in the file. It also finds 5 diamonds, as reported.
+      <em>Studio numbers.</em> Everything in the amber-edged boxes is quoted from Studio reports as given to this page's builder by the coordinator. The ρ = 5 order was corrected from 23 to 22 by Studio intel (message 2026-10-06 16:09, commit 9ddc565).
+      The IPR histogram and the tabu result were not recomputed, and their output files were not in the checkout used to build this page. <strong>Disagreement:</strong> see the red box in story 1.
+      <em>Credits.</em> Birkhoff (1913) for the diamond; Robertson, Sanders, Seymour and Thomas (1997) for 2.122; Tilley (JGAA, 2017) for D-resolvability; buckygen (Brinkmann et al.) for the fullerene duals.
+      This is finite evidence about particular graphs and a restatement of classical reducibility, not a proof. <strong>Disclosure:</strong> this page was built by an AI agent (Claude), and the research it reports was produced by AI agents (Claude)
+      working under Kyle Mathewson's direction. That includes the proofs, the code, the computations and the text. See the project's disclosure.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const D = window.CAGES_DATA;
+  const COLORS = ['var(--c0)', 'var(--c1)', 'var(--c2)', 'var(--c3)'];
+  const NAMES = ['red', 'blue', 'yellow', 'green'];
+  const PAIRS = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const $ = (id) => document.getElementById(id);
+  const sw = (a, b) => '<span class="swatch" style="background:' + COLORS[a] + '"></span><span class="swatch" style="background:' + COLORS[b] + '"></span>';
+  const pn = (a, b) => sw(a, b) + ' ' + NAMES[a] + '–' + NAMES[b];
+  const fmt = (x) => x.toLocaleString('en');
+  const vtx = (n) => n + (n === 1 ? ' vertex' : ' vertices');
+
+  // ---------------------------------------------------------------- shared engine
+  function makeSys(G, hole, link) {
+    const V = []; for (let v = 0; v < G.rot.length; v++) if (v !== hole) V.push(v);
+    const vIdx = new Map(V.map((v, i) => [v, i]));
+    const adj = V.map((v) => G.rot[v].filter((w) => w !== hole).map((w) => vIdx.get(w)));
+    const L = link.map((v) => vIdx.get(v));
+    return { V, vIdx, adj, L, Lset: new Set(L), n: V.length };
+  }
+  function comps(S, c) {
+    const out = [];
+    for (const [a, b] of PAIRS) {
+      const seen = new Uint8Array(S.n);
+      for (let s = 0; s < S.n; s++) {
+        if (seen[s] || (c[s] !== a && c[s] !== b)) continue;
+        const comp = [s]; seen[s] = 1;
+        for (let k = 0; k < comp.length; k++) for (const j of S.adj[comp[k]]) if (!seen[j] && (c[j] === a || c[j] === b)) { seen[j] = 1; comp.push(j); }
+        out.push({ a, b, comp });
+      }
+    }
+    return out;
+  }
+  function swapped(c, m) { const r = c.slice(); for (const i of m.comp) r[i] = r[i] === m.a ? m.b : m.a; return r; }
+  function canonKey(c) { const m = [-1, -1, -1, -1]; let k = 0, s = ''; for (const x of c) { if (m[x] < 0) m[x] = k++; s += m[x]; } return s; }
+  function nLink(S, c) { return new Set(S.L.map((i) => c[i])).size; }
+  function proper(S, c) { const bad = new Set(); for (let i = 0; i < S.n; i++) for (const j of S.adj[i]) if (c[i] === c[j]) { bad.add(i); bad.add(j); } return bad; }
+  function compOf(S, c, start, a, b) {
+    const seen = new Set([start]), st = [start];
+    while (st.length) { const u = st.pop(); for (const j of S.adj[u]) if (!seen.has(j) && (c[j] === a || c[j] === b)) { seen.add(j); st.push(j); } }
+    return seen;
+  }
+  // doubly locked? (l-attack.md section 1: repeat index j, lock 1 joins x_{j+1} to x_{j+3}, lock 2 joins it to x_{j+4})
+  function lockInfo(S, c) {
+    const lc = S.L.map((i) => c[i]);
+    if (new Set(lc).size < 4) return null;
+    const j = [0,1,2,3,4].find((t) => lc[t] === lc[(t + 2) % 5]);
+    const m = S.L[(j + 1) % 5], a = S.L[(j + 3) % 5], b = S.L[(j + 4) % 5];
+    return { j, l1: compOf(S, c, m, c[m], c[a]).has(a), l2: compOf(S, c, m, c[m], c[b]).has(b) };
+  }
+  function solveBFS(S, c0, cap) {
+    if (nLink(S, c0) <= 3) return { d: 0, path: [] };
+    const seen = new Set([canonKey(c0)]), nodes = [{ c: c0, par: -1, mv: null }];
+    for (let h = 0; h < nodes.length && nodes.length < cap; h++) {
+      for (const m of comps(S, nodes[h].c)) {
+        const nc = swapped(nodes[h].c, m), key = canonKey(nc);
+        if (seen.has(key)) continue; seen.add(key);
+        nodes.push({ c: nc, par: h, mv: m });
+        if (nLink(S, nc) <= 3) {
+          const path = []; let k = nodes.length - 1;
+          while (nodes[k].par >= 0) { path.push(nodes[k].mv); k = nodes[k].par; }
+          return { d: path.length, path: path.reverse() };
+        }
+      }
+    }
+    return null;
+  }
+
+  function drawGraph(svg, G, o) {
+    svg.innerHTML = '';
+    const pos = G.pos, rot = G.rot, rN = o.r || 0.045, fs = o.fs || 0.04;
+    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
+      const tr = v === o.hole || w === o.hole;
+      const on = o.chain && o.chain.has(v) && o.chain.has(w);
+      const on2 = o.next && o.next.has(v) && o.next.has(w);
+      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1],
+        stroke: on ? o.chainColour : on2 ? 'var(--text)' : tr ? 'var(--faint)' : '#3d444d',
+        'stroke-width': on || on2 ? 0.02 : 0.009, 'stroke-dasharray': tr ? '0.03 0.025' : on2 ? '0.04 0.025' : 'none' }, svg);
+    }
+    for (let v = 0; v < rot.length; v++) {
+      const [x, y] = pos[v];
+      if (v === o.hole) {
+        el('circle', { cx: x, cy: y, r: rN * 1.1, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
+        el('text', { x, y: y + fs * 0.4, 'text-anchor': 'middle', 'font-size': fs * 1.2, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg).textContent = '?';
+        continue;
+      }
+      const g = el('g', o.onclick ? { style: 'cursor:pointer' } : {}, svg);
+      const isLink = o.link && o.link.has(v), inChain = o.chain && o.chain.has(v), inNext = o.next && o.next.has(v), clash = o.clash && o.clash.has(v), dia = o.dia && o.dia.has(v);
+      if (dia) el('circle', { cx: x, cy: y, r: rN * 1.5, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012 }, g);
+      el('circle', { cx: x, cy: y, r: isLink ? rN * 1.1 : rN, fill: COLORS[o.colour(v)],
+        stroke: clash ? 'var(--bad)' : inChain ? o.chainColour : inNext ? 'var(--text)' : isLink ? 'var(--text)' : 'var(--bg)',
+        'stroke-width': clash ? 0.026 : inChain ? 0.024 : inNext ? 0.02 : isLink ? 0.015 : 0.008,
+        'stroke-dasharray': inNext && !inChain ? '0.03 0.02' : 'none' }, g);
+      if (!o.noLabels) el('text', { x, y: y + fs * 0.37, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)', 'pointer-events': 'none' }, g).textContent = v;
+      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[o.colour(v)] + (isLink ? ' · link' : '');
+      if (o.onclick) g.addEventListener('click', () => o.onclick(v));
+    }
+  }
+  const touchTxt = (list, ids) => list.length ? 'touches the link at ' + list.map((t) => ids[t]).join(', ') : '<span class="tagsil">silent: touches no link vertex</span>';
+
+  // ================================================================ 1. cages
+  (function cages() {
+    let ci = 0, hi = 0, S = null, G = null, disp = [], path = null, pathIdx = 0, timer = null, chain = null, handMode = false, curLibIdx = null;
+    const flat = []; // chips: every (cage, hole class)
+    D.cages.forEach((cg, a) => cg.holes.forEach((h, b) => flat.push([a, b])));
+    function load() {
+      G = D.cages[ci]; const H = G.holes[hi]; S = makeSys(G, H.hole, H.link); stop();
+    }
+    function kindOf(c) {
+      if (nLink(S, c) <= 3) return ['target', 'filled: the link uses three colours'];
+      const lk = lockInfo(S, c);
+      return lk.l1 && lk.l2 ? ['trap', 'doubly locked'] : ['ok', 'not doubly locked: one swap fills it'];
+    }
+    function renderChips() {
+      const box = $('cchips'); box.innerHTML = '';
+      flat.forEach(([a, b]) => {
+        const cg = D.cages[a], h = cg.holes[b];
+        const btn = document.createElement('button'); btn.className = 'chip'; btn.setAttribute('aria-pressed', String(a === ci && b === hi));
+        btn.innerHTML = cg.label + '<span class="tag">hole ' + h.hole + (cg.holes.length > 1 ? ' · class of ' + h.orbit : '') + '</span>';
+        btn.onclick = () => { ci = a; hi = b; load(); renderAll(); pickLib(0); };
+        box.appendChild(btn);
+      });
+    }
+    function renderStats() {
+      const H = G.holes[hi], sm = H.summary;
+      $('ctitle').textContent = G.label + ' · ' + G.order + ' vertices · hole ' + H.hole;
+      $('cstats').innerHTML = [[fmt(sm.colourings), 'colourings'], [sm.classes, 'Kempe class' + (sm.classes > 1 ? 'es' : '')], [fmt(sm.dl), 'doubly locked'], [sm.maxRadius, 'max radius']]
+        .map(([v, t]) => '<div class="stat"><b>' + v + '</b><span>' + t + '</span></div>').join('');
+      $('ctext').innerHTML = 'The graph has ' + G.edges + ' edges, ' + G.degCount['5'] + ' vertices of degree 5 and ' + G.degCount['6'] + ' of degree 6, no separating triangle, ' + G.diamonds + ' Birkhoff diamonds and ' + G.conf2122 + ' copies of 2.122 <span class="lab">[computed]</span>. ' +
+        (G.holes.length > 1 ? 'The 12 holes fall into ' + G.holes.length + ' classes by degree profile; this one has ' + H.orbit + ' holes. ' : 'All 12 holes look alike (one profile class), and this build found the same ρ histogram at each. ') +
+        'Up to renaming colours, T − ' + H.hole + ' has ' + fmt(sm.colourings) + ' four-colourings, ' + (sm.classes === 1 ? 'all in one Kempe class' : sm.classes + ' Kempe classes') + '. Doubly locked colourings: ' +
+        Object.keys(sm.dlHist).map((k) => sm.dlHist[k] + ' at ρ = ' + k).join(', ') + ' <span class="lab">[computed]</span>.';
+    }
+    function renderDist() {
+      const sm = G.holes[hi].summary, keys = Object.keys(sm.allHist).map(Number).sort((a, b) => a - b), mx = Math.max(...keys.map((k) => sm.allHist[k]));
+      $('cdist').innerHTML = keys.map((k) => {
+        const n = sm.allHist[k], dl = sm.dlHist[k] || 0;
+        return '<div class="bar"><span>' + (k === 0 ? 'filled' : k + (k === 1 ? ' swap' : ' swaps')) + '</span><span><div class="fill" style="width:' + Math.max(0.5, 100 * n / mx) + '%;background:' + (k === 0 ? 'var(--good)' : dl ? 'var(--bad)' : 'var(--accent)') + '"></div></span><span>' + fmt(n) + '</span></div>';
+      }).join('');
+      $('cdisttext').innerHTML = 'Bars: number of colourings that need that many swaps (red: doubly locked; every colouring at 2 or more swaps is). The farthest colouring is <strong>' + sm.maxRadius + ' swaps</strong> from filled <span class="lab">[computed]</span>.';
+    }
+    function renderLibChips() {
+      const H = G.holes[hi], box = $('lchips'); box.innerHTML = '';
+      H.lib.forEach((s, i) => {
+        const b = document.createElement('button'); b.className = 'chip'; b.setAttribute('aria-pressed', String(i === curLibIdx));
+        b.innerHTML = s.d === 0 ? 'filled' : 'ρ = ' + s.d + '<span class="tag">#' + (i + 1) + (s.k === 'one' ? ' · one swap' : '') + '</span>';
+        b.onclick = () => pickLib(i); box.appendChild(b);
+      });
+    }
+    function libPath(s) { return s.path.map(([a, b, verts, sil]) => ({ a, b, comp: verts.map((v) => S.vIdx.get(v)) })); }
+    function pickLib(i) {
+      stop(); handMode = false; curLibIdx = i; const s = G.holes[hi].lib[i];
+      disp = s.c.slice(); path = libPath(s); pathIdx = 0; chain = null;
+      $('cnarr').innerHTML = s.d === 0 ? 'This colouring is already filled.' : 'Stored start state with ρ = ' + s.d + ' (shortest fill found by the build). Press Step or Play.';
+      renderAll();
+    }
+    function renderMap() {
+      const H = G.holes[hi], bad = proper(S, disp);
+      drawGraph($('cmap'), G, {
+        hole: H.hole, link: new Set(H.link), colour: (v) => disp[S.vIdx.get(v)], r: 0.047, fs: 0.039, chainColour: 'var(--twin)',
+        chain: chain ? new Set(chain.map((i) => S.V[i])) : null, clash: new Set([...bad].map((i) => S.V[i])),
+        onclick: handMode ? (v) => { const i = S.vIdx.get(v); disp[i] = (disp[i] + 1) % 4; path = null; pathIdx = 0; chain = null; curLibIdx = null; renderAll(); } : null });
+    }
+    function renderReadout() {
+      const bad = proper(S, disp);
+      if (bad.size) { $('creadout').innerHTML = '<span class="status trap">not a proper colouring</span><span>fix the red-ringed vertices</span>'; return; }
+      const [cls, txt] = kindOf(disp);
+      $('creadout').innerHTML = '<span>colours on link <b>' + nLink(S, disp) + '</b></span>' + (path ? '<span>swaps still needed <b>' + (path.length - pathIdx) + '</b></span>' : '') + '<span class="status ' + cls + '">' + txt + '</span>';
+    }
+    function narr(t) { $('cnarr').innerHTML = t; }
+    function stop() { if (timer) clearInterval(timer); timer = null; }
+    function ensurePath() {
+      if (path) return true;
+      const bad = proper(S, disp); if (bad.size) { narr('The colouring has clashes. Fix them first.'); return false; }
+      const r = solveBFS(S, disp, 400000);
+      if (!r) { narr('No filled colouring found within the search limit.'); return false; }
+      path = r.path; pathIdx = 0; narr('Search finished: this colouring is <strong>' + r.d + '</strong> swap' + (r.d === 1 ? '' : 's') + ' from a filled one.'); return true;
+    }
+    function step() {
+      if (!ensurePath()) return;
+      if (pathIdx >= path.length) { stop(); return; }
+      const m = path[pathIdx++]; const H = G.holes[hi];
+      const touch = m.comp.map((i) => S.L.indexOf(i)).filter((t) => t >= 0);
+      disp = swapped(disp, m); chain = m.comp;
+      const left = path.length - pathIdx;
+      renderAll();
+      narr('Swap ' + pathIdx + ' of ' + path.length + ': the ' + pn(m.a, m.b) + ' chain of ' + vtx(m.comp.length) + ' ' + (touch.length ? touchTxt(touch, H.link) : touchTxt([], H.link)) + '. ' +
+        (left === 0 ? 'The link now uses three colours: <strong>filled</strong>. The hole takes ' + NAMES[[0,1,2,3].find((x) => !S.L.some((i) => disp[i] === x))] + '.' : left + ' to go.'));
+      if (left === 0) stop();
+    }
+    function randomState() {
+      stop(); handMode = false; curLibIdx = null;
+      let base = disp.slice(); if (proper(S, base).size) base = G.holes[hi].lib[G.holes[hi].lib.length - 1].c.slice();
+      let best = null, k = 0, tries = 0;
+      // most random scrambles land one swap from filled; keep scrambling until one is doubly locked (up to 200 tries)
+      while (tries < 200) {
+        k = 12 + Math.floor(Math.random() * 14); let c = base.slice();
+        for (let t = 0; t < k; t++) { const cs = comps(S, c); c = swapped(c, cs[Math.floor(Math.random() * cs.length)]); }
+        tries++;
+        const r = solveBFS(S, c, 400000); if (!r) continue;
+        if (!best || r.d > best.r.d) best = { c, r };
+        if (r.d >= 2) break;
+      }
+      if (!best) { narr('Search limit reached.'); return; }
+      disp = best.c; path = best.r.path; pathIdx = 0; chain = null; const d = best.r.d;
+      renderAll();
+      narr('Random state (' + tries + ' scramble' + (tries === 1 ? '' : 's') + ' tried, keeping a hard one if found). A search over all colourings says it is <strong>' + d + '</strong> swap' + (d === 1 ? '' : 's') + ' from filled. ' + (d >= 2 ? 'It is doubly locked.' : d === 1 ? 'One swap fills it.' : 'It is already filled; try again.'));
+    }
+    function reset() { stop(); if (curLibIdx !== null) pickLib(curLibIdx); else { path = null; pathIdx = 0; chain = null; narr('Press Random state or pick a stored start state.'); } }
+    function renderAll() { renderChips(); renderStats(); renderDist(); renderLibChips(); renderMap(); renderReadout();
+      $('chand').textContent = handMode ? 'Done colouring' : 'Colour by hand'; }
+    $('crandom').onclick = randomState;
+    $('chand').onclick = () => { stop(); handMode = !handMode; if (handMode) { path = null; pathIdx = 0; chain = null; narr('Click a vertex to change its colour. Neighbours must differ. Then press Find a shortest fill.'); } renderAll(); };
+    $('csolve').onclick = () => { stop(); handMode = false; path = null; pathIdx = 0; chain = null; if (ensurePath()) { renderAll(); } };
+    $('cplay').onclick = () => { if (!ensurePath()) return; if (pathIdx >= path.length) reset(); stop(); step(); timer = setInterval(step, 1500); };
+    $('cstep').onclick = () => { stop(); step(); };
+    $('creset').onclick = reset;
+    // the C70 note
+    const c70 = D.cages.find((g) => g.name === 'C70');
+    const mx = Math.max(...c70.holes.map((h) => h.summary.maxRadius));
+    $('c70text').innerHTML = 'The Studio report says the C70 dual has radius 4. This page’s builder, run on the same planar-code file (graph index ' + D.planarCode.index37 + ', 37 vertices), finds a largest radius of <strong>' + mx +
+      '</strong> at every degree-five hole of the C70 dual, and <strong>' + Math.max(...D.cages.find((g) => g.name === 'C60').holes.map((h) => h.summary.maxRadius)) + '</strong> at every hole of the C60 dual <span class="lab">[computed]</span>. ' +
+      'The radius here is the fewest whole-chain swaps to a filled colouring, the same quantity as Studio’s "1 + distance to a non-doubly-locked state". The difference is not explained. Until it is, treat "the C70 dual has radius 4" as unconfirmed, and note that the 23 holes of radius 4 in the Studio table may lie in other cages.';
+    load(); renderAll(); pickLib(0);
+  })();
+
+  // ================================================================ 2. diamond
+  (function diamond() {
+    const DI = D.diamond, CL = DI.classes, P = DI.pos, RING = DI.ring;
+    const keyOf = (c) => canonKey(c);
+    const byKey = new Map(CL.map((c, i) => [keyOf(c.c), i]));
+    const order = CL.map((c, i) => i).sort((a, b) => (CL[a].level - CL[b].level) || a - b);
+    let cur = CL[order[0]].c.slice(), hist = [], si = 0, tour = null;
+    const clsOf = () => byKey.get(keyOf(cur));
+    const ringAng = (k) => (-120 + 60 * k) * Math.PI / 180;
+    function actualExt(ci) {   // interior colours in the actual colour names of cur
+      const ex = CL[ci].ext; if (!ex) return null;
+      const can = CL[ci].c, map = {}; can.forEach((x, p) => { map[x] = cur[p]; });
+      const usedA = new Set(Object.values(map)), freeA = [0,1,2,3].filter((x) => !usedA.has(x)); let f = 0;
+      [0,1,2,3].forEach((x) => { if (map[x] === undefined) map[x] = freeA[f++]; });
+      return ex.map((x) => map[x]);
+    }
+    function describe(blocks, pair) {
+      const big = blocks.filter((b) => b.length > 1).map((b) => '{' + b.map((p) => RING[p]).join(',') + '}');
+      return pn(pair[0], pair[1]) + ': ' + (big.length ? big.join(' ') + ' joined' : 'no joins');
+    }
+    function structLabel(ci, k) {
+      const rec = CL[ci], s = rec.structs[k], pi = rec.pi;
+      // pi is stored in canonical colours; translate to actual by position map
+      const map = {}; rec.c.forEach((x, p) => { map[x] = cur[p]; });
+      const usedA = new Set(Object.values(map)), freeA = [0,1,2,3].filter((x) => !usedA.has(x)); let f = 0;
+      [0,1,2,3].forEach((x) => { if (map[x] === undefined) map[x] = freeA[f++]; });
+      return { s, pair: [pi[0].map((x) => map[x]), pi[1].map((x) => map[x])] };
+    }
+    function arc(svg, p, q, nIn, colA, colB, hot) {
+      const a = ringAng(p), R = 0.78, k = nIn;
+      const P0 = [R * Math.cos(a), R * Math.sin(a)], b = ringAng(q), Q0 = [R * Math.cos(b), R * Math.sin(b)];
+      const mid = ringAng(p) + (nIn + 1) * Math.PI / 6, rc = R + 0.2 + 0.22 * k;
+      const C = [rc * Math.cos(mid), rc * Math.sin(mid)];
+      const d = 'M' + P0[0] + ',' + P0[1] + ' Q' + C[0] + ',' + C[1] + ' ' + Q0[0] + ',' + Q0[1];
+      el('path', { d, fill: 'none', stroke: COLORS[colA], 'stroke-width': hot ? 0.05 : 0.036 }, svg);
+      el('path', { d, fill: 'none', stroke: COLORS[colB], 'stroke-width': hot ? 0.05 : 0.036, 'stroke-dasharray': '0.07 0.07' }, svg);
+      if (hot) el('path', { d, fill: 'none', stroke: 'var(--twin)', 'stroke-width': 0.012, transform: 'translate(0,0)' }, svg);
+    }
+    function render() {
+      const svg = $('dmap'); svg.innerHTML = '';
+      const ci = clsOf(), rec = CL[ci], ext = actualExt(ci);
+      if (rec.structs && si >= rec.structs.length) si = 0;
+      const info = rec.structs ? structLabel(ci, si) : null;
+      // edges
+      const edges = []; for (const v in DI.interior) DI.interior[v].forEach((w) => edges.push([+v, w]));
+      for (let k = 1; k <= 6; k++) edges.push([k, k % 6 + 1]);
+      const seenE = new Set();
+      edges.forEach(([a, b]) => { const key = Math.min(a, b) + '-' + Math.max(a, b); if (seenE.has(key)) return; seenE.add(key);
+        el('line', { x1: P[a][0], y1: P[a][1], x2: P[b][0], y2: P[b][1], stroke: a <= 6 && b <= 6 ? '#8b949e' : '#3d444d', 'stroke-width': a <= 6 && b <= 6 ? 0.016 : 0.012 }, svg); });
+      // outside arcs for the chosen structure
+      const hotBlocks = new Set();
+      if (info) {
+        const { s, pair } = info;
+        const sides = [[s.P, pair[0]], [s.Q, pair[1]]];
+        sides.forEach(([blocks, pr], side) => blocks.forEach((b, bi) => {
+          const hot = s.side === side && s.sub.includes(bi);
+          if (hot) b.forEach((p) => hotBlocks.add(p));
+          for (let t = 0; t + 1 < b.length; t++) {
+            const p = b[t], q = b[t + 1], gap = q - p;
+            if (gap === 1) continue;
+            if (p === 0 && q === 5) continue;
+            const nIn = Math.min(gap - 1, 6 - gap - 1);
+            const lo = gap - 1 <= 6 - gap - 1 ? p : q, hi = lo === p ? q : p;
+            arc(svg, lo, hi, nIn, pr[0], pr[1], hot);
+          }
+        }));
+      }
+      // ring vertices
+      for (let k = 0; k < 6; k++) {
+        const [x, y] = P[k + 1];
+        if (hotBlocks.has(k)) el('circle', { cx: x, cy: y, r: 0.115, fill: 'none', stroke: 'var(--twin)', 'stroke-width': 0.025 }, svg);
+        el('circle', { cx: x, cy: y, r: 0.085, fill: COLORS[cur[k]], stroke: 'var(--bg)', 'stroke-width': 0.012 }, svg);
+        el('text', { x, y: y + 0.03, 'text-anchor': 'middle', 'font-size': 0.085, 'font-weight': 700, fill: '#0d1117', 'font-family': 'var(--sans)' }, svg).textContent = k + 1;
+      }
+      // interior
+      [7, 8, 9, 10].forEach((v, t) => {
+        const [x, y] = P[v];
+        el('circle', { cx: x, cy: y, r: 0.075, fill: ext ? COLORS[ext[t]] : 'var(--sunken)', stroke: ext ? 'var(--bg)' : 'var(--faint)', 'stroke-width': 0.012, 'stroke-dasharray': ext ? 'none' : '0.03 0.02' }, svg);
+        el('text', { x, y: y + 0.028, 'text-anchor': 'middle', 'font-size': 0.075, 'font-weight': 700, fill: ext ? '#0d1117' : 'var(--faint)', 'font-family': 'var(--sans)' }, svg).textContent = ext ? v : '?';
+      });
+      el('text', { x: -1.36, y: -1.28, 'font-size': 0.07, fill: 'var(--faint)', 'font-family': 'var(--sans)' }, svg).textContent = 'centres 7 and 9, tips 8 and 10 (RSST 0.7322)';
+      readout(ci, rec, ext);
+    }
+    function readout(ci, rec, ext) {
+      const lv = rec.level;
+      $('dreadout').innerHTML = '<span>class <b>' + (ci + 1) + '</b> of ' + CL.length + '</span><span>ring colours <b>' + [...new Set(cur)].length + '</b></span>' +
+        (lv === 0 ? '<span class="status target">extends directly</span>' : '<span class="status warn">needs a swap outside · level ' + lv + '</span>');
+      $('dnarr').innerHTML = lv === 0
+        ? 'Ring ' + cur.map((x) => NAMES[x]).join(', ') + '. The four inside vertices can be coloured (shown), so this colouring of the ring extends to the whole diamond.'
+        : 'Ring ' + cur.map((x) => NAMES[x]).join(', ') + '. No colouring of the inside matches it. Whatever the outside is, one of the flips below reaches a colouring at a lower level (level ' + (lv - 1) + ' or less).';
+      $('dswapcard').style.display = lv === 0 ? 'none' : '';
+      if (lv !== 0) {
+        const sel = $('dsel'); const n = rec.structs.length;
+        if (si >= n) si = 0;
+        if (sel.dataset.ci !== String(ci) + ':' + cur.join('')) {
+          sel.innerHTML = rec.structs.map((_, k) => { const { s, pair } = structLabel(ci, k); return '<option value="' + k + '">' + (k + 1) + '. ' + plain(s.P, pair[0]) + ' | ' + plain(s.Q, pair[1]) + '</option>'; }).join('');
+          sel.dataset.ci = String(ci) + ':' + cur.join('');
+        }
+        sel.value = String(si);
+        const { s, pair } = structLabel(ci, si), tg = CL[s.to];
+        const blocks = s.side === 0 ? s.P : s.Q, pr = s.side === 0 ? pair[0] : pair[1];
+        const ringSw = s.sub.map((bi) => '{' + blocks[bi].map((p) => RING[p]).join(',') + '}').join(' and ');
+        $('dflip').innerHTML = 'Colour split: ' + pn(pair[0][0], pair[0][1]) + ' | ' + pn(pair[1][0], pair[1][1]) + '. ' + n + ' outside patterns are possible; this is pattern ' + (si + 1) + '. Flip: swap ' + pn(pr[0], pr[1]) + ' on the chain' + (s.sub.length > 1 ? 's' : '') + ' through ring vertices ' + ringSw + '. The ring becomes colouring class ' + (s.to + 1) + ', ' + (tg.level === 0 ? '<strong>which extends</strong>' : 'at level ' + tg.level) + '.';
+      }
+    }
+    function plain(blocks, pair) {
+      const big = blocks.filter((b) => b.length > 1).map((b) => '{' + b.map((p) => RING[p]).join('') + '}');
+      return NAMES[pair[0]][0] + NAMES[pair[1]][0] + ' ' + (big.length ? big.join(' ') : 'no joins');
+    }
+    function applyFlip() {
+      const ci = clsOf(), rec = CL[ci]; if (!rec.structs) return;
+      const { s, pair } = structLabel(ci, si); const blocks = s.side === 0 ? s.P : s.Q, pr = s.side === 0 ? pair[0] : pair[1];
+      hist.push(cur.slice()); const nc = cur.slice();
+      s.sub.forEach((bi) => blocks[bi].forEach((p) => { nc[p] = cur[p] === pr[0] ? pr[1] : pr[0]; }));
+      cur = nc; si = 0; render(); renderList();
+    }
+    function renderList() {
+      const ci = clsOf(), box = $('dlist'); box.innerHTML = '';
+      const maxL = Math.max(...CL.map((c) => c.level));
+      for (let L = 0; L <= maxL; L++) {
+        const ids = order.filter((i) => CL[i].level === L);
+        const h = document.createElement('div'); h.className = 'lvl';
+        h.textContent = (L === 0 ? 'Extends directly' : 'Level ' + L + ' (needs a swap)') + ' · ' + ids.length; box.appendChild(h);
+        const row = document.createElement('div'); row.className = 'rowchips';
+        ids.forEach((i) => {
+          const b = document.createElement('button'); b.className = 'cls ' + (L === 0 ? 'l0' : 'lx'); b.setAttribute('aria-pressed', String(i === ci));
+          b.title = 'class ' + (i + 1) + ': ' + CL[i].c.map((x) => NAMES[x]).join(', ');
+          b.innerHTML = CL[i].c.map((x) => '<i style="background:' + COLORS[x] + '"></i>').join('');
+          b.onclick = () => { stopTour(); cur = CL[i].c.slice(); hist = []; si = 0; render(); renderList(); };
+          row.appendChild(b);
+        });
+        box.appendChild(row);
+      }
+    }
+    function go(delta) { const pos = order.indexOf(clsOf()); cur = CL[order[(pos + delta + order.length) % order.length]].c.slice(); hist = []; si = 0; render(); renderList(); }
+    function stopTour() { if (tour) clearInterval(tour); tour = null; $('dtour').textContent = 'Tour all 31'; }
+    $('dprev').onclick = () => { stopTour(); go(-1); };
+    $('dnext').onclick = () => { stopTour(); go(1); };
+    $('dtour').onclick = () => { if (tour) { stopTour(); return; } $('dtour').textContent = 'Stop tour'; tour = setInterval(() => go(1), 1800); };
+    $('dsel').onchange = (e) => { si = +e.target.value; render(); };
+    $('dapply').onclick = applyFlip;
+    $('dundo').onclick = () => { if (hist.length) { cur = hist.pop(); si = 0; render(); renderList(); } };
+    const dc = DI.counts, c2 = DI.conf2122;
+    $('dtext').innerHTML = 'Recomputed for this page <span class="lab">[computed, exploratory]</span>: the ring of six has <strong>' + dc.classes + '</strong> proper colourings up to renaming. <strong>' + dc.extend + '</strong> extend directly to the inside. The other <strong>' + (dc.classes - dc.extend) +
+      '</strong> are fixed by Birkhoff’s closure in <strong>' + dc.rounds.length + '</strong> rounds (' + dc.rounds.join(', ') + ' colourings join the good set). These are the same counts as Studio Math’s independent check. The ring of 2.122 has size 7: ' + c2.classes + ' classes, ' + c2.extend + ' extending, rounds ' + c2.rounds.join(', ') + ', also matching.';
+    render(); renderList();
+  })();
+
+  // ================================================================ 3. F-cycle
+  (function fcycle() {
+    const F = D.fcycle, S = makeSys(F, F.hole, F.link), ST = F.states;
+    const diaSet = new Set(); F.diamonds.forEach((d) => { d.centres.forEach((v) => diaSet.add(v)); d.tips.forEach((v) => diaSet.add(v)); });
+    let m = 0, mode = 'cycle', fillStep = 0, route = null, disp = ST[0].c.slice(), chainJust = null, chainNext = null, timer = null, showDia = false, lastCol = 'var(--twin)';
+    $('fsrc').textContent = F.source;
+    const RC = { 2: 'var(--accent)', 3: 'var(--warn)', 4: 'var(--bad)' };
+    function vset(list) { return list ? new Set(list) : null; }
+    function render() {
+      const H = F.hole;
+      drawGraph($('fmap'), F, { hole: H, link: new Set(F.link), colour: (v) => disp[S.vIdx.get(v)], r: 0.058, fs: 0.05, chainColour: lastCol,
+        chain: vset(chainJust), next: vset(chainNext), dia: showDia ? diaSet : null });
+      const st = ST[m];
+      const lk = lockInfo(S, disp);
+      $('freadout').innerHTML = mode === 'cycle'
+        ? '<span>state <b>' + (st.k + 1) + '</b> of 20</span><span>labelled step <b>' + m + '</b> of 60</span><span>ρ <b>' + st.d + '</b></span>' + (lk && lk.l1 && lk.l2 ? '<span class="status trap">doubly locked</span>' : '')
+        : '<span>shortest fill from state <b>' + (st.k + 1) + '</b></span><span>swaps left <b>' + (route.length - fillStep) + '</b></span>' + (nLink(S, disp) <= 3 ? '<span class="status target">filled</span>' : '<span class="status trap">doubly locked</span>' + '');
+      $('ffilltitle').innerHTML = 'State ' + (st.k + 1) + ' · ρ = ' + st.d + (ST[m].first.some((f) => f.silent) ? ' · <span class="tagsil">silent first move available</span>' : '');
+      $('ffirst').innerHTML = '<div class="small" style="color:var(--faint)">All first swaps that lead toward a fill (' + st.first.length + '):</div>' + st.first.map((f) =>
+        '<div class="mv' + (f.silent ? ' silent' : '') + '"><span>' + pn(f.a, f.b) + ' chain of ' + vtx(f.comp.length) + '</span><span>' + (f.silent ? '<span class="tagsil">silent</span>' : 'touches link at ' + f.link.map((t) => F.link[t]).join(', ')) + '</span></div>').join('');
+      renderStrip();
+    }
+    function renderStrip() {
+      const box = $('fstrip'); box.innerHTML = '';
+      for (let k = 0; k < 20; k++) {
+        const b = document.createElement('button'); const d = ST[k].d;
+        b.style.background = RC[d]; b.textContent = k + 1; b.title = 'state ' + (k + 1) + ' · ρ = ' + d + (F.silentByK[k] ? ' · silent first move' : '');
+        b.className = (F.silentByK[k] ? 'sil ' : '') + (k === ST[m].k ? 'cur' : '');
+        b.onclick = () => { stop(); goCycle(k + 20 * Math.floor(m / 20)); };
+        box.appendChild(b);
+      }
+    }
+    function goCycle(mm, arrived) {
+      mode = 'cycle'; m = ((mm % 60) + 60) % 60; disp = ST[m].c.slice(); route = null; fillStep = 0;
+      const prev = (m + 59) % 60;
+      chainJust = arrived ? ST[prev].F.comp : null; lastCol = 'var(--twin)';
+      chainNext = ST[m].F.comp;
+      render();
+      const f = ST[m].F, j = f.j;
+      $('fnarr').innerHTML = (arrived ? 'F move done: swapped the ' + pn(ST[prev].F.a, ST[prev].F.b) + ' chain of ' + vtx(ST[prev].F.comp.length) + ' (solid ring). ' : '') +
+        'State ' + (ST[m].k + 1) + ' of 20. The repeat is at link position ' + j + ' and ' + ((j + 2) % 5) + '. The next F move swaps the ' + pn(f.a, f.b) + ' chain of ' + vtx(f.comp.length) + ' (dashed ring), which touches the link at ' + f.link.map((t) => F.link[t]).join(', ') + '. ' +
+        (m === 59 && arrived ? 'After 60 labelled steps the exact colouring is back where it started.' : '');
+    }
+    function stop() { if (timer) clearInterval(timer); timer = null; $('fplay').textContent = 'Play'; }
+    function next() { goCycle(m + 1, true); }
+    function startFill() {
+      stop(); mode = 'fill'; route = ST[m].route; fillStep = 0; disp = ST[m].c.slice(); chainJust = null; chainNext = route.length ? route[0].comp : null;
+      render(); $('fnarr').innerHTML = 'Shortest fill from state ' + (ST[m].k + 1) + ': ' + route.length + ' swap' + (route.length === 1 ? '' : 's') + '. Press Next to make each swap.';
+    }
+    function stepFill() {
+      if (!route || fillStep >= route.length) return false;
+      const r = route[fillStep]; const comp = r.comp.map((v) => S.vIdx.get(v));
+      disp = swapped(disp, { a: r.a, b: r.b, comp }); chainJust = r.comp; lastCol = r.silent ? 'var(--twin)' : 'var(--text)'; fillStep++;
+      chainNext = fillStep < route.length ? route[fillStep].comp : null; render();
+      $('fnarr').innerHTML = 'Swap ' + fillStep + ' of ' + route.length + ': the ' + pn(r.a, r.b) + ' chain of ' + vtx(r.comp.length) + '. ' + (r.silent ? '<span class="tagsil">silent: touches no link vertex</span>. The link colours do not change.' : 'It touches the link at ' + r.link.map((t) => F.link[t]).join(', ') + '.') +
+        (fillStep === route.length ? ' The link now uses three colours: <strong>filled</strong>.' : '');
+      return fillStep < route.length;
+    }
+    $('fprev').onclick = () => { stop(); goCycle(m - 1, false); };
+    $('fnext').onclick = () => { stop(); if (mode === 'fill') { if (!stepFill() && fillStep >= route.length) { /* done */ } } else next(); };
+    $('fplay').onclick = () => {
+      if (timer) { stop(); return; }
+      $('fplay').textContent = 'Pause';
+      timer = setInterval(() => { if (mode === 'fill') { if (!stepFill()) stop(); } else next(); }, 1400);
+    };
+    $('ffill').onclick = startFill;
+    $('fback').onclick = () => { stop(); goCycle(m, false); };
+    $('fdia').onclick = () => { showDia = !showDia; $('fdia').textContent = showDia ? 'Hide diamonds' : 'Show diamonds'; render(); };
+    goCycle(0, false);
+  })();
+})();
+</script>
+</body>
+</html>
