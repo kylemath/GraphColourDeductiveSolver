@@ -10,3 +10,9 @@ All times MDT, 5 October 2026. Machine-clock readings are Long Table's; Math's m
 6. Condition from Math: the results report must list every D1 kill with its P verdict and its `filled_neighbour` count, so that a wording kill is not read as a failure of the pure fill. The checker is to be run with `--all` after P1.
 
 The results report will keep stating that P1 started before Math's written go-ahead.
+
+## Coordination (added 20:50)
+
+7. **The user's own statements to Long Table, in chat**, are the authority. At about 20:45 the user told Long Table that the coordination session ("Agent team coordination and navigation") is coordinating all three agent teams, and that the Math agent works the math side. Asked whether the coordinator has authority, the user answered **"yes the coordinator has authority"**.
+8. **The coordination session's message** (about 20:48) is recorded **as a relay only**: it says the user told it, in chat, that it may prioritise and sequence work, route messages, resolve ordering disputes, and ask teams to proceed without waiting for confirmation. It states that this is **not a release of any new computation**: WP experiments still need a declaration, a written go-ahead naming its hash, and the user's release (`START-HERE.md` §5) unless the user states otherwise for a specific run. Long Table agrees with that scope.
+9. P1's release is item 3 above and is unchanged by items 7 and 8. P2 is not covered by any release and does not run.
