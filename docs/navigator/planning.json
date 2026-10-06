@@ -1,7 +1,12 @@
 {
-  "revision": 111,
-  "updatedAt": "2026-10-06T11:48:00-06:00",
+  "revision": 112,
+  "updatedAt": "2026-10-06T11:52:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T17:55:00Z",
+      "node": "structural-pathway-sprint",
+      "action": "Revision 112 records the coordinator's pathway sprint on the user's direction: the main effort is now routes to the vacancy hypothesis, with search only as a kill test of at most 10 CPU-minutes. Five exploring pathways are added: P-A good neighbourhoods plus discharging (Math), P-B walk the hole to a good place (Long Table), P-C freedom in the fan and T* (Math), P-D the Tait edge-colouring view (Long Table), P-E an adversary for every idea (audit). S2 (WP22) and Math's radius census are deferred unless a pathway needs them. No status changed."
+    },
     {
       "time": "2026-10-06T17:50:00Z",
       "node": "structural-wp21",
@@ -9447,6 +9452,162 @@
       ],
       "id": "structural-wp20",
       "revision": 111
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-vacancy",
+      "revision": 112,
+      "node": {
+        "id": "structural-pathway-sprint",
+        "title": "Pathway sprint: routes to VH-exists",
+        "status": "exploring",
+        "statement": "From 11:50 on 6 October the main effort is pathways to the vacancy hypothesis: ideas, small hand examples and quick trial and error. Search is a kill test for an idea, not the work itself. Starting points named by the coordinator: mobility (compiled), fills next to a degree at most 4 vertex (hand), Theorem H (hand), degree at least 6 on separating triangles and the 4-connected least failure of the face-avoiding form (hand), the kill of lock persistence with fills still at radius 2 or 3 on every all-locked orbit found, and the existential freedom in the vertex, the fan and partly the colouring through T*.",
+        "approach": "Coordinator's sprint on the user's direction (11:49, quoted: \"it seems like we are working on brute force search instead of intuition and trial and error on novel strategies to show pathways\"). Rules: an idea is a one-page sketch (claim, why it might hold, a hand example, a kill test); kill tests run at most 10 CPU-minutes on spent orders or explicit small graphs, labelled post hoc or exploratory, need no declaration and are never evidence for a theorem; a quick kill is a success; report every two hours or when an idea dies or survives its first test; the navigator adds each pathway as an exploring node and records kills fast. Compute: running jobs finish (P1 --all check, the Studio P1 replay T2, the WP21 cross-checks, the audit P1 replay); S2 (WP22) and Math's radius census are DEFERRED unless a pathway needs one as a kill test; no new census starts without a pathway that asks for it.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1150_coordination_to_math+longtable+audit+navigator+user_pathway-sprint.md"
+        ],
+        "evidence": "Nothing here is a result. Each child becomes proved, killed or exploring by its own record.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 112,
+      "node": {
+        "id": "structural-pathway-a",
+        "title": "P-A: good neighbourhoods plus discharging",
+        "status": "exploring",
+        "statement": "Classify degree-5 holes by the degree sequence of their link, prove bounded fill for each class possible (Theorem H and the degree at most 4 neighbour result are the first two), then show by a discharging argument that every core triangulation has a degree-5 vertex of a good class: a short local unavoidable set, not a census.",
+        "approach": "Owner: Math. First trial: List the link degree classes, which are covered, write the needed discharging rule, test it by hand on A_3, T4, the icosahedron and 24:6406.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1150_coordination_to_math+longtable+audit+navigator+user_pathway-sprint.md"
+        ],
+        "evidence": "No sketch posted yet.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 112,
+      "node": {
+        "id": "structural-pathway-b",
+        "title": "P-B: walk the hole to a good place",
+        "status": "exploring",
+        "statement": "Use mobility to move the hole along a path to a vertex of a good class (P-A), carrying the colouring, and show the walk cannot cycle.",
+        "approach": "Owner: Long Table. First trial: On T4 and A_3, trace by hand a walk from a bad hole to a good one and find what quantity decreases.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1150_coordination_to_math+longtable+audit+navigator+user_pathway-sprint.md"
+        ],
+        "evidence": "No sketch posted yet.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 112,
+      "node": {
+        "id": "structural-pathway-c",
+        "title": "P-C: freedom in the fan and in T*",
+        "status": "exploring",
+        "statement": "Each legal fan gives a different T* and so a different inductive colouring. Look for a counting or parity argument (Birkhoff-Lewis style) that some fan's colouring restricts to a filled or one-swap state.",
+        "approach": "Owner: Math. First trial: On 17:1 and 24:6406, list per fan which induced colourings are bad, and ask whether there is always a good fan for a structural reason.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1150_coordination_to_math+longtable+audit+navigator+user_pathway-sprint.md"
+        ],
+        "evidence": "No sketch posted yet.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 112,
+      "node": {
+        "id": "structural-pathway-d",
+        "title": "P-D: edge-colouring (Tait) view of the hole",
+        "status": "exploring",
+        "statement": "Translate a hole, a lock and a Kempe swap into Tait colourings and bichromatic cycles of the dual cubic graph; locks become crossing cycles. Ask what the A_r orbits look like there, and whether a parity invariant forces a fill.",
+        "approach": "Owner: Long Table. First trial: Write the dictionary and redo the A_3 period-60 orbit in the Tait picture by hand.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1150_coordination_to_math+longtable+audit+navigator+user_pathway-sprint.md"
+        ],
+        "evidence": "No sketch posted yet.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-sprint",
+      "revision": 112,
+      "node": {
+        "id": "structural-pathway-e",
+        "title": "P-E: adversary for every idea",
+        "status": "exploring",
+        "statement": "For each pathway as stated, find the smallest graph where it fails, by hand first, with code capped at 10 CPU-minutes.",
+        "approach": "Owner: Audit. First trial: Take each sketch as it lands.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1150_coordination_to_math+longtable+audit+navigator+user_pathway-sprint.md"
+        ],
+        "evidence": "No sketch posted yet.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:55:00Z",
+          "text": "Revision 112: S2 (WP22) and Math's radius census are deferred by the pathway sprint (coordinator, 11:50, on the user's direction): they run only if a pathway needs one of them as a kill test, and no new census starts without a pathway that asks for it. Their packages stay committed and unrun."
+        }
+      ],
+      "id": "structural-conj-r-prereg",
+      "revision": 112
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:55:00Z",
+          "text": "Revision 112: deferred by the pathway sprint unless a pathway needs it as a kill test."
+        }
+      ],
+      "id": "structural-radius-census-math",
+      "revision": 112
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:55:00Z",
+          "text": "Revision 112: the main effort is now the pathway sprint (node structural-pathway-sprint), with search only as kill tests. The vacancy hypothesis is open."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 112
     }
   ]
 }
