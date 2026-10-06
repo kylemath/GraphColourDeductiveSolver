@@ -280,6 +280,28 @@ if (integrationPath) {
     assert.equal(Tree.findParent(root, id).id, parent, id);
     assert.equal(Tree.findNode(root, id).status, status, id);
   }
+  // Planned, not yet written: eight Lean paths are flagged, not broken (user decision, revision 93).
+  const planned8 = ['f2','f3','f5','t1-4','t2-1','t3-1','t5-2','t6-2'];
+  for (const id of planned8) {
+    const n = Tree.findNode(root, id);
+    assert(n && n.plannedFiles && n.plannedFiles.length === 1 && n.files.includes(n.plannedFiles[0]), 'planned flag ' + id);
+  }
+  const pathCheck = require(base + 'check-paths.cjs');
+  const repoRoot = path.resolve(base, '..', '..') + path.sep;
+  const onDisk = f => fs.existsSync(repoRoot + f);
+  const pc = pathCheck.checkTree(root, onDisk);
+  assert.equal(pc.planned.length, 8, 'eight planned paths are ignored by the check');
+  assert.equal(pc.plannedNowExist.length, 0, 'a planned file that now exists must lose its flag');
+  // Any real broken path still fails: a bogus path on a node, and a flag-less copy of a planned path.
+  const fx = { id: 'x', files: ['no/such/file.lean', 'lean4/FourColor/Foundation/F2_Planarity.lean'], plannedFiles: [], children: [] };
+  assert.equal(pathCheck.checkTree(fx, onDisk).broken.length, 2);
+  fx.plannedFiles = ['lean4/FourColor/Foundation/F2_Planarity.lean'];
+  assert.deepEqual(pathCheck.checkTree(fx, onDisk).broken.map(b => b[1]), ['no/such/file.lean']);
+  // Known broken python paths (not covered by the decision): any new broken path fails this test.
+  assert.deepEqual(pc.broken.map(b => b[0] + ' ' + b[1]).sort(), [
+    't2-2 compute/chromatic/root_finder.py', 't5-1 compute/spectral/colin_de_verdiere.py',
+    't6-1 compute/topology/sheaf_cohomology.py', 't7-1 compute/discovery/tensor_network.py',
+    't7-2 compute/chromatic/root_finder.py', 't7-3 compute/discovery/gnn_coloring.py']);
   assert.equal(
     Tree.findNode(root, 'structural-wp21').title,
     'WP21: D1 and P on a fresh order, sample and adversarial search (announced; version 2 package planned, not started)'

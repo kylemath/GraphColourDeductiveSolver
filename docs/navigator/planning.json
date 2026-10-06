@@ -1,7 +1,12 @@
 {
-  "revision": 92,
-  "updatedAt": "2026-10-06T07:56:00-06:00",
+  "revision": 93,
+  "updatedAt": "2026-10-06T07:59:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T14:03:00Z",
+      "node": "4ct",
+      "action": "Revision 93 records the user's decision on the eight dead Lean paths in the original plan nodes (F2, F3, F5 and tracks 1, 2, 3, 5, 6): the nodes stay, and each path is flagged planned, not yet written, in the data, shown in the app, and ignored by the path check, which still fails on any other missing path. The check found six further genuinely broken python paths (compute/...), which the decision does not cover. No status changed."
+    },
     {
       "time": "2026-10-06T13:58:00Z",
       "node": "structural-vacancy",
@@ -7922,6 +7927,86 @@
       ],
       "id": "structural-vacancy",
       "revision": 92
+    },
+    {
+      "id": "f2",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "f3",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "f5",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "t1-4",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "t2-1",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "t3-1",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "t5-2",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
+    },
+    {
+      "id": "t6-2",
+      "revision": 93,
+      "notes": [
+        {
+          "time": "2026-10-06T14:03:00Z",
+          "text": "Revision 93, user decision (chat, 6 October): this node keeps its Lean file path, flagged as planned, not yet written. The file does not exist and was never created. It is not a broken or moved path."
+        }
+      ]
     }
   ]
 }

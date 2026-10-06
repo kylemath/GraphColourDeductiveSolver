@@ -206,7 +206,8 @@ const Detail = (() => {
     (node.files || []).forEach((f, i) => {
       const div = document.createElement('div');
       div.className = 'file-item';
-      div.innerHTML = '<span>' + escapeHtml(f) + '</span><button class="remove-btn" data-idx="' + i + '">&times;</button>';
+      const planned = (node.plannedFiles || []).includes(f);
+      div.innerHTML = '<span>' + escapeHtml(f) + (planned ? ' <em class="planned-flag">(planned, not yet written)</em>' : '') + '</span><button class="remove-btn" data-idx="' + i + '">&times;</button>';
       div.querySelector('.remove-btn').addEventListener('click', () => {
         node.files.splice(i, 1);
         scheduleAutoSave();

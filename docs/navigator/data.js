@@ -49,7 +49,7 @@ const DEFAULT_TREE = {
           status: "unstarted",
           approach: "Option A (fast): define via forbidden minors. Option B (slow): combinatorial planar embedding. Start with A.",
           killCriteria: "Stalls for > 4 weeks. Seek help from Mathlib community.",
-          files: ["lean4/FourColor/Foundation/F2_Planarity.lean"],
+          files: ["lean4/FourColor/Foundation/F2_Planarity.lean"], plannedFiles: ["lean4/FourColor/Foundation/F2_Planarity.lean"],
           notes: [],
           evidence: "",
           expanded: false,
@@ -62,7 +62,7 @@ const DEFAULT_TREE = {
           status: "unstarted",
           approach: "Prove from planarity definition. Derive: every planar graph has a vertex of degree \u2264 5.",
           killCriteria: "",
-          files: ["lean4/FourColor/Foundation/F3_EulerFormula.lean"],
+          files: ["lean4/FourColor/Foundation/F3_EulerFormula.lean"], plannedFiles: ["lean4/FourColor/Foundation/F3_EulerFormula.lean"],
           notes: [],
           evidence: "",
           expanded: false,
@@ -88,7 +88,7 @@ const DEFAULT_TREE = {
           status: "unstarted",
           approach: "Induction on |V|. Remove min-degree vertex. Deg \u2264 4: trivial. Deg = 5: single Kempe swap.",
           killCriteria: "",
-          files: ["lean4/FourColor/Foundation/F5_FiveColorTheorem.lean"],
+          files: ["lean4/FourColor/Foundation/F5_FiveColorTheorem.lean"], plannedFiles: ["lean4/FourColor/Foundation/F5_FiveColorTheorem.lean"],
           notes: [],
           evidence: "",
           expanded: false,
@@ -124,7 +124,7 @@ const DEFAULT_TREE = {
         { id: "t1-1", title: "Compute: 5\u21924 reducibility for n \u2264 12", statement: "Enumerate all 5-colourings of all planar triangulations n\u226412, verify each can be Kempe-reduced to 4.", status: "unstarted", approach: "Python + NetworkX exhaustive search.", killCriteria: "Any counterexample", files: ["compute/kempe/reduction_search.py"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t1-2", title: "Extend to n \u2264 15, 18, 20", statement: "Same computation, larger graphs.", status: "unstarted", approach: "Parallelized Python. May need HPC.", killCriteria: "Counterexample or runtime > 1 week for n=15", files: [], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t1-3", title: "Characterize hard 5-colourings", statement: "Which 5-colourings require the most swaps to reduce?", status: "unstarted", approach: "Analyze computation data. Look for structural patterns.", killCriteria: "No pattern after n=18 data", files: [], notes: [], evidence: "", expanded: false, children: [] },
-        { id: "t1-4", title: "Formalize in Lean 4", statement: "Prove the Kempe reduction property formally.", status: "unstarted", approach: "Depends on pattern found in t1-3.", killCriteria: "Stalls > 4 weeks", files: ["lean4/FourColor/Track1_KempeSwap/"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t1-4", title: "Formalize in Lean 4", statement: "Prove the Kempe reduction property formally.", status: "unstarted", approach: "Depends on pattern found in t1-3.", killCriteria: "Stalls > 4 weeks", files: ["lean4/FourColor/Track1_KempeSwap/"], plannedFiles: ["lean4/FourColor/Track1_KempeSwap/"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t1-spec-d4", title: "Spec: BFS Avoidance at degree 4", statement: "Specify Conjecture 5.5 for a vertex v with c(v)=5 and deg(v)=4: definitions, exact claim, acceptance test for a future proof, cited evidence, and kill criterion. The conjecture is not claimed proved.", status: "in-progress", approach: "Agent 1701 task K1, manager M-Kempe. Specification accepted at the critic gate. The conjecture itself is not proved.", killCriteria: "A written counterexample: one planar graph, one proper 5-colouring, one degree-4 vertex coloured 5, and one shortest path that swaps an (a,5)-chain meeting a neighbour of v while v bridges at least two (a,5)-chains.", files: ["backgroundMaterial/agent1701/tasks/K1.md", "backgroundMaterial/agent1701/groups/K1_spec.md", "SolvingFrameworkPlan/docs/working/ExecutiveSummary_Plan2_Status.md"], notes: [{ "time": "2026-09-27T19:45:00Z", "text": "Issued by the main planning team. Not accepted until the critic gate." }, { "time": "2026-09-27T20:30:00Z", "text": "Critic gate accepted the specification. The conjecture is not proved and is not killed." }, { "time": "2026-09-27T21:40:00Z", "text": "The universal degree-4 statement met its kill criterion. The dead end is recorded on t1-conj-d4. This node remains the specification." }], evidence: "Spec accepted 2026-09-27. The universal statement is a dead end: on T_9_35, vertex 6, colouring (1,2,3,4,5,3,5,2,5), a length-2 shortest path swaps the (3,5)-chain {2,8}. See t1-conj-d4. The specification document is kept.", expanded: true, children: [] },
         { id: "t1-spec-d5", title: "Spec: BFS Avoidance at degree 5", statement: "Specify Conjecture 5.5 for deg(v)=5, and the observation that would reclassify the conjecture as a reformulation of the Four Colour Theorem rather than a shorter gap.", status: "in-progress", approach: "Agent 1701 task K2, manager M-Kempe. Specification accepted. Sequencing change: do not prove degree 4 first while the T_9,35 assertion is unverified.", killCriteria: "A written counterexample meeting the degree-5 kill test, or a proved reduction showing 4-colourability of an arbitrary triangulation is equivalent to this avoidance statement.", files: ["backgroundMaterial/agent1701/tasks/K2.md", "backgroundMaterial/agent1701/groups/K2_spec.md", "SolvingFrameworkPlan/docs/working/ExecutiveSummary_Plan2_Status.md"], notes: [{ "time": "2026-09-27T19:45:00Z", "text": "Issued by the main planning team. Not accepted until the critic gate." }, { "time": "2026-09-27T20:30:00Z", "text": "Critic gate accepted the specification. Observation R (equivalence with 4CT) is not established." }], evidence: "Spec accepted 2026-09-27. The universal degree-5 statement is a dead end on one colouring of T_9_25 at vertex 3; see t1-conj-d5. Observation R is not established. Track 1 is not killed.", expanded: false, children: [] },
         { id: "t1-witness-935", title: "Write the T_9,35 degree-4 witness", statement: "Exhibit the edge set of triangulation T_9,35 and one shortest path in R(G-v,5) at vertex 6 that meets the degree-4 kill criterion, or show that no such colouring exists.", status: "in-progress", approach: "Witness written and accepted by the critic. The universal conjecture is recorded as killed on t1-conj-d4, not on this node.", killCriteria: "The cited Agent 1419 assertion cannot be tied to a graph and a path, or the exhibited path fails the kill test in K1_spec.md.", files: ["backgroundMaterial/agent1701/tasks/W1.md", "backgroundMaterial/agent1701/groups/W_graph.md", "backgroundMaterial/agent1701/groups/W_path.md"], notes: [{ "time": "2026-09-27T20:30:00Z", "text": "Issued by the main planning team after the critic gate. Not complete." }, { "time": "2026-09-27T21:40:00Z", "text": "Critic accepted the witness. Edges of generate_triangulations(9)[35] match the JSON record. The length-2 path meets the kill test." }], evidence: "Accepted 2026-09-27. T_9_35 has 21 edges; vertex 6 has degree 4 and neighbours 0,1,2,5. Colouring 0:1, 1:2, 2:3, 3:4, 4:5, 5:3, 6:5, 7:2, 8:5. First step swaps (3,5)-chain {2,8} while neighbours 2 and 5 lie in distinct (3,5)-chains.", expanded: true, children: [] },
@@ -145,7 +145,7 @@ const DEFAULT_TREE = {
       evidence: "",
       expanded: false,
       children: [
-        { id: "t2-1", title: "Formalize P(G,k) in Lean 4", statement: "P(G,k) via deletion-contraction.", status: "unstarted", approach: "Define recursively. Prove P(G-e,k) - P(G/e,k) identity.", killCriteria: "", files: ["lean4/FourColor/Track2_ChromaticPoly/"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t2-1", title: "Formalize P(G,k) in Lean 4", statement: "P(G,k) via deletion-contraction.", status: "unstarted", approach: "Define recursively. Prove P(G-e,k) - P(G/e,k) identity.", killCriteria: "", files: ["lean4/FourColor/Track2_ChromaticPoly/"], plannedFiles: ["lean4/FourColor/Track2_ChromaticPoly/"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t2-2", title: "Compute roots for planar triangulations n\u226420", statement: "Find all real roots of P(G,k) for small planar graphs.", status: "unstarted", approach: "SageMath symbolic computation.", killCriteria: "Root in (3,4) found", files: ["compute/chromatic/root_finder.py"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t2-3", title: "Prove P(G,4)>0 for outerplanar", statement: "Outerplanar graphs: P(G,4) > 0.", status: "unstarted", approach: "Outerplanar = treewidth \u2264 2. Should be tractable.", killCriteria: "Stalls > 6 weeks", files: [], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t2-4", title: "Prove P(G,4)>0 for series-parallel", statement: "Series-parallel graphs: P(G,4) > 0.", status: "unstarted", approach: "Extend outerplanar result.", killCriteria: "Stalls > 6 weeks", files: [], notes: [], evidence: "", expanded: false, children: [] }
@@ -163,7 +163,7 @@ const DEFAULT_TREE = {
       evidence: "",
       expanded: false,
       children: [
-        { id: "t3-1", title: "Formalize nowhere-zero k-flows", statement: "Orientation + edge labels in {1,...,k-1} satisfying Kirchhoff at each vertex mod k.", status: "unstarted", approach: "Define in Lean 4.", killCriteria: "", files: ["lean4/FourColor/Track3_Flows/"], notes: [], evidence: "", expanded: false, children: [] },
+        { id: "t3-1", title: "Formalize nowhere-zero k-flows", statement: "Orientation + edge labels in {1,...,k-1} satisfying Kirchhoff at each vertex mod k.", status: "unstarted", approach: "Define in Lean 4.", killCriteria: "", files: ["lean4/FourColor/Track3_Flows/"], plannedFiles: ["lean4/FourColor/Track3_Flows/"], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t3-2", title: "Prove Tutte duality (planar)", statement: "G is k-colourable \u21D4 G* has nowhere-zero k-flow.", status: "unstarted", approach: "Requires planar dual construction.", killCriteria: "", files: [], notes: [], evidence: "", expanded: false, children: [] },
         { id: "t3-3", title: "Prove 6-flow theorem (Seymour)", statement: "Every bridgeless graph has a nowhere-zero 6-flow.", status: "unstarted", approach: "Would be a major Lean 4 / Mathlib contribution.", killCriteria: "Stalls > 10 weeks", files: [], notes: [], evidence: "", expanded: false, children: [] }
       ]
@@ -199,7 +199,7 @@ const DEFAULT_TREE = {
       expanded: false,
       children: [
         { id: "t5-1", title: "Compute \u03BC(G) for small planar graphs", statement: "SDP computation of Colin de Verdi\u00e8re invariant.", status: "unstarted", approach: "Python + CVXPY.", killCriteria: "Counterexample", files: ["compute/spectral/colin_de_verdiere.py"], notes: [], evidence: "", expanded: false, children: [] },
-        { id: "t5-2", title: "Formalize \u03BC(G) in Lean 4", statement: "Define via matrix optimization with transversality.", status: "unstarted", approach: "Lean 4 definition.", killCriteria: "", files: ["lean4/FourColor/Track5_Spectral/"], notes: [], evidence: "", expanded: false, children: [] }
+        { id: "t5-2", title: "Formalize \u03BC(G) in Lean 4", statement: "Define via matrix optimization with transversality.", status: "unstarted", approach: "Lean 4 definition.", killCriteria: "", files: ["lean4/FourColor/Track5_Spectral/"], plannedFiles: ["lean4/FourColor/Track5_Spectral/"], notes: [], evidence: "", expanded: false, children: [] }
       ]
     },
     {
@@ -215,7 +215,7 @@ const DEFAULT_TREE = {
       expanded: false,
       children: [
         { id: "t6-1", title: "Compute sheaf cohomology for small graphs", statement: "H^0, H^1 of candidate colouring sheaves.", status: "unstarted", approach: "Python linear algebra.", killCriteria: "H^1 \u2260 0 for planar G", files: ["compute/topology/sheaf_cohomology.py"], notes: [], evidence: "", expanded: false, children: [] },
-        { id: "t6-2", title: "Formalize cellular sheaves on graphs", statement: "Lean 4 formalization of sheaves on graphs.", status: "unstarted", approach: "New Lean 4 library. Would be useful to community.", killCriteria: "Stalls > 6 weeks", files: ["lean4/FourColor/Track6_Sheaf/"], notes: [], evidence: "", expanded: false, children: [] }
+        { id: "t6-2", title: "Formalize cellular sheaves on graphs", statement: "Lean 4 formalization of sheaves on graphs.", status: "unstarted", approach: "New Lean 4 library. Would be useful to community.", killCriteria: "Stalls > 6 weeks", files: ["lean4/FourColor/Track6_Sheaf/"], plannedFiles: ["lean4/FourColor/Track6_Sheaf/"], notes: [], evidence: "", expanded: false, children: [] }
       ]
     },
     {
