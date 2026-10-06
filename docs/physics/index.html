@@ -376,9 +376,9 @@
         Studio compute tested it <span class="lab">[exploratory; sage-qa-runs/, main ec92cd5]</span> on the four radius-5 certificates, the F-cycle hole, the order-22 radius-5 hole and Errera's two holes.
         For the score (lock size, then lock distance), some sequence of <strong>at most 3 swaps</strong> lowers it or fills the hole at every unfilled state. Two swaps are not always enough: 5 states need 3.
         The number needed does <strong>not</strong> grow with the radius. Most states four or five swaps from a fill can lower the score in one.</p>
-      <p><strong>Conjecture K3</strong> <span class="lab">[open; scale test queued on the Studio]</span>: from every unfilled state at a degree-5 hole, at most 3 swaps lower (lock size, lock distance) or fill.
+      <p><strong>Conjecture K3</strong> <span class="lab">[killed at order 26; exploratory, studio-explore/conjecture-K3/]</span>: from every unfilled state at a degree-5 hole, at most 3 swaps lower (lock size, lock distance) or fill.
         Because the score is a non-negative whole number, K3 at every hole would imply that every degree-5 vertex can always be refilled (Tilley's every-vertex form).
-        So it is almost certainly too strong to prove easily, and it may fail on larger graphs. But it is crisp and testable: the Studio is checking every state at least four swaps from a fill in the exhaustive census, orders 20–26.</p>
+        So it is almost certainly too strong to prove easily, and it may fail on larger graphs. It was crisp and testable, so the Studio tested it on all 41,326 states at least four swaps from a fill, at every hole of radius 4 or 5 in the exhaustive census, orders 20–26. <strong>It holds through order 25 and fails at order 26</strong>: 8 states in 4 holes need 4 swaps. The first is order 26, plantri index 5401, hole 13, a state five swaps from a fill. The share of states needing 3 swaps grows with order (23, 40, 123, 289 and 1,650 at orders 22–26), so no fixed lookahead looks likely to work. Those holes still refill (R* holds there); only the bounded-descent shortcut fails.</p>
       <p><strong>The catch.</strong> The distance to a fill is trivially such a potential, since it drops by one at every swap along a shortest fill. So a useful score has to be computable locally, from a bounded neighbourhood of the hole.</p>
     </div>
 
@@ -406,7 +406,7 @@
         <strong>2(d), Perelman:</strong> the honest end of the analogy. His key was a global monotone quantity; the known global quantities on colourings are constant on Kempe classes, so this is the open problem restated.</p>
       <p><strong>Verdict:</strong> two cheap experiments are worth doing this week (k-step descent, inert-disc lemma). Neither is a route to a proof; either sharpens the paper or closes a line cleanly. The rest is metaphor.</p>
       <p><strong>What the experiments found</strong> <span class="lab">[exploratory]</span>.
-        <em>k-step descent:</em> at most 3 swaps everywhere tested, not tracking the radius; this became Conjecture K3 above.
+        <em>k-step descent:</em> at most 3 swaps on the hard examples, not tracking the radius; this became Conjecture K3 above, which then failed at order 26 (4 swaps needed). The derivative idea is closed for this score.
         <em>Inert disc:</em> the advisor's pruning claim is <strong>false</strong>. Intern A showed by hand that a shortest fill can begin with a swap strictly inside a lock disc (<code>docs/working/InternA-inert-disc.md</code>).
         Studio compute then scanned all 81,564 shortest-fill moves at orders 17–20 and found exactly one real instance: order 20, plantri index 51, hole 1, a state three swaps from a fill whose first swap flips a single vertex inside the disc. The audit replay is pending.
         Such moves are rare: none occur at the eight hardest holes, and none at states four or more swaps from a fill.</p>
