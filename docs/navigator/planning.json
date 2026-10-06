@@ -1,7 +1,12 @@
 {
-  "revision": 108,
-  "updatedAt": "2026-10-06T10:43:00-06:00",
+  "revision": 109,
+  "updatedAt": "2026-10-06T11:25:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T17:30:00Z",
+      "node": "structural-theorem-h",
+      "action": "Revision 109 records Math's independent review: Theorem H (icosahedral holes have radius at most 3) accepted by hand with an erratum, not compiled and not audited; Lemma A, Lemma B (conditional) and the icosahedron no-first-lock proof correct; the A_r infinite-chain census extended to r = 9 (Jacobsthal counts) and radius 2 on A_4 to A_9, finite evidence only. Also the audit's validation of disc_gen2 at order 24 (313,493 classes) and its ring-chord check at order 23, the audit's ready P1 replay package, Math's acceptance of the census division, P1 at nine of ten chunk files, and the Studio push waiting on Kyle's go. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T16:48:00Z",
       "node": "structural-wp21",
@@ -9286,6 +9291,98 @@
       ],
       "id": "structural-conj-r-prereg",
       "revision": 108
+    },
+    {
+      "status": "proved",
+      "title": "Theorem H: icosahedral holes have Kempe radius at most 3 (accepted by hand, not compiled, not audited)",
+      "statement": "At a degree-5 hole whose five neighbours also have degree 5, every doubly locked state has Kempe radius at most 3. It uses only the ball around the hole, not r, the A_r symmetry or Lemma B. Steps, as reviewed: R2, F(s) is not doubly locked; R3, the {a,b}-component is exactly {x0, x1, x2}, so the breaker is one legal whole-component swap, not a composition; R1, F(s) is not doubly locked or has pattern R3; so on an infinite F-orbit the pattern alternates and every second state is locally breakable. Two wording fixes made as an erratum to MathRadiusGeometry.md: step 4 uses the existence of P2 as a Jordan curve separating x0 from x2 and x3, so \"no lock path beyond first or last vertex\" was imprecise; and the distinctness of the w_t (no separating triangle) must be stated as a hypothesis. T4 is not covered: its hole has two adjacent degree-6 link vertices and radius 4.",
+      "evidence": "Math 11:02: independent review by a worker that did not write the claims (report MathReviewArTheoremH.md): verdict CORRECT, no gap, steps 1 to 4 rederived by hand and confirmed by the reviewer's own code over all colourings of A_3 to A_9. Math's own reading: accepted as a hand proof on the strength of that review and its own numerical check (705 doubly locked states on 28 graphs, none above 3); Math has not itself re-derived the steps line by line. The audit has not reviewed it and nothing is compiled. This ledger records it as proved by hand, as it does for other hand proofs accepted by Math, with those two qualifications. It does not prove that a vertex with five degree-5 neighbours is good: Math notes the protected-face-compatible form is checked only for faces disjoint from the closed neighbourhood of the hole, and it covers only triangulations containing such a vertex. Conjecture R stays open.",
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathReviewArTheoremH.md",
+        "SolvingFrameworkPlan/docs/working/MathRadiusGeometry.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1102_math_to_navigator+longtable+audit+coordination_review-Theorem-H-and-A_r-lemmas.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T17:30:00Z",
+          "text": "Revision 109: accepted by hand on Math's independent review, with the erratum. Not compiled, not audited."
+        }
+      ],
+      "id": "structural-theorem-h",
+      "revision": 109
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:30:00Z",
+          "text": "Revision 109, Math's independent review (11:02, report MathReviewArTheoremH.md, review worker, Math rechecked nothing beyond what is stated). CORRECT by hand: Lemma A, Lemma B (conditional on F4s = pi s sigma, which is only computed), and Long Table's proof that the icosahedron A_2 has no first lock. Computed, exhaustive: the number of infinite-chain classes for r = 3 to 9 is 20, 20, 60, 100, 220, 420, 860, equal to 20 times the Jacobsthal numbers; r = 9 (860 = 20 times 43) is new beyond the audit's r = 3 to 5; F4s = pi s sigma3 holds for every infinite class tested. Radius 3 occurs only on A_3 (10 of 30 doubly locked classes); every doubly locked class on A_4 to A_9 has radius 2 (80, 530, 2450, 13,300, 68,390, 360,090 classes). \"Radius at most 3 for all r\" is Theorem H; \"radius 2 for r at least 4\" is confirmed through r = 9 and not proved. Still unproven for all r: the existence of infinite orbits for every r, and Conjecture J (the Jacobsthal count). Not reviewed: the T4 section of the radius-geometry page, a 50-flipped-graph test and the K3 layer and delay-line claims. The lemmas are accepted by hand, not compiled and not audited, and the census counts remain finite evidence. The node stays exploring because Conjecture J and the all-r statements are open."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathReviewArTheoremH.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1102_math_to_navigator+longtable+audit+coordination_review-Theorem-H-and-A_r-lemmas.md"
+      ],
+      "id": "structural-a-structure",
+      "revision": 109
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:30:00Z",
+          "text": "Revision 109: Math 10:54 accepts Long Table's division as written (items 1 to 5), including the consistency check on A_3 and A_4 histograms and T4 (radius 4, histogram {0:22, 1:25, 2:15, 3:4, 4:2}), sequential runs, and mutual verification of any kill (a KILL-3 record also checked by wp22v_verify.py, a KILL-2 certificate also by verify_census.py). The package commit of Math's pre-registration is 1867067 (declaration PREREG_DRAFT.md e605bb7f, which the navigator checked equal on disk in revision 107). Resources: about 15 to 20 CPU-minutes, 14 workers under 3 minutes wall or about 4 minutes on 6 workers; it may run on the MacBook after P1's processes finish, or queue on the Studio after WP21 phase B and before the P1 replay; the coordinator launches and Math checks the report. The census does not need S2 and S2 does not need the census. Nothing has run on either. The division now meets the duplicate-work question; the gate of an independent check per tool stands."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1054_math_to_coordination+longtable+navigator+audit_census-division-accepted-resources.md"
+      ],
+      "id": "structural-conj-r-prereg",
+      "revision": 109
+    },
+    {
+      "title": "Disc generator disc_gen2 equals an independent plantri census, orders 12 to 24",
+      "statement": "At orders 17 to 24 the lines of Math's disc_gen2 are exactly the independent census of rigid, chord-free labelled-ring classes: 75, 74, 170, 1565, 5146, 15840, 78005 and now 313,493 at order 24, with no class missing, extra or duplicated and no invalid line; orders 12, 14 and 16 have 0 on both sides. Ring-chord states, excluded from the generator by design: none at order 22; 120 at order 23, all with a legal admitting fan and none locked at every legal admitting fan, so the exclusion hides no D1-relevant locked state at orders up to 23; 520 at order 24 are not lock-checked (about 1.7 CPU-hours, staged after P1). So Math's count of 26 triply locked discs at order 24 rests on a complete census.",
+      "evidence": "Independent audit (commit e3c0562): its own plantri build, order-24 output hash equal to wp20/input-m5-24.txt, 7290 graphs, 313,493 classes, 6246 and 502 seconds on a single process. Navigator check: census-compare.jsonl at order 24 gives 313,493 classes on both sides with plantri_only and disc_only 0 and no rejected line. Small observation: the audit's discgen-validation/SHA256SUMS reports chord_states.py as failing because that file has an uncommitted modification, presumably the order-24 chord check in progress; the other entries verify. Exploratory validation of a tool on spent orders, computed and not a proof.",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/discgen-validation/REPORT.md",
+        "backgroundMaterial/planemap-structural/longtable/audit/discgen-validation/out/census-compare.jsonl",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1105_audit_to_coordination+navigator+math+longtable_discgen-order-24-and-chord-states.md"
+      ],
+      "id": "structural-discgen-validated",
+      "revision": 109
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/audit/wp20-replay/README.md",
+        "backgroundMaterial/planemap-structural/longtable/audit/wp20-replay/SHA256SUMS"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T17:30:00Z",
+          "text": "Revision 109. P1 attempt 2: nine of ten chunk output files are written (chunks 0 to 8) and the last chunk, 2530 graphs, was at 1000 of 2530 at 11:23; intermediate, no finished chunk logs a D1 or P kill, and no result until the merge, the checker with --all and the audit replay. The audit's P1 replay package is ready (commit 52dc485, README and SHA256SUMS in audit/wp20-replay verify): a third implementation importing neither the producer nor Long Table's checker, built before any P1 output was read; validated against the declaration regressions (order 16: 0 SEP-bad; order 17: 8 SEP-bad at depth 1 with 32 locked classes; order 18: 0), a dry run against the committed order-17 regression output (replay agrees on every field and witness set) and a negative control (one count and one witness corrupted, both caught). Revised cost about 8 s per order-25 graph, about 760 sampled graphs plus the flagged ones, about 1.7 CPU-hours, roughly 50 minutes on 2 workers; the plan's estimate of well under one CPU-hour was wrong and the method is unchanged. It starts when the merge and the checker --all have finished."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 109
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:30:00Z",
+          "text": "Revision 109, the coordinator's relay (no file seen by the navigator): the Studio agent will not push branch studio-wp21 without Kyle's go, so the Studio outputs and RECORD.txt are not yet in the repository and the first-Mac cross-check cannot start; phase B was at 0 of 12 shards at 10:53. Nothing new is verified. Phase A remains produced and checked once, with no result."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 109
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T17:30:00Z",
+          "text": "Revision 109: Math's review pass (an independent review worker) accepted Theorem H and Long Table's lemmas by hand. Math's next open Lean item is the SphericalMap realisation of the belt (rotation system and Fills). These hand acceptances rest on a Math review worker's verdict and are not audited."
+        }
+      ],
+      "id": "structural-math-horizon",
+      "revision": 109
     }
   ]
 }

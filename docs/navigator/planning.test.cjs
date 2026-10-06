@@ -282,7 +282,7 @@ if (integrationPath) {
     ['structural-conj-r-radius3-killed','structural-conj-r-prereg','killed'],
     ['structural-a-structure','structural-vh-lock-persistence','exploring'],
     ['structural-vacancy-hyp-lean','structural-math-horizon','in-progress'],
-    ['structural-theorem-h','structural-conj-r-prereg','exploring'],
+    ['structural-theorem-h','structural-conj-r-prereg','proved'],
     ['structural-radius-census-math','structural-conj-r-prereg','unstarted'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
