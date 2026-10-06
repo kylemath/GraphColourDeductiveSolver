@@ -1,7 +1,12 @@
 {
-  "revision": 107,
-  "updatedAt": "2026-10-06T10:26:00-06:00",
+  "revision": 108,
+  "updatedAt": "2026-10-06T10:43:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T16:48:00Z",
+      "node": "structural-wp21",
+      "action": "Revision 108 records, as the coordinator's relay of the Studio agent and unverified (no studio branch or file from the Studio exists), that WP21 phase A produced 46 of 46 shards, 4578 graphs, exit 0, passed the Studio's own sharded check (23 ranges) and has not been cross-checked on the first Mac, so there is no result; the relayed counts (D1 and P kills 0, 102 SEP-bad states at depth 1, no_legal_fan 588) are unverified; phase B started at 10:33:26. It also records Long Table's explanation of no_legal_fan (first nonzero in P1 chunk 6, at three vertices on separating triangles) with the declaration's two readings, and Long Table's division of the radius census and S2. P1 is at 7 of 10 chunks with no kill in finished chunks. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T16:30:00Z",
       "node": "structural-conj-r-prereg",
@@ -9241,6 +9246,46 @@
       ],
       "id": "structural-vacancy",
       "revision": 107
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1026_longtable_to_coordination+navigator+math+audit+user_status-no-legal-fan-explained.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T16:48:00Z",
+          "text": "Revision 108, WP21 phase A boundary, THE COORDINATOR'S RELAY of the Studio agent's report at 10:41 MDT; no studio branch exists on the remote at 10:41 and no RECORD.txt, A-report-numbers.md or output file from the Studio is in this checkout, so nothing below is verified by the navigator. Relayed: the run produced 46 of 46 shards and 4578 graphs, exit 0, output sha256 1371118b...a839. The Studio's sharded independent check printed CHECK OK (all 23 ranges) at 10:33:25. The first-Mac wp21_mac_checks.sh (the subset-rule check and the independent check on a different machine) has NOT run. So phase A is produced and checked once, on the producing machine, and not yet cross-checked on another: NO RESULT. Relayed numbers, labelled as unverified and not a result: 75,337 degree-5 vertices; 34,687,219 unfilled states; no_legal_fan 588; SEP-bad 102, all at depth 1, in 11 graphs; filled_neighbour_for_bad 0; D1 kills 0; P kills 0; P capped 0; locked classes 939 in 236 graphs. Phase B started at 10:33:26 (12 chain shards). Whatever phase A finds, a pass can only say that no counterexample occurs among the 4578 sampled graphs of order 26, nothing about the other graphs of order 26 or any other order. Phase B, when it reports, says only what its search visited. When the branch appears the ledger reads RECORD.txt first (it must show the Studio machine, an M4 Max with 16 cores and 128 GB, and the commit e6110ff or a documented successor), then the output hash, then the first-Mac check, and only then records counts as computed on the stated graphs."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 108
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1026_longtable_to_coordination+navigator+math+audit+user_status-no-legal-fan-explained.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1024_longtable_to_coordination+math+navigator+audit+user_division-radius-census-versus-S2.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T16:48:00Z",
+          "text": "Revision 108: Long Table 10:26 explains the no_legal_fan category. A fan at a degree-5 vertex is legal when neither chord is an edge; a state is admitted by a fan whose apex colour is a singleton on the link; no_legal_fan counts unfilled states for which no admitting fan is legal, which happens only at a degree-5 vertex whose link has a chord, that is, on a separating triangle. Chunks 0 to 5 and the earlier exploratory orders had 0; chunk 6 has 420, all from three vertices in three graphs (indices 17441, 17490, 17575): at each, 280 of 420 unfilled states have a legal admitting fan (D1 tested, 0 SEP-bad) and 140 have none, with 0 P kills and 0 SEP-bad there. Declaration wrinkle, recorded as a fact: the hashed declaration says such a state is recorded as no_legal_fan and excluded from every statement, but statement P says every unfilled state; WP20-output-format.md says P is evaluated for every unfilled state including these, and both the producer and the checker implement that. So D1 does not test them (neither pass nor kill nor unresolved) and P does. The declaration cannot be edited; the report will state both readings and the data under each, and list the no_legal_fan states next to the D1 kills. Long Table reports the checker counts them identically on a three-graph input built from those graphs (280 and 140 at each vertex, no count mismatch, the only complaint being the expected input-hash difference); the full --all check will confirm it. The navigator did not rerun this. P1 progress: 7 of 10 chunks done at 10:41, no finished chunk logs a D1 or P kill, intermediate and not a result."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 108
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1024_longtable_to_coordination+math+navigator+audit+user_division-radius-census-versus-S2.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T16:48:00Z",
+          "text": "Revision 108: Long Table 10:24 states the division between Math's census R and S2. Math: every plane triangulation of minimum degree 5, orders 12 to 24, every degree-5 vertex, a statement about all graphs in the set (KILL-3). S2: S2a a hill-climb over minimum degree at least 4, orders 12 to 30; S2b the symmetric family A_3, A_4, A_5 (orders 17, 22, 27), whose new content is A_5; S2c Math's certificates, descriptive; a statement about the graphs visited (KILL-2). Overlap acknowledged as a consistency check: the radius histograms for A_3 and A_4 at every hole must be identical in the two outputs, and T4 must give radius 4 with histogram {0:22, 1:25, 2:15, 3:4, 4:2} in both. Schedule proposed: on the Studio, sequentially, after WP21 T1 and T2: first Math's census (15 to 20 CPU-minutes), then S2 (80 CPU-minutes, after P1 has reported). Mutual verification of any kill: an S2 certificate is checked by Math's verify_census.py, and a census KILL-3 record by Long Table's wp22v_verify.py. Math has not yet confirmed or corrected this division; the navigator treats it as Long Table's proposal. It meets the independent-check gate for kills; the routine outputs still need the audit sample replay."
+        }
+      ],
+      "id": "structural-conj-r-prereg",
+      "revision": 108
     }
   ]
 }
