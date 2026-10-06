@@ -59,3 +59,8 @@ Graph-level containment was tested on every graph of each order (Studio intel's 
 | 25 | 24963 | 2 | rho2: 6, rho3: 4 | 3 |
 
 No graph with neither configuration has a rho >= 4 hole, up to order 25. Among the rho-5 classes, the one graph without a diamond (order 25, index 4830) contains 2.122. The one without 2.122 (order 24, index 7192) contains a diamond.
+
+## Order 26 (added)
+| 26 | 89376 | 1438293 | rho1 180 | rho2 982237 | rho3 443452 | rho4 12399 | rho5 25 | null 0 | max 5 | max-rho holes in a diamond 11/25 | graphs with a diamond 25/25 |
+
+Graphs with neither the diamond nor 2.122 at order 26: 11 graphs, 55 hole classes (45 at rho 2, 10 at rho 3), max rho 3. `table.md` covers orders 12-26; `rho-ge4-26.jsonl` has 12,424 records. Order 27 is running.
