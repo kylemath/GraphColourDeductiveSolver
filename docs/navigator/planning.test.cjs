@@ -274,6 +274,8 @@ if (integrationPath) {
     ['structural-n-subtargets-killed','structural-math-t3-attack','killed'],
     ['structural-vh-lock-persistence','structural-math-t1','exploring'],
     ['structural-vh-killed-lines','structural-vh-lock-persistence','exploring'],
+    ['structural-n-gstar-killed','structural-math-t3-attack','killed'],
+    ['structural-discgen-validated','structural-math-t3-attack','computed'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
     ['structural-deg6-split','structural-vhe-obstruction','proved'],
