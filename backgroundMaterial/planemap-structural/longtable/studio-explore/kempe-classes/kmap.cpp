@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <map>
 #include <set>
+#include <functional>
 typedef uint64_t u64;
 struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi || (hi == o.hi && lo < o.lo); }
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
@@ -88,5 +89,46 @@ int main(int argc, char **argv) {
             for (int i = 0; i < Hs.N; i++) printf("%s\"%d\": %d", i ? ", " : "", oH[i], c[i]);
             printf("}}"); f1 = false; }
         printf("]}\n"); }
+    if (getenv("KMAP_BRIDGE")) {
+        // Conjecture M (Intern D): for every pair of T-classes merged in H, the fewest UNFILLED states on an H-Kempe path
+        // from a restriction of C1 to a restriction of C2 whose interior is entirely unfilled (0 = a direct move between
+        // restrictions). "unfilled" = not a restriction of any T-colouring. -1 = no such path (joined only through
+        // restrictions of other T-classes).
+        size_t D = Hs.S.size(); std::vector<int> tcls(D, -1);   // T root of the restriction, or -1 if unfilled
+        for (size_t s = 0; s < T.S.size(); s++) { T.unkey(T.S[s], cT); for (int i = 0; i < Hs.N; i++) cH[i] = cT[iT[oH[i]]];
+            tcls[Hs.lookup(cH)] = T.find(s); }
+        auto nbrs = [&](size_t s, std::vector<long long> &out) { out.clear(); int c[64], d[64]; Hs.unkey(Hs.S[s], c);
+            u64 cm[4] = {0, 0, 0, 0}; for (int i = 0; i < Hs.N; i++) cm[c[i]] |= 1ULL << i;
+            for (int p = 0; p < 4; p++) for (int q = p + 1; q < 4; q++) { u64 M = cm[p] | cm[q];
+                while (M) { u64 K = Hs.flood(M & -M, cm[p] | cm[q]); M &= ~K;
+                    for (int i = 0; i < Hs.N; i++) { d[i] = c[i]; if (K >> i & 1) d[i] = (c[i] == p) ? q : p; }
+                    long long t = Hs.lookup(d); if (t != (long long)s) out.push_back(t); } } };
+        std::map<std::pair<int,int>, int> best;  // (C1, C2) -> min unfilled count
+        std::vector<long long> nb;
+        for (int C1 : rT) {
+            std::vector<int> dist(D, -1); std::vector<long long> q;
+            for (size_t s = 0; s < D; s++) if (tcls[s] == C1) { dist[s] = 0; q.push_back(s); }
+            for (size_t h = 0; h < q.size(); h++) { long long s = q[h]; nbrs(s, nb);
+                for (long long t : nb) { if (tcls[t] >= 0) { if (tcls[t] != C1) { int k = dist[s]; auto key = std::make_pair(C1, tcls[t]);
+                            if (!best.count(key) || k < best[key]) best[key] = k; } continue; }
+                    if (dist[t] < 0) { dist[t] = dist[s] + 1; q.push_back(t); } } }
+        }
+        std::map<int, int> hist; int pairs = 0;
+        for (auto &kv : pre) { std::vector<int> cl(kv.second.begin(), kv.second.end());
+            for (size_t i = 0; i < cl.size(); i++) for (size_t j = i + 1; j < cl.size(); j++) { pairs++;
+                auto k = std::make_pair(cl[i], cl[j]); hist[best.count(k) ? best[k] : -1]++; } }
+        // weak form: within each merging H class, are the T-classes connected using only bridges with <= 1 unfilled state?
+        int weak_ok = 0, weak_fail = 0, maxk_needed = 0;
+        for (auto &kv : pre) { if (kv.second.size() < 2) continue; std::vector<int> cl(kv.second.begin(), kv.second.end());
+            // smallest k such that bridges with <= k unfilled states connect all of cl
+            int need = -1;
+            for (int k = 0; k <= 64 && need < 0; k++) { std::map<int,int> u; for (int c : cl) u[c] = c;
+                std::function<int(int)> fd = [&](int x) { return u[x] == x ? x : u[x] = fd(u[x]); };
+                for (auto &b : best) if (b.second >= 0 && b.second <= k && u.count(b.first.first) && u.count(b.first.second)) u[fd(b.first.first)] = fd(b.first.second);
+                std::set<int> roots; for (int c : cl) roots.insert(fd(c)); if (roots.size() == 1) need = k; }
+            if (need >= 0 && need <= 1) weak_ok++; else weak_fail++; maxk_needed = std::max(maxk_needed, need); }
+        printf("{\"merged_pairs\": %d, \"bridge_unfilled_hist\": {", pairs); bool f = true;
+        for (auto &kv : hist) { printf("%s\"%d\": %d", f ? "" : ", ", kv.first, kv.second); f = false; }
+        printf("}, \"merging_H_classes_connected_by_1_bridges\": %d, \"not\": %d, \"max_bridge_level_needed\": %d}\n", weak_ok, weak_fail, maxk_needed); }
     return 0;
 }
