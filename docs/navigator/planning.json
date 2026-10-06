@@ -1,7 +1,12 @@
 {
-  "revision": 88,
-  "updatedAt": "2026-10-05T21:25:00-06:00",
+  "revision": 89,
+  "updatedAt": "2026-10-05T21:54:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T03:56:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 89 records a second Lean module (mobility for triangulations) built with standard axioms and not yet audited, so it stays in progress with its sibling; Math's pentagram confinement restated as the existence of a clean off-face degree-5 vertex; a disc-generator no-find for statement (N) at orders 17 to 23 and the partial reduction of (N) to Case II, all unreviewed worker claims; and the announcement of WP21, both phases. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T03:30:00Z",
       "node": "structural-vacancy",
@@ -7549,6 +7554,128 @@
       ],
       "id": "structural-vacancy",
       "revision": 88
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-horizon",
+      "revision": 89,
+      "node": {
+        "id": "structural-mobility-triangulated-lean",
+        "title": "Lean: mobility for triangulations, no extra hypotheses (built, not yet in the audit)",
+        "status": "in-progress",
+        "statement": "SimpleGraph.SphericalMap.vacancy_mobility_triangulated: for a spherical map with every face a triangle, every five-link at a hole h and every proper colouring off h, either a pure fill of length at most 1 exists or every neighbour of h is Approach-reachable. No Pattern, ring or rotation hypothesis. Gaps: Triangulated is stronger than needed, FiveLink is still an input, it is not wired into the VH-exists induction or the audit module list, and no Mathlib.lean import was added.",
+        "approach": "Checked on disk: no sorry in the sources, SHA256SUMS verify, build success (1335 jobs, a build count and not an audit count), axioms propext, Classical.choice, Quot.sound. Math reports it compiled and not in the audit. Held at in-progress by the project bar that compiled means in the audit. It supersedes the ring-adjacency gap of the previous module for triangulations.",
+        "files": [
+          "backgroundMaterial/planemap-structural/mobility-triangulated-lean/SHA256SUMS",
+          "backgroundMaterial/planemap-structural/mobility-triangulated-lean/axioms-and-statement.log",
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2126_math_to_navigator+longtable+audit+coordination_lean-triangulated-and-confinement-equivalence.md"
+        ],
+        "evidence": "Becomes compiled when a module audit includes both this module and VacancyMobilityGeneral.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T03:56:00Z",
+          "text": "Revision 89: the triangulated version (sibling node) removes the ring-adjacency hypothesis for triangulations. Both modules stay in-progress until an audit includes them."
+        }
+      ],
+      "id": "structural-mobility-general-lean",
+      "revision": 89
+    },
+    {
+      "statement": "Neither the trace-game hypothesis nor four-connectivity of a least plain failure is proved or refuted. Worker claims, unreviewed by Math line by line: Theorem A, at a degree-5 vertex a targetless component is closed under two Jordan-curve swaps that move the repeat pair index by 2 or 3, which generate Z5, so one targetless state implies all five pentagram pairs occur there. Corollary B, in the core a vertex has a good fan iff every fan there is good iff no targetless state has its hole there. So pentagram confinement is exactly the statement that some off-face degree-5 vertex is clean, and it fails iff targetless projections cover all such vertices. Open.",
+      "evidence": "[hand] worker claims. [computed] the swap step: 8340 swaps over 4170 doubly locked states of self-built random triangulations, orders 10 to 16, 0 mismatches. That tests the Jordan step only. This kills the idea of a pair invariant under swaps. No status change.",
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathConfinementAttack.md",
+        "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2126_math_to_navigator+longtable+audit+coordination_lean-triangulated-and-confinement-equivalence.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T03:56:00Z",
+          "text": "Revision 89: confinement restated as \"some off-face degree-5 vertex is clean\". Still open and unreviewed."
+        }
+      ],
+      "id": "structural-math-t2-attack",
+      "revision": 89
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-t3-attack",
+      "revision": 89,
+      "node": {
+        "id": "structural-n-disc-search",
+        "title": "Disc-generator search for (N): no counterexample at orders 17 to 23",
+        "status": "exploring",
+        "statement": "A generator that grows the disc T minus x from the ring found no counterexample to (N). Triply locked discs: 2 at order 17, 0 at orders 18 to 22, 14 at order 23. (N) holds on all of them. Orders 12, 14, 16 have none.",
+        "approach": "Exploratory, post hoc, undeclared. Caveats from Math: at order 17 the generator finds 2 locked discs where the source lists 4 states (probably mirror images, not confirmed); no plantri binary was available for cross-checks at order 19 and above; order 24 not run. recheck.py independently certified the order-17 disc and 3 of the 14 at order 23; the rest were tested by test_N.py only. Consistency with the source at orders 12 to 18 is a check, not exhaustiveness.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathNDiscSearch/README.md",
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2143_math_to_navigator+longtable+audit+coordination_N-disc-search-no-find.md"
+        ],
+        "evidence": "A no-find report. It does not support (N) beyond these discs and is not an upgrade.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-math-t3-attack",
+      "revision": 89,
+      "node": {
+        "id": "structural-n-pinch-t3",
+        "title": "(N) reduced to \"at least one neighbour is Case II\" (worker claims)",
+        "status": "exploring",
+        "statement": "Worker claims, unreviewed by Math line by line. (N) holds unless the two neighbour states c-prime and c-double-prime are both in Case I. Case II is an explicit three-swap sequence from the unlocked-fan view. The pinch is proved only under an extra hypothesis (O): the paths P13 and P14 meet their shared vertices in the same order; without it the pinch fails. Type II is reduced to an integer parameter tau equal to minus 1 and is not proved. Case I forces a rigid token pattern, but the counting automaton has a closed locked orbit, so counting and Jordan splits cannot finish it; geometric input is needed. (N) and D1 remain open.",
+        "approach": "Computed checks are order 17 only: in the four rigid states on 17:1 exactly one of the two neighbours is Case II. That observation is four states and proves nothing. The D-free Kempe class of c-prime is the same 10-node graph in all 8 cases. A dual identity for pair components was tested on 43,092 pair instances with 0 failures.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathNPinchT3.md",
+          "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2153_math_to_navigator+longtable+audit+coordination_N-pinch-T3-partial.md"
+        ],
+        "evidence": "Proving that at least one of the two is Case II would prove (N). Not yet proved. No status change.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "status": "unstarted",
+      "statement": "A declared and announced package for a frozen-hash sample of order 26 (phase A, 4,578 of 91,441 graphs) followed by an adversarial edge-flip search (phase B, 12 chains of 400 flips, run after A). Same D1 and P statements as WP20. A pass would say only that no counterexample occurs among the sampled or visited graphs. Nothing has run on declared data; phase A starts when WP20 P1 finishes.",
+      "approach": "Announced 21:43 (commit bbf0edf). Hashes on disk equal the announcement for the declaration (9fd6d7e6cdffd15e26c918499700feebc5967f41734a2850c06b172e0d157dae), the producer, the search driver, the sample selector, the checker d1_check21.py and the selection file. Both phases are announced, not only phase A; phase B is declared to run after A. The declaration replaced the draft hash a8e9cd1c recorded in revision 88. Caps: A 12 CPU-hours, B 24, 30 minutes per graph. Phase A runs the unchanged WP20 producer, which writes the WP20 tag, and the checker accepts that tag for phase A only. No go-ahead was issued, by the user's waiver, and the report will say so. Success needs the report, an audit replay and Math's review.",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/WP21-declaration.md",
+        "backgroundMaterial/planemap-structural/longtable/d1_check21.py",
+        "backgroundMaterial/planemap-structural/longtable/wp21/sample-A-m5-26.txt",
+        "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2143_longtable_to_math+navigator+audit+user_WP21-announcement.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T03:56:00Z",
+          "text": "Revision 89: announced, hashes verified on disk. Kept at unstarted because no run has begun; it becomes in-progress when phase A starts."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 89
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T03:56:00Z",
+          "text": "Revision 89: P1 log read 10500 of 25381 graphs at 6334 s wall when last read; Long Table expects completion about 23:55. Exploratory readings on spent orders 19 to 23 report no D1 or P kill, checked with --all; they are not declared data and change nothing."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 89
     }
   ]
 }
