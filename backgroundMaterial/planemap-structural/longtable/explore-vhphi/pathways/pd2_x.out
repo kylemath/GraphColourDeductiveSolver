@@ -1,0 +1,127 @@
+[A] unfilled states 3682 | lock criterion mismatches 0 | lock2 & x_j in K 0 | lock2(s) & not lock1(Fs) 0
+[B] pools: T4 radius-4 pairs 26 (all DL: True ) | T4 DL states 234 | A_3+A_4 DL states 640
+[B] pool T4 radius-4
+[B] rule X0 (pairings of the 5 ends only; constant on DL states) : keys 1 clashing keys 0 -> survives on this pool
+[B] rule X2 (pairings + radius-1 Tait datum + link degrees) : keys 10 clashing keys 0 -> survives on this pool
+[B] rule X3 (pairings + all colours within distance 2 of v, per graph and hole) : keys 24 clashing keys 0 -> survives on this pool
+[B] rule X1 (F s DL <=> cut of F chain is ONE Kempe cycle) : (predicate, F s DL) counts {(True, True): 26} -> survives on this pool
+[B] pool T4 all DL
+[B] rule X0 (pairings of the 5 ends only; constant on DL states) : keys 1 clashing keys 1 -> KILLED, e.g. key 'const': F DL at ('T4@0', (0, 1, 0, 2, 3, 0, 3, 1, 1, 2, 0, 3, 2, 3, 1, 2)), not DL at ('T4@0', (0, 1, 0, 2, 3, 0, 2, 1, 1, 2, 0, 3, 3, 3, 1, 2))
+[B] rule X2 (pairings + radius-1 Tait datum + link degrees) : keys 72 clashing keys 6 -> KILLED, e.g. key 'CB6CB5CA5CB5AB5': F DL at ('T4@0', (0, 1, 1, 2, 1, 2, 0, 3, 2, 1, 2, 3, 3, 0, 3, 0)), not DL at ('T4@0', (0, 1, 1, 2, 1, 3, 2, 0, 2, 1, 2, 3, 3, 0, 3, 0))
+[B] rule X3 (pairings + all colours within distance 2 of v, per graph and hole) : keys 212 clashing keys 3 -> KILLED, e.g. key ('T4@0', (0, 1, 1, 2, 1, 2, 3, 3, 0, 3, 0)): F DL at ('T4@0', (0, 1, 1, 2, 1, 2, 0, 3, 2, 1, 2, 3, 3, 0, 3, 0)), not DL at ('T4@0', (0, 1, 1, 2, 1, 3, 2, 0, 2, 1, 2, 3, 3, 0, 3, 0))
+[B] rule X1 (F s DL <=> cut of F chain is ONE Kempe cycle) : (predicate, F s DL) counts {(False, False): 36, (True, False): 70, (False, True): 24, (True, True): 104} -> KILLED
+[B] pool A_3+A_4 all DL
+[B] rule X0 (pairings of the 5 ends only; constant on DL states) : keys 1 clashing keys 1 -> KILLED, e.g. key 'const': F DL at ('A_3@0', (0, 1, 0, 2, 3, 0, 3, 1, 1, 2, 0, 3, 2, 3, 1, 2)), not DL at ('A_3@0', (0, 1, 1, 2, 1, 0, 2, 3, 1, 2, 0, 3, 3, 0, 3, 2))
+[B] rule X2 (pairings + radius-1 Tait datum + link degrees) : keys 12 clashing keys 0 -> survives on this pool
+[B] rule X3 (pairings + all colours within distance 2 of v, per graph and hole) : keys 260 clashing keys 0 -> survives on this pool
+[B] rule X1 (F s DL <=> cut of F chain is ONE Kempe cycle) : (predicate, F s DL) counts {(True, False): 300, (True, True): 160, (False, False): 180} -> KILLED
+[C] radius-4 T4 states: every shortest-fill first step (class of the swap in Tait roles b/g/d = beta/gamma/delta of the state,
+    |K|, # Kempe cycles in the cut, P-edges in the cut, gap index (the lone beta edge between the odd edges) before->after)
+[C] step counts keyed (radius before, swap class, #cut cycles, #P-edges in cut):
+      (1, 'd', 1, 2) 848
+      (1, 'd', 2, 2) 32
+      (1, 'g', 1, 2) 656
+      (1, 'g', 2, 2) 64
+      (2, 'b', 1, 0) 64
+      (2, 'b', 1, 2) 64
+      (2, 'b', 2, 0) 32
+      (2, 'b', 2, 2) 32
+      (2, 'd', 1, 0) 52
+      (2, 'd', 1, 2) 192
+      (2, 'd', 1, 4) 52
+      (2, 'd', 2, 2) 32
+      (2, 'g', 1, 0) 44
+      (2, 'g', 1, 2) 144
+      (2, 'g', 1, 4) 44
+      (2, 'g', 2, 2) 48
+      (3, 'd', 1, 0) 6
+      (3, 'd', 1, 2) 102
+      (3, 'd', 1, 4) 6
+      (3, 'd', 2, 2) 6
+      (3, 'g', 1, 0) 10
+      (3, 'g', 1, 2) 74
+      (3, 'g', 1, 4) 10
+      (3, 'g', 2, 2) 26
+      (4, 'b', 1, 0) 8
+      (4, 'b', 1, 2) 8
+      (4, 'd', 1, 2) 44
+      (4, 'g', 1, 2) 44
+[C] distinct shortest-path step patterns (class,#cyc,#P-edges,gap shift or F=fill) over all 26 pairs: 63
+      242 (('d', 1, 2, 2), ('d', 1, 2, 2), ('d', 1, 2, 2), ('d', 1, 2, 'F'))
+      118 (('g', 1, 2, 3), ('g', 1, 2, 3), ('g', 1, 2, 3), ('g', 1, 2, 'F'))
+      56 (('g', 1, 2, 3), ('g', 1, 2, 3), ('b', 1, 2, 0), ('d', 1, 2, 'F'))
+      40 (('b', 1, 2, 0), ('d', 1, 2, 2), ('d', 1, 2, 2), ('d', 1, 2, 'F'))
+      40 (('b', 1, 0, 0), ('d', 1, 2, 2), ('d', 1, 2, 2), ('d', 1, 2, 'F'))
+      40 (('d', 1, 2, 2), ('d', 1, 2, 2), ('b', 1, 2, 0), ('g', 1, 2, 'F'))
+      40 (('d', 1, 2, 2), ('d', 1, 2, 2), ('b', 2, 0, 0), ('g', 1, 2, 'F'))
+      40 (('d', 1, 2, 2), ('d', 1, 2, 2), ('b', 2, 2, 0), ('d', 1, 2, 'F'))
+[D] potentials on DL states (radius >= 2). "every": strictly decreases along EVERY shortest-fill step between DL states;
+    "some": every DL state of radius >= 3 has a shortest-fill successor (DL) with strictly smaller value;
+    "descent": every DL state has SOME swap to a non-DL/filled state or to a DL state with strictly smaller value (no use of radius).
+[D] T4
+     nDL          every: 80/220 violations | some: 18/72 states fail | descent: 18/234 states fail
+     -nDL         every: 156/220 violations | some: 54/72 states fail | descent: 42/234 states fail
+     lenW         every: 156/220 violations | some: 40/72 states fail | descent: 36/234 states fail
+     C3           every: 148/220 violations | some: 40/72 states fail | descent: 40/234 states fail
+     -C3          every: 164/220 violations | some: 46/72 states fail | descent: 34/234 states fail
+     chains       every: 140/220 violations | some: 36/72 states fail | descent: 36/234 states fail
+     -chains      every: 220/220 violations | some: 72/72 states fail | descent: 56/234 states fail
+     max(A1,A2)   every: 160/220 violations | some: 46/72 states fail | descent: 30/234 states fail
+     A1           every: 122/220 violations | some: 30/72 states fail | descent: 22/234 states fail
+     A2           every: 150/220 violations | some: 46/72 states fail | descent: 30/234 states fail
+     A1+A2        every: 120/220 violations | some: 36/72 states fail | descent: 24/234 states fail
+     min(A1,A2)   every: 152/220 violations | some: 48/72 states fail | descent: 40/234 states fail
+     B1+B2        every: 140/220 violations | some: 36/72 states fail | descent: 20/234 states fail
+     A1+A2+B1+B2  every: 220/220 violations | some: 72/72 states fail | descent: 56/234 states fail
+     len          every: 104/220 violations | some: 28/72 states fail | descent: 24/234 states fail
+     shared       every: 144/220 violations | some: 44/72 states fail | descent: 40/234 states fail
+     k            every: 164/220 violations | some: 48/72 states fail | descent: 32/234 states fail
+     |K|          every: 144/220 violations | some: 38/72 states fail | descent: 26/234 states fail
+     -(A1+A2)     every: 140/220 violations | some: 36/72 states fail | descent: 20/234 states fail
+     -len         every: 156/220 violations | some: 40/72 states fail | descent: 24/234 states fail
+[D] A_3
+     nDL          every: 0/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     -nDL         every: 120/120 violations | some: 20/20 states fail | descent: 20/200 states fail
+     lenW         every: 120/120 violations | some: 20/20 states fail | descent: 20/200 states fail
+     C3           every: 120/120 violations | some: 20/20 states fail | descent: 20/200 states fail
+     -C3          every: 40/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     chains       every: 120/120 violations | some: 20/20 states fail | descent: 20/200 states fail
+     -chains      every: 120/120 violations | some: 20/20 states fail | descent: 20/200 states fail
+     max(A1,A2)   every: 80/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     A1           every: 60/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     A2           every: 60/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     A1+A2        every: 40/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     min(A1,A2)   every: 40/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     B1+B2        every: 80/120 violations | some: 10/20 states fail | descent: 10/200 states fail
+     A1+A2+B1+B2  every: 120/120 violations | some: 20/20 states fail | descent: 20/200 states fail
+     len          every: 40/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     shared       every: 40/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     k            every: 40/120 violations | some: 0/20 states fail | descent: 0/200 states fail
+     |K|          every: 100/120 violations | some: 10/20 states fail | descent: 10/200 states fail
+     -(A1+A2)     every: 80/120 violations | some: 10/20 states fail | descent: 10/200 states fail
+     -len         every: 80/120 violations | some: 10/20 states fail | descent: 10/200 states fail
+[D] A_4
+     nDL          every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     -nDL         every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     lenW         every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     C3           every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     -C3          every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     chains       every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     -chains      every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     max(A1,A2)   every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     A1           every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     A2           every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     A1+A2        every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     min(A1,A2)   every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     B1+B2        every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     A1+A2+B1+B2  every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     len          every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     shared       every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     k            every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     |K|          every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     -(A1+A2)     every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+     -len         every: 0/0 violations | some: 0/0 states fail | descent: 0/440 states fail
+[D] T4: radius -> histogram of (A1,A2) on DL states: {2: {(1, 1): 10, (1, 2): 17, (1, 3): 4, (1, 4): 3, (2, 1): 15, (2, 2): 8, (2, 3): 5, (2, 4): 20, (2, 5): 8, (3, 1): 8, (3, 2): 3, (3, 4): 6, (3, 6): 3, (4, 1): 5, (4, 2): 12, (4, 3): 2, (4, 5): 5, (5, 3): 4, (5, 4): 3, (5, 6): 4, (6, 3): 5, (6, 8): 4, (8, 6): 4, (8, 8): 4}, 3: {(2, 2): 8, (2, 4): 6, (4, 2): 14, (4, 4): 6, (4, 6): 3, (4, 8): 3, (6, 4): 1, (6, 6): 4, (8, 4): 1}, 4: {(2, 4): 8, (4, 2): 8, (4, 4): 6, (6, 4): 4}}
+[D] A_3: radius -> histogram of (A1,A2) on DL states: {2: {(1, 1): 40, (1, 2): 10, (1, 4): 10, (2, 1): 10, (2, 4): 40, (4, 1): 10, (4, 2): 40, (4, 4): 10, (6, 6): 10}, 3: {(2, 2): 10, (4, 4): 10}}
+[D] A_4: radius -> histogram of (A1,A2) on DL states: {2: {(1, 1): 240, (1, 3): 20, (1, 5): 20, (2, 2): 60, (2, 3): 10, (2, 5): 10, (3, 1): 20, (3, 2): 10, (5, 1): 20, (5, 2): 10, (5, 7): 10, (7, 5): 10}}
+cpu 10.5 s
