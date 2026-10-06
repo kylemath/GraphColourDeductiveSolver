@@ -292,7 +292,7 @@ if (integrationPath) {
     ['structural-pathway-e','structural-pathway-sprint','exploring'],
     ['dissemination','4ct','in-progress'],
     ['dissemination-vhe-paper','dissemination','in-progress'],
-    ['dissemination-mathlib-planemap','dissemination','in-progress'],
+    ['dissemination-mathlib-planemap','dissemination','blocked'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
     ['structural-deg6-split','structural-vhe-obstruction','proved'],

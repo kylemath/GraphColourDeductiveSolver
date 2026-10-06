@@ -1,7 +1,12 @@
 {
-  "revision": 116,
-  "updatedAt": "2026-10-06T12:26:00-06:00",
+  "revision": 117,
+  "updatedAt": "2026-10-06T12:30:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T18:34:00Z",
+      "node": "dissemination",
+      "action": "Revision 117 records the user's 12:28 decisions: the full-disclosure text approved for now and to be reread before posting; the copyright header chosen by the coordinator (Kyle Mathewson, Apache 2.0); Mathlib preparation on hold (node marked blocked, meaning paused by decision); the main effort is a Four Colour proof through the pathways. Math's hash-list split (27 audited, 2 unaudited edited files) is noted. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T18:30:00Z",
       "node": "dissemination",
@@ -9877,6 +9882,55 @@
       ],
       "id": "structural-wp20",
       "revision": 116
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1232_user_to_math+longtable+audit+navigator_disclosure-copyright-hold-mathlib-focus-proof.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T18:34:00Z",
+          "text": "Revision 117, user decision 12:28 machine clock (file named 12:32, commit 53bd8ec; quoted \"Go ahead with transparent disclosure for now, will read before mathlib post, add the copyright line as you see approporaite, lets hold off on mathlib for now then, and keep pushing for a four colour solution\"). (1) The paper's full-disclosure text, as revised for the audit's findings, is approved for now; the user will reread it before anything is posted, and the audit's remaining checks on it still apply. (2) Copyright header, chosen by the coordinator as delegated: \"Copyright (c) 2026 Kyle Mathewson. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Kyle Mathewson\"; Math applies it by explicit path to files lacking it, records the new hashes, and lists files with another holder's line without changing them. (3) Mathlib is on hold. (4) The main effort is a Four Colour proof through the pathways; the paper continues at low priority (Long Table), Math's share being the Lean section only."
+        }
+      ],
+      "id": "dissemination",
+      "revision": 117
+    },
+    {
+      "status": "blocked",
+      "title": "PlaneMap made ready for Mathlib, with a Five Colour demonstration (on hold by the user)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1232_user_to_math+longtable+audit+navigator_disclosure-copyright-hold-mathlib-focus-proof.md",
+        "backgroundMaterial/planemap-structural/audit-101/README-authors-header-edit.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T18:34:00Z",
+          "text": "Revision 117: ON HOLD by the user's 12:28 decision. No pull-request preparation beyond applying the chosen copyright header. The PR plan, the demo and PR-DISCLOSURE.md stay as they are. The Mac Studio's independent build of the published snapshot (branch current, 907e2eb) still runs after T2: it checks the Lean results the paper cites, not a submission. Status word blocked here means paused by decision, not failed. Math's 19f2b17 splits the authors-header hash list: 27 of the 29 edited files are in the 105-module audit and 2 are not (listed in SHA256SUMS-authors-header-edit-unaudited.txt), with a README; the audit's own record is unchanged, and a fresh audit would bind to the new hashes."
+        }
+      ],
+      "id": "dissemination-mathlib-planemap",
+      "revision": 117
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:34:00Z",
+          "text": "Revision 117: disclosure text approved for now by the user, to be reread before posting; the paper continues at low priority. The navigator's claim check and the audit's checks remain gates before any request to post."
+        }
+      ],
+      "id": "dissemination-vhe-paper",
+      "revision": 117
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:34:00Z",
+          "text": "Revision 117: the user's 12:28 decision makes a Four Colour proof through these pathways the main effort of Math and Long Table. The Studio is available for kill tests that a pathway asks for, after T2 and the snapshot build."
+        }
+      ],
+      "id": "structural-pathway-sprint",
+      "revision": 117
     }
   ]
 }
