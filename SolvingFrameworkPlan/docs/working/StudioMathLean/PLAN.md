@@ -13,6 +13,16 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Open decision for the coordinator
 The hole-fill statements need the plane-map carrier (rotation, outer ring w_t) rather than a bare `SimpleGraph`. I will ask the Math team (Lean owner) how `Vacancy*` states it before writing Piece 3.
 
+## Update 1429 MDT: relative-class Euler lemma (audit S1)
+
+- `StudioMath.good_card_add_two_four`: the counting core with degree-4 vertices allowed, each costing two. It shows 12 ≤ good + 2·n₄. `good_card_ge_twelve` is now its corollary.
+- `StudioMath.good_off_add_four`: let φ have at most 3 vertices, every vertex off φ degree ≥ 5, and every vertex on φ degree ≥ 4 (if 4, then it is on φ). Then 2E + 12 ≤ 6V implies **9 ≤ #(good off φ) + n₄**, where n₄ = #(degree-4 vertices on φ).
+- `SphericalMap.relative_light_fives`: the same for spherical triangulations.
+  - This is the audit's 13:25 repair: at least 9 − n₄ good vertices off φ, so ≥ 7 when n₄ ≤ 2.
+  - It needs neither n₄ ≤ 2 nor 4-connectivity. φ is any vertex set of size ≤ 3; in the application it is the protected face.
+- Non-vacuity: `Icosahedron.relative_light_fives_icosahedron`, with φ = {0,1,5} and n₄ = 0. **No instance with n₄ > 0 has been built.**
+- `#print axioms`: propext, Classical.choice, Quot.sound only.
+
 ## Update 1427 MDT: the IcoBall derivation and non-vacuity (answers audit S3; derivation done)
 
 - **Dedupe.** `EulerCounting.lean` is removed. Its content lives only in `PlaneMap/EulerSharp.lean`, so each declaration exists exactly once.
