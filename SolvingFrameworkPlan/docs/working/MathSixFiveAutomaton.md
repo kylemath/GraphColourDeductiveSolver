@@ -57,3 +57,19 @@ Degrees: 15 of degree 5, 11 of 6, one 7, one 8; 78 edges; every vertex link is a
 
 [hand]: outside structures are per-split non-crossing partitions; no pairwise cross-split constraint; the lock curves constrain only their own split; the W_k decomposition. [computed]: trap (5,650 nodes / 370 colourings / all 74 patterns); soundness and trap membership of the real states at orders 22 and 23; J <= 2 gives value 7; radius 4 at order 28; gadgdababd realised; erratum on the dichotomy. [open]: Jordan exclusion of the four unseen patterns; any bound R at (6^5) holes; existence of a targetless (6^5) state.
 **Needed for a bound:** information that survives a swap. Candidates: (i) per ring vertex, which colours occur among its outside neighbours (an in-ball swap then leaves everything fixed); this is useless without degree bounds on the ring, since a high-degree ring vertex can see all colours. (ii) Joint realisability of the three splits by one outside colouring, which is not characterised here. Without such persistence, the per-split planar information provably (item 1) cannot bound the radius.
+
+## Addendum (6 Oct, Math lead, hand only): the unseen list after the 66666 page's observation
+
+**The observation (coordinator relay; unreviewed).** The demo page `docs/66666/` recomputed the order-28 (6⁵) hole independently. One radius-2 state (index 992 in `docs/66666/build_data.py`) has ring pattern gadbdabagd, which is on the unseen list above.
+
+**Mirror map [hand].** The frame fixes x₁ as the middle singleton, the repeated colour a at x₀ and x₂, b at x₁, g at x₃ and d at x₄. The only reflection that preserves these roles fixes x₁ and swaps x₀↔x₂ and x₃↔x₄. On the ring w₀ m₁ w₁ m₂ w₂ m₃ w₃ m₄ w₄ m₀ it maps
+w₀↔w₁, m₁↦m₁, m₂↔m₀, w₂↔w₄, m₃↔m₄, w₃↦w₃,
+and it swaps the colour roles g↔d. Applying it:
+- mirror(gadbdabagd) = gadgdabagb. These two unseen patterns are each other's mirror image.
+- gadbdabagb and gadgdabagd are self-mirror.
+
+The mirror of a triangulation is a triangulation, and a state's pattern in this frame then becomes its mirror image. So the set of realised patterns is closed under the mirror map.
+
+**Consequence (conditional on the 66666 page reading the ring in this same oriented frame).** The state at index 992 realises gadbdabagd. Its mirror (the reflected order-28 graph) realises gadgdabagb. The **unseen list shrinks from four to two**: gadbdabagb and gadgdabagd, both self-mirror. If instead the 66666 page reads the ring with the opposite orientation, it realises gadgdabagb directly, and the conclusion is the same: both of that mirror pair are realised.
+
+**Caveat.** §3 above warns that pattern strings from inconsistently oriented face lists are unreliable. The mirror argument makes the conclusion independent of orientation for this pair, but it still assumes the page uses the same role assignment (a, b, g, d tied to x₀..x₄ as above) and the same ring start w₀. **Not re-computed (no computation on the MacBook).**
