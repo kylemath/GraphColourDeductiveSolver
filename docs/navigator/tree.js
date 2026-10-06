@@ -2,8 +2,14 @@
 
 const Tree = (() => {
   let selectedId = null;
+  let hoveredId = null;
   let onSelectCallback = null;
   let onChangeCallback = null;
+  const WORKING = new Set([
+    'structural-vacancy',
+    'structural-vhe-obstruction',
+    'structural-vhe-potential'
+  ]);
 
   function setCallbacks(onSelect, onChange) {
     onSelectCallback = onSelect;
@@ -17,17 +23,58 @@ const Tree = (() => {
     renderNode(container, node, depth);
   }
 
+  const COAT = [
+    ['proved', 'var(--green)'],
+    ['compiled', 'var(--green)'],
+    ['computed', 'var(--cyan)'],
+    ['inProgress', 'var(--accent)'],
+    ['exploring', 'var(--purple)'],
+    ['blocked', 'var(--orange)'],
+    ['unstarted', 'var(--text-2)'],
+    ['killed', 'var(--red)']
+  ];
+
+  function statusColor(status) {
+    if (status === 'in-progress') return 'var(--accent)';
+    const row = COAT.find(([key]) => key === status);
+    return row ? row[1] : 'var(--text-2)';
+  }
+
+  function coatOf(node, direction) {
+    if (node.active === false) return 'var(--text-2)';
+    const activeChildren = (node.children || []).filter(child => child.active !== false);
+    if (!activeChildren.length) return statusColor(node.status);
+    const stats = getStats(node);
+    if (!stats.leaves) return statusColor(node.status);
+    let covered = 0;
+    const stops = [];
+    for (const [key, color] of COAT) {
+      const count = stats[key] || 0;
+      if (!count) continue;
+      const start = covered / stats.leaves * 100;
+      covered += count;
+      const end = covered / stats.leaves * 100;
+      stops.push(color + ' ' + start + '% ' + end + '%');
+    }
+    return 'linear-gradient(to ' + direction + ', ' + stops.join(', ') + ')';
+  }
+
   function renderNode(parent, node, depth) {
     const div = document.createElement('div');
-    div.className = 'tree-node';
+    div.className = 'tree-node' + (depth === 0 ? ' is-root' : '') + (node.active === false ? ' inactive' : '');
     div.dataset.id = node.id;
+    div.style.setProperty('--arm', coatOf(node, 'right'));
+    div.style.setProperty('--coat', coatOf(node, 'bottom'));
 
     const hasChildren = node.children && node.children.length > 0;
     const isExpanded = node.expanded !== false;
 
     // Node row
     const row = document.createElement('div');
-    row.className = 'node-row' + (node.id === selectedId ? ' selected' : '');
+    row.className = 'node-row'
+      + (node.id === selectedId ? ' selected' : '')
+      + (node.id === hoveredId ? ' hovered' : '')
+      + (WORKING.has(node.id) ? ' working' : '');
 
     // Toggle arrow
     const toggle = document.createElement('span');
@@ -48,7 +95,7 @@ const Tree = (() => {
     const title = document.createElement('span');
     title.className = 'node-title';
     if (node.status === 'killed') title.classList.add('killed-text');
-    if (node.status === 'proved') title.classList.add('proved-text');
+    if (node.status === 'proved' || node.status === 'compiled') title.classList.add('proved-text');
     title.textContent = node.title;
 
     // Child count badge
@@ -74,6 +121,15 @@ const Tree = (() => {
       selectedId = node.id;
       if (onSelectCallback) onSelectCallback(node);
       refreshSelection();
+    });
+    row.addEventListener('mouseenter', () => {
+      setHovered(node.id);
+      if (window.TreeView) window.TreeView.highlight(node.id, false);
+    });
+    row.addEventListener('mouseleave', () => {
+      if (hoveredId !== node.id) return;
+      setHovered(null);
+      if (window.TreeView) window.TreeView.highlight(null, false);
     });
 
     div.appendChild(row);
@@ -195,7 +251,7 @@ const Tree = (() => {
 
   /* ---- Global stats ---- */
   function getStats(node) {
-    const result = { leaves: 0, proved: 0, killed: 0, inProgress: 0, exploring: 0, computed: 0, total: 0 };
+    const result = { leaves: 0, proved: 0, compiled: 0, killed: 0, inProgress: 0, exploring: 0, computed: 0, blocked: 0, unstarted: 0, total: 0 };
     function visit(current) {
       if (current.active === false) return;
       result.total++;
@@ -203,7 +259,7 @@ const Tree = (() => {
       if (!children.length) {
         result.leaves++;
         const key = current.status === 'in-progress' ? 'inProgress' : current.status;
-        if (['proved', 'killed', 'inProgress', 'exploring', 'computed'].includes(key)) result[key]++;
+        if (Object.prototype.hasOwnProperty.call(result, key)) result[key]++;
       } else {
         children.forEach(visit);
       }
@@ -214,11 +270,39 @@ const Tree = (() => {
 
   function getSelectedId() { return selectedId; }
   function setSelectedId(id) { selectedId = id; }
+  function isWorking(id) { return WORKING.has(id); }
+
+  function setHovered(id) {
+    hoveredId = id || null;
+    document.querySelectorAll('.node-row.hovered').forEach(el => el.classList.remove('hovered'));
+    if (!hoveredId) return null;
+    const row = document.querySelector('.tree-node[data-id="' + hoveredId + '"] > .node-row');
+    if (row) row.classList.add('hovered');
+    return row;
+  }
+
+  function reveal(id) {
+    const root = State.getTree();
+    if (!root || !findNode(root, id)) return;
+    let parent = findParent(root, id);
+    let opened = false;
+    while (parent) {
+      if (parent.expanded === false) {
+        parent.expanded = true;
+        opened = true;
+      }
+      parent = findParent(root, parent.id);
+    }
+    if (opened) refreshTree();
+    const row = setHovered(id);
+    if (row) row.scrollIntoView({ block: 'nearest' });
+  }
 
   return {
     render, refreshTree, refreshSelection,
     setCallbacks, findNode, findParent, deleteNode, addChild,
     expandAll, collapseAll, getStats,
-    getSelectedId, setSelectedId, countByStatus, countLeaves
+    getSelectedId, setSelectedId, countByStatus, countLeaves,
+    isWorking, setHovered, reveal
   };
 })();

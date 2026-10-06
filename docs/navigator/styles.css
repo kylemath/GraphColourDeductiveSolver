@@ -82,7 +82,8 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 260px;
+  width: min(560px, 46vw);
+  min-width: 280px;
 }
 
 .progress-bar {
@@ -99,6 +100,16 @@ html, body {
   border-radius: 3px;
   transition: width var(--transition);
   width: 0%;
+}
+
+.progress-bar.stacked {
+  display: flex;
+  height: 8px;
+}
+
+.progress-seg {
+  height: 100%;
+  min-width: 0;
 }
 
 .progress-text {
@@ -153,10 +164,57 @@ html, body {
 }
 
 #detail-panel {
-  width: 420px;
+  width: 480px;
   min-width: 320px;
   background: var(--bg-1);
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px;
+}
+
+#detail-content {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.tree3d-empty {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.tree3d-caption {
+  text-align: left;
+  color: var(--text-1);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.tree3d-caption strong {
+  display: block;
+  color: var(--text-0);
+  margin-bottom: 4px;
+}
+
+#tree3d-host {
+  flex: 1;
+  min-height: 240px;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-0);
+}
+
+#tree3d-host canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .panel-header {
@@ -203,19 +261,58 @@ html, body {
 .dot-in-progress { background: var(--accent); }
 .dot-blocked { background: var(--orange); }
 .dot-proved { background: var(--green); }
+.dot-compiled { background: var(--green); }
 .dot-computed { background: var(--cyan); }
 .dot-killed { background: var(--red); }
+.dot-working { background: transparent; box-shadow: 0 0 0 2px var(--purple); }
 
 /* ===== TREE NODES ===== */
 .tree-scroll { padding-bottom: 100px; }
 
 .tree-node {
+  position: relative;
   margin-left: 0;
   margin-bottom: 2px;
 }
 
-.tree-node .tree-node {
-  margin-left: 20px;
+.node-children {
+  position: relative;
+  margin-left: 12px;
+  padding-left: 18px;
+}
+
+.tree-node:not(.is-root)::before,
+.tree-node:not(.is-root)::after {
+  content: '';
+  position: absolute;
+  background: var(--coat);
+}
+
+.tree-node:not(.is-root)::before {
+  left: -18px;
+  top: 14px;
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--arm);
+}
+
+.tree-node:not(.is-root)::after {
+  left: -18px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 2px;
+}
+
+.tree-node:not(.is-root):last-child::after {
+  bottom: auto;
+  height: 16px;
+}
+
+.tree-node.inactive::before,
+.tree-node.inactive::after {
+  opacity: 0.35;
 }
 
 .node-row {
@@ -231,6 +328,9 @@ html, body {
 
 .node-row:hover { background: var(--bg-2); }
 .node-row.selected { background: var(--accent-dim); border: 1px solid var(--accent); }
+.node-row.working { background: var(--purple-dim); }
+.node-row.working .node-status { box-shadow: 0 0 0 2px var(--purple), 0 0 8px var(--purple); }
+.node-row.hovered { outline: 1px solid var(--accent); background: var(--accent-dim); }
 
 .node-toggle {
   width: 16px;
@@ -260,6 +360,7 @@ html, body {
 .node-status.in-progress { background: var(--accent-dim); border-color: var(--accent); }
 .node-status.blocked { background: var(--orange-dim); border-color: var(--orange); }
 .node-status.proved { background: var(--green-dim); border-color: var(--green); }
+.node-status.compiled { background: var(--green-dim); border-color: var(--green); }
 .node-status.computed { background: var(--cyan-dim); border-color: var(--cyan); }
 .node-status.killed { background: var(--red-dim); border-color: var(--red); }
 
@@ -284,7 +385,6 @@ html, body {
   flex-shrink: 0;
 }
 
-.node-children { overflow: hidden; }
 .node-children.collapsed { display: none; }
 
 /* ===== DETAIL PANEL ===== */

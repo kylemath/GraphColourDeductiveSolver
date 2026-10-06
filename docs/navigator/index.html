@@ -17,10 +17,8 @@
     </div>
     <div class="header-center">
       <div class="global-progress">
-        <div class="progress-bar">
-          <div class="progress-fill" id="global-progress-fill"></div>
-        </div>
-        <span class="progress-text" id="global-progress-text">0 / 0 proved</span>
+        <div class="progress-bar stacked" id="global-progress-bar"></div>
+        <span class="progress-text" id="global-progress-text">0 end branches</span>
       </div>
     </div>
     <div class="header-right">
@@ -47,8 +45,10 @@
           <span class="legend-item"><span class="dot dot-in-progress"></span>In Progress</span>
           <span class="legend-item"><span class="dot dot-blocked"></span>Blocked</span>
           <span class="legend-item"><span class="dot dot-proved"></span>Proved</span>
+          <span class="legend-item"><span class="dot dot-compiled"></span>Compiled</span>
           <span class="legend-item"><span class="dot dot-computed"></span>Computed</span>
           <span class="legend-item"><span class="dot dot-killed"></span>Killed</span>
+          <span class="legend-item"><span class="dot dot-working"></span>Working</span>
         </div>
       </div>
       <div id="tree-container" class="tree-scroll">
@@ -59,9 +59,12 @@
     <!-- ===== RIGHT: DETAIL PANEL ===== -->
     <section id="detail-panel" class="panel">
       <!-- Empty state -->
-      <div id="detail-empty" class="detail-empty">
-        <div class="empty-icon">&#9670;</div>
-        <p>Select a node to view details</p>
+      <div id="detail-empty" class="detail-empty tree3d-empty">
+        <div class="tree3d-caption">
+          <strong>Working now</strong>
+          <p>The open theorem is still the vacancy hypothesis. WP11 validation is an accepted finite replay. Two mixed moves reduce to Kempe swaps by a hand theorem that is not compiled. The belt argument is an accepted hand proof and still cites Florek. Three fill-length conjectures are killed on two order-24 graphs. Links inside a branch are one length. A green tip is a proved ending. Purple marks the work in progress, on both trees. Hover a node on either side. Drag to turn the tree. Click a branch for its record.</p>
+        </div>
+        <div id="tree3d-host"></div>
       </div>
 
       <!-- Populated state -->
@@ -70,12 +73,14 @@
         <div class="detail-header">
           <div class="detail-title-row">
             <h2 id="detail-title" contenteditable="true"></h2>
+            <button type="button" id="btn-show-tree" class="action-btn">3D tree</button>
             <select id="detail-status" class="status-select">
               <option value="unstarted">Unstarted</option>
               <option value="exploring">Exploring</option>
               <option value="in-progress">In Progress</option>
               <option value="blocked">Blocked</option>
               <option value="proved">Proved</option>
+              <option value="compiled">Compiled</option>
               <option value="computed">Computed</option>
               <option value="killed">Killed</option>
             </select>
@@ -181,8 +186,17 @@
     </div>
   </div>
 
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
   <script src="data.js"></script>
   <script src="tree.js"></script>
   <script src="app.js"></script>
+  <script type="module" src="tree3d.js"></script>
 </body>
 </html>

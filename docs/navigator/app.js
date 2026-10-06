@@ -195,6 +195,7 @@ const Detail = (() => {
     currentNode = null;
     document.getElementById('detail-empty').hidden = false;
     document.getElementById('detail-content').hidden = true;
+    if (window.TreeView) window.TreeView.resize();
   }
 
   function getCurrent() { return currentNode; }
@@ -253,6 +254,7 @@ const Detail = (() => {
 
   return { show, hide, getCurrent, renderFiles, renderNotes, renderProgress, scheduleAutoSave, escapeHtml };
 })();
+window.NavigatorDetail = Detail;
 
 
 /* ===== JOURNAL ===== */
@@ -274,12 +276,33 @@ function renderJournal() {
 
 /* ===== GLOBAL PROGRESS ===== */
 function updateGlobalProgress() {
-  const tree = State.getTree();
-  const stats = Tree.getStats(tree);
-  const pct = stats.leaves > 0 ? Math.round((stats.proved / stats.leaves) * 100) : 0;
-  document.getElementById('global-progress-fill').style.width = pct + '%';
-  document.getElementById('global-progress-text').textContent =
-    stats.proved + ' / ' + stats.leaves + ' proved  (' + stats.total + ' nodes)';
+  const stats = Tree.getStats(State.getTree());
+  const bar = document.getElementById('global-progress-bar');
+  const segments = [
+    ['proved', 'Proved', 'var(--green)'],
+    ['computed', 'Computed', 'var(--cyan)'],
+    ['inProgress', 'In progress', 'var(--accent)'],
+    ['exploring', 'Exploring', 'var(--purple)'],
+    ['blocked', 'Blocked', 'var(--orange)'],
+    ['unstarted', 'Unstarted', 'var(--text-2)'],
+    ['killed', 'Killed', 'var(--red)']
+  ];
+  const leaves = stats.leaves;
+  bar.replaceChildren();
+  const labels = [];
+  for (const [key, label, color] of segments) {
+    const count = stats[key] || 0;
+    if (!count || !leaves) continue;
+    const seg = document.createElement('div');
+    seg.className = 'progress-seg';
+    seg.style.width = (count / leaves * 100) + '%';
+    seg.style.background = color;
+    seg.title = label + ': ' + count;
+    bar.appendChild(seg);
+    labels.push(count + ' ' + label.toLowerCase());
+  }
+  bar.title = labels.join(' · ');
+  document.getElementById('global-progress-text').textContent = leaves + ' end branches';
 }
 
 
@@ -321,6 +344,8 @@ function generateId() {
 
 /* ===== INITIALIZATION ===== */
 document.addEventListener('DOMContentLoaded', () => {
+  window.State = State;
+  window.Tree = Tree;
   State.init();
 
   Tree.setCallbacks(
@@ -333,6 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Tree.render(document.getElementById('tree-container'), tree, 0);
     updateGlobalProgress();
     renderJournal();
+    if (window.TreeView) window.TreeView.refresh();
   }
 
   renderAll();
@@ -520,6 +546,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Header buttons
+  document.getElementById('btn-show-tree').addEventListener('click', () => Detail.hide());
+
   document.getElementById('btn-expand-all').addEventListener('click', () => {
     Tree.expandAll(State.getTree());
     State.save();

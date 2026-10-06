@@ -163,7 +163,7 @@ Never write "proved" for computation. Never generalise a finite pass.
 | Math | The mobility/short-fill boundary reduction in Lean, then the higher-degree frontier or the global branching trap. |
 | Long Table | Line 1: the core. (i) Hand-analyse one doubly-locked state on 17:1 (vertex 5) as the smallest object a proof of D1 must handle; (ii) test D1 on `-c4m4` order 15 and rare 4-connected shapes; (iii) read Inoue et al. for a VH analogue of their flat-region argument. Pending review: §2b of the trace page. See `docs/working/creative-intel-2026-10-05/core-brainstorm.md`, `literature-check.md`, `tilley-separability.md`. |
 | Audit | Adversarial review of U∃, the diagonal reduction and the mechanism lemmas; independent replay of any new phase |
-| Navigator | Record the actual decisions. No upgrade from finite checks. |
+| Navigator | Ledger at revision 85 (WP20 P1 in progress, no results). Record the WP20 report and Math's re-review of trace §2b when they arrive. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |
 
 ## 8. Restart checklist
