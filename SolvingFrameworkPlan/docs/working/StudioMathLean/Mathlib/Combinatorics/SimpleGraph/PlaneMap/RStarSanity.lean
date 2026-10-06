@@ -163,7 +163,8 @@ theorem occ_DiamondP : DiamondP.Occ sphericalMap ![5, 11, 10, 9, 2, 6] ![0, 7, 8
   r3_3 := nx_ico (by decide) rfl
   r3_4 := nx_ico (by decide) rfl
 
-/-- **The icosahedron is not diamond-free**, so it lies outside the class of `RStarFrame`. -/
+/-- **The icosahedron is not `DiamondFree`** (it has a diamond `Occ`), so it lies outside the class
+of `RStarFrame`. -/
 theorem not_diamondFree : ¬ DiamondFree sphericalMap := fun h => h.1 ⟨_, _, occ_DiamondM⟩
 
 /-- RSST 2.122 does not occur in the icosahedron: it needs a vertex of degree six. -/

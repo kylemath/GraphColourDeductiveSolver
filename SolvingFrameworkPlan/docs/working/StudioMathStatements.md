@@ -124,6 +124,19 @@ through `four_color_of_smaller_gate`, with four cases:
 - `occ_DiamondM`, `occ_DiamondP`: both diamond orientations occur, with explicit labellings, so `Occ` is not vacuous. Hence `not_diamondFree`: the icosahedron is outside the class of `RStarFrame` and is handled by F3.
 - `conf2122Free`: 2.122 does not occur. It needs an interior vertex of degree 6.
 
+**RSST 2.122 witness** (`Conf2122Witness`, namespace `SimpleGraph.Witness2122`, added 6 Oct
+evening for the audit's F3). The map is `gentri/tri22.txt#417`, the order-22 F-cycle graph of
+Studio intel, entered from the face list in `studiointel/fcycle/fcycle_order22.json` and built
+as the library icosahedron is (kernel-checked tables and a linear filling certificate).
+- `mem_class`: it is in the class of `RStarNoSepTri` (22 vertices, connected, triangulated,
+  minimum degree 5, `NoSep`).
+- `occ_C2122M`, `occ_C2122P`: 2.122 occurs in both orientations, with explicit labellings
+  (ring `![2, 10, 13, 21, 14, 5, 1]`, interior `![3, 12, 4, 0]`; and the mirror labelling).
+- `not_conf2122Free`: so `Conf2122Free` is not vacuous; it excludes a map of the class.
+- The same map also has diamond `Occ`s (10 labellings per orientation by the generator's search,
+  not compiled), so it does not separate the two exclusions.
+- Generator: `StudioMathReview-scripts/gen_witness2122.py`.
+
 These are checks of the **definitions**: the class is non-empty, `PureClean` is satisfiable,
 and `Occ` is satisfiable. They are **not evidence for R\***. Per the audit (15:51, §4), a hole
 whose deletion has a single Kempe class is pure-clean automatically.
@@ -978,3 +991,31 @@ def c5 : Fin 28 → Fin 4 := ![0, 3, 1, 3, 1, 2, 2, 2, 0, 2, 3, 0, 1, 0, 2, 3, 3
 - **theorem** `proper : ProperOff G 22 c0`
 - **theorem** `unfilled : ¬ Target G 22 c0`
 - **theorem** `pureFill : PureFill G 22 c0 5`
+
+### `Conf2122Witness`
+
+Tables (`endpoints`, `adjT`, `nextTable`, `prevTable`, `labelTable`, `edgeTable`, `repTable`,
+`potentialCoeffs`, `incidenceCoeffs`, `incT`, `degT`) are data, not listed. Theorems:
+
+- **theorem** `next_adj : ∀ u v, graph.Adj u v → graph.Adj u (nextTable u v)`
+- **theorem** `prev_adj : ∀ u v, graph.Adj u v → graph.Adj u (prevTable u v)`
+- **theorem** `label_next (d : graph.Dart) : labelTable (rotation.faceNext d).fst (rotation.faceNext d).snd = labelTable d.fst d.snd`
+- **theorem** `indexedEdge_dart (d : graph.Dart) : indexedEdge (edgeTable d.fst d.snd) = RotationSystem.edgeOfDart d`
+- **theorem** `indexedEdge_injective : Function.Injective indexedEdge`
+- **theorem** `indexedEdge_surjective : Function.Surjective indexedEdge`
+- **theorem** `representative_faceOf (d : graph.Dart) : faceRepresentative (labelTable d.fst d.snd) = rotation.faceOf d`
+- **theorem** `incidence_coordinates (φ : graph.edgeSet → ZMod 2) (v : Fin 22) : edgeIncidence graph φ v = ∑ e : Fin 60, incidenceEntry e v * φ (indexedEdge e)`
+- **theorem** `incidenceEntry_eq : ∀ e v, incidenceEntry e v = incT e v`
+- **theorem** `coefficient_certificate : ∀ u v, graph.Adj u v → ∀ e : Fin 60, (if edgeTable u v = e then (1 : ZMod 2) else 0) + ∑ x : Fin 22, incidenceCoeffs (edgeTable u v) x * incidenceEntry e x = potentialCoeffs (labelTable u v) e + potentialCoeffs (labelTable v u) e`
+- **theorem** `fills : rotation.Fills`
+- **theorem** `face_length_three (f : rotation.Face) : rotation.faceLength f = 3`
+- **theorem** `degree_eq (v : Fin 22) : graph.degree v = degT v`
+- **theorem** `sphericalMap_degree (v : Fin 22) : sphericalMap.graph.degree v = degT v`
+- **theorem** `sphericalMap_triangulated : sphericalMap.Triangulated`
+- **theorem** `nx {u v w : Fin 22} (h : graph.Adj u v) (e : nextTable u v = w) : sphericalMap.Nx u v w`
+- **theorem** `connected : sphericalMap.graph.Connected`
+- **theorem** `noSep : NoSep sphericalMap`
+- **theorem** `mem_class : 0 < 22 ∧ sphericalMap.graph.Connected ∧ sphericalMap.Triangulated ∧ (∀ x, 5 ≤ sphericalMap.graph.degree x) ∧ NoSep sphericalMap`
+- **theorem** `occ_C2122M : C2122M.Occ sphericalMap ![2, 10, 13, 21, 14, 5, 1] ![3, 12, 4, 0]`
+- **theorem** `occ_C2122P : C2122P.Occ sphericalMap ![13, 10, 2, 1, 5, 14, 21] ![3, 0, 4, 12]`
+- **theorem** `not_conf2122Free : ¬ Conf2122Free sphericalMap`
