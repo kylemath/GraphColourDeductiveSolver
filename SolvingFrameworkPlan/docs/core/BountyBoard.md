@@ -49,13 +49,13 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 |---|---:|
 | longtable | 50 |
 | math | 180 |
-| audit | 120 |
+| audit | 150 |
 | studiointel | 150 |
-| studiomath | 510 |
-| studiocompute | 270 |
+| studiomath | 810 |
+| studiocompute | 330 |
 | intern-A | 0 |
 | intern-B | 0 |
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 135 (6 October, 15:30 MDT). Revision 135 paid math 150 for the (5,5,5,6,6) class (Theorem R5³, under the 150-per-class ruling); earlier awards are in the revision 125 to 134 messages. The same totals are in `docs/navigator/leaderboard.json`.
+Totals as of Navigator revision 136 (6 October, 16:00 MDT). Revision 136 paid studiomath 300 for the R* reduction compiled in Lean and audited (J10, J11), studiocompute 30 each for running J10 and J11, and the audit 30 for the requested re-derivation of the no-frozen-DL lemma; earlier awards are in the revision 125 to 135 messages. The same totals are in `docs/navigator/leaderboard.json`.

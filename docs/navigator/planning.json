@@ -1,7 +1,12 @@
 {
-  "revision": 135,
-  "updatedAt": "2026-10-06T15:30:00-06:00",
+  "revision": 136,
+  "updatedAt": "2026-10-06T16:00:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T22:00:00Z",
+      "node": "structural-rstar-lean-link-d",
+      "action": "Revision 136 records core-class R* implies 4CT as compiled and audited (J10, J11), with the audit's exact statement of what planarity means in the Lean development (no axioms; SphericalMap by definition; the bridge from abstract planarity not formalised); the no-frozen-DL lemma as proved by hand and re-derived by the audit; the diamond and 2.122 D-reducibility certificates as built, audit pending; Fellow F, Math's coupling gap and 2.122 exclusions, the one-star results; and the official two-week plan with its ten paths. Leaderboard: studiomath +300, studiocompute +60, audit +30. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T21:30:00Z",
       "node": "structural-theorem-r5cubed",
@@ -11796,6 +11801,378 @@
         {
           "time": "2026-10-06T21:30:00Z",
           "text": "Revision 135, leaderboard: math +150 (the (5,5,5,6,6) half of the two-class item, now 150 per class by the coordinator's ruling, board 0f1c1d4: Theorem R5-cubed accepted by Math's independent review, re-derived by the audit, recorded proved by the navigator in revision 134; kill test passed). The proof was written by a Math worker and reviewed by another Math worker; the points go to the team. Not scored: the kill test (exploratory, not a requested replay with a report message; no bounty item), Studio Math's interface design. Totals: longtable 50, math 180, audit 120, studiointel 150, studiomath 510, studiocompute 270, intern-C 30, others 0."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-lean-link-d",
+      "revision": 136,
+      "status": "compiled",
+      "title": "Lean: R* in the four-connected core implies every spherical map is 4-colourable (compiled and audited, J10 and J11; hypothesis open)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1528_audit_to_coordination+studiomath+navigator+user_J10-J11-verdict-core-Rstar-implies-4CT-and-planarity.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:00:00Z",
+          "text": "Revision 136: compiled and audited (J10 f0f7005, J11 ef83ddb; audit verdict 15:28, 38b9c9a). Six files (EulerSharp, MinimalFrame, RStar, RStarCore, SideTriangle, VacancyIcosahedral) equal main; builds exit 0; per-file sweeps 0 nonstandard; negative control caught. Theorems: four_color_of_core_Rstar, four_color_of_core_Rstar_planeMap, four_color_of_RStarSupport, four_color_of_RStar_noSepTri, rStarNoSepTri_of_core, all on propext, Classical.choice, Quot.sound. RStarCore is the hand Lemma R* (audit 13:25); with J9 all six links of the hand chain are compiled in the core form, and the minimal-counterexample frame F1 is compiled. Audit wording: \"Compiled and audited (J10, J11): Lemma R* for the four-connected core (RStarCore) implies that every spherical map is 4-colourable. The same holds for R* restricted to four-connected minimum-degree-5 triangulations (RStarNoSepTri). Both hypotheses are open.\""
+        },
+        {
+          "time": "2026-10-06T22:00:00Z",
+          "text": "Revision 136, what \"planar\" means here (the audit, 15:28, recorded exactly): there is no planarity axiom and no axiom beyond Lean's three standard ones (every module swept constant by constant, with negative controls; no sorry, axiom, native_decide, implemented_by or extern). Planarity is a definition carried as data: SphericalMap n is a simple graph on Fin n with a rotation system and a proof of RotationSystem.Fills (every mod-2 even edge set is a sum of face boundaries), which for a connected graph means the rotation surface is a sphere (the standard topological reading, not a Lean theorem). All Jordan-type facts (JordanEven, JordanCycle, vacancy_alternation, the clique and side-triangle lifts) are theorems from that definition. The library proves every PlaneMap is a SphericalMap (ofPlaneMap). NOT formalised: the bridge from an abstractly planar graph (a drawing in R^2, or Kuratowski) to a SphericalMap structure, the combinatorial embedding theorem. So what is compiled is: \"every graph presented with a spherical rotation system is 4-colourable, provided R* holds\". The audit did not re-read the face construction (faceOf, faceNext) line by line; it is in the audited 105-module set."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-rstar-lean-link-d",
+      "revision": 136,
+      "node": {
+        "id": "structural-dred-lean-certs",
+        "title": "Lean: D-reducibility certificates for the Birkhoff diamond and RSST 2.122 (built; audit waits for steps C and D)",
+        "status": "in-progress",
+        "statement": "Diamond.colorable and Conf2122.colorable: for an occurrence in abstract ring form (ConfigOcc: the interior deleted, the ring bounding a face), every proper colouring of the reduced graph gives a 4-colouring of T. Supporting: RingJordan (rotation_arc_separation, face_alternating_walks_meet), RingChains (chains_noncrossing), RingReduce (ConfigOcc, flip lemmas, colorable_of_ext).",
+        "approach": "Generated by gen_cert.py from the D-closure (the generator is not trusted; Lean checks its output). Remaining: step C (rotation-based occurrence to ConfigOcc) and step D (add diamond- and 2.122-freeness to the class where R* is assumed).",
+        "evidence": "Independent D-reducibility check (dred_check.py, no RSST code) [computed, exploratory, exact]: diamond, 31 ring-6 classes, 16 extend, all good after 5 closure rounds; 2.122, 91 ring-7 classes, 39 extend, all good after 6 rounds (agrees with RSST). Lean: DiamondCert.lean (767 lines) and Conf2122Cert.lean (3,371 lines), standard axioms, no sorry or native_decide, two sabotaged certificates rejected, by Studio Math's own check. Not audited.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1535_studiomath_to_coordination+audit+math_diamond-and-2122-D-reducible-independent-check-and-F2-note.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1548_studiomath_to_coordination+audit+math+navigator_diamond-and-2122-D-reducibility-certificates-compiled.md",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/DiamondCert.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/Conf2122Cert.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingReduce.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingChains.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathReview-scripts/dred_check.out",
+          "SolvingFrameworkPlan/docs/working/MathClassicalReductions.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: built and Studio-checked, audit pending (the audit check waits until steps C and D land). Math's classical reductions document (F1 to F4 for Lean; F4, Birkhoff's 5-ring theorem, kept as a hypothesis for now) is [hand], partly unreviewed."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "revision": 136,
+      "node": {
+        "id": "structural-no-frozen-dl",
+        "title": "No doubly locked state is frozen; a frozen Kempe class contains only filled states (hand, Studio intel; re-derived by the audit)",
+        "status": "proved",
+        "statement": "At a degree-5 hole of a spherical triangulation, a doubly locked state has the {alpha,delta} and {alpha,gamma} subgraphs of T - v disconnected (by the two lock Jordan curves), so at most 4 of its 6 bichromatic subgraphs are connected. Strengthening (audit): a Kempe class in which every member has all six bichromatic subgraphs connected contains only filled states, so frozen classes are never targetless. Uses only planarity and deg v = 5.",
+        "approach": "Studio intel's two-line lemma with data (b1c2f1d: no DL state has more than 4 connected pairs among 1,066,690); the audit's hand re-derivation and strengthening (15:31, 5cd2592).",
+        "evidence": "Proved by hand (Studio intel), re-derived by the audit. Scope: closes the frozen-class route to a counterexample of Tilley's every-vertex conjecture; says nothing about non-frozen targetless classes, the content of R*.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1531_audit_to_coordination+studiointel+navigator+longtable_no-frozen-DL-lemma-verified.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1531_studiointel_to_coordination+math+longtable+audit_no-frozen-DL-state-lemma.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: recorded as [hand, Studio intel; re-derived by the audit]. Not a bounty item: no one had recorded a frozen-class conjecture to kill (Long Table's 15:04 remark that T - v has no Kempe-frozen colouring was in the same direction)."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-rstar-two-six",
+      "revision": 136,
+      "files": [
+        "SolvingFrameworkPlan/docs/working/FellowF-55656.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1538_math_to_coordination+navigator+audit+studiointel+studiomath_F1-reduction-and-the-common-coupling-gap.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1541_math_to_coordination+studiomath+studiointel+navigator+audit_classical-reductions-doc-and-2122-drops-classes.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:00:00Z",
+          "text": "Revision 136: Fellow F (5858da8, FellowF-55656.md) [hand, unreviewed]: R* for (5,5,6,5,6) is NOT proved; reductions: Lemma O (F is a bijection on DL states with inverse B; every F-orbit is a path, so it fills, or a cycle of length a multiple of 15), Lemma Gamma, Lemma LC (lock 2 of s is lock 1 of F(s) as a vertex set), a G-table, Lemma W, and the 20-pattern predicate table; exact open target Lemma C* (path predicates cannot all hold along one F-cycle of 15k states). Math 15:38 [hand, unreviewed]: the one-star F1 = (p,5,5,6,5) is reduced to one obstruction, and the same missing \"leak-coupling\" lemma blocks (5,5,6,5,6). Math 15:41 [hand, Math checked]: a (5,6,5) consecutive link pattern contains RSST 2.122, so (5,5,6,5,6), (5,6,5,6,6) and F1 drop out of R*_min; in the minimal-counterexample frame this class is vacuous (it stays open for the vacancy route and the 150-point bounty, which names R* for the class)."
+        }
+      ]
+    },
+    {
+      "id": "structural-route-b-kempe-reducible",
+      "revision": 136,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1543_studiointel_to_coordination+math+navigator+audit_one-star-results-55-of-57.md",
+        "backgroundMaterial/planemap-structural/studiointel/routeb/onestar_list.txt",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-census/README.md",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-census/table.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:00:00Z",
+          "text": "Revision 136: Studio intel one-star results (15:43) [computed, exploratory]: of Math's 57 one-star partial 2-balls (55 finished), only 3 are vacancy-reducible ((*,5,5,5,6), (7,*,5,5,5), (8,*,5,5,5), depth 7), all with three consecutive 5s (the R5-cubed class); F1, F2 and the non-adjacent family (s,5,*,5,5), s = 7..11, fail; HP's one-star is reducible at depth 6 (its bound). So Theorem U's one-star step (U3) does not close. Studio census [exploratory] (ed08af7, 2ea1a3f): every 4-connected min-5 triangulation of orders 12 to 25 (plantri -m5 -c4): no targetless class, max radius 5 (first at order 22), and no hole of radius at least 4 in graphs containing neither the diamond nor 2.122 through order 25."
+        }
+      ]
+    },
+    {
+      "id": "structural-theorem-r5cubed",
+      "revision": 136,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1521_studiointel_to_coordination+navigator+math+audit_R5cubed-kill-test-0-violations.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T22:00:00Z",
+          "text": "Revision 136: the kill-test counts now have a file on main (Studio intel 15:21): 6,256 holes, 264,947 DL states, 0 violations; graphs: every 4-connected min-5 triangulation of orders 12, 14, 16 to 22 plus T4, the order-28 (6^5) graph, B2, B3 and 100 certificate graphs; max radius 5 in every class; proof-internal confinement assertions not tested."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "revision": 136,
+      "node": {
+        "id": "structural-twoweek-plan",
+        "title": "Official two-week plan, 6 to 20 October: ten paths on R* (Tilley's conjecture implies it); day-14 decision",
+        "status": "in-progress",
+        "statement": "Reframing (given the Four Colour Theorem): R* at v holds iff deleting v creates no new Kempe class, i.e. every Kempe class of T - v contains the restriction of a colouring of T. Calibration (Studio compute, orders 12 to 22): T - v has at least 2 classes in only about 3% of degree-5 hole instances; R* held in all of them; no targetless class at degree 5, 6 or 7; the pipeline detects targetless classes (torus control). Only multi-class instances are evidence. Day-14 decision (20 October): continue proof attempts only if a potential with no local minima, a working extremal-choice rule, a provable structured family, or a structure theorem shrinking the search appears; otherwise ship the paper and the library and stop.",
+        "approach": "Workstreams: A (paths 1 and 2) measurement, Studio compute; B (paths 3 and 9) constructed instances and structure lemmas; C (path 10) ship regardless; riders paths 4, 7, 8; path 5 one agent one week; path 6 low priority. Supersedes the routes table of MaximiseSuccessPlan.md for two weeks. Adopted ~16:00 with the user's approval after two outside consultations (SageAdvice-2026-10-06.md).",
+        "evidence": "A plan; the calibration numbers are the coordinator's summary of Studio compute runs, not yet a ledger result.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md",
+          "SolvingFrameworkPlan/docs/working/SageAdvice-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node with the ten paths as children. The forecast meters are the coordinator's judgement, not ledger statuses."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-1-class-census",
+        "title": "Path 1: class-count census: kappa(T - v), kappa(T), radius stratified by kappa",
+        "status": "in-progress",
+        "statement": "Orders 12 to 26 (running), radius-4/5 holes first. Stop: if multi-class holes are below 0.1% with no radius at least 4, declare the census non-evidential and move to path 3.",
+        "approach": "Owner: Studio compute. From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-2-controls",
+        "title": "Path 2: controls: degree-6/7 holes and edge contractions T/e; does any operation create a new class?",
+        "status": "in-progress",
+        "statement": "Degree-6 holes to order 22 (running). New classes at degree 6 but never 5 points to the ring-5 mechanism; never anywhere suggests \"vertex deletion never creates classes\".",
+        "approach": "Owner: Studio compute. From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-3-constructed",
+        "title": "Path 3: constructed multi-class instances and a targeted counterexample",
+        "status": "unstarted",
+        "statement": "Smallest Belcastro-Haas (dualised), Fisk and Mohar examples; Errera/Kittell gadgets in multi-class hosts; test every class of T - v. A stuck class is a paper; none across about 10^4 multi-class holes is the first real evidence for Tilley.",
+        "approach": "Owner: Studio Intel. From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-4-potentials",
+        "title": "Path 4: potential-function mining",
+        "status": "unstarted",
+        "statement": "About 20 candidate potentials on the 1M states and the radius-5 holes. Stop: no potential works on radius-5 holes.",
+        "approach": "Owner: Studio Intel (rider). From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-5-mohar-salas",
+        "title": "Path 5: sphere analogue of the Mohar-Salas invariant (nowhere-zero Z2^2 flows)",
+        "status": "unstarted",
+        "statement": "Linear algebra on the three smallest multi-class examples. Hard one-week stop: no separating functional in small cases.",
+        "approach": "Owner: Long Table (one agent). From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-6-moving-vacancy",
+        "title": "Path 6: moving vacancy (the hole as a fifth colour, Meyniel-type moves)",
+        "status": "unstarted",
+        "statement": "Radius with (5,a)-swaps on radius-5 holes; maximum simultaneous 5s. Stop: 4 or more vacancies ever needed.",
+        "approach": "Owner: Long Table (low priority). From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-7-fullerene",
+        "title": "Path 7: fullerene-dual theorem",
+        "status": "in-progress",
+        "statement": "Census of IPR fullerene duals to C100 (buckygen): radius, kappa, localisation. Stop: radius grows with n; at most 4 with localised certificates means attempt the theorem.",
+        "approach": "Owner: Studio Intel (IPR run continues). From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-8-min-radius",
+        "title": "Path 8: min-over-v radius (\"R*-radius\") and an unavoidable set of cheap certifiers",
+        "status": "unstarted",
+        "statement": "R*-radius per order and on fullerene duals; classify the best vertex's local pattern. Stop: min-over-v reaches 3 or patterns proliferate.",
+        "approach": "Owner: Studio compute (rider). From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-9-stuck-structure",
+        "title": "Path 9: structure of a hypothetical stuck class",
+        "status": "unstarted",
+        "statement": "Forced nesting of blocking chains, ring-adjacent components; machine-enumerate forced local patterns on the 1M states, prove the first two by hand. Stop: three lemmas without shrinking the pattern space.",
+        "approach": "Owner: Math (lead), interns, Studio Intel. From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-twoweek-plan",
+      "revision": 136,
+      "node": {
+        "id": "structural-path-10-ship",
+        "title": "Path 10: ship: Lean library and theorem paper (honest kappa caveat); send to Tilley",
+        "status": "in-progress",
+        "statement": "Freeze the statement list; audit the last pieces. Ships regardless. Expert contact is the user's decision; nothing is posted outside the repository without the user's word.",
+        "approach": "Owner: Severn (paper), Studio Math (Lean), Audit; the user sends. From the official two-week plan (92716cb); stop criterion as stated there.",
+        "files": [
+          "SolvingFrameworkPlan/docs/core/TwoWeekPlan-2026-10-06.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T22:00:00Z",
+            "text": "Revision 136: plan node added from the two-week plan; no result yet."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 136,
+      "notes": [
+        {
+          "time": "2026-10-06T22:00:00Z",
+          "text": "Revision 136, leaderboard: studiomath +300 (the R* reduction compiled in Lean, no sorry, standard axioms, in an audit: J10/J11 PASSED, the audit sees the condition met). studiocompute +60 (J10 f0f7005 and J11 ef83ddb, requested runs of the audit's check with outputs posted; coordinator ruling: one award per replay role). audit +30 (the requested hand re-derivation of the no-frozen-DL lemma, report posted 15:31; same rule as the E2 and R5-cubed re-derivations). Not scored: the no-frozen-DL lemma itself (no recorded conjecture killed), the D-reducibility certificates (unaudited), one-star results and the census (exploratory data), Fellow F and Math's unreviewed notes. Totals: longtable 50, math 180, audit 150, studiointel 150, studiomath 810, studiocompute 330, intern-C 30, others 0."
         }
       ]
     }

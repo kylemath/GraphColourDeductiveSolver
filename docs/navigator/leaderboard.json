@@ -1,13 +1,13 @@
 {
   "source": "SolvingFrameworkPlan/docs/core/BountyBoard.md (kept by the Navigator; points only on ledger evidence)",
-  "revision": 135,
-  "updated": "2026-10-06T15:30:00-06:00",
+  "revision": 136,
+  "updated": "2026-10-06T16:00:00-06:00",
   "teams": [
-    { "team": "studiomath", "name": "Studio Math", "points": 510 },
-    { "team": "studiocompute", "name": "Studio compute", "points": 270 },
-    { "team": "studiointel", "name": "Studio Intel", "points": 150 },
+    { "team": "studiomath", "name": "Studio Math", "points": 810 },
+    { "team": "studiocompute", "name": "Studio compute", "points": 330 },
     { "team": "math", "name": "Math", "points": 180 },
-    { "team": "audit", "name": "Audit", "points": 120 },
+    { "team": "studiointel", "name": "Studio Intel", "points": 150 },
+    { "team": "audit", "name": "Audit", "points": 150 },
     { "team": "longtable", "name": "Long Table", "points": 50 },
     { "team": "intern-C", "name": "Intern C", "points": 30 },
     { "team": "intern-A", "name": "Intern A", "points": 0 },
@@ -18,7 +18,6 @@
     "1000: R* proved in the open case (two or more neighbours of degree >= 6); Tilley's 2017 D-resolvability conjecture implies R*",
     "1000: a certified counterexample to R* or VH-exists in the core class",
     "150: R* for (5,5,6,5,6) (the (5,5,5,6,6) half was paid to math, revision 135)",
-    "300: the R* reduction (core class) compiled in Lean (link D)",
     "150: a real gap or error in someone else's accepted result",
     "100: a global invariant separating filled from stuck states"
   ]
