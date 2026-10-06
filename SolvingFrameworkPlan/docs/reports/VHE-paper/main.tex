@@ -10,14 +10,31 @@
 \date{6 October 2026 (draft outline)}
 \begin{document}\maketitle
 \begin{abstract}TODO after sections 1--6 are drafted. States only what the ledger supports.\end{abstract}
-\section*{How this paper was made: disclosure of AI authorship}
-\textbf{This work was produced by a team of AI agents, not by a human mathematician working alone.} The mathematics (definitions, hand proofs, counterexamples), the Lean~4 formalisation, the computations and the text of this paper were produced by instances of Claude, an AI model family by Anthropic, run through Claude Code in several separate sessions with named roles: \emph{Long Table} (hand proofs and exploratory experiments), \emph{Math} (proof review, Lean formalisation, module audit, written go-aheads for experiments), \emph{Audit} (independent replays and adversarial review), \emph{Navigator} (the status ledger and its status words), a \emph{coordinator} session (sequencing between teams), and a \emph{night swarm} of overnight exploratory agents whose outputs are used only as leads. Several of these sessions delegated sub-tasks to further short-lived AI sub-agents, for example to write checkers blind to the producer's code. The model versions varied between sessions and were not recorded uniformly [\textsc{to complete if wanted}].
+\section*{How this paper was made}
+\textbf{The mathematics, the Lean proofs, the computations and the text of this paper were produced by AI agents.} No human mathematician wrote any of the proofs or the code. The agents were instances of Claude, a family of AI models made by Anthropic, running in Claude Code: separate, long-running sessions that could read and write files, run programs on the author's computers, and exchange dated messages through a shared repository. Each session had a fixed role.
+\begin{itemize}
+\item \emph{Long Table} proposed ideas, wrote the hand proofs and counterexamples, and designed and ran the declared experiments.
+\item \emph{Math} reviewed hand proofs, accepted or refused results, wrote the Lean~4 formalisation and ran its module audit.
+\item \emph{Audit} reran results with its own code, which imported nothing from the other teams, and read every claim adversarially.
+\item \emph{Navigator} kept the status ledger and was the only session allowed to call a result proved, compiled, exploring or killed.
+\item A \emph{coordinator} session sequenced work between the teams.
+\item A \emph{night swarm} of overnight exploratory agents produced leads, which this paper uses only as leads.
+\end{itemize}
+Sessions often delegated sub-tasks to short-lived sub-agents, for example to write a checker for an experiment without seeing the program it checks. Several Claude model versions were used over the course of the project, and the version behind each piece of work was not recorded consistently [\textsc{Kyle: name versions or leave as is}].
 
-\textbf{Kyle Mathewson is the author and is responsible for the claims.} What he did, as recorded in the message history: he set the research direction and the standing rules (which experiments may run, caps, who may release them), decided the division of work and the authority of the coordinating session, approved outward-facing steps such as downloading software, decided authorship and this disclosure, and received the reports. [\textsc{Kyle: add or correct what you did in your own words.}] He did not write the proofs or the code, and the proofs have not been checked by a human referee.
+\textbf{What the author did.} Kyle Mathewson directed the project and is responsible for every claim in it. From the message record, he chose the problem and the direction, set the standing rules (what experiments may run, under what limits, and who may release them), assigned the roles and the coordinator's authority, approved actions with outside effects such as installing software, redirected the work when it drifted (for example, from brute-force search back to new ideas), and decided authorship and this disclosure [\textsc{Kyle: correct or add in your own words}]. He did not write the proofs or the code.
 
-\textbf{How results were checked.} Each claim carries one label. \lab{compiled} means a Lean development with no \texttt{sorry} and only the standard axioms, rechecked by a module audit run by the Audit team. \lab{hand} means a written argument reviewed by another AI session, not by a human referee. \lab{computed} means a declared experiment whose producer was checked by a separately written checker, with the declaration hashed before the run, and which says only ``on these graphs''. \lab{cited} is taken from the literature and was read by AI agents, not by the author. \lab{open} is not claimed. The labels come from this process, and the Navigator's ledger gives each result's status word; no claim here is stronger than that ledger. Reviews among AI sessions can share blind spots, which is why the \lab{hand} results should be read as unrefereed.
+\textbf{How the results were checked.} Every claim carries one label, and the label says how far it has been checked.
+\begin{itemize}
+\item \lab{compiled}: proved in Lean~4 with no \texttt{sorry} and only Lean's standard axioms, and included in the module audit. The Lean kernel, not an AI, is what certifies these.
+\item \lab{hand}: a written proof reviewed by a different AI session. \emph{No human referee has checked any of these.} AI reviewers can share blind spots, so treat them as unrefereed.
+\item \lab{computed}: an experiment whose statement, programs and limits were fixed and hashed before it ran, whose output was checked by a separately written program, and which claims only what happened on the graphs it ran.
+\item \lab{cited}: taken from the published literature as summarised by the agents; consult the original.
+\item \lab{open}: not claimed.
+\end{itemize}
+No status in this paper is stronger than the Navigator's ledger. Mistakes were made along the way---wrong timestamps, a mislabelled process, conjectures that were later refuted---and each was corrected by a dated message rather than erased.
 
-\textbf{Record.} The full repository, with every message between the teams, the declarations, hashes, code and outputs, is at \url{https://github.com/kylemath/GraphColourDeductiveSolver} [\textsc{confirm public before posting}]. Anything in this paper can be traced to a dated file there.
+\textbf{The record.} The repository at \url{https://github.com/kylemath/GraphColourDeductiveSolver} [\textsc{confirm it is public before posting}] holds every message between the teams, every declaration with its hash, and all code and outputs. Each statement in this paper can be traced to a dated file there.
 
 \section{The vacancy induction and the hypothesis VH$\exists$}
 TODO: definitions; theorem VH$\exists\Rightarrow$ 4-colourability; containment and apex-singleton lemmas. \lab{hand}/\lab{compiled}
