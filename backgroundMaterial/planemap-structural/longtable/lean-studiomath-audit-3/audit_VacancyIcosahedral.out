@@ -1,0 +1,50 @@
+@SimpleGraph.SphericalMap.theorem_H : ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n),
+  M.Triangulated →
+    ∀ {h : Fin n},
+      M.graph.degree h = 5 →
+        (∀ (u : Fin n), M.Adj h u → M.graph.degree u = 5) →
+          M.NoSeparatingTriangleAt h →
+            ∀ {c : Fin n → Fin 4},
+              SimpleGraph.VacancySlide.ProperOff M.graph h c → SimpleGraph.VacancyShortFill.PureFill M.graph h c 3
+@SimpleGraph.SphericalMap.icoBall_of_triangulated : ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n),
+  M.Triangulated →
+    ∀ {h : Fin n} (L : SimpleGraph.VacancyMobility.FiveLink M.graph h),
+      (∀ (i : Fin 5), M.graph.Adj (L.port i) (L.port (i + 1))) →
+        (∀ (i : Fin 5),
+            M.rotation.next { fst := h, snd := L.port i, adj := ⋯ } = { fst := h, snd := L.port (i + 1), adj := ⋯ }) →
+          (∀ (i : Fin 5), M.graph.degree (L.port i) = 5) →
+            M.NoSeparatingTriangleAt h → ∃ w, SimpleGraph.VacancyIcosahedral.IcoBall M.graph h L w
+SimpleGraph.Icosahedron.theorem_H_icosahedron : SimpleGraph.VacancyShortFill.PureFill
+  SimpleGraph.Icosahedron.sphericalMap.graph 0 SimpleGraph.Icosahedron.sampleColouring 3
+@[expose] def SimpleGraph.SphericalMap.NoSeparatingTriangleAt : {n : ℕ} → SimpleGraph.SphericalMap n → Fin n → Prop :=
+fun {n} M h =>
+  ∀ (u v : Fin n) (hu : M.Adj h u) (hv : M.Adj h v),
+    M.Adj u v →
+      M.rotation.next { fst := h, snd := u, adj := hu } = { fst := h, snd := v, adj := hv } ∨
+        M.rotation.next { fst := h, snd := v, adj := hv } = { fst := h, snd := u, adj := hu }
+@SimpleGraph.SphericalMap.ico_fill : ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n) {h : Fin n}
+  (L : SimpleGraph.VacancyMobility.FiveLink M.graph h) {w : Fin 5 → Fin n},
+  SimpleGraph.VacancyIcosahedral.IcoBall M.graph h L w →
+    (∀ (i : Fin 5),
+        M.rotation.next { fst := h, snd := L.port i, adj := ⋯ } = { fst := h, snd := L.port (i + 1), adj := ⋯ }) →
+      ∀ {c : Fin n → Fin 4},
+        SimpleGraph.VacancySlide.ProperOff M.graph h c → SimpleGraph.VacancyShortFill.PureFill M.graph h c 3
+structure SimpleGraph.VacancyIcosahedral.IcoBall.{u_1} {V : Type u_1} (G : SimpleGraph V) (h : V)
+  (L : SimpleGraph.VacancyMobility.FiveLink G h) (w : Fin 5 → V) : Prop
+number of parameters: 5
+fields:
+  SimpleGraph.VacancyIcosahedral.IcoBall.nbr : ∀ (t : Fin 5) (u : V),
+      G.Adj (L.port t) u ↔ u = h ∨ u = L.port (t + 4) ∨ u = L.port (t + 1) ∨ u = w (t + 4) ∨ u = w t
+  SimpleGraph.VacancyIcosahedral.IcoBall.ring : ∀ (t : Fin 5), G.Adj (w t) (w (t + 1))
+  SimpleGraph.VacancyIcosahedral.IcoBall.off : ∀ (t i : Fin 5), w t ≠ L.port i
+  SimpleGraph.VacancyIcosahedral.IcoBall.offh : ∀ (t : Fin 5), w t ≠ h
+constructor:
+  SimpleGraph.VacancyIcosahedral.IcoBall.mk.{u_1} {V : Type u_1} {G : SimpleGraph V} {h : V}
+    {L : SimpleGraph.VacancyMobility.FiveLink G h} {w : Fin 5 → V}
+    (nbr :
+      ∀ (t : Fin 5) (u : V),
+        G.Adj (L.port t) u ↔ u = h ∨ u = L.port (t + 4) ∨ u = L.port (t + 1) ∨ u = w (t + 4) ∨ u = w t)
+    (ring : ∀ (t : Fin 5), G.Adj (w t) (w (t + 1))) (off : ∀ (t i : Fin 5), w t ≠ L.port i)
+    (offh : ∀ (t : Fin 5), w t ≠ h) : SimpleGraph.VacancyIcosahedral.IcoBall G h L w
+file constants checked: 36; nonstandard: 0; []
+exit 0
