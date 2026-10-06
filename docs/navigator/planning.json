@@ -1,7 +1,12 @@
 {
-  "revision": 104,
-  "updatedAt": "2026-10-06T09:33:00-06:00",
+  "revision": 105,
+  "updatedAt": "2026-10-06T09:37:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T16:20:00Z",
+      "node": "structural-wp21",
+      "action": "Revision 105 records the resolution of the revision 104 alert: the run found on the first Mac was a stray, wrong-machine start, stopped at 09:33 with no shards done and no output, its files moved aside as evidence and not to be merged; the real phase A run is on the Mac Studio (the coordinator's relay of the Studio agent's verified status, pid 22416 since 09:30:07, 0 of 46 shards at about 09:35), and the Studio owns WP21. Who launched the stray run is unknown. New gate: any WP21 output report names machine and commit from RECORD.txt. No result exists and no status changed."
+    },
     {
       "time": "2026-10-06T16:08:00Z",
       "node": "structural-wp21",
@@ -8978,6 +8983,20 @@
         {
           "time": "2026-10-06T16:08:00Z",
           "text": "Revision 104, CORRECTION of revision 103 and an alert. Revision 103 said no RECORD.txt existed and recorded the start as a Studio start relayed by the coordinator. The checkout on this machine does contain wp21/studio/RECORD.txt, written at 09:29, and WP21 phase A is running HERE: RECORD.txt gives started 09:29:52 MDT, machine Darwin mac.lan, Apple M4 Pro, 14 cores, 51539607552 bytes memory, Python 3.9.6, git head 5caa496fe82ccfad32b3db3b4e72b2ccaa6fba74, workers 16; the machine's computer name is the MacBook (the first Mac); the processes wp21_studio.sh and wp_shard_runner.py run --workers 16 (16 worker processes) are live in this machine's process list, owned by the same user, alongside the WP20 P1 pipeline (started 07:45) whose chunk-4 job started at 09:30; the load average was about 48 on 14 cores at 09:31. The Studio is described elsewhere as an Apple M4 Max with 16 cores, and the coordinator said the run started on origin/main e6110ff; the RECORD.txt head is 5caa496 (a later Long Table commit), so the record does not match the relayed account. The navigator does not know who launched it. Consequences, as facts and risks, not as accusations: (1) phase A is being produced on the same machine that is producing WP20 P1, so the rule that every output is checked by a machine that did not produce it needs the first Mac check to be replaced, since wp21_mac_checks.sh would now run on the producer machine; (2) the output files and the reports written by wp21_studio.sh carry the label Mac Studio (the script text), which would be wrong for this run unless RECORD.txt is read; (3) the two heavy jobs compete for 14 cores, which slows P1 and does not change what either computes, but the CPU-second caps count process CPU time and the per-graph 30 minute wall limit could in principle be approached under load; (4) if the Studio has also started phase A, WP21 phase A would run twice, which the one-owner rule forbids. Needed from the coordinator and Long Table: say which machine is running phase A, state whether the Studio has started, and decide whether to stop this run. The navigator does not stop processes. Until resolved, the ledger records WP21 as started on the first Mac at 09:29:52 on RECORD.txt evidence, with machine provenance contested, and records no result. A partial, capped or failed phase is inconclusive."
+        }
+      ]
+    },
+    {
+      "id": "structural-wp21",
+      "revision": 105,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0934_longtable_to_coordination+navigator+math+audit+user_URGENT-stray-WP21-run-on-first-mac.md",
+        "backgroundMaterial/planemap-structural/longtable/wp21/stray-mac-run-0929/"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T16:20:00Z",
+          "text": "Revision 105, resolution of the revision 104 alert; that alert is superseded by this wording. Two independent phase A starts existed. (1) A stray run on the first Mac (MacBook Pro, host mac.lan, Apple M4 Pro, 14 cores, git head 5caa496, 16 workers), started 09:29:52 and labelled Mac Studio by the script text. Nobody has said who launched it; Long Table did not, and the coordinator does not know. Long Table found it at 09:32 and stopped it with SIGTERM at 09:33: 0 of 46 shards done, 1321.5 CPU-seconds, no output, nothing merged. It cost the P1 chunk running at the time about three minutes of shared CPU; chunk 4's result is unaffected. (2) The real Studio run, relayed by the coordinator after the Studio agent verified on its own machine: hostname Kyles-Mac-Studio.local, Apple M4 Max, 16 cores, 128 GB, repository /Users/kylemathewson/GraphColourDeductiveSolver, HEAD e6110ff, pid 22416 running since 09:30:07 MDT on the Studio clock, 0 of 46 shards done at about 09:35 (30 pending, 16 running), cap 43200 CPU-seconds. The navigator has not seen the Studio's RECORD.txt or any file from that machine, so this remains the coordinator's relay until RECORD.txt appears on branch studio-wp21. Navigator checks on this machine at 09:34: no wp21_studio.sh or wp_shard_runner.py process is running; only the P1 pipeline (wp_pipeline.sh, started 07:45) and its d1_confirm job; the stray files were moved by Long Table to wp21/stray-mac-run-0929/ (A-run and studio subdirectories), and the WP21 directory no longer holds A-run or studio. The stray run is an aborted wrong-machine start, not evidence, and its partial files must not be merged or cited. Ownership: the Studio owns WP21 phase A (Long Table chronology item 7); the first Mac must not start wp21_pipeline.sh, and the 11:30 fallback is void unless the Studio fails. Still to confirm by Long Table and the coordinator: who launched the stray run, so it cannot recur, and that the Studio's record shows an M4 Max, 16 cores, 128 GB. Gate, new: the report of any WP21 output must name the machine and the git commit taken from that run's RECORD.txt, and a RECORD.txt whose machine or commit disagrees with the announced package or with the relay is a reason to stop and ask. Long Table also corrected its own earlier statement that no WP21 process was running on this machine (chronology items 9 to 11)."
         }
       ]
     }
