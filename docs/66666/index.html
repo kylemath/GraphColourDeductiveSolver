@@ -109,7 +109,7 @@
       <a href="../deadend/index.html">The Dead-End Region</a> the hard holes sat among degree-five neighbours. This page is about a hole whose five neighbours all have <strong>degree six</strong>.
     </p>
     <p>
-      For a hole whose neighbours all have degree five, Theorem H works because the locks leave only <strong>3</strong> possible
+      For a hole whose neighbours all have degree five, Theorem H <span class="lab">[hand, reviewed by Math, not audited]</span> works because the locks leave only <strong>3</strong> possible
       colourings of the surrounding ring. Around a (6,6,6,6,6) hole the ring has ten vertices, and the locks allow
       <strong>74</strong> ring colourings <span class="lab">[hand + computed]</span>. No swap that stays inside the link breaks
       a lock for any of them <span class="lab">[computed]</span>. Every small swap that could break one touches a ring vertex, and
@@ -118,7 +118,8 @@
     <p>
       Math built a finite automaton that tracks the 74 patterns and the possible chain connections outside the ring. It has a
       <strong>closed trap</strong> of 5,650 abstract states: the outside can keep answering so that the locks never break, forever
-      <span class="lab">[computed, exploratory]</span>. So no argument that uses only local information can bound the radius here. A real graph
+      <span class="lab">[computed, exploratory]</span>. So no argument of this local kind (Math's ring automaton, which sees the ball and the outside chain joins) can bound the radius here.
+      This does not rule out every local argument. A real graph
       shows the cost: below is an order-28 triangulation with a doubly locked state of <strong>radius 4</strong>
       <span class="lab">[computed]</span>. That is why the team is now looking for <strong>global invariants</strong>. Whether
       any bound on the radius exists (Conjecture R) is still <span class="lab">[open]</span>. The proof route needs less than a
@@ -219,10 +220,12 @@
       </div>
       <div class="card">
         <span class="kick">Where this leaves us</span>
-        <h4>Local is not enough</h4>
+        <h4>This local model is not enough</h4>
         <p>The order-28 example kills the guess "radius ≤ 3 at (6,6,6,6,6) holes" and nothing more. The highest radius known at any hole
-          is still 4. Real graphs here do not use the trap's resets, and no colouring that can never be filled has been found
-          <span class="lab">[computed, exploratory]</span>. A bound would need information that survives a swap, which is a global question.
+          is still 4. In Math's data, real graphs mostly avoid the trap's resets: 63 of the 69 radius-3 states at (6,6,6,6,6) holes of orders 22 and 23 have a
+          shortest route whose first swap stays inside the ball. No colouring that can never be filled was found at any (6,6,6,6,6) hole of order 23 or
+          less, or in about 2,200 grown holes of orders 24 to 32 <span class="lab">[computed, exploratory]</span>. In the order-28 graph on this page
+          every colouring reaches a filled one (a single Kempe class) <span class="lab">[computed]</span>. A bound would need information that survives a swap, which is a global question.
           Conjecture R (some bound on the radius) stays <span class="lab">[open]</span>. The proof route needs only Lemma R*: a finite
           radius at one degree-five vertex per graph, not a uniform bound <span class="lab">[open]</span>.</p>
         <button class="btn ghost" id="ring">Highlight the ring</button>
@@ -232,20 +235,27 @@
 
   <div class="foot">
     <p>Graph: the order-28 face list in <code>SolvingFrameworkPlan/docs/working/MathSixFiveAutomaton.md</code> §4 (minimum degree 5, no
-      separating triangle, hole 0 with link 1–5 all of degree 6). The colourings, Kempe graph, locks and radii on this page were recomputed
+      separating triangle, hole 0 with link 1–5 all of degree 6). <code>build_data.py</code> rechecks these properties from the face list: Euler's
+      formula, every edge in exactly two faces, every vertex link a single cycle, minimum degree 5, every triangle of the graph a face (so no
+      separating triangle), and link degrees 6. The colourings, Kempe graph, locks and radii on this page were recomputed
       independently by <code>docs/66666/build_data.py</code>, which imports none of Math's code. It enumerates every 4-colouring of T − 0 up to
       renaming and uses whole-chain Kempe swaps (single vertices allowed). The results agree with Math's: 121 doubly locked states, with radii
-      117 × 2, 3 × 3 and 1 × 4, and the radius-4 state has ring pattern <code>dgdgdbabgb</code>. One observation of ours, unchecked: a radius-2 state here has ring pattern
-      <code>gadbdabagd</code>, in Math's frame (link read 1 to 5 in face-list order, roles a, b, g, d at x0, x1, x3, x4, ring read from w0).
-      By Math's mirror argument (hand, addendum to <code>MathSixFiveAutomaton.md</code>) its mirror <code>gadgdabagb</code> is realised too,
-      so two patterns are still unseen: <code>gadbdabagb</code> and <code>gadgdabagd</code>.
+      117 × 2, 3 × 3 and 1 × 4, and the radius-4 state has ring pattern <code>dgdgdbabgb</code>. <strong>Frame.</strong> Patterns are read exactly as in <code>MathSixFiveHole.md</code> §1: the link is rotated so it reads a, b, a, g, d at
+      x0..x4 (link read 1 to 5 in the face-list order), w_t is the ring vertex shared by x_t and x_t+1, m_t is the middle outer neighbour of x_t,
+      and the ring is read w0 m1 w1 … w4 m0. The page's builder checked that it uses this frame. <strong>Unseen patterns, step by step.</strong>
+      <code>MathSixFiveHole.md</code> listed 5 of the 74 as never seen up to order 23. <code>MathSixFiveAutomaton.md</code> §3 found one of them,
+      <code>gadgdababd</code>, at order 24, which left four. A radius-2 state of this page's graph has pattern <code>gadbdabagd</code>
+      <span class="lab">[computed, not replayed]</span>, and by Math's mirror argument its mirror image <code>gadgdabagb</code> is realised too
+      <span class="lab">[hand, conditional on the frame above]</span>. That leaves two unseen: <code>gadbdabagb</code> and <code>gadgdabagd</code>.
+      The audit has not checked this chain.
       The 74 ring patterns come from <code>SolvingFrameworkPlan/docs/working/MathSixFiveHole.md</code>. The 5,650-state trap (K-A1) and the
       order-28 radius-4 hole come from <code>SolvingFrameworkPlan/docs/working/MathSixFiveAutomaton.md</code>. The ledger entries
       (Navigator revision 121, <code>SolvingFrameworkPlan/messages/2026-10-06/</code>) are K-A1 killed [computed, exploratory] and radius 4 at a
       (6⁵) hole [computed], neither replayed by the audit. Conjecture R is [open]. Lemma R* is in
       <code>SolvingFrameworkPlan/docs/working/MathReviewCleanToVHE.md</code>. Definitions: <code>START-HERE.md</code> §5 and
-      <code>l-attack.md</code> §1. This is finite evidence about one graph, not a proof. The demo was built by an AI agent (Claude), as is
-      most of this project.</p>
+      <code>l-attack.md</code> §1. This is finite evidence about one graph, not a proof. <strong>Disclosure:</strong> this page was built by an AI agent (Claude), and the
+      research it reports was produced by AI agents (Claude) working under Kyle Mathewson's direction. That includes the proofs, the code, the
+      computations and the text. See the project's disclosure.</p>
   </div>
 </div>
 
@@ -501,7 +511,7 @@
     const nHere = Object.keys(here).length;
     $('patText').innerHTML = 'This graph realises <strong>' + nHere + '</strong> of the 74. ' +
       (cur ? 'Current state: <code>' + cur + '</code>.' : 'The current state is not doubly locked, so it has no pattern.') +
-      ' Patterns underlined in amber are the two still unseen in any graph. Math listed four; this graph realises <code>gadbdabagd</code>, and its mirror image <code>gadgdabagb</code> then follows (Math, hand).';
+      ' Patterns underlined in amber are the two still unseen in any graph (5 at order 23, one found at order 24, and a mirror pair settled by this graph; see the footer).';
   }
   function render() { renderRoots(); renderMap(); renderLand(); renderNet(); renderReadout(); renderMoves(); renderPats(); }
 
