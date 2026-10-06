@@ -1,0 +1,13 @@
+@[expose] def SimpleGraph.SphericalMap.RStarNoSepTri : Prop :=
+∀ (m : ℕ) (T : SimpleGraph.SphericalMap m),
+  0 < m →
+    T.graph.Connected →
+      T.Triangulated → (∀ (x : Fin m), 5 ≤ T.graph.degree x) → T.NoSep → ∃ v, T.graph.degree v = 5 ∧ T.PureClean v
+SimpleGraph.SphericalMap.four_color_of_RStar_noSepTri : SimpleGraph.SphericalMap.RStarNoSepTri →
+  ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n), M.graph.Colorable 4
+SimpleGraph.SphericalMap.rStarNoSepTri_of_core : SimpleGraph.SphericalMap.RStarCore →
+  SimpleGraph.SphericalMap.RStarNoSepTri
+'SimpleGraph.SphericalMap.four_color_of_RStar_noSepTri' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.rStarNoSepTri_of_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 9; nonstandard: 0; []
+exit 0

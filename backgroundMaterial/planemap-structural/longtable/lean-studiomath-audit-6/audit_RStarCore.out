@@ -1,0 +1,16 @@
+@[expose] def SimpleGraph.SphericalMap.RStarCore : Prop :=
+∀ (m : ℕ) (T : SimpleGraph.SphericalMap m) (p q r : Fin m),
+  T.graph.Connected →
+    T.Triangulated →
+      T.Adj p q →
+        T.Adj q r →
+          T.Adj r p →
+            T.Facial p q r → T.NoSep → (∀ (x : Fin m), x ≠ p → x ≠ q → x ≠ r → 5 ≤ T.graph.degree x) → T.CleanOff p q r
+SimpleGraph.SphericalMap.four_color_of_core_Rstar : SimpleGraph.SphericalMap.RStarCore →
+  ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n), M.graph.Colorable 4
+SimpleGraph.SphericalMap.four_color_of_core_Rstar_planeMap : SimpleGraph.SphericalMap.RStarCore →
+  ∀ {n : ℕ} (M : SimpleGraph.PlaneMap n), M.graph.Colorable 4
+'SimpleGraph.SphericalMap.four_color_of_core_Rstar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.four_color_of_core_Rstar_planeMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 14; nonstandard: 0; []
+exit 0

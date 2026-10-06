@@ -1,0 +1,47 @@
+/tmp/audit_SideTriangle.lean:447:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.lift_faceNext_keptFace`:
+  hN
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hN in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/tmp/audit_SideTriangle.lean:470:5: warning: Variable name `hu` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/tmp/audit_SideTriangle.lean:561:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.far_ends`:
+  hc
+  spec
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc spec in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/tmp/audit_SideTriangle.lean:580:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.T_faceNext_three`:
+  hc
+  hN
+  spec
+  hpq
+  hqr
+  hrp
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc hN spec hpq hqr hrp in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/tmp/audit_SideTriangle.lean:648:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.kept_facial`:
+  htri
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit htri in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+@[expose] def SimpleGraph.SphericalMap.RStarSupport : Prop :=
+∀ (m : ℕ) (T : SimpleGraph.SphericalMap m) (p q r : Fin m), T.RelClass p q r → T.NoSep → T.CleanOff p q r
+@[expose] def SimpleGraph.SphericalMap.PureClean : {n : ℕ} → SimpleGraph.SphericalMap n → Fin n → Prop :=
+fun {n} T r =>
+  ∀ (c : Fin n → Fin 4),
+    SimpleGraph.VacancySlide.ProperOff T.graph r c → ∃ m, SimpleGraph.VacancyShortFill.PureFill T.graph r c m
+SimpleGraph.SphericalMap.four_color_of_RStarSupport : SimpleGraph.SphericalMap.RStarSupport →
+  ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n), M.graph.Colorable 4
+'SimpleGraph.SphericalMap.four_color_of_RStarSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 64; nonstandard: 0; []
+exit 0
