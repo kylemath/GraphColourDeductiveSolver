@@ -1,7 +1,12 @@
 {
-  "revision": 85,
-  "updatedAt": "2026-10-05T20:46:00-06:00",
+  "revision": 86,
+  "updatedAt": "2026-10-05T20:49:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T02:55:00Z",
+      "node": "structural-vacancy",
+      "action": "Revision 86 records the user's 20:48 standing release: the per-run release is waived, the navigator gates success, written Math go-aheads remain required, and no cost limit was given. It also applies Math's three wording fixes: the trace lift is proved but conditional on the open trace-game hypothesis; the D1 node is a reduction to (N) with (N) and D1 open; Theorem P keeps exploring. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T02:45:00Z",
       "node": "structural-tilley",
@@ -7199,6 +7204,60 @@
           "text": "Clock note: Math's file header says 20:42 and Long Table found it at about 20:39 on the machine clock. Either way it follows the 20:06 start of P1. Long Table's chronology file records the same order."
         }
       ]
+    },
+    {
+      "title": "Trace-game lift across a separating triangle or 4-cycle (conditional on the trace-game hypothesis)",
+      "statement": "The lift is proved: a trace-game win lifts across a separating triangle or induced 4-cycle, using pair-labelled bridge graphs and coloured snapshot gadgets. It is conditional on the universal trace-game hypothesis, which is open. The least-failure corollary (no separating triangle or 4-cycle in a least failure of the strengthened class) is conditional in the same way. No four- or five-connectivity of a plain failure follows.",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2044_math_to_navigator+longtable_revision-85-wording.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T02:55:00Z",
+          "text": "Revision 86, Math 20:44 wording: the lift is proved, the hypothesis is not."
+        }
+      ],
+      "id": "structural-trace-lift",
+      "revision": 86
+    },
+    {
+      "title": "D1 in the rigid triply locked case: reduction to (N) proved, (N) open",
+      "statement": "Reduction proved: in the rigid triply locked case D1 is equivalent to statement (N) about two neighbour states. (N) is open and so is D1. The case cannot occur at orders 12, 14, 15, and is forced to colour class sizes (4,4,4,4) at 17 and (4,5,4,4) at 18. (N) needs a third-order or global fact.",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2044_math_to_navigator+longtable_revision-85-wording.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T02:55:00Z",
+          "text": "Revision 86, Math 20:44 wording: what is accepted is the reduction, not D1."
+        }
+      ],
+      "id": "structural-d1-rigid",
+      "revision": 86
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T02:55:00Z",
+          "text": "Revision 86, Math 20:44: Theorem P is accepted by hand for the belt G_n as defined in belt-joined.md, with at most 3(n0-2)+n-3 swaps. Not compiled. Status stays exploring."
+        }
+      ],
+      "id": "structural-equal-pole",
+      "revision": 86
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T02:55:00Z",
+          "text": "Revision 86, user decision 20:48 MDT (message 2026-10-05_2048_user_...standing-release-navigator-gates.md): the user waived the per-run release and said the navigator leads and gates success. The process in START-HERE section 5 stays, including Math's written go-ahead naming the declaration hash and package commit. Status words and acceptance of results as success are the navigator's, on Math's review. No finite check becomes a proof. No cost limit was stated, so declared caps apply. Holdouts and the stopped list (WP12, new rank fitting, censuses without a declaration) are unchanged. The rules amendment is not adopted."
+        },
+        {
+          "time": "2026-10-06T02:55:00Z",
+          "text": "Gates for success are in the revision 86 message. None is met yet."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 86
     }
   ]
 }
