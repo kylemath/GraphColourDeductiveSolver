@@ -12,11 +12,13 @@ from coset_potential import orient
 
 def graphs_from(arg):
     if arg.startswith('gt:'):
+        gi = -1
         for line in open(arg[3:]):
             t = line.split()
             if not t or t[0] != 'G': continue
+            gi += 1
             nf = int(t[3]); x = list(map(int, t[4:4 + 3 * nf]))
-            yield '%s#%s' % (arg[3:].split('/')[-1], t[2][:12]), orient([tuple(x[3 * i:3 * i + 3]) for i in range(nf)])
+            yield '%s#%d' % (arg[3:].split('/')[-1], gi), orient([tuple(x[3 * i:3 * i + 3]) for i in range(nf)])
     else:
         yield arg, [tuple(f) for f in json.load(open(arg))['faces']]
 

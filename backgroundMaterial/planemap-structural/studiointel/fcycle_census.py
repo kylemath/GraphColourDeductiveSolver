@@ -32,31 +32,35 @@ def is55656(ds):
         if r in ((5,5,6,5,6), (6,5,6,5,5)): return True
     return False
 
-cycles = []; res = Counter(); canon_len = Counter(); kills = []; nholes = 0; paths = 0
-for arg in sys.argv[1:]:
-    for name, Fc in graphs_from(arg):
-        if graphs.n_separating_triangles(Fc): continue
-        deg = graphs.degrees(Fc)
-        for v in sorted(u for u in deg if deg[u] == 5):
-            order, idx, nb, link = radius.prepare(Fc, v)
-            ds = tuple(deg[order[i]] for i in link)
-            if not is55656(ds): continue
-            nholes += 1; seen = set()
-            for s in radius.enumerate_states(nb, 10 ** 7):
-                if radius.classify(nb, link, s) != 2 or s in seen: continue
-                orb = [s]; cur = s; cyc = False
-                while True:
-                    cur = F(nb, link, cur)
-                    if cur == s: cyc = True; break
-                    if radius.classify(nb, link, cur) != 2: break
-                    orb.append(cur)
-                    if len(orb) > 100000: break
-                if not cyc: paths += 1; continue
-                cs = frozenset(radius.canon(x) for x in orb)
-                key = (name, v, min(cs))
-                if key in seen: continue
-                seen.add(key); seen.update(orb)
-                L = len(orb); res[L] += 1; canon_len[len(cs)] += 1; cycles.append({'graph': name, 'hole': v, 'link_degrees': ds, 'labelled_length': L, 'canonical_length': len(cs)})
-                if L % 15: kills.append({'graph': name, 'hole': v, 'labelled_length': L, 'state': list(s)})
-print(json.dumps({'holes_55656': nholes, 'DL_orbits_ending_in_paths_(starts)': paths, 'cycle_labelled_lengths': dict(sorted(res.items())),
-                  'cycle_canonical_lengths': dict(sorted(canon_len.items())), 'kills_not_mult_15': len(kills), 'first_kills': kills[:3], 'cycles': cycles[:50]}))
+def main():
+    cycles = []; res = Counter(); canon_len = Counter(); kills = []; nholes = 0; paths = 0
+    for arg in sys.argv[1:]:
+        for name, Fc in graphs_from(arg):
+            if graphs.n_separating_triangles(Fc): continue
+            deg = graphs.degrees(Fc)
+            for v in sorted(u for u in deg if deg[u] == 5):
+                order, idx, nb, link = radius.prepare(Fc, v)
+                ds = tuple(deg[order[i]] for i in link)
+                if not is55656(ds): continue
+                nholes += 1; seen = set()
+                for s in radius.enumerate_states(nb, 10 ** 7):
+                    if radius.classify(nb, link, s) != 2 or s in seen: continue
+                    orb = [s]; cur = s; cyc = False
+                    while True:
+                        cur = F(nb, link, cur)
+                        if cur == s: cyc = True; break
+                        if radius.classify(nb, link, cur) != 2: break
+                        orb.append(cur)
+                        if len(orb) > 100000: break
+                    if not cyc: paths += 1; continue
+                    cs = frozenset(radius.canon(x) for x in orb)
+                    key = (name, v, min(cs))
+                    if key in seen: continue
+                    seen.add(key); seen.update(orb)
+                    L = len(orb); res[L] += 1; canon_len[len(cs)] += 1; cycles.append({'graph': name, 'hole': v, 'link_degrees': ds, 'labelled_length': L, 'canonical_length': len(cs)})
+                    if L % 15: kills.append({'graph': name, 'hole': v, 'labelled_length': L, 'state': list(s)})
+    print(json.dumps({'holes_55656': nholes, 'DL_orbits_ending_in_paths_(starts)': paths, 'cycle_labelled_lengths': dict(sorted(res.items())),
+                      'cycle_canonical_lengths': dict(sorted(canon_len.items())), 'kills_not_mult_15': len(kills), 'first_kills': kills[:3], 'cycles': cycles[:50]}))
+
+if __name__ == '__main__':
+    main()
