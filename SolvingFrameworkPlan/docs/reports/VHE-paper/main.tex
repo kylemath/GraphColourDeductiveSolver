@@ -355,6 +355,22 @@ The proof classifies the colours on the outer ring forced by the two lock paths 
 This only says where to look. A fill lemma for every hole of that class would imply VH$\exists$, so it is at least as hard.
 % MSG/..._1248_audit_..._fill-lemma-equals-VHE-strength.md item 1.
 
+\begin{theorem}[Theorem HP; \lab{hand}]\label{thm:HP}
+Let $v$ have degree $5$, let four of its neighbours have degree $5$, and let the fifth have any degree. Then every doubly locked state at $v$ has Kempe radius at most $6$; in particular $v$ is clean.
+\end{theorem}
+% Navigator revision 122 (MSG/..._1312_navigator_..._revision-122.md): structural-theorem-hp = proved [hand].
+Status, as for Theorem~\ref{thm:H}: accepted on a Math review worker's verdict (correct, with two wording fixes); not compiled and not audited. The computed claims on its source page are unverified, and its order-22 example is not cited here because no face list has been published. It does not cover holes with two or more neighbours of degree at least $6$.
+
+\subsection{A conditional reduction to one lemma}
+\paragraph{Lemma R$^\ast$} (\lab{open}). In every 4-connected member of the class $\mathcal C$, some degree-5 vertex off $\varphi$ has every doubly locked state reach a filled state by finitely many Kempe swaps.
+% Navigator revision 119 (statement of R*) and revision 122.
+\begin{theorem}[\lab{hand}]
+Lemma R$^\ast$ implies $\mathrm{VH}_{\mathcal C}$, hence VH$\exists$, hence 4-colourability.
+\end{theorem}
+% Navigator revision 122: structural-chain-rstar = proved as a conditional theorem; six links reviewed by a Math worker and re-derived independently by the audit (13:25).
+% Inputs: MathTriangleCarryResearch.md, VacancyCliqueLift, MathFourConnectedResearch.md Prop 1, the order bound, Theorem A (vh-exists.md). Source page WK/MathReviewCleanToVHE.md.
+The six links of this chain were reviewed by a Math sub-agent and re-derived independently by the audit. \textbf{Nothing about the Four Colour Theorem is proved by this:} Lemma R$^\ast$ is open, and it is at least as strong as VH$\exists$, not weaker.
+
 \subsection{Conditional lifts and reductions}
 The following are accepted hand results whose use depends on open hypotheses.
 \begin{itemize}
@@ -430,7 +446,7 @@ None of these refutes VH$\exists$. Every state on an infinite chain still fills:
 % Audit 0926 item 4.
 \emph{Lesson.} Locks persist, but a fill does not need the lock to break along the $F$-orbit: the Kempe class is larger than the orbit.
 
-\paragraph{The family $A_r$.} Two lemmas of Long Table are accepted by hand after Math's independent review: $F$ and the lock test commute with the 5-fold rotation and with colour renaming (Lemma~A), and an orbit is infinite once four lock checks hold and $F^4s=\pi\circ s\circ\sigma$ for a rotation $\sigma$ and a colour permutation $\pi$ (Lemma~B). \lab{hand} The number of infinite-chain classes for $r=3,\dots,9$ is $20,20,60,100,220,420,860$, which is $20$ times a Jacobsthal number. \lab{computed} That this continues for every $r$ (Conjecture~J) is \lab{open}.
+\paragraph{The family $A_r$.} Two lemmas of Long Table are accepted by hand after Math's independent review: $F$ and the lock test commute with the 5-fold rotation and with colour renaming (Lemma~A), and an orbit is infinite once four lock checks hold and $F^4s=\pi\circ s\circ\sigma$ for a rotation $\sigma$ and a colour permutation $\pi$ (Lemma~B). \lab{hand} The number of infinite-chain classes for $r=3,\dots,9$ is $20,20,60,100,220,420,860$, which is $20$ times a Jacobsthal number. \lab{computed} That this continues for every $r$ (the \emph{Jacobsthal count conjecture} for $A_r$, called Conjecture~J in Long Table's report; it is unrelated to the matching conjecture of Section~\ref{sec:open}) is \lab{open}.
 % MSG/..._0936_longtable_..._A-r-structure-census-and-lemma-B.md; MSG/..._1102_math_... items 3-5; ledger structural-a-structure note rev 109.
 % Lemma B is conditional on F^4 s = pi s sigma, which is only computed (MSG/..._1102_math_... item 3).
 
@@ -453,7 +469,8 @@ On 6 October the work moved from search to short, testable proof ideas (``pathwa
 % MSG/..._1152_math_... P-A item 3; ledger structural-pathway-a note rev 113.
 \item \emph{``The link degree class determines the fill bound'', killed} \lab{computed}. Every hole of an order-14 triangulation has class (5,5,5,5,6) and maximum radius 2; holes of $T_4$ with the same class have maximum radius 4.
 % MSG/..._1200_audit_... item 2; correction MSG/..._1248_audit_... item 2 (order 14: radius 2); ledger structural-pathway-a note rev 116.
-\item \emph{``(6,6,6,6,6) holes have radius 2'', killed} \lab{computed}. Radius 3 occurs at such holes at orders 22 and 23, on 69 of 3,966 doubly locked states over 78 holes. The audit replayed this exactly. The ring-pattern argument of Theorem~\ref{thm:H} does not survive: 74 ring colourings are compatible with the locks instead of three.
+\item \emph{``(6,6,6,6,6) holes have radius 2'', killed} \lab{computed}. Radius 3 occurs at such holes at orders 22 and 23, on 69 of 3,966 doubly locked states over 78 holes. The audit replayed this exactly. The ring-pattern argument of Theorem~\ref{thm:H} does not survive: 74 ring colourings are compatible with the locks instead of three. Two of them have never been seen in data, and whether a Jordan argument excludes them is open \lab{hand}, conditional on the frame of Math's page.
+% Navigator revision 122: Math 13:08, unseen (6^5) patterns drop from four to two, conditional on the page's frame.
 % MSG/..._1218_math_... item 2; audit replay MSG/..._1232_audit_..._P-E-sixfive-replay-and-belt-argument.md item 1.
 % Math's page WK/MathSixFiveHole.md is a worker page not reviewed line by line.
 \item \emph{The (6,6,6,6,6) ring automaton (K-A1), killed} \lab{computed}, exploratory: an automaton on the 74 ring patterns has a closed adversary trap of 5,650 abstract states that stay doubly locked, so it gives no radius bound. This is Math's worker computation, not replayed by the audit.
@@ -549,7 +566,7 @@ Everything in this section is \lab{open}.
 % Ledger structural-sep-d1, structural-math-t3 (unstarted).
 \item \textbf{Bounded fill length.} Whether $m(T)$ is bounded (no graph with $m\ge4$ is known), and whether every start has $\ell\le4$ (M1). On general graphs $\kappa$ is unbounded in $\ell$, so a bound must use planarity with four colours.
 % START-HERE.md section 6 "Open"; ledger structural-long-fill note.
-\item \textbf{Conjecture J} on the family $A_r$, and the claim that its doubly locked states have radius 2 for every $r\ge4$.
+\item \textbf{The Jacobsthal count conjecture} on the family $A_r$ (Section~\ref{sec:neg}), and the claim that its doubly locked states have radius 2 for every $r\ge4$.
 % MSG/..._1102_math_... items 2 and 5.
 \end{enumerate}
 
@@ -561,7 +578,8 @@ Everything in this section is \lab{open}.
 \item \emph{Edge-colouring view (P-D).} In Tait language the two locks are two two-colour paths through the pentagon node (Lemma~\ref{lem:tait}, \lab{hand}, not yet reviewed). Parity invariants and local rules fail (Section~\ref{sec:neg}), so whether a lock persists depends on colours at distance 3 or more from the hole; what is needed is a global, Jordan-type argument about the two lock paths.
 % MSG/..._1239_longtable_... "Reading"; P-B was closed into P-A at revision 119.
 % Ledger structural-pathway-d notes rev 116 and 119.
-\item \emph{Vacancy D-reducibility.} Math has proposed a finite game on the 2-ball around a hole, in the spirit of D-reducibility, as a P-A statement. First runs found the 2-balls of $T_4$ and of an icosahedral hole reducible, and the pentakis (6,6,6,6,6) 2-ball not reducible. These are \lab{computed}, exploratory, and await the audit's replay; that a reducible ball forces a fill rests only on Math's hand reading, and no unavoidable family is known.
+\item \emph{Vacancy D-reducibility.} Math has proposed a finite game on the 2-ball around a hole, in the spirit of D-reducibility, as a P-A statement. First runs found the 2-balls of $T_4$ and of an icosahedral hole reducible, and the pentakis (6,6,6,6,6) 2-ball not reducible. These are \lab{computed}, exploratory, and await the audit's replay; that a reducible ball forces a fill rests only on Math's hand reading, and no unavoidable family is known. A refinement found 4 of the 8 2-balls with degrees in $\{5,6\}$ reducible (one of them, (5,5,6,5,6), not yet through the verifier), and every degree sequence with three or more 6s fails, so 2-balls alone cannot cover the class of Section~\ref{sec:failure} \lab{computed}, exploratory, not replayed by the audit. The claim that two of the matchings determine the third is false; Math's \emph{matching realisability conjecture} (every matching triple is realised; proved to ring 6) is \lab{open}, and is distinct from the Jacobsthal count conjecture.
+% Navigator revision 122 "D-reducibility refinement" (Math 13:03).
 % Math 12:43 (b1bd72d) as recorded in Navigator revision 120 "Vacancy D-reducibility": pending the audit.
 \end{itemize}
 
