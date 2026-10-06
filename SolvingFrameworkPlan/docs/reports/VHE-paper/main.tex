@@ -259,14 +259,16 @@ Lean name: \texttt{SimpleGraph.TheoremPPole.theoremP}. It needs no no-singleton 
 \subsection{Holes and Euler counting (6 October, afternoon)}\label{sec:lean-late}
 These results were written in Lean on the second machine and passed the independent audit's own checks there (a full build, an axiom sweep and a negative control). \lab{compiled}
 % Navigator revision 130 (MSG/..._1444_navigator_..._revision-130.md), section "Paper".
-% Audit verdicts: J5 PASSED (10c3744), J6 PASSED (b726a87), J7 PASSED (8a74fd6); outputs e9e02f2, c3fd7ed on studio-wp21.
+% Audit verdicts: J5 PASSED (10c3744), J6 PASSED (b726a87), J7 PASSED (8a74fd6), J8 PASSED (6222b27), J9 PASSED; outputs e9e02f2, c3fd7ed, 072367c, 398931c on studio-wp21.
 \begin{itemize}
 \item \texttt{SimpleGraph.SphericalMap.theorem\_H}: Theorem~\ref{thm:H}, stated from graph hypotheses (the map is triangulated, $h$ and every neighbour of $h$ have degree 5, and no separating triangle passes through $h$); the icosahedral structure of the two-ball is derived (\texttt{icoBall\_of\_triangulated}). It is non-vacuous on the icosahedron. It supersedes the earlier form \texttt{ico\_fill}, which assumed that structure as a hypothesis.
 \item \texttt{SimpleGraph.SphericalMap.twelve\_light\_fives}: in a triangulated spherical map of minimum degree 5, at least 12 degree-5 vertices have at most one neighbour of degree at least 12; with \texttt{edge\_card\_bound\_sharp}, $|E|+2\le n+|F|$ for any map with an edge, no connectivity assumed.
 \item \texttt{relative\_light\_fives}: the same count in the relative class of Section~\ref{sec:failure}, giving at least $9-n_4$ such vertices off $\varphi$, where $n_4$ is the number of degree-4 vertices on $\varphi$. This is the counting input of one link of the conditional reduction of Section~\ref{sec:failure}; the reduction itself remains \lab{hand}.
+\item \texttt{SimpleGraph.SphericalMap.theorem\_HP}: Theorem~\ref{thm:HP} from graph hypotheses, radius at most 6 for every colouring, with nothing assumed about the fifth neighbour. Non-vacuity is shown only with that neighbour of degree 5.
+% Navigator revision 131: structural-theorem-hp-lean compiled and audited, J8 PASSED (6222b27), evidence 072367c.
+\item \texttt{four\_color\_of\_global\_Rstar}: if every connected minimum-degree-5 spherical triangulation has a degree-5 vertex at which every proper colouring of the deletion reaches a filled state by finitely many pure Kempe swaps, then every spherical map is 4-colourable. The hypothesis is open and \emph{global}: it is stronger than Lemma R$^\ast$ of Section~\ref{sec:failure}, which asks only about 4-connected members of the relative class. The reduction from that core-class form (link D: the separating-triangle lift and the relative class) is in progress and not compiled.
+% Audit J9 verdict MSG/..._1449_audit_..._J9-verdict-global-Rstar-implies-4CT-compiled.md (ledger wording quoted there); revision 131 nodes structural-rstar-lean-global (compiled), structural-rstar-lean-link-d (in progress). Evidence 398931c.
 \end{itemize}
-\texttt{SimpleGraph.SphericalMap.theorem\_HP} (Theorem~\ref{thm:HP}, radius at most 6, nothing assumed about the fifth neighbour) is built and checked on the second machine; the audit's verdict is pending, so it is not labelled \lab{compiled}. \lab{built, audit pending}
-% Revision 130: structural-theorem-hp-lean in-progress; commits 51f222b, merged 24563a3; J8 outputs posted (072367c), no verdict.
 
 \subsection{Built, not audited}\label{sec:lean-unaudited}
 Two further results are built in Lean with no \texttt{sorry} and only the standard axioms, by Math's own checks, but are in no module audit. They are therefore \emph{not} labelled \lab{compiled} here. The ledger marks them in progress.
@@ -364,7 +366,7 @@ Let $v$ have degree $5$, let all five neighbours of $v$ have degree $5$, and let
 \end{theorem}
 % WK/MathRadiusGeometry.md item 1 and "Erratum": distinctness of the w_t is a hypothesis. Ledger structural-theorem-h = proved,
 % title "accepted by hand, not compiled, not audited". MSG/..._1102_math_... item 1.
-The proof classifies the colours on the outer ring forced by the two lock paths into three patterns, and gives an explicit lock-breaking swap for two of them. Status of the hand proof: two independent Math-team hand reviews (a Math worker; Studio Math), not audited. A Lean version from graph hypotheses is compiled and audited, and non-vacuous on the icosahedron (\texttt{theorem\_H}, Section~\ref{sec:lean-late}). The theorem does not extend verbatim to holes with a degree-6 neighbour (Section~\ref{sec:neg}).
+The proof classifies the colours on the outer ring forced by the two lock paths into three patterns, and gives an explicit lock-breaking swap for two of them. Status of the hand proof: two independent Math-team hand reviews (a Math worker; Studio Math). A Lean version from graph hypotheses is compiled and audited, and non-vacuous on the icosahedron (\texttt{theorem\_H}, Section~\ref{sec:lean-late}). The theorem does not extend verbatim to holes with a degree-6 neighbour (Section~\ref{sec:neg}).
 % Revision 124 (two hand reviews) and revision 130 (theorem_H compiled and audited, J6; supersedes ico_fill under IcoBall).
 % MSG/..._1102_math_... item 1 ("Math's reading"); WK/MathRadiusGeometry.md section 3 "Not covered".
 
@@ -380,8 +382,9 @@ This only says where to look. A fill lemma for every hole of that class would im
 Let $v$ have degree $5$, let four of its neighbours have degree $5$, and let the fifth have any degree. Then every doubly locked state at $v$ has Kempe radius at most $6$; in particular $v$ is clean.
 \end{theorem}
 % Navigator revision 122 (MSG/..._1312_navigator_..._revision-122.md): structural-theorem-hp = proved [hand].
-Status of the hand proof: two independent Math-team hand reviews (a Math worker; Studio Math), not audited. A Lean version is built, audit pending (Section~\ref{sec:lean-late}).
-% Revision 124 (wording); revision 130 (structural-theorem-hp-lean in-progress). The computed claims on its source page are unverified, and its order-22 example is not cited here because no face list has been published. It does not cover holes with two or more neighbours of degree at least $6$.
+Status of the hand proof: two independent Math-team hand reviews (a Math worker; Studio Math), and an independent hand re-derivation by the audit. A Lean version from graph hypotheses is compiled and audited (Section~\ref{sec:lean-late}).
+% Revision 124 (wording); revision 127 (audit's hand re-derivation); revision 131 (Lean J8 passed).
+The computed claims on its source page are unverified, and its order-22 example is not cited here because no face list has been published. It does not cover holes with two or more neighbours of degree at least $6$.
 
 \subsection{A conditional reduction to one lemma}
 \paragraph{Lemma R$^\ast$} (\lab{open}). In every 4-connected member of the class $\mathcal C$, some degree-5 vertex off $\varphi$ has every doubly locked state reach a filled state by finitely many Kempe swaps.
@@ -391,7 +394,7 @@ Lemma R$^\ast$ implies $\mathrm{VH}_{\mathcal C}$, hence VH$\exists$, hence 4-co
 \end{theorem}
 % Navigator revision 122: structural-chain-rstar = proved as a conditional theorem; six links reviewed by a Math worker and re-derived independently by the audit (13:25).
 % Inputs: MathTriangleCarryResearch.md, VacancyCliqueLift, MathFourConnectedResearch.md Prop 1, the order bound, Theorem A (vh-exists.md). Source page WK/MathReviewCleanToVHE.md.
-The six links of this chain were reviewed by a Math sub-agent and re-derived independently by the audit. \textbf{Nothing about the Four Colour Theorem is proved by this:} Lemma R$^\ast$ is open, and it is at least as strong as VH$\exists$, not weaker. Only the counting input of one link is compiled (\texttt{relative\_light\_fives}).
+The six links of this chain were reviewed by a Math sub-agent and re-derived independently by the audit. \textbf{Nothing about the Four Colour Theorem is proved by this:} Lemma R$^\ast$ is open, and it is at least as strong as VH$\exists$, not weaker. In Lean, the counting input of one link is compiled (\texttt{relative\_light\_fives}), and the last links are compiled in the form \texttt{four\_color\_of\_global\_Rstar} (Section~\ref{sec:lean-late}), whose hypothesis is open and global; the reduction from the core-class Lemma R$^\ast$ to that global hypothesis (link D) is not yet compiled. So R$^\ast$ is not yet, even in Lean, the only thing that remains.
 
 \subsection{Conditional lifts and reductions}
 The following are accepted hand results whose use depends on open hypotheses.
@@ -613,18 +616,18 @@ Everything in this section is \lab{open}.
 % Bibliographic details: from the repository's notes (literature-check.md; the LaTeX bibliography entries found by grep in the repo for appel1977 and robertson1997;
 % Florek arXiv number from REP/BeltParallelProofReview.md). Entries without a VERIFY mark were taken from the repository bibliography paper/references.bib; none was checked against the original by a human.
 \bibitem{appel1977} K.~Appel and W.~Haken, Every planar map is four colorable. Part~I: Discharging, \emph{Illinois J. Math.} 21(3) (1977) 429--490. % paper/references.bib
-\bibitem{birkhoff1913} G.~D.~Birkhoff, The reducibility of maps, \emph{Amer. J. Math.} 35 (1913). % VERIFY pages: repo notes give both 114--128 and 115--128
+\bibitem{birkhoff1913} G.~D.~Birkhoff, The reducibility of maps, \emph{Amer. J. Math.} 35(2) (1913) 115--128. % audit 14:48 item 1 (secondary sources; original not opened)
 \bibitem{mohar2009} B.~Mohar and J.~Salas, A new Kempe invariant and the (non)-ergodicity of the Wang--Swendsen--Koteck\'y algorithm, \emph{J. Phys. A} 42 (2009) 225204; arXiv:0901.1010. % literature-check.md section 3; journal number from Navigator revision 120 (audit 13:05)
-\bibitem{plantri} G.~Brinkmann and B.~D.~McKay, \texttt{plantri} (program), version 5.8. % VERIFY citation form
-\bibitem{florek2025} J.~Florek, arXiv:2511.00485 (2025). % year from WK/PaperReading.md ("the 2025 paper"); VERIFY title
-\bibitem{gonthier} G.~Gonthier, Formal proof---the Four-Colour Theorem, \emph{Notices Amer. Math. Soc.} 55 (2008). % VERIFY; repo notes date the Coq formalisation 2005
+\bibitem{plantri} G.~Brinkmann and B.~D.~McKay, Fast generation of planar graphs, \emph{MATCH Commun. Math. Comput. Chem.} 58(2) (2007) 323--357; program \texttt{plantri} version 5.8, \url{https://users.cecs.anu.edu.au/~bdm/plantri/}. % audit 14:48 item 3; tarball SHA-256 e78a9441...29b8 per the WP20 declaration
+\bibitem{florek2025} J.~Florek, Kempe equivalence of 4-colourings of some plane triangulations, arXiv:2511.00485 (2025). % audit 14:48 item 2 (arXiv abstract page)
+\bibitem{gonthier} G.~Gonthier, Formal proof---the four-color theorem, \emph{Notices Amer. Math. Soc.} 55(11) (2008) 1382--1393. % audit 14:48 item 4; the repo's 2005 is the Coq development
 \bibitem{heawood1890} P.~J.~Heawood, Map-colour theorem, \emph{Quart. J. Pure Appl. Math.} 24 (1890) 332--338. % paper/references.bib
 \bibitem{inoue2026} Y.~Inoue, K.~Kawarabayashi, A.~Miyashita, B.~Mohar, C.~Thomassen and M.~Thorup, The Four Color Theorem with linearly many reducible configurations and near-linear time coloring, arXiv:2603.24880 (2026). % from literature-check.md section 1
 \bibitem{kempe1879} A.~B.~Kempe, On the geographical problem of the four colours, \emph{Amer. J. Math.} 2(3) (1879) 193--200. % paper/references.bib
 \bibitem{meyniel1978} H.~Meyniel, Les 5-colorations d'un graphe planaire forment une classe de commutation unique, \emph{J. Combin. Theory Ser. B} 24(3) (1978) 251--257. % paper/references.bib
 \bibitem{robertson1997} N.~Robertson, D.~P.~Sanders, P.~Seymour and R.~Thomas, The four-colour theorem, \emph{J. Combin. Theory Ser. B} 70(1) (1997) 2--44. % paper/references.bib
-\bibitem{saatykainen} T.~L.~Saaty and P.~C.~Kainen, \emph{The Four-Color Problem: Assaults and Conquest}, McGraw--Hill (1977). % VERIFY all details; named in pd2_lock_proof.md and pathway-D.md without a reference
-\bibitem{tait1880} P.~G.~Tait, Remarks on the colouring of maps, \emph{Proc. Roy. Soc. Edinburgh} 10 (1880). % VERIFY all details; named as "Tait 1880" in the repo
+\bibitem{saatykainen} T.~L.~Saaty and P.~C.~Kainen, \emph{The Four-Color Problem: Assaults and Conquest}, McGraw--Hill, New York (1977); corrected reprint, Dover, New York (1986). % audit 14:48 item 5
+\bibitem{tait1880} P.~G.~Tait, On the colouring of maps, \emph{Proc. Roy. Soc. Edinburgh} 10 (1880) 501--503; and Note on a theorem in the geometry of position, \emph{Trans. Roy. Soc. Edinburgh} 29 (1880) 657--660. Cited for the edge-colouring correspondence; not checked against the originals. % audit 14:48 item 6 (recommended pair; Pritchard-Forfar bibliography). VERIFY which item states the correspondence
 \bibitem{tilley2018} J.~Tilley, Kempe-locking configurations, \emph{Mathematics} 6(12):309 (2018); arXiv:1809.02807. % from literature-check.md section 2
 \end{thebibliography}
 \end{document}
