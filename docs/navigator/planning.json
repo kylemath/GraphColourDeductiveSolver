@@ -1,7 +1,12 @@
 {
-  "revision": 99,
-  "updatedAt": "2026-10-06T09:15:00-06:00",
+  "revision": 100,
+  "updatedAt": "2026-10-06T09:22:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T15:40:00Z",
+      "node": "structural-conj-l-refuted",
+      "action": "Revision 100 records Long Table's refutation candidate for Conjecture L: a length-6 chain on a 20-vertex triangulation (W6) and an all-locked periodic F-orbit on a 17-vertex stacked antiprism (A_3), reproduced by the lead's own verifier and by the navigator's run of it, status computed and killed only after replay by Math or the audit. It does not touch the vacancy hypothesis or cleanness. It also records the two-machine assignment (the Studio takes WP21 phases A and B and a P1 replay; the first Mac keeps P1 chunks 4 to 9): the package hashes were checked against the announcement and agree, the new orchestration files are outside the announced package, and WP21 on the Studio departs from the declaration's text that it runs after P1 finishes. The coordinator's plan message is recorded as agreed rules and assignments. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T15:20:00Z",
       "node": "structural-math-t3-attack",
@@ -8676,6 +8681,98 @@
       ],
       "id": "structural-vacancy",
       "revision": 99
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-vh-lock-persistence",
+      "revision": 100,
+      "node": {
+        "id": "structural-conj-l-refuted",
+        "title": "Conjecture L refuted as stated by finite certificates, pending replay by Math and the audit",
+        "status": "computed",
+        "statement": "Conjecture L (an absolute bound N on chains of consecutive doubly locked F-iterates) is false as stated. Certificate W6: a 20-vertex plane triangulation (degrees 3 to 8) with a degree-5 hole v, where s, F(s), ..., F^5(s) are doubly locked and F^6(s) is not, so N = 5 fails. Certificate A_3: a 5-fold symmetric stacked-antiprism triangulation on 17 vertices (twelve of degree 5, five of degree 6) with a colouring whose F-orbit has period 60 on raw colours and all 60 states doubly locked, so no N works. The team also reports A_4 (22 vertices) and A_5 (27 vertices); those are team claims, not rechecked by the lead. This is NOT a counterexample to the vacancy hypothesis or to cleanness: on A_3 the Kempe class of such a state contains filled states (40 of 100 canonical states) and the Kempe distance to a filled state is 2 or 3 (team data, not rechecked by the lead). Math's own implication was one-directional, a targetless component gives an infinite chain, and the converse fails.",
+        "approach": "Explicit finite objects, reproduced by the lead's own verifier lead_verify_L.py, which shares no code with the team's. The definitions are Math's (repeat index, doubly locked, F as the swap of the alpha-gamma component of x(j+2)). Status: computed, not killed. The ledger kills a universal claim on a finite counterexample only after an independent replay, and Math's check against its own definitions and the audit's replay are pending, so the parent node keeps its exploring status and this node is the recorded refutation candidate. W6 and A_3 were found by hill-climbing and by symmetry; the prototype search reached the kill before it was pre-registered, and Long Table says so. The repaired conjecture, a bounded Kempe radius to a filled state with infinity meaning targetless, is a conjecture and has no data beyond A_3 to A_5 and the sampled states.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/l-attack.md",
+          "backgroundMaterial/planemap-structural/longtable/explore-vhphi/lead_verify_L.py",
+          "backgroundMaterial/planemap-structural/longtable/explore-vhphi/lattack_witness.py",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0915_longtable_to_math+navigator+audit+coordination_conjecture-L-false.md"
+        ],
+        "evidence": "Navigator check: the committed lead verifier, run now, prints chain length 6 for W6 with state 6 not doubly locked, and period 60 for A_3 on a 17-vertex graph with degrees as stated. The navigator did not check the definitions against Math's text or the triangulations by hand. The report notes that unbiased random sampling gives about 94 percent chain length 1, unlike the split Math reported; the difference may be the sampler.",
+        "killCriteria": "",
+        "notes": [
+          {
+            "time": "2026-10-06T15:40:00Z",
+            "text": "Revision 100. Becomes killed when Math or the audit replays W6 and A_3 from their definitions. A_4 and A_5 need a replay of their own before they are cited."
+          }
+        ],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "title": "Conjecture L (lock persistence) and the F-orbit structure: refuted as stated, pending replay",
+      "notes": [
+        {
+          "time": "2026-10-06T15:40:00Z",
+          "text": "Revision 100: Long Table 09:15 reports Conjecture L false as stated (see node structural-conj-l-refuted). The node stays exploring until Math or the audit replays the certificates. This does not touch the vacancy hypothesis, cleanness, or the clean-vertex route beyond removing lock persistence as a way to prove cleanness. The repaired conjecture (bounded Kempe radius) is a conjecture. Math's warning (Proposition 3, L at degree 5 would give an elementary proof of the Four Colour Theorem) is now moot for L as stated."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0915_longtable_to_math+navigator+audit+coordination_conjecture-L-false.md"
+      ],
+      "id": "structural-vh-lock-persistence",
+      "revision": 100
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:40:00Z",
+          "text": "Revision 100: K4 to K6 and the F-chain route are overtaken by the refutation candidate for L; they stay proposed killed and unreviewed."
+        }
+      ],
+      "id": "structural-vh-killed-lines",
+      "revision": 100
+    },
+    {
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/wp21/PACKAGE-SHA256SUMS",
+        "backgroundMaterial/planemap-structural/longtable/wp21/CHRONOLOGY.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0918_longtable_to_coordination+navigator+math+audit+user_two-machine-assignment.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0932_coordination_to_longtable+math+navigator+audit+user_plan-and-assignments.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T15:40:00Z",
+          "text": "Revision 100, machine assignment (Long Table 09:18, commits 76ab3d0, 2d88e1f, e6110ff; coordinator plan 09:32, relayed and approved at 09:30). WP21 phases A and B and their sharded checks are to be produced on the Mac Studio, in parallel with WP20 P1 on the first Mac; the independent checks of the Studio outputs are repeated on the first Mac. Results go to a branch studio-wp21, not main. Navigator verification: wp21/PACKAGE-SHA256SUMS lists 16 files and shasum -c prints OK for all 16 on the first Mac; the eleven WP21 entries equal the eleven hashes of the 08:29 announcement (declaration v2 8fdd1aa5, producer bb350d3b, runner 2961bed1, search b905888e, launcher 0c7fcc61, d1_check21 93975b05, sharded checker ed941b99, selector 7ed04b3d, seeds 18419a8d, report bf157327, selection 24e381cb), and wp21_pipeline.sh on disk equals the announced 5873ed8c, which is not in PACKAGE-SHA256SUMS. No difference found. The new orchestration files are NOT in the announced package: wp21_studio.sh 7558b47c, wp20_replay_studio.sh a772b271, wp21_mac_checks.sh 047f5c4a, wp_compare_outputs.py 6d62589f and PACKAGE-SHA256SUMS 2bfdf5d2 (all equal the hashes Long Table cites); Long Table cites them as orchestration only, and they should be added to the announcement or a short addendum. One departure to flag: the version 2 declaration (lines 47 and 73) and the announcement say the pipeline runs after WP20 P1 has finished, and the assignment runs WP21 on the Studio while P1 is still running. The declaration does not name a machine and sequencing is not a statistical element, but the text and the plan differ, so the chronology and reports must state it. Nothing has run on WP21 data; the first Mac WP21 pipeline was stopped (Long Table). These are runs without a Math go-ahead under the user's standing decision, and reports must say so."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 100
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0932_coordination_to_longtable+math+navigator+audit+user_plan-and-assignments.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T15:40:00Z",
+          "text": "Revision 100. P1 stays on the first Mac, chunks 4 to 9 (the chunk log for chunk 4 existed at 09:2x; chunks 0 to 3 are done), then the checker --all, the report and a digest of the merged output. The Studio is to run a replay of the whole of P1 (order 25, every graph, 254 shards, unchanged producer and declaration) and compare by content digest. Label it a replay, not a second pass: the declaration says each phase is one pass, and the replay is a reproduction of the same declared run on other hardware. Chronology and report must record the machine of every run, the checks being done on a machine that did not produce the output (each Studio output checked on the first Mac; the Studio replay compared with the first Mac), and RECORD.txt for each Studio run. A difference between the two machines is reported, not smoothed. The audit's pre-registered replay (own implementation, 1 percent sample) is still a gate."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 100
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T15:40:00Z",
+          "text": "Revision 100, new gates from the coordinator plan (09:32), recorded as agreed rules: every producer output is checked by a machine or implementation that did not produce it, with the machine recorded in the run's RECORD.txt; partial, capped or interrupted runs are inconclusive; no Math go-ahead is needed for a declared run, and each report says none was given. The plan's assignments: Math checks the Conjecture L refutation and assesses the repaired conjecture; the audit replays the L certificates including A_4 and A_5, finishes the order-24 pass and the ring-chord check, and runs its pre-registered P1 replay; Long Table finishes P1 and pre-registers the Kempe-radius follow-up (S2) before any run. Conjecture L is killed-pending-replay at most until Math and the audit confirm. The vacancy hypothesis, D1 and (N) stay open."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 100
     }
   ]
 }
