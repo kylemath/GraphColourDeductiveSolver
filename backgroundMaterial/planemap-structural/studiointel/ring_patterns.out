@@ -1,0 +1,82 @@
+graphs 33 DL records (state x sense) 34148
+
+## (5,5,5,6,6) adjacent pair, all positions : records 10684  max radius 4
+  free (0, 1) pattern ddbab radii {2: 416}
+  free (0, 1) pattern dgbab radii {2: 208}
+  free (0, 1) pattern dgdbg radii {2: 24, 4: 32}
+  free (0, 1) pattern gdbab radii {2: 172}
+  free (0, 1) pattern ggbab radii {2: 856}
+  free (0, 1) pattern ggdbg radii {2: 112, 4: 24}
+  free (0, 4) pattern dgbab radii {2: 40}
+  free (0, 4) pattern dgbag radii {2: 64}
+  free (0, 4) pattern dgdbb radii {2: 152}
+  free (0, 4) pattern dgdbg radii {2: 72}
+  free (0, 4) pattern gdbab radii {2: 40, 3: 32}
+  free (0, 4) pattern gdbag radii {2: 48, 3: 24}
+  free (1, 2) pattern ddbab radii {2: 856}
+  free (1, 2) pattern dddbg radii {2: 112, 4: 24}
+  free (1, 2) pattern dgbab radii {2: 208}
+  free (1, 2) pattern dgdbg radii {2: 24, 4: 32}
+  free (1, 2) pattern gdbab radii {2: 172}
+  free (1, 2) pattern ggbab radii {2: 416}
+  free (2, 3) pattern dgbab radii {2: 40}
+  free (2, 3) pattern dgbbg radii {2: 152}
+  free (2, 3) pattern dgdab radii {2: 64}
+  free (2, 3) pattern dgdbg radii {2: 72}
+  free (2, 3) pattern gdbab radii {2: 40, 3: 32}
+  free (2, 3) pattern gddab radii {2: 48, 3: 24}
+  free (3, 4) pattern dgbab radii {2: 680}
+  free (3, 4) pattern dgbag radii {2: 64}
+  free (3, 4) pattern dgbbb radii {2: 2920}
+  free (3, 4) pattern dgbbg radii {2: 144}
+  free (3, 4) pattern dgdab radii {2: 64}
+  free (3, 4) pattern dgdag radii {2: 628}
+  free (3, 4) pattern dgdbb radii {2: 144}
+  free (3, 4) pattern dgdbg radii {2: 120}
+  free (3, 4) pattern gdbab radii {2: 80, 3: 56}
+  free (3, 4) pattern gdbbb radii {2: 1104, 3: 48}
+
+## (5,5,6,5,6) non-adjacent pair, all positions : records 3152  max radius 4
+  free (0, 2) pattern dgbab radii {2: 146}
+  free (0, 2) pattern dgdbg radii {2: 24}
+  free (0, 2) pattern gdbab radii {2: 108}
+  free (0, 2) pattern gddbg radii {2: 282, 3: 16}
+  free (0, 3) pattern dgbab radii {2: 48}
+  free (0, 3) pattern dgbbg radii {2: 80}
+  free (0, 3) pattern dgdab radii {2: 93, 3: 24}
+  free (0, 3) pattern dgdbg radii {2: 100, 3: 8}
+  free (0, 3) pattern gdbab radii {2: 14}
+  free (0, 3) pattern gdbbg radii {2: 228, 3: 40}
+  free (1, 3) pattern ddbab radii {2: 45}
+  free (1, 3) pattern ddbbg radii {2: 141, 3: 42, 4: 24}
+  free (1, 3) pattern dgbab radii {2: 144}
+  free (1, 3) pattern dgbbg radii {2: 69}
+  free (1, 3) pattern dgdab radii {2: 45}
+  free (1, 3) pattern dgdbg radii {2: 5, 3: 8}
+  free (1, 3) pattern gdbab radii {4: 8}
+  free (1, 3) pattern ggbab radii {2: 13}
+  free (1, 3) pattern ggdab radii {2: 44, 3: 41, 4: 24}
+  free (1, 4) pattern ddbab radii {2: 13}
+  free (1, 4) pattern ddbag radii {2: 44, 3: 41, 4: 24}
+  free (1, 4) pattern dgbab radii {2: 144}
+  free (1, 4) pattern dgbag radii {2: 45}
+  free (1, 4) pattern dgdbb radii {2: 69}
+  free (1, 4) pattern dgdbg radii {2: 5, 3: 8}
+  free (1, 4) pattern gdbab radii {4: 8}
+  free (1, 4) pattern ggbab radii {2: 45}
+  free (1, 4) pattern ggdbb radii {2: 141, 3: 42, 4: 24}
+  free (2, 4) pattern dgbab radii {2: 48}
+  free (2, 4) pattern dgbag radii {2: 93, 3: 24}
+  free (2, 4) pattern dgdbb radii {2: 80}
+  free (2, 4) pattern dgdbg radii {2: 100, 3: 8}
+  free (2, 4) pattern gdbab radii {2: 14}
+  free (2, 4) pattern gddbb radii {2: 228, 3: 40}
+
+## E1 occurrences 696 [('T4', 4, 1, 3), ('T4', 4, -1, 3), ('T4', 5, 1, 3), ('T4', 5, -1, 3), ('T4', 13, 1, 3), ('T4', 13, -1, 3), ('T4', 14, 1, 3), ('T4', 14, -1, 3), ('A_3', 1, 1, 2), ('A_3', 1, -1, 2), ('A_3', 2, 1, 2), ('A_3', 2, -1, 2), ('A_3', 3, 1, 2), ('A_3', 3, -1, 2), ('A_3', 4, 1, 2), ('A_3', 4, -1, 2), ('A_3', 5, 1, 2), ('A_3', 5, -1, 2), ('A_3', 11, 1, 2), ('A_3', 11, -1, 2)]
+
+## E2 occurrences 628 [('T4', 4, 1, 2), ('T4', 4, -1, 2), ('T4', 5, 1, 2), ('T4', 5, -1, 2), ('T4', 13, 1, 2), ('T4', 13, -1, 2), ('T4', 14, 1, 2), ('T4', 14, -1, 2), ('A_3', 1, 1, 2), ('A_3', 1, -1, 2), ('A_3', 1, 1, 2), ('A_3', 1, -1, 2), ('A_3', 2, 1, 2), ('A_3', 2, -1, 2), ('A_3', 2, 1, 2), ('A_3', 2, -1, 2), ('A_3', 3, 1, 2), ('A_3', 3, -1, 2), ('A_3', 3, 1, 2), ('A_3', 3, -1, 2)]
+
+## pair {3,4} with pattern gdbbb or dgdag (m-data): Counter({('gdbbb', 'd', 'g', False, False, 2): 648, ('dgdag', 'b', 'b', False, False, 2): 628, ('gdbbb', 'a', 'a', False, False, 2): 120, ('gdbbb', 'a', 'g', False, True, 2): 100, ('gdbbb', 'd', 'a', True, False, 2): 100, ('gdbbb', 'a', 'g', False, False, 2): 68, ('gdbbb', 'd', 'a', False, False, 2): 68, ('gdbbb', 'd', 'g', False, False, 3): 48})
+
+## Intern B closed set (P_k = {k,k+2}): occurrences (k, pattern, radius) -> {(0, 'dgbab', 2): 146, (0, 'dgdbg', 2): 24, (0, 'gdbab', 2): 108, (0, 'gddbg', 2): 282, (0, 'gddbg', 3): 16, (1, 'ddbbg', 2): 141, (1, 'ddbbg', 3): 42, (1, 'ddbbg', 4): 24, (1, 'dgdbg', 2): 5, (1, 'dgdbg', 3): 8, (1, 'gdbab', 4): 8, (1, 'ggdab', 2): 44, (1, 'ggdab', 3): 41, (1, 'ggdab', 4): 24, (2, 'dgbag', 2): 93, (2, 'dgbag', 3): 24, (2, 'dgdbg', 2): 100, (2, 'dgdbg', 3): 8, (2, 'gdbab', 2): 14, (2, 'gddbb', 2): 228, (2, 'gddbb', 3): 40, (3, 'dgdab', 2): 93, (3, 'dgdab', 3): 24, (3, 'dgdbg', 2): 100, (3, 'dgdbg', 3): 8, (3, 'gdbab', 2): 14, (3, 'gdbbg', 2): 228, (3, 'gdbbg', 3): 40, (4, 'ddbag', 2): 44, (4, 'ddbag', 3): 41, (4, 'ddbag', 4): 24, (4, 'dgdbg', 2): 5, (4, 'dgdbg', 3): 8, (4, 'gdbab', 4): 8, (4, 'ggdbb', 2): 141, (4, 'ggdbb', 3): 42, (4, 'ggdbb', 4): 24}
+## Intern B all (5,5,6,5,6) DL patterns (k, pattern, radius) -> {(0, 'dgbab', 2): 146, (0, 'dgdbg', 2): 24, (0, 'gdbab', 2): 108, (0, 'gddbg', 2): 282, (0, 'gddbg', 3): 16, (1, 'ddbab', 2): 45, (1, 'ddbbg', 2): 141, (1, 'ddbbg', 3): 42, (1, 'ddbbg', 4): 24, (1, 'dgbab', 2): 144, (1, 'dgbbg', 2): 69, (1, 'dgdab', 2): 45, (1, 'dgdbg', 2): 5, (1, 'dgdbg', 3): 8, (1, 'gdbab', 4): 8, (1, 'ggbab', 2): 13, (1, 'ggdab', 2): 44, (1, 'ggdab', 3): 41, (1, 'ggdab', 4): 24, (2, 'dgbab', 2): 48, (2, 'dgbag', 2): 93, (2, 'dgbag', 3): 24, (2, 'dgdbb', 2): 80, (2, 'dgdbg', 2): 100, (2, 'dgdbg', 3): 8, (2, 'gdbab', 2): 14, (2, 'gddbb', 2): 228, (2, 'gddbb', 3): 40, (3, 'dgbab', 2): 48, (3, 'dgbbg', 2): 80, (3, 'dgdab', 2): 93, (3, 'dgdab', 3): 24, (3, 'dgdbg', 2): 100, (3, 'dgdbg', 3): 8, (3, 'gdbab', 2): 14, (3, 'gdbbg', 2): 228, (3, 'gdbbg', 3): 40, (4, 'ddbab', 2): 13, (4, 'ddbag', 2): 44, (4, 'ddbag', 3): 41, (4, 'ddbag', 4): 24, (4, 'dgbab', 2): 144, (4, 'dgbag', 2): 45, (4, 'dgdbb', 2): 69, (4, 'dgdbg', 2): 5, (4, 'dgdbg', 3): 8, (4, 'gdbab', 4): 8, (4, 'ggbab', 2): 45, (4, 'ggdbb', 2): 141, (4, 'ggdbb', 3): 42, (4, 'ggdbb', 4): 24}
