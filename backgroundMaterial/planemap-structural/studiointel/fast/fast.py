@@ -2,7 +2,7 @@
 """studiointel fast/fast.py -- wrapper around the C++ engine kempe.cpp with the same output as ../radius.py analyse()
 (including 'witness' {'state','order'} in original labels and 'targetless' when a class is unreached)."""
 import os, sys, json, subprocess, tempfile
-HERE = os.path.dirname(os.path.abspath(__file__)); BIN = os.path.join(HERE, 'kempe')
+HERE = os.path.dirname(os.path.abspath(__file__)); BIN = os.environ.get('KEMPE_BIN', os.path.join(HERE, 'kempe'))
 
 def analyse(faces, hole, cap=200000000):
     labels = sorted({x for f in faces for x in f}); m = {u: i for i, u in enumerate(labels)}
