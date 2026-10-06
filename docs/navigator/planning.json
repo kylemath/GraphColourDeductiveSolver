@@ -1,7 +1,12 @@
 {
-  "revision": 115,
-  "updatedAt": "2026-10-06T12:00:00-06:00",
+  "revision": 116,
+  "updatedAt": "2026-10-06T12:26:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T18:30:00Z",
+      "node": "dissemination",
+      "action": "Revision 116 records the user's decisions on authorship (Kyle Mathewson), full disclosure of AI assistance, and linking the public repository; the audit's nine disclosure findings and Long Table's and Math's revisions of the paper's disclosure section; Math's PR outline, demo fixes, authorship header edit (which changes 29 audited source hashes), the public backup snapshot on branch current 907e2eb, and its quotation of Mathlib's AI rule (to be checked by the audit). New gate: the user's own reading and wording of each Mathlib pull request before it is opened. Pathway kills: link class does not determine the fill bound (audit), and (6,6,6,6,6) does not have radius 2 (Math, unreplayed). P1's independent check is at 11,942 of 25,381. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T18:06:00Z",
       "node": "dissemination-vhe-paper",
@@ -9770,6 +9775,108 @@
           "text": "Revision 115. Correction to the note above (same revision): commit d3ff0d7 is not on main; the audit reset it and recommitted its own files as ac374b1, leaving Long Table's staged files (the paper outline main.tex and README.md, pathway-B.md, a Long Table message and the explore-vhphi/pathways/pb_* scripts and outputs) in the shared index. The navigator's revision 114 commit 8bdd402 then included those Long Table files by mistake, because it committed the whole index after checking it. Their content is Long Table's and unchanged; only the commit attribution is wrong. No history is rewritten (a later commit eede2de sits on top). Long Table owns those files."
         }
       ]
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116, user decisions (relayed by the coordinator, quoted in the message files). 12:06 (\"Kyle Mathewson as author\"): the author of the paper and the Authors: line of the PlaneMap files is Kyle Mathewson. 12:20 (\"a yes tell them all full disclosure\"): full disclosure of AI assistance in the paper and in any Mathlib pull request; the paper gets a prominent section saying that the mathematics, the Lean proofs, the computations and the text were produced by a team of AI agents under the author's direction, with named roles, what the author did, how results were checked, and a link to the public repository; the PR description states that the Lean code was written by AI agents and that the author is responsible and will answer review; the user approves final wording before anything is posted or submitted. 12:30 (the coordinator notes the machine clock read 12:18 when the file was written; quoted \"yes the paper should link so record is public\"): the paper links https://github.com/kylemath/GraphColourDeductiveSolver (checked public by the coordinator) at a tagged release made at posting time with the user's go-ahead; the Lean backup https://github.com/kylemath/mathlib4-planemap is also public. Nothing has been posted or submitted."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1206_user_to_math+longtable+audit+navigator_authorship.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1220_user_to_math+longtable+audit+navigator_full-disclosure-of-AI-assistance.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1230_user_to_longtable+math+audit+navigator_link-public-repository.md"
+      ],
+      "id": "dissemination",
+      "revision": 116
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/docs/reports/VHE-paper/AUTHOR-RECORD.md",
+        "SolvingFrameworkPlan/docs/reports/VHE-paper/ACKNOWLEDGEMENT-DRAFT.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1228_audit_to_longtable+math+coordination+navigator+user_disclosure-check-paper-draft.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1218_longtable_to_audit+coordination+math+navigator+user_disclosure-revised.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1220_longtable_to_audit+coordination+user_author-paragraph-for-check.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1220_math_to_longtable+audit+coordination+navigator_cosign-paper-disclosure-Lean.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116, disclosure work on the paper. The audit's disclosure check (12:28, of Long Table's commit 80cbcb7) found the draft below the user's full-disclosure standard, nine findings: F1 \"assistance\" understates that the work and text were produced by AI agents; F2 no named roles, the night swarm omitted; F3 the author's acts vague or overstated; F4 checking of [computed] results and the AI-maintained ledger not described; F5 the kernel certifies proofs, not that formal statements match the prose, and that match was compared only by AI sessions (the main residual risk); F6 placement as an acknowledgement rather than a front numbered section; F7 the repository link (needed the user, since settled at 12:30); F8 every commit carries Kyle Mathewson as git author while trailers name Claude Sonnet 5.5, Claude Opus 5.5 and Cursor's agent; F9 ACKNOWLEDGEMENT-DRAFT.md contradicted itself and the Mathlib side needed a PR-DISCLOSURE.md. Long Table revised (12:18, superseding 80cbcb7 and 2751ad6): a numbered Section 1 \"How this work was produced\" plus an abstract sentence, addressing F1 to F6, F8 and F9, F7 left as a placeholder; it builds with pdflatex. Long Table then (12:20, commit 549a1e7) wrote \"What the author did\" as a five-item list from the public record (set up the project, set the direction, set the rules and delegated authority, provided and ran the machines, decided how the work is published) with what he did not do, sourced item by item in AUTHOR-RECORD.md, and sent it to the audit; it adds that the models of the night swarm and of the pre-October rounds were not recorded and that three May images were generated by Google's Gemini (from file names in cef0fd4), for the audit to check. Math (12:20) co-signs Section 1 for the Lean parts with four corrections: (1) compiled means in a module audit, so L4, Theorem P, the belt theorem at every hole and VacancyHyp must appear as \"compiled, not yet audited\" until an audit includes them (the ledger agrees for the belt theorem and VacancyHyp; note that the ledger records L4 and Theorem P as compiled on the audit's independent 116-module audit of revision 96, which Math's message does not mention, so the paper and Math should reconcile this with that audit report); (2) the Lean repository link must name branch current, commit 907e2eb, or the posting tag, and say the unaudited modules are not included; (3) most Lean work and several hand acceptances were done by Math's sub-agents (for example Theorem H rests on a sub-agent's review); (4) known statement-versus-prose mismatches must be stated where the results appear (vacancy_mobility_triangulated assumes all faces triangles and a five-link; the belt theorem is about the explicit graph with mixed paths and a moving hole; five_color_theorem is about graphs presented as plane maps, and nothing proves that an abstractly planar graph admits one). The navigator has not yet run the claim check; it runs when a full draft exists and before the user is asked to post."
+        }
+      ],
+      "id": "dissemination-vhe-paper",
+      "revision": 116
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathPlaneMapPRPlan.md",
+        "SolvingFrameworkPlan/docs/working/PR-DISCLOSURE.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1219_math_to_coordination+longtable+audit+navigator+user_PR-disclosure-and-Mathlib-AI-rule.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1218_math_to_coordination+audit+navigator+longtable_backup-pushed-and-six-five-hole.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1213_math_to_coordination+audit+navigator_no-push-until-user-approves.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1207_math_to_coordination+audit+navigator+longtable+user_authorship-applied-disclosure-draft.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1202_math_to_coordination+audit+navigator+longtable+user_PlaneMap-Mathlib-PR-series-outline.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1202_math_to_coordination+audit+navigator+longtable_five-colour-demo-fixed-D1-D4.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1208_audit_to_math+longtable+coordination+navigator_P-E-on-P-D-and-five-colour-demo-first-read.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116. PR series outline (Math 12:02, MathPlaneMapPRPlan.md): 56 tracked modules, 13,336 lines (49 of 86 files tracked); the Five Colour path is 19 audited modules, 7,479 lines; 22 stages; blockers: two oversized files to split (JordanSides, Construction), Examples imported by production code, 29 of 56 files without a Mathlib copyright header, a shallow clone at base 300d0e5 with upstream now ahead, lint tools not yet run. Five Colour demo: the audit's first read (12:08) found D1 a #eval in a Mathlib file, D2 an overclaim (\"every planar graph\"), D3 the headline example proved by a table rather than by the theorem, D4 a duplicated choose and an authorship placeholder; Math reports D1 to D4 fixed (12:02 message, sent out of time order), builds 3190 jobs, standard axioms; the first sentence now says graphs presented as a plane map and a paragraph says that abstract planarity is not proved; the audit's independent build and lint replay has not run. Authorship (12:07): the Authors: line of 29 files changed to Kyle Mathewson, one line per file checked by Math; this changes their SHA-256, so the 105-module audit's source hashes no longer match those files (new hashes in audit-101/SHA256SUMS-authors-header-edit.txt); a fresh audit would bind to the new hashes; the copyright line is a decision for the user. Push (12:13 and 12:18): Math did not push on a relay; then, on the user's approval given directly in chat, published a file snapshot to the user's public backup kylemath/mathlib4-planemap, branch current, commit 907e2eb (master untouched), from local commit 4b7bafe in the live checkout (navigator checked 4b7bafe exists locally; the remote branch was not fetched here). Contents: the 105 audited modules, the demo and its test, four notes; left out: every unaudited module including TheoremPPole*, VacancyLemmaL4, the belt-hypothesis modules, Team* and BeltCapsMath. No Mathlib pull request has been opened. PR disclosure (12:19, PR-DISCLOSURE.md): Math quotes Mathlib's \"Use of AI\" section with URL and the date read (6 October): AI use must be explained in the PR description; substantial LLM-generated code needs the LLM-generated label; the contributor must understand all AI-written content and justify every design decision to reviewers without AI; low-quality LLM PRs are closed; and LLM use when writing comments on GitHub or Zulip is not allowed. This is MATH'S QUOTATION until the audit checks it against the live page. Consequence stated by Math: PR-DISCLOSURE.md is a factual brief for the author, not text to paste, and the author's own reading of each PR is the gate; Math suggests a first PR small enough to read in full (Coloring/Kempe 396 lines, or RotationSystem 644)."
+        },
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116, NEW GATE: Mathlib's rule (as quoted by Math, pending the audit's check of the quotation) requires the contributor to understand and defend all AI-written code and to write the PR text, review replies and Zulip posts in his own words. Therefore the user's own reading of each pull request, and his own wording of its description, is the gate before that PR is opened. The navigator records whether that reading has happened for each PR; no team drafts PR text to be pasted."
+        }
+      ],
+      "id": "dissemination-mathlib-planemap",
+      "revision": 116
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116. Audit 12:00 (P-E on P-B, own code, under 1 CPU-second, explicit graphs): KILL, the link degree class does not determine the fill bound: every hole of the order-14 minimum-degree-5 triangulation has class (5,5,5,5,6) and maximum pure radius 2, while T4 has holes of the same class (5,5,5,5,6) with radius 4; so any bound per link class must give (5,5,5,5,6) at least 4, and a proof for that class cannot be local to link degrees (consistent with Math's reading that the outer-neighbour structure of ring-1 vertices is the parameter). Math 12:18 (worker page MathSixFiveHole.md, not reviewed line by line): KILLED, \"(6,6,6,6,6) has radius 2\": radius 3 occurs at (6^5) holes of orders 22 and 23 (69 of 3966 doubly locked states over 78 holes); the pentakis holes all have radius 2. Theorem H's Step 1 does not survive at degree 6: the lock endpoint conditions allow 74 ring colourings instead of R1 to R3 (69 seen in data, 5 never seen and open whether a Jordan argument excludes them); Step 3 has no analogue, since no swap whose component lies inside the link breaks a lock, and the obstruction is a colour condition on the outside neighbours of at most two ring vertices; the same ring pattern occurs with radius 2 and 3 in different outer completions. Maximum radius among holes with all neighbours of degree at least 6 (orders up to 23 plus pentakis): (6,6,6,6,6) 3, (6,6,6,6,7) 3, (6,6,6,6,8) 2, (6,6,7,6,7) 3 [exploratory, post hoc]. Next step proposed: an automaton on the 74 patterns using the Jordan curves of the lock paths. Both kills rest on explicit finite examples; the (6^5) one is Math's computation and not yet replayed by the audit."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathSixFiveHole.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1200_audit_to_longtable+math+coordination+navigator_P-E-on-P-B-and-link-class-kill.md"
+      ],
+      "id": "structural-pathway-a",
+      "revision": 116
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116, audit 12:00: Long Table's P-B verdict (the walk cannot cycle but has no target) is confirmed on T4 (12 degree-5 vertices in one component, no icosahedral vertex, maximum pure radius 4 at every one of the 12 holes, hole 4 matching Math's histogram) and on the order-14 graph (degree-5 subgraph connected on 12 vertices, no icosahedral vertex). Order 14 is the smallest such example, since below 14 there are only the icosahedron and no graph at 13. A (6,6,6,6,6) hole is isolated in the degree-5 subgraph, so no walk reaches it. The audit agrees with Long Table's MUTATED label; the variants inherit the class kill on structural-pathway-a."
+        }
+      ],
+      "id": "structural-pathway-b",
+      "revision": 116
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116, audit 12:08 on Long Table's P-D sketch (eede2de, pathway-D.md): the fill criterion \"filled iff the two odd edges are adjacent\" is a short hand lemma (the steps e_t in Z2 x Z2 sum to zero, so the three counts are all odd, (3,1,1)), so it is [hand], not only checked on 11,436 states; the rest of the Tait dictionary is classical and should be [cited] (Tait 1880, a standard text), not new; the lock criterion through the two P-cycles is the only new item, code-checked on 2,616 states and expected to follow from Lemma D in a paragraph. The invariant kill (no cycle-count or parity invariant separates doubly locked from filled, and none is preserved by F) is accepted as stated. Any transfer rule for Variant X must first be run on T4's 26 radius-4 (hole, state) pairs."
+        }
+      ],
+      "id": "structural-pathway-d",
+      "revision": 116
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T18:30:00Z",
+          "text": "Revision 116: the independent checker d1_check.py --all on the merged P1 output had done 11,942 of 25,381 graphs at 12:24 (P1-check.log); the coordinator gives an ETA of about 13:25. No result until it finishes, then the audit replay."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 116
     }
   ]
 }
