@@ -56,18 +56,18 @@ int main(int argc, char **argv) {
     std::vector<std::vector<int>> adj(n);
     for (int e = 0; e < E; e++) { int a, b; if (fscanf(fp, "%d %d", &a, &b) != 2) return 2; adj[a].push_back(b); adj[b].push_back(a); }
     for (auto &l : adj) { std::sort(l.begin(), l.end()); l.erase(std::unique(l.begin(), l.end()), l.end()); }
-    bool vmode = argv[2][0] == 'v'; int hv = -1, eu = -1, ew = -1;
-    if (vmode) hv = atoi(argv[3]); else { eu = atoi(argv[3]); ew = atoi(argv[4]); }
+    bool vmode = argv[2][0] == 'v'; int hv = -1, eu = -1, ew = -1; std::vector<char> del(n, 0); int ndel = 0;
+    if (vmode) { char *q = argv[3]; while (*q) { int x = strtol(q, &q, 10); if (!del[x]) { del[x] = 1; ndel++; } if (hv < 0) hv = x; if (*q == ',') q++; } } else { eu = atoi(argv[3]); ew = atoi(argv[4]); }
     long long cap = argc > (vmode ? 4 : 5) ? atoll(argv[vmode ? 4 : 5]) : 50000000LL; T.cap = Hs.cap = cap;
-    int start = vmode ? adj[hv][0] : eu;
+    int start = eu; if (vmode) { start = -1; for (int x = 0; x < n && start < 0; x++) if (!del[x]) start = x; }
     // T: BFS order from start over all vertices
     std::vector<int> oT{start}, iT(n, -1); iT[start] = 0;
     for (size_t h = 0; h < oT.size(); h++) for (int w : adj[oT[h]]) if (iT[w] < 0) { iT[w] = oT.size(); oT.push_back(w); }
     // H: BFS order skipping hv (and not using edge eu-ew)
     std::vector<int> oH{start}, iH(n, -1); iH[start] = 0;
     for (size_t h = 0; h < oH.size(); h++) { int a = oH[h]; for (int w : adj[a]) {
-        if (w == hv || iH[w] >= 0) continue; if ((a == eu && w == ew) || (a == ew && w == eu)) continue; iH[w] = oH.size(); oH.push_back(w); } }
-    if ((int)oT.size() != n || (int)oH.size() != (vmode ? n - 1 : n)) { printf("{\"error\": \"disconnected\"}\n"); return 0; }
+        if ((vmode && del[w]) || iH[w] >= 0) continue; if ((a == eu && w == ew) || (a == ew && w == eu)) continue; iH[w] = oH.size(); oH.push_back(w); } }
+    if ((int)oT.size() != n || (int)oH.size() != (vmode ? n - ndel : n)) { printf("{\"error\": \"disconnected\"}\n"); return 0; }
     if (!T.build(adj, oT, iT, -1, -1) || !Hs.build(adj, oH, iH, eu, ew)) { printf("{\"error\": \"too large\"}\n"); return 0; }
     // class map
     std::map<int, std::set<int>> pre;  // H root -> set of T roots
