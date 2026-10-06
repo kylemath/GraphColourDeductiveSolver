@@ -28,7 +28,7 @@ The ring is **not** part of the definition. In an internally 6-connected T it is
 - **Recommended Lean form: 5-connectivity.** For every X with |X| ≤ 4, `T.induce Xᶜ` is connected, and |V(T)| ≥ 6.
   - In a triangulation every minimal vertex cut induces a cycle [classical; recalled]. So "no separating triangle and no separating 4-cycle" ⇔ 5-connected.
   - This avoids the chord case. A 4-cycle with a chord that disconnects contains a separating triangle.
-  - The minimal-counterexample fact (a) is then "T is 5-connected" (Birkhoff 1913; audit 15:13 message).
+  - The minimal-counterexample fact (a) is then "T is 5-connected" (Birkhoff 1913; audit message 2026-10-06_1512).
 - **Internally 6-connected,** for fact (b), if needed: for every X with |X| ≤ 5 whose deletion disconnects T, |X| = 5 and one component of T − X is a single vertex.
 
 ## 3. The Birkhoff diamond: RSST entry `0.7322` (n = 10, r = 6, the file's first entry)
