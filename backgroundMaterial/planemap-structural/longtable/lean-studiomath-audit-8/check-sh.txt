@@ -1,0 +1,249 @@
+== EulerSharp
+== VacancyIcosahedral
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyIcosahedral.lean:826:4: warning: Unused tactic linter: `change M.Adj (w (t + 4 + s)) (w (t + s))` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+== RStar
+== SideTriangle
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:447:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.lift_faceNext_keptFace`:
+  hN
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hN in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:470:5: warning: Variable name `hu` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:561:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.far_ends`:
+  hc
+  spec
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc spec in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:580:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.T_faceNext_three`:
+  hc
+  hN
+  spec
+  hpq
+  hqr
+  hrp
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc hN spec hpq hqr hrp in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:648:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.kept_facial`:
+  htri
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit htri in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+== RStarCore
+== MinimalFrame
+== RingJordan
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:29: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:61: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:73: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:42: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:61: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:73: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:42: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:74: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:86: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:97:15: warning: This simp argument is unused:
+  Adj.toWalk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [walkEdgeCoeff_cons, walkEdgeCoeff_nil, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:97:27: warning: This simp argument is unused:
+  walkEdgeCoeff_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Adj.toWalk, walkEdgeCoeff_nil, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:284:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:298:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:300:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:300:25: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:303:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:305:14: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:305:25: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:306:14: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:306:25: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:321:17: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:338:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:338:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:339:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:339:54: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:366:15: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:367:73: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:372:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:372:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:373:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:373:54: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:421:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:421:33: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:422:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:422:46: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:456:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:456:61: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+== RingChains
+== RingReduce
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingReduce.lean:119:20: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingReduce.lean:124:20: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingReduce.lean:112:5: warning: Variable name `hsym` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hsym
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+== DiamondCert
+== Conf2122Cert
+== OccToRing
+== DiamondMCert
+== DiamondMOcc
+== DiamondPCert
+== DiamondPOcc
+== C2122MCert
+== C2122MOcc
+== C2122PCert
+== C2122POcc
+== FrameF3
+== RStarSanity
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RStarSanity.lean:41:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyShortFill.whole_of_cert`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+== RadiusFive
+exit 0
