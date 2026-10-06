@@ -21,3 +21,13 @@
 - **Every multi-class T has merge number 1**: some single vertex deletion merges all its Kempe classes. kappa(T) reaches 45 at order 20, 35 at 21, 42 at 22 and 53 at 23.
 - Graphs with kappa(T) = 1 (merge number 0): 1 at 16, 1 at 17, 5 at 20, 2 at 21, 8 at 22, 12 at 23.
 - In orders 12-20, the first merging vertex in label order has degree 5 in 73 graphs, 6 in 35, 7 in 2 and 8 in 1.
+
+## Run 4 follow-up: which single deletions merge all of T's classes (`mergefrac.py`, `mergefrac.jsonl`)
+- For every multi-class T at orders 12-23, every vertex v: does deleting v merge all of T's Kempe classes into one class of T - v?
+- Fraction of vertices that merge all classes, by degree of v:
+  - degree 5: 1.0 up to order 17, 0.949 at 18, then 0.97 at 20-23;
+  - degree 6: 1.0 up to 20, then 0.987-0.996;
+  - degree 7+: 1.0 up to 20, then 0.994-1.0.
+- Multi-class T with NO merging vertex of degree 5 (a non-degree-5 vertex still merges): 2 at order 20, 3 at 21, 8 at 22, 18 at 23. So a degree-5 merging vertex does not always exist.
+- No merging vertex ever leaves kappa(T - v) >= 2.
+- No vertex deletion created a new class anywhere: 0 in every order.
