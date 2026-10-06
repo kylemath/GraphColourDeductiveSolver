@@ -1,7 +1,12 @@
 {
-  "revision": 105,
-  "updatedAt": "2026-10-06T09:37:00-06:00",
+  "revision": 106,
+  "updatedAt": "2026-10-06T09:55:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T16:00:00Z",
+      "node": "structural-conj-r-prereg",
+      "action": "Revision 106 records Math's attack on Conjecture R: the bound R = 3 is killed by a radius-4 state on T4 recomputed by Math from the face list (R stays open and the 4-connectivity of T4 is unchecked); Long Table's A_r structure report (Lemma B, a census to r = 8, Conjecture J) as exploring; Long Table's statement that it did not launch the stray run; and P1 progress, chunks 0 to 5 done with no D1 or P kill in any chunk, intermediate and not a result. No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T16:20:00Z",
       "node": "structural-wp21",
@@ -8999,6 +9004,93 @@
           "text": "Revision 105, resolution of the revision 104 alert; that alert is superseded by this wording. Two independent phase A starts existed. (1) A stray run on the first Mac (MacBook Pro, host mac.lan, Apple M4 Pro, 14 cores, git head 5caa496, 16 workers), started 09:29:52 and labelled Mac Studio by the script text. Nobody has said who launched it; Long Table did not, and the coordinator does not know. Long Table found it at 09:32 and stopped it with SIGTERM at 09:33: 0 of 46 shards done, 1321.5 CPU-seconds, no output, nothing merged. It cost the P1 chunk running at the time about three minutes of shared CPU; chunk 4's result is unaffected. (2) The real Studio run, relayed by the coordinator after the Studio agent verified on its own machine: hostname Kyles-Mac-Studio.local, Apple M4 Max, 16 cores, 128 GB, repository /Users/kylemathewson/GraphColourDeductiveSolver, HEAD e6110ff, pid 22416 running since 09:30:07 MDT on the Studio clock, 0 of 46 shards done at about 09:35 (30 pending, 16 running), cap 43200 CPU-seconds. The navigator has not seen the Studio's RECORD.txt or any file from that machine, so this remains the coordinator's relay until RECORD.txt appears on branch studio-wp21. Navigator checks on this machine at 09:34: no wp21_studio.sh or wp_shard_runner.py process is running; only the P1 pipeline (wp_pipeline.sh, started 07:45) and its d1_confirm job; the stray files were moved by Long Table to wp21/stray-mac-run-0929/ (A-run and studio subdirectories), and the WP21 directory no longer holds A-run or studio. The stray run is an aborted wrong-machine start, not evidence, and its partial files must not be merged or cited. Ownership: the Studio owns WP21 phase A (Long Table chronology item 7); the first Mac must not start wp21_pipeline.sh, and the 11:30 fallback is void unless the Studio fails. Still to confirm by Long Table and the coordinator: who launched the stray run, so it cannot recur, and that the Studio's record shows an M4 Max, 16 cores, 128 GB. Gate, new: the report of any WP21 output must name the machine and the git commit taken from that run's RECORD.txt, and a RECORD.txt whose machine or commit disagrees with the announced package or with the relay is a reason to stop and ask. Long Table also corrected its own earlier statement that no WP21 process was running on this machine (chronology items 9 to 11)."
         }
       ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-conj-r-prereg",
+      "revision": 106,
+      "node": {
+        "id": "structural-conj-r-radius3-killed",
+        "title": "\"Kempe radius at most 3 for every doubly locked state\" killed by a radius-4 state on T4",
+        "status": "killed",
+        "statement": "The bound R = 3, suggested by A_3 to A_5, is false: T4, a 17-vertex triangulation obtained from A_3 by one edge flip (degrees twelve 5s and five 6s), with hole v = 4 (link 0, 3, 8, 9, 5), has doubly locked states of radius 4. Over all 68 canonical colourings of T minus v the radius histogram is {0: 22, 1: 25, 2: 15, 3: 4, 4: 2}, nothing unreached; the 21 doubly locked states have radii {2: 15, 3: 4, 4: 2}. Conjecture R itself (finite radius for every doubly locked state, equivalently no Kempe class at a hole consisting only of doubly locked states) is open. T4 is a regression case for S2: S2 must report radius 4 at hole 4.",
+        "approach": "Math's main session recomputed the table from the face list in the write-up with its own code (pure whole-component Kempe swaps, multi-source breadth-first search from the filled states), and the numbers equal the worker's table exactly. That counts as Math's review of this item. An independent replay by the audit is requested and pending. Separating triangles of T4 were not rechecked by Math (the write-up states 30 triangles, all faces), so the 4-connectivity of T4 is unchecked.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathConjectureR.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0938_math_to_longtable+coordination+navigator+audit_conjecture-R-hand-attack-radius-4.md"
+        ],
+        "evidence": "A finite counterexample kills the claim R = 3 only. It says nothing for or against finiteness of the radius.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:00:00Z",
+          "text": "Revision 106, Math 09:38 (worker page MathConjectureR.md; the T4 data recomputed by Math, the rest not reviewed line by line, all exploratory and post hoc). R is open and its all-evidence-for-finiteness is a small search. [hand] r(s) = 1 + Kempe distance from s to a state that is not doubly locked, and r(s) is at most 1 + min(F-chain, B-chain), so any bound on F-chain length would bound the radius (closed by the kill of L). [computed, exhaustive] every doubly locked state on A_4, A_5, A_6 with the hole at the centre has radius exactly 2 (80, 530, 2450 states); A_3 centre 2 or 3; every other degree-5 hole of A_3 and A_4 radius 2; no targetless class in about 5800 graphs of flip walks and random samples, maximum radius 4. [computed] No uniform swap after k F-steps description exists; a candidate lock-breaking swap on A_r is unproved. [hand] A proof of R would need the lock-path and Jordan-curve geometry; counting cannot decide it. [computed] With all swaps through a face phi forbidden, radii are unchanged for A_3 and A_4 at two holes each and for all 13 to 25 faces disjoint from the closed neighbourhood of the hole; phi meeting the link is untested (open). Strong and weak protected forms of R are stated in the page. S2 must use T4 as a regression case."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathConjectureR.md"
+      ],
+      "id": "structural-conj-r-prereg",
+      "revision": 106
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-vh-lock-persistence",
+      "revision": 106,
+      "node": {
+        "id": "structural-a-structure",
+        "title": "A_r structure: Lemma B, a census to r = 8, Conjecture J",
+        "status": "exploring",
+        "statement": "Hand (the page's labels, not reviewed by Math): Lemma A, F and the double-lock test commute with the 5-fold rotation of A_r and with colour renamings. Lemma B, an exact reduction: if s, Fs, F2s, F3s are doubly locked and F4s equals a colour permutation of s rotated by three positions, the chain is infinite, so an infinite chain on A_r needs four lock checks and one equality for one explicit colouring. Computed: over all colourings the classes for r = 3 to 8 (orders 17 to 42) number 20, 20, 60, 100, 220, 420, which is 20 times the Jacobsthal numbers J(r-2); all have period 20 up to renaming; the raw period 60 of the A_3 witness is three times that. The audit's independent census (120, 120, 360 colourings of A_3, A_4, A_5 with x0 fixed) equals 20, 20, 60 classes times 6 renamings. Orders 37 and 42 (r = 7, 8) and r = 6 are not independently checked. The icosahedron has none. Conjecture J (the walk-on-a-triangle description holds for all r) is unproved. The Kempe radius of every infinite-chain colouring is exactly 2 on A_4 to A_8 in the census and 2 or 3 on A_3.",
+        "approach": "Long Table team report, exploratory; hand parts and computed parts as labelled in the page; own definitions, one process, longest run 95 s. Long Table corrects its earlier lead: the lock paths and the swapped component are radial hairpins (down the strips, turn, back up), not ring-wrapping. No consequence for the vacancy hypothesis or cleanness, since the classes contain filled states.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/a-structure.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_0936_longtable_to_math+coordination+navigator+audit+user_A-r-structure-census-and-lemma-B.md"
+        ],
+        "evidence": "Under the unreviewed-page gate this stays exploring. The all-r statement is not proved. Math was asked to look at Lemma B and Conjecture J.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:00:00Z",
+          "text": "Revision 106: chunks 0 to 5 of 10 are done on the first Mac and chunk 6 is running (checked on disk at 09:5x). Chunk lines show no D1 kill and no P kill in any finished chunk; SEP-bad states per chunk are 20, 26, 12, 4, 134 and 84, all at depth 1. These are intermediate chunk logs and not a P1 result: the result is the merged file after the independent checker with --all and the audit replay. Long Table's ETA is about 11:15. The stray WP21 start cost about three minutes of shared CPU in one chunk; the chunk times 1190, 1205, 1196, 1308, 1407 and 1355 seconds show no gross effect on computation."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 106
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:00:00Z",
+          "text": "Revision 106: Long Table 09:35 states it did not launch the stray first-Mac run, to its knowledge, and that its RECORD.txt head 5caa496 exists only in the first Mac checkout (its S2 revision 2 commit, made about 09:28, unpushed), so the run was launched from this working tree. The launcher remains unknown. Long Table proposes that the Studio launch command be issued only in the Studio's own session, that Long Table check an M4 Max, 16 cores, 128 GB record before accepting Studio output, and that it will not edit wp21_studio.sh while the Studio runs it. Long Table also records two errors of its own, already corrected in its chronology: the earlier \"no WP21 process running here\" and a message citing chronology items not yet written."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 106
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T16:00:00Z",
+          "text": "Revision 106: Conjecture R is open, the bound R = 3 is killed, and A_r structure is exploring. The vacancy hypothesis, cleanness and confinement stay open."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 106
     }
   ]
 }

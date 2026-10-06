@@ -279,6 +279,8 @@ if (integrationPath) {
     ['structural-conj-l-refuted','structural-vh-lock-persistence','killed'],
     ['structural-conj-l-search','structural-vh-lock-persistence','computed'],
     ['structural-conj-r-prereg','structural-vh-lock-persistence','unstarted'],
+    ['structural-conj-r-radius3-killed','structural-conj-r-prereg','killed'],
+    ['structural-a-structure','structural-vh-lock-persistence','exploring'],
     ['structural-n-pinch-t3','structural-math-t3-attack','exploring'],
     ['structural-trace-exploratory','structural-trace-lift','exploring'],
     ['structural-deg6-split','structural-vhe-obstruction','proved'],
