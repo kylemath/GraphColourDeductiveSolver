@@ -1,0 +1,14 @@
+/tmp/audit_RStarSanity.lean:41:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyShortFill.whole_of_cert`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+SimpleGraph.Icosahedron.occ_DiamondM : SimpleGraph.SphericalMap.DiamondM.Occ SimpleGraph.Icosahedron.sphericalMap
+  ![11, 5, 6, 2, 9, 10] ![0, 1, 8, 7]
+SimpleGraph.Icosahedron.occ_DiamondP : SimpleGraph.SphericalMap.DiamondP.Occ SimpleGraph.Icosahedron.sphericalMap
+  ![5, 11, 10, 9, 2, 6] ![0, 7, 8, 1]
+SimpleGraph.Icosahedron.not_diamondFree : ¬SimpleGraph.Icosahedron.sphericalMap.DiamondFree
+SimpleGraph.Icosahedron.conf2122Free : SimpleGraph.Icosahedron.sphericalMap.Conf2122Free
+file constants checked: 14; nonstandard: 0; []
+exit 0

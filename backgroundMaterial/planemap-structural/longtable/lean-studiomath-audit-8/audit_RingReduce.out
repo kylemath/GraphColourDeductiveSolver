@@ -1,0 +1,16 @@
+/tmp/audit_RingReduce.lean:119:20: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/tmp/audit_RingReduce.lean:124:20: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/tmp/audit_RingReduce.lean:112:5: warning: Variable name `hsym` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hsym
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+file constants checked: 29; nonstandard: 0; []
+exit 0

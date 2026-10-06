@@ -1,0 +1,52 @@
+structure SimpleGraph.SphericalMap.C2122M.Occ {n : ℕ} (T : SimpleGraph.SphericalMap n) (ring : Fin 7 → Fin n)
+  (int : Fin 4 → Fin n) : Prop
+number of parameters: 4
+fields:
+  SimpleGraph.SphericalMap.C2122M.Occ.ring_inj : Function.Injective ring
+  SimpleGraph.SphericalMap.C2122M.Occ.int_inj : Function.Injective int
+  SimpleGraph.SphericalMap.C2122M.Occ.disj : ∀ (t : Fin 7) (a : Fin 4), ring t ≠ int a
+  SimpleGraph.SphericalMap.C2122M.Occ.deg : ∀ (a : Fin 4), T.graph.degree (int a) = ![6, 5, 5, 5] a
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_0 : T.Nx (int 0) (ring 2) (ring 1)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_1 : T.Nx (int 0) (int 1) (ring 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_2 : T.Nx (int 0) (int 2) (int 1)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_3 : T.Nx (int 0) (int 3) (int 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_4 : T.Nx (int 0) (ring 0) (int 3)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_5 : T.Nx (int 0) (ring 1) (ring 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_0 : T.Nx (int 1) (ring 3) (ring 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_1 : T.Nx (int 1) (ring 4) (ring 3)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_2 : T.Nx (int 1) (int 2) (ring 4)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_3 : T.Nx (int 1) (int 0) (int 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_4 : T.Nx (int 1) (ring 2) (int 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_0 : T.Nx (int 2) (ring 4) (int 1)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_1 : T.Nx (int 2) (ring 5) (ring 4)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_2 : T.Nx (int 2) (int 3) (ring 5)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_3 : T.Nx (int 2) (int 0) (int 3)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_4 : T.Nx (int 2) (int 1) (int 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_0 : T.Nx (int 3) (ring 5) (int 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_1 : T.Nx (int 3) (ring 6) (ring 5)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_2 : T.Nx (int 3) (ring 0) (ring 6)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_3 : T.Nx (int 3) (int 0) (ring 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_4 : T.Nx (int 3) (int 2) (int 0)
+constructor:
+  SimpleGraph.SphericalMap.C2122M.Occ.mk {n : ℕ} {T : SimpleGraph.SphericalMap n} {ring : Fin 7 → Fin n}
+    {int : Fin 4 → Fin n} (ring_inj : Function.Injective ring) (int_inj : Function.Injective int)
+    (disj : ∀ (t : Fin 7) (a : Fin 4), ring t ≠ int a) (deg : ∀ (a : Fin 4), T.graph.degree (int a) = ![6, 5, 5, 5] a)
+    (r0_0 : T.Nx (int 0) (ring 2) (ring 1)) (r0_1 : T.Nx (int 0) (int 1) (ring 2)) (r0_2 : T.Nx (int 0) (int 2) (int 1))
+    (r0_3 : T.Nx (int 0) (int 3) (int 2)) (r0_4 : T.Nx (int 0) (ring 0) (int 3)) (r0_5 : T.Nx (int 0) (ring 1) (ring 0))
+    (r1_0 : T.Nx (int 1) (ring 3) (ring 2)) (r1_1 : T.Nx (int 1) (ring 4) (ring 3))
+    (r1_2 : T.Nx (int 1) (int 2) (ring 4)) (r1_3 : T.Nx (int 1) (int 0) (int 2)) (r1_4 : T.Nx (int 1) (ring 2) (int 0))
+    (r2_0 : T.Nx (int 2) (ring 4) (int 1)) (r2_1 : T.Nx (int 2) (ring 5) (ring 4))
+    (r2_2 : T.Nx (int 2) (int 3) (ring 5)) (r2_3 : T.Nx (int 2) (int 0) (int 3)) (r2_4 : T.Nx (int 2) (int 1) (int 0))
+    (r3_0 : T.Nx (int 3) (ring 5) (int 2)) (r3_1 : T.Nx (int 3) (ring 6) (ring 5))
+    (r3_2 : T.Nx (int 3) (ring 0) (ring 6)) (r3_3 : T.Nx (int 3) (int 0) (ring 0))
+    (r3_4 : T.Nx (int 3) (int 2) (int 0)) : SimpleGraph.SphericalMap.C2122M.Occ T ring int
+@SimpleGraph.SphericalMap.C2122M.colorable_of_occ : ∀ {n : ℕ} {T : SimpleGraph.SphericalMap n},
+  T.Triangulated →
+    ∀ {ring : Fin 7 → Fin n} {int : Fin 4 → Fin n},
+      SimpleGraph.SphericalMap.C2122M.Occ T ring int →
+        (∀ (m' : ℕ) (N : SimpleGraph.SphericalMap m'),
+            Nat.card ↑N.graph.support < Nat.card ↑T.graph.support → N.graph.Colorable 4) →
+          T.graph.Colorable 4
+'SimpleGraph.SphericalMap.C2122M.colorable_of_occ' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 33; nonstandard: 0; []
+exit 0
