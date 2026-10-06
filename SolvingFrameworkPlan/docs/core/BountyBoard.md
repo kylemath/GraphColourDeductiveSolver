@@ -52,10 +52,10 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | audit | 150 |
 | studiointel | 200 |
 | studiomath | 810 |
-| studiocompute | 330 |
+| studiocompute | 360 |
 | intern-A | 0 |
 | intern-B | 0 |
 | intern-C | 30 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 138 (6 October, 16:40 MDT). Revision 138 paid studiointel 50 for withdrawing its own error (the smallest radius-5 order, corrected at 16:09) before anyone else reported it; earlier awards are in the revision 125 to 136 messages. The same totals are in `docs/navigator/leaderboard.json`.
+Totals as of Navigator revision 139 (6 October, 17:05 MDT). Revision 139 paid studiocompute 30 for running the audit's check J12 (verdict PASS); earlier awards are in the revision 125 to 138 messages. The same totals are in `docs/navigator/leaderboard.json`.

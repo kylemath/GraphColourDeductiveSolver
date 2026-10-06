@@ -1,7 +1,12 @@
 {
-  "revision": 138,
-  "updatedAt": "2026-10-06T16:40:00-06:00",
+  "revision": 139,
+  "updatedAt": "2026-10-06T17:05:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T23:05:00Z",
+      "node": "structural-rstar-frame-lean",
+      "action": "Revision 139 records the audit's J12 PASS: the frame theorem, the diamond and 2.122 certificates and steps C and D are compiled and audited (Compiled and audited: R* on Occ-free, four-connected, minimum-degree-5 triangulations implies 4CT for spherical maps. The hypothesis R* is open.). It records Conjecture K3 refuted at order 26 on Studio data, the inert-disc claim (candidate counterexample under \"some lock path\", audit verdict pending; open under \"every lock path\"), the order-26 radius census and class multiplicity (about 3% multi-class, none targetless), HoG 1152, the hybrid checks (configuration-free graphs rare; corridor test uninformative; IPR radius at most 4), path 9 closed, path 3 running, and intern D's edge-trap idea. Leaderboard: studiocompute +30. No finite check is upgraded."
+    },
     {
       "time": "2026-10-06T22:40:00Z",
       "node": "structural-pathway-sprint",
@@ -12466,6 +12471,207 @@
         {
           "time": "2026-10-06T22:40:00Z",
           "text": "Revision 138, leaderboard: studiointel +50, the withdrawal item. Studio intel withdrew its own error (\"smallest radius-5 order is 23\", 16:08) in its 16:09 reconciliation (9ddc565: the smallest is 22) before anyone else reported it. A withdrawal is checkable from the message itself, so no audit step is needed; precedent revision 134 (Long Table); coordinator ruling after revision 137. Totals: studiomath 810, studiocompute 330, studiointel 200, math 180, audit 150, longtable 50, intern-C 30, others 0."
+        }
+      ]
+    },
+    {
+      "id": "structural-rstar-frame-lean",
+      "revision": 139,
+      "status": "compiled",
+      "title": "Lean: R* on Occ-free four-connected minimum-degree-5 triangulations implies 4CT for spherical maps (compiled and audited, J12; hypothesis open)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1644_audit_to_coordination+studiomath+navigator_J12-verdict-PASS.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: audit J12 verdict PASS (16:44, 75fed81; outputs lean-studiomath-audit-8/, run by Studio compute f99f8ea, merged 7161802): clean checkout of main 22ff272; shasum 23 OK; grep empty; check.sh exit 0; 0 error lines in 18 outputs; nonstandard 0 in every one of the 17 modules; negative control caught; 8 of 17 compiled copies byte-identical to main. Statement prints match: RStarFrame (connected, triangulated, min degree 5, NoSep, DiamondFree, Conf2122Free => a degree-5 PureClean vertex), four_color_of_RStarFrame and rStarFrame_of_noSepTri on the three standard axioms. Ledger line (the audit's): \"Compiled and audited: R* on Occ-free, four-connected, minimum-degree-5 triangulations implies 4CT for spherical maps. The hypothesis R* is open.\""
+        },
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139, carried forward (not blocking): F1, \"diamond-free\" means Occ-free (no ring-embedded occurrence of either orientation), not \"no induced diamond\"; F3, no compiled witness yet that a 2.122 Occ can hold (candidate order 25, index 4830, hole 15, routed to Studio Math), so the 2.122 exclusion is harmless but not shown non-vacuous; scope, SphericalMap is combinatorial, so the exact claim is \"4CT for spherical maps\", not \"for the plane\"; the bridge \"appears -> Occ with distinct ring\" stays open."
+        }
+      ]
+    },
+    {
+      "id": "structural-dred-lean-certs",
+      "revision": 139,
+      "status": "compiled",
+      "title": "Lean: D-reducibility certificates for the Birkhoff diamond and RSST 2.122, with steps C and D (compiled and audited, J12)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1644_audit_to_coordination+studiomath+navigator_J12-verdict-PASS.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: compiled and audited in J12 (Conf2122Cert, DiamondMOcc, C2122MOcc, OccToRing, RingReduce and the rest of the 17 modules: 0 nonstandard, copies equal main). Part of the audited frame theorem."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-path-4-potentials",
+      "revision": 139,
+      "node": {
+        "id": "structural-conj-k3",
+        "title": "Conjecture K3: from every unfilled state, at most 3 swaps reach a fill or a lex-smaller (lock_size, lock_dist) (refuted at order 26 on Studio data; holds through order 25)",
+        "status": "computed",
+        "statement": "K3 (coordinator, from the sage's k-step idea): from every unfilled state at a degree-5 hole, some sequence of at most 3 Kempe swaps reaches a filled state or a state with strictly smaller Phi = (lock_size, lock_dist) in lex order.",
+        "approach": "Studio compute (f5453b9, merged 8714688) [exploratory]: k3.cpp, agreeing exactly with the Python least-k on certificates 91a307 h22, 80b930 h23 and the counterexample; every degree-5 hole class with rho at least 4 in the exhaustive plantri -m5 -c4 census, orders 20 to 26 (17,694 holes, 41,326 states at distance at least 4).",
+        "evidence": "Max k is 1, 2, 3, 3, 3, 3 at orders 20 to 25 and 4 at order 26: 8 states need k = 4, in 4 holes; the first is order 26, plantri index 5401, hole 13 (radius 5), a state at distance 5. Intern B (cycle 4, fc3e207) [hand]: at depth 1 both lock chains span their whole colour pairs, so lock_size cannot drop; the hole lies in a Birkhoff diamond.",
+        "killCriteria": "An independent recheck of the order-26 instance makes this a recorded kill.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/studio-explore/conjecture-K3/README.md",
+          "backgroundMaterial/planemap-structural/longtable/studio-explore/conjecture-K3/k3-26-counterexample-holes.jsonl",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-B-cycle4.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T23:05:00Z",
+            "text": "Revision 139: recorded as refuted by computation [exploratory], status computed (as Conjecture M); \"killed\" after an independent recheck. Intern B's note explains the mechanism but does not recompute k."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-path-9-stuck-structure",
+      "revision": 139,
+      "node": {
+        "id": "structural-inert-disc",
+        "title": "Inert-disc pruning claim (intern A, from the sage): candidate counterexample under \"some lock path\", open under \"every lock path\"; audit verdict pending the replay",
+        "status": "exploring",
+        "statement": "A swap whose component lies strictly inside the disc D1 cut off by a lock-1 path keeps the state doubly locked and can be pruned. Quantifiers (intern A cycle 6): Q-exists (inside D1(P) for some lock-1 path P), Q-all (inside and disjoint for every P), Q-chain (strongest).",
+        "approach": "Intern A note (InternA-inert-disc.md, 9701a01) and cycle 6 (7751a6c); Studio check redone with intern A's convention (cb6e110): one instance, order 20, index 51, hole 1.",
+        "evidence": "Audit 16:39: the first Studio replay FAILED as evidence (wrong side of lock curve 2). Audit 16:42, by hand: at 20/51/1 the state is doubly locked and the singleton swap of vertex 11 keeps both locks; \"strictly inside D1\" is TRUE for one shortest lock-1 path and FALSE for the other (path-dependent), and it is not intern A's mechanism. The audit writes \"as stated, NOT YET\" and waits for its replay (replay_inertdisc.py, re-posted at 16:44). Intern A cycle 6 [hand, unreviewed]: under Q-all the claims (i) lock 1 survives, and further items, hold; vertex 11 is Q-exists, not Q-all.",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1637_internA_to_coordination+audit_inert-disc-lemma.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1639_audit_to_coordination+internA+navigator_inert-disc-instance-FAIL-convention.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1642_audit_to_coordination+internA+studiocompute+navigator_inert-disc-instance-20-51-path-dependent.md",
+          "SolvingFrameworkPlan/docs/working/InternA-inert-disc.md",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle6.md",
+          "backgroundMaterial/planemap-structural/longtable/studio-explore/sage-qa-runs/inertdisc-first-instance.json"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-06T23:05:00Z",
+            "text": "Revision 139: recorded as: under Q-exists, 20/51/1 is a candidate counterexample, partly verified by hand by the audit, verdict pending the Studio replay; under Q-all, open. A Studio rescan under the corrected quantifier is pending. No status word until the audit's verdict."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-path-1-class-census",
+      "revision": 139,
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-classes/kc-table.md",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-census/table.md",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/kempe-census/rho-ge4-26.jsonl"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: [exploratory] order-26 radius census (a8d26b4): max radius 5, no radius 6, no targetless class (12,424 records with radius at least 4); at order 26 the 11 graphs with neither the diamond nor 2.122 have max radius 3. Class multiplicity, orders 12 to 25 (kc-table.md): about 3% of degree-5 hole instances have T - v multi-class (0.033 at order 25), no targetless class at degree 5, 6 or 7, kappa(T) up to 72 at order 25; the coordinator counts 20,444 multi-class holes (not re-tallied by the navigator)."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-3-constructed",
+      "revision": 139,
+      "status": "in-progress",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/historical-traps/README.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1639_longtable_to_coordination+studiocompute+audit_heawood-graph-verified-but-not-1890.md",
+        "backgroundMaterial/planemap-structural/studiointel/path3/README.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1645_math_to_studiointel+coordination_path3-one-filled-state-theory-note.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1656_math_to_studiointel+coordination+navigator_path3-construction-spec.md",
+        "SolvingFrameworkPlan/docs/working/MathPath3Constructions.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle5.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: [exploratory] HoG 1152 (Saaty-type Kempe graph, verified by Long Table, not Heawood 1890): kappa(T) = 37, kappa(T - v) = 3 at 16 holes and 4 at 1, every hole multi-class, R* holds, radius 2. The stuck-class search is running (Studio intel path3/, v1 to v3): every class with exactly one filled state has size 4 (40 such), so the search was retargeted to large classes (size at least 40, lowest filled fraction; best 0.25). Math's construction spec, builders and independent class checker (e80f056, untested) and one-filled-state theory note (756db8a); intern C (cycle 5) reviewed the note. The Studio is currently offline."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-9-stuck-structure",
+      "revision": 139,
+      "status": "killed",
+      "title": "Path 9: structure of a hypothetical stuck class (closed by its stop rule; Lemmas E, T, X, R kept as hand structure results)",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1635_math_to_coordination+navigator+studiointel_path9-closed-next-path3.md",
+        "backgroundMaterial/planemap-structural/longtable/studio-explore/p9f/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: closed by its stop rule (Math 16:35): P9-F (5fc4d4e) [exploratory] finds the closure fixpoint empty at every hole of orders 12 to 20 and the four radius-5 certificates, and nothing forced at depth 2 beyond the starvation set. Lemmas E, T, X and R remain [hand, unreviewed]; E and X should be reviewed before the paper cites them. Math moves to path 3."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-7-fullerene",
+      "revision": 139,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1640_studiointel_to_coordination+math+navigator_hybrid-checks-a-b-c-IPR-final.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: Studio intel 16:40 [exploratory]: IPR final, every IPR fullerene dual with 32 to 52 vertices (1,267 graphs, 15,204 holes): radius 2 at 38, 3 at 15,132, 4 at 34, never 5, no targetless class. The C70 dual has radius 3 at all 12 holes; Studio intel withdrew its earlier figure (best-after-flip read as the start)."
+        }
+      ]
+    },
+    {
+      "id": "structural-route-b-kempe-reducible",
+      "revision": 139,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1640_studiointel_to_coordination+math+navigator_hybrid-checks-a-b-c-IPR-final.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: hybrid checks (Studio intel 16:40) [exploratory]: (a) configuration-free core triangulations number 0 below order 22 and 1, 1, 4 at orders 22 to 24, so \"no radius >= 4 in configuration-free graphs\" rests on about 8 graphs (11 more at order 26, max radius 3); (b) corridor test uninformative (about 78% of vertices lie in some occurrence, so every lock path hits one, hard or easy); (c) flat-annulus kappa = 1 so far; configuration-free sample at n = 56 to 62 has radius at most 4. Math: no mechanism."
+        }
+      ]
+    },
+    {
+      "id": "structural-path-2-controls",
+      "revision": 139,
+      "files": [
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D-cycle4.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: intern D (cycle 4, 8fbbc06) [hand, unproved]: an edge-deletion trap mechanism versus the vertex link, proposed to explain why edges create new classes and degree-5 vertices do not; assigned to Math."
+        }
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 139,
+      "files": [
+        "docs/physics/index.html"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139: site: The Spin-Glass View page (card 10; 1774963, be5d606): WSK dictionary, torus versus sphere literature, run 5, Conjecture K3 refuted at order 26, the inert disc."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 139,
+      "notes": [
+        {
+          "time": "2026-10-06T23:05:00Z",
+          "text": "Revision 139, leaderboard: studiocompute +30 for J12, a requested run of the audit's check with outputs posted (f99f8ea), cleared by the audit's PASS (one award per replay role, coordinator ruling). Nothing else: no bounty item covers the frame theorem or the certificates (the 300 Lean-reduction item was paid in revision 136); K3 and the inert disc have no audit-cleared verdict; withdrawal-type credit (the C70 figure) is not paid without audit clearance, per the coordinator. Totals: studiomath 810, studiocompute 360, studiointel 200, math 180, audit 150, longtable 50, intern-C 30, others 0."
         }
       ]
     }
