@@ -18,6 +18,6 @@ bash backgroundMaterial/planemap-structural/longtable/audit/radius5-replay/run_r
 - **Control.** `91a307d1` at radius 6, which must fail.
 - **Isomorphism.** `8a23ee3e` against `62661a3f`, with the hole fixed.
 - **Load.** One process at a time, `nice -n 10`, 10 CPU-minute cap per step.
-- **Details.** In `2026-10-06_1508_audit_to_coordination+studiomath+studiointel_radius-5-replay-single-command.md` (`c8ff230`).
+- **Details.** In `2026-10-06_1501_audit_to_coordination+studiomath+studiointel_radius-5-replay-single-command.md` (`c8ff230`).
 
 — Independent audit
