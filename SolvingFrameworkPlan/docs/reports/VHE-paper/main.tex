@@ -262,13 +262,13 @@ Two further results are built in Lean with no \texttt{sorry} and only the standa
 \end{itemize}
 These are statements about the explicit graph $G_n$ with mixed paths and a moving hole. No spherical-map realisation of $G_n$ exists yet, and \texttt{VacancyHyp} carries no ``spherical, minimum degree 5'' clause. The corresponding hand theorem, that the vacancy hypothesis holds at every hole of Florek's graphs, is \lab{hand}; its pole-hole case cites Florek's Theorem~3.1, and so does the identification of $G_n$ with Florek's family.
 % MSG/..._0958_math_... "Mismatches, stated plainly"; START-HERE.md section 6 "Belt theorem".
-% CONFLICT: START-HERE.md section 6 says the hand belt theorem's pole case cites Florek; since 6 Oct the compiled Theorem P covers the
+% NOTE (not a ledger conflict): START-HERE.md section 6 says the hand belt theorem's pole case cites Florek; since 6 Oct the compiled Theorem P covers the
 % no-singleton pole case without Florek (ledger structural-l4-p-lean). The ledger keeps structural-equal-pole exploring; this text follows the ledger.
 
 \subsection{The Five Colour Theorem}
 The library also proves \texttt{SimpleGraph.SphericalMap.five\_color\_theorem} and \texttt{SimpleGraph.PlaneMap.five\_color\_theorem}: the graph of a spherical map, or of a plane map, is 5-colourable. \lab{compiled}
 % LEAN/FiveColorTheorem.lean lines 30, 54. START-HERE.md section 6 lists Five Colour in the compiled foundation; MathlibTest/PlaneMapFiveColor is in Lean105ModuleAudit.md's source set.
-% CONFLICT: the ledger records f5-lean as "proved", not "compiled" (docs/navigator/planning.json via data.js; foundation subtree). START-HERE.md section 6 says "Compiled (Lean)". Navigator to confirm the label.
+% Resolved: Navigator revision 120 ruling 2 (MSG/..._1256_navigator_..._revision-120-rulings.md): f5-lean is compiled; its modules are in the 105-module audit manifest. Scope: graphs presented as a plane or spherical map.
 The theorem is about graphs presented as plane maps; nothing in the library proves that an abstractly planar graph admits such a presentation.
 % MSG/..._1220_math_..._cosign item 4.
 
@@ -324,7 +324,7 @@ Math also proved that an innermost side of a separating triangle, completed by i
 % REP/MathTriangleCarryResearch.md "An innermost side ..." and "Exact curvature".
 In the 4-connected part of $\mathcal C$: no face has three vertices of degree $4$, and every member has order at least $12$. \lab{hand}
 % REP/MathVHCoreAdvance.md "Accepted hand advances" item 5 ("every member has order at least twelve").
-% CONFLICT: REP/MathFourConnectedResearch.md Proposition 9 gives order >= 11; MathVHCoreAdvance.md item 5 (later, root review) gives >= 12, as does START-HERE.md section 6. Text follows the later report; the ledger node structural-face-reduction carries no number.
+% Resolved: Navigator revision 120 ruling 3: order >= 12 (MathVHCoreAdvance.md item 5 supersedes MathFourConnectedResearch.md Proposition 9's 11).
 
 \subsection{Holes that are known to be easy}
 \begin{theorem}[mobility; \lab{hand}]
@@ -405,8 +405,8 @@ Let $m(T)$ be the least, over legal pairs $(v,\tau)$ at degree-5 vertices, of th
 \item Rank functions fitted to the data (on the hole and the colouring) are killed.
 % Ledger structural-slide-ranks = killed; START-HERE.md section 6 "Fitted ranks: q, lin and others".
 \end{itemize}
-% CONFLICT: START-HERE.md section 6 lists "Every fixed Kempe-swap budget at a frozen hole" as killed; the ledger node structural-swap-budget is
-% "exploring", not killed. This draft does not state that kill.
+Fixed swap budgets: slides alone ($k=0$) and one Kempe swap then slides ($k=1$) fail at the frozen 21-vertex hole. \lab{computed} Whether a uniform fixed swap budget suffices for every colouring is \lab{open}.
+% Navigator revision 120 ruling 1 (wording given there); ledger structural-swap-budget = exploring, structural-frozen-branches = computed. Not "every fixed budget is killed".
 \emph{Lesson.} Short uniform allowances fail at small order, and the theorem of Section~\ref{sec:lean} that removes slides stops at length 2. Any proof of VH$\exists$ must allow long paths, and must use planarity with four colours.
 
 \subsection{Statements about $T^\ast$ alone}
@@ -456,6 +456,8 @@ On 6 October the work moved from search to short, testable proof ideas (``pathwa
 \item \emph{``(6,6,6,6,6) holes have radius 2'', killed} \lab{computed}. Radius 3 occurs at such holes at orders 22 and 23, on 69 of 3,966 doubly locked states over 78 holes. The audit replayed this exactly. The ring-pattern argument of Theorem~\ref{thm:H} does not survive: 74 ring colourings are compatible with the locks instead of three.
 % MSG/..._1218_math_... item 2; audit replay MSG/..._1232_audit_..._P-E-sixfive-replay-and-belt-argument.md item 1.
 % Math's page WK/MathSixFiveHole.md is a worker page not reviewed line by line.
+% PENDING LEDGER: Math a277616 reports K-A1 (the 74-pattern (6^5) automaton has a closed adversary trap of 5,650 states, so no bound follows)
+% and a radius-4 (6^5) hole at order 28 (minimum degree 5, no separating triangle, two codes), WK/MathSixFiveAutomaton.md. Not in revision 120; add when recorded.
 \item \emph{``Bound the degrees of all five link vertices'', killed} \lab{hand}. In the belt $G_n$ every degree-5 vertex has one neighbour of degree $n$, so any finite list that bounds all five link degrees misses the belt family.
 % MSG/..._1159_math_... item 3; checked by hand by the audit, MSG/..._1232_audit_... item 3.
 \item \emph{The free adversary on a separating 4-cycle}, killed on one member \lab{computed}: on the order-16 member $16{:}1-st$, all 50 candidate pairs lose the free game. The real far side is not a free adversary, and the corrected trace game is not refuted.
@@ -466,7 +468,10 @@ On 6 October the work moved from search to short, testable proof ideas (``pathwa
 % Ledger structural-pathway-d note rev 116 (audit 12:08: "The invariant kill ... is accepted as stated"); WK/creative-intel-2026-10-05/pathway-D.md line 25.
 \item \emph{Variant X (P-D), killed on $T_4$} \lab{computed}, exploratory: on the 234 doubly locked states of $T_4$, no rule that reads the colours within distance 2 of $v$ decides whether $F$ keeps both locks (3 of 212 keys clash).
 % MSG/..._1239_longtable_... item 2; ledger rev 119 "Variant X: killed on T4 [exploratory]".
-% Audit 1305 (Fisk / Mohar-Salas degree invariants, parity only) left out: not recorded by the Navigator at revision 119.
+\item \emph{Known Kempe invariants (P-F)}: the invariant of a 4-colouring's degree modulo 12, and Kempe-equivalence of all 4-colourings, are proved only for three-colourable triangulations~\cite{mohar2009}, \lab{cited}, and a triangulation of minimum degree 5 is never three-colourable. On minimum-degree-5 triangulations of orders 12--18, only degree parity is an invariant of Kempe classes. \lab{computed}, exploratory.
+% MSG/..._1305_audit_..._P-F-literature-check-and-degree-data.md; recorded in Navigator revision 120 "P-F".
+% PENDING LEDGER: Math a277616 (message ..._PF-killed-automaton-killed-paper-answers.md) asks the Navigator to record P-F as killed:
+% degree parity is a Kempe invariant of every sphere triangulation [hand], constant on whole classes, and blind to filling. Not in revision 120; add when recorded. Mohar 2006 and Fisk 1977 not cited: details unverified per revision 120.
 \end{itemize}
 \emph{Lesson.} A fill bound is not a function of local degrees: the lock paths are global. Any proof must use global structure, such as the Jordan curves of the lock paths or arguments in the style of Theorem~P.
 % MSG/..._1248_audit_... item 3(b).
@@ -555,6 +560,8 @@ Everything in this section is \lab{open}.
 \item \emph{Edge-colouring view (P-D).} In Tait language the two locks are two two-colour paths through the pentagon node (Lemma~\ref{lem:tait}, \lab{hand}, not yet reviewed). Parity invariants and local rules fail (Section~\ref{sec:neg}), so whether a lock persists depends on colours at distance 3 or more from the hole; what is needed is a global, Jordan-type argument about the two lock paths.
 % MSG/..._1239_longtable_... "Reading"; P-B was closed into P-A at revision 119.
 % Ledger structural-pathway-d notes rev 116 and 119.
+\item \emph{Vacancy D-reducibility.} Math has proposed a finite game on the 2-ball around a hole, in the spirit of D-reducibility, as a P-A statement. First runs found the 2-balls of $T_4$ and of an icosahedral hole reducible, and the pentakis (6,6,6,6,6) 2-ball not reducible. These are \lab{computed}, exploratory, and await the audit's replay; that a reducible ball forces a fill rests only on Math's hand reading, and no unavoidable family is known.
+% Math 12:43 (b1bd72d) as recorded in Navigator revision 120 "Vacancy D-reducibility": pending the audit.
 \end{itemize}
 
 \begin{thebibliography}{99}
@@ -562,6 +569,7 @@ Everything in this section is \lab{open}.
 % Florek arXiv number from REP/BeltParallelProofReview.md). Everything marked VERIFY was not checked against the original.
 \bibitem{appel1977} K.~Appel and W.~Haken, Every planar map is four colorable. Part~I: Discharging, \emph{Illinois J. Math.} 21 (1977). % VERIFY pages 429--490
 \bibitem{birkhoff1913} G.~D.~Birkhoff, The reducibility of maps, \emph{Amer. J. Math.} 35 (1913). % VERIFY
+\bibitem{mohar2009} B.~Mohar and J.~Salas, A new Kempe invariant and the (non)-ergodicity of the Wang--Swendsen--Koteck\'y algorithm, \emph{J. Phys. A} 42 (2009) 225204; arXiv:0901.1010. % literature-check.md section 3; journal number from Navigator revision 120 (audit 13:05)
 \bibitem{plantri} G.~Brinkmann and B.~D.~McKay, \texttt{plantri} (program), version 5.8. % VERIFY citation form
 \bibitem{florek2025} J.~Florek, arXiv:2511.00485. % VERIFY title, year; the repo cites the arXiv number only
 \bibitem{gonthier} G.~Gonthier, Formal proof---the Four-Colour Theorem, \emph{Notices Amer. Math. Soc.} 55 (2008). % VERIFY; repo notes date the Coq formalisation 2005
