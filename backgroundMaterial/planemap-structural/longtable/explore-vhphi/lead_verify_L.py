@@ -1,8 +1,9 @@
 """LEAD's independent check of the Conjecture L counterexamples. Written from Math's definitions only
 (MathConfinementAttack Step 1, MathCleanVertexAttack Theorem C): shares no code with the L-Attack team.
 Data in: oriented triangles + proper 4-colouring of T-v. Standard library only."""
-import re, sys
+import os, re, sys
 from collections import deque
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 def rotation(faces):
     succ = {}
@@ -78,13 +79,13 @@ def run(faces, v, col, maxsteps=130, label=""):
 
 if __name__ == "__main__":
     # --- W6: from the report text
-    rep = open("../../../../SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/l-attack.md").read().split("\n")
+    rep = open(os.path.join(HERE, "../../../../SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/l-attack.md")).read().split("\n")
     fl = next(l for l in rep if l.startswith("Witness W6")); cl = next(l for l in rep if l.startswith("Colours (vertex:colour)"))
     faces6 = [tuple(map(int, m.groups())) for m in re.finditer(r"\[(\d+),(\d+),(\d+)\]", fl)]
     col6 = {int(a): int(b) for a, b in re.findall(r"(\d+):(\d+)", cl.split("Link of v")[0].split("):")[1])}
     c6 = run(faces6, 16, col6, label="W6 (20 vertices)")
     # --- A_3: from the team's data file, constants only (no team code executed)
-    src = open("lattack_witness.py").read()
+    src = open(os.path.join(HERE, "lattack_witness.py")).read()
     faces3 = eval(re.search(r"^A3_FACES\s*=\s*(.+)$", src, re.M).group(1))
     col3 = eval(re.search(r"^A3_COL\s*=\s*(.+)$", src, re.M).group(1))
     c3 = run(faces3, 0, col3, label="A_3 (17 vertices)")
