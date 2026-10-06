@@ -8,7 +8,8 @@ const Tree = (() => {
   const WORKING = new Set([
     'structural-vacancy',
     'structural-vhe-obstruction',
-    'structural-vhe-potential'
+    'structural-wp20',
+    'structural-math-horizon'
   ]);
 
   function setCallbacks(onSelect, onChange) {
@@ -74,7 +75,9 @@ const Tree = (() => {
     row.className = 'node-row'
       + (node.id === selectedId ? ' selected' : '')
       + (node.id === hoveredId ? ' hovered' : '')
-      + (WORKING.has(node.id) ? ' working' : '');
+      + (WORKING.has(node.id) ? ' working' : '')
+      + (isClosedEnd(node) ? ' closed-end' : '')
+      + (isOpenPath(node) ? ' open-path' : '');
 
     // Toggle arrow
     const toggle = document.createElement('span');
@@ -90,6 +93,8 @@ const Tree = (() => {
     // Status dot
     const status = document.createElement('span');
     status.className = 'node-status ' + node.status;
+    if (isClosedEnd(node)) status.title = 'Closed end';
+    if (isOpenPath(node)) status.title = 'Opens further';
 
     // Title
     const title = document.createElement('span');
@@ -272,6 +277,25 @@ const Tree = (() => {
   function setSelectedId(id) { selectedId = id; }
   function isWorking(id) { return WORKING.has(id); }
 
+  function liveChildren(node) {
+    return (node.children || []).filter(child => child.active !== false);
+  }
+
+  function opensForward(node) {
+    return liveChildren(node).some(child =>
+      child.status !== 'killed' && child.status !== 'proved' && child.status !== 'compiled' && child.status !== 'computed');
+  }
+
+  function isClosedEnd(node) {
+    if (!node || liveChildren(node).length) return false;
+    return node.status === 'proved' || node.status === 'compiled';
+  }
+
+  function isOpenPath(node) {
+    if (!node) return false;
+    return (node.status === 'proved' || node.status === 'compiled') && opensForward(node);
+  }
+
   function setHovered(id) {
     hoveredId = id || null;
     document.querySelectorAll('.node-row.hovered').forEach(el => el.classList.remove('hovered'));
@@ -303,6 +327,6 @@ const Tree = (() => {
     setCallbacks, findNode, findParent, deleteNode, addChild,
     expandAll, collapseAll, getStats,
     getSelectedId, setSelectedId, countByStatus, countLeaves,
-    isWorking, setHovered, reveal
+    isWorking, isClosedEnd, isOpenPath, setHovered, reveal
   };
 })();

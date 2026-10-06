@@ -1,7 +1,17 @@
 {
-  "revision": 89,
-  "updatedAt": "2026-10-05T21:54:00-06:00",
+  "revision": 91,
+  "updatedAt": "2026-10-06T07:45:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T13:50:00Z",
+      "node": "structural-wp20",
+      "action": "Revision 91 records the overnight facts. WP20 P1 stopped at 16000 of 25381 graphs with no running process and no output file, so it is interrupted and inconclusive. Math's session hit a rate limit and its Theorem P and L4 Lean worker failed, per the coordinator. Long Table added a seed script and CPU-cap watchdog outside the hashed package. Unannounced Math files on disk are noted and not recorded as results. No status was upgraded from finite data."
+    },
+    {
+      "time": "2026-10-06T04:25:00Z",
+      "node": "structural-wp20",
+      "action": "Revision 90 corrects the WP21 title: the package was announced in revision 89 and is not a draft. WP20 phase 1 is still running; the log read 13500 of 25381 graphs at 8159 seconds. No result, and no status upgrade."
+    },
     {
       "time": "2026-10-06T03:56:00Z",
       "node": "structural-vacancy",
@@ -7676,6 +7686,72 @@
       ],
       "id": "structural-wp20",
       "revision": 89
+    },
+    {
+      "title": "WP21: D1 and P on order 26, sample then adversarial search (announced, not started)",
+      "notes": [
+        {
+          "time": "2026-10-06T04:25:00Z",
+          "text": "Revision 90: the title no longer says draft. Revision 89 already recorded the announcement and the final hashes. Status stays unstarted until phase A begins."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 90
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T04:25:00Z",
+          "text": "Revision 90: P1 log read 13500 of 25381 graphs at 8159 s wall. Still the same run. Not a result. The earlier readings (7000, then 10500) stay in the notes above."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 90
+    },
+    {
+      "title": "WP20: D1 and P at degree-5 holes, order 25 (P1 interrupted, inconclusive until rerun)",
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/wp20/README.md",
+        "SolvingFrameworkPlan/messages/2026-10-05/2026-10-05_2154_longtable_to_navigator+math+audit+user_status-P1-and-plan.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T13:50:00Z",
+          "text": "Revision 91, facts from the files at 07:43 on 6 October. The P1 log ends at 16000 of 25381 graphs, 9897 s, last written 22:55 on 5 October, followed by a Python resource_tracker warning about 6 leaked semaphores. No d1_confirm process is running. The phase output file (wp20/P1-m5-25.json) is written only at the end and does not exist, so no P1 result exists. The 21:54 status message said P1 was on track for about 23:55; the README resume note written at the usage limit around 22:00 said P1 would keep running without the session. It did not complete. P1 is interrupted and inconclusive, never a pass. Long Table is verifying the cause and the resume path. Interrupted runs are inconclusive by the declaration; whether a rerun or resume is acceptable under the declaration, and whether P1 counts as started or restarted, is for Long Table to state in its report. The declaration, hashes, and the user's release are unchanged. Chronology addendum: none of the 16000 graphs' partial results are declared data."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 91
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:50:00Z",
+          "text": "Revision 91: Long Table commit dbc3906 added the phase-B seed selection script (wp21_seeds.py) and a CPU-cap watchdog (wp_cpucap.py, tested to kill at cap with exit 3), both outside the announced hashed package, and resume steps in wp20/README.md. Phase A has not started, because P1 did not finish. Status stays unstarted. The announced hashes cover the declaration, producer, driver, selector, checker and selection file; the new scripts are not in that list, and the declaration's commands should name them with their hashes before phase A runs."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 91
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:50:00Z",
+          "text": "Revision 91: overnight facts reported by the coordinator, not found in any committed file. Math's session reached a rate limit and its Theorem P and L4 Lean worker failed. On disk: an uncommitted VacancyLemmaL4.lean in the live checkout (no sorry by grep; no build or audit report seen), an uncommitted audit-101 directory, and the working notes MathNCaseI.md and MathTerminationPlan.md. None has a message, so nothing from them is recorded as a result. The L4 and Theorem P Lean statements are not compiled. The mobility modules remain in-progress pending an audit."
+        }
+      ],
+      "id": "structural-math-horizon",
+      "revision": 91
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T13:50:00Z",
+          "text": "Revision 91: no new Math or Long Table result message since revision 89 other than Long Table 21:54 (status). Overnight, P1 stopped at 16000 of 25381 and Math's session hit a rate limit. No status changed. Gates: WP20 success now additionally requires a complete P1 (rerun or valid resume) and its checker --all, since the interrupted run is inconclusive."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 91
     }
   ]
 }

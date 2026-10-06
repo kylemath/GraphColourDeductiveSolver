@@ -280,6 +280,17 @@ if (integrationPath) {
     assert.equal(Tree.findParent(root, id).id, parent, id);
     assert.equal(Tree.findNode(root, id).status, status, id);
   }
+  assert.equal(
+    Tree.findNode(root, 'structural-wp21').title,
+    'WP21: D1 and P on order 26, sample then adversarial search (announced, not started)'
+  );
+  assert.equal(Tree.isWorking('structural-wp20'), true);
+  assert.equal(Tree.isWorking('structural-math-horizon'), true);
+  assert.equal(Tree.isWorking('structural-vhe-potential'), false);
+  assert.equal(Tree.isClosedEnd(Tree.findNode(root, 'f5-lean')), true);
+  assert.equal(Tree.isOpenPath(Tree.findNode(root, 'f5-lean')), false);
+  assert.equal(Tree.isClosedEnd(Tree.findNode(root, 'structural-contact')), false);
+  assert(flatten(root).some(node => Tree.isOpenPath(node)), 'a proved or compiled node still opens');
   assert.equal(Tree.findParent(root, 'structural-wp18-bound-two').id, 'structural-wp18');
   assert.equal(Tree.findNode(root, 'structural-wp18-bound-two').status, 'killed');
   assert.equal(Tree.findNode(root, 'structural-swap-budget').status, 'exploring');
