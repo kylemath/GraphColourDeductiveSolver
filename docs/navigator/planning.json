@@ -1,7 +1,12 @@
 {
-  "revision": 103,
-  "updatedAt": "2026-10-06T09:31:00-06:00",
+  "revision": 104,
+  "updatedAt": "2026-10-06T09:33:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T16:08:00Z",
+      "node": "structural-wp21",
+      "action": "Revision 104 corrects revision 103: wp21/studio/RECORD.txt exists in this checkout and shows WP21 phase A running on the first Mac (Apple M4 Pro, 14 cores, computer name MacBook Pro, git head 5caa496, 16 workers, started 09:29:52), alongside WP20 P1, not on the Studio as relayed. The machine labelling, the checking-machine rule and a possible double run are flagged for the coordinator and Long Table. No result exists and no status changed."
+    },
     {
       "time": "2026-10-06T16:00:00Z",
       "node": "structural-wp21",
@@ -8959,6 +8964,20 @@
         {
           "time": "2026-10-06T16:00:00Z",
           "text": "Revision 103, the coordinator's relay of the Studio agent's status (not yet confirmed by any repository file): the Mac Studio started WP21 task T1, phase A, 46 shards with 16 workers, at 09:30:07 on the Studio's clock, from origin/main e6110ff, after Kyle cleared the Studio's permission block. The 11:30 first-Mac fallback is void unless the Studio fails; the one-owner rule stands (the Studio owns WP21, and the first Mac must not start phase A). Long Table is asked to record the start in wp21/CHRONOLOGY.md. At the time of this revision no branch containing studio exists on the remote and wp21/studio/RECORD.txt does not exist in this checkout, so the start, the commit and the clock are unverified by the navigator. The Studio clock may differ from the first Mac clock, so Studio times are labelled as Studio times in the chronology. When RECORD.txt appears on branch studio-wp21, the ledger will check its commit equals e6110ff, its package hash list equals the announced hashes and the machine fields, and only then record the phase as running there. Nothing is a WP21 result. A partial, capped or failed phase is inconclusive. Its outputs must be checked on the first Mac (wp21_mac_checks.sh) before any count is recorded."
+        }
+      ]
+    },
+    {
+      "id": "structural-wp21",
+      "revision": 104,
+      "files": [
+        "backgroundMaterial/planemap-structural/longtable/wp21/studio/RECORD.txt",
+        "backgroundMaterial/planemap-structural/longtable/wp21/studio/pipeline.log"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T16:08:00Z",
+          "text": "Revision 104, CORRECTION of revision 103 and an alert. Revision 103 said no RECORD.txt existed and recorded the start as a Studio start relayed by the coordinator. The checkout on this machine does contain wp21/studio/RECORD.txt, written at 09:29, and WP21 phase A is running HERE: RECORD.txt gives started 09:29:52 MDT, machine Darwin mac.lan, Apple M4 Pro, 14 cores, 51539607552 bytes memory, Python 3.9.6, git head 5caa496fe82ccfad32b3db3b4e72b2ccaa6fba74, workers 16; the machine's computer name is the MacBook (the first Mac); the processes wp21_studio.sh and wp_shard_runner.py run --workers 16 (16 worker processes) are live in this machine's process list, owned by the same user, alongside the WP20 P1 pipeline (started 07:45) whose chunk-4 job started at 09:30; the load average was about 48 on 14 cores at 09:31. The Studio is described elsewhere as an Apple M4 Max with 16 cores, and the coordinator said the run started on origin/main e6110ff; the RECORD.txt head is 5caa496 (a later Long Table commit), so the record does not match the relayed account. The navigator does not know who launched it. Consequences, as facts and risks, not as accusations: (1) phase A is being produced on the same machine that is producing WP20 P1, so the rule that every output is checked by a machine that did not produce it needs the first Mac check to be replaced, since wp21_mac_checks.sh would now run on the producer machine; (2) the output files and the reports written by wp21_studio.sh carry the label Mac Studio (the script text), which would be wrong for this run unless RECORD.txt is read; (3) the two heavy jobs compete for 14 cores, which slows P1 and does not change what either computes, but the CPU-second caps count process CPU time and the per-graph 30 minute wall limit could in principle be approached under load; (4) if the Studio has also started phase A, WP21 phase A would run twice, which the one-owner rule forbids. Needed from the coordinator and Long Table: say which machine is running phase A, state whether the Studio has started, and decide whether to stop this run. The navigator does not stop processes. Until resolved, the ledger records WP21 as started on the first Mac at 09:29:52 on RECORD.txt evidence, with machine provenance contested, and records no result. A partial, capped or failed phase is inconclusive."
         }
       ]
     }
