@@ -1,7 +1,12 @@
 {
-  "revision": 121,
-  "updatedAt": "2026-10-06T12:58:00-06:00",
+  "revision": 122,
+  "updatedAt": "2026-10-06T13:12:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T19:15:00Z",
+      "node": "structural-chain-rstar",
+      "action": "Revision 122 records the R* reduction as a conditional theorem proved by hand, after the audit re-derived all six links independently (R* stays open); Theorem HP (radius at most 6 at a degree-5 hole with four degree-5 neighbours and one free neighbour) as proved by hand on a Math review worker, with all its computed claims unverified; an independent non-audit recomputation of the order-28 radius-4 (6,6,6,6,6) hole by the Six-Ring Trap exhibit; Math's D-reducibility refinement (4 of 8 {5,6} 2-balls reducible, every sequence with three or more 6s fails); and the user's decisions to start no new jobs on the MacBook (13:01) and to let the P1 check finish there while the WP21 cross-check waits (13:04). No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T19:05:00Z",
       "node": "structural-pathway-f",
@@ -10278,6 +10283,113 @@
       ],
       "id": "dissemination-vhe-paper",
       "revision": 121
+    },
+    {
+      "status": "proved",
+      "title": "Reduction: Lemma R* implies VH_C, VH-exists and 4-colourability (conditional theorem, hand; R* open)",
+      "evidence": "Proved by hand as a CONDITIONAL theorem: reviewed correct by a Math review worker (Math re-derived L3), and re-derived link by link by the independent audit (13:25, hand only), which also re-derived the separating-triangle step of L5 (what crosses the separating triangle is a phi-good pair, via VacancyCliqueLift) and the Euler repair (at least 9 - n4, at least 7, suitable degree-5 vertices off phi; needed only for the P-A* attack, not for the chain). The chain needs neither Theorem A, nor 4-connectivity of a plain failure, nor frozen-phi swaps, nor a uniform radius bound. It uses accepted inputs the audit did not re-derive: the triangle reduction (TriangleCarry), VacancyCliqueLift (compiled), FourConnected Proposition 1 (at most two degree-4 vertices on phi), the order bound (at least 12) and VH-exists implies 4-colourability. The audit's framing: R* is not weaker than VH-exists; it is a sufficient condition at least as strong. Lemma R* itself is OPEN; nothing about the Four Colour Theorem is proved by this node.",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1325_audit_to_coordination+math+navigator+longtable_R-star-chain-adversarial-read.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T19:15:00Z",
+          "text": "Revision 122: proved as a conditional theorem on the audit's independent re-derivation. R* stays open."
+        }
+      ],
+      "id": "structural-chain-rstar",
+      "revision": 122
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-a",
+      "revision": 122,
+      "node": {
+        "id": "structural-theorem-hp",
+        "title": "Theorem HP: a degree-5 hole with four degree-5 neighbours and one neighbour of any degree has radius at most 6",
+        "status": "proved",
+        "statement": "Let v have degree 5, four link vertices of degree 5 and the fifth p of any degree, with no separating triangle meeting the ball (the proof uses only that the link has no chords). Then every doubly locked state at v has Kempe radius at most 6, with finer bounds 2 to 6 by case; the case deg p = 4 also holds. The proof is a finite automaton on ring-2 patterns with three moves (F, B and the single whole-component {a,b}-swap of the link triple) and two degree-free starvation rules; it never reads p's degree or neighbours. By L3 of the reduction chain, every triangulation containing such a vertex (off phi) has a clean vertex there. It covers the belt, A_r and Theorem H's class; it does not cover holes with two or more neighbours of degree at least 6 (T4's class, the (6^5) holes, the Euler lemma's general case), where R* remains open.",
+        "approach": "Math 13:01 (worker's hand theorem, MathHighDegreeNeighbour.md) and 13:05: an independent review worker (MathReviewTheoremHP.md) found it CORRECT with two wording fixes (only chordless link needed; deg p = 4 included); Math read the review. Not reviewed by the audit (an adversarial read is requested). Killed lines in the write-up: \"Theorem H's bound 3 extends to (5,5,5,5,*)\", \"the radius grows with deg p\", \"move the hole to p\", \"the belt walk lemmas are local\".",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathHighDegreeNeighbour.md",
+          "SolvingFrameworkPlan/docs/working/MathReviewTheoremHP.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1301_math_to_coordination+audit+navigator+longtable_Theorem-HP-one-free-neighbour.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1305_math_to_navigator+coordination+audit+longtable_Theorem-HP-reviewed-correct.md"
+        ],
+        "evidence": "Proved by hand on Math's review worker, as for Theorem H; not compiled, not audited. ALL its computed claims are unverified (battery stop): the transition checks, radius-4 examples at (5,5,5,5,7) order 22 and (5,5,5,5,11) order 29, the belt radius 2, and sharpness of 4; the order-22 example has no face list, so it cannot be rebuilt and must not be cited until one is added.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:15:00Z",
+          "text": "Revision 122: the order-28 radius-4 (6,6,6,6,6) hole has an independent, non-audit recomputation: the exhibit The Six-Ring Trap (docs/66666/, commit 0c20203, published in site update 0960194) recomputes it with a separate script by a coordinator sub-agent: one Kempe class of 1,118 states, 121 doubly locked (117 at radius 2, 3 at radius 3, 1 at radius 4), matching Math's 117, 3, 1 histogram. This is a second implementation, not the audit's replay, which is still separate. Math 13:08 [hand, conditional on the page using Math's frame and ring start]: the page's state 992 realises one of the four previously unseen ring patterns, and with the mirror map the unseen list shrinks from four to two (gadbdabagb and gadgdabagd, both self-mirror); nothing recomputed."
+        }
+      ],
+      "files": [
+        "docs/66666/index.html",
+        "docs/66666/build_data.py",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1308_math_to_coordination+navigator+audit_unseen-patterns-four-to-two.md"
+      ],
+      "id": "structural-sixfive-automaton-killed",
+      "revision": 122
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:15:00Z",
+          "text": "Revision 122, Math 13:03 (worker stopped early on the battery instruction; Math ran no code): [computed, exploratory]. \"Two matchings determine the third\" is false (4-ring counterexample); \"every matching triple is realisable\" is Conjecture J (realisability), proved only up to ring 6, sampled 1,923 of 1,925 at ring 7. A sound refinement [hand]: a swapped component with no ring vertex leaves the outside untouched, so known matchings persist (vdred_joint.py; verifier 0 violations on 26 triangulations). [hand] the 2-ball is determined by the cyclic link-degree sequence. Family size with link degrees in [5, D]: 8 for {5,6}, 39 for [5,7] up to 1,855 for [5,11] (excluding non-simple rings, non-induced links and degree 4). Of the 8 {5,6} sequences, 4 are reducible under the refinement ((5,5,6,5,6) at depth 14 not yet through the verifier); every sequence with three or more 6s fails, including (6^5), so 2-balls alone cannot cover the Euler-lemma family. Studio jobs proposed through the coordinator. The audit's independent implementation of the game is still outstanding. The name \"Conjecture J\" here clashes with Long Table's A_r Conjecture J; the paper must disambiguate."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/MathVacancyDRed/REFINEMENT.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1303_math_to_coordination+audit+navigator+longtable_vacancy-D-red-refinement-and-Studio-jobs.md"
+      ],
+      "id": "structural-vacancy-d-reducibility",
+      "revision": 122
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1301_user_to_longtable+math+audit+navigator+severn+studio_no-new-jobs-on-macbook.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1310_audit_to_coordination+navigator_studio-routing-P1-replay-and-chord-check.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T19:15:00Z",
+          "text": "Revision 122, user decisions. 13:01 (quoted \"from now on dont start new jobs on this computer but on the studio this laptop is out of power and cant recharge well\"; battery at 8 percent): no new computation on the MacBook; all new compute goes to the Mac Studio through the coordinator; hand work and writing continue. 13:04 (the coordinator's relay, no file seen): power fixed; let the P1 --all check finish on the MacBook. The audit (13:10) has nothing running on the MacBook and routes its P1 replay and the order-24 chord check to the Studio."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 122
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:15:00Z",
+          "text": "Revision 122: per the user's 13:04 decision (coordinator's relay), the first-Mac cross-check of WP21 phase A is stopped for now and resumable; WP21 phases A and B therefore remain produced and checked once on the Studio, not cross-checked, no result. Under the 13:01 rule the cross-check must move to a machine other than the producer; since the Studio produced the outputs, the cross-check stays on the MacBook when it resumes, or on a separate implementation, as the gate requires."
+        }
+      ],
+      "id": "structural-wp21",
+      "revision": 122
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T19:15:00Z",
+          "text": "Revision 122: Severn moved the revision 121 items into section 5 (12:59 message); Math sent section 3 corrections (13:00 message). The R* reduction is now a conditional theorem [hand] on the audit's re-derivation, and Theorem HP is [hand] on a Math review worker's verdict with all its computed claims unverified; Severn may state both with those labels. \"Conjecture J\" is used for two different statements (Long Table's A_r count and Math's matching realisability); the paper must give them distinct names."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1259_severn_to_navigator+longtable+math+audit+coordination_paper-revision-121-items-in-section-5.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1300_math_to_longtable+audit+navigator+coordination_paper-section-3-corrections.md"
+      ],
+      "id": "dissemination-vhe-paper",
+      "revision": 122
     }
   ]
 }
