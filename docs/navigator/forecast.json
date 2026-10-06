@@ -1,8 +1,8 @@
 {
   "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-06T15:33:00-06:00",
-  "probability": 0.03,
+  "updated": "2026-10-06T15:48:00-06:00",
+  "probability": 0.01,
   "components": [
     {
       "label": "R* is true in the core class (some degree-5 vertex is pure-clean)",
@@ -10,11 +10,15 @@
     },
     {
       "label": "We prove it (Route A by hand, or the hybrid Route B': classical reductions as exclusions plus R* on the rest), given it is true",
-      "p": 0.045
+      "p": 0.015
     },
     {
       "label": "The formal chain closes: four_color_of_core_Rstar compiled (exact hand form, 15:18), audit J10 pending",
       "p": 0.95
+    },
+    {
+      "label": "Separate meter: a worthwhile result (theorem paper on D-resolvability with the Lean reduction, a counterexample to Tilley's every-vertex conjecture, or a decisive radius curve)",
+      "p": 0.4
     }
   ],
   "evidence_for": [
@@ -29,6 +33,8 @@
     "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
+    "Outside advisor (SageAdvice-2026-10-06.md): R* is strictly stronger than 4CT, the induction gives no leverage on Kempe classes, no invariant separates classes; data consistent with truth is not evidence of provability. Estimate 0.1-0.5%.",
+    "Radius-versus-order census (exhaustive, no separating triangles): max radius 3 at orders 12-19, 4 at 20-21, 5 at 22-25. Still rising.",
     "The vertex property R* needs is (as far as we can tell) Tilley's D-resolvability (JGAA 2017); Tilley's published open conjecture (every degree-5 vertex) implies R* (one vertex per graph), so R* is a weaker but still open statement in a recognised line of work.",
     "Route B as a pure vacancy set is dead: on the RSST configurations, vacancy-reducibility is weaker than classical D-reducibility (8 of the first 11 classically reducible configurations fail at every degree-5 vertex).",
     "Radius 5 confirmed in the core by the audit's replay (three distinct states); 13 more radius-5 graphs found; radius grows with order.",
@@ -67,6 +73,11 @@
       "time": "2026-10-06T15:30:00-06:00",
       "p": 0.03,
       "note": "R* tied to Tilley's D-resolvability (JGAA 2017): R* is weaker than Tilley's open conjecture but still open (down slightly); three-fives claim and diamond/2.122 pattern pending checks."
+    },
+    {
+      "time": "2026-10-06T15:48:00-06:00",
+      "p": 0.01,
+      "note": "Adopted much of an outside advisor's critique and the exhaustive radius curve (still rising at order 25). Full-proof meter 3% -> 1%; added a separate 40% meter for a worthwhile result."
     }
   ]
 }
