@@ -13,13 +13,30 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Open decision for the coordinator
 The hole-fill statements need the plane-map carrier (rotation, outer ring w_t) rather than a bare `SimpleGraph`. I will ask the Math team (Lean owner) how `Vacancy*` states it before writing Piece 3.
 
+## Update 1427 MDT: the IcoBall derivation and non-vacuity (answers audit S3; derivation done)
+
+- **Dedupe.** `EulerCounting.lean` is removed. Its content lives only in `PlaneMap/EulerSharp.lean`, so each declaration exists exactly once.
+- **`SphericalMap.theorem_H`** in `PlaneMap/VacancyIcosahedral.lean`, now with **no `IcoBall` hypothesis**.
+  - Hypotheses: `M.Triangulated`; `degree h = 5`; every neighbour of h has degree 5; `M.NoSeparatingTriangleAt h`.
+  - Conclusion: every proper 4-colouring of T − h has `PureFill ... 3`.
+  - `NoSeparatingTriangleAt h` means: if two neighbours u, v of h are adjacent, then they are consecutive in the rotation at h. On a triangulation, that is exactly the statement that every triangle through h is a face.
+  - It is used only to exclude the chord x_t x_{t+3}, i.e. w_t = x_{t+3}.
+- **`icoBall_of_triangulated`** derives `IcoBall` from those hypotheses.
+  - Triangle law `nx_tri`: three `faceNext` steps close a face.
+  - `orbit5` / `chain5`: at a degree-5 vertex the rotation is one 5-cycle of darts. So the rotation at x_t reads w_t → x_{t+1} → h → x_{t−1} → w_{t−1} and lists every neighbour exactly once.
+- **Non-vacuity**, on the library's `Icosahedron.sphericalMap`:
+  - `Icosahedron.theorem_H_icosahedron`: every hypothesis of `theorem_H` holds at vertex 0, for an explicit colouring `sampleColouring` that is proper off 0 and **not** already filled (`sampleColouring_unfilled`).
+  - `Icosahedron.twelve_light_fives_icosahedron`: the hypotheses of the Euler lemma hold.
+- **Axioms.** `#print axioms` for all of these lists propext, Classical.choice and Quot.sound only. No `sorry`.
+- **Note.** The icosahedron has no doubly locked state, so the sample exercises the statement, not the R1–R3 branches.
+
 ## Compiled 1419 MDT (single-file checks, read-only against the built snapshot 8299419; not yet audited)
 
 Reproduce with `check.sh`. Hashes are in `SHA256SUMS`. No file contains `sorry`. `#print axioms` lists only propext, Classical.choice and Quot.sound; `ring_cases` uses only propext. A deliberately broken copy was rejected, which confirms that the check really elaborates the proofs.
 
 | file | main theorem | statement |
 |---|---|---|
-| `EulerCounting.lean` | `StudioMath.good_card_ge_twelve` | finite simple graph, every degree ≥ 5, 2E + 12 ≤ 6V ⇒ ≥ 12 degree-5 vertices with ≤ 1 neighbour of degree ≥ 12 |
+| (in `EulerSharp.lean`) | `StudioMath.good_card_ge_twelve` | finite simple graph, every degree ≥ 5, 2E + 12 ≤ 6V ⇒ ≥ 12 degree-5 vertices with ≤ 1 neighbour of degree ≥ 12 |
 | `PlaneMap/EulerSharp.lean` | `SphericalMap.edge_card_bound_sharp` | any `SphericalMap` with a dart: E + 2 ≤ n + F (no connectivity hypothesis) |
 | | `SphericalMap.twice_edges_add_twelve_le` | all faces of length 3 ⇒ 2E + 12 ≤ 6n |
 | | `SphericalMap.twelve_light_fives` | **Euler lemma:** spherical triangulation (a dart, all faces of length 3), every vertex of degree ≥ 5 ⇒ ≥ 12 degree-5 vertices with ≤ 1 neighbour of degree ≥ 12. The file repeats the counting lemma so that it is self-contained. |
