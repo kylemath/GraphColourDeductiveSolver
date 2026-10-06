@@ -1,7 +1,7 @@
 {
   "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-06T15:30:00-06:00",
+  "updated": "2026-10-06T15:33:00-06:00",
   "probability": 0.03,
   "components": [
     {
@@ -29,7 +29,7 @@
     "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
-    "R* is (as far as we can tell) Tilley's published D-resolvability conjecture (JGAA 2017), open since 2017 and stronger than 4-colourability: we are attacking a recognised open problem, not a new lemma.",
+    "The vertex property R* needs is (as far as we can tell) Tilley's D-resolvability (JGAA 2017); Tilley's published open conjecture (every degree-5 vertex) implies R* (one vertex per graph), so R* is a weaker but still open statement in a recognised line of work.",
     "Route B as a pure vacancy set is dead: on the RSST configurations, vacancy-reducibility is weaker than classical D-reducibility (8 of the first 11 classically reducible configurations fail at every degree-5 vertex).",
     "Radius 5 confirmed in the core by the audit's replay (three distinct states); 13 more radius-5 graphs found; radius grows with order.",
     "Every local route so far has died: link classes, 2-balls, the 74-pattern automaton, Conjecture L, fixed radius bounds.",
@@ -66,7 +66,7 @@
     {
       "time": "2026-10-06T15:30:00-06:00",
       "p": 0.03,
-      "note": "R* identified as Tilley's published open conjecture (down); three-fives claim and the diamond/2.122 pattern pending checks (up if they hold). Net -0.5 point."
+      "note": "R* tied to Tilley's D-resolvability (JGAA 2017): R* is weaker than Tilley's open conjecture but still open (down slightly); three-fives claim and diamond/2.122 pattern pending checks."
     }
   ]
 }
