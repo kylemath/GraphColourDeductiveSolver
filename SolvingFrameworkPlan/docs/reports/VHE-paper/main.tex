@@ -182,8 +182,9 @@ The Lean kernel certifies the formal statement, not its match with the prose; Se
 
 The library is \texttt{Mathlib/Combinatorics/SimpleGraph/PlaneMap/} in the Lean repository named in Section~\ref{sec:disclosure}. Its branch \texttt{current} holds the audited modules, including L4 and Theorem~P, at commit \texttt{8299419}; the branch also holds a Five Colour demonstration file, which is in neither audit, and four notes.
 % Commit confirmed by Math (gh api; all 73 PlaneMap files byte-identical to the local tree), WK/MathPaperSection3Check.md.
-After both audits, only comment header lines of some files were changed (the author line in 29 files and a copyright header in 52). The edited files were rebuilt, but not re-audited, so the published files are not byte-identical to the audited ones; their new hashes are recorded beside the audit.
-% Math 13:00 required correction 1; Math asks the audit to re-audit 8299419.
+After both audits, only comment header lines of some files were changed (the author line and a copyright header). The published snapshot \texttt{8299419} was rebuilt from scratch on a second machine, and the independent audit accepted that rebuild as the re-audit of the header-edited files: all 116 audited modules plus the Five Colour demonstration (118 files), every build exit 0, and an axiom sweep of 1,903 constants with none outside the standard three. The published files differ from the first audited ones only in header comments.
+% MSG/..._1450_audit_..._studio-rebuild-8299419-accepted-on-evidence.md; MSG/..._1505_audit_..._studio-8299419-confirmed-as-re-audit.md (conditions E1-E5 met; E5 by transfer).
+% Studio evidence: branch studio-wp21 commit c213183, LT/lean-8299419/.
 The modules that are built but not audited (Section~\ref{sec:lean-unaudited}) are untracked in the local checkout and are not on that branch.
 % MSG/..._1218_math_..._backup-pushed-and-six-five-hole.md item 1 ("Left out (not audited)").
 No Mathlib pull request has been opened.
@@ -352,11 +353,16 @@ Let $v$ have degree $5$, let all five neighbours of $v$ have degree $5$, and let
 % WK/MathRadiusGeometry.md item 1 and "Erratum": distinctness of the w_t is a hypothesis. Ledger structural-theorem-h = proved,
 % title "accepted by hand, not compiled, not audited". MSG/..._1102_math_... item 1.
 The proof classifies the colours on the outer ring forced by the two lock paths into three patterns, and gives an explicit lock-breaking swap for two of them. Status: accepted by Math on the strength of an independent review by a Math sub-agent and Math's own numerical check; Math has not re-derived it line by line. It is not compiled and not audited. The theorem does not extend verbatim to holes with a degree-6 neighbour (Section~\ref{sec:neg}).
+A Lean version, \texttt{SimpleGraph.SphericalMap.ico\_fill}, gives a pure fill within 3 swaps from every colouring proper off the hole. It is compiled for holes whose two-ball has the icosahedral structure, stated as a hypothesis (\texttt{IcoBall}); its derivation from the degree conditions is pending. \lab{built, audit pending}
+% MSG/..._1520_audit_..._Euler-and-H-Lean-statements-and-studio-check.md item S2 (wording used exactly); Studio Math 14:19 (commit 536ffbc, WK/StudioMathLean/).
+% Single-file check only; the audit's Studio check and the non-vacuity instance (S3) are outstanding. Not [compiled] until the Navigator records it.
 % MSG/..._1102_math_... item 1 ("Math's reading"); WK/MathRadiusGeometry.md section 3 "Not covered".
 
 \paragraph{Where good holes may be.} Every spherical triangulation of minimum degree 5 has at least $12$ degree-5 vertices with at most one neighbour of degree $\ge12$. \lab{hand}
 % Lemma: MSG/..._1240_audit_..._P-A-repair-survives-counting-lemma.md (at least one such vertex); strengthened to at least 12 and accepted
 % by Math, MSG/..._1233_math_..._Euler-lemma-accepted-strengthened.md. Not yet recorded by the Navigator at revision 118.
+A Lean version, \texttt{SimpleGraph.SphericalMap.twelve\_light\_fives} (with the sharp bound \texttt{edge\_card\_bound\_sharp}), proves it for spherical maps whose faces all have length 3 and whose vertices all have degree at least 5. \lab{built, audit pending} It does not cover the relative class with degree-4 vertices on $\varphi$.
+% MSG/..._1520_audit_... items 1 and S1; WK/StudioMathLean/EulerSharp.lean.
 This only says where to look. A fill lemma for every hole of that class would imply VH$\exists$, so it is at least as hard.
 % MSG/..._1248_audit_..._fill-lemma-equals-VHE-strength.md item 1.
 
