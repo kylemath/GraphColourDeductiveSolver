@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vacancy</title>
+  <meta name="description" content="A third play, after Beckett: on a four-seat park bench, three colleagues sort the loose pages of a night handoff and learn that the hole now moves.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --bucky: #58a6ff;
+      --kamper: #3fb950;
+      --appken: #d29922;
+      --theo: #bc8cff;
+      --rosa: #f85149;
+      --napkin: #f3ecdc;
+      --napkin-ink: #2b2a27;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+    .script { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1rem 4rem; }
+    .title { text-align: center; margin-bottom: 1.5rem; }
+    .eyebrow {
+      margin: 0 0 0.6rem;
+      color: var(--theo);
+      font: 650 0.8rem/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 0.4rem; font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; }
+    .subtitle { margin: 0; color: var(--dim); font-style: italic; }
+    .toc {
+      margin: 0 0 2rem;
+      padding: 1rem 1.25rem;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+    .toc strong { display: block; margin-bottom: 0.4rem; color: var(--faint); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem; }
+    .toc ol { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+    .toc a { color: var(--dim); text-decoration: none; }
+    .toc a:hover { color: var(--text); }
+    .toc .source { display: block; margin-top: 0.6rem; color: var(--faint); }
+    .toc .source a { color: var(--bucky); }
+    h2 {
+      margin: 3rem 0 1.25rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 1.55rem;
+      letter-spacing: -0.01em;
+    }
+    h3 { margin: 2.25rem 0 1rem; color: var(--dim); font-size: 1.15rem; font-style: italic; font-weight: 500; }
+    p { margin: 0 0 1rem; }
+    hr.break { border: 0; height: 10px; margin: 2.5rem auto; width: 64px;
+      background: linear-gradient(90deg, var(--rosa) 0 25%, var(--bucky) 25% 50%, var(--kamper) 50% 75%, var(--appken) 75%);
+      border-radius: 2px; opacity: 0.75; }
+    .persona { padding-left: 0.9rem; border-left: 3px solid var(--who, var(--border)); color: var(--dim); }
+    .persona strong { color: var(--who); font-variant: small-caps; letter-spacing: 0.04em; font-size: 1.1em; }
+    .stage { margin: 1.25rem 0 1.25rem 1.5rem; color: var(--dim); font-style: italic; }
+    .stage em { font-style: normal; }
+    .cue { font-style: normal; font-variant: small-caps; letter-spacing: 0.04em; color: var(--who); }
+    .line { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0 1rem; margin: 0 0 0.85rem; }
+    .speaker {
+      padding-top: 0.12rem;
+      color: var(--who);
+      font-variant: small-caps;
+      font-weight: 650;
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+    .line p { margin: 0; }
+    .dir { color: var(--faint); font-style: italic; }
+    .thought {
+      margin: 1rem 0 1.25rem 1.5rem;
+      padding: 0.7rem 1rem;
+      background: color-mix(in srgb, var(--who) 8%, var(--raised));
+      border-left: 3px solid var(--who);
+      border-radius: 0 8px 8px 0;
+      color: var(--dim);
+      font-style: italic;
+    }
+    .thought .who {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--who);
+      font: 600 0.72rem/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+    .set-photo { margin: 0 0 1.25rem; }
+    .set-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .napkin {
+      margin: 1.5rem auto;
+      max-width: 40rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--napkin);
+      color: var(--napkin-ink);
+      border-radius: 3px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: rotate(-0.6deg);
+      overflow-x: auto;
+    }
+    .napkin:nth-of-type(even) { transform: rotate(0.5deg); }
+    .napkin pre { margin: 0; font: 0.86rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    code { font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text); background: var(--raised); padding: 0.05em 0.3em; border-radius: 4px; }
+    a { color: var(--bucky); }
+    .c-bucky { --who: var(--bucky); }
+    .c-kamper { --who: var(--kamper); }
+    .c-appken { --who: var(--appken); }
+    .c-theo { --who: var(--theo); }
+    .c-rosa { --who: var(--rosa); }
+    .c-assistant { --who: #8b949e; }
+    .screen {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      background: #010409;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--dim);
+      font: 0.92rem/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      box-shadow: 0 0 0 4px #161b2266, 0 8px 24px rgba(0, 0, 0, 0.4);
+      overflow-wrap: anywhere;
+    }
+    .screen p { margin: 0 0 0.6rem; }
+    .screen p:last-child { margin-bottom: 0; }
+    .screen p:first-child { color: var(--faint); font-size: 0.8rem; letter-spacing: 0.03em; }
+    .screen strong { color: var(--text); }
+    .next { margin: 3rem 0 0; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .next a { display: inline-block; padding: 0.6rem 1.1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--raised); color: var(--text); text-decoration: none; }
+    .next a:hover { border-color: var(--bucky); }
+    @media (max-width: 640px) {
+      body { font-size: 1rem; }
+      .script { padding-top: 2.25rem; }
+      .toc ol { columns: 1; }
+      .line { grid-template-columns: 1fr; }
+      .speaker { text-align: left; }
+      .stage, .thought { margin-left: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <article class="script">
+<header class="title"><p class="eyebrow">Four Colour Theorem</p><h1>The Vacancy</h1>
+<p class="subtitle">A third play, after Beckett: one bench, four seats, three people, and a hole that moves</p>
+</header>
+<nav class="toc" aria-label="Scenes"><strong>Scenes</strong><ol>
+<li><a href="#dramatis-personae">Dramatis Personae</a></li>
+<li><a href="#the-set">The Set</a></li>
+<li><a href="#i-the-wait">I. The Wait</a></li>
+<li><a href="#ii-the-runner">II. The Runner</a></li>
+<li><a href="#iii-the-pages">III. The Pages</a></li>
+<li><a href="#iv-the-slide">IV. The Slide</a></li>
+<li><a href="#v-the-swap">V. The Swap</a></li>
+<li><a href="#vi-the-symmetry">VI. The Symmetry</a></li>
+<li><a href="#vii-the-sentence">VII. The Sentence</a></li>
+<li><a href="#viii-only-the-ones-we-make">VIII. Only the Ones We Make</a></li>
+<li><a href="#ix-the-messenger">IX. The Messenger</a></li>
+<li><a href="#x-the-order-of-the-pages">X. The Order of the Pages</a></li>
+<li><a href="#xi-after">XI. After</a></li>
+</ol><span class="source">Plain-text script: <a href="../story/the-vacancy.md">the-vacancy.md</a></span></nav>
+<hr class="break" aria-hidden="true">
+<h2 id="dramatis-personae">Dramatis Personae</h2>
+<p class="persona c-bucky"><strong>Bucky</strong> The computer scientist. Has slept six hours, which he describes as "a full rebuild."</p>
+<p class="persona c-kamper"><strong>Kamper</strong> The mathematician. Wears the same coat as two nights ago. One napkin is still in the pocket.</p>
+<p class="persona c-appken"><strong>Appken</strong> The quant. Has run two kilometres in office shoes. Is holding eleven loose pages and no staple.</p>
+<p class="persona c-assistant"><strong>Assistant</strong> A voice from a phone, set face up on the bench. It speaks only when spoken to.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="the-set">The Set</h2>
+<p class="stage">A park. Morning. A gravel path, a lamp post that is still on although it is light, and one tree.</p>
+<p class="stage">The tree has four leaves left: one red, one blue, one green, one gold. They are evenly spaced, as if someone arranged them.</p>
+<p class="stage">Downstage centre is a municipal bench of four seats, separated by three iron armrests. The armrests are there so that nobody can lie down. The seats were painted by the same local artist who did the café floor: from stage left, red, blue, green, gold. The paint is chipped on all four.</p>
+<p class="stage">Nothing else. The bench should look as if it has been waiting a long time.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="i-the-wait">I. The Wait</h2>
+<p class="stage">5 October. 8:10 a.m. <span class="cue c-kamper">Kamper</span> sits on the red seat. <span class="cue c-bucky">Bucky</span> sits on the blue seat. The green and gold seats are empty.</p>
+<p class="stage">Each holds a printed letter of three pages. The two letters are identical. Each has been read many times. <span class="cue c-bucky">Bucky</span>'s has pencil in the margins. <span class="cue c-kamper">Kamper</span>'s has none, because she does not write on letters, only on napkins.</p>
+<p class="stage">Long silence.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Nothing to be computed.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Not until the digest.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Not until the digest.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(reading)</span> "The single validation pass on orders 19–20 is recorded as in progress."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading the same line on her copy)</span> "In progress."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"Partial tables will not be treated as a result."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Quite right.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Quite right.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Show me yours.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's the same as yours.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Show me.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> hands her his page one. She hands him her page one. They read. They swap back.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Well?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The same.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I told you.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You wrote "why 259" in the margin.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's not a difference in the letter. That's a difference in me.</p></div>
+<p class="stage">Pause. <span class="cue c-kamper">Kamper</span> holds out her hand. <span class="cue c-bucky">Bucky</span> gives her his page two. She gives him her page two. They read. They swap back.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The same.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Swapping two copies of the same thing is not a move.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's a move. It's the identity.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's a move that does nothing.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Most of them do.</p></div>
+<p class="stage">Silence. A leaf does not fall.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Revision fifty-seven.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Fifty-seven.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Addressed to us. "And to Long Table."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Addressed to <em>a</em> long table. We are not the only table that has been long.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>They put it in the salutation.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>They put a great many things in. They also put "this is not a proof of the Four Colour Theorem."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Twice.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Three times, if you count the way they say "compiled, and still conditional."</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Where is he?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>He said eight.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's ten past.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>He said eight, and he said he'd stop at the department on the way, and when a man like that says "on the way" he means "via another continent."</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Shall we go?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>We can't.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Why not?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>We're waiting for Appken.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Ah.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>And after Appken?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The digest.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Ah.</p></div>
+<hr class="break" aria-hidden="true">
+<h2 id="ii-the-runner">II. The Runner</h2>
+<p class="stage">Offstage, the sound of someone running on gravel in shoes that were not made for it. It goes on too long. It stops. It starts again.</p>
+<p class="stage"><span class="cue c-appken">Appken</span> enters at a run, holding a sheaf of loose pages against his chest with both arms, like a man carrying a cat that does not want to be carried. He stops at the bench. He cannot speak.</p>
+<p class="stage">He holds up one finger. He bends double. He straightens. He holds up the finger again.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Breathe.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(breathing)</span> Seventy.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Seventy what?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Revision. Seventy. They're at seventy.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> and <span class="cue c-kamper">Kamper</span> look at their letters. Then at each other.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>We're at fifty-seven.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You were at fifty-seven. It's — it was on a desk. In the department. By the printer. Under nothing. No name. "Night handoff." Half past nine last night. I read the first page standing up and then I ran.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You <em>took</em> it?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I borrowed it from a desk at speed.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>We'll come back to that.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(the words coming before the breath does)</span> It closes. The proof closes. There's an induction. Delete a degree-five vertex, add two chords, colour the smaller one, put it back, and it closes —</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Read me the next clause.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>After "closes." There is always a next clause. Read it.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> looks at page one. His face changes slowly, like weather.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(reading)</span> "...if one hypothesis is granted with no bound on the number of moves."</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd)</span> "The hypothesis is open."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>There it is.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>There it is.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You marked the position at the headline.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I marked the position at the headline. <span class="dir">(He takes a yellow sticky note from his breast pocket. It says CREDENCE IN WHAT? He crosses out CREDENCE and writes above it.)</span> "Closes if what."</p></div>
+<p class="stage">He sticks it to the blue-seat armrest. <span class="cue c-bucky">Bucky</span> peels it off and sticks it to <span class="cue c-appken">Appken</span>.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Sit down before you fall down.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> looks at the bench. Red: <span class="cue c-kamper">Kamper</span>. Blue: <span class="cue c-bucky">Bucky</span>. Green and gold: empty. He sits on gold, at the far end, leaving green empty between himself and <span class="cue c-bucky">Bucky</span>.</p>
+<p class="stage">Three people. Four seats. One hole.</p>
+<p class="stage">Nobody notices yet.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="iii-the-pages">III. The Pages</h2>
+<p class="stage">A gust of wind. <span class="cue c-appken">Appken</span>'s pages, eleven of them, unstapled, rise off his knees. All three grab. Some pages are caught. Some are not. Two land on the gravel. One lands on the green seat. One goes under the bench.</p>
+<p class="stage">Scramble. <span class="cue c-kamper">Kamper</span> gets down on her knees on the gravel without hesitation, because she was once a graduate student. <span class="cue c-bucky">Bucky</span> reaches under the bench. <span class="cue c-appken">Appken</span> chases one page towards the tree and stamps on it with one foot, carefully, the way you would stop a small animal without hurting it.</p>
+<p class="stage">They return. Each has some pages. In the scramble, pages of the old letter have got mixed in. Nobody is holding what they were holding.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Who has page one?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Of which?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Of the new one.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I have "Dead ends."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I have "Still open" and something that says fifty-seven.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Give me the fifty-seven.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It's mine.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's mine, it has my pencil.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Then it's yours. <span class="dir">(He gives it.)</span> Give me "Progress."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I don't have "Progress."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(holding a page up to the light)</span> I have "Progress." I'm keeping "Progress."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I ran two kilometres with "Progress."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Then you've read it. I haven't.</p></div>
+<p class="stage">Pause. <span class="cue c-appken">Appken</span> concedes. <span class="cue c-kamper">Kamper</span> reads. <span class="cue c-bucky">Bucky</span> reads "Dead ends" over her shoulder, because she has that too.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>You have two pages.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I have the two pages that matter.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>How do you know which pages matter?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The ones you were holding tightest.</p></div>
+<p class="stage">She puts on her glasses. She reads the first section heading aloud, slowly.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"What the proof hangs on."</p></div>
+<p class="stage">Silence. All three lean in. The leaves on the tree do not move.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading)</span> "The compiled contact theorems choose one degree-5 root and then allow two-swap macros on that same deletion. A slide moves the hole, so it does not plug into those theorems."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The root stays put.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>In fifty-seven, the root stays put. You delete one vertex, you sit there, you swap.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>And in seventy the hole walks.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>In seventy the hole walks. And the old theorems can't follow it.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Is that bad?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's a different proof. Whether it's bad depends on whether the hole walks somewhere.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span>, without meaning to, looks at the empty green seat beside him.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="iv-the-slide">IV. The Slide</h2>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Say the induction properly. Slowly.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(slowly, finger on the page he no longer has)</span> Take a triangulation. Find a vertex of degree five. Delete it. That leaves a pentagon. Add two chords across the pentagon, from one corner, so they don't cross. Now it's a smaller triangulation.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Colour the smaller one.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>By induction. Then take the two chords away again. Deleting edges is free: the colouring still works.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Restricts.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Restricts. Now you're back in the big graph, with a colouring of everything except one vertex. A hole. And then you use the hypothesis. Once.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Which says?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That the hole can be filled. Moving things around. However many moves it takes.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>No bound.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>No bound.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And with a bound?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(turning a page; it is not the right page; he turns it back)</span> "A budget of one Kempe swap, and a budget of two, are already too small."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So it's not a budget. It's reachability.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's Kempe's question in 1879. Can you get there from here.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>When does it first get used?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>"Through order 11 every spherical triangulation has a vertex of degree at most 4."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Of course. Euler. Twelve degree-five vertices is the least you can get away with. Below twelve, there's always a cheap vertex and you never need to touch the hypothesis.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So the first graph that needs it is —</p></div>
+<p class="stage">He stops. He knows.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Go on.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The icosahedron.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The icosahedron.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's always the icosahedron. <span class="dir">(to the sky)</span> I said it was the fairest test there is. I said it was the hardest. It was the easiest. And now it's the <em>first</em>.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>First and easy are both respectable things to be.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>There's another bit. "A later hole, even of degree greater than 5, is a state of that one application."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>So the hole starts with five neighbours.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And then it walks. And when it walks it can land somewhere with more.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Like a vacancy in a crystal.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Like an empty seat on a bench.</p></div>
+<p class="stage">He says it without thinking. Then all three look at the green seat.</p>
+<p class="stage">Long pause.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Move up.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Move up. Into the green.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> stands, climbs awkwardly over the armrest, and sits in green. Now gold is empty.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>What changed?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm closer to Bucky.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>What else?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The hole's at the end.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>What didn't change?</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(slowly)</span> Who's here.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(finding the line on "Dead ends")</span> "Slides alone cannot finish a colouring. They preserve sorted colour counts."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>You can slide all morning. Everybody shuffles one along. The hole goes from green to gold to wherever you like. And at the end it's still three people on a bench for four.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So who do we swap in?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That is the question. That has been the question since 1879.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> gets up, climbs over two armrests, and sits on gold. Now blue is empty, between <span class="cue c-kamper">Kamper</span> and <span class="cue c-appken">Appken</span>.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Slide.</p></div>
+<p class="stage"><span class="cue c-kamper">Kamper</span> gets up and sits on blue. Red is empty.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Slide.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> starts to get up.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Stop. You've proved the point.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I've proved the point?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>You've <em>illustrated</em> the point.</p></div>
+<hr class="break" aria-hidden="true">
+<h2 id="v-the-swap">V. The Swap</h2>
+<p class="stage"><span class="cue c-kamper">Kamper</span>, now on blue, reads from "Progress."</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Equal-pole star. On the two-pole belt G sub n, with n equal to three k plus two, if the poles share a colour, one Kempe swap on a pole's star fills a belt vacancy, for every such n."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>For <em>every</em> such n.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Hand argument, not compiled."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>For every such n, by hand.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Read the numbers. There are numbers.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"On G eight that is two, five, five, five, to four, four, five, five."</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> takes out a pen and writes on his own palm.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Two, five, five, five. Seventeen. Four, four, five, five. Eighteen.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Eighteen vertices. Seventeen coloured. One hole.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And after one swap, all eighteen. It's a rebalancing. The slides can't change the weights. The swap does. Two of the fives give up one each and the two becomes a four and there's room.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Don't say "portfolio."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I wasn't going to say portfolio.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You were.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I was.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(cont'd, quieter)</span> That's the swap we're waiting for. The one that changes who's on the bench.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>On one family of belts. When the poles agree. Not for every graph and not yet in Lean.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>On one family.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A whole infinite family, by hand. I would have killed for that at thirty.</p></div>
+<p class="stage">She turns the page over. Reads.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Unequal poles. Slides alone fill every unequal colouring of G five minus u nought, G eight minus u nought, and G eleven minus u nought. Nineteen, a hundred and twenty-one, and eight hundred and seven orbits. Longest walks four, four, and six."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Slides alone.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Slides alone. When the poles disagree, nobody needs to be swapped in. The hole just walks home.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Then why can't slides finish? You just said —</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>These colourings already have the right counts. The hole is just in the wrong place. Slides fix <em>where</em>. Swaps fix <em>how many</em>.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> writes "WHERE / HOW MANY" on his other palm. He has run out of palms.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading on)</span> They've built it out of tiles. A tile that returns the zero one step along the belt. A cap at the start. Two kinds of gap. One of the gaps "repeats a colour on u i u i plus one and is not a colouring" —</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So it never happens.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>So it never happens. Which is my favourite kind of case. And the other comes home in four slides. And then —</p></div>
+<p class="stage">She stops.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And then?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"The A rho tile whose outer u-vertex has colour tau is still unnamed as slides."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>One tile.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>One tile left. <span class="dir">(turning to "Still open" in APPKEN's hand; he gives it to her without a fight this time)</span> "Feasibility of the B step: High. Feasibility of the whole statement: Medium. Do not enumerate n equals fourteen."</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span>'s hand has already gone to his laptop bag. He stops it.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I wasn't going to enumerate fourteen.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>You were.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I was going to <em>think</em> about enumerating fourteen.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading the Retreat page now)</span> "One person writes that case in the morning, to the same standard as unequal-b-tile. Do not enumerate n equals fourteen before that page exists."</p></div>
+<p class="stage">She lowers the page. She looks at the sky, which is October blue.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's the morning.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's their morning. It's their case.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's a case. It's one tile on a belt. It's the kind of thing I did for thirty years with a pencil and a bad radiator. Medium-High. That's a rating I can work with.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You want it.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I want to <em>try</em> it. On paper. To the same standard as their page. And if I get it, it goes to them labelled, and if I don't, it goes to them labelled. And not one byte of n equals fourteen.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Kill condition?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(without hesitation)</span> "Kill: a colouring of that tile, with the outer u-vertex coloured tau, from which no sequence of slides returns a prepared zero within the tile." Then it isn't a slide tile, and someone needs a swap there.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> writes it down on the back of his copy of fifty-seven.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="vi-the-symmetry">VI. The Symmetry</h2>
+<p class="stage"><span class="cue c-appken">Appken</span> has found, under his own leg, a page nobody has read. He reads it to himself. His face does the weather thing again, in the other direction.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>What.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>"Fitted ranks die."</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(reading, flatly)</span> "q, p q, n five q, d min q, rep-mass, L q, and lin fail on the 21 traps. Short-links q and H q pass the 21 and stop on the next colouring of order 17 graph 3."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Potential four.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Potential four was a fitted rank. I fitted it. On Kittell. Then on order sixteen. It died at sixteen and I was proud of it. <span class="dir">(He reads on.)</span> "Ion path on order 17 graph 3. A neutral swap, then an ion swap, pulls four, four, four, four to three, four, four, five, and one further swap fills. All ten stuck colourings do this. Along the way q goes 107, then 138, then 128, then 116."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Up, then down.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Up, then down. "So q is not the descent." The path that works goes <em>uphill</em> first. Every stop-loss I've ever written would have sold at 138.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>And missed the fill.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And missed the fill.</p></div>
+<p class="stage">Silence.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>There's worse. Or better. I can't tell. "Roots 9 and 14 on order 17 graph 0 exchange stuck orbits. That exchange is a symmetry of the graph." There's an involution. It swaps 9 and 14 and fixes 5. "So every invariant is constant there."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Every invariant.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Anything I can compute from the graph gives 9 and 14 the same number. Anything. So no rank built from the graph can prefer one to the other, and the stuck orbits just pass back and forth between them.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(holding up her copy of fifty-seven, then BUCKY's)</span> Like these.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Like these.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Two copies. Swap them, nothing changes. Ask any question you like of one, you get the same answer from the other. If one of them were stuck, the other would be stuck in exactly the same way.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So pricing is dead.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Ranking by invariants is dead <em>there</em>. On that pair. And fitted ranks have died on the traps. That isn't the same as dead.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>What's the difference?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The handoff doesn't need a rank. Read the induction again. It needs the hole to be filled, eventually, by any route. It doesn't need anything to go down on every step.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The ion path goes up and still gets there.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(slowly)</span> So I don't price the state. I price the <em>route</em>. I don't need a number that always falls. I need to know there's a path, and how long the worst one is.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's reachability. It's what they wrote.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's a different desk. <span class="dir">(Pause.)</span> I think it's a better desk.</p></div>
+<hr class="break" aria-hidden="true">
+<h2 id="vii-the-sentence">VII. The Sentence</h2>
+<p class="stage"><span class="cue c-bucky">Bucky</span> has been reading "Progress" upside down from where he sits. He takes it, gently, from <span class="cue c-kamper">Kamper</span>.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>The twenty-one vertex hole.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Read it.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"Link zero, two, three, zero, one, two, zero, three, one at vertex 1." Degree nine. "All 16 one-step swaps stay frozen. Of 224 pairs, 172 stay frozen. The 24 that return to the original colouring are 2-cycles." The rest form 27 orbits, and "after the third swap, slides alone reach a three-colour link." Longest fill, seven slides.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Three swaps. Three swaps is enough!</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>No.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It says three swaps then slides.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>On <em>that</em> colouring.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Three swaps is enough on that colouring.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Closer.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Look at the Retreat page. Item four. They want one sentence. "Agree on one sentence before anyone writes it into a message."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>One sentence. Fine. <span class="dir">(clearing his throat)</span> "Three Kempe swaps suffice."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>No.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"Three swaps and slides fill the twenty-one vertex hole."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Closer. Still no.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Why no?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Because it will be read as a budget. And a fixed budget is already dead. One isn't enough. Two isn't always enough. Somebody reads "three" and puts it in a theorem.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>"On this graph, three is the number."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Worse.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>You say it, then.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I'm going to read theirs.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Read it.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading)</span> "This colouring does not need a fourth swap, and a different graph still might."</p></div>
+<p class="stage">Long pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>This colouring does not need a fourth swap.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And a different graph still might.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>This colouring does not need a fourth swap, and a different graph still might.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>This colouring does not need a fourth swap, and a different graph still might.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>This colouring does not need a fourth swap, and a different graph still might.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It's a very unexciting sentence.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's a true sentence. That's a much rarer kind.</p></div>
+<figure class="napkin"><pre>THE SENTENCE
+(agreed on a bench, 5 October, 8:51 a.m.)
+
+  This colouring does not need a fourth swap,
+  and a different graph still might.
+
+  Not: &quot;three swaps suffice.&quot;
+  Not: &quot;three is the number.&quot;
+  Not a budget. An exhibit.</pre></figure>
+<hr class="break" aria-hidden="true">
+<h2 id="viii-only-the-ones-we-make">VIII. Only the Ones We Make</h2>
+<p class="stage"><span class="cue c-kamper">Kamper</span> has taken the "Still open" page back. She reads it in silence. She reads it again. Her hand goes to her coat pocket and stays there.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Kamper?</p></div>
+<p class="stage">She doesn't answer. She reads aloud, very quietly.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Whether that hypothesis is only needed for colourings that extend across a fan of two chords."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>The two chords. From the induction.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>The induction never hands you an arbitrary hole. It hands you a hole whose colouring came from colouring the smaller graph, <em>with the chords in</em>. The chords force things. The two ends of each chord have different colours.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>So the starting colourings are special.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading)</span> "A degree-5 link cannot be frozen, because four colours each used twice need eight positions."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Five seats. You can't fit four pairs.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You can't fit four pairs. And on the twenty-one vertex graph, "the frozen hole is at degree-9 vertex 1, so it is a later state." At the degree-five vertex, "all five legal fans were coloured in full, and none of those colourings restricts to a frozen link."</p></div>
+<p class="stage">She stops. She takes her hand out of her pocket. In it is a napkin, folded small, soft with handling. She unfolds it on her knee. Pencil, very small, in her own writing, beside the line "∀ proper 4-colouring c."</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading her own napkin)</span> "Or only the ones we make?"</p></div>
+<p class="stage">Silence. A long one. <span class="cue c-bucky">Bucky</span> and <span class="cue c-appken">Appken</span> do not move.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading the Retreat page, item one)</span> "Proposed answer: spend the morning on the vacancy hypothesis restricted to fan colourings of T-star."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Only the ones we make.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Only the ones the induction makes.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's what you wrote. Last night.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I wrote a question in pencil. They wrote a research plan. They are not the same thing, and I am very happy, and I would like everyone to stay calm.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm calm.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>You're standing up.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span> is standing up. He sits down.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Careful, though. Restricting the start doesn't make the frozen hole disappear.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>No. It's still a state you might walk into. It just isn't a state you have to <em>start</em> from. Starting set and frozen set are different sets. On one graph. <span class="dir">(She taps the page.)</span> "Feasibility of that restriction as a research plan: Medium. Feasibility of proving the unrestricted hypothesis tomorrow: Low."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Medium.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Medium is a very good word. Nobody has ever been disappointed by Medium who understood what it meant.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(finding the icosahedron paragraph)</span> And here's the first rung. The icosahedron, the first graph that uses the hypothesis. "Each fan admits 8 colourings up to renaming. Two already have a three-colour link. The other six reach one in a single Kempe swap or a single slide." At all twelve vertices. The failing list is empty.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>One mixed move.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>One mixed move. On one graph. <span class="dir">(Pause.)</span> I'm going to say this once and then never again. The easy graph turned out to be the right graph to start with.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Noted.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Don't note it.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's noted.</p></div>
+<p class="stage"><span class="cue c-bucky">Bucky</span> reads on, and stops.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"A classification of which 5-cycle words are proper on a fan was not written."</p></div>
+<p class="stage">He looks up. He has the expression of a man who has found a loose floorboard with something under it.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's finite.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It's finite.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Five positions on a pentagon, four colours, two chords from one corner. Which words are proper colourings once the chords are in. It's a lemma. A small, checkable, <em>boring</em> lemma. And the induction step is exactly my plumbing, deleting a vertex and adding edges and proving the sphere is still a sphere.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Write it before you compile it.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>I'll write it before I compile it.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>And don't compile the belt.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(reading Retreat item two)</span> "Do not send the belt argument to Lean until the case is closed." I won't compile the belt.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And me?</p></div>
+<p class="stage">The other two look at him.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Kamper has a tile. Bucky has a lemma. What do I have?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(finding item three)</span> "Ask for the smallest triangulation whose fan colourings need more than one Kempe swap. If none appears through the graphs already in the census, that is the next search."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(standing again)</span> That's a tail question. Where is the first loss. That's the only question I've ever been good at.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Sit down.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(sitting)</span> Through the graphs <em>already in</em> the census. That's not a new census.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>It's not a new census.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So I can run it.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(reading item five)</span> "Nobody starts a new census until that report is in."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It's not a <em>new</em> census.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It is a question you'd like to ask of a census whose newest orders nobody has signed off. And it is their question, on their list, and they said "ask."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>So I ask.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>So you ask. And you write down exactly what you'd run and what would kill it, and you send that, and you wait.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(writing on the back of a page)</span> "Kill: a fan colouring, at a degree-five vertex of a census graph, from which no single Kempe swap and no single slide reaches a three-colour link." <span class="dir">(Pause.)</span> "First witness wins."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's not a kill. That's a find.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>In my business those are the same thing.</p></div>
+<hr class="break" aria-hidden="true">
+<h2 id="ix-the-messenger">IX. The Messenger</h2>
+<p class="stage">Pause. The lamp post goes off by itself. Nobody comments.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Item five. "The long-table team reports whether validation finished."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Which long-table team?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Not us.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Not us. <span class="dir">(He picks up his phone and lays it face up on the empty red seat.)</span> Is there anything published? Orders nineteen and twenty. A validation directory. A digest.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>I can't find a published validation directory or digest for orders nineteen and twenty. Revision fifty-seven records the pass as in progress. Nothing there is accepted yet.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Will it come today?</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>I don't know. I can only tell you what has been published.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Will it come tomorrow?</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>I don't know that either.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Thank you.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>You're welcome. One more thing, since you asked about status. The pages you've been reading are a handoff for two teams. If they weren't given to you, the people who wrote them may not know where they are.</p></div>
+<p class="stage">Silence. All three look at <span class="cue c-appken">Appken</span>. <span class="cue c-appken">Appken</span> looks at the pages.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I borrowed them at speed.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Then you return them at walking pace.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It says "for the math team and the long-table team."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>It says that, and we're delighted, and it was on somebody's desk, and they'll want it back before their retreat. We read it. We say so. We tell them which pages we read and what we'd like to try, and we don't spread it. Same as before.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Same as before.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p><span class="dir">(after a moment)</span> Same as before.</p></div>
+<hr class="break" aria-hidden="true">
+<h2 id="x-the-order-of-the-pages">X. The Order of the Pages</h2>
+<p class="stage">They gather the pages. This takes some time. Each page must be identified, and one of them is a page of fifty-seven that has got in with seventy, and <span class="cue c-bucky">Bucky</span>'s pages of fifty-seven has his pencil on it and must not go back to the desk.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"What the proof hangs on."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>One.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Progress."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Two. Three. It's two pages.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Dead ends."</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Four. <span class="dir">(He hesitates.)</span> "Height functions, sandpiles, nowhere-zero flows, and monodromy do not give a new move."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A good page. Somebody worked hard to write that page.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"The monodromy of the exhibit pentagon link is the identity."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(holding up the two copies of fifty-seven)</span> So is ours.</p></div>
+<p class="stage">She hands <span class="cue c-bucky">Bucky</span> his copy. Keeps hers. Swaps them. Swaps them back.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(cont'd)</span> Nothing.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Nothing.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>"Fisk, Mohar, and Meyniel do not apply."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p><span class="dir">(sadly)</span> I'd have reached for Fisk.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>"Florek's Theorem 3.1 moves a hole that is already a pole, in at most 36 Kempe changes when n equals 8."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Already a pole. Their hole isn't a pole yet. Different problem. Lovely theorem. Five.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>"Still open." Six.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>"Retreat." Seven, eight.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>"Where to read." Nine.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>That's nine. There were eleven.</p></div>
+<p class="stage">They look around. One page is still on the gravel under the bench, face down. <span class="cue c-bucky">Bucky</span> reaches under and gets it. It is a page of fifty-seven. It is <span class="cue c-kamper">Kamper</span>'s page three.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That's mine.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Then there were ten. And one of them was ours.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And the eleventh?</p></div>
+<p class="stage">They look at the tree. One page is caught in the lowest branch, beside the four leaves. <span class="cue c-appken">Appken</span> reaches up and takes it down. He reads the top.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>"Long-arc identity."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>That goes in "Progress."</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It's two and a half pages.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Then "Progress" is three pages. Put it in its place.</p></div>
+<p class="stage">He does. <span class="cue c-kamper">Kamper</span> squares the edges against her knee. It is a neat stack of ten pages now, no staple. She hands it to <span class="cue c-appken">Appken</span> with both hands.</p>
+<hr class="break" aria-hidden="true">
+<h2 id="xi-after">XI. After</h2>
+<p class="stage">9:20 a.m. The light is full. <span class="cue c-appken">Appken</span> stands with the handoff. <span class="cue c-kamper">Kamper</span> and <span class="cue c-bucky">Bucky</span> sit.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'll take it back. I'll leave a note. "We read pages one to ten. We're sorry. Here's what we'd like to try."</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Three things.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Three things. The tile, the lemma, the question.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>And the sentence.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>And the sentence.</p></div>
+<figure class="napkin"><pre>NOTE LEFT ON A DESK, 5 OCTOBER
+
+We found this by the printer and read it in the park.
+We&#x27;re returning all ten pages. We haven&#x27;t copied them.
+
+If they&#x27;re useful, we&#x27;d like to try:
+  K  the A-rho tile with outer u-vertex tau, by hand,
+     to the standard of the B-tile page. No n = 14.
+  B  which 5-cycle words are proper on a two-chord fan.
+     Written first. Nothing compiled until it&#x27;s read.
+  A  the question in item 3, phrased as a search we
+     would run only after validation reports. Kill:
+     a fan colouring with no one-move route to a
+     three-colour link.
+
+The sentence, as we understand it:
+  This colouring does not need a fourth swap,
+  and a different graph still might.
+
+Nothing here claims a proof.
+
+   (signed) a long table</pre></figure>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Good.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Good.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Well? Shall I go?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Yes, go.</p></div>
+<p class="stage">He does not move.</p>
+<p class="stage">Pause.</p>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Before I go.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Before you go.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>Yesterday I'd have said seventy-five percent.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>I know.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm not going to say a number.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Thank you.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>I'm going to say: the hole walks. And when it walks into a frozen place, sometimes it goes uphill and still comes home. And the place it starts from might be easier than all the places it could go. And three people on a bench for four can't fix that by sliding.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>That's not a number.</p></div>
+<div class="line c-appken"><span class="speaker">Appken</span><p>It's a better position.</p></div>
+<p class="stage">Pause.</p>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Well. Shall we go?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Yes, let's go.</p></div>
+<p class="stage">They do not move.</p>
+<p class="stage">Long pause.</p>
+<p class="stage">Then <span class="cue c-kamper">Kamper</span> stands, steps over one armrest, and sits one seat along. <span class="cue c-bucky">Bucky</span> does the same. The empty seat is now at the other end of the bench.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Progress?</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>A slide.</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p>Same three.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>Same three. Hole's somewhere else.</p></div>
+<p class="stage"><span class="cue c-appken">Appken</span>, still standing with the pages, looks at the empty seat. He does not sit in it. He turns and walks off towards the department, at walking pace.</p>
+<p class="stage">A wind. The red leaf comes off the tree, spins, and lands on the empty seat. It stays there a moment. Then the wind takes it off again, onto the path.</p>
+<p class="stage"><span class="cue c-kamper">Kamper</span> and <span class="cue c-bucky">Bucky</span> watch it go. Neither says anything.</p>
+<p class="stage"><span class="cue c-kamper">Kamper</span> takes out a pencil and the napkin. Beside "or only the ones we make?" she draws, very small, a pentagon with two chords from one corner.</p>
+<p class="stage"><span class="cue c-bucky">Bucky</span> takes out his phone.</p>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(to the ASSISTANT)</span> A pentagon. Four colours. Two chords from one corner. Which colourings of the outside five are proper. Don't run anything yet. Just tell me how many cases there are.</p></div>
+<div class="line c-assistant"><span class="speaker">Assistant</span><p>Before I count: do you mean colourings up to renaming the colours, or all of them? And are the chord ends allowed to match the deleted vertex's eventual colour?</p></div>
+<div class="line c-bucky"><span class="speaker">Bucky</span><p><span class="dir">(grinning, to KAMPER)</span> It asked the right question.</p></div>
+<div class="line c-kamper"><span class="speaker">Kamper</span><p>They do now.</p></div>
+<p class="stage">The lights fade slowly on the bench: two people, four seats, one empty seat that is not the one that was empty at the start, and three leaves on the tree.</p>
+<p><strong>END</strong></p>
+<hr class="break" aria-hidden="true">
+<h3>Author's note</h3>
+<p>This play is written after the manner of Samuel Beckett's <em>Waiting for Godot</em>. It borrows the bench, the waiting, the swapping of identical objects, the arrival of a breathless runner, and the messenger who cannot say when the awaited thing will come. In this play the awaited thing is a validation digest.</p>
+<p>The two documents in the play are real project texts: the Proof Navigator's revision-57 letter to both teams, and the Night Handoff of 4 October 2026 written at revision 70. Every technical claim the characters read aloud comes from those texts and is presented with the same status the texts give it: hand arguments, single-graph computations, and an open hypothesis. Nothing in the play is a proof, and the play does not say the vacancy hypothesis is true.</p>
+<p>These things are invented for the story: Appken finding the handoff on a desk, the three requests in the note, Kamper's kill condition for the remaining tile, and Appken's search kill condition. They are not project results, and nobody has run the search or written the tile. The bench, the leaves, and the pencilled napkin are stagecraft. The real record of what has been checked is in the Proof Navigator.</p>
+<p class="next"><a href="index.html">Back to The Long Table →</a></p>
+  </article>
+  <script>
+    // Embedded with auto-height on the project page: scroll the parent, not this frame.
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var target = document.querySelector(link.getAttribute('href'));
+        var frame = null;
+        try { frame = window.frameElement; } catch (err) {}
+        if (!target || !frame) return;
+        event.preventDefault();
+        var top = window.parent.scrollY + frame.getBoundingClientRect().top + target.getBoundingClientRect().top - 72;
+        window.parent.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

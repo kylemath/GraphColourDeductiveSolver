@@ -19,8 +19,14 @@ PAGES = [
     {
         "source": "the-afternoon-call.md",
         "output": "afternoon.html",
-        "next": ("index.html", "Back to The Long Table"),
+        "next": ("vacancy.html", "Continue: The Vacancy"),
         "description": "A sequel to The Long Table: a day of work with AI helpers, two leaked documents, and a video call that rewrites the plan.",
+    },
+    {
+        "source": "the-vacancy.md",
+        "output": "vacancy.html",
+        "next": ("index.html", "Back to The Long Table"),
+        "description": "A third play, after Beckett: on a four-seat park bench, three colleagues sort the loose pages of a night handoff and learn that the hole now moves.",
     },
 ]
 
