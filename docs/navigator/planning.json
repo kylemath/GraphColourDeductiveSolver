@@ -1,7 +1,22 @@
 {
-  "revision": 123,
-  "updatedAt": "2026-10-06T13:23:00-06:00",
+  "revision": 126,
+  "updatedAt": "2026-10-06T14:07:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-06T20:10:00Z",
+      "node": "structural-pathway-sprint",
+      "action": "Revision 126 adds four hand-work interns (intern-A to intern-D) to the bounty board at 0 points and records the navigator's upkeep of the board's leaderboard table, the audit's review of the bounty rules (B1 to B4, for the coordinator and the user to decide), and the fixes to the Six-Ring Trap page. No status changed and no points were awarded."
+    },
+    {
+      "time": "2026-10-06T20:08:00Z",
+      "node": "structural-pathway-sprint",
+      "action": "Revision 125 records the bounty board as a standing navigator duty: a leaderboard in every revision message, scored on ledger evidence only. All teams start at 0 and no qualifying item has been recorded since 14:03. Studio Math's Lean design is pending until merged. No status changed."
+    },
+    {
+      "time": "2026-10-06T20:05:00Z",
+      "node": "structural-chain-rstar",
+      "action": "Revision 124 records two new Mac Studio teams (studiointel, studiomath); Studio Math's independent hand review of Theorems H and HP, which keeps their status (hand, now two independent reviews, not audited, not compiled); the Tait lock criterion proved by hand on Math's own review; Long Table's unreviewed Tait angle on R*; the pre-registered R* adversary search (hashes checked, nothing run); the audit's claim check of the Six-Ring Trap page; and the route for the audit's P1 replay on the Studio (file on branch transfer-p1, queued after T2). No status was upgraded from finite data."
+    },
     {
       "time": "2026-10-06T19:25:00Z",
       "node": "structural-wp20",
@@ -10432,6 +10447,173 @@
       ],
       "id": "dissemination-mathlib-planemap",
       "revision": 123
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/docs/working/StudioMathReviewHPandH.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1405_studiomath_to_coordination+math+navigator+audit_review-Theorem-H-and-HP.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:05:00Z",
+          "text": "Revision 124: a second independent hand review, by Studio Math (studiomath, a separate Math team on the Mac Studio, branch studio-math merged as c4c02f6): every step re-derived, no gap and no error, including Lemma 1, the Jordan facts, F- and B-starvation, Lemma 2, Lemma 3 and the termination table; its symbolic script hp_local_check.py reproduces the pattern lists and kill conditions but does not decide component membership. Wording: only a chordless link is used; say deg p at least 5. Status wording unchanged: proved by hand, now on two independent Math-team reviews; NOT audited and NOT compiled. HP covers only the link class (5,5,5,5,*); HP's computed claims are still not rechecked and its order-22 example still lacks a face list. Studio Math plans Lean for the Euler lemma and then Theorem H."
+        }
+      ],
+      "id": "structural-theorem-h",
+      "revision": 124
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/docs/working/StudioMathReviewHPandH.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1405_studiomath_to_coordination+math+navigator+audit_review-Theorem-H-and-HP.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:05:00Z",
+          "text": "Revision 124: a second independent hand review, by Studio Math (studiomath, a separate Math team on the Mac Studio, branch studio-math merged as c4c02f6): every step re-derived, no gap and no error, including Lemma 1, the Jordan facts, F- and B-starvation, Lemma 2, Lemma 3 and the termination table; its symbolic script hp_local_check.py reproduces the pattern lists and kill conditions but does not decide component membership. Wording: only a chordless link is used; say deg p at least 5. Status wording unchanged: proved by hand, now on two independent Math-team reviews; NOT audited and NOT compiled. HP covers only the link class (5,5,5,5,*); HP's computed claims are still not rechecked and its order-22 example still lacks a face list. Studio Math plans Lean for the Euler lemma and then Theorem H."
+        }
+      ],
+      "id": "structural-theorem-hp",
+      "revision": 124
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-pathway-d",
+      "revision": 124,
+      "node": {
+        "id": "structural-tait-lock-criterion",
+        "title": "Tait lock criterion and its corollary",
+        "status": "proved",
+        "statement": "In the Tait dual of G - v with the pentagon node P: lock 1 holds iff the (beta, gamma)-path leaving P by e(j+2) returns by e(j+1), and lock 2 holds iff the (beta, delta)-path leaving by e(j+4) returns by e(j); otherwise each returns by e(j+3). Corollary: if s has lock 2, then F(s) has lock 1 (equal to lock 2 of s), a short Tait proof of the one-step persistence of the inherited lock.",
+        "approach": "Long Table's page pd2_lock_proof.md (written by a Long Table sub-agent, read by the lead). Math 13:55 reviewed it itself, line by line (MathReviewTaitLockCriterion.md): CORRECT for both locks and the corollary; one wording improvement (state that Z1 touches the pentagon node only at its two ends). The 3,682-state code re-check was not rerun.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/explore-vhphi/pathways/pd2_lock_proof.md",
+          "SolvingFrameworkPlan/docs/working/MathReviewTaitLockCriterion.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1355_math_to_longtable+navigator+coordination+audit_Tait-lock-criterion-reviewed.md"
+        ],
+        "evidence": "Proved by hand on Math's own review; not audited, not compiled. The paper may drop \"unreviewed\" for it.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/docs/working/creative-intel-2026-10-05/rstar-tait-angle.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1356_longtable_to_coordination+math+audit+navigator_R-star-Tait-angle-hand.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:05:00Z",
+          "text": "Revision 124: Long Table 13:56, R* with two or more neighbours of degree at least 6, a Tait angle [hand, unreviewed, no computation]: a normal form of doubly locked states; the Kempe class is closed under swapping any bichromatic Tait cycle or P-path, so a targetless class must contain four related states, all doubly locked; the Y-locks add coupled non-crossing conditions; degree at least 6 gives a face room for three colours. It restates targetless as a closed system of meander conditions; it proves nothing about R*. Review by Math and the audit is requested; a Studio kill test is proposed."
+        }
+      ],
+      "id": "structural-chain-rstar",
+      "revision": 124
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "revision": 124,
+      "node": {
+        "id": "structural-rstar-adversary-search",
+        "title": "R* adversary search (studiointel, pre-registered, not run)",
+        "status": "unstarted",
+        "statement": "Statements: S1, a core triangulation (minimum degree at least 5, no separating triangle) with a face phi such that every degree-5 vertex off phi has a targetless Kempe class (a counterexample to R*); S2, F(T) at least 5, where F(T) is the max over faces of the min over degree-5 vertices off phi of the radius; S3, an inventory of radii on the stated graphs, as data. Phase A: every degree-5 hole of L(ico), GC:2, A:5 to A:8 and L(A:3), cap 400,000 states per hole (above that inconclusive), 1,200 CPU-s. Phase B: three seeded hill-climbs by edge flips keeping degrees in [5,7] and no separating triangle, 1,800 CPU-s each. Total at most 6,600 CPU-s, at most 4 processes, nice 10; each phase one pass, no tuning; capped is inconclusive.",
+        "approach": "Studio intel (studiointel), a new team on the Mac Studio started by the user, in the adversary-constructor role for R*. Code in backgroundMaterial/planemap-structural/studiointel/ (commit 8dc3141, merged to main as 6e38521); the navigator checked its SHA256SUMS (graphs.py, builders.py, radius.py, search.py, check.py, regress.sh: all OK). Regressions before any search, on published graphs only: the producer reproduces Math's tables for the icosahedron and A_3 to A_6 exactly; an independent checker (no producer import, different enumeration and lock test) agrees. Hand note: minimal-failure-of-Rstar.md (unreviewed). Released by the coordinator to run on the Studio after T2, within 6,600 CPU-s.",
+        "files": [
+          "backgroundMaterial/planemap-structural/studiointel/SHA256SUMS",
+          "backgroundMaterial/planemap-structural/studiointel/search.py",
+          "backgroundMaterial/planemap-structural/studiointel/check.py",
+          "SolvingFrameworkPlan/docs/working/studiointel-2026-10-06/minimal-failure-of-Rstar.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1405_studiointel_to_coordination+navigator+audit+math+longtable_preregistration-Rstar-adversary-search.md"
+        ],
+        "evidence": "Nothing run. A kill of R* (S1) would need the certificate replayed by the audit's or another independent checker before it counts. A pass says only that no counterexample was found among the stated graphs and search paths.",
+        "killCriteria": "",
+        "notes": [],
+        "expanded": true,
+        "active": true,
+        "children": []
+      }
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1335_audit_to_coordination+navigator+math_claim-check-six-ring-trap-page.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:05:00Z",
+          "text": "Revision 124: the audit's claim check (13:35) of the public Six-Ring Trap page found seven findings, none fatal: S1 the page overclaims (\"no argument that uses only local information can bound the radius\"; the trap kills the automaton model, and K-S4 shows the ball colouring does not determine the radius, not that no local argument can bound it); S2 Theorem H needs its label; S3 the unseen-pattern note is overtaken by Math's 13:08 message, conditional on the page's frame; S4 a count mismatch (5 unseen of 74 in MathSixFiveHole.md section 1 versus Math's \"four to two\") for Math to settle; S5 an unscoped claim about real graphs; S6 the page should say whether it rechecked minimum degree 5 and no separating triangle for the order-28 graph; S7 the disclosure line understates AI authorship. The page's recomputation stays an independent non-audit recomputation; the audit's replay of build_data.py waits for the Studio."
+        }
+      ],
+      "id": "structural-sixfive-automaton-killed",
+      "revision": 124
+    },
+    {
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1340_audit_to_coordination+navigator+longtable_P1-replay-route-on-studio.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:05:00Z",
+          "text": "Revision 124: the audit (13:40) prefers route A for its pre-registered P1 replay: copy the merged file to the Studio and check its SHA-256 equals e68c44a3...793e before running, so the plan is satisfied exactly (route B, the T2 file with a content digest, would be a stated deviation). The coordinator put the gzip of P1-m5-25.json on branch transfer-p1 (commit 2169b2b; the navigator sees wp20/P1-m5-25.json.gz, 4,236,761 bytes, in that commit and did not decompress it); the coordinator reports the decompressed file's SHA-256 equals e68c44a3...793e. The replay (route A, Studio job J3) is queued after T2, with the audit code at the path-portable commit b8bea9b. WP20 remains produced and independently checked, not yet passed."
+        }
+      ],
+      "id": "structural-wp20",
+      "revision": 124
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:05:00Z",
+          "text": "Revision 124: two new teams on the Mac Studio, started by the user: studiointel (New Creative Intel Studio Team, adversary-constructor for R*) and studiomath (Math Superintel team on the Studio, reviews and Lean). They are recorded in START-HERE section 2. Their outputs follow the same rules: reviews count as Math-team reviews, not audits; searches need pre-registration and an independent check of any certificate."
+        }
+      ],
+      "id": "structural-vacancy",
+      "revision": 124
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 125,
+      "files": [
+        "SolvingFrameworkPlan/docs/core/BountyBoard.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-06T20:08:00Z",
+          "text": "Revision 125: the user, via the coordinator, set up a bounty board for Lemma R* (docs/core/BountyBoard.md, commit c23a8d3, from 14:03 on 6 October). The navigator keeps the leaderboard in every revision message from revision 125 on, scoring only on ledger evidence at a recorded revision, never on claims; nothing before 14:03 counts; reviews and pre-registrations score nothing by the board's table. Leaderboard at revision 125: all teams 0 (no qualifying item since 14:03). Pending, not recorded: Studio Math's Lean design for the Euler lemma and Theorem H (branch studio-math, dc4f013, design only, one uncompiled draft; edge_card_bound one step short of the sharp Euler count, per the coordinator), to be recorded when merged."
+        }
+      ]
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:10:00Z",
+          "text": "Revision 126: on the user's request the coordinator started four interns (Sonnet background sub-agents, hand work only, no computation): intern-A, R* for the link class (5,5,5,6,6) (adjacent degree-6 pair; bounty 300); intern-B, the class (5,5,6,5,6) (non-adjacent; 300); intern-C, an adversarial gap hunt in Theorem HP (150); intern-D, a global invariant via the Tait picture (100). Outputs are to land in SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-{A,B,C,D}.md (the directory does not exist yet). Their claims score and enter the ledger only by the same rules: a proof after Math accepts and the audit re-derives; a counterexample or separation after the audit replays. The navigator now also maintains the leaderboard table in docs/core/BountyBoard.md (rows added for intern-A to intern-D at 0)."
+        },
+        {
+          "time": "2026-10-06T20:10:00Z",
+          "text": "Revision 126: the audit's review of the bounty board (14:10) proposes B1 (a replay earns a fixed amount whatever its verdict, and the audit takes no share of the finder's bounty), B2 (pay for killing only conjectures someone else recorded before the kill), B3 (the radius-at-least-5 bounty only from pre-registered searches or hand constructions) and B4 (the board's line \"R* is known when at most one neighbour has degree at least 6\" needs the labels hand, Math-reviewed, not audited, and an \"if Theorems H and HP hold\"). The ledger agrees with B4 on the facts: Theorems H and HP are proved by hand on two Math-team reviews and NOT audited. The rule changes are for the coordinator and the user; the navigator scores by the board as written until they decide. The audit takes Theorem HP next (hand re-derivation, tested against T4)."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1410_audit_to_coordination+navigator+user_bounty-board-review.md",
+        "SolvingFrameworkPlan/docs/core/BountyBoard.md"
+      ],
+      "id": "structural-pathway-sprint",
+      "revision": 126
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-10-06T20:10:00Z",
+          "text": "Revision 126: the page owner fixed all seven of the audit's claim-check findings S1 to S7 on the Six-Ring Trap page (commit b067f18, docs/66666/index.html). The navigator has not reread the page; the audit may confirm."
+        }
+      ],
+      "id": "structural-sixfive-automaton-killed",
+      "revision": 126
     }
   ]
 }
