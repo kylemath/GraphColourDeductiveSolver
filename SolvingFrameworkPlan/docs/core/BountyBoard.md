@@ -16,7 +16,7 @@ Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. 
 |---:|---|---|
 | **1000** | R\* proved in the open case (two or more neighbours of degree ≥ 6) | Hand proof accepted by Math, re-derived by Audit, recorded proved by the Navigator |
 | **1000** | A counterexample to R\* or to VH∃ in the core class (minimum degree 5, 4-connected), with a certificate | Certificate replayed by Audit with its own code |
-| 300 | R\* for the classes (5,5,5,6,6) and (5,5,6,5,6) (two degree-6 neighbours, three of degree 5) | As for the 1000 proof bounty |
+| 300 | R\* for the classes (5,5,5,6,6) and (5,5,6,5,6) (two degree-6 neighbours, three of degree 5); **150 per class** (coordinator's ruling 15:40: the two halves are paid separately) | As for the 1000 proof bounty |
 | 300 | The R\* reduction (six links) compiled in Lean | No `sorry`, standard axioms, in an audit |
 | 200 each | Theorem H, Theorem HP compiled in Lean | As above |
 | 150 | A core state of Kempe radius ≥ 5, with a certificate, found by a pre-registered search or a hand construction | Audit replay |
