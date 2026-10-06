@@ -11,7 +11,7 @@ from concurrent.futures import ProcessPoolExecutor
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from wp20_audit import parse, analyse_graph
 
-LT = '/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable'
+LT = os.environ.get('LONGTABLE_DIR', '/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable')
 EXPECT = dict(declaration='8758a9f8409f17b4ca755d7688ba9f1bc996d35e40d0c173b5f9e64a3ca62fef',
               producer='bb350d3b9579b984188a270a58d682562d170dc41c159ac4528a340fbd1fd0b5',
               checker='98c6bcf79f684fd75a1a805388763982ce7de9ce41641bf75c94d0e75d79ab12',

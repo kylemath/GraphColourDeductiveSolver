@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Rigid labelled states WITH a ring chord (excluded by disc_gen2 by design): are any of them
 locked at every legal admitting fan? Audit code; uses only rigid_census.py and case_walk_check.py.
-usage: chord_states.py PLANTRI_FILE"""
+usage: chord_states.py PLANTRI_FILE [SHARD NSHARDS]   (shard: graphs with index % NSHARDS == SHARD)"""
 import sys, json
 from rigid_census import parse_plantri, census_graph
 from case_walk_check import separable
 
 out = {'chord_states': 0, 'locked_at_all_legal_admitting': 0, 'no_legal_admitting_fan': 0, 'examples': []}
+shard, nsh = (int(sys.argv[2]), int(sys.argv[3])) if len(sys.argv) > 3 else (0, 1)
+out['shard'] = [shard, nsh]
 for gi, line in enumerate(open(sys.argv[1])):
-    if not line.strip(): continue
+    if not line.strip() or gi % nsh != shard: continue
     rot = parse_plantri(line)
     adj, found = census_graph(rot)
     for (x, ring, col, legal) in found:
