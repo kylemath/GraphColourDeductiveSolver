@@ -13,14 +13,24 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Open decision for the coordinator
 The hole-fill statements need the plane-map carrier (rotation, outer ring w_t) rather than a bare `SimpleGraph`. I will ask the Math team (Lean owner) how `Vacancy*` states it before writing Piece 3.
 
-## Drafts awaiting the PlaneMap build (uncompiled, not results)
+## Compiled 1419 MDT (single-file checks, read-only against the built snapshot 8299419; not yet audited)
 
-- `EulerSharp.draft.lean`: piece 2. The library's `edge_card_bound` loses 1 because it never uses the fact that the coordinate sum kills the incidence image (each edge has two ends). Adding that gives `E + 2 ≤ n + F` with **no connectivity hypothesis**. For a triangulation this is `2E + 12 ≤ 6n`, and composing with `good_card_ge_twelve` gives the full Euler lemma (`twelve_light_fives`).
-- `VacancyIcosahedral.draft.lean`: Theorem H in the library's vacancy language (`FiveLink`, `PureFill`, `Alternation`). The statement is: every proper colouring at an icosahedral hole fills within **3 pure Kempe swaps**.
-  - Ring words: R1/R2/R3 come from a `decide` over 4^5 ring words.
-  - R2: F, then a fill.
-  - R3: AB, then a fill.
-  - R1: F, then the three-vertex {0,3} swap, then a fill.
-  - Jordan: R1 and R2 use `vacancy_alternation`.
-  - Transport to arbitrary colourings copies `vacancy_mobility_general`.
-- All dependencies are in PlaneMap snapshot 8299419, which the powerhouse is building. Compiling is then a single-file check against its oleans.
+Reproduce with `check.sh`. Hashes are in `SHA256SUMS`. No file contains `sorry`. `#print axioms` lists only propext, Classical.choice and Quot.sound; `ring_cases` uses only propext. A deliberately broken copy was rejected, which confirms that the check really elaborates the proofs.
+
+| file | main theorem | statement |
+|---|---|---|
+| `EulerCounting.lean` | `StudioMath.good_card_ge_twelve` | finite simple graph, every degree ≥ 5, 2E + 12 ≤ 6V ⇒ ≥ 12 degree-5 vertices with ≤ 1 neighbour of degree ≥ 12 |
+| `PlaneMap/EulerSharp.lean` | `SphericalMap.edge_card_bound_sharp` | any `SphericalMap` with a dart: E + 2 ≤ n + F (no connectivity hypothesis) |
+| | `SphericalMap.twice_edges_add_twelve_le` | all faces of length 3 ⇒ 2E + 12 ≤ 6n |
+| | `SphericalMap.twelve_light_fives` | **Euler lemma:** spherical triangulation (a dart, all faces of length 3), every vertex of degree ≥ 5 ⇒ ≥ 12 degree-5 vertices with ≤ 1 neighbour of degree ≥ 12. The file repeats the counting lemma so that it is self-contained. |
+| `PlaneMap/VacancyIcosahedral.lean` | `SphericalMap.ico_fill` | **Theorem H:** hole h with `FiveLink` L in rotation order, and `IcoBall` (see below) ⇒ every proper 4-colouring of T − h has `PureFill ... 3` (a filled hole within ≤ 3 whole-component Kempe swaps) |
+| | `VacancyIcosahedral.ico_fill_normalized` | the same on any `SimpleGraph`, for link word 0,1,0,2,3, given the library's `Alternation` |
+
+**What `IcoBall` assumes, for the auditor.** `IcoBall G h L w` is an explicit hypothesis. It is not derived from "triangulation and degree 5". It requires:
+- each `L.port t` has neighbour set exactly {h, port(t−1), port(t+1), w(t−1), w(t)};
+- w(t) ~ w(t+1);
+- w(t) is neither a port nor h.
+
+In a triangulation with no separating triangle through h, these follow from the five link vertices having degree 5. That derivation is **not** formalised. The statement is therefore Theorem H over the local data, which is how `MathRadiusGeometry.md` states it. The conclusion is stronger than "radius ≤ 3 for doubly locked states": it covers every colouring.
+
+**Not done:** Theorem HP; the derivation of `IcoBall` from triangulation and degree hypotheses; the R* links.

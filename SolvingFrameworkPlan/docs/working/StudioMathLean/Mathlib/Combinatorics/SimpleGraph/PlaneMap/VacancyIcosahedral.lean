@@ -1,6 +1,7 @@
 module
 
 public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.VacancyMobilityGeneral
+public import Mathlib.Data.Fintype.Basic
 
 /-!
 # Theorem H: an icosahedral hole fills within three pure Kempe swaps
@@ -42,6 +43,8 @@ structure IcoBall (h : V) (L : FiveLink G h) (w : Fin 5 → V) : Prop where
   off : ∀ t i, w t ≠ L.port i
   offh : ∀ t, w t ≠ h
 
+set_option synthInstance.maxHeartbeats 400000 in
+set_option synthInstance.maxSize 2048 in
 /-- The three outer-ring words compatible with both locks. -/
 lemma ring_cases : ∀ a0 a1 a2 a3 a4 : Fin 4,
     a0 ≠ 0 → a0 ≠ 1 → a1 ≠ 1 → a1 ≠ 0 → a2 ≠ 0 → a2 ≠ 2 → a3 ≠ 2 → a3 ≠ 3 →
@@ -50,13 +53,15 @@ lemma ring_cases : ∀ a0 a1 a2 a3 a4 : Fin 4,
     (a0 = 2 ∧ a1 = 3 ∧ a2 = 1 ∧ a3 = 0 ∧ a4 = 1) ∨
     (a0 = 3 ∧ a1 = 2 ∧ a2 = 1 ∧ a3 = 0 ∧ a4 = 1) ∨
     (a0 = 3 ∧ a1 = 2 ∧ a2 = 3 ∧ a3 = 1 ∧ a4 = 2) := by
-  decide
+  decide +kernel
 
+omit [DecidableEq V] in
 lemma prepend {h : V} {c d : V → Fin 4} {b : Nat} (step : KempeStep G h c d)
     (fill : PureFill G h d b) : PureFill G h c (b+1) := by
   obtain ⟨n, hn, e, path, target⟩ := fill
   exact ⟨n+1, Nat.add_le_add_right hn 1, e, .cons step path, target⟩
 
+omit [DecidableEq V] in
 lemma fill_mono {h : V} {c : V → Fin 4} {a b : Nat} (hab : a ≤ b)
     (f : PureFill G h c a) : PureFill G h c b := by
   obtain ⟨n, hn, rest⟩ := f
@@ -85,6 +90,7 @@ lemma step_colour' {h s u : V} {c : V → Fin 4} {a b : Fin 4} (hc : ProperOff G
   · exact hu
   · exact absurd (hs.trans hu.symm) (hc e.1 e.2.1.1 e.2.2.1)
 
+omit [DecidableEq V] in
 /-- One swap fills when the only port of colour `rho` is isolated in the pair
 graph of `rho` and the colour of a unique port `u`. -/
 lemma fill_of_isolated {h u t : V} {c : V → Fin 4} {rho : Fin 4}
@@ -101,6 +107,7 @@ lemma fill_of_isolated {h u t : V} {c : V → Fin 4} {rho : Fin 4}
   obtain ⟨z, hz⟩ := first_step G r.symm (Ne.symm hut)
   exact iso z hz
 
+omit [DecidableEq V] in
 /-- **Theorem H, normalised.** At an icosahedral hole with the link word
 `0,1,0,2,3`, every proper colouring fills within three pure Kempe swaps. -/
 theorem ico_fill_normalized {h : V} {L : FiveLink G h} {w : Fin 5 → V}
@@ -434,7 +441,7 @@ theorem ico_fill {h : Fin n} (L : FiveLink M.graph h) {w : Fin 5 → Fin n}
         change _ ↔ u = h ∨ u = L.port (t + 4 + k) ∨ u = L.port (t + 1 + k) ∨
           u = w (t + 4 + k) ∨ u = w (t + k)
         rw [add_right_comm t 4 k, add_right_comm t 1 k]
-      · change M.graph.Adj (w (t + k)) (w (t + 1 + k))
+      · show M.graph.Adj (w (t + k)) (w (t + 1 + k))
         rw [add_right_comm]; exact B.ring _
     have fill := ico_fill_normalized M.graph B' (properOff_rename _ σ hc) pat
       (vacancy_alternation M L' pat rot')
