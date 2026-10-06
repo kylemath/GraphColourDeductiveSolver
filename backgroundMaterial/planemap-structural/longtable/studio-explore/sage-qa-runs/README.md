@@ -62,3 +62,13 @@
 - Nearly all violations are swaps of the component containing x_{j+2} itself, which lies in the disc by this convention.
 - **Genuine interior violations (component off the link): 4, all at certificate 91a307 hole 22.** They are 2 states (frames 2 and 4) at distance 3, each with a shortest-fill swap of component {18} or {7, 8, 18} strictly inside lock disc 2. The full colourings are in `inertdisc-91a307-interior.json`.
 - Every other hole has 0 genuine violations.
+
+### (B) corrected: Intern A's disc convention (`inertdisc_a.py`, `inertdisc_a.txt`, `inertdisc_scan.*`)
+- Intern A (InternA-inert-disc.md) uses D1 = the side of J1 containing x_{j+2}, and **D2 = the side of J2 containing x_j**. My first run used x_{j+2} for both.
+- Counted: shortest-fill moves from DL states whose component meets no link vertex and lies strictly inside D1 or D2.
+- Hard holes (four certificates, F-cycle, order-22 rho-5, Errera x2): **0**. The 4 "genuine" moves reported above at 91a307 h22 lie inside the side of J2 that contains x2 and x3. That is NOT Intern A's D2, so they are not instances of Intern A's mechanism.
+- Every degree-5 hole orbit at orders 17-20 (81,564 shortest-fill moves): **1 instance**.
+  - Order 20, plantri index 51, hole 1, at a state of distance 3 to the filled set.
+  - The component is the single vertex {11}, inside D1. The state is in `inertdisc-first-instance.json`.
+  - There is no instance at distance >= 4.
+- Order 21 waits for the kmap census.
