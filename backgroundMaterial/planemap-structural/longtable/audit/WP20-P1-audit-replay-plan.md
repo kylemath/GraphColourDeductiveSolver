@@ -1,6 +1,6 @@
 # WP20 P1: independent audit replay plan
 
-Independent audit, 6 October 2026, 08:35 MDT. **Written before any P1 attempt-2 output was read.** At this time only chunks 0–1 of attempt 2 exist on disk, and the audit has not opened them. This plan fixes how the audit will replay P1. Nothing in it changes the WP20 declaration (`WP20-D1-declaration.md`, SHA-256 `8758a9f8409f17b4ca755d7688ba9f1bc996d35e40d0c173b5f9e64a3ca62fef`).
+Independent audit, 6 October 2026, 08:27 MDT (commit `003c289`). **Written before any P1 attempt-2 output was read.** At this time only chunks 0–1 of attempt 2 exist on disk, and the audit has not opened them. This plan fixes how the audit will replay P1. Nothing in it changes the WP20 declaration (`WP20-D1-declaration.md`, SHA-256 `8758a9f8409f17b4ca755d7688ba9f1bc996d35e40d0c173b5f9e64a3ca62fef`).
 
 ## Independence
 
