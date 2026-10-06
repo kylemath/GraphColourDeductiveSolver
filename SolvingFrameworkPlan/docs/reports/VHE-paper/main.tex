@@ -165,7 +165,8 @@ Reading the hole as a fifth colour used once, slides are exactly the two-colour 
 % REP/MathVHCoreAdvance.md, REP/Lean105ModuleAudit.md, LT/audit/L4-P/REPORT.md ; Lean source LEAN/*.lean (statements read 6 Oct).
 % Ledger nodes: structural-m3, structural-l3, structural-unequal-poles, structural-clique-lift, structural-mobility-general-lean,
 % structural-mobility-triangulated-lean, structural-l4-p-lean = compiled ; structural-belt-all-holes-lean, structural-vacancy-hyp-lean = in-progress.
-\lab{compiled} means: proved in Lean~4 with no \texttt{sorry}, only the standard axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, and included in a module audit. Each audit rebuilt every custom module from source into a fresh library, with cached custom build files hidden, and checked source hashes before and after the build and the axioms of the theorems.
+\lab{compiled} means: proved in Lean~4 with no \texttt{sorry}, only the standard axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, and included in a module audit. Each audit rebuilt every custom module from source into a fresh library, with cached custom build files hidden, checked that no source changed during the build, and checked the axioms of the theorems.
+% Math's corrections: MSG/..._1300_math_..._paper-section-3-corrections.md; WK/MathPaperSection3Check.md. Only the 116-module audit states a hash check both before and after.
 % Lean105ModuleAudit.md "Result", "Checks"; L4-P/REPORT.md "How it was checked".
 The audits that cover the results below are:
 \begin{itemize}
@@ -179,14 +180,18 @@ Earlier audits of 83, 85, 95 and 99 modules covered these modules as they were a
 % ShortFillLeanReport.md (83), ThreeMoveLeanReport.md (85), BeltLeanReport.md (95), MathVHCoreAdvance.md (97, then 99).
 The Lean kernel certifies the formal statement, not its match with the prose; Section~\ref{sec:disclosure} explains this risk. Where a statement differs from the prose we say so.
 
-The library is \texttt{Mathlib/Combinatorics/SimpleGraph/PlaneMap/} in the Lean repository named in Section~\ref{sec:disclosure}. Its branch \texttt{current} holds the audited modules, including L4 and Theorem~P, at commit \texttt{8299419}. % VERIFY: commit 8299419 from MSG/..._1231_math_..._copyright-header-and-L4-P-audit-reconciled.md item 4; the Studio built the parent 907e2eb.
-The modules that are built but not audited (Section~\ref{sec:lean-unaudited}) are not on that branch.
+The library is \texttt{Mathlib/Combinatorics/SimpleGraph/PlaneMap/} in the Lean repository named in Section~\ref{sec:disclosure}. Its branch \texttt{current} holds the audited modules, including L4 and Theorem~P, at commit \texttt{8299419}; the branch also holds a Five Colour demonstration file, which is in neither audit, and four notes.
+% Commit confirmed by Math (gh api; all 73 PlaneMap files byte-identical to the local tree), WK/MathPaperSection3Check.md.
+After both audits, only comment header lines of some files were changed (the author line in 29 files and a copyright header in 52). The edited files were rebuilt, but not re-audited, so the published files are not byte-identical to the audited ones; their new hashes are recorded beside the audit.
+% Math 13:00 required correction 1; Math asks the audit to re-audit 8299419.
+The modules that are built but not audited (Section~\ref{sec:lean-unaudited}) are untracked in the local checkout and are not on that branch.
 % MSG/..._1218_math_..._backup-pushed-and-six-five-hole.md item 1 ("Left out (not audited)").
 No Mathlib pull request has been opened.
 % MSG/..._1220_math_..._cosign item "On Mathlib"; dissemination-mathlib-planemap = blocked (rev 117).
 
 \subsection{The move framework}
-The vacancy modules work on an arbitrary simple graph \texttt{G : SimpleGraph V} and an arbitrary colour type, not only on planar graphs or four colours. \texttt{ProperOff G h c} says that $c$ is proper on $G-h$, and \texttt{Target G h c} that a colour is missing from the neighbours of $h$. \texttt{KempeStep} exchanges two colours on exactly one whole component of their two-colour subgraph of $G-h$; \texttt{slide} is the singleton slide; \texttt{MixedPath G n s t} is a path of $n$ moves; \texttt{PureFill G h c n} is a pure path of length at most $n$ at the fixed hole to a \texttt{Target} state.
+The basic vacancy modules (short fills, L3, L4 and the lifts) work on an arbitrary simple graph \texttt{G : SimpleGraph V} and an arbitrary colour type. Mobility, the belt results and \texttt{VacancyHyp} fix four colours (\texttt{Fin 4}), and mobility also needs a spherical map.
+% Math's corrections: MSG/..._1300_math_..._paper-section-3-corrections.md; WK/MathPaperSection3Check.md. Required correction 2. \texttt{ProperOff G h c} says that $c$ is proper on $G-h$, and \texttt{Target G h c} that a colour is missing from the neighbours of $h$. \texttt{KempeStep} exchanges two colours on exactly one whole component of their two-colour subgraph of $G-h$; \texttt{slide} is the singleton slide; \texttt{MixedPath G n s t} is a path of $n$ moves; \texttt{PureFill G h c n} is a pure path of length at most $n$ at the fixed hole to a \texttt{Target} state.
 % LEAN/VacancySlide.lean (ProperOff, UniqueAt), LEAN/VacancyShortFill.lean (Target, Whole, KempeStep, MixedPath, PureFill).
 
 \subsection{Short fills and the three-move obstruction}
@@ -215,7 +220,7 @@ Lean names: \texttt{SimpleGraph.VacancyLemmaL4.l4a}, \texttt{l4b}, \texttt{l4b\_
 
 \subsection{Degree-five mobility}
 \begin{theorem}[mobility; \lab{compiled}]\label{thm:mobility}
-Let $M$ be a spherical map (\texttt{SphericalMap n}) and $h$ a vertex with a five-port link \texttt{L : FiveLink M.graph h}, and let $c$ be a 4-colouring proper off $h$.
+Let $M$ be a spherical map (\texttt{SphericalMap n}: a rotation system on $n$ vertices whose even edge sets are sums of faces, the property \texttt{rotation.Fills}; it is not defined through an embedding) and $h$ a vertex of degree exactly 5, given with a five-port link \texttt{L : FiveLink M.graph h}, and let $c$ be a 4-colouring proper off $h$.
 (a) \texttt{vacancy\_mobility\_general}: if consecutive ports are adjacent and the rotation at $h$ advances the ports cyclically, then either $c$ has a pure fill within one swap at $h$, or for every neighbour $u$ of $h$ there is an \texttt{Approach}: zero or one whole-component Kempe swap at $h$ after which $u$ is a singleton on the link.
 (b) \texttt{vacancy\_mobility\_triangulated}: the same conclusion when every face of $M$ is a triangle (\texttt{M.Triangulated}), with no ring or rotation hypothesis.
 \end{theorem}
@@ -237,13 +242,13 @@ The \emph{belt} $G_n$ (\texttt{TwoPoleBelt.graph n}) has two poles $a,b$ and two
 % REP/BeltLeanReport.md "Statement and scope"; LT/audit messages: MSG/..._1232_audit_..._P-E-sixfive-replay-and-belt-argument.md item 3 (degrees).
 % The identification with Florek's family is cited, not formalised (MSG/..._0832_math_..._lean-belt-theorem-all-holes.md "Scope and gaps").
 \begin{theorem}[unequal-pole belt walk; \lab{compiled}]
-For every $n\ge5$, every belt hole $h$ and every colouring of $G_n-h$ whose poles have different colours, at most $2n$ singleton slides reach a filled belt hole, with both pole colours unchanged.
+For every $n\ge5$, every belt hole $h$ and every colouring proper off $h$ whose poles have different colours, at most $2n$ singleton slides reach a filled belt hole, with both pole colours unchanged.
 \end{theorem}
 % Lean: SimpleGraph.TwoPoleBeltWalk.belt_unequal_at (LEAN/TwoPoleBeltAllRoots.lean line 31). REP/BeltLeanReport.md: 95/95 audit; Florek not a dependency.
 Lean name: \texttt{SimpleGraph.TwoPoleBeltWalk.belt\_unequal\_at}. Florek's theorem is not a dependency.
 
 \begin{theorem}[Theorem P, pole hole; \lab{compiled}]
-For $n\ge5$ and every colouring $c$ of $G_n-a$, at most $3(n_0-2)+n$ Kempe swaps with the hole fixed at the pole $a$ reach a colouring in which some colour occurs at most once on the ring $u_0\dots u_{n-1}$. Here $n_0$ is the number of ring vertices coloured like the other pole $b$ (when $n_0<2$ the bound reads $n$).
+For $n\ge5$ and every colouring $c$ proper off the pole $a$, at most $3(n_0-2)+n$ Kempe swaps with the hole fixed at the pole $a$ reach a colouring in which some colour occurs at most once on the ring $u_0\dots u_{n-1}$. Here $n_0$ is the number of ring vertices coloured like the other pole $b$ (when $n_0<2$ the bound reads $n$).
 \end{theorem}
 % Lean: SimpleGraph.TheoremPPole.theoremP (LEAN/TheoremPPoleNoSingleton.lean line 114). Bound and n_0 from its docstring;
 % jset/n0 and natural-number subtraction: LT/audit/L4-P/REPORT.md "Theorem P". Hand page LT/swarm/pole-hole-noflorek.md (accepted, REP/MathCreativeCatchUpReview.md).
@@ -257,22 +262,22 @@ Two further results are built in Lean with no \texttt{sorry} and only the standa
 \begin{itemize}
 \item \texttt{SimpleGraph.TwoPoleBeltPoleHole.belt\_theorem\_all\_holes}: for $n\ge5$, every hole $h$ of $G_n$ (belt or pole) and every colouring proper off $h$, a mixed path of at most $6n$ slides and swaps reaches a filled state that is proper off its hole.
 % LEAN/TwoPoleBeltPoleB.lean line 129.
-\item \texttt{VacancyAt G B h} and \texttt{VacancyHyp G}: a Lean definition of the vacancy hypothesis at one hole with length bound $B$, and at every hole with no bound; with \texttt{vacancyHyp\_belt}: \texttt{VacancyHyp (graph n)} for $n\ge5$.
+\item \texttt{SimpleGraph.VacancyHyp.VacancyAt G B h} and \texttt{VacancyHyp G}: a Lean definition of the vacancy hypothesis (four colours) at one hole with length bound $B$, and at every hole with no bound. In namespace \texttt{SimpleGraph.TwoPoleBeltVacancyHyp}: \texttt{vacancyAt\_belt} (bound $6n$ at every hole) and \texttt{vacancyHyp\_belt} (\texttt{VacancyHyp (graph n)} for $n\ge5$); and \texttt{vacancyHyp\_sphericalMap\_of\_iso}: any spherical map whose graph is isomorphic to $G_n$ satisfies \texttt{VacancyHyp}. The transfer is proved, but no such map is constructed.
 % LEAN/TwoPoleBeltVacancyHypDef.lean lines 33, 39; LEAN/TwoPoleBeltVacancyHyp.lean line 38.
 \end{itemize}
-These are statements about the explicit graph $G_n$ with mixed paths and a moving hole. No spherical-map realisation of $G_n$ exists yet, and \texttt{VacancyHyp} carries no ``spherical, minimum degree 5'' clause. The corresponding hand theorem, that the vacancy hypothesis holds at every hole of Florek's graphs, is \lab{hand}; its pole-hole case cites Florek's Theorem~3.1, and so does the identification of $G_n$ with Florek's family.
+These are statements about the explicit graph $G_n$ with mixed paths and a moving hole. They are in neither module audit, are untracked in the local checkout, and are absent from the published branch. No spherical-map realisation of $G_n$ exists yet, and \texttt{VacancyHyp} carries no ``spherical, minimum degree 5'' clause. The corresponding hand theorem, that the vacancy hypothesis holds at every hole of Florek's graphs, is \lab{hand}; its pole-hole case cites Florek's Theorem~3.1, and so does the identification of $G_n$ with Florek's family.
 % MSG/..._0958_math_... "Mismatches, stated plainly"; START-HERE.md section 6 "Belt theorem".
 % NOTE (not a ledger conflict): START-HERE.md section 6 says the hand belt theorem's pole case cites Florek; since 6 Oct the compiled Theorem P covers the
 % no-singleton pole case without Florek (ledger structural-l4-p-lean). The ledger keeps structural-equal-pole exploring; this text follows the ledger.
 
 \subsection{The Five Colour Theorem}
-The library also proves \texttt{SimpleGraph.SphericalMap.five\_color\_theorem} and \texttt{SimpleGraph.PlaneMap.five\_color\_theorem}: the graph of a spherical map, or of a plane map, is 5-colourable. \lab{compiled}
+The library also proves \texttt{SimpleGraph.SphericalMap.five\_color\_theorem} and \texttt{SimpleGraph.PlaneMap.five\_color\_theorem}: the graph of a spherical map, or of a plane map, is 5-colourable. \lab{compiled} A \texttt{PlaneMap} is a connected rotation system generated by attaching vertices at corners and inserting edges within a face.
 % LEAN/FiveColorTheorem.lean lines 30, 54. START-HERE.md section 6 lists Five Colour in the compiled foundation; MathlibTest/PlaneMapFiveColor is in Lean105ModuleAudit.md's source set.
-% Resolved: Navigator revision 120 ruling 2 (MSG/..._1256_navigator_..._revision-120-rulings.md): f5-lean is compiled; its modules are in the 105-module audit manifest. Scope: graphs presented as a plane or spherical map.
+% Navigator revision 120 ruling 2: f5-lean is compiled; the module FiveColorTheorem itself is in both the 105- and the 116-module manifests (Math 13:00). Scope: graphs presented as a plane or spherical map.
 The theorem is about graphs presented as plane maps; nothing in the library proves that an abstractly planar graph admits such a presentation.
 % MSG/..._1220_math_..._cosign item 4.
 
-In short: the mobility theorem assumes every face of the map is a triangle; the belt results concern the explicit graph $G_n$ with mixed paths and a moving hole; the Five Colour Theorem concerns plane-map presentations; and no compiled result is yet connected to the induction of Theorem~\ref{thm:A}, which is \lab{hand}.
+In short: the mobility theorem assumes every face of the map is a triangle; the belt results concern the explicit graph $G_n$, and of them only the unaudited ones use mixed paths with a moving hole (the walk uses slides only, and Theorem~P uses pure swaps at the fixed pole and ends with a colour used at most once on the ring, not with a fill); the Five Colour Theorem concerns plane-map presentations; and no compiled result is yet connected to the induction of Theorem~\ref{thm:A}, which is \lab{hand}.
 % MSG/..._1220_math_..._cosign item 4; ledger notes on structural-mobility-general-lean (rev 92).
 
 \section{What a least failure must look like}\label{sec:failure}
