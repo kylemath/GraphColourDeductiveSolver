@@ -456,8 +456,10 @@ On 6 October the work moved from search to short, testable proof ideas (``pathwa
 \item \emph{``(6,6,6,6,6) holes have radius 2'', killed} \lab{computed}. Radius 3 occurs at such holes at orders 22 and 23, on 69 of 3,966 doubly locked states over 78 holes. The audit replayed this exactly. The ring-pattern argument of Theorem~\ref{thm:H} does not survive: 74 ring colourings are compatible with the locks instead of three.
 % MSG/..._1218_math_... item 2; audit replay MSG/..._1232_audit_..._P-E-sixfive-replay-and-belt-argument.md item 1.
 % Math's page WK/MathSixFiveHole.md is a worker page not reviewed line by line.
-% PENDING LEDGER: Math a277616 reports K-A1 (the 74-pattern (6^5) automaton has a closed adversary trap of 5,650 states, so no bound follows)
-% and a radius-4 (6^5) hole at order 28 (minimum degree 5, no separating triangle, two codes), WK/MathSixFiveAutomaton.md. Not in revision 120; add when recorded.
+\item \emph{The (6,6,6,6,6) ring automaton (K-A1), killed} \lab{computed}, exploratory: an automaton on the 74 ring patterns has a closed adversary trap of 5,650 abstract states that stay doubly locked, so it gives no radius bound. This is Math's worker computation, not replayed by the audit.
+% WK/MathSixFiveAutomaton.md; Math a277616 message item 2; Navigator revision 121 (MSG/..._1258_navigator_..._revision-121.md), node structural-sixfive-automaton-killed.
+\item \emph{``Radius at most 3 at (6,6,6,6,6) holes'', killed} \lab{computed}: an order-28 triangulation of minimum degree 5 with no separating triangle has a doubly locked state of radius 4 at a (6,6,6,6,6) hole, confirmed by two of Math's programs and not replayed by the audit. This kills only that statement; Conjecture~R stays \lab{open}.
+% WK/MathSixFiveAutomaton.md (faces there); Navigator revision 121 item 3 of "what may now go into section 5".
 \item \emph{``Bound the degrees of all five link vertices'', killed} \lab{hand}. In the belt $G_n$ every degree-5 vertex has one neighbour of degree $n$, so any finite list that bounds all five link degrees misses the belt family.
 % MSG/..._1159_math_... item 3; checked by hand by the audit, MSG/..._1232_audit_... item 3.
 \item \emph{The free adversary on a separating 4-cycle}, killed on one member \lab{computed}: on the order-16 member $16{:}1-st$, all 50 candidate pairs lose the free game. The real far side is not a free adversary, and the corrected trace game is not refuted.
@@ -468,10 +470,9 @@ On 6 October the work moved from search to short, testable proof ideas (``pathwa
 % Ledger structural-pathway-d note rev 116 (audit 12:08: "The invariant kill ... is accepted as stated"); WK/creative-intel-2026-10-05/pathway-D.md line 25.
 \item \emph{Variant X (P-D), killed on $T_4$} \lab{computed}, exploratory: on the 234 doubly locked states of $T_4$, no rule that reads the colours within distance 2 of $v$ decides whether $F$ keeps both locks (3 of 212 keys clash).
 % MSG/..._1239_longtable_... item 2; ledger rev 119 "Variant X: killed on T4 [exploratory]".
-\item \emph{Known Kempe invariants (P-F)}: the invariant of a 4-colouring's degree modulo 12, and Kempe-equivalence of all 4-colourings, are proved only for three-colourable triangulations~\cite{mohar2009}, \lab{cited}, and a triangulation of minimum degree 5 is never three-colourable. On minimum-degree-5 triangulations of orders 12--18, only degree parity is an invariant of Kempe classes. \lab{computed}, exploratory.
-% MSG/..._1305_audit_..._P-F-literature-check-and-degree-data.md; recorded in Navigator revision 120 "P-F".
-% PENDING LEDGER: Math a277616 (message ..._PF-killed-automaton-killed-paper-answers.md) asks the Navigator to record P-F as killed:
-% degree parity is a Kempe invariant of every sphere triangulation [hand], constant on whole classes, and blind to filling. Not in revision 120; add when recorded. Mohar 2006 and Fisk 1977 not cited: details unverified per revision 120.
+\item \emph{Topological degree (P-F), killed as a route.} The Kempe invariant of a colouring's degree modulo 12 holds for three-colourable triangulations~\cite{mohar2009} \lab{cited}, and a triangulation of minimum degree 5 is never three-colourable. Degree parity is a Kempe invariant of every sphere triangulation \lab{hand}. At a hole, no degree datum distinguishes states that can be filled: for example, the radius-4 states of $T_4$ share their degree data with 96 radius-2 states \lab{hand + computed}, exploratory, Math's worker, not replayed by the audit. On minimum-degree-5 triangulations of orders 12--18, only degree parity is an invariant of Kempe classes \lab{computed}, exploratory.
+% MSG/..._1305_audit_..._P-F-literature-check-and-degree-data.md; WK/MathPathwayPF-degree.md; Math a277616 message item 1;
+% Navigator revision 121 (structural-pathway-f killed; labels as given there). Only Mohar-Salas 2009 is cited; nothing from Fisk or Mohar 2006.
 \end{itemize}
 \emph{Lesson.} A fill bound is not a function of local degrees: the lock paths are global. Any proof must use global structure, such as the Jordan curves of the lock paths or arguments in the style of Theorem~P.
 % MSG/..._1248_audit_... item 3(b).
