@@ -1,6 +1,7 @@
 module
 
 public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.RStar
+public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.VacancyCliqueLift
 
 /-!
 # Sides of a separating triangle (link D of `R* ⇒ 4CT`)
@@ -351,5 +352,332 @@ theorem exists_onSide (T : SphericalMap n) (htri : T.Triangulated) {p q r : Fin 
     rwa [this] at hs
 
 end Sides
+
+/-! ## D3. The kept side as a spherical map -/
+
+section Kept
+open RotationSystem VacancyCliqueLift
+
+/-- The triangle's vertices together with every vertex whose darts all see potential `b`. -/
+def keep (T : SphericalMap n) (c : T.Face → ZMod 2) (b : ZMod 2) (p q r : Fin n) :
+    Set (Fin n) := {x | x = p ∨ x = q ∨ x = r ∨ OnSide T c b x}
+
+theorem runTo_first {M : SphericalMap n} {H : SimpleGraph (Fin n)} {d e : M.Dart}
+    (h : RunTo M H d e) (hn : H.Adj (M.rotation.next d).fst (M.rotation.next d).snd) :
+    e = M.rotation.next d := by
+  obtain ⟨k, hk, hke, hj⟩ := h
+  rcases Nat.lt_or_ge 1 k with h1 | h1
+  · exact absurd (by simpa using hn) (hj 1 (by norm_num) h1)
+  · obtain rfl : k = 1 := by omega
+    simpa using hke.symm
+
+variable {T : SphericalMap n} {p q r : Fin n} {c : T.Face → ZMod 2} {b : ZMod 2}
+
+theorem keep_of_face (hc : TriPotential T p q r c) (d : T.Dart) (hd : c (T.faceOf d) = b) :
+    d.fst ∈ keep T c b p q r := by
+  by_cases hx : d.fst ≠ p ∧ d.fst ≠ q ∧ d.fst ≠ r
+  · have := onSide_of_dart T hc hx d rfl
+    rw [hd] at this
+    exact Or.inr (Or.inr (Or.inr this))
+  · simp only [not_and_or, not_not] at hx
+    rcases hx with h | h | h
+    · exact Or.inl h
+    · exact Or.inr (Or.inl h)
+    · exact Or.inr (Or.inr (Or.inl h))
+
+theorem faceNext_face (d : T.Dart) : T.faceOf (T.rotation.faceNext d) = T.faceOf d :=
+  T.rotation.face_of_face_next d
+
+/-- The second end of a dart lies on its face. -/
+theorem snd_keep_of_face (hc : TriPotential T p q r c) (d : T.Dart) (hd : c (T.faceOf d) = b) :
+    d.snd ∈ keep T c b p q r := by
+  have := keep_of_face (b := b) hc (T.rotation.faceNext d) (by rw [faceNext_face]; exact hd)
+  rwa [RotationSystem.face_next_fst] at this
+
+theorem offF_not_keep {z : Fin n} (hz : z ≠ p ∧ z ≠ q ∧ z ≠ r)
+    (e : T.Dart) (he : e.fst = z) (hb : c (T.faceOf e) ≠ b) : z ∉ keep T c b p q r := by
+  rintro (h | h | h | h)
+  · exact hz.1 h
+  · exact hz.2.1 h
+  · exact hz.2.2 h
+  · exact hb (h e he)
+
+theorem inF_keep {x : Fin n} (hx : x = p ∨ x = q ∨ x = r) : x ∈ keep T c b p q r := by
+  rcases hx with h | h | h
+  · exact Or.inl h
+  · exact Or.inr (Or.inl h)
+  · exact Or.inr (Or.inr (Or.inl h))
+
+
+theorem liftDart_injective {M : SphericalMap n} {G : SimpleGraph (Fin n)} (hle : G ≤ M.graph) :
+    Function.Injective (liftDart (M := M) hle) := by
+  intro a b h
+  apply Dart.ext
+  exact congrArg (fun d : M.Dart => d.toProd) h
+
+theorem third_corner {p q r u v : Fin n} (hpq : p ≠ q) (hqr : q ≠ r) (hrp : r ≠ p)
+    (hu : u = p ∨ u = q ∨ u = r) (hv : v = p ∨ v = q ∨ v = r) (huv : u ≠ v) :
+    ∃ w, (w = p ∨ w = q ∨ w = r) ∧ w ≠ u ∧ w ≠ v ∧
+      ∀ z, (z = p ∨ z = q ∨ z = r) → z = u ∨ z = v ∨ z = w := by
+  rcases hu with rfl | rfl | rfl <;> rcases hv with rfl | rfl | rfl
+  all_goals first
+    | exact absurd rfl huv
+    | exact ⟨r, by simp, by tauto, by tauto, by tauto⟩
+    | exact ⟨q, by simp, by tauto, by tauto, by tauto⟩
+    | exact ⟨p, by simp, by tauto, by tauto, by tauto⟩
+
+theorem adj_corners {T : SphericalMap n} {p q r x y : Fin n} (hpq : T.Adj p q) (hqr : T.Adj q r)
+    (hrp : T.Adj r p) (hx : x = p ∨ x = q ∨ x = r) (hy : y = p ∨ y = q ∨ y = r) (hxy : x ≠ y) :
+    T.Adj x y := by
+  rcases hx with rfl | rfl | rfl <;> rcases hy with rfl | rfl | rfl
+  all_goals first
+    | exact absurd rfl hxy
+    | assumption
+    | exact SimpleGraph.Adj.symm (by assumption)
+
+section Map
+variable (hc : TriPotential T p q r c) {N : SphericalMap n}
+  (hN : N.graph = sideGraph T.graph (keep T c b p q r)) (hle : N.graph ≤ T.graph)
+  (spec : ∀ d : N.Dart, RunTo T (sideGraph T.graph (keep T c b p q r)) (liftDart hle d)
+    (liftDart hle (N.rotation.next d)))
+include hc hN spec
+
+/-- **LA.** On a kept face the new face successor is the old one. -/
+theorem lift_faceNext_keptFace (d : N.Dart) (hd : c (T.faceOf (liftDart hle d)) = b) :
+    liftDart hle (N.rotation.faceNext d) = T.rotation.faceNext (liftDart hle d) := by
+  rw [RotationSystem.face_next_apply, RotationSystem.face_next_apply]
+  have r := spec d.symm
+  apply runTo_first r
+  have h1 := snd_keep_of_face hc (liftDart hle d) hd
+  have hf : c (T.faceOf (T.rotation.faceNext (liftDart hle d))) = b := by
+    rw [faceNext_face]; exact hd
+  have h2 := snd_keep_of_face hc _ hf
+  rw [RotationSystem.face_next_apply] at h2 hf
+  refine ⟨(T.rotation.next (liftDart hle d.symm)).adj, ?_, h2⟩
+  rw [T.rotation.next_fst]
+  exact h1
+
+/-- On a kept face the potential is unchanged by the new face successor. -/
+theorem keptFace_faceNext (d : N.Dart) (hd : c (T.faceOf (liftDart hle d)) = b) :
+    c (T.faceOf (liftDart hle (N.rotation.faceNext d))) = b := by
+  rw [lift_faceNext_keptFace hc hN hle spec d hd, faceNext_face]; exact hd
+
+/-- **LB.** At a corner `v` of the triangle, starting from a triangle dart whose face lies on the
+far side, the new successor skips the far side and lands on the third corner `w`. -/
+theorem lift_next_farFace (d : N.Dart) {u v w : Fin n}
+    (hdu : (liftDart hle d).fst = u) (hdv : (liftDart hle d).snd = v)
+    (hu : u = p ∨ u = q ∨ u = r) (hv : v = p ∨ v = q ∨ v = r) (hw : w = p ∨ w = q ∨ w = r)
+    (hwu : w ≠ u) (hvwAdj : T.Adj v w)
+    (hcov : ∀ z, (z = p ∨ z = q ∨ z = r) → z = u ∨ z = v ∨ z = w)
+    (hd : c (T.faceOf (liftDart hle d)) ≠ b) :
+    (liftDart hle (N.rotation.next d.symm)).snd = w ∧
+      c (T.faceOf (liftDart hle (N.rotation.next d.symm))) ≠ b := by
+  classical
+  set H := sideGraph T.graph (keep T c b p q r) with hH
+  set y0 := liftDart hle d.symm with hy0
+  have hy0fst : y0.fst = v := hdv
+  have hy0snd : y0.snd = u := hdu
+  obtain ⟨k, hk, hke, hj⟩ := spec d.symm
+  set Y : ℕ → T.Dart := fun j => (⇑T.rotation.next)^[j] y0 with hY
+  have Yfst : ∀ j, (Y j).fst = v := fun j => (iterate_next_fst T j y0).trans hy0fst
+  have hvK : v ∈ keep T c b p q r := inF_keep hv
+  -- the potential stays on the far side along the run
+  have C : ∀ j, 1 ≤ j → j ≤ k → c (T.faceOf (Y j)) ≠ b := by
+    intro j
+    induction j with
+    | zero => intro h; omega
+    | succ j ih =>
+      intro _ hjk
+      rcases Nat.eq_zero_or_pos j with rfl | hj0
+      · change c (T.faceOf (T.rotation.next y0)) ≠ b
+        rw [faceOf_next]; exact hd
+      · have hnot := hj j hj0 (by omega)
+        have hsnd : (Y j).snd ∉ keep T c b p q r := fun hs =>
+          hnot ⟨(Y j).adj, by rw [Yfst]; exact hvK, hs⟩
+        have hoff : (Y j).snd ≠ p ∧ (Y j).snd ≠ q ∧ (Y j).snd ≠ r := by
+          refine ⟨fun e => hsnd (inF_keep (Or.inl e)), fun e => hsnd (inF_keep (Or.inr (Or.inl e))),
+            fun e => hsnd (inF_keep (Or.inr (Or.inr e)))⟩
+        have h0 : triInd T p q r (edgeOfDart (Y j)) = 0 := by
+          rw [← edge_of_dart_symm]; exact triInd_off T _ hoff
+        have := zmod2_swap _ _ _ (hc (Y j))
+        rw [h0, zero_add] at this
+        rw [show Y (j + 1) = T.rotation.next (Y j) from Function.iterate_succ_apply' _ _ _,
+          faceOf_next, this]
+        exact ih (by omega) (by omega)
+  have Ck := C k hk le_rfl
+  have hYk : Y k = liftDart hle (N.rotation.next d.symm) := hke
+  refine ⟨?_, hYk ▸ Ck⟩
+  -- the end of the run is a kept dart
+  have hadj : H.Adj (Y k).fst (Y k).snd := by
+    rw [hYk]
+    exact hN.le (N.rotation.next d.symm).adj
+  have hzK := hadj.2.2
+  set z := (Y k).snd with hz
+  have hzF : z = p ∨ z = q ∨ z = r := by
+    by_contra hoff
+    simp only [not_or] at hoff
+    have hoff' : z ≠ p ∧ z ≠ q ∧ z ≠ r := hoff
+    have hon : OnSide T c b z := by
+      rcases hzK with h | h | h | h
+      · exact absurd h hoff'.1
+      · exact absurd h hoff'.2.1
+      · exact absurd h hoff'.2.2
+      · exact h
+    have := hon (T.rotation.faceNext (Y k)) (RotationSystem.face_next_fst _ _)
+    rw [faceNext_face] at this
+    exact Ck this
+  rcases hcov z hzF with hzu | hzv | hzw
+  · -- back at `u`: then the run passed `v → w`, a kept dart
+    exfalso
+    have hback : Y k = y0 := by
+      apply Dart.ext; apply Prod.ext
+      · rw [Yfst, hy0fst]
+      · rw [← hz, hzu, hy0snd]
+    have hper : Function.IsPeriodicPt (⇑T.rotation.next) k y0 := hback
+    let dw : T.Dart := ⟨(v, w), hvwAdj⟩
+    obtain ⟨m, hm⟩ := T.rotation.cyclic y0 dw hy0fst
+    have hpos := hper.minimalPeriod_pos hk
+    have hdvd := hper.minimalPeriod_dvd
+    have hle' := Nat.le_of_dvd hk hdvd
+    have hmod : (⇑T.rotation.next)^[m % Function.minimalPeriod (⇑T.rotation.next) y0] y0 = dw := by
+      rw [Function.iterate_mod_minimalPeriod_eq]; exact hm
+    have hm0 : m % Function.minimalPeriod (⇑T.rotation.next) y0 ≠ 0 := by
+      intro h0
+      rw [h0] at hmod
+      have := congrArg (fun e : T.Dart => e.snd) hmod
+      simp only [Function.iterate_zero, id] at this
+      exact hwu (this.symm.trans hy0snd)
+    apply hj _ (Nat.pos_of_ne_zero hm0) (lt_of_lt_of_le (Nat.mod_lt _ hpos) hle')
+    rw [hmod]
+    exact ⟨hvwAdj, hvK, inF_keep hw⟩
+  · exfalso
+    have := (Y k).adj
+    rw [Yfst] at this
+    exact this.ne (hzv.symm.trans hz)
+  · rw [← hYk]; exact hzw
+
+/-- Darts of the kept map on a far face join two corners. -/
+theorem far_ends (d : N.Dart) (hd : c (T.faceOf (liftDart hle d)) ≠ b) :
+    ((liftDart hle d).fst = p ∨ (liftDart hle d).fst = q ∨ (liftDart hle d).fst = r) ∧
+    ((liftDart hle d).snd = p ∨ (liftDart hle d).snd = q ∨ (liftDart hle d).snd = r) := by
+  have hadj := hN.le d.adj
+  have corner : ∀ (x : Fin n), x ∈ keep T c b p q r → (e : T.Dart) → e.fst = x →
+      c (T.faceOf e) ≠ b → (x = p ∨ x = q ∨ x = r) := by
+    intro x hx e he hb
+    rcases hx with h | h | h | h
+    · exact Or.inl h
+    · exact Or.inr (Or.inl h)
+    · exact Or.inr (Or.inr h)
+    · exact absurd (h e he) hb
+  refine ⟨corner _ hadj.2.1 (liftDart hle d) rfl hd, ?_⟩
+  exact corner _ hadj.2.2 (T.rotation.faceNext (liftDart hle d)) (RotationSystem.face_next_fst _ _)
+    (by rw [faceNext_face]; exact hd)
+
+variable (htri : T.Triangulated) (hpq : T.Adj p q) (hqr : T.Adj q r) (hrp : T.Adj r p)
+include htri hpq hqr hrp
+
+theorem T_faceNext_three (D : T.Dart) : (⇑T.rotation.faceNext)^[3] D = D := by
+  have h := T.rotation.face_next_iterate_length D
+  rwa [show T.rotation.faceLength (T.rotation.faceOf D) = 3 from htri D] at h
+
+/-- **D3a.** The kept map is triangulated. -/
+theorem kept_triangulated : N.Triangulated := by
+  classical
+  intro d
+  have period : (⇑N.rotation.faceNext)^[3] d = d := by
+    by_cases hd : c (T.faceOf (liftDart hle d)) = b
+    · apply liftDart_injective hle
+      have e1 := lift_faceNext_keptFace hc hN hle spec d hd
+      have k1 := keptFace_faceNext hc hN hle spec d hd
+      have e2 := lift_faceNext_keptFace hc hN hle spec _ k1
+      have k2 := keptFace_faceNext hc hN hle spec _ k1
+      have e3 := lift_faceNext_keptFace hc hN hle spec _ k2
+      simp only [Function.iterate_succ_apply', Function.iterate_zero, id]
+      rw [e3, e2, e1]
+      have := T_faceNext_three hc hN hle spec htri hpq hqr hrp (liftDart hle d)
+      simpa only [Function.iterate_succ_apply', Function.iterate_zero, id] using this
+    · obtain ⟨hu, hv⟩ := far_ends hc hN hle spec d hd
+      set u := (liftDart hle d).fst
+      set v := (liftDart hle d).snd
+      have huv : u ≠ v := (liftDart hle d).adj.ne
+      obtain ⟨w, hw, hwu, hwv, hcov⟩ := third_corner hpq.ne hqr.ne hrp.ne hu hv huv
+      -- first step: `u → v` to `v → w`
+      obtain ⟨s1, f1⟩ := lift_next_farFace hc hN hle spec d rfl rfl hu hv hw hwu
+        (adj_corners hpq hqr hrp hv hw hwv.symm) hcov hd
+      set d1 := N.rotation.next d.symm
+      have d1f : (liftDart hle d1).fst = v := by
+        change (N.rotation.next d.symm).fst = _
+        rw [N.rotation.next_fst]; rfl
+      -- second step: `v → w` to `w → u`
+      obtain ⟨s2, f2⟩ := lift_next_farFace hc hN hle spec d1 d1f s1 hv hw hu huv
+        (adj_corners hpq hqr hrp hw hu hwu)
+        (fun z hz => by
+          rcases hcov z hz with h | h | h
+          exacts [Or.inr (Or.inr h), Or.inl h, Or.inr (Or.inl h)])
+        f1
+      set d2 := N.rotation.next d1.symm
+      have d2f : (liftDart hle d2).fst = w := by
+        change (N.rotation.next d1.symm).fst = _
+        rw [N.rotation.next_fst]; exact s1
+      -- third step: `w → u` to `u → v`
+      obtain ⟨s3, -⟩ := lift_next_farFace hc hN hle spec d2 d2f s2 hw hu hv hwv.symm
+        (adj_corners hpq hqr hrp hu hv huv)
+        (fun z hz => by
+          rcases hcov z hz with h | h | h
+          exacts [Or.inr (Or.inl h), Or.inr (Or.inr h), Or.inl h])
+        f2
+      have d3f : (liftDart hle (N.rotation.next d2.symm)).fst = u := by
+        change (N.rotation.next d2.symm).fst = _
+        rw [N.rotation.next_fst]; exact s2
+      apply liftDart_injective hle
+      simp only [Function.iterate_succ_apply', Function.iterate_zero, id,
+        RotationSystem.face_next_apply]
+      apply Dart.ext; apply Prod.ext
+      · exact d3f
+      · exact s3
+  have hfix : N.rotation.faceNext d ≠ d := by
+    intro he
+    have h1 := congrArg (fun a : N.Dart => a.fst) he
+    simp only [RotationSystem.face_next_fst] at h1
+    exact d.adj.ne h1.symm
+  rw [N.rotation.face_length_eq_period]
+  exact Function.minimalPeriod_eq_prime (p := 3) (hp := ⟨Nat.prime_three⟩) period hfix
+
+/-- **D3b.** The triangle is a face of the kept map. -/
+theorem kept_facial : Facial N p q r := by
+  classical
+  have hHpq : N.graph.Adj p q := by
+    rw [hN]; exact ⟨hpq, inF_keep (Or.inl rfl), inF_keep (Or.inr (Or.inl rfl))⟩
+  let dpq : N.Dart := ⟨(p, q), hHpq⟩
+  have hp' : p = p ∨ p = q ∨ p = r := Or.inl rfl
+  have hq' : q = p ∨ q = q ∨ q = r := Or.inr (Or.inl rfl)
+  have hr' : r = p ∨ r = q ∨ r = r := Or.inr (Or.inr rfl)
+  have cov : ∀ z, (z = p ∨ z = q ∨ z = r) → z = p ∨ z = q ∨ z = r := fun z h => h
+  by_cases hd : c (T.faceOf (liftDart hle dpq)) = b
+  · -- the face of `q → p` is far
+    have hjump := hc (liftDart hle dpq)
+    have hqp : c (T.faceOf (liftDart hle dpq.symm)) ≠ b := by
+      intro h2
+      have h1 : c (T.faceOf (liftDart hle dpq)) + c (T.faceOf (liftDart hle dpq).symm) = 0 := by
+        change _ + c (T.faceOf (liftDart hle dpq.symm)) = 0
+        rw [hd, h2]; exact (show ∀ x : ZMod 2, x + x = 0 by decide) b
+      rw [← hjump] at h1
+      have n2 : s(p,q) ≠ s(q,r) := fun h => by
+        rw [Sym2.eq_iff] at h; rcases h with h | h; exact hpq.ne h.1; exact hrp.ne h.1.symm
+      have n3 : s(p,q) ≠ s(r,p) := fun h => by
+        rw [Sym2.eq_iff] at h; rcases h with h | h; exact hrp.ne h.1.symm; exact hqr.ne h.2
+      simp [triInd, edgeOfDart, liftDart, dpq, Dart.edge, n2, n3] at h1
+    obtain ⟨s, -⟩ := lift_next_farFace (u := q) (v := p) (w := r) hc hN hle spec dpq.symm rfl rfl
+      hq' hp' hr' hqr.ne.symm hrp.symm
+      (fun z hz => by
+        rcases hz with h | h | h
+        exacts [Or.inr (Or.inl h), Or.inl h, Or.inr (Or.inr h)]) hqp
+    exact Or.inr ⟨hHpq, s⟩
+  · obtain ⟨s, -⟩ := lift_next_farFace (u := p) (v := q) (w := r) hc hN hle spec dpq rfl rfl
+      hp' hq' hr' hrp.ne hqr cov hd
+    exact Or.inl ⟨hHpq.symm, s⟩
+
+end Map
+end Kept
 
 end SimpleGraph.SphericalMap
