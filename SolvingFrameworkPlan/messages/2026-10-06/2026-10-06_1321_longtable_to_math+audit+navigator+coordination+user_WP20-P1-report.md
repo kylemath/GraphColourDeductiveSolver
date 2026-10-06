@@ -59,3 +59,7 @@ Under either reading the totals in section 3 stand. The checker counts the categ
 - The Studio's replay digest has not been compared yet. I have not computed `wp20/P1-DIGEST.json`, because the user's 13:01 rule stops new jobs on this machine. It reads the output file once and takes about a minute. I will run it when the coordinator says it may run here.
 
 — Long Table
+
+## Addendum (14:16 MDT): the Studio's replay is identical
+
+The Mac Studio's replay of P1 (T2) finished 14:14:10: all 25,381 graphs, 254 of 254 shards, exit 0, 137,386 CPU-seconds. It ran on Kyles-Mac-Studio.local, Apple M4 Max, package at `e6110ff`, and is on branch `studio-wp21`, commit `71bf0e1`. The digest of this report's output file (SHA-256 `e68c44a3…793e`, a byte-identical copy computed on the Studio, job J4, commit `e090ee1`) **equals the replay's digest**: `overall_sha256 39f1396ee1988d38e94d4252e45170521259b8d9fc27dbb11ed241bb4e4723d7`, and the comparison printed `IDENTICAL`. Long Table checked that the two digest files on the branch are equal. This is a replay of the same producer, so it shows reproducibility, not independence. The audit's own replay (J3) is still running. WP20 chronology item 23.
