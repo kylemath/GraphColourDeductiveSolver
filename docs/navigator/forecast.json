@@ -1,23 +1,24 @@
 {
   "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-06T15:16:00-06:00",
-  "probability": 0.04,
+  "updated": "2026-10-06T15:20:00-06:00",
+  "probability": 0.035,
   "components": [
     {
       "label": "R* is true in the core class (some degree-5 vertex is pure-clean)",
       "p": 0.8
     },
     {
-      "label": "We prove it, by Route A or Route B, given it is true",
-      "p": 0.06
+      "label": "We prove it (Route A by hand, or the hybrid Route B': classical reductions as exclusions plus R* on the rest), given it is true",
+      "p": 0.045
     },
     {
-      "label": "The formal chain closes: core-class R* => 4CT compiled and audited (link D compiled 15:12, audit pending)",
-      "p": 0.9
+      "label": "The formal chain closes: four_color_of_core_Rstar compiled (exact hand form, 15:18), audit J10 pending",
+      "p": 0.95
     }
   ],
   "evidence_for": [
+    "four_color_of_core_Rstar compiles: core-class R* in its exact hand form implies every planar map is 4-colourable (audit pending).",
     "Link D compiles end to end: four_color_of_RStarSupport (core-class R* => every planar map 4-colourable), standard axioms, audit pending.",
     "The reduction R* => VH_C => VH-exists => 4CT is proved by hand and re-derived by the audit.",
     "Compiled and audited in Lean: Euler lemma (both forms), Theorem H, Theorem HP, and R* (global form) => 4CT.",
@@ -26,6 +27,7 @@
     "Route B (small computer-checked Kempe-reducible set) opened as a second path to R*."
   ],
   "evidence_against": [
+    "Route B as a pure vacancy set is dead: on the RSST configurations, vacancy-reducibility is weaker than classical D-reducibility (8 of the first 11 classically reducible configurations fail at every degree-5 vertex).",
     "Radius 5 confirmed in the core by the audit's replay (three distinct states); 13 more radius-5 graphs found; radius grows with order.",
     "Every local route so far has died: link classes, 2-balls, the 74-pattern automaton, Conjecture L, fixed radius bounds.",
     "The open case is where Kempe's 1879 argument failed; every known proof needs hundreds of reducible configurations.",
@@ -52,6 +54,11 @@
       "time": "2026-10-06T15:16:00-06:00",
       "p": 0.04,
       "note": "Link D compiled (formal factor up); Route B branch added; radius 5 confirmed and literature gives no support for R* (truth factor down). Net +1 point."
+    },
+    {
+      "time": "2026-10-06T15:20:00-06:00",
+      "p": 0.035,
+      "note": "Formal chain essentially closed (up); pure-vacancy Route B killed on RSST data (down); hybrid Route B' and the Birkhoff filters now being tested."
     }
   ]
 }
