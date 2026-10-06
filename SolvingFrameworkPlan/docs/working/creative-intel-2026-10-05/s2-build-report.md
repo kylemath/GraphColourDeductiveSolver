@@ -1,0 +1,78 @@
+# S2-Build report: implementation of the pre-registered search WP22 (S2, Kempe radii)
+
+Team S2-Build, Long Table, 6 October 2026. Exploratory build; **no declared search was run**. No file was edited, nothing was added or committed. New files only, in `backgroundMaterial/planemap-structural/longtable/`:
+`wp22_radius.py`, `wp22_search.py`, `wp22_census.py`, `wp22_s2c.py`, `wp22_runner.py`, `wp22_studio.sh`, `wp22_tests.py`. Standard library only (Python 3.9 tested). Existing project code is not imported; the prototypes and Math's files were read as models and data.
+
+## 1. Design
+
+- **wp22_radius.py.** `Hole(faces, v)`: rotation system from the oriented triangles, link in rotation order, indices of T-v. A state is `bytes` (colours of the vertices except v in increasing label order, renamed by first occurrence = the canonical form of WP22-interface.md). Doubly locked test and F are the definitions of the interface (repeat index j; m, a, b; locks; swap of the `{alpha, c}`-component of x_{j+2}). `neighbours` = every whole-component two-colour swap (6 colour pairs), canonicalised. `bfs` goes level by level and stops when a target state is GENERATED; result status is `found` (radius, ball = number of states at distance < r), `closed` (whole class enumerated, no target = r infinite), `depth` or `capped` (inconclusive). `class_radii` enumerates a class and computes the multi-source radius of every member. `check_cert` re-checks a certificate in the interface format (my own code; the independent verifier is a separate team's job). `all_states` enumerates all proper colourings of T-v up to renaming (DFS, colours introduced in order).
+  Caps: S2a depth 6 and 20,000 states (pre-registration); `DEEP_CAP` 100,000 (S2a follow-up of an unresolved evaluation, at most 5 per tag); `ENUM_CAP` 1,000,000 canonical states for KILL-2 confirmation, S2b, S2c (a class reaching it is `capped` = inconclusive; about 150 MB and 15 CPU-minutes at that size; my choice, not in the pre-registration).
+- **wp22_search.py (S2a).** One tag = one process; seed `random.Random("wp22|s2a|<tag>")`; tags t001..t040; 120 CPU-seconds by `time.process_time`; restart after 400 non-improving steps; objective (r, ball) maximised (ball = number of states at distance < r, all unfilled); start state doubly locked; every accepted state doubly locked. KILL-2 = a closed class with no filled state (from the 20,000-state search or from the follow-up enumeration): certificate in the interface format, tag stops. Unresolved evaluation (depth > 6 or cap): r is set to 7 meaning "at least 7", with at most 5 follow-up enumerations per tag giving the exact radius, a kill, or `capped`.
+- **wp22_census.py (S2b).** A_r built by my own code from a-structure.md §1 (labels v=0, ring (i,t)=1+5i+t, cap=5r+1; own orientation by traversal); checked: orders 17/22/27, degrees only 5 and 6, 3n-6 edges, Euler, 12 degree-5 vertices, and the labelled graph equals the A_3 of `lattack_witness.py`. Census of **every one of the 12 degree-5 holes of each of A_3, A_4, A_5, no symmetry used by default** (36 shards); all proper colourings of A_r - h with 4 colours on the link up to renaming; records for every doubly locked state in the interface format (`graph, v, faces_sha256, state` with entry v = -1, `doubly_locked, radius`) plus the extra fields `chain` (F-chain length, cap 40) and `status`. `--reduced` uses the 5-fold rotation (orbits {v}, {c}, ring 0, ring r-1) and is tested but not the default.
+- **wp22_s2c.py (S2c).** For every Math certificate file (`certs_len_ge6` 22 files, `lt_certs` 2 files; further directories can be named, e.g. the second search; a file with a non-null `certificate` member is accepted): states s_0 = colouring, s_{i+1} = F(s_i) while doubly locked, plus the first non-doubly-locked state (flagged), orbit cut at a repeated canonical state, F uses the certificate's own `link` order (as Math's checker). Radius of each with the same code. Labelled descriptive and post hoc.
+- **wp22_runner.py.** Modes `s2a` (one shard per tag), `s2b` (one shard per graph and hole), `s2c` (one shard per certificate file; the file SHA-256 is in the plan). Own subprocess and process group per shard, at most W alive, atomic shard files (temp, fsync, rename), ledger with SHA-256 per shard, retries (default 3), wall timeout, SIGTERM/SIGINT safe (kills workers, saves ledger, exit 128+signal), resume (a missing or hash-mismatching shard is recomputed; stale temp files removed), lock file, workers die with the scheduler. CPU cap enforced by the scheduler: it does not launch a shard whose per-shard budget would take the reserved total over the cap, and kills everything if the measured total exceeds it (exit 3, shards `capped`). `merge` refuses unless every shard is done and hash-verified, and refuses if any package file differs from the plan hashes. Shard files contain no timing or host data (timing is in the ledger). `record` writes RECORD.txt.
+- **wp22_studio.sh.** Verifies `wp22/PACKAGE-SHA256SUMS` (`shasum -a 256 -c`), runs s2c, then s2b, then s2a (plan, run, status --verify, merge each), `set -e` so it stops at the first failure, idempotent (plan identical = no-op, run resumes), writes `wp22/RECORD.txt` on exit (machine, CPU brand, cores, memory, python, git head, git status of package files, workers, start and end with exit status, package hashes, per-shard hashes, output hashes). `make-sums` writes the sums list.
+
+## 2. How the minimum-degree ambiguity was resolved
+
+S2a says "minimum degree at least 4" but also "moves as in the prototype: Kempe swap, edge flip, stack, delete a degree-3 vertex", and stack and delete create degree-3 vertices (the prototype's flip also lets a degree-4 endpoint drop to 3). Resolution: **every visited triangulation has minimum degree >= 4**. Moves are Kempe swap (0.6) and edge flip (0.4); a flip is legal only if both endpoints of the flipped edge had degree >= 5, the new diagonal is not an edge and joins differently coloured vertices, and v and its star are untouched; stack and delete are not used, so the order is fixed per restart, uniform in 12..30. Start graphs: random stacking from K4, then random flips (with a descent on the number of degree < 4 vertices, because plain stacked-and-flipped graphs have min degree >= 4 in about 0 of 40 samples at order 16 and above, tested), then rejection of any with a vertex of degree < 4. This is a reading, not the only one; it is stated here and in the module docstring. Two other small deviations from the prototype: a step is any attempted move (illegal moves count toward the 400), and states that are not doubly locked are rejected (r is defined only for them).
+
+## 3. Exact commands (16-core Mac Studio, from `backgroundMaterial/planemap-structural/longtable/`)
+
+One-time, by the lead: `./wp22_studio.sh make-sums` (writes `wp22/PACKAGE-SHA256SUMS` over the 9 package files: the 7 wp22 files and the two WP22 documents) and announce the hash of that file; then everything:
+
+```
+WORKERS=14 ./wp22_studio.sh            # verify, s2c, s2b, s2a, merge, RECORD.txt; re-run the same line to resume
+```
+By part (what the script runs; the run directory is `wp22/run-<part>`):
+```
+python3 wp22_runner.py plan  wp22/run-s2c --mode s2c [--cert-dir DIR ...]    # default: Math's certs_len_ge6 and lt_certs
+python3 wp22_runner.py run   wp22/run-s2c --workers 14
+python3 wp22_runner.py status wp22/run-s2c --verify
+python3 wp22_runner.py merge wp22/run-s2c wp22/out/s2c        # writes s2c.jsonl, s2c-summary.json
+
+python3 wp22_runner.py plan  wp22/run-s2b --mode s2b [--orders 3,4,5] [--reduced]
+python3 wp22_runner.py run   wp22/run-s2b --workers 14 ; ... merge wp22/run-s2b wp22/out/s2b
+
+python3 wp22_runner.py plan  wp22/run-s2a --mode s2a --tags 40 --tag-cpu 120 --cpu-cap 6000
+python3 wp22_runner.py run   wp22/run-s2a --workers 14 ; ... merge wp22/run-s2a wp22/out/s2a   # s2a-summary.json
+```
+Environment of the script: `WORKERS`, `WP22_DIR`, `SUMS`, `S2A_TAGS`, `S2A_TAG_CPU`, `S2A_CPU_CAP`, `S2C_EXTRA_DIRS` (e.g. Math's second search directory). On the first Mac use `WORKERS=2`.
+
+## 4. Expected size
+
+- S2a: 40 shards, 40 x 120 = **4,800 CPU-seconds (80 CPU-minutes)**, cap 6,000; with 14 workers about 6 to 8 minutes wall on an unloaded machine (retries and overshoot not included). Measured rate on this loaded machine: about 1,300 evaluations per CPU-second (t001, 20 CPU-s smoke run: 26,992 evaluations, 88 restarts, all with r = 2).
+- S2b: 36 shards, **3.2 CPU-seconds in total** (3,720 doubly locked states).
+- S2c: 24 shards, **1.3 CPU-seconds in total** (165 doubly locked states).
+- Memory: tens of MB for the declared parts; only a class enumeration up to `ENUM_CAP` (1,000,000 states) would need about 150 MB.
+
+## 5. Test results (`python3 wp22_tests.py`: 18 tests, all pass, 20 s; at most 2 workers)
+
+Run on this machine (Python 3.9.6) with the final files.
+- **T4** (faces from MathConjectureR.md, hole 4): 17 vertices, 12 of degree 5 and 5 of degree 6; 68 canonical states, all in one Kempe class; 22 filled; radius histogram over all states {0:22, 1:25, 2:15, 3:4, 4:2}; over its 21 doubly locked states {2:15, 3:4, 4:2}; nothing unreached; the early-exit BFS equals the multi-source radius on all 68 states.
+- **W6** (faces and colours parsed from l-attack.md): start state doubly locked, chain length 6, radius 2.
+- **A_3 centre**: the witness colouring has an infinite chain and radius 2 or 3; over the census of A_3 at v, all 20 infinite-chain classes have radius in {2,3} and both occur.
+- **Planted targetless**: target "link uses at most 1 colour" on T4: status closed, class size 68, r infinite; the S2a kill logic on the same planted target (order 12) stops with `kill` and a certificate; the certificate checker rejects that certificate under the real definition (planted fault); a correct radius claim is accepted. `cap` and `max_depth` give `capped` and `depth` (inconclusive, no radius).
+- **A_r**: orders 17, 22, 27, degrees {5,6}, 12 degree-5 vertices each; labelled A_3 equals the witness file's graph.
+- **Census vs audit**: infinite-chain classes 20, 20, 60 at v for A_3, A_4, A_5 (x 6 = 120, 120, 360 raw with x0 fixed; the audit's counts) with states (four-colour link) 60, 320, 1680 and doubly locked 30, 80, 530; zero capped, zero kill candidates; A_3 at v radius histogram {2:20, 3:10}.
+- **Symmetry**: on A_3 and A_4 the 5 holes of ring 0 give identical results (doubly locked count, radius and chain histograms), likewise the 5 of ring r-1 (so `--reduced` is justified on these; not used by default).
+- **S2a**: 12 start states and 3,000 moves each checked: valid triangulation, min degree >= 4 at EVERY visited state, deg v = 5, proper, doubly locked; a tag rerun gives byte-identical output; a different tag differs; a run stopped by the CPU cap (1.5 s) is reproduced byte for byte by a replay with its recorded step count; the best certificate is accepted by `check_cert`.
+- **S2c**: 24 certificates found; for the 22 with a claimed length the number of doubly locked states equals the claim (Math's checker agrees); no capped state, no kill candidate; radii only in 2..6.
+- **Runner**: merged S2a output identical for 1 and 2 workers, shard files byte-identical; SIGTERM to the scheduler mid-run leaves a partial ledger (merge refuses) and a resume gives output identical to the reference; a SIGKILLed worker is retried (history `killed by signal 9`, attempts 2, shard done); a deleted shard and a one-byte-corrupted shard are reported damaged, merge refuses, `run` recomputes both and the merge equals the reference; an edited ledger hash is not trusted; tiny CPU cap (cap 3 s, 4 tags of 2 s) exits 3 with shards `capped` and merge refuses (no output file); a wrong package hash in the plan makes `run` and `merge` refuse; s2b and s2c modes run end to end through the runner (A_3: 12 holes, histogram {2:180, 3:20}; 24 certificates).
+- **Script**: `wp22_studio.sh` end to end in a scratch directory with 2 workers, 2 tags of 3 CPU-s: refuses without a sums file, runs all three phases, writes RECORD.txt, a second run is a no-op resume.
+
+Results seen (not declared runs, small, labelled as such): S2b census over all 12 holes of A_3, A_4, A_5: 3,720 doubly locked states, radii {2: 3,700, 3: 20}; the 20 radius-3 states are at the two poles of A_3 (as Math reported). S2c over the 24 certificates: 165 doubly locked states, radii {2: 154, 3: 11}, no capped state, no kill. S2a short smoke runs only (t001 for 20 CPU-s, t001/t002 for 3 CPU-s in the script test): r = 2 on every evaluation. I did not tune anything against these.
+
+## 6. What is NOT tested
+
+- No S2a at the declared scale (120 CPU-s, 40 tags) and no run on the Studio or with 14 workers; behaviour with `WORKERS=14` is untested. The unresolved/deep-follow-up path of S2a (depth > 6 or > 20,000 states) was not exercised by any natural evaluation (none occurred); it is covered only through the planted-target kill path, not the `depth`/`capped` objective branch inside the search.
+- A real KILL-2 certificate has never existed; `check_cert` is my own checker, not the independent verifier (the two planted faults of gate 2, a corrupted class and a corrupted witness, belong to that verifier's tests, not to this build; only a false "no filled state" claim is tested here).
+- A class enumeration up to `ENUM_CAP` (1,000,000) was never run (no class that large was met; the cap path is tested with caps 10 and depth 1 only).
+- Wall timeout (`--timeout`) and the live CPU-kill path (measured total over the cap) were not exercised; only the launch-reservation path of the cap was.
+- Interrupt-resume was tested with SIGTERM, not with SIGKILL of the scheduler (a stale `running` entry and orphan temp files are handled in the code but not tested).
+- RECORD.txt on a failing run, and `S2C_EXTRA_DIRS` (second-search directory), were not tested; the second search's certificates do not exist yet in the loader's expected form (a non-null `certificate` member), and the loader's reading of Math's `runs_md5/*.json` records is a guess from the one file inspected (`certificate: null`).
+- Python 3.9 only; other versions untested. Orientation: A_r is built with my own orientation; chain lengths agree with the audit's counts, which supports, but does not prove, that the mirror choice is immaterial for other graphs.
+
+## 7. Points the pre-registration leaves ambiguous
+
+1. Minimum degree vs the moves stack/delete (resolved above). 2. "Number of unfilled states in the ball" (resolved as the number of states at distance < r; the prototype-like ball of radius r would need a full level r and depends on r's own level). 3. What S2a does with an unresolved evaluation (depth > 6 or cap) is unspecified (resolved: r = 7 "at least 7" plus at most 5 follow-ups). 4. "Capped" for a tag that simply reaches 120 CPU-s: every declared tag does, so every tag will be `capped: true` by the pre-registration's wording; the merged summary also counts them (`tags_capped_at_cpu`). A CPU-time stop makes the output depend on machine speed; reproducibility holds for the recorded step count (replay). 5. The state cap for class enumeration (KILL-2, S2b, S2c) is not fixed (chosen 1,000,000). 6. S2c "states in the certificate": taken as the F-chain from the certificate colouring plus the first non-doubly-locked state. 7. S2b holes: all 12 degree-5 holes, no symmetry (the interface allows symmetry only if the verifier uses it identically). 8. The pre-registration says the independent verifier's gate includes "the search reproduces r = 2 on W6": done here for the radius code, not for S2a (the search is not designed to reproduce W6).
