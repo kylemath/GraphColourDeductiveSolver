@@ -28,3 +28,11 @@ appears in one of the two). Distributions of states, filled states, classes and 
 below are reported for both orientations (`p` = plantri orientation, `pm` = mirror).
 
 ## Results: see `agg-24-26.txt` and `patterns-by-run.txt`; positive holes with full records in `positive-*.jsonl`.
+
+## IPR fullerene duals 32-52 (plantri/.pc orientation; mirror pending): CONFIGURATION-FREE POSITIVE CYCLES EXIST
+- 1,267 graphs, 15,204 holes: 32 holes in 28 graphs have a positive pi-cycle (35 cycles, w = +1 or +2; L 14-17). Orders 45-52; all links (6,6,6,6,6).
+- All 28 graphs: 0 diamonds, 0 2.122 (authoritative studiointel count_occ), 0 adjacent degree-5 pairs. Conjecture P is FALSE.
+- Smallest: ipr#265 (n = 45), hole 43: T - v is ONE Kempe class of 277,960 states (F 175,625), 2,132 pi-cycles, sum w = -84,908 = (U-3F)/5;
+  one positive cycle w = +2, L = 14, 11 DL states. Reproduced by the MacBook's Python engine (escape.py + kempe_py.py) exactly. Witness: witness-ipr265-h43.json.
+- Full-mode rerun of all 32 holes (positive-ipr-full.jsonl): per-class Theorem W 0 failures, no pi-cycle crosses classes, transport holds in all five
+  variants, every positive cycle has a lock-breaking exit to a negative cycle; min Hall ratio (d) 35,701.

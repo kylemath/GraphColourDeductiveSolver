@@ -1,0 +1,62 @@
+=== inputs
+  ipr graphs 1267 holes 15204 inconclusive 0
+
+=== Job A: positive pi-cycles versus configurations (per hole; "positive" = the hole has a class with a positive cycle)
+run        holes     pos   rate% | config-free GRAPH holes: pos/holes | v in NO configuration: pos/holes   | dist_config>=2: pos/holes     
+ipr        15204      32   0.210 |    32 / 15204   (cfree+adj55 graphs:   0/0    ) |    32 / 15204   (0.210%)       |    32 / 15204  
+ALL        15204      32   0.210 |    32 / 15204   (cfree+adj55 graphs:   0/0    ) |    32 / 15204   (0.210%)       |    32 / 15204  
+expected positives among config-free-graph holes at the overall rate: 32.00 ; among v-in-no-configuration holes: 32.00
+by dist_config (-1 = none in graph): -1: 32/15204
+by vrole bits (1 diamond centre, 2 diamond tip, 4 2.122 deg-5 centre, 16 2.122 tip): 0: 32/15204
+graphs (per run, summed): {('cfree', 'nopos'): 1239, ('cfree', 'pos'): 28}
+positive holes in configuration-free graphs:
+   ipr ipr#24 hole 24 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 2511893
+   ipr ipr#24 hole 30 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 2511893
+   ipr ipr#51 hole 31 n 49 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [21] states 811055
+   ipr ipr#186 hole 22 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1342911
+   ipr ipr#187 hole 19 n 48 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 857007
+   ipr ipr#187 hole 40 n 48 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 857007
+   ipr ipr#189 hole 41 n 48 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 896701
+   ipr ipr#240 hole 1 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1298482
+   ipr ipr#257 hole 49 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1905619
+   ipr ipr#265 hole 43 n 45 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [2] L [14] states 277960
+   ipr ipr#284 hole 45 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [33] states 2010680
+   ipr ipr#310 hole 16 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1968499
+   ipr ipr#318 hole 49 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1848134
+   ipr ipr#379 hole 17 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1817844
+   ipr ipr#379 hole 27 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1817844
+   ipr ipr#394 hole 5 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1891843
+   ipr ipr#400 hole 43 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 2455274
+   ipr ipr#545 hole 13 n 47 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 528520
+   ipr ipr#555 hole 29 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 2263642
+   ipr ipr#612 hole 11 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1537939
+   ipr ipr#724 hole 16 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1, 1] L [29, 17] states 2500038
+   ipr ipr#738 hole 30 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1, 1] L [17, 17] states 2930911
+   ipr ipr#738 hole 35 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1, 1] L [17, 17] states 2930911
+   ipr ipr#743 hole 43 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1422804
+   ipr ipr#785 hole 8 n 49 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1058585
+   ipr ipr#806 hole 21 n 49 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [25] states 816479
+   ipr ipr#886 hole 9 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 2358541
+   ipr ipr#890 hole 45 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [33] states 2500781
+   ipr ipr#892 hole 30 n 52 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 2464950
+   ipr ipr#944 hole 12 n 50 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1161860
+   ipr ipr#1128 hole 12 n 48 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 624036
+   ipr ipr#1135 hole 0 n 51 linkdeg [6, 6, 6, 6, 6] adj55 0 posW [1] L [17] states 1804281
+
+=== Job A2: link-degree patterns (cyclic, up to reflection, degrees >= 8 capped), positives / holes, all runs summed
+pattern           holes   pos    rate%  expected
+6,6,6,6,6         15204    32    0.210     32.00 
+target pattern 5,5,5,5,6: 0 positives in 0 holes (expected 0.0)
+target pattern 5,5,5,6,6: 0 positives in 0 holes (expected 0.0)
+target pattern 5,6,6,6,6: 0 positives in 0 holes (expected 0.0)
+
+=== Job B: transport on every positive hole (sharp form d = lock-breaking exits from DL states only)
+-- ipr: positive holes 32, positive cycles 35, transport components 32, Theorem W failures 0, max w 2, max L 33, windings [(1, 34), (2, 1)]
+   positive cycles with NO lock-breaking exit to a negative cycle: 0 []
+   a_DL_allpairs                fails   0; min Hall ratio 35701.000; tightest: [(35701.0, 'ipr#265', 43, [2]), (145784.0, 'ipr#545', 13, [1]), (150249.0, 'ipr#1128', 12, [1])]
+   b_DL_otherpair               fails   0; min Hall ratio 35701.000; tightest: [(35701.0, 'ipr#265', 43, [2]), (145784.0, 'ipr#545', 13, [1]), (146945.0, 'ipr#1128', 12, [1])]
+   c_anystate                   fails   0; min Hall ratio 35701.000; tightest: [(35701.0, 'ipr#265', 43, [2]), (145784.0, 'ipr#545', 13, [1]), (150253.0, 'ipr#1128', 12, [1])]
+   d_DL_lockbreaking            fails   0; min Hall ratio 35701.000; tightest: [(35701.0, 'ipr#265', 43, [2]), (145784.0, 'ipr#545', 13, [1]), (150249.0, 'ipr#1128', 12, [1])]
+   e_DL_otherpair_lockbreaking  fails   0; min Hall ratio 35701.000; tightest: [(35701.0, 'ipr#265', 43, [2]), (145784.0, 'ipr#545', 13, [1]), (146945.0, 'ipr#1128', 12, [1])]
+
+=== chirality: positive holes under the two orientations of the same graph list

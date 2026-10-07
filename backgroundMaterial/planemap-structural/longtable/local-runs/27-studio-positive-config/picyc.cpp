@@ -34,6 +34,7 @@
 #include <string>
 #include <algorithm>
 #include <functional>
+#include <array>
 typedef uint64_t u64;
 struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi || (hi == o.hi && lo < o.lo); }
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
@@ -175,6 +176,16 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 while (M) { u64 K = flood(M & -M, cm[p] | cm[q]); M &= ~K; long long j = swap_index(c, K, p, q, nc); int a = find(i), b = find(j); if (a != b) par[a] = b; } } }
         std::set<int> roots; for (long long i = 0; i < S; i++) roots.insert(find(i)); nclasses = roots.size();
     }
+    std::string clsig; long long cls_bad = 0, cyc_split = 0;
+    if (FULL) {   // per-class check: every pi-cycle inside one class; 3F - U = -5 * (sum of windings of the class's cycles)
+        std::map<int, std::array<long long, 3>> cs;   // root -> size, F, sum lambda
+        for (long long k = 0; k < S; k++) { auto &e = cs[find(k)]; e[0]++; if (kind[k] == 0) e[1]++; e[2] += lam[k]; }
+        for (auto &z : cycles) { int r = find(z[0]); for (int32_t x : z) if (find(x) != r) { cyc_split++; break; } }
+        std::vector<std::array<long long, 3>> sig;
+        for (auto &kv : cs) { long long sz = kv.second[0], f = kv.second[1], sl = kv.second[2]; if (sl % 5 != 0 || 3 * f - (sz - f) != -sl) cls_bad++; sig.push_back({sz, f, sl / 5}); }
+        std::sort(sig.begin(), sig.end()); char b3[96];
+        for (auto &t : sig) { snprintf(b3, sizeof b3, "%s[%lld, %lld, %lld]", clsig.empty() ? "" : ", ", t[0], t[1], t[2]); clsig += b3; }
+    }
     // exits from positive cycles
     std::map<int, std::map<int, Exit>> exits;   // pos cycle -> target cycle -> counters
     struct LB { long long exits_DL = 0, exits_lb = 0, to_neg = 0, to_neg_lb = 0, nDL = 0, exits_any = 0, to_neg_any = 0; }; std::map<int, LB> lbs;
@@ -203,7 +214,7 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
     snprintf(buf, sizeof buf, ", \"n\": %d, \"hole\": %d, \"linkdeg\": [%zu, %zu, %zu, %zu, %zu], \"vrole\": %d, \"dist_config\": %d, \"states\": %lld, \"F\": %lld, \"U\": %lld, \"nDL\": %lld, \"ncyc\": %zu, \"npos\": %zu, \"sumw\": %lld, \"minw\": %lld, \"maxw\": %lld",
              n, hole, rot[L[0]].size(), rot[L[1]].size(), rot[L[2]].size(), rot[L[3]].size(), rot[L[4]].size(), VROLE[hole], dist_config(n, rot, hole), S, F, S - F, nDL, cycles.size(), pos.size(), [&]{ long long t = 0; for (long long w : wind) t += w; return t; }(), *std::min_element(wind.begin(), wind.end()), *std::max_element(wind.begin(), wind.end()));
     out += buf;
-    if (FULL) { snprintf(buf, sizeof buf, ", \"nclasses\": %lld", nclasses); out += buf; }
+    if (FULL) { snprintf(buf, sizeof buf, ", \"nclasses\": %lld, \"cls_bad\": %lld, \"cyc_split\": %lld, \"clsig\": [", nclasses, cls_bad, cyc_split); out += buf; out += clsig + "]"; }
     out += ", \"hist\": ["; bool first = true; for (auto &kv : hist) { snprintf(buf, sizeof buf, "%s[%lld, %lld, %lld]", first ? "" : ", ", kv.first.first, kv.first.second, kv.second); out += buf; first = false; } out += "]";
     if (!pos.empty()) {
         out += ", \"pos\": [";
