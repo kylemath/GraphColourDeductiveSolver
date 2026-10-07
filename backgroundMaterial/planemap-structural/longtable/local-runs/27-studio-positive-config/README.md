@@ -206,5 +206,5 @@ W4 = k4' fails => k3 lockless with f = 3.
 
 ## Charge-back P1 (coordinator refinement; `picyc.w --jobs` with per-exit records, `jobcb.py` -> jobcb-summary.txt), orders 25-27, both orientations
 rem(T) > 0 is charged back to the positive sources that hit T (in proportion to credit; exact fractions), def'(Z) = def(Z) + charge; P1 on def' with targets rem < 0.
-- **Holds at every hole** (single-target assignment exists; 101 + 74 def' > 0 records at order 27 per orientation pair). The 12 rem > 0 targets (all order 27) each have ONE source:
+- **Holds at every hole** (single-target assignment exists; def' > 0 records: 1 + 2, 11 + 13, 25 + 49 at orders 25, 26, 27 per orientation). The 12 rem > 0 targets (all order 27) each have ONE source:
   p27 #68456 h19 (both orientations; source = the Gamma-cycle, credits 16, charge 6) and the 10 Lambda = 0 targets hit once by f = 1 (charge 2 to the single source).
