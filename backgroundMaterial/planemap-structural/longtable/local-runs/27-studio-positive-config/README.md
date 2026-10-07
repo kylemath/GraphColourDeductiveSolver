@@ -516,3 +516,23 @@ This covers all 256 L = 20 degree-6 census cycles, using the Job BD conventions.
 - **(i) At the 19 breaks.** In the non-breaking colouring, every far neighbour of m has a non-pair colour (so P = {m}) in 15/19. All 15 have deg(m) = 5. The 4 overlap cases are p27#186395 h22, where deg(m) = 6 and 2 of the 3 far neighbours carry pair colours. In the breaking colouring, 1 far neighbour of m carries a pair colour in 17/19 cases and 2 in the other 2.
 - **(ii) All cycles.** "Both colourings have a far pair-coloured neighbour of m" occurs in 4/19 breaking cycles (the overlap cases) and in 90/237 non-breaking cycles, so it does not mark breaks. With no break, the commonest count is 0 in both colourings (132), then 1 in both (86).
 - **(iii) Steps 9–18.** These are the swaps that recolour far neighbours of m; the full pattern table is in jobbe-summary.txt. **Step 13 never recolours a far neighbour of m on a breaking cycle (0/19), against 86/237 non-breaking cycles.** Breaking cycles use 14, 15, 16 (6), 16, 17 (2) or start 9, 12 (11).
+
+## Job AW [exploratory]: adversarial flip search. **Degree-6 counterexamples to A₃₄′, W2, W2* and Lemma S** (jobaw/: jobaw.py, verify_hits.py, jobaw-walks.jsonl, jobaw-summary.txt, jobaw-verified.json, jobaw-verify.txt, hits/, counterexamples.txt, jobaw-chain-on-counterexamples.txt)
+**Search.** Moves are edge flips that keep the core class (simple, min degree 5, max degree 8, no separating triangle), each followed by up to 3 repair flips for degree-4 vertices. Flips never touch the hole's star. The search keeps link pattern (5,5,5,5,6) at the hole and a Γ-cycle there. The evaluator is picyc.n --jobm --jobn on both orientations. Seeds: the 8 breaking census graphs of Job AV and the 6 Job AS constructions. There are three objectives: A34 (consecutive k = 4 failures), W2s (k = 2 and k = 0 fixed in one period) and W3 (k = 2, 1, 0 all fixed). Budget: 6 walks × 1,000 steps per seed and objective, 252 walks, 438,871 evaluations.
+
+**Census seeds never moved.** No walk from a census seed improved its primary score; the order 25–27 seeds are too rigid. Every hit comes from the 37-vertex AS constructions.
+
+**Independent verification.** Each of the 61 distinct hit graphs was rechecked. The graph checks are: Euler F = 2n − 4, every edge in two oppositely oriented faces, and core_ok. The cycle checks use the Python uv_lib.Hole full state space and the Job AY absolute replay. All 61 are valid triangulations in the core class.
+- **A₃₄′ is false at degree 6:** 11 graphs from 3 families, A7f2 (walk 5), A7f4 (walk 3) and walk-best-A7f1-3 (walk 4). Each has an L = 20, w = 4 (5,5,5,5,6) Γ-cycle with **both k = 4 visits failing**, in one orientation. That is the mirror orientation in the Hole convention and "plantri" in the Job AQ convention. Representatives: hits/A7f2-A34-w5-it918.json, hits/A7f4-A34-w3-it967.json and hits/walk-best-A7f1-3-A34-w4-it575.json, all with hole 22. counterexamples.txt holds their rotation systems.
+- **W2 and W2* are false at degree 6:** 45 graphs have a Γ-cycle period with positions 4, 6, 8 all σ-fixed, and 55 have positions 4 and 8 fixed. Many are L = 20 cycles with the AY pattern 21XXX (k = 4, 3 failing; k = 2, 1, 0 fixed).
+
+**The rest of the F6 chain on the three representatives** (Job AQ battery, all states; C++ Job S):
+
+| graph | class states / F | Σw | Job S: Λ / Cr_N / deficit | AQ C_neg ≥ D = 20? |
+|---|---|---|---|---|
+| A7f2-it918 | 17,512 / 8,048 | −2,936 | 20 / 16 / **4** (both orientations, both cycles) | 21, holds |
+| A7f4-it967 | 18,592 / 8,078 | −2,744 | 20 / 32 / −12 and 20 / 26 / −6 | 26, 32, holds |
+| walk-best-A7f1-3-it575 | 23,306 / 10,774 | −3,958 | 20 / 10 / **10** and 20 / 16 / **4** | 27; **15, fails** |
+
+- **Lemma S fails** in the Job S form (R3 lockless DD-endpoint exits) on A7f2 and walk-best-A7f1-3. In the Job AQ form (σ-exits from all DD endpoints) it fails on walk-best-A7f1-3 in the orientation where W2/W2* fail.
+- **What still holds:** the quarter floor (class Σw < 0, F ≥ states/4), σC, σ′C (H1) and charge-back P₁, on all three.
