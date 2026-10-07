@@ -1,0 +1,16 @@
+records (cycles): 202  periods: 412
+(k2, k1, k0) label patterns per period (L lockless, X fixed point, S single-lock):
+    296 L L L
+    24 X X L
+    24 L X X
+    17 X L L
+    17 L L X
+    12 L X L
+    8 S S L
+    8 L S S
+    3 S L L
+    3 L L S
+both fixed points in one period: {('k2', 'k1'): 24, ('k1', 'k0'): 24}  (k2,k0) pair count = 0
+periods with no lockless k<=2 exit (W2 failures): 0 []
+patterns of periods containing a single-lock k<=2 exit: {('S', 'S', 'L'): 16, ('L', 'S', 'S'): 16, ('S', 'L', 'L'): 3, ('L', 'L', 'S'): 3}
+(k0 of period, k2 of next period) label pairs: {('L', 'L'): 320, ('L', 'S'): 9, ('L', 'X'): 31, ('X', 'X'): 10, ('S', 'L'): 9, ('S', 'S'): 2, ('X', 'L'): 31}

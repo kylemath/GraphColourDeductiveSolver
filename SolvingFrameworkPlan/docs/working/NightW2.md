@@ -1,0 +1,207 @@
+# Night: W2 — some k ≤ 2 exit is lockless in every period at (5,5,5,5,6)
+
+Night worker, 7 October 2026 (written 03:34 MDT). **Exploratory. Hand bookkeeping plus single-core reads of Studio files (Jobs M, Q, AG). Unreviewed.** MacBook on AC (pmset: AC power, 100%).
+
+Builds on `NightF012.md` (Lemma Fix, roles at k ≤ 2, Lemma W = W1 + W2 + W4), `QuarterGammaPeriod.lean` (`pair_own`, `gseq`), `QuarterSigmaFix.lean` (`lemmaFix`, `low_path_k*`), `QuarterRotation.lean` (`rot3`: π at a DL state swaps the {α,A}-component of x_{j+2}). k = 3, 4 (W1/A₃₄′) are out of scope here.
+
+Labels: [proved] by hand; [data] read by the scripts in §6; [conjecture]; [killed].
+
+## Verdict
+
+1. **[proved] Absolute bookkeeping of positions 4 → 8 (§1).** With p, m, y, z fixed by the hole and colours named at R3k2 as p = 1, m = 2, y = 3, z = 4, the four π-steps 4, 5, 6, 7 are Kempe swaps of pairs {1,3}, {1,2}, {1,4}, {1,3}, and the three fixed-point questions are:
+   - F₄ (R3k2): the {3,4}-graph of T − v is acyclic ⇔ the {1,2}-graph is connected;
+   - F₆ (R3k1): the {2,4}-graph is acyclic ⇔ the {1,3}-graph is connected;
+   - F₈ (R3k0): the {2,3}-graph is acyclic ⇔ the {1,4}-graph is connected.
+2. **[proved] No local forcing.** At each of the three states the {A,B}-graph induced on the 11-vertex 2-ball (link, ring, m) is exactly the 6-vertex path P of `low_path_k*`, a tree. So the ring can never supply the cycle; every cycle that prevents a fixed point is global. This matches Studio Job AG (1,656/1,656 states ring- and 2-ball-acyclic). The coordinator's "A/B cycle through the ring" route is dead at degree 6.
+3. **[data, new, sharp] W2 is a two-state statement: W2\*.** R3k2 and R3k0 of the same period **never both fail** (fixed point or single-lock). 0 of 140 periods (orders 25–26), 0 of 412 (order 27). All failure pairs are (k2,k1) or (k1,k0). In Job AG's cycle ranks: rank(k2) + rank(k0) ≥ 1 in all 552 periods, with equality in 66.
+   - W2\* ⇒ W2 (fixed-point part and single-lock part together).
+   - W2\* is specific to the 4-step gap inside the period. Across the period boundary (R3k0 then the next R3k2, 6 steps), both are fixed in 10 of 412 order-27 pairs (both rank 0 in 10 of 552 in Job AG).
+   - W2\* is specific to degree 6. At (5,5,5,5,7), Job AF34 has periods with k2, k1, k0 all fixed.
+4. **[proved] Lock chains live in the other states' forest pairs (§2).** The pair whose acyclicity is F₄ ({3,4}) carries Lock1 at R3k1 and Lock2 at R3k0. Likewise {2,4} (F₆) carries Lock2@R3k2 and Lock1@R3k0, and {2,3} (F₈) carries Lock1@R3k2 and Lock2@R3k1. So under DL each forest pair contains, at the other two states, long two-coloured link-to-link chains. This is the natural input for a proof. I do **not** have the contradiction.
+5. **[data] Task (3), single-lock exits.** They do coincide with a failure at another k ≤ 2:
+   - orders 25–26: (S,X,L) ×1 and (L,X,S) ×1;
+   - order 27: (S,S,L) ×8 and (L,S,S) ×8.
+
+   But never with failures at both other k, and never at k2 and k0 together (W2\*). "All three k ≤ 2 exits fail" is observed 0 times (0/140, 0/412).
+6. **[data, Job AH] The mechanism of W2\* is a create–kill–recreate pattern of {2,3}-cycles (§7).** Assume F₄. Then:
+   - the (p,y)-swap K₄ always creates a {2,3}-cycle (60/60), i.e. R1k4 is never a fixed point after a fixed R3k2;
+   - the (m,y)-swap K₅ kills every such cycle in 48/60 cases;
+   - the (p,z)-swap K₇ then **always** recreates one (48/48).
+
+   K₆ cannot touch the {2,3}-graph. Under time reversal the same holds for F₈ and the {3,4}-graph. So the sharp target is:
+
+   **W2\*\* (two one-step statements).**
+   - (a) F₄ ⇒ a {2,3}-cycle exists after K₄.
+   - (b) F₄ and the {2,3}-graph is acyclic after K₅ ⇒ K₇ creates a {2,3}-cycle.
+
+   Together (a) and (b) give W2\*, using that K₆ preserves {2,3}.
+7. **W4: not attempted** (time). The data status is unchanged from NightF012 (0 failures in 19 cases).
+
+**Status:**
+- W2 is reduced to W2\*, which concerns two states four Kempe steps apart, with exact colour bookkeeping.
+- W2\* is reduced to the two one-step statements of W2\*\* (0 exceptions, 60 + 48 cases).
+- Not proved.
+
+## 1. Bookkeeping [proved]
+
+Take q = 2 (p = x₂), so y = w₁, z = w₂. Ring edges are w_t w_{t+1}, except that y – m – z replaces w₁w₂. The spokes are x_t w_t and x_{t+1} w_t.
+
+The colourings at the R3 states follow from `R3At` with `j = q − k`. At R3k2 (j = 0), let α = 1, μ = 2, A = 3, B = 4. Each step is π = R₊₃, which swaps the {α,A}-component of x_{j+2}. The component contents are from Job O / `pair_own`.
+
+| pos | state | j | link x₀..x₄ | ring w₀..w₄ | m | (p, m, y, z) | step: pair, component ∋ |
+|---|---|---|---|---|---|---|---|
+| 4 | R3k2 | 0 | 1 2 1 3 4 | 4 3 4 2 3 | 2 | 1 2 3 4 | K₄: {1,3} of x₂ = p; ∋ p, y, x₃ |
+| 5 | R1k4 | 3 | 1 2 3 1 4 | — | 2 | 3 2 1 4 | K₅: {1,2} of x₀; ∋ x₀, x₁, m, y |
+| 6 | R3k1 | 1 | 2 1 3 1 4 | 4 2 4 2 3 | 1 | 3 1 2 4 | K₆: {1,4} of x₃; ∋ x₃, x₄, m, z |
+| 7 | R1k3 | 4 | 2 1 3 4 1 | — | 4 | 3 4 2 1 | K₇: {1,3} of x₁; ∋ x₁, x₂ = p, z |
+| 8 | R3k0 | 2 | 2 3 1 4 1 | 4 2 3 2 3 | 4 | 1 4 2 3 | — |
+
+(The R1 ring columns are omitted; only the R3 rings are needed.) Each row was checked against `R3At` and `pair_own`, and it reproduces NightF012 §1.4.
+
+**Fixed-point questions.** At R3@k ≤ 2 the {α,μ} link vertices are x_j, x_{j+1}, x_{j+2}, which form a contiguous arc. So Lemma Fix plus duality gives "fixed ⇔ {A,B} acyclic ⇔ {α,μ} connected". This yields F₄, F₆ and F₈ as in Verdict 1.
+
+**Which steps change which pair-graph.** A {a,b}-swap preserves the {a,b}-graph and the complementary graph, and changes the other four.
+
+| pair (and complement) | K₄ {1,3} | K₅ {1,2} | K₆ {1,4} | K₇ {1,3} |
+|---|---|---|---|---|
+| {3,4} / {1,2} (F₄) | changes | — | changes | changes |
+| {2,4} / {1,3} (F₆) | — | changes | changes | — |
+| {2,3} / {1,4} (F₈) | changes | changes | — | changes |
+
+So:
+- the {2,3}-graph at R3k0 is the {2,3}-graph at R3k2, rewritten on K₄, K₅ and K₇;
+- the {3,4}-graph at R3k0 is the {3,4}-graph at R3k2, rewritten on K₄, K₆ and K₇.
+
+p's colour goes 1 → 3 (K₄) → 3 → 3 → 1 (K₇): p is swapped out and back by the two {1,3}-steps.
+
+The full colour change of the 2-ball from R3k2 to R3k0 is:
+
+| vertex | x₀ | x₁ | x₂ = p | x₃ | x₄ | w₀ | w₁ = y | w₂ = z | w₃ | w₄ | m |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| change | 1→2 | 2→3 | 1 | 3→4 | 4→1 | 4 | 3→2 | 4→3 | 2 | 3 | 2→4 |
+
+**Local graphs [proved].** Listing the 2-ball edges with both ends in {A,B} gives:
+- pos 4, {3,4}: x₃x₄, x₃w₂, x₄w₄, w₄w₀, w₀w₁, i.e. the path y w₀ w₄ x₄ x₃ z;
+- pos 6, {2,4}: x₄x₀, x₄w₃, x₀w₀, w₀w₁, w₂w₃, i.e. the path y w₀ x₀ x₄ w₃ z;
+- pos 8, {2,3}: x₀x₁, x₀w₄, x₁w₁, w₂w₃, w₃w₄, i.e. the path y x₁ x₀ w₄ w₃ z.
+
+m is coloured μ or α at all three states, so it is never in {A,B}. Hence the 2-ball {A,B}-graph is a 6-vertex path, with no cycle, at every k ≤ 2 state. This is why degree 6 differs from degree 7: there, Job AG sees ring cycles in 440/916-type states, yet fixed points still occur, so the ring is not the mechanism at either degree.
+
+## 2. Lock chains and forest pairs [proved]
+
+At R3 with frame (α, μ, A, B):
+- Lock1 is a {μ,A}-chain from x_{j+1} to x_{j+3};
+- Lock2 is a {μ,B}-chain from x_{j+1} to x_{j+4}.
+
+From the table:
+
+| state | Lock1 pair, ends | Lock2 pair, ends | own forest pair |
+|---|---|---|---|
+| R3k2 (pos 4) | {2,3}: x₁ → x₃ | {2,4}: x₁ → x₄ | {3,4} |
+| R3k1 (pos 6) | {3,4}: x₂ → x₄ | {2,3}: x₂ → x₀ | {2,4} |
+| R3k0 (pos 8) | {2,4}: x₃ → x₀ | {3,4}: x₃ → x₁ | {2,3} |
+
+The three pairs avoiding colour 1 (p's colour at R3k2 and R3k0) are each:
+- the forest pair at one state;
+- a lock pair at the other two.
+
+Suggested route to W2\* (not completed). Assume F₄ and F₈.
+- Take the {3,4} Lock2-chain Λ₈ from x₃ to x₁ at R3k0, and pull it back to R3k2 through K₇, K₆ and K₄.
+- The {3,4}-graph is unchanged by K₅. At R3k2 the end x₁ has colour 2, so Λ₈ must be cut by the rewrites: x₁ ∈ K₅ ∩ K₇.
+- The hope is that the pieces of Λ₈, together with P₄ and F₄'s forest structure (equivalently the {1,2}-graph at R3k2 being connected), force a {2,3}-cycle at R3k0. Symmetrically, use Lock1@R3k2 ({2,3}, x₁ → x₃) pushed forward through K₄, K₅ and K₇.
+
+I could not close either argument by hand.
+
+## 3. Data [data]
+
+`nightw2/w2.py` reads jobm labels. L = lockless, X = fixed point, S = single-lock. The tuples are the per-period patterns (k2, k1, k0).
+
+| pattern | 25–26 | 27 |
+|---|---|---|
+| L L L | 86 | 296 |
+| X X L / L X X | 14 / 14 | 24 / 24 |
+| X L L / L L X | 5 / 5 | 17 / 17 |
+| L X L | 10 | 12 |
+| L S L | 4 | — |
+| S X L / L X S | 1 / 1 | — |
+| S S L / L S S | — | 8 / 8 |
+| S L L / L L S | — | 3 / 3 |
+| **k2 and k0 both non-L** | **0** | **0** |
+| all three non-L (W2 failure) | 0 | 0 |
+
+- Across the period boundary, the pairs (k0, next k2) include (X,X) ×10 and (S,S) ×2 at order 27.
+- The patterns are exactly mirror-symmetric, (a,b,c) ↔ (c,b,a): k2 ↔ k0 under orientation reversal.
+
+`nightw2/w2rank.py` reads Job AG global {A,B} cycle ranks (552 periods, degree 6):
+- min rank(k2) + rank(k0) = 1, attained in 66 periods: (0,0,1) ×33 and (1,0,0) ×33;
+- rank(k0) + rank(next k2) = 0 in 10 periods.
+
+## 4. Status
+
+| item | status |
+|---|---|
+| Bookkeeping §1 (pairs, components, F₄/F₆/F₈ in absolute colours, change table) | [proved] (from `R3At`, `pair_own`, Job O contents) |
+| 2-ball {A,B}-graph = path P at k ≤ 2 (no local cycle) | [proved]; Job AG 1,656/1,656 |
+| Lock pairs = forest pairs of the other states (§2) | [proved] |
+| **W2\***: R3k2 and R3k0 of one period never both fail | [conjecture], 0/140, 0/412; rank sum ≥ 1 in 552/552 |
+| W2\* ⇒ W2 | [proved] (trivial) |
+| W2\* over the 6-step gap (k0, next k2) | [killed] (10 × both fixed at 27) |
+| "all three k ≤ 2 fail" | 0 observed; single-lock exits do pair with one other failure (2 + 16 cases) |
+| Ring/2-ball A/B cycle route | [killed] at degree 6 (no local cycle exists) |
+| W4 | not attempted |
+
+## 5. Studio requests (exact tests)
+
+1. **W2\* on runs.** On every maximal DL run at (5,5,5,5,6) holes (orders 25–27, both orientations), at every R3k2 state whose next four π-steps stay DL, test "R3k2 fixed ⇒ R3k0 not fixed" and the rank sum ≥ 1.
+   - If it holds on runs, W2\* is a 4-step Kempe statement independent of Γ-closure, and a hand proof is plausible.
+   - If not, record the first counterexample (rotation system and the five colourings).
+2. **Where the cycle comes from.** At every period with rank(k2) = 0, take a {2,3}-cycle at R3k0 and report which of K₄, K₅, K₇ (recoloured vertices) it meets. Also report whether it meets the pulled-back Lock1@R3k2 chain ({2,3}, x₁ → x₃).
+
+   Hypothesis H: every {2,3}-cycle at R3k0 meets K₇ ∖ K₄, i.e. it is created by the last (p,z) step, which returns p to colour 1. Report the mirror statement too.
+3. ~~Intermediate ranks~~: answered from Job AH (§7). α = colour 1 at every state of positions 4–8, so the frame ranks AB, μA and μB give all three non-1 pairs at every intermediate state.
+5. **For W2\*\*(a) and (b), the coordinator's question.** At the 60 F₄ periods, output one {2,3}-cycle C₅ after K₄, together with:
+   - whether C₅ passes through p (now colour 3) or y's neighbourhood;
+   - |C₅ ∩ K₄| (the old 1-vertices now coloured 3);
+   - whether C₅ separates h from some vertex of K₄.
+
+   In the 48 kill cases, also output C₈ and |C₈ ∩ K₇|. Lemma Fix's direction ⇐ suggests looking at C₅ as the boundary of the {1,4}-component that K₄ cut off.
+
+   The coordinator asked whether the A/B cycle at position 4 always passes through y or z. That cannot be read from AG/AH, which record ranks and not cycles. Note that in the F₄ case the position-4 {3,4}-graph has no cycle at all, so the relevant cycles are the {2,3}-cycles C₅ and C₈ above.
+4. **Dump the 66 rank-sum-1 periods** (rotation system plus colourings at positions 4–8) as hand-check witnesses.
+
+## 7. Job AH traces [data]
+
+Script: `nightw2/w2trace.py`, output in `outtrace.txt`. The rows are the ranks of the three pair-graphs avoiding colour 1 at positions 4–8, over 552 degree-6 periods (orders 25–27, both orientations). Colour 1 = α at every one of these states. The frame pairs by position are:
+
+| pos | (μ, A, B) |
+|---|---|
+| 4 | (2,3,4) |
+| 5 | (4,2,3) |
+| 6 | (3,4,2) |
+| 7 | (2,3,4) |
+| 8 | (4,2,3) |
+
+**Checks of §1.**
+- Lemma Fix: fixed ⇔ own-pair rank 0 at positions 4, 6 and 8 in 552/552 periods.
+- The change table's invariances hold in 552/552: r₃₄(5) = r₃₄(6), r₂₄(4) = r₂₄(5), r₂₃(6) = r₂₃(7) and r₂₄(7) = r₂₄(8).
+
+**W2\*:** r₃₄(4) + r₂₃(8) ≥ 1 in 552/552 periods.
+
+**F₄ (r₃₄(4) = 0), 60 periods:**
+- r₂₃(5) ≥ 1 in 60/60, so K₄ creates a {2,3}-cycle. When F₄ fails, r₂₃(5) = 0 is possible (16 periods).
+- r₂₃(6) = 0 in 48/60, so K₅ kills it, and then r₂₃(8) ≥ 1 in 48/48, so K₇ recreates it.
+- In the other 12/60 the cycle survives K₅ and K₇.
+
+**F₈, 60 periods:** the mirror image of F₄.
+- r₃₄(7) ≥ 1 in 60/60.
+- r₃₄(6) = 0 in 48/60, and then r₃₄(4) ≥ 1.
+
+**Position 6:** all three non-1 pairs are acyclic at once in 86 periods. So the middle state alone is no obstruction, and K₄/K₇, the two {1,3}-swaps through p, carry the forcing.
+
+## 6. Reproduction
+
+Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/nightw2/`. Each runs on a single core in under 1 s.
+
+- `python3 w2.py` and `python3 w2.py ../jobr27/` write `out2526.txt` and `out27.txt`.
+- `python3 w2rank.py` writes `outrank.txt`, from `../jobuv/jobag.json`.
+- `python3 w2trace.py` writes `outtrace.txt`, from `../jobuv/jobah.json`.
