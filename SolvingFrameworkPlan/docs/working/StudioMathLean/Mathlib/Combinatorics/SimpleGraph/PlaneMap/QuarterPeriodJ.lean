@@ -41,6 +41,11 @@ ring vertices flanking `m`. `JoinYZ G h w q c` (the note's `J`) is
    `J (s (10 b + 8))` holds and the `σ`-exit is lockless iff `J (s (10 b + 9))`, i.e. iff the
    `R₊₃` swap at the preceding `R3k0` state (step 8) did not break `J`.
    `k4_failure_iff_break`: the exit is not lockless iff step 8 broke `J`.
+6. `k = 3`: `Hole6.k3Ball` (same `p, m, y, z`), `r3k3_R3At`, `k3_lockless_iff_join`, and
+   `k3_exit_period`: at `s (10 b + 2)` the `σ`-exit is lockless iff `J (s (10 b + 2))`
+   `= J (s (10 b + 3))`. `R1k1` is **not** a forced-join position (P1 forces only `R3k0..2`,
+   `R1k3, R1k4`), so a `k = 3` failure is not shown to be a single-step break.
+   `break_restored_by_R3k2`: `J (s (10 b + 4))`.
 -/
 
 @[expose] public section
@@ -407,6 +412,112 @@ theorem k4_failure_iff_break (htri : M.Triangulated) {s : Fin n → Fin 4} {j₀
   obtain ⟨j, hd, hq', j8, e⟩ := k4_exit_period htri H hc hall hr hq hT b
   exact ⟨j, hd, hq', by rw [e]; exact ⟨fun x => ⟨j8, x⟩, fun x => x.2⟩⟩
 
+/-! ### `k = 3`: lockless `σ`-exit ⇔ `J`, and the restore at `R3k2` -/
+
+/-- At `q = j + 3` the `Hole6` hypothesis gives the `K3Ball`; its `p, m, y, z` are
+`x (j+3), m, w (j+2), w (j+3)`, the same `p, m, y = w (q+4), z = w q` as for `K4Ball`. -/
+theorem Hole6.k3Ball (H : Hole6 P w m q) (hq : q = j + 3) : K3Ball P w m j := by
+  subst hq
+  have n0 := H.nbr j (fin5_ne0 (by decide))
+  have n1 := H.nbr (j + 1) (fin5_ne (by decide))
+  have n2 := H.nbr (j + 2) (fin5_ne (by decide))
+  have n4 := H.nbr (j + 4) (fin5_ne (by decide))
+  have n3 := H.nbrq
+  have g40 := H.ring (j + 4) (by rw [add_assoc]; exact fin5_ne (by decide))
+  have g01 := H.ring j (fin5_ne (by decide))
+  have g12 := H.ring (j + 1) (by rw [add_assoc]; exact fin5_ne (by decide))
+  have g34 := H.ring (j + 3) (by rw [add_assoc]; exact fin5_ne (by decide))
+  have gy := H.ringy
+  have a3 := H.adj_w4 (j + 3)
+  simp only [add_assoc, Fin.reduceAdd, add_zero] at n1 n2 n3 n4 g40 g12 g34 gy a3
+  exact ⟨⟨n0, n1, n2, g40, g01, g12, H.adj_w (j + 4), a3,
+    fun i => ⟨H.off _ i, H.off _ i, H.off _ i, H.off _ i⟩,
+    ⟨H.offh _, H.offh _, H.offh _, H.offh _⟩⟩, n3, n4, gy, H.ringz, g34, H.off _, H.offm,
+    ⟨H.offh _, H.offmh⟩⟩
+
+/-- At an `R3k3` `DD` state the ring is the full `R3` ring (`w₂ = B` is the `B`-neighbour of
+`x (j+2)` in `π c`, as in `pair_own`). -/
+theorem r3k3_R3At (H : Hole6 P w m q) (hq : q = j + 3) (hc : ProperOff M.graph h c)
+    (hD : DDstate P c j) (hT : TypeR3 P w c j) : R3At P w c j := by
+  subst hq
+  obtain ⟨-, hr, hK, -, ⟨u, hu, huh, hcu⟩, -⟩ := dd_ends hc hD
+  obtain ⟨-, v1, -, v3, -⟩ := rot3_values hr hK
+  have hr' := hr
+  obtain ⟨h02, h1, h3, h4, h13, h14, h34⟩ := hr
+  obtain ⟨t0, t3⟩ := hT
+  obtain ⟨d1, d1'⟩ := H.domAt hc (j := j) (a := 1) (b := 2) rfl
+  obtain ⟨d2, d2'⟩ := H.domAt hc (j := j) (a := 2) (b := 3) rfl
+  obtain ⟨d4, d4'⟩ := H.dom4 hc (j := j)
+  have r01 := H.ring0 hc (j := j) (fin5_ne (by decide))
+  have r34 := H.ringAt hc (j := j) (a := 3) (b := 4) rfl (fin5_ne (by decide))
+  have hA : c (w (j + 1)) = c (P.x (j + 3)) := by
+    clear * - h1 h3 h4 h13 h14 h34 d1 d1' r01 t0 h02; omega
+  have n2 := (H.nbr (j + 2) (fin5_ne (by decide)) u).1 hu
+  simp only [add_assoc, Fin.reduceAdd] at n2
+  have w2 : c (w (j + 2)) = c (P.x (j + 4)) := by
+    rcases n2 with rfl | rfl | rfl | rfl | rfl
+    · exact (huh rfl).elim
+    · rw [v1] at hcu; exact (h14 hcu).elim
+    · rw [v3] at hcu; exact (h4 hcu.symm).elim
+    · have e := H.adj_w' (j + 1)
+      simp only [add_assoc, Fin.reduceAdd] at e
+      rw [rot3_K2 hr' e (H.offh _) (Or.inr hA), hA, Equiv.swap_apply_right] at hcu
+      exact (h4 hcu.symm).elim
+    · rwa [rot3_keep (by rw [h02]; exact d2) d2'] at hcu
+  refine ⟨hD.1, t0, hA, w2, t3, ?_⟩
+  clear * - h1 h3 h4 h13 h14 h34 d4 d4' r34 t3; omega
+
+/-- **`k = 3`: lockless ⇔ `J`.** At an `R3` state at `k = 3` of a triangulated map, the
+`σ`-exit is lockless iff `y = w (j+2)` and `z = w (j+3)` are `{B, μ}`-joined
+(`sigma_exit_criterion_k3'` together with Lock 2 and the edge `x (j+4) ~ z`). -/
+theorem k3_lockless_iff_join (htri : M.Triangulated) (H : Hole6 P w m q) (hq : q = j + 3)
+    (hc : ProperOff M.graph h c) (hR : R3At P w c j) :
+    NoLock P (sigSwap P c j) ↔ JoinYZ M.graph h w q c := by
+  rw [sigma_exit_criterion_k3' htri (H.k3Ball hq) hc hR]
+  subst hq
+  unfold JoinYZ
+  simp only [add_assoc, Fin.reduceAdd]
+  obtain ⟨⟨-, -, l2⟩, -, -, e2, e3, -⟩ := hR
+  rw [e2, e3, pairGraph_comm c (c (P.x (j + 4))) (c (P.x (j + 1)))]
+  have a := H.adj_w4 (j + 4)
+  simp only [add_assoc, Fin.reduceAdd] at a
+  have ez : (pairGraph M.graph h c (c (P.x (j + 1))) (c (P.x (j + 4)))).Reachable
+      (P.x (j + 1)) (w (j + 3)) :=
+    l2.trans (pgR a (P.x_ne_h _) (H.offh _) (Or.inr rfl) (Or.inl e3))
+  exact ⟨fun r => r.symm.trans ez, fun r => ez.trans r.symm⟩
+
+/-- **`k = 3` on the orbit.** At the `R3k3` state `s (10 b + 2)` (doubly locked at `j`,
+`q = j + 3`) the `σ`-exit is lockless iff `J (s (10 b + 2))`, and `J` there equals
+`J (s (10 b + 3))` (P2). `J (s (10 b + 2))` is reached from `J (s (10 b))` through the steps
+at positions `0` (`R3k4`, pair `(m, z)`) and `1` (`R1k1`, pair `(m, y)`); neither position is
+forced by P1 (`R1k1` is not a forced-join state), so no break-at-one-step form is claimed. -/
+theorem k3_exit_period (htri : M.Triangulated) {s : Fin n → Fin 4} {j₀ : Fin 5}
+    (H : Hole6 P w m q) (hc : ProperOff M.graph h s) (hall : ∀ n, DLState P ((piMove P)^[n] s))
+    (hr : RepeatAt P s j₀) (hq : q = j₀ + 4) (hT : TypeR3 P w s j₀) (b : ℕ) :
+    ∃ j, DoublyLocked P ((piMove P)^[10 * b + 2] s) j ∧ q = j + 3 ∧
+      (NoLock P (sigSwap P ((piMove P)^[10 * b + 2] s) j) ↔
+        JoinYZ M.graph h w q ((piMove P)^[10 * b + 2] s)) ∧
+      (JoinYZ M.graph h w q ((piMove P)^[10 * b + 3] s) ↔
+        JoinYZ M.graph h w q ((piMove P)^[10 * b + 2] s)) := by
+  obtain ⟨tk, -⟩ := gamma_period_ten (m := m) H hc hall hr hq hT
+  obtain ⟨-, P2, -⟩ := period_J (m := m) H hc hall hr hq hT
+  have g : gseq (10 * b + 2) = (.R3, 3) := by
+    rw [gseq_mod, show (10 * b + 2) % 10 = 2 by omega]; decide
+  obtain ⟨j, hd, hq', hT'⟩ := tk (10 * b + 2)
+  rw [g] at hq' hT'
+  dsimp only at hq' hT'
+  have hR := r3k3_R3At H hq' (iter_proper hc _) (orbit_dd hc hall _ j hd) hT'
+  exact ⟨j, hd, hq', k3_lockless_iff_join htri H hq' (iter_proper hc _) hR,
+    P2 (10 * b + 2) (Or.inl (by omega))⟩
+
+/-- **Any break is restored by `R3k2`.** `J` holds at every `R3k2` state `s (10 b + 4)`, so a
+break at the step at position `0`, `1` or `3` is undone by position `4`. -/
+theorem break_restored_by_R3k2 {s : Fin n → Fin 4} {j₀ : Fin 5}
+    (H : Hole6 P w m q) (hc : ProperOff M.graph h s) (hall : ∀ n, DLState P ((piMove P)^[n] s))
+    (hr : RepeatAt P s j₀) (hq : q = j₀ + 4) (hT : TypeR3 P w s j₀) (b : ℕ) :
+    JoinYZ M.graph h w q ((piMove P)^[10 * b + 4] s) :=
+  (period_J (m := m) H hc hall hr hq hT).1 _ (by omega) (by omega)
+
 end sphere
 
 end SimpleGraph.QuarterFloor
@@ -414,3 +525,5 @@ end SimpleGraph.QuarterFloor
 #print axioms SimpleGraph.QuarterFloor.period_J
 #print axioms SimpleGraph.QuarterFloor.k4_exit_period
 #print axioms SimpleGraph.QuarterFloor.k4_failure_iff_break
+#print axioms SimpleGraph.QuarterFloor.k3_exit_period
+#print axioms SimpleGraph.QuarterFloor.break_restored_by_R3k2
