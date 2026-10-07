@@ -22,5 +22,5 @@ Go/no-go review every two weeks (next: 21 Oct 2026) against these kill rules.
 ## Budget (coordinator's decision, 7 Oct)
 
 - Agents: at most 6 running at once (workflow guideline < 10).
-- Studio CPU (16 cores, 128 GB): coordinator-started compute runs under `nice -n 10` and uses at most 8 worker processes in total. Jobs BO/BP keep their current workers. At 12:31 on 7 Oct the load average was about 128, mostly Python 3.9 processes the coordinator did not start. New heavy jobs wait until that load is accounted for.
+- Studio CPU (16 cores, 128 GB): coordinator-started compute runs under `nice -n 10` and uses at most 8 worker processes in total. Jobs BO/BP keep their current workers. The Studio is shared with Kyle's EEGLearn project (Python multiprocessing jobs); EEGLearn has priority, so 4CT compute stays nice'd and within the cap even when the machine looks idle.
 - Lean regression: one full `check.sh` run per day (about 10 minutes).
