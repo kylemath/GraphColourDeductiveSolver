@@ -602,3 +602,10 @@ Each DL state is keyed by type (Studio frame: R1/R2/R3 from w₀, w₃) and by t
   - R1 and R2 have no degree-5 condition giving 0 DL images.
 - **(2) Every all-DL π-orbit visits a state with a non-DL σ-image:** census 2,750 / 2,750, adversarial 504 / 504. The minimum number of non-DL images per orbit by pattern is 4 to 12 in the census (4 at (5,5,6,6,7), 6 at (5,5,6,6,6)) and 7 to 10 in the adversarial graphs.
 - **(3) Minimal local condition (link degrees only):** all five link vertices of degree 5. Nothing weaker suffices at R3 over all DL states.
+
+## Job BU [exploratory]: Lean's R3At and K4Ball/K3Ball at the BL discrepancy (picyc.cpp --jobbu; jobbu/jobbu-summary.txt; census orders 12–27 + adversarial, both orientations)
+Scope: every Studio-R3 DL state (w₀ = B, w₃ = μ) at a (5,5,5,5,6) hole with k = 4 (word 55556) or k = 3 (55565). Each clause of Lean's `R3At` (DL + ring (w_j..w_{j+4}) = (B, A, B, μ, A)) and of `TripleBallP` + `K4Ball` / `K3Ball` is tested separately: exact neighbour sets of x_j..x_{j+4}, the ring adjacencies w₄w₀, w₀w₁, w₁w₂, w₂w₃, w₃m, mw₄ (k = 4) or w₂m, mw₃, w₃w₄ (k = 3), and the off-hole clauses.
+- **K4Ball / K3Ball hold at every such state:** 11,897,079 / 11,897,079 at each k in the census, 51,676 / 51,676 adversarial.
+- **All 1,037,102 DL images (census; 17,672 adversarial) fail exactly one R3At clause.** At k = 4 it is c(w_{j+4}) = A (ring pattern 11110: w₄ = μ). At k = 3 it is c(w_{j+2}) = B (pattern 11011). The Studio typing reads only w₀ and w₃, which forces w₁ and w₂ at degree-5 positions but not w₄ (k = 4) or w₂ (k = 3), which sit next to the degree-6 vertex.
+- **Under Lean's R3At the σ-image is never DL and never fixed.** k = 4: 3,354,332 census and 13,533 adversarial states, all non-DL images. k = 3: the same counts. This confirms `sigma_exit_not_DL_k4/k3` on data and the NightK4Hypotheses prediction.
+- New engine option **`--leanr3`**: the R3 type requires all five R3At ring colours (`r3At_iff`). Studio-R3 states failing it get type 4. It is used for all further jobs that report R3 types.
