@@ -516,7 +516,7 @@ theorem fixed_pos6_iff (htri : M.Triangulated) (hconn : M.graph.Connected) (H : 
   subst hq2
   rw [sigmaFixed_iff_acyclic htri hconn pr6 rp6]
   simp only [add_assoc, Fin.reduceAdd, add_zero, u4, u0, cm4, cz4]
-  rw [pairGraph_comm]
+  rw [pairGraph_comm_gen]
 
 /-- **`F₈`** (`R3k0`, position 8, repeat index `j + 2`): fixed iff the `{2,3}`-graph is
 acyclic. -/
@@ -596,7 +596,7 @@ theorem p_x4_connected_R1k4 (H : Hole6 P w m q) (hc : ProperOff M.graph h s)
   have l2 := hd5.2.2
   unfold Lock2 at l2
   simp only [add_assoc, Fin.reduceAdd] at l2 ⊢
-  rw [v4, cp5, ← cz4, ← cy4, pairGraph_comm] at l2
+  rw [v4, cp5, ← cz4, ← cy4, pairGraph_comm_gen] at l2
   exact l2.symm
 
 end orbit

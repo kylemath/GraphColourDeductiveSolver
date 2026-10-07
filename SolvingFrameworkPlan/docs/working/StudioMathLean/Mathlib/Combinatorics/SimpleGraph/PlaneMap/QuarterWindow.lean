@@ -408,7 +408,7 @@ theorem lock_join_R3 (H : Hole6 P w m q) (hR : R3At P w c j)
   simp only [add_assoc, Fin.reduceAdd] at a4
   constructor
   · unfold Lock1
-    rw [e1, e3, pairGraph_comm c (c (P.x (j + 3)))]
+    rw [e1, e3, pairGraph_comm_gen c (c (P.x (j + 3)))]
     refine reach_ends ⟨a1, ⟨P.x_ne_h _, Or.inl rfl⟩, ⟨H.offh _, Or.inr e1⟩⟩ ?_
       ⟨a3, ⟨P.x_ne_h _, Or.inr rfl⟩, ⟨H.offh _, Or.inl e3⟩⟩ ?_
       (fun e => fin5_ne (by decide) (P.inj e))
@@ -421,7 +421,7 @@ theorem lock_join_R3 (H : Hole6 P w m q) (hR : R3At P w c j)
       · exact (vh rfl).elim
       all_goals lock_end_case
   · unfold Lock2
-    rw [e0, e3, pairGraph_comm c (c (P.x (j + 4)))]
+    rw [e0, e3, pairGraph_comm_gen c (c (P.x (j + 4)))]
     refine reach_ends ⟨a0, ⟨P.x_ne_h _, Or.inl rfl⟩, ⟨H.offh _, Or.inr e0⟩⟩ ?_
       ⟨a4, ⟨P.x_ne_h _, Or.inr rfl⟩, ⟨H.offh _, Or.inl e3⟩⟩ ?_
       (fun e => fin5_ne (by decide) (P.inj e))
@@ -452,7 +452,7 @@ theorem lock_join_R1 (H : Hole6 P w m q) (hr : RepeatAt P c j) (hF : R1Full P w 
   simp only [add_assoc, Fin.reduceAdd] at a3
   constructor
   · unfold Lock1
-    rw [e0, e2, pairGraph_comm c (c (P.x (j + 3)))]
+    rw [e0, e2, pairGraph_comm_gen c (c (P.x (j + 3)))]
     refine reach_ends ⟨a0, ⟨P.x_ne_h _, Or.inl rfl⟩, ⟨H.offh _, Or.inr e0⟩⟩ ?_
       ⟨a3, ⟨P.x_ne_h _, Or.inr rfl⟩, ⟨H.offh _, Or.inl e2⟩⟩ ?_
       (fun e => fin5_ne (by decide) (P.inj e))
@@ -465,7 +465,7 @@ theorem lock_join_R1 (H : Hole6 P w m q) (hr : RepeatAt P c j) (hF : R1Full P w 
       · exact (vh rfl).elim
       all_goals lock_end_case
   · unfold Lock2
-    rw [e1, e4, pairGraph_comm c (c (P.x (j + 4)))]
+    rw [e1, e4, pairGraph_comm_gen c (c (P.x (j + 4)))]
     refine reach_ends ⟨a1, ⟨P.x_ne_h _, Or.inl rfl⟩, ⟨H.offh _, Or.inr e1⟩⟩ ?_
       ⟨a4, ⟨P.x_ne_h _, Or.inr rfl⟩, ⟨H.offh _, Or.inl e4⟩⟩ ?_
       (fun e => fin5_ne (by decide) (P.inj e))
@@ -803,7 +803,7 @@ theorem window_forced (H : Hole6 P w m q) (hc : ProperOff M.graph h s)
       have c2 := wcol_eq H hc hall hr hq hT n hn (t := 2) (t' := 0) (by rw [g]; decide)
       rw [z0] at c2
       dsimp only at L
-      rw [c2, pairGraph_comm] at L
+      rw [c2, pairGraph_comm_gen] at L
       exact L.symm
   · rcases h23 with e | e
     · have g : gseq n = (.R3, 3) := by rw [gseq_mod, e]; decide
@@ -818,7 +818,7 @@ theorem window_forced (H : Hole6 P w m q) (hc : ProperOff M.graph h s)
       rw [g, show lock1Off (.R1, 0) = (0, 2) by decide] at L
       have c2 := wcol_eq H hc hall hr hq hT n hn (t := 2) (t' := 4) (by rw [g]; decide)
       dsimp only at L
-      rw [c2, z0, pairGraph_comm] at L
+      rw [c2, z0, pairGraph_comm_gen] at L
       exact L
   · have g : gseq n = (.R3, 2) := by rw [gseq_mod, h4]; decide
     have c3 := wcol_eq H hc hall hr hq hT n hn (t := 3) (t' := 0) (by rw [g]; decide)
