@@ -230,3 +230,11 @@ from its own DD states (all R-types).
 - Part 2, (5,5,5,5,7): all 406 Gamma-cycle records (orders 25-27, both orientations) have the universal period R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (k = position of the
   degree-7 vertex), as at (5,5,5,5,6). R3 exits: k = 3 failures always Lock1-only (79), k = 4 failures always Lock2-only (79); k = 4 lockless f = 3 in 796 of 837
   (f = 1: 29, 2: 6, 5: 6); k <= 2 failures mostly fixed points (66 / 110 / 66) plus other DL images (29 / 48 / 29).
+
+## Job AD (`jobad.py` -> jobad-summary.txt, jobad-records.json): the P1 neighbour profile at (5,5,5,5,6)/(5,5,5,6,6), orders 25-27, both orientations
+Positive cycles with def'(Z) > 0 (charge-back form; exits from all DD endpoints): 75, none of them Gamma-cycles.
+- (i) min over Z of max_T |rem(T)| / def'(Z) = 1.25 (p27m #167230 h23: def' 20, best neighbour spare 25); next 2.0 (p27m #204626 h4), 4.0, 4.75; 56 of 75 have ratio >= 20.
+- (ii) every one has a nonpositive sigma-neighbour with w(T) <= -2 (75/75).
+- (iii) in a greedy single-target assignment at most 2 positive cycles share a target; the tightest spare left is 5 (p27m #167230 h23).
+- (iv) every Z has an exit into a nonpositive target that can take def'(Z) alone; in 71/75 EVERY exit-target of Z can (so any canonical choice of exit works there).
+  Exits are recorded in state-index order, not pi-order, so the "first exit in pi-order" form was replaced by this stronger every/some test.
