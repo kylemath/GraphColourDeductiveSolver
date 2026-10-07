@@ -140,3 +140,17 @@ R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (140 periods, no exception).
   (k = 0 / 1 / 2) and accounts for all but 1 / 4 / 1 of the failures there. 76 of 140 periods have no fixed-point state at all.
 - Unlike the y ~ z breaks of Job O, every step that switches the fixed-point predicate swaps a component that MEETS the sigma-component both before and after the step.
 - p25m #16945 h3 (tight F012' case) printed in full in jobq-summary.txt: k <= 2 credit 2 + 5 = 7 = 7L/20; total credit 31 against debt 20.
+
+## Job J: order 27, every core triangulation (320,133 graphs), both orientations (`--full --jobh`; jobj-jobd27.txt, jobj-jobh27.txt)
+- 10,803,532 hole-runs, 11,304,648 classes: Theorem W, no cross-class pi-cycle and the F5 identity hold on every class (0 failures); the (size, F, sum w) class
+  multisets agree between orientations at all 5,401,766 holes. The floor (min of 2N0 + E2 + 3tau - DD) holds at every pattern; (5,5,5,5,6) is still F6-type.
+- sigma'C (H1 and H2): 0 failing groups in about 368 million groups.
+
+## Job R: order-27 Gamma-cycle summaries (jobr27/jobr27-summary.txt, jobr27/jobm27-summary.txt; per-job inputs in jobr27/)
+- (5,5,5,5,6), 202 Gamma-cycle records: Lemma S holds (min C_neg/D 1.95); one-edge rule 824/824 at k = 3, 4; universal period 412/412; y ~ z never broken at consecutive
+  k = 4 visits; F012' >= 7L/20 (min exactly 1, p27 #273919 h26); A34' holds; no dead block; min block credit 8 (p27 #186395 h22); min cycle average 19.5.
+  **F4 FAILS**: two k = 4 lockless exits with f = 1 (p27 #133619 h21, one per orientation).
+- (5,5,5,6,6), 28 records: **Lemma S FAILS** at p27 #316043 h18 (plantri orientation; link (6,5,5,5,6); C_neg = 18 < D = 20; the mirror has C_neg = 21) and that cycle
+  has dead blocks; 16 Gamma-cycles contain R2 states, so the R1/R3 alternation of HP2 Lemma 2 does not hold at (5,5,5,6,6) at order 27.
+- Lemma R in the Job K form (hits from every DL R3 state): 12 violations on nonpositive targets (e.g. p27 #68456 h19, w(T) = -2, rem 6). The NightF6Flow form
+  (DD endpoints only) is Job S.

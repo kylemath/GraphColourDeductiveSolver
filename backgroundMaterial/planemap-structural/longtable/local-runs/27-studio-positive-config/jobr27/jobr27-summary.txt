@@ -1,0 +1,232 @@
+##### jobl
+== 5,5,5,5,6 Gamma: cycles 202; min C_neg/D 1.950 at i27 p27#273919 h26 (L 20, D 20, C_neg 39, C 39); min C/D 1.950 at i27 p27#273919 h26; C_neg < D in 0; C < D in 0; C_pos > 0 in 0
+== 5,5,5,5,6 nonGamma positive: cycles 147; min C_neg/D 0.000 at i27 p27#126537 h21 (L 14, D 10, C_neg 0, C 0); min C/D 0.000 at i27 p27#126537 h21; C_neg < D in 57; C < D in 56; C_pos > 0 in 14
+   C_neg < D: i27 p27#89126 h 11 [5, 5, 5, 5, 6] L 18 D 10 C_neg 4 C_pos 0 perk [R3, lockless] {'1': [2, 0], '2': [2, 1], '4': [1, 1], '8': [1, 0], '16': [1, 0]} hop 1
+   C_neg < D: i27 p27#126537 h 21 [5, 5, 5, 6, 5] L 14 D 10 C_neg 0 C_pos 0 perk [R3, lockless] {'1': [2, 0], '2': [1, 0], '4': [1, 0], '8': [1, 0], '16': [1, 0]} hop 1
+   C_neg < D: i27 p27#126537 h 21 [5, 5, 5, 6, 5] L 14 D 10 C_neg 0 C_pos 0 perk [R3, lockless] {'1': [2, 0], '2': [1, 0], '4': [1, 0], '8': [1, 0], '16': [1, 0]} hop 1
+   C_neg < D: i27 p27#130133 h 20 [5, 5, 5, 6, 5] L 14 D 10 C_neg 0 C_pos 0 perk [R3, lockless] {'1': [2, 0], '2': [1, 0], '4': [1, 0], '8': [1, 0], '16': [1, 0]} hop 1
+   sigma-hops to a negative cycle: {1: 147} ; C_neg/D distribution: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.5, 0.7, 0.8, 0.8, 0.8, 0.8, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.2, 1.2, 1.3, 1.3, 1.3, 1.3, 1.3, 1.4, 1.5, 1.5, 1.5, 1.5, 1.6, 1.6, 1.6, 1.6, 1.6, 1.7, 1.7, 1.7, 1.7, 1.7, 1.8, 1.95, 1.95, 2.0, 2.0, 2.1, 2.1, 2.2, 2.2, 2.2, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.35, 2.5, 2.6, 2.6, 2.8, 2.9, 2.9, 2.9, 3.0, 3.0, 3.0, 3.1, 3.1, 3.2, 3.2, 3.2, 3.4, 3.4, 3.6, 3.6, 3.7, 3.9, 3.9, 4.0, 4.0, 4.2, 4.27, 4.4, 4.5, 4.5, 4.5, 4.6, 4.6, 4.7, 4.9, 5.0, 5.2, 5.7, 6.9, 7.2, 7.8, 8.4, 9.4, 10.8, 20.6]
+== 5,5,5,6,6 Gamma: cycles 28; min C_neg/D 0.900 at i27 p27#316043 h18 (L 20, D 20, C_neg 18, C 18); min C/D 0.900 at i27 p27#316043 h18; C_neg < D in 1; C < D in 1; C_pos > 0 in 0
+   C_neg < D: i27 p27#316043 h 18 [6, 5, 5, 5, 6] L 20 D 20 C_neg 18 C_pos 0 perk [R3, lockless] {'3': [2, 0], '6': [2, 0], '12': [2, 1], '17': [2, 1], '24': [2, 1]} hop 1
+== 5,5,5,6,6 nonGamma positive: cycles 40; min C_neg/D 0.000 at i27m p27#3265 h20 (L 22, D 10, C_neg 0, C 0); min C/D 0.000 at i27m p27#3265 h20; C_neg < D in 16; C < D in 16; C_pos > 0 in 3
+   C_neg < D: i27 p27#16523 h 3 [5, 5, 5, 6, 6] L 26 D 10 C_neg 2 C_pos 0 perk [R3, lockless] {'6': [2, 1], '12': [1, 0], '17': [1, 0]} hop 1
+   C_neg < D: i27 p27#75970 h 3 [5, 5, 5, 6, 6] L 22 D 10 C_neg 8 C_pos 0 perk [R3, lockless] {'6': [1, 1], '12': [1, 0], '17': [1, 0]} hop 1
+   C_neg < D: i27 p27#97565 h 24 [6, 5, 5, 5, 6] L 18 D 10 C_neg 5 C_pos 0 perk [R3, lockless] {'6': [1, 0], '12': [1, 0], '17': [1, 1]} hop 1
+   C_neg < D: i27 p27#97617 h 20 [6, 5, 5, 5, 6] L 22 D 10 C_neg 8 C_pos 0 perk [R3, lockless] {'6': [1, 0], '12': [1, 0], '17': [1, 1]} hop 1
+   sigma-hops to a negative cycle: {1: 40} ; C_neg/D distribution: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 0.4, 0.5, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1.0, 1.3, 1.3, 1.5, 1.6, 1.6, 1.6, 1.8, 2.1, 2.1, 2.1, 2.2, 2.25, 2.25, 2.4, 2.6, 3.2, 3.4, 4.0, 4.2, 4.2, 4.7, 5.1, 8.4]
+##### jobm
+Traceback (most recent call last):
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/jobm.py", line 24, in <module>
+    avg = sum(credits) / len(credits)
+ZeroDivisionError: division by zero
+##### jobn
+Gamma-cycles at (5,5,5,5,6), orders 25-26, both orientations: 230; visits k=3: 412, k=4: 412
+(a) y~z <=> lockless: 824/824; pm bridge <=> lockless: 824/824; m unique: 824/824
+(c) p, m, y, z constant along the cycle at each k: violations 0; same (p,m,y,z) at k=3 and k=4: 202/230 cycles
+(d) |K_{c(p),c(m)}(p)| vs the previous visit at the same k: {(4, 'compsize_changed'): 206, (3, 'compsize_changed'): 206, (4, 'compsize_same'): 4, (3, 'compsize_same'): 4}
+failing visits (k, components):
+   ('n27', 'p27#146733', 20, 'cycle', 0, 'pos', 10, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 8, '|K(z)|', 4)
+   ('n27', 'p27#146733', 20, 'cycle', 0, 'pos', 12, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 4, '|K(z)|', 8)
+   ('n27', 'p27#152697', 20, 'cycle', 0, 'pos', 0, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 5, '|K(z)|', 7)
+   ('n27', 'p27#152697', 20, 'cycle', 0, 'pos', 18, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 9, '|K(z)|', 3)
+   ('n27', 'p27#186395', 22, 'cycle', 2, 'pos', 8, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 8, '|K(z)|', 4)
+   ('n27', 'p27#186395', 22, 'cycle', 2, 'pos', 10, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 4, '|K(z)|', 8)
+   ('n27', 'p27#186395', 22, 'cycle', 3, 'pos', 8, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 6, '|K(z)|', 6)
+   ('n27', 'p27#186395', 22, 'cycle', 3, 'pos', 10, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 2, '|K(z)|', 10)
+   ('n27', 'p27#315977', 22, 'cycle', 0, 'pos', 0, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 10, '|K(z)|', 2)
+   ('n27', 'p27#315977', 22, 'cycle', 0, 'pos', 2, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 6, '|K(z)|', 6)
+   ('n27', 'p27#315977', 22, 'cycle', 1, 'pos', 11, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 8, '|K(z)|', 4)
+   ('n27', 'p27#315977', 22, 'cycle', 1, 'pos', 13, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 4, '|K(z)|', 8)
+   ('n27m', 'p27#146733', 20, 'cycle', 0, 'pos', 6, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 8, '|K(z)|', 4)
+   ('n27m', 'p27#146733', 20, 'cycle', 0, 'pos', 8, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 4, '|K(z)|', 8)
+   ('n27m', 'p27#152697', 20, 'cycle', 0, 'pos', 6, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 7, '|K(z)|', 5)
+   ('n27m', 'p27#152697', 20, 'cycle', 0, 'pos', 8, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 3, '|K(z)|', 9)
+   ('n27m', 'p27#186395', 22, 'cycle', 0, 'pos', 8, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 10, '|K(z)|', 2)
+   ('n27m', 'p27#186395', 22, 'cycle', 0, 'pos', 10, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 6, '|K(z)|', 6)
+   ('n27m', 'p27#186395', 22, 'cycle', 1, 'pos', 8, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 8, '|K(z)|', 4)
+   ('n27m', 'p27#186395', 22, 'cycle', 1, 'pos', 10, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 4, '|K(z)|', 8)
+   ('n27m', 'p27#315977', 22, 'cycle', 0, 'pos', 8, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 6, '|K(z)|', 6)
+   ('n27m', 'p27#315977', 22, 'cycle', 0, 'pos', 10, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 2, '|K(z)|', 10)
+   ('n27m', 'p27#315977', 22, 'cycle', 1, 'pos', 8, 'k', 4, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 8, '|K(z)|', 4)
+   ('n27m', 'p27#315977', 22, 'cycle', 1, 'pos', 10, 'k', 3, 'yz', 0, 'bridge', 0, '|K(p)|', 12, '|K(y)|', 4, '|K(z)|', 8)
+##### jobo
+(i) periods by number of steps (of 10) after which y and z are NOT joined: [(0, 388), (2, 24)]
+(ii) consecutive k=4 visit pairs: 412; both failing: 0; failing throughout the period between: 0
+(iii) swap-pair pattern over the 10 steps (which of p,m,y,z carry a colour of the swapped pair), counts:
+     412 ('mz', 'my', 'pm', 'pz', 'py', 'my', 'mz', 'pz', 'py', 'pm')
+     swapped-component contents pattern (which of p,m,y,z lie in the swapped component), most common:
+     412 ('-', '-', 'pm', '-', 'py', 'my', 'mz', 'pz', '-', 'pm')
+failing k=4 visits: break / restore events (steps relative to the visit):
+   ('o27', 'p27#146733', 20, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27', 'p27#152697', 20, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27', 'p27#186395', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27', 'p27#186395', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27', 'p27#315977', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27', 'p27#315977', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27m', 'p27#146733', 20, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 9, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27m', 'p27#152697', 20, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 9, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27m', 'p27#186395', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27m', 'p27#186395', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27m', 'p27#315977', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o27m', 'p27#315977', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+break step (position in the preceding period, 0..9): {8: 12} ; restore step after the visit: {0: 12}
+##### jobp
+P1: R3 visits per k: {4: 412, 3: 412, 2: 412, 1: 412, 0: 412}
+    exits per k: [((0, '1'), 2), ((0, '2'), 1), ((0, 'D'), 8), ((0, 'L'), 360), ((0, 'X'), 41), ((1, '1'), 4), ((1, '2'), 4), ((1, 'D'), 8), ((1, 'L'), 336), ((1, 'X'), 60), ((2, '1'), 1), ((2, '2'), 2), ((2, 'D'), 8), ((2, 'L'), 360), ((2, 'X'), 41), ((3, '1'), 12), ((3, 'L'), 400), ((4, '2'), 12), ((4, 'L'), 400)]
+  k=0: edges with bridge <=> lockless (0 exceptions): []; bridge <=> NOT lockless: []; best (exceptions, edge): [(52, 'x0m'), (52, 'x0x4'), (52, 'x0w0')]
+  k=1: edges with bridge <=> lockless (0 exceptions): []; bridge <=> NOT lockless: ['x3x4', 'x3w2', 'x4w4']; best (exceptions, edge): [(76, 'x0x4'), (76, 'x0w0'), (76, 'x0w4')]
+  k=2: edges with bridge <=> lockless (0 exceptions): []; bridge <=> NOT lockless: []; best (exceptions, edge): [(52, 'x0x4'), (52, 'x0w0'), (52, 'x0w4')]
+  k=3: edges with bridge <=> lockless (0 exceptions): ['x2x3', 'x2w1', 'x3m']; bridge <=> NOT lockless: []; best (exceptions, edge): [(0, 'x2x3'), (0, 'x2w1'), (0, 'x3m')]
+  k=4: edges with bridge <=> lockless (0 exceptions): ['x0x4', 'x0w0', 'x4m']; bridge <=> NOT lockless: []; best (exceptions, edge): [(0, 'x0x4'), (0, 'x0w0'), (0, 'x4m')]
+P1: k<=2 credit / (7L/20): min 1.000 at ('pp27', 'p27#273919', 26); below 1 in 0 of 202 cycles
+P2 (failing periods; steps 8 = R3k0->R1k2 (p,y), 0 = R3k4->R1k1 (m,z), 1 = R1k1->R3k3 (m,y), 3 = R1k0->R3k2 (p,z)):
+   ('pp27', 'p27#146733', 20, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#146733', 20, 'period', 0, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 7, 'dist(K,v)', 1, '|K & K_yz|', 4, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#146733', 20, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#146733', 20, 'period', 0, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 5, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#146733', 20, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#146733', 20, 'period', 1, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#146733', 20, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#146733', 20, 'period', 1, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 9, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 0, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 7, 'dist(K,v)', 1, '|K & K_yz|', 4, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 0, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 5, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 1, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#152697', 20, 'period', 1, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 9, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#186395', 22, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 0, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27', 'p27#315977', 22, 'period', 1, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 5, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 9, 'dist(K,v)', 1, '|K & K_yz|', 5, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 7, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#146733', 20, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 5, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 9, 'dist(K,v)', 1, '|K & K_yz|', 5, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 7, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#152697', 20, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#186395', 22, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 8, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 0, 'y~z before', 0, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 1, 'y~z before', 1, 'after', 0, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 0, 'step', 3, 'y~z before', 0, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 1, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', -1, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 8, 'y~z before', 1, 'after', 0, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 1, 'K on shortest y-z path', 2, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 0, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 3, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 1, 'y~z before', 1, 'after', 1, '|K|', 6, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+   ('pp27m', 'p27#315977', 22, 'period', 1, 'step', 3, 'y~z before', 1, 'after', 1, '|K|', 4, 'dist(K,v)', 1, '|K & K_yz|', 2, 'K cuts y,z in K_yz', 0, 'K on shortest y-z path', 0, 'K separates y,z in T-K', 0)
+##### jobq
+periods: 412
+R3 visits by k and exit (fixed point / lockless / other): [((0, 'fixed'), 41), ((0, 'lockless'), 360), ((0, 'other'), 11), ((1, 'fixed'), 60), ((1, 'lockless'), 336), ((1, 'other'), 16), ((2, 'fixed'), 41), ((2, 'lockless'), 360), ((2, 'other'), 11), ((3, 'lockless'), 400), ((3, 'other'), 12), ((4, 'lockless'), 400), ((4, 'other'), 12)]
+per-period "sigma fixed point" pattern (positions R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2):
+    298 0000000000
+    24 0000001010
+    20 0000101000
+    17 0000000010
+    12 0000001000
+    11 0000100000
+    6 0000010000
+    6 0000000100
+    6 0100100000
+    4 0100101000
+    2 0000000101
+    2 0001010000
+    2 0100000000
+    2 0000010100
+per-period "sigma lockless" pattern:
+    250 1010101010
+    24 1010100000
+    20 1010000010
+    11 1011101010
+    11 1010101000
+    11 1010101011
+    8 1010100010
+    8 1110101010
+    6 1011000010
+    6 1010100001
+    6 0000001010
+    5 1010001010
+steps that flip the fixed-point predicate (step i = state i -> state i+1 of the period):
+    12 ('step 0', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    12 ('step 1', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    2 ('step 2', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    36 ('step 3', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    5 ('step 3', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    2 ('step 3', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    9 ('step 4', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    1 ('step 4', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    41 ('step 4', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    38 ('step 5', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    22 ('step 5', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    10 ('step 5', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    10 ('step 6', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    60 ('step 6', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    19 ('step 7', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    22 ('step 7', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    10 ('step 7', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    2 ('step 8', 'to fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K meets other {a,mu}')
+    41 ('step 8', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+    2 ('step 9', 'to non-fixed', 'K meets K_sigma(x)', 'K meets K_sigma(pi x)', 'K misses other {a,mu}')
+##### A34' (<= L/20 failing visits at each of k=3,4): cycles 230, violations 0 []
+##### Lemma R on nonpositive targets (Job K form): targets 754, violations 12 [('k27', 'p27#68456', 19, -2, 38, 2, 6), ('k27m', 'p27#68456', 19, -2, 38, 2, 6), ('k27m', 'p27#166916', 19, 0, 8, 1, 2)]
