@@ -64,3 +64,13 @@ In both cases φ(s) is one Kempe swap from s, so **φ(s) ∈ S**.
 
    A proof of (b) for all triangulations would give a filled fraction ≥ 1/4 in every class, hence R\* at every degree-5 vertex, **hence the Four Colour Theorem**. So (b) must contain a genuinely global step. Lemma A is local and contains none.
 4. **The degree-5 hypothesis is used only through the shape of the link**: one repeated colour at distance 2, three singletons, and the blocking adjacencies. That matches the data: the floor fails at degrees 6 and 7.
+
+## Addendum (after intern C's review, 63821de)
+
+- Intern C confirms that the map is injective **per (j, branch)**, and that the two branches land at different singleton positions. That is exactly the per-j statement above.
+- **Across different j the map is not injective in general.** A filled f ∈ F_i can be the image of j = i+1 (branch 1) and of j = i+2 (branch 2). This is Remark 1: multiplicity at most 2. Intern C gives a local configuration where both occur; its realisability is unchecked. The summed form Σ_j |U_j ∖ D_j| ≤ 2 Σ|F| is unaffected.
+- **The DL target, in counting form.** The floor ΣU ≤ 3ΣF is equivalent to
+
+  Σ_j |D_j| ≤ Σ|F| + s, where s := 2Σ|F| − Σ_j |U_j ∖ D_j| ≥ 0
+
+  is the **slack**: each filled state counted with (2 − its number of φ-preimages). So the doubly locked states must be paid for by one unit per filled state plus the filled states that φ uses fewer than twice. Per j, local compute's form is |D_j| ≤ |F_{j+1}| + (|F_{j+3}| + |F_{j+4}| − |U_j ∖ D_j|). Part (b) should target an injection of D_j into F_{j+1} ⊔ (the part of F_{j+3} ⊔ F_{j+4} not hit by φ restricted to U_j).
