@@ -407,6 +407,82 @@ If R holds with 0 failures, the next hand target is the single coupling between 
 
 If R fails somewhere, W2″ needs the outer neighbours of y and z, and the next step is the rotation at y and z outside the 2-ball.
 
+## 11. Job AK: W2 needs the closure; the open-run counterexample p25 #668 h18 (written 03:51 MDT)
+
+Job AK found that W2\*, W2″ and R hold on all 552 Γ-periods but **fail on open DL runs**: W2\* fails in about 19% of open windows. So no 4-step Kempe proof of W2 exists, and W2, like A₃₄′, needs the Γ-closure. That makes §10.2's reduction a statement about runs, not a proof route.
+
+### 11.1 R1k4: p and x₄ are {3,4}-connected [proved, trivial]
+
+At R1k4 (pos 5, j = 3) the §1 link is x₃..x₂ = 1, 4, 1, 2, 3, so the frame is α = 1, μ = x₄ = 4, A = x₁ = 2, B = x₂ = p = 3. Lock2 at that state is the {μ,B} = {4,3}-chain from x_{j+1} = x₄ to x_{j+4} = x₂ = p. So "p ∼ x₄ in {3,4} at R1k4" **is Lock2 of the R1k4 state**, and it holds on every DL window (Job AK: 0 exceptions). This is the {3,4} separation of §10.3: it exists, and it is a lock.
+
+### 11.2 The counterexample, traced by hand and by script [data]
+
+Script: `nightw2/ce668.py`, output in `outce668.txt`, with its own R₊₃ engine. It reproduces Studio's five colourings up to colour names; Studio stores canonical colourings. Hole 18, link (7, 17, 19, 9, 8), p = 17 (x₁), y = 6, z = 20, m = 16.
+
+| pos | state | Lock1 | Lock2 | σ fixed | Σ over 6 pairs of cycle rank | Σ components |
+|---|---|---|---|---|---|---|
+| 3 | R1k0 | **0** | 1 | – | – | – |
+| 4 | R3k2 | 1 | 1 | **1** | **0** | 8 |
+| 5 | R1k4 | 1 | 1 | – | 1 | 9 |
+| 6 | R3k1 | 1 | 1 | **1** | 2 | 10 |
+| 7 | R1k3 | 1 | 1 | – | 3 | 11 |
+| 8 | R3k0 | 1 | 1 | **1** | 4 | 12 |
+| 9 | R1k2 | 1 | **0** | – | 6 | 14 |
+
+**The DL run is exactly the window, positions 4–8.**
+- Its predecessor (pos 3) lacks Lock1.
+- Its successor (pos 9) loses Lock2 immediately.
+- In the closure language, the window failure is surrounded by lock death at distance 1 on both sides, so c = 1 here.
+- At R3k2 **every one of the six pair-graphs is a forest.** The total rank then rises by exactly 1 per step until the run dies.
+
+### 11.3 Which locks die, in the §1 colours [proved bookkeeping]
+
+- **pos 3 (R1k0, j = 2).** Undoing step 3 (the {α,A}-swap of x₄'s component, which contains x₀) gives link x₀..x₄ = 4, 2, 1, 3, 1. So α = 1, μ = 3, A = 4, B = 2.
+  - **Lock1@pos 3 is a {3,4}-chain x₃ → x₀**, in F₄'s forest pair.
+- **pos 9 (R1k2, j = 0).** Step 8 swaps {1,2} on x₄'s component, which contains x₀. That gives link 1, 3, 1, 4, 2, so α = 1, μ = 3, A = 4, B = 2.
+  - **Lock2@pos 9 is a {2,3}-chain x₁ → x₄**, in F₈'s forest pair.
+
+So the two locks that died are chains in the forest pairs of the two outer fixed points, at the states one step outside the window. Proposed lemma family, for Job AL to test at scale:
+
+> **L-death.** If R3k2, R3k1 and R3k0 of a DL window are all fixed points, then Lock1 fails at the preceding R1k0, or Lock2 fails at the following R1k2. Mirror: the roles are exchanged under time reversal.
+> (Weaker: the run leaves DL within c steps of the window, for a small c.)
+
+On a Γ-cycle every state is DL, so L-death (or its weak form) ⇒ W2's fixed-point part.
+
+### 11.4 An exact Euler identity for the total cycle rank [proved]
+
+Let c be a proper 4-colouring of T − h, with T a triangulation on n vertices and deg h = 5. Then:
+
+  **Σ_{6 pairs} rank(ab) = Σ_{6 pairs} comp(ab) − 8.**
+
+*Proof.*
+- Every edge of T − h lies in exactly one pair-graph, so Σ E_ab = (3n − 6) − 5.
+- Every vertex lies in exactly three pair-graphs, so Σ V_ab = 3(n − 1).
+- Hence Σ (E − V + C) = ΣC − 8. ∎
+
+**At a DL state, comp(α,A) ≥ 2 and comp(α,B) ≥ 2.**
+- The Lock2 chain {μ,B} from x_{j+1} to x_{j+4}, closed through h, separates x_{j+2} from x_j. An {α,A}-path from x_{j+2} to x_j cannot cross it, since the colours are disjoint and h is deleted.
+- The Lock1 chain does the same for {α,B}.
+
+So at a DL state the total rank is ΣC − 8 ≥ 0, with equality iff:
+- {α,A} and {α,B} have exactly two components each;
+- the other four pair-graphs are connected;
+- all six are forests.
+
+p25 #668 at R3k2 is exactly this extremal state, and it was checked numerically at positions 4–9.
+
+**Conjectured refined duality** (consistent with the identity; not proved):
+
+  rank(ab) = comp(cd) − 1 if cd's link vertices form one arc or two arcs joined in cd, and comp(cd) − 2 otherwise.
+
+At a DL state the arcs {α,μ}, {A,B} are single, and {μ,A}, {μ,B} are joined by the locks. The correction terms then sum to 2, which matches the identity.
+
+**Reading.** W2's fixed points are low-total-rank events. A potential proof of W2 on a Γ-cycle could use the total rank R(s) = ΣC − 8, which returns to its value after one cycle length L:
+- three fixed points in a window force R small at R3k2;
+- the question is whether a Γ-orbit can pass through such a near-extremal state.
+
+At p25 #668 it cannot stay DL: R climbs 0 → 4 across the window and both neighbouring locks are dead. Job AL request: record R(s) along every Γ-cycle and along every open run around each W2\* failure, together with the first lock-death distance.
+
 ## 6. Reproduction
 
 Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/nightw2/`. Each runs on a single core in under 1 s.
@@ -415,3 +491,4 @@ Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-s
 - `python3 w2rank.py` writes `outrank.txt`, from `../jobuv/jobag.json`.
 - `python3 w2trace.py` writes `outtrace.txt`, from `../jobuv/jobah.json`.
 - `python3 w2ai.py` writes `outai.txt`, from `../jobuv/jobai.json`.
+- `python3 ce668.py` writes `outce668.txt`, from `../jobuv/jobak-counterexample.json`. It uses its own R₊₃ and R₊₂ engine, and checks against Studio's colourings up to colour names.
