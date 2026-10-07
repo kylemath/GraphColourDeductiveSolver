@@ -1,0 +1,42 @@
+=== i25 holes {'5,5,5,6,6': 20896, '5,5,5,5,6': 29233}
+  5,5,5,5,6 gamma: cycles 6; lockless exits (u,f) [((1, 1), 8), ((1, 2), 9), ((1, 3), 35)]; min f 1
+     lockless count per cycle (a, L): [('10_L20', 2), ('5_L20', 1), ('9_L20', 3)]
+  5,5,5,5,6 nonGamma_pos: cycles 5; lockless exits (u,f) [((1, 1), 6), ((1, 2), 11), ((1, 3), 5)]; min f 1
+     lockless count per cycle (a, L): []
+  5,5,5,6,6 nonGamma_pos: cycles 2; lockless exits (u,f) [((1, 2), 2), ((1, 3), 2), ((1, 4), 2)]; min f 2
+     lockless count per cycle (a, L): []
+  5,5,5,5,6 Gamma-cycles: {'a>=L/5': 6}
+  positive NON-Gamma cycles: 7; first: [('p25#8775', 15, '5,5,5,5,6', [5, 6, 5, 5, 5], 'L', 34, 'w', 2, 'a,b,d', 7, 2, 0), ('p25#9726', 23, '5,5,5,5,6', [5, 6, 5, 5, 5], 'L', 14, 'w', 2, 'a,b,d', 4, 1, 1), ('p25#14751', 4, '5,5,5,5,6', [5, 5, 5, 5, 6], 'L', 34, 'w', 2, 'a,b,d', 5, 2, 4)]
+=== i25m holes {'5,5,5,6,6': 20896, '5,5,5,5,6': 29233}
+  5,5,5,5,6 gamma: cycles 6; lockless exits (u,f) [((1, 1), 7), ((1, 2), 13), ((1, 3), 32)]; min f 1
+     lockless count per cycle (a, L): [('10_L20', 2), ('5_L20', 1), ('9_L20', 3)]
+  5,5,5,5,6 nonGamma_pos: cycles 6; lockless exits (u,f) [((1, 1), 6), ((1, 2), 9), ((1, 3), 22)]; min f 1
+     lockless count per cycle (a, L): []
+  5,5,5,6,6 nonGamma_pos: cycles 1; lockless exits (u,f) [((1, 3), 1)]; min f 3
+     lockless count per cycle (a, L): []
+  5,5,5,5,6 Gamma-cycles: {'a>=L/5': 6}
+  positive NON-Gamma cycles: 7; first: [('p25#736', 17, '5,5,5,5,6', [5, 5, 5, 6, 5], 'L', 18, 'w', 2, 'a,b,d', 1, 2, 3), ('p25#2671', 4, '5,5,5,5,6', [5, 5, 5, 6, 5], 'L', 26, 'w', 2, 'a,b,d', 8, 0, 0), ('p25#16020', 20, '5,5,5,6,6', [5, 5, 6, 6, 5], 'L', 18, 'w', 2, 'a,b,d', 1, 2, 0)]
+=== i26 holes {'5,5,5,6,6': 73623, '5,5,5,5,6': 105278}
+  5,5,5,5,6 gamma: cycles 25; lockless exits (u,f) [((1, 1), 9), ((1, 2), 25), ((1, 3), 215)]; min f 1
+     lockless count per cycle (a, L): [('10_L20', 7), ('30_L60', 2), ('5_L20', 1), ('6_L20', 4), ('7_L20', 2), ('8_L20', 5), ('9_L20', 4)]
+  5,5,5,5,6 nonGamma_pos: cycles 11; lockless exits (u,f) [((1, 1), 6), ((1, 2), 4), ((1, 3), 16)]; min f 1
+     lockless count per cycle (a, L): []
+  5,5,5,6,6 gamma: cycles 3; lockless exits (u,f) [((1, 2), 5), ((1, 3), 18)]; min f 2
+     lockless count per cycle (a, L): [('10_L20', 1), ('6_L20', 1), ('7_L20', 1)]
+  5,5,5,6,6 nonGamma_pos: cycles 9; lockless exits (u,f) [((1, 1), 7), ((1, 2), 3), ((1, 3), 7)]; min f 1
+     lockless count per cycle (a, L): []
+  5,5,5,6,6 Gamma-cycles: {'a>=L/5': 3}
+  5,5,5,5,6 Gamma-cycles: {'a>=L/5': 25}
+  positive NON-Gamma cycles: 20; first: [('p26#6480', 23, '5,5,5,5,6', [5, 5, 6, 5, 5], 'L', 26, 'w', 2, 'a,b,d', 1, 2, 4), ('p26#7490', 3, '5,5,5,6,6', [5, 6, 6, 5, 5], 'L', 26, 'w', 2, 'a,b,d', 0, 0, 7), ('p26#12065', 24, '5,5,5,5,6', [6, 5, 5, 5, 5], 'L', 48, 'w', 4, 'a,b,d', 1, 4, 9)]
+=== i26m holes {'5,5,5,6,6': 73623, '5,5,5,5,6': 105278}
+  5,5,5,5,6 gamma: cycles 25; lockless exits (u,f) [((1, 1), 19), ((1, 2), 16), ((1, 3), 213), ((1, 5), 1)]; min f 1
+     lockless count per cycle (a, L): [('10_L20', 7), ('30_L60', 2), ('5_L20', 1), ('6_L20', 4), ('7_L20', 2), ('8_L20', 5), ('9_L20', 4)]
+  5,5,5,5,6 nonGamma_pos: cycles 15; lockless exits (u,f) [((1, 1), 12), ((1, 2), 8), ((1, 3), 18)]; min f 1
+     lockless count per cycle (a, L): []
+  5,5,5,6,6 gamma: cycles 3; lockless exits (u,f) [((1, 1), 4), ((1, 2), 4), ((1, 3), 15)]; min f 1
+     lockless count per cycle (a, L): [('10_L20', 1), ('6_L20', 1), ('7_L20', 1)]
+  5,5,5,6,6 nonGamma_pos: cycles 10; lockless exits (u,f) [((1, 1), 5), ((1, 2), 2), ((1, 3), 15)]; min f 1
+     lockless count per cycle (a, L): []
+  5,5,5,6,6 Gamma-cycles: {'a>=L/5': 3}
+  5,5,5,5,6 Gamma-cycles: {'a>=L/5': 25}
+  positive NON-Gamma cycles: 25; first: [('p26#623', 14, '5,5,5,6,6', [5, 5, 5, 6, 6], 'L', 42, 'w', 2, 'a,b,d', 4, 1, 2), ('p26#1050', 19, '5,5,5,6,6', [6, 5, 5, 5, 6], 'L', 30, 'w', 2, 'a,b,d', 2, 4, 1), ('p26#1976', 17, '5,5,5,5,6', [5, 6, 5, 5, 5], 'L', 41, 'w', 1, 'a,b,d', 4, 2, 1)]
