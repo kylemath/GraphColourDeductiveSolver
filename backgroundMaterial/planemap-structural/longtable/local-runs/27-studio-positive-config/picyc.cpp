@@ -46,7 +46,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -279,6 +279,24 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 for (auto &kv : cs2) { ms = std::max(ms, kv.second.second); mx = std::max(mx, kv.second.first); if (kv.second.first > 0) { nf++; if (ff.empty()) { char b4[96]; snprintf(b4, sizeof b4, "{\"sumw\": %lld, \"ncycles\": %d}", kv.second.first, kv.second.second); ff = b4; } } }
                 char b5[400]; snprintf(b5, sizeof b5, ", \"%s\": {\"ncomp\": %zu, \"endpoints\": %lld, \"endpoints_with_cross_sigmap\": %lld, \"max_ncycles\": %d, \"max_sumw\": %lld, \"fail\": %lld, \"first_fail\": %s}",
                     v ? "H2_sigmap_plus_sigmaR3" : "H1_sigmap", cs2.size(), nend, nend_cross, ms, mx, nf, ff.empty() ? "null" : ff.c_str()); jobe += b5; } }
+        if (JOBK) {   // Job K: Lemma R per target cycle; sigma-chain from positive cycles without lockless exits
+            std::map<int, std::pair<long long, long long>> hit;   // target cycle -> (#hits, sum of excursion contributions 1 - 3f)
+            std::vector<std::set<int>> sadj(cycles.size());
+            for (long long k = 0; k < S; k++) { if (kind[k] != 2) continue; if (!(kind[pi[k]] == 2 || kind[pinv[k]] == 2)) continue;
+                int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd); if (cyc[sg] != cyc[k]) { sadj[cyc[k]].insert(cyc[sg]); sadj[cyc[sg]].insert(cyc[k]); } }
+            std::string kk = ", \"jobk_pos\": ["; bool fk2 = true;
+            for (size_t ci = 0; ci < cycles.size(); ci++) { if (wind[ci] <= 0) continue; long long a = 0; bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) all = false;
+                for (int32_t x : cycles[ci]) { if (kind[x] != 2) continue; int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (ty != 3) continue;
+                    if (kd == 1 && !l1 && !l2) { a++; long long y = pi[sg], f = 0; while (kind[y] == 0) { f++; y = pi[y]; } auto &h = hit[cyc[sg]]; h.first++; h.second += 1 - 3 * f; } }
+                // BFS over sigma-adjacency to the nearest cycle with w < 0
+                std::map<int, int> dist; std::vector<int> q{(int)ci}; dist[ci] = 0; int found = -1, fw = 0; long long gsum = 0;
+                for (size_t h = 0; h < q.size(); h++) { int z = q[h]; gsum += wind[z]; if (found < 0 && wind[z] < 0) { found = dist[z]; fw = wind[z]; } for (int y : sadj[z]) if (!dist.count(y)) { dist[y] = dist[z] + 1; q.push_back(y); } }
+                char b6[300]; snprintf(b6, sizeof b6, "%s{\"gamma\": %s, \"L\": %zu, \"w\": %lld, \"a\": %lld, \"sigma_chain_to_negative\": %d, \"first_negative_w\": %d, \"group_ncycles\": %zu, \"group_sumw\": %lld}",
+                    fk2 ? "" : ", ", all ? "true" : "false", cycles[ci].size(), wind[ci], a, found, fw, q.size(), gsum); kk += b6; fk2 = false; }
+            kk += "], \"lemmaR\": ["; bool f3 = true; long long rbad = 0;
+            for (auto &kv : hit) { long long rem = 5 * wind[kv.first] - kv.second.second; if (rem > 0) rbad++;
+                char b7[200]; snprintf(b7, sizeof b7, "%s[%lld, %zu, %lld, %lld, %lld]", f3 ? "" : ", ", wind[kv.first], cycles[kv.first].size(), kv.second.first, kv.second.second, rem); kk += b7; f3 = false; }
+            char b8[64]; snprintf(b8, sizeof b8, "], \"lemmaR_bad\": %lld", rbad); kk += b8; jobe += kk; }
         if (JOBG) {   // Job G (NightC1Gamma section 5): per Gamma-cycle exits of R3 states
             auto excursion = [&](long long x, long long &u, long long &f) {   // x unfilled: its unfilled run length u and the following filled run length f
                 long long st = x, guard = 0; while (kind[pinv[st]] != 0 && guard < S) { st = pinv[st]; guard++; } if (guard >= S) { u = cycles[cyc[x]].size(); f = 0; return; }
@@ -371,7 +389,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;
