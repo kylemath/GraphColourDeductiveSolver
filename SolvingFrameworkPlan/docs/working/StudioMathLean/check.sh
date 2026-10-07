@@ -40,4 +40,5 @@ f=QuarterNonDLImage; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -
 f=QuarterHole6Clean; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterHole6Gen; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterHole6Bridge; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=QuarterHole66; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterHole4Bridge; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
