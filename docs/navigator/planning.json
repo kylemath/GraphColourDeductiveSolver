@@ -1,7 +1,12 @@
 {
-  "revision": 142,
-  "updatedAt": "2026-10-06T19:33:00-06:00",
+  "revision": 143,
+  "updatedAt": "2026-10-07T14:00:00Z",
   "journal": [
+    {
+      "time": "2026-10-07T14:00:00Z",
+      "node": "structural-quarter-floor",
+      "action": "Revision 143 records the night of 6–7 Oct: Theorem W and F5 compiled; weak F6 compiled (diamond territory); the open problem reduced formally to BudgetUnionPos; per-cycle routes (A₃₄′, W2, Lemma S_Γ, statement (c)) killed by adversarial search; frontier G66 at all-6 holes. No finite check is upgraded; leaderboard unchanged."
+    },
     {
       "time": "2026-10-07T01:33:00Z",
       "node": "structural-quarter-floor",
@@ -12986,6 +12991,408 @@
         {
           "time": "2026-10-07T01:33:00Z",
           "text": "Revision 142, leaderboard: no change; nothing in this revision is audit-cleared. Totals unchanged: studiomath 810, studiocompute 360, studiointel 200, math 180, audit 150, intern-C 60, longtable 50, others 0."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 143,
+      "node": {
+        "id": "qf-theorem-w",
+        "title": "Theorem W: 3F − U = −5·(class winding); the floor is equivalent to Σλ ≤ 0 per class (compiled)",
+        "status": "compiled",
+        "statement": "λ(c) = 1 − 2[F c] − 2[F πc] for the forward link-changing move π (a permutation of each class); Σ_class λ = −5·winding; 5 | 3F − U.",
+        "approach": "π is a permutation of every Kempe class (Lemma Π); λ summed over π-orbits.",
+        "evidence": "[compiled] QuarterPi, QuarterWinding; exact identity Σλ = |DD| − 2N₀ − E₂ − 3τ compiled in QuarterLemmaP (verified on 4.2M classes).",
+        "killCriteria": "",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterPi.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterWinding.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLemmaP.lean",
+          "SolvingFrameworkPlan/docs/working/NightEulerHole.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T14:00:00Z",
+            "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+          }
+        ],
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 143,
+      "node": {
+        "id": "qf-f5",
+        "title": "Theorem F5: the quarter floor at every hole with five degree-5 neighbours (compiled)",
+        "status": "compiled",
+        "statement": "quarterFloor_of_fiveLink: at a degree-5 vertex whose link vertices all have degree 5, every Kempe class is at least 1/4 filled.",
+        "approach": "σ (swap of the {α,μ}-component of x_{j+1} at type R3) is an involution landing on lockless states, so |DD| ≤ 2N₀.",
+        "evidence": "[compiled, hand-reviewed] QuarterFloorH, QuarterFloorHBridge. Caveat (NightWeakForm): five degree-5 neighbours contain a Birkhoff diamond — reducible territory.",
+        "killCriteria": "",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterFloorH.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterFloorHBridge.lean",
+          "SolvingFrameworkPlan/docs/working/NightFloorAtEasyHoles.md",
+          "SolvingFrameworkPlan/docs/working/NightF5Review.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T14:00:00Z",
+            "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+          }
+        ],
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 143,
+      "node": {
+        "id": "qf-weak-f6",
+        "title": "Weak F6: every Kempe class at a degree-5 vertex with four consecutive degree-5 neighbours has a filled state (compiled; Birkhoff-diamond territory)",
+        "status": "compiled",
+        "statement": "pureClean_of_hole6 / pureClean_of_hole4 / pureClean_of_four_consecutive_fives: PureClean (the R* condition) at such vertices; 4CT ⇐ 'every all-DL orbit has a non-DL σ-image' (four_color_of_images).",
+        "approach": "C1 (targetless ⇒ all-DL) + an all-DL orbit visits R3k4 + sigma_exit_not_DL_k4.",
+        "evidence": "[compiled] Does NOT move 4CT: three consecutive degree-5 link vertices + the hole form a Birkhoff diamond, excluded from minimal counterexamples (NightWeakForm). Studio Jobs BL/BU confirm the hypotheses exactly (R3At needs w_{j+4} = A).",
+        "killCriteria": "",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterNonDLImage.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterHole6Clean.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterHole6Gen.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterHole6Bridge.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterHole4Bridge.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterR3AtUnfold.lean",
+          "SolvingFrameworkPlan/docs/working/NightWeakForm.md",
+          "SolvingFrameworkPlan/docs/working/NightK4Hypotheses.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T14:00:00Z",
+            "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+          }
+        ],
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 143,
+      "node": {
+        "id": "qf-group-certificate",
+        "title": "Group-level target: SigmaUnionC ⇐ BudgetUnionPos (B′ on every σ∪σ′-group with a positive orbit) ⇒ floor ⇒ R* ⇒ 4CT (open; 0 failures)",
+        "status": "exploring",
+        "statement": "For every σ∪σ′-group g containing a positive π-orbit: 2|R| ≤ 2N₀ + E₂ + 3τ (R = ρ(DD)). Formally sufficient for the floor.",
+        "approach": "Flow identity Σ_g λ = Σ def + Σ rem; charge-back assignment certificate; budget packaging (equivalent difficulty to SigmaUnionC).",
+        "evidence": "[compiled reductions] QuarterFlowIdentity, QuarterAssignment, QuarterBudget, QuarterBudgetPos. [computed] SigmaUnionC 0 failures on ~368M groups (orders 24–27), all 61+12 adversarial graphs, 396 adversarial walks; positive-containing groups slack ≥ 1,240 on the BV graphs. Universal B′ fails only on Σλ = 0 groups (Job BV). No forcing mechanism identified — looks like a typical-case fact.",
+        "killCriteria": "A σ∪σ′-group with a positive orbit and Σλ > 0 (equivalently a class below the floor).",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterSigmaPrime.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterFlowIdentity.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterAssignment.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterBudget.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterBudgetPos.lean",
+          "SolvingFrameworkPlan/docs/working/NightBudget.md",
+          "SolvingFrameworkPlan/docs/working/NightPostAW.md",
+          "SolvingFrameworkPlan/docs/working/NightP1.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T14:00:00Z",
+            "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+          }
+        ],
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 143,
+      "node": {
+        "id": "qf-g66",
+        "title": "Frontier G66: no frozen (all-DL) π-orbit at a degree-5 vertex with an all-6 link (open; 2-ball provably silent)",
+        "status": "exploring",
+        "statement": "At a degree-5 vertex whose five neighbours have degree 6, no π-orbit consists of doubly locked states (⇒ PureClean there). (6,6,6,6,6) must belong to any unavoidable set of the frame class.",
+        "approach": "Pattern-free outer-bit dynamics on DD steps (F(b) = (¬b₃, b₄, ¬b₀, b₁, ¬b₂), period 10); Tait (5-pole) form on fullerene duals.",
+        "evidence": "[computed] No all-DL cycle at any of 1,260 IPR-fullerene-dual holes C60–C88, but the longest DL run grows (2, 5, 14, 23). [compiled] QuarterHole66, QuarterBitDynamics (10 | L at every pattern; G66⁰ ⇒ PureClean), QuarterTait. Studio BO/BS (to C120) and BR (adversarial) running.",
+        "killCriteria": "An all-DL π-cycle at an all-6 hole (would separate 'no frozen orbit' from the floor).",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterHole66.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterBitDynamics.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterTait.lean",
+          "SolvingFrameworkPlan/docs/working/NightG66.md",
+          "SolvingFrameworkPlan/docs/working/NightG66IPR.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T14:00:00Z",
+            "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+          }
+        ],
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 143,
+      "node": {
+        "id": "qf-local-library",
+        "title": "Local library proved along the way (compiled; true but not a route by itself)",
+        "status": "compiled",
+        "statement": "Period, window, lock and pocket lemmas of Γ-cycles; time reversal; pair dualities; exact identities.",
+        "approach": "Lean formalisation of every hand lemma that survived review.",
+        "evidence": "[compiled] universal 10-step period; window lemma; lock-membership form of J; pocket and crossing lemmas; U34; time reversal (mirror = reverse); six-pair Euler identity and the exact pair dualities (sphere duality a theorem); step-change formulas; Lemma P; Lemma N₀; σ-image positions; two-colourings formulation of L = 20 cycles. Full regression 75/75 modules, 0 sorry.",
+        "killCriteria": "",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterGammaPeriod.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterPeriodJ.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockJ.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterWindow.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterK8.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterZsplit.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterPocket.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterCrossing.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterTwoPeriod.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterU34.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterMirror.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterPairDuality.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterStepChange.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterExcursion.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterImagePosition.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLemmaN0.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterFixR1.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterSigmaFix.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterJordanDual.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEvenCut.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterW2Frame.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterFan.lean",
+          "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterRestore.lean",
+          "SolvingFrameworkPlan/docs/working/NightF6Status.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T14:00:00Z",
+            "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+          }
+        ],
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 143,
+      "node": {
+        "id": "qf-dead-ends",
+        "title": "Dead ends of the night (killed by adversarial search or proof)",
+        "status": "killed",
+        "statement": "Statements that held on the census but failed on constructed graphs, and routes shown not to work.",
+        "approach": "Lesson: census-only patterns must be stress-tested by flip search before any proof attempt.",
+        "evidence": "See children.",
+        "killCriteria": "",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/NightPostAW.md",
+          "SolvingFrameworkPlan/docs/working/NightMorningSummary.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T14:00:00Z",
+            "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+          }
+        ],
+        "expanded": false,
+        "children": [
+          {
+            "id": "qf-dead-a34",
+            "title": "A₃₄′ (no consecutive k=4 failures on a Γ-cycle) — false at degree 6",
+            "status": "killed",
+            "statement": "",
+            "approach": "",
+            "evidence": " [computed, two engines] Job AW: 11 constructed 37-vertex graphs with consecutive failures; floor still holds.",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/NightA34.md",
+              "SolvingFrameworkPlan/docs/working/NightA34Two.md",
+              "SolvingFrameworkPlan/docs/working/NightTwoPocket.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-07T14:00:00Z",
+                "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          },
+          {
+            "id": "qf-dead-w2",
+            "title": "W2 / W2* (some k ≤ 2 exit lockless per period) — false at degree 6",
+            "status": "killed",
+            "statement": "",
+            "approach": "",
+            "evidence": " [computed] Job AW: 45 graphs with positions 4, 6, 8 all σ-fixed.",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/NightW2.md",
+              "SolvingFrameworkPlan/docs/working/NightW2Euler.md",
+              "SolvingFrameworkPlan/docs/working/NightSixEvent.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-07T14:00:00Z",
+                "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          },
+          {
+            "id": "qf-dead-lemma-s",
+            "title": "Lemma S_Γ / F6 as a per-Γ-cycle flow theorem — false at degree 6",
+            "status": "killed",
+            "statement": "",
+            "approach": "",
+            "evidence": " [computed] Job AW: deficits 4–10 on constructed graphs; per-target Lemma R false at order 27.",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/NightF6Flow.md",
+              "SolvingFrameworkPlan/docs/working/NightLemmaS.md",
+              "SolvingFrameworkPlan/docs/working/NightF012.md",
+              "SolvingFrameworkPlan/docs/working/NightLemmaR.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-07T14:00:00Z",
+                "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          },
+          {
+            "id": "qf-dead-c",
+            "title": "Statement (c) and IB-N₀ (σ-images reach a heavy cycle) — false at degree 6",
+            "status": "killed",
+            "statement": "",
+            "approach": "",
+            "evidence": " [computed, verified] Job BV: a Γ-cycle with L = 320 whose images miss every heavy cycle (ratio 0.594); landing is statistical (Job BT).",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/NightStatementC.md",
+              "SolvingFrameworkPlan/docs/working/NightImagesBoundary.md",
+              "SolvingFrameworkPlan/docs/working/NightSigmaImage.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-07T14:00:00Z",
+                "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          },
+          {
+            "id": "qf-dead-local",
+            "title": "Run-local and potential routes (bounded lock-death distance, L-death, 20 potentials, Σ, G2, hole gates, ring A/B cycles)",
+            "status": "killed",
+            "statement": "",
+            "approach": "",
+            "evidence": " [computed] Jobs AL, AK, AM, AP, AR, AG; NightPotential: breaks = restores on closed orbits.",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/NightPotential.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-07T14:00:00Z",
+                "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          },
+          {
+            "id": "qf-dead-length",
+            "title": "Γ-cycle length laws (L ≤ 60; u* alternation for 20 | L)",
+            "status": "killed",
+            "statement": "",
+            "approach": "",
+            "evidence": " [computed] A7 has L = 800; Job AX kills the u* mechanism; 20 | L remains a data conjecture.",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/NightGammaLength.md",
+              "SolvingFrameworkPlan/docs/working/NightCutParity.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-07T14:00:00Z",
+                "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          },
+          {
+            "id": "qf-dead-universal-b",
+            "title": "Universal B′ on all σ∪σ′-groups",
+            "status": "killed",
+            "statement": "",
+            "approach": "",
+            "evidence": " [computed] Job BV: fails on 97 Σλ = 0 groups with no positive orbit (harmless; target restricted).",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/NightBudget.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-07T14:00:00Z",
+                "text": "Revision 143 (night of 6–7 Oct, coordinator + subagents + Studio)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "structural-quarter-floor",
+      "revision": 143,
+      "title": "Quarter floor: every degree-5 Kempe class is at least 1/4 filled — conjecture; Theorem W and F5 compiled; reduced to one group inequality (BudgetUnionPos); per-cycle routes killed; frontier G66",
+      "files": [
+        "SolvingFrameworkPlan/docs/working/NightLog-2026-10-06.md",
+        "SolvingFrameworkPlan/docs/working/NightF6Status.md",
+        "SolvingFrameworkPlan/docs/working/NightMorningSummary.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-07T14:00:00Z",
+          "text": "Revision 143 (night of 6–7 Oct): Theorem W, F5, the flow/assignment/budget reductions and 51 Lean modules compiled (regression 75/75, 0 sorry). The per-Γ-cycle chain (A₃₄′, W2, Lemma S_Γ) and statement (c)/IB-N₀ were killed by Studio adversarial flip search (Jobs AW, BV) while the floor and SigmaUnionC held everywhere. The weak form of F6 is compiled but lies in Birkhoff-diamond territory. Open: BudgetUnionPos (equivalent in difficulty to SigmaUnionC) and the frontier G66 at all-6 holes."
+        }
+      ]
+    },
+    {
+      "id": "structural-qf-part-b",
+      "revision": 143,
+      "status": "exploring",
+      "notes": [
+        {
+          "time": "2026-10-07T14:00:00Z",
+          "text": "Revision 143: superseded in practice by the group-level target qf-group-certificate; Theorem W gives the exact class identity in compiled form."
         }
       ]
     }

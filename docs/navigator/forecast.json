@@ -1,7 +1,7 @@
 {
   "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-07T02:45:00-06:00",
+  "updated": "2026-10-07T10:30:00-06:00",
   "probability": 0.02,
   "components": [
     {
@@ -22,6 +22,7 @@
     }
   ],
   "evidence_for": [
+    "7 Oct morning: 51 sorry-free Lean modules (regression 75/75): Theorem W, F5, flow identity, assignment and budget certificates (BudgetUnionPos => floor => R* => 4CT), time reversal, pair dualities, pocket/crossing lemmas, weak F6 (PureClean at four consecutive degree-5 neighbours). SigmaUnionC and the floor survived every adversarial search (396 walks; 61+12 constructed graphs).",
     "7 Oct, 02:45: Theorem F5 is FORMAL (quarterFloor_of_fiveLink: the quarter floor at every hole with five degree-5 neighbours, from triangulation alone). Thirteen sorry-free Lean files: Lemma A, rotation bijection, Hex, no-frozen, Lemma Pi, Theorem W, F5, the exact sigma-exit condition, sigma-groups with sigmaC => floor. The open problem is the formal SigmaCConj on three-consecutive-5s holes, with a tested mechanism (Conjecture G) and 0 failures at those families.",
     "Night of 6-7 Oct: Theorem W formal in Lean (3F - U = -5 x winding; floor <=> sum lambda <= 0 per class); Lemma A, rotation bijection, Hex dichotomy, no-frozen, Lemma Pi all compiled with standard axioms. Theorem F5 (hand, reviewed PASS): the quarter floor holds at every (5,5,5,5,5) hole, the first floor theorem beyond R*. Transport statement holds on all 136 classes + Studio orders 24-26, Hall ratio >= 3.",
     "Quarter floor (exploratory, exhaustive): every Kempe class of T - v at a degree-5 vertex has >= 1/4 filled states, all 160,979 classes at orders 12-24 (419 exactly at 1/4); no such floor at degrees 6/7. The inequality U_j <= F_{j+1}+F_{j+3}+F_{j+4} holds in every class. R* becomes a counting problem.",
@@ -40,6 +41,7 @@
     "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
+    "7 Oct morning: the per-cycle chain (A34', W2, Lemma S_Gamma) and statement (c)/IB-N0 are false at degree 6 on constructed graphs (Studio Jobs AW, BV); weak F6 lies in Birkhoff-diamond (reducible) territory, so it does not move 4CT; no forcing mechanism for the group statements was found; the frontier G66 (all-6 holes) is non-local (2-ball silent) and DL runs grow with fullerene size.",
     "7 Oct: universal sigma-C is false (one island group at a (5,6,5,6,6) hole); Conjecture G fails off the three families; Conjecture P (configurations) false in both regimes. The general case still needs lock-breaking swaps of other colour pairs and remains 4CT-strength.",
     "Night of 6-7 Oct: floor and R* fail massively on the torus (frozen classes from n=16), so the proof must use the sphere; no single-cycle bound (w=+160 exists); per-state Euler counts, charges, Gauss-Bonnet shape, per-path charging, identity induction and closed-set descent all fail; the configuration and link-pattern leads were base-rate effects. The general DL-half remains 4CT-strength.",
     "The open (doubly locked) half of the quarter-floor inequality is as strong as R* at every degree-5 vertex (Tilley's conjecture); Lemma A is purely local and contains no global step.",
@@ -109,6 +111,11 @@
       "time": "2026-10-07T02:45:00-06:00",
       "p": 0.02,
       "note": "F5 formal; the open problem is a scoped, tested conjecture with a formal statement. Prove factor 2.5% -> 3%."
+    },
+    {
+      "time": "2026-10-07T10:30:00-06:00",
+      "p": 0.02,
+      "note": "Navigator revision 143: night's results recorded; probability unchanged (formal infrastructure up, but the per-cycle routes died and the surviving statements have no mechanism)."
     }
   ]
 }
