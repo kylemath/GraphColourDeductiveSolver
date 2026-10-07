@@ -2,11 +2,11 @@
 """[exploratory] Aggregate the DDmatch field of qf.py --match output: per order, the k_min histogram over (class, j) with
 DD_j > 0, the number saturated at each k <= 8, the maximum k_min with witnesses, k_min against DD_j and against room_j - DD_j
 (tight cases), and how many (class, j) are tight (room_j = DD_j).  usage: agg_match.py match-*.jsonl > match-summary.json"""
-import json, sys
+import gzip, json, sys
 from collections import Counter, defaultdict
 hist = defaultdict(Counter); satk = defaultdict(Counter); wit = {}; tight = defaultdict(Counter); bydd = defaultdict(Counter); tot = Counter()
 for fn in sys.argv[1:]:
-    for l in open(fn):
+    for l in (gzip.open(fn, "rt") if fn.endswith(".gz") else open(fn)):
         r = json.loads(l); n = r["order"]
         for k in r["classes"]:
             for m in (k.get("DDmatch") or []):

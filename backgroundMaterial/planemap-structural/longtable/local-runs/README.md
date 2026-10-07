@@ -507,3 +507,27 @@ cd ../10-local-injection && python3 agg_match.py match-12-20.jsonl match-21-22.j
 **Local intel's 800-cycle class** (A7, hole 22, size 21,078, DD_j up to 726, room about 3,600).
 - **k_min = 2, 2, 3, 3, 2** for j = 0..4.
 - The two size-2,124 cycle classes at that hole have k_min of 2 or 3.
+
+## 11. Local-injection test at order 24 (`11-order24-injection/`)
+This item is exploratory. It is the same test as §10, run on **all 111,492 degree-5 holes at order 24**: 362,572 (class, j) pairs with DD_j > 0. It used 82 CPU-minutes and 13.6 minutes of wall time, with 6 workers under nice 10.
+
+**Commands.**
+```
+cd ../8-quarter-identities
+python3 qf.py --orders 24 --match | gzip > ../11-order24-injection/match-24.jsonl.gz
+cd ../11-order24-injection
+python3 ../10-local-injection/agg_match.py match-24.jsonl.gz > match-24-summary.json
+python3 check_k7.py > check-k7.json
+```
+
+**Results.**
+- **k_min histogram:** 1: 116,109; 2: 181,204; 3: 58,272; 4: 5,801; 5: 1,164; 6: 21; **7: 1**.
+- **The first case needing k = 7:** order 24, gentri 1460, hole 19.
+  - The class has 544 states (F = 216, N₀ = 72, L_F = 128, D_cyc = 0).
+  - At j = 4, DD_4 = 6 and room_4 = 70.
+  - Two DD_4 states have a room_4 unit at distance 1. The other four have their nearest room_4 unit at distance **7**, although some unit of another j lies within 5.
+  - An independent recomputation (`check_k7.py`, plain kempe_py, no qf code) gives the same nearest distances: [1, 1, 7, 7, 7, 7].
+- **Tight cases** (room_j = DD_j): there are 26, and all have k_min ≤ 3.
+- **Pairs needing k ≥ 6:** 22, listed in `kmin-ge6-24.json`.
+- The identities give 0 mismatches at all 111,492 holes.
+- `check-k7.json` contains two JSON documents: the qf view of the class, then the independent check.
