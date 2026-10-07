@@ -1,0 +1,87 @@
+===== cls-hits.json classes with a Gamma-cycle: 122
+class size N: min 14965  med 20100  max 28968 | #cycles: min 270  med 478  max 710 | #Gamma: min 1  med 2  max 9
+floor F/N: min 0.434  med 0.495  max 0.548 | sumLam <= 0: 122
+M = most negative cycle: Lam min -28515  med -9595  max -3710  L min 3802  med 9263  max 23305
+  M is the longest cycle: 122 / 122
+  phiN = L(M)/N: min 0.163  med 0.453  max 0.805
+  phiU = U(M)/U: min 0.157  med 0.453  max 0.79
+  phiF = F(M)/F: min 0.169  med 0.458  max 0.816 | phiF >= 1/2: 53
+  M share of negative mass: min 0.174  med 0.475  max 0.825
+Star(ii) -Lam(M) >= positive mass: 122 / 122 | posmass min 20  med 40  max 280 | ratio -Lam(M)/posmass min 22.0  med 218.0  max 957.5
+heavy (Lam <= -20): #cycles min 27  med 48  max 114  unfilled share min 0.756  med 0.825  max 0.889
+heavy (Lam <= -100): #cycles min 4  med 11  max 35  unfilled share min 0.686  med 0.782  max 0.862
+heavy (Lam <= -1000): #cycles min 1  med 2  max 6  unfilled share min 0.41  med 0.688  max 0.836
+credit-free transport, all sigma-edges: 122 / 122 | only (c)-edges: 122
+-- Gamma cycles: 284  L {20: 246, 40: 14, 60: 14, 100: 10}
+   (c): 284  (c_M) some image on M: 280
+   #images off Z: min 12  med 16  max 78 | on heavy T: min 9  med 14  max 70 | on M: min 0  med 9  max 64
+   heavy-image share h = heavy/noff: min 0.643  med 0.885  max 1.0  vs class unfilled share on Lam<=-Lam(Z) cycles (t=20): min 0.756  med 0.825  max 0.889
+   #distinct target cycles: min 1  med 5  max 12
+   min over Z of #heavy images: 9 ; Z with heavy <= 3: []
+   kinds of images on M (sum): {'L2': 342, 'N0': 1490, 'DL': 781, 'L1': 370}
+-- non-Gamma positive cycles: 17  L {107: 6, 34: 5, 97: 4, 30: 2}
+   (c): 17  (c_M) some image on M: 17
+   #images off Z: min 13  med 35  max 55 | on heavy T: min 11  med 28  max 30 | on M: min 8  med 16  max 21
+   heavy-image share h = heavy/noff: min 0.545  med 0.8  max 0.933  vs class unfilled share on Lam<=-Lam(Z) cycles (t=20): min 0.793  med 0.798  max 0.828
+   #distinct target cycles: min 5  med 10  max 14
+   min over Z of #heavy images: 11 ; Z with heavy <= 3: []
+   kinds of images on M (sum): {'N0': 152, 'L1': 13, 'L2': 15, 'DL': 67}
+===== cls-census.json classes with a Gamma-cycle: 36
+class size N: min 658  med 1212  max 1533 | #cycles: min 23  med 45  max 88 | #Gamma: min 1  med 2  max 4
+floor F/N: min 0.394  med 0.456  max 0.53 | sumLam <= 0: 36
+M = most negative cycle: Lam min -1245  med -310  max -150  L min 129  med 362  max 1045
+  M is the longest cycle: 33 / 36
+  phiN = L(M)/N: min 0.104  med 0.3  max 0.852
+  phiU = U(M)/U: min 0.104  med 0.278  max 0.813
+  phiF = F(M)/F: min 0.101  med 0.328  max 0.897 | phiF >= 1/2: 8
+  M share of negative mass: min 0.094  med 0.352  max 0.933
+Star(ii) -Lam(M) >= positive mass: 36 / 36 | posmass min 20  med 40  max 80 | ratio -Lam(M)/posmass min 1.875  med 11.75  max 62.25
+heavy (Lam <= -20): #cycles min 2  med 7  max 14  unfilled share min 0.466  med 0.733  max 0.895
+heavy (Lam <= -100): #cycles min 1  med 2  max 9  unfilled share min 0.243  med 0.569  max 0.813
+heavy (Lam <= -1000): #cycles min 0  med 0  max 1  unfilled share min 0.0  med 0.0  max 0.698
+credit-free transport, all sigma-edges: 36 / 36 | only (c)-edges: 36
+-- Gamma cycles: 64  L {20: 64}
+   (c): 64  (c_M) some image on M: 48
+   #images off Z: min 10  med 14  max 20 | on heavy T: min 7  med 11  max 16 | on M: min 0  med 5  max 12
+   heavy-image share h = heavy/noff: min 0.5  med 0.909  max 1.0  vs class unfilled share on Lam<=-Lam(Z) cycles (t=20): min 0.466  med 0.742  max 0.895
+   #distinct target cycles: min 1  med 4  max 7
+   min over Z of #heavy images: 7 ; Z with heavy <= 3: []
+   kinds of images on M (sum): {'N0': 180, 'DL': 60, 'L1': 27, 'L2': 36}
+
+===== margins
+cls-hits.json margin m(Z) = max -Lam(T)/Lam(Z) over sigma-images: lowest five:
+    (60.0, 'hits/A7f3-W2s-w4-it790.json', 'mirror', 100, 100, 70, 78, 40, -6000, 82)
+    (60.0, 'hits/A7f3-W2s-w4-it791.json', 'mirror', 100, 100, 70, 78, 40, -6000, 82)
+    (60.0, 'hits/A7f3-W2s-w4-it794.json', 'mirror', 100, 100, 70, 78, 40, -6000, 82)
+    (60.0, 'hits/A7f3-W2s-w4-it795.json', 'mirror', 100, 100, 70, 78, 40, -6000, 82)
+    (66.41666666666667, 'hits/A7f4-W2s-w5-it770.json', 'plantri', 60, 60, 44, 44, 9, -3985, 44)
+  paired enrichment h(Z) - hU(class):  min -0.248  med 0.073  max 0.208  #negative: 90 / 301
+  #light images (Lam(T) > -Lam(Z)) per Z: min 0  med 2  max 25
+  Star ratio lowest three:
+    (22.0, 'hits/A7f1-W3-w1-it474.json', 'mirror', -3960, 180, 9, 24004, 11636)
+    (22.0, 'hits/A7f1-W3-w1-it475.json', 'mirror', -3960, 180, 9, 24004, 11636)
+    (31.125, 'hits/A7f4-W2s-w5-it671.json', 'plantri', -8715, 280, 8, 21955, 11155)
+  (c) without M: 4
+    ('hits/A7f1-W3-w1-it474.json', 'mirror', 20, 16, 20, -3960, [[-3960, 3912, 1968], [-3085, 3287, 1593], [-3080, 3636, 1679]])
+    ('hits/A7f1-W3-w1-it474.json', 'mirror', 20, 13, 20, -3960, [[-3960, 3912, 1968], [-3085, 3287, 1593], [-3080, 3636, 1679]])
+    ('hits/A7f1-W3-w1-it475.json', 'mirror', 20, 16, 20, -3960, [[-3960, 3912, 1968], [-3085, 3287, 1593], [-3080, 3636, 1679]])
+    ('hits/A7f1-W3-w1-it475.json', 'mirror', 20, 13, 20, -3960, [[-3960, 3912, 1968], [-3085, 3287, 1593], [-3080, 3636, 1679]])
+cls-census.json margin m(Z) = max -Lam(T)/Lam(Z) over sigma-images: lowest five:
+    (5.75, 'census:p27_315977-h22', 'mirror', 20, 20, 10, 20, 0, -150, 14)
+    (5.75, 'census:p27_315977-h22', 'mirror', 20, 20, 10, 20, 0, -150, 14)
+    (5.75, 'census:p27_315977-h22', 'plantri', 20, 20, 10, 20, 0, -280, 12)
+    (5.75, 'census:p27_315977-h22', 'plantri', 20, 20, 10, 20, 0, -280, 12)
+    (7.5, 'census:p26_75311-h19', 'mirror', 20, 20, 9, 16, 4, -150, 9)
+  paired enrichment h(Z) - hU(class):  min -0.325  med 0.16  max 0.351  #negative: 18 / 64
+  #light images (Lam(T) > -Lam(Z)) per Z: min 0  med 2  max 10
+  Star ratio lowest three:
+    (1.875, 'census:p27_315977-h22', 'mirror', -150, 80, 4, 1408, 732)
+    (2.875, 'census:p27_186395-h22', 'plantri', -230, 80, 4, 1408, 732)
+    (3.0, 'census:p27_186395-h22', 'mirror', -240, 80, 4, 1408, 732)
+  (c) without M: 16
+    ('census:p26_38442-h18', 'plantri', 20, 15, 16, -220, [[-220, 148, 92], [-170, 222, 98], [-160, 160, 80]])
+    ('census:p26_38442-h18', 'plantri', 20, 15, 16, -220, [[-220, 148, 92], [-170, 222, 98], [-160, 160, 80]])
+    ('census:p26_75311-h19', 'plantri', 20, 9, 16, -310, [[-310, 258, 142], [-190, 266, 114], [-60, 44, 26]])
+    ('census:p26_75311-h19', 'plantri', 20, 9, 16, -310, [[-310, 258, 142], [-190, 266, 114], [-60, 44, 26]])
+    ('census:p26_88643-h24', 'plantri', 20, 10, 16, -155, [[-155, 129, 71], [-155, 129, 71], [-140, 124, 66]])
+    ('census:p27_186395-h22', 'plantri', 20, 10, 20, -230, [[-230, 178, 102], [-165, 147, 78], [-165, 147, 78]])
