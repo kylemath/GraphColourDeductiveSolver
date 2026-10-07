@@ -614,3 +614,49 @@ This item is exploratory. It ran in under 1 CPU-second, with `python3 deg67.py >
   - (5,1,1)/(3,2,1,1): 24;
   - (5,1,1)/(2,2,2,1): 12.
 - **Rotation graph:** **one component** of all 720 unfilled states, with 1,836 edges and degrees 3–7 (3: 24, 4: 180, 5: 264, 6: 204, 7: 48). 396 nodes have a fill move.
+
+## 14. Two-hole floor candidates (`14-two-hole/`), test (A); rider (B) not run
+This item is exploratory.
+
+**What is tested.**
+- For every unordered pair {v, w} of degree-5 vertices of every gentri graph, both adjacent and non-adjacent, enumerate all Kempe classes of T − v − w. The engine is `k2.cpp`, with the same enumeration and moves as `krad.cpp`.
+- Per class, record:
+  - **Fv**: the coloured neighbours of v use ≤ 3 colours. For adjacent pairs this is the 4 remaining link vertices only.
+  - **Fw**: the same at w.
+  - **Fboth** and **Fany**: both holes filled, and at least one filled.
+  - **Fext**: the state extends to a colouring of T. For adjacent pairs, v and w must also get different colours.
+  - **Per-j counts at v and at w**: non-adjacent pairs only.
+- `analyse_A.py` computes exact minima and first violations.
+
+**Power failure.**
+- The MacBook lost power during the order-23 run. That file, `pairs-23.jsonl.gz`, is **truncated** (gzip "unexpected end of file"). It is not committed and is not analysed.
+- The order 12–20 and 21–22 files are complete: 9,893 and 82,362 pairs, equal to the expected pair counts. Every line parses.
+
+**SHA-256 of files not committed:**
+- k2 binary: `6625107bd5987bf96cc5bf7b945a44b8197133bfaea1902d2f6a01d60748b12f`
+- pairs-23.jsonl.gz, truncated: `9af2cfda9143e00c26a3121b352a454924e3867ca56292ed8e3bbbf23504241c`
+
+**Commands.**
+```
+clang++ -O2 -std=c++17 -o k2 k2.cpp
+python3 two_hole.py --orders 12 14 16 17 18 19 20 > pairs-12-20.jsonl
+python3 two_hole.py --orders 21 22 > pairs-21-22.jsonl                     # committed gzipped
+python3 analyse_A.py pairs-12-20.jsonl pairs-21-22.jsonl > A-summary.json   # gunzip -k first
+```
+
+**Results, orders 12–22** (non-adjacent: 72,670 pairs, 73,300 classes; adjacent: 19,585 pairs, 20,166 classes).
+
+| quantity (minimum over classes) | non-adjacent | adjacent |
+|---|---|---|
+| per-hole floor, Fv / size | 6/19 ≈ 0.316 | 3/5 (4-vertex link) |
+| per-hole floor, Fw / size | 187/593 ≈ 0.315 | 3/5 |
+| joint, Fboth / size | **4/39 ≈ 0.103** (order 17, gentri 1, v 0, w 10, class 156) | 13/30 |
+| extends to T, Fext / size | 4/39 (equal to Fboth) | **7/43 ≈ 0.163** (order 17, gentri 1, v 10, w 15, class 86) |
+| at least one filled, Fany / size | 32/59 ≈ 0.542 | 35/43 ≈ 0.814 |
+
+- **No violation of any candidate at orders 12–22:**
+  - (i) Fv and Fw are ≥ 1/4 in every class;
+  - (ii) Fboth ≥ 1/16 and Fext ≥ 1/16 in every class;
+  - (iv) the per-j form U_j ≤ F_{j+1} + F_{j+3} + F_{j+4} holds at both v and w in every class of T − v − w, for non-adjacent pairs;
+  - (v) no class lacks a filled state at either hole, at both holes, or a state extending to T.
+- At orders ≤ 22 the per-hole minimum in T − v − w (about 0.315) is well above 1/4. Deleting a second vertex did not bring any class down to the floor here.

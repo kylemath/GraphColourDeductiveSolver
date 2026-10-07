@@ -1,0 +1,130 @@
+{
+ "non_adjacent": {
+  "counts": {
+   "pairs": 72670,
+   "classes": 73300
+  },
+  "minima": {
+   "Fv_frac": {
+    "value": "6/19",
+    "float": 0.3157894736842105,
+    "witness": {
+     "order": 21,
+     "gentri_index": 7,
+     "v": 14,
+     "w": 17,
+     "class_size": 152
+    }
+   },
+   "Fw_frac": {
+    "value": "187/593",
+    "float": 0.31534569983136596,
+    "witness": {
+     "order": 22,
+     "gentri_index": 351,
+     "v": 2,
+     "w": 13,
+     "class_size": 593
+    }
+   },
+   "Fboth_frac": {
+    "value": "4/39",
+    "float": 0.10256410256410256,
+    "witness": {
+     "order": 17,
+     "gentri_index": 1,
+     "v": 0,
+     "w": 10,
+     "class_size": 156
+    }
+   },
+   "Fany_frac": {
+    "value": "32/59",
+    "float": 0.5423728813559322,
+    "witness": {
+     "order": 22,
+     "gentri_index": 30,
+     "v": 1,
+     "w": 4,
+     "class_size": 590
+    }
+   },
+   "Fext_frac": {
+    "value": "4/39",
+    "float": 0.10256410256410256,
+    "witness": {
+     "order": 17,
+     "gentri_index": 1,
+     "v": 0,
+     "w": 10,
+     "class_size": 156
+    }
+   }
+  },
+  "first_violations": {}
+ },
+ "adjacent": {
+  "counts": {
+   "pairs": 19585,
+   "classes": 20166
+  },
+  "minima": {
+   "Fv_frac": {
+    "value": "3/5",
+    "float": 0.6,
+    "witness": {
+     "order": 20,
+     "gentri_index": 15,
+     "v": 0,
+     "w": 2,
+     "class_size": 80
+    }
+   },
+   "Fw_frac": {
+    "value": "3/5",
+    "float": 0.6,
+    "witness": {
+     "order": 20,
+     "gentri_index": 15,
+     "v": 14,
+     "w": 18,
+     "class_size": 80
+    }
+   },
+   "Fboth_frac": {
+    "value": "13/30",
+    "float": 0.43333333333333335,
+    "witness": {
+     "order": 21,
+     "gentri_index": 35,
+     "v": 14,
+     "w": 20,
+     "class_size": 270
+    }
+   },
+   "Fany_frac": {
+    "value": "35/43",
+    "float": 0.813953488372093,
+    "witness": {
+     "order": 17,
+     "gentri_index": 1,
+     "v": 10,
+     "w": 15,
+     "class_size": 86
+    }
+   },
+   "Fext_frac": {
+    "value": "7/43",
+    "float": 0.16279069767441862,
+    "witness": {
+     "order": 17,
+     "gentri_index": 1,
+     "v": 10,
+     "w": 15,
+     "class_size": 86
+    }
+   }
+  },
+  "first_violations": {}
+ }
+}
