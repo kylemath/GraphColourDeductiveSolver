@@ -24,7 +24,7 @@ The map is Kempe's single swap, made injective for each j:
 
 The map is at most 2-to-1 over all j, which gives Σ_j |U_j ∖ D_j| ≤ 2F. The 2-to-1 case occurs: local compute found 81,571 filled states with exactly two preimages, always from different j, and never more than two. Intern C's order-17 example is gentri 17 #3.
 
-**Class identity [hand, MathQuarterFloorBijections.md §3; unreviewed by the audit; verified with 0 mismatches on all 46,488 degree-5 classes, orders 12–23 plus the order-24 floor holes, and on all 232,440 (class, j) cases].**
+**Class identity [hand, MathQuarterFloorBijections.md §2–§3; reviewed by interns B (7ba6411) and C (4fac326), no error, wording fixed; not yet by the audit; verified with 0 mismatches on all 46,488 degree-5 classes, orders 12–23 plus the order-24 floor holes, and on all 232,440 (class, j) cases].**
 - Join each unfilled state to its image under the rotation R₊₃: the swap of the {α, A}-component of x_{j+2}, which is defined exactly when lock 2 holds.
 - The resulting graph Γ is a disjoint union of paths and cycles, and
 

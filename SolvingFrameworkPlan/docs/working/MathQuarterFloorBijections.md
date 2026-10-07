@@ -292,3 +292,19 @@ But for a state d ∈ DD_j, the pattern-changing moves (R+3 and R+2) give no 2-s
 - **KILLED: "the states of a block agree outside the 1-ball of P"** (MathQuarterFloor §3/§5.1 as worded). φ_A changes a whole Kempe chain K, whose boundary is a full (c1,c3)-path through P plus any inner cycles. Block-mates differ along whole chains, not just at P.
 - **KILLED: proving the floor or part (b) by local counting alone.** Targetless classes satisfy every local identity proved here, with U − 3F = U.
 - **Not edited:** no other file. No status word changes.
+
+## Review corrections (6 Oct; interns B (7ba6411) and C (4fac326), applied by the Math lead)
+
+Both reviews found no error. These are wording fixes and one added proof.
+
+1. **§1, L2 (⇒), "Directly" (intern B).** Add: once one endpoint pair is joined, the other two endpoints then pair up with each other. This is the non-crossing matching of the four P-edges of that colour pair.
+2. **§1, lock transfer under R₊₃: a short direct proof (intern B).**
+   - Let s ∈ U_j have lock 2, so a {μ, B}-path joins m = x_{j+1} to b = x_{j+4}.
+   - Closed through v, it separates x_j from x_{j+2}. So K, the {α, A}-component of x_{j+2}, misses x_j. K contains x_{j+3}, which is adjacent to x_{j+2} and coloured A.
+   - Swap K. Then x_{j+2} becomes A and x_{j+3} becomes α. The new repeat pair is {x_{j+3}, x_j} = {j+3, j+5}, the new middle is m′ = x_{j+4} = b (colour B), and the new a′ is x_{j+1} = m (colour μ).
+   - Lock 1 of R₊₃(s) asks for a {B, μ}-path from b to m. K recolours no μ- or B-vertex, so the lock-2 path of s survives unchanged. **So lock 1 of R₊₃(s) is exactly lock 2 of s**, as vertex sets. This is the Tait corollary (ii).
+3. **§1, two different maps (intern B).** φ_A⁻¹ swaps a component through **m**. Lemma A's map swaps the component of **a** (case 1). Both land in F_{j+4}, but they are **different maps**. Nothing in the identity or in Lemma A relies on their being equal.
+4. **§3, path endpoints (intern C).** "A path's two endpoints fill into the same F_i" is true only when d ≡ 1 (mod 5). For d = 0 they land in F_{j+4} and F_{j+1}. In general the landing blocks depend on d mod 5. The accounting in §2 is unaffected (intern C re-derived the identity independently: 1.5 = 1 + ½, and nothing is double-counted).
+5. **§4, equal blocks (intern C).** "|F_i| = |U_{i+1}| = …" holds when the floor class has a **single** singleton position i present. Classes containing several values of i need the statement per i.
+
+**Status.** §1 (the maps) and §2 (the class identity) are **reviewed hand work** (interns B and C). They go to the audit when it is unblocked.
