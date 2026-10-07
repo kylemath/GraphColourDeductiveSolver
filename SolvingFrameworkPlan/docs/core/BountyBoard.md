@@ -59,4 +59,4 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | intern-C | 60 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 141 (6 October, 18:52 MDT); unchanged since revision 140, which paid intern-C 30 for its audit-credited cycle-5 re-derivation; earlier awards are in the revision 125 to 139 messages. The same totals are in `docs/navigator/leaderboard.json`.
+Totals as of Navigator revision 142 (6 October, 19:33 MDT); unchanged since revision 140, which paid intern-C 30 for its audit-credited cycle-5 re-derivation; earlier awards are in the revision 125 to 139 messages. The same totals are in `docs/navigator/leaderboard.json`.

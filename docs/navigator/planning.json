@@ -1,7 +1,12 @@
 {
-  "revision": 141,
-  "updatedAt": "2026-10-06T18:52:00-06:00",
+  "revision": 142,
+  "updatedAt": "2026-10-06T19:33:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-07T01:33:00Z",
+      "node": "structural-quarter-floor",
+      "action": "Revision 142 records the quarter floor as a well-tested conjecture (strong per-j form; at least as strong as 4CT) with its exact identity (hand, intern-reviewed, not audited) and Lemma A; the per-j and pooled local-charging routes closed on computed evidence (k_min reaches 7 per j and 6 pooled at order 24); intern A's fan identity at general q, intern D's retraction, the degree-6/7 rotation-graph data, and Long Table's paper section draft. Leaderboard unchanged. No finite check is upgraded."
+    },
     {
       "time": "2026-10-07T00:52:00Z",
       "node": "structural-quarter-floor",
@@ -12902,6 +12907,85 @@
         {
           "time": "2026-10-07T00:52:00Z",
           "text": "Revision 141, leaderboard: no change. The audit's Lemma A review is relayed, not filed, and the audit takes no share in reviews; nothing else in this revision is audit-cleared. Totals unchanged: studiomath 810, studiocompute 360, studiointel 200, math 180, audit 150, intern-C 60, longtable 50, others 0."
+        }
+      ]
+    },
+    {
+      "id": "structural-quarter-floor",
+      "revision": 142,
+      "title": "Quarter-floor conjecture: every degree-5 Kempe class is at least 1/4 filled (strong per-j form U_j <= F_{j+1} + F_{j+3} + F_{j+4}); well tested, exact identity, Lemma A; at least as strong as 4CT; local-charging routes closed",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1926_math_to_longtable+coordination+navigator+audit_quarter-floor-final-statement-and-local-charging-closed.md",
+        "SolvingFrameworkPlan/docs/working/MathQuarterFloorFinal.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-07T01:33:00Z",
+          "text": "Revision 142: recorded as a well-tested conjecture (Math's final statement, 35e1ad1, MathQuarterFloorFinal.md): strong per-j form U_j <= F_{j+1} + F_{j+3} + F_{j+4} for every class and every j; summed, every Kempe class of T - v at a degree-5 hole is at least a quarter filled. It is at least as strong as R* at every degree-5 vertex, hence as 4CT. Supporting: the exact class identity (hand, intern-reviewed, not audited), Lemma A (proved by hand; audit review relayed, file pending), and the exploratory data (160,979 classes to order 24; adversarial search over 95,884 graphs; degree-6/7 controls). Status stays exploring: a conjecture, not a result."
+        }
+      ]
+    },
+    {
+      "id": "structural-qf-part-b",
+      "revision": 142,
+      "title": "Quarter floor part (b), the DL half: reduced to |DD_j| <= room_j; per-j and pooled local-charging routes CLOSED on computed evidence; open",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1917_math_to_coordination+navigator+audit_per-j-local-route-closed.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1926_math_to_longtable+coordination+navigator+audit_quarter-floor-final-statement-and-local-charging-closed.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1920_localcompute_to_coordination+math+audit+navigator_order24-first-kmin-7.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1925_localcompute_to_coordination+math+audit+navigator_pooled-injection-still-creeps.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1902_math_to_coordination+navigator+audit_radius-4-charging-verdict.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1930_math_to_coordination+audit+navigator+longtable_bijections-review-fixes-applied.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-B-cycle6.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle8.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-07T01:33:00Z",
+          "text": "Revision 142: local-charging routes closed on computed evidence (Math 19:17 and 19:26). Per j: the least Kempe radius k_min of a local injection DD_j -> room_j creeps with order and reaches 7 at order 24 (gentri 1460 hole 19, j = 4, independently confirmed; 3a346c8, ab4fc92). Pooled at class level: max k_min 2, 4, 3, 3, 4, 5, 5, 5, 6 over orders 16 to 24 (ba90dfd). By Math's 18:28 criterion the inequality is genuinely global; Math sees no non-charging route either (as with the distant-holes no). Radius-4 charging was judged a global step in disguise (19:02)."
+        },
+        {
+          "time": "2026-10-07T01:33:00Z",
+          "text": "Revision 142: the class identity is reviewed by intern C (cycle 8, 4fac326: derivation check, no error) and the bijections of section 1 by intern B (cycle 6, 7ba6411: correct); Math applied the fixes (8de053e). Status of the identity and bijections: hand, intern-reviewed, not audited (verified on all 46,488 classes)."
+        }
+      ]
+    },
+    {
+      "id": "structural-quarter-floor",
+      "revision": 142,
+      "files": [
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle8.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D-cycle6.md",
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1930_localcompute_to_coordination+internD+math_deg6-deg7-extremal-class-link-types.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-07T01:33:00Z",
+          "text": "Revision 142: intern A (cycle 8, 75c3954) [hand, unreviewed]: the fan identity at general q, positivity for q >= 5 by induction (Birkhoff-Lewis style), and a sign obstruction at q = 4. Intern D (cycle 6, 10d5c01) retracts its 1/(M+2) counting heuristic. Local compute (9a655f2) [exploratory]: at degree 6 and 7 the rotation graphs have cycles and higher degree, not paths (degree 6, order 24, gentri 71 hole 12: the 1/8 class has 24 filled states, all of type (3,2,1), no ABABAB; its rotation graph has 6 components of 28 nodes, not trees)."
+        }
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 142,
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1851_longtable_to_coordination+severn+math+audit+navigator_quarter-floor-section-draft.md",
+        "SolvingFrameworkPlan/docs/working/QuarterFloorSection-draft.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-07T01:33:00Z",
+          "text": "Revision 142: Long Table drafted a paper section \"The quarter floor\" (01fb1f4, 3e5f31e, f4a07dd; QuarterFloorSection-draft.md): definitions, observation, identity, Lemma A, class identity, the open DD_j inequality, strength, and the locality paragraph (no fixed-radius charging; computed). Paper integration is in progress. Labels must follow the ledger: Lemma A proved by hand (audit review relayed, file pending), the class identity hand and intern-reviewed (not audited), the floor a conjecture with exploratory data."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 142,
+      "notes": [
+        {
+          "time": "2026-10-07T01:33:00Z",
+          "text": "Revision 142, leaderboard: no change; nothing in this revision is audit-cleared. Totals unchanged: studiomath 810, studiocompute 360, studiointel 200, math 180, audit 150, intern-C 60, longtable 50, others 0."
         }
       ]
     }
