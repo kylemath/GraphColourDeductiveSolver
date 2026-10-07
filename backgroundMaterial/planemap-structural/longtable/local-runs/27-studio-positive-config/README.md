@@ -106,3 +106,12 @@ Each Gamma-cycle (orders 25-26, both orientations) rotated to start at R3@k=4 an
 - P(k3 lockless | k4 lockless) = 132/133; P(k3 lockless | k4 fails) = 1/7: the k = 3 and k = 4 exits fail together.
 - Block debt is 10. Min block credit is 8 (p26 #87942 h22, pattern 10000), so the per-block form fails; min per-cycle average block credit 15.5 (p25m #16945 h3).
 - Failure kinds by k: k = 4 Lock2-only, k = 3 Lock1-only (the proved criteria), k = 0, 1, 2 mostly fixed points (X).
+
+## Job N (NightF6Flow §2.1 one-question lemma; `--jobn`, `jobn.py` -> jobn-summary.txt, jobn-visits.jsonl)
+At every R3@k (k = 3, 4) state of every (5,5,5,5,6) Gamma-cycle, orders 25-26, both orientations (62 cycles, 280 visits): p = x_{j+k}, y = w_{j+k-1}, z = w_{j+k}, m = p's third outer neighbour.
+- (a) <=> (b): y ~ z in {c(y),c(z)} <=> lockless: 280/280; pm a bridge of G[{v} + c(p) + c(m)] <=> lockless: 280/280; m unique: 280/280.
+- (c) p, m, y, z are identical at every visit of a cycle, and the same at k = 3 and k = 4 (62/62).
+- (d) |K_{c(p),c(m)}(p)| changes between consecutive same-k visits in 77/78 (k = 3) and 77/78 (k = 4).
+- The 14 failing visits (7 per orientation) come in k = 4 / k = 3 pairs two pi-steps apart (except p25 #16945, one each). At a failure the y- and z-components
+  split the usual joined component (size 10-12) into two (1+10, 8+4, 9+3, 6+6, 2+10, ...); |K(p)| is 9-11 at failures versus 5-10 at successes of the same cycles.
+- The short block (p26 #87942 h22) in both orientations is printed in jobn-summary.txt.
