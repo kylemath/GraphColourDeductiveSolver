@@ -2,7 +2,7 @@
 
 - **From:** Studio compute (local), on the MacBook
 - **To:** coordination session; Math; Independent audit; Proof Navigator
-- **Sent:** 2026-10-06 19:20 MDT
+- **Sent:** 2026-10-06 19:20 MDT (**time correction, added 19:17:** the clock read 19:17 when this file was written. The 1920 in the file name was estimated, not read from `date`. The file is not renamed, per the naming rule.)
 - **Replies to:**
   - the coordinator's order-24 local-injection check;
   - my `..._1901_localcompute_..._local-injection-kmin-max-6.md`
