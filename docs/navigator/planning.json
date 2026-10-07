@@ -1,7 +1,12 @@
 {
-  "revision": 140,
-  "updatedAt": "2026-10-06T18:20:00-06:00",
+  "revision": 141,
+  "updatedAt": "2026-10-06T18:52:00-06:00",
   "journal": [
+    {
+      "time": "2026-10-07T00:52:00Z",
+      "node": "structural-quarter-floor",
+      "action": "Revision 141 records Lemma A as proved by hand (audit review relayed by the coordinator, file pending; Math's fixes applied), part (b) reduced to one inequality |DD_j| <= room_j (hand, unreviewed; 0 mismatches in the identities over 46,488 classes; per-j excess never positive in 95,884 graphs; all-DL rotation cycles up to 880), Math's finding that per-path charging cannot work, Long Table's literature reading, and the interns' cycles. Leaderboard unchanged. No finite check is upgraded."
+    },
     {
       "time": "2026-10-07T00:20:00Z",
       "node": "structural-quarter-floor",
@@ -12813,6 +12818,90 @@
         {
           "time": "2026-10-07T00:20:00Z",
           "text": "Revision 140: the audit's source check of Long Table's WSK literature table: PASS after the T(6,6) count fix (45 to 4,545, 2457fd8); the site may cite it as source-checked. Tilley's name corrected to James A. Tilley on the bounty board (audit fix)."
+        }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 141,
+      "node": {
+        "id": "structural-qf-lemma-a",
+        "title": "Lemma A (quarter floor, non-DL half): |U_j minus D_j| <= |F_{j+3}| + |F_{j+4}|, by a map injective for each j (at most 2-to-1 overall) (hand; audit review relayed, file pending)",
+        "status": "proved",
+        "statement": "For every Kempe class S of T - v at a degree-5 vertex and every j: the non-doubly-locked unfilled states with repeat pair {j, j+2} number at most |F_{j+3}| + |F_{j+4}|. The map (Kempe's own swap of the {mu,A}-component of x_{j+3}, or the {mu,B}-component of x_{j+4}) is injective for each j and at most 2-to-1 across j.",
+        "approach": "Math worker's proof (15a771c), Math's addendum after intern C (dd03886), the audit's three fixes applied by Math (6d16917): title \"injective for each j (at most 2-to-1 overall)\", collision-count scope, and \"part (b) is at least as strong as R*\" (no equivalence claimed).",
+        "evidence": "Audit review: CORRECT per j, relayed by the coordinator (the audit's shell is blocked pending the user); the audit's own file is pending. Intern C (cycles 6 and 7): per-j injectivity proved; the cross-j collision realised at order 17. Local compute (2163e02) [exploratory]: phi has exactly 2 preimages for 81,571 filled states across j, never more; intern C's order-17 example verified.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/MathQuarterFloorLemmaA.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1818_math_to_audit+coordination+navigator_Lemma-A-audit-fixes-applied.md",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle6.md",
+          "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-C-cycle7.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1827_localcompute_to_coordination+math+audit+navigator_C1-identities-0-mismatches-cross-j-collisions-recount.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T00:52:00Z",
+            "text": "Revision 141: recorded as proved by hand (Math; audit review relayed by the coordinator, file pending). If the audit's filed review differs, the status follows the file."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-quarter-floor",
+      "revision": 141,
+      "node": {
+        "id": "structural-qf-part-b",
+        "title": "Quarter floor part (b), the DL half: reduced to one inequality |DD_j| <= room_j (hand, unreviewed; holds in every class tested; open)",
+        "status": "exploring",
+        "statement": "Open lemma: |DD_j| <= L_j + |U_j^ff| + |U_{j+3}^ff| + |E_j| (room_j), where DD_j is the failure set (DL states whose rotation R+3 image is DL). It is at least as strong as R* at every degree-5 vertex, hence as 4CT.",
+        "approach": "Math (604a1d5, MathQuarterFloorBijections.md) [hand, unreviewed]: explicit bijections phi_A, phi_B and the rotation R+3 (inverse R+2); every state has exactly two pattern-changing moves; the exact class identity 3F - U = 2 N0 + 1.5 L_F + sum over paths (1 - d(P)) - D_cyc; the rule rho = phi o R+3 lands injectively in F_{j+1}, avoiding Lemma A's images, except on the failure set DD_j.",
+        "evidence": "[computed, exploratory] Local compute (2163e02): the C1 identities hold with 0 mismatches over 46,488 classes (232,440 (class, j) pairs); all floor classes are at equality per j; DL distance to filled is 2, 3, 4 or 5. Local intel (9c1e03c): Math's C6 adversary found no class below 1/4 in 95,884 graphs; the per-j excess |DD_j| - room_j is never positive (equality at HoG 1152, hole 16); all-DL rotation cycles up to length 880 exist in the core class (flipped A_7), yet those classes are 37 to 42% filled. Math 18:28 [hand]: per-path charging along Gamma cannot work (two ends per path, DL chains up to 31, DL cycles have no ends); a locality measurement is queued to decide whether any local proof is possible. Math 18:49: the identity is bookkeeping and does not force N0 to grow with D_cyc; the open local question is whether every state on an all-DL rotation cycle is at bounded Kempe distance from an N0 state.",
+        "killCriteria": "A class with |DD_j| > room_j for some j, i.e. filled fraction below 1/4 (the 150-point bounty).",
+        "files": [
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1818_math_to_coordination+navigator+audit+longtable_quarter-floor-part-b-identity-and-failure-set.md",
+          "SolvingFrameworkPlan/docs/working/MathQuarterFloorBijections.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1827_localcompute_to_coordination+math+audit+navigator_C1-identities-0-mismatches-cross-j-collisions-recount.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1828_math_to_coordination+navigator+audit_per-path-charging-cannot-work.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1848_localintel_to_coordination+math+audit+navigator_C6-DL-chains-excess-never-positive.md",
+          "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1849_math_to_coordination+navigator_identity-does-not-force-N0.md"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-07T00:52:00Z",
+            "text": "Revision 141: new node: hand, unreviewed; holds in every class tested; open."
+          }
+        ],
+        "children": []
+      }
+    },
+    {
+      "id": "structural-quarter-floor",
+      "revision": 141,
+      "title": "Quarter floor: every degree-5 Kempe class is at least 1/4 filled (exhaustive to order 24, exploratory); non-DL half proved by hand (Lemma A); DL half reduced to one inequality, open",
+      "files": [
+        "SolvingFrameworkPlan/messages/2026-10-06/2026-10-06_1819_longtable_to_coordination+math+audit+navigator_quarter-floor-literature.md",
+        "SolvingFrameworkPlan/docs/working/QuarterFloorLiterature.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-A-cycle7.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-B-cycle5.md",
+        "SolvingFrameworkPlan/docs/working/interns-2026-10-06/intern-D-cycle5.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-07T00:52:00Z",
+          "text": "Revision 141: Long Table 18:19 (QuarterFloorLiterature.md): no bound of this kind found in the literature (Birkhoff-Lewis, Jackson's survey, Tutte and golden-ratio work, Kempe-class papers; not exhaustive); exact fan-contraction identity P(T,4) = sum_i P(T - v with x_i = x_{i+2}, 4) - P(T - v, 4) [hand]; a positive floor at some degree-5 vertex of every core triangulation implies 4CT, so it is at least as hard as 4CT. Interns: A cycle 7, the mirror rule R_B (a DL-to-filled 2-swap rule in the size-4 floor class); B cycle 5, the order-17 exception sits in the graph's only Birkhoff diamond; C cycle 7, the cross-j collision realised; D cycle 5, a counting heuristic 1/(M+2) giving 1/4 at degree 5 and 1/8 at degree 6 [hand, unreviewed]."
+        }
+      ]
+    },
+    {
+      "id": "structural-pathway-sprint",
+      "revision": 141,
+      "notes": [
+        {
+          "time": "2026-10-07T00:52:00Z",
+          "text": "Revision 141, leaderboard: no change. The audit's Lemma A review is relayed, not filed, and the audit takes no share in reviews; nothing else in this revision is audit-cleared. Totals unchanged: studiomath 810, studiocompute 360, studiointel 200, math 180, audit 150, intern-C 60, longtable 50, others 0."
         }
       ]
     }
