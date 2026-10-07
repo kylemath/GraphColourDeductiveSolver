@@ -11,7 +11,7 @@ def job(a):
     if os.path.exists(fn + '.done'): return i, 0.0
     open(fn + '.in', 'w').write(''.join(ls)); t = time.time()
     with open(fn + '.out', 'w') as fo, open(fn + '.err', 'w') as fe:
-        r = subprocess.run(['nice', '-n', '10', os.path.abspath('./picyc'), fn + '.in'] + opts, stdout=fo, stderr=fe)
+        r = subprocess.run(['nice', '-n', '10', os.path.abspath(os.environ.get('PICYC', './picyc')), fn + '.in'] + opts, stdout=fo, stderr=fe)
     if r.returncode == 0: open(fn + '.done', 'w').write('%.1f\n' % (time.time() - t))
     return i, time.time() - t
 t0 = time.time(); log = open(pref + '.log', 'a'); log.write('%s start %s shards %d opts %s\n' % (time.strftime('%F %T'), inp, len(shards), opts)); log.flush()
