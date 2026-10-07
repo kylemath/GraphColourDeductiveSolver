@@ -82,6 +82,15 @@ with:
 
 DD_j is non-empty in general. The A_r family has infinite all-doubly-locked rotation orbits, which refuted Conjecture L. So **the inequality is genuinely global**. A targetless class would satisfy every local fact used above, so no local argument can close it.
 
+### Locality [computed]
+
+Can the doubly locked states in DD_j be paid for by a charging rule of fixed radius? The data say no:
+- **Compensating units are near.** Every DD state lies within 5 Kempe changes of a compensating unit, at orders up to 23 [707840b].
+- **A per-j injection does not stay near.** A per-j injection that charges only within swap radius k needs k_min ≤ 5 up to order 20, 6 at orders 21–23, and 7 at order 24. Radius 7 is first needed at gentri order 24, #1460, hole 19 [534dfb2, 3a346c8].
+- **Pooling across j does not stay near either.** Pooled across j, the requirement is 4, 5 and 6 respectively [ba90dfd].
+
+About 98% of cases match within 3 swaps, but the worst case grows by about one every few orders. **So no fixed-radius charging proof exists in this form.** The open inequality is genuinely global, which fits its strength (next section).
+
 ## Strength, stated plainly
 
 The DD_j inequality at every j implies the floor F ≥ ¼|S| in every class, which implies F > 0, i.e. R\*_v. So:
