@@ -83,4 +83,5 @@ sigma' = every link-free swap from a DD-step endpoint whose result is not DL (= 
 - Distinct targets: sigma is an involution, so distinct R3 states give distinct lockless images, i.e. distinct u = 1 excursions (holds in the data by construction).
 - Lockless exits per Gamma-cycle: a in {5,...,10} for L = 20 and a = 30 for L = 60; always a >= L/4 (min a/L = 1/4, at p25 #16945 h3, p26 #87942 h22).
 - Non-Gamma cycles are NOT all nonpositive at order 25: positive non-Gamma cycles exist at these holes (orders 25 / 26: 7 / 20 plantri, 7 / 25 mirror); first p25 #8775 h15 (5,6,5,5,5), L 34, w +2.
-  One positive non-Gamma cycle has no lockless exit at all: p26 #7490 h3 (5,6,6,5,5), L 26, w +2, its 7 DL R3 states all with DL (fixed-point) exits.
+  Positive non-Gamma cycles with NO lockless exit: 5 (order 26 plantri) and 7 records (order 26 mirror; one cycle pair duplicated in the hole), none at order 25;
+  e.g. p26 #7490 h3 (5,6,6,5,5), L 26, w +2: all 7 DL R3 states have DL exits (5 fixed points); p26 #43605 h3 (5,5,5,6,5), L 14, w +2: 3 DL + 3 single-lock exits.
