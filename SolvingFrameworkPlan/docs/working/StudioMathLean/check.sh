@@ -48,3 +48,4 @@ f=QuarterTait; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S"
 f=QuarterImagePosition; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterLemmaN0; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterR3AtUnfold; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=QuarterBudgetPos; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
