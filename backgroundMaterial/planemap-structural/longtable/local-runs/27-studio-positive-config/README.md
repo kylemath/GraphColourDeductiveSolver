@@ -570,3 +570,15 @@ Scope: every Γ-cycle Z in the hole's Kempe classes, using all states (lib26.Eng
 - (b) fails on the census only where Z needs nothing: def′(Z) = −60 / −120 / −180, all σ-neighbours have rem ≥ 0, and Z's own credit is 4Λ. So the meaningful form is (b′).
 - **The weakest per-Γ-cycle statements true on every graph we have** are (b′) class charge-back P₁, (c) and (d′). Of these, (c) is the simplest: a σ-image always lands on a cycle at least as negative as Z is positive.
 - **How a counterexample's deficit is paid.** The failing Z (L = 20, Λ = 20) has σ-credit 15–18 (3 lockless images), so def′ = 2 or 5. Its 20 σ-images are typically 6–7 fixed, 5–6 DL, 3–4 Lock1-only, 1–2 Lock2-only and 3 lockless. One σ-neighbour T pays the whole deficit. T is the class's giant negative cycle: Λ(T) from −3,960 to −13,285, L(T) from 3,912 to 12,675, with spare −rem(T) from 3,875 to 13,249, which is ≥ 56 Λ(Z) on every hit. σ′ exits add 0–10 credit. That closes (a′) except for 8 records (A7f1 W3 walk 0 and A7f4 W3 walk 4, where σ′ adds no lockless credit).
+
+## Job BJ [exploratory]: group checks on the AW hit graphs + adversarial search on the live statements (jobbj/: jobbj_p1.py, jobbj_search.py, hits61.txt, gamma-holes.json, jobbj-p1.json, jobbj-walks.jsonl, jobbj-groups-summary.txt, jobbj-search-summary.txt; picyc.cpp --jobbj)
+- **(1) Backfill on all 61 AW hit graphs, every hole (2,506 hole-orientations).** σC, H1, H2, the σ ∪ σ′ groups (SigmaUnionC) and the quarter floor (min class F/N ≥ 1/4) have **0 failures**. There are 156 Γ-classes (122 at (5,5,5,5,6), 16 at (5,5,5,6,7), 10 at (5,5,5,5,8+), 8 at (5,5,5,7,7)). Charge-back P₁ holds on all of them in three forms: σ-neighbour targets, **any nonpositive cycle of the σ-group**, and any nonpositive cycle of the σ ∪ σ′-group. 22 of these classes have a deficit cycle. Every Γ-cycle has ≥ 7 non-DL σ-images.
+- **(2) Adversarial search.** This uses the Job AW machinery: core-class flips with degree repair, the hole star untouched, link (5,5,5,5,6) kept. The evaluator is picyc.bj --jobbj --full, both orientations. Seeds: 16 deduplicated AW hits and the 6 AS constructions, with 6 walks × 600 steps per objective. In total 396 walks and 318,825 evaluations.
+
+| objective (hit = statement false) | seed range | best reached | hits |
+|---|---|---|---|
+| max Σw over positive σ ∪ σ′-groups (hit > 0) | −4,696 … −384 | **−12** (A7f2) | 0 |
+| min #non-DL σ-images of a Γ-cycle (hit = 0) | 58 … 7 | **5** (hit08, hit27, A7f2) | 0 |
+| min class F/N (hit < 1/4) | 0.54 … 0.38 | **exactly 1/4** (many seeds) | 0 |
+
+  The F/N = 1/4 classes are tiny extra Kempe classes, N = 4 with F = 1 or N = 16 with F = 4, with Σλ = 0. They are the floor's equality case; the main class stays at F/N ≈ 0.40–0.43. **SigmaUnionC, "every Γ-cycle has a non-DL σ-image" and the quarter floor all survive adversarial search at degree 6.**

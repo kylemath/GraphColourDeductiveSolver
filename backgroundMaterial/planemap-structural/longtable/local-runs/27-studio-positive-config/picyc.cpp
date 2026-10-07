@@ -55,7 +55,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false, JOBBB = false, JOBBC = false, JOBBGH = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false, JOBBB = false, JOBBC = false, JOBBGH = false, JOBBJ = false, JOBBK = false, JOBBL = false, JOBBO = false, JOBBP = false, JOBBQ = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -288,6 +288,169 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 for (auto &kv : cs2) { ms = std::max(ms, kv.second.second); mx = std::max(mx, kv.second.first); if (kv.second.first > 0) { nf++; if (ff.empty()) { char b4[96]; snprintf(b4, sizeof b4, "{\"sumw\": %lld, \"ncycles\": %d}", kv.second.first, kv.second.second); ff = b4; } } }
                 char b5[400]; snprintf(b5, sizeof b5, ", \"%s\": {\"ncomp\": %zu, \"endpoints\": %lld, \"endpoints_with_cross_sigmap\": %lld, \"max_ncycles\": %d, \"max_sumw\": %lld, \"fail\": %lld, \"first_fail\": %s}",
                     v ? "H2_sigmap_plus_sigmaR3" : "H1_sigmap", cs2.size(), nend, nend_cross, ms, mx, nf, ff.empty() ? "null" : ff.c_str()); jobe += b5; } }
+
+
+
+
+
+
+        if (JOBBQ) {   // Job BQ (NightBudget 1): B' slack on every sigma u sigma' group: slack = 2 N0 + E2 + 3 tau - 2 |R_rho|; exact identity 5 sum w = |DD| - 2 N0 - E2 - 3 tau
+            std::vector<int> uu(cycles.size()); for (size_t i = 0; i < uu.size(); i++) uu[i] = i;
+            auto fx = [](std::vector<int> &up, int x) { while (up[x] != x) { up[x] = up[up[x]]; x = up[x]; } return x; };
+            std::vector<int> ty3(S, -1); auto isR3 = [&](long long k) { if (ty3[k] < 0) { int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd); ty3[k] = (ty == 3); } return ty3[k] == 1; };
+            for (long long k = 0; k < S; k++) { if (kind[k] != 2) continue; if (!(kind[pi[k]] == 2 || kind[pinv[k]] == 2)) continue;
+                int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd); { int a = fx(uu, cyc[k]), b = fx(uu, cyc[sg]); if (a != b) uu[a] = b; }
+                unkey(ALL[k], c); masks(c, cm);
+                for (int p = 0; p < 4; p++) for (int q = p + 1; q < 4; q++) { u64 M = cm[p] | cm[q];
+                    while (M) { u64 K = flood(M & -M, cm[p] | cm[q]); M &= ~K; if (K & linkmask) continue; long long t = swap_index(c, K, p, q, nc);
+                        if (t == k || kind[t] == 2) continue; int a = fx(uu, cyc[k]), b = fx(uu, cyc[t]); if (a != b) uu[a] = b; } } }
+            struct GS { long long N0 = 0, E2 = 0, tau = 0, DD = 0, R = 0, sl = 0, pos = 0; };
+            std::map<int, GS> G; std::set<long long> Rset;
+            for (long long k = 0; k < S; k++) { auto &g = G[fx(uu, cyc[k])]; g.sl += lam[k];
+                if (kind[k] != 0 && kind[pi[k]] == 0 && kind[pinv[k]] == 0) g.N0++;
+                if (kind[k] != 0 && kind[pinv[k]] == 0 && kind[pi[k]] != 0 && kind[pi[pi[k]]] == 0) g.E2++;
+                if (kind[k] == 0 && kind[pi[k]] == 0) g.tau++;
+                if (kind[k] == 2 && kind[pi[k]] == 2) { g.DD++; long long r = isR3(k) ? k : (isR3(pi[k]) ? pi[k] : k); Rset.insert(r); } }
+            for (long long r : Rset) G[fx(uu, cyc[r])].R++;
+            for (size_t i = 0; i < cycles.size(); i++) if (wind[i] > 0) G[fx(uu, i)].pos = 1;
+            long long mn = 1LL << 40, mnpos = 1LL << 40, nneg = 0, idfail = 0; std::map<long long, long long> hist;
+            for (auto &kv : G) { auto &g = kv.second; long long slack = 2 * g.N0 + g.E2 + 3 * g.tau - 2 * g.R; mn = std::min(mn, slack); if (g.pos) mnpos = std::min(mnpos, slack); if (slack < 0) nneg++;
+                if (g.sl != g.DD - 2 * g.N0 - g.E2 - 3 * g.tau) idfail++; hist[slack < 0 ? -1 : (slack < 10 ? slack : (slack < 100 ? 10 : 100))]++; }
+            std::string o = ", \"jobbq\": {\"groups\": " + std::to_string(G.size()) + ", \"min_slack\": " + std::to_string(mn) + ", \"min_slack_posgroups\": " + std::to_string(mnpos) +
+                ", \"neg\": " + std::to_string(nneg) + ", \"identity_fail\": " + std::to_string(idfail) + ", \"hist\": {"; bool f = true;
+            for (auto &kv : hist) { o += f ? "" : ", "; o += "\"" + std::to_string(kv.first) + "\": " + std::to_string(kv.second); f = false; } o += "}}"; jobe += o; }
+        if (JOBBP && (jpat == "6,6,6,6,6" || jpat == "5,5,6,6,6" || jpat == "5,5,7,5,7")) {   // Job BP: all single Kempe swaps at ring roles from every DL state
+            auto dword = [&](int j) { std::string w; for (int i = 0; i < 5; i++) w += (char)('0' + std::min<int>(8, rot[L[(j + i) % 5]].size())); return w; };
+            int mi[5]; for (int t = 0; t < 5; t++) { mi[t] = -1; if (rot[L[t]].size() != 6) continue; int pv = L[t];
+                for (int w : rot[pv]) { if (w == hole) continue; int wi = idx[w]; if (wi == link_[(t + 1) % 5] || wi == link_[(t + 4) % 5] || wi == widx[(t + 4) % 5] || wi == widx[t]) continue; mi[t] = wi; } }
+            std::map<std::string, std::array<long long, 6>> T; std::map<std::string, long long> MS; long long nDL = 0, nnone = 0; std::string noneex;
+            static const char *RN = "amAB";   // role letters: alpha mu A B
+            for (long long k = 0; k < S; k++) { if (kind[k] != 2) continue; nDL++; int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd);
+                int cc[64], ncc[64]; u64 c4[4]; unkey(ALL[k], cc); masks(cc, c4); int lc[5]; for (int u = 0; u < 5; u++) lc[u] = cc[link_[u]];
+                int role[4]; role[lc[j]] = 0; role[lc[(j + 1) % 5]] = 1; role[lc[(j + 3) % 5]] = 2; role[lc[(j + 4) % 5]] = 3;
+                std::string base = jpat + " R" + std::to_string(ty) + " " + dword(j); u64 succ = 0; int bit = 0;
+                for (int rr = 0; rr < 15; rr++) { int v; std::string rn;
+                    if (rr < 5) { v = link_[(j + rr) % 5]; rn = "x" + std::to_string(rr); } else if (rr < 10) { v = widx[(j + rr - 5) % 5]; rn = "w" + std::to_string(rr - 5); } else { v = mi[(j + rr - 10) % 5]; rn = "m" + std::to_string(rr - 10); }
+                    for (int d = 0, q = 0; d < 4; d++) { int cv = v >= 0 ? cc[v] : 0; if (d == cv) continue; int b = rr * 4 + role[d]; (void)bit; q++; if (v < 0) continue;
+                        u64 K = flood(1ULL << v, c4[cv] | c4[d]); std::string pr; { char a1 = RN[role[cv]], a2 = RN[role[d]]; pr = std::string(1, a1) + a2; }
+                        int out; if (K == (c4[cv] | c4[d])) out = 0; else { long long t2 = swap_index(cc, K, cv, d, ncc); u64 c5[4]; masks(ncc, c5); StateInfo si = info_of(ncc, c5);
+                            out = si.kind == 0 ? 1 : (si.kind == 2 ? 4 : (!si.l1 && !si.l2 ? 2 : 3)); (void)t2; }
+                        auto &e = T[base + " " + rn + " " + pr]; e[out]++; e[5]++; if (out != 0 && out != 4) succ |= 1ULL << b; } }
+                MS[base + " " + std::to_string(succ)]++; if (!succ) { nnone++; if (noneex.size() < 300) noneex += (noneex.empty() ? "" : ", ") + std::to_string(k); } }
+            std::string o = ", \"jobbp\": {\"nDL\": " + std::to_string(nDL) + ", \"no_escape\": " + std::to_string(nnone) + ", \"tab\": {"; bool f = true;
+            for (auto &kv : T) { o += f ? "" : ", "; char b[128]; snprintf(b, sizeof b, "[%lld, %lld, %lld, %lld, %lld, %lld]", kv.second[0], kv.second[1], kv.second[2], kv.second[3], kv.second[4], kv.second[5]); o += "\"" + kv.first + "\": " + b; f = false; }
+            o += "}, \"masks\": {"; f = true; for (auto &kv : MS) { o += f ? "" : ", "; o += "\"" + kv.first + "\": " + std::to_string(kv.second); f = false; } o += "}}"; jobe += o; }
+        if (JOBBO && (jpat == "6,6,6,6,6" || jpat == "5,5,6,6,6" || jpat == "5,5,7,5,7")) {   // Job BO (+ NightG66 T2/T3 and PureClean): DL runs, run ends, cut radius, classes without filled states
+            auto dword = [&](int j) { std::string w; for (int i = 0; i < 5; i++) w += (char)('0' + std::min<int>(8, rot[L[(j + i) % 5]].size())); return w; };
+            int mi[5]; for (int t = 0; t < 5; t++) { mi[t] = -1; if (rot[L[t]].size() != 6) continue; int pv = L[t];
+                for (int w : rot[pv]) { if (w == hole) continue; int wi = idx[w]; if (wi == link_[(t + 1) % 5] || wi == link_[(t + 4) % 5] || wi == widx[(t + 4) % 5] || wi == widx[t]) continue; mi[t] = wi; } }
+            std::vector<int> dist(N, -1); std::vector<int> qq; for (int t = 0; t < 5; t++) { dist[link_[t]] = 1; qq.push_back(link_[t]); }
+            for (size_t h2 = 0; h2 < qq.size(); h2++) { int u = qq[h2]; for (u64 f = adjm[u]; f; f &= f - 1) { int v = __builtin_ctzll(f); if (dist[v] < 0) { dist[v] = dist[u] + 1; qq.push_back(v); } } }
+            int maxd = 0; for (int v = 0; v < N; v++) maxd = std::max(maxd, dist[v]); std::vector<u64> ball(maxd + 1, 0); for (int r = 1; r <= maxd; r++) for (int v = 0; v < N; v++) if (dist[v] <= r) ball[r] |= 1ULL << v;
+            u64 allv = (N == 64) ? ~0ULL : ((1ULL << N) - 1);
+            std::map<long long, long long> RL; std::map<std::string, long long> EH, CR; long long nall = 0, maxrun = 0; std::string allc; bool fa = true;
+            for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &z = cycles[ci]; size_t Lz = z.size(); bool all = true; for (int32_t x : z) if (kind[x] != 2) { all = false; break; }
+                if (all) { nall++; long long nd = 0; for (int32_t x : z) { int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (sg != x && kd != 2) nd++; }
+                    char b[96]; snprintf(b, sizeof b, "%s[%lld, %zu, %lld]", fa ? "" : ", ", wind[ci], Lz, nd); allc += b; fa = false; continue; }
+                for (size_t i = 0; i < Lz; i++) { if (kind[z[i]] != 2 || kind[z[(i + Lz - 1) % Lz]] == 2) continue; size_t t = i; long long len = 0; while (kind[z[t % Lz]] == 2) { len++; t++; }
+                    RL[len]++; maxrun = std::max(maxrun, len);
+                    int32_t x = z[(t - 1) % Lz], yv = z[t % Lz]; int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd);
+                    unkey(ALL[x], c); masks(c, cm); int lc[5]; for (int u = 0; u < 5; u++) lc[u] = c[link_[u]]; int al = lc[j], A = lc[(j + 3) % 5];
+                    int role[4]; role[lc[j]] = 0; role[lc[(j + 1) % 5]] = 1; role[lc[(j + 3) % 5]] = 2; role[lc[(j + 4) % 5]] = 3; const char *RN = "amAB";
+                    std::string ww; for (int u = 0; u < 5; u++) ww += RN[role[c[widx[(j + u) % 5]]]];
+                    std::string mm; for (int u : {1, 4}) { int v = mi[(j + u) % 5]; mm += v < 0 ? '-' : RN[role[c[v]]]; }
+                    u64 K = flood(1ULL << link_[(j + 2) % 5], cm[al] | cm[A]);
+                    std::string lb, wb; for (int u = 0; u < 5; u++) { lb += (K >> link_[(j + u) % 5] & 1) ? '1' : '0'; wb += (K >> widx[(j + u) % 5] & 1) ? '1' : '0'; }
+                    std::string leave; int rcut = -1;
+                    if (kind[yv] == 0) leave = "filled";
+                    else { int cc[64]; unkey(ALL[yv], cc); u64 c4[4]; masks(cc, c4); StateInfo si = info_of(cc, c4);
+                        leave = si.l1 && !si.l2 ? "Lock1-only" : (!si.l1 && si.l2 ? "Lock2-only" : (!si.l1 && !si.l2 ? "lockless" : "DL?"));
+                        int j2 = 0; int l5[5]; for (int u = 0; u < 5; u++) l5[u] = cc[link_[u]]; for (; j2 < 5; j2++) if (l5[j2] == l5[(j2 + 2) % 5]) break;
+                        int mu2 = l5[(j2 + 1) % 5], A2 = l5[(j2 + 3) % 5], B2 = l5[(j2 + 4) % 5]; int mv = link_[(j2 + 1) % 5];
+                        int other = !si.l2 ? B2 : A2; int endv = !si.l2 ? link_[(j2 + 4) % 5] : link_[(j2 + 3) % 5];   // the dead lock: Lock2 if dead, else Lock1
+                        u64 pairm = c4[mu2] | c4[other];
+                        for (int r = 1; r <= maxd; r++) { u64 blockers = ball[r] & ~pairm; u64 Kr = flood(1ULL << mv, allv & ~blockers); if (!(Kr >> endv & 1)) { rcut = r; break; } } }
+                    int j2 = -1, ty2 = -1; if (kind[yv] != 0) { int km2, a1, a2, a3; long long sg2; frame(yv, j2, ty2, km2, sg2, a1, a2, a3); }
+                    std::string key = "last R" + std::to_string(ty) + " " + dword(j) + " -> " + leave + (ty2 >= 0 ? " R" + std::to_string(ty2) + " " + dword(j2) : std::string("")) + " | K∩x(j..j+4) " + lb + " K∩w(j..j+4) " + wb + " | len " + (len >= 10 ? std::string("10+") : std::to_string(len));
+                    EH[key]++; CR["wword " + ww + " m(j+1,j+4) " + mm + " -> " + leave + " rcut " + std::to_string(rcut)]++; } }
+            // PureClean: Kempe classes of T - h without a filled state
+            long long ncls = 0, nofill = 0; double minfn = 2.0; std::string clist;
+            { std::vector<int32_t> cp(S); for (long long i = 0; i < S; i++) cp[i] = i;
+              std::function<int(int)> cf = [&](int x) { while (cp[x] != x) { cp[x] = cp[cp[x]]; x = cp[x]; } return x; };
+              int cc[64], ncc[64]; u64 cmm[4];
+              for (long long i = 0; i < S; i++) { unkey(ALL[i], cc); masks(cc, cmm);
+                for (int p = 0; p < 4; p++) for (int q = p + 1; q < 4; q++) { u64 M = cmm[p] | cmm[q];
+                    while (M) { u64 Kk = flood(M & -M, cmm[p] | cmm[q]); M &= ~Kk; long long jx = swap_index(cc, Kk, p, q, ncc); int a = cf(i), b = cf(jx); if (a != b) cp[a] = b; } } }
+              std::map<int, long long> fil, csz; for (long long i = 0; i < S; i++) { auto &e = fil[cf(i)]; csz[cf(i)]++; if (kind[i] == 0) e++; } ncls = fil.size(); for (auto &kv : fil) { if (!kv.second) nofill++; double fr = (double)kv.second / csz[kv.first]; if (fr < minfn) minfn = fr; if (clist.size() < 4000) clist += (clist.empty() ? "" : ", ") + std::string("[") + std::to_string(csz[kv.first]) + ", " + std::to_string(kv.second) + "]"; } }
+            std::string o = ", \"jobbo\": {\"all_DL_cycles\": [" + allc + "], \"maxrun\": " + std::to_string(maxrun) + ", \"maxdist\": " + std::to_string(maxd) + ", \"classes\": " + std::to_string(ncls) + ", \"classes_without_filled\": " + std::to_string(nofill) + ", \"min_F_over_N\": " + std::to_string(minfn) + ", \"class_sizes_F\": [" + clist + "], \"runlen\": {"; bool f = true;
+            for (auto &kv : RL) { o += f ? "" : ", "; o += "\"" + std::to_string(kv.first) + "\": " + std::to_string(kv.second); f = false; }
+            o += "}, \"ends\": {"; f = true; for (auto &kv : EH) { o += f ? "" : ", "; o += "\"" + kv.first + "\": " + std::to_string(kv.second); f = false; }
+            o += "}, \"cut\": {"; f = true; for (auto &kv : CR) { o += f ? "" : ", "; o += "\"" + kv.first + "\": " + std::to_string(kv.second); f = false; } o += "}}"; jobe += o; }
+        if (JOBBL) {   // Job BL: every DL state: key = type R<ty> + link degrees from x_j (x_j .. x_{j+4}, capped 8) + sigma-image outcome (fixed / DL / notDL);
+                       // every all-DL pi-orbit: #non-fixed non-DL sigma-images, and the set of (type, degree-word) positions it visits.
+            std::map<std::string, long long> H; std::string g; bool f1 = true;
+            auto dword = [&](int j) { std::string w; for (int i = 0; i < 5; i++) w += (char)('0' + std::min<int>(8, rot[L[(j + i) % 5]].size())); return w; };
+            for (long long k = 0; k < S; k++) { if (kind[k] != 2) continue; int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd);
+                H["R" + std::to_string(ty) + " " + dword(j) + " " + (sg == k ? "fixed" : (kd == 2 ? "DL" : "notDL"))]++; }
+            for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all) continue;
+                long long nd = 0; std::set<std::string> vis;
+                for (int32_t x : cycles[ci]) { int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (sg != x && kd != 2) nd++; vis.insert("R" + std::to_string(ty) + dword(j)); }
+                std::string vs; for (auto &v : vis) { vs += vs.empty() ? "" : " "; vs += v; }
+                char b[96]; snprintf(b, sizeof b, "%s[%lld, %zu, %lld, \"", f1 ? "" : ", ", wind[ci], cycles[ci].size(), nd); g += b; g += vs + "\"]"; f1 = false; }
+            std::string o = ", \"jobbl\": {\"states\": {"; bool f2 = true; for (auto &kv : H) { o += f2 ? "" : ", "; o += "\"" + kv.first + "\": " + std::to_string(kv.second); f2 = false; }
+            o += "}, \"gamma\": [" + g + "]}"; jobe += o; }
+        if (JOBBK && !pos.empty()) {   // Job BK: statement (c) on every positive cycle, giant-cycle statistics per Kempe class, Hall check on the giant
+            std::vector<int32_t> cp(S); for (long long i = 0; i < S; i++) cp[i] = i;
+            std::function<int(int)> cf = [&](int x) { while (cp[x] != x) { cp[x] = cp[cp[x]]; x = cp[x]; } return x; };
+            { int cc[64], ncc[64]; u64 cmm[4];
+              for (long long i = 0; i < S; i++) { unkey(ALL[i], cc); masks(cc, cmm);
+                for (int p = 0; p < 4; p++) for (int q = p + 1; q < 4; q++) { u64 M = cmm[p] | cmm[q];
+                    while (M) { u64 K = flood(M & -M, cmm[p] | cmm[q]); M &= ~K; long long j = swap_index(cc, K, p, q, ncc); int a = cf(i), b = cf(j); if (a != b) cp[a] = b; } } } }
+            std::map<int, int> clsid; std::vector<int> ccl(cycles.size());
+            for (size_t i = 0; i < cycles.size(); i++) { int r = cf(cycles[i][0]); if (!clsid.count(r)) { int k = clsid.size(); clsid[r] = k; } ccl[i] = clsid[r]; }
+            int NC = clsid.size(); std::vector<long long> csz(NC, 0), cF(NC, 0), cnc(NC, 0); std::vector<int> giant(NC, -1);
+            for (long long k = 0; k < S; k++) { int c2 = clsid[cf(k)]; csz[c2]++; if (kind[k] == 0) cF[c2]++; }
+            for (size_t i = 0; i < cycles.size(); i++) { int c2 = ccl[i]; cnc[c2]++; if (giant[c2] < 0 || wind[i] < wind[giant[c2]]) giant[c2] = i; }
+            std::vector<long long> gF(NC, 0); for (int c2 = 0; c2 < NC; c2++) for (int32_t x : cycles[giant[c2]]) if (kind[x] == 0) gF[c2]++;
+            // lockless credits from DD endpoints of positive cycles (Job AQ / S convention) onto nonpositive cycles
+            std::map<int, long long> credit_on;
+            for (long long k = 0; k < S; k++) { if (kind[k] != 2 || wind[cyc[k]] <= 0) continue; if (!(kind[pi[k]] == 2 || kind[pinv[k]] == 2)) continue;
+                int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd); if (!(kd == 1 && !l1 && !l2) || cyc[sg] == cyc[k] || wind[cyc[sg]] > 0) continue;
+                long long y = pi[sg], f = 0; while (kind[y] == 0) { f++; y = pi[y]; } credit_on[cyc[sg]] += 3 * f - 1; }
+            std::vector<long long> need(NC, 0); std::string o = ", \"jobbk\": {\"pos\": ["; bool f1 = true;
+            for (int zi : pos) { const auto &z = cycles[zi]; bool okA = false, okD = false; std::set<int> hit; long long bestneg = -(1LL << 40);
+                for (int32_t x : z) { if (kind[x] == 0) continue; int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (sg == x) continue;
+                    int T = cyc[sg]; if (T == zi) continue; hit.insert(T); bestneg = std::max(bestneg, -wind[T]); bool ok = wind[T] <= -wind[zi]; if (ok) okA = true;
+                    if (ok && kind[x] == 2 && (kind[pi[x]] == 2 || kind[pinv[x]] == 2)) okD = true; }
+                int c2 = ccl[zi]; bool hg = hit.count(giant[c2]) > 0; if (hg) need[c2] += 5 * wind[zi];
+                bool gam = true; for (int32_t x : z) if (kind[x] != 2) { gam = false; break; }
+                char b[220]; snprintf(b, sizeof b, "%s[%lld, %zu, %d, %d, %d, %zu, %d, %d, %lld]", f1 ? "" : ", ", wind[zi], z.size(), (int)gam, (int)okA, (int)okD, hit.size(), (int)hg, c2, bestneg); o += b; f1 = false; }
+            o += "], \"classes\": ["; f1 = true; std::set<int> pc; for (int zi : pos) pc.insert(ccl[zi]);
+            for (int c2 : pc) { int g = giant[c2]; long long remg = 5 * wind[g] + (credit_on.count(g) ? credit_on[g] : 0);
+                char b[240]; snprintf(b, sizeof b, "%s[%d, %lld, %lld, %lld, %lld, %zu, %lld, %lld, %lld]", f1 ? "" : ", ", c2, cnc[c2], csz[c2], cF[c2], wind[g], cycles[g].size(), gF[c2], need[c2], remg); o += b; f1 = false; }
+            o += "]}"; jobe += o; }
+        if (JOBBJ) {   // Job BJ: U = sigma (all DD endpoints) u sigma' (link-free swaps from DD endpoints, result not DL) groups: max group sum w, #groups with sum w > 0;
+                       // Gamma-cycles: per cycle #states whose sigma-image is not DL (a fixed point counts as DL); min over Gamma; floor: min over Kempe classes of F/N (needs --full).
+            std::vector<int> uu(cycles.size()); for (size_t i = 0; i < uu.size(); i++) uu[i] = i;
+            auto fx = [](std::vector<int> &up, int x) { while (up[x] != x) { up[x] = up[up[x]]; x = up[x]; } return x; };
+            for (long long k = 0; k < S; k++) { if (kind[k] != 2) continue; if (!(kind[pi[k]] == 2 || kind[pinv[k]] == 2)) continue;
+                int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd); { int a = fx(uu, cyc[k]), b = fx(uu, cyc[sg]); if (a != b) uu[a] = b; }
+                unkey(ALL[k], c); masks(c, cm);
+                for (int p = 0; p < 4; p++) for (int q = p + 1; q < 4; q++) { u64 M = cm[p] | cm[q];
+                    while (M) { u64 K = flood(M & -M, cm[p] | cm[q]); M &= ~K; if (K & linkmask) continue; long long t = swap_index(c, K, p, q, nc);
+                        if (t == k || kind[t] == 2) continue; int a = fx(uu, cyc[k]), b = fx(uu, cyc[t]); if (a != b) uu[a] = b; } } }
+            std::map<int, std::pair<long long, int>> gs; for (size_t i = 0; i < cycles.size(); i++) { auto &e = gs[fx(uu, i)]; e.first += wind[i]; e.second++; }
+            long long mx = -(1LL << 40), nf = 0; for (auto &kv : gs) { mx = std::max(mx, kv.second.first); if (kv.second.first > 0) nf++; }
+            long long mx_pos = -(1LL << 40); { std::set<int> pg; for (size_t i = 0; i < cycles.size(); i++) if (wind[i] > 0) pg.insert(fx(uu, i)); for (int g : pg) mx_pos = std::max(mx_pos, gs[g].first); }
+            long long minND = -1, nG = 0;
+            for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all) continue; nG++;
+                long long nd = 0; for (int32_t x : cycles[ci]) { int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (sg != x && kind[sg] != 2) nd++; }
+                if (minND < 0 || nd < minND) minND = nd; }
+            double minFN = 2.0; long long ncl = 0;
+            if (FULL) { std::map<int, std::pair<long long, long long>> cf; for (long long k = 0; k < S; k++) { auto &e = cf[find(k)]; e.first++; if (kind[k] == 0) e.second++; }
+                for (auto &kv : cf) { ncl++; minFN = std::min(minFN, (double)kv.second.second / kv.second.first); } }
+            char b[400]; snprintf(b, sizeof b, ", \"jobbj\": {\"U_groups\": %zu, \"U_max_sumw\": %lld, \"U_max_sumw_posgroups\": %lld, \"U_fail\": %lld, \"gamma\": %lld, \"gamma_min_nonDL_sigma\": %lld, \"classes\": %lld, \"min_F_over_N\": %.6f}",
+                gs.size(), mx, mx_pos, nf, nG, minND, ncl, minFN); jobe += b; }
         if (JOBAK && jpat == "5,5,5,5,6") {   // Job AK (1): W2* on maximal DL runs: at R3k2 (kmask 4) whose next four pi-steps stay DL: R3k2 fixed => R3k0 (4 steps later) not fixed
             long long ntest = 0, nfix2 = 0, nfail = 0, nbadshape = 0, nfail2pp = 0; std::string ce, ce2; std::map<std::string, long long> whereG; std::map<std::string, long long> cnt[2]; std::map<std::string, std::map<long long, long long>> alDist; std::map<std::string, std::map<std::string, long long>> alLeave; long long minTC[2] = {1LL << 40, 1LL << 40}; std::string ceL; std::map<long long, long long> backDist;
             for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &z = cycles[ci]; size_t Lz = z.size(); bool gam = true; for (int32_t x : z) if (kind[x] != 2) { gam = false; break; }
@@ -745,7 +908,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobbgh") { JOBBGH = true; JOBG = true; } else if (a == "--jobbc") { JOBBC = true; JOBG = true; } else if (a == "--jobbb") { JOBBB = true; JOBI = true; JOBG = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobbq") { JOBBQ = true; JOBG = true; } else if (a == "--jobbp") { JOBBP = true; JOBG = true; } else if (a == "--jobbo") { JOBBO = true; JOBG = true; } else if (a == "--jobbl") { JOBBL = true; JOBG = true; } else if (a == "--jobbk") { JOBBK = true; JOBG = true; } else if (a == "--jobbj") { JOBBJ = true; JOBG = true; } else if (a == "--jobbgh") { JOBBGH = true; JOBG = true; } else if (a == "--jobbc") { JOBBC = true; JOBG = true; } else if (a == "--jobbb") { JOBBB = true; JOBI = true; JOBG = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;
