@@ -4,7 +4,7 @@ For the project owner. Updated 05:40 MDT (first written 05:35) from `NightF6Stat
 
 ## What the night produced
 
-44 sorry-free Lean night modules (the 05:33 regression, 66/66, covered 42 of them plus the 24 earlier PlaneMap modules): Theorem W (3F − U = −5·winding), Theorem F5 (the quarter floor at (5,5,5,5,5) holes), the exact class identity Σλ = |DD| − 2N₀ − E₂ − 3τ, the group flow identity and the charge-back assignment certificate for σC, Γ-cycle time reversal, the exact pair dualities, the pocket and crossing lemmas, and the new weak-F6 theorems `pureClean_of_hole6`, `pureClean_of_hole4` and `pureClean_of_degrees` (every Kempe class at a (5,5,5,5,6) hole, or one with four consecutive degree-5 link vertices, contains a filled state). Around them, about 55 Studio jobs on orders 12–27 (plus constructed 37-vertex graphs) and a large set of hand notes. No new theorem of 4CT strength.
+45 sorry-free Lean night modules (the 05:33 regression, 66/66, covered 42 of them plus the 24 earlier PlaneMap modules): Theorem W (3F − U = −5·winding), Theorem F5 (the quarter floor at (5,5,5,5,5) holes), the exact class identity Σλ = |DD| − 2N₀ − E₂ − 3τ, the group flow identity and the charge-back assignment certificate for σC, Γ-cycle time reversal, the exact pair dualities, the pocket and crossing lemmas, and the new weak-F6 theorems `pureClean_of_hole6`, `pureClean_of_hole4` and `pureClean_of_degrees` (every Kempe class at a (5,5,5,5,6) hole, or one with four consecutive degree-5 link vertices, contains a filled state). Around them, about 55 Studio jobs on orders 12–27 (plus constructed 37-vertex graphs) and a large set of hand notes. No new theorem of 4CT strength.
 
 ## Two honest verdicts
 
@@ -15,9 +15,9 @@ For the project owner. Updated 05:40 MDT (first written 05:35) from `NightF6Stat
 
 - Studio Job BJ: adversarial search on SigmaUnionC (objective: minimise min over Γ-cycles Z of best −Λ(T)/Λ(Z)), on statement (c) (some σ-image of a Γ-cycle Z lands on T with Λ(T) ≤ −Λ(Z)) and on the floor; Job BK: (c) and the giant negative cycle over the whole census.
 - G66: Studio Jobs BL (which link patterns get PureClean), BO (DL run lengths and lock-death rules at all-6 holes), BP (a σ-analogue at all-6 holes); hand agents NightG66, NightBudget (B′), NightStatementC; Lean `QuarterHole66.lean` (DD-step table at the all-6 hole).
-- Not yet formal: the degree bridge for d ≥ 7 (`Hole6Gen` from degrees; `QuarterHole4Bridge` needs `NoSeparatingTriangleAt` there, since the clique/chord dichotomy fails). `QuarterBudget` (the per-group budget B′) is in progress; a fresh full regression is running.
+- Not yet formal: the degree bridge for d ≥ 7 (`Hole6Gen` from degrees; `QuarterHole4Bridge` needs `NoSeparatingTriangleAt` there, since the clique/chord dichotomy fails). A fresh full regression (covering the modules newer than 947697a0) is running.
 
-**New since 05:35.** (c) implies R\*, so it is 4CT-strength itself, with a statistical, not forced, margin and no mechanism (NightStatementC). B′ holds on every σ∪σ′-group in the data but is an equivalent packaging of SigmaUnionC, not an easier statement (NightBudget). At an all-6 hole the repeat index moves j ↦ j + 3 but the type R1/R2/R3 is not determined (`QuarterHole66`): the ring is forced, the orbit is not.
+**New since 05:35.** (c) implies R\*, so it is 4CT-strength itself, with a statistical, not forced, margin and no mechanism (NightStatementC). B′ holds on every σ∪σ′-group in the data (min slack 9) but is an equivalent packaging of SigmaUnionC, not an easier statement (NightBudget). **The open problem is now one formal inequality per σ∪σ′-group:** `∀ g, BudgetB' g` (2|R| ≤ 2N₀ + E₂ + 3τ, R = ρ(DD)) ⇒ `sigmaUnionC_of_budget` ⇒ `quarterFloor_of_budget` ⇒ R\* ⇒ 4CT (`QuarterBudget.lean`, formal). Same difficulty as SigmaUnionC; adversarial search is Studio Job BQ (requested). At an all-6 hole the repeat index moves j ↦ j + 3 but the type R1/R2/R3 is not determined (`QuarterHole66`): the ring is forced, the orbit is not.
 
 ## Recommended next moves (NightPostAW, NightWeakForm)
 
