@@ -1,0 +1,24 @@
+consistency failures: 0
+form K: {'targets': 207, 'nonpositive targets': 207, 'rem = 0': 4, 'nonpositive targets with a positive free excursion': 119} violations on nonpositive targets: 11
+    ('20', 'tri20#61', 19, [6, 5, 6, 5, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('20m', 'tri20#61', 19, [5, 5, 6, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('22', 'tri22#577', 8, [5, 7, 6, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('22m', 'tri22#370', 1, [5, 7, 5, 7, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(5, 1, 0), (1, 1, 1)])
+    ('22m', 'tri22#370', 6, [7, 5, 5, 7, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('24', 'tri24#5859', 22, [5, 6, 5, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+form D: {'targets': 203, 'nonpositive targets': 203, 'rem = 0': 4, 'nonpositive targets with a positive free excursion': 118} violations on nonpositive targets: 11
+    ('20', 'tri20#61', 19, [6, 5, 6, 5, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('20m', 'tri20#61', 19, [5, 5, 6, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('22', 'tri22#577', 8, [5, 7, 6, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('22m', 'tri22#370', 1, [5, 7, 5, 7, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(5, 1, 0), (1, 1, 1)])
+    ('22m', 'tri22#370', 6, [7, 5, 5, 7, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('24', 'tri24#5859', 22, [5, 6, 5, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+form A: {'targets': 346, 'nonpositive targets': 346, 'rem = 0': 15, 'nonpositive targets with a positive free excursion': 206} violations on nonpositive targets: 16
+    ('20', 'tri20#61', 19, [6, 5, 6, 5, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('20m', 'tri20#61', 19, [5, 5, 6, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('22', 'tri22#577', 8, [5, 7, 6, 5, 6], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('22m', 'tri22#370', 1, [5, 7, 5, 7, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(5, 1, 0), (1, 1, 1)])
+    ('22m', 'tri22#370', 6, [7, 5, 5, 7, 5], 'w', 0, 'L', 8, 'rem', 2, 'exc', [(1, 1, 1), (5, 1, 0)])
+    ('22m', 'tri22#569', 2, [5, 6, 7, 5, 5], 'w', 0, 'L', 24, 'rem', 2, 'exc', [(1, 1, 1), (2, 1, 0), (3, 1, 0), (3, 1, 0), (3, 1, 0), (6, 1, 0)])
+form D, excursion before a hit excursion: [(('prev exc free', 'prev u', '>=4'), 29), (('prev exc free', 'prev u', 1), 64), (('prev exc free', 'prev u', 2), 25), (('prev exc free', 'prev u', 3), 411), (('prev exc hit', 'prev u', 1), 32)]
+form D, positive free excursions (u, f) in nonpositive targets: [((4, 1), 234), ((5, 1), 94), ((6, 1), 30), ((7, 1), 38), ((7, 2), 8), ((8, 1), 5), ((8, 2), 4), ((9, 1), 2), ((10, 1), 13), ((10, 2), 2), ((11, 2), 1), ((12, 1), 1), ((13, 1), 1), ((16, 1), 1), ((16, 2), 1)]
