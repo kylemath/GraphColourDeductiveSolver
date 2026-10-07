@@ -276,6 +276,69 @@ Studio test (cheap, ranks not needed). At each of the 552 periods, record:
 3. the minimal sufficient sub-statement. Is (i) ∨ (ii) alone always true? If yes, W2′ reduces to two named ring vertices and two states, which is the Lean-sized target.
 4. also on all maximal DL runs, as in §5.1, to see whether Γ-closure is needed.
 
+## 9. Job AI cycle bases: W2\*\*, Hypothesis H, and the two-state W2′ [data]
+
+Script: `nightw2/w2ai.py`, output in `outai.txt`. It reads `jobuv/jobai.json`, 552 degree-6 periods. The cycles at position 5 are {2,3}-cycles and those at position 7 are {3,4}-cycles (§1 colours).
+
+`jobai.json` stores only |K| for each step, not K's vertex set. So "|C₅ ∩ K₄|" and "C₈ created by K₇ ∖ K₄" **cannot be read**. They go to Job AK as §5.2 and §5.5.
+
+### Findings
+
+**W2\*\*(a), F₄ ⇒ a {2,3}-cycle at position 5: 60/60.** But the word "created" is wrong in 19/60 periods: the position-4 {2,3}-rank is already ≥ 1 there (§7 traces: r₂₃(4) = 0 in 41/60). The correct statement is "rank ≥ 1 after K₄", not "K₄ creates a cycle".
+
+**The position-5 cycles under F₄ are far.**
+- 72 cycles in total, of lengths 6 / 8 / 10 = 63 / 8 / 1.
+- **None passes through p, y or z.** Two pass through m.
+- So the cycle-through-p version of the hypothesis is **[killed]**. The cycle that K₄ leaves or creates is a short far cycle. Its ring vertices are two consecutive w's (Job AI).
+
+**The kill case, F₄ with r₂₃(6) = 0, 47 C₈ cycles in 45 periods:**
+- C₈ passes through y and/or z in 40/47 (y and z: 36, y only: 2, z only: 2);
+- it passes through neither in 5/47 (in those periods another position-8 cycle, or none of y/z, see below);
+- it never passes through p;
+- |C₈ ∩ ⋃C₅| = 2–5 in 43/47 and 0 in 2/47.
+
+So C₈ is generally **not** the old C₅ restored: it is a new cycle, mostly through y and z, that reuses 2–3 vertices of C₅.
+
+**F₈ (mirror): {3,4}-rank ≥ 1 at position 7 in 60/60.** Again no cycle through p, y or z.
+
+**Sharpest form of W2′, [data, new] — two states, not three.** At R3k2 or at R3k0 there is an {A,B}-cycle through y or z: **552/552**. The (pos4, pos6, pos8) through-y/z patterns are:
+
+| pattern | periods |
+|---|---|
+| TTT | 390 |
+| TFT | 32 |
+| TTF | 24 |
+| FTT | 24 |
+| TFF | 41 |
+| FFT | 41 |
+
+Position 6 is never needed. In particular F₄ ⇒ at R3k0 an {A,B}-cycle through y or z, and mirror-wise F₈ ⇒ the same at R3k2. This combines W2\* (§3) and Job AI's y/z statement, and it is the Lean target I propose:
+
+```
+W2'' : ∀ b, ∃ n ∈ {10b+14, 10b+18}, ∃ u ∈ {y, z}, ∃ v, M.graph.Adj u v ∧
+        Active h (s n) α_n μ_n v ∧ ¬ (pairGraph M.graph h (s n) α_n μ_n).Reachable (P.x (j_n + 1)) v
+```
+
+(the K_σ-escape form, ⇔ a cycle through u by the fan lemma §8.1). Its local candidates (§8.3) are:
+- w₃ at R3k2, through z;
+- w₀ at R3k0, through y;
+- an outer neighbour of y or z.
+
+### Hand attempt at (a) [not proved]
+
+Assume F₄, i.e. the {1,2}-graph at R3k2 is connected (= K_σ). K₄ is the {1,3}-component of p.
+
+Plan: show that the {1,4}-graph at position 5 is disconnected. The position-5 link is 1 2 3 1 4, whose {1,4}-vertices x₃, x₄, x₀ form a contiguous arc. So by the Lemma Fix duality this is equivalent to a {2,3}-cycle at position 5.
+
+The {1,4}-graph at position 5 consists of:
+- the 4-vertices;
+- the 1-vertices outside K₄;
+- the old 3-vertices of K₄.
+
+The data rule out the natural local witness: no position-5 cycle meets p, y or z. So the disconnected {1,4}-piece is a small far component cut off by K₄. Its boundary is the 6-cycle on two consecutive w's (Job AI).
+
+I could not derive it from F₄ and the lock chains. The missing ingredient is how K₄ (size 4–10) sits against the Lock1@R3k2 {2,3}-chain x₁ → x₃ (§2), which passes next to K₄ at x₃. Job AK §5.2 / §5.5 (K₄'s vertex list against C₅) is needed before the next attempt.
+
 ## 6. Reproduction
 
 Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/nightw2/`. Each runs on a single core in under 1 s.
@@ -283,3 +346,4 @@ Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-s
 - `python3 w2.py` and `python3 w2.py ../jobr27/` write `out2526.txt` and `out27.txt`.
 - `python3 w2rank.py` writes `outrank.txt`, from `../jobuv/jobag.json`.
 - `python3 w2trace.py` writes `outtrace.txt`, from `../jobuv/jobah.json`.
+- `python3 w2ai.py` writes `outai.txt`, from `../jobuv/jobai.json`.
