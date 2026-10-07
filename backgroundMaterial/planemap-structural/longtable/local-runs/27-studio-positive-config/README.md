@@ -435,3 +435,15 @@ u* is the apex of the face on the ring edge w₃–y away from x⁻. ω = c(x⁺
 
   Usually 3–6 of the six pairs are acyclic at a fixed position. The full six-rank vectors are in jobay-periods.jsonl.
 - **Patterns.** Degree 6 has 19 distinct 10-bit patterns. 0000000000 occurs 374 times, then 0000001010 (36) and 0000101000 (33). Joint patterns of consecutive periods: 59 distinct at degree 6 and 90 at degree 7, with 29 shared. All are listed in jobay-summary.txt.
+
+## Job AZ [exploratory]: complete dump of p26#87942 h22 (jobaz/jobaz.py, jobaz-p26-87942-h22.json, jobaz-table.txt)
+Both orientations. Each has one Γ-cycle, with L = 20. The dump uses absolute names and colours and starts at R3k4. The order is 26. The far vertices within distance 2 of the ring are 0, 1, 5, 8, 9, 10, 11, 13, 18, 19 at distance 1 and 2, 3, 4, 12 at distance 2. No far vertex is at distance 3, so the whole graph lies within distance 2 of the ring.
+- **Plantri orientation.** p = 16 and m = 7.
+  - Period 0 fails at k = 4 (position 0, Lock2-only) and at k = 3 (position 2, Lock1-only).
+  - At position 1, σ is not fixed: the image is a DL state. The period's only σ fixed point is at position 6 (R3k1).
+  - The break is at position 19 of the previous period: J is false and the pocket reaches w⁺. Position 18 (R3k0) is σ-fixed.
+  - |K(p)| is 10–13 in period 0 and 3–7 in period 1, except 13 at the fixed position 18.
+- **Mirror orientation.** Period 1 fails at k = 4 (position 10) and at k = 3 (position 12).
+  - Position 11 again has a DL σ-image, not a fixed point. The period's only σ fixed point is at position 14 (R3k2).
+  - Position 8 (R3k0) has a Lock2-only σ-image. This is a k ≤ 2 failure that is not a fixed point, like Job U's hole.
+  - The break is at position 9, where J is false and the pocket reaches w⁺, followed by a Lock1-only σ-image at R1k2.
