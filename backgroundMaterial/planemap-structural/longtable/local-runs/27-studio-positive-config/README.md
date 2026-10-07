@@ -355,3 +355,9 @@ Absolute colours followed through the L Kempe swaps of the cycle (checked agains
   R3k3^{b+2} (27 of 73): branch 1 10, branch 2 9, neither 8. **16 open degree-6 double breaks reach R3k3^{b+2} with |R_b| = |R_{b+1}| = 2** (first p25 #1557 h16, both
   orientations; p26m #21951 h22; p27 #162314 h4), so that run-local statement is false.
 - (5) Control: after every single break on degree-6 Gamma-cycles the far gate is alpha again at R3k4^{b+2} (19/19): branch 2 cannot be excluded by colour alone.
+
+## Job AR (jobuv/jobar.py -> jobar-summary.txt): names of the hole gates R_b & H11 (from jobap.json)
+- Degree-6 Gamma single breaks: {x+} 19/19. Degree-7 Gamma single breaks: {x+} 61, {x+, M_z} 4 (M_z = p's middle outer neighbour adjacent to z).
+- Degree-7 consecutive breaks (14 records): (first, second) hole-gate sets = ({x+}, {x+, M_z}) 6, ({x+, M_z}, {x+}) 6, ({x+}, {x+}) 2. So "the second break has the extra hole
+  gate" holds in only 6/14.
+- Open degree-6 double breaks: first break {x+} 73/73; second break {x+} 63, empty 10; all 27 that reach R3k3^{b+2} have {x+} at the second break (none far-only).
