@@ -198,6 +198,291 @@ Script: `nightw2/w2trace.py`, output in `outtrace.txt`. The rows are the ranks o
 
 **Position 6:** all three non-1 pairs are acyclic at once in 86 periods. So the middle state alone is no obstruction, and K₄/K₇, the two {1,3}-swaps through p, carry the forcing.
 
+## 8. W2′: a cycle through y or z, i.e. a K_σ-escape at y or z (written 03:38 MDT, after Job AI)
+
+Job AI (`jobuv/jobai-summary.txt`) found that in 552/552 periods some {A,B}-cycle at position 4, 6 or 8 passes through y or z. All cycles hug v, with 4–5 vertices on v's side. Every fixed point is made by **one** swap:
+- step 5 kills the last {A,B}-cycle before R3k1 (99/100 cases);
+- step 7 kills the last one before R3k0 (60/60 cases);
+- the killed cycle is short and avoids y and z.
+
+### 8.1 Fan lemma [proved; direction ⇐ uses the boundary-parity argument of Lemma Fix]
+
+Setting:
+- R3@k, k ≤ 2, frame (α, μ, A, B);
+- u ≠ h is a vertex coloured A or B;
+- K_σ is the {α,μ}-component of x_{j+1}; it contains the contiguous link arc x_j, x_{j+1}, x_{j+2} (`low_roles`).
+
+Then:
+
+  **u lies on an {A,B}-cycle of T − h ⇔ some {α,μ}-neighbour of u lies outside K_σ.**
+
+*Proof.*
+- (⇒) This is the argument of `acyclic_of_sigmaFixed`, applied at u itself.
+  - Let C pass through u with edges u b₁ and u b₂.
+  - The two rotation arcs of u between b₁ and b₂ each contain an {α,μ}-neighbour, because consecutive neighbours are adjacent and coloured off u's colour.
+  - The Jordan lemma (`alternating_walks_intersect`) separates these two neighbours by C, so they lie in different {α,μ}-components.
+  - At most one of them is in K_σ.
+- (⇐) Let v₀ be an {α,μ}-neighbour of u outside K_σ, and let S be its {α,μ}-component.
+  - S contains no link vertex: the link's α/μ vertices form one arc inside K_σ.
+  - So the face-boundary graph of S (`bdGraph`, as in `not_acyclic_of_not_sigmaFixed`) avoids h and consists of {A,B}-edges, with even degrees.
+  - Going around u, the faces u v₀ · meet S. Some face at u misses S, namely one at the K_σ-neighbour of u where u has one; see the next paragraph for why one exists.
+  - So u has positive even degree in that graph, and u lies on a cycle of it. ∎
+
+Why u has a K_σ-neighbour:
+- at R3@k ≤ 2, both y and z are adjacent to p and m, which lie in K_σ;
+- so for u ∈ {y, z} both kinds of face occur whenever a neighbour outside K_σ exists.
+
+### 8.2 W2′, Lean-ready, and W2′ ⇒ W2 (fixed-point part) [proved, trivial]
+
+Setting: on an all-DL π-orbit at a `Hole6 P w m q`, with s n = π^[n] s, j_n the repeat index, y = w (q+4) and z = w q. The statement:
+
+```
+W2' : ∀ b, ∃ n ∈ {10b+14, 10b+16, 10b+18}, ∃ u ∈ {y, z}, ∃ v,
+        M.graph.Adj u v ∧ Active h (s n) α_n μ_n v ∧
+        ¬ (pairGraph M.graph h (s n) α_n μ_n).Reachable (P.x (j_n + 1)) v
+```
+
+Here α_n = s n (x j_n) and μ_n = s n (x (j_n+1)). The indices 10b+14, 10b+16, 10b+18 are the positions 4, 6, 8 of a period, since `gamma_period_ten` starts at R3k4 = position 0.
+
+The conclusion is literally ¬ `SigmaFixed` at that state. **No Lemma Fix and no duality is needed for W2′ ⇒ "not all three fixed".** By the fan lemma, W2′ is equivalent to Job AI's statement, that some {A,B}-cycle at position 4, 6 or 8 passes through y or z.
+
+### 8.3 Where the escape can be: explicit vertex names [proved]
+
+These use the §1 colourings, with q = 2, p = x₂, y = w₁ and z = w₂. The {α,μ}-neighbours of y and z inside the 2-ball are:
+
+| state | {α,μ} | y's ball {α,μ}-nbrs | z's ball {α,μ}-nbrs | in K_σ for sure | **ring candidate** |
+|---|---|---|---|---|---|
+| pos 4, R3k2 | {1,2} | x₁, p, m | m, p, **w₃** (2) | x₁, p, m | **w₃** (via z) |
+| pos 6, R3k1 | {1,3} | x₁, p, m | m, p, x₃ | all | none |
+| pos 8, R3k0 | {1,4} | **w₀** (4), x₂ = p, m | m, p, x₃ | p, m, x₃ | **w₀** (via y) |
+
+(m, x₁ and x₃ are in K_σ via the arc and the edges p m, p x_{q±1}.) So W2′ says that at least one of the following holds:
+- (i) at R3k2, w₃ ∉ K_σ, i.e. w₃ (colour μ = 2) is not {1,2}-joined to the link arc;
+- (ii) at R3k0, w₀ ∉ K_σ, i.e. w₀ (colour μ = 4) is not {1,4}-joined to the link arc;
+- (iii) some outer neighbour of y or z (outside the 2-ball) escapes K_σ at one of the three states.
+
+(i) and (ii) are mirror images under time reversal; the mirror orientation reads the cycle backwards, and k2 ↔ k0. In either case the escaping vertex is the ring vertex across w₄ from the y–z side, and the cycle given by the fan lemma passes through z (in i) or y (in ii). This matches Job AI's most common ring sets, which contain w₃w₄ or w₀w₄.
+
+### 8.4 What is still missing [conjecture], and the exact Studio test
+
+I have no hand argument that (i), (ii) or (iii) occurs. The proposed mechanism goes through the Lock chains of §2:
+- Lock2@R3k2 is the {2,4}-chain x₁ → x₄. It runs through w₃'s side of the ring, since w₃ (2) is adjacent to x₄ (4).
+- Lock1@R3k0 is the {2,4}-chain x₃ → x₀, adjacent to w₀.
+- "Both (i) and (ii) fail" would mean that w₃ is {1,2}-attached to the arc at R3k2 and w₀ is {1,4}-attached at R3k0. With the lock chains in the complementary pairs, the hope is that the four swaps K₄–K₇ cannot realise both attachments. I could not close this.
+
+Studio test (cheap, ranks not needed). At each of the 552 periods, record:
+1. the booleans E(pos, u) = "u has an {α,μ}-neighbour outside K_σ", for u ∈ {y, z} and pos ∈ {4, 6, 8}; W2′ says their OR is 1;
+2. whether the escape is the ring candidate (w₃ at position 4, w₀ at position 8) or an outer neighbour;
+3. the minimal sufficient sub-statement. Is (i) ∨ (ii) alone always true? If yes, W2′ reduces to two named ring vertices and two states, which is the Lean-sized target.
+4. also on all maximal DL runs, as in §5.1, to see whether Γ-closure is needed.
+
+## 9. Job AI cycle bases: W2\*\*, Hypothesis H, and the two-state W2′ [data]
+
+Script: `nightw2/w2ai.py`, output in `outai.txt`. It reads `jobuv/jobai.json`, 552 degree-6 periods. The cycles at position 5 are {2,3}-cycles and those at position 7 are {3,4}-cycles (§1 colours).
+
+`jobai.json` stores only |K| for each step, not K's vertex set. So "|C₅ ∩ K₄|" and "C₈ created by K₇ ∖ K₄" **cannot be read**. They go to Job AK as §5.2 and §5.5.
+
+### Findings
+
+**W2\*\*(a), F₄ ⇒ a {2,3}-cycle at position 5: 60/60.** But the word "created" is wrong in 19/60 periods: the position-4 {2,3}-rank is already ≥ 1 there (§7 traces: r₂₃(4) = 0 in 41/60). The correct statement is "rank ≥ 1 after K₄", not "K₄ creates a cycle".
+
+**The position-5 cycles under F₄ are far.**
+- 72 cycles in total, of lengths 6 / 8 / 10 = 63 / 8 / 1.
+- **None passes through p, y or z.** Two pass through m.
+- So the cycle-through-p version of the hypothesis is **[killed]**. The cycle that K₄ leaves or creates is a short far cycle. Its ring vertices are two consecutive w's (Job AI).
+
+**The kill case, F₄ with r₂₃(6) = 0, 47 C₈ cycles in 45 periods:**
+- C₈ passes through y and/or z in 40/47 (y and z: 36, y only: 2, z only: 2);
+- it passes through neither in 5/47 (in those periods another position-8 cycle, or none of y/z, see below);
+- it never passes through p;
+- |C₈ ∩ ⋃C₅| = 2–5 in 43/47 and 0 in 2/47.
+
+So C₈ is generally **not** the old C₅ restored: it is a new cycle, mostly through y and z, that reuses 2–3 vertices of C₅.
+
+**F₈ (mirror): {3,4}-rank ≥ 1 at position 7 in 60/60.** Again no cycle through p, y or z.
+
+**Sharpest form of W2′, [data, new] — two states, not three.** At R3k2 or at R3k0 there is an {A,B}-cycle through y or z: **552/552**. The (pos4, pos6, pos8) through-y/z patterns are:
+
+| pattern | periods |
+|---|---|
+| TTT | 390 |
+| TFT | 32 |
+| TTF | 24 |
+| FTT | 24 |
+| TFF | 41 |
+| FFT | 41 |
+
+Position 6 is never needed. In particular F₄ ⇒ at R3k0 an {A,B}-cycle through y or z, and mirror-wise F₈ ⇒ the same at R3k2. This combines W2\* (§3) and Job AI's y/z statement, and it is the Lean target I propose:
+
+```
+W2'' : ∀ b, ∃ n ∈ {10b+14, 10b+18}, ∃ u ∈ {y, z}, ∃ v, M.graph.Adj u v ∧
+        Active h (s n) α_n μ_n v ∧ ¬ (pairGraph M.graph h (s n) α_n μ_n).Reachable (P.x (j_n + 1)) v
+```
+
+(the K_σ-escape form, ⇔ a cycle through u by the fan lemma §8.1). Its local candidates (§8.3) are:
+- w₃ at R3k2, through z;
+- w₀ at R3k0, through y;
+- an outer neighbour of y or z.
+
+### Hand attempt at (a) [not proved]
+
+Assume F₄, i.e. the {1,2}-graph at R3k2 is connected (= K_σ). K₄ is the {1,3}-component of p.
+
+Plan: show that the {1,4}-graph at position 5 is disconnected. The position-5 link is 1 2 3 1 4, whose {1,4}-vertices x₃, x₄, x₀ form a contiguous arc. So by the Lemma Fix duality this is equivalent to a {2,3}-cycle at position 5.
+
+The {1,4}-graph at position 5 consists of:
+- the 4-vertices;
+- the 1-vertices outside K₄;
+- the old 3-vertices of K₄.
+
+The data rule out the natural local witness: no position-5 cycle meets p, y or z. So the disconnected {1,4}-piece is a small far component cut off by K₄. Its boundary is the 6-cycle on two consecutive w's (Job AI).
+
+I could not derive it from F₄ and the lock chains. The missing ingredient is how K₄ (size 4–10) sits against the Lock1@R3k2 {2,3}-chain x₁ → x₃ (§2), which passes next to K₄ at x₃. Job AK §5.2 / §5.5 (K₄'s vertex list against C₅) is needed before the next attempt.
+
+## 10. W2″ in fan form: the two ring candidates [proved parts; conjecture]
+
+Colours are those of §1, named at R3k2: α = 1, μ = 2, A = 3, B = 4; q = 2, p = x₂, y = w₁, z = w₂.
+
+| | R3k2 (pos 4) | R3k0 (pos 8) |
+|---|---|---|
+| α/μ pair | {1,2} | {1,4} (α = 1 at x₂ = p, μ = 4 at x₃) |
+| K_σ | {1,2}-component of x₁ | {1,4}-component of x₃ |
+| K_σ contains | x₀, x₁, p, m | x₂ = p, x₃, x₄, m (m = 4) |
+| ring candidate | w₃ (colour 2), escape through z | w₀ (colour 4), escape through y |
+
+**W2″ fails** iff, at both R3k2 and R3k0, every α/μ-neighbour of y and of z lies in K_σ of that state. In particular:
+- **(F-i)** w₃ ∈ K_σ(4);
+- **(F-ii)** w₀ ∈ K_σ(8).
+
+### 10.1 The candidates are never recoloured [proved]
+
+w₃ is coloured 2 and w₀ is coloured 4, both at pos 4 and at pos 8 (from `R3At` at both states, §1 table). The four swaps are K₄ {1,3}, K₅ {1,2}, K₆ {1,4}, K₇ {1,3}.
+
+- **w₃:** if w₃ ∈ K₅, it becomes 1. After that only K₆ and K₇ act, and they swap {1,4} and {1,3}, so w₃ could never return to 2. Hence **w₃ ∉ K₅**. K₄, K₆ and K₇ do not involve colour 2, so w₃ is coloured 2 at every one of positions 4–8.
+- **w₀:** if w₀ ∈ K₆, it becomes 1. Then K₇ can only make it 3, never 4 again. Hence **w₀ ∉ K₆**. K₄, K₅ and K₇ do not involve 4, so w₀ is coloured 4 throughout.
+
+### 10.2 What (F-i) and (F-ii) force on the swaps [proved]
+
+- **(F-i) ⇒ K₄ cuts every {1,2}-path from x₁ to w₃.**
+  - K₅ is the {1,2}-component of x₀ at pos 5, and it contains x₁ (Job O / `pair_own`: x₀, x₁, m, y ∈ K₅). Since w₃ ∉ K₅, there is no {1,2}-path x₁ → w₃ at pos 5.
+  - The {1,2}-graph at pos 5 is the pos-4 graph with K₄'s 1-vertices removed (they become 3) and K₄'s 3-vertices added.
+  - Adding vertices cannot destroy a path. So if a {1,2}-path x₁ → w₃ existed at pos 4 (F-i), **every** such path passes through a 1-vertex of K₄, the {1,3}-component of p.
+  - Equivalently, at pos 5 there is a {3,4}-separation (Hex/duality, h allowed) between x₁ and w₃, and at pos 4 it did not exist.
+- **(F-ii) ⇒ K₇ creates a {1,4}-path from x₃ to w₀.**
+  - The {1,4}-graph is unchanged by K₆, and K₆ is the {1,4}-component of x₃ at pos 6. Since w₀ ∉ K₆, there is no {1,4}-path x₃ → w₀ at pos 6 or at pos 7.
+  - At pos 8 the {1,4}-graph gains K₇'s old 3-vertices (now 1) and loses K₇'s old 1-vertices.
+  - So under (F-ii), **every** {1,4}-path x₃ → w₀ at pos 8 passes through an old-3 vertex of K₇. K₇ is the {1,3}-component of x₁ at pos 7 and contains p and z.
+
+The two statements are time-reverses of each other: K₄ ↔ K₇ are the two {1,3}-swaps through p, and w₃ ↔ w₀ under the mirror. So **the ring part of W2″ fails only if the first {1,3}-swap through p disconnects w₃ from x₁ in {1,2}, and the last {1,3}-swap through p connects w₀ to x₃ in {1,4}.**
+
+### 10.3 Attempted contradiction via the locks [not closed]
+
+The locks at R3k2 are:
+- Lock1: a {2,3}-chain Λ₁ from x₁ to x₃;
+- Lock2: a {2,4}-chain Λ₂ from x₁ to x₄.
+
+w₃ (colour 2) is adjacent to x₃ and x₄, so it can lie on Λ₁ or Λ₂. The Jordan curve h x₁ Λ₂ x₄ h puts x₂ and x₃ on one side and x₀ on the other. But a {1,2}-path shares colour 2 with both lock chains, so neither chain blocks it, and **Jordan separation gives nothing directly**.
+
+The usable separation is the one in 10.2: at pos 5, a {3,4}-walk separating x₁ from w₃.
+- The pos-5 link is 1 2 3 1 4, so its {3,4}-vertices are x₂ (3) and x₄ (4). These are not adjacent, so the separating {3,4}-walk may pass x₂ h x₄.
+- That is exactly a {3,4} "lock" on the R1k4 state, from p (now 3) to x₄.
+- I could not exclude it at the same time as (F-ii).
+
+### 10.4 Cleanest sub-statement and Studio test
+
+**Sub-statement R (ring escape).** On every period of a (5,5,5,5,6) Γ-cycle:
+- (i) w₃ ∉ K_σ(R3k2), or
+- (ii) w₀ ∉ K_σ(R3k0).
+
+R implies W2″ (fan lemma, through z or y), and so W2.
+
+By 10.2, R is equivalent to: **not both** "K₄ disconnects w₃ from x₁ in {1,2}" and "K₇ connects w₀ to x₃ in {1,4}".
+
+Studio test (Job AK addendum). At each of the 552 periods, and on all maximal DL runs containing positions 4–8, record:
+1. the booleans w₃ ∈ K_σ(pos 4), w₀ ∈ K_σ(pos 8), and the escape at y or z through outer neighbours (if R fails);
+2. at pos 4, whether every {1,2}-path x₁ → w₃ meets K₄ ∩ colour 1, i.e. whether w₃ ∉ {1,2}-component of x₁ after K₄ (10.2 says this is forced whenever w₃ ∈ K_σ(4); a check of the bookkeeping);
+3. the R1k4 state's {3,4} p–x₄ connection (10.3).
+
+If R holds with 0 failures, the next hand target is the single coupling between the two {1,3}-swaps through p.
+
+If R fails somewhere, W2″ needs the outer neighbours of y and z, and the next step is the rotation at y and z outside the 2-ball.
+
+## 11. Job AK: W2 needs the closure; the open-run counterexample p25 #668 h18 (written 03:51 MDT)
+
+Job AK found that W2\*, W2″ and R hold on all 552 Γ-periods but **fail on open DL runs**: W2\* fails in about 19% of open windows. So no 4-step Kempe proof of W2 exists, and W2, like A₃₄′, needs the Γ-closure. That makes §10.2's reduction a statement about runs, not a proof route.
+
+### 11.1 R1k4: p and x₄ are {3,4}-connected [proved, trivial]
+
+At R1k4 (pos 5, j = 3) the §1 link is x₃..x₂ = 1, 4, 1, 2, 3, so the frame is α = 1, μ = x₄ = 4, A = x₁ = 2, B = x₂ = p = 3. Lock2 at that state is the {μ,B} = {4,3}-chain from x_{j+1} = x₄ to x_{j+4} = x₂ = p. So "p ∼ x₄ in {3,4} at R1k4" **is Lock2 of the R1k4 state**, and it holds on every DL window (Job AK: 0 exceptions). This is the {3,4} separation of §10.3: it exists, and it is a lock.
+
+### 11.2 The counterexample, traced by hand and by script [data]
+
+Script: `nightw2/ce668.py`, output in `outce668.txt`, with its own R₊₃ engine. It reproduces Studio's five colourings up to colour names; Studio stores canonical colourings. Hole 18, link (7, 17, 19, 9, 8), p = 17 (x₁), y = 6, z = 20, m = 16.
+
+| pos | state | Lock1 | Lock2 | σ fixed | Σ over 6 pairs of cycle rank | Σ components |
+|---|---|---|---|---|---|---|
+| 3 | R1k0 | **0** | 1 | – | – | – |
+| 4 | R3k2 | 1 | 1 | **1** | **0** | 8 |
+| 5 | R1k4 | 1 | 1 | – | 1 | 9 |
+| 6 | R3k1 | 1 | 1 | **1** | 2 | 10 |
+| 7 | R1k3 | 1 | 1 | – | 3 | 11 |
+| 8 | R3k0 | 1 | 1 | **1** | 4 | 12 |
+| 9 | R1k2 | 1 | **0** | – | 6 | 14 |
+
+**The DL run is exactly the window, positions 4–8.**
+- Its predecessor (pos 3) lacks Lock1.
+- Its successor (pos 9) loses Lock2 immediately.
+- In the closure language, the window failure is surrounded by lock death at distance 1 on both sides, so c = 1 here.
+- At R3k2 **every one of the six pair-graphs is a forest.** The total rank then rises by exactly 1 per step until the run dies.
+
+### 11.3 Which locks die, in the §1 colours [proved bookkeeping]
+
+- **pos 3 (R1k0, j = 2).** Undoing step 3 (the {α,A}-swap of x₄'s component, which contains x₀) gives link x₀..x₄ = 4, 2, 1, 3, 1. So α = 1, μ = 3, A = 4, B = 2.
+  - **Lock1@pos 3 is a {3,4}-chain x₃ → x₀**, in F₄'s forest pair.
+- **pos 9 (R1k2, j = 0).** Step 8 swaps {1,2} on x₄'s component, which contains x₀. That gives link 1, 3, 1, 4, 2, so α = 1, μ = 3, A = 4, B = 2.
+  - **Lock2@pos 9 is a {2,3}-chain x₁ → x₄**, in F₈'s forest pair.
+
+So the two locks that died are chains in the forest pairs of the two outer fixed points, at the states one step outside the window. Proposed lemma family, for Job AL to test at scale:
+
+> **L-death.** If R3k2, R3k1 and R3k0 of a DL window are all fixed points, then Lock1 fails at the preceding R1k0, or Lock2 fails at the following R1k2. Mirror: the roles are exchanged under time reversal.
+> (Weaker: the run leaves DL within c steps of the window, for a small c.)
+
+On a Γ-cycle every state is DL, so L-death (or its weak form) ⇒ W2's fixed-point part.
+
+### 11.4 An exact Euler identity for the total cycle rank [proved]
+
+Let c be a proper 4-colouring of T − h, with T a triangulation on n vertices and deg h = 5. Then:
+
+  **Σ_{6 pairs} rank(ab) = Σ_{6 pairs} comp(ab) − 8.**
+
+*Proof.*
+- Every edge of T − h lies in exactly one pair-graph, so Σ E_ab = (3n − 6) − 5.
+- Every vertex lies in exactly three pair-graphs, so Σ V_ab = 3(n − 1).
+- Hence Σ (E − V + C) = ΣC − 8. ∎
+
+**At a DL state, comp(α,A) ≥ 2 and comp(α,B) ≥ 2.**
+- The Lock2 chain {μ,B} from x_{j+1} to x_{j+4}, closed through h, separates x_{j+2} from x_j. An {α,A}-path from x_{j+2} to x_j cannot cross it, since the colours are disjoint and h is deleted.
+- The Lock1 chain does the same for {α,B}.
+
+So at a DL state the total rank is ΣC − 8 ≥ 0, with equality iff:
+- {α,A} and {α,B} have exactly two components each;
+- the other four pair-graphs are connected;
+- all six are forests.
+
+p25 #668 at R3k2 is exactly this extremal state, and it was checked numerically at positions 4–9.
+
+**Conjectured refined duality** (consistent with the identity; not proved):
+
+  rank(ab) = comp(cd) − 1 if cd's link vertices form one arc or two arcs joined in cd, and comp(cd) − 2 otherwise.
+
+At a DL state the arcs {α,μ}, {A,B} are single, and {μ,A}, {μ,B} are joined by the locks. The correction terms then sum to 2, which matches the identity.
+
+**Reading.** W2's fixed points are low-total-rank events. A potential proof of W2 on a Γ-cycle could use the total rank R(s) = ΣC − 8, which returns to its value after one cycle length L:
+- three fixed points in a window force R small at R3k2;
+- the question is whether a Γ-orbit can pass through such a near-extremal state.
+
+At p25 #668 it cannot stay DL: R climbs 0 → 4 across the window and both neighbouring locks are dead. Job AL request: record R(s) along every Γ-cycle and along every open run around each W2\* failure, together with the first lock-death distance.
+
 ## 6. Reproduction
 
 Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/nightw2/`. Each runs on a single core in under 1 s.
@@ -205,3 +490,5 @@ Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-s
 - `python3 w2.py` and `python3 w2.py ../jobr27/` write `out2526.txt` and `out27.txt`.
 - `python3 w2rank.py` writes `outrank.txt`, from `../jobuv/jobag.json`.
 - `python3 w2trace.py` writes `outtrace.txt`, from `../jobuv/jobah.json`.
+- `python3 w2ai.py` writes `outai.txt`, from `../jobuv/jobai.json`.
+- `python3 ce668.py` writes `outce668.txt`, from `../jobuv/jobak-counterexample.json`. It uses its own R₊₃ and R₊₂ engine, and checks against Studio's colourings up to colour names.
