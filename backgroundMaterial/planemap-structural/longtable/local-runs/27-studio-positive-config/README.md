@@ -183,3 +183,9 @@ Exits = R3 DD-endpoint states of positive cycles with a lockless sigma-image on 
   (w -2, L 38) has excursions (u,f,mass) = (1,3,-8 HIT), (2,2,-4), (17,2,+11), (2,1,-1), (1,3,-8 HIT), (3,1,0): the excess +6 is its own long DL-run excursion (u = 17, +11).
   p27m #166916 h19: group of 16 cycles, sum lambda -580; the positive non-Gamma cycle (w 2, L 22) has one exit (f = 1, credit 2) into cycle 31 (w 0, L 8), whose excursions are
   (1,1,-2 HIT) and (5,1,+2): again the target's own positive excursion carries the +2. In both groups the excess is absorbed by unhit negative cycles (e.g. -80, -60, -535).
+
+## Job X (`--jobx`; jobx-summary.txt): consecutive k = 4 failures on all maximal DL runs at (5,5,5,5,6), orders 25-27, both orientations
+- About 101 million maximal DL runs (Gamma-cycles 6 / 25 / 101 per orientation). Pairs of R3k4 visits 10 steps apart inside a run: 45 + 42, 191 + 182, 800 + 750;
+  both failing: 1 + 1, 8 + 9, 31 + 23, **never on a Gamma-cycle**. Distance from the second failure to the first non-DL state: max 5 (order 25), 2 / 15 (order 26 / mirror),
+  9 (order 27). The single distance > 10 is p26m #21951 h22 (run length 27, failures at positions 2 and 12, the run continues 15 steps). The state leaving DL always has
+  Lock1 and loses Lock2 (it is the run end s_u).

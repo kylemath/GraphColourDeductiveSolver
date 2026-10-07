@@ -289,13 +289,23 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
         if (JOBX) {   // Job X: maximal DL runs along pi at (5,5,5,5,6) holes; pairs of R3@k4 visits 10 steps apart with both sigma-exits not lockless
             int nhi = 0; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) nhi++;
             if (nhi == 1 && jpat == "5,5,5,5,6") {
-                long long nruns = 0, npairs = 0, ngamma = 0; std::string ev; bool fe = true;
+                long long nruns = 0, npairs = 0, ngamma = 0, nwbad = 0; long long nwin[2] = {0, 0}, wfail[2][4] = {{0,0,0,0},{0,0,0,0}}; std::string ev, wex; bool fe = true;
                 for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &z = cycles[ci]; size_t Lz = z.size(); bool all = true; for (int32_t x : z) if (kind[x] != 2) { all = false; break; }
                     std::vector<std::vector<int32_t>> runs;
                     if (all) { runs.push_back(z); ngamma++; }
                     else { for (size_t i = 0; i < Lz; i++) { if (kind[z[i]] != 2 || kind[z[(i + Lz - 1) % Lz]] == 2) continue; std::vector<int32_t> rr; size_t t = i; while (kind[z[t % Lz]] == 2) { rr.push_back(z[t % Lz]); t++; } runs.push_back(rr); } }
                     for (auto &rr : runs) { nruns++; size_t R = rr.size(); std::vector<int> fail(R, -1);
                         for (size_t i = 0; i < R; i++) { int j, ty, km, l1, l2, kd; long long sg; frame(rr[i], j, ty, km, sg, l1, l2, kd); if (ty == 3 && km == 16) fail[i] = (kd == 1 && !l1 && !l2) ? 0 : 1; }
+                        { std::vector<int> kk(R, -1), ok(R, 0); std::vector<long long> fv(R, -1);
+                          for (size_t i = 0; i < R; i++) { int j, ty, km, l1, l2, kd; long long sg; frame(rr[i], j, ty, km, sg, l1, l2, kd); if (ty != 3) continue;
+                              kk[i] = km == 1 ? 0 : km == 2 ? 1 : km == 4 ? 2 : km == 8 ? 3 : km == 16 ? 4 : -1; if (kd == 1 && !l1 && !l2) { ok[i] = 1; long long y = pi[sg], f = 0; while (kind[y] == 0) { f++; y = pi[y]; } fv[i] = f; } }
+                          for (size_t i = 0; i < R; i++) { if (kk[i] != 3) continue; if (!all && i + 8 >= R) continue; size_t q[5]; for (int t = 0; t < 5; t++) q[t] = (i + 2 * t) % R;
+                              if (kk[q[1]] != 2 || kk[q[2]] != 1 || kk[q[3]] != 0 || kk[q[4]] != 4) { nwbad++; continue; }
+                              long long cr = 0; for (int t = 0; t < 5; t++) if (ok[q[t]]) cr += 3 * fv[q[t]] - 1;
+                              bool W1 = ok[q[0]] || ok[q[4]], W2 = ok[q[1]] || ok[q[2]] || ok[q[3]], W4 = ok[q[4]] || (ok[q[0]] && fv[q[0]] == 3);
+                              nwin[all ? 1 : 0]++; if (cr < 10) wfail[all ? 1 : 0][0]++; if (!W1) wfail[all ? 1 : 0][1]++; if (!W2) wfail[all ? 1 : 0][2]++; if (!W4) wfail[all ? 1 : 0][3]++;
+                              if ((cr < 10 || !W1 || !W2 || !W4) && wex.size() < 2000) { char b[200]; snprintf(b, sizeof b, "%s{\"gamma\": %s, \"cycle\": %zu, \"pos\": %zu, \"credit\": %lld, \"W1\": %d, \"W2\": %d, \"W4\": %d, \"dist_to_run_end\": %lld}",
+                                  wex.empty() ? "" : ", ", all ? "true" : "false", ci, i, cr, (int)W1, (int)W2, (int)W4, all ? -1LL : (long long)(R - (i + 8))); wex += b; } } }
                         for (size_t i = 0; i < R; i++) { size_t i2 = i + 10; if (all) i2 %= R; else if (i2 >= R) continue; if (fail[i] < 0 || fail[i2] < 0) continue; npairs++;
                             if (fail[i] == 1 && fail[i2] == 1) { char b[256];
                                 if (all) snprintf(b, sizeof b, "%s{\"gamma\": true, \"cycle\": %zu, \"L\": %zu, \"dist\": -1}", fe ? "" : ", ", ci, R);
@@ -304,16 +314,17 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                                     snprintf(b, sizeof b, "%s{\"gamma\": false, \"cycle\": %zu, \"run_len\": %zu, \"first_fail_pos\": %zu, \"dist\": %zu, \"last_DL_type\": %d, \"last_DL_kmask\": %d, \"next_kind\": %d, \"next_lock1\": %d, \"next_lock2\": %d}",
                                         fe ? "" : ", ", ci, R, i, R - i2, ty, km, nk, a1, a2); }
                                 ev += b; fe = false; } } } }
-                char b2[160]; snprintf(b2, sizeof b2, ", \"jobx\": {\"runs\": %lld, \"gamma\": %lld, \"k4_pairs\": %lld, \"events\": [", nruns, ngamma, npairs); jobe += b2; jobe += ev; jobe += "]}"; } }
+                char b2[400]; snprintf(b2, sizeof b2, ", \"jobx\": {\"runs\": %lld, \"gamma\": %lld, \"k4_pairs\": %lld, \"windows\": [%lld, %lld], \"windows_malformed\": %lld, \"wfail_run\": [%lld, %lld, %lld, %lld], \"wfail_gamma\": [%lld, %lld, %lld, %lld], \"events\": [", nruns, ngamma, npairs, nwin[0], nwin[1], nwbad, wfail[0][0], wfail[0][1], wfail[0][2], wfail[0][3], wfail[1][0], wfail[1][1], wfail[1][2], wfail[1][3]); jobe += b2; jobe += ev; jobe += "], \"wfail_examples\": ["; jobe += wex; jobe += "]}"; } }
         if (JOBS) {   // Job S (NightF6Flow 1.1): exits = R3 DD-endpoint states of a positive cycle Z with lockless sigma-image on a cycle T != Z
             auto isDDend = [&](long long k) { return kind[k] == 2 && (kind[pi[k]] == 2 || kind[pinv[k]] == 2); };
-            std::map<int, long long> hitsum, nhits; std::map<int, std::set<long long>> hitstates; std::string ss = ", \"jobs\": {\"pos\": ["; bool f1 = true; std::set<int> needT;
+            std::map<int, long long> hitsum, nhits; std::map<int, std::set<long long>> hitstates; std::string exl; std::string ss = ", \"jobs\": {\"pos\": ["; bool f1 = true; std::set<int> needT;
             for (size_t ci = 0; ci < cycles.size(); ci++) { if (wind[ci] <= 0) continue; bool gam = true; long long crN = 0, crP = 0, crN_other = 0; std::set<int> nb;
                 for (int32_t x : cycles[ci]) { if (kind[x] != 2) gam = false; if (!isDDend(x)) continue; int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd);
                     if (cyc[sg] != (int)ci && wind[cyc[sg]] <= 0) nb.insert(cyc[sg]);
                     if ((!ALLTYPES && ty != 3) || !(kd == 1 && !l1 && !l2) || cyc[sg] == (int)ci) continue;
                     long long y = pi[sg], f = 0; while (kind[y] == 0) { f++; y = pi[y]; } int T = cyc[sg];
                     if (wind[T] <= 0 && ty != 3) crN_other += 3 * f - 1;
+                    { char e[96]; snprintf(e, sizeof e, "%s[%zu, %d, %lld, %d]", exl.empty() ? "" : ", ", ci, T, 3 * f - 1, ty); exl += e; }
                     if (wind[T] <= 0) { crN += 3 * f - 1; hitsum[T] += 1 - 3 * f; nhits[T]++; hitstates[T].insert(sg); } else crP += 3 * f - 1; }
                 long long Lam = 5 * wind[ci], def = Lam - crN;
                 char b[200]; snprintf(b, sizeof b, "%s{\"id\": %zu, \"Lambda\": %lld, \"gamma\": %s, \"L\": %zu, \"CrN\": %lld, \"CrN_nonR3\": %lld, \"CrP\": %lld, \"def\": %lld, \"nbrN\": [", f1 ? "" : ", ", ci, Lam, gam ? "true" : "false", cycles[ci].size(), crN, crN_other, crP, def);
@@ -321,7 +332,7 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
             ss += "], \"targets\": ["; bool f3 = true; for (auto &kv : hitsum) needT.insert(kv.first);
             for (int t : needT) { long long hs = hitsum.count(t) ? hitsum[t] : 0, nh = nhits.count(t) ? nhits[t] : 0, nd = hitstates.count(t) ? hitstates[t].size() : 0;
                 char b[160]; snprintf(b, sizeof b, "%s[%d, %lld, %zu, %lld, %lld, %lld, %lld]", f3 ? "" : ", ", t, 5 * wind[t], cycles[t].size(), hs, nh, nd, 5 * wind[t] - hs); ss += b; f3 = false; }
-            ss += "]}"; jobe += ss; }
+            ss += "], \"exits\": ["; ss += exl; ss += "]}"; jobe += ss; }
         if (JOBQ) {   // Job Q: per state of each Gamma-cycle: sigma fixed point? (the {alpha,mu}-component of m is all of those colours), sigma(x) lockless?, and the step's component vs K_sigma
             std::string qq = ", \"jobq\": ["; bool f1 = true;
             for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all) continue;
