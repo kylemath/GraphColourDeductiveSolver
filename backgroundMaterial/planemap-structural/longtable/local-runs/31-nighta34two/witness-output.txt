@@ -1,0 +1,18 @@
+== plantri h 22 breaking anchor pos 10 rho {2: 1, 0: 0, 3: 2, 1: 3} |X_i| [7, 6, 7, 4, 5, 4, 5, 4, 5, 4]
+   hole-sync True
+   c9 pocket reaches m: True pocket [7, 8, 9, 10, 11, 12, 13, 14]
+   d9 pocket reaches m: False
+   X9 [2, 8, 12, 18] X9 cap pocket [8, 12] colours c/d [(0, 2), (0, 2)] pair [0, 3] J [1, 2]
+   d9: z ~ y True z ~ w2 True Zd meets XP [8, 12]
+   crossing lemma: removing XP cuts z from {y,w2} in d9: True
+   static: colourings with these hole colours 12 {('DL', False, 'pocket', False): 4, ('DL', True, 'pocket', False): 6, ('DL', False, 'pocket', True): 1, ('DL', True, 'pocket', True): 1}
+   EPL static on ordered pairs of pocketed DL colourings: 0 pairs, EPL fails on 0
+== mirror h 22 breaking anchor pos 0 rho {0: 3, 2: 2, 1: 0, 3: 1} |X_i| [7, 6, 7, 4, 5, 4, 5, 4, 5, 4]
+   hole-sync True
+   c9 pocket reaches m: True pocket [7, 8, 9, 10, 11, 12, 19, 24]
+   d9 pocket reaches m: False
+   X9 [2, 5, 8, 12] X9 cap pocket [8, 12] colours c/d [(2, 0), (2, 1)] pair [2, 3] J [0, 1]
+   d9: z ~ y True z ~ w2 True Zd meets XP [8, 12]
+   crossing lemma: removing XP cuts z from {y,w2} in d9: True
+   static: colourings with these hole colours 12 {('DL', True, 'pocket', False): 6, ('DL', True, 'pocket', True): 2, ('DL', False, 'pocket', False): 4}
+   EPL static on ordered pairs of pocketed DL colourings: 2 pairs, EPL fails on 2

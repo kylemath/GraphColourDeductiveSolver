@@ -1,0 +1,64 @@
+256 ('X0 nonempty (L != 10)', True)
+256 ('X10 == X0 (exchange)', True)
+1 ('X9-vertices of break pocket leave the pair in the other run', False)
+18 ('X9-vertices of break pocket leave the pair in the other run', True)
+18 ('break pocket ^ X9 sub K8b ^ K8o', False)
+1 ('break pocket ^ X9 sub K8b ^ K8o', True)
+5 ('break pocket ^ X9 sub X8', False)
+14 ('break pocket ^ X9 sub X8', True)
+19 ('break pocket meets X9', True)
+19 ('break', 'K8c == K8d', False)
+0 ('break', 'Kc^Kd sub X_i u N?', 'n/a')
+190 ('break', 'X_{i+1} sub X_i u (Kc^Kd)', True)
+4 ('break', '|X0|', 10)
+4 ('break', '|X0|', 11)
+2 ('break', '|X0|', 5)
+1 ('break', '|X0|', 6)
+4 ('break', '|X0|', 7)
+4 ('break', '|X0|', 9)
+256 ('hole-sync i=0..10', True)
+237 ('nobreak', 'K8c == K8d', False)
+0 ('nobreak', 'Kc^Kd sub X_i u N?', 'n/a')
+2370 ('nobreak', 'X_{i+1} sub X_i u (Kc^Kd)', True)
+2 ('nobreak', '|X0|', 10)
+8 ('nobreak', '|X0|', 11)
+47 ('nobreak', '|X0|', 3)
+24 ('nobreak', '|X0|', 4)
+42 ('nobreak', '|X0|', 5)
+53 ('nobreak', '|X0|', 6)
+33 ('nobreak', '|X0|', 7)
+19 ('nobreak', '|X0|', 8)
+9 ('nobreak', '|X0|', 9)
+256 ('rho is a 3-cycle', True)
+19 ('some X9-vertex of break pocket leaves the pair in other run', True)
+256 ('tau == rho^2', True)
+breaking cycles:
+p25#16945 mirror 3 b=0 |X0|=6 |X_i|=6,5,8,6,7,2,5,4,5,5,6 |Pk_b|=7 |Pk_b^X9|=3 |K8b^K8o|=5 XP sub X8:False col b/o on XP:0/1 2/0 0/2 pair9=[0, 2]
+p26#36087 plantri 15 b=1 |X0|=10 |X_i|=10,9,9,6,5,6,7,6,8,7,10 |Pk_b|=9 |Pk_b^X9|=3 |K8b^K8o|=2 XP sub X8:True col b/o on XP:2/1 2/1 2/0 pair9=[2, 3]
+p26#38516 plantri 20 b=0 |X0|=10 |X_i|=10,9,9,6,5,6,7,6,8,7,10 |Pk_b|=9 |Pk_b^X9|=3 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/3 0/3 0/2 pair9=[0, 1]
+p26#87942 plantri 22 b=1 |X0|=7 |X_i|=7,6,7,4,5,4,5,4,5,4,7 |Pk_b|=8 |Pk_b^X9|=2 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/3 0/3 pair9=[0, 1]
+p26#36087 mirror 15 b=0 |X0|=9 |X_i|=9,9,10,7,8,6,7,6,5,6,9 |Pk_b|=9 |Pk_b^X9|=3 |K8b^K8o|=4 XP sub X8:False col b/o on XP:0/3 0/2 0/3 pair9=[0, 1]
+p26#38516 mirror 20 b=1 |X0|=9 |X_i|=9,9,10,7,8,6,7,6,5,6,9 |Pk_b|=9 |Pk_b^X9|=3 |K8b^K8o|=4 XP sub X8:False col b/o on XP:3/0 3/1 3/1 pair9=[2, 3]
+p26#87942 mirror 22 b=0 |X0|=7 |X_i|=7,6,7,4,5,4,5,4,5,4,7 |Pk_b|=8 |Pk_b^X9|=2 |K8b^K8o|=2 XP sub X8:True col b/o on XP:2/0 2/1 pair9=[2, 3]
+p27#146733 plantri 20 b=0 |X0|=11 |X_i|=11,10,11,7,7,6,7,6,9,8,11 |Pk_b|=10 |Pk_b^X9|=4 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/3 0/2 0/3 0/3 pair9=[0, 1]
+p27#152697 plantri 20 b=0 |X0|=11 |X_i|=11,10,11,7,7,6,7,6,9,8,11 |Pk_b|=10 |Pk_b^X9|=4 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/2 0/3 0/3 0/3 pair9=[0, 1]
+p27#186395 plantri 22 b=1 |X0|=7 |X_i|=7,6,7,6,7,6,7,6,7,6,7 |Pk_b|=10 |Pk_b^X9|=3 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/3 0/3 0/3 pair9=[0, 1]
+p27#186395 plantri 22 b=1 |X0|=5 |X_i|=5,4,5,4,5,4,5,4,5,4,5 |Pk_b|=10 |Pk_b^X9|=2 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/3 0/3 pair9=[0, 1]
+p27#315977 plantri 22 b=1 |X0|=9 |X_i|=9,8,9,4,5,4,5,4,5,4,9 |Pk_b|=10 |Pk_b^X9|=2 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/2 0/3 pair9=[0, 1]
+p27#315977 plantri 22 b=0 |X0|=10 |X_i|=10,9,10,6,7,6,7,6,7,6,10 |Pk_b|=10 |Pk_b^X9|=3 |K8b^K8o|=2 XP sub X8:True col b/o on XP:0/2 0/2 0/3 pair9=[0, 1]
+p27#146733 mirror 20 b=1 |X0|=11 |X_i|=11,10,11,8,9,6,7,6,7,7,11 |Pk_b|=10 |Pk_b^X9|=3 |K8b^K8o|=4 XP sub X8:False col b/o on XP:3/0 3/1 3/1 pair9=[2, 3]
+p27#152697 mirror 20 b=1 |X0|=11 |X_i|=11,10,11,8,9,6,7,6,7,7,11 |Pk_b|=10 |Pk_b^X9|=3 |K8b^K8o|=4 XP sub X8:False col b/o on XP:3/1 3/0 3/1 pair9=[2, 3]
+p27#186395 mirror 22 b=1 |X0|=5 |X_i|=5,4,5,4,5,4,5,4,5,4,5 |Pk_b|=10 |Pk_b^X9|=2 |K8b^K8o|=2 XP sub X8:True col b/o on XP:2/0 2/1 pair9=[2, 3]
+p27#186395 mirror 22 b=1 |X0|=7 |X_i|=7,6,7,6,7,6,7,6,7,6,7 |Pk_b|=10 |Pk_b^X9|=3 |K8b^K8o|=2 XP sub X8:True col b/o on XP:2/0 2/0 2/1 pair9=[2, 3]
+p27#315977 mirror 22 b=1 |X0|=9 |X_i|=9,8,9,4,5,4,5,4,5,4,9 |Pk_b|=10 |Pk_b^X9|=2 |K8b^K8o|=2 XP sub X8:True col b/o on XP:3/1 3/1 pair9=[2, 3]
+p27#315977 mirror 22 b=1 |X0|=10 |X_i|=10,9,10,6,7,6,7,6,7,6,10 |Pk_b|=10 |Pk_b^X9|=3 |K8b^K8o|=2 XP sub X8:True col b/o on XP:3/1 3/1 3/1 pair9=[2, 3]
+ADD 1 ('XP breaking colour == c(p)=alpha', False)
+ADD 18 ('XP breaking colour == c(p)=alpha', True)
+ADD 18 ('XP meets K8_other', False)
+ADD 1 ('XP meets K8_other', True)
+ADD 1 ('XP other colour in J pair {c(y),c(z)}', (False, False, True))
+ADD 6 ('XP other colour in J pair {c(y),c(z)}', (True, True))
+ADD 10 ('XP other colour in J pair {c(y),c(z)}', (True, True, True))
+ADD 2 ('XP other colour in J pair {c(y),c(z)}', (True, True, True, True))
+ADD 19 ('XP sub K8_break', False)
+ADD 19 ('alpha fixed by rho', True)
