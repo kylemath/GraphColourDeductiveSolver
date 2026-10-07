@@ -36,3 +36,4 @@ f=QuarterCrossing; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R 
 f=QuarterPocket; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterStepChange; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterPairDuality; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=QuarterNonDLImage; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
