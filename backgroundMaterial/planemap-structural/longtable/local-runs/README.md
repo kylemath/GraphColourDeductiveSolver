@@ -182,3 +182,70 @@ Everything here is exploratory computation. Nothing here is a proof.
   - the 658 (graph, hole) pairs of A+B gluings (52–53 vertices, up to 1.87M states) where an extension kept radius 5;
   - **ρ = 5 exactly in all 658**, with no targetless class.
   - The other A+B pairs were not fully enumerated, because of the CPU cap.
+
+## 6. The 1/4 floor on the filled fraction of a Kempe class (`6-quarter-floor/`)
+This item is exploratory and exhaustive over the stored gentri lists. Every hole of degree 5, 6 and 7 is scanned at orders 12, 14 and 16–24 (all vertices, not orbits). It used about 27 CPU-minutes, with at most 6 workers under nice 10.
+
+**Definitions.**
+- The filled fraction of a class C is #filled(C) / |C|, counting states up to renaming. Filled means the link uses at most 3 colours.
+- The labelled ratio of a hole is #filled labelled colourings / #labelled colourings of T − v. Every state uses at least 3 colours, so each state stands for exactly 24 labelled colourings, and the ratio equals n_filled / n_states.
+- P(T,4)/P(T − v,4) = states(T) / states(T − v).
+
+**Commands.**
+```
+cd common && clang++ -O2 -std=c++17 -o krad krad.cpp && cd ../6-quarter-floor
+python3 floor_scan.py --orders 12 14 16 17 18 19 20 --degrees 5 6 7 > holes-12-20.jsonl
+python3 floor_scan.py --orders 21 22 --degrees 5 6 7 > holes-21-22.jsonl
+python3 floor_scan.py --orders 23 24 --degrees 5 6 7 > holes-23-24.jsonl     # committed gzipped; gunzip -k before reuse
+python3 aggregate.py holes-12-20.jsonl holes-21-22.jsonl holes-23-24.jsonl > summary.json
+python3 quarter_struct.py --orders 12 14 16 17 18 19 20 --degrees 5 6 7 > raw-12-20.jsonl   # (6) raw labelled, all classes
+python3 quarter_struct.py --quarter holes-12-20.jsonl holes-21-22.jsonl holes-23-24.jsonl > quarter-classes.jsonl  # (4)(6)(7)
+python3 blocks.py > blocks-deg5.jsonl     # link-pattern blocks of the degree-5 1/4 classes
+```
+
+**Results.**
+
+*Raw versus quotient (6).*
+- The floor is not an artefact of counting up to renaming.
+- For every class examined, the renaming stabiliser is all of S4. That covers all 2,274 classes at orders 12–20 (degrees 5, 6 and 7) and all 1,169 classes in the holes that contain a 1/4 class (orders 17–24).
+- So each class lifts to ONE labelled Kempe class of 24|C| colourings, and its raw fraction equals its quotient fraction.
+- An explicit labelled BFS, with no renaming at all, confirms size and #filled for every one of those classes, with 0 mismatches.
+- Hand reason: swapping every {p,q}-component one after another applies the transposition (p q). So every transposition stabilises the labelled class, and the stabiliser is S4.
+
+*Degree 5 (1).*
+- 156,033 holes give 160,979 classes. The minimum fraction is **exactly 1/4**, and **no class falls below it**.
+- 419 classes sit exactly at 1/4:
+  - by order: 17: 2, 21: 2, 22: 11, 23: 129, 24: 275;
+  - by size: 4: 319, 8: 22, 16: 9, 32: 1, 48: 4, 64: 10, 96: 25, 144: 8, 192: 18, 240: 2, 384: 1.
+- Fractions in [1/4, 3/10]: 1/4 ×419, 16/59 ×4, 12/43 ×8, 11/39 ×1, 19/66 ×1, 9/31 ×6, 8/27 ×8. **Nothing lies strictly between 1/4 and 16/59 ≈ 0.271.**
+- No class is targetless.
+
+*Degrees 6 and 7 (2).* There is **no 1/4 floor**.
+- Degree 6: 2/11 already at order 17 (10 classes below 1/4). Over orders 12–24 the minimum is **1/8**, at order 24 (gentri 71, hole 12, class 192 with 24 filled). 3,340 classes are below 1/4 and 197 are at exactly 1/4.
+- Degree 7: 8/43 at order 17 and 1/6 at order 18. The minimum is **2/17**, at order 23 (gentri 189, hole 14, class 816 with 96 filled). 16,086 classes are below 1/4.
+
+*Labelled ratio (3).*
+- Degree 5: the minimum is **1/4** (order 17, gentri 1, hole 0, κ(T − v) = 1, class 64 with 16 filled). P(T,4)/P(T − v,4) equals n_filled / n_states at all 156,033 degree-5 holes, as unique extension predicts.
+- Degree 6: the minimum labelled ratio and the minimum P(T)/P(T − v) are both 11/63 (order 23, gentri 153, hole 21).
+- Degree 7: both minima are 49/414 (order 23, gentri 910, hole 11).
+
+*Structure of the degree-5 1/4 classes (4).*
+- **405 of the 419 classes split into 4 equal link-pattern blocks of size F = #filled:**
+  - the filled block: every filled state has the same link pattern, with the singleton colour at one fixed position i;
+  - three unfilled blocks, given by repeat pairs relative to i:
+    - {i+1, i+3}: all non-DL;
+    - {i+2, i+4}: all non-DL;
+    - {i+1, i+4}, the two link neighbours of the singleton: all DL.
+- Example (size 48, order 22, gentri 19, hole 12): filled ababc ×12; unfilled abacd ×12, abcad ×12, abcbd ×12.
+- The other 14 classes are mixed blocks that still total 1/4: the two size-64 κ = 1 holes at order 17, plus sizes 96–384. In those, the filled states use several singleton positions, unevenly in 12 classes and evenly in 2.
+
+*Bipartite filled–unfilled graph under single-link-vertex swaps (7).*
+- At degree 5, every filled↔unfilled move has a component that meets the link in exactly one vertex.
+- **The strict decomposition into 4-sets {1 filled + 3 unfilled neighbours} never exists** (0 of 658 classes at 1/4, all degrees). The reason: DL states have no filled neighbour by definition, and they make up exactly a quarter of each 4-block class.
+- In 365 of the 405 4-block classes, the graph is a disjoint union of paths u–f–u′: each filled state has degree 2 (one neighbour in each non-DL block), each non-DL state has degree 1, and each DL state has degree 0.
+- Examples:
+  - size 4 (order 22, gentri 159, hole 19): the filled state has degree 2; the unfilled degrees are {0: 1, 1: 2}.
+  - size 384 (order 24, gentri 160, hole 16): filled degrees {2: 20, 3: 60, 4: 16}; unfilled degrees {0: 112, 1: 84, 2: 76, 3: 16}.
+  - size 192 (order 23, gentri 212, hole 16): filled degrees {2: 8, 3: 32, 4: 8}; unfilled degrees {0: 56, 1: 40, 2: 40, 3: 8}.
+
+*Edge-deletion control (5).* All 17 new edge classes (102 states) have c(x) = c(y) in every state (asserted in item 2). So "filled = x, y differ" gives fraction **0**.
