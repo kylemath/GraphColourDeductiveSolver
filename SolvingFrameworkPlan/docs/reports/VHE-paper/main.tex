@@ -144,6 +144,41 @@ The compiled form of the chain, \texttt{four\_color\_of\_global\_Rstar}, assumes
 % REP/ThreeMoveLeanReport.md, REP/BeltLeanReport.md, REP/MathVHCoreAdvance.md. The belt theorem at all holes and VacancyHyp are built but in no audit (ledger in-progress).
 % Lean repository branch current, commit 8299419.
 
+\section{The quarter floor}\label{sec:quarter}
+% Sources: WK/MathQuarterFloorFinal.md; WK/MathQuarterFloorLemmaA.md; WK/MathQuarterFloorBijections.md; WK/QuarterFloorSection-draft.md;
+% WK/interns-2026-10-06/intern-A-cycle8.md; MSG 1753, 1805, 1811, 1827, 1848, 1855, 1901, 1920, 1925; commits c24d895, 0c0e098, 8ab6f1d, 2163e02, 9c1e03c, 707840b, 534dfb2, 3a346c8, ba90dfd.
+Fix a degree-5 vertex $v$ of a triangulation $T$, with link $x_0,\dots,x_4$ (indices mod 5), and a Kempe class $S$ of 4-colourings of $T-v$. A state is \emph{filled} if its link uses three colours; let $F_i\subseteq S$ be the filled states whose singleton colour sits at $x_i$, and $F=\sum_i|F_i|$. An unfilled state has one repeated colour, at $x_j,x_{j+2}$; let $U_j\subseteq S$ be these states, $D_j\subseteq U_j$ the doubly locked ones, and $U=\sum_j|U_j|$. Every state uses four colours, so all ratios below are the same for labelled colourings and up to renaming. Tilley's D-resolvability asks only $F>0$; the data suggest much more.
+
+\paragraph{Observation.} At orders 12--24, at every degree-5 vertex of every triangulation of minimum degree 5, every Kempe class of $T-v$ has \emph{at least a quarter of its states filled}: $U\le 3F$. This covers 156{,}033 holes and 160{,}979 classes; 419 classes sit exactly at $1/4$ and none lies strictly between $1/4$ and $16/59$. At degree 6 and 7 there is no such floor (minima $1/8$ and $2/17$). An adversarial search over 95{,}884 further core graphs found no class below $1/4$. \lab{computed}
+% 0c0e098 (MSG 1805); 9c1e03c (MSG 1848). The statement was found from data, so these checks are post hoc.
+Since a filled state extends uniquely to $T$, summing over the classes of one hole gives $P(T,4)\ge\frac14P(T-v,4)$.
+
+\paragraph{The fan identity.} Let $G=T-v$ and let $G_i$ be $G$ with $x_i$ and $x_{i+2}$ identified. In a proper colouring of the 5-cycle with $k$ colours exactly $5-k$ of the pairs $\{x_i,x_{i+2}\}$ are equal, so for every $q$
+\[P(T,q)\;=\;(q-5)\,P(G,q)\;+\;\sum_{i=0}^{4}P(G_i,q).\]
+\lab{hand} (Long Table at $q=4$; Intern A at general $q$; unreviewed.) For $q\ge5$ the coefficient $q-5$ is non-negative, so positivity of $P(T,q)$ follows from positivity for smaller planar graphs; this is consistent with Birkhoff and Lewis's theorem that $P(G,q)>0$ for planar $G$ and real $q\ge5$~\cite{birkhoff1946}, though we have not checked that it is their argument. At $q=4$ the coefficient is $-1$: $P(T,4)=\sum_iP(G_i,4)-P(G,4)$, and the induction would need $\sum_iP(G_i,4)>P(G,4)$, which is the statement $F>0$ again. The quarter floor is the quantitative form $\sum_iP(G_i,4)\ge\frac54P(G,4)$; for a free 5-cycle the filled fraction is $1/2$. \lab{hand}
+% WK/QuarterFloorLiterature.md (no prior statement of such a floor found; Birkhoff-Lewis conjecture at q >= 4 open).
+
+\paragraph{What is proved.}
+\begin{lemma}[\lab{hand}, audited: correct per $j$]\label{lem:quarterA}
+In every Kempe class and for every $j$, $|U_j\setminus D_j|\le|F_{j+3}|+|F_{j+4}|$.
+\end{lemma}
+The map is Kempe's own swap, made injective: if the lock to $x_{j+3}$ fails, swap the component of $x_{j+3}$ in its two colours; otherwise swap that of $x_{j+4}$. The map is at most 2-to-1 over all $j$ (both cases occur), so $\sum_j|U_j\setminus D_j|\le2F$: the states that are not doubly locked are paid for. Only the doubly locked states remain.
+% MathQuarterFloorLemmaA.md; 81,571 filled states with exactly two preimages (2163e02).
+
+Join each unfilled state with the lock to $x_{j+4}$ to its image under the rotation $R$ (swap the component of $x_{j+2}$ in colours $\{\alpha,c(x_{j+3})\}$). The resulting graph is a disjoint union of paths and cycles, and
+\[3F-U\;=\;2N_0+\tfrac32L_F+\sum_{\text{paths }P}\bigl(1-d(P)\bigr)-D_{\mathrm{cyc}},\]
+where $N_0$ counts unfilled states with neither lock, $L_F$ the ``long bits'' of filled states, $d(P)$ the doubly locked states inside a path, and $D_{\mathrm{cyc}}$ those on cycles. \lab{hand}, reviewed by two interns, not yet by the audit; it holds with no mismatch on all 46{,}488 degree-5 classes of orders 12--23 and the order-24 floor holes \lab{computed}. At the floor every term vanishes, which explains the observed structure: four equal blocks $F_i,U_{i+1},D_{i+4},U_{i+2}$.
+% MathQuarterFloorBijections.md sections 2-3; interns B (7ba6411) and C (4fac326); 2163e02.
+
+\begin{conjecture}[Quarter floor, per-$j$ form; \lab{open}]
+For every degree-5 vertex, every Kempe class of $T-v$ and every $j$: $|U_j|\le|F_{j+1}|+|F_{j+3}|+|F_{j+4}|$. Summed over $j$, every class has at least a quarter of its states filled.
+\end{conjecture}
+Given Lemma~\ref{lem:quarterA} and the identity, this is equivalent to $|DD_j|\le\mathrm{room}_j$, where $DD_j$ is the set of doubly locked states whose rotation is again doubly locked and $\mathrm{room}_j$ is a sum of terms from the identity. It held in every class tested, with equality occurring; in the adversarial search the largest excess $|DD_j|-\mathrm{room}_j$ was 0, although all-doubly-locked rotation cycles of length up to 880 occur. \lab{computed}
+% 9c1e03c; MathQuarterFloorFinal.md data table.
+
+\paragraph{Strength, and why it is global.} The conjecture implies $F>0$ in every class, which is Tilley's D-resolvability at every degree-5 vertex, so it is \emph{at least as strong as R$^\ast$, and hence as the Four Colour Theorem}. It is a quantitative strengthening of a published open problem, not a way around it. It cannot be proved locally: a class with no filled state would satisfy every local fact used above, and doubly locked rotation orbits can be infinite ($A_r$). The data agree: a charging injection that looks only within $k$ Kempe swaps needs $k_{\min}=7$ at order 24 (per $j$; 6 if pooled over $j$), growing slowly with order, although about 98\% of cases match within 3 swaps. \lab{computed} No fixed-radius charging proof of this form exists on the data.
+% 707840b, 534dfb2, 3a346c8, ba90dfd. Killed along the way: one word with four matchings as the source of the 4; block-mates agree outside the 1-ball; the floor by local counting; per-path charging; per-j and pooled fixed-radius charging.
+
 \section{What does not work}\label{sec:neg}
 Most first attempts were false. These are the most instructive, each with its exact scope.
 
@@ -183,6 +218,7 @@ Most first attempts were false. These are the most instructive, each with its ex
 \begin{thebibliography}{99}
 \bibitem{appel1977} K.~Appel and W.~Haken, Every planar map is four colorable. Part~I: Discharging, \emph{Illinois J. Math.} 21(3) (1977) 429--490. % paper/references.bib
 \bibitem{birkhoff1913} G.~D.~Birkhoff, The reducibility of maps, \emph{Amer. J. Math.} 35(2) (1913) 115--128. % audit 14:48 item 1
+\bibitem{birkhoff1946} G.~D.~Birkhoff and D.~C.~Lewis, Chromatic polynomials, \emph{Trans. Amer. Math. Soc.} 60 (1946) 355--451.
 \bibitem{florek2025} J.~Florek, Kempe equivalence of 4-colourings of some plane triangulations, arXiv:2511.00485 (2025). % audit 14:48 item 2
 \bibitem{gonthier} G.~Gonthier, Formal proof---the four-color theorem, \emph{Notices Amer. Math. Soc.} 55(11) (2008) 1382--1393. % audit 14:48 item 4
 \bibitem{heawood1890} P.~J.~Heawood, Map-colour theorem, \emph{Quart. J. Pure Appl. Math.} 24 (1890) 332--338. % paper/references.bib
