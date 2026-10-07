@@ -55,7 +55,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false, JOBBB = false, JOBBC = false, JOBBGH = false, JOBBJ = false, JOBBK = false, JOBBL = false, JOBBO = false, JOBBP = false, JOBBQ = false, NOCLS = false, JOBBT = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false, JOBBB = false, JOBBC = false, JOBBGH = false, JOBBJ = false, JOBBK = false, JOBBL = false, JOBBO = false, JOBBP = false, JOBBQ = false, NOCLS = false, JOBBT = false, JOBBU = false, LEANR3 = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -254,6 +254,7 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
             int al = lc[j], mu = lc[(j + 1) % 5], A = lc[(j + 3) % 5], B = lc[(j + 4) % 5];
             int w0 = c[widx[j]], w3 = c[widx[(j + 3) % 5]];
             type = (w0 == A) ? 1 : (w0 == B && w3 == al) ? 2 : (w0 == B && w3 == mu) ? 3 : 0;
+            if (LEANR3 && type == 3 && !(c[widx[(j + 1) % 5]] == A && c[widx[(j + 2) % 5]] == B && c[widx[(j + 4) % 5]] == A)) type = 4;   // Lean R3At (r3At_iff): all five ring colours
             kmask = 0; for (int i = 0; i < 5; i++) if (hi[(j + i) % 5]) kmask |= 1 << i;
             u64 K = flood(1ULL << link_[(j + 1) % 5], cm[al] | cm[mu]); sig = swap_index(c, K, al, mu, nc);
             u64 cm2[4]; masks(nc, cm2); StateInfo si = info_of(nc, cm2); sig_l1 = si.l1; sig_l2 = si.l2; sig_kind = si.kind; };
@@ -331,6 +332,31 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                         o += b2; f2 = false; }
                     o += "]}"; }
                 o += "]"; jobe += o; } }
+
+        if (JOBBU && jpat == "5,5,5,5,6") {   // Job BU: Lean's R3At (all five ring colours + DL) and K4Ball / K3Ball, at Studio-R3 DL states with k = 4 (word 55556) or k = 3 (55565)
+            int t6 = -1; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) t6 = t;
+            auto ADJ = [&](int a, int b) { return (adjm[a] >> b & 1) != 0; };   // T - h indices
+            int mi = -1; { int pv = L[t6]; for (int w : rot[pv]) { if (w == hole) continue; int wi = idx[w]; if (wi == link_[(t6 + 1) % 5] || wi == link_[(t6 + 4) % 5] || wi == widx[(t6 + 4) % 5] || wi == widx[t6]) continue; mi = wi; } }
+            auto nbrset_is = [&](int v, std::vector<int> want) {   // neighbours of v in T - h equal 'want' (h handled separately: v is a link vertex)
+                u64 W = 0; for (int u : want) W |= 1ULL << u; return adjm[v] == W; };
+            std::map<std::string, long long> H;
+            for (long long k = 0; k < S; k++) { if (kind[k] != 2) continue; int j, ty, km, l1, l2, kd; long long sg; frame(k, j, ty, km, sg, l1, l2, kd); if (ty != 3) continue;
+                int kk = (t6 - j + 5) % 5; if (kk != 4 && kk != 3) continue;
+                unkey(ALL[k], c); auto X = [&](int i) { return link_[(j + i) % 5]; }; auto Wt = [&](int i) { return widx[(j + i) % 5]; };
+                // R3At ring equalities: w_j = x_{j+4}, w_{j+1} = x_{j+3}, w_{j+2} = x_{j+4}, w_{j+3} = x_{j+1}, w_{j+4} = x_{j+3} (colours)
+                int e0 = c[Wt(0)] == c[X(4)], e1 = c[Wt(1)] == c[X(3)], e2 = c[Wt(2)] == c[X(4)], e3 = c[Wt(3)] == c[X(1)], e4 = c[Wt(4)] == c[X(3)];
+                bool r3at = e0 && e1 && e2 && e3 && e4;
+                std::string why;
+                bool tri = nbrset_is(X(0), {X(4), X(1), Wt(4), Wt(0)}) && nbrset_is(X(1), {X(0), X(2), Wt(0), Wt(1)}) && nbrset_is(X(2), {X(1), X(3), Wt(1), Wt(2)})
+                    && ADJ(Wt(4), Wt(0)) && ADJ(Wt(0), Wt(1)) && ADJ(Wt(1), Wt(2)) && ADJ(X(4), Wt(4)) && ADJ(X(3), Wt(2));
+                bool offs = true; for (int i = 0; i < 5; i++) for (int t : {4, 0, 1, 2, 3}) if (Wt(t) == X(i)) offs = false; if (mi >= 0) for (int i = 0; i < 5; i++) if (mi == X(i)) offs = false;
+                bool ball;
+                if (kk == 4) ball = tri && nbrset_is(X(3), {X(2), X(4), Wt(2), Wt(3)}) && nbrset_is(X(4), {X(3), X(0), Wt(3), mi, Wt(4)}) && ADJ(Wt(2), Wt(3)) && ADJ(Wt(3), mi) && ADJ(mi, Wt(4)) && offs;
+                else ball = tri && nbrset_is(X(3), {X(2), X(4), Wt(2), mi, Wt(3)}) && nbrset_is(X(4), {X(3), X(0), Wt(3), Wt(4)}) && ADJ(Wt(2), mi) && ADJ(mi, Wt(3)) && ADJ(Wt(3), Wt(4)) && offs;
+                std::string key = "k" + std::to_string(kk) + " R3At=" + (r3at ? "1" : "0") + " ring_eq=" + std::to_string(e0) + std::to_string(e1) + std::to_string(e2) + std::to_string(e3) + std::to_string(e4)
+                    + " tri=" + (tri ? "1" : "0") + " ball=" + (ball ? "1" : "0") + " image=" + (sg == k ? "fixed" : (kd == 2 ? "DL" : "notDL"));
+                H[key]++; }
+            std::string o = ", \"jobbu\": {"; bool f = true; for (auto &kv : H) { o += f ? "" : ", "; o += "\"" + kv.first + "\": " + std::to_string(kv.second); f = false; } o += "}"; jobe += o; }
         if (JOBBQ) {   // Job BQ (NightBudget 1): B' slack on every sigma u sigma' group: slack = 2 N0 + E2 + 3 tau - 2 |R_rho|; exact identity 5 sum w = |DD| - 2 N0 - E2 - 3 tau
             std::vector<int> uu(cycles.size()); for (size_t i = 0; i < uu.size(); i++) uu[i] = i;
             auto fx = [](std::vector<int> &up, int x) { while (up[x] != x) { up[x] = up[up[x]]; x = up[x]; } return x; };
@@ -945,7 +971,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobbt") { JOBBT = true; JOBG = true; } else if (a == "--nocls") NOCLS = true; else if (a == "--jobbq") { JOBBQ = true; JOBG = true; } else if (a == "--jobbp") { JOBBP = true; JOBG = true; } else if (a == "--jobbo") { JOBBO = true; JOBG = true; } else if (a == "--jobbl") { JOBBL = true; JOBG = true; } else if (a == "--jobbk") { JOBBK = true; JOBG = true; } else if (a == "--jobbj") { JOBBJ = true; JOBG = true; } else if (a == "--jobbgh") { JOBBGH = true; JOBG = true; } else if (a == "--jobbc") { JOBBC = true; JOBG = true; } else if (a == "--jobbb") { JOBBB = true; JOBI = true; JOBG = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobbu") { JOBBU = true; JOBI = true; JOBG = true; } else if (a == "--jobbt") { JOBBT = true; JOBG = true; } else if (a == "--nocls") NOCLS = true; else if (a == "--leanr3") LEANR3 = true; else if (a == "--jobbq") { JOBBQ = true; JOBG = true; } else if (a == "--jobbp") { JOBBP = true; JOBG = true; } else if (a == "--jobbo") { JOBBO = true; JOBG = true; } else if (a == "--jobbl") { JOBBL = true; JOBG = true; } else if (a == "--jobbk") { JOBBK = true; JOBG = true; } else if (a == "--jobbj") { JOBBJ = true; JOBG = true; } else if (a == "--jobbgh") { JOBBGH = true; JOBG = true; } else if (a == "--jobbc") { JOBBC = true; JOBG = true; } else if (a == "--jobbb") { JOBBB = true; JOBI = true; JOBG = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;

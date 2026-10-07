@@ -1,0 +1,26 @@
+==================== census orders 12-27
+k4: Studio-R3 DL states 11897079, DL images 1037102
+   K-ball (TripleBallP + K4Ball incl. offs) holds: 11897079 / 11897079
+   R3At=1: states 3354332; images {'image=notDL': 3354332}
+   R3At=0: states 8542747; images {'image=notDL': 3971324, 'image=fixed': 3534321, 'image=DL': 1037102}
+   ring-equality patterns (w_j..w_{j+4} = B,A,B,mu,A) among DL images: {'ring_eq=11110': 1037102}
+   all patterns: {'ring_eq=11110': 1037102, 'ring_eq=11111': 3354332}
+k3: Studio-R3 DL states 11897079, DL images 1037102
+   K-ball (TripleBallP + K3Ball incl. offs) holds: 11897079 / 11897079
+   R3At=1: states 3354332; images {'image=notDL': 3354332}
+   R3At=0: states 8542747; images {'image=fixed': 3534321, 'image=notDL': 3971324, 'image=DL': 1037102}
+   ring-equality patterns (w_j..w_{j+4} = B,A,B,mu,A) among DL images: {'ring_eq=11011': 1037102}
+   all patterns: {'ring_eq=11011': 1037102, 'ring_eq=11111': 3354332}
+==================== adversarial (61 AW hits, AS, AQ)
+k4: Studio-R3 DL states 51676, DL images 17672
+   K-ball (TripleBallP + K4Ball incl. offs) holds: 51676 / 51676
+   R3At=1: states 13533; images {'image=notDL': 13533}
+   R3At=0: states 38143; images {'image=DL': 17672, 'image=notDL': 15143, 'image=fixed': 5328}
+   ring-equality patterns (w_j..w_{j+4} = B,A,B,mu,A) among DL images: {'ring_eq=11110': 17672}
+   all patterns: {'ring_eq=11111': 13533, 'ring_eq=11110': 5328}
+k3: Studio-R3 DL states 51676, DL images 17672
+   K-ball (TripleBallP + K3Ball incl. offs) holds: 51676 / 51676
+   R3At=1: states 13533; images {'image=notDL': 13533}
+   R3At=0: states 38143; images {'image=DL': 17672, 'image=notDL': 15143, 'image=fixed': 5328}
+   ring-equality patterns (w_j..w_{j+4} = B,A,B,mu,A) among DL images: {'ring_eq=11011': 17672}
+   all patterns: {'ring_eq=11111': 13533, 'ring_eq=11011': 5328}
