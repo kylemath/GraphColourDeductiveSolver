@@ -61,7 +61,16 @@
    - the free-completion degrees at the interior vertices;
    - the full rotation at each interior vertex, as `Nx` facts.
 
-   Ring chords are allowed. **Not formalised:** the step from the RSST notion "appears"
+   Ring chords are allowed.
+
+   **Appearance** (`AppearsOcc`). `Appears γ T int` is the RSST notion for an interior `K₄ − e`
+   (centres `0`, `2`; tips `1`, `3`). It requires an injective interior, the induced adjacency
+   (`¬ Adj (int 1) (int 3)`) and the degrees `γ`. `TipsClean T int` says every common neighbour
+   of the tips is a centre. **`X.occ_of_appears`** (compiled, for the diamond and for 2.122) says:
+   in a triangulation with `NoSep`, `Appears` plus `TipsClean` gives an `Occ` in one of the two
+   orientations. The bridge is therefore closed except for `TipsClean`. When `TipsClean` fails,
+   there is a separating 4-cycle (tip–centre–tip–x), which is F2. **Earlier note, now superseded
+   except for that one hypothesis:** the step from the RSST notion "appears"
    (induced subgraph, faces, degrees) to an `Occ` with distinct ring vertices. That step
    uses internal 6-connectivity.
 
@@ -72,6 +81,7 @@ Each line gives the hypothesis and then the theorem, with conclusion `∀ n (M :
 | Theorem | Hypothesis, exactly | Module |
 |---|---|---|
 | `four_color_of_RStarFrame` | `RStarFrame`: every `T : SphericalMap m` with `0 < m`, `T.graph.Connected`, `T.Triangulated`, `∀ x, 5 ≤ T.graph.degree x`, `NoSep T`, `DiamondFree T`, `Conf2122Free T` has `v` with `T.graph.degree v = 5 ∧ PureClean T v` | `FrameF3` |
+| `four_color_of_RStarFrameApp` | `RStarFrameApp`: as `RStarFrame`, but with `AppearFree T` in place of the `Occ` exclusions. `AppearFree T` means every `Appears` of the diamond or 2.122 has tips that are not `TipsClean` (A1.6) | `FrameAppears` |
 | `four_color_of_RStar_noSepTri` | `RStarNoSepTri`: the same without `DiamondFree` and `Conf2122Free` | `MinimalFrame` |
 | `four_color_of_core_Rstar` | `RStarCore`: every connected triangulation with a facial triangle `p q r`, `NoSep T`, and `5 ≤ degree x` off `{p,q,r}` has `CleanOff T p q r` (a pure-clean degree-5 vertex off the face) | `RStarCore` |
 | `four_color_of_RStarSupport` | `RStarSupport` (the relative class stated on the support) | `SideTriangle` |
@@ -82,7 +92,7 @@ The implications between the hypotheses are compiled:
 - `rStarFrame_of_noSepTri : RStarNoSepTri → RStarFrame`;
 - `rStarSupport_of_core : RStarCore → RStarSupport`.
 
-So `RStarFrame` is the **weakest** of these hypotheses.
+So `RStarFrame` is the **weakest** of these hypotheses. `rStarFrame_of_app : RStarFrameApp → RStarFrame` also holds.
 
 `DiamondFree T` means there is no `DiamondM.Occ T ring int` and no `DiamondP.Occ T ring int`.
 `Conf2122Free T` is the same for 2.122.
@@ -151,10 +161,27 @@ within 4** from either state. The formal radius is therefore exactly 5, matching
 That lower bound is computed, not compiled. These checks are at graph level: that the graphs
 are spherical triangulations is certified by the producer's checker.
 
+**Order-22 F-cycle** (`FCycle22`, `Tri22Map`, `Tri22Sanity`). The graph is studiointel's
+`tri22.txt` index 417, hole 15.
+- `Tri22.sphericalMap` is a genuine `SphericalMap`, with `Fills` proved by a generated linear
+  certificate (`gen_smap.py`).
+- It is connected and triangulated, has minimum degree 5, and satisfies `NoSep`.
+- **2.122 occurs** in both orientations (`occ_C2122M`, `occ_C2122P`). So `not_conf2122Free`
+  holds, and the 2.122 exclusion is not vacuous (audit F3). The diamond occurs too.
+- `G_eq`: the F-cycle graph is this map's graph.
+- For all 20 F-cycle states it is compiled that each is proper and unfilled, and that it
+  satisfies `PureFill … ρ`, with ρ the file's radius.
+- For the 12 silent distance-reducing moves (in 8 states) it is compiled that each is a
+  `KempeStep`, leaves every link colour unchanged, and leads to a state with `PureFill … (ρ − 1)`.
+- `fcycle_check.py` independently reproduces every radius and every distance-reducing first
+  move: 0 mismatches. The lower bounds are computed only.
+
 ### A5. Not formalised (explicit gaps)
 
 - **R\*** itself. Every route to the Four Colour Theorem here is conditional on a form of R\* (A2).
-- **The step from "appears" to `Occ`** (A1.6). This is the audit's bridge lemma (15:51, §2).
+- **The step from "appears" to `Occ`** (A1.6) is now compiled, except for the hypothesis
+  `TipsClean`. That hypothesis follows from "no separating 4-cycle", which is F2. Earlier text,
+  kept for the record: this is the audit's bridge lemma (15:51, §2).
   Of its parts:
   - "G is the deletion, as a `SphericalMap`" and "the ring is a face of G" are compiled, for
     `Occ`, as `X.configOcc`;
@@ -859,135 +886,11 @@ def RStarFrame : Prop :=
 
 ### `RadiusFive`
 
-- **def**
+Generated module (data tables and kernel-checked certificates): 16 theorems; headline items below.
 
-```lean
-def nbrs : Fin 32 → List (Fin 32) := ![[1, 6, 8, 9, 12], [0, 2, 5, 6, 12, 14], [1, 3, 4, 5, 14, 17, 27], [2, 15, 16, 17, 27], [2, 5, 17, 18, 19], [1, 2, 4, 6, 18, 20], [0, 1, 5, 7, 8, 20], [6, 8, 10, 20, 22], [0, 6, 7, 9, 10], [0, 8, 10, 11, 12], [7, 8, 9, 11, 13, 21, 22, 24], [9, 10, 12, 13, 14, 26], [0, 1, 9, 11, 14], [10, 11, 24, 25, 26], [1, 2, 11, 12, 26, 27], [3, 16, 26, 27, 29], [3, 15, 17, 29, 30], [2, 3, 4, 16, 19, 30], [4, 5, 19, 20, 21, 22], [4, 17, 18, 21, 23, 30, 31], [5, 6, 7, 18, 22], [10, 18, 19, 22, 23, 24], [7, 10, 18, 20, 21], [19, 21, 24, 25, 31], [10, 13, 21, 23, 25], [13, 23, 24, 26, 28, 31], [11, 13, 14, 15, 25, 27, 28, 29], [2, 3, 14, 15, 26], [25, 26, 29, 30, 31], [15, 16, 26, 28, 30], [16, 17, 19, 28, 29, 31], [19, 23, 25, 28, 30]]
-```
-- **def**
-
-```lean
-def G : SimpleGraph (Fin 32) where
-  Adj u v := v ∈ nbrs u
-  symm := by refine ⟨?_⟩; intro u v h; exact (by decide : ∀ u v : Fin 32, v ∈ nbrs u → u ∈ nbrs v) u v h
-  loopless := by refine ⟨?_⟩; intro v h; exact (by decide : ∀ v : Fin 32, v ∉ nbrs v) v h
-```
-- **def**
-
-```lean
-def c0 : Fin 32 → Fin 4 := ![3, 0, 3, 1, 1, 2, 1, 0, 2, 1, 3, 0, 2, 1, 1, 3, 2, 0, 0, 3, 3, 1, 2, 0, 2, 0, 2, 0, 3, 0, 1, 2]
-def c1 : Fin 32 → Fin 4 := ![3, 0, 3, 2, 1, 2, 1, 0, 2, 1, 3, 0, 2, 1, 1, 3, 1, 0, 0, 3, 3, 1, 2, 0, 2, 0, 2, 0, 3, 0, 2, 1]
-def c2 : Fin 32 → Fin 4 := ![3, 1, 3, 2, 1, 2, 0, 1, 2, 0, 3, 1, 2, 0, 0, 3, 1, 0, 0, 3, 3, 1, 2, 0, 2, 1, 2, 1, 3, 0, 2, 0]
-def c3 : Fin 32 → Fin 4 := ![1, 3, 1, 2, 3, 2, 0, 3, 2, 0, 1, 3, 2, 0, 0, 1, 3, 0, 0, 1, 1, 3, 2, 0, 2, 1, 2, 3, 3, 0, 2, 0]
-def c4 : Fin 32 → Fin 4 := ![0, 3, 0, 2, 3, 2, 1, 3, 2, 1, 0, 3, 2, 1, 1, 1, 3, 1, 1, 0, 0, 3, 2, 0, 2, 0, 2, 3, 3, 0, 2, 1]
-def c5 : Fin 32 → Fin 4 := ![0, 1, 0, 2, 1, 2, 3, 1, 2, 3, 0, 1, 2, 3, 3, 3, 1, 3, 3, 0, 0, 1, 2, 0, 2, 0, 2, 1, 3, 0, 2, 1]
-```
-- **def**
-
-```lean
-def c1 : Fin 32 → Fin 4 := ![3, 0, 3, 2, 1, 2, 1, 0, 2, 1, 3, 0, 2, 1, 1, 3, 1, 0, 0, 3, 3, 1, 2, 0, 2, 0, 2, 0, 3, 0, 2, 1]
-def c2 : Fin 32 → Fin 4 := ![3, 1, 3, 2, 1, 2, 0, 1, 2, 0, 3, 1, 2, 0, 0, 3, 1, 0, 0, 3, 3, 1, 2, 0, 2, 1, 2, 1, 3, 0, 2, 0]
-def c3 : Fin 32 → Fin 4 := ![1, 3, 1, 2, 3, 2, 0, 3, 2, 0, 1, 3, 2, 0, 0, 1, 3, 0, 0, 1, 1, 3, 2, 0, 2, 1, 2, 3, 3, 0, 2, 0]
-def c4 : Fin 32 → Fin 4 := ![0, 3, 0, 2, 3, 2, 1, 3, 2, 1, 0, 3, 2, 1, 1, 1, 3, 1, 1, 0, 0, 3, 2, 0, 2, 0, 2, 3, 3, 0, 2, 1]
-def c5 : Fin 32 → Fin 4 := ![0, 1, 0, 2, 1, 2, 3, 1, 2, 3, 0, 1, 2, 3, 3, 3, 1, 3, 3, 0, 0, 1, 2, 0, 2, 0, 2, 1, 3, 0, 2, 1]
-```
-- **def**
-
-```lean
-def c2 : Fin 32 → Fin 4 := ![3, 1, 3, 2, 1, 2, 0, 1, 2, 0, 3, 1, 2, 0, 0, 3, 1, 0, 0, 3, 3, 1, 2, 0, 2, 1, 2, 1, 3, 0, 2, 0]
-def c3 : Fin 32 → Fin 4 := ![1, 3, 1, 2, 3, 2, 0, 3, 2, 0, 1, 3, 2, 0, 0, 1, 3, 0, 0, 1, 1, 3, 2, 0, 2, 1, 2, 3, 3, 0, 2, 0]
-def c4 : Fin 32 → Fin 4 := ![0, 3, 0, 2, 3, 2, 1, 3, 2, 1, 0, 3, 2, 1, 1, 1, 3, 1, 1, 0, 0, 3, 2, 0, 2, 0, 2, 3, 3, 0, 2, 1]
-def c5 : Fin 32 → Fin 4 := ![0, 1, 0, 2, 1, 2, 3, 1, 2, 3, 0, 1, 2, 3, 3, 3, 1, 3, 3, 0, 0, 1, 2, 0, 2, 0, 2, 1, 3, 0, 2, 1]
-```
-- **def**
-
-```lean
-def c3 : Fin 32 → Fin 4 := ![1, 3, 1, 2, 3, 2, 0, 3, 2, 0, 1, 3, 2, 0, 0, 1, 3, 0, 0, 1, 1, 3, 2, 0, 2, 1, 2, 3, 3, 0, 2, 0]
-def c4 : Fin 32 → Fin 4 := ![0, 3, 0, 2, 3, 2, 1, 3, 2, 1, 0, 3, 2, 1, 1, 1, 3, 1, 1, 0, 0, 3, 2, 0, 2, 0, 2, 3, 3, 0, 2, 1]
-def c5 : Fin 32 → Fin 4 := ![0, 1, 0, 2, 1, 2, 3, 1, 2, 3, 0, 1, 2, 3, 3, 3, 1, 3, 3, 0, 0, 1, 2, 0, 2, 0, 2, 1, 3, 0, 2, 1]
-```
-- **def**
-
-```lean
-def c4 : Fin 32 → Fin 4 := ![0, 3, 0, 2, 3, 2, 1, 3, 2, 1, 0, 3, 2, 1, 1, 1, 3, 1, 1, 0, 0, 3, 2, 0, 2, 0, 2, 3, 3, 0, 2, 1]
-def c5 : Fin 32 → Fin 4 := ![0, 1, 0, 2, 1, 2, 3, 1, 2, 3, 0, 1, 2, 3, 3, 3, 1, 3, 3, 0, 0, 1, 2, 0, 2, 0, 2, 1, 3, 0, 2, 1]
-```
-- **def**
-
-```lean
-def c5 : Fin 32 → Fin 4 := ![0, 1, 0, 2, 1, 2, 3, 1, 2, 3, 0, 1, 2, 3, 3, 3, 1, 3, 3, 0, 0, 1, 2, 0, 2, 0, 2, 1, 3, 0, 2, 1]
-```
-- **theorem** `step1 : KempeStep G 23 c0 c1`
-- **theorem** `step2 : KempeStep G 23 c1 c2`
-- **theorem** `step3 : KempeStep G 23 c2 c3`
-- **theorem** `step4 : KempeStep G 23 c3 c4`
-- **theorem** `step5 : KempeStep G 23 c4 c5`
 - **theorem** `proper : ProperOff G 23 c0`
 - **theorem** `unfilled : ¬ Target G 23 c0`
 - **theorem** `pureFill : PureFill G 23 c0 5`
-- **def**
-
-```lean
-def nbrs : Fin 28 → List (Fin 28) := ![[1, 2, 3, 4, 5, 6], [0, 5, 6, 7, 8, 18], [0, 3, 6, 9, 10], [0, 2, 4, 9, 11, 12, 14], [0, 3, 5, 13, 14], [0, 1, 4, 8, 13, 15], [0, 1, 2, 10, 18], [1, 8, 16, 18, 27], [1, 5, 7, 15, 27], [2, 3, 10, 12, 26], [2, 6, 9, 18, 19, 24, 26], [3, 12, 14, 22, 25], [3, 9, 11, 23, 25, 26], [4, 5, 14, 15, 21], [3, 4, 11, 13, 21, 22], [5, 8, 13, 17, 19, 20, 21, 27], [7, 17, 18, 24, 27], [15, 16, 19, 24, 27], [1, 6, 7, 10, 16, 24], [10, 15, 17, 20, 23, 24, 26], [15, 19, 21, 22, 23, 25], [13, 14, 15, 20, 22], [11, 14, 20, 21, 25], [12, 19, 20, 25, 26], [10, 16, 17, 18, 19], [11, 12, 20, 22, 23], [9, 10, 12, 19, 23], [7, 8, 15, 16, 17]]
-```
-- **def**
-
-```lean
-def G : SimpleGraph (Fin 28) where
-  Adj u v := v ∈ nbrs u
-  symm := by refine ⟨?_⟩; intro u v h; exact (by decide : ∀ u v : Fin 28, v ∈ nbrs u → u ∈ nbrs v) u v h
-  loopless := by refine ⟨?_⟩; intro v h; exact (by decide : ∀ v : Fin 28, v ∉ nbrs v) v h
-```
-- **def**
-
-```lean
-def c0 : Fin 28 → Fin 4 := ![3, 1, 1, 0, 2, 0, 0, 0, 3, 2, 3, 3, 1, 3, 1, 1, 1, 3, 2, 2, 0, 2, 0, 3, 0, 2, 0, 2]
-def c1 : Fin 28 → Fin 4 := ![3, 2, 1, 0, 1, 0, 0, 0, 3, 2, 3, 3, 1, 3, 2, 2, 2, 3, 1, 1, 0, 1, 0, 3, 0, 2, 0, 1]
-def c2 : Fin 28 → Fin 4 := ![3, 0, 1, 0, 1, 2, 2, 2, 3, 2, 3, 3, 1, 3, 2, 0, 0, 3, 1, 1, 2, 1, 0, 3, 2, 0, 0, 1]
-def c3 : Fin 28 → Fin 4 := ![2, 0, 1, 0, 1, 3, 3, 3, 2, 3, 2, 2, 1, 2, 3, 0, 0, 2, 1, 1, 2, 1, 0, 3, 3, 0, 0, 1]
-def c4 : Fin 28 → Fin 4 := ![0, 2, 1, 2, 1, 3, 3, 3, 0, 3, 2, 0, 1, 0, 3, 2, 2, 0, 1, 1, 0, 1, 0, 3, 3, 2, 0, 1]
-def c5 : Fin 28 → Fin 4 := ![0, 3, 1, 3, 1, 2, 2, 2, 0, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 1, 0, 1, 0, 3, 2, 2, 0, 1]
-```
-- **def**
-
-```lean
-def c1 : Fin 28 → Fin 4 := ![3, 2, 1, 0, 1, 0, 0, 0, 3, 2, 3, 3, 1, 3, 2, 2, 2, 3, 1, 1, 0, 1, 0, 3, 0, 2, 0, 1]
-def c2 : Fin 28 → Fin 4 := ![3, 0, 1, 0, 1, 2, 2, 2, 3, 2, 3, 3, 1, 3, 2, 0, 0, 3, 1, 1, 2, 1, 0, 3, 2, 0, 0, 1]
-def c3 : Fin 28 → Fin 4 := ![2, 0, 1, 0, 1, 3, 3, 3, 2, 3, 2, 2, 1, 2, 3, 0, 0, 2, 1, 1, 2, 1, 0, 3, 3, 0, 0, 1]
-def c4 : Fin 28 → Fin 4 := ![0, 2, 1, 2, 1, 3, 3, 3, 0, 3, 2, 0, 1, 0, 3, 2, 2, 0, 1, 1, 0, 1, 0, 3, 3, 2, 0, 1]
-def c5 : Fin 28 → Fin 4 := ![0, 3, 1, 3, 1, 2, 2, 2, 0, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 1, 0, 1, 0, 3, 2, 2, 0, 1]
-```
-- **def**
-
-```lean
-def c2 : Fin 28 → Fin 4 := ![3, 0, 1, 0, 1, 2, 2, 2, 3, 2, 3, 3, 1, 3, 2, 0, 0, 3, 1, 1, 2, 1, 0, 3, 2, 0, 0, 1]
-def c3 : Fin 28 → Fin 4 := ![2, 0, 1, 0, 1, 3, 3, 3, 2, 3, 2, 2, 1, 2, 3, 0, 0, 2, 1, 1, 2, 1, 0, 3, 3, 0, 0, 1]
-def c4 : Fin 28 → Fin 4 := ![0, 2, 1, 2, 1, 3, 3, 3, 0, 3, 2, 0, 1, 0, 3, 2, 2, 0, 1, 1, 0, 1, 0, 3, 3, 2, 0, 1]
-def c5 : Fin 28 → Fin 4 := ![0, 3, 1, 3, 1, 2, 2, 2, 0, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 1, 0, 1, 0, 3, 2, 2, 0, 1]
-```
-- **def**
-
-```lean
-def c3 : Fin 28 → Fin 4 := ![2, 0, 1, 0, 1, 3, 3, 3, 2, 3, 2, 2, 1, 2, 3, 0, 0, 2, 1, 1, 2, 1, 0, 3, 3, 0, 0, 1]
-def c4 : Fin 28 → Fin 4 := ![0, 2, 1, 2, 1, 3, 3, 3, 0, 3, 2, 0, 1, 0, 3, 2, 2, 0, 1, 1, 0, 1, 0, 3, 3, 2, 0, 1]
-def c5 : Fin 28 → Fin 4 := ![0, 3, 1, 3, 1, 2, 2, 2, 0, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 1, 0, 1, 0, 3, 2, 2, 0, 1]
-```
-- **def**
-
-```lean
-def c4 : Fin 28 → Fin 4 := ![0, 2, 1, 2, 1, 3, 3, 3, 0, 3, 2, 0, 1, 0, 3, 2, 2, 0, 1, 1, 0, 1, 0, 3, 3, 2, 0, 1]
-def c5 : Fin 28 → Fin 4 := ![0, 3, 1, 3, 1, 2, 2, 2, 0, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 1, 0, 1, 0, 3, 2, 2, 0, 1]
-```
-- **def**
-
-```lean
-def c5 : Fin 28 → Fin 4 := ![0, 3, 1, 3, 1, 2, 2, 2, 0, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 1, 0, 1, 0, 3, 2, 2, 0, 1]
-```
-- **theorem** `step1 : KempeStep G 22 c0 c1`
-- **theorem** `step2 : KempeStep G 22 c1 c2`
-- **theorem** `step3 : KempeStep G 22 c2 c3`
-- **theorem** `step4 : KempeStep G 22 c3 c4`
-- **theorem** `step5 : KempeStep G 22 c4 c5`
 - **theorem** `proper : ProperOff G 22 c0`
 - **theorem** `unfilled : ¬ Target G 22 c0`
 - **theorem** `pureFill : PureFill G 22 c0 5`
@@ -1019,3 +922,158 @@ Tables (`endpoints`, `adjT`, `nextTable`, `prevTable`, `labelTable`, `edgeTable`
 - **theorem** `occ_C2122M : C2122M.Occ sphericalMap ![2, 10, 13, 21, 14, 5, 1] ![3, 12, 4, 0]`
 - **theorem** `occ_C2122P : C2122P.Occ sphericalMap ![13, 10, 2, 1, 5, 14, 21] ![3, 0, 4, 12]`
 - **theorem** `not_conf2122Free : ¬ Conf2122Free sphericalMap`
+
+### `AppearsOcc`
+
+- **structure**
+
+```lean
+structure Appears (γ : Fin 4 → ℕ) (T : SphericalMap n) (int : Fin 4 → Fin n) : Prop where
+  int_inj : Function.Injective int
+  a01 : T.Adj (int 0) (int 1)
+  a02 : T.Adj (int 0) (int 2)
+  a03 : T.Adj (int 0) (int 3)
+  a12 : T.Adj (int 1) (int 2)
+  a23 : T.Adj (int 2) (int 3)
+  n13 : ¬ T.Adj (int 1) (int 3)
+  deg : ∀ a, T.graph.degree (int a) = γ a
+```
+- **def**
+
+```lean
+def TipsClean (T : SphericalMap n) (int : Fin 4 → Fin n) : Prop :=
+  ∀ x, T.Adj (int 1) x → T.Adj (int 3) x → x = int 0 ∨ x = int 2
+```
+- **theorem** `nx_func {u v w w' : Fin n} (h : Nx M u v w) (h' : Nx M u v w') : w = w'`
+- **theorem** `orbitN {v : Fin n} {d : ℕ} (hv : M.graph.degree v = d) (D : M.Dart) (hd : D.fst = v) : (⇑M.rotation.next)^[d] D = D ∧ (∀ i j : ℕ, i < d → j < d → (⇑M.rotation.next)^[i] D = (⇑M.rotation.next)^[j] D → i = j)`
+- **theorem** `chain6 {v a0 a1 a2 a3 a4 a5 : Fin n} (hv : M.graph.degree v = 6) (h01 : Nx M v a0 a1) (h12 : Nx M v a1 a2) (h23 : Nx M v a2 a3) (h34 : Nx M v a3 a4) (h45 : Nx M v a4 a5) : Nx M v a5 a0 ∧ (a0 ≠ a1 ∧ a0 ≠ a2 ∧ a0 ≠ a3 ∧ a0 ≠ a4 ∧ a0 ≠ a5 ∧ a1 ≠ a2 ∧ a1 ≠ a3 ∧ a1 ≠ a4 ∧ a1 ≠ a5 ∧ a2 ≠ a3 ∧ a2 ≠ a4 ∧ a2 ≠ a5 ∧ a3 ≠ a4 ∧ a3 ≠ a5 ∧ a4 ≠ a5)`
+
+### `DiamondAppears`
+
+- **theorem** `occ_of_appears {T : SphericalMap n} (htri : T.Triangulated) (hns : NoSep T) {int : Fin 4 → Fin n} (A : Appears ![5, 5, 5, 5] T int) (htip : TipsClean T int) : (∃ ring, DiamondM.Occ T ring int) ∨ (∃ ring, DiamondP.Occ T ring int)`
+
+### `C2122Appears`
+
+- **theorem** `occ_of_appears {T : SphericalMap n} (htri : T.Triangulated) (hns : NoSep T) {int : Fin 4 → Fin n} (A : Appears ![6, 5, 5, 5] T int) (htip : TipsClean T int) : (∃ ring, C2122M.Occ T ring int) ∨ (∃ ring, C2122P.Occ T ring int)`
+
+### `FrameAppears`
+
+- **def**
+
+```lean
+def AppearFree (T : SphericalMap n) : Prop :=
+  (∀ int, Appears ![5, 5, 5, 5] T int → ¬ TipsClean T int) ∧
+  (∀ int, Appears ![6, 5, 5, 5] T int → ¬ TipsClean T int)
+```
+- **def**
+
+```lean
+def RStarFrameApp : Prop :=
+  ∀ (m : ℕ) (T : SphericalMap m), 0 < m → T.graph.Connected → T.Triangulated →
+    (∀ x, 5 ≤ T.graph.degree x) → NoSep T → AppearFree T →
+    ∃ v, T.graph.degree v = 5 ∧ PureClean T v
+```
+- **theorem** `appearFree_of_free {T : SphericalMap n} (htri : T.Triangulated) (hns : NoSep T) (hD : DiamondFree T) (hC : Conf2122Free T) : AppearFree T`
+- **theorem** `rStarFrame_of_app (hR : RStarFrameApp) : RStarFrame`
+- **theorem** `four_color_of_RStarFrameApp (hR : RStarFrameApp) {n : ℕ} (M : SphericalMap n) : M.graph.Colorable 4`
+- **theorem** `appears_diamond : Appears ![5, 5, 5, 5] sphericalMap ![0, 1, 8, 7] ∧ TipsClean sphericalMap ![0, 1, 8, 7]`
+
+### `FCycle22`
+
+Generated module (data tables and kernel-checked certificates): 164 theorems; headline items below.
+
+- **theorem** `s0_fill : PureFill G 15 s0_0 3`
+- **theorem** `s0_proper : ProperOff G 15 s0_0`
+- **theorem** `s0_unfilled : ¬ Target G 15 s0_0`
+- **theorem** `s1_fill : PureFill G 15 s1_0 2`
+- **theorem** `s1_proper : ProperOff G 15 s1_0`
+- **theorem** `s1_unfilled : ¬ Target G 15 s1_0`
+- **theorem** `s1_m0_silent : KempeStep G 15 s1_0 s1_m0_0 ∧ (∀ v, G.Adj 15 v → s1_m0_0 v = s1_0 v) ∧ PureFill G 15 s1_m0_0 1`
+- **theorem** `s1_m1_silent : KempeStep G 15 s1_0 s1_m1_0 ∧ (∀ v, G.Adj 15 v → s1_m1_0 v = s1_0 v) ∧ PureFill G 15 s1_m1_0 1`
+- **theorem** `s2_fill : PureFill G 15 s2_0 2`
+- **theorem** `s2_proper : ProperOff G 15 s2_0`
+- **theorem** `s2_unfilled : ¬ Target G 15 s2_0`
+- **theorem** `s2_m0_silent : KempeStep G 15 s2_0 s2_m0_0 ∧ (∀ v, G.Adj 15 v → s2_m0_0 v = s2_0 v) ∧ PureFill G 15 s2_m0_0 1`
+- **theorem** `s3_fill : PureFill G 15 s3_0 2`
+- **theorem** `s3_proper : ProperOff G 15 s3_0`
+- **theorem** `s3_unfilled : ¬ Target G 15 s3_0`
+- **theorem** `s3_m0_silent : KempeStep G 15 s3_0 s3_m0_0 ∧ (∀ v, G.Adj 15 v → s3_m0_0 v = s3_0 v) ∧ PureFill G 15 s3_m0_0 1`
+- **theorem** `s4_fill : PureFill G 15 s4_0 3`
+- **theorem** `s4_proper : ProperOff G 15 s4_0`
+- **theorem** `s4_unfilled : ¬ Target G 15 s4_0`
+- **theorem** `s5_fill : PureFill G 15 s5_0 2`
+- **theorem** `s5_proper : ProperOff G 15 s5_0`
+- **theorem** `s5_unfilled : ¬ Target G 15 s5_0`
+- **theorem** `s5_m0_silent : KempeStep G 15 s5_0 s5_m0_0 ∧ (∀ v, G.Adj 15 v → s5_m0_0 v = s5_0 v) ∧ PureFill G 15 s5_m0_0 1`
+- **theorem** `s5_m1_silent : KempeStep G 15 s5_0 s5_m1_0 ∧ (∀ v, G.Adj 15 v → s5_m1_0 v = s5_0 v) ∧ PureFill G 15 s5_m1_0 1`
+- **theorem** `s6_fill : PureFill G 15 s6_0 4`
+- **theorem** `s6_proper : ProperOff G 15 s6_0`
+- **theorem** `s6_unfilled : ¬ Target G 15 s6_0`
+- **theorem** `s7_fill : PureFill G 15 s7_0 4`
+- **theorem** `s7_proper : ProperOff G 15 s7_0`
+- **theorem** `s7_unfilled : ¬ Target G 15 s7_0`
+- **theorem** `s8_fill : PureFill G 15 s8_0 4`
+- **theorem** `s8_proper : ProperOff G 15 s8_0`
+- **theorem** `s8_unfilled : ¬ Target G 15 s8_0`
+- **theorem** `s9_fill : PureFill G 15 s9_0 4`
+- **theorem** `s9_proper : ProperOff G 15 s9_0`
+- **theorem** `s9_unfilled : ¬ Target G 15 s9_0`
+- **theorem** `s10_fill : PureFill G 15 s10_0 3`
+- **theorem** `s10_proper : ProperOff G 15 s10_0`
+- **theorem** `s10_unfilled : ¬ Target G 15 s10_0`
+- **theorem** `s11_fill : PureFill G 15 s11_0 3`
+- **theorem** `s11_proper : ProperOff G 15 s11_0`
+- **theorem** `s11_unfilled : ¬ Target G 15 s11_0`
+- **theorem** `s12_fill : PureFill G 15 s12_0 2`
+- **theorem** `s12_proper : ProperOff G 15 s12_0`
+- **theorem** `s12_unfilled : ¬ Target G 15 s12_0`
+- **theorem** `s12_m0_silent : KempeStep G 15 s12_0 s12_m0_0 ∧ (∀ v, G.Adj 15 v → s12_m0_0 v = s12_0 v) ∧ PureFill G 15 s12_m0_0 1`
+- **theorem** `s13_fill : PureFill G 15 s13_0 3`
+- **theorem** `s13_proper : ProperOff G 15 s13_0`
+- **theorem** `s13_unfilled : ¬ Target G 15 s13_0`
+- **theorem** `s14_fill : PureFill G 15 s14_0 2`
+- **theorem** `s14_proper : ProperOff G 15 s14_0`
+- **theorem** `s14_unfilled : ¬ Target G 15 s14_0`
+- **theorem** `s14_m0_silent : KempeStep G 15 s14_0 s14_m0_0 ∧ (∀ v, G.Adj 15 v → s14_m0_0 v = s14_0 v) ∧ PureFill G 15 s14_m0_0 1`
+- **theorem** `s15_fill : PureFill G 15 s15_0 3`
+- **theorem** `s15_proper : ProperOff G 15 s15_0`
+- **theorem** `s15_unfilled : ¬ Target G 15 s15_0`
+- **theorem** `s16_fill : PureFill G 15 s16_0 2`
+- **theorem** `s16_proper : ProperOff G 15 s16_0`
+- **theorem** `s16_unfilled : ¬ Target G 15 s16_0`
+- **theorem** `s16_m0_silent : KempeStep G 15 s16_0 s16_m0_0 ∧ (∀ v, G.Adj 15 v → s16_m0_0 v = s16_0 v) ∧ PureFill G 15 s16_m0_0 1`
+- **theorem** `s16_m1_silent : KempeStep G 15 s16_0 s16_m1_0 ∧ (∀ v, G.Adj 15 v → s16_m1_0 v = s16_0 v) ∧ PureFill G 15 s16_m1_0 1`
+- **theorem** `s17_fill : PureFill G 15 s17_0 2`
+- **theorem** `s17_proper : ProperOff G 15 s17_0`
+- **theorem** `s17_unfilled : ¬ Target G 15 s17_0`
+- **theorem** `s17_m0_silent : KempeStep G 15 s17_0 s17_m0_0 ∧ (∀ v, G.Adj 15 v → s17_m0_0 v = s17_0 v) ∧ PureFill G 15 s17_m0_0 1`
+- **theorem** `s17_m1_silent : KempeStep G 15 s17_0 s17_m1_0 ∧ (∀ v, G.Adj 15 v → s17_m1_0 v = s17_0 v) ∧ PureFill G 15 s17_m1_0 1`
+- **theorem** `s18_fill : PureFill G 15 s18_0 3`
+- **theorem** `s18_proper : ProperOff G 15 s18_0`
+- **theorem** `s18_unfilled : ¬ Target G 15 s18_0`
+- **theorem** `s19_fill : PureFill G 15 s19_0 3`
+- **theorem** `s19_proper : ProperOff G 15 s19_0`
+- **theorem** `s19_unfilled : ¬ Target G 15 s19_0`
+
+### `Tri22Map`
+
+Generated module (data tables and kernel-checked certificates): 16 theorems; headline items below.
+
+- **theorem** `fills : rotation.Fills`
+- **theorem** `face_length_three (f : rotation.Face) : rotation.faceLength f = 3`
+- **def** `sphericalMap`
+- **theorem** `sphericalMap_degree (v : Fin 22) : sphericalMap.graph.degree v = degTable v`
+- **theorem** `sphericalMap_triangulated : sphericalMap.Triangulated`
+
+### `Tri22Sanity`
+
+- **theorem** `nx_t {u v w : Fin 22} (h : graph.Adj u v) (e : nextTable u v = w) : sphericalMap.Nx u v w`
+- **theorem** `G_eq : FCycle22.G = sphericalMap.graph`
+- **theorem** `connected : sphericalMap.graph.Connected`
+- **theorem** `noSep : NoSep sphericalMap`
+- **theorem** `min_degree (x : Fin 22) : 5 ≤ sphericalMap.graph.degree x`
+- **theorem** `occ_C2122M : C2122M.Occ sphericalMap ![2, 10, 13, 21, 14, 5, 1] ![3, 12, 4, 0]`
+- **theorem** `occ_C2122P : C2122P.Occ sphericalMap ![13, 10, 2, 1, 5, 14, 21] ![3, 0, 4, 12]`
+- **theorem** `occ_DiamondM : DiamondM.Occ sphericalMap ![2, 1, 8, 17, 20, 10] ![6, 7, 19, 11]`
+- **theorem** `not_conf2122Free : ¬ Conf2122Free sphericalMap`
+- **theorem** `not_diamondFree : ¬ DiamondFree sphericalMap`
