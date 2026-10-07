@@ -1,0 +1,14 @@
+==== p27 #133619 hole 21, plantri orientation; link degrees [6, 5, 5, 5, 5]; states 1044; pi-cycles 41
+  Gamma-cycle 25: L 20, w 4
+   SOURCE R3@k=4 state 672: repeat j=1; link x0=a x1=b x2=d x3=b x4=c; roles (alpha,mu,A,B) = ('b', 'd', 'c', 'a')
+   LANDING sigma(r) = state 927 on cycle 2 (w -62, L 314): link x0=a x1=d x2=b x3=d x4=c; link vertices recoloured: ['x1', 'x2', 'x3']; locks (Lock1, Lock2) = (False, False); pi-move of sigma(r): phiB
+   excursion: sigma(r) (u = 1) -> filled state 942 (link x0=a x1=d x2=a x3=d x4=c; its move phiA, lambda -1) -> next state 670 (unfilled; link x0=a x1=b x2=a x3=d x4=c)
+   filled state: singleton colour at x4; W=c X=a Y=d; phiA applies since x3 is not in the {Y,Z}-component of x1 -> f = 1 (tau would need that component to reach x3)
+==== p27 #133619 hole 21, mirror orientation; link degrees [5, 5, 5, 5, 6]; states 1044; pi-cycles 41
+  Gamma-cycle 33: L 20, w 4
+   SOURCE R3@k=4 state 345: repeat j=0; link x0=a x1=d x2=a x3=c x4=b; roles (alpha,mu,A,B) = ('a', 'd', 'c', 'b')
+   LANDING sigma(r) = state 349 on cycle 5 (w -62, L 314): link x0=a x1=d x2=a x3=c x4=b; link vertices recoloured: []; locks (Lock1, Lock2) = (False, False); pi-move of sigma(r): phiB
+   excursion: sigma(r) (u = 1) -> filled state 648 (link x0=a x1=b x2=a x3=c x4=b; its move phiA, lambda -1) -> next state 640 (unfilled; link x0=a x1=b x2=d x3=c x4=b)
+   filled state: singleton colour at x3; W=c X=b Y=a; phiA applies since x2 is not in the {Y,Z}-component of x0 -> f = 1 (tau would need that component to reach x2)
+plantri case: K_sigma link vertices x[1, 2, 3] |K_sigma| = 3 moves {'r': 'R3', 'sigma_r': 'phiB', 'pi_sigma_r': 'phiA', 'pi2_sigma_r': 'phiB'}
+mirror case: K_sigma link vertices x[0, 1, 2] |K_sigma| = 3 moves {'r': 'R3', 'sigma_r': 'phiB', 'pi_sigma_r': 'phiA', 'pi2_sigma_r': 'phiB'}
