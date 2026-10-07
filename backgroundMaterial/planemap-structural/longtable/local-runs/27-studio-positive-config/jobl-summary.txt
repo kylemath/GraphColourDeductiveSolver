@@ -1,0 +1,14 @@
+== 5,5,5,5,6 Gamma: cycles 62; min C_neg/D 1.550 at i25m p25#16945 h3 (L 20, D 20, C_neg 31, C 31); min C/D 1.550 at i25m p25#16945 h3; C_neg < D in 0; C < D in 0; C_pos > 0 in 0
+== 5,5,5,5,6 nonGamma positive: cycles 37; min C_neg/D 0.000 at i25 p25#16298 h23 (L 26, D 10, C_neg 0, C 2); min C/D 0.000 at i26 p26#43605 h3; C_neg < D in 17; C < D in 17; C_pos > 0 in 4
+   C_neg < D: i25 p25#16298 h 23 [5, 5, 5, 6, 5] L 26 D 10 C_neg 0 C_pos 2 perk [R3, lockless] {'1': [2, 0], '2': [2, 0], '4': [2, 1], '8': [1, 0], '16': [1, 0]} hop 1
+   C_neg < D: i25m p25#736 h 17 [5, 5, 5, 6, 5] L 18 D 10 C_neg 5 C_pos 0 perk [R3, lockless] {'1': [1, 0], '2': [1, 0], '4': [2, 1], '8': [1, 0], '16': [1, 0]} hop 1
+   C_neg < D: i26 p26#6480 h 23 [5, 5, 6, 5, 5] L 26 D 10 C_neg 8 C_pos 0 perk [R3, lockless] {'1': [3, 1], '2': [1, 0], '4': [1, 0], '8': [1, 0], '16': [1, 0]} hop 1
+   C_neg < D: i26 p26#12065 h 24 [6, 5, 5, 5, 5] L 48 D 20 C_neg 8 C_pos 0 perk [R3, lockless] {'1': [4, 0], '2': [3, 0], '4': [3, 1], '8': [2, 0], '16': [2, 0]} hop 1
+   sigma-hops to a negative cycle: {1: 37} ; C_neg/D distribution: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.4, 0.4, 0.5, 0.5, 0.8, 1.0, 1.4, 1.6, 1.7, 2.0, 2.1, 2.1, 2.5, 2.6, 3.05, 3.1, 3.2, 3.2, 3.7, 4.0, 4.3, 5.2, 5.5, 6.9, 14.0]
+== 5,5,5,6,6 Gamma: cycles 6; min C_neg/D 1.800 at i26m p26#30262 h14 (L 20, D 20, C_neg 36, C 36); min C/D 1.800 at i26m p26#30262 h14; C_neg < D in 0; C < D in 0; C_pos > 0 in 0
+== 5,5,5,6,6 nonGamma positive: cycles 22; min C_neg/D 0.000 at i26 p26#7490 h3 (L 26, D 10, C_neg 0, C 0); min C/D 0.000 at i26 p26#7490 h3; C_neg < D in 10; C < D in 10; C_pos > 0 in 0
+   C_neg < D: i25m p25#16020 h 20 [5, 5, 6, 6, 5] L 18 D 10 C_neg 8 C_pos 0 perk [R3, lockless] {'6': [1, 1], '12': [1, 0], '17': [1, 0]} hop 1
+   C_neg < D: i26 p26#7490 h 3 [5, 6, 6, 5, 5] L 26 D 10 C_neg 0 C_pos 0 perk [R3, lockless] {'3': [1, 0], '6': [3, 0], '12': [1, 0], '17': [1, 0], '24': [1, 0]} hop 1
+   C_neg < D: i26 p26#28520 h 18 [5, 5, 6, 6, 5] L 54 D 10 C_neg 6 C_pos 0 perk [R3, lockless] {'3': [1, 0], '6': [4, 1], '12': [2, 1], '17': [2, 1], '24': [1, 0]} hop 1
+   C_neg < D: i26 p26#33026 h 23 [6, 5, 5, 5, 6] L 22 D 10 C_neg 2 C_pos 0 perk [R3, lockless] {'6': [1, 0], '12': [1, 0], '17': [2, 1]} hop 1
+   sigma-hops to a negative cycle: {1: 22} ; C_neg/D distribution: [0.0, 0.0, 0.0, 0.2, 0.2, 0.2, 0.5, 0.6, 0.7, 0.8, 1.0, 1.0, 1.3, 1.5, 1.6, 1.8, 2.1, 2.4, 2.4, 2.4, 2.4, 3.2]

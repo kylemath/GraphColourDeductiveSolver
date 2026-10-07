@@ -93,3 +93,9 @@ sigma' = every link-free swap from a DD-step endpoint whose result is not DL (= 
   p26 #87887 h21 where 30 hits use the whole -240 of a w = -48 cycle). It FAILS on the 4 targets that are themselves positive cycles (w = +2, +2, +2, +4; remainder 12 or 24):
   p25 #16298 h23, p25m #16149 h3, p26m #40549 h3, p26m #75049 h16.
 - Every positive cycle at these holes reaches a negative cycle in ONE sigma-hop (13 + 13 + 48 + 53 cycles), including all 12 positive non-Gamma cycles with no lockless exit; their sigma-groups have 4-19 cycles and sum w from -46 to -200.
+
+## Job L (supply numbers; `jobl.py` -> jobl-summary.txt, jobl-cycles.json), (5,5,5,5,6)/(5,5,5,6,6), orders 25-26, both orientations
+Debt D = 5w; credit C = sum (3f - 1) over lockless sigma-exits, split by target winding (C_neg: w(T) <= 0, C_pos: w(T) > 0); per kmask [R3 states, lockless exits].
+- **Lemma S (C_neg >= D) holds on every Gamma-cycle**: min C_neg/D = 1.55 at (5,5,5,5,6) (62 records; p25m #16945 h3: L 20, D 20, C_neg 31) and 1.80 at (5,5,5,6,6) (6 records).
+  Gamma-cycle exits never hit a positive cycle (C_pos = 0 on all 68).
+- Positive non-Gamma cycles: C_neg < D in 17/37 (5,5,5,5,6) and 10/22 (5,5,5,6,6) records, min 0 (p25 #16298 h23, p26 #43605 h3, p26 #7490 h3); every one is one sigma-hop from a negative cycle.
