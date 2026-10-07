@@ -25,6 +25,7 @@ Go/no-go review every two weeks (next: 21 Oct 2026) against these kill rules.
 
 - Agents: at most 6 running at once (workflow guideline < 10).
 - Studio CPU (16 cores, 128 GB): coordinator-started compute runs under `nice -n 10` and uses at most 8 worker processes in total. Jobs BO/BP keep their current workers. The Studio is shared with Kyle's EEGLearn project (Python multiprocessing jobs); EEGLearn has priority, so 4CT compute stays nice'd and within the cap even when the machine looks idle.
+- Update 7 Oct 16:20 (Kyle: EEG analysis nearly done): the cap is raised to 14 worker processes in total, still under `nice -n 10`. Drop back to 8 if EEGLearn jobs restart or the load average stays above ~20.
 - Lean regression: one full `check.sh` run per day (about 10 minutes).
 
 ## Status log
