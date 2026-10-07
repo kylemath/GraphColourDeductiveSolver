@@ -203,3 +203,8 @@ W4 = k4' fails => k3 lockless with f = 3.
 - **On Gamma-cycles all four hold with 0 failures** (12 + 12, 58 + 58, 206 + 206 windows).
 - On non-closed runs they fail often (order 27, per orientation, of 1,946 windows: credit < 10 in about 510, not W1 389, not W2 149, not W4 about 700). Most failing windows end
   1-2 steps before the run end, but W1 fails up to 12-15 steps before it (p26 / p26m: 12 and 15; order 27: up to 12), so **W1 does not hold on all runs**.
+
+## Charge-back P1 (coordinator refinement; `picyc.w --jobs` with per-exit records, `jobcb.py` -> jobcb-summary.txt), orders 25-27, both orientations
+rem(T) > 0 is charged back to the positive sources that hit T (in proportion to credit; exact fractions), def'(Z) = def(Z) + charge; P1 on def' with targets rem < 0.
+- **Holds at every hole** (single-target assignment exists; 101 + 74 def' > 0 records at order 27 per orientation pair). The 12 rem > 0 targets (all order 27) each have ONE source:
+  p27 #68456 h19 (both orientations; source = the Gamma-cycle, credits 16, charge 6) and the 10 Lambda = 0 targets hit once by f = 1 (charge 2 to the single source).
