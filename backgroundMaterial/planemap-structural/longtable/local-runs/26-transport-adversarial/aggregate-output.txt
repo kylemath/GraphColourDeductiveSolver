@@ -1,0 +1,49 @@
+== item 1+2: C6 adversarial classes (13) ==
+best-A6_chain h13 states 12620 posW [64, 64, 52, 12, 12, 4, 4, 4] sumW -1556 minW -912 {'supply': 216, 'capA': 1548, 'capB': 1548, 'okA': True, 'okB': True, 'hallA': 7.167, 'hallB': 7.167, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-A6_chain h31 states 12820 posW [132, 12, 12, 12, 12, 12, 12, 4, 4, 4] sumW -1516 minW -1122 {'supply': 216, 'capA': 1682, 'capB': 1682, 'okA': True, 'okB': True, 'hallA': 7.787, 'hallB': 7.787, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-A7_exc h22 states 21078 posW [160, 4, 4] sumW -2922 minW -1042 {'supply': 168, 'capA': 2748, 'capB': 2748, 'okA': True, 'okB': True, 'hallA': 16.357, 'hallB': 16.357, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-A7_exc h22 states 2124 posW [16, 8, 4, 4] sumW -244 minW -276 {'supply': 32, 'capA': 276, 'capB': 276, 'okA': True, 'okB': True, 'hallA': 8.625, 'hallB': 8.625, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-A7_exc h22 states 2124 posW [8, 8, 8, 8] sumW -244 minW -138 {'supply': 32, 'capA': 276, 'capB': 276, 'okA': True, 'okB': True, 'hallA': 8.625, 'hallB': 8.625, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-A7_exc h34 states 2124 posW [16, 8, 4, 4] sumW -244 minW -138 {'supply': 32, 'capA': 276, 'capB': 276, 'okA': True, 'okB': True, 'hallA': 8.625, 'hallB': 8.625, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-A7_exc h34 states 2124 posW [8, 8, 8, 8] sumW -244 minW -138 {'supply': 32, 'capA': 276, 'capB': 276, 'okA': True, 'okB': True, 'hallA': 8.625, 'hallB': 8.625, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-A7_exc h34 states 21078 posW [160, 20, 20, 16, 4, 4, 4, 4] sumW -2922 minW -2220 {'supply': 232, 'capA': 2712, 'capB': 2712, 'okA': True, 'okB': True, 'hallA': 11.69, 'hallB': 11.69, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-hog1152_chain h11 states 600 posW [12, 12] sumW -72 minW -16 {'supply': 24, 'capA': 96, 'capB': 96, 'okA': True, 'okB': True, 'hallA': 4.0, 'hallB': 4.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+best-r5_80b930d1_exc h2 states 2016 posW [16, 16, 16] sumW -192 minW -32 {'supply': 48, 'capA': 192, 'capB': 192, 'okA': True, 'okB': True, 'hallA': 4.0, 'hallB': 4.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+best-r5_80b930d1_exc h2 states 600 posW [12, 12] sumW -72 minW -48 {'supply': 24, 'capA': 96, 'capB': 96, 'okA': True, 'okB': True, 'hallA': 4.0, 'hallB': 4.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+best-r5_80b930d1_exc h23 states 2016 posW [16, 16, 16] sumW -192 minW -16 {'supply': 48, 'capA': 240, 'capB': 240, 'okA': True, 'okB': True, 'hallA': 5.0, 'hallB': 5.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': False}
+best-r5_80b930d1_exc h23 states 600 posW [12, 12] sumW -72 minW -48 {'supply': 24, 'capA': 96, 'capB': 96, 'okA': True, 'okB': True, 'hallA': 4.0, 'hallB': 4.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+
+== item 1 detail: A7 h22 21078 ==
+cycles 147 zero 79 neg 65
+hist (w,L,count): [[160, 800, 1], [4, 20, 2], [0, 24, 3], [0, 12, 12], [0, 8, 8], [0, 4, 56], [-3, 5, 28], [-6, 10, 10], [-7, 29, 4], [-12, 20, 6], [-14, 58, 2], [-16, 80, 8], [-28, 116, 1], [-32, 160, 1], [-42, 174, 1], [-252, 1356, 2], [-1042, 7670, 2]]
+a_DL_allpairs {'ok': True, 'flow': 168, 'supply': 168, 'capreach': 2748, 'nneg_reach': 13, 'hall_ratio': 16.357, 'hall_set': {'W': [4, 4, 160], 'cap': 2748, 'supply': 168}}
+b_DL_otherpair {'ok': True, 'flow': 168, 'supply': 168, 'capreach': 2748, 'nneg_reach': 13, 'hall_ratio': 16.357, 'hall_set': {'W': [4, 4, 160], 'cap': 2748, 'supply': 168}}
+c_anystate {'ok': True, 'flow': 168, 'supply': 168, 'capreach': 2748, 'nneg_reach': 13, 'hall_ratio': 16.357, 'hall_set': {'W': [4, 4, 160], 'cap': 2748, 'supply': 168}}
+d_DL_lockbreaking {'ok': True, 'flow': 168, 'supply': 168, 'capreach': 2748, 'nneg_reach': 13, 'hall_ratio': 16.357, 'hall_set': {'W': [4, 4, 160], 'cap': 2748, 'supply': 168}}
+e_DL_otherpair_lockbreaking {'ok': True, 'flow': 168, 'supply': 168, 'capreach': 2748, 'nneg_reach': 13, 'hall_ratio': 16.357, 'hall_set': {'W': [4, 4, 160], 'cap': 2748, 'supply': 168}}
+{'w': 160, 'L': 800, 'nDL': 800, 'exits_DL': 2648, 'exits_lockbreaking': 2467, 'exits_to_neg': 2542, 'exits_to_neg_lockbreaking': 2382, 'exits_to_neg_nonlb': 160}
+{'w': 4, 'L': 20, 'nDL': 20, 'exits_DL': 116, 'exits_lockbreaking': 98, 'exits_to_neg': 70, 'exits_to_neg_lockbreaking': 68, 'exits_to_neg_nonlb': 2}
+{'w': 4, 'L': 20, 'nDL': 20, 'exits_DL': 116, 'exits_lockbreaking': 96, 'exits_to_neg': 70, 'exits_to_neg_lockbreaking': 68, 'exits_to_neg_nonlb': 2}
+
+== items 3: all 123 small classes ==
+(a) fails 0 (b) fails 0 relay needed 0 (d) lockbreaking-only fails 0 (e) otherpair-lockbreaking-only fails 0 every positive has a lb exit to neg: fails 0 all neg exits lb: holds 97
+min Hall ratio (a) 4.0 (b) 4.0
+min cap/supply (a) 4.0
+
+ w>=+8 classes (orders<=24):
+{'n': 24, 'gentri': 2079, 'hole': 0} [8] {'supply': 8, 'capA': 72, 'capB': 72, 'okA': True, 'okB': True, 'hallA': 9.0, 'hallB': 9.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+{'n': 24, 'gentri': 3633, 'hole': 0} [8] {'supply': 8, 'capA': 46, 'capB': 46, 'okA': True, 'okB': True, 'hallA': 5.75, 'hallB': 5.75, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+
+ 5 tightest by Hall ratio (b):
+{'n': 17, 'gentri': 4, 'hole': 0} [4] {'supply': 4, 'capA': 16, 'capB': 16, 'okA': True, 'okB': True, 'hallA': 4.0, 'hallB': 4.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+{'n': 17, 'gentri': 4, 'hole': 16} [4] {'supply': 4, 'capA': 16, 'capB': 16, 'okA': True, 'okB': True, 'hallA': 4.0, 'hallB': 4.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+{'n': 24, 'gentri': 3633, 'hole': 0} [8] {'supply': 8, 'capA': 46, 'capB': 46, 'okA': True, 'okB': True, 'hallA': 5.75, 'hallB': 5.75, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+{'n': 22, 'gentri': 418, 'hole': 21} [4] {'supply': 4, 'capA': 36, 'capB': 24, 'okA': True, 'okB': True, 'hallA': 9.0, 'hallB': 6.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+{'n': 24, 'gentri': 2071, 'hole': 2} [4] {'supply': 4, 'capA': 28, 'capB': 28, 'okA': True, 'okB': True, 'hallA': 7.0, 'hallB': 7.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+{'n': 22, 'gentri': 570, 'hole': 6} [2] {'supply': 2, 'capA': 16, 'capB': 16, 'okA': True, 'okB': True, 'hallA': 8.0, 'hallB': 8.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+
+ multi-positive small classes:
+{'n': 24, 'gentri': 906, 'hole': 22} [4, 4] {'supply': 8, 'capA': 80, 'capB': 80, 'okA': True, 'okB': True, 'hallA': 10.0, 'hallB': 10.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+{'n': 24, 'gentri': 6864, 'hole': 21} [2, 1] {'supply': 3, 'capA': 79, 'capB': 79, 'okA': True, 'okB': True, 'hallA': 13.0, 'hallB': 13.0, 'relay': False, 'okD': True, 'okE': True, 'lbany': True, 'lball': True}
+
+DL exits to negative cycles from positive cycles, all 136 classes: 15333, lock-breaking 14380 (93.8%)
