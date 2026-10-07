@@ -1,0 +1,42 @@
+{
+ "graphs": 4,
+ "holes": 49,
+ "DLstates": 775,
+ "DD": 340,
+ "nonDD": 435,
+ "predB_mismatch": 96,
+ "predK_mismatch": 0,
+ "predB_mismatch_twocurve": 31,
+ "predB_mismatch_by_extra": {
+  "0": 31,
+  "1": 36,
+  "2": 29
+ },
+ "twocurve_DD": 149,
+ "twocurve_nonDD": 157,
+ "extra_hist_DD": {
+  "0": 149,
+  "1": 130,
+  "2": 61
+ },
+ "extra_hist_nonDD": {
+  "0": 157,
+  "1": 105,
+  "2": 173
+ },
+ "pure_total": 621,
+ "pure_twocurve_nonDD": 115,
+ "pure_twocurve_DD": 131,
+ "distinct_keys": 105,
+ "keys_DD_only": 40,
+ "keys_nonDD_only": 65,
+ "keys_mixed": 0,
+ "pure_distinct_keys": 77,
+ "pure_keys_mixed": 0,
+ "pure_keys_DD_only": 32,
+ "pure_keys_nonDD_only": 45,
+ "keys_mixed_examples": []
+}
+real 0.17
+user 0.15
+sys 0.00
