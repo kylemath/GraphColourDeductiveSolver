@@ -1,0 +1,203 @@
+===== anat/anat-census27-28.jsonl : graphs 128 n {27: 24, 28: 104} ; holes 1920 ; classes 1958
+classes with 4F = N (equality): 26 ; 4F < N (floor broken): 0 ; N power of 2: 26 ; N <= 64: 38
+small-class (N, F) histogram: {(4, 1): 22, (6, 4): 5, (8, 2): 4, (12, 8): 3, (24, 16): 4}
+analysed classes (N<=64 or 2^k or equality): 38 ; skipped large non-2^k: 35
+  product of independent chain flips (labelled cube): 0 ; move graph is a hypercube (unlabelled): 22 ; single cycle: 29
+  (N,F)=(4, 1): {('cycle4', '-'): 22}
+  (N,F)=(6, 4): {('cycle6', '-'): 5}
+  (N,F)=(8, 2): {('cycle8', '-'): 2, ("other(degs=[('4', 8)],E=16)", '-'): 2}
+  (N,F)=(12, 8): {("other(degs=[('2', 8), ('3', 4)],E=14)", '-'): 3}
+  (N,F)=(24, 16): {("other(degs=[('2', 12), ('3', 4), ('5', 4), ('6', 4)],E=40)", '-'): 4}
+-- equality classes: 26 in 5 graphs
+   sizes {8: 4, 4: 22}
+   link words (canonical degrees) {(5, 6, 6, 6, 6): 10, (5, 5, 6, 6, 7): 10, (5, 5, 6, 6, 6): 6}
+   cyclic state pattern (F = filled, lock type of unfilled):
+      DL L1 F  L2  22
+      DL L1 F  L2 DL L1 F  L2  2
+      not a cycle8  FalseFalse 2
+   gaps between consecutive filled states along the cycle: {(4, 4): 2, (0,): 22}
+   edge types (from-state type, colour-pair letters of the link word [x = colour absent from link], # link vertices in K u rest):
+      ('DL', 'ab', 3) 2
+      ('DL', 'ac', 3) 5
+      ('DL', 'ad', 3) 5
+      ('DL', 'bc', 3) 11
+      ('DL', 'bd', 3) 3
+      ('F', 'ax', 2) 7
+      ('F', 'bx', 2) 12
+      ('F', 'cx', 2) 7
+      ('L1', 'ab', 3) 1
+      ('L1', 'ac', 3) 5
+      ('L1', 'ad', 3) 9
+      ('L1', 'bc', 3) 3
+      ('L1', 'bd', 2) 3
+      ('L1', 'bd', 3) 2
+      ('L1', 'cd', 2) 3
+      ('L2', 'ac', 2) 9
+      ('L2', 'ac', 3) 3
+      ('L2', 'ad', 2) 5
+      ('L2', 'bc', 2) 1
+      ('L2', 'bc', 3) 1
+      ('L2', 'bd', 2) 2
+      ('L2', 'bd', 3) 2
+      ('L2', 'cd', 2) 3
+   EQ p27#8475 hole 7 link [5, 6, 6, 6, 6] N 8 F 2 cycle filled at [0, 4]
+   EQ p27#8475 hole 17 link [6, 6, 5, 6, 6] N 8 F 2 cycle filled at [1, 5]
+   EQ p28#94025 hole 2 link [7, 5, 5, 6, 6] N 4 F 1 cycle filled at [1]
+   EQ p28#94025 hole 9 link [5, 7, 6, 6, 5] N 4 F 1 cycle filled at [3]
+   EQ p28#94025 hole 11 link [6, 6, 5, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ p28#94025 hole 13 link [5, 6, 6, 6, 5] N 4 F 1 cycle filled at [3]
+   EQ p28#94025 hole 20 link [6, 6, 6, 6, 5] N 4 F 1 cycle filled at [2]
+   EQ p28#94025 hole 25 link [5, 6, 6, 6, 5] N 4 F 1 cycle filled at [1]
+   EQ p28#44900 hole 0 link [6, 5, 5, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ p28#44900 hole 3 link [5, 5, 6, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ p28#44900 hole 7 link [6, 6, 5, 5, 7] N 4 F 1 cycle filled at [2]
+   EQ p28#44900 hole 15 link [6, 6, 7, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ p28#44900 hole 18 link [7, 5, 5, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ p28#44900 hole 22 link [6, 6, 5, 5, 6] N 4 F 1 cycle filled at [0]
+   EQ p28#44900 hole 25 link [5, 7, 6, 6, 5] N 4 F 1 cycle filled at [3]
+   EQ p28#44900 hole 27 link [6, 6, 5, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ p28#546102 hole 26 link [5, 6, 6, 6, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ p28#546102 hole 26 link [5, 6, 6, 6, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ p28#218651 hole 0 link [6, 6, 6, 5, 6] N 4 F 1 cycle filled at [2]
+   EQ p28#218651 hole 4 link [5, 6, 6, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ p28#218651 hole 6 link [6, 6, 5, 5, 7] N 4 F 1 cycle filled at [3]
+   EQ p28#218651 hole 14 link [6, 6, 7, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ p28#218651 hole 17 link [7, 5, 5, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ p28#218651 hole 19 link [6, 6, 6, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ p28#218651 hole 24 link [5, 7, 6, 6, 5] N 4 F 1 cycle filled at [3]
+   EQ p28#218651 hole 26 link [5, 6, 6, 6, 6] N 4 F 1 cycle filled at [2]
+-- non-equality classes that are single cycles: 5
+      (6, 4, ('F', 'F', 'N0', 'F', 'F', 'N0')) 5
+===== anat/anat-wbest.jsonl : graphs 32 n {27: 2, 28: 10, 32: 7, 36: 6, 37: 7} ; holes 528 ; classes 617
+classes with 4F = N (equality): 88 ; 4F < N (floor broken): 0 ; N power of 2: 88 ; N <= 64: 89
+small-class (N, F) histogram: {(4, 1): 72, (8, 2): 16, (10, 10): 1}
+analysed classes (N<=64 or 2^k or equality): 89 ; skipped large non-2^k: 76
+  product of independent chain flips (labelled cube): 0 ; move graph is a hypercube (unlabelled): 74 ; single cycle: 76
+  (N,F)=(4, 1): {('cycle4', '-'): 72}
+  (N,F)=(8, 2): {("other(degs=[('4', 8)],E=16)", '-'): 10, ('cycle8', '-'): 4, ('cube', '-'): 2}
+  (N,F)=(10, 10): {("other(degs=[('3', 10)],E=15)", '-'): 1}
+-- equality classes: 88 in 32 graphs
+   sizes {8: 16, 4: 72}
+   link words (canonical degrees) {(5, 6, 6, 6, 6): 33, (5, 5, 6, 6, 7): 23, (5, 5, 6, 6, 6): 12, (6, 6, 6, 6, 7): 4, (5, 5, 6, 6, 8): 1, (5, 6, 6, 7, 6): 4, (5, 6, 6, 5, 7): 2, (5, 6, 7, 6, 7): 2, (6, 6, 6, 6, 6): 1, (5, 6, 6, 6, 7): 3, (5, 6, 7, 5, 8): 2, (5, 5, 7, 6, 7): 1}
+   cyclic state pattern (F = filled, lock type of unfilled):
+      DL L1 F  L2  72
+      not a cycle8  FalseFalse 10
+      DL L1 F  L2 DL L1 F  L2  4
+      not a cycle8  TrueFalse 2
+   gaps between consecutive filled states along the cycle: {(4, 4): 4, (0,): 72}
+   edge types (from-state type, colour-pair letters of the link word [x = colour absent from link], # link vertices in K u rest):
+      ('DL', 'ab', 3) 16
+      ('DL', 'ac', 3) 16
+      ('DL', 'ad', 3) 3
+      ('DL', 'bc', 3) 12
+      ('DL', 'bd', 3) 33
+      ('F', 'ax', 2) 17
+      ('F', 'bx', 2) 50
+      ('F', 'cx', 2) 13
+      ('L1', 'ab', 3) 7
+      ('L1', 'ac', 2) 15
+      ('L1', 'ac', 3) 3
+      ('L1', 'ad', 2) 21
+      ('L1', 'ad', 3) 2
+      ('L1', 'bc', 3) 12
+      ('L1', 'bd', 2) 15
+      ('L1', 'bd', 3) 1
+      ('L1', 'cd', 2) 4
+      ('L2', 'ab', 3) 21
+      ('L2', 'ac', 2) 2
+      ('L2', 'ac', 3) 19
+      ('L2', 'ad', 2) 3
+      ('L2', 'bc', 2) 7
+      ('L2', 'bc', 3) 5
+      ('L2', 'bd', 2) 1
+      ('L2', 'bd', 3) 10
+      ('L2', 'cd', 2) 12
+   EQ Wbest-search-census-p28#668116-w0 hole 27 link [6, 6, 6, 5, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p28#668116-w0 hole 27 link [6, 6, 6, 5, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p28#668116-w1 hole 27 link [6, 6, 6, 5, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p28#668116-w1 hole 27 link [6, 6, 6, 5, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p28#546102-w0 hole 26 link [6, 6, 6, 6, 5] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p28#546102-w0 hole 26 link [6, 6, 6, 6, 5] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p28#546102-w1 hole 26 link [6, 6, 6, 6, 5] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p28#546102-w1 hole 26 link [6, 6, 6, 6, 5] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-census-p27#8475-w1 hole 7 link [6, 6, 6, 6, 5] N 8 F 2 cycle filled at [1, 5]
+   EQ Wbest-search-census-p27#8475-w1 hole 17 link [6, 5, 6, 6, 6] N 8 F 2 cycle filled at [3, 7]
+   EQ Wbest-search-census-p27#8475-w0 hole 7 link [6, 6, 6, 6, 5] N 8 F 2 cycle filled at [1, 5]
+   EQ Wbest-search-census-p27#8475-w0 hole 17 link [6, 5, 6, 6, 6] N 8 F 2 cycle filled at [3, 7]
+   EQ Wbest-search-census-p28#94025-w1 hole 2 link [5, 5, 6, 6, 7] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#94025-w1 hole 9 link [7, 6, 6, 5, 5] N 4 F 1 cycle filled at [1]
+   EQ Wbest-search-census-p28#94025-w1 hole 11 link [6, 5, 6, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#94025-w1 hole 13 link [6, 6, 6, 5, 5] N 4 F 1 cycle filled at [1]
+   EQ Wbest-search-census-p28#94025-w1 hole 20 link [6, 6, 6, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#94025-w1 hole 25 link [6, 6, 6, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#94025-w0 hole 2 link [5, 5, 6, 6, 7] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#94025-w0 hole 9 link [7, 6, 6, 5, 5] N 4 F 1 cycle filled at [1]
+   EQ Wbest-search-census-p28#94025-w0 hole 11 link [6, 5, 6, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#94025-w0 hole 13 link [6, 6, 6, 5, 5] N 4 F 1 cycle filled at [1]
+   EQ Wbest-search-census-p28#94025-w0 hole 20 link [6, 6, 6, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#94025-w0 hole 25 link [6, 6, 6, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#44900-w0 hole 0 link [5, 5, 6, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#44900-w0 hole 3 link [5, 6, 6, 6, 5] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-census-p28#44900-w0 hole 7 link [6, 5, 5, 7, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#44900-w0 hole 15 link [6, 7, 5, 5, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-census-p28#44900-w0 hole 18 link [5, 5, 6, 6, 7] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#44900-w0 hole 22 link [6, 5, 5, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-census-p28#44900-w0 hole 25 link [7, 6, 6, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#44900-w0 hole 27 link [6, 5, 5, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#44900-w1 hole 0 link [5, 5, 6, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#44900-w1 hole 3 link [5, 6, 6, 6, 5] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-census-p28#44900-w1 hole 7 link [6, 5, 5, 7, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#44900-w1 hole 15 link [6, 7, 5, 5, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-census-p28#44900-w1 hole 18 link [5, 5, 6, 6, 7] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#44900-w1 hole 22 link [6, 5, 5, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-census-p28#44900-w1 hole 25 link [7, 6, 6, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#44900-w1 hole 27 link [6, 5, 5, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w0 hole 0 link [6, 6, 5, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#218651-w0 hole 4 link [6, 6, 6, 6, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w0 hole 6 link [6, 5, 5, 7, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#218651-w0 hole 14 link [6, 7, 5, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w0 hole 17 link [5, 5, 6, 6, 7] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w0 hole 19 link [6, 6, 5, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w0 hole 24 link [7, 6, 6, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w0 hole 26 link [6, 6, 6, 6, 5] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#218651-w1 hole 0 link [6, 6, 5, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#218651-w1 hole 4 link [6, 6, 6, 6, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w1 hole 6 link [6, 5, 5, 7, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-census-p28#218651-w1 hole 14 link [6, 7, 5, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w1 hole 17 link [5, 5, 6, 6, 7] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w1 hole 19 link [6, 6, 5, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w1 hole 24 link [7, 6, 6, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-census-p28#218651-w1 hole 26 link [6, 6, 6, 6, 5] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-constr-best-A7f1-clean1-w0 hole 11 link [7, 6, 6, 6, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-constr-best-A7f1-clean1-w0 hole 11 link [7, 6, 6, 6, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-constr-best-A7f2-clean2-w0 hole 14 link [8, 5, 5, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-constr-best-A7f1-clean2-w0 hole 33 link [7, 6, 6, 5, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-constr-best-A7f3-clean2-w0 hole 5 link [6, 6, 5, 7, 5] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-constr-best-A7f3-clean1-w0 hole 24 link [7, 5, 6, 7, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-constr-best-A7f3-clean1-w0 hole 24 link [7, 5, 6, 7, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-phase2-p27#47915-grow32-r1-w0 hole 26 link [6, 6, 6, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p27#47915-grow32-r0-w0 hole 28 link [5, 5, 7, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p27#8475-grow32-r0-w0 hole 5 link [6, 6, 7, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-phase2-p27#8475-grow32-r1-w0 hole 21 link [6, 5, 7, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p28#546102-grow32-r0-w0 hole 17 link [6, 6, 6, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p28#546102-grow32-r0-w0 hole 17 link [6, 6, 6, 5, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p28#546102-grow32-r1-w0 hole 24 link [7, 5, 6, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-phase2-p28#546102-grow32-r1-w0 hole 26 link [6, 5, 7, 6, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-constr-best-A7f4-clean2-w0 hole 35 link [6, 6, 5, 6, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-phase2-p27#47915-grow36-r0-w0 hole 25 link [6, 5, 7, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-constr-best-A7f4-clean1-w0 hole 23 link [5, 6, 7, 5, 8] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-constr-best-A7f4-clean1-w0 hole 23 link [5, 6, 7, 5, 8] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-constr-best-A7f4-clean1-w0 hole 27 link [6, 7, 6, 6, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p27#8475-grow36-r0-w0 hole 29 link [7, 6, 6, 6, 6] N 8 F 2 NOT-CYCLE filled at None
+   EQ Wbest-search-phase2-p27#8475-grow36-r1-w0 hole 9 link [7, 6, 7, 5, 5] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p28#546102-grow36-r0-w0 hole 13 link [6, 7, 6, 6, 5] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-phase2-ipr#292-w0 hole 3 link [6, 5, 6, 7, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p28#546102-grow36-r1-w0 hole 0 link [6, 5, 6, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-phase2-p28#546102-grow36-r1-w0 hole 0 link [6, 5, 6, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-phase2-p28#546102-grow36-r1-w0 hole 0 link [6, 5, 6, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p28#546102-grow36-r1-w0 hole 0 link [6, 5, 6, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p27#47915-grow36-r1-w0 hole 3 link [5, 6, 6, 6, 6] N 4 F 1 cycle filled at [0]
+   EQ Wbest-search-phase2-p27#47915-grow36-r1-w0 hole 3 link [5, 6, 6, 6, 6] N 4 F 1 cycle filled at [3]
+   EQ Wbest-search-phase2-p27#47915-grow36-r1-w0 hole 35 link [6, 7, 5, 5, 6] N 4 F 1 cycle filled at [2]
+   EQ Wbest-search-phase2-p27#47915-grow36-r1-w0 hole 35 link [6, 7, 5, 5, 6] N 4 F 1 cycle filled at [0]
+-- non-equality classes that are single cycles: 0

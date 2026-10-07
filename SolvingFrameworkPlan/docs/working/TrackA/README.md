@@ -157,3 +157,102 @@
   - `best/`, `verify-*.json`.
 
 All compute ran under `nice -n 10`, with at most 4 single-threaded workers. Nothing is still running.
+
+---
+
+# Task 2: what the quarter-floor equality classes look like (`anat/`, 7 Oct)
+
+Scripts:
+- `anatomy.py`: the move graph of each class, the labelled product test, the unlabelled hypercube test, cycle order, locks and link words.
+- `anatomy_pi.py`: the π-cycles contained in each class, plus a Theorem W check. Uses `uv_lib.Hole`, both orientations.
+- `anatomy_pi2.py`: the π-orbit pattern of each class.
+- `anatomy_dedup.py`: removes duplicate graphs and counts w = 0, L = 4 π-cycles from picyc hist.
+- `anatomy_summary.py`: writes `anat/summary.txt`.
+
+**Graphs (data).** 160 graphs in total, 148 after deduplication:
+- census order 27: 24 graphs;
+- order-28 list: 104 graphs;
+- the 32 W-walk best graphs (n = 27–37), of which 12 duplicate census graphs.
+
+These hold 2,349 classes at 2,448 degree-5 holes. Class multisets agree between picyc and kempe_py at every hole re-enumerated. IPR duals were not run (Track F owns them).
+
+## Equality classes (4F = N): 58 distinct, in 25 graphs
+
+**Sizes.**
+
+| N | F | Count | Orders where they occur |
+|---|---|---|---|
+| 4 | 1 | 50 | 28, 32, 36, 37 |
+| 8 | 2 | 8 | 27, 28, 36, 37 |
+
+No equality class has more than 8 states. Every class with N a power of two is an equality class, and no class breaks the floor (4F < N: 0).
+
+**Move graph.**
+- **(4, 1):** always a 4-cycle (50 of 50).
+- **(8, 2):** three shapes:
+  - a single 8-cycle: 2;
+  - 3-regular, isomorphic to Q3 as a bare graph: 2;
+  - 4-regular with 16 edges: 4.
+
+**π-structure.** Every equality class is a union of π-cycles with w = 0. Each of those π-cycles repeats one 4-state block (244 of 244 π-cycles, both orientations).
+
+**The block.** Along π, with λ in brackets:
+
+DL (+1) → L1 (−1) → F (−1, φA) → L2 (+1) → back to DL
+
+So the λ-sum is 0, and exactly 1 state in 4 is filled.
+
+**How the classes are built from the block:**
+- (4, 1): one block, and the move graph is exactly that π-cycle (all 4 edges are π-steps).
+- (8, 2): either one π-cycle of length 8 (the block twice) or two π-cycles of length 4. The extra non-π edges, 4 or 8 of them, join the two copies.
+
+**Unfilled states.** They are always exactly one DL, one L1-only and one L2-only per filled state. N0 never occurs, and τ never occurs (the filled step is always φA).
+
+**Link degree words** (all 114 equality records, including duplicates):
+
+| Degree word | Records |
+|---|---|
+| (5,6,6,6,6) | 43 |
+| (5,5,6,6,7) | 33 |
+| (5,5,6,6,6) | 18 |
+| (6,6,6,6,7) | 4 |
+| (5,6,6,7,6) | 4 |
+| other | 12 |
+
+**Chains.** Edges out of a filled state swap a pair {link colour, colour absent from the link}. Edges out of a locked state swap a pair of link colours, and the component together with the rest of its pair-subgraph meets 2–3 link vertices.
+
+## Is it a product of independent chain flips? No (data)
+
+- **Labelled product test:** 0 of all analysed classes pass. That is 127 classes with duplicates, covering every class with N ≤ 64, N a power of two, or 4F = N.
+  - Large classes are not powers of two, so they cannot be cubes at all.
+  - Even the 4-cycle is not a product. Opposite edges swap different chains: the colour pairs and vertex sets differ.
+- **Unlabelled hypercube test:** passes only for the 50 four-cycles (Q2) and the 2 Q3-shaped (8, 2) classes.
+- **Factor-by-factor floor:** not applicable, because there are no factors.
+
+## Why equality holds
+
+**Identity (Theorem W, checked here with 0 failures on all 254 small-class records):** 4F − N = −5 Σw over the class. Hence:
+- F/N = 1/4 − 5Σw/(4N);
+- the floor holds exactly when Σw ≤ 0;
+- equality holds exactly when Σw = 0.
+
+**Conjecture E (data, frame class):**
+- A Kempe class with F/N = 1/4 is a union of w = 0 π-cycles, each a repetition of the block DL → L1 → F(φA) → L2. Such a class contains no τ-state, no N0-state and no cycle with w ≠ 0. The data supports this: 58 of 58 distinct equality classes, 244 of 244 π-cycles.
+- Equality classes are tiny. They have N ∈ {4, 8} in every case seen.
+
+**Testing the block against all classes:**
+- The same block also occurs inside larger classes. Of the 67,333 π-cycles with w = 0 and L = 4 (plantri orientation, distinct graphs), 56 make up equality classes and 67,277 sit inside larger classes with Σw < 0.
+- So equality is exactly the case where a class is closed under Kempe swaps using only such blocks.
+- The other small classes all have Σw < 0, so their F/N is above 1/4:
+
+| (N, F) | π-cycles (L, w) | F/N |
+|---|---|---|
+| (6, 4) | one cycle (6, −2) | 2/3 |
+| (10, 10) | two cycles (5, −3) | 1 |
+| (12, 8) | one cycle (12, −4) | 2/3 |
+| (24, 16) | two cycles (12, −4) | 2/3 |
+
+Outputs:
+- `anat/anat-census27-28.jsonl`, `anat/anat-wbest.jsonl`: per-class anatomy, with the full state lists for N ≤ 64.
+- `anat/anat-pi.jsonl`: π-cycles per class.
+- `anat/summary.txt`, `anat/pi-patterns.txt`, `anat/dedup.txt`.
