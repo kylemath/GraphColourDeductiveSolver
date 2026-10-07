@@ -1,0 +1,24 @@
+==================== census orders 25-27
+exact checks: {'cycles checked': 55586, 'Lambda = L - 4F fails': 0, '#L1 = #L2 fails': 0, 'Lemma N0 (2 N0 <= |DD| - Lambda) fails': 0}
+{'Gamma-cycles': 2728, 'R3 non-fixed images that are DL or not run boundaries': 238, 'DL images from R3 states': 238, 'DL images from R1 states': 25838, 'IB-N0 holds': 2726, 'IB-B holds': 2728}
+IB-N0: minimum #heavy lockless images per Z 0 ('p27#197591', 18, 'bt27', 4, 20); distribution of the minimum-5: [0, 0, 2, 2, 2]
+IB-B: minimum #heavy boundary images per Z 2
+best-lockless ratio -Lambda(T)/Lambda(Z) over lockless images: min [(0.5, 'p27#197591', 18, 'bt27', 4, 20), (0.5, 'p27#197591', 18, 'bt27m', 4, 20), (1.3333333333333333, 'p25#17650', 3, 'bt25', 12, 60)]
+kind-matched model: sum_Z P(fail) = 0.0001; max P(fail) [(8.18465905863827e-06, 'p27#187665', 15, 'bt27m', 4, 20), (8.18465905863827e-06, 'p27#187665', 15, 'bt27m', 4, 20), (6.9899265595091524e-06, 'p25#5594', 14, 'bt25m', 4, 20)]
+    p25#17650 h3: (0.0, 'p25#17650', 3, 'bt25m', 12, 60)
+    p25#17650 h3: (0.0, 'p25#17650', 3, 'bt25m', 12, 60)
+    p25#17650 h3: (0.0, 'p25#17650', 3, 'bt25', 12, 60)
+    p25#17650 h3: (0.0, 'p25#17650', 3, 'bt25', 12, 60)
+heavy-landing by kind (images / heavy): {'N0': (28428, 27917), 'L1': (1430, 986), 'L2': (1430, 964), 'DL': (26076, 4011)}
+correlation of #images on T with e_T 0.576, b_T 0.578, N0(T) 0.561, -Lambda(T) 0.561 (pooled over 103484 rows); lockless images vs N0(T): 0.594
+images per N0 state (lockless images / N0 states, pooled): 0.0664
+==================== AW hit graphs
+exact checks: {'cycles checked': 76415, 'Lambda = L - 4F fails': 0, '#L1 = #L2 fails': 0, 'Lemma N0 (2 N0 <= |DD| - Lambda) fails': 0}
+{'Gamma-cycles': 348, 'R3 non-fixed images that are DL or not run boundaries': 90, 'DL images from R3 states': 90, 'DL images from R1 states': 2834, 'IB-N0 holds': 348, 'IB-B holds': 348}
+IB-N0: minimum #heavy lockless images per Z 3 ('hit00', 22, 'bthits', 4, 20); distribution of the minimum-5: [3, 3, 3, 3, 3]
+IB-B: minimum #heavy boundary images per Z 6
+best-lockless ratio -Lambda(T)/Lambda(Z) over lockless images: min [(60.0, 'hit23', 34, 'bthits', 20, 100), (60.0, 'hit24', 34, 'bthits', 20, 100), (60.0, 'hit25', 34, 'bthits', 20, 100)]
+kind-matched model: sum_Z P(fail) = 0.0000; max P(fail) [(1.5641045069192231e-09, 'hit49', 22, 'bthitsm', 4, 20), (1.5641045069192231e-09, 'hit48', 22, 'bthitsm', 4, 20), (1.5641045069192231e-09, 'hit47', 22, 'bthitsm', 4, 20)]
+heavy-landing by kind (images / heavy): {'N0': (3150, 3097), 'L1': (862, 718), 'L2': (862, 713), 'DL': (2924, 1722)}
+correlation of #images on T with e_T 0.763, b_T 0.767, N0(T) 0.752, -Lambda(T) 0.744 (pooled over 176904 rows); lockless images vs N0(T): 0.634
+images per N0 state (lockless images / N0 states, pooled): 0.0028
