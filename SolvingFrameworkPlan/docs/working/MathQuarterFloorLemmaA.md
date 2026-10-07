@@ -1,6 +1,6 @@
-# Quarter floor, part (a): an injection from non-doubly-locked unfilled states into filled states
+# Quarter floor, part (a): a map injective for each j (at most 2-to-1 overall) from non-doubly-locked unfilled states to filled states
 
-Math lead, 6 October 2026. **[hand]: a complete proof is given below. It is unreviewed.** The statement is the non-DL half of local compute's counting lemma (8ab6f1d, message 1811):
+Math lead, 6 October 2026. **[hand]: a complete proof is given below. Reviewed by the audit: CORRECT per j (relayed by the coordinator; its message file is not yet filed). Its three fixes are applied.** The statement is the non-DL half of local compute's counting lemma (8ab6f1d, message 1811):
 
   U_j ≤ F_{j+1} + F_{j+3} + F_{j+4}.
 
@@ -59,10 +59,10 @@ In both cases φ(s) is one Kempe swap from s, so **φ(s) ∈ S**.
    - j = i + 2, by Case 2 (j + 3 = i), recovered by swapping the {μ, B}-component of x_{j+4} = x_{i+1}.
 
    So the total multiplicity is at most 2. This gives the summed form 2ΣF.
-2. **Origin.** This is Kempe's own single-swap step, made into an injection: a failing lock is cut by swapping the component of the far endpoint. Local compute's check (0 collisions in 353,812 states) agrees with it.
+2. **Origin.** This is Kempe's own single-swap step, made injective for each j: a failing lock is cut by swapping the component of the far endpoint. Local compute reports 0 collisions in 353,812 states. **What that count measured is not recorded here.** If it was per (j, case), it confirms the proof. If it was across all j, it is a separate data fact: the two-preimage pattern of Remark 1 (intern C's configuration) never occurred at orders 12–21. **The lemma does not depend on it either way.**
 3. **What remains: part (b).** The full counting lemma needs an injection of D_j (the doubly locked states) into F_{j+1} plus whatever of F_{j+3} and F_{j+4} that φ leaves unused. Doubly locked states are at least two swaps from any filled state.
 
-   A proof of (b) for all triangulations would give a filled fraction ≥ 1/4 in every class, hence R\* at every degree-5 vertex, **hence the Four Colour Theorem**. So (b) must contain a genuinely global step. Lemma A is local and contains none.
+   (b) for all triangulations is **at least as strong as** R\* at every degree-5 vertex. It implies a filled fraction ≥ 1/4 in every class, which implies R\*, and so the Four Colour Theorem. The converse is not claimed. So (b) must contain a genuinely global step. Lemma A is local and contains none.
 4. **The degree-5 hypothesis is used only through the shape of the link**: one repeated colour at distance 2, three singletons, and the blocking adjacencies. That matches the data: the floor fails at degrees 6 and 7.
 
 ## Addendum (after intern C's review, 63821de)
