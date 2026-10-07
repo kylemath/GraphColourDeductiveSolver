@@ -1,0 +1,56 @@
+==== variant R3 (exits from R3 DD endpoints)
+holes with a positive cycle 227; positive cycles 231; double hits 0
+targets with rem > 0: 11  [('20', 'tri20#61', 19, 7, 0, 8, 2, [3]), ('20m', 'tri20#61', 19, 5, 0, 8, 2, [4]), ('22', 'tri22#577', 8, 1, 0, 8, 2, [6]), ('22m', 'tri22#370', 1, 4, 0, 8, 2, [6]), ('22m', 'tri22#370', 6, 17, 0, 8, 2, [4]), ('24', 'tri24#5859', 22, 7, 0, 8, 2, [18]), ('24', 'tri24#5861', 0, 3, 0, 8, 2, [1]), ('24m', 'tri24#2883', 16, 15, 0, 8, 2, [14]), ('24m', 'tri24#2984', 23, 17, 0, 8, 2, [15]), ('24m', 'tri24#3106', 14, 4, 0, 16, 2, [13]), ('24m', 'tri24#5861', 0, 16, 0, 8, 2, [12])]
+holes with def' > 0: 147; deficit cycles 149; charge-back P1 FAILS at 1 holes [('24', 'tri24#2976', 15, [(4, '5', [])])]
+deficit cycles with NO nonpositive sigma-neighbour of rem < 0: 1
+   ('24', 'tri24#2976', 15, '5,6,6,5,8+', 4, 5, 21, [[8, 1], [2, 1], [7, 2]], [(2, -110, 118), (8, 0, 8), (9, 0, 20)], [2], [0, 2], [[0, -150], [2, -110], [7, 0], [8, 0], [9, 0], [14, 0]])
+P1 with UNDIRECTED one-hop sigma-neighbours (Z-T sigma-link from a DD endpoint of either cycle) FAILS at 0 holes []; min best-neighbour ratio 3.000
+P1 with zero relays (sigma-paths through nonpositive rem = 0 cycles) FAILS at 0 holes []; P1 on sigma + transport-T edges FAILS at 0 holes
+strong one-hop form (some nonpositive sigma-neighbour T with -rem(T) >= Lambda(Z)), over ALL positive cycles: ok 226, fail non-Gamma 1, fail Gamma 4
+min rho = |rem(T*)|/def' = 0.000; min optimal residual slack = 5; T* = most negative cycle of the sigma-group in 132/149; T* hit by a lockless exit in 26/149
+link kinds from Z into T* (counts of DD endpoints): {'lockless': 116, 'lock1only': 90, 'lock2only': 97, 'DL': 87}
+deficit cycles: Gamma 0; def' = Lambda 107; Lambda distribution [(5, 84), (10, 62), (20, 3)]; L distribution [(14, 41), (17, 37), (18, 7), (21, 31), (22, 8), (25, 5), (28, 1), (29, 4), (30, 2), (33, 4), (34, 1), (37, 1), (38, 2), (44, 2), (45, 1), (46, 1), (61, 1)]
+positive-mass excursions of deficit cycles (u, f): [((4, 1), 7), ((5, 1), 8), ((6, 1), 16), ((7, 1), 29), ((7, 2), 41), ((8, 1), 21), ((8, 2), 4), ((9, 1), 2), ((9, 2), 1), ((10, 1), 2), ((10, 2), 2), ((11, 1), 4), ((11, 2), 1), ((12, 1), 21), ((12, 2), 13), ((13, 1), 47), ((14, 1), 9), ((15, 1), 5), ((17, 4), 1)]
+excursions of T* hit by sigma-images from Z (u, f): [((1, 1), 74), ((1, 2), 22), ((1, 3), 10), ((1, 4), 9), ((1, 5), 1), ((2, 1), 18), ((2, 2), 17), ((2, 3), 1), ((2, 4), 2), ((2, 7), 1), ((3, 1), 48), ((3, 2), 16), ((3, 11), 1), ((4, 1), 42), ((4, 2), 8), ((4, 3), 1), ((4, 4), 1), ((5, 1), 17), ((5, 2), 6), ((5, 3), 6), ((5, 4), 2), ((5, 6), 2), ((6, 1), 25), ((6, 2), 9), ((7, 1), 12), ((7, 2), 6), ((7, 4), 2), ((8, 1), 4), ((8, 2), 6), ((8, 3), 1), ((8, 7), 3), ((9, 1), 1), ((9, 2), 5), ((9, 3), 2), ((11, 2), 1), ((12, 1), 4), ((13, 1), 1), ((13, 2), 1), ((14, 1), 2)]
+ratio rho vs transport Hall ratio at the same hole (rho is in lambda units for one Z; Hall in w units over all Z):
+  24   tri24#2976 h15 5,6,6,5,8+  Z4   Lam=5   L=21  gamma=0 def'=5    exc=[[8, 1], [2, 1], [7, 2]]  T*=None Lam=None L=None rem=None hits=0 links={} landing=[] rho=0.00 slack=None hallT=52.0 gsum=-325
+  20   tri20#59  h18 5,6,5,6,6   Z3   Lam=5   L=21  gamma=0 def'=5    exc=[[2, 1], [7, 2], [8, 1]]  T*=0 Lam=-10 L=18 rem=-10 hits=0 links={'lockless': 1} landing=[[1, 1]] rho=2.00 slack=5 hallT=24.0 gsum=-115
+  24   tri24#5777 h22 5,6,5,6,6   Z10  Lam=5   L=21  gamma=0 def'=5    exc=[[7, 2], [8, 1], [2, 1]]  T*=9 Lam=-10 L=18 rem=-10 hits=0 links={'lockless': 1} landing=[[1, 1]] rho=2.00 slack=5 hallT=61.0 gsum=-345
+  22   tri22#570 h6  5,6,5,6,7   Z14  Lam=10  L=14  gamma=0 def'=10   exc=[[13, 1]]  T*=0 Lam=-30 L=34 rem=-30 hits=0 links={'lock2only': 1, 'lockless': 1} landing=[[4, 1], [1, 4]] rho=3.00 slack=20 hallT=8.0 gsum=-130
+  24m  tri24#2857 h6  5,6,5,6,8+  Z10  Lam=5   L=17  gamma=0 def'=5    exc=[[7, 1], [7, 2]]  T*=3 Lam=-15 L=25 rem=-15 hits=0 links={'lock2only': 1, 'lockless': 1} landing=[[4, 2], [1, 1]] rho=3.00 slack=10 hallT=79.0 gsum=-445
+  22   tri22#583 h4  5,6,5,6,6   Z6   Lam=5   L=17  gamma=0 def'=5    exc=[[7, 1], [7, 2]]  T*=4 Lam=-20 L=16 rem=-20 hits=0 links={'lock2only': 1} landing=[[2, 1]] rho=4.00 slack=15 hallT=25.0 gsum=-120
+  24   tri24#2071 h2  5,5,5,6,7   Z11  Lam=20  L=28  gamma=0 def'=20   exc=[[13, 1], [13, 1]]  T*=0 Lam=-85 L=135 rem=-85 hits=0 links={'lock1only': 1, 'lock2only': 1} landing=[[3, 1], [3, 1]] rho=4.25 slack=65 hallT=7.0 gsum=-140
+  22   tri22#386 h17 5,5,6,5,7   Z9   Lam=10  L=14  gamma=0 def'=8    exc=[[13, 1]]  T*=0 Lam=-40 L=76 rem=-38 hits=1 links={'lockless': 1, 'lock1only': 1} landing=[[1, 1], [4, 1]] rho=4.75 slack=30 hallT=10.5 gsum=-110
+  22   tri22#518 h20 5,5,6,5,7   Z6   Lam=10  L=14  gamma=0 def'=10   exc=[[13, 1]]  T*=2 Lam=-50 L=66 rem=-50 hits=0 links={'lock1only': 2} landing=[[3, 1], [3, 1]] rho=5.00 slack=40 hallT=11.0 gsum=-120
+  22m  tri22#518 h20 5,5,6,5,7   Z8   Lam=10  L=14  gamma=0 def'=10   exc=[[13, 1]]  T*=2 Lam=-50 L=62 rem=-50 hits=0 links={'lock1only': 1} landing=[[2, 2]] rho=5.00 slack=40 hallT=6.5 gsum=-110
+  22m  tri22#386 h17 5,5,6,5,7   Z7   Lam=10  L=14  gamma=0 def'=10   exc=[[13, 1]]  T*=1 Lam=-60 L=84 rem=-60 hits=0 links={'DL': 2, 'lock2only': 2} landing=[[9, 1], [6, 1], [6, 1], [4, 1]] rho=6.00 slack=50 hallT=12.0 gsum=-100
+  24m  tri24#2867 h21 5,6,5,6,6   Z19  Lam=10  L=30  gamma=0 def'=10   exc=[[3, 1], [3, 1], [3, 1], [3, 1], [13, 1]]  T*=2 Lam=-60 L=96 rem=-60 hits=0 links={'lock2only': 1, 'lock1only': 1} landing=[[3, 1], [5, 1]] rho=6.00 slack=50 hallT=29.0 gsum=-280
+
+==== variant all (exits from all R-type DD endpoints)
+holes with a positive cycle 227; positive cycles 231; double hits 0
+targets with rem > 0: 16  [('20', 'tri20#61', 19, 7, 0, 8, 2, [3]), ('20m', 'tri20#61', 19, 5, 0, 8, 2, [4]), ('22', 'tri22#577', 8, 1, 0, 8, 2, [6]), ('22m', 'tri22#370', 1, 4, 0, 8, 2, [6]), ('22m', 'tri22#370', 6, 17, 0, 8, 2, [4]), ('22m', 'tri22#569', 2, 5, 0, 24, 2, [4]), ('24', 'tri24#2079', 0, 17, 0, 8, 2, [16]), ('24', 'tri24#3536', 16, 0, 0, 28, 2, [3]), ('24', 'tri24#5837', 0, 7, -15, 13, 2, [8]), ('24', 'tri24#5859', 22, 7, 0, 8, 2, [18]), ('24', 'tri24#5861', 0, 3, 0, 8, 2, [1]), ('24m', 'tri24#2079', 0, 36, 0, 8, 2, [35])]
+holes with def' > 0: 93; deficit cycles 93; charge-back P1 FAILS at 1 holes [('24', 'tri24#2976', 15, [(4, '5', [])])]
+deficit cycles with NO nonpositive sigma-neighbour of rem < 0: 1
+   ('24', 'tri24#2976', 15, '5,6,6,5,8+', 4, 5, 21, [[8, 1], [2, 1], [7, 2]], [(2, -110, 118), (8, 0, 8), (9, 0, 20)], [2], [0, 2], [[0, -150], [2, -110], [7, 0], [8, 0], [9, 0], [14, 0]])
+P1 with UNDIRECTED one-hop sigma-neighbours (Z-T sigma-link from a DD endpoint of either cycle) FAILS at 0 holes []; min best-neighbour ratio 4.250
+P1 with zero relays (sigma-paths through nonpositive rem = 0 cycles) FAILS at 0 holes []; P1 on sigma + transport-T edges FAILS at 0 holes
+strong one-hop form (some nonpositive sigma-neighbour T with -rem(T) >= Lambda(Z)), over ALL positive cycles: ok 226, fail non-Gamma 1, fail Gamma 4
+min rho = |rem(T*)|/def' = 0.000; min optimal residual slack = 5; T* = most negative cycle of the sigma-group in 80/93; T* hit by a lockless exit in 37/93
+link kinds from Z into T* (counts of DD endpoints): {'lockless': 46, 'lock1only': 52, 'lock2only': 61, 'DL': 67}
+deficit cycles: Gamma 0; def' = Lambda 33; Lambda distribution [(5, 44), (10, 46), (20, 3)]; L distribution [(14, 30), (17, 18), (18, 6), (21, 22), (22, 4), (25, 1), (28, 1), (29, 2), (30, 2), (34, 1), (37, 1), (38, 2), (44, 2), (46, 1)]
+positive-mass excursions of deficit cycles (u, f): [((4, 1), 5), ((5, 1), 3), ((6, 1), 8), ((7, 1), 18), ((7, 2), 27), ((8, 1), 17), ((8, 2), 2), ((9, 1), 2), ((9, 2), 1), ((10, 1), 1), ((11, 1), 3), ((12, 1), 6), ((12, 2), 6), ((13, 1), 35), ((14, 1), 6), ((15, 1), 4), ((17, 4), 1)]
+excursions of T* hit by sigma-images from Z (u, f): [((1, 1), 39), ((1, 2), 3), ((1, 3), 4), ((2, 1), 9), ((2, 2), 11), ((2, 3), 1), ((2, 4), 2), ((2, 7), 1), ((3, 1), 28), ((3, 2), 7), ((3, 11), 1), ((4, 1), 22), ((4, 2), 7), ((4, 3), 1), ((4, 4), 1), ((5, 1), 13), ((5, 2), 4), ((5, 3), 5), ((5, 6), 2), ((6, 1), 17), ((6, 2), 6), ((7, 1), 10), ((7, 2), 6), ((7, 4), 2), ((8, 1), 4), ((8, 2), 3), ((8, 3), 1), ((8, 7), 3), ((9, 1), 1), ((9, 2), 5), ((9, 3), 1), ((11, 2), 1), ((12, 1), 4), ((13, 2), 1)]
+ratio rho vs transport Hall ratio at the same hole (rho is in lambda units for one Z; Hall in w units over all Z):
+  24   tri24#2976 h15 5,6,6,5,8+  Z4   Lam=5   L=21  gamma=0 def'=5    exc=[[8, 1], [2, 1], [7, 2]]  T*=None Lam=None L=None rem=None hits=0 links={} landing=[] rho=0.00 slack=None hallT=52.0 gsum=-325
+  20   tri20#59  h18 5,6,5,6,6   Z3   Lam=5   L=21  gamma=0 def'=3    exc=[[2, 1], [7, 2], [8, 1]]  T*=0 Lam=-10 L=18 rem=-8 hits=1 links={'lockless': 1} landing=[[1, 1]] rho=2.67 slack=5 hallT=24.0 gsum=-115
+  24   tri24#5777 h22 5,6,5,6,6   Z10  Lam=5   L=21  gamma=0 def'=3    exc=[[7, 2], [8, 1], [2, 1]]  T*=9 Lam=-10 L=18 rem=-8 hits=1 links={'lockless': 1} landing=[[1, 1]] rho=2.67 slack=5 hallT=61.0 gsum=-345
+  22   tri22#583 h4  5,6,5,6,6   Z6   Lam=5   L=17  gamma=0 def'=5    exc=[[7, 1], [7, 2]]  T*=4 Lam=-20 L=16 rem=-20 hits=0 links={'lock2only': 1} landing=[[2, 1]] rho=4.00 slack=15 hallT=25.0 gsum=-120
+  24   tri24#2071 h2  5,5,5,6,7   Z11  Lam=20  L=28  gamma=0 def'=20   exc=[[13, 1], [13, 1]]  T*=0 Lam=-85 L=135 rem=-85 hits=0 links={'lock1only': 1, 'lock2only': 1} landing=[[3, 1], [3, 1]] rho=4.25 slack=65 hallT=7.0 gsum=-140
+  24m  tri24#2857 h6  5,6,5,6,8+  Z10  Lam=5   L=17  gamma=0 def'=3    exc=[[7, 1], [7, 2]]  T*=3 Lam=-15 L=25 rem=-13 hits=1 links={'lock2only': 1, 'lockless': 1} landing=[[4, 2], [1, 1]] rho=4.33 slack=10 hallT=79.0 gsum=-445
+  22   tri22#386 h17 5,5,6,5,7   Z9   Lam=10  L=14  gamma=0 def'=8    exc=[[13, 1]]  T*=0 Lam=-40 L=76 rem=-38 hits=1 links={'lockless': 1, 'lock1only': 1} landing=[[1, 1], [4, 1]] rho=4.75 slack=30 hallT=10.5 gsum=-110
+  22   tri22#518 h20 5,5,6,5,7   Z6   Lam=10  L=14  gamma=0 def'=10   exc=[[13, 1]]  T*=2 Lam=-50 L=66 rem=-50 hits=0 links={'lock1only': 2} landing=[[3, 1], [3, 1]] rho=5.00 slack=40 hallT=11.0 gsum=-120
+  22m  tri22#518 h20 5,5,6,5,7   Z8   Lam=10  L=14  gamma=0 def'=10   exc=[[13, 1]]  T*=2 Lam=-50 L=62 rem=-50 hits=0 links={'lock1only': 1} landing=[[2, 2]] rho=5.00 slack=40 hallT=6.5 gsum=-110
+  24m  tri24#2867 h21 5,6,5,6,6   Z19  Lam=10  L=30  gamma=0 def'=10   exc=[[3, 1], [3, 1], [3, 1], [3, 1], [13, 1]]  T*=2 Lam=-60 L=96 rem=-60 hits=0 links={'lock2only': 1, 'lock1only': 1} landing=[[3, 1], [5, 1]] rho=6.00 slack=50 hallT=29.0 gsum=-280
+  24m  tri24#6868 h23 5,6,5,6,6   Z13  Lam=10  L=22  gamma=0 def'=10   exc=[[12, 1], [1, 1], [6, 1]]  T*=0 Lam=-85 L=151 rem=-85 hits=0 links={'lock2only': 1, 'DL': 1} landing=[[9, 2], [8, 1]] rho=8.50 slack=75 hallT=20.5 gsum=-235
+  22m  tri22#516 h16 5,5,5,6,7   Z5   Lam=10  L=14  gamma=0 def'=8    exc=[[13, 1]]  T*=1 Lam=-70 L=122 rem=-70 hits=0 links={'lock2only': 2, 'DL': 2} landing=[[3, 2], [9, 3], [6, 1], [6, 1]] rho=8.75 slack=62 hallT=14.0 gsum=-150
+

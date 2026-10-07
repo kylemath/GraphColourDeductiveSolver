@@ -1,0 +1,46 @@
+P1 slack on Studio Job S records + charge-back (orders 25-27, both orientations)
+positive cycles 544; holes with some def' > 0: 94; deficit cycles: 101
+
+Per-run: #deficit cycles, min best-single-neighbour ratio rho = |rem(T*)|/def', min Hall ratio, min optimal residual slack
+  s25     1  rho_min 48.0     hall_min 57.0     minslack 470
+  s25m    2  rho_min 57.0     hall_min 83.0     minslack 195
+  s26    11  rho_min 4.0      hall_min 10.5     minslack 60
+  s26m   13  rho_min 9.5      hall_min 17.0     minslack 85
+  s27    25  rho_min 13.938   hall_min 18.5     minslack 130
+  s27m   49  rho_min 1.25     hall_min 2.5      minslack 5
+
+Holes with more than one deficit cycle: 7; of these, optimal assignment shares a target in 5
+
+Best neighbour T*: unhit (nh = 0) in 73 of 101; T* = most negative cycle among the hole's listed targets in 101
+Deficit cycles that are Gamma: 1; def' distribution: [('1', 3), ('2', 11), ('3', 5), ('4', 1), ('5', 6), ('6', 4), ('8', 10), ('10', 52), ('12', 1), ('16', 1), ('20', 7)]
+def' = Lambda(Z) (no lockless credit at all, after charge-back): 60 of 101
+rho distribution (floor): [(1, 1), (2, 1), (4, 2), (9, 4), (10, 1), (11, 1), (13, 2), (14, 2), (15, 1), (17, 1), (19, 3), (22, 1), (24, 3), (25, 1), (26, 1), (28, 4), (31, 1), (32, 2), (33, 3), (34, 2), (37, 1), (40, 1), (41, 2), (42, 1), (45, 3), (46, 3), (48, 1), (49, 3), (50, 49)]
+
+Tightest 15 deficit cycles by rho (single best neighbour):
+  s27m  p27#167230  h23 5,5,5,5,6 Z29  gamma=0 L=28  Lam=20  CrN=0   def'=20    #nb=2  T*=21 Lam(T*)=-25 rem(T*)=-25 nh=0  rho=1.25  hole minslack=5 hall=2.50
+  s27m  p27#204626  h4  5,5,5,5,6 Z12  gamma=0 L=28  Lam=20  CrN=0   def'=20    #nb=4  T*=4 Lam(T*)=-40 rem(T*)=-40 nh=0  rho=2.00  hole minslack=20 hall=4.50
+  s26   p26#68224   h23 5,5,5,5,6 Z33  gamma=0 L=28  Lam=20  CrN=0   def'=20    #nb=4  T*=16 Lam(T*)=-80 rem(T*)=-80 nh=0  rho=4.00  hole minslack=60 hall=10.50
+  s26   p26#83426   h18 5,5,5,5,6 Z19  gamma=0 L=28  Lam=20  CrN=0   def'=20    #nb=3  T*=7 Lam(T*)=-95 rem(T*)=-95 nh=0  rho=4.75  hole minslack=75 hall=11.50
+  s26m  p26#74500   h20 5,5,5,5,6 Z27  gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=11 Lam(T*)=-95 rem(T*)=-95 nh=0  rho=9.50  hole minslack=85 hall=17.00
+  s26m  p26#74500   h20 5,5,5,5,6 Z28  gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=10 Lam(T*)=-95 rem(T*)=-95 nh=0  rho=9.50  hole minslack=85 hall=17.00
+  s27m  p27#166940  h23 5,5,5,5,6 Z27  gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=2 Lam(T*)=-95 rem(T*)=-95 nh=0  rho=9.50  hole minslack=85 hall=10.50
+  s27m  p27#166940  h23 5,5,5,5,6 Z28  gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=1 Lam(T*)=-95 rem(T*)=-95 nh=0  rho=9.50  hole minslack=85 hall=10.50
+  s27m  p27#166923  h23 5,5,5,5,6 Z32  gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=1 Lam(T*)=-105 rem(T*)=-105 nh=0  rho=10.50  hole minslack=95 hall=12.50
+  s27m  p27#168877  h25 5,5,5,5,6 Z37  gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=14 Lam(T*)=-110 rem(T*)=-110 nh=0  rho=11.00  hole minslack=100 hall=13.50
+  s27m  p27#270305  h21 5,5,5,5,6 Z31  gamma=0 L=28  Lam=20  CrN=0   def'=20    #nb=2  T*=1 Lam(T*)=-260 rem(T*)=-260 nh=0  rho=13.00  hole minslack=240 hall=26.00
+  s27   p27#199792  h3  5,5,5,5,6 Z40  gamma=0 L=36  Lam=20  CrN=4   def'=16    #nb=3  T*=0 Lam(T*)=-225 rem(T*)=-223 nh=1  rho=13.94  hole minslack=207 hall=35.38
+  s27   p27#297683  h18 5,5,5,5,6 Z32  gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=3 Lam(T*)=-140 rem(T*)=-140 nh=0  rho=14.00  hole minslack=130 hall=21.50
+  s26m  p26#71953   h6  5,5,5,5,6 Z8   gamma=0 L=14  Lam=10  CrN=0   def'=10    #nb=2  T*=1 Lam(T*)=-145 rem(T*)=-145 nh=0  rho=14.50  hole minslack=135 hall=27.50
+  s27m  p27#265088  h4  5,5,5,5,6 Z9   gamma=0 L=22  Lam=10  CrN=2   def'=10    #nb=1  T*=1 Lam(T*)=-150 rem(T*)=-150 nh=0  rho=15.00  hole minslack=140 hall=15.00
+
+Tightest 10 holes by optimal residual slack:
+  s27m  p27#167230  h23 ndef=1 minslack=5 hall=2.50
+  s27m  p27#204626  h4  ndef=1 minslack=20 hall=4.50
+  s26   p26#68224   h23 ndef=1 minslack=60 hall=10.50
+  s26   p26#83426   h18 ndef=1 minslack=75 hall=11.50
+  s26m  p26#74500   h20 ndef=2 minslack=85 hall=17.00
+  s27m  p27#166940  h23 ndef=2 minslack=85 hall=10.50
+  s27m  p27#166923  h23 ndef=1 minslack=95 hall=12.50
+  s27m  p27#168877  h25 ndef=1 minslack=100 hall=13.50
+  s27   p27#297683  h18 ndef=1 minslack=130 hall=21.50
+  s26m  p26#71953   h6  ndef=1 minslack=135 hall=27.50
