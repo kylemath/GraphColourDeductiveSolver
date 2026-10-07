@@ -32,7 +32,8 @@ are the only `{μ, B}` vertices, so `Lock2` fails. The pentagonal face of `W₅`
 For triangulated maps the converse is the Hex lemma for the disc `G - h` (boundary the link,
 split into the arcs `{x j}`, `{x (j+1)}`, `{x (j+2), x (j+3)}`, `{x (j+4)}`, vertices typed by
 colour class `{α, A}` vs `{μ, B}`). The library has no Hex lemma; it is stated here as
-`kempe_hex` with `sorry`, and `lock2_of_rot3Def` is derived from it.
+`kempe_hex` and proved below by a boundary-parity argument, and `lock2_of_rot3Def` is derived
+from it.
 -/
 
 @[expose] public section
@@ -327,17 +328,296 @@ theorem rot3_bijOn_planar (j : Fin 5) :
   rw [← dom3_eq, ← dom2_eq]
   exact rot3_bijOn P j
 
-/-- **Missing library lemma (Hex lemma at a pentagonal hole).** In a triangulated spherical
-map, at a repeat state `(α, μ, α, A, B)` at `j`, either `x j` reaches `x (j+3)` in the
-`{α, A}`-graph of `G - h`, or `x (j+1)` reaches `x (j+4)` in the `{μ, B}`-graph.
-False without `Triangulated` (wheel `W₅`, see the module docstring). -/
+/-! ### The Hex lemma at the hole
+
+Let `S` be the `{α, A}`-component of `x j` in `G - h`, and colour a face (a triangle) when it
+meets `S`. The edges separating a coloured face from an uncoloured one form the graph
+`bdGraph`, in which every vertex has even degree (rotation-invariance of face membership; no
+planarity is used). Every such edge has both ends outside `S` and next to `S`, hence in the
+`{μ, B}` classes. At `h` exactly the edges to `x (j+1)` and `x (j+4)` are boundary edges (when
+`x (j+2), x (j+3) ∉ S`), so by the handshake lemma these two vertices are joined in the
+boundary graph minus `h`, i.e. in the `{μ, B}`-graph. -/
+
+section hex
+
+/-- The face of a dart (a triangle, on a triangulated map) meets `S`. -/
+private def TriMeets (M : SphericalMap n) (S : Fin n → Prop) (d : M.Dart) : Prop :=
+  S d.fst ∨ S d.snd ∨ S (M.rotation.faceNext d).snd
+
+private lemma tri3 (htri : M.Triangulated) (d : M.Dart) :
+    M.rotation.faceNext (M.rotation.faceNext (M.rotation.faceNext d)) = d := by
+  have := M.rotation.face_next_iterate_length d
+  rw [htri d] at this
+  simpa only [Function.iterate_succ_apply', Function.iterate_zero_apply] using this
+
+private lemma triMeets_faceNext (htri : M.Triangulated) (S : Fin n → Prop) (d : M.Dart) :
+    TriMeets M S (M.rotation.faceNext d) ↔ TriMeets M S d := by
+  have h1 : (M.rotation.faceNext d).fst = d.snd := M.rotation.face_next_fst d
+  have h2 : (M.rotation.faceNext (M.rotation.faceNext d)).snd = d.fst := by
+    have := M.rotation.face_next_fst (M.rotation.faceNext (M.rotation.faceNext d))
+    rw [tri3 htri d] at this
+    exact this.symm
+  unfold TriMeets
+  rw [h1, h2]
+  tauto
+
+private lemma triMeets_symm (htri : M.Triangulated) (S : Fin n → Prop) (d : M.Dart) :
+    TriMeets M S d.symm ↔ TriMeets M S (M.rotation.next d) := by
+  rw [← triMeets_faceNext htri S d.symm, RotationSystem.face_next_apply, Dart.symm_symm]
+
+/-- The third vertex of a triangle meeting `S` at neither end of the dart. -/
+private lemma triMeets_apex (htri : M.Triangulated) {S : Fin n → Prop} {d : M.Dart}
+    (hd : TriMeets M S d) (h1 : ¬ S d.fst) (h2 : ¬ S d.snd) :
+    ∃ w, S w ∧ M.Adj d.fst w ∧ M.Adj d.snd w := by
+  set e := M.rotation.faceNext d
+  have he : e.fst = d.snd := M.rotation.face_next_fst d
+  have e2 : (M.rotation.faceNext e).fst = e.snd := M.rotation.face_next_fst e
+  have e3 : (M.rotation.faceNext e).snd = d.fst := by
+    have := M.rotation.face_next_fst (M.rotation.faceNext e)
+    rw [tri3 htri d] at this
+    exact this.symm
+  refine ⟨e.snd, ?_, ?_, ?_⟩
+  · rcases hd with h | h | h
+    · exact absurd h h1
+    · exact absurd h h2
+    · exact h
+  · have := (M.rotation.faceNext e).adj
+    rw [e2, e3] at this
+    exact this.symm
+  · have := e.adj
+    rwa [he] at this
+
+/-- Edges separating a face meeting `S` from one missing it. -/
+private def bdGraph (M : SphericalMap n) (S : Fin n → Prop) : SimpleGraph (Fin n) where
+  Adj u v := ∃ huv : M.Adj u v,
+    ¬ (TriMeets M S ⟨(u, v), huv⟩ ↔ TriMeets M S ⟨(v, u), huv.symm⟩)
+  symm := ⟨fun _ _ ⟨e, hb⟩ => ⟨e.symm, fun hh => hb hh.symm⟩⟩
+  loopless := ⟨fun _ ⟨e, _⟩ => e.ne rfl⟩
+
+private lemma bdGraph_out (htri : M.Triangulated) {S : Fin n → Prop} {u v : Fin n}
+    (huv : (bdGraph M S).Adj u v) :
+    ¬ S u ∧ ∃ w, S w ∧ M.Adj u w := by
+  obtain ⟨e, hb⟩ := huv
+  by_cases ht : TriMeets M S ⟨(u, v), e⟩
+  · have hf : ¬ TriMeets M S ⟨(v, u), e.symm⟩ := fun hf => hb ⟨fun _ => hf, fun _ => ht⟩
+    have hu : ¬ S u := fun hs => hf (Or.inr (Or.inl hs))
+    have hv : ¬ S v := fun hs => hf (Or.inl hs)
+    obtain ⟨w, hw, h1, -⟩ := triMeets_apex htri ht hu hv
+    exact ⟨hu, w, hw, h1⟩
+  · have ht' : TriMeets M S ⟨(v, u), e.symm⟩ := by
+      by_contra hf; exact hb ⟨fun h => absurd h ht, fun h => absurd h hf⟩
+    have hu : ¬ S u := fun hs => ht (Or.inl hs)
+    have hv : ¬ S v := fun hs => ht (Or.inr (Or.inl hs))
+    obtain ⟨w, hw, -, h2⟩ := triMeets_apex htri ht' hv hu
+    exact ⟨hu, w, hw, h2⟩
+
+private lemma zmod2_ite_xor (p q : Prop) [Decidable p] [Decidable q] :
+    (if ¬ (p ↔ q) then (1 : ZMod 2) else 0) = (if p then 1 else 0) + (if q then 1 else 0) := by
+  by_cases hp : p <;> by_cases hq : q <;> simp [hp, hq]; decide
+
+open Classical in
+/-- Every vertex has even degree in the boundary graph. -/
+private lemma bdGraph_even (htri : M.Triangulated) (S : Fin n → Prop) (x : Fin n) :
+    Even ((bdGraph M S).degree x) := by
+  classical
+  have hcard : Fintype.card {d : M.Dart // d.fst = x ∧
+      ¬ (TriMeets M S d ↔ TriMeets M S d.symm)} = (bdGraph M S).degree x := by
+    rw [← card_neighborSet_eq_degree]
+    refine Fintype.card_of_bijective (f := fun d => ⟨d.1.snd, by
+      obtain ⟨⟨⟨u, v⟩, huv⟩, hu, hb⟩ := d
+      subst hu
+      exact ⟨huv, hb⟩⟩) ⟨?_, ?_⟩
+    · rintro ⟨d1, h1, h1'⟩ ⟨d2, h2, h2'⟩ he
+      apply Subtype.ext
+      apply Dart.ext
+      exact Prod.ext (h1.trans h2.symm) (congrArg Subtype.val he)
+    · rintro ⟨w, huv, hb⟩
+      exact ⟨⟨⟨(x, w), huv⟩, rfl, hb⟩, rfl⟩
+  rw [← hcard, ← ZMod.natCast_eq_zero_iff_even, Fintype.card_subtype,
+    Finset.natCast_card_filter]
+  have hsplit : ∀ d : M.Dart,
+      (if d.fst = x ∧ ¬ (TriMeets M S d ↔ TriMeets M S d.symm) then (1 : ZMod 2) else 0) =
+        (if d.fst = x ∧ TriMeets M S d then 1 else 0) +
+          (if (M.rotation.next d).fst = x ∧ TriMeets M S (M.rotation.next d) then 1 else 0) := by
+    intro d
+    rw [M.rotation.next_fst, ← triMeets_symm htri]
+    by_cases hx : d.fst = x
+    · simp only [hx, true_and]
+      exact zmod2_ite_xor _ _
+    · simp [hx]
+  rw [Finset.sum_congr rfl (fun d _ => hsplit d), Finset.sum_add_distrib,
+    Equiv.sum_comp M.rotation.next
+      (fun d => if d.fst = x ∧ TriMeets M S d then (1 : ZMod 2) else 0)]
+  exact CharTwo.add_self_eq_zero _
+
+
+/-- `G` with all edges at `h` removed. -/
+private def offV (G : SimpleGraph (Fin n)) (h : Fin n) : SimpleGraph (Fin n) where
+  Adj u v := G.Adj u v ∧ u ≠ h ∧ v ≠ h
+  symm := ⟨fun _ _ ⟨e, a, b⟩ => ⟨e.symm, b, a⟩⟩
+  loopless := ⟨fun _ ⟨e, _⟩ => e.ne rfl⟩
+
+/-- `G` restricted to the component of `m`. -/
+private def compKeep (G : SimpleGraph (Fin n)) (m : Fin n) : SimpleGraph (Fin n) where
+  Adj u v := G.Adj u v ∧ G.Reachable m u
+  symm := ⟨fun _ _ ⟨e, r⟩ => ⟨e.symm, r.trans e.reachable⟩⟩
+  loopless := ⟨fun _ ⟨e, _⟩ => e.ne rfl⟩
+
+open Classical in
+/-- Handshake bookkeeping: in an even graph with the edges at `h` removed, the odd vertices
+of the component of `m` are the reachable neighbours of `h`. -/
+private lemma odd_iff_bd (G : SimpleGraph (Fin n)) (hev : ∀ x, Even (G.degree x))
+    (h m w : Fin n) :
+    Odd ((compKeep (offV G h) m).degree w) ↔ (offV G h).Reachable m w ∧ w ≠ h ∧ G.Adj w h := by
+  have key : (compKeep (offV G h) m).degree w =
+      if (offV G h).Reachable m w ∧ w ≠ h then ((G.neighborFinset w).erase h).card else 0 := by
+    rw [← card_neighborFinset_eq_degree]
+    split_ifs with hw
+    · congr 1
+      ext v
+      rw [mem_neighborFinset, Finset.mem_erase, mem_neighborFinset]
+      simp only [compKeep, offV]
+      exact ⟨fun ⟨⟨e, _, hv⟩, _⟩ => ⟨hv, e⟩, fun ⟨hv, e⟩ => ⟨⟨e, hw.2, hv⟩, hw.1⟩⟩
+    · rw [Finset.card_eq_zero]
+      ext v
+      rw [mem_neighborFinset]
+      simp only [compKeep, offV, Finset.notMem_empty, iff_false]
+      exact fun ⟨⟨_, hwh, _⟩, hr⟩ => hw ⟨hr, hwh⟩
+  rw [key]
+  split_ifs with hw
+  · by_cases ha : G.Adj w h
+    · rw [Finset.card_erase_of_mem (mem_neighborFinset _ _ _ |>.2 ha),
+        card_neighborFinset_eq_degree]
+      refine ⟨fun _ => ⟨hw.1, hw.2, ha⟩, fun _ => Nat.Even.sub_odd ?_ (hev w) odd_one⟩
+      rw [← card_neighborFinset_eq_degree]
+      exact Finset.card_pos.2 ⟨h, (mem_neighborFinset _ _ _).2 ha⟩
+    · rw [Finset.erase_eq_of_notMem (fun hm => ha ((mem_neighborFinset _ _ _).1 hm)),
+        card_neighborFinset_eq_degree]
+      exact ⟨fun ho => absurd (hev w) (Nat.not_even_iff_odd.2 ho), fun ⟨_, _, e⟩ => absurd e ha⟩
+  · exact ⟨fun ho => absurd ho (by decide), fun ⟨a, b, _⟩ => absurd ⟨a, b⟩ hw⟩
+
+open Classical in
+/-- Boundary edges at the hole: the edge `x (k+1) – h` separates the two faces
+`h x k x (k+1)` and `h x (k+1) x (k+2)`. -/
+private lemma bd_link (htri : M.Triangulated) {S : Fin n → Prop} (hSh : ¬ S h) (k : Fin 5) :
+    (bdGraph M S).Adj (P.x (k + 1)) h ↔
+      ¬ ((S (P.x (k + 1)) ∨ S (P.x k)) ↔ (S (P.x (k + 1)) ∨ S (P.x (k + 2)))) := by
+  obtain ⟨y1, y3, a1, a3, r12, r23, hy⟩ := rotation_nbrs P k
+  have hyh : M.Adj (P.x (k + 1)) h := (P.adj_h (k + 1)).symm
+  have t1 : TriMeets M S ⟨(P.x (k + 1), h), hyh⟩ ↔ S (P.x (k + 1)) ∨ S y3 := by
+    have hf : M.rotation.faceNext ⟨(P.x (k + 1), h), hyh⟩ = ⟨(h, y3), a3⟩ := r23
+    show S (P.x (k + 1)) ∨ S h ∨ S (M.rotation.faceNext ⟨(P.x (k + 1), h), hyh⟩).snd ↔ _
+    rw [hf]
+    tauto
+  have t2 : TriMeets M S ⟨(h, P.x (k + 1)), hyh.symm⟩ ↔ S (P.x (k + 1)) ∨ S y1 := by
+    set e := M.rotation.faceNext ⟨(h, P.x (k + 1)), hyh.symm⟩
+    have hn : M.rotation.next (M.rotation.faceNext e).symm = ⟨(h, P.x (k + 1)), hyh.symm⟩ := by
+      rw [← RotationSystem.face_next_apply]
+      exact tri3 htri _
+    have hs : (M.rotation.faceNext e).symm = ⟨(h, y1), a1⟩ :=
+      M.rotation.next.injective (hn.trans r12.symm)
+    have hsnd : e.snd = y1 :=
+      (M.rotation.face_next_fst e).symm.trans (congrArg (fun d : M.Dart => d.snd) hs)
+    show S h ∨ S (P.x (k + 1)) ∨ S e.snd ↔ _
+    rw [hsnd]
+    tauto
+  constructor
+  · rintro ⟨e, hb⟩
+    have hb' : ¬ (TriMeets M S ⟨(P.x (k + 1), h), hyh⟩ ↔
+        TriMeets M S ⟨(h, P.x (k + 1)), hyh.symm⟩) := hb
+    rw [t1, t2] at hb'
+    rcases hy with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ <;> tauto
+  · intro hc
+    refine ⟨hyh, ?_⟩
+    change ¬ (TriMeets M S ⟨(P.x (k + 1), h), hyh⟩ ↔
+        TriMeets M S ⟨(h, P.x (k + 1)), hyh.symm⟩)
+    rw [t1, t2]
+    rcases hy with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ <;> tauto
+
+private lemma fin5_b (j : Fin 5) : j + 4 + 1 = j ∧ j + 4 + 2 = j + 1 ∧ j + 1 + 1 = j + 2 ∧
+    j + 1 + 2 = j + 3 ∧ j + 2 + 1 = j + 3 ∧ j + 2 + 2 = j + 4 := by
+  revert j; decide
+
+private lemma fin4_rest (a m A B u : Fin 4) (h1 : m ≠ a) (h2 : A ≠ a) (h3 : B ≠ a) (h4 : m ≠ A)
+    (h5 : m ≠ B) (h6 : A ≠ B) (hu1 : u ≠ a) (hu2 : u ≠ A) : u = m ∨ u = B := by
+  revert a m A B u; decide
+
+end hex
+
+open Classical in
+/-- **Hex lemma at a pentagonal hole.** In a triangulated spherical map, at a repeat state
+`(α, μ, α, A, B)` at `j`, either `x j` reaches `x (j+3)` in the `{α, A}`-graph of `G - h`, or
+`x (j+1)` reaches `x (j+4)` in the `{μ, B}`-graph. False without `Triangulated` (wheel `W₅`,
+see the module docstring). Only the triangle faces are used, not the sphere axiom `fills`. -/
 theorem kempe_hex (htri : M.Triangulated) (c : Fin n → Fin 4) (j : Fin 5)
     (hr : RepeatAt P c j) :
     (pairGraph M.graph h c (c (P.x j)) (c (P.x (j + 3)))).Reachable (P.x j) (P.x (j + 3)) ∨
       Lock2 P c j := by
-  sorry
+  obtain ⟨g1, g2, g3, g4, g5, g6⟩ := fin5_b j
+  set S : Fin n → Prop :=
+    fun v => (pairGraph M.graph h c (c (P.x j)) (c (P.x (j + 3)))).Reachable (P.x j) v with hS
+  by_cases hS3 : S (P.x (j + 3))
+  · exact Or.inl hS3
+  by_cases hS2 : S (P.x (j + 2))
+  · exact Or.inl (hS2.trans (rot3_reach hr))
+  right
+  obtain ⟨-, h1, h3, h4, h13, h14, h34⟩ := hr
+  have hact : ∀ v, S v → Active h c (c (P.x j)) (c (P.x (j + 3))) v := by
+    rintro v ⟨p⟩
+    rcases support_active p v p.end_mem_support with hv | ⟨rfl, -⟩
+    · exact hv
+    · exact ⟨(P.h_ne j).symm, Or.inl rfl⟩
+  have hclos : ∀ w u, S w → M.Adj w u → u ≠ h →
+      (c u = c (P.x j) ∨ c u = c (P.x (j + 3))) → S u :=
+    fun w u hw e hu hc => hw.trans (Adj.reachable ⟨e, hact w hw, hu, hc⟩)
+  have hSh : ¬ S h := fun hs => (hact h hs).1 rfl
+  have hS0 : S (P.x j) := Reachable.refl _
+  have hS1 : ¬ S (P.x (j + 1)) := fun hs => by
+    rcases (hact _ hs).2 with e | e
+    · exact h1 e
+    · exact h13 e
+  have hS4 : ¬ S (P.x (j + 4)) := fun hs => by
+    rcases (hact _ hs).2 with e | e
+    · exact h4 e
+    · exact h34 e.symm
+  have hY : ∀ u, u ≠ h → ¬ S u → (∃ w, S w ∧ M.Adj u w) →
+      (c u = c (P.x (j + 1)) ∨ c u = c (P.x (j + 4))) := by
+    rintro u hu hnS ⟨w, hw, e⟩
+    exact fin4_rest _ _ _ _ _ h1 h3 h4 h13 h14 h34
+      (fun hc => hnS (hclos w u hw e.symm hu (Or.inl hc)))
+      (fun hc => hnS (hclos w u hw e.symm hu (Or.inr hc)))
+  have hle : offV (bdGraph M S) h ≤
+      pairGraph M.graph h c (c (P.x (j + 1))) (c (P.x (j + 4))) := by
+    rintro u v ⟨hb, hu, hv⟩
+    obtain ⟨huS, w1, hw1, e1⟩ := bdGraph_out htri hb
+    obtain ⟨hvS, w2, hw2, e2⟩ := bdGraph_out htri hb.symm
+    exact ⟨hb.fst, ⟨hu, hY u hu huS ⟨w1, hw1, e1⟩⟩, ⟨hv, hY v hv hvS ⟨w2, hw2, e2⟩⟩⟩
+  have hev := bdGraph_even htri S
+  have hm : Odd ((compKeep (offV (bdGraph M S) h) (P.x (j + 1))).degree (P.x (j + 1))) := by
+    rw [odd_iff_bd _ hev]
+    refine ⟨Reachable.refl _, (P.h_ne _).symm, ?_⟩
+    rw [bd_link P htri hSh j]
+    tauto
+  obtain ⟨w, hwm, hw⟩ := exists_ne_odd_degree_of_exists_odd_degree (h := hm)
+  rw [odd_iff_bd _ hev] at hw
+  obtain ⟨hreach, -, hadj⟩ := hw
+  obtain ⟨i, rfl⟩ := P.only w hadj.fst.symm
+  have hb : P.x i = P.x (j + 4) := by
+    rcases fin5_cases j i with e | e | e | e | e <;> rw [e] at hadj hwm ⊢
+    · have := bd_link P htri hSh (j + 4)
+      rw [g1, g2] at this
+      exact absurd (this.1 hadj) (by tauto)
+    · exact absurd rfl hwm
+    · have := bd_link P htri hSh (j + 1)
+      rw [g3, g4] at this
+      exact absurd (this.1 hadj) (by tauto)
+    · have := bd_link P htri hSh (j + 2)
+      rw [g5, g6] at this
+      exact absurd (this.1 hadj) (by tauto)
+  rw [hb] at hreach
+  exact Reachable.mono hle hreach
 
-/-- **Item 3** (triangulated maps, modulo `kempe_hex`). If `R₊₃` is defined then lock 2
+/-- **Item 3** (triangulated maps, via `kempe_hex`). If `R₊₃` is defined then lock 2
 holds. -/
 theorem lock2_of_rot3Def (htri : M.Triangulated) {c : Fin n → Fin 4} {j : Fin 5}
     (hr : RepeatAt P c j) (hK : Rot3Def P c j) : Lock2 P c j := by
@@ -345,7 +625,7 @@ theorem lock2_of_rot3Def (htri : M.Triangulated) {c : Fin n → Fin 4} {j : Fin 
   · exact absurd ((rot3_reach hr).trans hx.symm) hK
   · exact hl
 
-/-- The dichotomy L2 on triangulated maps (modulo `kempe_hex`). -/
+/-- The dichotomy L2 on triangulated maps (via `kempe_hex`). -/
 theorem rot3Def_iff_lock2 (htri : M.Triangulated) {c : Fin n → Fin 4} {j : Fin 5}
     (hr : RepeatAt P c j) : Rot3Def P c j ↔ Lock2 P c j :=
   ⟨lock2_of_rot3Def P htri hr, rot3Def_of_lock2 P hr⟩
