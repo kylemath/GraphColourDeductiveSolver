@@ -273,3 +273,11 @@ At every R3 state with k <= 2 ({alpha,mu} = {c(x_j), c(x_{j+1})}, {A,B} the othe
   that prevent fixed points are never inside the 2-ball, so no period has a ring/2-ball A/B cycle. At (5,5,5,5,7) a ring (and 2-ball) A/B cycle appears at some k <= 2
   lockless state in 668/916 periods (1,306 states); none at fixed points.
 - The 15 (5,5,5,5,7) Lemma S failure records: at k = 1, 2 the fixed points have cycle rank 0 in T - v, in the ring and in the 2-ball (no A/B cycle anywhere).
+
+## Job AH (independent Python jobuv/jobah.py -> jobah-summary.txt, jobah.json): global cycle ranks along Gamma-cycles at (5,5,5,5,6) / (5,5,5,5,7), orders 25-27, both orientations
+Cycle rank (E - V + C) of the {A,B}-, {mu,A}- and {mu,B}-subgraphs of T - v at every state (roles from the state's own j); per-step changes with the swap type.
+- (ii) At (5,5,5,5,6) the {A,B} rank at positions 4, 6, 8 (R3k2, R3k1, R3k0) is NEVER (0,0,0) (0/552 periods); min rank(4)+rank(6)+rank(8) = 1 (p25 #16945 h3). At (5,5,5,5,7) it is
+  (0,0,0) in 14/916 periods, 12 of them in the 15 Lemma S failure records (32 periods).
+- (iii) The per-step rank-change distributions are exactly mirror-symmetric: step i and step 9 - i have negated distributions (steps 0/1, 2/9, 3/8, 4/7, 5/6), at both patterns.
+  A step-4 or step-6 drop to rank 0 followed by rank 0 again two states later: 1 (degree 6), 2 (degree 7).
+- (i) Periods without a fixed point mostly have constant rank 1; fixed-point periods show rank 0 at positions 6 and/or 8 (and 4). The {mu,A} and {mu,B} ranks reach 0.
