@@ -154,3 +154,11 @@ R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (140 periods, no exception).
   has dead blocks; 16 Gamma-cycles contain R2 states, so the R1/R3 alternation of HP2 Lemma 2 does not hold at (5,5,5,6,6) at order 27.
 - Lemma R in the Job K form (hits from every DL R3 state): 12 violations on nonpositive targets (e.g. p27 #68456 h19, w(T) = -2, rem 6). The NightF6Flow form
   (DD endpoints only) is Job S.
+
+## Job T (`jobt.py` -> jobt-summary.txt): period coupling, orders 25-27, both orientations (well-formed R1/R3 periods only)
+- (5,5,5,5,6): the smallest window w with min credit >= 10w on every cycle is **w = 2** (orders 25-26: 62/62, order 27: 202/202); w = 1 fails on 1 + 4 cycles
+  (min period credit 8, tuple (Lock2, Lock1, X, X, L3) or (Lock2, Lock1, Lock1, X, L3)). Min adjacent-pair credit 31 (25-26) and 39 (27). Caveat: most Gamma-cycles have
+  L = 20 (two periods), where the w = 2 window is the whole cycle; only the L >= 30 cycles test w = 2 independently.
+- (iii) is false: a k = 4 failure never comes with all k <= 2 visits of periods i, i+1 lockless with f >= 2 (0/7 at 25-26, 0/12 at 27). A k = 4 failure always comes with a
+  k = 3 failure (tuple starts "2 1") and at least one non-lockless or f = 1 visit at k <= 2.
+- (5,5,5,6,6) at order 27: w = 2 fails at p27 #316043 h18 (the Lemma S failure; periods with credit 0 and 18); 16 cycles are not R1/R3-periodic (R2 states).
