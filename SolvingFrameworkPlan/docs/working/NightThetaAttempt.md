@@ -154,11 +154,11 @@ R₊₃ swaps B₁ = ∂K from e_{j+1} to e_{j+3}. The r-token moves from e_{j+4
 **A per-closed-chain Gauss–Bonnet constraint is false on the sphere [proved by example].** The Γ-cycle of length 20 at gentri 17 #3, hole 0, is a closed all-DL rotation chain with w = +4 (re-confirmed with my own code). No sphere-only constraint can force w ≤ 0 on a single closed chain.
 
 **The class-total statement Σw ≤ 0 [conjecture; equivalent to the quarter floor, hence of 4CT strength].**
-- What the theta does give is the single-state sphere fact of §1.3: DL ⇒ {α,A} and {α,B} are both disconnected. In winding terms, every state at which the token can advance (+1) has at least two spare {α,A}-components and two spare {α,B}-components.
+- What the theta does give is the single-state sphere fact of §1.3: DL ⇒ {α,A} and {α,B} are both disconnected. In winding terms, at every DL state the {α,A}- and {α,B}-subgraphs each split into at least two components (x_{j+2} and x_j lie in different ones). Components that miss the link entirely ("spare" components) are not guaranteed: the 873 DD states of §3 with exactly two {α,A}-components have none.
 - A class-level argument would have to show that these spare components, swapped as **pattern-preserving** moves, lead to π-cycles carrying negative winding.
   - §3 (twin rotation) already shows that one swap of a spare component does not always leave DL.
   - So the transport needs longer paths, consistent with the growing matching radius.
 
-**Sharpened next lemma [conjecture].** Let Z be a positive-winding π-cycle. Then the union of the Kempe classes reached from Z by swapping one spare {α,A}- or {α,B}-component at a DL state of Z contains a π-cycle with w < 0.
+**Sharpened next lemma [conjecture].** Let Z be a positive-winding π-cycle. Then the set of π-cycles of the same class reached from Z by one pattern-preserving swap of an {α,A}- or {α,B}-component at a DL state of Z (when such a swap exists) contains a π-cycle with w < 0.
 - Test: at gentri 17 #3 hole 0, and at the order-20, -21 and -22 positive cycles listed in NightEulerHole, compute the π-cycles that are one spare swap away from each positive cycle, and their windings.
-- On the torus this lemma must fail, because a frozen state has no spare components. That failure is exactly the two-sides step of §1.3.
+- On the torus this lemma must fail, because in a frozen state every swap is a renaming. That failure is exactly the two-sides step of §1.3.
