@@ -265,3 +265,11 @@ Orders 25-27, both orientations: 264 + 406 Gamma-cycle records. Lock1/Lock2 comp
 - (4) The 15 (5,5,5,5,7) Lemma S failure records: Lemma W fails on every one. In every period k = 2 and k = 1 are fixed points. Plantri: a period (Lock2, Lock1, fixed, fixed,
   fixed) of credit 0 next to (Lock2, L3, L2, fixed, fixed) of credit 13. Mirror: (L1, Lock1, fixed, fixed, fixed) of credit 2 (k = 4 lockless with f = 1, k = 3 fails) next to
   (Lock2, Lock1, fixed, fixed, L3) of credit 8.
+
+## Job AG (Lemma Fix; independent Python jobuv/jobag.py -> jobag-summary.txt, jobag.json), Gamma-cycles at (5,5,5,5,6) / (5,5,5,5,7), orders 25-27, both orientations
+At every R3 state with k <= 2 ({alpha,mu} = {c(x_j), c(x_{j+1})}, {A,B} the other pair):
+- (a) sigma is a fixed point <=> the {A,B}-subgraph of T - v is acyclic: **0 exceptions** (220 + 242 fixed points, all acyclic; all 1,436 + 2,506 others have cycle rank >= 1).
+- (b, d) At (5,5,5,5,6) the {A,B}-subgraph induced on the ring (x_0..x_4, w_0..w_4, m) and on the 2-ball around v is ALWAYS acyclic at k <= 2 (1,656 states): the A/B cycles
+  that prevent fixed points are never inside the 2-ball, so no period has a ring/2-ball A/B cycle. At (5,5,5,5,7) a ring (and 2-ball) A/B cycle appears at some k <= 2
+  lockless state in 668/916 periods (1,306 states); none at fixed points.
+- The 15 (5,5,5,5,7) Lemma S failure records: at k = 1, 2 the fixed points have cycle rank 0 in T - v, in the ring and in the 2-ball (no A/B cycle anywhere).
