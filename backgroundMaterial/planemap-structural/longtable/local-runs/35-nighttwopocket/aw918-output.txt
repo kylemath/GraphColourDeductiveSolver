@@ -1,0 +1,10 @@
+states 17512 time 2.7
+names {'p': 18, 'xp': 17, 'x2': 26, 'x3': 27, 'xm': 23, 'z': 16, 'wp': 21, 'w2': 31, 'w3': 32, 'y': 28, 'm': 13} deg m 6
+cycle: breaks {'k4fail': [True, True], 'k3fail': [False, True], 'step8break': [True, True]}
+ far nbrs of m [15, 19, 20] adj z: [15] adj y: [20]
+ c9 colours [3, 0, 1]  d9 colours [0, 3, 1]
+ Pc [3, 11, 13, 19, 21, 24, 25, 29, 34, 35] reaches w+ True
+ Pd [1, 5, 6, 11, 12, 13, 15, 21, 25, 35] reaches w+ True
+ Pc&Pd [11, 13, 21, 25, 35]  X9 [1, 5, 6, 8, 9, 12, 15, 19, 33, 34]  X9&Pc [19, 34]  X9&Pd [1, 5, 6, 12, 15]
+ hole vertices in Pc ['wp', 'm'] in Pd ['wp', 'm']
+ colours (c9,d9) on X9 [(1, 0, 2), (5, 3, 0), (6, 3, 0), (8, 2, 3), (9, 2, 3), (12, 0, 2), (15, 3, 0), (19, 0, 3), (33, 1, 0), (34, 0, 1)]
