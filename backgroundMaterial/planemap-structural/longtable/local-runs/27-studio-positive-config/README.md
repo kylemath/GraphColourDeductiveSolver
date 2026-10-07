@@ -99,3 +99,10 @@ Debt D = 5w; credit C = sum (3f - 1) over lockless sigma-exits, split by target 
 - **Lemma S (C_neg >= D) holds on every Gamma-cycle**: min C_neg/D = 1.55 at (5,5,5,5,6) (62 records; p25m #16945 h3: L 20, D 20, C_neg 31) and 1.80 at (5,5,5,6,6) (6 records).
   Gamma-cycle exits never hit a positive cycle (C_pos = 0 on all 68).
 - Positive non-Gamma cycles: C_neg < D in 17/37 (5,5,5,5,6) and 10/22 (5,5,5,6,6) records, min 0 (p25 #16298 h23, p26 #43605 h3, p26 #7490 h3); every one is one sigma-hop from a negative cycle.
+
+## Job M (Gamma-cycles in blocks of 10; `--jobm`, `jobm.py` -> jobm-summary.txt, jobm-gamma-sequences.jsonl)
+Each Gamma-cycle (orders 25-26, both orientations) rotated to start at R3@k=4 and cut into blocks of 10 states; every block has exactly one R3 state at each k (0 malformed).
+- No dead block (every block has a lockless exit). (5,5,5,5,6): 140 blocks; patterns (bits k = 0..4) 11111 x82, 10111 x14, 00111 x14, 10011 x13, ...
+- P(k3 lockless | k4 lockless) = 132/133; P(k3 lockless | k4 fails) = 1/7: the k = 3 and k = 4 exits fail together.
+- Block debt is 10. Min block credit is 8 (p26 #87942 h22, pattern 10000), so the per-block form fails; min per-cycle average block credit 15.5 (p25m #16945 h3).
+- Failure kinds by k: k = 4 Lock2-only, k = 3 Lock1-only (the proved criteria), k = 0, 1, 2 mostly fixed points (X).
