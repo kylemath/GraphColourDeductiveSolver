@@ -316,3 +316,11 @@ Steps from the window's R3k0 to the first non-DL state (1 = R3k0's own pi-image 
   swap from R1k2, far (m,y) from R1k1, far (p,z) from R1k0, or the near (p,y) from R3k2. No single rule.
 - R fails but W2'' survives (373 / 1,396 / 8,179): mean distance 1.9-2.3, max 12 / 12, 14 / 14, 26 / 27: these runs do NOT live longer.
 - Note: Studio colourings are stored with CANONICAL colour names (relabelled by first occurrence along the BFS order), so colour letters differ between states for the same class.
+
+## NightW2 §11 addendum (`picyc.al2 --jobak`, jobal-addendum.txt, jobuv/jobal-Ldeath-counterexample.{txt,json})
+- Identity total rank = total components - 8 (sum over the six colour pairs of T - v; formal: each edge is in one pair, each vertex in three, |E(T - v)| = 3(n - 1) - 8):
+  0 failures over about 635,000 states (positions 3-9 of every window, Gamma and open runs). Min total components at DL states = 8 (total rank 0 attained).
+- Lemma L-death (R3k2, R3k1, R3k0 all fixed => the preceding R1k0 lacks Lock1 or the following R1k2 lacks Lock2): never applicable on Gamma-cycles (no period has all three
+  fixed), and **FAILS on open runs** in 11 / 711 (25), 35 / 2,376 (26), 106 / 10,813 (27) such windows per orientation. First: p25 #733 h17 (plantri), cycle w -70, L 330,
+  positions 3-9 = states 440, 575, 294-chain all DL with R3k2, R3k1, R3k0 fixed (Python-verified; rotation system and colourings in the json).
+- Steps back from R3k2 to the last earlier non-DL state in all-three-fixed windows: mostly 1, max 11 / 14 (25), 17 / 14 (26), 21 / 29 (27).

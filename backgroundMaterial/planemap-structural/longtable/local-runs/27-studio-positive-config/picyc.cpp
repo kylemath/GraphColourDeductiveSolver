@@ -288,7 +288,7 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 char b5[400]; snprintf(b5, sizeof b5, ", \"%s\": {\"ncomp\": %zu, \"endpoints\": %lld, \"endpoints_with_cross_sigmap\": %lld, \"max_ncycles\": %d, \"max_sumw\": %lld, \"fail\": %lld, \"first_fail\": %s}",
                     v ? "H2_sigmap_plus_sigmaR3" : "H1_sigmap", cs2.size(), nend, nend_cross, ms, mx, nf, ff.empty() ? "null" : ff.c_str()); jobe += b5; } }
         if (JOBAK && jpat == "5,5,5,5,6") {   // Job AK (1): W2* on maximal DL runs: at R3k2 (kmask 4) whose next four pi-steps stay DL: R3k2 fixed => R3k0 (4 steps later) not fixed
-            long long ntest = 0, nfix2 = 0, nfail = 0, nbadshape = 0, nfail2pp = 0; std::string ce, ce2; std::map<std::string, long long> whereG; std::map<std::string, long long> cnt[2]; std::map<std::string, std::map<long long, long long>> alDist; std::map<std::string, std::map<std::string, long long>> alLeave;
+            long long ntest = 0, nfix2 = 0, nfail = 0, nbadshape = 0, nfail2pp = 0; std::string ce, ce2; std::map<std::string, long long> whereG; std::map<std::string, long long> cnt[2]; std::map<std::string, std::map<long long, long long>> alDist; std::map<std::string, std::map<std::string, long long>> alLeave; long long minTC[2] = {1LL << 40, 1LL << 40}; std::string ceL; std::map<long long, long long> backDist;
             for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &z = cycles[ci]; size_t Lz = z.size(); bool gam = true; for (int32_t x : z) if (kind[x] != 2) { gam = false; break; }
                 for (size_t i = 0; i < Lz; i++) { if (kind[z[i]] != 2) continue; bool ok = true; for (int t = 1; t <= 4; t++) if (kind[z[(i + t) % Lz]] != 2) { ok = false; break; } if (!ok) continue;
                     if (!gam && Lz < 5) continue;
@@ -315,6 +315,20 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                       bool px4 = flood(1ULL << pv, c4[cc[pv]] | c4[cc[zv]]) >> x4 & 1;
                       int G = gam ? 1 : 0; cnt[G]["windows"]++; if (f2 && f0) cnt[G]["W2star_fail"]++; if (!g2 && !g0) cnt[G]["W2pp_fail"]++;
                       if (!R) { cnt[G]["R_fail"]++; if (g2 || g0) cnt[G]["R_fail_W2pp_holds"]++; if (outesc) cnt[G]["R_fail_outside_escape"]++; }
+                      {   // NightW2 section 11: six-pair ranks / components at positions 3..9; identity total rank = total components - 8; lemma L-death; backward lock-death distance
+                          auto sixpair = [&](long long st, long long &trank, long long &tcomp) { int cc[64]; unkey(ALL[st], cc); u64 c4[4]; masks(cc, c4); trank = 0; tcomp = 0;
+                              for (int a = 0; a < 4; a++) for (int b2 = a + 1; b2 < 4; b2++) { u64 M = c4[a] | c4[b2]; long long V = __builtin_popcountll(M), E = 0, C = 0;
+                                  for (u64 t = M; t; t &= t - 1) { int u = __builtin_ctzll(t); E += __builtin_popcountll(adjm[u] & M); } E /= 2;
+                                  for (u64 t = M; t; ) { u64 K = flood(t & -t, M); t &= ~K; C++; } trank += E - V + C; tcomp += C; } };
+                          for (int q = -1; q <= 5; q++) { long long st = z[(i + q + Lz) % Lz]; long long tr, tc; sixpair(st, tr, tc);
+                              cnt[G][(tr == tc - 8) ? "identity_ok" : "identity_FAIL"]++; if (kind[st] == 2) { minTC[G] = std::min(minTC[G], tc); cnt[G]["DL_states_checked"]++; } }
+                          int jq, tq, kq, q1, q2, q3; long long sq; frame(z[(i + 2) % Lz], jq, tq, kq, sq, q1, q2, q3); bool f1b = (tq == 3 && sq == z[(i + 2) % Lz]);
+                          if (f2 && f1b && f0) {   // L-death: preceding R1k0 (position 3) lacks Lock1, or following R1k2 (position 9) lacks Lock2
+                              auto locks = [&](long long st, int &a1, int &a2) { if (kind[st] == 0) { a1 = a2 = 0; return; } int cc[64]; unkey(ALL[st], cc); u64 c4[4]; masks(cc, c4); StateInfo si = info_of(cc, c4); a1 = si.l1; a2 = si.l2; };
+                              int p1, p2, n1, n2; locks(z[(i + Lz - 1) % Lz], p1, p2); locks(z[(i + 5) % Lz], n1, n2);
+                              bool ok = (!p1) || (!n2); cnt[G][ok ? "Ldeath_ok" : "Ldeath_FAIL"]++;
+                              if (!ok && ceL.empty()) { char b[128]; snprintf(b, sizeof b, "{\"cycle\": %zu, \"pos\": %zu, \"gamma\": %s}", ci, i, gam ? "true" : "false"); ceL = b; }
+                              if (!gam) { long long d = 0; size_t e = i; while (kind[z[(e + Lz - 1) % Lz]] == 2 && d < (long long)Lz) { e = (e + Lz - 1) % Lz; d++; } backDist[d + 1]++; } } }
                       if (!gam) {   // Job AL: distance from R3k0 to the run end, and the leaving step, per failure category
                           bool f1 = false; { int jq, tq, kq, q1, q2, q3; long long sq; frame(z[(i + 2) % Lz], jq, tq, kq, sq, q1, q2, q3); f1 = (tq == 3 && sq == z[(i + 2) % Lz]); }
                           std::vector<std::string> cats; if (f2 && f0) cats.push_back("W2star_fail"); if (f2 && f1 && f0) cats.push_back("all3_fixed"); if (!g2 && !g0) cats.push_back("W2pp_fail");
@@ -340,6 +354,8 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
             for (int G = 0; G < 2; G++) { jobe += G ? ", \"gamma_counts\": {" : ", \"run_counts\": {"; bool f = true; for (auto &kv : cnt[G]) { char b[96]; snprintf(b, sizeof b, "%s\"%s\": %lld", f ? "" : ", ", kv.first.c_str(), kv.second); jobe += b; f = false; } jobe += "}"; }
             jobe += ", \"al_dist\": {"; { bool f = true; for (auto &kv : alDist) { jobe += std::string(f ? "" : ", ") + "\"" + kv.first + "\": {"; bool g = true; for (auto &kv2 : kv.second) { char b[48]; snprintf(b, sizeof b, "%s\"%lld\": %lld", g ? "" : ", ", kv2.first, kv2.second); jobe += b; g = false; } jobe += "}"; f = false; } }
             jobe += "}, \"al_leave\": {"; { bool f = true; for (auto &kv : alLeave) { jobe += std::string(f ? "" : ", ") + "\"" + kv.first + "\": {"; bool g = true; for (auto &kv2 : kv.second) { jobe += std::string(g ? "" : ", ") + "\"" + kv2.first + "\": " + std::to_string(kv2.second); g = false; } jobe += "}"; f = false; } }
+            { char b[200]; snprintf(b, sizeof b, "}, \"minTC_run\": %lld, \"minTC_gamma\": %lld, \"first_Ldeath_fail\": %s, \"back_dist\": {", minTC[0], minTC[1], ceL.empty() ? "null" : ceL.c_str()); jobe += b;
+              bool f = true; for (auto &kv : backDist) { char b3[48]; snprintf(b3, sizeof b3, "%s\"%lld\": %lld", f ? "" : ", ", kv.first, kv.second); jobe += b3; f = false; } }
             jobe += "}}"; }
         if (JOBAB && jpat == "5,5,5,5,6") {   // Job AB: excursion-level Lemma S. Excursion = maximal unfilled run (u) + following filled run (f) on a cycle with filled states.
             long long nexc = 0, npos = 0, fail_all = 0, fail_cross = 0, minslack_all = (1LL << 60), minslack_cross = (1LL << 60); std::map<long long, long long> massh; std::string fx;
