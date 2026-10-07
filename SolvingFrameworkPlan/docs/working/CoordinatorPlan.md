@@ -26,3 +26,9 @@ Go/no-go review every two weeks (next: 21 Oct 2026) against these kill rules.
 - Agents: at most 6 running at once (workflow guideline < 10).
 - Studio CPU (16 cores, 128 GB): coordinator-started compute runs under `nice -n 10` and uses at most 8 worker processes in total. Jobs BO/BP keep their current workers. The Studio is shared with Kyle's EEGLearn project (Python multiprocessing jobs); EEGLearn has priority, so 4CT compute stays nice'd and within the cap even when the machine looks idle.
 - Lean regression: one full `check.sh` run per day (about 10 minutes).
+
+## Status log
+
+**7 Oct, Track B verdict: amber, leaning kill** (TrackB/README.md). Proved unavoidable set: 59 hole types (78 without F2), using certified one-step discharging; the optimum for one-step rules is exactly 59. Rigorous lower bound 9; the empirical minimum is at least 13 and still rising. **66666 is forced into every S** (all IPR fullerene duals are frame-class, and their only hole type is 66666), and no hole type in the frame class has PureClean proved.
+Consequence: **G66 is on the critical path.** R\* in the frame class implies PureClean at some 66666 hole of every IPR dual, which by `pureClean_of_no_allDL_orbit` is G66⁰ there. Fullerenes are a test bed where 3-edge-colourability is known independently (Kardoš: fullerenes are Hamiltonian). Next: a dedicated G66 track. Two-step discharging and the order 29–31 census are deferred.
+
