@@ -297,7 +297,7 @@ noncomputable def Gmap (ρ : Equiv.Perm (Fin 4)) (u : Fin n → Fin 4) : Fin n �
   recol ρ ((piMove P)^[10] u)
 
 /-- A hole vertex: `x (q+t)`, `w (q+t)` or `m`. -/
-def HoleV (P : Pent M.graph h) (w : Fin 5 → Fin n) (m : Fin n) (q : Fin 5) (v : Fin n) : Prop :=
+def HoleVT (P : Pent M.graph h) (w : Fin 5 → Fin n) (m : Fin n) (q : Fin 5) (v : Fin n) : Prop :=
   (∃ t, v = P.x (q + t)) ∨ (∃ t, v = w (q + t)) ∨ v = m
 
 section setting
@@ -347,7 +347,7 @@ variable (htri : M.Triangulated) (H : Hole6 P w m q) (hc : ProperOff M.graph h s
 
 include H hc hall hr hq hT in
 lemma hole_letter (N : ℕ) (hN : 0 < N) {j : Fin 5} (hj : RepeatAt P ((piMove P)^[N] s) j)
-    {v : Fin n} (hv : HoleV P w m q v) :
+    {v : Fin n} (hv : HoleVT P w m q v) :
     ∃ ℓ, (piMove P)^[N] s v = frm P ((piMove P)^[N] s) j ℓ ∧
       (piMove P)^[N + 10] s v = frm P ((piMove P)^[N] s) j (sig ℓ) := by
   obtain ⟨px, pw, pm⟩ := period_colour_rotation H hc hall hr hq hT N hN hj
@@ -361,7 +361,7 @@ include H hc hall hr hq hT hρ in
 vertex with letter `ℓ` has letter `σ ℓ` at `s (N + 10)`, `ρ` sends its colour to the colour of
 letter `σ² ℓ`, and `ρ⁻¹` sends its colour to its colour at `s (N + 10)`. -/
 theorem rho_eq_sigma_sq_on_ring (N : ℕ) (hN : 0 < N) {j : Fin 5}
-    (hj : RepeatAt P ((piMove P)^[N] s) j) {v : Fin n} (hv : HoleV P w m q v) :
+    (hj : RepeatAt P ((piMove P)^[N] s) j) {v : Fin n} (hv : HoleVT P w m q v) :
     ∃ ℓ, (piMove P)^[N] s v = frm P ((piMove P)^[N] s) j ℓ ∧
       (piMove P)^[N + 10] s v = frm P ((piMove P)^[N] s) j (sig ℓ) ∧
       ρ ((piMove P)^[N] s v) = frm P ((piMove P)^[N] s) j (sig (sig ℓ)) ∧
@@ -373,7 +373,7 @@ theorem rho_eq_sigma_sq_on_ring (N : ℕ) (hN : 0 < N) {j : Fin 5}
 
 include H hc hall hr hq hT hρ in
 /-- On the hole, `ρ ∘ s (k + 10) = s k` for every `k`. -/
-theorem period_step_hole (k : ℕ) {v : Fin n} (hv : HoleV P w m q v) :
+theorem period_step_hole (k : ℕ) {v : Fin n} (hv : HoleVT P w m q v) :
     ρ ((piMove P)^[k + 10] s v) = (piMove P)^[k] s v := by
   obtain ⟨j, hd⟩ := hall (k + 10)
   obtain ⟨ℓ, e0, e1, -, -⟩ :=
@@ -419,7 +419,7 @@ theorem d_setting :
 include H hc hall hr hq hT hρ in
 /-- **Ring agreement.** For every `k`, `s k` and `d k = G (s k) = π^[k] d` agree on all eleven
 hole vertices `x (q+t)`, `w (q+t)`, `m`. -/
-theorem ring_agree (k : ℕ) {v : Fin n} (hv : HoleV P w m q v) :
+theorem ring_agree (k : ℕ) {v : Fin n} (hv : HoleVT P w m q v) :
     Gmap P ρ ((piMove P)^[k] s) v = (piMove P)^[k] s v ∧
       (piMove P)^[k] (Gmap P ρ s) v = (piMove P)^[k] s v := by
   have e : Gmap P ρ ((piMove P)^[k] s) v = (piMove P)^[k] s v := by

@@ -133,7 +133,7 @@ lemma kswap_pg : pairGraph G h (kswap G h c a b s) a b = pairGraph G h c a b :=
   pairGraph_swap_same _ _ _ _
 
 lemma kswap_pg' : pairGraph G h (kswap G h c a b s) b a = pairGraph G h c a b :=
-  (pairGraph_comm _ _ _).trans kswap_pg
+  (pairGraph_comm_gen _ _ _).trans kswap_pg
 
 lemma kswap_pg_other {x y : Fin 4} (hxa : x ≠ a) (hxb : x ≠ b) (hya : y ≠ a) (hyb : y ≠ b) :
     pairGraph G h (kswap G h c a b s) x y = pairGraph G h c x y :=
@@ -154,7 +154,7 @@ lemma kswap_inv : kswap G h (kswap G h c a b s) a b s = c := by
 lemma kswap_inv' : kswap G h (kswap G h c a b s) b a s = c := by
   have e : kswap G h (kswap G h c a b s) b a s = kswap G h (kswap G h c a b s) a b s := by
     unfold kswap
-    rw [pairGraph_comm _ b a, swap_comm']
+    rw [pairGraph_comm_gen _ b a, swap_comm']
   rw [e]
   exact kswap_inv
 

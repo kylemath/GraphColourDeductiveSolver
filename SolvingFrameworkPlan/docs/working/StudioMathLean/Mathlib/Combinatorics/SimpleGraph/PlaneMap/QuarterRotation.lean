@@ -78,7 +78,7 @@ lemma pairGraph_swap_other (c : V → C) (a b : C) (S : Set V) {x y : C}
   simp only [pairGraph, Active, swap_preserves_eq hxa hxb, swap_preserves_eq hya hyb]
 
 omit [DecidableEq C] in
-lemma pairGraph_comm (c : V → C) (a b : C) :
+lemma pairGraph_comm_gen (c : V → C) (a b : C) :
     pairGraph G h c a b = pairGraph G h c b a := by
   ext u v
   simp only [pairGraph, Active, or_comm]
@@ -172,7 +172,7 @@ theorem rot3_spec (hc : ProperOff G h c) (hr : RepeatAt P c j) (hK : Rot3Def P c
     exact ⟨rfl, h4, h1, h3, h14.symm, h34.symm, h13⟩
   · have hpg : pairGraph G h (rot3 P c j) (c (P.x (j + 4))) (c (P.x (j + 1))) =
         pairGraph G h c (c (P.x (j + 1))) (c (P.x (j + 4))) :=
-      (pairGraph_swap_other _ _ _ _ h4 h34.symm h1 h13).trans (pairGraph_comm _ _ _)
+      (pairGraph_swap_other _ _ _ _ h4 h34.symm h1 h13).trans (pairGraph_comm_gen _ _ _)
     unfold Lock1 Lock2
     rw [f31, f33, v4, v1, hpg]
     exact ⟨Reachable.symm, Reachable.symm⟩
@@ -245,7 +245,7 @@ theorem rot2_spec (hc : ProperOff G h c) (hr : RepeatAt P c j) (hK : Rot2Def P c
     exact ⟨rfl, h3, h4, h1, h34, h13.symm, h14.symm⟩
   · have hpg : pairGraph G h (rot2 P c j) (c (P.x (j + 3))) (c (P.x (j + 1))) =
         pairGraph G h c (c (P.x (j + 1))) (c (P.x (j + 3))) :=
-      (pairGraph_swap_other _ _ _ _ h3 h34 h1 h14).trans (pairGraph_comm _ _ _)
+      (pairGraph_swap_other _ _ _ _ h3 h34 h1 h14).trans (pairGraph_comm_gen _ _ _)
     unfold Lock1 Lock2
     rw [f21, f24, v3, v1, hpg]
     exact ⟨Reachable.symm, Reachable.symm⟩

@@ -728,7 +728,7 @@ theorem lemmaFix (htri : M.Triangulated) (hconn : M.graph.Connected)
   rw [sigmaFixed_iff_acyclic htri hconn hc hR.1.1]
   rcases (low_roles L hc hR).2.2.2 with ⟨e1, e2⟩ | ⟨e1, e2⟩
   · rw [e1, e2]
-  · rw [e1, e2, pairGraph_comm]
+  · rw [e1, e2, pairGraph_comm_gen]
 
 end sphere
 

@@ -38,7 +38,7 @@ the four hole vertices `p, m, y, z`, in the pattern of Job O.
    `(type, k) ↦ (flip type, k + 2)` (i.e. `k ↦ k − 3`). No `R2` state can follow an `R3`
    state.
 2. `pair_own`: at a `DD` state of type `t` at position `k`, `(t, k) ≠ (R3, 4)`, the pair
-   `{α, A}` is carried by the two vertices `pairVerts t k` (first gets `α`, second `A`):
+   `{α, A}` is carried by the two vertices `gammaPairVerts t k` (first gets `α`, second `A`):
    `R1k1 (m,y)`, `R3k3 (m,p)`, `R1k0 (p,z)`, `R3k2 (p,y)`, `R1k4 (y,m)`, `R3k1 (m,z)`,
    `R1k3 (z,p)`, `R3k0 (p,y)`, `R1k2 (p,m)`. These use only properness, the two locks of the
    state, and the locks of its image (lock ends).
@@ -240,7 +240,7 @@ theorem dd_ends (hc : ProperOff M.graph h c) (hD : DDstate P c j) :
   refine ⟨hπ, hr, hK, lock_end hc l1 (fun e => fin5_ne (by decide) (P.inj e)) rfl, ?_, ?_⟩
   · obtain ⟨u, a, b, d⟩ := lock_end hp' L (fun e => fin5_ne (by decide) (P.inj e)) rfl
     exact ⟨u, a, b, d.trans v4⟩
-  · rw [pairGraph_comm] at L
+  · rw [pairGraph_comm_gen] at L
     obtain ⟨u, a, b, d⟩ := lock_end hp' L.symm (fun e => fin5_ne (by decide) (P.inj e)) rfl
     exact ⟨u, a, b, d.trans v2⟩
 
@@ -400,7 +400,7 @@ def PairFact (c : Fin n → Fin 4) (j : Fin 5) (u v : Fin n) : Prop :=
 variable (P w m) in
 /-- The carriers of the swapped pair by `(type, k)`, with `p = x q`, `y = w (q+4)`,
 `z = w q` (Studio Job O). -/
-def pairVerts (q : Fin 5) (t : GType) (k : Fin 5) : Fin n × Fin n :=
+def gammaPairVerts (q : Fin 5) (t : GType) (k : Fin 5) : Fin n × Fin n :=
   match t, k.val with
   | .R3, 4 => (m, w q)
   | .R1, 1 => (m, w (q + 4))
@@ -416,16 +416,16 @@ def pairVerts (q : Fin 5) (t : GType) (k : Fin 5) : Fin n × Fin n :=
 
 section pv
 variable (q : Fin 5)
-lemma pv_R1_0 : pairVerts P w m q .R1 0 = (P.x q, w q) := rfl
-lemma pv_R1_1 : pairVerts P w m q .R1 1 = (m, w (q + 4)) := rfl
-lemma pv_R1_2 : pairVerts P w m q .R1 2 = (P.x q, m) := rfl
-lemma pv_R1_3 : pairVerts P w m q .R1 3 = (w q, P.x q) := rfl
-lemma pv_R1_4 : pairVerts P w m q .R1 4 = (w (q + 4), m) := rfl
-lemma pv_R3_0 : pairVerts P w m q .R3 0 = (P.x q, w (q + 4)) := rfl
-lemma pv_R3_1 : pairVerts P w m q .R3 1 = (m, w q) := rfl
-lemma pv_R3_2 : pairVerts P w m q .R3 2 = (P.x q, w (q + 4)) := rfl
-lemma pv_R3_3 : pairVerts P w m q .R3 3 = (m, P.x q) := rfl
-lemma pv_R3_4 : pairVerts P w m q .R3 4 = (m, w q) := rfl
+lemma pv_R1_0 : gammaPairVerts P w m q .R1 0 = (P.x q, w q) := rfl
+lemma pv_R1_1 : gammaPairVerts P w m q .R1 1 = (m, w (q + 4)) := rfl
+lemma pv_R1_2 : gammaPairVerts P w m q .R1 2 = (P.x q, m) := rfl
+lemma pv_R1_3 : gammaPairVerts P w m q .R1 3 = (w q, P.x q) := rfl
+lemma pv_R1_4 : gammaPairVerts P w m q .R1 4 = (w (q + 4), m) := rfl
+lemma pv_R3_0 : gammaPairVerts P w m q .R3 0 = (P.x q, w (q + 4)) := rfl
+lemma pv_R3_1 : gammaPairVerts P w m q .R3 1 = (m, w q) := rfl
+lemma pv_R3_2 : gammaPairVerts P w m q .R3 2 = (P.x q, w (q + 4)) := rfl
+lemma pv_R3_3 : gammaPairVerts P w m q .R3 3 = (m, P.x q) := rfl
+lemma pv_R3_4 : gammaPairVerts P w m q .R3 4 = (m, w q) := rfl
 end pv
 
 set_option maxHeartbeats 1000000 in
@@ -433,7 +433,7 @@ set_option maxHeartbeats 1000000 in
 theorem pair_own {t : GType} {k : Fin 5} (H : Hole6 P w m q) (hq : q = j + k)
     (hc : ProperOff M.graph h c) (hD : DDstate P c j) (hT : TypeOf P w t c j)
     (hne : ¬ (t = .R3 ∧ k = 4)) :
-    PairFact P c j (pairVerts P w m q t k).1 (pairVerts P w m q t k).2 := by
+    PairFact P c j (gammaPairVerts P w m q t k).1 (gammaPairVerts P w m q t k).2 := by
   subst hq
   obtain ⟨-, hr, hK, ⟨u', hu', hu'h, hcu'⟩, ⟨u, hu, huh, hcu⟩, -⟩ := dd_ends hc hD
   obtain ⟨-, v1, -, v3, -⟩ := rot3_values hr hK
@@ -610,15 +610,15 @@ lemma iter_proper {s : Fin n → Fin 4} (hc : ProperOff M.graph h s) :
 /-- **The universal period** (`NightFloorHP2.md` Lemma 2, Studio Job O). At a `(5,5,5,5,6)`
 hole, start from a `DL` state of type `R3` at `k = 4` whose forward `π`-orbit is all `DL`.
 Then the `n`-th state has `(type, k) = gseq n` (`gseq_table`), the swapped pair of every state
-`n ≥ 1` is carried by `pairVerts (gseq n)`, and `gseq` has exact period `10` with each
+`n ≥ 1` is carried by `gammaPairVerts (gseq n)`, and `gseq` has exact period `10` with each
 `(type, k)` once per period. -/
 theorem gamma_period_ten {s : Fin n → Fin 4} {j₀ : Fin 5} (H : Hole6 P w m q)
     (hc : ProperOff M.graph h s) (hall : ∀ n, DLState P ((piMove P)^[n] s))
     (hr : RepeatAt P s j₀) (hq : q = j₀ + 4) (hT : TypeR3 P w s j₀) :
     (∀ n, HasTK P w q ((piMove P)^[n] s) (gseq n).1 (gseq n).2) ∧
     (∀ n, 0 < n → ∀ j, RepeatAt P ((piMove P)^[n] s) j →
-      PairFact P ((piMove P)^[n] s) j (pairVerts P w m q (gseq n).1 (gseq n).2).1
-        (pairVerts P w m q (gseq n).1 (gseq n).2).2) ∧
+      PairFact P ((piMove P)^[n] s) j (gammaPairVerts P w m q (gseq n).1 (gseq n).2).1
+        (gammaPairVerts P w m q (gseq n).1 (gseq n).2).2) ∧
     (∀ n, gseq (n + 10) = gseq n) ∧
     (∀ n d, 0 < d → d < 10 → gseq (n + d) ≠ gseq n) ∧
     (∀ n x, ∃! d, d < 10 ∧ gseq (n + d) = x) := by

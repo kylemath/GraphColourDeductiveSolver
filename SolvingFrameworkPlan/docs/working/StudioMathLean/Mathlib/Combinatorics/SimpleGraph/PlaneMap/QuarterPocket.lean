@@ -843,7 +843,7 @@ theorem crossing_on_pocket' (hB : Break P w q s) {t : Fin n}
     (ht : t = w (q + 4) ∨ t = w (q + 2))
     (W : (GJ M h w q ((piMove P)^[9] (Gmap P ρ s))).Walk (w q) t) :
     ∃ v ∈ W.support, v ∈ X9 P ρ s ∧ v ∈ Pocket P m q ((piMove P)^[9] s) ∧
-      ¬ HoleV P w m q v :=
+      ¬ HoleVT P w m q v :=
   crossing_on_pocket H hc hall hr hq hT hρ (pocketLemmaAt_pos9 htri H hc hall hr hq hT hB).2 ht W
 
 include htri H hc hall hr hq hT hρ in

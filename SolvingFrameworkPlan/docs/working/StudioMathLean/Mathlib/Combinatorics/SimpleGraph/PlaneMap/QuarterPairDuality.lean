@@ -278,7 +278,7 @@ noncomputable def kEdges (a b : Fin 4) : Finset (Sym2 (Fin n)) :=
 
 open Classical in
 /-- The `{a, b}`-vertices off `R`. -/
-noncomputable def kVerts (a b : Fin 4) : Finset (Fin n) := Finset.univ.filter (KAct R c a b)
+noncomputable def kVertsFin (a b : Fin 4) : Finset (Fin n) := Finset.univ.filter (KAct R c a b)
 
 /-- `v` is a corner of the triangle of the dart `d`. -/
 def OnTri (d : M.Dart) (v : Fin n) : Prop :=
@@ -667,8 +667,8 @@ theorem finrank_ker_le {a b : Fin 4} {H : SimpleGraph (Fin n)}
     (hH : ∀ u v, H.Adj u v ↔ M.Adj u v ∧ KAct R c a b u ∧ KAct R c a b v)
     (hprop : ∀ u v, M.Adj u v → ¬ R u → ¬ R v → c u ≠ c v) :
     (finrank (ZMod 2) (LinearMap.ker (incK M R c a b)) : ℤ) ≤
-      (kEdges M R c a b).card - (kVerts R c a b).card +
-        ((kVerts R c a b).image H.connectedComponentMk).card := by
+      (kEdges M R c a b).card - (kVertsFin R c a b).card +
+        ((kVertsFin R c a b).image H.connectedComponentMk).card := by
   classical
   set I := incK M R c a b
   have hwalk : ∀ {u v : Fin n} (p : H.Walk u v), ∃ φ, I φ = Pi.single u 1 + Pi.single v 1 := by
@@ -721,14 +721,14 @@ theorem finrank_ker_le {a b : Fin 4} {H : SimpleGraph (Fin n)}
     intro v
     show Quot.out (H.connectedComponentMk (root v)) = _
     rw [hmk]
-  set N := (kVerts R c a b).filter (fun v => root v ≠ v) with hN
-  have hV : (kVerts R c a b).card ≤ N.card +
-      ((kVerts R c a b).image H.connectedComponentMk).card := by
-    have h1 : N.card + ((kVerts R c a b).filter (fun v => ¬ root v ≠ v)).card =
-        (kVerts R c a b).card := by
+  set N := (kVertsFin R c a b).filter (fun v => root v ≠ v) with hN
+  have hV : (kVertsFin R c a b).card ≤ N.card +
+      ((kVertsFin R c a b).image H.connectedComponentMk).card := by
+    have h1 : N.card + ((kVertsFin R c a b).filter (fun v => ¬ root v ≠ v)).card =
+        (kVertsFin R c a b).card := by
       rw [hN]; exact Finset.card_filter_add_card_filter_not _
-    have h2 : ((kVerts R c a b).filter (fun v => ¬ root v ≠ v)).card ≤
-        ((kVerts R c a b).image H.connectedComponentMk).card := by
+    have h2 : ((kVertsFin R c a b).filter (fun v => ¬ root v ≠ v)).card ≤
+        ((kVertsFin R c a b).image H.connectedComponentMk).card := by
       apply Finset.card_le_card_of_injOn H.connectedComponentMk
       · intro v hv
         rw [Finset.mem_coe, Finset.mem_filter] at hv
@@ -783,8 +783,8 @@ theorem card_le_rank {a b p q : Fin 4} {Hab H : SimpleGraph (Fin n)}
     (hQsub : ∀ K ∈ Q, ∃ v, KAct R c p q v ∧ H.connectedComponentMk v = K)
     (hQ : ∀ v r, M.Adj v r → R r → KAct R c p q v → H.connectedComponentMk v ∉ Q)
     (d0 : M.Dart) (hz : ∀ v, OnTri M d0 v → KAct R c p q v → H.connectedComponentMk v ∉ Q) :
-    (Q.card : ℤ) ≤ (kEdges M R c a b).card - (kVerts R c a b).card +
-        ((kVerts R c a b).image Hab.connectedComponentMk).card := by
+    (Q.card : ℤ) ≤ (kEdges M R c a b).card - (kVertsFin R c a b).card +
+        ((kVertsFin R c a b).image Hab.connectedComponentMk).card := by
   have h1 := card_le_finrank_ker hH htri hconn hnb hprop hcov Q hQsub hQ d0 hz
   have h2 := finrank_ker_le hHab hprop
   omega
@@ -915,22 +915,22 @@ noncomputable def linkComps (p q : Fin 4) : Finset (pairGraph M.graph h c p q).C
     (pairGraph M.graph h c p q).connectedComponentMk
 
 open Classical in
-lemma kVerts_hole (a b : Fin 4) : kVerts (fun v => v = h) c a b =
+lemma kVerts_hole (a b : Fin 4) : kVertsFin (fun v => v = h) c a b =
     Finset.univ.filter fun v => v ≠ h ∧ (c v = a ∨ c v = b) := by
   ext v
-  simp [kVerts, KAct]
+  simp [kVertsFin, KAct]
 
 open Classical in
 lemma pairComps_eq (a b : Fin 4) : pairComps M h c a b =
-    ((kVerts (fun v => v = h) c a b).image (pairGraph M.graph h c a b).connectedComponentMk).card := by
+    ((kVertsFin (fun v => v = h) c a b).image (pairGraph M.graph h c a b).connectedComponentMk).card := by
   rw [kVerts_hole]
   unfold pairComps
   convert rfl
 
 open Classical in
 lemma pairRank_eq (a b : Fin 4) : pairRank M h c a b =
-    ((kEdges M (fun v => v = h) c a b).card : ℤ) - (kVerts (fun v => v = h) c a b).card +
-      ((kVerts (fun v => v = h) c a b).image (pairGraph M.graph h c a b).connectedComponentMk).card := by
+    ((kEdges M (fun v => v = h) c a b).card : ℤ) - (kVertsFin (fun v => v = h) c a b).card +
+      ((kVertsFin (fun v => v = h) c a b).image (pairGraph M.graph h c a b).connectedComponentMk).card := by
   have hE : pairEdges M h c a b = (kEdges M (fun v => v = h) c a b).card := by
     unfold pairEdges
     congr 1
@@ -941,7 +941,7 @@ lemma pairRank_eq (a b : Fin 4) : pairRank M h c a b =
       exact ⟨he, fun v hv e' => hh (e' ▸ hv), hm⟩
     · rintro ⟨he, hh, hm⟩
       exact ⟨⟨he, fun hm' => hh h hm' rfl⟩, hm⟩
-  have hV : pairVerts h c a b = (kVerts (fun v => v = h) c a b).card := by
+  have hV : pairVerts h c a b = (kVertsFin (fun v => v = h) c a b).card := by
     rw [kVerts_hole]
     unfold pairVerts
     convert rfl
@@ -956,7 +956,7 @@ theorem hole_lower (htri : M.Triangulated) (hconn : M.graph.Connected) (P : Pent
   classical
   set H := pairGraph M.graph h c p q
   set F := linkComps M h c p q with hFdef
-  set Q := ((kVerts (fun v => v = h) c p q).image H.connectedComponentMk) \ F with hQdef
+  set Q := ((kVertsFin (fun v => v = h) c p q).image H.connectedComponentMk) \ F with hQdef
   have hnb : ∀ v, ∃ u, M.Adj v u := by
     intro v
     by_cases hv : v = h
@@ -985,9 +985,9 @@ theorem hole_lower (htri : M.Triangulated) (hconn : M.graph.Connected) (P : Pent
   have key := card_le_rank (Hab := pairGraph M.graph h c a b) (H := H) (fun _ _ => Iff.rfl)
     (fun _ _ => Iff.rfl) htri hconn hnb (fun u v e hu hv => hc e hu hv) hcov Q hQsub hQ d0 hz
   have hcard := Finset.card_le_card_sdiff_add_card
-    (s := (kVerts (fun v => v = h) c p q).image H.connectedComponentMk) (t := F)
+    (s := (kVertsFin (fun v => v = h) c p q).image H.connectedComponentMk) (t := F)
   rw [pairRank_eq, pairComps_eq]
-  have : (((kVerts (fun v => v = h) c p q).image H.connectedComponentMk).card : ℤ) ≤
+  have : (((kVertsFin (fun v => v = h) c p q).image H.connectedComponentMk).card : ℤ) ≤
       Q.card + F.card := by exact_mod_cast hcard
   linarith
 
@@ -1046,9 +1046,9 @@ lemma pairRank_comm (a b : Fin 4) : pairRank M h c a b = pairRank M h c b a := b
   have hE : kEdges M (fun v => v = h) c a b = kEdges M (fun v => v = h) c b a := by
     ext e
     simp only [kEdges, Finset.mem_filter, Sym2.eq_swap (a := a)]
-  have hV : kVerts (fun v => v = h) c a b = kVerts (fun v => v = h) c b a := by
+  have hV : kVertsFin (fun v => v = h) c a b = kVertsFin (fun v => v = h) c b a := by
     ext v
-    simp only [kVerts, KAct, Finset.mem_filter, Finset.mem_univ, true_and, or_comm]
+    simp only [kVertsFin, KAct, Finset.mem_filter, Finset.mem_univ, true_and, or_comm]
   rw [← pairComps_eq, ← pairComps_eq, pairComps_comm, hE, hV]
 
 lemma sum_six (f : Fin 4 → Fin 4 → ℤ) (hf : ∀ x y, f x y = f y x) {α μ A B : Fin 4}
@@ -1431,21 +1431,21 @@ variable (M c) in
 open Classical in
 /-- `C(G_ab)` on the sphere. -/
 noncomputable def sComps (a b : Fin 4) : ℕ :=
-  ((kVerts (fun _ => False) c a b).image (sGraph M c a b).connectedComponentMk).card
+  ((kVertsFin (fun _ => False) c a b).image (sGraph M c a b).connectedComponentMk).card
 
 variable (M c) in
 /-- `r(G_ab) = E − V + C` on the sphere. -/
 noncomputable def sRank (a b : Fin 4) : ℤ :=
-  ((kEdges M (fun _ => False) c a b).card : ℤ) - (kVerts (fun _ => False) c a b).card +
+  ((kEdges M (fun _ => False) c a b).card : ℤ) - (kVertsFin (fun _ => False) c a b).card +
     sComps M c a b
 
 lemma kAct_comm {R : Fin n → Prop} (a b : Fin 4) (v : Fin n) :
     KAct R c a b v ↔ KAct R c b a v := by
   unfold KAct; rw [or_comm]
 
-lemma kVerts_comm (R : Fin n → Prop) (a b : Fin 4) : kVerts R c a b = kVerts R c b a := by
+lemma kVerts_comm (R : Fin n → Prop) (a b : Fin 4) : kVertsFin R c a b = kVertsFin R c b a := by
   ext v
-  simp only [kVerts, Finset.mem_filter, Finset.mem_univ, true_and, kAct_comm a b]
+  simp only [kVertsFin, Finset.mem_filter, Finset.mem_univ, true_and, kAct_comm a b]
 
 lemma kEdges_comm (R : Fin n → Prop) (a b : Fin 4) : kEdges M R c a b = kEdges M R c b a := by
   ext e
@@ -1493,13 +1493,13 @@ theorem sphere_sum_edges (hc : ∀ u v, M.Adj u v → c u ≠ c v) :
 
 /-- `Σ_pairs V_ab = 3n` (every vertex lies in three pairs). -/
 theorem sphere_sum_verts :
-    ∑ p ∈ pairs, (kVerts (fun _ => False) c p.1 p.2).card = 3 * n := by
+    ∑ p ∈ pairs, (kVertsFin (fun _ => False) c p.1 p.2).card = 3 * n := by
   classical
-  have hk : ∀ a b : Fin 4, kVerts (fun _ => False) c a b =
+  have hk : ∀ a b : Fin 4, kVertsFin (fun _ => False) c a b =
       Finset.univ.filter fun v => c v = a ∨ c v = b := by
     intro a b
     ext v
-    simp [kVerts, KAct]
+    simp [kVertsFin, KAct]
   simp only [hk, Finset.card_filter]
   rw [Finset.sum_comm]
   have hv : ∀ v : Fin n, (∑ p ∈ pairs, if c v = p.1 ∨ c v = p.2 then 1 else 0) = 3 := by
@@ -1521,7 +1521,7 @@ theorem sphere_six_pair_identity (htri : M.Triangulated) (hconn : M.graph.Connec
   rw [Finset.sum_add_distrib, Finset.sum_sub_distrib]
   have hE' : ∑ p ∈ pairs, ((kEdges M (fun _ => False) c p.1 p.2).card : ℤ) =
       M.graph.edgeFinset.card := by exact_mod_cast hE
-  have hV' : ∑ p ∈ pairs, ((kVerts (fun _ => False) c p.1 p.2).card : ℤ) = 3 * n := by
+  have hV' : ∑ p ∈ pairs, ((kVertsFin (fun _ => False) c p.1 p.2).card : ℤ) = 3 * n := by
     exact_mod_cast hV
   rw [hE', hV']
   have hT' : (M.graph.edgeFinset.card : ℤ) + 6 = 3 * n := by exact_mod_cast hT
@@ -1543,7 +1543,7 @@ theorem sphere_lower (htri : M.Triangulated) (hconn : M.graph.Connected) (d0 : M
       | nil => exact absurd rfl hv
       | cons e _ => exact ⟨_, e⟩
   have hprop : ∀ u v, M.Adj u v → ¬ False → ¬ False → c u ≠ c v := fun u v e _ _ => hc u v e
-  set img := (kVerts (fun _ => False) c p q).image H.connectedComponentMk with himg
+  set img := (kVertsFin (fun _ => False) c p q).image H.connectedComponentMk with himg
   have hS : (sComps M c p q : ℤ) = img.card := rfl
   unfold sRank
   by_cases hne : img.Nonempty

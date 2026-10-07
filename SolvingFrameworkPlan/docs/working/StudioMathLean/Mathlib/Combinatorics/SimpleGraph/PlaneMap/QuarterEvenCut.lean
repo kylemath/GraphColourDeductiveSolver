@@ -382,7 +382,7 @@ lemma vec4_inj : ∀ x0 x1 x3 x4 : Fin 4, x1 ≠ x0 → x3 ≠ x0 → x4 ≠ x0 
     x3 ≠ x4 → ∀ a b : Fin 4, ![x0, x1, x3, x4] a = ![x0, x1, x3, x4] b → a = b := by
   decide
 
-lemma frm_inj {c : Fin n → Fin 4} {j : Fin 5} (hr : RepeatAt P c j) {a b : Fin 4} :
+lemma frm_inj_ec {c : Fin n → Fin 4} {j : Fin 5} (hr : RepeatAt P c j) {a b : Fin 4} :
     frm P c j a = frm P c j b ↔ a = b := by
   obtain ⟨-, h1, h3, h4, h13, h14, h34⟩ := hr
   exact ⟨vec4_inj _ _ _ _ h1 h3 h4 h13 h14 h34 a b, fun e => e ▸ rfl⟩
@@ -428,7 +428,7 @@ theorem allDL_ring_cut_count (H : Hole6 P w m q) (hc : ProperOff M.graph h s)
   intro i hi
   have hi' : i < 10 := mem_range.mp hi
   rw [col i (by omega), col (i + 1) (by omega), col i (by omega), col (i + 1) (by omega)]
-  have fi := fun a b => frm_inj (P := P) (c := (piMove P)^[k] s) (j := j) hd.1 (a := a) (b := b)
+  have fi := fun a b => frm_inj_ec (P := P) (c := (piMove P)^[k] s) (j := j) hd.1 (a := a) (b := b)
   have fb : ∀ a b, (frm P ((piMove P)^[k] s) j a == frm P ((piMove P)^[k] s) j b) = (a == b) := by
     intro a b; rw [Bool.eq_iff_iff, beq_iff_eq, beq_iff_eq, fi]
   simp only [bne, fb]

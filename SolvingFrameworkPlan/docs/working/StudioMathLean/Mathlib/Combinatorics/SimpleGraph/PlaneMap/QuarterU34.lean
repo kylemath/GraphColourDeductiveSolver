@@ -96,7 +96,7 @@ variable {n : ℕ} {M : SphericalMap n} {h : Fin n} {P : Pent M.graph h}
 lemma rot3_eq_kswap (c : Fin n → Fin 4) (i : Fin 5) :
     rot3 P c i = kswap M.graph h c (c (P.x i)) (c (P.x (i + 3))) (P.x (i + 2)) := rfl
 
-lemma rot3_keep' {c : Fin n → Fin 4} {i : Fin 5} {v : Fin n} (h1 : c v ≠ c (P.x i))
+lemma rot3_keep_u34 {c : Fin n → Fin 4} {i : Fin 5} {v : Fin n} (h1 : c v ≠ c (P.x i))
     (h2 : c v ≠ c (P.x (i + 3))) : rot3 P c i v = c v :=
   swap_other h1 h2
 
@@ -181,7 +181,7 @@ theorem u34_core (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P 
         ⟨K.offh.1, Or.inl (by rw [sw3, s0])⟩⟩)
     rw [rot3_eq_kswap, kswap_mem reach1 (by rw [sw3, s0]), s3]
   have u6 : rot3 P s j (w (j + 2)) = r (P.x (j + 4)) := by
-    rw [rot3_keep' (by rw [sw2, s0]; exact h14.symm) (by rw [sw2, s3]; exact h34.symm), sw2]
+    rw [rot3_keep_u34 (by rw [sw2, s0]; exact h14.symm) (by rw [sw2, s3]; exact h34.symm), sw2]
   generalize ht1 : rot3 P s j = t1 at *
   have L2t1 : Lock2 P t1 (j + 3) := by
     unfold Lock2
@@ -210,10 +210,10 @@ theorem u34_core (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P 
   simp only [add_assoc, Fin.reduceAdd] at r2
   have E2 : piMove P t1 = rot3 P t1 (j + 3) := by rw [piMove_rep r1, ite_eq_left L2t1]
   have v5 : rot3 P t1 (j + 3) (w (j + 3)) = r (P.x (j + 3)) := by
-    rw [rot3_keep' (by rw [u5, u3]; exact h13.symm)
+    rw [rot3_keep_u34 (by rw [u5, u3]; exact h13.symm)
       (by simp only [add_assoc, Fin.reduceAdd]; rw [u5, u1]; exact h3), u5]
   have v6 : rot3 P t1 (j + 3) (w (j + 2)) = r (P.x (j + 4)) := by
-    rw [rot3_keep' (by rw [u6, u3]; exact h14.symm)
+    rw [rot3_keep_u34 (by rw [u6, u3]; exact h14.symm)
       (by simp only [add_assoc, Fin.reduceAdd]; rw [u6, u1]; exact h4), u6]
   generalize ht2 : rot3 P t1 (j + 3) = t2 at *
   refine ⟨by rw [E1]; exact rep_not_target r1, by rw [E1, E2]; exact rep_not_target r2, ?_⟩
@@ -241,7 +241,7 @@ theorem u34_core (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P 
     rw [kswap_mem' (Adj.reachable ⟨T.adj3, ⟨P.x_ne_h _, Or.inl (by rw [v0, v3])⟩,
       ⟨o2, Or.inr (by rw [v6, v1])⟩⟩) (by rw [v6, v1]), v3]
   have y6 : rot3 P t2 (j + 1) (w (j + 3)) = r (P.x (j + 3)) := by
-    rw [rot3_keep' (by rw [v5, v3]; exact h13.symm)
+    rw [rot3_keep_u34 (by rw [v5, v3]; exact h13.symm)
       (by simp only [add_assoc, Fin.reduceAdd]; rw [v5, v1]; exact h34), v5]
   generalize ht3 : rot3 P t2 (j + 1) = t3 at *
   -- `x (j+3)` is isolated in the `{α, B}`-graph of `t₃`.
@@ -483,7 +483,7 @@ theorem u34_two (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P w
         ⟨K.offh.1, Or.inl (by rw [sw3, s0])⟩⟩)
     rw [rot3_eq_kswap, kswap_mem reach1 (by rw [sw3, s0]), s3]
   have u6 : rot3 P s j (w (j + 2)) = r (P.x (j + 4)) := by
-    rw [rot3_keep' (by rw [sw2, s0]; exact h14.symm) (by rw [sw2, s3]; exact h34.symm), sw2]
+    rw [rot3_keep_u34 (by rw [sw2, s0]; exact h14.symm) (by rw [sw2, s3]; exact h34.symm), sw2]
   generalize ht1 : rot3 P s j = t1 at *
   have L2t1 : Lock2 P t1 (j + 3) := by
     unfold Lock2
@@ -512,10 +512,10 @@ theorem u34_two (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P w
   simp only [add_assoc, Fin.reduceAdd] at r2 l2
   have E2 : piMove P t1 = rot3 P t1 (j + 3) := by rw [piMove_rep r1, ite_eq_left L2t1]
   have v5 : rot3 P t1 (j + 3) (w (j + 3)) = r (P.x (j + 3)) := by
-    rw [rot3_keep' (by rw [u5, u3]; exact h13.symm)
+    rw [rot3_keep_u34 (by rw [u5, u3]; exact h13.symm)
       (by simp only [add_assoc, Fin.reduceAdd]; rw [u5, u1]; exact h3), u5]
   have v6 : rot3 P t1 (j + 3) (w (j + 2)) = r (P.x (j + 4)) := by
-    rw [rot3_keep' (by rw [u6, u3]; exact h14.symm)
+    rw [rot3_keep_u34 (by rw [u6, u3]; exact h14.symm)
       (by simp only [add_assoc, Fin.reduceAdd]; rw [u6, u1]; exact h4), u6]
   rw [E1, E2]
   exact ⟨p2, r2, l2, v2, v3, v4, v0, v1, v6, v5⟩

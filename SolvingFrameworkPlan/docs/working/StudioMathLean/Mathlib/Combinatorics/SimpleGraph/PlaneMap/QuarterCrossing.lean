@@ -134,15 +134,15 @@ lemma pocket_col {c : Fin n → Fin 4} {v : Fin n} (hv : v ∈ Pocket P m q c) :
   · have le : pocketGraph P m q c ≤ pairGraph M.graph h c (c (P.x q)) (c m) := fun _ _ x => x.1
     exact reach_col (Reachable.mono le hv) e
 
-lemma hole_w (t : Fin 5) : HoleV P w m q (w (q + t)) := Or.inr (Or.inl ⟨t, rfl⟩)
+lemma hole_w (t : Fin 5) : HoleVT P w m q (w (q + t)) := Or.inr (Or.inl ⟨t, rfl⟩)
 
-lemma hole_z : HoleV P w m q (w q) := Or.inr (Or.inl ⟨0, by rw [add_zero]⟩)
+lemma hole_z : HoleVT P w m q (w q) := Or.inr (Or.inl ⟨0, by rw [add_zero]⟩)
 
 /-! ### Core lemmas for two colourings agreeing on the hole -/
 
 /-- **Crossing lemma, core.** `c` and `c'` agree on the hole, `J` fails at `c` and `y ~ w₂` in
 `G_J(c)`. Then every `G_J(c')` walk from `z` to `y` or `w₂` meets `{v | c v ≠ c' v}`. -/
-theorem crossing_core {c c' : Fin n → Fin 4} (hag : ∀ v, HoleV P w m q v → c' v = c v)
+theorem crossing_core {c c' : Fin n → Fin 4} (hag : ∀ v, HoleVT P w m q v → c' v = c v)
     (hB : ¬ JoinYZ M.graph h w q c) (hyw : (GJ M h w q c).Reachable (w (q + 4)) (w (q + 2)))
     {t : Fin n} (ht : t = w (q + 4) ∨ t = w (q + 2)) (W : (GJ M h w q c').Walk (w q) t) :
     ∃ v ∈ W.support, c v ≠ c' v := by
@@ -160,10 +160,10 @@ theorem crossing_core {c c' : Fin n → Fin 4} (hag : ∀ v, HoleV P w m q v →
 pocket of `c`. -/
 theorem crossing_on_pocket_core (H : Hole6 P w m q) {c c' : Fin n → Fin 4}
     (hc : ProperOff M.graph h c) (hxy : c (P.x (q + 1)) ≠ c (w (q + 4)))
-    (hxz : c (P.x (q + 1)) ≠ c (w q)) (hag : ∀ v, HoleV P w m q v → c' v = c v)
+    (hxz : c (P.x (q + 1)) ≠ c (w q)) (hag : ∀ v, HoleVT P w m q v → c' v = c v)
     (hsep : PocketSeparates P w m q c) {t : Fin n} (ht : t = w (q + 4) ∨ t = w (q + 2))
     (W : (GJ M h w q c').Walk (w q) t) :
-    ∃ v ∈ W.support, c v ≠ c' v ∧ v ∈ Pocket P m q c ∧ ¬ HoleV P w m q v := by
+    ∃ v ∈ W.support, c v ≠ c' v ∧ v ∈ Pocket P m q c ∧ ¬ HoleVT P w m q v := by
   obtain ⟨v, hvW, hvC⟩ := hsep t ht (W.mapLe (show GJ M h w q c' ≤ M.graph from fun _ _ e => e.1))
   rw [Walk.support_mapLe_eq_support] at hvW
   have ry := hag _ (hole_w (P := P) (m := m) 4)
@@ -196,7 +196,7 @@ theorem crossing_on_pocket_core (H : Hole6 P w m q) {c c' : Fin n → Fin 4}
     · rcases hcol with e2 | e2
       · exact hxy e2
       · exact hxz e2
-  have hnh : ¬ HoleV P w m q v := fun hv => hX (hag v hv).symm
+  have hnh : ¬ HoleVT P w m q v := fun hv => hX (hag v hv).symm
   refine ⟨v, hvW, hX, ?_, hnh⟩
   rcases hvC with hP | rfl | rfl
   · exact hP
@@ -249,7 +249,7 @@ theorem pos9_xplus :
 
 include H hc hall hr hq hT hρ in
 /-- **(1) `X₉` avoids the hole.** -/
-theorem X_far {v : Fin n} (hv : HoleV P w m q v) : v ∉ X9 P ρ s :=
+theorem X_far {v : Fin n} (hv : HoleVT P w m q v) : v ∉ X9 P ρ s :=
   fun hx => hx (ring_agree H hc hall hr hq hT hρ 9 hv).2.symm
 
 include H hc hall hr hq hT hρ in
@@ -281,7 +281,7 @@ theorem crossing_on_pocket (hsep : PocketSeparates P w m q ((piMove P)^[9] s)) {
     (ht : t = w (q + 4) ∨ t = w (q + 2))
     (W : (GJ M h w q ((piMove P)^[9] (Gmap P ρ s))).Walk (w q) t) :
     ∃ v ∈ W.support, v ∈ X9 P ρ s ∧ v ∈ Pocket P m q ((piMove P)^[9] s) ∧
-      ¬ HoleV P w m q v := by
+      ¬ HoleVT P w m q v := by
   obtain ⟨x1, x2⟩ := pos9_xplus H hc hall hr hq hT
   exact crossing_on_pocket_core H (iter_proper hc 9) x1 x2
     (fun v hv => (ring_agree H hc hall hr hq hT hρ 9 hv).2) hsep ht W
@@ -300,11 +300,11 @@ and the two crossing statements hold with roles swapped by `G`. -/
 def TwoPocketConj (c c' : Fin n → Fin 4) : Prop :=
   PocketPath P w m q c ∧ PocketPath P w m q c' ∧
   PocketSeparates P w m q c ∧ PocketSeparates P w m q c' ∧
-  (∀ v, HoleV P w m q v → c v = c' v) ∧
+  (∀ v, HoleVT P w m q v → c v = c' v) ∧
   (∀ t, (t = w (q + 4) ∨ t = w (q + 2)) → ∀ W : (GJ M h w q c').Walk (w q) t,
-    ∃ v ∈ W.support, c v ≠ c' v ∧ v ∈ Pocket P m q c ∧ ¬ HoleV P w m q v) ∧
+    ∃ v ∈ W.support, c v ≠ c' v ∧ v ∈ Pocket P m q c ∧ ¬ HoleVT P w m q v) ∧
   (∀ t, (t = w (q + 4) ∨ t = w (q + 2)) → ∀ W : (GJ M h w q c).Walk (w q) t,
-    ∃ v ∈ W.support, c' v ≠ c v ∧ v ∈ Pocket P m q c' ∧ ¬ HoleV P w m q v)
+    ∃ v ∈ W.support, c' v ≠ c v ∧ v ∈ Pocket P m q c' ∧ ¬ HoleVT P w m q v)
 
 include H hc hall hr hq hT hρ in
 /-- **Two applications of the crossing lemma.** If both runs break, the pocket lemma at `s₉`
@@ -318,7 +318,7 @@ theorem two_pocket_conj (hps : PocketLemmaAt P w m q ((piMove P)^[9] s))
   obtain ⟨pd, sd⟩ := hpd hB.2
   obtain ⟨hcd, halld, hrd, hTd⟩ := d_setting H hc hall hr hq hT (ρ := ρ)
   obtain ⟨x1, x2⟩ := pos9_xplus H hcd halld hrd hq hTd
-  have ag := fun v (hv : HoleV P w m q v) => (ring_agree H hc hall hr hq hT hρ 9 hv).2
+  have ag := fun v (hv : HoleVT P w m q v) => (ring_agree H hc hall hr hq hT hρ 9 hv).2
   refine ⟨ps, pd, ss, sd, fun v hv => (ag v hv).symm, fun t ht W => ?_, fun t ht W => ?_⟩
   · exact crossing_on_pocket_core H (iter_proper hc 9) (pos9_xplus H hc hall hr hq hT).1
       (pos9_xplus H hc hall hr hq hT).2 ag ss ht W

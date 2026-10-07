@@ -478,7 +478,7 @@ theorem k3_lockless_iff_join (htri : M.Triangulated) (H : Hole6 P w m q) (hq : q
   unfold JoinYZ
   simp only [add_assoc, Fin.reduceAdd]
   obtain ⟨⟨-, -, l2⟩, -, -, e2, e3, -⟩ := hR
-  rw [e2, e3, pairGraph_comm c (c (P.x (j + 4))) (c (P.x (j + 1)))]
+  rw [e2, e3, pairGraph_comm_gen c (c (P.x (j + 4))) (c (P.x (j + 1)))]
   have a := H.adj_w4 (j + 4)
   simp only [add_assoc, Fin.reduceAdd] at a
   have ez : (pairGraph M.graph h c (c (P.x (j + 1))) (c (P.x (j + 4)))).Reachable
