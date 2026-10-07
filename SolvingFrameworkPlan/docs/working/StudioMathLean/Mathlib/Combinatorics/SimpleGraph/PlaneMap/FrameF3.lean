@@ -9,8 +9,8 @@ public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.C2122POcc
 # The minimal-counterexample frame with the Birkhoff diamond and RSST 2.122 excluded
 
 `RStarFrame`: every connected spherical triangulation of minimum degree five, with no separating
-triangle, in which neither the Birkhoff diamond nor RSST configuration 2.122 occurs (in either
-orientation), has a pure-clean vertex of degree five.
+triangle, that is `Occ`-free (no `Occ` of the Birkhoff diamond or of RSST 2.122, in either
+orientation) has a pure-clean vertex of degree five.
 
 `four_color_of_RStarFrame`: `RStarFrame` implies that every spherical map is four-colourable.
 The separating triangle is reduced by gluing (F1); each configuration occurrence is reduced by its
@@ -28,11 +28,11 @@ open VacancySlide VacancyShortFill
 
 variable {n : ℕ}
 
-/-- No occurrence of the Birkhoff diamond, in either orientation. -/
+/-- `Occ`-free for the Birkhoff diamond: no `Occ`, in either orientation. -/
 def DiamondFree (T : SphericalMap n) : Prop :=
   (¬ ∃ ring int, DiamondM.Occ T ring int) ∧ (¬ ∃ ring int, DiamondP.Occ T ring int)
 
-/-- No occurrence of RSST configuration 2.122, in either orientation. -/
+/-- `Occ`-free for RSST 2.122: no `Occ`, in either orientation. -/
 def Conf2122Free (T : SphericalMap n) : Prop :=
   (¬ ∃ ring int, C2122M.Occ T ring int) ∧ (¬ ∃ ring int, C2122P.Occ T ring int)
 
@@ -42,8 +42,8 @@ def RStarFrame : Prop :=
     (∀ x, 5 ≤ T.graph.degree x) → NoSep T → DiamondFree T → Conf2122Free T →
     ∃ v, T.graph.degree v = 5 ∧ PureClean T v
 
-/-- **R\* for diamond-free, 2.122-free triangulations with no separating triangle implies the Four
-Colour Theorem.** -/
+/-- **R\* for `Occ`-free triangulations (diamond and 2.122, both orientations) with no separating
+triangle implies the Four Colour Theorem.** -/
 theorem four_color_of_RStarFrame (hR : RStarFrame) {n : ℕ} (M : SphericalMap n) :
     M.graph.Colorable 4 := by
   refine four_color_of_smaller_gate (fun m T hm hconn htri hdeg IH => ?_) M

@@ -5,6 +5,32 @@ Status (updated 1406 MDT): **Piece 1 compiled.** `EulerCounting.lean` (SHA-256 p
 ## Finding from reading the library [hand, from source]
 `SphericalMap.edge_card_bound` (PlaneMap/SphericalDegree.lean) gives only `E + 1 ≤ V_support + F`. For a triangulation (3F = 2E) this yields E ≤ 3V − 3, i.e. Σ(deg−6) ≤ −6. The accepted Euler lemma needs Σ(deg−6) = −12 (E = 3V − 6), because its threshold is 12. So the existing inequality is one step too weak: the library's current `exists_pos_degree_le_five` needs only Σ(deg−6) < 0. We need the full Euler identity V − E + F = 2 for a connected triangulation.
 
+## Update 1644 MDT: the bridge (appears → Occ), the F-cycle, and a 2.122 witness
+
+**Bridge** (`AppearsOcc`, `DiamondAppears`, `C2122Appears`, `FrameAppears`).
+- `X.occ_of_appears`: a triangulation with `NoSep`, `Appears γ T int` (injective, induced
+  `K₄ − e`, degrees) and `TipsClean T int` has an `Occ` in one of the two orientations.
+- The ring vertices are rotation successors. They are distinct for three reasons:
+  - two of them seen from one interior vertex are distinct rotation entries;
+  - two seen from adjacent interior vertices are separated by `NoSep`, through the triangle law;
+  - the single tip-only pair (diamond ring 2 = ring 5; 2.122 ring 3 = ring 6) is excluded by
+    `TipsClean`.
+- `TipsClean` fails only with a separating 4-cycle tip–centre–tip–x, which is F2.
+- `four_color_of_RStarFrameApp` restates the frame theorem with appearances.
+
+**F-cycle** (`FCycle22`). For all 20 states: proper, unfilled, and `PureFill … ρ`. The 12 silent
+moves are formal `KempeStep`s that keep the link colours, and each lands at `PureFill … ρ−1`.
+`fcycle_check.py` reproduces the file's radii and first moves with 0 mismatches.
+
+**2.122 witness** (`Tri22Map`, `Tri22Sanity`).
+- The F-cycle graph is a genuine `SphericalMap`, with `Fills` by a generated linear certificate
+  (`gen_smap.py`, after `Icosahedron.lean`).
+- `occ_C2122M`/`occ_C2122P` give `¬ Conf2122Free`.
+- The map is connected, has `NoSep` and minimum degree 5, and `G_eq` identifies its graph with
+  `FCycle22.G`.
+
+**Docstring (audit F1):** "Occ-free (diamond and 2.122, both orientations)".
+
 ## Update 1609 MDT: steps C and D compiled; sanity checks; statement list frozen
 
 **Step C.** `OccToRing.lean` plus the four generated pairs `DiamondM/P` and `C2122M/P` (each a `…Cert` and an `…Occ`, made by `gen_occ.py`).
