@@ -189,3 +189,10 @@ Exits = R3 DD-endpoint states of positive cycles with a lockless sigma-image on 
   both failing: 1 + 1, 8 + 9, 31 + 23, **never on a Gamma-cycle**. Distance from the second failure to the first non-DL state: max 5 (order 25), 2 / 15 (order 26 / mirror),
   9 (order 27). The single distance > 10 is p26m #21951 h22 (run length 27, failures at positions 2 and 12, the run continues 15 steps). The state leaving DL always has
   Lock1 and loses Lock2 (it is the run end s_u).
+
+## Job AA (independent Python; jobuv/jobaa.py -> jobaa-summary.txt, jobaa-cases.json): the 73 double k = 4 failures of Job X, traced to the run end
+- All 73 reproduce. Every second-failure break is the step-8 (p,y) swap whose component avoids p, m, y, z.
+- The breaking component meets the Lock2 witness (the {mu,B}-component of m) of the last DL state in 69/73; the 4 exceptions (p27m #162314 h4, #187412 h23 (x2), #260796 h4)
+  all have distance 9, last DL state R3k0 and a leaving step that is itself a far (p,y) swap; there the breaking component meets the leaving step's swapped component.
+- Rule covering all 73: the second break's component meets the Lock2 witness of the last DL state OR the component swapped by the step that kills Lock2.
+- Leaving steps: (m,y) far swap from R1k1 (36), (m,z) far (10), (p,y) far (8), (p,y) through p and y (10), (p,z) far (4), (p,z) through p, z (2), (p,m) through p, m (3).

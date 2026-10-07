@@ -6,7 +6,8 @@ from kempe_py import Space
 from escape import pi_of, is_DL
 from collections import Counter
 def load(name, mirror):
-    for l in open(os.path.join(HERE, '../in-plantri-27.txt')):
+    order = name.split('#')[0][1:]
+    for l in open(os.path.join(HERE, '../in-plantri-%s.txt' % order)):
         if l.startswith(name + ' '):
             _, n, r = l.split(' ', 2); rot = [[int(x) for x in s.split(',')] for s in r.strip().split(';')]
             return [list(reversed(x)) for x in rot] if mirror else rot

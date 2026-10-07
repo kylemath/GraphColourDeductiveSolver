@@ -1,0 +1,29 @@
+Job X events: 73
+reproduced cases: 73
+   ('break meets Lock2 witness', False) 4
+   ('break meets Lock2 witness', True) 69
+   ('break pair/comp', 'py', '-') 73
+   ('last DL', ('R1', 'k0')) 4
+   ('last DL', ('R1', 'k1')) 36
+   ('last DL', ('R1', 'k3')) 2
+   ('last DL', ('R3', 'k0')) 8
+   ('last DL', ('R3', 'k2')) 10
+   ('last DL', ('R3', 'k3')) 3
+   ('last DL', ('R3', 'k4')) 10
+   ('leave pair/comp', 'my', '-') 36
+   ('leave pair/comp', 'mz', '-') 10
+   ('leave pair/comp', 'pm', 'pm') 3
+   ('leave pair/comp', 'py', '-') 8
+   ('leave pair/comp', 'py', 'py') 10
+   ('leave pair/comp', 'pz', '-') 4
+   ('leave pair/comp', 'pz', 'pz') 2
+cases where the step-8 breaking component misses the Lock2 witness of the last DL state:
+   {'case': ['x27m', 'p27#162314', 4], 'run_len': 25, 'second_fail': 16, 'dist': 9, 'last_DL': ['R3', 'k0'], 'leaving': [1], 'leave_pair': 'py', 'leave_comp': '', 'lock2_witness_size': 10, 'break_pair': 'py', 'break_comp': '', 'break_meets_witness': False, 'break_meets_leaving_comp': True, 'n_break_in_witness': 0}
+   {'case': ['x27m', 'p27#187412', 23], 'run_len': 21, 'second_fail': 12, 'dist': 9, 'last_DL': ['R3', 'k0'], 'leaving': [1], 'leave_pair': 'py', 'leave_comp': '', 'lock2_witness_size': 13, 'break_pair': 'py', 'break_comp': '', 'break_meets_witness': False, 'break_meets_leaving_comp': True, 'n_break_in_witness': 0}
+   {'case': ['x27m', 'p27#187412', 23], 'run_len': 21, 'second_fail': 12, 'dist': 9, 'last_DL': ['R3', 'k0'], 'leaving': [1], 'leave_pair': 'py', 'leave_comp': '', 'lock2_witness_size': 13, 'break_pair': 'py', 'break_comp': '', 'break_meets_witness': False, 'break_meets_leaving_comp': True, 'n_break_in_witness': 0}
+   {'case': ['x27m', 'p27#260796', 4], 'run_len': 25, 'second_fail': 16, 'dist': 9, 'last_DL': ['R3', 'k0'], 'leaving': [1], 'leave_pair': 'py', 'leave_comp': '', 'lock2_witness_size': 10, 'break_pair': 'py', 'break_comp': '', 'break_meets_witness': False, 'break_meets_leaving_comp': True, 'n_break_in_witness': 0}
+by distance to run end (dist, meets): [((1, True), 10), ((2, True), 36), ((3, True), 3), ((4, True), 4), ((5, True), 9), ((8, True), 2), ((9, False), 4), ((9, True), 4), ((15, True), 1)]
+leaving step (pair, comp contains, break comp meets leaving comp): [(('my', '-', True), 36), (('mz', '-', True), 10), (('pm', 'pm', False), 1), (('pm', 'pm', True), 2), (('py', '-', True), 8), (('py', 'py', False), 10), (('pz', '-', True), 4), (('pz', 'pz', True), 2)]
+leaving step is the same kind as the break (pair py, component avoiding p,m,y,z): 8 of 73
+break comp meets (Lock2 witness of last DL state) OR (leaving step component): 73 of 73
+break comp meets leaving step component alone: 62 of 73
