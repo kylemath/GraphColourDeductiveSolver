@@ -1,0 +1,14 @@
+== Part 1: tables (letters of the anchoring R3k4 state, 0 = alpha)
+  step 0: pair [0, 2], changed ['x3', 'x4', 'w2']  FREE (pair = complement of c(w3),c(y)); x4 swapped
+  step 1: pair [0, 1], changed ['x1', 'x2', 'w2']
+  step 2: pair [0, 3], changed ['p=x0', 'x4', 'w3', 'm']
+  step 3: pair [0, 2], changed ['x2', 'x3', 'w3']
+  step 4: pair [0, 1], changed ['p=x0', 'x1', 'y=w4']
+  step 5: pair [0, 3], changed ['x3', 'x4', 'y=w4', 'm']
+  step 6: pair [0, 2], changed ['x1', 'x2', 'z=w0', 'm']
+  step 7: pair [0, 1], changed ['p=x0', 'x4', 'z=w0']  FREE (pair = complement of c(w3),c(y)); x4 swapped
+  step 8: pair [0, 3], changed ['x2', 'x3', 'w1']
+  step 9: pair [0, 2], changed ['p=x0', 'x1', 'w1', 'm']
+  every pair contains alpha: True; free steps: [0, 7] ; row 0: c(w3), c(y), c(x4) = 3 1 2
+== Part 2: constructed cycles
+  {'cycles': 26, 'periods': 160, 'S=AxorA': 160, 'ring misses S': 160, 'u* in S': 160, 'u* swapped 3x': 160, 'exactly one of K0,K7 has u*': 160, 'no odd-distance repeat of A': 26, 'L 80': 14, 'L 40': 12}
