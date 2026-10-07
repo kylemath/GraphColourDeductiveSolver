@@ -125,3 +125,12 @@ R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (140 periods, no exception).
 - Failure mechanism (13 of 14 failing periods): y ~ z breaks at the step R3k0 -> R1k2 (pair py, component meets none of p, m, y, z), stays broken at R3k4,
   rejoins at R1k1 (step pair mz), breaks again at R3k3 and R1k0 (step pair my), and rejoins at R3k2 (step pair pz). All four steps swap components that avoid p, m, y and z.
   Trace (positions R1k2 | R3k4 R1k1 R3k3 R1k0 R3k2): 0 | 0 1 0 0 1.
+
+## Job P (`--jobp`, `jobp.py` -> jobp-summary.txt, jobp-steps.jsonl), (5,5,5,5,6) Gamma-cycles, orders 25-26, both orientations (140 periods)
+- P1: at k = 3 the edges x2x3, x2w1 and x3m (= pm) are each bridges of G[{v} + their two colours] exactly when sigma(r) is lockless (0 exceptions in 140); at k = 4 the same
+  holds for x0x4, x0w0 and x4m. At k = 0, 1, 2 NO edge among x0..x4, w0..w4, m has this property (best edge: exactly the failures as exceptions, 20 / 44 / 20):
+  the k <= 2 failures are mostly fixed points (19 / 40 / 19: the whole {alpha,mu}-subgraph is one component), a global, not one-edge, condition.
+- P1: credit from k <= 2 lockless exits >= 7L/20 on all 62 cycle records, with equality at p25m #16945 h3.
+- P2: in the failing periods the y ~ z break is caused by the step-8 (p,y) or step-1 (m,y) swap whose component K cuts y from z inside the {c(y),c(z)} graph
+  (K meets every y-z path; 2 resp. 1 vertices of K on a shortest y-z path; |K & K_yz| = 1-5). K never separates y from z in T - K. Every swapped component contains
+  the link vertex x_{j+2} (R+3), so dist(K, v) = 1. Restoring steps (0 = (m,z), 3 = (p,z)) swap components meeting one of the two y/z pieces (|K & K_yz| = 1-2).
