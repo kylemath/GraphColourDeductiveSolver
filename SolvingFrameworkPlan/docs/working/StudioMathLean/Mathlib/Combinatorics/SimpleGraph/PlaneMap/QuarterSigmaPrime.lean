@@ -27,10 +27,13 @@ for any `L`. `σ′C` is the instance `L = sigmaPrimeLink P`.
 * `sigmaPrimeLink_mem_kclass`: a link-free swap is a Kempe step, so `σ′`-links stay in the class.
 * `sigmaPrimeGroup_piInvariant`, `sum_lam_sigmaPrimeGroup` (`Σλ = |G| − 4·F(G)`),
   `sum_lam_class_of_primeGroups`, `sigmaPrimeC_imp_quarterFloor`.
-* `sigmaPrimeC_of_icoBall` is stated with a documented `sorry` (see its docstring): F5's
-  `σ`-exit swaps the `{α, μ}`-component `{x j, x (j+1), x (j+2)}`, which contains link
-  vertices, so it is **not** a `σ′`-link under the link-free definition used here, and F5's
-  per-group count does not transfer directly.
+* `SigmaUnionC` (the night's final conjecture, Studio variant H2): groups joined by `π`-steps,
+  `σ`-links and `σ′`-links. `sigmaUnionC_imp_quarterFloor`; `sigmaUnionC_of_icoBall` from F5's
+  count, via the general `dd_le_two_noLock_linkGroup` (F5 per `L`-group for any `L ⊇ σ`).
+* The pure `σ′C` gets no F5 base case this way: F5's `σ`-exit swaps `{x j, x (j+1), x (j+2)}`,
+  which contains link vertices, so `σ ⊄ σ′`.
+
+All results are sorry-free.
 -/
 
 @[expose] public section
@@ -261,23 +264,144 @@ lemma sigmaGroup_eq_linkGroup : sigmaGroup P c₀ c = linkGroup P (sigmaLink P) 
     exact propext ⟨fun ⟨a, b, r⟩ => ⟨r, a, b⟩, fun ⟨r, a, b⟩ => ⟨a, b, r⟩⟩
   rw [e]
 
-/-! ### The icosahedral base case -/
+/-! ### The union `σ ∪ σ′` and Conjecture `SigmaUnionC` -/
 
-variable {w : Fin 5 → Fin n}
+section union
+variable (P) in
+/-- The union link: a `σ`-link (`sigmaLink`, from `QuarterSigmaGroups`) or a `σ′`-link. -/
+def sigmaUnionLink (c d : Fin n → Fin 4) : Prop := sigmaLink P c d ∨ sigmaPrimeLink P c d
 
-/-- **`σ′C` at an icosahedral hole — NOT PROVED (documented `sorry`).**
+variable (P) in
+/-- The `σ ∪ σ′`-group of `c` in the class of `c₀`: joined by `π`-steps, `σ`-links from `DD`
+endpoints and `σ′`-links (link-free lock-breaking swaps from `DD` endpoints). -/
+noncomputable def sigmaUnionGroup (c₀ c : Fin n → Fin 4) : Finset (Fin n → Fin 4) :=
+  linkGroup P (sigmaUnionLink P) c₀ c
 
-The night log says `σ′ ⊇ σ` at the all-5 hole, so that F5's per-group count
-(`dd_le_two_noLock_group`) would transfer. Under the link-free definition used here
-(`LinkFree`: the swapped component contains no link vertex) this is false: F5's `σ`-exit
-`sigSwap P c j` swaps the `{α, μ}`-component of `x (j+1)`, which is `{x j, x (j+1), x (j+2)}`
-(`sigSwap_spec`), so it is a Kempe step but not a link-free one, and is not a `σ′`-link
-(a link-free swap leaves every link colour unchanged, whereas `σ` exchanges the colours of
-`x j` and `x (j+1)`). Proving this needs either a
-`σ′`-specific charging at icosahedral holes or a widened `σ′` (e.g. `σ′ ∪ σ`, as in the
-Studio's "with σ at R3 endpoints added" variant). -/
-theorem sigmaPrimeC_of_icoBall (_B : IcoBallP P w) : SigmaPrimeC P := by
-  sorry
+variable (P) in
+/-- **Conjecture `SigmaUnionC` at the hole `P`** (the night's final conjecture): every
+`σ ∪ σ′`-group of every Kempe class has `Σ λ ≤ 0`. The Studio's variant H2: 0 failures on
+~100M groups at orders 24–26. Open in general; proved at icosahedral holes
+(`sigmaUnionC_of_icoBall`). -/
+def SigmaUnionC : Prop :=
+  ∀ c₀ : Fin n → Fin 4, ProperOff M.graph h c₀ →
+    ∀ c ∈ kclass M h c₀, ∑ d ∈ sigmaUnionGroup P c₀ c, lam P d ≤ 0
+
+/-- `SigmaUnionC` at every pentagonal hole of every spherical map. -/
+def SigmaUnionCConj : Prop :=
+  ∀ (n : ℕ) (M : SphericalMap n) (h : Fin n) (P : Pent M.graph h), SigmaUnionC P
+
+lemma sigmaUnionLink_mem_kclass (hc : c ∈ kclass M h c₀) (hl : sigmaUnionLink P c d) :
+    d ∈ kclass M h c₀ :=
+  hl.elim (sigmaLink_mem_kclass hc) (sigmaPrimeLink_mem_kclass hc)
+
+theorem sigmaUnionGroup_piInvariant :
+    Set.BijOn (piMove P) ↑(sigmaUnionGroup P c₀ c) ↑(sigmaUnionGroup P c₀ c) :=
+  linkGroup_piInvariant
+
+open Classical in
+/-- **The identity on a `σ ∪ σ′`-group.** `Σ_group λ = |group| − 4·F(group)`. -/
+theorem sum_lam_sigmaUnionGroup :
+    ∑ d ∈ sigmaUnionGroup P c₀ c, lam P d = ((sigmaUnionGroup P c₀ c).card : ℤ) -
+      4 * ((sigmaUnionGroup P c₀ c).filter (Target M.graph h)).card :=
+  sum_lam_linkGroup
+
+/-- **`SigmaUnionC` implies the quarter floor.** -/
+theorem sigmaUnionC_imp_quarterFloor (H : SigmaUnionC P) :
+    QuarterFloorConj (G := M.graph) (h := h) :=
+  quarterFloor_of_groups (L := sigmaUnionLink P) H
+
+/-- `SigmaUnionC` everywhere gives the quarter floor at every pentagonal hole. -/
+theorem sigmaUnionCConj_imp_quarterFloor (H : SigmaUnionCConj) :
+    ∀ (n : ℕ) (M : SphericalMap n) (h : Fin n) (_ : Pent M.graph h),
+      QuarterFloorConj (G := M.graph) (h := h) :=
+  fun n M h P => sigmaUnionC_imp_quarterFloor (H n M h P)
+
+end union
+
+/-! ### Theorem F5 per group, for any link relation containing `σ` -/
+
+variable {w : Fin 5 → Fin n} {L : (Fin n → Fin 4) → (Fin n → Fin 4) → Prop}
+
+open Classical in
+/-- F5's count inside one `L`-group, for any `L ⊇ σ`: `|DD| ≤ 2 N₀`. Each `DD` step is sent to
+its `R3` endpoint (in the group by `π`-invariance), and each such endpoint is sent by `σ`
+(injectively) to a lockless state, which is `L`-linked to it and so lies in the same group.
+Mirrors `dd_le_two_noLock_group`. -/
+theorem dd_le_two_noLock_linkGroup (hL : ∀ c d, sigmaLink P c d → L c d) (B : IcoBallP P w) :
+    ((linkGroup P L c₀ c).filter (DDStep P)).card ≤
+      2 * ((linkGroup P L c₀ c).filter (NoLock P)).card := by
+  set S := linkGroup P L c₀ c with hSdef
+  let R := S.filter (fun d => (∃ j, R3At P w d j) ∧ DDEnd P d)
+  have hb : Set.BijOn (piMove P) ↑S ↑S := linkGroup_piInvariant
+  have hpS : ∀ d ∈ S, ProperOff M.graph h d := linkGroup_properOff
+  have h1 : (S.filter (DDStep P)).card ≤ 2 * R.card := by
+    let f : (Fin n → Fin 4) → (Fin n → Fin 4) :=
+      fun d => if ∃ j, R3At P w d j then d else piMove P d
+    refine Finset.card_le_mul_card_image_of_maps_to (f := f) ?_ 2 ?_
+    · intro d hd
+      obtain ⟨hdS, hdd⟩ := Finset.mem_filter.1 hd
+      obtain ⟨j, hdl⟩ := hdd.1
+      have hp := hpS d hdS
+      by_cases hx : ∃ j, R3At P w d j
+      · simp only [f, ite_eq_left hx]
+        exact Finset.mem_filter.2 ⟨hdS, hx, Or.inl hdd⟩
+      · simp only [f, ite_eq_right hx]
+        refine Finset.mem_filter.2 ⟨hb.mapsTo hdS, ?_, Or.inr ?_⟩
+        · rcases dd_r3 B hp hdl hdd.2 with h' | h'
+          · exact absurd ⟨j, h'⟩ hx
+          · exact ⟨_, h'⟩
+        · rw [piInv_piMove hp]; exact hdd
+    · intro r _
+      refine (Finset.card_le_card ?_).trans (Finset.card_le_two (a := r) (b := piInv P r))
+      intro d hd
+      obtain ⟨hdD, hfd⟩ := Finset.mem_filter.1 hd
+      have hp := hpS d (Finset.mem_filter.1 hdD).1
+      by_cases hx : ∃ j, R3At P w d j
+      · simp only [f, ite_eq_left hx] at hfd
+        simp [hfd]
+      · simp only [f, ite_eq_right hx] at hfd
+        have : d = piInv P r := by rw [← hfd, piInv_piMove hp]
+        simp [this]
+  have h2 : R.card ≤ (S.filter (NoLock P)).card := by
+    let g : (Fin n → Fin 4) → (Fin n → Fin 4) :=
+      fun d => if hx : ∃ j, R3At P w d j then sigSwap P d hx.choose else d
+    have gval : ∀ d (hx : ∃ j, R3At P w d j), g d = sigSwap P d hx.choose :=
+      fun d hx => dite_eq_left hx
+    refine Finset.card_le_card_of_injOn g ?_ ?_
+    · intro d hd
+      obtain ⟨hdS, hx, hE⟩ := Finset.mem_filter.1 (Finset.mem_coe.1 hd)
+      obtain ⟨-, -, r', n1, n2, -⟩ := sigSwap_spec B (hpS d hdS) hx.choose_spec
+      rw [Finset.mem_coe, gval d hx]
+      have hl : sigmaLink P d (sigSwap P d hx.choose) := ⟨hE, hx.choose, hx.choose_spec.1, rfl⟩
+      exact Finset.mem_filter.2 ⟨link_mem_linkGroup hdS
+        (sigmaLink_mem_kclass (linkGroup_subset_kclass hdS) hl) (hL _ _ hl), ⟨_, r', n1, n2⟩⟩
+    · intro d hd d' hd' E
+      obtain ⟨hdS, hx, -⟩ := Finset.mem_filter.1 (Finset.mem_coe.1 hd)
+      obtain ⟨hdS', hx', -⟩ := Finset.mem_filter.1 (Finset.mem_coe.1 hd')
+      rw [gval d hx, gval d' hx'] at E
+      exact sigSwap_inj B (hpS d hdS) hx.choose_spec (hpS d' hdS') hx'.choose_spec E
+  omega
+
+/-- F5 per `L`-group, for any `L ⊇ σ`: at an icosahedral hole every `L`-group has `Σ λ ≤ 0`. -/
+theorem sum_lam_linkGroup_nonpos (hL : ∀ c d, sigmaLink P c d → L c d) (B : IcoBallP P w) :
+    ∑ d ∈ linkGroup P L c₀ c, lam P d ≤ 0 := by
+  classical
+  have h1 := sum_lam_le (P := P) (linkGroup_properOff (L := L) (c₀ := c₀) (c := c))
+    linkGroup_piInvariant
+  have h2 := dd_le_two_noLock_linkGroup (c₀ := c₀) (c := c) hL B
+  have h2' : (((linkGroup P L c₀ c).filter (DDStep P)).card : ℤ) ≤
+      2 * ((linkGroup P L c₀ c).filter (NoLock P)).card := by exact_mod_cast h2
+  omega
+
+/-- **`SigmaUnionC` at an icosahedral hole** (Theorem F5 is its all-5 base case). -/
+theorem sigmaUnionC_of_icoBall (B : IcoBallP P w) : SigmaUnionC P :=
+  fun _ _ _ _ => sum_lam_linkGroup_nonpos (fun _ _ => Or.inl) B
+
+/-- The pure `σ′C` (`SigmaPrimeC`, kept for reference) does not get F5's base case this way:
+F5's `σ`-exit swaps `{x j, x (j+1), x (j+2)}`, which contains link vertices, so it is not a
+`σ′`-link. `σC` itself is recovered by `sum_lam_linkGroup_nonpos` with `L = sigmaLink P`. -/
+theorem sigmaC_of_icoBall' (B : IcoBallP P w) : SigmaC P :=
+  fun _ _ _ _ => sigmaGroup_eq_linkGroup (P := P) ▸ sum_lam_linkGroup_nonpos (fun _ _ => id) B
 
 end sphere
 
