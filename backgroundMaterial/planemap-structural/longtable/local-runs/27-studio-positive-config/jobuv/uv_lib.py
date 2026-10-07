@@ -12,8 +12,10 @@ def load(name, mirror):
             _, n, r = l.split(' ', 2); rot = [[int(x) for x in s.split(',')] for s in r.strip().split(';')]
             return [list(reversed(x)) for x in rot] if mirror else rot
 class Hole:
-    def __init__(self, name, h, mirror):
-        self.rot = load(name, mirror); self.h = h; adj = {v: set(x) for v, x in enumerate(self.rot)}
+    def __init__(self, name, h, mirror, rot=None):
+        self.rot = rot if rot is not None else load(name, mirror)
+        if rot is not None and mirror: self.rot = [list(reversed(x)) for x in rot]
+        self.rot = self.rot; self.h = h; adj = {v: set(x) for v, x in enumerate(self.rot)}
         self.sp = sp = Space(adj, h, link=self.rot[h]); S = len(sp.states); self.S = S; li = sp.linki
         self.pi = [0] * S; self.lam = [0] * S; self.kind = [None] * S
         for k in range(S): t, l, kd = pi_of(sp, k); self.pi[k] = t; self.lam[k] = l; self.kind[k] = kd
