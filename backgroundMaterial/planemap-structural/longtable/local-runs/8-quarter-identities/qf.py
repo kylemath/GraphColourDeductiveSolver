@@ -159,7 +159,36 @@ def analyse(rot, hole, detail=False):
         rr["RF_else_RB_collisions"] = sum(len(v) - 1 for v in imgComb.values())
         phi_imgs = {info[s]["phi"] for s in U if "phi" in info[s]}
         rr["RF_else_RB_hits_phi_image"] = sum(1 for f in imgComb if f in phi_imgs)
-        rec = {"size": len(C), "F": len(F), "U": len(U), "N0": N0, "N1": N1, "D": Dn, "L_F": LF, "paths": len(dP),
+        # Math 1828 item 3: Kempe distance (any swaps, within the class) from each DD state (DL with DL R+3 image) to the
+        # nearest compensating unit: E (path start with d = 0), U^ff (both locks fail), filled with a long bit.
+        ddloc = None
+        DDstates = [s for s in U if isDL(s) and isDL(info[s]["R3"])]
+        if DDstates:
+            dval = {}
+            for s in U:
+                if not info[s]["l1"] and info[s]["l2"]:
+                    chain = []; t = info[s]["R3"]
+                    while isDL(t): chain.append(t); t = info[t]["R3"]
+                    for x in chain: dval[x] = len(chain)
+            kinds = {"E": [s for s in U if not info[s]["l1"] and info[s]["l2"] and not isDL(info[s]["R3"])],
+                     "Uff": [s for s in U if not info[s]["l1"] and not info[s]["l2"]],
+                     "Flong": [s for s in F if info[s]["m3long"] or info[s]["m2long"]]}
+            def msbfs(src):
+                dd_ = {s: 0 for s in src}; q = list(src)
+                for x in q:
+                    for t in S.G[x]:
+                        if t not in dd_: dd_[t] = dd_[x] + 1; q.append(t)
+                return dd_
+            dk = {k: msbfs(v) for k, v in kinds.items()}; dall = msbfs([s for v in kinds.values() for s in v])
+            hist = Counter(); kindh = Counter()
+            for s in DDstates:
+                dv = dall.get(s, -1); key = "cyc" if s not in dval else str(dval[s])
+                hist["%s:%d" % (key, dv)] += 1
+                for k in kinds: kindh["%s:%d" % (k, dk[k].get(s, -1))] += 1
+            ddloc = {"DD_states": len(DDstates), "max_dist_any_unit": max(dall.get(s, -1) for s in DDstates),
+                     "unreachable": sum(1 for s in DDstates if s not in dall), "hist_d_dist": dict(hist), "hist_kind_dist": dict(kindh),
+                     "units": {k: len(v) for k, v in kinds.items()}}
+        rec = {"DDloc": ddloc,"size": len(C), "F": len(F), "U": len(U), "N0": N0, "N1": N1, "D": Dn, "L_F": LF, "paths": len(dP),
                "dP_hist": dict(Counter(dP)), "D_cyc": Dcyc, "bad_path": bad_path, "identity_lhs": lhs, "identity_rhs": rhs,
                "identity_ok": lhs == rhs, "perj_bad": perj_bad, "perj": perj, "DD": [DD[j] for j in range(5)],
                "DDprime": [DDp[j] for j in range(5)], "DDboth": [DDboth[j] for j in range(5)],

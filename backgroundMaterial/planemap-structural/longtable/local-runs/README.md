@@ -398,3 +398,60 @@ d(P) histogram (paths):
 
 - So R_B covers part of DD_j, but the combined rule "R_F, else R_B" is not injective.
 - **Size-48 class (order 22, gentri 19, hole 12):** R_F and R_B are both defined on all 12 DL states and **differ on all 12**. Each alone is a bijection onto the 12 filled states, and the combined rule has 0 collisions.
+
+## 9. Locality of the DD_j room (`9-dd-locality/`), from Math's 1828 message, item 3
+This item is exploratory. It used about 21 CPU-minutes.
+
+**What is measured.**
+- A DD state is a DL state whose R+3 image is also DL.
+- For each DD state, measure the Kempe distance to the nearest compensating unit, using swaps of any kind within the class. A unit is any one of:
+  - E: a Γ-path start with d = 0 (lock 1 fails, lock 2 holds, R+3 not DL);
+  - U^ff: a state where both locks fail, i.e. N₀;
+  - a filled state that carries a long M2 or M3 bit.
+- The distance is a multi-source BFS in the class's move graph.
+- The code is the `DDloc` block in `../8-quarter-identities/qf.py`. That block was added afterwards; nothing else in that file changed.
+
+**Commands.**
+```
+cd ../8-quarter-identities
+python3 qf.py --orders 12 14 16 17 18 19 20 21 22 > ../9-dd-locality/ddloc-12-22.jsonl   # committed gzipped
+python3 qf.py --orders 23 > ../9-dd-locality/ddloc-23.jsonl                               # committed gzipped
+cd ../9-dd-locality
+python3 agg_dd.py ddloc-12-22.jsonl ddloc-23.jsonl > ddloc-summary.json
+python3 a7_cycle.py 22 > a7-hole22.json
+```
+
+**Distance histogram by order** (DD states; every degree-5 hole at orders 12–23):
+
+| order | classes with DD | 1 | 2 | 3 | 4 | 5 | max |
+|---|---|---|---|---|---|---|---|
+| 16 | 20 | 32 | 4 | 0 | 0 | 0 | 2 |
+| 17 | 42 | 59 | 129 | 108 | 44 | 0 | 4 |
+| 18 | 57 | 79 | 92 | 7 | 0 | 0 | 3 |
+| 19 | 179 | 306 | 248 | 21 | 0 | 0 | 3 |
+| 20 | 719 | 1,959 | 1,710 | 240 | 13 | 0 | 4 |
+| 21 | 2,148 | 6,590 | 5,957 | 850 | 80 | 0 | 4 |
+| 22 | 7,895 | 32,094 | 25,548 | 3,166 | 178 | 1 | 5 |
+| 23 | 27,193 | 149,302 | 102,943 | 8,706 | 464 | 24 | 5 |
+
+**By d(P).**
+- The maximum distance is 4 or 5 for every d from 3 to 11, and at most 4 for d = 2, 8, 10, 12, 15, 28 and 31.
+- For d = 13, 14, 16 and 17 it is at most 3.
+- DL-cycle states (cyc) are at distance 1–3.
+- **The distance does not grow with d(P).** The full table is in `ddloc-summary.json`.
+- Every DD state reaches some unit. "Unreachable" counts are 0 except per kind: some classes have no E unit at all, but they always have U^ff or long-bit units.
+
+**The 6 census classes with DL cycles (D_cyc = 20).** All have L_F > 0 and N₀ > 0. Room parts are summed over j; each U^ff state counts twice, once as U_j^ff and once as U_{j+3}^ff.
+
+| class | size | F | U | N₀ | L_F | room L_j | room U^ff | room E | DD | room per j | max distance |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 17/3 h0, h16 | 100 | 40 | 60 | 10 | 40 | 60 | 20 | 0 | 4 per j | 16 per j | 2 |
+| 22/417 h21 | 252 | 108 | 144 | 36 | 88 | 132 | 72 | 8 | 8,4,8,6,6 | 44,40,44,42,42 | 3 |
+| 22/648 h0, h21 | 520 | 200 | 320 | 80 | 80 | 120 | 160 | 20 | 4 per j | 60 per j | 1 |
+| 23/1108 h19 | 476 | 244 | 232 | 70 | 264 | 396 | 140 | 4 | 14,4,6,10,6 | 114,104,106,110,106 | 3 |
+
+**Local intel's 800-cycle** (`best-A7_exc.json`, n = 37, hole 22, 25,326 states).
+- My code reproduces Local intel's numbers: class 21,078 with F = 8,922, D_cyc = 840, DD = (690, 624, 726, 642, 648) and room = (3,612, 3,546, 3,648, 3,564, 3,570). The identities give 0 mismatches.
+- Room parts, summed over j: L_j 12,834; U^ff 4,992 (N₀ = 2,496); E 114. Long bits (L_F = 8,556) supply about 72% of the room.
+- d(P) reaches 81. **The maximum distance from a DD state to a unit is 3**, and DL-cycle states are at distance 1 or 2.
+- The hole's two other cycle classes (size 2,124, D_cyc = 160 each) have maximum distance 2.
