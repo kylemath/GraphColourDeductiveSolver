@@ -215,3 +215,10 @@ rem(T) > 0 is charged back to the positive sources that hit T (in proportion to 
   (5,5,5,6,7) (p25 #13918 h15, 0.9), (5,5,5,6,8+) (p26 #6618 h3, 0.9), (5,5,5,7,7) (p27 #247743 h6, 0.75), (5,5,6,6,7) (p27 #197591 h18, 0.5), (5,5,6,5,7) (p27m #131991 h2, 0.85).
 - Charge-back P1 with the enlarged exit set: **holds at every (5,5,5,5,6) and (5,5,5,6,6) hole**; fails at 22 holes of other patterns (orders 25 / 26 / 27: 3 / 2 / 17), always on a
   non-Gamma positive cycle, mostly one with NO nonpositive sigma-neighbour (e.g. p26 #70869 h11, the sigma-C counterexample). sigma'C (Job H) still holds at all of them.
+
+## Job AB (`--jobab`, jobab-summary.txt): excursion-level Lemma S at (5,5,5,5,6), orders 25-27, both orientations
+Excursion = maximal unfilled run (u) + following filled run (f) on a cycle with filled states; mass = sum of lambda over it; credit = sum (3f' - 1) of lockless sigma-exits
+from its own DD states (all R-types).
+- **Positive-mass excursions do NOT pay for themselves**: credit < mass in about 48% of them at every order (order 27: 1.82M of 3.73M per orientation), mostly mass 1-2
+  (typically u = 4, f = 1, mass +1, whose two DD states have no lockless exit). Almost all failures are on nonpositive cycles (1 / 1 / 9 / 7 / 35 / 83 on positive cycles).
+  Min slack -14 to -22 (all exits), -16 to -36 (exits to other cycles only). So self-payment holds only at the cycle / group level.
