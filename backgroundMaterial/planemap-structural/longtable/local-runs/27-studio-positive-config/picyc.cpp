@@ -29,6 +29,8 @@
 // --jobn rows: [pos in cycle, k, lockless, y~z in {c(y),c(z)}, pm bridge of G[{v}+c(p),c(m)], p, m, y, z (original labels), #m candidates, |K_{c(p),c(m)}(p)|, |K(y)|, |K(z)|, sigma fixed point]
 // --jobo rows per state x of a Gamma-cycle (pi order): [pos, type, kmask, pairmask, compmask, |swapped comp|, y~z before, y~z after the step, |K(y)|, |K(z)| after]
 //   (pairmask / compmask bits: p, m, y, z have a colour in the swapped pair / lie in the swapped component; the step x -> pi x is R+3: the {alpha,A}-swap at x_{j+2})
+// --jobp rows: K = [|K|, dist(K, v), y~z before, |K & K_yz|, K cuts y from z in {c(y),c(z)}, #K vertices on a BFS shortest y-z path (-1 if not joined), K separates y,z in T - K];
+//   edges = {"a-b": bridge?} over role vertices 0..4 = x_{j+i}, 5..9 = w_{j+i}, 10 = m (R3 states only; bridge of G[{v} + c(a) + c(b)])
 // Usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h,...] [--cfree] [--adj5] [--graphonly]   (default --pi: no class union-find)
 // Per hole also: linkdeg (degrees of x_0..x_4 in link order), vrole (bits: 1 diamond centre, 2 diamond tip, 4 2.122 deg-5 centre, 16 2.122 tip),
 // dist_config (graph distance from v to the nearest vertex of any diamond or 2.122, -1 if none). Per graph: adj55 = edges between degree-5 vertices.
@@ -49,7 +51,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -282,6 +284,39 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 for (auto &kv : cs2) { ms = std::max(ms, kv.second.second); mx = std::max(mx, kv.second.first); if (kv.second.first > 0) { nf++; if (ff.empty()) { char b4[96]; snprintf(b4, sizeof b4, "{\"sumw\": %lld, \"ncycles\": %d}", kv.second.first, kv.second.second); ff = b4; } } }
                 char b5[400]; snprintf(b5, sizeof b5, ", \"%s\": {\"ncomp\": %zu, \"endpoints\": %lld, \"endpoints_with_cross_sigmap\": %lld, \"max_ncycles\": %d, \"max_sumw\": %lld, \"fail\": %lld, \"first_fail\": %s}",
                     v ? "H2_sigmap_plus_sigmaR3" : "H1_sigmap", cs2.size(), nend, nend_cross, ms, mx, nf, ff.empty() ? "null" : ff.c_str()); jobe += b5; } }
+        if (JOBP) {   // Job P: P1 = role-edge bridge vectors at every R3 state of Gamma-cycles at (5,5,5,5,6); P2 = geometry of every step's swapped component
+            int t6 = -1, nhi = 0; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) { t6 = t; nhi++; }
+            if (nhi == 1) {
+                int p = link_[t6], y = widx[(t6 + 4) % 5], z = widx[t6]; int mv = -1; for (int w : rot[L[t6]]) { if (w == hole) continue; int wi = idx[w]; if (wi == link_[(t6 + 1) % 5] || wi == link_[(t6 + 4) % 5] || wi == y || wi == z) continue; mv = w; }
+                int m = idx[mv];
+                std::vector<int> dv(N, -1); { std::vector<int> q; for (int t = 0; t < 5; t++) { dv[link_[t]] = 1; q.push_back(link_[t]); } for (size_t h = 0; h < q.size(); h++) { u64 nb = adjm[q[h]]; while (nb) { int w = __builtin_ctzll(nb); nb &= nb - 1; if (dv[w] < 0) { dv[w] = dv[q[h]] + 1; q.push_back(w); } } } }
+                auto bridge = [&](const int *cc, const u64 *cmm, int a, int b) {   // is edge ab a bridge of G[{v} + vertices coloured c(a) or c(b)]?
+                    u64 M = cmm[cc[a]] | cmm[cc[b]]; u64 seen = 1ULL << a; bool vseen = false; std::vector<int> st{a};
+                    while (!st.empty()) { int u = st.back(); st.pop_back(); u64 nb = adjm[u] & M & ~seen; if (u == a) nb &= ~(1ULL << b);
+                        if ((linkmask >> u & 1) && !vseen) { vseen = true; for (int t = 0; t < 5; t++) { int lv = link_[t]; if ((M >> lv & 1) && !(seen >> lv & 1) && !(u == a && lv == b)) { if (lv == b) return false; seen |= 1ULL << lv; st.push_back(lv); } } }
+                        while (nb) { int w = __builtin_ctzll(nb); nb &= nb - 1; if (w == b) return false; seen |= 1ULL << w; st.push_back(w); } }
+                    return true; };
+                std::string pp = ", \"jobp\": {\"cycles\": ["; bool f1 = true;
+                for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all) continue;
+                    pp += f1 ? "[" : ", ["; f1 = false; bool f2 = true; int pos = 0;
+                    for (int32_t x : cycles[ci]) { int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd);
+                        unkey(ALL[x], c); masks(c, cm); int lc[5]; for (int t = 0; t < 5; t++) lc[t] = c[link_[t]]; int al = lc[j], A = lc[(j + 3) % 5];
+                        // P2: the step's swapped component K
+                        u64 K = flood(1ULL << link_[(j + 2) % 5], cm[al] | cm[A]); int dK = 99; for (int i = 0; i < N; i++) if (K >> i & 1) dK = std::min(dK, dv[i]);
+                        u64 Myz = cm[c[y]] | cm[c[z]]; u64 Kyz = flood(1ULL << y, Myz); bool yz = Kyz >> z & 1; int inter = __builtin_popcountll(K & Kyz);
+                        bool cut = yz && !(flood(1ULL << y, Myz & ~K) >> z & 1);   // K meets every y-z {c(y),c(z)}-path
+                        int onpath = -1; if (yz) { std::vector<int> par(N, -2); std::vector<int> q{y}; par[y] = -1; for (size_t h = 0; h < q.size(); h++) { u64 nb = adjm[q[h]] & Myz; while (nb) { int w = __builtin_ctzll(nb); nb &= nb - 1; if (par[w] == -2) { par[w] = q[h]; q.push_back(w); } } }
+                            onpath = 0; for (int u = z; u != -1; u = par[u]) if (K >> u & 1) onpath++; }
+                        u64 all_but = ((N == 64) ? ~0ULL : ((1ULL << N) - 1)) & ~K; bool sepT = !(flood(1ULL << y, all_but) >> z & 1);
+                        // P1: role vertices x0..x4, w0..w4, m (relative to j); edges among them; bridge bits
+                        int R[11]; for (int i = 0; i < 5; i++) { R[i] = link_[(j + i) % 5]; R[5 + i] = widx[(j + i) % 5]; } R[10] = m;
+                        std::string eb; if (ty == 3) { for (int a = 0; a < 11; a++) for (int b = a + 1; b < 11; b++) { if (R[a] == R[b] || !(adjm[R[a]] >> R[b] & 1) || c[R[a]] == c[R[b]]) continue; char e[24]; snprintf(e, sizeof e, "%s\"%d-%d\": %d", eb.empty() ? "" : ", ", a, b, bridge(c, cm, R[a], R[b]) ? 1 : 0); eb += e; } }
+                        bool lockless = (kd == 1 && !l1 && !l2); long long f = -1; if (ty == 3 && lockless) { long long yy = pi[sg]; f = 0; while (kind[yy] == 0) { f++; yy = pi[yy]; } }
+                        char b[300]; snprintf(b, sizeof b, "%s{\"pos\": %d, \"type\": %d, \"kmask\": %d, \"exit\": \"%c\", \"f\": %lld, \"K\": [%d, %d, %d, %d, %d, %d, %d], \"edges\": {",
+                            f2 ? "" : ", ", pos, ty, km, ty != 3 ? '-' : lockless ? 'L' : (kd == 1 ? (l1 ? '1' : '2') : (kd == 2 ? (sg == x ? 'X' : 'D') : 'F')), f,
+                            __builtin_popcountll(K), dK, yz ? 1 : 0, inter, cut ? 1 : 0, onpath, sepT ? 1 : 0); pp += b; pp += eb; pp += "}}"; f2 = false; pos++; }
+                    pp += "]"; }
+                pp += "]}"; jobe += pp; } }
         if (JOBO) {   // Job O: per pi-step of Gamma-cycles at (5,5,5,5,6): p = degree-6 link vertex, y = w_{t-1}, z = w_t, m = p's third outer neighbour
             int t6 = -1, nhi = 0; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) { t6 = t; nhi++; }
             if (nhi == 1) {
@@ -445,7 +480,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;
