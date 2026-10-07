@@ -21,9 +21,10 @@ For the project owner. Updated 05:40 MDT (first written 05:35) from `NightF6Stat
 
 ## Recommended next moves (NightPostAW, NightWeakForm)
 
-1. Attack G66 directly: data and a hand/Lean argument at (6,6,6,6,6) (Jobs BO, BP, NightG66), since everything proved so far lives away from it.
-2. Adversarially search SigmaUnionC and statement (c) (Job BJ) before investing in any proof: treat every census-only regularity as provisional until a flip search has tried to break it.
-3. Consolidate in Lean: state the per-group budget B′ and the exact conjecture being tested, and pair the discharging argument with an unavoidable set. Do not resume A₃₄′, W2, two-pocket, potential or bounded-distance work.
+1. **Job BR first:** adversarial flip search for an all-DL π-cycle at a (6,6,6,6,6) hole. At an all-6 hole the 2-ball forces nothing (NightG66: 74 DL ring colourings per index, all with DL successors; a non-DL σ-image needs a lock chain cut outside the 2-ball), so G66 is non-local. The census has no all-DL cycle there up to order 27, but the census also said A₃₄′. A hit would be the first real pressure in non-reducible territory; a miss after a serious search is the first real evidence for G66.
+2. Attack G66 directly: data and a hand/Lean argument at (6,6,6,6,6) (Jobs BO, BP, NightG66; pattern-free w-bit dynamics F(b) = (¬b₃, b₄, ¬b₀, b₁, ¬b₂) with F⁵ = complement, Lean `QuarterBitDynamics` in progress; conjecture ladder G66⁰ … G66^IPR, tests T1–T6), since everything proved so far lives away from it.
+3. Adversarially search SigmaUnionC (with Job BQ: BudgetB′ slack across the census and as a flip-search objective) and statement (c) (Job BJ) before investing in any proof: treat every census-only regularity as provisional until a flip search has tried to break it.
+4. Consolidate in Lean: state the per-group budget B′ and the exact conjecture being tested, and pair the discharging argument with an unavoidable set. Do not resume A₃₄′, W2, two-pocket, potential or bounded-distance work.
 
 ## Reproducibility
 
