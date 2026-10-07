@@ -1,8 +1,8 @@
 {
   "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-06T16:45:00-06:00",
-  "probability": 0.01,
+  "updated": "2026-10-06T18:25:00-06:00",
+  "probability": 0.012,
   "components": [
     {
       "label": "R* is true in the core class (some degree-5 vertex is pure-clean)",
@@ -10,11 +10,11 @@
     },
     {
       "label": "We prove it (Route A by hand, or the hybrid Route B': classical reductions as exclusions plus R* on the rest), given it is true",
-      "p": 0.015
+      "p": 0.02
     },
     {
-      "label": "The formal chain closes: four_color_of_core_Rstar compiled (exact hand form, 15:18), audit J10 pending",
-      "p": 0.95
+      "label": "The formal chain closes: core-class R* => 4CT and the hybrid frame theorem four_color_of_RStarFrame both compiled and audited (J10-J12)",
+      "p": 0.97
     },
     {
       "label": "Separate meter: a worthwhile result (theorem paper on D-resolvability with the Lean reduction, a counterexample to Tilley's every-vertex conjecture, or a decisive radius curve)",
@@ -22,6 +22,9 @@
     }
   ],
   "evidence_for": [
+    "Quarter floor (exploratory, exhaustive): every Kempe class of T - v at a degree-5 vertex has >= 1/4 filled states, all 160,979 classes at orders 12-24 (419 exactly at 1/4); no such floor at degrees 6/7. The inequality U_j <= F_{j+1}+F_{j+3}+F_{j+4} holds in every class. R* becomes a counting problem.",
+    "Lemma A (Math, hand, review pending): the non-doubly-locked half of the counting inequality, by Kempe's single swap made injective (per j; Intern C review).",
+    "Historical traps: Heawood's own 1890 failing colouring refills in 2 swaps; Saaty-type HoG 1152 (3-4 classes after deletion) passes at all holes.",
     "Frame theorem four_color_of_RStarFrame compiled (Studio Math, merged b4b617d): R* only for core graphs with no Birkhoff diamond and no 2.122 implies 4CT; audit J12 pending.",
     "Historical traps pass: Errera (17) and Kittell (23) are core-class graphs; every degree-5 hole fills within 4 swaps, no stuck class (but T - v has one class there, so this re-checks colourability, not R*).",
     "four_color_of_core_Rstar compiles: core-class R* in its exact hand form implies every planar map is 4-colourable (audit pending).",
@@ -35,6 +38,7 @@
     "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
+    "The open (doubly locked) half of the quarter-floor inequality is as strong as R* at every degree-5 vertex (Tilley's conjecture); Lemma A is purely local and contains no global step.",
     "Math (16:15): no mechanism by which diamond-freeness helps a Kempe argument; the exclusions remove exactly the degree-5 vertices that confine chains. Configuration-free core graphs are very rare below order 32 (1, 1, 4, 2 at orders 22-25), so 'no radius >= 4 without a diamond' rests on few graphs.",
     "Outside advisor (SageAdvice-2026-10-06.md): R* is strictly stronger than 4CT, the induction gives no leverage on Kempe classes, no invariant separates classes; data consistent with truth is not evidence of provability. Estimate 0.1-0.5%.",
     "Radius-versus-order census (exhaustive, no separating triangles): max radius 3 at orders 12-19, 4 at 20-21, 5 at 22-25. Still rising.",
@@ -86,6 +90,11 @@
       "time": "2026-10-06T16:45:00-06:00",
       "p": 0.01,
       "note": "Hybrid frame now formal (frame theorem compiled), but Math finds no mechanism for the hybrid lemma and the configuration-free data are thin. Net unchanged."
+    },
+    {
+      "time": "2026-10-06T18:25:00-06:00",
+      "p": 0.012,
+      "note": "Quarter floor exhaustive to order 24 and Lemma A by hand turn R* into a counting target (prove factor 1.5% -> 2%); hybrid frame audited. Net 1% -> 1.2%."
     }
   ]
 }
