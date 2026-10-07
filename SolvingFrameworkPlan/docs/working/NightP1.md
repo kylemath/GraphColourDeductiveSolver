@@ -173,3 +173,86 @@ So the data say more than P₁: σ-groups are dominated by one cycle whose negat
   - It also prints all σ-edges of the groups and Transport-T edges.
 - Inputs: `../28-lemmaR/in{17,20..24}.txt` (gentri), both orientations. 2 cores, about 30 s on AC power. The `out*.jsonl` files (≈150 MB) are not committed and can be regenerated.
 - `p1_struct.py` → `p1-struct.txt` (§2–§5, orders ≤ 24). `star_check.py` → `star-check.txt` (§4). `p1_slack.py` → `p1-slack.txt` (§3, orders 25–27, from Studio files).
+
+## 8. Addendum (03:27): the coordinator's reframing, using Studio Job AD
+
+**Reframed target.** A positive non-Γ cycle Z has a DD endpoint whose σ-image lies on a cycle T with rem(T) ≤ −1.25·def′(Z). Why is the σ-image of a DD state of a short positive cycle on a long negative cycle?
+
+### 8.1 Data profile of the paying neighbour T*
+
+Sources:
+- Job AD, `jobad-records.json`: 75 deficit cycles, (5,5,5,5,6)/(5,5,5,6,6), orders 25–27, both orientations, exits from all R-types;
+- my orders ≤ 24 run.
+
+**Z.** All 75 are non-Γ. The (L, w) counts are:
+- (14,2) ×30, (22,2) ×12, (18,2) ×7, (26,2) ×7, (28,4) ×7, (30,2) ×6;
+- single cases (21,1), (36,4), (41,1), (48,4), (50,2), (89,1).
+
+**T*** (the neighbour with the most negative rem):
+
+| quantity | min | median | max |
+|---|---|---|---|
+| L(T*) | 77 | 379 | 911 |
+| w(T*) | −193 | −64 | −5 |
+| L/\|w\| | 3.6 | 5.4 | 22.2 |
+
+- L(T*) ≥ 3·L(Z) in 74/75.
+- T* is **unhit** in 53/75 (orders ≤ 24: 123/149).
+- At orders ≤ 24, L(T*)/L(Z) has median 8.8 and minimum 0.86.
+
+**The tight case p27m #167230 h23** is *long but light*:
+- T* has L = 111, w = −5 (rem = −25, unhit), against Z with L = 28, w = 4, def′ = 20, CrN = 0.
+- Its twin cycle 22 is identical, and the other six σ-neighbours have w = 0.
+- So "long" does not imply "heavy". The 1.25 comes from a long cycle with only one negative unit per 22 states.
+
+The next three tight cases have the same shape, (L 28, w 4) against (128, −8), (172, −16) and (77, −19).
+
+**Link types into T*** (orders ≤ 24, DD endpoints): lockless 116, lock1-only 90, lock2-only 97, DL 87. Job AD agrees: 39/75 deficit cycles have no lockless exit into any nonpositive cycle.
+
+### 8.2 What can be proved
+
+**Lemma 8.1 [proved, modulo the π table as in §2].** Let r be a DD endpoint and suppose s = σ(r) is not DL (lockless or single-lock). Then the π-cycle T of s contains a filled state adjacent to s:
+- πs is filled if s lacks Lock2;
+- π⁻¹s is filled if s lacks Lock1.
+
+So T is not a Γ-cycle, and s is an excursion endpoint (Lemma 2.1). If s is lockless, T carries the excursion mass 1 − 3f ≤ −2 next to s. ∎
+
+This is the only local sign information I can prove. It shows that the non-DL σ-images of Z sit at the **boundary of filled runs** of their cycles. These are exactly the places where λ < 0 (φ_A, φ_B⁻¹, τ, by `lam_eq`).
+
+It does not show that T is negative overall, let alone by 1.25·def′. Negativity of T is a global property of T's whole orbit, Σ over T's excursions of (u − 3f). The σ-link sees one or two states of T.
+
+**What is false or unsupported.**
+1. *σ carries runs coherently* (σ∘π = π∘σ along a DL run, which would make Z's run shadow a run of T). **[data: no]**
+   - Among 469 consecutive pairs of DD endpoints of non-Γ positive cycles whose images both leave Z (orders ≤ 24), only 88 land on the same T.
+   - σ is not π-equivariant. This contrasts with the link-free swaps of Transport T, which commute with R₊₃ for one step (NightLockBreaking Lemma 2.2).
+   - So "Transport T's reasoning" (ladder rungs) **does not transfer**. σ's component K_σ ∋ m changes with every R₊₃ step, because the swap at x_{j+2} recolours the α-vertices that K_σ uses.
+2. *A one-state certificate.* Even Lemma 8.1's local mass is ≤ −2 per lockless image and 0 per single-lock image. That is far below the def′ of 5–20 that must be paid.
+   - The payment comes from T's *other* filled runs, which σ does not see.
+   - A proof must therefore be global in T, for instance a count of T's filled states.
+
+### 8.3 Heuristic [not a proof]: why the image is on a long cycle
+
+In every σ-group with a positive cycle at orders ≤ 24, the most negative cycle M alone outweighs the whole positive supply (227/227, §4). M is also long, so it holds most of the group's states.
+
+Z's σ-images are 4–28 states spread across the group, with no π-coherence (§8.2.1). So some image landing on M is the generic outcome: the event is "some image hits the cycle that holds most of the states".
+
+The data fit this:
+- T* is the group's most negative cycle in 132/149 cases;
+- the exceptions are at σ-distance 2–3 (§4).
+
+The tight case fits too. At p27m #167230 h23 the large cycles are light (w = −5 on L = 111). The ratio 1.25 is a ratio of *weights*, not lengths.
+
+A provable version would be a counting statement:
+
+> "In a class with filled states, the σ-images of the DD endpoints of a non-Γ positive cycle Z cannot all avoid the cycles carrying at least |Λ(Z)| of negative mass."
+
+This is σC-flavoured and global. I do not see it following from Jordan/Euler at single states.
+
+### 8.4 Updated status lines
+
+| item | status |
+|---|---|
+| non-DL σ-image sits next to a filled state of its cycle (T not Γ) | [proved] mod π table |
+| σ commutes with π along runs / ladder argument of T | [killed] (88/469 coherent pairs) |
+| reframed P₁ (σ-image on T with rem ≤ −1.25 def′) | [data] 75/75 (Job AD), tight 1.25; no proof |
+| T* profile | L 77–911 (median 379), w −5…−193 (median −64), L ≥ 3L(Z) in 74/75, unhit 53/75 |
