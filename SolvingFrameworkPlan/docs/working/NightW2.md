@@ -383,8 +383,8 @@ The locks at R3k2 are:
 
 w₃ (colour 2) is adjacent to x₃ and x₄, so it can lie on Λ₁ or Λ₂. The Jordan curve h x₁ Λ₂ x₄ h puts x₂ and x₃ on one side and x₀ on the other. But a {1,2}-path shares colour 2 with both lock chains, so neither chain blocks it, and **Jordan separation gives nothing directly**.
 
-The usable separation is the one in 10.2: at pos 5, a {3,4}-walk separating x₁ from w₃. Through h it can only pass as x₃ h x₄ or x₄ h x₃, since x₃ and x₄ are coloured 1 and 4 at pos 5; let me redo this for the pos-5 link 1 2 3 1 4.
-- At pos 5 the {3,4}-vertices of the link are x₂ (3) and x₄ (4), which are not adjacent. So the separating {3,4}-walk may pass x₂ h x₄.
+The usable separation is the one in 10.2: at pos 5, a {3,4}-walk separating x₁ from w₃.
+- The pos-5 link is 1 2 3 1 4, so its {3,4}-vertices are x₂ (3) and x₄ (4). These are not adjacent, so the separating {3,4}-walk may pass x₂ h x₄.
 - That is exactly a {3,4} "lock" on the R1k4 state, from p (now 3) to x₄.
 - I could not exclude it at the same time as (F-ii).
 
