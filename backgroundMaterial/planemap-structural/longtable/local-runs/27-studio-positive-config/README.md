@@ -178,3 +178,8 @@ Exits = R3 DD-endpoint states of positive cycles with a lockless sigma-image on 
   (Python reproduces the C++ count), but an **R1 state** on it also has a lockless sigma-exit (into cycle 2, w -84, f = 4, credit 11): counting R1 exits gives 29 >= 20.
   Its sigma-group has 9 cycles and sum lambda -1,470; the (sigma u sigma')-group has 12 cycles and sum lambda -1,490. No R2 state on this cycle (the R2 states are on other
   (5,5,5,6,6) Gamma-cycles). Period pattern: (Lock1, fixed, fixed, L3, L3 | L1, fixed, fixed, fixed, Lock2) over R3 visits.
+- **Y, sigma-group accounting at the order-27 Lemma R failures** (jobuv/joby-summary.txt; every excursion of every cycle in the group, hit or unhit):
+  p27 #68456 h19 (plantri): group of 8 cycles, sum lambda -420; the positive Gamma-cycle (w 4) has 8 exits (credits 8,8,8,5,5,5,8,8; Cr_N = 55). Target cycle 38
+  (w -2, L 38) has excursions (u,f,mass) = (1,3,-8 HIT), (2,2,-4), (17,2,+11), (2,1,-1), (1,3,-8 HIT), (3,1,0): the excess +6 is its own long DL-run excursion (u = 17, +11).
+  p27m #166916 h19: group of 16 cycles, sum lambda -580; the positive non-Gamma cycle (w 2, L 22) has one exit (f = 1, credit 2) into cycle 31 (w 0, L 8), whose excursions are
+  (1,1,-2 HIT) and (5,1,+2): again the target's own positive excursion carries the +2. In both groups the excess is absorbed by unhit negative cycles (e.g. -80, -60, -535).
