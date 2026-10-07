@@ -332,3 +332,11 @@ Steps from the window's R3k0 to the first non-DL state (1 = R3k0's own pi-image 
   Gamma-cycles 18/19 (predicted mostly empty); at (5,5,5,5,7) single 57/65, consecutive (stay DL) 7/14 (predicted to fail). So Sigma neither holds on the double breaks nor
   separates them from single breaks: it is not the Lock2-killing mechanism.
 - Sizes: |Z_b| 1-8 (far part 0-7), |Pi_b| 6-12, |K0| 4-9, |K1| 4-11, |R_b| 2-7 (far part always >= 1; exactly 2 / 1 at degree 6 Gamma).
+
+## Job AN (closing permutation; independent Python jobuv/joban.py -> joban-summary.txt, joban.json), every Gamma-cycle at every pattern, orders 25-27, both orientations
+Absolute colours followed through the L Kempe swaps of the cycle (checked against the canonical states); c_L = rho(c_0).
+- 2,728 records: rho is a 3-CYCLE for L = 20 (2,544) and L = 40 (136), and the IDENTITY for L = 60 (48); no transposition, 4-cycle or double transposition at any pattern.
+  So rho = sigma^(L/10) with sigma the per-period 3-cycle of NightA34 §1.1, and the orbit length in colouring space is 3L unless 30 | L (60, 120, 60).
+- At (5,5,5,5,6) (264) and (5,5,5,5,7) (406) rho always fixes c(p) = alpha(R3k2) and rotates the three alpha-free colours.
+- Rank vectors (r_AB, r_muB, r_muA at R3k2 | R3k1 | R3k0, named by each period's own R3k2 labels): the period map is NOT constant: v_{b+1} = v_b in 294/552 (degree 6) and
+  394/916 (degree 7) transitions; the commonest vectors are (1,0,0 | 0,1,0 | 0,1,0), all-ones and (1,0,0 | 1,0,0 | 1,0,0).
