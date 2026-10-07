@@ -1,8 +1,8 @@
 {
   "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-07T01:50:00-06:00",
-  "probability": 0.015,
+  "updated": "2026-10-07T02:45:00-06:00",
+  "probability": 0.02,
   "components": [
     {
       "label": "R* is true in the core class (some degree-5 vertex is pure-clean)",
@@ -10,7 +10,7 @@
     },
     {
       "label": "We prove it (Route A by hand, or the hybrid Route B': classical reductions as exclusions plus R* on the rest), given it is true",
-      "p": 0.025
+      "p": 0.03
     },
     {
       "label": "The formal chain closes: core-class R* => 4CT and the hybrid frame theorem four_color_of_RStarFrame both compiled and audited (J10-J12)",
@@ -22,6 +22,7 @@
     }
   ],
   "evidence_for": [
+    "7 Oct, 02:45: Theorem F5 is FORMAL (quarterFloor_of_fiveLink: the quarter floor at every hole with five degree-5 neighbours, from triangulation alone). Thirteen sorry-free Lean files: Lemma A, rotation bijection, Hex, no-frozen, Lemma Pi, Theorem W, F5, the exact sigma-exit condition, sigma-groups with sigmaC => floor. The open problem is the formal SigmaCConj on three-consecutive-5s holes, with a tested mechanism (Conjecture G) and 0 failures at those families.",
     "Night of 6-7 Oct: Theorem W formal in Lean (3F - U = -5 x winding; floor <=> sum lambda <= 0 per class); Lemma A, rotation bijection, Hex dichotomy, no-frozen, Lemma Pi all compiled with standard axioms. Theorem F5 (hand, reviewed PASS): the quarter floor holds at every (5,5,5,5,5) hole, the first floor theorem beyond R*. Transport statement holds on all 136 classes + Studio orders 24-26, Hall ratio >= 3.",
     "Quarter floor (exploratory, exhaustive): every Kempe class of T - v at a degree-5 vertex has >= 1/4 filled states, all 160,979 classes at orders 12-24 (419 exactly at 1/4); no such floor at degrees 6/7. The inequality U_j <= F_{j+1}+F_{j+3}+F_{j+4} holds in every class. R* becomes a counting problem.",
     "Lemma A (Math, hand, review pending): the non-doubly-locked half of the counting inequality, by Kempe's single swap made injective (per j; Intern C review).",
@@ -39,6 +40,7 @@
     "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
+    "7 Oct: universal sigma-C is false (one island group at a (5,6,5,6,6) hole); Conjecture G fails off the three families; Conjecture P (configurations) false in both regimes. The general case still needs lock-breaking swaps of other colour pairs and remains 4CT-strength.",
     "Night of 6-7 Oct: floor and R* fail massively on the torus (frozen classes from n=16), so the proof must use the sphere; no single-cycle bound (w=+160 exists); per-state Euler counts, charges, Gauss-Bonnet shape, per-path charging, identity induction and closed-set descent all fail; the configuration and link-pattern leads were base-rate effects. The general DL-half remains 4CT-strength.",
     "The open (doubly locked) half of the quarter-floor inequality is as strong as R* at every degree-5 vertex (Tilley's conjecture); Lemma A is purely local and contains no global step.",
     "Math (16:15): no mechanism by which diamond-freeness helps a Kempe argument; the exclusions remove exactly the degree-5 vertices that confine chains. Configuration-free core graphs are very rare below order 32 (1, 1, 4, 2 at orders 22-25), so 'no radius >= 4 without a diamond' rests on few graphs.",
@@ -102,6 +104,11 @@
       "time": "2026-10-07T01:50:00-06:00",
       "p": 0.015,
       "note": "Theorem W formal; F5 proves the floor at the all-5 hole by a class-level charging; the method (DD charged to lockless states) is new and local. Prove factor 2% -> 2.5%."
+    },
+    {
+      "time": "2026-10-07T02:45:00-06:00",
+      "p": 0.02,
+      "note": "F5 formal; the open problem is a scoped, tested conjecture with a formal statement. Prove factor 2.5% -> 3%."
     }
   ]
 }
