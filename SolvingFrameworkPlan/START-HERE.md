@@ -171,6 +171,9 @@ Never write "proved" for computation. Never generalise a finite pass.
 
 Night of 6–7 Oct 2026 (Theorem W, F5, F6 programme): status page `docs/working/NightF6Status.md`; log `docs/working/NightLog-2026-10-06.md`.
 
+Night outcome (7 Oct 2026): 42 sorry-free Lean modules (Theorem W, F5, weak F6 `pureClean_of_hole6`/`_of_degrees`), but the strong per-Γ-cycle chain for F6 is false at degree 6 (Job AW) and the weak-F6 theorems lie in reducible Birkhoff-diamond territory, so 4CT is not moved; the open gap is G66 (all-6 holes).
+Pointers: `docs/working/NightMorningSummary.md` (one page), `docs/working/NightF6Status.md` (full status).
+
 ## 8. Restart checklist
 
 1. Read this page. Then list recent messages with `ls -t SolvingFrameworkPlan/messages/*/ | head -30` (or `ls SolvingFrameworkPlan/messages/$(date +%F)`), and read every message addressed to your team that is newer than this page.
