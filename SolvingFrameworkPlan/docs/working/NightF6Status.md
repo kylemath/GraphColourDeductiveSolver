@@ -1,13 +1,13 @@
-# Theorem F6: status at 05:05 MDT, 7 October 2026 (rewritten after Job AW)
+# Theorem F6: status at 05:05 MDT, 7 October 2026 (rewritten after Job AW; corrected 05:12 from NightPostAW)
 
 Status page for the night's F6 programme. Everything below is taken from `NightLog-2026-10-06.md` and the Night notes it cites; nothing here is new mathematics. Labels: **formal** = in Lean, 0 sorry, standard axioms (coordinator recompile); **hand** = proved by hand in a Night note (unreviewed unless stated); **data** = Studio or local computation, with the exact count; **killed / false** = refuted, reason on record. All Night notes are exploratory (Night swarm outputs: leads, not evidence, until re-checked).
 
 ## 0. Plain status (05:05)
 
 - **A₃₄′, W2, W2* and Lemma S_Γ are FALSE at degree 6.** Job AW (merged 8840b2b) found 61 distinct constructed 37-vertex graphs, each checked by two independent engines (`jobaw/`), with a (5,5,5,5,6) Γ-cycle on which they fail (A₃₄′ on 11 graphs, W2/W2* on 45, Lemma S on the three families named in §4). The census (orders ≤ 27) satisfies all of them; the constructions do not.
-- **Still true on all 61 counterexample graphs (and everywhere tested):** the quarter floor (Σw = −2,936 / −2,744 / −3,958 on the three classes), σC, σ′C (H1) and charge-back P₁.
+- **Still true (correction, 05:12):** the quarter floor holds on all three counterexample families reported (Σw = −2,936 / −2,744 / −3,958). σC, σ′C and charge-back P₁ were checked only on **3 graphs (8 records)**, not on all 61; the backfill on all 61 is Studio Job BJ, in progress. Until BJ reports, "σC, σ′C and P₁ survive the counterexamples" is a statement about 3 graphs.
 - **Hence the per-Γ-cycle reduction tree (flow identity ⇒ Lemma S_Γ on Γ-cycles + P₁ on non-Γ cycles, with Lemma S_Γ = A₃₄′ + W2) is NOT a route to F6.** A Γ-cycle's deficit is paid by its σ-neighbours' slack, not by its own lockless exits.
-- **The surviving statement is group-level:** σC on every σ-group with the charge-back P₁ certificate (formal: `sigmaC_of_assignment_groups`, `QuarterAssignment.lean`), and above it `SigmaUnionCConj` (σ ∪ σ′ groups; `QuarterSigmaPrime.lean`), with 0 failures on every census hole, on all of order 27 (~368M groups), and on all 61 counterexample graphs. The local theorems proved along the way remain true (§3).
+- **The surviving statement is group-level:** σC on every σ-group with the charge-back P₁ certificate (formal: `sigmaC_of_assignment_groups`, `QuarterAssignment.lean`), and above it `SigmaUnionCConj` (σ ∪ σ′ groups; `QuarterSigmaPrime.lean`), with 0 failures on every census hole, on all of order 27 (~368M groups), and, so far, the 3 counterexample graphs checked (8 records; all 61 pending in Job BJ). NightPostAW's verdict: the night made no progress on any 4CT-strength statement; the adversarial evidence for `SigmaUnionCConj` at degree 6 is thin and it has never itself been the objective of a search. The formal certificate in `QuarterAssignment` must be relaxed: its `nbr` field requires a lockless exit, which is not what the data use (being fixed; the file is modified in the working tree). The local theorems proved along the way remain true (§3).
 - F5 (the same floor at (5,5,5,5,5) holes) is formal. F6 at (5,5,5,5,6) is **not proved**.
 
 ## 1. Statement and why it matters
@@ -21,7 +21,7 @@ F6 at (5,5,5,5,6)        [floor on every class]
  └─ σC on every σ-group  [QuarterAssignment: sigmaC_of_assignment_groups; QuarterSigmaGroups]   SURVIVES (group level)
      └─ group flow identity   Σ_g λ = Σ_{Z>0} def(Z) + Σ_{T≤0} rem(T)   [FORMAL: QuarterFlowIdentity.flow_identity]
          ├─ Γ-cycles:  Lemma S_Γ (lockless σ-exits cover the debt D = L)  = A₃₄′ + W2 (+ F₄ caveat)   FALSE at degree 6 (Job AW)
-         └─ non-Γ positive cycles: charge-back P₁ → P₁^str          holds in all data, incl. the 61 counterexamples
+         └─ non-Γ positive cycles: charge-back P₁ → P₁^str          holds in all census data; on the counterexamples checked only on 3 graphs (Job BJ pending)
 ```
 
 The tree was exact as a reduction, but its Γ-cycle branch needs Lemma S_Γ, which Job AW refutes. What survives is the group-level assignment certificate: every positive σ-group cycle is assigned to one nonpositive σ-neighbour with enough slack. That statement is formally sufficient (`sigmaC_of_assignment_groups`) and has 0 failures in all data, but no proof route is known.
@@ -124,7 +124,7 @@ Same universal period (406/406 periods, Job AC), same skeleton (k = 4 fails only
 
 ## 6. Lean inventory (night modules)
 
-All under `SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/`. Directory recount at 05:04: 35 `Quarter*.lean` files + `NoFrozen.lean` = 36 files. Of these, 34 `Quarter*.lean` + `NoFrozen.lean` = **35 are committed night modules, matching the log's "35 night modules"** (resolving the earlier off-by-one: the log counts committed modules). The 35th `Quarter*` file, `QuarterPairDuality.lean`, is untracked and in flight (the three exact pair dualities of NightW2Euler). All logged modules were recompiled with standard axioms per the log; a text search at 04:05 found no `sorry` in code in the modules then present, and newer ones were not re-searched. `QuarterTwoPeriod`, `QuarterCrossing`, `QuarterU34` (with its extension) are formal but their targets (A₃₄′ on L = 20) are false at degree 6 in the constructed graphs, so they now document local facts, not a route to F6.
+All under `SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/`. Directory recount at 05:12: 37 `Quarter*.lean` files + `NoFrozen.lean`. Of these, 35 `Quarter*.lean` + `NoFrozen.lean` = **36 are committed night modules, matching the log's "36 night modules"**. Untracked and in flight: `QuarterPairDuality.lean` and `QuarterStepChange.lean`; `QuarterAssignment.lean` has uncommitted edits (the `nbr` relaxation). All logged modules were recompiled with standard axioms per the log; a text search at 04:05 found no `sorry` in code in the modules then present, and newer ones were not re-searched. `QuarterTwoPeriod`, `QuarterCrossing`, `QuarterPocket`, `QuarterU34` are formal, but the A₃₄′(L = 20) chain they complete reduces a false statement to a false one (Job AW), so they document local facts, not a route to F6.
 
 - `QuarterFloor`: definitions (Pent, locks, DL, classes), Lemma A, `QuarterFloorConj`.
 - `QuarterRotation`: R₊₃ and R₊₂ rotations on unfilled states.
@@ -161,7 +161,8 @@ All under `SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatoric
 - `QuarterLemmaP`: Lemma P and the exact identity Σλ = |DD| − 2N₀ − E₂ − 3τ.
 - `QuarterK8`: the step-8 component, hole ∩ K₈ = {x₂, x₃, w⁺}.
 - `QuarterWindow`: NightA34 §1–§3 period bookkeeping (`bookkeeping`, lock/J as joins), `step8_far`, `window_forced`, `k4_failure_iff_z_split`, `k3_failure_iff_y_split`.
-- `QuarterPairDuality` (untracked, in flight): the three exact pair dualities of NightW2Euler.
+- `QuarterPocket`: the pocket lemma at R1k2 (`pocket_iff`, `pocket_of_not_J`, `not_J_of_pocket`), `A34_L20_of_no_two_pockets` with no planar hypothesis; completes the formal two-colouring reduction of A₃₄′(L = 20), whose hypothesis "no two pockets" is false on the AW graphs.
+- `QuarterPairDuality`, `QuarterStepChange` (untracked, in flight): the three exact pair dualities of NightW2Euler; step-change lemmas.
 
 `check.sh` (in `StudioMathLean/`) names the `Quarter*` modules plus `NoFrozen`, including `QuarterWindow`, `QuarterZsplit`, `QuarterEvenCut` and `QuarterK8` (`QuarterK8` and `QuarterLemmaP` seen in `check.sh` at 04:44; the count there was not redone); a full regression needs the snapshot build `$HOME/mathlib4-planemap-build`, which is absent on this MacBook, so modules were recompiled individually against `$HOME/mathlib4-planemap` (log, 03:28 note).
 
@@ -206,6 +207,7 @@ All files under `backgroundMaterial/planemap-structural/longtable/local-runs/27-
 - **BD**: two-pocket geometry (merged 0f0f3b5).
 - **AO**: Γ-cycle lengths over all core triangulations of orders 12–27: only 20, 40, 60 in the census; A7 has L = 800 (merged e099532).
 - **AP**: G2 fails; gate route closed (merged 11bfdac). **AQ**: lemma chain on adversarial long Γ-cycles (none at degree 6) (merged 9e4834d). **AR**: hole gates do not separate degree 6 from 7 (merged 1080bf6).
+- **BC**: the six events are the three fixed points (steps 3/4 ⇔ F₄, 5/6 ⇔ F₆, 7/8 ⇔ F₈); pair dualities verified on 312,928 states (merged 56802ae). **BG**, **BH**: cancelled. **BJ**: backfill of σC, σ′C, P₁ on all 61 AW graphs, in progress.
 - **BE**: m's far neighbours at position 9; step 13 marker (merged d56afcb).
 - **AW**: adversarial flip search, 438,871 evaluations on 252 walks × 1,000 steps; **61 graphs where A₃₄′, W2, W2*, Lemma S fail at degree 6** (`jobaw/`, merged 8840b2b).
 
@@ -213,8 +215,10 @@ Earlier jobs for context: A, A2, B (positive-cycle census, transport), C ((5,5,5
 
 ## 8. Suggested next steps
 
-1. **Job BI: group accounting on the counterexamples.** On the 61 AW graphs, compute for each Γ-cycle and each σ-group the actual payer (which σ-neighbours, which σ-links: lockless, single-lock, DL, σ′) and the slack, to find the weakest per-cycle statement that survives the counterexamples (the candidate being the charge-back assignment with its certificate, `AssignmentStr`).
-2. **Strategic reassessment.** `NightPostAW.md` (in progress): what a proof of σC / SigmaUnionC at (5,5,5,5,6) can look like once the Γ-cycle chain is gone. Open question: is P₁^str (every positive Z has a σ-neighbour T with −rem(T) ≥ 5w(Z)) provable by a global count over T (NightP1 addendum says the count is global)?
-3. **Formal sufficient certificate.** State the group-level assignment (`AssignmentStr`) as the target theorem for SigmaUnionC and check it against the counterexample graphs by the independent Python engine.
+NightPostAW's verdict and ranking (§4 there): attack the group-level statement itself, adversarially, and consolidate the Lean; do not resume A₃₄′, W2, two-pocket, potential or bounded-distance work, and treat every census-only regularity as provisional until a flip search has attacked it.
+
+1. **Adversarial search on SigmaUnionC and on "every Γ-cycle has a non-DL σ-image"** (Job BJ and its follow-ups; NightPostAW §3 items 1 and 3b–c). It decides whether any group-level route exists. Failure modes: it finds a positive or filled-free group (ends the framework below the class floor), or it stalls at Σλ ≪ 0 because the search space near the construction seeds is too narrow (false comfort, as with AW). Job BJ also backfills σC, σ′C and P₁ on all 61 AW graphs.
+2. **The per-group budget B′:** census, then adversarial, then a hand injection for R⁻ via U34. Failure modes: the |DD| ≤ 2|R| loss makes B′ false at tight holes, or B′ holds but the payer is not one σ-hop away, so no one-hop injection exists and a flow is needed (at orders ≤ 24 the dominant cycle is 2–3 hops from 17 positive cycles; that is the Hall form of SigmaUnionC with no local gain). Job BI (group accounting on the counterexamples) feeds this.
+3. **Lean consolidation (cheap, independent of 1 and 2):** relax `nbr` in `Assignment` and `AssignmentStr` (in progress); formalise C1/C3 (targetless ⇒ all-DL ⇒ ⊔ Γ-cycles) and S₁ ⇒ G0 ⇒ R\*; state B′ and prove B′ ∧ (|DD| ≤ 2|R|) ⇒ SigmaUnionC on top of `dd_le_two_noLock_linkGroup`. Low risk, touches none of the 4CT strength; its value is that tomorrow's conjectures are stated exactly as tested.
 4. **Housekeeping.** Commit `QuarterPairDuality.lean` when it lands; obtain the snapshot build for a full `check.sh` regression; request adversarial review of the Night notes before any citation (flow identity, period lemma, exact identity are formal).
 5. **Do not** spend further effort on A₃₄′, W2, W2*, Lemma S_Γ, the two-period attack, potentials, gates, pockets, six events, fixed-point language or the 20 ∣ L conjecture as routes to F6; they are false in the form stated or no longer lead anywhere (§4).
