@@ -189,3 +189,22 @@ Exits = R3 DD-endpoint states of positive cycles with a lockless sigma-image on 
   both failing: 1 + 1, 8 + 9, 31 + 23, **never on a Gamma-cycle**. Distance from the second failure to the first non-DL state: max 5 (order 25), 2 / 15 (order 26 / mirror),
   9 (order 27). The single distance > 10 is p26m #21951 h22 (run length 27, failures at positions 2 and 12, the run continues 15 steps). The state leaving DL always has
   Lock1 and loses Lock2 (it is the run end s_u).
+
+## Job AA (independent Python; jobuv/jobaa.py -> jobaa-summary.txt, jobaa-cases.json): the 73 double k = 4 failures of Job X, traced to the run end
+- All 73 reproduce. Every second-failure break is the step-8 (p,y) swap whose component avoids p, m, y, z.
+- The breaking component meets the Lock2 witness (the {mu,B}-component of m) of the last DL state in 69/73; the 4 exceptions (p27m #162314 h4, #187412 h23 (x2), #260796 h4)
+  all have distance 9, last DL state R3k0 and a leaving step that is itself a far (p,y) swap; there the breaking component meets the leaving step's swapped component.
+- Rule covering all 73: the second break's component meets the Lock2 witness of the last DL state OR the component swapped by the step that kills Lock2.
+- Leaving steps: (m,y) far swap from R1k1 (36), (m,z) far (10), (p,y) far (8), (p,y) through p and y (10), (p,z) far (4), (p,z) through p, z (2), (p,m) through p, m (3).
+
+## Lemma W (Job X addendum; `--jobx` windows, `jobw.py` -> jobw-summary.txt), (5,5,5,5,6), orders 25-27, both orientations
+Windows R3k3, R3k2, R3k1, R3k0, R3k4' lying inside a DL run: credit = sum (3f - 1) of their lockless sigma-exits >= 10; W1 = k3 or k4' lockless; W2 = some k <= 2 lockless;
+W4 = k4' fails => k3 lockless with f = 3.
+- **On Gamma-cycles all four hold with 0 failures** (12 + 12, 58 + 58, 206 + 206 windows).
+- On non-closed runs they fail often (order 27, per orientation, of 1,946 windows: credit < 10 in about 510, not W1 389, not W2 149, not W4 about 700). Most failing windows end
+  1-2 steps before the run end, but W1 fails up to 12-15 steps before it (p26 / p26m: 12 and 15; order 27: up to 12), so **W1 does not hold on all runs**.
+
+## Charge-back P1 (coordinator refinement; `picyc.w --jobs` with per-exit records, `jobcb.py` -> jobcb-summary.txt), orders 25-27, both orientations
+rem(T) > 0 is charged back to the positive sources that hit T (in proportion to credit; exact fractions), def'(Z) = def(Z) + charge; P1 on def' with targets rem < 0.
+- **Holds at every hole** (single-target assignment exists; def' > 0 records: 1 + 2, 11 + 13, 25 + 49 at orders 25, 26, 27 per orientation). The 12 rem > 0 targets (all order 27) each have ONE source:
+  p27 #68456 h19 (both orientations; source = the Gamma-cycle, credits 16, charge 6) and the 10 Lambda = 0 targets hit once by f = 1 (charge 2 to the single source).
