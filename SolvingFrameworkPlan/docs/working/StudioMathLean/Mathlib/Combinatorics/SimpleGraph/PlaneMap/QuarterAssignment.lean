@@ -145,6 +145,90 @@ theorem sigmaC_of_assignment_groups
   obtain ⟨C, ⟨A⟩⟩ := H c₀ h₀ c hc
   exact sigmaC_of_assignment sigmaGroup_properOff sigmaGroup_piInvariant.mapsTo C A
 
+/-! ### Charge-back is credit-free (`NightP1.md` §1) -/
+
+section str
+variable (P g) in
+open Classical in
+/-- The total credit of the exits of `g` from `Z` into `T`. -/
+noncomputable def creditOut (Z T : Finset (Fin n → Fin 4)) : ℤ :=
+  ∑ e ∈ ((exits P g).filter (fun e => orbFin P e.1 = Z)).filter (fun e => orbFin P e.2 = T),
+    credit P e
+
+variable (P g) in
+/-- **A credit-bounded charge-back** (`NightP1.md` Lemma 1.1): the charge of `T` on `Z` is at
+most the credit `Z` sent into `T` (true of the proportional split, since `rem(T) ≤ Σ` credits
+into `T`, `remOrb_le_credit_in`). -/
+def CreditBounded (C : ChargeBack P g) : Prop :=
+  ∀ Z ∈ posOrbits P g, ∀ T ∈ nonposOrbits P g, C.cb Z T ≤ creditOut P g Z T
+
+open Classical in
+/-- `rem(T) ≤ Σ` credits into `T` on a nonpositive orbit (`Λ(T) ≤ 0`). -/
+lemma remOrb_le_credit_in {T : Finset (Fin n → Fin 4)} (hT : T ∈ nonposOrbits P g) :
+    remOrb P g T ≤ ∑ e ∈ (exits P g).filter (fun e => orbFin P e.2 = T), credit P e := by
+  have := (Finset.mem_filter.1 hT).2
+  unfold remOrb
+  omega
+
+/-- **`def′(Z) ≤ Λ(Z)`** (`NightP1.md` Lemma 1.1): a credit-bounded charge-back never returns
+more than `Z` sent out. -/
+theorem defPrime_le_lam {C : ChargeBack P g} (hC : CreditBounded P g C)
+    {Z : Finset (Fin n → Fin 4)} (hZ : Z ∈ posOrbits P g) :
+    defP P g C Z ≤ orbSum P Z := by
+  classical
+  have hfib : ∑ T ∈ nonposOrbits P g, creditOut P g Z T =
+      ∑ e ∈ (exits P g).filter (fun e => orbFin P e.1 = Z), credit P e := by
+    unfold creditOut
+    refine Finset.sum_fiberwise_of_maps_to (fun e he => ?_) _
+    obtain ⟨-, h2, -, -, -, h6⟩ := mem_exits (Finset.mem_filter.1 he).1
+    unfold nonposOrbits orbitsOf
+    exact Finset.mem_filter.2 ⟨Finset.mem_image_of_mem _ h2, h6⟩
+  have hle : ∑ T ∈ nonposOrbits P g, C.cb Z T ≤ ∑ T ∈ nonposOrbits P g, creditOut P g Z T :=
+    Finset.sum_le_sum fun T hT => hC Z hZ T hT
+  unfold defP defOrb
+  omega
+
+variable (P g) in
+/-- **P₁^str** (`NightP1.md` Corollary 1.2): the assignment of `Assignment` with `Λ(Z)` in place
+of `def′(Z)` in the capacity bound. -/
+structure AssignmentStr (C : ChargeBack P g) where
+  /-- The target of `Z`. -/
+  a : Finset (Fin n → Fin 4) → Finset (Fin n → Fin 4)
+  mem : ∀ Z ∈ posOrbits P g, 0 < defP P g C Z → a Z ∈ nonposOrbits P g ∧ remOrb P g (a Z) < 0
+  nbr : ∀ Z ∈ posOrbits P g, 0 < defP P g C Z →
+    ∃ e ∈ exits P g, orbFin P e.1 = Z ∧ orbFin P e.2 = a Z
+  bound : ∀ T ∈ nonposOrbits P g, remOrb P g T < 0 →
+    ∑ Z ∈ (posOrbits P g).filter (fun Z => 0 < defP P g C Z ∧ a Z = T), orbSum P Z ≤
+      -remOrb P g T
+
+/-- A `P₁^str` assignment for a credit-bounded charge-back is an assignment. -/
+def AssignmentStr.toAssignment {C : ChargeBack P g} (hC : CreditBounded P g C)
+    (A : AssignmentStr P g C) : Assignment P g C where
+  a := A.a
+  mem := A.mem
+  nbr := A.nbr
+  bound T hT hr := le_trans (Finset.sum_le_sum fun _ hZ =>
+    defPrime_le_lam hC (Finset.mem_filter.1 hZ).1) (A.bound T hT hr)
+
+/-- **σC from P₁^str**: a credit-bounded charge-back with a `Λ`-capacity assignment gives
+`Σ_g λ ≤ 0`. -/
+theorem sigmaC_of_assignment_str (hp : ∀ d ∈ g, ProperOff M.graph h d)
+    (hinv : Set.MapsTo (piMove P) (g : Set _) g) (C : ChargeBack P g) (hC : CreditBounded P g C)
+    (A : AssignmentStr P g C) : ∑ d ∈ g, lam P d ≤ 0 :=
+  sigmaC_of_assignment hp hinv C (A.toAssignment hC)
+
+/-- `σC` at the hole from P₁^str on every `σ`-group. -/
+theorem sigmaC_of_assignment_str_groups
+    (H : ∀ c₀ : Fin n → Fin 4, ProperOff M.graph h c₀ → ∀ c ∈ kclass M h c₀,
+      ∃ C : ChargeBack P (sigmaGroup P c₀ c), CreditBounded P (sigmaGroup P c₀ c) C ∧
+        Nonempty (AssignmentStr P (sigmaGroup P c₀ c) C)) :
+    SigmaC P :=
+  sigmaC_of_assignment_groups fun c₀ h₀ c hc => by
+    obtain ⟨C, hC, ⟨A⟩⟩ := H c₀ h₀ c hc
+    exact ⟨C, ⟨A.toAssignment hC⟩⟩
+
+end str
+
 end sphere
 
 end SimpleGraph.QuarterFloor
@@ -152,3 +236,6 @@ end SimpleGraph.QuarterFloor
 -- `#print axioms` check (standard axioms only)
 #print axioms SimpleGraph.QuarterFloor.sigmaC_of_assignment
 #print axioms SimpleGraph.QuarterFloor.sigmaC_of_assignment_groups
+#print axioms SimpleGraph.QuarterFloor.defPrime_le_lam
+#print axioms SimpleGraph.QuarterFloor.sigmaC_of_assignment_str
+#print axioms SimpleGraph.QuarterFloor.sigmaC_of_assignment_str_groups
