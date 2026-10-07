@@ -416,3 +416,22 @@ u* is the apex of the face on the ring edge w₃–y away from x⁻. ω = c(x⁺
   At degrees 6–8 every failure is "u* in neither". At (5,5,5,5,5) there are 1,004 "neither" and 88 "both".
 - **Every-period flippers.** The intersection over b of S_b is nonempty in every cycle at every pattern, with size 2–8. So some vertex always flips ω-membership every period, but it is not one fixed named vertex. When u* fails at degree 6, the flippers are far neighbours of w₃ and z. "S_all contains a far vertex adjacent to the ring" holds in 262/264 degree-6 census cycles, 406/406 at degree 7, 238/238 at degree 8 and 5,606/5,670 at degree 5.
 - **α-class period 2.** A_{b+2} = A_b in 528/552 census degree-6 periods, 59/344 construction periods, 760/916 at degree 7, 414/544 at degree 8 and 10,844/12,400 at degree 5.
+
+## Job AY [exploratory]: NightSigmaImage fixed-point language on all degree-6/7 Γ periods (jobay/jobay.py, jobay-periods.jsonl, jobay-summary.txt)
+σ at every position uses that state's own j. It is fixed ⇔ the {c(x_j), c(x_{j+1})}-component of x_{j+1} contains every vertex of that colour pair. Colours are named in the period's position-4 frame: 1 = c(p), 2 = c(m) (the fourth colour), 3 = c(y), 4 = c(z). Data: 552 census degree-6 periods (264 cycles), 344 construction periods (40 cycles) and 916 census degree-7 periods (406 cycles), orders 25–27, both orientations, absolute replay, 0 replay errors.
+- **"k = 3 or k = 4 failure ⇔ σ fixed at position 1".**
+  - Degree 6: 550/552 census periods and 344/344 constructions. The constructions are vacuous: they have no failures and nothing fixed at position 1.
+  - The 2 degree-6 exceptions are p26#87942 h22, one period in each orientation. That period fails at both k = 4 and k = 3 with no fixed point at position 1. It is the Job M short-block cycle, with patterns 0000001000 / 0000001000 and 0000001000 / 0000100000.
+  - Degree 7: 858/916. There are 50 failing periods with no fixed point at position 1, and 8 fixed periods with no failure.
+- **A₃₄′ and W2.**
+  - Degree 6: no two consecutive periods are fixed at position 1, and none have consecutive k = 4 failures. W2 (positions 4, 6, 8 not all fixed) and W2* (positions 4 and 8 not both fixed) hold in 552/552 census and 344/344 construction periods.
+  - Degree 7: consecutive periods are fixed at position 1 in 20 of 916 period pairs. 7/406 cycles have consecutive k = 4 failures, so A₃₄′ fails at degree 7. W2 and W2* each fail in 14 periods, on 14 cycles.
+- **σ pair at each fixed position.** It is the same at every position, at both degrees. Fixed points never occur at positions 0 and 2. Lemma Fix holds: the complement pair has rank 0 at every fixed position.
+
+| position | 1 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|---|---|---|---|---|---|---|---|---|
+| σ pair | 12 | 13 | 12 | 14 | 13 | 12 | 14 | 13 |
+| acyclic complement | 34 | 24 | 34 | 23 | 24 | 34 | 23 | 24 |
+
+  Usually 3–6 of the six pairs are acyclic at a fixed position. The full six-rank vectors are in jobay-periods.jsonl.
+- **Patterns.** Degree 6 has 19 distinct 10-bit patterns. 0000000000 occurs 374 times, then 0000001010 (36) and 0000101000 (33). Joint patterns of consecutive periods: 59 distinct at degree 6 and 90 at degree 7, with 29 shared. All are listed in jobay-summary.txt.
