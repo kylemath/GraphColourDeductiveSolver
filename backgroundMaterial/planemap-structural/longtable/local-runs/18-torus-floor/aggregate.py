@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """[exploratory] Aggregate run*.jsonl: per family table, headline, smallest violating examples (re-verified independently)."""
-import sys, json, glob, itertools
+import sys, json, glob, itertools, gzip
 from fractions import Fraction
 sys.path.insert(0, '../common'); sys.path.insert(0, '.')
 from torus import *
@@ -8,8 +8,8 @@ from kempe_py import Space
 
 fam = {}; ex = []
 graphs = 0
-for fn in sorted(glob.glob('run?.jsonl')):
-    for line in open(fn):
+for fn in sorted(glob.glob('run?.jsonl*')):
+    for line in (gzip.open(fn, 'rt') if fn.endswith('.gz') else open(fn)):
         r = json.loads(line); graphs += 1
         d = fam.setdefault(r['family'], dict(graphs=0, holes=0, empty=0, skipped=0, classes=0, states=0, minfrac=Fraction(1), viol=0, targetless=0, minwhere=None, graphs_viol=0))
         d['graphs'] += 1; gv = False
