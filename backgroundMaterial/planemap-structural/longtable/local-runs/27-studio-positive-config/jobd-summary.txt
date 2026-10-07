@@ -1,0 +1,285 @@
+=== totals {'holes': 4039276, 'classes': 4203140, 'cls_bad': 0, 'cyc_split': 0, 'f5_bad': 0}
+=== per-class orientation check: holes compared 2019638, mismatches in (size, F, sum w) class multisets 0
+=== Job D: min over classes of each bound, by link pattern (classes counted over both orientations); "fail" = classes with the bound < 0
+pattern        holes  classes | 2N0-DD                 | 2N0+E2-DD              | 2N0+3tau-DD            | 2N0+E2+3tau-DD        
+5,5,5,5,6     292636   312300 | min    -36 fail    112 | min    -24 fail    112 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,6,5,7     257620   261886 | min    -36 fail     38 | min    -24 fail     14 | min    -12 fail      6 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,5,6,7     251210   256860 | min    -36 fail     24 | min    -24 fail     16 | min     -8 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,6,5,6     209364   216538 | min    -36 fail    286 | min    -24 fail    212 | min    -12 fail     48 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,5,6,6     206988   214384 | min    -36 fail    348 | min    -24 fail    212 | min    -32 fail     82 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,5,5,7     199386   209178 | min    -36 fail      6 | min    -24 fail      2 | min     -8 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,5,5,8+    189624   202134 | min    -36 fail     54 | min    -24 fail     22 | min    -32 fail     28 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,6,5,8+    192612   197976 | min    -30 fail    138 | min    -16 fail     86 | min    -16 fail     52 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,5,6,8+    178320   187174 | min    -36 fail    136 | min    -24 fail     80 | min    -32 fail     16 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,5,6,7     142572   144080 | min    -48 fail     40 | min    -48 fail     16 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,6,6,7     140632   142788 | min    -36 fail     18 | min    -24 fail      8 | min     -8 fail      6 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,5,6,6     134852   137754 | min    -48 fail    256 | min    -48 fail    202 | min    -24 fail     14 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,6,6,6     133082   136288 | min    -36 fail     14 | min    -24 fail      6 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,7,5,8+     83912    85626 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,5,5,5,5      71940    82456 | min      0 fail      0 | min      0 fail      0 | min     18 fail      0 | min     20 fail      0  type: F5 (2N0 suffices)
+5,6,6,6,6      74892    78250 | min    -48 fail     10 | min    -48 fail      4 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,6,6,8+     73650    76628 | min    -36 fail     92 | min    -24 fail     34 | min    -16 fail     56 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,5,7,8+     69216    74872 | min    -36 fail     32 | min    -24 fail     28 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,5,6,8+     72176    74440 | min    -48 fail    130 | min    -48 fail     90 | min    -12 fail     16 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,6,5,7      72974    73796 | min    -48 fail     14 | min    -48 fail      8 | min    -24 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,7,5,7      71282    71964 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,5,6,7,6      69046    70032 | min    -18 fail      4 | min    -12 fail      4 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,5,7,7      66376    68172 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,6,6,7      63500    65696 | min    -24 fail     14 | min      0 fail      0 | min    -24 fail      6 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,7,5,7      64286    64722 | min     -8 fail      2 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,6,7,6      61490    64238 | min    -48 fail     16 | min    -48 fail      8 | min    -16 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,6,7,7      58246    59380 | min    -36 fail      4 | min    -24 fail      4 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,6,5,8+     40374    41436 | min    -48 fail     66 | min    -48 fail     48 | min    -32 fail     14 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,6,8+,6     32852    34424 | min    -36 fail     26 | min    -24 fail     18 | min    -16 fail      6 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,7,6,7      31282    31650 | min     -8 fail      2 | min      0 fail      0 | min     -8 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,5,7,7      30410    30722 | min    -36 fail      4 | min    -24 fail      2 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,7,5,8+     27672    28260 | min    -16 fail      4 | min      0 fail      0 | min    -16 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,7,6,8+     25914    26732 | min    -12 fail      8 | min      0 fail      0 | min     -8 fail      6 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,8+,5,7     24188    25030 | min    -12 fail      2 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,8+,5,8+    22872    24130 | min    -12 fail     10 | min      0 fail      0 | min    -12 fail     10 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,6,6,8+     22392    23876 | min    -48 fail     56 | min    -48 fail      8 | min    -16 fail     42 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,6,7,8+     21506    23062 | min    -36 fail     48 | min    -24 fail     38 | min    -12 fail      8 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,5,7,8+     20068    21144 | min    -48 fail     58 | min    -48 fail     42 | min    -16 fail     14 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,7,6,7      19796    20578 | min    -12 fail      4 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,6,8+,6     18894    20556 | min    -48 fail     44 | min    -48 fail     32 | min    -20 fail      8 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,6,8+,7     18256    19704 | min    -36 fail     38 | min    -24 fail     34 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,6,7,7      18368    18944 | min    -36 fail     12 | min    -24 fail     10 | min     -8 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,5,8+,8+    13890    16108 | min    -36 fail     26 | min    -24 fail     16 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,8+,5,8+    10386    11684 | min    -24 fail     10 | min      0 fail      0 | min    -24 fail     10 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,6,6,7      10372    10620 | min     -8 fail      2 | min      0 fail      0 | min     -8 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,5,7,7      10368    10508 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,6,6,6,7       9490    10212 | min    -12 fail      4 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,7,7,7       9536     9764 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,7,7,6       9034     9402 | min    -18 fail      6 | min    -12 fail      6 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+6,6,6,6,6       6752     7224 | min     -4 fail      2 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,8+,6,8+     6054     6774 | min    -24 fail     10 | min    -16 fail     10 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,7,6,8+      5984     6582 | min    -24 fail      2 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,5,7,7,8+      5796     6240 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,5,6,8+,8+     5216     6236 | min    -36 fail     26 | min    -24 fail     22 | min     -8 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,6,6,8+      5446     6094 | min    -24 fail     14 | min      0 fail      0 | min    -24 fail     14 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,8+,6,7      4828     5414 | min    -24 fail      6 | min      0 fail      0 | min    -24 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,5,7,8+      4396     4812 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,6,7,8+      3980     4604 | min    -48 fail     30 | min    -48 fail     26 | min    -16 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,6,7,7       3878     4140 | min     -8 fail      2 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,7,8+,6      3348     4054 | min    -48 fail     38 | min    -48 fail     36 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,6,7,7,7       3544     3838 | min     -8 fail      4 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+5,7,7,5,8+      3518     3690 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,6,8+,7      3034     3596 | min    -48 fail     32 | min    -48 fail     22 | min    -16 fail     10 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,5,8+,8+     2260     2690 | min    -48 fail     28 | min    -48 fail     22 | min     -8 fail      2 | min     20 fail      0  type: 2N0+E2+3tau needed
+5,6,8+,6,8+     2128     2634 | min    -32 fail     22 | min    -32 fail     22 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+6,6,6,6,8+      1854     2194 | min    -16 fail      8 | min      0 fail      0 | min    -16 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,8+,5,8+     1446     2108 | min    -24 fail     10 | min      0 fail      0 | min    -24 fail     10 | min      0 fail      0  type: 2N0+E2+3tau needed
+6,6,7,6,7       1868     2080 | min     -8 fail      4 | min      0 fail      0 | min     -8 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,7,8+,7      1760     2014 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,6,6,7,7       1572     1800 | min    -24 fail      4 | min      0 fail      0 | min    -24 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,8+,6,6,8+      888     1566 | min    -24 fail      8 | min      0 fail      0 | min    -24 fail      8 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,8+,7,8+     1194     1432 | min      8 fail      0 | min      8 fail      0 | min     20 fail      0 | min     20 fail      0  type: F5 (2N0 suffices)
+5,7,7,6,8+      1036     1340 | min     -8 fail      4 | min      0 fail      0 | min     -8 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,7,8+,8+      870     1088 | min     24 fail      0 | min     40 fail      0 | min     84 fail      0 | min    100 fail      0  type: F5 (2N0 suffices)
+6,6,7,6,8+       766     1084 | min    -24 fail      2 | min      0 fail      0 | min    -24 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,7,7,8+       810     1002 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,8+,7,7       664      858 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,7,6,7,8+       532      770 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,7,6,8+,7       434      606 | min     -8 fail      2 | min      0 fail      0 | min     -8 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,8+,6,7,8+      178      566 | min    -36 fail     12 | min      0 fail      0 | min    -36 fail     12 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,6,8+,8+      370      548 | min    -48 fail     10 | min    -48 fail     10 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+6,6,6,7,8+       302      494 | min    -24 fail      8 | min      0 fail      0 | min    -24 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,8+,6,8+      212      436 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,7,8+,7       286      426 | min    -16 fail      2 | min      0 fail      0 | min    -16 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,6,8+,7,8+      286      390 | min     32 fail      0 | min     32 fail      0 | min    104 fail      0 | min    120 fail      0  type: F5 (2N0 suffices)
+5,6,8+,8+,6      254      360 | min    -48 fail     10 | min    -48 fail     10 | min     40 fail      0 | min     40 fail      0  type: F6 (2N0+3tau suffices)
+5,7,5,8+,8+      200      332 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,7,7,7,7        210      266 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,7,6,7,7        186      264 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,6,8+,6,8+      164      262 | min    -32 fail      6 | min    -32 fail      6 | min      0 fail      0 | min      0 fail      0  type: F6 (2N0+3tau suffices)
+6,6,7,7,7        164      248 | min    -16 fail      4 | min      0 fail      0 | min    -16 fail      2 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,5,8+,8+,8+     170      234 | min     64 fail      0 | min     80 fail      0 | min     80 fail      0 | min     80 fail      0  type: F5 (2N0 suffices)
+5,8+,5,8+,8+      58      202 | min    -36 fail      4 | min      0 fail      0 | min    -36 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,7,7,8+        86      168 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,7,7,6,8+        72      138 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,6,7,7,8+        68      134 | min    -24 fail      4 | min      0 fail      0 | min    -24 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+6,7,6,7,8+        50      128 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,8+,8+,7       50       92 | min      8 fail      0 | min      8 fail      0 | min     20 fail      0 | min     20 fail      0  type: F5 (2N0 suffices)
+5,6,7,8+,8+       54       88 | min     64 fail      0 | min     64 fail      0 | min    208 fail      0 | min    240 fail      0  type: F5 (2N0 suffices)
+5,8+,7,7,8+       14       86 | min    -24 fail      6 | min      0 fail      0 | min    -24 fail      6 | min      0 fail      0  type: 2N0+E2+3tau needed
+5,7,6,8+,8+       14       80 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,8+,6,8+,8+      12       76 | min    -36 fail      4 | min      0 fail      0 | min    -36 fail      4 | min      0 fail      0  type: 2N0+E2+3tau needed
+6,7,8+,6,8+       28       72 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,7,7,8+,7        38       68 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,7,7,7,7         18       50 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,7,8+,7,8+       16       50 | min      8 fail      0 | min      8 fail      0 | min     20 fail      0 | min     20 fail      0  type: F5 (2N0 suffices)
+6,6,8+,7,8+       18       42 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,7,7,7,8+        10       32 | min      0 fail      0 | min      0 fail      0 | min     72 fail      0 | min    120 fail      0  type: F5 (2N0 suffices)
+5,7,7,8+,8+        4       28 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+5,6,8+,8+,8+      14       26 | min     64 fail      0 | min     96 fail      0 | min    208 fail      0 | min    240 fail      0  type: F5 (2N0 suffices)
+6,6,7,8+,7         6       20 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+6,6,6,8+,8+        4       12 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0 | min      0 fail      0  type: F5 (2N0 suffices)
+
+=== first failing class per pattern and bound
+5,5,5,5,6    2N0-DD         first fail ('c12-23', 'p17#2', 5, 'class [size,F,w,DD,N0,E2,tau]=[68, 22, -4, 14, 4, 2, 8]') ; min at ('c25', 'p25#12119', 21, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,5,6    2N0+E2-DD      first fail ('c12-23', 'p17#2', 5, 'class [size,F,w,DD,N0,E2,tau]=[68, 22, -4, 14, 4, 2, 8]') ; min at ('c25', 'p25#12119', 21, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,5,7    2N0-DD         first fail ('c25', 'p25#12759', 17, 'class [size,F,w,DD,N0,E2,tau]=[132, 48, -12, 20, 8, 4, 20]') ; min at ('c25', 'p25#17617', 16, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,5,7    2N0+E2-DD      first fail ('c25', 'p25#17617', 16, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#17617', 16, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,5,7    2N0+3tau-DD    first fail ('c26', 'p26#41003', 15, 'class [size,F,w,DD,N0,E2,tau]=[402, 108, -6, 66, 18, 42, 6]') ; min at ('c26', 'p26#41003', 15, [402, 108, -6, 66, 18, 42, 6])
+5,5,5,6,7    2N0-DD         first fail ('c25', 'p25#24780', 14, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#24780', 14, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,6,7    2N0+E2-DD      first fail ('c25', 'p25#24780', 14, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#24780', 14, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,6,7    2N0+3tau-DD    first fail ('c26', 'p26#49957', 24, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c26', 'p26#49957', 24, [192, 48, 0, 24, 8, 8, 0])
+5,5,6,5,6    2N0-DD         first fail ('c12-23', 'p17#2', 1, 'class [size,F,w,DD,N0,E2,tau]=[63, 22, -5, 9, 3, 1, 9]') ; min at ('c26', 'p26#58084', 21, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,5,6    2N0+E2-DD      first fail ('c12-23', 'p17#2', 1, 'class [size,F,w,DD,N0,E2,tau]=[63, 22, -5, 9, 3, 1, 9]') ; min at ('c26', 'p26#58084', 21, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,5,6    2N0+3tau-DD    first fail ('c25', 'p25#12412', 23, 'class [size,F,w,DD,N0,E2,tau]=[402, 108, -6, 66, 18, 42, 6]') ; min at ('c25', 'p25#12412', 23, [402, 108, -6, 66, 18, 42, 6])
+5,5,5,6,6    2N0-DD         first fail ('c12-23', 'p17#2', 0, 'class [size,F,w,DD,N0,E2,tau]=[68, 22, -4, 12, 3, 2, 8]') ; min at ('c25', 'p25#13927', 16, [408, 132, -24, 72, 18, 12, 48])
+5,5,5,6,6    2N0+E2-DD      first fail ('c12-23', 'p17#2', 0, 'class [size,F,w,DD,N0,E2,tau]=[68, 22, -4, 12, 3, 2, 8]') ; min at ('c25', 'p25#13927', 16, [408, 132, -24, 72, 18, 12, 48])
+5,5,5,6,6    2N0+3tau-DD    first fail ('c24', 'p24#4159', 17, 'class [size,F,w,DD,N0,E2,tau]=[144, 36, 0, 24, 8, 8, 0]') ; min at ('c26', 'p26#71165', 4, [576, 144, 0, 96, 32, 32, 0])
+5,5,5,5,7    2N0-DD         first fail ('c25', 'p25#23577', 15, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c26', 'p26#56114', 3, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,5,7    2N0+E2-DD      first fail ('c26', 'p26#56114', 3, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c26', 'p26#56114', 3, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,5,7    2N0+3tau-DD    first fail ('c25', 'p25#23577', 15, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c25', 'p25#23577', 15, [192, 48, 0, 24, 8, 8, 0])
+5,5,5,5,8+   2N0-DD         first fail ('c12-23', 'p23#1499', 15, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c25', 'p25#22692', 9, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,5,8+   2N0+E2-DD      first fail ('c25', 'p25#22692', 9, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#22692', 9, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,5,8+   2N0+3tau-DD    first fail ('c12-23', 'p23#1499', 15, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c25', 'p25#16937', 14, [768, 192, 0, 96, 32, 32, 0])
+5,5,6,5,8+   2N0-DD         first fail ('c24', 'p24#4159', 7, 'class [size,F,w,DD,N0,E2,tau]=[144, 36, 0, 12, 4, 4, 0]') ; min at ('c25', 'p25#12412', 12, [402, 108, -6, 66, 18, 42, 6])
+5,5,6,5,8+   2N0+E2-DD      first fail ('c25', 'p25#12119', 12, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c26', 'p26#40884', 16, [272, 88, -16, 56, 16, 8, 32])
+5,5,6,5,8+   2N0+3tau-DD    first fail ('c24', 'p24#4159', 7, 'class [size,F,w,DD,N0,E2,tau]=[144, 36, 0, 12, 4, 4, 0]') ; min at ('c26', 'p26#66544', 21, [128, 32, 0, 16, 0, 16, 0])
+5,5,5,6,8+   2N0-DD         first fail ('c24', 'p24#6764', 10, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c25', 'p25#12119', 14, [408, 132, -24, 72, 18, 12, 48])
+5,5,5,6,8+   2N0+E2-DD      first fail ('c25', 'p25#12119', 14, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#12119', 14, [408, 132, -24, 72, 18, 12, 48])
+5,5,5,6,8+   2N0+3tau-DD    first fail ('c24', 'p24#6764', 10, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c26', 'p26#49989', 22, [768, 192, 0, 96, 32, 32, 0])
+5,6,5,6,7    2N0-DD         first fail ('c24', 'p24#608', 2, 'class [size,F,w,DD,N0,E2,tau]=[319, 116, -29, 32, 14, 26, 41]') ; min at ('c26', 'p26#67765', 20, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,6,7    2N0+E2-DD      first fail ('c25', 'p25#12335', 7, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c26', 'p26#67765', 20, [324, 96, -12, 72, 12, 0, 36])
+5,5,6,6,7    2N0-DD         first fail ('c25', 'p25#422', 21, 'class [size,F,w,DD,N0,E2,tau]=[72, 18, 0, 6, 2, 2, 0]') ; min at ('c25', 'p25#16092', 22, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,6,7    2N0+E2-DD      first fail ('c25', 'p25#16092', 22, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#16092', 22, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,6,7    2N0+3tau-DD    first fail ('c25', 'p25#422', 21, 'class [size,F,w,DD,N0,E2,tau]=[72, 18, 0, 6, 2, 2, 0]') ; min at ('c26', 'p26#58399', 23, [256, 64, 0, 8, 0, 8, 0])
+5,6,5,6,6    2N0-DD         first fail ('c12-23', 'p17#1', 4, 'class [size,F,w,DD,N0,E2,tau]=[54, 16, -2, 12, 2, 0, 6]') ; min at ('c25', 'p25#11847', 23, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,6,6    2N0+E2-DD      first fail ('c12-23', 'p17#1', 4, 'class [size,F,w,DD,N0,E2,tau]=[54, 16, -2, 12, 2, 0, 6]') ; min at ('c25', 'p25#11847', 23, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,6,6    2N0+3tau-DD    first fail ('c25', 'p25#12494', 22, 'class [size,F,w,DD,N0,E2,tau]=[144, 36, 0, 24, 8, 8, 0]') ; min at ('c26', 'p26#40116', 18, [432, 108, 0, 72, 24, 24, 0])
+5,5,6,6,6    2N0-DD         first fail ('c25', 'p25#11901', 15, 'class [size,F,w,DD,N0,E2,tau]=[132, 48, -12, 20, 8, 4, 20]') ; min at ('c26', 'p26#46311', 20, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,6,6    2N0+E2-DD      first fail ('c26', 'p26#46311', 20, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c26', 'p26#46311', 20, [408, 132, -24, 72, 18, 12, 48])
+5,6,6,6,6    2N0-DD         first fail ('c25', 'p25#12188', 8, 'class [size,F,w,DD,N0,E2,tau]=[672, 228, -48, 56, 24, 56, 64]') ; min at ('c26', 'p26#68798', 15, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,6,6    2N0+E2-DD      first fail ('c26', 'p26#68798', 15, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c26', 'p26#68798', 15, [324, 96, -12, 72, 12, 0, 36])
+5,5,6,6,8+   2N0-DD         first fail ('c25', 'p25#12494', 11, 'class [size,F,w,DD,N0,E2,tau]=[80, 20, 0, 4, 0, 4, 0]') ; min at ('c26', 'p26#50195', 16, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,6,8+   2N0+E2-DD      first fail ('c26', 'p26#46320', 14, 'class [size,F,w,DD,N0,E2,tau]=[272, 88, -16, 48, 12, 8, 32]') ; min at ('c26', 'p26#50195', 16, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,6,8+   2N0+3tau-DD    first fail ('c25', 'p25#12494', 11, 'class [size,F,w,DD,N0,E2,tau]=[80, 20, 0, 4, 0, 4, 0]') ; min at ('c26', 'p26#71164', 7, [128, 32, 0, 16, 0, 16, 0])
+5,5,5,7,8+   2N0-DD         first fail ('c25', 'p25#13927', 15, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#13927', 15, [408, 132, -24, 84, 24, 12, 48])
+5,5,5,7,8+   2N0+E2-DD      first fail ('c25', 'p25#13927', 15, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#13927', 15, [408, 132, -24, 84, 24, 12, 48])
+5,6,5,6,8+   2N0-DD         first fail ('c25', 'p25#11847', 12, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c25', 'p25#11847', 12, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,6,8+   2N0+E2-DD      first fail ('c25', 'p25#11847', 12, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c25', 'p25#11847', 12, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,6,8+   2N0+3tau-DD    first fail ('c25', 'p25#12494', 23, 'class [size,F,w,DD,N0,E2,tau]=[144, 36, 0, 12, 4, 4, 0]') ; min at ('c26', 'p26#40116', 12, [402, 108, -6, 66, 18, 42, 6])
+5,6,6,5,7    2N0-DD         first fail ('c25', 'p25#13053', 21, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 72, 24, 24, 0]') ; min at ('c26', 'p26#41053', 17, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,5,7    2N0+E2-DD      first fail ('c25', 'p25#17602', 23, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c26', 'p26#41053', 17, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,5,7    2N0+3tau-DD    first fail ('c25', 'p25#13053', 21, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 72, 24, 24, 0]') ; min at ('c25', 'p25#13053', 21, [432, 108, 0, 72, 24, 24, 0])
+5,5,6,7,6    2N0-DD         first fail ('c25', 'p25#17602', 12, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c25', 'p25#17602', 12, [378, 132, -30, 54, 18, 6, 54])
+5,5,6,7,6    2N0+E2-DD      first fail ('c25', 'p25#17602', 12, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c25', 'p25#17602', 12, [378, 132, -30, 54, 18, 6, 54])
+5,6,6,6,7    2N0-DD         first fail ('c25', 'p25#15970', 20, 'class [size,F,w,DD,N0,E2,tau]=[256, 104, -32, 24, 8, 24, 48]') ; min at ('c26', 'p26#78427', 18, [288, 72, 0, 24, 0, 24, 0])
+5,6,6,6,7    2N0+3tau-DD    first fail ('c26', 'p26#47645', 17, 'class [size,F,w,DD,N0,E2,tau]=[64, 16, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#78427', 18, [288, 72, 0, 24, 0, 24, 0])
+5,6,7,5,7    2N0-DD         first fail ('c26', 'p26#63719', 18, 'class [size,F,w,DD,N0,E2,tau]=[288, 112, -32, 24, 8, 24, 48]') ; min at ('c26', 'p26#63719', 18, [288, 112, -32, 24, 8, 24, 48])
+5,6,6,7,6    2N0-DD         first fail ('c12-23', 'p22#93', 8, 'class [size,F,w,DD,N0,E2,tau]=[230, 80, -18, 32, 15, 14, 26]') ; min at ('c25', 'p25#19074', 9, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,7,6    2N0+E2-DD      first fail ('c25', 'p25#19074', 9, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c25', 'p25#19074', 9, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,7,6    2N0+3tau-DD    first fail ('c26', 'p26#60033', 23, 'class [size,F,w,DD,N0,E2,tau]=[256, 64, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#60033', 23, [256, 64, 0, 16, 0, 16, 0])
+5,5,6,7,7    2N0-DD         first fail ('c25', 'p25#12119', 18, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#12119', 18, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,7,7    2N0+E2-DD      first fail ('c25', 'p25#12119', 18, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#12119', 18, [408, 132, -24, 84, 24, 12, 48])
+5,6,6,5,8+   2N0-DD         first fail ('c12-23', 'p23#461', 2, 'class [size,F,w,DD,N0,E2,tau]=[312, 88, -8, 44, 16, 16, 12]') ; min at ('c25', 'p25#12513', 19, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,5,8+   2N0+E2-DD      first fail ('c25', 'p25#12335', 22, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 48, 12, 12, 54]') ; min at ('c25', 'p25#12513', 19, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,5,8+   2N0+3tau-DD    first fail ('c25', 'p25#14774', 12, 'class [size,F,w,DD,N0,E2,tau]=[128, 32, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#49989', 8, [256, 64, 0, 32, 0, 32, 0])
+5,5,6,8+,6   2N0-DD         first fail ('c25', 'p25#11899', 7, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c26', 'p26#47652', 16, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,8+,6   2N0+E2-DD      first fail ('c26', 'p26#40399', 14, 'class [size,F,w,DD,N0,E2,tau]=[252, 88, -20, 36, 12, 4, 36]') ; min at ('c26', 'p26#47652', 16, [408, 132, -24, 84, 24, 12, 48])
+5,5,6,8+,6   2N0+3tau-DD    first fail ('c25', 'p25#11899', 7, 'class [size,F,w,DD,N0,E2,tau]=[192, 48, 0, 24, 8, 8, 0]') ; min at ('c26', 'p26#38749', 8, [384, 96, 0, 48, 16, 16, 0])
+5,5,7,6,7    2N0-DD         first fail ('c26', 'p26#60488', 22, 'class [size,F,w,DD,N0,E2,tau]=[256, 64, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#60488', 22, [256, 64, 0, 8, 0, 8, 0])
+5,5,7,6,7    2N0+3tau-DD    first fail ('c26', 'p26#60488', 22, 'class [size,F,w,DD,N0,E2,tau]=[256, 64, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#60488', 22, [256, 64, 0, 8, 0, 8, 0])
+5,6,5,7,7    2N0-DD         first fail ('c25', 'p25#12335', 6, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#12335', 6, [408, 132, -24, 84, 24, 12, 48])
+5,6,5,7,7    2N0+E2-DD      first fail ('c25', 'p25#12335', 6, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 84, 24, 12, 48]') ; min at ('c25', 'p25#12335', 6, [408, 132, -24, 84, 24, 12, 48])
+5,6,7,5,8+   2N0-DD         first fail ('c26', 'p26#60899', 19, 'class [size,F,w,DD,N0,E2,tau]=[320, 80, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#60899', 19, [320, 80, 0, 16, 0, 16, 0])
+5,6,7,5,8+   2N0+3tau-DD    first fail ('c26', 'p26#60899', 19, 'class [size,F,w,DD,N0,E2,tau]=[320, 80, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#60899', 19, [320, 80, 0, 16, 0, 16, 0])
+5,5,7,6,8+   2N0-DD         first fail ('c26', 'p26#38960', 15, 'class [size,F,w,DD,N0,E2,tau]=[352, 88, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#57899', 23, [432, 168, -48, 36, 12, 36, 72])
+5,5,7,6,8+   2N0+3tau-DD    first fail ('c26', 'p26#38960', 15, 'class [size,F,w,DD,N0,E2,tau]=[352, 88, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#38960', 15, [352, 88, 0, 8, 0, 8, 0])
+5,6,8+,5,7   2N0-DD         first fail ('c26', 'p26#60922', 22, 'class [size,F,w,DD,N0,E2,tau]=[528, 192, -48, 36, 12, 36, 72]') ; min at ('c26', 'p26#60922', 22, [528, 192, -48, 36, 12, 36, 72])
+5,5,8+,5,8+  2N0-DD         first fail ('c25', 'p25#21397', 19, 'class [size,F,w,DD,N0,E2,tau]=[384, 96, 0, 12, 0, 12, 0]') ; min at ('c25', 'p25#21397', 19, [384, 96, 0, 12, 0, 12, 0])
+5,5,8+,5,8+  2N0+3tau-DD    first fail ('c25', 'p25#21397', 19, 'class [size,F,w,DD,N0,E2,tau]=[384, 96, 0, 12, 0, 12, 0]') ; min at ('c25', 'p25#21397', 19, [384, 96, 0, 12, 0, 12, 0])
+5,6,6,6,8+   2N0-DD         first fail ('c24', 'p24#6764', 12, 'class [size,F,w,DD,N0,E2,tau]=[64, 16, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#49944', 12, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,6,8+   2N0+E2-DD      first fail ('c26', 'p26#49944', 12, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c26', 'p26#49944', 12, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,6,8+   2N0+3tau-DD    first fail ('c24', 'p24#6764', 12, 'class [size,F,w,DD,N0,E2,tau]=[64, 16, 0, 8, 0, 8, 0]') ; min at ('c25', 'p25#16936', 18, [128, 32, 0, 16, 0, 16, 0])
+5,5,6,7,8+   2N0-DD         first fail ('c25', 'p25#13927', 9, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c26', 'p26#46388', 13, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,7,8+   2N0+E2-DD      first fail ('c25', 'p25#13927', 9, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c26', 'p26#46388', 13, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,7,8+   2N0+3tau-DD    first fail ('c25', 'p25#22607', 13, 'class [size,F,w,DD,N0,E2,tau]=[402, 108, -6, 66, 18, 42, 6]') ; min at ('c25', 'p25#22607', 13, [402, 108, -6, 66, 18, 42, 6])
+5,6,5,7,8+   2N0-DD         first fail ('c25', 'p25#12335', 14, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c26', 'p26#64596', 16, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,7,8+   2N0+E2-DD      first fail ('c25', 'p25#12335', 14, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c26', 'p26#64596', 16, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,7,8+   2N0+3tau-DD    first fail ('c25', 'p25#13053', 13, 'class [size,F,w,DD,N0,E2,tau]=[402, 108, -6, 66, 18, 42, 6]') ; min at ('c26', 'p26#56778', 19, [320, 80, 0, 16, 0, 16, 0])
+5,6,7,6,7    2N0-DD         first fail ('c25', 'p25#16721', 7, 'class [size,F,w,DD,N0,E2,tau]=[528, 192, -48, 36, 12, 36, 72]') ; min at ('c25', 'p25#16721', 7, [528, 192, -48, 36, 12, 36, 72])
+5,6,6,8+,6   2N0-DD         first fail ('c26', 'p26#40175', 9, 'class [size,F,w,DD,N0,E2,tau]=[426, 144, -30, 48, 18, 36, 42]') ; min at ('c26', 'p26#42259', 20, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,8+,6   2N0+E2-DD      first fail ('c26', 'p26#42259', 20, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c26', 'p26#42259', 20, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,8+,6   2N0+3tau-DD    first fail ('c26', 'p26#59141', 13, 'class [size,F,w,DD,N0,E2,tau]=[352, 88, 0, 20, 0, 20, 0]') ; min at ('c26', 'p26#59141', 13, [352, 88, 0, 20, 0, 20, 0])
+5,5,6,8+,7   2N0-DD         first fail ('c25', 'p25#12119', 16, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#12119', 16, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,8+,7   2N0+E2-DD      first fail ('c25', 'p25#12119', 16, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#12119', 16, [408, 132, -24, 72, 18, 12, 48])
+5,6,6,7,7    2N0-DD         first fail ('c25', 'p25#16275', 15, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#16275', 15, [408, 132, -24, 72, 18, 12, 48])
+5,6,6,7,7    2N0+E2-DD      first fail ('c25', 'p25#16275', 15, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#16275', 15, [408, 132, -24, 72, 18, 12, 48])
+5,6,6,7,7    2N0+3tau-DD    first fail ('c25', 'p25#16630', 7, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c25', 'p25#16630', 7, [160, 40, 0, 8, 0, 8, 0])
+5,5,5,8+,8+  2N0-DD         first fail ('c25', 'p25#12119', 13, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#12119', 13, [408, 132, -24, 72, 18, 12, 48])
+5,5,5,8+,8+  2N0+E2-DD      first fail ('c25', 'p25#12119', 13, 'class [size,F,w,DD,N0,E2,tau]=[408, 132, -24, 72, 18, 12, 48]') ; min at ('c25', 'p25#12119', 13, [408, 132, -24, 72, 18, 12, 48])
+5,6,8+,5,8+  2N0-DD         first fail ('c25', 'p25#16487', 9, 'class [size,F,w,DD,N0,E2,tau]=[384, 96, 0, 24, 0, 24, 0]') ; min at ('c25', 'p25#16487', 9, [384, 96, 0, 24, 0, 24, 0])
+5,6,8+,5,8+  2N0+3tau-DD    first fail ('c25', 'p25#16487', 9, 'class [size,F,w,DD,N0,E2,tau]=[384, 96, 0, 24, 0, 24, 0]') ; min at ('c25', 'p25#16487', 9, [384, 96, 0, 24, 0, 24, 0])
+5,7,6,6,7    2N0-DD         first fail ('c25', 'p25#17480', 16, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c25', 'p25#17480', 16, [160, 40, 0, 8, 0, 8, 0])
+5,7,6,6,7    2N0+3tau-DD    first fail ('c25', 'p25#17480', 16, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c25', 'p25#17480', 16, [160, 40, 0, 8, 0, 8, 0])
+6,6,6,6,7    2N0-DD         first fail ('c24', 'p24#5009', 19, 'class [size,F,w,DD,N0,E2,tau]=[384, 156, -48, 36, 12, 36, 72]') ; min at ('c24', 'p24#5009', 19, [384, 156, -48, 36, 12, 36, 72])
+5,6,7,7,6    2N0-DD         first fail ('c25', 'p25#19178', 7, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c25', 'p25#19178', 7, [378, 132, -30, 54, 18, 6, 54])
+5,6,7,7,6    2N0+E2-DD      first fail ('c25', 'p25#19178', 7, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 54, 18, 6, 54]') ; min at ('c25', 'p25#19178', 7, [378, 132, -30, 54, 18, 6, 54])
+6,6,6,6,6    2N0-DD         first fail ('c26', 'p26#60875', 18, 'class [size,F,w,DD,N0,E2,tau]=[624, 256, -80, 52, 24, 68, 112]') ; min at ('c26', 'p26#60875', 18, [624, 256, -80, 52, 24, 68, 112])
+5,5,8+,6,8+  2N0-DD         first fail ('c26', 'p26#40886', 15, 'class [size,F,w,DD,N0,E2,tau]=[272, 88, -16, 48, 12, 8, 32]') ; min at ('c26', 'p26#40886', 15, [272, 88, -16, 48, 12, 8, 32])
+5,5,8+,6,8+  2N0+E2-DD      first fail ('c26', 'p26#40886', 15, 'class [size,F,w,DD,N0,E2,tau]=[272, 88, -16, 48, 12, 8, 32]') ; min at ('c26', 'p26#40886', 15, [272, 88, -16, 48, 12, 8, 32])
+5,6,7,6,8+   2N0-DD         first fail ('c26', 'p26#78552', 20, 'class [size,F,w,DD,N0,E2,tau]=[660, 240, -60, 48, 12, 72, 84]') ; min at ('c26', 'p26#78552', 20, [660, 240, -60, 48, 12, 72, 84])
+5,5,6,8+,8+  2N0-DD         first fail ('c26', 'p26#40895', 6, 'class [size,F,w,DD,N0,E2,tau]=[272, 88, -16, 48, 12, 8, 32]') ; min at ('c26', 'p26#50195', 22, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,8+,8+  2N0+E2-DD      first fail ('c26', 'p26#40895', 6, 'class [size,F,w,DD,N0,E2,tau]=[272, 88, -16, 48, 12, 8, 32]') ; min at ('c26', 'p26#50195', 22, [408, 132, -24, 72, 18, 12, 48])
+5,5,6,8+,8+  2N0+3tau-DD    first fail ('c26', 'p26#72595', 20, 'class [size,F,w,DD,N0,E2,tau]=[268, 72, -4, 44, 12, 28, 4]') ; min at ('c26', 'p26#72595', 20, [268, 72, -4, 44, 12, 28, 4])
+5,7,6,6,8+   2N0-DD         first fail ('c25', 'p25#18703', 16, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#60100', 15, [288, 72, 0, 24, 0, 24, 0])
+5,7,6,6,8+   2N0+3tau-DD    first fail ('c25', 'p25#18703', 16, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#60100', 15, [288, 72, 0, 24, 0, 24, 0])
+5,6,8+,6,7   2N0-DD         first fail ('c26', 'p26#60338', 7, 'class [size,F,w,DD,N0,E2,tau]=[528, 192, -48, 36, 12, 36, 72]') ; min at ('c26', 'p26#68247', 10, [288, 72, 0, 24, 0, 24, 0])
+5,6,8+,6,7   2N0+3tau-DD    first fail ('c26', 'p26#68247', 10, 'class [size,F,w,DD,N0,E2,tau]=[288, 72, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#68247', 10, [288, 72, 0, 24, 0, 24, 0])
+5,6,6,7,8+   2N0-DD         first fail ('c25', 'p25#12119', 11, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 48, 12, 12, 54]') ; min at ('c25', 'p25#16712', 7, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,7,8+   2N0+E2-DD      first fail ('c25', 'p25#12119', 11, 'class [size,F,w,DD,N0,E2,tau]=[378, 132, -30, 48, 12, 12, 54]') ; min at ('c25', 'p25#16712', 7, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,7,8+   2N0+3tau-DD    first fail ('c26', 'p26#78346', 19, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#78348', 19, [320, 80, 0, 16, 0, 16, 0])
+5,7,6,7,7    2N0-DD         first fail ('c26', 'p26#58455', 21, 'class [size,F,w,DD,N0,E2,tau]=[288, 112, -32, 24, 8, 24, 48]') ; min at ('c26', 'p26#58455', 21, [288, 112, -32, 24, 8, 24, 48])
+5,6,7,8+,6   2N0-DD         first fail ('c25', 'p25#15596', 9, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c25', 'p25#15596', 9, [324, 96, -12, 72, 12, 0, 36])
+5,6,7,8+,6   2N0+E2-DD      first fail ('c25', 'p25#15596', 9, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c25', 'p25#15596', 9, [324, 96, -12, 72, 12, 0, 36])
+5,6,7,7,7    2N0-DD         first fail ('c26', 'p26#57872', 16, 'class [size,F,w,DD,N0,E2,tau]=[704, 296, -96, 96, 44, 32, 152]') ; min at ('c26', 'p26#57872', 16, [704, 296, -96, 96, 44, 32, 152])
+5,6,6,8+,7   2N0-DD         first fail ('c25', 'p25#21462', 18, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#59677', 8, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,8+,7   2N0+E2-DD      first fail ('c26', 'p26#49825', 9, 'class [size,F,w,DD,N0,E2,tau]=[216, 64, -8, 48, 8, 0, 24]') ; min at ('c26', 'p26#59677', 8, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,8+,7   2N0+3tau-DD    first fail ('c25', 'p25#21462', 18, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#77521', 7, [320, 80, 0, 16, 0, 16, 0])
+5,6,5,8+,8+  2N0-DD         first fail ('c25', 'p25#12412', 13, 'class [size,F,w,DD,N0,E2,tau]=[372, 108, -12, 60, 24, 36, 12]') ; min at ('c25', 'p25#16237', 13, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,8+,8+  2N0+E2-DD      first fail ('c25', 'p25#16237', 13, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c25', 'p25#16237', 13, [324, 96, -12, 72, 12, 0, 36])
+5,6,5,8+,8+  2N0+3tau-DD    first fail ('c26', 'p26#72994', 15, 'class [size,F,w,DD,N0,E2,tau]=[268, 72, -4, 44, 12, 28, 4]') ; min at ('c26', 'p26#72994', 15, [268, 72, -4, 44, 12, 28, 4])
+5,6,8+,6,8+  2N0-DD         first fail ('c26', 'p26#40226', 9, 'class [size,F,w,DD,N0,E2,tau]=[216, 64, -8, 48, 8, 0, 24]') ; min at ('c26', 'p26#40226', 9, [216, 64, -8, 48, 8, 0, 24])
+5,6,8+,6,8+  2N0+E2-DD      first fail ('c26', 'p26#40226', 9, 'class [size,F,w,DD,N0,E2,tau]=[216, 64, -8, 48, 8, 0, 24]') ; min at ('c26', 'p26#40226', 9, [216, 64, -8, 48, 8, 0, 24])
+6,6,6,6,8+   2N0-DD         first fail ('c25', 'p25#16931', 17, 'class [size,F,w,DD,N0,E2,tau]=[384, 156, -48, 36, 12, 36, 72]') ; min at ('c26', 'p26#60516', 14, [256, 64, 0, 16, 0, 16, 0])
+6,6,6,6,8+   2N0+3tau-DD    first fail ('c26', 'p26#60516', 14, 'class [size,F,w,DD,N0,E2,tau]=[256, 64, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#60516', 14, [256, 64, 0, 16, 0, 16, 0])
+5,7,8+,5,8+  2N0-DD         first fail ('c24', 'p24#5330', 17, 'class [size,F,w,DD,N0,E2,tau]=[240, 60, 0, 12, 0, 12, 0]') ; min at ('c26', 'p26#66285', 21, [288, 72, 0, 24, 0, 24, 0])
+5,7,8+,5,8+  2N0+3tau-DD    first fail ('c24', 'p24#5330', 17, 'class [size,F,w,DD,N0,E2,tau]=[240, 60, 0, 12, 0, 12, 0]') ; min at ('c26', 'p26#66285', 21, [288, 72, 0, 24, 0, 24, 0])
+6,6,7,6,7    2N0-DD         first fail ('c26', 'p26#66336', 13, 'class [size,F,w,DD,N0,E2,tau]=[128, 32, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#66336', 13, [128, 32, 0, 8, 0, 8, 0])
+6,6,7,6,7    2N0+3tau-DD    first fail ('c26', 'p26#66336', 13, 'class [size,F,w,DD,N0,E2,tau]=[128, 32, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#66336', 13, [128, 32, 0, 8, 0, 8, 0])
+6,6,6,7,7    2N0-DD         first fail ('c25', 'p25#20647', 13, 'class [size,F,w,DD,N0,E2,tau]=[256, 104, -32, 24, 8, 24, 48]') ; min at ('c26', 'p26#75409', 11, [288, 72, 0, 24, 0, 24, 0])
+6,6,6,7,7    2N0+3tau-DD    first fail ('c26', 'p26#75409', 11, 'class [size,F,w,DD,N0,E2,tau]=[288, 72, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#75409', 11, [288, 72, 0, 24, 0, 24, 0])
+5,8+,6,6,8+  2N0-DD         first fail ('c26', 'p26#69288', 16, 'class [size,F,w,DD,N0,E2,tau]=[216, 54, 0, 12, 0, 12, 0]') ; min at ('c26', 'p26#69815', 21, [336, 84, 0, 24, 0, 24, 0])
+5,8+,6,6,8+  2N0+3tau-DD    first fail ('c26', 'p26#69288', 16, 'class [size,F,w,DD,N0,E2,tau]=[216, 54, 0, 12, 0, 12, 0]') ; min at ('c26', 'p26#69815', 21, [336, 84, 0, 24, 0, 24, 0])
+5,7,7,6,8+   2N0-DD         first fail ('c26', 'p26#75195', 15, 'class [size,F,w,DD,N0,E2,tau]=[128, 32, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#75195', 15, [128, 32, 0, 8, 0, 8, 0])
+5,7,7,6,8+   2N0+3tau-DD    first fail ('c26', 'p26#75195', 15, 'class [size,F,w,DD,N0,E2,tau]=[128, 32, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#75195', 15, [128, 32, 0, 8, 0, 8, 0])
+6,6,7,6,8+   2N0-DD         first fail ('c26', 'p26#61344', 18, 'class [size,F,w,DD,N0,E2,tau]=[288, 72, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#61344', 18, [288, 72, 0, 24, 0, 24, 0])
+6,6,7,6,8+   2N0+3tau-DD    first fail ('c26', 'p26#61344', 18, 'class [size,F,w,DD,N0,E2,tau]=[288, 72, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#61344', 18, [288, 72, 0, 24, 0, 24, 0])
+5,7,6,8+,7   2N0-DD         first fail ('c26', 'p26#77563', 8, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#77563', 8, [160, 40, 0, 8, 0, 8, 0])
+5,7,6,8+,7   2N0+3tau-DD    first fail ('c26', 'p26#77563', 8, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#77563', 8, [160, 40, 0, 8, 0, 8, 0])
+5,8+,6,7,8+  2N0-DD         first fail ('c25', 'p25#21334', 9, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 36, 0, 36, 0]') ; min at ('c25', 'p25#21334', 9, [432, 108, 0, 36, 0, 36, 0])
+5,8+,6,7,8+  2N0+3tau-DD    first fail ('c25', 'p25#21334', 9, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 36, 0, 36, 0]') ; min at ('c25', 'p25#21334', 9, [432, 108, 0, 36, 0, 36, 0])
+5,6,6,8+,8+  2N0-DD         first fail ('c26', 'p26#59623', 17, 'class [size,F,w,DD,N0,E2,tau]=[252, 88, -20, 32, 8, 8, 36]') ; min at ('c26', 'p26#59679', 8, [324, 96, -12, 72, 12, 0, 36])
+5,6,6,8+,8+  2N0+E2-DD      first fail ('c26', 'p26#59623', 17, 'class [size,F,w,DD,N0,E2,tau]=[252, 88, -20, 32, 8, 8, 36]') ; min at ('c26', 'p26#59679', 8, [324, 96, -12, 72, 12, 0, 36])
+6,6,6,7,8+   2N0-DD         first fail ('c25', 'p25#17446', 15, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#66404', 6, [288, 72, 0, 24, 0, 24, 0])
+6,6,6,7,8+   2N0+3tau-DD    first fail ('c25', 'p25#17446', 15, 'class [size,F,w,DD,N0,E2,tau]=[160, 40, 0, 8, 0, 8, 0]') ; min at ('c26', 'p26#66404', 6, [288, 72, 0, 24, 0, 24, 0])
+5,6,7,8+,7   2N0-DD         first fail ('c26', 'p26#57873', 16, 'class [size,F,w,DD,N0,E2,tau]=[320, 80, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#57873', 16, [320, 80, 0, 16, 0, 16, 0])
+5,6,7,8+,7   2N0+3tau-DD    first fail ('c26', 'p26#57873', 16, 'class [size,F,w,DD,N0,E2,tau]=[320, 80, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#57873', 16, [320, 80, 0, 16, 0, 16, 0])
+5,6,8+,8+,6  2N0-DD         first fail ('c26', 'p26#68798', 20, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c26', 'p26#68798', 20, [324, 96, -12, 72, 12, 0, 36])
+5,6,8+,8+,6  2N0+E2-DD      first fail ('c26', 'p26#68798', 20, 'class [size,F,w,DD,N0,E2,tau]=[324, 96, -12, 72, 12, 0, 36]') ; min at ('c26', 'p26#68798', 20, [324, 96, -12, 72, 12, 0, 36])
+6,6,8+,6,8+  2N0-DD         first fail ('c26', 'p26#38236', 16, 'class [size,F,w,DD,N0,E2,tau]=[216, 64, -8, 48, 8, 0, 24]') ; min at ('c26', 'p26#38236', 16, [216, 64, -8, 48, 8, 0, 24])
+6,6,8+,6,8+  2N0+E2-DD      first fail ('c26', 'p26#38236', 16, 'class [size,F,w,DD,N0,E2,tau]=[216, 64, -8, 48, 8, 0, 24]') ; min at ('c26', 'p26#38236', 16, [216, 64, -8, 48, 8, 0, 24])
+6,6,7,7,7    2N0-DD         first fail ('c26', 'p26#66261', 20, 'class [size,F,w,DD,N0,E2,tau]=[256, 104, -32, 24, 8, 24, 48]') ; min at ('c26', 'p26#78094', 14, [320, 80, 0, 16, 0, 16, 0])
+6,6,7,7,7    2N0+3tau-DD    first fail ('c26', 'p26#78094', 14, 'class [size,F,w,DD,N0,E2,tau]=[320, 80, 0, 16, 0, 16, 0]') ; min at ('c26', 'p26#78094', 14, [320, 80, 0, 16, 0, 16, 0])
+5,8+,5,8+,8+ 2N0-DD         first fail ('c26', 'p26#68333', 10, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 36, 0, 36, 0]') ; min at ('c26', 'p26#68333', 10, [432, 108, 0, 36, 0, 36, 0])
+5,8+,5,8+,8+ 2N0+3tau-DD    first fail ('c26', 'p26#68333', 10, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 36, 0, 36, 0]') ; min at ('c26', 'p26#68333', 10, [432, 108, 0, 36, 0, 36, 0])
+6,6,7,7,8+   2N0-DD         first fail ('c26', 'p26#72226', 12, 'class [size,F,w,DD,N0,E2,tau]=[288, 72, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#72226', 12, [288, 72, 0, 24, 0, 24, 0])
+6,6,7,7,8+   2N0+3tau-DD    first fail ('c26', 'p26#72226', 12, 'class [size,F,w,DD,N0,E2,tau]=[288, 72, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#72226', 12, [288, 72, 0, 24, 0, 24, 0])
+5,8+,7,7,8+  2N0-DD         first fail ('c26', 'p26#77979', 13, 'class [size,F,w,DD,N0,E2,tau]=[336, 84, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#77979', 13, [336, 84, 0, 24, 0, 24, 0])
+5,8+,7,7,8+  2N0+3tau-DD    first fail ('c26', 'p26#77979', 13, 'class [size,F,w,DD,N0,E2,tau]=[336, 84, 0, 24, 0, 24, 0]') ; min at ('c26', 'p26#77979', 13, [336, 84, 0, 24, 0, 24, 0])
+5,8+,6,8+,8+ 2N0-DD         first fail ('c26', 'p26#77830', 9, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 36, 0, 36, 0]') ; min at ('c26', 'p26#77830', 9, [432, 108, 0, 36, 0, 36, 0])
+5,8+,6,8+,8+ 2N0+3tau-DD    first fail ('c26', 'p26#77830', 9, 'class [size,F,w,DD,N0,E2,tau]=[432, 108, 0, 36, 0, 36, 0]') ; min at ('c26', 'p26#77830', 9, [432, 108, 0, 36, 0, 36, 0])
