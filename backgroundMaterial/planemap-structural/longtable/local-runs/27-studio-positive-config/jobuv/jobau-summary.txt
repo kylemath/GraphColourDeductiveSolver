@@ -1,0 +1,23 @@
+(i) degree-6 Gamma-cycles by L:
+    ('census', 20) {'cycles': 256, 'k<=2 fixed points': 220, 'k3 failures': 19, 'k4 failures': 19}
+    ('census', 40) {'cycles': 4}
+    ('census', 60) {'cycles': 4}
+    ('construction', 40) {'cycles': 14, 'k<=2 fixed points': 36}
+    ('construction', 60) {'cycles': 2, 'k<=2 fixed points': 10}
+    ('construction', 80) {'cycles': 14, 'k<=2 fixed points': 64}
+    ('construction', 120) {'cycles': 4, 'k<=2 fixed points': 0}
+    ('construction', 180) {'cycles': 2, 'k<=2 fixed points': 24}
+    ('construction', 200) {'cycles': 4, 'k<=2 fixed points': 16}
+(ii) L = 20 degree-6 Gamma-cycles: 256; holes with an orientation-reversing automorphism fixing h: 32; cycles with a time-reversal symmetry s(t) -> s(c - t): 8
+(iii) L = 20 cycles with exactly one failing R3k4: 19
+    Lock2 witness |K_{mu,B}(x_{j+1})| at the two R3k4 states: {'failing smaller': 7, 'failing larger': 8, 'tie': 4}
+    |K_{c(p),c(m)}(p)| (Job N) at the two k = 4 visits, one failing: {'failing smaller': 1, ('fail', 9, 'other', 10): 1, 'failing larger': 18, ('fail', 11, 'other', 5): 4, ('fail', 10, 'other', 5): 2, ('fail', 12, 'other', 5): 8, ('fail', 12, 'other', 10): 4}
+    same at the two k = 3 visits, one failing: {'failing smaller': 1, ('fail', 9, 'other', 10): 1, 'failing larger': 18, ('fail', 11, 'other', 5): 4, ('fail', 10, 'other', 5): 2, ('fail', 12, 'other', 5): 8, ('fail', 12, 'other', 10): 4}
+(ii) cross-tab:
+    205 ('no symmetry', 'reflections 0', 'failing R3k4: 0 of 2')
+    19 ('no symmetry', 'reflections 0', 'failing R3k4: 1 of 2')
+    24 ('no symmetry', 'reflections 1', 'failing R3k4: 0 of 2')
+    8 ('time-reversal symmetric', 'reflections 1', 'failing R3k4: 0 of 2')
+    symmetric cycles: [('z25', 'p25#5594', 18), ('z25m', 'p25#5594', 18), ('z27', 'p27#133619', 21), ('z27', 'p27#274226', 22), ('z27', 'p27#68456', 19), ('z27m', 'p27#133619', 21), ('z27m', 'p27#274226', 22), ('z27m', 'p27#68456', 19)]
+(iii) exception to "breaking period has larger |K_{c(p),c(m)}(p)|": n25m p25#16945 3 failing visit [17, 4, 0, 0, 0, 0, 6, 1, 5, 1, 9, 10, 1, 0] other [7, 4, 1, 1, 1, 0, 6, 1, 5, 1, 10, 12, 12, 0]
+(i) failure sets per L = 20 cycle: {(3, ''): 1, (4, ''): 1, (3, 4, 'k3 right after k4'): 18}
