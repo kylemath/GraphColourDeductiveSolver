@@ -54,3 +54,12 @@ plus the 64 positive IPR / bigsample holes: about 114 million groups. **sigma-C 
 a group {w = +1, L = 17; w = 0, L = 8} with sum w = +1 in a one-class hole of 782 states (sum w = -94). Reproduced by an independent Python implementation.
 Transport still holds there (Hall ratio 80). The mirror orientation has no positive cycle at that hole. Witness: witness-sigC-p26-70869-h11.json.
 All 64 IPR/bigsample positive holes pass. Per-pattern max group size and cross-cycle fraction of sigma images: jobf-summary.txt.
+
+## Job G (NightC1Gamma §5): every Gamma-cycle at orders 25-26, all patterns, both orientations (`--jobg`, `jobg.py` -> jobg-summary.txt, jobg-gamma.jsonl)
+- Gamma-cycles: 82 (order 25) and 219 (order 26) per orientation, at 20 link patterns; (5,5,5,5,5) has 31 / 91.
+- S1: the k = 3 and k = 4 criteria (incl. "otherwise exactly Lock1 / Lock2") hold at all 104 + 360 single-high-vertex R3 states per orientation: 0 violations.
+- S2: DL exits are fixed points sigma(r) = r in all cases at order 25; at order 26, 22 per orientation are not fixed points (another R3 state, same cycle), all at k in {0,1,2}.
+- S3: Conjecture G fails 5 + 5 (order 25) and 7 + 9 (order 26) times, NEVER at (5,5,5,5,5), (5,5,5,5,6) or (5,5,5,6,6). One Gamma-cycle has no lockless exit at all
+  (p25 #20076 h19, (5,5,6,6,6), plantri orientation: a = 0, b = 2). Target cycles are often shared between Gamma-cycles (16 / 56 holes).
+- S4: single-lock exits land on excursions with f = 1 and u in {3, 4} (k = 3, 4), occasionally u = 6, 7, 10 at k in {0,1,2}: no local credit, as predicted.
+- S5: at (5,5,5,5,5) every lockless exit has f = 3 (350 at order 25, 1,010 at order 26, per orientation).
