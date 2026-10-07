@@ -307,3 +307,12 @@ Windows = an R3k2 state followed by four DL pi-steps (to R3k0), at every (5,5,5,
   pulled-back Lock1@R3k2 chain. Mirror (rank(k0) = 0 => a {3,4}-cycle at R3k2 meets K4 \ K7): 60/60 periods (77/78 cycles).
 - F4 periods (60): C5 ({2,3}-cycles after K4, 72 basis cycles, length 6-10) never pass through p, always meet K4 (|C5 & K4| = 1-4), and separate h from a K4 vertex in 32/72.
   Kill cases (48): C8 always meets K7 (|C8 & K7| = 1-4). The 66 rank-sum-1 periods are dumped with rotation systems and the colourings at positions 4-8.
+
+## Job AL (`picyc.al --jobak`, jobal-summary.txt): from each failing window on an OPEN DL run at (5,5,5,5,6) to the run end, orders 25-27, both orientations
+Steps from the window's R3k0 to the first non-DL state (1 = R3k0's own pi-image leaves DL). The state that leaves always keeps Lock1 and loses Lock2.
+- W2* failures (884 / 2,924 / 13,629 per orientation): distance 1 in about 72%, mean 2.3-2.7, a bump at 11; max 14 / 11 (25), 14 / 17 (26), 29 / 21 (27): NOT bounded uniformly
+  (it grows with the order). All three k <= 2 fixed: the same profile (max 14 / 11, 14 / 17, 29 / 21). W2'' failures: max 14 / 11, 14 / 17, 29 / 21.
+- Leaving step: about 80% leave at R3k0 itself by the step-8 far (p,y) swap (component avoiding p, m, y, z); the rest by the step-0 far (m,z) swap from R3k4, the near (p,m)
+  swap from R1k2, far (m,y) from R1k1, far (p,z) from R1k0, or the near (p,y) from R3k2. No single rule.
+- R fails but W2'' survives (373 / 1,396 / 8,179): mean distance 1.9-2.3, max 12 / 12, 14 / 14, 26 / 27: these runs do NOT live longer.
+- Note: Studio colourings are stored with CANONICAL colour names (relabelled by first occurrence along the BFS order), so colour letters differ between states for the same class.
