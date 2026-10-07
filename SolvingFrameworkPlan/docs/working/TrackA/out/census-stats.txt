@@ -1,0 +1,46 @@
+== census orders 12-27 (complete, plantri -m5 -c4 lists) : graphs 43 frame 43 by order {22: 1, 23: 1, 24: 4, 25: 2, 26: 11, 27: 24}
+degree-5 vertices 639 ; PureClean 639 ; graphs with 0 PureClean 0 ; graphs with a non-PureClean vertex 0
+min #PureClean per graph 12 ; deg5 histogram {12: 11, 13: 3, 14: 6, 15: 7, 16: 6, 18: 8, 19: 1, 20: 1}
+margin (max_v min-class F/N): min 0.3139 median 0.5475 max 0.7299
+worst  (min_v min-class F/N): min 0.2500 median 0.4568 max 0.6719
+per-vertex min-class F/N: min 0.2500; vertices with value < 0.3: 2; = 0.25: 2
+classes per hole histogram {1: 629, 2: 8, 3: 2}
+small classes (size, F) < 100 states:  {(5, 5): 4, (8, 2): 2, (6, 4): 3, (12, 8): 3}
+verified by engine 2 (kempe_py): 43 of 43 ; mismatches 0
+fewest PureClean (ties by margin):
+    p24#2550 deg5 12 npc 12 margin 0.3139 worst 0.3139
+    p27#47915 deg5 12 npc 12 margin 0.4709 worst 0.4325
+    p24#428 deg5 12 npc 12 margin 0.5309 worst 0.5062
+    p22#196 deg5 12 npc 12 margin 0.5339 worst 0.5339
+    p26#30399 deg5 12 npc 12 margin 0.5475 worst 0.4352
+    p26#4918 deg5 12 npc 12 margin 0.5497 worst 0.4545
+lowest margin:
+    p24#2550 deg5 12 margin 0.3139 worst 0.3139
+    p27#47915 deg5 12 margin 0.4709 worst 0.4325
+    p24#1803 deg5 16 margin 0.4872 worst 0.4130
+    p26#6120 deg5 20 margin 0.4925 worst 0.4231
+    p27#66703 deg5 18 margin 0.4937 worst 0.4808
+    p27#75634 deg5 16 margin 0.5009 worst 0.4325
+== order 28 appears-free list (in-cfree-28.txt) : graphs 104 frame 104 by order {28: 104}
+degree-5 vertices 1563 ; PureClean 1563 ; graphs with 0 PureClean 0 ; graphs with a non-PureClean vertex 0
+min #PureClean per graph 12 ; deg5 histogram {12: 11, 13: 10, 14: 28, 15: 23, 16: 9, 17: 11, 18: 4, 20: 7, 21: 1}
+margin (max_v min-class F/N): min 0.5038 median 0.5613 max 0.7131
+worst  (min_v min-class F/N): min 0.2500 median 0.4455 max 0.5942
+per-vertex min-class F/N: min 0.2500; vertices with value < 0.3: 23; = 0.25: 23
+classes per hole histogram {1: 1536, 2: 24, 3: 3}
+small classes (size, F) < 100 states:  {(24, 16): 4, (4, 1): 22, (6, 4): 2, (8, 2): 2}
+verified by engine 2 (kempe_py): 0 of 104 ; mismatches 0
+fewest PureClean (ties by margin):
+    p28#368131 deg5 12 npc 12 margin 0.5327 worst 0.4835
+    p28#349538 deg5 12 npc 12 margin 0.5330 worst 0.4282
+    p28#185590 deg5 12 npc 12 margin 0.5371 worst 0.4639
+    p28#316544 deg5 12 npc 12 margin 0.5580 worst 0.5580
+    p28#50242 deg5 12 npc 12 margin 0.5594 worst 0.4837
+    p28#4363 deg5 12 npc 12 margin 0.5756 worst 0.4923
+lowest margin:
+    p28#668116 deg5 15 margin 0.5038 worst 0.3988
+    p28#546102 deg5 15 margin 0.5051 worst 0.2500
+    p28#228549 deg5 14 margin 0.5063 worst 0.4138
+    p28#8067 deg5 16 margin 0.5079 worst 0.4401
+    p28#347804 deg5 14 margin 0.5122 worst 0.4566
+    p28#72493 deg5 17 margin 0.5131 worst 0.4277
