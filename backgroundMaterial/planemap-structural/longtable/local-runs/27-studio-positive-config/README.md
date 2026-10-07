@@ -624,3 +624,12 @@ Scope: every Studio-R3 DL state (w₀ = B, w₃ = μ) at a (5,5,5,5,6) hole with
 - **Heavy landing by image kind** (images / landing on a heavy cycle), census: N₀ 28,428 / 27,917 (98%), L1 1,430 / 986, L2 1,430 / 964, DL 26,076 / 4,011 (15%). Lockless images go to heavy cycles almost always; DL images mostly do not.
 - **Kind-matched model:** Σ_Z P_model(fail) = 1·10⁻⁴ (census), with max 8·10⁻⁶ at p27#187665 h15. For p25#17650 h3 (ratio 4/3), P_model(fail) = 0.
 - **Correlation** of #images on T with e_T, b_T, N₀(T) and −Λ(T): 0.58, 0.58, 0.56, 0.56 (census, 103,484 rows); 0.76, 0.77, 0.75, 0.74 (hits). Lockless images per N₀ state, pooled: 0.066 (census) and 0.0028 (hits). This is statistical, not a deterministic rule.
+
+## Job BR [exploratory]: flip search for an all-DL π-cycle at a (6,6,6,6,6) hole (G66⁰; jobbr/: jobbr.py, jobbr_summary.py, jobbr-walks.jsonl, jobbr-search.log; jobbr-summary.txt)
+- Job AW machinery (core-class flips + degree repair, hole star fixed). Every move must keep the hole's link all degree 6. Evaluator: `picyc.bo --jobbo --nocls`, both orientations. Score = (number of all-DL cycles, longest maximal DL run along π). Seeds: the 18 IPR fullerene duals with n ≤ 42 (C60–C80), one pentagon hole each. 72 walks × 400 steps, 39,059 evaluations.
+- **No all-DL cycle (0 hits).** The longest DL run reached is **18** (ipr#183, C80 seed, walk 1). The seeds start at runs of 2–10. Best runs by seed size: C60 13, C70 14, C72–C74 12, C76 15, C78 16, C80 18. The flipped graphs are no longer fullerenes. Run length grows slowly with seed size and stays far below any cycle length.
+
+## Job BS [exploratory]: the 153 flat (6,6,6,6,6) holes of the IPR-dual samples n = 56–62 (C108–C120) (jobbs/: jobbs_flat.py, jobbs_summary.py, flat-holes.json, jobbs-flat.jsonl; jobbs-summary.txt)
+- `picyc.bo --jobbo --nocls`, both orientations, 306 hole-orientations (`--cap 2e8`, none capped). With `--nocls`, `min_F_over_N` is the 2.0 sentinel. studiointel `flat_kclass` found κ = 1 at all 153 holes, so class F/N = F/states.
+- **No all-DL cycle at any flat hole.** The longest DL run is 12 (C108, C112) and **14** (C116 at ipr60_1008 h11; C120). The run-length histograms decay geometrically (C120: 1.1·10⁸ runs of length 1, 2 of length 14).
+- **min F/N = 0.6036** (ipr62_121 h43). By size: 0.615, 0.613, 0.614, 0.604. σC: 0 failures. One hole-orientation has a positive cycle (ipr62_1186 h61, w = +1). All others have npos = 0.
