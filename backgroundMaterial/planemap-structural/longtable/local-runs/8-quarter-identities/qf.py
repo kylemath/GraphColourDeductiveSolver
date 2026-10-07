@@ -21,6 +21,7 @@ Notation (link x_0..x_4 in rotation order, indices mod 5):
  {mu,B}-comp of x_{j+4}); defined iff the intermediate locks allow; is psi(f) = f?
  C7: distance (moves) from every DL state to the nearest filled state.
 usage: qf.py --orders 12 14 ... > out.jsonl   (one line per hole)
+       qf.py --orders ... --match  (adds the per-j local-injection matching test, field DDmatch)
        qf.py --floor-holes ORDER > out.jsonl   (only the holes containing a 1/4 class)
        qf.py --detail ORDER GENTRI_INDEX HOLE   (every DL state: dist, whether R+3 d / R+2 d are DL)
 Also per class (Intern A): R_F = phi o R+3 (= Math's rho) and R_B = phi o R+2 on DL states: both defined and equal / differ,
@@ -31,6 +32,8 @@ from multiprocessing import Pool
 H = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(H, "..", "common"))
 from kempe_py import Space, gentri_rotation, adj_from_rot
 GENTRI = os.path.join(H, "..", "..", "..", "studiointel", "gentri")
+sys.setrecursionlimit(20000)
+MATCH = "--match" in sys.argv; KMAX = 8   # --match: local-injection test (DDmatch field)
 
 
 def analyse(rot, hole, detail=False):
@@ -188,7 +191,46 @@ def analyse(rot, hole, detail=False):
             ddloc = {"DD_states": len(DDstates), "max_dist_any_unit": max(dall.get(s, -1) for s in DDstates),
                      "unreachable": sum(1 for s in DDstates if s not in dall), "hist_d_dist": dict(hist), "hist_kind_dist": dict(kindh),
                      "units": {k: len(v) for k, v in kinds.items()}}
-        rec = {"DDloc": ddloc,"size": len(C), "F": len(F), "U": len(U), "N0": N0, "N1": N1, "D": Dn, "L_F": LF, "paths": len(dP),
+        # Local injection test (coordinator, after Math 1828): per j, bipartite graph DD_j -> units of room_j within Kempe
+        # distance <= k. Units (capacity 1 each, exactly the terms of room_j): F_{j+4} with M3 long, F_{j+3} with M2 long,
+        # F_{j+1} with M2 long, U^ff_j, U^ff_{j+3}, E_j. Max matching (Kuhn, augmented as k grows); k_min = least k at which
+        # all of DD_j is matched (None if > KMAX).
+        ddmatch = None
+        if DDstates and MATCH:
+            ddmatch = []
+            depth = {s: {s: 0} for s in DDstates}; front = {s: [s] for s in DDstates}
+
+            def grow(s):
+                nf = []
+                for x in front[s]:
+                    for t in S.G[x]:
+                        if t not in depth[s]: depth[s][t] = depth[s][x] + 1; nf.append(t)
+                front[s] = nf
+            kdone = 0
+            for j in range(5):
+                left = [s for s in DDstates if info[s]["j"] == j]
+                if not left: continue
+                units = set(s for s in F if (info[s]["i"] == (j + 4) % 5 and info[s]["m3long"]) or (info[s]["i"] in ((j + 3) % 5, (j + 1) % 5) and info[s]["m2long"]))
+                units |= set(s for s in U if not info[s]["l1"] and not info[s]["l2"] and info[s]["j"] in (j, (j + 3) % 5))
+                units |= set(s for s in U if info[s]["j"] == j and not info[s]["l1"] and info[s]["l2"] and not isDL(info[s]["R3"]))
+                match_r = {}; match_l = {}; kmin = None; sat = {}
+                for k in range(1, KMAX + 1):
+                    for s in left:
+                        while max(depth[s].values()) < k and front[s]: grow(s)
+                    adjl = {s: [t for t in depth[s] if t in units and depth[s][t] <= k] for s in left}
+
+                    def aug(s, seen):
+                        for t in adjl[s]:
+                            if t in seen: continue
+                            seen.add(t)
+                            if t not in match_r or aug(match_r[t], seen): match_r[t] = s; match_l[s] = t; return True
+                        return False
+                    for s in left:
+                        if s not in match_l: aug(s, set())
+                    sat[k] = len(match_l)
+                    if len(match_l) == len(left): kmin = k; break
+                ddmatch.append({"j": j, "DD_j": len(left), "room_j": len(units), "k_min": kmin, "matched_by_k": sat})
+        rec = {"DDloc": ddloc, "DDmatch": ddmatch, "size": len(C), "F": len(F), "U": len(U), "N0": N0, "N1": N1, "D": Dn, "L_F": LF, "paths": len(dP),
                "dP_hist": dict(Counter(dP)), "D_cyc": Dcyc, "bad_path": bad_path, "identity_lhs": lhs, "identity_rhs": rhs,
                "identity_ok": lhs == rhs, "perj_bad": perj_bad, "perj": perj, "DD": [DD[j] for j in range(5)],
                "DDprime": [DDp[j] for j in range(5)], "DDboth": [DDboth[j] for j in range(5)],

@@ -455,3 +455,55 @@ python3 a7_cycle.py 22 > a7-hole22.json
 - Room parts, summed over j: L_j 12,834; U^ff 4,992 (N₀ = 2,496); E 114. Long bits (L_F = 8,556) supply about 72% of the room.
 - d(P) reaches 81. **The maximum distance from a DD state to a unit is 3**, and DL-cycle states are at distance 1 or 2.
 - The hole's two other cycle classes (size 2,124, D_cyc = 160 each) have maximum distance 2.
+
+## 10. Is there a local injection of DD_j into room_j? (`10-local-injection/`)
+This item is exploratory. It used about 22 CPU-minutes.
+
+**What is tested.**
+- For every degree-5 class with DD_j > 0, and each j, build a bipartite graph from the DD_j states to the units of room_j.
+- The units, each with capacity 1, are exactly the terms of Math's per-j room:
+  - F_{j+4} with M3 long;
+  - F_{j+3} with M2 long;
+  - F_{j+1} with M2 long;
+  - U^ff_j and U^ff_{j+3};
+  - E_j.
+- A DD state is joined to a unit when their Kempe distance within the class is at most k.
+- The maximum matching is computed for k = 1..8, by Kuhn's algorithm, augmented as k grows. k_min is the least k at which all of DD_j is matched.
+- The unit counts equal room_j and the DD_j counts equal Math's DD_j in every case (0 mismatches against the `perj` field).
+- The code is the `DDmatch` block of `../8-quarter-identities/qf.py`, enabled by `--match`.
+
+**Commands.**
+```
+cd ../8-quarter-identities
+python3 qf.py --orders 12 14 16 17 18 19 20 --match > ../10-local-injection/match-12-20.jsonl
+python3 qf.py --orders 21 22 --match > ../10-local-injection/match-21-22.jsonl     # committed gzipped
+python3 qf.py --orders 23 --match > ../10-local-injection/match-23.jsonl           # committed gzipped
+cd ../9-dd-locality && python3 a7_cycle.py 22 > ../10-local-injection/a7-hole22-match.json
+cd ../10-local-injection && python3 agg_match.py match-12-20.jsonl match-21-22.jsonl match-23.jsonl > match-summary.json
+```
+
+**k_min histogram over (class, j) with DD_j > 0:**
+
+| order | pairs | 1 | 2 | 3 | 4 | 5 | 6 | max k_min |
+|---|---|---|---|---|---|---|---|---|
+| 16 | 36 | 32 | 4 | | | | | 2 |
+| 17 | 158 | 16 | 42 | 48 | 32 | 20 | | 5 |
+| 18 | 112 | 37 | 67 | 6 | 2 | | | 4 |
+| 19 | 397 | 177 | 175 | 45 | | | | 3 |
+| 20 | 2,158 | 757 | 992 | 354 | 50 | 5 | | 5 |
+| 21 | 6,227 | 2,198 | 2,858 | 1,007 | 122 | 40 | 2 | 6 |
+| 22 | 24,864 | 8,811 | 11,610 | 3,842 | 504 | 94 | 3 | 6 |
+| 23 | 91,272 | 32,517 | 45,706 | 11,795 | 1,024 | 223 | 7 | 6 |
+
+**Saturation.**
+- **Every (class, j) saturates by k = 6.**
+- The fraction saturated by k = 3 is 98.6% at order 23 (90,018 of 91,272).
+- Witnesses with k_min = 6:
+  - order 21: gentri 50, hole 11 (class 196, j = 0, DD_j = 2, room 14);
+  - order 22: gentri 244, hole 17 (class 277, j = 2, DD_j = 3, room 34);
+  - order 23: gentri 153, hole 18 (class 297, j = 0, DD_j = 5, room 16).
+- In the tight cases (room_j = DD_j), k_min is at most 4: 10 at order 17, with k_min 3 or 4, and 4 at order 23, with k_min 1 or 2.
+
+**Local intel's 800-cycle class** (A7, hole 22, size 21,078, DD_j up to 726, room about 3,600).
+- **k_min = 2, 2, 3, 3, 2** for j = 0..4.
+- The two size-2,124 cycle classes at that hole have k_min of 2 or 3.
