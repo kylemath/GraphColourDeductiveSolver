@@ -399,3 +399,20 @@ Edge uv of T - v is CUT by a pi-step when exactly one endpoint lies in the swapp
 - **Checks over 896 periods, 0 exceptions.** K₈ contains x₂, x₃ and w⁺ and avoids p, m, y and z. The pocket reaches w⁺ ⇔ J is false at position 9 (the pocket lemma). A step-8 break in period b ⇔ a k = 4 failure at the R3k4 of period b + 1. k4fail = k3fail in every period except the two orientations of p25#16945 h3. The plantri orientation has a k = 3 failure with no break. The mirror orientation has a break followed by a k = 4 failure without a k = 3 failure, and it is also the Job AU |K(p)| exception.
 - **K₈ ∩ K₁₈.** It is always nonempty, because it always contains {x₂, x₃, w⁺}. On every L = 20 cycle it has at least one far vertex: 237/237 with no break and 19/19 with a break. At a break it is {x₂, x₃, w⁺} plus 1 far vertex (16 cycles) or 2 far vertices (3 cycles). Consecutive K₈'s share a far vertex in every period of every census and construction cycle.
 - **Non-breaking K₈ against the breaking pocket.** They always meet, 19/19. In 16 of 19 the intersection is just {w⁺}, which is forced. Only 3 cycles meet at far vertices: p25#16945 mirror (2) and p27#146733 and p27#152697 mirror (1 each). The two K₈ pairs always differ, as the period relabelling requires.
+
+## Job AX [exploratory]: NightCutParity §3 u* alternation (jobax/jobax.py, jobax.json, jobax-summary.txt)
+u* is the apex of the face on the ring edge w₃–y away from x⁻. ω = c(x⁺) at R3k4. Census Γ-cycles at orders 25–27, both orientations, are replayed in absolute colours. At (5,5,5,5,5) every q is tried, and all 5 give a valid universal-period labelling. Degree-6 constructions use the Job AV replays.
+- **Table facts hold everywhere, 0 exceptions.** ω is in every swap pair. The free steps are exactly steps 0 and 7, and x⁻ is in both free components. "u* in exactly one of K₀, K₇" ⇔ "u* ∈ S_b" (the §3 reduction). A never recurs at odd distance in any cycle at any pattern.
+- **The u* alternation is [killed].**
+
+| set | periods | u* in exactly one of K₀, K₇ | cycles where u* flips every period |
+|---|---|---|---|
+| census (5,5,5,5,6) | 552 | 384 | 180 / 264 |
+| constructions (5,5,5,5,6) | 344 | 344 | 40 / 40 |
+| census (5,5,5,5,7) | 916 | 834 | 365 / 406 |
+| census (5,5,5,5,8) | 544 | 494 | 213 / 238 |
+| census (5,5,5,5,5), all q | 12,400 | 11,308 | 5,142 / 5,670 |
+
+  At degrees 6–8 every failure is "u* in neither". At (5,5,5,5,5) there are 1,004 "neither" and 88 "both".
+- **Every-period flippers.** The intersection over b of S_b is nonempty in every cycle at every pattern, with size 2–8. So some vertex always flips ω-membership every period, but it is not one fixed named vertex. When u* fails at degree 6, the flippers are far neighbours of w₃ and z. "S_all contains a far vertex adjacent to the ring" holds in 262/264 degree-6 census cycles, 406/406 at degree 7, 238/238 at degree 8 and 5,606/5,670 at degree 5.
+- **α-class period 2.** A_{b+2} = A_b in 528/552 census degree-6 periods, 59/344 construction periods, 760/916 at degree 7, 414/544 at degree 8 and 10,844/12,400 at degree 5.
