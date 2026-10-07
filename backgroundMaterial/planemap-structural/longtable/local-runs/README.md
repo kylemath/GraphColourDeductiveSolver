@@ -531,3 +531,53 @@ python3 check_k7.py > check-k7.json
 - **Pairs needing k ≥ 6:** 22, listed in `kmin-ge6-24.json`.
 - The identities give 0 mismatches at all 111,492 holes.
 - `check-k7.json` contains two JSON documents: the qf view of the class, then the independent check.
+
+## 12. Pooled (class-level) local injection (`12-pooled-injection/`)
+This item is exploratory. It used about 38 CPU-minutes.
+
+**What is tested.**
+- Per class, ALL DD states (any j) are matched to ALL room units (any j) within Kempe distance k.
+- A unit's capacity is the number of j whose room_j contains it, so the total capacity is Σ_j room_j. This is the class-level form, which is all the 1/4 floor needs.
+- Capacity and DD totals agree with Math's per-j terms in every class.
+- The matching is capacity-aware Kuhn, augmented as k grows. The code is the `DDpool` block of `../8-quarter-identities/qf.py` (`--pool`).
+
+**Coverage.**
+- Orders 16–23: all degree-5 holes.
+- Order 24: 5,656 holes. These are every hole that has a class with per-j k_min ≥ 4, the 500 holes with the largest total DD, and gentri 1460 hole 19.
+- Any pooling of the per-j matchings is itself a pooled matching, so pooled k_min ≤ the per-j maximum (confirmed in every class where both were computed). The order-24 counts for pooled k_min ≥ 4 are therefore exhaustive.
+
+**Commands.**
+```
+cd ../8-quarter-identities
+python3 qf.py --orders 16 17 18 19 20 --pool --match > ../12-pooled-injection/pool-16-20.jsonl
+python3 qf.py --orders 21 22 --pool > ../12-pooled-injection/pool-21-22.jsonl                 # committed gzipped
+python3 qf.py --orders 23 --pool | gzip > ../12-pooled-injection/pool-23.jsonl.gz
+python3 qf.py --holes-file ../12-pooled-injection/holes24.txt --pool --match | gzip > ../12-pooled-injection/pool-24-subset.jsonl.gz
+cd ../12-pooled-injection && python3 agg_pool.py pool-16-20.jsonl pool-21-22.jsonl.gz pool-23.jsonl.gz pool-24-subset.jsonl.gz > pool-summary.json
+```
+
+**Pooled k_min histogram (classes with DD > 0):**
+
+| order | 1 | 2 | 3 | 4 | 5 | 6 | max pooled | max per-j (§10–11) |
+|---|---|---|---|---|---|---|---|---|
+| 16 | 16 | 4 | | | | | 2 | 2 |
+| 17 | 1 | 17 | 2 | 22 | | | 4 | 5 |
+| 18 | 9 | 43 | 5 | | | | 3 | 4 |
+| 19 | 55 | 104 | 20 | | | | 3 | 3 |
+| 20 | 131 | 424 | 155 | 9 | | | 4 | 5 |
+| 21 | 441 | 1,292 | 365 | 48 | 2 | | 5 | 6 |
+| 22 | 1,383 | 5,049 | 1,346 | 116 | 1 | | 5 | 6 |
+| 23 | 3,845 | 18,982 | 4,096 | 260 | 10 | | 5 | 6 |
+| 24 (subset) | 3* | 390* | 3,926* | 1,325 | 21 | 1 | 6 | 7 |
+
+\* The order-24 counts at k_min 1–3 are partial, because only a subset of holes was scanned.
+
+**Gentri 24 #1460, hole 19.**
+- The whole class has DD = 44 and capacity 364.
+- Pooled matching covers 22, 26, 28, 36, 40 and 44 DD states at k = 1..6, so **pooled k_min = 6**, against a per-j k_min of 7.
+- It is the only order-24 class with pooled k_min = 6.
+
+**Witnesses for pooled k_min = 5:**
+- order 21: gentri 50, hole 11;
+- order 22: gentri 307, hole 19;
+- order 23: gentri 1186, hole 19.

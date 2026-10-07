@@ -22,6 +22,8 @@ Notation (link x_0..x_4 in rotation order, indices mod 5):
  C7: distance (moves) from every DL state to the nearest filled state.
 usage: qf.py --orders 12 14 ... > out.jsonl   (one line per hole)
        qf.py --orders ... --match  (adds the per-j local-injection matching test, field DDmatch)
+       qf.py --orders ... --pool   (adds the class-level pooled matching test, field DDpool)
+       qf.py --holes-file FILE [--match] [--pool]   (FILE lines: order gentri_index hole)
        qf.py --floor-holes ORDER > out.jsonl   (only the holes containing a 1/4 class)
        qf.py --detail ORDER GENTRI_INDEX HOLE   (every DL state: dist, whether R+3 d / R+2 d are DL)
 Also per class (Intern A): R_F = phi o R+3 (= Math's rho) and R_B = phi o R+2 on DL states: both defined and equal / differ,
@@ -34,6 +36,7 @@ from kempe_py import Space, gentri_rotation, adj_from_rot
 GENTRI = os.path.join(H, "..", "..", "..", "studiointel", "gentri")
 sys.setrecursionlimit(20000)
 MATCH = "--match" in sys.argv; KMAX = 8   # --match: local-injection test (DDmatch field)
+POOL = "--pool" in sys.argv; PKMAX = 10  # --pool: class-level pooled matching (DDpool field)
 
 
 def analyse(rot, hole, detail=False):
@@ -230,7 +233,43 @@ def analyse(rot, hole, detail=False):
                     sat[k] = len(match_l)
                     if len(match_l) == len(left): kmin = k; break
                 ddmatch.append({"j": j, "DD_j": len(left), "room_j": len(units), "k_min": kmin, "matched_by_k": sat})
-        rec = {"DDloc": ddloc, "DDmatch": ddmatch, "size": len(C), "F": len(F), "U": len(U), "N0": N0, "N1": N1, "D": Dn, "L_F": LF, "paths": len(dP),
+        # Pooled (class-level) injection test: ALL DD states (any j) -> ALL units, unit capacity = number of j whose room_j
+        # contains it (so total capacity = sum_j room_j), edge iff Kempe distance <= k; k_min = least k saturating all DD.
+        ddpool = None
+        if DDstates and POOL:
+            cap = Counter()
+            for j in range(5):
+                for s in F:
+                    if (info[s]["i"] == (j + 4) % 5 and info[s]["m3long"]) or (info[s]["i"] in ((j + 3) % 5, (j + 1) % 5) and info[s]["m2long"]): cap[s] += 1
+                for s in U:
+                    if not info[s]["l1"] and not info[s]["l2"] and info[s]["j"] in (j, (j + 3) % 5): cap[s] += 1
+                    if info[s]["j"] == j and not info[s]["l1"] and info[s]["l2"] and not isDL(info[s]["R3"]): cap[s] += 1
+            pdepth = {s: {s: 0} for s in DDstates}; pfront = {s: [s] for s in DDstates}
+            assigned = defaultdict(list); matched = set(); kmin = None; sat = {}
+            for k in range(1, PKMAX + 1):
+                for s in DDstates:
+                    while max(pdepth[s].values()) < k and pfront[s]:
+                        nf = []
+                        for x in pfront[s]:
+                            for t in S.G[x]:
+                                if t not in pdepth[s]: pdepth[s][t] = pdepth[s][x] + 1; nf.append(t)
+                        pfront[s] = nf
+                adjp = {s: [t for t, dd_ in pdepth[s].items() if dd_ <= k and cap[t] > 0] for s in DDstates}
+
+                def paug(s, seen):
+                    for t in adjp[s]:
+                        if t in seen: continue
+                        seen.add(t)
+                        if len(assigned[t]) < cap[t]: assigned[t].append(s); return True
+                        for s2 in list(assigned[t]):
+                            if paug(s2, seen): assigned[t].remove(s2); assigned[t].append(s); return True
+                    return False
+                for s in DDstates:
+                    if s not in matched and paug(s, set()): matched.add(s)
+                sat[k] = len(matched)
+                if len(matched) == len(DDstates): kmin = k; break
+            ddpool = {"DD": len(DDstates), "capacity": sum(cap.values()), "k_min": kmin, "matched_by_k": sat}
+        rec = {"DDloc": ddloc, "DDmatch": ddmatch, "DDpool": ddpool, "size": len(C), "F": len(F), "U": len(U), "N0": N0, "N1": N1, "D": Dn, "L_F": LF, "paths": len(dP),
                "dP_hist": dict(Counter(dP)), "D_cyc": Dcyc, "bad_path": bad_path, "identity_lhs": lhs, "identity_rhs": rhs,
                "identity_ok": lhs == rhs, "perj_bad": perj_bad, "perj": perj, "DD": [DD[j] for j in range(5)],
                "DDprime": [DDp[j] for j in range(5)], "DDboth": [DDboth[j] for j in range(5)],
@@ -274,6 +313,12 @@ def main():
         for r in detail(gentri_rotation(l), h): print(json.dumps(r))
         return
     tasks = []
+    if "--holes-file" in sys.argv:  # lines "order gentri_index hole"
+        lines = {}
+        for l in open(sys.argv[sys.argv.index("--holes-file") + 1]):
+            n0, gi, h = map(int, l.split())
+            if n0 not in lines: lines[n0] = [x for x in open(os.path.join(GENTRI, "tri%d.txt" % n0)) if x.strip()]
+            tasks.append((n0, gi, lines[n0][gi], h))
     if "--floor-holes" in sys.argv:  # only holes that contain a 1/4 class (from ../6-quarter-floor/quarter-classes.jsonl)
         n0 = int(sys.argv[sys.argv.index("--floor-holes") + 1]); lines = [x for x in open(os.path.join(GENTRI, "tri%d.txt" % n0)) if x.strip()]
         for l in open(os.path.join(H, "..", "6-quarter-floor", "quarter-classes.jsonl")):
