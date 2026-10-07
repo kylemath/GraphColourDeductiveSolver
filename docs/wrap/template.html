@@ -1,0 +1,302 @@
+<meta charset="utf-8">
+<title>Wrapping the Sphere</title>
+<meta name="description" content="A 4-coloured triangulation shown as a panelled ball and wrapped onto a tetrahedron, with the folding degree and the degree-5 hole.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a lab notebook spread. Controls on top, two 3D plates side by side, readouts under each plate. */
+:root {
+  --bg: #f3f2ee; --panel: #fbfaf7; --ink: #23221f; --muted: #6b6860; --rule: #d9d6cd; --accent: #2e6bc6;
+  --c0: #c8553d; --c1: #2e6bc6; --c2: #2a9d7a; --c3: #e0a42c;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #17181b; --panel: #1f2024; --ink: #e9e7e1; --muted: #a29f97; --rule: #34353a; --accent: #7aa7ec; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #17181b; --panel: #1f2024; --ink: #e9e7e1; --muted: #a29f97; --rule: #34353a; --accent: #7aa7ec; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--body); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 48px; display: grid; gap: 22px; }
+header { display: grid; gap: 8px; max-width: 72ch; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 600 clamp(28px, 4vw, 40px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+header p { margin: 0; color: var(--muted); }
+.controls { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: end; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); }
+.ctl { display: grid; gap: 6px; min-width: 0; }
+.ctl label, .ctl .lab { font: 500 12px/1.2 var(--mono); color: var(--muted); letter-spacing: .04em; }
+select, input[type=range] { font: 14px var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 8px; max-width: 100%; }
+input[type=range] { padding: 0; width: 220px; accent-color: var(--accent); background: transparent; border: 0; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.seg button { font: 14px var(--body); color: var(--ink); background: var(--bg); border: 0; padding: 6px 10px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.plates { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 820px) { .plates { grid-template-columns: 1fr; } }
+.plate { display: grid; gap: 10px; min-width: 0; }
+.plate h2 { font: 600 20px/1.2 var(--display); margin: 0; }
+.plate .sub { margin: 0; color: var(--muted); font-size: 14px; }
+.stage { position: relative; aspect-ratio: 1 / 1; max-width: 100%; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); overflow: hidden; touch-action: none; cursor: grab; }
+.stage canvas { display: block; width: 100%; height: 100%; }
+.hint { position: absolute; left: 10px; bottom: 8px; font: 12px var(--mono); color: var(--muted); pointer-events: none; }
+.tip { position: absolute; right: 10px; top: 8px; font: 12px/1.4 var(--mono); color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 8px; pointer-events: none; }
+.read { display: grid; gap: 8px; font-size: 14px; }
+.row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font: 13px var(--mono); }
+.dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.25); display: inline-block; }
+table { border-collapse: collapse; font: 13px var(--mono); font-variant-numeric: tabular-nums; }
+th, td { padding: 4px 10px; border-bottom: 1px solid var(--rule); text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+.big { font: 600 22px var(--display); }
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px 24px; padding-top: 6px; border-top: 1px solid var(--rule); }
+.notes div { min-width: 0; }
+.notes h3 { font: 600 16px/1.3 var(--display); margin: 0 0 4px; }
+.notes p { margin: 0; color: var(--muted); font-size: 14px; }
+.state { font: 500 13px var(--mono); padding: 2px 8px; border-radius: 999px; border: 1px solid var(--rule); }
+.state.ok { color: var(--c2); border-color: var(--c2); }
+.state.bad { color: var(--c0); border-color: var(--c0); }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Order-22 core triangulation · hole at vertex 15 · link degrees (5,6,5,6,5)</div>
+    <h1>Wrapping the sphere around a tetrahedron</h1>
+    <p>Each vertex is a panel of the ball, coloured by its colour and raised by its colour's height (or by its degree). A 4-colouring sends every vertex to one corner of a tetrahedron, so every triangle of the map lands on one tetrahedron face. Slide "wrap" to watch the sphere fold onto the tetrahedron.</p>
+  </header>
+
+  <div class="controls">
+    <div class="ctl"><label for="pick">Colouring of the whole graph</label><select id="pick"></select></div>
+    <div class="ctl"><span class="lab">Vertex 15</span>
+      <div class="seg" role="group" aria-label="Vertex 15">
+        <button id="h-in" aria-pressed="true">present</button><button id="h-fill" aria-pressed="false">hole, filled</button><button id="h-block" aria-pressed="false">hole, blocked</button>
+      </div></div>
+    <div class="ctl"><span class="lab">Panel height</span>
+      <div class="seg" role="group" aria-label="Panel height">
+        <button id="m-col" aria-pressed="true">colour level</button><button id="m-deg" aria-pressed="false">degree</button>
+      </div></div>
+    <div class="ctl"><label for="t">Wrap: sphere → tetrahedron</label><input id="t" type="range" min="0" max="1" step="0.01" value="0.35"></div>
+  </div>
+
+  <div class="plates">
+    <section class="plate">
+      <h2>The panelled ball</h2>
+      <p class="sub">One panel per vertex. Pentagons are degree 5, hexagons degree 6. Height shows the peg level.</p>
+      <div class="stage" id="s1"><div class="tip" id="tip1" hidden></div><div class="hint">drag to rotate · tap a panel</div></div>
+      <div class="read" id="r1"></div>
+    </section>
+    <section class="plate">
+      <h2>The wrap</h2>
+      <p class="sub">Triangles take the colour of the tetrahedron face they land on. Light side out = right-handed; dark side out = left-handed.</p>
+      <div class="stage" id="s2"><div class="tip" id="tip2" hidden></div><div class="hint">drag to rotate</div></div>
+      <div class="read" id="r2"></div>
+    </section>
+  </div>
+
+  <div class="notes">
+    <div><h3>Legal means no crushed faces</h3><p>Neighbours never share a colour, so every triangle uses three different corners and lands on a whole tetrahedron face. An illegal colouring would crush a triangle to an edge or a point.</p></div>
+    <div><h3>The folding degree</h3><p>Count the triangles landing on one tetrahedron face: right-handed minus left-handed. Every face gives the same number. On this graph its parity never changes within a Kempe class: the big class is even, the small classes odd.</p></div>
+    <div><h3>The hole</h3><p>Delete vertex 15 and the sheet has a five-sided opening. If its rim uses three colours, the rim sits on one tetrahedron face and the hole can be capped. If the rim uses all four, it crosses the tetrahedron and no flat cap fits: a blocked state.</p></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const D = __DATA__;
+const N = D.n, HOLE = D.hole, LINK = D.link;
+const css = getComputedStyle(document.documentElement);
+const PIG = [0, 1, 2, 3].map(i => new THREE.Color(css.getPropertyValue('--c' + i).trim()));
+const NAMES = ['ochre', 'cobalt', 'viridian', 'saffron'];
+const s3 = 1 / Math.sqrt(3);
+const CORN = [[s3, s3, s3], [s3, -s3, -s3], [-s3, s3, -s3], [-s3, -s3, s3]].map(p => new THREE.Vector3(...p));
+const POS = D.pos.map(p => new THREE.Vector3(...p));
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const state = { pick: 0, hole: 'in', mode: 'col', t: 0.35, sel: -1 };
+
+function colouring() {
+  if (state.hole === 'block') return D.blocked;
+  const c = D.picks[state.pick].col.slice();
+  if (state.hole === 'fill') c[HOLE] = -1;
+  return c;
+}
+const pick = document.getElementById('pick');
+D.picks.forEach((p, i) => {
+  const o = document.createElement('option'); o.value = i;
+  o.textContent = `degree ${p.degree} · ${p.cls === 0 ? 'big Kempe class (1,920)' : 'small Kempe class (96)'}`;
+  pick.appendChild(o);
+});
+
+function makeStage(id) {
+  const el = document.getElementById(id);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  el.prepend(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
+  camera.position.set(0, 0, 5.2);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+  const sun = new THREE.DirectionalLight(0xffffff, 0.75); sun.position.set(2, 3, 4); camera.add(sun); scene.add(camera);
+  const group = new THREE.Group(); scene.add(group);
+  group.quaternion.setFromEuler(new THREE.Euler(0.35, -0.5, 0));
+  const fit = () => { const w = el.clientWidth, h = el.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
+  new ResizeObserver(fit).observe(el); fit();
+  let drag = null, moved = 0;
+  el.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY }; moved = 0; el.setPointerCapture(e.pointerId); stopSpin(); });
+  el.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag = { x: e.clientX, y: e.clientY }; moved += Math.abs(dx) + Math.abs(dy);
+    const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(dy * 0.008, dx * 0.008, 0));
+    group.quaternion.premultiply(q); syncFrom(stage);
+  });
+  const stage = { el, renderer, scene, camera, group, clickable: [], onTap: null };
+  el.addEventListener('pointerup', e => {
+    drag = null;
+    if (moved < 6 && stage.onTap) {
+      const r = el.getBoundingClientRect();
+      const m = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      const ray = new THREE.Raycaster(); ray.setFromCamera(m, camera);
+      const hit = ray.intersectObjects(stage.clickable, false)[0];
+      stage.onTap(hit ? hit.object.userData.v : -1);
+    }
+  });
+  return stage;
+}
+const A = makeStage('s1'), B = makeStage('s2');
+function syncFrom(s) { const o = s === A ? B : A; o.group.quaternion.copy(s.group.quaternion); }
+
+const faces = D.faces;
+const ring = Array.from({ length: N }, () => []);
+for (let v = 0; v < N; v++) {
+  const next = {};
+  faces.forEach((f, fi) => { const k = f.indexOf(v); if (k < 0) return; next[f[(k + 1) % 3]] = [f[(k + 2) % 3], fi]; });
+  let a = +Object.keys(next)[0]; const start = a;
+  do { const [b, fi] = next[a]; ring[v].push(fi); a = b; } while (a !== start);
+}
+const FC = faces.map(f => f.reduce((s, v) => s.add(POS[v]), new THREE.Vector3()).normalize());
+
+function heightOf(v, c) {
+  if (state.mode === 'deg') return 1 + (D.deg[v] - 5) * 0.09;
+  return c[v] < 0 ? 0.9 : 1 + c[v] * 0.055;
+}
+let panelMeshes = [], spikes = [];
+function buildBall() {
+  panelMeshes.forEach(m => { A.group.remove(m); m.geometry.dispose(); m.material.dispose(); });
+  spikes.forEach(m => { A.group.remove(m); m.geometry.dispose(); m.material.dispose(); });
+  panelMeshes = []; spikes = []; A.clickable = [];
+  const c = colouring();
+  for (let v = 0; v < N; v++) {
+    const r = heightOf(v, c), r0 = 0.9;
+    const ctr = POS[v].clone().normalize();
+    const corners = ring[v].map(fi => FC[fi].clone().lerp(ctr, 0.06).normalize());
+    const pts = [];
+    const push = p => pts.push(p.x, p.y, p.z);
+    for (let i = 0; i < corners.length; i++) {
+      const a = corners[i], b = corners[(i + 1) % corners.length];
+      push(ctr.clone().multiplyScalar(r)); push(a.clone().multiplyScalar(r)); push(b.clone().multiplyScalar(r));
+      push(a.clone().multiplyScalar(r)); push(a.clone().multiplyScalar(r0)); push(b.clone().multiplyScalar(r0));
+      push(a.clone().multiplyScalar(r)); push(b.clone().multiplyScalar(r0)); push(b.clone().multiplyScalar(r));
+    }
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3)); g.computeVertexNormals();
+    const hole = c[v] < 0;
+    const col = hole ? new THREE.Color(0x222222) : PIG[c[v]].clone();
+    const isLink = state.hole !== 'in' && LINK.includes(v);
+    const mat = new THREE.MeshLambertMaterial({ color: col, side: THREE.DoubleSide, transparent: hole, opacity: hole ? 0.25 : 1,
+      emissive: v === state.sel || isLink ? col.clone().multiplyScalar(0.35) : new THREE.Color(0) });
+    const m = new THREE.Mesh(g, mat); m.userData.v = v; A.group.add(m); panelMeshes.push(m); A.clickable.push(m);
+    if (state.mode === 'deg') {
+      const sg = new THREE.BufferGeometry().setFromPoints([ctr.clone().multiplyScalar(r), ctr.clone().multiplyScalar(r + 0.12 * D.deg[v] / 5)]);
+      const line = new THREE.Line(sg, new THREE.LineBasicMaterial({ color: col })); A.group.add(line); spikes.push(line);
+    }
+  }
+}
+
+let wrapMesh = null, wrapBack = null, tetra = null, cornerDots = [], rim = null;
+function buildWrap() {
+  [wrapMesh, wrapBack, rim].forEach(m => { if (m) { B.group.remove(m); m.geometry.dispose(); m.material.dispose(); } });
+  const c = colouring(), t = state.t;
+  const P = POS.map((p, v) => c[v] < 0 ? p.clone() : p.clone().lerp(CORN[c[v]], t));
+  const pts = [], cols = [], back = [];
+  faces.forEach(f => {
+    if (f.some(v => c[v] < 0)) return;
+    const missing = [0, 1, 2, 3].find(k => !f.some(v => c[v] === k));
+    const base = PIG[missing].clone().lerp(new THREE.Color(0xffffff), 0.28);
+    f.forEach(v => { pts.push(P[v].x, P[v].y, P[v].z); cols.push(base.r, base.g, base.b); });
+  });
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+  g.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3)); g.computeVertexNormals();
+  wrapMesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.FrontSide, polygonOffset: true, polygonOffsetFactor: 1 }));
+  const gb = g.clone();
+  const dark = cols.map(x => x * 0.42); gb.setAttribute('color', new THREE.Float32BufferAttribute(dark, 3));
+  wrapBack = new THREE.Mesh(gb, new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.BackSide }));
+  B.group.add(wrapMesh); B.group.add(wrapBack);
+  if (!tetra) {
+    const eg = []; for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) eg.push(CORN[i].clone().multiplyScalar(1.02), CORN[j].clone().multiplyScalar(1.02));
+    tetra = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(eg), new THREE.LineBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.6 }));
+    B.group.add(tetra);
+    CORN.forEach((p, i) => { const s = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), new THREE.MeshLambertMaterial({ color: PIG[i] })); s.position.copy(p.clone().multiplyScalar(1.04)); B.group.add(s); cornerDots.push(s); });
+  }
+  tetra.material.opacity = 0.15 + 0.6 * t;
+  if (state.hole !== 'in') {
+    const loop = LINK.concat([LINK[0]]).map(v => P[v].clone().multiplyScalar(1.015));
+    const path = new THREE.CurvePath(); for (let i = 0; i < loop.length - 1; i++) path.add(new THREE.LineCurve3(loop[i], loop[i + 1]));
+    rim = new THREE.Mesh(new THREE.TubeGeometry(path, 60, 0.018, 8, false), new THREE.MeshLambertMaterial({ color: state.hole === 'block' ? 0xb8382a : 0x1f7a55 }));
+    B.group.add(rim);
+  } else rim = null;
+}
+
+function degreeTable(c) {
+  const rows = [0, 1, 2, 3].map(m => {
+    let p = 0, n = 0;
+    faces.forEach(f => {
+      const cs = f.map(v => c[v]); if (cs.includes(-1) || cs.includes(m)) return;
+      const [a, b, d] = cs.map(k => CORN[k]);
+      const s = new THREE.Vector3().subVectors(b, a).cross(new THREE.Vector3().subVectors(d, a)).dot(a.clone().add(b).add(d));
+      s > 0 ? p++ : n++;
+    });
+    return { m, p, n };
+  });
+  return rows;
+}
+function chip(k) { return k < 0 ? '<span class="chip"><span class="dot" style="background:transparent"></span>empty</span>' : `<span class="chip"><span class="dot" style="background:var(--c${k})"></span>${NAMES[k]}</span>`; }
+
+function readouts() {
+  const c = colouring(), pk = D.picks[state.pick];
+  const linkCols = LINK.map(v => c[v]); const distinct = new Set(linkCols).size;
+  let r1 = `<div class="row"><span class="lab">Link of vertex 15:</span> ${linkCols.map(chip).join('')}</div>`;
+  if (state.hole === 'in') r1 += `<div class="row"><span class="state ok">vertex 15 coloured ${NAMES[c[HOLE]]}</span> its five neighbours use ${distinct} colours</div>`;
+  else r1 += `<div class="row"><span class="state ${distinct <= 3 ? 'ok' : 'bad'}">${distinct <= 3 ? 'filled: the hole can be capped' : 'blocked: the rim uses all 4 colours'}</span></div>`;
+  if (state.sel >= 0) r1 += `<div class="row">Panel ${state.sel}: degree ${D.deg[state.sel]}, ${c[state.sel] < 0 ? 'deleted' : NAMES[c[state.sel]] + ' → corner ' + NAMES[c[state.sel]]}</div>`;
+  document.getElementById('r1').innerHTML = r1;
+  const rows = degreeTable(c);
+  let r2;
+  if (state.hole === 'in') {
+    r2 = `<div class="row"><span class="big">folding degree ${pk.degree}</span><span>${pk.cls === 0 ? 'even: the big Kempe class' : 'odd: a small Kempe class'}</span></div>`;
+  } else {
+    r2 = `<div class="row"><span class="big">${state.hole === 'block' ? 'sheet cannot close' : 'sheet closes with one cone'}</span></div>`;
+  }
+  r2 += '<table><thead><tr><th>tetrahedron face (missing)</th><th>right-handed</th><th>left-handed</th><th>net</th></tr></thead><tbody>' +
+    rows.map(r => `<tr><td>${chip(r.m)}</td><td>${r.p}</td><td>${r.n}</td><td>${r.p - r.n}</td></tr>`).join('') + '</tbody></table>';
+  if (state.hole !== 'in') r2 += `<div class="sub">With the hole open the four nets need not agree; capping a filled hole restores one common degree.</div>`;
+  document.getElementById('r2').innerHTML = r2;
+}
+
+function refresh() { buildBall(); buildWrap(); readouts(); }
+function press(ids, on) { ids.forEach(id => document.getElementById(id).setAttribute('aria-pressed', id === on ? 'true' : 'false')); }
+pick.addEventListener('change', e => { state.pick = +e.target.value; if (state.hole === 'block') { state.hole = 'fill'; press(['h-in', 'h-fill', 'h-block'], 'h-fill'); } refresh(); });
+[['h-in', 'in'], ['h-fill', 'fill'], ['h-block', 'block']].forEach(([id, h]) => document.getElementById(id).addEventListener('click', () => { state.hole = h; press(['h-in', 'h-fill', 'h-block'], id); refresh(); }));
+[['m-col', 'col'], ['m-deg', 'deg']].forEach(([id, m]) => document.getElementById(id).addEventListener('click', () => { state.mode = m; press(['m-col', 'm-deg'], id); buildBall(); }));
+document.getElementById('t').addEventListener('input', e => { state.t = +e.target.value; buildWrap(); });
+A.onTap = v => { state.sel = v; buildBall(); readouts(); };
+
+let spinning = !reduceMotion;
+function stopSpin() { spinning = false; }
+function loop() {
+  if (spinning) { const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.003, 0)); A.group.quaternion.premultiply(q); B.group.quaternion.copy(A.group.quaternion); }
+  A.renderer.render(A.scene, A.camera); B.renderer.render(B.scene, B.camera);
+  requestAnimationFrame(loop);
+}
+refresh(); loop();
+</script>
