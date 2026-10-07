@@ -553,3 +553,20 @@ Windows are 7 consecutive DL states at positions 3–9 (R1k0 … R1k2), on Γ-cy
 
 - **(iii) W2 failures all have six events.** The 14 degree-7 Γ W2 failures have all six (pattern 111111), as do the 304 + 56 open-run W2 failures. Open W2* failures are 111111 or 110011: 518 at degree 6 and 68 at degree 7.
 - The six-event framing therefore adds nothing beyond the three fixed points (superseded by NightSixEvent). Jobs BG and BH were cancelled by the coordinator. Their engine flag `--jobbgh` was built (picyc.cpp) but never run.
+
+## Job BI [exploratory]: σ / σ′ accounting on the Job AW hit graphs vs the census (jobbi/jobbi.py, jobbi-cycles.json, jobbi-cycles-census.json, jobbi-hits-summary.txt, jobbi-census-summary.txt)
+Scope: every Γ-cycle Z in the hole's Kempe classes, using all states (lib26.Eng + kempe_py.Space), both orientations. That is 284 Γ-cycle records on the 61 hit graphs (all (5,5,5,5,6), L = 20, hole 22) and 264 at the census (5,5,5,5,6) Γ-holes, orders 25–27. Per Z the script records every σ-image and σ′-image: kind, target (w, L), the target excursion (u, f, mass = u − 3f) and credit. It also records rem(T), the class charge-back P₁ assignment and the payer.
+
+| statement (per Γ-cycle Z, Λ = 5w) | hits | census |
+|---|---|---|
+| (a) Lemma S, σ lockless exits | **260 / 284** | 264 / 264 |
+| (a′) Lemma S, σ ∪ σ′ distinct lockless images | **276 / 284** | 264 / 264 |
+| (b) P₁^str unconditional: some σ-nbr T with −rem(T) ≥ Λ(Z) | 284 / 284 | **216 / 264** |
+| (b′) P₁ conditional: def′(Z) > 0 ⇒ a σ-nbr pays it (class charge-back P₁) | 284 / 284 | 264 / 264 |
+| (c) some σ-image lands on T with Λ(T) ≤ −Λ(Z) | 284 / 284 | 264 / 264 |
+| (d) Σ over distinct target excursions of σ-images of max(0, −mass) ≥ Λ(Z) | **272 / 284** | 264 / 264 |
+| (d′) the same with σ ∪ σ′ images | 284 / 284 | 264 / 264 |
+
+- (b) fails on the census only where Z needs nothing: def′(Z) = −60 / −120 / −180, all σ-neighbours have rem ≥ 0, and Z's own credit is 4Λ. So the meaningful form is (b′).
+- **The weakest per-Γ-cycle statements true on every graph we have** are (b′) class charge-back P₁, (c) and (d′). Of these, (c) is the simplest: a σ-image always lands on a cycle at least as negative as Z is positive.
+- **How a counterexample's deficit is paid.** The failing Z (L = 20, Λ = 20) has σ-credit 15–18 (3 lockless images), so def′ = 2 or 5. Its 20 σ-images are typically 6–7 fixed, 5–6 DL, 3–4 Lock1-only, 1–2 Lock2-only and 3 lockless. One σ-neighbour T pays the whole deficit. T is the class's giant negative cycle: Λ(T) from −3,960 to −13,285, L(T) from 3,912 to 12,675, with spare −rem(T) from 3,875 to 13,249, which is ≥ 56 Λ(Z) on every hit. σ′ exits add 0–10 credit. That closes (a′) except for 8 records (A7f1 W3 walk 0 and A7f4 W3 walk 4, where σ′ adds no lockless credit).
