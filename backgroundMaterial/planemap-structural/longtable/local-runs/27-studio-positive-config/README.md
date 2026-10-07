@@ -134,3 +134,9 @@ R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (140 periods, no exception).
 - P2: in the failing periods the y ~ z break is caused by the step-8 (p,y) or step-1 (m,y) swap whose component K cuts y from z inside the {c(y),c(z)} graph
   (K meets every y-z path; 2 resp. 1 vertices of K on a shortest y-z path; |K & K_yz| = 1-5). K never separates y from z in T - K. Every swapped component contains
   the link vertex x_{j+2} (R+3), so dist(K, v) = 1. Restoring steps (0 = (m,z), 3 = (p,z)) swap components meeting one of the two y/z pieces (|K & K_yz| = 1-2).
+
+## Job Q (`--jobq`, `jobq.py` -> jobq-summary.txt, jobq-steps.jsonl): the k <= 2 fixed-point mechanism, (5,5,5,5,6) Gamma-cycles, orders 25-26, both orientations
+- "sigma is a fixed point" (the {alpha,mu}-component of m is the whole {alpha,mu}-subgraph) never holds at R3k4 or R3k3; at k <= 2 it holds at 19 / 40 / 19 of 140 R3 visits
+  (k = 0 / 1 / 2) and accounts for all but 1 / 4 / 1 of the failures there. 76 of 140 periods have no fixed-point state at all.
+- Unlike the y ~ z breaks of Job O, every step that switches the fixed-point predicate swaps a component that MEETS the sigma-component both before and after the step.
+- p25m #16945 h3 (tight F012' case) printed in full in jobq-summary.txt: k <= 2 credit 2 + 5 = 7 = 7L/20; total credit 31 against debt 20.
