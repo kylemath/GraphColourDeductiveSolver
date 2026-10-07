@@ -1,0 +1,54 @@
+A34 (5,5,5,5,6), cycles with R3 states at k, and cycles where ALL fail the lockless criterion:
+   ('55566', 'Gamma', 'kmask12', 'cycles') 6
+   ('55566', 'Gamma', 'kmask17', 'cycles') 6
+   ('55566', 'Gamma', 'kmask24', 'cycles') 6
+   ('55566', 'Gamma', 'kmask3', 'ALLFAIL') 2
+   ('55566', 'Gamma', 'kmask3', 'cycles') 6
+   ('55566', 'Gamma', 'kmask6', 'ALLFAIL') 2
+   ('55566', 'Gamma', 'kmask6', 'cycles') 6
+   ('55566', 'nonGamma', 'kmask12', 'ALLFAIL') 16
+   ('55566', 'nonGamma', 'kmask12', 'cycles') 22
+   ('55566', 'nonGamma', 'kmask17', 'ALLFAIL') 7
+   ('55566', 'nonGamma', 'kmask17', 'cycles') 22
+   ('55566', 'nonGamma', 'kmask24', 'ALLFAIL') 8
+   ('55566', 'nonGamma', 'kmask24', 'cycles') 8
+   ('55566', 'nonGamma', 'kmask3', 'ALLFAIL') 4
+   ('55566', 'nonGamma', 'kmask3', 'cycles') 5
+   ('55566', 'nonGamma', 'kmask6', 'ALLFAIL') 8
+   ('55566', 'nonGamma', 'kmask6', 'cycles') 22
+   ('Gamma', 'k3', 'cycles') 62
+   ('Gamma', 'k4', 'cycles') 62
+   ('nonGamma', 'k3', 'ALLFAIL') 20
+   ('nonGamma', 'k3', 'cycles') 37
+   ('nonGamma', 'k4', 'ALLFAIL') 25
+   ('nonGamma', 'k4', 'cycles') 37
+first all-fail:
+   ('55566', 'Gamma', 'kmask3') ('i26m', 'p26#16099', 15, [6, 5, 5, 5, 6], 'L', 20, 'w', 4, 'R3', 2)
+   ('55566', 'Gamma', 'kmask6') ('i26', 'p26#16099', 15, [6, 5, 5, 5, 6], 'L', 20, 'w', 4, 'R3', 2)
+   ('55566', 'nonGamma', 'kmask12') ('i25m', 'p25#16020', 20, [5, 5, 6, 6, 5], 'L', 18, 'w', 2, 'R3', 1)
+   ('55566', 'nonGamma', 'kmask17') ('i25m', 'p25#16020', 20, [5, 5, 6, 6, 5], 'L', 18, 'w', 2, 'R3', 1)
+   ('55566', 'nonGamma', 'kmask24') ('i26', 'p26#7490', 3, [5, 6, 6, 5, 5], 'L', 26, 'w', 2, 'R3', 1)
+   ('55566', 'nonGamma', 'kmask3') ('i26', 'p26#7490', 3, [5, 6, 6, 5, 5], 'L', 26, 'w', 2, 'R3', 1)
+   ('55566', 'nonGamma', 'kmask6') ('i26', 'p26#7490', 3, [5, 6, 6, 5, 5], 'L', 26, 'w', 2, 'R3', 3)
+   ('nonGamma', 'k3') ('i25', 'p25#16298', 23, [5, 5, 5, 6, 5], 'L', 26, 'w', 2, 'R3 at k', 1)
+   ('nonGamma', 'k4') ('i25', 'p25#8775', 15, [5, 6, 5, 5, 5], 'L', 34, 'w', 2, 'R3 at k', 1)
+F distribution of lockless exits by (pattern, cycle type, k):
+   ('5,5,5,5,6', 'Gamma', 'k0') {1: 14, 2: 8, 3: 98}
+   ('5,5,5,5,6', 'Gamma', 'k1') {1: 10, 2: 5, 3: 81}
+   ('5,5,5,5,6', 'Gamma', 'k2') {1: 19, 2: 14, 3: 86, 5: 1}
+   ('5,5,5,5,6', 'Gamma', 'k3') {2: 36, 3: 97}
+   ('5,5,5,5,6', 'Gamma', 'k4') {3: 133}
+   ('5,5,5,5,6', 'nonGamma', 'k0') {1: 13, 2: 4, 3: 14}
+   ('5,5,5,5,6', 'nonGamma', 'k1') {1: 6, 2: 2, 3: 15}
+   ('5,5,5,5,6', 'nonGamma', 'k2') {1: 7, 2: 2, 3: 13}
+   ('5,5,5,5,6', 'nonGamma', 'k3') {2: 21, 3: 9}
+   ('5,5,5,5,6', 'nonGamma', 'k4') {1: 4, 2: 3, 3: 10}
+   ('5,5,5,6,6', 'Gamma', 'kmask12') {1: 2, 2: 1, 3: 8}
+   ('5,5,5,6,6', 'Gamma', 'kmask17') {2: 4, 3: 7}
+   ('5,5,5,6,6', 'Gamma', 'kmask24') {2: 4, 3: 8}
+   ('5,5,5,6,6', 'Gamma', 'kmask3') {3: 6}
+   ('5,5,5,6,6', 'Gamma', 'kmask6') {1: 2, 3: 4}
+   ('5,5,5,6,6', 'nonGamma', 'kmask12') {1: 1, 3: 3, 4: 2}
+   ('5,5,5,6,6', 'nonGamma', 'kmask17') {1: 8, 2: 6, 3: 7}
+   ('5,5,5,6,6', 'nonGamma', 'kmask3') {2: 1}
+   ('5,5,5,6,6', 'nonGamma', 'kmask6') {1: 3, 3: 15}

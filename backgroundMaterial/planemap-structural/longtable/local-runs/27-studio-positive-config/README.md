@@ -85,3 +85,11 @@ sigma' = every link-free swap from a DD-step endpoint whose result is not DL (= 
 - Non-Gamma cycles are NOT all nonpositive at order 25: positive non-Gamma cycles exist at these holes (orders 25 / 26: 7 / 20 plantri, 7 / 25 mirror); first p25 #8775 h15 (5,6,5,5,5), L 34, w +2.
   Positive non-Gamma cycles with NO lockless exit: 5 (order 26 plantri) and 7 records (order 26 mirror; one cycle pair duplicated in the hole), none at order 25;
   e.g. p26 #7490 h3 (5,6,6,5,5), L 26, w +2: all 7 DL R3 states have DL exits (5 fixed points); p26 #43605 h3 (5,5,5,6,5), L 14, w +2: 3 DL + 3 single-lock exits.
+
+## Job K (NightF6): A34, F4, Lemma R, sigma-chains at (5,5,5,5,6)/(5,5,5,6,6) holes, orders 25-26, both orientations (`--jobk`; jobk-A34-F4.txt, jobk-records.jsonl)
+- A34 holds on every (5,5,5,5,6) Gamma-cycle record (62/62 at k = 3 and at k = 4); it fails on non-Gamma positive cycles (k = 3: 20/37, k = 4: 25/37, first p25 #16298 h23 / p25 #8775 h15).
+- F4 holds on Gamma-cycles: f = 3 at all 133 k = 4 lockless exits; k = 3: f in {2 (36), 3 (97)}; k = 0, 1, 2: f = 1 (43), 2 (27), 3 (265), 5 (1). Non-Gamma k = 4 exits have f = 1, 2.
+- Lemma R (target remainder 5w(T) - sum over hit excursions of (1 - 3f) <= 0) holds on all 210 targets with w(T) <= 0 (max remainder 0, tight at p26 #56128 h5 and
+  p26 #87887 h21 where 30 hits use the whole -240 of a w = -48 cycle). It FAILS on the 4 targets that are themselves positive cycles (w = +2, +2, +2, +4; remainder 12 or 24):
+  p25 #16298 h23, p25m #16149 h3, p26m #40549 h3, p26m #75049 h16.
+- Every positive cycle at these holes reaches a negative cycle in ONE sigma-hop (13 + 13 + 48 + 53 cycles), including all 12 positive non-Gamma cycles with no lockless exit; their sigma-groups have 4-19 cycles and sum w from -46 to -200.
