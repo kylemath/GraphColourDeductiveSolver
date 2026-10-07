@@ -292,3 +292,18 @@ Cycle basis = fundamental cycles of a BFS forest of the {A,B}-subgraph of T - v 
   component contains p and z) in 60/60. The cycle killed is short (length 6 mostly, some 8) through two consecutive outer vertices w_i, w_{i+1}, avoiding y and z.
 - In every period (552/552) some A/B cycle at position 4, 6 or 8 passes through y or z.
 - Because the roles {A,B} rotate at each step, no cycle keeps its vertex set as an {A,B}-cycle of the next state: fates are "rerouted" (next rank >= 1) or "dies".
+
+## Job AK (NightW2 §5, §8-§10 tests; C++ `--jobak` on every DL-run window + independent Python jobuv/jobak.py on Gamma periods; jobak-summary.txt, jobuv/jobak-gamma-summary.txt,
+## jobuv/jobak-counterexample.json, jobuv/jobak-periods.json (K4..K7 vertex sets per period), jobuv/jobak-66dump.json)
+Windows = an R3k2 state followed by four DL pi-steps (to R3k0), at every (5,5,5,5,6) hole, orders 25-27, both orientations.
+- **On Gamma-cycles (552 windows) W2*, W2'' and R all hold** (0 failures). **On open DL runs all three FAIL**: of 3,977 / 14,136 / 72,643 windows (orders 25 / 26 / 27,
+  per orientation): W2* (R3k2 fixed => R3k0 not fixed) fails 884 / 2,924 / 13,629; W2'' (some A/B cycle through y or z at R3k2 or R3k0) fails 1,334 / 4,729 / 23,390;
+  R (w3 not in K_sigma(R3k2) or w0 not in K_sigma(R3k0)) fails 1,707 / 6,125 / 31,569, and where R fails W2'' survives only via an escape outside the 2-ball
+  (373 / 1,396 / 8,179). First W2* counterexample: p25 #668 h18 (plantri), an open run of a w = -47, L = 233 cycle where R3k2, R3k1 AND R3k0 are all fixed points;
+  verified in Python (rotation system + five colourings in jobuv/jobak-counterexample.json).
+- New exact fact: at R1k4, p and x4 are {3,4}-connected in EVERY window (Gamma and open runs, 0 exceptions).
+- Where the outside {alpha,mu}-neighbour of y / z sits on Gamma-cycles: at R3k2 mostly z via NightW2's w3 and/or y via a vertex outside the ring; at R3k0 y via w0 and/or z outside.
+- Gamma periods: Hypothesis H (rank(k2) = 0 => some {2,3}-cycle at R3k0 meets K7 \ K4) holds in 60/60 periods (76/78 basis cycles); every such cycle meets K4, K5 and the
+  pulled-back Lock1@R3k2 chain. Mirror (rank(k0) = 0 => a {3,4}-cycle at R3k2 meets K4 \ K7): 60/60 periods (77/78 cycles).
+- F4 periods (60): C5 ({2,3}-cycles after K4, 72 basis cycles, length 6-10) never pass through p, always meet K4 (|C5 & K4| = 1-4), and separate h from a K4 vertex in 32/72.
+  Kill cases (48): C8 always meets K7 (|C8 & K7| = 1-4). The 66 rank-sum-1 periods are dumped with rotation systems and the colourings at positions 4-8.
