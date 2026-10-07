@@ -22,6 +22,7 @@ Lemma R\*: some degree-5 vertex off the protected face has finite Kempe radius. 
 | 150 | A core state of Kempe radius ≥ 5, with a certificate, found by a pre-registered search or a hand construction | Audit replay |
 | 150 | A real gap or error found in someone else's accepted result | Owner or Math confirms; Navigator records |
 | 100 | A new global invariant that separates filled from stuck states on T4, A₃–A₅ and the order-28 (6⁵) hole | Audit replay of the separation |
+| 150 | The DL half of the quarter floor proved (every degree-5 Kempe class at least 1/4 filled), or a degree-5 Kempe class with filled fraction below 1/4 (coordinator, 6 October, revision 140) | As for the 1000 proof bounty (proof) or the 1000 counterexample bounty (class) |
 | 80 | The Euler lemma compiled in Lean | As for Lean bounties |
 | 50 | A conjecture killed with an explicit certificate; only conjectures that someone else recorded first (in a message or the ledger) before the kill | Independent check |
 | 30 | An independent replay or re-derivation requested by the Navigator or coordinator, **whatever its verdict** (agree or fault); the replayer takes no share of the finder's points | Replay report posted |
@@ -55,7 +56,7 @@ Kept by the Navigator in each revision message from revision 125 on, with the it
 | studiocompute | 360 |
 | intern-A | 0 |
 | intern-B | 0 |
-| intern-C | 30 |
+| intern-C | 60 |
 | intern-D | 0 |
 
-Totals as of Navigator revision 139 (6 October, 17:05 MDT). Revision 139 paid studiocompute 30 for running the audit's check J12 (verdict PASS); earlier awards are in the revision 125 to 138 messages. The same totals are in `docs/navigator/leaderboard.json`.
+Totals as of Navigator revision 140 (6 October, 18:20 MDT). Revision 140 paid intern-C 30 for its cycle-5 re-derivation, credited by the audit (17:03); earlier awards are in the revision 125 to 139 messages. The same totals are in `docs/navigator/leaderboard.json`.
