@@ -1,0 +1,37 @@
+classes with positive cycle: 123  positive cycles: 125  classes npos>1: 2
+nzero>0 classes: 121
+T1_DL                holds 123/123  min slack 12 (n17 g4 h0 posW[4], cap 16)  min Hall ratio cap/supply 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4}
+T2_any               holds 123/123  min slack 12 (n17 g4 h0 posW[4], cap 16)  min Hall ratio cap/supply 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4}
+T3_DLalphaAB         holds 94/123  min slack -8 (n24 g2079 h0 posW[8], cap 0)  min Hall ratio cap/supply 0.0 bad cut {'Wset': [4], 'cap': 0, 'supply': 4}
+   first failures: [(17, 4, 0, [4]), (17, 4, 16, [4]), (20, 59, 18, [1])] count 29
+T3x_DLotherpair      holds 123/123  min slack 12 (n17 g4 h0 posW[4], cap 16)  min Hall ratio cap/supply 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4}
+T4_d2_DL_zero        holds 123/123  min slack 12 (n17 g4 h0 posW[4], cap 16)  min Hall ratio cap/supply 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4}
+T4_d2_any_zero       holds 123/123  min slack 12 (n17 g4 h0 posW[4], cap 16)  min Hall ratio cap/supply 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4}
+T4_d2_any_anycycle   holds 123/123  min slack 12 (n17 g4 h0 posW[4], cap 16)  min Hall ratio cap/supply 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4}
+T4_d2_DL_anycycle    holds 123/123  min slack 12 (n17 g4 h0 posW[4], cap 16)  min Hall ratio cap/supply 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4}
+
+bad cuts under T2_any, 8 tightest by Hall ratio:
+17 4 0 posW [4] ncyc 2 ratio 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4} slack 12
+17 4 16 posW [4] ncyc 2 ratio 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4} slack 12
+24 3633 0 posW [8] ncyc 21 ratio 5.75 bad cut {'Wset': [8], 'cap': 46, 'supply': 8} slack 38
+24 2071 2 posW [4] ncyc 32 ratio 7.0 bad cut {'Wset': [4], 'cap': 28, 'supply': 4} slack 24
+22 570 6 posW [2] ncyc 26 ratio 8.0 bad cut {'Wset': [2], 'cap': 16, 'supply': 2} slack 14
+22 418 21 posW [4] ncyc 17 ratio 9.0 bad cut {'Wset': [4], 'cap': 36, 'supply': 4} slack 32
+24 906 22 posW [4, 4] ncyc 12 ratio 10.0 bad cut {'Wset': [4, 4], 'cap': 80, 'supply': 8} slack 72
+22 386 17 posW [2] ncyc 12 ratio 10.5 bad cut {'Wset': [2], 'cap': 21, 'supply': 2} slack 19
+
+bad cuts under T1_DL, 8 tightest:
+17 4 0 posW [4] ratio 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4} slack 12
+17 4 16 posW [4] ratio 4.0 bad cut {'Wset': [4], 'cap': 16, 'supply': 4} slack 12
+24 3633 0 posW [8] ratio 5.75 bad cut {'Wset': [8], 'cap': 46, 'supply': 8} slack 38
+24 2071 2 posW [4] ratio 7.0 bad cut {'Wset': [4], 'cap': 28, 'supply': 4} slack 24
+22 570 6 posW [2] ratio 8.0 bad cut {'Wset': [2], 'cap': 16, 'supply': 2} slack 14
+22 418 21 posW [4] ratio 9.0 bad cut {'Wset': [4], 'cap': 36, 'supply': 4} slack 32
+24 2079 0 posW [8] ratio 9.0 bad cut {'Wset': [8], 'cap': 72, 'supply': 8} slack 64
+24 906 22 posW [4, 4] ratio 10.0 bad cut {'Wset': [4, 4], 'cap': 80, 'supply': 8} slack 72
+
+T1 vs T2 differences: 38 classes with different reachable capacity
+zero relay changes reach (T2 vs T4 any_zero): 74
+T1 not ok but relay-zero ok: 0
+multi-positive classes worst: [(24, 906, 22, [4, 4], 10.0), (24, 6864, 21, [2, 1], 13.0)]
+max slack-ratio hist (capreach/supply, T2) min: 4.0
