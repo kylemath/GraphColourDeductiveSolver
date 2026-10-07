@@ -52,9 +52,14 @@ At `k = 3`: Lock 2 of `s` dies at `x (j+4)` (`sigma_exit_noLock2_k3`), which is 
 * `u3_lock1_only`, `u3_run_end` (4): a failing `k = 3` image is `Lock1`-only, `π⁻¹ s` is
   unfilled, `π s` filled and `π² s` unfilled.
 
-Not proved here: `f = 1` when `u = 3` (observed in the data); at `t₃' = φ_B⁻¹ t₂` the
-`{μ, α}`-graph is changed on a possibly large `{α, A}`-component, so the monotonicity argument
-above does not apply.
+* `u34_mass_bound`: the excursion has mass `u − 3f`, equal to `1` when `u = 4`.
+* `u34_f_one_of_three`, `u34_mass` (**conditional**): `f = 1` when `u = 3`, hence mass `∈ {0, 1}`,
+  under the named hypothesis `hw`: `w₃` is not in the `{A, α}`-component of `x j` in `π² s`
+  (the component that `π (π² s) = φ_B⁻¹` swaps). Under `hw`, `x (j+3)` is isolated in the
+  `{μ, α}`-graph of `π³ s`. Without it, `w₃` turns `α` and that component runs through `m`, whose
+  colour in `π² s` is not determined locally, so `f = 1` at `u = 3` is a non-local Kempe claim.
+* `u3_mass`: at `k = 3`, in any excursion `(e, u, f)` containing the image `s = π^k e`:
+  `k = u − 1`, `u ≥ 2`, `f = 1`, mass `u − 3`.
 -/
 
 @[expose] public section
@@ -79,6 +84,9 @@ lemma pairGraph_le_of_one {V : Type*} {G : SimpleGraph V} {h p : V} {c d : V →
 
 private lemma fneU (j : Fin 5) : j ≠ j + 3 ∧ j + 2 ≠ j + 3 ∧ j + 4 ≠ j + 3 ∧ j ≠ j + 4 ∧
     j + 3 ≠ j + 4 := by
+  revert j; decide
+
+private lemma fne13 (j : Fin 5) : j + 1 ≠ j + 3 := by
   revert j; decide
 
 section sphere
@@ -432,6 +440,234 @@ theorem u3_run_end (K : K3Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At 
   rw [E]
   exact fun ht => (filled_succ_iff_m3long pt st).1 ht M3
 
+/-! ### The `u = 3` branch: `f = 1` under a named non-local hypothesis -/
+
+/-- The state `t₂ = π² s` of the `k = 4` colour walk: repeat index `j + 1`, `Lock1`, link
+`(α, μ, A, μ, B)`, `w₂ = B`, `w₃ = A` (colours named in `r`). -/
+theorem u34_two (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P w r j)
+    (hL2 : Lock2 P (sigSwap P r j) j) :
+    ProperOff M.graph h (piMove P (piMove P (sigSwap P r j))) ∧
+    RepeatAt P (piMove P (piMove P (sigSwap P r j))) (j + 1) ∧
+    Lock1 P (piMove P (piMove P (sigSwap P r j))) (j + 1) ∧
+    piMove P (piMove P (sigSwap P r j)) (P.x j) = r (P.x j) ∧
+    piMove P (piMove P (sigSwap P r j)) (P.x (j + 1)) = r (P.x (j + 1)) ∧
+    piMove P (piMove P (sigSwap P r j)) (P.x (j + 2)) = r (P.x (j + 3)) ∧
+    piMove P (piMove P (sigSwap P r j)) (P.x (j + 3)) = r (P.x (j + 1)) ∧
+    piMove P (piMove P (sigSwap P r j)) (P.x (j + 4)) = r (P.x (j + 4)) ∧
+    piMove P (piMove P (sigSwap P r j)) (w (j + 2)) = r (P.x (j + 4)) ∧
+    piMove P (piMove P (sigSwap P r j)) (w (j + 3)) = r (P.x (j + 3)) := by
+  have T := K.tri
+  obtain ⟨-, -, ps, rs, sout⟩ := sigma_exit T hc hR.1.1 hR.outer
+  obtain ⟨-, -, -, s0, s1, s2, s3, s4⟩ := sigSwap_basic hc hR.1.1
+  obtain ⟨⟨⟨-, h1, h3, h4, h13, h14, h34⟩, -, -⟩, -, -, e2, e3, -⟩ := hR
+  obtain ⟨f03, f23, f43, -, -⟩ := fneU j
+  obtain ⟨-, -, -, o2⟩ := T.offh
+  generalize hsd : sigSwap P r j = s at *
+  have sw2 : s (w (j + 2)) = r (P.x (j + 4)) :=
+    (sout _ ((T.off _).2.2.2) ((T.off _).2.2.2) ((T.off _).2.2.2)).trans e2
+  have sw3 : s (w (j + 3)) = r (P.x (j + 1)) :=
+    (sout _ (K.off3 _) (K.off3 _) (K.off3 _)).trans e3
+  -- Step 1: `t₁ = R₊₃ s` at `j`.
+  have hK1 := rot3Def_of_lock2 P rs hL2
+  obtain ⟨u0, u1, u2, u3, u4⟩ := rot3_values rs hK1
+  rw [s0] at u0 u3
+  rw [s1] at u1
+  rw [s3] at u2
+  rw [s4] at u4
+  obtain ⟨-, p1, r1, -, -⟩ := rot3_move ps rs hL2
+  have E1 : piMove P s = rot3 P s j := by rw [piMove_rep rs, ite_eq_left hL2]
+  have u5 : rot3 P s j (w (j + 3)) = r (P.x (j + 3)) := by
+    have reach1 : (pairGraph M.graph h s (s (P.x j)) (s (P.x (j + 3)))).Reachable
+        (P.x (j + 2)) (w (j + 3)) :=
+      (rot3_reach rs).trans (Adj.reachable ⟨(K.nbr3 _).2 (by simp), ⟨P.x_ne_h _, Or.inr rfl⟩,
+        ⟨K.offh.1, Or.inl (by rw [sw3, s0])⟩⟩)
+    rw [rot3_eq_kswap, kswap_mem reach1 (by rw [sw3, s0]), s3]
+  have u6 : rot3 P s j (w (j + 2)) = r (P.x (j + 4)) := by
+    rw [rot3_keep' (by rw [sw2, s0]; exact h14.symm) (by rw [sw2, s3]; exact h34.symm), sw2]
+  generalize ht1 : rot3 P s j = t1 at *
+  have L2t1 : Lock2 P t1 (j + 3) := by
+    unfold Lock2
+    simp only [add_assoc, Fin.reduceAdd]
+    have aw3 : Active h t1 (t1 (P.x (j + 4))) (t1 (P.x (j + 2))) (w (j + 3)) :=
+      ⟨K.offh.1, Or.inr (u5.trans u2.symm)⟩
+    have aw2 : Active h t1 (t1 (P.x (j + 4))) (t1 (P.x (j + 2))) (w (j + 2)) :=
+      ⟨o2, Or.inl (u6.trans u4.symm)⟩
+    have a1 : (pairGraph M.graph h t1 (t1 (P.x (j + 4))) (t1 (P.x (j + 2)))).Adj
+        (P.x (j + 4)) (w (j + 3)) := ⟨(K.nbr4 _).2 (by simp), ⟨P.x_ne_h _, Or.inl rfl⟩, aw3⟩
+    have a2 : (pairGraph M.graph h t1 (t1 (P.x (j + 4))) (t1 (P.x (j + 2)))).Adj
+        (w (j + 3)) (w (j + 2)) := ⟨K.ring23.symm, aw3, aw2⟩
+    have a3 : (pairGraph M.graph h t1 (t1 (P.x (j + 4))) (t1 (P.x (j + 2)))).Adj
+        (w (j + 2)) (P.x (j + 2)) := ⟨T.adjs.2.2.2.2.2.symm, aw2, ⟨P.x_ne_h _, Or.inr rfl⟩⟩
+    exact a1.reachable.trans (a2.reachable.trans a3.reachable)
+  -- Step 2: `t₂ = R₊₃ t₁` at `j + 3`.
+  have hK2 := rot3Def_of_lock2 P r1 L2t1
+  obtain ⟨v0, v1, v2, v3, v4⟩ := rot3_values r1 hK2
+  simp only [add_assoc, Fin.reduceAdd, add_zero] at v1 v2 v3 v4
+  rw [u3] at v0
+  rw [u4] at v1
+  rw [u1] at v2
+  rw [u3] at v3
+  rw [u2] at v4
+  obtain ⟨-, p2, r2, l2, -⟩ := rot3_move p1 r1 L2t1
+  simp only [add_assoc, Fin.reduceAdd] at r2 l2
+  have E2 : piMove P t1 = rot3 P t1 (j + 3) := by rw [piMove_rep r1, ite_eq_left L2t1]
+  have v5 : rot3 P t1 (j + 3) (w (j + 3)) = r (P.x (j + 3)) := by
+    rw [rot3_keep' (by rw [u5, u3]; exact h13.symm)
+      (by simp only [add_assoc, Fin.reduceAdd]; rw [u5, u1]; exact h3), u5]
+  have v6 : rot3 P t1 (j + 3) (w (j + 2)) = r (P.x (j + 4)) := by
+    rw [rot3_keep' (by rw [u6, u3]; exact h14.symm)
+      (by simp only [add_assoc, Fin.reduceAdd]; rw [u6, u1]; exact h4), u6]
+  rw [E1, E2]
+  exact ⟨p2, r2, l2, v2, v3, v4, v0, v1, v6, v5⟩
+
+/-- **`u34_f_one_of_three`** (conditional). If the run has length `u = 3` (`π³ s` filled), the
+filled run after it has `f = 1` (`π⁴ s` unfilled), **provided** `w₃` is not in the
+`{A, α}`-component of `x j` in `t₂ = π² s` (hypothesis `hw`; `A = r (x (j+3))`, `α = r (x j)`).
+That component is what `π t₂ = φ_B⁻¹` swaps. Under `hw` the vertex `x (j+3)` (colour `μ`) has
+neighbours `x (j+2) = A`, `x (j+4) = B`, `w₂ = B`, `w₃ = A` in `π³ s`, so it is isolated in the
+`{μ, α}`-graph and `π³ s` is `M3`-short. Without `hw`, `w₃` turns `α` and the
+`{μ, α}`-component of `x (j+3)` leaves the ball (through `m`, whose colour in `t₂` is not
+determined locally), so `M3Short` is then a non-local Kempe statement. -/
+theorem u34_f_one_of_three (K : K4Ball P w m j) (hc : ProperOff M.graph h r)
+    (hR : R3At P w r j) (hF : ¬ NoLock P (sigSwap P r j))
+    (hw : ¬ (pairGraph M.graph h (piMove P (piMove P (sigSwap P r j))) (r (P.x (j + 3)))
+      (r (P.x j))).Reachable (P.x j) (w (j + 3)))
+    (hu3 : Target M.graph h ((piMove P)^[3] (sigSwap P r j))) :
+    ¬ Target M.graph h ((piMove P)^[4] (sigSwap P r j)) := by
+  have hL2 := (u34_lock2_only K hc hR hF).2
+  obtain ⟨p2, r2, -, v0, v1, v2, v3, v4, v5, v6⟩ := u34_two K hc hR hL2
+  obtain ⟨⟨⟨-, h1, h3, h4, h13, h14, h34⟩, -, -⟩, -⟩ := hR
+  have f13 : P.x (j + 1) ≠ P.x (j + 3) := fun e => fne13 j (P.inj e)
+  show ¬ Target M.graph h (piMove P (piMove P (piMove P (piMove P (sigSwap P r j)))))
+  change Target M.graph h (piMove P (piMove P (piMove P (sigSwap P r j)))) at hu3
+  generalize ht2 : piMove P (piMove P (sigSwap P r j)) = t2 at *
+  have nL2 : ¬ Lock2 P t2 (j + 1) := fun l => (unfilled_succ_iff_lock2 p2 r2).2 l hu3
+  have E : piMove P t2 = phiBinv P t2 (j + 1) := by rw [piMove_rep r2, ite_eq_right nL2]
+  obtain ⟨-, pt, st, -, -⟩ := phiBinv_spec p2 r2 nL2
+  simp only [add_assoc, Fin.reduceAdd] at st
+  have hphi : phiBinv P t2 (j + 1) = kswap M.graph h t2 (r (P.x (j + 3))) (r (P.x j)) (P.x j) := by
+    unfold phiBinv
+    simp only [add_assoc, Fin.reduceAdd, add_zero]
+    rw [v2, v0]
+  have nL2' : ¬ (pairGraph M.graph h t2 (r (P.x (j + 3))) (r (P.x j))).Reachable (P.x j)
+      (P.x (j + 2)) := by
+    intro R
+    apply nL2
+    unfold Lock2
+    simp only [add_assoc, Fin.reduceAdd, add_zero]
+    rw [v2, v0]
+    exact R.symm
+  have z1 : phiBinv P t2 (j + 1) (P.x (j + 1)) = r (P.x (j + 1)) := by
+    rw [hphi, kswap_other (by rw [v1]; exact h13) (by rw [v1]; exact h1), v1]
+  have z2 : phiBinv P t2 (j + 1) (P.x (j + 2)) = r (P.x (j + 3)) := by
+    rw [hphi, kswap_out nL2', v2]
+  have z4 : phiBinv P t2 (j + 1) (P.x (j + 4)) = r (P.x (j + 4)) := by
+    rw [hphi, kswap_other (by rw [v4]; exact h34.symm) (by rw [v4]; exact h4), v4]
+  have z0 : phiBinv P t2 (j + 1) (P.x j) = r (P.x (j + 3)) := by
+    rw [hphi, kswap_mem' (Reachable.refl _) v0]
+  have zw2 : phiBinv P t2 (j + 1) (w (j + 2)) = r (P.x (j + 4)) := by
+    rw [hphi, kswap_other (by rw [v5]; exact h34.symm) (by rw [v5]; exact h4), v5]
+  have zw3 : phiBinv P t2 (j + 1) (w (j + 3)) = r (P.x (j + 3)) := by
+    rw [hphi, kswap_out hw, v6]
+  have M3 : M3Short P (phiBinv P t2 (j + 1)) (j + 4) := by
+    unfold M3Short zcol
+    simp only [add_assoc, Fin.reduceAdd, add_zero]
+    rw [z1, z4, z0, fourth_eq h34.symm h14.symm h13.symm h4.symm h3.symm h1.symm]
+    refine not_reach_of_isolated f13 fun v e => ?_
+    obtain ⟨ea, -, av⟩ := e
+    have hv := av.2
+    rcases (K.nbr3 v).1 ea with rfl | rfl | rfl | rfl | rfl
+    · exact av.1 rfl
+    · rw [z2] at hv
+      rcases hv with f | f
+      · exact h13 f.symm
+      · exact h3 f
+    · rw [z4] at hv
+      rcases hv with f | f
+      · exact h14 f.symm
+      · exact h4 f
+    · rw [zw2] at hv
+      rcases hv with f | f
+      · exact h14 f.symm
+      · exact h4 f
+    · rw [zw3] at hv
+      rcases hv with f | f
+      · exact h13 f.symm
+      · exact h3 f
+  rw [E]
+  exact fun ht => (filled_succ_iff_m3long pt st).1 ht M3
+
+/-- **Excursion mass, unconditional.** A failing `k = 4` image starts an excursion `(s, u, f)`
+with `u ∈ {3, 4}`, mass `u − 3f`; when `u = 4` the mass is `1`. -/
+theorem u34_mass_bound (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P w r j)
+    (hF : ¬ NoLock P (sigSwap P r j)) :
+    ∃ u f, (u = 3 ∨ u = 4) ∧ Excursion P (sigSwap P r j) u f ∧
+      excMass P (sigSwap P r j) u f = (u : ℤ) - 3 * f ∧
+      (u = 4 → excMass P (sigSwap P r j) u f = 1) := by
+  obtain ⟨u, f, hu, E, h4⟩ := u34_excursion K hc hR hF
+  refine ⟨u, f, hu, E, excursion_mass E, fun e => ?_⟩
+  rw [excursion_mass E, h4 e, e]
+  norm_num
+
+/-- **`u34_mass`** (conditional on `hw`, as in `u34_f_one_of_three`): the excursion started by
+a failing `k = 4` image has `f = 1` and mass `0` (`(u, f) = (3, 1)`) or `1` (`(4, 1)`). -/
+theorem u34_mass (K : K4Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P w r j)
+    (hF : ¬ NoLock P (sigSwap P r j))
+    (hw : ¬ (pairGraph M.graph h (piMove P (piMove P (sigSwap P r j))) (r (P.x (j + 3)))
+      (r (P.x j))).Reachable (P.x j) (w (j + 3))) :
+    ∃ u f, Excursion P (sigSwap P r j) u f ∧ f = 1 ∧
+      (excMass P (sigSwap P r j) u f = 0 ∨ excMass P (sigSwap P r j) u f = 1) := by
+  obtain ⟨u, f, hu, E, h4⟩ := u34_excursion K hc hR hF
+  have hf : f = 1 := by
+    rcases hu with rfl | rfl
+    · by_contra hf
+      have f2 : 2 ≤ f := by have := E.f_pos; omega
+      exact u34_f_one_of_three K hc hR hF hw (E.fil 3 le_rfl (by omega))
+        (E.fil 4 (by omega) (by omega))
+    · exact h4 rfl
+  refine ⟨u, f, E, hf, ?_⟩
+  rw [excursion_mass E, hf]
+  rcases hu with rfl | rfl
+  · left; norm_num
+  · right; norm_num
+
+/-! ### `k = 3`: the excursion containing the image -/
+
+/-- **`u3_mass`.** At `k = 3` a failing image `s` lies in an excursion `(e, u, f)` as its last
+unfilled state: `s = π^(u−1) e`, `u ≥ 2`, the filled run after it has `f = 1`, and the mass is
+`u − 3` (so at least `−1`). -/
+theorem u3_mass (K : K3Ball P w m j) (hc : ProperOff M.graph h r) (hR : R3At P w r j)
+    (hF : ¬ NoLock P (sigSwap P r j)) {e : Fin n → Fin 4} {u f k : ℕ}
+    (E : Excursion P e u f) (hk : k < u + f) (hke : (piMove P)^[k] e = sigSwap P r j) :
+    k + 1 = u ∧ 2 ≤ u ∧ f = 1 ∧ excMass P e u f = (u : ℤ) - 3 := by
+  obtain ⟨-, -, rs, -⟩ := sigSwap_basic hc hR.1.1
+  obtain ⟨hprev, hnext, hnn⟩ := u3_run_end K hc hR hF
+  have hp := iter_properOff (P := P) E.proper
+  have ku : k < u := by
+    by_contra hl
+    exact rep_not_target rs (hke ▸ E.fil k (by omega) hk)
+  have k1 : k + 1 = u := by
+    by_contra hl
+    apply E.unf (k + 1) (by omega)
+    rw [Function.iterate_succ_apply', hke]
+    exact hnext
+  have u2 : 2 ≤ u := by
+    rcases k with _ | k
+    · exfalso
+      apply hprev
+      rw [← hke]
+      exact E.prev
+    · omega
+  have f1 : f = 1 := by
+    by_contra hf
+    have f2 : 2 ≤ f := by have := E.f_pos; omega
+    apply hnn
+    rw [← hke, ← Function.iterate_succ_apply' (piMove P), ← Function.iterate_succ_apply' (piMove P)]
+    exact E.fil _ (by omega) (by omega)
+  refine ⟨k1, u2, f1, ?_⟩
+  rw [excursion_mass E, f1]
+  norm_num
+
 end sphere
 
 end SimpleGraph.QuarterFloor
@@ -443,3 +679,7 @@ end SimpleGraph.QuarterFloor
 #print axioms SimpleGraph.QuarterFloor.u34_f_one
 #print axioms SimpleGraph.QuarterFloor.u34_excursion
 #print axioms SimpleGraph.QuarterFloor.u3_run_end
+#print axioms SimpleGraph.QuarterFloor.u34_f_one_of_three
+#print axioms SimpleGraph.QuarterFloor.u34_mass_bound
+#print axioms SimpleGraph.QuarterFloor.u34_mass
+#print axioms SimpleGraph.QuarterFloor.u3_mass
