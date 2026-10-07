@@ -1,0 +1,157 @@
+== degree 6, census: 264 cycles (L: {20: 256, 60: 4, 40: 4}), 5520 states
+    960     R1 image: on Z
+    676     R1 image: other Gamma-cycle
+    76     R1 image: other cycle w=0
+    987     R1 image: other cycle w=<0
+    5     R1 image: other cycle w=>0 non-Gamma
+    2516 (a) non-fixed R3 image is DL: False
+    24 (a) non-fixed R3 image is DL: True
+    2502 (b) non-fixed R3 image target: w<0
+    22 (b) non-fixed R3 image target: w=0
+    16 (b) non-fixed R3 image target: w>0
+    112 (c) R1 image on Z equals pi^10(r): False
+    848 (c) R1 image on Z equals pi^10(r): True
+    19     k3 failure image Lock1-only: forward (u,f) = (1,1)
+    19 (d) U34 (u in {3,4} and u=4 => f=1): True
+    6 (d) k4 failure image Lock2-only: (u,f) = (3,1)
+    13 (d) k4 failure image Lock2-only: (u,f) = (4,1)
+    (e) pos       fixed   lockless Lock1-only Lock2-only         DL     filled
+        0             0        533          0         19          0          0
+        1            18         30         31         31        442          0
+        2             0        533         19          0          0          0
+        3             3         57         39        131        322          0
+        4            60        480          2          2          8          0
+        5            16          7         28          4        497          0
+        6           100        432          6          6          8          0
+        7            16          7          4         28        497          0
+        8            60        480          2          2          8          0
+        9             3         57        131         39        322          0
+== degree 6, construction+adversarial: 40 cycles (L: {80: 14, 40: 14, 180: 2, 60: 2, 200: 4, 120: 4}), 3440 states
+    280     R1 image: on Z
+    368     R1 image: other Gamma-cycle
+    34     R1 image: other cycle w=0
+    1038     R1 image: other cycle w=<0
+    1490 (a) non-fixed R3 image is DL: False
+    80 (a) non-fixed R3 image is DL: True
+    24 (b) non-fixed R3 image target: same cycle
+    1506 (b) non-fixed R3 image target: w<0
+    40 (b) non-fixed R3 image target: w>0
+    194 (c) R1 image on Z equals pi^10(r): False
+    86 (c) R1 image on Z equals pi^10(r): True
+    (e) pos       fixed   lockless Lock1-only Lock2-only         DL     filled
+        0             0        344          0          0          0          0
+        1             0          0          0          0        344          0
+        2             0        344          0          0          0          0
+        3             0          0         17          0        327          0
+        4            38        286          0          0         20          0
+        5             0          0          0          0        344          0
+        6            74        230          0          0         40          0
+        7             0          0          0          0        344          0
+        8            38        286          0          0         20          0
+        9             0          0          0         17        327          0
+== degree 7, census: 406 cycles (L: {20: 364, 40: 32, 60: 10}), 9160 states
+    1292     R1 image: on Z
+    1508     R1 image: other Gamma-cycle
+    131     R1 image: other cycle w=0
+    1408     R1 image: other cycle w=<0
+    47     R1 image: other cycle w=>0 non-Gamma
+    4232 (a) non-fixed R3 image is DL: False
+    106 (a) non-fixed R3 image is DL: True
+    4 (b) non-fixed R3 image target: same cycle
+    4187 (b) non-fixed R3 image target: w<0
+    99 (b) non-fixed R3 image target: w=0
+    48 (b) non-fixed R3 image target: w>0
+    268 (c) R1 image on Z equals pi^10(r): False
+    1024 (c) R1 image on Z equals pi^10(r): True
+    79     k3 failure image Lock1-only: forward (u,f) = (1,1)
+    79 (d) U34 (u in {3,4} and u=4 => f=1): True
+    59 (d) k4 failure image Lock2-only: (u,f) = (3,1)
+    20 (d) k4 failure image Lock2-only: (u,f) = (4,1)
+    (e) pos       fixed   lockless Lock1-only Lock2-only         DL     filled
+        0             0        837          0         79          0          0
+        1            54          2         19         19        822          0
+        2             0        837         79          0          0          0
+        3            30         16         24        103        743          0
+        4            66        812          3          6         29          0
+        5            40          5         24         33        814          0
+        6           110        754          2          2         48          0
+        7            40          5         33         24        814          0
+        8            66        812          6          3         29          0
+        9            30         16        103         24        743          0
+== degree 7, construction+adversarial: 54 cycles (L: {40: 20, 80: 10, 800: 4, 20: 16, 60: 4}), 5360 states
+    120     R1 image: on Z
+    512     R1 image: other Gamma-cycle
+    288     R1 image: other cycle w=0
+    1452     R1 image: other cycle w=<0
+    284     R1 image: other cycle w=>0 non-Gamma
+    2608 (a) non-fixed R3 image is DL: False
+    2584 (b) non-fixed R3 image target: w<0
+    24 (b) non-fixed R3 image target: w=0
+    120 (c) R1 image on Z equals pi^10(r): False
+    24     k3 failure image Lock1-only: forward (u,f) = (1,1)
+    24 (d) U34 (u in {3,4} and u=4 => f=1): True
+    24 (d) k4 failure image Lock2-only: (u,f) = (3,1)
+    (e) pos       fixed   lockless Lock1-only Lock2-only         DL     filled
+        0             0        512          0         24          0          0
+        1            24          0          0          0        512          0
+        2             0        512         24          0          0          0
+        3             0          0          0         24        512          0
+        4            24        512          0          0          0          0
+        5             0          0          0          0        536          0
+        6            24        512          0          0          0          0
+        7             0          0          0          0        536          0
+        8            24        512          0          0          0          0
+        9             0          0         24          0        512          0
+
+== by cycle length
+    8 ('deg6', 'census', 'L=20', '(a) R3 image DL', 'pos 4')
+    8 ('deg6', 'census', 'L=20', '(a) R3 image DL', 'pos 6')
+    8 ('deg6', 'census', 'L=20', '(a) R3 image DL', 'pos 8')
+    4 ('deg6', 'census', 'L=20', '(b) R3 image target w=0', 'pos 0', 'kind Lock2-only')
+    12 ('deg6', 'census', 'L=20', '(b) R3 image target w=0', 'pos 2', 'kind Lock1-only')
+    1 ('deg6', 'census', 'L=20', '(b) R3 image target w=0', 'pos 4', 'kind Lock1-only')
+    2 ('deg6', 'census', 'L=20', '(b) R3 image target w=0', 'pos 6', 'kind Lock1-only')
+    2 ('deg6', 'census', 'L=20', '(b) R3 image target w=0', 'pos 6', 'kind Lock2-only')
+    1 ('deg6', 'census', 'L=20', '(b) R3 image target w=0', 'pos 8', 'kind Lock2-only')
+    4 ('deg6', 'census', 'L=20', '(b) R3 image target w>0 (Gamma)', 'pos 4', 'kind DL')
+    8 ('deg6', 'census', 'L=20', '(b) R3 image target w>0 (Gamma)', 'pos 6', 'kind DL')
+    4 ('deg6', 'census', 'L=20', '(b) R3 image target w>0 (Gamma)', 'pos 8', 'kind DL')
+    808 ('deg6', 'census', 'L=20', '(c) R1 on Z', 'pi^10')
+    112 ('deg6', 'census', 'L>20', '(c) R1 on Z', 'NOT pi^10')
+    40 ('deg6', 'census', 'L>20', '(c) R1 on Z', 'pi^10')
+    20 ('deg6', 'cons+adv', 'L>20', '(a) R3 image DL', 'pos 4')
+    40 ('deg6', 'cons+adv', 'L>20', '(a) R3 image DL', 'pos 6')
+    20 ('deg6', 'cons+adv', 'L>20', '(a) R3 image DL', 'pos 8')
+    8 ('deg6', 'cons+adv', 'L>20', '(b) R3 image target same Z', 'pos 4', 'kind DL')
+    8 ('deg6', 'cons+adv', 'L>20', '(b) R3 image target same Z', 'pos 6', 'kind DL')
+    8 ('deg6', 'cons+adv', 'L>20', '(b) R3 image target same Z', 'pos 8', 'kind DL')
+    8 ('deg6', 'cons+adv', 'L>20', '(b) R3 image target w>0 (Gamma)', 'pos 4', 'kind DL')
+    24 ('deg6', 'cons+adv', 'L>20', '(b) R3 image target w>0 (Gamma)', 'pos 6', 'kind DL')
+    8 ('deg6', 'cons+adv', 'L>20', '(b) R3 image target w>0 (Gamma)', 'pos 8', 'kind DL')
+    194 ('deg6', 'cons+adv', 'L>20', '(c) R1 on Z', 'NOT pi^10')
+    86 ('deg6', 'cons+adv', 'L>20', '(c) R1 on Z', 'pi^10')
+    26 ('deg7', 'census', 'L=20', '(a) R3 image DL', 'pos 4')
+    46 ('deg7', 'census', 'L=20', '(a) R3 image DL', 'pos 6')
+    26 ('deg7', 'census', 'L=20', '(a) R3 image DL', 'pos 8')
+    35 ('deg7', 'census', 'L=20', '(b) R3 image target w=0', 'pos 0', 'kind Lock2-only')
+    48 ('deg7', 'census', 'L=20', '(b) R3 image target w=0', 'pos 2', 'kind Lock1-only')
+    2 ('deg7', 'census', 'L=20', '(b) R3 image target w=0', 'pos 4', 'kind Lock1-only')
+    2 ('deg7', 'census', 'L=20', '(b) R3 image target w=0', 'pos 8', 'kind Lock2-only')
+    14 ('deg7', 'census', 'L=20', '(b) R3 image target w>0 (Gamma)', 'pos 4', 'kind DL')
+    16 ('deg7', 'census', 'L=20', '(b) R3 image target w>0 (Gamma)', 'pos 6', 'kind DL')
+    14 ('deg7', 'census', 'L=20', '(b) R3 image target w>0 (Gamma)', 'pos 8', 'kind DL')
+    2 ('deg7', 'census', 'L=20', '(b) R3 image target w>0 non-Gamma', 'pos 4', 'kind DL')
+    2 ('deg7', 'census', 'L=20', '(b) R3 image target w>0 non-Gamma', 'pos 6', 'kind DL')
+    1016 ('deg7', 'census', 'L=20', '(c) R1 on Z', 'pi^10')
+    3 ('deg7', 'census', 'L>20', '(a) R3 image DL', 'pos 4')
+    2 ('deg7', 'census', 'L>20', '(a) R3 image DL', 'pos 6')
+    3 ('deg7', 'census', 'L>20', '(a) R3 image DL', 'pos 8')
+    2 ('deg7', 'census', 'L>20', '(b) R3 image target same Z', 'pos 4', 'kind DL')
+    2 ('deg7', 'census', 'L>20', '(b) R3 image target same Z', 'pos 8', 'kind DL')
+    4 ('deg7', 'census', 'L>20', '(b) R3 image target w=0', 'pos 0', 'kind Lock2-only')
+    8 ('deg7', 'census', 'L>20', '(b) R3 image target w=0', 'pos 2', 'kind Lock1-only')
+    268 ('deg7', 'census', 'L>20', '(c) R1 on Z', 'NOT pi^10')
+    8 ('deg7', 'census', 'L>20', '(c) R1 on Z', 'pi^10')
+    24 ('deg7', 'cons+adv', 'L>20', '(b) R3 image target w=0', 'pos 2', 'kind Lock1-only')
+    120 ('deg7', 'cons+adv', 'L>20', '(c) R1 on Z', 'NOT pi^10')
+(c) failures by cycle: [(('adversarial', 'r5_80b930d1_exc', 2, 'mirror', 60), 60), (('adversarial', 'r5_80b930d1_exc', 2, 'plantri', 60), 60), (('census', 'p26#43176', 17, 'mirror', 40), 2), (('census', 'p26#43176', 17, 'plantri', 40), 2), (('census', 'p26#87887', 17, 'mirror', 60), 60), (('census', 'p26#87887', 17, 'plantri', 60), 60), (('census', 'p26#87887', 21, 'mirror', 60), 36), (('census', 'p26#87887', 21, 'plantri', 60), 36), (('census', 'p27#124018', 4, 'mirror', 60), 28), (('census', 'p27#124018', 4, 'plantri', 60), 28), (('census', 'p27#192490', 20, 'mirror', 40), 20), (('census', 'p27#192490', 20, 'plantri', 40), 20)]

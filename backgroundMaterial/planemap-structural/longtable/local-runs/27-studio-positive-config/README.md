@@ -447,3 +447,42 @@ Both orientations. Each has one Γ-cycle, with L = 20. The dump uses absolute na
   - Position 11 again has a DL σ-image, not a fixed point. The period's only σ fixed point is at position 14 (R3k2).
   - Position 8 (R3k0) has a Lock2-only σ-image. This is a k ≤ 2 failure that is not a fixed point, like Job U's hole.
   - The break is at position 9, where J is false and the pocket reaches w⁺, followed by a Lock1-only σ-image at R1k2.
+
+## Job BA [exploratory]: σ-image classification on all degree-6/7 Γ-cycles (jobba/jobba.py, jobba-cycles.jsonl, jobba-summary.txt, jobba-offsets.txt)
+Data, all under the uv_lib.Hole full state space:
+- census orders 25–27, both orientations: degree 6, 264 cycles; degree 7, 406 cycles;
+- Job AS constructions: 40 degree-6 cycles;
+- Job AQ adversarial graphs A7_exc h22/h34 and r5_80b930d1_exc h2: 54 degree-7 cycles, including L = 800.
+
+Each state r of each cycle is labelled by its period position.
+
+**(a) "Non-fixed R3 images are never DL" is [killed].**
+- Degree-6 census: 24 counterexamples, all on L = 20 cycles, 8 each at positions 4, 6 and 8 (k = 2, 1, 0). 16 of them land on another Γ-cycle.
+- Degree-6 constructions: 80 counterexamples.
+- Degree-7 census: 106 counterexamples. Degree-7 adversarial: 0.
+- At k = 3, 4 the claim holds with 0 exceptions: positions 0 and 2 are never DL.
+
+**(b) Non-fixed R3 images do not always land on w < 0.**
+
+| set | w < 0 | w = 0 | w > 0 (Γ) | w > 0 (non-Γ) | on Z itself |
+|---|---|---|---|---|---|
+| degree-6 census | 2,502 | 22 | 16 | 0 | 0 |
+| degree-6 constructions | 1,506 | 0 | 40 | 0 | 24 |
+| degree-7 census | 4,187 | 99 | 44 | 4 | 4 |
+| degree-7 adversarial | 2,584 | 24 | 0 | 0 | 0 |
+
+Every w > 0 target and every on-Z target is a DL image at positions 4/6/8. The w = 0 targets are mostly the k = 4/k = 3 failure images.
+
+**(c) R1 image on Z.** σ(r) = π¹⁰(r) holds on every L = 20 cycle: 808/808 at degree 6 and 1,016/1,016 at degree 7. On longer cycles σ(r) = π^d(r) with d ∈ {10, 30, 50, …, 190}. At degree 6, d is always an odd multiple of 10 (all 1,000 cases), consistent with 20 | L. At degree 7, d is an odd multiple of 10 except for 4 images at offset 20 on L = 40 cycles.
+
+**(d) U34 holds, 0 exceptions.** Every k = 4 failure image is Lock2-only and starts an unfilled run with (u, f) = (3, 1) or (4, 1).
+
+| set | (3, 1) | (4, 1) |
+|---|---|---|
+| degree-6 census | 6 | 13 |
+| degree-7 census | 59 | 20 |
+| degree-7 adversarial | 24 | 0 |
+
+Every k = 3 failure image is Lock1-only and is the last unfilled state of its run: forward (u, f) = (1, 1).
+
+**(e)** Position-by-position kind tables for degree 6 and degree 7 are in jobba-summary.txt. Fixed points never occur at positions 0 and 2. Lock2-only at k = 4 and Lock1-only at k = 3 are the only failure kinds there, at both degrees.
