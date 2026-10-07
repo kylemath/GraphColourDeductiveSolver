@@ -169,3 +169,12 @@ Exits = R3 DD-endpoint states of positive cycles with a lockless sigma-image on 
 - **Order 27: Lemma R fails on 12 nonpositive targets**, all at (5,5,5,5,6): p27 #68456 h19 (Lambda(T) = -10, L 38, 2 hits, rem +6, both orientations), and 10 targets with
   Lambda(T) = 0 hit once by an f = 1 exit (rem +2; e.g. p27m #166916 h19, #264388 h4 three times). No double hits. **Lemma P1 still holds at every hole** (single-target
   and splittable), including the one Gamma-cycle with def > 0 (p27 #316043 h18).
+
+## Jobs U and V (independent Python: kempe_py + escape.pi_of; jobuv/)
+- **U, the F4 failure p27 #133619 h21** (jobuv/jobu-summary.txt; rotation system and the full colourings of r, sigma(r), pi(sigma r), pi^2(sigma r) in jobuv/jobu-p27-133619-h21.json).
+  In both orientations: R3@k=4 state r on the L = 20 Gamma-cycle; K_sigma = {x_j, x_{j+1}, x_{j+2}} exactly (3 vertices); sigma(r) is lockless on the w = -62, L = 314 cycle;
+  pi(sigma r) = phiB^-1 gives a filled state whose own move is phiA (M3 short: x_{i+4} is not in the {Y,Z}-component of x_{i+2}), returning at once to an unfilled state: f = 1.
+- **V, the Lemma S failure p27 #316043 h18** (plantri; jobuv/jobv-summary.txt). The Gamma-cycle (L 20, w +4) has R3 lockless exits with credits 8 + 8 + 2 = 18 < 20
+  (Python reproduces the C++ count), but an **R1 state** on it also has a lockless sigma-exit (into cycle 2, w -84, f = 4, credit 11): counting R1 exits gives 29 >= 20.
+  Its sigma-group has 9 cycles and sum lambda -1,470; the (sigma u sigma')-group has 12 cycles and sum lambda -1,490. No R2 state on this cycle (the R2 states are on other
+  (5,5,5,6,6) Gamma-cycles). Period pattern: (Lock1, fixed, fixed, L3, L3 | L1, fixed, fixed, fixed, Lock2) over R3 visits.
