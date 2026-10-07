@@ -111,3 +111,56 @@ Its whole-class extras: `new_classes = 0` everywhere, and `consistency_hit_iff_f
 - These are heuristic local searches from a handful of seeds. Absence of a stuck class here is evidence of nothing beyond these walks.
 - The 1/4 observation is empirical.
 - Class counts are up to colour renaming, the same convention as v1–v3.
+
+---
+
+# Math C6: DL rotation chains and per-j excess (coordinator, after 18:18) [exploratory]
+
+**Notation** follows `SolvingFrameworkPlan/docs/working/MathQuarterFloorBijections.md`:
+- R+3 swaps the {α,A}-component of x_{j+2};
+- Γ is the graph of R+3 edges, made of paths and cycles;
+- d(P) is the number of doubly locked (DL) states inside a path;
+- DD_j = {d ∈ D_j : R+3 d ∈ D_{j+3}};
+- room_j = L_j + |U_j^ff| + |U_{j+3}^ff| + |E_j|;
+- excess_j = |DD_j| − room_j.
+
+By Math's per-j identity, Σ_j excess_j = U − 3F. So the floor fails in a class iff its summed excess is > 0.
+
+| file | what it is |
+|---|---|
+| `kempe_dd.cpp` | Same enumeration and classes as kempe_classes3. Per class it computes F, U, N0, N1, D, L_F, Γ paths and cycles, max d(P), D_cyc, max cycle length, DD_j and room_j. It also runs Math's checks on every class and state: C1 (the class identity and the per-j identity) and C2 (the M2 and M3 dichotomies, "R+3 defined ⇔ lock 2", "R+2 defined ⇔ lock 1", and "R+3 image has lock 1, lies at index j+3, in the same class"). A class with 3F < U is dumped in full. |
+| `kc_dd_search.py` | Tabu walk over random legal core flips, scoring every class at every degree-5 hole. Mode `exc` scores by (#classes below 1/4, max excess_j, max chain, −min fraction among classes with chain ≥ 2). Mode `chain` swaps the second and third keys. A class below 1/4 triggers a certificate, a replay by Math's `path3_kclasses.py`, and a stop. |
+| `run_dd.sh` | The run: 6 workers × 25 min under nice 10, about 2.5 CPU-hours. |
+| `summarize_dd.py`, `summary-run_dd.jsonl` | Per-run maxima. |
+| `run_dd/` | Logs (gz) and the best graph of each run (`best-*.json`, with faces). |
+
+**Seeds.** A_5, A_6, A_7 (from `graphs.A_r`; A_3, A_4 and A_5 reproduce MathConjectureR's 100/40/30, 520/200/80 and 2720/1040/530), K3_26_5401, r5_80b930d1 and HoG 1152.
+
+**Totals.** 95,884 core graphs, each evaluated in full at every degree-5 hole.
+
+## Results
+
+1. **No class below 1/4.** No class had F = 0, and `cert/` was never created.
+
+2. **Math's identities and dichotomies: 0 failures.**
+   - The C1 class identity and the per-j identity held, as did every C2 dichotomy and the R+3 image checks.
+   - They were checked on every class of every hole of all 95,884 graphs, and on the HoG 1152 and A_3–A_5 seeds.
+
+3. **Maximum excess_j = 0. No class at any j of any graph had |DD_j| > room_j.**
+   - This is Math's addendum target, holding per j everywhere in this run.
+   - Equality with DD_j > 0 occurs: HoG 1152, hole 16, class (288, 72 filled) has DD = (36,0,36,0,0) = room, with max d(P) = 3.
+   - Most graphs reach excess 0 only through the floor quartets (4,1,1), where DD = room = 0.
+
+4. **Long DL rotation chains exist in the core class, and they are paid for.**
+   - The longest chains are all-DL Γ-cycles. Each cycle length is ≡ 0 mod 5 (Theorem A).
+   - A_r seeds have 20-cycles. Flips grow them to **880** (A7_exc log, graph 5ae8d6ecb01cd81c; faces not saved) and **800** (`run_dd/best-A7_exc.json`, hole 22). The 800-cycle sits in a class with size 21078, F = 8922 (fraction 0.423), D_cyc = 840, DD = (726,642,648,690,624) and room = (3648,3564,3570,3612,3546).
+   - Other maxima:
+     - 660 (A6_chain best, hole 31, class 12820 at 0.398);
+     - 223 (r5 run) and 60 (HoG run);
+     - max path interior d(P) = 93 (A6 best);
+     - max |DD_j| = 1544 and max Σ_j DD_j = 7058 (A7 run).
+   - The longest chains sit in classes with large N0 and L_F. Room grows faster than DD.
+
+5. **Minimum filled fraction among classes with chain ≥ 2 is exactly 1/4**, as in the HoG 288-class (d = 3) and in each run. It was never below.
+
+**Caveat.** These are heuristic walks. Positive excess_j at some j is allowed by the floor, as long as the class sum stays ≤ 0. None was seen.
