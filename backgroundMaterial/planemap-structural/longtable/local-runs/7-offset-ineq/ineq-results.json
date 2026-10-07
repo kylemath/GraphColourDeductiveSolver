@@ -1,0 +1,2988 @@
+{
+ "classes": 160979,
+ "families": {
+  "U_j <= F at offsets [0]": {
+   "lhs": "U",
+   "A": [
+    0
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 158679,
+   "class_j_violations": 424314,
+   "class_j_equalities_positive": 19933,
+   "classes_tight_all_j": 284,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [1]": {
+   "lhs": "U",
+   "A": [
+    1
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 156509,
+   "class_j_violations": 421301,
+   "class_j_equalities_positive": 23400,
+   "classes_tight_all_j": 284,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [2]": {
+   "lhs": "U",
+   "A": [
+    2
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 158818,
+   "class_j_violations": 423965,
+   "class_j_equalities_positive": 20033,
+   "classes_tight_all_j": 284,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [3]": {
+   "lhs": "U",
+   "A": [
+    3
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 149706,
+   "class_j_violations": 432296,
+   "class_j_equalities_positive": 37053,
+   "classes_tight_all_j": 284,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 1,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [4]": {
+   "lhs": "U",
+   "A": [
+    4
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 149706,
+   "class_j_violations": 432296,
+   "class_j_equalities_positive": 37034,
+   "classes_tight_all_j": 284,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 1]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 76996,
+   "class_j_violations": 97998,
+   "class_j_equalities_positive": 8449,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 2]": {
+   "lhs": "U",
+   "A": [
+    0,
+    2
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 71994,
+   "class_j_violations": 91017,
+   "class_j_equalities_positive": 8132,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 1,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 3]": {
+   "lhs": "U",
+   "A": [
+    0,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 29759,
+   "class_j_violations": 42786,
+   "class_j_equalities_positive": 6732,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 1,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 48553,
+   "class_j_violations": 60939,
+   "class_j_equalities_positive": 10117,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 1,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "U_j <= F at offsets [1, 2]": {
+   "lhs": "U",
+   "A": [
+    1,
+    2
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 77129,
+   "class_j_violations": 97755,
+   "class_j_equalities_positive": 8442,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [1, 3]": {
+   "lhs": "U",
+   "A": [
+    1,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 20090,
+   "class_j_violations": 22057,
+   "class_j_equalities_positive": 6032,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     88,
+     3,
+     9,
+     5,
+     6,
+     9,
+     16,
+     9,
+     10,
+     15,
+     6,
+     5,
+     0,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  "U_j <= F at offsets [1, 4]": {
+   "lhs": "U",
+   "A": [
+    1,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 20090,
+   "class_j_violations": 22057,
+   "class_j_equalities_positive": 6033,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 1,
+    "counts": [
+     88,
+     3,
+     9,
+     5,
+     6,
+     9,
+     16,
+     9,
+     10,
+     15,
+     6,
+     5,
+     0,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  "U_j <= F at offsets [2, 3]": {
+   "lhs": "U",
+   "A": [
+    2,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 48904,
+   "class_j_violations": 60965,
+   "class_j_equalities_positive": 10211,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 1,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "U_j <= F at offsets [2, 4]": {
+   "lhs": "U",
+   "A": [
+    2,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 29759,
+   "class_j_violations": 42786,
+   "class_j_equalities_positive": 6733,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 4,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "U_j <= F at offsets [3, 4]": {
+   "lhs": "U",
+   "A": [
+    3,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 20090,
+   "class_j_violations": 22057,
+   "class_j_equalities_positive": 5237,
+   "classes_tight_all_j": 1,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     88,
+     3,
+     9,
+     5,
+     6,
+     9,
+     16,
+     9,
+     10,
+     15,
+     6,
+     5,
+     0,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 1, 2]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1,
+    2
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 17212,
+   "class_j_violations": 18392,
+   "class_j_equalities_positive": 3072,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 2,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     60,
+     10,
+     10,
+     2,
+     6,
+     2,
+     6,
+     2,
+     14,
+     2,
+     6,
+     1,
+     0,
+     4,
+     0,
+     1
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 1, 3]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1,
+    3
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 2060,
+   "class_j_violations": 2095,
+   "class_j_equalities_positive": 1913,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 3,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 1, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 3293,
+   "class_j_violations": 3357,
+   "class_j_equalities_positive": 2822,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     64,
+     2,
+     4,
+     2,
+     4,
+     4,
+     12,
+     8,
+     10,
+     10,
+     8,
+     4,
+     3,
+     6,
+     6,
+     3
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 2, 3]": {
+   "lhs": "U",
+   "A": [
+    0,
+    2,
+    3
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 4790,
+   "class_j_violations": 5944,
+   "class_j_equalities_positive": 2559,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     88,
+     3,
+     9,
+     5,
+     6,
+     9,
+     16,
+     9,
+     10,
+     15,
+     6,
+     5,
+     0,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 2, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    2,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 4784,
+   "class_j_violations": 5947,
+   "class_j_equalities_positive": 2584,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     88,
+     3,
+     9,
+     5,
+     6,
+     9,
+     16,
+     9,
+     10,
+     15,
+     6,
+     5,
+     0,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 3, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 2102,
+   "class_j_violations": 2138,
+   "class_j_equalities_positive": 1482,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 1,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "U_j <= F at offsets [1, 2, 3]": {
+   "lhs": "U",
+   "A": [
+    1,
+    2,
+    3
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 3390,
+   "class_j_violations": 3451,
+   "class_j_equalities_positive": 2801,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     64,
+     2,
+     4,
+     2,
+     4,
+     4,
+     12,
+     8,
+     10,
+     10,
+     8,
+     4,
+     3,
+     6,
+     6,
+     3
+    ]
+   }
+  },
+  "U_j <= F at offsets [1, 2, 4]": {
+   "lhs": "U",
+   "A": [
+    1,
+    2,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 2102,
+   "class_j_violations": 2138,
+   "class_j_equalities_positive": 1950,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 4,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "U_j <= F at offsets [1, 3, 4]": {
+   "lhs": "U",
+   "A": [
+    1,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 1281,
+   "classes_tight_all_j": 419,
+   "first_violation": null
+  },
+  "U_j <= F at offsets [2, 3, 4]": {
+   "lhs": "U",
+   "A": [
+    2,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 2060,
+   "class_j_violations": 2095,
+   "class_j_equalities_positive": 1446,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 1,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 1, 2, 3]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "size": 4,
+   "valid": false,
+   "classes_failing": 789,
+   "class_j_violations": 795,
+   "class_j_equalities_positive": 1509,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 1, 2, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "size": 4,
+   "valid": false,
+   "classes_failing": 785,
+   "class_j_violations": 793,
+   "class_j_equalities_positive": 1513,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [0, 1, 3, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 1231,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "U_j <= F at offsets [0, 2, 3, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": false,
+   "classes_failing": 503,
+   "class_j_violations": 507,
+   "class_j_equalities_positive": 1242,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "U_j <= F at offsets [1, 2, 3, 4]": {
+   "lhs": "U",
+   "A": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 1231,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "U_j <= F at offsets [0, 1, 2, 3, 4]": {
+   "lhs": "U",
+   "A": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "size": 5,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 1223,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [0]": {
+   "lhs": "nonDL",
+   "A": [
+    0
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 154939,
+   "class_j_violations": 312541,
+   "class_j_equalities_positive": 18306,
+   "classes_tight_all_j": 275,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [1]": {
+   "lhs": "nonDL",
+   "A": [
+    1
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 149627,
+   "class_j_violations": 313379,
+   "class_j_equalities_positive": 19106,
+   "classes_tight_all_j": 275,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [2]": {
+   "lhs": "nonDL",
+   "A": [
+    2
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 155007,
+   "class_j_violations": 311314,
+   "class_j_equalities_positive": 18601,
+   "classes_tight_all_j": 275,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [3]": {
+   "lhs": "nonDL",
+   "A": [
+    3
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 127324,
+   "class_j_violations": 233947,
+   "class_j_equalities_positive": 36030,
+   "classes_tight_all_j": 275,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [4]": {
+   "lhs": "nonDL",
+   "A": [
+    4
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 127226,
+   "class_j_violations": 233195,
+   "class_j_equalities_positive": 35945,
+   "classes_tight_all_j": 275,
+   "first_violation": {
+    "order": 14,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 4,
+    "counts": [
+     40,
+     3,
+     6,
+     6,
+     3,
+     2,
+     3,
+     3,
+     4,
+     6,
+     4,
+     1,
+     1,
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 1]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 52359,
+   "class_j_violations": 62216,
+   "class_j_equalities_positive": 5585,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 2,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     60,
+     10,
+     10,
+     2,
+     6,
+     2,
+     6,
+     2,
+     14,
+     2,
+     6,
+     1,
+     0,
+     4,
+     0,
+     1
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 2]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    2
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 45111,
+   "class_j_violations": 49863,
+   "class_j_equalities_positive": 4715,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 1,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 3]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 9236,
+   "class_j_violations": 10482,
+   "class_j_equalities_positive": 3205,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 1,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 16622,
+   "class_j_violations": 17449,
+   "class_j_equalities_positive": 4822,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     88,
+     3,
+     9,
+     5,
+     6,
+     9,
+     16,
+     9,
+     10,
+     15,
+     6,
+     5,
+     0,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [1, 2]": {
+   "lhs": "nonDL",
+   "A": [
+    1,
+    2
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 52629,
+   "class_j_violations": 62331,
+   "class_j_equalities_positive": 5567,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 2,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     60,
+     10,
+     10,
+     2,
+     6,
+     2,
+     6,
+     2,
+     14,
+     2,
+     6,
+     1,
+     0,
+     4,
+     0,
+     1
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [1, 3]": {
+   "lhs": "nonDL",
+   "A": [
+    1,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 9428,
+   "class_j_violations": 9511,
+   "class_j_equalities_positive": 3223,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 0,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [1, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    1,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 9598,
+   "class_j_violations": 9671,
+   "class_j_equalities_positive": 3229,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 0,
+    "j": 1,
+    "counts": [
+     88,
+     3,
+     9,
+     5,
+     6,
+     9,
+     16,
+     9,
+     10,
+     15,
+     6,
+     5,
+     0,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [2, 3]": {
+   "lhs": "nonDL",
+   "A": [
+    2,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 16779,
+   "class_j_violations": 17552,
+   "class_j_equalities_positive": 4897,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 1,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [2, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    2,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 9355,
+   "class_j_violations": 10664,
+   "class_j_equalities_positive": 3127,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 1,
+    "hole": 1,
+    "j": 4,
+    "counts": [
+     58,
+     8,
+     2,
+     7,
+     4,
+     6,
+     2,
+     11,
+     4,
+     5,
+     9,
+     0,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    3,
+    4
+   ],
+   "size": 2,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 1481,
+   "classes_tight_all_j": 409,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [0, 1, 2]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1,
+    2
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 10388,
+   "class_j_violations": 11210,
+   "class_j_equalities_positive": 1707,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 10,
+    "j": 4,
+    "counts": [
+     59,
+     2,
+     3,
+     5,
+     4,
+     2,
+     8,
+     8,
+     8,
+     9,
+     10,
+     3,
+     6,
+     5,
+     2,
+     2
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 1, 3]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1,
+    3
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 1000,
+   "class_j_violations": 1002,
+   "class_j_equalities_positive": 1358,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 5,
+    "hole": 2,
+    "j": 3,
+    "counts": [
+     102,
+     10,
+     6,
+     14,
+     2,
+     6,
+     4,
+     20,
+     8,
+     16,
+     16,
+     2,
+     9,
+     0,
+     1,
+     4
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 1, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 1790,
+   "class_j_violations": 1802,
+   "class_j_equalities_positive": 1943,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 11,
+    "j": 2,
+    "counts": [
+     54,
+     5,
+     3,
+     0,
+     3,
+     5,
+     9,
+     8,
+     9,
+     6,
+     6,
+     2,
+     4,
+     2,
+     6,
+     6
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 2, 3]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    2,
+    3
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 1180,
+   "class_j_violations": 1191,
+   "class_j_equalities_positive": 1735,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 2, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    2,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 1213,
+   "class_j_violations": 1225,
+   "class_j_equalities_positive": 1713,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 1053,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [1, 2, 3]": {
+   "lhs": "nonDL",
+   "A": [
+    1,
+    2,
+    3
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 1831,
+   "class_j_violations": 1841,
+   "class_j_equalities_positive": 1930,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 11,
+    "j": 0,
+    "counts": [
+     54,
+     5,
+     3,
+     0,
+     3,
+     5,
+     9,
+     8,
+     9,
+     6,
+     6,
+     2,
+     4,
+     2,
+     6,
+     6
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [1, 2, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    1,
+    2,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 1039,
+   "class_j_violations": 1039,
+   "class_j_equalities_positive": 1375,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 5,
+    "hole": 3,
+    "j": 0,
+    "counts": [
+     102,
+     10,
+     6,
+     2,
+     14,
+     6,
+     16,
+     8,
+     20,
+     4,
+     16,
+     1,
+     0,
+     9,
+     2,
+     4
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [1, 3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    1,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 818,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [2, 3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    2,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 1047,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [0, 1, 2, 3]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "size": 4,
+   "valid": false,
+   "classes_failing": 539,
+   "class_j_violations": 539,
+   "class_j_equalities_positive": 1069,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 20,
+    "gentri_index": 6,
+    "hole": 0,
+    "j": 1,
+    "counts": [
+     56,
+     16,
+     4,
+     0,
+     0,
+     4,
+     0,
+     12,
+     12,
+     0,
+     8,
+     0,
+     0,
+     0,
+     0,
+     8
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 1, 2, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "size": 4,
+   "valid": false,
+   "classes_failing": 532,
+   "class_j_violations": 532,
+   "class_j_equalities_positive": 1064,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 20,
+    "gentri_index": 6,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     56,
+     16,
+     4,
+     0,
+     0,
+     4,
+     0,
+     12,
+     12,
+     0,
+     8,
+     0,
+     0,
+     0,
+     0,
+     8
+    ]
+   }
+  },
+  "nonDL_j <= F at offsets [0, 1, 3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 814,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [0, 2, 3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 823,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [1, 2, 3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 814,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "nonDL_j <= F at offsets [0, 1, 2, 3, 4]": {
+   "lhs": "nonDL",
+   "A": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "size": 5,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 810,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0]": {
+   "lhs": "DL",
+   "A": [
+    0
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 22372,
+   "class_j_violations": 24519,
+   "class_j_equalities_positive": 5343,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 2,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     60,
+     10,
+     10,
+     2,
+     6,
+     2,
+     6,
+     2,
+     14,
+     2,
+     6,
+     1,
+     0,
+     4,
+     0,
+     1
+    ]
+   }
+  },
+  "DL_j <= F at offsets [1]": {
+   "lhs": "DL",
+   "A": [
+    1
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 946,
+   "class_j_violations": 1019,
+   "class_j_equalities_positive": 1642,
+   "classes_tight_all_j": 410,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 0,
+    "j": 1,
+    "counts": [
+     64,
+     2,
+     4,
+     2,
+     4,
+     4,
+     12,
+     8,
+     10,
+     10,
+     8,
+     4,
+     3,
+     6,
+     6,
+     3
+    ]
+   }
+  },
+  "DL_j <= F at offsets [2]": {
+   "lhs": "DL",
+   "A": [
+    2
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 22400,
+   "class_j_violations": 24529,
+   "class_j_equalities_positive": 5198,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 16,
+    "gentri_index": 2,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     60,
+     10,
+     10,
+     2,
+     6,
+     2,
+     6,
+     2,
+     14,
+     2,
+     6,
+     1,
+     0,
+     4,
+     0,
+     1
+    ]
+   }
+  },
+  "DL_j <= F at offsets [3]": {
+   "lhs": "DL",
+   "A": [
+    3
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 24771,
+   "class_j_violations": 26109,
+   "class_j_equalities_positive": 5708,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 1,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "DL_j <= F at offsets [4]": {
+   "lhs": "DL",
+   "A": [
+    4
+   ],
+   "size": 1,
+   "valid": false,
+   "classes_failing": 25426,
+   "class_j_violations": 26815,
+   "class_j_equalities_positive": 5791,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 1,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 1]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 26,
+   "class_j_violations": 26,
+   "class_j_equalities_positive": 729,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 11,
+    "j": 1,
+    "counts": [
+     54,
+     5,
+     3,
+     0,
+     3,
+     5,
+     9,
+     8,
+     9,
+     6,
+     6,
+     2,
+     4,
+     2,
+     6,
+     6
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 2]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    2
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 1513,
+   "class_j_violations": 1533,
+   "class_j_equalities_positive": 495,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 0,
+    "hole": 2,
+    "j": 1,
+    "counts": [
+     98,
+     7,
+     3,
+     12,
+     3,
+     7,
+     7,
+     20,
+     7,
+     16,
+     16,
+     0,
+     8,
+     0,
+     5,
+     5
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 3]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 1304,
+   "class_j_violations": 1316,
+   "class_j_equalities_positive": 488,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 0,
+    "j": 2,
+    "counts": [
+     64,
+     2,
+     4,
+     2,
+     4,
+     4,
+     12,
+     8,
+     10,
+     10,
+     8,
+     4,
+     3,
+     6,
+     6,
+     3
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 1521,
+   "class_j_violations": 1524,
+   "class_j_equalities_positive": 592,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 10,
+    "j": 1,
+    "counts": [
+     59,
+     2,
+     3,
+     5,
+     4,
+     2,
+     8,
+     8,
+     8,
+     9,
+     10,
+     3,
+     6,
+     5,
+     2,
+     2
+    ]
+   }
+  },
+  "DL_j <= F at offsets [1, 2]": {
+   "lhs": "DL",
+   "A": [
+    1,
+    2
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 27,
+   "class_j_violations": 27,
+   "class_j_equalities_positive": 729,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 11,
+    "j": 1,
+    "counts": [
+     54,
+     5,
+     3,
+     0,
+     3,
+     5,
+     9,
+     8,
+     9,
+     6,
+     6,
+     2,
+     4,
+     2,
+     6,
+     6
+    ]
+   }
+  },
+  "DL_j <= F at offsets [1, 3]": {
+   "lhs": "DL",
+   "A": [
+    1,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 2,
+   "class_j_violations": 2,
+   "class_j_equalities_positive": 481,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 11,
+    "j": 4,
+    "counts": [
+     54,
+     5,
+     3,
+     0,
+     3,
+     5,
+     9,
+     8,
+     9,
+     6,
+     6,
+     2,
+     4,
+     2,
+     6,
+     6
+    ]
+   }
+  },
+  "DL_j <= F at offsets [1, 4]": {
+   "lhs": "DL",
+   "A": [
+    1,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 2,
+   "class_j_violations": 2,
+   "class_j_equalities_positive": 488,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 11,
+    "j": 3,
+    "counts": [
+     54,
+     5,
+     3,
+     0,
+     3,
+     5,
+     9,
+     8,
+     9,
+     6,
+     6,
+     2,
+     4,
+     2,
+     6,
+     6
+    ]
+   }
+  },
+  "DL_j <= F at offsets [2, 3]": {
+   "lhs": "DL",
+   "A": [
+    2,
+    3
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 1515,
+   "class_j_violations": 1523,
+   "class_j_equalities_positive": 552,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 10,
+    "j": 2,
+    "counts": [
+     59,
+     2,
+     3,
+     5,
+     4,
+     2,
+     8,
+     8,
+     8,
+     9,
+     10,
+     3,
+     6,
+     5,
+     2,
+     2
+    ]
+   }
+  },
+  "DL_j <= F at offsets [2, 4]": {
+   "lhs": "DL",
+   "A": [
+    2,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 1270,
+   "class_j_violations": 1280,
+   "class_j_equalities_positive": 494,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 0,
+    "j": 3,
+    "counts": [
+     64,
+     2,
+     4,
+     2,
+     4,
+     4,
+     12,
+     8,
+     10,
+     10,
+     8,
+     4,
+     3,
+     6,
+     6,
+     3
+    ]
+   }
+  },
+  "DL_j <= F at offsets [3, 4]": {
+   "lhs": "DL",
+   "A": [
+    3,
+    4
+   ],
+   "size": 2,
+   "valid": false,
+   "classes_failing": 2505,
+   "class_j_violations": 2615,
+   "class_j_equalities_positive": 440,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 10,
+    "j": 1,
+    "counts": [
+     59,
+     2,
+     3,
+     5,
+     4,
+     2,
+     8,
+     8,
+     8,
+     9,
+     10,
+     3,
+     6,
+     5,
+     2,
+     2
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 1, 2]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1,
+    2
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 515,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0, 1, 3]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1,
+    3
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 409,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0, 1, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1,
+    4
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 453,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0, 2, 3]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    2,
+    3
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 474,
+   "class_j_violations": 476,
+   "class_j_equalities_positive": 169,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 2, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    2,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 463,
+   "class_j_violations": 463,
+   "class_j_equalities_positive": 171,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 3, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 599,
+   "class_j_violations": 599,
+   "class_j_equalities_positive": 173,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "DL_j <= F at offsets [1, 2, 3]": {
+   "lhs": "DL",
+   "A": [
+    1,
+    2,
+    3
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 444,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [1, 2, 4]": {
+   "lhs": "DL",
+   "A": [
+    1,
+    2,
+    4
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 409,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [1, 3, 4]": {
+   "lhs": "DL",
+   "A": [
+    1,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 405,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [2, 3, 4]": {
+   "lhs": "DL",
+   "A": [
+    2,
+    3,
+    4
+   ],
+   "size": 3,
+   "valid": false,
+   "classes_failing": 602,
+   "class_j_violations": 602,
+   "class_j_equalities_positive": 198,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 18,
+    "gentri_index": 11,
+    "hole": 0,
+    "j": 0,
+    "counts": [
+     116,
+     5,
+     24,
+     5,
+     5,
+     5,
+     22,
+     3,
+     22,
+     22,
+     3,
+     18,
+     0,
+     2,
+     2,
+     0
+    ]
+   }
+  },
+  "DL_j <= F at offsets [0, 1, 2, 3]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 409,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0, 1, 2, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 409,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0, 1, 3, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 405,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0, 2, 3, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": false,
+   "classes_failing": 412,
+   "class_j_violations": 412,
+   "class_j_equalities_positive": 56,
+   "classes_tight_all_j": 0,
+   "first_violation": {
+    "order": 21,
+    "gentri_index": 51,
+    "hole": 15,
+    "j": 2,
+    "counts": [
+     16,
+     0,
+     0,
+     0,
+     4,
+     0,
+     4,
+     0,
+     4,
+     0,
+     4,
+     0,
+     0,
+     4,
+     0,
+     0
+    ]
+   }
+  },
+  "DL_j <= F at offsets [1, 2, 3, 4]": {
+   "lhs": "DL",
+   "A": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "size": 4,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 405,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  },
+  "DL_j <= F at offsets [0, 1, 2, 3, 4]": {
+   "lhs": "DL",
+   "A": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "size": 5,
+   "valid": true,
+   "classes_failing": 0,
+   "class_j_violations": 0,
+   "class_j_equalities_positive": 405,
+   "classes_tight_all_j": 0,
+   "first_violation": null
+  }
+ },
+ "valid_U_families_minimal": [
+  "U_j <= F at offsets [1, 3, 4]"
+ ],
+ "valid_U_families_size_le_3": [
+  "U_j <= F at offsets [1, 3, 4]"
+ ],
+ "valid_nonDL_families_minimal": [
+  "nonDL_j <= F at offsets [3, 4]"
+ ],
+ "valid_DL_families_minimal": [
+  "DL_j <= F at offsets [0, 1, 2]",
+  "DL_j <= F at offsets [0, 1, 3]",
+  "DL_j <= F at offsets [0, 1, 4]",
+  "DL_j <= F at offsets [1, 2, 3]",
+  "DL_j <= F at offsets [1, 2, 4]",
+  "DL_j <= F at offsets [1, 3, 4]"
+ ]
+}

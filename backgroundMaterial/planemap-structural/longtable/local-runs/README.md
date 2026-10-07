@@ -249,3 +249,55 @@ python3 blocks.py > blocks-deg5.jsonl     # link-pattern blocks of the degree-5 
   - size 192 (order 23, gentri 212, hole 16): filled degrees {2: 8, 3: 32, 4: 8}; unfilled degrees {0: 56, 1: 40, 2: 40, 3: 8}.
 
 *Edge-deletion control (5).* All 17 new edge classes (102 states) have c(x) = c(y) in every state (asserted in item 2). So "filled = x, y differ" gives fraction **0**.
+
+## 7. Link-position counts and the inequality behind the 1/4 floor (`7-offset-ineq/`)
+This item is exploratory. It covers every degree-5 class at orders 12, 14 and 16–24: 160,979 classes in 156,033 holes. It used about 13 CPU-minutes.
+
+**Counts per class** (link in rotation order):
+- F_i = filled states whose singleton colour is at position i;
+- U_j = unfilled states with c(x_j) = c(x_{j+2});
+- D_j = the doubly-locked part of U_j.
+- They come from `krad5.cpp`, which is `krad.cpp` plus these counts. Class sizes and #filled agree with item 6 at every hole.
+
+**Commands.**
+```
+clang++ -O2 -std=c++17 -o krad5 krad5.cpp
+python3 counts_scan.py --orders 12 14 16 17 18 19 20 21 22 > counts-12-22.jsonl
+python3 counts_scan.py --orders 23 24 > counts-23-24.jsonl          # committed gzipped
+python3 ineq.py counts-12-22.jsonl counts-23-24.jsonl > ineq-results.json
+python3 inj.py --orders 12 14 16 17 18 19 20 21 > inj-12-21.jsonl
+python3 inj.py --floor ../6-quarter-floor/blocks-deg5.jsonl > inj-floor.jsonl
+```
+
+**Families tested.** Every family U_j ≤ Σ_{a∈A} F_{j+a}, for every nonempty A ⊆ Z5, all j at once, offsets taken relative to j. The coordinator's F_i ≥ U_j is the case A = {i − j}. The same families were also tested with U_j replaced by U_j − D_j (non-DL) and by D_j (DL).
+
+**Results.**
+- **No single-term family F_i ≥ U_j holds.** Each of the 5 offsets fails in 149,706 to 158,818 classes.
+- **No two-term family holds.** The best ones fail in 20,090 classes.
+- **Exactly one family of size ≤ 3 holds in every class:**
+
+  **U_j ≤ F_{j+1} + F_{j+3} + F_{j+4}**
+
+  The three positions on the right are the link positions outside the repeat pair {j, j+2}. The family is mirror-symmetric (a ↦ 2 − a).
+  - Equality occurs in 1,281 (class, j) cases with U_j > 0.
+  - It is **tight for all j in exactly the 419 floor classes**.
+  - Summed over j it gives ΣU ≤ 3ΣF, which is the 1/4 floor. Every other valid family contains one of size 4.
+- **The non-DL part holds alone:** (U_j − D_j) ≤ F_{j+3} + F_{j+4} in every class. It has the most equality cases: 1,481, and it is tight for all j in 409 classes.
+- **The DL part:** the minimal valid families are 6 three-term families, among them D_j ≤ F_{j+1} + F_{j+3} + F_{j+4}. No one- or two-term family holds.
+
+**The injection behind the non-DL part (`inj.py`).**
+- Setup: take an unfilled state s with repeat α at {j, j+2}, m = x_{j+1} (colour μ), a = x_{j+3} (colour A), b = x_{j+4} (colour B).
+- If lock 1 fails, let φ(s) be the swap of the {μ,A}-component of a. The link becomes α μ α μ B, which is filled with the singleton at j+4.
+- Otherwise lock 2 fails, and φ(s) is the swap of the {μ,B}-component of b. The image is filled with the singleton at j+3.
+- **Computed:** the image is always filled, with the predicted singleton, in the same class, and φ is injective (0 collisions). This holds for:
+  - all 353,812 non-DL unfilled states at every degree-5 hole of orders 12–21 (4,270 holes);
+  - all 61,026 non-DL states in the 340 holes that contain a floor class.
+- **Hand reason (unreviewed).** The swapped component K is still a whole {μ,A}-component after the swap. So s is recovered by swapping the {μ,A}-component of x_{j+3} in φ(s), and A is the one colour missing from φ(s)'s link.
+- **The DL part needs ≥ 2 swaps,** since DL means no single swap fills.
+  - In 417 of the 419 floor classes, every DL state fills in 2 swaps. The exceptions are the two order-17 classes of size 64, gentri 1, holes 0 and 2.
+  - In 409 of the 419, the DL states reach at least as many distinct filled states in 2 swaps as there are DL states.
+- **Three floor classes, in detail:**
+  - size 4 (order 22, gentri 159, hole 19): F = 1, DL = 1, and the DL state fills in 2 swaps.
+  - size 48 (order 22, gentri 19, hole 12): F = 12, DL = 12; the 12 DL states reach exactly the 12 filled states in 2 swaps.
+  - size 192 (order 23, gentri 212, hole 16): F = 48, DL = 56 (a mixed-block class); they reach all 48 filled states.
+  - In all three holes, φ is injective on every non-DL state.
