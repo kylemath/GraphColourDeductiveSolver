@@ -1,4 +1,4 @@
-# Theorem F6: status at 04:05 MDT, 7 October 2026 (updated 04:20 with the log entries through Job AQ)
+# Theorem F6: status at 04:05 MDT, 7 October 2026 (updated 04:30 with the log entries through Job AU)
 
 Status page for the night's F6 programme. Everything below is taken from `NightLog-2026-10-06.md` and the Night notes it cites; nothing here is new mathematics. Labels: **formal** = in Lean, 0 sorry, standard axioms (coordinator recompile); **hand** = proved by hand in a Night note (unreviewed unless stated); **data** = Studio or local computation, with the exact count; **killed** = refuted, reason on record. All Night notes are exploratory (Night swarm outputs: leads, not evidence, until re-checked).
 
@@ -62,6 +62,10 @@ The two open lemmas are the only places where the closure of the orbit (an all-D
 | ρ = σ^{L/10} (colour rotation per period) | formal: `period_colour_rotation`, `closing_perm` (π^L s = s ⇒ 30 ∣ L for a colouring-closed orbit; a Γ-cycle of canonical states with L ≢ 0 mod 30 lifts to a colouring orbit of length 3L; db5ce19). Data: 2,728 Γ-cycle records, orders 25–27: ρ a 3-cycle for L = 20 (2,544) / 40 (136), identity for L = 60 (48) | `QuarterWindow.lean`; Job AN |
 | Γ-cycle length L | data: only 20 (2,566), 40 (136), 60 (48) over ALL core triangulations of orders 12–27 (Job AO), but **not a law**: adversarial graphs have L = 800 (A7), 660 (A6_chain), 80, 60 (Job AQ). NightGammaLength (f3637ef): L = 10m, ρ = σ^m proved by hand; 20 ∣ L is a CONJECTURE (0 exceptions, 2,750 cycles + A7); L ≤ 60 killed | Jobs AO, AQ; `NightGammaLength.md` |
 | Lemma chain beyond the census (Job AQ, with Studio correction) | data: on adversarial Γ-cycles (A6_chain, A7_exc incl. L = 800, hog1152, r5; both orientations) Lemma S holds with C_pos = 0 and C_neg/D = 4.0 exactly on all (5,5,5,5,5) and A7 cycles (r5: 2.0 and 4.0), universal period on all 80 periods of L = 800, A₃₄′, W2, σC, σ′C, charge-back P₁ 0 failures, floor on every class. **No adversarial graph has a (5,5,5,5,6) hole with a Γ-cycle**, so this is not a degree-6 test (Job AS is building one) | Job AQ |
+| z's split component avoids the hole; a far vertex is needed | formal: `zsplit_no_hole_vertex`, `zsplit_hole_boundary`, `gate_swaps_miss`, `xplus_cannot_heal`, **`far_vertex_needed`** (1334936); NightA34 §7.1 | `QuarterZsplit.lean` |
+| Long degree-6 Γ-cycles (Jobs AS, AT) | data: A7_exc plus edge flips give (5,5,5,5,6) holes with L = 80 (17 variants), 120, 180, 200 (40 constructions, L = 40–200); every Γ length a multiple of 20; Lemma S C_pos = 0, C_neg/D 2.45–3.87; universal period; **no k = 3/4 failures at all**; W2, W2*, σC, σ′C, P₁, floor hold. Chain survives; A₃₄′ is not stressed there | Job AS |
+| Cut parity (even-cut lemma; 20 ∣ L) | formal: `closed_orbit_cut_sum`, `piMove_cut_sum`, `allDL_ring_cut_count` (each of the 22 ring edges cut exactly 4 times per period), `relabel_closed_cut_sum`, `three_cycle_cut_nonempty` (de98be8, c723a31). Data (Job AT): every edge cut an even number of times over a closed cycle (2,728/2,728 + 26/26); D_b (far edges cut an odd number of times in period b) nonempty every period (|D_b| 8–36), identical across periods in 2,548/2,728; **XOR of D over any odd number of consecutive periods never empty (0 records)** ⇒ 20 ∣ L in all data; why is open | `QuarterEvenCut.lean`; Job AT |
+| A₃₄′ at degree 6 is a two-period (L = 20) statement | data (Job AU): census 256 Γ-cycles at L = 20, 4 at 40, 4 at 60; all 19 k = 4 and all 19 k = 3 failures are on L = 20 cycles (18 cycles fail k = 4 then k = 3 two steps later; one each only at k = 4 / only at k = 3); the 40 AS constructions and L = 40/60 census cycles have none; 32/256 L = 20 cycles at holes with a reflection automorphism, 8 time-reversal symmetric, none of those 8 breaks; all 19 breaking cycles at holes with no reflection; the breaking period is the one with larger \|K(p)\| in 18/19 (exception p25m #16945 h3: 9 vs 10) | Job AU |
 | Lemma S_Γ (lockless σ-exits cover D on every Γ-cycle) | data only: 0 failures, min C_neg/D = 1.55 (62 + 6 records, 25–26; Job L), 1.95 at (5,5,5,5,6) order 27 (202 records); all-DD-endpoint form min 1.8–2.0 (Job Z) | Jobs L, R, Z |
 | A₃₄′ (no two consecutive step-8 breaks on a Γ-cycle) | **open**; data: 0 double failures on Γ-cycles at 25–27 (73 double failures on open runs, none closed: Job X), 62/62, 230/230; |R_b| = 2 at every degree-6 break (Job AM) | §4 below |
 | W2 (not all of R3k2, R3k1, R3k0 σ-fixed on a Γ-cycle) | **open**; data: 0/552 Γ periods (Job AH), W2*, W2″, R 0 failures on Γ periods (Job AK) | §4 below |
@@ -95,7 +99,7 @@ Same universal period (406/406 periods, Job AC), same skeleton (k = 4 fails only
 
 ## 6. Lean inventory (night modules)
 
-All under `SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/`. By the log's count correction (04:08) the night's modules are 26 `Quarter*.lean` + `NoFrozen.lean` = 27 (the running "N night modules" tallies in the log headers drifted by one; a directory recount gives 26 `Quarter*.lean` files). `QuarterEuler.lean` (da39bcc) and `QuarterWindow.lean` (80f22dd) are both committed and recompiled with standard axioms per the log. A text search finds no `sorry` in code in any of them.
+All under `SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/`. Directory recount at 04:28: 28 `Quarter*.lean` + `NoFrozen.lean` = 29 night modules (matches the log's "29 night modules"; the earlier 04:08 count of 27 was before `QuarterZsplit` and `QuarterEvenCut`). All are committed and recompiled with standard axioms per the log. A text search finds no `sorry` in code in the modules checked at 04:05; the two newest were not re-searched.
 
 - `QuarterFloor`: definitions (Pent, locks, DL, classes), Lemma A, `QuarterFloorConj`.
 - `QuarterRotation`: R₊₃ and R₊₂ rotations on unfilled states.
@@ -123,9 +127,11 @@ All under `SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatoric
 - `QuarterW2Frame`: W2 frame at positions 4–8, fixed-point conditions.
 - `QuarterFan`: fan lemma, W2′ in duality-free form.
 - `QuarterEuler`: six-pair Euler identity.
+- `QuarterZsplit`: z's split component avoids the hole; `far_vertex_needed`.
+- `QuarterEvenCut`: even-cut lemma; ring edge cut count 4; relabelled closure; 3-cycle cut non-emptiness.
 - `QuarterWindow`: NightA34 §1–§3 period bookkeeping (`bookkeeping`, lock/J as joins), `step8_far`, `window_forced`, `k4_failure_iff_z_split`, `k3_failure_iff_y_split`.
 
-`check.sh` (in `StudioMathLean/`) lists these modules (the lines through `QuarterEuler` were seen at 04:05; whether `QuarterWindow` is listed was not re-checked); a full regression needs the snapshot build `$HOME/mathlib4-planemap-build`, which is absent on this MacBook, so modules were recompiled individually against `$HOME/mathlib4-planemap` (log, 03:28 note).
+`check.sh` (in `StudioMathLean/`) names 28 distinct `Quarter*` modules plus `NoFrozen`, which includes `QuarterWindow`, `QuarterZsplit` and `QuarterEvenCut`; a full regression needs the snapshot build `$HOME/mathlib4-planemap-build`, which is absent on this MacBook, so modules were recompiled individually against `$HOME/mathlib4-planemap` (log, 03:28 note).
 
 ## 7. Studio data inventory
 
@@ -157,13 +163,16 @@ All files under `backgroundMaterial/planemap-structural/longtable/local-runs/27-
 - **AK**: W2\*, W2″, R are Γ-closure statements (0 failures on Γ periods, many on open windows); counterexample p25 #668 h18 (`jobak-summary.txt`, `picyc.ak`, `nightw2/`).
 - **AL**: no uniform bound on run-end distance; no single leaving rule (`jobal-summary.txt`, `jobal-addendum.txt`, `picyc.al`, `picyc.al2`).
 - **AM**: window lemma 0 exceptions; conjecture Σ killed; |R_b| = 2 at degree 6 (merged 58a2019).
+- **AS** and **AT**: long degree-6 Γ-cycles (L up to 200) and cut parity (`jobas/`, merged c927af2).
+- **AU**: A₃₄′ failures all on L = 20 cycles; breaking period by |K(p)| 18/19 (merged 88da5e6).
+- **AV**: requested, dumping the two-period data (coordinator report; no log entry yet).
 - **AN**: ρ = σ^{L/10}, L ∈ {20, 40, 60} on 2,728 Γ-cycle records (merged 3c53c99).
 
 Earlier jobs for context: A, A2, B (positive-cycle census, transport), C ((5,5,5,5,5) positives), D (`jobd-summary.txt`), E (`jobe-*`), F (`jobf-summary.txt`, `witness-sigC-p26-70869-h11.json`), G (`jobg-*`), H (`jobh-summary.txt`), I (`jobi-*`), K (`jobk-*`), cb (`jobcb-*`). IPR witness: `witness-ipr265-h43.json`. Job letters whose files sit under other subdirectories: `nightf012/`, `nightw2/`, `jobuv/`, `jobr27/`.
 
 ## 8. Suggested next steps
 
-1. **A₃₄′ on Γ-cycles.** Every local handle tried tonight (crossing, gate, Σ, G2, hole gates, potential, bounded distance, L ≤ 60) is closed; what remains is a global closure invariant. Search for one that uses closure: an all-DL orbit visits each state once per L steps, so a double break at b, b+1 must be incompatible with a return; candidates are the total cycle rank (`QuarterEuler`) and the time-reversal symmetry (`QuarterMirror`: one orientation suffices, step 8 and step 7 are the same event read backwards).
+1. **A₃₄′ at degree 6 as a two-period statement (new framing).** In all data the k = 3/4 failures live only on L = 20 cycles, a finite object (20 canonical states, 60 colourings, π^20 s = σ² s). Target: on an L = 20 all-DL orbit at a Hole6 the two k = 4 visits cannot both fail ("the two step-8 (p,y) far components cannot both cut y from z"). Under hand attack (NightA34Two.md, in progress; not yet in the tree) with Studio Job AV dumping the two-period data. Longer cycles need no extra work in the data (Job AS). Earlier general advice stays: **A₃₄′ on Γ-cycles.** Every local handle tried tonight (crossing, gate, Σ, G2, hole gates, potential, bounded distance, L ≤ 60) is closed; what remains is a global closure invariant. Search for one that uses closure: an all-DL orbit visits each state once per L steps, so a double break at b, b+1 must be incompatible with a return; candidates are the total cycle rank (`QuarterEuler`) and the time-reversal symmetry (`QuarterMirror`: one orientation suffices, step 8 and step 7 are the same event read backwards).
 2. **W2 on Γ-cycles.** Prove W2\*\* (a) and (b) or R by a swap-cut argument that uses the Lock1/Lock2 chains at positions 4–8; the missing ingredient is how K₄ meets the Lock1 {2,3}-chain x₁ → x₃. The Lean state is `not_all_fixed_iff`, `w2'_iff`; a formal W2′ needs escapes outside the 2-ball and so a global argument.
 3. **Replace F₄** by "credit ≥ 2 at k = 4" and re-run the arithmetic of NightF6Flow §1 with actual credits (Lemma S holds with ratio ≥ 1.95 on 202 records at order 27); state the sufficient form as a lemma and check it formally.
 4. **Non-Γ half.** State P₁^str as a Lean certificate on every σ-group (the formal `AssignmentStr` exists); decide whether the hand proof is a global count over T (NightP1 addendum says yes).
