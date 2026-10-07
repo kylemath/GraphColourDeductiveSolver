@@ -55,7 +55,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false, JOBBB = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false, JOBBB = false, JOBBC = false, JOBBGH = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -410,6 +410,77 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                                 ev += b; fe = false; } } } }
                 char b2[400]; snprintf(b2, sizeof b2, ", \"jobx\": {\"runs\": %lld, \"gamma\": %lld, \"k4_pairs\": %lld, \"windows\": [%lld, %lld], \"windows_malformed\": %lld, \"wfail_run\": [%lld, %lld, %lld, %lld], \"wfail_gamma\": [%lld, %lld, %lld, %lld], \"events\": [", nruns, ngamma, npairs, nwin[0], nwin[1], nwbad, wfail[0][0], wfail[0][1], wfail[0][2], wfail[0][3], wfail[1][0], wfail[1][1], wfail[1][2], wfail[1][3]); jobe += b2; jobe += ev; jobe += "], \"wfail_examples\": ["; jobe += wex; jobe += "]}"; } }
 
+
+
+        if (JOBBGH) {  // Job BH: windows with positions 4..8 DL (R3k2 R1k4 R3k1 R1k3 R3k0), Gamma and open runs, link pattern 5,5,5,5,{6,7}. Position-4 frame names (alpha = 1).
+                       // Record F4 F5 F7 F8 (sigma fixed), W = w3's G_12-component at position 6 (G_12 = {alpha, B} at position 6), K6 = step-6 component ({alpha, A} of x_{j+2}), W meets K6?
+                       // Job BG (degree 6): windows u0..u20 all DL from R3k4 (positions 0..9, 0..9, 0): T3 / T13 = step-3 / step-13 component contains a far neighbour of m;
+                       // B0 = J false at u9, B1 = J false at u19.
+            int nhi = 0, t6 = -1, dg = 0; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) { nhi++; t6 = t; dg = rot[L[t]].size(); }
+            if (nhi == 1 && (dg == 6 || dg == 7)) {
+                int p = link_[t6], y = widx[(t6 + 4) % 5], z = widx[t6], w3 = widx[(t6 + 3) % 5]; std::map<std::string, long long> H;
+                u64 named = linkmask; for (int t = 0; t < 5; t++) named |= 1ULL << widx[t]; u64 farm = 0; int m = -1;
+                if (dg == 6) { int pv = order[p], mv = -1; for (int w : rot[pv]) { if (w == hole) continue; int wi = idx[w]; if (wi == link_[(t6 + 1) % 5] || wi == link_[(t6 + 4) % 5] || wi == y || wi == z) continue; mv = w; }
+                    m = idx[mv]; named |= 1ULL << m; farm = adjm[m] & ~named; }
+                static const int PT[10] = {3, 1, 3, 1, 3, 1, 3, 1, 3, 1}, PK[10] = {4, 1, 3, 0, 2, 4, 1, 3, 0, 2};
+                for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &zc = cycles[ci]; size_t Lz = zc.size(); bool all = true; for (int32_t x : zc) if (kind[x] != 2) { all = false; break; }
+                    std::vector<std::vector<int32_t>> runs;
+                    if (all) runs.push_back(zc);
+                    else for (size_t i = 0; i < Lz; i++) { if (kind[zc[i]] != 2 || kind[zc[(i + Lz - 1) % Lz]] == 2) continue; std::vector<int32_t> rr; size_t t = i; while (kind[zc[t % Lz]] == 2) { rr.push_back(zc[t % Lz]); t++; } runs.push_back(rr); }
+                    std::string G = all ? "G" : "O";
+                    for (auto &rr : runs) { size_t R = rr.size(); std::vector<int> ty(R), kk(R), jj(R), fx(R);
+                        for (size_t i = 0; i < R; i++) { int j, t2, km, l1, l2, kd; long long sg; frame(rr[i], j, t2, km, sg, l1, l2, kd); ty[i] = t2; kk[i] = km ? __builtin_ctz(km) : -1; jj[i] = j; fx[i] = (sg == rr[i]); }
+                        auto at = [&](size_t i, int pos) { return ty[i % R] == PT[pos] && kk[i % R] == PK[pos]; };
+                        auto stepK = [&](size_t i) { unkey(ALL[rr[i % R]], c); masks(c, cm); int j = jj[i % R]; int al = c[link_[j]], A = c[link_[(j + 3) % 5]]; return flood(1ULL << link_[(j + 2) % 5], cm[al] | cm[A]); };
+                        for (size_t i = 0; i < R; i++) {
+                            // BH window: i = position 4
+                            if ((all || i + 4 < R) && at(i, 4) && at(i + 1, 5) && at(i + 2, 6) && at(i + 3, 7) && at(i + 4, 8)) {
+                                size_t i6 = (i + 2) % R; unkey(ALL[rr[i6]], c); masks(c, cm); int j = jj[i6]; int al = c[link_[j]], B = c[link_[(j + 4) % 5]];
+                                u64 W = flood(1ULL << w3, cm[al] | cm[B]); u64 K6 = stepK(i + 2);
+                                std::string key = "BH " + G + std::to_string(dg) + " F4" + (fx[i % R] ? "1" : "0") + " F5" + (fx[(i + 1) % R] ? "1" : "0") + " F7" + (fx[(i + 3) % R] ? "1" : "0") + " F8" + (fx[(i + 4) % R] ? "1" : "0")
+                                    + " w3inG12=" + ((cm[al] | cm[B]) >> w3 & 1 ? "y" : "n") + " meetsK6=" + ((W & K6) ? "y" : "n") + " |W|=" + std::to_string(__builtin_popcountll(W)); H[key]++; }
+                            // BG window: i = position 0, 21 states
+                            if (dg == 6 && (all || i + 20 < R) && at(i, 0) && at(i + 10, 0) && at(i + 20, 0)) {
+                                bool ok = true; for (int t = 0; t <= 20 && ok; t++) if (!at(i + t, t % 10)) ok = false; if (!ok) continue;
+                                int T3 = (stepK(i + 3) & farm) ? 1 : 0, T13 = (stepK(i + 13) & farm) ? 1 : 0;
+                                unkey(ALL[rr[(i + 9) % R]], c); masks(c, cm); int B0 = !((flood(1ULL << y, cm[c[y]] | cm[c[z]]) >> z) & 1);
+                                unkey(ALL[rr[(i + 19) % R]], c); masks(c, cm); int B1 = !((flood(1ULL << y, cm[c[y]] | cm[c[z]]) >> z) & 1);
+                                std::string key = "BG " + G + (all ? " L=" + std::to_string(R) : "") + " B0=" + std::to_string(B0) + " B1=" + std::to_string(B1) + " T3=" + std::to_string(T3) + " T13=" + std::to_string(T13); H[key]++; } } } }
+                std::string o = ", \"jobbgh\": {"; bool f = true;
+                for (auto &kv : H) { o += f ? "" : ", "; o += "\"" + kv.first + "\": " + std::to_string(kv.second); f = false; } o += "}"; jobe += o; } }
+        if (JOBBC) {   // Job BC (NightW2Euler 2-3): windows = 7 consecutive DL states at positions 3..9 (R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2) on Gamma-cycles and maximal DL runs,
+                       // at holes with one link vertex of degree 6 or 7 (5,5,5,5,6 / 5,5,5,5,7). Colours named at the window's R3k2 state: 1 = c(p), 3 = c(y), 4 = c(z), 2 = the fourth.
+                       // C(1c) = #components of G_{1c} in T - h. Events: s3 C12 >=2 -> 1, s4 C12 1 -> >=2, s5 C13 >=2 -> 1, s6 C13 1 -> >=2, s7 C14 >=2 -> 1, s8 C14 1 -> >=2.
+                       // Dualities checked at every window state: r(AB) = C(al mu) - 1, r(mu A) = C(al B) - 1 - Lock1, r(mu B) = C(al A) - 1 - Lock2.
+            int nhi = 0, t6 = -1, dg = 0; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) { nhi++; t6 = t; dg = rot[L[t]].size(); }
+            if (nhi == 1 && (dg == 6 || dg == 7)) {
+                int p = link_[t6], y = widx[(t6 + 4) % 5], z = widx[t6]; std::map<std::string, long long> H; long long dfail = 0, dchk = 0, namefail = 0;
+                auto ncomp = [&](u64 M) { int k = 0; while (M) { u64 K = flood(M & -M, M); M &= ~K; k++; } return k; };
+                auto rk = [&](u64 M) { long long e = 0; for (u64 f = M; f; f &= f - 1) e += __builtin_popcountll(adjm[__builtin_ctzll(f)] & M); return e / 2 - __builtin_popcountll(M) + ncomp(M); };
+                static const int WT[7] = {1, 3, 1, 3, 1, 3, 1}, WK[7] = {0, 2, 4, 1, 3, 0, 2};
+                for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &zc = cycles[ci]; size_t Lz = zc.size(); bool all = true; for (int32_t x : zc) if (kind[x] != 2) { all = false; break; }
+                    std::vector<std::vector<int32_t>> runs;
+                    if (all) runs.push_back(zc);
+                    else for (size_t i = 0; i < Lz; i++) { if (kind[zc[i]] != 2 || kind[zc[(i + Lz - 1) % Lz]] == 2) continue; std::vector<int32_t> rr; size_t t = i; while (kind[zc[t % Lz]] == 2) { rr.push_back(zc[t % Lz]); t++; } runs.push_back(rr); }
+                    for (auto &rr : runs) { size_t R = rr.size(); std::vector<int> ty(R), kk(R), jj(R);
+                        for (size_t i = 0; i < R; i++) { int j, t2, km, l1, l2, kd; long long sg; frame(rr[i], j, t2, km, sg, l1, l2, kd); ty[i] = t2; kk[i] = km ? __builtin_ctz(km) : -1; jj[i] = j; }
+                        for (size_t i = 0; i < R; i++) { if (!all && i + 6 >= R) continue; bool ok = true; for (int t = 0; t < 7; t++) { size_t q = (i + t) % R; if (ty[q] != WT[t] || kk[q] != WK[t]) { ok = false; break; } } if (!ok) continue;
+                            static const int RM[7] = {3, 2, 4, 3, 2, 4, 3}, RA[7] = {4, 3, 2, 4, 3, 2, 4}, RB[7] = {2, 4, 3, 2, 4, 3, 2};
+                            int C[7][5]; bool fx[7];
+                            for (int t = 0; t < 7; t++) { size_t q = (i + t) % R; unkey(ALL[rr[q]], c); masks(c, cm);
+                                int lc[5]; for (int u = 0; u < 5; u++) lc[u] = c[link_[u]]; int j = jj[q]; int al = lc[j], mu = lc[(j + 1) % 5], A = lc[(j + 3) % 5], B = lc[(j + 4) % 5];
+                                int byname[5]; byname[1] = al; byname[RM[t]] = mu; byname[RA[t]] = A; byname[RB[t]] = B; for (int a = 2; a <= 4; a++) C[t][a] = ncomp(cm[al] | cm[byname[a]]);
+                                if (t == 1 && !(c[p] == al && c[y] == A && c[z] == B)) namefail++;
+                                u64 Km = flood(1ULL << link_[(j + 1) % 5], cm[al] | cm[mu]); fx[t] = Km == (cm[al] | cm[mu]);
+                                int L1 = (int)(flood(1ULL << link_[(j + 1) % 5], cm[mu] | cm[A]) >> link_[(j + 3) % 5] & 1), L2 = (int)(flood(1ULL << link_[(j + 1) % 5], cm[mu] | cm[B]) >> link_[(j + 4) % 5] & 1);
+                                dchk++; if (rk(cm[A] | cm[B]) != ncomp(cm[al] | cm[mu]) - 1 || rk(cm[mu] | cm[A]) != ncomp(cm[al] | cm[B]) - 1 - L1 || rk(cm[mu] | cm[B]) != ncomp(cm[al] | cm[A]) - 1 - L2) dfail++; }
+                            int ev[6] = { C[0][2] >= 2 && C[1][2] == 1, C[1][2] == 1 && C[2][2] >= 2, C[2][3] >= 2 && C[3][3] == 1, C[3][3] == 1 && C[4][3] >= 2, C[4][4] >= 2 && C[5][4] == 1, C[5][4] == 1 && C[6][4] >= 2 };
+                            std::string key = std::string(all ? "G" : "O") + std::to_string(dg) + " ev"; for (int t = 0; t < 6; t++) key += ev[t] ? '1' : '0';
+                            key += " F468 "; key += fx[1] ? 'F' : '-'; key += fx[3] ? 'F' : '-'; key += fx[5] ? 'F' : '-';
+                            key += " C"; for (int t = 0; t < 7; t++) { key += ' '; for (int a = 2; a <= 4; a++) key += (char)('0' + std::min(C[t][a], 9)); }
+                            H[key]++; } } }
+                std::string o = ", \"jobbc\": {\"dual_checked\": " + std::to_string(dchk) + ", \"dual_fail\": " + std::to_string(dfail) + ", \"name_fail\": " + std::to_string(namefail) + ", \"hist\": {"; bool f = true;
+                for (auto &kv : H) { o += f ? "" : ", "; o += "\"" + kv.first + "\": " + std::to_string(kv.second); f = false; } o += "}}"; jobe += o; } }
         if (JOBBB) {   // Job BB (NightA34Two 9.2): one-period Phi test on all maximal DL runs and Gamma-cycles at (5,5,5,5,6). Pair = R3k4 u0 with u0..u10 DL and u10 R3k4.
                        // B = k4 failure at u10 (sigma-exit not lockless). Candidates: 0 |K_{c(p),c(m)}(p)| at R3k4; 1 Lock2 witness |K_{mu,B}(x_{j+1})| at R3k4; 2+i |K_i| = step-i component
                        // ({alpha,A}-component of x_{j+2} at u_i vs u_{10+i}; needs u_{10+i} DL).
@@ -674,7 +745,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobbb") { JOBBB = true; JOBI = true; JOBG = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobbgh") { JOBBGH = true; JOBG = true; } else if (a == "--jobbc") { JOBBC = true; JOBG = true; } else if (a == "--jobbb") { JOBBB = true; JOBI = true; JOBG = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;

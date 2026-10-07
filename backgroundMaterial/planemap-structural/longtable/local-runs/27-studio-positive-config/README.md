@@ -536,3 +536,20 @@ This covers all 256 L = 20 degree-6 census cycles, using the Job BD conventions.
 
 - **Lemma S fails** in the Job S form (R3 lockless DD-endpoint exits) on A7f2 and walk-best-A7f1-3. In the Job AQ form (σ-exits from all DD endpoints) it fails on walk-best-A7f1-3 in the orientation where W2/W2* fail.
 - **What still holds:** the quarter floor (class Σw < 0, F ≥ states/4), σC, σ′C (H1) and charge-back P₁, on all three.
+
+## Job BC [exploratory]: NightW2Euler six-event bookkeeping (picyc.cpp --jobbc, jobbc/jobbc_summary.py, jobbc-summary.txt; inputs: census orders 25–27 both orientations + jobbc-extra-graphs.txt = the 6 AS constructions and the AQ adversarial A7_exc, r5_80b930d1_exc)
+Windows are 7 consecutive DL states at positions 3–9 (R1k0 … R1k2), on Γ-cycles and open runs, at holes with a single degree-6 or degree-7 link vertex. Colours use the position-4 frame (α = 1, with the role rotation of NightW2Euler §2). The window records C(12), C(13), C(14) per position, the six event flags and the fixed points at 4, 6 and 8. Histograms are per hole in out/bc*.jsonl.
+- **(iv) Pair dualities.** r(AB) = C(αμ) − 1, r(μA) = C(αB) − 1 − [Lock1], r(μB) = C(αA) − 1 − [Lock2]: **312,928 / 312,928 window states**. The position-4 naming check (p, y, z = 1, 3, 4) holds on every window.
+- **(i)/(ii) Events come in pairs.** Merge and split always occur together: steps 3/4 ⇔ F₄, 5/6 ⇔ F₆, 7/8 ⇔ F₈, given DL at the odd positions. So the number of events is always even and "5 of 6" never occurs.
+
+| set | windows | events 0 / 2 / 4 / 6 |
+|---|---|---|
+| Γ degree 6 census | 552 | 408 / 68 / 76 / 0 |
+| Γ degree 6 constructions | 344 | 260 / 18 / 66 / 0 |
+| Γ degree 7 census | 916 | 778 / 48 / 76 / 14 |
+| Γ degree 7 adversarial | 784 | 736 / 24 / 24 / 0 |
+| open degree 6 census | 27,450 | 18,028 / 5,340 / 3,778 / 304 |
+| open degree 7 census | 10,122 | 6,586 / 1,876 / 1,604 / 56 |
+
+- **(iii) W2 failures all have six events.** The 14 degree-7 Γ W2 failures have all six (pattern 111111), as do the 304 + 56 open-run W2 failures. Open W2* failures are 111111 or 110011: 518 at degree 6 and 68 at degree 7.
+- The six-event framing therefore adds nothing beyond the three fixed points (superseded by NightSixEvent). Jobs BG and BH were cancelled by the coordinator. Their engine flag `--jobbgh` was built (picyc.cpp) but never run.

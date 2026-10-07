@@ -1,0 +1,49 @@
+(iv) pair dualities checked at every window state: {'dual checked': 312928, 'dual fail': 0, 'name fail': 0}
+== Gamma degree 6, census: 552 windows
+    (i) number of events achieved: {0: 408, 2: 68, 4: 76}
+        per event: {'s5 C13 merge': 100, 's6 C13 split': 100, 's3 C12 merge': 60, 's4 C12 split': 60, 's7 C14 merge': 60, 's8 C14 split': 60}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 0, event patterns {}
+          W2* failures (4 and 8 fixed): 0, event patterns {}
+== Gamma degree 6, cons/adv: 344 windows
+    (i) number of events achieved: {0: 260, 2: 18, 4: 66}
+        per event: {'s3 C12 merge': 38, 's4 C12 split': 38, 's5 C13 merge': 74, 's6 C13 split': 74, 's7 C14 merge': 38, 's8 C14 split': 38}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 0, event patterns {}
+          W2* failures (4 and 8 fixed): 0, event patterns {}
+== Gamma degree 7, census: 916 windows
+    (i) number of events achieved: {0: 778, 2: 48, 4: 76, 6: 14}
+        per event: {'s5 C13 merge': 110, 's6 C13 split': 110, 's7 C14 merge': 66, 's8 C14 split': 66, 's3 C12 merge': 66, 's4 C12 split': 66}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 14, event patterns {'111111': 14}
+          W2* failures (4 and 8 fixed): 14, event patterns {'111111': 14}
+== Gamma degree 7, cons/adv: 784 windows
+    (i) number of events achieved: {0: 736, 2: 24, 4: 24}
+        per event: {'s5 C13 merge': 24, 's6 C13 split': 24, 's7 C14 merge': 24, 's8 C14 split': 24, 's3 C12 merge': 24, 's4 C12 split': 24}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 0, event patterns {}
+          W2* failures (4 and 8 fixed): 0, event patterns {}
+== open-run degree 6, census: 27450 windows
+    (i) number of events achieved: {0: 18028, 2: 5340, 4: 3778, 6: 304}
+        per event: {'s5 C13 merge': 5780, 's6 C13 split': 5780, 's7 C14 merge': 4014, 's8 C14 split': 4014, 's3 C12 merge': 4014, 's4 C12 split': 4014}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 304, event patterns {'111111': 304}
+          W2* failures (4 and 8 fixed): 518, event patterns {'111111': 304, '110011': 214}
+== open-run degree 6, cons/adv: 1940 windows
+    (i) number of events achieved: {0: 1544, 2: 210, 4: 186}
+        per event: {'s5 C13 merge': 266, 's6 C13 split': 266, 's3 C12 merge': 158, 's4 C12 split': 158, 's7 C14 merge': 158, 's8 C14 split': 158}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 0, event patterns {}
+          W2* failures (4 and 8 fixed): 0, event patterns {}
+== open-run degree 7, census: 10122 windows
+    (i) number of events achieved: {0: 6586, 2: 1876, 4: 1604, 6: 56}
+        per event: {'s7 C14 merge': 1457, 's8 C14 split': 1457, 's5 C13 merge': 2338, 's6 C13 split': 2338, 's3 C12 merge': 1457, 's4 C12 split': 1457}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 56, event patterns {'111111': 56}
+          W2* failures (4 and 8 fixed): 68, event patterns {'111111': 56, '110011': 12}
+== open-run degree 7, cons/adv: 2596 windows
+    (i) number of events achieved: {0: 2034, 2: 346, 4: 216}
+        per event: {'s5 C13 merge': 336, 's6 C13 split': 336, 's3 C12 merge': 221, 's4 C12 split': 221, 's7 C14 merge': 221, 's8 C14 split': 221}
+    (ii) windows with 5 of 6 events, the missing event: {}
+    (iii) W2 failures (4, 6, 8 all fixed): 0, event patterns {}
+          W2* failures (4 and 8 fixed): 0, event patterns {}
