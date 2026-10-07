@@ -1,0 +1,55 @@
+records: {('census', 20): 256, ('census', 60): 4, ('census', 40): 4, ('construction', 80): 14, ('construction', 40): 14, ('construction', 180): 2, ('construction', 60): 2, ('construction', 200): 4, ('construction', 120): 4}
+
+checks (all periods, all cycles):
+    896 J at pos 0,1,2,3,9 of period b defined: True
+    896 K8 avoids p, m, y, z: True
+    896 K8 contains x2, x3, w+: True
+    2 k4fail at b <=> k3fail at b: False
+    894 k4fail at b <=> k3fail at b: True
+    896 pocket reaches w+ <=> J false at pos 9: True
+    896 step8break at period b <=> k4fail at period b+1: True
+
+consecutive step-8 components K8^b, K8^{b+1}:
+    474 ('census L=20, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    38 ('census L=20, 1 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    16 ('census L=40, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    24 ('census L=60, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    48 ('construction L=120, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    36 ('construction L=180, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    80 ('construction L=200, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    56 ('construction L=40, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    12 ('construction L=60, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+    112 ('construction L=80, 0 step-8 breaks', 'consecutive K8 far intersection (minus fixed names) nonempty: True')
+
+L = 20 cycles with one step-8 break (19):
+    16   ... outside the fixed names: False
+    3   ... outside the fixed names: True
+    19 K8 pairs equal: False
+    19 breaking K8 meets its own pocket: True
+    19 non-breaking K8 meets breaking pocket: True
+    cycle                         |K|b  |K|o     n  nfar   |Pk|  Ko^Pk    far Kb^Pk Kpm f  Kpm o / k4fail k3fail
+    p25#16945 mirror h3              6     9     5     2      7      3      2     2     9    10 / [False, True] [False, False]
+    p26#36087 plantri h15            6     4     4     1      9      1      0     2    11     5 / [True, False] [True, False]
+    p26#38516 plantri h20            6     4     4     1      9      1      0     2    11     5 / [False, True] [False, True]
+    p26#87942 plantri h22            6     4     4     1      8      1      0     2    10     5 / [True, False] [True, False]
+    p26#36087 mirror h15             8     4     4     1      9      1      0     3    11     5 / [False, True] [False, True]
+    p26#38516 mirror h20             8     4     4     1      9      1      0     3    11     5 / [True, False] [True, False]
+    p26#87942 mirror h22             6     4     4     1      8      1      0     2    10     5 / [False, True] [False, True]
+    p27#146733 plantri h20           6     4     4     1     10      1      0     2    12     5 / [False, True] [False, True]
+    p27#152697 plantri h20           6     4     4     1     10      1      0     2    12     5 / [False, True] [False, True]
+    p27#186395 plantri h22           6     4     4     1     10      1      0     2    12    10 / [True, False] [True, False]
+    p27#186395 plantri h22           6     4     4     1     10      1      0     2    12    10 / [True, False] [True, False]
+    p27#315977 plantri h22           6     4     4     1     10      1      0     2    12     5 / [True, False] [True, False]
+    p27#315977 plantri h22           6     4     4     1     10      1      0     2    12     5 / [False, True] [False, True]
+    p27#146733 mirror h20            9     5     5     2     10      2      1     4    12     5 / [True, False] [True, False]
+    p27#152697 mirror h20            9     5     5     2     10      2      1     4    12     5 / [True, False] [True, False]
+    p27#186395 mirror h22            6     4     4     1     10      1      0     2    12    10 / [True, False] [True, False]
+    p27#186395 mirror h22            6     4     4     1     10      1      0     2    12    10 / [True, False] [True, False]
+    p27#315977 mirror h22            6     4     4     1     10      1      0     2    12     5 / [True, False] [True, False]
+    p27#315977 mirror h22            6     4     4     1     10      1      0     2    12     5 / [True, False] [True, False]
+
+named vertices in the intersections (L = 20, one step-8 break):
+  k4fail != k3fail: p25#16945 plantri h3 L 20 {'k4fail': [False, False], 'k3fail': [True, False], 'step8break': [False, False]}
+  k4fail != k3fail: p25#16945 mirror h3 L 20 {'k4fail': [False, True], 'k3fail': [False, False], 'step8break': [True, False]}
+  K8_break ∩ K8_other: {('all L=20', 0, ('wp', 'x2', 'x3')): 237, ('far', 'far', 'wp', 'x2', 'x3'): 3, ('all L=20', 1, ('wp', 'x2', 'x3')): 19, ('far', 'wp', 'x2', 'x3'): 16}
+  K8_other ∩ pocket_break: {('far', 'far', 'wp'): 1, ('wp',): 16, ('far', 'wp'): 2}
