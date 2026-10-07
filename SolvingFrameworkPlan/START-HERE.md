@@ -169,6 +169,8 @@ Never write "proved" for computation. Never generalise a finite pass.
 | Navigator | Ledger at revision 124 (`docs/navigator/planning.json`; revision messages in `messages/`). WP20 P1 produced and independently checked (CHECK OK, 0 kills on these graphs), not yet passed: audit replay and Math review pending; the R* reduction is a conditional theorem (hand) and R* is open; WP21 phases A and B produced on the Studio and checked once there, not cross-checked; main effort is the pathway sprint toward a Four Colour proof; Mathlib on hold. Gates: audit and cross-machine checks before any finite result; Math or audit review before any hand acceptance; module audit before compiled; claim check of the VH∃ paper before the user is asked to post. No upgrade from finite checks. |
 | Stopped | WP12, new rank fitting, and any new census without a declaration |
 
+Night of 6–7 Oct 2026 (Theorem W, F5, F6 programme): status page `docs/working/NightF6Status.md`; log `docs/working/NightLog-2026-10-06.md`.
+
 ## 8. Restart checklist
 
 1. Read this page. Then list recent messages with `ls -t SolvingFrameworkPlan/messages/*/ | head -30` (or `ls SolvingFrameworkPlan/messages/$(date +%F)`), and read every message addressed to your team that is newer than this page.

@@ -1,0 +1,164 @@
+# Theorem F6: status at 04:05 MDT, 7 October 2026
+
+Status page for the night's F6 programme. Everything below is taken from `NightLog-2026-10-06.md` and the Night notes it cites; nothing here is new mathematics. Labels: **formal** = in Lean, 0 sorry, standard axioms (coordinator recompile); **hand** = proved by hand in a Night note (unreviewed unless stated); **data** = Studio or local computation, with the exact count; **killed** = refuted, reason on record. All Night notes are exploratory (Night swarm outputs: leads, not evidence, until re-checked).
+
+## 1. Statement and why it matters
+
+**Theorem F6 (target):** at a degree-5 hole of a core triangulation whose link vertices have degrees (5,5,5,5,6) (in cyclic order, up to rotation and reflection), every Kempe class has Σλ ≤ 0, i.e. at least a quarter of its states are filled (F ≥ |class|/4). The chain is: SigmaUnionC (join π-cycles by σ- and σ′-links; Σλ ≤ 0 on every group) ⇒ the quarter floor ⇒ R\* ⇒ 4CT. F5 (the same floor at (5,5,5,5,5) holes) is **formal** (`quarterFloor_of_fiveLink`, `QuarterFloorHBridge.lean`) and is the base case of SigmaUnionC. F6 is the next pattern: the first one where F5's charging fails (174/400 DD steps lack the exit) and the pattern is only F6-type (needs the 3·#τ term; Job D, 112 link patterns, orders 24–26; confirmed at order 27: 31 F5-type, 14 F6-type, 80 need E₂). Status: **not proved**. The reduction below is exact; two lemmas remain, and both are Γ-closure statements.
+
+## 2. Proof architecture
+
+```
+F6 at (5,5,5,5,6)        [floor on every class]
+ └─ σC on every σ-group  [QuarterAssignment: sigmaC_of_assignment_groups; QuarterSigmaGroups]
+     └─ group flow identity   Σ_g λ = Σ_{Z>0} def(Z) + Σ_{T≤0} rem(T)   [FORMAL: QuarterFlowIdentity.flow_identity]
+         ├─ Γ-cycles (all-DL π-cycles; debtors, no filled state, rem = Λ for sinks)
+         │    └─ Lemma S_Γ: lockless σ-exits cover the debt D = L on every Γ-cycle
+         │         │  credit of a hit = 3f − 1 = λ-mass of the hit excursion  [FORMAL: QuarterExcursion]
+         │         │  arithmetic: 5s₃ + 8s₄ + 2a₀₁₂ ≥ L   [hand, NightF6Flow §1, with the F₄ caveat]
+         │         └─ over the universal 10-step period [FORMAL: QuarterGammaPeriod.gamma_period_ten]:
+         │              A₃₄′  (k = 3, 4 side: never two consecutive step-8 breaks)   OPEN
+         │            + W2    (k ≤ 2 side: not all of R3k2, R3k1, R3k0 σ-fixed)     OPEN
+         │            + W4 / F₄ caveats (F₄ is FALSE once at order 27: k = 4 credit ≥ 2, not 8)
+         │            (Lemma W = one window credit ≥ 10 replaces A₃₄′ + F₀₁₂′; W1 + W2 + W4 + F₄ ⇒ W)
+         └─ non-Γ positive cycles
+              └─ charge-back P₁ (rem > 0 charged back to hitting sources; each def′ > 0 assigned
+                  to ONE nonpositive σ-neighbour with rem < 0)   [data, 0 failures; formal certificate]
+                  reduces to P₁^str (every positive Z has a σ-neighbour T with −rem(T) ≥ 5w(Z))   [hand + data]
+                  P₁ on non-Γ cycles is vacuous in a minimal counterexample (NightP1): the 4CT-strength of F6
+                  sits entirely in Lemma S_Γ.
+```
+
+The two open lemmas are the only places where the closure of the orbit (an all-DL cycle never leaves DL) enters. Everything else on the tree is formal, hand-proved, or data with 0 failures.
+
+## 3. Named statements
+
+| Statement | Status | Where |
+|---|---|---|
+| Lemma A (Kempe single swap lands in a filled state, injective) | formal | `QuarterFloor.lean` `lemmaA` |
+| Rotation bijection R₊₃/R₊₂, planarity discharged, Hex dichotomy | formal | `QuarterRotation`, `QuarterRotationPlanar` |
+| No doubly locked state is frozen | formal | `NoFrozen.lean` |
+| Lemma Π (π permutes every Kempe class) | formal | `QuarterPi.lean` |
+| Theorem W (3F − U = −5·winding; 5 ∣ 3F − U; floor ⇔ Σλ ≤ 0 per class) | formal | `QuarterWinding.lean` |
+| Theorem F5 (floor at (5,5,5,5,5) holes), from triangulation + degree-5 link | formal (hand review: PASS, `NightF5Review.md`) | `quarterFloor_of_icoBall` (`QuarterFloorH`), `quarterFloor_of_fiveLink` (`QuarterFloorHBridge`) |
+| Exact class identity Σλ = \|DD\| − 2N₀ − E₂ − 3#τ | data: 0 failures (Job D, ~4.2M classes; reviewer's own script on 270 holes) | Night log, F5 review, Job D |
+| Lemma 3′ (exact σ-exit condition, (w₀,w₁,w₂,w₄) = (B,A,B,A)) | formal | `QuarterSigmaExit.lean` |
+| σ-exit criteria at k = 3, 4 (never DL; lockless ⇔ reachability; f ≥ 2 at k = 3) | formal (f ≥ 2 at k = 4 NOT proved, false by Job R) | `QuarterSigmaK34`, `QuarterJordanDual` (`sigma_exit_f_ge_two_k3'`) |
+| Jordan duality (D) at k = 3, 4 | formal | `QuarterJordanDual.lean` |
+| One-question lemma (lockless ⇔ y ~ z in {c(y),c(z)} ⇔ pm bridge) | hand; data 280/280 (Job N); formal as `k4_exit_period` / `J_iff_*` for the period form | NightF6Flow §2.1; `QuarterPeriodJ`, `QuarterLockJ` |
+| Universal 10-step period of a Γ-cycle | formal (`gamma_period_ten`); data 140/140 and 412/412 periods (Jobs O, R), 406/406 at (5,5,5,5,7) (Job AC) | `QuarterGammaPeriod.lean` |
+| Period lemma for J (J changes only at steps 0, 1, 3, 8; k = 4 failure ⇔ step-8 break) | formal | `QuarterPeriodJ.lean` |
+| Lock-membership form of J (Lemma 5.1) | formal | `QuarterLockJ.lean` |
+| Exact excursion accounting (credit 3f − 1 = λ-mass; no double hit; σ involution) | formal | `QuarterExcursion.lean`, NightLemmaR |
+| Group flow identity; σC from def ≤ 0 and rem ≤ 0 | formal | `QuarterFlowIdentity.lean` |
+| σC from a charge-back single-target assignment (certificate), and P₁^str form | formal | `QuarterAssignment.lean` |
+| Lemma Fix (σ fixed ⇔ {A,B}-subgraph a forest) at R3, k ≤ 2 | formal | `QuarterSigmaFix.lean` `lemmaFix` |
+| Fan lemma; W2′ ⇒ W2 in lean form (y or z has an α/μ-neighbour outside K_σ) | formal; W2′ itself open | `QuarterFan.lean`, `QuarterW2Frame.lean` |
+| Six-pair Euler identity (Σ rank = Σ components − 8; ΣC ≥ 8 at DL states) | formal; data 0 failures on ~635,000 states | `QuarterEuler.lean` |
+| Mirror reverses π on DL states (Γ-cycle time reversal) | formal; data 1,364/1,364 Γ-cycles (Job AJ) | `QuarterMirror.lean` |
+| Window bookkeeping, step 8 far, pocket and window lemmas | hand, checked gentri 20–24 (0 exceptions); `QuarterWindow.lean` exists, untracked, not in the log or in `check.sh` | NightA34 §1–§3 |
+| Lemma S_Γ (lockless σ-exits cover D on every Γ-cycle) | data only: 0 failures, min C_neg/D = 1.55 (62 + 6 records, 25–26; Job L), 1.95 at (5,5,5,5,6) order 27 (202 records); all-DD-endpoint form min 1.8–2.0 (Job Z) | Jobs L, R, Z |
+| A₃₄′ (no two consecutive step-8 breaks on a Γ-cycle) | **open**; data: 0 double failures on Γ-cycles at 25–27 (73 double failures on open runs, none closed: Job X), 62/62, 230/230 | §4 below |
+| W2 (not all of R3k2, R3k1, R3k0 σ-fixed on a Γ-cycle) | **open**; data: 0/552 Γ periods (Job AH), W2*, W2″, R 0 failures on Γ periods (Job AK) | §4 below |
+| Lemma W (window credit ≥ 10) | open; data: 0 failures in 12+12, 58+58, 206+206 Γ windows (Job W/AA); false on open runs (credit < 10 in ≈ 510 of 1,946 windows at order 27) | Job AA, NightF012 |
+| F₄ (f = 3 at every k = 4 lockless exit) | killed: fails once (p27 #133619 h21, 2 of 400 exits f = 1); gap located by Job U (isolated K_σ, M3 short); replace by credit ≥ 2 | Job R, U |
+| F₀₁₂′ (k ≤ 2 credit ≥ 7L/20 per cycle) | per-cycle average only (min exactly 1.000 at p25m #16945 h3, p27 #273919 h26); per-period forms killed (13/140, 11/412 fail) | Jobs P, R; NightF012 |
+| Lemma R (target remainder ≤ 0) | killed: fails at order 27 (12 of 732 hit nonpositive targets, all at (5,5,5,5,6)); replaced by charge-back | Job S, NightLemmaR |
+| Charge-back P₁ (def′ > 0 assigned to one nonpositive neighbour) | data: 0 failures at every hole, orders 25–27, both orientations; also (5,5,5,6,6); fails at 19 holes of other patterns for σ-only, σ∪σ′ 19/19 (Job AF) | Studio fbc093c, 9185ca4; Jobs Z, AF |
+| P₁^str on non-Γ positives | data 407/407 holes at (5,5,5,5,6) and (5,5,5,6,6) (Job AF); 246/246 at 25–27, 209/209 at ≤ 24, min ratio 1.25 | NightP1; Job AD, AF |
+| σC at (5,5,5,5,6) and three-consecutive-5s | data: 0 failing groups among ~7.5M (Job E); universal σC FALSE once (p26 #70869 h11, ~114M groups, Job F) | Jobs E, F |
+| σ′C / SigmaUnionC | data: 0 failing groups, ~100M at orders 24–26, ~368M at order 27 (Jobs H, J); formal statement and F5 base case | `QuarterSigmaPrime.lean`; Jobs H, J |
+| Transport T | data: holds at all positive holes (Hall ratio ≥ 3 adversarial, 35,701 at ipr #265); unproved | Jobs B, C; W7/W8 |
+| Conjecture P ("no positive cycle" in configuration-free graphs) | killed: 32 positive holes in 28 IPR graphs; second regime at n = 58, 60 | Studio IPR, bigsample |
+| C1Γ, Conjecture G (as universal), per-block Lemma S, excursion self-payment, Lemma R per target, per-cycle bounds | killed (Jobs E, G, M, AB, S; NightFloorHP2) | Night log |
+
+## 4. The two open closure lemmas
+
+**A₃₄′ (k = 3, 4 side).** *Reduction achieved* (all formal unless noted): on an all-DL orbit at a Hole6, a k = 4 failure is exactly a step-8 break of J = "y ~ z in {c(y),c(z)}" (`k4_failure_iff_break`); J changes only at steps 0, 1, 3, 8 (`period_J`); every break is undone by R3k2 (NightLemmaS §0, formal in `QuarterPeriodJ`); J is a lock-membership question at R1k2, R3k4, R3k3 (`QuarterLockJ`); step 8 is far (NightA34 §2.1, hand); window lemma (DL forces y ~ w₂ at positions 9, 0 and z ~ w₂ at 2, 3; hand). So **A₃₄′ ⇔ "the R3k0 swap never breaks J in two consecutive periods"** and Job AE data say: after a break z re-enters the Lock2 witness two states later (98/98; the probe `QuarterRestore` shows this particular fact carries no information), and one period later 19/19 at degree 6 (65/79 at degree 7).
+**Killed routes:** run-local bounded distance (Job X: the double-break run end is within 15 at orders 25–26 but order 27 gives 9/9; Job AL: a window failure's distance to the first non-DL state has max 29 at order 27, no uniform bound, no single leaving rule); the single-state crossing argument (the Lock2 chain leaves the second pocket through z–m; NightA34 §4); "K′ meets the Lock2 witness at R3k0" (disjoint colours); "Lock2 dies within periods b+1, b+2" (p26m #21951 h22 stays DL to position 5 of b+3); the coupling "k = 4 failure ⇒ k ≤ 2 credit ≥ 2" (3/7, 0/7). A double break exists in a run (24 #3611 h0: DL run of 18 with two consecutive k = 4 failures), so the lemma is **unprovable inside a run** and is a Γ-closure statement. Conjecture Σ (after a double break the step-0/1 far swap recolours a vertex of the first break's gate or of Z_b) is untested; Studio Job AM was requested and no result is in the log.
+
+**W2 (k ≤ 2 side).** *Reduction achieved:* colour bookkeeping at positions 4–8 (hand, NightW2 §1; formal in `QuarterW2Frame`); the three fixed points are F₄, F₆, F₈ (acyclicity of {3,4}, {2,4}, {2,3}); Lemma Fix (formal); fan lemma (formal): u lies on an {A,B}-cycle ⇔ one of its {α,μ}-neighbours lies outside K_σ, so W2′ (y or z on an {A,B}-cycle at some k ≤ 2 state) has a duality-free form and W2′ ⇒ W2; ring candidates w₃ at R3k2 and w₀ at R3k0 are never recoloured; swap-cut reduction (hand): the ring part of W2″ fails only if K₄ cuts w₃ from x₁ in {1,2} **and** K₇ joins w₀ to x₃ in {1,4}; sub-statement R: w₃ ∉ K_σ(R3k2) or w₀ ∉ K_σ(R3k0). Euler identity (formal): the total six-pair cycle rank is ≥ 0 at DL states. Data: W2″ 552/552 on Γ periods; R3k1 never needed; Job AI: fixed points are made by one swap each.
+**Killed routes:** a ring/2-ball {A,B}-cycle (Job AG: at (5,5,5,5,6) the {A,B}-subgraph on the 2-ball is always acyclic at k ≤ 2, 1,656 states; the cycles run outside it); L-death (Job AL addendum: 11/711, 35/2,376, 106/10,813 all-three-fixed open windows have DL R1 states on both sides, first p25 #733 h17); single-state crossing; "K₄ creates the cycle" (19/60 already have one); the position-5 cycle through p; hand proof of W2**(a). W2\* (R3k2 and R3k0 of one period never both fail) is 0/552 on Γ periods but fails across period boundaries.
+
+**Why both are Γ-closure statements.** Job AK: on every Γ period (552) W2\*, W2″, R have 0 failures; on open DL-run windows (3,977 / 14,136 / 72,643 per orientation at orders 25 / 26 / 27) they fail 884 / 2,924 / 13,629 (W2\*), 1,334 / 4,729 / 23,390 (W2″), 1,707 / 6,125 / 31,569 (R). First W2\* counterexample p25 #668 h18 (R3k2, R3k1, R3k0 all fixed; the DL run is exactly the five-state window). A₃₄′ has the open-run counterexample 24 #3611 h0. Lemma W fails on open runs too. Both statements are true exactly when the orbit closes, with no bounded-distance escape, which is why they carry the 4CT-strength (NightP1 §5).
+
+## 5. Degree 7 comparison
+
+Same universal period (406/406 periods, Job AC), same skeleton (k = 4 fails only Lock2-only, k = 3 only Lock1-only, k ≤ 2 mostly fixed points), higher failure rate (79/916 vs 7/140 at orders 25–26; 8.6% vs 3.4% over 25–27) and more f = 1 at k = 4. Lemma S_Γ **fails** at (5,5,5,5,7) (Cr as low as 10 vs D = 20; 15 failure records; Job Z), also at (5,5,5,6,7), (5,5,5,6,8+), (5,5,5,7,7), (5,5,6,6,7), (5,5,6,5,7). Lemma W fails on every one of the 15 records; in every period k = 2 and k = 1 are fixed points (W2 fails), plus consecutive k = 4 breaks or f = 1 at k = 4 with k = 3 failing. Job AH: the A/B rank at positions 4, 6, 8 is never (0,0,0) at degree 6 (0/552) and is (0,0,0) in 14/916 periods at degree 7 (12 inside the failure records). Job AE: consecutive-period step-8 breaks never occur at degree 6 (0/19) and do at degree 7 (14 periods, all plantri orientation; in the mirror orientation Lemma S fails at 6 degree-7 holes with no consecutive breaks, cause unchecked). Conclusion on record: the degree-6 vs degree-7 difference is quantitative, not structural; W2 is the exact dividing line in the Γ-cycle data. So the lemmas are not purely local ring facts: the degree enters through how the swaps at positions 4, 6, 8 move A/B edges.
+
+## 6. Lean inventory (night modules)
+
+All under `SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/`. The log counts 28 night modules; this list is by directory (25 `Quarter*.lean` modules named in the log, `NoFrozen`, and the untracked `QuarterWindow.lean`). I could not reconcile the log's count of 28 with the 26 `Quarter*.lean` files plus `NoFrozen`; treat the count as the log's, the list as this directory's. A text search finds no `sorry` in code in any of them; standard axioms are as recorded by the coordinator recompile for all modules except `QuarterWindow` (not in the log or in `check.sh`; compile status not verified here).
+
+- `QuarterFloor`: definitions (Pent, locks, DL, classes), Lemma A, `QuarterFloorConj`.
+- `QuarterRotation`: R₊₃ and R₊₂ rotations on unfilled states.
+- `NoFrozen`: no doubly locked state is frozen (sphere).
+- `QuarterRotationPlanar`: rotation definedness from planarity; the Hex dichotomy.
+- `QuarterPi`: Lemma Π, the forward move π permutes every class (1,076 lines).
+- `QuarterWinding`: Theorem W.
+- `QuarterFloorH`: Theorem F5 from `IcoBallP`.
+- `QuarterFloorHBridge`: F5 from triangulation + degree-5 link vertices.
+- `QuarterSigmaExit`: Lemma 3′, exact σ-exit condition.
+- `QuarterSigmaGroups`: σ-groups and Conjecture σC; σC at the all-5 hole.
+- `QuarterSigmaPrime`: σ′-links, `SigmaUnionC`, its base case at the all-5 hole.
+- `QuarterSanity`: icosahedron instance of the F5 hypotheses.
+- `QuarterSigmaK34`: σ-exit facts at k = 3, 4.
+- `QuarterJordanDual`: Jordan duality (D) at k = 3, 4; f ≥ 2 at k = 3.
+- `QuarterGammaPeriod`: the universal 10-step period of a Γ-cycle.
+- `QuarterExcursion`: exact excursion accounting; no double hit.
+- `QuarterPeriodJ`: period lemma for J; k = 4 failure ⇔ step-8 break.
+- `QuarterFlowIdentity`: group flow identity; `rem_eq_unhit_mixed`.
+- `QuarterSigmaFix`: Lemma Fix.
+- `QuarterAssignment`: σC from a charge-back single-target assignment.
+- `QuarterLockJ`: lock-membership form of J.
+- `QuarterRestore`: probe: z ∈ Lock2 witness at R1k1 is a ring identity.
+- `QuarterMirror`: mirror orientation reverses π on DL states.
+- `QuarterW2Frame`: W2 frame at positions 4–8, fixed-point conditions.
+- `QuarterFan`: fan lemma, W2′ in duality-free form.
+- `QuarterEuler`: six-pair Euler identity.
+- `QuarterWindow` (untracked): NightA34 §1–§3 period bookkeeping, far-ness of step 8, window lemma.
+
+`check.sh` (in `StudioMathLean/`) compiles the first 25 of these (through `QuarterEuler`); a full regression needs the snapshot build `$HOME/mathlib4-planemap-build`, which is absent on this MacBook, so modules were recompiled individually against `$HOME/mathlib4-planemap` (log, 03:28 note).
+
+## 7. Studio data inventory
+
+All files under `backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/` (script `jobX.py`, summary `jobX-summary.txt` or similar, C++ engine `picyc.cpp` with variants `picyc.<letter>`). Counts are from the log.
+
+- **L**: Lemma S on 62 + 6 Γ-cycle records: C_neg ≥ D, min 1.55, C_pos = 0 (`jobl-*`).
+- **M**: 140 blocks of 10 from R3k4; 139/140 ≥ 10, min block credit 8 once (p26 #87942 h22) (`jobm-*`).
+- **N**: one-question lemma 280/280; 14 failures (`jobn-*`).
+- **O**: universal period 140/140; break/restore mechanism, steps 8, 0, 1, 3 (`jobo-*`).
+- **P**: k ≤ 2 exits; F₀₁₂′ min exactly 1.000; one-edge rule; breaking swap cuts the y–z path (`jobp-*`).
+- **Q**: k ≤ 2 fixed points are a different mechanism from the y ~ z breaks (`jobq-*`).
+- **R** (with **J**): order 27, all 320,133 core triangulations, 11,304,648 classes; σ′C 0 failures among ~368M groups; F₄ fails once; (5,5,5,6,6) Lemma S fails once (`jobj-*`, `jobr27`, `jobr.sh`).
+- **S**: Lemma R per target fails at order 27 (12 of 732), holds at 25–26 (210/210); P₁ holds everywhere (`jobs-*`).
+- **T**: smallest window with credit ≥ 10w is w = 2 (`jobt-*`).
+- **U** and **V**: F₄ gap located at p27 #133619 h21; (5,5,5,6,6) failure p27 #316043 h18 repaired by an R1 exit (`jobuv/`).
+- **W**: Lemma W on all maximal DL runs; Γ windows 0 failures, open runs fail (`jobw-*`).
+- **X**: consecutive k = 4 failures never on a Γ-cycle; run ends within 15 at 25–26 (`jobx-*`).
+- **Y**: the rem > 0 sits in the target's own positive excursion (p27 #68456 h19) (no separate file listed; see NightLemmaR / `28-lemmaR/`).
+- **Z**: σ-flow closes exactly on (5,5,5,5,6) and (5,5,5,6,6), fails at several degree-7 patterns; P₁ fails at 19 holes of other patterns (`jobz-*`).
+- **AA**: 73 double k = 4 failures, all the step-8 far (p,y) swap, one rule 73/73 (companion of Job W; outputs `out/`, `picyc.*`).
+- **AB**: excursion-level self-payment false (~48% of positive-mass excursions) (`jobab-summary.txt`).
+- **AC**: σ′ lockless credit covers 8 of 22 failure records; charge-back P₁ holds in all 22; (5,5,5,5,7) period 406/406 (`out/`, `picyc.*`).
+- **AD**: P₁ neighbour profile; 75 def′ > 0 cycles, min ratio 1.25 (`jobad-*`).
+- **AE**: Lock1/Lock2 component sizes; z re-enters the Lock2 witness 2 states after a break (98/98) (`out/`, `picyc.*`).
+- **AF**: P₁ forms; undirected σ P₁ 407/407; the ρ = 1.25 case; degree-7 failure tuples (`out/`).
+- **AG**: W2 is non-local; Lemma Fix 0 exceptions (462 fixed points) (`nightw2/`).
+- **AH**: A/B rank along Γ-cycles; (0,0,0) never at degree 6, 14/916 at degree 7 (`nightw2/`).
+- **AI** and **AJ**: A/B cycle bases (W2″ 552/552); exact time reversal 1,364/1,364 (`nightw2/`).
+- **AK**: W2\*, W2″, R are Γ-closure statements (0 failures on Γ periods, many on open windows); counterexample p25 #668 h18 (`jobak-summary.txt`, `picyc.ak`, `nightw2/`).
+- **AL**: no uniform bound on run-end distance; no single leaving rule (`jobal-summary.txt`, `jobal-addendum.txt`, `picyc.al`, `picyc.al2`).
+- **AM**: requested (conjecture Σ test, NightA34 §6); no result recorded in the log at 04:05.
+
+Earlier jobs for context: A, A2, B (positive-cycle census, transport), C ((5,5,5,5,5) positives), D (`jobd-summary.txt`), E (`jobe-*`), F (`jobf-summary.txt`, `witness-sigC-p26-70869-h11.json`), G (`jobg-*`), H (`jobh-summary.txt`), I (`jobi-*`), K (`jobk-*`), cb (`jobcb-*`). IPR witness: `witness-ipr265-h43.json`. Job letters whose files sit under other subdirectories: `nightf012/`, `nightw2/`, `jobuv/`, `jobr27/`.
+
+## 8. Suggested next steps
+
+1. **A₃₄′ on Γ-cycles.** Test Conjecture Σ (Job AM), and in parallel search for a global invariant that uses closure: an all-DL orbit visits each state once per L steps, so a double break at b, b+1 must be incompatible with a return; candidates are the total cycle rank (`QuarterEuler`) and the time-reversal symmetry (`QuarterMirror`: one orientation suffices, step 8 and step 7 are the same event read backwards).
+2. **W2 on Γ-cycles.** Prove W2\*\* (a) and (b) or R by a swap-cut argument that uses the Lock1/Lock2 chains at positions 4–8; the missing ingredient is how K₄ meets the Lock1 {2,3}-chain x₁ → x₃. The Lean state is `not_all_fixed_iff`, `w2'_iff`; a formal W2′ needs escapes outside the 2-ball and so a global argument.
+3. **Replace F₄** by "credit ≥ 2 at k = 4" and re-run the arithmetic of NightF6Flow §1 with actual credits (Lemma S holds with ratio ≥ 1.95 on 202 records at order 27); state the sufficient form as a lemma and check it formally.
+4. **Non-Γ half.** State P₁^str as a Lean certificate on every σ-group (the formal `AssignmentStr` exists); decide whether the hand proof is a global count over T (NightP1 addendum says yes).
+5. **Housekeeping.** Reconcile the module count (28 vs the 26 `Quarter*.lean` + `NoFrozen`), add `QuarterWindow` to `check.sh` and recompile with `#print axioms`, obtain the missing snapshot build, and commit the untracked files (`QuarterWindow.lean`, `NightPotential.md`, etc.).
+6. **Review gates.** The Night notes (NightF6Flow, NightLemmaS, NightF012, NightLemmaR, NightP1, NightW2, NightA34) are unreviewed; request an adversarial review of the flow identity and the period lemma before citing them, and a re-check of the Studio-only claims by the independent Python engine (done for Jobs U, V and the F-island, not for all).
+7. **Outside F6.** (5,5,5,6,6) needs σ′ (as SigmaUnionC says); degree 7 and above are not Γ-flow theorems on σ alone. Do not spend further effort on bounded-distance or ring-local routes (§4).
