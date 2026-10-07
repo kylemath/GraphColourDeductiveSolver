@@ -40,9 +40,15 @@ the **Tait colour** `tait c u v = enc (c u) + enc (c v)` (nonzero on a proper ed
    on the bookkeeping tables (`ring_cut_table`), with row 10 = `σ` (row 0)
    (`period_colour_rotation`).
 
-Note: (3) needs closure in colouring space. A canonical closure `s L = g · s 0` (relabelling
-`g`) acts on Tait colours by the linear part of `g`; that version (`NightGammaLength.md` §2)
-is not formalised here.
+6. **Closure up to a relabelling** `c L = ρ ∘ c 0` (how `Γ`-cycles close; `ρ = σ^{L/10}` on
+   the ring by `period_colour_rotation`/`closing_perm`): `relabel_closed_cut_sum` (and
+   `piMove_relabel_cut_sum` for `π^[L] s = ρ ∘ s`): the cut sum of `uv` equals
+   `(enc (ρ (c u)) + enc (ρ (c v))) - (enc (c u) + enc (c v))`, the change of its Tait colour
+   under `ρ`. `three_cycle_change_ne`: if `ρ` fixes `α` and moves the other three colours
+   (a 3-cycle), this change is nonzero for every pair of distinct colours. Hence
+   `three_cycle_cut_nonempty`: every `uv` with `c 0 u ≠ c 0 v` (every edge of `G - h`) has a
+   nonzero cut sum and is cut **at least once**. No parity follows: a nonzero sum is reached
+   by an odd number of same-partition cuts or by cuts from different pair-partitions.
 -/
 
 @[expose] public section
@@ -69,6 +75,26 @@ lemma F22_add_self (x : F22) : x + x = 0 := by revert x; decide
 lemma enc_swap : ∀ a b x : Fin 4, (x = a ∨ x = b) →
     enc (Equiv.swap a b x) = enc x + (enc a + enc b) := by
   decide
+
+/-- Boolean form of `three_cycle_pair`. -/
+def threeCycleOK (α x y z px py pz : Fin 4) : Bool :=
+  !(x != α && y != α && z != α && x != y && x != z && y != z && px != α && py != α && pz != α &&
+    px != py && px != pz && py != pz && px != x && py != y && pz != z) ||
+  (enc px + enc py != enc x + enc y)
+
+theorem threeCycleOK_all : ∀ α x y z px py pz : Fin 4, threeCycleOK α x y z px py pz = true := by
+  decide +kernel
+
+/-- Finite fact behind `three_cycle_change_ne`: a fixed-point-free permutation of three
+colours `x, y, z` (images `px, py, pz`) moves the pair sum `x + y`. -/
+lemma three_cycle_pair {α x y z px py pz : Fin 4} (h1 : x ≠ α) (h2 : y ≠ α) (h3 : z ≠ α)
+    (h4 : x ≠ y) (h5 : x ≠ z) (h6 : y ≠ z) (h7 : px ≠ α) (h8 : py ≠ α) (h9 : pz ≠ α)
+    (h10 : px ≠ py) (h11 : px ≠ pz) (h12 : py ≠ pz) (h13 : px ≠ x) (h14 : py ≠ y)
+    (h15 : pz ≠ z) : enc px + enc py ≠ enc x + enc y := by
+  have e := threeCycleOK_all α x y z px py pz
+  simp only [threeCycleOK, Bool.or_eq_true, Bool.not_eq_eq_eq_not, Bool.not_true,
+    Bool.and_eq_false_imp, bne_iff_ne, ne_eq] at e
+  simpa [h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14, h15] using e
 
 /-- The Tait colour of `uv`. -/
 def tait {V : Type*} (c : V → Fin 4) (u v : V) : F22 := enc (c u) + enc (c v)
@@ -211,6 +237,64 @@ theorem closed_orbit_cut_even {c : ℕ → V → Fin 4} {a b : ℕ → Fin 4} {S
   · exact he
   · exact (hne (hsame t ht t' ht')).elim
 
+/-! ### 4b. Closure up to a relabelling -/
+
+/-- **`relabel_closed_cut_sum`.** If the chain closes up to a relabelling, `c L = ρ ∘ c 0`, the
+pair sums of the steps cutting `uv` add up to the change of the Tait colour of `uv` under `ρ`. -/
+theorem relabel_closed_cut_sum {c : ℕ → V → Fin 4} {a b : ℕ → Fin 4} {S : ℕ → Set V}
+    (hS : ∀ t, Whole G h (c t) (a t) (b t) (S t))
+    (hstep : ∀ t, c (t + 1) = swap (c t) (a t) (b t) (S t)) {L : ℕ} (ρ : Equiv.Perm (Fin 4))
+    (hL : c L = ρ ∘ c 0) (u v : V) :
+    ∑ t ∈ (range L).filter (fun t => Cut (S t) u v), (enc (a t) + enc (b t)) =
+      (enc (ρ (c 0 u)) + enc (ρ (c 0 v))) - (enc (c 0 u) + enc (c 0 v)) := by
+  have e := tait_iter hS hstep u v L
+  rw [hL] at e
+  rw [sum_filter, eq_sub_iff_add_eq, add_comm]
+  exact e.symm
+
+lemma sub_ne_zero_of_ne' {p q : F22} (hpq : p ≠ q) : p - q ≠ 0 := sub_ne_zero.mpr hpq
+
+/-- If `ρ` fixes `α` and moves every other colour (a 3-cycle on the non-`α` colours), then
+`ρ` changes the Tait colour of every properly coloured pair. -/
+theorem three_cycle_change_ne {ρ : Equiv.Perm (Fin 4)} {α : Fin 4} (hα : ρ α = α)
+    (hmov : ∀ x, x ≠ α → ρ x ≠ x) {x y : Fin 4} (hxy : x ≠ y) :
+    (enc (ρ x) + enc (ρ y)) - (enc x + enc y) ≠ 0 := by
+  apply sub_ne_zero_of_ne'
+  by_cases hx : x = α
+  · subst hx
+    rw [hα]
+    intro e
+    exact hmov y (Ne.symm hxy) (enc_injective (add_left_cancel e))
+  by_cases hy : y = α
+  · subst hy
+    rw [hα]
+    intro e
+    exact hmov x hxy (enc_injective (add_right_cancel e))
+  obtain ⟨hzx, hzy, hzα⟩ : fourth x y α ≠ x ∧ fourth x y α ≠ y ∧ fourth x y α ≠ α :=
+    fourth_ne hxy hx hy
+  have ne := fun {p q : Fin 4} (h : p ≠ q) => ρ.injective.ne h
+  refine three_cycle_pair (α := α) (z := fourth x y α) hx hy hzα hxy (Ne.symm hzx) (Ne.symm hzy)
+    (fun e => hx (ρ.injective (e.trans hα.symm))) (fun e => hy (ρ.injective (e.trans hα.symm)))
+    (fun e => hzα (ρ.injective (e.trans hα.symm))) (ne hxy) (ne (Ne.symm hzx)) (ne (Ne.symm hzy))
+    (hmov x hx) (hmov y hy) (hmov _ hzα)
+
+/-- **Corollary.** If the chain closes up to a 3-cycle `ρ` of the non-`α` colours, every pair
+`u, v` with `c 0 u ≠ c 0 v` (every edge of `G - h`) is cut at least once: its cut sum is
+nonzero. (This gives no parity: a nonzero sum is reached by an odd or by an even number of
+cuts with different pair sums.) -/
+theorem three_cycle_cut_nonempty {c : ℕ → V → Fin 4} {a b : ℕ → Fin 4} {S : ℕ → Set V}
+    (hS : ∀ t, Whole G h (c t) (a t) (b t) (S t))
+    (hstep : ∀ t, c (t + 1) = swap (c t) (a t) (b t) (S t)) {L : ℕ} {ρ : Equiv.Perm (Fin 4)}
+    {α : Fin 4} (hα : ρ α = α) (hmov : ∀ x, x ≠ α → ρ x ≠ x) (hL : c L = ρ ∘ c 0) {u v : V}
+    (huv : c 0 u ≠ c 0 v) :
+    ∑ t ∈ (range L).filter (fun t => Cut (S t) u v), (enc (a t) + enc (b t)) ≠ 0 ∧
+      ((range L).filter (fun t => Cut (S t) u v)).Nonempty := by
+  have hs := relabel_closed_cut_sum hS hstep ρ hL u v
+  have hne : ∑ t ∈ (range L).filter (fun t => Cut (S t) u v), (enc (a t) + enc (b t)) ≠ 0 := by
+    rw [hs]; exact three_cycle_change_ne hα hmov huv
+  refine ⟨hne, nonempty_iff_ne_empty.mpr fun he => hne ?_⟩
+  rw [he, sum_empty]
+
 end generic
 
 /-! ### 5. `π`-orbits and the all-`DL` ring count -/
@@ -232,6 +316,24 @@ theorem piMove_cut_sum (hc : ProperOff M.graph h s) {L : ℕ} (hL : (piMove P)^[
   refine kempe_orbit_cut_sum (c := fun t => (piMove P)^[t] s) (fun t => ?_) hL
   rw [Function.iterate_succ_apply']
   exact (piMove_spec (iter_proper hc t)).1
+
+open Classical in
+/-- **`π`-orbits closed up to a relabelling** `π^[L] s = ρ ∘ s`: the pair sums of the steps
+cutting `uv` add up to the change of the Tait colour of `uv` under `ρ`. -/
+theorem piMove_relabel_cut_sum (hc : ProperOff M.graph h s) {L : ℕ} (ρ : Equiv.Perm (Fin 4))
+    (hL : (piMove P)^[L] s = ρ ∘ s) :
+    ∃ (a b : ℕ → Fin 4) (S : ℕ → Set (Fin n)),
+      (∀ t, a t ≠ b t ∧ Whole M.graph h ((piMove P)^[t] s) (a t) (b t) (S t) ∧
+        (piMove P)^[t + 1] s = swap ((piMove P)^[t] s) (a t) (b t) (S t)) ∧
+      ∀ u v, ∑ t ∈ (range L).filter (fun t => Cut (S t) u v), (enc (a t) + enc (b t)) =
+        (enc (ρ (s u)) + enc (ρ (s v))) - (enc (s u) + enc (s v)) := by
+  have hstep : ∀ t, KempeStep M.graph h ((piMove P)^[t] s) ((piMove P)^[t + 1] s) := by
+    intro t
+    rw [Function.iterate_succ_apply']
+    exact (piMove_spec (iter_proper hc t)).1
+  choose a b S hab hS hst using hstep
+  exact ⟨a, b, S, fun t => ⟨hab t, hS t, hst t⟩,
+    fun u v => relabel_closed_cut_sum (c := fun t => (piMove P)^[t] s) hS hst ρ hL u v⟩
 
 /-- The eleven hole vertices: `0..4 = x (q+t)`, `5..9 = w (q+t)` (`5 = z`, `9 = y`), `10 = m`. -/
 def hv (P : Pent M.graph h) (w : Fin 5 → Fin n) (m : Fin n) (q : Fin 5) (l : Fin 11) : Fin n :=
@@ -344,5 +446,9 @@ end SimpleGraph.QuarterFloor
 #print axioms SimpleGraph.QuarterFloor.closed_orbit_cut_parity
 #print axioms SimpleGraph.QuarterFloor.closed_orbit_cut_even
 #print axioms SimpleGraph.QuarterFloor.piMove_cut_sum
+#print axioms SimpleGraph.QuarterFloor.relabel_closed_cut_sum
+#print axioms SimpleGraph.QuarterFloor.three_cycle_change_ne
+#print axioms SimpleGraph.QuarterFloor.three_cycle_cut_nonempty
+#print axioms SimpleGraph.QuarterFloor.piMove_relabel_cut_sum
 #print axioms SimpleGraph.QuarterFloor.ring_cut_table
 #print axioms SimpleGraph.QuarterFloor.allDL_ring_cut_count
