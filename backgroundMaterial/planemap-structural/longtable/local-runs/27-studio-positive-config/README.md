@@ -361,3 +361,12 @@ Absolute colours followed through the L Kempe swaps of the cycle (checked agains
 - Degree-7 consecutive breaks (14 records): (first, second) hole-gate sets = ({x+}, {x+, M_z}) 6, ({x+, M_z}, {x+}) 6, ({x+}, {x+}) 2. So "the second break has the extra hole
   gate" holds in only 6/14.
 - Open degree-6 double breaks: first break {x+} 73/73; second break {x+} 63, empty 10; all 27 that reach R3k3^{b+2} have {x+} at the second break (none far-only).
+
+## Job AQ (adversarial stress test; jobaq/jobaq.py -> jobaq-raw.txt, jobaq.json; class engine = lib26.Eng, classes from 40 random colourings, seed 1, both orientations)
+Holes with Gamma-cycles in run 26's sample: A6_chain h13 (7,7,5,5,5), h31 (5,5,5,5,5); A7_exc h22, h34 (5,5,5,5,7); hog1152_chain h11 (5,5,5,5,5); r5_80b930d1_exc h2 (7,5,5,5,5),
+h23 (5,5,5,5,8+). Gamma-cycle lengths there: 800 (A7), 660 (A6 h31), 80, 60, 40, 20.
+- **Everything holds on every Gamma-cycle**: Lemma S with sigma-exits from all DD endpoints (C_pos = 0; C_neg / D = 4.0 for the (5,5,5,5,5) and A7 cycles incl. L = 800 and 660,
+  i.e. every R3 exit lockless with f = 3; 2.0 at r5 L = 80); sigma-C, sigma'-C (H1) and charge-back P1 0 failures; quarter floor holds for every class.
+- Single-high-vertex holes (A7, r5): the universal 10-step period holds on every Gamma-cycle (incl. the L = 800 one, 80 periods); no consecutive k = 4 failures; no period with
+  all three k <= 2 fixed and none with k2 and k0 both fixed.
+- The L = 800 cycle is at a (5,5,5,5,7) hole, not (5,5,5,5,6): it is not a degree-6 test, and no adversarial graph has a (5,5,5,5,6) hole with a Gamma-cycle.
