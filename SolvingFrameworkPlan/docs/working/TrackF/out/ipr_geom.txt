@@ -1,0 +1,48 @@
+n2 = #other pentagons at dual distance 2 (the w-positions):  holes, mean maxrun, max maxrun
+  n2=1:    353 holes  mean 9.06  max 15
+  n2=2:   5706 holes  mean 9.20  max 18
+  n2=3:   7838 holes  mean 9.32  max 18
+  n2=4:   1258 holes  mean 9.95  max 24
+  n2=5:     49 holes  mean 6.06  max 15
+(n2, n3):  holes, mean maxrun, max maxrun
+  (1, 4):     34  mean 9.06  max 11
+  (1, 5):    168  mean 9.14  max 15
+  (1, 6):    148  mean 8.98  max 15
+  (1, 7):      3  mean 8.67  max 9
+  (2, 2):     69  mean 9.33  max 12
+  (2, 3):   1715  mean 9.39  max 15
+  (2, 4):   3421  mean 9.15  max 18
+  (2, 5):    484  mean 8.88  max 14
+  (2, 6):     17  mean 7.06  max 9
+  (3, 0):     18  mean 9.17  max 11
+  (3, 1):    912  mean 9.54  max 15
+  (3, 2):   4622  mean 9.54  max 18
+  (3, 3):   1938  mean 9.04  max 17
+  (3, 4):    324  mean 7.58  max 14
+  (3, 5):     24  mean 6.17  max 7
+  (4, 0):    368  mean 10.42  max 24
+  (4, 1):    646  mean 10.63  max 21
+  (4, 2):    200  mean 7.76  max 23
+  (4, 3):     22  mean 6.55  max 8
+  (4, 4):     22  mean 5.55  max 6
+  (5, 0):     37  mean 7.38  max 15
+  (5, 5):     12  mean 2.00  max 2
+order 41 (C78): holes 60  corr(maxrun, n2 + n3/2) = -0.468
+order 42 (C80): holes 84  corr(maxrun, n2 + n3/2) = -0.196
+order 43 (C82): holes 108  corr(maxrun, n2 + n3/2) = -0.031
+order 44 (C84): holes 288  corr(maxrun, n2 + n3/2) = -0.128
+order 45 (C86): holes 228  corr(maxrun, n2 + n3/2) = 0.073
+order 46 (C88): holes 420  corr(maxrun, n2 + n3/2) = 0.065
+order 47 (C90): holes 552  corr(maxrun, n2 + n3/2) = -0.035
+order 48 (C92): holes 1032  corr(maxrun, n2 + n3/2) = 0.114
+order 49 (C94): holes 1608  corr(maxrun, n2 + n3/2) = 0.146
+order 50 (C96): holes 2244  corr(maxrun, n2 + n3/2) = 0.020
+order 51 (C98): holes 3108  corr(maxrun, n2 + n3/2) = 0.148
+order 52 (C100): holes 5400  corr(maxrun, n2 + n3/2) = 0.088
+np2 (pentagons in the Lock2 pocket) over all DL states: count, mean length of the containing maximal run
+  np2=1:    670132146  mean run 2.020
+  np2=3:    304136053  mean run 1.869
+  np2=5:    194819206  mean run 1.729
+  np2=7:    102654797  mean run 1.607
+  np2=9:     38393691  mean run 1.518
+np1 (pentagons in the Lock1 inner pocket): {1: 811806643, 3: 264111724, 5: 148026801, 7: 67749309, 9: 18441416}
