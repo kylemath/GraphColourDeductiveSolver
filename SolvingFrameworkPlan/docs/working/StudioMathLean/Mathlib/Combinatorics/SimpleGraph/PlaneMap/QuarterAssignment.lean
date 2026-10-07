@@ -18,7 +18,8 @@ finite `π`-closed `g` with positive orbits `Z` (`posOrbits`) and nonpositive or
   nonnegative weights on the positive orbits, supported on the sources having an exit into `T`
   (and zero for every `T` with `rem(T) ≤ 0`). `defP P g cb Z = def(Z) + Σ_T cb Z T` is `def′(Z)`.
 * `Assignment P g cb`: every positive `Z` with `def′(Z) > 0` is sent to ONE nonpositive orbit
-  `a Z` with `rem(a Z) < 0`, reached from `Z` by an exit, and no `T` is over-assigned:
+  `a Z` with `rem(a Z) < 0` (any orbit of the same group `g`; no exit from `Z` is required),
+  and no `T` is over-assigned:
   `Σ_{Z : a Z = T, def′ Z > 0} def′(Z) ≤ −rem(T)`.
 
 ## Main results (sorry-free, no new axioms)
@@ -57,14 +58,12 @@ noncomputable def defP (C : ChargeBack P g) (Z : Finset (Fin n → Fin 4)) : ℤ
   defOrb P g Z + ∑ T ∈ nonposOrbits P g, C.cb Z T
 
 /-- **A single-target assignment** for the charge-back `C`: each positive `Z` with `def′(Z) > 0`
-goes to one nonpositive `a Z` with `rem(a Z) < 0` reached by an exit from `Z`, and no `T` receives
-more than `−rem(T)`. -/
+goes to one nonpositive `a Z` with `rem(a Z) < 0` in `g` (any `σ`-neighbour; no exit needed),
+and no `T` receives more than `−rem(T)`. -/
 structure Assignment (C : ChargeBack P g) where
   /-- The target of `Z`. -/
   a : Finset (Fin n → Fin 4) → Finset (Fin n → Fin 4)
   mem : ∀ Z ∈ posOrbits P g, 0 < defP P g C Z → a Z ∈ nonposOrbits P g ∧ remOrb P g (a Z) < 0
-  nbr : ∀ Z ∈ posOrbits P g, 0 < defP P g C Z →
-    ∃ e ∈ exits P g, orbFin P e.1 = Z ∧ orbFin P e.2 = a Z
   bound : ∀ T ∈ nonposOrbits P g, remOrb P g T < 0 →
     ∑ Z ∈ (posOrbits P g).filter (fun Z => 0 < defP P g C Z ∧ a Z = T), defP P g C Z ≤
       -remOrb P g T
@@ -195,8 +194,6 @@ structure AssignmentStr (C : ChargeBack P g) where
   /-- The target of `Z`. -/
   a : Finset (Fin n → Fin 4) → Finset (Fin n → Fin 4)
   mem : ∀ Z ∈ posOrbits P g, 0 < defP P g C Z → a Z ∈ nonposOrbits P g ∧ remOrb P g (a Z) < 0
-  nbr : ∀ Z ∈ posOrbits P g, 0 < defP P g C Z →
-    ∃ e ∈ exits P g, orbFin P e.1 = Z ∧ orbFin P e.2 = a Z
   bound : ∀ T ∈ nonposOrbits P g, remOrb P g T < 0 →
     ∑ Z ∈ (posOrbits P g).filter (fun Z => 0 < defP P g C Z ∧ a Z = T), orbSum P Z ≤
       -remOrb P g T
@@ -206,7 +203,6 @@ def AssignmentStr.toAssignment {C : ChargeBack P g} (hC : CreditBounded P g C)
     (A : AssignmentStr P g C) : Assignment P g C where
   a := A.a
   mem := A.mem
-  nbr := A.nbr
   bound T hT hr := le_trans (Finset.sum_le_sum fun _ hZ =>
     defPrime_le_lam hC (Finset.mem_filter.1 hZ).1) (A.bound T hT hr)
 
