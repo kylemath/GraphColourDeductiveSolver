@@ -1,0 +1,30 @@
+Lemma S failure Gamma records: 22 ; (5,5,5,5,7) Gamma holes: 188
+
+PART 1: failing Gamma-cycles (deficit after sigma exits from all DD endpoints):
+  z25 p25#13918 h15 5,5,5,6,7 Gamma 25 L 20: D 20, sigma CrN 18, sigma' lockless CrN 2 -> covered by sigma': True; (sigma u sigma')-group 16 cycles, sum lambda -635; charge-back P1 on the group: True []
+  z25 p25#13918 h19 5,5,5,5,7 Gamma 37 L 20: D 20, sigma CrN 13, sigma' lockless CrN 8 -> covered by sigma': True; (sigma u sigma')-group 22 cycles, sum lambda -565; charge-back P1 on the group: True []
+  z25m p25#13918 h19 5,5,5,5,7 Gamma 22 L 20: D 20, sigma CrN 10, sigma' lockless CrN 2 -> covered by sigma': False; (sigma u sigma')-group 19 cycles, sum lambda -665; charge-back P1 on the group: True []
+  z26 p26#43070 h18 5,5,5,5,7 Gamma 11 L 20: D 20, sigma CrN 13, sigma' lockless CrN 5 -> covered by sigma': False; (sigma u sigma')-group 24 cycles, sum lambda -665; charge-back P1 on the group: True []
+  z26 p26#6618 h3 5,5,5,6,8 Gamma 30 L 20: D 20, sigma CrN 18, sigma' lockless CrN 5 -> covered by sigma': True; (sigma u sigma')-group 16 cycles, sum lambda -850; charge-back P1 on the group: True []
+  z26m p26#43070 h18 5,5,5,5,7 Gamma 29 L 20: D 20, sigma CrN 10, sigma' lockless CrN 8 -> covered by sigma': False; (sigma u sigma')-group 21 cycles, sum lambda -860; charge-back P1 on the group: True []
+  z26m p26#43176 h17 5,5,5,5,7 Gamma 14 L 40: D 40, sigma CrN 28, sigma' lockless CrN 8 -> covered by sigma': False; (sigma u sigma')-group 20 cycles, sum lambda -650; charge-back P1 on the group: True []
+  z27 p27#112605 h26 5,5,5,5,7 Gamma 45 L 20: D 20, sigma CrN 13, sigma' lockless CrN 12 -> covered by sigma': True; (sigma u sigma')-group 14 cycles, sum lambda -1075; charge-back P1 on the group: True []
+  z27 p27#154296 h25 5,5,5,5,7 Gamma 68 L 20: D 20, sigma CrN 13, sigma' lockless CrN 0 -> covered by sigma': False; (sigma u sigma')-group 52 cycles, sum lambda -740; charge-back P1 on the group: True []
+  z27 p27#154296 h25 5,5,5,5,7 Gamma 70 L 20: D 20, sigma CrN 13, sigma' lockless CrN 0 -> covered by sigma': False; (sigma u sigma')-group 52 cycles, sum lambda -740; charge-back P1 on the group: True []
+  z27 p27#154296 h25 5,5,5,5,7 Gamma 72 L 20: D 20, sigma CrN 13, sigma' lockless CrN 0 -> covered by sigma': False; (sigma u sigma')-group 52 cycles, sum lambda -740; charge-back P1 on the group: True []
+  z27 p27#197591 h18 5,5,6,6,7 Gamma 34 L 20: D 20, sigma CrN 10, sigma' lockless CrN 10 -> covered by sigma': True; (sigma u sigma')-group 22 cycles, sum lambda -1000; charge-back P1 on the group: True []
+  z27 p27#206284 h10 5,5,5,5,7 Gamma 46 L 20: D 20, sigma CrN 13, sigma' lockless CrN 2 -> covered by sigma': False; (sigma u sigma')-group 26 cycles, sum lambda -785; charge-back P1 on the group: True []
+  z27 p27#247743 h6 5,5,5,7,7 Gamma 30 L 20: D 20, sigma CrN 15, sigma' lockless CrN 2 -> covered by sigma': False; (sigma u sigma')-group 19 cycles, sum lambda -1055; charge-back P1 on the group: True []
+  z27m p27#112605 h26 5,5,5,5,7 Gamma 31 L 20: D 20, sigma CrN 10, sigma' lockless CrN 6 -> covered by sigma': False; (sigma u sigma')-group 18 cycles, sum lambda -1235; charge-back P1 on the group: True []
+  z27m p27#131991 h2 5,5,6,5,7 Gamma 25 L 20: D 20, sigma CrN 17, sigma' lockless CrN 4 -> covered by sigma': True; (sigma u sigma')-group 12 cycles, sum lambda -545; charge-back P1 on the group: True []
+  z27m p27#154296 h25 5,5,5,5,7 Gamma 32 L 20: D 20, sigma CrN 10, sigma' lockless CrN 0 -> covered by sigma': False; (sigma u sigma')-group 33 cycles, sum lambda -905; charge-back P1 on the group: True []
+  z27m p27#154296 h25 5,5,5,5,7 Gamma 33 L 20: D 20, sigma CrN 10, sigma' lockless CrN 0 -> covered by sigma': False; (sigma u sigma')-group 33 cycles, sum lambda -905; charge-back P1 on the group: True []
+  z27m p27#154296 h25 5,5,5,5,7 Gamma 34 L 20: D 20, sigma CrN 10, sigma' lockless CrN 0 -> covered by sigma': False; (sigma u sigma')-group 33 cycles, sum lambda -905; charge-back P1 on the group: True []
+  z27m p27#197591 h18 5,5,6,6,7 Gamma 40 L 20: D 20, sigma CrN 10, sigma' lockless CrN 10 -> covered by sigma': True; (sigma u sigma')-group 29 cycles, sum lambda -820; charge-back P1 on the group: True []
+  z27m p27#206284 h10 5,5,5,5,7 Gamma 46 L 20: D 20, sigma CrN 16, sigma' lockless CrN 2 -> covered by sigma': False; (sigma u sigma')-group 15 cycles, sum lambda -850; charge-back P1 on the group: True []
+  z27m p27#247743 h6 5,5,5,7,7 Gamma 10 L 20: D 20, sigma CrN 18, sigma' lockless CrN 8 -> covered by sigma': True; (sigma u sigma')-group 12 cycles, sum lambda -1180; charge-back P1 on the group: True []
+
+PART 2: (5,5,5,5,7) Gamma-cycles: 406
+  10-step (type, k of the degree-7 vertex) patterns from R3@k4:
+     406 (('R3', 4), ('R1', 1), ('R3', 3), ('R1', 0), ('R3', 2), ('R1', 4), ('R3', 1), ('R1', 3), ('R3', 0), ('R1', 2))
+  R3 exits by (k, kind, f): [((0, 'DL', None), 29), ((0, 'Lock1', None), 6), ((0, 'Lock2', None), 3), ((0, 'fixed', None), 66), ((0, 'lockless', 1), 18), ((0, 'lockless', 2), 25), ((0, 'lockless', 3), 769), ((1, 'DL', None), 48), ((1, 'Lock1', None), 2), ((1, 'Lock2', None), 2), ((1, 'fixed', None), 110), ((1, 'lockless', 1), 38), ((1, 'lockless', 2), 3), ((1, 'lockless', 3), 713), ((2, 'DL', None), 29), ((2, 'Lock1', None), 3), ((2, 'Lock2', None), 6), ((2, 'fixed', None), 66), ((2, 'lockless', 1), 15), ((2, 'lockless', 2), 52), ((2, 'lockless', 3), 745), ((3, 'Lock1', None), 79), ((3, 'lockless', 2), 26), ((3, 'lockless', 3), 811), ((4, 'Lock2', None), 79), ((4, 'lockless', 1), 29), ((4, 'lockless', 2), 6), ((4, 'lockless', 3), 796), ((4, 'lockless', 5), 6)]

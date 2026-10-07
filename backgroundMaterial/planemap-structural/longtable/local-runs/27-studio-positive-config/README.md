@@ -222,3 +222,11 @@ from its own DD states (all R-types).
 - **Positive-mass excursions do NOT pay for themselves**: credit < mass in about 48% of them at every order (order 27: 1.82M of 3.73M per orientation), mostly mass 1-2
   (typically u = 4, f = 1, mass +1, whose two DD states have no lockless exit). Almost all failures are on nonpositive cycles (1 / 1 / 9 / 7 / 35 / 83 on positive cycles).
   Min slack -14 to -22 (all exits), -16 to -36 (exits to other cycles only). So self-payment holds only at the cycle / group level.
+
+## Job AC (independent Python; jobuv/jobac.py -> jobac-summary.txt, jobac.json)
+- Part 1, the 22 Job Z Lemma S failure Gamma-cycle records: the sigma' lockless credit (link-free lock-breaking exits from DD endpoints, to nonpositive cycles) covers the remaining
+  deficit D - Cr_N(sigma) in only 8/22 (p27 #154296 h25: three Gamma-cycles with no sigma' lockless credit at all). But on the (sigma u sigma')-group (12-52 cycles,
+  sum lambda -545 to -1,235) the charge-back single-target P1 (exits = distinct lockless sigma and sigma' images) **holds in 22/22**.
+- Part 2, (5,5,5,5,7): all 406 Gamma-cycle records (orders 25-27, both orientations) have the universal period R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (k = position of the
+  degree-7 vertex), as at (5,5,5,5,6). R3 exits: k = 3 failures always Lock1-only (79), k = 4 failures always Lock2-only (79); k = 4 lockless f = 3 in 796 of 837
+  (f = 1: 29, 2: 6, 5: 6); k <= 2 failures mostly fixed points (66 / 110 / 66) plus other DL images (29 / 48 / 29).
