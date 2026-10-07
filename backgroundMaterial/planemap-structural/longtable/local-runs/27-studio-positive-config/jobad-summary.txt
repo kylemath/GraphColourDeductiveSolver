@@ -5,6 +5,6 @@ positive cycles with def' > 0 at (5,5,5,5,6)/(5,5,5,6,6), orders 25-27, both ori
 (ii) neighbour profile: {'has w<=-2 neighbour': 75}
 (iii) tightest targets after a greedy single-target assignment (spare, #positive cycles sharing, ...): [(5.0, 1, 'z27m', 'p27#167230', 23, 21, ['20']), (20.0, 1, 'z27m', 'p27#204626', 4, 4, ['20']), (60.0, 1, 'z26', 'p26#68224', 23, 16, ['20']), (75.0, 1, 'z26', 'p26#83426', 18, 7, ['20']), (85.0, 1, 'z26m', 'p26#74500', 20, 10, ['10']), (85.0, 1, 'z26m', 'p26#74500', 20, 11, ['10'])]
     max sharing: 2
-(iv) exit targets: {'every exit-target can take def alone': 71, 'some exit-target can': 4}
+(iv) exit targets: {'every exit-target can take def alone': 27, 'no exit-target can (or no exits)': 48}
 {'run': 'z27m', 'name': 'p27#167230', 'hole': 23, 'pattern': '5,5,5,5,6', 'Z': 29, 'gamma': False, 'L': 28, 'w': 4, 'def_prime': '20', 'neighbours': [[0, 0, 4, 0, 0, []], [3, 0, 4, 0, 0, []], [4, 0, 8, 0, 0, []], [7, 0, 8, 0, 0, []], [21, -5, 111, -25, 0, []], [22, -5, 111, -25, 0, []], [42, 0, 56, 0, 0, []], [53, 0, 56, 0, 0, []]]}
 {'run': 'z27m', 'name': 'p27#204626', 'hole': 4, 'pattern': '5,5,5,5,6', 'Z': 12, 'gamma': False, 'L': 28, 'w': 4, 'def_prime': '20', 'neighbours': [[0, -1, 47, -5, 0, []], [1, -1, 47, -5, 0, []], [4, -8, 128, -40, 0, []], [5, -8, 128, -40, 0, []], [31, 0, 4, 0, 0, []], [32, 0, 4, 0, 0, []], [43, 0, 8, 0, 0, []], [44, 0, 8, 0, 0, []]]}

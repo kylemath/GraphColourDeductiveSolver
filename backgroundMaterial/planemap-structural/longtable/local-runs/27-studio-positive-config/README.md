@@ -236,5 +236,6 @@ Positive cycles with def'(Z) > 0 (charge-back form; exits from all DD endpoints)
 - (i) min over Z of max_T |rem(T)| / def'(Z) = 1.25 (p27m #167230 h23: def' 20, best neighbour spare 25); next 2.0 (p27m #204626 h4), 4.0, 4.75; 56 of 75 have ratio >= 20.
 - (ii) every one has a nonpositive sigma-neighbour with w(T) <= -2 (75/75).
 - (iii) in a greedy single-target assignment at most 2 positive cycles share a target; the tightest spare left is 5 (p27m #167230 h23).
-- (iv) every Z has an exit into a nonpositive target that can take def'(Z) alone; in 71/75 EVERY exit-target of Z can (so any canonical choice of exit works there).
-  Exits are recorded in state-index order, not pi-order, so the "first exit in pi-order" form was replaced by this stronger every/some test.
+- (iv) 39 of the 75 have NO lockless exit into a nonpositive target at all (def' = Lambda; e.g. p26 #68224 h23, p27m #167230 h23), so a canonical "first exit" target does
+  not exist for them; their assignment goes to a sigma-neighbour that is not an exit target. Of the 36 with such exits, see jobad-summary.txt for how many have an exit target
+  that can take def'(Z) alone. (Exits are recorded in state-index order, not pi-order.)

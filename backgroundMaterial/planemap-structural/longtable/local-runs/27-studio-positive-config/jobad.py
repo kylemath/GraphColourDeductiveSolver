@@ -29,7 +29,7 @@ for lab in ['z25', 'z25m', 'z26', 'z26m', 'z27', 'z27m']:
             rows = [(t, tg[t]['Lam'] // 5, tg[t]['L'], tg[t]['rem'], len(zx[zid][t]), zx[zid][t]) for t in nb]
             best = max((cap.get(t, 0) for t in nb), default=0); ratio.append((float(best / dp), lab, r['name'], r['hole'], zid, str(dp), rows))
             prof['has w<=-2 neighbour' if any(tg[t]['Lam'] <= -10 for t in nb) else 'NO w<=-2 neighbour'] += 1
-            hit = [t for t in zx[zid] if t in cap]
+            hit = [t for t, v in zx[zid].items() if v and t in cap]
             iv['every exit-target can take def alone' if hit and all(cap[t] >= dp for t in hit) else ('some exit-target can' if any(cap[t] >= dp for t in hit) else ('no exit-target can (or no exits)'))] += 1
             recs.append(dict(run=lab, name=r['name'], hole=r['hole'], pattern=','.join(map(str, pat)), Z=zid, gamma=z['gamma'], L=z['L'], w=z['Lambda'] // 5, def_prime=str(dp), neighbours=rows))
         # (iii): tightest assignment per hole: greedy by largest spare, record sharing
