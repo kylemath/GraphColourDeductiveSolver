@@ -592,3 +592,13 @@ Scope: every hole with a positive π-cycle, orders 25–27, all link patterns, b
 - **(2) Giant cycle** (most negative cycle of the class). Its share of the class's states has min / median / max 0.009 / 0.42 / 0.94; its share of the filled states, 0.02 / 0.44 / 0.95. The median class has 40 π-cycles, the max 182.
 - **(3) It is not giant dominance.** Every positive cycle has giant share ≤ 1 − 1/L(Z). (c) still holds in 10,410 cycles, and the giant is hit in 9,147 of them. A positive cycle's σ-images hit a median of about 4 distinct cycles (1–10+).
 - **(4) Hall on the giant.** In 7,896/8,122 classes, the total Λ of the positive cycles hitting the giant is ≤ −rem(giant); against −Λ(giant) the count is 8,115/8,122. The exceptions are small (5,5,5,5,5) and (5,5,5,5,7) classes where the giant's rem is exactly 0.
+
+## Job BL [exploratory]: σ-image DL-ness at every DL state by local link-degree word (picyc.cpp --jobbl; jobbl/jobbl_summary.py, jobbl-summary.txt; inputs: census orders 12–27 both orientations, jobbl/adversarial.txt = 61 AW hits + AS + AQ)
+Each DL state is keyed by type (Studio frame: R1/R2/R3 from w₀, w₃) and by the degree word d(x_j)…d(x_{j+4}) (capped at 8, so k = the position of the high-degree vertex). The outcome of σ(r) is fixed, DL or not DL.
+- **(1) Census.** R3 DL states: 70.5M with a DL image, 236.8M fixed, 219.8M non-DL. R1: 75.6M DL, R2: 136.9M DL. Per-word tables are in jobbl-summary.txt.
+  - **Only the all-5 word 55555 has 0 DL images at R3** (10.3M states). It is the only R3 word with ≥ 1,000 states and no DL image, out of 778 such words.
+  - At (5,5,5,5,6) the k = 4 word 55556 has DL images on 1,037,102 of 11,897,079 R3 DL states. The k = 3 word 55565 has the identical counts, mirrored by orientation. k = 0 and k = 2 have 248,850 / 4,390,887; k = 1 has 95,672 / 1,849,946.
+  - **So link degrees alone do not give "R3 image never DL at k = 3, 4" on general DL states.** On Γ-cycles it holds (Job BA). The Lean lemmas' K4Ball/K3Ball hypotheses must carry ring-degree or ring-colour content, and NightBudget notes the Studio R3 type is weaker than Lean's R3At at degree 6.
+  - R1 and R2 have no degree-5 condition giving 0 DL images.
+- **(2) Every all-DL π-orbit visits a state with a non-DL σ-image:** census 2,750 / 2,750, adversarial 504 / 504. The minimum number of non-DL images per orbit by pattern is 4 to 12 in the census (4 at (5,5,6,6,7), 6 at (5,5,6,6,6)) and 7 to 10 in the adversarial graphs.
+- **(3) Minimal local condition (link degrees only):** all five link vertices of degree 5. Nothing weaker suffices at R3 over all DL states.
