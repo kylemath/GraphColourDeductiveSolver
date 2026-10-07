@@ -1,0 +1,81 @@
+('Gamma', 0, '---') 76
+('Gamma', 0, '--F') 48
+('Gamma', 1, '---') 114
+('Gamma', 1, 'F--') 9
+('Gamma', 1, 'FF-') 1
+('Gamma', 2, '---') 32
+('Gamma', 2, '--F') 44
+('Gamma', 2, '-F-') 10
+('Gamma', 2, '-FF') 38
+('Gamma', 3, '---') 123
+('Gamma', 3, 'F--') 1
+('Gamma', 4, '---') 22
+('Gamma', 4, '--F') 10
+('Gamma', 4, '-F-') 6
+('Gamma', 4, '-FF') 38
+('Gamma', 4, 'F--') 10
+('Gamma', 4, 'FF-') 38
+('Gamma', 5, '---') 123
+('Gamma', 5, '--F') 1
+('Gamma', 6, '---') 32
+('Gamma', 6, '-F-') 10
+('Gamma', 6, 'F--') 44
+('Gamma', 6, 'FF-') 38
+('Gamma', 7, '---') 114
+('Gamma', 7, '--F') 9
+('Gamma', 7, '-FF') 1
+('Gamma', 8, '---') 76
+('Gamma', 8, 'F--') 48
+('Gamma', 9, '---') 114
+('Gamma', 9, '-F-') 8
+('Gamma', 9, '-FF') 1
+('Gamma', 9, 'FF-') 1
+('open', 0, '---') 30
+('open', 0, '--F') 19
+('open', 1, '---') 45
+('open', 1, '--F') 1
+('open', 1, 'F--') 11
+('open', 2, '---') 9
+('open', 2, '--F') 25
+('open', 2, '-F-') 5
+('open', 2, '-FF') 24
+('open', 3, '---') 62
+('open', 3, '--F') 4
+('open', 3, 'F-F') 1
+('open', 4, '--F') 9
+('open', 4, '-F-') 6
+('open', 4, '-FF') 27
+('open', 4, 'F--') 9
+('open', 4, 'F-F') 6
+('open', 4, 'FF-') 27
+('open', 4, 'FFF') 16
+('open', 5, '---') 62
+('open', 5, 'F--') 4
+('open', 5, 'F-F') 1
+('open', 6, '---') 9
+('open', 6, '-F-') 5
+('open', 6, 'F--') 25
+('open', 6, 'FF-') 24
+('open', 7, '---') 45
+('open', 7, '--F') 11
+('open', 7, 'F--') 1
+('open', 8, '---') 30
+('open', 8, 'F--') 19
+('open', 9, '---') 42
+('open', 9, '-F-') 8
+full 5-patterns with >=3 F:
+  ('Gamma', 'window5 from pos', 0, '-F-FF') 1
+  ('Gamma', 'window5 from pos', 1, 'F-FF-') 1
+  ('Gamma', 'window5 from pos', 2, '-FF-F') 1
+  ('Gamma', 'window5 from pos', 3, 'FF-F-') 1
+  ('Gamma', 'window5 from pos', 5, '-F-FF') 1
+  ('Gamma', 'window5 from pos', 6, 'F-FF-') 1
+  ('Gamma', 'window5 from pos', 7, '-FF-F') 1
+  ('Gamma', 'window5 from pos', 8, 'FF-F-') 1
+  ('open', 'window5 from pos', 3, '-F-FF') 1
+  ('open', 'window5 from pos', 3, 'FF-FF') 1
+  ('open', 'window5 from pos', 4, '-FF-F') 1
+  ('open', 'window5 from pos', 4, 'F-F-F') 16
+  ('open', 'window5 from pos', 4, 'F-FF-') 1
+  ('open', 'window5 from pos', 5, 'FF-F-') 1
+  ('open', 'window5 from pos', 5, 'FF-FF') 1
