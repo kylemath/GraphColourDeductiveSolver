@@ -63,3 +63,17 @@ All 64 IPR/bigsample positive holes pass. Per-pattern max group size and cross-c
   (p25 #20076 h19, (5,5,6,6,6), plantri orientation: a = 0, b = 2). Target cycles are often shared between Gamma-cycles (16 / 56 holes).
 - S4: single-lock exits land on excursions with f = 1 and u in {3, 4} (k = 3, 4), occasionally u = 6, 7, 10 at k in {0,1,2}: no local credit, as predicted.
 - S5: at (5,5,5,5,5) every lockless exit has f = 3 (350 at order 25, 1,010 at order 26, per orientation).
+
+## Per-class orientation check and Job D (`picyc.new --full`, `jobd.py` -> jobd-summary.txt), orders 12-26, both orientations
+- 4,039,276 hole-runs, 4,203,140 classes. Per class: Theorem W 0 failures; no pi-cycle crosses a class; F5 identity sum lambda = |DD| - 2N0 - E2 - 3#tau: 0 failures.
+- Orientation: for all 2,019,638 holes the multiset of (class size, F, sum w) is identical in the two orientations: 0 mismatches.
+- Job D table (min over classes of 2N0-DD, 2N0+E2-DD, 2N0+3tau-DD, 2N0+E2+3tau-DD per pattern; first failing class per bound) in jobd-summary.txt.
+  The full bound has min 0 at every pattern (the floor). F5-type (2N0 alone): (5,5,5,5,5), (5,5,7,5,7), (5,5,5,7,7), (5,5,7,5,8+) and rarer all->=7 patterns;
+  F6-type (2N0+3tau): (5,5,5,5,6), (5,5,6,6,6), (5,6,6,6,6), (5,6,5,6,7), ...; E2 also needed: (5,5,5,6,6), (5,5,6,5,6), (5,5,5,5,7), (5,5,5,5,8+), (5,6,5,6,6), ...
+
+## Job H: sigma'-groups (`--jobh`, `jobh.py` -> jobh-summary.txt)
+sigma' = every link-free swap from a DD-step endpoint whose result is not DL (= lock-breaking = gluing, NightLockBreaking Lemma 1.2). H1: sigma' only; H2: sigma' plus sigma at R3 endpoints.
+- **Both hold everywhere**: orders 24-26 both orientations (3,950,194 hole-runs, about 100 million groups) and all 64 IPR/bigsample positive holes: 0 failing groups.
+- Non-trivial: only 1,355 (H1) / 1,581 (H2) of 3.95M holes are a single group; max group 30-111 cycles per pattern at orders <= 26 (5,075 / 46,467 cycles at IPR / bigsample).
+- Fraction of DD endpoints with a sigma'-exit to another cycle: 50-58% per pattern at orders 24-26; 73.5% at IPR holes, 81% at the bigsample hole.
+- Job F's sigma-C counterexample (p26 #70869 h11) passes H1 and H2.
