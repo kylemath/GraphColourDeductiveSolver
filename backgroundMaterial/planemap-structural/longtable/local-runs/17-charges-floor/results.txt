@@ -1,0 +1,229 @@
+classes 2469 floor 419 {17: 2, 21: 2, 22: 11, 23: 129, 24: 275}
+floor classes with the exact 4-block structure (F, U at j=i+1, U at j=i+2, DL at j=i+4, each F states): 405 of 419
+
+== Q1: filled states, capped charge and folding degree
+states 391173 filled 192117 ; sign q(v) = eps_F (chirality of (missing, singleton, x_{i+1}, x_{i+2})) failures: 0
+identity eps*W_G = 4*sigma*deg - 3 (W_G = signed face count of G) holds for every filled state (asserted)
+eps*W mod 4 over all states, by type (F/U/D): {('F', 1): 192117, ('U', 3): 160362, ('D', 3): 38694} => for filled states tau = (W+3)/4 is the integer sigma*deg; unfilled states have W = 3 mod 4 (no integer degree: (W+3)/4 is a half-integer)
+canonical-gauge split by sign q(v) {'non-floor: canonical-gauge unbalanced': 1932, 'non-floor: canonical-gauge |F+ - F-|==0': 118, 'floor: canonical-gauge unbalanced': 369, 'floor: canonical-gauge |F+ - F-|==0': 50}
+gauge-free split by sign of tau = sigma*deg {'non-floor: tau-signs unbalanced': 2024, 'non-floor: tau>0 count == tau<0 count': 26, 'floor: tau-signs unbalanced': 357, 'floor: tau>0 count == tau<0 count': 62}
+degree parity {'non-floor: both degree parities in class': 1707, 'non-floor: one parity': 343, 'floor: both degree parities in class': 12, 'floor: one parity': 407}
+tau of the single filled state in the 319 floor classes with F=1: {-4: 7, -3: 13, -2: 21, -1: 45, 0: 41, 1: 68, 2: 31, 3: 61, 4: 14, 5: 16, 6: 1, 7: 1}
+floor {'classes': 419, 'deg0_somewhere': 82, 'all_tau_equal': 327}
+non-floor {'classes': 2050, 'deg0_somewhere': 1871, 'all_tau_equal': 12}
+
+== block sums of W = eps*W_G (gauge free, integer for every state; for filled states W = 4*tau - 3)
+relations among (class sums of W over F, over non-DL unfilled, over DL; counts F, U, D) -- all classes: []
+   floor classes only: [{'sumW_F': 0, 'sumW_U': 0, 'sumW_D': 0, 'nF': -3, 'nU': 1, 'nD': 1}]
+  [sum_U W + sum_D W == sum_F W] by (is floor class, holds): {(False, False): 2034, (False, True): 16, (True, False): 7, (True, True): 412}
+  floor classes where it fails:
+    order 17 gentri 1 hole 0 size 64 F 16 (sumW_F,sumW_U,sumW_D) (16, 86, -22) defect 48
+    order 17 gentri 1 hole 2 size 64 F 16 (sumW_F,sumW_U,sumW_D) (16, 86, -22) defect 48
+    order 24 gentri 1055 hole 16 size 192 F 48 (sumW_F,sumW_U,sumW_D) (48, 136, 8) defect 96
+    order 24 gentri 1411 hole 13 size 144 F 36 (sumW_F,sumW_U,sumW_D) (-76, -84, 104) defect 96
+    order 24 gentri 1411 hole 17 size 144 F 36 (sumW_F,sumW_U,sumW_D) (-76, -84, 104) defect 96
+    order 24 gentri 4699 hole 15 size 16 F 4 (sumW_F,sumW_U,sumW_D) (4, 32, -4) defect 24
+    order 24 gentri 5067 hole 14 size 16 F 4 (sumW_F,sumW_U,sumW_D) (20, 32, 12) defect 24
+  non-floor classes where it holds:
+    order 19 gentri 5 hole 16 size 160 F 80 fraction 1/2
+    order 19 gentri 10 hole 16 size 160 F 80 fraction 1/2
+    order 20 gentri 4 hole 14 size 184 F 106 fraction 53/92
+    order 20 gentri 14 hole 1 size 176 F 84 fraction 21/44
+    order 20 gentri 14 hole 5 size 176 F 84 fraction 21/44
+    order 20 gentri 30 hole 19 size 176 F 74 fraction 37/88
+    order 20 gentri 31 hole 4 size 168 F 72 fraction 3/7
+    order 20 gentri 38 hole 11 size 168 F 72 fraction 3/7
+    order 20 gentri 38 hole 12 size 168 F 72 fraction 3/7
+    order 20 gentri 44 hole 0 size 224 F 96 fraction 3/7
+    order 23 gentri 1470 hole 11 size 440 F 190 fraction 19/44
+    order 23 gentri 1586 hole 17 size 356 F 169 fraction 169/356
+    order 24 gentri 887 hole 14 size 432 F 228 fraction 19/36
+    order 24 gentri 887 hole 15 size 432 F 228 fraction 19/36
+    order 24 gentri 1064 hole 20 size 192 F 88 fraction 11/24
+    order 24 gentri 4087 hole 12 size 448 F 192 fraction 3/7
+  4-block floor classes obeying it: 403 of 405
+  of the 319 classes with F=1 (4 states): W_F = W_U1+W_U2+W_DL in 319
+
+== Q2: block sums of gauge-fixed charges in the four floor blocks (position frame: Qk = eps*q_G(x_{i+k}), i = singleton position of the filled block)
+   roles: block U1 has repeat pair {i+1,i+3}: m=x_{i+2}, a=x_{i+4}, b=x_i; block U2 pair {i+2,i+4}: m=x_{i+3}, a=x_i, b=x_{i+1}; DL pair {i+4,i+1}: m=x_i, a=x_{i+2}, b=x_{i+3}.
+  W        regular (W-balanced) 4-block classes     null-space dim 1: [{'S_F': -1, 'S_U1': 1, 'S_U2': 1, 'S_DL': 1, '#F': 0}]
+  sumL     regular (W-balanced) 4-block classes     null-space dim 0: []
+  posn     regular (W-balanced) 4-block classes     null-space dim 0: []
+  sqL      regular (W-balanced) 4-block classes     null-space dim 0: []
+  one      all 4-block classes                      null-space dim 4: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 0, '#F': 1}]
+  one      regular (W-balanced) 4-block classes     null-space dim 4: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 0, '#F': 1}]
+  Q0       regular (W-balanced) 4-block classes     null-space dim 0: []
+  Q0^2     regular (W-balanced) 4-block classes     null-space dim 0: []
+  Q0Q1     regular (W-balanced) 4-block classes     null-space dim 0: []
+  Q1       all 4-block classes                      null-space dim 3: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': 1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q1       regular (W-balanced) 4-block classes     null-space dim 3: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': 1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q1^2     all 4-block classes                      null-space dim 3: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q1^2     regular (W-balanced) 4-block classes     null-space dim 3: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q1Q2     all 4-block classes                      null-space dim 1: [{'S_F': 0, 'S_U1': 0, 'S_U2': -1, 'S_DL': 1, '#F': 0}]
+  Q1Q2     regular (W-balanced) 4-block classes     null-space dim 1: [{'S_F': 0, 'S_U1': 0, 'S_U2': -1, 'S_DL': 1, '#F': 0}]
+  Q2       all 4-block classes                      null-space dim 2: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': 0, 'S_U2': 1, 'S_DL': 1, '#F': 0}]
+  Q2       regular (W-balanced) 4-block classes     null-space dim 2: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': 0, 'S_U2': 1, 'S_DL': 1, '#F': 0}]
+  Q2^2     all 4-block classes                      null-space dim 2: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': 0, 'S_U2': -1, 'S_DL': 1, '#F': 0}]
+  Q2^2     regular (W-balanced) 4-block classes     null-space dim 2: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': 0, 'S_U2': -1, 'S_DL': 1, '#F': 0}]
+  Q2Q3     regular (W-balanced) 4-block classes     null-space dim 0: []
+  Q3       all 4-block classes                      null-space dim 2: [{'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': 1, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q3       regular (W-balanced) 4-block classes     null-space dim 2: [{'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': 1, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q3^2     all 4-block classes                      null-space dim 2: [{'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': -1, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q3^2     regular (W-balanced) 4-block classes     null-space dim 2: [{'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': 0, 'S_U1': -1, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q3Q4     all 4-block classes                      null-space dim 1: [{'S_F': 0, 'S_U1': -1, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q3Q4     regular (W-balanced) 4-block classes     null-space dim 1: [{'S_F': 0, 'S_U1': -1, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q4       all 4-block classes                      null-space dim 3: [{'S_F': 1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q4       regular (W-balanced) 4-block classes     null-space dim 3: [{'S_F': 1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q4^2     all 4-block classes                      null-space dim 3: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q4^2     regular (W-balanced) 4-block classes     null-space dim 3: [{'S_F': -1, 'S_U1': 1, 'S_U2': 0, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 1, 'S_DL': 0, '#F': 0}, {'S_F': -1, 'S_U1': 0, 'S_U2': 0, 'S_DL': 1, '#F': 0}]
+  Q4Q0     regular (W-balanced) 4-block classes     null-space dim 0: []
+  classes (of 405) where the filled-block sum of Qk is nonzero (so the sign-flip relations are not vacuous): {'Q1': 405, 'Q4': 404, 'Q2': 221, 'Q3': 227}
+  signs of block sums (gauge-fixed, so meaningful): {('S_DL(Q0) sign', -1): 31, ('S_DL(Q0) sign', 0): 279, ('S_DL(Q0) sign', 1): 95, ('S_F(Q0) sign', -1): 145, ('S_F(Q0) sign', 0): 5, ('S_F(Q0) sign', 1): 255, ('S_F(Q1) sign', -1): 179, ('S_F(Q1) sign', 1): 226, ('S_F(Q2) sign', -1): 114, ('S_F(Q2) sign', 0): 184, ('S_F(Q2) sign', 1): 107, ('S_F(Q3) sign', -1): 117, ('S_F(Q3) sign', 0): 178, ('S_F(Q3) sign', 1): 110, ('S_F(Q4) sign', -1): 186, ('S_F(Q4) sign', 0): 1, ('S_F(Q4) sign', 1): 218}
+  per-state: Q_k constant inside a block (fraction of classes):
+    {'DL Q0': '374/405', 'DL Q1': '366/405', 'DL Q2': '379/405', 'DL Q3': '380/405', 'DL Q4': '371/405', 'F Q0': '370/405', 'F Q1': '366/405', 'F Q2': '388/405', 'F Q3': '381/405', 'F Q4': '371/405', 'U1 Q0': '370/405', 'U1 Q1': '366/405', 'U1 Q2': '388/405', 'U1 Q3': '380/405', 'U1 Q4': '371/405', 'U2 Q0': '366/405', 'U2 Q1': '366/405', 'U2 Q2': '379/405', 'U2 Q3': '381/405', 'U2 Q4': '371/405'}
+  value relations (block-constant cases):  {(2, 'U1=F', '-', '-'): 378, (3, '-', 'U2=F', '-'): 377, (4, 'U1=-F', 'U2=F', 'DL=F'): 371, (1, 'U1=F', 'U2=-F', 'DL=F'): 366, (0, '-', '-', '-'): 131, (0, 'U1=-F', 'U2=-F', '-'): 83, (0, '-', 'U2=-F', '-'): 73, (0, 'U1=-F', '-', '-'): 71}
+
+== Q3: exact identities  sum_states(stat) = linear combination of F, U (non-DL unfilled), D (DL) counts
+ -- subset: all classes 2469
+  [all classes / all states] RAW_pos_faces_at_link    null-space dim 0 []
+  [all classes / all states] RAW_sumL_partial         null-space dim 0 []
+  [all classes / all states] W_gauge                  null-space dim 0 []
+  [all classes / all states] W_sq                     null-space dim 0 []
+  [all classes / all states] pos_faces_at_link        null-space dim 0 []
+  [all classes / all states] sumL_partial             null-space dim 0 []
+  [all classes / all states] sumL_sq                  null-space dim 0 []
+  [all classes / all states] sum_adjacent_products    null-space dim 0 []
+  [all classes / unfilled roles] Q_a                      null-space dim 0 []
+  [all classes / unfilled roles] Q_alpha1                 null-space dim 0 []
+  [all classes / unfilled roles] Q_alpha2                 null-space dim 0 []
+  [all classes / unfilled roles] Q_b                      null-space dim 0 []
+  [all classes / unfilled roles] Q_m                      null-space dim 0 []
+  [all classes / unfilled roles] QaQb                     null-space dim 0 []
+  [all classes / unfilled roles] Qa^2                     null-space dim 0 []
+  [all classes / unfilled roles] Qb^2                     null-space dim 0 []
+  [all classes / unfilled roles] QmQa                     null-space dim 0 []
+  [all classes / unfilled roles] QmQb                     null-space dim 0 []
+  [all classes / unfilled roles] Qm^2                     null-space dim 0 []
+  [all classes / unfilled roles] RAW_q_a                  null-space dim 0 []
+  [all classes / unfilled roles] RAW_q_b                  null-space dim 0 []
+  [all classes / unfilled roles] RAW_q_m                  null-space dim 0 []
+  [all classes / filled positions] Q0_full                  null-space dim 0 []
+  [all classes / filled positions] Q0_partial               null-space dim 0 []
+  [all classes / filled positions] Q1_full                  null-space dim 0 []
+  [all classes / filled positions] Q1_partial               null-space dim 0 []
+  [all classes / filled positions] Q2_full                  null-space dim 0 []
+  [all classes / filled positions] Q2_partial               null-space dim 0 []
+  [all classes / filled positions] Q3_full                  null-space dim 0 []
+  [all classes / filled positions] Q3_partial               null-space dim 0 []
+  [all classes / filled positions] Q4_full                  null-space dim 0 []
+  [all classes / filled positions] Q4_partial               null-space dim 0 []
+  [all classes / filled positions] Qv(=3)                   null-space dim 1 [{'S_F': -1, '#F': 3, '#U': 0, '#D': 0}]
+  [all classes / filled positions] tau=deg*sigma            null-space dim 0 []
+ -- subset: floor classes 419
+  [floor classes / all states] RAW_pos_faces_at_link    null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / all states] RAW_sumL_partial         null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / all states] W_gauge                  null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / all states] W_sq                     null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / all states] pos_faces_at_link        null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / all states] sumL_partial             null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / all states] sumL_sq                  null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / all states] sum_adjacent_products    null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Q_a                      null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Q_alpha1                 null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Q_alpha2                 null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Q_b                      null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Q_m                      null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] QaQb                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Qa^2                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Qb^2                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] QmQa                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] QmQb                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] Qm^2                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] RAW_q_a                  null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] RAW_q_b                  null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / unfilled roles] RAW_q_m                  null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q0_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q0_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q1_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q1_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q2_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q2_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q3_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q3_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q4_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Q4_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] Qv(=3)                   null-space dim 2 [{'S_F': -1, '#F': 3, '#U': 0, '#D': 0}, {'S_F': -1, '#F': 0, '#U': 1, '#D': 1}]
+  [floor classes / filled positions] tau=deg*sigma            null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+ -- subset: floor classes with W balance (412) 412
+  [floor classes with W balance (412) / all states] RAW_pos_faces_at_link    null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / all states] RAW_sumL_partial         null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / all states] W_gauge                  null-space dim 2 [{'S_F': -1, 'S_U': 1, 'S_D': 1, '#F': 0, '#U': 0, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / all states] W_sq                     null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / all states] pos_faces_at_link        null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / all states] sumL_partial             null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / all states] sumL_sq                  null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / all states] sum_adjacent_products    null-space dim 1 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Q_a                      null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Q_alpha1                 null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Q_alpha2                 null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Q_b                      null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Q_m                      null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] QaQb                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Qa^2                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Qb^2                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] QmQa                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] QmQb                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] Qm^2                     null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] RAW_q_a                  null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] RAW_q_b                  null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / unfilled roles] RAW_q_m                  null-space dim 1 [{'S_U': 0, 'S_D': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q0_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q0_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q1_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q1_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q2_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q2_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q3_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q3_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q4_full                  null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Q4_partial               null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] Qv(=3)                   null-space dim 2 [{'S_F': -1, '#F': 3, '#U': 0, '#D': 0}, {'S_F': -1, '#F': 0, '#U': 1, '#D': 1}]
+  [floor classes with W balance (412) / filled positions] tau=deg*sigma            null-space dim 1 [{'S_F': 0, '#F': -3, '#U': 1, '#D': 1}]
+ -- subset: 4-block classes 405
+  [4-block classes / all states] RAW_pos_faces_at_link    null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / all states] RAW_sumL_partial         null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / all states] W_gauge                  null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / all states] W_sq                     null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / all states] pos_faces_at_link        null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / all states] sumL_partial             null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / all states] sumL_sq                  null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / all states] sum_adjacent_products    null-space dim 2 [{'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, 'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Q_a                      null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Q_alpha1                 null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Q_alpha2                 null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Q_b                      null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Q_m                      null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] QaQb                     null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Qa^2                     null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Qb^2                     null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] QmQa                     null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] QmQb                     null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] Qm^2                     null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] RAW_q_a                  null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] RAW_q_b                  null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / unfilled roles] RAW_q_m                  null-space dim 2 [{'S_U': 0, 'S_D': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_U': 0, 'S_D': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q0_full                  null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q0_partial               null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q1_full                  null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q1_partial               null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q2_full                  null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q2_partial               null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q3_full                  null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q3_partial               null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q4_full                  null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Q4_partial               null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+  [4-block classes / filled positions] Qv(=3)                   null-space dim 3 [{'S_F': -1, '#F': 3, '#U': 0, '#D': 0}, {'S_F': -2, '#F': 0, '#U': 3, '#D': 0}, {'S_F': -1, '#F': 0, '#U': 0, '#D': 3}]
+  [4-block classes / filled positions] tau=deg*sigma            null-space dim 2 [{'S_F': 0, '#F': -2, '#U': 1, '#D': 0}, {'S_F': 0, '#F': -1, '#U': 0, '#D': 1}]
+
+== Q4: does a charge quantity predict the filled fraction?
+(is floor class, defect sum_U W + sum_D W - sum_F W == 0): {(False, False): 2034, (False, True): 16, (True, False): 7, (True, True): 412}
