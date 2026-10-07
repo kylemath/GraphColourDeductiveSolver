@@ -582,3 +582,13 @@ Scope: every Γ-cycle Z in the hole's Kempe classes, using all states (lib26.Eng
 | min class F/N (hit < 1/4) | 0.54 … 0.38 | **exactly 1/4** (many seeds) | 0 |
 
   The F/N = 1/4 classes are tiny extra Kempe classes, N = 4 with F = 1 or N = 16 with F = 4, with Σλ = 0. They are the floor's equality case; the main class stays at F/N ≈ 0.40–0.43. **SigmaUnionC, "every Γ-cycle has a non-DL σ-image" and the quarter floor all survive adversarial search at degree 6.**
+
+## Job BK [exploratory]: statement (c) and the giant cycle on the whole census (picyc.cpp --jobbk; jobbk/jobbk_summary.py, jobbk-summary.txt; out/bk{25,26,27}{,m}.jsonl)
+Scope: every hole with a positive π-cycle, orders 25–27, all link patterns, both orientations. That is 10,412 positive cycles, 2,728 of them Γ-cycles, in 8,122 Kempe classes.
+- **(1) Statement (c)** ("some σ-image of a state of Z lands on T with Λ(T) ≤ −Λ(Z)").
+  - **On Γ-cycles it holds 2,728/2,728.** The minimum best-target ratio −Λ(T)/Λ(Z) is **4/3**, at p25#17650 h3 ((5,5,5,5,5), L = 60, w = 12). At (5,5,5,5,6) Γ-cycles the minimum is 4.0 (p26#87887 h21 L = 60; p27#192490 h20 L = 40).
+  - **On all positive cycles it fails 2/10,412.** Both are non-Γ cycles with ratio 0.5: p27#130462 h20 ((5,5,6,5,7), w = 2, L = 14) and p27#176586 h8 ((5,5,8+,5,8+), w = 4, L = 28).
+  - Restricted to DD-endpoint images it fails on 22 non-Γ cycles, mostly at (5,6,5,6,*) with w = 1–2.
+- **(2) Giant cycle** (most negative cycle of the class). Its share of the class's states has min / median / max 0.009 / 0.42 / 0.94; its share of the filled states, 0.02 / 0.44 / 0.95. The median class has 40 π-cycles, the max 182.
+- **(3) It is not giant dominance.** Every positive cycle has giant share ≤ 1 − 1/L(Z). (c) still holds in 10,410 cycles, and the giant is hit in 9,147 of them. A positive cycle's σ-images hit a median of about 4 distinct cycles (1–10+).
+- **(4) Hall on the giant.** In 7,896/8,122 classes, the total Λ of the positive cycles hitting the giant is ≤ −rem(giant); against −Λ(giant) the count is 8,115/8,122. The exceptions are small (5,5,5,5,5) and (5,5,5,5,7) classes where the giant's rem is exactly 0.
