@@ -77,3 +77,11 @@ sigma' = every link-free swap from a DD-step endpoint whose result is not DL (= 
 - Non-trivial: only 1,355 (H1) / 1,581 (H2) of 3.95M holes are a single group; max group 30-111 cycles per pattern at orders <= 26 (5,075 / 46,467 cycles at IPR / bigsample).
 - Fraction of DD endpoints with a sigma'-exit to another cycle: 50-58% per pattern at orders 24-26; 73.5% at IPR holes, 81% at the bigsample hole.
 - Job F's sigma-C counterexample (p26 #70869 h11) passes H1 and H2.
+
+## Job I: lockless sigma-exits at (5,5,5,5,6) / (5,5,5,6,6) holes, orders 25-26, both orientations (`--jobi`, `jobi.py` -> jobi-summary.txt, jobi-cycles.jsonl)
+- Gamma-cycles: min f of a lockless exit's target excursion is 1 (not 3 as at (5,5,5,5,5)); f = 3 in about 85% of exits, f = 1 or 2 otherwise, one f = 5. Targets are always u = 1 excursions.
+- Distinct targets: sigma is an involution, so distinct R3 states give distinct lockless images, i.e. distinct u = 1 excursions (holds in the data by construction).
+- Lockless exits per Gamma-cycle: a in {5,...,10} for L = 20 and a = 30 for L = 60; always a >= L/4 (min a/L = 1/4, at p25 #16945 h3, p26 #87942 h22).
+- Non-Gamma cycles are NOT all nonpositive at order 25: positive non-Gamma cycles exist at these holes (orders 25 / 26: 7 / 20 plantri, 7 / 25 mirror); first p25 #8775 h15 (5,6,5,5,5), L 34, w +2.
+  Positive non-Gamma cycles with NO lockless exit: 5 (order 26 plantri) and 7 records (order 26 mirror; one cycle pair duplicated in the hole), none at order 25;
+  e.g. p26 #7490 h3 (5,6,6,5,5), L 26, w +2: all 7 DL R3 states have DL exits (5 fixed points); p26 #43605 h3 (5,5,5,6,5), L 14, w +2: 3 DL + 3 single-lock exits.

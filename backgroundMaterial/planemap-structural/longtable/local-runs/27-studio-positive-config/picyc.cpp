@@ -46,7 +46,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -150,6 +150,7 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
     if (JOBE || SIGC || JOBG || JOBH) {   // JOBE: only (5,5,5,5,6) and (5,5,5,6,6) holes; SIGC: every hole (cyclic, up to reflection, degrees capped at 8)
         int d[5]; for (int t = 0; t < 5; t++) d[t] = std::min((int)rot[L[t]].size(), 8);
         std::vector<int> best; for (int rf = 0; rf < 2; rf++) for (int r = 0; r < 5; r++) { std::vector<int> v(5); for (int t = 0; t < 5; t++) v[t] = rf ? d[(r - t + 10) % 5] : d[(r + t) % 5]; if (best.empty() || v < best) best = v; }
+        if (JOBI && !(best == std::vector<int>{5, 5, 5, 5, 6} || best == std::vector<int>{5, 5, 5, 6, 6})) return;
         if (SIGC || JOBG || JOBH) { for (int t = 0; t < 5; t++) { if (t) jpat += ","; jpat += best[t] >= 8 ? std::string("8+") : std::to_string(best[t]); } }
         else if (best == std::vector<int>{5, 5, 5, 5, 6}) jpat = "5,5,5,5,6"; else if (best == std::vector<int>{5, 5, 5, 6, 6}) jpat = "5,5,5,6,6"; else return;
     }
@@ -283,9 +284,9 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 long long st = x, guard = 0; while (kind[pinv[st]] != 0 && guard < S) { st = pinv[st]; guard++; } if (guard >= S) { u = cycles[cyc[x]].size(); f = 0; return; }
                 u = 0; long long y = st; while (kind[y] != 0) { u++; y = pi[y]; } f = 0; while (kind[y] == 0) { f++; y = pi[y]; } };
             std::string g = ", \"jobg\": ["; bool fg = true; std::map<int, int> target_owner; long long shared_targets = 0;
-            for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all) continue;
+            for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all && !(JOBI && wind[ci] > 0)) continue;
                 long long a = 0, b = 0, d = 0, credit = 0, s1bad = 0, s1n = 0; std::map<std::string, long long> h; std::set<int> tg;
-                for (int32_t x : cycles[ci]) { int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (ty != 3) continue;
+                for (int32_t x : cycles[ci]) { if (kind[x] != 2) continue; int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (ty != 3) continue;
                     unkey(ALL[x], c); masks(c, cm); int lc[5]; for (int t = 0; t < 5; t++) lc[t] = c[link_[t]];
                     int al = lc[j], mu = lc[(j + 1) % 5], A = lc[(j + 3) % 5], B = lc[(j + 4) % 5]; int m = link_[(j + 1) % 5];
                     bool crit3 = flood(1ULL << m, cm[mu] | cm[B]) >> widx[(j + 2) % 5] & 1, crit4 = flood(1ULL << m, cm[mu] | cm[A]) >> widx[(j + 4) % 5] & 1;
@@ -296,8 +297,8 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                     else if (kd == 1) { b++; long long u, f; excursion(sg, u, f); tg.insert(cyc[sg]); snprintf(key, sizeof key, "onelock_k%d_L%d%d_u%lld_f%lld_wT%lld", km, l1, l2, u, f, wind[cyc[sg]]); h[key]++; }
                     else { snprintf(key, sizeof key, "filled_k%d", km); h[key]++; } }
                 for (int t : tg) { auto it = target_owner.find(t); if (it != target_owner.end() && it->second != (int)ci) shared_targets++; else target_owner[t] = ci; }
-                char b1[256]; snprintf(b1, sizeof b1, "%s{\"L\": %zu, \"w\": %lld, \"a\": %lld, \"b\": %lld, \"d\": %lld, \"G_credit\": %lld, \"G_ok\": %s, \"s1_checked\": %lld, \"s1_bad\": %lld, \"exits\": {",
-                    fg ? "" : ", ", cycles[ci].size(), wind[ci], a, b, d, credit, credit >= (long long)cycles[ci].size() ? "true" : "false", s1n, s1bad); g += b1; fg = false;
+                char b1[300]; snprintf(b1, sizeof b1, "%s{\"gamma\": %s, \"L\": %zu, \"w\": %lld, \"a\": %lld, \"b\": %lld, \"d\": %lld, \"G_credit\": %lld, \"G_ok\": %s, \"s1_checked\": %lld, \"s1_bad\": %lld, \"exits\": {",
+                    fg ? "" : ", ", all ? "true" : "false", cycles[ci].size(), wind[ci], a, b, d, credit, credit >= (long long)cycles[ci].size() ? "true" : "false", s1n, s1bad); g += b1; fg = false;
                 bool f2 = true; for (auto &kv : h) { char b2[200]; snprintf(b2, sizeof b2, "%s\"%s\": %lld", f2 ? "" : ", ", kv.first.c_str(), kv.second); g += b2; f2 = false; }
                 g += "}}"; }
             char b3[64]; snprintf(b3, sizeof b3, "], \"jobg_shared_targets\": %lld", shared_targets); g += b3;
@@ -370,7 +371,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;
