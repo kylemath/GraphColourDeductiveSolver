@@ -38,8 +38,13 @@ otherwise (`nonposOrbits`).
 * `sigmaC_of_def_rem`: `def ≤ 0` on positive orbits (Lemma S) and `rem ≤ 0` on nonpositive
   orbits (Lemma R) give `Σ_g λ ≤ 0`; `sigmaC_of_def_rem_groups`: per `σ`-group, they give `SigmaC P`.
 
-`ExcPartition P T X` is not proved here: it says that `X` is a set of excursions with
-starts in `T`, covering the unfilled states of `T`, with `Σ_T λ = Σ_X excMass`.
+* `excPartition_of_mixed`: the hypothesis is discharged for every **mixed** orbit (one unfilled
+  and one filled state) with `X = excursionsOf P T`, all excursions starting in `T`: they cover
+  the unfilled states and `Σ_T λ = Σ excMass` (each filled run is attached to the unfilled run
+  before it; the intervals between consecutive starts partition one period).
+* `rem` by orbit kind: `rem_eq_unhit_mixed` (no hypothesis); `rem_of_allFilled`
+  (no exit enters, `rem = Λ ≤ 0`); `rem_of_allUnfilled` (`Γ`-cycles: a lockless state has a filled
+  successor, so no exit enters and `rem = Λ`).
 -/
 
 @[expose] public section
@@ -323,6 +328,301 @@ theorem rem_eq_unhit (hp : ∀ d ∈ g, ProperOff M.graph h d) {T : Finset (Fin 
     ← Finset.sum_filter_add_sum_filter_not X
       (fun x => ∃ e ∈ exits P g, InExc P x.1 x.2.1 x.2.2 e.2)]
   ring
+
+/-! ### The excursion partition of an orbit -/
+
+section partition
+variable (P) in
+/-- `d` starts an excursion: `d` is unfilled and its `π`-predecessor is filled. -/
+def IsStart (d : Fin n → Fin 4) : Prop :=
+  ¬ Target M.graph h d ∧ Target M.graph h (piInv P d)
+
+open Classical in
+variable (P) in
+/-- All excursions `(e, u, f)` starting in `T` (with `u, f ≤ |T|`). -/
+noncomputable def excursionsOf (T : Finset (Fin n → Fin 4)) :
+    Finset ((Fin n → Fin 4) × ℕ × ℕ) :=
+  (T ×ˢ (Finset.range (T.card + 1) ×ˢ Finset.range (T.card + 1))).filter
+    (fun x => Excursion P x.1 x.2.1 x.2.2)
+
+variable {e : Fin n → Fin 4} {u f u' f' : ℕ}
+
+lemma excursion_u_unique (E : Excursion P e u f) (E' : Excursion P e u' f') : u = u' := by
+  rcases lt_trichotomy u u' with hl | rfl | hl
+  · exact absurd (E.fil u le_rfl (by have := E.f_pos; omega)) (E'.unf u hl)
+  · rfl
+  · exact absurd (E'.fil u' le_rfl (by have := E'.f_pos; omega)) (E.unf u' hl)
+
+lemma piInv_iter_succ (hc : ProperOff M.graph h c) (k : ℕ) :
+    piInv P ((piMove P)^[k + 1] c) = (piMove P)^[k] c := by
+  rw [Function.iterate_succ_apply']
+  exact piInv_piMove (iter_properOff hc k)
+
+lemma Excursion.isStart (E : Excursion P e u f) : IsStart P e :=
+  ⟨E.unf 0 E.u_pos, E.prev⟩
+
+/-- The state after an excursion starts the next one. -/
+lemma Excursion.end_isStart (E : Excursion P e u f) : IsStart P ((piMove P)^[u + f] e) := by
+  refine ⟨E.next, ?_⟩
+  have u1 := E.u_pos
+  obtain ⟨t, ht⟩ : ∃ t, u + f = t + 1 := ⟨u + f - 1, by omega⟩
+  rw [ht, piInv_iter_succ E.proper]
+  exact E.fil t (by have := E.f_pos; omega) (by omega)
+
+/-- No excursion starts strictly inside another. -/
+lemma Excursion.not_isStart (E : Excursion P e u f) {t : ℕ} (h0 : 0 < t) (ht : t < u + f) :
+    ¬ IsStart P ((piMove P)^[t] e) := by
+  rintro ⟨hU, hF⟩
+  obtain ⟨t', rfl⟩ : ∃ t', t = t' + 1 := ⟨t - 1, by omega⟩
+  rw [piInv_iter_succ E.proper] at hF
+  by_cases htu : t' + 1 < u
+  · exact E.unf t' (by omega) hF
+  · exact hU (E.fil _ (by omega) ht)
+
+/-- A start on an orbit containing a filled state starts an excursion. -/
+lemma exists_excursion_of_start (hd : ProperOff M.graph h e) (hs : IsStart P e)
+    (hF : ∃ k, Target M.graph h ((piMove P)^[k] e)) : ∃ u f, Excursion P e u f := by
+  classical
+  obtain ⟨m, hm, hper⟩ := iterate_period (P := P) hd
+  set u := Nat.find hF with hu
+  have hu0 : 0 < u := by
+    rw [Nat.pos_iff_ne_zero]; intro h0
+    have := Nat.find_spec hF; rw [← hu, h0] at this; exact hs.1 this
+  have hU' : ∃ j, ¬ Target M.graph h ((piMove P)^[u + 1 + j] e) := by
+    refine ⟨m * (u + 1) - (u + 1), ?_⟩
+    have : u + 1 + (m * (u + 1) - (u + 1)) = m * (u + 1) := by
+      have : u + 1 ≤ m * (u + 1) := Nat.le_mul_of_pos_left _ hm
+      omega
+    rw [this, Function.iterate_mul, Function.iterate_fixed hper]
+    exact hs.1
+  refine ⟨u, Nat.find hU' + 1, hd, hu0, Nat.succ_pos _, hs.2, fun k hk => Nat.find_min hF hk,
+    fun k hk hk' => ?_, ?_⟩
+  · rcases Nat.eq_or_lt_of_le hk with rfl | hlt
+    · exact Nat.find_spec hF
+    · obtain ⟨j, rfl⟩ : ∃ j, k = u + 1 + j := ⟨k - (u + 1), by omega⟩
+      exact not_not.1 (Nat.find_min hU' (by omega))
+  · have : u + (Nat.find hU' + 1) = u + 1 + Nat.find hU' := by omega
+    rw [this]; exact Nat.find_spec hU'
+
+lemma iter_mem_orbFin (k : ℕ) : (piMove P)^[k] c ∈ orbFin P c := mem_orbFin.2 ⟨k, rfl⟩
+
+lemma piMove_mem_orbFin (hd : d ∈ orbFin P c) : piMove P d ∈ orbFin P c := by
+  obtain ⟨k, rfl⟩ := mem_orbFin.1 hd
+  rw [← Function.iterate_succ_apply' (piMove P) k c]; exact iter_mem_orbFin _
+
+lemma properOff_of_mem_orbFin (hc : ProperOff M.graph h c) (hd : d ∈ orbFin P c) :
+    ProperOff M.graph h d := by
+  obtain ⟨k, rfl⟩ := mem_orbFin.1 hd; exact iter_properOff hc k
+
+/-- **The excursion partition of an orbit through a start** `c₀`. -/
+theorem excPartition_of_start {c₀ : Fin n → Fin 4} (hc : ProperOff M.graph h c₀)
+    (hs : IsStart P c₀) : ExcPartition P (orbFin P c₀) (excursionsOf P (orbFin P c₀)) := by
+  classical
+  set φ : ℕ → Fin n → Fin 4 := fun i => (piMove P)^[i] c₀ with hφ
+  have hadd : ∀ a b, (piMove P)^[a] (φ b) = φ (a + b) := fun a b =>
+    (Function.iterate_add_apply _ _ _ _).symm
+  obtain ⟨m, hm, hper⟩ := iterate_period (P := P) hc
+  set L := Function.minimalPeriod (piMove P) c₀ with hLdef
+  have hL : 0 < L := Function.minimalPeriod_pos_of_mem_periodicPts
+    (Function.mk_mem_periodicPts hm hper)
+  have hLper : φ L = c₀ := Function.iterate_minimalPeriod
+  have hinj : ∀ a < L, ∀ b < L, φ a = φ b → a = b := fun a ha b hb hab =>
+    Function.iterate_injOn_Iio_minimalPeriod ha hb hab
+  have hT : orbFin P c₀ = (Finset.range L).image φ := by
+    ext d
+    rw [mem_orbFin, Finset.mem_image]
+    constructor
+    · rintro ⟨k, rfl⟩
+      exact ⟨k % L, Finset.mem_range.2 (Nat.mod_lt _ hL), Function.iterate_mod_minimalPeriod_eq⟩
+    · rintro ⟨i, -, rfl⟩; exact ⟨i, rfl⟩
+  have hsum : ∀ g' : (Fin n → Fin 4) → ℤ,
+      ∑ d ∈ orbFin P c₀, g' d = ∑ i ∈ Finset.range L, g' (φ i) := by
+    intro g'
+    rw [hT, Finset.sum_image fun a ha b hb => hinj a (Finset.mem_range.1 ha) b
+      (Finset.mem_range.1 hb)]
+  have hcard : (orbFin P c₀).card = L := by
+    rw [hT, Finset.card_image_of_injOn fun a ha b hb => hinj a (Finset.mem_range.1 ha) b
+      (Finset.mem_range.1 hb), Finset.card_range]
+  -- the predecessor of `c₀` is `φ (L - 1)`, which is filled
+  have hlast : Target M.graph h (φ (L - 1)) := by
+    have : piInv P (φ (L - 1 + 1)) = φ (L - 1) := piInv_iter_succ hc _
+    rw [Nat.sub_add_cancel hL, hLper] at this
+    rw [← this]; exact hs.2
+  set starts := (Finset.range L).filter (fun s => IsStart P (φ s)) with hstarts
+  have hex : ∀ s ∈ starts, ∃ u f, Excursion P (φ s) u f := by
+    intro s hs'
+    obtain ⟨hsL, hst⟩ := Finset.mem_filter.1 hs'
+    refine exists_excursion_of_start (iter_properOff hc s) hst ⟨L - 1 - s, ?_⟩
+    rw [hadd]
+    have : L - 1 - s + s = L - 1 := by have := Finset.mem_range.1 hsL; omega
+    rw [this]; exact hlast
+  choose! uu ff hE using hex
+  have K1 : ∀ s ∈ starts, s + (uu s + ff s) ≤ L := by
+    intro s hs'
+    have hsL := Finset.mem_range.1 (Finset.mem_filter.1 hs').1
+    by_contra hlt
+    have := (hE s hs').not_isStart (t := L - s) (by omega) (by omega)
+    rw [hadd, Nat.sub_add_cancel hsL.le, hLper] at this
+    exact this hs
+  set sOf : ℕ → ℕ := fun i => Nat.findGreatest (fun s => IsStart P (φ s)) i with hsOf
+  have hφ0 : IsStart P (φ 0) := hs
+  have S1 : ∀ i, IsStart P (φ (sOf i)) := fun i =>
+    Nat.findGreatest_spec (P := fun s => IsStart P (φ s)) (Nat.zero_le i) hφ0
+  have S2 : ∀ i, sOf i ≤ i := fun i => Nat.findGreatest_le i
+  have Smem : ∀ i < L, sOf i ∈ starts := fun i hi =>
+    Finset.mem_filter.2 ⟨Finset.mem_range.2 (lt_of_le_of_lt (S2 i) hi), S1 i⟩
+  have S3 : ∀ i < L, i < sOf i + (uu (sOf i) + ff (sOf i)) := by
+    intro i hi
+    have E := hE _ (Smem i hi)
+    by_contra hle
+    have hst := E.end_isStart
+    rw [hadd] at hst
+    have h1 : uu (sOf i) + ff (sOf i) + sOf i ≤ sOf i :=
+      Nat.le_findGreatest (P := fun s => IsStart P (φ s)) (n := i) (by omega) hst
+    have := E.u_pos
+    omega
+  have S4 : ∀ s ∈ starts, ∀ k < uu s + ff s, sOf (k + s) = s := by
+    intro s hs' k hk
+    have E := hE s hs'
+    refine le_antisymm ?_ (Nat.le_findGreatest (by omega) (Finset.mem_filter.1 hs').2)
+    by_contra hlt
+    have := E.not_isStart (t := sOf (k + s) - s) (by omega) (by have := S2 (k + s); omega)
+    rw [hadd, Nat.sub_add_cancel (by omega)] at this
+    exact this (S1 _)
+  have hXeq : excursionsOf P (orbFin P c₀) = starts.image (fun s => (φ s, uu s, ff s)) := by
+    ext ⟨x1, u, f⟩
+    simp only [excursionsOf, Finset.mem_filter, Finset.mem_product, Finset.mem_range,
+      Finset.mem_image, Prod.mk.injEq]
+    constructor
+    · rintro ⟨⟨hx1, -, -⟩, E⟩
+      rw [hT, Finset.mem_image] at hx1
+      obtain ⟨s, hsL, rfl⟩ := hx1
+      have hs' : s ∈ starts := Finset.mem_filter.2 ⟨hsL, E.isStart⟩
+      have eu := excursion_u_unique (hE s hs') E
+      have hE2 := hE s hs'
+      rw [eu] at hE2
+      exact ⟨s, hs', rfl, eu, excursion_f_unique hE2 E⟩
+    · rintro ⟨s, hs', rfl, rfl, rfl⟩
+      have := K1 s hs'
+      have := (hE s hs').u_pos
+      have := (hE s hs').f_pos
+      exact ⟨⟨iter_mem_orbFin s, by omega, by omega⟩, hE s hs'⟩
+  have hXinj : Set.InjOn (fun s => (φ s, uu s, ff s)) (starts : Set ℕ) := by
+    intro a ha b hb hab
+    exact hinj a (Finset.mem_range.1 (Finset.mem_filter.1 ha).1) b
+      (Finset.mem_range.1 (Finset.mem_filter.1 hb).1) (congrArg Prod.fst hab)
+  refine ⟨fun x hx => (Finset.mem_filter.1 hx).2,
+    fun x hx => (Finset.mem_product.1 (Finset.mem_filter.1 hx).1).1, ?_, ?_⟩
+  · intro d hd _
+    rw [hT, Finset.mem_image] at hd
+    obtain ⟨i, hi, rfl⟩ := hd
+    have hi := Finset.mem_range.1 hi
+    refine ⟨(φ (sOf i), uu (sOf i), ff (sOf i)), ?_, i - sOf i,
+      Nat.sub_lt_left_of_lt_add (S2 i) (S3 i hi), ?_⟩
+    · rw [hXeq]; exact Finset.mem_image_of_mem _ (Smem i hi)
+    · show (piMove P)^[i - sOf i] (φ (sOf i)) = φ i
+      rw [hadd, Nat.sub_add_cancel (S2 i)]
+  · unfold orbSum
+    rw [hXeq, Finset.sum_image hXinj, hsum]
+    have hm' : ∀ s, excMass P (φ s) (uu s) (ff s) =
+        ∑ k ∈ Finset.range (uu s + ff s), lam P (φ (k + s)) := by
+      intro s; unfold excMass; simp only [hadd]
+    simp only [hm']
+    rw [Finset.sum_sigma' starts (fun s => Finset.range (uu s + ff s))
+      (fun s k => lam P (φ (k + s)))]
+    refine Finset.sum_bij' (fun i _ => ⟨sOf i, i - sOf i⟩) (fun p _ => p.2 + p.1) ?_ ?_ ?_ ?_ ?_
+    · intro i hi
+      have hi := Finset.mem_range.1 hi
+      exact Finset.mem_sigma.2 ⟨Smem i hi,
+        Finset.mem_range.2 (Nat.sub_lt_left_of_lt_add (S2 i) (S3 i hi))⟩
+    · rintro ⟨s, k⟩ hp
+      obtain ⟨hs', hk⟩ := Finset.mem_sigma.1 hp
+      have := K1 s hs'
+      have hk := Finset.mem_range.1 hk
+      dsimp only at hk ⊢
+      exact Finset.mem_range.2 (by omega)
+    · intro i hi
+      exact Nat.sub_add_cancel (S2 i)
+    · rintro ⟨s, k⟩ hp
+      obtain ⟨hs', hk⟩ := Finset.mem_sigma.1 hp
+      have e1 := S4 s hs' k (Finset.mem_range.1 hk)
+      simp only [e1, Nat.add_sub_cancel]
+    · intro i hi
+      simp only [Nat.sub_add_cancel (S2 i)]
+
+/-- **The excursion partition of a mixed orbit** (one unfilled and one filled state): the
+excursions of `T` cover its unfilled states, have distinct starts, and
+`Σ_T λ = Σ excMass` (every filled run is attached to the unfilled run before it). -/
+theorem excPartition_of_mixed (hc : ProperOff M.graph h c)
+    (hU : ∃ d ∈ orbFin P c, ¬ Target M.graph h d)
+    (hF : ∃ d ∈ orbFin P c, Target M.graph h d) :
+    ExcPartition P (orbFin P c) (excursionsOf P (orbFin P c)) := by
+  classical
+  obtain ⟨e, he, heF⟩ := hF
+  obtain ⟨d, hd, hdU⟩ := hU
+  have hoe := orbFin_eq_of_mem hc he
+  have hep := properOff_of_mem_orbFin hc he
+  have hex : ∃ j, ¬ Target M.graph h ((piMove P)^[j] e) := by
+    rw [← hoe] at hd
+    obtain ⟨j, rfl⟩ := mem_orbFin.1 hd
+    exact ⟨j, hdU⟩
+  have h0 : Nat.find hex ≠ 0 := by
+    intro h0; have := Nat.find_spec hex; rw [h0] at this; exact this heF
+  obtain ⟨j1, hj1⟩ : ∃ j1, Nat.find hex = j1 + 1 := ⟨Nat.find hex - 1, by omega⟩
+  have hst : IsStart P ((piMove P)^[j1 + 1] e) := by
+    refine ⟨hj1 ▸ Nat.find_spec hex, ?_⟩
+    rw [piInv_iter_succ hep]
+    exact not_not.1 (Nat.find_min hex (by omega))
+  have hmem : (piMove P)^[j1 + 1] e ∈ orbFin P c := hoe ▸ iter_mem_orbFin _
+  rw [← orbFin_eq_of_mem hc hmem]
+  exact excPartition_of_start (iter_properOff hep _) hst
+
+end partition
+
+/-! ### `rem` by orbit kind -/
+
+open Classical in
+/-- **Mixed orbits**: `rem(T)` is the mass of the excursions of `T` hit by no exit. -/
+theorem rem_eq_unhit_mixed (hp : ∀ d ∈ g, ProperOff M.graph h d) {T : Finset (Fin n → Fin 4)}
+    (hT : T ∈ orbitsOf P g) (hU : ∃ d ∈ T, ¬ Target M.graph h d)
+    (hF : ∃ d ∈ T, Target M.graph h d) :
+    remOrb P g T = ∑ x ∈ (excursionsOf P T).filter
+      (fun x => ¬ ∃ e ∈ exits P g, InExc P x.1 x.2.1 x.2.2 e.2), excMass P x.1 x.2.1 x.2.2 := by
+  obtain ⟨c, hcg, rfl⟩ := Finset.mem_image.1 (show T ∈ g.image (orbFin P) from hT)
+  exact rem_eq_unhit hp hT (excPartition_of_mixed (hp c hcg) hU hF)
+
+open Classical in
+/-- No exit enters an orbit with no lockless state. -/
+lemma exitsInto_eq_zero {T : Finset (Fin n → Fin 4)}
+    (hno : ∀ t ∈ T, ProperOff M.graph h t → NoLock P t → False)
+    (hp : ∀ d ∈ g, ProperOff M.graph h d) :
+    ∑ e ∈ (exits P g).filter (fun e => orbFin P e.2 = T), credit P e = 0 := by
+  refine Finset.sum_eq_zero fun e he => ?_
+  obtain ⟨he, hT2⟩ := Finset.mem_filter.1 he
+  obtain ⟨-, h2, -, hN, -, -⟩ := mem_exits he
+  exact (hno e.2 (hT2 ▸ self_mem_orbFin) (hp _ h2) hN).elim
+
+/-- **All-filled orbits**: no exit enters, so `rem(T) = Λ(T)`, and `Λ(T) = −3|T| ≤ 0`. -/
+theorem rem_of_allFilled (hp : ∀ d ∈ g, ProperOff M.graph h d) {T : Finset (Fin n → Fin 4)}
+    (hT : T ∈ orbitsOf P g) (hA : ∀ d ∈ T, Target M.graph h d) :
+    remOrb P g T = orbSum P T ∧ orbSum P T ≤ 0 := by
+  obtain ⟨c, hcg, rfl⟩ := Finset.mem_image.1 (show T ∈ g.image (orbFin P) from hT)
+  refine ⟨?_, ?_⟩
+  · unfold remOrb
+    rw [exitsInto_eq_zero (fun t ht _ hN => noLock_unfilled hN (hA t ht)) hp, add_zero]
+  · refine Finset.sum_nonpos fun d hd => ?_
+    rw [lam_FF (properOff_of_mem_orbFin (hp c hcg) hd) (hA d hd) (hA _ (piMove_mem_orbFin hd))]
+    norm_num
+
+/-- **All-unfilled orbits** (`Γ`-cycles): a lockless state has a filled successor, so no exit
+enters and `rem(T) = Λ(T)`. -/
+theorem rem_of_allUnfilled (hp : ∀ d ∈ g, ProperOff M.graph h d) {T : Finset (Fin n → Fin 4)}
+    (hT : T ∈ orbitsOf P g) (hA : ∀ d ∈ T, ¬ Target M.graph h d) :
+    remOrb P g T = orbSum P T := by
+  obtain ⟨c, hcg, rfl⟩ := Finset.mem_image.1 (show T ∈ g.image (orbFin P) from hT)
+  unfold remOrb
+  rw [exitsInto_eq_zero (fun t ht hpt hN => hA _ (piMove_mem_orbFin ht)
+    (noLock_next_filled hpt hN)) hp, add_zero]
 
 end sphere
 
