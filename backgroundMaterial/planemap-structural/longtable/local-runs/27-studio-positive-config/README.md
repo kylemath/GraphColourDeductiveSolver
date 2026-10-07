@@ -115,3 +115,13 @@ At every R3@k (k = 3, 4) state of every (5,5,5,5,6) Gamma-cycle, orders 25-26, b
 - The 14 failing visits (7 per orientation) come in k = 4 / k = 3 pairs two pi-steps apart (except p25 #16945, one each). At a failure the y- and z-components
   split the usual joined component (size 10-12) into two (1+10, 8+4, 9+3, 6+6, 2+10, ...); |K(p)| is 9-11 at failures versus 5-10 at successes of the same cycles.
 - The short block (p26 #87942 h22) in both orientations is printed in jobn-summary.txt.
+
+## Job O (pi-step trace of (5,5,5,5,6) Gamma-cycles; `--jobo`, `jobo.py` -> jobo-summary.txt, jobo-steps.jsonl), orders 25-26, both orientations
+p = the degree-6 link vertex, y, z its flanking outer neighbours, m its third outer neighbour (fixed per hole). Periods of 10 states start at R3@k=4:
+R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (140 periods, no exception).
+- (iii) The swap pattern is universal: in all 140 periods the 10 steps swap pairs carrying the colours of (mz, my, pm, pz, py, my, mz, pz, py, pm), and the swapped
+  component contains (-, -, pm, -, py, my, mz, pz, -, pm) of {p, m, y, z}.
+- (i) y ~ z (fresh colours) fails at 0 states in 125 periods, and at 1-3 states in 15. (ii) Never at two consecutive k = 4 visits (0/140).
+- Failure mechanism (13 of 14 failing periods): y ~ z breaks at the step R3k0 -> R1k2 (pair py, component meets none of p, m, y, z), stays broken at R3k4,
+  rejoins at R1k1 (step pair mz), breaks again at R3k3 and R1k0 (step pair my), and rejoins at R3k2 (step pair pz). All four steps swap components that avoid p, m, y and z.
+  Trace (positions R1k2 | R3k4 R1k1 R3k3 R1k0 R3k2): 0 | 0 1 0 0 1.

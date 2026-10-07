@@ -1,0 +1,32 @@
+(i) periods by number of steps (of 10) after which y and z are NOT joined: [(0, 125), (1, 1), (2, 13), (3, 1)]
+(ii) consecutive k=4 visit pairs: 140; both failing: 0; failing throughout the period between: 0
+(iii) swap-pair pattern over the 10 steps (which of p,m,y,z carry a colour of the swapped pair), counts:
+     140 ('mz', 'my', 'pm', 'pz', 'py', 'my', 'mz', 'pz', 'py', 'pm')
+     swapped-component contents pattern (which of p,m,y,z lie in the swapped component), most common:
+     140 ('-', '-', 'pm', '-', 'py', 'my', 'mz', 'pz', '-', 'pm')
+failing k=4 visits: break / restore events (steps relative to the visit):
+   ('o25m', 'p25#16945', 3, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 1, '(pair', 'my', 'comp', '-', 'size', 9, ')', 'y~z off for', 3, 'steps')
+   ('o26', 'p26#36087', 15, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o26', 'p26#38516', 20, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o26', 'p26#87942', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o26m', 'p26#36087', 15, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 8, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o26m', 'p26#38516', 20, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 8, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+   ('o26m', 'p26#87942', 22, 'broken at step', -2, '(rel. to the k=4 visit; pair', 'py', 'comp', '-', 'size', 6, ')', 'restored at step', 0, '(pair', 'mz', 'comp', '-', 'size', 4, ')', 'y~z off for', 2, 'steps')
+break step (position in the preceding period, 0..9): {8: 7} ; restore step after the visit: {1: 1, 0: 6}
+y~z traces (state at period position 0..9; 1 = y~z in {c(y),c(z)} at that state, colours fresh) for periods containing a non-joined state:
+   o25 p25#16945 h 3 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1000111111
+   o25m p25#16945 h 3 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1111111110
+   o25m p25#16945 h 3 period 1 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 0011111111
+   o26 p26#36087 h 15 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 0100111111
+   o26 p26#36087 h 15 period 1 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1111111110
+   o26 p26#38516 h 20 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1111111110
+   o26 p26#38516 h 20 period 1 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 0100111111
+   o26 p26#87942 h 22 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 0100111111
+   o26 p26#87942 h 22 period 1 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1111111110
+   o26m p26#36087 h 15 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1111111110
+   o26m p26#36087 h 15 period 1 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 0100111111
+   o26m p26#38516 h 20 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 0100111111
+   o26m p26#38516 h 20 period 1 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1111111110
+   o26m p26#87942 h 22 period 0 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 1111111110
+   o26m p26#87942 h 22 period 1 states(type k): R34 R11 R33 R10 R32 R14 R31 R13 R30 R12 | y~z: 0100111111
+trace patterns: {'1000111111': 1, '1111111110': 7, '0011111111': 1, '0100111111': 6}

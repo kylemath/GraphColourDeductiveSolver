@@ -27,6 +27,8 @@
 //   fail = a joined group with sum w > 0) and per all-DL pi-cycle (Gamma): R-types (w0 = A: R1; w0 = B, w3 = alpha: R2; w0 = B, w3 = mu: R3; else other),
 //   [type, kmask (bit i = x_{j+i} has degree >= 6), count], R3 states whose sigma image is lockless (C1-Gamma), first R3 failure.
 // --jobn rows: [pos in cycle, k, lockless, y~z in {c(y),c(z)}, pm bridge of G[{v}+c(p),c(m)], p, m, y, z (original labels), #m candidates, |K_{c(p),c(m)}(p)|, |K(y)|, |K(z)|, sigma fixed point]
+// --jobo rows per state x of a Gamma-cycle (pi order): [pos, type, kmask, pairmask, compmask, |swapped comp|, y~z before, y~z after the step, |K(y)|, |K(z)| after]
+//   (pairmask / compmask bits: p, m, y, z have a colour in the swapped pair / lie in the swapped component; the step x -> pi x is R+3: the {alpha,A}-swap at x_{j+2})
 // Usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h,...] [--cfree] [--adj5] [--graphonly]   (default --pi: no class union-find)
 // Per hole also: linkdeg (degrees of x_0..x_4 in link order), vrole (bits: 1 diamond centre, 2 diamond tip, 4 2.122 deg-5 centre, 16 2.122 tip),
 // dist_config (graph distance from v to the nearest vertex of any diamond or 2.122, -1 if none). Per graph: adj55 = edges between degree-5 vertices.
@@ -47,7 +49,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -280,6 +282,25 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 for (auto &kv : cs2) { ms = std::max(ms, kv.second.second); mx = std::max(mx, kv.second.first); if (kv.second.first > 0) { nf++; if (ff.empty()) { char b4[96]; snprintf(b4, sizeof b4, "{\"sumw\": %lld, \"ncycles\": %d}", kv.second.first, kv.second.second); ff = b4; } } }
                 char b5[400]; snprintf(b5, sizeof b5, ", \"%s\": {\"ncomp\": %zu, \"endpoints\": %lld, \"endpoints_with_cross_sigmap\": %lld, \"max_ncycles\": %d, \"max_sumw\": %lld, \"fail\": %lld, \"first_fail\": %s}",
                     v ? "H2_sigmap_plus_sigmaR3" : "H1_sigmap", cs2.size(), nend, nend_cross, ms, mx, nf, ff.empty() ? "null" : ff.c_str()); jobe += b5; } }
+        if (JOBO) {   // Job O: per pi-step of Gamma-cycles at (5,5,5,5,6): p = degree-6 link vertex, y = w_{t-1}, z = w_t, m = p's third outer neighbour
+            int t6 = -1, nhi = 0; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) { t6 = t; nhi++; }
+            if (nhi == 1) {
+                int p = link_[t6], y = widx[(t6 + 4) % 5], z = widx[t6]; int mv = -1; for (int w : rot[L[t6]]) { if (w == hole) continue; int wi = idx[w]; if (wi == link_[(t6 + 1) % 5] || wi == link_[(t6 + 4) % 5] || wi == y || wi == z) continue; mv = w; }
+                int m = idx[mv]; int V4[4] = {p, m, y, z};
+                std::string oo = ", \"jobo\": {\"pmyz\": ["; char b0[64]; snprintf(b0, sizeof b0, "%d, %d, %d, %d], \"cycles\": [", order[p], mv, order[y], order[z]); oo += b0; bool f1 = true;
+                for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all) continue;
+                    oo += f1 ? "[" : ", ["; f1 = false; bool f2 = true; int pos = 0;
+                    for (int32_t x : cycles[ci]) { int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd);
+                        unkey(ALL[x], c); masks(c, cm); int lc[5]; for (int t = 0; t < 5; t++) lc[t] = c[link_[t]]; int al = lc[j], A = lc[(j + 3) % 5];
+                        u64 K = flood(1ULL << link_[(j + 2) % 5], cm[al] | cm[A]); int pairmask = 0, compmask = 0;
+                        for (int i = 0; i < 4; i++) { if (c[V4[i]] == al || c[V4[i]] == A) pairmask |= 1 << i; if (K >> V4[i] & 1) compmask |= 1 << i; }
+                        int csz = __builtin_popcountll(K);
+                        int cc[64]; unkey(ALL[pi[x]], cc); u64 cm2[4]; masks(cc, cm2); u64 Ky = flood(1ULL << y, cm2[cc[y]] | cm2[cc[z]]); bool yz = Ky >> z & 1;
+                        int sy = __builtin_popcountll(Ky), sz = __builtin_popcountll(flood(1ULL << z, cm2[cc[y]] | cm2[cc[z]]));
+                        u64 K0 = flood(1ULL << y, cm[c[y]] | cm[c[z]]); bool yz0 = K0 >> z & 1;
+                        char b[160]; snprintf(b, sizeof b, "%s[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d]", f2 ? "" : ", ", pos, ty, km, pairmask, compmask, csz, yz0 ? 1 : 0, yz ? 1 : 0, sy, sz); oo += b; f2 = false; pos++; }
+                    oo += "]"; }
+                oo += "]}"; jobe += oo; } }
         if (JOBN) {   // Job N (NightF6Flow 2.1): at R3@k in {3,4} on Gamma-cycles: p = x_{j+k}, y = w_{j+k-1}, z = w_{j+k}, m = p's third outer neighbour
             std::string nn = ", \"jobn\": ["; bool f1 = true;
             for (size_t ci = 0; ci < cycles.size(); ci++) { bool all = true; for (int32_t x : cycles[ci]) if (kind[x] != 2) { all = false; break; } if (!all) continue;
@@ -424,7 +445,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;
