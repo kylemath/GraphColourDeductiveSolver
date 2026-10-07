@@ -1,4 +1,7 @@
-// kclass.cpp -- Track F [exploratory]: Kempe classes of 4-colourings of T - h (independent of picyc / studiointel kempe_classes).
+// kclass_pi.cpp -- Track F [exploratory]: kclass.cpp + pi-orbit (R+3) structure of DL states and of targetless classes.
+// Extra output per hole: allDLcyc = lengths of all-DL pi-cycles; per class (extra tuple piC): [#states on all-DL pi-cycles, #pi-path ends, #filled].
+// Original header follows.
+// kclass.cpp: Kempe classes of 4-colourings of T - h (independent of picyc / studiointel kempe_classes).
 // States = proper 4-colourings of T - h up to renaming (first-occurrence normal form along a BFS order from the link).
 // Moves = swap of any Kempe component (any of the 6 colour pairs). Union-find over all moves.
 // Per class: size, #filled (link uses <= 3 colours), #DL, and for each class the restriction "frozen-ness":
@@ -42,7 +45,7 @@ int main(int argc, char **argv) {
             prevn.assign(order.size(), {}); for (size_t q = 0; q < order.size(); q++) for (int w : rot[order[q]]) if (w != h && pos[w] < (int)q) prevn[q].push_back(w);
             ALL.clear(); for (int v = 0; v < N; v++) col[v] = -1; rec(0, 0); std::sort(ALL.begin(), ALL.end());
             long long S = ALL.size(); par.resize(S); for (long long i = 0; i < S; i++) par[i] = i;
-            long long pidBad[3] = {0, 0, 0}, dualBad[2] = {0, 0}; std::vector<int> kind(S), kdeg(S), viol(S, 0); u64 oddm = 0; for (int v = 0; v < N; v++) if (v != h && (rot[v].size() & 1)) oddm |= 1ULL << v;
+            long long pidBad[3] = {0, 0, 0}, dualBad[2] = {0, 0}; std::vector<int> kind(S), kdeg(S), viol(S, 0); std::vector<long long> pim(S, -1); u64 oddm = 0; for (int v = 0; v < N; v++) if (v != h && (rot[v].size() & 1)) oddm |= 1ULL << v;
             u64 allm = 0; for (int v = 0; v < N; v++) if (v != h) allm |= 1ULL << v;
             int c[64], nc[64];
             for (long long i = 0; i < S; i++) {
@@ -59,7 +62,9 @@ int main(int argc, char **argv) {
                     u64 KA = flood(x2, cm[al] | cm[c[a]]), KB = flood(x2, cm[al] | cm[c[b]]), KM = flood(x2, cm[al] | cm[c[m]]);
                     int inA = KA >> X[j] & 1, inB = KB >> X[j] & 1, pM = __builtin_popcountll(KM & oddm) & 1;
                     if (pA != !inA) pidBad[0]++; if (pB != !inB) pidBad[1]++; if (!pM) pidBad[2]++;
-                    if ((int)l2 != !inA) dualBad[0]++; if ((int)l1 != !inB) dualBad[1]++; }
+                    if ((int)l2 != !inA) dualBad[0]++; if ((int)l1 != !inB) dualBad[1]++;
+                    if (!inA) { for (int v = 0; v < N; v++) { if (v == h) { nc[v] = -1; continue; } int x = c[v]; if (KA >> v & 1) x = x == al ? c[a] : al; nc[v] = x; }
+                        normal(nc); u128 k = keyof(nc); long long jx = std::lower_bound(ALL.begin(), ALL.end(), k) - ALL.begin(); if (jx >= S || ALL[jx] != k) { fprintf(stderr, "missing pi\n"); return 4; } pim[i] = jx; } }
                 std::vector<long long> nbrs;
                 for (int p1 = 0; p1 < 4; p1++) for (int q1 = p1 + 1; q1 < 4; q1++) { u64 M = cm[p1] | cm[q1];
                     while (M) { u64 K = flood(__builtin_ctzll(M), cm[p1] | cm[q1]); M &= ~K;
@@ -69,9 +74,26 @@ int main(int argc, char **argv) {
                         if (jx != i) nbrs.push_back(jx); int ra = fnd(i), rb = fnd(jx); if (ra != rb) par[ra] = rb; } }
                 std::sort(nbrs.begin(), nbrs.end()); kdeg[i] = std::unique(nbrs.begin(), nbrs.end()) - nbrs.begin();
             }
+            // all-DL pi-cycles: follow pi through DL states
+            std::vector<int> onc(S, 0), mark(S, 0); std::vector<long long> cyc;
+            for (long long i = 0; i < S; i++) { if (kind[i] != 2 || mark[i]) continue; std::vector<long long> path; long long k = i;
+                while (k >= 0 && kind[k] == 2 && !mark[k]) { mark[k] = 2; path.push_back(k); k = pim[k]; }
+                if (k >= 0 && kind[k] == 2 && mark[k] == 2) { long long L = 0; for (long long t = path.size() - 1; t >= 0; t--) { onc[path[t]] = 1; L++; if (path[t] == k) break; } cyc.push_back(L); }
+                for (long long t : path) mark[t] = 1; }
+            // longest pi-run through DL states not on a cycle (number of consecutive DL states)
+            long long maxrun = 0; { std::vector<long long> run(S, 0);
+                for (long long i = 0; i < S; i++) { if (kind[i] != 2 || onc[i] || run[i]) continue; std::vector<long long> st; long long k = i;
+                    while (k >= 0 && kind[k] == 2 && !onc[k] && !run[k]) { st.push_back(k); k = pim[k]; }
+                    long long base = (k >= 0 && kind[k] == 2 && !onc[k]) ? run[k] : 0;
+                    for (long long t = st.size() - 1; t >= 0; t--) { run[st[t]] = ++base; } }
+                for (long long i = 0; i < S; i++) maxrun = std::max(maxrun, run[i]); }
+            std::vector<int> hasPre(S, 0); for (long long i = 0; i < S; i++) if (pim[i] >= 0) hasPre[pim[i]] = 1;
+            std::map<int, std::vector<long long>> pc; for (long long i = 0; i < S; i++) { auto &e = pc[fnd(i)]; if (e.empty()) e = {0, 0, 0}; e[0] += onc[i]; if (kind[i] == 2 && (pim[i] < 0 || !hasPre[i])) e[1]++; if (kind[i] == 0) e[2]++; }
+            std::string sc; for (auto &kv : pc) if (kv.second[0]) { char b[96]; snprintf(b, sizeof b, "%s[%lld,%lld,%lld]", sc.empty() ? "" : ",", kv.second[0], kv.second[1], kv.second[2]); sc += b; }
+            std::string sy; for (long long L : cyc) { char b[32]; snprintf(b, sizeof b, "%s%lld", sy.empty() ? "" : ",", L); sy += b; }
             std::map<int, std::vector<long long>> cl; for (long long i = 0; i < S; i++) { auto &e = cl[fnd(i)]; if (e.empty()) e = {0, 0, 0, 0, 1 << 30, 0, 0}; e[0]++; e[6] += viol[i]; if (kind[i] == 0) e[1]++; if (kind[i] == 2) e[2]++; if (kind[i] == 1) e[3]++; e[4] = std::min<long long>(e[4], kdeg[i]); e[5] = std::max<long long>(e[5], kdeg[i]); }
             std::string s; for (auto &kv : cl) { char b[128]; snprintf(b, sizeof b, "%s[%lld,%lld,%lld,%lld,%lld,%lld,%lld]", s.empty() ? "" : ",", kv.second[0], kv.second[1], kv.second[2], kv.second[3], kv.second[4], kv.second[5], kv.second[6]); s += b; }
-            printf("{\"graph\":\"%s\",\"hole\":%d,\"pid_bad\":[%lld,%lld,%lld],\"dual_bad\":[%lld,%lld],\"states\":%lld,\"classes\":%zu,\"cls[size,filled,DL,unfilledNonDL,minKdeg,maxKdeg,lockParityViolations]\":[%s]}\n", name, h, pidBad[0], pidBad[1], pidBad[2], dualBad[0], dualBad[1], S, cl.size(), s.c_str()); fflush(stdout);
+            printf("{\"graph\":\"%s\",\"hole\":%d,\"pid_bad\":[%lld,%lld,%lld],\"dual_bad\":[%lld,%lld],\"maxDLrun\":%lld,\"allDLcyc\":[%s],\"cycClasses[onCycles,pathEnds,filled]\":[%s],\"states\":%lld,\"classes\":%zu,\"cls[size,filled,DL,unfilledNonDL,minKdeg,maxKdeg,lockParityViolations]\":[%s]}\n", name, h, pidBad[0], pidBad[1], pidBad[2], dualBad[0], dualBad[1], maxrun, sy.c_str(), sc.c_str(), S, cl.size(), s.c_str()); fflush(stdout);
         }
     }
 }

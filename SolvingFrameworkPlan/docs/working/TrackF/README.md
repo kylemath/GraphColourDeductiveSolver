@@ -35,6 +35,12 @@ Inputs read: CoordinatorPlan (status log), TrackB/README, NightG66, NightG66IPR,
    - C60 has 52 edge-Kempe classes of Tait colourings (30 frozen singletons, 20 of size 4, and two big classes, 1,400 and 1,680). C80 Ih has 156 classes. All 27 IPR fullerenes C60–C82 have 6–156 classes.
    - Yet κ(T − h) = 1 at 98.3% of IPR holes (11,507 of 11,701, Job BO data). NightG66IPR's "κ(F) = 1 is expected" (T-IPR3) is false.
 6. **Verdict.** G66 at fullerene duals does **not** look attackable by a global or multi-hole argument. The fullerene class buys nothing over the frame class at the hard holes (flat holes), and the 12-pentagon structure enters only through the parity lemma, which is satisfiable along DL runs. The one new lead is a reformulation: **LPC**, a class-level parity statement, together with the observation that the planarity input to G66 is exactly the lock-parity lemma (torus data). The data for G66 itself stay clean everywhere tested. Recommended: keep G66 on the critical path only as a test of LPC-type class arguments; do not spend more on orbit-level (G66⁰) or multi-hole routes.
+7. **LPC falsification off the sphere (§8): alive, weakly tested.**
+   - Exact reformulation (hand): the violators of a targetless class are the ends of its π-paths, so LPC ⇔ "no Kempe class is a union of all-DL π-cycles".
+   - Random censuses on five surfaces (40k holes) contain no π-cycles, so they test nothing beyond that tautology.
+   - A targeted search found all-DL π-cycles on the Klein bottle, RP² and torus. Every one sits in a class with ≥ 2 filled states per cycle state; the bound 2 is attained.
+   - Parity-clean classes satisfy the quarter floor F/N ≥ 1/4 on every surface tested.
+   - "minviol = 1" is a forced frozen singleton, not fragility.
 
 ## 1. Engines and data
 
@@ -185,7 +191,7 @@ Notation:
 
 | statement | level | status |
 |---|---|---|
-| **LPC:** at a degree-5 hole of a triangulation of any surface, a Kempe class of T − h all of whose unfilled states satisfy LP(a,b) contains a filled state | class | **conjecture.** Torus: 24,042 / 24,042 parity-clean classes filled; 21,915 / 21,915 targetless classes not parity-clean. On the sphere LP always holds, so LPC ⇒ PureClean everywhere ⇒ R\* ⇒ 4CT (4CT-strength). Orbit-level analogue is FALSE: sphere all-DL π-cycles (e.g. order-24 75755, 55555) are parity-clean. |
+| **LPC:** at a degree-5 hole of a triangulation of any surface, a Kempe class of T − h all of whose unfilled states satisfy LP(a,b) contains a filled state | class | **conjecture.** Torus: 24,042 / 24,042 parity-clean classes filled; 21,915 / 21,915 targetless classes not parity-clean. On the sphere LP always holds, so LPC ⇒ PureClean everywhere ⇒ R\* ⇒ 4CT (4CT-strength). Orbit-level analogue is FALSE: sphere all-DL π-cycles (e.g. order-24 75755, 55555) are parity-clean. **§8:** ⇔ no Kempe class is a union of all-DL π-cycles; 0 counterexamples on torus / Klein / RP² / genus 2 / rp2x3, including the classes of all-DL π-cycles found off the sphere. |
 | "frozen orbit at h ⇒ a clean hole elsewhere" | multi-hole | **no support.** Holes correlate positively; icosahedral fullerenes make it equivalent to single-hole G66. |
 | "all Tait colourings of a fullerene are Kempe-equivalent" | — | **false** (C60: 52 classes). |
 | κ(F − P) = 1 for IPR fullerenes | class | **false** at 194 / 11,701 holes (Job BO; re-verified at ipr#211, ipr#32). All extra classes are filled. |
@@ -215,6 +221,13 @@ Notation:
 - kclass_closed_*.jsonl;
 - summaries: ipr_summary.txt, ipr_geom.txt, ipr_multihole.txt, sweep_summary.txt, wit_summary.txt, torus_parity_summary.txt, bo_smallclasses.txt, plus the final big-run summaries.
 
+LPC work (§8): `src/surfaces.py`, `lpc_census.py`, `lpc_search.py`, `lpc_slotA.sh`, `kclass_pi.cpp` → `kclass3`, `lpc_detail.py`, `lpc_pi.py`, `lpc_cycsearch.py`. Outputs are in `out/lpc/`:
+- `census_*`, `census.log`;
+- `pi_*.jsonl`, `pi.log` (second engine);
+- `picyc_*.jsonl` (π-cycles: census, torus18, sphere24);
+- `search_*`, `search_best.*`;
+- `cyc_*.{out,log}`, `cyc_graphs.*`.
+
 ## 7. Caveats
 
 - LP and PP proofs are hand proofs in Tait form (unreviewed). The data check is exhaustive on the listed sets only.
@@ -227,3 +240,146 @@ Notation:
   - `src/slot3.sh`: the last two (9,0) non-IPR tubes;
   - the C108–C120 sample (C120 had 82 of ~492 holes done).
 - Outputs append to `out/gold/`, `out/tubes/big.*`, `out/big/ipr56_62.*`. Re-summarise with `python3 src/anal_big.py {gold|tubes|big} FILE`. The numbers in §2.4 are those at report time.
+
+## 8. Falsifying LPC off the sphere (7 Oct, afternoon; Track F handover)
+
+Question: does LPC ("a Kempe class at a degree-5 hole in which every unfilled state obeys lock parity contains a filled state") fail on a triangulation of the torus, Klein bottle, projective plane (RP²), orientable genus 2, or non-orientable genus 3 (RP²#RP²#RP², "rp2x3")? LPC on the sphere is 4CT-strength, so a counterexample anywhere would kill it as a route; survival is weak evidence only.
+
+### 8.1 Reformulation (hand; LockParity.md §5)
+
+- **Theorem P** (the parity identity) holds on every surface, so lock parity at a state ⇔ the hole duality D1, D2 at that state.
+- In a targetless class every unfilled state is DL. For a DL state, D2 ⇔ π = R₊₃ is defined, and D1 ⇔ π⁻¹ is defined. π is injective with inverse the mirror swap.
+- So the **lock-parity violators of a targetless class are exactly the ends of its non-cyclic π-orbits**. A one-state orbit violates both D1 and D2. A longer path has one D1-violator (its start) and one D2-violator (its end).
+- **LPC ⇔ no Kempe class of T − h consists only of states on all-DL π-cycles.** On the sphere this is PureClean.
+- A violation is a lock chain and a π-chain that close up through h into two cycles crossing once (ℤ/2 intersection number 1), i.e. two non-separating cycles. That is the only way the topology enters.
+
+### 8.2 Engines
+
+| engine | what | role |
+|---|---|---|
+| `src/kclass2` (= `kclass.cpp`) | all Kempe classes of T − h; per class: size, filled, DL, single-lock, Kempe degree, LP violators; Theorem P check (`pid_bad`) and D check (`dual_bad`) | census and walks |
+| `src/kclass3` (`kclass_pi.cpp`, new) | kclass2 plus π on every unfilled state, all-DL π-cycles, the longest DL π-run (`maxDLrun`), and for each class containing a cycle [states on cycles, DL path ends, filled] | cycle census and cycle search |
+| `src/lpc_detail.py` (new, pure Python, shares no code with the C++) | the same class list and per-state detail (j, locks, inA/inB, which D fails, component sizes and odd vertices), π-orbit decomposition of every targetless class, "violators = path ends" check | second engine |
+
+- `src/lpc_census.py` and `src/surfaces.py` generate random min-degree-5 triangulations, by subdivision plus flips, with the surface checked (Euler characteristic and orientability).
+- `src/lpc_search.py` is annealing on the obeying fraction in targetless classes.
+- `src/lpc_cycsearch.py` (new) is annealing on all-DL π-cycles. Phase 1 maximises the number of cycles, then the longest DL π-run. Phase 2 (`LPC_OBJ=ratio`) maximises onCycles / (onCycles + pathEnds + filled) over classes containing a cycle. This ratio is 1 exactly at an LPC counterexample.
+- `src/lpc_pi.py` re-runs the census holes with the Python engine.
+
+Cross-checks:
+- Python vs kclass2: identical class lists on all 6,026 re-run census holes (every hole with a targetless class of size ≥ 3) and on all 87 holes of the 9 best search graphs. 0 mismatches.
+- kclass3 vs kclass2: identical class lists on all 40,241 census holes.
+- kclass3 against known sphere data:
+  - C30#0: π-cycles of length 20 at the two 55555 holes, matching f66;
+  - all 7,209 order-24 min-degree-5 triangulations: exactly 5 all-DL π-cycles, all L = 20, matching f66 (§2.4);
+  - C60 maxrun 2, matching f66.
+
+### 8.3 Census (data; `out/lpc/census_*.jsonl`, 600 random graphs per surface, n = 16–40, seed 11)
+
+| surface | holes | classes | targetless | of which frozen singletons | parity-clean classes with unfilled states (min F/N) | max obeying fraction in targetless classes | Theorem P failures | D failures / unfilled states | all-DL π-cycles | LPC counterexamples |
+|---|---|---|---|---|---|---|---|---|---|---|
+| torus | 8,277 | 43,374 | 10,809 | 5,405 | 1,285 (1/4) | 3/5 | 0 | 1,664,226 / 3,862,132 | 0 | 0 |
+| Klein | 8,658 | 39,919 | 10,261 | 5,180 | 1,219 (1/4) | 3/5 | 0 | 1,510,240 / 3,173,373 | 0 | 0 |
+| RP² | 9,245 | 22,701 | 4,118 | 1,826 | 1,228 (1/4) | 1/2 | 0 | 2,996,439 / 13,676,975 | 0 | 0 |
+| genus 2 | 6,851 | 24,688 | 7,652 | 3,207 | 709 (1/4) | 1/2 | 0 | 225,753 / 264,195 | 0 | 0 |
+| rp2x3 | 7,210 | 28,840 | 7,649 | 3,329 | 1,150 (1/4) | 3/5 | 0 | 633,096 / 991,495 | 0 | 0 |
+| torus (18-torus-floor, §0.3) | 17,700 | — | 21,915 | — | 2,517 (1/4) | — | 0 | — | 0 | 0 |
+
+D failures count D1 and D2 separately.
+
+- Every targetless class is all-DL (0 single-lock states), as §8.1 predicts.
+- In the 21,571 targetless classes re-run with the Python engine (`out/lpc/pi_*.jsonl`, `pi.log`):
+  - the violators are exactly the π-path ends in every case;
+  - no targetless class contains a π-cycle;
+  - the longest π-path is 5 (RP²: 4).
+- **The census itself is a weak test.** It contains no all-DL π-cycle at all (0 in 57,941 holes, torus18 included), and by §8.1 only classes built from π-cycles can be counterexamples. For comparison, the sphere rate is 5 in 111,492 holes at order 24, which predicts about 2.6 here. Off the sphere, then, "0 counterexamples" in the census only re-confirms the tautology "a cycle-free targetless class has violators".
+
+### 8.4 The "minviol = 1" classes are trivial (data + hand)
+
+- Every targetless class with exactly one violator is a **Kempe-frozen singleton**:
+  - torus 5,405, Klein 5,180, RP² 1,826, genus 2 3,207, rp2x3 3,329, all of them (size 1, DL, Kempe degree 0);
+  - every class with ≥ 2 states has ≥ 2 violators.
+- Why it is forced (hand): at a frozen state every 2-colour subgraph of T − h is connected. So x_j ∈ K_{αA}(x_{j+2}) and x_j ∈ K_{αB}(x_{j+2}), and the state violates D1 and D2 simultaneously: a π-path of length 1.
+- In the 5-state torus class (torus_11_568 h27, both engines), the violation looks like this:
+  - The class is one π-path with j = 2 → 0 → 3 → 1 → 4.
+  - The start (j = 2) has x_j ∈ K_{αB}(x_{j+2}) while Lock1 holds. This is a D1 failure: the {α,B}-component of x_{j+2} has 20 vertices and 14 odd vertices, even, as P predicts.
+  - The end (j = 4) has x_j ∈ K_{αA}(x_{j+2}) while Lock2 holds (D2 failure; 19 vertices, 12 odd).
+  - The three interior states obey LP with both components odd.
+- On the sphere `NoFrozen` rules frozen DL states out formally. So the "minviol = 1" phenomenon is not evidence that LPC is fragile.
+- What can be fragile is the **obeying fraction**: a class that is a single π-path of length L has fraction (L − 2)/L, which tends to 1.
+
+### 8.5 Fraction search (data; `out/lpc/search_{torus,klein,rp2}.{out,log}`, 150 walks × 3,000 flips each, n = 16–30)
+
+| surface | evaluations | best obeying fraction in a targetless class, by order n | LPC counterexamples |
+|---|---|---|---|
+| torus | 159,411 | 16: 2/3, 17: 3/5, 18: 5/7, 19: 3/5, 20: 5/7, 21: 9/13, 22: 3/5, 23: 2/3, 24: 5/7, 25–30: 2/3 (26: 3/5) | 0 |
+| Klein | 155,196 | 20: 2/3, 21: 7/9, 22: 1/2, 23: 3/5, 24: 5/7, 25: 7/10, 26: 7/9, 27: 3/4, 28–29: 3/5, 30: 3/4 | 0 |
+| RP² | 118,693 | 16–22: 3/5 (17: 2/3), 23: 2/3, 24–26: 3/5, 27: 1/2, 28: 3/5, 29: 5/8, 30: 3/5 | 0 |
+
+- The best classes were verified with both engines (`out/lpc/search_best.*`). **Each is a whole Kempe class consisting of one or two π-paths.** Examples:
+  - Klein n = 21 (`klein_best_w5` h16): one π-path of 9 DL states, with 2 violators (one D1 at the start, one D2 at the end) and 7 obeying;
+  - torus: paths of 7;
+  - RP²: two paths of 6.
+- So the fraction grows with path length and says nothing about LPC. The relevant object is the π-cycle.
+
+### 8.6 Cycle search: the real test (data; `out/lpc/cyc_*.{out,log}`, `cyc_graphs.*`)
+
+`src/lpc_cycsearch.py` ran annealing flip walks at n = 16–34, 2,000 flips per walk (1,000 for the first torus run). Runs:
+- **(a) all degree-5 holes:**
+  - torus: 30 + 73 walks;
+  - Klein: 80 walks;
+  - RP²: 50 walks.
+- **(b) only holes with no three consecutive degree-5 link vertices ("no-555"):** torus 75, Klein 67, RP² 71 walks.
+
+  This excludes the hole types where PureClean is already proved on the sphere (F5 / weak F6 / `pureClean_of_hole4`). Track B's frame class has no such holes.
+- The runs were stopped by hand after about 25–40 minutes each; walk counts are as completed.
+- Every graph with a cycle was re-run with kclass3 and with the Python engine (`src/lpc_cycverify.py`): **0 mismatches on 604 + 82 cycle holes** (cycle lengths, the class list, and [onCycles, filled] per class).
+
+| run | surface | distinct graphs with an all-DL π-cycle | cycle holes | cycle lengths | classes containing a cycle | … with no DL violator (parity-clean) | min filled / (states on cycles) | LPC counterexamples |
+|---|---|---|---|---|---|---|---|---|
+| (a) | Klein | 87 | 100 | 20 ×118, 40 ×1 | 102 | 13 | 2 | 0 |
+| (a) | RP² | 260 | 413 | 20 ×834, 40 ×105, 60 ×97, 80 ×8, 100 ×13, 120 ×2, 180 ×1 | 504 | 319 | 2 | 0 |
+| (a) | torus | 74 | 91 | 20 ×107, 40, 60 | 94 | 4 | 1.55 (a class *with* violators); 2 among parity-clean | 0 |
+| (b) | torus | 16 | 16 | 20 ×24 | 16 | 0 | 7.35 | 0 |
+| (b) | Klein | 26 | 26 (all 55757) | 20 ×39, 40 | 26 | 0 | 9 | 0 |
+| (b) | RP² | 23 | 23 (55758, 55787, 5,5,8,5,10, 55677, 55768, 55656, …) | 20 ×28 | 23 | 3 | 2 | 0 |
+
+- **All-DL π-cycles exist off the sphere**, contrary to what the census suggested.
+  - Every length found is a multiple of 20, the same as on the sphere.
+  - In run (a), 564 of the 604 cycle holes have a 555 run in the link. The 40 that do not are 36 on RP² and 4 on the Klein bottle, among them a 77775 hole.
+  - Run (b) found cycles at frame-like hole types: Klein 55757, torus 55769, RP² 55656 / 55677 / 55758.
+- **Every class containing a cycle has filled states.** In parity-clean cycle classes, filled ≥ 2 × (states on cycles) in all 339 cases, with equality in 291 of them.
+  - The equality cases reproduce the sphere exactly. The Klein `klein_c32_w33_t648` h10 class and the RP² `rp2_c33_w2_t1397` h3 class are both [100 states: 40 filled, 30 DL, 30 single-lock; 0 violators], identical to the unique class at the 55555 hole of C30#0 (sphere).
+  - RP² h21 at a 5,10,5,5,8 hole has [200, 80, 60, 60]: two cycles, a doubled copy.
+  - Only a class *with* violators went below 2: 1.55 on the torus.
+- **Quarter floor in parity-clean classes (data).** F/N ≥ 1/4, with equality attained, in every parity-clean class with unfilled states:
+  - census 5,591; torus18 2,517; cycle graphs (a) 2,087; (b) 71;
+  - order-24 sphere 115,068.
+
+  Classes that contain violators go down to F/N = 0.003 (genus 2, census).
+- Theorem P: 0 failures on every state of every graph above.
+
+### 8.7 Verdict on LPC
+
+- **Alive, not fragile in the sense feared, but weakly tested.**
+  - No counterexample on five surfaces.
+  - The "minviol = 1" classes are forced frozen singletons.
+  - High obeying fractions are long π-paths, which are irrelevant by §8.1.
+- **The honest content of the off-sphere data** is the following:
+  1. all-DL π-cycles do exist off the sphere (Klein bottle, RP², torus; lengths 20–180, all ≡ 0 mod 20), and the Kempe class of every one found contains filled states. Every parity-clean one has at least 2 filled states per cycle state;
+  2. in every parity-clean class (10,266 off the sphere plus 115,068 at order-24 sphere graphs) the **quarter floor F/N ≥ 1/4 holds, with equality attained**. Classes with violators go down to F/N = 0.003.
+  3. The caveat: most off-sphere cycles sit at 555-type holes (the sphere-easy ones), and their tight classes are verbatim copies of a sphere class (C30#0). At frame-like no-555 holes only 3 parity-clean cycle classes were found, all on RP². So the test at the holes that matter is thin: 65 graphs, 3 parity-clean cycle classes.
+
+  So parity-clean classes off the sphere behave like sphere classes, quantitatively.
+- **What a proof would have to use.**
+  - LPC ⇔ "the Kempe class of an all-DL π-cycle is never closed under Kempe swaps". The only topological input allowed is D1/D2 at every state of the class, i.e. no crossing pair (lock chain, π-chain) through h.
+  - A proof must show that some state of the class reachable from the cycle has a single lock. The data suggest a quantitative form: **LPC-¼**, "a parity-clean class has F/N ≥ 1/4" (Track A's quarter floor, with the sphere hypothesis weakened to D on the class).
+  - Proving the quarter floor from class-wide local duality alone would prove LPC, and with it R\* and 4CT. I see no such proof. The quarter-floor bijections of Track A (π-blocks, Conjecture E) are the natural place to check whether they use only D.
+- **Recommendation.**
+  - Keep LPC (better: LPC-¼) as the stated class-level target, labelled conjecture.
+  - Use off-sphere π-cycle classes, especially the tight ones with filled = 2 × onCycles, as a test bed for any proposed quarter-floor argument: an argument that uses more than D would be refuted there.
+  - Do not spend more CPU on random censuses: they contain no π-cycles.
+  - If more CPU is spent, spend it on run (b): no-555 holes, phase-2 ratio objective, larger n, and genus 2 / rp2x3, which were not searched for cycles.
+- **Data claim to hand to Track A.** At degree-5 holes on 6 surfaces (sphere, torus, Klein bottle, RP², genus 2, rp2x3), the quarter floor F/N ≥ 1/4 held in all 125,334 parity-clean classes. Where it fails, the class has a lock-parity violator. Conjecture **LPC-¼**: F/N ≥ 1/4 for every Kempe class whose unfilled states all satisfy D1, D2.
+  - LPC-¼ ⇒ LPC.
+  - On the sphere it is exactly the quarter floor.
