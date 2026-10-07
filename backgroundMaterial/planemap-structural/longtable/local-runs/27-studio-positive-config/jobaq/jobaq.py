@@ -10,8 +10,15 @@ from collections import Counter, defaultdict
 sys.path.insert(0, '../../26-transport-adversarial'); sys.path.insert(0, '../../25-transport'); sys.path.insert(0, '../../common'); sys.path.insert(0, '../../22-winding-escape')
 from lib26 import Eng
 D = '../../../../studiointel/path3-local/run_dd/'
+ALLSTATES = False
+def ALLSEEDS(E, adj, hole, link):
+    from kempe_py import Space
+    sp = Space({v: set(a) for v, a in adj.items()}, hole, link=link)
+    assert sp.order == E.order
+    return sp.states
+GDIR = D
 def load(gname, hole, mirror):
-    faces = json.load(open(D + 'best-%s.json' % gname))['faces']; adj = {}
+    faces = json.load(open(GDIR + 'best-%s.json' % gname))['faces']; adj = {}
     for t in faces:
         for a, b in itertools.combinations(t, 2): adj.setdefault(a, set()).add(b); adj.setdefault(b, set()).add(a)
     nxt = {}
@@ -43,8 +50,8 @@ def run(gname, hole, mirror, seed=1, T=40):
         c = lc(s); cnt = Counter(c); j = next(j for j in range(5) if c[j] == c[(j + 2) % 5] and cnt[c[j]] == 2)
         mu, A, B = c[(j + 1) % 5], c[(j + 3) % 5], c[(j + 4) % 5]
         return not (E.comp(s, li[(j + 1) % 5], mu, A) >> li[(j + 3) % 5] & 1) and not (E.comp(s, li[(j + 1) % 5], mu, B) >> li[(j + 4) % 5] & 1)
-    for trial in range(T):
-        s0 = E.randcol(rng)
+    seeds = ALLSEEDS(E, adj, hole, link) if ALLSTATES else [E.randcol(rng) for _ in range(T)]
+    for s0 in seeds:
         if s0 in done: continue
         mem = E.bfs(s0); done |= set(mem)
         pi = {}; lam = {}

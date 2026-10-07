@@ -370,3 +370,20 @@ h23 (5,5,5,5,8+). Gamma-cycle lengths there: 800 (A7), 660 (A6 h31), 80, 60, 40,
 - Single-high-vertex holes (A7, r5): the universal 10-step period holds on every Gamma-cycle (incl. the L = 800 one, 80 periods); no consecutive k = 4 failures; no period with
   all three k <= 2 fixed and none with k2 and k0 both fixed.
 - The L = 800 cycle is at a (5,5,5,5,7) hole, not (5,5,5,5,6): it is not a degree-6 test, and no adversarial graph has a (5,5,5,5,6) hole with a Gamma-cycle.
+
+## Job AS (constructing degree-6 Gamma-cycles with L > 60; jobas/flipsearch.py, jobas-battery*.txt/json, best-*.json graphs)
+Graphs = A7_exc + edge flips keeping the core class (min degree 5, max 8, no separating triangle); evaluator = picyc (full enumeration of T - v; n = 37, about 4k-33k states per hole).
+- Two flips already give (5,5,5,5,6) holes with Gamma-cycles of L = 80 (e.g. A7 + flips (18,24), (4,14), hole 22; 17 two-flip variants). Hill-climbing flip walks from those
+  (6 walks x 300 steps) reach L = 120, 180 and **200** at (5,5,5,5,6) holes (best-walk-best-A7f1-3.json: L = 200 at hole 22; -1: L = 180). All Gamma lengths seen are multiples of 20.
+- The full Job AQ battery (all classes from the complete state list, both orientations) on every (5,5,5,5,6) Gamma-cycle with L = 40, 80, 120, 180, 200:
+  Lemma S holds (C_pos = 0, C_neg / D 2.45-3.87), the universal 10-step period holds, there are NO k = 4 or k = 3 failures at all (so A34' cannot fail), no W2 / W2* failure
+  (no period with all three k <= 2 fixed or k2 and k0 both fixed), sigma-C, sigma'-C (H1) and charge-back P1 hold, and every class satisfies the quarter floor.
+
+## Job AT (NightGammaLength §2 cut parity; jobuv/jobat.py -> jobat-summary.txt, jobat.json)
+Edge uv of T - v is CUT by a pi-step when exactly one endpoint lies in the swapped component. Census Gamma-cycles orders 25-27 (2,728 records, all patterns, both orientations) and the
+26 Gamma-cycles of the Job AS two-flip constructions (L = 40, 80).
+- Every edge is cut an even number of times over the whole cycle: 2,728 / 2,728 and 26 / 26 (the proved lemma).
+- At (5,5,5,5,6) every ring edge is cut exactly 4 times and every ring face is met 6 times in every period (census and constructions, 0 exceptions). At (5,5,5,5,7) the larger ring
+  has odd counts (3 / 5 cuts on 1,392 of 22,016 ring-edge-periods).
+- H_D (D_b = far edges cut an odd number of times in period b is nonempty): every period of every cycle. D_b is the same in every period for 2,548 / 2,728 census cycles (4 / 26
+  constructions). **The XOR of D over any odd number of consecutive periods is never empty** (0 records): a cycle cannot close after an odd number of periods, i.e. 20 | L, in all data.
