@@ -1,0 +1,42 @@
+e24 5,5,5,5,6 holes 8354 positive holes 0 | sigC: components 189389 failing comps 0 failing holes 0 max cycles/comp 26
+    Gamma-cycles 0 at 0 holes; lengths [] | R3 states 0 sigma lockless 0 C1Gamma failures 0 | sigma lands on same cycle 0 | R2 0 other-type 0
+    (type, kmask) counts on Gamma-cycles: []
+e24 5,5,5,6,6 holes 6167 positive holes 0 | sigC: components 100072 failing comps 0 failing holes 0 max cycles/comp 18
+    Gamma-cycles 0 at 0 holes; lengths [] | R3 states 0 sigma lockless 0 C1Gamma failures 0 | sigma lands on same cycle 0 | R2 0 other-type 0
+    (type, kmask) counts on Gamma-cycles: []
+e24m 5,5,5,5,6 holes 8354 positive holes 0 | sigC: components 189303 failing comps 0 failing holes 0 max cycles/comp 24
+    Gamma-cycles 0 at 0 holes; lengths [] | R3 states 0 sigma lockless 0 C1Gamma failures 0 | sigma lands on same cycle 0 | R2 0 other-type 0
+    (type, kmask) counts on Gamma-cycles: []
+e24m 5,5,5,6,6 holes 6167 positive holes 0 | sigC: components 100271 failing comps 0 failing holes 0 max cycles/comp 19
+    Gamma-cycles 0 at 0 holes; lengths [] | R3 states 0 sigma lockless 0 C1Gamma failures 0 | sigma lands on same cycle 0 | R2 0 other-type 0
+    (type, kmask) counts on Gamma-cycles: []
+e25 5,5,5,5,6 holes 29233 positive holes 9 | sigC: components 844724 failing comps 0 failing holes 0 max cycles/comp 37
+    Gamma-cycles 6 at 4 holes; lengths [(20, 6)] | R3 states 60 sigma lockless 52 C1Gamma failures 8 | sigma lands on same cycle 6 | R2 0 other-type 0
+    FIRST C1Gamma FAILURE ('p25#14805', 5, [6, 5, 5, 5, 5], 20, 4, {'state_index': 612, 'kmask': 2, 'sigma_kind': 2, 'sigma_lock1': 1, 'sigma_lock2': 1, 'sigma_same_cycle': True, 'sigma_cycle_w': 4})
+    (type, kmask) counts on Gamma-cycles: [((1, 1), 12), ((1, 2), 12), ((1, 4), 12), ((1, 8), 12), ((1, 16), 12), ((3, 1), 12), ((3, 2), 12), ((3, 4), 12), ((3, 8), 12), ((3, 16), 12)]
+e25 5,5,5,6,6 holes 20896 positive holes 2 | sigC: components 436279 failing comps 0 failing holes 0 max cycles/comp 29
+    Gamma-cycles 0 at 0 holes; lengths [] | R3 states 0 sigma lockless 0 C1Gamma failures 0 | sigma lands on same cycle 0 | R2 0 other-type 0
+    (type, kmask) counts on Gamma-cycles: []
+e25m 5,5,5,5,6 holes 29233 positive holes 10 | sigC: components 846111 failing comps 0 failing holes 0 max cycles/comp 36
+    Gamma-cycles 6 at 4 holes; lengths [(20, 6)] | R3 states 60 sigma lockless 52 C1Gamma failures 8 | sigma lands on same cycle 6 | R2 0 other-type 0
+    FIRST C1Gamma FAILURE ('p25#14805', 5, [5, 5, 5, 5, 6], 20, 4, {'state_index': 667, 'kmask': 2, 'sigma_kind': 2, 'sigma_lock1': 1, 'sigma_lock2': 1, 'sigma_same_cycle': True, 'sigma_cycle_w': 4})
+    (type, kmask) counts on Gamma-cycles: [((1, 1), 12), ((1, 2), 12), ((1, 4), 12), ((1, 8), 12), ((1, 16), 12), ((3, 1), 12), ((3, 2), 12), ((3, 4), 12), ((3, 8), 12), ((3, 16), 12)]
+e25m 5,5,5,6,6 holes 20896 positive holes 1 | sigC: components 435840 failing comps 0 failing holes 0 max cycles/comp 30
+    Gamma-cycles 0 at 0 holes; lengths [] | R3 states 0 sigma lockless 0 C1Gamma failures 0 | sigma lands on same cycle 0 | R2 0 other-type 0
+    (type, kmask) counts on Gamma-cycles: []
+e26 5,5,5,5,6 holes 105278 positive holes 26 | sigC: components 3805418 failing comps 0 failing holes 0 max cycles/comp 58
+    Gamma-cycles 25 at 16 holes; lengths [(20, 23), (60, 2)] | R3 states 290 sigma lockless 249 C1Gamma failures 41 | sigma lands on same cycle 33 | R2 0 other-type 0
+    FIRST C1Gamma FAILURE ('p26#36087', 15, [6, 5, 5, 5, 5], 20, 4, {'state_index': 946, 'kmask': 16, 'sigma_kind': 1, 'sigma_lock1': 0, 'sigma_lock2': 1, 'sigma_same_cycle': False, 'sigma_cycle_w': -32})
+    (type, kmask) counts on Gamma-cycles: [((1, 1), 58), ((1, 2), 58), ((1, 4), 58), ((1, 8), 58), ((1, 16), 58), ((3, 1), 58), ((3, 2), 58), ((3, 4), 58), ((3, 8), 58), ((3, 16), 58)]
+e26 5,5,5,6,6 holes 73623 positive holes 12 | sigC: components 1907495 failing comps 0 failing holes 0 max cycles/comp 54
+    Gamma-cycles 3 at 3 holes; lengths [(20, 3)] | R3 states 30 sigma lockless 23 C1Gamma failures 7 | sigma lands on same cycle 7 | R2 0 other-type 0
+    FIRST C1Gamma FAILURE ('p26#16099', 15, [6, 5, 5, 5, 6], 20, 4, {'state_index': 312, 'kmask': 6, 'sigma_kind': 2, 'sigma_lock1': 1, 'sigma_lock2': 1, 'sigma_same_cycle': True, 'sigma_cycle_w': 4})
+    (type, kmask) counts on Gamma-cycles: [((1, 3), 6), ((1, 6), 6), ((1, 12), 6), ((1, 17), 6), ((1, 24), 6), ((3, 3), 6), ((3, 6), 6), ((3, 12), 6), ((3, 17), 6), ((3, 24), 6)]
+e26m 5,5,5,5,6 holes 105278 positive holes 30 | sigC: components 3802262 failing comps 0 failing holes 0 max cycles/comp 60
+    Gamma-cycles 25 at 16 holes; lengths [(20, 23), (60, 2)] | R3 states 290 sigma lockless 249 C1Gamma failures 41 | sigma lands on same cycle 33 | R2 0 other-type 0
+    FIRST C1Gamma FAILURE ('p26#36087', 15, [5, 5, 5, 5, 6], 20, 4, {'state_index': 463, 'kmask': 8, 'sigma_kind': 1, 'sigma_lock1': 1, 'sigma_lock2': 0, 'sigma_same_cycle': False, 'sigma_cycle_w': -63})
+    (type, kmask) counts on Gamma-cycles: [((1, 1), 58), ((1, 2), 58), ((1, 4), 58), ((1, 8), 58), ((1, 16), 58), ((3, 1), 58), ((3, 2), 58), ((3, 4), 58), ((3, 8), 58), ((3, 16), 58)]
+e26m 5,5,5,6,6 holes 73623 positive holes 13 | sigC: components 1909144 failing comps 0 failing holes 0 max cycles/comp 43
+    Gamma-cycles 3 at 3 holes; lengths [(20, 3)] | R3 states 30 sigma lockless 23 C1Gamma failures 7 | sigma lands on same cycle 7 | R2 0 other-type 0
+    FIRST C1Gamma FAILURE ('p26#16099', 15, [6, 5, 5, 5, 6], 20, 4, {'state_index': 456, 'kmask': 3, 'sigma_kind': 2, 'sigma_lock1': 1, 'sigma_lock2': 1, 'sigma_same_cycle': True, 'sigma_cycle_w': 4})
+    (type, kmask) counts on Gamma-cycles: [((1, 3), 6), ((1, 6), 6), ((1, 12), 6), ((1, 17), 6), ((1, 24), 6), ((3, 3), 6), ((3, 6), 6), ((3, 12), 6), ((3, 17), 6), ((3, 24), 6)]

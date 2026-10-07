@@ -36,3 +36,14 @@ below are reported for both orientations (`p` = plantri orientation, `pm` = mirr
   one positive cycle w = +2, L = 14, 11 DL states. Reproduced by the MacBook's Python engine (escape.py + kempe_py.py) exactly. Witness: witness-ipr265-h43.json.
 - Full-mode rerun of all 32 holes (positive-ipr-full.jsonl): per-class Theorem W 0 failures, no pi-cycle crosses classes, transport holds in all five
   variants, every positive cycle has a lock-breaking exit to a negative cycle; min Hall ratio (d) 35,701.
+
+## Job E: C1-Gamma and sigma-C at (5,5,5,5,6) and (5,5,5,6,6) holes, orders 24-26, both orientations (`--jobe`, `jobe.py`)
+Definitions as NightFloorAtEasyHoles §2 and NightFloorHP2 §2: w_t = third vertex of the face x_t x_{t+1} w_t (not v); for a DL state with repeat j,
+R1 if w_j = A, R2 if w_j = B and w_{j+3} = alpha, R3 if w_j = B and w_{j+3} = mu; kmask bit i = x_{j+i} has degree >= 6.
+sigma = swap of the {alpha,mu}-component of m = x_{j+1}. sigma-C: pi-cycles joined whenever a DD-step endpoint t has sigma(t) on another cycle; fail = a joined group with sum w > 0.
+- Every DL state on every Gamma-cycle is R1 or R3 (never R2, never other); each (type, k) occurs equally often, as Lemma 2 of HP2 predicts. Gamma lengths 20 and 60 (w = 4, 12).
+- **C1-Gamma is FALSE** (first: p25 #14805 hole 5, plantri orientation, R3 state at k = 1, sigma image doubly locked on the same Gamma-cycle). Orders 25/26: 8/48 failing R3 states
+  of 60/320 per orientation. Two failure kinds: (i) k in {0,1,2} (degree-6 vertex inside {x_j, x_{j+1}, x_{j+2}}): sigma(r) is DL on the SAME Gamma-cycle (most failures);
+  (ii) k in {1,3,4}: sigma(r) keeps exactly one lock and lands on another cycle (w from -112 to 0). Full breakdown in jobe-summary.txt / the coordinator message.
+- **sigma-C holds**: 0 failing groups at every (5,5,5,5,6) and (5,5,5,6,6) hole, orders 24-26, both orientations (about 11.5 million groups; groups of up to 60 cycles),
+  including every hole with a positive or Gamma-cycle. sigma without psi only.
