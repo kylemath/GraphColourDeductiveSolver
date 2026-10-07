@@ -215,3 +215,5 @@ Items 6 and 8 are the real gaps. Both are radius-unbounded Kempe statements: 6 a
 ## 6. Reproduction
 
 All numbers in §§1.3, 3 and 4 come from short Python passes over `jobg-gamma.jsonl` and `jobi-cycles.jsonl`. These parse the `exits` keys (`kind_k<mask>_u<u>_f<f>_wT<w>`; kmask 8 ↔ k = 3, 16 ↔ k = 4). They took under 1 s on one core, on AC power. No new enumeration was run (plantri is absent on the MacBook).
+
+> **Correction (07 Oct, 03:05).** The §2 claim that a lockless σ-exit at k = 4 lands on f ≥ 2 is FALSE: Studio Job R found p27 #133619 h21 with a k = 4 lockless exit of f = 1 (both orientations; 2 of 400 at order 27). The Lean attempt (QuarterJordanDual.lean) located the gap: the closed {μ,A}-walk separates x₁ from x₃, x₄ only in {α,B}, and the argument needs {α,A}. Use credit ≥ 2 at k = 4; f ≥ 2 at k = 3 is formal (`sigma_exit_f_ge_two_k3'`).
