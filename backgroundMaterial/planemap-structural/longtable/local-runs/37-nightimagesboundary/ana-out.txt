@@ -1,0 +1,89 @@
+============================== ib-census.json classes 36
+checks {'Lam=L-4F': 1733, 'L1=L2': 1733, 'cycles': 1733, '-Lam<=(3fmax-1)e': 1649, 'exc cycles': 1649, '-Lam<=3F-e': 1649}
+fmax on cycles with excursions {1: 1035, 2: 336, 3: 68, 4: 43, 5: 43, 6: 23, 7: 22, 8: 13, 9: 36, 12: 8, 14: 20, 19: 2}
+sigma kind matrix (all unfilled states of the classes):
+  N0 -> {'N0': 1252, 'L1': 436, 'L2': 436, 'DL': 988, 'fixed': 2546}
+  L1 -> {'N0': 436, 'L1': 1202, 'L2': 22, 'DL': 618, 'fixed': 2874}
+  L2 -> {'N0': 436, 'L1': 22, 'L2': 1202, 'DL': 618, 'fixed': 2874}
+  DL -> {'N0': 988, 'L1': 618, 'L2': 618, 'DL': 2056, 'fixed': 2460}
+  involution symmetry a>b == b>a: True
+Gamma-cycles 64
+image kinds (all L states): {'DL': 434, 'N0': 480, 'L2': 84, 'fixed': 198, 'L1': 84}
+non-fixed images on a Gamma-cycle: total 300  of which on Z itself 140  Z with an image on another Gamma-cycle 24
+off-Z non-fixed images by kind and heavy landing (obs heavy / kind-matched expectation):
+  N0: n=480 heavy=465 exp=417.9 obs-share=0.969
+  L1: n=84 heavy=72 exp=59.0 obs-share=0.857
+  L2: n=84 heavy=73 exp=58.9 obs-share=0.869
+  DL: n=294 heavy=128 exp=177.9 obs-share=0.435
+  all: n=942 heavy=738 exp(uniform-U)=690.5 exp(kind)=713.7
+per Z: heavy-share hU [0.479, 0.569, 0.773, 0.841, 0.925]  excursion-share hE [0.541, 0.64, 0.806, 0.941, 0.947]
+   kind share h_N0 [0.642, 0.738, 0.9, 0.964, 0.978]
+   kind share h_L1 [0.446, 0.576, 0.725, 0.897, 0.914]
+   kind share h_L2 [0.446, 0.576, 0.725, 0.897, 0.914]
+   kind share h_DL [0.417, 0.449, 0.61, 0.729, 0.885]
+per Z: #heavy images [7, 10, 11, 14, 16]  kind-matched expectation [6.949, 8.747, 10.815, 15.464, 16.143]
+per Z: P_fail uniform-U [0.0, 0.0, 0.0, 0.0, 0.0]  kind-matched [0.0, 0.0, 0.0, 0.0, 0.0]  excursion (boundary images) [0.0, 0.0, 0.0, 0.0, 0.0]
+   sum P_fail (expected # (c)-failures): U 4.1e-04 kind 1.6e-05 exc 6.7e-04 ; observed 0; max per-Z: U 2.2e-04 kind 3.0e-06 exc 2.2e-04
+per Z: #lockless images [5, 5, 8, 10, 10]  #lockless on heavy [5, 5, 7, 10, 10]  Z with none 0
+per Z: #boundary (N0/L1/L2) images on heavy [6, 8, 10, 12, 12]  Z with none 0
+per Z: min ratio over lockless images [0.5, 0.5, 5.5, 19.25, 62.25]  best lockless ratio [5.75, 7.5, 14.0, 26.0, 62.25]  best boundary ratio [5.75, 7.5, 14.0, 26.0, 62.25]
+lockless images with ratio < 1 (all Z): 15 of 480
+pool slack |D* minus H| - |Z minus Fix| (forcing needs < 0): [-7, 12, 24, 38, 47]  forced Z 1 [('census:p27_315355-h3:m', -7)]
+kind-matched model median best ratio [7.5, 7.75, 14.0, 26.0, 62.25]  observed/model [0.411, 0.717, 1.0, 1.0, 1.0]
+per Z best ratio [5.75, 7.5, 14.0, 26.0, 62.25]
+   worst census:p27_273912-h24:m L 20 n 12 heavy 11 best 11.0 hU 0.59 hE 0.64 {'N0': 0.71, 'L1': 0.58, 'L2': 0.58, 'DL': 0.51} {'N0': 7, 'DL': 6, 'fixed': 4, 'L2': 3}
+   worst census:p27_273912-h24:m L 20 n 12 heavy 11 best 11.0 hU 0.59 hE 0.64 {'N0': 0.71, 'L1': 0.58, 'L2': 0.58, 'DL': 0.51} {'N0': 7, 'DL': 6, 'fixed': 4, 'L2': 3}
+   worst census:p26_75311-h19:m L 20 n 16 heavy 9 best 7.5 hU 0.55 hE 0.61 {'N0': 0.64, 'L1': 0.58, 'L2': 0.58, 'DL': 0.42} {'N0': 7, 'DL': 6, 'L2': 3, 'fixed': 4}
+   worst census:p26_75311-h19:m L 20 n 16 heavy 9 best 7.5 hU 0.55 hE 0.61 {'N0': 0.64, 'L1': 0.58, 'L2': 0.58, 'DL': 0.42} {'L2': 3, 'N0': 7, 'DL': 6, 'fixed': 4}
+   worst census:p25_16945-h3:p L 20 n 10 heavy 7 best 15.75 hU 0.57 hE 0.65 {'N0': 0.82, 'L1': 0.52, 'L2': 0.52, 'DL': 0.48} {'DL': 6, 'N0': 6, 'fixed': 6, 'L2': 1, 'L1': 1}
+   worst census:p27_273919-h26:p L 20 n 16 heavy 13 best 10.0 hU 0.48 hE 0.54 {'N0': 0.68, 'L1': 0.45, 'L2': 0.45, 'DL': 0.42} {'N0': 8, 'L1': 4, 'fixed': 4, 'DL': 3, 'L2': 1}
+length-weighted excursion density e/L and boundary share of unfilled (N0+L1+L2)/U by mass density:
+   -0.2<Lam/L<0       states      81  e/L 0.235  boundary/U 0.509
+   Lam/L<=-0.5        states   34342  e/L 0.268  boundary/U 0.781
+   Lam/L=0            states    5432  e/L 0.250  boundary/U 0.657
+   Lam>0              states    1280  e/L 0.000  boundary/U 0.000
+   -0.5<Lam/L<=-0.2   states    1041  e/L 0.215  boundary/U 0.555
+============================== ib-hits.json classes 122
+checks {'Lam=L-4F': 59709, 'L1=L2': 59709, 'cycles': 59709, '-Lam<=(3fmax-1)e': 56059, 'exc cycles': 56059, '-Lam<=3F-e': 56059}
+fmax on cycles with excursions {1: 40843, 2: 9164, 3: 2505, 4: 436, 5: 257, 6: 130, 7: 87, 8: 67, 9: 1448, 12: 25, 14: 789, 19: 202, 22: 6, 24: 59, 27: 8, 29: 6, 39: 7, 42: 10, 49: 10}
+sigma kind matrix (all unfilled states of the classes):
+  N0 -> {'N0': 133972, 'L1': 30530, 'L2': 30530, 'DL': 37570, 'fixed': 141554}
+  L1 -> {'N0': 30530, 'L1': 102134, 'L2': 1284, 'DL': 22809, 'fixed': 113787}
+  L2 -> {'N0': 30530, 'L1': 1284, 'L2': 102134, 'DL': 22809, 'fixed': 113787}
+  DL -> {'N0': 37570, 'L1': 22809, 'L2': 22809, 'DL': 131376, 'fixed': 84968}
+  involution symmetry a>b == b>a: True
+Gamma-cycles 284
+image kinds (all L states): {'N0': 2532, 'DL': 2288, 'L2': 748, 'L1': 748, 'fixed': 1004}
+non-fixed images on a Gamma-cycle: total 1052  of which on Z itself 700  Z with an image on another Gamma-cycle 90
+off-Z non-fixed images by kind and heavy landing (obs heavy / kind-matched expectation):
+  N0: n=2532 heavy=2505 exp=2348.4 obs-share=0.989
+  L1: n=748 heavy=622 exp=575.5 obs-share=0.832
+  L2: n=748 heavy=604 exp=577.0 obs-share=0.807
+  DL: n=1588 heavy=1170 exp=1196.5 obs-share=0.737
+  all: n=5616 heavy=4901 exp(uniform-U)=4573.6 exp(kind)=4697.4
+per Z: heavy-share hU [0.732, 0.791, 0.823, 0.855, 0.892]  excursion-share hE [0.764, 0.836, 0.873, 0.902, 0.924]
+   kind share h_N0 [0.83, 0.906, 0.939, 0.974, 0.989]
+   kind share h_L1 [0.69, 0.735, 0.765, 0.835, 0.87]
+   kind share h_L2 [0.69, 0.735, 0.765, 0.835, 0.87]
+   kind share h_DL [0.689, 0.717, 0.76, 0.804, 0.84]
+per Z: #heavy images [9, 12, 14, 26, 70]  kind-matched expectation [9.982, 10.558, 12.581, 21.849, 65.817]
+per Z: P_fail uniform-U [0.0, 0.0, 0.0, 0.0, 0.0]  kind-matched [0.0, 0.0, 0.0, 0.0, 0.0]  excursion (boundary images) [0.0, 0.0, 0.0, 0.0, 0.0]
+   sum P_fail (expected # (c)-failures): U 4.1e-08 kind 1.4e-08 exc 4.4e-05 ; observed 0; max per-Z: U 3.1e-09 kind 1.6e-09 exc 4.4e-06
+per Z: #lockless images [3, 3, 7, 10, 50]  #lockless on heavy [3, 3, 7, 10, 50]  Z with none 0
+per Z: #boundary (N0/L1/L2) images on heavy [6, 7, 11, 15, 60]  Z with none 0
+per Z: min ratio over lockless images [0.4, 1.0, 58.0, 589.5, 1425.75]  best lockless ratio [60.0, 125.5, 372.0, 611.25, 1425.75]  best boundary ratio [60.0, 185.5, 384.0, 611.25, 1425.75]
+lockless images with ratio < 1 (all Z): 27 of 2532
+pool slack |D* minus H| - |Z minus Fix| (forcing needs < 0): [179, 238, 361, 591, 657]  forced Z 0 []
+kind-matched model median best ratio [60.0, 185.5, 387.0, 611.25, 1425.75]  observed/model [0.779, 1.0, 1.0, 1.0, 1.0]
+per Z best ratio [60.0, 185.5, 387.0, 611.25, 1425.75]
+   worst hits/walk-best-A7f1-3-A34-w4-it575.json:p L 20 n 13 heavy 12 best 723.25 hU 0.78 hE 0.83 {'N0': 0.92, 'L1': 0.73, 'L2': 0.73, 'DL': 0.72} {'DL': 6, 'fixed': 7, 'L2': 3, 'N0': 3, 'L1': 1}
+   worst hits/walk-best-A7f1-3-A34-w4-it577.json:p L 20 n 13 heavy 12 best 723.25 hU 0.78 hE 0.83 {'N0': 0.92, 'L1': 0.73, 'L2': 0.73, 'DL': 0.72} {'DL': 6, 'fixed': 7, 'L2': 3, 'N0': 3, 'L1': 1}
+   worst hits/walk-best-A7f1-3-A34-w4-it578.json:p L 20 n 13 heavy 12 best 723.25 hU 0.78 hE 0.83 {'N0': 0.92, 'L1': 0.73, 'L2': 0.73, 'DL': 0.72} {'DL': 6, 'fixed': 7, 'L2': 3, 'N0': 3, 'L1': 1}
+   worst hits/walk-best-A7f1-3-A34-w4-it579.json:p L 20 n 13 heavy 12 best 723.25 hU 0.78 hE 0.83 {'N0': 0.92, 'L1': 0.73, 'L2': 0.73, 'DL': 0.72} {'DL': 6, 'fixed': 7, 'L2': 3, 'N0': 3, 'L1': 1}
+   worst hits/walk-best-A7f1-3-A34-w4-it575.json:m L 20 n 13 heavy 13 best 464.0 hU 0.79 hE 0.84 {'N0': 0.91, 'L1': 0.75, 'L2': 0.75, 'DL': 0.74} {'DL': 6, 'L2': 1, 'fixed': 7, 'L1': 3, 'N0': 3}
+   worst hits/walk-best-A7f1-3-A34-w4-it577.json:m L 20 n 13 heavy 13 best 464.0 hU 0.79 hE 0.84 {'N0': 0.91, 'L1': 0.75, 'L2': 0.75, 'DL': 0.74} {'DL': 6, 'L2': 1, 'fixed': 7, 'L1': 3, 'N0': 3}
+length-weighted excursion density e/L and boundary share of unfilled (N0+L1+L2)/U by mass density:
+   Lam/L=0            states  224824  e/L 0.250  boundary/U 0.656
+   Lam/L<=-0.5        states 2163027  e/L 0.271  boundary/U 0.771
+   Lam>0              states    8580  e/L 0.017  boundary/U 0.034
+   -0.5<Lam/L<=-0.2   states    6377  e/L 0.243  boundary/U 0.619
