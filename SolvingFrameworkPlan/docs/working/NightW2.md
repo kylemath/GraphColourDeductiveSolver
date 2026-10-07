@@ -198,6 +198,84 @@ Script: `nightw2/w2trace.py`, output in `outtrace.txt`. The rows are the ranks o
 
 **Position 6:** all three non-1 pairs are acyclic at once in 86 periods. So the middle state alone is no obstruction, and K₄/K₇, the two {1,3}-swaps through p, carry the forcing.
 
+## 8. W2′: a cycle through y or z, i.e. a K_σ-escape at y or z (written 03:38 MDT, after Job AI)
+
+Job AI (`jobuv/jobai-summary.txt`) found that in 552/552 periods some {A,B}-cycle at position 4, 6 or 8 passes through y or z. All cycles hug v, with 4–5 vertices on v's side. Every fixed point is made by **one** swap:
+- step 5 kills the last {A,B}-cycle before R3k1 (99/100 cases);
+- step 7 kills the last one before R3k0 (60/60 cases);
+- the killed cycle is short and avoids y and z.
+
+### 8.1 Fan lemma [proved; direction ⇐ uses the boundary-parity argument of Lemma Fix]
+
+Setting:
+- R3@k, k ≤ 2, frame (α, μ, A, B);
+- u ≠ h is a vertex coloured A or B;
+- K_σ is the {α,μ}-component of x_{j+1}; it contains the contiguous link arc x_j, x_{j+1}, x_{j+2} (`low_roles`).
+
+Then:
+
+  **u lies on an {A,B}-cycle of T − h ⇔ some {α,μ}-neighbour of u lies outside K_σ.**
+
+*Proof.*
+- (⇒) This is the argument of `acyclic_of_sigmaFixed`, applied at u itself.
+  - Let C pass through u with edges u b₁ and u b₂.
+  - The two rotation arcs of u between b₁ and b₂ each contain an {α,μ}-neighbour, because consecutive neighbours are adjacent and coloured off u's colour.
+  - The Jordan lemma (`alternating_walks_intersect`) separates these two neighbours by C, so they lie in different {α,μ}-components.
+  - At most one of them is in K_σ.
+- (⇐) Let v₀ be an {α,μ}-neighbour of u outside K_σ, and let S be its {α,μ}-component.
+  - S contains no link vertex: the link's α/μ vertices form one arc inside K_σ.
+  - So the face-boundary graph of S (`bdGraph`, as in `not_acyclic_of_not_sigmaFixed`) avoids h and consists of {A,B}-edges, with even degrees.
+  - Going around u, the faces u v₀ · meet S. Some face at u misses S, namely one at the K_σ-neighbour of u where u has one; see the next paragraph for why one exists.
+  - So u has positive even degree in that graph, and u lies on a cycle of it. ∎
+
+Why u has a K_σ-neighbour:
+- at R3@k ≤ 2, both y and z are adjacent to p and m, which lie in K_σ;
+- so for u ∈ {y, z} both kinds of face occur whenever a neighbour outside K_σ exists.
+
+### 8.2 W2′, Lean-ready, and W2′ ⇒ W2 (fixed-point part) [proved, trivial]
+
+Setting: on an all-DL π-orbit at a `Hole6 P w m q`, with s n = π^[n] s, j_n the repeat index, y = w (q+4) and z = w q. The statement:
+
+```
+W2' : ∀ b, ∃ n ∈ {10b+14, 10b+16, 10b+18}, ∃ u ∈ {y, z}, ∃ v,
+        M.graph.Adj u v ∧ Active h (s n) α_n μ_n v ∧
+        ¬ (pairGraph M.graph h (s n) α_n μ_n).Reachable (P.x (j_n + 1)) v
+```
+
+Here α_n = s n (x j_n) and μ_n = s n (x (j_n+1)). The indices 10b+14, 10b+16, 10b+18 are the positions 4, 6, 8 of a period, since `gamma_period_ten` starts at R3k4 = position 0.
+
+The conclusion is literally ¬ `SigmaFixed` at that state. **No Lemma Fix and no duality is needed for W2′ ⇒ "not all three fixed".** By the fan lemma, W2′ is equivalent to Job AI's statement, that some {A,B}-cycle at position 4, 6 or 8 passes through y or z.
+
+### 8.3 Where the escape can be: explicit vertex names [proved]
+
+These use the §1 colourings, with q = 2, p = x₂, y = w₁ and z = w₂. The {α,μ}-neighbours of y and z inside the 2-ball are:
+
+| state | {α,μ} | y's ball {α,μ}-nbrs | z's ball {α,μ}-nbrs | in K_σ for sure | **ring candidate** |
+|---|---|---|---|---|---|
+| pos 4, R3k2 | {1,2} | x₁, p, m | m, p, **w₃** (2) | x₁, p, m | **w₃** (via z) |
+| pos 6, R3k1 | {1,3} | x₁, p, m | m, p, x₃ | all | none |
+| pos 8, R3k0 | {1,4} | **w₀** (4), x₂ = p, m | m, p, x₃ | p, m, x₃ | **w₀** (via y) |
+
+(m, x₁ and x₃ are in K_σ via the arc and the edges p m, p x_{q±1}.) So W2′ says that at least one of the following holds:
+- (i) at R3k2, w₃ ∉ K_σ, i.e. w₃ (colour μ = 2) is not {1,2}-joined to the link arc;
+- (ii) at R3k0, w₀ ∉ K_σ, i.e. w₀ (colour μ = 4) is not {1,4}-joined to the link arc;
+- (iii) some outer neighbour of y or z (outside the 2-ball) escapes K_σ at one of the three states.
+
+(i) and (ii) are mirror images under time reversal; the mirror orientation reads the cycle backwards, and k2 ↔ k0. In either case the escaping vertex is the ring vertex across w₄ from the y–z side, and the cycle given by the fan lemma passes through z (in i) or y (in ii). This matches Job AI's most common ring sets, which contain w₃w₄ or w₀w₄.
+
+### 8.4 What is still missing [conjecture], and the exact Studio test
+
+I have no hand argument that (i), (ii) or (iii) occurs. The proposed mechanism goes through the Lock chains of §2:
+- Lock2@R3k2 is the {2,4}-chain x₁ → x₄. It runs through w₃'s side of the ring, since w₃ (2) is adjacent to x₄ (4).
+- Lock1@R3k0 is the {2,4}-chain x₃ → x₀, adjacent to w₀.
+- "Both (i) and (ii) fail" would mean that w₃ is {1,2}-attached to the arc at R3k2 and w₀ is {1,4}-attached at R3k0. With the lock chains in the complementary pairs, the hope is that the four swaps K₄–K₇ cannot realise both attachments. I could not close this.
+
+Studio test (cheap, ranks not needed). At each of the 552 periods, record:
+1. the booleans E(pos, u) = "u has an {α,μ}-neighbour outside K_σ", for u ∈ {y, z} and pos ∈ {4, 6, 8}; W2′ says their OR is 1;
+2. whether the escape is the ring candidate (w₃ at position 4, w₀ at position 8) or an outer neighbour;
+3. the minimal sufficient sub-statement. Is (i) ∨ (ii) alone always true? If yes, W2′ reduces to two named ring vertices and two states, which is the Lean-sized target.
+4. also on all maximal DL runs, as in §5.1, to see whether Γ-closure is needed.
+
 ## 6. Reproduction
 
 Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/nightw2/`. Each runs on a single core in under 1 s.
