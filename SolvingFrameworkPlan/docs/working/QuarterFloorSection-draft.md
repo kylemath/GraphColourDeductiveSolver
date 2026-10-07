@@ -107,7 +107,7 @@ The quarter floor is therefore a quantitative strengthening of a published open 
   - local compute 1805 (exhaustive census) and 1811 (counting lemma);
   - Math 1813 (Lemma A) and 1818 (bijections, class identity, DD_j);
   - local intel 1848 (adversary).
-- **Commits:** 0c0e098, 2163e02, 9c1e03c.
+- **Commits:** 0c0e098, 2163e02, 9c1e03c; locality: 707840b, 534dfb2, 3a346c8, ba90dfd.
 - **Working pages:**
   - `docs/working/MathQuarterFloorLemmaA.md`;
   - `docs/working/MathQuarterFloorBijections.md`;
