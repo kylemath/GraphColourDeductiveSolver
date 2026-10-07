@@ -1,0 +1,122 @@
+census (5, 5, 5, 5, 6): 264 cycles, 552 periods
+     264 ('A recurs at odd distance', False)
+     24 ('A_period2', False)
+     528 ('A_period2', True)
+     264 ('a vertex flips omega-membership in every period (intersection of S_b nonempty)', True)
+     264 ('free steps', (0, 7))
+     168 ('in_S', False)
+     384 ('in_S', True)
+     552 ('omega_in_all_pairs', True)
+     168 ('one_of_K0K7', False)
+     384 ('one_of_K0K7', True)
+     168 ('u* failure kind', 'neither')
+     84 ('u* flips in every period', False)
+     180 ('u* flips in every period', True)
+     264 ('x- in every free component', True)
+     errors: {}
+census (5, 5, 5, 5, 7): 406 cycles, 916 periods
+     406 ('A recurs at odd distance', False)
+     156 ('A_period2', False)
+     760 ('A_period2', True)
+     406 ('a vertex flips omega-membership in every period (intersection of S_b nonempty)', True)
+     406 ('free steps', (0, 7))
+     82 ('in_S', False)
+     834 ('in_S', True)
+     916 ('omega_in_all_pairs', True)
+     82 ('one_of_K0K7', False)
+     834 ('one_of_K0K7', True)
+     82 ('u* failure kind', 'neither')
+     41 ('u* flips in every period', False)
+     365 ('u* flips in every period', True)
+     406 ('x- in every free component', True)
+     errors: {}
+census (5, 5, 5, 5, 8): 238 cycles, 544 periods
+     238 ('A recurs at odd distance', False)
+     130 ('A_period2', False)
+     414 ('A_period2', True)
+     238 ('a vertex flips omega-membership in every period (intersection of S_b nonempty)', True)
+     238 ('free steps', (0, 7))
+     50 ('in_S', False)
+     494 ('in_S', True)
+     544 ('omega_in_all_pairs', True)
+     50 ('one_of_K0K7', False)
+     494 ('one_of_K0K7', True)
+     50 ('u* failure kind', 'neither')
+     25 ('u* flips in every period', False)
+     213 ('u* flips in every period', True)
+     238 ('x- in every free component', True)
+     errors: {}
+constructions (5,5,5,5,6): 40 cycles, 344 periods
+     40 ('A recurs at odd distance', False)
+     285 ('A_period2', False)
+     59 ('A_period2', True)
+     40 ('a vertex flips omega-membership in every period (intersection of S_b nonempty)', True)
+     40 ('free steps', (0, 7))
+     344 ('in_S', True)
+     344 ('omega_in_all_pairs', True)
+     344 ('one_of_K0K7', True)
+     40 ('u* flips in every period', True)
+     40 ('x- in every free component', True)
+census (5,5,5,5,5): 1134 cycles; cycles with a universal-period labelling for some q: 1134; by number of valid q: {5: 1134}
+census (5,5,5,5,5), every valid q: 5670 cycles, 12400 periods
+     5670 ('A recurs at odd distance', False)
+     1556 ('A_period2', False)
+     10844 ('A_period2', True)
+     5670 ('a vertex flips omega-membership in every period (intersection of S_b nonempty)', True)
+     5670 ('free steps', (0, 7))
+     1092 ('in_S', False)
+     11308 ('in_S', True)
+     12400 ('omega_in_all_pairs', True)
+     1092 ('one_of_K0K7', False)
+     11308 ('one_of_K0K7', True)
+     88 ('u* failure kind', 'both K0 and K7')
+     1004 ('u* failure kind', 'neither')
+     528 ('u* flips in every period', False)
+     5142 ('u* flips in every period', True)
+     5670 ('x- in every free component', True)
+     errors: {}
+
+vertices that flip omega-membership in every period (S_all), by name / named neighbours:
+  census 55556 |S_all| distribution {2: 82, 3: 26, 4: 44, 5: 60, 6: 38, 7: 14}
+      353 ('far', ())
+      181 ('far', ('z',))
+      180 ('far', ('w3', 'y'))
+      177 ('far', ('y',))
+      76 ('far', ('y', 'z'))
+      67 ('far', ('w3',))
+      5 ('far', ('wp',))
+      5 ('far', ('w2',))
+    when u* fails, S_all is:
+        13 (('far', ('w3',)), ('far', ('z',)))
+        12 (('far', ()), ('far', ()), ('far', ('w3',)), ('far', ('z',)))
+        10 (('far', ()), ('far', ('z',)))
+        6 (('far', ()), ('far', ()), ('far', ()), ('far', ('w3',)), ('far', ('z',)))
+        5 (('far', ()), ('far', ()), ('far', ('w3',)), ('far', ('w3',)), ('far', ('z',)))
+  census 55557 |S_all| distribution {2: 78, 3: 39, 4: 73, 5: 42, 6: 101, 7: 60, 8: 13}
+      510 ('far', ())
+      365 ('far', ('w3', 'y'))
+      311 ('far', ('z',))
+      309 ('far', ('y',))
+      144 ('far', ('y', 'z'))
+      95 ('far', ('p', 'y'))
+      81 ('far', ('p', 'z'))
+      78 ('far', ('w3',))
+    when u* fails, S_all is:
+        9 (('far', ('w3',)), ('far', ('z',)))
+        6 (('far', ()), ('far', ()), ('far', ()), ('far', ('p', 'y')), ('far', ('w3',)), ('far', ('z',)))
+        4 (('far', ()), ('far', ('p', 'y')), ('far', ('w3',)), ('far', ('z',)))
+        4 (('far', ()), ('far', ()), ('far', ('p', 'y')), ('far', ('w3',)), ('far', ('z',)))
+        3 (('far', ()), ('far', ('w3',)))
+  constructions |S_all| distribution {2: 20, 3: 2, 4: 10, 5: 3, 6: 5}
+      50 ('far', ('y',))
+      40 ('far', ('w3', 'y'))
+      21 ('far', ('z',))
+      20 ('far', ())
+    when u* fails, S_all is:
+
+S_all contains a far vertex adjacent to the ring (z, w+, w2, w3, y, m):
+  census 55556 {'ring-adjacent: True': 262, 'u* or a far z-neighbour: True': 262, 'ring-adjacent: False': 2, 'u* or a far z-neighbour: False': 2}
+  census 55557 {'ring-adjacent: True': 406, 'u* or a far z-neighbour: True': 403, 'u* or a far z-neighbour: False': 3}
+  census 55558 {'ring-adjacent: True': 238, 'u* or a far z-neighbour: True': 238}
+  census 55555 (all q) {'ring-adjacent: True': 5606, 'u* or a far z-neighbour: True': 5587, 'u* or a far z-neighbour: False': 83, 'ring-adjacent: False': 64}
+  constructions {'ring-adjacent: True': 40, 'u* or a far z-neighbour: True': 40}
