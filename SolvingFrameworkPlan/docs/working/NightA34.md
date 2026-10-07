@@ -37,6 +37,14 @@ Labels:
    - (b) "the Lock2 witness at R3k0^{b+1} must cross the second pocket and cannot". It can: it leaves the pocket through m along the edge z–m, which is a Lock2 edge.
    - (c) Every intersection count between K, K′, Π_b and the Lock components is forced ≥ 1 by the fixed local vertices x_{q+2}, x_{q+3} and w⁺. So the "meets" statistics carry no information unless the local vertices are removed.
 7. **[conjecture] The isolated sub-statement is Σ in §5**, with a precise Studio test in §6. It is about one swap only: the step-0 and step-1 far swaps of period b+2 against fixed vertex sets of period b. I could not test it locally. The gentri orders ≤ 24 contain only 4 double breaks, all on short open runs with |Z_b| ≤ 3.
+8. **Update (04:09 MDT), Studio Job AM.**
+   - The window lemma is confirmed with 0 exceptions at degrees 6 and 7, on Γ-cycles and on open runs.
+   - **Σ is [killed]:** 36/73 on open double breaks, 18/19 on single breaks, 7/14 on degree-7 periods that stay DL.
+   - §7 analyses the gate set R_b:
+     - [proved] R_b ∩ hole = {x⁺} exactly;
+     - [proved] at least one far gate is needed to heal;
+     - [killed locally] "|R_b| = 2 forbids a second break": two local double breaks have |R_b| = 2.
+     - The Job AO test is stated there.
 
 ## 1. Bookkeeping
 
@@ -208,7 +216,104 @@ For all (5,5,5,5,6) Γ-cycles (orders 25–27, both orientations) and for the 73
    - If Σ holds on the double breaks but also holds often on the single breaks, Σ is true but useless. Report both rates.
 4. At (5,5,5,5,7) (14 consecutive-break periods on Γ-cycles), the same quantities. Σ must **fail** at degree 7 where those cycles stay DL. If it holds there too, the "reopened gate kills Lock2" step is false at degree 7, and the degree must enter through the gate geometry (the edge z–m in §4(b)).
 
-## 7. Reproduction
+## 7. The gate set R_b (Studio Job AM, |R_b| = 2 on degree-6 Γ-cycles)
+
+Definition (Job AM):
+- K₀ and K₁ are the π-step components at R3k4^{b+1} (pos 0) and R1k1^{b+1} (pos 1);
+- Z_b is the G_J-component of z at R1k2^b;
+- R_b = {v ∈ K₀ ∪ K₁ : v has a neighbour in Z_b}.
+
+Studio data: |R_b| = 2 and |R_b \ H11| = 1 in 19/19 breaks on degree-6 Γ-cycles. At degree 7 it is 2–5; on the open double breaks it is 2–7.
+
+### 7.1 The near gate is x⁺, and it is the only hole vertex [proved]
+
+Colours at R1k2^b (period b ≡ 0, table §1.1, pos 9):
+- the J pair is {1,3};
+- J-coloured hole vertices: z = w₀ (1), w₂ (1), x⁻ (1), x₂ (3), y (3);
+- all other hole vertices (p, x⁺, x₃, w⁺, w₃, m) have colours 0 or 2.
+
+**(i) Z_b ∩ H11 = {z} at a break.**
+- Lock2 at R1k2 is y ~ w₂ in the J pair (§1.2), so w₂ lies in y's G_J-component.
+- x⁻ is adjacent to y and x₂ is adjacent to w₂, and both are J-coloured. So they are in y's component too.
+- At a break, z is not in y's component. So the only hole vertex of Z_b is z.
+
+**(ii) R_b ∩ H11 = {x⁺}.**
+- By the table, the hole vertices of K₀ are {x₃, x⁻, w₂} and those of K₁ are {x⁺, x₂, w₂}. The far swaps avoid p, m, y and z (Job O; §2.1 for step 8).
+- x⁺ is the step-1 anchor (x_{j+2} with j = 4 at R1k1). It is adjacent to z ∈ Z_b, so x⁺ ∈ R_b.
+- w₂, x₂ and x⁻ are J-coloured vertices of y's component. A J-coloured neighbour of any of them would lie in y's component, so none of them has a neighbour in Z_b.
+- x₃ has degree 5 with neighbours h, x₂, x⁻, w₂, w₃, all hole vertices. None of these is in Z_b, by (i).
+
+So the "near" gate is always r_near = x⁺. Its colour is α at pos 0, and step 1 gives it y's colour at pos 2.
+
+**(iii) x⁺ cannot heal.**
+- x⁺ has degree 5: h, p, x₂, z, w⁺.
+- At R3k3^{b+1} (pos 2) its J-coloured neighbours are z only (pos 2 colours: x₂ = 0, w⁺ = 3, p = 3, J pair {1,2}).
+- So a G_J-path from z to w₂ at pos 2 cannot use x⁺.
+
+**(iv) At least one far gate [proved].**
+- DL at R3k3^{b+1} forces z ~ w₂ in G_J (window lemma). Take such a path Q.
+- Only the two far swaps act on the J pair between pos 9 and pos 2, since the step-9 swap is a pm-swap.
+- So Q leaves the original set Z_b through a vertex that is in K₀ ∪ K₁ and has a neighbour in Z_b (or is itself a recoloured vertex of Z_b). That vertex lies in R_b, and by (ii)–(iii) it is not x⁺.
+- Hence |R_b \ H11| ≥ 1 on every run that is DL at pos 2, and |R_b| = 2 means **the healing goes through exactly one far gate r_far**.
+
+**(v) |R_b| = 2 is not a ring identity [data, `rb.py`, orders 20–23].**
+- On local breaks whose run stays DL to pos 4, |R_b| is 2 in 40/53, 4 in 10/53 and 3 in 3/53.
+- In 39 of the 40 cases with |R_b| = 2, r_far is in K₀, has colour α at pos 0, has no edge to z, borders a far vertex of Z_b, and lies on z's healed G_J-component at pos 2.
+- So the Γ-cycle rigidity |R_b| = 2 is a closure (or sample-size) fact, not a Hole6 fact.
+- It does say that on Γ-cycles the healing is **a single K₀ swap through one α-vertex**:
+  - K₀ ∋ w₂, r_far;
+  - after step 0, r_far has z's colour class and w₂ has left the pair;
+  - step 1 (K₁ ∋ x⁺, x₂, w₂) brings w₂ back into the pair, adjacent to the path.
+
+### 7.2 Can the single far gate serve both breaks? [killed as a sole mechanism, locally]
+
+The natural statement was:
+
+**G1.** If |R_b \ H11| = 1, then step 8 of period b+1 does not break J.
+
+It is **false on open runs** (`rb2.py` → `rb2-continuations.txt`, all 15 local continuations):
+- 24 #3131 and 24 #3175 (gentri, unmirrored, h0) are double breaks with |R_b| = 2;
+- r_far(b) ∉ K′ (the step-8 component of b+1) and r_far(b) ∉ Z_{b+1};
+- r_far(b) is adjacent to Z_{b+1} in all 15 continuations, single and double alike.
+
+So the single far gate does not by itself prevent a second break. Both runs leave DL right after (dist 2), and neither is a Γ-cycle. Whatever forbids the double break on Γ-cycles must use the run continuing past R1k2^{b+1}: at least the healing of the *second* split by pos 2 of period b+2, with the first gate's history.
+
+### 7.3 Precise statement for the two-period spacing [conjecture]
+
+Write r_b for the far gate of period b (|R_b| = 2), and Q_b for z's healed G_{J_b}-component at R3k3^{b+1}. Then r_b ∈ Q_b by (iv).
+
+**G2 (gate exclusion).** On a DL run at a Hole6, suppose there are breaks at step 8 of periods b and b+1, and the run is DL at R3k3^{b+2} (so the second split heals). Then:
+- either the second healing has two far gates (|R_{b+1} \ H11| ≥ 2),
+- or r_{b+1} = r_b and the step-0 swap of period b+2 recolours a vertex of Q_b \ H11.
+
+Consequences:
+- With Job AM's "|R| = 2 on degree-6 Γ-cycles" taken as a closure invariant, G2 leaves only the second branch.
+- That branch is "the single far vertex serves both healings". It would have to be excluded by colour: r_b has colour α at R3k4^{b+1}, and r_{b+1} must have colour α at R3k4^{b+2}.
+- Between those two states, ten swaps act. The only ones that can recolour a far vertex are steps 0, 1, 3 and 8 (far) and the near steps whose components reach it.
+- I could not close this. **It is the precise remaining question:** does a far vertex that is α at two consecutive R3k4 states, and a K₀-gate both times, force a non-DL state? Degree 7 is a test: there the 14 consecutive-break periods have |R_far| 1–3.
+
+### 7.4 Studio test (Job AO)
+
+Inputs: Job AM's sets (jobam.json), extended. For every step-8 break on (5,5,5,5,6) and (5,5,5,5,7) Γ-cycles and on the 73 open double breaks:
+1. **Check 7.1(ii):** R_b ∩ H11 = {x⁺}, where x⁺ = the link neighbour of p on z's side. Predicted 100% at degree 6.
+   - At degree 7 the analogue is the link vertex adjacent to z; report what appears.
+2. **For each far gate r:**
+   - its colour role at R3k4^{b+1};
+   - K₀ or K₁ membership;
+   - adjacency to z;
+   - membership in Q_b (z's G_J-component at R3k3^{b+1}).
+
+   Predicted at degree 6: α, K₀, not adjacent to z, in Q_b.
+3. **For each double break (b, b+1) that reaches R3k3^{b+2}:**
+   - R_b and R_{b+1} with their far parts;
+   - is r_b ∈ R_{b+1}? (does the single far vertex serve both healings);
+   - is r_b ∈ K′_{b+1} (the step-8 component), ∈ Π_{b+1}, ∈ Z_{b+1}?
+   - the colour of r_b at each of the 10 states between the two R3k4's, and which step components contain it.
+4. **G2:** count the double breaks that satisfy neither branch. At degree 7 (14 periods), G2 is predicted to hold and the second branch is predicted to occur. At degree 6, report any open double break reaching R3k3^{b+2} with |R_b| = |R_{b+1}| = 2.
+   - If none exists at orders 25–27, "|R| = 2 twice in a row ⇒ the run leaves DL before R3k3^{b+2}" is the sharp run-local statement. It closes A₃₄′ on degree-6 Γ-cycles if |R| = 2 is proved there.
+5. **Control:** on degree-6 Γ-cycles, for single breaks, the same r_b histories over the next 10 steps. This shows how often r_b returns to α at the next R3k4. If it is often, the branch-2 exclusion cannot be by colour alone.
+
+## 8. Reproduction
 
 All in `backgroundMaterial/planemap-structural/longtable/local-runs/30-nighta34/`. Gentri lists, `kempe_py.Space` for enumeration, actual-colour π re-implemented in `eng.py` (it matches `escape.pi_of`; it reproduces the NightLemmaS 24 #3611 h0 trace exactly). One core, AC power.
 
@@ -220,3 +325,5 @@ All in `backgroundMaterial/planemap-structural/longtable/local-runs/30-nighta34/
 | `window.py 20,21,22` and `23` | §3 window lemma | 1 / 3 min |
 | `ex.py 24 3610 0 0` → `ex-24-3611-h0.txt` | full trace of the order-24 double failure (0-based 3610 = #3611) | < 1 s |
 | `far.py` | §4(c) far intersections | 30 s |
+| `rb.py 20,21,22,23` → `rb-20-23.txt` | §7.1 gate sets R_b on local breaks | 4 min |
+| `rb2.py` → `rb2-continuations.txt` | §7.2 r_far against period b+1 | 30 s |
