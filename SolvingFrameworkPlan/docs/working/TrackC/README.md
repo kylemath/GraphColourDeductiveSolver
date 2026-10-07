@@ -84,8 +84,33 @@ Axioms: `[propext, Classical.choice, Quot.sound]`.
 
 One open hypothesis question needs Math's answer first: whether the 4-cycle `abcd` may have a chord in `T`, i.e. `ac ∈ T`. If it has one, the triangles `abc` and `acd` are separating unless they are faces, so `NoSep` excludes most of these cases. This should be settled before step 1.
 
+## 5. Lock parity: `PlaneMap/QuarterLockParity.lean` [formal]
+
+Formalises `TrackF/LockParity.md` (Theorems P, D and LP, and the §5 "lock parity ⇔ hole duality" equivalence). Compiled in a scratch clone after building its dependencies; 0 sorry, no new axioms, no `native_decide`; about 5 s. Appended to `check.sh` and `SHA256SUMS` (`shasum -c` passes on all 36 entries).
+
+**Definitions.** `kcomp G h c p q v` is K_{pq}(v), the set reachable from `v` in `pairGraph G h c p q`. `boundaryCard G X` counts darts of `G` leaving `X` (one per edge of `G` with exactly one end in `X`, edges to `h` included). `oddCount G X` counts vertices of `X` with odd `G.degree`.
+
+**Theorem P (no planarity).** The surface is a face successor `φ : Equiv.Perm G.Dart` with `(φ d).fst = d.snd` and `φ³ = 1`, i.e. any triangulated rotation system (orientable surface of any genus). (F3) is `StarHyp φ P`: the face of `h → x i` has third vertex `x (i+1)` or `x (i+4)`. Orientation consistency is derived from injectivity. Hypotheses: `ProperOff G h c`, `RepeatAt P c j`.
+- `oddCount_eq_boundaryCard` (Step 1, any `X`), `odd_oddCount_iff`.
+- `boundary_eq_star`: Steps 2–4 for any Kempe-closed `X`. The dart weight `out + τ + τ∘symm` sums to `|δX|`, vanishes on every face avoiding `h` (a 512-case `decide` table), and the 15 darts of the star of `h` give `starSum`.
+- `parity_alphaA` (P1), `parity_alphaB` (P2), `parity_alphaMu` (P3). The case table is `decide` (`table_alphaA/B/Mu`), and every row of LockParity.md §3 agrees.
+- `lockParity2_iff_D2`, `lockParity1_iff_D1`: on any such surface, (Lock ⇔ odd boundary) ⇔ (Lock ⇔ x j ∉ K). This is §5's first sentence.
+
+**Sphere (Theorem D, Theorem LP).** `M : SphericalMap n`, `M.Triangulated`, `P : Pent M.graph h`. `φ = M.rotation.faceNext`, and `StarHyp` is derived from `rotation_nbrs` (`sphere_starHyp`).
+- `lock2_iff_not_reach_alphaA` (D2) and `lock1_iff_not_reach_alphaB` (D1) use only `RepeatAt`, no properness.
+- `lock2_iff_odd_boundary`, `lock2_iff_odd_oddCount`, `lock1_iff_odd_boundary`, `lock1_iff_odd_oddCount`, `alphaMu_odd_boundary`, `alphaMu_odd_oddCount`.
+
+All thirteen headline theorems: `[propext, Classical.choice, Quot.sound]`. Sabotaged copies are rejected: flipped `table_alphaA`, `table_alphaMu = 0`, and D2 without the negation.
+
+**Notes on LockParity.md.** I found nothing false. Imprecisions:
+1. (F3) does not follow from `Pent` plus triangulation alone, since a face at `h` could use a chord `x t x (t+2)`. On the sphere it needs planarity (`rotation_nbrs`, via `alternating_walks_intersect`). So "Theorem P on any surface" correctly lists (F3) as a hypothesis, but "on a triangulated map it follows from Pent" holds only on the sphere, or with the rotation at `h` assumed.
+2. The formal Theorem P covers orientable triangulations (dart face successor). The non-orientable cases of the hand claim (Klein bottle, RP², data-checked) are not formalised; a face-set version would be needed.
+3. The suggested `FaceData`/face-finset route was not needed. Dart sums avoid constructing faces and proving (F2).
+4. §5.2 (π / π̃ injectivity, violators = path ends) is not formalised.
+
 ## Files (new or changed)
 
 - New: `StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/{FrameNoFrozen,FrameScope,FrameWit22Map,FrameWit22}.lean`
 - Changed: `StudioMathLean/check.sh` (4 lines appended) and `StudioMathLean/SHA256SUMS` (4 lines added, re-sorted)
 - New: `TrackC/README.md` (this file) and `TrackC/FrameWit22-faces.json` (generator input)
+- New (§5): `StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean`; `check.sh` +1 line, `SHA256SUMS` +1 line
