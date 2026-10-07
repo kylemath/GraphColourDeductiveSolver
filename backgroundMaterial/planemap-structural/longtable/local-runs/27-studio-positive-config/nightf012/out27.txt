@@ -1,0 +1,232 @@
+cycle records 202 L: Counter({20: 198, 40: 4})
+
+[1] per-period k<=2 credit (period from R3k4) histogram: [(2, 8), (5, 3), (7, 4), (8, 53), (9, 1), (10, 9), (12, 9), (13, 14), (15, 32), (16, 24), (18, 35), (21, 39), (22, 1), (24, 175), (27, 4), (33, 1)]
+    periods with k<=2 credit < 7: 11 of 412
+      ('m27', 'p27#273919', 26, 0, 5, 16, 'L3 L3 L2 X X')
+      ('m27', 'p27#273919', 26, 1, 2, 16, 'L3 L3 L1 X X')
+      ('m27', 'p27#273919', 26, 0, 5, 16, 'L3 L3 L2 X X')
+      ('m27', 'p27#273919', 26, 1, 2, 16, 'L3 L3 L1 X X')
+      ('m27m', 'p27#51860', 3, 1, 5, 16, 'L3 L3 L2 X X')
+      ('m27m', 'p27#218915', 3, 0, 2, 16, 'L3 L3 L1 X X')
+      ('m27m', 'p27#218915', 3, 0, 2, 16, 'L3 L3 L1 X X')
+      ('m27m', 'p27#266641', 16, 0, 2, 16, 'L3 L3 L1 SD SD')
+      ('m27m', 'p27#266641', 16, 1, 2, 16, 'L3 L3 L1 SD SD')
+      ('m27m', 'p27#313775', 3, 1, 2, 16, 'L3 L3 L1 X X')
+      ('m27m', 'p27#315355', 3, 1, 2, 16, 'L3 L3 L1 X X')
+
+[2] windows of 10 consecutive states (any phase): min k<=2 credit, min total credit, #windows with total < 10
+    phase 0 (starts at R3k4): min k<=2 2, min total 8, total<10 in 4/412
+    phase 1 (starts at R1k1): min k<=2 2, min total 16, total<10 in 0/412
+    phase 2 (starts at R3k3): min k<=2 2, min total 16, total<10 in 0/412
+    phase 3 (starts at R1k0): min k<=2 2, min total 8, total<10 in 4/412
+    phase 4 (starts at R3k2): min k<=2 2, min total 8, total<10 in 4/412
+    phase 5 (starts at R1k4): min k<=2 0, min total 0, total<10 in 8/412
+    phase 6 (starts at R3k1): min k<=2 0, min total 0, total<10 in 8/412
+    phase 7 (starts at R1k3): min k<=2 0, min total 0, total<10 in 10/412
+    phase 8 (starts at R3k0): min k<=2 0, min total 0, total<10 in 10/412
+    phase 9 (starts at R1k2): min k<=2 2, min total 8, total<10 in 4/412
+
+[3] per cycle k<=2 credit minus 7L/20 histogram: [(0, 2), (8, 1), (9, 10), (11, 7), (13, 2), (14, 2), (16, 6), (17, 13), (18, 1), (19, 4), (20, 2), (21, 6), (22, 2), (23, 13), (24, 3), (25, 8), (26, 2), (27, 1), (29, 15), (30, 3), (32, 1), (33, 5), (35, 10), (36, 3), (38, 8), (41, 66), (44, 2), (82, 4)]
+
+[4] joint statements
+    J1 (period with a k<=2 fixed point has k=3,4 lockless f=3 in the SAME period): holds 48, fails 46
+    J2 (... in the NEXT period): holds 48, fails 46
+    J3 (... in the same or the next): holds 60, fails 34
+    periods by (#k>=3 failures, #k<=2 failures): [((0, 0), 294), ((0, 1), 46), ((0, 2), 60), ((2, 0), 2), ((2, 1), 6), ((2, 2), 4)]
+
+[5] per-period R3 exit labels (order k=4,3,2,1,0; L<f> lockless, X fixed, S1/S2 single-lock):
+    136  L3 L3 L3 L3 L3
+     36  L3 L2 L3 L3 L3
+     29  L3 L3 L3 L3 L2
+     19  L3 L2 X X L3
+     15  L3 L3 L3 X X
+     14  L3 L2 L2 L1 L3
+     14  L3 L3 L2 L3 L2
+     12  L3 L3 L3 L2 L1
+     12  L3 L3 L3 L3 L1
+      9  L3 L2 X L3 L3
+      8  L3 L3 L3 L3 X
+      6  L3 L3 L3 L2 X
+      6  L3 L3 L1 X X
+      5  L3 L2 L2 L3 L3
+      5  L3 L3 L3 L1 L1
+      5  L3 L3 L3 L1 L2
+      4  L3 L3 L3 L1 L3
+      4  L3 L3 L3 S2 SD
+      4  L3 L2 L4 L3 L3
+      4  S2 S1 X X L3
+      4  L3 L2 SD SD L3
+      4  L3 L2 L3 L3 L2
+      4  S2 S1 X L3 L3
+      3  L3 L2 L1 L1 L3
+      3  L3 L3 L2 X X
+      3  L3 L3 L3 L1 X
+      2  L3 L2 SD S1 L3
+      2  L3 L2 L1 X L3
+      2  L3 L2 X L2 L3
+      2  L3 L3 S2 L2 L1
+      2  L1 L3 L3 L2 S1
+      2  S2 S1 L3 L3 L3
+      2  L3 L2 L3 X L3
+      2  L3 L3 L1 L3 L3
+      2  L3 L3 L3 SD SD
+      2  L3 L3 L2 X L2
+      2  L3 L3 SD S1 L3
+      2  L3 L2 L3 L1 L3
+      2  S2 S1 X L2 L3
+      2  L3 L3 L1 X L2
+      2  L3 L3 L1 SD SD
+      1  L3 L3 L1 L3 L2
+      1  L3 L2 L3 L2 L3
+      1  L3 L3 L3 L1 S2
+      1  L3 L3 L2 L1 L2
+      1  L3 L3 L2 L1 L1
+      1  L3 L3 L3 X L1
+      1  L3 L2 L2 X L3
+      1  L3 L3 L3 X L2
+      1  L3 L2 L8 L1 L3
+      1  L3 L3 L5 L1 L3
+      1  L3 L2 S1 L3 L3
+      1  L3 L2 L1 L3 L3
+      1  L3 L2 L5 X L3
+      1  L3 L3 X X L3
+
+[6] f at R3k_i (k<=2, lockless) vs the exit of the next R3 state (two pi-steps later) and the previous one
+    k=0 f=1: next {'L3': 29, 'L1': 2, 'S2': 2} | prev {'L2': 14, 'L1': 6, 'L3': 12, 'X': 1}
+    k=0 f=2: next {'L3': 59} | prev {'L3': 48, 'L1': 6, 'X': 5}
+    k=0 f=3: next {'L3': 268} | prev {'L3': 200, 'L1': 25, 'S1': 4, 'X': 30, 'L2': 5, 'SD': 4}
+    k=1 f=1: next {'L3': 25, 'L1': 6, 'L2': 6, 'S2': 1, 'X': 3} | prev {'L3': 20, 'L2': 16, 'L1': 3, 'L8': 1, 'L5': 1}
+    k=1 f=2: next {'L3': 5, 'X': 6, 'L1': 14, 'S1': 2} | prev {'X': 4, 'L3': 21, 'S2': 2}
+    k=1 f=3: next {'L3': 200, 'L2': 48, 'L1': 12, 'X': 8} | prev {'L3': 227, 'L1': 4, 'L2': 19, 'L4': 4, 'X': 13, 'S1': 1}
+    k=2 f=1: next {'X': 10, 'L3': 4, 'L1': 3, 'SD': 2} | prev {'L2': 6, 'L3': 13}
+    k=2 f=2: next {'L1': 16, 'L3': 19, 'X': 6} | prev {'L2': 20, 'L3': 21}
+    k=2 f=3: next {'L3': 227, 'L1': 20, 'L2': 21, 'S2': 4, 'X': 19, 'SD': 2} | prev {'L3': 246, 'L2': 45, 'S1': 2}
+    k=2 f=4: next {'L3': 4} | prev {'L2': 4}
+    k=2 f=5: next {'L1': 1, 'X': 1} | prev {'L3': 1, 'L2': 1}
+    k=2 f=8: next {'L1': 1} | prev {'L2': 1}
+
+[7] per k label counts:
+    k=0 [('L1', 33), ('L2', 59), ('L3', 268), ('S1', 2), ('S2', 1), ('SD', 8), ('X', 41)]
+    k=1 [('L1', 41), ('L2', 27), ('L3', 268), ('S1', 4), ('S2', 4), ('SD', 8), ('X', 60)]
+    k=2 [('L1', 19), ('L2', 41), ('L3', 293), ('L4', 4), ('L5', 2), ('L8', 1), ('S1', 1), ('S2', 2), ('SD', 8), ('X', 41)]
+    k=3 [('L2', 114), ('L3', 286), ('S1', 12)]
+    k=4 [('L1', 2), ('L3', 398), ('S2', 12)]
+
+[8] cycles with k<=2 credit - 7L/20 <= 3 (L, k<=2 credit, k>=3 credit, R3 labels):
+    m27 p27#273919 h26 L20 k<=2 7 k>=3 32 | L3 L3 L2 X X L3 L3 L1 X X
+    m27 p27#273919 h26 L20 k<=2 7 k>=3 32 | L3 L3 L2 X X L3 L3 L1 X X
+
+[9] shifted windows W(r) = r, pi^2 r, pi^4 r, pi^6 r, pi^8 r for r = R3k3 (k = 3,2,1,0,4)
+    total credit histogram: [(16, 8), (17, 2), (18, 8), (21, 32), (23, 4), (24, 28), (25, 4), (26, 12), (28, 20), (29, 19), (31, 21), (32, 6), (34, 40), (35, 1), (37, 65), (40, 141), (46, 1)]
+    with k=3 worth 5, k=4 worth 8 (F4), k<=2 actual: [(13, 4), (15, 8), (16, 4), (18, 5), (20, 4), (21, 51), (22, 1), (23, 11), (24, 4), (25, 9), (26, 10), (28, 32), (29, 16), (31, 33), (32, 2), (34, 39), (35, 1), (37, 173), (40, 4), (46, 1)]
+    with k=3 worth 5, k=4 worth 8, k<=2 worth 2: [(7, 4), (9, 6), (10, 4), (11, 2), (12, 6), (14, 2), (15, 56), (17, 40), (19, 292)]
+    window labels (k=3,2,1,0,4) and credit:
+        4  L3 L3 X X S2           16
+        4  S1 X X L3 L3           16
+        2  L3 S2 L2 L1 L1         17
+        2  L3 L1 SD SD L3         18
+        6  L3 L1 X X L3           18
+        2  L2 SD S1 L3 L3         21
+        4  L2 SD SD L3 L3         21
+       19  L2 X X L3 L3           21
+        3  L3 L2 X X L3           21
+        2  L3 L3 L2 X S2          21
+        2  S1 X L2 L3 L3          21
+        2  L2 L1 X L3 L3          23
+        2  L3 L1 X L2 L3          23
+        4  L3 L3 L3 X S2          24
+        4  L3 L3 S2 SD L3         24
+        2  L3 L3 SD SD L3         24
+       11  L3 L3 X X L3           24
+        2  L3 SD S1 L3 L3         24
+        1  L3 X X L3 L3           24
+        4  S1 X L3 L3 L3          24
+        3  L2 L1 L1 L3 L3         25
+        1  L3 L2 L1 L1 L3         25
+        1  L2 L2 X L3 L3          26
+        2  L2 X L2 L3 L3          26
+        2  L3 L2 X L2 L3          26
+        1  L3 L3 L1 S2 L3         26
+        3  L3 L3 L1 X L3          26
+        2  L3 L3 L3 L1 S2         26
+        1  L3 L3 X L1 L3          26
+       14  L2 L2 L1 L3 L3         28
+        1  L3 L2 L1 L2 L3         28
+        5  L3 L3 L1 L1 L3         28
+        2  L2 L3 X L3 L3          29
+        1  L2 S1 L3 L3 L3         29
+        9  L2 X L3 L3 L3          29
+        2  L3 L3 L2 S1 L3         29
+        4  L3 L3 L2 X L3          29
+        1  L3 L3 X L2 L3          29
+        1  L2 L1 L3 L3 L3         31
+        2  L2 L3 L1 L3 L3         31
+        1  L3 L1 L3 L2 L3         31
+        5  L3 L3 L1 L2 L3         31
+       12  L3 L3 L2 L1 L3         31
+        4  L3 L3 L3 X L3          32
+        2  S1 L3 L3 L3 L3         32
+        5  L2 L2 L3 L3 L3         34
+        1  L2 L3 L2 L3 L3         34
+        4  L2 L3 L3 L2 L3         34
+        2  L3 L1 L3 L3 L3         34
+       14  L3 L2 L3 L2 L3         34
+        4  L3 L3 L1 L3 L3         34
+       10  L3 L3 L3 L1 L3         34
+        1  L2 L5 X L3 L3          35
+       36  L2 L3 L3 L3 L3         37
+       29  L3 L3 L3 L2 L3         37
+        4  L2 L4 L3 L3 L3         40
+      136  L3 L3 L3 L3 L3         40
+        1  L3 L5 L1 L3 L3         40
+        1  L2 L8 L1 L3 L3         46
+
+[10] sub-statements on the windows W (k = 3,2,1,0,4')
+     k3 and k4' both fail 0
+     lockless count 2 8
+     lockless count 3 68
+     lockless count 4 44
+     lockless count 5 292
+     no lockless k<=2 exit 0
+     three k<=2 fixed points 0
+     ("k3 fails: k4' label, k<=2 credit", 'L3', 13) 2
+     ("k3 fails: k4' label, k<=2 credit", 'L3', 16) 4
+     ("k3 fails: k4' label, k<=2 credit", 'L3', 24) 2
+     ("k3 fails: k4' label, k<=2 credit", 'L3', 8) 4
+     ("k4' fails: k3 label, k<=2 credit", 'L3', 13) 2
+     ("k4' fails: k3 label, k<=2 credit", 'L3', 16) 4
+     ("k4' fails: k3 label, k<=2 credit", 'L3', 18) 2
+     ("k4' fails: k3 label, k<=2 credit", 'L3', 8) 4
+     ('c34', 10, 'c012', 7) 2
+     ('c34', 13, 'c012', 10) 2
+     ('c34', 13, 'c012', 12) 3
+     ('c34', 13, 'c012', 13) 3
+     ('c34', 13, 'c012', 15) 14
+     ('c34', 13, 'c012', 16) 12
+     ('c34', 13, 'c012', 18) 3
+     ('c34', 13, 'c012', 21) 10
+     ('c34', 13, 'c012', 22) 1
+     ('c34', 13, 'c012', 24) 36
+     ('c34', 13, 'c012', 27) 4
+     ('c34', 13, 'c012', 33) 1
+     ('c34', 13, 'c012', 8) 25
+     ('c34', 16, 'c012', 10) 7
+     ('c34', 16, 'c012', 12) 6
+     ('c34', 16, 'c012', 13) 7
+     ('c34', 16, 'c012', 15) 18
+     ('c34', 16, 'c012', 16) 4
+     ('c34', 16, 'c012', 18) 30
+     ('c34', 16, 'c012', 2) 8
+     ('c34', 16, 'c012', 21) 29
+     ('c34', 16, 'c012', 24) 137
+     ('c34', 16, 'c012', 5) 3
+     ('c34', 16, 'c012', 7) 2
+     ('c34', 16, 'c012', 8) 20
+     ('c34', 16, 'c012', 9) 1
+     ('c34', 8, 'c012', 13) 4
+     ('c34', 8, 'c012', 16) 8
+     ('c34', 8, 'c012', 18) 2
+     ('c34', 8, 'c012', 24) 2
+     ('c34', 8, 'c012', 8) 8
+
+[11] Job O: (k, y~z in {c(y),c(z)}) at R3 states: [((0, 1), 412), ((1, 1), 412), ((2, 1), 412), ((3, 0), 12), ((3, 1), 400), ((4, 0), 12), ((4, 1), 400)]
