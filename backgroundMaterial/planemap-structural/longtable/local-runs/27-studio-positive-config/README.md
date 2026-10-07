@@ -324,3 +324,11 @@ Steps from the window's R3k0 to the first non-DL state (1 = R3k0's own pi-image 
   fixed), and **FAILS on open runs** in 11 / 711 (25), 35 / 2,376 (26), 106 / 10,813 (27) such windows per orientation. First: p25 #733 h17 (plantri), cycle w -70, L 330,
   positions 3-9 = states 440, 575, 294-chain all DL with R3k2, R3k1, R3k0 fixed (Python-verified; rotation system and colourings in the json).
 - Steps back from R3k2 to the last earlier non-DL state in all-three-fixed windows: mostly 1, max 11 / 14 (25), 17 / 14 (26), 21 / 29 (27).
+
+## Job AM (NightA34 §6; independent Python jobuv/jobam.py -> jobam-summary.txt, jobam.json with the vertex sets Z_b, Pi_b, K0, K1, R_b per break)
+- Window lemma (§3): the partition of {y, w2, z} in G_J matches the prediction at every DL state at positions 9, 0, 2, 3, 4: 0 exceptions on (5,5,5,5,6) Gamma-cycles (552 periods),
+  (5,5,5,5,7) Gamma-cycles (916 periods) and the 73 open double breaks.
+- Sigma (K0 u K1 of period b+2 meets (R_b u Z_b) minus the 11 hole vertices): on the 73 open double breaks only **36/73** (predicted 73/73); after SINGLE breaks on (5,5,5,5,6)
+  Gamma-cycles 18/19 (predicted mostly empty); at (5,5,5,5,7) single 57/65, consecutive (stay DL) 7/14 (predicted to fail). So Sigma neither holds on the double breaks nor
+  separates them from single breaks: it is not the Lock2-killing mechanism.
+- Sizes: |Z_b| 1-8 (far part 0-7), |Pi_b| 6-12, |K0| 4-9, |K1| 4-11, |R_b| 2-7 (far part always >= 1; exactly 2 / 1 at degree 6 Gamma).
