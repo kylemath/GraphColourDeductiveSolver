@@ -21,6 +21,7 @@ for l in open('jobm-gamma-sequences.jsonl'):
             dead = all(e != 'L' for _, e, _ in r3); deadflags.append(dead); o['dead'] += dead
             o['k3givenk4'][('k4 ' + ('ok' if bits[4] == 'L' else 'fail'), 'k3 ' + ('ok' if bits[3] == 'L' else 'fail'))] += 1
             if o['minblock'] is None or c < o['minblock'][0]: o['minblock'] = (c, r['run'], r['name'], r['hole'], L, ''.join('1' if bits[k] == 'L' else '0' for k in range(5)))
+        if not credits: o['nonperiodic'] = o.get('nonperiodic', 0) + 1; continue
         avg = sum(credits) / len(credits)
         if o['mincycavg'] is None or avg < o['mincycavg'][0]: o['mincycavg'] = (round(avg, 2), r['run'], r['name'], r['hole'], L)
         run = best = 0
@@ -29,7 +30,7 @@ for l in open('jobm-gamma-sequences.jsonl'):
         o['longestdead'] = max(o['longestdead'], best)
 for P, o in out.items():
     c = o['k3givenk4']; a = c[('k4 ok', 'k3 ok')]; b = c[('k4 ok', 'k3 fail')]; cc = c[('k4 fail', 'k3 ok')]; d = c[('k4 fail', 'k3 fail')]
-    print('== %s: Gamma-cycles %d (both orientations, orders 25-26), blocks %d, malformed %d' % (P, o['cycles'], o['blocks'], o['bad']))
+    print('== %s: Gamma-cycles %d (both orientations), blocks %d, malformed blocks %d, cycles with no well-formed block %d' % (P, o['cycles'], o['blocks'], o['bad'], o.get('nonperiodic', 0)))
     print('  success patterns (bits k = 0..4, 1 = lockless):', sorted(o['pat'].items(), key=lambda kv: -kv[1]))
     print('  P(k3 lockless | k4 lockless) = %d/%d; P(k3 lockless | k4 fails) = %d/%d' % (a, a + b, cc, cc + d))
     print('  min block credit:', o['minblock'], '; min per-cycle average block credit:', o['mincycavg'])
