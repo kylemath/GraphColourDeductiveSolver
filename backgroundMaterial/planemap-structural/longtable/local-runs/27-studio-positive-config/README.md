@@ -239,3 +239,15 @@ Positive cycles with def'(Z) > 0 (charge-back form; exits from all DD endpoints)
 - (iv) 39 of the 75 have NO lockless exit into a nonpositive target at all (def' = Lambda; e.g. p26 #68224 h23, p27m #167230 h23), so a canonical "first exit" target does
   not exist for them; their assignment goes to a sigma-neighbour that is not an exit target. Of the 36 with such exits, in 27 EVERY exit target can take def'(Z) alone and in 9 NONE can
   (the deficit must go to another sigma-neighbour). (Exits are recorded in state-index order, not pi-order.)
+
+## Job AE (independent Python; jobuv/jobae.py -> jobae-summary.txt, jobae.json): lock-membership form (NightLemmaS §5.1), Gamma-cycles at (5,5,5,5,6) and (5,5,5,5,7)
+Orders 25-27, both orientations: 264 + 406 Gamma-cycle records. Lock1/Lock2 components = {mu,A}/{mu,B}-components of x_{j+1}; J = y ~ z in {c(y),c(z)}.
+- (iii) On Gamma-cycles the Lock1- and Lock2-components always have >= 6 vertices (both patterns).
+- (i) After a step-8 break (19 at degree 6, 79 at degree 7), z enters the Lock2-component two states later by a (z,M)-coloured swap whose component avoids p, y, z and M
+  (98/98). One period later z is in the Lock2-component in 19/19 (degree 6) but only 65/79 (degree 7): the 14 others are periods followed IMMEDIATELY by another step-8
+  break, which never happens at (5,5,5,5,6).
+- The Lock2-component meets the breaking component K at every state of the following period (all breaks; 70/79 at one state for degree 7); the Lock1-component meets K
+  from the first state after the break on.
+- (ii) At (5,5,5,5,7) all 79 k = 3/4 failure pairs come from the same step-8 far break (pair (p,y) or (p,y,M), component avoiding p, y, z, M). The failure rate is
+  79/916 = 8.6% of periods against 19/552 = 3.4% at (5,5,5,5,6) (about 2.5x, not 10x); |K step 8| (mean 6.7 vs 6.5 in break periods) and |K_yz(y)| at R3k0 (12.3 vs 12.1)
+  do not differ, so neither explains the rate.
