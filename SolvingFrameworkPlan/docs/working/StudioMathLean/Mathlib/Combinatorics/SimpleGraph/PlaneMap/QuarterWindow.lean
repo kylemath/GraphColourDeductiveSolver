@@ -55,6 +55,10 @@ At a state doubly locked at `j` the four colours are named by the *frame*
    `wcol_eq`). `J_iff_window`: `J ⇔ w₂ ~ z` at `9, 0` and `J ⇔ y ~ w₂` at `2, 3`. Hence
    `k4_failure_iff_z_split` (`k = 4` failure ⇔ `y ~ w₂`, `w₂ ≁ z` at positions `9` and `0`)
    and `k3_failure_iff_y_split` (`k = 3` failure ⇔ `z ~ w₂`, `y ≁ w₂` at positions `2`, `3`).
+6. **The period rotates the colours** (Studio Job AN). `period_colour_rotation`: for `n > 0`
+   every hole vertex with letter `ℓ` at `s n` has letter `σ ℓ` at `s (n+10)` (frame of `s n`);
+   `σ` fixes `α` and is a 3-cycle on `μ, A, B` (`sig_three_cycle`). `closing_perm`: if
+   `π^[L] s = s`, then `σ^[L] = id`, `10 ∣ L`, `3 ∣ L`, hence `30 ∣ L`.
 -/
 
 @[expose] public section
@@ -892,6 +896,77 @@ theorem k3_failure_iff_y_split (htri : M.Triangulated) (H : Hole6 P w m q)
   · rw [E, J2]; exact ⟨fun x => ⟨z2, x⟩, fun x => x.2⟩
   · rw [E, ← e3, J3]; exact ⟨fun x => ⟨z3, x⟩, fun x => x.2⟩
 
+/-! ### 5. The period rotates the colours (Studio Job AN) -/
+
+lemma sig_iter_three : sig^[3] = id := by funext a; revert a; decide
+
+lemma sig_iter_mod (i : ℕ) : sig^[i] = sig^[i % 3] := by
+  conv_lhs => rw [← Nat.mod_add_div i 3, Function.iterate_add, Function.iterate_mul,
+    sig_iter_three, Function.iterate_id, Function.comp_id]
+
+/-- `σ` fixes `α` and is a 3-cycle on `μ, A, B` (`1 ↦ 3 ↦ 2 ↦ 1`, i.e. NightA34's
+`2 → 1, 3 → 2, 1 → 3`). -/
+theorem sig_three_cycle : sig 0 = 0 ∧ sig 1 = 3 ∧ sig 3 = 2 ∧ sig 2 = 1 ∧ sig^[3] = id ∧
+    sig ≠ id :=
+  ⟨rfl, rfl, rfl, rfl, sig_iter_three, fun e => absurd (congrFun e 1) (by decide)⟩
+
+/-- **The period rotates the colours.** For `n > 0`, in the frame `frm (s n)` of the state
+`s n`: every hole vertex `v` (`x (q+t)`, `w (q+t)`, `m`) has letter `ℓ` at `s n` and letter
+`σ ℓ` at `s (n + 10)`; `σ` fixes the letter `0` (the repeat colour `α` of the frame) and cycles the three others
+(`sig_three_cycle`). -/
+theorem period_colour_rotation (H : Hole6 P w m q) (hc : ProperOff M.graph h s)
+    (hall : ∀ n, DLState P ((piMove P)^[n] s)) (hr : RepeatAt P s j₀) (hq : q = j₀ + 4)
+    (hT : TypeR3 P w s j₀) (n : ℕ) (hn : 0 < n) {j : Fin 5}
+    (hj : RepeatAt P ((piMove P)^[n] s) j) :
+    (∀ t, ((piMove P)^[n] s) (P.x (q + t)) = frm P ((piMove P)^[n] s) j (xL (gseq n) t) ∧
+      ((piMove P)^[n + 10] s) (P.x (q + t)) =
+        frm P ((piMove P)^[n] s) j (sig (xL (gseq n) t))) ∧
+    (∀ t, ((piMove P)^[n] s) (w (q + t)) = frm P ((piMove P)^[n] s) j (wL (gseq n) t) ∧
+      ((piMove P)^[n + 10] s) (w (q + t)) =
+        frm P ((piMove P)^[n] s) j (sig (wL (gseq n) t))) ∧
+    (((piMove P)^[n] s) m = frm P ((piMove P)^[n] s) j (mL (gseq n)) ∧
+      ((piMove P)^[n + 10] s) m = frm P ((piMove P)^[n] s) j (sig (mL (gseq n)))) := by
+  obtain ⟨x0, w0, m0⟩ := orbit_colour H hc hall hr hq hT n hn hj 0
+  obtain ⟨x1, w1, m1⟩ := orbit_colour H hc hall hr hq hT n hn hj 10
+  simp only [add_zero, Function.iterate_zero, id] at x0 w0 m0
+  have e10 : sig^[10] = sig := by rw [sig_iter_mod]; rfl
+  rw [gseq_period, e10] at x1 w1 m1
+  exact ⟨fun t => ⟨x0 t, x1 t⟩, fun t => ⟨w0 t, w1 t⟩, m0, m1⟩
+
+/-- **Closing an all-`DL` orbit.** If `π^[L] s = s`, then `10 ∣ L` (the type
+period) and `σ^[L] = id` on letters, which forces `3 ∣ L`; so `30 ∣ L`. (Writing `L = 10 Q`,
+`σ^Q = id`, i.e. `3 ∣ Q`; a canonical-state cycle of length `L ≢ 0 mod 30` lifts to a
+colouring orbit of length `3 L`.) -/
+theorem closing_perm (H : Hole6 P w m q) (hc : ProperOff M.graph h s)
+    (hall : ∀ n, DLState P ((piMove P)^[n] s)) (hr : RepeatAt P s j₀) (hq : q = j₀ + 4)
+    (hT : TypeR3 P w s j₀) {L : ℕ} (hcyc : (piMove P)^[L] s = s) :
+    sig^[L] = id ∧ 10 ∣ L ∧ 3 ∣ L ∧ 30 ∣ L := by
+  obtain ⟨tk, -, -, hex, -⟩ := gamma_period_ten (m := m) H hc hall hr hq hT
+  have u := hasTK_unique (tk L) (by rw [hcyc]; exact tk 0)
+  have gL : gseq L = gseq 0 := Prod.ext u.1 u.2
+  have d10 : 10 ∣ L := by
+    by_contra hne
+    have := hex 0 (L % 10) (by omega) (Nat.mod_lt _ (by decide))
+    rw [zero_add, ← gseq_mod, gL] at this
+    exact this rfl
+  -- the frame at `s 10` and at `s (10 + L) = s 10`
+  obtain ⟨j, hd⟩ := hall 10
+  have fi := frm_iter hc hall 10 hd.1 L j (by
+    rw [Function.iterate_add_apply, hcyc]; exact hd.1)
+  have same : (piMove P)^[10 + L] s = (piMove P)^[10] s := by
+    rw [Function.iterate_add_apply, hcyc]
+  obtain ⟨-, h1, -, -, h13, h14, -⟩ := hd.1
+  have e1 := fi 1
+  rw [same, sig_iter_mod] at e1
+  have d3 : L % 3 = 0 := by
+    rcases (by omega : L % 3 = 0 ∨ L % 3 = 1 ∨ L % 3 = 2) with hm | hm | hm
+    · exact hm
+    · rw [hm] at e1; exact (h14 e1).elim
+    · rw [hm] at e1; exact (h13 e1).elim
+  have hid : sig^[L] = id := by rw [sig_iter_mod, d3]; rfl
+  exact ⟨hid, d10, Nat.dvd_of_mod_eq_zero d3, Nat.Coprime.mul_dvd_of_dvd_of_dvd (by decide)
+    (Nat.dvd_of_mod_eq_zero d3) d10⟩
+
 end orbit
 
 end sphere
@@ -909,3 +984,5 @@ end SimpleGraph.QuarterFloor
 #print axioms SimpleGraph.QuarterFloor.window_forced
 #print axioms SimpleGraph.QuarterFloor.k4_failure_iff_z_split
 #print axioms SimpleGraph.QuarterFloor.k3_failure_iff_y_split
+#print axioms SimpleGraph.QuarterFloor.period_colour_rotation
+#print axioms SimpleGraph.QuarterFloor.closing_perm
