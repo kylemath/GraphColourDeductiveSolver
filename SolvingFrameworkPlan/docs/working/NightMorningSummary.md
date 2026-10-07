@@ -13,7 +13,7 @@ For the project owner. Updated 05:40 MDT (first written 05:35) from `NightF6Stat
 
 ## Running or queued this morning
 
-- Studio: BJ is done (above). Running or queued: BK ((c) and the giant negative cycle over the census, plus the (c)-ratio search), BQ (BudgetB′ slack), BR (all-DL cycle at (6,6,6,6,6)), BS (fullerene duals C60–C80, folded into BO).
+- Studio: BJ, BK, BQ, BR, BS are done. **BQ (11:16):** B′ slack on groups with a positive cycle has minimum 42 over the census (360 adversarial); the restricted flip search reaches 8 but finds no negative slack. All-groups minimum is −132, with no positive cycle in any negative group. **BR (11:15):** 72 flip walks from C60–C80 duals give no all-DL cycle at an all-6 hole; longest DL run 18. **BS (11:15):** 153 flat all-6 holes (C108–C120) give no all-DL cycle; longest run 14, min F/N 0.604. Still running: BO and BP (all-6 DL run lengths, σ-analogue), no results yet.
 - G66: Studio Jobs BL (which link patterns get PureClean), BO (DL run lengths and lock-death rules at all-6 holes), BP (a σ-analogue at all-6 holes); hand agents NightG66, NightBudget (B′), NightStatementC; Lean `QuarterHole66.lean` (DD-step table at the all-6 hole).
 - Formal since 06:00: `QuarterBitDynamics` (10 ∣ L at every link pattern; G66⁰ ⇒ PureClean at all-6 holes, `pureClean_of_no_allDL_orbit`). Hand note NightG66IPR is in (Tait form, C60–C88 data). Not yet formal: the degree bridge for d ≥ 7 (`Hole6Gen` from degrees; `QuarterHole4Bridge` needs `NoSeparatingTriangleAt` there, since the clique/chord dichotomy fails). A fresh full regression (covering the modules newer than 947697a0) is running.
 
