@@ -339,6 +339,74 @@ The data rule out the natural local witness: no position-5 cycle meets p, y or z
 
 I could not derive it from F₄ and the lock chains. The missing ingredient is how K₄ (size 4–10) sits against the Lock1@R3k2 {2,3}-chain x₁ → x₃ (§2), which passes next to K₄ at x₃. Job AK §5.2 / §5.5 (K₄'s vertex list against C₅) is needed before the next attempt.
 
+## 10. W2″ in fan form: the two ring candidates [proved parts; conjecture]
+
+Colours are those of §1, named at R3k2: α = 1, μ = 2, A = 3, B = 4; q = 2, p = x₂, y = w₁, z = w₂.
+
+| | R3k2 (pos 4) | R3k0 (pos 8) |
+|---|---|---|
+| α/μ pair | {1,2} | {1,4} (α = 1 at x₂ = p, μ = 4 at x₃) |
+| K_σ | {1,2}-component of x₁ | {1,4}-component of x₃ |
+| K_σ contains | x₀, x₁, p, m | x₂ = p, x₃, x₄, m (m = 4) |
+| ring candidate | w₃ (colour 2), escape through z | w₀ (colour 4), escape through y |
+
+**W2″ fails** iff, at both R3k2 and R3k0, every α/μ-neighbour of y and of z lies in K_σ of that state. In particular:
+- **(F-i)** w₃ ∈ K_σ(4);
+- **(F-ii)** w₀ ∈ K_σ(8).
+
+### 10.1 The candidates are never recoloured [proved]
+
+w₃ is coloured 2 and w₀ is coloured 4, both at pos 4 and at pos 8 (from `R3At` at both states, §1 table). The four swaps are K₄ {1,3}, K₅ {1,2}, K₆ {1,4}, K₇ {1,3}.
+
+- **w₃:** if w₃ ∈ K₅, it becomes 1. After that only K₆ and K₇ act, and they swap {1,4} and {1,3}, so w₃ could never return to 2. Hence **w₃ ∉ K₅**. K₄, K₆ and K₇ do not involve colour 2, so w₃ is coloured 2 at every one of positions 4–8.
+- **w₀:** if w₀ ∈ K₆, it becomes 1. Then K₇ can only make it 3, never 4 again. Hence **w₀ ∉ K₆**. K₄, K₅ and K₇ do not involve 4, so w₀ is coloured 4 throughout.
+
+### 10.2 What (F-i) and (F-ii) force on the swaps [proved]
+
+- **(F-i) ⇒ K₄ cuts every {1,2}-path from x₁ to w₃.**
+  - K₅ is the {1,2}-component of x₀ at pos 5, and it contains x₁ (Job O / `pair_own`: x₀, x₁, m, y ∈ K₅). Since w₃ ∉ K₅, there is no {1,2}-path x₁ → w₃ at pos 5.
+  - The {1,2}-graph at pos 5 is the pos-4 graph with K₄'s 1-vertices removed (they become 3) and K₄'s 3-vertices added.
+  - Adding vertices cannot destroy a path. So if a {1,2}-path x₁ → w₃ existed at pos 4 (F-i), **every** such path passes through a 1-vertex of K₄, the {1,3}-component of p.
+  - Equivalently, at pos 5 there is a {3,4}-separation (Hex/duality, h allowed) between x₁ and w₃, and at pos 4 it did not exist.
+- **(F-ii) ⇒ K₇ creates a {1,4}-path from x₃ to w₀.**
+  - The {1,4}-graph is unchanged by K₆, and K₆ is the {1,4}-component of x₃ at pos 6. Since w₀ ∉ K₆, there is no {1,4}-path x₃ → w₀ at pos 6 or at pos 7.
+  - At pos 8 the {1,4}-graph gains K₇'s old 3-vertices (now 1) and loses K₇'s old 1-vertices.
+  - So under (F-ii), **every** {1,4}-path x₃ → w₀ at pos 8 passes through an old-3 vertex of K₇. K₇ is the {1,3}-component of x₁ at pos 7 and contains p and z.
+
+The two statements are time-reverses of each other: K₄ ↔ K₇ are the two {1,3}-swaps through p, and w₃ ↔ w₀ under the mirror. So **the ring part of W2″ fails only if the first {1,3}-swap through p disconnects w₃ from x₁ in {1,2}, and the last {1,3}-swap through p connects w₀ to x₃ in {1,4}.**
+
+### 10.3 Attempted contradiction via the locks [not closed]
+
+The locks at R3k2 are:
+- Lock1: a {2,3}-chain Λ₁ from x₁ to x₃;
+- Lock2: a {2,4}-chain Λ₂ from x₁ to x₄.
+
+w₃ (colour 2) is adjacent to x₃ and x₄, so it can lie on Λ₁ or Λ₂. The Jordan curve h x₁ Λ₂ x₄ h puts x₂ and x₃ on one side and x₀ on the other. But a {1,2}-path shares colour 2 with both lock chains, so neither chain blocks it, and **Jordan separation gives nothing directly**.
+
+The usable separation is the one in 10.2: at pos 5, a {3,4}-walk separating x₁ from w₃. Through h it can only pass as x₃ h x₄ or x₄ h x₃, since x₃ and x₄ are coloured 1 and 4 at pos 5; let me redo this for the pos-5 link 1 2 3 1 4.
+- At pos 5 the {3,4}-vertices of the link are x₂ (3) and x₄ (4), which are not adjacent. So the separating {3,4}-walk may pass x₂ h x₄.
+- That is exactly a {3,4} "lock" on the R1k4 state, from p (now 3) to x₄.
+- I could not exclude it at the same time as (F-ii).
+
+### 10.4 Cleanest sub-statement and Studio test
+
+**Sub-statement R (ring escape).** On every period of a (5,5,5,5,6) Γ-cycle:
+- (i) w₃ ∉ K_σ(R3k2), or
+- (ii) w₀ ∉ K_σ(R3k0).
+
+R implies W2″ (fan lemma, through z or y), and so W2.
+
+By 10.2, R is equivalent to: **not both** "K₄ disconnects w₃ from x₁ in {1,2}" and "K₇ connects w₀ to x₃ in {1,4}".
+
+Studio test (Job AK addendum). At each of the 552 periods, and on all maximal DL runs containing positions 4–8, record:
+1. the booleans w₃ ∈ K_σ(pos 4), w₀ ∈ K_σ(pos 8), and the escape at y or z through outer neighbours (if R fails);
+2. at pos 4, whether every {1,2}-path x₁ → w₃ meets K₄ ∩ colour 1, i.e. whether w₃ ∉ {1,2}-component of x₁ after K₄ (10.2 says this is forced whenever w₃ ∈ K_σ(4); a check of the bookkeeping);
+3. the R1k4 state's {3,4} p–x₄ connection (10.3).
+
+If R holds with 0 failures, the next hand target is the single coupling between the two {1,3}-swaps through p.
+
+If R fails somewhere, W2″ needs the outer neighbours of y and z, and the next step is the rotation at y and z outside the 2-ball.
+
 ## 6. Reproduction
 
 Scripts are in `backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/nightw2/`. Each runs on a single core in under 1 s.
