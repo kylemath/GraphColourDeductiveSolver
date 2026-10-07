@@ -1,0 +1,1226 @@
+{
+ "qf-12-20.jsonl": {
+  "totals": {
+   "holes": 1574,
+   "phi_collisions_cross_j": 21878,
+   "phi_collisions_same_j": 0,
+   "phi_preimage_max": 2,
+   "classes": 1614,
+   "identity_mismatch": 0,
+   "perj_mismatch": 0,
+   "bad_path": 0
+  },
+  "dP_hist": {
+   "0": 9847,
+   "1": 15964,
+   "2": 1566,
+   "3": 640,
+   "4": 305,
+   "5": 204,
+   "6": 43,
+   "7": 14,
+   "8": 1,
+   "9": 10,
+   "11": 2,
+   "15": 2
+  },
+  "D_cyc_hist_over_classes": {
+   "0": 1612,
+   "20": 2
+  },
+  "max_DD_j": 8,
+  "max_DD_j_witness": {
+   "order": 20,
+   "gentri_index": 48,
+   "hole": 11,
+   "size": 178,
+   "DD": [
+    4,
+    1,
+    8,
+    0,
+    2
+   ]
+  },
+  "max_DD_and_DDprime_j": 6,
+  "largest_DD_j_minus_room": [
+   0,
+   {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 0,
+    "size": 64,
+    "j": 0,
+    "DD_j": 2,
+    "room": 2
+   }
+  ],
+  "DL_dist_hist": {
+   "2": 23249,
+   "3": 509,
+   "4": 44
+  },
+  "C5": {
+   "stop_after_phiA_no_lock2": 24235,
+   "defined": 11488,
+   "returns_to_f": 5065,
+   "other_filled": 6423,
+   "stop_after_R3_no_lock2": 4827,
+   "stop_s3_lock2_holds": 2017
+  },
+  "RF_RB": {
+   "RF_collisions_per_j": 0,
+   "RB_collisions_per_j": 0,
+   "RF_else_RB_collisions": 143,
+   "RF_else_RB_hits_phi_image": 21395,
+   "both_equal": 8522,
+   "only_RB_covers_DD": 2787,
+   "only_RF": 2787,
+   "both_differ": 7442,
+   "neither_in_DD_and_DDprime": 2264
+  },
+  "floor": {
+   "classes": 2,
+   "all_DL_at_dist_2": 0,
+   "equality_all_j": 2
+  },
+  "floor_nonzero_terms": {
+   "N0,d!=1": 2
+  },
+  "floor_DL_dist_hist": {
+   "2": 34,
+   "3": 6,
+   "4": 4
+  },
+  "floor_nonblock_classes": [
+   {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 0,
+    "size": 64,
+    "F_i": [
+     2,
+     4,
+     2,
+     4,
+     4
+    ],
+    "multi_i": true,
+    "N0": 6,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 8,
+     "9": 1,
+     "5": 1
+    },
+    "DD": [
+     2,
+     2,
+     2,
+     3,
+     3
+    ],
+    "DL_dist_hist": {
+     "2": 17,
+     "3": 3,
+     "4": 2
+    },
+    "RF_RB": {
+     "neither_in_DD_and_DDprime": 10,
+     "only_RB_covers_DD": 2,
+     "both_equal": 6,
+     "both_differ": 2,
+     "only_RF": 2,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 12
+    },
+    "C5": {
+     "defined": 8,
+     "returns_to_f": 3,
+     "stop_after_phiA_no_lock2": 6,
+     "other_filled": 5,
+     "stop_s3_lock2_holds": 2
+    }
+   },
+   {
+    "order": 17,
+    "gentri_index": 1,
+    "hole": 2,
+    "size": 64,
+    "F_i": [
+     4,
+     2,
+     4,
+     4,
+     2
+    ],
+    "multi_i": true,
+    "N0": 6,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 8,
+     "9": 1,
+     "5": 1
+    },
+    "DD": [
+     2,
+     2,
+     3,
+     3,
+     2
+    ],
+    "DL_dist_hist": {
+     "2": 17,
+     "3": 3,
+     "4": 2
+    },
+    "RF_RB": {
+     "both_differ": 2,
+     "neither_in_DD_and_DDprime": 10,
+     "both_equal": 6,
+     "only_RF": 2,
+     "only_RB_covers_DD": 2,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 12
+    },
+    "C5": {
+     "defined": 8,
+     "returns_to_f": 3,
+     "other_filled": 5,
+     "stop_s3_lock2_holds": 2,
+     "stop_after_phiA_no_lock2": 6
+    }
+   }
+  ],
+  "first_cross_j_collision": {
+   "order": 14,
+   "gentri_index": 0,
+   "hole": 0,
+   "filled": {
+    "1": 0,
+    "2": 1,
+    "5": 1,
+    "6": 2,
+    "7": 3,
+    "3": 3,
+    "8": 0,
+    "4": 0,
+    "10": 3,
+    "11": 0,
+    "12": 1,
+    "9": 1,
+    "13": 2
+   },
+   "preimages": [
+    {
+     "j": 4,
+     "case": 2
+    },
+    {
+     "j": 3,
+     "case": 1
+    }
+   ]
+  }
+ },
+ "qf-21-22.jsonl": {
+  "totals": {
+   "holes": 12138,
+   "phi_collisions_cross_j": 334248,
+   "phi_collisions_same_j": 0,
+   "phi_preimage_max": 2,
+   "classes": 12495,
+   "identity_mismatch": 0,
+   "perj_mismatch": 0,
+   "bad_path": 0
+  },
+  "dP_hist": {
+   "0": 144518,
+   "1": 247174,
+   "2": 22502,
+   "3": 10795,
+   "4": 4031,
+   "5": 2984,
+   "6": 488,
+   "7": 187,
+   "8": 62,
+   "9": 119,
+   "10": 26,
+   "11": 72,
+   "12": 11,
+   "13": 8,
+   "15": 5,
+   "16": 2,
+   "17": 4
+  },
+  "D_cyc_hist_over_classes": {
+   "0": 12492,
+   "20": 3
+  },
+  "max_DD_j": 12,
+  "max_DD_j_witness": {
+   "order": 22,
+   "gentri_index": 93,
+   "hole": 0,
+   "size": 512,
+   "DD": [
+    0,
+    12,
+    0,
+    0,
+    12
+   ]
+  },
+  "max_DD_and_DDprime_j": 12,
+  "largest_DD_j_minus_room": [
+   -11,
+   {
+    "order": 21,
+    "gentri_index": 50,
+    "hole": 15,
+    "size": 201,
+    "j": 0,
+    "DD_j": 3,
+    "room": 14
+   }
+  ],
+  "DL_dist_hist": {
+   "2": 356824,
+   "3": 5883,
+   "4": 226,
+   "5": 1
+  },
+  "C5": {
+   "stop_after_phiA_no_lock2": 316918,
+   "defined": 178192,
+   "other_filled": 106526,
+   "stop_s3_lock2_holds": 30658,
+   "returns_to_f": 71666,
+   "stop_after_R3_no_lock2": 65635
+  },
+  "RF_RB": {
+   "neither_in_DD_and_DDprime": 33168,
+   "both_equal": 122143,
+   "only_RB_covers_DD": 41296,
+   "only_RF": 41296,
+   "RF_collisions_per_j": 0,
+   "RB_collisions_per_j": 0,
+   "RF_else_RB_collisions": 2954,
+   "RF_else_RB_hits_phi_image": 326812,
+   "both_differ": 125031
+  },
+  "floor": {
+   "classes": 13,
+   "all_DL_at_dist_2": 13,
+   "equality_all_j": 13
+  },
+  "floor_nonzero_terms": {
+   "all zero": 13
+  },
+  "floor_DL_dist_hist": {
+   "2": 66
+  },
+  "floor_nonblock_classes": [],
+  "first_cross_j_collision": {
+   "order": 21,
+   "gentri_index": 0,
+   "hole": 0,
+   "filled": {
+    "1": 0,
+    "2": 1,
+    "5": 1,
+    "6": 2,
+    "7": 3,
+    "3": 3,
+    "8": 0,
+    "4": 0,
+    "10": 3,
+    "11": 1,
+    "9": 1,
+    "12": 2,
+    "13": 1,
+    "14": 3,
+    "15": 2,
+    "16": 0,
+    "17": 1,
+    "18": 0,
+    "19": 3,
+    "20": 2
+   },
+   "preimages": [
+    {
+     "j": 4,
+     "case": 2
+    },
+    {
+     "j": 3,
+     "case": 1
+    }
+   ]
+  }
+ },
+ "qf-23.jsonl": {
+  "totals": {
+   "holes": 30829,
+   "phi_collisions_cross_j": 1185194,
+   "phi_collisions_same_j": 0,
+   "phi_preimage_max": 2,
+   "classes": 31795,
+   "identity_mismatch": 0,
+   "perj_mismatch": 0,
+   "bad_path": 0
+  },
+  "dP_hist": {
+   "0": 519725,
+   "1": 852423,
+   "2": 87548,
+   "3": 41291,
+   "4": 15344,
+   "5": 8425,
+   "6": 1371,
+   "7": 306,
+   "8": 87,
+   "9": 127,
+   "10": 44,
+   "11": 44,
+   "12": 3,
+   "13": 5,
+   "14": 3,
+   "15": 11,
+   "16": 2,
+   "17": 2,
+   "28": 1,
+   "31": 1
+  },
+  "D_cyc_hist_over_classes": {
+   "0": 31794,
+   "20": 1
+  },
+  "max_DD_j": 21,
+  "max_DD_j_witness": {
+   "order": 23,
+   "gentri_index": 1444,
+   "hole": 15,
+   "size": 466,
+   "DD": [
+    0,
+    10,
+    6,
+    5,
+    21
+   ]
+  },
+  "max_DD_and_DDprime_j": 17,
+  "largest_DD_j_minus_room": [
+   0,
+   {
+    "order": 23,
+    "gentri_index": 212,
+    "hole": 16,
+    "size": 192,
+    "j": 1,
+    "DD_j": 8,
+    "room": 8
+   }
+  ],
+  "DL_dist_hist": {
+   "2": 1254513,
+   "3": 13533,
+   "4": 430,
+   "5": 1
+  },
+  "C5": {
+   "stop_after_phiA_no_lock2": 1115925,
+   "defined": 609348,
+   "other_filled": 387794,
+   "stop_s3_lock2_holds": 115306,
+   "returns_to_f": 221554,
+   "stop_after_R3_no_lock2": 242256
+  },
+  "RF_RB": {
+   "neither_in_DD_and_DDprime": 106824,
+   "both_equal": 382390,
+   "both_differ": 470033,
+   "only_RB_covers_DD": 154615,
+   "only_RF": 154615,
+   "RF_collisions_per_j": 0,
+   "RB_collisions_per_j": 0,
+   "RF_else_RB_collisions": 10501,
+   "RF_else_RB_hits_phi_image": 1151152
+  },
+  "floor": {
+   "classes": 129,
+   "all_DL_at_dist_2": 129,
+   "equality_all_j": 129
+  },
+  "floor_nonzero_terms": {
+   "all zero": 128,
+   "N0,d!=1": 1
+  },
+  "floor_DL_dist_hist": {
+   "2": 465
+  },
+  "floor_nonblock_classes": [
+   {
+    "order": 23,
+    "gentri_index": 212,
+    "hole": 16,
+    "size": 192,
+    "F_i": [
+     24,
+     4,
+     8,
+     8,
+     4
+    ],
+    "multi_i": true,
+    "N0": 8,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "3": 8,
+     "1": 16,
+     "2": 8,
+     "0": 8
+    },
+    "DD": [
+     0,
+     8,
+     4,
+     4,
+     8
+    ],
+    "DL_dist_hist": {
+     "2": 56
+    },
+    "RF_RB": {
+     "both_equal": 16,
+     "only_RF": 16,
+     "only_RB_covers_DD": 16,
+     "neither_in_DD_and_DDprime": 8,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 48
+    },
+    "C5": {
+     "stop_after_R3_no_lock2": 8,
+     "stop_s3_lock2_holds": 16,
+     "defined": 16,
+     "other_filled": 12,
+     "stop_after_phiA_no_lock2": 8,
+     "returns_to_f": 4
+    }
+   }
+  ],
+  "first_cross_j_collision": {
+   "order": 23,
+   "gentri_index": 0,
+   "hole": 0,
+   "filled": {
+    "1": 0,
+    "2": 1,
+    "5": 1,
+    "6": 2,
+    "7": 3,
+    "3": 3,
+    "8": 0,
+    "4": 0,
+    "10": 3,
+    "11": 1,
+    "9": 1,
+    "12": 3,
+    "13": 2,
+    "14": 0,
+    "15": 1,
+    "16": 2,
+    "17": 0,
+    "18": 2,
+    "19": 0,
+    "20": 2,
+    "21": 3,
+    "22": 1
+   },
+   "preimages": [
+    {
+     "j": 4,
+     "case": 2
+    },
+    {
+     "j": 3,
+     "case": 1
+    }
+   ]
+  }
+ },
+ "qf-24-floorholes.jsonl": {
+  "totals": {
+   "holes": 230,
+   "phi_collisions_cross_j": 11597,
+   "phi_collisions_same_j": 0,
+   "phi_preimage_max": 2,
+   "classes": 584,
+   "identity_mismatch": 0,
+   "perj_mismatch": 0,
+   "bad_path": 0
+  },
+  "dP_hist": {
+   "0": 6301,
+   "1": 7271,
+   "2": 801,
+   "3": 345,
+   "4": 203,
+   "5": 60,
+   "6": 11,
+   "7": 2
+  },
+  "D_cyc_hist_over_classes": {
+   "0": 584
+  },
+  "max_DD_j": 16,
+  "max_DD_j_witness": {
+   "order": 24,
+   "gentri_index": 160,
+   "hole": 16,
+   "size": 384,
+   "DD": [
+    0,
+    16,
+    8,
+    8,
+    16
+   ]
+  },
+  "max_DD_and_DDprime_j": 12,
+  "largest_DD_j_minus_room": [
+   0,
+   {
+    "order": 24,
+    "gentri_index": 160,
+    "hole": 16,
+    "size": 384,
+    "j": 1,
+    "DD_j": 16,
+    "room": 16
+   }
+  ],
+  "DL_dist_hist": {
+   "2": 10949,
+   "3": 150,
+   "4": 1
+  },
+  "C5": {
+   "defined": 5934,
+   "returns_to_f": 1725,
+   "stop_after_phiA_no_lock2": 6979,
+   "stop_after_R3_no_lock2": 3620,
+   "other_filled": 4209,
+   "stop_s3_lock2_holds": 1013
+  },
+  "RF_RB": {
+   "RF_collisions_per_j": 0,
+   "RB_collisions_per_j": 0,
+   "RF_else_RB_collisions": 76,
+   "RF_else_RB_hits_phi_image": 10039,
+   "both_equal": 2655,
+   "both_differ": 4616,
+   "only_RF": 1422,
+   "neither_in_DD_and_DDprime": 985,
+   "only_RB_covers_DD": 1422
+  },
+  "floor": {
+   "classes": 275,
+   "all_DL_at_dist_2": 275,
+   "equality_all_j": 275
+  },
+  "floor_nonzero_terms": {
+   "all zero": 266,
+   "N0,d!=1": 7,
+   "d!=1": 2
+  },
+  "floor_DL_dist_hist": {
+   "2": 2084
+  },
+  "floor_nonblock_classes": [
+   {
+    "order": 24,
+    "gentri_index": 18,
+    "hole": 14,
+    "size": 240,
+    "F_i": [
+     12,
+     0,
+     0,
+     48,
+     0
+    ],
+    "multi_i": true,
+    "N0": 0,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 60
+    },
+    "DD": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "DL_dist_hist": {
+     "2": 60
+    },
+    "RF_RB": {
+     "both_differ": 36,
+     "both_equal": 24,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 60
+    },
+    "C5": {
+     "defined": 60,
+     "other_filled": 60
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 160,
+    "hole": 16,
+    "size": 384,
+    "F_i": [
+     48,
+     8,
+     16,
+     16,
+     8
+    ],
+    "multi_i": true,
+    "N0": 16,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "3": 16,
+     "2": 16,
+     "1": 32,
+     "0": 16
+    },
+    "DD": [
+     0,
+     16,
+     8,
+     8,
+     16
+    ],
+    "DL_dist_hist": {
+     "2": 112
+    },
+    "RF_RB": {
+     "neither_in_DD_and_DDprime": 16,
+     "only_RB_covers_DD": 32,
+     "both_differ": 20,
+     "only_RF": 32,
+     "both_equal": 12,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 96
+    },
+    "C5": {
+     "stop_s3_lock2_holds": 32,
+     "stop_after_R3_no_lock2": 16,
+     "stop_after_phiA_no_lock2": 16,
+     "defined": 32,
+     "other_filled": 20,
+     "returns_to_f": 12
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 165,
+    "hole": 14,
+    "size": 64,
+    "F_i": [
+     0,
+     8,
+     0,
+     0,
+     8
+    ],
+    "multi_i": true,
+    "N0": 0,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 16
+    },
+    "DD": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "DL_dist_hist": {
+     "2": 16
+    },
+    "RF_RB": {
+     "both_equal": 8,
+     "both_differ": 8,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 16
+    },
+    "C5": {
+     "defined": 16,
+     "returns_to_f": 8,
+     "other_filled": 8
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 165,
+    "hole": 16,
+    "size": 192,
+    "F_i": [
+     24,
+     4,
+     8,
+     8,
+     4
+    ],
+    "multi_i": true,
+    "N0": 8,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "3": 8,
+     "1": 16,
+     "0": 8,
+     "2": 8
+    },
+    "DD": [
+     0,
+     8,
+     4,
+     4,
+     8
+    ],
+    "DL_dist_hist": {
+     "2": 56
+    },
+    "RF_RB": {
+     "both_equal": 8,
+     "only_RB_covers_DD": 16,
+     "neither_in_DD_and_DDprime": 8,
+     "only_RF": 16,
+     "both_differ": 8,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 48
+    },
+    "C5": {
+     "stop_s3_lock2_holds": 16,
+     "stop_after_R3_no_lock2": 8,
+     "stop_after_phiA_no_lock2": 8,
+     "defined": 16,
+     "other_filled": 12,
+     "returns_to_f": 4
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 830,
+    "hole": 14,
+    "size": 240,
+    "F_i": [
+     12,
+     0,
+     0,
+     48,
+     0
+    ],
+    "multi_i": true,
+    "N0": 0,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "0": 12,
+     "1": 36,
+     "2": 12
+    },
+    "DD": [
+     0,
+     0,
+     0,
+     0,
+     12
+    ],
+    "DL_dist_hist": {
+     "2": 60
+    },
+    "RF_RB": {
+     "both_equal": 24,
+     "both_differ": 12,
+     "only_RB_covers_DD": 12,
+     "only_RF": 12,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 60
+    },
+    "C5": {
+     "stop_after_R3_no_lock2": 12,
+     "defined": 36,
+     "other_filled": 12,
+     "stop_s3_lock2_holds": 12,
+     "returns_to_f": 24
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 1055,
+    "hole": 14,
+    "size": 64,
+    "F_i": [
+     8,
+     0,
+     0,
+     8,
+     0
+    ],
+    "multi_i": true,
+    "N0": 0,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "2": 8,
+     "0": 8
+    },
+    "DD": [
+     0,
+     0,
+     0,
+     0,
+     8
+    ],
+    "DL_dist_hist": {
+     "2": 16
+    },
+    "RF_RB": {
+     "only_RF": 8,
+     "only_RB_covers_DD": 8,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 16
+    },
+    "C5": {
+     "stop_after_R3_no_lock2": 8,
+     "stop_s3_lock2_holds": 8
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 1055,
+    "hole": 16,
+    "size": 192,
+    "F_i": [
+     24,
+     4,
+     8,
+     8,
+     4
+    ],
+    "multi_i": true,
+    "N0": 8,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "0": 8,
+     "1": 16,
+     "2": 8,
+     "3": 8
+    },
+    "DD": [
+     0,
+     8,
+     4,
+     4,
+     8
+    ],
+    "DL_dist_hist": {
+     "2": 56
+    },
+    "RF_RB": {
+     "only_RB_covers_DD": 16,
+     "only_RF": 16,
+     "both_equal": 8,
+     "neither_in_DD_and_DDprime": 8,
+     "both_differ": 8,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 48
+    },
+    "C5": {
+     "defined": 16,
+     "returns_to_f": 8,
+     "stop_s3_lock2_holds": 16,
+     "stop_after_R3_no_lock2": 8,
+     "stop_after_phiA_no_lock2": 8,
+     "other_filled": 8
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 1411,
+    "hole": 13,
+    "size": 144,
+    "F_i": [
+     16,
+     0,
+     8,
+     8,
+     4
+    ],
+    "multi_i": true,
+    "N0": 4,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 24,
+     "0": 4,
+     "4": 4
+    },
+    "DD": [
+     4,
+     0,
+     4,
+     0,
+     4
+    ],
+    "DL_dist_hist": {
+     "2": 40
+    },
+    "RF_RB": {
+     "both_equal": 8,
+     "neither_in_DD_and_DDprime": 8,
+     "only_RF": 4,
+     "both_differ": 16,
+     "only_RB_covers_DD": 4,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 32
+    },
+    "C5": {
+     "defined": 24,
+     "other_filled": 16,
+     "stop_after_phiA_no_lock2": 4,
+     "stop_after_R3_no_lock2": 4,
+     "returns_to_f": 8,
+     "stop_s3_lock2_holds": 4
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 1411,
+    "hole": 17,
+    "size": 144,
+    "F_i": [
+     16,
+     0,
+     8,
+     8,
+     4
+    ],
+    "multi_i": true,
+    "N0": 4,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 24,
+     "0": 4,
+     "4": 4
+    },
+    "DD": [
+     4,
+     0,
+     4,
+     0,
+     4
+    ],
+    "DL_dist_hist": {
+     "2": 40
+    },
+    "RF_RB": {
+     "both_differ": 16,
+     "both_equal": 8,
+     "only_RF": 4,
+     "neither_in_DD_and_DDprime": 8,
+     "only_RB_covers_DD": 4,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 32
+    },
+    "C5": {
+     "defined": 24,
+     "other_filled": 16,
+     "stop_after_R3_no_lock2": 4,
+     "returns_to_f": 8,
+     "stop_s3_lock2_holds": 4,
+     "stop_after_phiA_no_lock2": 4
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 1411,
+    "hole": 20,
+    "size": 144,
+    "F_i": [
+     8,
+     8,
+     12,
+     0,
+     8
+    ],
+    "multi_i": true,
+    "N0": 8,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 12,
+     "0": 8,
+     "4": 8
+    },
+    "DD": [
+     0,
+     8,
+     8,
+     0,
+     8
+    ],
+    "DL_dist_hist": {
+     "2": 44
+    },
+    "RF_RB": {
+     "both_equal": 12,
+     "only_RB_covers_DD": 8,
+     "neither_in_DD_and_DDprime": 16,
+     "only_RF": 8,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 28
+    },
+    "C5": {
+     "defined": 12,
+     "returns_to_f": 12,
+     "stop_after_phiA_no_lock2": 8,
+     "stop_after_R3_no_lock2": 8,
+     "stop_s3_lock2_holds": 8
+    }
+   },
+   {
+    "order": 24,
+    "gentri_index": 1411,
+    "hole": 22,
+    "size": 144,
+    "F_i": [
+     8,
+     12,
+     0,
+     8,
+     8
+    ],
+    "multi_i": true,
+    "N0": 8,
+    "L_F": 0,
+    "D_cyc": 0,
+    "dP_hist": {
+     "1": 12,
+     "0": 8,
+     "4": 8
+    },
+    "DD": [
+     8,
+     8,
+     0,
+     8,
+     0
+    ],
+    "DL_dist_hist": {
+     "2": 44
+    },
+    "RF_RB": {
+     "both_equal": 12,
+     "only_RB_covers_DD": 8,
+     "neither_in_DD_and_DDprime": 16,
+     "only_RF": 8,
+     "RF_collisions_per_j": 0,
+     "RB_collisions_per_j": 0,
+     "RF_else_RB_collisions": 0,
+     "RF_else_RB_hits_phi_image": 28
+    },
+    "C5": {
+     "defined": 12,
+     "returns_to_f": 12,
+     "stop_after_R3_no_lock2": 8,
+     "stop_s3_lock2_holds": 8,
+     "stop_after_phiA_no_lock2": 8
+    }
+   }
+  ],
+  "first_cross_j_collision": {
+   "order": 24,
+   "gentri_index": 0,
+   "hole": 13,
+   "filled": {
+    "8": 0,
+    "2": 1,
+    "3": 2,
+    "7": 2,
+    "9": 1,
+    "11": 3,
+    "12": 1,
+    "0": 0,
+    "1": 3,
+    "4": 3,
+    "6": 0,
+    "10": 2,
+    "18": 0,
+    "14": 0,
+    "19": 3,
+    "20": 0,
+    "21": 2,
+    "5": 1,
+    "15": 3,
+    "16": 0,
+    "17": 1,
+    "23": 2,
+    "22": 1
+   },
+   "preimages": [
+    {
+     "j": 0,
+     "case": 2
+    },
+    {
+     "j": 4,
+     "case": 1
+    }
+   ]
+  }
+ }
+}

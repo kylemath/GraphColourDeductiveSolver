@@ -301,3 +301,100 @@ python3 inj.py --floor ../6-quarter-floor/blocks-deg5.jsonl > inj-floor.jsonl
   - size 48 (order 22, gentri 19, hole 12): F = 12, DL = 12; the 12 DL states reach exactly the 12 filled states in 2 swaps.
   - size 192 (order 23, gentri 212, hole 16): F = 48, DL = 56 (a mixed-block class); they reach all 48 filled states.
   - In all three holes, φ is injective on every non-DL state.
+
+## 8. Checks of MathQuarterFloorBijections.md: C1, C2, C3, C5, C7, global collisions, R_F/R_B (`8-quarter-identities/`)
+This item is exploratory. It used about 22 CPU-minutes. Definitions are in the docstring of `qf.py`, following Math's §0–§5. All maps act on states up to renaming; each commutes with renaming.
+
+**Coverage.** Every degree-5 hole at orders 12, 14 and 16–23 (45,904 classes), plus the 230 order-24 holes that contain a floor class (584 classes).
+
+**Commands.**
+```
+python3 qf.py --orders 12 14 16 17 18 19 20 > qf-12-20.jsonl
+python3 qf.py --orders 21 22 > qf-21-22.jsonl                 # committed gzipped
+python3 qf.py --orders 23 > qf-23.jsonl                       # committed gzipped
+python3 qf.py --floor-holes 24 > qf-24-floorholes.jsonl
+python3 agg.py qf-12-20.jsonl qf-21-22.jsonl qf-23.jsonl qf-24-floorholes.jsonl > summary.json   # gunzip -k first
+python3 qf.py --detail 17 1 0 > detail-17-1-0.jsonl
+python3 internC_collision.py > internC-collision.json
+```
+
+**(0) Collisions of Lemma A's φ.**
+- **Correction:** my item-7 count "0 collisions in 353,812" was keyed by (j, image). It was a per-j count, covering both cases, and **not** across j.
+- Recounted across j at orders 12–21 (4,270 holes, 353,812 non-DL states):
+  - **81,571 filled states have two φ-preimages, always with different j;**
+  - 0 same-j collisions;
+  - at most 2 preimages per filled state, as in Math's Remark 1.
+- At orders 12–23 the cross-j total is 1,541,320.
+
+**Intern C's construction is verified** (`internC-collision.json`):
+- the graph is a triangulation (E = 45, 30 triangles = 30 faces), with degrees 5^12 6^5;
+- it is isomorphic to gentri order 17, index 3;
+- the colouring is proper, and s1 and s2 are proper and lie in t's class;
+- s1 has j = 1 (lock 1 fails, Case 1) and s2 has j = 2 (lock 2 fails, Case 2), and φ sends both to t.
+
+**C1. Identities.**
+- **Class identity** 3F − U = 2N₀ + 1.5·L_F + Σ_P (1 − d(P)) − D_cyc: **0 mismatches** in all 46,488 classes.
+- **Per-j identity** F_{j+1} + F_{j+3} + F_{j+4} − U_j = L_j + |U_j^ff| + |U_{j+3}^ff| + |E_j| − |DD_j|: **0 mismatches** in all 232,440 (class, j) cases.
+- Every walk along Γ from a path start ends at a lock-1-only endpoint (0 bad paths).
+
+**C2. Dichotomies.** 0 violations of any of the following:
+- M3 and M2, each XOR its alternative condition;
+- R+3 misses x_j ⇔ lock 2, and R+2 misses x_{j+2} ⇔ lock 1;
+- R+3 lands in U_{j+3} with lock 1, and R+2 inverts it.
+
+**C3. Where the compensation lives.**
+
+d(P) histogram (paths):
+
+| orders | 0 | 1 | 2 | 3 | 4 | 5 | 6+ | max |
+|---|---|---|---|---|---|---|---|---|
+| 12–20 | 9,847 | 15,964 | 1,566 | 640 | 305 | 204 | 72 | 15 |
+| 21–22 | 144,518 | 247,174 | 22,502 | 10,795 | 4,031 | 2,984 | 984 | 17 |
+| 23 | 519,725 | 852,423 | 87,548 | 41,291 | 15,344 | 8,425 | 2,007 | 31 |
+
+- **D_cyc > 0 in 6 classes** (2 at orders ≤ 20, 3 at 21–22, 1 at 23), with D_cyc = 20 each time. None is a floor class.
+- The largest DD_j is 8 at orders ≤ 20, 12 at 21–22 and 21 at 23. The largest DD_j ∩ DD′_j is 6, 12 and 17.
+- **max over (class, j) of |DD_j| − room is 0**, so the room always suffices. This is the per-j form of the valid inequality of item 7.
+
+**Floor classes (419 = 2 + 13 + 129 + 275):**
+- **U_j = F_{j+1} + F_{j+3} + F_{j+4} with equality for every j in all 419.** That includes the order-17 class (Intern B's 10 cases).
+- 405 classes have every term zero (N₀ = L_F = D_cyc = 0, all d(P) = 1).
+- **All 14 non-block floor classes have F at more than one position i**, and every one has L_F = 0 and D_cyc = 0. They fall into three kinds:
+  - 2 are unions of quartets, with every term zero: order 24, gentri 18 hole 14 and gentri 165 hole 14;
+  - 2 are compensated by d = 0 paths against d = 2 paths, with N₀ = 0: order 24, gentri 830 hole 14 and gentri 1055 hole 14;
+  - 10 are compensated by N₀ > 0 against long chains d ≥ 2: the two order-17 classes (N₀ = 6, d = 1 ×8, 5, 9); order 23, gentri 212 hole 16; and order 24, gentri 160/16, 165/16, 1055/16 and 1411 holes 13, 17, 20, 22.
+
+**C5. ψ = φ_B⁻¹ R+3 R+3 φ_A on filled states with both bits short.**
+- ψ is **not** the identity.
+- In the floor classes it is defined on 2,295 states: it returns to f 931 times and reaches another filled state 1,364 times.
+- In the size-48 class (order 22, gentri 19, hole 12) it is defined on all 12 filled states and returns to f in none.
+- Over all classes at orders 12–23: defined 799,028 times, returning to f 298,285 times.
+
+**C7. Distance from DL states to the nearest filled state.**
+
+| orders | dist 2 | 3 | 4 | 5 |
+|---|---|---|---|---|
+| 12–20 | 23,249 | 509 | 44 | 0 |
+| 21–22 | 356,824 | 5,883 | 226 | 1 |
+| 23 | 1,254,513 | 13,533 | 430 | 1 |
+
+- **Floor classes:** every DL state is at distance exactly 2 in 417 of the 419. The exceptions are order 17, gentri 1, holes 0 and 2.
+- That class has 22 DL states (Intern B's request):
+  - distances: 17 at 2, 3 at 3, 2 at 4;
+  - R+3 d is DL for 12 of them, and R+2 d is DL for 12;
+  - all five DL states at distance 3–4 have both R+3 d and R+2 d DL.
+  - Per state, by (distance, R+3 DL, R+2 DL): (2,F,F) ×8, (2,T,T) ×5, (3,T,T) ×3, (2,T,F) ×2, (4,T,T) ×2, (2,F,T) ×2.
+  - Per-j accounting: DD = [2, 2, 2, 3, 3], each equal to its room |U_j^ff| + |U_{j+3}^ff|.
+- Full list: `detail-17-1-0.jsonl`.
+
+**R_F = φ∘R+3 (Math's ρ) and R_B = φ∘R+2 on DL states (Intern A).**
+- Each is injective per j (0 collisions), and each lands in F_{j+1} (0 bad images).
+
+| orders | both defined, equal | both defined, differ | only R_F | only R_B (covers DD_j) | neither (DD ∩ DD′) | collisions of "R_F, else R_B" |
+|---|---|---|---|---|---|---|
+| 12–20 | 8,522 | 7,442 | 2,787 | 2,787 | 2,264 | 143 |
+| 21–22 | 122,143 | 125,031 | 41,296 | 41,296 | 33,168 | 2,954 |
+| 23 | 382,390 | 470,033 | 154,615 | 154,615 | 106,824 | 10,501 |
+
+- So R_B covers part of DD_j, but the combined rule "R_F, else R_B" is not injective.
+- **Size-48 class (order 22, gentri 19, hole 12):** R_F and R_B are both defined on all 12 DL states and **differ on all 12**. Each alone is a bijection onto the 12 filled states, and the combined rule has 0 collisions.
