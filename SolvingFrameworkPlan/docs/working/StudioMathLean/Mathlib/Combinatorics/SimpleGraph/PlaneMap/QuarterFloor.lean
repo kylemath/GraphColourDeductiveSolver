@@ -74,13 +74,88 @@ noncomputable def lemmaA_map (c : V → Fin 4) (j : Fin 5) : V → Fin 4 :=
   swap c (c (P.x (j + 1))) (c (P.x (j + 3)))
     {v | (pairGraph G h c (c (P.x (j + 1))) (c (P.x (j + 3)))).Reachable (P.x (j + 3)) v}
 
+section helpers
+variable {C : Type*} [DecidableEq C]
+
+lemma active_swap_iff {c : V → C} {a b : C} {S : Set V} (v : V) :
+    Active h (swap c a b S) a b v ↔ Active h c a b v := by
+  unfold Active
+  by_cases hv : v ∈ S
+  · rw [swap_in hv]
+    refine and_congr_right fun _ => ?_
+    rw [Equiv.swap_apply_eq_iff, Equiv.swap_apply_eq_iff, Equiv.swap_apply_left,
+      Equiv.swap_apply_right, or_comm]
+  · rw [swap_out hv]
+
+lemma pairGraph_swap (c : V → C) (a b : C) (S : Set V) :
+    pairGraph G h (swap c a b S) a b = pairGraph G h c a b := by
+  ext v w
+  show (G.Adj v w ∧ Active h (swap c a b S) a b v ∧ Active h (swap c a b S) a b w) ↔
+    (G.Adj v w ∧ Active h c a b v ∧ Active h c a b w)
+  rw [active_swap_iff, active_swap_iff]
+
+lemma swap_swap_self (c : V → C) (a b : C) (S : Set V) : swap (swap c a b S) a b S = c := by
+  funext v
+  by_cases hv : v ∈ S
+  · rw [swap_in hv, swap_in hv, Equiv.swap_apply_self]
+  · rw [swap_out hv, swap_out hv]
+
+end helpers
+
+lemma fin5_cases (j k : Fin 5) :
+    k = j ∨ k = j + 1 ∨ k = j + 2 ∨ k = j + 3 ∨ k = j + 4 := by
+  revert j k; decide
+
+lemma fin4_fourth (a b c x y : Fin 4) (hab : a ≠ b) (hac : a ≠ c) (hbc : b ≠ c)
+    (hxa : x ≠ a) (hxb : x ≠ b) (hxc : x ≠ c) (hya : y ≠ a) (hyb : y ≠ b) (hyc : y ≠ c) :
+    x = y := by
+  revert a b c x y; decide
+
+/-- The five link values of the Lemma A swap. -/
+lemma lemmaA_vals (c : V → Fin 4) (j : Fin 5) (hr : RepeatAt P c j) (hl : ¬ Lock1 P c j) :
+    lemmaA_map P c j (P.x j) = c (P.x j) ∧
+    lemmaA_map P c j (P.x (j + 1)) = c (P.x (j + 1)) ∧
+    lemmaA_map P c j (P.x (j + 2)) = c (P.x j) ∧
+    lemmaA_map P c j (P.x (j + 3)) = c (P.x (j + 1)) ∧
+    lemmaA_map P c j (P.x (j + 4)) = c (P.x (j + 4)) := by
+  obtain ⟨h0, h1, h2, -, -, h5, h6⟩ := hr
+  have aS : P.x (j + 3) ∈ {v | (pairGraph G h c (c (P.x (j + 1))) (c (P.x (j + 3)))).Reachable
+      (P.x (j + 3)) v} := Reachable.refl _
+  have mS : P.x (j + 1) ∉ {v | (pairGraph G h c (c (P.x (j + 1))) (c (P.x (j + 3)))).Reachable
+      (P.x (j + 3)) v} := by
+    intro hm; apply hl; exact Reachable.symm hm
+  unfold lemmaA_map
+  refine ⟨swap_other (Ne.symm h1) (Ne.symm h2), swap_out mS,
+    (swap_other (by rw [← h0]; exact Ne.symm h1) (by rw [← h0]; exact Ne.symm h2)).trans h0.symm,
+    by rw [swap_in aS, Equiv.swap_apply_right], swap_other (Ne.symm h5) (Ne.symm h6)⟩
+
 /-- Lemma A, case 1: at an unfilled proper state with repeat pair `{j, j+2}` whose lock 1
 fails, the swap is a Kempe step to a filled state with singleton at `j + 4`. -/
 theorem lemmaA_step (c : V → Fin 4) (j : Fin 5)
     (hc : ProperOff G h c) (hr : RepeatAt P c j) (hl : ¬ Lock1 P c j) :
     KempeStep G h c (lemmaA_map P c j) ∧ ProperOff G h (lemmaA_map P c j) ∧
       SingletonAt P (lemmaA_map P c j) (j + 4) := by
-  sorry
+  obtain ⟨v0, v1, v2, v3, v4⟩ := lemmaA_vals P c j hr hl
+  obtain ⟨-, h1, h2, h3, h4, h5, h6⟩ := hr
+  have hW := whole_component G h c (c (P.x (j + 1))) (c (P.x (j + 3))) (P.x (j + 3))
+    ⟨(P.adj_h _).ne.symm, Or.inr rfl⟩
+  refine ⟨⟨_, _, _, h4, hW, rfl⟩, properOff_swap G hc hW, ⟨⟨c (P.x (j + 3)), ?_⟩, ?_⟩⟩
+  · intro v e he
+    obtain ⟨i, rfl⟩ := P.only v e
+    rcases fin5_cases j i with rfl | rfl | rfl | rfl | rfl
+    · rw [v0] at he; exact h2 he.symm
+    · rw [v1] at he; exact h4 he
+    · rw [v2] at he; exact h2 he.symm
+    · rw [v3] at he; exact h4 he
+    · rw [v4] at he; exact h6 he.symm
+  · intro k hk
+    rw [v4]
+    rcases fin5_cases j k with rfl | rfl | rfl | rfl | rfl
+    · rw [v0]; exact h3.symm
+    · rw [v1]; exact h5
+    · rw [v2]; exact h3.symm
+    · rw [v3]; exact h5
+    · exact absurd rfl hk
 
 /-- Lemma A, case 1, injectivity: the swap is undone by swapping the same component in the
 image, so two states with the same repeat index and failing lock 1 that map to the same
@@ -89,7 +164,28 @@ theorem lemmaA_injective (c c' : V → Fin 4) (j : Fin 5)
     (hc : ProperOff G h c) (hr : RepeatAt P c j) (hl : ¬ Lock1 P c j)
     (hc' : ProperOff G h c') (hr' : RepeatAt P c' j) (hl' : ¬ Lock1 P c' j)
     (heq : lemmaA_map P c j = lemmaA_map P c' j) : c = c' := by
-  sorry
+  have key : ∀ c : V → Fin 4, RepeatAt P c j → ¬ Lock1 P c j →
+      c = swap (lemmaA_map P c j) (lemmaA_map P c j (P.x (j + 1))) (c (P.x (j + 3)))
+        {v | (pairGraph G h (lemmaA_map P c j) (lemmaA_map P c j (P.x (j + 1)))
+          (c (P.x (j + 3)))).Reachable (P.x (j + 3)) v} := by
+    intro c hr hl
+    rw [(lemmaA_vals P c j hr hl).2.1]
+    unfold lemmaA_map
+    rw [pairGraph_swap, swap_swap_self]
+  obtain ⟨v0, v1, -, -, v4⟩ := lemmaA_vals P c j hr hl
+  obtain ⟨v0', v1', -, -, v4'⟩ := lemmaA_vals P c' j hr' hl'
+  have e0 : c (P.x j) = c' (P.x j) := by rw [← v0, ← v0', heq]
+  have e1 : c (P.x (j + 1)) = c' (P.x (j + 1)) := by rw [← v1, ← v1', heq]
+  have e4 : c (P.x (j + 4)) = c' (P.x (j + 4)) := by rw [← v4, ← v4', heq]
+  have hA : c (P.x (j + 3)) = c' (P.x (j + 3)) := by
+    obtain ⟨-, h1, h2, h3, h4, h5, h6⟩ := hr
+    obtain ⟨-, h1', h2', h3', h4', h5', h6'⟩ := hr'
+    rw [← e0, ← e1, ← e4] at *
+    exact fin4_fourth _ _ _ _ _ h1.symm h3.symm h5 h2 h4.symm h6 h2' h4'.symm h6'
+  have e := key c hr hl
+  have e' := key c' hr' hl'
+  rw [heq, hA] at e
+  exact e.trans e'.symm
 
 /-- The quarter floor (open): in every Kempe class of proper colourings of `G - h`, at least a
 quarter of the colourings are filled. Stated for finite `V` with classes as finsets. -/
