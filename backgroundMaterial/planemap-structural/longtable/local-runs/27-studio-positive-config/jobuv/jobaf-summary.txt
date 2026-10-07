@@ -1,0 +1,32 @@
+fail22 holes 19 pattern holes 407
+
+(1) Job Z failing holes: 19
+    undirected sigma-P1 holds: 11 / 19; sigma u sigma' P1 holds: 19 / 19
+      z25 p25#12342 24 5,5,6,5,7 undirected sigma: False sigma u sigma': True [(16, '20', [6, 7])]
+      z26 p26#70869 11 5,6,5,6,6 undirected sigma: False sigma u sigma': True [(16, '5', [])]
+      z27 p27#72051 14 5,6,5,6,8 undirected sigma: False sigma u sigma': True [(5, '10', [9]), (13, '10', [0, 14])]
+      z27 p27#87651 19 5,6,5,6,7 undirected sigma: False sigma u sigma': True [(8, '5', [])]
+      z27 p27#97821 7 5,6,6,5,8 undirected sigma: False sigma u sigma': True [(10, '5', [])]
+      z27 p27#130462 20 5,5,6,5,7 undirected sigma: False sigma u sigma': True [(11, '10', [14])]
+      z27m p27#110656 16 5,6,6,5,7 undirected sigma: False sigma u sigma': True [(25, '5', [])]
+      z27m p27#183181 22 5,6,6,7,8 undirected sigma: False sigma u sigma': True [(20, '5', []), (23, '5', [])]
+
+(2) (5,5,5,5,6)/(5,5,5,6,6), orders 25-27, both orientations: holes 407
+    P1 (undirected sigma) holds 407 / 407; P1^str (undirected, all positive cycles) holds 391 / 407; P1^str on NON-Gamma positive cycles holds 407 / 407
+      P1^str fails: z26 p26#87887 21 [(26, 60, 60, '-180'), (27, 60, 60, '-180')]
+      P1^str fails: z26m p26#87887 21 [(26, 60, 60, '-180'), (27, 60, 60, '-180')]
+      P1^str fails: z27 p27#186398 18 [(20, 20, 20, '-60'), (21, 20, 20, '-60'), (22, 20, 20, '-60'), (23, 20, 20, '-60')]
+      P1^str fails: z27 p27#192069 14 [(8, 40, 40, '-120'), (10, 40, 40, '-120')]
+      P1^str fails: z27 p27#192490 20 [(19, 40, 40, '-120'), (20, 40, 40, '-120')]
+      P1^str fails: z27 p27#193838 3 [(16, 20, 20, '-60'), (17, 20, 20, '-60'), (18, 20, 20, '-60'), (19, 20, 20, '-60')]
+      P1^str fails: z27 p27#269899 17 [(38, 20, 20, '-60'), (39, 20, 20, '-60'), (41, 20, 20, '-60'), (43, 20, 20, '-60')]
+      P1^str fails: z27 p27#269899 21 [(42, 20, 20, '-60'), (43, 20, 20, '-60'), (44, 20, 20, '-60'), (45, 20, 20, '-60')]
+      P1^str fails: z27 p27#315986 22 [(32, 20, 20, '-60'), (33, 20, 20, '-60'), (34, 20, 20, '-60'), (35, 20, 20, '-60')]
+      P1^str fails: z27m p27#186398 18 [(46, 20, 20, '-60'), (47, 20, 20, '-60'), (48, 20, 20, '-60'), (49, 20, 20, '-60')]
+      P1^str fails: z27m p27#192069 14 [(55, 40, 40, '-120'), (56, 40, 40, '-120')]
+      P1^str fails: z27m p27#192490 20 [(36, 40, 40, '-120'), (37, 40, 40, '-120')]
+      P1^str fails: z27m p27#193838 3 [(28, 20, 20, '-60'), (29, 20, 20, '-60'), (30, 20, 20, '-60'), (31, 20, 20, '-60')]
+      P1^str fails: z27m p27#269899 17 [(42, 20, 20, '-60'), (43, 20, 20, '-60'), (44, 20, 20, '-60'), (45, 20, 20, '-60')]
+      P1^str fails: z27m p27#269899 21 [(38, 20, 20, '-60'), (39, 20, 20, '-60'), (40, 20, 20, '-60'), (42, 20, 20, '-60')]
+      P1^str fails: z27m p27#315986 22 [(25, 20, 20, '-60'), (26, 20, 20, '-60'), (27, 20, 20, '-60'), (28, 20, 20, '-60')]
+    Star over 413 sigma-groups with a positive cycle: (i) M adjacent to all positive 386; (ii) -Lambda(M) >= supply 409; with -rem(M) 393; Star 386; Star_rem 372

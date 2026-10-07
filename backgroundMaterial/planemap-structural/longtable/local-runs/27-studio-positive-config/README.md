@@ -213,7 +213,7 @@ rem(T) > 0 is charged back to the positive sources that hit T (in proportion to 
 - Lemma S (Cr_N >= D) on Gamma-cycles: **holds at (5,5,5,5,6)** at every order (min 1.8 / 2.0 / 2.0; R1/R2 share of Cr_N about 4%) and **at (5,5,5,6,6)** (min 2.8 at 26, 1.15 at 27:
   the R1 exits repair p27 #316043 h18), and at (5,5,5,5,5) (min 4.0). It FAILS on Gamma-cycles at (5,5,5,5,7) (p25 #13918 h19, p26 #43070 h18, p27 #112605 h26, ...; min 0.5),
   (5,5,5,6,7) (p25 #13918 h15, 0.9), (5,5,5,6,8+) (p26 #6618 h3, 0.9), (5,5,5,7,7) (p27 #247743 h6, 0.75), (5,5,6,6,7) (p27 #197591 h18, 0.5), (5,5,6,5,7) (p27m #131991 h2, 0.85).
-- Charge-back P1 with the enlarged exit set: **holds at every (5,5,5,5,6) and (5,5,5,6,6) hole**; fails at 22 holes of other patterns (orders 25 / 26 / 27: 3 / 2 / 17), always on a
+- Charge-back P1 with the enlarged exit set: **holds at every (5,5,5,5,6) and (5,5,5,6,6) hole**; fails at 19 holes of other patterns (orders 25 / 26 / 27: 3 / 2 / 14), always on a
   non-Gamma positive cycle, mostly one with NO nonpositive sigma-neighbour (e.g. p26 #70869 h11, the sigma-C counterexample). sigma'C (Job H) still holds at all of them.
 
 ## Job AB (`--jobab`, jobab-summary.txt): excursion-level Lemma S at (5,5,5,5,6), orders 25-27, both orientations
@@ -245,9 +245,23 @@ Orders 25-27, both orientations: 264 + 406 Gamma-cycle records. Lock1/Lock2 comp
 - (iii) On Gamma-cycles the Lock1- and Lock2-components always have >= 6 vertices (both patterns).
 - (i) After a step-8 break (19 at degree 6, 79 at degree 7), z enters the Lock2-component two states later by a (z,M)-coloured swap whose component avoids p, y, z and M
   (98/98). One period later z is in the Lock2-component in 19/19 (degree 6) but only 65/79 (degree 7): the 14 others are periods followed IMMEDIATELY by another step-8
-  break, which never happens at (5,5,5,5,6).
+  break, which never happens at (5,5,5,5,6). These consecutive breaks occur only in the plantri orientation (5 holes = the plantri Lemma S failures at (5,5,5,5,7));
+  the 6 mirror-orientation failure holes have none.
 - The Lock2-component meets the breaking component K at every state of the following period (all breaks; 70/79 at one state for degree 7); the Lock1-component meets K
   from the first state after the break on.
 - (ii) At (5,5,5,5,7) all 79 k = 3/4 failure pairs come from the same step-8 far break (pair (p,y) or (p,y,M), component avoiding p, y, z, M). The failure rate is
   79/916 = 8.6% of periods against 19/552 = 3.4% at (5,5,5,5,6) (about 2.5x, not 10x); |K step 8| (mean 6.7 vs 6.5 in break periods) and |K_yz(y)| at R3k0 (12.3 vs 12.1)
   do not differ, so neither explains the rate.
+
+## Job AF (NightP1 §6 requests; independent Python jobuv/jobaf.py, jobaf34.py -> jobaf-summary.txt, jobaf34-summary.txt, jobaf.json)
+- (1) On the 19 Job Z charge-back P1 failure holes (all patterns; earlier misreported as 22): undirected-sigma P1 holds at 11/19, and sigma u sigma' P1 (sigma and sigma' lockless
+  exits, undirected sigma u sigma' neighbours) at **19/19**. Undirected sigma fails at p25 #12342 h24, p26 #70869 h11, p27 #72051 h14, #87651 h19, #97821 h7, #130462 h20,
+  p27m #110656 h16, #183181 h22.
+- (2) (5,5,5,5,6)/(5,5,5,6,6), orders 25-27, both orientations, 407 holes: P1 with undirected sigma neighbours 407/407; **P1^str on non-Gamma positive cycles 407/407**;
+  P1^str including Gamma-cycles 391/407 (the 16 failures are holes with 2-4 Gamma-cycles of L = 20-60 sharing targets, e.g. p26 #87887 h21, p27 #186398 h18).
+  Star over 413 sigma-groups with a positive cycle: (i) M adjacent to every positive cycle 386; (ii) -Lambda(M) >= supply 409, with -rem(M) 393; Star 386; Star_rem 372.
+- (3) p27m #167230 h23 (rho = 1.25): Z29 (w 4, L 28) = two excursions (u 13, f 1, mass +10), no lockless exit; T21 (w -5, L 111) has 23 excursions incl. positive ones
+  (17,2,+11), (10,1,+7), (4,1,+1). All links between them (sigma and sigma', both directions) are single-lock or DL; they land in T21's (10,1,+7) and (3,2,-3) excursions.
+- (4) The 15 (5,5,5,5,7) Lemma S failure records: Lemma W fails on every one. In every period k = 2 and k = 1 are fixed points. Plantri: a period (Lock2, Lock1, fixed, fixed,
+  fixed) of credit 0 next to (Lock2, L3, L2, fixed, fixed) of credit 13. Mirror: (L1, Lock1, fixed, fixed, fixed) of credit 2 (k = 4 lockless with f = 1, k = 3 fails) next to
+  (Lock2, Lock1, fixed, fixed, L3) of credit 8.
