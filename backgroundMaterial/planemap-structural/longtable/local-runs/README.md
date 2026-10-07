@@ -581,3 +581,36 @@ cd ../12-pooled-injection && python3 agg_pool.py pool-16-20.jsonl pool-21-22.jso
 - order 21: gentri 50, hole 11;
 - order 22: gentri 307, hole 19;
 - order 23: gentri 1186, hole 19.
+
+## 13. Degree-6/7 extremal classes, for Intern D's cycle-6 requests (`13-deg67-extremal/`)
+This item is exploratory. It ran in under 1 CPU-second, with `python3 deg67.py > deg67-results.json`.
+
+**Definitions.**
+- Link types follow Intern D: the Tait type comes from c(x_t) XOR c(x_{t+1}); the names (3,2,1), T1, T4, T2, T5, (3,1,1,1) are dihedral classes of the link word.
+- The names are checked against Intern D's counts over all proper 4-colourings of C6: ABABAB 12, (3,2,1) 144, (2,2,2) 96, T1 144, T4 72, T2 144, T5 72, (3,1,1,1) 48. All match.
+- **Rotation graph (operational):** unfilled states, joined by one Kempe swap that changes the link word up to renaming.
+- **"Fill moves"** = the number of distinct filled neighbours. For filled states, the number of distinct unfilled neighbours is also given.
+
+**Degree 6: order 24, gentri 71, hole 12** (class 192, F = 24, fraction 1/8).
+- **There are no ABABAB states and no (2,2,2) filled states.** All 24 filled states are (3,2,1); each has 4 filled and 5 unfilled neighbours.
+- Unfilled states:
+
+| type | count | filled neighbours | rotation degree |
+|---|---|---|---|
+| T1 | 48 | 1 | 3 |
+| T2 | 48 | 0 | 3 |
+| T4 | 24 | 1 | 3 |
+| T5 | 24 | 0 | 3 |
+| (3,1,1,1) | 24 | 2 | 2 |
+
+- **Rotation graph:** 168 nodes and 240 edges, in **6 isomorphic-looking components of 28 nodes**. Each has 24 nodes of degree 3 and 4 of degree 2. Within each, 16 nodes have a fill move (the T1, T4 and (3,1,1,1) nodes).
+- The components have 40 edges on 28 nodes, so they are **not trees**: the cycle rank is 13 each.
+
+**Degree 7: order 23, gentri 189, hole 14** (class 816, F = 96, fraction 2/17).
+- Filled states: tait (3,3,1) with counts (3,2,2): 84; tait (5,1,1) with counts (3,3,1): 12.
+- Unfilled states:
+  - (3,3,1)/(2,2,2,1): 420;
+  - (3,3,1)/(3,2,1,1): 264;
+  - (5,1,1)/(3,2,1,1): 24;
+  - (5,1,1)/(2,2,2,1): 12.
+- **Rotation graph:** **one component** of all 720 unfilled states, with 1,836 edges and degrees 3–7 (3: 24, 4: 180, 5: 264, 6: 204, 7: 48). 396 nodes have a fill move.

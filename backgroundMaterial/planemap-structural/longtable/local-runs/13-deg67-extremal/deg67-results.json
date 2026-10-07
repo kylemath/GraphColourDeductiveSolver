@@ -1,0 +1,243 @@
+{
+ "selfcheck_C6_colouring_counts": {
+  "ABABAB": 12,
+  "(3,2,1)": 144,
+  "T1": 144,
+  "(3,1,1,1)": 48,
+  "(2,2,2)": 96,
+  "T2": 144,
+  "T4": 72,
+  "T5": 72
+ },
+ "deg6": {
+  "order": 24,
+  "gentri_index": 71,
+  "hole": 12,
+  "degree": 6,
+  "class_size": 192,
+  "filled": 24,
+  "fraction": "24/192",
+  "link_type_hist": {
+   "(3,1,1,1)": 24,
+   "(3,2,1)": 24,
+   "T1": 48,
+   "T2": 48,
+   "T4": 24,
+   "T5": 24
+  },
+  "per_type": {
+   "(3,2,1)": {
+    "count": 24,
+    "fill_moves_hist": {
+     "4": 24
+    },
+    "rotation_degree_hist": null,
+    "unfilled_neighbours_hist": {
+     "5": 24
+    }
+   },
+   "T1": {
+    "count": 48,
+    "fill_moves_hist": {
+     "1": 48
+    },
+    "rotation_degree_hist": {
+     "3": 48
+    },
+    "unfilled_neighbours_hist": null
+   },
+   "T4": {
+    "count": 24,
+    "fill_moves_hist": {
+     "1": 24
+    },
+    "rotation_degree_hist": {
+     "3": 24
+    },
+    "unfilled_neighbours_hist": null
+   },
+   "(3,1,1,1)": {
+    "count": 24,
+    "fill_moves_hist": {
+     "2": 24
+    },
+    "rotation_degree_hist": {
+     "2": 24
+    },
+    "unfilled_neighbours_hist": null
+   },
+   "T2": {
+    "count": 48,
+    "fill_moves_hist": {
+     "0": 48
+    },
+    "rotation_degree_hist": {
+     "3": 48
+    },
+    "unfilled_neighbours_hist": null
+   },
+   "T5": {
+    "count": 24,
+    "fill_moves_hist": {
+     "0": 24
+    },
+    "rotation_degree_hist": {
+     "3": 24
+    },
+    "unfilled_neighbours_hist": null
+   }
+  },
+  "ABABAB_present": false,
+  "rotation_graph": {
+   "unfilled_states": 168,
+   "components": 6,
+   "component_size_hist": {
+    "28": 6
+   },
+   "degree_hist": {
+    "2": 24,
+    "3": 144
+   },
+   "edges": 240,
+   "components_by_(size, degree multiset, #nodes with a fill move)": [
+    [
+     [
+      28,
+      {
+       "2": 4,
+       "3": 24
+      },
+      16
+     ],
+     6
+    ]
+   ]
+  }
+ },
+ "deg7": {
+  "order": 23,
+  "gentri_index": 189,
+  "hole": 14,
+  "degree": 7,
+  "class_size": 816,
+  "filled": 96,
+  "fraction": "96/816",
+  "link_type_hist": {
+   "tait331_counts2221_unfilled": 420,
+   "tait331_counts3211_unfilled": 264,
+   "tait331_counts322_filled": 84,
+   "tait511_counts2221_unfilled": 12,
+   "tait511_counts3211_unfilled": 24,
+   "tait511_counts331_filled": 12
+  },
+  "per_type": {
+   "tait331_counts322_filled": {
+    "count": 84,
+    "fill_moves_hist": {
+     "1": 12,
+     "2": 12,
+     "4": 48,
+     "6": 12
+    },
+    "rotation_degree_hist": null,
+    "unfilled_neighbours_hist": {
+     "3": 12,
+     "5": 60,
+     "7": 12
+    }
+   },
+   "tait331_counts2221_unfilled": {
+    "count": 420,
+    "fill_moves_hist": {
+     "0": 204,
+     "1": 216
+    },
+    "rotation_degree_hist": {
+     "4": 72,
+     "5": 120,
+     "6": 180,
+     "7": 48
+    },
+    "unfilled_neighbours_hist": null
+   },
+   "tait331_counts3211_unfilled": {
+    "count": 264,
+    "fill_moves_hist": {
+     "0": 108,
+     "1": 84,
+     "2": 72
+    },
+    "rotation_degree_hist": {
+     "3": 12,
+     "4": 108,
+     "5": 120,
+     "6": 24
+    },
+    "unfilled_neighbours_hist": null
+   },
+   "tait511_counts3211_unfilled": {
+    "count": 24,
+    "fill_moves_hist": {
+     "0": 12,
+     "1": 12
+    },
+    "rotation_degree_hist": {
+     "5": 24
+    },
+    "unfilled_neighbours_hist": null
+   },
+   "tait511_counts331_filled": {
+    "count": 12,
+    "fill_moves_hist": {
+     "1": 12
+    },
+    "rotation_degree_hist": null,
+    "unfilled_neighbours_hist": {
+     "4": 12
+    }
+   },
+   "tait511_counts2221_unfilled": {
+    "count": 12,
+    "fill_moves_hist": {
+     "1": 12
+    },
+    "rotation_degree_hist": {
+     "3": 12
+    },
+    "unfilled_neighbours_hist": null
+   }
+  },
+  "ABABAB_present": null,
+  "rotation_graph": {
+   "unfilled_states": 720,
+   "components": 1,
+   "component_size_hist": {
+    "720": 1
+   },
+   "degree_hist": {
+    "3": 24,
+    "4": 180,
+    "5": 264,
+    "6": 204,
+    "7": 48
+   },
+   "edges": 1836,
+   "components_by_(size, degree multiset, #nodes with a fill move)": [
+    [
+     [
+      720,
+      {
+       "3": 24,
+       "4": 180,
+       "5": 264,
+       "6": 204,
+       "7": 48
+      },
+      396
+     ],
+     1
+    ]
+   ]
+  }
+ }
+}
