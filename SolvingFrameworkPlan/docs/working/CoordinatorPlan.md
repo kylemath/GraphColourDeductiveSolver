@@ -6,6 +6,8 @@ The Studio session is the lone coordinator (Kyle, 7 Oct). This file is the plan 
 
 R\* in the frame class: every connected spherical triangulation with minimum degree 5, no separating triangle, and no `Occ` of the Birkhoff diamond or of RSST 2.122 (either orientation) has a pure-clean vertex of degree 5. `four_color_of_RStarFrame` (FrameF3.lean) already compiles R\* ⇒ 4CT.
 
+Scope gap: the compiled statement is 4CT for combinatorial `SphericalMap`s (rotation systems). 4CT for topologically drawn planar graphs (e.g. OpenAI's `OAI.PlanarL1.IsPlanar`: injective points, simple arcs with disjoint interiors) would need a separate drawing ⇒ combinatorial-map bridge (the analogue of Gonthier's topology layer). Not planned until R\* moves.
+
 Honest baseline: forecast p = 0.02. Every result proved so far (F5, weak F6, `pureClean_of_hole4`) is about holes with three consecutive degree-5 link vertices. Those holes contain a diamond, so they never occur in the frame class.
 
 ## Tracks and kill rules
