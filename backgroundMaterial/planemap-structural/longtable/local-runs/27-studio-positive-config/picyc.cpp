@@ -49,12 +49,13 @@
 #include <algorithm>
 #include <functional>
 #include <array>
+#include <array>
 typedef uint64_t u64;
 struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi || (hi == o.hi && lo < o.lo); }
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false, JOBAK = false, JOBBB = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -408,6 +409,41 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                                         fe ? "" : ", ", ci, R, i, R - i2, ty, km, nk, a1, a2); }
                                 ev += b; fe = false; } } } }
                 char b2[400]; snprintf(b2, sizeof b2, ", \"jobx\": {\"runs\": %lld, \"gamma\": %lld, \"k4_pairs\": %lld, \"windows\": [%lld, %lld], \"windows_malformed\": %lld, \"wfail_run\": [%lld, %lld, %lld, %lld], \"wfail_gamma\": [%lld, %lld, %lld, %lld], \"events\": [", nruns, ngamma, npairs, nwin[0], nwin[1], nwbad, wfail[0][0], wfail[0][1], wfail[0][2], wfail[0][3], wfail[1][0], wfail[1][1], wfail[1][2], wfail[1][3]); jobe += b2; jobe += ev; jobe += "], \"wfail_examples\": ["; jobe += wex; jobe += "]}"; } }
+
+        if (JOBBB) {   // Job BB (NightA34Two 9.2): one-period Phi test on all maximal DL runs and Gamma-cycles at (5,5,5,5,6). Pair = R3k4 u0 with u0..u10 DL and u10 R3k4.
+                       // B = k4 failure at u10 (sigma-exit not lockless). Candidates: 0 |K_{c(p),c(m)}(p)| at R3k4; 1 Lock2 witness |K_{mu,B}(x_{j+1})| at R3k4; 2+i |K_i| = step-i component
+                       // ({alpha,A}-component of x_{j+2} at u_i vs u_{10+i}; needs u_{10+i} DL).
+            int nhi = 0, t6 = -1; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) { nhi++; t6 = t; }
+            if (nhi == 1 && jpat == "5,5,5,5,6") {
+                const int NC = 12; long long npair[2] = {0, 0}, nB[2] = {0, 0}, jmis[2] = {0, 0}, av[2][2][NC], vs[2][2][NC], vl[2][2][NC];
+                for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) for (int k = 0; k < NC; k++) av[a][b][k] = vs[a][b][k] = vl[a][b][k] = 0;
+                int p = link_[t6], y = widx[(t6 + 4) % 5], z = widx[t6]; int pv = order[p], mv = -1;
+                for (int w : rot[pv]) { if (w == hole) continue; int wi = idx[w]; if (wi == link_[(t6 + 1) % 5] || wi == link_[(t6 + 4) % 5] || wi == y || wi == z) continue; mv = w; }
+                int m = idx[mv]; std::string ex; int nex = 0;
+                auto feat = [&](int32_t x, long long *v, int &isr3k4, int &okk) {   // v[0], v[1] at R3k4; v[2] = step component size
+                    int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); okk = (kd == 1 && !l1 && !l2); isr3k4 = (ty == 3 && km == 16);
+                    unkey(ALL[x], c); masks(c, cm); int lc[5]; for (int t = 0; t < 5; t++) lc[t] = c[link_[t]];
+                    int al = lc[j], mu = lc[(j + 1) % 5], A = lc[(j + 3) % 5], B = lc[(j + 4) % 5];
+                    v[0] = __builtin_popcountll(flood(1ULL << p, cm[c[p]] | cm[c[m]])); v[1] = __builtin_popcountll(flood(1ULL << link_[(j + 1) % 5], cm[mu] | cm[B]));
+                    v[2] = __builtin_popcountll(flood(1ULL << link_[(j + 2) % 5], cm[al] | cm[A])); };
+                for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &zc = cycles[ci]; size_t Lz = zc.size(); bool all = true; for (int32_t x : zc) if (kind[x] != 2) { all = false; break; }
+                    std::vector<std::vector<int32_t>> runs;
+                    if (all) runs.push_back(zc);
+                    else for (size_t i = 0; i < Lz; i++) { if (kind[zc[i]] != 2 || kind[zc[(i + Lz - 1) % Lz]] == 2) continue; std::vector<int32_t> rr; size_t t = i; while (kind[zc[t % Lz]] == 2) { rr.push_back(zc[t % Lz]); t++; } runs.push_back(rr); }
+                    int g = all ? 1 : 0;
+                    for (auto &rr : runs) { size_t R = rr.size(); std::vector<std::array<long long, 3>> F(R); std::vector<int> r34(R), okv(R), J(R);
+                        for (size_t i = 0; i < R; i++) { long long v[3]; int a, o; feat(rr[i], v, a, o); F[i] = {v[0], v[1], v[2]}; r34[i] = a; okv[i] = o;
+                            unkey(ALL[rr[i]], c); masks(c, cm); J[i] = (int)(flood(1ULL << y, cm[c[y]] | cm[c[z]]) >> z & 1); }
+                        for (size_t i = 0; i < R; i++) { if (!r34[i]) continue; size_t i10 = i + 10; if (!all && i10 >= R) continue; i10 %= R; if (!r34[i10]) continue;
+                            npair[g]++; int Bk = !okv[i10]; nB[g] += Bk; if (Bk != !J[(i + 9) % R]) jmis[g]++;
+                            for (int k = 0; k < NC; k++) { long long a, b;
+                                if (k < 2) { a = F[i][k]; b = F[i10][k]; }
+                                else { size_t ii = i + (k - 2), jj = i + 10 + (k - 2); if (!all && jj >= R) continue; a = F[ii % R][2]; b = F[jj % R][2]; }
+                                av[g][Bk][k]++; if (a >= b) vs[g][Bk][k]++; if (a > b) vl[g][Bk][k]++; }
+                            if (Bk && F[i][0] >= F[i10][0] && nex < 6) { char e[160]; snprintf(e, sizeof e, "%s[%d, %zu, %zu, %lld, %lld, %lld]", nex ? ", " : "", g, ci, i, F[i][0], F[i10][0], all ? -1LL : (long long)R); ex += e; nex++; } } } }
+                std::string o = ", \"jobbb\": {\"pairs\": [" + std::to_string(npair[0]) + ", " + std::to_string(npair[1]) + "], \"breaks\": [" + std::to_string(nB[0]) + ", " + std::to_string(nB[1]) + "], \"J_mismatch\": [" + std::to_string(jmis[0]) + ", " + std::to_string(jmis[1]) + "], \"cand\": [";
+                for (int k = 0; k < NC; k++) { o += k ? ", [" : "["; for (int gg = 0; gg < 2; gg++) for (int b = 0; b < 2; b++) { o += (gg || b) ? ", " : ""; o += std::to_string(av[gg][b][k]) + ", " + std::to_string(vs[gg][b][k]) + ", " + std::to_string(vl[gg][b][k]); } o += "]"; }
+                o += "], \"kpm_viol_examples\": [" + ex + "]}"; jobe += o; } }
         if (JOBS) {   // Job S (NightF6Flow 1.1): exits = R3 DD-endpoint states of a positive cycle Z with lockless sigma-image on a cycle T != Z
             auto isDDend = [&](long long k) { return kind[k] == 2 && (kind[pi[k]] == 2 || kind[pinv[k]] == 2); };
             std::map<int, long long> hitsum, nhits; std::map<int, std::set<long long>> hitstates; std::string exl; std::string ss = ", \"jobs\": {\"pos\": ["; bool f1 = true; std::set<int> needT;
@@ -638,7 +674,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobak") { JOBAK = true; JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobbb") { JOBBB = true; JOBI = true; JOBG = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;

@@ -486,3 +486,21 @@ Every w > 0 target and every on-Z target is a DL image at positions 4/6/8. The w
 Every k = 3 failure image is Lock1-only and is the last unfilled state of its run: forward (u, f) = (1, 1).
 
 **(e)** Position-by-position kind tables for degree 6 and degree 7 are in jobba-summary.txt. Fixed points never occur at positions 0 and 2. Lock2-only at k = 4 and Lock1-only at k = 3 are the only failure kinds there, at both degrees.
+
+## Job BB [exploratory]: NightA34Two §9 (jobbb/, picyc.cpp --jobbb, jobav/jobav-cycles.jsonl now with rotation + edges)
+- **(1)** Every Job AV record now carries `rotation` (the rotation system in that record's orientation) and `edges`. That is 304 records over 162 distinct (graph, orientation) pairs.
+- **(2) The one-period Φ test.** This is the new `--jobbb` engine flag, run on every (5,5,5,5,6) hole at orders 25–27, both orientations. A pair is an R3k4 state u₀ with u₀..u₁₀ all DL. There are 1,458 open-run pairs (185 with a break) and 552 Γ pairs (19 with a break).
+  - B = k = 4 failure at u₁₀. It equals "J false at u₉" with 0 mismatches.
+  - The test is "B ⇒ Φ(u₀) < Φ(u₁₀)". The table gives the number of break pairs and the failures of the strict form and of the ≤ form.
+
+| Φ | open runs: n / fail(<) / fail(≤) | Γ: n / fail(<) / fail(≤) |
+|---|---|---|
+| \|K_pm(p)\| at R3k4 | 185 / 68 / 56 | 19 / 1 / 1 |
+| Lock2 witness at R3k4 | 185 / 133 / 46 | 19 / 11 / 7 |
+| \|K_i\|, i = 0, 1, 4, 5, 8, 9 (open n shrinks with i) | 185–7 / 4–118 / 4–95 | 19 / 18 / 18 |
+| \|K_i\|, i = 2, 3, 6, 7 | 83–22 / 8–31 / 5–22 | 19 / 1 / 1 |
+
+  The single Γ failure is always p25#16945 mirror h3, where |K_pm(p)| is 10 → 9. The steps 2/3/6/7 components give exactly the |K_pm(p)| verdict on Γ. **No candidate has 0 exceptions on open runs, so the one-sided form does not close A₃₄′ by an open-run argument.** Per-candidate no-break baselines are in jobbb-phi-summary.txt.
+- **(3) Degree 7, inserted vertices.** M is adjacent to y and M′ to z. A pocket passes p through X ⇔ c(X) = c(x⁺) and X is joined to w⁺ in G_{c(p),c(x⁺)} − h − p − x⁺.
+  - Census: 79 breaks, 46 through M′ and 33 through M. Adversarial: 24 breaks, 12 each. Each break uses exactly one of them.
+  - **The 7 consecutive-break pairs (14 periods, all L = 20 census cycles, all in the plantri orientation) use M′ in both periods.** So the NightA34Two §8 prediction "different inserted vertices" is [killed].
