@@ -146,7 +146,7 @@ R3k4 R1k1 R3k3 R1k0 R3k2 R1k4 R3k1 R1k3 R3k0 R1k2 (140 periods, no exception).
   multisets agree between orientations at all 5,401,766 holes. The floor (min of 2N0 + E2 + 3tau - DD) holds at every pattern; (5,5,5,5,6) is still F6-type.
 - sigma'C (H1 and H2): 0 failing groups in about 368 million groups.
 
-## Job R: order-27 Gamma-cycle summaries (jobr27/jobr27-summary.txt, jobr27/jobm27-summary.txt; inputs extracted from out/r27*.jsonl, not committed)
+## Job R: order-27 Gamma-cycle summaries (jobr27/jobr27-summary.txt, jobr27/jobm27-summary.txt; per-job inputs in jobr27/)
 - (5,5,5,5,6), 202 Gamma-cycle records: Lemma S holds (min C_neg/D 1.95); one-edge rule 824/824 at k = 3, 4; universal period 412/412; y ~ z never broken at consecutive
   k = 4 visits; F012' >= 7L/20 (min exactly 1, p27 #273919 h26); A34' holds; no dead block; min block credit 8 (p27 #186395 h22); min cycle average 19.5.
   **F4 FAILS**: two k = 4 lockless exits with f = 1 (p27 #133619 h21, one per orientation).
