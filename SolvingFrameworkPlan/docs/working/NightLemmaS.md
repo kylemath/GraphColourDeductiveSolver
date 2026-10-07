@@ -289,6 +289,39 @@ Summary:
 - So A₃₄′ (no two consecutive k = 4 failures) is **not a property of R-runs**. It can only come from the Γ-closure (the run closes up after L/10 periods), or it is false on larger Γ-cycles.
 - This sharpens §0: the double break at R3k0 in consecutive periods is possible in a run, so no window argument proves A₃₄′.
 
+
+### 5.1 Double breaks on open runs, and the Lock2 link (added 03:23 MDT)
+
+**Run test [data; `ls/close.py`, orders 22–24, both orientations, 15 min, one core, AC power].**
+- Coverage: every maximal DL run at (5,5,5,5,6) holes, 1,010,604 runs, of which 202 have length ≥ 11.
+- **Exactly one double failure** (two k = 4 failures 10 π-steps apart): 24 #3611 h0 (gentri numbering, unmirrored). Run length 18, failures at positions 4 and 14.
+- The run leaves DL **4 π-steps** after the second failure. The last DL state is R1k0, and the leaving state is unfilled with **Lock1 kept and Lock2 lost**.
+- This agrees with Studio Job X (orders 25–27: always "keeps Lock1, loses Lock2", distance ≤ 15). The candidate "two consecutive step-8 breaks force a non-DL state within 10 steps" holds on the single local case but is **false in general**: Job X has distance 15 at p26m #21951 h22. The weaker "within two periods" (≤ 20) holds on all local and Studio cases.
+- Lemma W, W1, W2 and W4 on open runs: I did not rerun them locally. Job AA (Studio) already shows W1 fails on open runs, up to 15 steps before the run end, so W1 is not run-local either.
+
+**Lemma 5.1 (J is a lock-component question at every R-state with k ∈ {2,4} of the R1 type, and at k ∈ {3,4} of the R3 type) [proved].** Use the frame of the state, with link (α, μ, α, A, B) and the R1 ring (A, B, μ, α, μ). By Lemma D and `NightC1Gamma.md` §1, m = A at R1k2 and m = A at R1k4.
+- **R1k2 (position 9):**
+  - p = x₂ (α), m = A, y = w₁ (B), z = w₂ (μ). So J's pair is {μ, B} = **the Lock2 pair**.
+  - x₁ (μ) is adjacent to w₁ = y, so the Lock2 component K_{μ,B}(x₁) contains y.
+  - Hence **J(R1k2) ⇔ z ∈ K_{μ,B}(x₁) (the Lock2 component)**.
+- **R3k4 (position 0):** J ⇔ w₄ ∈ the Lock1 component (`NightC1Gamma.md` §2).
+- **R3k3 (position 2):** J ⇔ w₂ ∈ the Lock2 component (`NightC1Gamma.md` §2).
+- So at every position where J can be false (9, 0, 1, 2, 3, by P3), J asks whether a third ring vertex joins the **lock-witness component** of that state. A broken J at position 9 means: the Lock2 component of R1k2 contains x₁, y and x₄ (it is DL), but not z.
+
+**Consequence for the Job AA rule [sketch].**
+- By P2-type invariance, the step-8 swap K (pair {α,A} at R3k0 = {c(p), c(y)}) preserves the {μ,B} = {c(m), c(z)} graph of R3k0, which is R3k0's Lock2 graph. So K can only change the **other** matching's graphs.
+- In the new frame (roles (α, B, μ, A)), the J pair and the Lock2 pair of R1k2 are both the old {A,B}.
+- So the second break and the Lock2 witness of R1k2 live in **one** two-colour graph G_AB. By (D), the break means a {α,μ}-cycle C through the edge pm separates z from the Lock2 component.
+- C passes through p = x₂ and m, and closes either through v (via x₀ or x₂) or around the far side.
+- The claim to prove is: if this happens in two consecutive periods (with the pairing rotated in between), then at a later R1k1 / R1k0 state the Lock2 witness must cross the image of C. By planarity the witness is then cut, and Lock2 dies.
+
+**Precise obstruction.**
+- What I cannot control is the eight intervening swaps between the two breaks. Each is an R₊₃ component anchored at x_{j+2}, and each recolours parts of C.
+- So "the image of C" is not a fixed curve.
+- The data say the killing swap's component, or the Lock2 component, meets the second K (Job AA, 73/73). A proof would need an invariant curve, for example the union of C and the second C, which together separate the hole from the far side.
+- I see no way to make that invariant without tracking all eight swaps.
+- The result stays a **[conjecture]**, with Lemma 5.1 as the proved reduction: every relevant J-question at positions 9, 0, 2 is a lock-component membership question in the same two-colour graph as that state's lock.
+
 ## 6. Reproduction
 
 Session scratchpad `ls/`, not committed; single core, AC power.
@@ -300,6 +333,7 @@ Session scratchpad `ls/`, not committed; single core, AC power.
 | `l1.py ORD` | J at every DL R1/R3 state by (type, k): Lemma P1 check | 60 s (16–22) |
 | `near2.py ORD` | J before and after each R-step between R1/R3 states, by swapped pair and component contents: Corollary P3 check (near swaps T→T only) | 60 s |
 | `near.py ORD` | the same over **all** Kempe swaps of all states: near swaps alone do not preserve J (e.g. (p,y)-swaps with K ∋ p, y: T→F 196 times at orders 16–18), so P3 needs P1 | 20 s |
+| `close.py ORD` | double k = 4 failures on all maximal DL runs; distance to run end; leaving state's locks | 15 min (22–24) |
 | `trace.py ORD` | J along maximal DL runs | 60 s |
 | `blk2.py`, `blk3.py` | 11-state windows; consecutive-block pairs | 40 s (16–22), 150 s (23) |
 
