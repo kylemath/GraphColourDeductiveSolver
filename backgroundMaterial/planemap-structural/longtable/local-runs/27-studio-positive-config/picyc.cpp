@@ -33,6 +33,7 @@
 //   edges = {"a-b": bridge?} over role vertices 0..4 = x_{j+i}, 5..9 = w_{j+i}, 10 = m (R3 states only; bridge of G[{v} + c(a) + c(b)])
 // --jobq rows: [pos, type, kmask, sigma fixed point, sigma lockless, |K step|, |K & K_sigma(x)|, |K & K_sigma(pi x)|, |K_sigma(x)|, |other {alpha,mu} vertices|, K meets them]
 // --jobs: pos = positive cycles {id, Lambda, gamma, L, CrN, CrP, def, nbrN = nonpositive sigma-neighbour ids}; targets = [id, Lambda, L, hit, #exits, #distinct excursions, rem]
+// --jobab fails rows: [cycle, w, u, f, mass, credit (all lockless exits from the excursion DD states), credit (exits to other cycles)]
 // Usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h,...] [--cfree] [--adj5] [--graphonly]   (default --pi: no class union-find)
 // Per hole also: linkdeg (degrees of x_0..x_4 in link order), vrole (bits: 1 diamond centre, 2 diamond tip, 4 2.122 deg-5 centre, 16 2.122 tip),
 // dist_config (graph distance from v to the nearest vertex of any diamond or 2.122, -1 if none). Per graph: adj55 = edges between degree-5 vertices.
@@ -53,7 +54,7 @@ struct Key { u64 hi, lo; bool operator<(const Key&o) const { return hi < o.hi ||
                          bool operator==(const Key&o) const { return hi == o.hi && lo == o.lo; } };
 static int N; static u64 adjm[64]; static int link_[5]; static u64 linkmask, ring2mask;
 static std::vector<Key> ALL; static int col[64]; static long long capStates = 80000000LL; static bool capHit = false;
-static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false;
+static bool FULL = false, MIRROR = false, CFREE = false, ADJ5 = false, GRAPHONLY = false, JOBE = false, SIGC = false, JOBG = false, JOBH = false, JOBI = false, JOBK = false, JOBM = false, JOBN = false, JOBO = false, JOBP = false, JOBQ = false, JOBS = false, JOBX = false, ALLTYPES = false, JOBAB = false;
 static std::vector<int> VROLE; static int ADJ55;
 static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v);
 
@@ -286,6 +287,28 @@ static void analyse_hole(const std::string &name, int n, const std::vector<std::
                 for (auto &kv : cs2) { ms = std::max(ms, kv.second.second); mx = std::max(mx, kv.second.first); if (kv.second.first > 0) { nf++; if (ff.empty()) { char b4[96]; snprintf(b4, sizeof b4, "{\"sumw\": %lld, \"ncycles\": %d}", kv.second.first, kv.second.second); ff = b4; } } }
                 char b5[400]; snprintf(b5, sizeof b5, ", \"%s\": {\"ncomp\": %zu, \"endpoints\": %lld, \"endpoints_with_cross_sigmap\": %lld, \"max_ncycles\": %d, \"max_sumw\": %lld, \"fail\": %lld, \"first_fail\": %s}",
                     v ? "H2_sigmap_plus_sigmaR3" : "H1_sigmap", cs2.size(), nend, nend_cross, ms, mx, nf, ff.empty() ? "null" : ff.c_str()); jobe += b5; } }
+        if (JOBAB && jpat == "5,5,5,5,6") {   // Job AB: excursion-level Lemma S. Excursion = maximal unfilled run (u) + following filled run (f) on a cycle with filled states.
+            long long nexc = 0, npos = 0, fail_all = 0, fail_cross = 0, minslack_all = (1LL << 60), minslack_cross = (1LL << 60); std::map<long long, long long> massh; std::string fx;
+            for (size_t ci = 0; ci < cycles.size(); ci++) { const auto &z = cycles[ci]; size_t Lz = z.size(); size_t s0 = Lz;
+                for (size_t i = 0; i < Lz; i++) if (kind[z[i]] != 0 && kind[z[(i + Lz - 1) % Lz]] == 0) { s0 = i; break; }
+                if (s0 == Lz) continue;   // Gamma-cycle or all-filled cycle: no excursion
+                size_t i = 0;
+                while (i < Lz) { std::vector<int32_t> ex; long long u = 0, f = 0;
+                    while (i < Lz && kind[z[(s0 + i) % Lz]] != 0) { ex.push_back(z[(s0 + i) % Lz]); u++; i++; }
+                    while (i < Lz && kind[z[(s0 + i) % Lz]] == 0) { ex.push_back(z[(s0 + i) % Lz]); f++; i++; }
+                    nexc++; long long mass = 0; for (int32_t x : ex) mass += lam[x];
+                    if (mass <= 0) continue; npos++; massh[mass]++;
+                    long long cra = 0, crc = 0;
+                    for (int32_t x : ex) { if (!(kind[x] == 2 && (kind[pi[x]] == 2 || kind[pinv[x]] == 2))) continue;
+                        int j, ty, km, l1, l2, kd; long long sg; frame(x, j, ty, km, sg, l1, l2, kd); if (!(kd == 1 && !l1 && !l2)) continue;
+                        long long y = pi[sg], ff = 0; while (kind[y] == 0) { ff++; y = pi[y]; } cra += 3 * ff - 1; if (cyc[sg] != (int)ci) crc += 3 * ff - 1; }
+                    minslack_all = std::min(minslack_all, cra - mass); minslack_cross = std::min(minslack_cross, crc - mass);
+                    if (cra < mass) fail_all++; if (crc < mass) fail_cross++;
+                    if ((cra < mass || crc < mass) && fx.size() < 3000) { char b[200]; snprintf(b, sizeof b, "%s[%zu, %lld, %lld, %lld, %lld, %lld, %lld]", fx.empty() ? "" : ", ", ci, wind[ci], u, f, mass, cra, crc); fx += b; } } }
+            std::string mh; for (auto &kv : massh) { char b[40]; snprintf(b, sizeof b, "%s[%lld, %lld]", mh.empty() ? "" : ", ", kv.first, kv.second); mh += b; }
+            char b2[300]; snprintf(b2, sizeof b2, ", \"jobab\": {\"excursions\": %lld, \"positive\": %lld, \"fail_all\": %lld, \"fail_cross\": %lld, \"minslack_all\": %lld, \"minslack_cross\": %lld, \"mass_hist\": [",
+                nexc, npos, fail_all, fail_cross, npos ? minslack_all : 0, npos ? minslack_cross : 0);
+            jobe += b2; jobe += mh; jobe += "], \"fails\": ["; jobe += fx; jobe += "]}"; }
         if (JOBX) {   // Job X: maximal DL runs along pi at (5,5,5,5,6) holes; pairs of R3@k4 visits 10 steps apart with both sigma-exits not lockless
             int nhi = 0; for (int t = 0; t < 5; t++) if (rot[L[t]].size() >= 6) nhi++;
             if (nhi == 1 && jpat == "5,5,5,5,6") {
@@ -545,7 +568,7 @@ static int dist_config(int n, const std::vector<std::vector<int>> &rot, int v) {
 }
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: picyc FILE [--full] [--mirror] [--cap M] [--holes h,h]\n"); return 2; }
-    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
+    std::set<int> holesel; for (int i = 2; i < argc; i++) { std::string a = argv[i]; if (a == "--full") FULL = true; else if (a == "--mirror") MIRROR = true; else if (a == "--cfree") CFREE = true; else if (a == "--adj5") ADJ5 = true; else if (a == "--graphonly") GRAPHONLY = true; else if (a == "--jobe") JOBE = true; else if (a == "--sigc") SIGC = true; else if (a == "--jobg") JOBG = true; else if (a == "--jobh") JOBH = true; else if (a == "--jobi") { JOBI = true; JOBG = true; } else if (a == "--jobab") { JOBAB = true; JOBI = true; JOBG = true; } else if (a == "--jobz") { JOBS = true; JOBG = true; ALLTYPES = true; } else if (a == "--jobx") { JOBX = true; JOBI = true; JOBG = true; } else if (a == "--jobs") { JOBS = true; JOBI = true; JOBG = true; } else if (a == "--jobq") { JOBQ = true; JOBI = true; JOBG = true; } else if (a == "--jobp") { JOBP = true; JOBI = true; JOBG = true; } else if (a == "--jobo") { JOBO = true; JOBI = true; JOBG = true; } else if (a == "--jobn") { JOBN = true; JOBI = true; JOBG = true; } else if (a == "--jobm") { JOBM = true; JOBI = true; JOBG = true; } else if (a == "--jobk") { JOBK = true; JOBI = true; JOBG = true; } else if (a == "--cap") capStates = atoll(argv[++i]);
         else if (a == "--holes") { std::string s = argv[++i]; size_t p = 0; while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); holesel.insert(atoi(s.substr(p, q - p).c_str())); p = q + 1; } } }
     FILE *fp = fopen(argv[1], "r"); if (!fp) { fprintf(stderr, "cannot open\n"); return 2; }
     char *line = nullptr; size_t cap = 0; ssize_t len;

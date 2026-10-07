@@ -208,3 +208,10 @@ W4 = k4' fails => k3 lockless with f = 3.
 rem(T) > 0 is charged back to the positive sources that hit T (in proportion to credit; exact fractions), def'(Z) = def(Z) + charge; P1 on def' with targets rem < 0.
 - **Holds at every hole** (single-target assignment exists; def' > 0 records: 1 + 2, 11 + 13, 25 + 49 at orders 25, 26, 27 per orientation). The 12 rem > 0 targets (all order 27) each have ONE source:
   p27 #68456 h19 (both orientations; source = the Gamma-cycle, credits 16, charge 6) and the 10 Lambda = 0 targets hit once by f = 1 (charge 2 to the single source).
+
+## Job Z (`--jobz`: sigma-exits from EVERY DD endpoint, R1/R2/R3; all patterns; orders 25-27, both orientations; jobz.py -> jobz-summary.txt; jobz-p1fails.txt, jobz-cb-full.txt)
+- Lemma S (Cr_N >= D) on Gamma-cycles: **holds at (5,5,5,5,6)** at every order (min 1.8 / 2.0 / 2.0; R1/R2 share of Cr_N about 4%) and **at (5,5,5,6,6)** (min 2.8 at 26, 1.15 at 27:
+  the R1 exits repair p27 #316043 h18), and at (5,5,5,5,5) (min 4.0). It FAILS on Gamma-cycles at (5,5,5,5,7) (p25 #13918 h19, p26 #43070 h18, p27 #112605 h26, ...; min 0.5),
+  (5,5,5,6,7) (p25 #13918 h15, 0.9), (5,5,5,6,8+) (p26 #6618 h3, 0.9), (5,5,5,7,7) (p27 #247743 h6, 0.75), (5,5,6,6,7) (p27 #197591 h18, 0.5), (5,5,6,5,7) (p27m #131991 h2, 0.85).
+- Charge-back P1 with the enlarged exit set: **holds at every (5,5,5,5,6) and (5,5,5,6,6) hole**; fails at 22 holes of other patterns (orders 25 / 26 / 27: 3 / 2 / 17), always on a
+  non-Gamma positive cycle, mostly one with NO nonpositive sigma-neighbour (e.g. p26 #70869 h11, the sigma-C counterexample). sigma'C (Job H) still holds at all of them.
