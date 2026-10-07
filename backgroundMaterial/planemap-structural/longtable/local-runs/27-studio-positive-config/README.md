@@ -281,3 +281,14 @@ Cycle rank (E - V + C) of the {A,B}-, {mu,A}- and {mu,B}-subgraphs of T - v at e
 - (iii) The per-step rank-change distributions are exactly mirror-symmetric: step i and step 9 - i have negated distributions (steps 0/1, 2/9, 3/8, 4/7, 5/6), at both patterns.
   A step-4 or step-6 drop to rank 0 followed by rank 0 again two states later: 1 (degree 6), 2 (degree 7).
 - (i) Periods without a fixed point mostly have constant rank 1; fixed-point periods show rank 0 at positions 6 and/or 8 (and 4). The {mu,A} and {mu,B} ranks reach 0.
+
+## Job AJ (time reversal; jobuv/jobaj.py -> jobaj-summary.txt): orders 25-27, all patterns
+States compared as vertex colourings up to renaming. At all 631 holes with Gamma-cycles the two orientations have the same number of Gamma-cycles, and **every one of the 1,364
+plantri Gamma-cycles is a mirror Gamma-cycle with the same state set traversed in exactly reversed pi-order** (up to a cyclic shift). 0 exceptions.
+
+## Job AI (jobuv/jobai.py -> jobai-summary.txt, jobai.json): the A/B cycles at R3k2 / R3k1 / R3k0 of (5,5,5,5,6) Gamma-cycles, orders 25-27, both orientations (552 periods)
+Cycle basis = fundamental cycles of a BFS forest of the {A,B}-subgraph of T - v (rank 0..3). Cycles have length 6-12; v's side of T - C has 4-5 vertices.
+- Fixed points (rank 0) at position 6 are created by step 5 (the (m,y) swap whose component contains m and y) in 99/100, at position 8 by step 7 (the (p,z) swap whose
+  component contains p and z) in 60/60. The cycle killed is short (length 6 mostly, some 8) through two consecutive outer vertices w_i, w_{i+1}, avoiding y and z.
+- In every period (552/552) some A/B cycle at position 4, 6 or 8 passes through y or z.
+- Because the roles {A,B} rotate at each step, no cycle keeps its vertex set as an {A,B}-cycle of the next state: fates are "rerouted" (next rank >= 1) or "dies".

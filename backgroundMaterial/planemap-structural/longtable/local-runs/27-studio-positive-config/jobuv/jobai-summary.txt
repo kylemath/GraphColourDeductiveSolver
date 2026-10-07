@@ -1,0 +1,23 @@
+(5,5,5,5,6) Gamma-cycle records 264, periods 552
+A/B rank at positions 4, 6, 8: [((4, 0), 60), ((4, 1), 408), ((4, 2), 77), ((4, 3), 7), ((6, 0), 100), ((6, 1), 416), ((6, 2), 36), ((8, 0), 60), ((8, 1), 408), ((8, 2), 77), ((8, 3), 7)]
+cycle lengths: [(6, 312), (8, 705), (10, 618), (12, 19)]
+split of T - C (vertices on v's side, far side): [(('v side', 4, 'far side', 9), 2), (('v side', 4, 'far side', 10), 5), (('v side', 4, 'far side', 12), 46), (('v side', 4, 'far side', 13), 119), (('v side', 4, 'far side', 14), 226), (('v side', 5, 'far side', 9), 2), (('v side', 5, 'far side', 10), 4), (('v side', 5, 'far side', 11), 179), (('v side', 6, 'far side', 7), 2), (('v side', 6, 'far side', 8), 8), (('v side', 6, 'far side', 9), 54), (('v side', 6, 'far side', 10), 81)]
+ring vertices on the cycles (most common): [(('w0', 'w2', 'w3', 'w4', 'x1', 'x2'), 262), (('w0', 'w1', 'w3', 'w4', 'x2', 'x3'), 260), (('w0', 'w1', 'w2', 'w4', 'x3', 'x4'), 165), (('w1', 'w2', 'w3', 'w4', 'x0', 'x1'), 165), (('w0', 'w1', 'w2', 'w3', 'x0', 'x4'), 105), (('w0', 'w2', 'w3', 'x1', 'x2'), 47), (('w0', 'w1', 'w3', 'x2', 'x3'), 46), (('w1', 'w2', 'w4', 'x3', 'x4'), 41)]
+fate of each A/B cycle at steps 4..7 (fate, meets swapped component?):
+   step 4 {('rerouted', 'meets K'): 544, ('dies', 'meets K'): 18, ('rerouted', 'misses K'): 21}
+   step 5 {('rerouted', 'meets K'): 503, ('rerouted', 'misses K'): 7, ('dies', 'meets K'): 127}
+   step 6 {('dies', 'meets K'): 17, ('rerouted', 'meets K'): 467, ('rerouted', 'misses K'): 4}
+   step 7 {('rerouted', 'meets K'): 534, ('rerouted', 'misses K'): 31, ('dies', 'meets K'): 72}
+HEADLINE fixed-point periods: rank 0 at position 6/8, the step after the last rank>=1 position that killed it: {(6, 'killed at step 5'): 99, (6, 'killed at step 4'): 1, (8, 'killed at step 7'): 60}
+    the cycle at that preceding position (pos0, pos, len, ring vertices, y?, z?):
+       (8, 7, 6, ('w0', 'w1'), '-', '-') 22
+       (6, 5, 6, ('w2', 'w3'), '-', '-') 22
+       (6, 5, 6, ('w0', 'w4'), '-', '-') 16
+       (8, 7, 6, ('w1', 'w2'), '-', '-') 14
+       (6, 5, 6, ('w0', 'w1'), '-', '-') 13
+       (6, 5, 6, ('w1', 'w2'), '-', '-') 12
+       (8, 7, 6, ('w2', 'w3'), '-', '-') 11
+       (6, 5, 8, ('w0', 'w4'), '-', '-') 8
+       (8, 7, 6, (), '-', '-') 8
+       (6, 5, 6, ('w4',), '-', '-') 8
+periods with a cycle at 4/6/8: through y or z? {'some cycle at 4/6/8 passes through y or z': 552}
