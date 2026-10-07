@@ -83,7 +83,8 @@ So labelled rotation chains have period 15 in (chord, Tait pair). Up to renaming
 ## 4. Monotonicity along DL chains (question 3)
 
 - **No monotone quantity exists [proved, trivially].** Any state function is periodic along an all-DL Γ-cycle, and such cycles exist (length up to 880; MathQuarterFloorFinal adversarial row).
-- [computed] At orders 16–19 there are no Γ-cycles, and the longest path has d(P) = 6.
+- [computed] Γ-cycles already occur at order 17: gentri 17 #3, hole 0, has a class of 100 states with one all-DL Γ-cycle of length 20, matching NightEulerHole. The longest Γ-path seen at orders 16–19 has d(P) = 6.
+  - *Correction:* the first commit of this file said "no Γ-cycles at orders 16–19". That was a reading error: I looked only at the last 30 lines of the scan output.
 - The only canonical periodic data are the chord sequence (period 5) and the triple Tait colour (period 3) from §2. They are forced locally, so they cannot carry class-level room.
 - **Reconciliation [sketch].** Any argument must be **class-level**: it has to pay for a DL chain with non-DL or filled states that are not Γ-neighbours of the chain (the per-j matching radius grows to 7 at order 24).
   - A natural candidate source of such room is the "spare" components, i.e. {α,A}- and {α,B}-components that avoid the link. They exist, but §3 shows they do not always pay.
@@ -128,3 +129,36 @@ Two steps follow:
 This is the first place where a single, explicit planar object (one meander) controls DL→DL. Euler's formula for meanders (counting the regions between B₁ and C) is the natural way for quantitative χ = 2 to enter. It must fail on the torus, where B₁ and C need not cross.
 
 **Decisive test.** At orders 16–24, restrict to the two-curve DD states. Record the meander permutation and the stub sides, and check whether DD is a function of the meander alone. It must be, by the reconnection model, so this tests the model. Then list the meanders that occur in DD versus non-DD states.
+
+## 7. Addendum: the theta and the π-winding (NightEulerHole, commit 68edf59)
+
+The coordinator asked for two things: a formula for the winding increment of one rotation in terms of the theta regions, and a sphere-only reason why the class total is ≤ 0.
+
+**Tokens = the two singleton Tait edges at P [proved].**
+- On U_j the Tait word is (p,p,q,p,r) on e_j..e_{j+4}, with singletons at e_{j+2} and e_{j+4}. Their sum is 2j+6 ≡ 2j+1, which is NightEulerHole's σ.
+- On F_i the word is (c₂,c₁,c₁,c₁,c₃), with singletons at e_i and e_{i+4}. Their sum is 2i+4 ✓.
+- So the "odd edges" are the singleton dual edges, and every π-step is a Tait path swap between two edges of P.
+
+**Tokens versus the theta regions [proved].** Take a DL state with theta Θ (§1).
+- The q-token e_{j+2} = x_{j+2}a lies in the sector of R_ma.
+- The r-token e_{j+4} = b x_j lies in the sector of R_bm.
+- The triple-colour edge e_{j+3} = ab is the only link edge in the sector of R_ab.
+
+R₊₃ swaps B₁ = ∂K from e_{j+1} to e_{j+3}. The r-token moves from e_{j+4} to e_j (λ = +1): it passes x_j and stays inside the R_bm sector, while the q-token stays put. So **each rotation moves one token one step around inside the b–m region, and λ = +1 always.** The increment does not depend on the regions at all.
+
+**Consequence: the theta cannot be the source of the sign [proved].**
+- In NightEulerHole's π, the steps with λ = +1 are exactly the R₊₃ steps. Their domain is "lock 2 holds", and every DL state lies in it.
+- The steps with λ < 0 (φ_B⁻¹, φ_A, τ) start from states where lock 2 fails, or from filled states. There a full theta does not exist, since at least one lock is missing.
+- So **negative winding is produced exactly where the theta is absent.** A formula for "winding increment in terms of theta regions" reduces to the constant +1.
+
+**A per-closed-chain Gauss–Bonnet constraint is false on the sphere [proved by example].** The Γ-cycle of length 20 at gentri 17 #3, hole 0, is a closed all-DL rotation chain with w = +4 (re-confirmed with my own code). No sphere-only constraint can force w ≤ 0 on a single closed chain.
+
+**The class-total statement Σw ≤ 0 [conjecture; equivalent to the quarter floor, hence of 4CT strength].**
+- What the theta does give is the single-state sphere fact of §1.3: DL ⇒ {α,A} and {α,B} are both disconnected. In winding terms, every state at which the token can advance (+1) has at least two spare {α,A}-components and two spare {α,B}-components.
+- A class-level argument would have to show that these spare components, swapped as **pattern-preserving** moves, lead to π-cycles carrying negative winding.
+  - §3 (twin rotation) already shows that one swap of a spare component does not always leave DL.
+  - So the transport needs longer paths, consistent with the growing matching radius.
+
+**Sharpened next lemma [conjecture].** Let Z be a positive-winding π-cycle. Then the union of the Kempe classes reached from Z by swapping one spare {α,A}- or {α,B}-component at a DL state of Z contains a π-cycle with w < 0.
+- Test: at gentri 17 #3 hole 0, and at the order-20, -21 and -22 positive cycles listed in NightEulerHole, compute the π-cycles that are one spare swap away from each positive cycle, and their windings.
+- On the torus this lemma must fail, because a frozen state has no spare components. That failure is exactly the two-sides step of §1.3.
