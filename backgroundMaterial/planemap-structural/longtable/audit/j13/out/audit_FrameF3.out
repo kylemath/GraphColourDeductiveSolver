@@ -1,0 +1,20 @@
+@[expose] def SimpleGraph.SphericalMap.RStarFrame : Prop :=
+∀ (m : ℕ) (T : SimpleGraph.SphericalMap m),
+  0 < m →
+    T.graph.Connected →
+      T.Triangulated →
+        (∀ (x : Fin m), 5 ≤ T.graph.degree x) →
+          T.NoSep → T.DiamondFree → T.Conf2122Free → ∃ v, T.graph.degree v = 5 ∧ T.PureClean v
+@[expose] def SimpleGraph.SphericalMap.DiamondFree : {n : ℕ} → SimpleGraph.SphericalMap n → Prop :=
+fun {n} T =>
+  (¬∃ ring int, SimpleGraph.SphericalMap.DiamondM.Occ T ring int) ∧
+    ¬∃ ring int, SimpleGraph.SphericalMap.DiamondP.Occ T ring int
+@[expose] def SimpleGraph.SphericalMap.Conf2122Free : {n : ℕ} → SimpleGraph.SphericalMap n → Prop :=
+fun {n} T =>
+  (¬∃ ring int, SimpleGraph.SphericalMap.C2122M.Occ T ring int) ∧
+    ¬∃ ring int, SimpleGraph.SphericalMap.C2122P.Occ T ring int
+SimpleGraph.SphericalMap.four_color_of_RStarFrame : SimpleGraph.SphericalMap.RStarFrame →
+  ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n), M.graph.Colorable 4
+'SimpleGraph.SphericalMap.four_color_of_RStarFrame' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 5; nonstandard: 0; []
+exit 0

@@ -1,0 +1,66 @@
+SimpleGraph.Witness2122.occ_C2122M : SimpleGraph.SphericalMap.C2122M.Occ SimpleGraph.Witness2122.sphericalMap
+  ![2, 10, 13, 21, 14, 5, 1] ![3, 12, 4, 0]
+SimpleGraph.Witness2122.occ_C2122P : SimpleGraph.SphericalMap.C2122P.Occ SimpleGraph.Witness2122.sphericalMap
+  ![13, 10, 2, 1, 5, 14, 21] ![3, 0, 4, 12]
+SimpleGraph.Witness2122.not_conf2122Free : ¬SimpleGraph.Witness2122.sphericalMap.Conf2122Free
+SimpleGraph.Witness2122.mem_class : 0 < 22 ∧
+  SimpleGraph.Witness2122.sphericalMap.graph.Connected ∧
+    SimpleGraph.Witness2122.sphericalMap.Triangulated ∧
+      (∀ (x : Fin 22), 5 ≤ SimpleGraph.Witness2122.sphericalMap.graph.degree x) ∧
+        SimpleGraph.Witness2122.sphericalMap.NoSep
+structure SimpleGraph.SphericalMap.C2122M.Occ {n : ℕ} (T : SimpleGraph.SphericalMap n) (ring : Fin 7 → Fin n)
+  (int : Fin 4 → Fin n) : Prop
+number of parameters: 4
+fields:
+  SimpleGraph.SphericalMap.C2122M.Occ.ring_inj : Function.Injective ring
+  SimpleGraph.SphericalMap.C2122M.Occ.int_inj : Function.Injective int
+  SimpleGraph.SphericalMap.C2122M.Occ.disj : ∀ (t : Fin 7) (a : Fin 4), ring t ≠ int a
+  SimpleGraph.SphericalMap.C2122M.Occ.deg : ∀ (a : Fin 4), T.graph.degree (int a) = ![6, 5, 5, 5] a
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_0 : T.Nx (int 0) (ring 2) (ring 1)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_1 : T.Nx (int 0) (int 1) (ring 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_2 : T.Nx (int 0) (int 2) (int 1)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_3 : T.Nx (int 0) (int 3) (int 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_4 : T.Nx (int 0) (ring 0) (int 3)
+  SimpleGraph.SphericalMap.C2122M.Occ.r0_5 : T.Nx (int 0) (ring 1) (ring 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_0 : T.Nx (int 1) (ring 3) (ring 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_1 : T.Nx (int 1) (ring 4) (ring 3)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_2 : T.Nx (int 1) (int 2) (ring 4)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_3 : T.Nx (int 1) (int 0) (int 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r1_4 : T.Nx (int 1) (ring 2) (int 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_0 : T.Nx (int 2) (ring 4) (int 1)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_1 : T.Nx (int 2) (ring 5) (ring 4)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_2 : T.Nx (int 2) (int 3) (ring 5)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_3 : T.Nx (int 2) (int 0) (int 3)
+  SimpleGraph.SphericalMap.C2122M.Occ.r2_4 : T.Nx (int 2) (int 1) (int 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_0 : T.Nx (int 3) (ring 5) (int 2)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_1 : T.Nx (int 3) (ring 6) (ring 5)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_2 : T.Nx (int 3) (ring 0) (ring 6)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_3 : T.Nx (int 3) (int 0) (ring 0)
+  SimpleGraph.SphericalMap.C2122M.Occ.r3_4 : T.Nx (int 3) (int 2) (int 0)
+constructor:
+  SimpleGraph.SphericalMap.C2122M.Occ.mk {n : ℕ} {T : SimpleGraph.SphericalMap n} {ring : Fin 7 → Fin n}
+    {int : Fin 4 → Fin n} (ring_inj : Function.Injective ring) (int_inj : Function.Injective int)
+    (disj : ∀ (t : Fin 7) (a : Fin 4), ring t ≠ int a) (deg : ∀ (a : Fin 4), T.graph.degree (int a) = ![6, 5, 5, 5] a)
+    (r0_0 : T.Nx (int 0) (ring 2) (ring 1)) (r0_1 : T.Nx (int 0) (int 1) (ring 2)) (r0_2 : T.Nx (int 0) (int 2) (int 1))
+    (r0_3 : T.Nx (int 0) (int 3) (int 2)) (r0_4 : T.Nx (int 0) (ring 0) (int 3)) (r0_5 : T.Nx (int 0) (ring 1) (ring 0))
+    (r1_0 : T.Nx (int 1) (ring 3) (ring 2)) (r1_1 : T.Nx (int 1) (ring 4) (ring 3))
+    (r1_2 : T.Nx (int 1) (int 2) (ring 4)) (r1_3 : T.Nx (int 1) (int 0) (int 2)) (r1_4 : T.Nx (int 1) (ring 2) (int 0))
+    (r2_0 : T.Nx (int 2) (ring 4) (int 1)) (r2_1 : T.Nx (int 2) (ring 5) (ring 4))
+    (r2_2 : T.Nx (int 2) (int 3) (ring 5)) (r2_3 : T.Nx (int 2) (int 0) (int 3)) (r2_4 : T.Nx (int 2) (int 1) (int 0))
+    (r3_0 : T.Nx (int 3) (ring 5) (int 2)) (r3_1 : T.Nx (int 3) (ring 6) (ring 5))
+    (r3_2 : T.Nx (int 3) (ring 0) (ring 6)) (r3_3 : T.Nx (int 3) (int 0) (ring 0))
+    (r3_4 : T.Nx (int 3) (int 2) (int 0)) : SimpleGraph.SphericalMap.C2122M.Occ T ring int
+@[expose] def SimpleGraph.SphericalMap.Conf2122Free : {n : ℕ} → SimpleGraph.SphericalMap n → Prop :=
+fun {n} T =>
+  (¬∃ ring int, SimpleGraph.SphericalMap.C2122M.Occ T ring int) ∧
+    ¬∃ ring int, SimpleGraph.SphericalMap.C2122P.Occ T ring int
+@[expose] def SimpleGraph.SphericalMap.RStarNoSepTri : Prop :=
+∀ (m : ℕ) (T : SimpleGraph.SphericalMap m),
+  0 < m →
+    T.graph.Connected →
+      T.Triangulated → (∀ (x : Fin m), 5 ≤ T.graph.degree x) → T.NoSep → ∃ v, T.graph.degree v = 5 ∧ T.PureClean v
+'SimpleGraph.Witness2122.not_conf2122Free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.Witness2122.mem_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.Witness2122.occ_C2122P' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 52; nonstandard: 0; []
+exit 0
