@@ -47,3 +47,10 @@ sigma = swap of the {alpha,mu}-component of m = x_{j+1}. sigma-C: pi-cycles join
   (ii) k in {1,3,4}: sigma(r) keeps exactly one lock and lands on another cycle (w from -112 to 0). Full breakdown in jobe-summary.txt / the coordinator message.
 - **sigma-C holds**: 0 failing groups at every (5,5,5,5,6) and (5,5,5,6,6) hole, orders 24-26, both orientations (about 11.5 million groups; groups of up to 60 cycles),
   including every hole with a positive or Gamma-cycle. sigma without psi only.
+
+## Job F: sigma-C at every hole (`--sigc`, `jobf.py` -> jobf-summary.txt)
+sigma-groups (pi-cycles joined by sigma from every DD-step endpoint, sigma at any DL state) at all 3,950,194 degree-5 hole-runs of orders 24-26 (both orientations),
+plus the 64 positive IPR / bigsample holes: about 114 million groups. **sigma-C fails exactly once**: p26 #70869 hole 11 (plantri orientation, link (5,6,5,6,6)),
+a group {w = +1, L = 17; w = 0, L = 8} with sum w = +1 in a one-class hole of 782 states (sum w = -94). Reproduced by an independent Python implementation.
+Transport still holds there (Hall ratio 80). The mirror orientation has no positive cycle at that hole. Witness: witness-sigC-p26-70869-h11.json.
+All 64 IPR/bigsample positive holes pass. Per-pattern max group size and cross-cycle fraction of sigma images: jobf-summary.txt.
