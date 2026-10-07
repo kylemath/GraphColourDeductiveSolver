@@ -6,6 +6,7 @@ Authors: Kyle Mathewson
 module
 
 public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.QuarterEuler
+public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.QuarterSigmaFix
 
 /-!
 # Exact pair dualities on a triangulated sphere and at a degree-five hole
@@ -53,9 +54,8 @@ Over `ZMod 2`, for complementary pairs `{a, b}`, `{p, q}`:
 * The six lower bounds add up to `Σ C − 8` (resp. `Σ C − 6`), which equals `Σ r` by
   `six_pair_rank_identity` (resp. `sphere_six_pair_identity`), so all six are equalities.
 
-The boundary-parity helpers are private in `QuarterJordanDual` and are copied verbatim below;
-`QuarterSigmaFix` cannot be imported alongside `QuarterEuler`, so `SigmaFixedE` restates its
-`SigmaFixed` verbatim.
+The boundary-parity helpers are private in `QuarterJordanDual` and are copied verbatim below.
+The fixed-point predicate is `SigmaFixed` of `QuarterSigmaFix` (imported).
 -/
 
 @[expose] public section
@@ -1372,17 +1372,9 @@ theorem six_pair_identity_from_dualities (htri : M.Triangulated) (hconn : M.grap
   by_cases l1 : Lock1 P c j <;> by_cases l2 : Lock2 P c j <;> simp only [l1, l2, ite_true,
     ite_false] <;> ring
 
-variable (P : Pent M.graph h) in
-/-- `σ` is a fixed point: the `{α, μ}`-component of `x (j+1)` is the whole `{α, μ}`-subgraph
-of `T − h` (verbatim the definition `SigmaFixed` of `QuarterSigmaFix`, which cannot be
-imported alongside `QuarterEuler`). -/
-def SigmaFixedE (c : Fin n → Fin 4) (j : Fin 5) : Prop :=
-  ∀ v, Active h c (c (P.x j)) (c (P.x (j + 1))) v →
-    (pairGraph M.graph h c (c (P.x j)) (c (P.x (j + 1)))).Reachable (P.x (j + 1)) v
-
 /-- `σ` is fixed iff the `{α, μ}`-graph of `T − h` is connected (`C(αμ) = 1`). No planarity. -/
 theorem sigmaFixed_iff_C_alpha_mu_one (P : Pent M.graph h) {j : Fin 5} :
-    SigmaFixedE P c j ↔ pairComps M h c (c (P.x j)) (c (P.x (j + 1))) = 1 := by
+    SigmaFixed P c j ↔ pairComps M h c (c (P.x j)) (c (P.x (j + 1))) = 1 := by
   classical
   have hm : Active h c (c (P.x j)) (c (P.x (j + 1))) (P.x (j + 1)) :=
     ⟨(P.adj_h _).ne', Or.inr rfl⟩
@@ -1409,7 +1401,7 @@ theorem sigmaFixed_iff_C_alpha_mu_one (P : Pent M.graph h) {j : Fin 5} :
 fixed iff the `{A, B}`-graph of `T − h` has cycle rank `0` (via `r(AB) = C(αμ) − 1`). -/
 theorem sigmaFixed_iff_rank_AB_zero (htri : M.Triangulated) (hconn : M.graph.Connected)
     (P : Pent M.graph h) (hc : ProperOff M.graph h c) {j : Fin 5} (hr : RepeatAt P c j) :
-    SigmaFixedE P c j ↔ pairRank M h c (c (P.x (j + 3))) (c (P.x (j + 4))) = 0 := by
+    SigmaFixed P c j ↔ pairRank M h c (c (P.x (j + 3))) (c (P.x (j + 4))) = 0 := by
   rw [sigmaFixed_iff_C_alpha_mu_one, (pair_dualities htri hconn P hc hr).1]
   omega
 

@@ -5,7 +5,7 @@ Authors: Kyle Mathewson
 -/
 module
 
-public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.QuarterEuler
+public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.QuarterPairDuality
 
 /-!
 # The per-step change of the six pair-graphs under one Kempe swap (`NightSixEvent.md` §1–§2)
@@ -44,6 +44,13 @@ for the edge, vertex, component counts and cycle rank of the `{p, q}`-subgraph o
    not containing `h`.
 6. `delta_rank_odd`: under the dualities and the edge lemma, `Δ Σ r = 2(ΔC(a,y) + ΔC(b,y)) + 1`
    is odd; `delta_rank_odd_step` combines it with (5).
+7. `step_dualities` (the step dualities discharged): on a connected triangulated sphere, at the
+   step of (5), `pair_dualities` (`QuarterPairDuality`) at `c` (repeat at `j`) and at
+   `c' = swap c α A K` (repeat at `j + 3`, link `α B α μ A`) give
+   `Δr(αμ) = ΔC(AB) − [¬Lock2 c' (j+3)]` and `Δr(αB) = ΔC(μA) + [¬Lock1 c j]`; under
+   `Lock1 c j` and `Lock2 c' (j+3)` (e.g. an all-DL step) both corrections vanish.
+   `delta_C_relation'` and `delta_rank_odd'` are (4) and (6) with only `TriangleCover` and
+   these two locks as hypotheses.
 -/
 
 @[expose] public section
@@ -702,6 +709,108 @@ theorem delta_rank_odd_step (hc : ProperOff M.graph h c) (P : Pent M.graph h) {j
   obtain ⟨-, h1, h3, h4, h13, h14, h34⟩ := hr
   exact (delta_rank_odd hc hK (Ne.symm h3) h1 h13 h4 (Ne.symm h34) h14 hdual1 hdual2 hedge).2
 
+/-- Index identities in `Fin 5` for the shifted frame at `j + 3`. -/
+lemma fin5_shift3 (i : Fin 5) :
+    i + 3 + 1 = i + 4 ∧ i + 3 + 2 = i ∧ i + 3 + 3 = i + 1 ∧ i + 3 + 4 = i + 2 := by
+  revert i; decide
+
+/-- **(7) The two step dualities, discharged.** At a `RepeatAt j` state of a connected
+triangulated sphere, swap `{α, A}` (`α = c x_j`, `A = c x_{j+3}`) on a component `K ∋ x_{j+2}`
+with `x_j ∉ K`; the new state `c'` is a repeat state at `j + 3` (link `α B α μ A`). By
+`pair_dualities` at both states, if `Lock1 c j` and `Lock2 c' (j+3)` (e.g. both states doubly
+locked), then `Δr(αμ) = ΔC(AB)` and `Δr(αB) = ΔC(Aμ)`. -/
+theorem step_dualities (htri : M.Triangulated) (hconn : M.graph.Connected)
+    (hc : ProperOff M.graph h c) (P : Pent M.graph h) {j : Fin 5}
+    (hr : RepeatAt P c j)
+    (hK : Whole M.graph h c (c (P.x j)) (c (P.x (j + 3))) K)
+    (h2 : P.x (j + 2) ∈ K) (h0 : P.x j ∉ K)
+    (hl1 : Lock1 P c j) (hl2 : Lock2 P (swap c (c (P.x j)) (c (P.x (j + 3))) K) (j + 3)) :
+    dR M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x j)) (c (P.x (j + 1))) =
+      dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x (j + 3))) (c (P.x (j + 4))) ∧
+    dR M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x j)) (c (P.x (j + 4))) =
+      dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x (j + 3))) (c (P.x (j + 1))) := by
+  have D := pair_dualities htri hconn P hc hr
+  simp only [hl1, ↓reduceIte, sub_zero] at D
+  have hr0 := hr
+  obtain ⟨h02, h1, h3, h4, h13, h14, h34⟩ := hr0
+  have hc' := properOff_swap M.graph hc hK
+  set α := c (P.x j) with hα
+  set A := c (P.x (j + 3)) with hA
+  set μ := c (P.x (j + 1)) with hμ
+  set B := c (P.x (j + 4)) with hB
+  set c' := swap c α A K with hc'def
+  have hA3 : P.x (j + 3) ∈ K :=
+    whole_closed M.graph hK h2 (by simpa [add_assoc] using P.adj_cyc (j + 2))
+      ⟨(P.adj_h _).ne', Or.inr rfl⟩
+  have h1K : P.x (j + 1) ∉ K := by
+    intro hm; rcases (whole_active M.graph hK hm).2 with e | e
+    · exact h1 e
+    · exact h13 e
+  have h4K : P.x (j + 4) ∉ K := by
+    intro hm; rcases (whole_active M.graph hK hm).2 with e | e
+    · exact h4 e
+    · exact (Ne.symm h34) e
+  have e0 : c' (P.x j) = α := swap_out h0
+  have e1 : c' (P.x (j + 1)) = μ := swap_out h1K
+  have e2 : c' (P.x (j + 2)) = A := by
+    rw [hc'def, swap_in h2, ← h02, Equiv.swap_apply_left]
+  have e3 : c' (P.x (j + 3)) = α := by
+    rw [hc'def, swap_in hA3, Equiv.swap_apply_right]
+  have e4 : c' (P.x (j + 4)) = B := swap_out h4K
+  obtain ⟨i1, i2, i3, i4⟩ := fin5_shift3 j
+  have hr' : RepeatAt P c' (j + 3) := by
+    simp only [RepeatAt, i1, i2, i3, i4, e0, e1, e2, e3, e4]
+    exact ⟨trivial, h4, h1, h3, h14.symm, Ne.symm h34, h13⟩
+  have D' := pair_dualities htri hconn P hc' hr'
+  simp only [hl2, ↓reduceIte, sub_zero, i1, i3, i4, e1, e2, e3, e4] at D'
+  obtain ⟨-, d2, -, d4, -, -⟩ := D
+  obtain ⟨-, d2', -, -, -, d6'⟩ := D'
+  unfold dR dC
+  rw [pairComps_comm (c := c') B A] at d6'
+  rw [pairComps_comm (c := c') μ A] at d2'
+  rw [pairComps_comm (c := c) μ A] at d4
+  constructor <;> linarith
+
+/-- **(4), unconditional on the dualities.** At the step of `step_dualities` (locks `Lock1 c j`
+and `Lock2 c' (j+3)`) on a connected triangulated sphere with face structure `TriangleCover`,
+`ΔC(Aμ) = ΔC(αB) + 1 + ΔC(AB) − ΔC(αμ)` (`v = y + 1 + u − x`). -/
+theorem delta_C_relation' (htri : M.Triangulated) (hconn : M.graph.Connected)
+    (hc : ProperOff M.graph h c) (P : Pent M.graph h) {j : Fin 5}
+    (hr : RepeatAt P c j)
+    (hK : Whole M.graph h c (c (P.x j)) (c (P.x (j + 3))) K)
+    (h2 : P.x (j + 2) ∈ K) (h0 : P.x j ∉ K)
+    (hl1 : Lock1 P c j) (hl2 : Lock2 P (swap c (c (P.x j)) (c (P.x (j + 3))) K) (j + 3))
+    {T : Finset (Fin 3 → Fin n)} (hT : TriangleCover P T) :
+    dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x (j + 3))) (c (P.x (j + 1))) =
+      dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x j)) (c (P.x (j + 4))) + 1 +
+        dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x (j + 3))) (c (P.x (j + 4))) -
+        dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x j)) (c (P.x (j + 1))) := by
+  obtain ⟨hd1, hd2⟩ := step_dualities htri hconn hc P hr hK h2 h0 hl1 hl2
+  have hedge := delta_E_face_count hc P hr hK h2 h0 hT
+  obtain ⟨-, h1, h3, h4, h13, h14, h34⟩ := hr
+  exact delta_C_relation hK h1 h13 h4 (Ne.symm h34) hd1 hd2 hedge
+
+/-- **(6), unconditional on the dualities.** At the step of `step_dualities` with face structure
+`TriangleCover`, `Δ Σ r = 2(ΔC(αB) + ΔC(AB)) + 1`, in particular odd. -/
+theorem delta_rank_odd' (htri : M.Triangulated) (hconn : M.graph.Connected)
+    (hc : ProperOff M.graph h c) (P : Pent M.graph h) {j : Fin 5}
+    (hr : RepeatAt P c j)
+    (hK : Whole M.graph h c (c (P.x j)) (c (P.x (j + 3))) K)
+    (h2 : P.x (j + 2) ∈ K) (h0 : P.x j ∉ K)
+    (hl1 : Lock1 P c j) (hl2 : Lock2 P (swap c (c (P.x j)) (c (P.x (j + 3))) K) (j + 3))
+    {T : Finset (Fin 3 → Fin n)} (hT : TriangleCover P T) :
+    ∑ p ∈ pairs, pairRank M h (swap c (c (P.x j)) (c (P.x (j + 3))) K) p.1 p.2 -
+        ∑ p ∈ pairs, pairRank M h c p.1 p.2 =
+      2 * (dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x j)) (c (P.x (j + 4))) +
+        dC M h c (swap c (c (P.x j)) (c (P.x (j + 3))) K) (c (P.x (j + 3))) (c (P.x (j + 4)))) +
+        1 ∧
+    Odd (∑ p ∈ pairs, pairRank M h (swap c (c (P.x j)) (c (P.x (j + 3))) K) p.1 p.2 -
+      ∑ p ∈ pairs, pairRank M h c p.1 p.2) := by
+  obtain ⟨hd1, hd2⟩ := step_dualities htri hconn hc P hr hK h2 h0 hl1 hl2
+  have hedge := delta_E_face_count hc P hr hK h2 h0 hT
+  obtain ⟨-, h1, h3, h4, h13, h14, h34⟩ := hr
+  exact delta_rank_odd hc hK (Ne.symm h3) h1 h13 h4 (Ne.symm h34) h14 hd1 hd2 hedge
+
 end face
 
 end SimpleGraph.QuarterFloor
@@ -719,3 +828,6 @@ end SimpleGraph.QuarterFloor
 #print axioms SimpleGraph.QuarterFloor.delta_rank_odd
 #print axioms SimpleGraph.QuarterFloor.delta_E_face_count
 #print axioms SimpleGraph.QuarterFloor.delta_rank_odd_step
+#print axioms SimpleGraph.QuarterFloor.step_dualities
+#print axioms SimpleGraph.QuarterFloor.delta_C_relation'
+#print axioms SimpleGraph.QuarterFloor.delta_rank_odd'
