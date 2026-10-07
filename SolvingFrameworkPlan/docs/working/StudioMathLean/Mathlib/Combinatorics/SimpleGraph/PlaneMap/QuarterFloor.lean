@@ -102,6 +102,22 @@ lemma swap_swap_self (c : V → C) (a b : C) (S : Set V) : swap (swap c a b S) a
 
 end helpers
 
+/-- Kempe steps are symmetric: swapping the same whole component again undoes the step. -/
+theorem kempeStep_symm [DecidableEq V] {c d : V → Fin 4} :
+    KempeStep G h c d → KempeStep G h d c := by
+  rintro ⟨a, b, S, hab, ⟨s, hs, hS⟩, rfl⟩
+  refine ⟨a, b, S, hab, ⟨s, (active_swap_iff s).2 hs, fun v => ?_⟩, (swap_swap_self c a b S).symm⟩
+  rw [pairGraph_swap]
+  exact hS v
+
+/-- Kempe equivalence is symmetric. -/
+theorem kempeEquiv_symm [DecidableEq V] {c d : V → Fin 4} :
+    KempeEquiv (G := G) (h := h) c d → KempeEquiv (G := G) (h := h) d c := by
+  intro H
+  induction H with
+  | refl => exact Relation.ReflTransGen.refl
+  | tail _ hbc ih => exact Relation.ReflTransGen.head (kempeStep_symm hbc) ih
+
 lemma fin5_cases (j k : Fin 5) :
     k = j ∨ k = j + 1 ∨ k = j + 2 ∨ k = j + 3 ∨ k = j + 4 := by
   revert j k; decide

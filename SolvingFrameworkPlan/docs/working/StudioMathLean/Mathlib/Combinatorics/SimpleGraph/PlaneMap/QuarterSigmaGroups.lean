@@ -26,7 +26,9 @@ by `d = π c` and `σ`-links `c ↦ σ c`.
 * `DDEnd P c`: `c` is an endpoint of a `DD` step (`DDStep c` or `DDStep (π⁻¹ c)`).
 * `sigmaLink P c d`: `c` is a `DD` endpoint, doubly locked at `j`, and `d = sigSwap P c j`.
 * `sigmaGroup P c₀ c`: the `σ`-group of `c` in the class `kclass M h c₀`.
-* `SigmaC P`: **Conjecture `σC`**: `Σ λ ≤ 0` over every `σ`-group of every class.
+* `SigmaC P`: the `σ`-group floor at the hole `P` (a per-hole property, false in general;
+  Conjecture `σC` is the claim that it holds at R5³ holes, and in the data at (5,5,5,5,6) holes).
+  Restricted formal statement: `SigmaCConj` (three consecutive degree-5 link vertices).
 
 ## Main results
 
@@ -83,7 +85,7 @@ cycle of `c` by `σ`-links in either direction. -/
 noncomputable def sigmaGroup (c₀ c : Fin n → Fin 4) : Finset (Fin n → Fin 4) :=
   (kclass M h c₀).filter (Relation.EqvGen (groupRel P c₀) c)
 
-/-- **Conjecture `σC`.** Every `σ`-group of every Kempe class has `Σ λ ≤ 0`. -/
+/-- The σ-group floor at the hole `P`: every σ-group of every Kempe class has `Σ λ ≤ 0`. **Not true in general**: it fails at plantri p26 #70869 (`plantri -m5 -c4 -a 26`, 1-based), hole 11, plantri orientation, link degrees (5,6,5,6,6), where a σ-group of two π-cycles has Σw = +1 (Studio Job F, `local-runs/27-studio-positive-config/witness-sigC-p26-70869-h11.json`). Conjecture σC (`NightFloorR53.md` §5) asserts it only at R5³ holes (spherical triangulation, no separating triangle, three cyclically consecutive degree-5 link vertices); the Studio also found 0 failures at every (5,5,5,5,6) hole, orders 24–26. Proved at all-5 holes (`sigmaC_of_icoBall`). -/
 def SigmaC : Prop :=
   ∀ c₀ : Fin n → Fin 4, ProperOff M.graph h c₀ →
     ∀ c ∈ kclass M h c₀, ∑ d ∈ sigmaGroup P c₀ c, lam P d ≤ 0
@@ -222,6 +224,22 @@ theorem sum_lam_class_of_groups
 /-- **`σC` implies the quarter floor.** -/
 theorem sigmaC_imp_quarterFloor (H : SigmaC P) : QuarterFloorConj (G := M.graph) (h := h) :=
   (quarterFloor_iff_lam P).2 fun c₀ h₀ => sum_lam_class_of_groups (H c₀ h₀)
+
+/-- Three cyclically consecutive link vertices of the hole `P` have degree five. -/
+def ThreeConsecFive (P : Pent M.graph h) : Prop :=
+  ∃ j : Fin 5, M.graph.degree (P.x j) = 5 ∧ M.graph.degree (P.x (j + 1)) = 5 ∧
+    M.graph.degree (P.x (j + 2)) = 5
+
+/-- The restricted conjecture: `SigmaC P` at every pentagonal hole with three consecutive
+degree-5 link vertices (on every spherical map). -/
+def SigmaCConj : Prop :=
+  ∀ (n : ℕ) (M : SphericalMap n) (h : Fin n) (P : Pent M.graph h), ThreeConsecFive P → SigmaC P
+
+/-- `SigmaCConj` gives the quarter floor at every such hole. -/
+theorem sigmaCConj_imp_floor_on_family (H : SigmaCConj) :
+    ∀ (n : ℕ) (M : SphericalMap n) (h : Fin n) (P : Pent M.graph h), ThreeConsecFive P →
+      QuarterFloorConj (G := M.graph) (h := h) :=
+  fun n M h P hP => sigmaC_imp_quarterFloor (H n M h P hP)
 
 /-! ### Theorem F5 restricted to a `σ`-group -/
 
