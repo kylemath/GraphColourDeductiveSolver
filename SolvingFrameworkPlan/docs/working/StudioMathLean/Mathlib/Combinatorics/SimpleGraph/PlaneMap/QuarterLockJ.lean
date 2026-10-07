@@ -81,7 +81,7 @@ theorem lock2_R1k2 (H : Hole6 P w m q) (hq : q = j + 2) (hc : ProperOff M.graph 
   have hg : pairGraph M.graph h c (c (w (j + 2 + 4))) (c (w (j + 2))) =
       pairGraph M.graph h c (c (P.x (j + 1))) (c (P.x (j + 4))) := by
     simp only [add_assoc, Fin.reduceAdd]
-    rw [w1, w2, pairGraph_comm]
+    rw [w1, w2, pairGraph_comm_gen]
   refine ⟨w1, w2, hg, ey, l2, ?_⟩
   unfold JoinYZ
   rw [hg]
@@ -131,7 +131,7 @@ theorem lock2_R3k3 (H : Hole6 P w m q) (hq : q = j + 3) (hR : R3At P w c j) :
   refine ⟨e2, e3, ez, l2, ?_⟩
   unfold JoinYZ
   simp only [add_assoc, Fin.reduceAdd]
-  rw [e2, e3, pairGraph_comm c (c (P.x (j + 4))) (c (P.x (j + 1)))]
+  rw [e2, e3, pairGraph_comm_gen c (c (P.x (j + 4))) (c (P.x (j + 1)))]
   exact ⟨fun r => ez.trans r.symm, fun r => r.symm.trans ez⟩
 
 /-- **`R3k0`, the step-8 swap.** At an `R3` `DD` state at `k = 0` (`q = j`): the swapped pair
