@@ -347,3 +347,11 @@ Absolute colours followed through the L Kempe swaps of the cycle (checked agains
 - (2)-(3) A pi-cycle visits L distinct states, so s(t+20) = s(t) as partitions is impossible for L > 20: the canonical-state period is always L. The meaningful version
   (an orientation-preserving automorphism fixing h mapping s(t) to s(t+d)) has no instance: every hole with an L = 40 or 60 Gamma-cycle (and the L = 20 ones there) has
   trivial such automorphism group (the finder recovers the 5-fold rotation of p17 #4 at its two (5,5,5,5,5) holes). So L = 40 / 60 is not produced by symmetry.
+
+## Job AP (NightA34 §7.4; independent Python jobuv/jobap.py -> jobap-summary.txt, jobap.json)
+- (1) R_b & H11 = {x+}: degree-6 Gamma 19/19; degree-7 Gamma 69/79 (10 have two hole gates); open double breaks 73/73 (first break), 63/73 (second).
+- (2) Degree-6 Gamma far gates: alpha, in K0, not adjacent to z, in Q_b in 18/19 (1: alpha, K1, adjacent to z, in Q_b). |R_b| = 2 in 19/19.
+- (3)/(4) **G2 fails**: degree-7 Gamma double breaks (14, all reaching R3k3^{b+2}): branch 1 in 3, branch 2 in 0, NEITHER in 11. Open degree-6 double breaks reaching
+  R3k3^{b+2} (27 of 73): branch 1 10, branch 2 9, neither 8. **16 open degree-6 double breaks reach R3k3^{b+2} with |R_b| = |R_{b+1}| = 2** (first p25 #1557 h16, both
+  orientations; p26m #21951 h22; p27 #162314 h4), so that run-local statement is false.
+- (5) Control: after every single break on degree-6 Gamma-cycles the far gate is alpha again at R3k4^{b+2} (19/19): branch 2 cannot be excluded by colour alone.
