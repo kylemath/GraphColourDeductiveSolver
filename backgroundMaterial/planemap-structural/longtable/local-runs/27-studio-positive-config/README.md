@@ -340,3 +340,10 @@ Absolute colours followed through the L Kempe swaps of the cycle (checked agains
 - At (5,5,5,5,6) (264) and (5,5,5,5,7) (406) rho always fixes c(p) = alpha(R3k2) and rotates the three alpha-free colours.
 - Rank vectors (r_AB, r_muB, r_muA at R3k2 | R3k1 | R3k0, named by each period's own R3k2 labels): the period map is NOT constant: v_{b+1} = v_b in 294/552 (degree 6) and
   394/916 (degree 7) transitions; the commonest vectors are (1,0,0 | 0,1,0 | 0,1,0), all-ones and (1,0,0 | 1,0,0 | 1,0,0).
+
+## Job AO (jobao-lengths.txt; jobuv/jobao.py -> jobao-summary.txt, jobao.json)
+- (1) Gamma-cycle lengths at ALL core triangulations of orders 12-27, both orientations (from the per-hole (w, L) histograms; Gamma <=> w = L/5): only L = 20 (2,566), 40 (136) and
+  60 (48). First at order 17 (L = 20); L = 60 from order 25, L = 40 from order 26. (Not universal beyond the census: the night's adversarial 37-vertex graph has L = 800.)
+- (2)-(3) A pi-cycle visits L distinct states, so s(t+20) = s(t) as partitions is impossible for L > 20: the canonical-state period is always L. The meaningful version
+  (an orientation-preserving automorphism fixing h mapping s(t) to s(t+d)) has no instance: every hole with an L = 40 or 60 Gamma-cycle (and the L = 20 ones there) has
+  trivial such automorphism group (the finder recovers the 5-fold rotation of p17 #4 at its two (5,5,5,5,5) holes). So L = 40 / 60 is not produced by symmetry.
