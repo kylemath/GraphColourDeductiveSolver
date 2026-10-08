@@ -134,7 +134,16 @@ def analyse(rot, h, detail):
             vs = [i for i in g if info[i]['viol']]
             det.append(dict(cls=t, states=[dict(state=''.join(map(str, states[i])), kdeg=kdeg[i], **info[i]) for i in g],
                             viol_types=Counter(('D1' if info[i]['D1fail'] else '') + ('D2' if info[i]['D2fail'] else '') for i in vs)))
-    return dict(hole=h, pid_bad=pid_bad, states=S, classes=len(cl), cls=sorted(cl), pi=piinfo, allDLcyc=sorted(cyclens),
+    # section 9: per-class tuple joined with [onCycles, piPathEnds] (same layout as kclass4 'cls2'); pi-path end = DL state
+    # with pi undefined or with no unfilled preimage (as in kclass_pi.cpp)
+    hasPre = set(info[i]['pi'] for i in range(S) if info[i]['kind'] != 'F' and info[i]['pi'] is not None)
+    cl2 = []
+    for r in groups:
+        g = groups[r]; kinds = Counter(info[i]['kind'] for i in g)
+        cl2.append([len(g), kinds['F'], kinds['DL'], kinds['S'], min(kdeg[i] for i in g), max(kdeg[i] for i in g),
+                    sum(1 for i in g if info[i]['kind'] != 'F' and info[i]['viol']), sum(1 for i in g if i in oncyc),
+                    sum(1 for i in g if info[i]['kind'] == 'DL' and (info[i]['pi'] is None or i not in hasPre))])
+    return dict(hole=h, pid_bad=pid_bad, states=S, classes=len(cl), cls=sorted(cl), cls2=sorted(cl2), pi=piinfo, allDLcyc=sorted(cyclens),
                 cycClasses=sorted([sum(1 for i in groups[r] if i in oncyc), sum(1 for i in groups[r] if info[i]['kind'] == 'F')]
                                   for r in groups if any(i in oncyc for i in groups[r]))), det
 

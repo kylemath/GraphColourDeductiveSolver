@@ -38,3 +38,9 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 
 **7 Oct, evening.** Lock parity is **formal** (`QuarterLockParity.lean`; full regression 87/87, standard axioms). The census is now exhaustive to order 32 (Census29/: 21,931 frame-class graphs at orders 22–32 from 283M plantri graphs). R\* holds at every degree-5 vertex, the quarter floor is reached exactly and never broken, and lock parity has 0 failures on 8.4e8 states. There are 17 all-DL π-cycles, each inside a class that has filled states. Conjecture E is false as stated: equality classes have sizes 12/16/24 and some are not block repetitions; the surviving form is "union of w = 0 π-cycles with no τ state". The census-only minimum hitting set grows 6 → 9 by order 32 (new forced word 558+58+), consistent with Track B's amber verdict. Track F's LPC reformulation: no Kempe class consists entirely of all-DL π-cycles.
 
+**7 Oct, night (end of day 1).**
+- Positive π-cycles exist in the frame class from n = 37 (max w = 8 at n = 53), but only inside giant classes, and they are paid for by a few huge negative cycles. No class has Σw > 0 to n = 56 (TrackA task 3).
+- Stream-function experiment (TrackG): no state-level potential exists, and the class-level potential is the floor itself. σ-escape holds on all 1,429 all-DL cycles, consistent with Job BL.
+- **LPC at frame-like holes off the sphere (TrackF §9): no counterexample** in 1.11M evaluations on five surfaces, with 2,772 violator-free cycle classes. LPC-¼ holds. New data conjecture: a violator-free class containing an all-DL cycle has F/N ≥ 3/8. The smallest test bed is an RP² class of 72 states with 28 filled.
+- Next: hand analysis of the smallest violator-free cycle classes (why do they have filled states, using duality only?); paper update with day-1 results; F2 deferred.
+

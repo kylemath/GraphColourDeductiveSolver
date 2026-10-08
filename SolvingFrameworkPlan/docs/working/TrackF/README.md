@@ -383,3 +383,122 @@ D failures count D1 and D2 separately.
 - **Data claim to hand to Track A.** At degree-5 holes on 6 surfaces (sphere, torus, Klein bottle, RP², genus 2, rp2x3), the quarter floor F/N ≥ 1/4 held in all 125,334 parity-clean classes. Where it fails, the class has a lock-parity violator. Conjecture **LPC-¼**: F/N ≥ 1/4 for every Kempe class whose unfilled states all satisfy D1, D2.
   - LPC-¼ ⇒ LPC.
   - On the sphere it is exactly the quarter floor.
+
+## 9. LPC at frame-like holes off the sphere (7 Oct, evening; Track F second run) [exploratory, data]
+
+Question: run (b) of §8.6 found only 65 graphs with all-DL π-cycles at no-555 holes, and only 3 parity-clean cycle classes. Does LPC, or LPC-¼ (a violator-free class has F/N ≥ 1/4), fail at **frame-like** holes when the search is pushed harder? A frame-like hole here is a degree-5 hole whose cyclic link-degree word has no three consecutive 5s and no consecutive 5,6,5 (stricter than run (b), which only excluded 555).
+
+### 9.1 Method
+
+- **Engine.** `src/kclass_pi2.cpp` → `src/kclass4` is `kclass_pi.cpp` with the per-class tuple extended to `cls2[size, filled, DL, single, minK, maxK, viol, onCycles, piPathEnds]`, so a cycle class can be read together with its size, filled count and violator count. Checked against kclass3 on every hole of 20 §8 cycle graphs (270 holes, 0 mismatches) and again on every verified item (below).
+- **Search** (`src/lpc2_search.py`). Annealing flip walks (min degree 5, surface checked by Euler characteristic and orientability), evaluated **only at frame-like holes**. The score is lexicographic:
+  1. any class containing an all-DL π-cycle (tier 1000), otherwise the longest DL π-run;
+  2. then few lock-parity violators in cycle classes (300/(1 + min viol));
+  3. then a low filled fraction in violator-free cycle classes (300/(4·F/N)); a small term 2/(4·F/N) over all violator-free classes is always added.
+
+  Every graph with a cycle class, every violator-free class with F/N ≤ 1/4 and size ≥ 8, and every LPC / LPC-¼ counterexample is logged (`out/lpc2/s_*.jsonl`). Size-4 equality classes [4,1] are only counted.
+- **Starts.** Four kinds:
+  - *random*: `surfaces.make`, n = 22–48 per surface, plus one worker at n = 45–60. At n = 60 a hole has about 10⁶ states (about 5 s in kclass4), so n ≥ 50 got few walks.
+  - *prevseed*: the §8 graphs with a frame-like cycle hole (`src/lpc2_prev.py` → `out/lpc2/prev_seeds.txt`, 103 holes).
+  - *focus*: the 40 graphs with the lowest violator-free cycle-class F/N found by 19:50.
+  - *glue*: the 13 Census29 sphere graphs with all-DL π-cycles, each connected-summed (glued along a face as far as possible from the cycle hole) with a small 4-colourable min-degree-5 triangulation of the torus, Klein bottle, RP², genus 2 or rp2x3 (n = 37–58). Note that K6 = `RP2_6` is not 4-colourable, so pieces come from a checked pool.
+- **Compute.** 6 workers, all under `nice -n 10`, 18:35–21:17. Load stayed at 16–28, so there was no need to drop to 3 workers. In total 1,113,506 kclass4 evaluations and 2,833 walks (rp2 1,726, klein 482, torus 341, genus 2 148, rp2x3 136). 3 evaluations timed out at 90 s.
+- **Verification** (`src/lpc2_verify.py`, `out/lpc2/verify/`). Each item (graph, hole) is run through:
+  - kclass3 (the §8 engine, unchanged) and kclass4: class list, cycle lengths, and [onCycles, pathEnds, filled];
+  - `lpc_detail.analyse` (pure Python, no shared code; it now also emits `cls2`): class list, `cls2`, cycle lengths, Theorem P;
+  - `kclass_py.py` (pure Python, enumerates all colourings): the class-size histogram.
+
+  The items are: every violator-free cycle class (up to 3 instances per class signature), 60 dirty cycle classes (the 30 with fewest violators plus 30 random), the 40 largest non-trivial equality classes, and every counterexample event (there were none).
+- **Sphere comparison** (`src/lpc2_sphere.py`): the 13 Census29 graphs with all-DL π-cycles (17 cycles at 16 holes), run through the same analysis.
+
+### 9.2 Results
+
+**Sphere (Census29, n = 30–32; `out/lpc2/sphere_holes.jsonl`, `sphere_verify.jsonl`).**
+- All 16 cycle holes are frame-like (55757 ×12, 55666 ×2, 55667 ×2).
+- Each cycle sits in the **giant class** of its hole, which is the only class that contains a cycle: N = 3,122–8,458, F/N = 0.441–0.545, viol = 0 (LP holds on the sphere).
+- Filled per cycle state is 98–196: the classes are nowhere near all-cycle.
+- All 16 holes agree across all four engines.
+
+**Off the sphere, frame-like holes** (`out/lpc2/report.txt`). Instances are distinct (WL graph hash, hole word, class tuple). Rows are grouped by start type, because seeded walks revisit one family many times.
+
+| start | surface | n | graphs with a cycle class | cycle-class instances | violator-free | min viol (all) | min F/N, violator-free cycle classes | min filled / onCycles (violator-free) |
+|---|---|---|---|---|---|---|---|---|
+| random | RP² | 22–33 | 57 | 57 | 13 | 0 | **7/18 = 0.389** | 1.4 |
+| random | Klein | 29–43 | 165 | 210 | 7 | 0 | 0.389 | 1.4 |
+| random | torus, genus 2, rp2x3 (n 24–60) | | 0 | 0 | 0 | — | — | — |
+| prevseed | RP² | 24–33 | 746 | 653 | 117 | 0 | 0.389 | 1.4 |
+| prevseed | Klein | 28–32 | 5,264 | 5,346 | 65 | 0 | 0.406 | 2.6 |
+| prevseed | torus | 28–31 | 1,161 | 1,172 | **0** | 6 | — | — |
+| focus | RP² | 28 | 144 | 145 | 65 | 0 | **3/8 = 0.375** | 1.4 |
+| glue | torus | 45–52 | 179 | 516 | 495 | 0 | 0.458 | 90.9 |
+| glue | Klein | 57–58 | 157 | 881 | 845 | 0 | 0.472 | 92.6 |
+| glue | RP² | 37–44 | 105 | 155 | 149 | 0 | 0.468 | 79.0 |
+| glue | genus 2 | 48–50 | 535 | 863 | 788 | 0 | 0.442 | 59.0 |
+| glue | rp2x3 | 40–43 | 156 | 242 | 228 | 0 | 0.442 | 94.3 |
+
+- Frame-like hole words with cycles include 55757, 55758, 55759, 55767, 55768, 55769, 55787, 55858, 55859, 55868, 55869, 55959, 55666, 55667, 55676, 55677, 55687, 55697, 55698, 56667, 56676, 56677, 56687, 56767, 5,5,8,5,10–12, 5,5,7,7,11, 5,7,7,8,10, 5,6,7,8,10 and 57777.
+- Cycle lengths are again all multiples of 20, up to 580 in the glued Klein graphs.
+- The §8 graphs re-filtered to frame-like holes (`out/lpc2/prev_frame.jsonl`) give 104 cycle classes (RP² 58, Klein 30, torus 16), of which 16 are violator-free (all on RP², minimum F/N 0.389). So §8's "3" was an undercount: run (a) graphs also carry frame-like cycle holes.
+
+**Counterexamples.**
+- **LPC: 0.** No class at a frame-like hole has filled = 0 and viol = 0, in any evaluation (1.1M evaluations, every class at every frame-like hole, not only cycle classes).
+- **LPC-¼: 0.** No violator-free class has F/N < 1/4.
+
+**Minimum filled fraction.**
+- Over all violator-free classes at frame-like holes, the minimum is **exactly 1/4**. It is attained by 39,476 distinct non-trivial equality classes (size 8 up to 48,992, all of the form N = 4F, on all five surfaces), plus the [4,1] classes, which are counted only.
+- Over violator-free **cycle** classes, the minimum is **3/8**: one RP² family at n = 28, hole 13, class [320, 120, 84, 116, 2, 9, 0, 20, 0] (one 20-cycle).
+- The next floors are 0.3793 ([464,176,…,40 on cycles] and [696,264,…,60]), 0.383 ([188,72,…]) and 7/18 = 0.389 ([72,28,26,18,2,9,0,20,0], the smallest cycle class found, plus its multiples 144, 288, 576).
+- The annealing went 0.406 → 0.389 → 0.375 in its first 75 minutes, then stalled at 3/8 for the last 85 minutes, focus walks included.
+- **No equality class (F/N = 1/4) contains an all-DL π-cycle.** Every cycle class has F/N ≥ 3/8.
+
+**Filled per cycle state.**
+- In violator-free cycle classes it goes down to **1.4** (the [72,28,…,20 on cycle] class), below §8's "≥ 2 in all 339".
+- So "filled ≥ 2 × onCycles" is **false** as a general rule. The F/N floor (≥ 1/4, here ≥ 3/8 for cycle classes) is the robust quantity.
+
+**Violators in cycle classes.**
+- The histogram of viol over the 10,240 cycle-class instances is continuous from 0: 2,772 at 0, then 1 at 2, 16 at 3, 21 at 4, … up to > 180.
+- So "nearly clean" cycle classes exist (2 violators), but the step to 0 violators with 0 filled never happens.
+- The torus prevseed family (1,172 instances, n = 31) never reached 0 violators (minimum 6).
+
+**Glued lifts.**
+- A sphere cycle class glued to a far handle or crosscap is, at the start, a product: the sphere class times the piece's Kempe classes. Sizes are multiplied, F/N is unchanged, and viol stays 0.
+- Annealing from there kept the classes violator-free (2,505 of 2,657 instances) but never lowered F/N below 0.44. That is roughly the sphere value: the handle does not make a sphere cycle class thinner.
+
+**Verification** (`out/lpc2/verify/res_all.jsonl` plus `rres_*.jsonl`, the late glue items).
+- 751 + 226 items: kclass3 ≡ kclass4 on all of them. The 226 are glued (mostly genus-2) items checked by the C++ engines, with Python only at ≤ 20k states; the remaining late glue items were not re-verified, for lack of time.
+- `lpc_detail` (Python) agrees on all 408 items with ≤ 150k states; `kclass_py` histograms agree on all 365 with ≤ 30k states.
+- Theorem P has 0 failures in both engines.
+- Every claimed class tuple is present in the verified class list.
+- **Every class signature of a violator-free cycle class from the random, prevseed and focus starts passed all engines** (205 items, up to 3 per signature, including the 3/8, 0.3793, 0.383 and 7/18 classes). The 315 earlier glue classes without a Python check are large lifts (110k–550k states, F/N ≥ 0.472), checked by the two C++ engines only.
+
+### 9.3 Verdict
+
+- **LPC and LPC-¼ survive** at frame-like holes on torus, Klein bottle, RP², genus 2 and rp2x3.
+- This is a much stronger test than §8:
+  - 10,240 distinct cycle-class instances at frame-like holes (versus 65 graphs);
+  - 2,772 violator-free ones (versus 3): 267 from random / seeded / focus walks, and 2,505 glued lifts;
+  - 20 violator-free cycle classes from random starts (RP² 13, Klein bottle 7);
+  - all five surfaces covered.
+- **The quarter floor is tight but never broken** (39k distinct equality classes up to size 48,992). The searches drove violator-free cycle classes down only to **F/N = 3/8**, and no equality class contains a cycle.
+- **Caveats.**
+  - Random starts found violator-free frame-like cycle classes only on RP² and the Klein bottle (n ≤ 43). On the torus, genus 2 and rp2x3, all violator-free cycle classes come from the glued sphere lifts, which are products and therefore weak tests.
+  - n ≥ 50 got few walks.
+  - The search is local (flip walks), and the floor at 3/8 is one RP² family, so a deeper minimum is not excluded.
+  - Survival here is evidence, not proof; LPC on the sphere is 4CT-strength.
+- **For Track A.**
+  - The off-sphere data support LPC-¼ in a sharper, cycle-aware form: **a violator-free class containing an all-DL π-cycle has F/N ≥ 3/8** (data, frame-like holes, five surfaces; the sphere minimum is 0.441).
+  - A quarter-floor argument that uses only D should be tested on the small RP² classes [72,28] and [320,120] (`out/lpc2/report.txt`, "lowest-F/N" list, graphs in `s_focus.jsonl` / `s_prevseed.jsonl`).
+  - The claim "filled ≥ 2 per cycle state" is refuted (1.4).
+
+### 9.4 Files
+
+| path | content |
+|---|---|
+| `src/kclass_pi2.cpp`, `src/kclass4` | kclass_pi + per-class [onCycles, piPathEnds] |
+| `src/lpc2_search.py` | frame-like-hole annealing search (random / seeded / glued starts) |
+| `src/lpc2_prev.py`, `src/lpc2_sphere.py` | §8 graphs and Census29 sphere graphs at frame-like holes |
+| `src/lpc2_report.py`, `src/lpc2_verify.py` | aggregation and dedup; three/four-engine verification |
+| `src/lpc_detail.py` | now also returns `cls2` (additive change) |
+| `out/lpc2/s_*.{jsonl,out,progress}` | search logs (cyc / low / cex events), per-walk output, progress |
+| `out/lpc2/report.txt`, `verify_items.jsonl`, `verify/` | tables; verification items and results |
+| `out/lpc2/sphere_*`, `prev_*`, `focus_seeds.txt` | sphere comparison, re-filtered §8 graphs, seeds |
