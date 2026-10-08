@@ -62,3 +62,10 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 - Off-sphere correction: on RP², Lemma R step 2 (band surgery) fails on its own; on the torus, the failures come through Lemma 2 and Euler.
 - Next: patch the write-up, then Lean (seek a combinatorial route via the existing ring/Jordan lemmas).
 
+**8 Oct (TrackK): Conjecture F proved [hand, unreviewed].**
+- No-hole case: Tutte's parity theorem plus Fisk's degree (arXiv:1912.07205), with Euler on Tait 2-factor regions.
+- Hole case: fill the pentagon with the two lock diagonals.
+- Data: every step checked, 0 failures on 165k sphere states.
+- Off the sphere: the residue is exactly 2·(total genus of the 2-factor regions) mod 4, with 0 mispredictions on 14.5k torus states.
+- F + Lemma W gives Theorem 6 and Remark 7 by a second, independent route. Next: review F and W.
+

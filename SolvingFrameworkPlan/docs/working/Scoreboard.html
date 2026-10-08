@@ -59,7 +59,7 @@ footer{color:var(--muted);font-size:0.85rem}
 <div class="wrap">
   <header>
     <h1>Four Colour Scoreboard</h1>
-    <p class="sub">Status of the R* programme. Updated 8 October 2026, morning. Every claim carries one label.</p>
+    <p class="sub">Status of the R* programme. Updated 8 October 2026. Every claim carries one label.</p>
   </header>
 
   <section class="legend" aria-label="Legend">
@@ -99,6 +99,7 @@ footer{color:var(--muted);font-size:0.85rem}
     <ul class="items">
       <li><span class="pill reviewed">Reviewed</span><div><div class="t">Chain-parity law</div><div class="d">On the sphere, each step between doubly-locked states changes the number of Kempe chains by an odd amount. Independent review: correct, three small gaps fixed. 2.2M fresh checks, 0 failures. It fails off the sphere, as it should.</div></div></li>
       <li><span class="pill reviewed">Reviewed</span><div><div class="t">Rigid isolation</div><div class="d">A rigid state never steps to another rigid state, so no frozen class is made only of rigid states.</div></div></li>
+      <li><span class="pill hand">Hand, unreviewed</span><div><div class="t">Conjecture F (mod-4 chain count)</div><div class="d">Proved by hand (8 Oct) from Tutte's parity theorem and Fisk's degree, filling the hole with the two lock diagonals. Every step checked on 165k states. Off the sphere it fails by exactly twice the genus of the 2-factor regions. With Lemma W it gives a second proof of the chain-parity law. Review pending.</div></div></li>
       <li><span class="pill reviewed">Reviewed</span><div><div class="t">Surface edge balance (H3)</div><div class="d">An exact identity on closed triangulated surfaces. 44.9M checks.</div></div></li>
       <li><span class="pill reviewed">Reviewed</span><div><div class="t">Local facts are not enough</div><div class="d">A 28-vertex non-planar graph where every hole-local fact holds yet a class has no filled state. So any proof must use the surface away from the hole. The graph is not 4-colourable, which the write-up must say.</div></div></li>
     </ul>
@@ -109,7 +110,7 @@ footer{color:var(--muted);font-size:0.85rem}
     <ul class="items">
       <li><span class="pill data">Data only</span><div><div class="t">R* and the quarter floor in the frame class</div><div class="d">Exhaustive census to order 32 (21,931 graphs from 283M), flip searches to n = 56, fullerenes to C320. Never broken; the 1/4 floor is reached exactly but never crossed.</div></div></li>
       <li><span class="pill data">Data only</span><div><div class="t">LPC (Lock-Parity Conjecture)</div><div class="d">A Kempe class whose unfilled states all obey lock parity contains a filled state. Equivalent to no frozen orbits. 0 counterexamples on five surfaces, including 2,772 parity-clean cycle classes at frame-like holes.</div></div></li>
-      <li><span class="pill data">Data only</span><div><div class="t">Conjecture F</div><div class="d">A mod-4 formula tying the chain count to Fisk's degree of the colouring. 0 failures on 70,999 sphere states. If proved, the chain-parity law follows easily.</div></div></li>
+      
       <li><span class="pill data">Data only</span><div><div class="t">σ-escape</div><div class="d">The hole's α–μ swap exits every closed doubly-locked cycle (1,429 of 1,429).</div></div></li>
     </ul>
   </section>
@@ -130,7 +131,7 @@ footer{color:var(--muted);font-size:0.85rem}
     <ul class="items">
       <li><span class="pill open">Open</span><div><div class="t">Frozen classes whose chain count alternates</div><div class="d">The chain-parity law can't exclude a cycle that alternates 8, 9, 8, 9. Such cycles exist on the sphere, but so far always inside classes that also have filled states. This is the exact remaining gap.</div></div></li>
       <li><span class="pill open">Running</span><div><div class="t">Near-rigid search (Track J)</div><div class="d">Which global condition kills alternating 8/9 frozen classes.</div></div></li>
-      <li><span class="pill open">Running</span><div><div class="t">Hand proof of Conjecture F (Track K)</div><div class="d">Through Fisk's degree and Euler counts on bicoloured cycles.</div></div></li>
+      <li><span class="pill open">Running</span><div><div class="t">Review of Conjecture F proof</div><div class="d">Independent adversarial check of the hand proof.</div></div></li>
       <li><span class="pill open">Running</span><div><div class="t">Lemma W in Lean (Track C)</div><div class="d">The companion to F. Together they would make the chain-parity law formal cheaply.</div></div></li>
     </ul>
   </section>
