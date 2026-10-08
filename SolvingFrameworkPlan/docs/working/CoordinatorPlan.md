@@ -156,3 +156,13 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 
 **8 Oct (TrackU): T1 is FALSE.** A non-planar 3-connected cubic-with-one-degree-5 graph (n = 22) carries a closed law-respecting orbit with k(H) = 1212121212, verified by two engines. So NRC needs a second planar input beyond the chain-parity law; the candidate is the bipartite interlace graph at rigid states. Law-respecting closed orbits off the plane exist (from RP²/Klein seeds too) but are extremely rare from random starts (0 in 68.5M evaluations without a lucky seed). Open discrepancy to resolve: off the sphere, a matching-form cycle may not correspond to a π-cycle (check TrackS Corollary S4 there).
 
+## Paused (Kyle, 8 Oct afternoon)
+
+New research attacks are paused. Current work: (3) a short standalone note on the chain-parity law, as a second paper separate from the VH∃ record (see below). The order-34 census is allowed to finish.
+
+**Next steps when resumed (in this order unless Kyle says otherwise):**
+1. **Law + bipartite interlace ⇒ no near-rigid loop.** One targeted attempt at NRC using the chain-parity law plus the bipartite chord-interlace graph at rigid states, the second planar input. TrackU's n = 22 non-planar 1212 orbit is the ready-made test case the argument must fail on.
+2. **Mixed higher chain counts.** The untouched open case of LPC (frozen classes whose states have N ≥ 10 on cycles). Start with data: the anatomy of sphere all-DL cycles at N ≥ 10 (25 at order 33), and which escape moves exist.
+
+**Paper decision (coordinator recommendation, 8 Oct):** the chain-parity law goes in a **separate short note**, not as part of the VH∃ paper. The VH∃ paper is a dated record of a whole programme and its status. The note is one self-contained, Lean-checked theorem that a combinatorialist can review on its own. The VH∃ paper keeps its short §5 summary and cites the note. Both carry the same AI-disclosure text, which needs Kyle's approval.
+
