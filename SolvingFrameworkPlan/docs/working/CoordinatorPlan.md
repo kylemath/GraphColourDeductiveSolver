@@ -69,3 +69,5 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 - Off the sphere: the residue is exactly 2·(total genus of the 2-factor regions) mod 4, with 0 mispredictions on 14.5k torus states.
 - F + Lemma W gives Theorem 6 and Remark 7 by a second, independent route. Next: review F and W.
 
+**8 Oct: Lemma W formal (`ChainMod4.lean`, corrected statement with a boundary term β; β = 0 for π at DL states and for link-free swaps), and `chainParityLaw_of_F` formal.** So Theorem 6 (Route Q) now rests on Conjecture F alone, and F is all of its planarity. Two statement subtleties: F's `hand` must be read along the face orientation (`handS`), and it assumes no isolated vertices. The original W as written was false (Δcw can be odd). Coordinator recompiled; standard axioms.
+

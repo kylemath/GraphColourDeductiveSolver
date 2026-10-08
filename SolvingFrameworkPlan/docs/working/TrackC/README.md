@@ -216,3 +216,86 @@ If F gets a hand proof whose planar input is "every cycle is a face coboundary" 
   - New: `StudioMathLean/.../PlaneMap/ChainCount.lean`, `TrackC/scripts/tc_mod4.py`, `TrackC/scripts/tc_mod4.log`.
   - Changed: `check.sh` (+1 line), `SHA256SUMS` (+1 line), this README (§6), and `TrackI/RigidIsolation.md` (review fixes G1–G3; Remark 7 relabelled).
   - Nothing committed.
+
+## 7. Lemma W formalised; F ⇒ Theorem 6 and F ⇒ Remark 7: `PlaneMap/ChainMod4.lean` [formal] (8 Oct)
+
+The file has 786 lines, 0 `sorry`, no new axioms and no `native_decide` (finite tables use `decide`). Every `#print axioms` line reads `[propext, Classical.choice, Quot.sound]`. It compiles in about 5 s.
+
+### 7.1 The statement of W had to change
+
+As stated in §6.4, W is **false**. That statement read: for every Kempe component `K` of `T − h`, `Δcw ≡ 2 m_h(K) (mod 4)`. A swap can change `cw` by an odd amount. For example, take the `{α, B}`-component of `x_{j+2}` when it meets the link only at `x_{j+2}`. The `tc_mod4.py` data never saw this, because it only tested π steps and link-free swaps.
+
+The sketch is right except at the end. The double count over `δK` leaves a **boundary term at the link** that need not vanish. The corrected lemma is:
+
+> **W (general; no planarity).** Let `c' = c` with `K` (colours `{p, q}`, `t = p ⊕ q`) swapped. Then `2 cw(c') + β(K) ≡ 2 cw(c) + 4 m_h(K) (mod 8)`, where
+> `β(K) = Σ_k ( [x_{k+1} ∈ K, x_k ∉ K] E(c x_{k+1} ⊕ c x_k) − [x_k ∈ K, x_{k+1} ∉ K] E(c x_k ⊕ c x_{k+1}) )`.
+> Here the link is labelled along the face orientation, and `E(x) = +1` if `(x, t, x ⊕ t)` is a cyclic shift of `(1, 2, 3)`, else `−1`.
+> Consequently, if `β(K) = 0` then `Δcw ≡ 2 m_h(K) (mod 4)`.
+
+`β = 0` covers the two cases that matter:
+- **Link-free swaps:** `K` misses the link, so `m_h = 0`.
+- **π at a DL state:** `β = 0` and `m_h = 1`, by a 512-case table.
+
+So F + W ⇒ Theorem 6 and F + W ⇒ Remark 7 go through exactly as in §6.4.
+
+**Data for the corrected form** (`scripts/tc_wgen.py`, log `tc_wgen.log`; random Kempe swaps of every kind):
+- Sphere: the general formula holds on 23,700 / 23,700 swaps.
+- Torus: it holds on 5,400 / 5,400 swaps.
+- The old W holds exactly when `β = 0`. On the sphere that is 6,495 holds and 17,205 failures; all the failures have `β ≠ 0`.
+
+### 7.2 Conjecture F also needed a correction: the orientation of `hand`
+
+`hand` must be read with the link labelled along the face orientation. `tc_mod4.py` does this through `oriented_link`. A `Pent` in Lean may be labelled either way. Reversing the labels swaps `A` and `B`, which turns `hand` into `1 − hand` and changes F's residue by an odd amount.
+
+So the formal F uses `handS`: `handB` if the face of `h → x 0` is `(h, x 0, x 1)` under `faceNext`, and its negation otherwise. Neither W nor the two implications depend on this choice.
+
+### 7.3 Contents (`SimpleGraph.QuarterFloor`)
+
+**Definitions**
+- `fxor` (XOR on `Fin 4`) and `isCW` (cyclic shift of `(1,2,3)`).
+- `FaceAvoids φ h d`, and `cwAt φ c d` (the Tait triple of `d`'s face, read from `d`).
+- `cwDarts` and `cwCount := cwDarts / 3`, which is **`cw`**.
+- `linkInner P X`, which is **`m_h(K)`**: link edges `x i x (i+1)` with both ends in `X`.
+- `linkTerm` (**`β`**), `LinkBalanced` (`β = 0`), `handB`, `handS`.
+- `ChainFormulaF M P` (**Conjecture F as a `Prop`**) and `ConjectureF`. `ConjectureF` quantifies over triangulated spheres without isolated vertices; with isolated vertices the `n` term of F would be off.
+
+**Theorems**
+- `cwDarts_eq`: `cwDarts = 3 · cwCount`. Faces are 3-cycles of `φ`; the proof counts the dart that starts at the face's least vertex.
+- `face_table8` (`decide`): the per-face identity mod 8.
+- `cw_swap_mod8`: **W, general form.** It applies to any face successor with `(φ d).fst = d.snd`, `φ³ = 1`, and the star of `h` given by `s`.
+- `lemmaW`: under `StarHyp` and `LinkBalanced`, `cw(c') = cw(c) + 2·m_h` in `ZMod 4`.
+- `lemmaW_linkFree`: if `∀ i, x i ∉ X`, then `cw(c') = cw(c)` in `ZMod 4`.
+- `cw_piMove` (sphere): at a DL state, `cw(π c) = cw(c) + 2` in `ZMod 4`.
+- `chainParityLaw_of_F`: `M.Triangulated → ChainFormulaF M P → ChainParityLaw M P`. **F ⇒ Theorem 6**; W is used internally and is proved.
+- `remark7_of_F`: **F ⇒ Remark 7.** A link-free swap preserves `N + L1 + L2` mod 2, stated as a `% 2` equality of naturals.
+
+**Proof shape.** The proof is a dart sum of the `QuarterLockParity` kind, in `ZMod 8`, using the weight `omD = g(d) − g(d̄) + 4·[d ⊂ K]`:
+- Over each face avoiding `h`, the weight sums to `−2Δ[cw]` (`face_table8`).
+- The `g` part telescopes under reversal to the ten darts of the star of `h`; this is `β`.
+- The `4·[d ⊂ K]` part sums to `−4 m_h`.
+
+### 7.4 Checks
+
+- **Sabotage.** Each altered copy fails to compile:
+  - `lemmaW` with `3 · m_h` in place of `2 · m_h`, run alone;
+  - `cw_swap_mod8` with `0 · linkM`;
+  - `cw_piMove` with `+ 0`;
+  - F with `(L1 + L2)` in place of `2 (L1 + L2)`, which breaks both `chainParityLaw_of_F` and `remark7_of_F`.
+- **Build.** I compiled the file into a copy-on-write clone of the previous build tree (`ChainCount` and its dependencies already built), at `nice -n 10`, one compile at a time.
+- **Registration.** One line appended to `check.sh`, one line added to `SHA256SUMS` (re-sorted). `shasum -c` passes on all 38 entries.
+- **Not re-run.** I did not re-run the full 87-module `check.sh`; no existing module changed.
+- **Note.** The tail of `check.sh` already compiles `FrameScope` through `ChainCount` twice. That was already committed; it is harmless and I left it.
+
+### 7.5 What remains
+
+- **F** is the only open input. A proof of F would close Theorem 6 and Remark 7 formally. The planar input should sit entirely in F: W holds on the torus, and F fails there about half the time (§6.4).
+- `ChainFormulaF` is stated per hole. F is data-checked only for maps where every vertex has a neighbour and `n` counts all of them.
+- Not done:
+  - non-orientable surfaces (W is formal only for rotation systems);
+  - a closed form for `β` in other link patterns (e.g. which other moves of the π table have `β = 0`).
+
+**Files.**
+- New: `StudioMathLean/.../PlaneMap/ChainMod4.lean`, `TrackC/scripts/tc_wgen.py`, `TrackC/scripts/tc_wgen.log`.
+- Changed: `check.sh` (+1 line), `SHA256SUMS` (+1 line), this README (§7).
+- No `TrackC/drafts/` files: everything compiled, so no partial work is left over.
+- Nothing committed.
