@@ -1,0 +1,14 @@
+out/bv.jsonl --pass2 --src jobbv:/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/jobbv/graphs
+out/aw.jsonl --pass2 --src rot:/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/local-runs/27-studio-positive-config/jobaw/counterexamples.txt
+out/cyc13.jsonl --pass2 --src rot:../Census29/out/frame-31.txt --names p31.r1#7302,p31.r12#19956,p31.r13#292235,p31.r19#11250
+out/cyc13.jsonl --pass2 --src rot:../Census29/out/frame-32.txt --names p32.r11#14729,p32.r111#946067,p32.r124#210513,p32.r17#261286,p32.r29#12613,p32.r68#2466,p32.r85#113993,p32.r96#9744
+out/cyc13.jsonl --pass2 --src rot:../Census29/out/frame-30.txt --names p30.r10#1252
+out/traps.jsonl --pass2 --src heawood:/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/historical-traps/heawood1890.json
+out/traps.jsonl --pass2 --src faces-json:/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/studio-explore/historical-traps/Errera.json,/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/studio-explore/historical-traps/Kittell.json,/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/studio-explore/historical-traps/Poussin.json,/Users/kylemathewson/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/historical-traps/hog1152-heawood-four-color-graph.json
+out/off_cyc.jsonl --pass2 --surface off --src rot:../TrackF/out/lpc/cyc_graphs.txt --holes-from ../TrackF/out/lpc/cyc_graphs.kclass3.jsonl --only-cycle-holes
+out/off_cyc555.jsonl --pass2 --surface off --src rot:../TrackF/out/lpc/cyc555_graphs.txt --holes-from ../TrackF/out/lpc/cyc555_graphs.kclass3.jsonl --only-cycle-holes
+out/census22-29.jsonl --pass2 --src rot:../Census29/out/frame-27.txt
+out/census28.jsonl --pass2 --src rot:../Census29/out/frame-28.txt
+out/census29.jsonl --pass2 --src rot:../Census29/out/frame-29.txt --stride 2
+out/census30.jsonl --pass2 --src rot:../Census29/out/frame-30.txt --stride 8 --offset 0
+out/ipr.jsonl --pass2 --src rot:out/ipr_le43.graphs.txt --holes-per-graph 1 --max-starts 3000

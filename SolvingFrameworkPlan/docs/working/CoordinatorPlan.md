@@ -90,3 +90,11 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 - TrackL §2.2: the merge happens in α_cB_c.
 None of these affects the near-rigid structure. NRC is still open; independent data agree that runs are ≤ 7.
 
+**8 Oct (TrackM, owner's discharge idea): guided escape.**
+- Scalar "discharge" scores and directional sweeps all fail as rules.
+- What works is lock descent plus π on plateaus (Φ>π): 0 failures on 8M sphere DL starts, including adversarial ties, worst case 7 swaps (the BFS optimum is ≤ 4).
+- [hand] Φ>π fills within R+2 swaps, where R is the longest run of interior DL states along a π-orbit.
+- Candidate lemma **π-run bound R ≤ 5** on the sphere. Observed R ≤ 4 in the census and 5 on BV. It is 4CT-strength.
+- Heawood-type interference is necessary for every failure but not sufficient.
+- Off the sphere Φ>π fails even in classes that have filled states.
+

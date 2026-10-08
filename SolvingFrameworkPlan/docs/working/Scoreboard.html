@@ -86,6 +86,7 @@ flowchart LR
   C4["Case: mixed higher<br/>chain counts"]:::gap
   LPC["LPC on the sphere<br/>no Kempe class made only<br/>of frozen π-cycles"]:::gap
   EV["Evidence: census to order 32,<br/>5 surfaces, 0 counterexamples"]:::data
+  RB["π-run bound R ≤ 5<br/>(escape within 7 swaps)"]:::data
   NF["No frozen orbits<br/>in the frame class"]:::formal
   SC["Frame scope, witness,<br/>frozen challenge files"]:::formal
   RS["R* in the frame class"]:::formal
@@ -112,6 +113,7 @@ flowchart LR
   LP --> EQ
   EQ --> LPC
   EV -.-> LPC
+  RB -.-> LPC
   LPC --> NF
   NF --> RS
   SC --> RS
