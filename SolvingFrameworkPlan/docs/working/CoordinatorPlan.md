@@ -126,3 +126,12 @@ None of these affects the near-rigid structure. NRC is still open; independent d
   - so it needs ≥ 8 consecutive states or the orbit's closure.
 - Leads: a Laman/Henneberg potential, or a universal LP-dual certificate over the orbit.
 
+**8 Oct (TrackR): no universal LP-dual certificate for N1.**
+- Exact price/packing forms of the certificates (R1, R2): every σ-type cycle needs ≥ 5 consecutive states.
+- Rotation-uniform templates certify nothing. The tag-word lemma [hand] says the 8 link chains carry identical tags at every state, so the structural objects carry no phase.
+- State-specific prices certify e ≥ 1 but memorise lineages; they fail leave-one-out.
+- The Laman/Henneberg lead is negative.
+- **Conclusion:** N1/NRC needs component- or Jordan-level input, the same wall as P-B4 and Q-§2.7.
+
+**Strategy note (coordinator, 8 Oct):** five consecutive attempts (L, N, P, Q, R) on NRC hit the same wall. Next: bank the formal chain-parity law in the paper; run the order-34 census to watch NR (8 at order 33); and return to a Jordan-level attack modelled on TrackI's proof of rigid isolation, rather than further Euler- or LP-level work.
+
