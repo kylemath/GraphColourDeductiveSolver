@@ -135,3 +135,5 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 
 **Strategy note (coordinator, 8 Oct):** five consecutive attempts (L, N, P, Q, R) on NRC hit the same wall. Next: bank the formal chain-parity law in the paper; run the order-34 census to watch NR (8 at order 33); and return to a Jordan-level attack modelled on TrackI's proof of rigid isolation, rather than further Euler- or LP-level work.
 
+**8 Oct: Audit J14 PASS** (Audit-2026-10-08/README.md). It covered all modules added 7–8 Oct and the challenge files: a clean rebuild of 91 modules, 334 axiom lines all standard, and a statement audit of every cited theorem. A non-vacuity file instantiates the main theorems on the 22-vertex witness at a doubly locked state, and the bridges have no escape hatch. The paper's labels for these results are promoted to [compiled]†, with wording fixes W1 (cw_piMove is sphere-only), W2 (the "no all-rigid class" corollary is [hand]) and W3 (Remark 7 is at an unfilled state).
+

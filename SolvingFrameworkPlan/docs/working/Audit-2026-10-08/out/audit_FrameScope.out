@@ -1,0 +1,30 @@
+'SimpleGraph.SphericalMap.FrameScope.tips_not_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.appears_diamond_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.appears_c2122_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.occ_diamond_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.occ_c2122_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.no_555_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.no_565_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+@[expose] def SimpleGraph.SphericalMap.FrameScope.LinkTipsClean : {n : ℕ} →
+  {T : SimpleGraph.SphericalMap n} → {h : Fin n} → SimpleGraph.QuarterFloor.Pent T.graph h → Fin 5 → Prop :=
+fun {n} {T} {h} P j => ∀ (y : Fin n), T.Adj (P.x j) y → T.Adj (P.x (j + 2)) y → y = h ∨ y = P.x (j + 1)
+@SimpleGraph.SphericalMap.FrameScope.no_555_run : ∀ {n : ℕ} {T : SimpleGraph.SphericalMap n} {h : Fin n}
+  (P : SimpleGraph.QuarterFloor.Pent T.graph h),
+  T.Triangulated →
+    T.NoSep →
+      T.DiamondFree →
+        T.graph.degree h = 5 →
+          ∀ (j : Fin 5),
+            SimpleGraph.SphericalMap.FrameScope.LinkTipsClean P j →
+              ¬(T.graph.degree (P.x j) = 5 ∧ T.graph.degree (P.x (j + 1)) = 5 ∧ T.graph.degree (P.x (j + 2)) = 5)
+@SimpleGraph.SphericalMap.FrameScope.no_565_run : ∀ {n : ℕ} {T : SimpleGraph.SphericalMap n} {h : Fin n}
+  (P : SimpleGraph.QuarterFloor.Pent T.graph h),
+  T.Triangulated →
+    T.NoSep →
+      T.Conf2122Free →
+        T.graph.degree h = 5 →
+          ∀ (j : Fin 5),
+            SimpleGraph.SphericalMap.FrameScope.LinkTipsClean P j →
+              ¬(T.graph.degree (P.x j) = 5 ∧ T.graph.degree (P.x (j + 1)) = 6 ∧ T.graph.degree (P.x (j + 2)) = 5)
+file constants checked: 14; nonstandard: 0; []
+exit 0

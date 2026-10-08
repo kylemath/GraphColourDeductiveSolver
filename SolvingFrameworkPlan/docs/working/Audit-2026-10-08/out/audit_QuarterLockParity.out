@@ -1,0 +1,265 @@
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:162:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.dsymm_fst`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:164:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.dsymm_snd`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:169:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.sum_dart_symm`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:173:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.sum_dart_symm_eq_zero`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:208:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.kcomp_active`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:243:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.FW_eq_fB`:
+  [Fintype V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:248:108: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:250:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.FW_of_fst`:
+  [Fintype V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:257:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.FW_of_snd`:
+  [Fintype V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:264:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.phi2_fst`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+  h3
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] h3 in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:267:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.phi2_snd`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:439:26: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:439:37: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:439:55: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:441:26: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:441:37: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:442:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:447:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:448:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:458:16: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:458:27: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:459:16: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver/78bd1589-fda1-4d14-8502-268e6b6d2668/scratchpad/audit/out/audit_QuarterLockParity.lean:459:27: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+'SimpleGraph.QuarterFloor.parity_alphaA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.parity_alphaB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.parity_alphaMu' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lockParity2_iff_D2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lockParity1_iff_D1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_iff_not_reach_alphaA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_iff_not_reach_alphaB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_iff_odd_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_iff_odd_oddCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_iff_odd_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_iff_odd_oddCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.alphaMu_odd_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.alphaMu_odd_oddCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+structure SimpleGraph.QuarterFloor.Pent.{u_1} {V : Type u_1} (G : SimpleGraph V) (h : V) : Type u_1
+number of parameters: 3
+fields:
+  SimpleGraph.QuarterFloor.Pent.x : Fin 5 → V
+  SimpleGraph.QuarterFloor.Pent.adj_h : ∀ (i : Fin 5), G.Adj h (self.x i)
+  SimpleGraph.QuarterFloor.Pent.adj_cyc : ∀ (i : Fin 5), G.Adj (self.x i) (self.x (i + 1))
+  SimpleGraph.QuarterFloor.Pent.inj : Function.Injective self.x
+  SimpleGraph.QuarterFloor.Pent.only : ∀ (v : V), G.Adj h v → ∃ i, v = self.x i
+constructor:
+  SimpleGraph.QuarterFloor.Pent.mk.{u_1} {V : Type u_1} {G : SimpleGraph V} {h : V} (x : Fin 5 → V)
+    (adj_h : ∀ (i : Fin 5), G.Adj h (x i)) (adj_cyc : ∀ (i : Fin 5), G.Adj (x i) (x (i + 1)))
+    (inj : Function.Injective x) (only : ∀ (v : V), G.Adj h v → ∃ i, v = x i) : SimpleGraph.QuarterFloor.Pent G h
+@[expose] def SimpleGraph.QuarterFloor.RepeatAt.{u_1} : {V : Type u_1} →
+  {G : SimpleGraph V} → {h : V} → SimpleGraph.QuarterFloor.Pent G h → (V → Fin 4) → Fin 5 → Prop :=
+fun {V} {G} {h} P c j =>
+  c (P.x j) = c (P.x (j + 2)) ∧
+    c (P.x (j + 1)) ≠ c (P.x j) ∧
+      c (P.x (j + 3)) ≠ c (P.x j) ∧
+        c (P.x (j + 4)) ≠ c (P.x j) ∧
+          c (P.x (j + 1)) ≠ c (P.x (j + 3)) ∧ c (P.x (j + 1)) ≠ c (P.x (j + 4)) ∧ c (P.x (j + 3)) ≠ c (P.x (j + 4))
+@[expose] def SimpleGraph.QuarterFloor.Lock1.{u_1} : {V : Type u_1} →
+  {G : SimpleGraph V} → {h : V} → SimpleGraph.QuarterFloor.Pent G h → (V → Fin 4) → Fin 5 → Prop :=
+fun {V} {G} {h} P c j =>
+  (SimpleGraph.VacancyShortFill.pairGraph G h c (c (P.x (j + 1))) (c (P.x (j + 3)))).Reachable (P.x (j + 1))
+    (P.x (j + 3))
+@[expose] def SimpleGraph.QuarterFloor.Lock2.{u_1} : {V : Type u_1} →
+  {G : SimpleGraph V} → {h : V} → SimpleGraph.QuarterFloor.Pent G h → (V → Fin 4) → Fin 5 → Prop :=
+fun {V} {G} {h} P c j =>
+  (SimpleGraph.VacancyShortFill.pairGraph G h c (c (P.x (j + 1))) (c (P.x (j + 4)))).Reachable (P.x (j + 1))
+    (P.x (j + 4))
+@[expose] def SimpleGraph.QuarterFloor.kcomp.{u_1} : {V : Type u_1} →
+  SimpleGraph V → V → (V → Fin 4) → Fin 4 → Fin 4 → V → Set V :=
+fun {V} G h c p q v => {w | (SimpleGraph.VacancyShortFill.pairGraph G h c p q).Reachable v w}
+@[expose] def SimpleGraph.QuarterFloor.boundaryCard.{u_1} : {V : Type u_1} →
+  [Fintype V] → (G : SimpleGraph V) → [DecidableRel G.Adj] → Set V → ℕ :=
+fun {V} [Fintype V] G [DecidableRel G.Adj] X => {d | d.toProd.1 ∈ X ∧ d.toProd.2 ∉ X}.card
+@[expose] def SimpleGraph.QuarterFloor.oddCount.{u_1} : {V : Type u_1} →
+  [Fintype V] → (G : SimpleGraph V) → [DecidableRel G.Adj] → Set V → ℕ :=
+fun {V} [Fintype V] G [DecidableRel G.Adj] X => {v | v ∈ X ∧ Odd (G.degree v)}.card
+@[expose] def SimpleGraph.VacancyShortFill.pairGraph.{u_1, u_2} : {V : Type u_1} →
+  {C : Type u_2} → SimpleGraph V → V → (V → C) → C → C → SimpleGraph V :=
+fun {V} {C} G h c a b =>
+  {
+    Adj := fun u v =>
+      G.Adj u v ∧ SimpleGraph.VacancyShortFill.Active h c a b u ∧ SimpleGraph.VacancyShortFill.Active h c a b v,
+    symm := ⋯, loopless := ⋯ }
+@[expose] def SimpleGraph.VacancyShortFill.Active.{u_1, u_2} : {V : Type u_1} →
+  {C : Type u_2} → V → (V → C) → C → C → V → Prop :=
+fun {V} {C} h c a b v => v ≠ h ∧ (c v = a ∨ c v = b)
+@[expose] def SimpleGraph.VacancySlide.ProperOff.{u_1, u_2} : {V : Type u_1} →
+  {C : Type u_2} → SimpleGraph V → V → (V → C) → Prop :=
+fun {V} {C} G r c => ∀ ⦃u v : V⦄, G.Adj u v → u ≠ r → v ≠ r → c u ≠ c v
+@[expose] def SimpleGraph.SphericalMap.Triangulated : {n : ℕ} → SimpleGraph.SphericalMap n → Prop :=
+fun {n} M => ∀ (d : M.Dart), M.rotation.faceLength (M.faceOf d) = 3
+@SimpleGraph.QuarterFloor.lock2_iff_odd_boundary : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n}
+  {c : Fin n → Fin 4} {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.VacancySlide.ProperOff M.graph h c →
+        SimpleGraph.QuarterFloor.RepeatAt P c j →
+          (SimpleGraph.QuarterFloor.Lock2 P c j ↔
+            Odd
+              (SimpleGraph.QuarterFloor.boundaryCard M.graph
+                (SimpleGraph.QuarterFloor.kcomp M.graph h c (c (P.x j)) (c (P.x (j + 3))) (P.x (j + 2)))))
+@SimpleGraph.QuarterFloor.lock2_iff_odd_oddCount : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n}
+  {c : Fin n → Fin 4} {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.VacancySlide.ProperOff M.graph h c →
+        SimpleGraph.QuarterFloor.RepeatAt P c j →
+          (SimpleGraph.QuarterFloor.Lock2 P c j ↔
+            Odd
+              (SimpleGraph.QuarterFloor.oddCount M.graph
+                (SimpleGraph.QuarterFloor.kcomp M.graph h c (c (P.x j)) (c (P.x (j + 3))) (P.x (j + 2)))))
+@SimpleGraph.QuarterFloor.lock1_iff_odd_boundary : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n}
+  {c : Fin n → Fin 4} {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.VacancySlide.ProperOff M.graph h c →
+        SimpleGraph.QuarterFloor.RepeatAt P c j →
+          (SimpleGraph.QuarterFloor.Lock1 P c j ↔
+            Odd
+              (SimpleGraph.QuarterFloor.boundaryCard M.graph
+                (SimpleGraph.QuarterFloor.kcomp M.graph h c (c (P.x j)) (c (P.x (j + 4))) (P.x (j + 2)))))
+@SimpleGraph.QuarterFloor.lock1_iff_odd_oddCount : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n}
+  {c : Fin n → Fin 4} {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.VacancySlide.ProperOff M.graph h c →
+        SimpleGraph.QuarterFloor.RepeatAt P c j →
+          (SimpleGraph.QuarterFloor.Lock1 P c j ↔
+            Odd
+              (SimpleGraph.QuarterFloor.oddCount M.graph
+                (SimpleGraph.QuarterFloor.kcomp M.graph h c (c (P.x j)) (c (P.x (j + 4))) (P.x (j + 2)))))
+@SimpleGraph.QuarterFloor.alphaMu_odd_boundary : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n}
+  {c : Fin n → Fin 4} {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.VacancySlide.ProperOff M.graph h c →
+        SimpleGraph.QuarterFloor.RepeatAt P c j →
+          Odd
+            (SimpleGraph.QuarterFloor.boundaryCard M.graph
+              (SimpleGraph.QuarterFloor.kcomp M.graph h c (c (P.x j)) (c (P.x (j + 1))) (P.x (j + 2))))
+@SimpleGraph.QuarterFloor.alphaMu_odd_oddCount : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n}
+  {c : Fin n → Fin 4} {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.VacancySlide.ProperOff M.graph h c →
+        SimpleGraph.QuarterFloor.RepeatAt P c j →
+          Odd
+            (SimpleGraph.QuarterFloor.oddCount M.graph
+              (SimpleGraph.QuarterFloor.kcomp M.graph h c (c (P.x j)) (c (P.x (j + 1))) (P.x (j + 2))))
+@SimpleGraph.QuarterFloor.parity_alphaA : ∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] {G : SimpleGraph V}
+  [inst_2 : DecidableRel G.Adj] (φ : Equiv.Perm G.Dart),
+  (∀ (d : G.Dart), (φ d).toProd.1 = d.toProd.2) →
+    (∀ (d : G.Dart), φ (φ (φ d)) = d) →
+      ∀ {h : V} {c : V → Fin 4} {j : Fin 5} (P : SimpleGraph.QuarterFloor.Pent G h),
+        SimpleGraph.QuarterFloor.StarHyp φ P →
+          SimpleGraph.VacancySlide.ProperOff G h c →
+            SimpleGraph.QuarterFloor.RepeatAt P c j →
+              (Odd
+                  (SimpleGraph.QuarterFloor.boundaryCard G
+                    (SimpleGraph.QuarterFloor.kcomp G h c (c (P.x j)) (c (P.x (j + 3))) (P.x (j + 2)))) ↔
+                ¬(SimpleGraph.VacancyShortFill.pairGraph G h c (c (P.x j)) (c (P.x (j + 3)))).Reachable (P.x (j + 2))
+                    (P.x j))
+file constants checked: 59; nonstandard: 0; []
+exit 0

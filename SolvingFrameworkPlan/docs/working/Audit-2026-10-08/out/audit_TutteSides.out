@@ -1,0 +1,30 @@
+'SimpleGraph.TutteSides.finrank_chainSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.finrank_chainSpace_insert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.graph_side' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.face_side' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.finrank_faceSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.tutte_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.euler_tri' depends on axioms: [propext, Classical.choice, Quot.sound]
+@[expose] def SimpleGraph.TutteSides.chainSpace.{u_1} : {V : Type u_1} →
+  SimpleGraph V → (V → Prop) → Submodule (ZMod 2) (V → ZMod 2) :=
+fun {V} G τ =>
+  { carrier := {g | (∀ (v : V), ¬τ v → g v = 0) ∧ ∀ (u v : V), G.Adj u v → τ u → τ v → g u = g v}, add_mem' := ⋯,
+    zero_mem' := ⋯, smul_mem' := ⋯ }
+@[expose] def SimpleGraph.TutteSides.gammaM : {n : ℕ} → SimpleGraph.SphericalMap n → ℕ :=
+fun {n} M => Module.finrank (ZMod 2) ↥(SimpleGraph.TutteSides.faceSpace M fun x => False)
+@SimpleGraph.TutteSides.tutte_sides : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n},
+  M.Triangulated →
+    (∀ (v : Fin n), ∃ w, M.graph.Adj v w) →
+      ∀ (d0 : M.Dart) (τ : Fin n → Prop) [inst : DecidablePred τ],
+        (∀ (d : M.Dart), ¬τ d.toProd.1 ∨ ¬τ d.toProd.2 ∨ ¬τ (M.rotation.faceNext d).toProd.2) →
+          Fintype.card (SimpleGraph.TutteSides.SE M.graph τ) +
+                Module.finrank (ZMod 2) ↥(SimpleGraph.TutteSides.chainSpace M.graph τ) +
+              SimpleGraph.TutteSides.gammaM M =
+            (Finset.filter τ Finset.univ).card +
+              Module.finrank (ZMod 2) ↥(SimpleGraph.TutteSides.chainSpace M.graph fun v => ¬τ v)
+@SimpleGraph.TutteSides.euler_tri : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n},
+  M.Triangulated →
+    (∀ (v : Fin n), ∃ w, M.graph.Adj v w) →
+      ∀ (d0 : M.Dart), Fintype.card ↑M.graph.edgeSet + 6 * SimpleGraph.TutteSides.gammaM M = 3 * n
+file constants checked: 45; nonstandard: 0; []
+exit 0

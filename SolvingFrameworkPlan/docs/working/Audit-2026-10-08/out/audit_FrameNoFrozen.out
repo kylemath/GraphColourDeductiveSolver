@@ -1,0 +1,38 @@
+'SimpleGraph.QuarterFloor.rStarFrame_of_no_allDL_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.four_color_of_no_allDL_orbit_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rStarFrame_of_images' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.four_color_of_images_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+@[expose] def SimpleGraph.QuarterFloor.NoFrozenFrame : Prop :=
+∀ (m : ℕ) (T : SimpleGraph.SphericalMap m),
+  0 < m →
+    T.graph.Connected →
+      T.Triangulated →
+        (∀ (x : Fin m), 5 ≤ T.graph.degree x) →
+          T.NoSep →
+            T.DiamondFree →
+              T.Conf2122Free →
+                ∃ v,
+                  T.graph.degree v = 5 ∧
+                    ∃ P,
+                      ∀ (c : Fin m → Fin 4),
+                        SimpleGraph.VacancySlide.ProperOff T.graph v c →
+                          ∃ k, ¬SimpleGraph.QuarterFloor.DLState P ((SimpleGraph.QuarterFloor.piMove P)^[k] c)
+@[expose] def SimpleGraph.QuarterFloor.DLState : {n : ℕ} →
+  {M : SimpleGraph.SphericalMap n} → {h : Fin n} → SimpleGraph.QuarterFloor.Pent M.graph h → (Fin n → Fin 4) → Prop :=
+fun {n} {M} {h} P c => ∃ j, SimpleGraph.QuarterFloor.DoublyLocked P c j
+@[expose] def SimpleGraph.QuarterFloor.DoublyLocked.{u_1} : {V : Type u_1} →
+  {G : SimpleGraph V} → {h : V} → SimpleGraph.QuarterFloor.Pent G h → (V → Fin 4) → Fin 5 → Prop :=
+fun {V} {G} {h} P c j =>
+  SimpleGraph.QuarterFloor.RepeatAt P c j ∧ SimpleGraph.QuarterFloor.Lock1 P c j ∧ SimpleGraph.QuarterFloor.Lock2 P c j
+SimpleGraph.QuarterFloor.rStarFrame_of_no_allDL_orbit : SimpleGraph.QuarterFloor.NoFrozenFrame →
+  SimpleGraph.SphericalMap.RStarFrame
+SimpleGraph.QuarterFloor.four_color_of_no_allDL_orbit_frame : SimpleGraph.QuarterFloor.NoFrozenFrame →
+  ∀ {n : ℕ} (M : SimpleGraph.SphericalMap n), M.graph.Colorable 4
+@SimpleGraph.QuarterFloor.pureClean_of_no_allDL_orbit : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n}
+  (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+  (∀ (c : Fin n → Fin 4),
+      SimpleGraph.VacancySlide.ProperOff M.graph h c →
+        ∃ k, ¬SimpleGraph.QuarterFloor.DLState P ((SimpleGraph.QuarterFloor.piMove P)^[k] c)) →
+    M.PureClean h
+file constants checked: 5; nonstandard: 0; []
+exit 0

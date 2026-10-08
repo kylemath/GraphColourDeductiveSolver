@@ -1,0 +1,860 @@
+== EulerSharp
+== VacancyIcosahedral
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancyIcosahedral.lean:826:4: warning: Unused tactic linter: `change M.Adj (w (t + 4 + s)) (w (t + s))` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+== RStar
+== SideTriangle
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:447:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.lift_faceNext_keptFace`:
+  hN
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hN in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:470:5: warning: Variable name `hu` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:561:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.far_ends`:
+  hc
+  spec
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc spec in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:580:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.T_faceNext_three`:
+  hc
+  hN
+  spec
+  hpq
+  hqr
+  hrp
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hc hN spec hpq hqr hrp in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/SideTriangle.lean:648:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.kept_facial`:
+  htri
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit htri in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+== RStarCore
+== MinimalFrame
+== RingJordan
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:29: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:61: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:100:73: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:42: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:61: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:101:73: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:42: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:74: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:102:86: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:97:15: warning: This simp argument is unused:
+  Adj.toWalk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [walkEdgeCoeff_cons, walkEdgeCoeff_nil, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:97:27: warning: This simp argument is unused:
+  walkEdgeCoeff_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Adj.toWalk, walkEdgeCoeff_nil, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:284:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:298:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:300:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:300:25: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:303:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:305:14: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:305:25: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:306:14: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:306:25: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:321:17: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:338:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:338:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:339:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:339:54: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:366:15: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:367:73: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:372:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:372:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:373:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:373:54: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:421:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:421:33: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:422:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:422:46: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:456:39: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingJordan.lean:456:61: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+== RingChains
+== RingReduce
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingReduce.lean:119:20: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingReduce.lean:124:20: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RingReduce.lean:112:5: warning: Variable name `hsym` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hsym
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+== DiamondCert
+== Conf2122Cert
+== OccToRing
+== DiamondMCert
+== DiamondMOcc
+== DiamondPCert
+== DiamondPOcc
+== C2122MCert
+== C2122MOcc
+== C2122PCert
+== C2122POcc
+== FrameF3
+== RStarSanity
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/RStarSanity.lean:41:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.VacancyShortFill.whole_of_cert`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+== RadiusFive
+== Conf2122Witness
+== QuarterFloor
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterFloor.lean:180:5: warning: Variable name `hc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterFloor.lean:181:5: warning: Variable name `hc'` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc'
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+== QuarterRotation
+== NoFrozen
+== QuarterRotationPlanar
+== QuarterPi
+== QuarterWinding
+== QuarterFloorH
+== QuarterFloorHBridge
+== QuarterSigmaExit
+== QuarterSigmaGroups
+== QuarterSigmaPrime
+== QuarterSigmaK34
+== QuarterGammaPeriod
+== QuarterJordanDual
+== QuarterSigmaFix
+== QuarterPeriodJ
+'SimpleGraph.QuarterFloor.period_J' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.k4_exit_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.k4_failure_iff_break' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.k3_exit_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.break_restored_by_R3k2' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterSanity
+== AppearsOcc
+== DiamondAppears
+== C2122Appears
+== FrameAppears
+== FCycle22
+== Tri22Map
+== Tri22Sanity
+== QuarterExcursion
+== QuarterFlowIdentity
+== QuarterAssignment
+'SimpleGraph.QuarterFloor.sigmaC_of_assignment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaC_of_assignment_groups' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.defPrime_le_lam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaC_of_assignment_str' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaC_of_assignment_str_groups' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterLockJ
+'SimpleGraph.QuarterFloor.J_iff_lock2_R1k2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.J_iff_lock1_R3k4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.J_iff_lock2_R3k3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.step8_fixes_lock2_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterRestore
+'SimpleGraph.QuarterFloor.lock2_R1k1_z' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.restore_pos0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.z_in_lock2_R1k1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.z_in_lock2_after_break' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterMirror
+'SimpleGraph.RotationSystem.mirror_mirror' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.Pent.oriented_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_mirror_iff' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_mirror_iff' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.piMove_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.piInv_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.gammaOrbit_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.Hole6.mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.gstep_mrel' depends on axioms: [propext]
+'SimpleGraph.QuarterFloor.gseq_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.gseq_mirror_reversed' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterW2Frame
+'SimpleGraph.QuarterFloor.chain_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.steps_pos4_to_7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.colours_pos4_to_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.repeat_pos4_to_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.links_pos4_to_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.alpha_const_pos4_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_pos4_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_pos6_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_pos8_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_all_fixed_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_not_lockless' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.w2_not_all_acyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.p_x4_connected_R1k4' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterFan
+'SimpleGraph.QuarterFloor.escape_of_onCycle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.onCycle_of_escape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fan_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.yz_cycle_iff_escape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_sigmaFixed_of_escape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.w2'_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_all_fixed_of_w2'' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterEuler
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:80:20: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:89:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:92:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:98:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:98:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:101:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:101:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:102:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:102:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:103:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:103:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:207:22: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:249:44: warning: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:328:44: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:338:68: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:353:58: warning: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:357:54: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterEuler.lean:358:40: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+'SimpleGraph.SphericalMap.edges_add_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.six_pair_rank_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pairRank_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.comps_sum_ge_eight_of_DL' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterWindow
+'SimpleGraph.QuarterFloor.state_tab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.bookkeeping' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock_join_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_join_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_join_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.J_join_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.step8_far' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.window_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.window_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.k4_failure_iff_z_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.k3_failure_iff_y_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.period_colour_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.closing_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterZsplit
+'SimpleGraph.QuarterFloor.zsplit_no_hole_vertex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.zsplit_hole_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.xplus_cannot_heal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.xplus_dead_end' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.gate_swaps_miss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.far_vertex_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterEvenCut
+'SimpleGraph.QuarterFloor.enc_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_edge_colour' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_edge_colour_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.closed_orbit_cut_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.kempe_orbit_cut_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.closed_orbit_cut_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.closed_orbit_cut_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.piMove_cut_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.relabel_closed_cut_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.three_cycle_change_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.three_cycle_cut_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.piMove_relabel_cut_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.ring_cut_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.allDL_ring_cut_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterK8
+'SimpleGraph.QuarterFloor.K8_contains_x2_x3_wplus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.K8_avoids_pmyz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.K8_meets_hole_exactly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.consecutive_K8_share_hole' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterLemmaP
+'SimpleGraph.QuarterFloor.unfilled_succ_iff_lock2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.unfilled_pred_iff_lock1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lemmaP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lemmaP_excursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.exact_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.exact_identity_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterFixR1
+'SimpleGraph.QuarterFloor.repTab_eq' depends on axioms: [propext]
+'SimpleGraph.QuarterFloor.pairTab_eq' depends on axioms: [propext]
+'SimpleGraph.QuarterFloor.rep_pair_partition' depends on axioms: [propext]
+'SimpleGraph.QuarterFloor.not_fixed_R3_k34' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_fixed_pos0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_fixed_pos2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.frame_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_at_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.frm_pos4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_pos_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_pos1_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_pos11_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixed_pos1_period_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.fixedPoint_spacing_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.W2_as_fixed_points' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterTwoPeriod
+'SimpleGraph.QuarterFloor.piMove_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.piInv_perm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rho_eq_sigma_sq_on_ring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rho_cube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.G_swaps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.d_setting' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.ring_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.A34_two_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterU34
+'SimpleGraph.QuarterFloor.u34_run_start' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u34_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u34_run_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u34_f_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u34_excursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u3_run_end' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u34_f_one_of_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u34_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u34_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.u3_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterCrossing
+'SimpleGraph.QuarterFloor.walk_transfer' depends on axioms: [propext]
+'SimpleGraph.QuarterFloor.crossing_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.crossing_on_pocket_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pos9_xplus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.X_far' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.crossing_lemma' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.crossing_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.crossing_on_pocket' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.two_pocket_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.no_double_break_of_crossing_obstruction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+== QuarterPocket
+'SimpleGraph.QuarterFloor.pocket_of_not_J_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_J_of_pocket_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pocket_iff_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.separates_of_pocket' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pocketFrame_pos9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pocket_of_not_J' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_J_of_pocket' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pocket_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pocketLemmaAt_pos9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pocketLemmaAt_pos9_G' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.crossing_on_pocket'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.A34_L20_of_no_two_pockets' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterPairDuality
+'SimpleGraph.QuarterFloor.sphere_pair_duality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pair_dualities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.reach_alpha_B_of_not_lock1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.reach_alpha_A_of_not_lock2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaFixed_iff_C_alpha_mu_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaFixed_iff_rank_AB_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.six_pair_identity_from_dualities' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterStepChange
+'SimpleGraph.QuarterFloor.swap_pair_graph_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_pairRank_ab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_pairRank_other' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_pairEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_mixed_edges_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.swap_mixed_verts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_rank_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_rank_sum_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_rank_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_C_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_rank_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_E_face_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_rank_odd_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.step_dualities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_C_relation'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.delta_rank_odd'' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterNonDLImage
+'SimpleGraph.QuarterFloor.filled_in_class_of_sigma_nonDL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.no_allDL_class_of_images' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rStarCore_of_images' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.four_color_of_images' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterHole6Clean
+'SimpleGraph.QuarterFloor.gammaImages_of_hole6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.every_class_filled_of_hole6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_hole6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_icoBall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rStarNoSepTri_of_hole6' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterHole6Gen
+'SimpleGraph.QuarterFloor.sigma_exit_not_DL_k4_gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.tk_step4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.typed_in_orbit4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.gammaImages_of_hole4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_hole4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.every_class_filled_of_hole6gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_hole6gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.Hole6.toHole6Gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterHole6Bridge
+'SimpleGraph.QuarterFloor.hole6_or_linkClique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.hole6_of_degrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_degrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_fiveLink' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_linkDegrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cleanOff_of_degrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rStarCore_of_linkDegrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterHole66
+'SimpleGraph.QuarterFloor.ring66_of_dl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.typeOf66_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.image_type66' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.dd_ends66' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.dd_step66' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.untyped_dd66' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.allDL_orbit_visits_all_j66' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.allDL_orbit_walk66' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterHole4Bridge
+'SimpleGraph.QuarterFloor.hole4_or_linkClique_or_chord' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.hole4_of_degrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_four_consecutive_fives' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_linkDegrees'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.noSeparatingTriangleAt_of_noSep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cleanOff_of_four_consecutive_fives' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterBudget
+'SimpleGraph.QuarterFloor.budgetR_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.dd_le_two_budgetR' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.budgetSigma_injOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.noLock_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.budgetB'_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sum_lam_eq_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sum_lam_le_of_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaUnionC_of_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.quarterFloor_of_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaC_of_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterBitDynamics
+'SimpleGraph.QuarterFloor.bitF_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.bitF_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.wcol_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.dd_step_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.allDL_cycle_length_dvd_ten_recol' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.allDL_cycle_length_dvd_ten' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.degree5_forbids' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.hole6_forbids' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.pureClean_of_no_allDL_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.allDL_orbit_of_not_pureClean' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterTait
+'SimpleGraph.QuarterFloor.spoke_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.spoke_count_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.filled_iff_spokes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.repeat_spokes_gamma' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_iff_tait' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_iff_tait' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.repeat_not_triple' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterImagePosition
+'SimpleGraph.QuarterFloor.runPos_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigma_image_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigma_image_cases'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.boundary_iff_excursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigma_image_boundary_of_not_DL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigma_image_in_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigma_fixed_iff_image_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.images_le_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.images_le_boundary_DL' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterLemmaN0
+'SimpleGraph.QuarterFloor.lemmaN0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.orbFin_bijOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lemmaN0_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lam_sum_eq_card_sub_four_filled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lemmaN0'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.no_lockless_of_nonneg_lam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lockless_le_half_of_lam_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterR3AtUnfold
+'SimpleGraph.QuarterFloor.r3At_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.typeR3_k4_ring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.r3At_k4_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterBudgetPos
+'SimpleGraph.QuarterFloor.sum_lam_le_of_no_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sum_lam_le_of_budget_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaUnionC_of_budget_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.quarterFloor_of_budget_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaC_of_budget_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sigmaUnionC_iff_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+== FrameNoFrozen
+'SimpleGraph.QuarterFloor.rStarFrame_of_no_allDL_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.four_color_of_no_allDL_orbit_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rStarFrame_of_images' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.four_color_of_images_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+== FrameScope
+'SimpleGraph.SphericalMap.FrameScope.tips_not_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.appears_diamond_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.appears_c2122_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.occ_diamond_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.occ_c2122_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.no_555_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.FrameScope.no_565_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+== FrameWit22Map
+== FrameWit22
+'SimpleGraph.FrameWit22.diamondFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.FrameWit22.conf2122Free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.FrameWit22.frameClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.FrameWit22.frameClass_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+== QuarterLockParity
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:162:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.dsymm_fst`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:164:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.dsymm_snd`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:169:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.sum_dart_symm`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:173:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.sum_dart_symm_eq_zero`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:208:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.kcomp_active`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:243:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.FW_eq_fB`:
+  [Fintype V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:248:108: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:250:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.FW_of_fst`:
+  [Fintype V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:257:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.FW_of_snd`:
+  [Fintype V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:264:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.phi2_fst`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+  h3
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] h3 in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:267:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.QuarterFloor.phi2_snd`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:439:26: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:439:37: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:439:55: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:441:26: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:441:37: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:442:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:447:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:448:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:458:16: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:458:27: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:459:16: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:459:27: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+'SimpleGraph.QuarterFloor.parity_alphaA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.parity_alphaB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.parity_alphaMu' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lockParity2_iff_D2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lockParity1_iff_D1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_iff_not_reach_alphaA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_iff_not_reach_alphaB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_iff_odd_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock2_iff_odd_oddCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_iff_odd_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lock1_iff_odd_oddCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.alphaMu_odd_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.alphaMu_odd_oddCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+== ChainCount
+'SimpleGraph.QuarterFloor.chainCount_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_swap_same' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_swap_other' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sum_pairs_roles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.nChains_roles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.eight_le_nChains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rigidAt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_piMove_alphaA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_piMove_muB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.nChains_piMove_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rigid_isolation_of_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_eight_eight_of_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+== ChainMod4
+'SimpleGraph.QuarterFloor.face_table8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.table_pi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cwDarts_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cw_swap_mod8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lemmaW' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.lemmaW_linkFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cw_piMove' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainParityLaw_of_F' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.remark7_of_F' depends on axioms: [propext, Classical.choice, Quot.sound]
+== TutteSides
+'SimpleGraph.TutteSides.finrank_chainSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.finrank_chainSpace_insert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.graph_side' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.face_side' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.finrank_faceSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.tutte_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.euler_tri' depends on axioms: [propext, Classical.choice, Quot.sound]
+== ChainF
+'SimpleGraph.QuarterFloor.omT_face' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.omT_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cw_dart_mod8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.f_arith' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.chainFormulaF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.conjectureF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainParityLaw_sphere' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rigid_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.remark7' depends on axioms: [propext, Classical.choice, Quot.sound]
+STUDIO EXIT 0
