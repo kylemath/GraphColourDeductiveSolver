@@ -1,0 +1,40 @@
+graphs 58194  degree-5 holes evaluated 979741 / 979741  graphs with errors 0
+PureClean 979741 / 979741; non-PureClean: []
+min class F/N 0.25; holes at 1/4: 8556 in 7078 graphs; below 1/4: []
+lowest graph margins (max over v of min class F/N): [('p33.r147#73695', 0.459738), ('p33.r156#358615', 0.460914), ('p33.r151#251848', 0.464189), ('p33.r22#40208', 0.464383), ('p33.r23#199299', 0.464526)]
+lock parity sample: 5891 graphs (10.1%), 99292 holes, 331004763 unfilled states, failures L2 0 L1 0 Kam-even 0
+f66 allDL vs c33 all-DL cycle count on sample holes: mismatches 0
+all-DL pi-cycles: 25 at 25 holes; with filled-free class: []
+   p33.r32#563385 h16 L=20 N=9..16 class size 6862 filled 3643
+   p33.r36#2563971 h8 L=20 N=9..14 class size 5142 filled 2313
+   p33.r81#147684 h0 L=20 N=9..16 class size 6141 filled 3254
+   p33.r93#132793 h19 L=20 N=9..16 class size 9674 filled 4906
+   p33.r99#11790 h22 L=20 N=8..14 class size 7014 filled 3691
+   p33.r120#860679 h13 L=20 N=9..16 class size 9425 filled 4200
+   p33.r141#556370 h7 L=20 N=11..14 class size 8834 filled 4736
+   p33.r141#556370 h14 L=20 N=11..14 class size 8834 filled 4736
+   p33.r147#30526 h20 L=20 N=9..14 class size 6428 filled 3492
+   p33.r150#342837 h9 L=20 N=9..14 class size 7823 filled 3462
+   p33.r174#90183 h15 L=20 N=8..14 class size 7161 filled 3569
+   p33.r178#82043 h19 L=20 N=9..13 class size 6427 filled 3343
+   p33.r181#239288 h10 L=20 N=11..18 class size 12442 filled 6988
+   p33.r182#474227 h27 L=20 N=10..15 class size 5598 filled 2892
+   p33.r189#9153 h30 L=20 N=9..13 class size 9938 filled 5752
+   p33.r189#543757 h21 L=20 N=10..16 class size 8385 filled 3700
+   p33.r198#595102 h16 L=20 N=9..14 class size 6786 filled 3484
+   p33.r201#318155 h23 L=20 N=9..14 class size 7984 filled 4316
+   p33.r211#498852 h21 L=20 N=9..17 class size 6976 filled 3184
+   p33.r230#150127 h28 L=20 N=8..12 class size 7964 filled 4131
+   p33.r232#95904 h26 L=20 N=10..15 class size 5288 filled 2602
+   p33.r234#59977 h11 L=20 N=11..14 class size 8772 filled 4448
+   p33.r234#59977 h20 L=20 N=11..14 class size 8712 filled 4448
+   p33.r239#493871 h10 L=20 N=9..15 class size 7260 filled 3500
+   p33.r243#15120 h25 L=20 N=9..15 class size 8328 filled 4162
+R histogram [(0, 218029), (1, 683057), (2, 70365), (3, 7499), (4, 746), (5, 44), (6, 1)]
+NR histogram [(0, 17), (1, 435752), (2, 406651), (3, 117633), (4, 16398), (5, 3106), (6, 172), (7, 11), (8, 1)]
+Rcyc holes 0  NRcyc holes (NRC violations) 0
+max R 6 at [('p33.r115#64736', 1, 7, '66575')]
+max NR 8 at [('p33.r147#128636', 2, 2, '66765')]
+(R,NR) pairs with R>=4 [((4, 1), 63), ((4, 2), 98), ((4, 3), 98), ((4, 4), 300), ((4, 5), 177), ((4, 6), 10), ((5, 1), 4), ((5, 2), 4), ((5, 3), 6), ((5, 4), 1), ((5, 5), 25), ((5, 6), 2), ((5, 7), 2), ((6, 7), 1)]
+maximal interior runs by length L (all / entirely N<=9): [(3, 8548, 4595), (4, 803, 507), (5, 44, 29), (6, 1, 1)]
+max degree Counter({7: 38737, 8: 18234, 9: 1058, 6: 137, 10: 28})

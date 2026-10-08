@@ -109,3 +109,9 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 - Part B [hand]: identity P1 says e equals the total cycle rank of the pair graphs at rigid states, so N1 ⇔ no law R-cycle with zero spare two-coloured cycles. Also P2 (monodromy: every edge is cut by some swap) and an edge-role cut balance. No contradiction yet; the missing input is component-level.
 - Next: exact add+delete MILP on the e = 2 skeletons (can e = 1 occur?) and a component-level e ≥ 1 argument.
 
+**8 Oct (Census33): order 33 is exhaustive** (764,855,802 plantri graphs → 58,194 frame-class graphs, 979,741 holes).
+- R\* holds at every hole. The quarter floor is reached exactly (8,556 holes) and never broken.
+- Lock parity: 0 failures on 3.3e8 sampled states.
+- There are 25 all-DL π-cycles, all of length 20, all inside classes with filled states. NRC holds.
+- **Max R stays at 6, but max NR rises 7 → 8** (NR by order 22–33: 1,3,3,4,4,4,5,5,6,6,7,8). The NR = 8 record is an alternation 8,9,…,9 entered from a non-DL state; NRC needs a closed run of ≥ 10. The trend continues to be watched.
+
