@@ -98,3 +98,5 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 - Heawood-type interference is necessary for every failure but not sufficient.
 - Off the sphere Φ>π fails even in classes that have filled states.
 
+**8 Oct (TrackN, Q-e):** no R-cycle (a π-cycle of DL states with N ≤ 9) was found in any graph once Lemma E's sphere constants (2,3,3) hold at the cycle states, with or without the parity law (2.37M annealing evaluations plus exact MILP edge surgery). Every law-respecting cycle has a minimal skeleton of ≥ 3n−8 edges, the RP² count (+3 over the sphere). **Conjecture N1 (data):** no R-cycle satisfies the (2,3,3) constants at all its states, in any graph. If true, NRC is Euler-level, which is Lean-friendly. Caveat: one lineage of law cycles, all from an RP² seed. By-product [hand]: rigid isolation already follows from Lemma E plus the star identity. Next: torus/Klein-seeded law cycles (do they need +3(2−χ)?) and a proof attempt on N1.
+

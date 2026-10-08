@@ -83,6 +83,7 @@ flowchart LR
   J5["Shape of such a class<br/>(J1–J5)"]:::reviewed
   SIG["σ-type lemma<br/>(Euler counting)"]:::reviewed
   EVJ["Evidence: 473k holes,<br/>longest run 7 (need 10)"]:::data
+  N1["N1: Euler constants alone<br/>forbid such cycles"]:::data
   C4["Case: mixed higher<br/>chain counts"]:::gap
   LPC["LPC on the sphere<br/>no Kempe class made only<br/>of frozen π-cycles"]:::gap
   EV["Evidence: census to order 32,<br/>5 surfaces, 0 counterexamples"]:::data
@@ -108,6 +109,7 @@ flowchart LR
   J5 --> C3
   SIG --> J5
   EVJ -.-> NRC
+  N1 -.-> NRC
   C3 --> LPC
   C4 --> LPC
   LP --> EQ
