@@ -145,3 +145,12 @@ None of these affects the near-rigid structure. NRC is still open; independent d
   - **Q-escape:** a Tait-rigid state never lies on a π-cycle with F13 connected. It is false on RP² and the Klein bottle.
 - Seven monotone-quantity candidates are negative. Lead: the chord/interlace view of planarity (bipartite interlace graph; H changes act by pivots).
 
+**8 Oct (TrackT, chord/interlace lead): no proof.**
+- One Φ step in chord form is Φ1–Φ5 [hand]. It is not a pivot: 7–20 of 21 chords swap per step.
+- No interlace invariant is monotone or periodic. The interlace graph is bipartite exactly on the sphere, but the other chord statistics look the same planar or not.
+- The chain-parity law depends on the planar rotation at v: it fails 48% of the time under non-planar orders.
+- **No law-respecting closed orbit of any kind has been found off the plane.** Abstract runs reach length 8 at n = 24.
+- Open: T1 (a planarity-free form; if true, NRC needs planarity only through the law).
+
+**Coordinator assessment (8 Oct, midday):** seven attempts on NRC (L, N, P, Q, R, S, T) have produced structure but no proof. Further attacks of the same kind have diminishing returns. Plan: (1) the order-34 census for the NR trend (running); (2) one cheap test of T1; (3) then pause new NRC attacks and reassess with Kyle.
+
