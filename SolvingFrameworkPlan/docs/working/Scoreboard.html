@@ -1,0 +1,139 @@
+<title>Four Colour Scoreboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; a goal chain at the top, then status-coded sections, then what is running. */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --fg:#1d2430; --muted:#5b6575; --line:#dde1e8; --accent:#1f5f7a;
+  --formal:#1e7a4f; --formal-bg:#e3f3ea;
+  --reviewed:#2457a6; --reviewed-bg:#e4ecf8;
+  --hand:#9a6200; --hand-bg:#fbf0dc;
+  --data:#5d4f8c; --data-bg:#ece8f6;
+  --killed:#a43a3a; --killed-bg:#f8e5e5;
+  --open:#1f5f7a; --open-bg:#e2eff4;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12161c; --panel:#1a2029; --fg:#e4e8ee; --muted:#9aa4b3; --line:#2c3440; --accent:#6fb3cf;
+  --formal:#6fcf9d; --formal-bg:#183327; --reviewed:#8db3ee; --reviewed-bg:#1b2840;
+  --hand:#e7b35c; --hand-bg:#33280f; --data:#b7a8ea; --data-bg:#262040;
+  --killed:#ec8f8f; --killed-bg:#3a1c1c; --open:#6fb3cf; --open-bg:#16303a; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#12161c; --panel:#1a2029; --fg:#e4e8ee; --muted:#9aa4b3; --line:#2c3440; --accent:#6fb3cf;
+  --formal:#6fcf9d; --formal-bg:#183327; --reviewed:#8db3ee; --reviewed-bg:#1b2840;
+  --hand:#e7b35c; --hand-bg:#33280f; --data:#b7a8ea; --data-bg:#262040;
+  --killed:#ec8f8f; --killed-bg:#3a1c1c; --open:#6fb3cf; --open-bg:#16303a; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body);margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 48px;display:grid;gap:28px}
+h1{font:600 2rem/1.15 var(--display);margin:0;text-wrap:balance}
+h2{font:600 1.3rem/1.2 var(--display);margin:0 0 10px;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0}
+code{font:0.86em var(--mono);overflow-wrap:anywhere}
+.chain{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:8px}
+.step{display:flex;gap:10px;align-items:flex-start}
+.step .arrow{color:var(--muted);font-family:var(--mono);min-width:1.4em}
+.step div{min-width:0}
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-block;font:500 0.72rem/1 var(--body);letter-spacing:.04em;text-transform:uppercase;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.formal{color:var(--formal);background:var(--formal-bg)}
+.reviewed{color:var(--reviewed);background:var(--reviewed-bg)}
+.hand{color:var(--hand);background:var(--hand-bg)}
+.data{color:var(--data);background:var(--data-bg)}
+.killed{color:var(--killed);background:var(--killed-bg)}
+.open{color:var(--open);background:var(--open-bg)}
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+ul.items li{display:grid;grid-template-columns:7.5rem 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+ul.items li>div{min-width:0}
+.t{font-weight:600}
+.d{color:var(--muted);font-size:0.93rem}
+.forecast{display:flex;flex-wrap:wrap;gap:20px;align-items:baseline;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.big{font:600 2.4rem/1 var(--display);font-variant-numeric:tabular-nums;color:var(--accent)}
+.forecast p{margin:0;flex:1 1 260px;min-width:0}
+footer{color:var(--muted);font-size:0.85rem}
+@media (max-width:480px){ ul.items li{grid-template-columns:1fr;gap:4px} }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Four Colour Scoreboard</h1>
+    <p class="sub">Status of the R* programme. Updated 8 October 2026, morning. Every claim carries one label.</p>
+  </header>
+
+  <section class="legend" aria-label="Legend">
+    <span class="pill formal">Formal</span><span class="pill reviewed">Reviewed</span><span class="pill hand">Hand, unreviewed</span><span class="pill data">Data only</span><span class="pill killed">Killed</span><span class="pill open">Open / running</span>
+  </section>
+
+  <section>
+    <h2>The chain we need</h2>
+    <div class="chain">
+      <div class="step"><span class="arrow">⇐</span><div><span class="t">Four Colour Theorem</span> for spherical maps <span class="pill formal">Formal</span></div></div>
+      <div class="step"><span class="arrow">⇐</span><div><span class="t">R* in the frame class</span>: every min-degree-5, no-separating-triangle, diamond- and 2.122-free triangulation has a degree-5 vertex whose every Kempe class contains a filled state <span class="pill formal">Formal reduction</span></div></div>
+      <div class="step"><span class="arrow">⇐</span><div><span class="t">No frozen orbits</span>: no Kempe class consists only of closed doubly-locked π-cycles <span class="pill formal">Formal reduction</span></div></div>
+      <div class="step"><span class="arrow">?</span><div><span class="t">The missing proof</span>. Everything below is about this last link. <span class="pill open">Open</span></div></div>
+    </div>
+  </section>
+
+  <section class="forecast">
+    <div class="big">≈3%</div>
+    <p>Coordinator's estimate that this programme ends in an audited proof. It was 2% on 7 October. The rise reflects one reviewed planarity result in the right place, not a proof.</p>
+  </section>
+
+  <section>
+    <h2>Proved in Lean</h2>
+    <ul class="items">
+      <li><span class="pill formal">Formal</span><div><div class="t">No frozen orbit ⇒ R* ⇒ 4CT</div><div class="d"><code>rStarFrame_of_no_allDL_orbit</code>, <code>four_color_of_RStarFrame</code></div></div></li>
+      <li><span class="pill formal">Formal</span><div><div class="t">Lock parity</div><div class="d">On the sphere, a lock holds exactly when a two-colour Kempe component has an odd number of odd-degree vertices. This is where planarity enters. <code>QuarterLockParity.lean</code></div></div></li>
+      <li><span class="pill formal">Formal</span><div><div class="t">Frame-class scope and witness</div><div class="d">No 5-5-5 or 5-6-5 runs with clean tips (<code>no_555_run</code>); the frame class is non-empty (22-vertex witness).</div></div></li>
+      <li><span class="pill formal">Formal</span><div><div class="t">Chain count and rigid states</div><div class="d">Rigid ⇔ 8 chains; rigid isolation follows from the chain-parity law. <code>ChainCount.lean</code></div></div></li>
+      <li><span class="pill formal">Formal</span><div><div class="t">Frozen challenge files</div><div class="d">The target and 4CT stated in Mathlib-only files, with bridges proving they equal our definitions, so the statement can't drift.</div></div></li>
+      <li><span class="pill formal">Formal</span><div><div class="t">Theorem W, F5, weak F6</div><div class="d">Counting identity and floor results from 6–7 Oct. F5 and weak F6 only cover holes that contain a diamond, so they don't reach the frame class.</div></div></li>
+    </ul>
+    <p class="d">Full regression: 87 modules (now 88), standard axioms only.</p>
+  </section>
+
+  <section>
+    <h2>Proved by hand</h2>
+    <ul class="items">
+      <li><span class="pill reviewed">Reviewed</span><div><div class="t">Chain-parity law</div><div class="d">On the sphere, each step between doubly-locked states changes the number of Kempe chains by an odd amount. Independent review: correct, three small gaps fixed. 2.2M fresh checks, 0 failures. It fails off the sphere, as it should.</div></div></li>
+      <li><span class="pill reviewed">Reviewed</span><div><div class="t">Rigid isolation</div><div class="d">A rigid state never steps to another rigid state, so no frozen class is made only of rigid states.</div></div></li>
+      <li><span class="pill reviewed">Reviewed</span><div><div class="t">Surface edge balance (H3)</div><div class="d">An exact identity on closed triangulated surfaces. 44.9M checks.</div></div></li>
+      <li><span class="pill reviewed">Reviewed</span><div><div class="t">Local facts are not enough</div><div class="d">A 28-vertex non-planar graph where every hole-local fact holds yet a class has no filled state. So any proof must use the surface away from the hole. The graph is not 4-colourable, which the write-up must say.</div></div></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Supported by data, not proved</h2>
+    <ul class="items">
+      <li><span class="pill data">Data only</span><div><div class="t">R* and the quarter floor in the frame class</div><div class="d">Exhaustive census to order 32 (21,931 graphs from 283M), flip searches to n = 56, fullerenes to C320. Never broken; the 1/4 floor is reached exactly but never crossed.</div></div></li>
+      <li><span class="pill data">Data only</span><div><div class="t">LPC (Lock-Parity Conjecture)</div><div class="d">A Kempe class whose unfilled states all obey lock parity contains a filled state. Equivalent to no frozen orbits. 0 counterexamples on five surfaces, including 2,772 parity-clean cycle classes at frame-like holes.</div></div></li>
+      <li><span class="pill data">Data only</span><div><div class="t">Conjecture F</div><div class="d">A mod-4 formula tying the chain count to Fisk's degree of the colouring. 0 failures on 70,999 sphere states. If proved, the chain-parity law follows easily.</div></div></li>
+      <li><span class="pill data">Data only</span><div><div class="t">σ-escape</div><div class="d">The hole's α–μ swap exits every closed doubly-locked cycle (1,429 of 1,429).</div></div></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Routes ruled out</h2>
+    <ul class="items">
+      <li><span class="pill killed">Killed</span><div><div class="t">Small unavoidable set (Track B)</div><div class="d">The best proved set has 59 hole types, and the empirical minimum keeps rising. The all-6 type is forced, and nothing local handles it.</div></div></li>
+      <li><span class="pill killed">Killed</span><div><div class="t">All-6 holes via many holes or single orbits</div><div class="d">Holes don't compensate each other, and the symmetric fullerenes make every hole equivalent.</div></div></li>
+      <li><span class="pill killed">Killed</span><div><div class="t">Barnette-style signed sum</div><div class="d">No phase can flip on both lock swaps and Kempe cubes. The only candidate is local to the ring.</div></div></li>
+      <li><span class="pill killed">Killed</span><div><div class="t">Stream function on states</div><div class="d">Local features repeat as colour roles rotate. The class-level potential is just the floor restated.</div></div></li>
+      <li><span class="pill killed">Killed</span><div><div class="t">Per-cycle chain from 6–7 Oct</div><div class="d">A₃₄′, W2, Lemma S, statement (c) and universal B′ are all false at degree 6.</div></div></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The gap, and what is running</h2>
+    <ul class="items">
+      <li><span class="pill open">Open</span><div><div class="t">Frozen classes whose chain count alternates</div><div class="d">The chain-parity law can't exclude a cycle that alternates 8, 9, 8, 9. Such cycles exist on the sphere, but so far always inside classes that also have filled states. This is the exact remaining gap.</div></div></li>
+      <li><span class="pill open">Running</span><div><div class="t">Near-rigid search (Track J)</div><div class="d">Which global condition kills alternating 8/9 frozen classes.</div></div></li>
+      <li><span class="pill open">Running</span><div><div class="t">Hand proof of Conjecture F (Track K)</div><div class="d">Through Fisk's degree and Euler counts on bicoloured cycles.</div></div></li>
+      <li><span class="pill open">Running</span><div><div class="t">Lemma W in Lean (Track C)</div><div class="d">The companion to F. Together they would make the chain-parity law formal cheaply.</div></div></li>
+    </ul>
+  </section>
+
+  <footer>Source of record: <code>SolvingFrameworkPlan/docs/working/CoordinatorPlan.md</code>. The Four Colour Theorem is already known (Appel–Haken, RSST, Gonthier). This programme seeks a new, short, Lean-checked route.</footer>
+</div>
