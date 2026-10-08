@@ -1,0 +1,23 @@
+=== fresh_m5_51_60 ===
+n= 51 graphs=     3 holes=     85 skip=   0 states=   60348922 maxR=3 maxNR=3  R-hist 0:11 1:41 2:25 3:8
+n= 52 graphs=     2 holes=     55 skip=   0 states=   84706230 maxR=2 maxNR=1  R-hist 0:33 1:18 2:4
+n= 53 graphs=     4 holes=    123 skip=   0 states=  196895737 maxR=3 maxNR=2  R-hist 0:29 1:66 2:21 3:7
+n= 54 graphs=     5 holes=    159 skip=   0 states=  285840703 maxR=3 maxNR=4  R-hist 0:69 1:62 2:23 3:5
+n= 55 graphs=     2 holes=     57 skip=   0 states=  145032343 maxR=3 maxNR=5  R-hist 0:10 1:25 2:18 3:4
+n= 56 graphs=     3 holes=     95 skip=   0 states=  293696795 maxR=3 maxNR=4  R-hist 0:21 1:42 2:20 3:12
+n= 57 graphs=     6 holes=    192 skip=   0 states=  673872880 maxR=5 maxNR=5  R-hist 0:24 1:104 2:32 3:25 4:4 5:3
+n= 58 graphs=     9 holes=    301 skip=   0 states= 1430305555 maxR=5 maxNR=5  R-hist 0:88 1:115 2:47 3:42 4:6 5:3
+n= 59 graphs=     5 holes=    167 skip=   0 states= 1048660615 maxR=4 maxNR=5  R-hist 0:37 1:49 2:55 3:23 4:3
+n= 60 graphs=     1 holes=     32 skip=   0 states=  191437660 maxR=3 maxNR=1  R-hist 0:12 1:14 2:4 3:2
+TOTAL graphs=40 holes=1266 skipped=0 states=4410797440
+  R-hist (holes): 0:334 1:536 2:249 3:128 4:13 5:6
+  NR-hist (holes): 0:178 1:736 2:236 3:91 4:17 5:8
+  maximal interior runs by length: 1:2374468 2:582832 3:1097098 4:149347 5:89496
+  of which entirely near-rigid (all N<=9): 1:9763 2:114 3:85 4:14 5:2
+  holes with R>=4: (R, NR) -> {(4, 0): 2, (4, 1): 5, (4, 2): 3, (4, 3): 1, (4, 5): 2, (5, 0): 1, (5, 1): 3, (5, 5): 2}
+  interior states by N: 8:1126 9:15339 10:63401 11:247267 12:548894 13:946777 14:1344399 15:1454619 16:1283130 17:947935 18:553672 19:296697 20:114006 21:45471 22:10938 23:2410 24:213
+  interior states with N<=9: 16465/7876294
+  runs L>=4 (dumped, <=20 per hole): by L {4: 259, 5: 44}  all-N<=9: {}
+  runs L>=4 by (L, min N along run): {(4, 9): 4, (4, 11): 31, (4, 12): 35, (4, 13): 56, (4, 14): 42, (4, 15): 16, (4, 16): 41, (4, 17): 17, (4, 18): 16, (4, 19): 1, (5, 9): 2, (5, 11): 11, (5, 12): 6, (5, 13): 14, (5, 14): 5, (5, 15): 6}
+  top holes (R, graph, h, NR, maxN on a longest run): [(5, 'sphere5_s7104_9', 57, 5, 14), (5, 'sphere5_s7104_9', 24, 5, 17), (5, 'sphere5_s7104_3', 33, 1, 17), (5, 'sphere5_s7104_13', 56, 0, 16), (5, 'sphere5_s7104_13', 34, 1, 24), (5, 'sphere5_s7104_13', 5, 1, 24), (4, 'sphere5_s7104_9', 34, 3, 14), (4, 'sphere5_s7104_8', 11, 1, 21)]
+
