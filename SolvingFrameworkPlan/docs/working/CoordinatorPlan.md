@@ -55,3 +55,10 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 - Rigid isolation is confirmed as data on 59,441 fresh sphere rigid states.
 - TrackH's "torus 0, Klein 0" is wrong: rigid → rigid steps occur on the torus (23), the Klein bottle (1) and RP² (29), which strengthens the "genuinely spherical" reading.
 
+**8 Oct (TrackI review): Theorem 6 (chain-parity law) and rigid isolation are CORRECT.**
+- Status: hand proof, independently reviewed.
+- Gaps: three small ones (G1: the far-side regions are discs, via the Jordan region tree plus Schoenflies; G2: induct on an innermost pair of the target matching; G3: list every place planarity is used). Remark 7 is unproved.
+- Data: 0 failures in 2.22M fresh sphere DL states, of which 775,987 have K with holes.
+- Off-sphere correction: on RP², Lemma R step 2 (band surgery) fails on its own; on the torus, the failures come through Lemma 2 and Euler.
+- Next: patch the write-up, then Lean (seek a combinatorial route via the existing ring/Jordan lemmas).
+
