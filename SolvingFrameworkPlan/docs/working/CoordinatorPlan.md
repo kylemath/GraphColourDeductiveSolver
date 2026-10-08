@@ -48,3 +48,10 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 
 **8 Oct (TrackI): chain-parity law [hand, unreviewed; 580k checks].** On the sphere, for every DL state c, N(π(c)) − N(c) ≡ [π(c) is DL] (mod 2), where N is the total number of Kempe chains. The proof passes through Lemma 5 (switching parity), whose key step, Lemma R, is band surgery on S² with non-crossing matchings. Corollary: **rigid isolation** (a rigid DL state never maps to a rigid one), so no Kempe class consists only of rigid states, and N alternates in parity along every all-DL π-cycle. It visibly fails on RP², where the far side of X is a Möbius band and the outer matching crosses. This is the first planarity-dependent result in frame territory. Not yet excluded: closed all-DL classes in which N alternates. Next: an independent adversarial review of RigidIsolation.md, then Lean, then the "near-rigid LPC" search.
 
+**8 Oct (TrackH review): CONFIRMED with corrections.**
+- The counterexample is confirmed, but the graph is not 4-colourable (χ = 5). The logic still holds: local facts can hold at every state of a class with no filled state. Its link degrees are 5,8,11,8,8, not as stated, and it was not minimised.
+- H0 needs the hypothesis "s is DL" (the literal statement fails at non-DL states).
+- H3 is confirmed (0 failures on 44.9M partition checks).
+- Rigid isolation is confirmed as data on 59,441 fresh sphere rigid states.
+- TrackH's "torus 0, Klein 0" is wrong: rigid → rigid steps occur on the torus (23), the Klein bottle (1) and RP² (29), which strengthens the "genuinely spherical" reading.
+
