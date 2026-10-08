@@ -1,7 +1,12 @@
 {
-  "revision": 143,
-  "updatedAt": "2026-10-07T14:00:00Z",
+  "revision": 144,
+  "updatedAt": "2026-10-08T23:00:00Z",
   "journal": [
+    {
+      "time": "2026-10-08T23:00:00Z",
+      "node": "frame-plan",
+      "action": "Revision 144 records 7–8 Oct: the frame-class plan of record; no frozen orbits ⇒ R* ⇒ 4CT, lock parity, chain counts, the chain-count formula, the chain-parity law, rigid isolation and Remark 7 compiled and audited (J14); near-rigid structure hand-reviewed; LPC, NRC, N1 and mixed higher counts open; nine routes killed; census exhaustive to order 34; new attacks paused. Forecast 2% -> 3%. Leaderboard unchanged."
+    },
     {
       "time": "2026-10-07T14:00:00Z",
       "node": "structural-quarter-floor",
@@ -13394,6 +13399,717 @@
           "time": "2026-10-07T14:00:00Z",
           "text": "Revision 143: superseded in practice by the group-level target qf-group-certificate; Theorem W gives the exact class identity in compiled form."
         }
+      ]
+    },
+    {
+      "op": "insert",
+      "parentId": "structural-chain-rstar",
+      "revision": 144,
+      "node": {
+        "id": "frame-plan",
+        "title": "Plan of record from 7 Oct: R* in the frame class via no frozen orbits (lone coordinator, tracks A–U); new attacks paused 8 Oct",
+        "status": "exploring",
+        "statement": "Target: every connected spherical triangulation with minimum degree 5, no separating triangle and no Occ of the Birkhoff diamond or RSST 2.122 has a pure-clean degree-5 vertex (RStarFrame). Compiled: NoFrozenFrame ⇒ RStarFrame ⇒ 4CT for spherical maps. Open: LPC (or the weaker NoFrozenFrame), reduced to NRC and mixed higher chain counts.",
+        "approach": "Tracks: A break it; B unavoidable hole types; C formal discipline; D bank a result; E–U targeted attacks. Paused (Kyle, 8 Oct afternoon): next steps (1) law + bipartite interlace ⇒ NRC, (2) mixed higher chain counts. Go/no-go review 21 Oct.",
+        "evidence": "Everything to the right of LPC is compiled and audited (J14); everything to its left is either compiled, hand-reviewed, or a named open gap (NRC, mixed higher counts). Every earlier theorem (H, HP, F5, weak F6) is about holes containing a Birkhoff diamond, which never occur in the frame class.",
+        "killCriteria": "Track kill rules in CoordinatorPlan.md (Track B: > ~100 types or a type with no local handle).",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/CoordinatorPlan.md",
+          "SolvingFrameworkPlan/docs/working/Scoreboard.html",
+          "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md",
+          "SolvingFrameworkPlan/docs/reports/VHE-paper/main.tex"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-08T23:00:00Z",
+            "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+          }
+        ],
+        "expanded": false,
+        "children": [
+          {
+            "id": "frame-no-frozen",
+            "title": "No frozen orbits ⇒ R* on the frame class ⇒ 4CT for spherical maps; frame class non-empty; frozen challenge files (compiled and audited, J14)",
+            "status": "compiled",
+            "statement": "NoFrozenFrame: every member of the frame class has a degree-5 vertex v at which no π-orbit consists only of doubly locked states. rStarFrame_of_no_allDL_orbit: NoFrozenFrame ⇒ RStarFrame; four_color_of_no_allDL_orbit_frame: ⇒ every SphericalMap is 4-colourable. frameClass_nonempty (22-vertex witness). no_555_run / no_565_run: under clean tips a frame-class hole has no (5,5,5) or (5,6,5) run, so H, HP, F5 and weak F6 never apply in the frame class.",
+            "approach": "π permutes every Kempe class (piMove_bijOn_class), so a forward orbit is the whole orbit. Challenge files RStarFrameChallenge and FourColorSphericalMapChallenge import only Mathlib; bridges prove mainStatement_iff both ways (anti-drift) and frozen R* ⇒ frozen 4CT. Comparator tool itself not run.",
+            "evidence": "[compiled, audited J14, 8 Oct] clean rebuild 91/91 modules, 334 axiom lines all within propext/Classical.choice/Quot.sound, negative control caught; NonVacuity.lean instantiates the hypotheses on the order-22 witness at a doubly locked state. Scope: combinatorial SphericalMaps; the drawing ⇒ rotation-system bridge is not formalised (deferred).",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameNoFrozen.lean",
+              "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameScope.lean",
+              "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameWit22.lean",
+              "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameWit22Map.lean",
+              "SolvingFrameworkPlan/docs/working/Challenges/README.md",
+              "SolvingFrameworkPlan/docs/working/Challenges/RStarFrameBridge.lean",
+              "SolvingFrameworkPlan/docs/working/Challenges/FourColorBridge.lean",
+              "SolvingFrameworkPlan/docs/working/TrackC/README.md",
+              "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-08T23:00:00Z",
+                "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+              }
+            ],
+            "expanded": false,
+            "children": [
+              {
+                "id": "frame-appears-bridge",
+                "title": "Appearances to occurrences: frame class with clean-tip appearances excluded (built; audit pending)",
+                "status": "in-progress",
+                "statement": "occ_of_appears, four_color_of_RStarFrameApp (via rStarFrame_of_app). Without clean tips the tips lie on a separating 4-cycle: the classical reduction F2, not formalised.",
+                "approach": "",
+                "evidence": "[built, audit pending] Studio Math 3d466c91 (merged 1a38b906, 82 modules).",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameAppears.lean"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "frame-lpc",
+            "title": "LPC on the sphere (open; 4CT-strength): no Kempe class at a degree-5 hole consists only of doubly locked π-cycles",
+            "status": "exploring",
+            "statement": "Every Kempe class at every degree-5 hole has a filled state (Tilley's D-resolvability at every degree-5 vertex, as far as we can tell); implies NoFrozenFrame and so, by compiled steps, 4CT for spherical maps. Case split by chain counts: all rigid (excluded, compiled), N constant on cycles (excluded by the law, compiled), alternating 8,9 (NRC, open), mixed higher counts (open).",
+            "approach": "Planarity-dependent invariants at every hole (Section 5 of the VH∃ paper), not reducible configurations.",
+            "evidence": "[computed] no counterexample anywhere: census to order 34; 1.11M evaluations at frame-like holes on five other surfaces (2,772 violator-free cycle classes). [computed] Not provable from hole-local facts (TrackH, killed route).",
+            "killCriteria": "A Kempe class of all-DL π-cycles at a degree-5 hole of a sphere triangulation.",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/TrackF/README.md",
+              "SolvingFrameworkPlan/docs/working/TrackF/LockParity.md",
+              "SolvingFrameworkPlan/docs/working/Scoreboard.html",
+              "SolvingFrameworkPlan/docs/reports/VHE-paper/main.tex"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-08T23:00:00Z",
+                "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+              }
+            ],
+            "expanded": false,
+            "children": [
+              {
+                "id": "frame-lock-parity",
+                "title": "Lock parity (Thm LP): a lock holds iff a two-colour component has odd boundary / an odd number of odd-degree vertices (compiled and audited, J14)",
+                "status": "compiled",
+                "statement": "lock2_iff_odd_boundary, lock1_iff_odd_boundary and odd-degree forms; alphaMu_odd_boundary. Surface-general parity identity (parity_alphaA/B/Mu) plus Kempe duality at the hole, where the sphere enters.",
+                "approach": "",
+                "evidence": "[compiled, audited J14] QuarterLockParity.lean (regression 87/87 on 7 Oct). Hand proof unreviewed. [computed] 0 failures on 8.4e8 (orders 22–32), 3.3e8 (order 33) and 1.59e9 (order 34) sampled frame-class states.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean",
+                  "SolvingFrameworkPlan/docs/working/TrackF/LockParity.md",
+                  "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-violators-path-ends",
+                "title": "Violators are π-path ends: in a class with no filled state, the states breaking lock parity are exactly the ends of non-cyclic π-orbits (hand, not independently reviewed)",
+                "status": "in-progress",
+                "statement": "So on the sphere a class with no filled state is a union of doubly locked π-cycles; LPC ⇔ no Kempe class made only of all-DL π-cycles.",
+                "approach": "",
+                "evidence": "[hand, review pending] TrackF.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackF/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackF/LockParity.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-chain-count",
+                "title": "Chain counts: every doubly locked state has N ≥ 8 Kempe chains, with equality exactly at rigid states (compiled and audited, J14)",
+                "status": "compiled",
+                "statement": "eight_le_nChains, rigidAt_iff: rigid = counts (αβ, γδ, αγ, βδ, αδ, βγ) = (1,1,2,1,2,1). Assumes only Triangulated + Pent + DoublyLocked.",
+                "approach": "",
+                "evidence": "[compiled, audited J14] ChainCount.lean. Rigid states themselves are not exhibited in Lean.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/ChainCount.lean",
+                  "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-chain-formula",
+                "title": "Chain-count formula (Conjecture F): 2N ≡ cw + (n−1) − η + 2(L1+L2) mod 4 at every unfilled state (compiled and audited, J14; hand proof independently reviewed)",
+                "status": "compiled",
+                "statement": "conjectureF on triangulated SphericalMaps without isolated vertices; η read along the face orientation (handS). Lemma W (corrected, with boundary term β): link-free swaps keep cw mod 4 on any oriented triangulated surface; on the sphere π at a DL state changes cw by 2 (cw_piMove, sphere only — audit wording note W1).",
+                "approach": "Hand (TrackK): Tutte's parity theorem + Fisk's degree (via Mohar–Singer), pentagon filled with the two lock diagonals. Lean: tutte_sides by rank computations over ZMod 2, euler_tri; no topology beyond Fills.",
+                "evidence": "[compiled, audited J14] TutteSides.lean, ChainF.lean, ChainMod4.lean. [hand, reviewed] TrackK-review: no wrong step; 0 failures on 998k fresh hole states. The first Lemma W as written was false (Δcw can be odd). Off the sphere the residue is 2·(genus of 2-factor regions) mod 4 [hand, unreviewed; torus data only].",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/ChainF.lean",
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/TutteSides.lean",
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/ChainMod4.lean",
+                  "SolvingFrameworkPlan/docs/working/TrackK/FProof.md",
+                  "SolvingFrameworkPlan/docs/working/TrackK-review/README.md",
+                  "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-chain-parity-law",
+                "title": "Chain-parity law: on the sphere N(πc) + N(c) is odd iff πc is doubly locked (compiled and audited, J14; two reviewed hand proofs)",
+                "status": "compiled",
+                "statement": "chainParityLaw_sphere (via chainParityLaw_of_F). The first formal planarity-dependent theorem in frame territory.",
+                "approach": "Route Q (Lean): Conjecture F + Lemma W. Independent hand route (TrackI): Lemma 5 / Lemma R, band surgery on S² with non-crossing matchings.",
+                "evidence": "[compiled, audited J14]. [hand, independently reviewed] TrackI-review (2.22M fresh sphere DL states, 0 failures; gaps G1–G3 patched). [computed] fails off the sphere (282/544 torus π-steps); depends on the planar rotation at v (fails 48% under non-planar orders, TrackT). Excludes classes on which N is constant along cycles.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/ChainF.lean",
+                  "SolvingFrameworkPlan/docs/working/TrackI/RigidIsolation.md",
+                  "SolvingFrameworkPlan/docs/working/TrackI-review/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackC/README.md",
+                  "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-rigid-isolation",
+                "title": "Rigid isolation and Remark 7: the π-image of a rigid state is never rigid (compiled and audited, J14); hence no Kempe class of rigid states only (one-line corollary, hand)",
+                "status": "compiled",
+                "statement": "rigid_isolation; remark7 (at an unfilled state, a swap of a component meeting no link vertex preserves N + L1 + L2 mod 2). N alternates in parity along every all-DL π-cycle, so such cycles have even length [hand].",
+                "approach": "",
+                "evidence": "[compiled, audited J14; wording notes W2 (corollary not a named Lean theorem) and W3 (Remark 7 at an unfilled state)]. [computed] rigid → rigid steps occur on the torus (23), Klein bottle (1) and RP² (29): genuinely spherical (TrackH-review). Also follows from Lemma E + star identity [hand, TrackN].",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/ChainF.lean",
+                  "SolvingFrameworkPlan/docs/working/StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/ChainCount.lean",
+                  "SolvingFrameworkPlan/docs/working/TrackH-review/README.md",
+                  "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-near-rigid-structure",
+                "title": "Near-rigid structure (J1–J5) and the σ-type lemma: a class of near-rigid cycles alternates 8, 9, 8, 9 chains, the extra chain is the α–μ swap (hand, independently reviewed; not formalised)",
+                "status": "proved",
+                "statement": "Exactly 8 chains meet the link; in a class made only of near-rigid DL π-cycles every N = 9 state is in-shape, its link-free chain Z is an {α,β}-chain (σ-type, by Euler counting: Lemma E constants (2,3,3) + star identity), swapping Z is a fixed-point-free involution, and every cycle has length divisible by 10 and ≥ 20.",
+                "approach": "",
+                "evidence": "[hand, independent AI review] TrackJL-review: J1–J5, Lemma E, star identity, Lemma S correct on the sphere (up to 4.46e8 states, 0 failures; fixes J3, J4 sphere-only). [computed] the shape is realised in 43 non-planar 4-colourable graphs with all edges in triangles and H3: excluding it needs planarity itself.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackJ/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackL/SigmaType.md",
+                  "SolvingFrameworkPlan/docs/working/TrackJL-review/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-nrc",
+                "title": "NRC (open): on a triangulated sphere no π-cycle consists of doubly locked states with N ≤ 9",
+                "status": "exploring",
+                "statement": "Single-orbit statement; rigid isolation is its case N = 8. With J1–J5 it excludes near-rigid classes, the case of LPC where N alternates 8, 9.",
+                "approach": "Seven attempts (Tracks L, N, P, Q, R, S, T) produced structure but no proof; the wall is component- or Jordan-level input. Sharpest forms: NRC-M (cyclic perfect-matching sequences on a plane cubic graph, Hamiltonian at even t), Q-escape, NRC′.",
+                "evidence": "[computed] census to order 34: 0 near-rigid cycles; the longest near-rigid run is 8 (orders 33 and 34; by order 22–34: 1,3,3,4,4,4,5,5,6,6,7,8,8), a cycle needs ≥ 10; holes at NR = 8 rose 1 → 5 and NR = 7 rose 11 → 43 at order 34. False in non-planar graphs satisfying the law (TrackU n = 22, TrackJ ladder).",
+                "killCriteria": "A near-rigid all-DL π-cycle on a sphere triangulation.",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackJ/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackL/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackS/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackT/README.md",
+                  "SolvingFrameworkPlan/docs/working/Census34/README.md",
+                  "SolvingFrameworkPlan/docs/working/Scoreboard.html"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": [
+                  {
+                    "id": "frame-n1",
+                    "title": "N1 (open; data and exact certificates only): a law-respecting π-cycle of DL states with N ≤ 9 needs excess e ≥ 1 (one edge more than a sphere triangulation)",
+                    "status": "exploring",
+                    "statement": "e = |E(T−v)| − (3n−11). With the chain-parity law, N1 ⇒ NRC (Euler-level, Lean-friendly if true).",
+                    "approach": "",
+                    "evidence": "[computed] law R-cycles in 8 lineages (sphere, torus, Klein, RP² seeds), always e ≥ 1; for three minimal skeletons CP-SAT and HiGHS prove e = 0 infeasible with LP certificates. [hand] Lemma Q-S reduces N1 to σ-type cycles; identity P1 (e = cycle rank of pair graphs at rigid states). No universal LP-dual certificate (TrackR); Laman lead negative.",
+                    "killCriteria": "A law R-cycle with e = 0 (that is, on a sphere triangulation).",
+                    "files": [
+                      "SolvingFrameworkPlan/docs/working/TrackN/README.md",
+                      "SolvingFrameworkPlan/docs/working/TrackP/README.md",
+                      "SolvingFrameworkPlan/docs/working/TrackP/PartB.md",
+                      "SolvingFrameworkPlan/docs/working/TrackQ/README.md",
+                      "SolvingFrameworkPlan/docs/working/TrackR/README.md"
+                    ],
+                    "notes": [
+                      {
+                        "time": "2026-10-08T23:00:00Z",
+                        "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                      }
+                    ],
+                    "expanded": false,
+                    "children": []
+                  },
+                  {
+                    "id": "frame-next-interlace",
+                    "title": "Next step 1 when resumed: law + bipartite chord-interlace graph at rigid states ⇒ no near-rigid loop (one targeted attempt; unstarted, paused)",
+                    "status": "unstarted",
+                    "statement": "The interlace graph is bipartite exactly on the sphere (TrackT). TrackU's n = 22 non-planar 1212 orbit is the ready-made test the argument must fail on.",
+                    "approach": "",
+                    "evidence": "",
+                    "killCriteria": "Coordinator review 21 Oct.",
+                    "files": [
+                      "SolvingFrameworkPlan/docs/working/CoordinatorPlan.md",
+                      "SolvingFrameworkPlan/docs/working/TrackT/README.md",
+                      "SolvingFrameworkPlan/docs/working/TrackU/README.md"
+                    ],
+                    "notes": [
+                      {
+                        "time": "2026-10-08T23:00:00Z",
+                        "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                      }
+                    ],
+                    "expanded": false,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "frame-mixed-higher",
+                "title": "Mixed higher chain counts (open, untouched): frozen classes whose cycles carry N ≥ 10 states — next step 2 when resumed",
+                "status": "unstarted",
+                "statement": "The case of LPC with no handle yet: neither rigid isolation, the law (constant N) nor NRC (N ≤ 9) applies.",
+                "approach": "Start with data: anatomy of the sphere all-DL π-cycles at N ≥ 10 (98 at order 34, all length 20, all in classes with filled states) and which escape moves exist.",
+                "evidence": "[computed] Long runs keep the N, N−1 alternation but are not always near-rigid (BV: N = 10–14).",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/CoordinatorPlan.md",
+                  "SolvingFrameworkPlan/docs/working/TrackO/README.md",
+                  "SolvingFrameworkPlan/docs/working/Census34/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-guided-escape",
+                "title": "Guided escape: lock descent then π fills within R + 2 swaps (hand); no all-interior π-cycle (open; data)",
+                "status": "exploring",
+                "statement": "R = the longest run of interior DL states (all Kempe neighbours DL) along a π-orbit. If no π-cycle is all-interior, the greedy rule Φ>π fills every state.",
+                "approach": "",
+                "evidence": "[computed] Φ>π: 0 failures on 8M sphere DL starts, worst 7 swaps; fails off the sphere. Qualitative statement holds everywhere; R itself grows (see the killed R ≤ 5).",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackM/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackO/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "frame-census",
+            "title": "Frame-class census, exhaustive to order 34: R* at every degree-5 vertex; quarter floor met exactly, never broken; NRC holds (data, exploratory)",
+            "status": "computed",
+            "statement": "Every 4-connected minimum-degree-5 triangulation of orders 22–34 from plantri (≈3.88e9 graphs: 285.3M at 22–32, 764.9M at 33, 2,825.2M at 34), filtered to the frame class by a filter following the Lean Occ: 289,827 graphs (21,931 / 58,194 / 209,702), 4.95M degree-5 holes.",
+            "approach": "",
+            "evidence": "[computed, exploratory, not declared in advance, not audit-replayed] every hole PureClean; floor exactly 1/4 at 31,649 holes at order 34 and never below; lock parity 0 failures (1.59e9 states at order 34); all-DL π-cycles 0 up to order 29, then 1, 6, 10, 25, 98 at orders 30–34, all length 20, all inside classes with filled states; max R 6 → 8 at order 34 (p34.r178#11764701 h10, a pure 9,8,9,8 run); max NR flat at 8. Second engine agrees on all maxima. Also Track A: census 12–28 and flip search to n = 37 (57,800 evaluations), 0 hits; Conjecture E refuted as stated (Census29).",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/Census29/README.md",
+              "SolvingFrameworkPlan/docs/working/Census33/README.md",
+              "SolvingFrameworkPlan/docs/working/Census34/README.md",
+              "SolvingFrameworkPlan/docs/working/TrackA/README.md"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-08T23:00:00Z",
+                "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+              }
+            ],
+            "expanded": false,
+            "children": []
+          },
+          {
+            "id": "frame-killed",
+            "title": "Routes closed 7–8 Oct (each exploratory, recorded with its scope)",
+            "status": "killed",
+            "statement": "Routes toward NoFrozenFrame / LPC that failed by data, construction or proof.",
+            "approach": "",
+            "evidence": "See children.",
+            "killCriteria": "",
+            "files": [
+              "SolvingFrameworkPlan/docs/working/CoordinatorPlan.md",
+              "SolvingFrameworkPlan/docs/working/Scoreboard.html",
+              "SolvingFrameworkPlan/docs/reports/VHE-paper/main.tex"
+            ],
+            "notes": [
+              {
+                "time": "2026-10-08T23:00:00Z",
+                "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+              }
+            ],
+            "expanded": false,
+            "children": [
+              {
+                "id": "frame-dead-unavoidable",
+                "title": "Small unavoidable set of hole types (Track B: amber, leaning kill)",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed; forcing argument hand] certified one-step discharging gives 59 link-degree types (78 without F2), optimal for one-step rules; rigorous lower bound 9, empirical ≥ 13 and rising; 66666 is forced into every set (IPR fullerene duals), and no frame-class type has PureClean proved.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackB/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-g66-multihole",
+                "title": "G66 by multi-hole compensation or single-orbit arguments",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed] holes do not compensate one another (Track F). G66 itself stays open: no failure at IPR fullerene duals C60–C100 exhaustive (1.31e9 DL states) and to C120 (Job BS).",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackF/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-barnette",
+                "title": "Barnette-type signed sum over Kempe classes",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed] the only flipping phase is i^H, local to the ring word; no phase flips on both the lock involution and Kempe cubes (odd cycles in all 3,640 locked classes tested).",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackE/README.md",
+                  "SolvingFrameworkPlan/docs/working/OpenAIMathScan.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-stream",
+                "title": "Stream function (a monotone potential on states)",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed] no state-level potential from local features; the class-level potential is the quarter floor restated.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackG/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-hole-local",
+                "title": "Proof of LPC from facts at the hole",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed, reviewed] a 28-vertex non-planar graph (χ = 5; link degrees 5,8,11,8,8) satisfies D1/D2, P1–P3 and lock parity at every state, yet one class is a single all-DL π-cycle with no filled state (three engines). Whatever makes LPC true is not local to the hole. The 3/8 data conjecture also fell (0.364 at χ = −1).",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackH/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackH-review/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-r5",
+                "title": "π-run bound R ≤ 5",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed, two engines] R = 6 at p32.r62#15615 h11 (frame census) and R = 7 by flip search (n = 31, not frame class); the census then reached R = 8 at order 34.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackO/README.md",
+                  "SolvingFrameworkPlan/docs/working/Census34/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-n1plus",
+                "title": "N1⁺: law R-cycles need excess e ≥ 2",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed, two solvers] an exact e = 1 law R-cycle exists (n = 29, torus lineage). N1 (e ≥ 1) survives.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackQ/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-t1",
+                "title": "T1: a planarity-free form of NRC (NRC needs planarity only through the law)",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed, two engines] a non-planar 3-connected cubic-with-one-degree-5 graph (n = 22) carries a closed law-respecting orbit with k(H) = 1212121212. NRC needs a second planar input. Open discrepancy: off the sphere a matching-form cycle may not be a π-cycle.",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackU/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              },
+              {
+                "id": "frame-dead-qc",
+                "title": "QC (F12 and F13 connected along runs) and other Euler/LP-level strengthenings",
+                "status": "killed",
+                "statement": "",
+                "approach": "",
+                "evidence": "[computed] QC false on the sphere (C30#0, an all-DL 20-cycle); seven monotone-quantity candidates negative (TrackS); 16 candidates negative (TrackL); no interlace invariant monotone or periodic (TrackT).",
+                "killCriteria": "",
+                "files": [
+                  "SolvingFrameworkPlan/docs/working/TrackS/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackL/README.md",
+                  "SolvingFrameworkPlan/docs/working/TrackT/README.md"
+                ],
+                "notes": [
+                  {
+                    "time": "2026-10-08T23:00:00Z",
+                    "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+                  }
+                ],
+                "expanded": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "dissemination",
+      "revision": 144,
+      "node": {
+        "id": "dissemination-chain-parity-note",
+        "title": "Short note: \"Kempe chains around a degree-five vertex: a mod-4 chain count and a parity law\" (draft, 9 pp; not posted)",
+        "status": "in-progress",
+        "statement": "One self-contained, Lean-checked theorem for combinatorialists, separate from the VH∃ record (coordinator recommendation, 8 Oct). Only compiled + J14-audited results are called Theorem.",
+        "approach": "Draft 3cfeb9a8; pdflatex clean (9 pages).",
+        "evidence": "TODO before release: Kyle approves disclosure and title; independent review of the new hand proofs of Lemma W and the converse of Kempe duality; genus residue 2G mod 4 hand only (torus data); literature check (Tutte 1969, Fisk 1977, Mohar–Singer; prior statement of F or the law). Optional Lean: frozen challenge for ConjectureF/ChainParityLaw; named corollary for audit W2.",
+        "killCriteria": "",
+        "files": [
+          "SolvingFrameworkPlan/docs/reports/ChainParityNote/README.md",
+          "SolvingFrameworkPlan/docs/reports/ChainParityNote/main.tex"
+        ],
+        "notes": [
+          {
+            "time": "2026-10-08T23:00:00Z",
+            "text": "Revision 144 (7–8 Oct, lone coordinator and its tracks A–U; source of record CoordinatorPlan.md)."
+          }
+        ],
+        "expanded": false,
+        "children": []
+      }
+    },
+    {
+      "id": "structural-rstar-frame-lean",
+      "revision": 144,
+      "files": [
+        "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-08T23:00:00Z",
+          "text": "Revision 144: the frame theorem is now the end of the plan of record (frame-plan): FrameNoFrozen gives NoFrozenFrame ⇒ RStarFrame ⇒ 4CT, audited J14 (8 Oct) together with frozen challenge statements and anti-drift bridges. The hypothesis stays open."
+        }
+      ]
+    },
+    {
+      "id": "structural-quarter-floor",
+      "revision": 144,
+      "files": [
+        "SolvingFrameworkPlan/docs/working/Census29/README.md",
+        "SolvingFrameworkPlan/docs/working/Census34/README.md",
+        "SolvingFrameworkPlan/docs/working/TrackA/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-08T23:00:00Z",
+          "text": "Revision 144: the floor stays a conjecture. Census to order 34: met exactly (31,649 holes at order 34) and never broken; Conjecture E (equality classes are block repetitions) refuted as stated, surviving form \"union of w = 0 π-cycles with no τ state\". Positive π-cycles exist in the frame class from n = 37 but no class has Σw > 0 to n = 56 (Track A). The plan of record now targets the weaker no-frozen-orbit statement through LPC (frame-plan), not the floor."
+        }
+      ]
+    },
+    {
+      "id": "qf-g66",
+      "revision": 144,
+      "files": [
+        "SolvingFrameworkPlan/docs/working/TrackF/README.md",
+        "SolvingFrameworkPlan/docs/working/TrackB/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-08T23:00:00Z",
+          "text": "Revision 144: G66 is on the critical path of any unavoidable-set route (66666 forced, Track B), and holds on all data: IPR fullerene duals C60–C100 exhaustive (1.31e9 DL states, Track F) and C108–C120 (Job BS), 0 all-DL cycles; adversarial Job BR 0. Multi-hole and orbit-level routes killed (frame-dead-g66-multihole). Under the plan of record G66 is a special case of LPC."
+        }
+      ]
+    },
+    {
+      "id": "qf-group-certificate",
+      "revision": 144,
+      "notes": [
+        {
+          "time": "2026-10-08T23:00:00Z",
+          "text": "Revision 144: no change in status (open; repackages the floor). Not the current route: the plan of record targets NoFrozenFrame via LPC (frame-plan)."
+        }
+      ]
+    },
+    {
+      "id": "dissemination-vhe-paper",
+      "revision": 144,
+      "files": [
+        "SolvingFrameworkPlan/docs/reports/VHE-paper/main.tex",
+        "SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-10-08T23:00:00Z",
+          "text": "Revision 144: 7–8 Oct results merged (ad0fd00b): lock parity, chain-count formula, chain-parity law, rigid isolation, frozen challenges, near-rigid structure, census to order 33, closed routes, LPC/NRC/N1 as the open problem. After audit J14 (d987ef71) the labels of these Lean results are compiled†; wording fixes W1–W3 to apply. Census34 not yet in the paper. The chain-parity law also goes into a separate note (dissemination-chain-parity-note)."
+        }
+      ]
+    },
+    {
+      "id": "structural-twoweek-plan",
+      "revision": 144,
+      "notes": [
+        {
+          "time": "2026-10-08T23:00:00Z",
+          "text": "Revision 144: superseded from 7 Oct by the coordinator's plan of record (frame-plan, CoordinatorPlan.md); the 21 Oct go/no-go review replaces the day-14 decision."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/CoordinatorPlan.md"
       ]
     }
   ]

@@ -1,27 +1,32 @@
 {
-  "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* in the core class proved (Route A by hand, or Route B via a small computer-checked set of Kempe-reducible configurations), with the reduction R* => 4CT compiled in Lean?",
+  "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* proved in the core class or in its weakest compiled form, the frame class (since 7 Oct: no frozen pi-orbit at some degree-5 vertex of every frame-class triangulation, via LPC), with the reduction to 4CT compiled in Lean?",
   "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-07T10:30:00-06:00",
-  "probability": 0.02,
+  "updated": "2026-10-08T17:00:00-06:00",
+  "probability": 0.03,
   "components": [
     {
-      "label": "R* is true in the core class (some degree-5 vertex is pure-clean)",
+      "label": "R* is true in the frame class (some degree-5 vertex has no frozen orbit; LPC, 4CT-strength, is the stronger every-vertex form)",
       "p": 0.8
     },
     {
-      "label": "We prove it (Route A by hand, or the hybrid Route B': classical reductions as exclusions plus R* on the rest), given it is true",
-      "p": 0.03
+      "label": "We prove it (LPC or NoFrozenFrame on the sphere: NRC plus the mixed higher chain counts), given it is true",
+      "p": 0.04
     },
     {
-      "label": "The formal chain closes: core-class R* => 4CT and the hybrid frame theorem four_color_of_RStarFrame both compiled and audited (J10-J12)",
+      "label": "The formal chain closes: NoFrozenFrame => RStarFrame => 4CT for spherical maps compiled and audited (J12, J14); remaining scope gap: drawing => combinatorial map (deferred)",
       "p": 0.97
     },
     {
-      "label": "Separate meter: a worthwhile result (theorem paper on D-resolvability with the Lean reduction, a counterexample to Tilley's every-vertex conjecture, or a decisive radius curve)",
+      "label": "Separate meter: a worthwhile result (the chain-parity note, the VH-exists record paper with its Lean reduction, or a counterexample)",
       "p": 0.4
     }
   ],
   "evidence_for": [
+    "8 Oct, formal (audit J14 PASS: clean rebuild 91/91 modules, all axioms standard, statements checked against the paper, hypotheses shown satisfiable on the 22-vertex frame witness): no frozen orbits => R* on the frame class => 4CT for spherical maps, with frozen Mathlib-only challenge statements and proved anti-drift bridges; lock parity; N >= 8 with equality exactly at rigid states; the mod-4 chain-count formula (Conjecture F, via Tutte's identity); the chain-parity law; rigid isolation; Remark 7.",
+    "8 Oct: the chain-parity law and rigid isolation are the first planarity-dependent theorems that hold at every degree-5 hole of the frame class (earlier theorems H, HP, F5, weak F6 only at diamond holes, which never occur there). They fail on the torus, Klein bottle and RP2, as a proof must. The law has two independently reviewed hand proofs (curve surgery; Tutte + Fisk) as well as the Lean proof.",
+    "8 Oct, hand, independently reviewed (not formal): J1-J5 and the sigma-type lemma pin a near-rigid frozen class to 20-state cycles alternating 8, 9 chains, so LPC splits into named cases: rigid (excluded, formal), constant N (excluded, formal), alternating 8,9 (NRC, open), mixed higher counts (open).",
+    "Data (exploratory, not audit-replayed): exhaustive frame-class census to order 34 (about 3.9e9 plantri graphs, 289,827 frame-class graphs, 4.95M holes): R* at every degree-5 vertex, quarter floor met exactly and never broken, lock parity 0 failures (1.59e9 states at order 34), NRC holds (no near-rigid cycle; max near-rigid run flat at 8 over orders 33-34, a cycle needs 10); all 98 all-DL pi-cycles at order 34 sit in classes with filled states. LPC: no counterexample on five other surfaces (1.11M evaluations).",
+    "N1 (data with exact certificates): law-respecting near-rigid cycles off the sphere always need at least one extra edge; e = 0 proved infeasible (CP-SAT + HiGHS with LP certificates) for the three minimal skeletons.",
     "7 Oct morning: 51 sorry-free Lean modules (regression 75/75): Theorem W, F5, flow identity, assignment and budget certificates (BudgetUnionPos => floor => R* => 4CT), time reversal, pair dualities, pocket/crossing lemmas, weak F6 (PureClean at four consecutive degree-5 neighbours). SigmaUnionC and the floor survived every adversarial search (396 walks; 61+12 constructed graphs).",
     "7 Oct, 02:45: Theorem F5 is FORMAL (quarterFloor_of_fiveLink: the quarter floor at every hole with five degree-5 neighbours, from triangulation alone). Thirteen sorry-free Lean files: Lemma A, rotation bijection, Hex, no-frozen, Lemma Pi, Theorem W, F5, the exact sigma-exit condition, sigma-groups with sigmaC => floor. The open problem is the formal SigmaCConj on three-consecutive-5s holes, with a tested mechanism (Conjecture G) and 0 failures at those families.",
     "Night of 6-7 Oct: Theorem W formal in Lean (3F - U = -5 x winding; floor <=> sum lambda <= 0 per class); Lemma A, rotation bijection, Hex dichotomy, no-frozen, Lemma Pi all compiled with standard axioms. Theorem F5 (hand, reviewed PASS): the quarter floor holds at every (5,5,5,5,5) hole, the first floor theorem beyond R*. Transport statement holds on all 136 classes + Studio orders 24-26, Hall ratio >= 3.",
@@ -41,6 +46,10 @@
     "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
+    "8 Oct, the NRC wall: seven consecutive attempts on NRC (Tracks L, N, P, Q, R, S, T) produced structure but no proof; Euler counting, LP duality, Laman, monotone quantities and chord/interlace statistics are all insufficient, and T1 is false (a non-planar n = 22 law-respecting closed orbit), so NRC needs a second planar input beyond the law. New attacks are paused.",
+    "The case of LPC with mixed higher chain counts (N >= 10 on cycles) is untouched and has no handle; LPC itself is Tilley's D-resolvability at every degree-5 vertex (as far as we can tell), so it is at least as strong as 4CT.",
+    "Killed 7-8 Oct: a small unavoidable set of hole types (59 optimal for one-step rules, 66666 forced, no type with PureClean proved), G66 by multi-hole compensation, the Barnette signed sum, a stream function, any hole-local proof of LPC (a 28-vertex non-planar counterexample satisfies every local fact), R <= 5, N1+ (e >= 2), T1, QC.",
+    "Census trends: max interior run R jumps 6 -> 8 at order 34; holes at the maximal near-rigid run rise 1 -> 5 and NR = 7 holes 11 -> 43; all-DL pi-cycles grow faster than holes (25 -> 98). The census is consistent with truth, not evidence of provability, and covers orders <= 34 only.",
     "7 Oct morning: the per-cycle chain (A34', W2, Lemma S_Gamma) and statement (c)/IB-N0 are false at degree 6 on constructed graphs (Studio Jobs AW, BV); weak F6 lies in Birkhoff-diamond (reducible) territory, so it does not move 4CT; no forcing mechanism for the group statements was found; the frontier G66 (all-6 holes) is non-local (2-ball silent) and DL runs grow with fullerene size.",
     "7 Oct: universal sigma-C is false (one island group at a (5,6,5,6,6) hole); Conjecture G fails off the three families; Conjecture P (configurations) false in both regimes. The general case still needs lock-breaking swaps of other colour pairs and remains 4CT-strength.",
     "Night of 6-7 Oct: floor and R* fail massively on the torus (frozen classes from n=16), so the proof must use the sphere; no single-cycle bound (w=+160 exists); per-state Euler counts, charges, Gauss-Bonnet shape, per-path charging, identity induction and closed-set descent all fail; the configuration and link-pattern leads were base-rate effects. The general DL-half remains 4CT-strength.",
@@ -116,6 +125,11 @@
       "time": "2026-10-07T10:30:00-06:00",
       "p": 0.02,
       "note": "Navigator revision 143: night's results recorded; probability unchanged (formal infrastructure up, but the per-cycle routes died and the surviving statements have no mechanism)."
+    },
+    {
+      "time": "2026-10-08T17:00:00-06:00",
+      "p": 0.03,
+      "note": "Navigator revision 144 (coordinator's estimate): the reduction NoFrozenFrame => R* => 4CT and the first planarity-dependent invariants at every frame-class hole (lock parity, chain-count formula, chain-parity law, rigid isolation) are compiled and audited (J14), and LPC is split into named cases. Prove factor 3% -> 4%. Held back by the NRC wall (seven attempts, no proof) and the untouched mixed higher counts."
     }
   ]
 }
