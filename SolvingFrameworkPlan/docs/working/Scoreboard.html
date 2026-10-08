@@ -69,7 +69,7 @@ flowchart LR
 
   LP["Lock parity<br/>(planarity enters here)"]:::formal
   EQ["Violators = ends of π-paths"]:::hand
-  F["Conjecture F<br/>Tutte parity + Fisk degree"]:::hand
+  F["Conjecture F<br/>Tutte parity + Fisk degree"]:::reviewed
   W["Lemma W (corrected)<br/>+ F ⇒ parity law"]:::formal
   LR["Lemma R + Lemma 5<br/>curve surgery on S²"]:::reviewed
   CPL["Chain-parity law<br/>N changes by odd steps"]:::reviewed
@@ -125,7 +125,7 @@ flowchart LR
       <div class="note" style="--c:var(--gap)"><div class="s">Open gap</div><div class="t">Chain count alternates</div><p>A frozen class whose cycles alternate 8, 9, 8, 9 chains is not excluded by any parity law. Such cycles exist on the sphere, but so far always inside classes that also have filled states. Track J is searching for the global fact that rules them out.</p></div>
       <div class="note" style="--c:var(--gap)"><div class="s">Open gap</div><div class="t">LPC on the sphere</div><p>No Kempe class consists only of closed doubly-locked π-cycles. This would make every hole pure-clean, which is more than "no frozen orbits" needs. No counterexample anywhere, including 2,772 parity-clean cycle classes on five other surfaces.</p></div>
       <div class="note" style="--c:var(--reviewed)"><div class="s">Reviewed</div><div class="t">Chain-parity law</div><p>On the sphere, every π-step between doubly-locked states changes the number of Kempe chains by an odd amount. Correct after independent review, with 2.2M fresh checks. It fails on the torus and projective plane, as it must.</p></div>
-      <div class="note" style="--c:var(--hand)"><div class="s">Review pending</div><div class="t">Conjecture F</div><p>F follows from Tutte's parity theorem and Fisk's degree, with the hole filled by the two lock diagonals. Lean already proves that F implies the chain-parity law (<code>chainParityLaw_of_F</code>), so F is now the only missing piece of that route, and the only place it uses planarity.</p></div>
+      <div class="note" style="--c:var(--reviewed)"><div class="s">Reviewed</div><div class="t">Conjecture F</div><p>F follows from Tutte's parity theorem and Fisk's degree, with the hole filled by the two lock diagonals. Lean already proves that F implies the chain-parity law (<code>chainParityLaw_of_F</code>), so F is the only missing piece of that route, and the only place it uses planarity. The hand proof passed independent review (8 Oct; four wording gaps, no logical ones; about 1M fresh checks). Next: formalise F.</p></div>
       <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">Lemma W, corrected</div><p>How the clockwise-face count changes under a Kempe swap. The first version was false for some swaps; the corrected form holds on any oriented surface and covers the two moves the proof needs. <code>ChainMod4.lean</code></p></div>
       <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">Lock parity</div><p>A lock holds exactly when a two-colour Kempe component has an odd number of odd-degree vertices. This is where planarity enters. <code>QuarterLockParity.lean</code></p></div>
       <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">No frozen orbits ⇒ R* ⇒ 4CT</div><p><code>rStarFrame_of_no_allDL_orbit</code> and <code>four_color_of_RStarFrame</code>. The statements are frozen in Mathlib-only challenge files with anti-drift bridges.</p></div>

@@ -71,3 +71,5 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 
 **8 Oct: Lemma W formal (`ChainMod4.lean`, corrected statement with a boundary term β; β = 0 for π at DL states and for link-free swaps), and `chainParityLaw_of_F` formal.** So Theorem 6 (Route Q) now rests on Conjecture F alone, and F is all of its planarity. Two statement subtleties: F's `hand` must be read along the face orientation (`handS`), and it assumes no isolated vertices. The original W as written was false (Δcw can be odd). Coordinator recompiled; standard axioms.
 
+**8 Oct: Conjecture F proof CORRECT on independent review** (TrackK-review: no wrong step; gaps K1–K4 are presentational: put the hand orientation and the no-isolated-vertices hypothesis into the statement, cite the corrected W, and spell out the Prop 1 topology). 0 failures on 998k fresh hole states. Torus residue = 2G confirmed (G_i = 1 iff every curve of S_i separates). The chain-parity law now has two reviewed hand proofs, and Route Q needs only F in Lean. Next: formalise F (Tutte's identity on SphericalMap).
+
