@@ -1,0 +1,133 @@
+== DL pi-runs that are paths, sphere census holes (11359 holes) ==
+length (states): count [(2, 248794), (3, 81532), (4, 33227), (5, 16022), (6, 3310), (7, 1056), (8, 239), (9, 177), (10, 50), (11, 83), (12, 23), (13, 6), (14, 5), (15, 5), (16, 2), (17, 3), (21, 1)]
+== DL pi-runs that are paths, off-sphere cycle holes (686 holes) ==
+length (states): count [(2, 5861), (3, 1183), (4, 951), (5, 779), (6, 423), (7, 144), (8, 102), (9, 222), (10, 109), (11, 57), (12, 264), (13, 176), (14, 97), (15, 340), (16, 26), (17, 23), (18, 14), (19, 9), (20, 8), (21, 10), (22, 19), (23, 4), (24, 5), (25, 8), (26, 7), (27, 19), (28, 3), (29, 2), (31, 4), (32, 6), (33, 13), (34, 4), (35, 2), (36, 1), (37, 5), (38, 2), (39, 12), (40, 2), (42, 3), (43, 2), (44, 2), (47, 7), (48, 4), (51, 4), (53, 2), (54, 1), (56, 1), (57, 3), (64, 1), (67, 3)]
+== cycle-class certificates: sphere (census cycle graphs 30-32 + C30#0, C40#0), 21 classes ==
+   ('clean', "cycle-state lock classes {'C_MA': 0, 'C_MB': 0, 'C_AA': None, 'C_AB': None}") 420
+   ('clean', 'F>0') 21
+   ('clean', 'classes') 21
+   ('clean', 'drains = states on cycles') 17
+   ('clean', 'escape targets only single-lock/no-lock (never filled)') 21
+   ('clean', 'max dF', 2) 3
+   ('clean', 'max dF', 3) 18
+   ('clean', 'max dS', 1) 3
+   ('clean', 'max dS', 2) 18
+== cycle-class certificates: off-sphere (TrackF cyc_graphs + cyc555_graphs), 782 classes ==
+   ('clean', "cycle-state lock classes {'C_MA': 0, 'C_MB': 0, 'C_AA': None, 'C_AB': None}") 17360
+   ('clean', "cycle-state lock classes {'C_MA': 0, 'C_MB': 1, 'C_AA': None, 'C_AB': None}") 200
+   ('clean', "cycle-state lock classes {'C_MA': 1, 'C_MB': 0, 'C_AA': None, 'C_AB': None}") 196
+   ('clean', "cycle-state lock classes {'C_MA': 1, 'C_MB': 1, 'C_AA': None, 'C_AB': None}") 4
+   ('clean', 'F>0') 329
+   ('clean', 'classes') 329
+   ('clean', 'drains = states on cycles') 325
+   ('clean', 'escape targets only single-lock/no-lock (never filled)') 329
+   ('clean', 'max dF', 3) 325
+   ('clean', 'max dF', 4) 4
+   ('clean', 'max dS', 2) 325
+   ('clean', 'max dS', 3) 4
+   ('viol', "cycle-state lock classes {'C_MA': 0, 'C_MB': 0, 'C_AA': None, 'C_AB': None}") 15148
+   ('viol', "cycle-state lock classes {'C_MA': 0, 'C_MB': 1, 'C_AA': None, 'C_AB': None}") 1421
+   ('viol', "cycle-state lock classes {'C_MA': 1, 'C_MB': 0, 'C_AA': None, 'C_AB': None}") 1386
+   ('viol', "cycle-state lock classes {'C_MA': 1, 'C_MB': 1, 'C_AA': None, 'C_AB': None}") 485
+   ('viol', 'F>0') 453
+   ('viol', 'classes') 453
+   ('viol', 'drains = states on cycles') 389
+   ('viol', 'escape targets only single-lock/no-lock (never filled)') 453
+   ('viol', 'max dF', 3) 389
+   ('viol', 'max dF', 4) 40
+   ('viol', 'max dF', 5) 24
+   ('viol', 'max dS', 2) 389
+   ('viol', 'max dS', 3) 40
+   ('viol', 'max dS', 4) 24
+   ('viol', 'violator crossing pair Z2 classes D1:(1, 1)') 10177
+   ('viol', 'violator crossing pair Z2 classes D2:(1, 1)') 9947
+== all-DL cycle anatomy: sphere, 21 cycles ==
+   ('clean', 'cycles with a non-separating lock cycle at some state') 0
+   ('clean', 'cycles') 21
+   ('clean', 'escape target L1only') 336
+   ('clean', 'escape target L2only') 304
+   ('clean', 'escape target nolock') 521
+   ('clean', 'escape type AB:-') 57
+   ('clean', 'escape type AB:all') 32
+   ('clean', 'escape type MA:-') 37
+   ('clean', 'escape type MA:all') 34
+   ('clean', 'escape type MB:-') 38
+   ('clean', 'escape type MB:all') 36
+   ('clean', 'escape type aA:-') 82
+   ('clean', 'escape type aA:0') 88
+   ('clean', 'escape type aB:-') 88
+   ('clean', 'escape type aB:2') 82
+   ('clean', 'escape type aM:-') 349
+   ('clean', 'escape type aM:all') 238
+   ('clean', 'max dS on cycle', 1) 3
+   ('clean', 'max dS on cycle', 2) 18
+   ('clean', 'noncyc DL sigma-escape rate (mean over cycles x1000)') 5038
+   ('clean', 'sigma escapes at >=1 state') 21
+   ('clean', 'sigma escapes at every 2nd state, nothing else (.s.s or s.s.)') 2
+   ('clean', 'states total') 420
+   ('clean', 'states with dS>=3 and non-sep lock cycle') 0
+   ('clean', 'states with dS>=3') 0
+   ('clean', 'states with no escape (dS>=2)') 89
+   ('clean', 'states with non-sep lock cycle and dS>=3') 0
+   ('clean', 'states with non-sep lock cycle') 0
+   ('clean', 'states with sigma escape') 238
+== all-DL cycle anatomy: off-sphere, 1408 cycles ==
+   ('clean', 'cycles with a non-separating lock cycle at some state') 73
+   ('clean', 'cycles') 630
+   ('clean', 'escape target L1only') 657
+   ('clean', 'escape target L2only') 652
+   ('clean', 'escape target nolock') 17751
+   ('clean', 'escape type AB:-') 50
+   ('clean', 'escape type AB:all') 17
+   ('clean', 'escape type MA:-') 54
+   ('clean', 'escape type MA:all') 50
+   ('clean', 'escape type MB:-') 87
+   ('clean', 'escape type MB:all') 87
+   ('clean', 'escape type aA:-') 180
+   ('clean', 'escape type aA:0') 156
+   ('clean', 'escape type aB:-') 156
+   ('clean', 'escape type aB:2') 179
+   ('clean', 'escape type aM:-') 9064
+   ('clean', 'escape type aM:all') 8980
+   ('clean', 'max dS on cycle', 2) 626
+   ('clean', 'max dS on cycle', 3) 4
+   ('clean', 'noncyc DL sigma-escape rate (mean over cycles x1000)') 20471
+   ('clean', 'sigma escapes at >=1 state') 630
+   ('clean', 'sigma escapes at every 2nd state, nothing else (.s.s or s.s.)') 549
+   ('clean', 'states total') 17760
+   ('clean', 'states with dS>=3 and non-sep lock cycle') 2
+   ('clean', 'states with dS>=3') 8
+   ('clean', 'states with no escape (dS>=2)') 8525
+   ('clean', 'states with non-sep lock cycle and dS>=3') 2
+   ('clean', 'states with non-sep lock cycle') 400
+   ('clean', 'states with sigma escape') 8980
+   ('viol', 'cycles with a non-separating lock cycle at some state') 403
+   ('viol', 'cycles') 778
+   ('viol', 'escape target L1only') 6966
+   ('viol', 'escape target L2only') 7056
+   ('viol', 'escape target nolock') 17931
+   ('viol', 'escape type AB:-') 426
+   ('viol', 'escape type AB:all') 196
+   ('viol', 'escape type MA:-') 205
+   ('viol', 'escape type MA:all') 194
+   ('viol', 'escape type MB:-') 275
+   ('viol', 'escape type MB:all') 249
+   ('viol', 'escape type aA:-') 2630
+   ('viol', 'escape type aA:0') 2267
+   ('viol', 'escape type aB:-') 2277
+   ('viol', 'escape type aB:2') 2672
+   ('viol', 'escape type aM:-') 10817
+   ('viol', 'escape type aM:all') 9745
+   ('viol', 'max dS on cycle', 2) 705
+   ('viol', 'max dS on cycle', 3) 46
+   ('viol', 'max dS on cycle', 4) 27
+   ('viol', 'noncyc DL sigma-escape rate (mean over cycles x1000)') 172941
+   ('viol', 'sigma escapes at >=1 state') 778
+   ('viol', 'sigma escapes at every 2nd state, nothing else (.s.s or s.s.)') 124
+   ('viol', 'states total') 18440
+   ('viol', 'states with dS>=3 and non-sep lock cycle') 103
+   ('viol', 'states with dS>=3') 292
+   ('viol', 'states with no escape (dS>=2)') 5700
+   ('viol', 'states with non-sep lock cycle and dS>=3') 103
+   ('viol', 'states with non-sep lock cycle') 3292
+   ('viol', 'states with sigma escape') 9745
