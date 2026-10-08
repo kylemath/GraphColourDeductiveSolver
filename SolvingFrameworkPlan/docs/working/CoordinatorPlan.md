@@ -154,3 +154,5 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 
 **Coordinator assessment (8 Oct, midday):** seven attempts on NRC (L, N, P, Q, R, S, T) have produced structure but no proof. Further attacks of the same kind have diminishing returns. Plan: (1) the order-34 census for the NR trend (running); (2) one cheap test of T1; (3) then pause new NRC attacks and reassess with Kyle.
 
+**8 Oct (TrackU): T1 is FALSE.** A non-planar 3-connected cubic-with-one-degree-5 graph (n = 22) carries a closed law-respecting orbit with k(H) = 1212121212, verified by two engines. So NRC needs a second planar input beyond the chain-parity law; the candidate is the bipartite interlace graph at rigid states. Law-respecting closed orbits off the plane exist (from RP²/Klein seeds too) but are extremely rare from random starts (0 in 68.5M evaluations without a lucky seed). Open discrepancy to resolve: off the sphere, a matching-form cycle may not correspond to a π-cycle (check TrackS Corollary S4 there).
+
