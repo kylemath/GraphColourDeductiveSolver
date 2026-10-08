@@ -79,3 +79,5 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 - **NRC (open):** on a triangulated sphere no π-cycle consists of DL states with N ≤ 9. Data: 0 such cycles in 473k holes; the longest run is 7 and has grown 4 → 7 over orders 27–32.
 - Next: a planar proof attempt on NRC, starting from the σ-type lemma, in the style of Track I.
 
+**8 Oct: Conjecture F, Theorem 6 (chain-parity law), rigid isolation and Remark 7 are FORMAL** (`TutteSides.lean`: Tutte's identity via ZMod 2 linear algebra, no topology; `ChainF.lean`: `conjectureF`, `chainParityLaw_sphere`, `rigid_isolation`, `remark7`; hypotheses: triangulated SphericalMap, no isolated vertices). Coordinator full regression: 91/91 modules, exit 0, every axiom line a subset of [propext, Classical.choice, Quot.sound]; SHA256SUMS 40/40. This is the first formal planarity-dependent theorem in frame territory.
+

@@ -299,3 +299,105 @@ So the formal F uses `handS`: `handB` if the face of `h → x 0` is `(h, x 0, x 
 - Changed: `check.sh` (+1 line), `SHA256SUMS` (+1 line), this README (§7).
 - No `TrackC/drafts/` files: everything compiled, so no partial work is left over.
 - Nothing committed.
+
+## 8. Formalising Conjecture F: plan (8 Oct, written before the Lean work)
+
+Source: `TrackK/FProof.md` (hand proof, reviewed CORRECT; gaps K1–K4 now patched in place). Target: `ConjectureF` exactly as stated in `ChainMod4.lean` (no change needed: the statement already carries K1 via `handS` and K2 via `∀ v, ∃ w, Adj v w`).
+
+**Route: no topology, no T°, no new map.** The hand proof's planar input is Proposition 1 (regions of a Tait 2-factor), and the hole case builds the filled multigraph map T°. Both are avoided:
+
+1. **Tutte's identity from `Fills`, by linear algebra over `ZMod 2`.** Split the vertices into two sides by a predicate τ. Let `S_τ` be the edges with both ends in τ, `W_τ` the functions that vanish off τ and are constant along `S_τ`-edges (its dimension is the number of τ-chains), and `V_τ` the face functions constant across every edge not in `S_τ`.
+   - Graph side: `dim Z(S_τ) + n = |S_τ| + dim W_sp(S_τ)` (rank of the incidence matrix = rank of its transpose, `Matrix.rank_transpose`).
+   - Face side: `Fills` makes `∂₂ : V_τ → Z(S_τ)` onto, with kernel `V_∅`. So `dim Z(S_τ) = dim V_τ − γ`.
+   - Faces ↔ chains: if every face has a vertex off τ, then `V_τ ≅ W_{¬τ}`, because faces around a vertex are linked through its edges.
+   - Result: `|S_τ| + dim W_τ + γ = #τ + dim W_{¬τ}`. This is Tutte's identity `p(XY) − p(ZW) = |X| + |Y| − e(XY) − 1` on a connected sphere, and it holds componentwise in general. With τ ≡ true it gives Euler, `|E| + 6γ = 3n` for triangulations. γ never needs to be identified with a component count; it cancels.
+2. **The hole without T°.** Put h on a side, so that h's two side-edges play the role of the lock diagonals:
+   - partition {μA | αB}: h on the μA side, with edges `h x₁`, `h x₃`;
+   - partition {μB | αA}: h on the μB side, with `h x₁`, `h x₄`;
+   - partition {αμ | AB}: h on the AB side, with `h x₃`, `h x₄`, which are adjacent anyway.
+
+   Every face, including the five at h, then has a vertex on the second side. Adding h with two side-edges to a and b drops the chain count by `[¬ reach a b]` (a merge lemma). That is exactly where `L1` and `L2` enter (Step 1 of FProof §3).
+3. **cw mod 4 by a dart sum** (Lemma 0 + 0′ in one table). There is an antisymmetric weight `ω_μ(a, b) ∈ ZMod 8` on ordered colour pairs with `ω(a,b) + ω(b,c) + ω(c,a) = σ(abc) − 4 + 4·#μ(abc)` on every proper triangle (cohomology of ∂Δ³; found by search, checked by `decide`). Summing over darts whose face avoids h leaves the ten link darts of the star of h, and a 48-case table gives their sum, `5 − 2·hand`.
+4. **Bookkeeping.** Sum the three identities mod 2 and combine with 3 and Euler. γ cancels, and the result is F.
+
+**Honest size estimate (before writing).**
+- Generic module `TutteSides.lean` (side graphs, the three dimension lemmas, the merge lemma, Euler): 700–1,000 lines.
+- `ChainF.lean` (colour tables, the cw dart sum, six-chain bookkeeping, `conjectureF`): 500–800 lines.
+- In total 1,200–1,800 lines and 1–2 focused days. The main risk is linear-algebra plumbing (finrank of submodules, extension by zero), not mathematics.
+
+## 9. Conjecture F formalised: `PlaneMap/TutteSides.lean` + `PlaneMap/ChainF.lean` [formal] (8 Oct)
+
+**`conjectureF : ConjectureF`** compiles with 0 `sorry`, no new axioms and no `native_decide`. Every `#print axioms` line is `[propext, Classical.choice, Quot.sound]` or a subset. `ConjectureF` and `ChainFormulaF` are **unchanged**: the statement in `ChainMod4.lean` already carried K1 (`handS`) and K2 (no isolated vertices), so `chainParityLaw_of_F` and `remark7_of_F` are untouched. The plan of §8 went through as written; actual size 1,748 lines against the 1,200–1,800 estimate.
+
+**New unconditional theorems** (`ChainF.lean`), on every triangulated `SphericalMap` without isolated vertices:
+
+| theorem | content |
+|---|---|
+| `chainFormulaF` / `conjectureF` | `2N ≡ cw + (n−1) − hand + 2(L1+L2) (mod 4)` at every proper unfilled state of a degree-5 hole |
+| `chainParityLaw_sphere` | Theorem 6 (chain-parity law) |
+| `rigid_isolation` | the π-image of a rigid state is not rigid (RI) |
+| `remark7` | a link-free swap preserves `N + L1 + L2` mod 2 |
+
+So the chain-parity law, rigid isolation and Remark 7 are now **formal** (Route Q is complete).
+
+### 9.1 `TutteSides.lean` (962 lines; generic, no colours)
+
+- `chainSpace`, `finrank_chainSpace`: the dimension equals the number of τ-chains.
+- `finrank_constSpace`.
+- `finrank_chainSpace_insert`: the merge lemma.
+- `graph_side`: rank of the incidence matrix via `Matrix.rank_transpose`.
+- `face_side`: the only use of `Fills`.
+- `finrank_faceSpace`: faces ↔ chains, by rotation-connectivity at a vertex.
+- `card_darts_side`.
+- `tutte_sides`: Tutte's identity, sides form, `|S_τ| + #τ-chains + γ = #τ + #(¬τ)-chains` whenever every face has a corner off τ.
+- `euler_tri`: `|E| + 6γ = 3n`.
+
+γ is the dimension of the face functions constant across all edges. It is never identified with a component count; it cancels in F.
+
+### 9.2 `ChainF.lean` (786 lines)
+
+- **Tables** (`decide`):
+  - `omT`: an antisymmetric weight `ω_μ` on ordered colour pairs, found by a 4 × 8⁶ search (`scripts/tc_omega_search.py`, which also checks the link table; 512 solutions per μ, one fixed).
+  - `omT_face`: `ω(a,b) + ω(b,e) + ω(e,a) = 2[cw] − 5 + 4·#μ` on proper triangles. This is Lemma 0 + 0′ in one table.
+  - `omT_link`: the link sum is `5 − 2·hand_s`.
+  - `link_pair`, `link_pos`, `link_counts`, `tri_out`, `col_compl`, `col_cover`.
+- `cw_dart_mod8` (no planarity, any face successor): `2 cwDarts − 5 #F + 12 #μ-corners ≡ −3·(link sum) (mod 8)`.
+- `face_cover`: a property holding at a corner of every face avoiding h and of every star face holds at a corner of every face.
+- `chainFormulaF`, built from:
+  - the three `tutte_sides` (sides `{h}∪μA | αB`, `{h}∪μB | αA`, `αμ | {h}∪AB`);
+  - three merges (`1 − L1`, `1 − L2`, and 0, since `x₃ ~ x₄`);
+  - the side-edge count `Σ 2|S_i| = 2D + 8` and the side-vertex count;
+  - Euler;
+  - `f_arith` (omega).
+
+**What the formal proof avoids**, relative to `TrackK/FProof.md`:
+- no Jordan–Schoenflies, regions or Tait 2-factors (Prop 1 is replaced by `Fills` plus linear algebra);
+- no filled map T° and no parallel edges (h's two side-edges stand in for the lock diagonals);
+- no Fisk degree as an integer (only its parity enters, through `omT`).
+
+### 9.3 Checks
+
+- **Build.** Each module was compiled alone into a copy-on-write clone of the 87-module build tree, at `nice -n 10`, one compile at a time: `ChainCount`, `ChainMod4`, `TutteSides`, `ChainF`. All exit 0, with no warnings and only standard-axiom lines.
+- **Doc edits.** `ChainCount`/`ChainMod4` changed only in doc comments (they no longer say "not proved") and were recompiled.
+- **Not re-run.** I did not run the full `check.sh` (daily budget). Only those two upstream files changed, and only in comments.
+- **Sabotage** (`scripts/tc_sabotage_F.py`, paths set for the session scratch clone; each sabotaged copy compiled alone):
+  - the control (F restated explicitly with `(n − 1)`) compiles;
+  - each of the following is rejected:
+    - F with `n` in place of `n − 1`;
+    - F with the sign of `hand` flipped;
+    - `omT_link` with 3 in place of 5 (`decide` refutes it);
+    - `tutte_sides` with `2γ`;
+    - `euler_tri` with `5γ`;
+    - the merge lemma with `else 2`.
+- **Registration.** Two lines appended to `check.sh`; `SHA256SUMS` updated (2 new entries, 2 changed). `shasum -c` passes on all 40 entries.
+- **Files.**
+  - New: `StudioMathLean/.../PlaneMap/TutteSides.lean`, `StudioMathLean/.../PlaneMap/ChainF.lean`, `scripts/tc_omega_search.py`, `scripts/tc_sabotage_F.py`.
+  - Changed: `ChainCount.lean` and `ChainMod4.lean` (doc comments only), `check.sh`, `SHA256SUMS`, this README (§8–§9), `TrackK/FProof.md` (K1–K4 patches, status), `TrackK/README.md` (status).
+  - Nothing committed.
+
+### 9.4 What remains
+
+- **Nothing for F, Theorem 6, RI or Remark 7** on `SphericalMap`s without isolated vertices.
+- **Optional:** drop `∀ v, ∃ w, Adj v w` from the Theorem 6 / RI corollaries. F itself needs it (K2), but Theorem 6 is invariant under isolated vertices, which add 3 to both N's. Estimate 100–200 lines: delete the isolated vertices, or redo the counting with them.
+- **Unchanged scope gap.** This is 4CT-style combinatorics on rotation systems with `Fills`, not on topologically drawn graphs.
+- **Not attempted:** a near-rigid LPC formalisation (the next math target), and a frozen Comparator challenge for F.

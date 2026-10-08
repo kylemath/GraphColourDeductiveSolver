@@ -43,7 +43,8 @@ ten darts of the star of `h`.
 
 ## Conjecture F and its consequences
 
-* `ChainFormulaF M P` (a `Prop`, unproved): for every proper unfilled state at `h`,
+* `ChainFormulaF M P` (a `Prop`; proved in `ChainF.lean`, `chainFormulaF`/`conjectureF`): for
+  every proper unfilled state at `h`,
   `2 N ≡ cw + (n − 1) − hand + 2 (L1 + L2) (mod 4)`.
 * `chainParityLaw_of_F`: **F ⇒ Theorem 6** (`ChainParityLaw`, from `ChainCount`).
 * `remark7_of_F`: **F ⇒ Remark 7**: a link-free swap preserves `N + L1 + L2` mod 2.
@@ -712,7 +713,7 @@ open Classical in
 proper unfilled state `c` with frame `j`,
 `2 N(c) ≡ cw(c) + (n − 1) − hand(c) + 2 (L1(c) + L2(c)) (mod 4)`, with `hand = handS`
 (read in the face orientation). Data-checked (`TrackC/scripts/tc_mod4.py`) on triangulated spheres in which every vertex has a
-neighbour; **not** proved. -/
+neighbour; proved in `ChainF.lean` (`chainFormulaF`). -/
 def ChainFormulaF (P : Pent M.graph h) : Prop :=
   ∀ (c : Fin n → Fin 4) (j : Fin 5), ProperOff M.graph h c → RepeatAt P c j →
     2 * (nChains M.graph h c : ZMod 4) =

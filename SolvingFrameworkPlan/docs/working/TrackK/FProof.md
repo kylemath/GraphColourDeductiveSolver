@@ -1,6 +1,8 @@
-# Conjecture F (mod-4 chain-count formula): proof [hand, unreviewed; every step data-checked]
+# Conjecture F (mod-4 chain-count formula): proof [hand, independently reviewed: CORRECT; every step data-checked]
 
 Track K, 8 Oct 2026. Notation follows `TrackC/README.md` §6.4, `TrackI/RigidIsolation.md` and `TrackF/LockParity.md`. Data: `scripts/tk_tables.py` (exhaustive finite tables) and `scripts/tk_check.py` (logs `scripts/tk_check.log`, `scripts/tk_check_x6.log`).
+
+**Review status (8 Oct).** Independently reviewed, **CORRECT** (`TrackK-review/README.md`: no wrong step; 0 failures on about 1.02M fresh states). The four presentational gaps K1–K4 are patched in place below: K1 and K2 in the statement of F (§3, "Statement") and in §0; K3 in the Remarks of §3; K4 in the proof of Proposition 1. Lean status: **F is formal** (`ChainF.lean`, `conjectureF`; `TrackC/README.md` §9). The Lean proof follows this one but replaces Proposition 1's topology with `Fills` + linear algebra over ZMod 2, and the filled map T° with two side-edges at h.
 
 **Result.** F is **true as stated** on the sphere, and the proof is short:
 1. The no-hole case F0 is a mod-4 repackaging of **Tutte's parity theorem** for 4-colourings of plane triangulations (as given in "The Last Temptation of William T. Tutte", arXiv:1912.07205, Thm 1/Thm 3), together with Fisk's degree.
@@ -13,7 +15,8 @@ Theorem D, Lemma 2 and the Jordan arguments at h are **not** used. The only plan
 - A **sphere triangulation (map sense)** is a loopless multigraph cellularly embedded in the oriented S², with every face bounded by 3 distinct vertices.
   - Parallel edges are allowed (needed for T° in §3).
   - Each face is a triangle, and no edge has the same face on both sides, because a 3-walk on 3 distinct vertices has 3 distinct edges.
-- n = number of vertices. Euler's formula gives F = 2n − 4 faces and E = 3n − 6 edges.
+- n = number of vertices of the map. A cellular embedding has no isolated vertices, so every vertex counted in n lies on a face (K2). This matters: an isolated vertex would add 1 to n and 3 to N, moving the residue of F by 6 − 1 ≢ 0 (mod 4). Lean's `ConjectureF` carries the hypothesis `∀ v, ∃ w, Adj v w` for this reason.
+- Euler's formula gives F = 2n − 4 faces and E = 3n − 6 edges.
 - c is a proper 4-colouring with colours in ℤ₂² = {0, 1, 2, 3} (xor).
 - For an oriented face (u, v, w), its **Tait triple** is (c u ⊕ c v, c v ⊕ c w, c w ⊕ c u), and the face is **cw** if the triple is a cyclic shift of (1, 2, 3). This is exactly `cwcount` in `tc_mod4.py`.
 - For colours X ≠ Y:
@@ -57,6 +60,13 @@ Theorem D, Lemma 2 and the Jordan arguments at h are **not** used. The only plan
 - Every curve has an XY-region on one side and a ZW-region on the other, because an S_i-edge separates two classes of P_i. So Σ_{Q an XY-chain} b_Q = k_i.
 - Summing χ over XY-chains: 2 p(X,Y) − k_i = Σ_Q (|V(Q)| − |E(Q)|) = |X| + |Y| − e(X,Y). This is (a). ∎
 
+*Topological details (review K4).*
+1. **The curves.** Each face has colours 2 + 1 across P_i, so exactly two of its three edges cross P_i. Hence S_i is 2-regular in the cubic dual T*, and its components are vertex-disjoint cycles of T*. T* has no loops (no edge has the same face on both sides, §0); dual digons are allowed and are still cycles. Drawn through the face centres and the midpoints of the crossing edges, these cycles are pairwise disjoint PL simple closed curves in S², so Jordan–Schoenflies applies to each.
+2. **Two sides.** Each curve C is two-sided (S² is orientable), so a thin collar of C minus C has two components. At each crossing edge uv of T on C, one collar side contains u and the other contains v, and u, v lie in different classes of P_i. A collar side is connected and meets no other curve, so it lies in one region. Hence C borders exactly two distinct regions, one XY-region and one ZW-region.
+3. **χ.** R_Q deformation retracts onto the embedded graph Q, and χ is a homotopy invariant. So χ(R_Q) computed from Q (|V(Q)| − |E(Q)|) equals χ(S² minus b_Q disjoint open discs) = 2 − b_Q.
+
+Items 1 and 2 are also checked in data (`TrackK-review/scripts`, `two_reg` and `sides_ok`, 0 failures).
+
 (a) − (b) is Tutte's identity p(X,Y) − p(Z,W) = |X| + |Y| − e(X,Y) − 1.
 
 **Theorem F0 (sphere).** N ≡ n + 1 + d (mod 2); equivalently 2N ≡ cw + n (mod 4).
@@ -68,6 +78,14 @@ Theorem D, Lemma 2 and the Jordan arguments at h are **not** used. The only plan
 - By Lemma 0, cw = F/2 + 2d = n − 2 + 2d. So cw + n = 2(n − 1 + d) ≡ 2(n + 1 + d) ≡ 2N (mod 4). ∎
 
 ## 3. The hole: Conjecture F
+
+**Statement (with the conventions of review K1–K2).** Let T be a triangulated sphere with n vertices and no isolated vertices, h a vertex of degree 5 whose link x₀ … x₄ is labelled **along the face orientation** (the faces at h are (h, x_t, x_{t+1}) in the orientation used to define cw), and c a proper colouring of T − h that is unfilled with frame j (link colours (α, μ, α, A, B) relative to j). Then
+
+  2N ≡ cw + (n − 1) − hand + 2(L1 + L2)  (mod 4),
+
+where N = N(T − h), cw counts the clockwise faces avoiding h, hand = [(α⊕μ, α⊕A, α⊕B) is a cyclic shift of (1,2,3)] and L1, L2 are the locks defined below.
+- If the link is labelled *against* the face orientation, A and B swap, `hand` becomes 1 − `hand`, and the residue changes by an odd amount: F then fails at every state. Lean's `handS` reads `hand` in the face orientation whichever way `Pent` is labelled (`TrackC/README.md` §7.2).
+- F is invariant under reversing *both* the global orientation and the link labelling (cw ↦ (2n − 9) − cw and hand ↦ 1 − hand cancel, since cw − hand ≡ n + 1 mod 2; checked on 998,390 states by the review).
 
 **Setting.** T is a triangulated sphere, h has degree 5, and the link is x₀ … x₄ in the rotation order at h. That is, the faces at h are (h, x_t, x_{t+1}) in the orientation used for cw; this is `oriented_link` in `tc_mod4.py`. c is unfilled with frame j, and indices are relative to j, so the colours are (α, μ, α, A, B). The locks are L1 = [x₃ ∈ K_{μA}(x₁)] and L2 = [x₄ ∈ K_{μB}(x₁)] in T − h (LockParity §1). N = N(T − h), and cw counts the faces avoiding h.
 
@@ -94,7 +112,7 @@ using −2L ≡ 2L and 3 ≡ −1 (mod 4). This is **F**. ∎
 **Remarks.**
 - In degree language, F says **N + L1 + L2 ≡ n + d(c on T°) (mod 2)**. Here d(c on T°) is Fisk's degree of the filled colouring; note `hand` = 1 iff the pentagon maps positively, by T1–T2.
 - Any proper triangulation of the pentagon would do; the fan from x₁ is the only one whose diagonals are the lock edges. That is why L1 and L2 appear.
-- With Track C's Lemma W (Δcw ≡ 2 m_h(K) mod 4; a sketch, unreviewed), F gives Theorem 6 and Remark 7 by the bookkeeping of `TrackC/README.md` §6.4. So **Route Q now needs W reviewed, nothing else**. This is an independent second proof of Theorem 6 that avoids Lemma R, the disc structure and Theorem D.
+- F does not use Lemma W anywhere. The *original* form of W (Δcw ≡ 2 m_h(K) mod 4 for every swap) is **false**: Δcw can be odd (`TrackC/README.md` §7.1). The corrected W carries a link boundary term β, `2 cw(c′) + β ≡ 2 cw(c) + 4 m_h(K) (mod 8)`, and β = 0 both for π at a DL state (m_h = 1) and for link-free swaps (m_h = 0), which are the only cases used. The corrected W is **formal** (`ChainMod4.lean`: `cw_swap_mod8`, `lemmaW`, `cw_piMove`), and so are **F ⇒ Theorem 6** (`chainParityLaw_of_F`) and **F ⇒ Remark 7** (`remark7_of_F`). F itself is now formal too (`ChainF.lean`, `TrackC/README.md` §9), so Route Q is complete in Lean. This is an independent second proof of Theorem 6 that avoids Lemma R, the disc structure and Theorem D.
 - Lean shape: Proposition 1 in primal form is Tutte's identity (faces of T[X∪Y] ↔ ZW-chains). Two ways to use it:
   - allow parallel edges in T° (the map library must then accept a multigraph map), or
   - avoid T° by adding the two diagonals only at the level of the pair graphs (Step 1 is purely graph-theoretic) and proving Tutte's identity for T° directly. I have not worked out the second route.

@@ -30,7 +30,8 @@ unordered colour pairs. It does not depend on a frame.
   (`nChains_piMove_sub`).
 * `rigid_isolation_of_law`: **Theorem 6 ⇒ rigid isolation**. `ChainParityLaw P` is the
   statement of Theorem 6 (`N(π c) + N(c)` is odd iff `π c` is doubly locked, for every
-  proper doubly locked `c`); it is a hypothesis here, not proved.
+  proper doubly locked `c`); it is a hypothesis here. It is proved in `ChainF.lean`
+  (`chainParityLaw_sphere`, via Conjecture F), which also gives rigid isolation outright.
 -/
 
 @[expose] public section
@@ -241,7 +242,8 @@ theorem nChains_piMove_sub {P : Pent M.graph h} (hd : DoublyLocked P c j) :
 variable (M) in
 /-- **Theorem 6 (chain-parity law)**, as a statement: for every proper doubly locked state
 `c`, `N(π c) − N(c)` is odd iff `π c` is doubly locked. Proved by hand in
-`TrackI/RigidIsolation.md` (reviewed); **not** proved here. -/
+`TrackI/RigidIsolation.md` (reviewed); not proved here, but proved formally in `ChainF.lean`
+(`chainParityLaw_sphere`). -/
 def ChainParityLaw (P : Pent M.graph h) : Prop :=
   ∀ c : Fin n → Fin 4, ProperOff M.graph h c → DLState P c →
     (Odd (nChains M.graph h (piMove P c) + nChains M.graph h c) ↔ DLState P (piMove P c))

@@ -1,11 +1,11 @@
-# Track K: Conjecture F (Route Q), proved [hand, unreviewed]
+# Track K: Conjecture F (Route Q), proved [hand, independently reviewed: CORRECT]
 
 8 Oct 2026. Brief: find a hand proof of Track C's Conjecture F (`TrackC/README.md` §6.4).
 
 ## Status
 
 **F is true as stated on the sphere.** The full proof is in `FProof.md`.
-- It is **[hand, unreviewed]**.
+- It is **[hand, independently reviewed: CORRECT]** (`TrackK-review/README.md`; gaps K1–K4 patched in `FProof.md`).
 - Every step is checked separately against data, with 0 failures:
 
 | run | sphere hole states | of which parallel diagonal | no-hole sphere colourings | torus hole states | torus no-hole colourings |
@@ -34,10 +34,10 @@
 ## Consequences
 
 - F needs neither Theorem D nor the Jordan arguments at the hole. Its only planar input is Proposition 1(b) for one map.
-- With Lemma W (Track C sketch, still unreviewed), F gives:
+- With the corrected Lemma W (boundary term β, β = 0 in the two cases used; formal in `ChainMod4.lean`), F gives (both implications formal: `chainParityLaw_of_F`, `remark7_of_F`):
   - **Theorem 6**: a second proof, avoiding Lemma R and the disc structure;
   - **Remark 7**, which had no proof before.
-- For Lean Route Q, what remains is W plus Tutte's identity for a sphere map (`FProof.md` §3, remarks).
+- Lean Route Q is complete: F is formal (`ChainF.lean`, `conjectureF`), so Theorem 6, rigid isolation and Remark 7 are formal on every triangulated `SphericalMap` without isolated vertices (`TrackC/README.md` §9). The review (`TrackK-review/README.md`) found the proof CORRECT; its gaps K1–K4 are patched in `FProof.md`.
 
 ## Files
 
