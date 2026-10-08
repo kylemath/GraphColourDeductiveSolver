@@ -73,3 +73,9 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 
 **8 Oct: Conjecture F proof CORRECT on independent review** (TrackK-review: no wrong step; gaps K1–K4 are presentational: put the hand orientation and the no-isolated-vertices hypothesis into the statement, cite the corrected W, and spell out the Prop 1 topology). 0 failures on 998k fresh hole states. Torus residue = 2G confirmed (G_i = 1 iff every curve of S_i separates). The chain-parity law now has two reviewed hand proofs, and Route Q needs only F in Lean. Next: formalise F (Tutte's identity on SphericalMap).
 
+**8 Oct (TrackJ): near-rigid structure pinned down; target NRC.**
+- [hand] J1–J5: a near-rigid closed class consists of π-cycles alternating 8/9 chains, every 9-state is in-shape, and the extra chain Z is a perfect matching. On the sphere Z = σ in 26,481/26,481 states.
+- Examples exist at every rung of the general-graph ladder, including 4-colourable graphs with all edges in triangles and H3 (43 graphs, n = 34–38). So the target needs planarity itself.
+- **NRC (open):** on a triangulated sphere no π-cycle consists of DL states with N ≤ 9. Data: 0 such cycles in 473k holes; the longest run is 7 and has grown 4 → 7 over orders 27–32.
+- Next: a planar proof attempt on NRC, starting from the σ-type lemma, in the style of Track I.
+

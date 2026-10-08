@@ -79,6 +79,9 @@ flowchart LR
   C1["Case: all states rigid"]:::reviewed
   C2["Case: chain count<br/>constant on cycles"]:::reviewed
   C3["Case: chain count<br/>alternates 8, 9, 8, 9 …"]:::gap
+  NRC["NRC: no π-cycle of<br/>DL states with ≤ 9 chains"]:::gap
+  J5["Shape of such a class<br/>(J1–J5)"]:::hand
+  EVJ["Evidence: 473k holes,<br/>longest run 7 (need 10)"]:::data
   C4["Case: mixed higher<br/>chain counts"]:::gap
   LPC["LPC on the sphere<br/>no Kempe class made only<br/>of frozen π-cycles"]:::gap
   EV["Evidence: census to order 32,<br/>5 surfaces, 0 counterexamples"]:::data
@@ -99,6 +102,9 @@ flowchart LR
   CPL --> C2
   C1 --> LPC
   C2 --> LPC
+  NRC --> C3
+  J5 --> C3
+  EVJ -.-> NRC
   C3 --> LPC
   C4 --> LPC
   LP --> EQ
@@ -122,7 +128,7 @@ flowchart LR
   <section>
     <h2>What each step says</h2>
     <div class="notes">
-      <div class="note" style="--c:var(--gap)"><div class="s">Open gap</div><div class="t">Chain count alternates</div><p>A frozen class whose cycles alternate 8, 9, 8, 9 chains is not excluded by any parity law. Such cycles exist on the sphere, but so far always inside classes that also have filled states. Track J is searching for the global fact that rules them out.</p></div>
+      <div class="note" style="--c:var(--gap)"><div class="s">Open gap</div><div class="t">Chain count alternates (NRC)</div><p>Track J pinned the shape down. Such a class is made of 20-state cycles alternating 8 and 9 chains, with the extra chain always the hole's α–μ swap. Excluding it reduces to NRC: on the sphere, no π-cycle consists of doubly-locked states with at most 9 chains. Across 473k sphere holes the longest such run is 7 (a cycle needs 10). It is false in general graphs even with triangles everywhere and the H3 balance, so it needs planarity itself, like rigid isolation.</p></div>
       <div class="note" style="--c:var(--gap)"><div class="s">Open gap</div><div class="t">LPC on the sphere</div><p>No Kempe class consists only of closed doubly-locked π-cycles. This would make every hole pure-clean, which is more than "no frozen orbits" needs. No counterexample anywhere, including 2,772 parity-clean cycle classes on five other surfaces.</p></div>
       <div class="note" style="--c:var(--reviewed)"><div class="s">Reviewed</div><div class="t">Chain-parity law</div><p>On the sphere, every π-step between doubly-locked states changes the number of Kempe chains by an odd amount. Correct after independent review, with 2.2M fresh checks. It fails on the torus and projective plane, as it must.</p></div>
       <div class="note" style="--c:var(--reviewed)"><div class="s">Reviewed</div><div class="t">Conjecture F</div><p>F follows from Tutte's parity theorem and Fisk's degree, with the hole filled by the two lock diagonals. Lean already proves that F implies the chain-parity law (<code>chainParityLaw_of_F</code>), so F is the only missing piece of that route, and the only place it uses planarity. The hand proof passed independent review (8 Oct; four wording gaps, no logical ones; about 1M fresh checks). Next: formalise F.</p></div>
