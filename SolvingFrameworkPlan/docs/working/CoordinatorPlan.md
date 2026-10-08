@@ -102,3 +102,10 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 
 **8 Oct (TrackO): R ≤ 5 is REFUTED.** R = 6 at p32.r62#15615 h11 (exhaustive frame census) and R = 7 from flip search (n = 31, min degree 5, not frame class), both two-engine verified. The qualitative claim (no all-interior π-cycle) holds everywhere. **Trend warning:** max R in the frame census grows with order (0,0,1,2,2,3,3,4,4,5,6 at orders 22–32), together with the near-rigid run length (5,6,6,7 at orders 29–32). Outside the frame class R stays ≤ 5 to n = 60 in random spheres. Long runs keep the N, N−1 alternation but are not always near-rigid (BV: N = 10–14). Order 33 census launched to watch the trend.
 
+**8 Oct (TrackP).**
+- The single-lineage caveat is broken: law R-cycles were found in 7 new lineages (sphere, torus, Klein; all 10-cycles).
+- Surface memory is refuted: excess e = |E(G−h)| − (3n−11) reaches 2 from sphere, torus and Klein seeds alike, and 3 only on the RP² lineage.
+- **N1 survives in refined form N1⁺: every law R-cycle has e ≥ 2.** Three e = 2 cycles are two-engine verified, and 0 lineages reach e = 0. Genus-2 seeds produced no law cycle.
+- Part B [hand]: identity P1 says e equals the total cycle rank of the pair graphs at rigid states, so N1 ⇔ no law R-cycle with zero spare two-coloured cycles. Also P2 (monodromy: every edge is cut by some swap) and an edge-role cut balance. No contradiction yet; the missing input is component-level.
+- Next: exact add+delete MILP on the e = 2 skeletons (can e = 1 occur?) and a component-level e ≥ 1 argument.
+
