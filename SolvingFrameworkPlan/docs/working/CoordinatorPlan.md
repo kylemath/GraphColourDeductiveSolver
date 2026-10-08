@@ -166,3 +166,11 @@ New research attacks are paused. Current work: (3) a short standalone note on th
 
 **Paper decision (coordinator recommendation, 8 Oct):** the chain-parity law goes in a **separate short note**, not as part of the VH∃ paper. The VH∃ paper is a dated record of a whole programme and its status. The note is one self-contained, Lean-checked theorem that a combinatorialist can review on its own. The VH∃ paper keeps its short §5 summary and cites the note. Both carry the same AI-disclosure text, which needs Kyle's approval.
 
+**8 Oct evening (Census34): order 34 is exhaustive** (2,825,168,619 plantri graphs → 209,702 frame-class graphs, 3,612,341 holes).
+- R\* holds everywhere. The quarter floor is reached exactly (31,649 holes) and never broken.
+- Lock parity: 0 failures on 1.59e9 sampled states.
+- 98 all-DL π-cycles, all of length 20, all in classes with filled states. NRC holds.
+- **Max NR stays at 8** (by order: 1,3,3,4,4,4,5,5,6,6,7,8,8), but the counts at the top rise (holes with NR = 8: 1 → 5; NR = 7: 11 → 43).
+- **Max R jumps 6 → 8** at p34.r178#11764701 h10. That run is a pure 9,8,9,8,… alternation, entered from N = 10 and leaving to N = 11.
+- Second engine agrees on all maxima.
+
