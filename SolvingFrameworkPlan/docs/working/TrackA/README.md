@@ -256,3 +256,119 @@ Outputs:
 - `anat/anat-census27-28.jsonl`, `anat/anat-wbest.jsonl`: per-class anatomy, with the full state lists for N ≤ 64.
 - `anat/anat-pi.jsonl`: π-cycles per class.
 - `anat/summary.txt`, `anat/pi-patterns.txt`, `anat/dedup.txt`.
+
+---
+
+# Task 3: positive π-winding inside the frame class (`posw/`, 7 Oct)
+
+**Why.** By Theorem W, 4F − N = −5 Σw over a Kempe class, so the quarter floor fails exactly when some class has Σw > 0. Task 3 asks whether frame-class holes carry any π-cycle with w > 0 at all, and if so how close a class gets to Σw > 0. Slack of a class is −Σw/N (F/N = 1/4 + (5/4)·slack); slack 0 is equality.
+
+Scripts:
+- `posw_scan.py`: picyc `--full` in both orientations at every degree-5 hole; per hole the π-cycle histogram (w, L, count) and the class signatures [N, F, Σw].
+- `posw_stats.py`: statistics of the scans.
+- `posw_search.py`: flip + grow search (insert a vertex with probability 0.12 when n < NMAX, otherwise a frame-preserving flip, hill-climb with 0.15 random acceptance). Every visited graph passes the Lean-faithful frame filter, max degree ≤ 10. Key, maximised: ([some class has Σw > 0], total positive weight Σ_{w>0} w over all holes, −min slack over classes with N > 8). Plantri orientation only.
+- `posw_summary.py`, `posw_report.py`: per-n tables from the search files.
+- `posw_verify.py`: two-engine re-check. picyc in both orientations; then `uv_lib.Hole` (kempe_py.Space + escape.pi_of, independent Python) at every hole with a w > 0 cycle in either orientation, giving the class split of the π-cycles, kind counts (R3 λ = +1, φB −1, φA −1, τ −3), DL counts, Theorem W per class, and a hole-by-hole comparison of the class multisets (N, F, Σw) with picyc.
+- Runs: `posw/run.sh` (8 walks, n → 48, 3000 s each, 4 workers; it survived the app restart and finished at 16:25), `posw/run2.sh` (5 walks from the n = 48 bests, n → 60, 4500 s each, 5 workers). All under `nice -n 10`.
+
+## 3.1 Census and walk graphs: no positive π-cycles at all (data)
+
+Input: 321 graph records. 147 are census graphs (orders 22–28: 1, 1, 4, 2, 11, 24, 104) and 174 are the best graphs of the task-1 walks (n = 24–37; some are re-visits of census graphs). Both orientations: 4,996 holes and 5,145 classes each.
+
+- π-cycles with w > 0: **0** in either orientation. The largest cycle winding at a hole is 0 at 4,993 holes and −2 at 3 holes.
+- Largest class Σw: **0**. That is attained only by the 126 equality class records (N ∈ {4, 8}, the task-2 classes). No class with N > 8 has Σw = 0.
+- Min slack over classes with N > 8: 0.0511 (p24#2550, its single 411-state class, Σw = −21). Otherwise ≥ 0.10. By order: 22: 0.227, 23: 0.231, 24: 0.051, 25: 0.139, 26: 0.127, 27: 0.116, 28: 0.102, 32: 0.102, 36: 0.114, 37: 0.102.
+- So link words do not matter here: no positive cycle exists anywhere at n ≤ 37 in these sets.
+
+## 3.2 Search to n = 56 (data)
+
+Budget: 13 walks, **1,878 frame-class evaluations** (run 1: 8 walks, 1,658 evaluations, n 32 → 48; run 2: 5 walks, 220 evaluations, n 48 → 53–56; evaluations cost 10–15 s at n ≈ 48 and 100–170 s at n ≈ 53–56). **0 hits**: no evaluated graph had a class with Σw > 0, so the quarter floor held everywhere.
+
+Per n (positive weight = Σ_{w>0} w over all holes of one graph, plantri orientation; slack over recorded states, i.e. the per-n best and every 10th iterate, not every evaluation):
+
+| n | walks | walks with a w > 0 cycle | max positive weight | max # positive cycles | max w | min slack (N > 8) |
+|---|---|---|---|---|---|---|
+| 32–36 | 1–4 | 0 | 0 | 0 | 0 | 0.119–0.171 |
+| 37 | 8 | 1 | 2 | 2 | 1 | 0.114 |
+| 38–40 | 8 | 0 | 0 | 0 | 0 | 0.061–0.107 |
+| 41 | 8 | 1 | 2 | 1 | 2 | 0.115 |
+| 42 | 8 | 3 | 2 | 1 | 2 | 0.115 |
+| 43 | 8 | 1 | 1 | 1 | 1 | 0.103 |
+| 44 | 8 | 3 | 4 | 1 | 4 | **0** (a (16, 4) class) |
+| 45 | 8 | 2 | 2 | 2 | 2 | 0.117 |
+| 46 | 8 | 1 | 2 | 1 | 2 | **0** (a (16, 4) class) |
+| 47 | 8 | 2 | 2 | 1 | 2 | 0.113 |
+| 48 | 13 | 11 | 8 | 2 | 4 | **0** |
+| 49–50 | 5 | 0 | 0 | 0 | 0 | 0.118–0.127 |
+| 51 | 5 | 1 | 2 | 1 | 2 | 0.133 |
+| 52 | 5 | 1 | 6 | 2 | 4 | 0.129 |
+| 53 | 5 | 3 | **40** | **10** | **8** | **0** |
+| 54 | 4 | 1 | 4 | 2 | 2 | **0** |
+| 55 | 4 | 1 | 2 | 1 | 2 | 0.134 |
+| 56 | 2 | 2 | 4 | 4 | 1 | 0.134 |
+
+**Positive cycles exist from n = 37 on**, at ≤ 2 holes per graph, and their mass grows with n (max 8 at n ≤ 48, 40 at n = 53). The search maximised exactly this mass.
+
+**Link words at holes with w > 0 cycles.** There are 31 positive holes in 29 distinct recorded graphs, giving 24 distinct words as written (rotation and reflection not merged).
+- Most frequent: (5,7,5,5,7) ×3, (5,7,5,8,5) ×3, (5,7,5,6,6) ×2, (7,5,5,7,5) ×2, (6,5,5,6,9) ×2.
+- Every word contains a degree-5 link vertex. 23 of 24 contain a link vertex of degree ≥ 7; the exception is (6,5,5,6,6) at A7f1-n53. 20 of 24 have at least two degree-5 link vertices; the exceptions are (6,8,5,6,6), (6,7,5,6,6), (7,6,5,7,7) and (7,6,5,9,7).
+- No 66666 hole ever carried a positive cycle.
+- The same kind of words, e.g. (5,5,6,6,7), occur at n ≤ 28 with no positive cycle, so the link word alone does not decide.
+
+**Slack trend (honest reading).**
+- Among classes with Σw < 0 the min slack does **not** trend to 0. It is 0.06–0.17 at n = 32–48 (lowest 0.061 at n = 39) and 0.118–0.134 at n = 49–56. The census minimum 0.051 (n = 24) is still the lowest seen.
+- The zeros at n = 44, 46, 48, 53 and 54 are equality classes, not near-failures. Slack 0 on a class with N > 8 means Σw = 0, i.e. F/N = 1/4 exactly. I re-enumerated three of them with engine 2 (n = 44, 46, 54), and each is a **(16, 4) class** at a hole with link word 66667 (up to rotation), in both orientations:
+  - kinds R3 8, φB 4, φA 4, so the π-cycles are copies of the task-2 block DL → L1 → F(φA) → L2;
+  - the π-cycles are four w = 0 cycles of length 4, except n = 54 in the plantri orientation, which has two w = 0 cycles of length 8;
+  - the other classes at those holes are (155,668, 75,187) at n = 44; two (8, 2) classes plus (285,559, 133,041) at n = 46; and (1,755,902, 1,000,358) at n = 54.
+  - **This amends Conjecture E: equality classes with N = 16 exist.** The zeros at n = 48 and 53 come from trace states whose faces were not saved, so their class sizes are unknown.
+- The positive mass is sub-dominant by 3–4 orders of magnitude (§3.3). Its growth is real but tiny next to the negative mass of the same class.
+- Caveat: n ≥ 49 had only 220 evaluations; the slack at n ≥ 49 is a thin sample.
+
+## 3.3 Where the positive cycles sit, and who pays (two engines, data)
+
+Graphs: 14 search graphs (n = 37–54), chosen for the most positive mass at each n plus the two equality-at-N = 16 graphs (`posw/verify-batch{1,2,3a,3b}.json` → `.jsonl`). All are frame-class. At every hole re-run with engine 2 the class multiset (N, F, Σw) agrees with picyc and Theorem W holds for every class (0 mismatches, 0 failures, both orientations).
+
+| graph | n | hole link | orient | positive cycles (L, w) | class N | F/N | class Σw | slack | posw / Σ_{w<0}|w| |
+|---|---|---|---|---|---|---|---|---|---|
+| p28#546102-grow36-n37 | 37 | 5,7,5,5,7 | p | 2 × (17, 1) | 22,129 | 0.526 | −4,879 | 0.221 | 4.1e-4 |
+| A7f3-n42 | 42 | 5,7,5,7,5 | p | (14, 2) | 74,506 | 0.511 | −15,558 | 0.209 | 1.3e-4 |
+| p27#47915-grow32-n42 | 42 | 10,5,5,9,5 | p | (30, 2) | 59,206 | 0.493 | −11,522 | 0.195 | 1.7e-4 |
+| p27#47915-grow36-n44 | 44 | 5,6,6,7,5 | p | (53, 1) | 132,010 | 0.492 | −25,558 | 0.194 | 3.9e-5 |
+| p28#546102-grow36-n44 | 44 | 7,6,5,5,6 | p / m | (28, 4) / 2 × (14, 2) | 102,212 | 0.481 | −18,912 | 0.185 | 2.1e-4 |
+| p27#47915-grow36-n45 | 45 | 7,6,6,5,5 | p / m | 2 × (17, 1) / (17, 1) | 160,312 | 0.514 | −33,824 | 0.211 | 3–6e-5 |
+| A7f3-n48 | 48 | 5,7,5,6,6 | p | 2 × (28, 4) | 281,865 | 0.468 | −49,135 | 0.174 | 1.6e-4 |
+| A7f1-n48 | 48 | 5,7,5,6,6 | p | (28, 4) | 426,453 | 0.495 | −83,503 | 0.196 | 4.8e-5 |
+| A7f4-n48 | 48 | 6,8,5,6,6 | p | 2 × (14, 2) | 396,725 | 0.455 | −65,043 | 0.164 | 6.2e-5 |
+| A7f1-n53 | 53 | 7,6,5,7,7 | p | 2 × (18, 2), (42, 2) | 1,467,015 | 0.521 | −317,909 | 0.217 | 1.9e-5 |
+| A7f1-n53 | 53 | 6,5,5,6,6 | p | 4 × (17, 1) | 1,515,085 | 0.504 | −308,295 | 0.203 | 1.3e-5 |
+| p27#47915-grow36-n53 | 53 | 7,6,5,9,7 | p | 3 × (14, 2), (26, 2), 4 × (28, 4) | 1,419,030 | 0.468 | −247,190 | 0.174 | 9.7e-5 |
+| p27#47915-grow36-n53 | 53 | 6,7,5,9,5 | p | 2 × (136, 8) | 1,454,835 | 0.456 | −240,029 | 0.165 | 6.7e-5 |
+
+**Where they sit.**
+- Every hole carrying a positive cycle has a **single Kempe class** (the whole state space of T − v). So the positive cycles are always inside the giant class. That class has slack 0.16–0.22, **above** the graph's own min slack. Positive winding does not show up in the marginal classes.
+- Orientation matters. Most positive cycles appear in one orientation only. In the two graphs positive in both orientations, the total positive weight differs or splits differently between them (n = 44: one (28, 4) vs two (14, 2); n = 45: 2 vs 1).
+- **Anatomy.** A positive cycle is a long run of R3 steps (λ = +1, the L2-locked unfilled state of pi_of), broken by a few φB/φA pairs, with no τ (except the w = 1 cycles):
+  - (14, 2): R3 12, φB 1, φA 1 (11 DL);
+  - (28, 4): R3 24, φB 2, φA 2 (22 DL): the (14, 2) pattern twice;
+  - (17, 1): R3 12, φB 2, φA 2, τ 1;
+  - (136, 8): R3 88, φB 24, φA 24 (64 DL);
+  - in general w = (#R3 − #φB − #φA − 3#τ)/5, so a positive cycle needs R3 > 2·#φA + 3·#τ along it. The filled fraction on a positive cycle is about 1/14 to 1/6.
+
+**Who pays.**
+- The negative winding of the class is concentrated in a handful of giant π-cycles: the 3 most negative cycles carry 56–88% of Σ_{w<0}|w|. Examples: at A7f3-n48, hole 22 has cycles of w = −18,870, −16,094 and −2,372 among 7,259; at p27#47915-grow36-n53, hole 9 has −114,459 and −84,027 among 35,595.
+- The bulk of the rest are short w = −2, −4 cycles (1,066–4,235 of them per class), plus 584–5,376 w = 0 cycles.
+- Total positive weight is 1.3e-5 to 4.1e-4 of the negative weight in the same class. Nothing local cancels it: the positive cycles sit next to w = 0 and w = −2 cycles, and the class balance is settled by the global giant cycles.
+
+**Side observations (data, every class re-enumerated with engine 2, 14 graphs):**
+- **#φA = #φB in every class**, positive or not. Hence Σw = (#R3 − 2#φA − 3#τ)/5 per class.
+- F is the same at every hole of a graph (e.g. 663,745 at both holes of p27#47915-grow36-n53). This is expected, since a filled state of T − v extends uniquely to a colouring of T. It is a useful engine sanity check.
+
+## 3.4 Reading
+
+- The quarter floor was never broken: 0 classes with Σw > 0 over 321 scanned graphs (both orientations) and 1,878 search evaluations to n = 56.
+- Positive π-cycles **do** exist in the frame class from n = 37, and the search can grow their mass, reaching 40 at n = 53 with w up to 8. So "no positive cycles" is false in the frame class and cannot serve as a lemma; a proof of the floor has to be a balance statement.
+- The balance is not close in the data. The classes that host positive cycles are single giant classes with slack 0.16–0.22 and positive/negative weight ratio ≤ 4.1e-4. The min slack over non-equality classes is flat at about 0.10–0.15 out to n = 56 and does not trend to 0.
+- There is a new exact-equality shape: (16, 4) classes at n = 44, 46 and 54, at holes with link 66667, built from four task-2 blocks. Conjecture E should now read "N ∈ {4, 8, 16} seen".
+
+Files: `posw/scan-census.jsonl`, `posw/scan-walk.jsonl`, `posw/search.jsonl` + `search.log` (run 1), `posw/search2.jsonl` + `search2.log` + `seeds2.json` + `run2.sh` (run 2), `posw/best-by-n.json`, `posw/verify-batch*.json(l)/.log`. All runs have finished; nothing is still running (7 Oct, 18:40).
