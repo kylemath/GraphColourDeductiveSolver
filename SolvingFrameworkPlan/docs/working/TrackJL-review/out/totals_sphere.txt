@@ -1,0 +1,46 @@
+chi<=cnt                                                                      2676944082      0
+LemmaE(Sum chi P1,P2,P3)                                                       446157347      0
+TheoremD: Lock2<=>!inA (sphere)                                                446157347      0
+TheoremD: Lock1<=>!inB (sphere)                                                446157347      0
+link-meeting total formula (any graph)                                         446157347      0
+pinv(c) unfilled                                                               199684268      0
+Star identity, every Kempe move (sampled states)                               858158174      0
+pi(c) unfilled, frame j+3, roles (al,B,mu,A)                                   199684268      0
+J2 componentwise P2(c)=P3(pi c)                                                199684268      0
+TrackL 2.1 chi-recursion across pi                                             199684268      0
+Star identity across pi (r=mu)                                                 199684268      0
+Star identity across pi (r=B)                                                  199684268      0
+pi(c) found among states                                                       199684268      0
+J1 link components (DL+D)                                                       90328896      0
+J1 N=8+#linkfree (DL+D)                                                         90328896      0
+pinv(pi(c)) = c                                                                199684268      0
+DL states                                                                       90328896      0
+chain-parity law N(pi c)-N(c) = [pi c DL] mod 2 (sphere)                        90328896      0
+rigid(counts) <=> N=8 (DL+D)                                                    90328896      0
+N=9 DL+D states                                                                  2895481      0
+N=9 DL+D: exactly one link-free comp                                             2895481      0
+Z(c): same frame j                                                               1263792      0
+Z(c): N>=9 when Z(c) DL+D                                                         574055      0
+Z(c): N(Zc)>=9 (unconditional)                                                   1263792      0
+rigid states                                                                      491761      0
+sphere: rigid => all pair graphs forests                                          491761      0
+J4 rigid(+D): Kempe nbrs = {pi,pinv}                                              491761      0
+Lemma S: (#amu,#AB)(c)=(2,1)                                                       49094      0
+Lemma S: chi_c(AB)=0 (AB chain unicyclic)                                          49094      0
+Lemma S step 5: u rigid, P2(c)=(2,1) => chi_c(AB)=0                                54816      0
+Z(c) not DL+D (from N=9, extra in P1)                                             689737      0
+in-shape states                                                                    10546      0
+J3: in-shape => extra in P1                                                        10546      0
+S1: in-shape => extra is alpha-mu                                                  10546      0
+J4 in-shape: Kempe nbrs = {pi,pinv,Z}                                              10546      0
+J4 in-shape: N(Z c)>=9                                                             10546      0
+in-shape: Z(c) not DL+D                                                             8598      0
+TrackL2.2 destruction instances                                                    10546      0
+TrackL2.2: #{al_c,mu_c} at pi(c) != 1 (no merge into one)                          10546      0
+TrackL2.2: #{al_c,B_c} at pi(c) = 1 (al_c-B_c merge)                               10546      0
+S2: pinv rigid, extra not in P2 => alpha-mu                                        49094      0
+S2 hyp (pinv rigid) any extra                                                      67767      0
+S2 mirror: pi rigid, extra not in P3 => alpha-mu                                   49136      0
+in-shape with Z(c) DL N=9                                                           1122      0
+in-shape with in-shape Z-partner (NRI cex)                                           364      0
+all-DL pi-cycle length = 0 mod 5                                                      32      0

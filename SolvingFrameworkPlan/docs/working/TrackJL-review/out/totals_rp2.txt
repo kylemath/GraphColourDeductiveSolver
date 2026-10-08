@@ -1,0 +1,48 @@
+chi<=cnt                                                                        77209758      0
+LemmaE(Sum chi P1,P2,P3)                                                        12868293      0
+offsphere unfilled states                                                       12868293      0
+offsphere D-violations                                                           2976818      0
+link-meeting total formula (any graph)                                          12868293      0
+DL states without D                                                              1614766      0
+Star identity, every Kempe move (sampled states)                                27416910      0
+pinv(c) unfilled                                                                 5012416      0
+pi(c) unfilled, frame j+3, roles (al,B,mu,A)                                     5012416      0
+J2 componentwise P2(c)=P3(pi c)                                                  5012416      0
+TrackL 2.1 chi-recursion across pi                                               5012416      0
+Star identity across pi (r=mu)                                                   5012416      0
+Star identity across pi (r=B)                                                    5012416      0
+pi(c) found among states                                                         5012416      0
+DL states                                                                        3593446      0
+pinv(pi(c)) = c                                                                  5012416      0
+rigid states                                                                       39228      0
+rigid states without D                                                             13161      0
+J1 link components (DL+D)                                                        1978680      0
+J1 N=8+#linkfree (DL+D)                                                          1978680      0
+rigid(counts) <=> N=8 (DL+D)                                                     1978680      0
+N=9 DL+D states                                                                   127328      0
+N=9 DL+D: exactly one link-free comp                                              127328      0
+Z(c): same frame j                                                                 54493      0
+Z(c): N>=9 when Z(c) DL+D                                                          25452      0
+Z(c): N(Zc)>=9 (unconditional)                                                     54493   3414
+J4 rigid(+D): Kempe nbrs = {pi,pinv}                                               26067      0
+Z(c) not DL+D (from N=9, extra in P1)                                              29041      0
+S2 mirror: pi rigid, extra not in P3 => alpha-mu                                    1822     27
+Z(c) not DL+D and N(Zc)<9                                                           3414      0
+S2: pinv rigid, extra not in P2 => alpha-mu                                         1760     36
+S2 hyp (pinv rigid) any extra                                                       2449      0
+Lemma S: (#amu,#AB)(c)=(2,1)                                                        1973     36
+Lemma S: chi_c(AB)=0 (AB chain unicyclic)                                           1973   1316
+offsphere LemmaS-hyp instances                                                      1973      0
+in-shape states                                                                      441      0
+J3: in-shape => extra in P1                                                          441      0
+S1: in-shape => extra is alpha-mu                                                    441      0
+J4 in-shape: Kempe nbrs = {pi,pinv,Z}                                                441      0
+J4 in-shape: N(Z c)>=9                                                               441     35
+in-shape: Z(c) not DL+D                                                              374      0
+TrackL2.2 destruction instances                                                      441      0
+TrackL2.2: #{al_c,mu_c} at pi(c) != 1 (no merge into one)                            441      0
+TrackL2.2: #{al_c,B_c} at pi(c) = 1 (al_c-B_c merge)                                 441      0
+in-shape with Z(c) DL N=9                                                             51      0
+AB-extra next to rigid pi                                                             27      0
+offsphere LemmaS conclusion FAILS                                                     36      0
+in-shape with in-shape Z-partner (NRI cex)                                            16      0

@@ -83,3 +83,10 @@ Current frontier: falsify or prove LPC; formalise lock parity.
 
 **8 Oct (TrackL): σ-type lemma proved [hand, unreviewed]** by Euler counting only (Lemma E = H3 constants (2,3,3) on the sphere, plus a star identity for Kempe swaps). So in-shape states have the extra chain in α–μ (Z = σ). It breaks on RP², where the constants become (1,2,2). **NRC is still open:** Euler-level information cannot settle it, because the near-rigid alternation is a consistent orbit of the χ-recursion, so a Jordan-level input is needed. No monotone quantity was found among 16 candidates. Smallest open claims: NRC′ (the two-step map u ↦ π²(u) on rigid states has no periodic orbit) and Q-e (does NRC hold under H3's sphere constants plus the parity law?). Note: TrackL cites J1–J3 as reviewed; they are not yet, so they go into the review with SigmaType.md.
 
+**8 Oct (TrackJL review): J1–J5, Lemma E, the star identity, Lemma S and S1/S2 are all CORRECT on the sphere** (from-scratch engine; up to 446M states, 0 failures). Fixes:
+- J3: define rigid as Lean `RigidAt`.
+- J4: "N(Zc) ≥ 9" holds on the sphere, not in any graph.
+- TrackL's RP² remark: σ-type fails there 36/1,760 except at in-shape states.
+- TrackL §2.2: the merge happens in α_cB_c.
+None of these affects the near-rigid structure. NRC is still open; independent data agree that runs are ≤ 7.
+
