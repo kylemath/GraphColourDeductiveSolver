@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counting Kempe Chains</title>
+  <meta name="description" content="Interactive demo: the six two-colour subgraphs of a colouring and their Kempe chains, live Kempe swaps, building a Kempe class by search, and the chain-parity law with its mod-4 formula checked live.">
+  <style>
+    :root {
+      --bg: #0d1117; --raised: #161b22; --sunken: #010409; --border: #30363d;
+      --text: #e6edf3; --dim: #b1bac4; --faint: #7d8590; --accent: #58a6ff;
+      --good: #3fb950; --bad: #f85149; --warn: #d29922; --twin: #bc8cff;
+      --c0: #f85149; --c1: #58a6ff; --c2: #e3b341; --c3: #3fb950;
+      --dl: #f0883e;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .intro { max-width: 1060px; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--twin); font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+    h2 { margin: 0 0 .5rem; font: 600 1.45rem/1.3 var(--serif); }
+    h2 .k { font: 600 .8rem var(--mono); color: var(--twin); margin-right: .4rem; vertical-align: 2px; }
+    h3 { margin: 0 0 .5rem; font: 600 .78rem var(--sans); color: var(--faint); letter-spacing: .07em; text-transform: uppercase; }
+    p { margin: 0 0 .9rem; color: var(--dim); max-width: 76ch; overflow-wrap: anywhere; }
+    p strong { color: var(--text); }
+    code, .m { font: .88em var(--mono); }
+    code { background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); }
+    a { color: var(--accent); }
+    .math { font-family: var(--serif); font-style: italic; color: var(--text); }
+    section { margin-top: 2rem; }
+    .panel { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .9rem; min-width: 0; }
+    .grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 1rem; align-items: start; }
+    @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
+    svg { display: block; width: 100%; height: auto; }
+    svg text { font-family: var(--sans); }
+    .btn { font: 600 .86rem var(--sans); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 8px;
+           padding: .35rem .75rem; cursor: pointer; min-height: 36px; }
+    .btn:hover { border-color: var(--accent); }
+    .btn:disabled { opacity: .4; cursor: default; }
+    .btn.primary { border-color: var(--accent); }
+    button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .row { display: flex; flex-wrap: wrap; gap: .4rem .6rem; align-items: center; margin-bottom: .7rem; }
+    select { font: .86rem var(--sans); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 8px; padding: .35rem .5rem; min-height: 36px; max-width: 100%; }
+    .check { display: inline-flex; align-items: center; gap: .4rem; font: 600 .8rem var(--sans); padding: .25rem .65rem; border-radius: 999px; border: 1px solid var(--border); color: var(--dim); }
+    .check.ok { color: var(--good); border-color: #2e6b3a; }
+    .check.bad { color: var(--bad); border-color: var(--bad); }
+    .bigN { font: 600 2.6rem/1 var(--serif); }
+    .sub { color: var(--faint); font-size: .85rem; }
+    .badge { display: inline-block; font: 600 .76rem var(--sans); padding: .12rem .55rem; border-radius: 999px; border: 1px solid var(--border); color: var(--dim); }
+    .badge.f { color: var(--good); border-color: var(--good); }
+    .badge.dl { color: var(--dl); border-color: var(--dl); }
+    .badge.rg { color: var(--c1); border-color: var(--c1); }
+    .multi { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+    @media (max-width: 700px) { .multi { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .mini { background: var(--sunken); border: 1px solid var(--border); border-radius: 10px; padding: .45rem; min-width: 0; }
+    .mini-h { display: flex; justify-content: space-between; align-items: center; gap: .3rem; font-size: .8rem; color: var(--dim); margin-bottom: .2rem; }
+    .mini-h b { font: 600 1.05rem var(--mono); color: var(--text); }
+    .pair { display: inline-flex; gap: 2px; vertical-align: -1px; }
+    .pair i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
+    .comps { display: flex; flex-wrap: wrap; gap: 3px; margin-top: .3rem; }
+    .comp { font: 500 .72rem var(--mono); color: var(--dim); background: var(--raised); border: 1px solid var(--border); border-radius: 5px; padding: .12rem .35rem; cursor: pointer; min-height: 24px; }
+    .comp:hover, .comp.hot { border-color: var(--text); color: var(--text); }
+    .comp.whole { border-style: dashed; }
+    .mini.changed { border-color: var(--twin); }
+    .mini.same { border-color: #2e6b3a; }
+    table { border-collapse: collapse; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }
+    th, td { text-align: left; padding: .28rem .45rem; border-bottom: 1px solid var(--border); }
+    th { color: var(--faint); font-weight: 600; font-size: .76rem; letter-spacing: .04em; }
+    td.num, th.num { text-align: right; font-family: var(--mono); }
+    tr.click { cursor: pointer; }
+    tr.click:hover td { background: #1c2128; }
+    .delta-pos { color: var(--twin); font-weight: 700; }
+    .delta-neg { color: var(--c2); font-weight: 700; }
+    .note { font-size: .86rem; color: var(--dim); }
+    .ok { color: var(--good); font-weight: 600; }
+    .graphbox { position: relative; background: var(--sunken); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .8rem; color: var(--faint); margin-top: .5rem; }
+    .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; vertical-align: -1px; margin-right: .25rem; }
+    .stats { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font: .9rem var(--mono); color: var(--dim); margin: .5rem 0; }
+    .stats b { color: var(--text); font-size: 1.1rem; }
+    .classlist { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .4rem; }
+    .formula { font: .95rem var(--mono); background: var(--sunken); border: 1px solid var(--border); border-radius: 8px; padding: .7rem .8rem; line-height: 1.9; overflow-x: auto; }
+    .formula .t { color: var(--faint); font-size: .8rem; }
+    .scroll { max-height: 420px; overflow: auto; }
+    .v { transition: fill .3s ease; }
+    .foot { margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem; font-size: .86rem; }
+    .foot p { font-size: .86rem; }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">Kempe chains · a degree-five hole · live engine</p>
+    <h1>Counting Kempe Chains</h1>
+    <p>Pick two of the four colours and keep only the vertices with those colours: the pieces that fall out are <strong>Kempe chains</strong>. There are six ways to pick the pair, so every colouring has six pictures. <span class="math">N</span> is the total number of pieces across all six. Swapping the two colours on one piece is a <strong>Kempe swap</strong>: it always gives another proper colouring.</p>
+    <p>The map here is a small triangulated sphere with 18 vertices, one of them removed (the degree-five <strong>hole</strong>, dashed). Its 17 remaining vertices have <strong id="nStates">…</strong> four-colourings up to renaming the colours. That is small enough for this page to compute everything live in your browser. <span id="selfcheck" class="check">checking…</span></p>
+  </div>
+
+  <!-- (a) -->
+  <section aria-labelledby="hA">
+    <h2 id="hA"><span class="k">a</span>One colouring, six pictures</h2>
+    <div class="row" role="group" aria-label="Choose a colouring">
+      <button class="btn" data-pick="rigid">a rigid state</button>
+      <button class="btn" data-pick="dl">a doubly locked state</button>
+      <button class="btn" data-pick="filled">a filled state</button>
+      <button class="btn" data-pick="small">from the small class</button>
+      <button class="btn" data-pick="random">random</button>
+      <label class="sub" for="statePick">or state</label>
+      <select id="statePick" aria-label="State number"></select>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <svg id="main" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-labelledby="mainT"><title id="mainT">The colouring on the map</title></svg>
+        <p class="sub" id="mainLegend" style="margin:.4rem 0 0;font-size:.8rem"></p>
+        <div id="mainInfo" aria-live="polite"></div>
+      </div>
+      <div class="panel">
+        <p class="sub" style="font-size:.8rem;margin:0 0 .5rem">Chains are drawn as metro-style tracks: two thin strands, one in each colour of the pair. A vertex on several highlighted chains gets a ring split into one segment per chain, each showing that chain's other colour. Positions never move.</p>
+        <h3>The six two-colour subgraphs <span style="text-transform:none;letter-spacing:0;font-weight:400">(click a chain to swap it)</span></h3>
+        <div class="multi" id="multi"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (b) -->
+  <section aria-labelledby="hB">
+    <h2 id="hB"><span class="k">b</span>What a swap changes</h2>
+    <p>Swap colours <span class="math">p</span>, <span class="math">q</span> on one chain. The <span class="math">pq</span>-picture keeps exactly the same pieces; only the colours inside one piece trade places. The complementary pair <span class="math">rs</span> is not touched at all. Only the four <strong>mixed</strong> pictures (<span class="math">pr, ps, qr, qs</span>) can rewire, and the change in <span class="math">N</span> comes entirely from them.</p>
+    <div class="grid2">
+      <div class="panel" id="swapPanel" aria-live="polite"><p class="note">Click any chain in the six pictures above (or one of its buttons) to swap it.</p></div>
+      <div class="panel">
+        <h3>History</h3>
+        <div class="row"><button class="btn" id="undo" disabled>undo last swap</button></div>
+        <div id="history" class="note">No swaps yet.</div>
+        <h3 style="margin-top:1rem">Every possible swap, tallied</h3>
+        <p class="note" id="dNtally"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (c) -->
+  <section aria-labelledby="hC">
+    <h2 id="hC"><span class="k">c</span>Building the Kempe class</h2>
+    <p>Starting from the current colouring, try every swap, then every swap from each new colouring, and so on (breadth-first search). Every colouring you can reach this way forms its <strong>Kempe class</strong>. A colouring is <strong>filled</strong> if the five rim vertices use at most three colours, so the hole can take the fourth. Kempe's hope was that every class contains a filled colouring.</p>
+    <div class="grid2">
+      <div class="panel">
+        <div class="row">
+          <button class="btn primary" id="grow">grow the class from the current state</button>
+          <button class="btn" id="allcls">find all classes</button>
+        </div>
+        <div class="stats" id="growStats"></div>
+        <div id="classList" class="classlist"></div>
+        <p class="note" id="clsNote"></p>
+        <div class="legend">
+          <span><span class="dot" style="background:var(--good)"></span>filled</span>
+          <span><span class="dot" style="background:var(--dl)"></span>doubly locked</span>
+          <span><span class="dot" style="background:var(--c1)"></span>rigid (doubly locked, N = 8)</span>
+          <span><span class="dot" style="background:#6e7681"></span>other unfilled</span>
+          <span><span class="dot" style="border:2px solid #fff"></span>current state</span>
+          <span style="color:var(--dl)">→ π-step</span>
+        </div>
+      </div>
+      <div class="graphbox">
+        <svg id="sg" viewBox="-1.05 -1.05 2.1 2.1" role="img" aria-labelledby="sgT"><title id="sgT">The state graph of the Kempe class: one dot per colouring, one line per swap</title></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- (d) -->
+  <section aria-labelledby="hD">
+    <h2 id="hD"><span class="k">d</span>The chain-parity law, checked</h2>
+    <p>A colouring with all four colours on the rim reads α, μ, α, A, B around the hole (the repeated colour is α). It is <strong>doubly locked</strong> when a μ–A chain joins the μ to the A and a μ–B chain joins the μ to the B; then neither of Kempe's two swaps frees a colour. Kempe's exchange <span class="math">π</span> swaps α and A on the chain through the second α. The law says: <strong>at a doubly locked colouring, N(πc) − N(c) is odd exactly when πc is doubly locked again.</strong> At a doubly locked state <span class="math">N</span> ≥ 8. <span class="math">N</span> = 8 (<strong>rigid</strong>) means the six pictures have 1, 1, 2, 1, 2, 1 pieces, so a rigid state is never followed by another rigid one.</p>
+    <div class="grid2">
+      <div class="panel">
+        <h3>The mod-4 formula, live for the current colouring</h3>
+        <div class="formula" id="formula"></div>
+        <p class="note" style="margin-top:.6rem"><span class="math">cw</span> counts triangles (not touching the hole) whose edge-colour differences, read in the 2×2 grid of colours, turn clockwise. η depends only on the rim colours. <span class="math">L</span><sub>1</sub>, <span class="math">L</span><sub>2</sub> are the locks. One π-step turns <span class="math">cw</span> by 2 (mod 4) and leaves η alone, which is where the law comes from. The formula holds for unfilled colourings; for a filled one the hole could be coloured and the formula takes its closed-sphere form instead.</p>
+        <h3 style="margin-top:1rem">Rigid states</h3>
+        <div id="rigidTable"></div>
+      </div>
+      <div class="panel">
+        <h3>Every doubly locked state and its π-step</h3>
+        <div class="scroll"><table id="lawTable"><thead><tr><th>state</th><th class="num">N(c)</th><th>πc</th><th class="num">N(πc)</th><th>πc locked?</th><th class="num">ΔN</th><th class="num">cw: c → πc</th><th>law</th></tr></thead><tbody></tbody></table></div>
+        <p class="note" style="margin-top:.5rem">Click a row to load that colouring. Recomputed live; it agrees with the build-time engines.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p><strong>Status.</strong> The chain-count formula, the chain-parity law and rigid isolation are compiled in Lean 4 and audited (they hold on every triangulated sphere, and fail on the torus). Whether every Kempe class at a degree-five hole contains a filled colouring is open. This page shows a single small example and proves nothing new.</p>
+    <p><strong>Data.</strong> The triangulation is graph 7 of <code>plantri -m5 -a 18</code>, with the hole at vertex 4. <code>docs/kempe/build_data.py</code> enumerates its colourings, chains, swaps, classes, locks, π, <span class="math">cw</span> and η. It then asserts agreement with TrackM's <code>tm_lib</code> (state by state), the reviewed TrackJL-review engine <code>rv_eng</code> (zero failures), the formula at every unfilled state and the law at every doubly locked state. The page recomputes everything with its own JavaScript engine and compares the results with those numbers (badge at the top). <span id="builtNote"></span></p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="../shared/kempe-draw.js"></script>
+<script>
+(function () {
+  'use strict';
+  const D = window.KEMPE_DATA;
+  const NS = 'http://www.w3.org/2000/svg';
+  const HEX = ['#f85149', '#58a6ff', '#e3b341', '#3fb950'];
+  const CNAME = ['red', 'blue', 'yellow', 'green'];
+  const PAIRS = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]];
+  const n = D.n, hole = D.hole, link = D.link, P = D.pos;
+  const adj = Array.from({ length: n }, () => []);
+  D.edges.forEach(([a, b]) => { if (a !== hole && b !== hole) { adj[a].push(b); adj[b].push(a); } });
+  const V = D.order;                                  // canonical vertex order (T - v)
+
+  // ================= engine =================
+  function canon(col) { const m = {}; let k = 0; return V.map(u => (m[col[u]] !== undefined ? m[col[u]] : (m[col[u]] = k++))); }
+  function key(col) { return canon(col).join(''); }
+  function fromCanon(c) { const col = new Array(n).fill(-1); V.forEach((u, i) => { col[u] = c[i]; }); return col; }
+  function components(col, p, q) {
+    const seen = new Set(), out = [];
+    V.forEach(u => {
+      if ((col[u] !== p && col[u] !== q) || seen.has(u)) return;
+      const comp = [u]; seen.add(u);
+      for (let i = 0; i < comp.length; i++) for (const w of adj[comp[i]])
+        if (!seen.has(w) && (col[w] === p || col[w] === q)) { seen.add(w); comp.push(w); }
+      out.push(comp);
+    });
+    return out;
+  }
+  function allChains(col) { return PAIRS.map(([p, q]) => components(col, p, q)); }
+  function swapped(col, comp, p, q) { const c = col.slice(); comp.forEach(u => { c[u] = c[u] === p ? q : p; }); return c; }
+  function compOf(col, start, p, q) { return components(col, p, q).find(c => c.includes(start)) || []; }
+  function frameInfo(col) {
+    const c = link.map(x => col[x]);
+    if (new Set(c).size <= 3) return null;
+    let j = 0; while (c[j] !== c[(j + 2) % 5]) j++;
+    const x = [0, 1, 2, 3, 4].map(t => link[(j + t) % 5]);
+    const al = col[x[0]], mu = col[x[1]], A = col[x[3]], B = col[x[4]];
+    const L1 = compOf(col, x[1], mu, A).includes(x[3]) ? 1 : 0, L2 = compOf(col, x[1], mu, B).includes(x[4]) ? 1 : 0;
+    const Kpi = compOf(col, x[2], al, A);
+    return { j, x, al, mu, A, B, L1, L2, DL: L1 && L2, Kpi, piDefined: !Kpi.includes(x[0]) };
+  }
+  const CYC = new Set(['1,2,3', '2,3,1', '3,1,2']);
+  function cwEta(col, fr) {
+    let cw = 0;
+    D.faces.forEach(([u, w, z]) => { if (u === hole || w === hole || z === hole) return;
+      if (CYC.has([col[u] ^ col[w], col[w] ^ col[z], col[z] ^ col[u]].join(','))) cw++; });
+    const eta = fr ? (CYC.has([fr.al ^ fr.mu, fr.al ^ fr.A, fr.al ^ fr.B].join(',')) ? 1 : 0) : null;
+    return { cw, eta };
+  }
+  function neighbours(col) {
+    const out = new Map();
+    allChains(col).forEach((comps, pi) => { const [p, q] = PAIRS[pi]; comps.forEach(comp => {
+      const c = swapped(col, comp, p, q), k = key(c); if (k !== key(col) && !out.has(k)) out.set(k, c); }); });
+    return out;
+  }
+  // enumerate every colouring of T - v up to renaming (same order as the build script)
+  function enumerate() {
+    const m = V.length, prev = V.map((u, i) => V.slice(0, i).map((w, k) => adj[u].includes(w) ? k : -1).filter(k => k >= 0));
+    const out = [], c = new Array(m).fill(0);
+    (function rec(i, used) {
+      if (i === m) { out.push(c.slice()); return; }
+      let forb = 0; prev[i].forEach(k => { forb |= 1 << c[k]; });
+      for (let x = 0; x < Math.min(used + 1, 4); x++) if (!(forb >> x & 1)) { c[i] = x; rec(i + 1, Math.max(used, x + 1)); }
+    })(1, 1);
+    return out;
+  }
+
+  // ================= live self-check against the build-time engines =================
+  const LIVE = enumerate().map(c => fromCanon(c));
+  const IDX = new Map(LIVE.map((col, k) => [key(col), k]));
+  function liveInfo(k) {
+    const col = LIVE[k], ch = allChains(col), fr = frameInfo(col);
+    const N = ch.reduce((a, x) => a + x.length, 0);
+    let pi = null;
+    if (fr && fr.piDefined) pi = IDX.get(key(swapped(col, fr.Kpi, fr.al, fr.A)));
+    return { N, cnt: ch.map(x => x.length), f: fr ? 0 : 1, dl: fr && fr.DL ? 1 : 0, pi, fr, ce: cwEta(col, fr) };
+  }
+  function classesLive() {
+    const cl = new Array(LIVE.length).fill(-1); let nc = 0;
+    for (let s = 0; s < LIVE.length; s++) {
+      if (cl[s] >= 0) continue; cl[s] = nc; const q = [s];
+      for (let i = 0; i < q.length; i++) neighbours(LIVE[q[i]]).forEach((c, k) => { const t = IDX.get(k); if (cl[t] < 0) { cl[t] = nc; q.push(t); } });
+      nc++;
+    }
+    return { cl, nc };
+  }
+  const INFO = LIVE.map((_, k) => liveInfo(k));
+  const CLS = classesLive();
+  (function selfcheck() {
+    let ok = LIVE.length === D.states.length, bad = 0;
+    D.states.forEach((s, k) => {
+      const L = INFO[k];
+      const same = ok && canon(LIVE[k]).join('') === s.c.join('') && L.N === s.N && L.cnt.join() === s.cnt.join() && L.f === s.f && L.dl === s.dl &&
+        (s.f || (L.pi === s.pi && L.fr.L1 === s.L1 && L.fr.L2 === s.L2 && L.fr.j === s.j && L.ce.cw === s.cw && L.ce.eta === s.eta)) && CLS.cl[k] === s.cl;
+      if (!same) bad++;
+    });
+    ok = ok && bad === 0 && CLS.nc === D.stats.classes;
+    const el = document.getElementById('selfcheck');
+    el.className = 'check ' + (ok ? 'ok' : 'bad');
+    el.textContent = ok ? '✓ live engine agrees with the build-time engines on all ' + D.states.length + ' colourings' : '✗ live engine disagrees on ' + bad + ' colourings';
+    document.getElementById('nStates').textContent = LIVE.length;
+  })();
+
+  // ================= drawing helpers =================
+  function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function pairDots(p, q) { return '<span class="pair"><i style="background:' + HEX[p] + '"></i><i style="background:' + HEX[q] + '"></i></span>'; }
+  function pairName(p, q) { return CNAME[p] + '–' + CNAME[q]; }
+
+  // ================= state =================
+  let cur = fromCanon(D.states[D.rigid[0]].c), history = [], hot = null;
+  function curId() { return IDX.get(key(cur)); }
+
+  // ---------- (a) main map (drawn with the shared metro-style module, docs/shared/kempe-draw.js)
+  const main = document.getElementById('main');
+  const KD = KempeDraw.create(main, { pos: P, edges: D.edges, hole, link, colours: HEX, bg: '#161b22', scale: 1.7 });
+  const roleT = link.map(x => el('text', { x: P[x][0], y: P[x][1] + 0.03, 'text-anchor': 'middle', 'font-size': 0.085, fill: '#0d1117', 'font-weight': 700,
+    'font-style': 'italic', 'font-family': 'Palatino, Georgia, serif', 'pointer-events': 'none' }, KD.layer('labels')));
+
+  function renderMain() {
+    KD.setColouring(cur);
+    const fr = frameInfo(cur);
+    link.forEach((x, i) => { roleT[i].textContent = fr ? ['α', 'μ', 'α', 'A', 'B'][fr.x.indexOf(x)] : ''; });
+    let shown;
+    if (hot) shown = [{ v: hot.comp, pair: hot.pair }];
+    else if (fr) shown = [{ v: compOf(cur, fr.x[1], fr.mu, fr.A), pair: [fr.mu, fr.A] }, { v: compOf(cur, fr.x[1], fr.mu, fr.B), pair: [fr.mu, fr.B] }];
+    else shown = [];
+    KD.setChains(shown.map(c => ({ v: c.v, pair: c.pair.slice().sort() })));
+    document.getElementById('mainLegend').textContent = hot ? 'Showing the chain under the pointer.' :
+      (fr ? 'Showing the two lock chains through μ: the μ–A chain and the μ–B chain' + (fr.DL ? ' (both locks shut).' : ' (one lock open: its chain misses the rim vertex it needs).') : 'Filled: the rim uses three colours. Hover a chain on the right to see it here.');
+    const k = curId(), I = INFO[k];
+    let b = I.f ? '<span class="badge f">filled</span>' : (I.dl ? (I.N === 8 ? '<span class="badge rg">rigid: doubly locked, N = 8</span>' : '<span class="badge dl">doubly locked</span>') : '<span class="badge">unfilled, a lock is open</span>');
+    document.getElementById('mainInfo').innerHTML =
+      '<div style="display:flex;gap:1rem;align-items:baseline;flex-wrap:wrap;margin-top:.5rem"><span class="bigN">N = ' + I.N + '</span>' + b + '</div>' +
+      '<p class="sub" style="margin:.35rem 0 0">state ' + k + ' of ' + LIVE.length + ' · class ' + (CLS.cl[k] + 1) + ' · ' + I.cnt.join(' + ') + ' = ' + I.N +
+      (I.f ? '' : ' · locks L₁ ' + (I.fr.L1 ? 'shut' : 'open') + ', L₂ ' + (I.fr.L2 ? 'shut' : 'open')) + '</p>';
+    document.getElementById('statePick').value = k;
+  }
+
+  // ---------- (a) six small multiples
+  const multi = document.getElementById('multi');
+  const MINI = PAIRS.map(([p, q], i) => {
+    const box = document.createElement('div'); box.className = 'mini';
+    box.innerHTML = '<div class="mini-h"><span>' + pairDots(p, q) + ' ' + pairName(p, q) + '</span><b></b></div>';
+    const svg = el('svg', { viewBox: '-1.12 -1.12 2.24 2.24', role: 'img', 'aria-label': pairName(p, q) + ' subgraph and its chains' }, box);
+    const kd = KempeDraw.create(svg, { pos: P, edges: D.edges, hole, link, colours: HEX, bg: '#010409', scale: 1.9 });
+    const list = document.createElement('div'); list.className = 'comps'; box.appendChild(list);
+    multi.appendChild(box);
+    return { box, kd, list, p, q };
+  });
+  function renderMulti(changed) {
+    const ch = allChains(cur);
+    MINI.forEach((m, i) => {
+      const { p, q } = m, comps = ch[i];
+      m.box.querySelector('.mini-h b').textContent = comps.length;
+      m.box.classList.remove('changed', 'same');
+      if (changed) m.box.classList.add(changed[i] ? 'changed' : 'same');
+      m.list.innerHTML = '';
+      const specs = comps.map((comp, ci) => {
+        const whole = comps.length === 1;
+        const btn = document.createElement('button'); btn.className = 'comp' + (whole ? ' whole' : '');
+        btn.textContent = '#' + (ci + 1) + ' · ' + comp.length;
+        btn.setAttribute('aria-label', 'Swap ' + pairName(p, q) + ' chain ' + (ci + 1) + ' of ' + comps.length + ', ' + comp.length + ' vertices' + (whole ? ' (whole subgraph: only renames colours)' : ''));
+        btn.title = whole ? 'This chain is the whole subgraph: swapping it only renames two colours' : comp.length + ' vertices';
+        m.list.appendChild(btn);
+        const enter = () => { hot = { comp, pair: [p, q] }; renderMain(); btn.classList.add('hot'); };
+        const leave = () => { hot = null; renderMain(); btn.classList.remove('hot'); };
+        const click = () => doSwap(i, comp);
+        btn.addEventListener('mouseenter', enter); btn.addEventListener('mouseleave', leave);
+        btn.addEventListener('focus', enter); btn.addEventListener('blur', leave); btn.addEventListener('click', click);
+        return { v: comp, pair: [p, q], title: pairName(p, q) + ' chain ' + (ci + 1) + ', ' + comp.length + ' vertices: click to swap', onClick: click, onEnter: enter, onLeave: leave };
+      });
+      m.kd.setColouring(cur);
+      m.kd.setChains(specs);
+      m.kd.setDim(true);
+    });
+  }
+
+  // ---------- (b) swap
+  function doSwap(pi, comp) {
+    const [p, q] = PAIRS[pi], before = allChains(cur).map(x => x.length), k0 = curId();
+    history.push(cur.slice());
+    cur = swapped(cur, comp, p, q); hot = null;
+    const after = allChains(cur).map(x => x.length), k1 = curId();
+    const rs = PAIRS.findIndex(([a, b]) => a !== p && a !== q && b !== p && b !== q);
+    const changed = PAIRS.map((_, i) => before[i] !== after[i]);
+    let html = '<h3>Swapped ' + pairName(p, q) + ' on a chain of ' + comp.length + ' vertices</h3>';
+    html += '<p class="note">state ' + k0 + ' → state ' + k1 + (k0 === k1 ? ' <b>(the same colouring up to renaming: this chain was the whole ' + pairName(p, q) + ' subgraph)</b>' : '') + '</p>';
+    html += '<table><thead><tr><th>pair</th><th>role</th><th class="num">before</th><th class="num">after</th><th class="num">change</th></tr></thead><tbody>';
+    PAIRS.forEach(([a, b], i) => {
+      const role = i === pi ? 'swapped pair: same pieces' : (i === rs ? 'complement: untouched' : 'mixed: can rewire');
+      const d = after[i] - before[i];
+      html += '<tr><td>' + pairDots(a, b) + ' ' + pairName(a, b) + '</td><td class="note">' + role + '</td><td class="num">' + before[i] + '</td><td class="num">' + after[i] +
+        '</td><td class="num ' + (d > 0 ? 'delta-pos' : d < 0 ? 'delta-neg' : '') + '">' + (d > 0 ? '+' : '') + d + '</td></tr>';
+    });
+    const sb = before.reduce((a, x) => a + x, 0), sa = after.reduce((a, x) => a + x, 0), dN = sa - sb;
+    html += '<tr><td colspan="2"><b>N</b></td><td class="num"><b>' + sb + '</b></td><td class="num"><b>' + sa + '</b></td><td class="num"><b>' + (dN > 0 ? '+' : '') + dN + '</b></td></tr></tbody></table>';
+    const okKept = before[pi] === after[pi] && before[rs] === after[rs];
+    html += '<p class="note" style="margin-top:.5rem">' + (okKept ? '<span class="ok">✓</span> the swapped pair and its complement kept their counts' : '✗ unexpected') + '; the four mixed pictures account for ΔN = ' + (dN > 0 ? '+' : '') + dN + '.</p>';
+    document.getElementById('swapPanel').innerHTML = html;
+    renderAll(changed);
+  }
+  document.getElementById('undo').addEventListener('click', () => { if (history.length) { cur = history.pop(); renderAll(); } });
+  function renderHistory() {
+    document.getElementById('undo').disabled = history.length === 0;
+    document.getElementById('history').textContent = history.length ? history.map(c => 'state ' + IDX.get(key(c))).concat(['state ' + curId() + ' (now)']).join(' → ') : 'No swaps yet.';
+  }
+  (function tally() {
+    const t = new Map(D.stats.dN);
+    document.getElementById('dNtally').innerHTML = 'Over all ' + D.stats.moves + ' chain swaps from all ' + D.stats.S + ' colourings, ΔN takes the values ' +
+      D.stats.dN.map(([d, c]) => '<b>' + (d > 0 ? '+' : '') + d + '</b> (' + c + '×)').join(', ') + '. A swap can change N by an odd amount; the law below says when.';
+  })();
+
+  // ---------- (c) state graph
+  const sg = document.getElementById('sg');
+  const gs = { e: el('g', {}, sg), pe: el('g', {}, sg), n: el('g', {}, sg) };
+  const defs = el('defs', {}, sg), mk = el('marker', { id: 'arr', viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 5, markerHeight: 5, orient: 'auto' }, defs);
+  el('path', { d: 'M0 0 L10 5 L0 10 z', fill: '#f0883e' }, mk);
+  let SG = { nodes: [], idx: new Map(), edges: [], raf: null, growT: null };
+  function nodeColour(k) { const I = INFO[k]; return I.f ? '#3fb950' : (I.dl ? (I.N === 8 ? '#58a6ff' : '#f0883e') : '#6e7681'); }
+  function resetGraph() {
+    if (SG.growT) clearInterval(SG.growT); if (SG.raf) cancelAnimationFrame(SG.raf);
+    SG = { nodes: [], idx: new Map(), edges: [], raf: null, growT: null };
+    [gs.e, gs.pe, gs.n].forEach(g => { while (g.firstChild) g.removeChild(g.firstChild); });
+  }
+  function addNode(k, near) {
+    if (SG.idx.has(k)) return SG.nodes[SG.idx.get(k)];
+    const a = Math.random() * 6.283, base = near ? [near.x, near.y] : [0, 0];
+    const nd = { k, x: base[0] + 0.08 * Math.cos(a), y: base[1] + 0.08 * Math.sin(a), vx: 0, vy: 0 };
+    const I = INFO[k];
+    nd.c = el('circle', { r: I.dl && I.N === 8 ? 0.04 : 0.03, fill: nodeColour(k), stroke: '#0d1117', 'stroke-width': 0.008, style: 'cursor:pointer', tabindex: 0, role: 'button',
+      'aria-label': 'state ' + k + ', N = ' + I.N + (I.f ? ', filled' : I.dl ? ', doubly locked' : '') }, gs.n);
+    el('title', {}, nd.c).textContent = 'state ' + k + ' · N = ' + I.N + (I.f ? ' · filled' : I.dl ? (I.N === 8 ? ' · rigid' : ' · doubly locked') : '');
+    const load = () => { cur = LIVE[k].slice(); history = []; renderAll(); };
+    nd.c.addEventListener('click', load); nd.c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { load(); e.preventDefault(); } });
+    SG.idx.set(k, SG.nodes.length); SG.nodes.push(nd);
+    return nd;
+  }
+  function addEdge(a, b) {
+    const pi = INFO[a].dl && INFO[a].pi === b;
+    const ln = el('line', pi ? { stroke: '#f0883e', 'stroke-width': 0.008, 'marker-end': 'url(#arr)', opacity: 0.9 } : { stroke: '#30363d', 'stroke-width': 0.005 }, pi ? gs.pe : gs.e);
+    SG.edges.push({ a, b, ln, pi });
+  }
+  function sim() {
+    const N = SG.nodes, E = SG.edges;
+    for (let it = 0; it < 2; it++) {
+      for (let i = 0; i < N.length; i++) for (let j = i + 1; j < N.length; j++) {
+        const A = N[i], B = N[j]; let dx = A.x - B.x, dy = A.y - B.y; const d2 = dx * dx + dy * dy + 1e-4, f = 0.00045 / d2;
+        A.vx += dx * f; A.vy += dy * f; B.vx -= dx * f; B.vy -= dy * f;
+      }
+      E.forEach(e => { const A = N[SG.idx.get(e.a)], B = N[SG.idx.get(e.b)]; const dx = B.x - A.x, dy = B.y - A.y, d = Math.hypot(dx, dy) + 1e-6, f = (d - 0.17) * 0.04;
+        A.vx += dx / d * f; A.vy += dy / d * f; B.vx -= dx / d * f; B.vy -= dy / d * f; });
+      N.forEach(nd => { nd.vx -= nd.x * 0.004; nd.vy -= nd.y * 0.004; nd.vx *= 0.82; nd.vy *= 0.82; nd.x += nd.vx; nd.y += nd.vy; });
+    }
+    // fit into the view
+    let mx = 0.01; N.forEach(nd => { mx = Math.max(mx, Math.abs(nd.x), Math.abs(nd.y)); });
+    const s = Math.min(1, 0.95 / mx), cid = curId();
+    N.forEach(nd => { nd.c.setAttribute('cx', nd.x * s); nd.c.setAttribute('cy', nd.y * s);
+      nd.c.setAttribute('stroke', nd.k === cid ? '#ffffff' : '#0d1117'); nd.c.setAttribute('stroke-width', nd.k === cid ? 0.016 : 0.008); });
+    E.forEach(e => { const A = N[SG.idx.get(e.a)], B = N[SG.idx.get(e.b)];
+      let x2 = B.x * s, y2 = B.y * s;
+      if (e.pi) { const dx = x2 - A.x * s, dy = y2 - A.y * s, d = Math.hypot(dx, dy) || 1; x2 -= dx / d * 0.035; y2 -= dy / d * 0.035; }
+      e.ln.setAttribute('x1', A.x * s); e.ln.setAttribute('y1', A.y * s); e.ln.setAttribute('x2', x2); e.ln.setAttribute('y2', y2); });
+    SG.raf = requestAnimationFrame(sim);
+  }
+  function growStats(found, filled, dl, done, total) {
+    document.getElementById('growStats').innerHTML = '<span>states <b>' + found + '</b>' + (done ? '' : ' …') + '</span><span>filled <b>' + filled + '</b></span><span>doubly locked <b>' + dl + '</b></span>' +
+      (done ? '<span class="ok">✓ ' + (found === total ? 'matches' : 'differs from') + ' the build-time class size ' + total + '</span>' : '');
+  }
+  function grow(start, fast) {
+    resetGraph();
+    const k0 = start, cls = D.states[k0].cl, total = D.classes[cls].size;
+    addNode(k0, null); const q = [k0], seen = new Set([k0]); let qi = 0, filled = INFO[k0].f, dl = INFO[k0].dl;
+    const edgeSeen = new Set();
+    function stepOnce() {
+      if (qi >= q.length) { clearInterval(SG.growT); SG.growT = null; growStats(seen.size, filled, dl, true, total); return false; }
+      const k = q[qi++], A = SG.nodes[SG.idx.get(k)];
+      neighbours(LIVE[k]).forEach((c, kk) => {
+        const t = IDX.get(kk);
+        if (!seen.has(t)) { seen.add(t); q.push(t); addNode(t, A); filled += INFO[t].f; dl += INFO[t].dl; }
+        const ek = Math.min(k, t) + '-' + Math.max(k, t);
+        if (!edgeSeen.has(ek)) { edgeSeen.add(ek); addEdge(k, t); }
+        else if (INFO[k].dl && INFO[k].pi === t) addEdge(k, t);
+      });
+      growStats(seen.size, filled, dl, false, total);
+      return true;
+    }
+    if (fast) { while (stepOnce()); } else SG.growT = setInterval(stepOnce, 140);
+    sim();
+  }
+  document.getElementById('grow').addEventListener('click', () => grow(curId(), false));
+  document.getElementById('allcls').addEventListener('click', () => {
+    const t0 = performance.now(), res = classesLive(), ms = Math.round(performance.now() - t0);
+    const sizes = Array.from({ length: res.nc }, (_, c) => ({ c, size: res.cl.filter(x => x === c).length, filled: res.cl.filter((x, k) => x === c && INFO[k].f).length, dl: res.cl.filter((x, k) => x === c && INFO[k].dl).length }));
+    const list = document.getElementById('classList'); list.innerHTML = '';
+    sizes.forEach(s => { const b = document.createElement('button'); b.className = 'btn';
+      b.textContent = 'class ' + (s.c + 1) + ': ' + s.size + ' states, ' + s.filled + ' filled, ' + s.dl + ' doubly locked';
+      b.addEventListener('click', () => { const k = res.cl.indexOf(s.c); cur = LIVE[k].slice(); history = []; renderAll(); grow(k, false); });
+      list.appendChild(b); });
+    const agree = res.nc === D.stats.classes && sizes.every(s => D.classes.some(c => c.size === s.size && c.filled === s.filled));
+    document.getElementById('clsNote').innerHTML = 'Searched from every one of the ' + LIVE.length + ' colourings in ' + ms + ' ms: <b>' + res.nc + ' Kempe classes</b>, and every one contains filled colourings. ' +
+      (agree ? '<span class="ok">✓ same classes as the build-time engines</span>' : '✗ differs from the build-time engines');
+  });
+
+  // ---------- (d) law table, rigid table, formula
+  (function lawTable() {
+    const tb = document.querySelector('#lawTable tbody');
+    D.law.forEach(r => {
+      const I = INFO[r.s], pi = I.pi, J = INFO[pi], dN = J.N - I.N, odd = Math.abs(dN) % 2 === 1;
+      // cw on actual colours: apply pi to the canonical colouring without renaming
+      const col = LIVE[r.s], fr = I.fr, pc = swapped(col, fr.Kpi, fr.al, fr.A), cw0 = cwEta(col, fr).cw, cw1 = cwEta(pc, null).cw;
+      const live = pi === r.pi && J.N === r.Npi && !!J.dl === r.piDL && cw0 === r.cw && cw1 === r.cwpi && ((cw1 - cw0) % 4 + 4) % 4 === 2;
+      const tr = document.createElement('tr'); tr.className = 'click'; tr.tabIndex = 0;
+      tr.innerHTML = '<td>' + r.s + (I.N === 8 ? ' <span class="badge rg">rigid</span>' : '') + '</td><td class="num">' + I.N + '</td><td>' + pi + (J.dl && J.N === 8 ? ' <span class="badge rg">rigid</span>' : '') + '</td><td class="num">' + J.N +
+        '</td><td>' + (J.dl ? 'yes' : 'no') + '</td><td class="num">' + (dN > 0 ? '+' : '') + dN + ' (' + (odd ? 'odd' : 'even') + ')</td><td class="num">' + cw0 + ' → ' + cw1 +
+        '</td><td>' + ((odd === !!J.dl) && live ? '<span class="ok">✓</span>' : '✗') + '</td>';
+      const load = () => { cur = LIVE[r.s].slice(); history = []; renderAll(); document.getElementById('hA').scrollIntoView({ behavior: 'smooth' }); };
+      tr.addEventListener('click', load); tr.addEventListener('keydown', e => { if (e.key === 'Enter') load(); });
+      tb.appendChild(tr);
+    });
+    const dd = D.law.filter(r => r.piDL).length;
+    const cap = document.createElement('caption'); cap.className = 'sr'; cap.textContent = 'Doubly locked states, their π-steps and the parity check';
+    document.getElementById('lawTable').prepend(cap);
+    const p = document.createElement('p'); p.className = 'note'; p.style.marginTop = '.4rem';
+    p.innerHTML = D.law.length + ' doubly locked states: ' + dd + ' π-steps land on a doubly locked state (all with odd ΔN), ' + (D.law.length - dd) + ' open a lock (all with even ΔN). <span class="math">cw</span> moves by 2 (mod 4) at every step.';
+    document.getElementById('lawTable').parentNode.after(p);
+  })();
+  (function rigidTable() {
+    const ROLE = ['α–μ', 'A–B', 'α–A', 'μ–B', 'α–B', 'μ–A'];
+    let html = '<table><thead><tr><th>state</th>' + ROLE.map(r => '<th class="num"><span class="math">' + r + '</span></th>').join('') + '<th class="num">N</th><th>π-step to</th></tr></thead><tbody>';
+    D.rigid.forEach(k => {
+      const I = INFO[k], fr = I.fr, col = LIVE[k], pr = [[fr.al, fr.mu], [fr.A, fr.B], [fr.al, fr.A], [fr.mu, fr.B], [fr.al, fr.B], [fr.mu, fr.A]];
+      const c = pr.map(([a, b]) => components(col, a, b).length), J = INFO[I.pi];
+      html += '<tr class="click" data-k="' + k + '" tabindex="0"><td>' + k + '</td>' + c.map(x => '<td class="num">' + x + '</td>').join('') + '<td class="num">' + I.N + '</td><td>' + I.pi + ' (N = ' + J.N + (J.dl ? ', locked' : ', a lock opens') + ')</td></tr>';
+    });
+    html += '</tbody></table><p class="note" style="margin-top:.4rem">Every rigid state has pieces 1, 1, 2, 1, 2, 1, and none steps to a rigid state.</p>';
+    const box = document.getElementById('rigidTable'); box.innerHTML = html;
+    box.querySelectorAll('tr.click').forEach(tr => tr.addEventListener('click', () => { cur = LIVE[+tr.dataset.k].slice(); history = []; renderAll(); document.getElementById('hA').scrollIntoView({ behavior: 'smooth' }); }));
+  })();
+  function renderFormula() {
+    const fr = frameInfo(cur), N = allChains(cur).reduce((a, x) => a + x.length, 0), ce = cwEta(cur, fr), box = document.getElementById('formula');
+    if (!fr) { box.innerHTML = '<span class="t">This colouring is filled (the rim uses three colours), so there is no frame and no locks. The formula applies to unfilled colourings: pick a doubly locked one above.</span><br>N = ' + N + ', cw = ' + ce.cw; return; }
+    const lhs = (2 * N) % 4, raw = ce.cw + (n - 1) - ce.eta + 2 * (fr.L1 + fr.L2), rhs = ((raw % 4) + 4) % 4;
+    box.innerHTML = '<span class="t">left side</span><br>2N = 2 × ' + N + ' = ' + 2 * N + ' ≡ <b>' + lhs + '</b> (mod 4)<br>' +
+      '<span class="t">right side</span><br>cw + (n − 1) − η + 2(L₁ + L₂) = ' + ce.cw + ' + ' + (n - 1) + ' − ' + ce.eta + ' + 2(' + fr.L1 + ' + ' + fr.L2 + ') = ' + raw + ' ≡ <b>' + rhs + '</b> (mod 4)<br>' +
+      (lhs === rhs ? '<span class="ok">✓ the two sides agree</span>' : '<span style="color:var(--bad)">✗ mismatch</span>') +
+      (fr.DL ? '<br><span class="t">π from here: N ' + N + ' → ' + INFO[IDX.get(key(swapped(cur, fr.Kpi, fr.al, fr.A)))].N + '</span>' : '');
+  }
+
+  // ---------- pickers
+  const pick = document.getElementById('statePick');
+  LIVE.forEach((_, k) => { const o = document.createElement('option'); const I = INFO[k];
+    o.value = k; o.textContent = k + ' · N = ' + I.N + (I.f ? ' · filled' : I.dl ? (I.N === 8 ? ' · rigid' : ' · doubly locked') : ''); pick.appendChild(o); });
+  pick.addEventListener('change', () => { cur = LIVE[+pick.value].slice(); history = []; renderAll(); });
+  const pools = {
+    rigid: D.rigid, dl: D.law.filter(r => r.N > 8).map(r => r.s), filled: D.states.map((s, k) => s.f ? k : -1).filter(k => k >= 0),
+    small: D.states.map((s, k) => s.cl === 1 ? k : -1).filter(k => k >= 0), random: LIVE.map((_, k) => k)
+  };
+  const ptr = {};
+  document.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => {
+    const pool = pools[b.dataset.pick], kind = b.dataset.pick;
+    let k;
+    if (kind === 'random') k = pool[Math.floor(Math.random() * pool.length)];
+    else { ptr[kind] = ((ptr[kind] === undefined ? -1 : ptr[kind]) + 1) % pool.length; k = pool[ptr[kind]]; }
+    cur = LIVE[k].slice(); history = []; renderAll();
+  }));
+
+  function renderAll(changed) { renderMain(); renderMulti(changed); renderHistory(); renderFormula(); }
+  document.getElementById('builtNote').textContent = 'Built ' + D.built + '.';
+  renderAll();
+  grow(curId(), true);
+})();
+</script>
+</body>
+</html>

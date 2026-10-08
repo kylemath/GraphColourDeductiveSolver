@@ -173,9 +173,9 @@
           <h3>The cage, with the hole deleted</h3>
           <svg id="cmap" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Fullerene dual drawing with the current colouring"></svg>
           <div class="legend">
-            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole</span>
-            <span><i style="border:2px solid var(--text)"></i>link (all degree 6)</span>
-            <span><i style="border:2px solid var(--twin)"></i>chain just swapped</span>
+            <span><i style="border:1.5px dashed var(--twin)"></i>deleted hole (centre)</span>
+            <span><i style="background:var(--faint);width:.85rem;height:.85rem"></i>link (all degree 6, larger discs)</span>
+            <span><span class="kdl" data-dash="0"></span>chain just swapped (two-colour track)</span>
             <span><i style="border:2px solid var(--bad)"></i>clash (two neighbours, one colour)</span>
           </div>
           <div class="readout" id="creadout"></div>
@@ -238,8 +238,8 @@
           <svg id="dmap" viewBox="-1.4 -1.4 2.8 2.8" role="img" aria-label="Birkhoff diamond inside a hexagonal ring, with outside chains drawn as arcs"></svg>
           <div class="legend">
             <span><i style="background:var(--faint)"></i>inside vertex, colour unknown</span>
-            <span><i style="border:2px dashed var(--text)"></i>outside chain (arcs outside the ring)</span>
-            <span><i style="border:2px solid var(--twin)"></i>blocks to be swapped</span>
+            <span><span class="kdl" data-dash="0"></span>outside chain (two-colour arcs outside the ring)</span>
+            <span><i style="border:2px solid var(--twin)"></i>blocks to be swapped (thicker arcs, purple rings)</span>
           </div>
           <div class="readout" id="dreadout"></div>
         </div>
@@ -309,10 +309,10 @@
           <h3>The order-22 graph, hole 15 deleted</h3>
           <svg id="fmap" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Order 22 triangulation with the current colouring"></svg>
           <div class="legend">
-            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole</span>
-            <span><i style="border:2px solid var(--text)"></i>link (degrees 5,6,5,6,5)</span>
-            <span><i style="border:2px solid var(--twin)"></i>chain just swapped</span>
-            <span><i style="border:2px dashed var(--text)"></i>chain about to be swapped</span>
+            <span><i style="border:1.5px dashed var(--twin)"></i>deleted hole (centre)</span>
+            <span><i style="background:var(--faint);width:.85rem;height:.85rem"></i>link (degrees 5,6,5,6,5; larger discs)</span>
+            <span><span class="kdl" data-dash="0"></span>chain just swapped (solid track)</span>
+            <span><span class="kdl" data-dash="1"></span>chain about to be swapped (dashed track)</span>
             <span><i style="border:2px solid var(--warn)"></i>in a diamond</span>
           </div>
           <div class="readout" id="freadout"></div>
@@ -381,6 +381,8 @@
 </div>
 
 <script src="data.js"></script>
+<script src="layout.js"></script>
+<script src="../shared/kempe-draw.js"></script>
 <script>
 (function () {
   const D = window.CAGES_DATA;
@@ -451,41 +453,44 @@
     return null;
   }
 
+  // maps: drawn with the shared metro-style module (docs/shared/kempe-draw.js), hole-centred positions (layout.js).
+  // o: { key, pos, layLink, hole, link:Set, colour(v), scale, chains:[{v,pair,dash}], clash:Set, dia:Set, onclick }
+  const CSSV = (k, d) => (getComputedStyle(document.documentElement).getPropertyValue(k).trim() || d);
+  const HEX = [0, 1, 2, 3].map((i) => CSSV('--c' + i, ['#f85149', '#58a6ff', '#e3b341', '#3fb950'][i]));
+  const MAP_BG = CSSV('--raised', '#161b22');
   function drawGraph(svg, G, o) {
-    svg.innerHTML = '';
-    const pos = G.pos, rot = G.rot, rN = o.r || 0.045, fs = o.fs || 0.04;
-    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
-      const tr = v === o.hole || w === o.hole;
-      const on = o.chain && o.chain.has(v) && o.chain.has(w);
-      const on2 = o.next && o.next.has(v) && o.next.has(w);
-      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1],
-        stroke: on ? o.chainColour : on2 ? 'var(--text)' : tr ? 'var(--faint)' : '#3d444d',
-        'stroke-width': on || on2 ? 0.02 : 0.009, 'stroke-dasharray': tr ? '0.03 0.025' : on2 ? '0.04 0.025' : 'none' }, svg);
+    const rot = G.rot;
+    if (!svg._kd || svg._kdKey !== o.key) {
+      svg.innerHTML = '';
+      const edges = []; rot.forEach((nb, v) => nb.forEach((w) => { if (v < w) edges.push([v, w]); }));
+      svg._kd = KempeDraw.create(svg, { pos: o.pos, edges, hole: o.hole, link: o.layLink, colours: HEX, bg: MAP_BG, scale: o.scale || 1.2,
+        label: (v) => String(v), holeLabel: '?',
+        vertexTitle: (v) => 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[svg._colour(v)] + (svg._link.has(v) ? ' · link' : ''),
+        onVertex: (v) => { if (svg._onclick) svg._onclick(v); } });
+      svg._kdKey = o.key;
     }
+    const kd = svg._kd; svg._colour = o.colour; svg._link = o.link; svg._onclick = o.onclick;
+    kd.setColouring(rot.map((_, v) => (v === o.hole ? 0 : o.colour(v))));
+    const list = [], seen = new Set();
+    (o.chains || []).forEach((ch) => { if (!ch || !ch.v) return; const key = Math.min(...ch.pair) + ':' + Math.max(...ch.pair) + ':' + ch.v.slice().sort((a, b) => a - b).join(',');
+      if (!seen.has(key)) { seen.add(key); list.push(ch); } });
+    kd.setChains(list);
+    const mk = kd.layer('marks'); mk.innerHTML = '';
     for (let v = 0; v < rot.length; v++) {
-      const [x, y] = pos[v];
-      if (v === o.hole) {
-        el('circle', { cx: x, cy: y, r: rN * 1.1, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
-        el('text', { x, y: y + fs * 0.4, 'text-anchor': 'middle', 'font-size': fs * 1.2, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg).textContent = '?';
-        continue;
-      }
-      const g = el('g', o.onclick ? { style: 'cursor:pointer' } : {}, svg);
-      const isLink = o.link && o.link.has(v), inChain = o.chain && o.chain.has(v), inNext = o.next && o.next.has(v), clash = o.clash && o.clash.has(v), dia = o.dia && o.dia.has(v);
-      if (dia) el('circle', { cx: x, cy: y, r: rN * 1.5, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012 }, g);
-      el('circle', { cx: x, cy: y, r: isLink ? rN * 1.1 : rN, fill: COLORS[o.colour(v)],
-        stroke: clash ? 'var(--bad)' : inChain ? o.chainColour : inNext ? 'var(--text)' : isLink ? 'var(--text)' : 'var(--bg)',
-        'stroke-width': clash ? 0.026 : inChain ? 0.024 : inNext ? 0.02 : isLink ? 0.015 : 0.008,
-        'stroke-dasharray': inNext && !inChain ? '0.03 0.02' : 'none' }, g);
-      if (!o.noLabels) el('text', { x, y: y + fs * 0.37, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)', 'pointer-events': 'none' }, g).textContent = v;
-      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[o.colour(v)] + (isLink ? ' · link' : '');
-      if (o.onclick) g.addEventListener('click', () => o.onclick(v));
+      if (v === o.hole) continue;
+      const [x, y] = o.pos[v], rr = kd.nodeR(v);
+      if (o.dia && o.dia.has(v)) el('circle', { cx: x, cy: y, r: rr + 0.03, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012 }, mk);
+      if (o.clash && o.clash.has(v)) el('circle', { cx: x, cy: y, r: rr + 0.018, fill: 'none', stroke: 'var(--bad)', 'stroke-width': 0.02 }, mk);
     }
+    mk.setAttribute('pointer-events', 'none');
   }
   const touchTxt = (list, ids) => list.length ? 'touches the link at ' + list.map((t) => ids[t]).join(', ') : '<span class="tagsil">silent: touches no link vertex</span>';
 
+  document.querySelectorAll('.kdl').forEach((x) => { x.innerHTML = KempeDraw.legendIcon(HEX[0], HEX[1], { dash: x.dataset.dash === '1', bg: MAP_BG }); });
+
   // ================================================================ 1. cages
   (function cages() {
-    let ci = 0, hi = 0, S = null, G = null, disp = [], path = null, pathIdx = 0, timer = null, chain = null, handMode = false, curLibIdx = null;
+    let ci = 0, hi = 0, S = null, G = null, disp = [], path = null, pathIdx = 0, timer = null, chain = null, chainPair = null, handMode = false, curLibIdx = null;
     const flat = []; // chips: every (cage, hole class)
     D.cages.forEach((cg, a) => cg.holes.forEach((h, b) => flat.push([a, b])));
     function load() {
@@ -541,9 +546,11 @@
     }
     function renderMap() {
       const H = G.holes[hi], bad = proper(S, disp);
+      const lay = window.CAGES_LAYOUT.cages[ci][hi];
       drawGraph($('cmap'), G, {
-        hole: H.hole, link: new Set(H.link), colour: (v) => disp[S.vIdx.get(v)], r: 0.047, fs: 0.039, chainColour: 'var(--twin)',
-        chain: chain ? new Set(chain.map((i) => S.V[i])) : null, clash: new Set([...bad].map((i) => S.V[i])),
+        key: ci + ':' + hi, pos: lay.pos, layLink: lay.link, scale: 1.15,
+        hole: H.hole, link: new Set(H.link), colour: (v) => disp[S.vIdx.get(v)],
+        chains: chain && chainPair ? [{ v: chain.map((i) => S.V[i]), pair: chainPair, title: 'chain just swapped' }] : [], clash: new Set([...bad].map((i) => S.V[i])),
         onclick: handMode ? (v) => { const i = S.vIdx.get(v); disp[i] = (disp[i] + 1) % 4; path = null; pathIdx = 0; chain = null; curLibIdx = null; renderAll(); } : null });
     }
     function renderReadout() {
@@ -566,7 +573,7 @@
       if (pathIdx >= path.length) { stop(); return; }
       const m = path[pathIdx++]; const H = G.holes[hi];
       const touch = m.comp.map((i) => S.L.indexOf(i)).filter((t) => t >= 0);
-      disp = swapped(disp, m); chain = m.comp;
+      disp = swapped(disp, m); chain = m.comp; chainPair = [m.a, m.b];
       const left = path.length - pathIdx;
       renderAll();
       narr('Swap ' + pathIdx + ' of ' + path.length + ': the ' + pn(m.a, m.b) + ' chain of ' + vtx(m.comp.length) + ' ' + (touch.length ? touchTxt(touch, H.link) : touchTxt([], H.link)) + '. ' +
@@ -642,10 +649,8 @@
       const P0 = [R * Math.cos(a), R * Math.sin(a)], b = ringAng(q), Q0 = [R * Math.cos(b), R * Math.sin(b)];
       const mid = ringAng(p) + (nIn + 1) * Math.PI / 6, rc = R + 0.2 + 0.22 * k;
       const C = [rc * Math.cos(mid), rc * Math.sin(mid)];
-      const d = 'M' + P0[0] + ',' + P0[1] + ' Q' + C[0] + ',' + C[1] + ' ' + Q0[0] + ',' + Q0[1];
-      el('path', { d, fill: 'none', stroke: COLORS[colA], 'stroke-width': hot ? 0.05 : 0.036 }, svg);
-      el('path', { d, fill: 'none', stroke: COLORS[colB], 'stroke-width': hot ? 0.05 : 0.036, 'stroke-dasharray': '0.07 0.07' }, svg);
-      if (hot) el('path', { d, fill: 'none', stroke: 'var(--twin)', 'stroke-width': 0.012, transform: 'translate(0,0)' }, svg);
+      // metro-style track (site convention, docs/shared/kempe-draw.js): two strands, one per colour, with a casing
+      KempeDraw.track(svg, KempeDraw.quad(P0, C, Q0, 32), HEX[colA], HEX[colB], { strand: hot ? 0.027 : 0.019, casing: 0.012, bg: MAP_BG });
     }
     function render() {
       const svg = $('dmap'); svg.innerHTML = '';
@@ -761,14 +766,16 @@
   (function fcycle() {
     const F = D.fcycle, S = makeSys(F, F.hole, F.link), ST = F.states;
     const diaSet = new Set(); F.diamonds.forEach((d) => { d.centres.forEach((v) => diaSet.add(v)); d.tips.forEach((v) => diaSet.add(v)); });
-    let m = 0, mode = 'cycle', fillStep = 0, route = null, disp = ST[0].c.slice(), chainJust = null, chainNext = null, timer = null, showDia = false, lastCol = 'var(--twin)';
+    let m = 0, mode = 'cycle', fillStep = 0, route = null, disp = ST[0].c.slice(), chainJust = null, chainNext = null, pairJust = null, pairNext = null, timer = null, showDia = false, lastCol = 'var(--twin)';
     $('fsrc').textContent = F.source;
     const RC = { 2: 'var(--accent)', 3: 'var(--warn)', 4: 'var(--bad)' };
     function vset(list) { return list ? new Set(list) : null; }
     function render() {
       const H = F.hole;
-      drawGraph($('fmap'), F, { hole: H, link: new Set(F.link), colour: (v) => disp[S.vIdx.get(v)], r: 0.058, fs: 0.05, chainColour: lastCol,
-        chain: vset(chainJust), next: vset(chainNext), dia: showDia ? diaSet : null });
+      const lay = window.CAGES_LAYOUT.fcycle;
+      drawGraph($('fmap'), F, { key: 'f', pos: lay.pos, layLink: lay.link, scale: 1.3, hole: H, link: new Set(F.link), colour: (v) => disp[S.vIdx.get(v)],
+        chains: [chainJust && { v: chainJust, pair: pairJust, title: 'chain just swapped' }, chainNext && { v: chainNext, pair: pairNext, dash: true, title: 'chain about to be swapped' }],
+        dia: showDia ? diaSet : null });
       const st = ST[m];
       const lk = lockInfo(S, disp);
       $('freadout').innerHTML = mode === 'cycle'
@@ -792,25 +799,25 @@
     function goCycle(mm, arrived) {
       mode = 'cycle'; m = ((mm % 60) + 60) % 60; disp = ST[m].c.slice(); route = null; fillStep = 0;
       const prev = (m + 59) % 60;
-      chainJust = arrived ? ST[prev].F.comp : null; lastCol = 'var(--twin)';
-      chainNext = ST[m].F.comp;
+      chainJust = arrived ? ST[prev].F.comp : null; pairJust = [ST[prev].F.a, ST[prev].F.b]; lastCol = 'var(--twin)';
+      chainNext = ST[m].F.comp; pairNext = [ST[m].F.a, ST[m].F.b];
       render();
       const f = ST[m].F, j = f.j;
-      $('fnarr').innerHTML = (arrived ? 'F move done: swapped the ' + pn(ST[prev].F.a, ST[prev].F.b) + ' chain of ' + vtx(ST[prev].F.comp.length) + ' (solid ring). ' : '') +
-        'State ' + (ST[m].k + 1) + ' of 20. The repeat is at link position ' + j + ' and ' + ((j + 2) % 5) + '. The next F move swaps the ' + pn(f.a, f.b) + ' chain of ' + vtx(f.comp.length) + ' (dashed ring), which touches the link at ' + f.link.map((t) => F.link[t]).join(', ') + '. ' +
+      $('fnarr').innerHTML = (arrived ? 'F move done: swapped the ' + pn(ST[prev].F.a, ST[prev].F.b) + ' chain of ' + vtx(ST[prev].F.comp.length) + ' (solid track). ' : '') +
+        'State ' + (ST[m].k + 1) + ' of 20. The repeat is at link position ' + j + ' and ' + ((j + 2) % 5) + '. The next F move swaps the ' + pn(f.a, f.b) + ' chain of ' + vtx(f.comp.length) + ' (dashed track), which touches the link at ' + f.link.map((t) => F.link[t]).join(', ') + '. ' +
         (m === 59 && arrived ? 'After 60 labelled steps the exact colouring is back where it started.' : '');
     }
     function stop() { if (timer) clearInterval(timer); timer = null; $('fplay').textContent = 'Play'; }
     function next() { goCycle(m + 1, true); }
     function startFill() {
-      stop(); mode = 'fill'; route = ST[m].route; fillStep = 0; disp = ST[m].c.slice(); chainJust = null; chainNext = route.length ? route[0].comp : null;
+      stop(); mode = 'fill'; route = ST[m].route; fillStep = 0; disp = ST[m].c.slice(); chainJust = null; chainNext = route.length ? route[0].comp : null; pairNext = route.length ? [route[0].a, route[0].b] : null;
       render(); $('fnarr').innerHTML = 'Shortest fill from state ' + (ST[m].k + 1) + ': ' + route.length + ' swap' + (route.length === 1 ? '' : 's') + '. Press Next to make each swap.';
     }
     function stepFill() {
       if (!route || fillStep >= route.length) return false;
       const r = route[fillStep]; const comp = r.comp.map((v) => S.vIdx.get(v));
-      disp = swapped(disp, { a: r.a, b: r.b, comp }); chainJust = r.comp; lastCol = r.silent ? 'var(--twin)' : 'var(--text)'; fillStep++;
-      chainNext = fillStep < route.length ? route[fillStep].comp : null; render();
+      disp = swapped(disp, { a: r.a, b: r.b, comp }); chainJust = r.comp; pairJust = [r.a, r.b]; lastCol = r.silent ? 'var(--twin)' : 'var(--text)'; fillStep++;
+      chainNext = fillStep < route.length ? route[fillStep].comp : null; pairNext = chainNext ? [route[fillStep].a, route[fillStep].b] : null; render();
       $('fnarr').innerHTML = 'Swap ' + fillStep + ' of ' + route.length + ': the ' + pn(r.a, r.b) + ' chain of ' + vtx(r.comp.length) + '. ' + (r.silent ? '<span class="tagsil">silent: touches no link vertex</span>. The link colours do not change.' : 'It touches the link at ' + r.link.map((t) => F.link[t]).join(', ') + '.') +
         (fillStep === route.length ? ' The link now uses three colours: <strong>filled</strong>.' : '');
       return fillStep < route.length;

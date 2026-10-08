@@ -4,256 +4,185 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Graph Colour — Four Colour Theorem</title>
-  <meta name="description" content="Project site for a constructive approach to the Four Colour Theorem: an interactive exploration, the inspiration story, and the proof navigator.">
-  <link rel="stylesheet" href="site.css">
+  <meta name="description" content="Project site for a constructive approach to the Four Colour Theorem: interactive exhibits, the writing that grew around the work, and the proof navigator.">
+  <link rel="stylesheet" href="site.css?v=2">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-nav">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="side-nav">
+      <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
     <a class="brand" href="#overview">
       <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       Graph Colour
     </a>
-    <nav aria-label="Site">
-      <a href="#overview">Overview</a>
-      <a href="#explore">Explore</a>
-      <a href="#inspiration">Inspiration</a>
-      <a href="#play">Play</a>
-      <a href="#poem">Poem</a>
-      <a href="#trap">Trap</a>
-      <a href="#deadend">Dead end</a>
-      <a href="#vacancy">Vacancy</a>
-      <a href="#six-ring">Six-ring</a>
-      <a href="#cages">Cages</a>
-      <a href="#physics">Physics</a>
-      <a href="#navigator">Proof</a>
-    </nav>
+    <span class="nav-current" aria-hidden="true"></span>
   </header>
 
-  <main>
-    <section id="overview" class="overview">
-      <div class="overview-inner">
-        <p class="eyebrow">Four Colour Theorem</p>
-        <h1>A constructive colouring of planar graphs</h1>
-        <p class="lead">
-          Every planar graph <span class="math">G</span> satisfies <span class="math">χ(G) ≤ 4</span>.
-          This site gathers the working material for a constructive proof: an interactive account of the classical theorem, the physical picture that suggested the argument, and a live map of the proof tree.
-        </p>
-        <div class="cards">
-          <a class="card" href="#explore">
-            <span class="card-kicker">01</span>
-            <h2>Explore</h2>
-            <p>Maps and dual graphs, Euler’s formula, Kempe chains, discharging, and a colouring playground for the classical theorem.</p>
-          </a>
-          <a class="card" href="#inspiration">
-            <span class="card-kicker">02</span>
-            <h2>Inspiration</h2>
-            <p>The background story. Kempe swaps as charge flow on an anti-ferromagnetic Potts model, lifted to an SO(3) rotation of a tetrahedral magic gem.</p>
-          </a>
-          <a class="card" href="#play">
-            <span class="card-kicker">03</span>
-            <h2>The Long Table</h2>
-            <p>A play in one long night. Three colleagues trade rumours of the structural proof, find the last gate, and brainstorm until dawn. Its sequel follows the next day’s call.</p>
-          </a>
-          <a class="card" href="#poem">
-            <span class="card-kicker">04</span>
-            <h2>The Fifth Degree</h2>
-            <p>The other team’s rhyming account of the proof, the creative team’s reply, and a navigator reading of both.</p>
-          </a>
-          <a class="card" href="#trap">
-            <span class="card-kicker">05</span>
-            <h2>The Tidy Trap</h2>
-            <p>An interactive demo of the colouring that defeats every cheap descent score, and three ways around it, including avoidance.</p>
-          </a>
-          <a class="card" href="#deadend">
-            <span class="card-kicker">06</span>
-            <h2>The Dead-End Region</h2>
-            <p>An interactive demo of a symmetric hub where descent meets a ring of ten dead ends, and breadcrumb runs that find a way out.</p>
-          </a>
-          <a class="card" href="#vacancy">
-            <span class="card-kicker">07</span>
-            <h2>The Vacancy</h2>
-            <p>The third play. On a park bench, the same three colleagues sort the night’s loose pages and find that the hole now moves.</p>
-          </a>
-          <a class="card" href="#six-ring">
-            <span class="card-kicker">08</span>
-            <h2>The Six-Ring Trap</h2>
-            <p>An interactive demo of a hole ringed by degree-six vertices: 74 ring patterns, a trap no local rule escapes, and a state four swaps deep.</p>
-          </a>
-          <a class="card" href="#cages">
-            <span class="card-kicker">09</span>
-            <h2>Cages and Diamonds</h2>
-            <p>An interactive demo: fullerene-dual cages with no Birkhoff diamond, the diamond's ring colourings that extend or need a swap, and the one cycle of states at a (5,5,6,5,6) hole.</p>
-          </a>
-          <a class="card" href="#physics">
-            <span class="card-kicker">10</span>
-            <h2>The Spin-Glass View</h2>
-            <p>Kempe chains as the cluster moves of a four-state antiferromagnet: what is proved on a torus and a sphere, a cluster-flip demo, and what the energy landscape looks like.</p>
-          </a>
-          <a class="card" href="#navigator">
-            <span class="card-kicker">11</span>
-            <h2>Proof</h2>
-            <p>The proof tree for this project. Track statements, approaches, kill criteria, and what is proved, blocked, or still open.</p>
-          </a>
+  <div class="shell">
+    <nav id="side-nav" class="side-nav" aria-label="Site">
+      <ul>
+        <li><a href="#overview" data-route="overview">Overview</a></li>
+      </ul>
+
+      <p class="nav-group">Interactive</p>
+      <ul>
+        <li><a href="#explore" data-route="explore" data-src="explore/index.html"
+               data-title="Explore" data-sub="Interactive introduction to the Four Colour Theorem"
+               data-frame-title="Interactive Four Colour Theorem exploration">Explore</a></li>
+        <li><a href="#wrap" data-route="wrap" data-src="wrap/index.html"
+               data-title="Wrapping the Sphere" data-sub="A 4-coloured triangulation as a panelled ball, wrapped onto a tetrahedron">Wrapping the Sphere</a></li>
+        <li><a href="#trap" data-route="trap" data-src="trap/index.html"
+               data-title="The Tidy Trap" data-sub="A Kempe colouring that is a local minimum of every tidiness score">The Tidy Trap</a></li>
+        <li><a href="#deadend" data-route="deadend" data-src="deadend/index.html"
+               data-title="The Dead-End Region" data-sub="Traps, twins and breadcrumb runs at a symmetric hub">The Dead-End Region</a></li>
+        <li><a href="#six-ring" data-route="six-ring" data-src="66666/index.html"
+               data-title="The Six-Ring Trap" data-sub="A (6,6,6,6,6) hole at order 28, the 74 ring patterns, and a doubly locked state">The Six-Ring Trap</a></li>
+        <li><a href="#cages" data-route="cages" data-src="cages/index.html"
+               data-title="Cages and Diamonds" data-sub="Fullerene duals, the Birkhoff diamond's ring colourings, and the one F-cycle">Cages and Diamonds</a></li>
+        <li><a href="#physics" data-route="physics" data-src="physics/index.html"
+               data-title="The Spin-Glass View" data-sub="Kempe swaps as cluster flips, torus versus sphere, and a glassy landscape">The Spin-Glass View</a></li>
+        <li><a href="#alternation" data-route="alternation" data-src="alternation/index.html"
+               data-title="The 9-8 Alternation" data-sub="Near-rigid π-runs">The 9-8 Alternation</a></li>
+        <li><a href="#kempe" data-route="kempe" data-src="kempe/index.html"
+               data-title="Counting Kempe Chains" data-sub="The chain count N, Kempe classes, and the chain-parity law">Counting Kempe Chains</a></li>
+        <li><a href="#holes" data-route="holes" data-src="holes/index.html"
+               data-title="Diamonds and Holes" data-sub="The Birkhoff diamond, 2.122, the frame class, and hole link words">Diamonds and Holes</a></li>
+      </ul>
+
+      <p class="nav-group">Writing</p>
+      <ul>
+        <li><a href="#writing" data-route="writing" data-src="writing/index.html"
+               data-title="Writing" data-sub="Three plays, a poem, and the inspiration story in one reader"
+               data-frame-title="Writing: plays, poem and story">Writing</a></li>
+      </ul>
+
+      <p class="nav-group">Proof</p>
+      <ul>
+        <li><a href="#navigator" data-route="navigator" data-src="navigator/index.html"
+               data-title="Proof" data-sub="Editable proof tree. Changes stay in this browser."
+               data-frame-title="Proof Navigator">Proof navigator</a></li>
+      </ul>
+    </nav>
+    <div class="nav-scrim" hidden></div>
+
+    <main id="main" tabindex="-1">
+      <section id="overview" class="overview" data-page="overview">
+        <div class="overview-inner">
+          <p class="eyebrow">Four Colour Theorem</p>
+          <h1>A constructive colouring of planar graphs</h1>
+          <p class="lead">
+            Every planar graph <span class="math">G</span> satisfies <span class="math">χ(G) ≤ 4</span>.
+            This site gathers the working material for a constructive proof: interactive exhibits on the classical theorem and the structures met along the way, the writing that grew around the work, and a live map of the proof tree.
+          </p>
+
+          <h2 class="cards-heading">Interactive</h2>
+          <div class="cards">
+            <a class="card" href="#explore">
+              <span class="card-kicker">01</span>
+              <h3>Explore</h3>
+              <p>Maps and dual graphs, Euler’s formula, Kempe chains, discharging, and a colouring playground for the classical theorem.</p>
+            </a>
+            <a class="card" href="#wrap">
+              <span class="card-kicker">02</span>
+              <h3>Wrapping the Sphere</h3>
+              <p>A 4-coloured triangulation shown as a panelled ball and wrapped onto a tetrahedron, with the folding degree and the degree-5 hole.</p>
+            </a>
+            <a class="card" href="#trap">
+              <span class="card-kicker">03</span>
+              <h3>The Tidy Trap</h3>
+              <p>The colouring that defeats every cheap descent score, and three ways around it, including avoidance.</p>
+            </a>
+            <a class="card" href="#deadend">
+              <span class="card-kicker">04</span>
+              <h3>The Dead-End Region</h3>
+              <p>A symmetric hub where descent meets a ring of ten dead ends, and breadcrumb runs that find a way out.</p>
+            </a>
+            <a class="card" href="#six-ring">
+              <span class="card-kicker">05</span>
+              <h3>The Six-Ring Trap</h3>
+              <p>A hole ringed by degree-six vertices: 74 ring patterns, a trap no local rule escapes, and a state four swaps deep.</p>
+            </a>
+            <a class="card" href="#cages">
+              <span class="card-kicker">06</span>
+              <h3>Cages and Diamonds</h3>
+              <p>Fullerene-dual cages with no Birkhoff diamond, the diamond's ring colourings that extend or need a swap, and the one cycle of states at a (5,5,6,5,6) hole.</p>
+            </a>
+            <a class="card" href="#physics">
+              <span class="card-kicker">07</span>
+              <h3>The Spin-Glass View</h3>
+              <p>Kempe chains as the cluster moves of a four-state antiferromagnet: what is proved on a torus and a sphere, and what the energy landscape looks like.</p>
+            </a>
+            <a class="card" href="#alternation">
+              <span class="card-kicker">08</span>
+              <h3>The 9-8 Alternation</h3>
+              <p>Near-rigid π-runs.</p>
+            </a>
+            <a class="card" href="#kempe">
+              <span class="card-kicker">09</span>
+              <h3>Counting Kempe Chains</h3>
+              <p>The chain count N around a degree-five vertex, Kempe classes, and the chain-parity law.</p>
+            </a>
+            <a class="card" href="#holes">
+              <span class="card-kicker">10</span>
+              <h3>Diamonds and Holes</h3>
+              <p>The Birkhoff diamond, 2.122, the frame class, and the link words of a hole.</p>
+            </a>
+          </div>
+
+          <h2 class="cards-heading">Writing</h2>
+          <div class="cards">
+            <a class="card" href="#writing/long-table">
+              <span class="card-kicker">Play</span>
+              <h3>The Long Table</h3>
+              <p>A play in one long night. Three colleagues trade rumours of the structural proof, find the last gate, and brainstorm until dawn.</p>
+            </a>
+            <a class="card" href="#writing/afternoon-call">
+              <span class="card-kicker">Play</span>
+              <h3>The Afternoon Call</h3>
+              <p>The sequel: a day of work, two leaked documents, and a video call that rewrites the plan.</p>
+            </a>
+            <a class="card" href="#writing/vacancy">
+              <span class="card-kicker">Play</span>
+              <h3>The Vacancy</h3>
+              <p>The third play, after Beckett. On a park bench, the same three colleagues sort the night’s loose pages and find that the hole now moves.</p>
+            </a>
+            <a class="card" href="#writing/fifth-degree">
+              <span class="card-kicker">Poem</span>
+              <h3>The Fifth Degree</h3>
+              <p>The other team’s rhyming account of the proof, the creative team’s reply, and a navigator reading of both.</p>
+            </a>
+            <a class="card" href="#writing/fever-dream">
+              <span class="card-kicker">Story</span>
+              <h3>A Mathematical Fever Dream</h3>
+              <p>The inspiration story. Kempe swaps as charge flow on an anti-ferromagnetic Potts model, lifted to an SO(3) rotation of a tetrahedral magic gem.</p>
+            </a>
+          </div>
+
+          <h2 class="cards-heading">Proof</h2>
+          <div class="cards">
+            <a class="card" href="#navigator">
+              <span class="card-kicker">Navigator</span>
+              <h3>Proof</h3>
+              <p>The proof tree for this project. Track statements, approaches, kill criteria, and what is proved, blocked, or still open.</p>
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="explore" class="exhibit exhibit-app">
-      <div class="kicker">
-        <h2>Explore</h2>
-        <p>Interactive introduction to the Four Colour Theorem</p>
-      </div>
-      <iframe
-        class="frame frame-app"
-        src="explore/index.html"
-        title="Interactive Four Colour Theorem exploration"
-      ></iframe>
-    </section>
+      <section class="viewer" data-page="viewer" hidden aria-labelledby="viewer-title">
+        <div class="kicker">
+          <h2 id="viewer-title" tabindex="-1"></h2>
+          <p><span class="viewer-sub"></span><span class="sep" aria-hidden="true"> · </span><a class="viewer-open" href="#">open full page</a></p>
+        </div>
+        <div class="frames"></div>
+      </section>
+    </main>
+  </div>
 
-    <section id="inspiration" class="exhibit">
-      <div class="kicker">
-        <h2>Inspiration</h2>
-        <p>Background story — spin glasses, Kempe chains, and magic gems</p>
-      </div>
-      <iframe
-        id="story-frame"
-        class="frame frame-story"
-        src="story/index.html"
-        title="Background inspiration story"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="play" class="exhibit">
-      <div class="kicker">
-        <h2>The Long Table</h2>
-        <p>A play in one long night — rumours, the last gate, and a brainstorm until dawn</p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="play/index.html"
-        title="The Long Table, a play"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="afternoon" class="exhibit">
-      <div class="kicker">
-        <h2>The Afternoon Call</h2>
-        <p>Sequel — a day of work, two leaked documents, and a video call that rewrites the plan</p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="play/afternoon.html"
-        title="The Afternoon Call, a sequel to The Long Table"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="poem" class="exhibit">
-      <div class="kicker">
-        <h2>The Fifth Degree</h2>
-        <p>Poem by the other team — corpus, support, and the creative reply</p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="poem/index.html"
-        title="The Fifth Degree, a poem with readings"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="trap" class="exhibit">
-      <div class="kicker">
-        <h2>The Tidy Trap</h2>
-        <p>Interactive — a Kempe colouring that is a local minimum of every tidiness score · <a href="trap/index.html">open full page</a></p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="trap/index.html"
-        title="The Tidy Trap, an interactive demo"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="deadend" class="exhibit">
-      <div class="kicker">
-        <h2>The Dead-End Region</h2>
-        <p>Interactive — traps, twins and breadcrumb runs at a symmetric hub · <a href="deadend/index.html">open full page</a></p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="deadend/index.html"
-        title="The Dead-End Region, an interactive demo"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="vacancy" class="exhibit">
-      <div class="kicker">
-        <h2>The Vacancy</h2>
-        <p>Third play, after Beckett — a park bench, loose pages, and a hole that moves</p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="play/vacancy.html"
-        title="The Vacancy, a third play"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="six-ring" class="exhibit">
-      <div class="kicker">
-        <h2>The Six-Ring Trap</h2>
-        <p>Interactive — a (6,6,6,6,6) hole at order 28, the 74 ring patterns, and a doubly locked state of radius 4 · <a href="66666/index.html">open full page</a></p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="66666/index.html"
-        title="The Six-Ring Trap, an interactive demo"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="cages" class="exhibit">
-      <div class="kicker">
-        <h2>Cages and Diamonds</h2>
-        <p>Interactive — fullerene duals, the Birkhoff diamond's ring colourings, and the one F-cycle at a (5,5,6,5,6) hole · <a href="cages/index.html">open full page</a></p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="cages/index.html"
-        title="Cages and Diamonds, an interactive demo"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="physics" class="exhibit">
-      <div class="kicker">
-        <h2>The Spin-Glass View</h2>
-        <p>Interactive — Kempe swaps as cluster flips, torus versus sphere, and a glassy energy landscape · <a href="physics/index.html">open full page</a></p>
-      </div>
-      <iframe
-        class="frame frame-story"
-        src="physics/index.html"
-        title="The Spin-Glass View, an interactive page"
-        scrolling="no"
-      ></iframe>
-    </section>
-
-    <section id="navigator" class="exhibit exhibit-app">
-      <div class="kicker">
-        <h2>Proof</h2>
-        <p>Editable proof tree. Changes stay in this browser.</p>
-      </div>
-      <iframe
-        class="frame frame-app"
-        src="navigator/index.html"
-        title="Proof Navigator"
-      ></iframe>
-    </section>
-  </main>
-
-  <script src="site.js"></script>
+  <script src="site.js?v=2"></script>
 </body>
 </html>

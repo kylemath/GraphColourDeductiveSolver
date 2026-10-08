@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing — Graph Colour</title>
+  <meta name="description" content="The writing around the Four Colour project in one reader: The Long Table, The Afternoon Call, The Vacancy, The Fifth Degree, and A Mathematical Fever Dream.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-raised: #161b22;
+      --bg-hover: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-dim: #b1bac4;
+      --text-faint: #7d8590;
+      --accent: #58a6ff;
+      --purple: #bc8cff;
+      --outline-w: 17rem;
+      --bar-h: 0px;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .skip-link {
+      position: absolute; left: 0.5rem; top: -3rem; z-index: 50;
+      padding: 0.5rem 0.8rem; background: var(--bg-raised); color: var(--text);
+      border: 1px solid var(--accent); border-radius: 6px;
+    }
+    .skip-link:focus { top: 0.5rem; }
+
+    .reader {
+      display: grid;
+      grid-template-columns: var(--outline-w) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    /* Outline ------------------------------------------------------------- */
+    .outline {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 1.1rem 0.6rem 2rem;
+      border-right: 1px solid var(--border);
+      background: var(--bg);
+      font-size: 0.88rem;
+    }
+    .outline-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem;
+      margin: 0 0 0.6rem; padding: 0 0.6rem;
+    }
+    .outline-head h2 {
+      margin: 0; color: var(--text-faint);
+      font-size: 0.72rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .outline-head a { color: var(--text-faint); font-size: 0.8rem; text-decoration: none; }
+    .outline-head a:hover { color: var(--text); }
+    .outline ol { margin: 0; padding: 0; list-style: none; }
+    .outline a.o-link {
+      display: block;
+      padding: 0.24rem 0.6rem;
+      border-radius: 6px;
+      color: var(--text-dim);
+      text-decoration: none;
+      line-height: 1.35;
+    }
+    .outline a.o-link:hover { color: var(--text); background: var(--bg-hover); }
+    .outline .o-piece { margin: 0 0 0.6rem; }
+    .outline .o-piece > a.o-link {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .outline .o-kind {
+      display: block;
+      color: var(--text-faint);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .outline .lvl-1 > a.o-link { padding-left: 1.2rem; }
+    .outline .lvl-2 > a.o-link { padding-left: 2rem; font-size: 0.82rem; }
+    /* Third-level entries are shown only for the piece being read. */
+    .outline .o-piece:not(.is-current) .lvl-2 { display: none; }
+    .outline a.o-link.is-active {
+      color: var(--accent);
+      background: var(--bg-hover);
+      box-shadow: inset 2px 0 0 var(--accent);
+    }
+
+    /* Mobile bar ---------------------------------------------------------- */
+    .bar { display: none; }
+    .scrim { display: none; }
+
+    /* Content ------------------------------------------------------------- */
+    .content { min-width: 0; outline: none; }
+    .intro {
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 0.5rem;
+    }
+    .intro .eyebrow {
+      margin: 0 0 0.5rem; color: var(--purple);
+      font-size: 0.8rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .intro h1 { margin: 0 0 0.5rem; font-size: clamp(1.8rem, 4vw, 2.4rem); letter-spacing: -0.02em; line-height: 1.15; }
+    .intro p { margin: 0; color: var(--text-dim); }
+    .intro .note { margin-top: 0.6rem; color: var(--text-faint); font-size: 0.88rem; }
+
+    .piece { border-top: 1px solid var(--border); margin-top: 2.5rem; }
+    .piece:first-of-type { margin-top: 1.5rem; }
+    .piece-meta {
+      display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem;
+      max-width: 46rem; margin: 0 auto; padding: 0.9rem 1rem 0;
+      color: var(--text-faint); font-size: 0.8rem;
+    }
+    .piece-meta .kind { font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
+    .piece-meta a { color: var(--accent); }
+    .piece-status { max-width: 46rem; margin: 0 auto; padding: 2rem 1rem; color: var(--text-dim); }
+    .piece-status a { color: var(--accent); }
+    .piece-body { min-width: 0; overflow-x: hidden; }
+    .piece-body img, .piece-body pre, .piece-body figure { max-width: 100%; }
+    .piece-body pre { overflow-x: auto; }
+    /* The story's code blocks were themed by a third-party highlighter on its
+       own page; give them a plain panel here. */
+    [data-scope="fever-dream"] pre {
+      padding: 1rem 1.1rem;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    /* Link card that stands in for an interactive part of a piece. */
+    .interactive-link {
+      max-width: 40rem;
+      margin: 2rem auto;
+      padding: 1rem 1.2rem;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      text-align: left;
+    }
+    .interactive-link .kind {
+      display: block; margin-bottom: 0.25rem; color: var(--text-faint);
+      font-size: 0.72rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .interactive-link h3 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--text); }
+    .interactive-link p { margin: 0 0 0.6rem; color: var(--text-dim); }
+    .interactive-link a { color: var(--accent); }
+
+    .piece { scroll-margin-top: var(--bar-h); }
+    .piece [id] { scroll-margin-top: calc(var(--bar-h) + 0.75rem); }
+
+    @media (max-width: 720px) {
+      :root { --bar-h: 2.9rem; }
+      .reader { grid-template-columns: minmax(0, 1fr); }
+      .bar {
+        position: sticky; top: 0; z-index: 20;
+        display: flex; align-items: center; gap: 0.6rem;
+        height: var(--bar-h); padding: 0 0.75rem;
+        background: rgba(13, 17, 23, 0.97);
+        border-bottom: 1px solid var(--border);
+        font-size: 0.88rem;
+      }
+      .bar button {
+        flex: none;
+        padding: 0.3rem 0.65rem;
+        background: var(--bg-raised); color: var(--text);
+        border: 1px solid var(--border); border-radius: 6px;
+        font: inherit; cursor: pointer;
+      }
+      .bar .where { min-width: 0; overflow: hidden; color: var(--text-dim); text-overflow: ellipsis; white-space: nowrap; }
+      .outline {
+        position: fixed; top: var(--bar-h); left: 0; bottom: 0; z-index: 19;
+        width: min(19rem, 88vw); height: auto;
+        transform: translateX(-100%); visibility: hidden;
+        transition: transform 0.2s ease, visibility 0s linear 0.2s;
+      }
+      body.outline-open .outline { transform: none; visibility: visible; transition: transform 0.2s ease; }
+      body.outline-open .scrim {
+        display: block; position: fixed; inset: var(--bar-h) 0 0 0; z-index: 18; background: rgba(1, 4, 9, 0.6);
+      }
+      .intro { padding-top: 1.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .outline, body.outline-open .outline { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to text</a>
+  <div class="bar">
+    <button type="button" class="outline-toggle" aria-expanded="false" aria-controls="outline">Contents</button>
+    <span class="where" aria-live="off"></span>
+  </div>
+  <div class="reader">
+    <nav id="outline" class="outline" aria-label="Writing outline">
+      <div class="outline-head">
+        <h2>Writing</h2>
+        <a class="home-link" href="../index.html#overview" hidden>Site home</a>
+      </div>
+      <ol class="outline-list"></ol>
+    </nav>
+    <div class="scrim"></div>
+    <main id="content" class="content" tabindex="-1">
+      <header class="intro">
+        <p class="eyebrow">Four Colour Theorem</p>
+        <h1>Writing</h1>
+        <p>Three plays, a poem, and the story that started it, in one place. Use the outline to jump between pieces, scenes and sections.</p>
+        <p class="note">Each piece is shown as published on its own page; the interactive parts of the story link out to the original.</p>
+      </header>
+      <div class="pieces"></div>
+    </main>
+  </div>
+  <script src="writing.js?v=2"></script>
+</body>
+</html>

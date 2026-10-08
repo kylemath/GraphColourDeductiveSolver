@@ -125,8 +125,9 @@
           <h3>The map, with the root deleted</h3>
           <svg id="map" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Triangulation drawing with the current colouring"></svg>
           <div class="legend">
-            <span><i style="border:1.5px dashed var(--text)"></i>deleted root</span>
-            <span><i style="border:2px solid var(--text)"></i>boundary</span>
+            <span><i style="border:1.5px dashed var(--twin)"></i>deleted root (centre)</span>
+            <span><i style="background:var(--faint);width:.85rem;height:.85rem"></i>boundary (larger discs)</span>
+            <span>hover a move to draw its chain as a two-colour track</span>
             <span><i style="border:2px solid var(--twin)"></i>vertices that differ from the twin</span>
           </div>
           <div class="readout" id="readout"></div>
@@ -219,6 +220,8 @@
 </div>
 
 <script src="data.js"></script>
+<script src="layout.js"></script>
+<script src="../shared/kempe-draw.js"></script>
 <script>
 (function () {
   const D = window.DEADEND_DATA;
@@ -295,31 +298,31 @@
       box.appendChild(b);
     });
   }
+  // the map: drawn with the shared metro-style module (docs/shared/kempe-draw.js), hole-centred positions per root (layout.js)
+  const CSSV = (k, d) => (getComputedStyle(document.documentElement).getPropertyValue(k).trim() || d);
+  const HEX = [0, 1, 2, 3].map((i) => CSSV('--c' + i, ['#f85149', '#58a6ff', '#e3b341', '#3fb950'][i]));
+  const MAP_BG = CSSV('--raised', '#161b22');
+  let kd = null, kdRoot = null;
   function renderMap() {
-    const svg = $('map'); svg.innerHTML = '';
-    const pos = D.pos, rot = D.rot, r = R.root, B = new Set(R.B);
-    const hi = highlight ? new Set(highlight.comp.map((i) => R.V[i])) : null;
-    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
-      const tr = v === r || w === r, on = hi && hi.has(v) && hi.has(w);
-      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1], stroke: on ? 'var(--text)' : tr ? 'var(--faint)' : '#3d444d',
-        'stroke-width': on ? 0.022 : 0.009, 'stroke-dasharray': tr ? '0.03 0.025' : 'none' }, svg);
+    const svg = $('map'), rot = D.rot, r = R.root;
+    if (kdRoot !== root) {
+      svg.innerHTML = '';
+      const lay = window.DEADEND_LAYOUT[root], edges = [];
+      rot.forEach((nb, v) => nb.forEach((w) => { if (v < w) edges.push([v, w]); }));
+      kd = KempeDraw.create(svg, { pos: lay.pos, edges, hole: r, link: lay.link, colours: HEX, bg: MAP_BG, scale: 1.45,
+        label: (v) => String(v), holeLabel: '?',
+        vertexTitle: (v) => 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[display[R.V.indexOf(v)]] });
+      kd.pos = lay.pos; kdRoot = root;
     }
+    kd.setColouring(rot.map((_, v) => (v === r ? 0 : display[R.V.indexOf(v)])));
+    kd.setChains(highlight ? [{ v: highlight.comp.map((i) => R.V[i]), pair: [highlight.a, highlight.b] }] : []);
+    // page marks: degree-6 hubs (dashed amber) and vertices that differ from the twin (purple outline)
+    const mk = kd.layer('marks'); mk.innerHTML = '';
     for (let v = 0; v < rot.length; v++) {
-      const [x, y] = pos[v];
-      if (hubOn && rot[v].length === 6) el('circle', { cx: x, cy: y, r: 0.085, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012, 'stroke-dasharray': '0.02 0.015' }, svg);
-      if (v === r) {
-        el('circle', { cx: x, cy: y, r: 0.055, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
-        const t = el('text', { x, y: y + 0.018, 'text-anchor': 'middle', 'font-size': 0.05, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg); t.textContent = '?';
-        continue;
-      }
-      const i = R.V.indexOf(v), diff = twinMark && twinMark.has(v);
-      const g = el('g', {}, svg);
-      el('circle', { cx: x, cy: y, r: diff ? 0.062 : 0.05, fill: COLORS[display[i]],
-        stroke: diff ? 'var(--twin)' : (hi && hi.has(v)) || B.has(v) ? 'var(--text)' : 'var(--bg)',
-        'stroke-width': diff ? 0.024 : hi && hi.has(v) ? 0.02 : B.has(v) ? 0.014 : 0.008 }, g);
-      const t = el('text', { x, y: y + 0.016, 'text-anchor': 'middle', 'font-size': 0.042, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)' }, g);
-      t.textContent = v;
-      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[display[i]];
+      if (v === r) continue;
+      const [x, y] = kd.pos[v], rr = kd.nodeR(v);
+      if (hubOn && rot[v].length === 6) el('circle', { cx: x, cy: y, r: rr + 0.04, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012, 'stroke-dasharray': '0.02 0.015' }, mk);
+      if (twinMark && twinMark.has(v)) el('circle', { cx: x, cy: y, r: rr + 0.028, fill: 'none', stroke: 'var(--twin)', 'stroke-width': 0.016 }, mk);
     }
   }
   function landscapeCoords() {

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamonds and Holes</title>
+  <meta name="description" content="Interactive demo: the Birkhoff diamond and RSST configuration 2.122, the link word of a degree-five hole and the configuration a 555 or 565 run forces, the 22-vertex frame-class witness, and which hole types occur in the frame class (including the C60 dual, where every hole is 66666).">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --raised: #161b22;
+      --sunken: #010409;
+      --border: #30363d;
+      --text: #e6edf3;
+      --dim: #b1bac4;
+      --faint: #7d8590;
+      --accent: #58a6ff;
+      --good: #3fb950;
+      --bad: #f85149;
+      --warn: #d29922;
+      --twin: #bc8cff;
+      --d5: #e3b341;
+      --d6: #58a6ff;
+      --d7: #bc8cff;
+      --d8: #3fb950;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .intro { max-width: 1060px; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--twin); font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+    h2 { margin: 0 0 .6rem; font: 600 1.55rem/1.3 var(--serif); }
+    h3 { margin: 0 0 .5rem; font: 600 .78rem var(--sans); color: var(--faint); letter-spacing: .07em; text-transform: uppercase; }
+    p { margin: 0 0 .9rem; color: var(--dim); max-width: 74ch; overflow-wrap: anywhere; }
+    p strong, li strong { color: var(--text); }
+    code { font: .88em var(--mono); background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); overflow-wrap: anywhere; }
+    a { color: var(--accent); }
+    .lead { font-size: 1.04rem; }
+    .lab { font: 600 .74rem var(--mono); color: var(--warn); white-space: nowrap; }
+    .lab.formal { color: var(--good); }
+    .lab.open { color: var(--bad); }
+    .roots { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.4rem; align-items: center; }
+    .roots span.label { color: var(--faint); font-size: .85rem; margin-right: .25rem; }
+    .chip { font: 600 .85rem var(--sans); color: var(--text); background: var(--raised); border: 1px solid var(--border);
+            border-radius: 999px; padding: .28rem .7rem; cursor: pointer; text-decoration: none; display: inline-block; }
+    .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    .chip:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .story { margin: 0 0 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); scroll-margin-top: .5rem; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); gap: 1rem; align-items: start; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .two svg { max-width: 440px; margin: 0 auto; }
+    .side { display: grid; gap: .8rem; min-width: 0; }
+    .panel { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .9rem; min-width: 0; }
+    svg { display: block; width: 100%; height: auto; }
+    .legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin-top: .5rem; font-size: .78rem; color: var(--faint); }
+    .legend i { display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; margin-right: .3rem; vertical-align: -.1rem; }
+    .legend i.ring { background: transparent; border: 1.5px solid var(--faint); }
+    .legend i.hole { background: transparent; border: 1.5px dashed var(--text); }
+    .card { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .85rem 1rem; min-width: 0; }
+    .card .kick { font: 600 .74rem var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+    .card h4 { margin: .2rem 0 .5rem; font: 600 1.08rem var(--serif); }
+    .card p { font-size: .9rem; margin-bottom: .6rem; }
+    .btn { font: 600 .85rem var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 8px;
+           padding: .45rem .85rem; cursor: pointer; margin: .15rem .35rem .15rem 0; }
+    .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+    .narr { margin-top: .6rem; padding: .55rem .7rem; background: var(--sunken); border-radius: 8px; font-size: .88rem; color: var(--dim); overflow-wrap: anywhere; }
+    .narr b { color: var(--text); }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin: .4rem 0 1rem; max-width: 900px; }
+    .stat { background: var(--raised); border: 1px solid var(--border); border-radius: 8px; padding: .5rem .6rem; }
+    .stat b { display: block; font: 600 1.3rem var(--serif); color: var(--text); }
+    .stat span { font-size: .75rem; color: var(--faint); }
+    details.note { background: var(--raised); border: 1px solid var(--border); border-left: 3px solid var(--twin); border-radius: 8px; padding: .55rem .9rem; margin: .6rem 0 1rem; max-width: 1060px; }
+    details.note summary { cursor: pointer; font: 600 .88rem var(--sans); color: var(--text); }
+    details.note[open] summary { margin-bottom: .5rem; }
+    details.note p, details.note li { font-size: .88rem; color: var(--dim); }
+    details.note ul { margin: 0 0 .5rem; padding-left: 1.15rem; }
+    .caveat { background: var(--raised); border: 1px solid var(--border); border-left: 3px solid var(--warn); border-radius: 8px; padding: .6rem .9rem; margin: .7rem 0 0; font-size: .86rem; color: var(--dim); }
+    .caveat b { color: var(--text); }
+    /* hole explorer */
+    .linkbtns { display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0 .2rem; }
+    .lb { font: 600 .85rem var(--mono); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 8px; padding: .35rem .55rem; cursor: pointer; min-width: 4.4rem; }
+    .lb .sw { display: inline-block; width: .65rem; height: .65rem; border-radius: 50%; margin-right: .3rem; vertical-align: -.03rem; }
+    .wordbig { font: 600 2rem var(--mono); letter-spacing: .06em; color: var(--text); margin: .1rem 0 .3rem; }
+    .wordbig .hl { color: var(--d5); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+    .kv { display: grid; grid-template-columns: auto 1fr; gap: .25rem .8rem; font-size: .86rem; color: var(--dim); }
+    .kv dt { color: var(--faint); }
+    .kv dd { margin: 0; color: var(--text); overflow-wrap: anywhere; }
+    .pill { display: inline-block; font: 600 .76rem var(--sans); padding: .12rem .55rem; border-radius: 999px; }
+    .pill.bad { background: #f8514930; color: var(--bad); }
+    .pill.good { background: #3fb95026; color: var(--good); }
+    .pill.info { background: #58a6ff22; color: var(--accent); }
+    .pill.twin { background: #bc8cff2a; color: var(--twin); }
+    .presets { display: flex; flex-wrap: wrap; gap: .3rem; margin: .5rem 0 0; }
+    .presets .chip { font: 600 .8rem var(--mono); padding: .22rem .55rem; }
+    .spark { display: grid; grid-template-columns: repeat(13, 1fr); gap: 2px; align-items: end; height: 46px; margin: .4rem 0 .15rem; }
+    .spark div { background: var(--accent); border-radius: 3px 3px 0 0; min-height: 1px; }
+    .spark div.zero { background: var(--border); }
+    .sparkx { display: grid; grid-template-columns: repeat(13, 1fr); gap: 2px; font: .62rem var(--mono); color: var(--faint); text-align: center; }
+    /* viewer */
+    .viewer { position: relative; touch-action: none; user-select: none; -webkit-user-select: none; }
+    .viewer svg { border-radius: 10px; background: var(--sunken); }
+    .viewer.rot svg { cursor: grab; }
+    .viewer.rot svg:active { cursor: grabbing; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; margin-top: .5rem; }
+    .holes { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .4rem; }
+    .holes button { font: 600 .74rem var(--mono); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 6px; padding: .25rem .45rem; cursor: pointer; }
+    .holes button[aria-pressed="true"] { border-color: var(--d5); box-shadow: 0 0 0 1px var(--d5) inset; }
+    /* word grid */
+    .filters { display: flex; flex-wrap: wrap; gap: .35rem; margin: .4rem 0 .7rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.6rem, 1fr)); gap: .3rem; }
+    .wc { position: relative; font: 600 .82rem var(--mono); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 7px; padding: .35rem .3rem .3rem; cursor: pointer; text-align: center; }
+    .wc small { display: block; font: 500 .62rem var(--sans); color: var(--faint); margin-top: .1rem; letter-spacing: .02em; }
+    .wc.ex { color: var(--faint); background: repeating-linear-gradient(135deg, transparent 0 5px, #f8514918 5px 7px), var(--sunken); border-color: #f8514955; }
+    .wc.forced { border-color: var(--d5); box-shadow: 0 0 0 1px var(--d5) inset; }
+    .wc.inS::after { content: ""; position: absolute; top: 4px; right: 4px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .wc.dim { opacity: .28; }
+    .wc[aria-current="true"] { outline: 2px solid var(--text); outline-offset: 1px; }
+    /* heatmap */
+    .tablewrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--raised); }
+    table.heat { border-collapse: separate; border-spacing: 2px; font: .76rem var(--mono); min-width: 760px; width: 100%; padding: .4rem; }
+    table.heat th { font-weight: 600; color: var(--faint); padding: .25rem .3rem; text-align: center; white-space: nowrap; }
+    table.heat th.rowh { text-align: left; color: var(--text); }
+    table.heat th.rowh button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline dotted var(--faint); text-underline-offset: 3px; }
+    table.heat td { text-align: center; padding: .28rem .2rem; border-radius: 4px; color: var(--text); min-width: 2.6rem; }
+    table.heat td.z { color: var(--faint); }
+    table.heat tr.meta td { color: var(--dim); background: transparent; }
+    table.plain { border-collapse: collapse; font-size: .86rem; width: 100%; }
+    table.plain th, table.plain td { text-align: left; padding: .35rem .5rem; border-bottom: 1px solid var(--border); color: var(--dim); vertical-align: top; }
+    table.plain th { color: var(--faint); font-weight: 600; font-size: .76rem; letter-spacing: .05em; text-transform: uppercase; }
+    table.plain td.w { font: 600 .9rem var(--mono); color: var(--text); }
+    .tip { position: fixed; z-index: 30; pointer-events: none; background: #1f2630; border: 1px solid var(--border); border-radius: 8px; padding: .4rem .55rem; font: .78rem var(--sans); color: var(--text); max-width: 260px; display: none; box-shadow: 0 4px 16px #0008; }
+    .foot { margin-top: 2.5rem; border-top: 1px solid var(--border); padding-top: 1.2rem; }
+    .foot p, .foot li { color: var(--faint); font-size: .82rem; max-width: 110ch; }
+    .foot ul { padding-left: 1.1rem; }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    @media (max-width: 1080px) { .stage { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) { .two { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } .wordbig { font-size: 1.6rem; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">Reducible configurations · link words · the frame class</p>
+    <h1>Diamonds and Holes</h1>
+    <p class="lead">
+      A <strong>triangulation</strong> is a map on the sphere where every face is a triangle. Pick a vertex with five neighbours and delete it:
+      that leaves a <strong>hole</strong>. Its five neighbours form a ring called its <strong>link</strong>, and reading their degrees in order gives
+      the hole's <strong>link word</strong>, for example <code>55666</code>.
+      The Four Colour Theorem is already proved, with heavy computer help. This project looks for a different route: show that every
+      triangulation in a small, well-behaved family (the <strong>frame class</strong>) has one hole that Kempe swaps can always fill
+      (Lemma R*, <span class="lab open">[open]</span>).
+    </p>
+    <p>
+      This page is about the shape of that family. Two classical <strong>reducible configurations</strong>, the Birkhoff diamond and RSST 2.122,
+      are cut out of it. What is left still has holes, and the question is which link words those holes can have.
+      The page <a href="../cages/index.html">Cages and Diamonds</a> walks through the diamond's ring colourings one at a time, and
+      <a href="../66666/index.html">The Six-Ring Trap</a> studies one <code>66666</code> hole in depth. This page does not repeat them; it maps the territory between.
+    </p>
+  </div>
+
+  <div class="roots"><span class="label">Jump to:</span>
+    <a class="chip" href="#s1">1 · Two shapes</a>
+    <a class="chip" href="#s2">2 · A hole and its word</a>
+    <a class="chip" href="#s3">3 · The frame class</a>
+    <a class="chip" href="#s4">4 · Which holes occur</a>
+  </div>
+
+  <!-- ============================================================ STORY 1 -->
+  <section class="story" id="s1" aria-labelledby="s1h">
+    <p class="eyebrow">Story 1</p>
+    <h2 id="s1h">Two shapes a smallest counterexample cannot contain</h2>
+    <p>
+      Suppose some map needed five colours, and take the smallest one. A <strong>reducible configuration</strong> is a small patch that
+      such a smallest map can never contain: if the patch were there, you could cut it out, colour the smaller map that is left (it is
+      smaller, so it can be coloured), and then always repair the colouring so that the patch fits back in. Sometimes the colours around
+      the cut already fit; otherwise a few Kempe swaps outside the cut make them fit.
+    </p>
+    <p>
+      Both patches below are made of four vertices: two <strong>centres</strong> joined by an edge, and two <strong>tips</strong>, one on each side.
+      In the <strong>Birkhoff diamond</strong> (1913) all four have degree five, and the patch is surrounded by a ring of six vertices.
+      <strong>RSST configuration 2.122</strong> (Robertson, Sanders, Seymour and Thomas, 1997) is the same patch with one centre raised to degree six;
+      its ring has seven vertices.
+    </p>
+    <div class="two">
+      <div class="panel">
+        <h3>Birkhoff diamond · ring of 6</h3>
+        <svg id="cfgD" viewBox="-1.25 -1.25 2.5 2.5" role="img" aria-labelledby="cfgDt"><title id="cfgDt">The Birkhoff diamond: two degree-five centres and two degree-five tips inside a ring of six vertices.</title></svg>
+      </div>
+      <div class="panel">
+        <h3>RSST 2.122 · ring of 7</h3>
+        <svg id="cfgC" viewBox="-1.25 -1.25 2.5 2.5" role="img" aria-labelledby="cfgCt"><title id="cfgCt">RSST configuration 2.122: a degree-six centre, a degree-five centre and two degree-five tips inside a ring of seven vertices.</title></svg>
+      </div>
+    </div>
+    <div class="legend" aria-hidden="true">
+      <span><i style="background:var(--d5)"></i>degree 5</span>
+      <span><i style="background:var(--d6)"></i>degree 6</span>
+      <span><i class="ring"></i>ring vertex (degree depends on the rest of the map)</span>
+      <span>thick edge: the centre edge</span>
+    </div>
+    <p style="margin-top:.9rem">
+      Both are proved reducible inside this project's Lean library <span class="lab formal">[formal]</span>: each has a compiled certificate covering
+      every colouring of its ring, and a theorem that a triangulation containing the patch is four-colourable whenever all smaller maps are.
+      So the frame class may leave them out.
+    </p>
+    <details class="note">
+      <summary>Precise statement (Lean)</summary>
+      <ul>
+        <li>An occurrence is the structure <code>Occ T ring int</code> in <code>DiamondPOcc.lean</code>, <code>DiamondMOcc.lean</code>, <code>C2122POcc.lean</code> and <code>C2122MOcc.lean</code> (P and M are the two orientations): injective ring, injective interior, disjoint, the interior degrees <code>![5,5,5,5]</code> or <code>![6,5,5,5]</code>, and the rotation at every interior vertex given by <code>Nx</code> facts. Ring chords are allowed. The drawings above are rebuilt from exactly those <code>Nx</code> facts (<span id="nfacts"></span>).</li>
+        <li><code>colorable_of_occ</code>: a triangulation with an occurrence is four-colourable when every spherical map of smaller support is. It rests on the D-reducibility certificates <code>DiamondPCert</code>, <code>DiamondMCert</code>, <code>C2122PCert</code>, <code>C2122MCert</code>.</li>
+        <li><code>four_color_of_RStarFrame</code> (<code>FrameF3.lean</code>): if every connected triangulation with minimum degree 5, no separating triangle (<code>NoSep</code>), <code>DiamondFree</code> and <code>Conf2122Free</code> has a degree-five vertex with <code>PureClean</code>, then every spherical map is four-colourable. Axioms: <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>.</li>
+        <li>"Free" means no <code>Occ</code>. It does not mean "no induced diamond subgraph"; see the clean-tips caveat in Story 2.</li>
+        <li>Scope: the Lean result is about combinatorial spherical maps (rotation systems). The bridge from planar drawings is a separate, unformalised step.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ============================================================ STORY 2 -->
+  <section class="story" id="s2" aria-labelledby="s2h">
+    <p class="eyebrow">Story 2</p>
+    <h2 id="s2h">A hole and its link word</h2>
+    <p>
+      Here is one hole (the dashed centre) with its five link vertices. Click a link vertex, or use the buttons, to change its degree.
+      A vertex of degree <em>d</em> has <em>d</em> − 3 neighbours further out, so the outer ring grows as the degrees grow.
+      The <strong>link word</strong> lists the five degrees in order; degrees of 8 or more are all written <code>8+</code>, and words that differ only by
+      rotating or reflecting are the same <strong>hole type</strong>. There are 136 hole types.
+    </p>
+    <p>
+      Watch for three consecutive link degrees <code>5 5 5</code> or <code>5 6 5</code>. Then the hole and its middle neighbour are the two centres of a
+      diamond (or of 2.122, with the degree-six neighbour as the bigger centre), and the two outer neighbours are its tips. The patch you just learned
+      to cut out is sitting right there.
+    </p>
+    <div class="stage">
+      <div class="panel">
+        <svg id="holeSvg" viewBox="-2.45 -2.45 4.9 4.9" role="img" aria-labelledby="holeT holeD"><title id="holeT">A degree-five hole and its link</title><desc id="holeD"></desc></svg>
+        <div class="linkbtns" id="linkBtns" role="group" aria-label="Degrees of the five link vertices"></div>
+        <div class="presets" role="group" aria-label="Example words"><span style="color:var(--faint);font-size:.8rem;align-self:center">Try:</span></div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="hole"></i>hole (deleted)</span>
+          <span><i style="background:var(--d5)"></i>5</span><span><i style="background:var(--d6)"></i>6</span>
+          <span><i style="background:var(--d7)"></i>7</span><span><i style="background:var(--d8)"></i>8+</span>
+          <span><i class="ring"></i>outer ring</span>
+        </div>
+      </div>
+      <div class="side">
+        <div class="card" aria-live="polite">
+          <div class="kick">Link word</div>
+          <div class="wordbig" id="wordRaw"></div>
+          <dl class="kv" id="wordKv"></dl>
+          <div class="narr" id="runNarr"></div>
+          <div id="runNav"></div>
+        </div>
+        <div class="card">
+          <div class="kick">This hole type in the frame-class census</div>
+          <div id="wordCensus"></div>
+        </div>
+      </div>
+    </div>
+    <div class="caveat">
+      <b>The clean-tips caveat.</b> A <code>555</code> or <code>565</code> run always gives the four vertices of a diamond or 2.122 with the right
+      degrees and triangles (an <em>appearance</em>) <span class="lab formal">[formal]</span>. To be an occurrence that the frame class excludes, the two tips must
+      also have no common neighbour other than the two centres (<strong>clean tips</strong>). A tip-sharing vertex <em>y</em> would make a four-cycle
+      tip–hole–tip–<em>y</em> that cuts the map in two. Ruling that out needs the separating-four-cycle reduction (F2), which is not formalised.
+      So "frame-class holes have no <code>555</code> or <code>565</code>" is a theorem only with clean tips. In the data it never matters: no frame-class
+      graph in any census has an appearance with unclean tips <span class="lab">[data]</span>.
+    </div>
+    <details class="note">
+      <summary>Precise statement (Lean, <code>FrameScope.lean</code>)</summary>
+      <ul>
+        <li>Hypotheses: <code>T</code> triangulated, <code>NoSep T</code>, <code>deg h = 5</code>, pentagonal link <code>P : Pent T.graph h</code> with vertices <code>x 0 … x 4</code>. Minimum degree 5 is not needed.</li>
+        <li><code>tips_not_adj</code>: <code>x j</code> and <code>x (j+2)</code> are not adjacent.</li>
+        <li><code>appears_diamond_of_run</code>: degrees 5, 5, 5 at <code>x j, x (j+1), x (j+2)</code> give <code>Appears ![5,5,5,5] T ![h, x j, x (j+1), x (j+2)]</code> (centres <code>h</code> and <code>x (j+1)</code>).</li>
+        <li><code>appears_c2122_of_run</code>: degrees 5, 6, 5 give <code>Appears ![6,5,5,5] T ![x (j+1), x j, h, x (j+2)]</code> (degree-six centre <code>x (j+1)</code>).</li>
+        <li><code>LinkTipsClean P j</code>: every common neighbour of <code>x j</code> and <code>x (j+2)</code> is <code>h</code> or <code>x (j+1)</code>. Under it, <code>occ_diamond_of_run</code> / <code>occ_c2122_of_run</code> give an <code>Occ</code>, so <code>no_555_run</code> (from <code>DiamondFree</code>) and <code>no_565_run</code> (from <code>Conf2122Free</code>) hold.</li>
+        <li>Of the 136 hole types, 19 contain a cyclic <code>555</code> or <code>565</code>, leaving 117 allowed types (recounted by <code>build_data.py</code>).</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ============================================================ STORY 3 -->
+  <section class="story" id="s3" aria-labelledby="s3h">
+    <p class="eyebrow">Story 3</p>
+    <h2 id="s3h">The frame class, and its smallest member</h2>
+    <p>
+      The <strong>frame class</strong> keeps only triangulations that a smallest counterexample could still be, once the classical reductions are used:
+    </p>
+    <ul style="color:var(--dim);max-width:74ch;margin:0 0 .9rem">
+      <li><strong>no separating triangle</strong> (every triangle of edges is a face; otherwise the map splits and each half is coloured separately),</li>
+      <li><strong>minimum degree 5</strong> (a vertex of degree 4 or less is easy to colour last),</li>
+      <li><strong>no Birkhoff diamond and no 2.122</strong>, in either mirror image.</li>
+    </ul>
+    <p>
+      Is anything left? Yes. The smallest frame-class triangulation has 22 vertices, and there is exactly one of that size
+      <span class="lab">[data, exhaustive]</span>. Lean checks it is in the class <span class="lab formal">[formal]</span>, so the class is not empty.
+      It is drawn flat, centred on one hole. Every degree-five vertex is a hole; click one (or a button) to see its link.
+    </p>
+    <div class="stage">
+      <div class="panel">
+        <div class="viewer" id="v22"></div>
+        <div class="toolbar" id="v22tools"></div>
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:var(--d5)"></i>degree 5 (a hole)</span><span><i style="background:var(--d6)"></i>degree 6</span>
+          <span>labels: link word read around the hole</span><span>outer pentagon: the link of the hole drawn at infinity</span>
+        </div>
+      </div>
+      <div class="side">
+        <div class="card" aria-live="polite">
+          <div class="kick">Selected hole</div>
+          <div class="wordbig" id="v22word"></div>
+          <p id="v22narr" style="font-size:.9rem"></p>
+          <div class="holes" id="v22holes" role="group" aria-label="The twelve holes"></div>
+        </div>
+        <div class="card">
+          <div class="kick">What to notice</div>
+          <p id="v22notice"></p>
+        </div>
+      </div>
+    </div>
+    <details class="note">
+      <summary>Precise statement and checks</summary>
+      <ul>
+        <li>Lean: <code>FrameWit22Map.lean</code> (generated from <code>TrackC/FrameWit22-faces.json</code>) and <code>FrameWit22.lean</code> prove <code>connected</code>, <code>noSep</code>, <code>min_degree</code>, <code>diamondFree</code>, <code>conf2122Free</code>, <code>frameClass</code> and <code>frameClass_nonempty</code>, with standard axioms only. Freeness is a kernel <code>decide</code>: no edge <code>int 0 ~ int 2</code> has two distinct common neighbours with the configuration's degrees.</li>
+        <li>This page's builder rebuilt the map from the same face list, checked it is a triangulated sphere (Euler characteristic 2, every link one cycle), and ran a Python port of TrackB's <code>frame.c</code> on it: minimum degree 5, NoSep (triangles = 2<em>n</em> − 4), no <code>Occ</code> of any of the four structures, no appearance at all.</li>
+        <li>It is the same map (up to mirror image) as <code>p22#196</code>, the only order-22 graph in the exhaustive census (plantri <code>-m5 -c4</code>, then <code>frame.c</code>).</li>
+        <li>The witness says nothing about R*. Whether it has a pure-clean hole is a separate certificate.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ============================================================ STORY 4 -->
+  <section class="story" id="s4" aria-labelledby="s4h">
+    <p class="eyebrow">Story 4</p>
+    <h2 id="s4h">Which holes occur in the frame class</h2>
+    <p>
+      Every triangulation has degree-five vertices: Euler's formula makes the degrees add up to 6<em>n</em> − 12, so on average they are just under six.
+      A natural plan is to find a short list of hole types such that every frame-class triangulation has a hole on the list, and then handle each
+      type by hand. Track B tried this. The census below lists every frame-class triangulation up to 34 vertices
+      <span class="lab">[data, exhaustive]</span>.
+    </p>
+    <div class="stats" id="bigStats"></div>
+
+    <h3 style="margin-top:1.2rem">All 136 hole types</h3>
+    <p>Click a word to load it into the hole in Story 2.</p>
+    <div class="filters" id="filters" role="group" aria-label="Filter hole types"></div>
+    <div class="grid" id="wordGrid"></div>
+    <div class="legend" aria-hidden="true" style="margin-top:.6rem">
+      <span><i style="background:transparent;border:1.5px solid var(--d5);border-radius:3px"></i>forced: some graph has only this hole type</span>
+      <span><i style="background:var(--accent);width:.45rem;height:.45rem"></i>in Track B's proved unavoidable set</span>
+      <span><i style="background:repeating-linear-gradient(135deg,transparent 0 3px,#f8514966 3px 5px);border-radius:3px"></i>contains 555 or 565</span>
+      <span>small text: holes in the census, orders 22–34</span>
+    </div>
+
+    <h3 style="margin-top:1.6rem">Share of holes by order</h3>
+    <p>Each cell is the share of all degree-five vertices at that order whose hole type is the row's word. The census is exhaustive at every order shown.</p>
+    <div class="tablewrap"><table class="heat" id="heat"><caption class="sr">Share of degree-five holes by hole type and number of vertices, frame-class census</caption></table></div>
+
+    <h3 style="margin-top:1.6rem">Forced hole types</h3>
+    <p>
+      If some frame-class graph has only one hole type, every list that is meant to catch all graphs must contain that type.
+      Six types are forced this way so far.
+    </p>
+    <div class="panel"><table class="plain" id="forced"><caption class="sr">Hole types forced by graphs whose holes all have the same type</caption></table></div>
+
+    <h3 style="margin-top:1.6rem">The C60 dual: every hole is 66666</h3>
+    <div class="stage">
+      <div class="panel">
+        <div class="viewer" id="v60"></div>
+        <div class="toolbar" id="v60tools"></div>
+      </div>
+      <div class="side">
+        <div class="card">
+          <div class="kick">Fullerene duals</div>
+          <h4>Twelve pentagons, nothing else</h4>
+          <p>
+            The football-shaped carbon molecule C60 has 12 pentagons and 20 hexagons. Put a vertex in each face and join neighbouring faces:
+            you get a triangulation with 32 vertices, 12 of degree five and 20 of degree six. In C60 no two pentagons touch (the
+            <strong>isolated pentagon rule</strong>, IPR), so no two degree-five vertices are adjacent, and every hole is a <code>66666</code> hole.
+          </p>
+          <p id="iprText"></p>
+          <p>
+            So <code>66666</code> must be on any list of hole types, and it is the hardest kind to handle locally (see
+            <a href="../66666/index.html">The Six-Ring Trap</a>). It cannot be excluded by a new configuration either: these maps are genuinely in the class.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:1.6rem">How short can the list be?</h3>
+    <div class="two">
+      <div class="card">
+        <div class="kick">Upper bound <span class="lab">[computer-certified]</span></div>
+        <h4>A list of 59 types is proved to work</h4>
+        <p>
+          By <strong>discharging</strong>: give each vertex the charge 6 − degree (the total is always 12), let each degree-five vertex send
+          small amounts to its neighbours of degree 7 or more, and check that a vertex can only keep positive charge if its hole type is on the list.
+          Track B's best rule gives a list of 59 allowed types (78 if the 19 <code>555</code>/<code>565</code> types are kept, since without F2 they cannot be dropped).
+          No rule in which a hole's gifts depend only on its own word does better.
+        </p>
+      </div>
+      <div class="card">
+        <div class="kick">Lower bound <span class="lab">[data]</span></div>
+        <h4>At least 9 types are needed, probably more</h4>
+        <p>
+          Nine verified frame-class graphs have pairwise disjoint sets of hole types, so any working list has at least 9 entries.
+          On all known graphs the smallest list that catches them grew from 7 to 13 as an adversarial search kept building new graphs that dodge
+          the current list, and it was still growing when the search stopped. The target of about 20 types, each with a local proof, is not in sight.
+        </p>
+      </div>
+    </div>
+    <details class="note">
+      <summary>Precise statements (Track B)</summary>
+      <ul>
+        <li>Hole type: the cyclic link-degree word of a degree-five vertex, up to rotation and reflection, with every degree ≥ 8 written <code>8+</code>. The canonical form is the lexicographically least of the 10 rotations and reflections.</li>
+        <li>Discharging: a degree-five vertex <em>v</em> sends σ(<em>p</em>, <em>D</em>, <em>q</em>) to each neighbour <em>u</em> of degree ≥ 7, with <em>D</em> = min(deg <em>u</em>, 8) and <em>p</em>, <em>q</em> the capped degrees beside <em>u</em> in <em>v</em>'s word. A degree-7 vertex receives at most 1 (all 4<sup>7</sup> link sequences enumerated); a vertex of degree ≥ 8 receives at most <em>d</em>/4 ≤ <em>d</em> − 6. So S<sub>σ</sub> = {words sending less than 1} is unavoidable in every minimum-degree-5 triangulation. The MILP optimum is |S| = 59 allowed + 19 = 78, rechecked in exact rational arithmetic; the general 5-key rule gives the same optimum. The list is <code>TrackB/out/discharge-frameonly.json</code>.</li>
+        <li>Packing bound 9 and the hitting-set growth 7 → 13 are from <code>TrackB/README.md</code> (325 adversarial rounds, witnesses re-verified with <code>frame.c</code>). The census-only minimum hitting set grows 6 → 9 by order 32 (CoordinatorPlan, 7 Oct).</li>
+        <li>No hole type in the frame class has PureClean proved. Every local result so far (F5, weak F6, <code>pureClean_of_hole4</code>) needs a <code>555</code> run, which the frame class does not have (with clean tips). Track B's verdict: amber, leaning kill.</li>
+      </ul>
+    </details>
+  </section>
+
+  <div class="foot">
+    <h3>Data and checks</h3>
+    <p>All data on this page is generated by <code>docs/holes/build_data.py</code> from repository files. The script stops if any check fails.</p>
+    <ul id="footList"></ul>
+  </div>
+</div>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.HOLES_DATA;
+  var NS = 'http://www.w3.org/2000/svg';
+  var DEGC = { 5: 'var(--d5)', 6: 'var(--d6)', 7: 'var(--d7)', 8: 'var(--d8)' };
+  var DEGHEX = { 5: '#e3b341', 6: '#58a6ff', 7: '#bc8cff', 8: '#3fb950' };
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function h(tag, attrs, html, parent) {
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (html != null) e.innerHTML = html;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function fmtN(x) { return x.toLocaleString('en-US'); }
+  function dstr(d) { return d >= 8 ? '8+' : String(d); }
+  function wstr(ds) { return ds.map(dstr).join(''); }
+  function canon(ds) {
+    var best = null, s = [ds, ds.slice().reverse()];
+    for (var a = 0; a < 2; a++) for (var i = 0; i < 5; i++) {
+      var r = s[a].slice(i).concat(s[a].slice(0, i));
+      if (!best || cmp(r, best) < 0) best = r;
+    }
+    return best;
+  }
+  function cmp(a, b) { for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] - b[i]; return 0; }
+  function parseWord(s) { var out = [], i = 0; while (i < s.length) { if (s[i] === '8') { out.push(8); i += (s[i + 1] === '+') ? 2 : 1; } else { out.push(+s[i]); i++; } } return out; }
+  function runs(ds) {
+    var r = [];
+    for (var j = 0; j < 5; j++) { var a = ds[j], b = ds[(j + 1) % 5], c = ds[(j + 2) % 5]; if (a === 5 && c === 5 && (b === 5 || b === 6)) r.push({ j: j, kind: b === 5 ? '555' : '565' }); }
+    return r;
+  }
+  var WORDS = {}; D.words.forEach(function (w) { WORDS[w.w] = w; });
+  var ORDERS = Object.keys(D.census).map(Number).sort(function (a, b) { return a - b; });
+  var tip = document.getElementById('tip');
+  function showTip(evt, html) {
+    tip.innerHTML = html; tip.style.display = 'block';
+    var x = evt.clientX + 14, y = evt.clientY + 14;
+    var w = tip.offsetWidth, hgt = tip.offsetHeight;
+    if (x + w > window.innerWidth - 8) x = evt.clientX - w - 14;
+    if (y + hgt > window.innerHeight - 8) y = evt.clientY - hgt - 14;
+    tip.style.left = Math.max(4, x) + 'px'; tip.style.top = Math.max(4, y) + 'px';
+  }
+  function hideTip() { tip.style.display = 'none'; }
+
+  /* ------------------------------------------------------------ Story 1: configurations */
+  function drawConfig(svgId, cfg, centres, tips) {
+    var svg = document.getElementById(svgId);
+    var L = cfg.L, P = cfg.pos.map(function (p) { return p.slice(); });
+    var mr = 0; for (var a = 0; a < L; a++) mr = Math.max(mr, Math.hypot(P[a][0], P[a][1]));
+    var sc = 0.56 / mr; for (a = 0; a < L; a++) { P[a][0] *= sc; P[a][1] *= sc; }
+    cfg.faces.forEach(function (f) {
+      if (f.some(function (v) { return v < L; })) {
+        el('polygon', { points: f.map(function (v) { return P[v].join(','); }).join(' '), fill: '#58a6ff', 'fill-opacity': 0.05, stroke: 'none' }, svg);
+      }
+    });
+    var ce = [centres[0], centres[1]].sort().join('-');
+    cfg.edges.forEach(function (e) {
+      var ring = e[0] >= L && e[1] >= L;
+      var isC = e.slice().sort().join('-') === ce;
+      el('line', { x1: P[e[0]][0], y1: P[e[0]][1], x2: P[e[1]][0], y2: P[e[1]][1],
+        stroke: isC ? '#e6edf3' : (ring ? '#7d8590' : '#8b949e'), 'stroke-width': isC ? 0.05 : (ring ? 0.014 : 0.02),
+        'stroke-dasharray': ring ? '0.05 0.035' : 'none' }, svg);
+    });
+    for (var v = 0; v < P.length; v++) {
+      if (v < L) {
+        el('circle', { cx: P[v][0], cy: P[v][1], r: 0.11, fill: DEGHEX[cfg.deg[v]], stroke: '#0d1117', 'stroke-width': 0.02 }, svg);
+        var t = el('text', { x: P[v][0], y: P[v][1] + 0.045, 'text-anchor': 'middle', 'font-size': 0.13, 'font-weight': 700, fill: '#0d1117', 'font-family': 'ui-monospace, Menlo, monospace' }, svg);
+        t.textContent = cfg.deg[v];
+        var role = centres.indexOf(v) >= 0 ? 'centre' : (tips.indexOf(v) >= 0 ? 'tip' : '');
+        if (role) {
+          var dx = P[v][0], dy = P[v][1], n = Math.hypot(dx, dy) || 1;
+          var lx = role === 'tip' ? P[v][0] + dx / n * 0.22 : P[v][0] + (-dy / n) * 0.0 + dx / n * 0.0;
+          var ly = role === 'tip' ? P[v][1] + dy / n * 0.22 + 0.04 : P[v][1] + (P[v][1] < 0 ? -0.16 : 0.24);
+          var tt = el('text', { x: lx, y: ly, 'text-anchor': 'middle', 'font-size': 0.095, fill: '#e6edf3', 'font-family': '-apple-system, Segoe UI, sans-serif', 'paint-order': 'stroke', stroke: '#161b22', 'stroke-width': 0.04 }, svg);
+          tt.textContent = role;
+        }
+      } else {
+        el('circle', { cx: P[v][0], cy: P[v][1], r: 0.06, fill: '#0d1117', stroke: '#7d8590', 'stroke-width': 0.02 }, svg);
+      }
+    }
+  }
+  // centres are int 0 and int 2 (the edge int 0 ~ int 2), tips int 1 and int 3 (Lean: Occ gives edge int0~int2 with common neighbours int1, int3)
+  drawConfig('cfgD', D.configs.diamond, [0, 2], [1, 3]);
+  drawConfig('cfgC', D.configs.c2122, [0, 2], [1, 3]);
+  document.getElementById('nfacts').textContent = D.configs.diamond.nfacts + ' facts for the diamond, ' + D.configs.c2122.nfacts + ' for 2.122; the builder checks they equal the facts in TrackB/occ_sched.h, which frame.c uses';
+
+  /* ------------------------------------------------------------ Story 2: hole explorer */
+  var cur = [6, 6, 6, 6, 6], runIdx = 0;
+  var holeSvg = document.getElementById('holeSvg');
+  var btnBox = document.getElementById('linkBtns');
+  var linkBtns = [];
+  for (var t0 = 0; t0 < 5; t0++) (function (t) {
+    var b = h('button', { type: 'button', class: 'lb' }, '', btnBox);
+    b.addEventListener('click', function () { bump(t); });
+    linkBtns.push(b);
+  })(t0);
+  function bump(t) { cur[t] = cur[t] >= 8 ? 5 : cur[t] + 1; runIdx = 0; renderHole(); }
+  var presetBox = document.querySelector('#s2 .presets');
+  ['66666', '55666', '56657', '56658+', '57577', '55565', '56565', '55555'].forEach(function (w) {
+    var c = h('button', { type: 'button', class: 'chip' }, w, presetBox);
+    c.addEventListener('click', function () { setWord(w); });
+  });
+  function setWord(w) { cur = parseWord(w); runIdx = 0; renderHole(); }
+  function ang(t) { return -Math.PI / 2 + 2 * Math.PI * t / 5; }
+  function renderHole() {
+    while (holeSvg.childNodes.length > 2) holeSvg.removeChild(holeSvg.lastChild);
+    var R1 = 1.0, R2 = 2.05;
+    var X = [], O = [], outerOf = [];
+    for (var t = 0; t < 5; t++) X.push([R1 * Math.cos(ang(t)), R1 * Math.sin(ang(t))]);
+    // outer ring: w_{t} shared by x_t and x_{t+1} at angle ang(t)+36deg; privates of x_t between
+    var ringPts = [];
+    for (t = 0; t < 5; t++) {
+      var k = cur[t] - 5, a0 = ang(t) - Math.PI / 5, a1 = ang(t) + Math.PI / 5;
+      var list = [];
+      for (var i = 1; i <= k; i++) { var a = a0 + (a1 - a0) * i / (k + 1); ringPts.push({ a: a, p: [R2 * Math.cos(a), R2 * Math.sin(a)] }); list.push(ringPts.length - 1); }
+      ringPts.push({ a: a1, p: [R2 * Math.cos(a1), R2 * Math.sin(a1)], shared: t }); list.push(ringPts.length - 1);
+      outerOf.push(list);
+    }
+    // x_t's outer neighbours: w_{t-1}, privates, w_t
+    var sharedIdx = []; ringPts.forEach(function (r, i) { if (r.shared != null) sharedIdx[r.shared] = i; });
+    var rs = runs(cur); if (runIdx >= rs.length) runIdx = 0;
+    var run = rs.length ? rs[runIdx] : null;
+    var inRun = function (t) { return run && (t === run.j || t === (run.j + 1) % 5 || t === (run.j + 2) % 5); };
+    // appearance triangles
+    if (run) {
+      var j = run.j, j1 = (j + 1) % 5, j2 = (j + 2) % 5;
+      [[j, j1], [j1, j2]].forEach(function (pr) {
+        el('polygon', { points: '0,0 ' + X[pr[0]].join(',') + ' ' + X[pr[1]].join(','), fill: run.kind === '555' ? '#e3b341' : '#bc8cff', 'fill-opacity': 0.22, stroke: 'none' }, holeSvg);
+      });
+    }
+    // ring edges
+    for (i = 0; i < ringPts.length; i++) {
+      var p = ringPts[i].p, q = ringPts[(i + 1) % ringPts.length].p;
+      el('line', { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: '#7d8590', 'stroke-width': 0.02, 'stroke-dasharray': '0.07 0.05' }, holeSvg);
+    }
+    // x_t to outer
+    for (t = 0; t < 5; t++) {
+      var nb = [sharedIdx[(t + 4) % 5]].concat(outerOf[t]);
+      nb.forEach(function (ix) { var pp = ringPts[ix].p; el('line', { x1: X[t][0], y1: X[t][1], x2: pp[0], y2: pp[1], stroke: '#8b949e', 'stroke-width': 0.022 }, holeSvg); });
+    }
+    // link edges and spokes
+    for (t = 0; t < 5; t++) {
+      var u = (t + 1) % 5;
+      var hot = run && inRun(t) && inRun(u) && (t === run.j || t === (run.j + 1) % 5);
+      el('line', { x1: X[t][0], y1: X[t][1], x2: X[u][0], y2: X[u][1], stroke: hot ? '#e6edf3' : '#b1bac4', 'stroke-width': hot ? 0.05 : 0.03 }, holeSvg);
+      var centreSpoke = run && t === (run.j + 1) % 5;
+      el('line', { x1: 0, y1: 0, x2: X[t][0], y2: X[t][1], stroke: centreSpoke ? '#e6edf3' : (inRun(t) ? '#e6edf3' : '#7d8590'), 'stroke-width': centreSpoke ? 0.075 : (inRun(t) ? 0.04 : 0.022), 'stroke-dasharray': inRun(t) ? 'none' : '0.06 0.05' }, holeSvg);
+    }
+    ringPts.forEach(function (r) { el('circle', { cx: r.p[0], cy: r.p[1], r: 0.075, fill: '#0d1117', stroke: '#7d8590', 'stroke-width': 0.02 }, holeSvg); });
+    // hole
+    el('circle', { cx: 0, cy: 0, r: 0.17, fill: run ? '#1f2630' : '#0d1117', stroke: '#e6edf3', 'stroke-width': 0.03, 'stroke-dasharray': '0.06 0.045' }, holeSvg);
+    var ht = el('text', { x: 0, y: 0.05, 'text-anchor': 'middle', 'font-size': 0.14, fill: '#e6edf3', 'font-family': 'ui-monospace, Menlo, monospace' }, holeSvg); ht.textContent = 'h';
+    for (t = 0; t < 5; t++) (function (t) {
+      var g = el('g', { role: 'button', tabindex: 0, 'aria-label': 'Link vertex x' + t + ', degree ' + dstr(cur[t]) + '. Activate to raise the degree.', style: 'cursor:pointer' }, holeSvg);
+      el('circle', { cx: X[t][0], cy: X[t][1], r: 0.22, fill: DEGHEX[cur[t]], stroke: inRun(t) ? '#e6edf3' : '#0d1117', 'stroke-width': inRun(t) ? 0.05 : 0.03 }, g);
+      var tx = el('text', { x: X[t][0], y: X[t][1] + 0.075, 'text-anchor': 'middle', 'font-size': cur[t] >= 8 ? 0.19 : 0.23, 'font-weight': 700, fill: '#0d1117', 'font-family': 'ui-monospace, Menlo, monospace' }, g);
+      tx.textContent = dstr(cur[t]);
+      var role = run ? (t === (run.j + 1) % 5 ? 'centre' : (inRun(t) ? 'tip' : '')) : '';
+      var lab = el('text', { x: X[t][0], y: X[t][1] - 0.3, 'text-anchor': 'middle', 'font-size': 0.12, fill: role ? '#e6edf3' : '#7d8590', 'font-family': 'ui-monospace, Menlo, monospace', 'paint-order': 'stroke', stroke: '#161b22', 'stroke-width': 0.05 }, g);
+      lab.textContent = 'x' + t + (role ? ' \u00b7 ' + role : '');
+      g.addEventListener('click', function () { bump(t); });
+      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bump(t); setTimeout(function () { var gs = holeSvg.querySelectorAll('g[role=button]'); if (gs[t]) gs[t].focus(); }, 0); } });
+    })(t);
+    if (run) {
+      var mid = X[(run.j + 1) % 5];
+      var hl = el('text', { x: -0.36 * mid[0], y: -0.36 * mid[1] + 0.04, 'text-anchor': 'middle', 'font-size': 0.11, fill: '#e6edf3', 'font-family': 'ui-monospace, Menlo, monospace', 'paint-order': 'stroke', stroke: '#161b22', 'stroke-width': 0.05 }, holeSvg);
+      hl.textContent = 'h \u00b7 centre';
+    }
+    for (t = 0; t < 5; t++) linkBtns[t].innerHTML = '<span class="sw" style="background:' + DEGC[cur[t]] + '"></span>x' + t + ': ' + dstr(cur[t]);
+    linkBtns.forEach(function (b, t) { b.setAttribute('aria-label', 'x' + t + ' has degree ' + dstr(cur[t]) + '; press to raise it (8+ wraps to 5)'); });
+    // readouts
+    var raw = cur.map(dstr);
+    var rawHtml = raw.map(function (s, t) { return inRun(t) ? '<span class="hl">' + s + '</span>' : s; }).join('');
+    document.getElementById('wordRaw').innerHTML = rawHtml;
+    var cw = wstr(canon(cur)), W = WORDS[cw];
+    var ringSize = cur.reduce(function (s, d) { return s + d; }, 0) - 20;
+    document.getElementById('holeD').textContent = 'Link degrees ' + raw.join(', ') + '. Outer ring of ' + ringSize + ' vertices. ' + (run ? 'A ' + run.kind + ' run at x' + run.j + ' to x' + ((run.j + 2) % 5) + '.' : 'No 555 or 565 run.');
+    var kv = '<dt>hole type</dt><dd><code>' + cw + '</code> (read as ' + raw.join('') + ', up to rotation and reflection)</dd>';
+    kv += '<dt>outer ring</dt><dd>' + ringSize + ' vertices (degrees add to ' + (ringSize + 20) + ', minus 20)</dd>';
+    kv += '<dt>frame class</dt><dd>' + (W.excluded ? '<span class="pill bad">excluded, with clean tips</span>' : '<span class="pill good">allowed</span> one of 117') + '</dd>';
+    kv += '<dt>proved list</dt><dd>' + (W.excluded ? '<span class="pill twin">in the 78 (kept without F2)</span>' : (W.inS ? '<span class="pill info">in Track B’s 59</span>' : 'not in Track B’s 59: a hole of this type always gives away enough charge')) + '</dd>';
+    document.getElementById('wordKv').innerHTML = kv;
+    var narr = document.getElementById('runNarr'), nav = document.getElementById('runNav');
+    nav.innerHTML = '';
+    if (run) {
+      var j0 = run.j, jm = (run.j + 1) % 5, jt = (run.j + 2) % 5;
+      narr.innerHTML = run.kind === '555'
+        ? '<b>Diamond appearance.</b> x' + j0 + ', x' + jm + ', x' + jt + ' have degrees 5, 5, 5. The hole h and x' + jm + ' are the two degree-five centres; x' + j0 + ' and x' + jt + ' are the tips (they are not adjacent, since that would make a separating triangle). With clean tips this is a Birkhoff diamond, so this hole cannot occur in the frame class.'
+        : '<b>2.122 appearance.</b> x' + j0 + ', x' + jm + ', x' + jt + ' have degrees 5, 6, 5. x' + jm + ' (degree 6) and the hole h (degree 5) are the centres; x' + j0 + ' and x' + jt + ' are the tips. With clean tips this is RSST configuration 2.122, so this hole cannot occur in the frame class.';
+      if (rs.length > 1) {
+        var nb2 = h('button', { type: 'button', class: 'btn ghost' }, 'Next run (' + (runIdx + 1) + ' of ' + rs.length + ')', nav);
+        nb2.addEventListener('click', function () { runIdx = (runIdx + 1) % rs.length; renderHole(); });
+      }
+    } else {
+      narr.innerHTML = 'No three consecutive link degrees read <b>5 5 5</b> or <b>5 6 5</b> (cyclically), so this hole forces neither configuration. Holes like this are the ones left in the frame class.';
+    }
+    renderWordCensus(cw);
+    document.querySelectorAll('.wc').forEach(function (c) { c.setAttribute('aria-current', c.dataset.w === cw ? 'true' : 'false'); });
+  }
+  function renderWordCensus(cw) {
+    var box = document.getElementById('wordCensus');
+    var W = WORDS[cw];
+    if (W.excluded) { box.innerHTML = '<p style="font-size:.88rem">Never seen: no frame-class graph in the census has this hole type (it contains a ' + W.runs.map(function (r) { return r[1]; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).join(' and ') + ' run).</p>'; return; }
+    var counts = ORDERS.map(function (k) { var c = D.census[k].words[cw]; return c ? c[0] : 0; });
+    var gcounts = ORDERS.map(function (k) { var c = D.census[k].words[cw]; return c ? c[1] : 0; });
+    var shares = ORDERS.map(function (k, i) { return counts[i] / D.census[k].holes; });
+    var tot = counts.reduce(function (a, b) { return a + b; }, 0);
+    var first = null; ORDERS.forEach(function (k, i) { if (first == null && counts[i]) first = k; });
+    var html = '';
+    if (!tot) {
+      html += '<p style="font-size:.88rem">Not seen in the census up to order ' + ORDERS[ORDERS.length - 1] + '. The type is allowed, so it may appear in larger graphs' + (cw === '66666' ? '' : '') + '.</p>';
+    } else {
+      html += '<p style="font-size:.88rem;margin-bottom:.2rem"><b style="color:var(--text)">' + fmtN(tot) + '</b> holes of this type, first at order ' + first + '. At order ' + ORDERS[ORDERS.length - 1] + ': ' + fmtN(counts[counts.length - 1]) + ' holes in ' + fmtN(gcounts[gcounts.length - 1]) + ' graphs (' + (100 * shares[shares.length - 1]).toFixed(1) + '% of all holes).</p>';
+      var mx = Math.max.apply(null, shares) || 1;
+      html += '<div class="spark" aria-hidden="true">' + shares.map(function (s, i) { return '<div class="' + (s ? '' : 'zero') + '" style="height:' + Math.max(2, 100 * s / mx) + '%" title="order ' + ORDERS[i] + ': ' + (100 * s).toFixed(2) + '%"></div>'; }).join('') + '</div>';
+      html += '<div class="sparkx" aria-hidden="true">' + ORDERS.map(function (k) { return '<span>' + k + '</span>'; }).join('') + '</div>';
+      html += '<p class="sr">Share of holes by order: ' + ORDERS.map(function (k, i) { return k + ': ' + (100 * shares[i]).toFixed(2) + '%'; }).join(', ') + '</p>';
+      html += '<p style="font-size:.74rem;color:var(--faint);margin:.1rem 0 .5rem">share of all holes at each order (bar height relative to this word’s peak)</p>';
+    }
+    if (W.mono) {
+      html += '<p style="font-size:.88rem;margin:0"><span class="pill info">forced</span> ' + (Array.isArray(W.mono) ? 'graph <code>' + W.mono[1] + '</code> (order ' + W.mono[0] + ') has only holes of this type, so every unavoidable list contains it.' : '') + (cw === '66666' ? ' All ' + fmtN(D.ipr.graphs) + ' IPR fullerene duals with 32 to 52 vertices have only <code>66666</code> holes.' : '') + '</p>';
+    }
+    box.innerHTML = html;
+  }
+
+  /* ------------------------------------------------------------ 3D / flat viewer */
+  function Viewer(boxId, toolsId, G, opts) {
+    var box = document.getElementById(boxId), tools = document.getElementById(toolsId);
+    var n = G.n, deg = G.rot.map(function (r) { return r.length; });
+    var svg = el('svg', { viewBox: '-1.32 -1.32 2.64 2.64', role: 'img', tabindex: 0, 'aria-label': opts.label });
+    box.appendChild(svg);
+    var gBack = el('g', {}, svg), gFace = el('g', {}, svg), gEdge = el('g', {}, svg), gVert = el('g', {}, svg), gLab = el('g', {}, svg);
+    var R = rotMat(opts.yaw || 0.4, opts.pitch || -0.35);
+    var allow3d = !!opts.allow3d && !reduceMotion;  // 3D is an optional, drag-only toggle; no auto-motion
+    var flat = true, showWords = opts.words !== false, sel = null;
+    var edges = []; for (var v = 0; v < n; v++) G.rot[v].forEach(function (u) { if (u > v) edges.push([v, u]); });
+    var holeSet = {}; G.holes.forEach(function (hh) { holeSet[hh.v] = hh; });
+    function rotMat(yaw, pitch) {
+      var cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+      // R = Rx(pitch) * Ry(yaw)
+      return [[cy, 0, sy], [sp * sy, cp, -sp * cy], [-cp * sy, sp, cp * cy]];
+    }
+    function mul(A, B) { var C = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) for (var k = 0; k < 3; k++) C[i][j] += A[i][k] * B[k][j]; return C; }
+    function proj() {
+      if (flat) return G.flat.map(function (p) { return [p[0] * 1.2, p[1] * 1.2, 1]; });
+      return G.xyz.map(function (p) {
+        var x = R[0][0] * p[0] + R[0][1] * p[1] + R[0][2] * p[2];
+        var y = R[1][0] * p[0] + R[1][1] * p[1] + R[1][2] * p[2];
+        var z = R[2][0] * p[0] + R[2][1] * p[1] + R[2][2] * p[2];
+        return [x * 1.05, -y * 1.05, z];
+      });
+    }
+    function clear(g) { while (g.firstChild) g.removeChild(g.firstChild); }
+    function render() {
+      [gBack, gFace, gEdge, gVert, gLab].forEach(clear);
+      var P = proj();
+      var link = sel != null ? G.rot[sel] : [];
+      var inLink = {}; link.forEach(function (u) { inLink[u] = 1; });
+      // faces
+      G.faces.forEach(function (f) {
+        if (flat && f.indexOf(G.openAt) >= 0) return;
+        var z = (P[f[0]][2] + P[f[1]][2] + P[f[2]][2]) / 3;
+        if (!flat && z < 0) return;
+        var touch = sel != null && f.indexOf(sel) >= 0;
+        el('polygon', { points: f.map(function (v) { return P[v][0].toFixed(4) + ',' + P[v][1].toFixed(4); }).join(' '),
+          fill: touch ? '#e3b341' : '#58a6ff', 'fill-opacity': touch ? 0.2 : (flat ? 0.03 : 0.03 + 0.06 * z), stroke: 'none' }, gFace);
+      });
+      edges.forEach(function (e) {
+        if (flat && (e[0] === G.openAt || e[1] === G.openAt)) return;
+        var a = P[e[0]], b = P[e[1]], z = (a[2] + b[2]) / 2;
+        var hot = sel != null && ((e[0] === sel || e[1] === sel) || (inLink[e[0]] && inLink[e[1]]));
+        var spoke = sel != null && (e[0] === sel || e[1] === sel);
+        var front = flat || z >= -0.05;
+        var g = front ? gEdge : gBack;
+        el('line', { x1: a[0].toFixed(4), y1: a[1].toFixed(4), x2: b[0].toFixed(4), y2: b[1].toFixed(4),
+          stroke: hot ? '#e6edf3' : '#8b949e', 'stroke-opacity': front ? (hot ? 1 : 0.35 + 0.5 * Math.max(0, flat ? 1 : z)) : 0.12,
+          'stroke-width': hot ? 0.016 : 0.009, 'stroke-dasharray': spoke ? '0.03 0.02' : 'none' }, g);
+      });
+      var order = []; for (var v = 0; v < n; v++) order.push(v);
+      order.sort(function (a, b) { return P[a][2] - P[b][2]; });
+      order.forEach(function (v) {
+        if (flat && v === G.openAt) return;
+        var p = P[v], z = p[2], front = flat || z >= -0.02;
+        var r = flat ? 0.05 : 0.035 + 0.025 * (z + 1) / 2;
+        var isSel = v === sel;
+        var c = el('circle', { cx: p[0].toFixed(4), cy: p[1].toFixed(4), r: r.toFixed(4),
+          fill: isSel ? '#161b22' : DEGHEX[Math.min(deg[v], 8)], 'fill-opacity': front ? 1 : 0.25,
+          stroke: isSel ? '#e6edf3' : (inLink[v] ? '#e6edf3' : '#0d1117'), 'stroke-width': isSel || inLink[v] ? 0.012 : 0.006,
+          'stroke-dasharray': isSel ? '0.02 0.012' : 'none' }, front ? gVert : gBack);
+        if (holeSet[v] && front) {
+          c.style.cursor = 'pointer';
+          c.addEventListener('pointerup', function (ev) { if (!dragMoved) select(v); });
+        }
+        if (front && r > 0.045) {
+          var t = el('text', { x: p[0].toFixed(4), y: (p[1] + r * 0.38).toFixed(4), 'text-anchor': 'middle', 'font-size': (r * 1.05).toFixed(4), 'font-weight': 700, fill: isSel ? '#e6edf3' : '#0d1117', 'font-family': 'ui-monospace, Menlo, monospace', 'pointer-events': 'none' }, gVert);
+          t.textContent = isSel ? 'h' : dstr(deg[v]);
+        }
+        if (showWords && holeSet[v] && !isSel && front && (flat || z > 0.15)) {
+          var lt = el('text', { x: p[0].toFixed(4), y: (p[1] - r - 0.02).toFixed(4), 'text-anchor': 'middle', 'font-size': flat ? 0.065 : (0.05 + 0.025 * z).toFixed(4), fill: '#e6edf3', 'fill-opacity': flat ? 0.9 : (0.4 + 0.6 * z).toFixed(3), 'font-family': 'ui-monospace, Menlo, monospace', 'paint-order': 'stroke', stroke: '#010409', 'stroke-width': 0.018, 'pointer-events': 'none' }, gLab);
+          lt.textContent = holeSet[v].raw;
+        }
+      });
+    }
+    function select(v) {
+      sel = (sel === v) ? null : v;
+      render();
+      if (opts.onSelect) opts.onSelect(sel);
+    }
+    // drag
+    var dragging = false, dragMoved = false, last = null;
+    svg.addEventListener('pointerdown', function (e) { if (flat) return; dragging = true; dragMoved = false; last = [e.clientX, e.clientY]; svg.setPointerCapture && svg.setPointerCapture(e.pointerId); });
+    svg.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - last[0], dy = e.clientY - last[1];
+      if (Math.abs(dx) + Math.abs(dy) > 2) dragMoved = true;
+      last = [e.clientX, e.clientY];
+      var w = svg.getBoundingClientRect().width || 400;
+      R = mul(rotMat(dx / w * 3.2, 0), R); R = mul(rotMat(0, dy / w * 3.2), R);
+      render();
+    });
+    function endDrag(e) { if (dragging) { dragging = false; setTimeout(function () { dragMoved = false; }, 0); } }
+    svg.addEventListener('pointerup', endDrag); svg.addEventListener('pointercancel', endDrag);
+    svg.addEventListener('keydown', function (e) {
+      var s = 0.12, m = null;
+      if (e.key === 'ArrowLeft') m = rotMat(-s, 0); else if (e.key === 'ArrowRight') m = rotMat(s, 0);
+      else if (e.key === 'ArrowUp') m = rotMat(0, -s); else if (e.key === 'ArrowDown') m = rotMat(0, s);
+      if (m && !flat) { e.preventDefault(); R = mul(m, R); render(); }
+    });
+    var flatHint = 'flat map centred on hole v' + G.centreAt + '. Hole v' + G.openAt + ' is the point at infinity: its five neighbours form the outer pentagon.';
+    var hint = null;
+    if (allow3d) {
+      var bFlat = h('button', { type: 'button', class: 'btn ghost', 'aria-pressed': 'false' }, '3D (drag to rotate)', tools);
+      bFlat.addEventListener('click', function () {
+        flat = !flat; bFlat.setAttribute('aria-pressed', String(!flat)); bFlat.textContent = flat ? '3D (drag to rotate)' : 'Flat map';
+        if (flat && sel === G.openAt) sel = null;
+        box.classList.toggle('rot', !flat);
+        hint.textContent = flat ? flatHint : 'drag to rotate \u00b7 arrow keys when focused';
+        svg.setAttribute('aria-label', opts.label + (flat ? '' : ' 3D view: drag or use the arrow keys to rotate.'));
+        render();
+      });
+    }
+    var bW = h('button', { type: 'button', class: 'btn ghost', 'aria-pressed': String(showWords) }, 'Words', tools);
+    bW.addEventListener('click', function () { showWords = !showWords; bW.setAttribute('aria-pressed', showWords); render(); });
+    if (allow3d) {
+      var bR = h('button', { type: 'button', class: 'btn ghost' }, 'Reset view', tools);
+      bR.addEventListener('click', function () { R = rotMat(opts.yaw || 0.4, opts.pitch || -0.35); render(); });
+    }
+    hint = h('span', { style: 'font-size:.76rem;color:var(--faint);margin-left:.3rem' }, flatHint, tools);
+    render();
+    return { select: select, render: render, get sel() { return sel; },
+      setSel: function (v) { sel = v; render(); if (opts.onSelect) opts.onSelect(sel); } };
+  }
+
+  /* ------------------------------------------------------------ Story 3: FrameWit22 */
+  var W22 = D.wit22;
+  var v22 = Viewer('v22', 'v22tools', W22, {
+    label: 'The 22-vertex frame-class witness: 12 vertices of degree five and 10 of degree six, drawn flat and centred on one hole.',
+    yaw: 0.5, pitch: -0.4,
+    onSelect: function (s) { update22(s); }
+  });
+  var holeBox = document.getElementById('v22holes'), holeBtns = {};
+  W22.holes.forEach(function (hh) {
+    var b = h('button', { type: 'button', 'aria-pressed': 'false', 'aria-label': 'Hole at vertex ' + hh.v + ', link word read around it ' + hh.raw }, 'v' + hh.v + ' · ' + hh.raw, holeBox);
+    b.addEventListener('click', function () { v22.setSel(v22.sel === hh.v ? null : hh.v); });
+    holeBtns[hh.v] = b;
+  });
+  function update22(s) {
+    for (var k in holeBtns) holeBtns[k].setAttribute('aria-pressed', String(+k === s));
+    var wEl = document.getElementById('v22word'), nEl = document.getElementById('v22narr');
+    if (s == null) { wEl.textContent = '—'; nEl.innerHTML = 'Click a degree-five vertex (or a button below). Its five neighbours light up, and the word shows their degrees in rotation order.'; return; }
+    var hh = W22.holes.filter(function (x) { return x.v === s; })[0];
+    var degs = W22.rot[s].map(function (u) { return W22.rot[u].length; });
+    var r = runs(degs);
+    wEl.textContent = hh.raw;
+    nEl.innerHTML = 'Vertex ' + s + ': neighbours ' + W22.rot[s].join(', ') + ' with degrees ' + degs.join(', ') + '. Hole type <code>' + hh.word + '</code>. ' +
+      (r.length ? 'Contains a run (should not happen).' : 'Its two degree-five neighbours are next to each other, but no three consecutive link degrees read 5 5 5 or 5 6 5, so this hole forces no diamond and no 2.122.');
+  }
+  update22(null);
+  v22.setSel(W22.centreAt);
+  var tris = W22.fiveTriangles;
+  document.getElementById('v22notice').innerHTML =
+    'All twelve holes have the same type, <code>55666</code>: this graph forces <code>55666</code> onto any list of hole types. ' +
+    'The twelve degree-five vertices come in four triangles (' + tris.map(function (t) { return '{' + t.join(', ') + '}'; }).join(', ') +
+    '), each surrounded by degree-six vertices. A triangle of 5s is allowed; two of them sharing an edge would be a Birkhoff diamond. ' +
+    'Each hole sees its two triangle partners plus three degree-six vertices, so every label above reads 5, 5, 6, 6, 6 starting at a different place or in the other direction.';
+
+  /* ------------------------------------------------------------ Story 4 */
+  var C34 = D.census[ORDERS[ORDERS.length - 1]];
+  var totG = ORDERS.reduce(function (s, k) { return s + D.census[k].graphs; }, 0);
+  var totH = ORDERS.reduce(function (s, k) { return s + D.census[k].holes; }, 0);
+  var seenCount = D.words.filter(function (w) { return w.seen; }).length;
+  document.getElementById('bigStats').innerHTML =
+    '<div class="stat"><b>' + fmtN(totG) + '</b><span>frame-class graphs, orders ' + ORDERS[0] + '–' + ORDERS[ORDERS.length - 1] + '</span></div>' +
+    '<div class="stat"><b>' + fmtN(totH) + '</b><span>holes (degree-five vertices)</span></div>' +
+    '<div class="stat"><b>' + seenCount + ' of 117</b><span>allowed hole types seen at least once</span></div>' +
+    '<div class="stat"><b>6</b><span>hole types forced by a single graph</span></div>';
+
+  // filters + grid
+  var FILTERS = [
+    ['all', 'All 136', function () { return true; }],
+    ['allowed', 'Allowed (117)', function (w) { return !w.excluded; }],
+    ['excluded', 'Contain 555 or 565 (19)', function (w) { return w.excluded; }],
+    ['inS', 'Proved list (59)', function (w) { return w.inS; }],
+    ['seen', 'Seen in census (' + seenCount + ')', function (w) { return w.seen; }],
+    ['forced', 'Forced (6)', function (w) { return !!w.mono; }]
+  ];
+  var fBox = document.getElementById('filters'), gridBox = document.getElementById('wordGrid'), curF = 'all';
+  var totals = {}; D.words.forEach(function (w) { totals[w.w] = ORDERS.reduce(function (s, k) { var c = D.census[k].words[w.w]; return s + (c ? c[0] : 0); }, 0); });
+  FILTERS.forEach(function (f) {
+    var b = h('button', { type: 'button', class: 'chip', 'aria-pressed': String(f[0] === curF) }, f[1], fBox);
+    b.addEventListener('click', function () { curF = f[0]; fBox.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true'); applyFilter(); });
+  });
+  var sorted = D.words.slice().sort(function (a, b) { return (a.excluded - b.excluded) || (totals[b.w] - totals[a.w]) || (a.w < b.w ? -1 : 1); });
+  sorted.forEach(function (w) {
+    var cls = 'wc' + (w.excluded ? ' ex' : '') + (w.mono ? ' forced' : '') + (w.inS ? ' inS' : '');
+    var sub = w.excluded ? 'excluded' : (totals[w.w] ? fmtN(totals[w.w]) : 'not seen');
+    var desc = w.w + ': ' + (w.excluded ? 'contains a 555 or 565 run' : 'allowed') + (w.inS ? ', in the proved list of 59' : '') + (w.mono ? ', forced' : '') + ', ' + (totals[w.w] ? fmtN(totals[w.w]) + ' holes in the census' : 'not seen in the census') + '. Load into the hole explorer.';
+    var b = h('button', { type: 'button', class: cls, 'data-w': w.w, 'aria-label': desc }, w.w + '<small>' + sub + '</small>', gridBox);
+    b.addEventListener('click', function () { setWord(w.w); document.getElementById('s2').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); });
+    b.addEventListener('mouseenter', function (e) { showTip(e, '<b style="font-family:var(--mono)">' + w.w + '</b><br>' + desc.replace(/^[^:]+: /, '').replace(' Load into the hole explorer.', '')); });
+    b.addEventListener('mousemove', function (e) { showTip(e, tip.innerHTML); });
+    b.addEventListener('mouseleave', hideTip);
+  });
+  function applyFilter() {
+    var f = FILTERS.filter(function (x) { return x[0] === curF; })[0][2];
+    gridBox.querySelectorAll('.wc').forEach(function (b) { var on = f(WORDS[b.dataset.w]); b.classList.toggle('dim', !on); b.hidden = false; });
+  }
+
+  // heatmap
+  (function () {
+    var tbl = document.getElementById('heat');
+    var top = Object.keys(C34.words).sort(function (a, b) { return C34.words[b][0] - C34.words[a][0]; }).slice(0, 16);
+    ['66666', '558+58+'].forEach(function (w) { if (top.indexOf(w) < 0) top.push(w); });
+    var shareOf = function (w, k) { var c = D.census[k].words[w]; return c ? c[0] / D.census[k].holes : 0; };
+    var thead = h('thead', null, null, tbl), tr = h('tr', null, null, thead);
+    h('th', { scope: 'col', style: 'text-align:left' }, 'hole type \\ vertices', tr);
+    ORDERS.forEach(function (k) { h('th', { scope: 'col' }, String(k), tr); });
+    var tb = h('tbody', null, null, tbl);
+    function metaRow(label, fn) { var r = h('tr', { class: 'meta' }, null, tb); h('th', { scope: 'row', class: 'rowh', style: 'color:var(--faint);font-weight:500' }, label, r); ORDERS.forEach(function (k) { h('td', null, fn(k), r); }); }
+    metaRow('graphs', function (k) { return fmtN(D.census[k].graphs); });
+    metaRow('holes', function (k) { return fmtN(D.census[k].holes); });
+    metaRow('distinct types', function (k) { return String(Object.keys(D.census[k].words).length); });
+    function cell(r, s, w, k, extra) {
+      var td = h('td', null, s === 0 ? '·' : (s < 0.001 ? '<0.1' : (100 * s).toFixed(s < 0.1 ? 1 : 0)), r);
+      if (s === 0) td.className = 'z';
+      var a = s === 0 ? 0 : 0.12 + 0.78 * Math.sqrt(s / 0.4);
+      td.style.background = s === 0 ? 'transparent' : 'rgba(56,139,253,' + Math.min(0.9, a).toFixed(3) + ')';
+      var c = D.census[k].words[w];
+      var txt = extra || ('<b style="font-family:var(--mono)">' + w + '</b> at ' + k + ' vertices<br>' + (c ? fmtN(c[0]) + ' holes in ' + fmtN(c[1]) + ' graphs<br>' + (100 * s).toFixed(2) + '% of ' + fmtN(D.census[k].holes) + ' holes' : 'none'));
+      td.addEventListener('mouseenter', function (e) { showTip(e, txt); });
+      td.addEventListener('mousemove', function (e) { showTip(e, txt); });
+      td.addEventListener('mouseleave', hideTip);
+      td.title = (extra ? '' : w + ', order ' + k + ': ') + (100 * s).toFixed(2) + '%';
+    }
+    top.forEach(function (w) {
+      var r = h('tr', null, null, tb);
+      var th = h('th', { scope: 'row', class: 'rowh' }, null, r);
+      var b = h('button', { type: 'button', 'aria-label': 'Load ' + w + ' into the hole explorer' }, w + (WORDS[w].mono ? ' *' : ''), th);
+      b.addEventListener('click', function () { setWord(w); document.getElementById('s2').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); });
+      ORDERS.forEach(function (k) { cell(r, shareOf(w, k), w, k); });
+    });
+    var r = h('tr', null, null, tb);
+    h('th', { scope: 'row', class: 'rowh', style: 'color:var(--faint);font-weight:500' }, 'all other types', r);
+    ORDERS.forEach(function (k) {
+      var s = 1; top.forEach(function (w) { s -= shareOf(w, k); });
+      if (s < 1e-12) s = 0;
+      cell(r, s, 'other', k, 'other types at ' + k + ' vertices: ' + (100 * s).toFixed(2) + '% of holes');
+    });
+    var cap = h('caption', { style: 'caption-side:bottom;text-align:left;color:var(--faint);font:.74rem var(--sans);padding:.4rem .3rem 0' },
+      'Numbers are percentages of holes at that order; · means none. Rows: the 16 most common types at order ' + ORDERS[ORDERS.length - 1] + ', plus 66666 and 558+58+. * marks a forced type. Click a type to load it into Story 2.' +
+ ' Order 34 comes from Census34/out/wordcounts-34.json, a summary the builder writes from the 117 MB frame-34.txt (not committed); its totals match Census34/README.md.', null);
+    tbl.appendChild(cap);
+  })();
+
+  // forced table
+  (function () {
+    var tbl = document.getElementById('forced');
+    var thead = h('thead', null, '<tr><th scope="col">hole type</th><th scope="col">first forced at</th><th scope="col">a graph with only this type</th><th scope="col">orders where some graph has only this type</th></tr>', tbl);
+    var tb = h('tbody', null, null, tbl);
+    var fw = Object.keys(D.monotypeFirst).sort(function (a, b) { return D.monotypeFirst[a][0] - D.monotypeFirst[b][0]; });
+    fw.forEach(function (w) {
+      var ks = ORDERS.filter(function (k) { return D.census[k].monotype[w]; });
+      var r = h('tr', null, null, tb);
+      var td = h('td', { class: 'w' }, null, r);
+      var b = h('button', { type: 'button', class: 'chip', style: 'font:600 .82rem var(--mono);padding:.15rem .5rem' }, w, td);
+      b.addEventListener('click', function () { setWord(w); document.getElementById('s2').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); });
+      h('td', null, D.monotypeFirst[w][0] + ' vertices', r);
+      h('td', null, '<code>' + D.monotypeFirst[w][1] + '</code>' + (w === '55666' ? ' (the witness of Story 3)' : '') + (w === '66666' ? ' (the C60 dual, below)' : ''), r);
+      h('td', null, ks.join(', ') + (w === '66666' ? '; also every IPR fullerene dual' : ''), r);
+    });
+  })();
+
+  // C60 dual
+  var C60 = D.c60;
+  var v60 = Viewer('v60', 'v60tools', C60, {
+    label: 'The dual of C60, drawn flat and centred on one pentagon hole: 32 vertices, 12 of degree five (never adjacent) and 20 of degree six.',
+    yaw: 0.3, pitch: -0.25, words: false, allow3d: true, onSelect: function () {}
+  });
+  v60.setSel(C60.centreAt);
+  var io = D.ipr.orders, ks = Object.keys(io).map(Number).sort(function (a, b) { return a - b; });
+  document.getElementById('iprText').innerHTML = 'The same holds for every IPR fullerene dual. The committed list has all ' + fmtN(D.ipr.graphs) +
+    ' of them with ' + ks[0] + ' to ' + ks[ks.length - 1] + ' vertices; the builder checked that all ' + fmtN(D.ipr.holes) +
+    ' of their holes are <code>66666</code> and that the C60 dual passes the frame-class filter <span class="lab">[computed]</span>. Track B checked the whole list with <code>frame.c</code> <span class="lab">[data]</span>.';
+
+  // footer
+  var pc = D.portCheck;
+  var foot = [
+    'Configurations: the free completions of the diamond and 2.122 are rebuilt from the <code>Nx</code> fields of <code>DiamondPOcc.lean</code> and <code>C2122POcc.lean</code>; the builder checks that all four Lean structures (both orientations) state exactly the facts in <code>TrackB/occ_sched.h</code>. Drawings: ring on a circle, interior by barycentres.',
+    'Frame-class filter: a Python port of <code>TrackB/frame.c</code> (Occ matcher, appearances with clean tips, NoSep by triangle count, minimum degree). On all ' + fmtN(pc.graphs) + ' minimum-degree-5 4-connected triangulations of orders ' + pc.orders[0] + '–' + pc.orders[1] + ' (<code>TrackB/out/all-mindeg5-12-24.txt</code>) it reproduces <code>TrackB/out/count-small.log</code> exactly (frame-class graphs: ' + Object.keys(pc.frame_by_order).map(function (k) { return pc.frame_by_order[k] + ' at ' + k; }).join(', ') + '), and finds Occ-free = appearance-free on every graph. Negative control: the icosahedron has both diamond orientations.',
+    'Witness: <code>TrackC/FrameWit22-faces.json</code> (input of <code>FrameWit22Map.lean</code>), checked to be a triangulated sphere in the frame class and isomorphic as a map to <code>p22#196</code>. Its sphere drawing is a spring layout, and the builder asserts every face is positively oriented (so the drawing is an embedding). The flat map is the stereographic projection from one hole, asserted to be a straight-line embedding of the rest. The same holds for the C60 dual.',
+    'Census: <code>Census29/out/frame-22…32.txt</code>, <code>Census33/out/frame-33.txt</code>, and for order 34 <code>Census34/out/wordcounts-34.json</code>, which the builder writes from the uncommitted 117 MB <code>Census34/out/frame-34.txt</code> when that file is present (recording its SHA-256) and reads otherwise (plantri <code>-m5 -c4</code> then <code>frame.c</code>). Graph counts per order are asserted against the census READMEs (for example 209,702 graphs and 3,612,341 holes at order 34). Every graph to order 28 and a deterministic sample above (' + fmtN(D.censusVerified) + ' graphs in all) were re-run through the Python port. No census hole contains a 555 or 565 run.',
+    'Fullerene duals: <code>backgroundMaterial/planemap-structural/studiointel/ipr/ipr_32_52.pc</code> (buckygen 1.1). Track B numbers (59, 78, 9, 7 → 13): <code>TrackB/README.md</code> and <code>TrackB/out/discharge-frameonly.json</code>; the 59-word list and the 19 excluded words are rechecked by the builder.',
+    'Labels: <span class="lab formal">[formal]</span> compiled in Lean with standard axioms; <span class="lab">[computer-certified]</span> exact certificate rechecked by a second script; <span class="lab">[data]</span> computation, not a proof; <span class="lab open">[open]</span> not known.'
+  ];
+  var fl = document.getElementById('footList'); foot.forEach(function (s) { h('li', null, s, fl); });
+
+  renderHole();
+  applyFilter();
+})();
+</script>
+</body>
+</html>

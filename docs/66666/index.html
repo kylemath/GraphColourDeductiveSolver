@@ -37,7 +37,7 @@
     h2 { margin: 0; font: 600 1.25rem/1.3 var(--serif); }
     p { margin: 0 0 .9rem; color: var(--dim); max-width: 74ch; }
     p strong { color: var(--text); }
-    code { font: .88em var(--mono); background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); }
+    code { overflow-wrap: anywhere; font: .88em var(--mono); background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); }
     a { color: var(--accent); }
     .lead { font-size: 1.04rem; }
     .lab { font: 600 .74rem var(--mono); color: var(--warn); white-space: nowrap; }
@@ -137,10 +137,11 @@
           <h3>The map, with the hole deleted</h3>
           <svg id="map" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Triangulation drawing with the current colouring"></svg>
           <div class="legend">
-            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole (vertex 0)</span>
-            <span><i style="border:2px solid var(--text)"></i>link (all degree 6)</span>
-            <span><i style="border:2px dotted var(--faint)"></i>ring of ten</span>
-            <span><i style="border:2px solid var(--twin)"></i>lock chains</span>
+            <span><i style="border:1.5px dashed var(--twin)"></i>deleted hole (vertex 0, centre)</span>
+            <span><i style="background:var(--faint);width:.85rem;height:.85rem"></i>link (all degree 6, larger discs)</span>
+            <span><i style="border:2px dotted var(--warn)"></i>ring of ten</span>
+            <span><i style="border:2px solid var(--twin)"></i>lock chains: two-colour tracks, purple rings</span>
+            <span>hover a move to draw its chain</span>
           </div>
           <div class="readout" id="readout"></div>
         </div>
@@ -260,6 +261,8 @@
 </div>
 
 <script src="data.js"></script>
+<script src="layout.js"></script>
+<script src="../shared/kempe-draw.js"></script>
 <script>
 (function () {
   const D = window.SIXRING_DATA;
@@ -348,37 +351,38 @@
       box.appendChild(b);
     });
   }
+  // the map: drawn with the shared metro-style module (docs/shared/kempe-draw.js), hole-centred positions (layout.js)
+  const CSSV = (k, d) => (getComputedStyle(document.documentElement).getPropertyValue(k).trim() || d);
+  const HEX = [0, 1, 2, 3].map((i) => CSSV('--c' + i, ['#f85149', '#58a6ff', '#e3b341', '#3fb950'][i]));
+  const TWIN = CSSV('--twin', '#bc8cff');
+  let kd = null;
   function renderMap() {
-    const svg = $('map'); svg.innerHTML = '';
-    const pos = D.pos, rot = D.rot;
-    const hi = highlight ? new Set(highlight.comp.map((i) => V[i])) : null;
+    const svg = $('map'), rot = D.rot, LAY = window.SIXRING_LAYOUT;
+    if (!kd) {
+      const edges = []; rot.forEach((nb, v) => nb.forEach((w) => { if (v < w) edges.push([v, w]); }));
+      kd = KempeDraw.create(svg, { pos: LAY.pos, edges, hole: H, link: LAY.link, colours: HEX, bg: CSSV('--raised', '#161b22'), scale: 1.3,
+        label: (v) => String(v), holeLabel: '?',
+        vertexTitle: (v) => 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[display[vIdx.get(v)]] + (linkSet.has(v) ? ' · link' : ringSet.has(v) ? ' · ring' : '') });
+    }
+    kd.setColouring(rot.map((_, v) => (v === H ? 0 : display[vIdx.get(v)])));
+    const list = [], seen = new Set();
+    const add = (comp, a, b, extra) => {
+      const vs = [...comp].map((i) => V[i]), key = Math.min(a, b) + ':' + Math.max(a, b) + ':' + vs.slice().sort((x, y) => x - y).join(',');
+      if (seen.has(key)) return; seen.add(key); list.push(Object.assign({ v: vs, pair: [a, b] }, extra));
+    };
+    if (highlight) add(highlight.comp, highlight.a, highlight.b, { title: 'chain to swap' });
     const lk = showLocks ? locks(display) : null;
-    const lockV = new Set();
-    if (lk) { if (lk.l1) lk.k1.forEach((i) => lockV.add(V[i])); if (lk.l2) lk.k2.forEach((i) => lockV.add(V[i])); }
-    const inLock = (v, w) => lk && ((lk.l1 && lk.k1.has(vIdx.get(v)) && lk.k1.has(vIdx.get(w))) || (lk.l2 && lk.k2.has(vIdx.get(v)) && lk.k2.has(vIdx.get(w))));
-    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
-      const tr = v === H || w === H, on = hi && hi.has(v) && hi.has(w), lockE = !tr && inLock(v, w);
-      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1],
-        stroke: on ? 'var(--text)' : lockE ? 'var(--twin)' : tr ? 'var(--faint)' : '#3d444d',
-        'stroke-width': on ? 0.022 : lockE ? 0.02 : 0.009, 'stroke-dasharray': tr ? '0.03 0.025' : 'none' }, svg);
+    if (lk) {
+      const cm = display[lk.m];
+      if (lk.l1) add(lk.k1, cm, display[lk.a], { ring: TWIN, title: 'lock chain 1' });
+      if (lk.l2) add(lk.k2, cm, display[lk.b], { ring: TWIN, title: 'lock chain 2' });
     }
-    for (let v = 0; v < rot.length; v++) {
-      const [x, y] = pos[v];
-      if (ringOn && ringSet.has(v)) el('circle', { cx: x, cy: y, r: 0.075, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012, 'stroke-dasharray': '0.02 0.015' }, svg);
-      if (v === H) {
-        el('circle', { cx: x, cy: y, r: 0.05, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
-        const t = el('text', { x, y: y + 0.018, 'text-anchor': 'middle', 'font-size': 0.05, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg); t.textContent = '?';
-        continue;
-      }
-      const i = vIdx.get(v), lock = lockV.has(v), isLink = linkSet.has(v);
-      const g = el('g', {}, svg);
-      el('circle', { cx: x, cy: y, r: isLink ? 0.052 : 0.045, fill: COLORS[display[i]],
-        stroke: (hi && hi.has(v)) || isLink ? 'var(--text)' : lock ? 'var(--twin)' : 'var(--bg)',
-        'stroke-width': hi && hi.has(v) ? 0.02 : isLink ? 0.016 : lock ? 0.014 : 0.008 }, g);
-      el('text', { x, y: y + 0.015, 'text-anchor': 'middle', 'font-size': 0.04, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)' }, g)
-        .textContent = v;
-      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[display[i]] + (isLink ? ' · link' : ringSet.has(v) ? ' · ring' : '');
-    }
+    kd.setChains(list);
+    const mk = kd.layer('marks'); mk.innerHTML = '';
+    if (ringOn) ringSet.forEach((v) => {
+      const [x, y] = LAY.pos[v];
+      el('circle', { cx: x, cy: y, r: kd.nodeR(v) + 0.032, fill: 'none', stroke: 'var(--warn)', 'stroke-width': 0.012, 'stroke-dasharray': '0.02 0.015' }, mk);
+    });
   }
   function landscapeCoords() {
     const W = 520, Hh = 380, Lm = 16, Rm = 10, T = 14, Bm = 34;

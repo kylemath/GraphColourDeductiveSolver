@@ -378,28 +378,49 @@ const KempeDemo = {
   },
 
   draw() {
-    const highlightEdges = [];
-    if (this.chain.length > 0) {
-      const chainSet = new Set(this.chain);
-      for (const e of this.graph.edges) {
-        if (chainSet.has(e.from) && chainSet.has(e.to)) {
-          highlightEdges.push([e.from, e.to]);
-        }
+    // Chains follow the site drawing convention (docs/shared/kempe-draw.js), on canvas: a metro-style track of two thin
+    // parallel strands in the chain's two colours, rounded, with a background casing; chain vertices keep their own
+    // fill and get a ring in the partner colour.
+    this.graph.clearHighlights();
+    DrawUtil.drawGraph(this.ctx, this.canvas, this.graph, { nodeRadius: 16 });
+    const ctx = this.ctx, g = this.graph;
+    if (this.chain.length > 0 && this.pair) {
+      const bg = getComputedStyle(document.documentElement).getPropertyValue('--surface2').trim() || '#1e2230';
+      const [a, b] = this.pair, S = new Set(this.chain), s = 5, casing = 3;
+      const edges = g.edges.filter(e => S.has(e.from) && S.has(e.to));
+      ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      for (const e of edges) {                       // casing
+        const p = g.nodes[e.from], q = g.nodes[e.to];
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+        ctx.strokeStyle = bg; ctx.lineWidth = 2 * s + 2 * casing; ctx.stroke();
+      }
+      for (const e of edges) {                       // strands: colour a on the left, from the a-end to the b-end
+        let p = g.nodes[e.from], q = g.nodes[e.to];
+        if (p.colour !== a) [p, q] = [q, p];
+        const dx = q.x - p.x, dy = q.y - p.y, l = Math.hypot(dx, dy) || 1, nx = -dy / l * s / 2, ny = dx / l * s / 2;
+        [[a, 1], [b, -1]].forEach(([c, sg]) => {
+          ctx.beginPath(); ctx.moveTo(p.x + sg * nx, p.y + sg * ny); ctx.lineTo(q.x + sg * nx, q.y + sg * ny);
+          ctx.strokeStyle = COLOURS[c]; ctx.lineWidth = s; ctx.stroke();
+        });
+      }
+      ctx.restore();
+      for (const v of this.chain) {                  // stations on top: own fill, ring in the partner colour
+        const n = g.nodes[v];
+        DrawUtil.drawNode(ctx, n.x, n.y, 16, COLOURS[n.colour % COLOURS.length], null, n.label);
+        const other = n.colour === a ? b : a;
+        ctx.beginPath(); ctx.arc(n.x, n.y, 16 + 4.5, 0, 2 * Math.PI);
+        ctx.strokeStyle = bg; ctx.lineWidth = 7; ctx.stroke();
+        ctx.beginPath(); ctx.arc(n.x, n.y, 16 + 4.5, 0, 2 * Math.PI);
+        ctx.strokeStyle = COLOURS[other]; ctx.lineWidth = 4; ctx.stroke();
       }
     }
-    this.graph.clearHighlights();
-    for (const v of this.chain) this.graph.nodes[v].highlight = true;
-    DrawUtil.drawGraph(this.ctx, this.canvas, this.graph, {
-      nodeRadius: 16,
-      highlightEdges
-    });
 
     if (this.selectedVertex) {
       const n = this.graph.nodes[this.selectedVertex];
       this.ctx.beginPath();
-      this.ctx.arc(n.x, n.y, 22, 0, 2 * Math.PI);
+      this.ctx.arc(n.x, n.y, 26, 0, 2 * Math.PI);
       this.ctx.strokeStyle = '#fff';
-      this.ctx.lineWidth = 3;
+      this.ctx.lineWidth = 2;
       this.ctx.setLineDash([4, 3]);
       this.ctx.stroke();
       this.ctx.setLineDash([]);
@@ -440,6 +461,7 @@ const KempeDemo = {
       return;
     }
     this.chain = ColourAlgo.findKempeChain(this.graph, this.selectedVertex, c1, c2);
+    this.pair = [c1, c2];
     this.draw();
     document.getElementById('kempe-status').textContent =
       `Kempe chain (${COLOUR_NAMES[c1]}/${COLOUR_NAMES[c2]}) from ${this.selectedVertex}: ${this.chain.length} vertices highlighted.`;
