@@ -1,4 +1,11 @@
-# Rigid isolation on the sphere: proof [hand, unreviewed; every step data-checked]
+# Rigid isolation on the sphere: proof [hand, independently reviewed — CORRECT with three expository gaps, now patched; every step data-checked]
+
+**Revision after review (8 Oct 2026).** `TrackI-review/README.md` found the proof of Theorem 6 and of RI correct on the sphere (0 failures in 2,224,936 fresh DL states; every intermediate identity checked on 2,207,592), with three expository gaps G1–G3. They are fixed in place below; each edit is marked **[rev G1]**, **[rev G2]** or **[rev G3]**.
+- **G1** (topology of S² − C, needed by Lemma R): a paragraph added after the proof of Lemma 4(b) showing that every component of S² − C other than R is a disc bounded by exactly one C_i, and that the disc D₀ beyond X contains e₀, e₄ and Y.
+- **G2** (flip connectivity): Lemma R step 1 now inducts on an innermost pair of the *target* matching, not on an arbitrary consecutive pair.
+- **G3** (planarity accounting): §0's "exactly four places" is replaced by the complete list of seven planar inputs. The review's off-sphere data (§4 there) show Lemma R step 2 is an independent planar input: on RP² its conclusion fails in 2,857 states whose outer matchings are combinatorially non-crossing; on the torus every failure comes through Lemma 2 and Euler, never through Lemma R.
+- **Remark 7** is relabelled **[unproved, data-supported]**: no proof is written (review data: 19,448 link-free moves, 0 failures).
+- One extra hypothesis made explicit (review §3a): Lemma R also needs Σ_I planar (disjoint arcs in R). It was already stated; with a crossing Σ_I it fails from 8 points.
 
 Track I, 8 Oct 2026. Notation follows `TrackF/LockParity.md` and `TrackH/README.md`. Data references point to `README.md` §3 of this directory.
 
@@ -17,7 +24,16 @@ RI is the case N(c) = 8 of Theorem 6. On the sphere every DL state has N ≥ 8, 
 - If c is rigid and π(c) were rigid, then π(c) would be DL and N(π(c)) = 8 = N(c).
 - But Theorem 6 then gives 0 ≡ 1.
 
-Planarity enters in exactly four places: Lemma 0 (Jordan), Lemma 1 (regions = chains), Lemma 2 (locks = pairings), and step (P-ii) of Lemma 5 (a closed curve bounds a disc on each side). §5 shows which step fails on RP².
+**[rev G3]** Planarity enters in seven places:
+1. Lemma 0 (Jordan: v-loops do not cross at v);
+2. Lemma 1 (Euler's formula for plane multigraphs; the region/chain bijection itself holds on any surface);
+3. Lemma 2 (Jordan: a v-loop separates corners);
+4. Theorem D (used in Lemma 3, and for x₀ ∉ K in Lemma 4b — the latter also follows from Lemma 2, since X separates corner (e₁,e₂) from corner (e₄,e₀));
+5. the disc structure of S² − C (G1, Jordan region tree + Schoenflies; paragraph after Lemma 4);
+6. step (P-ii) of Lemma 5 (disjoint paths in a disc give a non-crossing matching);
+7. Lemma R step 2 (Schoenflies: a band on a single curve splits it).
+
+Item 7 is used non-trivially and independently of item 6: on RP², Lemma R's conclusion fails in states whose outer matchings are non-crossing (TrackI-review §4). On the torus, Lemma R's conclusion never failed; the failures come through items 2–3. (The original text said "exactly four places" and omitted items 4, 5, 7 and the Euler content of item 2.)
 
 ## 1. Tait form
 
@@ -94,6 +110,15 @@ Lock2 is the same argument with the faces x₁ and x₄ (corners (e₀,e₁) and
   - At a cubic vertex the colour-2 edge separates two corners of one region, so ∂R contains either both F13-edges of that vertex or neither.
   - Hence ∂R is a union of whole F13-components and v-loops: the v-loop X through e₁ (which returns through e₃ by Lemma 2), plus whole cycles Z_i.
   - If c is rigid, F13 = X ∪ Y and Y ⊄ ∂R, so C = X.
+
+**[rev G1] Topology of S² − C.** Write C = C₀ ∪ … ∪ C_r with C₀ = X and C_i = Z_i; these are pairwise disjoint simple closed curves (X by Lemma 0(a), each Z_i a cycle of the 2-regular part of F13).
+- R is a connected component of S² − C (open, connected, frontier ⊆ C).
+- Every C_i lies in the frontier of R: each C-edge separates an R-face from a non-R face, by definition of C = ∂R.
+- r + 1 disjoint simple closed curves cut S² into r + 2 regions, and the graph with a node per region and an edge per curve (joining the two regions on its sides) is a tree (Jordan, by induction on r).
+- R is incident with all r + 1 curves, so the tree is a star centred at R. Hence each other region D_i is incident with exactly one curve C_i, and is the component of S² − C_i not containing R; by Schoenflies it is an open disc with ∂D_i = C_i.
+- D₀, the region beyond X, contains the corners (e₃,e₄), (e₄,e₀), (e₀,e₁) at v, hence the edges e₀ and e₄, and (rigid case or not) the loop Y of F13 through e₀, e₄.
+
+This is exactly the setting assumed in Lemma R.
 - **(c)** Direct substitution, using C ⊆ M₁ ∪ M₃.
 - **(d)** Apply Lemma 2 to π(c) in its own frame.
   - Lock1(π c) ⇔ p(F13) = (e′₀e′₃)(e′₁e′₂) = (e₃e₁)(e₄e₀). This is p(F13) for the DL state c.
@@ -124,9 +149,9 @@ Lock2 is the same argument with the faces x₁ and x₄ (corners (e₀,e₁) and
 
 *Proof.*
 1. **Flips connect.** Any two non-crossing perfect matchings of the O-points of one circle C_i are connected by *flips*. A flip replaces two arcs of Σ_O that border a common face of D_i − Σ_O by the two arcs obtained by band surgery along a core γ inside that face.
-   - Induction on the number of O-points of C_i. Let s, s′ be O-points that are consecutive among the O-points of C_i, and suppose Σ_O pairs s–q and s′–r with q ≠ s′.
-   - No arc of Σ_O ends on the boundary segment from s to s′. So the arcs at s and s′ border the face adjacent to that segment, and a flip there gives (s s′)(q r).
-   - Arcs already removed by the induction lie nested against the boundary, so this face argument still applies at later steps.
+   - **[rev G2]** Induction on the number of O-points of C_i, transforming Σ_O into a target non-crossing matching Σ′_O. Choose (s, s′) to be an *innermost* arc of the target Σ′_O, i.e. a pair of Σ′_O whose points are consecutive among the O-points of C_i (one always exists for a non-crossing matching). If Σ_O already pairs s–s′, skip to the last bullet. Otherwise Σ_O pairs s–q and s′–r with q ≠ s′.
+   - No arc of Σ_O ends on the boundary segment from s to s′. So the arcs at s and s′ border the face adjacent to that segment, and a flip along a core γ in that face gives the non-crossing pairing (s s′)(q r) (not (s r)(s′ q), because γ lies in a disc face).
+   - Now both matchings contain (s s′). Delete s and s′ and apply the induction to the remaining O-points. Arcs already removed by the induction lie nested against the boundary, so this face argument still applies at later steps.
 2. **Band surgery changes λ by ±1 on the sphere.** Do surgery on a system of disjoint simple closed curves along an arc γ whose interior misses all curves.
    - If the ends of γ lie on two different curves, those curves merge: −1.
    - If both ends lie on the same curve σ: γ lies in one component of S² − σ, which is a disc (Jordan–Schoenflies), and is a cross-cut of it. The surgery splits σ into the two cycles of the theta graph σ ∪ γ: +1.
@@ -178,9 +203,11 @@ Lock2 is the same argument with the faces x₁ and x₄ (corners (e₀,e₁) and
 
 For a Kempe move on curves *not* through v, the same argument needs a correction term for the pairings of v in the two other subgraphs. With Lemma 2 this gives:
 
-> **Remark 7 [hand].** A Kempe swap of a component containing no link vertex preserves N + L1 + L2 (mod 2), where L1 and L2 are the lock indicators. This is checked on 281,230 link-free moves with 0 failures (`ti_moves.py`).
+> **Remark 7 [unproved, data-supported].** A Kempe swap of a component containing no link vertex preserves N + L1 + L2 (mod 2), where L1 and L2 are the lock indicators. This is checked on 281,230 link-free moves with 0 failures (`ti_moves.py`).
 
 The uncorrected statement "N mod 2 is preserved" is **false**: it fails on 111,912 of those moves.
+
+(Status after review: no proof of Remark 7 is written; it was labelled [hand] in error. The independent review re-checked it on 19,448 link-free moves on fresh spheres with 0 failures; N alone changes parity in 8,024 of them. A proof along the lines of Lemma 5 looks feasible — ∂R′ is a union of S_i-cycles avoiding v, and v becomes an off-C degree-4 vertex in two subgraphs — but nothing downstream should rely on it until it is written. Cross-reference: `TrackC/README.md` §6.4 notes that both Remark 7 and Theorem 6 would follow from one conjectured per-state identity, the mod-4 chain-count formula F (0 failures on 71k sphere states, fails on the torus), together with a local, planarity-free lemma W.)
 
 ## 3. The rigid case in the chord model (restatement asked for in the brief)
 

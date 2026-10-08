@@ -114,3 +114,105 @@ All thirteen headline theorems: `[propext, Classical.choice, Quot.sound]`. Sabot
 - Changed: `StudioMathLean/check.sh` (4 lines appended) and `StudioMathLean/SHA256SUMS` (4 lines added, re-sorted)
 - New: `TrackC/README.md` (this file) and `TrackC/FrameWit22-faces.json` (generator input)
 - New (§5): `StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean`; `check.sh` +1 line, `SHA256SUMS` +1 line
+
+## 6. Theorem 6 (chain-parity law) and rigid isolation: Lean plan (8 Oct)
+
+Source: `TrackI/RigidIsolation.md` (hand proof, independently reviewed, gaps G1–G3 now patched in place). Target: for a `SphericalMap` triangulation `M`, a hole `h` with `P : Pent M.graph h` and a proper doubly locked `c`, `N(π c) − N(c) ≡ [π c DL] (mod 2)`, where `N` is the total number of Kempe chains of `T − h`; and its corollary RI (rigid ↦ non-rigid).
+
+### 6.1 Definitions (reuse first)
+
+| hand | Lean | status |
+|---|---|---|
+| hole, link, frame `j`, roles `(α, μ, α, A, B)` | `Pent`, `RepeatAt P c j` | existing |
+| Lock1, Lock2, DL | `Lock1`, `Lock2`, `DoublyLocked`, `DLState` | existing |
+| `π` at a DL state = swap of `K_{αA}(x_{j+2})` | `piMove P c = rot3 P c j` (`piMove_of_dl`) | existing + 1 lemma |
+| `K_{pq}(v)`, pair graph of `T − h` | `kcomp`, `pairGraph` | existing |
+| #pq (chains of one pair) | **`chainCount G h c p q`**: components of `pairGraph` meeting an active vertex | **new, compiled** |
+| `N` | **`nChains G h c`** = Σ over the six pairs `p < q` | **new, compiled** |
+| rigid | **`RigidAt P c j`**: DL with counts (1,1,2,1,2,1) | **new, compiled** |
+| Theorem 6 | **`ChainParityLaw M P`** (a `Prop`) | **statement only** |
+
+Design decision: **stay in the primal**. `N` is defined directly from the six pair graphs of `T − h`, so the Tait graph `G = T*/h*`, its 2-factors `H, F12, F13` and Lemma 1 (regions = chains, Euler) are never needed as objects. The library has no dual-graph infrastructure (faces are `faceNext`-orbits of darts; there is no face adjacency graph, no "component of a dual subgraph"), and building it would be the single largest cost of a literal transcription.
+
+### 6.2 What compiled now: `PlaneMap/ChainCount.lean`
+
+0 sorry, no new axioms, no `native_decide`; see §6.6 for the build record. Contents:
+- `chainCount`, `nChains`; `chainCount_comm`; `chainCount_congr`; `one_le_chainCount`; `two_le_chainCount` (two active vertices in different components).
+- `chainCount_swap_same`, `chainCount_swap_other`: an `{a,b}`-swap leaves the `{a,b}`-count and every `{x,y}`-count with `{x,y} ∩ {a,b} = ∅` unchanged.
+- `sum_pairs_roles` / `nChains_roles`: in a frame, `N = #αμ + #AB + #αA + #μB + #αB + #μA` (frame independence of `N`).
+- **Lemma 3** (sphere): `eight_le_nChains` (DL ⇒ `N ≥ 8`, from the formal Theorem D `lock2_iff_not_reach_alphaA` / `lock1_iff_not_reach_alphaB`) and `rigidAt_iff` (for DL states, rigid ⇔ `N = 8`).
+- **Lemma 4(c), primal half**: `chainCount_piMove_alphaA`, `chainCount_piMove_muB` (`π` fixes `#αA` and `#μB`; this is "`F12′ = F13`"), hence `nChains_piMove_sub`: `N(πc) − N(c)` involves only `#αμ, #AB, #αB, #μA`.
+- **RI from Theorem 6**: `rigid_isolation_of_law : ChainParityLaw M P → ProperOff → RigidAt P c j → ¬ RigidAt P (piMove P c) j'`, and `not_eight_eight_of_law` (with Lemma 3: no DL step with `N(c) = N(πc) = 8`).
+
+So everything in RigidIsolation.md *except Lemma 5 (and Lemma 4(a,b,d), which only feed Lemma 5)* is now formal or not needed. The open part is exactly Theorem 6.
+
+### 6.3 Route T: transcribe the hand proof (Lemma 4 → Lemma R → Lemma 5)
+
+| hand step | planar input (G3 list) | Lean plan | library support | size |
+|---|---|---|---|---|
+| Lemma 0 (v-loops non-crossing) | Jordan | primal form = non-crossing of chains at a ring face | `chains_noncrossing` (`RingChains`), `face_alternating_walks_meet` (`RingJordan`) | small |
+| Lemma 1 (Euler) | Euler | **avoided** (primal `N`) | — | 0 |
+| Lemma 2 (locks = pairings) | Jordan | **already formal** as D1/D2 | `QuarterLockParity` | 0 |
+| Lemma 3 | Theorem D | **done** | `ChainCount` | 0 |
+| Lemma 4(a) (π = 1↔3 on ∂R) | — | Tait colour `c u + c w` in `ZMod 2 × ZMod 2`; edges of `δK` swap 1↔3 | none (new Tait-colour API) | ~150 |
+| Lemma 4(b) + G1 (C = X ∪ Z_i; far sides are discs) | Jordan region tree, Schoenflies | needs "dual cycle" objects and sides; Fills gives sides of each cycle (`JordanCycle`, `CycleCut`), but the region tree/star argument is new | partial | 600–1,000 |
+| Lemma R (band surgery parity) | Schoenflies (step 2), non-crossing (step 1, G2) | abstract finite combinatorics: perfect matchings on `Fin (2m)`, `λ` = cycles of a union of two matchings, flips, innermost-arc induction; the +1 for a same-curve band must be derived from a planarity hypothesis (non-crossing Σ_I and Σ_O) | none | 1,000–1,500 |
+| points, ends, (P-i), (P-ii), (L1)–(L4) | disc ⇒ non-crossing | realise `N^H`, `N^F` as matchings on the points of `C`; (P-ii) from a "two disjoint paths in a disc side cannot cross" lemma (a dual analogue of `face_alternating_walks_meet`) | partial | 1,500–2,500 |
+
+**Route T estimate: 3,500–5,000 lines, 4–6 focused weeks**, risk high. Most of the cost is dual infrastructure (2-factors of the dual as edge sets of `T − h`, their components, cyclic order of points along a dual cycle) that nothing else in the library needs.
+
+### 6.4 Route Q: a mod-4 chain-count formula (found during this scoping; data only)
+
+While looking for a dart-sum route (as `QuarterLockParity` did), I found that `N mod 2` at every unfilled state is given by a **local face count mod 4**, up to one global planar identity.
+
+Notation: identify the colours with `ZMod 2 × ZMod 2` (Lean: `Fin 4` with `xor`). For a face `(u, v, w)` of `T` in rotation order, its Tait triple is `(c u ⊕ c v, c v ⊕ c w, c w ⊕ c u)`. Let `cw(s)` be the number of faces avoiding `h` whose Tait triple is a cyclic shift of `(1, 2, 3)`. Let `hand(s) = [(α⊕μ, α⊕A, α⊕B)` is a cyclic shift of `(1,2,3)]`, which is a function of the five link colours. (`cw − ccw = 4·deg c`, where `deg c` is the degree of `c` as a simplicial map to `∂Δ³`, i.e. Fisk's degree.)
+
+> **Conjecture F (chain-count formula; sphere).** For every unfilled state `s` at a degree-5 hole of a triangulated sphere with `n` vertices,
+> `2 N(s) ≡ cw(s) + (n − 1) − hand(s) + 2 (L1(s) + L2(s))  (mod 4)`.
+> Without a hole (F0): `2N ≡ cw + n (mod 4)`, equivalently `N ≡ n + 1 + deg c (mod 2)`.
+
+> **Lemma W (local; any orientable triangulated surface) [hand sketch by Track C, unreviewed; data-checked].** For a Kempe swap of a component `K` of `T − h`, `Δcw ≡ 2·m_h(K) (mod 4)`, where `m_h(K)` is the number of link edges `x_t x_{t+1}` with both ends in `K`.
+> *Sketch.* Every face avoiding `h` that meets `K` reverses its Tait orientation, and no other face changes. Put `s(f) = [f contains an edge inside K]` and `ε̃(f) = ε(f)(−1)^{s(f)}`. A 4-vertex table shows that two faces sharing an edge of `δK` have opposite `ε̃`. Double counting over `δK`-edges gives `Σ ε̃` = a boundary term at the link, which is determined by the link colours. Then `ε ≡ ε̃ + 2s (mod 4)` and `Σ s = 2|E(K)| − m_h`. This is a dart-sum argument of exactly the `QuarterLockParity` kind (`face_table`/`starSum` with `decide`), and needs no planarity.
+
+**Consequences (pure bookkeeping):**
+- **Theorem 6 = F + W.** For π at a DL state: `m_h = 1` (`x₂, x₃ ∈ K`, `x₀ ∉ K` by D2, `x₁, x₄` have other colours); `hand(πc) = hand(c)` (the new roles `(α, B, μ, A)` cyclically permute `(1,2,3)`); `L1(c) = L2(c) = L1(πc) = 1`. Hence `2ΔN ≡ 2 + 2(L2(πc) − 1) = 2 L2(πc) (mod 4)`, i.e. `ΔN ≡ [πc DL] (mod 2)`.
+- **Remark 7 = F + W.** For a link-free swap, `m_h = 0` and `hand` is unchanged, so `Δ(N + L1 + L2) ≡ 0 (mod 2)`. This is exactly Remark 7, so F would also close the review's open item.
+
+**Data** (`TrackC/scripts/tc_mod4.py`, log `tc_mod4.log`; Kempe walks of 300 steps from random colourings, 3 holes per graph, built on the reviewer's independent `ri_core.py`):
+
+| family | unfilled states: F residue | π steps: Δcw mod 4 | link-free swaps: Δcw mod 4 | Theorem 6 |
+|---|---|---|---|---|
+| random spheres, min degree 5, n = 12–34 (60 graphs) | 0 on 27,937 / 27,937 | 2 on 5,124 / 5,124 | 0 on 7,775 / 7,775 | 5,124 / 5,124 |
+| random spheres, min degree 3 (60 graphs) | 0 on 26,614 / 26,614 | 2 on 6,549 / 6,549 | 0 on 6,368 / 6,368 | 6,549 / 6,549 |
+| Census29 frame class, orders 22–32 (48 graphs) | 0 on 16,448 / 16,448 | 2 on 3,063 / 3,063 | 0 on 4,865 / 4,865 | 3,063 / 3,063 |
+| **torus** (30 graphs) | **0 on 2,329, 2 on 2,370** | 2 on 544 / 544 | 0 on 433 / 433 | fails on 282 / 544 |
+
+An earlier no-hole run (80 random spheres with n = 8–16, up to 500 colourings each by full enumeration, 624 colourings in all) gave F0 with 0 failures. So **W is surface-independent, and all the planarity of Theorem 6 (and of Remark 7) sits in the single per-state identity F**. F fails on the torus about half the time, in line with Theorem 6 failing there.
+
+**Status and what Route Q needs.** F is **unproved** (data only); I have no hand proof. It is a statement about one colouring, with no π and no Kempe dynamics. Plausible routes, for Track I/Math:
+- (i) F0 via Fisk's degree theory of 4-colourings of triangulations (a literature check first: Fisk 1977, Mohar 2006 "Kempe equivalence of colorings").
+- (ii) Euler characteristic of the discs bounded by bicoloured Tait cycles (`N = Σ_Z χ(D_Z)`) plus enclosure-parity bookkeeping.
+- (iii) Induction on the triangulation.
+
+If F gets a hand proof whose planar input is "every cycle is a face coboundary" (the library's `Fills`), Route Q becomes the cheaper Lean route.
+
+### 6.5 Recommended order and honest estimate
+
+1. **Done**: `ChainCount.lean` (definitions, Lemma 3, π fixes `#αA`/`#μB`, RI ⇐ Theorem 6).
+2. **Next, feasible now (no planarity): Lemma W** as `PlaneMap/ChainMod4.lean`. It includes the Tait triple and `cw` definitions, the 4-vertex alternation table, the δK double count, and the star-of-`h` boundary table, modelled on `QuarterLockParity` (795 lines). **Estimate 600–900 lines, 2–4 days.** It also gives Remark 7 and Theorem 6 *conditional on F* as formal implications (`F → ChainParityLaw`, ~150 lines).
+3. **Decision point**: whether F gets a hand proof (ask Track I/Math). If yes, formalise F from `Fills` (size unknown until the proof exists). If no, fall back to Route T (§6.3, 3,500–5,000 lines, 4–6 weeks), and keep `ChainCount` + W as reusable parts.
+4. Off the critical path: `TrackC/drafts/` holds nothing yet. A draft of Lemma R's abstract matching combinatorics would be the first Route T file.
+
+### 6.6 Build record
+
+- **Regression first.** I ran the full `check.sh` (87 modules) into a private scratch clone under `nice -n 10`. Exit 0, no `sorryAx` / `ofReduceBool` / `trustCompiler`, every axiom line a subset of `[propext, Classical.choice, Quot.sound]`.
+- **Then `ChainCount.lean` alone**, in the same clone, one compile at a time.
+  - Exit 0, no errors or warnings, about 5 s.
+  - 284 lines, 0 `sorry`, no `native_decide`, no new axioms.
+  - All 12 `#print axioms` lines (kept at the end of the file) read `[propext, Classical.choice, Quot.sound]`.
+- **Sabotage.** The same proof with `9 ≤ nChains` in place of `8 ≤ nChains` is rejected (omega fails).
+- **Registered.** One line appended to `check.sh`, one line added to `SHA256SUMS` (re-sorted). `shasum -c` passes on all 37 entries.
+- **Files.**
+  - New: `StudioMathLean/.../PlaneMap/ChainCount.lean`, `TrackC/scripts/tc_mod4.py`, `TrackC/scripts/tc_mod4.log`.
+  - Changed: `check.sh` (+1 line), `SHA256SUMS` (+1 line), this README (§6), and `TrackI/RigidIsolation.md` (review fixes G1–G3; Remark 7 relabelled).
+  - Nothing committed.
