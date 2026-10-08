@@ -115,3 +115,14 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 - There are 25 all-DL π-cycles, all of length 20, all inside classes with filled states. NRC holds.
 - **Max R stays at 6, but max NR rises 7 → 8** (NR by order 22–33: 1,3,3,4,4,4,5,5,6,6,7,8). The NR = 8 record is an alternation 8,9,…,9 entered from a non-DL state; NRC needs a closed run of ≥ 10. The trend continues to be watched.
 
+**8 Oct (TrackQ).**
+- **N1⁺ (e ≥ 2) is FALSE.** An exact e = 1 law R-cycle exists (n = 29, torus lineage), two-engine verified.
+- **e = 0 is impossible** for all three skeletons (CP-SAT and HiGHS optimal, with LP certificates), and no e = 0 appears across 44 sampled lineage cycles. N1 (e ≥ 1) survives with exact certificates.
+- [hand] Lemma Q-S reduces N1 to σ-type law R-cycles.
+- Constraints on any proof:
+  - it must use the exact count 3nv − 8;
+  - 3-state windows are realisable at e = 0;
+  - sphere runs of 7 have e = 0;
+  - so it needs ≥ 8 consecutive states or the orbit's closure.
+- Leads: a Laman/Henneberg potential, or a universal LP-dual certificate over the orbit.
+
