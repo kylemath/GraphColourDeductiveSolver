@@ -137,3 +137,11 @@ None of these affects the near-rigid structure. NRC is still open; independent d
 
 **8 Oct: Audit J14 PASS** (Audit-2026-10-08/README.md). It covered all modules added 7–8 Oct and the challenge files: a clean rebuild of 91 modules, 334 axiom lines all standard, and a statement audit of every cited theorem. A non-vacuity file instantiates the main theorems on the 22-vertex witness at a doubly locked state, and the bridges have no escape hatch. The paper's labels for these results are promoted to [compiled]†, with wording fixes W1 (cw_piMove is sphere-only), W2 (the "no all-rigid class" corollary is [hand]) and W3 (Remark 7 is at an unfilled state).
 
+**8 Oct (TrackS, Jordan-level attempt on NRC): no proof.**
+- [hand, no planarity used] Matching form of runs: M_{t+1} = M_{t−1} Δ Y_t when F13 is connected.
+- The natural strengthening QC is **false on the sphere** (C30#0: an all-DL 20-cycle with F12 and F13 connected throughout). So an NRC proof must use that H is Hamiltonian at alternate states.
+- Sharpest open forms:
+  - **NRC-M:** no cyclic sequence of perfect matchings on a plane cubic graph with one degree-5 vertex, with E − M_t connected, M_{t+1} ⊆ E − M_t, and M_{t−1} ∪ M_t Hamiltonian at even t.
+  - **Q-escape:** a Tait-rigid state never lies on a π-cycle with F13 connected. It is false on RP² and the Klein bottle.
+- Seven monotone-quantity candidates are negative. Lead: the chord/interlace view of planarity (bipartite interlace graph; H changes act by pivots).
+
