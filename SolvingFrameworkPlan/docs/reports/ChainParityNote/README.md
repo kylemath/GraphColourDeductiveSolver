@@ -1,6 +1,8 @@
-# Chain-parity note (draft, 8 Oct 2026)
+# Chain-parity note (draft of 8 Oct 2026, revised 9 Oct 2026)
 
-This is a short standalone note: *Kempe chains around a degree-five vertex: a mod-4 chain count and a parity law*. The working title was "A parity law for Kempe chains at a degree-five vertex".
+This is a short standalone note: *Kempe chains around a degree-five vertex: a mod-4 parity formula and a parity law*.
+- **Title change (9 Oct).** The 8 Oct title said "a mod-4 chain count". The referee (E1) pointed out that the identity 2N ≡ … (mod 4) determines N only mod 2; the mod-4 content is that cw enters mod 4. The title now says "a mod-4 parity formula". Alternative if Kyle prefers: "…: a chain-count parity formula and a parity law". The working title was "A parity law for Kempe chains at a degree-five vertex".
+- **Revision of 9 Oct.** `main.tex` was revised to answer `RefereeReport.md` (E1, G1–G4, M1–M6) and `LiteratureCheck.md` (prior work, relabels, bibliography). The disclosure section (§7) was left unchanged.
 - It is separate from the VH∃ record (`../VHE-paper/`), following the coordinator's paper decision of 8 Oct (`docs/working/CoordinatorPlan.md`, "Paused").
 - Author: Kyle Mathewson, as in the VH∃ paper.
 - Not committed. Not posted anywhere.
@@ -8,7 +10,8 @@ This is a short standalone note: *Kempe chains around a degree-five vertex: a mo
 ## Files and build
 
 - `main.tex` is self-contained, with an inline bibliography. There is no `references.bib`.
-- Build: run `pdflatex -halt-on-error main.tex` twice. Last build: 9 pages, exit 0 on both passes, no undefined references, no overfull boxes.
+- Build: run `pdflatex -halt-on-error main.tex` twice. Last build (9 Oct, after revision): 11 pages, exit 0 on both passes, no undefined references, no overfull boxes.
+  - Note: `\S` inside `\cite[...]` breaks this TeX Live (font-expansion error with microtype), so section references are written "Sec.".
   - The build was done in a scratch directory; no PDF is kept here.
   - Packages used: amsmath, amssymb, amsthm, url, microtype, hyperref, geometry, enumitem.
 
@@ -21,67 +24,57 @@ This is a short standalone note: *Kempe chains around a degree-five vertex: a mo
 
 ## TODO before this goes anywhere
 
-### Kyle's decisions
+Status after the 9 Oct revision. Items marked **done** were addressed in `main.tex`; the rest remain.
 
-1. **Disclosure (§7).** The text is the VH∃ disclosure section copied verbatim (`../VHE-paper/main.tex`, lines 21–54) as a placeholder. A LaTeX comment marks it for Kyle's approval. It still says:
-   - "this paper";
-   - "the Navigator's ledger";
-   - "`AUTHOR-RECORD.md` beside this paper".
+### Kyle's decisions (remaining)
 
-   It also describes session roles that did not all touch this note. Kyle must approve it or adapt it. The tag-name placeholder must also be set.
-2. **Title.** Choose between the proposed title and the working title.
-3. **Where to post, and whether to cite the VH∃ draft.** Reference [13] points to a draft inside the repository.
+1. **Disclosure (§7).** Still the VH∃ disclosure text, unchanged, with the LaTeX comment marking it for Kyle's approval. It still says "this paper", refers to `AUTHOR-RECORD.md` "beside" the VH∃ paper, and describes session roles that did not all touch this note. The tag-name placeholder must be set.
+2. **Title.** Proposed: "Kempe chains around a degree-five vertex: a mod-4 parity formula and a parity law" (see above). Kyle to confirm.
+3. **Where to post, and whether to cite the VH∃ draft.** [25] still points to a draft inside the repository.
 
-### Claims to verify: new or unreviewed hand arguments written for this note
+### Referee report (9 Oct): status
 
-4. **Lemma W, hand proof (§4.3).** This is a new derivation. It fills the pentagon (T°) and uses "a Kempe exchange preserves cw mod 4 on a closed triangulation" (the last sentence of Lemma 12, which comes from Fisk degree parity).
-   - Lean proves W differently, by a dart sum. The statement is compiled; only this proof is unreviewed.
-   - Ask for an independent review.
-5. **Proposition 2 (Kempe duality), proof of the converse direction (§4.1).** The argument, which contracts `Q ∪ {v}` and reads off the rotation walk, was written for this note. The statement is compiled.
-   - Ask a reviewer to check the claim "consecutive neighbours of u are equal or adjacent" for multigraph contractions.
-6. **Lemma 10 (Tutte's identity).** This is a primal Euler proof: faces of T_XY correspond to ZW-chains. `TrackK/FProof.md` uses the dual-region proof instead. It is standard, but not reviewed in this form.
-7. **Genus residue `2G mod 4` (§5).** It is hand only (`TrackK/FProof.md` §5) and was not part of the TrackK review.
-   - It is checked only on the torus (2,192 hole states; G = 0/1/2 on 340/1,137/715).
-   - Genus ≥ 2 is unchecked.
-   - The claim "G_i ∈ {0,1} on the torus" is from FProof and is not separately checked.
-8. **Matching form (§5).** The following are [hand, unreviewed] (TrackS S1–S4, TrackT §5):
-   - "a state is determined by M_t";
-   - "N = 7 + k(M_{t−1} ∪ M_t)";
-   - "every near-rigid cycle yields such a sequence" (via TrackJ J5 and TrackS S3).
-9. **The n = 22 example (TrackU).** It exists only in matching form, on an abstract non-planar graph, and is not a surface triangulation.
-   - TrackU notes an unresolved discrepancy: off the sphere, a matching-form cycle need not correspond to a π-cycle. This does not affect the note's use, but should be resolved before anyone relies on the matching form off the sphere.
-   - Confirm that the edge list in `TrackU/README.md` §0 is the one meant (`out/t1_n22_first.txt`).
+- **E1 (done).** Abstract: "an identity mod 4 for 2N(c) … gives the parity of N(c)". Theorem F renamed "Chain-count identity", with a sentence after it saying it determines N mod 2 only. Title changed.
+- **G1 (done, not re-reviewed).** The converse of Prop. 2 now uses the boundary walk of the face R of T[U] containing x4 (U = Q ∪ {v}; v is a leaf), with the corner lists, the non-emptiness argument, and the gluing between corners written out; L1 is treated explicitly. The repaired text should get one more independent read.
+- **G2 (done).** §5 "Off the sphere" now says (∗) and the link-free half of Lemma W hold off the sphere, and lists, for every other result, the torus data: Prop. 2 / Thm 3; Prop. 4 (referee: 1,607/6,381; 288/1,429 genus 2); Thm 5 (2G residue); Lemma W at π (fails only with x0 ∈ K); law; Cor. 7; Thm 8 (referee: 903/2,090; 371/752). The abstract says "Apart from one local identity and the link-free half of one lemma, every result fails on the torus".
+- **G3 (done).** Law off the sphere: 282/544 (TrackC) and 1,497/3,317 (referee) at π-steps with x0 ∉ K; 2,757/3,064 with x0 ∈ K.
+- **G4 (done).** Intro defines the extension of π to all states (Lean `piMove`, one specified exchange at filled and singly locked states) before "permutes each Kempe class"; §6 says the same.
+- **M1 (done).** n = 22 example: "261,093 greedy reductions … to order 20 found none (not an exhaustive search)".
+- **M2 (done).** Census now orders 22–34: near-rigid run reaches 8 at order 33 and stays 8 at order 34 (Census34). Also added: 98 all-DL π-cycles at order 34, all in classes with filled states.
+- **M3, M4 (done).** Abstract: "a rigid colouring (eight chains, the minimum for doubly locked colourings)"; "the parity law, together with the local matching structure, does not exclude …". §2 notes that other unfilled states can have N = 6.
+- **M5 (done).** Chain count is now κ(p,q); cw(c) (faces of T avoiding v) vs cw_S, cw_{T°} (all faces); one label per lemma; Lemmas 10–13 stated for loopless surfaces with faces on three distinct vertices; §3 header names the surface-general exception; Lean table says `lemmaW_linkFree` assumes `StarHyp`.
+- **M6 (done).** Lemma W's hand proof is now [hand] (reviewed by the referee); its link-free step cites Lemma 12 [cited]. Lemma 10's proof is marked "checked by the referee". Prop. 2's converse is marked as repaired and not re-reviewed.
+- **New label.** Off-sphere counts that come only from the referee's code are marked [computed¹] (one program, two runs), since [computed] requires a second implementation. To upgrade them, rerun with a second program.
 
-### Claims to verify: numbers, with their sources
+### Literature check (9 Oct): status
 
-10. Check each figure against its source file:
+- **Done.** Intro now has "Prior work" and "What is new" paragraphs: Errera 1921 / Kittell 1935 (impasse = DL; π = Kittell's tangent-chain ζ, period 15, checked by a short script and against the scanned paper; DL π-cycles on Errera's map; N ≥ 8 implicit in Kittell's eight chains); Spencer-Brown's Parity Lemma via Kauffman 2005 (no-hole N mod 2 invariance; Thm 8 and the law are hole versions); BKM 2026 (parity pass loops; bad configuration; parity remark; Questions 5.1–5.2 positioned against LPC/NRC in §5); Mohar 2006 and Mohar–Salas 2009 (Kempe invariance of degree parity). Lemma 11 (Fisk mod 4) and the new Lemma 12 (Kempe invariance of cw mod 4, formerly the last sentence of Lemma F0) are [cited]. Tilley's D-resolvability equivalence is now stated definitely, with the subset-of-chains remark.
+- **Done.** New consequence noted: π acts on link colours with period 15, so DL π-cycles have length divisible by 30 [hand]. (Census cycles of length 20 are counted up to renaming of colours, so there is no conflict.)
+- **Done.** Bibliography: Mohar–Singer → EJC 91 (2021) 103221, doi, with "journal numbering to check"; DOIs added for Appel–Haken, RSST, Kempe, Fisk 1977 (issue 3), Tilley (initial J. A.); entries added for Kittell, Errera, Kauffman 2005, Spencer-Brown, BKM, Mohar 2006, Mohar–Salas, Tutte 1948, Fisk 1973, Fisk 1978, Mohar 1985, Gonthier 2005 report. Verified on 9 Oct via arXiv abstract pages (BKM, Kauffman, Mohar–Salas), arXiv HTML (BKM questions), Crossref (Mohar–Singer, Kauffman, Mohar 2006, Kittell, Fisk 1973/1977/1978, Mohar 1985, Kempe, RSST, Appel–Haken, Tutte 1948) and the scanned Kittell paper.
+- **Remaining.**
+  - Read Fisk 1973, 1977, 1978 and Mohar 1985 in full (paywalled). The note says they were not read and must be checked before submission; they are the most likely overlap with the hole identity and lock parity.
+  - Check Mohar–Singer's theorem numbers in the published version (the note cites arXiv v1 numbering).
+  - Tutte 1969: editor (F. Harary) unverified; omitted from the entry.
+  - Gonthier 2005 technical report: not re-fetched in this revision; check the exact report title/number.
+  - Errera 1921 and Spencer-Brown's *Laws of Form* were not read; marked so in the bibliography.
+  - Spencer-Brown's unpublished parity-pass parity statement (Royal Society MS 734, via BKM) was not seen; the note says so.
+  - Optional: Tilley 2018 (Math. Intelligencer; Kempe-locking configurations) for the intro.
 
-| figure in the note | source |
-|---|---|
-| 111,912 of 281,230 link-free moves | `TrackI/RigidIsolation.md` (Remark 7 note) |
-| 21,968,170 unfilled states (Theorem P off the sphere) | `TrackF/LockParity.md` §4 |
-| 1,664,226 / 3,862,132 duality violations on the torus | `TrackF/LockParity.md` §4 |
-| torus residue 2G: 2,192 states; 340/1,137/715 | `TrackK/FProof.md` §4 table and §5 |
-| law fails at 282/544 torus π-steps | `TrackC/README.md` §6.4 |
-| rigid→rigid off the sphere: 23/2,467, 1/1,401, 29/5,205; 53 rechecked | `TrackH-review/README.md` |
-| 611/1,261 (48%) under non-planar orders; 0/256 planar | `TrackT/README.md` §4 |
-| n = 22, length 10, word 1212121212, 2 engines; none at n = 20 | `TrackU/README.md` |
-| near-rigid run 8 at order 33; census 22–33 | `../VHE-paper/main.tex` §6; `Census33/README.md` |
-| N(c) = N(πc) = 12 at the 22-vertex DL witness | audit J14 §2 row 9 (script `chains.py`, not Lean) |
+### Claims still unreviewed or hand-only
 
-11. **Literature check, not redone for this note.**
-    - Confirm the bibliographic details of Tutte (1969) and Fisk (1977).
-    - Confirm the journal status of Mohar–Singer.
-    - Confirm that Theorems 1 and 3 there are what Lemma 12 cites.
-    - FProof §6 found no prior statement of the hole formula F or of the law. A proper search is needed before submission. Candidates: Fisk's later papers, Mohar's "Kempe equivalence of colorings", the literature on Tilley's D-resolvability.
-12. **Tilley.** Check the claim that LPC at every degree-5 vertex "is, as far as we can tell", D-resolvability. The VH∃ paper says the full-text definition check by audit is pending.
+4. Prop. 2 converse: repaired text (G1) not re-reviewed.
+5. Genus residue 2G mod 4 (§5): [hand], not reviewed; now checked numerically by the referee (35,241 torus and 3,038 genus-2 states; G = 3 occurs).
+6. Matching form (§5): "a state is determined by M_t", "N = 7 + k(M_{t−1} ∪ M_t)", "every near-rigid cycle yields such a sequence": [hand, unreviewed]. The referee checked N = 7 + k(…) at 838 steps but not "determined by M_t".
+7. The n = 22 example is abstract (non-planar matching form), not a surface triangulation; TrackU's off-sphere discrepancy is unresolved.
+8. "π-cycles have length divisible by 30" [hand]: new in this revision, unreviewed (a one-line argument plus a finite check).
+9. Numbers: all figures in the 8 Oct draft were checked against sources by the referee (RefereeReport §6). New figures added in this revision come from RefereeReport §2 (marked [computed¹]) and `docs/working/Census34/README.md`.
 
-### Lean follow-ups (optional)
+### Lean follow-ups (optional, unchanged)
 
-13. Write a frozen challenge file and bridge for `ConjectureF` / `ChainParityLaw`. None exists, and the note says so.
-14. Write a two-line Lean corollary "no Kempe class consists only of rigid states" (audit W2). It is labelled [hand] in the note.
-15. Optionally drop the no-isolated-vertex hypothesis from the law and rigid-isolation corollaries (TrackC §9.4).
-16. Rigid states are not exhibited in Lean, so the hypothesis of `rigid_isolation` is shown satisfiable only through its `DoublyLocked` part. The note says this.
+10. Write a frozen challenge file and bridge for `ConjectureF` / `ChainParityLaw`. None exists, and the note says so.
+11. Write a two-line Lean corollary "no Kempe class consists only of rigid states" (audit W2). It is labelled [hand] in the note.
+12. Optionally drop the no-isolated-vertex hypothesis from the law and rigid-isolation corollaries (TrackC §9.4).
+13. Rigid states are not exhibited in Lean, so the hypothesis of `rigid_isolation` is shown satisfiable only through its `DoublyLocked` part. The note says this.
 
 ## Sanity check run while writing
 

@@ -1,12 +1,14 @@
-% Chain-parity note: a short standalone paper on lock parity, the mod-4 chain-count formula and the chain-parity law
-% at a degree-5 vertex of a triangulated sphere. Draft, 8 Oct 2026. Separate from the VH-exists record
-% (docs/reports/VHE-paper), on the coordinator's recommendation of 8 Oct (WK/CoordinatorPlan.md, "Paper decision").
+% Chain-parity note: a short standalone paper on lock parity, the mod-4 chain-count identity and the chain-parity law
+% at a degree-5 vertex of a triangulated sphere. Draft of 8 Oct 2026, revised 9 Oct 2026 after RefereeReport.md (E1, G1-G4,
+% M1-M6) and LiteratureCheck.md (both beside this file). Separate from the VH-exists record (docs/reports/VHE-paper),
+% on the coordinator's recommendation of 8 Oct (WK/CoordinatorPlan.md, "Paper decision").
 % Label convention as in the VH-exists paper: every result carries one of [compiled] [hand] [computed] [cited] [open].
 % Here [compiled] means: in Lean 4, no sorry, standard axioms only, and covered by audit J14 (WK/Audit-2026-10-08).
 % Nothing is stated as a Theorem/Proposition/Corollary unless it is [compiled]; everything else carries its label.
 % WK = SolvingFrameworkPlan/docs/working. Sources: WK/TrackF/LockParity.md; WK/TrackK/FProof.md (+TrackK-review);
 % WK/TrackI/RigidIsolation.md (+TrackI-review); WK/TrackC/README.md sections 5-9; WK/Audit-2026-10-08/README.md;
-% WK/TrackH-review/README.md (off-sphere rigid->rigid); WK/TrackS, WK/TrackT, WK/TrackU (matching form, n = 22 example).
+% WK/TrackH-review/README.md (off-sphere rigid->rigid); WK/TrackS, WK/TrackT, WK/TrackU (matching form, n = 22 example);
+% WK/Census34/README.md (orders 22-34). Off-sphere counts marked computed^1 are from the referee's single program (RefereeReport.md).
 % Open items for this draft: README.md beside this file.
 \documentclass[11pt]{article}
 \usepackage{amsmath,amssymb,amsthm,url,microtype}
@@ -21,27 +23,33 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem*{example*}{Example}
 \newcommand{\lab}[1]{\textsf{[#1]}}
+\newcommand{\labone}{\textsf{[computed$^1$]}}
 \newcommand{\lean}[1]{\texttt{#1}}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\cw}{\mathrm{cw}}
-\title{Kempe chains around a degree-five vertex:\\ a mod-4 chain count and a parity law}
-% Working title was "A parity law for Kempe chains at a degree-five vertex". The proposed title names both results.
+\title{Kempe chains around a degree-five vertex:\\ a mod-4 parity formula and a parity law}
+% Working title was "A parity law for Kempe chains at a degree-five vertex". The draft of 8 Oct said "a mod-4 chain count",
+% which overclaimed (referee E1: the formula determines N mod 2 only; cw enters mod 4). Changed 9 Oct.
 \author{Kyle Mathewson}
-\date{8 October 2026 (draft)}
+\date{9 October 2026 (revised draft)}
 \sloppy
 \begin{document}\maketitle
 
 \begin{abstract}
 This note, its proofs, its Lean formalisation and its computations were produced by AI agents (Claude models) under the direction of the author; Section~\ref{sec:disclosure} describes who did what and how it was checked.
-Let $v$ be a vertex of degree five in a triangulation $T$ of the sphere, and $c$ a proper $4$-colouring of $T-v$ that uses all four colours around $v$. Let $N(c)$ be the number of Kempe chains of $c$, over all six pairs of colours. We give a formula for $N(c)$ mod~4 in terms of the number of faces of one Tait orientation, the order of $T$, the colours around $v$ and the two Kempe ``locks'' at $v$. Without $v$ it is a mod-4 form of Tutte's parity theorem combined with Fisk's degree. As a consequence, at a doubly locked colouring the exchange $\pi$ of Kempe's argument changes the parity of $N$ exactly when $\pi c$ is again doubly locked, so $\pi$ never maps a colouring with the minimum number of chains (eight) to another. We also show that each lock holds iff a certain Kempe chain contains an odd number of odd-degree vertices. All of this is formalised in Lean~4 and independently audited. Each result fails on the torus, and the law alone does not exclude near-rigid $\pi$-cycles. The Four Colour Theorem is known; this note gives no new proof of it.
+Let $v$ be a vertex of degree five in a triangulation $T$ of the sphere, and $c$ a proper $4$-colouring of $T-v$ that uses all four colours around $v$. Let $N(c)$ be the number of Kempe chains of $c$, over all six pairs of colours. We prove an identity mod~4 for $2N(c)$. It gives the parity of $N(c)$ in terms of the number of clockwise faces mod~4, the order of $T$, the colours around $v$ and the two Kempe ``locks'' at $v$. Without $v$ it is Tutte's parity theorem combined with Fisk's degree; the terms at the hole are new as far as we found. As a consequence, at a doubly locked colouring (an \emph{impasse} in the sense of Errera and Kittell), Kittell's tangent-chain exchange $\pi$ changes the parity of $N$ exactly when $\pi c$ is again doubly locked. So $\pi$ never maps a rigid colouring (eight chains, the minimum for doubly locked colourings) to another. This is a hole version of the parity lemma of Spencer-Brown and Tutte. We also show that each lock holds iff a certain Kempe chain contains an odd number of odd-degree vertices. All of this is formalised in Lean~4 and independently audited. Apart from one local identity and the link-free half of one lemma, every result fails on the torus. The parity law, together with the local matching structure, does not exclude near-rigid $\pi$-cycles. The Four Colour Theorem is known; this note gives no new proof of it.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
 Kempe's argument~\cite{kempe1879} colours $T-v$, for $v$ of degree at most five in a minimal counterexample, and frees a colour at $v$ by exchanging the colours of a bicoloured component, a \emph{Kempe chain}. Heawood~\cite{heawood1890} showed that at degree five the two exchanges can interfere. The Four Colour Theorem was proved by Appel and Haken~\cite{appel1977} and by Robertson, Sanders, Seymour and Thomas~\cite{robertson1997}, and checked formally by Gonthier~\cite{gonthier}. \textbf{This note claims no new proof of the Four Colour Theorem.} It studies the dynamics of Kempe's argument at a degree-five vertex, and proves parity constraints on them that hold on the sphere and fail on other surfaces.
 
-\paragraph{Why these dynamics.} A colouring of $T-v$ is \emph{filled} if it extends to $v$. An unfilled colouring that is not doubly locked (Definition~\ref{def:locks}) becomes filled after one exchange. At a doubly locked colouring there is a canonical exchange $\pi$, and on the sphere $\pi$ permutes each Kempe class. So a Kempe class with no filled colouring is a union of $\pi$-cycles of doubly locked colourings. (Both facts are compiled in~\cite{vhe2026}, and are not used below.) Whether every Kempe class at every degree-five vertex has a filled colouring is, as far as we can tell, Tilley's open D-resolvability problem~\cite{tilley2017}. A companion record~\cite{vhe2026} reduces the Four Colour Theorem in Lean to a weaker, still open, statement of this kind. The results here (Section~\ref{sec:results}) constrain $\pi$-cycles on the sphere but do not exclude them. Section~\ref{sec:proofs} gives hand proofs, Section~\ref{sec:sharp} shows that each result fails off the sphere and that the law does not exclude near-rigid cycles, and Section~\ref{sec:lean} describes the Lean proofs and their audit.
+\paragraph{Why these dynamics.} A colouring of $T-v$ is \emph{filled} if it extends to $v$. An unfilled colouring that is not doubly locked (Definition~\ref{def:locks}) becomes filled after one exchange; at a doubly locked one we use Kittell's tangent-chain exchange $\pi$ (Definition~\ref{def:locks}). The companion record~\cite{vhe2026} extends $\pi$ to all colourings of $T-v$ (the Lean function \lean{piMove}: one specified exchange at each filled or singly locked colouring), and proves that on the sphere the extension permutes each Kempe class (\lean{piMove\_bijOn\_class}, compiled). So a Kempe class with no filled colouring is a union of $\pi$-cycles of doubly locked colourings. (These facts are not used below.) Tilley~\cite{tilley2017} calls $v$ \emph{D-resolvable} if every $4$-colouring of $T-v$ can be turned by Kempe exchanges into one that extends to $v$; his exchanges act on non-empty proper subsets of the $pq$-chains, which gives the same classes. Hence $v$ is D-resolvable iff every Kempe class of $T-v$ has a filled colouring, iff no class consists only of colourings on doubly locked $\pi$-cycles. Tilley conjectures that every vertex of a planar graph is D-resolvable, which is stronger than the Four Colour Theorem; \cite{vhe2026} reduces the Four Colour Theorem in Lean to a weaker, still open, statement of this kind. Our results constrain doubly locked $\pi$-cycles on the sphere but do not exclude them, and such cycles exist.
 
-\paragraph{Labels.} As in~\cite{vhe2026}, each result carries one label: \lab{compiled} (Lean~4, no \texttt{sorry}, standard axioms only, covered by audit J14); \lab{hand} (a written proof, reviewed by a different AI session unless marked otherwise); \lab{computed}; \lab{cited}; \lab{open}. Only \lab{compiled} results are called Theorem, Proposition or Corollary. No human has refereed any of this (Section~\ref{sec:disclosure}).
+\paragraph{Prior work.} \emph{Impasses.} Doubly locked colourings are the \emph{impasse} colourings of Errera~\cite{errera1921} and Kittell~\cite{kittell1935} (ring $DBABC$, two intersecting Kempe circuits from $A$ to $C$ and to $D$). Kittell names eight chains at an impasse and studies the group generated by the exchanges on them. Our $\pi$ is his left-hand tangent-chain operation $\zeta$; he gives it period 15, and $\pi$ acts on the link colours with period 15 (a finite check). On Errera's map every power of $\zeta$ stays impasse, so doubly locked $\pi$-cycles on a planar map have been known since 1935 (not a counterexample to D-resolvability: there the end-tangent-chain exchange leaves impasse). Proposition~\ref{prop:D} is the classical Jordan-curve dichotomy, and the bound of Proposition~\ref{prop:eight} is implicit in Kittell's eight chains; chain counts are not studied there. \emph{Parity of $N$.} On a sphere triangulation with no hole, $N$ mod~2 is a Kempe invariant: in the dual this is Spencer-Brown's Parity Lemma~\cite{spencerbrown}, proved in~\cite[Sec.~3]{kauffman2005} (which notes that it follows from Tutte~\cite{tutte1948} and fails for some non-planar graphs), and it follows from Tutte's parity theorem $N\equiv n+1+\deg(A)\pmod 2$~\cite{tutte1969,mohar2021}, as an exchange fixes the colours it does not involve. Theorem~\ref{thm:R7} and the law are versions of it at a degree-five hole. Spencer-Brown's \emph{parity pass}~\cite[Secs.~4--5]{kauffman2005} is a five-step sequence of Kempe-type moves at a pentagon of a cubic plane graph with one edge uncoloured; Baldridge, Kauffman and McCarty~\cite{bkm2026} show that it can loop on a planar graph. Their ``bad configuration'' is the edge-colouring form of Heawood's interlocked chains, and they remark that some steps of the pass change the parity of the number of alternating paths and others do not. This is the nearest relative of our law that we found; its move set differs, and its exact statement is in unpublished work of Spencer-Brown that we have not seen. \emph{Degree.} Lemmas~\ref{lem:fisk} and~\ref{lem:KI} are Fisk's degree~\cite{fisk1977} with Tutte's formula for its parity, and the Kempe invariance of that parity~\cite[Sec.~5]{mohar2006}, \cite{moharsalas2009}. \emph{Rings.} The parity bits of Gonthier's chromograms~\cite{gonthier2005} relate Kempe chains between ring positions, not odd-degree vertices or $N$.
+
+\paragraph{What is new.} As far as we found: the terms at the hole ($\eta$ and the locks) in the identity of Theorem~\ref{thm:F}; lock parity in its odd-degree form (Theorem~\ref{thm:LP}); the chain-parity law (Theorem~\ref{thm:law}) and Theorem~\ref{thm:R7}; rigid isolation (Corollary~\ref{cor:RI}); the half of Lemma~\ref{lem:W} at $\pi$; and the Lean formalisation of all of these, with an independent audit. Four papers likely to bear on the first two items could not be read in full because they are behind a paywall: Fisk~\cite{fisk1973,fisk1977,fisk1978} (degree theory for discs, and odd vertices) and Mohar~\cite{mohar1985} (odd vertices and Kempe classes). We know them only from secondary sources; they must be checked before submission.
+
+\paragraph{Labels.} As in~\cite{vhe2026}, each result carries one label: \lab{compiled} (Lean~4, no \texttt{sorry}, standard axioms only, covered by audit J14); \lab{hand} (a written proof, reviewed by a different AI session unless marked otherwise); \lab{computed} (checked by a second, separately written program); \lab{cited}; \lab{open}. \labone{} marks a count from one program only, the checking code of an AI referee of this note, over two random runs. Only \lab{compiled} results are called Theorem, Proposition or Corollary. No human has refereed any of this (Section~\ref{sec:disclosure}).
 
 \section{Setting}\label{sec:setting}
 A \emph{triangulation} $T$ is a simple graph embedded in the oriented sphere $S^2$ with every face bounded by a triangle; $n$ is its number of vertices. In Section~\ref{sec:proofs} we also allow parallel edges, but no loops, and ask only that every face be bounded by three distinct vertices. Each face is read as a cyclically ordered triple $(u,w,z)$ in the orientation of $S^2$.
@@ -50,19 +58,19 @@ A \emph{triangulation} $T$ is a simple graph embedded in the oriented sphere $S^
 \[(c(x_0),\dots,c(x_4))=(\alpha,\beta,\alpha,\gamma,\delta),\qquad\{\alpha,\beta,\gamma,\delta\}=\Z_2^2,\]
 the \emph{frame} of $c$. Unfilled states are always read in their own frame.
 
-\paragraph{Kempe chains.} For colours $p\ne q$ the \emph{$pq$-chains} are the components of the subgraph of $T-v$ induced by the vertices coloured $p$ or $q$. $K_{pq}(x)$ is the vertex set of the chain containing $x$, and $p(p,q)$ is the number of $pq$-chains. A \emph{Kempe exchange} swaps $p$ and $q$ on one chain. The \emph{Kempe class} of $c$ is the set of states reachable from $c$ by exchanges. Let $N(c)=\sum_{\{p,q\}}p(p,q)$, summed over the six pairs, be the total number of Kempe chains.
+\paragraph{Kempe chains.} For colours $p\ne q$ the \emph{$pq$-chains} are the components of the subgraph of $T-v$ induced by the vertices coloured $p$ or $q$. $K_{pq}(x)$ is the vertex set of the chain containing $x$, and $\kappa(p,q)$ is the number of $pq$-chains. A \emph{Kempe exchange} swaps $p$ and $q$ on one chain. The \emph{Kempe class} of $c$ is the set of states reachable from $c$ by exchanges. Let $N(c)=\sum_{\{p,q\}}\kappa(p,q)$, summed over the six pairs, be the total number of Kempe chains.
 
 \begin{definition}\label{def:locks}
 Let $c$ be unfilled. Its \emph{locks} are $L_1$: $x_3\in K_{\beta\gamma}(x_1)$, and $L_2$: $x_4\in K_{\beta\delta}(x_1)$; we also write $L_i\in\{0,1\}$ for their indicators. The state is \emph{doubly locked} (DL) if $L_1=L_2=1$, and then $\pi c$ is obtained by exchanging $\alpha,\gamma$ on $K_{\alpha\gamma}(x_2)$. A DL state is \emph{rigid} if the pairs $\alpha\beta,\gamma\delta,\alpha\gamma,\beta\delta,\alpha\delta,\beta\gamma$ have $1,1,2,1,2,1$ chains.
 \end{definition}
-If $L_1$ fails, exchanging on $K_{\beta\gamma}(x_3)$ gives the filled link $(\alpha,\beta,\alpha,\beta,\delta)$. If $L_2$ fails, exchanging on $K_{\beta\delta}(x_4)$ gives $(\alpha,\beta,\alpha,\gamma,\beta)$. This is Kempe's step.
+If $L_1$ fails, exchanging on $K_{\beta\gamma}(x_3)$ gives the filled link $(\alpha,\beta,\alpha,\beta,\delta)$. If $L_2$ fails, exchanging on $K_{\beta\delta}(x_4)$ gives $(\alpha,\beta,\alpha,\gamma,\beta)$. This is Kempe's step. Eight is the minimum of $N$ only among DL states (Proposition~\ref{prop:eight}); other unfilled states can have $N=6$ \labone.
 
-\paragraph{Orientation counts.} For a face $(u,w,z)$ the \emph{Tait triple} $(c(u){+}c(w),c(w){+}c(z),c(z){+}c(u))$ is an ordering of $\{1,2,3\}$. The face is \emph{clockwise} if the triple is a cyclic shift of $(1,2,3)$. Let $\cw(c)$ be the number of clockwise faces not containing $v$, and for unfilled $c$ let
+\paragraph{Orientation counts.} For a face $(u,w,z)$ the \emph{Tait triple} $(c(u){+}c(w),c(w){+}c(z),c(z){+}c(u))$ is an ordering of $\{1,2,3\}$. The face is \emph{clockwise} if the triple is a cyclic shift of $(1,2,3)$. Let $\cw(c)$ be the number of clockwise faces of $T$ not containing $v$; for a proper colouring of all of a triangulation $S$, $\cw_S(c)$ counts all clockwise faces of $S$. For unfilled $c$ let
 \[\eta(c)=\big[(\alpha{+}\beta,\ \alpha{+}\gamma,\ \alpha{+}\delta)\text{ is a cyclic shift of }(1,2,3)\big]\in\{0,1\}.\]
 For $X\subseteq V(T-v)$, $\delta(X)$ is the set of edges of $T$, edges to $v$ included, with exactly one end in $X$.
 
 \section{Results}\label{sec:results}
-Throughout this section $T$ is a triangulation of the sphere with $n$ vertices, $v$ is a vertex of degree five, and $c$ is an unfilled state. Lean names are listed in Section~\ref{sec:lean}.
+Throughout this section $T$ is a triangulation of the sphere with $n$ vertices, $v$ is a vertex of degree five, and $c$ is an unfilled state; the one exception is the last sentence of Lemma~\ref{lem:W}.
 
 \begin{proposition}[Kempe duality at the hole; \lab{compiled}]\label{prop:D}
 $L_2$ holds iff $x_0\notin K_{\alpha\gamma}(x_2)$, and $L_1$ holds iff $x_0\notin K_{\alpha\delta}(x_2)$.
@@ -76,9 +84,10 @@ $L_2$ holds iff $|\delta(K_{\alpha\gamma}(x_2))|$ is odd, iff $K_{\alpha\gamma}(
 If $c$ is doubly locked then $N(c)\ge 8$, with equality iff $c$ is rigid.
 \end{proposition}
 
-\begin{theorem}[Chain-count formula; \lab{compiled}]\label{thm:F}
+\begin{theorem}[Chain-count identity; \lab{compiled}]\label{thm:F}
 $\displaystyle 2N(c)\equiv \cw(c)+(n-1)-\eta(c)+2\,(L_1+L_2)\pmod 4.$
 \end{theorem}
+The left side is even, so this determines $N(c)$ mod~2 only, and it forces the right side to be even; the mod-4 content is in $\cw$.
 
 \begin{theorem}[Chain-parity law; \lab{compiled}]\label{thm:law}
 If $c$ is doubly locked, then $N(\pi c)+N(c)$ is odd iff $\pi c$ is doubly locked.
@@ -87,7 +96,7 @@ If $c$ is doubly locked, then $N(\pi c)+N(c)$ is odd iff $\pi c$ is doubly locke
 \begin{corollary}[Rigid isolation; \lab{compiled}]\label{cor:RI}
 If $c$ is rigid, then $\pi c$ is not rigid.
 \end{corollary}
-Since $\pi c$ is one exchange away from $c$, it lies in the same Kempe class. Hence no Kempe class consists only of rigid states \lab{hand}; this one-line consequence is not stated separately in Lean. Along a $\pi$-cycle of DL states $N$ alternates in parity, so such cycles have even length \lab{hand}.
+Since $\pi$ permutes each Kempe class (Section~\ref{sec:intro}), no Kempe class consists only of rigid states \lab{hand}; this is not stated separately in Lean. Along a $\pi$-cycle of DL states $N$ alternates in parity, so such a cycle has even length; as $\pi$ acts on link colours with period 15, its length is a multiple of 30 \lab{hand}.
 
 \begin{theorem}[\lab{compiled}]\label{thm:R7}
 If $K$ is a chain of $c$ containing no neighbour of $v$, and $c'$ is obtained by the exchange on $K$, then $N(c')+L_1(c')+L_2(c')\equiv N(c)+L_1(c)+L_2(c)\pmod 2$.
@@ -95,19 +104,20 @@ If $K$ is a chain of $c$ containing no neighbour of $v$, and $c'$ is obtained by
 $N$ alone is not invariant: on random spheres it changed parity in 111,912 of 281,230 such exchanges (\cite{record}, \texttt{TrackI}) \lab{computed}.
 
 \begin{lemma}[Lemma W; \lab{compiled}]\label{lem:W}
-If $c$ is doubly locked then $\cw(\pi c)\equiv\cw(c)+2\pmod 4$. An exchange on a chain that misses the link leaves $\cw$ unchanged mod~4; this part holds on every oriented triangulated surface.
+If $c$ is doubly locked then $\cw(\pi c)\equiv\cw(c)+2\pmod 4$. An exchange on a chain that misses the link leaves $\cw$ unchanged mod~4; this second statement holds on every closed oriented triangulated surface.
 \end{lemma}
 
 \section{Proofs}\label{sec:proofs}
 \subsection{Kempe duality and lock parity}
 \begin{proof}[Proof of Proposition~\ref{prop:D}]
-We treat $L_2$; for $L_1$ exchange $\gamma$ and $\delta$. If a $\beta\delta$-path $Q$ joins $x_1$ to $x_4$, then $C=vx_1Qx_4v$ is a cycle. The edges $vx_1,vx_4$ separate $vx_2,vx_3$ from $vx_0$ in the rotation at $v$, so $x_2$ and $x_0$ lie on different sides of $C$. An $\alpha\gamma$-path from $x_2$ to $x_0$ would miss $C$, contradicting the Jordan curve theorem.
+We treat $L_2$. If a $\beta\delta$-path $Q$ joins $x_1$ to $x_4$, then $C=vx_1Qx_4v$ is a cycle. The edges $vx_1,vx_4$ separate $vx_2,vx_3$ from $vx_0$ in the rotation at $v$, so $x_2$ and $x_0$ lie on different sides of $C$. An $\alpha\gamma$-path from $x_2$ to $x_0$ would miss $C$, contradicting the Jordan curve theorem. For $L_1$, the cycle through $x_1$ and $x_3$ separates $x_2$ from $x_4$ and $x_0$.
 
-Conversely, suppose $x_4\notin Q:=K_{\beta\delta}(x_1)$, and contract a spanning tree of the connected set $U=Q\cup\{v\}$ to one vertex $u$. In the resulting plane multigraph, two consecutive edges $ua,ub$ at $u$ bound a face coming from a face of $T$, so $a=b$ or $a\sim b$. Hence the neighbours of $u$ in rotation order form a closed walk. Near $v$ it reads $x_2,x_3,x_4,x_0$. Its other vertices are neighbours of $Q$, coloured $\alpha$ or $\gamma$, since a $\beta$- or $\delta$-coloured neighbour would lie in $Q$. In particular $x_4$ has no neighbour in $Q$ and occurs only once. The rest of the walk is an $\alpha\gamma$-walk in $T-v$ from $x_0$ to $x_2$.
+Conversely, suppose $x_4\notin Q:=K_{\beta\delta}(x_1)$, and let $U=Q\cup\{v\}$. The plane graph $T[U]$ is connected, and $v$ is a leaf of it: $x_0,x_2$ are coloured $\alpha$, $x_3$ is coloured $\gamma$, and $x_4\notin Q$. The edge $vx_4$ meets $T[U]$ only at $v$, so $x_4$ lies in the face $R$ of $T[U]$ at the single corner of $v$. As $T[U]$ is connected, $\partial R$ is one closed walk $u_0e_1u_1\cdots e_mu_m$, with $u_0=u_m=v$ and $e_1=e_m=vx_1$; the leaf $v$ occurs on it once. At the corner $(e_i,u_i,e_{i+1})$, list in rotation order the neighbours of $u_i$ strictly between $e_i$ and $e_{i+1}$ on the side of $R$. They lie outside $U$, since $T[U]$ is an induced subgraph. The list is not empty: otherwise $e_i\ne e_{i+1}$ would be consecutive at $u_i$ in $T$, the triangle of $T$ between them would have all three edges in $T[U]$ and would be a face of $T[U]$, hence equal to $R$, which contains $x_4$. Concatenate these lists for $i=0,\dots,m-1$ into a cyclic sequence $\Omega$ of vertices of $T-U$. Consecutive entries within one corner are consecutive neighbours of $u_i$, hence adjacent, because faces are triangles. The last entry $w$ at corner $i$ is the first at corner $i+1$: the face of $T$ between $u_iw$ and $e_{i+1}$ is a triangle with vertices $u_i,u_{i+1},w$, and at $u_{i+1}$ it is the face between $e_{i+1}$ and $u_{i+1}w$. So $\Omega$ is a closed walk in $T-U$ (with some repeated consecutive entries). At the corner of $v$ it reads $x_2,x_3,x_4,x_0$. Every other entry is a neighbour, outside $Q$, of a vertex of $Q$, so it is coloured $\alpha$ or $\gamma$; a $\beta$- or $\delta$-coloured neighbour would lie in $Q$. In particular $x_4$, which is coloured $\delta$, has no neighbour in $Q$ and occurs in $\Omega$ only at $v$. Cutting $\Omega$ at this occurrence leaves a walk $x_0,\dots,x_2,x_3$ in $T-v$ coloured $\alpha$ and $\gamma$, so $x_0\in K_{\alpha\gamma}(x_2)$. For $L_1$ take $Q=K_{\beta\gamma}(x_1)$ with $x_3\notin Q$. The same construction gives $\Omega$, and $x_3$ occurs in it only at $v$. Cutting there leaves a walk $x_4,x_0,\dots,x_2$ coloured $\alpha$ and $\delta$, so $x_0\in K_{\alpha\delta}(x_2)$.
 \end{proof}
+The first draft of the converse contracted $Q\cup\{v\}$ to a point, which fails when $T[U]$ has a cycle; the walk above is the referee's repair, not yet re-reviewed \lab{hand}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:LP}]
-By the handshake identity $\sum_{x\in X}\deg_T x=2e(T[X])+|\delta(X)|$, odd boundary and an odd number of odd-degree vertices are the same condition. By Proposition~\ref{prop:D} it then suffices to prove the following identity $(\ast)$, which uses no topology \lab{compiled for every triangulated rotation system}:
+By the handshake identity $\sum_{x\in X}\deg_T x=2e(T[X])+|\delta(X)|$, odd boundary and an odd number of odd-degree vertices are the same condition. By Proposition~\ref{prop:D} it then suffices to prove the following identity $(\ast)$. It uses no topology, and it is compiled for every triangulated rotation system:
 \[(\ast)\qquad|\delta(K_{\alpha\gamma}(x_2))|\text{ odd}\iff x_0\notin K_{\alpha\gamma}(x_2),\qquad|\delta(K_{\alpha\delta}(x_2))|\text{ odd}\iff x_0\notin K_{\alpha\delta}(x_2),\]
 and $|\delta(K_{\alpha\beta}(x_2))|$ is odd.
 
@@ -120,28 +130,34 @@ Let $X=K_{pq}(x_2)$ and let $\{r,s\}$ be the complementary pair. (i) A face with
 At a DL state, Proposition~\ref{prop:D} gives $x_0\notin K_{\alpha\gamma}(x_2)$ and $x_0\notin K_{\alpha\delta}(x_2)$, so these pairs have at least two chains each. Each other pair has a colour on the link, so it has at least one chain. Hence $N\ge 8$, with equality exactly for the rigid counts.
 \end{proof}
 
-\subsection{Tutte's identity and Fisk's degree}
-Here $T$ is a loopless triangulation of the sphere, parallel edges allowed, with $F=2n-4$ faces, and $c$ is a proper $4$-colouring of all of $T$. Let $|X|$ be the number of vertices coloured $X$, and $e(X,Y)$ the number of $XY$-edges.
+\subsection{Tutte's identity, Fisk's degree and its Kempe invariance}
+Here $S$ is a closed oriented triangulated surface, loopless, with parallel edges allowed and every face on three distinct vertices; $F$ is its number of faces and $c$ is a proper $4$-colouring of all of $S$. Let $|X|$ be the number of vertices coloured $X$, $e(X,Y)$ the number of $XY$-edges, and $\deg(X)=\sum_{c(a)=X}\deg a$. In Lemmas~\ref{lem:tutte} and~\ref{lem:F0}, $S$ is a sphere, with $n$ vertices and $F=2n-4$.
 
-\begin{lemma}[Tutte~\cite{tutte1969,mohar2019}; \lab{cited}; compiled in a sides form; proof written for this note]\label{lem:tutte}
-If $\{X,Y,Z,W\}$ are the four colours, then $p(X,Y)-p(Z,W)=|X|+|Y|-e(X,Y)-1$.
+\begin{lemma}[Tutte~\cite{tutte1969,mohar2021}; \lab{cited}]\label{lem:tutte}
+If $\{X,Y,Z,W\}$ are the four colours, then $\kappa(X,Y)-\kappa(Z,W)=|X|+|Y|-e(X,Y)-1$.
 \end{lemma}
-\begin{proof}
-By Euler's formula, the plane multigraph $G=T_{XY}$, which has $p(X,Y)$ components, has $1+p(X,Y)-|X|-|Y|+e(X,Y)$ faces. Each $ZW$-chain is connected and misses $G$, so it lies in one face of $G$. Each face $R$ of $G$ contains a face of $T$, whose corner coloured $Z$ or $W$ lies in $R$. The $ZW$-corners of one $T$-face are adjacent. Two $T$-faces in $R$ that share an edge outside $G$ share a $ZW$-coloured end of that edge, and $R$ minus its vertices is connected through such edges. So each face of $G$ contains exactly one $ZW$-chain.
+\begin{proof}[Proof (written for this note, checked by the referee; Lean proves a sides form)]
+By Euler's formula, the plane multigraph $G=S_{XY}$, which has $\kappa(X,Y)$ components, has $1+\kappa(X,Y)-|X|-|Y|+e(X,Y)$ faces. Each $ZW$-chain is connected and misses $G$, so it lies in one face of $G$. Each face $R$ of $G$ contains a face of $S$, whose corner coloured $Z$ or $W$ lies in $R$. The $ZW$-corners of one face of $S$ are adjacent. Two faces of $S$ in $R$ that share an edge outside $G$ share a $ZW$-coloured end of that edge, and $R$ minus its vertices is connected through such edges. So each face of $G$ contains exactly one $ZW$-chain.
 \end{proof}
 
-\begin{lemma}[Fisk's degree~\cite{fisk1977,mohar2019}, mod 4; \lab{hand}, independent AI review]\label{lem:fisk}
-On a closed oriented loopless triangulated surface with $F$ faces, every proper $4$-colouring satisfies $\cw\equiv F/2+2\deg(A)\pmod 4$ for each colour $A$, where $\deg(A)=\sum_{c(a)=A}\deg a$.
+\begin{lemma}[Fisk's degree mod 4~\cite{fisk1977}, {\cite[Lemma~3.1]{moharsalas2009}}; \lab{cited}]\label{lem:fisk}
+$\cw_S(c)\equiv F/2+2\deg(A)\pmod 4$ for each colour $A$.
 \end{lemma}
+In the cited language, $\cw_S-(F-\cw_S)=\pm4\deg f$ for the degree $\deg f$ of $c$ as a map to the boundary of the tetrahedron, and $\deg f\equiv\deg(A)\pmod 2$ (Tutte). We include a short proof (independently reviewed).
 \begin{proof}
-Let $\sigma(f)=\pm1$ according as $f$ is clockwise or not. If $f$ reads colours $(a,b,e)$ and $d$ is the fourth colour, then $\sigma(f)=+1$ iff $(d,a,b,e)$ is an even permutation of $(0,1,2,3)$; this is a check of 24 cases. So two faces reading an edge as $(a,b,z)$ and $(b,a,w)$ have equal $\sigma$ iff $z\ne w$. Let $d_t=\sum_{f\text{ coloured }t}\sigma(f)$ for each colour triangle $t$. For $t=\{x,y,z\}$ and $t'=\{x,y,w\}$, pairing faces across their $xy$-edges gives $d_t=d_{t'}$: two faces with the same third colour cancel, and faces with third colours $z,w$ contribute equally to both. So all $d_t$ equal one integer $d$, and $2\cw-F=\sum_t d_t=4d$. Every face has at most one corner coloured $A$, so $F-\deg(A)$ faces are coloured by the triangle avoiding $A$, and $d\equiv F-\deg(A)\equiv\deg(A)\pmod 2$.
+Let $\sigma(f)=\pm1$ according as $f$ is clockwise or not. If $f$ reads colours $(a,b,e)$ and $d$ is the fourth colour, then $\sigma(f)=+1$ iff $(d,a,b,e)$ is an even permutation of $(0,1,2,3)$; this is a check of 24 cases. So two faces reading an edge as $(a,b,z)$ and $(b,a,w)$ have equal $\sigma$ iff $z\ne w$. Let $d_t=\sum_{f\text{ coloured }t}\sigma(f)$ for each colour triangle $t$. For $t=\{x,y,z\}$ and $t'=\{x,y,w\}$, pairing faces across their $xy$-edges gives $d_t=d_{t'}$: two faces with the same third colour cancel, and faces with third colours $z,w$ contribute equally to both. So all $d_t$ equal one integer $d$, and $2\cw_S-F=\sum_t d_t=4d$. Every face has at most one corner coloured $A$, so $F-\deg(A)$ faces are coloured by the triangle avoiding $A$, and $d\equiv F-\deg(A)\equiv\deg(A)\pmod 2$.
 \end{proof}
 
-\begin{lemma}[\lab{hand}; the formula with independent AI review, the last sentence new here and unreviewed]\label{lem:F0}
-$2N\equiv \cw+n\pmod 4$. A Kempe exchange leaves $\cw$ unchanged mod~$4$, on every closed oriented triangulated surface.
+\begin{lemma}[Kempe invariance~{\cite[Sec.~5]{mohar2006}}, {\cite[Cor.~3.3]{moharsalas2009}}; \lab{cited}]\label{lem:KI}
+A Kempe exchange leaves $\cw_S$ unchanged mod~$4$.
+\end{lemma}
+It follows from Lemma~\ref{lem:fisk}: an exchange of $p,q$ fixes the class of each colour $A\notin\{p,q\}$, hence $\deg(A)$.
+
+\begin{lemma}[\lab{hand}]\label{lem:F0}
+On the sphere, $2N\equiv \cw_S+n\pmod 4$.
 \end{lemma}
 \begin{proof}
-Fix $A$ and sum Lemma~\ref{lem:tutte} over the three pairs $\{A,X\}$. Since $N\equiv\sum(p(A,X)-p(\text{complement}))\pmod 2$ and $\sum_X e(A,X)=\deg(A)$, this gives $N\equiv 3|A|+(n-|A|)+\deg(A)+3\equiv n+1+\deg(A)\pmod 2$, which is Tutte's parity theorem~\cite[Thms.~1, 3]{mohar2019}. With Lemma~\ref{lem:fisk}, $\cw+n\equiv 2n-2+2\deg(A)\equiv 2N\pmod 4$. An exchange of $p,q$ fixes the vertices of each colour $A\notin\{p,q\}$, hence $\deg(A)$ and $\cw$ mod~$4$.
+Fix $A$ and sum Lemma~\ref{lem:tutte} over the three pairs $\{A,X\}$. Since $N\equiv\sum(\kappa(A,X)-\kappa(\text{complement}))\pmod 2$ and $\sum_X e(A,X)=\deg(A)$, this gives $N\equiv 3|A|+(n-|A|)+\deg(A)+3\equiv n+1+\deg(A)\pmod 2$, which is Tutte's parity theorem (\cite[Thm.~1]{mohar2021}; theorem numbers from arXiv v1). With Lemma~\ref{lem:fisk}, $\cw_S+n\equiv 2n-2+2\deg(A)\equiv 2N\pmod 4$.
 \end{proof}
 
 \subsection{The hole: filling the pentagon}
@@ -151,10 +167,10 @@ Delete $v$, and add the diagonals $x_1x_3$ and $x_1x_4$ inside the resulting pen
 \emph{Faces:} the new faces read $(\beta,\alpha,\gamma)$, $(\beta,\gamma,\delta)$, $(\delta,\alpha,\beta)$. With $a=\alpha{+}\beta$, $g=\alpha{+}\gamma$, $e=\alpha{+}\delta$, their Tait triples are $(a,g,e)$, $(e,a,g)$ and $(e,a,g)$, each clockwise iff $\eta=1$. So $\cw_{T^\circ}(c)=\cw(c)+3\eta$.
 Lemma~\ref{lem:F0} for $T^\circ$ gives $2N(c)\equiv\cw(c)+3\eta+(n-1)+4-2L_1-2L_2\equiv\cw(c)+(n-1)-\eta+2(L_1+L_2)\pmod 4$.
 \end{proof}
-Labelling the link against the orientation would turn $\eta$ into $1-\eta$ and break the formula; Lean reads $\eta$ along the face orientation (\lean{handS}).
+Labelling the link against the orientation would turn $\eta$ into $1-\eta$ and break the identity; Lean reads $\eta$ along the face orientation (\lean{handS}).
 
-\begin{proof}[Proof of Lemma~\ref{lem:W} \lab{hand, new in this note and unreviewed; Lean uses a dart sum instead}]
-Let $c$ be DL and $K=K_{\alpha\gamma}(x_2)$. Then $x_3\in K$, $x_1,x_4\notin K$, and $x_0\notin K$ by Proposition~\ref{prop:D}, so $c'=\pi c$ has link $(\alpha,\beta,\gamma,\alpha,\delta)$. The diagonals of $T^\circ$ are not $\alpha\gamma$-edges, so $K$ is still a chain of $T^\circ$, and by Lemma~\ref{lem:F0}, $\cw_{T^\circ}(c')\equiv\cw_{T^\circ}(c)$. Under $c'$ the fill faces read $(\beta,\gamma,\alpha)$, $(\beta,\alpha,\delta)$, $(\delta,\alpha,\beta)$, with Tait triples $(e,g,a)$, $(a,e,g)$, $(e,a,g)$, clockwise iff $\eta=0,0,1$. Hence $\cw(c')+2-\eta\equiv\cw(c)+3\eta$, so $\cw(c')\equiv\cw(c)+2\pmod 4$. For a chain missing the link the fill faces do not change.
+\begin{proof}[Proof of Lemma~\ref{lem:W} \lab{hand}; Lean uses a dart sum instead]
+Let $c$ be DL and $K=K_{\alpha\gamma}(x_2)$. Then $x_3\in K$, $x_1,x_4\notin K$, and $x_0\notin K$ by Proposition~\ref{prop:D}, so $c'=\pi c$ has link $(\alpha,\beta,\gamma,\alpha,\delta)$. The diagonals of $T^\circ$ are not $\alpha\gamma$-edges, so $K$ is still a chain of $T^\circ$, and by Lemma~\ref{lem:KI}, $\cw_{T^\circ}(c')\equiv\cw_{T^\circ}(c)$. Under $c'$ the fill faces read $(\beta,\gamma,\alpha)$, $(\beta,\alpha,\delta)$, $(\delta,\alpha,\beta)$, with Tait triples $(e,g,a)$, $(a,e,g)$, $(e,a,g)$, clockwise iff $\eta=0,0,1$. Hence $\cw(c')+2-\eta\equiv\cw(c)+3\eta$, so $\cw(c')\equiv\cw(c)+2\pmod 4$. For a chain missing the link, on any closed oriented surface, fill the hole in the same way; the fill faces do not change, and Lemma~\ref{lem:KI} applies.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:law}]
@@ -169,24 +185,30 @@ If $c$ and $\pi c$ were both rigid, both would have $N=8$ by Proposition~\ref{pr
 \lab{hand}, independent AI review; not formalised. In the dual of $T$, contract the five faces at $v$ to a vertex $v$ of degree five; the other vertices are cubic. Colour the edge dual to $uw$ by $c(u)+c(w)$, with $1=\alpha{+}\beta$, $2=\alpha{+}\gamma$, $3=\alpha{+}\delta$. The edges $e_t$ at $v$, dual to $x_tx_{t+1}$, are then coloured $1,1,2,1,3$. Let $M_i$ be colour class $i$, and put $H=M_2\cup M_3$, $F_{12}=M_1\cup M_2$, $F_{13}=M_1\cup M_3$. By Euler's formula, the regions of the complements of these three subgraphs are the chains of the pairs $\{\alpha\beta,\gamma\delta\}$, $\{\alpha\delta,\beta\gamma\}$ and $\{\alpha\gamma,\beta\delta\}$ respectively, so $N=5+k(H)+k(F_{12})+k(F_{13})$, where $k$ counts components. By the Jordan curve theorem, $L_1$ and $L_2$ are the non-crossing pairings $(e_0e_3)(e_1e_2)$ of $F_{12}$ and $(e_1e_3)(e_0e_4)$ of $F_{13}$ at $v$. The exchange $\pi$ swaps colours $1$ and $3$ on the boundary $C$ of the region of $K_{\alpha\gamma}(x_2)$. This boundary consists of the $F_{13}$-loop through $e_1,e_3$ and some $F_{13}$-cycles, and every other complementary region of $C$ is a disc. In the frame of $\pi c$ one has $H'=F_{12}\triangle C$, $F_{12}'=F_{13}$ and $F_{13}'=H\triangle C$. The law becomes $k(H)+k(F_{12})+k(H\triangle C)+k(F_{12}\triangle C)\equiv[H\triangle C\text{ pairs }(e_1e_4)(e_2e_3)]\pmod 2$. This is a band-surgery parity lemma: non-crossing matchings in a disc are connected by flips, each flip acts on both curve systems, and on the sphere a band move changes the number of curves by exactly $\pm1$ (Schoenflies).
 
 \section{Sharpness}\label{sec:sharp}
-\paragraph{Off the sphere.} Each result fails on other surfaces, and only at the steps that use the sphere.
-\emph{Lock parity:} $(\ast)$ held at all 21,968,170 unfilled states tested on random triangulations of the torus, the Klein bottle, the projective plane, and the surfaces of orientable genus~2 and non-orientable genus~3 \lab{computed}; Proposition~\ref{prop:D} fails, e.g.\ at 1,664,226 of 3,862,132 unfilled torus states \lab{computed}.
-\emph{Chain-count formula:} for each partition of the colours into two pairs, the dual edges of the edges of $T^\circ$ that join the two classes form a Tait $2$-factor. On the sphere its complementary regions are planar, one per chain, which is the region form of Lemma~\ref{lem:tutte}. On an orientable surface, let $G$ be the total genus of these regions over the three partitions. The argument then gives
+\paragraph{Off the sphere.} Two statements hold off the sphere. The identity $(\ast)$ is compiled for every triangulated rotation system, and it held at all 21,968,170 unfilled states tested on random triangulations of the torus, the Klein bottle, the projective plane, and the surfaces of orientable genus~2 and non-orientable genus~3 \lab{computed}. The link-free half of Lemma~\ref{lem:W} is compiled for every triangulated rotation system (with \lean{StarHyp}, Section~\ref{sec:lean}); it held at 6,411 torus and 752 genus-2 exchanges \labone. Every other result fails on the torus, and only at a step that uses the sphere. Let $K=K_{\alpha\gamma}(x_2)$, and on other surfaces define $\pi$ at a DL state by Definition~\ref{def:locks} even when $x_0\in K$.
+\begin{itemize}
+\item \emph{Proposition~\ref{prop:D}} fails at 1,664,226 of 3,862,132 unfilled torus states \lab{computed}. So does \emph{Theorem~\ref{thm:LP}}, since $(\ast)$ holds.
+\item \emph{Proposition~\ref{prop:eight}}: $N<8$ at 1,607 of 6,381 DL torus states and 288 of 1,429 DL states in genus~2 \labone.
+\item \emph{Theorem~\ref{thm:F}.} For each partition of the colours into two pairs, the dual edges of the edges of $T^\circ$ that join the two classes form a Tait $2$-factor. On the sphere its complementary regions are planar, one per chain, which is the region form of Lemma~\ref{lem:tutte}. On an orientable surface let $G$ be the total genus of these regions over the three partitions. The argument then gives
 \[2N-\cw-(n-1)+\eta-2(L_1+L_2)\equiv 2G\pmod 4\]
-\lab{hand; this genus extension is not independently reviewed}. On the torus the residue was $2G$ at all 2,192 hole states tested, with $G=0,1,2$ at $340$, $1{,}137$ and $715$ of them. So the formula fails at the 1,137 states with $G$ odd \lab{computed}. In Lean the sphere enters the formula only through \lean{Fills}, which fails on the torus.
-\emph{Law and rigid isolation:} on the torus the law failed at 282 of 544 $\pi$-steps \lab{computed}. Rigid states mapped to rigid states 23 times among 2,467 rigid states on the torus, once among 1,401 on the Klein bottle and 29 times among 5,205 on the projective plane; a second program confirmed all 53 \lab{computed}.
+\lab{hand; this genus extension is not independently reviewed}. On the torus the residue was $2G$ at all 2,192 hole states tested, with $G=0,1,2$ at $340$, $1{,}137$ and $715$ of them, so the identity fails at the 1,137 states with $G$ odd \lab{computed}. The residue was also $2G$ at 35,241 torus and 3,038 genus-2 states, with $G=3$ at 4,591 of 22,384 torus states \labone.
+\item \emph{Lemma~\ref{lem:W} at $\pi$} fails at 3,064 of 6,381 torus $\pi$-steps, all with $x_0\in K$; it held at all 3,317 steps with $x_0\notin K$ \labone. On the sphere $x_0\notin K$ by Proposition~\ref{prop:D}.
+\item \emph{The law} failed on the torus at 282 of 544 $\pi$-steps with $x_0\notin K$ \lab{computed}, and at 1,497 of 3,317 such steps in the referee's sample \labone. At steps with $x_0\in K$, where the frame moves differently and $L_1(\pi c)=1$ can fail too, it failed at 2,757 of 3,064 \labone.
+\item \emph{Corollary~\ref{cor:RI}}: rigid states mapped to rigid states 23 times among 2,467 rigid states on the torus, once among 1,401 on the Klein bottle and 29 times among 5,205 on the projective plane; a second program confirmed all 53 \lab{computed}.
+\item \emph{Theorem~\ref{thm:R7}} fails at 903 of 2,090 link-free torus exchanges and 371 of 752 in genus~2 \labone.
+\end{itemize}
 
-\paragraph{The law does not exclude near-rigid loops.} Call a $\pi$-cycle of DL states \emph{near-rigid} if $N\le 9$ throughout. By Proposition~\ref{prop:eight} and the law, $N$ then alternates $8,9,8,9,\dots$; rigid isolation excludes two consecutive 8s. In the dual picture of Section~\ref{sec:surgery}, along DL states with $F_{12}$, $F_{13}$ connected, a state is determined by the perfect matching $M_t=M_2$. The next matching is the previous one switched along the odd loop of the figure-eight $E-M_t$, and $N=7+k(M_{t-1}\cup M_t)$ \lab{hand, not independently reviewed}. These conditions make sense in any graph that is cubic except for one degree-five vertex with a cyclic order on its edges. On the sphere every near-rigid cycle yields such a sequence with $k(M_{t-1}\cup M_t)$ alternating $1,2$ \lab{hand, not independently reviewed}. Relabelling the edges at $v$ of plane examples in each of the 22 non-planar cyclic orders makes the law fail at 611 of 1,261 steps, against 0 of 256 for the planar order \lab{computed}.
+\paragraph{The law does not exclude near-rigid loops.} Call a $\pi$-cycle of DL states \emph{near-rigid} if $N\le 9$ throughout. By Proposition~\ref{prop:eight} and the law, $N$ then alternates $8,9,8,9,\dots$; rigid isolation excludes two consecutive 8s. In the dual picture of Section~\ref{sec:surgery}, along DL states with $F_{12}$, $F_{13}$ connected, a state is determined by the perfect matching $M_t=M_2$. The next matching is the previous one switched along the odd loop of the figure-eight $E-M_t$, and $N=7+k(M_{t-1}\cup M_t)$ \lab{hand, not independently reviewed}. These conditions make sense in any graph that is cubic except for one degree-five vertex with a cyclic order on its edges. On the sphere every near-rigid cycle yields such a sequence with $k(M_{t-1}\cup M_t)$ alternating $1,2$ \lab{hand, not independently reviewed}, via a lemma on the shape of near-rigid cycles~\cite{vhe2026}. Relabelling the edges at $v$ of plane examples in each of the 22 non-planar cyclic orders makes the law fail at 611 of 1,261 steps, against 0 of 256 for the planar order \lab{computed}.
 
 \begin{example*}[\lab{computed}, two independent programs]
-A $3$-connected non-planar graph on $22$ vertices, cubic except for one vertex of degree five, carries a cyclic sequence of 10 perfect matchings that satisfies all of these conditions. Along it $k(M_{t-1}\cup M_t)=1,2,1,2,\dots$ and the abstract chain-parity law holds at every step. It was found by shrinking an order-28 example; none was found at order 20, and none is known to be dual to a surface triangulation. The edge list is in~\cite{record}, \texttt{TrackU/README.md}.
+A $3$-connected non-planar graph on $22$ vertices, cubic except for one vertex of degree five, carries a cyclic sequence of 10 perfect matchings that satisfies all of these conditions. Along it $k(M_{t-1}\cup M_t)=1,2,1,2,\dots$ and the abstract chain-parity law holds at every step. It was found by shrinking an order-28 example; 261,093 greedy reductions of order-22 examples to order 20 found none (not an exhaustive search). None is known to be dual to a surface triangulation. The edge list is in~\cite{record}, \texttt{TrackU/README.md}.
 \end{example*}
 So the parity law, together with the local matching structure, does not exclude near-rigid cycles. A proof must use planarity again.
 
-\paragraph{Open problems \lab{open}.} \emph{NRC}: on a triangulated sphere, no $\pi$-cycle at a degree-five vertex consists of DL states with $N\le9$. \emph{LPC}: no Kempe class of $T-v$ consists only of states on DL $\pi$-cycles; at every degree-five vertex this is, as far as we can tell, Tilley's D-resolvability~\cite{tilley2017}. In an exhaustive census of a restricted class of triangulations of orders 22--33, no near-rigid cycle occurs, but the longest near-rigid run along a $\pi$-orbit grows with the order and reaches 8 at order 33~\cite{vhe2026} \lab{computed}.
+\paragraph{Open problems \lab{open}.} \emph{NRC}: on a triangulated sphere, no $\pi$-cycle at a degree-five vertex consists of DL states with $N\le9$. \emph{LPC}: no Kempe class of $T-v$ consists only of states on DL $\pi$-cycles. By Section~\ref{sec:intro}, LPC at $v$ is exactly Tilley's D-resolvability of $v$~\cite{tilley2017}. Baldridge, Kauffman and McCarty ask whether there are non-symmetric plane graphs in which the parity pass loops at every non-polar pentagonal face, or at two of them~\cite[Questions~5.1--5.2]{bkm2026}. These are close to LPC, but their loops are of single edge colourings under the pass, while LPC concerns whole Kempe classes under $\pi$; we see no implication either way. NRC would settle LPC for classes all of whose cycles are near-rigid. In an exhaustive census of a restricted class of triangulations of orders 22--34~\cite{vhe2026,record}, DL $\pi$-cycles occur (98 at order 34, all in classes with filled states), no near-rigid cycle occurs, and the longest near-rigid run along a $\pi$-orbit reaches 8 at order 33 and stays 8 at order 34 \lab{computed}.
 
 \section{Formal verification}\label{sec:lean}
-The Lean~4 library~\cite{planemap} models a map as a \lean{SphericalMap}: a simple graph on \lean{Fin n}, a rotation system, and \lean{Fills}, which says that every even edge set is a $\Z_2$-sum of face boundaries. \lean{Triangulated} means every face has length~3. Connectivity is not assumed, and the bridge from embedded graphs to this model is \emph{not} formalised. The hole is \lean{Pent}, a frame is \lean{RepeatAt}, the locks are \lean{Lock1} and \lean{Lock2}, DL states are \lean{DoublyLocked} (or \lean{DLState}, DL in some frame), and $\pi$ is \lean{piMove}. The formula and its corollaries assume no isolated vertex. Namespace: \lean{SimpleGraph.QuarterFloor} (Tutte: \lean{SimpleGraph.TutteSides}).
+The Lean~4 library~\cite{planemap} models a map as a \lean{SphericalMap}: a simple graph on \lean{Fin n}, a rotation system, and \lean{Fills}, which says that every even edge set is a $\Z_2$-sum of face boundaries. \lean{Triangulated} means every face has length~3. Connectivity is not assumed, and the bridge from embedded graphs to this model is \emph{not} formalised. The hole is \lean{Pent}, a frame is \lean{RepeatAt}, the locks are \lean{Lock1} and \lean{Lock2}, DL states are \lean{DoublyLocked} (or \lean{DLState}, DL in some frame), and $\pi$ is \lean{piMove}, defined on all states (at an unfilled state with $L_2$ it is the exchange of Definition~\ref{def:locks}, \lean{rot3}). The identity and its corollaries assume no isolated vertex. Namespace: \lean{SimpleGraph.QuarterFloor} (Tutte: \lean{SimpleGraph.TutteSides}).
 
 \begin{center}\small
 \begin{tabular}{@{}p{2.3cm}p{13.4cm}@{}}
@@ -194,7 +216,7 @@ Result & Lean names (module)\\\hline
 Prop.~\ref{prop:D} & \lean{lock2\_iff\_not\_reach\_alphaA}, \lean{lock1\_iff\_not\_reach\_alphaB} (\lean{QuarterLockParity})\\
 Thm.~\ref{thm:LP} & \lean{lock2\_iff\_odd\_boundary}, \lean{lock1\_iff\_odd\_boundary}, \lean{alphaMu\_odd\_boundary} and the three \lean{\_oddCount} forms; $(\ast)$: \lean{parity\_alphaA}, \lean{parity\_alphaB}, \lean{parity\_alphaMu} (\lean{QuarterLockParity})\\
 Prop.~\ref{prop:eight} & \lean{eight\_le\_nChains}, \lean{rigidAt\_iff}; definitions \lean{chainCount}, \lean{nChains}, \lean{RigidAt} (\lean{ChainCount})\\
-Lemma~\ref{lem:W} & \lean{cw\_piMove} (sphere); \lean{lemmaW}, \lean{lemmaW\_linkFree}, \lean{cw\_swap\_mod8} (any triangulated rotation system) (\lean{ChainMod4})\\
+Lemma~\ref{lem:W} & \lean{cw\_piMove} (sphere); \lean{lemmaW}, \lean{lemmaW\_linkFree}, \lean{cw\_swap\_mod8} (any triangulated rotation system; \lean{lemmaW\_linkFree} also assumes \lean{StarHyp}, which holds at a hole of a genuine surface) (\lean{ChainMod4})\\
 Lemma~\ref{lem:tutte} & \lean{tutte\_sides}, \lean{euler\_tri} (\lean{TutteSides})\\
 Thm.~\ref{thm:F} & \lean{chainFormulaF}, \lean{conjectureF} (\lean{ChainF}); statements \lean{ChainFormulaF}, \lean{ConjectureF} (\lean{ChainMod4})\\
 Thm.~\ref{thm:law} & \lean{chainParityLaw\_sphere} (\lean{ChainF}); statement \lean{ChainParityLaw} (\lean{ChainCount}); \lean{chainParityLaw\_of\_F} (\lean{ChainMod4})\\
@@ -204,15 +226,9 @@ Cor.~\ref{cor:RI}, Thm.~\ref{thm:R7} & \lean{rigid\_isolation}, \lean{remark7} (
 
 \paragraph{The Lean route.} Tutte's identity is proved by rank computations over $\Z_2$; \lean{face\_side} is the only use of \lean{Fills}. Instead of filling the pentagon, $v$ is put on one side of each colour partition, its two edges there playing the lock diagonals, and $\cw$ mod~4 is a dart sum against tables checked by \lean{decide} (\lean{omT\_face}, \lean{omT\_link}; no \texttt{native\_decide}).
 
-\paragraph{Audit.} Audit J14~\cite{audit}, of 8 October 2026, was run by a session that wrote none of the code. It worked at commit \texttt{ad0fd00b}, with Mathlib \texttt{300d0e5} and Lean \texttt{v4.35.0-rc3}. It rebuilt all 91 modules from source (exit 0, no \texttt{sorry}), and checked that every \texttt{\#print axioms} line lies within \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; a planted \texttt{sorry} was caught. It compared each statement above with its prose and instantiated the hypotheses of Theorems~\ref{thm:LP}, \ref{thm:F}, \ref{thm:law}, Proposition~\ref{prop:eight} and Lemma~\ref{lem:W} at an explicit DL state of a $22$-vertex triangulation (\texttt{NonVacuity.lean}). (There $N(c)=N(\pi c)=12$ and $\pi c$ is not DL. Rigid states were not exhibited.) The audit's wording notes are applied here: Lemma~\ref{lem:W} at $\pi$ is sphere-only, the class form of rigid isolation is \lab{hand}, and Theorem~\ref{thm:R7} is stated at an unfilled state. The Lean authors also checked that sabotaged variants (e.g.\ $n$ for $n-1$, or the sign of $\eta$ flipped) fail to compile. \emph{Frozen statements:} unlike the reductions in~\cite{vhe2026}, these results have no frozen challenge file with a proved bridge yet. The audited file hashes (SHA-256) begin \texttt{956a1956} (\lean{QuarterLockParity}), \texttt{ba3184b2} (\lean{ChainCount}), \texttt{8c9cc088} (\lean{ChainMod4}), \texttt{278a9ee9} (\lean{TutteSides}) and \texttt{6d87b43d} (\lean{ChainF}).
+\paragraph{Audit.} Audit J14~\cite{audit}, of 8 October 2026, was run by a session that wrote none of the code. It worked at commit \texttt{ad0fd00b}, with Mathlib \texttt{300d0e5} and Lean \texttt{v4.35.0-rc3}. It rebuilt all 91 modules from source (exit 0, no \texttt{sorry}), and checked that every \texttt{\#print axioms} line lies within \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; a planted \texttt{sorry} was caught. It compared each statement above with its prose and instantiated the hypotheses of Theorems~\ref{thm:LP}, \ref{thm:F}, \ref{thm:law}, Proposition~\ref{prop:eight} and Lemma~\ref{lem:W} at an explicit DL state of a $22$-vertex triangulation (\texttt{NonVacuity.lean}). (There $N(c)=N(\pi c)=12$; rigid states were not exhibited.) The audit's wording notes are applied here: Lemma~\ref{lem:W} at $\pi$ is sphere-only, the class form of rigid isolation is \lab{hand}, and Theorem~\ref{thm:R7} is stated at an unfilled state. The Lean authors also checked that sabotaged variants (e.g.\ $n$ for $n-1$, or the sign of $\eta$ flipped) fail to compile. An AI referee re-checked the hashes and the statement-to-prose match on 9 October. \emph{Frozen statements:} unlike the reductions in~\cite{vhe2026}, these results have no frozen challenge file with a proved bridge yet. The audited file hashes (SHA-256) begin \texttt{956a1956} (\lean{QuarterLockParity}), \texttt{ba3184b2} (\lean{ChainCount}), \texttt{8c9cc088} (\lean{ChainMod4}), \texttt{278a9ee9} (\lean{TutteSides}) and \texttt{6d87b43d} (\lean{ChainF}).
 
-\paragraph{Reproducing.} From the record~\cite{record}, with a built PlaneMap checkout at Mathlib \texttt{300d0e5}:
-\begin{verbatim}
-cd SolvingFrameworkPlan/docs/working/StudioMathLean
-shasum -a 256 -c SHA256SUMS
-./check.sh <built-planemap-checkout> <fresh-scratch-dir>
-\end{verbatim}
-\texttt{check.sh} compiles all modules in dependency order and prints the axioms of each headline theorem. The audit's scripts and \texttt{NonVacuity.lean} are in \texttt{docs/working/Audit-2026-10-08}.
+\paragraph{Reproducing.} In \texttt{SolvingFrameworkPlan/docs/working/StudioMathLean} of the record~\cite{record}, with a built PlaneMap checkout at Mathlib \texttt{300d0e5}, run \texttt{shasum -a 256 -c SHA256SUMS} and \texttt{./check.sh <checkout> <fresh-scratch-dir>}. \texttt{check.sh} compiles all modules in dependency order and prints the axioms of each headline theorem. The audit's scripts and \texttt{NonVacuity.lean} are in \texttt{docs/working/Audit-2026-10-08}.
 
 % ===== Disclosure: adapted from the VH-exists paper (8-9 Oct); Kyle approved the substance (9 Oct), final text to be shown to him before posting.
 % KYLE MUST APPROVE THIS TEXT FOR THIS NOTE before it is posted. It was written for the VH-exists paper and still says "this paper"
@@ -239,19 +255,31 @@ Mistakes were made along the way, among them a lemma first stated in a false for
 
 }
 \begin{footnotesize}
-\begin{thebibliography}{99}\setlength{\itemsep}{0pt}
-\bibitem{appel1977} K.~Appel and W.~Haken, Every planar map is four colorable. Part~I: Discharging, \emph{Illinois J. Math.} 21(3) (1977) 429--490.
+\begin{thebibliography}{99}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
+\bibitem{appel1977} K.~Appel and W.~Haken, Every planar map is four colorable. Part~I: Discharging, \emph{Illinois J. Math.} 21(3) (1977) 429--490, doi:10.1215/ijm/1256049011.
 \bibitem{audit} Audit J14: the 7--8 October Lean modules and the frozen challenges, \texttt{SolvingFrameworkPlan/docs/working/Audit-2026-10-08/README.md} in~\cite{record} (8 October 2026).
-\bibitem{fisk1977} S.~Fisk, Geometric coloring theory, \emph{Adv. Math.} 24 (1977) 298--340.
+\bibitem{bkm2026} S.~Baldridge, L.~H.~Kauffman and B.~McCarty, A counterexample for the polar conjecture of Spencer-Brown, arXiv:2607.22398 (2026).
+\bibitem{errera1921} A.~Errera, \emph{Du coloriage des cartes et de quelques questions d'analysis situs}, Th\`ese, Gauthier-Villars, Paris, 1921 (as cited in~\cite{kittell1935}; not read).
+\bibitem{fisk1973} S.~Fisk, Combinatorial structure on triangulations.~I. The structure of four colorings, \emph{Adv. Math.} 11(3) (1973) 326--338, doi:10.1016/0001-8708(73)90015-7.
+\bibitem{fisk1977} S.~Fisk, Geometric coloring theory, \emph{Adv. Math.} 24(3) (1977) 298--340, doi:10.1016/0001-8708(77)90061-5.
+\bibitem{fisk1978} S.~Fisk, The nonexistence of colorings, \emph{J. Combin. Theory Ser. B} 24(2) (1978) 247--248, doi:10.1016/0095-8956(78)90028-X.
 \bibitem{gonthier} G.~Gonthier, Formal proof---the four-color theorem, \emph{Notices Amer. Math. Soc.} 55(11) (2008) 1382--1393.
+\bibitem{gonthier2005} G.~Gonthier, A computer-checked proof of the Four Colour Theorem, technical report, Microsoft Research Cambridge, 2005.
 \bibitem{heawood1890} P.~J.~Heawood, Map-colour theorem, \emph{Quart. J. Pure Appl. Math.} 24 (1890) 332--338.
-\bibitem{kempe1879} A.~B.~Kempe, On the geographical problem of the four colours, \emph{Amer. J. Math.} 2(3) (1879) 193--200.
-\bibitem{mohar2019} B.~Mohar and N.~Singer, The last temptation of William T.~Tutte, arXiv:1912.07205 (2019); to appear in \emph{European J. Combin.} (per arXiv).
+\bibitem{kauffman2005} L.~H.~Kauffman, Reformulating the map color theorem, \emph{Discrete Math.} 302(1--3) (2005) 145--172, doi:10.1016/j.disc.2004.07.031; arXiv:math/0112266.
+\bibitem{kempe1879} A.~B.~Kempe, On the geographical problem of the four colours, \emph{Amer. J. Math.} 2(3) (1879) 193--200, doi:10.2307/2369235.
+\bibitem{kittell1935} I.~Kittell, A group of operations on a partially colored map, \emph{Bull. Amer. Math. Soc.} 41(6) (1935) 407--413, doi:10.1090/S0002-9904-1935-06104-X.
+\bibitem{mohar1985} B.~Mohar, Akempic triangulations with 4 odd vertices, \emph{Discrete Math.} 54(1) (1985) 23--29, doi:10.1016/0012-365X(85)90059-7.
+\bibitem{mohar2006} B.~Mohar, Kempe equivalence of colorings, in \emph{Graph Theory in Paris}, Trends Math., Birkh\"auser, Basel, 2006, 287--297, doi:10.1007/978-3-7643-7400-6\_22.
+\bibitem{moharsalas2009} B.~Mohar and J.~Salas, A new Kempe invariant and the (non)-ergodicity of the Wang--Swendsen--Koteck\'y algorithm, \emph{J. Phys. A} 42 (2009) 225204, doi:10.1088/1751-8113/42/22/225204.
+\bibitem{mohar2021} B.~Mohar and N.~Singer, The last temptation of William T.~Tutte, \emph{European J. Combin.} 91 (2021) 103221, doi:10.1016/j.ejc.2020.103221; arXiv:1912.07205 (theorem numbers here are those of arXiv v1; journal numbering to check).
 \bibitem{planemap} The PlaneMap library for Lean~4 and Mathlib, \url{https://github.com/kylemath/mathlib4-planemap} (snapshot \texttt{8299419}).
 \bibitem{record} The public record (repository): \url{https://github.com/kylemath/GraphColourDeductiveSolver}.
-\bibitem{robertson1997} N.~Robertson, D.~P.~Sanders, P.~Seymour and R.~Thomas, The four-colour theorem, \emph{J. Combin. Theory Ser. B} 70(1) (1997) 2--44.
-\bibitem{tilley2017} J.~Tilley, D-resolvability of vertices in planar graphs, \emph{J. Graph Algorithms Appl.} 21(4) (2017) 649--661, doi:10.7155/jgaa.00433.
-\bibitem{tutte1969} W.~T.~Tutte, Even and odd 4-colorings, in \emph{Proof Techniques in Graph Theory}, Academic Press, 1969, 161--169.
+\bibitem{robertson1997} N.~Robertson, D.~P.~Sanders, P.~Seymour and R.~Thomas, The four-colour theorem, \emph{J. Combin. Theory Ser. B} 70(1) (1997) 2--44, doi:10.1006/jctb.1997.1750.
+\bibitem{spencerbrown} G.~Spencer-Brown, \emph{Laws of Form}, Appendix~5, Bohmeier, Leipzig, 1997 (not read; via~\cite{kauffman2005}).
+\bibitem{tilley2017} J.~A.~Tilley, D-resolvability of vertices in planar graphs, \emph{J. Graph Algorithms Appl.} 21(4) (2017) 649--661, doi:10.7155/jgaa.00433.
+\bibitem{tutte1948} W.~T.~Tutte, On the four-colour conjecture, \emph{Proc. London Math. Soc.} (2) 50 (1948) 137--149, doi:10.1112/plms/s2-50.2.137.
+\bibitem{tutte1969} W.~T.~Tutte, Even and odd 4-colorings, in \emph{Proof Techniques in Graph Theory} (Ann Arbor, 1968), Academic Press, 1969, 161--169.
 \bibitem{vhe2026} K.~Mathewson, The vacancy induction for the Four Colour Theorem: a dated record of what is solid, draft (October 2026), \texttt{SolvingFrameworkPlan/docs/reports/VHE-paper} in~\cite{record}.
 \end{thebibliography}
 \end{footnotesize}
