@@ -228,3 +228,11 @@ None of the papers read states a chain-count formula at a hole, a lock-parity cr
    - say that Theorem 9 and the law extend the Spencer-Brown/Tutte parity lemma (N mod 2 is a Kempe invariant on the sphere) to a degree-5 hole.
 4. **Tilley sentence:** change "as far as we can tell" to a definite equivalence, after reading the definition.
 5. **Before claiming (i) and (ii) are new:** read Fisk 1977 (disc degree and boundary words), Fisk 1978 and Mohar 1985 (odd vertices). These were inaccessible here and are the most likely places for an overlap with lock parity or the hole formula.
+
+## Correction (9 Oct 2026, after RefereeReport2.md, item N2)
+
+Row (iv) of the table above says that "even length" of DL π-cycles is "a genuine consequence of the law, not of local periodicity". **That is wrong.** Second-ring periodicity already gives it:
+- each of the 120 unfilled link words has π-orbit of length exactly 15, so 15 | L for a DL π-cycle of length L;
+- the compiled Lean theorem `allDL_cycle_length_dvd_ten` (`QuarterBitDynamics.lean`, commit 4d257b72 of 7 Oct; built by `check.sh`) gives 10 | L from the outer-vertex bits, with no chain counts.
+
+Together these give 30 | L, and hence even length, without the law. The law's evenness is a consistency check only. The rest of row (iv) (no prior even-length or rigid-isolation statement found) is unaffected. The row above is left as written; `main.tex` was corrected.

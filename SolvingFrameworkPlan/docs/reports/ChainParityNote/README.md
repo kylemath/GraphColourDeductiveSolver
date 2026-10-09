@@ -1,8 +1,9 @@
-# Chain-parity note (draft of 8 Oct 2026, revised 9 Oct 2026)
+# Chain-parity note (draft of 8 Oct 2026, revised twice on 9 Oct 2026)
 
 This is a short standalone note: *Kempe chains around a degree-five vertex: a mod-4 parity formula and a parity law*.
 - **Title change (9 Oct).** The 8 Oct title said "a mod-4 chain count". The referee (E1) pointed out that the identity 2N ≡ … (mod 4) determines N only mod 2; the mod-4 content is that cw enters mod 4. The title now says "a mod-4 parity formula". Alternative if Kyle prefers: "…: a chain-count parity formula and a parity law". The working title was "A parity law for Kempe chains at a degree-five vertex".
-- **Revision of 9 Oct.** `main.tex` was revised to answer `RefereeReport.md` (E1, G1–G4, M1–M6) and `LiteratureCheck.md` (prior work, relabels, bibliography). The disclosure section (§7) was left unchanged.
+- **Revision of 9 Oct.** `main.tex` was revised to answer `RefereeReport.md` (E1, G1–G4, M1–M6) and `LiteratureCheck.md` (prior work, relabels, bibliography). The disclosure section (§7) was then adapted to the note in commit 70a2eed5.
+- **Second revision of 9 Oct.** `main.tex` was revised again to answer `RefereeReport2.md` (N1–N6); see the status list below.
 - It is separate from the VH∃ record (`../VHE-paper/`), following the coordinator's paper decision of 8 Oct (`docs/working/CoordinatorPlan.md`, "Paused").
 - Author: Kyle Mathewson, as in the VH∃ paper.
 - Not committed. Not posted anywhere.
@@ -10,7 +11,7 @@ This is a short standalone note: *Kempe chains around a degree-five vertex: a mo
 ## Files and build
 
 - `main.tex` is self-contained, with an inline bibliography. There is no `references.bib`.
-- Build: run `pdflatex -halt-on-error main.tex` twice. Last build (9 Oct, after revision): 11 pages, exit 0 on both passes, no undefined references, no overfull boxes.
+- Build: run `pdflatex -halt-on-error main.tex` twice. Last build (9 Oct, after the second revision): 12 pages, exit 0 on both passes, no undefined references, no overfull boxes.
   - Note: `\S` inside `\cite[...]` breaks this TeX Live (font-expansion error with microtype), so section references are written "Sec.".
   - The build was done in a scratch directory; no PDF is kept here.
   - Packages used: amsmath, amssymb, amsthm, url, microtype, hyperref, geometry, enumitem.
@@ -28,7 +29,7 @@ Status after the 9 Oct revision. Items marked **done** were addressed in `main.t
 
 ### Kyle's decisions (remaining)
 
-1. **Disclosure (§7).** Still the VH∃ disclosure text, unchanged, with the LaTeX comment marking it for Kyle's approval. It still says "this paper", refers to `AUTHOR-RECORD.md` "beside" the VH∃ paper, and describes session roles that did not all touch this note. The tag-name placeholder must be set.
+1. **Disclosure (§7).** Adapted to the note in commit 70a2eed5 ("this note"; coordinator and sub-agents; review/audit roles; the author's actions). It awaits Kyle's final OK, as the LaTeX comment says. The tag-name placeholder must be set.
 2. **Title.** Proposed: "Kempe chains around a degree-five vertex: a mod-4 parity formula and a parity law" (see above). Kyle to confirm.
 3. **Where to post, and whether to cite the VH∃ draft.** [25] still points to a draft inside the repository.
 
@@ -46,10 +47,20 @@ Status after the 9 Oct revision. Items marked **done** were addressed in `main.t
 - **M6 (done).** Lemma W's hand proof is now [hand] (reviewed by the referee); its link-free step cites Lemma 12 [cited]. Lemma 10's proof is marked "checked by the referee". Prop. 2's converse is marked as repaired and not re-reviewed.
 - **New label.** Off-sphere counts that come only from the referee's code are marked [computed¹] (one program, two runs), since [computed] requires a second implementation. To upgrade them, rerun with a second program.
 
+### Second referee report (9 Oct, `RefereeReport2.md`): status
+
+All items applied in `main.tex`.
+- **N1 (done).** The false sentence "other unfilled states can have N = 6" is gone. §2 now states N ≥ 8 at every unfilled state [hand], with the referee's short argument via Prop. 2 (and the referee's sample minimum of 8 over 48,000+ non-DL states, [computed¹]). Abstract: "the minimum for unfilled colourings". §5 adds that this bound rests on Prop. 2 and is not claimed off the sphere. The provenance of the first report's N = 6 (presumably off-sphere) was not established, so the note does not attribute it to the torus.
+- **N2 (done).** The remark after Cor. 7 now says: every one of the 120 unfilled link words has π-orbit length exactly 15; with the compiled `allDL_cycle_length_dvd_ten` (`QuarterBitDynamics`, 10 | L) this gives 30 | L without the law, so the law's evenness is a consistency check. Census lengths are up to renaming (length 20 up to renaming = absolute length 60; `_recol` gives 10 | 20). The §5 census sentence says "counted up to renaming the colours". `LiteratureCheck.md` row (iv) corrected by an appended note. VH∃ paper: "all of length 20 up to renaming the colours" (only that edit).
+- **N3 (done).** Abstract: "every main result fails on the torus"; §5: "every other result of Section 3", noting that Lemmas 12–13 hold on every closed oriented surface.
+- **N4 (done).** Kittell's ζ "(or his η, by mirror symmetry)"; parity pass cited as Kauffman Sec. 5; Kauffman Sec. 4 (4-vs-5 curve count at a 1-deficient formation) cited as the nearest published antecedent of Thm 8 and the law; BKM's configuration 𝒞 attributed in their words, with "Heawood's interlocked chains" as our reading; their parity statement "partly in Kauffman Sec. 5 and partly unpublished"; Spencer-Brown's parity mills (built from Kittell impasse-group moves, per BKM) mentioned, with "whether a mill iterates ζ = π was not determined"; Questions 5.1–5.2 reworded to "admit a looping 1-deficient colouring". Added one clause that Lemmas 12–13 for the multigraph T° follow from the note's own proof of Lemma 12.
+- **N5 (done).** e₀ := e_m; leaf clause (e_i = e_{i+1}: the list is the deg − 1 ≥ 2 other neighbours); the sentence after the proof now says the repair was re-reviewed in a second round (RefereeReport2.md) and tested on 1.83M sphere states.
+- **N6 (done).** LaTeX comment above §7 and README item 1 updated.
+
 ### Literature check (9 Oct): status
 
 - **Done.** Intro now has "Prior work" and "What is new" paragraphs: Errera 1921 / Kittell 1935 (impasse = DL; π = Kittell's tangent-chain ζ, period 15, checked by a short script and against the scanned paper; DL π-cycles on Errera's map; N ≥ 8 implicit in Kittell's eight chains); Spencer-Brown's Parity Lemma via Kauffman 2005 (no-hole N mod 2 invariance; Thm 8 and the law are hole versions); BKM 2026 (parity pass loops; bad configuration; parity remark; Questions 5.1–5.2 positioned against LPC/NRC in §5); Mohar 2006 and Mohar–Salas 2009 (Kempe invariance of degree parity). Lemma 11 (Fisk mod 4) and the new Lemma 12 (Kempe invariance of cw mod 4, formerly the last sentence of Lemma F0) are [cited]. Tilley's D-resolvability equivalence is now stated definitely, with the subset-of-chains remark.
-- **Done.** New consequence noted: π acts on link colours with period 15, so DL π-cycles have length divisible by 30 [hand]. (Census cycles of length 20 are counted up to renaming of colours, so there is no conflict.)
+- **Done, then corrected (N2).** π-orbits of link words have length exactly 15, so DL π-cycles have length divisible by 30 [hand]; this follows from 15 | L and the compiled 10 | L without the law (see the correction appended to `LiteratureCheck.md`). Census cycles of length 20 are counted up to renaming of colours (absolute length 60), so there is no conflict.
 - **Done.** Bibliography: Mohar–Singer → EJC 91 (2021) 103221, doi, with "journal numbering to check"; DOIs added for Appel–Haken, RSST, Kempe, Fisk 1977 (issue 3), Tilley (initial J. A.); entries added for Kittell, Errera, Kauffman 2005, Spencer-Brown, BKM, Mohar 2006, Mohar–Salas, Tutte 1948, Fisk 1973, Fisk 1978, Mohar 1985, Gonthier 2005 report. Verified on 9 Oct via arXiv abstract pages (BKM, Kauffman, Mohar–Salas), arXiv HTML (BKM questions), Crossref (Mohar–Singer, Kauffman, Mohar 2006, Kittell, Fisk 1973/1977/1978, Mohar 1985, Kempe, RSST, Appel–Haken, Tutte 1948) and the scanned Kittell paper.
 - **Remaining.**
   - Read Fisk 1973, 1977, 1978 and Mohar 1985 in full (paywalled). The note says they were not read and must be checked before submission; they are the most likely overlap with the hole identity and lock parity.
@@ -62,11 +73,12 @@ Status after the 9 Oct revision. Items marked **done** were addressed in `main.t
 
 ### Claims still unreviewed or hand-only
 
-4. Prop. 2 converse: repaired text (G1) not re-reviewed.
+4. ~~Prop. 2 converse: repaired text (G1) not re-reviewed.~~ **Closed:** re-reviewed line by line in `RefereeReport2.md` §3, 0 failures on 1.83M states.
 5. Genus residue 2G mod 4 (§5): [hand], not reviewed; now checked numerically by the referee (35,241 torus and 3,038 genus-2 states; G = 3 occurs).
 6. Matching form (§5): "a state is determined by M_t", "N = 7 + k(M_{t−1} ∪ M_t)", "every near-rigid cycle yields such a sequence": [hand, unreviewed]. The referee checked N = 7 + k(…) at 838 steps but not "determined by M_t".
 7. The n = 22 example is abstract (non-planar matching form), not a surface triangulation; TrackU's off-sphere discrepancy is unresolved.
-8. "π-cycles have length divisible by 30" [hand]: new in this revision, unreviewed (a one-line argument plus a finite check).
+8. "π-cycles have length divisible by 30" [hand]: checked by the second referee (`RefereeReport2.md` N2, §4: all 120 link words have orbit length exactly 15); it follows from 15 | L and the compiled `allDL_cycle_length_dvd_ten`, without the law.
+8a. "N ≥ 8 at every unfilled state" [hand]: the second referee's argument (N1), not separately re-reviewed; 48,000+ sampled states [computed¹].
 9. Numbers: all figures in the 8 Oct draft were checked against sources by the referee (RefereeReport §6). New figures added in this revision come from RefereeReport §2 (marked [computed¹]) and `docs/working/Census34/README.md`.
 
 ### Lean follow-ups (optional, unchanged)
