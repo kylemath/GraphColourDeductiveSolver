@@ -7,7 +7,7 @@ const CORE = ['./', 'index.html', 'levels.js', 'layout.js', 'telemetry.js', 'man
   'lab/core.js', 'lab/dots.html', 'lab/doodle.html', 'lab/blank.html',
   'skins/registry.js', 'skins/islands.js', 'skins/dots.js', 'skins/doodle.js', 'skins/blank.js',
   'skins/map.js', 'skins/swipe.js', 'skins/ions.js', 'skins/tables.js', 'lab/map.html', 'lab/swipe.html', 'lab/ions.html', 'lab/tables.html',
-  'board/island.js', 'skins/islands-free.js', 'skins/islands-3d.js', 'lab/islands3d.html', 'lab/islands3d-plans.js',
+  'board/island.js', 'sfx.js', 'skins/islands-free.js', 'skins/islands-3d.js', 'lab/islands3d.html', 'lab/islands3d-plans.js',
   'verify.js', 'integrity.js', 'account-config.js', 'account.js', 'leaderboard.js',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
