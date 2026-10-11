@@ -10,7 +10,8 @@ const fs = require('fs'), path = require('path'), vm = require('vm');
 const D = path.join(__dirname, '..', 'skins');
 const ctx = { window: {}, console }; ctx.window.window = ctx.window; vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(D, 'registry.js'), 'utf8'), ctx); ctx.FTH_SKINS = ctx.window.FTH_SKINS;
-for (const f of fs.readdirSync(D).filter(f => f.endsWith('.js') && f !== 'registry.js')) vm.runInContext(fs.readFileSync(path.join(D, f), 'utf8'), ctx, { filename: f });
+const ext = f => /FTH_SKINS\.extend\(/.test(fs.readFileSync(path.join(D, f), 'utf8'));
+for (const f of fs.readdirSync(D).filter(f => f.endsWith('.js') && f !== 'registry.js').sort((a, b) => ext(a) - ext(b))) vm.runInContext(fs.readFileSync(path.join(D, f), 'utf8'), ctx, { filename: f });
 const want = process.argv.slice(2);
 
 // ---- colour maths
