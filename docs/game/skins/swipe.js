@@ -103,6 +103,8 @@
       '--sk-btn-shadow': GOLD2,
       '--sk-font': "'Lilita One', 'Fredoka', 'Baloo 2', ui-rounded, system-ui, sans-serif",
       '--sk-radius': '20px',
+      '--sk-star-on': '#ffd84a', '--sk-star-edge': '#1d1562', '--sk-star-off': '#7f72d6', '--sk-star-off-edge': '#a99cf0',
+      '--sk-ctl': '#2c2088', '--sk-ctl-ink': '#ffe9a6', '--sk-ctl-edge': '#ffd84a',
       '--sk-chip': 'linear-gradient(180deg, #2c2088, #1d1562)',
       '--sk-chip-ink': '#f1edff',
       '--sk-edge': GOLD,

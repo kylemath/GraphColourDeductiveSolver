@@ -15,5 +15,6 @@ FTH_SKINS.register({
     '--sk-btn-shadow': '#1c7a2e',
     '--sk-font': "system-ui, -apple-system, 'Segoe UI', sans-serif",
     '--sk-radius': '22px',
+    '--sk-star-on': '#ffd84a', '--sk-star-edge': '#1c1640', '--sk-star-off': '#7b86c4', '--sk-star-off-edge': '#a3acdc',
   },
 });

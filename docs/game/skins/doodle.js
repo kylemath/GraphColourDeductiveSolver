@@ -283,6 +283,8 @@
       '--sk-btn-shadow': '#b78a00',
       '--sk-font': "'Patrick Hand', 'Fredoka', 'Comic Sans MS', 'Chalkboard SE', cursive",
       '--sk-radius': '14px',
+      '--sk-star-on': '#ffc928', '--sk-star-edge': '#2b2d42', '--sk-star-off': '#948971', '--sk-star-off-edge': '#4d4a60',
+      '--sk-ctl': '#fffcf3', '--sk-ctl-ink': '#2b2d42', '--sk-ctl-edge': '#2b2d42',
       '--sk-chip': '#fffcf3',
       '--sk-chip-ink': '#2b2d42',
       '--sk-edge': '#2b2d42',
@@ -312,8 +314,7 @@
       // chips and bars: taped labels with a hard shadow
       '.badge,.goalbar,.starbar{border:2.5px solid #2b2d42;border-radius:14px 17px 13px 16px/16px 13px 17px 14px;box-shadow:2px 3px 0 #2b2d42;font-family:var(--sk-font)}' +
       '.goalbar,.starbar{background:#fffcf3}' +
-      '.starbar .st.off path{fill:#e6dcc4;stroke:#2b2d42}' +
-      '.starbar .st path{fill:#ffc928;stroke:#2b2d42;stroke-width:2.2}' +
+      '.starbar .st path{stroke-width:2.2}' +
       '.coins{border:2.5px solid #2b2d42;border-radius:14px 18px 13px 16px/16px 13px 18px 14px;box-shadow:2px 3px 0 #2b2d42;font-family:var(--sk-font);font-size:1.1rem;padding:2px 12px 2px 4px}' +
       '.mnode .mst,.mnode .mtag{border:2px solid #2b2d42;border-radius:9px 11px 8px 10px;box-shadow:1.5px 2px 0 #2b2d42;font-family:var(--sk-font);font-size:.95rem;font-weight:700}' +
       '.mnode .mtag{background:#d9d2bd;color:#2b2d42}' +

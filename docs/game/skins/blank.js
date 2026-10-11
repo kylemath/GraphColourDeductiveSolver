@@ -336,6 +336,8 @@
       '--sk-coin': '#ffc928',
       '--sk-font': "Fredoka, 'Baloo 2', 'Arial Rounded MT Bold', 'Trebuchet MS', system-ui, sans-serif",
       '--sk-radius': '18px',
+      '--sk-star-on': '#ffc928', '--sk-star-edge': '#1b1b2f', '--sk-star-off': '#8b889c', '--sk-star-off-edge': '#55536a',
+      '--sk-ctl': '#ffffff', '--sk-ctl-ink': '#1b1b2f', '--sk-ctl-edge': '#1b1b2f',
     },
     css: '.tl .hx{transition:filter .15s,stroke .15s}' +
       '.tl.lit .hx{fill-opacity:1;filter:saturate(1.25) brightness(1.06)}' +
@@ -364,9 +366,8 @@
       `.coins{background:#ffc928;color:${INK};border:3px solid ${INK};border-radius:14px;box-shadow:3px 3px 0 ${INK};min-width:0}` +
       `.coins::after{display:none}` +
       `.goalbar,.starbar{background:#fff;border:3px solid ${INK};border-radius:14px;box-shadow:3px 3px 0 ${INK};height:40px}` +
-      `.starbar .st path{fill:#ffc928;stroke:${INK};stroke-width:2.2}` +
-      `.starbar .st.off path{fill:#eeeae0;stroke:${INK}}` +
-      `.mnode .mst{background:#fff;color:${INK};border:2.5px solid ${INK};border-radius:8px;box-shadow:2px 2px 0 ${INK}}` +
+      `.starbar .st path{stroke-width:2.2}` +
+      `.mnode .mst{background:#fff;border:2.5px solid ${INK};border-radius:8px;box-shadow:2px 2px 0 ${INK}}` +
       `.mnode .mtag{background:#ebe6d6;color:${INK};border:2.5px solid ${INK};border-radius:8px;box-shadow:2px 2px 0 ${INK}}` +
       `.mnode .pulse{border:3px solid #ffc928;box-shadow:0 0 0 2px ${INK}}` +
       `.say .msg{background:#fff;color:${INK};border:3px solid ${INK};border-radius:14px;box-shadow:3px 3px 0 ${INK}}` +

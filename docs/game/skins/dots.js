@@ -68,6 +68,8 @@
       '--sk-btn-shadow': '#b9b3a6',
       '--sk-font': "Nunito, Quicksand, 'Avenir Next', system-ui, sans-serif",
       '--sk-radius': '18px',
+      '--sk-star-on': '#e0a93a', '--sk-star-edge': '#2d2a26', '--sk-star-off': '#8e8774', '--sk-star-off-edge': '#6f6a5e',
+      '--sk-ctl': '#fbf8f1', '--sk-ctl-ink': '#2d2a26', '--sk-ctl-edge': '#2d2a26',
       '--sk-chip': '#fbf8f1',
       '--sk-chip-ink': INK,
       '--sk-edge': INK,
@@ -79,7 +81,7 @@
     css: '--text:#2d2a26;--dim:#4f4a40;--faint:#6f6a5e;--bg2:#f1ecdf;--line:#b9b3a6;' +
       '.tl .tin circle.d{transition:r .2s}.tl.lit .tin{opacity:1}.tl.lit .tin circle.d{stroke:#2d2a26;stroke-width:2}' +
       '.tl.glow .tin circle.rg{opacity:.55;stroke-width:1.5}.tl .tin circle.rg{opacity:0}' +
-      '.mnode .mst{background:#fbf8f1;color:#8a5f00;border:1.5px solid #2d2a26;font-size:.72rem;letter-spacing:2px;box-shadow:none}.mnode .mst i{color:#b9b3a6}' +
+      '.mnode .mst{background:#fbf8f1;border:1.5px solid #2d2a26;font-size:.72rem;letter-spacing:2px;box-shadow:none}' +
       '.mnode .mtag{background:#fbf8f1;color:#6b665c;border:1.5px solid #b9b3a6;font-weight:800;box-shadow:none}.mnode .pulse{border:2px solid #e0a93a}' +
       '.btn3d{border:1.5px solid #2d2a26;border-radius:999px;box-shadow:none;font-weight:800;letter-spacing:.02em;min-height:44px}' +
       '.btn3d:active{box-shadow:none;transform:scale(.97)}' +
@@ -94,7 +96,7 @@
       '.badge{background:#fbf8f1;color:#2d2a26;font-weight:800}.badge .s{color:#8a5f00}.badge .p{color:#2d2a26}' +
       '.goalbar,.starbar{background:#fbf8f1;color:#2d2a26}' +
       '.goalbar .tl.one .tin,.goalbar .tl.hole .tin{filter:none}.goalbar .tl.one .tr{stroke:#2d2a26}' +
-      '.starbar .st path{fill:#e0a93a;stroke:#2d2a26;stroke-width:1.6}.starbar .st.off path{fill:#e6dfcc;stroke:#b9b3a6}' +
+      '.starbar .st path{stroke-width:1.6}' +
       '.coins{box-shadow:none;background:#e0a93a;color:#2d2a26;border:1.5px solid #2d2a26}.coins::after{display:none}' +
       '.say .msg{background:#fbf8f1;color:#2d2a26;border:1.5px solid #2d2a26;border-radius:18px;box-shadow:none;font-weight:700}' +
       '.say .msg::before{border-right-color:#2d2a26}.say .msg::after{border-right-color:#fbf8f1}' +

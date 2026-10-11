@@ -233,6 +233,8 @@
       '--sk-btn-shadow': '#0f6f86',
       '--sk-font': "'Space Grotesk', 'Inter', system-ui, sans-serif",
       '--sk-radius': '16px',
+      '--sk-star-on': '#5fe6ff', '--sk-star-edge': '#031014', '--sk-star-off': '#3e8c9c', '--sk-star-off-edge': '#62b4c4',
+      '--sk-ctl': 'rgba(10,44,52,.9)', '--sk-ctl-ink': '#bff3ff', '--sk-ctl-edge': 'rgba(95,230,255,.7)',
       '--sk-chip': 'linear-gradient(180deg, rgba(10,44,52,.9), rgba(4,20,25,.94))',
       '--sk-chip-ink': '#d6f6fb',
       '--sk-edge': 'rgba(95,230,255,.7)',
