@@ -25,6 +25,11 @@ for (const s of ctx.window.FTH_SKINS.list) {
   if (s.hud && !['full', 'compact', 'minimal'].includes(s.hud)) fail(id, 'hud must be full | compact | minimal');
   if (s.src && !fs.existsSync(path.join(__dirname, '..', s.src))) fail(id, 'src ' + s.src + ' not found');
   for (const k of Object.keys(s.theme || {})) if (!/^--sk-[a-z0-9-]+$/.test(k)) fail(id, 'theme key ' + k + ' is not --sk-*');
+  // chrome tokens that must be solid colours (SKIN-SPEC 3b): the play page's controls (skins with a page) and the stars (contrast: tools/contrast_check.js)
+  const SOLID = /^(#[0-9a-f]{3,8}|rgba?\([^()]*\))$/i;
+  for (const k of (s.src ? ['--sk-ctl', '--sk-ctl-ink', '--sk-ctl-edge'] : []).concat(['--sk-star-on', '--sk-star-edge', '--sk-star-off', '--sk-star-off-edge'])) {
+    const v = (s.theme || {})[k]; if (!v) fail(id, 'theme needs ' + k + ' (SKIN-SPEC 3b)'); else if (!SOLID.test(v.trim())) fail(id, k + ' must be one solid colour, got ' + v);
+  }
   if (s.title && s.title.svg) svgOk(s.title.svg, 'title.svg', id);
   if (s.intro) {
     if (!Array.isArray(s.intro) || s.intro.length < 3 || s.intro.length > 5) fail(id, 'intro must have 3-5 pages');

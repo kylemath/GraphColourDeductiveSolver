@@ -108,8 +108,8 @@
   .mnode { position: absolute; width: 70px; height: 70px; transform: translate(-50%, -50%); background: none; border: 0; padding: 0; border-radius: 50%; }
   .mnode > svg { width: 100%; height: 100%; overflow: visible; display: block; transition: transform .1s; }
   .mnode:active > svg { transform: scale(.9); }
-  .mnode .mst { position: absolute; left: 50%; top: 88%; transform: translateX(-50%); background: #1c1640; color: #ffd84a; border: 2px solid #fff; border-radius: 999px; padding: 0 7px 1px; font-size: .82rem; letter-spacing: 1px; white-space: nowrap; line-height: 1.35; }
-  .mnode .mst i { color: #5f6390; font-style: normal; }
+  .mnode .mst { position: absolute; left: 50%; top: 88%; transform: translateX(-50%); background: #1c1640; color: var(--sk-star-on, #ffd84a); -webkit-text-stroke: .5px var(--sk-star-edge, transparent); border: 2px solid #fff; border-radius: 999px; padding: 0 7px 1px; font-size: .82rem; letter-spacing: 1px; white-space: nowrap; line-height: 1.35; }
+  .mnode .mst i { color: var(--sk-star-off, #5f6390); -webkit-text-stroke: .5px var(--sk-star-off-edge, transparent); font-style: normal; }
   .mnode .mtag { position: absolute; left: 50%; top: 90%; transform: translateX(-50%); background: #4b525b; color: #e6edf3; border: 2px solid #c9d1d9; border-radius: 999px; padding: 0 8px; font-size: .78rem; font-weight: 900; white-space: nowrap; }
   .mnode.st-locked > svg { opacity: .92; }
   .mnode .pulse { position: absolute; inset: -9px; border-radius: 50%; border: 4px solid #fff; animation: mpulse 1.4s ease-out infinite; pointer-events: none; }
@@ -187,8 +187,8 @@
   .goalbar .tl.hole .tin { animation: holeglow 2.4s ease-in-out infinite alternate; }
   .starbar { gap: 2px; padding: 0 7px; }
   .starbar .st { width: 26px; height: 26px; display: block; transition: transform .2s; }
-  .starbar .st path { fill: #ffd84a; stroke: #1c1640; stroke-width: 2.4; stroke-linejoin: round; }
-  .starbar .st.off path { fill: #3b3f6e; stroke: #5f6390; }
+  .starbar .st path { fill: var(--sk-star-on, #ffd84a); stroke: var(--sk-star-edge, #1c1640); stroke-width: 2.4; stroke-linejoin: round; }
+  .starbar .st.off path { fill: var(--sk-star-off, #3b3f6e); stroke: var(--sk-star-off-edge, #5f6390); }
   .starbar.shake { animation: wob .3s ease-in-out 2; }
   .say { position: absolute; left: 8px; right: 8px; bottom: 100px; z-index: 4; pointer-events: none; display: flex; align-items: flex-end; gap: 4px; opacity: 0; transform: translateY(14px) scale(.9); transform-origin: 20px 100%; transition: opacity .25s, transform .3s cubic-bezier(.3, 1.6, .5, 1); }
   .say.on { opacity: 1; transform: none; }
@@ -232,7 +232,8 @@
   body:not([data-skin="islands"]) .badge, body:not([data-skin="islands"]) .goalbar, body:not([data-skin="islands"]) .starbar,
   body:not([data-skin="islands"]) .mnode .mst, body:not([data-skin="islands"]) .mnode .mtag, body:not([data-skin="islands"]) .say .msg {
     background: var(--sk-chip, var(--sk-card)); color: var(--sk-chip-ink, var(--sk-card-ink)); border-color: var(--sk-edge, color-mix(in srgb, var(--sk-card-ink) 28%, transparent)); text-shadow: none; }
-  body:not([data-skin="islands"]) .mnode .mst i { color: color-mix(in srgb, var(--sk-chip-ink, var(--sk-card-ink)) 35%, transparent); }
+  body:not([data-skin="islands"]) .mnode .mst { color: var(--sk-star-on, var(--sk-chip-ink, var(--sk-card-ink))); }
+  body:not([data-skin="islands"]) .mnode .mst i { color: var(--sk-star-off, color-mix(in srgb, var(--sk-chip-ink, var(--sk-card-ink)) 35%, transparent)); }
   body:not([data-skin="islands"]) .mnode .pulse { border-color: var(--sk-accent); }
   body:not([data-skin="islands"]) .coins { background: var(--sk-coin, var(--sk-accent)); color: var(--sk-btn-ink); border-color: var(--sk-edge, color-mix(in srgb, var(--sk-card-ink) 28%, transparent)); box-shadow: none; text-shadow: none; }
   body:not([data-skin="islands"]) .btn3d.white, body:not([data-skin="islands"]) .btn3d.yellow, body:not([data-skin="islands"]) .btn3d.blue, body:not([data-skin="islands"]) .btn3d.orange {
@@ -2431,8 +2432,10 @@
     (k.fonts || []).forEach(u => { if (fontsLoaded.has(u)) return; fontsLoaded.add(u); const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = u; document.head.appendChild(l); });
     const art = $('tSkinArt'); b.classList.toggle('skinart', !!(k.title && k.title.svg)); if (art) art.innerHTML = k.title && k.title.svg || '';
     const m = document.querySelector('meta[name="theme-color"]'); if (m && k.theme && k.theme['--sk-accent'] && k.id !== 'islands') m.content = (k.theme['--sk-bg'] || '').match(/#[0-9a-f]{3,8}/i)?.[0] || m.content;
-    mapStyle(k.map); htReset(); pmKey = ''; pmDirty = true;
+    mapStyle(k.map); htReset(); pmKey = ''; pmDirty = true; skinTokens(k);
   }
+  // the skin's --sk-* tokens reach the play page too (lab/core.js applies them; see SKIN-SPEC 3b): on load ('ready') and on a skin change
+  function skinTokens(k) { const f = $('skinFrame'); if (!f || !f.contentWindow || !(k || ACT).src) return; try { f.contentWindow.postMessage({ fth: 1, cmd: 'tokens', vars: Object.assign({}, ISL.theme || {}, (k || ACT).theme || {}) }, '*'); } catch (e) { /* frame gone */ } }
   const skinFits = k => !k.needs || k.needs.every(nd => nd === 'cells' ? !!(window.LAYOUT && LAYOUT[L.g] && LAYOUT[L.g].cells) : true);
   function renderSkinPick() {
     const el = $('skinPick'); if (!el) return;
@@ -2459,6 +2462,7 @@
     const d = e.data, f = $('skinFrame');
     if (window.FTH_RUN) FTH_RUN.sniff(e, d, f.contentWindow);
     if (!d || !d.fth || !ACT.src || e.source !== f.contentWindow || !L || won) return;
+    if (d.type === 'ready') skinTokens(ACT);
     if (d.type === 'error') {                              // the skin broke: finish this level on the island board
       console.warn('skin ' + ACT.id + ' failed on ' + L.id + ': ' + d.message);
       if (window.FTH_RUN) FTH_RUN.end('skin-error');

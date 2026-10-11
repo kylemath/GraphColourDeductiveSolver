@@ -332,6 +332,8 @@
       '--sk-coin': '#f3d78a',
       '--sk-font': "'Playfair Display', Georgia, 'Times New Roman', serif",
       '--sk-radius': '16px',
+      '--sk-star-on': '#e0a93a', '--sk-star-edge': '#7a5406', '--sk-star-off': '#9a8a78', '--sk-star-off-edge': '#6e5a46',
+      '--sk-ctl': '#fbf5ea', '--sk-ctl-ink': '#2a1840', '--sk-ctl-edge': '#d9a441',
     },
     // place cards: cream chips, a double gold ring (outline 1px, inset 2px gap inside the 1px border), warm shadows
     css: '.tl .hl{opacity:0;transition:opacity .15s}.tl.lit .hl{opacity:.9}.tl.lit .hx{stroke-width:3.4}' +
