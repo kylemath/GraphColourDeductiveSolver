@@ -90,6 +90,9 @@
 
   FTH_SKINS.register({
     id: 'swipe', name: 'Bonus Swipe', ic: '🎰', blurb: 'swipe two kinds, hit the jackpot',
+    coin: { name: 'casino chip', plural: 'casino chips', glyph: '🎰', value: 14, pitch: 1.35,   // this skin's currency (SKIN-SPEC.md section 12)
+      colors: { main: '#d62839', edge: '#ffffff' },
+      svg: FTH_SKINS.coinArt('<circle r="11.6" fill="#d62839" stroke="#1c1640" stroke-width="2"/><circle r="9.2" fill="none" stroke="#fff" stroke-width="3.2" stroke-dasharray="3.6 3.63"/><circle r="6.2" fill="#a51a2a" stroke="#fff" stroke-width="1.3"/><path d="M0 -3.8L2.8 0 0 3.8-2.8 0Z" fill="#ffe46b" stroke="#1c1640" stroke-width="1" stroke-linejoin="round"/>') },
     src: 'lab/swipe.html', hud: 'compact',
     theme: {
       '--sk-bg': 'radial-gradient(120% 80% at 50% 0%, #6a4cf0 0%, #3a28b0 50%, #1b1360 100%), #1b1360',

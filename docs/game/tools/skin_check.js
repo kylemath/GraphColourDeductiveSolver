@@ -43,6 +43,29 @@ for (const s of ctx.window.FTH_SKINS.list) {
   for (const k of (s.src ? ['--sk-ctl', '--sk-ctl-ink', '--sk-ctl-edge'] : []).concat(['--sk-star-on', '--sk-star-edge', '--sk-star-off', '--sk-star-off-edge'])) {
     const v = (s.theme || {})[k]; if (!v) fail(id, 'theme needs ' + k + ' (SKIN-SPEC 3b)'); else if (!SOLID.test(v.trim())) fail(id, k + ' must be one solid colour, got ' + v);
   }
+  {                                                  // the skin's currency (SKIN-SPEC.md section 12); absent: the shell uses the plain gold coin
+    const C = s.coin;
+    if (!C) console.log('  note: no coin, the plain gold coin is used');
+    else {
+      for (const k of ['name', 'plural', 'glyph']) if (typeof C[k] !== 'string' || !C[k].trim()) fail(id, 'coin.' + k + ' must be a non-empty string');
+      if (typeof C.value !== 'number' || !(C.value > 0)) fail(id, 'coin.value must be a number > 0 (base units, G)');
+      if (C.pitch !== undefined && !(typeof C.pitch === 'number' && C.pitch >= .5 && C.pitch <= 2)) fail(id, 'coin.pitch must be 0.5 to 2');
+      for (const k of ['main', 'edge']) if (C.colors && !/^#[0-9a-f]{3,8}$/i.test((C.colors || {})[k] || '')) fail(id, 'coin.colors.' + k + ' must be a #hex colour');
+      let a; try { a = C.svg(26); } catch (x) { fail(id, 'coin.svg throws: ' + x.message); }
+      if (typeof C.svg !== 'function') fail(id, 'coin.svg must be a function (size) -> svg string');
+      else if (typeof a === 'string') {
+        if (!/^\s*<svg[\s>]/.test(a) || !/viewBox="-13 -13 26 26"/.test(a)) fail(id, 'coin.svg must be an <svg> with viewBox="-13 -13 26 26"');
+        if (/<script|<image|href="https?:|\bon\w+=/i.test(a)) fail(id, 'coin.svg: no script, images or handlers');
+        if (/\bid="(?!coin-)/.test(a)) fail(id, 'coin.svg: ids must start with coin-');
+        const o = (a.match(/<g[\s>]/g) || []).length, c = (a.match(/<\/g>/g) || []).length; if (o !== c) fail(id, 'coin.svg: unbalanced <g>');
+        if (!/<svg[^>]*width="26"/.test(a) || !/width="40"/.test(C.svg(40))) fail(id, 'coin.svg(size) must size the svg');
+        if ((a.match(/<(path|circle|rect|polygon|ellipse|line|polyline)\b/g) || []).length < 3) fail(id, 'coin.svg looks empty');
+      } else fail(id, 'coin.svg must return a string');
+      const same = ctx.window.FTH_SKINS.list.filter(k => k !== s && k.coin && (k.coin.name === C.name || k.coin.value === C.value || k.coin.svg(26) === a));
+      if (same.length) fail(id, 'coin must differ from ' + same.map(k => k.id).join(', ') + ' (name, value and art are unique per skin)');
+      console.log('  coin: ' + C.name + ', ' + C.value + ' G');
+    }
+  }
   if (s.title && s.title.svg) svgOk(s.title.svg, 'title.svg', id);
   if (s.intro) {
     if (!Array.isArray(s.intro) || s.intro.length < 3 || s.intro.length > 5) fail(id, 'intro must have 3-5 pages');

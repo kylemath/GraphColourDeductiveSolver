@@ -70,7 +70,13 @@
     const s = A.state(), tabs = $('.lb-tabs', root);
     tabs.innerHTML = `<button role="tab" aria-selected="${scope === 'device'}" data-t="device">This device</button>` +
       `<button role="tab" aria-selected="${scope === 'everyone'}" data-t="everyone" ${s.kind === 'local' ? 'disabled title="Needs the online setup"' : ''}>Everyone</button>`;
-    tabs.querySelectorAll('button').forEach(b => b.onclick = () => { if (b.disabled) return; scope = b.dataset.t; render(); });
+    tabs.querySelectorAll('button').forEach(b => b.onclick = () => { if (b.disabled) return; scope = b.dataset.t; if (scope !== 'device') metric = 'stars'; render(); });
+    const mt = $('.lb-metric', root); if (mt) mt.remove();
+    if (A.metrics.some(m => m.id === 'coins')) {            // rank by: stars (verified) | wealth (unverified, this device only)
+      const d = document.createElement('div'); d.className = 'lb-row lb-metric'; d.setAttribute('role', 'radiogroup'); d.setAttribute('aria-label', 'Rank by');
+      d.innerHTML = `<button class="lb-btn alt" role="radio" aria-checked="${metric === 'stars'}" data-m="stars">★ Stars</button><button class="lb-btn alt" role="radio" aria-checked="${metric === 'coins'}" data-m="coins" ${scope === 'device' ? '' : 'disabled title="Wealth stays on your device"'}>💰 Wealth (unverified)</button>`;
+      tabs.after(d); d.querySelectorAll('button').forEach(b => { if (b.getAttribute('aria-checked') === 'true') b.style.outline = '3px solid var(--sk-accent,#ffd84a)'; b.onclick = () => { if (b.disabled) return; metric = b.dataset.m; render(); }; });
+    }
   }
   async function render() {
     const my = ++seq; chips();
@@ -85,10 +91,11 @@
       if (!b.rows.length) html += `<div class="lb-state">${have && !s.signedIn ? 'You have finished ' + have + ' level' + (have === 1 ? '' : 's') + ' in ' + esc(name) + '. Join below to put ' + (have === 1 ? 'it' : 'them') + ' on the board.' : scope === 'device' ? 'No finished levels on this device in ' + esc(name) + ' yet.' : 'Nobody is on the ' + esc(name) + ' board yet.<br>Win a level and join below to be first.'}</div>`;
       else {
         const top = b.rows, meRow = b.me && !top.some(r => r.me) ? b.me : null;
-        const tr = r => `<tr class="${r.me ? 'me' : ''}"><td>${r.rank}</td><td>${esc(r.nick)}${r.me ? ' (you)' : ''}</td><td>${r.stars}★</td><td>${r.levels}</td><td>${r.points}</td></tr>`;
-        html += `<table aria-label="${esc(name)} leaderboard, ${scope === 'device' ? 'this device' : 'everyone'}"><thead><tr><th scope="col">#</th><th scope="col">Name</th><th scope="col">Stars</th><th scope="col">Levels</th><th scope="col">Points</th></tr></thead><tbody>${top.map(tr).join('')}${meRow ? '<tr><td colspan="5" style="text-align:center;opacity:.6">…</td></tr>' + tr(meRow) : ''}</tbody></table>`;
+        const W = metric === 'coins', tr = r => `<tr class="${r.me ? 'me' : ''}"><td>${r.rank}</td><td>${esc(r.nick)}${r.me ? ' (you)' : ''}</td><td>${r.stars}★</td><td>${r.levels}</td><td>${W ? (r.me ? Math.round(r.wealth || 0).toLocaleString('en') + ' G' : '—') : r.points}</td></tr>`;
+        html += `<table aria-label="${esc(name)} leaderboard, ${scope === 'device' ? 'this device' : 'everyone'}"><thead><tr><th scope="col">#</th><th scope="col">Name</th><th scope="col">Stars</th><th scope="col">Levels</th><th scope="col">${W ? 'Wealth*' : 'Points'}</th></tr></thead><tbody>${top.map(tr).join('')}${meRow ? '<tr><td colspan="5" style="text-align:center;opacity:.6">…</td></tr>' + tr(meRow) : ''}</tbody></table>`;
       }
       if (b.hidden) html += `<p class="lb-note">${b.hidden} entr${b.hidden === 1 ? 'y is' : 'ies are'} hidden: ${b.hidden === 1 ? 'its' : 'their'} solutions did not replay correctly.</p>`;
+      html += metric === 'coins' ? '<p class="lb-note">* Wealth is unverified: it is this skin\'s coins earned on this device times their value (G), counted from the game\'s own save. It is never sent, so only your row has one, and it never affects the verified board.</p>' : '';
       html += '<p class="lb-note">Ranked by stars, then levels, then points. Stars and levels are re-checked by replaying every solution on your device; points are self-reported.</p>';
     } catch (e) {
       html += e && e.offline ? '<div class="lb-state">You are offline, so the shared board cannot load.<br>Your scores are saved and will be sent when you are back online.</div>'

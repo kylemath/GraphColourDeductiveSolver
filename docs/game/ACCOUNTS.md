@@ -106,7 +106,18 @@ The seal key sits on the same device, so someone who reads it can forge a consis
 determined ones. Because boards are built from verified proofs and never from the save, an edited save cannot raise a
 board score anyway; the flag is there so the attempt is on record.
 
-## Future: coin currencies
+## Coin currencies and the Wealth board
 
-`FTH_ACCT.registerMetric({id, label, of: entry => number})` adds a ranking metric; `FTH_ACCT.board(skin, scope, metricId)`
-sorts by it. Entries are free-form maps, so a coin total can be added to the entry and its rules bounds later.
+Each skin has its own coin (SKIN-SPEC.md section 12); balances live in `save.wallet` and are sealed with the progress save
+(`FTH_INT.seal/check` hash `byId` plus the wallet, so a hand-edited balance logs `save-edited` and adds to the tamper count
+like any other save edit; the wallet is not reset). **Coins are client state and are not verified**: the replay verifier checks
+swaps, stars and moves, it cannot see coins. So the leaderboard keeps them out of the verified board:
+
+- `FTH_ACCT.registerMetric({ id: 'coins', label: 'Wealth (unverified)', of: e => e.wealth })` is registered, and the board offers
+  "Rank by: Stars | Wealth (unverified)" on the **This device** tab only. A skin's wealth is its lifetime coins earned times the coin's
+  value in G (exchanges do not change it, so converting everything into one coin cannot lift a board).
+- `wealth` is stamped on your own row at read time from this device's wallet. It is never put in an entry and never uploaded, so on **Everyone** the toggle is disabled and no one else's wealth exists to rank by.
+  It never affects the stars / levels / points ranking, which stays proof-verified.
+
+`FTH_ACCT.registerMetric({id, label, of: entry => number})` is still the hook for any later metric; `FTH_ACCT.board(skin, scope, metricId)`
+sorts by it.

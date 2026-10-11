@@ -272,7 +272,9 @@
     for (const e of entries) {
       const v = await verifyEntry(e, owner);
       if (!v.ok) { hidden++; continue; }
-      rows.push({ uid: e.uid, nick: e.nick, stars: v.stars, levels: v.levels, pars: v.pars, points: v.points, updatedAt: e.updatedAt, me: !!user && e.uid === user.uid, entry: e });
+      const me = !!user && e.uid === user.uid;
+      const ent = me && window.FTH_WALLET ? Object.assign({}, e, { wealth: FTH_WALLET.wealth(skin) }) : e;   // coins are client state, never sent or proof-checked: only your own row has a wealth (see ACCOUNTS.md)
+      rows.push({ uid: e.uid, nick: e.nick, stars: v.stars, levels: v.levels, pars: v.pars, points: v.points, updatedAt: e.updatedAt, me, wealth: ent.wealth, entry: ent });
     }
     const M = api.metrics.find(m => m.id === metric);
     rows.sort(M && M.id !== 'stars' ? (a, b) => (M.of(b.entry) - M.of(a.entry)) || order(a, b) : order); rows.forEach((r, i) => { r.rank = i + 1; });
@@ -284,7 +286,9 @@
     setSubmit(on) { setPrefs({ submit: !!on }); if (on) { markDirty(skinIds()); flush(); } },
     state() { return { kind: AD ? AD.kind : 'local', hasGoogle: !!(AD && AD.hasGoogle), note: AD ? AD.note : '', uid: user && user.uid, anon: !user || user.anon, linked: !!(user && user.linked), nick: nick(), submit: !!prefs().submit, signedIn: !!user, err: lastErr, queued: Object.keys(dirty()).length, online: online() }; },
     // future hook: a board can rank by another currency; register { id, label, of: entry -> number }
-    metrics: [{ id: 'stars', label: 'Stars', of: e => e.stars }],
+    // 'coins' ranks by the skin's coin wealth (lifetime coins x value, in G). UNVERIFIED and local: the replay verifier cannot check coins,
+    // so the entry carries no wealth upstream; board() stamps it on your own row from this device's wallet, nobody else's.
+    metrics: [{ id: 'stars', label: 'Stars', of: e => e.stars }, { id: 'coins', label: 'Wealth (unverified)', local: true, of: e => e.wealth || 0 }],
     registerMetric(m) { if (!api.metrics.some(x => x.id === m.id)) api.metrics.push(m); },
     _adapters: { localAdapter, firebaseAdapter }, _setAdapter(a, u) { AD = a; user = u || null; ready = Promise.resolve(api); },
   };

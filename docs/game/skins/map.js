@@ -265,6 +265,9 @@
 
   FTH_SKINS.register({
     id: 'map', name: 'Island Map', ic: '🗺️', blurb: 'drag across a border',
+    coin: { name: 'compass rose', plural: 'compass roses', glyph: '🧭', value: 20, pitch: 1.1,   // this skin's currency (SKIN-SPEC.md section 12)
+      colors: { main: '#f3e3b3', edge: '#2c4f7a' },
+      svg: FTH_SKINS.coinArt('<circle r="11.6" fill="#f3e3b3" stroke="#1c1640" stroke-width="2"/><circle r="8.8" fill="none" stroke="#a9833a" stroke-width="1" stroke-dasharray="1.4 1.6"/><path d="M0 -10.2L2.5 -2.5 10.2 0 2.5 2.5 0 10.2 -2.5 2.5 -10.2 0 -2.5 -2.5Z" fill="#2c4f7a" stroke="#1c1640" stroke-width="1.2" stroke-linejoin="round"/><path d="M0 -10.2L2.5 -2.5H-2.5Z" fill="#e0452f"/><circle r="1.7" fill="#f3e3b3" stroke="#1c1640" stroke-width="1"/>') },
     src: 'lab/map.html', needs: ['cells'],
     hud: 'compact',
     theme: {

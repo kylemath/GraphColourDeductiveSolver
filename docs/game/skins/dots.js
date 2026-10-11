@@ -55,6 +55,9 @@
 
   FTH_SKINS.register({
     id: 'dots', name: 'Dots', ic: '⚫', blurb: 'one finger, one line of dots',
+    coin: { name: 'ink bead', plural: 'ink beads', glyph: '⚫', value: 1, pitch: 0.9,   // this skin's currency (SKIN-SPEC.md section 12)
+      colors: { main: '#2d2a26', edge: '#b9b3a6' },
+      svg: FTH_SKINS.coinArt('<circle r="12" fill="none" stroke="#b9b3a6" stroke-width="1" stroke-dasharray="2 3"/><circle r="9.6" fill="#2d2a26"/><circle r="6.6" fill="none" stroke="#5c564d" stroke-width="1"/><circle r="2.7" fill="#f5f1e8"/><path d="M-6.4 -3.4A7.2 7.2 0 0 1 -2.4 -6.6" stroke="#f5f1e8" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".8"/>') },
     src: 'lab/dots.html', hud: 'minimal',
     theme: {
       '--sk-bg': PAPER,

@@ -39,13 +39,14 @@ FTH_SKINS.register({
   bonus: { ... },                  // the win-screen bonus round (section 6)
   map: { ... },                    // the exploration map's look (section 7)
   words: { ... },                  // optional copy overrides (section 8)
+  coin: { ... },                   // the skin's own currency: name, value, art (section 12)
 });
 ```
 
 Every field except `id`, `name`, `ic` is optional; the shell falls back to the Islands look. A skin can be derived from
 another one that is registered before it: `FTH_SKINS.register(FTH_SKINS.extend('islands', { id: 'islands-free', name: …, ic: …, blurb: …, board: … }))`.
 `extend` copies the base spec and merges plain-object fields (`theme`, `words`, `map`, `bonus`, `levelMap`, `title`,
-`board`) one level deep; everything else in the override replaces the base's. **Skin ids are permanent**: saves,
+`board`, `coin`) one level deep; everything else in the override replaces the base's. **Skin ids are permanent**: saves,
 leaderboards and the research log key on them (progress itself is per level id and shared by every skin).
 
 ## 2. HUD levels
@@ -279,3 +280,52 @@ checks all of them (and `--write` regenerates the file after a map changes). thr
 that, or WebGL, is unavailable the page posts `{ fth: 1, type: 'error' }` and the app plays the level on the island board.
 Touch: drag a tile to trace a chain, tap a tile for its chains and press SWAP, drag empty space to turn and tilt, pinch to
 zoom; mouse: right button turns, wheel zooms.
+
+## 12. The skin's coin
+
+Every skin earns its own currency. The coin replaces the shared gold coin everywhere the shell shows coins while that skin
+is playing: the counter, the flying loot, the loot bag, the win card total, the bonus round's hidden stacks, toasts and the
+wallet screen. (The shell rewrites one `<g id="coinG">` in its defs, so there is a single source of art.)
+
+```js
+coin: { name: 'pearl', plural: 'pearls',        // singular and plural, lower case: "12 pearls", "Pearls are hidden!"
+        glyph: '🦪',                              // one emoji, for text-only places
+        value: 60,                               // worth in G, the one base unit ("gold-equivalent"): see the table below
+        pitch: 1.25,                             // optional: multiplies the coin-landing clink (0.5 to 2, default 1)
+        colors: { main: '#fdf6ff', edge: '#d9587f' },   // optional: two #hex colours that sum the coin up
+        svg: FTH_SKINS.coinArt('<circle r="9" fill="#fff"/>...') }   // size => '<svg viewBox="-13 -13 26 26" width=... height=...>...</svg>'
+```
+
+- **Art** is drawn in the box `-13 -13 26 26` (centre 0, 0), cartoon style: a dark outline of about 2 units (`#1c1640`, or the skin's
+  ink), flat fills, one highlight. `FTH_SKINS.coinArt(inner)` wraps the inner markup into the `svg(size)` function. Make the
+  shape different from the other coins (round, drop, gem, cube, shell, pencil...), not just another colour. No script, images,
+  event handlers or `id`s (an id must start with `coin-`). `tools/skin_check.js` rejects an unbalanced `<g>`, a missing size, two
+  skins with the same coin name, value or art. A skin with no `coin` gets the plain gold coin (`FTH_SKINS.coinOf(spec)`).
+- Skins that `extend` another merge `coin` field by field, so give every field again.
+- **Value and the economy.** `value` is the coin's price in G. Coins trade in the exchange (`economy.js`, opened from the wallet
+  button beside the counter, the menu and the title screen): direct markets between a few coins, a fee of 1 to 5% on each, so
+  no cycle of swaps can make money (`node tools/economy_check.js` proves it and prints every best route). Adding a skin means
+  a unique value and one or two market lines in `EDGES` and a node position in `POS` (the check fails until they exist).
+
+| coin | skin | G | why |
+|---|---|---|---|
+| ink bead | Dots | 1 | the commonest: a dot of ink |
+| pencil stub | Line Doodle | 2 | worn-down, still plentiful |
+| paint drop | Blank Doodle | 3 | cheap, but it takes a few to cover a map |
+| sugar cube | Gran's Table | 5 | a household luxury |
+| doubloon | Islands | 10 | the original game's gold: the reference coin |
+| casino chip | Bonus Swipe | 14 | a stake, worth a bit more than gold |
+| compass rose | Island Map | 20 | an explorer's prize |
+| ion orb | Ion Channels | 35 | charged, short-lived, scarce |
+| pearl | Islands Free | 60 | rare and valuable |
+| crystal shard | Islands 3D | 100 | the rarest |
+
+**Earning.** Points stay the game's score (`save.best`, proofs, stars). Coins are points turned into the skin's currency at
+`coins = points x sqrt(10 / value) / 4`, so 4 points are 1 doubloon, a level worth 800 points pays about 630 ink beads, 200 doubloons or 63
+crystal shards (rarer coins pay fewer, in G they pay more: a point is worth sqrt(value x 10) / 4 G). Replaying a beaten
+level pays a quarter. The credit goes to the wallet of the skin the level actually runs in (an island fallback pays Islands).
+
+**Wallet and save.** `save.wallet = { <skinId>: { bal, earned, f } }`: `bal` coins held, `earned` lifetime coins earned by play (an
+exchange never changes it), `f` the sub-coin remainder. It is written only through `persist()`, and `integrity.js` hashes it
+with the progress, so an offline edit shows up as an edited save. Migration (a save with no wallet): the old total of best
+points becomes the Islands balance 1:1, once. `window.FTH_WALLET` (`bal`, `earned`, `wealth`, `swap`) is the shell's wallet API.

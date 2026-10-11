@@ -25,6 +25,10 @@ scene (`lab/islands3d.html`, `node tools/islands3d_check.js`). The contract is i
 is `skins/<id>.js` plus an optional play page `lab/<id>.html`, checked with `node tools/skin_check.js`.
 `lab/Families.html` shows the experimental styles side by side.
 
+**Coins.** Each skin earns its own currency (ink beads, doubloons, pearls, crystal shards...) worth between 1 and 100 G, and
+the wallet button opens a graph of direct markets between them where coins convert along the cheapest route (`economy.js`,
+`node tools/economy_check.js` proves there is no arbitrage; `node tools/coins_check.js` plays it headlessly). SKIN-SPEC.md section 12.
+
 Accounts, per-skin leaderboards and the cheat-evidence log are described in [ACCOUNTS.md](ACCOUNTS.md); they work locally
 with no setup and go online once `account-config.js` is filled in.
 
