@@ -49,7 +49,7 @@ async function one(B, base, skin, lvl) {
   let au = null;
   if (audio) au = await P.eval(`(async () => { const A = __au, buf = await A.ctx.startRendering(), d = buf.getChannelData(0), sr = buf.sampleRate, W = 0.05, pk = [];
     for (let i = 0; i < d.length; i += sr * W) { let m = 0; for (let k = i; k < Math.min(d.length, i + sr * W); k++) m = Math.max(m, Math.abs(d[k])); pk.push(m); }
-    return { t0: A.t0, starts: A.starts.length, pk }; })()`);
+    return { t0: A.t0, starts: A.starts.length, st: A.starts, pk }; })()`);
   P.S('Target.closeTarget', {}).catch(() => 0);
   return { R, au };
 }
@@ -77,7 +77,8 @@ function check(R, au, fail) {
     for (const sk of skins) for (const lv of lvls) {
       const { R, au } = await one(B, srv.url, sk, lv), fails = []; check(R, au, f => fails.push(f));
       const seq = ORDER.map(n => n + 'x' + R.log.filter(l => l[1] === n).length).join(' ');
-      console.log(sk, lv, 'swipe->card', Math.round(R.tw - R.tl), 'ms, card->bonus', Math.round(R.tb - R.tw), 'ms, total', Math.round(R.tb - R.tl), 'ms', au ? ' audio peak=' + Math.max(...au.pk).toFixed(3) + ' osc=' + au.starts : '', fails.length ? 'FAIL' : 'ok');
+      console.log(sk, lv, 'swipe->card', Math.round(R.tw - R.tl), 'ms, card->bonus', Math.round(R.tb - R.tw), 'ms, total', Math.round(R.tb - R.tl), 'ms', au ? ' audio peak=' + Math.max(...au.pk).toFixed(3) + (R.log[0] ? ' (scene only ' + Math.max(...au.pk.slice(Math.floor((R.log[0][0] - au.t0) / 50))).toFixed(3) + ')' : '') + '@' + Math.round(au.pk.indexOf(Math.max(...au.pk)) * 50 + au.t0 - R.tl) + 'ms' + ' osc=' + au.starts : '', fails.length ? 'FAIL' : 'ok');
+      if (process.env.DEBUGAU) console.log(JSON.stringify(au.st.filter(x => x[0] - R.tl > 700 && x[0] - R.tl < 1150).map(x => [Math.round(x[0] - R.tl), x[1], Math.round(x[2])])));
       fails.forEach(f => console.log('   -', f)); if (fails.length) bad++; if (process.env.VERBOSE) console.log('   ' + seq);
       if (process.env.VERBOSE) console.log(JSON.stringify(R.rec.filter((_, i) => i % 8 === 0).map(r => [Math.round(r.t - R.tl), +r.min.toFixed(2), +r.max.toFixed(2), r.ov])));
     }

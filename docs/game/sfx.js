@@ -16,7 +16,7 @@
       if (!master || mctx !== c) {
         mctx = c; const comp = c.createDynamicsCompressor();
         comp.threshold.value = -18; comp.knee.value = 12; comp.ratio.value = 8; comp.attack.value = .003; comp.release.value = .15;
-        master = c.createGain(); master.gain.value = 1; master.connect(comp); comp.connect(c.destination);
+        master = c.createGain(); master.gain.value = .72; master.connect(comp); comp.connect(c.destination);
       }
       if (api.trace) api.log.push([performance.now(), name]);
       return { c, t: c.currentTime + .005 };

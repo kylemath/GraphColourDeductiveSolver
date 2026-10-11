@@ -990,12 +990,12 @@
     const tick = () => {
       let rimHit = false;
       K.order[i].forEach(u => { col[u] = after[u]; popBall(u); if (rim.has(u)) rimHit = true; });
-      paintBalls(); blip(300 * Math.pow(1.1, Math.min(i, 14)), winning ? .16 : .08, 'triangle', .045);
+      paintBalls(); blip(300 * Math.pow(1.1, Math.min(i, 14)), winning ? .09 : .08, 'triangle', .045);
       let pause = 0;
       if (winning && rimHit) {
         blip(196, .3, 'sine', .06);                                   // a deeper chime on the ring
         if (gone.length && !rimCols(col).includes(gone[0])) {         // the last tile of the leaving element just flipped
-          pause = 250; note(12); setTimeout(() => note(16), 60);
+          pause = 330; note(12); setTimeout(() => note(16), 160);
           BRD.holePop(1.25);
           popBall(link[0], 'hintpulse');
           msg('<b>' + NAMES[gone[0]][0].toUpperCase() + NAMES[gone[0]].slice(1) + ' is gone from the ring!</b> Now the middle can take it.');
