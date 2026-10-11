@@ -2116,7 +2116,7 @@
     good: () => { const d = dist(col); return chains.filter(K => dist(flipped(col, K)) === d - 1); }, dist: () => dist(col), get won() { return won; }, get T() { return BRD.debug().T; }, get trace() { return trace; }, pick: (x, y) => pick(x, y), pickAll: (x, y) => pickAll(x, y), stepTarget: (x, y) => stepTarget(x, y), ballAt: (x, y) => ballAt(x, y), get layout() { return BRD.debug().LAYO; }, get box() { return BRD.debug().BOX; }, get graph() { return Gr; }, get bridges() { return BRD.debug().bridges; }, board: BRD,
     gain, win: () => win(), capture: K => capture(K, K.vs[0]), flip: K => doFlip(K), get busy() { return busy; }, get score() { return score; }, get rate() { return RATE; },   // test hooks for tools/coins_check.js
     bonus: (ncol, delay) => { $('win').classList.add('on'); bonusStart(delay || 0, ncol); }, get bz() { return bz; }, get active() { return active; }, get compass() { return compass; }, get pm() { return PM; }, get free() { return BRD.debug().free; }, get LIVE() { return BRD.LIVE; } };   // test hook
-  Object.assign(window.__game, { sfx: wsfx, flip: K => { found.add(K.key); needFind = false; doFlip(K); }, get busy() { return busy; } });   // test hook: tools/win_scene_check.js
+  Object.assign(window.__game, { sfx: wsfx, flip: K => { found.add(K.key); needFind = false; doFlip(K); } });   // test hook: tools/win_scene_check.js (flip: marks the chain found first)
   // ---------------- dev panel (board/island.js): live spring / damping knobs, crossing guard, free borders ----------------
   // Open with #dev on the link, or tap the level name five times. Changes apply at once to the running board.
   const devOpen = BRD.dev;
