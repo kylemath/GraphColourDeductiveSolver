@@ -794,6 +794,10 @@
   function configure(cfg, key) {                   // a skin's physics; kept across levels so dev-panel tweaks survive until the skin changes
     if (key !== undefined && key === cfgKey) return; cfgKey = key === undefined ? null : key; cfg = cfg || {};
     Object.assign(LIVE, LIVE0, cfg.live || {}); LIVE.guard = cfg.guard === undefined ? LIVE0.guard : !!cfg.guard; FREE.on = !!cfg.free;
+    const d = $('devPanel'); if (d) {              // an open dev panel shows the new skin's numbers
+      d.querySelectorAll('input[type=range]').forEach(r => { r.value = LIVE[r.dataset.k]; d.querySelector('[data-v="' + r.dataset.k + '"]').textContent = r.value; });
+      $('devGuard').checked = LIVE.guard; $('devFree').checked = FREE.on;
+    }
   }
   function reset() { holeFill = -1; cer = null; cerLight = null; anim.clear(); }   // a level starts
   function destroy() { looping = false; T = []; bridgesM = []; ghosts = []; waves = []; LAYO = null; SIM = null; LV = null; HOME = null; if (svg) clear(svg); }
@@ -806,7 +810,7 @@
   const DEVK = [
     ['kH', 'Home spring', 0, .3, .005], ['kB', 'Bridge spring', 0, .2, .005], ['damp', 'Damping (keep)', .3, .98, .01],
     ['cap', 'Swing room ×spacing', 0, 1.2, .02], ['rep', 'Like-colour push', 0, 5, .1],
-    ['fk', 'Free: link pull', 0, .15, .005], ['fr', 'Free: bubble push', 0, 3, .05], ['fl', 'Free: bubble size', .5, 1.6, .02]];
+    ['fk', 'Free: link pull', 0, .15, .005], ['fr', 'Free: bubble push', 0, 3, .05], ['fl', 'Free: bubble size', .5, 1.6, .01]];
   function dev(on) {
     let d = $('devPanel');
     try { localStorage.setItem('fth-dev', on ? '1' : '0'); } catch (_) {}

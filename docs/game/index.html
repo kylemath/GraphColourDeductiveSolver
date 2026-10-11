@@ -591,6 +591,7 @@
 <script src="board/island.js"></script>
 <script src="skins/islands.js"></script>
 <script src="skins/islands-free.js"></script>
+<script src="skins/islands-3d.js"></script>
 <script src="skins/dots.js"></script>
 <script src="skins/doodle.js"></script>
 <script src="skins/blank.js"></script>
@@ -1706,6 +1707,7 @@
     if (ACT !== SKIN) msg(SKIN.name + ' cannot draw this map yet, so it plays on the island.');
     const on = !!ACT.src, f = $('skinFrame'), gm = $('game'), hud = ACT.hud || 'full';
     gm.classList.toggle('skinned', on);
+    if (on) BRD.destroy();                                  // the island board is not drawn while a play page runs
     gm.classList.remove('hud-full', 'hud-compact', 'hud-minimal'); gm.classList.add('hud-' + (on ? hud : 'full'));
     const mi = $('mini');                              // the exploration map: inside the island board, or floating over a skin
     if (on && mi.parentNode !== gm) { mi.classList.add('floatmap'); gm.appendChild(mi); }
