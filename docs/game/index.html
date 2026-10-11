@@ -1702,7 +1702,7 @@
   }
   function skinStart() {
     clearTimeout(skinWinT);
-    ACT = SKIN.src && skinFits(SKIN) ? SKIN : SKINS[0];
+    ACT = !SKIN.src || skinFits(SKIN) ? SKIN : SKINS[0];                       // a skin with a play page that cannot draw this map plays on the island
     if (ACT !== SKIN) msg(SKIN.name + ' cannot draw this map yet, so it plays on the island.');
     const on = !!ACT.src, f = $('skinFrame'), gm = $('game'), hud = ACT.hud || 'full';
     gm.classList.toggle('skinned', on);

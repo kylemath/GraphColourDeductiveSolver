@@ -58,7 +58,7 @@
     return [c[0] + ux * (best + gap), c[1] + uy * (best + gap)];
   }
   function islandBox() {                            // the island fills the board above the chain tray and message bubble
-    if (freeOn()) { const top = 22, bot = BH - (BH > 480 ? 160 : BH * .33); return { cx: BW / 2, cy: (top + bot) / 2, a: BW / 2 - 20, b: (bot - top) / 2 }; }   // free borders: no walls, the whole window, a thin ring of sea
+    if (freeOn()) { const top = 22, bot = BH - (BH > 480 ? 160 : BH * .33), b = (bot - top) / 2; return { cx: BW / 2, cy: (top + bot) / 2, a: Math.min(BW / 2 - 20, b * 1.7), b }; }   // never wider than 1.7 : 1   // free borders: no walls, the whole window, a thin ring of sea
     const bottom = BH > 480 ? 160 : BH * .33, H = BH - bottom - 10, W = BW - 20, inset = 5 + WB / 2 - 13;   // the walls' outer half stays on screen
     let b = H / 2 - inset, a = W / 2 - inset; a = Math.min(a, b * 1.7); b = Math.min(b, a * 1.35);
     return { cx: BW / 2, cy: 10 + H / 2, a, b };
@@ -133,12 +133,21 @@
   function freeGeometry(G) {
     const C = [], all = [], tiles = [];
     for (let u = 0; u < n; u++) { all.push(u); if (u !== hole) tiles.push(u); }
-    // start from the usual layout; the three far regions step off their walls to evenly spaced points near the coast
-    const ang = w => { const m = G.wallPts[w] && G.wallPts[w][20]; return m ? Math.atan2((m[1] - BOX.cy) / BOX.b, (m[0] - BOX.cx) / BOX.a) : G.W3.indexOf(w) * 2.1 - 1.57; };   // small maps: walls without docks
-    const W3o = G.W3.slice().sort((x, y) => ang(x) - ang(y)), a0 = ang(W3o[0]);
-    all.forEach(u => { C[u] = G.C[u] ? G.C[u].slice() : [BOX.cx, BOX.cy]; });
-    W3o.forEach((w, i) => { const a = a0 + 2 * Math.PI * i / W3o.length; C[w] = [BOX.cx + BOX.a * .8 * Math.cos(a), BOX.cy + BOX.b * .8 * Math.sin(a)]; });
-    const ap = Math.max(8, Math.min(30, Math.sqrt(1.05 * BOX.a * BOX.b / n) * .5)), R = [], phi = [];   // a tile fits inside its bubble
+    // start: rings round the goal by graph distance, each ring's tiles in the order the map's own drawing puts them round it,
+    // evenly spaced, on ellipses that share the island out by area. Every map gets an even, planar-ish start, so the
+    // bubbles (freeStep) only have to iron out small overlaps and settle quickly.
+    const lay = window.LAYOUT && window.LAYOUT[L.g], cen = lay && lay.centre, rg = new Array(n).fill(-1); rg[hole] = 0;
+    for (let q = [hole], i = 0; i < q.length; i++) adj[q[i]].forEach(w => { if (rg[w] < 0) { rg[w] = rg[q[i]] + 1; q.push(w); } });
+    const rings = []; all.forEach(u => { if (u !== hole) (rings[rg[u]] = rings[rg[u]] || []).push(u); });
+    const th0 = u => cen ? Math.atan2(cen[u][1] - cen[hole][1], cen[u][0] - cen[hole][0]) : Math.atan2(G.C[u][1] - G.C[hole][1], G.C[u][0] - G.C[hole][0]);
+    const reach = .88; let cum = 0; C[hole] = [BOX.cx, BOX.cy];
+    rings.forEach((ring, k) => {
+      if (!ring) return; ring.sort((x, y) => th0(x) - th0(y));
+      const f = reach * Math.sqrt((cum + ring.length / 2) / (n - 1)), m = ring.length; cum += m;
+      let o = 0; { let sx = 0, sy = 0; ring.forEach((u, i) => { const d = th0(u) - 2 * Math.PI * i / m; sx += Math.cos(d); sy += Math.sin(d); }); o = Math.atan2(sy, sx); }   // the even spacing that best fits the drawing's angles
+      ring.forEach((u, i) => { const a = o + 2 * Math.PI * i / m; C[u] = [BOX.cx + BOX.a * f * Math.cos(a), BOX.cy + BOX.b * f * Math.sin(a)]; });
+    });
+    const ap = Math.max(8, Math.min(30, bubbleR() * .65 * Math.cos(Math.PI / Math.min(...tiles.map(u => Math.max(4, sidesOf(u))))))), R = [], phi = [];   // a tile's corners fit inside .65 of its bubble, leaving room for a ladder between neighbours
     tiles.forEach(u => { R[u] = ap / Math.cos(Math.PI / Math.max(4, sidesOf(u))); }); R[hole] = ap * 1.3 / Math.cos(Math.PI / 5);   // triangles kept from swelling
     all.forEach(u => {
       const nb = u === hole ? link : Gr.rot[u], k = nb.length;
@@ -234,7 +243,7 @@
     const byT = []; tl.forEach(u => { byT[u] = []; }); cons.forEach((c, i) => c.m.forEach(u => byT[u].push(i)));
     const bl = E.map(([u, w]) => Math.hypot(HOME[u][0] - HOME[w][0], HOME[u][1] - HOME[w][1])).sort((x, y) => x - y), sp = bl.length ? bl[bl.length >> 1] : LAYO.ap * 3;
     const FE = []; inn.forEach(u => rot[u].forEach(w => { if (w > u && HOME[w]) FE.push([u, w]); }));   // free layout: every link
-    LV = { cons, byT, E, FE, sp, cap0: LIVE.cap * sp, V: [], col: col.slice(), seen: new Map(), kick: [], stuck: [], drag: null, settle: 0, t: 0, acc: 0, dirty: true };
+    LV = { rb: LAYO.free ? bubbleR() : 0, cons, byT, E, FE, sp, cap0: LIVE.cap * sp, V: [], col: col.slice(), seen: new Map(), kick: [], stuck: [], drag: null, settle: 0, t: 0, acc: 0, dirty: true };
     tl.forEach(u => { LV.V[u] = [0, 0]; LV.kick[u] = 0; LV.stuck[u] = 0; });
   }
   function liveOk(M) {                             // do the homes of the tiles in M (and everything round them) keep every constraint?
@@ -273,17 +282,26 @@
     });
     [...LV.seen.keys()].forEach(k => { if (!traced.has(k)) LV.seen.delete(k); });
   }
+  function bubbleR() {                             // the radius at which n bubbles fill 86% of the island less a coast margin of .9 radius (the island's area is 3.53ab)
+    const a = BOX.a, b = BOX.b; let lo = 4, hi = Math.min(a, b);
+    for (let i = 0; i < 24; i++) { const r = (lo + hi) / 2; if (n * 3.464 * r * r > .86 * 3.534 * Math.max(0, a - .9 * r) * Math.max(0, b - .9 * r)) hi = r; else lo = r; }
+    return lo;
+  }
+  function presettle() {                           // run the bubbles to rest offline, so the island opens already settled (the grow-in then plays towards the settled layout)
+    let calm = 0, i = 0; for (; i < 1200 && calm < 10; i++) calm = freeStep(0) < .05 ? calm + 1 : 0;
+    LAYO.inner.forEach(u => { LAYO.C[u] = SIM.P[u].slice(); }); LAYO.pre = i;
+  }
   function freeStep(now) {                         // dev, free borders: soft bubbles settling into an even packing
     const P = SIM.P, tl = LAYO.tiles, all = LAYO.inner, F = [], G = LV.drag;
-    const r0 = Math.sqrt(1.05 * BOX.a * BOX.b / n) * LIVE.fl, D2 = 2 * r0;   // bubble radius: the island (~3.7ab) shared out in a hexagonal packing
+    const r0 = LV.rb * LIVE.fl, D2 = 2 * r0;         // bubble radius: a hexagonal packing that fills 86% of the room the coast leaves (fl 1); the goal's bubble is 25% wider
     all.forEach(u => { F[u] = [0, 0]; });
     for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {   // overlapping bubbles push apart
-      const u = all[i], w = all[j], dx = P[w][0] - P[u][0], dy = P[w][1] - P[u][1], d = Math.hypot(dx, dy) || 1e-6; if (d >= D2) continue;
-      const f = LIVE.fr * .25 * (D2 - d) / d; F[u][0] -= dx * f; F[u][1] -= dy * f; F[w][0] += dx * f; F[w][1] += dy * f;
+      const u = all[i], w = all[j], dx = P[w][0] - P[u][0], dy = P[w][1] - P[u][1], d = Math.hypot(dx, dy) || 1e-6, Dp = u === hole || w === hole ? D2 * 1.125 : D2; if (d >= Dp) continue;
+      const f = LIVE.fr * .25 * (Dp - d) / d; F[u][0] -= dx * f; F[u][1] -= dy * f; F[w][0] += dx * f; F[w][1] += dy * f;
     }
-    LV.FE.forEach(([u, w]) => {                     // links: gentle springs to a bubble's width
-      const dx = P[w][0] - P[u][0], dy = P[w][1] - P[u][1], d = Math.hypot(dx, dy) || 1e-6; if (d <= D2) return;
-      const f = LIVE.fk * (d - D2) / d; F[u][0] += dx * f; F[u][1] += dy * f; F[w][0] -= dx * f; F[w][1] -= dy * f;
+    LV.FE.forEach(([u, w]) => {                     // links: a loose leash, taut only beyond 1.5 bubble widths (a tighter one crowds tiles together)
+      const dx = P[w][0] - P[u][0], dy = P[w][1] - P[u][1], d = Math.hypot(dx, dy) || 1e-6; if (d <= D2 * 1.5) return;
+      const f = LIVE.fk * (d - D2 * 1.5) / d; F[u][0] += dx * f; F[u][1] += dy * f; F[w][0] -= dx * f; F[w][1] -= dy * f;
     });
     const KC = .02 * r0; liveEdges().forEach(([a, b]) => { if (!F[a] || !F[b]) return; const dx = P[b][0] - P[a][0], dy = P[b][1] - P[a][1], d = Math.hypot(dx, dy) || 1e-6; F[a][0] += dx / d * KC; F[a][1] += dy / d * KC; F[b][0] -= dx / d * KC; F[b][1] -= dy / d * KC; });
     const old = []; tl.forEach(u => { old[u] = P[u].slice(); });
@@ -297,6 +315,17 @@
       const x = p[0] - BOX.cx, y = p[1] - BOX.cy, f = Math.pow(Math.abs(x / BOX.a), SEP) + Math.pow(Math.abs(y / BOX.b), SEP);
       if (f > 1e-9) { const dist = Math.hypot(x, y), edge = dist * Math.pow(f, -1 / SEP), lim = edge - r0 * .9; if (dist > lim) { p[0] = BOX.cx + x * lim / dist; p[1] = BOX.cy + y * lim / dist; v[0] *= .3; v[1] *= .3; } }
     });
+    for (let it = 0; it < 2; it++) {                // a hard floor under the soft push: two tiles never overlap while there is room (the goal and a held tile stay put)
+      let moved = false;
+      for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
+        const u = all[i], w = all[j], dx = P[w][0] - P[u][0], dy = P[w][1] - P[u][1], d = Math.hypot(dx, dy) || 1e-6, dm = (LAYO.R[u] + LAYO.R[w]) * .92; if (d >= dm) continue;
+        const fu = u === hole || (G && G.u === u) ? 0 : 1, fw = w === hole || (G && G.u === w) ? 0 : 1, t = fu + fw; if (!t) continue;
+        const k = (dm - d) / d / t; P[u][0] -= dx * k * fu; P[u][1] -= dy * k * fu; P[w][0] += dx * k * fw; P[w][1] += dy * k * fw; moved = true;
+      }
+      if (!moved) break;
+      tl.forEach(u => { const p = P[u], x = p[0] - BOX.cx, y = p[1] - BOX.cy, f = Math.pow(Math.abs(x / BOX.a), SEP) + Math.pow(Math.abs(y / BOX.b), SEP);
+        if (f > 1e-9) { const dist = Math.hypot(x, y), lim = dist * Math.pow(f, -1 / SEP) - LAYO.R[u]; if (dist > lim) { p[0] = BOX.cx + x * lim / dist; p[1] = BOX.cy + y * lim / dist; } } });   // and stay on the island
+    }
     tl.forEach(u => { if (!(G && G.u === u)) HOME[u] = P[u].slice(); });
     let mv = 0; tl.forEach(u => { mv = Math.max(mv, Math.abs(P[u][0] - old[u][0]) + Math.abs(P[u][1] - old[u][1])); });
     return mv;
@@ -414,7 +443,8 @@
       const w2 = Math.max(18, Math.min(56, 2 * LAYO.ap));
       if (Math.abs(w2 - WB) > 1) { WB = w2; BOX = islandBox(); LAYO = boardGeometry(BOX); }
     }
-    if (freeOn()) LAYO = freeGeometry(LAYO); startSim(grow !== false);
+    if (freeOn()) { LAYO = freeGeometry(LAYO); startSim(false); presettle(); }   // free layout: the bubbles settle before the first frame
+    startSim(grow !== false);
     return true;
   }
   function buildBoard(grow) {
