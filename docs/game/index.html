@@ -493,6 +493,7 @@
       <div class="skins" id="skinPick" role="radiogroup" aria-label="Game style"></div>
       <div class="trow">
         <button class="btn3d yellow" id="btnHowTitle" aria-label="How to play">❓ How to play</button>
+        <button class="btn3d white" id="btnLbTitle" aria-label="Leaderboard and profile">🏆 Scores</button>
         <button class="btn3d blue" id="btnInstall" aria-label="Install the game on this phone" hidden>📲 Install</button>
       </div>
       <div class="consent" id="consent" hidden><!-- research request: no longer shown -->
@@ -508,6 +509,7 @@
   <div class="mbar">
     <button class="btn3d white rbtn" id="btnTitle" aria-label="Back to title screen">🏠</button>
     <div class="badge" aria-label="Your stars and points"><span class="s">★ <b id="totalStars">0</b></span><span class="p">✦ <b id="totalScore">0</b></span></div>
+    <button class="btn3d white rbtn" id="btnLbMap" aria-label="Leaderboard and profile">🏆</button>
     <button class="btn3d yellow rbtn" id="btnHowMap" aria-label="How to play">?</button>
   </div>
   <div id="saga"></div>
@@ -585,6 +587,8 @@
 
 <script src="telemetry.js"></script>
 <script src="levels.js"></script>
+<script src="verify.js"></script>
+<script src="integrity.js"></script>
 <script src="layout.js"></script>
 <script src="skins/registry.js"></script>
 <script src="skins/islands.js"></script>
@@ -618,7 +622,8 @@
   const KEY = LABN ? 'fth-lab-2d-' + (LABW ? 'walls' : 'free') + '-' + LABN : 'fill-the-hole-v2';
   let save = { best: {} };
   try { save = JSON.parse(localStorage.getItem(KEY)) || save; } catch (e) {}
-  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(save)); } catch (e) {} };
+  if (window.FTH_INT && !LABN) FTH_INT.check(KEY, save);       // integrity.js: was this progress save edited outside the game?
+  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(save)); } catch (e) {} if (window.FTH_INT && !LABN) FTH_INT.seal(KEY, save); };
   // progress is kept per level id (save.byId), so levels can be inserted or reordered in levels.json. Old saves were
   // keyed by position: v1 had no Level -1 (4 onboarding levels added in front), v2 matched G.legacy (the old 20 levels).
   save.byId = save.byId || {};
@@ -1742,7 +1747,7 @@
       found = new Set([...found].map(rk)); traced = new Map([...traced].map(([k, v]) => [rk(k), v]));
       if (active) active = rk(active); if (lastFlip) lastFlip = rk(lastFlip); history = history.map(rk);
       if (lastPartial) lastPartial = { key: rk(lastPartial.key), pair: lastPartial.pair.map(sw) };
-      computeChains();
+      computeChains(); if (window.FTH_RUN) FTH_RUN.op('w', col);
       blip(150, .14, 'square', .035); setTimeout(() => blip(110, .2, 'square', .03), 130);
       const some = K.vs.filter(u => T[u] && T[u].kind === 'tile'); some.filter((u, j) => j % Math.max(1, Math.floor(some.length / 5)) === 0).slice(0, 6).forEach(u => { shake(u); popBall(u, 'wob'); });
       msg('<b>Nothing changed!</b> That just swapped ' + NAMES[a] + ' and ' + NAMES[b] + ' everywhere: same puzzle, new colours.');
@@ -1752,6 +1757,7 @@
   }
   function finishFlip(K) {
     flips++; busy = false; compassSet(null);
+    if (window.FTH_RUN) FTH_RUN.op('s', col);
     const cs = canon(col);
     const isNew = !visited.has(cs);
     computeChains(); LOG('state', { s: cs, d: dist(col), isNew });
@@ -1982,7 +1988,7 @@
     const d = dist(col); if (!d) return;
     const good = chains.filter(K => K.size > 0 && dist(flipped(col, K)) === d - 1);
     if (!good.length) return;
-    hintsUsed++; const paid = Math.min(score, 100); score -= paid; pending = Math.min(pending, score);
+    hintsUsed++; if (window.FTH_RUN) FTH_RUN.hint(); const paid = Math.min(score, 100); score -= paid; pending = Math.min(pending, score);
     if (paid) { bumpEl($('coinBox'), 'loss'); const [cx, cy] = centerOf($('coinBox')), br = $('board').getBoundingClientRect(); floatAt(cx - br.left, Math.max(20, cy - br.top + 30), '−' + paid, '', 'dim'); blip(220, .15, 'triangle', .03); }
     const K = good.find(k => found.has(k.key)) || good.sort((a, b) => a.size - b.size)[0];
     const why = ' It takes you from <b>' + d + '</b> to <b>' + (d - 1) + '</b> swap' + (d - 1 === 1 ? '' : 's') + ' from filling' + (W ? ': the <b style="color:#2e9e57">green</b> arrow.' : '.');
@@ -2444,9 +2450,11 @@
     const mi = $('mini'); if (mi.parentNode !== $('board')) { mi.classList.remove('floatmap', 'big'); PM.big = false; $('board').insertBefore(mi, $('compass')); } }
   addEventListener('message', e => {
     const d = e.data, f = $('skinFrame');
+    if (window.FTH_RUN) FTH_RUN.sniff(e, d, f.contentWindow);
     if (!d || !d.fth || !ACT.src || e.source !== f.contentWindow || !L || won) return;
     if (d.type === 'error') {                              // the skin broke: finish this level on the island board
       console.warn('skin ' + ACT.id + ' failed on ' + L.id + ': ' + d.message);
+      if (window.FTH_RUN) FTH_RUN.end('skin-error');
       ACT = SKINS[0]; skinStop(); msg(SKIN.name + ' hit a problem here, so this level plays on the island.');
       requestAnimationFrame(() => { computeChains(); buildBoard(false); drawTraced(); drawActive(); updateHud(); });   // the board was hidden
       if (window.FTH_LOG) FTH_LOG.ev('skin-error', { skin: SKIN.id, message: d.message });
@@ -2455,6 +2463,7 @@
     if (d.id !== L.id) return;
     if (!ACT.own && (d.type === 'swap' || d.type === 'undo' || d.type === 'reset')) {
       col = d.col.slice(); col[hole] = -1; flips = d.moves; computeChains(); updateHud();
+      if (window.FTH_RUN) FTH_RUN.frame(d);
       worldEnter(d.type === 'swap' ? { skin: ACT.id } : null);   // every skin charts colouring space
       if (window.FTH_LOG) FTH_LOG.ev(d.type, { skin: ACT.id, state: canon(col), moves: d.moves });
     }
@@ -2486,6 +2495,7 @@
     msg('Drag across two colours to <b>catch</b> a chain!');
     updateHud();
     skinStart();
+    if (window.FTH_RUN && !LABN) FTH_RUN.begin({ id: L.id, skin: ACT.id, cnt: ACT.src ? 'net' : 'all', own: !!ACT.own });   // run proof recorder (integrity.js)
     if (brief) showBrief();
   }
   function showBrief() {
@@ -2501,6 +2511,7 @@
     won = true; closeWheel(); active = null; lastPartial = null; drawActive(); if (L.g === 'r178') award('island');   // landfall on the record map only
     const used = new Set(rimCols(col)); let free = 0; while (used.has(free)) free++;
     const stars = starsNow(), bonus = 300 + 150 * stars;
+    if (window.FTH_RUN && !LABN) FTH_RUN.win({ stars, flips, hints: hintsUsed, score, pending, shown: $('score').textContent, points: score + bonus, own: !!ACT.own });
     if (window.FTH_LOG) FTH_LOG.end('win', { flips, stars, hints: hintsUsed });
     score += bonus; pending += bonus;           // the bonus is paid out on the reward screen
     const prev = save.best[levelIdx];
@@ -3277,6 +3288,7 @@
   }
   $('btnHowMap').onclick = () => openHowTo(null);
   $('btnTitle').onclick = showTitle;
+  $('btnLbTitle').onclick = $('btnLbMap').onclick = () => { if (window.FTH_RUN) FTH_RUN.openBoard(SKIN.id); };   // lazy: leaderboard.js, account.js
   titleBuild();
   (function () {                           // research consent: ask once, record nothing until OK
     const box = document.getElementById('consent'); if (!box || !window.FTH_LOG) return;

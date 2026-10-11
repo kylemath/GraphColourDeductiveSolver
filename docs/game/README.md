@@ -21,6 +21,9 @@ title art, how-to-play pages, bonus-round tiles and the look of the exploration 
 swap. The contract is in [SKIN-SPEC.md](SKIN-SPEC.md); a skin is `skins/<id>.js` plus an optional play page
 `lab/<id>.html`, checked with `node tools/skin_check.js`. `lab/Families.html` shows the experimental styles side by side.
 
+Accounts, per-skin leaderboards and the cheat-evidence log are described in [ACCOUNTS.md](ACCOUNTS.md); they work locally
+with no setup and go online once `account-config.js` is filled in.
+
 Research logging is off unless the player agrees on the title screen, and it stays on the device unless an upload
 form is configured in `telemetry.js` (none is).
 

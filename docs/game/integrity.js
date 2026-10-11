@@ -95,7 +95,7 @@
   }
   function sig(kind, data) { log(kind, data); if (cur) cur.bad = true; }
   function op(type, col) {
-    const r = cur; if (!r || r.done || !V) return;
+    const r = cur; if (!r || r.done || r.skip || !V) return;
     const c = col.slice(), dt = Math.round(performance.now() - r.t0); c[r.Gr.hole] = -1;
     const prev = r.ops.length ? r.ops[r.ops.length - 1][1] : 0;
     if (document.hidden) log('move-while-hidden', { dt });
@@ -109,7 +109,7 @@
     r.ops.push([type, dt, V.encCol(c)]); r.last = c;
   }
   const hint = () => { if (cur) cur.hints++; };
-  const end = why => { if (cur && !cur.done && cur.ops.length && why === 'restart') log('run-restart', { ops: cur.ops.length }); cur = null; };
+  const end = why => { if (why === 'skin-error' && cur) { cur.skip = true; log('skin-fallback', {}); } else cur = null; };       // a skin that crashed mid-level: no proof for this run
 
   // the shell receives a message from the skin frame: foreign sender, synthetic event, wrong level
   function sniff(e, d, frameWin) {
@@ -120,7 +120,7 @@
   }
   // an accepted frame message (swap / undo / reset): record it and check it is consistent with the run so far
   function frame(d) {
-    const r = cur; if (!r || r.done || !V) return;
+    const r = cur; if (!r || r.done || r.skip || !V) return;
     if (!Array.isArray(d.col) || d.col.length !== r.Gr.n) { sig('msg-bad-state', {}); return; }
     const t = d.type === 'swap' ? 's' : d.type === 'undo' ? 'u' : 'r', c = d.col.slice(); c[r.Gr.hole] = -1;
     if (t === 'r' && V.encCol(c) !== V.encCol(r.Gr.L.start.map((x, i) => i === r.Gr.hole ? -1 : x))) sig('msg-state-inconsistent', { t });
@@ -145,13 +145,13 @@
   // the level was won. info: { stars, flips, hints, score, pending, shown, own }
   function win(info) {
     const r = cur; if (!r || !V) { if (!cur) log('win-without-run', {}); return Promise.resolve(null); }
-    if (r.done) return Promise.resolve(null);
+    if (r.done || r.skip) return Promise.resolve(null);
     r.done = true;
     if (r.own) { log('own-skin-no-proof', {}); return Promise.resolve(null); }       // the skin's own goal cannot be replayed (ACCOUNTS.md)
     const key = r.skin + '/' + r.lvl, farm = wins[key] = (wins[key] || 0) + 1;
     if (farm >= 3) log('level-farm', { n: farm });
     if (rimCount(r.Gr, r.last) > (r.Gr.goal || 3) || !r.ops.length) sig('win-without-path', {});
-    if (+info.shown > info.score - (info.pending || 0) + 1) sig('score-display-mismatch', { shown: +info.shown, want: info.score - (info.pending || 0) });
+    if (+info.shown > info.score - (info.pending || 0) + 101) sig('score-display-mismatch', { shown: +info.shown, want: info.score - (info.pending || 0) });
     const ms = Math.round(performance.now() - r.t0);
     const p = { v: 1, lvl: r.lvl, skin: r.skin, app: APP, cnt: r.cnt, hints: info.hints || r.hints, t0: r.w0, ms, wall: Date.now() - r.w0,
       claim: { stars: info.stars, moves: info.flips, pts: Math.max(0, Math.round(info.points || 0)) }, ops: r.ops, fin: V.encCol(r.last), int: [] };
@@ -180,7 +180,12 @@
     }).catch(e => { log('verify-error', { m: String(e && e.message).slice(0, 60) }); return null; });
   }
 
+  let lbP = null;
+  function openBoard(skin) {
+    if (!lbP) lbP = loadScripts(['account-config.js', 'account.js', 'leaderboard.js']).catch(e => { lbP = null; throw e; });
+    return lbP.then(() => window.FTH_LB.open(skin)).catch(() => { alert('The leaderboard could not load. Check your connection and try again.'); });
+  }
   window.FTH_INT = { log, logs: () => jget(LOGK, []), clear() { ls.del(LOGK); }, meta, check, seal, APP,
     counts() { const o = {}; jget(LOGK, []).forEach(r => { o[r.k] = (o[r.k] || 0) + 1; }); return o; } };
-  window.FTH_RUN = { begin, op, hint, end, win, ingest, sniff, frame, store, loadAccount, loadScripts, APP, get cur() { return cur; }, keys: { RUNK, FPK, ACCK, LOGK, METAK } };
+  window.FTH_RUN = { begin, op, hint, end, win, ingest, sniff, frame, store, loadAccount, loadScripts, openBoard, APP, get cur() { return cur; }, keys: { RUNK, FPK, ACCK, LOGK, METAK } };
 })();

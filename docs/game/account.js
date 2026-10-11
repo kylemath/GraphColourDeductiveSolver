@@ -70,6 +70,11 @@
 
   // ---------------------------------------------------------------- firebase adapter (sdk injected so it can be mocked)
   const FB_VER = '10.12.2';
+  // Firestore cannot hold arrays inside arrays: ops [['s',t,col]] and int [[kind,n,ms]] travel as strings
+  const packP = p => Object.assign({}, p, { ops: p.ops.map(o => o.join('|')), int: (p.int || []).map(x => x.join(':')) });
+  const unpackP = p => Object.assign({}, p, { ops: (p.ops || []).map(o => { const [t, d, c] = String(o).split('|'); return [t, +d, c]; }), int: (p.int || []).map(x => { const a = String(x).split(':'); return [a[0], ...a.slice(1).map(Number)]; }) });
+  const mapP = (pr, f) => { const o = {}; Object.keys(pr || {}).forEach(l => { o[l] = f(pr[l]); }); return o; };
+  const unpackEntry = e => e && Object.assign({}, e, { pr: mapP(e.pr, unpackP) });
   async function loadFirebaseSdk() {
     const base = 'https://www.gstatic.com/firebasejs/' + FB_VER + '/';
     const [app, auth, fs] = await Promise.all([import(base + 'firebase-app.js'), import(base + 'firebase-auth.js'), import(base + 'firebase-firestore.js')]);
@@ -108,16 +113,16 @@
       },
       store: {
         putPlayer: async (uid, doc) => { await F.setDoc(F.doc(db, 'players', uid), Object.assign({}, doc, { createdAt: F.serverTimestamp() }), { merge: true }); },
-        getEntry: async (skin, uid) => { const s = await F.getDoc(F.doc(db, 'boards', skin, 'entries', uid)); return s.exists() ? s.data() : null; },
+        getEntry: async (skin, uid) => { const s = await F.getDoc(F.doc(db, 'boards', skin, 'entries', uid)); return s.exists() ? unpackEntry(s.data()) : null; },
         putEntry: async (skin, uid, entry, runs) => {
           const b = F.writeBatch(db), t = F.serverTimestamp();
-          b.set(F.doc(db, 'boards', skin, 'entries', uid), Object.assign({}, entry, { updatedAt: t }));
-          Object.keys(runs).forEach(lvl => b.set(F.doc(db, 'runs', uid + '_' + lvl + '_' + skin), Object.assign({}, runs[lvl], { uid, at: t })));
+          b.set(F.doc(db, 'boards', skin, 'entries', uid), Object.assign({}, entry, { pr: mapP(entry.pr, packP), updatedAt: t }));
+          Object.keys(runs).forEach(lvl => b.set(F.doc(db, 'runs', uid + '_' + lvl + '_' + skin), Object.assign({}, packP(runs[lvl]), { uid, at: t })));
           await b.commit();
         },
         board: async (skin, n) => {
           const q = F.query(F.collection(db, 'boards', skin, 'entries'), F.orderBy('stars', 'desc'), F.orderBy('levels', 'desc'), F.orderBy('points', 'desc'), F.limit(n || TOP_N));
-          return (await F.getDocs(q)).docs.map(d => Object.assign({ uid: d.id }, d.data(), { updatedAt: ts(d.data().updatedAt) }));
+          return (await F.getDocs(q)).docs.map(d => Object.assign({ uid: d.id }, unpackEntry(d.data()), { updatedAt: ts(d.data().updatedAt) }));
         },
         deleteMine: async (uid, skins) => {
           for (const s of skins) {

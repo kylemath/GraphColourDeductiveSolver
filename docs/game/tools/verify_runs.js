@@ -19,5 +19,8 @@ for (const [id, d] of docs) {
   out.push({ id, uid: d.uid, lvl: d.lvl, skin: d.skin, ok: !why.length, stars: r.stars, moves: r.moves, why, soft: r.soft, signals: sig });
 }
 if (process.argv.includes('--json')) console.log(JSON.stringify(out, null, 1));
-else { out.forEach(o => console.log((o.ok ? 'ok     ' : 'HIDDEN ') + String(o.id).padEnd(34) + ' ' + o.stars + '*' + (o.why.length ? '  ' + o.why.join(',') : '') + (o.soft.length ? '  soft:' + o.soft.join(',') : '') + (o.signals ? '  signals:' + o.signals : '')); console.log('\n' + out.length + ' runs, ' + bad + ' hidden'); }
+else {
+  out.forEach(o => console.log((o.ok ? 'ok     ' : 'HIDDEN ') + String(o.id).padEnd(34) + ' ' + o.stars + '*' + (o.why.length ? '  ' + o.why.join(',') : '') + (o.soft.length ? '  soft:' + o.soft.join(',') : '') + (o.signals ? '  signals:' + o.signals : '')));
+  console.log('\n' + out.length + ' runs, ' + bad + ' hidden');
+}
 process.exit(bad ? 1 : 0);
