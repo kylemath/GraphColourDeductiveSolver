@@ -599,6 +599,7 @@
 <script src="verify.js"></script>
 <script src="integrity.js"></script>
 <script src="layout.js"></script>
+<script src="sfx.js"></script>
 <script src="skins/registry.js"></script>
 <script src="board/island.js"></script>
 <script src="skins/islands.js"></script>
@@ -681,6 +682,7 @@
     } catch (e) {}
   }
   function note(i) { shepard((SCALE[i % 5] + 12 * Math.floor(i / 5)) % 12, .34, .07); }   // the i-th link of a chain
+  const wsfx = FTH_SFX.create({ ctx: () => (AC = AC || new (window.AudioContext || window.webkitAudioContext)()), on: () => !window.FTH_MUTE });   // win-scene effects (sfx.js); one shared context
   const arp = (base, k, step) => { for (let i = 0; i < k; i++) setTimeout(() => blip(base * Math.pow(1.122, i), .12, 'triangle', .05), i * (step || 60)); };
 
   // ---------------- level state ----------------
@@ -746,7 +748,7 @@
   // The shell owns the game; the board reads it through view() and draws it. Interface: SKIN-SPEC.md section 11.
   function partialChain() { return !trace && lastPartial && !found.has(lastPartial.key) ? chains.find(c => c.key === lastPartial.key) : null; }
   function compassActive() { const K = !busy && !won && active && chains && chains.find(c => c.key === active); compassChain(K || null, -1); }
-  const BRD = FTH_ISLAND.create({ HEX, DARK, NEONH, NAMES, IPATH, reduced, blip, note, msg, uiSetE, uiBurst, uiPop, compassTile, compassActive, partialChain, rimCols,
+  const BRD = FTH_ISLAND.create({ HEX, DARK, NEONH, NAMES, IPATH, reduced, blip, note, sfx: wsfx, msg, uiSetE, uiBurst, uiPop, compassTile, compassActive, partialChain, rimCols,
     view: () => ({ L, Gr, n, hole, link, adj, col, chains, chainAt, found, traced, active, trace, lastPartial }),
     clearActive: () => { active = null; }, lootGen: () => lootGen, refresh: () => { computeChains(); drawTraced(); drawActive(); updateHud(); } });
   const svg = $('cv');
@@ -982,7 +984,8 @@
     // element flips, then the hole fills.
     const winning = !reduced && filled(after), rim = new Set(link);
     const before = new Set(rimCols(col)), gone = [...before].filter(e => !rimCols(after).includes(e));
-    const STEP = winning ? 340 : 50;
+    if (winning) BRD.winScene(true);                                    // the win scene starts: no hint / lock overlays on the board
+    const STEP = winning ? 90 : 50;
     let i = 0;
     const tick = () => {
       let rimHit = false;
@@ -992,19 +995,19 @@
       if (winning && rimHit) {
         blip(196, .3, 'sine', .06);                                   // a deeper chime on the ring
         if (gone.length && !rimCols(col).includes(gone[0])) {         // the last tile of the leaving element just flipped
-          pause = 900; note(12); setTimeout(() => note(16), 160);
+          pause = 250; note(12); setTimeout(() => note(16), 60);
           BRD.holePop(1.25);
           popBall(link[0], 'hintpulse');
           msg('<b>' + NAMES[gone[0]][0].toUpperCase() + NAMES[gone[0]].slice(1) + ' is gone from the ring!</b> Now the middle can take it.');
         }
       }
       if (++i < K.order.length) setTimeout(tick, reduced ? 0 : STEP + pause);
-      else setTimeout(() => finishFlip(K), winning ? 700 + pause : 0);
+      else setTimeout(() => finishFlip(K), winning ? 180 + pause : 0);
     };
     if (winning) {                                                     // build-up: the ring pulses, then the slow ripple
-      link.forEach((u, k) => setTimeout(() => popBall(u, 'hintpulse'), k * 90));
-      msg('Watch the ring…'); blip(220, .5, 'sine', .04);
-      setTimeout(tick, 650);
+      link.forEach((u, k) => setTimeout(() => popBall(u, 'hintpulse'), k * 30));
+      msg('Watch the ring…'); blip(220, .2, 'sine', .04);
+      setTimeout(tick, 180);
     } else tick();
   }
   // the whole {a,b} web: swapping it only renames two colours everywhere. It flips anyway (so the kid sees it),
@@ -1804,8 +1807,8 @@
     save.best[levelIdx] = { score: Math.max(score, prev ? prev.score : 0), stars: Math.max(stars, prev ? prev.stars : 0) };
     persist(); updateHud();
     const gen = lootGen, later = (ms, fn) => setTimeout(() => { if (gen === lootGen) fn(); }, reduced ? 0 : ms);
-    (ACT.src ? (f, a, b) => b() : holeCeremony)(free, () => { drawHoleFill(); arp(523, 6, 80); msg('<b>You did it!</b> The hole takes ' + NAMES[free] + '!'); },
-      () => { confetti(); later(900, () => {
+    (ACT.src ? (f, a, b) => b() : holeCeremony)(free, () => { drawHoleFill(); wsfx.thunk(); arp(523, 6, 28); msg('<b>You did it!</b> The hole takes ' + NAMES[free] + '!'); },
+      () => { confetti(); wsfx.cheer(); later(250, () => {
       $('winStars').innerHTML = [0, 1, 2].map(() => '<span class="ws">' + starSvg + '</span>').join('');
       const ws = [...$('winStars').children];
       let total = score - bonus; $('winScore').textContent = total;
@@ -1813,15 +1816,15 @@
       document.querySelector('#win .rtitle').textContent = WD.win || (ACT.own ? 'Coloured!' : 'Hole filled!');
       $('winText').textContent = ACT.own ? (WD.perfect || 'Every piece coloured, and no two neighbours match!') : flips <= L.par ? (WD.perfect || 'Perfect route! No shorter way exists.') : (WD.par ? WD.par.replace('{par}', L.par) : 'Par is ' + L.par + ' swap' + (L.par > 1 ? 's' : '') + '. Can you get ★★★?');
       $('winNext').textContent = levelIdx + 1 < G.levels.length ? 'NEXT ▶' : 'LEVELS ▶';
-      const t1 = 350 + 3 * 330 + 150;
-      $('win').style.setProperty('--wd', (reduced ? 0 : (t1 + 2300) / 1000) + 's');
+      const t1 = 100 + 3 * 90 + 60;
+      $('win').style.setProperty('--wd', (reduced ? 0 : (t1 + 1700) / 1000) + 's');
       $('win').classList.add('on');
-      bonusStart(reduced ? 0 : t1 + 2400);     // bonus round: playable once the stars + loot bag have paid out
+      bonusStart(reduced ? 0 : t1 + 1500);     // bonus round: playable once the stars are in and the loot bag has burst (its coins are still flying)
       if (reduced) { ws.forEach((s, i) => { s.classList.add('shown'); if (i < stars) s.classList.add('got'); }); $('winScore').textContent = score; pending = Math.max(0, pending - bonus); hudRoll(true); return; }
-      ws.forEach((s, i) => later(350 + i * 330, () => {
-        s.classList.add('shown'); if (i < stars) { s.classList.add('got'); blip(660 * Math.pow(1.26, i), .18, 'triangle', .05); } else blip(200, .12, 'sine', .03);
+      ws.forEach((s, i) => later(100 + i * 90, () => {
+        s.classList.add('shown'); if (i < stars) s.classList.add('got'); wsfx.star(i, i < stars);
       }));
-      later(t1, () => loot(bonus, () => centerOf($('winBag')), { bag: true, held: true, to: $('winTotal'), onCoin: sh => { total += sh; $('winScore').textContent = total; } }));
+      later(t1, () => { loot(bonus, () => centerOf($('winBag')), { bag: true, held: true, to: $('winTotal'), onCoin: sh => { total += sh; $('winScore').textContent = total; } }); later(1500, () => wsfx.flourish()); });
     }); });
   }
   $('winRetry').onclick = () => startLevel(levelIdx, false);
@@ -2064,6 +2067,7 @@
   window.__game = { get chains() { return chains; }, get col() { return col; }, toScreen: u => toScreen(u), get found() { return found; },
     good: () => { const d = dist(col); return chains.filter(K => dist(flipped(col, K)) === d - 1); }, dist: () => dist(col), get won() { return won; }, get T() { return BRD.debug().T; }, get trace() { return trace; }, pick: (x, y) => pick(x, y), pickAll: (x, y) => pickAll(x, y), stepTarget: (x, y) => stepTarget(x, y), ballAt: (x, y) => ballAt(x, y), get layout() { return BRD.debug().LAYO; }, get box() { return BRD.debug().BOX; }, get graph() { return Gr; }, get bridges() { return BRD.debug().bridges; }, board: BRD,
     bonus: (ncol, delay) => { $('win').classList.add('on'); bonusStart(delay || 0, ncol); }, get bz() { return bz; }, get active() { return active; }, get compass() { return compass; }, get pm() { return PM; }, get free() { return BRD.debug().free; }, get LIVE() { return BRD.LIVE; } };   // test hook
+  Object.assign(window.__game, { sfx: wsfx, flip: K => { found.add(K.key); needFind = false; doFlip(K); }, get busy() { return busy; } });   // test hook: tools/win_scene_check.js
   // ---------------- dev panel (board/island.js): live spring / damping knobs, crossing guard, free borders ----------------
   // Open with #dev on the link, or tap the level name five times. Changes apply at once to the running board.
   const devOpen = BRD.dev;

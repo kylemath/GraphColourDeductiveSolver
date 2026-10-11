@@ -264,7 +264,9 @@ The shell does not reach into the board. It creates it once, `FTH_ISLAND.create(
 game (`S.view()`: level, graph, colours, chains, the trace) and the few helpers the board draws with (sound, messages,
 the tile look), and calls the interface that comes back: `build`, `configure(board, key)`, `reset`, `destroy`, `kick`,
 `pick`, `pickAll`, `stepTarget`, `ballAt`, `toScreen`, `posOf`, `dragBegin/Move/End`, `ripple`, `shake`, `popBall`,
-`paintBalls`, `drawTraced/Active/Trace`, `drawHoleFill`, `holeCeremony`, `dev`. Chains, flips, scoring, saves and levels
+`paintBalls`, `drawTraced/Active/Trace`, `drawHoleFill`, `holeCeremony`, `winScene` (the last swap is under way: no hint outlines or lock badges), `dev`.
+The win scene (about 4 s: every tile lit, then try-every-element, nesting, each element across the map) is synthesised
+sound only (`sfx.js`, passed in as `S.sfx`; `tools/win_scene_check.js` plays and measures it). Chains, flips, scoring, saves and levels
 stay in the shell. `layout(grow, [w, h])` and `step(now)` build the geometry and advance the physics without a DOM
 (`create` takes `headless: true`), which is how `tools/free_check.js` tests the real code.
 

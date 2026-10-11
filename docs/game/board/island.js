@@ -22,12 +22,13 @@
 
   function create(S) {
     const { HEX, DARK, NEONH, NAMES, IPATH, reduced, blip, note, msg, uiSetE, uiBurst, uiPop, compassTile, compassActive, partialChain, rimCols } = S;
+    const SX = S.sfx || new Proxy({}, { get: () => () => {} });                   // win-scene sound effects (sfx.js); silent in headless checks
     const $ = id => document.getElementById(id), svg = S.headless ? null : $('cv');   // S.headless: no DOM (tools/free_check.js)
     let L, Gr, n, hole, link, adj, col, chains, chainAt, found, traced, active, trace, lastPartial;
     function sync() { ({ L, Gr, n, hole, link, adj, col, chains, chainAt, found, traced, active, trace, lastPartial } = S.view()); }
   const LADW = 4.2, WGAP = 60;                     // ladder half-width, gap between walls (px)
   let WB = 56;                                      // wall band width (centred on the coast): set per board to one tile's width
-  let BW = 0, BH = 0, holeFill = -1, fingerPt = null, looping = false, cer = null, cerLight = null;   // cer: the hole-filling ceremony
+  let BW = 0, BH = 0, holeFill = -1, fingerPt = null, looping = false, cer = null, cerLight = null, scene = false;   // cer: the hole-filling ceremony; scene: the win scene is on (no hint / lock overlays)
   let T = [], bridgesM = [], ghosts = [], waves = [], hoverU = -1, BOX = null, LAYO = null, SIM = null, gFx = null;
   const shakes = new Map(), anim = new Map();
   function shake(u) { if (T[u] && T[u].kind === 'tile') shakes.set(u, performance.now()); else if (T[u]) blip(120, .1, 'square', .02); kick(); }
@@ -617,7 +618,7 @@
     for (let u = 0; u < n; u++) {
       const t = T[u]; if (!t || t.kind === 'hole') continue;
       const goal = targetLight(u); t.light += (goal - t.light) * .35;
-      const k = Math.min(1, t.light), hi = Math.max(0, t.light - 1), e = col[u], lit = t.light > 1.2;
+      const k = Math.min(1, t.light), hi = Math.max(0, t.light - 1), e = col[u], lit = t.light > 1.2 && !cer;                // (the ceremony brightens by tint and pop, not by the white rim)
       const kk = .18 + .82 * k, g = k < 1 ? Math.min(1, (1 - k) * 1.2) : 0, w = Math.min(.45, hi * .35);
       const key = e + ':' + kk.toFixed(2) + ':' + g.toFixed(2) + ':' + w.toFixed(2) + lit;
       if (key === t.key) continue; t.key = key;
@@ -678,11 +679,11 @@
   let fxKey = '';
   function drawFx(now) {
     anim.forEach((a, u) => { if (now - a.t0 > 3000) anim.delete(u); });
-    const locks = lockList(), Dc = reduced ? null : activeDeco(), live = anim.size || fingerPt || (LV && LV.moving) || (Dc && Dc.junc.length);
+    const locks = scene ? [] : lockList(), Dc = reduced || scene ? null : activeDeco(), live = anim.size || fingerPt || (LV && LV.moving) || (Dc && Dc.junc.length);
     const key = locks.join(',') + '|' + (SIM.done ? '' : SIM.steps);
     if (!live && key === fxKey) return; fxKey = live ? '' : key;
     let s = '';
-    anim.forEach((a, u) => { if (!T[u]) return; const P = T[u].kind === 'wall' ? T[u].pts : cornersOf(u), pulse = 1 + .08 * Math.sin((now - a.t0) / 120);
+    if (!scene) anim.forEach((a, u) => { if (!T[u]) return; const P = T[u].kind === 'wall' ? T[u].pts : cornersOf(u), pulse = 1 + .08 * Math.sin((now - a.t0) / 120);
       const c = posOf(u), pts = P.map(p => q1(c[0] + (p[0] - c[0]) * pulse) + ',' + q1(c[1] + (p[1] - c[1]) * pulse)).join(' ');
       s += T[u].kind === 'wall' ? '<polyline points="' + pts + '" fill="none" stroke="#ffd666" stroke-width="' + (WB + 8) + '" stroke-opacity=".55" stroke-linecap="round"/>' : '<polygon points="' + pts + '" fill="none" stroke="#ffd666" stroke-width="4" stroke-linejoin="round"/>'; });
     if (trace && fingerPt) { const e = posOf(trace.path[trace.path.length - 1]); s += '<line x1="' + q1(e[0]) + '" y1="' + q1(e[1]) + '" x2="' + q1(fingerPt[0]) + '" y2="' + q1(fingerPt[1]) + '" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".55" stroke-dasharray="2 9"/>'; }
@@ -710,7 +711,7 @@
   }
   function popBall(u, cls) {
     if (u === hole) return;
-    if (cls === 'hintpulse') { anim.set(u, { t0: performance.now() }); ripple(u, .12, 1); return; }
+    if (cls === 'hintpulse') { if (!scene) anim.set(u, { t0: performance.now() }); ripple(u, .12, 1); return; }
     ripple(u, cls === 'wob' ? .06 : .14, 0);
   }
   function drawTraced() { kick(); }
@@ -727,59 +728,63 @@
     const p = posOf(hole); uiBurst(svg, p[0], p[1], HEX[free], 16); uiPop(T[hole].g, 1.4);
     ripple(link[0], .25, 4); return free;
   }
-  // The hole-filling ceremony, played at the win before the reward screen. The grey goal tries every element the
-  // ring already has (each lights up for a second next to the ring tile that clashes, then an error buzz and a shake),
-  // then the free one: it flickers on meekly, the platform wriggles in all four directions like a cat nesting and
-  // settles, lit. Then each element lights up across the whole map in turn, ending with the free one, centre included.
-  // A tap on the board hurries it along.
+  // The hole-filling ceremony, played at the win before the reward screen (about 4 s). First every tile is lit: a bright flash
+  // sweeps out from the goal over the whole island and leaves it fully lit. It stays lit: nothing is dimmed in the dark, the tiles
+  // being discussed brighten and pop instead. The grey goal then tries every element the ring already has (each pops next to the
+  // ring tile that clashes, then a buzz and a shake), then the free one: it flickers on meekly, the platform wriggles like a cat
+  // nesting and settles with a thunk, lit. Then each element lights up across the whole map in turn, ending with the free one,
+  // centre included. A tap on the board hurries it along. Sounds: sfx.js.
   function cerWait(ms) { return new Promise(r => { if (!cer || cer.skip) return r(); const t = setTimeout(r, ms); cer.wake = () => { clearTimeout(t); r(); }; }); }
   function cerAnim(u, frames, dur) { const t = T[u] && T[u].tin; if (!reduced && t && t.animate && cer && !cer.skip) t.animate(frames, { duration: dur, easing: 'ease-in-out' }); }
   const SHAKE = [{ transform: 'translateX(0)' }, { transform: 'translateX(-6px) rotate(-4deg)' }, { transform: 'translateX(6px) rotate(4deg)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(3px)' }, { transform: 'translateX(0)' }];
+  const POP = [{ transform: 'scale(1)' }, { transform: 'scale(1.16)', offset: .4 }, { transform: 'scale(1)' }];
   if (svg) svg.addEventListener('pointerdown', () => { if (cer) { cer.skip = true; if (cer.wake) cer.wake(); } }, true);
   async function holeCeremony(free, onSettle, onDone) {
     const gen = S.lootGen(), me = cer = { skip: !!reduced }, ok = () => gen === S.lootGen() && cer === me;
-    const NC = Gr.ncol || 4, used = new Set(rimCols(col)), hg = T[hole].g;
+    const NC = Gr.ncol || 4, used = new Set(rimCols(col)), hg = T[hole].g, LIT = () => 1;
     const grey = () => { uiSetE(hg, 'q'); hg.classList.add('hole'); }, show = e => { uiSetE(hg, e); hg.classList.remove('hole'); };
     const Cap = e => NAMES[e][0].toUpperCase() + NAMES[e].slice(1);
-    msg('Which element fits in the middle? Let\u2019s try them all\u2026');
-    await cerWait(900);
+    const dist = graphDist(hole, 99), reach = Math.max(1, ...dist.values()), step = Math.min(.05, .3 / reach), t0 = performance.now();
+    scene = true; anim.clear(); fxKey = '';
+    cerLight = u => { const t = (performance.now() - t0) / 1000 - step * (dist.get(u) || 0); return !me.skip && t > 0 && t < .18 ? 1.9 : 1; };   // the flash sweeps out; everything is lit
+    msg('Which element fits in the middle? Let\u2019s try them all\u2026'); if (!me.skip) SX.sweep();
+    await cerWait(step * reach * 1000 + 230); cerLight = LIT;
     for (const e of [...Array(NC).keys()].filter(e => used.has(e))) {        // every element the ring already has
       if (!ok()) return; if (me.skip) break;
       const clash = link.filter(x => col[x] === e);
-      show(e); blip(330 + 70 * e, .14, 'sine', .04);
-      cerLight = u => clash.includes(u) ? 1.8 : link.includes(u) ? .8 : .45;
+      show(e); SX.tryTone(e); cerAnim(hole, POP, 200); clash.forEach(x => cerAnim(x, POP, 200));
+      cerLight = u => clash.includes(u) ? 1.8 : 1;
       msg('<b>' + Cap(e) + '</b>?');
-      await cerWait(1000); if (!ok()) return;
-      blip(170, .13, 'sawtooth', .028); setTimeout(() => blip(120, .2, 'sawtooth', .022), 90);
-      cerAnim(hole, SHAKE, 400); clash.forEach(x => cerAnim(x, SHAKE, 400));
+      await cerWait(200); if (!ok()) return;
+      SX.nope(); cerAnim(hole, SHAKE, 240); clash.forEach(x => cerAnim(x, SHAKE, 240));
       msg('No: <b>' + NAMES[e] + '</b> is already on the ring.');
-      await cerWait(480); if (!ok()) return; grey(); cerLight = null; await cerWait(320);
+      await cerWait(230); if (!ok()) return; grey(); cerLight = LIT; await cerWait(30);
     }
     if (!ok()) return;
-    cerLight = u => link.includes(u) ? 1.25 : .5;
     msg('<b>' + Cap(free) + '</b>? Nobody on the ring has it\u2026');
     for (let k = 0; k < 3 && !me.skip; k++) {                                  // a meek flicker
-      show(free); blip(523 + 40 * k, .1, 'sine', .018 + .008 * k); cerAnim(hole, [{ transform: 'scale(1)' }, { transform: 'scale(1.07)' }, { transform: 'scale(1)' }], 300);
-      await cerWait(340); if (!ok()) return; if (k < 2) { grey(); await cerWait(260); if (!ok()) return; }
+      show(free); SX.hunt(k); cerAnim(hole, [{ transform: 'scale(1)' }, { transform: 'scale(1.1)' }, { transform: 'scale(1)' }], 150);
+      await cerWait(110); if (!ok()) return; if (k < 2) { grey(); await cerWait(60); if (!ok()) return; }
     }
-    show(free); hg.classList.add('glow');
+    show(free); hg.classList.add('glow'); if (!me.skip) SX.find();
     cerAnim(hole, [                                                            // nesting: a wriggle each way, then settle
       { transform: 'translate(0,0) rotate(0)' }, { transform: 'translate(-6px,0) rotate(-7deg)', offset: .14 }, { transform: 'translate(6px,0) rotate(7deg)', offset: .3 },
       { transform: 'translate(0,-6px) rotate(-4deg)', offset: .46 }, { transform: 'translate(0,6px) rotate(4deg) scale(.96)', offset: .62 },
-      { transform: 'translate(-2px,1px) rotate(-2deg) scale(.98)', offset: .78 }, { transform: 'translate(0,0) rotate(0) scale(1)' }], 1700);
-    [0, 240, 480, 720].forEach((d, i) => setTimeout(() => { if (ok() && !me.skip) blip(220 - 20 * i, .16, 'sine', .03); }, d));
-    await cerWait(1800); if (!ok()) return;
-    cerLight = null; onSettle();
-    await cerWait(1300);
+      { transform: 'translate(-2px,1px) rotate(-2deg) scale(.98)', offset: .78 }, { transform: 'translate(0,0) rotate(0) scale(1)' }], 480);
+    if (!me.skip) [0, .12, .24, .36].forEach(d => SX.thump(d));
+    await cerWait(500); if (!ok()) return;
+    onSettle();                                                                // (the shell: the hole is filled, thunk)
+    await cerWait(150);
     const order = [...Array(NC).keys()].filter(e => e !== free).concat(free);
     for (let i = 0; i < order.length; i++) {                                   // each element across the whole map
       if (!ok()) return; const e = order[i], last = e === free;
-      cerLight = u => col[u] === e ? 1.8 : .3; hg.style.opacity = last ? '' : .35;
-      note(i * 2); msg(last ? 'And <b>' + NAMES[e] + '</b>, with the middle at last!' : 'All the <b>' + NAMES[e] + '</b>\u2026');
-      await cerWait(last ? 1700 : 1000); if (!ok()) return;
-      if (!last) { cerLight = () => .5; await cerWait(260); }
+      cerLight = u => col[u] === e ? 1.8 : 1;
+      if (!me.skip) { SX.sparkle(i); SX.swell(i); } msg(last ? 'And <b>' + NAMES[e] + '</b>, with the middle at last!' : 'All the <b>' + NAMES[e] + '</b>\u2026');
+      for (let u = 0; u < n; u++) if (col[u] === e && u !== hole && !me.skip) { const d = dist.get(u) || 0; setTimeout(() => { if (ok() && !me.skip) cerAnim(u, POP, 220); }, d * 25); }
+      if (last) cerAnim(hole, POP, 260);
+      await cerWait(last ? 520 : 300);
     }
-    hg.style.opacity = ''; cerLight = null; if (ok()) { cer = null; onDone(); }
+    cerLight = LIT; if (ok()) { cer = null; onDone(); }
   }
   // hover: bob the tile under the mouse and ripple outwards
   if (svg) svg.addEventListener('pointermove', e => {
@@ -799,7 +804,8 @@
       $('devGuard').checked = LIVE.guard; $('devFree').checked = FREE.on;
     }
   }
-  function reset() { holeFill = -1; cer = null; cerLight = null; anim.clear(); }   // a level starts
+  function winScene(on) { scene = !!on; if (scene) { anim.clear(); fxKey = ''; } kick(); }   // the last swap is on its way: drop the gold hint outlines and lock badges
+  function reset() { holeFill = -1; cer = null; cerLight = null; scene = false; anim.clear(); }   // a level starts
   function destroy() { looping = false; T = []; bridgesM = []; ghosts = []; waves = []; LAYO = null; SIM = null; LV = null; HOME = null; if (svg) clear(svg); }
   function sizeChanged() { const br = $('board').getBoundingClientRect(); return !(Math.abs(br.width - BW) < 1 && Math.abs(br.height - BH) < 1); }
   const kindOf = u => T[u] && T[u].kind, radius = u => LAYO && LAYO.R[u], isTile = u => !!(T[u] && T[u].kind === 'tile'), sidesAt = u => (T[u] && T[u].v) || 6;
@@ -838,7 +844,7 @@
     build: E(buildBoard), kick, reset, destroy, configure, sizeChanged, dev, width: () => BW, isTile, kind: E(kindOf), radius: E(radius), sidesAt: E(sidesAt), holePop: E(holePop), finger,
     pick: E(pick), pickAll: E(pickAll), stepTarget: E(stepTarget), ballAt: E(ballAt), toScreen: E(toScreen), posOf: E(u => { const p = T[u] && SIM ? posOf(u) : [BW / 2, BH / 2]; return [p[0], p[1]]; }),
     dragBegin: E(dragBegin), dragMove: E(dragMove), dragEnd: E(dragEnd), ripple: E(ripple), shake: E(shake), popBall: E(popBall), paintBalls: E(paintBalls),
-    drawTraced: E(drawTraced), drawActive: E(drawActive), drawTrace: E(drawTrace), drawHoleFill: E(drawHoleFill), holeCeremony: E(holeCeremony),
+    drawTraced: E(drawTraced), drawActive: E(drawActive), drawTrace: E(drawTrace), drawHoleFill: E(drawHoleFill), holeCeremony: E(holeCeremony), winScene: E(winScene),
     get cer() { return cer; }, get LIVE() { return LIVE; }, get FREE() { return FREE; },
     layout: E(layoutBoard), step: now => liveStep(now),   // headless: build the layout, then one physics step at a time
     debug: () => ({ get T() { return T; }, get LAYO() { return LAYO; }, get BOX() { return BOX; }, get bridges() { return bridgesM; }, get LV() { return LV; }, get SIM() { return SIM; }, get free() { return !!(LAYO && LAYO.free); } }),
