@@ -269,6 +269,9 @@
 
   FTH_SKINS.register({
     id: 'doodle', name: 'Line Doodle', ic: '🖍️', blurb: 'a sketchbook of felt-tip pens',
+    coin: { name: 'pencil stub', plural: 'pencil stubs', glyph: '✏️', value: 2, pitch: 0.8,   // this skin's currency (SKIN-SPEC.md section 12)
+      colors: { main: '#ffc928', edge: '#e0452f' },
+      svg: FTH_SKINS.coinArt('<g transform="rotate(-45)" stroke="#1c1640" stroke-width="1.5" stroke-linejoin="round"><rect x="-12" y="-4.6" width="4" height="9.2" rx="1.6" fill="#f28ab0"/><rect x="-8" y="-4.6" width="3" height="9.2" fill="#b9bec6"/><rect x="-5" y="-4.6" width="10.5" height="9.2" fill="#ffc928"/><path d="M5.5 -4.6L12.5 0L5.5 4.6Z" fill="#f1d3a1"/><path d="M9.6 -1.7L12.5 0L9.6 1.7Z" fill="#2d2a26" stroke="none"/><path d="M-5 0H5.5" stroke="#e0a000" stroke-width="1.2" fill="none"/></g>') },
     src: 'lab/doodle.html', waits: true, needs: ['cells'],
     hud: 'full',
     theme: {

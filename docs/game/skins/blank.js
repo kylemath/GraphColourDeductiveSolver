@@ -318,6 +318,9 @@
 
   FTH_SKINS.register({
     id: 'blank', name: 'Blank Doodle', ic: '📝', blurb: 'colour a blank map, swap to unstick',
+    coin: { name: 'paint drop', plural: 'paint drops', glyph: '💧', value: 3, pitch: 1.05,   // this skin's currency (SKIN-SPEC.md section 12)
+      colors: { main: '#ff4f9a', edge: '#1b1b2f' },
+      svg: FTH_SKINS.coinArt('<path d="M0 -12.2C4 -6 9.2 -1.6 9.2 3.8A9.2 9.2 0 0 1 -9.2 3.8C-9.2 -1.6 -4 -6 0 -12.2Z" fill="#ff4f9a" stroke="#1b1b2f" stroke-width="2" stroke-linejoin="round"/><path d="M-5.2 2.4A5.4 5.4 0 0 0 -2.2 8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/><circle cx="3.4" cy="-1" r="1.4" fill="#fff" opacity=".55"/>') },
     src: 'lab/blank.html', waits: true, own: true, needs: ['cells'],
     hud: 'compact',
     theme: {
