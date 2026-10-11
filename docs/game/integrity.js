@@ -44,7 +44,9 @@
   // localStorage editor), which are logged and make this device's board entries carry a tamper count.
   function secret() { let s = ls.get(SECK); if (!s) { s = rid() + rid(); ls.set(SECK, s); } return s; }
   const canon = o => JSON.stringify(Object.keys(o || {}).sort().map(k => [k, o[k]]));
-  const digest = save => V ? V.h53(canon(save.byId), 7) : '';
+  // the wallet (save.wallet, per-skin coin balances) is sealed with the progress; a save with no wallet hashes as before
+  const wcanon = w => JSON.stringify(Object.keys(w).sort().map(k => [k, w[k].bal, w[k].earned, w[k].f || 0]));
+  const digest = save => V ? V.h53(canon(save.byId) + (save.wallet ? '|w' + wcanon(save.wallet) : ''), 7) : '';
   const link = (prev, n, dg) => V ? V.h53(secret() + '|' + prev + '|' + n + '|' + dg, 11) : '';
   function seal(key, save) {
     if (!V) return;

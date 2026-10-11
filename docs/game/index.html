@@ -170,6 +170,7 @@
   .lvname .t { min-width: 0; font-weight: 900; color: #fff; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 2px 0 #1c1640; }
   .coins { display: inline-flex; align-items: center; gap: 6px; flex: none; background: linear-gradient(180deg, #ffe066, #ffab1a); border: 3px solid #fff; border-radius: 999px; padding: 2px 12px 2px 3px; box-shadow: 0 4px 0 #b06a00, 0 0 18px rgba(255,200,40,.35); color: #4a2a00; font-weight: 900; font-size: 1.15rem; font-variant-numeric: tabular-nums; min-width: 78px; position: relative; overflow: hidden; }
   .coins .coin { width: 28px; height: 28px; flex: none; }
+  #btnWallet svg { width: 22px; height: 22px; }
   .coins b { min-width: 2.2ch; text-align: right; }
   .coins::after { content: ""; position: absolute; top: 0; bottom: 0; width: 30%; left: -40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.85), transparent); transform: skewX(-20deg); opacity: 0; }
   .coins.bump { animation: cbump .38s cubic-bezier(.3, 1.8, .5, 1); }
@@ -271,10 +272,10 @@
   body.skinart #tSkinArt { display: block; } body.skinart #tDemo { display: none; }
   .skinblurb { grid-column: 1 / -1; text-align: center; font-size: .78rem; opacity: .85; min-height: 1em; color: #fff; text-shadow: 0 1px 0 rgba(14,52,110,.5); }
   /* HUD levels */
-  #game.hud-compact .stats .goalbar, #game.hud-compact .coins, #game.hud-compact #btnHelp { display: none; }
+  #game.hud-compact .stats .goalbar, #game.hud-compact .coins, #game.hud-compact #btnWallet, #game.hud-compact #btnHelp { display: none; }
   #game.hud-compact .stats { padding-top: 0; }
   #game.hud-minimal .gtop { position: absolute; left: 0; right: 0; top: 0; background: none; box-shadow: none; pointer-events: none; z-index: 6; }
-  #game.hud-minimal .gtop .lvname, #game.hud-minimal .gtop .coins, #game.hud-minimal #btnHelp, #game.hud-minimal .stats .goalbar { display: none; }
+  #game.hud-minimal .gtop .lvname, #game.hud-minimal .gtop .coins, #game.hud-minimal #btnWallet, #game.hud-minimal #btnHelp, #game.hud-minimal .stats .goalbar { display: none; }
   #game.hud-minimal #btnMenu, #game.hud-minimal #starMeter { pointer-events: auto; }
   #game.hud-minimal .hud { justify-content: flex-start; }
   #game.hud-minimal .stats { position: absolute; right: 10px; top: max(10px, env(safe-area-inset-top)); transform: scale(.72); transform-origin: top right; }
@@ -503,6 +504,7 @@
       <div class="trow">
         <button class="btn3d yellow" id="btnHowTitle" aria-label="How to play">❓ How to play</button>
         <button class="btn3d white" id="btnLbTitle" aria-label="Leaderboard and profile">🏆 Scores</button>
+        <button class="btn3d white" id="btnWalletTitle" aria-label="Wallet and currency exchange">👛 Wallet</button>
         <button class="btn3d blue" id="btnInstall" aria-label="Install the game on this phone" hidden>📲 Install</button>
       </div>
       <div class="consent" id="consent" hidden><!-- research request: no longer shown -->
@@ -519,6 +521,7 @@
     <button class="btn3d white rbtn" id="btnTitle" aria-label="Back to title screen">🏠</button>
     <div class="badge" aria-label="Your stars and points"><span class="s">★ <b id="totalStars">0</b></span><span class="p">✦ <b id="totalScore">0</b></span></div>
     <button class="btn3d white rbtn" id="btnLbMap" aria-label="Leaderboard and profile">🏆</button>
+    <button class="btn3d white rbtn" id="btnWalletMap" aria-label="Wallet and currency exchange">👛</button>
     <button class="btn3d yellow rbtn" id="btnHowMap" aria-label="How to play">?</button>
   </div>
   <div id="saga"></div>
@@ -529,7 +532,8 @@
     <div class="hud">
       <button class="btn3d white rbtn sm" id="btnMenu" aria-label="Back to levels">☰</button>
       <div class="lvname"><svg id="lvBadge" viewBox="-40 -40 80 80" aria-hidden="true"></svg><div class="t"><span class="sr" id="lvKicker"></span><span id="lvTitle"></span></div></div>
-      <div class="coins" id="coinBox" title="Points" aria-label="Points"><svg class="coin" viewBox="-13 -13 26 26" aria-hidden="true"><use href="#coinG"/></svg><b id="score">0</b></div>
+      <div class="coins" id="coinBox" title="Coins" aria-label="Coins"><svg class="coin" viewBox="-13 -13 26 26" aria-hidden="true"><use href="#coinG"/></svg><b id="score">0</b></div>
+      <button class="btn3d white rbtn sm" id="btnWallet" aria-label="Wallet and currency exchange" title="Wallet"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#1c1640" stroke-width="2" stroke-linecap="round"><path d="M7 7.5L17 7.5M6.5 9L11 17M17.5 9L13 17"/></g><g fill="#ffd84a" stroke="#1c1640" stroke-width="1.6"><circle cx="6" cy="7" r="3.2"/><circle cx="18" cy="7" r="3.2"/><circle cx="12" cy="18" r="3.2"/></g></svg></button>
       <button class="btn3d yellow rbtn sm" id="btnHelp" aria-label="Level briefing">?</button>
     </div>
     <div class="stats">
@@ -644,6 +648,24 @@
     const old = save.best || {}, shift = save.lv === 2 ? 0 : 4, leg = G.legacy || [];
     for (const k in old) { const id = leg[+k + shift]; if (id && !save.byId[id]) save.byId[id] = old[k]; }
     save.lv = 3; delete save.best; persist();
+  }
+  // ---------------- wallet: one balance per skin's coin (SKIN-SPEC.md section 12; the exchange is economy.js) ----------------
+  // save.wallet = { <skinId>: { bal, earned, f } }: bal = coins held, earned = lifetime coins earned by play (conversions
+  // never change it), f = the sub-coin remainder (so small payouts are not rounded away). Every change goes through persist(),
+  // which seals it (integrity.js hashes the wallet with byId, so a hand edit shows up as an edited save).
+  // Migration, once (no save.wallet yet): the old total of best points becomes the Islands balance 1:1 (it was Islands-era
+  // currency; the going rate is now 4 points a doubloon, so nobody loses anything).
+  if (!save.wallet) {
+    let t = 0; for (const k in save.byId) t += (save.byId[k] && save.byId[k].score) || 0;
+    save.wallet = {}; if (t > 0) save.wallet.islands = { bal: t, earned: t, f: 0 };
+    persist();
+  }
+  const PT = 10, PPC = 4;                       // a point is worth coins = sqrt(PT / value) / PPC: 4 points = 1 doubloon (value 10); rarer coins pay fewer
+  const wal = id => save.wallet[id] || (save.wallet[id] = { bal: 0, earned: 0, f: 0 });
+  function walletAdd(id, x) {                   // x: coins, fractional or negative (a hint's price); never below 0
+    if (LABN || !x) return; const w = wal(id), t = w.f + x, whole = Math.floor(t + 1e-9);
+    w.f = Math.round((t - whole) * 1e6) / 1e6; w.bal = Math.max(0, w.bal + whole); if (whole > 0) w.earned += whole;
+    persist();
   }
   // index-keyed view used by the rest of the page: save.best[i] is the record of G.levels[i]
   save.best = new Proxy({}, {
@@ -868,21 +890,45 @@
   }
   const floatBall = (u, t, s, cls) => { const [x, y] = toScreen(u); floatAt(x, y, t, s, cls); };
 
+  // ---------------- the skin's coin: art, name and the points-to-coins rate (SKIN-SPEC.md section 12) ----------------
+  // ONE source of art: #coinG in the page defs is rewritten to the current skin's coin, so the counter, the flying loot, the
+  // loot bag, the win total and the bonus round's stacks (bonusStack) all show it. Points stay the internal unit (score,
+  // pending, save.best, proofs); cfmt/cfl turn them into the skin's coins for display and walletAdd credits the same amount.
+  let CN = FTH_SKINS.coinOf(null), BASE = .25, MUL = 1, RATE = .25, winPts = 0;   // RATE = BASE, a quarter on a replay of a beaten level (set in startLevel: replays cannot be farmed)
+  const cfmt = p => Math.floor(p * RATE + 1e-9);
+  const cfl = p => { const x = p * RATE; return String(x >= 10 ? Math.round(x) : Math.round(x * 10) / 10); };
+  const gain = p => { score += p; walletAdd(ACT.id, p * RATE); };
+  function applyCoin(k) {
+    CN = FTH_SKINS.coinOf(k); BASE = Math.sqrt(PT / CN.value) / PPC; RATE = BASE * MUL;
+    $('coinG').innerHTML = CN.svg(26).replace(/^<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
+    const cb = $('coinBox'); if (cb) { cb.title = CN.plural[0].toUpperCase() + CN.plural.slice(1); cb.setAttribute('aria-label', cfmt(shown) + ' ' + CN.plural); }
+    $('winTotal').setAttribute('aria-label', CN.plural);
+    if (!won && cb) hudRoll(true);
+  }
+  window.FTH_WALLET = {
+    bal: id => (save.wallet[id] || {}).bal || 0, earned: id => (save.wallet[id] || {}).earned || 0, get skin() { return ACT.id; },
+    wealth: id => { const k = SKINS.find(j => j.id === id); return k ? ((save.wallet[id] || {}).earned || 0) * FTH_SKINS.coinOf(k).value : 0; },   // lifetime coins earned x value, in base units (G)
+    swap(from, nIn, to, nOut) {                 // the exchange: atomic, whole coins only, never more than held
+      if (from === to || !(nIn >= 1) || !(nOut >= 1) || nIn !== Math.floor(nIn) || nOut !== Math.floor(nOut) || this.bal(from) < nIn || !SKINS.some(k => k.id === from) || !SKINS.some(k => k.id === to)) return false;
+      wal(from).bal -= nIn; wal(to).bal += nOut; persist();
+      LOG('convert', { a: from, b: to, n: nIn, out: nOut }); try { dispatchEvent(new CustomEvent('fth-wallet')); } catch (e) {} return true;
+    },
+  };
   // ---------------- loot: coins burst from where points were earned and fly into the counter ----------------
   const lootLayer = document.createElement('div'); lootLayer.id = 'loot'; lootLayer.setAttribute('aria-hidden', 'true'); document.body.appendChild(lootLayer);
   let shown = 0, pending = 0, lootGen = 0, rollRaf = 0;
   function hudRoll(instant) {                  // the counter rolls towards the points already landed
     const el = $('score');
-    if (instant || reduced) { cancelAnimationFrame(rollRaf); rollRaf = 0; shown = score - pending; el.textContent = shown; return; }
+    if (instant || reduced) { cancelAnimationFrame(rollRaf); rollRaf = 0; shown = score - pending; el.textContent = cfmt(shown); el.parentNode.setAttribute('aria-label', cfmt(shown) + ' ' + CN.plural); return; }
     if (rollRaf) return;
-    const step = () => { rollRaf = 0; const d = score - pending - shown; if (!d) return; shown += Math.sign(d) * Math.max(1, Math.ceil(Math.abs(d) * .2)); el.textContent = shown; rollRaf = requestAnimationFrame(step); };
+    const step = () => { rollRaf = 0; const d = score - pending - shown; if (!d) return; shown += Math.sign(d) * Math.max(1, Math.ceil(Math.abs(d) * .2)); el.textContent = cfmt(shown); el.parentNode.setAttribute('aria-label', cfmt(shown) + ' ' + CN.plural); rollRaf = requestAnimationFrame(step); };
     rollRaf = requestAnimationFrame(step);
   }
   function bumpEl(el, cls) { if (!el || reduced) return; cls = cls || 'bump'; el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
   const centerOf = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
   const tileAt = u => { const br = $('board').getBoundingClientRect(), [x, y] = toScreen(u); return [br.left + x, br.top + y]; };
   let clinkT = 0;
-  function clink() { const t = performance.now(); if (t - clinkT < 28) return; clinkT = t; const f = 1900 + Math.random() * 700; blip(f, .06, 'triangle', .016); blip(f * 1.5, .05, 'sine', .008); }
+  function clink() { const t = performance.now(); if (t - clinkT < 28) return; clinkT = t; const f = (1900 + Math.random() * 700) * (CN.pitch || 1); blip(f, .06, 'triangle', .016); blip(f * 1.5, .05, 'sine', .008); }
   // amount: points (already added to score). from: [x, y] in the window, or a function giving it when the loot starts.
   // o.bag: a loot bag pops and bursts first; o.to: target element (default the coin counter); o.onCoin(share): per coin landed;
   // o.delay: ms before it starts; o.held: amount was already put in `pending`
@@ -951,9 +997,9 @@
     const { pts } = chainPoints(K);
     let bonus = 0, longest = false;
     if (K.size > bestLen) { if (bestLen > 1) { bonus = 5 * K.size; longest = true; } bestLen = K.size; }
-    score += pts + bonus;
+    gain(pts + bonus);
     if (needFind) needFind = false;
-    floatBall(atBall, '+' + (pts + bonus), longest ? 'longest yet!' : '');
+    floatBall(atBall, '+' + cfl(pts + bonus), longest ? 'longest yet!' : '');
     loot(pts + bonus, () => tileAt(atBall), { delay: 180 });
     award('capture'); if (K.lock) award('lock'); if (K.size >= 15) award('long');
     if (L.tools.includes('pi')) { const pk = piChain(); if (pk && pk.key === K.key) award('pi'); }
@@ -1044,7 +1090,7 @@
     const alive = new Set(chains.map(c => c.key));
     [...traced.keys()].forEach(k => { if (!alive.has(k)) traced.delete(k); });
     const known = memRecall();
-    if (isNew) { visited.add(cs); needFind = !known; score += 25; floatBall(K.vs[0], '+25', 'new pattern!'); loot(25, () => tileAt(K.vs[0]), { delay: 120 }); award('newstate'); }
+    if (isNew) { visited.add(cs); needFind = !known; gain(25); floatBall(K.vs[0], '+' + cfl(25), 'new pattern!'); loot(25, () => tileAt(K.vs[0]), { delay: 120 }); award('newstate'); }
     else needFind = false;
     worldEnter(K);
     if (filled(col)) { drawTraced(); drawActive(); updateHud(); return win(); }
@@ -1266,8 +1312,8 @@
     const d = dist(col); if (!d) return;
     const good = chains.filter(K => K.size > 0 && dist(flipped(col, K)) === d - 1);
     if (!good.length) return;
-    hintsUsed++; if (window.FTH_RUN) FTH_RUN.hint(); const paid = Math.min(score, 100); score -= paid; pending = Math.min(pending, score);
-    if (paid) { bumpEl($('coinBox'), 'loss'); const [cx, cy] = centerOf($('coinBox')), br = $('board').getBoundingClientRect(); floatAt(cx - br.left, Math.max(20, cy - br.top + 30), '−' + paid, '', 'dim'); blip(220, .15, 'triangle', .03); }
+    hintsUsed++; if (window.FTH_RUN) FTH_RUN.hint(); const paid = Math.min(score, 100); score -= paid; walletAdd(ACT.id, -paid * RATE); pending = Math.min(pending, score);
+    if (paid) { bumpEl($('coinBox'), 'loss'); const [cx, cy] = centerOf($('coinBox')), br = $('board').getBoundingClientRect(); floatAt(cx - br.left, Math.max(20, cy - br.top + 30), '−' + cfl(paid), '', 'dim'); blip(220, .15, 'triangle', .03); }
     const K = good.find(k => found.has(k.key)) || good.sort((a, b) => a.size - b.size)[0];
     const why = ' It takes you from <b>' + d + '</b> to <b>' + (d - 1) + '</b> swap' + (d - 1 === 1 ? '' : 's') + ' from filling' + (W ? ': the <b style="color:#2e9e57">green</b> arrow.' : '.');
     if (found.has(K.key)) {
@@ -1294,13 +1340,13 @@
   save.ach = save.ach || {};
   function award(k) {
     if (save.ach[k]) return; save.ach[k] = 1; persist();
-    const d = toast(ACH[k][0], ACH[k][1], '🏆', 100); score += 100; arp(660, 4, 70);
+    const d = toast(ACH[k][0], ACH[k][1], '🏆', 100); gain(100); arp(660, 4, 70);
     loot(100, () => d.isConnected ? centerOf(d.querySelector('.tro')) : centerOf($('board')), { bag: true, delay: 420 });
   }
   // a card slides in at the top of the board; with an icon it's a trophy card (achievements carry +points)
   function toast(t, sub, icon, pts) {
     const d = document.createElement('div'); d.className = 'toast' + (pts ? ' trophy' : '');
-    d.innerHTML = (icon ? '<span class="tro" aria-hidden="true">' + icon + '</span>' : '') + '<div>' + t + (sub ? '<small>' + sub + '</small>' : '') + '</div>' + (pts ? '<span class="tpts">+' + pts + '</span>' : '');
+    d.innerHTML = (icon ? '<span class="tro" aria-hidden="true">' + icon + '</span>' : '') + '<div>' + t + (sub ? '<small>' + sub + '</small>' : '') + '</div>' + (pts ? '<span class="tpts">+' + cfl(pts) + '</span>' : '');
     $('toast').appendChild(d); setTimeout(() => d.remove(), 3000); return d;
   }
 
@@ -1427,7 +1473,7 @@
     let land = false;
     chains.forEach(C => { const j = wIdx.get(canon(flipped(col, C))); if (j !== undefined) { Wst.g.add(j); hexMark(j, 1); if (W.dF[j] === 0) land = true; } });
     const after = chartedCount(), gained = after - before;
-    if (gained > 0 && K) { score += 10 * gained; loot(10 * gained, () => { const r = $('mini').getBoundingClientRect(); return r.width ? [r.left + r.width / 2, r.top + r.height / 2] : centerOf($('board')); }, { delay: 500 }); }
+    if (gained > 0 && K) { gain(10 * gained); loot(10 * gained, () => { const r = $('mini').getBoundingClientRect(); return r.width ? [r.left + r.width / 2, r.top + r.height / 2] : centerOf($('board')); }, { delay: 500 }); }
     if (after >= 10) award('hexes10'); if (after >= 50) award('hexes50');
     if (land && !won && K) { award('landho'); toast('Island in sight!', 'one swap from here fills the hole', '🏝️'); }
     wVer++; worldPersist(); pmDirty = true;
@@ -1695,6 +1741,7 @@
   // the look of a skin everywhere outside its play page: theme tokens, extra css, fonts, title art, map style
   const fontsLoaded = new Set();
   function applyLook(k) {
+    applyCoin(k);
     const b = document.body; b.dataset.skin = k.look || k.id;
     const T = Object.assign({}, ISL.theme || {}, k.theme || {});
     for (const v of Object.keys(ISL.theme || {}).concat(Object.keys(k.theme || {}))) b.style.setProperty(v, T[v]);
@@ -1775,6 +1822,7 @@
     score = 0; flips = 0; hintsUsed = 0; won = false; bestLen = 0; history = []; busy = false; trace = null; lastPartial = null;
     $('lvKicker').textContent = 'Level ' + (L.num || i + 1) + ' · ' + L.kicker; $('lvTitle').textContent = L.title;
     { const nm = L.num || String(i + 1); $('lvBadge').innerHTML = uiTile(0, 0, 31, [6, 5, 7, 6, 5, 6, 7, 5][i % 8], i % 4, { label: nm, fs: nm.length > 2 ? 16 : nm.length > 1 ? 21 : 26 }); }
+    MUL = save.best[levelIdx] ? .25 : 1; RATE = BASE * MUL;      // a beaten level pays a quarter on replay
     lootReset(); hudStars = 3; goalKey = ''; goalPrev = null; trayFrac.clear(); stamped.clear(); $('starMeter').innerHTML = '';
     $('menu').classList.remove('on'); $('game').classList.add('on'); $('win').classList.remove('on');
     BRD.reset(); BRD.configure(boardOf(SKIN), SKIN.id); compass = null; $('compass').classList.remove('on'); computeChains(); memRecall(); buildBoard(); closeWheel(); drawTraced(); drawActive(); worldStart();
@@ -1790,16 +1838,16 @@
     { const nm = L.num || String(levelIdx + 1); $('briefBadge').innerHTML = uiTile(0, 0, 31, [6, 5, 7, 6, 5, 6, 7, 5][levelIdx % 8], levelIdx % 4, { label: nm, fs: nm.length > 2 ? 16 : nm.length > 1 ? 21 : 26 }); }
     const b = save.best[levelIdx];
     $('briefMeta').innerHTML = '<span class="pill">Par <b>' + L.par + '</b> flip' + (L.par > 1 ? 's' : '') + '</span><span class="pill">' + (n - 1) + ' tiles</span>' +
-      '<span class="pill">' + Gr.name + '</span>' + (b ? '<span class="pill">Best ' + b.score + ' ' + '★'.repeat(b.stars) + '</span>' : '');
+      '<span class="pill">' + Gr.name + '</span>' + (b ? '<span class="pill">Best ' + b.score + ' ' + '★'.repeat(b.stars) + '</span><span class="pill">Replay pays ¼</span>' : '');
     $('brief').classList.add('on');
   }
   function win() {
     won = true; closeWheel(); active = null; lastPartial = null; drawActive(); if (L.g === 'r178') award('island');   // landfall on the record map only
     const used = new Set(rimCols(col)); let free = 0; while (used.has(free)) free++;
     const stars = starsNow(), bonus = 300 + 150 * stars;
-    if (window.FTH_RUN && !LABN) FTH_RUN.win({ stars, flips, hints: hintsUsed, score, pending, shown: $('score').textContent, points: score + bonus, own: !!ACT.own });
-    if (window.FTH_LOG) FTH_LOG.end('win', { flips, stars, hints: hintsUsed });
-    score += bonus; pending += bonus;           // the bonus is paid out on the reward screen
+    if (window.FTH_RUN && !LABN) FTH_RUN.win({ stars, flips, hints: hintsUsed, score, pending, shown, points: score + bonus, own: !!ACT.own });
+    if (window.FTH_LOG) FTH_LOG.end('win', { flips, stars, hints: hintsUsed, coin: ACT.id });
+    gain(bonus); pending += bonus;           // the bonus is paid out on the reward screen
     const prev = save.best[levelIdx];
     save.best[levelIdx] = { score: Math.max(score, prev ? prev.score : 0), stars: Math.max(stars, prev ? prev.stars : 0) };
     persist(); updateHud();
@@ -1808,7 +1856,7 @@
       () => { confetti(); later(900, () => {
       $('winStars').innerHTML = [0, 1, 2].map(() => '<span class="ws">' + starSvg + '</span>').join('');
       const ws = [...$('winStars').children];
-      let total = score - bonus; $('winScore').textContent = total;
+      let total = score - bonus; winPts = total; $('winScore').textContent = cfmt(total);
       const WD = ACT.words || {};
       document.querySelector('#win .rtitle').textContent = WD.win || (ACT.own ? 'Coloured!' : 'Hole filled!');
       $('winText').textContent = ACT.own ? (WD.perfect || 'Every piece coloured, and no two neighbours match!') : flips <= L.par ? (WD.perfect || 'Perfect route! No shorter way exists.') : (WD.par ? WD.par.replace('{par}', L.par) : 'Par is ' + L.par + ' swap' + (L.par > 1 ? 's' : '') + '. Can you get ★★★?');
@@ -1817,11 +1865,11 @@
       $('win').style.setProperty('--wd', (reduced ? 0 : (t1 + 2300) / 1000) + 's');
       $('win').classList.add('on');
       bonusStart(reduced ? 0 : t1 + 2400);     // bonus round: playable once the stars + loot bag have paid out
-      if (reduced) { ws.forEach((s, i) => { s.classList.add('shown'); if (i < stars) s.classList.add('got'); }); $('winScore').textContent = score; pending = Math.max(0, pending - bonus); hudRoll(true); return; }
+      if (reduced) { ws.forEach((s, i) => { s.classList.add('shown'); if (i < stars) s.classList.add('got'); }); winPts = score; $('winScore').textContent = cfmt(score); pending = Math.max(0, pending - bonus); hudRoll(true); return; }
       ws.forEach((s, i) => later(350 + i * 330, () => {
         s.classList.add('shown'); if (i < stars) { s.classList.add('got'); blip(660 * Math.pow(1.26, i), .18, 'triangle', .05); } else blip(200, .12, 'sine', .03);
       }));
-      later(t1, () => loot(bonus, () => centerOf($('winBag')), { bag: true, held: true, to: $('winTotal'), onCoin: sh => { total += sh; $('winScore').textContent = total; } }));
+      later(t1, () => loot(bonus, () => centerOf($('winBag')), { bag: true, held: true, to: $('winTotal'), onCoin: sh => { total += sh; winPts = total; $('winScore').textContent = cfmt(total); } }));
     }); });
   }
   $('winRetry').onclick = () => startLevel(levelIdx, false);
@@ -1939,7 +1987,7 @@
     me.t.push(setTimeout(() => {
       if (bz !== me || me.done) return;
       me.live = true; svg.classList.add('live');
-      bonusSay('Coins are <b>hidden</b>! Drag a 2-colour chain');
+      bonusSay(CN.plural[0].toUpperCase() + CN.plural.slice(1) + ' are <b>hidden</b>! Drag a 2-colour chain');
       if (!reduced) bonusDemo(me);
     }, delay));
   }
@@ -1978,14 +2026,14 @@
     cg.classList.add('show'); me.got += pts; me.cgot += pts;
     const cin = cg.firstChild; if (!reduced && cin.animate) cin.animate([{ transform: 'scale(.2)', opacity: 0 }, { transform: 'scale(1.3)', opacity: 1, offset: .55 }, { transform: 'scale(1)', opacity: 1 }], { duration: 260, easing: 'ease-out' });
     note(n - 1); setTimeout(() => { blip(1760 * Math.pow(1.04, n), .07, 'square', .018); blip(2640 * Math.pow(1.04, n), .16, 'triangle', .03); }, 45);   // cha-ching
-    score += pts;
+    gain(pts);
     const b = save.best[levelIdx]; if (b) { b.score = Math.max(b.score, score); persist(); }
     const wrap = svg.parentNode, wr = wrap.getBoundingClientRect(), f = document.createElement('div');
-    f.className = 'bfl'; f.textContent = '+' + pts + (k > 1 ? ' ×' + k : ''); f.style.left = (from[0] - wr.left) + 'px'; f.style.top = (from[1] - wr.top) + 'px';
+    f.className = 'bfl'; f.textContent = '+' + cfl(pts) + (k > 1 ? ' ×' + k : ''); f.style.left = (from[0] - wr.left) + 'px'; f.style.top = (from[1] - wr.top) + 'px';
     wrap.appendChild(f); setTimeout(() => f.remove(), 950);
     me.t.push(setTimeout(() => {
       cg.classList.add('gone');
-      loot(pts, from, { to: $('winTotal'), onCoin: sh => { $('winScore').textContent = (+$('winScore').textContent || 0) + sh; } });
+      loot(pts, from, { to: $('winTotal'), onCoin: sh => { winPts += sh; $('winScore').textContent = cfmt(winPts); } });
     }, reduced ? 0 : 200));
   }
   function bonusAdd(me, i) {
@@ -1997,7 +2045,7 @@
     if (p.length === 2) { me.pair = [me.E[p[0]], me.E[p[1]]]; bonusPay(me, p[0], 1); me.t.push(setTimeout(() => { if (bz === me) bonusPay(me, p[1], 2); }, reduced ? 0 : 110)); }   // it IS a chain: both tiles reveal
     else bonusPay(me, i, p.length);
     bonusLine(me);
-    bonusSay(p.length < 3 ? 'A chain! One more to start the clock!' : 'Chain <b>' + p.length + '</b> · +' + me.cgot);
+    bonusSay(p.length < 3 ? 'A chain! One more to start the clock!' : 'Chain <b>' + p.length + '</b> · +' + cfl(me.cgot));
     if (p.length === 3 && me.cd < 0) bonusCountdown(me);
     if (!bonusMoves(me)) { me.ended = true; me.down = false; bonusSay('Chain of <b>' + p.length + '</b> · no more moves!'); me.t.push(setTimeout(() => bonusChainEnd(me, 'dead'), 600)); }
   }
@@ -2019,13 +2067,13 @@
     if (bz !== me || me.done) return;
     me.ct.forEach(clearTimeout); me.ct = []; me.cd = -1; me.down = false; me.ended = true;
     const n = me.path.length, got = me.cgot, ch = me.ch, el = $('bonusCd'); if (el) { el.className = 'bcd'; el.textContent = ''; }
-    me.chains.push({ n, got, why }); LOG('b_chain', { ch, n, got, why });
+    me.chains.push({ n, got, why }); LOG('b_chain', { ch, n, got, why, coin: ACT.id });
     me.path.forEach(i => { me.used.add(i); const g = $('bonusSvg').querySelector('.tl[data-k="' + i + '"]'); if (g) { g.classList.remove('glow'); g.classList.add('lit', 'spent'); } });
     me.path = []; me.pair = null; me.cgot = 0; bonusLine(me);
     const what = why === 'time' ? 'Time! ' : why === 'dead' ? 'Dead end! ' : '';
-    if (ch >= BCHAINS) { bonusSay(what + 'Chain <b>' + ch + '</b>: +' + got + '. That was the last!'); me.t.push(setTimeout(() => bonusEnd(), 800)); return; }
+    if (ch >= BCHAINS) { bonusSay(what + 'Chain <b>' + ch + '</b>: +' + cfl(got) + '. That was the last!'); me.t.push(setTimeout(() => bonusEnd(), 800)); return; }
     me.ch++; bonusPips(me); blip(660, .1, 'triangle', .035);
-    bonusSay(what + 'Chain <b>' + ch + '</b>: +' + got + '. Now chain <b>' + me.ch + '</b> of ' + BCHAINS);
+    bonusSay(what + 'Chain <b>' + ch + '</b>: +' + cfl(got) + '. Now chain <b>' + me.ch + '</b> of ' + BCHAINS);
     me.t.push(setTimeout(() => { if (bz === me && !me.done) { me.ended = false; bonusSay('Chain <b>' + me.ch + '</b> of ' + BCHAINS + ': start on a fresh tile'); } }, 750));
   }
   function bonusEnd(skip) {
@@ -2039,10 +2087,10 @@
     if (!me.got) { el.textContent = ''; bonusSay(skip ? 'Skipped.' : 'Done!'); ghosts(); bonusUnlock(); return; }
     [523, 659, 784, 1047, 1319, 1568].forEach((f, i) => setTimeout(() => blip(f, i === 5 ? .4 : .14, 'triangle', .05), i * 85));   // happy jingle
     setTimeout(() => { blip(1047, .45, 'sine', .035); blip(1319, .45, 'sine', .03); }, 6 * 85);
-    el.className = 'bcd burst'; el.textContent = '+' + me.got + ' bonus!';
+    el.className = 'bcd burst'; el.textContent = '+' + cfl(me.got) + ' bonus!';
     if (!reduced && el.animate) el.animate([{ transform: 'scale(.2) rotate(-8deg)', opacity: 0 }, { transform: 'scale(1.25) rotate(4deg)', opacity: 1, offset: .5 }, { transform: 'scale(1)', opacity: 1 }], { duration: 600, easing: 'cubic-bezier(.3,1.6,.5,1)', fill: 'forwards' });
     const svg = $('bonusSvg'), vb = svg.viewBox.baseVal; uiBurst(svg, vb.width / 2, vb.height / 2, '#ffd84a', 14);
-    bonusSay(me.chains.length + (me.chains.length === 1 ? ' chain' : ' chains') + ', <b>' + n + '</b> tiles! Coins in the bank.');
+    bonusSay(me.chains.length + (me.chains.length === 1 ? ' chain' : ' chains') + ', <b>' + n + '</b> tiles! ' + CN.plural[0].toUpperCase() + CN.plural.slice(1) + ' in the bank.');
     setTimeout(ghosts, reduced ? 0 : 900); setTimeout(() => { if (bz === me) el.textContent = ''; }, reduced ? 1200 : 2200);   // then the board shows what you missed
     setTimeout(() => { if (bz === me) { bonusUnlock(); bumpEl($('winTotal')); } }, reduced ? 0 : 1300);   // after the last coins land
   }
@@ -2063,6 +2111,7 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeWheel(); active = null; if (chains) drawActive(); } });
   window.__game = { get chains() { return chains; }, get col() { return col; }, toScreen: u => toScreen(u), get found() { return found; },
     good: () => { const d = dist(col); return chains.filter(K => dist(flipped(col, K)) === d - 1); }, dist: () => dist(col), get won() { return won; }, get T() { return BRD.debug().T; }, get trace() { return trace; }, pick: (x, y) => pick(x, y), pickAll: (x, y) => pickAll(x, y), stepTarget: (x, y) => stepTarget(x, y), ballAt: (x, y) => ballAt(x, y), get layout() { return BRD.debug().LAYO; }, get box() { return BRD.debug().BOX; }, get graph() { return Gr; }, get bridges() { return BRD.debug().bridges; }, board: BRD,
+    gain, win: () => win(), capture: K => capture(K, K.vs[0]), flip: K => doFlip(K), get busy() { return busy; }, get score() { return score; }, get rate() { return RATE; },   // test hooks for tools/coins_check.js
     bonus: (ncol, delay) => { $('win').classList.add('on'); bonusStart(delay || 0, ncol); }, get bz() { return bz; }, get active() { return active; }, get compass() { return compass; }, get pm() { return PM; }, get free() { return BRD.debug().free; }, get LIVE() { return BRD.LIVE; } };   // test hook
   // ---------------- dev panel (board/island.js): live spring / damping knobs, crossing guard, free borders ----------------
   // Open with #dev on the link, or tap the level name five times. Changes apply at once to the running board.
@@ -2603,6 +2652,12 @@
   }
   $('btnHowMap').onclick = () => openHowTo(null);
   $('btnTitle').onclick = showTitle;
+  // the wallet and exchange (economy.js, lazy: loaded on the first open)
+  $('btnWallet').onclick = $('btnWalletMap').onclick = $('btnWalletTitle').onclick = () => {
+    const go = () => FTH_ECON.open({ skin: ACT.id });
+    if (window.FTH_ECON && FTH_ECON.open) return go();
+    const sc = document.createElement('script'); sc.src = 'economy.js'; sc.onload = go; sc.onerror = () => alert('The wallet could not load. Check your connection and try again.'); document.head.appendChild(sc);
+  };
   $('btnLbTitle').onclick = $('btnLbMap').onclick = () => { if (window.FTH_RUN) FTH_RUN.openBoard(SKIN.id); };   // lazy: leaderboard.js, account.js
   titleBuild();
   (function () {                           // research consent: ask once, record nothing until OK
