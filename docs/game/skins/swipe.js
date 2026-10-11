@@ -33,7 +33,7 @@
   const rimPos = (cx, cy, R) => Array.from({ length: 5 }, (_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 5; return [cx + Math.cos(a) * R, cy + Math.sin(a) * R]; });
   const goldHex = (cx, cy, R, pulse) => '<g' + (pulse ? ' class="gh"' : '') + ' transform="translate(' + cx + ' ' + cy + ')"><polygon points="' + hexP(R * 1.1) + '" fill="none" stroke="' + GOLD + '" stroke-width="3" stroke-linejoin="round" opacity=".55"/>' +
     '<polygon points="' + hexP(R) + '" fill="' + GOLD2 + '" stroke="' + EDGE + '" stroke-width="3" stroke-linejoin="round" transform="translate(0 3)"/><polygon points="' + hexP(R) + '" fill="' + GOLD + '" stroke="' + EDGE + '" stroke-width="3" stroke-linejoin="round"/>' +
-    '<polygon points="' + hexP(R * .72) + '" fill="none" stroke="' + CREAM + '" stroke-width="2.4" stroke-linejoin="round"/>' + coin(0, 0, R / 15) + '</g>';
+    '<polygon points="' + hexP(R * .72) + '" fill="none" stroke="' + CREAM + '" stroke-width="2.4" stroke-linejoin="round"/>' + '</g>';
   const glowLine = (d, col) => '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity=".28"/><path d="' + d + '" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/>';
   const finger = (x, y) => '<g transform="translate(' + x + ' ' + y + ')"><path d="M0 0 C-3 -8 -3 -18 2 -22 C6 -20 6 -12 5 -6 L14 -4 C20 -2 18 8 12 12 L2 16 C-4 14 -4 6 0 0Z" fill="#ffe0bd" stroke="' + EDGE + '" stroke-width="2" stroke-linejoin="round"/></g>';
   const GH = '.gh{animation:gp 1.4s ease-in-out infinite alternate}@keyframes gp{from{opacity:.75}to{opacity:1}}';
