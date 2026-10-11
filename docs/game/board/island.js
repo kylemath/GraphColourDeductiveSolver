@@ -794,7 +794,7 @@
   function configure(cfg, key) {                   // a skin's physics; kept across levels so dev-panel tweaks survive until the skin changes
     if (key !== undefined && key === cfgKey) return; cfgKey = key === undefined ? null : key; cfg = cfg || {};
     Object.assign(LIVE, LIVE0, cfg.live || {}); LIVE.guard = cfg.guard === undefined ? LIVE0.guard : !!cfg.guard; FREE.on = !!cfg.free;
-    const d = $('devPanel'); if (d) {              // an open dev panel shows the new skin's numbers
+    const d = S.headless ? null : $('devPanel'); if (d) {              // an open dev panel shows the new skin's numbers
       d.querySelectorAll('input[type=range]').forEach(r => { r.value = LIVE[r.dataset.k]; d.querySelector('[data-v="' + r.dataset.k + '"]').textContent = r.value; });
       $('devGuard').checked = LIVE.guard; $('devFree').checked = FREE.on;
     }
