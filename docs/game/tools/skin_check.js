@@ -6,7 +6,10 @@ const ctx = { window: {}, console }; ctx.window.window = ctx.window; vm.createCo
 vm.runInContext(fs.readFileSync(path.join(D, 'registry.js'), 'utf8'), ctx);
 ctx.FTH_SKINS = ctx.window.FTH_SKINS;
 const want = process.argv.slice(2);
-const files = fs.readdirSync(D).filter(f => f.endsWith('.js') && f !== 'registry.js' && (!want.length || want.includes(f.replace(/\.js$/, ''))));
+const read = f => fs.readFileSync(path.join(D, f), 'utf8');
+const files = fs.readdirSync(D).filter(f => f.endsWith('.js') && f !== 'registry.js' && (!want.length || want.includes(f.replace(/\.js$/, ''))))
+  .sort((x, y) => /FTH_SKINS\.extend\(/.test(read(x)) - /FTH_SKINS\.extend\(/.test(read(y)));   // skins that extend another load after it
+if (want.length && files.some(f => /FTH_SKINS\.extend\('([\w-]+)'/.test(read(f)))) fs.readdirSync(D).filter(f => f.endsWith('.js') && f !== 'registry.js' && !files.includes(f) && !/FTH_SKINS\.extend\(/.test(read(f))).forEach(f => files.unshift(f));
 let bad = 0; const fail = (id, m) => { bad++; console.log('  FAIL ' + id + ': ' + m); };
 for (const f of files) {
   try { vm.runInContext(fs.readFileSync(path.join(D, f), 'utf8'), ctx, { filename: f }); }
@@ -19,9 +22,19 @@ const svgOk = (s, where, id) => {
   const open = (s.match(/<g[\s>]/g) || []).length, close = (s.match(/<\/g>/g) || []).length;
   if (open !== close) fail(id, where + ': unbalanced <g> (' + open + ' open, ' + close + ' close)');
 };
+const names = {}; for (const s of ctx.window.FTH_SKINS.list) for (const k of ['id', 'name', 'ic']) { const key = k + ':' + s[k]; if (names[key]) fail(s.id, k + ' ' + s[k] + ' is also used by ' + names[key]); names[key] = s.id; }
 for (const s of ctx.window.FTH_SKINS.list) {
   const id = s.id; console.log(id + ' (' + s.name + ')');
   if (!s.ic) fail(id, 'missing ic');
+  if (s.id !== undefined && !fs.existsSync(path.join(D, s.id + '.js'))) fail(id, 'skins/' + s.id + '.js must be named after the id');
+  if (s.look && !ctx.window.FTH_SKINS.list.some(k => k.id === s.look)) fail(id, 'look ' + s.look + ' is not a registered skin');
+  if (s.board) {                                     // the island board's layout and physics (section 11)
+    const B = s.board, LK = ['kH', 'kB', 'damp', 'cap', 'rep', 'pull', 'tug', 'fk', 'fr', 'fl'];
+    if (s.src) fail(id, 'board only applies to skins without a play page (src)');
+    for (const k of Object.keys(B)) if (!['free', 'guard', 'live'].includes(k)) fail(id, 'board.' + k + ' unknown (free, guard, live)');
+    for (const k of Object.keys(B.live || {})) if (!LK.includes(k) || typeof B.live[k] !== 'number') fail(id, 'board.live.' + k + ' must be a number named one of ' + LK.join(' '));
+  }
+  if (s.family && !ctx.window.FTH_SKINS.list.some(k => k !== s && k.family === s.family)) console.log('  note: family ' + s.family + ' has one member, so it is not grouped');
   if (s.hud && !['full', 'compact', 'minimal'].includes(s.hud)) fail(id, 'hud must be full | compact | minimal');
   if (s.src && !fs.existsSync(path.join(__dirname, '..', s.src))) fail(id, 'src ' + s.src + ' not found');
   for (const k of Object.keys(s.theme || {})) if (!/^--sk-[a-z0-9-]+$/.test(k)) fail(id, 'theme key ' + k + ' is not --sk-*');

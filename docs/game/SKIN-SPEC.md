@@ -8,8 +8,9 @@ A skin is two things:
 
 1. **A spec file** `skins/<id>.js` that registers one object with `FTH_SKINS.register({...})` (fields below). It is
    loaded by the app on every page load, so it must be small, synchronous and side-effect free apart from `register`.
-2. **A play page** (optional) `lab/<id>.html` built on `lab/core.js`. The built-in Islands skin has no page: the shell
-   draws its own board. Every other skin plays inside a frame.
+2. **A play page** (optional) `lab/<id>.html` built on `lab/core.js`. The Islands skins that draw the island board
+   (Islands, Islands Free) have no page: the shell draws the board with `board/island.js` (section 11). Every other
+   skin plays inside a frame.
 
 Nothing else is per-skin. A skin never edits `index.html`, `lab/core.js` or another skin's files.
 
@@ -20,7 +21,10 @@ FTH_SKINS.register({
   id: 'dots',                      // matches the file name and save keys
   name: 'Dots', ic: '⚫',           // title-screen chip (short name, one emoji)
   blurb: 'one finger, one line',   // under the chip when selected (max ~30 chars)
-  src: 'lab/dots.html',            // the play page; omit for the built-in Islands board
+  src: 'lab/dots.html',            // the play page; omit for the island board (section 11)
+  family: 'islands',               // optional: skins of one family sit together in a box on the title screen
+  look: 'islands',                 // optional: the skin whose chrome CSS scope applies (default: this skin's own id)
+  board: { free: false },          // island-board skins only: layout and physics of the board (section 11)
   waits: false,                    // true: after the winning swap the player still has a step (Line Doodle colours the hole)
   own: false,                      // true: the skin has its own goal and reports with LAB.finish(swaps) (Blank Doodle)
   needs: [],                       // ['cells']: needs region shapes (every map has them now)
@@ -38,7 +42,11 @@ FTH_SKINS.register({
 });
 ```
 
-Every field except `id`, `name`, `ic` is optional; the shell falls back to the Islands look.
+Every field except `id`, `name`, `ic` is optional; the shell falls back to the Islands look. A skin can be derived from
+another one that is registered before it: `FTH_SKINS.register(FTH_SKINS.extend('islands', { id: 'islands-free', name: …, ic: …, blurb: …, board: … }))`.
+`extend` copies the base spec and merges plain-object fields (`theme`, `words`, `map`, `bonus`, `levelMap`, `title`,
+`board`) one level deep; everything else in the override replaces the base's. **Skin ids are permanent**: saves,
+leaderboards and the research log key on them (progress itself is per level id and shared by every skin).
 
 ## 2. HUD levels
 
@@ -231,3 +239,41 @@ levelMap: {
 2. The play page passes the embed test (`ready` and no `error` on every level) and `node tools/embed_win_check.js <id>`
    (nothing restarts or shows dev text after a win), draws its controls with `--sk-ctl*`, and `node tools/contrast_check.js` passes.
 3. Add `<script src="skins/<id>.js"></script>` to `index.html` (the shell owner does this) and the files to `sw.js`.
+4. Island-board skins: `node tools/free_check.js` passes for the free layout. Islands 3D: `node tools/islands3d_check.js` passes.
+
+## 11. The island board (`board/island.js`)
+
+The island board is one renderer with two layouts; the skin spec picks one with `board`:
+
+```js
+board: { free: false }                                  // Islands: the three far regions are walls, tiles sit on the planar layout
+board: { free: true, guard: false,                      // Islands Free: no walls, the whole map settles like soft bubbles
+         live: { kH: 0, kB: 0, damp: .53, cap: .38, rep: 5, fk: .065, fr: 2.5, fl: 1.15 } }
+```
+
+`live` overrides the physics numbers shown in the `#dev` panel (five taps on the level name): `kH` home spring, `kB`
+bridge spring, `damp` velocity damping, `cap` swing room and trace tug (x spacing), `rep` like-colour push (walls only),
+`pull`, `tug`, and for the free layout `fk` link leash, `fr` bubble push, `fl` bubble size (1 fills about 86% of the
+island with a hexagonal packing). `guard` is the crossing guard of the walled layout. A skin with a play page (`src`)
+has no `board`. The free layout is settled offline when the level opens (the island opens at rest, the grow-in plays
+towards it), kept clear of overlaps by a hard floor under the soft push, and checked on every level and screen size by
+`node tools/free_check.js` (it exits 1 if a layout has overlapping tiles, tiles off screen, hidden links, tiles under
+22 px, a slow settle, or an off-centre goal).
+
+The shell does not reach into the board. It creates it once, `FTH_ISLAND.create(S)`, passing a read-only view of the
+game (`S.view()`: level, graph, colours, chains, the trace) and the few helpers the board draws with (sound, messages,
+the tile look), and calls the interface that comes back: `build`, `configure(board, key)`, `reset`, `destroy`, `kick`,
+`pick`, `pickAll`, `stepTarget`, `ballAt`, `toScreen`, `posOf`, `dragBegin/Move/End`, `ripple`, `shake`, `popBall`,
+`paintBalls`, `drawTraced/Active/Trace`, `drawHoleFill`, `holeCeremony`, `dev`. Chains, flips, scoring, saves and levels
+stay in the shell. `layout(grow, [w, h])` and `step(now)` build the geometry and advance the physics without a DOM
+(`create` takes `headless: true`), which is how `tools/free_check.js` tests the real code.
+
+### Islands 3D (`lab/islands3d.html`)
+
+The same island as a three.js scene, a normal skin with a play page (`src: 'lab/islands3d.html'`, `family: 'islands'`).
+It draws every level: the layout (tiles on a hexagonal lattice, float levels so no bridge runs through a tile) is
+derived from the level's own graph and stored per map in `lab/islands3d-plans.js`; `node tools/islands3d_check.js`
+checks all of them (and `--write` regenerates the file after a map changes). three.js (r128) loads from cdnjs; if
+that, or WebGL, is unavailable the page posts `{ fth: 1, type: 'error' }` and the app plays the level on the island board.
+Touch: drag a tile to trace a chain, tap a tile for its chains and press SWAP, drag empty space to turn and tilt, pinch to
+zoom; mouse: right button turns, wheel zooms.

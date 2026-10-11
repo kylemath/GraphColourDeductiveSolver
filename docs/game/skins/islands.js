@@ -1,7 +1,10 @@
-// Islands: the built-in board (the shell draws it). Its look is the shell's default, so the spec only names it;
-// the rich animated how-to-play, the hex bonus tiles and the sea-blue exploration map are the shell's own.
+// Islands: the built-in board (the shell draws it, board/island.js). Its look is the shell's default, so the spec only
+// names it; the rich animated how-to-play, the hex bonus tiles and the sea-blue exploration map are the shell's own.
+// Islands Free and Islands 3D (islands-free.js, islands-3d.js) extend this spec: same theme, art and map, other board.
 FTH_SKINS.register({
   id: 'islands', name: 'Islands', ic: '🏝️', blurb: 'trace chains across a cartoon island',
+  family: 'islands',                  // the title screen groups skins of one family
+  board: { free: false },             // the island board: three far regions as walls, tiles on their planar layout (SKIN-SPEC.md section 11)
   hud: 'full',
   theme: {
     '--sk-bg': 'linear-gradient(180deg, #5fd0ff 0%, #3aa6f0 48%, #2a7fdc 100%)',
