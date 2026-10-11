@@ -440,9 +440,9 @@
   #winRetry { font-size: 1.05rem; padding: 12px 16px; }
   /* bonus round on the reward screen: a coin-pancake chain dash */
   #bonus { margin: 0 0 12px; } #bonus:empty { display: none; }
-  #bonus .bhead { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-weight: 900; font-size: .92rem; }
+  #bonus .bhead { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 8px; margin-bottom: 5px; font-weight: 900; font-size: .92rem; }
   #bonus .btag { background: #ffd84a; color: #4a2a00; border: 2px solid #fff; border-radius: 999px; padding: 1px 9px; font-size: .78rem; letter-spacing: .08em; box-shadow: 0 3px 0 #b06a00; }
-  #bonusMsg { flex: 1; text-align: left; height: 3.75em; line-height: 1.25; display: flex; align-items: center; overflow: hidden; }   /* fixed height: the board must not jump mid-drag */
+  #bonusMsg { order: 1; flex: 1 0 100%; text-align: left; height: 2.6em; line-height: 1.25; display: flex; align-items: center; overflow: hidden; }   /* fixed height: the board must not jump mid-drag */
   #bonus .bskip { background: rgba(18,22,70,.55); color: #fff; border: 2px solid #fff; border-radius: 999px; padding: 2px 11px; font-weight: 900; font-size: .8rem; cursor: pointer; }
   #bonus.over .bskip { visibility: hidden; }
   #bonus .bwrap { position: relative; border-radius: 18px; background: rgba(18,22,70,.45); box-shadow: inset 0 0 0 2px rgba(255,255,255,.35); padding: 4px; }
@@ -452,14 +452,21 @@
   #bonusSvg .bglow { fill: none; stroke: #fff; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .3; }
   #bonusSvg .bline { fill: none; stroke: #fff; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 11; filter: drop-shadow(0 0 4px #fff); animation: bdash .6s linear infinite; }
   @keyframes bdash { to { stroke-dashoffset: -12; } }
-  #bonusSvg .bcoin.gone { opacity: 0; transition: opacity .15s; }
+  #bonusSvg .bcoin { opacity: 0; } #bonusSvg .bcoin.show { opacity: 1; } #bonusSvg .bcoin.gone { opacity: 0; transition: opacity .15s; }   /* coins are hidden until a chain reveals them */
+  #bonusSvg .bcoin.ghost { opacity: .85; transition: opacity .5s; }   /* the ones you did not find, shown once the round is over */
+  #bonusSvg .tl.spent { opacity: .5; }
+  #bonus .bskip { margin-left: auto; }
+  #bonus .bpips { display: inline-flex; gap: 4px; align-items: center; flex: none; }
+  #bonus .bpips i { width: 13px; height: 13px; border-radius: 50%; box-sizing: border-box; background: var(--sk-chip, rgba(18,22,70,.55)); border: 2px solid var(--sk-edge, #fff); transition: background .2s, opacity .2s, transform .2s; }
+  #bonus .bpips i.on { background: var(--sk-accent, #ffd84a); transform: scale(1.2); box-shadow: 0 0 0 2px color-mix(in srgb, var(--sk-accent, #ffd84a) 38%, transparent); }
+  #bonus .bpips i.done { background: transparent; opacity: .35; }
   .bcd { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; font-size: 5.5rem; font-weight: 900; color: #ffd84a; opacity: .9;
     text-shadow: 4px 0 #1c1640, -4px 0 #1c1640, 0 4px #1c1640, 0 -4px #1c1640, 3px 3px #1c1640, -3px 3px #1c1640, 3px -3px #1c1640, -3px -3px #1c1640, 0 8px 0 #1c1640; }
   .bcd.burst { font-size: 2.5rem; color: #fff; opacity: 1; }
   .bfl { position: absolute; pointer-events: none; font-weight: 900; font-size: 1.15rem; color: #ffd84a; transform: translate(-50%, -50%); animation: bfl .9s ease-out forwards; text-shadow: 2px 0 #1c1640, -2px 0 #1c1640, 0 2px #1c1640, 0 -2px #1c1640; }
   @keyframes bfl { to { transform: translate(-50%, -160%); opacity: 0; } }
   #win.bonusing .wbtns button { opacity: .4; filter: grayscale(.7); }
-  @media (prefers-reduced-motion: reduce) { #bonusSvg .bline, .bfl { animation: none !important; } #bonusSvg .bcoin.gone { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { #bonusSvg .bline, .bfl { animation: none !important; } #bonusSvg .bcoin.gone, #bonusSvg .bcoin.ghost, #bonus .bpips i { transition: none; } }
   #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 11; }
   @media (prefers-reduced-motion: reduce) { .breathe, .pop, .wob, .hintpulse, .train, .card, .float, #wheel .disc, #wheel .opt, .goalbar .tin, .say, .say .pinm, .ccard, .ccard .stamp, .coins, .wtotal, .toast, #btnGo, #btnHint, #win.on .wbtns, .starbar { animation: none !important; transition: none !important; } .stars .ws { transform: none; } .ccard .liq { transition: none; } }
   .consent { position: relative; z-index: 3; margin: 6px auto 0; max-width: 340px; background: #fff; color: #33285c; border-radius: 18px; padding: 10px 12px; box-shadow: 0 4px 0 rgba(0,0,0,.25); font-weight: 700; font-size: .85rem; text-align: center; }
@@ -2531,15 +2538,37 @@
   $('winNext').onclick = () => { if (levelIdx + 1 < G.levels.length) startLevel(levelIdx + 1, true); else showMenu(); };
 
   // ---------------- bonus round ----------------
-  // A reward mini-game on the win screen: a hex plane coloured in an interleaved pattern, with coins on every tile (singles and pancake stacks of 3 and 5). One drag along a path that
-  // alternates two elements; each tile's coins cha-ching into the counter (10 points a coin). At 3 tiles a 5-4-3-2-1
-  // countdown starts; at 0 a jingle, the last coins land and NEXT / Retry unlock. Skip ends it any time.
-  // Spaced-out hex grid (9 x 7 = 63 tiles, 6 neighbours each), coloured with 3 or 4 interleaved elements (see
-  // bonusStart): early levels use 3 (easy), later ones a mix of 3 and 4.
-  const BX = { cols: 9, rows: 7, s: 40 };
+  // A reward mini-game on the win screen: a hex plane coloured in an interleaved pattern. The tiles are BARE: nobody knows where the
+  // coins are. Drag along a path that alternates two elements; the moment it is a chain (2+ tiles) coins pop into view tile by tile
+  // (the first two together, then one per step) and cha-ching into the counter (BCOIN.pts points a coin). THREE chains per round:
+  //   - a chain ENDS when the finger lifts (with 2+ tiles on the path; a lone tile is just a touch and costs nothing), at a dead end,
+  //     or when its clock runs out. A wrong step only shakes (and the path stays), it never breaks the chain.
+  //   - tiles of an ended chain are SPENT: dimmed, they pay nothing again and cannot be walked over. Coins stay collected.
+  //   - a 5-4-3-2-1 clock arms per chain when that chain reaches 3 tiles and runs while it grows; at 0 it cuts that chain (the next
+  //     chain starts with no clock until IT reaches 3 tiles). Lifting stops the clock at once (no waiting it out).
+  //   - the round ends when the 3rd chain ends, or on Skip. Then a jingle, the unclaimed coins fade in faintly (what you missed),
+  //     and NEXT / Retry unlock. Header pips show chains left (.bpips, drawn from the skin's --sk-* tokens).
+  // Boards (9 x 7 = 63 hex tiles, 6 neighbours inside): 3 or 4 elements, picked by level (see bonusPick). Board data, old and new, is
+  // validated offline by tools/bonus_boards.js (node tools/bonus_boards.js prints the stats table).
+  const BX = { cols: 9, rows: 7, s: 40 }, BCHAINS = 3;
+  // the coin economy lives here: stack sizes (the art is bonusStack), their odds (cumulative) and points per coin; payouts go through loot()
+  const BCOIN = { stacks: [1, 3, 5], odds: [.78, .95, 1], pts: 10, roll() { const x = Math.random(); return this.stacks[this.odds.findIndex(o => x < o)]; } };
   // 4-element patterns, found offline by annealing over proper colourings of this grid: every inner tile touches all
   // three other elements, and every one of the 6 element pairs has a chain of 12-21 tiles somewhere on the board.
   const BPAT4 = ["323021321102102030031323121120102032201321310132030231320121310", "303202102210130231132302312201231030132310321210232103102101031", "212032132303213210012130103230212310312303102030120231321201302", "102303132230210213012132302203010131132123202010310130123202301", "212301312301232031212310320030232132121310320032021031210130212", "131031210023120321231031210123203023030131210212023032030310120", "020102103313210212202032303131210120320302303132130121021321203", "032031030203103123031021201123130323030201210213123021132030213"];
+  // REGULAR boards (designed, tools/bonus_boards.js --gen): a 3-colour honeycomb cut into territories with a regular shape; 4 elements:
+  // proper, every pair has a chain of 12+; 3 elements: touching equal tiles only along the territory borders, every pair has 30+.
+  const BREG4 = {"spiral":"201301201120130123303201201120320123303201201120123123303231231","rings":"203201301120320130231201301123120130231201301120320130203201301","chevrons":"012032013303201301012013012201201231312312312231231203012012032","pinwheel":"032312012201231201032012012201231301013012013301203201013032013","ribbons":"312032013203201301312013012203201301312013012203201231032012312"};
+  const BREG3 = {"blades":"021021020102102102021021021102102102021021020102102112021021020","bands":"102102102210210210102102102210210210102102102210210210102012102"};
+  const bonusRecent = [];                           // ids of the last few boards: a player sees variety
+  function bonusPick(ncol) {                        // -> {id, pat}: early levels lean on the easy regular boards, later ones on the annealed ones
+    const reg = ncol === 3 ? BREG3 : BREG4, old = ncol === 3 ? { hc: 0 } : BPAT4, pReg = Math.max(.3, (ncol === 3 ? .85 : .9) - levelIdx * (ncol === 3 ? .025 : .02));
+    const ids = Object.keys(reg).map(k => 'r' + ncol + ':' + k), oids = Array.isArray(old) ? old.map((_, i) => 'a4:' + i) : ['hc'];
+    let pool = Math.random() < pReg ? ids : oids; pool = pool.filter(id => !bonusRecent.includes(id)).length ? pool.filter(id => !bonusRecent.includes(id)) : pool;
+    const id = pool[Math.floor(Math.random() * pool.length)]; bonusRecent.push(id); if (bonusRecent.length > 3) bonusRecent.shift();
+    if (id === 'hc') { const off = Math.floor(Math.random() * 3); return { id, pat: Array.from({ length: BX.cols * BX.rows }, (_, i) => { const [q, r] = bonusAx(i); return ((q - r + off) % 3 + 3) % 3; }).join('') }; }
+    return { id, pat: id[0] === 'a' ? BPAT4[+id.slice(3)] : reg[id.slice(3)] };
+  }
   let bz = null, me0 = null;                        // the live round
   const bonusAx = i => { const c = i % BX.cols, r = (i / BX.cols) | 0; return [c - (r >> 1), r]; };   // odd rows shifted right
   const BNB = (() => {
@@ -2560,37 +2589,37 @@
       '<path class="ti ti' + e + '" d="' + IPATH[e] + '" transform="translate(' + q1(-12 * sc) + ' ' + q1(-12 * sc) + ') scale(' + q1(sc * 100) / 100 + ')"/></g></g>';
   }
   function bonusStack(k) { let s = ''; for (let q = 0; q < k; q++) s += '<g transform="translate(0 ' + q1(5 - q * 3.6) + ') scale(.62)"><use href="#coinG"/></g>'; return s; }
-  function bonusStop() { if (bz) { bz.t.forEach(clearTimeout); bz.dead = true; if (!bz.done && window.FTH_LOG) FTH_LOG.end('bonus_left', { n: bz.path.length, got: bz.got }); } bz = null; }
+  function bonusStop() { if (bz) { bz.t.forEach(clearTimeout); bz.ct.forEach(clearTimeout); bz.dead = true; if (!bz.done && window.FTH_LOG) FTH_LOG.end('bonus_left', { n: bz.path.length, got: bz.got, ch: bz.ch, chains: bz.chains }); } bz = null; }
   function bonusUnlock() { $('winNext').disabled = $('winRetry').disabled = false; $('win').classList.remove('bonusing'); }
   function bonusSay(t) { const m = $('bonusMsg'); if (m) m.innerHTML = '<span>' + t + '</span>'; }   // one flex item, so the words wrap as text
+  function bonusPips(me) { const p = $('bonusPips'); if (!p) return; [...p.children].forEach((d, i) => { d.className = me.done || i < me.ch - 1 ? 'done' : i === me.ch - 1 ? 'on' : ''; }); p.setAttribute('aria-label', me.done ? 'all chains used' : 'chain ' + me.ch + ' of ' + BCHAINS); }
   function bonusStart(delay, force) {
     bonusStop();
     const box = $('bonus'); if (!box) { bonusUnlock(); return; }
     const N = BX.cols * BX.rows, E = [], C = [];
-    // Colourings where every inner tile's 6 neighbours show every other element in play, so a right next colour
-    // always exists:  3 elements: (q - r) mod 3, each pair is a whole honeycomb with chains of 20-40 tiles (easy);
-    //                 4 elements: one of BPAT4 (flipped top-to-bottom at random), every pair has 12-21-tile chains
-    //                 but also dead ends, so you have to read ahead.
+    // Colourings where every tile's neighbours offer a next colour:  3 elements: the honeycomb (q - r) mod 3 (each pair a whole honeycomb,
+    //                 chains of 36-42, easy) or a regular territory board;  4 elements: annealed BPAT4 (every pair 12-22, dead ends: read ahead)
+    //                 or a regular one (BREG4). Boards are flipped top-to-bottom at random (rows = 7: same parity, so the grid is kept).
     const ncol = force || (levelIdx < 8 ? 3 : (levelIdx % 2 ? 4 : 3)), perm = [0, 1, 2, 3].sort(() => Math.random() - .5), flip = Math.random() < .5;
-    const off = Math.floor(Math.random() * 3), pat = BPAT4[Math.floor(Math.random() * BPAT4.length)];
+    const bd = bonusPick(ncol), pat = bd.pat;
     for (let i = 0; i < N; i++) {
-      const [q, r] = bonusAx(i), x = Math.random(), c = i % BX.cols, fr = flip ? BX.rows - 1 - r : r;   // rows = 7: same parity, so a flip keeps the grid
-      const k = ncol === 3 ? ((q - r + off) % 3 + 3) % 3 : +pat[fr * BX.cols + c];
-      E.push(perm[k]); C.push(x < .6 ? 1 : x < .87 ? 3 : 5);
+      const r = bonusAx(i)[1], c = i % BX.cols, fr = flip ? BX.rows - 1 - r : r;
+      E.push(perm[+pat[fr * BX.cols + c]]); C.push(BCOIN.roll());
     }
-    me0 = { ncol };
-    // research log: the bonus is its own record (map 'bonus3'/'bonus4', the grid as the start state, row by row)
+    me0 = { ncol, board: bd.id };
+    // research log: the bonus is its own record (map 'bonus3'/'bonus4', the grid as the start state, row by row); events carry the chain number
     if (window.FTH_LOG) FTH_LOG.start({ num: String(L.num || levelIdx + 1) + '+bonus', map: 'bonus' + ncol, par: 0, state: E.join('') });
-    const me = bz = { E, C, N, path: [], pair: null, got: 0, t: [], down: false, cd: -1, live: false, done: false, ended: false, bad: -1 };
+    LOG('b_board', { id: bd.id, flip });
+    const me = bz = { E, C, N, path: [], pair: null, got: 0, cgot: 0, t: [], ct: [], down: false, cd: -1, live: false, done: false, ended: false, bad: -1, ch: 1, chains: [], used: new Set() };
     const W = (BX.cols + .5) * BX.s + 8, H = (BX.rows - 1) * BX.s * .866 + BX.s + 16;
-    let s = '<svg id="bonusSvg" viewBox="0 0 ' + W + ' ' + H + '" aria-label="Bonus: drag a two-colour chain to collect coins">';
+    let s = '<svg id="bonusSvg" viewBox="0 0 ' + W + ' ' + H + '" aria-label="Bonus: drag a two-colour chain to find coins">';
     const BS = ACT.bonus || {}, tileFn = typeof BS.tile === 'function' ? BS.tile : bonusTile;
     for (let i = 0; i < N; i++) { const [x, y] = bonusHex(i); let t; try { t = tileFn(Math.round(x * 10) / 10, Math.round(y * 10) / 10, BX.s * .47, E[i], i); } catch (_) { t = bonusTile(x, y, BX.s * .47, E[i], i); } s += t; }
     s += '<polyline class="bglow" points=""/><polyline class="bline" points=""/>';
-    for (let i = 0; i < N; i++) { const [x, y] = bonusHex(i); s += '<g class="bcoin" data-c="' + i + '" transform="translate(' + q1(x) + ' ' + q1(y) + ')">' + bonusStack(C[i]) + '</g>'; }
-    box.innerHTML = '<div class="bhead"><span class="btag">' + (BS.label || 'BONUS') + '</span><span id="bonusMsg">Get ready…</span><button class="bskip" id="bonusSkip">Skip ▸</button></div>' +
+    for (let i = 0; i < N; i++) { const [x, y] = bonusHex(i); s += '<g class="bcoin" data-c="' + i + '" transform="translate(' + q1(x) + ' ' + q1(y) + ')"><g class="bcin">' + bonusStack(C[i]) + '</g></g>'; }   // hidden until a chain reveals them
+    box.innerHTML = '<div class="bhead"><span class="btag">' + (BS.label || 'BONUS') + '</span><span class="bpips" id="bonusPips" role="img">' + '<i></i>'.repeat(BCHAINS) + '</span><span id="bonusMsg">Get ready…</span><button class="bskip" id="bonusSkip">Skip ▸</button></div>' +
       '<div class="bwrap"' + (BS.board ? ' style="background:' + String(BS.board).replace(/"/g, "'") + '"' : '') + '>' + s + '</svg><div class="bcd" id="bonusCd" aria-live="polite"></div></div>';
-    box.classList.remove('over');
+    box.classList.remove('over'); bonusPips(me);
     $('winNext').disabled = $('winRetry').disabled = true; $('win').classList.add('bonusing');
     $('bonusSkip').onclick = () => bonusEnd(true);
     const svg = $('bonusSvg');
@@ -2605,95 +2634,126 @@
       if (bz !== me || !me.live || me.done || me.ended) return;
       e.preventDefault(); try { svg.setPointerCapture(e.pointerId); } catch (_) {}
       me.down = true; me.bad = -1; const i = hit(e); if (i < 0) return;
-      if (!me.path.length) bonusAdd(me, i); else bonusTry(me, i);
+      if (me.used.has(i)) { bonusShake(me, i); bonusSay('Already collected! Pick a <b>fresh</b> tile'); return; }
+      bonusAdd(me, i);
     });
-    svg.addEventListener('pointermove', e => { if (bz === me && me.down && !me.done && !me.ended) { const i = hit(e); if (i >= 0) bonusTry(me, i); } });
+    svg.addEventListener('pointermove', e => { if (bz === me && me.down && !me.done && !me.ended && me.path.length) { const i = hit(e); if (i >= 0) bonusTry(me, i); } });
     const up = () => {
       if (bz !== me || !me.down) return; me.down = false;
-      LOG('b_lift', { n: me.path.length });
-      if (me.path.length >= 3 && !me.done) { me.ended = true; bonusSay('Nice chain! Counting down…'); }   // one chance: lifting ends the chain
-      else if (me.path.length && !me.done) bonusSay('Keep going from the glowing end!');
+      LOG('b_lift', { n: me.path.length, ch: me.ch });
+      if (me.done || me.ended) return;
+      if (me.path.length >= 2) bonusChainEnd(me, 'lift');
+      else if (me.path.length) { me.path.forEach(i => bonusMark(i, false)); me.path = []; bonusLine(me); bonusSay('Drag across to a <b>neighbour</b> to make a chain!'); }   // a lone touch costs nothing
     };
     svg.addEventListener('pointerup', up); svg.addEventListener('pointercancel', up);
     me.t.push(setTimeout(() => {
       if (bz !== me || me.done) return;
       me.live = true; svg.classList.add('live');
-      bonusSay(me0 && me0.ncol === 4 ? 'Drag the <b>longest</b> two-colour chain!' : 'Drag a long chain of <b>two</b> colours!');
+      bonusSay('Coins are <b>hidden</b>! Drag a 2-colour chain');
       if (!reduced) bonusDemo(me);
     }, delay));
   }
-  function bonusDemo(me) {                          // a little snake of tiles bobs once to invite a drag
+  function bonusDemo(me) {                          // a little snake of tiles bobs once to invite a drag (no coins are shown)
     const svg = $('bonusSvg'); if (!svg) return;
-    const a = me.E[0], b = me.E[1], snake = [0];   // bob the start of a real chain from the corner
+    const a = me.E[0], b = me.E[BNB[0].find(j => me.E[j] !== a)], snake = [0];   // bob the start of a real chain from the corner
     while (snake.length < 6) { const u = snake[snake.length - 1], v = BNB[u].find(j => !snake.includes(j) && (me.E[j] === a || me.E[j] === b) && me.E[j] !== me.E[u]); if (v === undefined) break; snake.push(v); }
     snake.forEach((k, q) => setTimeout(() => { if (bz === me && !me.path.length) uiPop(svg.querySelector('.tl[data-k="' + k + '"]'), 1.25); }, q * 90));
   }
-  function bonusMoves(me) {
-    const p = me.path, end = p[p.length - 1];
-    for (let j = 0; j < me.N; j++) if (!p.includes(j) && bonusAdj(end, j) && (!me.pair || me.pair.includes(me.E[j]))) return true;
-    return false;
+  function bonusOk(me, end, j) { return !me.used.has(j) && !me.path.includes(j) && bonusAdj(end, j) && me.E[j] !== me.E[end] && (!me.pair || me.pair.includes(me.E[j])); }
+  function bonusMoves(me) { const end = me.path[me.path.length - 1]; return BNB[end].some(j => bonusOk(me, end, j)); }
+  function bonusMark(i, on) { const g = $('bonusSvg').querySelector('.tl[data-k="' + i + '"]'); if (g) { g.classList.toggle('lit', on); g.classList.toggle('glow', on); } }
+  function bonusShake(me, i) {
+    const g = $('bonusSvg').querySelector('.tl[data-k="' + i + '"] .tin');
+    if (g && !reduced && g.animate) g.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(-3px)' }, { transform: 'translateX(0)' }], { duration: 260 });
+    blip(150, .12, 'sawtooth', .022);
   }
   function bonusTry(me, i) {
     const p = me.path, end = p[p.length - 1];
     if (i === end || p.includes(i)) { me.bad = -1; return; }
-    if (bonusAdj(end, i) && (!me.pair || me.pair.includes(me.E[i]))) { bonusAdd(me, i); return; }
-    if (me.bad === i) return; me.bad = i;          // wrong tile: shake + buzz once per visit, then ignore it
-    LOG('b_refuse', { i, e: me.E[i], adj: bonusAdj(end, i) });
-    const g = $('bonusSvg').querySelector('.tl[data-k="' + i + '"] .tin');
-    if (g && !reduced && g.animate) g.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(-3px)' }, { transform: 'translateX(0)' }], { duration: 260 });
-    blip(150, .12, 'sawtooth', .022);
-    if (me.pair) bonusSay('Only <b>' + NAMES[me.pair[0]] + '</b> and <b>' + NAMES[me.pair[1]] + '</b>, next to the end!');
+    if (bonusOk(me, end, i)) { bonusAdd(me, i); return; }
+    if (me.bad === i) return; me.bad = i;          // wrong tile: shake + buzz once per visit, then ignore it (the chain is not broken)
+    LOG('b_refuse', { i, e: me.E[i], adj: bonusAdj(end, i), ch: me.ch, spent: me.used.has(i) });
+    bonusShake(me, i);
+    if (me.used.has(i)) bonusSay('Already collected!');
+    else if (me.pair) bonusSay('Only <b>' + NAMES[me.pair[0]] + '</b> and <b>' + NAMES[me.pair[1]] + '</b>, next to the end!');
   }
   function bonusLine(me) {
-    const pts = me.path.map(i => bonusHex(i).map(q1).join(',')).join(' ');
+    const pts = me.path.length > 1 ? me.path.map(i => bonusHex(i).map(q1).join(',')).join(' ') : '';
     const svg = $('bonusSvg'); svg.querySelector('.bglow').setAttribute('points', pts); svg.querySelector('.bline').setAttribute('points', pts);
     if (me.pair) svg.querySelector('.bglow').style.stroke = (ACT.bonus && ACT.bonus.line) || NEONH[me.pair[0]];
   }
-  function bonusAdd(me, i) {
-    const p = me.path; p.push(i); me.bad = -1; LOG('b_step', { i, e: me.E[i], n: p.length });
-    if (p.length === 2) me.pair = [me.E[p[0]], me.E[p[1]]];
-    const svg = $('bonusSvg'), g = svg.querySelector('.tl[data-k="' + i + '"]');
-    svg.querySelectorAll('.tl.glow').forEach(t => t.classList.remove('glow'));
-    g.classList.add('lit', 'glow'); uiPop(g, 1.35); bonusLine(me);
-    const k = me.C[i], pts = 10 * k, cg = svg.querySelector('.bcoin[data-c="' + i + '"]'), from = centerOf(cg);
-    cg.classList.add('gone'); me.got += pts;
-    note(p.length - 1); setTimeout(() => { blip(1760 * Math.pow(1.04, p.length), .07, 'square', .018); blip(2640 * Math.pow(1.04, p.length), .16, 'triangle', .03); }, 45);   // cha-ching
+  // reveal tile i's coins (they pop into view), then they fly into the counter; the amounts are secret until this moment
+  function bonusPay(me, i, n) {
+    const svg = $('bonusSvg'), cg = svg.querySelector('.bcoin[data-c="' + i + '"]'), k = me.C[i], pts = BCOIN.pts * k, from = centerOf(cg);
+    cg.classList.add('show'); me.got += pts; me.cgot += pts;
+    const cin = cg.firstChild; if (!reduced && cin.animate) cin.animate([{ transform: 'scale(.2)', opacity: 0 }, { transform: 'scale(1.3)', opacity: 1, offset: .55 }, { transform: 'scale(1)', opacity: 1 }], { duration: 260, easing: 'ease-out' });
+    note(n - 1); setTimeout(() => { blip(1760 * Math.pow(1.04, n), .07, 'square', .018); blip(2640 * Math.pow(1.04, n), .16, 'triangle', .03); }, 45);   // cha-ching
     score += pts;
     const b = save.best[levelIdx]; if (b) { b.score = Math.max(b.score, score); persist(); }
-    loot(pts, from, { to: $('winTotal'), onCoin: sh => { $('winScore').textContent = (+$('winScore').textContent || 0) + sh; } });
     const wrap = svg.parentNode, wr = wrap.getBoundingClientRect(), f = document.createElement('div');
     f.className = 'bfl'; f.textContent = '+' + pts + (k > 1 ? ' ×' + k : ''); f.style.left = (from[0] - wr.left) + 'px'; f.style.top = (from[1] - wr.top) + 'px';
     wrap.appendChild(f); setTimeout(() => f.remove(), 950);
-    bonusSay(p.length < 3 ? (p.length === 1 ? 'Now drag to a neighbour!' : 'One more to start the clock!') : 'Chain of <b>' + p.length + '</b> · +' + me.got);
+    me.t.push(setTimeout(() => {
+      cg.classList.add('gone');
+      loot(pts, from, { to: $('winTotal'), onCoin: sh => { $('winScore').textContent = (+$('winScore').textContent || 0) + sh; } });
+    }, reduced ? 0 : 200));
+  }
+  function bonusAdd(me, i) {
+    const p = me.path; p.push(i); me.bad = -1; LOG('b_step', { i, e: me.E[i], n: p.length, ch: me.ch });
+    const svg = $('bonusSvg'), g = svg.querySelector('.tl[data-k="' + i + '"]');
+    svg.querySelectorAll('.tl.glow').forEach(t => t.classList.remove('glow'));
+    g.classList.add('lit', 'glow'); uiPop(g, 1.35);
+    if (p.length === 1) { bonusSay('Now drag to a <b>neighbour</b>!'); return; }   // one tile is not a chain yet: nothing revealed
+    if (p.length === 2) { me.pair = [me.E[p[0]], me.E[p[1]]]; bonusPay(me, p[0], 1); me.t.push(setTimeout(() => { if (bz === me) bonusPay(me, p[1], 2); }, reduced ? 0 : 110)); }   // it IS a chain: both tiles reveal
+    else bonusPay(me, i, p.length);
+    bonusLine(me);
+    bonusSay(p.length < 3 ? 'A chain! One more to start the clock!' : 'Chain <b>' + p.length + '</b> · +' + me.cgot);
     if (p.length === 3 && me.cd < 0) bonusCountdown(me);
-    if (!bonusMoves(me)) { me.ended = true; me.down = false; bonusSay('Chain of <b>' + p.length + '</b> · no more moves!'); if (me.cd < 0) me.t.push(setTimeout(() => bonusEnd(), 700)); }
+    if (!bonusMoves(me)) { me.ended = true; me.down = false; bonusSay('Chain of <b>' + p.length + '</b> · no more moves!'); me.t.push(setTimeout(() => bonusChainEnd(me, 'dead'), 600)); }
   }
   function bonusCountdown(me) {
-    me.cd = 5;
+    me.cd = 5; const ch = me.ch;
     const tick = () => {
-      if (bz !== me || me.done) return;
+      if (bz !== me || me.done || me.ch !== ch || me.cd < 0) return;
       if (!$('win').classList.contains('on')) { bonusStop(); return; }
-      if (me.cd === 0) { bonusEnd(); return; }
+      if (me.cd === 0) { bonusChainEnd(me, 'time'); return; }
       const el = $('bonusCd'); el.className = 'bcd'; el.textContent = me.cd;
       if (!reduced && el.animate) el.animate([{ transform: 'scale(2.2)', opacity: 0 }, { transform: 'scale(.9)', opacity: 1, offset: .25 }, { transform: 'scale(1)', opacity: .85, offset: .4 }, { transform: 'scale(1)', opacity: .35 }], { duration: 1000, easing: 'ease-out', fill: 'forwards' });
       blip(me.cd === 1 ? 1046 : 784, .08, 'square', .035); blip(me.cd === 1 ? 523 : 392, .05, 'sine', .03);
-      me.cd--; me.t.push(setTimeout(tick, 1000));
+      me.cd--; me.ct.push(setTimeout(tick, 1000));
     };
     tick();
   }
+  // a chain is over (lift / dead end / clock): its tiles are spent; the next chain starts after a short pause, or the round ends
+  function bonusChainEnd(me, why) {
+    if (bz !== me || me.done) return;
+    me.ct.forEach(clearTimeout); me.ct = []; me.cd = -1; me.down = false; me.ended = true;
+    const n = me.path.length, got = me.cgot, ch = me.ch, el = $('bonusCd'); if (el) { el.className = 'bcd'; el.textContent = ''; }
+    me.chains.push({ n, got, why }); LOG('b_chain', { ch, n, got, why });
+    me.path.forEach(i => { me.used.add(i); const g = $('bonusSvg').querySelector('.tl[data-k="' + i + '"]'); if (g) { g.classList.remove('glow'); g.classList.add('lit', 'spent'); } });
+    me.path = []; me.pair = null; me.cgot = 0; bonusLine(me);
+    const what = why === 'time' ? 'Time! ' : why === 'dead' ? 'Dead end! ' : '';
+    if (ch >= BCHAINS) { bonusSay(what + 'Chain <b>' + ch + '</b>: +' + got + '. That was the last!'); me.t.push(setTimeout(() => bonusEnd(), 800)); return; }
+    me.ch++; bonusPips(me); blip(660, .1, 'triangle', .035);
+    bonusSay(what + 'Chain <b>' + ch + '</b>: +' + got + '. Now chain <b>' + me.ch + '</b> of ' + BCHAINS);
+    me.t.push(setTimeout(() => { if (bz === me && !me.done) { me.ended = false; bonusSay('Chain <b>' + me.ch + '</b> of ' + BCHAINS + ': start on a fresh tile'); } }, 750));
+  }
   function bonusEnd(skip) {
     const me = bz; if (!me || me.done) return;
-    me.done = true; me.down = false; me.t.forEach(clearTimeout); me.t = [];
-    if (window.FTH_LOG) FTH_LOG.end(skip ? 'bonus_skip' : 'bonus_done', { n: me.path.length, got: me.got, path: me.path, ncol: me0 && me0.ncol });
+    if (me.path.length >= 2 && !me.ended) { me.chains.push({ n: me.path.length, got: me.cgot, why: skip ? 'skip' : 'end' }); LOG('b_chain', { ch: me.ch, n: me.path.length, got: me.cgot, why: skip ? 'skip' : 'end' }); }
+    me.done = true; me.down = false; me.t.forEach(clearTimeout); me.t = []; me.ct.forEach(clearTimeout); me.ct = []; bonusPips(me);
+    if (window.FTH_LOG) FTH_LOG.end(skip ? 'bonus_skip' : 'bonus_done', { n: me.path.length, got: me.got, path: me.path, ncol: me0 && me0.ncol, board: me0 && me0.board, chains: me.chains });
     $('bonus').classList.add('over'); $('bonusSvg').classList.remove('live');
-    const el = $('bonusCd');
-    if (!me.got) { el.textContent = ''; bonusSay(skip ? 'Skipped.' : 'Done!'); bonusUnlock(); return; }
+    const el = $('bonusCd'), n = me.chains.reduce((a, c) => a + c.n, 0);
+    const ghosts = () => { const svg = $('bonusSvg'); if (svg) svg.querySelectorAll('.bcoin').forEach(c => { if (!c.classList.contains('show')) c.classList.add('ghost'); }); };   // the coins you did not find
+    if (!me.got) { el.textContent = ''; bonusSay(skip ? 'Skipped.' : 'Done!'); ghosts(); bonusUnlock(); return; }
     [523, 659, 784, 1047, 1319, 1568].forEach((f, i) => setTimeout(() => blip(f, i === 5 ? .4 : .14, 'triangle', .05), i * 85));   // happy jingle
     setTimeout(() => { blip(1047, .45, 'sine', .035); blip(1319, .45, 'sine', .03); }, 6 * 85);
     el.className = 'bcd burst'; el.textContent = '+' + me.got + ' bonus!';
     if (!reduced && el.animate) el.animate([{ transform: 'scale(.2) rotate(-8deg)', opacity: 0 }, { transform: 'scale(1.25) rotate(4deg)', opacity: 1, offset: .5 }, { transform: 'scale(1)', opacity: 1 }], { duration: 600, easing: 'cubic-bezier(.3,1.6,.5,1)', fill: 'forwards' });
     const svg = $('bonusSvg'), vb = svg.viewBox.baseVal; uiBurst(svg, vb.width / 2, vb.height / 2, '#ffd84a', 14);
-    bonusSay('Chain of <b>' + me.path.length + '</b>! Coins in the bank.');
+    bonusSay(me.chains.length + (me.chains.length === 1 ? ' chain' : ' chains') + ', <b>' + n + '</b> tiles! Coins in the bank.');
+    setTimeout(ghosts, reduced ? 0 : 900); setTimeout(() => { if (bz === me) el.textContent = ''; }, reduced ? 1200 : 2200);   // then the board shows what you missed
     setTimeout(() => { if (bz === me) { bonusUnlock(); bumpEl($('winTotal')); } }, reduced ? 0 : 1300);   // after the last coins land
   }
   $('winNext').addEventListener('click', bonusStop); $('winRetry').addEventListener('click', bonusStop);

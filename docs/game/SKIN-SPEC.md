@@ -104,8 +104,13 @@ SVGs may animate with CSS; no script inside them.
 
 ## 6. Bonus round
 
-The win screen's mini-game: a 9 x 7 hex board, one drag along a path alternating two elements collects coins. The
-shell owns the rules, input, coins and countdown. The skin owns the look:
+The win screen's mini-game: a 9 x 7 hex board; a drag along a path alternating two elements finds and collects coins.
+The shell owns the rules, input, coins and countdown. The skin owns the look. Rules the skin should know about:
+the coins are HIDDEN (the shell draws them only when a chain reveals them, so **a tile must not draw coins itself**:
+no coin pips or stacks in `tile`), a round has THREE chains (header pips `.bpips`, drawn from `--sk-chip`, `--sk-edge`,
+`--sk-accent`), and the tiles of an ended chain get the extra class `spent` (dimmed by the shell). Chain, clock and
+board rules are documented at the top of the bonus-round section of `index.html`; boards are validated by
+`tools/bonus_boards.js`.
 
 ```js
 bonus: {
@@ -119,7 +124,8 @@ bonus: {
 `tile` returns the SVG for one tile of element `e` (0 fire, 1 water, 2 air, 3 earth) centred at `(x, y)` with radius
 `r`. **The outer `<g>` must keep `class="tl e{e}"`, `data-k="{k}"` and the translate; the inner `<g class="tin">` must
 wrap everything else** (the shell scales `.tin` when a tile pops and adds the classes `lit` and `glow` to the outer
-`<g>` when it is traced; style those in `css`). Draw in local coordinates round (0, 0).
+`<g>` when it is traced, and `spent` once its chain has ended (it keeps `lit`); style those in `css`). Draw in local
+coordinates round (0, 0).
 
 ## 7. Exploration map
 
