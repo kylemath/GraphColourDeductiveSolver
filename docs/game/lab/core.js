@@ -134,9 +134,9 @@
   const TOKEN_NAMES = ['--sk-ctl', '--sk-ctl-ink', '--sk-ctl-edge', '--sk-accent', '--sk-ink', '--sk-font', '--sk-chip', '--sk-chip-ink', '--sk-edge', '--sk-btn2', '--sk-btn2-ink'];
   let TOK = {};
   const setTokens = vars => {
-    TOK = {}; for (const k of Object.keys(vars || {})) if (/^--sk-[a-z0-9-]+$/.test(k) && typeof vars[k] === 'string' && !/[{};<]/.test(vars[k])) TOK[k] = vars[k].trim();
+    TOK = {}; for (const k of Object.keys(vars || {})) if (/^--sk-[a-z0-9-]+$/.test(k) && typeof vars[k] === 'string' && vars[k].trim() && !/[{};<]/.test(vars[k])) TOK[k] = vars[k].trim();
     let st = document.getElementById('sk-tokens'); if (!st) { st = document.createElement('style'); st.id = 'sk-tokens'; document.head.appendChild(st); }
-    st.textContent = ':root{' + Object.keys(TOK).filter(k => TOK[k]).map(k => k + ':' + TOK[k]).join(';') + '}';
+    st.textContent = ':root{' + Object.keys(TOK).map(k => k + ':' + TOK[k]).join(';') + '}';
     document.dispatchEvent(new CustomEvent('sk-tokens'));
   };
   if (EMBED) {

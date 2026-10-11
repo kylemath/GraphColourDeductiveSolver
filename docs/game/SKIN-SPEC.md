@@ -84,6 +84,17 @@ ignore them, but a high-end look sets them (and may add more in `css`):
 | `--sk-edge` | border colour of chips and secondary buttons |
 | `--sk-btn2` / `--sk-btn2-ink` | secondary buttons (white, yellow, blue, orange variants) |
 | `--sk-coin` | the points counter |
+| `--sk-ctl` / `--sk-ctl-ink` / `--sk-ctl-edge` | **the play page's own small controls** (undo, restart, and any button the page draws): background, glyph or text, border. Solid colours (the page also uses `--sk-ctl` as the halo behind a glyph) |
+| `--sk-star-on` / `--sk-star-edge` | an earned star's fill / outline (star meter, level-map star chip) |
+| `--sk-star-off` / `--sk-star-off-edge` | an unearned star's fill / outline. **Both must be at least 3:1 against the chip** (WCAG non-text contrast), yet quieter than the earned star |
+
+**Tokens reach the play page.** The shell posts the skin's whole token set (`{ fth: 1, cmd: 'tokens', vars }`) to the
+frame when it reports `ready` and again whenever the skin changes; `lab/core.js` turns it into an injected
+`<style id="sk-tokens">:root { --sk-... }</style>` (and, when the frame is same-origin, reads the parent's tokens at load so
+there is no flash). A page uses `var(--sk-ctl, <its own colour>)` in CSS or `LAB.tok('--sk-ctl', '<its own colour>')` in
+canvas code (`LAB.tokens()` returns all; a `sk-tokens` event on `document` says they changed). Standalone nothing is
+set, so the fallback, the page's own look, applies. **Every control a page draws must wear `--sk-ctl*`**; the artwork
+stays the page's. `node tools/contrast_check.js` fails a skin whose stars are under 3:1 on their chips.
 
 Selectors worth restyling in `css` (it is scoped to your skin): `.btn3d` and its variants `.white .yellow .blue
 .orange .go .rb .rbtn`, `.badge`, `.coins`, `.goalbar`, `.starbar`, `.mnode .mst` (stars) and `.mnode .mtag`
@@ -196,7 +207,13 @@ levelMap: {
 
 - Load `../levels.js`, `../layout.js`, `core.js`; create the game with `LAB.game()` (it reads `?lvl=`).
 - Inside the app (`?embed=1`), core.js posts every swap, undo and reset to the app; call `LAB.done()` when your win
-  celebration ends (`own` skins call `LAB.finish(swaps)` instead). Script errors fall back to the Islands board.
+  celebration ends (`own` skins call `LAB.finish(swaps)` instead; `done` is posted once per win). Script errors fall back to the Islands board.
+- **After a win, an embedded page never restarts itself; the shell owns what happens next** (its win screen, bonus
+  round, next level). When `LAB.embedded`: a tap, click or key on the frame after the win does nothing (no `g.reset()`,
+  no fresh sheet, no replay countdown, no level step), the page's own undo/restart are inert once won, and no dev text
+  stays on screen ("tap for a fresh sheet", "tap to play again", "click", "lab", "TODO", "debug"...). Finish the
+  celebration, call `LAB.done()`, idle. Tap-to-restart is for standalone lab use only (`if (!LAB.embedded)`); `<html class="embed">`
+  is set for CSS (`.embed .hint { display: none }`). `node tools/embed_win_check.js` enforces this on every play page.
 - Read `&hud=` from the URL to decide which of your own labels to show.
 - Every map's region shapes (`g.cells`) are exact: two pieces share a border iff their tiles are joined
   (`python3 tools/cells_check.py`). Keep any drawing you derive from them honest the same way.
@@ -205,5 +222,6 @@ levelMap: {
 
 1. `skins/<id>.js` registers a complete spec; `node tools/skin_check.js` passes (loads every spec, calls every
    function with sample arguments, checks the bonus tile contract and the intro SVGs).
-2. The play page passes the embed test (`ready` and no `error` on every level).
+2. The play page passes the embed test (`ready` and no `error` on every level) and `node tools/embed_win_check.js <id>`
+   (nothing restarts or shows dev text after a win), draws its controls with `--sk-ctl*`, and `node tools/contrast_check.js` passes.
 3. Add `<script src="skins/<id>.js"></script>` to `index.html` (the shell owner does this) and the files to `sw.js`.
