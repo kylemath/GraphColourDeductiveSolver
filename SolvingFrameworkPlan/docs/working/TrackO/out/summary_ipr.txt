@@ -1,0 +1,30 @@
+=== ipr_C60-C100 ===
+n= 32 graphs=     1 holes=      4 skip=   0 states=      19360 maxR=0 maxNR=0  R-hist 0:4
+n= 37 graphs=     1 holes=      4 skip=   0 states=      85550 maxR=1 maxNR=3  R-hist 1:4
+n= 38 graphs=     1 holes=     12 skip=   0 states=     416616 maxR=1 maxNR=1  R-hist 1:12
+n= 39 graphs=     1 holes=      4 skip=   0 states=     138732 maxR=3 maxNR=3  R-hist 2:2 3:2
+n= 40 graphs=     2 holes=      8 skip=   0 states=     376000 maxR=1 maxNR=2  R-hist 1:8
+n= 41 graphs=     5 holes=     28 skip=   0 states=    2245104 maxR=2 maxNR=3  R-hist 1:18 2:10
+n= 42 graphs=     7 holes=     28 skip=   0 states=    2856408 maxR=2 maxNR=3  R-hist 0:8 1:16 2:4
+n= 43 graphs=     9 holes=     36 skip=   0 states=    4844075 maxR=3 maxNR=3  R-hist 1:32 2:3 3:1
+n= 44 graphs=    24 holes=    128 skip=   0 states=   26889742 maxR=2 maxNR=2  R-hist 1:122 2:6
+n= 45 graphs=    19 holes=     84 skip=   0 states=   21964394 maxR=2 maxNR=4  R-hist 1:75 2:9
+n= 46 graphs=    35 holes=    164 skip=   0 states=   58368915 maxR=2 maxNR=3  R-hist 1:137 2:27
+n= 47 graphs=    46 holes=    232 skip=   0 states=  119783392 maxR=3 maxNR=5  R-hist 0:1 1:185 2:44 3:2
+n= 48 graphs=    86 holes=    376 skip=   0 states=  247450975 maxR=2 maxNR=4  R-hist 1:264 2:112
+n= 49 graphs=   134 holes=    632 skip=   0 states=  594008309 maxR=3 maxNR=5  R-hist 1:386 2:240 3:6
+n= 50 graphs=   187 holes=    948 skip=   0 states= 1319498994 maxR=3 maxNR=4  R-hist 1:596 2:347 3:5
+n= 51 graphs=   259 holes=   1156 skip=   0 states= 2069678822 maxR=3 maxNR=5  R-hist 1:769 2:380 3:7
+n= 52 graphs=   450 holes=   2104 skip=   0 states= 5456817583 maxR=3 maxNR=4  R-hist 1:1345 2:748 3:11
+TOTAL graphs=1267 holes=5948 skipped=0 states=9925442971
+  R-hist (holes): 0:13 1:3969 2:1932 3:34
+  NR-hist (holes): 0:4 1:1162 2:3991 3:732 4:54 5:5
+  maximal interior runs by length: 1:525833 2:3399 3:39
+  of which entirely near-rigid (all N<=9): 1:56785 2:373 3:12
+  holes with R>=4: (R, NR) -> {}
+  interior states by N: 8:16155 9:57896 10:92283 11:106589 12:95011 13:72391 14:46826 15:25751 16:12028 17:5423 18:1726 19:559 20:79 21:31
+  interior states with N<=9: 74051/532748
+  runs L>=4 (dumped, <=20 per hole): by L {}  all-N<=9: {}
+  runs L>=4 by (L, min N along run): {}
+  top holes (R, graph, h, NR, maxN on a longest run): [(3, 'ipr#95', 23, 1, 10), (3, 'ipr#95', 4, 1, 10), (3, 'ipr#926', 21, 3, 13), (3, 'ipr#91', 27, 1, 14), (3, 'ipr#879', 7, 3, 9), (3, 'ipr#771', 5, 1, 13), (3, 'ipr#748', 2, 1, 10), (3, 'ipr#747', 8, 4, 9)]
+

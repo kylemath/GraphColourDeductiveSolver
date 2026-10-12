@@ -1,0 +1,12 @@
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameScope.lean:23:## Main results (sorry-free, no new axioms)
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameNoFrozen.lean:13:## Main results (sorry-free, no new axioms)
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/QuarterLockParity.lean:80:set_option synthInstance.maxSize 1000 in
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameWit22Map.lean:17:set_option maxRecDepth 8192
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameWit22Map.lean:18:set_option maxHeartbeats 0
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameWit22Map.lean:35:instance : DecidableRel graph.Adj := fun u v => decidable_of_iff (adjB u v = true) (adj_iff u v).symm
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameWit22Map.lean:203:set_option maxHeartbeats 0 in
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/FrameWit22.lean:22:## Main results (sorry-free, no new axioms, no `native_decide`)
+Challenges/RStarFrameChallenge.lean:75:noncomputable instance (M : SphericalMap n) : DecidableRel M.graph.Adj := Classical.decRel _
+Challenges/RStarFrameChallenge.lean:279:theorem main : MainStatement := by sorry
+StudioMathLean/Mathlib/Combinatorics/SimpleGraph/PlaneMap/TutteSides.lean:349:noncomputable instance (τ : V → Prop) : Fintype (SE G τ) := by
+Challenges/FourColorSphericalMapChallenge.lean:63:theorem main : MainStatement := by sorry

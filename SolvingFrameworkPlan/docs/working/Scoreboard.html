@@ -1,0 +1,162 @@
+<title>Four Colour Scoreboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a proof-tree flow chart (leaves on the left, the theorem on the right), then notes per node, then ruled-out routes. */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --fg:#1d2430; --muted:#5b6575; --line:#dde1e8; --accent:#1f5f7a;
+  --formal:#1e7a4f; --reviewed:#2457a6; --hand:#a8700a; --gap:#c0392b; --deferred:#7a828e; --data:#6b5ca5;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12161c; --panel:#1a2029; --fg:#e4e8ee; --muted:#9aa4b3; --line:#2c3440; --accent:#6fb3cf; color-scheme:dark }}
+:root[data-theme="dark"]{ --bg:#12161c; --panel:#1a2029; --fg:#e4e8ee; --muted:#9aa4b3; --line:#2c3440; --accent:#6fb3cf; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body);margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:28px 48px;display:grid;gap:26px}
+h1{font:600 2rem/1.15 var(--display);margin:0;text-wrap:balance}
+h2{font:600 1.3rem/1.2 var(--display);margin:0 0 10px;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0;max-width:68ch}
+code{font:0.86em var(--mono);overflow-wrap:anywhere}
+.legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:0.88rem}
+.key{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto}
+.chart pre.mermaid{margin:0;min-width:980px;background:transparent}
+.hint{color:var(--muted);font-size:0.85rem;margin:-14px 0 0}
+.forecast{display:flex;flex-wrap:wrap;gap:20px;align-items:baseline}
+.big{font:600 2.4rem/1 var(--display);font-variant-numeric:tabular-nums;color:var(--accent)}
+.forecast p{margin:0;flex:1 1 280px;min-width:0;max-width:70ch}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.note{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:8px;padding:12px 14px;min-width:0}
+.note .t{font-weight:600}
+.note .s{font:500 0.72rem/1 var(--body);letter-spacing:.05em;text-transform:uppercase;color:var(--c);margin-bottom:6px}
+.note p{margin:4px 0 0;color:var(--muted);font-size:0.92rem}
+.killed{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.killed li{color:var(--muted);font-size:0.92rem}
+.killed b{color:var(--fg);font-weight:600}
+footer{color:var(--muted);font-size:0.85rem}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Four Colour Scoreboard</h1>
+    <p class="sub">The would-be proof as a chain of implications. Each box is one step, coloured by that step's status. Arrows point from what a step needs to what it supports. Updated 8 October 2026.</p>
+  </header>
+
+  <section class="legend" aria-label="Legend">
+    <span class="key"><span class="sw" style="background:var(--formal)"></span>Proved in Lean</span>
+    <span class="key"><span class="sw" style="background:var(--reviewed)"></span>Hand proof, reviewed</span>
+    <span class="key"><span class="sw" style="background:var(--hand)"></span>Hand proof, review pending</span>
+    <span class="key"><span class="sw" style="background:var(--gap)"></span>Open gap</span>
+    <span class="key"><span class="sw" style="background:var(--data)"></span>Evidence only</span>
+    <span class="key"><span class="sw" style="background:var(--deferred)"></span>Deferred</span>
+  </section>
+
+  <section class="chart" aria-label="Proof flow chart">
+<pre class="mermaid">
+%%{init: {"theme":"base","themeVariables":{"lineColor":"#8a94a3","fontFamily":"Public Sans, system-ui, sans-serif","fontSize":"14px","edgeLabelBackground":"transparent"}}}%%
+flowchart LR
+  classDef formal fill:#1e7a4f,stroke:#145537,color:#ffffff
+  classDef reviewed fill:#2457a6,stroke:#183d75,color:#ffffff
+  classDef hand fill:#a8700a,stroke:#7a5106,color:#ffffff
+  classDef gap fill:#c0392b,stroke:#8e2a20,color:#ffffff
+  classDef data fill:#6b5ca5,stroke:#4c4178,color:#ffffff,stroke-dasharray:4 3
+  classDef deferred fill:#7a828e,stroke:#5a616b,color:#ffffff
+  classDef goal fill:#ffffff,stroke:#1d2430,stroke-width:3px,color:#1d2430
+
+  LP["Lock parity<br/>(planarity enters here)"]:::formal
+  EQ["Violators = ends of π-paths"]:::hand
+  F["Conjecture F<br/>Tutte parity + Fisk degree"]:::formal
+  W["Lemma W (corrected)<br/>+ F ⇒ parity law"]:::formal
+  LR["Lemma R + Lemma 5<br/>curve surgery on S²"]:::reviewed
+  CPL["Chain-parity law<br/>N changes by odd steps"]:::formal
+  CC["Chain count<br/>rigid ⇔ 8 chains"]:::formal
+  H5["Rigid states move<br/>only along π"]:::reviewed
+  RI["Rigid isolation"]:::formal
+  C1["Case: all states rigid"]:::reviewed
+  C2["Case: chain count<br/>constant on cycles"]:::reviewed
+  C3["Case: chain count<br/>alternates 8, 9, 8, 9 …"]:::gap
+  NRC["NRC: no π-cycle of<br/>DL states with ≤ 9 chains"]:::gap
+  J5["Shape of such a class<br/>(J1–J5)"]:::reviewed
+  SIG["σ-type lemma<br/>(Euler counting)"]:::reviewed
+  EVJ["Evidence: to order 34,<br/>longest run 8 (need 10)"]:::data
+  N1["N1: such cycles need ≥ 1<br/>extra edge (exact certificates)"]:::data
+  C4["Case: mixed higher<br/>chain counts"]:::gap
+  LPC["LPC on the sphere<br/>no Kempe class made only<br/>of frozen π-cycles"]:::gap
+  EV["Evidence: census to order 34<br/>(3.6B graphs), 0 counterexamples"]:::data
+  RB["No all-interior π-cycle<br/>(R ≤ 5 refuted: R = 6, 7)"]:::data
+  NF["No frozen orbits<br/>in the frame class"]:::formal
+  SC["Frame scope, witness,<br/>frozen challenge files"]:::formal
+  RS["R* in the frame class"]:::formal
+  SM["Four Colour Theorem<br/>for spherical maps"]:::formal
+  BR["Drawing ⇒ combinatorial map<br/>(Barnette dual + Schoenflies)"]:::deferred
+  G["FOUR COLOUR THEOREM<br/>for planar graphs"]:::goal
+
+  LR --> CPL
+  F --> CPL
+  W --> CPL
+  CC --> RI
+  CPL --> RI
+  RI --> C1
+  H5 --> C1
+  CPL --> C2
+  C1 --> LPC
+  C2 --> LPC
+  NRC --> C3
+  J5 --> C3
+  SIG --> J5
+  EVJ -.-> NRC
+  N1 -.-> NRC
+  C3 --> LPC
+  C4 --> LPC
+  LP --> EQ
+  EQ --> LPC
+  EV -.-> LPC
+  RB -.-> LPC
+  LPC --> NF
+  NF --> RS
+  SC --> RS
+  RS --> SM
+  SM --> G
+  BR --> G
+</pre>
+  </section>
+  <p class="hint">On a phone, scroll the chart sideways. The theorem is at the right-hand end.</p>
+
+  <section class="forecast">
+    <div class="big">≈3%</div>
+    <p>Coordinator's estimate that this ends in an audited proof. Everything to the right of LPC is proved in Lean. Everything to the left either has a proof or is a named gap. The red boxes are the whole remaining problem.</p>
+  </section>
+
+  <section>
+    <h2>What each step says</h2>
+    <div class="notes">
+      <div class="note" style="--c:var(--gap)"><div class="s">Open gap</div><div class="t">Chain count alternates (NRC)</div><p>Track J pinned the shape down. Such a class is made of 20-state cycles alternating 8 and 9 chains, with the extra chain always the hole's α–μ swap. Excluding it reduces to NRC: on the sphere, no π-cycle consists of doubly-locked states with at most 9 chains. Across 473k sphere holes the longest such run is 7 (a cycle needs 10). It is false in general graphs even with triangles everywhere and the H3 balance, so it needs planarity itself, like rigid isolation.</p></div>
+      <div class="note" style="--c:var(--gap)"><div class="s">Open gap</div><div class="t">LPC on the sphere</div><p>No Kempe class consists only of closed doubly-locked π-cycles. This would make every hole pure-clean, which is more than "no frozen orbits" needs. No counterexample anywhere, including 2,772 parity-clean cycle classes on five other surfaces.</p></div>
+      <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">Chain-parity law</div><p>On the sphere, every π-step between doubly-locked states changes the number of Kempe chains by an odd amount. Formal since 8 Oct (<code>chainParityLaw_sphere</code>, through Conjecture F and Tutte's identity, no topology needed). It also has an independently reviewed hand proof by curve surgery. It fails on the torus and projective plane, as it must.</p></div>
+      <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">Conjecture F</div><p>F follows from Tutte's parity theorem and Fisk's degree, with the hole filled by the two lock diagonals. Lean already proves that F implies the chain-parity law (<code>chainParityLaw_of_F</code>), F is where that route uses planarity. Hand proof reviewed correct; now formal (<code>conjectureF</code>, <code>TutteSides.lean</code>, <code>ChainF.lean</code>), using Tutte's identity proved by linear algebra mod 2.</p></div>
+      <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">Lemma W, corrected</div><p>How the clockwise-face count changes under a Kempe swap. The first version was false for some swaps; the corrected form holds on any oriented surface and covers the two moves the proof needs. <code>ChainMod4.lean</code></p></div>
+      <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">Lock parity</div><p>A lock holds exactly when a two-colour Kempe component has an odd number of odd-degree vertices. This is where planarity enters. <code>QuarterLockParity.lean</code></p></div>
+      <div class="note" style="--c:var(--formal)"><div class="s">Proved in Lean</div><div class="t">No frozen orbits ⇒ R* ⇒ 4CT</div><p><code>rStarFrame_of_no_allDL_orbit</code> and <code>four_color_of_RStarFrame</code>. The statements are frozen in Mathlib-only challenge files with anti-drift bridges.</p></div>
+      <div class="note" style="--c:var(--hand)"><div class="s">Review pending</div><div class="t">Violators = path ends</div><p>In a class with no filled state, the states that break lock parity are exactly the loose ends of π-paths. So on the sphere a bad class would have to be made of closed cycles.</p></div>
+      <div class="note" style="--c:var(--deferred)"><div class="s">Deferred</div><div class="t">Drawing ⇒ combinatorial map</div><p>Our theorem is about combinatorial maps. Drawn planar graphs need a topology bridge, and OpenAI's Barnette formalisation plus schoenflies-lean cover most of it. It waits until the red boxes move.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Routes ruled out</h2>
+    <ul class="killed">
+      <li><b>Small unavoidable set.</b> The best proved set has 59 hole types, and the all-6 type is forced with nothing local to handle it.</li>
+      <li><b>All-6 holes via many holes or single orbits.</b> Holes don't compensate each other.</li>
+      <li><b>Barnette-style signed sum.</b> No phase flips on both lock swaps and Kempe cubes.</li>
+      <li><b>Stream function on states.</b> The class-level potential is just the floor restated.</li>
+      <li><b>Hole-local proof of LPC.</b> A 28-vertex non-planar graph satisfies every local fact with no filled state.</li>
+      <li><b>Per-cycle chain from 6–7 Oct.</b> A₃₄′, W2, Lemma S, statement (c) and universal B′ are false at degree 6.</li>
+    </ul>
+  </section>
+
+  <footer>Source of record: <code>SolvingFrameworkPlan/docs/working/CoordinatorPlan.md</code>. The Four Colour Theorem is already known (Appel–Haken, RSST, Gonthier). This programme seeks a new, short, Lean-checked route.</footer>
+</div>

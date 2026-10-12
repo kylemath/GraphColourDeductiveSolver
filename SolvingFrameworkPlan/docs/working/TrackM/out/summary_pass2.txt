@@ -1,0 +1,308 @@
+Track M summary (data). Starts = unfilled states; DL = doubly-locked starts; CYC = starts on all-DL pi-cycles.
+Success within k = the rule reaches a filled state in <= k Kempe swaps. Off-sphere rows exclude starts in targetless classes.
+
+## Datasets
+census22-29  graphs    24 holes    357 unfilled    226559 DL    43347 cyc-states     0 targetless classes     0 (states 0)  max dF 4  max dNDL 3  max interior-DL comp 4  max interior run along pi/pi^-1 3/3  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 40742, 'fail_interf': 2605}
+census28     graphs   104 holes   1563 unfilled   1332602 DL   248610 cyc-states     0 targetless classes     0 (states 0)  max dF 3  max dNDL 2  max interior-DL comp 7  max interior run along pi/pi^-1 3/3  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 236079, 'fail_interf': 12531}
+census29     graphs   148 holes   2261 unfilled   2560289 DL   491885 cyc-states     0 targetless classes     0 (states 0)  max dF 4  max dNDL 3  max interior-DL comp 5  max interior run along pi/pi^-1 4/4  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 464712, 'fail_interf': 27173}
+census30     graphs   148 holes   2316 unfilled   3378094 DL   672651 cyc-states     0 targetless classes     0 (states 0)  max dF 4  max dNDL 3  max interior-DL comp 12  max interior run along pi/pi^-1 4/4  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 633234, 'fail_interf': 39417}
+census31     graphs    10 holes    175 unfilled    312727 DL    61879 cyc-states     0 targetless classes     0 (states 0)  max dF 3  max dNDL 2  max interior-DL comp 4  max interior run along pi/pi^-1 2/2  budget-exceeded {}  Kempe sequential double swap at DL: {'fail_interf': 3453, 'ok': 58426}
+census32     graphs     7 holes    119 unfilled    301090 DL    63652 cyc-states     0 targetless classes     0 (states 0)  max dF 3  max dNDL 2  max interior-DL comp 9  max interior run along pi/pi^-1 3/3  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 59551, 'fail_interf': 4101}
+cyc13        graphs    13 holes    220 unfilled    546543 DL   107948 cyc-states   340 targetless classes     0 (states 0)  max dF 4  max dNDL 3  max interior-DL comp 16  max interior run along pi/pi^-1 3/3  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 100801, 'fail_interf': 7147}
+ipr          graphs    27 holes     27 unfilled    154828 DL   148681 cyc-states     0 targetless classes     0 (states 0)  max dF 3  max dNDL 2  max interior-DL comp 5  max interior run along pi/pi^-1 3/3  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 139098, 'fail_interf': 9583}
+aw           graphs     3 holes     63 unfilled    595157 DL   122849 cyc-states   100 targetless classes     0 (states 0)  max dF 4  max dNDL 3  max interior-DL comp 44  max interior run along pi/pi^-1 4/4  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 114445, 'fail_interf': 8404}
+bv           graphs    12 holes    267 unfilled   2605023 DL   689323 cyc-states 19480 targetless classes     0 (states 0)  max dF 4  max dNDL 3  max interior-DL comp 192  max interior run along pi/pi^-1 5/5  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 561388, 'fail_interf': 127935}
+traps        graphs     5 holes     68 unfilled     13864 DL     2524 cyc-states    40 targetless classes     0 (states 0)  max dF 4  max dNDL 3  max interior-DL comp 6  max interior run along pi/pi^-1 3/3  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 2291, 'fail_interf': 233}
+off_cyc      graphs   421 holes    604 unfilled    328799 DL   130688 cyc-states 33700 targetless classes    10 (states 59)  max dF 9  max dNDL 8  max interior-DL comp 176  max interior run along pi/pi^-1 9/9  budget-exceeded {}  Kempe sequential double swap at DL: {'fail': 7932, 'ok': 66051, 'fail_interf': 56705}
+off_cyc555   graphs    65 holes     82 unfilled     52229 DL    17357 cyc-states  2500 targetless classes     1 (states 2)  max dF 6  max dNDL 5  max interior-DL comp 64  max interior run along pi/pi^-1 7/7  budget-exceeded {}  Kempe sequential double swap at DL: {'ok': 9941, 'fail_interf': 5028, 'fail': 2388}
+
+## ALL SPHERE, DL starts
+rule                  starts  k<=1    k<=2    k<=3    k<=4    k<=5    k<=6    k<=7    k<=8    k<=9    k<=10       fails worst
+RAND                  125531  0.0000 0.5939 0.8367 0.9294 0.9689 0.9864 0.9941 0.9976 0.9990 0.9997        43    10
+PHI                   125531  0.0000 0.9958 0.9996 1.0000 1.0000 1      1      1      1      1              0     6
+PHI+sigma             125531  0.0000 0.9958 0.9996 0.9999 1.0000 1      1      1      1      1              0     6
+sigma                 125531  0.0000 0.6266 0.8565 0.9316 0.9712 0.9850 0.9932 0.9961 0.9982 0.9990       131    10
+min-N                 125531  0.0000 0.6007 0.8521 0.9374 0.9710 0.9857 0.9925 0.9960 0.9981 0.9990       125    10
+PHI>min-N             125531  0.0000 0.9958 0.9992 0.9999 1.0000 1      1      1      1      1              0     6
+max-N                 125531  0.0000 0.5964 0.8376 0.9305 0.9687 0.9843 0.9917 0.9952 0.9973 0.9984       204    10
+PHI>max-N             125531  0.0000 0.9958 0.9999 1      1      1      1      1      1      1              0     4
+min-ell               125531  0.0000 0.6007 0.8521 0.9374 0.9710 0.9857 0.9925 0.9960 0.9981 0.9990       125    10
+PHI>min-ell           125531  0.0000 0.9958 0.9992 0.9999 1.0000 1      1      1      1      1              0     6
+max-ell               125531  0.0000 0.5964 0.8376 0.9305 0.9687 0.9843 0.9917 0.9952 0.9973 0.9984       204    10
+PHI>max-ell           125531  0.0000 0.9958 0.9999 1      1      1      1      1      1      1              0     4
+min-lsize             125531  0.0000 0.9718 0.9968 0.9993 0.9998 1.0000 1.0000 1      1      1              0     8
+PHI>min-lsize         125531  0.0000 0.9958 0.9997 1.0000 1      1      1      1      1      1              0     5
+max-lsize             125531  0.0000 0.2134 0.3498 0.4369 0.5076 0.5595 0.6034 0.6400 0.6727 0.7005     37596    10
+PHI>max-lsize         125531  0.0000 0.9958 0.9996 0.9999 1.0000 1      1      1      1      1              0     6
+min-llen              125531  0.0000 0.9901 0.9998 1.0000 1      1      1      1      1      1              0     5
+PHI>min-llen          125531  0.0000 0.9958 0.9998 1.0000 1      1      1      1      1      1              0     5
+max-llen              125531  0.0000 0.0727 0.1815 0.2628 0.3424 0.4050 0.4626 0.5102 0.5545 0.5916     51269    10
+PHI>max-llen          125531  0.0000 0.9958 0.9995 0.9998 0.9999 1.0000 1.0000 1.0000 1      1              0     9
+min-wind              125531  0.0000 0.8174 0.9313 0.9752 0.9917 0.9973 0.9987 0.9993 0.9996 0.9998        26    10
+PHI>min-wind         2653349  0.0000 0.9816 0.9970 0.9987 0.9997 1.0000 1      1      1      1              0     7
+max-wind              125531  0.0000 0.8184 0.9318 0.9753 0.9919 0.9974 0.9989 0.9994 0.9997 0.9998        21    10
+PHI>max-wind         2653349  0.0000 0.9816 0.9971 0.9987 0.9997 1.0000 1      1      1      1              0     7
+min-curv              125531  0.0000 0.5926 0.8197 0.9096 0.9529 0.9720 0.9829 0.9886 0.9923 0.9942       724    10
+PHI>min-curv          125531  0.0000 0.9958 0.9997 0.9999 1.0000 1      1      1      1      1              0     6
+max-curv              125531  0.0000 0.6594 0.8725 0.9382 0.9700 0.9822 0.9897 0.9927 0.9953 0.9962       473    10
+PHI>max-curv          125531  0.0000 0.9958 0.9996 0.9999 1.0000 1.0000 1.0000 1.0000 1      1              0     9
+min-dist              125531  0.0000 0.6960 0.9074 0.9661 0.9874 0.9946 0.9977 0.9990 0.9996 0.9998        29    10
+PHI>min-dist          125531  0.0000 0.9958 0.9997 1.0000 1.0000 1      1      1      1      1              0     6
+max-dist              125531  0.0000 0.3341 0.5517 0.6564 0.7437 0.7918 0.8342 0.8598 0.8845 0.9006     12483    10
+PHI>max-dist          125531  0.0000 0.9958 0.9993 0.9998 0.9999 1.0000 1.0000 1.0000 1      1              0     9
+min-size              125531  0.0000 0.6932 0.8815 0.9409 0.9700 0.9823 0.9893 0.9929 0.9955 0.9969       383    10
+PHI>min-size          125531  0.0000 0.9958 0.9994 0.9998 0.9999 1.0000 1.0000 1      1      1              0     8
+max-size              125531  0.0000 0.6825 0.8838 0.9460 0.9761 0.9880 0.9938 0.9964 0.9981 0.9988       150    10
+PHI>max-size          125531  0.0000 0.9958 0.9995 0.9999 1.0000 1.0000 1.0000 1      1      1              0     8
+PHI>lsize>N           125531  0.0000 0.9958 0.9997 1.0000 1      1      1      1      1      1              0     5
+PHI>sigma>lsize       125531  0.0000 0.9958 0.9995 1.0000 1      1      1      1      1      1              0     5
+PHI>dist>curv         125531  0.0000 0.9958 0.9996 0.9999 1.0000 1.0000 1.0000 1.0000 1      1              0     9
+KEMPE                 125531  0.0000 0.9398 0.9398 0.9398 0.9398 0.9398 0.9398 0.9398 0.9398 0.9398      7554     2
+BEAM2+0               125531  0.0000 0.9958 1      1      1      1      1      1      1      1              0     3
+BEAM2+2               125531  0.0000 0.9958 1      1      1      1      1      1      1      1              0     3
+BEAM4+4               125531  0.0000 0.9958 1      1      1      1      1      1      1      1              0     3
+DIR                   125531  0.0000 0.9139 0.9815 0.9951 0.9989 0.9997 0.9999 1.0000 1      1              0     9
+PHI-adv               125531  0.0000 0.9958 0.9987 0.9996 0.9997 0.9999 0.9999 0.9999 1.0000 1              0    10
+OPT                  2653349  0.0000 0.9816 0.9992 1      1      1      1      1      1      1              0     4
+PHI>pi               2653349  0.0000 0.9816 0.9971 0.9987 0.9997 0.9999 1      1      1      1              0     7
+PHI>piinv            2653349  0.0000 0.9816 0.9971 0.9987 0.9997 0.9999 1      1      1      1              0     7
+PHI>min-wind#1       2653349  0.0000 0.9816 0.9971 0.9987 0.9997 0.9999 1      1      1      1              0     7
+PHI>min-wind#2       2653349  0.0000 0.9816 0.9971 0.9987 0.9997 1.0000 1      1      1      1              0     7
+PHI>abs-wind         2653349  0.0000 0.9816 0.9970 0.9983 0.9991 0.9996 0.9998 0.9999 1.0000 1.0000        75    10
+PHI>pi>min-wind      2653349  0.0000 0.9816 0.9971 0.9987 0.9997 0.9999 1      1      1      1              0     7
+PHI>pi-ADV           2653349  0.0000 0.9816 0.9971 0.9987 0.9997 0.9999 1      1      1      1              0     7
+PHI>min-wind-ADV     2653349  0.0000 0.9816 0.9968 0.9985 0.9995 0.9998 1      1      1      1              0     7
+PHI>max-wind-ADV     2653349  0.0000 0.9816 0.9969 0.9986 0.9996 0.9999 1      1      1      1              0     7
+PHI>pi>min-wind-ADV   2653349  0.0000 0.9816 0.9971 0.9987 0.9997 0.9999 1      1      1      1              0     7
+PHI-ADV               125531  0.0000 0.9958 0.9987 0.9996 0.9997 0.9999 0.9999 0.9999 1.0000 1              0    10
+
+## ALL SPHERE, all-DL-cycle starts
+rule                  starts  k<=1    k<=2    k<=3    k<=4    k<=5    k<=6    k<=7    k<=8    k<=9    k<=10       fails worst
+PHI>min-wind           19960  0.0000 0.6096 0.9655 0.9765 0.9871 0.9972 1      1      1      1              0     7
+PHI>max-wind           19960  0.0000 0.6096 0.9597 0.9705 0.9812 0.9937 1      1      1      1              0     7
+OPT                    19960  0.0000 0.6096 0.9893 1      1      1      1      1      1      1              0     4
+PHI>pi                 19960  0.0000 0.6096 0.9575 0.9684 0.9791 0.9896 1      1      1      1              0     7
+PHI>piinv              19960  0.0000 0.6096 0.9575 0.9684 0.9791 0.9896 1      1      1      1              0     7
+PHI>min-wind#1         19960  0.0000 0.6096 0.9658 0.9767 0.9869 0.9954 1      1      1      1              0     7
+PHI>min-wind#2         19960  0.0000 0.6096 0.9651 0.9758 0.9861 0.9953 1      1      1      1              0     7
+PHI>abs-wind           19960  0.0000 0.6096 0.9608 0.9763 0.9877 0.9948 0.9988 0.9996 1      1              0     9
+PHI>pi>min-wind        19960  0.0000 0.6096 0.9575 0.9684 0.9791 0.9896 1      1      1      1              0     7
+PHI>pi-ADV             19960  0.0000 0.6096 0.9575 0.9684 0.9791 0.9896 1      1      1      1              0     7
+PHI>min-wind-ADV       19960  0.0000 0.6096 0.9523 0.9632 0.9738 0.9844 1      1      1      1              0     7
+PHI>max-wind-ADV       19960  0.0000 0.6096 0.9523 0.9632 0.9739 0.9844 1      1      1      1              0     7
+PHI>pi>min-wind-ADV     19960  0.0000 0.6096 0.9575 0.9684 0.9791 0.9896 1      1      1      1              0     7
+
+## ALL SPHERE, all unfilled starts
+rule                  starts  k<=1    k<=2    k<=3    k<=4    k<=5    k<=6    k<=7    k<=8    k<=9    k<=10       fails worst
+RAND                  613817  0.7955 0.9170 0.9666 0.9856 0.9936 0.9972 0.9988 0.9995 0.9998 0.9999        43    10
+PHI                   613817  0.7955 0.9991 0.9999 1.0000 1.0000 1      1      1      1      1              0     6
+PHI+sigma             613817  0.7955 0.9991 0.9999 1.0000 1.0000 1      1      1      1      1              0     6
+sigma                 613817  0.7955 0.9236 0.9707 0.9860 0.9941 0.9969 0.9986 0.9992 0.9996 0.9998       131    10
+min-N                 613817  0.7955 0.9183 0.9697 0.9872 0.9941 0.9971 0.9985 0.9992 0.9996 0.9998       125    10
+PHI>min-N             613817  0.7955 0.9991 0.9998 1.0000 1.0000 1      1      1      1      1              0     6
+max-N                 613817  0.7955 0.9175 0.9668 0.9858 0.9936 0.9968 0.9983 0.9990 0.9994 0.9997       204    10
+PHI>max-N             613817  0.7955 0.9991 1.0000 1      1      1      1      1      1      1              0     4
+min-ell               613817  0.7955 0.9183 0.9697 0.9872 0.9941 0.9971 0.9985 0.9992 0.9996 0.9998       125    10
+PHI>min-ell           613817  0.7955 0.9991 0.9998 1.0000 1.0000 1      1      1      1      1              0     6
+max-ell               613817  0.7955 0.9175 0.9668 0.9858 0.9936 0.9968 0.9983 0.9990 0.9994 0.9997       204    10
+PHI>max-ell           613817  0.7955 0.9991 1.0000 1      1      1      1      1      1      1              0     4
+min-lsize             613817  0.7955 0.9942 0.9993 0.9999 1.0000 1.0000 1.0000 1      1      1              0     8
+PHI>min-lsize         613817  0.7955 0.9991 0.9999 1.0000 1      1      1      1      1      1              0     5
+max-lsize             613817  0.7955 0.8391 0.8670 0.8848 0.8993 0.9099 0.9189 0.9264 0.9331 0.9388     37596    10
+PHI>max-lsize         613817  0.7955 0.9991 0.9999 1.0000 1.0000 1      1      1      1      1              0     6
+min-llen              613817  0.7955 0.9980 1.0000 1.0000 1      1      1      1      1      1              0     5
+PHI>min-llen          613817  0.7955 0.9991 1.0000 1.0000 1      1      1      1      1      1              0     5
+max-llen              613817  0.7955 0.8104 0.8326 0.8492 0.8655 0.8783 0.8901 0.8998 0.9089 0.9165     51269    10
+PHI>max-llen          613817  0.7955 0.9991 0.9999 1.0000 1.0000 1.0000 1.0000 1.0000 1      1              0     9
+min-wind              613817  0.7955 0.9627 0.9859 0.9949 0.9983 0.9994 0.9997 0.9999 0.9999 1.0000        26    10
+PHI>min-wind        12026776  0.7794 0.9959 0.9993 0.9997 0.9999 1.0000 1      1      1      1              0     7
+max-wind              613817  0.7955 0.9629 0.9860 0.9949 0.9983 0.9995 0.9998 0.9999 0.9999 1.0000        21    10
+PHI>max-wind        12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+min-curv              613817  0.7955 0.9167 0.9631 0.9815 0.9904 0.9943 0.9965 0.9977 0.9984 0.9988       724    10
+PHI>min-curv          613817  0.7955 0.9991 0.9999 1.0000 1.0000 1      1      1      1      1              0     6
+max-curv              613817  0.7955 0.9303 0.9739 0.9874 0.9939 0.9964 0.9979 0.9985 0.9990 0.9992       473    10
+PHI>max-curv          613817  0.7955 0.9991 0.9999 1.0000 1.0000 1.0000 1.0000 1.0000 1      1              0     9
+min-dist              613817  0.7955 0.9378 0.9811 0.9931 0.9974 0.9989 0.9995 0.9998 0.9999 1.0000        29    10
+PHI>min-dist          613817  0.7955 0.9991 0.9999 1.0000 1.0000 1      1      1      1      1              0     6
+max-dist              613817  0.7955 0.8638 0.9083 0.9297 0.9476 0.9574 0.9661 0.9713 0.9764 0.9797     12483    10
+PHI>max-dist          613817  0.7955 0.9991 0.9999 1.0000 1.0000 1.0000 1.0000 1.0000 1      1              0     9
+min-size              613817  0.7955 0.9373 0.9758 0.9879 0.9939 0.9964 0.9978 0.9986 0.9991 0.9994       383    10
+PHI>min-size          613817  0.7955 0.9991 0.9999 1.0000 1.0000 1.0000 1.0000 1      1      1              0     8
+max-size              613817  0.7955 0.9351 0.9762 0.9890 0.9951 0.9975 0.9987 0.9993 0.9996 0.9998       150    10
+PHI>max-size          613817  0.7955 0.9991 0.9999 1.0000 1.0000 1.0000 1.0000 1      1      1              0     8
+PHI>lsize>N           613817  0.7955 0.9991 0.9999 1.0000 1      1      1      1      1      1              0     5
+PHI>sigma>lsize       613817  0.7955 0.9991 0.9999 1.0000 1      1      1      1      1      1              0     5
+PHI>dist>curv         613817  0.7955 0.9991 0.9999 1.0000 1.0000 1.0000 1.0000 1.0000 1      1              0     9
+KEMPE                 613817  0.7955 0.9877 0.9877 0.9877 0.9877 0.9877 0.9877 0.9877 0.9877 0.9877      7554     2
+BEAM2+0               613817  0.7955 0.9991 1      1      1      1      1      1      1      1              0     3
+BEAM2+2               613817  0.7955 0.9991 1      1      1      1      1      1      1      1              0     3
+BEAM4+4               613817  0.7955 0.9991 1      1      1      1      1      1      1      1              0     3
+DIR                   613817  0.7955 0.9824 0.9962 0.9990 0.9998 0.9999 1.0000 1.0000 1      1              0     9
+PHI-adv               613817  0.7955 0.9991 0.9997 0.9999 0.9999 1.0000 1.0000 1.0000 1.0000 1              0    10
+OPT                 12026776  0.7794 0.9959 0.9998 1      1      1      1      1      1      1              0     4
+PHI>pi              12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>piinv           12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>min-wind#1      12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>min-wind#2      12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>abs-wind        12026776  0.7794 0.9959 0.9993 0.9996 0.9998 0.9999 1.0000 1.0000 1.0000 1.0000        75    10
+PHI>pi>min-wind     12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>pi-ADV          12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>min-wind-ADV    12026776  0.7794 0.9959 0.9993 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>max-wind-ADV    12026776  0.7794 0.9959 0.9993 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI>pi>min-wind-ADV  12026776  0.7794 0.9959 0.9994 0.9997 0.9999 1.0000 1      1      1      1              0     7
+PHI-ADV               613817  0.7955 0.9991 0.9997 0.9999 0.9999 1.0000 1.0000 1.0000 1.0000 1              0    10
+
+## Per sphere dataset: DL fails (within 10) / worst-case swaps
+rule               census22-29      census28         census29         census30         census31         census32         cyc13            ipr              aw               bv               traps           
+RAND               0/0 w0           0/0 w0           0/0 w0           0/0 w0           23/61879 w10     20/63652 w10     0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI                0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w4       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI+sigma          0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w4       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+sigma              0/0 w0           0/0 w0           0/0 w0           0/0 w0           76/61879 w10     55/63652 w10     0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+min-N              0/0 w0           0/0 w0           0/0 w0           0/0 w0           66/61879 w10     59/63652 w10     0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-N          0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w6       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+max-N              0/0 w0           0/0 w0           0/0 w0           0/0 w0           102/61879 w10    102/63652 w10    0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-N          0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w4       0/63652 w4       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+min-ell            0/0 w0           0/0 w0           0/0 w0           0/0 w0           66/61879 w10     59/63652 w10     0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-ell        0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w6       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+max-ell            0/0 w0           0/0 w0           0/0 w0           0/0 w0           102/61879 w10    102/63652 w10    0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-ell        0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w4       0/63652 w4       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+min-lsize          0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w8       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-lsize      0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w4       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+max-lsize          0/0 w0           0/0 w0           0/0 w0           0/0 w0           14781/61879 w10  22815/63652 w10  0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-lsize      0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w4       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+min-llen           0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w5       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-llen       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w5       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+max-llen           0/0 w0           0/0 w0           0/0 w0           0/0 w0           22672/61879 w10  28597/63652 w10  0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-llen       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w6       0/63652 w9       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+min-wind           0/0 w0           0/0 w0           0/0 w0           0/0 w0           7/61879 w10      19/63652 w10     0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-wind       0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+max-wind           0/0 w0           0/0 w0           0/0 w0           0/0 w0           9/61879 w10      12/63652 w10     0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-wind       0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+min-curv           0/0 w0           0/0 w0           0/0 w0           0/0 w0           380/61879 w10    344/63652 w10    0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-curv       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w4       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+max-curv           0/0 w0           0/0 w0           0/0 w0           0/0 w0           119/61879 w10    354/63652 w10    0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-curv       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w9       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+min-dist           0/0 w0           0/0 w0           0/0 w0           0/0 w0           20/61879 w10     9/63652 w10      0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-dist       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w4       0/63652 w6       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+max-dist           0/0 w0           0/0 w0           0/0 w0           0/0 w0           5677/61879 w10   6806/63652 w10   0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-dist       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w6       0/63652 w9       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+min-size           0/0 w0           0/0 w0           0/0 w0           0/0 w0           80/61879 w10     303/63652 w10    0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>min-size       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w8       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+max-size           0/0 w0           0/0 w0           0/0 w0           0/0 w0           78/61879 w10     72/63652 w10     0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>max-size       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w8       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>lsize>N        0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w4       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>sigma>lsize    0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w5       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI>dist>curv      0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w5       0/63652 w9       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+KEMPE              0/0 w0           0/0 w0           0/0 w0           0/0 w0           3453/61879 w2    4101/63652 w2    0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+BEAM2+0            0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w3       0/63652 w3       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+BEAM2+2            0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w3       0/63652 w3       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+BEAM4+4            0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w3       0/63652 w3       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+DIR                0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w8       0/63652 w9       0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+PHI-adv            0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w6       0/63652 w10      0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+OPT                0/43347 w4       0/248610 w3      0/491885 w4      0/672651 w4      0/61879 w3       0/63652 w3       0/107948 w4      0/148681 w3      0/122849 w4      0/689323 w4      0/2524 w4       
+PHI>pi             0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>piinv          0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>min-wind#1     0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>min-wind#2     0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>abs-wind       0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w7      0/148681 w6      0/122849 w8      75/689323 w10    0/2524 w5       
+PHI>pi>min-wind    0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>pi-ADV         0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>min-wind-ADV   0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>max-wind-ADV   0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI>pi>min-wind-ADV 0/43347 w5       0/248610 w5      0/491885 w6      0/672651 w6      0/61879 w4       0/63652 w5       0/107948 w5      0/148681 w5      0/122849 w6      0/689323 w7      0/2524 w5       
+PHI-ADV            0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/61879 w6       0/63652 w10      0/0 w0           0/0 w0           0/0 w0           0/0 w0           0/0 w0          
+
+## Off sphere: fails in classes WITH filled states (U minus targetless) / starts; and TL starts (must fail)
+rule               off_cyc                off_cyc555            
+RAND               0/0 w0 TL0             0/0 w0 TL0            
+PHI                0/0 w0 TL0             0/0 w0 TL0            
+PHI+sigma          0/0 w0 TL0             0/0 w0 TL0            
+sigma              0/0 w0 TL0             0/0 w0 TL0            
+min-N              0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-N          0/0 w0 TL0             0/0 w0 TL0            
+max-N              0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-N          0/0 w0 TL0             0/0 w0 TL0            
+min-ell            0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-ell        0/0 w0 TL0             0/0 w0 TL0            
+max-ell            0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-ell        0/0 w0 TL0             0/0 w0 TL0            
+min-lsize          0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-lsize      0/0 w0 TL0             0/0 w0 TL0            
+max-lsize          0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-lsize      0/0 w0 TL0             0/0 w0 TL0            
+min-llen           0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-llen       0/0 w0 TL0             0/0 w0 TL0            
+max-llen           0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-llen       0/0 w0 TL0             0/0 w0 TL0            
+min-wind           0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-wind       171/328740 w10 TL59    24/52227 w10 TL2      
+max-wind           0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-wind       103/328740 w10 TL59    36/52227 w10 TL2      
+min-curv           0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-curv       0/0 w0 TL0             0/0 w0 TL0            
+max-curv           0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-curv       0/0 w0 TL0             0/0 w0 TL0            
+min-dist           0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-dist       0/0 w0 TL0             0/0 w0 TL0            
+max-dist           0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-dist       0/0 w0 TL0             0/0 w0 TL0            
+min-size           0/0 w0 TL0             0/0 w0 TL0            
+PHI>min-size       0/0 w0 TL0             0/0 w0 TL0            
+max-size           0/0 w0 TL0             0/0 w0 TL0            
+PHI>max-size       0/0 w0 TL0             0/0 w0 TL0            
+PHI>lsize>N        0/0 w0 TL0             0/0 w0 TL0            
+PHI>sigma>lsize    0/0 w0 TL0             0/0 w0 TL0            
+PHI>dist>curv      0/0 w0 TL0             0/0 w0 TL0            
+KEMPE              0/0 w0 TL0             0/0 w0 TL0            
+BEAM2+0            0/0 w0 TL0             0/0 w0 TL0            
+BEAM2+2            0/0 w0 TL0             0/0 w0 TL0            
+BEAM4+4            0/0 w0 TL0             0/0 w0 TL0            
+DIR                0/0 w0 TL0             0/0 w0 TL0            
+PHI-adv            0/0 w0 TL0             0/0 w0 TL0            
+OPT                0/328740 w9 TL59       0/52227 w6 TL2        
+PHI>pi             136/328740 w10 TL59    6/52227 w10 TL2       
+PHI>piinv          133/328740 w10 TL59    34/52227 w10 TL2      
+PHI>min-wind#1     190/328740 w10 TL59    15/52227 w10 TL2      
+PHI>min-wind#2     174/328740 w10 TL59    19/52227 w10 TL2      
+PHI>abs-wind       251/328740 w10 TL59    22/52227 w10 TL2      
+PHI>pi>min-wind    178/328740 w10 TL59    23/52227 w10 TL2      
+PHI>pi-ADV         886/328740 w10 TL59    162/52227 w10 TL2     
+PHI>min-wind-ADV   716/328740 w10 TL59    106/52227 w10 TL2     
+PHI>max-wind-ADV   607/328740 w10 TL59    164/52227 w10 TL2     
+PHI>pi>min-wind-ADV 580/328740 w10 TL59    90/52227 w10 TL2      
+PHI-ADV            0/0 w0 TL0             0/0 w0 TL0            
+
+## Failure anatomy (sphere, sampled failure records, <= 6 per rule per hole)
+RAND               {'cyc': 0, 'dF=2': 42, 'dF=3': 1, 'dNDL=1': 42, 'dNDL=2': 1, 'interference_both': 7, 'kempe2_fails_both': 7, 'n': 43, 'never_left_DL': 13, 'wandered 10 steps': 43}
+sigma              {'cyc': 0, 'dF=2': 118, 'dF=3': 1, 'dNDL=1': 118, 'dNDL=2': 1, 'interference_both': 3, 'kempe2_fails_both': 3, 'n': 119, 'never_left_DL': 60, 'wandered 10 steps': 119}
+min-N              {'cyc': 0, 'dF=2': 117, 'dF=3': 1, 'dNDL=1': 117, 'dNDL=2': 1, 'interference_both': 20, 'kempe2_fails_both': 20, 'n': 118, 'never_left_DL': 61, 'wandered 10 steps': 118}
+max-N              {'cyc': 0, 'dF=2': 67, 'dF=3': 1, 'dNDL=1': 67, 'dNDL=2': 1, 'interference_both': 5, 'kempe2_fails_both': 5, 'n': 68, 'never_left_DL': 36, 'wandered 10 steps': 68}
+min-ell            {'cyc': 0, 'dF=2': 117, 'dF=3': 1, 'dNDL=1': 117, 'dNDL=2': 1, 'interference_both': 20, 'kempe2_fails_both': 20, 'n': 118, 'never_left_DL': 61, 'wandered 10 steps': 118}
+max-ell            {'cyc': 0, 'dF=2': 67, 'dF=3': 1, 'dNDL=1': 67, 'dNDL=2': 1, 'interference_both': 5, 'kempe2_fails_both': 5, 'n': 68, 'never_left_DL': 36, 'wandered 10 steps': 68}
+max-lsize          {'cyc': 0, 'dF=2': 1724, 'dF=3': 9, 'dNDL=1': 1724, 'dNDL=2': 9, 'interference_both': 118, 'kempe2_fails_both': 118, 'n': 1733, 'never_left_DL': 1458, 'trapped(tabu exhausted)': 1, 'wandered 10 steps': 1732}
+max-llen           {'cyc': 0, 'dF=2': 1753, 'dF=3': 7, 'dNDL=1': 1753, 'dNDL=2': 7, 'interference_both': 75, 'kempe2_fails_both': 75, 'n': 1760, 'never_left_DL': 1541, 'trapped(tabu exhausted)': 1, 'wandered 10 steps': 1759}
+min-wind           {'cyc': 0, 'dF=2': 23, 'dF=3': 3, 'dNDL=1': 23, 'dNDL=2': 3, 'interference_both': 14, 'kempe2_fails_both': 14, 'n': 26, 'never_left_DL': 13, 'wandered 10 steps': 26}
+max-wind           {'cyc': 0, 'dF=2': 21, 'dNDL=1': 21, 'interference_both': 8, 'kempe2_fails_both': 8, 'n': 21, 'never_left_DL': 12, 'wandered 10 steps': 21}
+min-curv           {'cyc': 0, 'dF=2': 293, 'dF=3': 6, 'dNDL=1': 293, 'dNDL=2': 6, 'interference_both': 14, 'kempe2_fails_both': 14, 'n': 299, 'never_left_DL': 189, 'wandered 10 steps': 299}
+max-curv           {'cyc': 0, 'dF=2': 221, 'dF=3': 5, 'dNDL=1': 221, 'dNDL=2': 5, 'interference_both': 46, 'kempe2_fails_both': 46, 'n': 226, 'never_left_DL': 142, 'wandered 10 steps': 226}
+min-dist           {'cyc': 0, 'dF=2': 28, 'dF=3': 1, 'dNDL=1': 28, 'dNDL=2': 1, 'interference_both': 6, 'kempe2_fails_both': 6, 'n': 29, 'never_left_DL': 13, 'wandered 10 steps': 29}
+max-dist           {'cyc': 0, 'dF=2': 1531, 'dF=3': 3, 'dNDL=1': 1531, 'dNDL=2': 3, 'interference_both': 19, 'kempe2_fails_both': 19, 'n': 1534, 'never_left_DL': 1119, 'wandered 10 steps': 1534}
+min-size           {'cyc': 0, 'dF=2': 199, 'dF=3': 5, 'dNDL=1': 199, 'dNDL=2': 5, 'interference_both': 30, 'kempe2_fails_both': 30, 'n': 204, 'never_left_DL': 113, 'wandered 10 steps': 204}
+max-size           {'cyc': 0, 'dF=2': 128, 'dF=3': 1, 'dNDL=1': 128, 'dNDL=2': 1, 'interference_both': 29, 'kempe2_fails_both': 29, 'n': 129, 'never_left_DL': 70, 'wandered 10 steps': 129}
+KEMPE              {'cyc': 0, 'dF=2': 1611, 'dF=3': 108, 'dNDL=1': 1611, 'dNDL=2': 108, 'interference_both': 1719, 'kempe2_fails_both': 1719, 'n': 1719, 'never_left_DL': 1719, 'trapped(tabu exhausted)': 1719}
+PHI>abs-wind       {'cyc': 0, 'dF=3': 65, 'dF=4': 10, 'dNDL=2': 65, 'dNDL=3': 10, 'interference_both': 75, 'kempe2_fails_both': 75, 'n': 75, 'never_left_DL': 45, 'wandered 10 steps': 75}
+
+## Kempe 1879 step at DL states (lit = simultaneous swap, Heawood trap iff lit fails; seq = sequential, either order)
+Heawood1890                        {'DL': 824, 'DL_lit_fail': 292, 'DL_lit_fail_dF=2': 292, 'DL_seq_fail_both': 26, 'DL_seq_fail_one': 128, 'DL_share': 172, 'holes': 16}
+Errera                             {'CYC': 40, 'CYC_lit_fail': 40, 'CYC_lit_fail_dF=2': 20, 'CYC_lit_fail_dF=3': 20, 'CYC_seq_fail_both': 40, 'CYC_seq_fail_one': 0, 'CYC_share': 10, 'DL': 200, 'DL_lit_fail': 120, 'DL_lit_fail_dF=2': 100, 'DL_lit_fail_dF=3': 20, 'DL_seq_fail_both': 60, 'DL_seq_fail_one': 40, 'DL_share': 30, 'holes': 12}
+Kittell                            {'DL': 670, 'DL_lit_fail': 361, 'DL_lit_fail_dF=2': 327, 'DL_lit_fail_dF=3': 30, 'DL_lit_fail_dF=4': 4, 'DL_seq_fail_both': 103, 'DL_seq_fail_one': 168, 'DL_share': 169, 'holes': 15}
+Poussin                            {'DL': 38, 'DL_lit_fail': 6, 'DL_lit_fail_dF=2': 6, 'DL_seq_fail_both': 0, 'DL_seq_fail_one': 0, 'DL_share': 4, 'holes': 8}
+hog1152-heawood-four-color-graph   {'DL': 792, 'DL_lit_fail': 320, 'DL_lit_fail_dF=2': 320, 'DL_seq_fail_both': 44, 'DL_seq_fail_one': 120, 'DL_share': 176, 'holes': 17}
+census22                           {'DL': 384, 'DL_lit_fail': 72, 'DL_lit_fail_dF=2': 72, 'DL_seq_fail_both': 0, 'DL_seq_fail_one': 0, 'DL_share': 24, 'holes': 12}
+census23                           {'DL': 644, 'DL_lit_fail': 392, 'DL_lit_fail_dF=2': 392, 'DL_seq_fail_both': 84, 'DL_seq_fail_one': 168, 'DL_share': 154, 'holes': 14}
+census24                           {'DL': 3526, 'DL_lit_fail': 1766, 'DL_lit_fail_dF=2': 1762, 'DL_lit_fail_dF=3': 4, 'DL_seq_fail_both': 286, 'DL_seq_fail_one': 948, 'DL_share': 870, 'holes': 55}
+census25                           {'DL': 2292, 'DL_lit_fail': 934, 'DL_lit_fail_dF=2': 902, 'DL_lit_fail_dF=3': 32, 'DL_seq_fail_both': 194, 'DL_seq_fail_one': 428, 'DL_share': 656, 'holes': 36}
+census26                           {'DL': 14197, 'DL_lit_fail': 4493, 'DL_lit_fail_dF=2': 4443, 'DL_lit_fail_dF=3': 50, 'DL_seq_fail_both': 556, 'DL_seq_fail_one': 1752, 'DL_share': 2800, 'holes': 165}
+census27                           {'DL': 43347, 'DL_lit_fail': 15572, 'DL_lit_fail_dF=2': 15290, 'DL_lit_fail_dF=3': 281, 'DL_lit_fail_dF=4': 1, 'DL_seq_fail_both': 2605, 'DL_seq_fail_one': 6890, 'DL_share': 9351, 'holes': 357}
+census28                           {'DL': 248610, 'DL_lit_fail': 88757, 'DL_lit_fail_dF=2': 87733, 'DL_lit_fail_dF=3': 1024, 'DL_seq_fail_both': 12531, 'DL_seq_fail_one': 36384, 'DL_share': 53791, 'holes': 1563}
+census30                           {'CYC': 20, 'CYC_lit_fail': 16, 'CYC_lit_fail_dF=2': 12, 'CYC_lit_fail_dF=3': 4, 'CYC_seq_fail_both': 12, 'CYC_seq_fail_one': 2, 'CYC_share': 6, 'DL': 5322, 'DL_lit_fail': 1144, 'DL_lit_fail_dF=2': 1130, 'DL_lit_fail_dF=3': 14, 'DL_seq_fail_both': 102, 'DL_seq_fail_one': 360, 'DL_share': 711, 'holes': 16}

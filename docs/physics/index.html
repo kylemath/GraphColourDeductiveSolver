@@ -277,7 +277,7 @@
     <h2 class="story-h">Flip a cluster</h2>
     <p class="lead">
       Pick a vertex, then a second colour. The page outlines the connected two-colour chain through that vertex (the <strong>Kempe chain</strong>, the physicist's <strong>cluster</strong>). Click the outlined chain, or press
-      <em>Flip it</em>, and the two colours trade places along it. The dashed circle marked "?" is the deleted degree-five vertex. When its five neighbours (ringed in white) use three colours or fewer, the hole can be filled.
+      <em>Flip it</em>, and the two colours trade places along it. The dashed circle marked "?" is the deleted degree-five vertex. When its five neighbours (the larger discs around it) use three colours or fewer, the hole can be filled.
       Everything below is computed in your browser from the graph; nothing is simulated beyond the flips you make.
     </p>
     <div class="stage">
@@ -286,10 +286,10 @@
           <h3 id="gtitle">The graph</h3>
           <svg id="gmap" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-label="Planar triangulation with the current colouring"></svg>
           <div class="legend">
-            <span><i style="border:1.5px dashed var(--text)"></i>deleted hole (degree 5)</span>
-            <span><i style="border:2px solid var(--text)"></i>link</span>
-            <span><i style="border:2px solid var(--twin)"></i>chain you would flip</span>
-            <span><i style="border:2px dotted var(--text)"></i>chain just flipped</span>
+            <span><i style="border:1.5px dashed var(--twin)"></i>deleted hole (degree 5, centre)</span>
+            <span><i style="background:var(--faint);width:.85rem;height:.85rem"></i>link (larger discs)</span>
+            <span><span id="lgWould"></span>chain you would flip (solid two-colour track)</span>
+            <span><span id="lgJust"></span>chain just flipped (dashed track)</span>
           </div>
           <div class="readout" id="greadout"></div>
         </div>
@@ -441,6 +441,8 @@
 </div>
 
 <script src="data.js"></script>
+<script src="layout.js"></script>
+<script src="../shared/kempe-draw.js"></script>
 <script>
 (function () {
   const D = window.PHYSICS_DATA;
@@ -534,34 +536,31 @@
     });
     $('gflip').disabled = false; $('gclear').disabled = false;
   }
+  // the map: drawn with the shared metro-style module (docs/shared/kempe-draw.js), hole-centred positions (layout.js)
+  const CSSV = (k, d) => (getComputedStyle(document.documentElement).getPropertyValue(k).trim() || d);
+  const HEX = [0, 1, 2, 3].map((i) => CSSV('--c' + i, ['#f85149', '#58a6ff', '#e3b341', '#3fb950'][i]));
+  let kd = null, kdG = -1, lastPair = null;
   function renderMap() {
-    const svg = $('gmap'); svg.innerHTML = '';
-    const pos = G.pos, rot = G.rot, cl = cluster(), rN = 0.047, fs = 0.039;
-    const cl0 = cl ? new Set([...cl].map((i) => V[i])) : null, lt = last ? new Set([...last].map((i) => V[i])) : null;
-    const lk = new Set(G.link);
-    for (let v = 0; v < rot.length; v++) for (const w of rot[v]) if (v < w) {
-      const th = v === G.hole || w === G.hole, on = cl0 && cl0.has(v) && cl0.has(w), onl = lt && lt.has(v) && lt.has(w);
-      el('line', { x1: pos[v][0], y1: pos[v][1], x2: pos[w][0], y2: pos[w][1], stroke: on ? 'var(--twin)' : onl ? 'var(--text)' : th ? 'var(--faint)' : '#3d444d',
-        'stroke-width': on ? 0.024 : onl ? 0.014 : 0.009, 'stroke-dasharray': th ? '0.03 0.025' : onl && !on ? '0.02 0.02' : 'none' }, svg);
+    const svg = $('gmap'), rot = G.rot, LAY = window.PHYSICS_LAYOUT[gi];
+    if (kdG !== gi) {
+      svg.innerHTML = '';
+      const edges = []; rot.forEach((nb, v) => nb.forEach((w) => { if (v < w) edges.push([v, w]); }));
+      const lk = new Set(G.link);
+      kd = KempeDraw.create(svg, { pos: LAY.pos, edges, hole: G.hole, link: LAY.link, colours: HEX, bg: CSSV('--raised', '#161b22'),
+        scale: G.order <= 12 ? 1.9 : 1.25, label: (v) => String(v), holeLabel: '?',
+        vertexTitle: (v) => 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[c[vIdx.get(v)]] + (lk.has(v) ? ' · link' : ''),
+        onVertex: (v) => onVertex(vIdx.get(v)) });
+      kdG = gi;
     }
-    for (let v = 0; v < rot.length; v++) {
-      const [x, y] = pos[v];
-      if (v === G.hole) {
-        el('circle', { cx: x, cy: y, r: rN * 1.1, fill: 'var(--bg)', stroke: 'var(--text)', 'stroke-width': 0.012, 'stroke-dasharray': '0.025 0.018' }, svg);
-        el('text', { x, y: y + fs * 0.4, 'text-anchor': 'middle', 'font-size': fs * 1.2, fill: 'var(--text)', 'font-family': 'var(--sans)' }, svg).textContent = '?';
-        continue;
-      }
-      const i = vIdx.get(v), g = el('g', { style: 'cursor:pointer' }, svg);
-      const inC = cl0 && cl0.has(v), inL = lt && lt.has(v), isLink = lk.has(v), isSel = sel === i;
-      if (isSel) el('circle', { cx: x, cy: y, r: rN * 1.7, fill: 'none', stroke: 'var(--text)', 'stroke-width': 0.01, 'stroke-dasharray': '0.025 0.02' }, g);
-      el('circle', { cx: x, cy: y, r: rN * 1.45, fill: 'transparent' }, g);
-      el('circle', { cx: x, cy: y, r: isLink ? rN * 1.1 : rN, fill: COLORS[c[i]],
-        stroke: inC ? 'var(--twin)' : isLink ? 'var(--text)' : inL ? 'var(--text)' : 'var(--bg)',
-        'stroke-width': inC ? 0.026 : isLink ? 0.015 : inL ? 0.014 : 0.008, 'stroke-dasharray': inL && !inC && !isLink ? '0.015 0.015' : 'none' }, g);
-      el('text', { x, y: y + fs * 0.37, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 600, fill: '#0d1117', 'font-family': 'var(--sans)', 'pointer-events': 'none' }, g).textContent = v;
-      el('title', {}, g).textContent = 'vertex ' + v + ' · degree ' + rot[v].length + ' · ' + NAMES[c[i]] + (isLink ? ' · link' : '');
-      g.addEventListener('click', () => onVertex(i));
-    }
+    kd.setColouring(rot.map((_, v) => (v === G.hole ? 0 : c[vIdx.get(v)])));
+    const cl = cluster(), list = [];
+    const same = (A, B) => A && B && A.size === B.size && [...A].every((x) => B.has(x));
+    if (cl) list.push({ v: [...cl].map((i) => V[i]), pair: [c[sel], c2], title: 'the chain you would flip (click it to flip)' });
+    if (last && lastPair && !same(cl, last)) list.push({ v: [...last].map((i) => V[i]), pair: lastPair, dash: true, title: 'the chain just flipped' });
+    kd.setChains(list);
+    const mk = kd.layer('marks'); mk.innerHTML = '';
+    if (sel !== null) { const [x, y] = LAY.pos[V[sel]];
+      el('circle', { cx: x, cy: y, r: kd.nodeR(V[sel]) + 0.03, fill: 'none', stroke: 'var(--text)', 'stroke-width': 0.01, 'stroke-dasharray': '0.025 0.02', 'pointer-events': 'none' }, mk); }
   }
   function renderReadout() {
     const I = info(), nl = nLink(), cls = allComps().length;
@@ -581,14 +580,14 @@
   }
   function doFlip() {
     const cl = cluster(); if (!cl) return;
-    const a = c[sel], b = c2; flip(cl, a, b); last = new Set(cl); c2 = a;
+    const a = c[sel], b = c2; flip(cl, a, b); last = new Set(cl); lastPair = [a, b]; c2 = a;
     renderAll();
     const nl = nLink();
     narr('Flipped ' + cl.size + ' vertices (' + NAMES[a] + ' and ' + NAMES[b] + ' traded places). ' + (nl <= 3 ? 'The link now uses ' + nl + ' colours: the hole can be filled.' : 'The link uses ' + nl + ' colours.'));
   }
   function randomStep(quiet) {
     const cs = allComps(), m = cs[Math.floor(Math.random() * cs.length)];
-    flip(m.comp, m.a, m.b); last = m.comp; sel = null; c2 = null;
+    flip(m.comp, m.a, m.b); last = m.comp; lastPair = [m.a, m.b]; sel = null; c2 = null;
     if (!quiet) { renderAll(); narr('Random step ' + steps + ': flipped a ' + NAMES[m.a] + '–' + NAMES[m.b] + ' chain of ' + m.comp.size + (m.comp.size === 1 ? ' vertex' : ' vertices') + '.'); }
   }
   $('gflip').onclick = doFlip;
@@ -597,6 +596,8 @@
   $('grand50').onclick = () => { for (let k = 0; k < 50; k++) randomStep(true); renderAll(); narr('50 random cluster flips done. Distinct states seen so far: ' + seen.size + ' of ' + fmt(G.summary.colourings) + '.'); };
   $('greset').onclick = () => { setState(startList[startIdx].c); renderAll(); narr('Back to the stored start state.'); };
 
+  $('lgWould').innerHTML = KempeDraw.legendIcon(HEX[0], HEX[1], { bg: CSSV('--raised', '#161b22') });
+  $('lgJust').innerHTML = KempeDraw.legendIcon(HEX[2], HEX[3], { dash: true, bg: CSSV('--raised', '#161b22') });
   loadGraph(1); renderAll();
   window.__physics = { get c() { return c.slice(); }, info, allComps: () => allComps().length, onVertex, randomStep: () => randomStep(false) };
 })();

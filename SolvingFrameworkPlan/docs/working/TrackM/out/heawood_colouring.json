@@ -1,0 +1,96 @@
+{
+ "hole": "V",
+ "link": [
+  "B3:b",
+  "R3:r",
+  "Y3:y",
+  "G4:g",
+  "R4:r"
+ ],
+ "state": 282,
+ "filled": false,
+ "L1": 1,
+ "L2": 1,
+ "dF": 2,
+ "dNDL": 1,
+ "kempe_double_swap": [
+  {
+   "success": true,
+   "interference": false
+  },
+  {
+   "success": false,
+   "interference": true
+  }
+ ],
+ "on_allDL_cycle": false,
+ "kempe_degree": 4,
+ "rules": {
+  "RAND": 3,
+  "PHI": 2,
+  "PHI+sigma": 2,
+  "sigma": 3,
+  "min-N": 2,
+  "PHI>min-N": 2,
+  "max-N": 4,
+  "PHI>max-N": 2,
+  "min-ell": 2,
+  "PHI>min-ell": 2,
+  "max-ell": 4,
+  "PHI>max-ell": 2,
+  "min-lsize": 2,
+  "PHI>min-lsize": 2,
+  "max-lsize": 7,
+  "PHI>max-lsize": 2,
+  "min-llen": 2,
+  "PHI>min-llen": 2,
+  "max-llen": 9,
+  "PHI>max-llen": 2,
+  "min-wind": 4,
+  "PHI>min-wind": 2,
+  "max-wind": 2,
+  "PHI>max-wind": 2,
+  "min-curv": 3,
+  "PHI>min-curv": 2,
+  "max-curv": 3,
+  "PHI>max-curv": 2,
+  "min-dist": 3,
+  "PHI>min-dist": 2,
+  "max-dist": 3,
+  "PHI>max-dist": 2,
+  "min-size": 3,
+  "PHI>min-size": 2,
+  "max-size": 3,
+  "PHI>max-size": 2,
+  "PHI>lsize>N": 2,
+  "PHI>sigma>lsize": 2,
+  "PHI>dist>curv": 2,
+  "KEMPE": 2,
+  "BEAM2+0": 2,
+  "BEAM2+2": 2,
+  "BEAM4+4": 2,
+  "DIR": 3,
+  "PHI-adv": 2,
+  "OPT": 2
+ },
+ "kempe1879_literal": {
+  "K1": [
+   "G1",
+   "G2",
+   "G3",
+   "R1",
+   "R2",
+   "R3"
+  ],
+  "K2": [
+   "R4",
+   "R5",
+   "R6",
+   "Y4",
+   "Y5",
+   "Y6"
+  ],
+  "shared": [],
+  "simultaneous_proper": false
+ }
+}

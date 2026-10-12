@@ -97,6 +97,8 @@ th:first-child, td:first-child { text-align: left; }
         <button id="m-col" aria-pressed="true">colour level</button><button id="m-deg" aria-pressed="false">degree</button>
       </div></div>
     <div class="ctl"><label for="t">Wrap: sphere → tetrahedron</label><input id="t" type="range" min="0" max="1" step="0.01" value="0.35"></div>
+    <div class="ctl"><span class="lab">Turntable</span>
+      <div class="seg" role="group" aria-label="Turntable"><button id="spin" aria-pressed="false">spin</button></div></div>
   </div>
 
   <div class="plates">
@@ -342,8 +344,12 @@ pick.addEventListener('change', e => { state.pick = +e.target.value; if (state.h
 document.getElementById('t').addEventListener('input', e => { state.t = +e.target.value; buildWrap(); });
 A.onTap = v => { state.sel = v; buildBall(); readouts(); };
 
-let spinning = !reduceMotion;
-function stopSpin() { spinning = false; }
+// spin is opt-in (site drawing convention): off by default, unavailable under prefers-reduced-motion
+let spinning = false;
+const spinBtn = document.getElementById('spin');
+function stopSpin() { spinning = false; spinBtn.setAttribute('aria-pressed', 'false'); }
+if (reduceMotion) { spinBtn.disabled = true; spinBtn.title = 'Spin is off because your system asks for reduced motion'; }
+spinBtn.addEventListener('click', () => { if (reduceMotion) return; spinning = !spinning; spinBtn.setAttribute('aria-pressed', String(spinning)); });
 function loop() {
   if (spinning) { const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0.003, 0)); A.group.quaternion.premultiply(q); B.group.quaternion.copy(A.group.quaternion); C.group.quaternion.copy(A.group.quaternion); }
   A.renderer.render(A.scene, A.camera); B.renderer.render(B.scene, B.camera); C.renderer.render(C.scene, C.camera);

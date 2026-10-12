@@ -9,7 +9,8 @@ const Tree = (() => {
     'structural-vacancy',
     'structural-vhe-obstruction',
     'structural-wp20',
-    'structural-math-horizon'
+    'structural-math-horizon',
+    'dissemination-chain-parity-note'
   ]);
 
   function setCallbacks(onSelect, onChange) {

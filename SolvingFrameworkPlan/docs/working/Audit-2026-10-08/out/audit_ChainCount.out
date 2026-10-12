@@ -1,0 +1,54 @@
+'SimpleGraph.QuarterFloor.chainCount_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_swap_same' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_swap_other' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.sum_pairs_roles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.nChains_roles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.eight_le_nChains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rigidAt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_piMove_alphaA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainCount_piMove_muB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.nChains_piMove_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rigid_isolation_of_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.not_eight_eight_of_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+@[expose] def SimpleGraph.QuarterFloor.chainCount.{u_1} : {V : Type u_1} →
+  [Fintype V] → SimpleGraph V → V → (V → Fin 4) → Fin 4 → Fin 4 → ℕ :=
+fun {V} [Fintype V] G h c p q =>
+  (Finset.image (SimpleGraph.VacancyShortFill.pairGraph G h c p q).connectedComponentMk
+      {v | SimpleGraph.VacancyShortFill.Active h c p q v}).card
+@[expose] def SimpleGraph.QuarterFloor.nChains.{u_1} : {V : Type u_1} →
+  [Fintype V] → SimpleGraph V → V → (V → Fin 4) → ℕ :=
+fun {V} [Fintype V] G h c => ∑ p, ∑ q, if p < q then SimpleGraph.QuarterFloor.chainCount G h c p q else 0
+@[expose] def SimpleGraph.QuarterFloor.RigidAt : {n : ℕ} →
+  {M : SimpleGraph.SphericalMap n} →
+    {h : Fin n} → SimpleGraph.QuarterFloor.Pent M.graph h → (Fin n → Fin 4) → Fin 5 → Prop :=
+fun {n} {M} {h} P c j =>
+  SimpleGraph.QuarterFloor.DoublyLocked P c j ∧
+    SimpleGraph.QuarterFloor.chainCount M.graph h c (c (P.x j)) (c (P.x (j + 1))) = 1 ∧
+      SimpleGraph.QuarterFloor.chainCount M.graph h c (c (P.x (j + 3))) (c (P.x (j + 4))) = 1 ∧
+        SimpleGraph.QuarterFloor.chainCount M.graph h c (c (P.x j)) (c (P.x (j + 3))) = 2 ∧
+          SimpleGraph.QuarterFloor.chainCount M.graph h c (c (P.x (j + 1))) (c (P.x (j + 4))) = 1 ∧
+            SimpleGraph.QuarterFloor.chainCount M.graph h c (c (P.x j)) (c (P.x (j + 4))) = 2 ∧
+              SimpleGraph.QuarterFloor.chainCount M.graph h c (c (P.x (j + 1))) (c (P.x (j + 3))) = 1
+@[expose] def SimpleGraph.QuarterFloor.ChainParityLaw : {n : ℕ} →
+  (M : SimpleGraph.SphericalMap n) → {h : Fin n} → SimpleGraph.QuarterFloor.Pent M.graph h → Prop :=
+fun {n} M {h} P =>
+  ∀ (c : Fin n → Fin 4),
+    SimpleGraph.VacancySlide.ProperOff M.graph h c →
+      SimpleGraph.QuarterFloor.DLState P c →
+        (Odd
+            (SimpleGraph.QuarterFloor.nChains M.graph h (SimpleGraph.QuarterFloor.piMove P c) +
+              SimpleGraph.QuarterFloor.nChains M.graph h c) ↔
+          SimpleGraph.QuarterFloor.DLState P (SimpleGraph.QuarterFloor.piMove P c))
+@SimpleGraph.QuarterFloor.eight_le_nChains : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n} {c : Fin n → Fin 4}
+  {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.QuarterFloor.DoublyLocked P c j → 8 ≤ SimpleGraph.QuarterFloor.nChains M.graph h c
+@SimpleGraph.QuarterFloor.rigidAt_iff : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n} {c : Fin n → Fin 4}
+  {j : Fin 5},
+  M.Triangulated →
+    ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h),
+      SimpleGraph.QuarterFloor.DoublyLocked P c j →
+        (SimpleGraph.QuarterFloor.RigidAt P c j ↔ SimpleGraph.QuarterFloor.nChains M.graph h c = 8)
+file constants checked: 22; nonstandard: 0; []
+exit 0

@@ -11,7 +11,7 @@ S=$PWD
 P=Mathlib/Combinatorics/SimpleGraph/PlaneMap
 [ -d "$W/Mathlib" ] || cp -c -R "$B/.lake/build/lib/lean/Mathlib" "$W/Mathlib"
 LP=$W:$(ls -d $B/.lake/packages/*/.lake/build/lib/lean | tr '\n' ':')
-for f in EulerSharp VacancyIcosahedral RStar SideTriangle RStarCore MinimalFrame RingJordan RingChains RingReduce DiamondCert Conf2122Cert OccToRing DiamondMCert DiamondMOcc DiamondPCert DiamondPOcc C2122MCert C2122MOcc C2122PCert C2122POcc FrameF3 RStarSanity RadiusFive Conf2122Witness QuarterFloor QuarterRotation NoFrozen QuarterRotationPlanar QuarterPi QuarterWinding QuarterFloorH QuarterFloorHBridge QuarterSigmaExit QuarterSigmaGroups QuarterSigmaPrime QuarterSigmaK34 QuarterGammaPeriod QuarterJordanDual QuarterSigmaFix QuarterPeriodJ QuarterSanity; do
+for f in EulerSharp VacancyIcosahedral RStar SideTriangle RStarCore MinimalFrame RingJordan RingChains RingReduce DiamondCert Conf2122Cert OccToRing DiamondMCert DiamondMOcc DiamondPCert DiamondPOcc C2122MCert C2122MOcc C2122PCert C2122POcc FrameF3 RStarSanity RadiusFive Conf2122Witness QuarterFloor QuarterRotation NoFrozen QuarterRotationPlanar QuarterPi QuarterWinding QuarterFloorH QuarterFloorHBridge QuarterSigmaExit QuarterSigmaGroups QuarterSigmaPrime QuarterSigmaK34 QuarterGammaPeriod QuarterJordanDual QuarterSigmaFix QuarterPeriodJ QuarterSanity AppearsOcc DiamondAppears C2122Appears FrameAppears FCycle22 Tri22Map Tri22Sanity; do
   echo "== $f"
   nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 done
@@ -49,3 +49,12 @@ f=QuarterImagePosition; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lea
 f=QuarterLemmaN0; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterR3AtUnfold; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
 f=QuarterBudgetPos; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=FrameNoFrozen; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=FrameScope; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=FrameWit22Map; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=FrameWit22; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=QuarterLockParity; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=ChainCount; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=ChainMod4; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=TutteSides; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1
+f=ChainF; echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$S" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" || exit 1

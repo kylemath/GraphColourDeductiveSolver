@@ -1,0 +1,53 @@
+'SimpleGraph.QuarterFloor.omT_face' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.omT_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cw_dart_mod8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.f_arith' depends on axioms: [propext, Quot.sound]
+'SimpleGraph.QuarterFloor.chainFormulaF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.conjectureF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.chainParityLaw_sphere' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rigid_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.remark7' depends on axioms: [propext, Classical.choice, Quot.sound]
+@SimpleGraph.QuarterFloor.chainFormulaF : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n},
+  M.Triangulated →
+    (∀ (v : Fin n), ∃ w, M.graph.Adj v w) →
+      ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h), SimpleGraph.QuarterFloor.ChainFormulaF M P
+SimpleGraph.QuarterFloor.conjectureF : SimpleGraph.QuarterFloor.ConjectureF
+@SimpleGraph.QuarterFloor.chainParityLaw_sphere : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n},
+  M.Triangulated →
+    (∀ (v : Fin n), ∃ w, M.graph.Adj v w) →
+      ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h), SimpleGraph.QuarterFloor.ChainParityLaw M P
+@SimpleGraph.QuarterFloor.rigid_isolation : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n},
+  M.Triangulated →
+    (∀ (v : Fin n), ∃ w, M.graph.Adj v w) →
+      ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h) {c : Fin n → Fin 4} {j : Fin 5},
+        SimpleGraph.VacancySlide.ProperOff M.graph h c →
+          SimpleGraph.QuarterFloor.RigidAt P c j →
+            ∀ (j' : Fin 5), ¬SimpleGraph.QuarterFloor.RigidAt P (SimpleGraph.QuarterFloor.piMove P c) j'
+@SimpleGraph.QuarterFloor.remark7 : ∀ {n : ℕ} {M : SimpleGraph.SphericalMap n} {h : Fin n},
+  M.Triangulated →
+    (∀ (v : Fin n), ∃ w, M.graph.Adj v w) →
+      ∀ (P : SimpleGraph.QuarterFloor.Pent M.graph h) {c : Fin n → Fin 4} {j : Fin 5},
+        SimpleGraph.VacancySlide.ProperOff M.graph h c →
+          SimpleGraph.QuarterFloor.RepeatAt P c j →
+            ∀ {p q : Fin 4} {X : Set (Fin n)},
+              p ≠ q →
+                SimpleGraph.VacancyShortFill.Whole M.graph h c p q X →
+                  (∀ (i : Fin 5), P.x i ∉ X) →
+                    ((SimpleGraph.QuarterFloor.nChains M.graph h (SimpleGraph.VacancyShortFill.swap c p q X) +
+                            if SimpleGraph.QuarterFloor.Lock1 P (SimpleGraph.VacancyShortFill.swap c p q X) j then 1
+                            else 0) +
+                          if SimpleGraph.QuarterFloor.Lock2 P (SimpleGraph.VacancyShortFill.swap c p q X) j then 1
+                          else 0) %
+                        2 =
+                      ((SimpleGraph.QuarterFloor.nChains M.graph h c +
+                            if SimpleGraph.QuarterFloor.Lock1 P c j then 1 else 0) +
+                          if SimpleGraph.QuarterFloor.Lock2 P c j then 1 else 0) %
+                        2
+'SimpleGraph.QuarterFloor.lemmaW' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.cw_piMove' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.eight_le_nChains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.QuarterFloor.rigidAt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.euler_tri' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.TutteSides.tutte_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
+file constants checked: 27; nonstandard: 0; []
+exit 0

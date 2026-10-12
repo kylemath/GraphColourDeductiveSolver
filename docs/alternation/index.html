@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 9-8 Alternation</title>
+  <meta name="description" content="Interactive demo: the longest near-rigid π-run in the order-34 census, step by step. The chain count alternates 9, 8, 9, 8 because of the chain-parity law, and a closed loop would need at least ten such steps.">
+  <style>
+    :root {
+      --bg: #0d1117; --raised: #161b22; --sunken: #010409; --border: #30363d;
+      --text: #e6edf3; --dim: #b1bac4; --faint: #7d8590; --accent: #58a6ff;
+      --good: #3fb950; --bad: #f85149; --warn: #d29922; --twin: #bc8cff;
+      --c0: #f85149; --c1: #58a6ff; --c2: #e3b341; --c3: #3fb950;
+      --lock: #f0883e; --free: #bc8cff;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+    .intro { max-width: 1060px; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--twin); font-size: .78rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0 0 .75rem; font: 600 clamp(1.9rem, 4.5vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+    h2 { margin: 0 0 .6rem; font: 600 1.4rem/1.3 var(--serif); }
+    h3 { margin: 0 0 .5rem; font: 600 .78rem var(--sans); color: var(--faint); letter-spacing: .07em; text-transform: uppercase; }
+    p { margin: 0 0 .9rem; color: var(--dim); max-width: 74ch; overflow-wrap: anywhere; }
+    p strong, li strong { color: var(--text); }
+    code, .m { font: .88em var(--mono); }
+    code { background: var(--raised); padding: .05em .3em; border-radius: 4px; color: var(--text); }
+    a { color: var(--accent); }
+    .lead { font-size: 1.04rem; }
+    .math { font-family: var(--serif); font-style: italic; color: var(--text); }
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: .3rem 0 1rem; }
+    .chip { font: 600 .85rem var(--sans); color: var(--text); background: var(--raised); border: 1px solid var(--border);
+            border-radius: 999px; padding: .3rem .75rem; cursor: pointer; min-height: 34px; }
+    .chip .tag { font-weight: 500; font-size: .74rem; margin-left: .3rem; color: var(--faint); }
+    .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    button:focus-visible, input:focus-visible, .tl-cell:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .panel { background: var(--raised); border: 1px solid var(--border); border-radius: 12px; padding: .9rem; min-width: 0; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, 1fr); gap: 1rem; align-items: start; }
+    @media (max-width: 900px) { .stage { grid-template-columns: 1fr; } }
+    svg { display: block; width: 100%; height: auto; }
+    .controls { display: flex; flex-wrap: wrap; gap: .5rem .8rem; align-items: center; margin-bottom: .7rem; }
+    .btn { font: 600 .9rem var(--sans); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 8px;
+           padding: .35rem .8rem; cursor: pointer; min-width: 44px; min-height: 36px; }
+    .btn:hover { border-color: var(--accent); }
+    .btn:disabled { opacity: .4; cursor: default; }
+    input[type=range] { flex: 1 1 160px; accent-color: var(--accent); min-width: 120px; }
+    .toggles { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .86rem; color: var(--dim); margin-top: .6rem; }
+    .toggles label { display: inline-flex; align-items: center; gap: .35rem; cursor: pointer; }
+    .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; }
+    /* timeline */
+    .timeline { display: flex; gap: 3px; overflow-x: auto; padding: .25rem 0 .4rem; scrollbar-width: thin; }
+    .tl-cell { flex: 0 0 auto; width: 40px; text-align: center; border: 1px solid var(--border); border-radius: 7px; background: var(--sunken);
+               color: var(--dim); font: 600 .95rem var(--mono); padding: .3rem 0 .2rem; cursor: pointer; position: relative; }
+    .tl-cell small { display: block; font: 500 .62rem var(--sans); color: var(--faint); letter-spacing: .02em; }
+    .tl-cell.run { background: #1f1630; border-color: #4b3a6b; color: var(--text); }
+    .tl-cell.t-rigid { color: var(--c1); }
+    .tl-cell.t-nine, .tl-cell.t-inshape { color: var(--free); }
+    .tl-cell.t-filled { color: var(--good); }
+    .tl-cell.t-single { color: var(--warn); }
+    .tl-cell.cur { box-shadow: 0 0 0 2px var(--accent); }
+    .tl-legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .8rem; color: var(--faint); margin-top: .2rem; }
+    .tl-legend b { font: 600 .82rem var(--mono); }
+    /* readout */
+    .bigN { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+    .bigN .num { font: 600 3rem/1 var(--serif); }
+    .bigN .eq { font: .95rem var(--mono); color: var(--dim); }
+    .badge { display: inline-block; font: 600 .78rem var(--sans); padding: .15rem .6rem; border-radius: 999px; border: 1px solid var(--border); }
+    .badge.rigid { color: var(--c1); border-color: var(--c1); }
+    .badge.inshape, .badge.nine { color: var(--free); border-color: var(--free); }
+    .badge.filled { color: var(--good); border-color: var(--good); }
+    .badge.single { color: var(--warn); border-color: var(--warn); }
+    .badge.dl { color: var(--dim); }
+    .kv { display: grid; grid-template-columns: auto 1fr; gap: .2rem .8rem; font-size: .88rem; margin: .7rem 0; }
+    .kv dt { color: var(--faint); }
+    .kv dd { margin: 0; color: var(--text); font-family: var(--mono); font-size: .86rem; }
+    .frame { display: inline-flex; gap: 3px; vertical-align: middle; }
+    .frame span { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font: 700 .78rem var(--serif); color: #0d1117; }
+    table { border-collapse: collapse; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }
+    th, td { text-align: left; padding: .25rem .4rem; border-bottom: 1px solid var(--border); }
+    th { color: var(--faint); font-weight: 600; font-size: .76rem; letter-spacing: .04em; }
+    td.num, th.num { text-align: right; font-family: var(--mono); }
+    .chainlist { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .5rem; }
+    .cbtn { font: 500 .78rem var(--mono); color: var(--text); background: var(--sunken); border: 1px solid var(--border); border-radius: 6px;
+            padding: .2rem .45rem; cursor: pointer; display: inline-flex; gap: .3rem; align-items: center; min-height: 28px; }
+    .cbtn[aria-pressed="true"] { border-color: var(--text); background: #21262d; }
+    .cbtn.free { border-color: var(--free); }
+    .cbtn.lock { border-color: var(--lock); }
+    .cbtn i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+    .next { margin-top: .7rem; padding: .6rem .7rem; border-radius: 8px; background: var(--sunken); border: 1px solid var(--border); font-size: .88rem; color: var(--dim); }
+    .next b { color: var(--text); }
+    .ok { color: var(--good); font-weight: 600; }
+    .sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin-top: 1.4rem; }
+    .sections .panel p { font-size: .94rem; }
+    .necklace { margin: .4rem 0 .8rem; }
+    .chart-wrap { position: relative; }
+    .tip { position: absolute; pointer-events: none; background: var(--sunken); border: 1px solid var(--border); border-radius: 6px;
+           padding: .3rem .5rem; font: .8rem var(--mono); color: var(--text); white-space: nowrap; transform: translate(-50%, -110%); }
+    details { margin-top: .6rem; color: var(--dim); font-size: .88rem; }
+    summary { cursor: pointer; color: var(--accent); }
+    .foot { margin-top: 1.6rem; border-top: 1px solid var(--border); padding-top: 1rem; font-size: .86rem; }
+    .foot p { font-size: .86rem; }
+    svg text { font-family: var(--sans); }
+    .v { transition: fill .35s ease; }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">Degree-five hole · near-rigid π-runs · order-34 census record</p>
+    <h1>The 9-8 Alternation</h1>
+    <p class="lead">Take a triangulated sphere and delete one vertex of degree five: the <strong>hole</strong>. Colour what is left with four colours. If the five neighbours around the hole (the <strong>rim</strong>) use all four colours, the hole cannot be filled. Kempe's old trick is to swap two colours along one connected two-colour chain. When both of his swaps are blocked (<strong>doubly locked</strong>), there is still one canonical swap, called <span class="math">π</span>, and you can keep applying it.</p>
+    <p>Count every Kempe chain of the colouring, over all six colour pairs, and call the total <span class="math">N</span>. Below is a real walk under <span class="math">π</span>, taken from the exhaustive census of order 34. It is the longest stretch ever recorded in which every state is doubly locked with <span class="math">N</span> ≤ 9. Along it <span class="math">N</span> reads <strong>9, 8, 9, 8, 9, 8, 9, 8</strong>. Step through it, and watch the beads.</p>
+  </div>
+
+  <div class="chips" role="group" aria-label="Choose a run" id="runChips"></div>
+
+  <div class="panel" style="margin-bottom:1rem">
+    <h3>The π-orbit, state by state</h3>
+    <div class="timeline" id="timeline" role="listbox" aria-label="States along the orbit"></div>
+    <div class="tl-legend">
+      <span><b style="color:var(--good)">n</b> filled (the hole can be coloured)</span>
+      <span><b style="color:var(--warn)">n</b> one lock open: one swap fills it</span>
+      <span><b style="color:var(--dim)">n</b> doubly locked, N ≥ 10</span>
+      <span><b style="color:var(--free)">9</b> doubly locked, one free chain</span>
+      <span><b style="color:var(--c1)">8</b> rigid (no free chain)</span>
+      <span><span class="sw" style="background:#1f1630;border:1px solid #4b3a6b"></span> the near-rigid run</span>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="panel">
+      <div class="controls">
+        <button class="btn" id="prev" aria-label="Previous state">◀</button>
+        <button class="btn" id="play" aria-label="Play">▶ play</button>
+        <button class="btn" id="next" aria-label="Next state">▶</button>
+        <input type="range" id="slider" min="0" max="1" value="0" aria-label="State along the orbit">
+        <span id="stepLabel" class="m" style="color:var(--dim)"></span>
+      </div>
+      <svg id="map" viewBox="-1.12 -1.12 2.24 2.24" role="img" aria-labelledby="mapTitle mapDesc">
+        <title id="mapTitle">The triangulation around the hole</title>
+        <desc id="mapDesc">The vertices of the triangulation coloured by the current colouring; the hole is the dashed circle at the centre.</desc>
+      </svg>
+      <div class="toggles" role="group" aria-label="Layers">
+        <label><input type="checkbox" id="tLocks" checked> the two locks (μ–A, μ–B)</label>
+        <label><input type="checkbox" id="tFree" checked> free chains</label>
+        <label><input type="checkbox" id="tPi" checked> the chain swapped next (π, or the filling swap)</label>
+        <label><input type="checkbox" id="tLabels"> vertex numbers</label>
+      </div>
+      <p class="sub" style="margin:.5rem 0 0;font-size:.82rem;color:var(--faint)">Each highlighted chain is a metro-style track: two thin strands, one in each of its two colours. A vertex on several highlighted chains gets a ring split into one segment per chain; each segment shows that chain's other colour. Vertex positions never move between steps.</p>
+    </div>
+
+    <div class="panel" id="readout" aria-live="polite"></div>
+  </div>
+
+  <div class="sections">
+    <div class="panel">
+      <h2>Eight beads on the rim, plus the free ones</h2>
+      <p>Think of each Kempe chain as a bead. At a doubly locked state the rim always strings <strong>exactly eight</strong> beads: one α–μ chain along the rim path, one A–B chain across the rim edge, two α–A and two α–B chains (one through each α), one μ–B chain and one μ–A chain. The last two are the <strong>locks</strong>. Every other bead floats free of the rim, so <span class="math">N</span> = 8 + (free beads).</p>
+      <p>A <strong>rigid</strong> state has no free bead (<span class="math">N</span> = 8). A state with <span class="math">N</span> = 9 has exactly one. In the runs shown here that free bead is always an α–μ chain. On the sphere this is the σ-type lemma: a hand proof, independently reviewed, and checked at 26,481 of 26,481 such states in the census data.</p>
+      <p>On this page the eight-bead count is not assumed. The build script checks it at every one of the hole's unfilled states: <strong id="rimCount"></strong>.</p>
+    </div>
+    <div class="panel">
+      <h2>Why every step is odd</h2>
+      <svg class="necklace" id="clock" viewBox="0 0 320 120" role="img" aria-label="A clock in quarter turns: π turns the dial by half a turn."></svg>
+      <p>The bead count carries a hidden clock. Read every triangle's three edge colours (as differences of colours in a 2×2 grid) and count the triangles that turn <em>clockwise</em>; call it <span class="math">cw</span>. On the sphere, with <span class="math">n</span> vertices,</p>
+      <p style="text-align:center"><span class="math">2N ≡ cw + (n − 1) − η + 2(L<sub>1</sub> + L<sub>2</sub>)  (mod 4)</span></p>
+      <p>Here η depends only on the four rim colours, and <span class="math">L<sub>1</sub></span>, <span class="math">L<sub>2</sub></span> are 1 when the locks are shut. One π-step always turns <span class="math">cw</span> by exactly half a turn (2 mod 4) and leaves η alone. If both locks are still shut afterwards, the locks give back nothing, so <span class="math">2N</span> must move by 2 mod 4: <strong>the change in N is odd</strong>. If the step opens a lock, the change is even. This is the <strong>chain-parity law</strong>, proved by hand and compiled in Lean 4.</p>
+      <p>So from a rigid 8 the next doubly locked state cannot be 8. Staying at <span class="math">N</span> ≤ 9 forces 8, 9, 8, 9, … exactly.</p>
+    </div>
+    <div class="panel">
+      <h2>Why a loop needs at least ten</h2>
+      <svg id="star" viewBox="0 0 320 150" role="img" aria-label="The repeated rim colour moves three places round the pentagon at each step, so it returns after five steps."></svg>
+      <p>The rim pentagon reads α, μ, α, A, B, with the repeated colour α at positions <span class="math">j</span> and <span class="math">j</span>+2. Each π-step recolours the rim so that the pattern starts three places further round: <span class="math">j</span> → <span class="math">j</span> + 3 (mod 5). The page checks this at every step. Returning to the starting frame takes a multiple of <strong>5</strong> steps. The alternation needs an <strong>even</strong> number. A closed near-rigid loop would therefore need a multiple of 10 steps, so <strong>at least 10</strong>.</p>
+      <p>No such loop has ever been seen. The census covers every frame-class triangulation of orders 22 to 34 (3.6 million holes at order 34 alone), and the longest run is <strong>8</strong>. Every run ends the same way: <span class="math">N</span> jumps to 10 or more, or a lock opens and one swap fills the hole. Whether a loop can exist is the open claim <strong>NRC</strong>.</p>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:1rem">
+    <h2>Longest near-rigid run, by order</h2>
+    <p>Maximum over every degree-five hole of every frame-class triangulation of each order: the longest π-run of doubly locked states with <span class="math">N</span> ≤ 9. The dashed line marks the 10 steps that a closed loop would need.</p>
+    <div class="chart-wrap" id="chartWrap">
+      <svg id="chart" viewBox="0 0 720 300" role="img" aria-labelledby="chartTitle"><title id="chartTitle">Bar chart of the longest near-rigid run for orders 22 to 34</title></svg>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <details>
+      <summary>Table view</summary>
+      <table id="chartTable"><thead><tr><th>order</th><th class="num">holes</th><th class="num">longest near-rigid run (NR)</th><th class="num">holes at max</th><th class="num">longest interior run (R)</th></tr></thead><tbody></tbody></table>
+    </details>
+  </div>
+
+  <div class="foot">
+    <p><strong>What is proved and what is not.</strong> The chain-count formula, the chain-parity law and rigid isolation (an 8 is never followed by an 8) are compiled in Lean 4 and audited. The eight-beads identity and the σ-type lemma are hand proofs with an independent AI review. <strong>NRC is open</strong>: no proof excludes a closed near-rigid loop. The census numbers are computations. This is not a proof of the Four Colour Theorem, which is already known.</p>
+    <p><strong>Data.</strong> Graphs from <code>Census34/out/maxima_graphs.txt</code> (p34.r178#11764701, hole 10) and <code>Census33/out/frame-33.txt</code> (p33.r147#128636, hole 2). <code>docs/alternation/build_data.py</code> computes every state, chain and count with its own engine. It then asserts agreement with TrackM's <code>tm_lib</code> (state by state), the reviewed TrackJL-review engine <code>rv_eng</code> (counts, law, zero failures) and the census run records. The chart is recomputed from the census per-hole files and matched to the census tables; orders 22–25 are recomputed from scratch. <span id="builtNote"></span></p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="../shared/kempe-draw.js"></script>
+<script>
+(function () {
+  'use strict';
+  const D = window.ALT_DATA;
+  const COL = ['var(--c0)', 'var(--c1)', 'var(--c2)', 'var(--c3)'];
+  const HEX = ['#f85149', '#58a6ff', '#e3b341', '#3fb950'];
+  const NS = 'http://www.w3.org/2000/svg';
+  const TYPE_LABEL = { filled: 'filled', single: 'one lock open', dl: 'doubly locked', rigid: 'rigid (N = 8)', inshape: 'in-shape 9', nine: 'doubly locked, N = 9' };
+  const TL_SMALL = { filled: 'fill', single: '1 lock', dl: 'DL', rigid: 'rigid', inshape: '9', nine: '9' };
+  let run = D.runs[0], step = 0, focus = null, timer = null;
+
+  function el(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function h(tag, attrs, html) {
+    const e = document.createElement(tag);
+    if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  // ---------- run chips
+  const chips = document.getElementById('runChips');
+  D.runs.forEach((r, i) => {
+    const b = h('button', { class: 'chip', 'aria-pressed': i === 0 ? 'true' : 'false' },
+      r.label + '<span class="tag">' + r.name + ' · hole ' + r.hole + ' · run ' + r.runLen + '</span>');
+    b.addEventListener('click', () => { stop(); run = r; step = r.runStart; focus = null;
+      chips.querySelectorAll('.chip').forEach((c, k) => c.setAttribute('aria-pressed', k === i ? 'true' : 'false'));
+      buildMap(); buildTimeline(); render(); });
+    chips.appendChild(b);
+  });
+
+  // ---------- map
+  const svg = document.getElementById('map');
+  let G = {};
+  function buildMap() {
+    while (svg.childNodes.length > 2) svg.removeChild(svg.lastChild);
+    G.kd = KempeDraw.create(svg, { pos: run.pos, edges: run.edges, hole: run.hole, link: run.link, colours: HEX, bg: '#161b22', scale: 1 });
+    const lab = G.kd.layer('labels'), P = run.pos;
+    G.num = [];
+    for (let u = 0; u < run.n; u++) {
+      if (u === run.hole) { G.num.push(null); continue; }
+      if (run.link.includes(u)) { G.num.push(null); continue; }
+      const t = el('text', { x: P[u][0], y: P[u][1] + 0.011, 'text-anchor': 'middle', 'font-size': 0.03, fill: '#0d1117', 'font-weight': 700, 'pointer-events': 'none' }, lab);
+      t.textContent = u; G.num.push(t);
+    }
+    G.roles = run.link.map(() => el('text', { 'text-anchor': 'middle', 'font-size': 0.052, fill: '#0d1117', 'font-weight': 700, 'font-style': 'italic', 'font-family': 'Palatino, Georgia, serif', 'pointer-events': 'none' }, lab));
+  }
+
+  function renderMap(s) {
+    const P = run.pos, hole = run.hole;
+    G.kd.setColouring(s.col.map(c => (c === null ? 0 : c)));
+    const showNum = document.getElementById('tLabels').checked;
+    G.num.forEach(t => { if (t) t.style.display = showNum ? '' : 'none'; });
+    run.link.forEach((x, i) => {
+      const t = G.roles[i];
+      if (!s.frame) { t.textContent = ''; return; }
+      const role = ['α', 'μ', 'α', 'A', 'B'][s.frame.indexOf(x)];
+      t.setAttribute('x', P[x][0]); t.setAttribute('y', P[x][1] + 0.017);
+      t.textContent = role;
+    });
+    const list = [], mk = c => ({ v: c.v, pair: [c.p, c.q], title: (c.t ? c.t + ' chain' : 'chain') + ', ' + c.v.length + ' vertices' });
+    if (focus !== null && s.chains[focus]) list.push(mk(s.chains[focus]));
+    else {
+      const want = new Set();
+      if (document.getElementById('tLocks').checked) s.chains.forEach((c, k) => { if (c.lock) want.add(k); });
+      if (document.getElementById('tFree').checked && s.type !== 'filled') s.chains.forEach((c, k) => { if (!c.rim) want.add(k); });
+      if (document.getElementById('tPi').checked && s.next === 'pi') s.chains.forEach((c, k) => { if (c.pi) want.add(k); });
+      [...want].forEach(k => list.push(mk(s.chains[k])));
+      if (document.getElementById('tPi').checked && s.fill) list.push({ v: s.fill.v, pair: s.fill.pair, title: 'Kempe step: swapping this chain fills the hole' });
+    }
+    G.kd.setChains(list);
+    G.kd.setDim(focus !== null);
+  }
+
+  // ---------- timeline
+  const tl = document.getElementById('timeline');
+  function buildTimeline() {
+    tl.innerHTML = '';
+    run.steps.forEach((s, i) => {
+      const c = h('div', { class: 'tl-cell t-' + s.type + (s.inRun ? ' run' : ''), role: 'option', tabindex: '-1',
+        'aria-label': 'State ' + (i + 1) + ': N = ' + s.N + ', ' + TYPE_LABEL[s.type] + (s.inRun ? ', in the run' : '') },
+        s.N + '<small>' + TL_SMALL[s.type] + '</small>');
+      c.addEventListener('click', () => { stop(); step = i; focus = null; render(); });
+      tl.appendChild(c);
+    });
+    const sl = document.getElementById('slider'); sl.max = run.steps.length - 1;
+  }
+  tl.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { go(1); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { go(-1); e.preventDefault(); }
+  });
+
+  // ---------- readout
+  const RO = document.getElementById('readout');
+  const ROLE_ORDER = ['αμ', 'AB', 'αA', 'μB', 'αB', 'μA'];
+  function swatch(c) { return '<i style="background:' + HEX[c] + '"></i>'; }
+  function renderReadout(s, i) {
+    const prev = i > 0 ? run.steps[i - 1] : null, nxt = i + 1 < run.steps.length ? run.steps[i + 1] : null;
+    const runIdx = s.inRun ? (i - run.runStart + 1) : 0;
+    let html = '<h3>' + (s.inRun ? 'Run state ' + runIdx + ' of ' + run.runLen : (i < run.runStart ? 'Before the run' : 'After the run')) + '</h3>';
+    html += '<div class="bigN"><span class="num">N = ' + s.N + '</span>';
+    if (s.type !== 'filled') html += '<span class="eq">= 8 rim + ' + s.ell + ' free</span>';
+    html += '</div><p style="margin:.4rem 0 0"><span class="badge ' + s.type + '">' + TYPE_LABEL[s.type] + '</span></p>';
+    html += '<dl class="kv">';
+    if (s.frame) {
+      const r = s.roles;
+      html += '<dt>rim, read from the frame</dt><dd><span class="frame">' +
+        [['α', r['α']], ['μ', r['μ']], ['α', r['α']], ['A', r['A']], ['B', r['B']]].map(([l, c]) => '<span style="background:' + HEX[c] + '">' + l + '</span>').join('') + '</span></dd>';
+      html += '<dt>locks</dt><dd>L<sub>1</sub> ' + (s.L1 ? 'shut' : '<b style="color:var(--warn)">open</b>') + ' · L<sub>2</sub> ' + (s.L2 ? 'shut' : '<b style="color:var(--warn)">open</b>') + '</dd>';
+      html += '<dt>frame start j</dt><dd>' + s.j + '</dd>';
+    } else {
+      html += '<dt>rim</dt><dd>uses only three colours, so the hole takes the fourth</dd>';
+    }
+    html += '<dt>Kempe neighbours</dt><dd>' + s.kd + '</dd>';
+    html += '<dt>fewest swaps to a filled state</dt><dd>' + s.dF + '</dd>';
+    html += '</dl>';
+    if (s.tcount) {
+      html += '<table><thead><tr><th>chain type</th><th class="num">on the rim</th><th class="num">free</th></tr></thead><tbody>';
+      ROLE_ORDER.forEach(t => {
+        const rim = s.chains.filter(c => c.t === t && c.rim).length, fr = s.chains.filter(c => c.t === t && !c.rim).length;
+        const lockNote = t === 'μA' ? ' <span style="color:var(--lock)">lock 1</span>' : (t === 'μB' ? ' <span style="color:var(--lock)">lock 2</span>' : '');
+        html += '<tr><td><span class="math">' + t[0] + '–' + t.slice(1) + '</span>' + lockNote + '</td><td class="num">' + rim + '</td><td class="num"' + (fr ? ' style="color:var(--free);font-weight:700"' : '') + '>' + fr + '</td></tr>';
+      });
+      const rimT = s.chains.filter(c => c.rim).length, frT = s.chains.length - rimT;
+      html += '<tr><td><b>total</b></td><td class="num"><b>' + rimT + '</b></td><td class="num"><b>' + frT + '</b></td></tr></tbody></table>';
+    }
+    html += '<p style="margin:.6rem 0 0;font-size:.8rem;color:var(--faint)">Every chain (click to spotlight it on the map):</p><div class="chainlist" role="group" aria-label="Chains">';
+    s.chains.forEach((c, k) => {
+      const cls = 'cbtn' + (!c.rim && s.type !== 'filled' ? ' free' : '') + (c.lock ? ' lock' : '');
+      const lab = (c.t ? c.t : '') + ' ' + c.v.length;
+      html += '<button class="' + cls + '" data-k="' + k + '" aria-pressed="' + (focus === k) + '" title="' + (c.rim ? 'meets the rim' : 'free of the rim') + ', ' + c.v.length + ' vertices">' + swatch(c.p) + swatch(c.q) + lab + '</button>';
+    });
+    html += '</div>';
+    // next move
+    html += '<div class="next">';
+    if (s.next === 'pi' && nxt) {
+      const dN = nxt.N - s.N, odd = Math.abs(dN) % 2 === 1;
+      html += '<b>Next: π</b> swaps α and A on the α–A chain through the second α (shown as a track when that layer is on). ';
+      if (s.DL) {
+        html += 'N goes ' + s.N + ' → ' + nxt.N + ' (ΔN = ' + (dN > 0 ? '+' : '') + dN + ', ' + (odd ? 'odd' : 'even') + '). ';
+        html += 'The next state is ' + (nxt.DL ? '' : '<b>not</b> ') + 'doubly locked, so the law requires an ' + (nxt.DL ? 'odd' : 'even') + ' change: ';
+        html += (odd === nxt.DL) ? '<span class="ok">✓ holds</span>.' : '<b style="color:var(--bad)">✗</b>';
+        html += ' The frame moves from j = ' + s.j + ' to j = ' + nxt.j + ' (+3 mod 5).';
+      } else {
+        html += 'This state is not doubly locked, so the law does not apply here; π still leads into the doubly locked stretch.';
+      }
+    } else if (s.fill) {
+      html += '<b>Lock ' + s.fill.lock + ' is open.</b> Swapping the chain shown as a track (Kempe\'s own step) makes the rim use three colours, and the hole is filled.';
+    } else if (s.type === 'filled') {
+      html += i === 0 ? '<b>Start here:</b> a filled colouring. One swap away is the state where the orbit enters.' : '<b>The walk ends</b> at a filled colouring: the run did not close.';
+    }
+    html += '</div>';
+    if (s.cw !== undefined && s.cw !== null) {
+      const n = run.n, lhs = (2 * s.N) % 4, rhs = (((s.cw + (n - 1) - s.eta + 2 * (s.L1 + s.L2)) % 4) + 4) % 4;
+      html += '<details><summary>Check the mod-4 formula here</summary><p class="m" style="margin:.4rem 0 0">2N = ' + (2 * s.N) + ' ≡ ' + lhs + ';  cw + (n−1) − η + 2(L₁+L₂) = ' + s.cw + ' + ' + (n - 1) + ' − ' + s.eta + ' + ' + 2 * (s.L1 + s.L2) + ' ≡ ' + rhs + ' (mod 4) ' + (lhs === rhs ? '<span class="ok">✓</span>' : '✗') + '</p></details>';
+    }
+    RO.innerHTML = html;
+    RO.querySelectorAll('.cbtn').forEach(b => b.addEventListener('click', () => {
+      const k = +b.dataset.k; focus = focus === k ? null : k; render(); }));
+  }
+
+  function render() {
+    const s = run.steps[step];
+    renderMap(s); renderReadout(s, step);
+    tl.querySelectorAll('.tl-cell').forEach((c, i) => { c.classList.toggle('cur', i === step); c.setAttribute('aria-selected', i === step); c.tabIndex = i === step ? 0 : -1; });
+    const cur = tl.children[step]; if (cur && cur.scrollIntoView) {
+      const L = cur.offsetLeft - tl.offsetLeft, W = tl.clientWidth;
+      if (L < tl.scrollLeft || L + 40 > tl.scrollLeft + W) tl.scrollLeft = L - W / 2;
+    }
+    document.getElementById('slider').value = step;
+    document.getElementById('stepLabel').textContent = (step + 1) + ' / ' + run.steps.length;
+    document.getElementById('prev').disabled = step === 0;
+    document.getElementById('next').disabled = step === run.steps.length - 1;
+    document.getElementById('rimCount').textContent = '8 at all ' + run.stats.unfilled.toLocaleString('en') + ' unfilled states of ' + run.name + ', hole ' + run.hole;
+  }
+  function go(d) { const k = Math.max(0, Math.min(run.steps.length - 1, step + d)); if (k !== step) { step = k; focus = null; render(); } }
+  function stop() { if (timer) { clearInterval(timer); timer = null; document.getElementById('play').textContent = '▶ play'; } }
+  document.getElementById('prev').addEventListener('click', () => { stop(); go(-1); });
+  document.getElementById('next').addEventListener('click', () => { stop(); go(1); });
+  document.getElementById('slider').addEventListener('input', e => { stop(); step = +e.target.value; focus = null; render(); });
+  document.getElementById('play').addEventListener('click', () => {
+    if (timer) { stop(); return; }
+    if (step >= run.steps.length - 1) step = 0;
+    document.getElementById('play').textContent = '❚❚ pause';
+    timer = setInterval(() => { if (step >= run.steps.length - 1) { stop(); return; } go(1); }, 1300);
+  });
+  ['tLocks', 'tFree', 'tPi', 'tLabels'].forEach(id => document.getElementById(id).addEventListener('change', () => render()));
+
+  // ---------- the clock picture (2N mod 4 as quarter turns)
+  (function clock() {
+    const s = document.getElementById('clock');
+    const dial = (cx, lab, ang, note) => {
+      el('circle', { cx: cx, cy: 55, r: 34, fill: 'none', stroke: '#30363d', 'stroke-width': 2 }, s);
+      for (let q = 0; q < 4; q++) {
+        const a = -Math.PI / 2 + q * Math.PI / 2;
+        el('circle', { cx: cx + 34 * Math.cos(a), cy: 55 + 34 * Math.sin(a), r: 4, fill: q === 0 ? '#e6edf3' : '#7d8590' }, s);
+      }
+      const a = -Math.PI / 2 + ang * Math.PI / 2;
+      el('line', { x1: cx, y1: 55, x2: cx + 26 * Math.cos(a), y2: 55 + 26 * Math.sin(a), stroke: '#bc8cff', 'stroke-width': 3, 'stroke-linecap': 'round' }, s);
+      const t = el('text', { x: cx, y: 108, 'text-anchor': 'middle', 'font-size': 12, fill: '#b1bac4' }, s); t.textContent = lab;
+      if (note) { const u = el('text', { x: cx, y: 14, 'text-anchor': 'middle', 'font-size': 11, fill: '#7d8590' }, s); u.textContent = note; }
+    };
+    dial(60, 'before π', 1, '2N mod 4');
+    dial(260, 'after π', 3, '2N mod 4');
+    el('path', { d: 'M110 55 C 150 25, 170 25, 210 55', fill: 'none', stroke: '#7d8590', 'stroke-width': 1.5, 'marker-end': 'url(#ar)' }, s);
+    const defs = el('defs', {}, s); const m = el('marker', { id: 'ar', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' }, defs);
+    el('path', { d: 'M0 0 L10 5 L0 10 z', fill: '#7d8590' }, m);
+    const t = el('text', { x: 160, y: 72, 'text-anchor': 'middle', 'font-size': 11, fill: '#b1bac4' }, s); t.textContent = 'half a turn';
+    const t2 = el('text', { x: 160, y: 88, 'text-anchor': 'middle', 'font-size': 11, fill: '#b1bac4' }, s); t2.textContent = '(locks still shut)';
+  })();
+
+  // ---------- the frame-rotation star
+  (function star() {
+    const s = document.getElementById('star'); const cx = 75, cy = 75, R = 52;
+    const pt = k => [cx + R * Math.sin(2 * Math.PI * k / 5), cy - R * Math.cos(2 * Math.PI * k / 5)];
+    el('polygon', { points: [0, 1, 2, 3, 4].map(k => pt(k).join(',')).join(' '), fill: 'none', stroke: '#30363d', 'stroke-width': 2 }, s);
+    const seq = [0, 3, 1, 4, 2, 0];
+    for (let i = 0; i < 5; i++) {
+      const [x1, y1] = pt(seq[i]), [x2, y2] = pt(seq[i + 1]);
+      el('line', { x1: x1, y1: y1, x2: x1 + (x2 - x1) * 0.86, y2: y1 + (y2 - y1) * 0.86, stroke: '#bc8cff', 'stroke-width': 1.6, 'marker-end': 'url(#ar2)' }, s);
+    }
+    const defs = el('defs', {}, s); const m = el('marker', { id: 'ar2', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 6, markerHeight: 6, orient: 'auto' }, defs);
+    el('path', { d: 'M0 0 L10 5 L0 10 z', fill: '#bc8cff' }, m);
+    for (let k = 0; k < 5; k++) {
+      const [x, y] = pt(k);
+      el('circle', { cx: x, cy: y, r: 11, fill: '#161b22', stroke: '#7d8590', 'stroke-width': 1.5 }, s);
+      const t = el('text', { x: x, y: y + 4, 'text-anchor': 'middle', 'font-size': 11, fill: '#e6edf3' }, s); t.textContent = 'j=' + k;
+    }
+    const lines = ['j → j + 3 (mod 5):', '0 → 3 → 1 → 4 → 2 → 0', 'back to the start after 5 steps;', 'alternation 8, 9 needs an even', 'number, so a loop is 10, 20, …'];
+    lines.forEach((l, i) => { const t = el('text', { x: 150, y: 36 + i * 19, 'font-size': 12, fill: i === 0 ? '#e6edf3' : '#b1bac4' }, s); t.textContent = l; });
+  })();
+
+  // ---------- chart
+  (function chart() {
+    const s = document.getElementById('chart'), rows = D.chart, W = 720, H = 300, m = { l: 44, r: 16, t: 18, b: 40 };
+    const iw = W - m.l - m.r, ih = H - m.t - m.b, ymax = 11, bw = iw / rows.length;
+    const y = v => m.t + ih - ih * v / ymax;
+    for (let v = 0; v <= 10; v += 2) {
+      el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: '#21262d', 'stroke-width': 1 }, s);
+      const t = el('text', { x: m.l - 8, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#7d8590' }, s); t.textContent = v;
+    }
+    el('line', { x1: m.l, x2: W - m.r, y1: y(10), y2: y(10), stroke: '#f85149', 'stroke-width': 1.5, 'stroke-dasharray': '6 4' }, s);
+    const tl = el('text', { x: W - m.r - 4, y: y(10) - 6, 'text-anchor': 'end', 'font-size': 12, fill: '#e6edf3' }, s);
+    tl.textContent = 'a closed near-rigid loop needs ≥ 10 steps';
+    const tip = document.getElementById('tip'), wrap = document.getElementById('chartWrap');
+    rows.forEach((r, i) => {
+      const x = m.l + i * bw + bw * 0.18, w = bw * 0.64, top = y(r.NR), base = y(0);
+      const rad = Math.min(4, w / 2);
+      const d = 'M' + x + ',' + base + ' V' + (top + rad) + ' Q' + x + ',' + top + ' ' + (x + rad) + ',' + top + ' H' + (x + w - rad) + ' Q' + (x + w) + ',' + top + ' ' + (x + w) + ',' + (top + rad) + ' V' + base + ' Z';
+      const bar = el('path', { d: d, fill: r.n === 34 ? '#bc8cff' : '#6e5a99' }, s);
+      const lab = el('text', { x: x + w / 2, y: base + 18, 'text-anchor': 'middle', 'font-size': 11, fill: '#7d8590' }, s); lab.textContent = r.n;
+      if (r.n === 34 || r.n === 22) { const v = el('text', { x: x + w / 2, y: top - 6, 'text-anchor': 'middle', 'font-size': 12, fill: '#e6edf3', 'font-weight': 600 }, s); v.textContent = r.NR; }
+      const hit = el('rect', { x: m.l + i * bw, y: m.t, width: bw, height: ih, fill: 'transparent', tabindex: 0, role: 'img',
+        'aria-label': 'order ' + r.n + ': longest near-rigid run ' + r.NR }, s);
+      const show = () => {
+        const bb = s.getBoundingClientRect(), sc = bb.width / W;
+        tip.hidden = false; tip.innerHTML = 'order ' + r.n + ' · NR ' + r.NR + '<br>' + r.holes.toLocaleString('en') + ' holes · ' + r.atNR + ' at max';
+        tip.style.left = ((x + w / 2) * sc) + 'px'; tip.style.top = (top * sc) + 'px'; bar.setAttribute('fill', '#d2b8ff');
+      };
+      const hide = () => { tip.hidden = true; bar.setAttribute('fill', r.n === 34 ? '#bc8cff' : '#6e5a99'); };
+      hit.addEventListener('mouseenter', show); hit.addEventListener('mouseleave', hide);
+      hit.addEventListener('focus', show); hit.addEventListener('blur', hide);
+    });
+    const xl = el('text', { x: m.l + iw / 2, y: H - 4, 'text-anchor': 'middle', 'font-size': 12, fill: '#b1bac4' }, s); xl.textContent = 'order (number of vertices)';
+    const tb = document.querySelector('#chartTable tbody');
+    rows.forEach(r => { const tr = h('tr', null, '<td>' + r.n + '</td><td class="num">' + r.holes.toLocaleString('en') + '</td><td class="num">' + r.NR + '</td><td class="num">' + r.atNR + '</td><td class="num">' + r.R + '</td>'); tb.appendChild(tr); });
+  })();
+
+  document.getElementById('builtNote').textContent = 'Built ' + D.built + '.';
+  step = run.runStart;
+  buildMap(); buildTimeline(); render();
+})();
+</script>
+</body>
+</html>

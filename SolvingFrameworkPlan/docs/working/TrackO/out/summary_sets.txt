@@ -1,0 +1,188 @@
+=== census22-29 ===
+n= 22 graphs=     1 holes=     12 skip=   0 states=       6024 maxR=0 maxNR=1  R-hist 0:12
+n= 23 graphs=     1 holes=     14 skip=   0 states=       4732 maxR=0 maxNR=3  R-hist 0:14
+n= 24 graphs=     4 holes=     55 skip=   0 states=      32280 maxR=1 maxNR=3  R-hist 0:51 1:4
+n= 25 graphs=     2 holes=     36 skip=   0 states=      19752 maxR=2 maxNR=4  R-hist 0:20 1:12 2:4
+n= 26 graphs=    11 holes=    165 skip=   0 states=     185180 maxR=2 maxNR=4  R-hist 0:132 1:23 2:10
+n= 27 graphs=    24 holes=    357 skip=   0 states=     463947 maxR=3 maxNR=4  R-hist 0:208 1:139 2:8 3:2
+n= 28 graphs=   104 holes=   1563 skip=   0 states=    2741061 maxR=3 maxNR=5  R-hist 0:997 1:536 2:29 3:1
+n= 29 graphs=   296 holes=   4533 skip=   0 states=   10355808 maxR=4 maxNR=5  R-hist 0:2300 1:2024 2:178 3:29 4:2
+TOTAL graphs=443 holes=6735 skipped=0 states=13808784
+  R-hist (holes): 0:3734 1:2738 2:229 3:32 4:2
+  NR-hist (holes): 0:31 1:4334 2:1720 3:535 4:102 5:13
+  maximal interior runs by length: 1:5487 2:292 3:33 4:2
+  of which entirely near-rigid (all N<=9): 1:3244 2:162 3:22 4:2
+  holes with R>=4: (R, NR) -> {(4, 4): 2}
+  interior states by N: 8:1379 9:2389 10:1812 11:481 12:93 13:24
+  interior states with N<=9: 3768/6178
+  runs L>=4 (dumped, <=20 per hole): by L {4: 2}  all-N<=9: {4: 2}
+  runs L>=4 by (L, min N along run): {(4, 8): 2}
+  top holes (R, graph, h, NR, maxN on a longest run): [(4, 'p29.r2#31378', 5, 4, 9), (4, 'p29.r11#523', 2, 4, 9), (3, 'p29.r9#96643', 6, 1, 11), (3, 'p29.r9#19257', 15, 3, 9), (3, 'p29.r8#343015', 22, 1, 10), (3, 'p29.r8#106187', 26, 4, 9), (3, 'p29.r8#106187', 13, 4, 9), (3, 'p29.r7#50671', 25, 4, 9)]
+
+=== census30 ===
+n= 30 graphs=  1178 holes=  18490 skip=   0 states=   55303207 maxR=4 maxNR=6  R-hist 0:8380 1:9254 2:784 3:68 4:4
+TOTAL graphs=1178 holes=18490 skipped=0 states=55303207
+  R-hist (holes): 0:8380 1:9254 2:784 3:68 4:4
+  NR-hist (holes): 0:77 1:10626 2:5811 3:1689 4:227 5:57 6:3
+  maximal interior runs by length: 1:19296 2:930 3:79 4:4
+  of which entirely near-rigid (all N<=9): 1:11435 2:559 3:40 4:1
+  holes with R>=4: (R, NR) -> {(4, 2): 1, (4, 3): 2, (4, 4): 1}
+  interior states by N: 8:4896 9:8140 10:5657 11:2134 12:493 13:84 14:4 15:1
+  interior states with N<=9: 13036/21409
+  runs L>=4 (dumped, <=20 per hole): by L {4: 4}  all-N<=9: {4: 1}
+  runs L>=4 by (L, min N along run): {(4, 8): 3, (4, 9): 1}
+  top holes (R, graph, h, NR, maxN on a longest run): [(4, 'p30.r29#3580', 27, 3, 10), (4, 'p30.r29#3580', 26, 3, 10), (4, 'p30.r23#6262', 3, 2, 10), (4, 'p30.r16#28012', 27, 4, 9), (3, 'p30.r9#250081', 27, 2, 10), (3, 'p30.r8#45607', 2, 5, 9), (3, 'p30.r8#365317', 28, 4, 9), (3, 'p30.r7#9727', 5, 4, 9)]
+
+=== census31 ===
+n= 31 graphs=  4294 holes=  69006 skip=   0 states=  267989687 maxR=5 maxNR=6  R-hist 0:23859 1:40757 2:3842 3:487 4:57 5:4
+TOTAL graphs=4294 holes=69006 skipped=0 states=267989687
+  R-hist (holes): 0:23859 1:40757 2:3842 3:487 4:57 5:4
+  NR-hist (holes): 0:6 1:34337 2:25275 3:7800 4:1353 5:227 6:8
+  maximal interior runs by length: 1:97965 2:4843 3:579 4:64 5:4
+  of which entirely near-rigid (all N<=9): 1:56113 2:2703 3:343 4:51 5:2
+  holes with R>=4: (R, NR) -> {(4, 1): 2, (4, 2): 2, (4, 3): 4, (4, 4): 32, (4, 5): 16, (4, 6): 1, (5, 1): 1, (5, 3): 1, (5, 5): 2}
+  interior states by N: 8:23075 9:41719 10:29377 11:11725 12:3126 13:568 14:63 15:10 16:1
+  interior states with N<=9: 64794/109664
+  runs L>=4 (dumped, <=20 per hole): by L {4: 64, 5: 4}  all-N<=9: {4: 51, 5: 2}
+  runs L>=4 by (L, min N along run): {(4, 8): 61, (4, 9): 3, (5, 8): 3, (5, 9): 1}
+  top holes (R, graph, h, NR, maxN on a longest run): [(5, 'p31.r9#2271', 10, 3, 10), (5, 'p31.r8#596615', 3, 5, 9), (5, 'p31.r42#17081', 23, 1, 10), (5, 'p31.r42#111686', 13, 5, 9), (4, 'p31.r8#588798', 29, 1, 10), (4, 'p31.r8#17120', 19, 4, 9), (4, 'p31.r7#42736', 12, 5, 9), (4, 'p31.r63#39633', 18, 5, 9)]
+
+=== census32 ===
+n= 32 graphs= 16016 holes= 263351 skip=   0 states= 1335228054 maxR=6 maxNR=7  R-hist 0:71484 1:171698 2:17715 3:2212 4:230 5:11 6:1
+TOTAL graphs=16016 holes=263351 skipped=0 states=1335228054
+  R-hist (holes): 0:71484 1:171698 2:17715 3:2212 4:230 5:11 6:1
+  NR-hist (holes): 0:49 1:123634 2:103162 3:30901 4:4567 5:974 6:57 7:7
+  maximal interior runs by length: 1:477554 2:21956 3:2493 4:236 5:12 6:1
+  of which entirely near-rigid (all N<=9): 1:254369 2:11762 3:1426 4:174 5:10 6:1
+  holes with R>=4: (R, NR) -> {(4, 1): 15, (4, 2): 19, (4, 3): 21, (4, 4): 92, (4, 5): 82, (4, 6): 1, (5, 1): 1, (5, 3): 1, (5, 5): 5, (5, 6): 4, (6, 7): 1}
+  interior states by N: 8:100806 9:191246 10:146947 11:67137 12:19100 13:4001 14:631 15:83 16:4
+  interior states with N<=9: 292052/529955
+  runs L>=4 (dumped, <=20 per hole): by L {4: 236, 5: 12, 6: 1}  all-N<=9: {4: 174, 5: 10, 6: 1}
+  runs L>=4 by (L, min N along run): {(4, 8): 194, (4, 9): 37, (4, 10): 5, (5, 8): 11, (5, 9): 1, (6, 8): 1}
+  top holes (R, graph, h, NR, maxN on a longest run): [(6, 'p32.r62#15615', 11, 7, 9), (5, 'p32.r7#23310', 29, 5, 9), (5, 'p32.r62#129406', 6, 6, 9), (5, 'p32.r4#541421', 26, 1, 10), (5, 'p32.r36#295483', 15, 6, 9), (5, 'p32.r27#364289', 19, 3, 10), (5, 'p32.r24#65943', 23, 5, 9), (5, 'p32.r15#66381', 10, 6, 9)]
+
+=== bv ===
+n= 37 graphs=    12 holes=    267 skip=   0 states=    4930039 maxR=5 maxNR=3  R-hist 0:113 1:87 2:14 3:34 4:10 5:9
+TOTAL graphs=12 holes=267 skipped=0 states=4930039
+  R-hist (holes): 0:113 1:87 2:14 3:34 4:10 5:9
+  NR-hist (holes): 0:100 1:149 2:3 3:15
+  maximal interior runs by length: 1:28647 2:1217 3:1864 4:400 5:208
+  of which entirely near-rigid (all N<=9): 1:55 2:0 3:0 4:0 5:0
+  holes with R>=4: (R, NR) -> {(4, 1): 10, (5, 0): 9}
+  interior states by N: 8:15 9:40 10:590 11:7218 12:6712 13:12090 14:8926 15:2586 16:1094 17:42
+  interior states with N<=9: 55/39313
+  runs L>=4 (dumped, <=20 per hole): by L {4: 200, 5: 160}  all-N<=9: {}
+  runs L>=4 by (L, min N along run): {(4, 11): 160, (4, 12): 20, (4, 13): 20, (5, 10): 16, (5, 11): 16, (5, 12): 128}
+  top holes (R, graph, h, NR, maxN on a longest run): [(5, 'best-c-A7f4-w0-it372', 22, 0, 13), (5, 'best-c-A7f4-w0-it371', 22, 0, 13), (5, 'best-c-A7f4-w0-it370', 22, 0, 13), (5, 'best-c-A7f4-w0-it367', 22, 0, 13), (5, 'best-c-A7f3-w2-it417', 34, 0, 13), (5, 'best-c-A7f3-w2-it416', 34, 0, 13), (5, 'best-c-A7f3-w2-it414', 34, 0, 13), (5, 'best-c-A7f3-w2-it413', 34, 0, 13)]
+
+=== plantri24 ===
+n= 24 graphs=  7209 holes= 111492 skip=   0 states=   58318567 maxR=5 maxNR=7  R-hist 0:80974 1:24492 2:4373 3:1428 4:198 5:27
+TOTAL graphs=7209 holes=111492 skipped=0 states=58318567
+  R-hist (holes): 0:80974 1:24492 2:4373 3:1428 4:198 5:27
+  NR-hist (holes): 0:13699 1:72655 2:15969 3:6678 4:1790 5:658 6:42 7:1
+  maximal interior runs by length: 1:51689 2:6712 3:2025 4:254 5:36
+  holes with R>=4: (R, NR) -> {(4, 1): 26, (4, 2): 6, (4, 3): 19, (4, 4): 83, (4, 5): 59, (4, 6): 5, (5, 1): 5, (5, 3): 2, (5, 4): 1, (5, 5): 16, (5, 6): 3}
+  interior states by N: 8:19258 9:32605 10:17387 11:2823 12:297 13:12 14:2
+  interior states with N<=9: 51863/72384
+  runs L>=4 (dumped, <=20 per hole): by L {4: 254, 5: 36}  all-N<=9: {4: 170, 5: 19}
+  runs L>=4 by (L, min N along run): {(4, 8): 198, (4, 9): 56, (5, 8): 26, (5, 9): 10}
+  top holes (R, graph, h, NR, maxN on a longest run): [(5, 'p24#997', 21, 5, 9), (5, 'p24#935', 5, 5, 9), (5, 'p24#904', 16, 5, 9), (5, 'p24#830', 21, 6, 9), (5, 'p24#807', 19, 5, 9), (5, 'p24#735', 10, 1, 10), (5, 'p24#7193', 20, 5, 11), (5, 'p24#7148', 17, 1, 10)]
+
+=== fresh_m5_20_50 ===
+n= 20 graphs=    17 holes=    238 skip=   0 states=      43392 maxR=3 maxNR=5  R-hist 0:185 1:43 2:8 3:2
+n= 21 graphs=    18 holes=    251 skip=   0 states=      58827 maxR=3 maxNR=3  R-hist 0:195 1:47 2:6 3:3
+n= 22 graphs=    25 holes=    363 skip=   0 states=     111156 maxR=4 maxNR=5  R-hist 0:276 1:66 2:12 3:8 4:1
+n= 23 graphs=     9 holes=    135 skip=   0 states=      54139 maxR=2 maxNR=4  R-hist 0:106 1:25 2:4
+n= 24 graphs=    22 holes=    339 skip=   0 states=     174997 maxR=3 maxNR=5  R-hist 0:253 1:70 2:13 3:3
+n= 25 graphs=    15 holes=    231 skip=   0 states=     154547 maxR=3 maxNR=5  R-hist 0:146 1:61 2:16 3:8
+n= 26 graphs=    24 holes=    394 skip=   0 states=     351709 maxR=4 maxNR=5  R-hist 0:269 1:94 2:21 3:8 4:2
+n= 27 graphs=    16 holes=    270 skip=   0 states=     304163 maxR=3 maxNR=5  R-hist 0:163 1:86 2:16 3:5
+n= 28 graphs=    21 holes=    364 skip=   0 states=     552982 maxR=4 maxNR=5  R-hist 0:228 1:106 2:22 3:7 4:1
+n= 29 graphs=    16 holes=    283 skip=   0 states=     540149 maxR=5 maxNR=4  R-hist 0:159 1:111 2:8 3:4 5:1
+n= 30 graphs=    17 holes=    314 skip=   0 states=     898920 maxR=3 maxNR=4  R-hist 0:210 1:93 2:7 3:4
+n= 31 graphs=    14 holes=    263 skip=   0 states=     956632 maxR=3 maxNR=5  R-hist 0:156 1:82 2:21 3:4
+n= 32 graphs=    12 holes=    230 skip=   0 states=     967250 maxR=5 maxNR=5  R-hist 0:86 1:111 2:21 3:10 5:2
+n= 33 graphs=    15 holes=    300 skip=   0 states=    1873002 maxR=4 maxNR=5  R-hist 0:150 1:124 2:16 3:7 4:3
+n= 34 graphs=    22 holes=    445 skip=   0 states=    3640811 maxR=5 maxNR=5  R-hist 0:195 1:185 2:44 3:17 4:3 5:1
+n= 35 graphs=     9 holes=    182 skip=   0 states=    1776886 maxR=3 maxNR=3  R-hist 0:47 1:102 2:31 3:2
+n= 36 graphs=    13 holes=    272 skip=   0 states=    4072109 maxR=3 maxNR=4  R-hist 0:122 1:122 2:24 3:4
+n= 37 graphs=    15 holes=    323 skip=   0 states=    5698936 maxR=3 maxNR=4  R-hist 0:121 1:155 2:42 3:5
+n= 38 graphs=    17 holes=    381 skip=   0 states=    8786777 maxR=3 maxNR=5  R-hist 0:177 1:156 2:44 3:4
+n= 39 graphs=    19 holes=    411 skip=   0 states=   11944080 maxR=5 maxNR=4  R-hist 0:144 1:218 2:41 3:7 5:1
+n= 40 graphs=    14 holes=    325 skip=   0 states=   12973382 maxR=4 maxNR=5  R-hist 0:123 1:153 2:38 3:9 4:2
+n= 41 graphs=     8 holes=    195 skip=   0 states=    9713515 maxR=5 maxNR=3  R-hist 0:98 1:56 2:31 3:8 4:1 5:1
+n= 42 graphs=     8 holes=    190 skip=   0 states=   12856908 maxR=3 maxNR=5  R-hist 0:72 1:82 2:26 3:10
+n= 43 graphs=    11 holes=    280 skip=   0 states=   23424125 maxR=4 maxNR=5  R-hist 0:81 1:132 2:51 3:15 4:1
+n= 44 graphs=     9 holes=    231 skip=   0 states=   22595765 maxR=4 maxNR=4  R-hist 0:68 1:120 2:42 4:1
+n= 45 graphs=    10 holes=    257 skip=   0 states=   45282863 maxR=3 maxNR=4  R-hist 0:98 1:115 2:42 3:2
+n= 46 graphs=     9 holes=    240 skip=   0 states=   39954565 maxR=5 maxNR=3  R-hist 0:111 1:92 2:29 3:7 5:1
+n= 47 graphs=     6 holes=    160 skip=   0 states=   38964215 maxR=4 maxNR=4  R-hist 0:72 1:51 2:24 3:11 4:2
+n= 48 graphs=     6 holes=    168 skip=   0 states=   54570799 maxR=4 maxNR=4  R-hist 0:36 1:78 2:38 3:14 4:2
+n= 49 graphs=     5 holes=    144 skip=   0 states=   76334344 maxR=4 maxNR=3  R-hist 0:49 1:49 2:31 3:14 4:1
+n= 50 graphs=     8 holes=    227 skip=   0 states=  144920805 maxR=4 maxNR=4  R-hist 0:58 1:108 2:42 3:18 4:1
+TOTAL graphs=430 holes=8406 skipped=0 states=524552750
+  R-hist (holes): 0:4254 1:3093 2:811 3:220 4:21 5:7
+  NR-hist (holes): 0:1256 1:5134 2:1440 3:456 4:87 5:33
+  maximal interior runs by length: 1:285744 2:21955 3:5553 4:204 5:205
+  of which entirely near-rigid (all N<=9): 1:10766 2:307 3:94 4:12 5:1
+  holes with R>=4: (R, NR) -> {(4, 0): 1, (4, 1): 6, (4, 2): 4, (4, 3): 3, (4, 4): 4, (4, 5): 3, (5, 1): 4, (5, 2): 1, (5, 3): 1, (5, 5): 1}
+  interior states by N: 8:2237 9:10863 10:25153 11:42635 12:55572 13:57770 14:53072 15:42384 16:28640 17:17063 18:7990 19:3174 20:1119 21:364 22:106 23:12
+  interior states with N<=9: 13100/348154
+  runs L>=4 (dumped, <=20 per hole): by L {4: 90, 5: 33}  all-N<=9: {4: 12, 5: 1}
+  runs L>=4 by (L, min N along run): {(4, 8): 12, (4, 9): 8, (4, 10): 8, (4, 11): 17, (4, 12): 11, (4, 13): 11, (4, 14): 17, (4, 15): 6, (5, 8): 5, (5, 9): 4, (5, 10): 2, (5, 11): 18, (5, 12): 4}
+  top holes (R, graph, h, NR, maxN on a longest run): [(5, 'sphere5_s7103_61', 4, 2, 10), (5, 'sphere5_s7103_31', 42, 1, 17), (5, 'sphere5_s7102_88', 30, 3, 10), (5, 'sphere5_s7102_16', 17, 1, 14), (5, 'sphere5_s7102_16', 11, 1, 14), (5, 'sphere5_s7102_137', 4, 5, 9), (5, 'sphere5_s7101_98', 24, 1, 12), (4, 'sphere5_s7103_59', 42, 2, 14)]
+
+=== fresh_m3_20_60 ===
+n= 20 graphs=    17 holes=     52 skip=   0 states=       6940 maxR=0 maxNR=1  R-hist 0:52
+n= 21 graphs=    11 holes=     47 skip=   0 states=       6180 maxR=0 maxNR=1  R-hist 0:47
+n= 22 graphs=     9 holes=     30 skip=   0 states=       2697 maxR=0 maxNR=1  R-hist 0:30
+n= 23 graphs=    16 holes=     74 skip=   0 states=      13407 maxR=0 maxNR=1  R-hist 0:74
+n= 24 graphs=    23 holes=     84 skip=   0 states=      14857 maxR=0 maxNR=3  R-hist 0:84
+n= 25 graphs=     9 holes=     43 skip=   0 states=       4258 maxR=0 maxNR=1  R-hist 0:43
+n= 26 graphs=    16 holes=     66 skip=   0 states=      23228 maxR=0 maxNR=1  R-hist 0:66
+n= 27 graphs=    17 holes=     76 skip=   0 states=      16780 maxR=0 maxNR=3  R-hist 0:76
+n= 28 graphs=    14 holes=     55 skip=   0 states=      36633 maxR=0 maxNR=3  R-hist 0:55
+n= 29 graphs=    10 holes=     47 skip=   0 states=      43748 maxR=0 maxNR=1  R-hist 0:47
+n= 30 graphs=    11 holes=     55 skip=   0 states=      57559 maxR=0 maxNR=3  R-hist 0:55
+n= 31 graphs=    17 holes=     75 skip=   0 states=      71167 maxR=0 maxNR=1  R-hist 0:75
+n= 32 graphs=    18 holes=     80 skip=   0 states=      67639 maxR=0 maxNR=1  R-hist 0:80
+n= 33 graphs=    15 holes=     80 skip=   0 states=     207539 maxR=0 maxNR=1  R-hist 0:80
+n= 34 graphs=    19 holes=    112 skip=   0 states=     108226 maxR=0 maxNR=1  R-hist 0:112
+n= 35 graphs=    15 holes=    106 skip=   0 states=     329743 maxR=0 maxNR=2  R-hist 0:106
+n= 36 graphs=    14 holes=     72 skip=   0 states=     141088 maxR=0 maxNR=1  R-hist 0:72
+n= 37 graphs=    14 holes=     95 skip=   0 states=     311018 maxR=0 maxNR=1  R-hist 0:95
+n= 38 graphs=    13 holes=     87 skip=   0 states=     610971 maxR=0 maxNR=1  R-hist 0:87
+n= 39 graphs=    12 holes=     76 skip=   0 states=     820005 maxR=0 maxNR=1  R-hist 0:76
+n= 40 graphs=    10 holes=     56 skip=   0 states=     881746 maxR=0 maxNR=1  R-hist 0:56
+n= 41 graphs=    10 holes=     61 skip=   0 states=     241387 maxR=0 maxNR=3  R-hist 0:61
+n= 42 graphs=     6 holes=     46 skip=   0 states=     250903 maxR=0 maxNR=3  R-hist 0:46
+n= 43 graphs=     9 holes=     47 skip=   0 states=    1103223 maxR=0 maxNR=1  R-hist 0:47
+n= 44 graphs=    11 holes=     80 skip=   0 states=    1287097 maxR=0 maxNR=1  R-hist 0:80
+n= 45 graphs=     6 holes=     46 skip=   0 states=     553915 maxR=0 maxNR=1  R-hist 0:46
+n= 46 graphs=    12 holes=     90 skip=   0 states=    9439109 maxR=0 maxNR=1  R-hist 0:90
+n= 47 graphs=    13 holes=    113 skip=   0 states=    5585674 maxR=1 maxNR=3  R-hist 0:112 1:1
+n= 48 graphs=    10 holes=     66 skip=   0 states=    5484623 maxR=1 maxNR=1  R-hist 0:65 1:1
+n= 49 graphs=     7 holes=     51 skip=   0 states=    3416829 maxR=0 maxNR=1  R-hist 0:51
+n= 50 graphs=    10 holes=     77 skip=   0 states=    6391692 maxR=1 maxNR=2  R-hist 0:73 1:4
+n= 51 graphs=    10 holes=     75 skip=   0 states=   21579617 maxR=1 maxNR=1  R-hist 0:74 1:1
+n= 52 graphs=     7 holes=     58 skip=   0 states=    5255694 maxR=0 maxNR=1  R-hist 0:58
+n= 53 graphs=    15 holes=    117 skip=   0 states=   13756555 maxR=1 maxNR=1  R-hist 0:115 1:2
+n= 54 graphs=    11 holes=     98 skip=   0 states=   10493236 maxR=1 maxNR=3  R-hist 0:96 1:2
+n= 55 graphs=     9 holes=     72 skip=   0 states=   27244414 maxR=0 maxNR=1  R-hist 0:72
+n= 56 graphs=    11 holes=     87 skip=   0 states=   19850506 maxR=0 maxNR=1  R-hist 0:87
+n= 57 graphs=    14 holes=    106 skip=   0 states=   54647743 maxR=2 maxNR=1  R-hist 0:100 1:5 2:1
+n= 58 graphs=     9 holes=     91 skip=   0 states=   10699278 maxR=1 maxNR=2  R-hist 0:87 1:4
+n= 59 graphs=    10 holes=     99 skip=   0 states=   24606040 maxR=1 maxNR=1  R-hist 0:98 1:1
+n= 60 graphs=    10 holes=     95 skip=   0 states=   71783728 maxR=1 maxNR=1  R-hist 0:94 1:1
+TOTAL graphs=500 holes=3043 skipped=0 states=297446692
+  R-hist (holes): 0:3020 1:22 2:1
+  NR-hist (holes): 0:2432 1:598 2:4 3:9
+  maximal interior runs by length: 1:2465 2:12
+  of which entirely near-rigid (all N<=9): 1:5 2:0
+  holes with R>=4: (R, NR) -> {}
+  interior states by N: 9:5 10:3 11:54 12:149 13:236 14:146 15:335 16:593 17:558 18:144 19:260 20:6
+  interior states with N<=9: 5/2489
+  runs L>=4 (dumped, <=20 per hole): by L {}  all-N<=9: {}
+  runs L>=4 by (L, min N along run): {}
+  top holes (R, graph, h, NR, maxN on a longest run): [(2, 'sphere3_s7202_10', 34, 1, 18), (1, 'sphere3_s7202_97', 26, 0, 15), (1, 'sphere3_s7202_92', 29, 0, 16), (1, 'sphere3_s7202_8', 24, 0, 18), (1, 'sphere3_s7202_70', 20, 0, 14), (1, 'sphere3_s7202_24', 51, 1, 14), (1, 'sphere3_s7202_23', 56, 2, 15), (1, 'sphere3_s7202_22', 3, 1, 13)]
+

@@ -1,0 +1,17 @@
+'SimpleGraph.FrameWit22.diamondFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.FrameWit22.conf2122Free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.FrameWit22.frameClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.FrameWit22.frameClass_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+SimpleGraph.FrameWit22.frameClass_nonempty : ∃ m T,
+  0 < m ∧
+    T.graph.Connected ∧
+      T.Triangulated ∧ (∀ (x : Fin m), 5 ≤ T.graph.degree x) ∧ T.NoSep ∧ T.DiamondFree ∧ T.Conf2122Free
+@[expose] def SimpleGraph.SphericalMap.RStarFrame : Prop :=
+∀ (m : ℕ) (T : SimpleGraph.SphericalMap m),
+  0 < m →
+    T.graph.Connected →
+      T.Triangulated →
+        (∀ (x : Fin m), 5 ≤ T.graph.degree x) →
+          T.NoSep → T.DiamondFree → T.Conf2122Free → ∃ v, T.graph.degree v = 5 ∧ T.PureClean v
+file constants checked: 10; nonstandard: 0; []
+exit 0

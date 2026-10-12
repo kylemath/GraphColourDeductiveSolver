@@ -1,0 +1,5 @@
+out/off_cyc.jsonl --surface off --src rot:../TrackF/out/lpc/cyc_graphs.txt --holes-from ../TrackF/out/lpc/cyc_graphs.kclass3.jsonl --only-cycle-holes
+out/off_cyc555.jsonl --surface off --src rot:../TrackF/out/lpc/cyc555_graphs.txt --holes-from ../TrackF/out/lpc/cyc555_graphs.kclass3.jsonl --only-cycle-holes
+out/off_torus.jsonl --surface torus --src rot:../TrackF/out/lpc/census_torus.graphs.txt --stride 4 --holes-per-graph 2
+out/off_rp2.jsonl --surface rp2 --src rot:../TrackF/out/lpc/census_rp2.graphs.txt --stride 4 --holes-per-graph 2
+out/off_klein.jsonl --surface klein --src rot:../TrackF/out/lpc/census_klein.graphs.txt --stride 8 --holes-per-graph 2

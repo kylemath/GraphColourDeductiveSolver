@@ -1,0 +1,48 @@
+declaration 1196925bbb5d60ae9e7d6bddc958f6811f2611bd on origin/main, Phase C ended; start 2026-10-06 14:55:37
+graphs.py: OK
+builders.py: OK
+radius.py: OK
+search.py: OK
+check.py: OK
+regress.sh: OK
+search2.py: OK
+run_C.sh: OK
+search3.py: OK
+run_D.sh: OK
+core_check.py: OK
+verify_cert.sh: OK
+fast/kempe.cpp: OK
+fast/fast.py: OK
+fast/regress_fast.py: OK
+seeds/B2-best.json: OK
+seeds/B3-best.json: OK
+seeds/C41-r5-8a23ee3e.json: OK
+seeds/L-T4.json: OK
+seeds/order28.json: OK
+seeds/T4.json: OK
+producer ico ok (20, 10, 0, {})
+producer A:3 ok (100, 40, 30, {'2': 20, '3': 10})
+producer A:4 ok (520, 200, 80, {'2': 80})
+producer A:5 ok (2720, 1040, 530, {'2': 530})
+{'states': 20, 'filled': 10, 'nonDL': 10, 'DL': 0}
+{'states': 100, 'filled': 40, 'nonDL': 30, 'DL': 30}
+{'states': 520, 'filled': 200, 'nonDL': 240, 'DL': 80}
+{'states': 2720, 'filled': 1040, 'nonDL': 1150, 'DL': 530}
+regression passed
+done ico
+done A:3
+done A:4
+done A:5
+done A:6
+done json:../seeds/T4.json
+done json:../seeds/order28.json
+done json:../seeds/B2-best.json
+done json:../seeds/B3-best.json
+done L(ico)
+done GC:2
+done json:../run-C-2026-10-06/cert/91a307d1852a1764.graph.json
+done json:../run-C-2026-10-06/cert/8a23ee3ec7b2bb33.graph.json
+done json:../run-C-2026-10-06/cert/62661a3f304f4caa.graph.json
+holes 190 mismatches 0 python 41.4s fast 1.5s
+regression passed
+end 2026-10-06 18:16:29
