@@ -1,0 +1,2784 @@
+{
+ "scope": "Published mass-failing graphs only, plus the geometry of two symmetric triangulations. No colouring search on those triangulations.",
+ "neighbour_types_in_the_mass_corpus": [
+  {
+   "type": [
+    1,
+    3,
+    1
+   ],
+   "pass": 1,
+   "fail": 0
+  },
+  {
+   "type": [
+    1,
+    4,
+    0
+   ],
+   "pass": 24,
+   "fail": 0
+  },
+  {
+   "type": [
+    2,
+    1,
+    2
+   ],
+   "pass": 10,
+   "fail": 0
+  },
+  {
+   "type": [
+    2,
+    2,
+    1
+   ],
+   "pass": 127,
+   "fail": 2
+  },
+  {
+   "type": [
+    2,
+    3,
+    0
+   ],
+   "pass": 231,
+   "fail": 2
+  },
+  {
+   "type": [
+    3,
+    0,
+    2
+   ],
+   "pass": 76,
+   "fail": 0
+  },
+  {
+   "type": [
+    3,
+    1,
+    1
+   ],
+   "pass": 359,
+   "fail": 0
+  },
+  {
+   "type": [
+    3,
+    2,
+    0
+   ],
+   "pass": 338,
+   "fail": 2
+  },
+  {
+   "type": [
+    4,
+    0,
+    1
+   ],
+   "pass": 218,
+   "fail": 0
+  },
+  {
+   "type": [
+    4,
+    1,
+    0
+   ],
+   "pass": 153,
+   "fail": 1
+  },
+  {
+   "type": [
+    5,
+    0,
+    0
+   ],
+   "pass": 37,
+   "fail": 5
+  }
+ ],
+ "headline": {
+  "two_swap_stuck_states": 21,
+  "stuck_with_a_degree_five_slide": 17,
+  "stuck_unlocked_by_one_kempe_swap": 21,
+  "stuck_unlocked_by_a_state_at_distance_two": 21,
+  "two_swap_stuck_states_at_passing_roots": 0
+ },
+ "escape": {
+  "stuck_states_with_an_escape": 21,
+  "stuck_states_without_an_escape": [],
+  "direct_slides_onto_a_stuck_twin": [
+   {
+    "order": 17,
+    "graph": 0,
+    "root": 9,
+    "stuck_twins": [
+     14
+    ],
+    "also_escapes": true
+   },
+   {
+    "order": 17,
+    "graph": 0,
+    "root": 14,
+    "stuck_twins": [
+     9
+    ],
+    "also_escapes": true
+   }
+  ]
+ },
+ "graphs": [
+  {
+   "order": 17,
+   "graph_index": 0,
+   "roots": [
+    {
+     "root": 0,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 59,
+     "non_target": 43,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 43,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 1,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 59,
+     "non_target": 43,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 43,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 2,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 54,
+     "non_target": 38,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 38,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 4,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       6
+      ],
+      "n5": 2,
+      "n6": 3,
+      "n7plus": 0
+     },
+     "orbits": 54,
+     "non_target": 38,
+     "two_swap_stuck": 1,
+     "locked_non_target": 8,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 30,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      1,
+      2,
+      12,
+      16
+     ],
+     "stuck_landings": [
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       6
+      ],
+      [
+       10,
+       6
+      ]
+     ]
+    },
+    {
+     "root": 6,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       6
+      ],
+      "n5": 2,
+      "n6": 3,
+      "n7plus": 0
+     },
+     "orbits": 54,
+     "non_target": 38,
+     "two_swap_stuck": 1,
+     "locked_non_target": 8,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 30,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      0,
+      2,
+      11,
+      16
+     ],
+     "stuck_landings": [
+      [
+       5,
+       6
+      ],
+      [
+       7,
+       6
+      ],
+      [
+       13,
+       6
+      ]
+     ]
+    },
+    {
+     "root": 8,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 54,
+     "non_target": 38,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 38,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 9,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 64,
+     "non_target": 48,
+     "two_swap_stuck": 1,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 48,
+     "stuck_and_open_slide": 1,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      2,
+      16
+     ],
+     "stuck_landings": [
+      [
+       3,
+       6
+      ],
+      [
+       10,
+       6
+      ],
+      [
+       14,
+       5
+      ]
+     ]
+    },
+    {
+     "root": 11,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 59,
+     "non_target": 43,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 43,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 12,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 59,
+     "non_target": 43,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 43,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 14,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 64,
+     "non_target": 48,
+     "two_swap_stuck": 1,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 48,
+     "stuck_and_open_slide": 1,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      2,
+      16
+     ],
+     "stuck_landings": [
+      [
+       7,
+       6
+      ],
+      [
+       9,
+       5
+      ],
+      [
+       13,
+       6
+      ]
+     ]
+    },
+    {
+     "root": 15,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 54,
+     "non_target": 38,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 38,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 16,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 54,
+     "non_target": 38,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 38,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    }
+   ]
+  },
+  {
+   "order": 17,
+   "graph_index": 3,
+   "roots": [
+    {
+     "root": 0,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 2,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 3,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       5
+      ],
+      "n5": 5,
+      "n6": 0,
+      "n7plus": 0
+     },
+     "orbits": 100,
+     "non_target": 60,
+     "two_swap_stuck": 5,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 60,
+     "stuck_and_open_slide": 5,
+     "stuck_and_kempe1_unlocks": 5,
+     "stuck_and_kempe2_unlocks": 5,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      0,
+      2,
+      4,
+      9,
+      10
+     ],
+     "stuck_landings": [
+      [
+       0,
+       5
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       9,
+       5
+      ],
+      [
+       10,
+       5
+      ]
+     ]
+    },
+    {
+     "root": 4,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 6,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 7,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 9,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 10,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 12,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 13,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       5
+      ],
+      "n5": 5,
+      "n6": 0,
+      "n7plus": 0
+     },
+     "orbits": 100,
+     "non_target": 60,
+     "two_swap_stuck": 5,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 60,
+     "stuck_and_open_slide": 5,
+     "stuck_and_kempe1_unlocks": 5,
+     "stuck_and_kempe2_unlocks": 5,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      6,
+      7,
+      12,
+      14,
+      16
+     ],
+     "stuck_landings": [
+      [
+       6,
+       5
+      ],
+      [
+       7,
+       5
+      ],
+      [
+       12,
+       5
+      ],
+      [
+       14,
+       5
+      ],
+      [
+       16,
+       5
+      ]
+     ]
+    },
+    {
+     "root": 14,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 16,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 80,
+     "non_target": 40,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 40,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    }
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 7,
+   "roots": [
+    {
+     "root": 0,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 2,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 222,
+     "non_target": 94,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 94,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 3,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 222,
+     "non_target": 94,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 94,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 4,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 7,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       7
+      ],
+      "n5": 2,
+      "n6": 2,
+      "n7plus": 1
+     },
+     "orbits": 212,
+     "non_target": 84,
+     "two_swap_stuck": 1,
+     "locked_non_target": 12,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      0,
+      13
+     ],
+     "stuck_landings": [
+      [
+       1,
+       6
+      ],
+      [
+       6,
+       6
+      ],
+      [
+       16,
+       7
+      ]
+     ]
+    },
+    {
+     "root": 8,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 9,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 11,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       7
+      ],
+      "n5": 2,
+      "n6": 2,
+      "n7plus": 1
+     },
+     "orbits": 212,
+     "non_target": 84,
+     "two_swap_stuck": 1,
+     "locked_non_target": 12,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      9,
+      19
+     ],
+     "stuck_landings": [
+      [
+       5,
+       7
+      ],
+      [
+       10,
+       6
+      ],
+      [
+       17,
+       6
+      ]
+     ]
+    },
+    {
+     "root": 12,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 13,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 14,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 222,
+     "non_target": 94,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 94,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 15,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 18,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 222,
+     "non_target": 94,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 94,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 19,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 207,
+     "non_target": 79,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 79,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    }
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 60,
+   "roots": [
+    {
+     "root": 0,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 2,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 3,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       5
+      ],
+      "n5": 5,
+      "n6": 0,
+      "n7plus": 0
+     },
+     "orbits": 224,
+     "non_target": 128,
+     "two_swap_stuck": 2,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 128,
+     "stuck_and_open_slide": 2,
+     "stuck_and_kempe1_unlocks": 2,
+     "stuck_and_kempe2_unlocks": 2,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      2,
+      9,
+      10
+     ],
+     "stuck_landings": [
+      [
+       0,
+       5
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       9,
+       5
+      ],
+      [
+       10,
+       5
+      ]
+     ]
+    },
+    {
+     "root": 4,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 6,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       7
+      ],
+      "n5": 2,
+      "n6": 2,
+      "n7plus": 1
+     },
+     "orbits": 174,
+     "non_target": 78,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 78,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 9,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 88,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 10,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 12,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       7
+      ],
+      "n5": 2,
+      "n6": 2,
+      "n7plus": 1
+     },
+     "orbits": 174,
+     "non_target": 78,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 78,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 13,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       7
+      ],
+      "n5": 4,
+      "n6": 0,
+      "n7plus": 1
+     },
+     "orbits": 224,
+     "non_target": 128,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 128,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 14,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 15,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 88,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 16,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       6,
+       6,
+       6,
+       6
+      ],
+      "n5": 1,
+      "n6": 4,
+      "n7plus": 0
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 32,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 56,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 19,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    }
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 62,
+   "roots": [
+    {
+     "root": 0,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 88,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 2,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 3,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       5
+      ],
+      "n5": 5,
+      "n6": 0,
+      "n7plus": 0
+     },
+     "orbits": 224,
+     "non_target": 128,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 128,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 4,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       6
+      ],
+      "n5": 3,
+      "n6": 2,
+      "n7plus": 0
+     },
+     "orbits": 204,
+     "non_target": 108,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 108,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 6,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       7
+      ],
+      "n5": 2,
+      "n6": 2,
+      "n7plus": 1
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 16,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 7,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 88,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 8,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 174,
+     "non_target": 78,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 78,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 10,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 194,
+     "non_target": 98,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 98,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 11,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 88,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 13,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       6
+      ],
+      "n5": 2,
+      "n6": 3,
+      "n7plus": 0
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 20,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 68,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 15,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 1,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 88,
+     "stuck_and_open_slide": 1,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      6,
+      8,
+      16,
+      18
+     ],
+     "stuck_landings": [
+      [
+       8,
+       5
+      ],
+      [
+       14,
+       6
+      ],
+      [
+       16,
+       5
+      ]
+     ]
+    },
+    {
+     "root": 16,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 174,
+     "non_target": 78,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 78,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 18,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       7
+      ],
+      "n5": 2,
+      "n6": 2,
+      "n7plus": 1
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 16,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 19,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 184,
+     "non_target": 88,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 88,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    }
+   ]
+  },
+  {
+   "order": 20,
+   "graph_index": 63,
+   "roots": [
+    {
+     "root": 0,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       8
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 156,
+     "non_target": 72,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 2,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       8
+      ],
+      "n5": 4,
+      "n6": 0,
+      "n7plus": 1
+     },
+     "orbits": 186,
+     "non_target": 102,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 102,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 3,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       5
+      ],
+      "n5": 5,
+      "n6": 0,
+      "n7plus": 0
+     },
+     "orbits": 216,
+     "non_target": 132,
+     "two_swap_stuck": 1,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 132,
+     "stuck_and_open_slide": 1,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      0,
+      4,
+      10
+     ],
+     "stuck_landings": [
+      [
+       0,
+       5
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       11,
+       5
+      ]
+     ]
+    },
+    {
+     "root": 4,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 166,
+     "non_target": 82,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 82,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 6,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       8
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 156,
+     "non_target": 72,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 7,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       8
+      ],
+      "n5": 4,
+      "n6": 0,
+      "n7plus": 1
+     },
+     "orbits": 186,
+     "non_target": 102,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 102,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 8,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       8
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 186,
+     "non_target": 102,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 102,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 9,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       6,
+       6,
+       8
+      ],
+      "n5": 2,
+      "n6": 2,
+      "n7plus": 1
+     },
+     "orbits": 176,
+     "non_target": 92,
+     "two_swap_stuck": 0,
+     "locked_non_target": 20,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 10,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       8
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 186,
+     "non_target": 102,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 102,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 11,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 156,
+     "non_target": 72,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 12,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 176,
+     "non_target": 92,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 92,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 14,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 166,
+     "non_target": 82,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 82,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 15,
+     "mass_fails": true,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       5
+      ],
+      "n5": 5,
+      "n6": 0,
+      "n7plus": 0
+     },
+     "orbits": 216,
+     "non_target": 132,
+     "two_swap_stuck": 1,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 132,
+     "stuck_and_open_slide": 1,
+     "stuck_and_kempe1_unlocks": 1,
+     "stuck_and_kempe2_unlocks": 1,
+     "stuck_gaps": [
+      2
+     ],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [
+      6,
+      8,
+      14
+     ],
+     "stuck_landings": [
+      [
+       6,
+       5
+      ],
+      [
+       14,
+       5
+      ],
+      [
+       16,
+       5
+      ]
+     ]
+    },
+    {
+     "root": 16,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       5,
+       6
+      ],
+      "n5": 4,
+      "n6": 1,
+      "n7plus": 0
+     },
+     "orbits": 156,
+     "non_target": 72,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 72,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    },
+    {
+     "root": 19,
+     "mass_fails": false,
+     "type": {
+      "degrees": [
+       5,
+       5,
+       5,
+       6,
+       7
+      ],
+      "n5": 3,
+      "n6": 1,
+      "n7plus": 1
+     },
+     "orbits": 176,
+     "non_target": 92,
+     "two_swap_stuck": 0,
+     "locked_non_target": 0,
+     "isolated_non_target": 0,
+     "open_slide_non_target": 92,
+     "stuck_and_open_slide": 0,
+     "stuck_and_kempe1_unlocks": 0,
+     "stuck_and_kempe2_unlocks": 0,
+     "stuck_gaps": [],
+     "stuck_hubs": [],
+     "stuck_return_degree_five": [],
+     "stuck_landings": []
+    }
+   ]
+  }
+ ],
+ "symmetric_geometry": [
+  {
+   "name": "pentakis dodecahedron",
+   "vertices": 32,
+   "degree_five": 12,
+   "degree_histogram": {
+    "5": 12,
+    "6": 20
+   },
+   "neighbour_types_of_degree_five": {
+    "[0, 5, 0]": 12
+   },
+   "distances_between_degree_five": {
+    "2": 30,
+    "3": 30,
+    "5": 6
+   }
+  },
+  {
+   "name": "frequency-2 icosahedron",
+   "vertices": 42,
+   "degree_five": 12,
+   "degree_histogram": {
+    "5": 12,
+    "6": 30
+   },
+   "neighbour_types_of_degree_five": {
+    "[0, 5, 0]": 12
+   },
+   "distances_between_degree_five": {
+    "2": 30,
+    "4": 30,
+    "6": 6
+   }
+  }
+ ]
+}

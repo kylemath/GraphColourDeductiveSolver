@@ -1,0 +1,9 @@
+# Team B: actual belt formalization progress
+
+The source module TwoPoleBeltTeamB.lean defines the cyclic two-pole graph with vertices a,b,u_i,v_i over ZMod n and derives its complete neighbour lists. Its paths use actual singleton slides and actual proper-off-hole colourings, not an assumed move table.
+
+The normalized doubled-0 II opening (0,tau,rho,0,1) is fully proved to reach a fill using at most n actual slides for every n >= 5. Both nonpole colour choices are covered. The return lemma derives the two-slide return and the new nonpole colours from graph properness. The cap lemma derives j+3<n from the fixed original upper cap 1 and lower cap 0; strong induction on n-j gives termination. In the u0 theorem, both cap values are consequences of the opening word itself, so no separate termination premise survives. The normalized doubled-0 I short branch is also proved to fill in one actual slide.
+
+Fresh check: team-b-lean-belt-check.py reconstructed a complete isolated extension of the frozen 79-module source-audit overlay. It source-compiled VacancySlide, independent Team B M3, M3 tests, belt source, and belt tests, with five successful exits and no warnings. Exact guarded axiom reports cover II return, cap, termination, u0, and I short: only standard propext, Classical.choice, Quot.sound appear (the short branch does not need Classical.choice). Snapshots, hashes, commands, and output are preserved in team-b-lean-belt-check-results.json and team-b-lean-belt-check-output.txt.
+
+Scope is partial: this is not yet a formal proof of the full unequal-pole belt theorem or its <=2n bound. The doubled-0 I long reduction/prepared A/B walk and doubled-1 global assembly remain. Source-level actual local A-rho work is continuing after the recorded snapshot; the snapshot identifies exactly the audited result.

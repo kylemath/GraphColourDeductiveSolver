@@ -1,0 +1,46 @@
+{
+  "scope": "Fresh source compilation of baseline VacancySlide, actual belt local moves, Math cap proofs, global doubled-one walk and import/axiom tests; frozen 79 dependencies only",
+  "frozen_manifest": "/tmp/planemap-audit-20261004-ranked-root/manifest.json",
+  "frozen_manifest_sha256": "ebc389fd59e8ebf4b49d6da2892a437230a83eeaabb9eac9a5de90438ee2ce52",
+  "extension_overlay": "/var/folders/96/tdgbk_pj3w744zvj8v3x11xr0000gn/T/planemap-team-a-lean-belt-h2ko6gde/lib",
+  "lean_version": "Lean (version 4.35.0-rc3, arm64-apple-darwin24.6.0, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)",
+  "checks": [
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/VacancySlide.lean",
+      "source_sha256": "4f761c2fc38ace56f7a67179203bff28280ba5f3b8a0d82aefa0c51e84dbaa96",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-VacancySlide-compile.txt",
+      "olean_sha256": "58df91727080d4f0de2648fba7e3b07e2be520931b0abc2f73c8ea837d3b4c02"
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltVacancyTeamA.lean",
+      "source_sha256": "cc9465bce84ac82d2ede421e2f415ec0956617643542d67b2975c16aede91f8c",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-BeltVacancyTeamA-compile.txt",
+      "olean_sha256": "61a384b9ba60065339b0f829d4c2d02263f01570ae722c168be6655279538ff8"
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltCapsMath.lean",
+      "source_sha256": "6575b535f669ab98494cf3ae2a4d7cd75b0e599421791e84490e64262b1c0e15",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-BeltCapsMath-compile.txt",
+      "olean_sha256": "48ddcf2bad8723f4e3290e30e5ae20020c112200d177b581c7d6d638a65eee42"
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/Mathlib/Combinatorics/SimpleGraph/PlaneMap/BeltDWalkTeamA.lean",
+      "source_sha256": "2a5e140367f3de664b3d741b768390e8cfa3300f006948ace082a6d09ce52e8b",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-BeltDWalkTeamA-compile.txt",
+      "olean_sha256": "5e6d167e7b3d13eb4f2fde892d70b1bfabefa543e9cd3e759ad4ff9221620916"
+    },
+    {
+      "source": "/Users/fulkanjou/mathlib4-planemap/MathlibTest/PlaneMapBeltVacancyTeamA.lean",
+      "source_sha256": "014f126329e2a17b91c7eda2b2197f575e801b531bec13a4664f100d4766a6ba",
+      "exit_code": 0,
+      "log": "/Users/fulkanjou/GraphColour/backgroundMaterial/planemap-structural/longtable/audit/team-a-lean-PlaneMapBeltVacancyTeamA-compile.txt",
+      "olean_sha256": "f58d65f28a59963caa88d5fca29aedcb85bafeb3649281c6dd4638b505b25a03"
+    }
+  ],
+  "seconds": 6.355,
+  "complete": true
+}

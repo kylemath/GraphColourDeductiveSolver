@@ -1,0 +1,703 @@
+{
+  "fixture": "18-10-r0.json.gz",
+  "state_index": 93,
+  "order": 18,
+  "graph_index": 10,
+  "ascii": "18 bcdef,afghc,abhid,acijklme,admnf,aengb,bfnopqrh,bgric,chrjd,dirqk,djqpl,dkpom,dlone,emogf,gnmlp,golkq,gpkjr,gqjih",
+  "ascii_sha256": "67e31585c316fff25996c9f2cecbe14a05d89f62839eff62e773de1e4685d61f",
+  "state_cap": 4000,
+  "states_seen": 32,
+  "closed": true,
+  "capped": false,
+  "population": [
+    2,
+    5,
+    5,
+    5
+  ],
+  "poles": [
+    3,
+    6
+  ],
+  "pole_nonadjacent": true,
+  "u_pole": 3,
+  "v_pole": 6,
+  "u_ring": [
+    0,
+    2,
+    8,
+    9,
+    10,
+    11,
+    12,
+    4
+  ],
+  "v_ring": [
+    1,
+    5,
+    13,
+    14,
+    15,
+    16,
+    17,
+    7
+  ],
+  "belt": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "S": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "degrees": {
+    "0": 5,
+    "1": 5,
+    "2": 5,
+    "3": 8,
+    "4": 5,
+    "5": 5,
+    "6": 8,
+    "7": 5,
+    "8": 5,
+    "9": 5,
+    "10": 5,
+    "11": 5,
+    "12": 5,
+    "13": 5,
+    "14": 5,
+    "15": 5,
+    "16": 5,
+    "17": 5
+  },
+  "both_poles_in_S": true,
+  "induced_edges": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      3,
+      9
+    ],
+    [
+      3,
+      10
+    ],
+    [
+      3,
+      11
+    ],
+    [
+      3,
+      12
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      12
+    ],
+    [
+      4,
+      13
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      13
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      13
+    ],
+    [
+      6,
+      14
+    ],
+    [
+      6,
+      15
+    ],
+    [
+      6,
+      16
+    ],
+    [
+      6,
+      17
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      17
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      17
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      9,
+      17
+    ],
+    [
+      9,
+      16
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      10,
+      16
+    ],
+    [
+      10,
+      15
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      15
+    ],
+    [
+      11,
+      14
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      12,
+      14
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      14,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      17
+    ]
+  ],
+  "induced_edge_count": 48,
+  "induced_cycle": true,
+  "states_per_hole": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 8,
+    "4": 1,
+    "5": 1,
+    "6": 8,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1,
+    "16": 1,
+    "17": 1
+  },
+  "boundary_colour_counts": {
+    "4": 32
+  },
+  "slides_into_pole": {
+    "3": [
+      0,
+      2,
+      4,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "6": [
+      1,
+      5,
+      7,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "star_component_sizes": [
+    4
+  ],
+  "fill_populations": [
+    [
+      4,
+      4,
+      5,
+      5
+    ]
+  ],
+  "explicit_slide": {
+    "from_hole": 0,
+    "to_hole": 3,
+    "from_colouring": [
+      -1,
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      3,
+      0,
+      3,
+      1,
+      0,
+      3,
+      0,
+      1,
+      3,
+      0,
+      1
+    ],
+    "to_colouring": [
+      0,
+      1,
+      2,
+      -1,
+      2,
+      3,
+      0,
+      3,
+      1,
+      3,
+      2,
+      1,
+      3,
+      1,
+      2,
+      3,
+      1,
+      2
+    ],
+    "hole_path": [
+      0,
+      3
+    ]
+  },
+  "belt_states": 16,
+  "pole_states": 16,
+  "unequal_pole_belt_states": 0,
+  "equal_pole_belt_states": 16,
+  "star_available_count": 16,
+  "star_example": {
+    "hole": 0,
+    "pole_colour": 2,
+    "poles_equal": true,
+    "boundary": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "boundary_colours": [
+      0,
+      1,
+      2,
+      1,
+      3
+    ],
+    "boundary_colour_count": 4,
+    "other_boundary": [
+      1,
+      5
+    ],
+    "other_boundary_adjacent": true,
+    "own_boundary": [
+      2,
+      4
+    ],
+    "belt_vertex_has_pole_colour": false,
+    "singleton_other_ring": [
+      1,
+      5
+    ],
+    "available": true,
+    "already_target": false,
+    "anchor": 1,
+    "rare_colour": 0,
+    "predicted_star": [
+      1,
+      6,
+      13,
+      16
+    ],
+    "actual_component": [
+      1,
+      6,
+      13,
+      16
+    ],
+    "component_is_the_star": true,
+    "boundary_colours_after": [
+      2,
+      1,
+      2,
+      1,
+      3
+    ],
+    "boundary_colour_count_after": 3,
+    "single_component": true,
+    "colouring": [
+      -1,
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      3,
+      0,
+      3,
+      1,
+      0,
+      3,
+      0,
+      1,
+      3,
+      0,
+      1
+    ]
+  },
+  "start_colouring": [
+    -1,
+    0,
+    1,
+    2,
+    1,
+    3,
+    2,
+    3,
+    0,
+    3,
+    1,
+    0,
+    3,
+    0,
+    1,
+    3,
+    0,
+    1
+  ],
+  "siblings": [
+    {
+      "fixture": "18-10-r0.json.gz",
+      "state_index": 93,
+      "root": 0,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r1.json.gz",
+      "state_index": 62,
+      "root": 1,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r10.json.gz",
+      "state_index": 64,
+      "root": 10,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r11.json.gz",
+      "state_index": 72,
+      "root": 11,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r12.json.gz",
+      "state_index": 56,
+      "root": 12,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r13.json.gz",
+      "state_index": 54,
+      "root": 13,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r14.json.gz",
+      "state_index": 81,
+      "root": 14,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r15.json.gz",
+      "state_index": 53,
+      "root": 15,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r16.json.gz",
+      "state_index": 82,
+      "root": 16,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r17.json.gz",
+      "state_index": 53,
+      "root": 17,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r2.json.gz",
+      "state_index": 84,
+      "root": 2,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r4.json.gz",
+      "state_index": 83,
+      "root": 4,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r5.json.gz",
+      "state_index": 121,
+      "root": 5,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r7.json.gz",
+      "state_index": 81,
+      "root": 7,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r8.json.gz",
+      "state_index": 72,
+      "root": 8,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "fixture": "18-10-r9.json.gz",
+      "state_index": 64,
+      "root": 9,
+      "in_component": true,
+      "population": [
+        2,
+        5,
+        5,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7903 @@
+{
+ "targets": [
+  {
+   "order": 17,
+   "graph": 0,
+   "root": 4,
+   "ascii_sha256": "1203efa037ee84da877d10d6f94b4d81f4224dab98ffb995de0abb125fb2b3c5",
+   "passing_roots": [
+    0,
+    1,
+    2,
+    8,
+    11,
+    12,
+    15,
+    16
+   ],
+   "failing_roots": [
+    4,
+    6,
+    9,
+    14
+   ],
+   "orbits": 54,
+   "locked_stuck": [
+    {
+     "state": 25,
+     "canonical": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      0,
+      3,
+      1,
+      0,
+      1,
+      0,
+      3,
+      1,
+      2,
+      3,
+      2
+     ],
+     "p": 1,
+     "q": 143,
+     "R": 1878,
+     "gap": 2,
+     "locked": true,
+     "boundary": [
+      0,
+      3,
+      10,
+      11,
+      5
+     ],
+     "boundary_degrees": [
+      5,
+      6,
+      6,
+      5,
+      6
+     ],
+     "boundary_colours": [
+      0,
+      3,
+      1,
+      0,
+      2
+     ],
+     "repeated_colour": 0,
+     "repeated_vertices": [
+      0,
+      11
+     ],
+     "degree_five_neighbours": [
+      0,
+      11
+     ],
+     "singletons": [
+      3,
+      10,
+      5
+     ],
+     "source_proper": {
+      "domain": true,
+      "proper": true,
+      "monochrome_edges": [],
+      "palette": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     "slides": [
+      {
+       "intermediate": 3,
+       "degree": 6,
+       "colour": 3,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        2
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        0,
+        2,
+        8,
+        9,
+        10,
+        4
+       ],
+       "intermediate_colours": [
+        0,
+        2,
+        1,
+        0,
+        1,
+        3
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 3,
+          "root": 4,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           2,
+           0,
+           3,
+           1,
+           0,
+           1,
+           0,
+           3,
+           1,
+           2,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           3,
+           1,
+           0,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           0,
+           3,
+           10,
+           11,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 4,
+           "state": 25,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 16,
+           "common": 16,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 3,
+          "root": 2,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           2,
+           0,
+           3,
+           1,
+           0,
+           1,
+           0,
+           3,
+           1,
+           2,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           1,
+           3,
+           1,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           0,
+           1,
+           7,
+           8,
+           3
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 2,
+           "state": 43,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           3
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             3
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          3
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 10,
+       "degree": 6,
+       "colour": 1,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        16
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        3,
+        9,
+        15,
+        16,
+        11,
+        4
+       ],
+       "intermediate_colours": [
+        3,
+        0,
+        3,
+        2,
+        0,
+        1
+       ],
+       "intermediate_degrees": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 10,
+          "root": 4,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           2,
+           0,
+           3,
+           1,
+           0,
+           1,
+           0,
+           3,
+           1,
+           2,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           3,
+           1,
+           0,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           0,
+           3,
+           10,
+           11,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 4,
+           "state": 25,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 16,
+           "common": 16,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 10,
+          "root": 16,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           1,
+           0,
+           2,
+           0,
+           3,
+           1,
+           2,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           3,
+           1,
+           3,
+           0
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           6,
+           5,
+           5
+          ],
+          "boundary": [
+           10,
+           15,
+           13,
+           12,
+           11
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 16,
+           "state": 20,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           10
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             10
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          10
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 5,
+       "degree": 6,
+       "colour": 2,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        12,
+        1
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        0,
+        4,
+        11,
+        12,
+        6,
+        1
+       ],
+       "intermediate_colours": [
+        0,
+        2,
+        0,
+        3,
+        0,
+        1
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 5,
+          "root": 4,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           2,
+           0,
+           3,
+           1,
+           0,
+           1,
+           0,
+           3,
+           1,
+           2,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           3,
+           1,
+           0,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           0,
+           3,
+           10,
+           11,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 4,
+           "state": 25,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 16,
+           "common": 16,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 5,
+          "root": 12,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           2,
+           3,
+           0,
+           3,
+           1,
+           0,
+           1,
+           0,
+           1,
+           2,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           3,
+           0,
+           2,
+           1,
+           0
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           5,
+           6,
+           5
+          ],
+          "boundary": [
+           5,
+           11,
+           16,
+           13,
+           6
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 12,
+           "state": 43,
+           "p": 1,
+           "q": 155,
+           "R": 1890,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           5
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             5
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          5
+         ]
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 5,
+          "root": 1,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           3,
+           0,
+           2,
+           3,
+           0,
+           3,
+           0,
+           2,
+           3,
+           1,
+           2,
+           1
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           1,
+           0,
+           3,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           6,
+           5
+          ],
+          "boundary": [
+           0,
+           5,
+           6,
+           7,
+           2
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 1,
+           "state": 8,
+           "p": 1,
+           "q": 155,
+           "R": 1890,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           5
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             5
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          5
+         ]
+        }
+       ]
+      }
+     ],
+     "kempe": [
+      {
+       "pair": [
+        0,
+        1
+       ],
+       "component": [
+        0,
+        1,
+        6,
+        13
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        0
+       ],
+       "successor_state": 21,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        0,
+        3,
+        0,
+        1,
+        0,
+        1,
+        3,
+        1,
+        2,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        0,
+        3,
+        0,
+        1,
+        2
+       ],
+       "degree_five_singletons": [
+        11
+       ],
+       "prepared_slides": [
+        {
+         "along": 11,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           1
+          ],
+          "root": 11,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           0,
+           1,
+           0,
+           3,
+           1,
+           2,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           1,
+           2,
+           3,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           5,
+           6
+          ],
+          "boundary": [
+           4,
+           10,
+           16,
+           12,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 11,
+           "state": 18,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           0,
+           1,
+           6,
+           13
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             8,
+             9,
+             10
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          0,
+          1,
+          6,
+          13
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        0,
+        1
+       ],
+       "component": [
+        8,
+        9,
+        10,
+        11
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        10,
+        11
+       ],
+       "successor_state": 21,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        0,
+        3,
+        0,
+        1,
+        0,
+        1,
+        3,
+        1,
+        2,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        0,
+        3,
+        0,
+        1,
+        2
+       ],
+       "degree_five_singletons": [
+        11
+       ],
+       "prepared_slides": [
+        {
+         "along": 11,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           1
+          ],
+          "root": 11,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           0,
+           1,
+           0,
+           3,
+           1,
+           2,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           0,
+           2,
+           3,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           5,
+           6
+          ],
+          "boundary": [
+           4,
+           10,
+           16,
+           12,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 11,
+           "state": 18,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           8,
+           9,
+           10
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             8,
+             9,
+             10
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          8,
+          9,
+          10
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        0,
+        3
+       ],
+       "component": [
+        0,
+        3,
+        9,
+        15
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        0,
+        3
+       ],
+       "successor_state": 30,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        3,
+        0,
+        1,
+        0,
+        1,
+        3,
+        0,
+        1,
+        2,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        0,
+        3,
+        1,
+        3,
+        2
+       ],
+       "degree_five_singletons": [
+        0
+       ],
+       "prepared_slides": [
+        {
+         "along": 0,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           3
+          ],
+          "root": 0,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           2,
+           3,
+           0,
+           1,
+           2,
+           1
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           0,
+           3,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           1,
+           2,
+           3,
+           4,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 0,
+           "state": 43,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           3,
+           9,
+           15
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             3,
+             9,
+             15
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          3,
+          9,
+          15
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        0,
+        3
+       ],
+       "component": [
+        6,
+        7,
+        11,
+        12
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        11
+       ],
+       "successor_state": 30,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        3,
+        0,
+        1,
+        0,
+        1,
+        3,
+        0,
+        1,
+        2,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        0,
+        3,
+        1,
+        3,
+        2
+       ],
+       "degree_five_singletons": [
+        0
+       ],
+       "prepared_slides": [
+        {
+         "along": 0,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           3
+          ],
+          "root": 0,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           2,
+           3,
+           0,
+           1,
+           2,
+           1
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           3,
+           0,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           1,
+           2,
+           3,
+           4,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 0,
+           "state": 43,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           6,
+           7,
+           11,
+           12
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             3,
+             9,
+             15
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          6,
+          7,
+          11,
+          12
+         ]
+        }
+       ]
+      }
+     ],
+     "colour_relations": {
+      "n_pairs": 16,
+      "n_full_colour_agreement": 0,
+      "best_agreement_ratio": 0.8,
+      "full_pairs": [],
+      "closest_pairs": [
+       {
+        "via": 3,
+        "two_step_root": 2,
+        "two_step_state": 43,
+        "kempe_component": [
+         0,
+         3,
+         9,
+         15
+        ],
+        "kempe_pair": [
+         0,
+         3
+        ],
+        "along": 0,
+        "kempe_root": 0,
+        "kempe_state": 43,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           3,
+           9,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         3,
+         9,
+         15
+        ]
+       },
+       {
+        "via": 3,
+        "two_step_root": 2,
+        "two_step_state": 43,
+        "kempe_component": [
+         6,
+         7,
+         11,
+         12
+        ],
+        "kempe_pair": [
+         0,
+         3
+        ],
+        "along": 0,
+        "kempe_root": 0,
+        "kempe_state": 43,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           3,
+           9,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         3,
+         4,
+         6,
+         7,
+         11,
+         12
+        ]
+       },
+       {
+        "via": 10,
+        "two_step_root": 16,
+        "two_step_state": 20,
+        "kempe_component": [
+         0,
+         1,
+         6,
+         13
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 11,
+        "kempe_root": 11,
+        "kempe_state": 18,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           8,
+           9,
+           10
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         0,
+         1,
+         4,
+         6,
+         10,
+         13
+        ]
+       },
+       {
+        "via": 10,
+        "two_step_root": 16,
+        "two_step_state": 20,
+        "kempe_component": [
+         8,
+         9,
+         10,
+         11
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 11,
+        "kempe_root": 11,
+        "kempe_state": 18,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           8,
+           9,
+           10
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         8,
+         9,
+         10
+        ]
+       },
+       {
+        "via": 3,
+        "two_step_root": 2,
+        "two_step_state": 43,
+        "kempe_component": [
+         0,
+         1,
+         6,
+         13
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 11,
+        "kempe_root": 11,
+        "kempe_state": 18,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           3,
+           4,
+           8,
+           9,
+           10
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         0,
+         1,
+         3,
+         4,
+         6,
+         13
+        ]
+       },
+       {
+        "via": 3,
+        "two_step_root": 2,
+        "two_step_state": 43,
+        "kempe_component": [
+         8,
+         9,
+         10,
+         11
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 11,
+        "kempe_root": 11,
+        "kempe_state": 18,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           3,
+           4,
+           8,
+           9,
+           10
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         3,
+         4,
+         8,
+         9,
+         10
+        ]
+       },
+       {
+        "via": 10,
+        "two_step_root": 16,
+        "two_step_state": 20,
+        "kempe_component": [
+         0,
+         3,
+         9,
+         15
+        ],
+        "kempe_pair": [
+         0,
+         3
+        ],
+        "along": 0,
+        "kempe_root": 0,
+        "kempe_state": 43,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           3,
+           4,
+           9,
+           10,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         3,
+         4,
+         9,
+         10,
+         15
+        ]
+       },
+       {
+        "via": 10,
+        "two_step_root": 16,
+        "two_step_state": 20,
+        "kempe_component": [
+         6,
+         7,
+         11,
+         12
+        ],
+        "kempe_pair": [
+         0,
+         3
+        ],
+        "along": 0,
+        "kempe_root": 0,
+        "kempe_state": 43,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           3,
+           4,
+           9,
+           10,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         4,
+         6,
+         7,
+         10,
+         11,
+         12
+        ]
+       }
+      ],
+      "two_step_diffs": [
+       {
+        "via": 3,
+        "root": 2,
+        "raw_diff_from_source": [
+         3
+        ],
+        "expected_diff": [
+         3
+        ]
+       },
+       {
+        "via": 10,
+        "root": 16,
+        "raw_diff_from_source": [
+         10
+        ],
+        "expected_diff": [
+         10
+        ]
+       },
+       {
+        "via": 5,
+        "root": 12,
+        "raw_diff_from_source": [
+         5
+        ],
+        "expected_diff": [
+         5
+        ]
+       },
+       {
+        "via": 5,
+        "root": 1,
+        "raw_diff_from_source": [
+         5
+        ],
+        "expected_diff": [
+         5
+        ]
+       }
+      ],
+      "kempe_diffs": [
+       {
+        "along": 11,
+        "successor_state": 21,
+        "raw_diff_from_source": [
+         0,
+         1,
+         6,
+         13
+        ],
+        "expected_component_without_landing": [
+         0,
+         1,
+         6,
+         13
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 11,
+        "successor_state": 21,
+        "raw_diff_from_source": [
+         8,
+         9,
+         10
+        ],
+        "expected_component_without_landing": [
+         8,
+         9,
+         10
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 0,
+        "successor_state": 30,
+        "raw_diff_from_source": [
+         3,
+         9,
+         15
+        ],
+        "expected_component_without_landing": [
+         3,
+         9,
+         15
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 0,
+        "successor_state": 30,
+        "raw_diff_from_source": [
+         6,
+         7,
+         11,
+         12
+        ],
+        "expected_component_without_landing": [
+         6,
+         7,
+         11,
+         12
+        ],
+        "diff_equals_component_without_landing": true
+       }
+      ],
+      "source_domain": [
+       0,
+       1,
+       2,
+       3,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     "comparison": {
+      "n_forward": 4,
+      "n_return": 3,
+      "n_prepared_all": 4,
+      "n_prepared_one_per_neighbour": 4,
+      "relation_forward_vs_all_prepared": "disjoint",
+      "relation_all_seconds_vs_all_prepared": "disjoint",
+      "relation_forward_vs_one_per_neighbour": "disjoint",
+      "intersection_forward_prepared": [],
+      "forward_roots": [
+       1,
+       2,
+       12,
+       16
+      ],
+      "prepared_roots": [
+       0,
+       11
+      ],
+      "shared_landing_roots": [],
+      "any_prepared_mass_stuck": false,
+      "any_prepared_descent_blocked": false,
+      "every_prepared_descends": true,
+      "every_one_per_neighbour_descends": true,
+      "any_forward_descends": true,
+      "any_forward_mass_stuck": false,
+      "pair_same_orbit_count": 0
+     }
+    }
+   ]
+  },
+  {
+   "order": 17,
+   "graph": 0,
+   "root": 6,
+   "ascii_sha256": "1203efa037ee84da877d10d6f94b4d81f4224dab98ffb995de0abb125fb2b3c5",
+   "passing_roots": [
+    0,
+    1,
+    2,
+    8,
+    11,
+    12,
+    15,
+    16
+   ],
+   "failing_roots": [
+    4,
+    6,
+    9,
+    14
+   ],
+   "orbits": 54,
+   "locked_stuck": [
+    {
+     "state": 27,
+     "canonical": [
+      0,
+      1,
+      2,
+      3,
+      1,
+      2,
+      3,
+      0,
+      2,
+      0,
+      3,
+      1,
+      0,
+      1,
+      3,
+      2
+     ],
+     "p": 1,
+     "q": 143,
+     "R": 1878,
+     "gap": 2,
+     "locked": true,
+     "boundary": [
+      1,
+      5,
+      12,
+      13,
+      7
+     ],
+     "boundary_degrees": [
+      5,
+      6,
+      5,
+      6,
+      6
+     ],
+     "boundary_colours": [
+      1,
+      2,
+      1,
+      0,
+      3
+     ],
+     "repeated_colour": 1,
+     "repeated_vertices": [
+      1,
+      12
+     ],
+     "degree_five_neighbours": [
+      1,
+      12
+     ],
+     "singletons": [
+      5,
+      13,
+      7
+     ],
+     "source_proper": {
+      "domain": true,
+      "proper": true,
+      "monochrome_edges": [],
+      "palette": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     "slides": [
+      {
+       "intermediate": 5,
+       "degree": 6,
+       "colour": 2,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        0,
+        11
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        0,
+        4,
+        11,
+        12,
+        6,
+        1
+       ],
+       "intermediate_colours": [
+        0,
+        1,
+        3,
+        1,
+        2,
+        1
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 5,
+          "root": 6,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           0,
+           2,
+           0,
+           3,
+           1,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           1,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           6,
+           6
+          ],
+          "boundary": [
+           1,
+           5,
+           12,
+           13,
+           7
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 6,
+           "state": 27,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 16,
+           "common": 16,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 5,
+          "root": 0,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           0,
+           3,
+           1,
+           2,
+           3,
+           1,
+           3,
+           2,
+           0,
+           3,
+           0,
+           2,
+           1
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           3,
+           1,
+           0
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           1,
+           2,
+           3,
+           4,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 0,
+           "state": 22,
+           "p": 1,
+           "q": 155,
+           "R": 1890,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           5
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             5
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          5
+         ]
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 5,
+          "root": 11,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           3,
+           2,
+           3,
+           0,
+           2,
+           0,
+           1,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           0,
+           2,
+           1,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           5,
+           6
+          ],
+          "boundary": [
+           4,
+           10,
+           16,
+           12,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 11,
+           "state": 38,
+           "p": 1,
+           "q": 155,
+           "R": 1890,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           5
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             5
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          5
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 13,
+       "degree": 6,
+       "colour": 0,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        16
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        6,
+        12,
+        16,
+        15,
+        14,
+        7
+       ],
+       "intermediate_colours": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        3
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        6
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 13,
+          "root": 6,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           0,
+           2,
+           0,
+           3,
+           1,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           1,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           6,
+           6
+          ],
+          "boundary": [
+           1,
+           5,
+           12,
+           13,
+           7
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 6,
+           "state": 27,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 16,
+           "common": 16,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 13,
+          "root": 16,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           0,
+           2,
+           0,
+           3,
+           1,
+           2,
+           1,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           3,
+           2,
+           1,
+           3
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           6,
+           5,
+           5
+          ],
+          "boundary": [
+           10,
+           15,
+           13,
+           12,
+           11
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 16,
+           "state": 19,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           13
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             13
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          13
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 7,
+       "degree": 6,
+       "colour": 3,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        2
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        1,
+        6,
+        13,
+        14,
+        8,
+        2
+       ],
+       "intermediate_colours": [
+        1,
+        3,
+        0,
+        1,
+        0,
+        2
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        6,
+        5,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 7,
+          "root": 6,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           0,
+           2,
+           0,
+           3,
+           1,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           1,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           6,
+           6
+          ],
+          "boundary": [
+           1,
+           5,
+           12,
+           13,
+           7
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 6,
+           "state": 27,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 16,
+           "common": 16,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 7,
+          "root": 2,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           3,
+           2,
+           3,
+           0,
+           3,
+           0,
+           2,
+           1,
+           0,
+           1,
+           2,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           1,
+           2,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           5,
+           6
+          ],
+          "boundary": [
+           0,
+           1,
+           7,
+           8,
+           3
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 2,
+           "state": 33,
+           "p": 1,
+           "q": 143,
+           "R": 1878,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           7
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             7
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          7
+         ]
+        }
+       ]
+      }
+     ],
+     "kempe": [
+      {
+       "pair": [
+        0,
+        1
+       ],
+       "component": [
+        0,
+        1,
+        4,
+        10
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        1
+       ],
+       "successor_state": 30,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        1,
+        2,
+        0,
+        3,
+        0,
+        1,
+        0,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        2,
+        0,
+        1,
+        3
+       ],
+       "degree_five_singletons": [
+        12
+       ],
+       "prepared_slides": [
+        {
+         "along": 12,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           1
+          ],
+          "root": 12,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           1,
+           2,
+           0,
+           3,
+           1,
+           0,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           3,
+           2,
+           0,
+           1
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           5,
+           6,
+           5
+          ],
+          "boundary": [
+           5,
+           11,
+           16,
+           13,
+           6
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 12,
+           "state": 26,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           0,
+           1,
+           4,
+           10
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             8,
+             13,
+             14
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          0,
+          1,
+          4,
+          10
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        0,
+        1
+       ],
+       "component": [
+        8,
+        12,
+        13,
+        14
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        12,
+        13
+       ],
+       "successor_state": 30,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        1,
+        2,
+        0,
+        3,
+        0,
+        1,
+        0,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        2,
+        0,
+        1,
+        3
+       ],
+       "degree_five_singletons": [
+        12
+       ],
+       "prepared_slides": [
+        {
+         "along": 12,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           1
+          ],
+          "root": 12,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           1,
+           2,
+           0,
+           3,
+           1,
+           0,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           3,
+           2,
+           1,
+           0
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           5,
+           6,
+           5
+          ],
+          "boundary": [
+           5,
+           11,
+           16,
+           13,
+           6
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 12,
+           "state": 26,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           8,
+           13,
+           14
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             8,
+             13,
+             14
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          8,
+          13,
+          14
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        1,
+        3
+       ],
+       "component": [
+        1,
+        7,
+        14,
+        15
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        1,
+        7
+       ],
+       "successor_state": 13,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        3,
+        0,
+        2,
+        0,
+        1,
+        3,
+        0,
+        1,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        2,
+        3,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        1
+       ],
+       "prepared_slides": [
+        {
+         "along": 1,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           1,
+           3
+          ],
+          "root": 1,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           0,
+           1,
+           0,
+           2,
+           3,
+           0,
+           2,
+           3,
+           1
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           2,
+           3,
+           1,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           6,
+           5
+          ],
+          "boundary": [
+           0,
+           5,
+           6,
+           7,
+           2
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 1,
+           "state": 36,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           7,
+           14,
+           15
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             7,
+             14,
+             15
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          7,
+          14,
+          15
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        1,
+        3
+       ],
+       "component": [
+        3,
+        4,
+        11,
+        12
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        12
+       ],
+       "successor_state": 13,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        3,
+        0,
+        2,
+        0,
+        1,
+        3,
+        0,
+        1,
+        3,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 163,
+        "R": 1898,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        2,
+        3,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        1
+       ],
+       "prepared_slides": [
+        {
+         "along": 1,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           1,
+           3
+          ],
+          "root": 1,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           0,
+           1,
+           0,
+           2,
+           3,
+           0,
+           2,
+           3,
+           1
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           2,
+           1,
+           3,
+           2
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           5,
+           6,
+           5
+          ],
+          "boundary": [
+           0,
+           5,
+           6,
+           7,
+           2
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 1,
+           "state": 36,
+           "p": 1,
+           "q": 171,
+           "R": 1906,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           3,
+           4,
+           11,
+           12
+          ],
+          "align_to_source": {
+           "agree": 12,
+           "common": 15,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             7,
+             14,
+             15
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          3,
+          4,
+          11,
+          12
+         ]
+        }
+       ]
+      }
+     ],
+     "colour_relations": {
+      "n_pairs": 16,
+      "n_full_colour_agreement": 0,
+      "best_agreement_ratio": 0.8,
+      "full_pairs": [],
+      "closest_pairs": [
+       {
+        "via": 13,
+        "two_step_root": 16,
+        "two_step_state": 19,
+        "kempe_component": [
+         0,
+         1,
+         4,
+         10
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 26,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           8,
+           13,
+           14
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         0,
+         1,
+         4,
+         6,
+         10,
+         13
+        ]
+       },
+       {
+        "via": 13,
+        "two_step_root": 16,
+        "two_step_state": 19,
+        "kempe_component": [
+         8,
+         12,
+         13,
+         14
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 26,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           8,
+           13,
+           14
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         8,
+         13,
+         14
+        ]
+       },
+       {
+        "via": 7,
+        "two_step_root": 2,
+        "two_step_state": 33,
+        "kempe_component": [
+         1,
+         7,
+         14,
+         15
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 1,
+        "kempe_root": 1,
+        "kempe_state": 36,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           7,
+           14,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         7,
+         14,
+         15
+        ]
+       },
+       {
+        "via": 7,
+        "two_step_root": 2,
+        "two_step_state": 33,
+        "kempe_component": [
+         3,
+         4,
+         11,
+         12
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 1,
+        "kempe_root": 1,
+        "kempe_state": 36,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           7,
+           14,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         3,
+         4,
+         6,
+         7,
+         11,
+         12
+        ]
+       },
+       {
+        "via": 5,
+        "two_step_root": 0,
+        "two_step_state": 22,
+        "kempe_component": [
+         0,
+         1,
+         4,
+         10
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 26,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": false,
+         "changed_sets": [
+          [
+           1,
+           4,
+           5,
+           6,
+           10
+          ],
+          [
+           5,
+           6,
+           8,
+           13,
+           14
+          ]
+         ],
+         "n_optimal_perms": 2
+        },
+        "raw_diff_same_names": [
+         1,
+         4,
+         5,
+         6,
+         10
+        ]
+       },
+       {
+        "via": 5,
+        "two_step_root": 0,
+        "two_step_state": 22,
+        "kempe_component": [
+         8,
+         12,
+         13,
+         14
+        ],
+        "kempe_pair": [
+         0,
+         1
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 26,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": false,
+         "changed_sets": [
+          [
+           1,
+           4,
+           5,
+           6,
+           10
+          ],
+          [
+           5,
+           6,
+           8,
+           13,
+           14
+          ]
+         ],
+         "n_optimal_perms": 2
+        },
+        "raw_diff_same_names": [
+         5,
+         6,
+         8,
+         13,
+         14
+        ]
+       },
+       {
+        "via": 5,
+        "two_step_root": 0,
+        "two_step_state": 22,
+        "kempe_component": [
+         1,
+         7,
+         14,
+         15
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 1,
+        "kempe_root": 1,
+        "kempe_state": 36,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           5,
+           6,
+           7,
+           14,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         5,
+         6,
+         7,
+         14,
+         15
+        ]
+       },
+       {
+        "via": 5,
+        "two_step_root": 0,
+        "two_step_state": 22,
+        "kempe_component": [
+         3,
+         4,
+         11,
+         12
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 1,
+        "kempe_root": 1,
+        "kempe_state": 36,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 10,
+         "common": 15,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           5,
+           6,
+           7,
+           14,
+           15
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         3,
+         4,
+         5,
+         6,
+         11,
+         12
+        ]
+       }
+      ],
+      "two_step_diffs": [
+       {
+        "via": 5,
+        "root": 0,
+        "raw_diff_from_source": [
+         5
+        ],
+        "expected_diff": [
+         5
+        ]
+       },
+       {
+        "via": 5,
+        "root": 11,
+        "raw_diff_from_source": [
+         5
+        ],
+        "expected_diff": [
+         5
+        ]
+       },
+       {
+        "via": 13,
+        "root": 16,
+        "raw_diff_from_source": [
+         13
+        ],
+        "expected_diff": [
+         13
+        ]
+       },
+       {
+        "via": 7,
+        "root": 2,
+        "raw_diff_from_source": [
+         7
+        ],
+        "expected_diff": [
+         7
+        ]
+       }
+      ],
+      "kempe_diffs": [
+       {
+        "along": 12,
+        "successor_state": 30,
+        "raw_diff_from_source": [
+         0,
+         1,
+         4,
+         10
+        ],
+        "expected_component_without_landing": [
+         0,
+         1,
+         4,
+         10
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 12,
+        "successor_state": 30,
+        "raw_diff_from_source": [
+         8,
+         13,
+         14
+        ],
+        "expected_component_without_landing": [
+         8,
+         13,
+         14
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 1,
+        "successor_state": 13,
+        "raw_diff_from_source": [
+         7,
+         14,
+         15
+        ],
+        "expected_component_without_landing": [
+         7,
+         14,
+         15
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 1,
+        "successor_state": 13,
+        "raw_diff_from_source": [
+         3,
+         4,
+         11,
+         12
+        ],
+        "expected_component_without_landing": [
+         3,
+         4,
+         11,
+         12
+        ],
+        "diff_equals_component_without_landing": true
+       }
+      ],
+      "source_domain": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16
+      ]
+     },
+     "comparison": {
+      "n_forward": 4,
+      "n_return": 3,
+      "n_prepared_all": 4,
+      "n_prepared_one_per_neighbour": 4,
+      "relation_forward_vs_all_prepared": "disjoint",
+      "relation_all_seconds_vs_all_prepared": "disjoint",
+      "relation_forward_vs_one_per_neighbour": "disjoint",
+      "intersection_forward_prepared": [],
+      "forward_roots": [
+       0,
+       2,
+       11,
+       16
+      ],
+      "prepared_roots": [
+       1,
+       12
+      ],
+      "shared_landing_roots": [],
+      "any_prepared_mass_stuck": false,
+      "any_prepared_descent_blocked": false,
+      "every_prepared_descends": true,
+      "every_one_per_neighbour_descends": true,
+      "any_forward_descends": true,
+      "any_forward_mass_stuck": false,
+      "pair_same_orbit_count": 0
+     }
+    }
+   ]
+  },
+  {
+   "order": 20,
+   "graph": 7,
+   "root": 7,
+   "ascii_sha256": "eaf8271c8e7283188162aba8a7fa4f4b87e360757c41c2059abbff9c9272bacc",
+   "passing_roots": [
+    0,
+    2,
+    3,
+    4,
+    8,
+    9,
+    12,
+    13,
+    14,
+    15,
+    18,
+    19
+   ],
+   "failing_roots": [
+    7,
+    11
+   ],
+   "orbits": 212,
+   "locked_stuck": [
+    {
+     "state": 180,
+     "canonical": [
+      0,
+      1,
+      2,
+      3,
+      1,
+      3,
+      2,
+      3,
+      1,
+      2,
+      0,
+      2,
+      0,
+      1,
+      3,
+      0,
+      1,
+      3,
+      2
+     ],
+     "p": 1,
+     "q": 164,
+     "R": 2565,
+     "gap": 2,
+     "locked": true,
+     "boundary": [
+      1,
+      6,
+      15,
+      16,
+      8
+     ],
+     "boundary_degrees": [
+      6,
+      6,
+      5,
+      7,
+      5
+     ],
+     "boundary_colours": [
+      1,
+      2,
+      3,
+      0,
+      3
+     ],
+     "repeated_colour": 3,
+     "repeated_vertices": [
+      15,
+      8
+     ],
+     "degree_five_neighbours": [
+      15,
+      8
+     ],
+     "singletons": [
+      1,
+      6,
+      16
+     ],
+     "source_proper": {
+      "domain": true,
+      "proper": true,
+      "monochrome_edges": [],
+      "palette": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     "slides": [
+      {
+       "intermediate": 1,
+       "degree": 6,
+       "colour": 1,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        0
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        0,
+        5,
+        6,
+        7,
+        8,
+        2
+       ],
+       "intermediate_colours": [
+        0,
+        3,
+        2,
+        1,
+        3,
+        2
+       ],
+       "intermediate_degrees": [
+        5,
+        7,
+        6,
+        5,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 1,
+          "root": 7,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           3,
+           2,
+           3,
+           1,
+           2,
+           0,
+           2,
+           0,
+           1,
+           3,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           3,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           6,
+           6,
+           5,
+           7,
+           5
+          ],
+          "boundary": [
+           1,
+           6,
+           15,
+           16,
+           8
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 7,
+           "state": 180,
+           "p": 1,
+           "q": 164,
+           "R": 2565,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 19,
+           "common": 19,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 1,
+          "root": 0,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           2,
+           1,
+           3,
+           2,
+           3,
+           1,
+           0,
+           1,
+           0,
+           3,
+           2,
+           0,
+           3,
+           2,
+           1
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           2,
+           3,
+           1,
+           3
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           5,
+           5,
+           7
+          ],
+          "boundary": [
+           1,
+           2,
+           3,
+           4,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 0,
+           "state": 202,
+           "p": 1,
+           "q": 252,
+           "R": 2653,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           1
+          ],
+          "align_to_source": {
+           "agree": 17,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             1
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          1
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 6,
+       "degree": 6,
+       "colour": 2,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        13
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        1,
+        5,
+        13,
+        14,
+        15,
+        7
+       ],
+       "intermediate_colours": [
+        1,
+        3,
+        0,
+        1,
+        3,
+        2
+       ],
+       "intermediate_degrees": [
+        6,
+        7,
+        5,
+        5,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 6,
+          "root": 7,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           3,
+           2,
+           3,
+           1,
+           2,
+           0,
+           2,
+           0,
+           1,
+           3,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           3,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           6,
+           6,
+           5,
+           7,
+           5
+          ],
+          "boundary": [
+           1,
+           6,
+           15,
+           16,
+           8
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 7,
+           "state": 180,
+           "p": 1,
+           "q": 164,
+           "R": 2565,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 19,
+           "common": 19,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 6,
+          "root": 13,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           3,
+           0,
+           2,
+           3,
+           1,
+           2,
+           0,
+           2,
+           1,
+           3,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           3,
+           2,
+           3,
+           1,
+           0
+          ],
+          "boundary_degrees": [
+           7,
+           5,
+           5,
+           5,
+           6
+          ],
+          "boundary": [
+           5,
+           12,
+           18,
+           14,
+           6
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 13,
+           "state": 148,
+           "p": 1,
+           "q": 252,
+           "R": 2653,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           6
+          ],
+          "align_to_source": {
+           "agree": 17,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             6
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          6
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 16,
+       "degree": 7,
+       "colour": 0,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        7,
+        15,
+        19,
+        17,
+        10,
+        9,
+        8
+       ],
+       "intermediate_colours": [
+        0,
+        3,
+        2,
+        1,
+        2,
+        1,
+        3
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        5,
+        6,
+        6,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 16,
+          "root": 7,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           3,
+           2,
+           3,
+           1,
+           2,
+           0,
+           2,
+           0,
+           1,
+           3,
+           0,
+           1,
+           3,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           2,
+           3,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           6,
+           6,
+           5,
+           7,
+           5
+          ],
+          "boundary": [
+           1,
+           6,
+           15,
+           16,
+           8
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 7,
+           "state": 180,
+           "p": 1,
+           "q": 164,
+           "R": 2565,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 19,
+           "common": 19,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        }
+       ]
+      }
+     ],
+     "kempe": [
+      {
+       "pair": [
+        1,
+        3
+       ],
+       "component": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        9
+       ],
+       "component_size": 6,
+       "boundary_in_component": [
+        1,
+        8
+       ],
+       "successor_state": 181,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        3,
+        2,
+        3,
+        1,
+        2,
+        0,
+        2,
+        0,
+        3,
+        1,
+        0,
+        3,
+        1,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        2,
+        1,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        8
+       ],
+       "prepared_slides": [
+        {
+         "along": 8,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           1,
+           3
+          ],
+          "root": 8,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           3,
+           2,
+           3,
+           1,
+           2,
+           0,
+           2,
+           0,
+           3,
+           1,
+           0,
+           3,
+           1,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           3,
+           1,
+           0,
+           3,
+           2
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           7,
+           5,
+           5
+          ],
+          "boundary": [
+           1,
+           7,
+           16,
+           9,
+           2
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 8,
+           "state": 185,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           1,
+           3,
+           4,
+           5,
+           9
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             14,
+             15,
+             17,
+             18
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          1,
+          3,
+          4,
+          5,
+          9
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        1,
+        3
+       ],
+       "component": [
+        14,
+        15,
+        17,
+        18
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        15
+       ],
+       "successor_state": 181,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        3,
+        2,
+        3,
+        1,
+        2,
+        0,
+        2,
+        0,
+        3,
+        1,
+        0,
+        3,
+        1,
+        2
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        2,
+        1,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        8
+       ],
+       "prepared_slides": [
+        {
+         "along": 8,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           1,
+           3
+          ],
+          "root": 8,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           3,
+           2,
+           3,
+           1,
+           2,
+           0,
+           2,
+           0,
+           3,
+           1,
+           0,
+           3,
+           1,
+           2
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           1,
+           3,
+           0,
+           1,
+           2
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           7,
+           5,
+           5
+          ],
+          "boundary": [
+           1,
+           7,
+           16,
+           9,
+           2
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 8,
+           "state": 185,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           14,
+           15,
+           17,
+           18
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             14,
+             15,
+             17,
+             18
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          14,
+          15,
+          17,
+          18
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        2,
+        3
+       ],
+       "component": [
+        2,
+        3,
+        8,
+        10
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        8
+       ],
+       "successor_state": 121,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        3,
+        1,
+        2,
+        0,
+        3,
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        3
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        3,
+        2,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        15
+       ],
+       "prepared_slides": [
+        {
+         "along": 15,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           2,
+           3
+          ],
+          "root": 15,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           0,
+           1,
+           0,
+           1,
+           2,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           1,
+           2,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           5,
+           7,
+           5
+          ],
+          "boundary": [
+           6,
+           14,
+           19,
+           16,
+           7
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 15,
+           "state": 133,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           2,
+           3,
+           8,
+           10
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             2,
+             3,
+             8,
+             10
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          2,
+          3,
+          8,
+          10
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        2,
+        3
+       ],
+       "component": [
+        5,
+        6,
+        12,
+        15,
+        18,
+        19
+       ],
+       "component_size": 6,
+       "boundary_in_component": [
+        6,
+        15
+       ],
+       "successor_state": 121,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        3,
+        1,
+        2,
+        0,
+        3,
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        3
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        1,
+        3,
+        2,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        15
+       ],
+       "prepared_slides": [
+        {
+         "along": 15,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           2,
+           3
+          ],
+          "root": 15,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           3,
+           1,
+           2,
+           3,
+           2,
+           3,
+           1,
+           2,
+           0,
+           3,
+           0,
+           1,
+           0,
+           1,
+           2,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           3,
+           1,
+           3,
+           0,
+           2
+          ],
+          "boundary_degrees": [
+           6,
+           5,
+           5,
+           7,
+           5
+          ],
+          "boundary": [
+           6,
+           14,
+           19,
+           16,
+           7
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 15,
+           "state": 133,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           5,
+           6,
+           12,
+           18,
+           19
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             2,
+             3,
+             8,
+             10
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          5,
+          6,
+          12,
+          18,
+          19
+         ]
+        }
+       ]
+      }
+     ],
+     "colour_relations": {
+      "n_pairs": 8,
+      "n_full_colour_agreement": 0,
+      "best_agreement_ratio": 0.7222222222222222,
+      "full_pairs": [],
+      "closest_pairs": [
+       {
+        "via": 1,
+        "two_step_root": 0,
+        "two_step_state": 202,
+        "kempe_component": [
+         1,
+         3,
+         4,
+         5,
+         8,
+         9
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 8,
+        "kempe_root": 8,
+        "kempe_state": 185,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           1,
+           3,
+           4,
+           5,
+           9
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         1,
+         3,
+         4,
+         5,
+         9
+        ]
+       },
+       {
+        "via": 1,
+        "two_step_root": 0,
+        "two_step_state": 202,
+        "kempe_component": [
+         14,
+         15,
+         17,
+         18
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 8,
+        "kempe_root": 8,
+        "kempe_state": 185,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           1,
+           3,
+           4,
+           5,
+           9
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         1,
+         7,
+         14,
+         15,
+         17,
+         18
+        ]
+       },
+       {
+        "via": 6,
+        "two_step_root": 13,
+        "two_step_state": 148,
+        "kempe_component": [
+         2,
+         3,
+         8,
+         10
+        ],
+        "kempe_pair": [
+         2,
+         3
+        ],
+        "along": 15,
+        "kempe_root": 15,
+        "kempe_state": 133,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           5,
+           6,
+           12,
+           18,
+           19
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         2,
+         3,
+         6,
+         7,
+         8,
+         10
+        ]
+       },
+       {
+        "via": 6,
+        "two_step_root": 13,
+        "two_step_state": 148,
+        "kempe_component": [
+         5,
+         6,
+         12,
+         15,
+         18,
+         19
+        ],
+        "kempe_pair": [
+         2,
+         3
+        ],
+        "along": 15,
+        "kempe_root": 15,
+        "kempe_state": 133,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           5,
+           6,
+           12,
+           18,
+           19
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         5,
+         6,
+         12,
+         18,
+         19
+        ]
+       },
+       {
+        "via": 1,
+        "two_step_root": 0,
+        "two_step_state": 202,
+        "kempe_component": [
+         2,
+         3,
+         8,
+         10
+        ],
+        "kempe_pair": [
+         2,
+         3
+        ],
+        "along": 15,
+        "kempe_root": 15,
+        "kempe_state": 133,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           1,
+           2,
+           3,
+           7,
+           8,
+           10
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         1,
+         2,
+         3,
+         7,
+         8,
+         10
+        ]
+       },
+       {
+        "via": 1,
+        "two_step_root": 0,
+        "two_step_state": 202,
+        "kempe_component": [
+         5,
+         6,
+         12,
+         15,
+         18,
+         19
+        ],
+        "kempe_pair": [
+         2,
+         3
+        ],
+        "along": 15,
+        "kempe_root": 15,
+        "kempe_state": 133,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           1,
+           2,
+           3,
+           7,
+           8,
+           10
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         1,
+         5,
+         6,
+         7,
+         12,
+         18,
+         19
+        ]
+       },
+       {
+        "via": 6,
+        "two_step_root": 13,
+        "two_step_state": 148,
+        "kempe_component": [
+         1,
+         3,
+         4,
+         5,
+         8,
+         9
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 8,
+        "kempe_root": 8,
+        "kempe_state": 185,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           6,
+           7,
+           14,
+           15,
+           17,
+           18
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         1,
+         3,
+         4,
+         5,
+         6,
+         7,
+         9
+        ]
+       },
+       {
+        "via": 6,
+        "two_step_root": 13,
+        "two_step_state": 148,
+        "kempe_component": [
+         14,
+         15,
+         17,
+         18
+        ],
+        "kempe_pair": [
+         1,
+         3
+        ],
+        "along": 8,
+        "kempe_root": 8,
+        "kempe_state": 185,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           6,
+           7,
+           14,
+           15,
+           17,
+           18
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         6,
+         7,
+         14,
+         15,
+         17,
+         18
+        ]
+       }
+      ],
+      "two_step_diffs": [
+       {
+        "via": 1,
+        "root": 0,
+        "raw_diff_from_source": [
+         1
+        ],
+        "expected_diff": [
+         1
+        ]
+       },
+       {
+        "via": 6,
+        "root": 13,
+        "raw_diff_from_source": [
+         6
+        ],
+        "expected_diff": [
+         6
+        ]
+       }
+      ],
+      "kempe_diffs": [
+       {
+        "along": 8,
+        "successor_state": 181,
+        "raw_diff_from_source": [
+         1,
+         3,
+         4,
+         5,
+         9
+        ],
+        "expected_component_without_landing": [
+         1,
+         3,
+         4,
+         5,
+         9
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 8,
+        "successor_state": 181,
+        "raw_diff_from_source": [
+         14,
+         15,
+         17,
+         18
+        ],
+        "expected_component_without_landing": [
+         14,
+         15,
+         17,
+         18
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 15,
+        "successor_state": 121,
+        "raw_diff_from_source": [
+         2,
+         3,
+         8,
+         10
+        ],
+        "expected_component_without_landing": [
+         2,
+         3,
+         8,
+         10
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 15,
+        "successor_state": 121,
+        "raw_diff_from_source": [
+         5,
+         6,
+         12,
+         18,
+         19
+        ],
+        "expected_component_without_landing": [
+         5,
+         6,
+         12,
+         18,
+         19
+        ],
+        "diff_equals_component_without_landing": true
+       }
+      ],
+      "source_domain": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19
+      ]
+     },
+     "comparison": {
+      "n_forward": 2,
+      "n_return": 3,
+      "n_prepared_all": 4,
+      "n_prepared_one_per_neighbour": 4,
+      "relation_forward_vs_all_prepared": "disjoint",
+      "relation_all_seconds_vs_all_prepared": "disjoint",
+      "relation_forward_vs_one_per_neighbour": "disjoint",
+      "intersection_forward_prepared": [],
+      "forward_roots": [
+       0,
+       13
+      ],
+      "prepared_roots": [
+       8,
+       15
+      ],
+      "shared_landing_roots": [],
+      "any_prepared_mass_stuck": false,
+      "any_prepared_descent_blocked": false,
+      "every_prepared_descends": true,
+      "every_one_per_neighbour_descends": true,
+      "any_forward_descends": true,
+      "any_forward_mass_stuck": false,
+      "pair_same_orbit_count": 0
+     }
+    }
+   ]
+  },
+  {
+   "order": 20,
+   "graph": 7,
+   "root": 11,
+   "ascii_sha256": "eaf8271c8e7283188162aba8a7fa4f4b87e360757c41c2059abbff9c9272bacc",
+   "passing_roots": [
+    0,
+    2,
+    3,
+    4,
+    8,
+    9,
+    12,
+    13,
+    14,
+    15,
+    18,
+    19
+   ],
+   "failing_roots": [
+    7,
+    11
+   ],
+   "orbits": 212,
+   "locked_stuck": [
+    {
+     "state": 18,
+     "canonical": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      0,
+      3,
+      0,
+      3,
+      0,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      0,
+      3
+     ],
+     "p": 1,
+     "q": 164,
+     "R": 2565,
+     "gap": 2,
+     "locked": true,
+     "boundary": [
+      4,
+      10,
+      17,
+      12,
+      5
+     ],
+     "boundary_degrees": [
+      5,
+      6,
+      6,
+      5,
+      7
+     ],
+     "boundary_colours": [
+      2,
+      0,
+      1,
+      2,
+      3
+     ],
+     "repeated_colour": 2,
+     "repeated_vertices": [
+      4,
+      12
+     ],
+     "degree_five_neighbours": [
+      4,
+      12
+     ],
+     "singletons": [
+      10,
+      17,
+      5
+     ],
+     "source_proper": {
+      "domain": true,
+      "proper": true,
+      "monochrome_edges": [],
+      "palette": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     "slides": [
+      {
+       "intermediate": 10,
+       "degree": 6,
+       "colour": 0,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        9
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        3,
+        9,
+        16,
+        17,
+        11,
+        4
+       ],
+       "intermediate_colours": [
+        1,
+        3,
+        2,
+        1,
+        0,
+        2
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        7,
+        6,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 10,
+          "root": 11,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           3,
+           0,
+           2,
+           1,
+           2,
+           1,
+           2,
+           1,
+           0,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           0,
+           1,
+           2,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           6,
+           5,
+           7
+          ],
+          "boundary": [
+           4,
+           10,
+           17,
+           12,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 11,
+           "state": 18,
+           "p": 1,
+           "q": 164,
+           "R": 2565,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 19,
+           "common": 19,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 10,
+          "root": 9,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           3,
+           0,
+           2,
+           1,
+           2,
+           1,
+           2,
+           1,
+           0,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           0,
+           2,
+           3,
+           1
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           7,
+           6,
+           5
+          ],
+          "boundary": [
+           2,
+           8,
+           16,
+           10,
+           3
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 9,
+           "state": 23,
+           "p": 1,
+           "q": 252,
+           "R": 2653,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           10
+          ],
+          "align_to_source": {
+           "agree": 17,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             10
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          10
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 17,
+       "degree": 6,
+       "colour": 1,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [
+        19
+       ],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        10,
+        16,
+        19,
+        18,
+        12,
+        11
+       ],
+       "intermediate_colours": [
+        0,
+        2,
+        3,
+        0,
+        2,
+        1
+       ],
+       "intermediate_degrees": [
+        6,
+        7,
+        5,
+        5,
+        5,
+        5
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 17,
+          "root": 11,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           3,
+           0,
+           2,
+           1,
+           2,
+           1,
+           2,
+           1,
+           0,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           0,
+           1,
+           2,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           6,
+           5,
+           7
+          ],
+          "boundary": [
+           4,
+           10,
+           17,
+           12,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 11,
+           "state": 18,
+           "p": 1,
+           "q": 164,
+           "R": 2565,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 19,
+           "common": 19,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        },
+        {
+         "record": {
+          "kind": "forward",
+          "via": 17,
+          "root": 19,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           3,
+           0,
+           1,
+           2,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           0,
+           3,
+           2,
+           1
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           7,
+           5
+          ],
+          "boundary": [
+           14,
+           18,
+           17,
+           16,
+           15
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 19,
+           "state": 14,
+           "p": 1,
+           "q": 252,
+           "R": 2653,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           17
+          ],
+          "align_to_source": {
+           "agree": 17,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             17
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": false,
+         "raw_diff": [
+          17
+         ]
+        }
+       ]
+      },
+      {
+       "intermediate": 5,
+       "degree": 7,
+       "colour": 3,
+       "proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "slides_back": true,
+       "other_degree_five": [],
+       "onward_matches_independent_recount": true,
+       "intermediate_boundary": [
+        0,
+        4,
+        11,
+        12,
+        13,
+        6,
+        1
+       ],
+       "intermediate_colours": [
+        0,
+        2,
+        3,
+        2,
+        1,
+        0,
+        1
+       ],
+       "intermediate_degrees": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        6,
+        6
+       ],
+       "seconds": [
+        {
+         "record": {
+          "kind": "return",
+          "via": 5,
+          "root": 11,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           3,
+           0,
+           2,
+           1,
+           2,
+           1,
+           2,
+           1,
+           0,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           0,
+           1,
+           2,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           6,
+           6,
+           5,
+           7
+          ],
+          "boundary": [
+           4,
+           10,
+           17,
+           12,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 11,
+           "state": 18,
+           "p": 1,
+           "q": 164,
+           "R": 2565,
+           "descends": false,
+           "descends_in_one_swap": false,
+           "mass_stuck": true,
+           "root_status": "failing"
+          },
+          "raw_diff_from_source": [],
+          "align_to_source": {
+           "agree": 19,
+           "common": 19,
+           "full": true,
+           "unique_changed_set": true,
+           "changed_sets": [
+            []
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "restores_source": true,
+         "raw_diff": []
+        }
+       ]
+      }
+     ],
+     "kempe": [
+      {
+       "pair": [
+        0,
+        2
+       ],
+       "component": [
+        0,
+        2,
+        4,
+        8,
+        10,
+        16
+       ],
+       "component_size": 6,
+       "boundary_in_component": [
+        4,
+        10
+       ],
+       "successor_state": 28,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        3,
+        2,
+        3,
+        0,
+        3,
+        0,
+        0,
+        1,
+        0,
+        1,
+        2,
+        1,
+        2,
+        3
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        2,
+        0,
+        1,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        4
+       ],
+       "prepared_slides": [
+        {
+         "along": 4,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           2
+          ],
+          "root": 4,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           3,
+           2,
+           3,
+           0,
+           3,
+           0,
+           2,
+           0,
+           1,
+           0,
+           1,
+           2,
+           1,
+           2,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           2,
+           1,
+           2,
+           0,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           5,
+           7
+          ],
+          "boundary": [
+           0,
+           3,
+           10,
+           11,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 4,
+           "state": 94,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           0,
+           2,
+           8,
+           10,
+           16
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             6,
+             12,
+             14,
+             18
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          0,
+          2,
+          8,
+          10,
+          16
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        0,
+        2
+       ],
+       "component": [
+        6,
+        12,
+        14,
+        18
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        12
+       ],
+       "successor_state": 28,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        3,
+        2,
+        3,
+        0,
+        3,
+        0,
+        0,
+        1,
+        0,
+        1,
+        2,
+        1,
+        2,
+        3
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        2,
+        0,
+        1,
+        0,
+        3
+       ],
+       "degree_five_singletons": [
+        4
+       ],
+       "prepared_slides": [
+        {
+         "along": 4,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           0,
+           2
+          ],
+          "root": 4,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           3,
+           2,
+           3,
+           0,
+           3,
+           0,
+           2,
+           0,
+           1,
+           0,
+           1,
+           2,
+           1,
+           2,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           0,
+           1,
+           0,
+           2,
+           3
+          ],
+          "boundary_degrees": [
+           5,
+           5,
+           6,
+           5,
+           7
+          ],
+          "boundary": [
+           0,
+           3,
+           10,
+           11,
+           5
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 4,
+           "state": 94,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           6,
+           12,
+           14,
+           18
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             6,
+             12,
+             14,
+             18
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          6,
+          12,
+          14,
+          18
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        1,
+        2
+       ],
+       "component": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "component_size": 4,
+       "boundary_in_component": [
+        4
+       ],
+       "successor_state": 16,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        3,
+        0,
+        3,
+        0,
+        3,
+        0,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0,
+        3
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        2,
+        0,
+        2,
+        1,
+        3
+       ],
+       "degree_five_singletons": [
+        12
+       ],
+       "prepared_slides": [
+        {
+         "along": 12,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           1,
+           2
+          ],
+          "root": 12,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           3,
+           0,
+           1,
+           2,
+           1,
+           2,
+           1,
+           2,
+           0,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           3,
+           2,
+           1,
+           0,
+           1
+          ],
+          "boundary_degrees": [
+           7,
+           5,
+           6,
+           5,
+           5
+          ],
+          "boundary": [
+           5,
+           11,
+           17,
+           18,
+           13
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 12,
+           "state": 10,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           1,
+           2,
+           3,
+           4
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             1,
+             2,
+             3,
+             4
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          1,
+          2,
+          3,
+          4
+         ]
+        }
+       ]
+      },
+      {
+       "pair": [
+        1,
+        2
+       ],
+       "component": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+       ],
+       "component_size": 6,
+       "boundary_in_component": [
+        17,
+        12
+       ],
+       "successor_state": 16,
+       "successor_canonical": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        3,
+        0,
+        3,
+        0,
+        3,
+        0,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0,
+        3
+       ],
+       "successor_orbit": {
+        "p": 1,
+        "q": 222,
+        "R": 2623,
+        "descends": true,
+        "mass_stuck": false
+       },
+       "swap_proper": {
+        "domain": true,
+        "proper": true,
+        "monochrome_edges": [],
+        "palette": [
+         0,
+         1,
+         2,
+         3
+        ]
+       },
+       "swap_canon_matches_mass_core": true,
+       "component_is_maximal_bichromatic": true,
+       "boundary_colours_after": [
+        2,
+        0,
+        2,
+        1,
+        3
+       ],
+       "degree_five_singletons": [
+        12
+       ],
+       "prepared_slides": [
+        {
+         "along": 12,
+         "degree": 5,
+         "record": {
+          "kind": "kempe-prepared",
+          "via": [
+           1,
+           2
+          ],
+          "root": 12,
+          "degree": 5,
+          "canonical": [
+           0,
+           1,
+           2,
+           1,
+           2,
+           3,
+           0,
+           3,
+           0,
+           3,
+           0,
+           1,
+           2,
+           1,
+           2,
+           1,
+           2,
+           0,
+           3
+          ],
+          "proper": {
+           "domain": true,
+           "proper": true,
+           "monochrome_edges": [],
+           "palette": [
+            0,
+            1,
+            2,
+            3
+           ]
+          },
+          "boundary_colours": [
+           3,
+           1,
+           2,
+           0,
+           2
+          ],
+          "boundary_degrees": [
+           7,
+           5,
+           6,
+           5,
+           5
+          ],
+          "boundary": [
+           5,
+           11,
+           17,
+           18,
+           13
+          ],
+          "p_colours_on_boundary": 4,
+          "missing_from_enumeration": false,
+          "orbit": {
+           "root": 12,
+           "state": 10,
+           "p": 1,
+           "q": 258,
+           "R": 2659,
+           "descends": true,
+           "descends_in_one_swap": true,
+           "mass_stuck": false,
+           "root_status": "passing"
+          },
+          "raw_diff_from_source": [
+           13,
+           14,
+           15,
+           16,
+           17
+          ],
+          "align_to_source": {
+           "agree": 14,
+           "common": 18,
+           "full": false,
+           "unique_changed_set": true,
+           "changed_sets": [
+            [
+             1,
+             2,
+             3,
+             4
+            ]
+           ],
+           "n_optimal_perms": 1
+          }
+         },
+         "canonical_agrees_with_representative_slide": true,
+         "raw_diff": [
+          13,
+          14,
+          15,
+          16,
+          17
+         ]
+        }
+       ]
+      }
+     ],
+     "colour_relations": {
+      "n_pairs": 8,
+      "n_full_colour_agreement": 0,
+      "best_agreement_ratio": 0.7222222222222222,
+      "full_pairs": [],
+      "closest_pairs": [
+       {
+        "via": 10,
+        "two_step_root": 9,
+        "two_step_state": 23,
+        "kempe_component": [
+         0,
+         2,
+         4,
+         8,
+         10,
+         16
+        ],
+        "kempe_pair": [
+         0,
+         2
+        ],
+        "along": 4,
+        "kempe_root": 4,
+        "kempe_state": 94,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           0,
+           2,
+           8,
+           10,
+           16
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         0,
+         2,
+         8,
+         10,
+         16
+        ]
+       },
+       {
+        "via": 10,
+        "two_step_root": 9,
+        "two_step_state": 23,
+        "kempe_component": [
+         6,
+         12,
+         14,
+         18
+        ],
+        "kempe_pair": [
+         0,
+         2
+        ],
+        "along": 4,
+        "kempe_root": 4,
+        "kempe_state": 94,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           0,
+           2,
+           8,
+           10,
+           16
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         6,
+         10,
+         11,
+         12,
+         14,
+         18
+        ]
+       },
+       {
+        "via": 17,
+        "two_step_root": 19,
+        "two_step_state": 14,
+        "kempe_component": [
+         1,
+         2,
+         3,
+         4
+        ],
+        "kempe_pair": [
+         1,
+         2
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 10,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           13,
+           14,
+           15,
+           16,
+           17
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         1,
+         2,
+         3,
+         4,
+         11,
+         17
+        ]
+       },
+       {
+        "via": 17,
+        "two_step_root": 19,
+        "two_step_state": 14,
+        "kempe_component": [
+         12,
+         13,
+         14,
+         15,
+         16,
+         17
+        ],
+        "kempe_pair": [
+         1,
+         2
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 10,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 13,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           13,
+           14,
+           15,
+           16,
+           17
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         13,
+         14,
+         15,
+         16,
+         17
+        ]
+       },
+       {
+        "via": 10,
+        "two_step_root": 9,
+        "two_step_state": 23,
+        "kempe_component": [
+         1,
+         2,
+         3,
+         4
+        ],
+        "kempe_pair": [
+         1,
+         2
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 10,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           1,
+           2,
+           3,
+           4,
+           10,
+           11
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         1,
+         2,
+         3,
+         4,
+         10,
+         11
+        ]
+       },
+       {
+        "via": 10,
+        "two_step_root": 9,
+        "two_step_state": 23,
+        "kempe_component": [
+         12,
+         13,
+         14,
+         15,
+         16,
+         17
+        ],
+        "kempe_pair": [
+         1,
+         2
+        ],
+        "along": 12,
+        "kempe_root": 12,
+        "kempe_state": 10,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           1,
+           2,
+           3,
+           4,
+           10,
+           11
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         10,
+         11,
+         13,
+         14,
+         15,
+         16,
+         17
+        ]
+       },
+       {
+        "via": 17,
+        "two_step_root": 19,
+        "two_step_state": 14,
+        "kempe_component": [
+         0,
+         2,
+         4,
+         8,
+         10,
+         16
+        ],
+        "kempe_pair": [
+         0,
+         2
+        ],
+        "along": 4,
+        "kempe_root": 4,
+        "kempe_state": 94,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           6,
+           11,
+           12,
+           14,
+           17,
+           18
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         0,
+         2,
+         8,
+         10,
+         11,
+         16,
+         17
+        ]
+       },
+       {
+        "via": 17,
+        "two_step_root": 19,
+        "two_step_state": 14,
+        "kempe_component": [
+         6,
+         12,
+         14,
+         18
+        ],
+        "kempe_pair": [
+         0,
+         2
+        ],
+        "along": 4,
+        "kempe_root": 4,
+        "kempe_state": 94,
+        "same_canonical_orbit": false,
+        "align": {
+         "agree": 12,
+         "common": 18,
+         "full": false,
+         "unique_changed_set": true,
+         "changed_sets": [
+          [
+           6,
+           11,
+           12,
+           14,
+           17,
+           18
+          ]
+         ],
+         "n_optimal_perms": 1
+        },
+        "raw_diff_same_names": [
+         6,
+         11,
+         12,
+         14,
+         17,
+         18
+        ]
+       }
+      ],
+      "two_step_diffs": [
+       {
+        "via": 10,
+        "root": 9,
+        "raw_diff_from_source": [
+         10
+        ],
+        "expected_diff": [
+         10
+        ]
+       },
+       {
+        "via": 17,
+        "root": 19,
+        "raw_diff_from_source": [
+         17
+        ],
+        "expected_diff": [
+         17
+        ]
+       }
+      ],
+      "kempe_diffs": [
+       {
+        "along": 4,
+        "successor_state": 28,
+        "raw_diff_from_source": [
+         0,
+         2,
+         8,
+         10,
+         16
+        ],
+        "expected_component_without_landing": [
+         0,
+         2,
+         8,
+         10,
+         16
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 4,
+        "successor_state": 28,
+        "raw_diff_from_source": [
+         6,
+         12,
+         14,
+         18
+        ],
+        "expected_component_without_landing": [
+         6,
+         12,
+         14,
+         18
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 12,
+        "successor_state": 16,
+        "raw_diff_from_source": [
+         1,
+         2,
+         3,
+         4
+        ],
+        "expected_component_without_landing": [
+         1,
+         2,
+         3,
+         4
+        ],
+        "diff_equals_component_without_landing": true
+       },
+       {
+        "along": 12,
+        "successor_state": 16,
+        "raw_diff_from_source": [
+         13,
+         14,
+         15,
+         16,
+         17
+        ],
+        "expected_component_without_landing": [
+         13,
+         14,
+         15,
+         16,
+         17
+        ],
+        "diff_equals_component_without_landing": true
+       }
+      ],
+      "source_domain": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19
+      ]
+     },
+     "comparison": {
+      "n_forward": 2,
+      "n_return": 3,
+      "n_prepared_all": 4,
+      "n_prepared_one_per_neighbour": 4,
+      "relation_forward_vs_all_prepared": "disjoint",
+      "relation_all_seconds_vs_all_prepared": "disjoint",
+      "relation_forward_vs_one_per_neighbour": "disjoint",
+      "intersection_forward_prepared": [],
+      "forward_roots": [
+       9,
+       19
+      ],
+      "prepared_roots": [
+       4,
+       12
+      ],
+      "shared_landing_roots": [],
+      "any_prepared_mass_stuck": false,
+      "any_prepared_descent_blocked": false,
+      "every_prepared_descends": true,
+      "every_one_per_neighbour_descends": true,
+      "any_forward_descends": true,
+      "any_forward_mass_stuck": false,
+      "pair_same_orbit_count": 0
+     }
+    }
+   ]
+  }
+ ]
+}

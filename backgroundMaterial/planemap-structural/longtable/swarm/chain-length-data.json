@@ -1,0 +1,3008 @@
+[
+ {
+  "order": 17,
+  "graph": 0,
+  "root": 4,
+  "orbit": 25,
+  "stuck_p": 1,
+  "stuck_q": 143,
+  "stuck_R": 1878,
+  "n_paths": 4,
+  "n_shortest": 4,
+  "path": [
+   3,
+   2
+  ],
+  "path_length": 2,
+  "landing": 2,
+  "landing_kind": "descends",
+  "landing_orbit": 43,
+  "land_p": 1,
+  "land_q": 143,
+  "land_R": 1878,
+  "scale": 1735,
+  "eager": {
+   "macros": 3,
+   "first_drop": 12,
+   "first_len": 1,
+   "peak_R": 1878,
+   "peak_endpoint_R": 1878,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 159,
+   "trace": [
+    {
+     "i": 43,
+     "p": 1,
+     "q": 143,
+     "R": 1878
+    },
+    {
+     "i": 2,
+     "p": 1,
+     "q": 131,
+     "R": 1866
+    },
+    {
+     "i": 6,
+     "p": 1,
+     "q": 115,
+     "R": 1850
+    },
+    {
+     "i": 1,
+     "p": 0,
+     "q": 159,
+     "R": 159
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 3,
+   "first_drop": 12,
+   "first_len": 1,
+   "peak_R": 1878,
+   "peak_endpoint_R": 1878,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 159,
+   "trace": [
+    {
+     "i": 43,
+     "p": 1,
+     "q": 143,
+     "R": 1878
+    },
+    {
+     "i": 2,
+     "p": 1,
+     "q": 131,
+     "R": 1866
+    },
+    {
+     "i": 6,
+     "p": 1,
+     "q": 115,
+     "R": 1850
+    },
+    {
+     "i": 0,
+     "p": 0,
+     "q": 159,
+     "R": 159
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 3,
+   "first_drop": 12,
+   "peak_R": 1878,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     3,
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 43,
+    "macros": 3,
+    "first_drop": 12,
+    "peak_R": 1878,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   },
+   {
+    "vertices": [
+     5,
+     1
+    ],
+    "landing": 1,
+    "kind": "descends",
+    "orbit": 8,
+    "macros": 2,
+    "first_drop": 13,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 155,
+    "land_R": 1890
+   },
+   {
+    "vertices": [
+     5,
+     12
+    ],
+    "landing": 12,
+    "kind": "descends",
+    "orbit": 43,
+    "macros": 3,
+    "first_drop": 13,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 155,
+    "land_R": 1890
+   },
+   {
+    "vertices": [
+     10,
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 20,
+    "macros": 3,
+    "first_drop": 12,
+    "peak_R": 1878,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 0,
+  "root": 6,
+  "orbit": 27,
+  "stuck_p": 1,
+  "stuck_q": 143,
+  "stuck_R": 1878,
+  "n_paths": 4,
+  "n_shortest": 4,
+  "path": [
+   5,
+   0
+  ],
+  "path_length": 2,
+  "landing": 0,
+  "landing_kind": "descends",
+  "landing_orbit": 22,
+  "land_p": 1,
+  "land_q": 155,
+  "land_R": 1890,
+  "scale": 1735,
+  "eager": {
+   "macros": 2,
+   "first_drop": 29,
+   "first_len": 1,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1890,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 163,
+   "trace": [
+    {
+     "i": 22,
+     "p": 1,
+     "q": 155,
+     "R": 1890
+    },
+    {
+     "i": 36,
+     "p": 1,
+     "q": 126,
+     "R": 1861
+    },
+    {
+     "i": 2,
+     "p": 0,
+     "q": 163,
+     "R": 163
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 6,
+   "first_drop": 1,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1890,
+   "revisited": true,
+   "revisit": {
+    "at_macro": 4,
+    "index": 36,
+    "kind": "intermediate"
+   },
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 167,
+   "trace": [
+    {
+     "i": 22,
+     "p": 1,
+     "q": 155,
+     "R": 1890
+    },
+    {
+     "i": 33,
+     "p": 1,
+     "q": 154,
+     "R": 1889
+    },
+    {
+     "i": 49,
+     "p": 1,
+     "q": 143,
+     "R": 1878
+    },
+    {
+     "i": 39,
+     "p": 1,
+     "q": 142,
+     "R": 1877
+    },
+    {
+     "i": 35,
+     "p": 1,
+     "q": 134,
+     "R": 1869
+    },
+    {
+     "i": 36,
+     "p": 1,
+     "q": 126,
+     "R": 1861
+    },
+    {
+     "i": 0,
+     "p": 0,
+     "q": 167,
+     "R": 167
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 2,
+   "first_drop": 29,
+   "peak_R": 1890,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     5,
+     0
+    ],
+    "landing": 0,
+    "kind": "descends",
+    "orbit": 22,
+    "macros": 2,
+    "first_drop": 29,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 155,
+    "land_R": 1890
+   },
+   {
+    "vertices": [
+     5,
+     11
+    ],
+    "landing": 11,
+    "kind": "descends",
+    "orbit": 38,
+    "macros": 2,
+    "first_drop": 29,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 155,
+    "land_R": 1890
+   },
+   {
+    "vertices": [
+     7,
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 33,
+    "macros": 3,
+    "first_drop": 12,
+    "peak_R": 1878,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   },
+   {
+    "vertices": [
+     13,
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 19,
+    "macros": 3,
+    "first_drop": 12,
+    "peak_R": 1878,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 0,
+  "root": 9,
+  "orbit": 18,
+  "stuck_p": 1,
+  "stuck_q": 138,
+  "stuck_R": 1873,
+  "n_paths": 2,
+  "n_shortest": 2,
+  "path": [
+   3,
+   2
+  ],
+  "path_length": 2,
+  "landing": 2,
+  "landing_kind": "descends",
+  "landing_orbit": 45,
+  "land_p": 1,
+  "land_q": 143,
+  "land_R": 1878,
+  "scale": 1735,
+  "eager": {
+   "macros": 2,
+   "first_drop": 68,
+   "first_len": 1,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1878,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 139,
+   "trace": [
+    {
+     "i": 45,
+     "p": 1,
+     "q": 143,
+     "R": 1878
+    },
+    {
+     "i": 53,
+     "p": 1,
+     "q": 75,
+     "R": 1810
+    },
+    {
+     "i": 14,
+     "p": 0,
+     "q": 139,
+     "R": 139
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 4,
+   "first_drop": 32,
+   "first_len": 2,
+   "peak_R": 1878,
+   "peak_endpoint_R": 1878,
+   "revisited": true,
+   "revisit": {
+    "at_macro": 3,
+    "index": 53,
+    "kind": "endpoint"
+   },
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 177,
+   "trace": [
+    {
+     "i": 45,
+     "p": 1,
+     "q": 143,
+     "R": 1878
+    },
+    {
+     "i": 52,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 51,
+     "p": 1,
+     "q": 99,
+     "R": 1834
+    },
+    {
+     "i": 53,
+     "p": 1,
+     "q": 75,
+     "R": 1810
+    },
+    {
+     "i": 46,
+     "p": 0,
+     "q": 177,
+     "R": 177
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 2,
+   "first_drop": 68,
+   "peak_R": 1878,
+   "revisited": false,
+   "reached": true,
+   "same_trace": false
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     3,
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 45,
+    "macros": 2,
+    "first_drop": 68,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   },
+   {
+    "vertices": [
+     10,
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 14,
+    "macros": 2,
+    "first_drop": 68,
+    "peak_R": 1878,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 0,
+  "root": 14,
+  "orbit": 21,
+  "stuck_p": 1,
+  "stuck_q": 138,
+  "stuck_R": 1873,
+  "n_paths": 2,
+  "n_shortest": 2,
+  "path": [
+   7,
+   2
+  ],
+  "path_length": 2,
+  "landing": 2,
+  "landing_kind": "descends",
+  "landing_orbit": 13,
+  "land_p": 1,
+  "land_q": 143,
+  "land_R": 1878,
+  "scale": 1735,
+  "eager": {
+   "macros": 2,
+   "first_drop": 68,
+   "first_len": 1,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1878,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 139,
+   "trace": [
+    {
+     "i": 13,
+     "p": 1,
+     "q": 143,
+     "R": 1878
+    },
+    {
+     "i": 53,
+     "p": 1,
+     "q": 75,
+     "R": 1810
+    },
+    {
+     "i": 14,
+     "p": 0,
+     "q": 139,
+     "R": 139
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 4,
+   "first_drop": 32,
+   "first_len": 2,
+   "peak_R": 1878,
+   "peak_endpoint_R": 1878,
+   "revisited": true,
+   "revisit": {
+    "at_macro": 3,
+    "index": 53,
+    "kind": "endpoint"
+   },
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 177,
+   "trace": [
+    {
+     "i": 13,
+     "p": 1,
+     "q": 143,
+     "R": 1878
+    },
+    {
+     "i": 52,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 51,
+     "p": 1,
+     "q": 99,
+     "R": 1834
+    },
+    {
+     "i": 53,
+     "p": 1,
+     "q": 75,
+     "R": 1810
+    },
+    {
+     "i": 46,
+     "p": 0,
+     "q": 177,
+     "R": 177
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 2,
+   "first_drop": 68,
+   "peak_R": 1878,
+   "revisited": false,
+   "reached": true,
+   "same_trace": false
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     7,
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 13,
+    "macros": 2,
+    "first_drop": 68,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   },
+   {
+    "vertices": [
+     13,
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 16,
+    "macros": 2,
+    "first_drop": 68,
+    "peak_R": 1878,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 143,
+    "land_R": 1878
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 3,
+  "orbit": 44,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   0
+  ],
+  "path_length": 1,
+  "landing": 0,
+  "landing_kind": "descends",
+  "landing_orbit": 37,
+  "land_p": 1,
+  "land_q": 111,
+  "land_R": 1846,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 37,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 2,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 37,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 2,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1692,
+   "peak_R": 1900,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     0
+    ],
+    "landing": 0,
+    "kind": "descends",
+    "orbit": 37,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 57,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     10
+    ],
+    "landing": 10,
+    "kind": "descends",
+    "orbit": 57,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 3,
+  "orbit": 47,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   2
+  ],
+  "path_length": 1,
+  "landing": 2,
+  "landing_kind": "descends",
+  "landing_orbit": 59,
+  "land_p": 1,
+  "land_q": 111,
+  "land_R": 1846,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 59,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 61,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 59,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 61,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1692,
+   "peak_R": 1900,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 59,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     4
+    ],
+    "landing": 4,
+    "kind": "descends",
+    "orbit": 33,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   },
+   {
+    "vertices": [
+     9
+    ],
+    "landing": 9,
+    "kind": "descends",
+    "orbit": 64,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 3,
+  "orbit": 77,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   0
+  ],
+  "path_length": 1,
+  "landing": 0,
+  "landing_kind": "descends",
+  "landing_orbit": 57,
+  "land_p": 1,
+  "land_q": 123,
+  "land_R": 1858,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 57,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 24,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 57,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 23,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1723,
+   "peak_R": 1890,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     0
+    ],
+    "landing": 0,
+    "kind": "descends",
+    "orbit": 57,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   },
+   {
+    "vertices": [
+     9
+    ],
+    "landing": 9,
+    "kind": "descends",
+    "orbit": 78,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     10
+    ],
+    "landing": 10,
+    "kind": "descends",
+    "orbit": 10,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 3,
+  "orbit": 91,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   2
+  ],
+  "path_length": 1,
+  "landing": 2,
+  "landing_kind": "descends",
+  "landing_orbit": 75,
+  "land_p": 1,
+  "land_q": 123,
+  "land_R": 1858,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 75,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 24,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 75,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 24,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1723,
+   "peak_R": 1890,
+   "revisited": false,
+   "reached": true,
+   "same_trace": false
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 75,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   },
+   {
+    "vertices": [
+     4
+    ],
+    "landing": 4,
+    "kind": "descends",
+    "orbit": 51,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     10
+    ],
+    "landing": 10,
+    "kind": "descends",
+    "orbit": 18,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 3,
+  "orbit": 93,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   0
+  ],
+  "path_length": 1,
+  "landing": 0,
+  "landing_kind": "descends",
+  "landing_orbit": 74,
+  "land_p": 1,
+  "land_q": 111,
+  "land_R": 1846,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 74,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 53,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 74,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 53,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1692,
+   "peak_R": 1900,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     0
+    ],
+    "landing": 0,
+    "kind": "descends",
+    "orbit": 74,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     4
+    ],
+    "landing": 4,
+    "kind": "descends",
+    "orbit": 55,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     9
+    ],
+    "landing": 9,
+    "kind": "descends",
+    "orbit": 31,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 13,
+  "orbit": 19,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   6
+  ],
+  "path_length": 1,
+  "landing": 6,
+  "landing_kind": "descends",
+  "landing_orbit": 17,
+  "land_p": 1,
+  "land_q": 111,
+  "land_R": 1846,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 17,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 26,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 17,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 26,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1692,
+   "peak_R": 1900,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     6
+    ],
+    "landing": 6,
+    "kind": "descends",
+    "orbit": 17,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     12
+    ],
+    "landing": 12,
+    "kind": "descends",
+    "orbit": 13,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     14
+    ],
+    "landing": 14,
+    "kind": "descends",
+    "orbit": 14,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 13,
+  "orbit": 29,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   7
+  ],
+  "path_length": 1,
+  "landing": 7,
+  "landing_kind": "descends",
+  "landing_orbit": 26,
+  "land_p": 1,
+  "land_q": 111,
+  "land_R": 1846,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 26,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 25,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 26,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 25,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1692,
+   "peak_R": 1900,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     7
+    ],
+    "landing": 7,
+    "kind": "descends",
+    "orbit": 26,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     12
+    ],
+    "landing": 12,
+    "kind": "descends",
+    "orbit": 23,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   },
+   {
+    "vertices": [
+     14
+    ],
+    "landing": 14,
+    "kind": "descends",
+    "orbit": 24,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 13,
+  "orbit": 52,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   6
+  ],
+  "path_length": 1,
+  "landing": 6,
+  "landing_kind": "descends",
+  "landing_orbit": 32,
+  "land_p": 1,
+  "land_q": 123,
+  "land_R": 1858,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 32,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 42,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 32,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 42,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1723,
+   "peak_R": 1890,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     6
+    ],
+    "landing": 6,
+    "kind": "descends",
+    "orbit": 32,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   },
+   {
+    "vertices": [
+     14
+    ],
+    "landing": 14,
+    "kind": "descends",
+    "orbit": 48,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 39,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 13,
+  "orbit": 76,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   7
+  ],
+  "path_length": 1,
+  "landing": 7,
+  "landing_kind": "descends",
+  "landing_orbit": 59,
+  "land_p": 1,
+  "land_q": 123,
+  "land_R": 1858,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 59,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 53,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1723,
+   "first_len": 2,
+   "peak_R": 1890,
+   "peak_endpoint_R": 1858,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 135,
+   "trace": [
+    {
+     "i": 59,
+     "p": 1,
+     "q": 123,
+     "R": 1858
+    },
+    {
+     "i": 53,
+     "p": 0,
+     "q": 135,
+     "R": 135
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1723,
+   "peak_R": 1890,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     7
+    ],
+    "landing": 7,
+    "kind": "descends",
+    "orbit": 59,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   },
+   {
+    "vertices": [
+     12
+    ],
+    "landing": 12,
+    "kind": "descends",
+    "orbit": 60,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 60,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "graph": 3,
+  "root": 13,
+  "orbit": 96,
+  "stuck_p": 1,
+  "stuck_q": 107,
+  "stuck_R": 1842,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   6
+  ],
+  "path_length": 1,
+  "landing": 6,
+  "landing_kind": "descends",
+  "landing_orbit": 61,
+  "land_p": 1,
+  "land_q": 111,
+  "land_R": 1846,
+  "scale": 1735,
+  "eager": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 61,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 57,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 1692,
+   "first_len": 2,
+   "peak_R": 1900,
+   "peak_endpoint_R": 1846,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 154,
+   "trace": [
+    {
+     "i": 61,
+     "p": 1,
+     "q": 111,
+     "R": 1846
+    },
+    {
+     "i": 57,
+     "p": 0,
+     "q": 154,
+     "R": 154
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 1692,
+   "peak_R": 1900,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     6
+    ],
+    "landing": 6,
+    "kind": "descends",
+    "orbit": 61,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     7
+    ],
+    "landing": 7,
+    "kind": "descends",
+    "orbit": 78,
+    "macros": 1,
+    "first_drop": 1692,
+    "peak_R": 1900,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 111,
+    "land_R": 1846
+   },
+   {
+    "vertices": [
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 77,
+    "macros": 1,
+    "first_drop": 1723,
+    "peak_R": 1890,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 123,
+    "land_R": 1858
+   }
+  ]
+ },
+ {
+  "order": 20,
+  "graph": 7,
+  "root": 7,
+  "orbit": 180,
+  "stuck_p": 1,
+  "stuck_q": 164,
+  "stuck_R": 2565,
+  "n_paths": 2,
+  "n_shortest": 2,
+  "path": [
+   1,
+   0
+  ],
+  "path_length": 2,
+  "landing": 0,
+  "landing_kind": "descends",
+  "landing_orbit": 202,
+  "land_p": 1,
+  "land_q": 252,
+  "land_R": 2653,
+  "scale": 2401,
+  "eager": {
+   "macros": 2,
+   "first_drop": 52,
+   "first_len": 1,
+   "peak_R": 2653,
+   "peak_endpoint_R": 2653,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 185,
+   "trace": [
+    {
+     "i": 202,
+     "p": 1,
+     "q": 252,
+     "R": 2653
+    },
+    {
+     "i": 50,
+     "p": 1,
+     "q": 200,
+     "R": 2601
+    },
+    {
+     "i": 43,
+     "p": 0,
+     "q": 185,
+     "R": 185
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 6,
+   "first_drop": 43,
+   "first_len": 2,
+   "peak_R": 2653,
+   "peak_endpoint_R": 2653,
+   "revisited": true,
+   "revisit": {
+    "at_macro": 5,
+    "index": 183,
+    "kind": "endpoint"
+   },
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 249,
+   "trace": [
+    {
+     "i": 202,
+     "p": 1,
+     "q": 252,
+     "R": 2653
+    },
+    {
+     "i": 51,
+     "p": 1,
+     "q": 209,
+     "R": 2610
+    },
+    {
+     "i": 63,
+     "p": 1,
+     "q": 204,
+     "R": 2605
+    },
+    {
+     "i": 194,
+     "p": 1,
+     "q": 196,
+     "R": 2597
+    },
+    {
+     "i": 185,
+     "p": 1,
+     "q": 175,
+     "R": 2576
+    },
+    {
+     "i": 183,
+     "p": 1,
+     "q": 168,
+     "R": 2569
+    },
+    {
+     "i": 40,
+     "p": 0,
+     "q": 249,
+     "R": 249
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 2,
+   "first_drop": 52,
+   "peak_R": 2653,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     1,
+     0
+    ],
+    "landing": 0,
+    "kind": "descends",
+    "orbit": 202,
+    "macros": 2,
+    "first_drop": 52,
+    "peak_R": 2653,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 252,
+    "land_R": 2653
+   },
+   {
+    "vertices": [
+     6,
+     13
+    ],
+    "landing": 13,
+    "kind": "descends",
+    "orbit": 148,
+    "macros": 3,
+    "first_drop": 52,
+    "peak_R": 2653,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 252,
+    "land_R": 2653
+   }
+  ]
+ },
+ {
+  "order": 20,
+  "graph": 7,
+  "root": 11,
+  "orbit": 18,
+  "stuck_p": 1,
+  "stuck_q": 164,
+  "stuck_R": 2565,
+  "n_paths": 2,
+  "n_shortest": 2,
+  "path": [
+   10,
+   9
+  ],
+  "path_length": 2,
+  "landing": 9,
+  "landing_kind": "descends",
+  "landing_orbit": 23,
+  "land_p": 1,
+  "land_q": 252,
+  "land_R": 2653,
+  "scale": 2401,
+  "eager": {
+   "macros": 2,
+   "first_drop": 52,
+   "first_len": 1,
+   "peak_R": 2653,
+   "peak_endpoint_R": 2653,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 185,
+   "trace": [
+    {
+     "i": 23,
+     "p": 1,
+     "q": 252,
+     "R": 2653
+    },
+    {
+     "i": 51,
+     "p": 1,
+     "q": 200,
+     "R": 2601
+    },
+    {
+     "i": 49,
+     "p": 0,
+     "q": 185,
+     "R": 185
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 6,
+   "first_drop": 43,
+   "first_len": 2,
+   "peak_R": 2653,
+   "peak_endpoint_R": 2653,
+   "revisited": true,
+   "revisit": {
+    "at_macro": 2,
+    "index": 24,
+    "kind": "intermediate"
+   },
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 249,
+   "trace": [
+    {
+     "i": 23,
+     "p": 1,
+     "q": 252,
+     "R": 2653
+    },
+    {
+     "i": 52,
+     "p": 1,
+     "q": 209,
+     "R": 2610
+    },
+    {
+     "i": 22,
+     "p": 1,
+     "q": 204,
+     "R": 2605
+    },
+    {
+     "i": 41,
+     "p": 1,
+     "q": 196,
+     "R": 2597
+    },
+    {
+     "i": 6,
+     "p": 1,
+     "q": 175,
+     "R": 2576
+    },
+    {
+     "i": 25,
+     "p": 1,
+     "q": 168,
+     "R": 2569
+    },
+    {
+     "i": 102,
+     "p": 0,
+     "q": 249,
+     "R": 249
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 2,
+   "first_drop": 52,
+   "peak_R": 2653,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     10,
+     9
+    ],
+    "landing": 9,
+    "kind": "descends",
+    "orbit": 23,
+    "macros": 2,
+    "first_drop": 52,
+    "peak_R": 2653,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 252,
+    "land_R": 2653
+   },
+   {
+    "vertices": [
+     17,
+     19
+    ],
+    "landing": 19,
+    "kind": "descends",
+    "orbit": 14,
+    "macros": 2,
+    "first_drop": 52,
+    "peak_R": 2653,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 252,
+    "land_R": 2653
+   }
+  ]
+ },
+ {
+  "order": 20,
+  "graph": 60,
+  "root": 3,
+  "orbit": 93,
+  "stuck_p": 1,
+  "stuck_q": 169,
+  "stuck_R": 2570,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   2
+  ],
+  "path_length": 1,
+  "landing": 2,
+  "landing_kind": "descends",
+  "landing_orbit": 137,
+  "land_p": 1,
+  "land_q": 177,
+  "land_R": 2578,
+  "scale": 2401,
+  "eager": {
+   "macros": 2,
+   "first_drop": 6,
+   "first_len": 1,
+   "peak_R": 2665,
+   "peak_endpoint_R": 2578,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 253,
+   "trace": [
+    {
+     "i": 137,
+     "p": 1,
+     "q": 177,
+     "R": 2578
+    },
+    {
+     "i": 138,
+     "p": 1,
+     "q": 171,
+     "R": 2572
+    },
+    {
+     "i": 112,
+     "p": 0,
+     "q": 253,
+     "R": 253
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 2,
+   "first_drop": 6,
+   "first_len": 1,
+   "peak_R": 2584,
+   "peak_endpoint_R": 2578,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 260,
+   "trace": [
+    {
+     "i": 137,
+     "p": 1,
+     "q": 177,
+     "R": 2578
+    },
+    {
+     "i": 138,
+     "p": 1,
+     "q": 171,
+     "R": 2572
+    },
+    {
+     "i": 117,
+     "p": 0,
+     "q": 260,
+     "R": 260
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 2,
+   "first_drop": 6,
+   "peak_R": 2665,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     2
+    ],
+    "landing": 2,
+    "kind": "descends",
+    "orbit": 137,
+    "macros": 2,
+    "first_drop": 6,
+    "peak_R": 2665,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 177,
+    "land_R": 2578
+   },
+   {
+    "vertices": [
+     4
+    ],
+    "landing": 4,
+    "kind": "descends",
+    "orbit": 77,
+    "macros": 1,
+    "first_drop": 2365,
+    "peak_R": 2653,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 192,
+    "land_R": 2593
+   },
+   {
+    "vertices": [
+     9
+    ],
+    "landing": 9,
+    "kind": "descends",
+    "orbit": 146,
+    "macros": 1,
+    "first_drop": 2354,
+    "peak_R": 2618,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 171,
+    "land_R": 2572
+   }
+  ]
+ },
+ {
+  "order": 20,
+  "graph": 60,
+  "root": 3,
+  "orbit": 169,
+  "stuck_p": 1,
+  "stuck_q": 169,
+  "stuck_R": 2570,
+  "n_paths": 5,
+  "n_shortest": 3,
+  "path": [
+   0
+  ],
+  "path_length": 1,
+  "landing": 0,
+  "landing_kind": "descends",
+  "landing_orbit": 143,
+  "land_p": 1,
+  "land_q": 192,
+  "land_R": 2593,
+  "scale": 2401,
+  "eager": {
+   "macros": 1,
+   "first_drop": 2365,
+   "first_len": 2,
+   "peak_R": 2653,
+   "peak_endpoint_R": 2593,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 228,
+   "trace": [
+    {
+     "i": 143,
+     "p": 1,
+     "q": 192,
+     "R": 2593
+    },
+    {
+     "i": 63,
+     "p": 0,
+     "q": 228,
+     "R": 228
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 2,
+   "first_drop": 6,
+   "first_len": 2,
+   "peak_R": 2616,
+   "peak_endpoint_R": 2593,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 263,
+   "trace": [
+    {
+     "i": 143,
+     "p": 1,
+     "q": 192,
+     "R": 2593
+    },
+    {
+     "i": 159,
+     "p": 1,
+     "q": 186,
+     "R": 2587
+    },
+    {
+     "i": 67,
+     "p": 0,
+     "q": 263,
+     "R": 263
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 2365,
+   "peak_R": 2653,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     0
+    ],
+    "landing": 0,
+    "kind": "descends",
+    "orbit": 143,
+    "macros": 1,
+    "first_drop": 2365,
+    "peak_R": 2653,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 192,
+    "land_R": 2593
+   },
+   {
+    "vertices": [
+     9
+    ],
+    "landing": 9,
+    "kind": "descends",
+    "orbit": 181,
+    "macros": 1,
+    "first_drop": 2354,
+    "peak_R": 2618,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 171,
+    "land_R": 2572
+   },
+   {
+    "vertices": [
+     10
+    ],
+    "landing": 10,
+    "kind": "descends",
+    "orbit": 24,
+    "macros": 2,
+    "first_drop": 6,
+    "peak_R": 2665,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 177,
+    "land_R": 2578
+   }
+  ]
+ },
+ {
+  "order": 20,
+  "graph": 62,
+  "root": 15,
+  "orbit": 83,
+  "stuck_p": 1,
+  "stuck_q": 164,
+  "stuck_R": 2565,
+  "n_paths": 6,
+  "n_shortest": 2,
+  "path": [
+   8
+  ],
+  "path_length": 1,
+  "landing": 8,
+  "landing_kind": "descends",
+  "landing_orbit": 86,
+  "land_p": 1,
+  "land_q": 164,
+  "land_R": 2565,
+  "scale": 2401,
+  "eager": {
+   "macros": 1,
+   "first_drop": 2324,
+   "first_len": 2,
+   "peak_R": 2659,
+   "peak_endpoint_R": 2565,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 241,
+   "trace": [
+    {
+     "i": 86,
+     "p": 1,
+     "q": 164,
+     "R": 2565
+    },
+    {
+     "i": 127,
+     "p": 0,
+     "q": 241,
+     "R": 241
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 2324,
+   "first_len": 2,
+   "peak_R": 2659,
+   "peak_endpoint_R": 2565,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 241,
+   "trace": [
+    {
+     "i": 86,
+     "p": 1,
+     "q": 164,
+     "R": 2565
+    },
+    {
+     "i": 127,
+     "p": 0,
+     "q": 241,
+     "R": 241
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 2324,
+   "peak_R": 2659,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     8
+    ],
+    "landing": 8,
+    "kind": "descends",
+    "orbit": 86,
+    "macros": 1,
+    "first_drop": 2324,
+    "peak_R": 2659,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 164,
+    "land_R": 2565
+   },
+   {
+    "vertices": [
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 80,
+    "macros": 1,
+    "first_drop": 2324,
+    "peak_R": 2659,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 164,
+    "land_R": 2565
+   }
+  ]
+ },
+ {
+  "order": 20,
+  "graph": 63,
+  "root": 3,
+  "orbit": 189,
+  "stuck_p": 1,
+  "stuck_q": 164,
+  "stuck_R": 2565,
+  "n_paths": 6,
+  "n_shortest": 3,
+  "path": [
+   0
+  ],
+  "path_length": 1,
+  "landing": 0,
+  "landing_kind": "descends",
+  "landing_orbit": 144,
+  "land_p": 1,
+  "land_q": 164,
+  "land_R": 2565,
+  "scale": 2401,
+  "eager": {
+   "macros": 1,
+   "first_drop": 2324,
+   "first_len": 2,
+   "peak_R": 2659,
+   "peak_endpoint_R": 2565,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 241,
+   "trace": [
+    {
+     "i": 144,
+     "p": 1,
+     "q": 164,
+     "R": 2565
+    },
+    {
+     "i": 111,
+     "p": 0,
+     "q": 241,
+     "R": 241
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 2324,
+   "first_len": 2,
+   "peak_R": 2659,
+   "peak_endpoint_R": 2565,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 241,
+   "trace": [
+    {
+     "i": 144,
+     "p": 1,
+     "q": 164,
+     "R": 2565
+    },
+    {
+     "i": 111,
+     "p": 0,
+     "q": 241,
+     "R": 241
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 2324,
+   "peak_R": 2659,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     0
+    ],
+    "landing": 0,
+    "kind": "descends",
+    "orbit": 144,
+    "macros": 1,
+    "first_drop": 2324,
+    "peak_R": 2659,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 164,
+    "land_R": 2565
+   },
+   {
+    "vertices": [
+     4
+    ],
+    "landing": 4,
+    "kind": "descends",
+    "orbit": 98,
+    "macros": 1,
+    "first_drop": 2322,
+    "peak_R": 2659,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 164,
+    "land_R": 2565
+   },
+   {
+    "vertices": [
+     11
+    ],
+    "landing": 11,
+    "kind": "descends",
+    "orbit": 38,
+    "macros": 2,
+    "first_drop": 8,
+    "peak_R": 2649,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 208,
+    "land_R": 2609
+   }
+  ]
+ },
+ {
+  "order": 20,
+  "graph": 63,
+  "root": 15,
+  "orbit": 197,
+  "stuck_p": 1,
+  "stuck_q": 164,
+  "stuck_R": 2565,
+  "n_paths": 6,
+  "n_shortest": 3,
+  "path": [
+   6
+  ],
+  "path_length": 1,
+  "landing": 6,
+  "landing_kind": "descends",
+  "landing_orbit": 155,
+  "land_p": 1,
+  "land_q": 164,
+  "land_R": 2565,
+  "scale": 2401,
+  "eager": {
+   "macros": 1,
+   "first_drop": 2324,
+   "first_len": 2,
+   "peak_R": 2659,
+   "peak_endpoint_R": 2565,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 241,
+   "trace": [
+    {
+     "i": 155,
+     "p": 1,
+     "q": 164,
+     "R": 2565
+    },
+    {
+     "i": 136,
+     "p": 0,
+     "q": 241,
+     "R": 241
+    }
+   ]
+  },
+  "pessimistic": {
+   "macros": 1,
+   "first_drop": 2324,
+   "first_len": 2,
+   "peak_R": 2659,
+   "peak_endpoint_R": 2565,
+   "revisited": false,
+   "revisit": null,
+   "reached": true,
+   "blocked": false,
+   "end_p": 0,
+   "end_q": 241,
+   "trace": [
+    {
+     "i": 155,
+     "p": 1,
+     "q": 164,
+     "R": 2565
+    },
+    {
+     "i": 136,
+     "p": 0,
+     "q": 241,
+     "R": 241
+    }
+   ]
+  },
+  "eager_positions": {
+   "macros": 1,
+   "first_drop": 2324,
+   "peak_R": 2659,
+   "revisited": false,
+   "reached": true,
+   "same_trace": true
+  },
+  "eager_envelope": [
+   {
+    "vertices": [
+     6
+    ],
+    "landing": 6,
+    "kind": "descends",
+    "orbit": 155,
+    "macros": 1,
+    "first_drop": 2324,
+    "peak_R": 2659,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 164,
+    "land_R": 2565
+   },
+   {
+    "vertices": [
+     14
+    ],
+    "landing": 14,
+    "kind": "descends",
+    "orbit": 148,
+    "macros": 1,
+    "first_drop": 2322,
+    "peak_R": 2659,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 164,
+    "land_R": 2565
+   },
+   {
+    "vertices": [
+     16
+    ],
+    "landing": 16,
+    "kind": "descends",
+    "orbit": 138,
+    "macros": 2,
+    "first_drop": 8,
+    "peak_R": 2649,
+    "revisited": false,
+    "reached": true,
+    "land_p": 1,
+    "land_q": 208,
+    "land_R": 2609
+   }
+  ]
+ }
+]
