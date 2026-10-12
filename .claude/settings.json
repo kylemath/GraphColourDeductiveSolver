@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 wp_launch.py start:*)",
+      "Bash(python3 wp_launch.py status:*)",
+      "Bash(python3 wp_launch.py stop:*)"
+    ]
+  }
+}
