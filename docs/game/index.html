@@ -3,9 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>Fill the Hole</title>
+<title>4square</title>
 <meta name="description" content="A Kempe-chain puzzle game: trace two-colour chains of tiles to capture them, flip captured chains, and work outward-in until the rim of a degree-five hole uses only three colours. Twelve levels, from the icosahedron to the deepest colouring at the order-34 census record hole.">
-<meta name="theme-color" content="#0d1117">
+<meta name="theme-color" content="#2a7fdc">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="4square">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
   :root {
     --bg: #0d1117; --bg2: #161b22; --bg3: #21262d; --line: #30363d;
@@ -44,7 +51,7 @@
   /* chunky 3D buttons */
   .btn3d { border: 0; border-radius: 22px; font-weight: 900; color: #fff; letter-spacing: .03em; box-shadow: 0 6px 0 var(--sh), 0 12px 22px rgba(0,0,0,.25); transition: transform .08s, box-shadow .08s; }
   .btn3d:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--sh), 0 4px 10px rgba(0,0,0,.2); }
-  .btn3d.green { --sh: #1d7a2c; background: linear-gradient(180deg, #8af574, #2fbf4a); text-shadow: 0 3px 0 rgba(0,0,0,.22); }
+  .btn3d.green { --sh: var(--sk-btn-shadow, #1d7a2c); background: var(--sk-btn, linear-gradient(180deg, #8af574, #2fbf4a)); color: var(--sk-btn-ink, #fff); text-shadow: 0 3px 0 rgba(0,0,0,.22); }
   .btn3d.yellow { --sh: #b06a00; background: linear-gradient(180deg, #ffe066, #ffab1a); color: #4a2a00; }
   .btn3d.white { --sh: #8fa6c4; background: #fff; color: #1c1640; }
   .btn3d:focus-visible, .mnode:focus-visible, .htdots button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
@@ -52,7 +59,7 @@
   .badge .s { color: #ffd84a; } .badge .p { color: #aef0ff; }
 
   /* ---------- title screen ---------- */
-  #title { align-items: center; overflow: hidden; background: linear-gradient(180deg, #5fd0ff 0%, #3aa6f0 48%, #2a7fdc 100%); padding: max(12px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)); }
+  #title { align-items: center; overflow: hidden; background: var(--sk-bg, linear-gradient(180deg, #5fd0ff 0%, #3aa6f0 48%, #2a7fdc 100%)); padding: max(12px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)); }
   #title .sky { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
   .cloud { position: absolute; left: 0; width: 86px; height: 26px; background: #fff; border-radius: 999px; opacity: .85; animation: drift 38s linear infinite; }
   .cloud::before, .cloud::after { content: ""; position: absolute; background: #fff; border-radius: 50%; }
@@ -66,6 +73,8 @@
   .logo .l1, .logo .l2 { display: block; white-space: nowrap; }
   .logo .l1 { font-size: clamp(2.2rem, 12vw, 3.3rem); }
   .logo .l2 { font-size: clamp(4.6rem, 27vw, 7rem); letter-spacing: .01em; }
+  .logo .l4 { display: block; white-space: nowrap; font-size: clamp(3.6rem, 19vw, 5.4rem); letter-spacing: .01em; }
+  .logo .l4 .four { color: var(--sk-accent, #ffd84a); }
   .logo .ch { display: inline-block; text-shadow: 4px 0 #1c1640, -4px 0 #1c1640, 0 4px #1c1640, 0 -4px #1c1640, 3px 3px #1c1640, -3px 3px #1c1640, 3px -3px #1c1640, -3px -3px #1c1640, 0 9px 0 #1c1640, 0 14px 20px rgba(0,0,0,.3); animation: hop 2.6s ease-in-out infinite; }
   .logo .l1 .ch { text-shadow: 3px 0 #1c1640, -3px 0 #1c1640, 0 3px #1c1640, 0 -3px #1c1640, 2px 2px #1c1640, -2px 2px #1c1640, 2px -2px #1c1640, -2px -2px #1c1640, 0 6px 0 #1c1640; }
   @keyframes hop { 0%, 55%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 25% { transform: translateY(-12px) rotate(calc(var(--r, 0deg) * -1)) scale(1.06); } }
@@ -74,6 +83,19 @@
   #btnPlay { font-size: 2.1rem; width: min(78vw, 300px); padding: 12px 0; animation: breathe2 1.8s ease-in-out infinite; }
   @keyframes breathe2 { 50% { transform: scale(1.05); } }
   #btnHowTitle { font-size: 1.1rem; padding: 11px 24px; }
+  .trow { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  #btnInstall { font-size: 1.1rem; padding: 11px 20px; }
+  #btnInstall[hidden] { display: none; }
+  /* install sheet: how to add the game to the home screen (iPhone Safari, or Android when the browser has no prompt) */
+  #installSheet .card { text-align: left; color: var(--text); }
+  #installSheet h2 { margin: 4px 0 8px; font-size: 1.35rem; text-align: center; }
+  #installSheet .ico { display: block; width: 72px; height: 72px; margin: 0 auto 6px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,.35); }
+  #installSheet ol { margin: 8px 0 14px; padding-left: 1.4em; line-height: 1.5; font-size: 1.02rem; }
+  #installSheet li { margin: 6px 0; }
+  #installSheet .glyph { display: inline-flex; align-items: center; justify-content: center; min-width: 1.7em; height: 1.6em; padding: 0 .3em; margin: 0 .15em;
+    border-radius: 7px; background: #fff; color: #1c6fe0; font-weight: 900; vertical-align: -.25em; }
+  #installSheet .note { color: var(--dim); font-size: .85rem; margin: 0 0 12px; }
+  #installSheet .row { display: flex; justify-content: center; }
   .tfoot { font-size: .72rem; color: rgba(255,255,255,.8); } .tfoot a { color: #fff; }
 
   /* ---------- level map (saga) ---------- */
@@ -139,7 +161,7 @@
   .chip { border-radius: 999px; padding: 3px 9px; font-size: .78rem; font-weight: 800; background: var(--bg2); border: 1px solid var(--line); color: var(--dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .chip b { color: var(--text); }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .gtop { background: linear-gradient(180deg, rgba(14,52,110,.92) 0%, rgba(14,52,110,.7) 100%); box-shadow: 0 3px 0 rgba(14,52,110,.35); position: relative; z-index: 5; }
+  .gtop { background: var(--sk-hud, linear-gradient(180deg, rgba(14,52,110,.92) 0%, rgba(14,52,110,.7) 100%)); box-shadow: 0 3px 0 rgba(14,52,110,.35); position: relative; z-index: 5; }
   .hud { display: flex; align-items: center; gap: 8px; padding: 8px 10px 2px; }
   .rbtn.sm { width: 42px; height: 42px; border-radius: 14px; font-size: 1.2rem; flex: none; box-shadow: 0 4px 0 var(--sh), 0 8px 14px rgba(0,0,0,.2); }
   .rbtn.sm:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--sh); }
@@ -194,6 +216,83 @@
   .ccard.sel { transform: translateY(-6px); border-color: #ffd84a; box-shadow: 0 11px 0 #141a4a, 0 0 18px rgba(255,216,74,.7); }
   .ccard.lock { filter: saturate(.75); }
   .board { position: relative; flex: 1; min-height: 0; touch-action: none; overflow: hidden; }
+  /* skins: any other game style plays in this frame instead of the island board (lab/core.js reports to the app) */
+  /* ---- skins (SKIN-SPEC.md): every non-Islands skin restyles the shell through its --sk-* tokens ---- */
+  body:not([data-skin="islands"]) #game { background: var(--sk-bg); }
+  body:not([data-skin="islands"]) .howto { background: var(--sk-bg); color: var(--sk-ink); }
+  body:not([data-skin="islands"]) .howto .htdemo { background: var(--sk-card); border-radius: var(--sk-radius); }
+  body:not([data-skin="islands"]) .howto h2, body:not([data-skin="islands"]) .card h2, body:not([data-skin="islands"]) .rtitle,
+  body:not([data-skin="islands"]) .btn3d, body:not([data-skin="islands"]) .skins button, body:not([data-skin="islands"]) .lvname,
+  body:not([data-skin="islands"]) .logo { font-family: var(--sk-font); }
+  body:not([data-skin="islands"]) .skins .lbl, body:not([data-skin="islands"]) .tfoot { color: var(--sk-ink); text-shadow: none; }
+  body:not([data-skin="islands"]) .tfoot a { color: inherit; }
+  body:not([data-skin="islands"]) .skinblurb { color: var(--sk-ink); }
+  body:not([data-skin="islands"]) .howto h2 { color: var(--sk-ink); text-shadow: none; }
+  /* chrome tokens (SKIN-SPEC section 3b): bars, chips, secondary buttons; each falls back to the card colours */
+  body:not([data-skin="islands"]) .badge, body:not([data-skin="islands"]) .goalbar, body:not([data-skin="islands"]) .starbar,
+  body:not([data-skin="islands"]) .mnode .mst, body:not([data-skin="islands"]) .mnode .mtag, body:not([data-skin="islands"]) .say .msg {
+    background: var(--sk-chip, var(--sk-card)); color: var(--sk-chip-ink, var(--sk-card-ink)); border-color: var(--sk-edge, color-mix(in srgb, var(--sk-card-ink) 28%, transparent)); text-shadow: none; }
+  body:not([data-skin="islands"]) .mnode .mst i { color: color-mix(in srgb, var(--sk-chip-ink, var(--sk-card-ink)) 35%, transparent); }
+  body:not([data-skin="islands"]) .mnode .pulse { border-color: var(--sk-accent); }
+  body:not([data-skin="islands"]) .coins { background: var(--sk-coin, var(--sk-accent)); color: var(--sk-btn-ink); border-color: var(--sk-edge, color-mix(in srgb, var(--sk-card-ink) 28%, transparent)); box-shadow: none; text-shadow: none; }
+  body:not([data-skin="islands"]) .btn3d.white, body:not([data-skin="islands"]) .btn3d.yellow, body:not([data-skin="islands"]) .btn3d.blue, body:not([data-skin="islands"]) .btn3d.orange {
+    background: var(--sk-btn2, var(--sk-card)); color: var(--sk-btn2-ink, var(--sk-card-ink)); text-shadow: none; --sh: var(--sk-edge, color-mix(in srgb, var(--sk-card-ink) 30%, transparent)); border: 2px solid var(--sk-edge, color-mix(in srgb, var(--sk-card-ink) 22%, transparent)); }
+  body:not([data-skin="islands"]) .btn3d.go { background: var(--sk-btn); color: var(--sk-btn-ink); --sh: var(--sk-btn-shadow); text-shadow: none; }
+  /* the MAP hexagon and the level badge follow the skin's accent and edge */
+  body:not([data-skin="islands"]) #mini .hx { background: var(--sk-edge, color-mix(in srgb, var(--sk-card-ink) 40%, transparent)); }
+  body:not([data-skin="islands"]) #mini .hx canvas { background: var(--sk-bg-map, #05070a); }
+  body:not([data-skin="islands"]) #mini .lbl { background: var(--sk-accent); border-color: var(--sk-edge, #1c1640); color: var(--sk-btn-ink); }
+  body:not([data-skin="islands"]) #lvBadge .tl, body:not([data-skin="islands"]) #briefBadge .tl {
+    --c: var(--sk-accent); --d: color-mix(in srgb, var(--sk-accent) 55%, #000); --n: color-mix(in srgb, var(--sk-accent) 40%, #fff); }
+  body:not([data-skin="islands"]) #lvBadge .tl .tp, body:not([data-skin="islands"]) #briefBadge .tl .tp { fill: color-mix(in srgb, var(--sk-accent) 18%, #000); }
+  body:not([data-skin="islands"]) .btn3d svg path, body:not([data-skin="islands"]) .btn3d svg g { stroke: currentColor !important; }
+  body:not([data-skin="islands"]) .btn3d.rb svg g path:first-child { stroke: none !important; }
+  body:not([data-skin="islands"]) .gtop .lvname, body:not([data-skin="islands"]) .gtop .lvname * { color: var(--sk-ink); text-shadow: none; }
+  body:not([data-skin="islands"]) #brief .card, body:not([data-skin="islands"]) #win .card { background: var(--sk-card); color: var(--sk-card-ink);
+    border-color: color-mix(in srgb, var(--sk-card-ink) 18%, transparent); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+  body:not([data-skin="islands"]) #brief .card h2, body:not([data-skin="islands"]) .rtitle { color: var(--sk-card-ink); text-shadow: none; }
+  body:not([data-skin="islands"]) #win .card p, body:not([data-skin="islands"]) #bonus .bhead { color: var(--sk-card-ink); }
+  body:not([data-skin="islands"]) #bonus .btag { background: var(--sk-accent); color: var(--sk-btn-ink); border-color: transparent; box-shadow: none; }
+  body:not([data-skin="islands"]) #bonus .bskip { background: transparent; color: var(--sk-card-ink); border-color: color-mix(in srgb, var(--sk-card-ink) 40%, transparent); }
+  body:not([data-skin="islands"]) #bonus .bwrap { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sk-card-ink) 25%, transparent); }
+  body:not([data-skin="islands"]) .htdots button { background: color-mix(in srgb, var(--sk-ink) 25%, transparent); }
+  body:not([data-skin="islands"]) .htdots button.on { background: var(--sk-accent); }
+  body:not([data-skin="islands"]) .htnum { background: var(--sk-accent); color: var(--sk-btn-ink); box-shadow: none; }
+  body:not([data-skin="islands"]) .htskip { background: color-mix(in srgb, var(--sk-ink) 12%, transparent); color: var(--sk-ink); }
+  body:not([data-skin="islands"]) #title .btn3d.yellow, body:not([data-skin="islands"]) #title .btn3d.blue,
+  body:not([data-skin="islands"]) .badge { background: var(--sk-card); color: var(--sk-card-ink); --sh: color-mix(in srgb, var(--sk-card-ink) 30%, transparent); text-shadow: none;
+    border-color: color-mix(in srgb, var(--sk-card-ink) 25%, transparent); }
+  body:not([data-skin="islands"]) .skins button { background: color-mix(in srgb, var(--sk-card-ink) 8%, transparent); color: var(--sk-ink); border-color: color-mix(in srgb, var(--sk-ink) 35%, transparent); box-shadow: none; }
+  body:not([data-skin="islands"]) .skins button[aria-checked="true"] { background: var(--sk-accent); color: var(--sk-btn-ink); border-color: var(--sk-accent); }
+  body:not([data-skin="islands"]) #title .waves, body:not([data-skin="islands"]) #title .sky { display: none; }
+  #tSkinArt { width: min(76vw, 300px); aspect-ratio: 300 / 250; display: none; }
+  #tSkinArt svg { width: 100%; height: 100%; display: block; }
+  body.skinart #tSkinArt { display: block; } body.skinart #tDemo { display: none; }
+  .skinblurb { grid-column: 1 / -1; text-align: center; font-size: .78rem; opacity: .85; min-height: 1em; color: #fff; text-shadow: 0 1px 0 rgba(14,52,110,.5); }
+  /* HUD levels */
+  #game.hud-compact .stats .goalbar, #game.hud-compact .coins, #game.hud-compact #btnHelp { display: none; }
+  #game.hud-compact .stats { padding-top: 0; }
+  #game.hud-minimal .gtop { position: absolute; left: 0; right: 0; top: 0; background: none; box-shadow: none; pointer-events: none; z-index: 6; }
+  #game.hud-minimal .gtop .lvname, #game.hud-minimal .gtop .coins, #game.hud-minimal #btnHelp, #game.hud-minimal .stats .goalbar { display: none; }
+  #game.hud-minimal #btnMenu, #game.hud-minimal #starMeter { pointer-events: auto; }
+  #game.hud-minimal .hud { justify-content: flex-start; }
+  #game.hud-minimal .stats { position: absolute; right: 10px; top: max(10px, env(safe-area-inset-top)); transform: scale(.72); transform-origin: top right; }
+  /* the exploration map floats over any skin */
+  #mini.floatmap { position: fixed; right: 8px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 7; }
+  #game.hasMini #mini.floatmap { display: block; }
+  #game.hud-full #mini.floatmap:not(.big) { bottom: auto; top: calc(100px + env(safe-area-inset-top)); width: 92px; height: 80px; }
+  #game.hud-compact #mini.floatmap:not(.big) { bottom: auto; top: calc(6px + env(safe-area-inset-top)); right: 10px; width: 62px; height: 54px; }   /* docked in the slim bar's empty right side */
+  #game.hud-minimal #mini.floatmap:not(.big) { display: none; }
+  #mini.floatmap.big { right: auto; bottom: auto; left: calc(50% - min(47vw, 215px)); top: calc(50% - min(94vw, 430px) * .433); transform: none !important; z-index: 9; }
+  #skinFrame { display: none; flex: 1; min-height: 0; width: 100%; border: 0; background: #fff; }
+  #game.skinned .board, #game.skinned .bar { display: none; }
+  #game.skinned #skinFrame { display: block; }
+  .skins { display: grid; grid-template-columns: repeat(4, minmax(0, 84px)); gap: 6px; justify-content: center; margin: 2px 0 4px; }
+  .skins .lbl { grid-column: 1 / -1; text-align: center; color: #fff; font-weight: 800; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 2px 0 rgba(14,52,110,.5); }
+  .skins button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-width: 0; padding: 5px 3px 4px; line-height: 1.1; font-size: .68rem !important; border-radius: 14px; border: 3px solid rgba(255,255,255,.55);
+    background: rgba(255,255,255,.18); color: #fff; font: inherit; font-weight: 800; font-size: .82rem; cursor: pointer; box-shadow: 0 3px 0 rgba(14,52,110,.35); }
+  .skins button .ic { font-size: 1.25rem; line-height: 1.1; }
+  .skins button[aria-checked="true"] { background: #fff; color: #1c1640; border-color: #ffd84a; box-shadow: 0 3px 0 #c9a21a; }
   .board #cv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; user-select: none; -webkit-user-select: none; }
   #cv .wl > path { fill: none; stroke-linecap: round; stroke-linejoin: round; } #cv .wl .ws { stroke: var(--d); } #cv .wl .wo { stroke: #1c1640; }
   #cv .wl .wb { stroke: var(--c); } #cv .wl .wr { stroke: var(--n); } #cv .wl .wp { stroke: #07090d; } #cv .wl .wi { fill: #07090d; stroke: var(--c); }
@@ -296,7 +395,7 @@
   /* overlays */
   .overlay { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(5, 8, 12, .62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); padding: 16px; z-index: 10; }
   .overlay.on { display: flex; }
-  .card { width: 100%; max-width: 420px; max-height: 100%; overflow-y: auto; background: linear-gradient(170deg, #232b38, #161b22); border: 1px solid var(--line); border-radius: 24px; padding: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: cardin .35s cubic-bezier(.3, 1.4, .5, 1); }
+  .card { width: 100%; max-width: 420px; max-height: 100%; overflow-y: auto; background: var(--sk-card, linear-gradient(170deg, #232b38, #161b22)); color: var(--sk-card-ink, inherit); border-radius: var(--sk-radius, 24px) !important; border: 1px solid var(--line); border-radius: 24px; padding: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: cardin .35s cubic-bezier(.3, 1.4, .5, 1); }
   @keyframes cardin { from { transform: scale(.85); opacity: 0; } }
   .card .k { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--faint); }
   .card h2 { margin: .2rem 0 .6rem; font-size: 1.5rem; }
@@ -372,7 +471,7 @@
 </head>
 <body>
 
-<section id="title" class="screen on" aria-label="Fill the Hole: title screen">
+<section id="title" class="screen on" aria-label="4square: title screen">
   <div class="sky" aria-hidden="true">
     <div class="cloud" style="top:9%;animation-duration:42s;animation-delay:-8s"></div>
     <div class="cloud" style="top:20%;transform:scale(.7);animation-duration:55s;animation-delay:-30s"></div>
@@ -384,19 +483,23 @@
   </svg></div>
   <div class="tcol">
     <div class="ttop"><div class="badge" id="titleBadge" aria-label="Your stars and points"><span class="s">★ <b id="tStars">0</b></span><span class="p">✦ <b id="tScore">0</b></span></div></div>
-    <h1 class="logo" aria-label="Fill the Hole">
-      <span class="l1" aria-hidden="true"><span class="ch" style="--r:-4deg">F</span><span class="ch" style="animation-delay:.08s">i</span><span class="ch" style="animation-delay:.16s">l</span><span class="ch" style="animation-delay:.24s">l</span>&nbsp;<span class="ch" style="animation-delay:.32s">t</span><span class="ch" style="animation-delay:.4s">h</span><span class="ch" style="animation-delay:.48s;--r:4deg">e</span></span>
-      <span class="l2" aria-hidden="true"><span class="ch" style="color:#ff6a45;--r:-6deg;animation-delay:.6s">H</span><span class="ch" style="color:#4aa8ff;animation-delay:.72s">O</span><span class="ch" style="color:#ffd84a;--r:5deg;animation-delay:.84s">L</span><span class="ch" style="color:#62d96a;--r:-4deg;animation-delay:.96s">E</span></span>
+    <h1 class="logo" aria-label="4square">
+      <span class="l4" aria-hidden="true"><span class="ch four" style="--r:-6deg">4</span><span class="ch" style="color:#ff6a45;animation-delay:.12s">s</span><span class="ch" style="color:#4aa8ff;--r:4deg;animation-delay:.24s">q</span><span class="ch" style="color:#ffd84a;animation-delay:.36s">u</span><span class="ch" style="color:#62d96a;--r:-4deg;animation-delay:.48s">a</span><span class="ch" style="color:#ff6a45;animation-delay:.6s">r</span><span class="ch" style="color:#4aa8ff;--r:5deg;animation-delay:.72s">e</span></span>
     </h1>
+    <div id="tSkinArt" aria-hidden="true"></div>
     <svg id="tDemo" viewBox="0 0 300 250" role="img" aria-label="Five element tiles round a grey question-mark tile; one swaps and the middle lights up"></svg>
     <div class="tbtns">
       <button class="btn3d green" id="btnPlay" aria-label="Play">PLAY ▶</button>
-      <button class="btn3d yellow" id="btnHowTitle" aria-label="How to play">❓ How to play</button>
-      <div class="consent" id="consent" hidden>
+      <div class="skins" id="skinPick" role="radiogroup" aria-label="Game style"></div>
+      <div class="trow">
+        <button class="btn3d yellow" id="btnHowTitle" aria-label="How to play">❓ How to play</button>
+        <button class="btn3d blue" id="btnInstall" aria-label="Install the game on this phone" hidden>📲 Install</button>
+      </div>
+      <div class="consent" id="consent" hidden><!-- research request: no longer shown -->
         <p>🔬 Can we save your moves to help scientists learn how people solve puzzles? No names, just taps and timing.</p>
         <div><button id="consentYes">OK!</button><button id="consentNo">No thanks</button></div>
       </div>
-      <div class="tfoot">Part of the <a href="../index.html">Graph Colour Deductive Solver</a> · <a href="index-3d.html">3D mode (desktop)</a></div>
+      <div class="tfoot">Part of the <a href="https://kylemath.github.io/GraphColourDeductiveSolver/">Graph Colour Deductive Solver</a> · <a href="index-3d.html">3D mode (desktop)</a></div>
     </div>
   </div>
 </section>
@@ -432,6 +535,7 @@
     <div id="compass" aria-hidden="true"></div>
     <div id="toast"></div>
   </div>
+  <iframe id="skinFrame" title="Game" allow="autoplay"></iframe>
   <div class="bar">
     <button class="btn3d orange rb" id="btnUndo" aria-label="Flip back the last flip" title="Back"><svg viewBox="0 0 28 28" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11h9a6 6 0 0 1 0 12h-6M13 6l-5 5 5 5" stroke="#1c1640" stroke-width="7"/><path d="M9 11h9a6 6 0 0 1 0 12h-6M13 6l-5 5 5 5" stroke="#fff" stroke-width="3.6"/></g></svg></button>
     <button class="btn3d go trace" id="btnGo" aria-label="Next action"><span id="goIcon">👆</span><span id="goText">TRACE</span></button>
@@ -439,6 +543,13 @@
     <button class="btn3d blue rb" id="btnRestart" aria-label="Restart level" title="Restart"><svg viewBox="0 0 28 28" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 10.5A8.5 8.5 0 1 0 22.5 16M22 4.5v6h-6" stroke="#1c1640" stroke-width="7"/><path d="M21.5 10.5A8.5 8.5 0 1 0 22.5 16M22 4.5v6h-6" stroke="#fff" stroke-width="3.6"/></g></svg></button>
   </div>
 </section>
+
+<div class="overlay" id="installSheet" role="dialog" aria-label="Install the game"><div class="card">
+  <img class="ico" src="icons/icon-192.png" alt="">
+  <h2>Put 4square on your home screen</h2>
+  <div id="installSteps"></div>
+  <div class="row"><button class="btn3d green" id="installOk">GOT IT</button></div>
+</div></div>
 
 <div class="overlay" id="brief" role="dialog" aria-label="Level briefing"><div class="card">
   <svg id="briefBadge" viewBox="-40 -40 80 80" aria-hidden="true"></svg>
@@ -475,6 +586,15 @@
 <script src="telemetry.js"></script>
 <script src="levels.js"></script>
 <script src="layout.js"></script>
+<script src="skins/registry.js"></script>
+<script src="skins/islands.js"></script>
+<script src="skins/dots.js"></script>
+<script src="skins/doodle.js"></script>
+<script src="skins/blank.js"></script>
+<script src="skins/map.js"></script>
+<script src="skins/swipe.js"></script>
+<script src="skins/ions.js"></script>
+<script src="skins/tables.js"></script>
 <script>
 (function () {
   'use strict';
@@ -499,9 +619,19 @@
   let save = { best: {} };
   try { save = JSON.parse(localStorage.getItem(KEY)) || save; } catch (e) {}
   const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(save)); } catch (e) {} };
-  // progress is keyed by level index: the Level -1 onboarding levels were added in front of 0.1, so shift old saves once
-  { const m0 = G.levels.findIndex(l => l.num === '0.1');
-    if (save.lv !== 2 && m0 > 0) { const b = {}; for (const k in save.best || {}) b[+k + m0] = save.best[k]; save.best = b; save.lv = 2; persist(); } }
+  // progress is kept per level id (save.byId), so levels can be inserted or reordered in levels.json. Old saves were
+  // keyed by position: v1 had no Level -1 (4 onboarding levels added in front), v2 matched G.legacy (the old 20 levels).
+  save.byId = save.byId || {};
+  if (save.lv !== 3) {
+    const old = save.best || {}, shift = save.lv === 2 ? 0 : 4, leg = G.legacy || [];
+    for (const k in old) { const id = leg[+k + shift]; if (id && !save.byId[id]) save.byId[id] = old[k]; }
+    save.lv = 3; delete save.best; persist();
+  }
+  // index-keyed view used by the rest of the page: save.best[i] is the record of G.levels[i]
+  save.best = new Proxy({}, {
+    get: (_, i) => { const L = G.levels[+i]; return L ? save.byId[L.id] : undefined; },
+    set: (_, i, v) => { const L = G.levels[+i]; if (L) save.byId[L.id] = v; return true; },
+  });
   const unlockAll = /[?&]all=1/.test(location.search);
 
   // ---------------- sound ----------------
@@ -608,7 +738,8 @@
   // The 3D (three.js) board lives on in index-3d.html.
   const svg = $('cv');
   const NEONH = ['#ff7a52', '#5ab4ff', '#ffe066', '#5cff8a'];
-  const WB = 56, LADW = 4.2, WGAP = 60;            // wall band width (centred on the coast), ladder half-width, gap between walls (px)
+  const LADW = 4.2, WGAP = 60;                     // ladder half-width, gap between walls (px)
+  let WB = 56;                                      // wall band width (centred on the coast): set per board to one tile's width
   let BW = 0, BH = 0, holeFill = -1, fingerPt = null, looping = false, cer = null, cerLight = null;   // cer: the hole-filling ceremony
   let T = [], bridgesM = [], ghosts = [], waves = [], hoverU = -1, BOX = null, LAYO = null, SIM = null, gFx = null;
   const shakes = new Map(), anim = new Map();
@@ -709,7 +840,7 @@
   // The three far-side regions stop being fixed walls and become small island tiles like the rest; the whole map then
   // settles like bubbles (freeStep): each tile a soft disc that pushes away any it overlaps, links as gentle springs,
   // the coast as a wall, so the tiles spread into an even, Voronoi-like packing. Ladders may cross while it settles.
-  const FREE = { on: !LABW };                        // now the default on every level (dev panel can switch it off while tuning)
+  const FREE = { on: false };                        // walls by default; the dev panel can switch free borders on while tuning
   const freeAllowed = () => !!L;
   const freeOn = () => FREE.on && freeAllowed();
   function freeGeometry(G) {
@@ -992,7 +1123,12 @@
     const br = $('board').getBoundingClientRect(); BW = br.width; BH = br.height;
     if (!BW || !BH || !L) return;
     svg.setAttribute('viewBox', '0 0 ' + q1(BW) + ' ' + q1(BH));
-    BOX = islandBox(); LAYO = boardGeometry(BOX); if (freeOn()) LAYO = freeGeometry(LAYO); startSim(grow !== false);
+    WB = 56; BOX = islandBox(); LAYO = boardGeometry(BOX);
+    if (!freeOn()) {                                 // walls as wide as a tile (flat to flat), so small screens do not get fat walls
+      const w2 = Math.max(18, Math.min(56, 2 * LAYO.ap));
+      if (Math.abs(w2 - WB) > 1) { WB = w2; BOX = islandBox(); LAYO = boardGeometry(BOX); }
+    }
+    if (freeOn()) LAYO = freeGeometry(LAYO); startSim(grow !== false);
     clear(svg); T = []; bridgesM = []; ghosts = [];
     // the sea, with drifting wave marks, and the island: surf, sand, grass
     const box = BOX; let sea = '<rect width="' + q1(BW) + '" height="' + q1(BH) + '" fill="#2a9fd8"/><g class="wv">';
@@ -1890,14 +2026,25 @@
   // The swap graph (kempeGraph) links every pattern to the ones one whole-chain swap away; it has cycles, not a tree.
   let W = null, Wst = null, wIdx = null, trail = [], here = -1, wKey = null, wVer = 0;
   const SQ3 = Math.sqrt(3);
-  const DF_GREEN = '#3fe06a', DF_GREY = '#8b949e', DF_RAMP = [[255, 225, 77], [255, 154, 60], [255, 59, 78]];
+  let DF_ZERO = [63, 224, 106], DF_NONE = [139, 148, 158], DF_RAMP = [[255, 225, 77], [255, 154, 60], [255, 59, 78]];
   function dfRGB(d) {
-    if (d < 0) return [139, 148, 158]; if (d === 0) return [63, 224, 106];
+    if (d < 0) return DF_NONE; if (d === 0) return DF_ZERO;
     const t = W.maxdF > 1 ? (d - 1) / (W.maxdF - 1) : 0, u = t * 2, i = Math.min(1, Math.floor(u)), f = u - i, a = DF_RAMP[i], b = DF_RAMP[i + 1];
     return [0, 1, 2].map(j => Math.round(a[j] + (b[j] - a[j]) * f));
   }
   const dfCol = (d, al) => { const c = dfRGB(d); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (al === undefined ? 1 : al) + ')'; };
-  const SEA = ['#2f86a8', '#2a77a0', '#246594', '#1d5486', '#174475', '#123662', '#0e2a50', '#0a1f3e', '#08182f'], SEA_X = '#050c18', LAND_UNK = '#6e6248';
+  const SEA0 = ['#2f86a8', '#2a77a0', '#246594', '#1d5486', '#174475', '#123662', '#0e2a50', '#0a1f3e', '#08182f'];
+  let MAP_FOG = [3, 5, 8], SEA = SEA0, SEA_X = '#050c18', LAND_UNK = '#6e6248', MAP_ROUTE = 'rgba(255,240,200,.85)', MAP_INK = 'rgba(200,230,255,.85)', MAP_CELL = null, MAP_CHART = 'COLOURING SPACE';
+  const rgbOf = c => { const m = /^#?([0-9a-f]{6})$/i.exec(c || ''); if (!m) return null; const v = parseInt(m[1], 16); return [v >> 16, (v >> 8) & 255, v & 255]; };
+  function mapStyle(m) {                            // a skin's map look (SKIN-SPEC.md section 7); Islands = these defaults
+    m = m || {}; SEA = m.sea && m.sea.length === 9 ? m.sea : SEA0; SEA_X = m.seaX || '#050c18'; LAND_UNK = m.unknown || '#6e6248';
+    const R = (m.ramp || []).map(rgbOf); DF_ZERO = R[0] || [63, 224, 106]; DF_RAMP = R.length === 4 && R.every(Boolean) ? R.slice(1) : [[255, 225, 77], [255, 154, 60], [255, 59, 78]];
+    DF_NONE = rgbOf(m.grey) || [139, 148, 158]; MAP_ROUTE = m.route || 'rgba(255,240,200,.85)'; MAP_INK = m.ink || 'rgba(200,230,255,.85)';
+    MAP_CELL = typeof m.cell === 'function' ? m.cell : null;
+    MAP_FOG = rgbOf(m.fog) || rgbOf(m.seaX) || [3, 5, 8];          // the fog over uncharted parts: the skin's own background
+    const cv = $('miniCanvas'); if (cv) cv.style.background = m.seaX || ''; MAP_CHART = (ACT.words && ACT.words.chart) || 'COLOURING SPACE';
+    if (W) { W._fg = {}; }
+  }
   function hexPath(ctx, cx, cy, r) { ctx.moveTo(cx + r, cy); for (let i = 1; i < 6; i++) { const a = Math.PI / 3 * i; ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a)); } ctx.closePath(); }
   function axialRound(x, y) {
     const q = (2 / 3 * x) / W.size, r = (-x / 3 + SQ3 / 3 * y) / W.size, s = -q - r;
@@ -1971,7 +2118,7 @@
     return W._kg;
   }
   function worldStart() {
-    W = Gr.world || null; $('board').classList.toggle('hasMini', !!W); pmKey = ''; pmDirty = true; PM.big = false; $('mini').classList.remove('big');
+    W = Gr.world || null; $('board').classList.toggle('hasMini', !!W); $('game').classList.toggle('hasMini', !!W); pmKey = ''; pmDirty = true; PM.big = false; $('mini').classList.remove('big');
     if (!W) return;
     worldPrep(); wIdx = W._idx; wKey = L.g;
     save.worlds = save.worlds || {};
@@ -2021,7 +2168,7 @@
     const T = (x, y) => [w / 2 + (x - view.cx) * view.s, h / 2 + (y - view.cy) * view.s], r = W.size * view.s, vis = (x, y) => x > -r && y > -r && x < w + r && y < h + r;
     ctx.fillStyle = SEA_X; ctx.fillRect(0, 0, w, h);
     const sp = SEA.map(() => new Path2D()), spx = new Path2D();
-    W._sea.forEach(([sx, sy, d]) => { const [x, y] = T(sx, sy); if (vis(x, y)) hexPath(d === 9 ? spx : sp[d], x, y, r * 1.01); });
+    W._sea.forEach(([sx, sy, d]) => { const [x, y] = T(sx, sy); if (vis(x, y)) (MAP_CELL || hexPath)(d === 9 ? spx : sp[d], x, y, r * 1.01); });
     sp.forEach((p, i) => { ctx.fillStyle = SEA[i]; ctx.fill(p); });
     ctx.fillStyle = '#0a1426'; ctx.fill(spx);
     // land: coloured by the best known outcome in the hex (min swap distance of its charted states), else unsurveyed
@@ -2030,23 +2177,23 @@
     if (cellsF) cellsF.forEach(c => {
       const [x, y] = T(c.x, c.y); if (!vis(x, y)) return;
       hexPath(shore, x, y, rf * 1.08);
-      if (!c.vis) { hexPath(unk, x, y, rf * .94); return; }
+      if (!c.vis) { (MAP_CELL || hexPath)(unk, x, y, rf * .94); return; }
       const key = c.hd === 99 ? -1 : c.hd;
-      if (!lp.has(key)) lp.set(key, new Path2D()); hexPath(lp.get(key), x, y, rf * .94);
+      if (!lp.has(key)) lp.set(key, new Path2D()); (MAP_CELL || hexPath)(lp.get(key), x, y, rf * .94);
     });
     else W.hexes.forEach((hx, i) => {
       const [x, y] = T(...W._hx[i]); if (!vis(x, y)) return;
       hexPath(shore, x, y, r * 1.08);
-      if (!W._hv[i]) { hexPath(unk, x, y, r * .96); return; }
+      if (!W._hv[i]) { (MAP_CELL || hexPath)(unk, x, y, r * .96); return; }
       const key = W._hd[i] === 99 ? -1 : W._hd[i];
-      if (!lp.has(key)) lp.set(key, new Path2D()); hexPath(lp.get(key), x, y, r * .96);
+      if (!lp.has(key)) lp.set(key, new Path2D()); (MAP_CELL || hexPath)(lp.get(key), x, y, r * .96);
     });
     ctx.fillStyle = 'rgba(190,220,200,.25)'; ctx.fill(shore);
     ctx.fillStyle = LAND_UNK; ctx.fill(unk);
     lp.forEach((p, d) => { ctx.fillStyle = dfCol(d); ctx.fill(p); });
     // fog: dark everywhere, cut open around charted hexes (visited fully, glimpsed partly)
     const f = fogCtx(w, h);
-    f.globalCompositeOperation = 'source-over'; f.clearRect(0, 0, w, h); f.fillStyle = 'rgba(3,5,8,' + (view.fog || .95) + ')'; f.fillRect(0, 0, w, h);
+    f.globalCompositeOperation = 'source-over'; f.clearRect(0, 0, w, h); f.fillStyle = 'rgba(' + MAP_FOG.join(',') + ',' + (view.fog || .95) + ')'; f.fillRect(0, 0, w, h);
     f.globalCompositeOperation = 'destination-out';
     const lit = cellsF ? cellsF.filter(c => c.vis).map(c => [c.x, c.y, c.vis]) : W._hv.reduce((a, v, i) => { if (v) a.push([W._hx[i][0], W._hx[i][1], v]); return a; }, []);
     lit.forEach(([hx, hy, lv]) => {
@@ -2094,7 +2241,7 @@
     ctx.strokeStyle = 'rgba(255,214,102,.3)'; ctx.lineWidth = view.mini ? .8 : 1.2; ctx.beginPath();
     Wst.e.forEach(ab => { const [a, b] = ab.split('-').map(Number), [x0, y0] = T(W.x[a], W.y[a]), [x1, y1] = T(W.x[b], W.y[b]); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); });
     ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,240,200,.85)'; ctx.lineWidth = view.mini ? 1.2 : 2;
+    ctx.strokeStyle = MAP_ROUTE; ctx.lineWidth = view.mini ? 1.2 : 2;
     for (let i = 1; i < trail.length; i++) {
       const [x0, y0] = T(W.x[trail[i - 1]], W.y[trail[i - 1]]), [x1, y1] = T(W.x[trail[i]], W.y[trail[i]]);
       const mx = (x0 + x1) / 2 - (y1 - y0) * .25, my = (y0 + y1) / 2 + (x1 - x0) * .25;
@@ -2152,8 +2299,8 @@
     playerIcon(ctx, hx, hy, PM.big ? 1 : .8); ctx.shadowBlur = 0;
     if (PM.big && !PM.user) {
       const ch = new Set([...Wst.v, ...Wst.g]).size;
-      ctx.font = 'bold 9px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = 'rgba(200,230,255,.85)';
-      ctx.fillText('COLOURING SPACE · ' + ch.toLocaleString() + ' of ' + W.S.toLocaleString() + ' charted', w / 2, h * .07);
+      ctx.font = 'bold 9px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = MAP_INK;
+      ctx.fillText(MAP_CHART + ' · ' + ch.toLocaleString() + ' of ' + W.S.toLocaleString() + ' charted', w / 2, h * .07);
       ctx.fillText('green: a swap closer to filling · red: further', w / 2, h * .07 + 12);
     }
   }
@@ -2249,6 +2396,75 @@
   }).observe($('board'));
   window.addEventListener('resize', () => { clearTimeout(rsT); rsT = setTimeout(() => { if ($('game').classList.contains('on') && L) { buildBoard(false); drawTraced(); drawActive(); } pmDirty = true; }, 150); });
 
+  // ---------------- skins ----------------
+  // The app is the shell (title, level map, briefs, scoring, saves, research log); a skin is the play surface.
+  // 'islands' is this page's own board. Every other skin is a page in lab/ built on lab/core.js, loaded in #skinFrame
+  // with ?lvl=<level id>&embed=1; core.js posts each change here and LAB.done() when its win celebration is over.
+  const SKINS = FTH_SKINS.list.map(k => Object.assign({ hud: 'full' }, k));   // skins/*.js, see SKIN-SPEC.md
+  const ISL = SKINS.find(k => k.id === 'islands') || SKINS[0];
+  // SKIN is the player's choice; ACT is the style this level actually runs in (Islands when the choice cannot draw
+  // the map: needs: ['cells'] means region shapes, which the hand-drawn Level -1 ponds do not have)
+  // preview mode for skin designers: ?skin=<id> (not saved), &view=menu|title|howto, &scroll=0..1 (level map position)
+  const PVQ = new URLSearchParams(location.search), PV = { skin: PVQ.get('skin'), view: PVQ.get('view'), scroll: PVQ.get('scroll') };
+  let SKIN = SKINS.find(k => k.id === (PV.skin || save.skin)) || ISL, ACT = SKIN, skinWinT = 0;
+  // the look of a skin everywhere outside its play page: theme tokens, extra css, fonts, title art, map style
+  const fontsLoaded = new Set();
+  function applyLook(k) {
+    const b = document.body; b.dataset.skin = k.id;
+    const T = Object.assign({}, ISL.theme || {}, k.theme || {});
+    for (const v of Object.keys(ISL.theme || {}).concat(Object.keys(k.theme || {}))) b.style.setProperty(v, T[v]);
+    let st = $('skinCss'); if (!st) { st = document.createElement('style'); st.id = 'skinCss'; document.head.appendChild(st); }
+    st.textContent = k.css ? 'body[data-skin="' + k.id + '"] {\n' + k.css + '\n}' : '';
+    (k.fonts || []).forEach(u => { if (fontsLoaded.has(u)) return; fontsLoaded.add(u); const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = u; document.head.appendChild(l); });
+    const art = $('tSkinArt'); b.classList.toggle('skinart', !!(k.title && k.title.svg)); if (art) art.innerHTML = k.title && k.title.svg || '';
+    const m = document.querySelector('meta[name="theme-color"]'); if (m && k.theme && k.theme['--sk-accent'] && k.id !== 'islands') m.content = (k.theme['--sk-bg'] || '').match(/#[0-9a-f]{3,8}/i)?.[0] || m.content;
+    mapStyle(k.map); htReset(); pmKey = ''; pmDirty = true;
+  }
+  const skinFits = k => !k.needs || k.needs.every(nd => nd === 'cells' ? !!(window.LAYOUT && LAYOUT[L.g] && LAYOUT[L.g].cells) : true);
+  function renderSkinPick() {
+    const el = $('skinPick'); if (!el) return;
+    el.innerHTML = '<span class="lbl">Game style</span>' + SKINS.map(k => '<button role="radio" aria-checked="' + (k === SKIN) + '" data-s="' + k.id + '"><span class="ic" aria-hidden="true">' + k.ic + '</span>' + k.name + '</button>').join('') +
+      '<span class="skinblurb">' + (SKIN.blurb || '') + '</span>';
+    el.querySelectorAll('button').forEach(b => b.onclick = () => { SKIN = SKINS.find(k => k.id === b.dataset.s); save.skin = SKIN.id; persist(); blip(660, .08, 'triangle', .04); applyLook(SKIN); renderSkinPick(); });
+  }
+  function skinStart() {
+    clearTimeout(skinWinT);
+    ACT = SKIN.src && skinFits(SKIN) ? SKIN : SKINS[0];
+    if (ACT !== SKIN) msg(SKIN.name + ' cannot draw this map yet, so it plays on the island.');
+    const on = !!ACT.src, f = $('skinFrame'), gm = $('game'), hud = ACT.hud || 'full';
+    gm.classList.toggle('skinned', on);
+    gm.classList.remove('hud-full', 'hud-compact', 'hud-minimal'); gm.classList.add('hud-' + (on ? hud : 'full'));
+    const mi = $('mini');                              // the exploration map: inside the island board, or floating over a skin
+    if (on && mi.parentNode !== gm) { mi.classList.add('floatmap'); gm.appendChild(mi); }
+    if (!on && mi.parentNode !== $('board')) { mi.classList.remove('floatmap'); $('board').insertBefore(mi, $('compass')); }
+    if (document.body.dataset.skin !== ACT.id) applyLook(ACT);
+    f.src = on ? ACT.src + '?lvl=' + encodeURIComponent(L.id) + '&embed=1&hud=' + hud : 'about:blank';
+  }
+  function skinStop() { clearTimeout(skinWinT); $('game').classList.remove('skinned'); $('skinFrame').src = 'about:blank';
+    const mi = $('mini'); if (mi.parentNode !== $('board')) { mi.classList.remove('floatmap', 'big'); PM.big = false; $('board').insertBefore(mi, $('compass')); } }
+  addEventListener('message', e => {
+    const d = e.data, f = $('skinFrame');
+    if (!d || !d.fth || !ACT.src || e.source !== f.contentWindow || !L || won) return;
+    if (d.type === 'error') {                              // the skin broke: finish this level on the island board
+      console.warn('skin ' + ACT.id + ' failed on ' + L.id + ': ' + d.message);
+      ACT = SKINS[0]; skinStop(); msg(SKIN.name + ' hit a problem here, so this level plays on the island.');
+      requestAnimationFrame(() => { computeChains(); buildBoard(false); drawTraced(); drawActive(); updateHud(); });   // the board was hidden
+      if (window.FTH_LOG) FTH_LOG.ev('skin-error', { skin: SKIN.id, message: d.message });
+      return;
+    }
+    if (d.id !== L.id) return;
+    if (!ACT.own && (d.type === 'swap' || d.type === 'undo' || d.type === 'reset')) {
+      col = d.col.slice(); col[hole] = -1; flips = d.moves; computeChains(); updateHud();
+      worldEnter(d.type === 'swap' ? { skin: ACT.id } : null);   // every skin charts colouring space
+      if (window.FTH_LOG) FTH_LOG.ev(d.type, { skin: ACT.id, state: canon(col), moves: d.moves });
+    }
+    if (ACT.own && d.type === 'done' && d.own) { flips = Math.min(d.moves, L.par); hintsUsed = 0; }   // a full colouring: every star
+    if (d.won && (d.type === 'done' || (d.type === 'swap' && !ACT.waits))) {
+      clearTimeout(skinWinT);                              // done: now; a skin that never calls LAB.done(): after 6 s
+      skinWinT = setTimeout(() => { if (!won) win(); }, d.type === 'done' ? 0 : 6000);
+    }
+  });
+
   // ---------------- levels ----------------
   function startLevel(i, brief) {
     levelIdx = i; L = G.levels[i]; Gr = G.graphs[L.g];
@@ -2259,7 +2475,7 @@
     ring = new Array(n).fill(99); ring[hole] = 0; const q = [hole];
     while (q.length) { const u = q.shift(); adj[u].forEach(w => { if (ring[w] > ring[u] + 1) { ring[w] = ring[u] + 1; q.push(w); } }); }
     col = L.start.slice();
-    if (window.FTH_LOG) FTH_LOG.start({ num: L.num, map: L.g, par: L.par, state: canon(col) });
+    if (window.FTH_LOG) FTH_LOG.start({ num: L.num, id: L.id, skin: SKIN.id, map: L.g, par: L.par, state: canon(col) });
     found = new Set(); traced = new Map(); visited = new Set([canon(col)]); needFind = false; lastFlip = null; active = null; afterFlip = null;
     score = 0; flips = 0; hintsUsed = 0; won = false; bestLen = 0; history = []; busy = false; trace = null; lastPartial = null;
     $('lvKicker').textContent = 'Level ' + (L.num || i + 1) + ' · ' + L.kicker; $('lvTitle').textContent = L.title;
@@ -2269,6 +2485,7 @@
     holeFill = -1; cer = null; cerLight = null; compass = null; $('compass').classList.remove('on'); anim.clear(); computeChains(); memRecall(); buildBoard(); closeWheel(); drawTraced(); drawActive(); worldStart();
     msg('Drag across two colours to <b>catch</b> a chain!');
     updateHud();
+    skinStart();
     if (brief) showBrief();
   }
   function showBrief() {
@@ -2290,12 +2507,14 @@
     save.best[levelIdx] = { score: Math.max(score, prev ? prev.score : 0), stars: Math.max(stars, prev ? prev.stars : 0) };
     persist(); updateHud();
     const gen = lootGen, later = (ms, fn) => setTimeout(() => { if (gen === lootGen) fn(); }, reduced ? 0 : ms);
-    holeCeremony(free, () => { drawHoleFill(); arp(523, 6, 80); msg('<b>You did it!</b> The hole takes ' + NAMES[free] + '!'); },
+    (ACT.src ? (f, a, b) => b() : holeCeremony)(free, () => { drawHoleFill(); arp(523, 6, 80); msg('<b>You did it!</b> The hole takes ' + NAMES[free] + '!'); },
       () => { confetti(); later(900, () => {
       $('winStars').innerHTML = [0, 1, 2].map(() => '<span class="ws">' + starSvg + '</span>').join('');
       const ws = [...$('winStars').children];
       let total = score - bonus; $('winScore').textContent = total;
-      $('winText').textContent = flips <= L.par ? 'Perfect route! No shorter way exists.' : 'Par is ' + L.par + ' swap' + (L.par > 1 ? 's' : '') + '. Can you get ★★★?';
+      const WD = ACT.words || {};
+      document.querySelector('#win .rtitle').textContent = WD.win || (ACT.own ? 'Coloured!' : 'Hole filled!');
+      $('winText').textContent = ACT.own ? (WD.perfect || 'Every piece coloured, and no two neighbours match!') : flips <= L.par ? (WD.perfect || 'Perfect route! No shorter way exists.') : (WD.par ? WD.par.replace('{par}', L.par) : 'Par is ' + L.par + ' swap' + (L.par > 1 ? 's' : '') + '. Can you get ★★★?');
       $('winNext').textContent = levelIdx + 1 < G.levels.length ? 'NEXT ▶' : 'LEVELS ▶';
       const t1 = 350 + 3 * 330 + 150;
       $('win').style.setProperty('--wd', (reduced ? 0 : (t1 + 2300) / 1000) + 's');
@@ -2365,11 +2584,12 @@
     const me = bz = { E, C, N, path: [], pair: null, got: 0, t: [], down: false, cd: -1, live: false, done: false, ended: false, bad: -1 };
     const W = (BX.cols + .5) * BX.s + 8, H = (BX.rows - 1) * BX.s * .866 + BX.s + 16;
     let s = '<svg id="bonusSvg" viewBox="0 0 ' + W + ' ' + H + '" aria-label="Bonus: drag a two-colour chain to collect coins">';
-    for (let i = 0; i < N; i++) { const [x, y] = bonusHex(i); s += bonusTile(x, y, BX.s * .47, E[i], i); }
+    const BS = ACT.bonus || {}, tileFn = typeof BS.tile === 'function' ? BS.tile : bonusTile;
+    for (let i = 0; i < N; i++) { const [x, y] = bonusHex(i); let t; try { t = tileFn(Math.round(x * 10) / 10, Math.round(y * 10) / 10, BX.s * .47, E[i], i); } catch (_) { t = bonusTile(x, y, BX.s * .47, E[i], i); } s += t; }
     s += '<polyline class="bglow" points=""/><polyline class="bline" points=""/>';
     for (let i = 0; i < N; i++) { const [x, y] = bonusHex(i); s += '<g class="bcoin" data-c="' + i + '" transform="translate(' + q1(x) + ' ' + q1(y) + ')">' + bonusStack(C[i]) + '</g>'; }
-    box.innerHTML = '<div class="bhead"><span class="btag">BONUS</span><span id="bonusMsg">Get ready…</span><button class="bskip" id="bonusSkip">Skip ▸</button></div>' +
-      '<div class="bwrap">' + s + '</svg><div class="bcd" id="bonusCd" aria-live="polite"></div></div>';
+    box.innerHTML = '<div class="bhead"><span class="btag">' + (BS.label || 'BONUS') + '</span><span id="bonusMsg">Get ready…</span><button class="bskip" id="bonusSkip">Skip ▸</button></div>' +
+      '<div class="bwrap"' + (BS.board ? ' style="background:' + String(BS.board).replace(/"/g, "'") + '"' : '') + '>' + s + '</svg><div class="bcd" id="bonusCd" aria-live="polite"></div></div>';
     box.classList.remove('over');
     $('winNext').disabled = $('winRetry').disabled = true; $('win').classList.add('bonusing');
     $('bonusSkip').onclick = () => bonusEnd(true);
@@ -2427,7 +2647,7 @@
   function bonusLine(me) {
     const pts = me.path.map(i => bonusHex(i).map(q1).join(',')).join(' ');
     const svg = $('bonusSvg'); svg.querySelector('.bglow').setAttribute('points', pts); svg.querySelector('.bline').setAttribute('points', pts);
-    if (me.pair) svg.querySelector('.bglow').style.stroke = NEONH[me.pair[0]];
+    if (me.pair) svg.querySelector('.bglow').style.stroke = (ACT.bonus && ACT.bonus.line) || NEONH[me.pair[0]];
   }
   function bonusAdd(me, i) {
     const p = me.path; p.push(i); me.bad = -1; LOG('b_step', { i, e: me.E[i], n: p.length });
@@ -2722,19 +2942,26 @@
     }]);
     return { loop: 5400, steps, end: () => { reset(); C.forEach(t => t.classList.add('lit')); trail.setAttribute('opacity', .8); locked(); } };
   }
-  const HT = [
+  const HT0 = [
     { h: 'The goal', p: 'Get one element off the ring. Then the middle tile can take it!', b: htGoal },
     { h: 'Trace a chain', p: 'Drag along tiles of two elements that take turns. Light them all up!', b: htTrace },
     { h: 'Swap!', p: 'Tap the glowing chain to swap its two elements.', b: htSwap },
     { h: 'Watch out for locks', p: 'A chain that joins two ring tiles just moves the problem. Try another!', b: htLock },
   ];
-  let htPage = -1, htStopFn = null, htAfter = null;
+  let HT = HT0, htPage = -1, htStopFn = null, htAfter = null;
+  const htStill = () => ({ steps: [[0, () => {}]], loop: 60000, end() {} });   // skin pages animate with CSS
+  function htReset() {                              // the selected skin's pages (SKIN-SPEC.md section 5), else the Islands demos
+    const k = SKIN; HT = k.intro && k.intro.length ? k.intro.map(p => ({ h: p.title, p: p.text, svg: p.svg, b: htStill })) : HT0;
+    if ($('htTrack')) { $('htTrack').innerHTML = ''; $('htDots').innerHTML = ''; }
+  }
   function htBuild() {
     const tr = $('htTrack'), dots = $('htDots');
     if (tr.children.length) return;
     HT.forEach((pg, k) => {
       const sec = document.createElement('section'); sec.className = 'htpage'; sec.setAttribute('aria-label', 'Step ' + (k + 1) + ' of ' + HT.length + ': ' + pg.h);
-      sec.innerHTML = '<div class="htnum" aria-hidden="true">' + (k + 1) + '</div><h2>' + pg.h + '</h2><div class="htdemo"><svg id="htDemo' + k + '" viewBox="0 0 300 260" role="img" aria-label="Animated example: ' + pg.h + '"></svg></div><p>' + pg.p + '</p>';
+      sec.innerHTML = '<div class="htnum" aria-hidden="true">' + (k + 1) + '</div><h2>' + pg.h + '</h2><div class="htdemo">' +
+        (pg.svg ? pg.svg.replace(/^\s*<svg/, '<svg id="htDemo' + k + '" role="img" aria-label="Example: ' + pg.h.replace(/"/g, '') + '"') : '<svg id="htDemo' + k + '" viewBox="0 0 300 260" role="img" aria-label="Animated example: ' + pg.h + '"></svg>') +
+        '</div><p>' + pg.p + '</p>';
       tr.appendChild(sec);
       const d = document.createElement('button'); d.setAttribute('aria-label', 'Go to step ' + (k + 1)); d.onclick = () => htGo(k); dots.appendChild(d);
     });
@@ -2790,7 +3017,8 @@
 
   // ---------- the level map: a cartoon archipelago, one island per group, levels as tiles on a ladder road ----------
   const DIST = { 'First steps': ['Splash Cove', 'cove', '🐚'], 'Warm-up': ['Warm-up Beach', 'beach', '🏖️'], 'Tutorial': ['Tutorial Town', 'town', '🏘️'], 'Locks': ['Lock Harbour', 'harbour', '⚓'],
-    'Far chains': ['Far Chains Forest', 'forest', '🌲'], 'π': ['π Loop Lighthouse', 'cape', '💡'], 'Depths': ['The Depths', 'cave', '💎'], 'Boss': ['Volcano Boss', 'volcano', '🌋'] };
+    'Far chains': ['Far Chains Forest', 'forest', '🌲'], 'π': ['π Loop Lighthouse', 'cape', '💡'], 'Depths': ['The Depths', 'cave', '💎'], 'Boss': ['Volcano Boss', 'volcano', '🌋'],
+    ...(G.islands || {}) };   // levels.json can name new islands (kicker: [name, theme, emoji])
   const THEME = {
     cove: { land: '#ffe9b0', edge: '#ffffff', patch: '#bfeef0', deco: ['duck', 'shell', 'star', 'ball', 'shell', 'star'] },   // Level -1: a paddling cove
     beach: { land: '#f7d98a', edge: '#fff6d2', patch: '#f0c967', deco: ['palm', 'palm', 'umbrella', 'star', 'ball', 'shell'] },
@@ -2800,6 +3028,7 @@
     cape: { land: '#c7cdd5', edge: '#f2f4f6', patch: '#b4bcc6', deco: ['rock', 'rock', 'gull', 'flowers', 'rock', 'gull'] },
     cave: { land: '#7a64a8', edge: '#b9a6e0', patch: '#6a5596', deco: ['crystal', 'crystal', 'stal', 'crystal', 'shroomglow', 'stal'] },
     volcano: { land: '#a3583c', edge: '#e6a882', patch: '#8c4a32', deco: ['rock', 'lava', 'deadtree', 'lava', 'deadtree', 'rock'] },
+    reef: { land: '#f3c9a8', edge: '#fff1e2', patch: '#9fe3dc', deco: ['shell', 'star', 'rock', 'ball', 'shell', 'gull'] },
   };
   const OUT = 'stroke="#1c1640" stroke-width="1.6" stroke-linejoin="round"';
   const DECO = {
@@ -2867,48 +3096,58 @@
   function currentLevel() { for (let i = 0; i < G.levels.length; i++) if (isOpen(i) && !save.best[i]) return i; return G.levels.length - 1; }
   function renderSaga() {
     const { groups, H, P } = sagaLayout(), cur = currentLevel(), N = G.levels.length;
+    const lmKeep = (fn, d) => { try { const r = fn(); return Array.isArray(r) ? r : d; } catch (e) { console.warn('levelMap.keepOut', e); return d; } };
+    const LM = SKIN.levelMap || null, lmTry = (fn, dflt) => { try { const r = fn(); return typeof r === 'string' ? r : dflt; } catch (e) { console.warn('levelMap', e); return dflt; } };
     const S = [P[0][0] > 200 ? P[0][0] - 70 : P[0][0] + 70, H - 40];
     const segs = catmull([S].concat(P), 18), flat = [].concat(...segs);
     const roadNear = (x, y, d) => flat.some(p => Math.abs(p[0] - x) < d && Math.abs(p[1] - y) < d && Math.hypot(p[0] - x, p[1] - y) < d);
     let sea = '', land = '', deco = '', signs = '';
+    if (LM && LM.backdrop) sea = lmTry(() => LM.backdrop(H, (a, b) => hash01(a, b)), '');
     // sea sparkle waves
-    for (let k = 0; k < Math.floor(H / 70); k++) {
+    else for (let k = 0; k < Math.floor(H / 70); k++) {
       const x = 20 + hash01(k, 3) * 360, y = 20 + k * 70 + hash01(k, 5) * 30;
       sea += '<path d="M' + q1(x) + ' ' + q1(y) + 'q5 -5 10 0t10 0" stroke="#fff" stroke-width="2.2" fill="none" opacity=".45" stroke-linecap="round"/>';
     }
     groups.forEach((g, gi) => {
-      const [name, theme, emo] = DIST[g.kicker] || [g.kicker, 'town', '📍'], T = THEME[theme];
+      const [name, theme, emo] = DIST[g.kicker] || [g.kicker, 'town', '📍'], T = Object.assign({}, THEME[theme], LM && LM.zones && LM.zones[theme] || {});
       const x0 = 18, x1 = 382, y0 = g.top, y1 = g.bot;
       const ip = islandPath(x0, y0, x1, y1, gi * 1.7 + 1);
-      land += '<path d="' + ip + '" fill="#7fd6ff" stroke="#7fd6ff" stroke-width="22" opacity=".55"/>';
+      const Z = { x0, y0, x1, y1, index: gi, name, emoji: emo, theme, boss: g.kicker === 'Boss', stops: g.idx.map(i => P[i]), path: ip, rnd: (a, b) => hash01(a + gi * 13.7, b) };
+      if (LM && LM.zone) land += lmTry(() => LM.zone(Z), '');
+      else { land += '<path d="' + ip + '" fill="#7fd6ff" stroke="#7fd6ff" stroke-width="22" opacity=".55"/>';
       land += '<path d="' + ip + '" fill="' + T.land + '" stroke="' + T.edge + '" stroke-width="9"/>';
       for (let k = 0; k < 4; k++) land += '<ellipse cx="' + q1(60 + hash01(gi, k) * 280) + '" cy="' + q1(y0 + 30 + hash01(k, gi + 9) * (y1 - y0 - 60)) + '" rx="' + q1(28 + hash01(gi + 2, k) * 30) + '" ry="' + q1(10 + hash01(k, gi) * 10) + '" fill="' + T.patch + '" opacity=".8"/>';
-      if (theme === 'harbour') { for (let y = y0 + 26; y < y1 - 14; y += 13) land += '<line x1="40" y1="' + y + '" x2="360" y2="' + y + '" stroke="#c48e52" stroke-width="1.4" opacity=".55"/>'; }
+      if (theme === 'harbour') { for (let y = y0 + 26; y < y1 - 14; y += 13) land += '<line x1="40" y1="' + y + '" x2="360" y2="' + y + '" stroke="#c48e52" stroke-width="1.4" opacity=".55"/>'; } }
       // the sign
       const sy = y0 + 20, label = emo + ' ' + name, w = Math.round(28 + [...label].length * 8.4);
       const near = flat.filter(p => p[1] > sy - 10 && p[1] < sy + 50);
       const rx = near.length ? near.reduce((s, p) => s + p[0], 0) / near.length : 200;
       const sx = rx > 200 ? 30 : 370 - w;
+      if (LM && LM.sign) signs += '<g transform="translate(' + sx + ' ' + sy + ')">' + lmTry(() => LM.sign(label, w, Z), '') + '</g>'; else
       signs += '<g transform="translate(' + sx + ' ' + sy + ')"><rect x="' + (w / 2 - 14) + '" y="24" width="6" height="18" fill="#6b3f1c"/><rect x="' + (w / 2 + 8) + '" y="24" width="6" height="18" fill="#6b3f1c"/>' +
         '<rect width="' + w + '" height="32" rx="9" fill="#c98a4b" stroke="#1c1640" stroke-width="3"/><rect x="4" y="4" width="' + (w - 8) + '" height="6" rx="3" fill="#fff" opacity=".22"/>' +
         '<text x="' + w / 2 + '" y="17" text-anchor="middle" dominant-baseline="central" class="chunky" font-size="15" fill="#fff" stroke-width="4">' + label + '</text></g>';
       // decorations on free land
       const signBox = [sx - 10, sy - 10, sx + w + 10, sy + 50];
+      const keep = LM && LM.keepOut ? lmKeep(() => LM.keepOut(Z), []) : [], pc = P[cur];
       for (let y = y0 + 34; y < y1 - 14; y += 40) for (let x = 44; x < 360; x += 44) {
         const r = hash01(x * .37 + gi, y * .11), jx = x + (hash01(y, x) - .5) * 20, jy = y + (hash01(x, y) - .5) * 14;
         if (r > (theme === 'forest' ? .75 : .5)) continue;
         if (roadNear(jx, jy, 40) || P.some(p => Math.hypot(p[0] - jx, p[1] - jy) < 56)) continue;
         if (jx > signBox[0] && jx < signBox[2] && jy > signBox[1] && jy < signBox[3]) continue;
+        if (LM && keep.some(b => jx > b[0] && jx < b[2] && jy > b[1] && jy < b[3])) continue;       // the skin's own landmarks
+        if (LM && Math.abs(jx - pc[0]) < 42 && jy > pc[1] - 84 && jy < pc[1] + 24) continue;        // room for the "you are here" pin
         if (theme === 'volcano') { const v = P[g.idx[0]]; if (jy > v[1] - 60 && Math.abs(jx - v[0]) < 70 + (jy - v[1]) * 1.3) continue; }
         if (Math.pow((jx - 200) / 172, 4) + Math.pow((jy - (y0 + y1) / 2) / ((y1 - y0) / 2 - 10), 4) > .8) continue;   // stay on land
+        if (LM && LM.decor) { const d = lmTry(() => LM.decor(theme, hash01(jy, jx), hash01(jx, jy * 3), Z), ''); if (d) deco += '<g transform="translate(' + q1(jx) + ' ' + q1(jy) + ')">' + d + '</g>'; continue; }
         const kind = T.deco[Math.floor(hash01(jy, jx) * T.deco.length)];
         deco += '<g transform="translate(' + q1(jx) + ' ' + q1(jy) + ')">' + DECO[kind](hash01(jx, jy * 3)) + '</g>';
       }
-      if (theme === 'harbour') [[30, y0 + 56, 1], [370, y1 - 56, -1]].forEach(([x, y, s]) => {
+      if (theme === 'harbour' && !(LM && LM.zone)) [[30, y0 + 56, 1], [370, y1 - 56, -1]].forEach(([x, y, s]) => {
         deco += '<g transform="translate(' + x + ' ' + q1(y) + ') scale(' + s + ' 1)"><rect x="0" y="-6" width="34" height="12" fill="#a8693a" ' + OUT + '/>' +
           '<g transform="translate(-6 22)"><path d="M-16 0H16L10 9H-10Z" fill="#fff" ' + OUT + '/><path d="M0 0V-24L14 -4Z" fill="#ef5a3c" ' + OUT + '/></g></g>';
       });
-      if (theme === 'cape') {   // the lighthouse, on the free side of the top stop
+      if (theme === 'cape' && !(LM && LM.zone)) {   // the lighthouse, on the free side of the top stop
         const top = P[g.idx[g.idx.length - 1]], lx = top[0] > 200 ? 70 : 330, ly = top[1] + 30;
         deco += '<g transform="translate(' + lx + ' ' + ly + ')">' +
           (reduced ? '' : '<g><path d="M0 -58L-90 -80L-90 -36Z" fill="#fff6a0" opacity=".45"/><animateTransform attributeName="transform" type="rotate" values="0 0 -58;360 0 -58" dur="6s" repeatCount="indefinite"/></g>') +
@@ -2916,7 +3155,7 @@
           '<rect x="-9" y="-62" width="18" height="14" rx="3" fill="#ffe066" ' + OUT + '/><path d="M-11 -62L0 -72L11 -62Z" fill="#ef3c3c" ' + OUT + '/></g>';
         deco += '<text x="' + (lx > 200 ? 300 : 100) + '" y="' + q1(g.bot - 40) + '" text-anchor="middle" font-size="36" font-weight="900" fill="#fff" opacity=".55">π</text>';
       }
-      if (theme === 'volcano') {   // a big cone with the boss level in its crater
+      if (theme === 'volcano' && !(LM && LM.zone)) {   // a big cone with the boss level in its crater
         const b = P[g.idx[0]], vy = b[1], vx = b[0];
         deco = '<g><path d="M' + (vx - 178) + ' ' + (vy + 158) + 'Q' + (vx - 70) + ' ' + (vy + 100) + ' ' + (vx - 50) + ' ' + (vy - 6) + 'Q' + vx + ' ' + (vy - 26) + ' ' + (vx + 50) + ' ' + (vy - 6) + 'Q' + (vx + 70) + ' ' + (vy + 100) + ' ' + (vx + 178) + ' ' + (vy + 158) + 'Z" fill="#6b3324" stroke="#1c1640" stroke-width="3"/>' +
           '<path d="M' + (vx - 30) + ' ' + (vy + 10) + 'Q' + (vx - 44) + ' ' + (vy + 90) + ' ' + (vx - 120) + ' ' + (vy + 150) + 'L' + (vx - 60) + ' ' + (vy + 150) + 'Q' + (vx - 22) + ' ' + (vy + 80) + ' ' + (vx - 10) + ' ' + (vy + 10) + 'Z" fill="#fff" opacity=".08"/>' +
@@ -2926,27 +3165,33 @@
       }
     });
     // start dock
+    if (LM && LM.start) deco += '<g transform="translate(' + q1(S[0]) + ' ' + q1(S[1]) + ')">' + lmTry(() => LM.start(), '') + '</g>'; else
     deco += '<g transform="translate(' + q1(S[0]) + ' ' + q1(S[1]) + ')"><rect x="-26" y="-6" width="52" height="22" rx="6" fill="#a8693a" ' + OUT + '/><line x1="18" y1="-6" x2="18" y2="-46" stroke="#3a3f55" stroke-width="3"/><path d="M18 -46L44 -38L18 -30Z" fill="#ff4fa3" ' + OUT + '/>' +
       '<text x="0" y="7" text-anchor="middle" dominant-baseline="central" class="chunky" font-size="12" fill="#fff" stroke-width="3">START</text></g>';
     // the ladder road, gold where it's been walked
     let done = '', todo = '';
     segs.forEach((seg, k) => { const d = 'M' + seg.map(p => q1(p[0]) + ' ' + q1(p[1])).join('L'); if (k === 0 || (save.best[k - 1] && isOpen(k))) done += d; else todo += d; });
-    const road = (d, a, b, c) => d ? '<path d="' + d + '" stroke="' + a + '" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="' + d + '" stroke="' + b + '" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="' + d + '" stroke="' + c + '" stroke-width="13" fill="none" stroke-dasharray="3 6"/>' : '';
-    const svg = '<svg viewBox="0 0 400 ' + H + '" aria-hidden="true"><rect width="400" height="' + H + '" fill="#2a9fd8"/>' + sea + land + deco +
-      road(todo, '#4b5260', '#b9c0c8', '#7d858f') + road(done, '#6b3f1c', '#f2c27a', '#a8693a') + signs + '</svg>';
+    // road layers: outer edge, bed, dashes; a skin may set levelMap.road.widths [outer, bed, dash], .dash (dasharray), .cap
+    const RDw = (LM && LM.road && LM.road.widths) || [20, 13, 13], RDd = (LM && LM.road && LM.road.dash) || '3 6', RDc = (LM && LM.road && LM.road.cap) || 'butt';
+    const road = (d, a, b, c) => d ? '<path d="' + d + '" stroke="' + a + '" stroke-width="' + RDw[0] + '" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="' + d + '" stroke="' + b + '" stroke-width="' + RDw[1] + '" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="' + d + '" stroke="' + c + '" stroke-width="' + RDw[2] + '" fill="none" stroke-linecap="' + RDc + '" stroke-dasharray="' + RDd + '"/>' : '';
+    const RD = LM && LM.road || {}, rt = RD.todo || ['#4b5260', '#b9c0c8', '#7d858f'], rdn = RD.done || ['#6b3f1c', '#f2c27a', '#a8693a'];
+    const svg = '<svg viewBox="0 0 400 ' + H + '" aria-hidden="true">' + (LM && LM.defs ? '<defs>' + LM.defs + '</defs>' : '') + '<rect width="400" height="' + H + '" fill="' + (LM && LM.bg || '#2a9fd8') + '"/>' + sea + land + deco +
+      road(todo, rt[0], rt[1], rt[2]) + road(done, rdn[0], rdn[1], rdn[2]) + signs + '</svg>';
     let nodes = '';
     G.levels.forEach((lv, i) => {
       const [x, y] = P[i], open = isOpen(i), b = save.best[i], num = lv.num || String(i + 1);
       const st = !open ? 'locked' : i === cur ? 'current' : b ? 'beaten' : 'open';
       const sides = [6, 5, 7, 6, 5, 6, 7, 5][i % 8], e = open ? i % 4 : 'g';
-      const tile = open ? uiTile(0, 0, 31, sides, e, { label: num, fs: num.length > 2 ? 16 : num.length > 1 ? 21 : 26 }) : uiTile(0, 0, 31, sides, 'g', { label: '🔒', fs: 20 });
+      const tile0 = () => open ? uiTile(0, 0, 31, sides, e, { label: num, fs: num.length > 2 ? 16 : num.length > 1 ? 21 : 26 }) : uiTile(0, 0, 31, sides, 'g', { label: '🔒', fs: 20 });
+      const tile = LM && LM.node ? lmTry(() => LM.node(st, num, open ? i % 4 : -1, lv.kicker === 'Boss'), tile0()) : tile0();
       const stars = b ? b.stars : 0;
       nodes += '<button class="mnode st-' + st + (lv.kicker === 'Boss' ? ' boss' : '') + '" data-i="' + i + '" style="left:' + q1(x / 4) + '%;top:' + (y / H * 100).toFixed(3) + '%" aria-label="Level ' + num + ': ' + lv.title +
         (open ? (b ? ', ' + stars + ' of 3 stars' : '') + (i === cur ? ', you are here' : '') : ', locked') + '">' +
         (st === 'current' ? '<span class="pulse"></span><span class="pulse p2"></span>' : '') +
         '<svg viewBox="-40 -40 80 80" aria-hidden="true">' + tile + '</svg>' +
         (open ? '<span class="mst" aria-hidden="true">' + '★'.repeat(stars) + '<i>' + '★'.repeat(3 - stars) + '</i></span>' : '<span class="mtag" aria-hidden="true">' + num + '</span>') +
-        (i === cur ? '<span class="me" aria-hidden="true"><svg viewBox="-23 -30 46 58"><path d="M0 27C-6 17 -19 9 -19 -5A19 19 0 0 1 19 -5C19 9 6 17 0 27Z" fill="#ff4fa3" stroke="#1c1640" stroke-width="3"/><circle cy="-6" r="12.5" fill="#fff"/><circle cx="-4.5" cy="-8" r="2.6" fill="#1c1640"/><circle cx="4.5" cy="-8" r="2.6" fill="#1c1640"/><circle cx="-3.6" cy="-9" r=".9" fill="#fff"/><circle cx="5.4" cy="-9" r=".9" fill="#fff"/><path d="M-4.5 -2Q0 2.5 4.5 -2" stroke="#1c1640" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="-8.5" cy="-3" r="2" fill="#ff9ccc"/><circle cx="8.5" cy="-3" r="2" fill="#ff9ccc"/></svg></span>' : '') +
+        (i === cur && LM && LM.pin ? '<span class="me" aria-hidden="true"><svg viewBox="-23 -30 46 58">' + lmTry(() => LM.pin(), '') + '</svg></span>' : '') +
+        (i === cur && !(LM && LM.pin) ? '<span class="me" aria-hidden="true"><svg viewBox="-23 -30 46 58"><path d="M0 27C-6 17 -19 9 -19 -5A19 19 0 0 1 19 -5C19 9 6 17 0 27Z" fill="#ff4fa3" stroke="#1c1640" stroke-width="3"/><circle cy="-6" r="12.5" fill="#fff"/><circle cx="-4.5" cy="-8" r="2.6" fill="#1c1640"/><circle cx="4.5" cy="-8" r="2.6" fill="#1c1640"/><circle cx="-3.6" cy="-9" r=".9" fill="#fff"/><circle cx="5.4" cy="-9" r=".9" fill="#fff"/><path d="M-4.5 -2Q0 2.5 4.5 -2" stroke="#1c1640" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="-8.5" cy="-3" r="2" fill="#ff9ccc"/><circle cx="8.5" cy="-3" r="2" fill="#ff9ccc"/></svg></span>' : '') +
         '</button>';
     });
     const box = $('saga'); box.innerHTML = svg + nodes;
@@ -2961,24 +3206,85 @@
     return { y: P[cur][1] / H };
   }
   function showMenu() {
+    skinStop();
     $('win').classList.remove('on'); $('brief').classList.remove('on'); closeWheel(); titleStop();
     lootReset(); msg('');
     $('game').classList.remove('on'); $('title').classList.remove('on'); $('menu').classList.add('on');
     const r = renderSaga(), m = $('menu');
-    requestAnimationFrame(() => { m.scrollTop = Math.max(0, r.y * $('saga').clientHeight - m.clientHeight * .55); });
+    const toPos = () => { m.scrollTop = PV.view === 'menu' && PV.scroll !== null ? (+PV.scroll) * (m.scrollHeight - m.clientHeight) : Math.max(0, r.y * $('saga').clientHeight - m.clientHeight * .55); };
+    toPos(); requestAnimationFrame(toPos);
   }
+  { let lpT = 0, lpDone = false; const bm = $('btnMenu');             // minimal HUD: long-press the menu button for the map
+    bm.addEventListener('pointerdown', () => { lpDone = false; clearTimeout(lpT); if (!$('game').classList.contains('hud-minimal') || !W) return;
+      lpT = setTimeout(() => { lpDone = true; const mi = $('mini'); PM.big = mi.classList.toggle('big'); PM.user = false; pmT0 = performance.now(); pmDirty = true; blip(523, .1, 'triangle', .04); }, 520); });
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach(t => bm.addEventListener(t, () => clearTimeout(lpT)));
+    bm.addEventListener('click', e => { if (lpDone) { lpDone = false; e.stopImmediatePropagation(); e.preventDefault(); } }, true); }
+  applyLook(SKIN);
+  renderSkinPick();
+  if (PV.view === 'menu') setTimeout(showMenu, 50);
+  else if (PV.view === 'game' || PV.view === 'brief' || PV.view === 'win') setTimeout(() => {   // design review: a level, its brief, or the win screen
+    const i = Math.max(0, G.levels.findIndex(l => l.id === (PVQ.get('lvl') || 'kempes-double')));
+    startLevel(i, PV.view === 'brief');
+    if (PV.view === 'win') { $('win').classList.add('on'); bonusStart(0, 4); }
+  }, 50);
+  else if (PV.view === 'howto') setTimeout(() => openHowTo(null), 50);
   $('btnPlay').onclick = () => { blip(523, .12, 'triangle', .05); titleStop(); if (!save.seenHowTo) openHowTo(showMenu); else showMenu(); };
   $('btnHowTitle').onclick = () => openHowTo(null);
+
+  // ---------------- install as an app (PWA) ----------------
+  // Chrome / Edge / Samsung Internet on Android (and desktop Chrome) fire beforeinstallprompt: the button opens the
+  // browser's own install dialog. iPhone and iPad have no such event: the button shows how to use Share > Add to Home
+  // Screen. Android browsers that never fire the event get the menu route. Hidden once the game runs as an app.
+  // Testing: ?install=ios or ?install=android forces that sheet.
+  {
+    const forced = new URLSearchParams(location.search).get('install');
+    const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+    const ua = navigator.userAgent;
+    const ios = forced === 'ios' || (!forced && (/iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)));
+    const android = forced === 'android' || (!forced && /android/i.test(ua));
+    let deferred = null;
+    const btn = $('btnInstall');
+    const show = on => { btn.hidden = !on || standalone || !!LABN; };
+    show(ios || android);
+    addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; show(true); });
+    addEventListener('appinstalled', () => { deferred = null; show(false); if (window.FTH_LOG) FTH_LOG.input('installed'); });
+    const iosSteps = () => {
+      const inSafari = /safari/i.test(ua) && !/crios|fxios|edgios/i.test(ua);
+      return '<ol>' + (inSafari || forced === 'ios' ? '' : '<li>Open this page in <b>Safari</b> (or use your browser\'s share menu).</li>') +
+        '<li>Tap the <b>Share</b> button <span class="glyph" aria-label="share icon"><svg width="15" height="19" viewBox="0 0 15 19" aria-hidden="true"><path d="M7.5 1v11M3.5 5l4-4 4 4M5 8H2.2a1 1 0 0 0-1 1v8.3a1 1 0 0 0 1 1h10.6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span> in the toolbar (bottom of the screen, or top on iPad).</li>' +
+        '<li>Scroll down and tap <b>Add to Home Screen</b> <span class="glyph" aria-hidden="true">＋</span>.</li>' +
+        '<li>Tap <b>Add</b>. 4square appears on your home screen and plays full screen, even offline.</li></ol>';
+    };
+    const androidSteps = () => '<ol><li>Tap the browser menu <span class="glyph" aria-label="menu">⋮</span> (top right in Chrome).</li>' +
+      '<li>Tap <b>Install app</b> or <b>Add to Home screen</b>.</li>' +
+      '<li>Tap <b>Install</b>. 4square appears with your apps and plays full screen, even offline.</li></ol>';
+    const openSheet = html => { $('installSteps').innerHTML = html + '<p class="note">Your stars and progress stay on this phone.</p>'; $('installSheet').classList.add('on'); };
+    btn.onclick = async () => {
+      blip(523, .12, 'triangle', .05);
+      if (deferred && !forced) {
+        deferred.prompt();
+        const r = await deferred.userChoice.catch(() => null); deferred = null;
+        if (r && r.outcome === 'accepted') show(false);
+        return;
+      }
+      openSheet(ios ? iosSteps() : androidSteps());
+    };
+    $('installOk').onclick = () => $('installSheet').classList.remove('on');
+    $('installSheet').addEventListener('click', e => { if (e.target.id === 'installSheet') $('installSheet').classList.remove('on'); });
+  }
+  if ('serviceWorker' in navigator && !LABN && location.protocol !== 'file:') {
+    addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(e => console.warn('service worker:', e)));
+  }
   $('btnHowMap').onclick = () => openHowTo(null);
   $('btnTitle').onclick = showTitle;
   titleBuild();
   (function () {                           // research consent: ask once, record nothing until OK
     const box = document.getElementById('consent'); if (!box || !window.FTH_LOG) return;
-    if (FTH_LOG.consent() === null && !LABN) box.hidden = false;
+    // the request was removed from the title screen: without a yes, telemetry.js records nothing
     document.getElementById('consentYes').onclick = () => { FTH_LOG.setConsent(true); box.hidden = true; };
     document.getElementById('consentNo').onclick = () => { FTH_LOG.setConsent(false); box.hidden = true; };
   })();
-  if (LABN) { const i = G.levels.findIndex(l => String(l.num) === LABN); startLevel(i >= 0 ? i : 0, false); }
+  if (LABN) { const i = G.levels.findIndex(l => l.id === LABN || String(l.num) === LABN); startLevel(i >= 0 ? i : 0, false); }
   else showTitle();
 })();
 </script>
