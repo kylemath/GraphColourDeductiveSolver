@@ -128,3 +128,132 @@ A5v does not determine the law step by itself).
 | `law_vs_axv.py` | step-level relation between A5v and the law in random abstract graphs |
 | `ax_eng.c`, `ax_eng` | copy of TrackU `tu_eng.c` with the AXV / AXX filters |
 | `out/axv_*.jsonl`, `out/ctrl_*.jsonl` | constrained searches and controls |
+
+---
+
+# Run 2 (13 Oct 2026, ≈ 11:15–12:25): exact search for T1-v
+
+Exploratory. Labels as above. Compute: ≤ 4 processes, `nice -n 10`, on AC power. Solver: `python-sat`
+(CaDiCaL 1.5.3), installed `--user`. Nothing outside `axioms/` changed.
+
+## R0. Verdict
+
+**T1-v has no solution with n ≤ 22, for every orbit length L.** n = 24 is open: the closed L = 10 search timed
+out (3,000 s), and a 9-state A5v-respecting 1212 run exists at n = 24.
+The pipeline has power: with the axiom bit off or flipped to anti-A5v, the same search refinds the n = 22 T1
+counterexample exactly (with 2–9 of its 12 chords pinned, everything else free) and, fully free with
+anti-A5v, finds a T1 orbit at n = 22 on its own (a different, non-isomorphic n = 22 graph); and it accepts the planar C30#0 Q-cycle when the word condition is relaxed.
+
+## R1. Encoding (`sat_t1v.py`)
+
+**Normal form (exact, no loss).** Word 1212… means some M_{t−1} ∪ M_t is a Hamiltonian cycle. Rotate t so
+that M_0 ∪ M_1 = H is Hamiltonian, rotate the f-labels so that M_0 ∋ f_2, and number the vertices along H:
+v = 0, M_0 = {(i,i+1): i even}, M_1 = {(i,i+1): i odd}, f_2 = (0,1), f_0 = (0,n−1). Then
+G = H + C where C is a matching of the cubic vertices plus three chords at v (labels f_1, f_3, f_4 free).
+Every (G, orbit) with word 1212… has this form; the only labelling freedom left is which Hamiltonian state
+is called t = 1. Simplicity: no chord joins H-neighbours. 3-connectivity is **not** assumed.
+
+**Variables.** chord presence x_c (all non-H pairs), labels lab[s][e] for v-edges, matchings y[t][e]
+(t = 0,1 fixed), loop membership z[t][u] (u on X_t).
+**Eager clauses.** degrees (cubic / 5 at v); each M_t a perfect matching; M_t ∩ M_{t+1} = ∅ (cyclically);
+v-edge of M_t is f_{k_t}, k_t = 2 − 2t mod 5 (so L ≡ 0 mod 5; with word 1212, L ≡ 0 mod 10);
+z propagates along E − M_t, the frame forces the ends of f_{k±1} into X and f_{k±2} into Y (so the loop
+pairing is eager), |X_t| even (XOR chain), and **A5v**: lab[k_t][(0,j)] ⇒ z[t][j] (anti: ⇒ ¬z).
+The successor is automatically the unique PM of E − M_t through f_{k−2} once the state is DL-good, so the
+orbit is genuinely the deterministic orbit of the TrackU dynamics.
+**Lazy cuts (CEGAR), all valid:** a cycle of E − M_t avoiding v (disconnected); a v-loop with wrong
+pairing/parity; v's partner on the wrong loop; too many components of M_{t−1} ∪ M_t (w + 1 smallest cycles
+blocked) or a Hamiltonian union at an even t (blocked). An eager rank encoding of connectivity
+(`eager=2/3/4`) was tried and is 2–10× slower; the runs below use `eager=1`.
+
+**Open windows (`sat_window.py`).** Same encoding without the closing constraint: W consecutive states
+M_0..M_{W−1}, M_0 ∪ M_1 Hamiltonian, every state DL-good with the successor rule, word alternating on
+t = 1..W−1, axiom at every state. Any closed 1212 orbit (any L) contains, cyclically, windows of every
+length starting at a pre-Hamiltonian state. So **window(n, W) UNSAT ⇒ no closed T1-v orbit at that n, of any
+length L.**
+
+## R2. Controls [data] (`sat_controls.py`, `sat_power.py`; `out/sat/controls.txt`, `out/sat/power_partial.txt`)
+
+Every SAT orbit is re-found by the independent engine `ax_lib.G5.orbits` (same matchings, same word).
+
+| control | setting | result |
+|---|---|---|
+| n22 T1 graph, fixed | word 1212, axiom off | 1 orbit, word 1212121212, ax_lib agrees, A5v false at all states |
+| n22 T1 graph, fixed | A5v on | UNSAT (0 orbits) |
+| n22 T1 graph, fixed | anti-A5v | the same orbit |
+| C30#0, both TrackU seed lines (n = 26, planar), fixed | word relaxed, law imposed, L = 20, A5v on | SAT: the known orbit (words 3232…/2323…), ax_lib agrees, A5v at all states |
+| C30#0, fixed | anti-A5v | UNSAT |
+| **free search, n = 22, L = 10**, T1 in ham normal form, a random fraction of its 12 chords fixed present, everything else free (other chords, labels, M_2..M_9) | 9, 6, 4, 3, 2 chords fixed × 3 seeds | axiom off: **SAT in all 15**, always the T1 chord set exactly (≤ 113 s); anti-A5v: SAT in all 15; **A5v: UNSAT in all 15** (≤ 3.3 s) |
+| **fully free, n = 22, L = 10, anti-A5v** (`out/sat/ham_n22_L10_axv2.txt`) | nothing fixed | **SAT after 1,405 s / 64,921 CEGAR rounds: a T1 orbit** (ax_lib: 48 PMs, 16 DL-good, L = 10, word 1212121212, law holds, A5v false at all 10 states, non-planar), on a graph *not* isomorphic to `t1_n22_first` — the free search rediscovers the T1 family on its own |
+| fully free, n = 22, L = 10, axiom off | lazy-only first version | not finished (killed after 825 s / 44k rounds to free a core); the anti-A5v run above is the free control |
+
+## R3. Exhaustive results [data] (`out/sat/`)
+
+Closed orbits, word 1212…, free graph (normal form), CaDiCaL proof of UNSAT:
+
+| n | L | axiom | result | time |
+|---|---|---|---|---|
+| 10, 12, 14, 16 | 10 | none | UNSAT (no 1212 orbit at all) | ≤ 5 s |
+| 18 | 10 | none | UNSAT | 47 s |
+| 16, 18, 20 | 10 | A5v | UNSAT | 0.1 s, 0.7 s, 12 s |
+| 20 | 10 | anti-A5v | UNSAT (no anti-A5v 1212 orbit at n = 20; every known T1 orbit is of this type; mixed-bit orbits not excluded) | 719 s |
+| **22** | **10** | **A5v** | **UNSAT** | 362 s |
+| 22 | 10 | anti-A5v | SAT (T1 orbit, see R2) | 1,405 s |
+| 24 | 10 | A5v | TIMEOUT (732 rounds) | 3,000 s |
+
+Longest open 1212 window W*(n) (window W*+1 is UNSAT; ≥ means the next window timed out):
+
+| n | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 |
+|---|---|---|---|---|---|---|---|---|
+| no axiom | 4 | 6 | 6 | 7 | 7 | ≥ 9 (W = 10 timed out, 600 s) | ∞ (T1 closes) | ∞ |
+| anti-A5v | 3 | 6 | 6 | 6 | 6 | – | ∞ (T1 closes) | – |
+| **A5v** | 4 | 4 | 4 | 5 | 6 | **8** | **8** | ≥ 9 (W = 10 timed out, 1,200 s) |
+
+So: **no T1-v orbit of any length for n ≤ 22** (A5v window 9 UNSAT at n = 20 and n = 22, 20 s and 392 s).
+At n ≤ 18 this is not specific to A5v: there is no 1212 closed orbit at all there (axiom-off windows are
+bounded too). At n = 20 A5v is already discriminating at window level (axiom off: a 9-state 1212 run
+exists; A5v: none). The decisive size is **n = 22**: the T1 orbit exists without the axiom (and the free
+search finds it), and A5v leaves no 1212 run longer than 8 states.
+
+## R4. The statement, and why it may be provable
+
+**Conjecture T1-v (law + A5v ⇒ no R-cycle).** Let G be a simple graph, cubic except one vertex v of degree 5
+with a cyclic order f_0..f_4 of its edges. There is no closed orbit M_0, …, M_{L−1} of DL-good perfect
+matchings (M_{t+1} ⊆ E − M_t, f_{k_t − 2} ∈ M_{t+1}) whose word k(M_{t−1} ∪ M_t) alternates 1, 2 and at every
+state of which the far end of v's M_t-edge lies on the even loop X_t (equivalently |M_t ∩ E(X_t, Y_t)| odd).
+(For word 1212 the chain-parity law holds automatically, so the law adds nothing to this case.)
+
+*Status:* exhaustively true for n ≤ 22, all L (SAT solver UNSAT answers, not independently certified; no DRAT
+proofs kept). n ≥ 24 open. False without A5v (n = 22).
+
+**What the data say a proof must use.**
+1. *It is not local in time.* All four A5v / anti-A5v patterns occur on two consecutive states of 1212 runs
+   (n = 16, 20), and A5v-respecting 1212 runs of length 8 exist at n = 20, 22. A proof cannot be a
+   one-step contradiction; it must use a whole frame period (5 steps, 10 states for frame + word).
+2. *It is quantitative in n.* W*(n) for A5v grows (4, 4, 4, 5, 6, 8, 8) but stays below the unconstrained
+   runs, and the earlier annealing found a 10-state A5v run at n = 26. A natural shape is a potential that
+   moves monotonically along A5v-respecting 1212 runs and is bounded by n, so a run cannot close. The two
+   obvious candidates, |X_t| and |M_t ∩ E(X_t, Y_t)|, are **not** monotone (checked on all 8 maximal windows
+   at n = 18; e.g. |X| = 8, 10, 12, 6, 6, 10).
+3. *The uniform failure on T1.* On every known T1 orbit A5v fails at **every** state, while single steps flip
+   A5v freely. The sharper (testable) form is: **on a closed 1212 orbit the A5v bit is constant, and it is 0.**
+   The constancy half would be a parity invariant transported around the orbit (the bit is the parity
+   |M_t ∩ E(X_t,Y_t)|), the value half the Jordan input. Not tested here (an exhaustive mixed-pattern
+   search at n = 22 needs the axiom-off free search, which did not finish in this budget).
+4. *Normal form for a proof.* At a Hamiltonian state the problem is a chord diagram: H = n-cycle, C a chord
+   matching with three chords at v; both Q_0 = M_1 ∪ C and Q_1 = M_0 ∪ C must be figure-eights, and A5v at
+   t = 0, 1 says on which loop the H-neighbours 1 and n − 1 of v lie. This is the same chord-diagram setting
+   as TrackT's interlace (A1); A5v is its one-curve shadow, so a proof would likely go through the
+   interlace/crossing structure of C relative to the two figure-eights and track it over two Hamiltonian
+   states (t = 1 and t = 3).
+
+## R5. Files (run 2)
+
+| file | content |
+|---|---|
+| `sat_t1v.py` | encoding + CEGAR loop; CLI `n L axv [tlimit] [eager]` (closed, word 1212, ham normal form); also fixed-graph mode and per-state axiom patterns |
+| `sat_window.py` | open windows; CLI `n W axv word [tlimit] [--dump]`; axv like `12` = per-state pattern |
+| `sat_controls.py` | fixed-graph controls (n22 T1, C30#0), re-verified with `ax_lib` |
+| `sat_power.py` | partial-fix power control at n = 22 |
+| `out/sat/*.txt` | logs of every run quoted above |
+| `.gitignore` | compiled `ax_eng` (removed from the index) and caches |
