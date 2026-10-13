@@ -1,0 +1,15 @@
+{"n": 5, "test": "aggregated |S| >= 2^(n-2-m)", "pairs_T1reps": 5, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 5, "test": "per-step chord keeps >= 1/2", "dissections": 11, "checks": 9, "fails": 2, "worst_fraction": 0.3333333333333333, "smallest_D_fail": {"T1": [[1, 4], [2, 4]], "D": [[0, 3]], "e": [0, 2], "before": 6, "after": 2}}
+{"n": 5, "test": "some order of adding T2-diagonals keeps >= 1/2 each step", "fails": 0, "first": null}
+{"n": 6, "test": "aggregated |S| >= 2^(n-2-m)", "pairs_T1reps": 42, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 6, "test": "per-step chord keeps >= 1/2", "dissections": 45, "checks": 184, "fails": 50, "worst_fraction": 0.2, "smallest_D_fail": {"T1": [[1, 5], [2, 5], [3, 5]], "D": [[1, 4]], "e": [1, 3], "before": 12, "after": 4}}
+{"n": 6, "test": "some order of adding T2-diagonals keeps >= 1/2 each step", "fails": 0, "first": null}
+{"n": 7, "test": "aggregated |S| >= 2^(n-2-m)", "pairs_T1reps": 168, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 7, "test": "per-step chord keeps >= 1/2", "dissections": 197, "checks": 1548, "fails": 440, "worst_fraction": 0.1111111111111111, "smallest_D_fail": {"T1": [[1, 6], [2, 6], [3, 6], [4, 6]], "D": [[0, 3]], "e": [0, 2], "before": 24, "after": 8}}
+{"n": 7, "test": "some order of adding T2-diagonals keeps >= 1/2 each step", "fails": 0, "first": null}
+{"n": 8, "test": "aggregated |S| >= 2^(n-2-m)", "pairs_T1reps": 1584, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 8, "test": "per-step chord keeps >= 1/2", "dissections": 903, "checks": 27784, "fails": 7635, "worst_fraction": 0.058823529411764705, "smallest_D_fail": {"T1": [[1, 7], [2, 7], [3, 7], [4, 7], [5, 7]], "D": [[2, 5]], "e": [2, 4], "before": 48, "after": 16}}
+{"n": 8, "test": "some order of adding T2-diagonals keeps >= 1/2 each step", "fails": 1, "first": {"T1": [[1, 7], [2, 6], [2, 7], [3, 5], [3, 6]], "T2": [[0, 5], [0, 6], [1, 4], [1, 5], [2, 4]], "S": 6}}
+{"n": 9, "test": "aggregated |S| >= 2^(n-2-m)", "pairs_T1reps": 11583, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 9, "test": "per-step chord keeps >= 1/2", "dissections": 4279, "checks": 368337, "fails": 99752, "worst_fraction": 0.030303030303030304, "smallest_D_fail": {"T1": [[1, 8], [2, 8], [3, 8], [4, 8], [5, 8], [6, 8]], "D": [[2, 5]], "e": [2, 4], "before": 96, "after": 32}}
+{"n": 9, "test": "some order of adding T2-diagonals keeps >= 1/2 each step", "fails": 34, "first": {"T1": [[1, 8], [2, 8], [3, 7], [3, 8], [4, 6], [4, 7]], "T2": [[1, 6], [1, 7], [1, 8], [2, 5], [2, 6], [3, 5]], "S": 12}}

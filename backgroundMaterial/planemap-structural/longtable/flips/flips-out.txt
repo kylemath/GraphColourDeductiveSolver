@@ -1,0 +1,29 @@
+{"n": 5, "test": "per-flip retained fraction", "hist": {"0.5": 10}}
+{"n": 5, "test": "c-proper flip graph connected", "colourings": 20, "disconnected": 0, "components_hist": {"1": 20}, "first": null}
+{"n": 5, "test": "geodesic keeps a colouring", "pairs": 5, "fails": 0, "first": null}
+{"n": 5, "test": "|S| >= |L|/2^d", "pairs": 5, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 5, "test": "min over common c of c-preserving distance minus flip distance", "hist": {"0": 5}}
+{"n": 6, "test": "per-flip retained fraction", "hist": {"0.5": 42}}
+{"n": 6, "test": "c-proper flip graph connected", "colourings": 60, "disconnected": 8, "components_hist": {"1": 52, "2": 8}, "first": {"c": [0, 1, 0, 2, 1, 2], "proper_triangulations": 2, "components": 2}}
+{"n": 6, "test": "geodesic keeps a colouring", "pairs": 42, "fails": 0, "first": null}
+{"n": 6, "test": "|S| >= |L|/2^d", "pairs": 42, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 6, "test": "min over common c of c-preserving distance minus flip distance", "hist": {"0": 42}}
+{"n": 7, "test": "per-flip retained fraction", "hist": {"0.5": 168}}
+{"n": 7, "test": "c-proper flip graph connected", "colourings": 182, "disconnected": 28, "components_hist": {"1": 154, "2": 14, "3": 14}, "first": {"c": [0, 1, 0, 1, 2, 0, 2], "proper_triangulations": 2, "components": 2}}
+{"n": 7, "test": "geodesic keeps a colouring", "pairs": 168, "fails": 4, "first": {"T1": [[1, 6], [2, 6], [3, 5], [3, 6]], "T2": [[0, 4], [0, 5], [1, 4], [2, 4]], "d": 5, "S": 10}}
+{"n": 7, "test": "|S| >= |L|/2^d", "pairs": 168, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 7, "test": "min over common c of c-preserving distance minus flip distance", "hist": {"0": 164, "1": 4}}
+{"n": 8, "test": "per-flip retained fraction", "hist": {"0.5": 660}}
+{"n": 8, "test": "c-proper flip graph connected", "colourings": 546, "disconnected": 68, "components_hist": {"1": 478, "2": 8, "3": 16, "4": 36, "5": 8}, "first": {"c": [0, 1, 0, 1, 0, 2, 0, 2], "proper_triangulations": 2, "components": 2}}
+{"n": 8, "test": "geodesic keeps a colouring", "pairs": 1584, "fails": 92, "first": {"T1": [[1, 7], [2, 7], [3, 7], [4, 6], [4, 7]], "T2": [[1, 5], [1, 6], [1, 7], [2, 5], [3, 5]], "d": 5, "S": 20}}
+{"n": 8, "test": "|S| >= |L|/2^d", "pairs": 1584, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 8, "test": "min over common c of c-preserving distance minus flip distance", "hist": {"0": 1492, "1": 92}}
+{"n": 9, "test": "per-flip retained fraction", "hist": {"0.5": 2574}}
+{"n": 9, "test": "c-proper flip graph connected", "colourings": 1640, "disconnected": 152, "components_hist": {"1": 1488, "3": 36, "5": 42, "6": 36, "7": 18, "9": 20}, "first": {"c": [0, 1, 0, 1, 0, 1, 2, 0, 2], "proper_triangulations": 3, "components": 3}}
+{"n": 9, "test": "geodesic keeps a colouring", "pairs": 11583, "fails": 1134, "first": {"T1": [[1, 8], [2, 8], [3, 8], [4, 8], [5, 7], [5, 8]], "T2": [[1, 8], [2, 6], [2, 7], [2, 8], [3, 6], [4, 6]], "d": 5, "S": 40}}
+{"n": 9, "test": "|S| >= |L|/2^d", "pairs": 11583, "fails": 0, "min_ratio": 1.0, "first": null}
+{"n": 9, "test": "min over common c of c-preserving distance minus flip distance", "hist": {"0": 10449, "1": 1129, "3": 5}}
+{"n": 10, "test": "per-flip retained fraction", "hist": {"0.5": 10010}}
+{"n": 10, "test": "c-proper flip graph connected", "colourings": 4920, "disconnected": 320, "components_hist": {"1": 4600, "3": 20, "4": 20, "6": 50, "7": 20, "8": 80, "10": 40, "12": 40, "14": 20, "15": 20, "16": 10}, "first": {"c": [0, 1, 0, 1, 0, 1, 0, 2, 0, 2], "proper_triangulations": 3, "components": 3}}
+{"n": 10, "test": "geodesic keeps a colouring", "pairs": 117260, "fails": 16770, "first": {"T1": [[1, 9], [2, 9], [3, 9], [4, 9], [5, 9], [6, 8], [6, 9]], "T2": [[1, 9], [2, 9], [3, 7], [3, 8], [3, 9], [4, 7], [5, 7]], "d": 5, "S": 80}}
+{"n": 10, "test": "|S| >= |L|/2^d", "pairs": 117260, "fails": 0, "min_ratio": 1.0, "first": null}
