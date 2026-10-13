@@ -1,0 +1,8 @@
+# Power controls and small runs, 13 Oct 2026 (output copied from the terminal runs)
+# mixed.py on the Run-2 free-search T1 orbit (n = 22, chords fixed from data/t1_n22_sat_normalform.txt)
+mixed.py 22 10 allfalse 120 data/t1_n22_sat_normalform.txt -> SAT (1 iter), word 2121212121, ax_lib A5v pattern [0,0,0,0,0,0,0,0,0,0]
+mixed.py 22 10 any 120 data/t1_n22_sat_normalform.txt      -> UNSAT (0 iters)
+# mixed_pm.py, any word, no law
+mixed_pm.py 16 10 mixed 0 500 -> SAT in 0.33 s: edges [(0,1),(0,5),(0,6),(0,7),(0,10),(1,8),(1,14),(2,3),(2,4),(2,12),(3,11),(3,13),(4,5),(4,8),(5,9),(6,7),(6,11),(7,14),(8,9),(9,13),(10,11),(10,15),(12,13),(12,15),(14,15)] fv [(0,10),(0,6),(0,1),(0,5),(0,7)] word 3111131111 A5v [0,0,1,0,0,0,0,1,0,0]
+# cube split check
+CUBE=2 mixed.py 20 10 any 60 -> UNSAT (unit propagation)
