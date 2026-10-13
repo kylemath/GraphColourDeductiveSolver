@@ -1,0 +1,122 @@
+n=8: (S_(t+1) - S_t) mod 8 over all steps: {4: 4};  (S == 4D-1, deg = (D,D,D,D-1)) over arcs: {(True, True): 9};  Fisk D at Ham arcs: {-1: 1, 0: 4, 1: 2}
+n=10: (S_(t+1) - S_t) mod 8 over all steps: {4: 36};  (S == 4D-1, deg = (D,D,D,D-1)) over arcs: {(True, True): 76};  Fisk D at Ham arcs: {-2: 2, -1: 9, 0: 20, 1: 15, 2: 4}
+n=12: (S_(t+1) - S_t) mod 8 over all steps: {4: 418};  (S == 4D-1, deg = (D,D,D,D-1)) over arcs: {(True, True): 768};  Fisk D at Ham arcs: {-2: 18, -1: 89, 0: 157, 1: 126, 2: 39, 3: 3}
+n=14: (S_(t+1) - S_t) mod 8 over all steps: {4: 4470};  (S == 4D-1, deg = (D,D,D,D-1)) over arcs: {(True, True): 7493};  Fisk D at Ham arcs: {-3: 16, -2: 215, -1: 745, 0: 1229, 1: 996, 2: 387, 3: 57}
+n=10: v-free cycles: sum sigma mod 4 = {0: 2};  odd loop X - v: sum sigma mod 4 = {2: 34}
+n=12: v-free cycles: sum sigma mod 4 = {0: 70};  odd loop X - v: sum sigma mod 4 = {2: 348}
+n=14: v-free cycles: sum sigma mod 4 = {0: 1040};  odd loop X - v: sum sigma mod 4 = {2: 3394}
+C30#0: #faces 16 Euler 2
+  t= 0 k=4 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[0, 3, 0, 2, 1] lift=True
+  t= 1 k=2 deg(m=0..3)=(0, 0, 0, -1) sum=-1 link=[0, 2, 1, 0, 3] lift=True
+  t= 2 k=0 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[1, 0, 3, 0, 2] lift=True
+  t= 3 k=3 deg(m=0..3)=(-2, -2, -2, -3) sum=-9 link=[3, 0, 2, 1, 0] lift=True
+  t= 4 k=1 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[2, 1, 0, 3, 0] lift=True
+  t= 5 k=4 deg(m=0..3)=(0, 0, 0, -1) sum=-1 link=[0, 3, 0, 2, 1] lift=True
+  t= 6 k=2 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[0, 2, 1, 0, 3] lift=True
+  t= 7 k=0 deg(m=0..3)=(-2, -2, -2, -3) sum=-9 link=[1, 0, 3, 0, 2] lift=True
+  t= 8 k=3 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[3, 0, 2, 1, 0] lift=True
+  t= 9 k=1 deg(m=0..3)=(0, 0, 0, -1) sum=-1 link=[2, 1, 0, 3, 0] lift=True
+  t=10 k=4 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[0, 3, 0, 2, 1] lift=True
+  t=11 k=2 deg(m=0..3)=(-2, -2, -2, -3) sum=-9 link=[0, 2, 1, 0, 3] lift=True
+  t=12 k=0 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[1, 0, 3, 0, 2] lift=True
+  t=13 k=3 deg(m=0..3)=(0, 0, 0, -1) sum=-1 link=[3, 0, 2, 1, 0] lift=True
+  t=14 k=1 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[2, 1, 0, 3, 0] lift=True
+  t=15 k=4 deg(m=0..3)=(-2, -2, -2, -3) sum=-9 link=[0, 3, 0, 2, 1] lift=True
+  t=16 k=2 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[0, 2, 1, 0, 3] lift=True
+  t=17 k=0 deg(m=0..3)=(0, 0, 0, -1) sum=-1 link=[1, 0, 3, 0, 2] lift=True
+  t=18 k=3 deg(m=0..3)=(3, 3, 3, 2) sum=11 link=[3, 0, 2, 1, 0] lift=True
+  t=19 k=1 deg(m=0..3)=(-2, -2, -2, -3) sum=-9 link=[2, 1, 0, 3, 0] lift=True
+n=10: deg vectors (deg_0..deg_3, Ham arc?) counts:
+    ((0, 0, 0, -1), True) 20
+    ((1, 1, 1, 0), True) 15
+    ((0, 0, 0, -1), False) 12
+    ((-1, -1, -1, -2), True) 9
+    ((1, 1, 1, 0), False) 6
+    ((-1, -1, -1, -2), False) 4
+    ((2, 2, 2, 1), True) 4
+    ((2, 2, 2, 1), False) 3
+    ((-2, -2, -2, -3), True) 2
+    ((-2, -2, -2, -3), False) 1
+  step transitions (deg before -> after) counts:
+    ((0, 0, 0, -1), (1, 1, 1, 0)) 9
+    ((-1, -1, -1, -2), (0, 0, 0, -1)) 7
+    ((1, 1, 1, 0), (0, 0, 0, -1)) 6
+    ((0, 0, 0, -1), (-1, -1, -1, -2)) 5
+    ((1, 1, 1, 0), (2, 2, 2, 1)) 2
+    ((-2, -2, -2, -3), (1, 1, 1, 0)) 2
+    ((1, 1, 1, 0), (-2, -2, -2, -3)) 2
+    ((2, 2, 2, 1), (1, 1, 1, 0)) 1
+    ((-1, -1, -1, -2), (-2, -2, -2, -3)) 1
+    ((-1, -1, -1, -2), (2, 2, 2, 1)) 1
+n=12: deg vectors (deg_0..deg_3, Ham arc?) counts:
+    ((0, 0, 0, -1), True) 157
+    ((1, 1, 1, 0), True) 126
+    ((0, 0, 0, -1), False) 110
+    ((1, 1, 1, 0), False) 108
+    ((-1, -1, -1, -2), True) 89
+    ((-1, -1, -1, -2), False) 61
+    ((2, 2, 2, 1), False) 40
+    ((2, 2, 2, 1), True) 39
+    ((-2, -2, -2, -3), True) 18
+    ((-2, -2, -2, -3), False) 14
+    ((3, 3, 3, 2), True) 3
+    ((3, 3, 3, 2), False) 3
+  step transitions (deg before -> after) counts:
+    ((0, 0, 0, -1), (1, 1, 1, 0)) 80
+    ((1, 1, 1, 0), (0, 0, 0, -1)) 73
+    ((0, 0, 0, -1), (-1, -1, -1, -2)) 66
+    ((-1, -1, -1, -2), (0, 0, 0, -1)) 62
+    ((2, 2, 2, 1), (1, 1, 1, 0)) 25
+    ((1, 1, 1, 0), (2, 2, 2, 1)) 20
+    ((-1, -1, -1, -2), (2, 2, 2, 1)) 20
+    ((-2, -2, -2, -3), (1, 1, 1, 0)) 18
+    ((2, 2, 2, 1), (-1, -1, -1, -2)) 14
+    ((1, 1, 1, 0), (-2, -2, -2, -3)) 12
+    ((-2, -2, -2, -3), (-1, -1, -1, -2)) 10
+    ((-1, -1, -1, -2), (-2, -2, -2, -3)) 8
+    ((0, 0, 0, -1), (3, 3, 3, 2)) 4
+    ((3, 3, 3, 2), (0, 0, 0, -1)) 3
+    ((3, 3, 3, 2), (2, 2, 2, 1)) 2
+    ((2, 2, 2, 1), (3, 3, 3, 2)) 1
+n=8 L=5 level model planar: UNSAT
+n=10 L=5 level model planar: UNSAT
+n=12 L=5 level model planar: UNSAT
+n=14 L=5 level model planar: UNSAT
+n=16 L=5 level model planar: UNSAT
+n=18 L=5 level model planar: UNSAT
+n=20 L=5 level model planar: UNSAT
+n=24 L=5 level model planar: UNSAT
+n=28 L=5 level model planar: UNSAT
+n=8 L=5 level model nonplanar: SAT  levels 0001234  chords [
+n=8 L=5 level model noparity planar: UNSAT
+n=10 L=5 level model nonplanar: SAT  levels 012344334  chord
+n=10 L=5 level model noparity planar: UNSAT
+n=12 L=5 level model nonplanar: SAT  levels 01111123334  cho
+n=12 L=5 level model noparity planar: UNSAT
+n=14 L=5 level model nonplanar: SAT  levels 0000011111234  c
+n=14 L=5 level model noparity planar: SAT  levels 0123210123
+n=16 L=5 level model nonplanar: SAT  levels 000122112344334 
+n=16 L=5 level model noparity planar: SAT  levels 0101233212
+n=18 L=5 level model nonplanar: SAT  levels 0110011001111123
+n=18 L=5 level model noparity planar: SAT  levels 0010123434
+n=10 L=5 level model planar free1: UNSAT
+n=10 L=5 level model planar free3: UNSAT
+n=10 L=5 level model planar free4: UNSAT
+n=10 L=5 level model planar crossI: UNSAT
+n=10 L=5 level model planar crossO: SAT  levels 011111234  chords [(1,
+n=14 L=5 level model planar free1: UNSAT
+n=14 L=5 level model planar free3: UNSAT
+n=14 L=5 level model planar free4: UNSAT
+n=14 L=5 level model planar crossI: SAT  levels 0123321123444  chords 
+n=14 L=5 level model planar crossO: SAT  levels 0111100111234  chords 
+n=18 L=5 level model planar free1: UNSAT
+n=18 L=5 level model planar free3: UNSAT
+n=18 L=5 level model planar free4: UNSAT
+n=18 L=5 level model planar crossI: SAT  levels 01234444321001234  cho
+n=18 L=5 level model planar crossO: SAT  levels 01100000000111234  cho
+n=10 L=5 level model planar free1 free3 free4: UNSAT
+n=12 L=5 level model planar free1 free3 free4: UNSAT
+n=14 L=5 level model planar free1 free3 free4: UNSAT
+n=16 L=5 level model planar free1 free3 free4: UNSAT
+n=18 L=5 level model planar free1 free3 free4: UNSAT
+n=20 L=5 level model planar free1 free3 free4: UNSAT

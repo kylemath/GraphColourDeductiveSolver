@@ -1,0 +1,178 @@
+n=8 L=10: minimal group core (12 of 34): ['disj8', 'disj9', 'frame7', 'frame8', 'frame9', 'graph', 'ham', 'planar', 'pm7', 'pm8', 'pm9', 'vrot']
+n=10 L=10: minimal group core (18 of 34): ['disj5', 'disj6', 'disj7', 'disj8', 'disj9', 'frame5', 'frame6', 'frame7', 'frame8', 'frame9', 'graph', 'ham', 'planar', 'pm5', 'pm6', 'pm7', 'pm8', 'pm9']
+n=12 L=10: minimal group core (18 of 34): ['disj5', 'disj6', 'disj7', 'disj8', 'disj9', 'frame5', 'frame6', 'frame7', 'frame8', 'frame9', 'graph', 'ham', 'planar', 'pm5', 'pm6', 'pm7', 'pm8', 'pm9']
+n=14 L=10: minimal group core (21 of 34): ['disj4', 'disj5', 'disj6', 'disj7', 'disj8', 'disj9', 'frame4', 'frame5', 'frame6', 'frame7', 'frame8', 'frame9', 'graph', 'ham', 'planar', 'pm4', 'pm5', 'pm6', 'pm7', 'pm8', 'pm9']
+n=8: longest path in any D: 3 arcs; longest path through a Ham arc: 3 arcs
+   back-depth into Ham-arc tails: {0: 4, 1: 2, 2: 1}
+   fwd-depth from Ham-arc heads: {0: 4, 1: 2, 2: 1}
+   out-degree of PMs with an in-arc: {0: 5, 1: 4}  sink lemma agree/disagree: [9, 0]
+n=10: longest path in any D: 5 arcs; longest path through a Ham arc: 5 arcs
+   back-depth into Ham-arc tails: {0: 27, 1: 12, 2: 9, 3: 1, 4: 1}
+   fwd-depth from Ham-arc heads: {0: 30, 1: 12, 2: 6, 3: 1, 4: 1}
+   out-degree of PMs with an in-arc: {0: 38, 1: 32, 2: 1}  sink lemma agree/disagree: [71, 0]
+n=12: longest path in any D: 5 arcs; longest path through a Ham arc: 5 arcs
+   back-depth into Ham-arc tails: {0: 225, 1: 108, 2: 85, 3: 8, 4: 6}
+   fwd-depth from Ham-arc heads: {0: 258, 1: 112, 2: 49, 3: 7, 4: 6}
+   out-degree of PMs with an in-arc: {0: 365, 1: 278, 2: 35}  sink lemma agree/disagree: [678, 0]
+n=14: longest path in any D: 6 arcs; longest path through a Ham arc: 6 arcs
+   back-depth into Ham-arc tails: {0: 1912, 1: 864, 2: 728, 3: 83, 4: 57, 5: 1}
+   fwd-depth from Ham-arc heads: {0: 2158, 1: 948, 2: 423, 3: 66, 4: 49, 5: 1}
+   out-degree of PMs with an in-arc: {0: 3340, 1: 2390, 2: 484, 4: 9}  sink lemma agree/disagree: [6223, 0]
+n=16: longest path in any D: 7 arcs; longest path through a Ham arc: 7 arcs
+   back-depth into Ham-arc tails: {0: 16820, 1: 7442, 2: 6373, 3: 809, 4: 521, 5: 18, 6: 1}
+   fwd-depth from Ham-arc heads: {0: 18708, 1: 8367, 2: 3860, 3: 615, 4: 415, 5: 18, 6: 1}
+   out-degree of PMs with an in-arc: {0: 31818, 1: 21228, 2: 5970, 4: 303}  sink lemma agree/disagree: [59319, 0]
+n=8 L=5 full: UNSAT
+n=8 L=5 novrot: UNSAT
+n=8 L=5 vrot_only: SAT
+n=8 L=5 lone f1: UNSAT
+n=8 L=5 lone f3: UNSAT
+n=8 L=5 lone f4: UNSAT
+n=10 L=5 full: UNSAT
+n=10 L=5 novrot: UNSAT
+n=10 L=5 vrot_only: SAT
+n=10 L=5 lone f1: UNSAT
+n=10 L=5 lone f3: UNSAT
+n=10 L=5 lone f4: UNSAT
+n=12 L=5 full: UNSAT
+n=12 L=5 novrot: UNSAT
+n=12 L=5 vrot_only: SAT
+n=12 L=5 lone f1: UNSAT
+n=12 L=5 lone f3: UNSAT
+n=12 L=5 lone f4: UNSAT
+n=14 L=5 full: UNSAT
+n=14 L=5 novrot: UNSAT
+n=14 L=5 vrot_only: SAT
+n=14 L=5 lone f1: UNSAT
+n=14 L=5 lone f3: UNSAT
+n=14 L=5 lone f4: UNSAT
+n=16 L=5 full: UNSAT
+n=16 L=5 novrot: UNSAT
+n=16 L=5 vrot_only: SAT
+n=16 L=5 lone f1: UNSAT
+n=16 L=5 lone f3: UNSAT
+n=16 L=5 lone f4: UNSAT
+n=8 L=10 order (f3 < f4): UNSAT (0.0s)
+n=8 L=10 order_rev (f3 > f4): SAT (0.0s)
+n=8 L=10 order + f1 between: UNSAT (0.0s)
+n=8 L=10 order + f1 outside: UNSAT (0.0s)
+n=10 L=10 order (f3 < f4): UNSAT (0.0s)
+n=10 L=10 order_rev (f3 > f4): SAT (0.0s)
+n=10 L=10 order + f1 between: UNSAT (0.0s)
+n=10 L=10 order + f1 outside: UNSAT (0.0s)
+n=12 L=10 order (f3 < f4): SAT (0.0s)
+n=12 L=10 order_rev (f3 > f4): SAT (0.0s)
+n=12 L=10 order + f1 between: SAT (0.0s)
+n=12 L=10 order + f1 outside: SAT (0.0s)
+n=14 L=10 order (f3 < f4): SAT (0.0s)
+n=14 L=10 order_rev (f3 > f4): SAT (0.0s)
+n=14 L=10 order + f1 between: SAT (0.0s)
+n=14 L=10 order + f1 outside: SAT (0.0s)
+n=16 L=10 order (f3 < f4): SAT (0.0s)
+n=16 L=10 order_rev (f3 > f4): SAT (0.0s)
+n=16 L=10 order + f1 between: SAT (0.0s)
+n=16 L=10 order + f1 outside: SAT (0.0s)
+n=10 L=5 order (f3 < f4): UNSAT (0.0s)
+n=10 L=5 order_rev (f3 > f4): SAT (0.0s)
+n=10 L=5 order + f1 between: UNSAT (0.0s)
+n=10 L=5 order + f1 outside: UNSAT (0.0s)
+n=14 L=5 order (f3 < f4): SAT (0.0s)
+n=14 L=5 order_rev (f3 > f4): SAT (0.0s)
+n=14 L=5 order + f1 between: SAT (0.0s)
+n=14 L=5 order + f1 outside: SAT (0.0s)
+n=8 L=10: UNSAT after 0 cuts (0.0s)
+n=10 L=10: UNSAT after 0 cuts (0.0s)
+n=12 L=10: UNSAT after 37 cuts (0.0s)
+n=14 L=10: SAT after 82 cuts (0.1s): order condition holds at every Ham state; Ham states at t = [0, 5] (arc t -> t+1), planar_rot = False
+n=16 L=10: SAT after 105 cuts (0.1s): order condition holds at every Ham state; Ham states at t = [0, 4] (arc t -> t+1), planar_rot = False
+n=12 L=5: UNSAT after 18 cuts (0.0s)
+n=14 L=5: SAT after 58 cuts (0.1s): order condition holds at every Ham state; Ham states at t = [0, 4] (arc t -> t+1), planar_rot = False
+n=16 L=5: SAT after 0 cuts (0.1s): order condition holds at every Ham state; Ham states at t = [0] (arc t -> t+1), planar_rot = False
+n=12 L=6: SAT after 0 cuts (0.1s): order condition holds at every Ham state; Ham states at t = [0, 1, 3, 4] (arc t -> t+1), planar_rot = True
+n=16 L=6: SAT after 0 cuts (0.1s): order condition holds at every Ham state; Ham states at t = [0, 1, 4] (arc t -> t+1), planar_rot = True
+n=20 L=6: SAT after 0 cuts (0.1s): order condition holds at every Ham state; Ham states at t = [0, 3] (arc t -> t+1), planar_rot = True
+C30#0 per-step S: [11, -1, 11, -9, 11, -1, 11, -9, 11, -1, 11, -9, 11, -1, 11, -9, 11, -1, 11, -9]
+C30#0 per-step S: [-1, 11, -9, 11, -1, 11, -9, 11, -1, 11, -9, 11, -1, 11, -9, 11, -1, 11, -9, 11]
+n=8: S on Ham arcs {-5: 1, -1: 4, 3: 2} | S on other arcs {3: 2}
+n=10: S on Ham arcs {-9: 2, -5: 9, -1: 20, 3: 15, 7: 4} | S on other arcs {-9: 1, -5: 4, -1: 12, 3: 6, 7: 3}
+n=12: S on Ham arcs {-9: 18, -5: 89, -1: 157, 3: 126, 7: 39, 11: 3} | S on other arcs {-9: 14, -5: 61, -1: 110, 3: 108, 7: 40, 11: 3}
+line 0: n=26 planar_rot=True #PM=125 #arcs=60 #Ham arcs=0 cyclic SCC sizes=[20] Ham arcs inside an SCC=0
+   Ham arcs with tail in a cyclic SCC: 0  head in a cyclic SCC: 0
+line 1: n=26 planar_rot=True #PM=125 #arcs=60 #Ham arcs=0 cyclic SCC sizes=[20] Ham arcs inside an SCC=0
+   Ham arcs with tail in a cyclic SCC: 0  head in a cyclic SCC: 0
+line 0 {(0, 1): 4, (0, 2): 0, (0, 3): 0, (0, 4): 4, (1, 2): 4, (1, 3): 0, (1, 4): 0, (2, 3): 4, (2, 4): 0, (3, 4): 4}
+line 1 {(0, 1): 4, (0, 2): 0, (0, 3): 0, (0, 4): 4, (1, 2): 4, (1, 3): 0, (1, 4): 0, (2, 3): 4, (2, 4): 0, (3, 4): 4}
+n 26 m 40 L 20 edge-use histogram Counter({8: 25, 4: 15})
+never-matched edges: []
+  they form components: []
+out-degree along orbit: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+#PM 125 #type-A-with-arcs 40
+v-edge use: [4, 4, 4, 4, 4]
+line 0: L=20, v-frames [4, 2, 0, 3, 1, 4, 2, 0, 3, 1]..., hub cw rim order [3, 2, 1, 0, 4]
+   windings rho(w), w = 1..n-1: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0]  sum 20.0
+line 1: L=20, v-frames [4, 2, 0, 3, 1, 4, 2, 0, 3, 1]..., hub cw rim order [3, 2, 1, 0, 4]
+   windings rho(w), w = 1..n-1: [2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  sum 20.0
+C30#0 in adj normal form: v-chords {4: 7, 3: 5, 2: 3} #cubic chords 11
+L=20: SAT (0.0s)
+   verify: {'pm': True, 'disjoint': True, 'frames': [2, 0, 3, 1, 4, 2, 0, 3, 1, 4, 2, 0, 3, 1, 4, 2, 0, 3, 1, 4], 'ham_arcs': [], 'planar_rot': True}
+L=10: UNSAT (0.0s)
+n=8: linear potential feasible 3, infeasible 0 []
+n=10: linear potential feasible 20, infeasible 0 []
+n=12: linear potential feasible 159, infeasible 0 []
+n=14: linear potential feasible 400, infeasible 0 []
+9 arcs; LP status 0 Optimization terminated successfully. (HiGHS Status 7: Optim [ 0.  0.  5.  0.  0. -3. -1.  1. -7.]
+85 arcs; LP status 2 The problem is infeasible. (HiGHS Status 8: model_status is  
+76 arcs; LP status 2 The problem is infeasible. (HiGHS Status 8: model_status is  
+76 arcs; LP status 2 
+n=10: maximal walks from Ham arcs: forward 52 (non-monotone q: 2), backward 52 (non-monotone: 9)
+  forward q-profiles (top): [((0,), 30), ((0, 2), 7), ((0, 3), 5), ((0, 2, 3), 3), ((0, 2, 2), 3), ((0, 4), 2), ((0, 3, 2, 2), 1), ((0, 3, 2, 2, 2), 1)]
+  backward q-profiles (top): [((0,), 27), ((0, 2), 7), ((0, 3, 2), 5), ((0, 3), 5), ((0, 2, 3), 2), ((0, 4, 1), 2), ((0, 2, 2), 2), ((0, 3, 2, 2, 2), 1)]
+n=12: maximal walks from Ham arcs: forward 479 (non-monotone q: 23), backward 483 (non-monotone: 79)
+  forward q-profiles (top): [((0,), 258), ((0, 2), 55), ((0, 4), 46), ((0, 3), 34), ((0, 2, 4), 18), ((0, 5), 16), ((0, 2, 2), 13), ((0, 2, 3), 10), ((0, 3, 2), 6), ((0, 3, 3), 6), ((0, 4, 2, 2), 3), ((0, 4, 1), 2)]
+  backward q-profiles (top): [((0,), 225), ((0, 2), 50), ((0, 3), 37), ((0, 4, 2), 36), ((0, 4), 34), ((0, 3, 3), 22), ((0, 2, 2), 17), ((0, 5, 1), 16)]
+n=14: maximal walks from Ham arcs: forward 4328 (non-monotone q: 329), backward 4415 (non-monotone: 971)
+  forward q-profiles (top): [((0,), 2158), ((0, 2), 427), ((0, 4), 319), ((0, 5), 306), ((0, 3), 253), ((0, 2, 5), 110), ((0, 6), 102), ((0, 2, 2), 87), ((0, 2, 3), 74), ((0, 2, 4), 70), ((0, 4, 2), 65), ((0, 3, 4), 52)]
+  backward q-profiles (top): [((0,), 1912), ((0, 2), 358), ((0, 3), 260), ((0, 5, 2), 249), ((0, 5), 230), ((0, 4), 229), ((0, 4, 3), 182), ((0, 6, 1), 110)]
+K4 4 sum sigma mod 4 counts: {0: 6}
+prism 6 sum sigma mod 4 counts: {0: 6}
+cube 8 sum sigma mod 4 counts: {0: 24}
+pentprism 10 sum sigma mod 4 counts: {0: 30}
+dodeca 20 sum sigma mod 4 counts: {0: 60}
+mode=r0 n=8 L=5 planar=False closed=True -> SAT (0.0s, 510 vars)
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+mode=r0 n=8 L=5 planar=True closed=True -> UNSAT (0.0s, 528 vars)
+mode=r0 n=10 L=5 planar=False closed=True -> SAT (0.0s, 860 vars)
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+mode=r0 n=10 L=5 planar=True closed=True -> UNSAT (0.0s, 891 vars)
+mode=r0 n=12 L=5 planar=False closed=True -> SAT (0.0s, 1262 vars)
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+mode=r0 n=12 L=5 planar=True closed=True -> UNSAT (0.0s, 1310 vars)
+mode=r0 n=14 L=5 planar=False closed=True -> SAT (0.0s, 1736 vars)
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+mode=r0 n=14 L=5 planar=True closed=True -> UNSAT (0.0s, 1805 vars)
+mode=r0 n=8 L=10 planar=True closed=True -> UNSAT (0.0s, 978 vars)
+mode=r0 n=8 L=10 planar=False closed=True -> SAT (0.0s, 960 vars)
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+mode=r0 n=10 L=10 planar=True closed=True -> UNSAT (0.0s, 1616 vars)
+mode=r0 n=10 L=10 planar=False closed=True -> SAT (0.0s, 1585 vars)
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+mode=r0 n=12 L=10 planar=True closed=True -> UNSAT (0.0s, 2370 vars)
+mode=r0 n=12 L=10 planar=False closed=True -> SAT (0.0s, 2322 vars)
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+BrokenPipeError: [Errno 32] Broken pipe
+mode=adj n=10 L=5 planar=True closed=True -> UNSAT (0.0s, 891 vars)
+mode=adj n=14 L=5 planar=True closed=True -> UNSAT (0.0s, 1805 vars)
+mode=adj n=18 L=5 planar=True closed=True -> UNSAT (2.2s, 3023 vars)
+mode=adj n=8 L=10 planar=True closed=True -> UNSAT (0.0s, 978 vars)
+mode=adj n=10 L=10 planar=True closed=True -> UNSAT (0.0s, 1616 vars)
+mode=adj n=12 L=10 planar=True closed=True -> UNSAT (0.0s, 2370 vars)
+mode=adj n=14 L=10 planar=True closed=True -> UNSAT (0.1s, 3260 vars)
+mode=star n=14 L=10 planar=True closed=True -> UNSAT (0.1s, 3260 vars)
+mode=star n=16 L=10 planar=True closed=True -> UNSAT (0.4s, 4286 vars)
+mode=star n=18 L=10 planar=True closed=True -> UNSAT (2.1s, 5448 vars)
