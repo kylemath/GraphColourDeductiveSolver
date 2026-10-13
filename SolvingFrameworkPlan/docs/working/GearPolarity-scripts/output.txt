@@ -1,0 +1,52 @@
+== gear_polarity.py maps
+FAILS {}
+distinct rim signatures per (L1,L2): {(True, True): 1, (True, False): 1, (False, True): 1, (False, False): 1}
+{'filled': 31627, 'filled_odd_2': 9362, 'filled_odd_1': 15756, 'filled_odd_0': 6509, 'unfilled_odd_2': 30376, 'classes': 16, 'classes_orient_a': 16, 'classes_orient_b': 16, 'holes': 16, 'states': 62003}
+moves {(True, 'both', 'other'): 9340, (True, 'quiet', 'other'): 15042, (True, 'both', 'best'): 15493, (True, 'one', 'best'): 10400, (True, 'quiet', 'best'): 10755, (False, 'one', 'other'): 13868, (False, 'both', 'other'): 57387, (False, 'one', 'best'): 68960, (False, 'quiet', 'other'): 107937, (True, 'one', 'other'): 2004}
+wrote <scratchpad>/gp_maps.json
+== gear_polarity.py gentri 16 17 18 19
+FAILS {}
+distinct rim signatures per (L1,L2): {(False, False): 1, (True, False): 1, (False, True): 1, (True, True): 1}
+{'filled': 31203, 'filled_odd_2': 10761, 'filled_odd_1': 14994, 'filled_odd_0': 5448, 'unfilled_odd_2': 31324, 'classes': 557, 'classes_orient_a': 557, 'classes_orient_b': 557, 'holes': 549, 'states': 62527}
+moves {(False, 'one', 'best'): 73032, (False, 'both', 'other'): 42696, (False, 'quiet', 'other'): 47387, (False, 'one', 'other'): 14558, (True, 'both', 'best'): 15704, (True, 'one', 'best'): 9888, (True, 'quiet', 'best'): 7283, (True, 'quiet', 'other'): 4654, (True, 'both', 'other'): 4774, (True, 'one', 'other'): 1686}
+wrote <scratchpad>/gp_gentri_16_17_18_19.json
+== gear_polarity.py gentri 20
+FAILS {}
+distinct rim signatures per (L1,L2): {(False, False): 1, (True, False): 1, (False, True): 1, (True, True): 1}
+{'filled': 88722, 'filled_odd_2': 31602, 'filled_odd_1': 41332, 'filled_odd_0': 15788, 'unfilled_odd_2': 91506, 'classes': 1033, 'classes_orient_a': 1033, 'classes_orient_b': 1033, 'holes': 1001, 'states': 180228}
+moves {(False, 'one', 'best'): 209072, (False, 'both', 'other'): 133330, (False, 'quiet', 'other'): 160097, (False, 'one', 'other'): 42518, (True, 'both', 'best'): 46329, (True, 'one', 'best'): 30126, (True, 'quiet', 'best'): 22525, (True, 'both', 'other'): 17461, (True, 'quiet', 'other'): 17690, (True, 'one', 'other'): 5832}
+wrote <scratchpad>/gp_gentri_20.json
+== gp_stats.py (all three)
+DL states 29968 from 1523 holes
+dF among DL: [(2, 29308), (3, 598), (4, 57), (5, 4), (6, 1)]
+baseline majority acc 0.978, H(dF)=0.164 bits
+dd      spearman +0.276  H(dF|f)=0.115  majority-acc 0.978  groups 2 (mixed 1)
+slack   spearman -0.182  H(dF|f)=0.131  majority-acc 0.978  groups 11 (mixed 6)
+N       spearman -0.182  H(dF|f)=0.131  majority-acc 0.978  groups 11 (mixed 6)
+l1      spearman -0.011  H(dF|f)=0.155  majority-acc 0.978  groups 16 (mixed 12)
+l2      spearman -0.014  H(dF|f)=0.155  majority-acc 0.978  groups 16 (mixed 12)
+shared  spearman +0.022  H(dF|f)=0.156  majority-acc 0.978  groups 10 (mixed 9)
+kpi     spearman -0.064  H(dF|f)=0.153  majority-acc 0.978  groups 18 (mixed 14)
+quiet   spearman -0.182  H(dF|f)=0.131  majority-acc 0.978  groups 11 (mixed 6)
+moves   spearman -0.169  H(dF|f)=0.130  majority-acc 0.978  groups 15 (mixed 8)
+n       spearman -0.063  H(dF|f)=0.147  majority-acc 0.978  groups 10 (mixed 8)
+dd=0 dF dist Counter({2: 23125})
+dd=1 dF dist Counter({2: 6183, 3: 598, 4: 57, 5: 4, 6: 1})
+lockgeom      H(dF|key)=0.133  majority-acc 0.978  groups 494 mixed 61
+lockgeom+kpi  H(dF|key)=0.102  majority-acc 0.978  groups 2344 mixed 144
+all feats     H(dF|key)=0.039  majority-acc 0.987  groups 7091 mixed 111
+all minus n   H(dF|key)=0.041  majority-acc 0.986  groups 6586 mixed 115
+counterexample key {'dd': 1, 'slack': 2, 'N': 10, 'l1': 8, 'l2': 8, 'shared': 4, 'kpi': 4, 'quiet': 2, 'moves': 8, 'n': 17} -> ('17:3 h0', 62, 2) ('c30@0', 16, 3)
+classes 1606
+class winding w=(U-3F)/5 distribution [(-24, 105), (-20, 95), (-26, 89), (-30, 73), (-32, 67), (-38, 65), (-34, 65), (-36, 55), (-22, 53), (-28, 53), (-12, 51), (-40, 48)]
+spearman(odd rings per state, w/|S|) = 0.910
+spearman(odd rings per state, filled share) = -0.910
+== gp_jam.py (4square maps + gentri 16-19)
+DL    full  n= 21333  lowers dF 0.589  same 0.402  raises 0.009
+DL    part  n= 23978  lowers dF 0.777  same 0.202  raises 0.021
+DL    one   n= 23978  lowers dF 0.846  same 0.133  raises 0.021
+DL    quiet n= 37734  lowers dF 0.478  same 0.516  raises 0.006
+nonDL full  n= 71657  lowers dF 0.000  same 0.827  raises 0.173
+nonDL part  n= 28426  lowers dF 0.000  same 0.362  raises 0.638
+nonDL one   n=170418  lowers dF 0.833  same 0.051  raises 0.116
+nonDL quiet n=155324  lowers dF 0.000  same 0.885  raises 0.115
