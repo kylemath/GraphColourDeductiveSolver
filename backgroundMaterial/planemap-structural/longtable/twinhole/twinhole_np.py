@@ -51,6 +51,25 @@ def main(path, which='far'):
         new &= ~seen
         level += 1; dist[new] = level; seen |= new; F = new
         print('level', level, int(new.sum()), round(time.time() - t0, 1), file=sys.stderr, flush=True)
+    # sequential rule: fill a hole as soon as its rim is down to 3 (free action), then the other. Once a hole is filled
+    # its side is a full triangulation glued at a triangle, so (projection lemma) the rest costs exactly dG of the other
+    # side. dS(i, j) = min over reachable (i', j') of path length + terminal cost; bucket BFS from the terminal costs.
+    BIG = np.int16(30000)
+    term = np.full((S, S), BIG, dtype=np.int16)
+    term[fl, :] = np.minimum(term[fl, :], dG[None, :])
+    term[:, fl] = np.minimum(term[:, fl], dG[:, None])
+    dS = term.copy(); k = 0
+    while True:
+        F = dS == k
+        if not F.any() and k > int(dG.max()) + 1: break
+        new = spread_rows(F, src, dst, S)
+        new |= spread_rows(F.T.copy(), src, dst, S).T
+        for p in range(6):
+            new |= F[Tp[p]][:, Tp[p]]
+        upd = new & (dS > k + 1)
+        dS[upd] = k + 1; k += 1
+        if k > 60: break
+    histS = collections.Counter(dS.ravel().tolist())
     hist = collections.Counter(dist.ravel().tolist())
     big = np.maximum.outer(dG, dG)
     exc = collections.Counter((dist - big)[dist >= 0].ravel().tolist())
@@ -61,7 +80,10 @@ def main(path, which='far'):
         excess_over_maxside=dict(sorted(exc.items())),
         sym_vs_dG=dict(sorted(collections.Counter(zip(dG.tolist(), sym.tolist())).items())) and
                   {f'{a}->{b}': c for (a, b), c in sorted(collections.Counter(zip(dG.tolist(), sym.tolist())).items())},
-        deepest_pairs=[[i, j, int(dG[i]), int(dG[j])] for i, j in deep])))
+        deepest_pairs=[[i, j, int(dG[i]), int(dG[j])] for i, j in deep],
+        maxSeq=int(dS.max()), histSeq=dict(sorted(histS.items())),
+        seq_le_joint=bool((dS <= np.where(dist < 0, BIG, dist)).all()), seq_ne_joint=int((dS != dist).sum()),
+        deepest_seq=[[int(i), int(j), int(dG[i]), int(dG[j]), int(dist[i, j])] for i, j in np.argwhere(dS == dS.max())[:5]])))
 
 
 if __name__ == '__main__':

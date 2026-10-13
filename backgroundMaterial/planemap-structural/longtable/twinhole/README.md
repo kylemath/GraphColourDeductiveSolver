@@ -76,3 +76,28 @@ map: `far` is the face farthest from the hole; `near` is the closest face that a
   current game supports one hole; that is a product decision for the user.
 - **Run p34.r210** (S = 10,634, about 113 M states, about 1 GB) when the machine is plugged in.
 - **Try gluing along a separating 4- or 5-cycle.** By fact 2 this adds locks and may go deeper still.
+
+## Addendum, 13 Oct 2026: the two win rules
+
+**The two rules.**
+- **Simultaneous** (dJ, above): both rims must be at ≤ 3 colours at the same time.
+- **Sequential** (dS, `maxSeq` in `twinhole_np.py`): as soon as one rim is at ≤ 3 colours, that hole is filled
+  (no swap is counted) and becomes an ordinary coloured region; then the other hole is played.
+
+**Computing dS.** After the first fill, that side is a full triangulation glued at a triangle. Hand fact 3 then
+makes the remaining cost exactly the other side's dG. So dS is a BFS that starts from these end costs.
+
+**Brute-force check.** On Tidy Trap's twin (far face), a separate brute force builds the after-first-fill states
+explicitly: one side fully coloured, with every free-colour choice. It runs a 0–1 BFS without using fact 3 and
+gives the same values on all 4,096 starts.
+
+**Observed: dS = dJ on every start tested.** That covers C30, p22, Tidy Trap (both faces) and the C60 dual (far
+face). The histograms match, and so does every individual start.
+
+**Conjecture (open): when side i is filled, dJ(i, j) = dG(j).** dJ ≥ dG(j) holds by projection. For the other
+direction, lift an optimal single-hole path for j. Chains that avoid Δ leave side i alone. A move through Δ also
+swaps side i's Δ-chain K_i for the same colour pair (a, b), and that keeps i filled unless:
+- the free colour c of side i's rim is in {a, b}, and
+- K_i holds some, but not all, of the rim cells of the other colour.
+
+That single case is the gap. No counterexample is known.
