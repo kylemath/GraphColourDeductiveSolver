@@ -1,0 +1,330 @@
+LEMMAFAIL tri=0 cls=2 P=15324 edges: 0-8 0-6 0-7 1-7 1-2 1-8 2-3 3-4 4-5 5-6
+LEMMAFAIL tri=0 cls=2 P=8736 edges: 0-1 0-8 0-6 0-7 1-7 1-2 1-8 2-3 3-4 4-5 5-6
+LEMMAFAIL tri=0 cls=2 P=19680 edges: 0-8 0-6 1-7 1-8 2-7 2-3 3-4 4-5 5-6
+LEMMAFAIL tri=0 cls=2 P=13128 edges: 0-1 0-8 0-6 1-7 1-8 2-7 2-3 3-4 4-5 5-6
+LEMMAFAIL tri=0 cls=2 P=15288 edges: 0-8 0-6 0-7 1-7 1-8 2-7 2-3 3-4 4-5 5-6
+LEMMAFAIL tri=0 cls=2 P=14568 edges: 0-8 0-6 0-7 1-2 1-8 2-7 2-3 3-4 4-5 5-6
+LEMMAFAIL tri=0 cls=4 P=2040 edges: 0-8 0-6 0-7 1-7 1-2 1-8 2-3 2-8 3-7 3-4 4-7 4-5 5-7 5-6 6-7
+LEMMAFAIL tri=0 cls=4 P=1128 edges: 0-1 0-8 0-6 0-7 1-7 1-2 1-8 2-3 2-8 3-7 3-4 4-7 4-5 5-7 5-6 6-7
+LEMMAFAIL tri=0 cls=4 P=2040 edges: 0-1 0-8 0-6 1-7 1-8 2-7 2-3 2-8 3-7 3-4 4-7 4-5 5-7 5-6 6-7
+LEMMAFAIL tri=0 cls=4 P=1128 edges: 0-1 0-8 0-6 1-7 1-2 1-8 2-7 2-3 2-8 3-7 3-4 4-7 4-5 5-7 5-6 6-7
+LEMMAFAIL tri=0 cls=4 P=2424 edges: 0-1 0-8 0-6 1-7 1-2 1-8 2-7 2-3 3-4 3-8 4-7 4-5 5-7 5-6 6-7
+LEMMAFAIL tri=0 cls=4 P=1272 edges: 0-1 0-8 0-6 0-7 1-7 1-2 1-8 2-7 2-3 3-4 3-8 4-7 4-5 5-7 5-6 6-7
+WEAKFAIL3 tri=2 cls=4 P=3240 edges: 0-1 0-6 0-8 1-7 1-6 2-8 2-3 2-7 3-4 3-7 4-5 4-7 5-8 5-6
+WEAKFAIL3 tri=2 cls=4 P=3240 edges: 0-1 0-6 0-8 1-7 1-6 2-8 2-3 2-7 3-8 3-4 4-8 4-5 5-6 5-7
+WEAKFAIL3 tri=2 cls=4 P=3240 edges: 0-1 0-6 0-8 1-8 1-2 1-6 2-3 2-7 3-4 3-7 4-8 4-5 5-6 5-7
+WEAKFAIL3 tri=2 cls=4 P=1920 edges: 0-1 0-6 0-8 1-2 1-6 2-3 2-7 3-8 3-4 3-7 4-8 4-5 4-7 5-6 5-7
+WEAKFAIL3 tri=2 cls=4 P=3240 edges: 0-1 0-6 0-8 1-2 1-6 2-3 2-7 3-8 3-4 4-5 4-7 5-6 5-7 6-8
+WEAKFAIL3 tri=2 cls=4 P=3240 edges: 0-1 0-6 0-8 1-2 1-6 2-3 2-7 3-8 3-4 4-8 4-5 5-8 5-7 6-7
+n=9 triangulations=50
+class1 (1=connected,2=2-conn,3=2-cuts-adjacent,4=3-conn): graphs=58401302  P<24*2^miss: 52658633
+class2 (1=connected,2=2-conn,3=2-cuts-adjacent,4=3-conn): graphs=7160719  P<24*2^miss: 3695188
+class3 (1=connected,2=2-conn,3=2-cuts-adjacent,4=3-conn): graphs=530458  P<24*2^miss: 0
+class4 (1=connected,2=2-conn,3=2-cuts-adjacent,4=3-conn): graphs=83785  P<24*2^miss: 0
+class>=3: tested=530408 strongFail=58751 weakFail=334
+lemma(strong, class>=2): tested=7160669 fails=2653135 ; 3-conn tested=83735 fails=22531
+SIG cls=1 faces>=4: 15 | minP=17496 count=3827924 witness tri=0 edges: 0 1 2 3 4 5 8 11 14
+SIG cls=1 faces>=4: 14 | minP=11664 count=1896415 witness tri=0 edges: 0 1 2 3 4 5 6 8 11 14
+SIG cls=1 faces>=4: 13 | minP=5832 count=1179784 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 12 20
+SIG cls=1 faces>=4: 12 | minP=3888 count=622771 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 12 20
+SIG cls=1 faces>=4: 11 | minP=1944 count=297339 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 8 10 | minP=19692 count=355788 witness tri=0 edges: 1 2 3 5 6 8 11 14 16
+SIG cls=1 faces>=4: 10 | minP=1296 count=133479 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 9 9 | minP=17496 count=178920 witness tri=1 edges: 0 1 3 4 6 12 13 14 20
+SIG cls=1 faces>=4: 8 9 | minP=11664 count=699119 witness tri=1 edges: 0 1 2 3 4 6 12 13 14 20
+SIG cls=1 faces>=4: 9 | minP=648 count=57902 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 12 13 14 20
+SIG cls=1 faces>=4: 8 8 | minP=7776 count=380142 witness tri=1 edges: 0 1 2 3 4 5 6 12 13 14 20
+SIG cls=1 faces>=4: 8 | minP=432 count=24711 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 20
+SIG cls=2 faces>=4: 8 8 | minP=8736 count=15678 witness tri=0 edges: 0 1 2 3 4 5 6 8 11 14 17
+SIG cls=2 faces>=4: 9 9 | minP=19680 count=2362 witness tri=0 edges: 1 2 4 6 7 8 11 14 17
+SIG cls=2 faces>=4: 8 9 | minP=13128 count=12608 witness tri=0 edges: 0 1 2 4 6 7 8 11 14 17
+SIG cls=2 faces>=4: 9 | minP=1536 count=4724 witness tri=0 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 16 19
+SIG cls=3 faces>=4: 9 | minP=1536 count=4724 witness tri=0 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 16 19
+SIG cls=2 faces>=4: 8 | minP=768 count=6006 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 12 13 16 18 20
+SIG cls=3 faces>=4: 8 | minP=768 count=6006 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 12 13 16 18 20
+SIG cls=1 faces>=4: | minP=24 count=50 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+SIG cls=2 faces>=4: | minP=24 count=50 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+SIG cls=3 faces>=4: | minP=24 count=50 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+SIG cls=4 faces>=4: | minP=24 count=50 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+SIG cls=4 faces>=4: 8 | minP=1032 count=13 witness tri=1 edges: 0 1 2 3 4 5 6 7 9 10 12 13 15 16 18 20
+SIG cls=2 faces>=4: 4 4 4 6 6 | minP=9420 count=13915 witness tri=0 edges: 1 2 3 4 5 6 8 11 12 14 16 17
+SIG cls=1 faces>=4: 4 4 4 6 6 | minP=9420 count=46729 witness tri=0 edges: 1 2 3 4 5 6 8 11 12 14 16 17
+SIG cls=1 faces>=4: 5 6 6 | minP=2592 count=398863 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 5 6 6 | minP=3216 count=98635 witness tri=1 edges: 0 1 3 4 5 7 8 9 11 12 15 16 20
+SIG cls=1 faces>=4: 6 12 | minP=19764 count=458287 witness tri=0 edges: 1 2 3 5 6 8 10 11 14
+SIG cls=1 faces>=4: 6 11 | minP=11664 count=851520 witness tri=1 edges: 0 1 3 4 5 9 10 11 12 20
+SIG cls=1 faces>=4: 6 10 | minP=7776 count=878975 witness tri=1 edges: 0 1 2 3 4 5 9 10 11 12 20
+SIG cls=1 faces>=4: 6 9 | minP=3888 count=686411 witness tri=1 edges: 0 1 3 4 5 6 7 8 12 13 14 20
+SIG cls=1 faces>=4: 6 8 | minP=2592 count=454974 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 12 13 14 20
+SIG cls=2 faces>=4: 6 9 | minP=5856 count=24473 witness tri=0 edges: 0 1 2 3 4 5 6 7 10 11 14 17
+SIG cls=2 faces>=4: 6 8 | minP=2928 count=51610 witness tri=1 edges: 0 1 2 3 4 5 7 8 9 10 12 15 20
+SIG cls=1 faces>=4: 6 | minP=144 count=4591 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 20
+SIG cls=2 faces>=4: 6 | minP=192 count=3043 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 18 20
+SIG cls=3 faces>=4: 6 | minP=192 count=3043 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 18 20
+SIG cls=4 faces>=4: 6 | minP=264 count=345 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 15 16 18 20
+SIG cls=1 faces>=4: 6 6 8 | minP=14892 count=113307 witness tri=0 edges: 1 2 3 5 6 8 10 11 14 17
+SIG cls=2 faces>=4: 6 6 8 | minP=14892 count=4055 witness tri=0 edges: 1 2 3 5 6 8 10 11 14 17
+SIG cls=1 faces>=4: 6 6 | minP=864 count=79259 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 6 6 | minP=960 count=29781 witness tri=1 edges: 0 2 3 4 5 6 7 8 10 11 12 14 15 18 20
+SIG cls=3 faces>=4: 6 6 | minP=1536 count=2436 witness tri=1 edges: 0 1 2 3 4 5 6 7 10 12 13 14 16 18 20
+SIG cls=1 faces>=4: 6 6 6 | minP=5184 count=122795 witness tri=1 edges: 0 1 2 3 4 5 9 10 11 16 17 20
+SIG cls=2 faces>=4: 6 6 6 | minP=6432 count=18703 witness tri=0 edges: 0 1 2 3 4 8 9 10 14 15 16 19
+SIG cls=2 faces>=4: 4 4 5 5 5 | minP=4224 count=68135 witness tri=3 edges: 1 2 4 5 6 7 9 11 12 13 14 16 20
+SIG cls=1 faces>=4: 4 4 5 5 5 | minP=2592 count=146702 witness tri=6 edges: 0 3 4 5 6 9 12 14 15 17 18 19 20
+SIG cls=1 faces>=4: 4 4 4 4 4 5 | minP=2304 count=39793 witness tri=1 edges: 0 1 3 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 4 4 4 4 5 | minP=5040 count=369 witness tri=0 edges: 0 1 2 4 5 8 9 10 11 14 15 16 17 19
+SIG cls=2 faces>=4: 4 4 4 4 4 5 | minP=2688 count=31471 witness tri=1 edges: 0 1 3 4 7 8 10 11 13 14 15 16 17 20
+SIG cls=4 faces>=4: 4 4 4 4 4 5 | minP=5040 count=249 witness tri=0 edges: 0 1 2 4 5 8 9 10 11 14 15 16 17 19
+SIG cls=2 faces>=4: 4 4 5 5 | minP=1176 count=304983 witness tri=1 edges: 0 1 3 4 6 9 10 11 12 13 14 15 16 17 20
+SIG cls=3 faces>=4: 4 4 5 5 | minP=1536 count=24402 witness tri=1 edges: 0 1 2 3 4 7 8 9 10 11 13 16 17 18 20
+SIG cls=1 faces>=4: 4 4 5 5 | minP=864 count=465810 witness tri=1 edges: 0 3 6 7 8 9 10 11 13 14 16 17 18 19 20
+SIG cls=4 faces>=4: 4 4 5 5 | minP=1752 count=5027 witness tri=2 edges: 0 1 2 3 4 6 8 9 11 12 13 14 17 18 19
+SIG cls=1 faces>=4: 4 5 5 7 | minP=3888 count=483155 witness tri=6 edges: 0 3 4 5 6 9 11 15 17 18 19 20
+SIG cls=2 faces>=4: 4 5 5 7 | minP=6384 count=93070 witness tri=1 edges: 0 1 3 4 6 7 8 9 12 15 16 20
+SIG cls=2 faces>=4: 4 4 5 5 6 | minP=6720 count=40087 witness tri=1 edges: 0 1 3 4 6 10 11 12 13 14 15 20
+SIG cls=1 faces>=4: 4 4 5 5 6 | minP=5184 count=129824 witness tri=1 edges: 0 3 7 8 10 11 12 13 14 18 19 20
+SIG cls=1 faces>=4: 4 4 4 4 4 | minP=768 count=50511 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 4 4 4 4 | minP=768 count=12905 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 4 4 4 | minP=768 count=50511 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=4 faces>=4: 4 4 4 4 4 | minP=1368 count=3603 witness tri=2 edges: 0 1 2 3 5 6 7 8 9 11 12 13 14 17 18 19
+SIG cls=1 faces>=4: 4 4 4 4 7 | minP=3456 count=97190 witness tri=1 edges: 0 1 3 4 7 8 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 4 4 4 7 | minP=4704 count=34949 witness tri=1 edges: 0 2 3 4 7 8 9 10 11 12 15 16 20
+SIG cls=2 faces>=4: 4 4 5 9 | minP=11760 count=10346 witness tri=0 edges: 1 2 3 4 5 6 8 10 13 14 17
+SIG cls=2 faces>=4: 4 4 5 8 | minP=6720 count=81234 witness tri=1 edges: 0 2 3 4 6 7 8 9 12 13 15 20
+SIG cls=2 faces>=4: 4 4 5 | minP=336 count=120666 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 13 14 15 16 17 20
+SIG cls=1 faces>=4: 4 4 5 9 | minP=7776 count=240092 witness tri=1 edges: 0 1 3 7 8 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 4 5 8 | minP=5184 count=608577 witness tri=1 edges: 0 1 2 3 7 8 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 4 5 | minP=288 count=144768 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 4 5 | minP=384 count=67973 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 16 17 18 20
+SIG cls=4 faces>=4: 4 4 5 | minP=504 count=12247 witness tri=3 edges: 0 1 2 4 5 6 7 8 9 10 11 12 13 14 15 16 20
+SIG cls=1 faces>=4: 4 5 7 | minP=1296 count=848098 witness tri=1 edges: 0 1 3 6 7 8 9 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 5 7 | minP=1920 count=256642 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 12 13 15 20
+SIG cls=1 faces>=4: 5 7 7 | minP=5832 count=300790 witness tri=9 edges: 0 3 4 5 6 8 12 14 18 19 20
+SIG cls=2 faces>=4: 5 7 7 | minP=9696 count=21699 witness tri=0 edges: 0 1 2 4 6 8 9 10 11 14 17
+SIG cls=1 faces>=4: 4 4 4 4 4 6 | minP=7692 count=10521 witness tri=0 edges: 0 1 2 4 5 8 9 10 11 14 15 16 19
+SIG cls=2 faces>=4: 4 4 4 4 4 6 | minP=7692 count=6015 witness tri=0 edges: 0 1 2 4 5 8 9 10 11 14 15 16 19
+SIG cls=2 faces>=4: 4 4 5 6 | minP=1920 count=448002 witness tri=1 edges: 0 1 3 4 5 7 8 10 11 12 13 14 15 20
+SIG cls=3 faces>=4: 4 4 5 6 | minP=3504 count=2032 witness tri=2 edges: 0 1 2 5 6 7 8 10 11 12 14 15 16 17
+SIG cls=1 faces>=4: 4 4 5 6 | minP=1728 count=962567 witness tri=1 edges: 0 1 2 3 6 7 8 10 11 13 14 16 17 20
+SIG cls=4 faces>=4: 4 4 5 6 | minP=3528 count=962 witness tri=0 edges: 0 1 2 5 6 7 8 11 12 13 14 16 17 19
+SIG cls=1 faces>=4: 4 5 6 7 | minP=7776 count=316406 witness tri=1 edges: 0 1 3 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 4 5 6 7 | minP=10248 count=37634 witness tri=1 edges: 0 1 3 4 6 9 10 11 12 15 20
+SIG cls=2 faces>=4: 4 4 9 | minP=4704 count=44080 witness tri=0 edges: 0 1 2 3 4 5 6 7 8 11 13 16 17
+SIG cls=2 faces>=4: 4 4 8 | minP=2352 count=108352 witness tri=1 edges: 0 1 2 3 4 5 7 8 9 10 12 15 16 20
+SIG cls=2 faces>=4: 4 4 | minP=96 count=8400 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 14 16 17 18 19 20
+SIG cls=1 faces>=4: 4 4 12 | minP=15876 count=334120 witness tri=0 edges: 1 2 3 4 5 6 8 10 11 14
+SIG cls=1 faces>=4: 4 4 11 | minP=7776 count=708032 witness tri=1 edges: 0 1 3 4 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 4 4 10 | minP=5184 count=828578 witness tri=1 edges: 0 1 2 3 4 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 4 4 9 | minP=2592 count=726745 witness tri=1 edges: 0 1 3 4 5 7 8 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 4 8 | minP=1728 count=536891 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 4 | minP=96 count=8400 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 4 | minP=96 count=7759 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 14 16 17 18 19 20
+SIG cls=4 faces>=4: 4 4 | minP=168 count=3314 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 17 18 20
+SIG cls=4 faces>=4: 4 7 | minP=1128 count=386 witness tri=0 edges: 0 1 2 3 4 5 6 8 9 10 11 13 14 16 17 19
+SIG cls=1 faces>=4: 4 7 9 | minP=11664 count=339854 witness tri=1 edges: 0 1 3 4 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 7 8 | minP=7776 count=763460 witness tri=1 edges: 0 1 2 3 4 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 7 | minP=432 count=111042 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 7 9 | minP=15288 count=8423 witness tri=0 edges: 1 2 3 4 6 7 8 11 14 17
+SIG cls=2 faces>=4: 4 7 8 | minP=8736 count=45986 witness tri=1 edges: 0 1 3 4 6 7 8 9 12 15 20
+SIG cls=2 faces>=4: 4 7 | minP=672 count=47140 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 15 16 20
+SIG cls=3 faces>=4: 4 7 | minP=768 count=21752 witness tri=1 edges: 0 1 2 3 4 5 7 8 9 10 11 12 13 16 18 20
+SIG cls=1 faces>=4: 7 7 | minP=1944 count=217174 witness tri=1 edges: 0 1 3 4 9 10 11 12 13 14 16 17 20
+SIG cls=2 faces>=4: 7 7 | minP=2904 count=30495 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 12 15 20
+SIG cls=2 faces>=4: 4 4 6 8 | minP=11964 count=17614 witness tri=0 edges: 1 2 3 4 5 6 8 10 11 14 17
+SIG cls=2 faces>=4: 4 4 6 | minP=672 count=143024 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 15 16 20
+SIG cls=3 faces>=4: 4 4 6 | minP=768 count=46552 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 12 13 14 16 18 20
+SIG cls=1 faces>=4: 4 4 6 8 | minP=11964 count=196028 witness tri=0 edges: 1 2 3 4 5 6 8 10 11 14 17
+SIG cls=1 faces>=4: 4 4 6 | minP=576 count=228024 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 16 17 20
+SIG cls=4 faces>=4: 4 4 6 | minP=1032 count=3838 witness tri=2 edges: 0 1 2 3 5 6 7 8 9 11 12 13 14 16 17 19
+SIG cls=1 faces>=4: 4 6 7 | minP=2592 count=967684 witness tri=1 edges: 0 1 3 4 5 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 4 6 7 | minP=2928 count=198807 witness tri=1 edges: 0 1 3 4 5 7 8 9 10 11 12 15 20
+SIG cls=1 faces>=4: 6 7 7 | minP=11664 count=109899 witness tri=1 edges: 0 1 3 4 9 10 11 16 17 20
+SIG cls=2 faces>=4: 6 7 7 | minP=14784 count=4182 witness tri=0 edges: 0 1 2 4 8 9 10 11 14 17
+SIG cls=2 faces>=4: 4 4 6 6 | minP=3840 count=128217 witness tri=1 edges: 0 2 3 4 7 8 10 11 12 14 15 18 20
+SIG cls=1 faces>=4: 4 4 6 6 | minP=3456 count=402317 witness tri=1 edges: 0 1 2 3 4 7 8 9 10 11 16 17 20
+SIG cls=1 faces>=4: 4 5 5 5 5 | minP=3888 count=19827 witness tri=41 edges: 0 1 2 3 4 5 7 9 11 12 13 16
+SIG cls=2 faces>=4: 4 5 5 5 5 | minP=7392 count=6366 witness tri=3 edges: 1 2 4 5 6 8 9 12 13 14 16 20
+SIG cls=1 faces>=4: 4 4 4 4 5 5 | minP=3456 count=24166 witness tri=1 edges: 0 3 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 4 4 5 5 | minP=4704 count=14491 witness tri=1 edges: 0 1 3 4 6 10 11 13 14 15 16 17 20
+SIG cls=4 faces>=4: 4 5 5 5 | minP=3240 count=610 witness tri=2 edges: 0 1 2 5 6 7 8 9 11 12 14 15 16 17
+SIG cls=1 faces>=4: 4 5 5 5 | minP=1296 count=289705 witness tri=6 edges: 0 3 4 5 6 9 12 13 14 15 17 18 19 20
+SIG cls=3 faces>=4: 4 5 5 5 | minP=3240 count=1244 witness tri=2 edges: 0 1 2 5 6 7 8 9 11 12 14 15 16 17
+SIG cls=2 faces>=4: 4 5 5 5 | minP=2112 count=145327 witness tri=3 edges: 1 2 4 5 6 7 8 9 11 12 13 14 16 20
+SIG cls=1 faces>=4: 5 5 5 7 | minP=5832 count=48645 witness tri=41 edges: 0 1 2 3 4 5 7 8 9 12 16
+SIG cls=2 faces>=4: 5 5 5 7 | minP=10704 count=6022 witness tri=0 edges: 1 2 3 4 5 8 9 11 13 14 17
+SIG cls=2 faces>=4: 4 4 4 4 4 4 4 | minP=6492 count=632 witness tri=2 edges: 0 2 4 5 6 7 8 11 12 13 14 17 18 19
+SIG cls=1 faces>=4: 4 4 4 4 4 4 4 | minP=6492 count=632 witness tri=2 edges: 0 2 4 5 6 7 8 11 12 13 14 17 18 19
+SIG cls=4 faces>=4: 4 4 4 4 5 | minP=2568 count=3789 witness tri=0 edges: 1 2 3 4 5 6 8 9 10 11 14 15 16 17 19
+SIG cls=1 faces>=4: 4 4 4 4 5 | minP=1152 count=214632 witness tri=1 edges: 0 1 2 3 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 4 4 5 | minP=1344 count=173166 witness tri=1 edges: 0 1 3 4 5 7 8 10 11 13 14 15 16 17 20
+SIG cls=3 faces>=4: 4 4 4 4 5 | minP=1536 count=13015 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 13 14 16 17 18 20
+SIG cls=2 faces>=4: 4 4 4 5 7 | minP=8232 count=26776 witness tri=1 edges: 0 2 3 4 6 9 10 11 12 15 16 20
+SIG cls=1 faces>=4: 4 4 4 5 7 | minP=5184 count=104249 witness tri=1 edges: 0 1 3 7 8 10 11 13 14 16 17 20
+SIG cls=4 faces>=4: 4 5 5 | minP=936 count=5147 witness tri=2 edges: 0 1 2 3 5 6 7 8 9 11 12 14 15 16 17 19
+SIG cls=1 faces>=4: 4 5 5 8 | minP=7776 count=182395 witness tri=1 edges: 0 3 7 8 9 10 11 12 18 19 20
+SIG cls=1 faces>=4: 4 5 5 | minP=432 count=204624 witness tri=1 edges: 0 3 6 7 8 9 10 11 12 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 5 5 | minP=768 count=42396 witness tri=1 edges: 0 1 2 3 4 5 7 8 9 10 11 13 16 17 18 20
+SIG cls=2 faces>=4: 4 5 5 8 | minP=11040 count=16479 witness tri=0 edges: 0 1 2 3 5 8 9 10 13 14 17
+SIG cls=2 faces>=4: 4 5 5 | minP=624 count=138900 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 12 13 14 15 20
+SIG cls=1 faces>=4: 5 5 7 | minP=1944 count=435421 witness tri=6 edges: 0 3 4 5 6 9 11 15 16 17 18 19 20
+SIG cls=2 faces>=4: 5 5 7 | minP=3192 count=94464 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 12 15 16 20
+SIG cls=1 faces>=4: 4 5 5 6 | minP=2592 count=729304 witness tri=1 edges: 0 3 6 7 8 10 11 12 13 14 18 19 20
+SIG cls=2 faces>=4: 4 5 5 6 | minP=3360 count=247303 witness tri=1 edges: 0 1 3 4 6 9 10 11 12 13 14 15 20
+SIG cls=4 faces>=4: 4 4 4 4 | minP=600 count=8164 witness tri=4 edges: 0 1 2 3 4 5 6 7 8 9 11 12 13 14 17 18 19
+SIG cls=1 faces>=4: 4 4 4 4 8 | minP=9612 count=32320 witness tri=0 edges: 1 2 3 4 5 6 8 10 11 14 16 17
+SIG cls=2 faces>=4: 4 4 4 4 8 | minP=9612 count=5801 witness tri=0 edges: 1 2 3 4 5 6 8 10 11 14 16 17
+SIG cls=1 faces>=4: 4 4 4 4 | minP=384 count=60099 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 4 4 | minP=384 count=60099 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 4 4 4 | minP=384 count=31072 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 4 7 | minP=2352 count=146465 witness tri=1 edges: 0 2 3 4 5 7 8 9 10 11 12 15 16 20
+SIG cls=1 faces>=4: 4 4 4 7 | minP=1728 count=386791 witness tri=1 edges: 0 1 3 4 5 7 8 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 4 7 7 | minP=11760 count=10215 witness tri=0 edges: 0 1 2 3 5 7 11 12 13 16 17
+SIG cls=1 faces>=4: 4 4 7 7 | minP=7776 count=95732 witness tri=1 edges: 0 1 3 4 10 11 13 14 16 17 20
+SIG cls=4 faces>=4: 4 5 | minP=264 count=4552 witness tri=3 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 20
+SIG cls=1 faces>=4: 4 5 11 | minP=11664 count=481363 witness tri=1 edges: 0 1 3 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 4 5 10 | minP=7776 count=1024297 witness tri=1 edges: 0 1 2 3 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 4 5 9 | minP=3888 count=1229505 witness tri=1 edges: 0 1 3 6 7 8 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 5 8 | minP=2592 count=1105618 witness tri=1 edges: 0 1 2 3 6 7 8 10 11 12 13 14 20
+SIG cls=2 faces>=4: 4 5 9 | minP=6720 count=55014 witness tri=0 edges: 0 1 2 3 4 5 6 8 10 13 14 17
+SIG cls=2 faces>=4: 4 5 8 | minP=3360 count=162160 witness tri=1 edges: 0 2 3 4 5 6 7 8 9 12 13 15 20
+SIG cls=1 faces>=4: 4 5 | minP=144 count=29709 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 12 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 5 | minP=168 count=25074 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 20
+SIG cls=3 faces>=4: 4 5 | minP=192 count=20673 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 14 16 17 18 20
+SIG cls=1 faces>=4: 5 7 8 | minP=11664 count=256195 witness tri=1 edges: 0 1 3 6 7 8 9 16 17 20
+SIG cls=1 faces>=4: 5 7 | minP=648 count=171457 witness tri=1 edges: 0 1 3 6 7 8 9 10 11 12 13 14 16 17 20
+SIG cls=2 faces>=4: 5 7 8 | minP=14568 count=8444 witness tri=0 edges: 1 2 3 5 6 7 8 11 14 17
+SIG cls=2 faces>=4: 5 7 | minP=960 count=56368 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 12 13 15 20
+SIG cls=3 faces>=4: 5 7 | minP=1536 count=4866 witness tri=1 edges: 0 1 2 3 4 5 7 9 10 11 12 13 16 18 20
+SIG cls=4 faces>=4: 4 4 4 4 6 | minP=4104 count=130 witness tri=2 edges: 0 1 2 4 6 7 9 10 11 12 14 15 16 17
+SIG cls=1 faces>=4: 4 4 4 4 6 | minP=2304 count=163263 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 4 4 4 6 | minP=2688 count=95694 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 13 14 15 16 20
+SIG cls=3 faces>=4: 4 4 4 4 6 | minP=4104 count=130 witness tri=2 edges: 0 1 2 4 6 7 9 10 11 12 14 15 16 17
+SIG cls=4 faces>=4: 4 5 6 | minP=1944 count=1852 witness tri=0 edges: 0 1 2 4 5 6 8 9 11 12 13 14 16 17 19
+SIG cls=1 faces>=4: 4 5 6 | minP=864 count=595545 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 13 14 16 17 20
+SIG cls=3 faces>=4: 4 5 6 | minP=1536 count=22441 witness tri=1 edges: 0 1 2 3 4 6 7 8 10 12 13 14 16 18 20
+SIG cls=2 faces>=4: 4 5 6 | minP=960 count=294273 witness tri=1 edges: 0 1 3 4 5 6 7 8 10 11 12 13 14 15 20
+SIG cls=1 faces>=4: 5 6 7 | minP=3888 count=810175 witness tri=1 edges: 0 1 3 6 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 5 6 7 | minP=5856 count=111006 witness tri=1 edges: 0 1 3 4 5 7 9 10 11 12 15 20
+SIG cls=4 faces>=4: 4 | minP=72 count=667 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20
+SIG cls=1 faces>=4: 4 14 | minP=20412 count=896813 witness tri=0 edges: 1 2 3 4 5 6 8 11 14
+SIG cls=1 faces>=4: 4 13 | minP=11664 count=1600844 witness tri=1 edges: 0 1 3 4 6 7 8 9 12 20
+SIG cls=1 faces>=4: 4 12 | minP=7776 count=1578918 witness tri=1 edges: 0 1 2 3 4 6 7 8 9 12 20
+SIG cls=1 faces>=4: 4 11 | minP=3888 count=1165840 witness tri=1 edges: 0 1 3 4 5 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 4 10 | minP=2592 count=727350 witness tri=1 edges: 0 1 2 3 4 5 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 4 9 | minP=1296 count=409975 witness tri=1 edges: 0 1 3 4 5 6 7 8 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 8 8 | minP=15324 count=159045 witness tri=0 edges: 1 2 3 4 5 6 8 11 14 17
+SIG cls=1 faces>=4: 4 8 | minP=864 count=216871 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 12 13 14 20
+SIG cls=2 faces>=4: 4 8 8 | minP=15324 count=4829 witness tri=0 edges: 1 2 3 4 5 6 8 11 14 17
+SIG cls=2 faces>=4: 4 9 | minP=2688 count=28344 witness tri=0 edges: 0 1 2 3 4 5 6 7 8 10 11 13 16 17
+SIG cls=2 faces>=4: 4 8 | minP=1344 count=48048 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 13 15 16 20
+SIG cls=1 faces>=4: 4 | minP=48 count=1050 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 | minP=48 count=1050 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 | minP=48 count=1050 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 8 | minP=1536 count=8622 witness tri=1 edges: 0 1 2 3 4 6 7 8 9 10 12 13 16 18 20
+SIG cls=1 faces>=4: 7 11 | minP=17496 count=397916 witness tri=1 edges: 0 1 3 4 9 10 11 12 20
+SIG cls=1 faces>=4: 7 10 | minP=11664 count=743174 witness tri=1 edges: 0 1 2 3 4 9 10 11 12 20
+SIG cls=1 faces>=4: 7 9 | minP=5832 count=789664 witness tri=1 edges: 0 1 3 4 9 10 11 12 13 14 20
+SIG cls=1 faces>=4: 7 8 | minP=3888 count=632147 witness tri=1 edges: 0 1 2 3 4 9 10 11 12 13 14 20
+SIG cls=1 faces>=4: 7 | minP=216 count=10551 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 12 13 14 16 17 20
+SIG cls=2 faces>=4: 7 9 | minP=8736 count=19826 witness tri=0 edges: 0 1 2 3 4 6 7 8 11 14 17
+SIG cls=2 faces>=4: 7 8 | minP=4368 count=45604 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 12 15 20
+SIG cls=2 faces>=4: 7 | minP=384 count=4714 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 16 18 20
+SIG cls=3 faces>=4: 7 | minP=384 count=4714 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 16 18 20
+SIG cls=4 faces>=4: 7 | minP=504 count=113 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 12 13 15 16 18 20
+SIG cls=1 faces>=4: 4 5 6 6 | minP=5184 count=440157 witness tri=1 edges: 0 1 2 3 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 4 5 6 6 | minP=6432 count=96181 witness tri=1 edges: 0 1 3 4 7 8 9 11 12 15 16 20
+SIG cls=4 faces>=4: 4 6 | minP=600 count=2102 witness tri=2 edges: 0 1 2 3 4 5 6 7 8 9 11 12 13 14 16 17 19
+SIG cls=1 faces>=4: 4 6 10 | minP=15372 count=371415 witness tri=0 edges: 1 2 3 4 5 6 8 11 14 16
+SIG cls=1 faces>=4: 4 6 9 | minP=7776 count=832453 witness tri=1 edges: 0 1 3 4 6 7 8 12 13 14 20
+SIG cls=1 faces>=4: 4 6 8 | minP=5184 count=1030042 witness tri=1 edges: 0 1 2 3 4 6 7 8 12 13 14 20
+SIG cls=2 faces>=4: 4 6 9 | minP=10248 count=27908 witness tri=0 edges: 0 1 2 3 5 6 7 10 11 14 17
+SIG cls=2 faces>=4: 4 6 8 | minP=5856 count=102544 witness tri=1 edges: 0 1 2 3 4 7 8 9 10 12 15 20
+SIG cls=1 faces>=4: 4 6 | minP=288 count=56523 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 6 | minP=336 count=36516 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16 20
+SIG cls=3 faces>=4: 4 6 | minP=384 count=24797 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 12 13 14 16 18 20
+SIG cls=1 faces>=4: 6 7 | minP=1296 count=274797 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 6 7 | minP=1464 count=63049 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 12 15 20
+SIG cls=1 faces>=4: 4 6 6 | minP=1728 count=390484 witness tri=1 edges: 0 1 2 3 4 5 7 8 9 10 11 16 17 20
+SIG cls=2 faces>=4: 4 6 6 | minP=1920 count=135458 witness tri=1 edges: 0 2 3 4 5 7 8 10 11 12 14 15 18 20
+SIG cls=1 faces>=4: 6 6 7 | minP=7776 count=271657 witness tri=1 edges: 0 1 2 3 4 9 10 11 16 17 20
+SIG cls=2 faces>=4: 6 6 7 | minP=9744 count=21309 witness tri=0 edges: 0 1 2 3 4 8 9 10 11 14 17
+SIG cls=1 faces>=4: 4 6 6 6 | minP=11676 count=46972 witness tri=0 edges: 0 1 2 4 7 8 11 12 13 14 17
+SIG cls=2 faces>=4: 4 6 6 6 | minP=11676 count=6286 witness tri=0 edges: 0 1 2 4 7 8 11 12 13 14 17
+SIG cls=1 faces>=4: 5 5 5 5 | minP=1944 count=55261 witness tri=41 edges: 0 1 2 3 4 5 7 8 9 11 12 13 16
+SIG cls=2 faces>=4: 5 5 5 5 | minP=4056 count=20161 witness tri=1 edges: 0 1 2 3 4 5 6 9 12 13 14 15 20
+SIG cls=4 faces>=4: 4 4 4 5 5 | minP=4008 count=634 witness tri=2 edges: 0 1 2 5 6 7 8 9 10 11 14 15 16 17
+SIG cls=3 faces>=4: 4 4 4 5 5 | minP=3504 count=883 witness tri=2 edges: 0 1 3 4 6 8 9 11 12 13 14 17 18 19
+SIG cls=2 faces>=4: 4 4 4 5 5 | minP=2352 count=185278 witness tri=1 edges: 0 1 3 4 6 9 10 11 13 14 15 16 17 20
+SIG cls=1 faces>=4: 4 4 4 5 5 | minP=1728 count=295261 witness tri=1 edges: 0 3 6 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=1 faces>=4: 5 5 5 | minP=648 count=89142 witness tri=6 edges: 0 3 4 5 6 9 12 13 14 15 16 17 18 19 20
+SIG cls=2 faces>=4: 5 5 5 | minP=1056 count=47769 witness tri=3 edges: 1 2 4 5 6 7 8 9 10 11 12 13 14 16 20
+SIG cls=3 faces>=4: 5 5 5 | minP=1536 count=3906 witness tri=1 edges: 0 1 2 3 4 5 7 9 10 11 13 16 17 18 20
+SIG cls=4 faces>=4: 5 5 5 | minP=1752 count=484 witness tri=0 edges: 0 1 2 3 4 5 7 8 11 12 14 15 16 17 19
+SIG cls=1 faces>=4: 5 5 5 6 | minP=3888 count=134553 witness tri=6 edges: 0 3 4 5 6 9 12 13 14 18 19 20
+SIG cls=2 faces>=4: 5 5 5 6 | minP=6240 count=31154 witness tri=1 edges: 0 1 2 3 4 6 9 12 13 14 15 20
+SIG cls=4 faces>=4: 4 4 4 4 4 4 | minP=2904 count=484 witness tri=12 edges: 0 1 2 4 5 7 8 9 10 11 13 15 16 17 20
+SIG cls=2 faces>=4: 4 4 4 4 4 4 | minP=1536 count=14739 witness tri=1 edges: 0 1 3 4 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=3 faces>=4: 4 4 4 4 4 4 | minP=1536 count=1084 witness tri=1 edges: 0 1 3 4 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=1 faces>=4: 4 4 4 4 4 4 | minP=1536 count=14739 witness tri=1 edges: 0 1 3 4 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=4 faces>=4: 4 4 4 5 | minP=1128 count=12347 witness tri=2 edges: 0 1 2 3 5 6 7 8 9 10 11 14 15 16 17 19
+SIG cls=3 faces>=4: 4 4 4 5 | minP=768 count=66170 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 13 14 16 17 18 20
+SIG cls=2 faces>=4: 4 4 4 5 | minP=672 count=236769 witness tri=1 edges: 0 1 3 4 5 6 7 8 10 11 13 14 15 16 17 20
+SIG cls=1 faces>=4: 4 4 4 5 | minP=576 count=288336 witness tri=1 edges: 0 1 2 3 6 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 5 7 | minP=3840 count=244116 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 12 13 15 20
+SIG cls=1 faces>=4: 4 4 5 7 | minP=2592 count=878450 witness tri=1 edges: 0 1 3 6 7 8 10 11 13 14 16 17 20
+SIG cls=1 faces>=4: 5 5 10 | minP=11664 count=174938 witness tri=1 edges: 0 3 6 7 8 9 12 18 19 20
+SIG cls=1 faces>=4: 5 5 9 | minP=5832 count=381422 witness tri=6 edges: 0 3 4 5 6 9 11 13 18 19 20
+SIG cls=1 faces>=4: 5 5 8 | minP=3888 count=466697 witness tri=1 edges: 0 3 6 7 8 9 10 11 12 18 19 20
+SIG cls=2 faces>=4: 5 5 9 | minP=9600 count=12780 witness tri=0 edges: 0 1 2 3 5 6 8 10 13 14 17
+SIG cls=2 faces>=4: 5 5 8 | minP=6240 count=47761 witness tri=0 edges: 0 1 2 3 4 6 8 9 10 13 14 17
+SIG cls=1 faces>=4: 5 5 | minP=216 count=25329 witness tri=1 edges: 0 3 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+SIG cls=2 faces>=4: 5 5 | minP=312 count=17715 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 20
+SIG cls=3 faces>=4: 5 5 | minP=384 count=11038 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 13 16 17 18 20
+SIG cls=4 faces>=4: 5 5 | minP=504 count=1288 witness tri=4 edges: 0 1 2 3 4 5 8 9 10 11 12 13 14 15 16 17 19
+SIG cls=2 faces>=4: 4 4 4 5 6 | minP=3840 count=141256 witness tri=1 edges: 0 1 3 4 7 8 10 11 12 13 14 15 20
+SIG cls=1 faces>=4: 4 4 4 5 6 | minP=3456 count=322607 witness tri=1 edges: 0 1 2 3 7 8 10 11 13 14 16 17 20
+SIG cls=1 faces>=4: 5 5 6 | minP=1296 count=350743 witness tri=1 edges: 0 3 6 7 8 9 10 11 12 13 14 18 19 20
+SIG cls=2 faces>=4: 5 5 6 | minP=1920 count=130890 witness tri=1 edges: 0 1 3 4 5 6 7 8 10 12 13 14 15 20
+SIG cls=4 faces>=4: 4 4 4 | minP=264 count=7617 witness tri=3 edges: 0 1 2 4 5 6 7 8 9 10 11 12 13 14 15 16 17 20
+SIG cls=3 faces>=4: 4 4 4 | minP=192 count=24343 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 4 9 | minP=8232 count=14993 witness tri=0 edges: 0 1 2 3 5 6 7 8 11 13 16 17
+SIG cls=1 faces>=4: 4 4 4 10 | minP=12348 count=105915 witness tri=0 edges: 1 2 3 4 5 6 8 10 11 14 16
+SIG cls=1 faces>=4: 4 4 4 9 | minP=5184 count=266531 witness tri=1 edges: 0 1 3 4 7 8 10 11 12 13 14 20
+SIG cls=1 faces>=4: 4 4 4 8 | minP=3456 count=369624 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 12 13 14 20
+SIG cls=2 faces>=4: 4 4 4 8 | minP=4704 count=68870 witness tri=1 edges: 0 1 2 3 4 7 8 9 10 12 15 16 20
+SIG cls=1 faces>=4: 4 4 4 | minP=192 count=32097 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 4 | minP=192 count=32097 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 11 13 14 16 17 18 19 20
+SIG cls=2 faces>=4: 4 4 7 | minP=1176 count=144155 witness tri=1 edges: 0 2 3 4 5 6 7 8 9 10 11 12 15 16 20
+SIG cls=3 faces>=4: 4 4 7 | minP=1536 count=13010 witness tri=1 edges: 0 1 2 3 4 7 8 9 10 11 12 13 16 18 20
+SIG cls=1 faces>=4: 4 4 7 | minP=864 count=359175 witness tri=1 edges: 0 1 3 4 5 6 7 8 10 11 13 14 16 17 20
+SIG cls=4 faces>=4: 4 4 7 | minP=2040 count=310 witness tri=0 edges: 1 2 3 4 5 6 8 9 10 11 13 14 16 17 19
+SIG cls=1 faces>=4: 4 7 7 | minP=3888 count=491970 witness tri=1 edges: 0 1 3 4 9 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 7 7 | minP=5808 count=59524 witness tri=1 edges: 0 1 2 3 4 6 7 8 9 12 15 20
+SIG cls=1 faces>=4: 5 13 | minP=17496 count=625414 witness tri=1 edges: 0 1 3 6 7 8 9 12 20
+SIG cls=1 faces>=4: 5 12 | minP=11664 count=1111277 witness tri=1 edges: 0 1 2 3 6 7 8 9 12 20
+SIG cls=1 faces>=4: 5 11 | minP=5832 count=1111615 witness tri=1 edges: 0 1 3 6 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 5 10 | minP=3888 count=837694 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 12 20
+SIG cls=1 faces>=4: 5 9 | minP=1944 count=537628 witness tri=1 edges: 0 1 3 6 7 8 9 10 11 12 13 14 20
+SIG cls=1 faces>=4: 5 8 | minP=1296 count=312219 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 12 13 14 20
+SIG cls=2 faces>=4: 5 9 | minP=3840 count=26780 witness tri=0 edges: 0 1 2 3 4 5 6 7 8 10 13 14 17
+SIG cls=2 faces>=4: 5 8 | minP=1920 count=51194 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 12 13 15 20
+SIG cls=1 faces>=4: 5 | minP=72 count=2100 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+SIG cls=2 faces>=4: 5 | minP=96 count=1791 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 18 20
+SIG cls=3 faces>=4: 5 | minP=96 count=1791 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 18 20
+SIG cls=4 faces>=4: 5 | minP=120 count=555 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 18 20
+SIG cls=1 faces>=4: 5 5 6 6 | minP=7776 count=66311 witness tri=1 edges: 0 3 6 7 8 12 13 14 18 19 20
+SIG cls=2 faces>=4: 5 5 6 6 | minP=9600 count=9255 witness tri=1 edges: 0 1 3 4 6 9 12 13 14 15 20
+SIG cls=4 faces>=4: 4 4 4 6 | minP=2328 count=2174 witness tri=0 edges: 1 2 3 4 5 6 7 8 11 12 13 14 16 17 19
+SIG cls=3 faces>=4: 4 4 4 6 | minP=1536 count=15727 witness tri=1 edges: 0 1 2 3 4 7 8 10 11 12 13 14 16 18 20
+SIG cls=2 faces>=4: 4 4 4 6 | minP=1344 count=209359 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 13 14 15 16 20
+SIG cls=1 faces>=4: 4 4 4 6 | minP=1152 count=345074 witness tri=1 edges: 0 1 2 3 4 5 7 8 10 11 13 14 16 17 20
+SIG cls=2 faces>=4: 4 4 6 7 | minP=5856 count=97952 witness tri=1 edges: 0 1 3 4 7 8 9 10 11 12 15 20
+SIG cls=1 faces>=4: 4 4 6 7 | minP=5184 count=530533 witness tri=1 edges: 0 1 3 4 7 8 9 10 11 16 17 20
+SIG cls=1 faces>=4: 5 6 9 | minP=11664 count=281910 witness tri=1 edges: 0 1 3 6 7 8 12 13 14 20
+SIG cls=1 faces>=4: 5 6 8 | minP=7776 count=631149 witness tri=1 edges: 0 1 2 3 6 7 8 12 13 14 20
+SIG cls=2 faces>=4: 5 6 9 | minP=14640 count=7313 witness tri=0 edges: 1 2 3 5 6 7 10 11 14 17
+SIG cls=2 faces>=4: 5 6 8 | minP=9600 count=41047 witness tri=0 edges: 0 1 2 3 4 8 9 10 13 14 17
+SIG cls=1 faces>=4: 5 6 | minP=432 count=92154 witness tri=1 edges: 0 1 2 3 6 7 8 9 10 11 12 13 14 16 17 20
+SIG cls=2 faces>=4: 5 6 | minP=480 count=47989 witness tri=1 edges: 0 1 3 4 5 6 7 8 9 10 11 12 13 14 15 20
+SIG cls=3 faces>=4: 5 6 | minP=768 count=17483 witness tri=1 edges: 0 1 2 3 4 5 6 7 8 10 12 13 14 16 18 20
+SIG cls=4 faces>=4: 5 6 | minP=1032 count=732 witness tri=2 edges: 0 1 2 5 6 7 8 9 10 11 12 13 14 16 17 19

@@ -136,3 +136,125 @@ available either. The flip calculus repackages the Kempe obstruction; it does no
   same high-degree reducibility problem as the classical proof. A′ is the one candidate worth a second look,
   as a quantitative strengthening that might suit a different induction (e.g. on faces of size ≥ 5). I would not
   call this route promising for a short proof.
+
+---
+
+# Run 2 — Bound A′: literature, general form, induction lemmas (2026-10-13, about 60 min, exploratory)
+
+Recap of A′: for H = C_n + T1 + D (T1 a triangulation of the polygon, D non-crossing chords drawn outside),
+P(H,4) ≥ 24·2^m, where m = 3n−6−|E(H)| is the number of missing edges. Nothing below is a proof. Every claim
+marked "verified" comes from the exact programs listed here. The literature notes come from web search summaries
+(abstracts only) plus my recall, and are marked as such.
+
+## New files
+
+| file | what |
+|---|---|
+| `gentri.py` | all sphere triangulations on n vertices (flip-BFS from the double wheel, networkx iso); counts 1,1,2,5,14,50,233 for n=4..10 match the known sequence |
+| `planecount.c` | exact P(G,4) for **every embedded spanning subgraph of every triangulation** (that is, every connected simple plane graph), n ≤ 10, via a monochromatic-edge histogram plus a subset-sum transform. Classes: 1 connected, 2 2-connected, 3 2-connected with every 2-cut an edge, 4 3-connected. Also runs the general one-chord lemma tests (n ≤ 9) |
+| `faceconst.py` | sharp per-face constants from the `SIG` lines |
+| `lemmaA.c` | dissect.c plus one-chord induction lemmas *inside the A′ class* (n ≤ 12) |
+| `lemmaC.py` | structural reduction lemma inside the A′ class (n ≤ 10) |
+| `verify_n10.py`, `edgesum13.py`, `ico_minus_vertex.py` | independent brute-force checks of the counterexamples below |
+| `run2/` | all outputs (`planecount-out-n.txt`, `lemmaA-out.txt`, `lemmaC-out.txt`, `faceconst-out.txt`, `tri-n.txt`, …) |
+
+There is no plantri in the repo. I did not download it; gentri.py stands in for it.
+
+## 1. Literature verdict
+
+* **Birkhoff–Lewis** (1946): P(G,λ) ≥ λ(λ−1)(λ−2)(λ−3)^{n−3} for planar G, proved for λ ≥ 5 and conjectured for
+  λ ≥ 4. At λ = 4 this gives only 24 (= 4CT), and it **ignores missing edges entirely**. At λ = 5 it is the
+  known sharp bound 60·2^{n−3}, attained by stacked triangulations. A′ is *not* a Birkhoff–Lewis consequence.
+* **Thomassen** (2^{n/9} 5-list-colourings) and follow-ups (correspondence colourings, Postle–Smith-Roberge) are all
+  about 5 colours. There is nothing exponential for 4 colours in general, because uniquely 4-colourable
+  triangulations exist.
+* **Closest match: Albertson–Wilf, "Boundary values in the four color problem", Trans. AMS 181 (1973) 471–482**
+  (abstract only; I could not fetch the paper). Let G be planar with outer boundary a k-cycle, and let ψ = the number
+  of boundary colourings that extend. They show that 4CC ⇒ ψ ≥ 3·2^k for k = 3..6, they **conjecture ψ ≥ 3·2^k
+  for all k**, and they prove ψ ≥ c·φ^k unconditionally (φ the golden ratio). Annuli satisfy the conjecture.
+  Note that 3·2^k = 24·2^{k−3}, and k−3 is exactly the number of edges missing from G. Since P(G,4) ≥ ψ, **the
+  Albertson–Wilf conjecture implies the one-hole case of A′**: one non-triangular face, inner side an arbitrary
+  near-triangulation. In normalised form it reads |boundary language| ≥ 2^{k−2} = |L(T)|. I did not find out
+  whether the AW conjecture is now settled. *To check against the paper.*
+* Dvořák–Lidický, "Coloring count cones of planar graphs" (arXiv 1907.04066) studies the vector of extension
+  counts on a 5-cycle and makes a cone conjecture that strengthens 4CT. It is the same family of ideas, but it
+  does not state A′.
+* **Verdict: (ii) for one hole, (iii) in general.** The single-hole case of A′ is a consequence of the open
+  Albertson–Wilf conjecture, which itself rests on 4CT for k ≤ 6. The multi-hole statement A′ (many
+  non-triangular faces on the far side of a Hamilton cycle) was not found in the literature as far as I searched,
+  so it is *apparently new*. Since its natural generalisation is false (§2), the structure of A′ is load-bearing.
+
+## 2. Generalising beyond the polygon setting (n ≤ 10, all connected simple plane graphs)
+
+"miss" = 3n−6−|E| = Σ_faces (|f|−3). Test: P(G,4) ≥ 24·2^miss. Graphs are counted as embedded edge subsets, so
+there are repeats.
+
+| n | class 1 conn. fails/total | class 2 2-conn | class 3 2-conn + all 2-cuts edges | class 4 3-conn |
+|---|---|---|---|---|
+| 8 | 1906521/2135114 | 161784/322112 | **0**/32652 | 0/6067 |
+| 9 | 52658633/58401302 | 3695188/7160719 | **0**/530458 | 0/83785 |
+| 10 | 1.89e9/2.08e9 | 1.09e8/2.08e8 | **3160**/11307343 | **3160**/1489953 |
+
+* **Cut vertices:** for blocks B_i, P = ∏P(B_i)/4^{b−1} and miss = Σmiss_i + 3(b−1). The ratio therefore picks up
+  an exact factor **(3/4)^{b−1}**. This is sharp: trees, with K2 blocks, attain it with equality.
+* **Non-adjacent 2-cuts:** C_4 gives 84 < 96 (factor 7/8). For C_n, P/(24·2^miss) ≈ (8/3)(3/4)^n → 0, so there
+  is no constant-factor bound for 2-connected graphs.
+* **Class 3 holds for n ≤ 9 and fails at n = 10, even for 3-connected graphs.** Smallest counterexample, checked by
+  independent brute force (`verify_n10.py`): a cubic 3-connected plane graph with n=10, |E|=15, faces
+  3,3,3,5,5,5,6, edges 01 07 09 12 17 23 28 34 38 45 49 56 59 67 68. **P = 9480 < 24·2^9 = 12288** (ratio 0.77).
+  Two more: faces (5,5,5,5) with P=5976 < 6144, and (4,4,5,5,6) with P=11784 < 12288. The mechanism is that sparse
+  (cubic) graphs have only about 2.6^n colourings (Bethe-type heuristic), while 2^miss ≈ 2^{1.5n} ≈ 2.83^n.
+* **Density does not rescue it:** "class 3 and |E| ≥ 2n−3" has no failures for n ≤ 10, but an edge 2-sum
+  multiplies ratios (P = P1·P2/12). Gluing a stacked K5 onto edge 01 of the counterexample gives n=13, |E|=23 =
+  2n−3, P = 18960 < 24576 (`edgesum13.py`).
+* **Sharp face constants c_k** (largest c_k with P ≥ 24·∏c_{|f|}):
+  * class 3 (n ≤ 10): **c_k = 2^{k−3} exactly**. A single k-face attains equality for every k ≤ 10 (it is the
+    one-hole A′ / Albertson–Wilf case), and so do 30+ mixed signatures. Pentagons do **not** allow more than 4.
+    Yet the product form fails at n=10 (above), so no per-face constant law holds in class 3 beyond single-face
+    or A′-structured cases.
+  * 3-connected, single k-face: min P/24 = 3, 5, 11, 21, 43 for k = 4..8 (Jacobsthal, attained by wheels:
+    (2^k+2(−1)^k)/6), which is about (4/3)·2^{k−3}.
+  * class 2, single face: 2^{k−3} (equality). Class 1, single facial walk: c = 2, 3, 4.5, 9, 13.5, … (cut-vertex
+    factors).
+* **So the right general statement is not "2^missing for all plane graphs".** The safe statements are
+  (a) single non-triangular face (near-triangulation with outer k-cycle): P ≥ 3·2^k. This is implied by
+  Albertson–Wilf, with no failures for n ≤ 10.
+  (b) A′ itself: all non-triangular faces on one side of a Hamilton cycle whose other side is triangulated
+  without interior vertices. No failures for n ≤ 13 (Run 1).
+  The untested joint generalisation A″ allows an arbitrary near-triangulation inside the cycle, with outside
+  chords D between cycle vertices. Both the n=10 counterexample and the n=13 edge-sum lie outside A″, because
+  their non-triangular faces cover vertices not on any such cycle. A″ is the natural next conjecture to test.
+
+## 3. Induction by deletion–contraction (P(G) = P(G+e) + P(G/e), e a chord of a face)
+
+Lemma **S** (strong): some chord e has P(G/e) ≥ P(G+e). Lemma **W** (weak): some chord e has
+P(G/e) ≥ 24·2^{miss−1}. Either lemma, plus the bound for G+e (one fewer missing edge), gives the bound for G. The
+induction bottoms out at triangulations, i.e. at 4CT. So **A′ ⇔ 4CT + (W within the A′ class)**. W is the exact
+extra content of A′ beyond 4CT, if W is true.
+
+| test | result |
+|---|---|
+| S, general 2-connected | fails at n=4 (C_4). Fails for 3-connected at n=6 (prism, P=264) |
+| S, class 3, n=9 | 58751/530408 fail |
+| **W, class 3** | holds for n ≤ 8; **fails at n=9**: 334 graphs, all 3-connected, e.g. faces 3,3,3,4,5,5,5 with P=3240 (edges 01 06 08 17 16 28 23 27 34 37 45 47 58 56) |
+| S, A′ class (outside chords only) | fails at n=6 (T1 = fan at 0, D={15}: 10 colourings, best chord gives 4 < 5) |
+| **W, A′ class** | **no failures for n ≤ 12** (3.7·10^8 (T1 rep, D) instances at n=12, 120 s). It is tight in many cases |
+| C (structural): some admissible chord uw has ≥ 2 common neighbours and H/uw in class 3 | holds for n ≤ 9; **fails at n=10** (71 cases, every admissible chord has t=1), e.g. T1={02,03,04,05,57,59,79}, D={18,19,28,36,46} |
+
+What W buys: it turns A′ into a one-step statement, "some outside chord has at least 2^{n−3−k} normalised
+colourings with its ends equal". That statement is about H/uw, a graph on n−1 vertices that is no longer in the
+A′ class. Lemma C, which tries to reduce W to the class-3 bound on H/uw, fails at n=10 when all chords have a
+single common neighbour (pentagon-type faces: README Run 1's 72-vs-96 gap). The class-3 bound is false anyway at
+n=10. So **no self-contained induction survives**. W in the A′ class is the surviving inductive statement
+(n ≤ 12), but it is a statement about contracted graphs outside the class, and I have no handle on it.
+
+## Run 2 assessment
+
+* A′ is the multi-hole sibling of the 1973 **Albertson–Wilf conjecture** (ψ ≥ 3·2^k), whose single-hole case
+  implies one-hole A′. As far as the search went, the multi-hole A′ is not in the literature.
+* The "each missing edge doubles" law is **false for general plane graphs**: 3-connected cubic counterexample at
+  n=10, and an |E| ≥ 2n−3 version at n=13. Its validity depends on the Hamilton-cycle/2-tree structure of A′
+  (or on a single hole). Sharp constants in the valid settings are c_k = 2^{k−3}; pentagons give nothing extra.
+* The one-chord induction survives only as Lemma W inside the A′ class (n ≤ 12). Its structural reduction dies at
+  n=10, and the general versions die at n=4/6/9. Route status: an interesting quantitative conjecture, not a proof
+  route.
