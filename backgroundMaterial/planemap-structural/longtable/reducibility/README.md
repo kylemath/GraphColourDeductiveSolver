@@ -84,3 +84,91 @@ The number of matchings per class also grows, as Catalan numbers in (#transition
 - `gen_lean.py` → `DiamondExt.lean`.
 - `gen_kernel.py` → `DiamondKernel.lean`, plus `DiamondKernelFull.lean` (arg `full`).
 - `DiamondClosure.lean` and `Conf2122Closure.lean`, both hand-written.
+
+---
+
+# Run 2: an executable D-reducibility checker in Lean, run by `native_decide` [exploratory]
+
+Long Table, 13 Oct 2026. The project owner has accepted `native_decide` for large reducibility runs provided the axiom is recorded. All files are in `dcheck/`, a self-contained Lake package: core Lean v4.35.0-rc3 plus `Std`, no Mathlib, `precompileModules := true`. Build it with `cd dcheck && nice -n 10 lake build`. No StudioMathLean module was touched.
+
+## What runs
+- **`DCheck.lean`: the checker.** `def dReducible : Conf → Bool` is a Lean port of `dred.py` (the same vertex-colour consistent-matching closure, with level-synchronous levels, so `depth` agrees with dred.py). It has four parts:
+  - canonical proper ring colourings as base-4 codes;
+  - interior extendability by backtracking;
+  - the non-crossing matchings of 2p transitions, tabulated once for p ≤ 7 (`matchTable`);
+  - the closure, which keeps a **monotone progress pointer** per (class, θ): the first matching not yet satisfied. Because the good set only grows, a satisfied matching stays satisfied.
+- **`gen_data.py` → `DCheckData.lean`:** all 633 RSST configurations from `studiointel/routeb/rsst/unavoidable.conf`. Each is one `def cfg_i` (0-based file order), and `rsst` is the array of all of them. Each entry carries RSST's extendable-class count and contract size for cross-checking.
+- **`DCheckThms.lean`: theorems proved by `native_decide`.**
+  - `dred_cfg_i : dReducible cfg_i = true` for the 13 D-reducible configurations with ring ≤ 9: 0.7322 (the diamond), 2.122, 3.442802, 0.453962, 3.1306802, 2.7566, 0.79077722, 0.79077962, 122.122, 122.442802, 122.363, 0.260517722 and 7322.122.
+  - `not_dred_cfg_3`, `not_dred_cfg_25 : … = false` for 2.126 and 122.126, which are C-reducible in RSST.
+  - `diamond_run : run cfg_0 = {classes 31, ext 16, reached 31, depth 5}`.
+  - `rsst_r9_agree`: on all 15 ring ≤ 9 configurations, the extendable count equals RSST's, and D-reducible holds iff RSST's contract size is 0.
+- **`DCheckThms11.lean`:** `rsst_r10_11_agree`, the same agreement statement for all 112 configurations with ring 10–11.
+- **`Main.lean` → `.lake/build/bin/dcheck RMIN RMAX [LIMIT]`:** the same code as a compiled executable, for timing (`run_*.txt`).
+
+**Axioms.** `#print axioms` gives `[propext, Classical.choice, Quot.sound, <thm>._native.native_decide.ax_1_1]`. In this toolchain `native_decide` does **not** show `Lean.ofReduceBool` directly. Each use adds its own auxiliary axiom `…_native.native_decide.ax_1_1`, in the same style as `bv_decide` in Run 1. The trust is the same: the compiler, the `Std.HashMap` runtime and the C/LLVM toolchain. Record it as "native_decide auxiliary axiom per theorem".
+
+**Agreement with RSST.**
+- 135 of 135 configurations checked so far agree: all 15 at ring ≤ 9, all 112 at ring 10–11, and 8 sampled at ring 12. The extendable-class count matches RSST's header every time, and D/not-D matches contract = 0 every time.
+- Ring ≤ 9 depths are identical to `rsst_scan_r9.txt` (dred.py).
+
+## Timings (MacBook, `nice -n 10`, AC power, single core)
+| ring | configurations run | classes | Lean compiled per configuration (mean / max) | `native_decide` file | dred.py per configuration |
+|---|---|---|---|---|---|
+| 6–9 | 15 (all) | 31–820 | 0–69 ms | `DCheckThms.lean`, all 15 + aggregate: **1.6 s** whole build | 0.0–6.4 s |
+| 10 | 31 (all) | 2,461 | 0.26 s / 0.42 s | inside `DCheckThms11`: | 6–21 s (4 sampled) |
+| 11 | 81 (all) | 7,381 | 1.46 s / 4.8 s | **140 s** for rings 10–11 together (exe: 126 s) | 69 s (3.1324806; Lean 2.0 s) |
+| 12 | 8 sampled | 22,144 | 8.2 s / 11.5 s | not run | n/a |
+| 13 | 1 sampled (8.1551606, not D) | 66,430 | 61 s (with a Python job competing) | not run | n/a |
+| 14 | not run (time budget) | ≈199k | extrapolated 4–6 min | not run | n/a |
+
+- **Lean vs Python:** about 50–80× faster at ring 10 and 35× at ring 11 (one configuration).
+- **`native_decide` vs compiled exe:** within about 10%, so `native_decide` does run native code from the precompiled module.
+- **Growth:** about 5.6× per ring step from 10 → 11 → 12, and about 7× from 12 → 13 (one sample).
+
+## Soundness: the exact statement and the gap (`DCheckSound.lean`)
+**Declarative closure.** `inductive Good cf : Nat → Prop` is the least set that contains the extendable codes and is closed under this rule: for some θ with transitions, every matching in `matchTable` has a non-empty flip of regions (a choice function `w`) landing in `Good`.
+
+**Geometric hypothesis, abstracted.** `KempeMatching cf P`: for every realised code `k` and every θ with transitions, SOME tabulated matching satisfies "flipping ANY set of its regions stays realised".
+
+The pieces:
+- **(S2) PROVED: `good_sound`** (axioms: propext, Quot.sound). Suppose `P` is closed under `canon` and satisfies `KempeMatching cf P`. Then `Good cf k ∧ P k → ∃ k', P k' ∧ extendsQ cf k' = true`. This is the combinatorial core: induction on `Good`.
+- **(S1) `sorry`: `run_sound`** says `dReducible cf = true → ∀ k ∈ ringColourings cf.r, Good cf k`. With `canon_mem` (`sorry`: every proper code canonicalises into `ringColourings`), this gives `dReducible_sound`, proved from these two. (S1) is a loop-invariant proof about the imperative `run`:
+  - good-bit ⇒ `Good`;
+  - pointer p ⇒ matchings < p are satisfied;
+  - the `HashMap` index is a bijection;
+  - `flipMask` agrees with the in-loop mask.
+
+  It is tedious but routine. The cheaper option is to rewrite `run` in a fuel-recursive functional style that mirrors `Good`, at some speed cost.
+- **(S3) `sorry`, at project level (stated in the module doc; not compiled here because the Mathlib/StudioMath build is not on this machine).** Let `P := {ring code of c | ProperOff G.graph O.hole c}` for a `RingReduce.ConfigOcc`. Then `P` satisfies `KempeMatching`. What exists and what is missing:
+  - Non-crossing of chains is in the repo: `RingChains.chains_noncrossing` and `chains_noncrossing_same`, via `RingJordan.face_alternating_walks_meet`.
+  - So are the per-vertex swap facts: `RingReduce.flip_in`, `flip_out` and `flip_other`.
+  - **Missing (i):** building the matching from the chain partition. Pair each transition with the next transition along its chain's boundary; non-crossing plus same-class-per-face then gives a non-crossing perfect matching whose faces are the chain traces. This is a pure non-crossing-partition lemma on a cycle, with no geometry.
+  - **Missing (ii):** swapping a *set* of components at once. The generated certificates only use single swaps; this is an iteration of single swaps on distinct components.
+
+  RingJordan already supplies the planar input. The gap is combinatorics plus bookkeeping.
+- **(S4) exists:** `ConfigOcc.colorable_of_ext`.
+
+The target theorem (in the `DCheckSound.lean` doc) is `ConfigOcc.colorable_of_dReducible (cf) (hD : dReducible cf = true) (O : ConfigOcc T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf)) (hc : ProperOff G.graph O.hole c) : T.graph.Colorable 4`. "No minimal counterexample contains cf" then follows exactly as for the diamond.
+
+## Estimates (opinion)
+- **(a) All 633 configurations with `native_decide`, D-reducibility only.**
+  - The extrapolated single-core cost is about 25 min at ring 12, about 2–3 h at ring 13 and about 8–12 h at ring 14, so **≈ 12–15 CPU-hours** in total. Split into ~16 theorem files and built in parallel, that is a few wall-clock hours on 14 cores. Mind battery and heat: run on AC.
+  - Easy speed-ups not yet done would likely give 3–10×:
+    - a Gray-code subset loop;
+    - a packed canon table;
+    - not rescanning stuck matchings every level, by re-testing only when a class they can reach became good;
+    - ordering interior vertices for backtracking.
+  - **Caveat:** only the 249 D-reducible configurations close this way. The other **384 are C-reducible** and need the contraction step:
+    - replace the configuration by a contracted one;
+    - the closure starts from colourings that extend *after* contraction;
+    - prove the contraction keeps minimal-counterexample hypotheses (no new short cycles, which is RSST's "contract" condition).
+
+    That is an extra checker feature, about a day, plus extra soundness work, likely the larger part.
+- **(b) Soundness proof.**
+  - (S1) loop correctness: 1–2 weeks. Or under a week if `run` is first refactored to a functional fold mirroring `Good`, keeping the fast version only if a refinement proof is cheap.
+  - (S3)(i) and (ii): 1–3 weeks on top of RingChains/RingJordan.
+  - C-reducibility soundness: contraction, plus the minimal-counterexample conditions on the contracted map. Several more weeks.
+  - The unavoidability half of 4CT (discharging) is separate and not priced here.
+
+**Files:** `dcheck/{DCheck,DCheckData,DCheckThms,DCheckThms11,DCheckSound,Main}.lean`, `gen_data.py`, `lakefile.lean`, `lean-toolchain`, `run_r10_11.txt`, `run_r12_s.txt`, `run_r13_s.txt` (one sample; the ring-14 sample was stopped for time) and `py_r10_11.txt`.
