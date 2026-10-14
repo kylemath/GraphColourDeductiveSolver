@@ -237,7 +237,7 @@ Recorded by Long Table at Kyle's direction, after a day of attacks on NRC (13 Oc
 
 ### Overall plan to the deadline (Kyle, 13 Oct, late; supersedes "Next steps, in order" above)
 
-New fact behind A2 [data]. In all 36 non-onboarding 4square levels (31 maps), every unfilled state can reach a fill using only Kempe chains that meet the 3 outer-face ("border") tiles. Par equals the unrestricted par on 35 of 36 levels; the exception is 7.3 quiet-way-out, 2 → 3. Restricted to the outermost two shells, every state is also solvable. So pocket chains that miss the outer face were never needed. Computed with `kempe_engine.py`; the script is in the session scratchpad and will be committed with C1/A2.
+New fact behind A2 [data]. In all 36 non-onboarding 4square levels (31 maps), every unfilled state can reach a fill using only Kempe chains that meet the 3 outer-face ("border") tiles. Par equals the unrestricted par on 33 of 36 levels; the exceptions are +1 on 0.3, 2 and 7.3 (corrected 13 Oct, late, after the Shoreline check). Restricted to the outermost two shells, every state is also solvable. So pocket chains that miss the outer face were never needed. Computed with `kempe_engine.py`; the script is in the session scratchpad and will be committed with C1/A2.
 
 **Thread A: understand the global input**
 

@@ -16,10 +16,10 @@ unfilled states that can still reach a fill.
 
 | R | levels solvable from their start | par vs unrestricted | every unfilled state solvable on every map? |
 |---|---|---|---|
-| outer face ("border3", 3 tiles) | 36/36 | equal on 35; 7.3 quiet-way-out 2 → 3 | yes |
-| outermost two shells | 36/36 | equal on 35; kempes-double same | yes |
-| distance ≥ 3 | 34/36 | equal | mostly |
-| farthest shell only | 28/36 | sometimes +1 | no (fails when the shell is a single tile) |
+| outer face ("border3", 3 tiles) | 36/36 | equal on 33; +1 on 0.3 archipelago (1 → 2), 2 open-doors (1 → 2), 7.3 quiet-way-out (2 → 3) | yes |
+| outermost two shells | 36/36 | equal on 34; +1 on 0.3 and 2 | yes |
+| distance ≥ 3 | 34/36 (unsolvable from start: 0.1, 0.2) | equal on 32; +1 on 0.3 and 2 | mostly |
+| farthest shell only | 28/36 | equal on 23; +1 on 0.3, 2, 4, 7.3, 18.3 | no (fails when the shell is a single tile) |
 
 **Why it is plausible.**
 - The 3 outer-face tiles use 3 different colours, so every colour pair has a chain through the outer face.
@@ -28,3 +28,5 @@ unfilled states that can still reach a fill.
 
 **Next (Studio).** Test every census hole at orders 22–33, and glued and fullerene graphs. Any counterexample kills
 the statement (falsification-first rule).
+
+**Correction (13 Oct, late):** an earlier version said par was equal on 35 of 36 levels for the outer face. The data (`levels-ring.jsonl`) give 33 of 36. The shortfall was caught by the Shoreline prototype's independent check (`~/4square/tools/shoreline_check.js`, commit ab652c6 in 4square).
