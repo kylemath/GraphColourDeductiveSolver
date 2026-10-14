@@ -229,3 +229,9 @@ lean_lib DCheckS1
 lean_lib DCheckS3
 
 lean_lib DCheckR1
+
+lean_lib DCheck18 where
+  precompileModules := true
+
+lean_exe wheelcheck18 where
+  root := `WheelMain18

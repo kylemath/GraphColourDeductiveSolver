@@ -3,7 +3,7 @@
 // reached and depth must agree with the Lean executable (checked on every Job 8 wheel).  Speed-up: for a stuck
 // (class, theta) the set of classes reachable through its current matching is computed once and cached; at later
 // levels only `good` is re-tested (the good set only grows, so a cached failure can only turn into a success).
-// Input/Output: the WheelMain format.  Rings up to 18 (matchings of up to 18 transitions; dfast18 variant, Job 13).
+// Input/Output: the WheelMain format.  Rings up to 19 (matchings of up to 18 transitions; dfast18 variant, Jobs 13-14).
 // Build: c++ -O2 -std=c++17 -o dfast dfast.cpp
 #include <cstdio>
 #include <cstdlib>
@@ -98,7 +98,7 @@ int main(int argc, char **argv) {
     while (fgets(buf, sizeof buf, in)) {
         std::istringstream ss(buf); std::string name, ra, ia; int r, m;
         if (!(ss >> name >> r >> m >> ra >> ia)) continue;
-        if (r > 18) { printf("%s r=%d m=%d SKIP ring>18\n", name.c_str(), r, m); fflush(stdout); continue; }
+        if (r > 19) { printf("%s r=%d m=%d SKIP ring>19\n", name.c_str(), r, m); fflush(stdout); continue; }
         auto parse = [](const std::string &s) { std::vector<std::vector<int>> out; std::stringstream q(s); std::string t;
             while (std::getline(q, t, ';')) { std::vector<int> v; if (t != "-") { std::stringstream q2(t); std::string a; while (std::getline(q2, a, ',')) v.push_back(atoi(a.c_str())); } out.push_back(v); }
             return out; };
