@@ -62,6 +62,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 13:20 — Job 13 step 1: both ring-16 LP-certificate configurations D-reducible by dfast (b6666666667 depth 3, b6666666676 depth 4, 1,793,614 classes each). Lean (DCheck16, matchTable range 8→9) running ~25 min each; certificate counts only after Lean. Job 12: 9 files pass so far.
 - 2026-10-14 13:05 — B8 original agent had in fact finished (ae42e4b5); narrowed the resumed agent to the census-independent question only. Released B7 as Studio Job 13, two ring-16 certificate configurations first, because the LP certificate depends on them.
 - 2026-10-14 12:50 — App restarted (Kyle updated it); B8 agent killed mid-run, its dfast jobs survived. Relaunched B8 to resume from its uncommitted files, with an explicit overfitting check (build family on orders 22–31, test on 32–33 and constructed witnesses), because 'covers the census' is near-circular if the family came from the census.
 - 2026-10-14 12:50 — Kyle approved scheduled check-ins; task `fourcolour-coordinator-checkin` created (03,07,10,13,16,19,22 h). Pushes: morning digest, plus gate results / marker moves / needs-Kyle only. Dashboard v2 (flowchart with current position) published.
