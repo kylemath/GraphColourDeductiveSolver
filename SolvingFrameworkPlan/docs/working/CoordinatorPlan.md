@@ -323,3 +323,8 @@ Leverage follow-up (14 Oct): the first study's ~30% per-hop decay may be a small
 **Next additions:**
 - **A6:** formalise or test the termination of "fewest locks, never revisit a star", stated as a well-founded measure (a candidate route to a provable heuristic).
 - **A7:** use the exact Fisk formula to write the per-π-step integer Δdeg (rim boundary term plus interior term) and test it against Theorem W's winding (Fable Q2).
+
+**A2 result (14 Oct):** boundary solvability is FALSE for the far-face and outer-two-shells forms.
+- Smallest counterexample: p25#2111 h1, verified independently.
+- Only R = {d ≥ 3} survives at orders ≤ 33, and that is most of the graph.
+- D3 (short note) is withdrawn. The game levels happened to satisfy the strong form. See `longtable/boundary/README.md`.

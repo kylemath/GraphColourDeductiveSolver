@@ -1,4 +1,4 @@
-# Boundary solvability: Kempe's problem from the outside (exploratory)
+# Boundary solvability: Kempe's problem from the outside (exploratory) — FALSE in general (see the erratum at the end)
 
 Long Table, 13 Oct 2026. This is plan item A2 (CoordinatorPlan, "Overall plan to the deadline").
 
@@ -30,3 +30,30 @@ unfilled states that can still reach a fill.
 the statement (falsification-first rule).
 
 **Correction (13 Oct, late):** an earlier version said par was equal on 35 of 36 levels for the outer face. The data (`levels-ring.jsonl`) give 33 of 36. The shortfall was caught by the Shoreline prototype's independent check (`~/4square/tools/shoreline_check.js`, commit ab652c6 in 4square).
+
+## Erratum (14 Oct 2026): boundary solvability is false in the census
+
+**Source:** Studio Job 7, `bnd.cpp`, frame census at orders 22–33. Holes with at least one failing region, after
+1.10M of 1.34M holes:
+
+| region R | holes failing |
+|---|---|
+| faceMax | 54,578 |
+| face3 | 112,808 |
+| shell1 | 323,792 |
+| shell2 (outermost two shells) | 609 |
+| dist ≥ 3 | 0 |
+
+**Smallest far-face counterexample, verified independently on the MacBook with HoleGame:**
+- Graph p25#2111 (`Census29/out/frame-25.txt`), hole 1. R = the face {12, 21, 22}, a triangle at distance 3.
+- State `0.12123132030302101213123` has dF = 2.
+- Its closed component under swaps of chains meeting R has 12 states and no filled state.
+
+**Two-shells counterexample (Studio):** p30.r29#66366, hole 18. The R-restricted component has 4 states and no
+fill.
+
+**What survives:**
+- On these orders, only R = {d ≥ 3}, which is most of the graph.
+- The 36 game levels all satisfy the far-face form; they are not representative.
+- The Shoreline skin is unaffected, because each level is checked individually.
+- The "short note" idea (D3) is withdrawn in its strong form.
