@@ -295,3 +295,31 @@ Leverage follow-up (14 Oct): the first study's ~30% per-hop decay may be a small
   - Gears, Shoreline and Respawn prototypes are built in `~/4square/lab/` (commits 505fb01, ab652c6, 451acd5), all on the unchanged game core and unregistered.
   - Shoreline was played by Kyle: "fun", and two-shells mode is "fun and hard".
   - Registration items for each are listed in its design note.
+
+### Results in, 14 Oct early morning (all exploratory)
+
+- **A3, χ = 5 surface test of LPC** (Studio, d8399d26; `messages/2026-10-14/2026-10-14_0120_studio_to_longtable_chi5-lpc.md`).
+  - Result: 0 parity-clean classes at good holes of non-4-colourable surface triangulations. That covers 630 TrackF graphs with 1,132 holes, plus 20,534 walks (30.8M flips, n = 12–40).
+  - 0 all-DL π-cycles at good holes. Max DL π-run 11–12.
+  - Power control on 4-colourable T reached all-DL cycles in 0.5–12% of walks, so the null is meaningful.
+  - Caveat: good holes are near-critical (mostly frozen singletons); n ≤ 40.
+  - **Reading:** surface-general LPC survives. On non-4-colourable surfaces the non-colourability is absorbed by lock-parity violators. That is Fable's surprising branch, still unrefuted.
+- **A4, pseudo-surface vs manifold** (cc6f14be). No frozen class in either arm. The barrier is "every edge in two triangles", not "links are single cycles". The pseudo-surface arm had no positive control.
+- **A1 follow-up, leverage on large maps** (2791127c).
+  - The ~0.7-per-hop decay of unlocking power survives large diameter: fullerene and Goldberg duals out to eccentricity 15, with a decay length of about 3 hops and no plateau.
+  - Undersampling is ruled out: swaps available per shell vertex stay flat, but each swap's power decays.
+  - Nanotubes decay to 0 by about 7 hops. Across a separating triangle the rate is exactly 0 [hand: the triangle is a clique, so lock bits depend only on the inside].
+  - Near (rim) swaps are essentially never missing: only-far escapes are about 0.1–0.4%, and 0 at deep states.
+  - Reading: leverage is local on the sphere, limited by the narrowest separating cycle around the hole.
+- **4square game studio team (Kyle relayed, 14 Oct):**
+  - In the rim game's tree, the positions needing more than one swap are exactly the double locks.
+  - Simple rules fail somewhere:
+    - "Kempe's swap, else π" solves 34 of 40 levels (failing only the six π-loop levels 7.1–7.6);
+    - "fewest locks next" solves 26.
+  - **"Fewest locks, never revisit a star" solves every level and every hard position**, averaging 0.45 swaps over par. This is a candidate heuristic, and its termination is a natural, provable-looking question.
+  - **A Kempe swap flips exactly the signs of the triangles touching the chain** (2.2M swaps). This is empirical confirmation of the Fisk-degree change formula Δdeg = −½ Σ_{f touching C} sign(f) from the Fable exchange. It makes the "integer charge" line of the Gauss-law framing concrete.
+  - "Signs" = the Gears die's corner signs.
+
+**Next additions:**
+- **A6:** formalise or test the termination of "fewest locks, never revisit a star", stated as a well-founded measure (a candidate route to a provable heuristic).
+- **A7:** use the exact Fisk formula to write the per-π-step integer Δdeg (rim boundary term plus interior term) and test it against Theorem W's winding (Fable Q2).
