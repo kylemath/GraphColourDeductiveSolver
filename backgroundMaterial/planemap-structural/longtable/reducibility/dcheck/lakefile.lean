@@ -235,3 +235,5 @@ lean_lib DCheck18 where
 
 lean_exe wheelcheck18 where
   root := `WheelMain18
+
+lean_lib CWheels
