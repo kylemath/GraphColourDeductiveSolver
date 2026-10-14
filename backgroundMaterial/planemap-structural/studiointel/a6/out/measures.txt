@@ -1,0 +1,16 @@
+walks 361151 steps 724222 families {'census22': 384, 'census23': 644, 'census24': 3526, 'census25': 2292, 'census26': 14197, 'census27': 42922, 'census28': 237335, 'census-tight': 28936, 'glued-tight': 10896, '2ball': 19821, 'R0': 198}
+dF               steps decreasing 0.9996   walks decreasing at every step 0.9995
+(lock, dF)       steps decreasing 0.9996   walks decreasing at every step 0.9995
+(dF, lock)       steps decreasing 0.9996   walks decreasing at every step 0.9995
+dF + lock        steps decreasing 0.9996   walks decreasing at every step 0.9995
+(lock, -nm)      steps decreasing 0.9992   walks decreasing at every step 0.9987
+(lock, |deg|)    steps decreasing 0.9983   walks decreasing at every step 0.9969
+(lock, N)        steps decreasing 0.9975   walks decreasing at every step 0.9956
+(lock, nm)       steps decreasing 0.9975   walks decreasing at every step 0.9956
+lock             steps decreasing 0.9973   walks decreasing at every step 0.9955
+moves nm         steps decreasing 0.3430   walks decreasing at every step 0.0888
+N chains         steps decreasing 0.3013   walks decreasing at every step 0.0689
+Fisk deg         steps decreasing 0.3754   walks decreasing at every step 0.0598
+|Fisk deg|       steps decreasing 0.2919   walks decreasing at every step 0.0471
+-Fisk deg        steps decreasing 0.3330   walks decreasing at every step 0.0381
+dF non-decreasing steps (lock,dF -> lock,dF): [((2, 3, 2, 3), 280)]
