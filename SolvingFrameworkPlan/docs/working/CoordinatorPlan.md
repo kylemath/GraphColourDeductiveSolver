@@ -281,3 +281,17 @@ Every planar input the programme has proved so far is the **mod-2** shadow of th
 This matches Fable's "66666 needs a count". The pseudo-surface result (no frozen class on any surface tested; the barrier is "each edge in two triangles") and the χ = 5 test bear on whether that count is surface-general (χ) or sphere-specific.
 
 Leverage follow-up (14 Oct): the first study's ~30% per-hop decay may be a small-diameter artefact (census holes are 3–5 hops from everything). It is being re-measured on fullerene duals C60–C120, glued graphs and padded maps (`longtable/leverage/large/`). Note for proofs: rarity of far-only escapes is irrelevant; what matters is whether an escape always exists.
+
+### To-do additions (14 Oct, held by Kyle; not started)
+
+- **B5 (deferred): hole-type wheels.**
+  - Run the "hole + 5 neighbours" D-reducibility test (`longtable/reducibility/wheels/`) over all 59 Track B hole types, using the Lean `DCheck` for rings 10–14.
+  - Seed result: every wheel tested that has a degree-5 neighbour is D-reducible (55666 = RSST 0.79077722, 56666 = RSST 0.79077962); 66666 and 66667 are not.
+  - Purpose: reducibility could replace PureClean at many hole types, which is the hybrid co-design.
+- **B6 (deferred): second-ring growth around 66666 (Heesch-style).**
+  - Add the second ring with its degree patterns and test which 2-ball completions are D-reducible.
+  - Rings of about 15–20 need the Lean checker on the Studio.
+- **C4 (game status):**
+  - Gears, Shoreline and Respawn prototypes are built in `~/4square/lab/` (commits 505fb01, ab652c6, 451acd5), all on the unchanged game core and unregistered.
+  - Shoreline was played by Kyle: "fun", and two-shells mode is "fun and hard".
+  - Registration items for each are listed in its design note.
