@@ -174,6 +174,13 @@ Night of 6–7 Oct 2026 (Theorem W, F5, F6 programme): status page `docs/working
 Night outcome (7 Oct 2026): 42 sorry-free Lean modules (Theorem W, F5, weak F6 `pureClean_of_hole6`/`_of_degrees`), but the strong per-Γ-cycle chain for F6 is false at degree 6 (Job AW) and the weak-F6 theorems lie in reducible Birkhoff-diamond territory, so 4CT is not moved; the open gap is G66 (all-6 holes).
 Pointers: `docs/working/NightMorningSummary.md` (one page), `docs/working/NightF6Status.md` (full status).
 
+**13 Oct 2026 plan revision (Kyle):** read the last section of `docs/working/CoordinatorPlan.md` first.
+- The matching-treadmill line (A5v, T1-v, R0) is closed; R0 is false in the plane.
+- The frame census to order 34 is entirely internally 6-connected, so the target is re-scoped to internally 6-connected frame graphs, with Birkhoff's separating-cycle reductions to be formalised.
+- Running: the χ = 5 surface test of LPC (`longtable/chi5/`), pseudo-surface vs manifold (`longtable/surfaces/`), distant leverage (`longtable/leverage/`).
+- The falsification-first rule is adopted.
+- The RSST 633 configurations agree in Lean (`longtable/reducibility/dcheck/`, `native_decide`; soundness open).
+
 ## 8. Restart checklist
 
 1. Read this page. Then list recent messages with `ls -t SolvingFrameworkPlan/messages/*/ | head -30` (or `ls SolvingFrameworkPlan/messages/$(date +%F)`), and read every message addressed to your team that is newer than this page.
