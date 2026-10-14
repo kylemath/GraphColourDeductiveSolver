@@ -36,7 +36,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 | C-checker (Studio Job 15) and **w66666 C-reducible (CANDIDATE)** | 1 | Studio + coordinator | cfast built, passes RSST cross-checks (caee2731); w66666 C-reducible with X={R0-I1,I2-I3,I3-I4,I4-I5}; independent Python Kempe closure = dfast exactly, all 171 3-colourings reached (abec3fca); sounding-board: admissibility fine, claim rests on closure. hemi C searches stopped (redundant) | Lean: Job 16 | `discharge/c66666/` |
 | Lean certificate of w66666 C-reduction (Studio Job 16) | 1, 2 | Studio | DONE 14 Oct (173355bc, dcheck/C66666.lean): run numbers, every ≤3-colour ring colouring reached, extension after X ⇔ ≤3 colours, all native_decide, standard axioms. Written no-loop argument. Gonthier valid_contract allows ring–interior contract edges (RSST 2.126 uses 4). Trust gap = DCheckSound S1/S3 (shared by every reducibility claim) + Birkhoff ring distinctness | — | `dcheck/C66666.lean` |
 | Untested K = 1 sender 2-balls (Studio Job 14) | 1 | Studio | DONE 14 Oct (4a237905): all 2,848 non-66666 K=1 keys at rings ≤ 16 D-reducible; 5 non-D are 66666-centred (covered by w66666). 47 keys at rings 17–19 deferred. Lean sample running | 24 Oct | msg 1313 |
-| Independent Coq/Gonthier check of w66666 (Studio Job 20) | 1, 2 | Studio | waiting on Kyle (Coq install) | — | — |
+| Independent Coq/Gonthier check of w66666 (Studio Job 20) | 1, 2 | Studio | Kyle approved Coq install 14 Oct 16:32; queued after the 47 keys | — | — |
 | C-reducibility census of wheels, deg-5 links {5..8}^5, deg-6 links {5..7}^6 (Studio Job 17) | 1 | Studio | queued after Job 14; H17: every 5-wheel with link degrees ≤ 6 is D or C | 24 Oct | `discharge/studio17/` |
 | B3 checker soundness = DCheckSound S1/S3 | 2 | Long Table agent → Studio Job 19 | S1 PROVED, no sorry (c364be83; propext, Classical.choice, Quot.sound); S3(i) nc_matching, S3(ii) flip_chains_proper proved; R1 matchTable complete (b506b96e; native_decide p=4..8). Remaining: R2 project-level glue (ConfigOcc), Studio Job 19 | 7 Nov | `dcheck/README.md` |
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
@@ -66,10 +66,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Waiting on Kyle
 
-- Coq install on the Studio machine for Job 20 (asked 14 Oct 16:30 in the project thread).
+- Nothing.
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 16:32 — Kyle approved the Coq install (decision card). Relayed to Studio for Job 20.
 - 2026-10-14 16:30 — Job 18 done: K ≤ 1 LP obstruction removed; only 47 deferred keys left. Ordered them run after Job 17 (cheap, decides K ≤ 1 completely). K ≤ 2 (330 CPU-h) held until Job 17 says how many senders wheels remove. Coq install treated as Kyle's call (Studio's view, agreed): asked once in the thread.
 - 2026-10-14 16:30 — Old Mac coordinator session archived (21:44Z), so its local agents ended. B3 had already closed S1 and R1 (three weeks ahead of the 7 Nov gate). Moved the remaining local work to Studio: Job 18 (B8b LP re-run), Job 19 (B3 R2, needs Studio's Mathlib build), Job 20 (Gonthier/Coq cross-check of w66666, Coq install on Studio's machine; the archived session had asked Kyle, no answer; reversible local install inside the charter's compute remit).
 - 2026-10-14 16:25 — Job 14 done: every K=1 sender at rings ≤ 16 is in R (D, or 66666 via w66666). Passed to B8b for the LP re-run (with/without the 47 deferred ring 17–19 keys), then K ≤ 2.
