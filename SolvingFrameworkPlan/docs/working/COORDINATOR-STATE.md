@@ -17,6 +17,8 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 
 ## Kyle's status page
 
+Coordinator since 14 Oct 14:30 MDT: the cloud project thread (session_01AygaN3CzSnZpnynG8Tqb36, Claude project "Graph Colouring"). Mac check-ins keep running and follow this file; send Studio/agent results there with SendMessage too.
+
 https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` here). Rewrite it, never append, whenever the board changes: where we stand, running now, the 5 most important recent results, gates, needs-you. Republish with `url` from other sessions (read it first).
 
 ## Deadline goals (≈ 27 Dec 2026)
@@ -30,8 +32,9 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 |---|---|---|---|---|---|
 | B8 unavoidability of reducible 2-balls | 1 | Long Table agent | first report 14 Oct (ae42e4b5): H0 false (p25#2111); enlarged R (34,403 D-reducible keys, ring ≤ 14) hits all 80,125 census graphs; out-of-sample ≤32→33 misses 1/58,194; 146/154 constructed hit; LP infeasible with constructed graphs, certificate rests on b6666666676, b6666666667 (ring 16). Second agent finishing census-independent check | 24 Oct | `longtable/reducibility/discharge/` |
 | B7 rings 15–18, LP-certificate configurations first (Studio Job 13) | 1 | Studio | step 1 DONE: both ring-16 certificate configs D-reducible, Lean-confirmed (wheelcheck16, all fields equal); step 2 (1,173 ring 15–16 keys, dfast18) running; 2 theorems to add | 24 Oct | msg 1305 |
-| B8b lone-8 question + LP over the full K ≤ 1 sender list (census-independent) | 1 | Long Table agent | started 14 Oct | 24 Oct | `discharge/` README §8 |
-| Untested K = 1 sender 2-balls, 2,909 keys (Studio Job 14) | 1 | Studio | queued | 24 Oct | msg 1313 |
+| B8b lone-8 question + LP over the full K ≤ 1 sender list (census-independent) | 1 | Long Table agent (Mac) | interim 14 Oct (5d2c77ff): H8a killed, hemi8 (n=98) has 8 hard lone-8 senders and **no** degree-5 vertex with a D-reducible 2-ball (hemi9 likewise), so 5-centred D-reducible families are avoidable; K ≤ 1 LP infeasible, t* = 2/3 in both cases, weights forced; receiver-centred 8-balls 2,397/2,397 D-reducible so far (ring ≤ 15, run continuing); d ≥ 10 unbounded | 24 Oct | `discharge/` README §8 |
+| C-reducibility of the hemi8/hemi9 sender keys (Studio Job 15) | 1 | Studio | queued after Job 13 step 2, ahead of Job 14 | 24 Oct | msg 1435 |
+| Untested K = 1 sender 2-balls, 2,909 keys (Studio Job 14) | 1 | Studio | queued after Job 15 | 24 Oct | msg 1313 |
 | B3 checker soundness (loop invariant, planar Kempe-matching step) | 2 | Long Table agent | not started | 7 Nov | `reducibility/dcheck/` |
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
 | Arena hard set v1: 302 maps (150 census floor-tight, 50 glued, 2 R0, 100 non-reducible 66666 2-balls); max distance 2–3 | 3 | Studio | DONE 14 Oct | — | arena 883467b; msg 1230 |
@@ -52,7 +55,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Queue (next to start, in order)
 
-1. B8 (running, MacBook). 2. Studio Job 12 = Lean certificates for 2-balls (running). 3. Studio Job 13 (B7 rings 15–18) running. 4. Track 2: B3 loop invariant.
+1. B8b (running, MacBook: H8e centred run). 2. Studio Job 13 step 2 (running). 3. Studio Job 15 (C-reducibility of hemi keys). 4. Studio Job 14 (K=1 untested). 5. Two ring-16 native_decide theorems. 6. Track 2: B3 loop invariant. Deferred: K ≤ 2 sender run (~330 CPU-h) until R's shape is settled; ring 14–15 full Lean (240 CPU-h).
 
 ## Parked ideas (look at weekly)
 
@@ -63,6 +66,8 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 - Nothing.
 
 ## Decision log (newest first; one line each, with reason)
+
+- 2026-10-14 14:35 — Coordination moved to the cloud project thread at Kyle's request (same charter, same dashboard). B8b interim recorded: hemi8 shows 5-centred D-reducible R is avoidable, K ≤ 1 LP infeasible (t* = 2/3). Before committing Track 1 to receiver-centred R (unbounded in d), test the cheap rescue first: Studio Job 15 = C-reducibility of `b5666665686` (ring 15) and the hemi9 key, ahead of Job 14. K ≤ 2 run stays deferred. Not a deadline-goal change yet (goal 3 was already the long shot), so no alert to Kyle.
 
 - 2026-10-14 14:10 — Ring-16 LP-certificate configurations Lean-confirmed (executable runs; native_decide theorems requested at low priority for the paper). Notified Kyle (certificate survived its kill test).
 - 2026-10-14 13:55 — Job 12 done (0 Lean/dfast disagreements in 1,693). Deferred full ring 14–15 Lean (240 CPU-h): certify only the keys the final unavoidable R uses, after B8b; Studio time goes to Jobs 13–14.
