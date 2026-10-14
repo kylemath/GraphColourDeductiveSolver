@@ -53,9 +53,11 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 
 ## Waiting on Kyle
 
-- Nothing.
+- Approve the scheduled check-in task (creation was blocked by the auto-mode classifier). Prompt and schedule: `coordinator-checkin-prompt.md`. Until then, check-ins happen when this session is active.
 
 ## Decision log (newest first; one line each, with reason)
+
+- 2026-10-14 12:20 — Scheduled check-ins (7 a day) could not be created: auto-mode classifier denied it. Did not work around; asked Kyle.
 
 - 2026-10-14 12:15 — Took over coordination per Kyle's charter. Started B8 locally before more Studio 2-ball runs, because its answer decides whether ring 16 or 3-balls matter. Sent Studio the arena hard-set job (cheap, useful either way).
 - 2026-10-14 12:15 — Skins (Gears, Shoreline, Respawn) confirmed live at 4square.studio (sw fth-v29 = local 83eb31f); no deploy pending.
