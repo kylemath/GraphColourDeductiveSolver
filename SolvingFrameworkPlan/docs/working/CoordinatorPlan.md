@@ -234,3 +234,40 @@ Recorded by Long Table at Kyle's direction, after a day of attacks on NRC (13 Oc
 3. Lean: Birkhoff separating 4- and 5-cycle reductions; restate `RStarFrame` for internally 6-connected graphs.
 4. Checker soundness, then C-reducibility; check Steinberger (2010) and whether any Lean 4 proof of 4CT exists (Zulip search).
 5. Paper outlines (a) and (b).
+
+### Overall plan to the deadline (Kyle, 13 Oct, late; supersedes "Next steps, in order" above)
+
+New fact behind A2 [data]. In all 36 non-onboarding 4square levels (31 maps), every unfilled state can reach a fill using only Kempe chains that meet the 3 outer-face ("border") tiles. Par equals the unrestricted par on 35 of 36 levels; the exception is 7.3 quiet-way-out, 2 → 3. Restricted to the outermost two shells, every state is also solvable. So pocket chains that miss the outer face were never needed. Computed with `kempe_engine.py`; the script is in the session scratchpad and will be committed with C1/A2.
+
+**Thread A: understand the global input**
+
+| # | step | where | rule |
+|---|---|---|---|
+| A1 | Distant leverage: unlocking power against chain distance from the hole, sphere vs torus (`longtable/leverage/`) | MacBook, running | decays to ~0 at a fixed radius ⇒ local, look for finite configurations; stays significant far out ⇒ global, look for a count |
+| A2 | Solvable from the outer face: for every census hole (orders 22–33), is every unfilled state fillable using only chains through the outer face, or through a random far face, or the farthest shell? | Studio | one counterexample kills it; if it survives, test glued graphs and fullerenes, then treat it as a lemma candidate |
+| A3 | χ = 5 surface test of LPC, with power control (`longtable/chi5/`) | Studio, running | a parity-clean class refutes surface-general LPC; a null counts only if the control finds all-DL cycles |
+| A4 | Pseudo-surface vs manifold (`longtable/surfaces/`) | MacBook, running | decides "links are single cycles" (local) vs global |
+| A5 | Re-rank the LPC readings from A1–A4; choose one attack with a written kill test | coordinator | falsification-first |
+
+**Thread B: formal and verified**
+- **B1:** Lemma E review, then Lean.
+- **B2:** Birkhoff separating 4- and 5-cycle reductions; restate `RStarFrame` for internally 6-connected graphs.
+- **B3:** D-checker soundness (loop invariant, then the planar Kempe-matching step).
+- **B4:** C-reducibility; verify Steinberger's all-D set from the paper; search Zulip for any existing Lean 4 proof of 4CT.
+
+**Thread C: game and arena**
+- **C1:** "Shoreline" skin prototype: swap only shore chains, with waves travelling inward.
+- **C2:** Arena agents restricted to ring actions, plus interpretability on far-chain choice.
+- **C3:** Telemetry: where lab players click when stuck, near or far.
+
+**Thread D: write-up (deadline)**
+- **D1:** combinatorics paper.
+- **D2:** verified-checker paper.
+- **D3:** short note on boundary solvability, if A2 survives.
+
+**Schedule:**
+- this week: A1–A5, B1, C1;
+- late October to November: B2–B4;
+- December: D1, D2.
+
+A time-boxed proof slot is reserved if A1 or A2 shows a clean global mechanism.
