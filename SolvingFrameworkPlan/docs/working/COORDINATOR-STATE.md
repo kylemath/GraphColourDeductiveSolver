@@ -58,10 +58,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Waiting on Kyle
 
-- Approve the scheduled check-in task (creation was blocked by the auto-mode classifier). Prompt and schedule: `coordinator-checkin-prompt.md`. Until then, check-ins happen when this session is active.
+- Nothing.
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 12:50 — Kyle approved scheduled check-ins; task `fourcolour-coordinator-checkin` created (03,07,10,13,16,19,22 h). Pushes: morning digest, plus gate results / marker moves / needs-Kyle only. Dashboard v2 (flowchart with current position) published.
 - 2026-10-14 12:26 — A6 done: survives, no measure; parked (empirical termination does not give a proof route by itself). Studio given Job 12, Lean certificates for D-reducible 2-balls: needed for the paper regardless of B8, and keeps B7 heavy runs held.
 - 2026-10-14 12:20 — Studio Job 10 done (hard set v1). Studio idle while B7 waits, so gave it A6 (heuristic termination on hard set + census 22–28): cheap, falsifiable, feeds Track 3's gate.
 - 2026-10-14 12:20 — Scheduled check-ins (7 a day) could not be created: auto-mode classifier denied it. Did not work around; asked Kyle.
