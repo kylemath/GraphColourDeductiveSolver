@@ -29,7 +29,9 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 | Item | Track | Owner | Status | Next gate | Evidence |
 |---|---|---|---|---|---|
 | B8 unavoidability of reducible 2-balls | 1 | Long Table agent | first report 14 Oct (ae42e4b5): H0 false (p25#2111); enlarged R (34,403 D-reducible keys, ring ≤ 14) hits all 80,125 census graphs; out-of-sample ≤32→33 misses 1/58,194; 146/154 constructed hit; LP infeasible with constructed graphs, certificate rests on b6666666676, b6666666667 (ring 16). Second agent finishing census-independent check | 24 Oct | `longtable/reducibility/discharge/` |
-| B7 rings 15–18, LP-certificate configurations first (Studio Job 13) | 1 | Studio | started 14 Oct | 24 Oct | msg 1305 |
+| B7 rings 15–18, LP-certificate configurations first (Studio Job 13) | 1 | Studio | step 1: both ring-16 configs D-reducible (dfast), Lean pending | 24 Oct | msg 1305 |
+| B8b lone-8 question + LP over the full K ≤ 1 sender list (census-independent) | 1 | Long Table agent | started 14 Oct | 24 Oct | `discharge/` README §8 |
+| Untested K = 1 sender 2-balls, 2,909 keys (Studio Job 14) | 1 | Studio | queued | 24 Oct | msg 1313 |
 | B3 checker soundness (loop invariant, planar Kempe-matching step) | 2 | Long Table agent | not started | 7 Nov | `reducibility/dcheck/` |
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
 | Arena hard set v1: 302 maps (150 census floor-tight, 50 glued, 2 R0, 100 non-reducible 66666 2-balls); max distance 2–3 | 3 | Studio | DONE 14 Oct | — | arena 883467b; msg 1230 |
@@ -62,6 +64,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 13:15 — B8 §7 (90d3235c): census-independent check reduces to a finite list of sender 2-balls (K=1: 22,428 keys, 2,909 untested; K≤2: 108,113 untested, ~330 CPU-h) plus a receiver DP. Started B8b locally (lone-8 question exactly; LP over the full K≤1 list) and queued Studio Job 14 (K=1 untested keys, ~4 CPU-h). K≤2 Studio run (~1–2 days) deferred until B8b says the K≤1 LP is close.
 - 2026-10-14 13:20 — Job 13 step 1: both ring-16 LP-certificate configurations D-reducible by dfast (b6666666667 depth 3, b6666666676 depth 4, 1,793,614 classes each). Lean (DCheck16, matchTable range 8→9) running ~25 min each; certificate counts only after Lean. Job 12: 9 files pass so far.
 - 2026-10-14 13:05 — B8 original agent had in fact finished (ae42e4b5); narrowed the resumed agent to the census-independent question only. Released B7 as Studio Job 13, two ring-16 certificate configurations first, because the LP certificate depends on them.
 - 2026-10-14 12:50 — App restarted (Kyle updated it); B8 agent killed mid-run, its dfast jobs survived. Relaunched B8 to resume from its uncommitted files, with an explicit overfitting check (build family on orders 22–31, test on 32–33 and constructed witnesses), because 'covers the census' is near-circular if the family came from the census.
