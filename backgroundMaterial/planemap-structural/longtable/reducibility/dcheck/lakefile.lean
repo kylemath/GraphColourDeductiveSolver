@@ -215,3 +215,7 @@ lean_lib DCheck16 where
 
 lean_exe wheelcheck16 where
   root := `WheelMain16
+
+lean_lib TB16_6666666667
+
+lean_lib TB16_6666666676
