@@ -227,3 +227,5 @@ lean_lib DCheckRef
 lean_lib DCheckS1
 
 lean_lib DCheckS3
+
+lean_lib DCheckR1

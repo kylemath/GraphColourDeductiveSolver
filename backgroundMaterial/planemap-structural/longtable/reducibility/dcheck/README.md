@@ -62,3 +62,24 @@ non-crossing perfect matching with faces = `arcRegions` classes (checker level, 
 (R2) the project-level glue (chains of a `ConfigOcc` colouring satisfy `NCLabel`/`ParityLabel`,
 and the ring trace of the swap is `k ^^^ flipMask …`). Both are stated in the header of
 `DCheckS3.lean`. Build: `nice -n 10 lake build DCheckS1 DCheckS3` (about 3 s after `DCheck`).
+
+## Run B3, part 2: R1 (`matchTable` complete)
+The coordinator asked to continue with R1 (2026-10-14).
+5. 2026-10-14 15:45 MDT. **R1 proved** (`DCheckR1.lean`).
+   - `ncm_complete` is a general proof with no `decide`. For any non-crossing fixed-point-free
+     involution `μ` of a sorted point list, `ncm` lists a matching `M` whose pairs are exactly the
+     chords of `μ`. The proof splits at the partner of the first point and shows the inside has
+     even size (`even_of_invol`).
+   - `sameFace_iff`: the faces of `μ` are the faces of the chord list `M`.
+   - `checkP (2p)` is a finite check: for every `M ∈ ncm`, `arcRegions` labels are equal exactly
+     on one face. It reduces R1 to finitely many `p`, and `p ≤ 8` is a hard bound. Proofs:
+     `p ≤ 3` by kernel `decide`; `p = 4..8` by `native_decide`.
+   - `matchTable_complete` (DCheck, `p ≤ 7`) and `matchTable16_complete` (DCheck16, `p ≤ 8`;
+     `DCheck16.ncm`/`arcRegions` are shown equal to DCheck's) give
+     `∃ lab ∈ matchTable[p]!, ∀ j j' < 2p, lab[j]! = lab[j']! ↔ sameFace (2p) μ j j'`.
+   - Axioms: propext, Classical.choice, Quot.sound, plus `DCheck.R1.check{4..8}._native.native_decide.ax_1_1`.
+   - **Caution:** `matchTable[p]! = #[]` for `p > 7` (DCheck) or `p > 8` (DCheck16), so `Good`
+     is vacuous there. `KempeMatching` can be discharged only for rings with at most 14 (resp. 16)
+     transitions, i.e. `r ≤ 15` (resp. `r ≤ 17`). The current ring-16 certificates use DCheck16, so
+     they are within the bound.
+   - The (S1) proofs cover `DCheck.run` only, not `DCheck16.run` or `C66666.runGood`.
