@@ -1,105 +1,211 @@
 <title>Four Colour Programme</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,600&display=swap">
 <style>
-/* Layout: one reading column; summary first, then running work, recent results, plan and gates. Four map colours mark the tracks. */
+/* Layout: dashboard. Header + KPI strip, then the proof flowchart with a "we are here" marker, then running work and the
+   gate timeline side by side, then a small chart and recent results. Four map colours encode status. */
 :root{
-  --bg:#f6f7f9; --panel:#ffffff; --fg:#1b1f27; --muted:#5b6474; --line:#dde1e8;
-  --c1:#c8423b; --c2:#d9a521; --c3:#2f8a5b; --c4:#2f62b8;
-  --ok:#2f8a5b; --warn:#b7791f; --bad:#c8423b;
+  --bg:#f5f6f8; --panel:#ffffff; --fg:#1a1e26; --muted:#5d6676; --line:#dfe3ea; --soft:#eef1f5;
+  --red:#c8423b; --yel:#c9971a; --grn:#2f8a5b; --blu:#2f62b8;
+  --done:var(--grn); --now:var(--blu); --part:var(--yel); --todo:#9aa3b2; --closed:var(--red);
   --display:"Newsreader",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12151b; --panel:#1a1e26; --fg:#e7eaf0; --muted:#9aa3b2; --line:#2b313c;
-  --c1:#e2665f; --c2:#e7bb48; --c3:#4fb37f; --c4:#6a95e0; --ok:#4fb37f; --warn:#e0a84a; --bad:#e2665f; color-scheme:dark}}
+  --bg:#11141a; --panel:#1a1e26; --fg:#e8ebf1; --muted:#9aa3b2; --line:#2c323d; --soft:#222833;
+  --red:#e2665f; --yel:#e2b545; --grn:#4fb37f; --blu:#6d98e2; --todo:#6b7483; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#12151b; --panel:#1a1e26; --fg:#e7eaf0; --muted:#9aa3b2; --line:#2b313c;
-  --c1:#e2665f; --c2:#e7bb48; --c3:#4fb37f; --c4:#6a95e0; --ok:#4fb37f; --warn:#e0a84a; --bad:#e2665f; color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
-.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:grid;gap:28px}
-header{display:grid;gap:6px}
-.swatch{display:flex;gap:4px}.swatch i{width:14px;height:14px;border-radius:3px;display:block}
-h1{font:600 2rem/1.15 var(--display);margin:0;text-wrap:balance}
-.asof{font:500 .8rem var(--mono);color:var(--muted);letter-spacing:.02em}
-h2{font:600 .78rem var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px}
-section{min-width:0}
-.lead{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:10px}
-.lead p{margin:0;max-width:68ch}
-.lead strong{font-weight:600}
-ul.items{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-ul.items li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
-ul.items li>div{min-width:0}
-ul.items .t{font-weight:600}
-ul.items .d{color:var(--muted);font-size:.92rem;margin-top:2px}
-.tag{font:500 .72rem var(--mono);padding:2px 7px;border-radius:99px;border:1px solid currentColor;white-space:nowrap;margin-top:2px}
-.run{color:var(--c4)}.done{color:var(--ok)}.held{color:var(--warn)}.kill{color:var(--bad)}
-.track{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:0}
-.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px}
-table{border-collapse:collapse;width:100%;font-size:.92rem}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
-tr:last-child td{border-bottom:0}
-td.date{font-family:var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums}
-.you{border-left:3px solid var(--c2);padding:10px 14px;background:var(--panel);border-radius:0 8px 8px 0}
+  --bg:#11141a; --panel:#1a1e26; --fg:#e8ebf1; --muted:#9aa3b2; --line:#2c323d; --soft:#222833;
+  --red:#e2665f; --yel:#e2b545; --grn:#4fb37f; --blu:#6d98e2; --todo:#6b7483; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14.5px/1.5 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:24px 48px;display:grid;gap:18px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;min-width:0}
+h1{font:600 1.9rem/1.1 var(--display);margin:0}
+h2{font:600 .74rem var(--body);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 12px}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px}
+.asof{font:500 .78rem var(--mono);color:var(--muted)}
+.swatch{display:flex;gap:4px;margin-bottom:8px}.swatch i{width:12px;height:12px;border-radius:3px;display:block}
+
+/* KPI strip */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{display:grid;gap:4px}
+.kpi .v{font:600 1.65rem/1 var(--mono);font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:.9rem;color:var(--muted);font-weight:500}
+.kpi .l{font-size:.8rem;color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--soft);overflow:hidden}.bar>i{display:block;height:100%}
+
+/* Proof flowchart */
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;align-items:stretch;position:relative}
+@media (max-width:860px){.flow{grid-template-columns:1fr}}
+.step{position:relative;padding:12px 12px 12px 12px;margin:0 7px;border-radius:9px;border:1.5px solid var(--line);background:var(--panel);display:grid;gap:6px;align-content:start;min-width:0}
+.step .n{font:500 .7rem var(--mono);color:var(--muted)}
+.step .t{font-weight:600;font-size:.92rem;line-height:1.25}
+.step .d{font-size:.8rem;color:var(--muted);line-height:1.35}
+.step .st{font:500 .68rem var(--mono);justify-self:start;padding:1px 7px;border-radius:99px;border:1px solid currentColor}
+.step.done{border-color:var(--done)}.step.done .st{color:var(--done)}
+.step.part{border-color:var(--part)}.step.part .st{color:var(--part)}
+.step.now{border-color:var(--now);box-shadow:0 0 0 3px color-mix(in srgb,var(--now) 22%,transparent)}.step.now .st{color:var(--now)}
+.step.todo .st{color:var(--todo)}
+.step:not(:last-child)::after{content:"";position:absolute;right:-13px;top:50%;width:12px;height:2px;background:var(--line)}
+@media (max-width:860px){.step{margin:0 0 14px}.step:not(:last-child)::after{right:auto;left:22px;top:auto;bottom:-14px;width:2px;height:14px}}
+.here{position:absolute;top:-30px;left:50%;transform:translateX(-50%);font:600 .7rem var(--mono);color:var(--now);white-space:nowrap;background:var(--panel);padding:2px 8px;border:1px solid var(--now);border-radius:99px}
+.here::after{content:"";position:absolute;left:50%;bottom:-6px;width:8px;height:8px;margin-left:-4px;background:var(--panel);border-right:1px solid var(--now);border-bottom:1px solid var(--now);transform:rotate(45deg)}
+@media (max-width:860px){.here{top:10px;left:auto;right:10px;transform:none}.here::after{display:none}}
+.flowpad{padding-top:40px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.78rem;color:var(--muted);margin-top:14px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.side{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{font-size:.78rem;padding:4px 10px;border-radius:99px;background:var(--soft);color:var(--muted)}
+.chip b{font-weight:600;color:var(--fg)}
+.chip.x{text-decoration:line-through;text-decoration-color:var(--closed)}
+
+/* Two-column area */
+.cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.cols{grid-template-columns:1fr}}
+.job{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0;padding-top:0}
+.job>div{min-width:0}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:5px}
+.dot.run{background:var(--now);box-shadow:0 0 0 0 var(--now);animation:pulse 1.8s infinite}
+.dot.held{background:var(--part)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--now) 55%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.dot.run{animation:none}}
+.job .t{font-weight:600;font-size:.9rem}.job .d{font-size:.8rem;color:var(--muted)}
+.job .w{font:500 .7rem var(--mono);color:var(--muted)}
+
+/* Gate timeline */
+.tl{position:relative;margin:6px 0 4px;padding-left:18px;display:grid;gap:12px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.g{position:relative;display:grid;gap:1px}
+.g::before{content:"";position:absolute;left:-18px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:2px solid var(--c,var(--todo))}
+.g .dt{font:500 .74rem var(--mono);color:var(--muted)}
+.g .t{font-size:.86rem;font-weight:500}
+.g .f{font-size:.76rem;color:var(--muted)}
+.g.today::before{background:var(--now);border-color:var(--now)}
+.g.today .t{color:var(--now);font-weight:600}
+
+/* Chart */
+.chart{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;align-items:end;height:150px;padding-top:6px}
+.col{display:grid;grid-template-rows:auto 1fr auto;height:100%;gap:4px;text-align:center}
+.col .pct{font:500 .7rem var(--mono);color:var(--muted)}
+.col .track{position:relative;background:var(--soft);border-radius:4px 4px 0 0;overflow:hidden}
+.col .track i{position:absolute;left:0;right:0;bottom:0;background:var(--grn);border-radius:4px 4px 0 0}
+.col .x{font:500 .72rem var(--mono);color:var(--muted)}
+.caption{font-size:.78rem;color:var(--muted);margin-top:10px}
+
+.res{display:grid;gap:10px}
+.r{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.r>div{min-width:0}
+.r .k{font:500 .68rem var(--mono);padding:1px 7px;border-radius:99px;border:1px solid currentColor;height:fit-content;margin-top:2px;white-space:nowrap}
+.r .k.ok{color:var(--done)}.r .k.no{color:var(--closed)}.r .k.pk{color:var(--part)}
+.r .t{font-weight:600;font-size:.88rem}.r .d{font-size:.8rem;color:var(--muted)}
+.you{border-left:4px solid var(--yel)}
 .you p{margin:0}
-footer{color:var(--muted);font-size:.82rem}
+footer{color:var(--muted);font-size:.78rem}
 code{font-family:var(--mono);font-size:.86em}
 </style>
 
 <div class="wrap">
-<header>
-  <div class="swatch" aria-hidden="true"><i style="background:var(--c1)"></i><i style="background:var(--c2)"></i><i style="background:var(--c3)"></i><i style="background:var(--c4)"></i></div>
-  <h1>Four Colour Programme</h1>
-  <div class="asof">Updated 14 Oct 2026, 12:35 MDT · 74 days to the 27 Dec target</div>
-</header>
 
-<section>
-  <h2>Where we stand</h2>
-  <div class="lead">
-    <p><strong>Route:</strong> the classical reducibility method, organised by curvature. Around a degree-5 vertex, whether the 2-ball (two rings of neighbours) is reducible tracks a curvature margin. Flat neighbourhoods (no degree 7 or 8 within two steps) are always reducible in every case tested.</p>
-    <p><strong>The open question:</strong> must every candidate counterexample contain such a reducible 2-ball? That is B8, running now. Its answer decides the next heavy computation.</p>
-    <p><strong>Deadline goals:</strong> (1) a verified-checker paper (Lean), (2) a combinatorics paper on curvature-organised reducibility, (3) a full proof as the long shot.</p>
+<div class="top">
+  <div>
+    <div class="swatch" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yel)"></i><i style="background:var(--grn)"></i><i style="background:var(--blu)"></i></div>
+    <h1>Four Colour Programme</h1>
+  </div>
+  <div class="asof">updated 14 Oct 2026 · 12:45 MDT</div>
+</div>
+
+<div class="kpis">
+  <div class="panel kpi"><div class="v" id="days">74 <small>days</small></div><div class="l">to the 27 Dec target (Appel–Haken 50th)</div><div class="bar"><i id="daysbar" style="width:10%;background:var(--blu)"></i></div></div>
+  <div class="panel kpi"><div class="v">4,223 <small>/ 7,464</small></div><div class="l">2-ball patterns D-reducible (ring ≤ 15)</div><div class="bar"><i style="width:56.6%;background:var(--grn)"></i></div></div>
+  <div class="panel kpi"><div class="v">633 <small>/ 633</small></div><div class="l">RSST configurations: Lean checker agrees</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
+  <div class="panel kpi"><div class="v">78 <small>/ 78</small></div><div class="l">flat 2-balls (no degree ≥ 7) reducible</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
+</div>
+
+<section class="panel">
+  <h2>Proof route and where we are</h2>
+  <div class="flow flowpad">
+    <div class="step done"><span class="n">1</span><span class="t">Minimal counterexample</span><span class="d">Smallest map needing 5 colours: a triangulation</span><span class="st">classical</span></div>
+    <div class="step part"><span class="n">2</span><span class="t">Clean structure</span><span class="d">Internally 6-connected, min degree 5 (Birkhoff). Lean: to do (B2)</span><span class="st">Lean partial</span></div>
+    <div class="step done"><span class="n">3</span><span class="t">Curvature budget</span><span class="d">Σ(6 − deg) = 12, so degree-5 vertices must exist (Euler)</span><span class="st">done</span></div>
+    <div class="step now"><span class="here">we are here</span><span class="n">4</span><span class="t">Unavoidability</span><span class="d">Some degree-5 vertex always has a reducible 2-ball? (B8)</span><span class="st">testing</span></div>
+    <div class="step part"><span class="n">5</span><span class="t">Reducibility</span><span class="d">Each 2-ball in the family is D-reducible. 4,223 found; Lean certificates running</span><span class="st">partial</span></div>
+    <div class="step todo"><span class="n">6</span><span class="t">Checker sound ⇒ 4CT</span><span class="d">Lean: "checker says reducible" implies reducible (B3); chain to 4CT</span><span class="st">core only</span></div>
+  </div>
+  <div class="legend">
+    <span style="--c:var(--done)">done</span><span style="--c:var(--part)">partly done</span><span style="--c:var(--now)">current focus</span><span style="--c:var(--todo)">not started</span>
+  </div>
+  <div class="side">
+    <span class="chip x"><b>Closed:</b> matching treadmill / R0 (refuted 13 Oct)</span>
+    <span class="chip x"><b>Closed:</b> boundary solvability (false in census)</span>
+    <span class="chip"><b>Parked:</b> game heuristic termination (works, no proof handle)</span>
+    <span class="chip"><b>Parked:</b> Lemma E review</span>
   </div>
 </section>
 
-<section>
-  <h2>Running now</h2>
-  <ul class="items">
-    <li><span class="tag run">running</span><div><div class="t"><span class="track" style="background:var(--c1)"></span>B8: is a reducible 2-ball unavoidable?</div><div class="d">MacBook agent. First tries to build a graph that avoids every known reducible 2-ball; failures show which 2-balls to test next; then a discharging LP. Report within about 4 hours.</div></div></li>
-    <li><span class="tag run">running</span><div><div class="t"><span class="track" style="background:var(--c2)"></span>Lean certificates for the reducible 2-balls (Studio Job 12)</div><div class="d">All 1,440 at rings 8–13 through the Lean checker; rings 14–15 timed first. Needed for the papers whatever B8 says.</div></div></li>
-    <li><span class="tag held">held</span><div><div class="t"><span class="track" style="background:var(--c1)"></span>B7 heavy runs: ring-16 2-balls or 3-balls</div><div class="d">Waiting for B8 to say which one matters (~66 CPU-hours either way).</div></div></li>
-  </ul>
-</section>
+<div class="cols">
+  <section class="panel">
+    <h2>Running now</h2>
+    <div class="job"><span class="dot run"></span><div><div class="t">B8 · Is a reducible 2-ball unavoidable?</div><div class="d">First tries to build a graph that dodges every known reducible 2-ball; the failures show what to test next; then a discharging LP.</div><div class="w">MacBook agent · step 4 · report within ~4 h</div></div></div>
+    <div class="job"><span class="dot run"></span><div><div class="t">Lean certificates for the 2-balls</div><div class="d">All 1,440 reducible patterns at rings 8–13; rings 14–15 timed first.</div><div class="w">Studio Job 12 · step 5 · needed for both papers</div></div></div>
+    <div class="job"><span class="dot held"></span><div><div class="t">Ring-16 2-balls or 3-balls</div><div class="d">~66 CPU-hours. Held until B8 says which one matters.</div><div class="w">Studio · step 5 · held</div></div></div>
+  </section>
 
-<section>
-  <h2>Recent results</h2>
-  <ul class="items">
-    <li><span class="tag done">14 Oct</span><div><div class="t">Flat 66666 2-ball is reducible (Lean-confirmed)</div><div class="d">All 78 second rings with degrees ≤ 6 are D-reducible; 4,223 of 7,464 patterns overall; every failure has a degree-7 or 8 vertex nearby.</div></div></li>
-    <li><span class="tag done">14 Oct</span><div><div class="t">Game heuristic never fails, but gives no proof handle</div><div class="d">"Fewest locks, never revisit a star": 0 failures in 361,293 walks (census and hard maps). No quantity decreases at every step. Parked.</div></div></li>
-    <li><span class="tag done">14 Oct</span><div><div class="t">RL arena hard set v1: 302 maps</div><div class="d">Floor-tight holes, glued graphs, the R0 maps and non-reducible 2-balls. Hard for the proof but shallow (distance 2–3).</div></div></li>
-    <li><span class="tag kill">13 Oct</span><div><div class="t">Matching-treadmill line closed</div><div class="d">R0 refuted by a planar counterexample; A5v turned out to be "π is defined". Global influence measured: leverage decays ~0.7 per hop.</div></div></li>
-    <li><span class="tag done">13 Oct</span><div><div class="t">Lean checker agrees with RSST on all 633 configurations</div><div class="d">The basis for the verified-checker paper. Soundness proof still to do.</div></div></li>
-  </ul>
-</section>
-
-<section>
-  <h2>Plan and gates</h2>
-  <div class="tbl"><table>
-    <thead><tr><th>Date</th><th>Gate</th><th>If it fails</th></tr></thead>
-    <tbody>
-      <tr><td class="date">24 Oct</td><td><span class="track" style="background:var(--c1)"></span>B8 answer: is a reducible 2-ball unavoidable?</td><td>Move to 3-balls or a larger family</td></tr>
-      <tr><td class="date">7 Nov</td><td><span class="track" style="background:var(--c2)"></span>Checker soundness (loop invariant) and Birkhoff 4-cycle reduction in Lean</td><td>Paper narrows to checker plus certified data</td></tr>
-      <tr><td class="date">14 Nov</td><td><span class="track" style="background:var(--c3)"></span>Arena benchmark on the hard set</td><td>Arena becomes falsification support only</td></tr>
-      <tr><td class="date">1 Dec</td><td>Paper outlines frozen; no new lines</td><td>Keep only evidenced claims</td></tr>
-      <tr><td class="date">20 Dec</td><td>Everything reproduced from a clean checkout</td><td>Ship what reproduces</td></tr>
-    </tbody>
-  </table></div>
-</section>
-
-<section>
-  <h2>Needs you</h2>
-  <div class="you"><p>Approve the scheduled check-ins (blocked by the auto-mode classifier). Until then, work only advances while this session is open.</p></div>
-</section>
-
-<footer>Tracks: <span class="track" style="background:var(--c1)"></span>reducibility · <span class="track" style="background:var(--c2)"></span>Lean checker · <span class="track" style="background:var(--c3)"></span>RL arena. Detail lives in <code>SolvingFrameworkPlan/docs/working/COORDINATOR-STATE.md</code>.</footer>
+  <section class="panel">
+    <h2>Gates</h2>
+    <div class="tl">
+      <div class="g today"><span class="dt">14 Oct · today</span><span class="t">Coordination handed over; B8 started</span></div>
+      <div class="g" style="--c:var(--blu)"><span class="dt">24 Oct</span><span class="t">B8 answer: is a reducible 2-ball unavoidable?</span><span class="f">if not → 3-balls / larger family</span></div>
+      <div class="g" style="--c:var(--yel)"><span class="dt">7 Nov</span><span class="t">Checker soundness + Birkhoff 4-cycle in Lean</span><span class="f">if not → paper on checker + certified data</span></div>
+      <div class="g" style="--c:var(--grn)"><span class="dt">14 Nov</span><span class="t">RL arena benchmark on the hard set</span><span class="f">if not → arena supports falsification only</span></div>
+      <div class="g"><span class="dt">1 Dec</span><span class="t">Paper outlines frozen; no new lines</span></div>
+      <div class="g"><span class="dt">20 Dec</span><span class="t">Everything reproduced from a clean checkout</span></div>
+    </div>
+  </section>
 </div>
+
+<div class="cols">
+  <section class="panel">
+    <h2>2-balls around a 66666 hole: share D-reducible, by ring size</h2>
+    <div class="chart" role="img" aria-label="Share of D-reducible 2-ball patterns by ring size, from 100% at rings 8 and 9 down to 44% at ring 15">
+      <div class="col"><span class="pct">100%</span><span class="track"><i style="height:100%"></i></span><span class="x">8</span></div>
+      <div class="col"><span class="pct">100%</span><span class="track"><i style="height:100%"></i></span><span class="x">9</span></div>
+      <div class="col"><span class="pct">98%</span><span class="track"><i style="height:98.2%"></i></span><span class="x">10</span></div>
+      <div class="col"><span class="pct">93%</span><span class="track"><i style="height:93.4%"></i></span><span class="x">11</span></div>
+      <div class="col"><span class="pct">85%</span><span class="track"><i style="height:84.7%"></i></span><span class="x">12</span></div>
+      <div class="col"><span class="pct">73%</span><span class="track"><i style="height:73.0%"></i></span><span class="x">13</span></div>
+      <div class="col"><span class="pct">59%</span><span class="track"><i style="height:58.6%"></i></span><span class="x">14</span></div>
+      <div class="col"><span class="pct">44%</span><span class="track"><i style="height:43.8%"></i></span><span class="x">15</span></div>
+    </div>
+    <div class="caption">Larger rings mean more degree-7/8 vertices nearby, and those are what block reducibility. Flat neighbourhoods are reducible at every size tested.</div>
+  </section>
+
+  <section class="panel">
+    <h2>Recent results</h2>
+    <div class="res">
+      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Flat 66666 2-ball is reducible</div><div class="d">Lean-confirmed. Curvature margin predicts reducibility.</div></div></div>
+      <div class="r"><span class="k pk">14 Oct</span><div><div class="t">Game heuristic: 0 failures in 361,293 walks</div><div class="d">No decreasing measure, so no proof route. Parked.</div></div></div>
+      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Arena hard set v1: 302 maps</div><div class="d">Hard for the proof, shallow for play (distance 2–3).</div></div></div>
+      <div class="r"><span class="k no">13 Oct</span><div><div class="t">Treadmill line closed; R0 refuted</div><div class="d">Planar counterexample, checked independently.</div></div></div>
+      <div class="r"><span class="k ok">13 Oct</span><div><div class="t">Lean checker matches RSST on 633/633</div><div class="d">Basis of the verified-checker paper.</div></div></div>
+    </div>
+  </section>
+</div>
+
+<section class="panel you">
+  <h2>Needs you</h2>
+  <p>Approve the scheduled check-ins (blocked by the auto-mode classifier). Until then, work only advances while this session is open.</p>
+</section>
+
+<footer>Detail: <code>SolvingFrameworkPlan/docs/working/COORDINATOR-STATE.md</code>. This page is rewritten as things change; it is not a log.</footer>
+</div>
+
+<script>
+try{
+  const end=new Date('2026-12-27T00:00:00-07:00'), start=new Date('2026-10-13T00:00:00-06:00'), now=new Date();
+  const left=Math.max(0,Math.ceil((end-now)/864e5)), total=(end-start)/864e5;
+  document.getElementById('days').innerHTML=left+' <small>days</small>';
+  document.getElementById('daysbar').style.width=Math.min(100,Math.max(2,100*(total-left)/total)).toFixed(1)+'%';
+}catch(e){}
+</script>
