@@ -113,14 +113,14 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="swatch" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yel)"></i><i style="background:var(--grn)"></i><i style="background:var(--blu)"></i></div>
     <h1>Four Colour Programme</h1>
   </div>
-  <div class="asof">updated 14 Oct 2026 · 12:45 MDT</div>
+  <div class="asof">updated 14 Oct 2026 · 13:10 MDT</div>
 </div>
 
 <div class="kpis">
   <div class="panel kpi"><div class="v" id="days">74 <small>days</small></div><div class="l">to the 27 Dec target (Appel–Haken 50th)</div><div class="bar"><i id="daysbar" style="width:10%;background:var(--blu)"></i></div></div>
-  <div class="panel kpi"><div class="v">4,223 <small>/ 7,464</small></div><div class="l">2-ball patterns D-reducible (ring ≤ 15)</div><div class="bar"><i style="width:56.6%;background:var(--grn)"></i></div></div>
+  <div class="panel kpi"><div class="v">6,642 <small>/ 6,642</small></div><div class="l">flat-second-ring 2-balls reducible, any hole type</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
   <div class="panel kpi"><div class="v">633 <small>/ 633</small></div><div class="l">RSST configurations: Lean checker agrees</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
-  <div class="panel kpi"><div class="v">78 <small>/ 78</small></div><div class="l">flat 2-balls (no degree ≥ 7) reducible</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
+  <div class="panel kpi"><div class="v">80,125 <small>/ 80,125</small></div><div class="l">census graphs containing a reducible 2-ball (orders 22–33)</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
 </div>
 
 <section class="panel">
@@ -129,7 +129,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="step done"><span class="n">1</span><span class="t">Minimal counterexample</span><span class="d">Smallest map needing 5 colours: a triangulation</span><span class="st">classical</span></div>
     <div class="step part"><span class="n">2</span><span class="t">Clean structure</span><span class="d">Internally 6-connected, min degree 5 (Birkhoff). Lean: to do (B2)</span><span class="st">Lean partial</span></div>
     <div class="step done"><span class="n">3</span><span class="t">Curvature budget</span><span class="d">Σ(6 − deg) = 12, so degree-5 vertices must exist (Euler)</span><span class="st">done</span></div>
-    <div class="step now"><span class="here">we are here</span><span class="n">4</span><span class="t">Unavoidability</span><span class="d">Some degree-5 vertex always has a reducible 2-ball? (B8)</span><span class="st">testing</span></div>
+    <div class="step now"><span class="here">we are here</span><span class="n">4</span><span class="t">Unavoidability</span><span class="d">Some degree-5 vertex always has a reducible 2-ball? Holds on the whole census; proof for all sizes open (B8)</span><span class="st">testing</span></div>
     <div class="step part"><span class="n">5</span><span class="t">Reducibility</span><span class="d">Each 2-ball in the family is D-reducible. 4,223 found; Lean certificates running</span><span class="st">partial</span></div>
     <div class="step todo"><span class="n">6</span><span class="t">Checker sound ⇒ 4CT</span><span class="d">Lean: "checker says reducible" implies reducible (B3); chain to 4CT</span><span class="st">core only</span></div>
   </div>
@@ -140,6 +140,7 @@ code{font-family:var(--mono);font-size:.86em}
     <span class="chip x"><b>Closed:</b> matching treadmill / R0 (refuted 13 Oct)</span>
     <span class="chip x"><b>Closed:</b> boundary solvability (false in census)</span>
     <span class="chip"><b>Parked:</b> game heuristic termination (works, no proof handle)</span>
+    <span class="chip x"><b>Killed:</b> "flat 2-balls alone are unavoidable" (p25#2111)</span>
     <span class="chip"><b>Parked:</b> Lemma E review</span>
   </div>
 </section>
@@ -147,9 +148,10 @@ code{font-family:var(--mono);font-size:.86em}
 <div class="cols">
   <section class="panel">
     <h2>Running now</h2>
-    <div class="job"><span class="dot run"></span><div><div class="t">B8 · Is a reducible 2-ball unavoidable?</div><div class="d">First tries to build a graph that dodges every known reducible 2-ball; the failures show what to test next; then a discharging LP.</div><div class="w">MacBook agent · step 4 · report within ~4 h</div></div></div>
+    <div class="job"><span class="dot run"></span><div><div class="t">Ring-16 configurations behind the discharging argument</div><div class="d">Two 2-balls (flat 66666 with one degree-7 vertex) that the B8 certificate rests on; then all keys at rings 15–18 (~40 CPU-h).</div><div class="w">Studio Job 13 · step 4–5 · first answer within the hour</div></div></div>
+    <div class="job"><span class="dot run"></span><div><div class="t">B8 follow-up · beyond the census</div><div class="d">What a census-independent discharging check would need: the finite list of neighbourhoods and its size.</div><div class="w">MacBook agent · step 4 · ~90 min</div></div></div>
     <div class="job"><span class="dot run"></span><div><div class="t">Lean certificates for the 2-balls</div><div class="d">All 1,440 reducible patterns at rings 8–13; rings 14–15 timed first.</div><div class="w">Studio Job 12 · step 5 · needed for both papers</div></div></div>
-    <div class="job"><span class="dot held"></span><div><div class="t">Ring-16 2-balls or 3-balls</div><div class="d">~66 CPU-hours. Held until B8 says which one matters.</div><div class="w">Studio · step 5 · held</div></div></div>
+    
   </section>
 
   <section class="panel">
@@ -184,11 +186,11 @@ code{font-family:var(--mono);font-size:.86em}
   <section class="panel">
     <h2>Recent results</h2>
     <div class="res">
+      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Reducible 2-balls cover the whole census</div><div class="d">34,403 reducible 2-balls hit all 80,125 census graphs; out of sample only 1 miss in 58,194. The simple flat-only version fails (p25#2111).</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Flat 66666 2-ball is reducible</div><div class="d">Lean-confirmed. Curvature margin predicts reducibility.</div></div></div>
       <div class="r"><span class="k pk">14 Oct</span><div><div class="t">Game heuristic: 0 failures in 361,293 walks</div><div class="d">No decreasing measure, so no proof route. Parked.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Arena hard set v1: 302 maps</div><div class="d">Hard for the proof, shallow for play (distance 2–3).</div></div></div>
       <div class="r"><span class="k no">13 Oct</span><div><div class="t">Treadmill line closed; R0 refuted</div><div class="d">Planar counterexample, checked independently.</div></div></div>
-      <div class="r"><span class="k ok">13 Oct</span><div><div class="t">Lean checker matches RSST on 633/633</div><div class="d">Basis of the verified-checker paper.</div></div></div>
     </div>
   </section>
 </div>
