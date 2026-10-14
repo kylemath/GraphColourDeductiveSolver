@@ -15,6 +15,10 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 - **Rules kept:** falsification-first (hypothesis + kill criterion written before a run); no claim counts without a second
   engine or Lean; errata the same day; commit by explicit path; check `pmset -g batt` before heavy local runs.
 
+## Kyle's status page
+
+https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` here). Rewrite it, never append, whenever the board changes: where we stand, running now, the 5 most important recent results, gates, needs-you. Republish with `url` from other sessions (read it first).
+
 ## Deadline goals (≈ 27 Dec 2026)
 
 1. Verified-checker paper (Track 2). 2. Combinatorics paper: curvature-organised unavoidable set / 2-ball reducibility

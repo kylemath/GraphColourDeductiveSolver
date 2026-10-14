@@ -1,0 +1,105 @@
+<title>Four Colour Programme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap">
+<style>
+/* Layout: one reading column; summary first, then running work, recent results, plan and gates. Four map colours mark the tracks. */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --fg:#1b1f27; --muted:#5b6474; --line:#dde1e8;
+  --c1:#c8423b; --c2:#d9a521; --c3:#2f8a5b; --c4:#2f62b8;
+  --ok:#2f8a5b; --warn:#b7791f; --bad:#c8423b;
+  --display:"Newsreader",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12151b; --panel:#1a1e26; --fg:#e7eaf0; --muted:#9aa3b2; --line:#2b313c;
+  --c1:#e2665f; --c2:#e7bb48; --c3:#4fb37f; --c4:#6a95e0; --ok:#4fb37f; --warn:#e0a84a; --bad:#e2665f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12151b; --panel:#1a1e26; --fg:#e7eaf0; --muted:#9aa3b2; --line:#2b313c;
+  --c1:#e2665f; --c2:#e7bb48; --c3:#4fb37f; --c4:#6a95e0; --ok:#4fb37f; --warn:#e0a84a; --bad:#e2665f; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:grid;gap:28px}
+header{display:grid;gap:6px}
+.swatch{display:flex;gap:4px}.swatch i{width:14px;height:14px;border-radius:3px;display:block}
+h1{font:600 2rem/1.15 var(--display);margin:0;text-wrap:balance}
+.asof{font:500 .8rem var(--mono);color:var(--muted);letter-spacing:.02em}
+h2{font:600 .78rem var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px}
+section{min-width:0}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:10px}
+.lead p{margin:0;max-width:68ch}
+.lead strong{font-weight:600}
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.items li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+ul.items li>div{min-width:0}
+ul.items .t{font-weight:600}
+ul.items .d{color:var(--muted);font-size:.92rem;margin-top:2px}
+.tag{font:500 .72rem var(--mono);padding:2px 7px;border-radius:99px;border:1px solid currentColor;white-space:nowrap;margin-top:2px}
+.run{color:var(--c4)}.done{color:var(--ok)}.held{color:var(--warn)}.kill{color:var(--bad)}
+.track{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:0}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+tr:last-child td{border-bottom:0}
+td.date{font-family:var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+.you{border-left:3px solid var(--c2);padding:10px 14px;background:var(--panel);border-radius:0 8px 8px 0}
+.you p{margin:0}
+footer{color:var(--muted);font-size:.82rem}
+code{font-family:var(--mono);font-size:.86em}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="swatch" aria-hidden="true"><i style="background:var(--c1)"></i><i style="background:var(--c2)"></i><i style="background:var(--c3)"></i><i style="background:var(--c4)"></i></div>
+  <h1>Four Colour Programme</h1>
+  <div class="asof">Updated 14 Oct 2026, 12:35 MDT · 74 days to the 27 Dec target</div>
+</header>
+
+<section>
+  <h2>Where we stand</h2>
+  <div class="lead">
+    <p><strong>Route:</strong> the classical reducibility method, organised by curvature. Around a degree-5 vertex, whether the 2-ball (two rings of neighbours) is reducible tracks a curvature margin. Flat neighbourhoods (no degree 7 or 8 within two steps) are always reducible in every case tested.</p>
+    <p><strong>The open question:</strong> must every candidate counterexample contain such a reducible 2-ball? That is B8, running now. Its answer decides the next heavy computation.</p>
+    <p><strong>Deadline goals:</strong> (1) a verified-checker paper (Lean), (2) a combinatorics paper on curvature-organised reducibility, (3) a full proof as the long shot.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Running now</h2>
+  <ul class="items">
+    <li><span class="tag run">running</span><div><div class="t"><span class="track" style="background:var(--c1)"></span>B8: is a reducible 2-ball unavoidable?</div><div class="d">MacBook agent. First tries to build a graph that avoids every known reducible 2-ball; failures show which 2-balls to test next; then a discharging LP. Report within about 4 hours.</div></div></li>
+    <li><span class="tag run">running</span><div><div class="t"><span class="track" style="background:var(--c2)"></span>Lean certificates for the reducible 2-balls (Studio Job 12)</div><div class="d">All 1,440 at rings 8–13 through the Lean checker; rings 14–15 timed first. Needed for the papers whatever B8 says.</div></div></li>
+    <li><span class="tag held">held</span><div><div class="t"><span class="track" style="background:var(--c1)"></span>B7 heavy runs: ring-16 2-balls or 3-balls</div><div class="d">Waiting for B8 to say which one matters (~66 CPU-hours either way).</div></div></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Recent results</h2>
+  <ul class="items">
+    <li><span class="tag done">14 Oct</span><div><div class="t">Flat 66666 2-ball is reducible (Lean-confirmed)</div><div class="d">All 78 second rings with degrees ≤ 6 are D-reducible; 4,223 of 7,464 patterns overall; every failure has a degree-7 or 8 vertex nearby.</div></div></li>
+    <li><span class="tag done">14 Oct</span><div><div class="t">Game heuristic never fails, but gives no proof handle</div><div class="d">"Fewest locks, never revisit a star": 0 failures in 361,293 walks (census and hard maps). No quantity decreases at every step. Parked.</div></div></li>
+    <li><span class="tag done">14 Oct</span><div><div class="t">RL arena hard set v1: 302 maps</div><div class="d">Floor-tight holes, glued graphs, the R0 maps and non-reducible 2-balls. Hard for the proof but shallow (distance 2–3).</div></div></li>
+    <li><span class="tag kill">13 Oct</span><div><div class="t">Matching-treadmill line closed</div><div class="d">R0 refuted by a planar counterexample; A5v turned out to be "π is defined". Global influence measured: leverage decays ~0.7 per hop.</div></div></li>
+    <li><span class="tag done">13 Oct</span><div><div class="t">Lean checker agrees with RSST on all 633 configurations</div><div class="d">The basis for the verified-checker paper. Soundness proof still to do.</div></div></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Plan and gates</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Date</th><th>Gate</th><th>If it fails</th></tr></thead>
+    <tbody>
+      <tr><td class="date">24 Oct</td><td><span class="track" style="background:var(--c1)"></span>B8 answer: is a reducible 2-ball unavoidable?</td><td>Move to 3-balls or a larger family</td></tr>
+      <tr><td class="date">7 Nov</td><td><span class="track" style="background:var(--c2)"></span>Checker soundness (loop invariant) and Birkhoff 4-cycle reduction in Lean</td><td>Paper narrows to checker plus certified data</td></tr>
+      <tr><td class="date">14 Nov</td><td><span class="track" style="background:var(--c3)"></span>Arena benchmark on the hard set</td><td>Arena becomes falsification support only</td></tr>
+      <tr><td class="date">1 Dec</td><td>Paper outlines frozen; no new lines</td><td>Keep only evidenced claims</td></tr>
+      <tr><td class="date">20 Dec</td><td>Everything reproduced from a clean checkout</td><td>Ship what reproduces</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Needs you</h2>
+  <div class="you"><p>Approve the scheduled check-ins (blocked by the auto-mode classifier). Until then, work only advances while this session is open.</p></div>
+</section>
+
+<footer>Tracks: <span class="track" style="background:var(--c1)"></span>reducibility · <span class="track" style="background:var(--c2)"></span>Lean checker · <span class="track" style="background:var(--c3)"></span>RL arena. Detail lives in <code>SolvingFrameworkPlan/docs/working/COORDINATOR-STATE.md</code>.</footer>
+</div>
