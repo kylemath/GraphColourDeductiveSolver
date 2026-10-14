@@ -83,9 +83,9 @@ int main(int argc, char **argv) {
     matchTable.resize(10);
     for (int p = 0; p <= 9; p++) { std::vector<int> pts(2 * p); for (int i = 0; i < 2 * p; i++) pts[i] = i;
         std::vector<std::vector<std::pair<int, int>>> ms; std::vector<std::pair<int, int>> cur; ncm(pts, cur, ms); for (auto &m : ms) matchTable[p].push_back(arcRegions(2 * p, m)); }
-    std::string fixed; bool search = false; int KMAX = 4; long LIMIT = 50;
+    std::string fixed; bool search = false, gonthier = true; int KMAX = 4; long LIMIT = 50;
     for (int i = 2; i < argc; i++) { if (!strcmp(argv[i], "--search")) search = true; else if (!strcmp(argv[i], "--fixed")) fixed = argv[++i];
-        else if (!strcmp(argv[i], "--kmax")) KMAX = atoi(argv[++i]); else if (!strcmp(argv[i], "--limit")) LIMIT = atol(argv[++i]); }
+        else if (!strcmp(argv[i], "--kmax")) KMAX = atoi(argv[++i]); else if (!strcmp(argv[i], "--nogonthier")) gonthier = false; else if (!strcmp(argv[i], "--limit")) LIMIT = atol(argv[++i]); }
     FILE *in = fopen(argv[1], "r"); char buf[1 << 16];
     while (fgets(buf, sizeof buf, in)) {
         std::istringstream ss(buf); std::string name, ra, ia; int r, m; if (!(ss >> name >> r >> m >> ra >> ia)) continue;
@@ -158,9 +158,9 @@ int main(int argc, char **argv) {
             for (auto &e : ringE) if (f(e.first) == f(e.second)) return -1;                                    // loop on the ring
             // Gonthier valid_contract (fourcolor coloring.v), in triangulation terms:
             //  sparse: no triangle of the configuration contains two contracted edges
-            for (auto &T : tris) { int c = 0; for (int q = 0; q < 3; q++) { int u = T[q], v = T[(q + 1) % 3]; auto it = eid.find(std::min(u, v) * 1000 + std::max(u, v)); if (it != eid.end() && inX[it->second]) c++; } if (c >= 2) return -1; }
+            if (gonthier) for (auto &T : tris) { int c = 0; for (int q = 0; q < 3; q++) { int u = T[q], v = T[(q + 1) % 3]; auto it = eid.find(std::min(u, v) * 1000 + std::max(u, v)); if (it != eid.end() && inX[it->second]) c++; } if (c >= 2) return -1; }
             //  triad (|X| = 4): an interior vertex x adjacent to >= 3 endpoints of X, and not every endpoint of X adjacent to x
-            if (X.size() == 4) {
+            if (gonthier && X.size() == 4) {
                 std::vector<char> endp(V, 0); for (int e : X) { endp[E[e].first] = 1; endp[E[e].second] = 1; }
                 bool triad = false;
                 for (int a = 0; a < m && !triad; a++) {
