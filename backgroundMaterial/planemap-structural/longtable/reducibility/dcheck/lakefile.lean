@@ -50,3 +50,6 @@ lean_lib DCheckR14h
 lean_lib DCheckR14i
 
 lean_lib DCheckR14j
+
+lean_exe wheelcheck where
+  root := `WheelMain
