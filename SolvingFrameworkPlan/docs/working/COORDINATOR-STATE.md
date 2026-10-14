@@ -29,7 +29,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 | Item | Track | Owner | Status | Next gate | Evidence |
 |---|---|---|---|---|---|
 | B8 unavoidability of reducible 2-balls | 1 | Long Table agent | first report 14 Oct (ae42e4b5): H0 false (p25#2111); enlarged R (34,403 D-reducible keys, ring ≤ 14) hits all 80,125 census graphs; out-of-sample ≤32→33 misses 1/58,194; 146/154 constructed hit; LP infeasible with constructed graphs, certificate rests on b6666666676, b6666666667 (ring 16). Second agent finishing census-independent check | 24 Oct | `longtable/reducibility/discharge/` |
-| B7 rings 15–18, LP-certificate configurations first (Studio Job 13) | 1 | Studio | step 1: both ring-16 configs D-reducible (dfast), Lean pending | 24 Oct | msg 1305 |
+| B7 rings 15–18, LP-certificate configurations first (Studio Job 13) | 1 | Studio | step 1 DONE: both ring-16 certificate configs D-reducible, Lean-confirmed (wheelcheck16, all fields equal); step 2 (1,173 ring 15–16 keys, dfast18) running; 2 theorems to add | 24 Oct | msg 1305 |
 | B8b lone-8 question + LP over the full K ≤ 1 sender list (census-independent) | 1 | Long Table agent | started 14 Oct | 24 Oct | `discharge/` README §8 |
 | Untested K = 1 sender 2-balls, 2,909 keys (Studio Job 14) | 1 | Studio | queued | 24 Oct | msg 1313 |
 | B3 checker soundness (loop invariant, planar Kempe-matching step) | 2 | Long Table agent | not started | 7 Nov | `reducibility/dcheck/` |
@@ -64,6 +64,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 14:10 — Ring-16 LP-certificate configurations Lean-confirmed (executable runs; native_decide theorems requested at low priority for the paper). Notified Kyle (certificate survived its kill test).
 - 2026-10-14 13:55 — Job 12 done (0 Lean/dfast disagreements in 1,693). Deferred full ring 14–15 Lean (240 CPU-h): certify only the keys the final unavoidable R uses, after B8b; Studio time goes to Jobs 13–14.
 - 2026-10-14 13:15 — B8 §7 (90d3235c): census-independent check reduces to a finite list of sender 2-balls (K=1: 22,428 keys, 2,909 untested; K≤2: 108,113 untested, ~330 CPU-h) plus a receiver DP. Started B8b locally (lone-8 question exactly; LP over the full K≤1 list) and queued Studio Job 14 (K=1 untested keys, ~4 CPU-h). K≤2 Studio run (~1–2 days) deferred until B8b says the K≤1 LP is close.
 - 2026-10-14 13:20 — Job 13 step 1: both ring-16 LP-certificate configurations D-reducible by dfast (b6666666667 depth 3, b6666666676 depth 4, 1,793,614 classes each). Lean (DCheck16, matchTable range 8→9) running ~25 min each; certificate counts only after Lean. Job 12: 9 files pass so far.
