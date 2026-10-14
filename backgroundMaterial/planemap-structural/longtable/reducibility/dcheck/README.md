@@ -49,3 +49,16 @@ run log of item B3 (checker soundness), kept inside `dcheck/` by that run's rule
    non-crossing perfect matching (`IsNCPM`), and no chord of it separates two arcs of one chain
    (`sameFace`). Non-crossing of `mu` is derived from `sameFace` itself. Note: `ParityLabel` is
    needed (without it a chain could contain an odd arc outside the chord of its even arcs).
+4. 2026-10-14 15:32 MDT. **(S3)(ii) simultaneous-swap lemma proved** (`DCheckS3.lean`,
+   `DCheck.S3.flip_proper`, `chainUnion_closed`, `flip_chains_proper`; axioms propext,
+   Quot.sound). For a proper colouring `col : V → Nat`, XOR-ing `θ` on any θ-closed set (closed
+   under edges with `col u ^^^ col v = θ`) is proper, and any union of θ-Kempe chains (`Reach`
+   classes) is θ-closed.
+
+**Status at stop (milestone 4).** No `sorry` remains in `DCheckSound.lean`, `DCheckS1.lean`,
+`DCheckS3.lean`. `DCheck.dReducible_sound` (checker soundness relative to `KempeMatching`) uses
+propext, Classical.choice, Quot.sound only. Still open for (S3): (R1) `matchTable[p]` covers every
+non-crossing perfect matching with faces = `arcRegions` classes (checker level, this package);
+(R2) the project-level glue (chains of a `ConfigOcc` colouring satisfy `NCLabel`/`ParityLabel`,
+and the ring trace of the swap is `k ^^^ flipMask …`). Both are stated in the header of
+`DCheckS3.lean`. Build: `nice -n 10 lake build DCheckS1 DCheckS3` (about 3 s after `DCheck`).

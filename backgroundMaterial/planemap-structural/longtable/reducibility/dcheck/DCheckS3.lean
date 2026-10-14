@@ -16,6 +16,19 @@ abstractly (core Lean only, no geometry):
   `col : V → Nat` and a pairing `θ`, XOR-ing `θ` on a set `S` closed under θ-edges (edges whose
   ends' colours differ by `θ`) is again proper; any union of θ-Kempe chains (components of the
   θ-edge graph) is such a set.
+
+**Remaining steps (not claimed here).**
+* (R1, checker level, this package) `matchTable[p]` covers every non-crossing perfect matching:
+  for each `μ` with `IsNCPM (2p) μ` some `lab ∈ matchTable[p]!` has
+  `sameFace (2p) μ j j' → lab[j]! = lab[j']!` (`p ≤ 7`; needs completeness of `ncm` and that
+  `arcRegions` labels exactly the faces). With `nc_matching`, every region of that `lab` is then a
+  union of whole chains.
+* (R2, project level) In `SphericalMap`/`ConfigOcc` terms: index the ring arcs and transitions as
+  `DCheck.transitions`/`DCheck.arcOf` do, take `c j :=` the θ-Kempe chain of the vertices of arc `j`,
+  prove `NCLabel` from `RingChains.chains_noncrossing(_same)` and `ParityLabel` from the
+  alternation of θ-classes, and show that the ring code of `flipOn` on the union of the chains of
+  the chosen regions is `k ^^^ flipMask r k θ lab s`. Together with (R1), `nc_matching` and
+  `flip_chains_proper` this gives `KempeMatching cf P` for the realised codes `P`.
 -/
 namespace DCheck.S3
 
@@ -367,6 +380,55 @@ theorem nc_matching (p : Nat) (c : Nat → Nat) (hNC : NCLabel (2 * p) c)
       mu_noncrossing hNC hP a b x d h1 h2 h3 h4 hx hd⟩,
     fun j j' hj hj' hc => face hNC hP j j' hj hj' hc⟩
 
+/-! ## (ii) Swapping a set of Kempe chains at once -/
+
+section swaps
+variable {V : Type} (adj : V → V → Prop) (col : V → Nat) (θ : Nat)
+
+def Proper : Prop := ∀ u v, adj u v → col u ≠ col v
+
+/-- `S` is closed under θ-edges (edges whose end colours differ by `θ` in `Z2 × Z2`). -/
+def ThetaClosed (S : V → Prop) : Prop := ∀ u v, S u → adj u v → col u ^^^ col v = θ → S v
+
+/-- XOR `θ` on the vertices of `S`. -/
+def flipOn (S : V → Prop) [DecidablePred S] (v : V) : Nat := if S v then col v ^^^ θ else col v
+
+/-- The θ-Kempe chain of `r`: vertices reachable from `r` along θ-edges. -/
+inductive Reach (r : V) : V → Prop
+  | refl : Reach r r
+  | step {u v : V} : Reach r u → adj u v → col u ^^^ col v = θ → Reach r v
+
+theorem xor_xor_cancel (a t : Nat) : a ^^^ t ^^^ t = a := by
+  rw [Nat.xor_assoc, Nat.xor_self, Nat.xor_zero]
+
+/-- **(S3)(ii), abstract form.** Swapping all of a θ-closed set at once keeps a proper colouring
+proper. -/
+theorem flip_proper (hsym : ∀ u v, adj u v → adj v u) (hP : Proper adj col) (S : V → Prop)
+    [DecidablePred S] (hS : ThetaClosed adj col θ S) : Proper adj (flipOn col θ S) := by
+  intro u v huv heq
+  unfold flipOn at heq
+  by_cases hu : S u <;> by_cases hv : S v <;> simp only [hu, hv, ite_true, ite_false] at heq
+  · exact hP u v huv (by have := congrArg (· ^^^ θ) heq; simpa [xor_xor_cancel] using this)
+  · exact hv (hS u v hu huv (by rw [← heq, ← Nat.xor_assoc, Nat.xor_self, Nat.zero_xor]))
+  · exact hu (hS v u hv (hsym u v huv) (by rw [heq, ← Nat.xor_assoc, Nat.xor_self, Nat.zero_xor]))
+  · exact hP u v huv heq
+
+/-- Any union of θ-Kempe chains is θ-closed. -/
+theorem chainUnion_closed (R : V → Prop) :
+    ThetaClosed adj col θ (fun v => ∃ r, R r ∧ Reach adj col θ r v) := by
+  intro u v ⟨r, hr, hru⟩ huv hθ
+  exact ⟨r, hr, Reach.step hru huv hθ⟩
+
+/-- (ii) for a union of chains: swapping any set of θ-Kempe chains simultaneously keeps the
+colouring proper. -/
+theorem flip_chains_proper (hsym : ∀ u v, adj u v → adj v u) (hP : Proper adj col)
+    (R : V → Prop) [DecidablePred (fun v => ∃ r, R r ∧ Reach adj col θ r v)] :
+    Proper adj (flipOn col θ (fun v => ∃ r, R r ∧ Reach adj col θ r v)) :=
+  flip_proper adj col θ hsym hP _ (chainUnion_closed adj col θ R)
+
+end swaps
+
 end DCheck.S3
 
 #print axioms DCheck.S3.nc_matching
+#print axioms DCheck.S3.flip_chains_proper
