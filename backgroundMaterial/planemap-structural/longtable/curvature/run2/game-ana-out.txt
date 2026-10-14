@@ -1,0 +1,31 @@
+maps 24, holes 368
+map | n | holes | designated hole word C2 maxdF maxrun | corr over holes: C2 vs maxdF, meandF, maxrun
+c30           17 12 | 0 55555 C2=6 dF=3 run=999 | -1.00 -1.00 -1.00
+c60           32 12 | 0 66666 C2=6 dF=2 run=2 | +nan +nan +nan
+p22           22 12 | 1 65566 C2=7 dF=2 run=2 | +nan +nan +nan
+p31r12        31 15 | 22 75755 C2=4 dF=3 run=999 | -0.59 -0.39 -0.50
+p32r11        32 16 | 27 55667 C2=5 dF=3 run=999 | +nan -0.56 -0.17
+p32r111       32 17 | 29 55666 C2=4 dF=3 run=999 | -0.09 -0.53 -0.06
+p33r115       33 14 | 1 66575 C2=5 dF=4 run=12 | -0.18 -0.19 -0.35
+p33r116       33 19 | 10 56665 C2=4 dF=5 run=7 | -0.37 -0.09 +0.15
+p33r219       33 12 | 31 66655 C2=4 dF=5 run=9 | -0.14 -0.28 -0.34
+p33r240       33 14 | 29 66666 C2=6 dF=3 run=6 | +nan +0.21 +0.06
+p33r37        33 19 | 30 55666 C2=4 dF=5 run=8 | -0.27 -0.22 -0.08
+p33r57        33 15 | 22 66666 C2=6 dF=4 run=7 | +0.24 -0.34 +0.06
+p34r10        34 19 | 14 75755 C2=6 dF=4 run=11 | +0.33 -0.45 +0.20
+p34r189       34 17 | 31 66655 C2=4 dF=4 run=11 | -0.21 -0.02 -0.08
+p34r28        34 16 | 4 75585 C2=5 dF=3 run=999 | +nan +0.16 +0.08
+p34r2_856229  34 17 | 30 55866 C2=5 dF=4 run=8 | -0.20 -0.21 -0.37
+p34r51        34 17 | 26 75755 C2=3 dF=3 run=9 | -0.16 -0.09 -0.22
+p34r84        34 17 | 2 66656 C2=4 dF=4 run=10 | -0.32 +0.11 -0.27
+r1            34 19 | 16 57557 C2=4 dF=3 run=999 | -0.13 -0.65 -0.30
+r178          34 20 | 10 75567 C2=5 dF=6 run=21 | -0.17 -0.12 -0.27
+r210          34 17 | 32 56666 C2=4 dF=5 run=11 | -0.26 -0.08 -0.28
+six           28 15 | 0 66666 C2=5 dF=4 run=7 | -0.29 -0.12 -0.30
+trap17        17 12 | 9 65556 C2=9 dF=4 run=9 | +0.19 +0.63 -0.59
+w18           18  5 | 17 44845 C2=5 dF=1 run=0 | +0.05 +0.04 -0.03
+within-map corr(C2, maxdF) = -0.177  95% CI [-0.277, -0.073] (n=368 holes, 24 maps; Fisher, holes treated as independent)
+within-map corr(C2, meandF) = -0.167  95% CI [-0.267, -0.062] (n=368 holes, 24 maps; Fisher, holes treated as independent)
+within-map corr(C2, maxrun) = -0.197  95% CI [-0.297, -0.094] (n=368 holes, 24 maps; Fisher, holes treated as independent)
+designated (level) holes: mean C2 5.00, maxdF 3.62; other degree-5 holes: mean C2 5.54, maxdF 2.81
+maxdF by C2: {2: (4, np.float64(3.25)), 3: (26, np.float64(2.92)), 4: (69, np.float64(3.07)), 5: (102, np.float64(2.95)), 6: (80, np.float64(2.78)), 7: (51, np.float64(2.57)), 8: (12, np.float64(3.0)), 9: (22, np.float64(2.55)), 11: (2, np.float64(4.0))}

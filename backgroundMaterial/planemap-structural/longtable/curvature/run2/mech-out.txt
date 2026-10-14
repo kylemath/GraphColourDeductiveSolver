@@ -1,0 +1,49 @@
+holes analysed 2391 (stratified: all R>=4 + 400 each of R=0..3, shuffled; first-N subset if cut at 15 min); DL states 1709705
+
+[data] lock-parity check over all unfilled states (engine lock flags L1,L2 vs parity of Q(K_{alpha,delta}(x2)), Q(K_{alpha,gamma}(x2))):
+   L1=0 L2=0  Q(KA) odd=0  Q(KB) odd=0 : 2511174 states
+   L1=0 L2=1  Q(KA) odd=1  Q(KB) odd=0 : 1994797 states
+   L1=1 L2=0  Q(KA) odd=0  Q(KB) odd=1 : 1994797 states
+   L1=1 L2=1  Q(KA) odd=1  Q(KB) odd=1 : 1709705 states
+   mismatches: 0
+
+[data] charge Q = sum(6-deg) inside each chain, DL states:
+   KA  size mean 9.1 | Q mean 3.17 | Q odd 1.0000 | Q=1 0.313 | Q<0 0.055 | nearest +charge dist mean 1.40
+   KB  size mean 4.5 | Q mean 1.79 | Q odd 1.0000 | Q=1 0.602 | Q<0 0.079 | nearest +charge dist mean 1.57
+   Kmu size mean 13.8 | Q mean 4.48 | Q odd 1.0000 | Q=1 0.147 | Q<0 0.034 | nearest +charge dist mean 1.15
+   L1  size mean 14.6 | Q mean 4.17 | Q odd 1.0000 | Q=1 0.164 | Q<0 0.060 | nearest +charge dist mean 1.46
+   L2  size mean 14.6 | Q mean 4.16 | Q odd 1.0000 | Q=1 0.163 | Q<0 0.062 | nearest +charge dist mean 1.46
+
+[data] does the pi-swap leave the state doubly locked (run continues)?  P(cont) = 0.253
+   by size |KA|: [2-5: n=469657 0.409] [6-9: n=420969 0.308] [10-13: n=453184 0.202] [14+: n=365895 0.054]
+   by Q(KA): [Q<0: n=93188 0.341] [Q=1: n=535035 0.343] [Q=3: n=517179 0.268] [Q=5: n=347094 0.168] [Q>=7: n=217209 0.097]
+      within |KA| 2-5, by Q(KA): [Q<0: n=46216 0.435] [Q=1: n=312888 0.408] [Q=3: n=108397 0.406] [Q=5: n=2156 0.198]
+      within |KA| 6-9, by Q(KA): [Q<0: n=22234 0.363] [Q=1: n=120476 0.333] [Q=3: n=192947 0.308] [Q=5: n=77722 0.265] [Q>=7: n=7590 0.191]
+      within |KA| 10-13, by Q(KA): [Q<0: n=18169 0.188] [Q=1: n=71715 0.207] [Q=3: n=142930 0.216] [Q=5: n=150520 0.198] [Q>=7: n=69850 0.179]
+      within |KA| 14+, by Q(KA): [Q<0: n=6569 0.022] [Q=1: n=29956 0.029] [Q=3: n=72905 0.058] [Q=5: n=116696 0.064] [Q>=7: n=139769 0.050]
+   logistic cont ~ z(|KA|) + z(Q(KA)) + z(mean dist of KA from hole): log-OR per SD [-1.385 -0.034  0.632] (naive SE [0.005 0.003 0.004]; states within a hole are not independent)
+
+[data] distance to fill dF at DL states:  mean 2.01
+   by Q(KA): [Q<0: n=93188 2.008] [Q=1: n=535035 2.009] [Q=3: n=517179 2.010] [Q=5: n=347094 2.010] [Q>=7: n=217209 2.006]
+   by Q(L1 lock chain): [Q<0: n=102804 2.003] [Q=1: n=280491 2.009] [Q=3: n=417721 2.004] [Q=5: n=501038 2.016] [Q>=7: n=407651 2.008]
+   by |KA|: [2-5: n=469657 2.009] [6-9: n=420969 2.011] [10-13: n=453184 2.011] [14+: n=365895 2.005]
+   corr(dF, Q(KA)) -0.007  corr(dF, |KA|) -0.012  corr(fwd run, Q(KA)) -0.001
+   corr(dF, Q(KB)) +0.040  corr(dF, |KB|) +0.060  corr(fwd run, Q(KB)) -0.001
+   corr(dF, Q(Kmu)) +0.020  corr(dF, |Kmu|) +0.022  corr(fwd run, Q(Kmu)) -0.003
+   corr(dF, Q(L1)) +0.017  corr(dF, |L1|) +0.020  corr(fwd run, Q(L1)) +0.003
+   corr(dF, Q(L2)) +0.018  corr(dF, |L2|) +0.020  corr(fwd run, Q(L2)) +0.003
+
+[data] hole level (n=2391): does near curvature act through the lock chains?
+   corr(C2, maxDLrun                  ) +0.016   corr(R, it) -0.005
+   corr(C2, mean|KA|                  ) +0.095   corr(R, it) -0.058
+   corr(C2, meanQ(KA)                 ) -0.031   corr(R, it) -0.137
+   corr(C2, frac KA nearest+charge>=3 ) -0.460   corr(R, it) +0.122
+   corr(C2, mean dist KA              ) -0.048   corr(R, it) +0.045
+   corr(C2, frac Q(KA)=1              ) -0.034   corr(R, it) +0.056
+   corr(C2, DL share                  ) -0.070   corr(R, it) +0.209
+   corr(C2, maxdF                     ) -0.189   corr(R, it) +0.859
+   within-word OLS R ~ C2                                        coef [-0.1061]  R2 0.005
+   within-word OLS R ~ C2 + mean|KA| + meanQ(KA) + mean dist KA  coef [-0.204  -0.3991 -0.3527  3.8894]  R2 0.023
+   mediation R ~ C2                                   coefs [-0.106]  95% CI lo [-0.173] hi [-0.047]  R2 0.005
+   mediation R ~ C2 + frac KA nearest+charge>=3       coefs [-0.099  0.374]  95% CI lo [-0.165 -0.521] hi [-0.039  1.395]  R2 0.005
+   mediation R ~ C2 + frac>=3 + DL share              coefs [-0.091  0.663 14.02 ]  95% CI lo [-0.158 -0.183 11.533] hi [-0.029  1.613 16.497]  R2 0.046
