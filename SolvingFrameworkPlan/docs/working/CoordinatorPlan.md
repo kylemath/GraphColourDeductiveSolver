@@ -328,3 +328,29 @@ Leverage follow-up (14 Oct): the first study's ~30% per-hop decay may be a small
 - Smallest counterexample: p25#2111 h1, verified independently.
 - Only R = {d ≥ 3} survives at orders ≤ 33, and that is most of the graph.
 - D3 (short note) is withdrawn. The game levels happened to satisfy the strong form. See `longtable/boundary/README.md`.
+
+### KEY RESULT (14 Oct, Studio Job 9; exploratory, Lean confirmation in progress)
+
+**The flat 66666 2-ball is D-reducible.** The configuration is the hole, five degree-6 neighbours, and an all-degree-6 second ring.
+- Ring 15, 16 interior vertices.
+- All 597,871 ring colourings are reached at depth 3.
+- The Lean `DCheck` (compiled) agrees exactly with `dfast.cpp`.
+- This contradicts the Fable claim that "66666 cannot be handled by any finite configuration".
+
+**The pattern over 7,464 second-ring patterns (ring ≤ 15, degrees 5–8, up to D5, 2.122-free) is a curvature budget.**
+- Define the margin m = #(degree-5 in the second ring) − Σ_{d ≥ 7}(d − 6).
+- D-reducible counts by m = 7..0: 2/2, 13/13, 56/57, 171/183, 410/484, 788/1080, 1223/2087, 1560/3558.
+- Every 2-ball whose second ring has no vertex of degree ≥ 7 is D-reducible (78/78).
+- The smallest non-reducible 2-ball, 5556558556 (ring 10), contains an 8.
+
+**Job 8:** only 12 first-ring wheels are D-reducible, so wheels exclude just 3 of Track B's 59 types. The 2-ball is the right scale.
+
+**Reading.** This is the *integer* version of the Gauss-law framing: net positive curvature near the hole ⇒ reducible. The resulting route:
+1. **Discharging:** prove that every frame-class (internally 6-connected) triangulation contains a degree-5 vertex whose 2-ball is in the certified-reducible family (characterised by the margin, plus the explicit list).
+2. **Reducibility:** certify that family in Lean (D-checker plus soundness, B3).
+
+That is a uniform, structured configuration family instead of RSST's 633.
+
+**New items:**
+- **B7:** finish 2-ball reducibility for ring > 15 (91,677 patterns), and Lean-confirm all reducible ones.
+- **B8:** discharging LP over 2-ball margin classes (TrackB `discharge_lp.py` style). Is "a degree-5 vertex with a 2-ball in the reducible family" unavoidable in internally 6-connected minimum-degree-5 triangulations? Find the minimal rule set, or the obstructing configurations.
