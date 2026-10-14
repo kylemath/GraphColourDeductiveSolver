@@ -1,0 +1,8 @@
+case (a): sender rows 3074 (all non-R K=1 keys), explicit receiver rows 28, t = 0.666667
+   dual 0.8889  S 6:5:6|6:6:6|6:6:6|6:5:6|6:8:6
+   dual 0.1111  R hemi8 (deg 8, 8 senders)
+case (b): sender rows 165 (all non-R K=1 keys), explicit receiver rows 1, t = 0.666667
+   dual 0.8889  S 6:5:6|6:6:6|6:6:6|6:5:6|6:8:6
+   dual 0.1111  R hemi8 (deg 8, 8 senders)
+closed form with the proved bound (<= d lone-u senders, sigma uniform):
+   receiver d with k senders: t >= (k - (d - 6)) / (k + 1);  d = 8, k = 8 (hemi8, notD): t = 2/3;  d = 7, k <= 7: t <= 3/4;  d >= 9, k <= d: t <= 6/(d+1) <= 0.6

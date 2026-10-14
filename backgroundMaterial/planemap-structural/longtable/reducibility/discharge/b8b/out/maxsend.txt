@@ -1,0 +1,21 @@
+d=7  max K=1 lone-u senders (relaxed): 7   max 66666 ones: 7   (d - 6 = 1)   attained by 20 arrangements
+     [(5, None, 5), (5, None, 6), (6, 5, 6), (5, None, 5), (5, None, 6), (6, 5, 6), (6, 5, 6)] ['w0', 'w1', 'w3', 'w4', 'p2', 'p5', 'p6']
+     [(5, None, 5), (5, None, 6), (6, 5, 6), (5, None, 6), (5, None, 6), (6, 5, 6), (6, 5, 6)] ['w0', 'w1', 'w3', 'w4', 'p2', 'p5', 'p6']
+     [(5, None, 5), (5, None, 6), (6, 5, 6), (5, None, 6), (6, 5, 6), (5, None, 6), (6, 5, 6)] ['w0', 'w1', 'w3', 'w5', 'p2', 'p4', 'p6']
+     [(5, None, 5), (5, None, 6), (6, 5, 6), (5, None, 6), (6, 5, 6), (6, 5, 6), (6, 5, 6)] ['w0', 'w1', 'w3', 'p2', 'p4', 'p5', 'p6']
+     [(5, None, 5), (5, None, 6), (6, 5, 6), (6, 5, 6), (5, None, 6), (5, None, 6), (6, 5, 6)] ['w0', 'w1', 'w4', 'w5', 'p2', 'p3', 'p6']
+     [(5, None, 5), (5, None, 6), (6, 5, 6), (6, 5, 6), (5, None, 6), (6, 5, 6), (6, 5, 6)] ['w0', 'w1', 'w4', 'p2', 'p3', 'p5', 'p6']
+d=8  max K=1 lone-u senders (relaxed): 8   max 66666 ones: 8   (d - 6 = 2)   attained by 286 arrangements
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (6, 5, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'p7']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (5, None, 5), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (5, None, 6), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7']
+d=9  max K=1 lone-u senders (relaxed): 9   max 66666 ones: 9   (d - 6 = 3)   attained by 649 arrangements
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (6, 5, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'p8']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (5, None, 5), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8']
+     [(5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 5), (5, None, 6), (5, None, 6), (5, None, 6)] ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8']

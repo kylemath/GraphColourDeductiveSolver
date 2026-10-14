@@ -239,3 +239,150 @@ Reading:
 
 Scripts from this session: `oos.py` (out-of-sample test, used in §3), `mk_c15.py` (census ring-15 keys → dfast
 parts; 17 keys, not run), the `d3` model in `lp.py` (§4), and `nbhd.py` (this section).
+
+## 8. B8b: the lone-8 question exactly, and an LP over the complete K ≤ 1 key list (14 Oct 2026) [exploratory]
+
+Files in `b8b/` (scripts) and `b8b/out/` (outputs).
+
+### 8.0 Pre-registration (written 13:22 MDT)
+
+**Chronology note.** Before this section was written, two preparatory runs were made (13:15–13:22):
+`b8b/k1keys.py` (re-derives the §7 K ≤ 1 table with the position of the big vertex; counts identical to §7), and one
+construction test (`b8b/rings.py`, the "8-hemisphere" below), run to check that the layered builder works. That test
+already bears on H8a, so H8a is not blind. Everything after 13:22 follows this text.
+
+**Reduction (stated before computing).** In a K ≤ 1 sender the only vertex of degree ≥ 7 within distance 2 is the
+receiver u. So any rule of the §4/§7 shape must send that sender's whole unit to u: in an LP over the K ≤ 1 list the
+sender weights are forced (σ = 1), and the receiver row of a degree-d vertex is 6 − d + (number of K = 1 non-R senders
+whose lone big vertex is u). **The K ≤ 1 LP is feasible iff every vertex of degree d ≥ 7 has at most d − 6 such
+senders.** Task 2 is therefore a counting problem, and it is the same count as task 1.
+
+**Structural bound (proved before computing).** For a receiver u of degree d, a 66666 sender v with u as its only
+big vertex lies at distance 2. (a) It is not adjacent to two non-consecutive link vertices (that would make a
+separating 4-cycle, since the link of u is an induced cycle). (b) If it sees one link vertex w (private position), w
+has degree exactly 6 and v is w's single private second-ring neighbour. (c) Two such senders are not adjacent (each
+is 66666). The second ring of u is a cycle of length Σ(deg w − 4) ≤ 2d with these senders an independent set, so
+there are **at most d of them**.
+
+- **H8a (lone-8).** An 8 has at most 2 lone-8 66666 senders that are not in R. *Kill:* one explicit class graph
+  (min degree 5, no separating 3-, 4-, nontrivial 5-cycle, `ball.class_check`) with ≥ 3, each key tested not
+  D-reducible (or untested, for case (a)). If killed, report the maximum (upper bound above + a matching example).
+- **H8b (degree 7).** In case (b) (untested keys excluded) a 7 has no K = 1 sender at all; in case (a) at most 1.
+  *Kill:* a class graph with a 7 carrying ≥ 2 lone-7 senders whose keys are untested (case a) or tested non-D (case b).
+- **H8c (mixed K = 1 around an 8).** Allowing every K = 1 non-R position (first ring, private, shared), the count is
+  still ≤ 2. *Kill:* as H8a.
+- **H8d (d ≥ 9).** The d-hemisphere (u of degree d, link all 6, its d private second-ring vertices of degree 5,
+  everything else 6 out to radius 4) has d senders whose keys contain a private d ≥ 9 and are therefore expected not
+  D-reducible (§3: 0/803 with a second-ring 9). *Kill:* dfast finds the d = 9 hemisphere key D-reducible.
+- **LP verdict rule.** Case (a)/(b) feasible iff the counts satisfy ≤ d − 6 for d = 7, 8 and the d ≥ 9 bound;
+  otherwise report the binding sender type and receiver arrangement (the dual certificate is the receiver row with
+  the most senders and the sender rows feeding it).
+- **H8e (added 13:31 MDT, before running).** Every 8-centred 2-ball (link and second ring of degree 5/6; free
+  completion, ring = third ring of the 8) that has ≥ 3 relaxed private 66666 senders and ring ≤ 15 is D-reducible
+  (2,942 configurations, `b8b/centred_cfg.py 8 3`). *Kill:* any D=false. Expectation: most are D-reducible (the 8's
+  own 2-ball in the 8-hemisphere was found D-reducible at ring 16, depth 1, at 13:29), but some low-sender or
+  6-rich ones may fail.
+
+### 8.1 Lone-8 verdict: yes, up to 8, and the maximum is 8
+
+**Upper bound, every degree d (proof).** Write u's neighbourhood as d blocks (w_i, its private second-ring vertex
+p_i if deg w_i = 6, the shared vertex s_i). A K = 1 sender whose only big vertex is u is either a degree-5 link vertex
+w_i, or a degree-5 second-ring vertex. A second-ring sender has no neighbour of degree ≥ 7 other than u, so its word
+lies in {5,6}^5 and, not being W12, is 66666. Hence: in a block with deg w_i = 6, p_i and s_i are adjacent, so at most
+one of them is a sender, and w_i is not one. In a block with deg w_i = 5, s_i is adjacent to w_i, so s_i is not
+66666. A link vertex of degree ≥ 7 has no sender in its block (its ring-2 vertices see it, and it is big). **So each
+block holds at most one sender: at most d lone-u senders in all, of any K = 1 type.** `b8b/maxsend.py`
+(exhaustive over the block model, d = 7, 8, 9) confirms that d is the relaxed maximum and lists the arrangements
+(`b8b/out/maxsend.txt`).
+
+**Matching example: the 8-hemisphere** (`b8b/lone8.py`, graph `hemi8` in `b8b/out/patches.txt`, n = 98). u has
+degree 8, all link vertices have degree 6, the 8 private second-ring vertices p_i have degree 5, and everything else
+has degree 6 out to a cylinder of circumference 16, closed by a mirror cap. `ball.class_check`: minimum degree 5, no
+separating 3- or 4-cycle, no nontrivial separating 5-cycle; no diamond or 2.122. All 8 p_i are 66666 holes whose
+2-ball has u as its only big vertex, all with key `6:5:6|6:6:6|6:6:6|6:5:6|6:8:6` = Job 9 `b5666665686`, ring 15,
+**tested not D-reducible** (Job 9; re-run here with the local dfast: D=false, same class counts,
+`b8b/out/hemi8key.cfg`). So **8 hard senders around one 8, in both case (a) and case (b)**. H8a is killed.
+
+**A stronger consequence (unexpected).** The mirror cap is the same, so **all 16 degree-5 vertices of hemi8 have this
+tested non-D-reducible 2-ball**. hemi8 is a class graph in which no degree-5 vertex has a D-reducible 2-ball (of any
+radius-2 kind: W12, S66, J9, EXT, diamond). So *no* family of D-reducible 5-centred 2-balls is unavoidable, whatever
+the untested keys turn out to be. This corrects the §3 remark "no graph anywhere has every hole tested
+non-reducible" (it was true of the census and the §3 constructions). hemi9 (n = 110, u of degree 9, 18 holes, key
+`…|6:9:6`, ring 16) is a second such graph: dfast D=false (`b8b/out/hemi9key.out`). D-reducibility only. C-reducibility
+of `b5666665686` has not been tested.
+
+**What does reduce it.** The 8's own 2-ball in hemi8 (25 vertices, ring 16 = third ring of u) **is D-reducible**
+(dfast D=true, depth 1, 63 s; `b8b/out/hemi8_ball2.cfg`, `.out`). The obstruction disappears once R contains
+receiver-centred configurations.
+
+**Degree 7 (H8b).**
+- *Case (b):* the complete K = 1 list has no tested non-D lone-7 key, so a 7 has **0** case-(b) senders.
+  H8b(b) survives.
+- *Case (a):* there are 547 untested lone-7 keys (545 first-ring, plus the two ring-16 keys of Job 13). An explicit
+  class graph has **3** untested lone-7 senders around one 7: `alt7_024`, n = 94, three flat keys `b6666666676`
+  (ring 16, Job 13). Another 60 block-model arrangements, closed into class graphs by `b8b/search7.py`
+  (`b8b/out/search7.txt`), reach at most 3. H8b(a) is killed: 3 > 1.
+- The 7-hemisphere's key (`…|6:7:6`) is D-reducible, so it gives no senders.
+
+**Mixed K = 1 senders around an 8 (H8c).** In case (b) the only non-R lone-8 keys are the 165 private-8 66666 keys,
+so the mixed count equals the 66666 count: max 8. In case (a) the bound is still 8, so H8c is killed by hemi8. In
+`alt8_0246` (n = 126) four untested senders with the flat private-8 key `6:6:6|6:6:6|6:6:6|6:6:6|6:8:6` (ring 17) sit around one 8.
+
+### 8.2 LP over the complete K ≤ 1 key list (`b8b/lp_k1.py`, `b8b/out/lp_k1.txt`)
+
+Sender rows are **all** non-R K = 1 keys: 3,074 in case (a) (545 + 2 lone-7, 2,350 + 6 + 6 untested and 165 notD
+lone-8), and 165 in case (b). Receiver rows come from the explicit class graphs above (28 rows), and the proved
+bound (≤ d senders) closes the rest in closed form.
+
+| case | t* | certificate (dual weights) |
+|---|---|---|
+| (a) untested = not in R | **2/3** (explicit rows; ≤ 3/4 from the bound, = 2/3 unless some 7 has ≥ 6 case-(a) senders) | 8/9 on sender `b5666665686` (key `6:5:6\|6:6:6\|6:6:6\|6:5:6\|6:8:6`), 1/9 on receiver hemi8 (deg 8, 8 senders) |
+| (b) untested excluded | **2/3 exactly** (d = 7: no senders; d = 8: ≤ 8 senders; d ≥ 9: ≤ d, which gives t ≤ 6/(d+1) ≤ 0.6) | the same two rows |
+
+Both LPs are infeasible. The binding pair is the same in both. A lone-8 sender must send its whole unit to the 8:
+σ ≥ 1 − t. Eight of them fit around one 8: −2 + 8σ ≤ t. Together these give t ≥ 2/3. No choice of K ≤ 1 rule weights
+can fix this, because the sender weights are forced (§8.0, reduction). For d ≥ 9, the d-hemisphere gives d senders
+(the d = 9 key was tested: not D-reducible). A lone big vertex of any degree d ≥ 8 can therefore end at 6 − d + d = 6
+under "send 1 to the lone big vertex".
+
+### 8.3 Receiver-centred configurations (H8e)
+
+Since 5-centred D-reducible 2-balls are avoidable (hemi8), R needs configurations centred on the receiver. The
+u-centred 2-ball (u, its link, and its second ring; ring = third ring of u) is the natural first piece.
+`b8b/centred.py` counts, in the block model, the 8-centred 2-balls with more than d − 6 = 2 relaxed senders:
+
+| centre | relaxed senders counted | 2-balls with > d − 6 senders (canonical) | rings |
+|---|---|---|---|
+| 8, case (b) | private 66666 only (the only notD lone-8 type) | **3,974** | 7–21 (2,942 at ≤ 15; 486 at 16; 546 at 17–21) |
+| 8, case (a) | all K = 1 types | 88,149 | 0–21 |
+| 7, case (a) | all K = 1 types (W12 link words removed) | 16,450 | 3–19 |
+| 7, case (b) | — | 0 needed | |
+| 9 | all K = 1 types | 393,749 | 0–23 |
+
+(`b8b/out/centred.txt`. These are relaxed counts: they ignore whether the senders' actual keys are in R, so they
+over-count.)
+
+**H8e result (dfast, 4 niced processes, `b8b/run_c8.sh`, `b8b/out/dres-c8.txt`):** (interim, 14:15 MDT) rings 7–14: **2,281 / 2,281 D-reducible**; ring 15: 116 / 116 D-reducible so far, run continuing.
+
+### 8.4 What remains for a census-independent unavoidability proof
+
+1. **R itself has to change.** hemi8 and hemi9 have no D-reducible 5-centred 2-ball. Either C-reducibility rescues
+   `b5666665686` (ring 15) and `…|6:9:6` (ring 16), or R must contain receiver-centred configurations (8.3). This
+   comes first, because no rule weights can fix it.
+2. **Receiver-centred families:**
+   - d = 8: 3,974 configurations in case (b) (8.3); 88,149 in case (a) unless the 2,909 untested K = 1 keys are
+     tested.
+   - d = 7: none in case (b); 16,450 relaxed in case (a).
+   - d = 9: up to 393,749.
+   - **d ≥ 10:** the family is unbounded in d. The d-hemisphere has d senders and a centred ring of 2d, which is
+     beyond dfast for d ≥ 9. It needs a general argument, for example a rule that sends a lone-d sender only
+     σ ≤ 1 − 6/d together with C-reducibility of the d-private 66666 2-ball. Or it needs larger-radius rules. No
+     size estimate is possible for the enumeration route.
+3. **Senders with K ≥ 2** (DMAX 8, §7): 105,204 untested and 1,539 tested not D-reducible. Their weights are no
+   longer forced, so this is a real LP. Receiver rows then mix K = 1 and K = 2 senders. The ≤ 1-sender-per-block bound
+   still holds for 66666 senders, but not for all K = 2 senders. The receiver DP of §7 is the right tool; it is not
+   built yet.
+4. **Big degrees ≥ 9 in sender keys:** not enumerated; every degree d ≥ 9 is another sender list. The §3 evidence
+   (0/803 D-reducible with a second-ring 9) says these are all hard senders.
+5. **Regularity:** "appears" is still checked as a regular 2-ball with an injective ring. The block model assumes
+   that u's second ring is a simple cycle; 8.0 proves the link is an induced cycle. That the second ring is simple and has no chord is assumed, not proved, though every explicit graph here satisfies it.
