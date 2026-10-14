@@ -28,7 +28,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 | Item | Track | Owner | Status | Next gate | Evidence |
 |---|---|---|---|---|---|
-| B8 discharging LP: must a degree-5 vertex with a safe 2-ball exist? | 1 | Long Table agent | started 14 Oct | 24 Oct | `longtable/reducibility/discharge/` |
+| B8 discharging LP: must a degree-5 vertex with a safe 2-ball exist? | 1 | Long Table agent | resumed 14 Oct after app restart. Interim (unverified): H0 killed (fails on 3,065/80,125 census graphs, first p25#2111); with extended 2-ball family 0 census failures, out-of-sample test pending | 24 Oct | `longtable/reducibility/discharge/` |
 | B7 2-ball family: ring 16, then 3-balls around failing (7/8) 2-balls | 1 | Studio | queued behind B8 first read | 24 Oct | `wheels/studio/` |
 | B3 checker soundness (loop invariant, planar Kempe-matching step) | 2 | Long Table agent | not started | 7 Nov | `reducibility/dcheck/` |
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
@@ -62,6 +62,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 12:50 — App restarted (Kyle updated it); B8 agent killed mid-run, its dfast jobs survived. Relaunched B8 to resume from its uncommitted files, with an explicit overfitting check (build family on orders 22–31, test on 32–33 and constructed witnesses), because 'covers the census' is near-circular if the family came from the census.
 - 2026-10-14 12:50 — Kyle approved scheduled check-ins; task `fourcolour-coordinator-checkin` created (03,07,10,13,16,19,22 h). Pushes: morning digest, plus gate results / marker moves / needs-Kyle only. Dashboard v2 (flowchart with current position) published.
 - 2026-10-14 12:26 — A6 done: survives, no measure; parked (empirical termination does not give a proof route by itself). Studio given Job 12, Lean certificates for D-reducible 2-balls: needed for the paper regardless of B8, and keeps B7 heavy runs held.
 - 2026-10-14 12:20 — Studio Job 10 done (hard set v1). Studio idle while B7 waits, so gave it A6 (heuristic termination on hard set + census 22–28): cheap, falsifiable, feeds Track 3's gate.
