@@ -28,8 +28,8 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 | B7 2-ball family: ring 16, then 3-balls around failing (7/8) 2-balls | 1 | Studio | queued behind B8 first read | 24 Oct | `wheels/studio/` |
 | B3 checker soundness (loop invariant, planar Kempe-matching step) | 2 | Long Table agent | not started | 7 Nov | `reducibility/dcheck/` |
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
-| Arena hard set (failing 2-balls, floor-tight glued, R0 maps) | 3 | Studio | queued | 14 Nov | `GraphColourRLArena` |
-| A6 termination of "fewest locks, never revisit a star" | 3 | arena | not started | 14 Nov | — |
+| Arena hard set v1: 302 maps (150 census floor-tight, 50 glued, 2 R0, 100 non-reducible 66666 2-balls); max distance 2–3 | 3 | Studio | DONE 14 Oct | — | arena 883467b; msg 1230 |
+| A6 termination of "fewest locks, never revisit a star" (Studio Job 11) | 3 | Studio | started 14 Oct | 14 Nov | `studiointel/a6/` |
 | B1 Lemma E review | — | sounding-board | parked | weekly review | `axioms/proof/R0-ATTEMPT-1.md` |
 | D1/D2 paper drafts | 1, 2 | Long Table | outline only | 1 Dec | — |
 
@@ -45,7 +45,7 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 
 ## Queue (next to start, in order)
 
-1. B8 (running). 2. Studio: arena hard-set build (light), then B7 per B8's first read. 3. Track 2: B3 loop invariant.
+1. B8 (running, MacBook). 2. Studio Job 11 = A6 (running). 3. B7 on the Studio per B8's first read. 4. Track 2: B3 loop invariant.
 
 ## Parked ideas (look at weekly)
 
@@ -57,6 +57,7 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 12:40 — Studio Job 10 done (hard set v1). Studio idle while B7 waits, so gave it A6 (heuristic termination on hard set + census 22–28): cheap, falsifiable, feeds Track 3's gate.
 - 2026-10-14 12:20 — Scheduled check-ins (7 a day) could not be created: auto-mode classifier denied it. Did not work around; asked Kyle.
 
 - 2026-10-14 12:15 — Took over coordination per Kyle's charter. Started B8 locally before more Studio 2-ball runs, because its answer decides whether ring 16 or 3-balls matter. Sent Studio the arena hard-set job (cheap, useful either way).
