@@ -271,3 +271,13 @@ New fact behind A2 [data]. In all 36 non-onboarding 4square levels (31 maps), ev
 - December: D1, D2.
 
 A time-boxed proof slot is reserved if A1 or A2 shows a clean global mechanism.
+
+### Framing note (Kyle's "hydraulic pressure" intuition, 14 Oct)
+
+Lock parity (TrackF Lemma LP, formal in QuarterLockParity.lean) is a Gauss law. A local fact at the rim (lock 2 closed) is equivalent to the parity of the enclosed "charge": the number of odd-degree vertices, i.e. the curvature 6 − deg, inside the Kempe chain K_{αA}(x_{j+2}). Euler's formula is the conservation law (total charge 12), and discharging is the redistribution of that charge.
+
+Every planar input the programme has proved so far is the **mod-2** shadow of this law: lock parity, the chain-parity law, Lemma E. Every successful 4CT proof uses the **integer** law, i.e. how much charge, via discharging. The open gap can therefore be stated as: **lift the rim–charge identity from mod 2 to an integer (or mod-4/mod-12) inequality strong enough to exclude frozen classes.**
+
+This matches Fable's "66666 needs a count". The pseudo-surface result (no frozen class on any surface tested; the barrier is "each edge in two triangles") and the χ = 5 test bear on whether that count is surface-general (χ) or sphere-specific.
+
+Leverage follow-up (14 Oct): the first study's ~30% per-hop decay may be a small-diameter artefact (census holes are 3–5 hops from everything). It is being re-measured on fullerene duals C60–C120, glued graphs and padded maps (`longtable/leverage/large/`). Note for proofs: rarity of far-only escapes is irrelevant; what matters is whether an escape always exists.
