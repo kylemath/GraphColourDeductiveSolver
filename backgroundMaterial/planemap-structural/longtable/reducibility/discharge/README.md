@@ -386,3 +386,43 @@ over-count.)
    (0/803 D-reducible with a second-ring 9) says these are all hard senders.
 5. **Regularity:** "appears" is still checked as a regular 2-ball with an injective ring. The block model assumes
    that u's second ring is a simple cycle; 8.0 proves the link is an induced cycle. That the second ring is simple and has no chord is assumed, not proved, though every explicit graph here satisfies it.
+
+## 9. Job 18 (Studio, 14 Oct 2026): the K ≤ 1 LP with w66666 in R [exploratory]
+
+### 9.0 Pre-registration (written 16:26 MDT, before the re-run)
+
+- **New R.** R is the old R, plus every key whose centre has first-ring word 66666 (the C-reducible w66666 wheel;
+  Job 16, Lean-checked computational half), plus every key that Job 14 or Job 13 found D-reducible
+  (`out/dres-K1-studio.txt`, `studio13/dres-r15-16-studio.txt`).
+- **H18a.** With the 47 deferred ring 17–19 keys counted as non-R, the K ≤ 1 LP is feasible, t* ≤ 0. The non-R senders
+  are then only those 47 keys.
+- **H18b.** With the deferred keys excluded, there are no non-R K = 1 senders at all, so t* ≤ 0 trivially.
+- **Kill.** t* > 0 in case (a'). Report the binding pair.
+
+### 9.1 Result (`b8b/lp_k1_v2.py`, `b8b/out/lp_k1_v2.txt`)
+
+**Status changes in the K = 1 list (22,428 keys).** 165 notD → R: all lone private-8 keys are 66666-centred.
+2,862 untested → R: Job 14 found them D-reducible, or they are 66666-centred. 47 stay untested: rings 17–19, deferred.
+19,354 were already in R.
+
+| case | non-R K = 1 senders | t* | reading |
+|---|---|---|---|
+| (b') untested excluded | **0** | ≤ 0 trivially | every 5 whose 2-ball has at most one vertex of degree ≥ 7 is in R (D-reducible 2-ball, or a 66666 hole). **H18b survives.** |
+| (a') untested = non-R | 47 (46 lone-8 at a first-ring position, 1 lone-7) | 0 on the explicit receiver rows (no explicit graph contains these keys) | not settled. By the proved block bound an 8 could hold up to 8 such senders, giving t ≤ 2/3, and a 7 up to 7 (t ≤ 3/4), unless those keys are reducible or cannot co-occur. |
+
+**Reading.**
+- The obstruction of §8.2 (t* = 2/3 from hemi8) **disappears**. Its 165 lone-8 senders were all 66666 holes, which are
+  now in R through the w66666 C-reduction.
+- The K ≤ 1 bottom of the sender list now hinges only on the 47 deferred ring 17–19 keys
+  (`studio14/deferred_r17_19.txt`). Testing them takes about 3–4 CPU-h with dfast18, plus a Lean validation of the
+  p ≤ 9 table on a few ring-17 cases. If they are all D-reducible, the K ≤ 1 LP is feasible without any explicit
+  receiver rows.
+- The H8e 8-centred run (rings ≥ 16) is not needed for K ≤ 1. Case (b') has no senders at all.
+
+**K ≤ 2 (not run; size only).**
+- 108,113 untested keys, of which 107,279 are not 66666-centred. 89,986 of those have ring ≤ 16 (about 330 CPU-h
+  with dfast); 17,293 have rings 17–23.
+- The 66666 reclassification removes only 834 of them, because most K = 2 keys have a big vertex in the first ring.
+- The receiver DP of §8.4 item 3 is not built. With K = 2 the sender weights are no longer forced, so this is a real
+  LP over about 107k sender rows plus DP receiver rows.
+- Recommendation: first test the 47 deferred K = 1 keys. Then decide whether to spend the ~330 CPU-h on K = 2.
