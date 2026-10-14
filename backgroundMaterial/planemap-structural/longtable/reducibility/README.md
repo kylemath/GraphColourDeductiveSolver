@@ -133,6 +133,8 @@ Long Table, 13 Oct 2026. The project owner has accepted `native_decide` for larg
 
 The pieces:
 - **(S2) PROVED: `good_sound`** (axioms: propext, Quot.sound). Suppose `P` is closed under `canon` and satisfies `KempeMatching cf P`. Then `Good cf k ∧ P k → ∃ k', P k' ∧ extendsQ cf k' = true`. This is the combinatorial core: induction on `Good`.
+> **Update 14 Oct 2026 (Run B3, `dcheck/README.md`):** (S1) is now PROVED with no `sorry`: `run_sound`, `canon_mem` and `dReducible_sound` in `dcheck/DCheckS1.lean`, via `DCheckRef.lean` (`run_eq_runRef` by `rfl`). Axioms: propext, Classical.choice, Quot.sound. Of (S3), the combinatorial pieces are proved in `dcheck/DCheckS3.lean`: `nc_matching` (non-crossing matching from a one-parity chain partition) and `flip_chains_proper` (simultaneous swaps). Still open: R1, `matchTable` completeness (`ncm`/`arcRegions` correctness); R2, project-level glue in `ConfigOcc` terms.
+
 - **(S1) `sorry`: `run_sound`** says `dReducible cf = true → ∀ k ∈ ringColourings cf.r, Good cf k`. With `canon_mem` (`sorry`: every proper code canonicalises into `ringColourings`), this gives `dReducible_sound`, proved from these two. (S1) is a loop-invariant proof about the imperative `run`:
   - good-bit ⇒ `Good`;
   - pointer p ⇒ matchings < p are satisfied;
