@@ -29,7 +29,7 @@ outside, over the infinite family of all graphs containing that neighbourhood?
 RSST's own data (`../rsst_scan_r9.txt`).
 
 **Reading.**
-- Every wheel tested with at least one degree-5 neighbour is D-reducible. The outside can never lock such a hole
+- Every wheel tested *here* with at least one degree-5 neighbour is D-reducible. **CORRECTED 14 Oct (see below): this holds only for small wheels.** The outside can never lock such a hole
   in a minimal counterexample.
 - The all-≥6 wheels 66666 and 66667 are **not**. There, some outside chain pattern defeats every Kempe repair
   of the first ring. This is the computation behind Fable's "66666 is the wall" and the old σ-exit
@@ -39,3 +39,23 @@ RSST's own data (`../rsst_scan_r9.txt`).
 - Run the same wheel test over all 59 Track B hole types, using the Lean `DCheck` for rings 10–14.
 - Then grow the 66666 neighbourhood by a second ring (rings of about 15–20, which needs the Lean checker or the
   Studio) to see whether any 2-ball completion is reducible.
+
+## Correction (14 Oct 2026, Studio Job 8, in progress)
+
+**The run.**
+- 154 wheels: the Track B hole types plus every census-33 hole word, up to symmetry, with 8+ instantiated as 8 and 9.
+- Rings 5–16.
+- Checked with a Lean executable (`dcheck/WheelMain.lean`) that reproduces the table above exactly.
+
+**Results.**
+- **D-reducible:** only the small wheels: those above, 55556, and 56657 (ring 9).
+- **Not D-reducible:** most wheels *with* a degree-5 neighbour. Examples:
+  - 55668 (ring 10: 856 of 2,461 ring colourings fixable);
+  - 56676;
+  - 55687, 55759, 56659 (ring 11: 2,826 of 7,381), 56677, 57577;
+  - every ring-12 to ring-15 wheel tested so far.
+
+**Revised reading.**
+- The first ring around a hole is reducible only when the neighbour-degree sum is small (roughly Σw ≤ 29).
+- Elsewhere the outside can defeat every Kempe repair of the first ring. Larger configurations are needed, which is consistent with RSST's list going up to ring 14.
+- The earlier "every wheel with a 5-neighbour" generalised from too few cases. This is another instance of the falsification-first rule.
