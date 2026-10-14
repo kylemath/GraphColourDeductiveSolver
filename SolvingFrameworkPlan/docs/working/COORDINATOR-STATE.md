@@ -36,7 +36,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
 | Arena hard set v1: 302 maps (150 census floor-tight, 50 glued, 2 R0, 100 non-reducible 66666 2-balls); max distance 2–3 | 3 | Studio | DONE 14 Oct | — | arena 883467b; msg 1230 |
 | A6 termination of "fewest locks, never revisit a star" (Studio Job 11) | 3 | Studio | DONE 14 Oct: H survives, 0/361,293 walks fail (2nd impl agrees); no strictly decreasing measure ((lock,−moves) 99.87%; lateral dF 3→3 steps) | parked | msg 1300; 1bf16c16 |
-| Lean certificates for all D-reducible 2-balls, ring ≤ 13 (+ estimate 14–15) (Studio Job 12) | 1, 2 | Studio | started 14 Oct | 7 Nov | `wheels/studio/` |
+| Lean certificates for D-reducible 2-balls (Studio Job 12) | 1, 2 | Studio | DONE 14 Oct: 1,693 native_decide theorems pass, 0 disagreements (all 1,440 ring 8–13; 40 ring 14–15 samples; 213 non-reducible samples); rings 14–15 full = 240 CPU-h, deferred until final R is fixed | — | msg 1350; af34f711 |
 | B1 Lemma E review | — | sounding-board | parked | weekly review | `axioms/proof/R0-ATTEMPT-1.md` |
 | D1/D2 paper drafts | 1, 2 | Long Table | outline only | 1 Dec | — |
 
@@ -64,6 +64,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 13:55 — Job 12 done (0 Lean/dfast disagreements in 1,693). Deferred full ring 14–15 Lean (240 CPU-h): certify only the keys the final unavoidable R uses, after B8b; Studio time goes to Jobs 13–14.
 - 2026-10-14 13:15 — B8 §7 (90d3235c): census-independent check reduces to a finite list of sender 2-balls (K=1: 22,428 keys, 2,909 untested; K≤2: 108,113 untested, ~330 CPU-h) plus a receiver DP. Started B8b locally (lone-8 question exactly; LP over the full K≤1 list) and queued Studio Job 14 (K=1 untested keys, ~4 CPU-h). K≤2 Studio run (~1–2 days) deferred until B8b says the K≤1 LP is close.
 - 2026-10-14 13:20 — Job 13 step 1: both ring-16 LP-certificate configurations D-reducible by dfast (b6666666667 depth 3, b6666666676 depth 4, 1,793,614 classes each). Lean (DCheck16, matchTable range 8→9) running ~25 min each; certificate counts only after Lean. Job 12: 9 files pass so far.
 - 2026-10-14 13:05 — B8 original agent had in fact finished (ae42e4b5); narrowed the resumed agent to the census-independent question only. Released B7 as Studio Job 13, two ring-16 certificate configurations first, because the LP certificate depends on them.

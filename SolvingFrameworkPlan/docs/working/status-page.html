@@ -113,13 +113,13 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="swatch" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yel)"></i><i style="background:var(--grn)"></i><i style="background:var(--blu)"></i></div>
     <h1>Four Colour Programme</h1>
   </div>
-  <div class="asof">updated 14 Oct 2026 · 13:15 MDT</div>
+  <div class="asof">updated 14 Oct 2026 · 13:55 MDT</div>
 </div>
 
 <div class="kpis">
   <div class="panel kpi"><div class="v" id="days">74 <small>days</small></div><div class="l">to the 27 Dec target (Appel–Haken 50th)</div><div class="bar"><i id="daysbar" style="width:10%;background:var(--blu)"></i></div></div>
   <div class="panel kpi"><div class="v">6,642 <small>/ 6,642</small></div><div class="l">flat-second-ring 2-balls reducible, any hole type</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
-  <div class="panel kpi"><div class="v">633 <small>/ 633</small></div><div class="l">RSST configurations: Lean checker agrees</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
+  <div class="panel kpi"><div class="v">1,693 <small>/ 1,693</small></div><div class="l">2-ball verdicts proved in Lean, 0 disagreements (plus RSST 633/633)</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
   <div class="panel kpi"><div class="v">80,125 <small>/ 80,125</small></div><div class="l">census graphs containing a reducible 2-ball (orders 22–33)</div><div class="bar"><i style="width:100%;background:var(--grn)"></i></div></div>
 </div>
 
@@ -130,7 +130,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="step part"><span class="n">2</span><span class="t">Clean structure</span><span class="d">Internally 6-connected, min degree 5 (Birkhoff). Lean: to do (B2)</span><span class="st">Lean partial</span></div>
     <div class="step done"><span class="n">3</span><span class="t">Curvature budget</span><span class="d">Σ(6 − deg) = 12, so degree-5 vertices must exist (Euler)</span><span class="st">done</span></div>
     <div class="step now"><span class="here">we are here</span><span class="n">4</span><span class="t">Unavoidability</span><span class="d">Some degree-5 vertex always has a reducible 2-ball? Holds on the whole census; proof for all sizes open (B8)</span><span class="st">testing</span></div>
-    <div class="step part"><span class="n">5</span><span class="t">Reducibility</span><span class="d">Each 2-ball in the family is D-reducible. 4,223 found; Lean certificates running</span><span class="st">partial</span></div>
+    <div class="step part"><span class="n">5</span><span class="t">Reducibility</span><span class="d">Each 2-ball in the family is D-reducible. All 1,440 at rings 8–13 proved in Lean</span><span class="st">partial</span></div>
     <div class="step todo"><span class="n">6</span><span class="t">Checker sound ⇒ 4CT</span><span class="d">Lean: "checker says reducible" implies reducible (B3); chain to 4CT</span><span class="st">core only</span></div>
   </div>
   <div class="legend">
@@ -187,10 +187,10 @@ code{font-family:var(--mono);font-size:.86em}
   <section class="panel">
     <h2>Recent results</h2>
     <div class="res">
+      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">1,693 Lean theorems, 0 disagreements</div><div class="d">Every reducible 2-ball up to ring 13 now has a Lean certificate.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Reducible 2-balls cover the whole census</div><div class="d">34,403 reducible 2-balls hit all 80,125 census graphs; out of sample only 1 miss in 58,194. The simple flat-only version fails (p25#2111).</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Flat 66666 2-ball is reducible</div><div class="d">Lean-confirmed. Curvature margin predicts reducibility.</div></div></div>
       <div class="r"><span class="k pk">14 Oct</span><div><div class="t">Game heuristic: 0 failures in 361,293 walks</div><div class="d">No decreasing measure, so no proof route. Parked.</div></div></div>
-      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Arena hard set v1: 302 maps</div><div class="d">Hard for the proof, shallow for play (distance 2–3).</div></div></div>
       <div class="r"><span class="k no">13 Oct</span><div><div class="t">Treadmill line closed; R0 refuted</div><div class="d">Planar counterexample, checked independently.</div></div></div>
     </div>
   </section>
