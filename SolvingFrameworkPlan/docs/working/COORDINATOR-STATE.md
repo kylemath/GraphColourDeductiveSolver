@@ -29,7 +29,8 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 | B3 checker soundness (loop invariant, planar Kempe-matching step) | 2 | Long Table agent | not started | 7 Nov | `reducibility/dcheck/` |
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
 | Arena hard set v1: 302 maps (150 census floor-tight, 50 glued, 2 R0, 100 non-reducible 66666 2-balls); max distance 2–3 | 3 | Studio | DONE 14 Oct | — | arena 883467b; msg 1230 |
-| A6 termination of "fewest locks, never revisit a star" (Studio Job 11) | 3 | Studio | started 14 Oct | 14 Nov | `studiointel/a6/` |
+| A6 termination of "fewest locks, never revisit a star" (Studio Job 11) | 3 | Studio | DONE 14 Oct: H survives, 0/361,293 walks fail (2nd impl agrees); no strictly decreasing measure ((lock,−moves) 99.87%; lateral dF 3→3 steps) | parked | msg 1300; 1bf16c16 |
+| Lean certificates for all D-reducible 2-balls, ring ≤ 13 (+ estimate 14–15) (Studio Job 12) | 1, 2 | Studio | started 14 Oct | 7 Nov | `wheels/studio/` |
 | B1 Lemma E review | — | sounding-board | parked | weekly review | `axioms/proof/R0-ATTEMPT-1.md` |
 | D1/D2 paper drafts | 1, 2 | Long Table | outline only | 1 Dec | — |
 
@@ -45,7 +46,7 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 
 ## Queue (next to start, in order)
 
-1. B8 (running, MacBook). 2. Studio Job 11 = A6 (running). 3. B7 on the Studio per B8's first read. 4. Track 2: B3 loop invariant.
+1. B8 (running, MacBook). 2. Studio Job 12 = Lean certificates for 2-balls (running). 3. B7 on the Studio per B8's first read. 4. Track 2: B3 loop invariant.
 
 ## Parked ideas (look at weekly)
 
@@ -57,6 +58,7 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-14 12:26 — A6 done: survives, no measure; parked (empirical termination does not give a proof route by itself). Studio given Job 12, Lean certificates for D-reducible 2-balls: needed for the paper regardless of B8, and keeps B7 heavy runs held.
 - 2026-10-14 12:20 — Studio Job 10 done (hard set v1). Studio idle while B7 waits, so gave it A6 (heuristic termination on hard set + census 22–28): cheap, falsifiable, feeds Track 3's gate.
 - 2026-10-14 12:20 — Scheduled check-ins (7 a day) could not be created: auto-mode classifier denied it. Did not work around; asked Kyle.
 
