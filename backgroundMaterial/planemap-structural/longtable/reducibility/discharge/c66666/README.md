@@ -1,4 +1,9 @@
-# Candidate: the 66666 wheel is C-reducible (14 Oct 2026) [CANDIDATE, not a result]
+# The 66666 wheel is C-reducible (14 Oct 2026) [Lean-certified modulo DCheckSound S1/S3]
+
+Update 15:10 MDT: Studio Job 16 (173355bc, `dcheck/C66666.lean`) proves in Lean (native_decide) that the closure
+numbers match, every ≤ 3-colour ring colouring is reached, and the colourings extending after contraction are exactly the
+≤ 3-colour ones. Remaining gap: DCheckSound S1/S3 (shared by every reducibility result here) and Birkhoff ring
+distinctness. Literature: arXiv 2603.24880 Lemma 8.2 covers this case via a larger configuration.
 
 Claim (Studio Job 15 interim, `../studio15/crosscheck_neg.out`): the wheel w66666 (degree-5 centre I0, neighbours
 I1..I5 of degree 6, ring R0..R9; I1 sees R9,R0,R1, I2 sees R1,R2,R3, …, I5 sees R7,R8,R9) is C-reducible with
