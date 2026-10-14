@@ -159,3 +159,83 @@ the "degree-9 second-ring vertex ⇒ never D-reducible" pattern and of ~20 ring-
 `nextround.py`, `witcheck.py`, `run_round.sh` (4 × nice dfast), `lp.py`, `enum_count.py`, `mkconf.py`;
 `oos.py`, `mk_c15.py` and the `d3` LP model were added by a parallel resumed session. Outputs in `out/`
 (`out/parts/` and the `dfast` binary are git-ignored).
+
+## 7. What a census-independent discharging check needs (resumed session, added 14 Oct 2026 13:15 MDT) [exploratory]
+
+The LPs of §4 only constrain *observed* local types, so even t ≤ 0 would be the census check again. A real proof
+checks the rules on *every possible* neighbourhood. For the rule shapes used here (a 5 sends σ to a vertex of
+degree ≥ 7 at distance ≤ 2) the check splits into two finite lists.
+
+**(a) Sender list = 2-ball keys (radius 2 around the 5).** What a 5 sends depends on its 2-ball key alone
+(models `simple` and `face`; `d3` needs the 3-ball). So the sender inequality "every 5 not in R sends ≥ 1" is a
+check over 2-ball keys, not over graphs. Two facts make the list finite and small at the bottom:
+- A 2-ball with **no** vertex of degree ≥ 7 is always in R. Its first-ring word is a W12 wheel (every {5,6} word except
+  66666), or it is S66.
+- Keys with many big vertices send ≥ 1 under any reasonable σ. So the list is "keys with at most K big vertices".
+
+Degree 9+ is not enumerated: the rules must send it 1 anyway, because second-ring 9s are 0/803 D-reducible.
+
+`nbhd.py DMAX K` enumerates every canonical key with degrees 5..DMAX and ≤ K big vertices. It drops keys with a
+diamond or 2.122 among interior vertices and classifies the rest (`out/nbhd-8-1.txt`, `out/nbhd-8-2.txt`; untested
+keys in `out/sender-untested-K1.txt` and `out/sender-untested-K2.txt.gz`, as lines `ring key nbig`). DMAX = 8:
+
+| big vertices in the 2-ball | canonical keys | W12 / diamond-2.122 / S66 (in R for free) | tested D-red. | tested **not** D-red. | untested (rings) |
+|---|---|---|---|---|---|
+| 0 | 888 | 888 | – | 0 | 0 |
+| 1 | 22,428 | 17,439 | 1,915 | **165** | 2,909 (9–19; 552 at ≥ 15) |
+| 2 | 310,968 | 195,201 | 9,024 | 1,539 | 105,204 (9–23; 55,900 at ≥ 15) |
+
+**Single-big-vertex keys (the bottom of the sender list), by where the big vertex sits:**
+
+| big vertex | D-reducible | not D-reducible | untested |
+|---|---|---|---|
+| 7 in the first ring (66667 with the rest 5/6) | 830 | 0 | 545 |
+| 7 at a private second-ring position | 170 | 0 | 1 (`b6666666676`, ring 16) |
+| 7 at a shared second-ring position | 188 | 0 | 1 (`b6666666667`, ring 16) |
+| 8 in the first ring | 544 | 0 | 2,350 |
+| 8 at a private second-ring position | 0 | **165** (all 66666, Job 9) | 6 |
+| 8 at a shared second-ring position | 183 | 0 | 6 |
+
+Reading:
+- **Every tested single-7 2-ball is D-reducible (1,188/1,188).** The only untested single-7 2-balls with a
+  second-ring 7 are the two ring-16 keys of the §4 LP certificate (Studio Job 13).
+- **A lone private 8 is a hard sender.** The 165 non-reducible single-big keys are all 66666 holes whose only big
+  vertex is one degree-8 vertex at a private second-ring position. Such a 5 must send its whole unit to that 8.
+  The 8 has charge −2, so it can absorb at most two of them.
+- The first census-independent question is therefore finite and concrete: **how many 5s of this kind (66666,
+  second ring all ≤ 6 except one private 8) can lie at distance 2 from one degree-8 vertex?** If the answer is ≤ 2,
+  the rule "send 1 to the lone 8" is valid. If not, those 8-centred patches must go into R as 3-balls.
+
+**(b) Receiver list = neighbourhoods of a vertex u of degree d ≥ 7.**
+- What u receives is fixed by its radius-2 neighbourhood (degrees and face structure). Whether each nearby 5 is in R
+  depends on that 5's own 2-ball, i.e. radius 4 around u.
+- The standard relaxation, as in RSST's cartwheels, keeps only radius 2 around u. A 5 is treated as possibly non-R
+  unless its R-membership is already decided inside that radius, e.g. by its wheel word or the single-big-vertex
+  flatness that the sender list forces.
+- Raw radius-2 patterns are about 4^(d + Σ(deg x − 4)), around 10^12 for d = 7. But the receiver inequality is
+  additive around u's link, so a cyclic transfer-matrix DP over consecutive neighbours handles each d in seconds.
+  This half is cheap. Its strength depends entirely on how much of R is visible at radius 2.
+- The `d3` model (distance 3) moves both lists to radius 3. The sender list becomes 3-balls (far larger; no count
+  attempted). The census LP gives no reason to pay for that: `lp2-d3-census` is degenerate (t = 0) in the same way
+  as `simple` and `face`.
+
+**Does it fit on the Studio?** These estimates use dfast timings from Job 9 (≈ 0.25 s at ring 12, 1 s at 13,
+3.4 s at 14, 15 s at 15, 44 s at 16, ≈ 3 min at 17).
+- **K = 1 (2,909 untested keys):** about 4 CPU-h for rings ≤ 16; 49 keys at rings 17–19 need dfast's r ≤ 16 guard lifted. This is feasible now, and it settles the single-big bottom of the
+  sender list.
+- **K ≤ 2 (108,113 untested keys):**
+  - rings ≤ 16 (90,546 keys) take about 330 CPU-h, roughly 1–2 days on a 16-core Studio;
+  - rings 17–23 (17,567 keys) need dfast's r ≤ 16 guard lifted, at ≥ 3 min each (≥ 900 CPU-h).
+
+  This is borderline. It is worth doing only after (a)'s lone-8 question and a K = 1 LP show that rules of this shape
+  can close.
+- D-reducibility only: a "not D-reducible" key may still be C-reducible.
+
+**Recommended next Studio job (after Job 13):**
+1. Run dfast on `out/sender-untested-K1.txt` (2,909 keys, ≈ 4 CPU-h; ring 17–19: 49 keys need the guard lifted).
+2. Long Table, in parallel: an exact enumeration of the lone-8 receiver question above, and an LP whose sender rows
+   are the **complete** K ≤ 1 key list (not census samples), with receiver rows from the transfer-matrix relaxation.
+   That is the first LP in this folder whose feasibility would mean something beyond the census.
+
+Scripts from this session: `oos.py` (out-of-sample test, used in §3), `mk_c15.py` (census ring-15 keys → dfast
+parts; 17 keys, not run), the `d3` model in `lp.py` (§4), and `nbhd.py` (this section).
