@@ -33,7 +33,7 @@ run log of item B3 (checker soundness), kept inside `dcheck/` by that run's rule
    of the index bijection is used. `canon_mem` (completeness of `ringColourings`) still `sorry`.
    The theorems `run_sound`, `canon_mem` and `dReducible_sound` moved from `DCheckSound.lean` to
    `DCheckS1.lean` (same names), because `DCheckS1` imports `DCheckSound`.
-2b. 2026-10-14 15:27 MDT. **`canon_mem` proved**, so **(S1) is closed with no `sorry`**:
+2b. 2026-10-14 15:26 MDT. **`canon_mem` proved**, so **(S1) is closed with no `sorry`**:
    `DCheck.run_sound`, `DCheck.canon_mem` and `DCheck.dReducible_sound` (S1 + S2, relative to the
    hypothesis `KempeMatching`) all depend only on propext, Classical.choice, Quot.sound. The
    completeness proof models `canon`'s loop state `(mp, nxt, out)` as `cst k i` with invariant
@@ -41,3 +41,11 @@ run log of item B3 (checker soundness), kept inside `dcheck/` by that run's rule
    bits at or above `2i`), and shows the pair `(out_i, nxt_i)` survives each round of
    `ringColourings`. **H confirmed: no counterexample; the invariant needed only the precisions in
    item 2.**
+3. 2026-10-14 15:31 MDT. **(S3)(i) non-crossing-partition lemma proved** (`DCheckS3.lean`,
+   `DCheck.S3.nc_matching`; axioms propext, Classical.choice, Quot.sound). Statement: for chain
+   labels `c` of the `2p` ring arcs that do not cross (`NCLabel`) and have one parity per chain
+   (`ParityLabel`, i.e. one θ-class per chain), the map `mu` (transition `e` of an even arc ↦ right
+   end of the cyclically previous even arc of its chain, `e+1` ↦ left end of the next one) is a
+   non-crossing perfect matching (`IsNCPM`), and no chord of it separates two arcs of one chain
+   (`sameFace`). Non-crossing of `mu` is derived from `sameFace` itself. Note: `ParityLabel` is
+   needed (without it a chain could contain an odd arc outside the chord of its even arcs).

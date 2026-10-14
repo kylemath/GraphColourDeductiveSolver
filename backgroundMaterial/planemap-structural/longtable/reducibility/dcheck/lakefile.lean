@@ -225,3 +225,5 @@ lean_lib C66666
 lean_lib DCheckRef
 
 lean_lib DCheckS1
+
+lean_lib DCheckS3
