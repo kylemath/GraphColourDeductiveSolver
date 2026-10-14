@@ -174,3 +174,63 @@ New research attacks are paused. Current work: (3) a short standalone note on th
 - **Max R jumps 6 → 8** at p34.r178#11764701 h10. That run is a pure 9,8,9,8,… alternation, entered from N = 10 and leaving to N = 11.
 - Second engine agrees on all maxima.
 
+
+## Plan revision (Kyle, 13 Oct 2026, evening)
+
+Recorded by Long Table at Kyle's direction, after a day of attacks on NRC (13 Oct). The day was reviewed critically, including two exchanges with an independent Fable agent. Sources:
+- `longtable/axioms/` (README, scope/, proof/, invariants/, lean/, r0surfaces/);
+- `longtable/gluing/`, `longtable/reducibility/`, `longtable/flips/`;
+- `messages/2026-10-13/` (Studio reports 1840 and 2035).
+
+### What 13 Oct established
+
+- **The matching-treadmill line is CLOSED.**
+  - A5v ("Jordan at v") is the known fact "π is defined" (D2) seen from the dual. It is formal in Lean (`longtable/axioms/lean/`) but adds no planar content.
+  - The abstract T1-v question (exact SAT, no orbit up to n = 24) is parked.
+  - Conjecture R0 is FALSE in the plane. Witnesses: census p27#4710 h14 (n = 46) and fullerene C40#14 h0 (n = 36); 12,249 R0 violations in the frame census to order 33.
+  - The corrected R0c is never violated, but it is essentially vacuous: there are 0 Q-cycles in the frame census to order 33, and the only sphere Q-cycle known is C30#0.
+  - Lemma E [hand, unreviewed] (planar Tait sign sum moves 4 mod 8 per step) rules out odd closures only. Near-rigid cycles were already known to have length 20, so it is no NRC progress.
+- **Census blind spot.** Every frame-class graph at orders 22–34 is internally 6-connected: none has a separating 4-cycle or a nontrivial separating 5-cycle. So the census tested R\*, the floor, lock parity and NRC only on that subclass.
+  - About 2,980 glued frame graphs with separating 4- or 5-cycles (orders 37–62) all keep the floor (min exactly 1/4), R\*, and no frozen class.
+  - The smallest class seen containing a positive π-cycle has 2,558 states and F/N 0.556.
+- **Certificate route.** A Lean D-reducibility checker (`longtable/reducibility/dcheck/`) agrees with RSST on all 633 configurations under `native_decide`: 249 D-reducible, 384 not.
+  - Soundness: the combinatorial core is proved; the loop invariant and the planar Kempe-matching step are open.
+  - C-reducibility is not implemented. Unavoidability (discharging) is not formalised.
+- **Independent review (Fable), main points adopted:**
+  - **The 66666 hole is information-free locally.** Any proof of PureClean there must use global information, i.e. a counting input (discharging in disguise).
+  - **The frame class is larger than RSST's internally 6-connected class,** so the target is harder than RSST's and the census sampled only the easier part.
+  - **Evidence hygiene:**
+    - small-n SAT is a necessary-size statement, not support;
+    - annealing nulls without a power control are not evidence;
+    - hand lemmas must be reviewed before they enter plans.
+
+### Decisions (Kyle, 13 Oct)
+
+1. **Close the matching-treadmill line** (A5v / T1-v / R0 / R0c). Its results are kept as recorded: A5v and the bridge in Lean, R0 refuted, Lemma E pending review.
+2. **Run two one-day discriminating tests for LPC:**
+   - **χ = 5 surface test (Studio Job 6, `longtable/chi5/`).** Take non-4-colourable triangulations of the torus, Klein bottle and RP² at holes h where T − h is 4-colourable. Any lock-parity-clean Kempe class there refutes surface-general LPC.
+   - **Pseudo-surface versus manifold (`longtable/surfaces/`).** Do frozen classes exist when every edge lies in two triangles but not when every vertex link is a single cycle?
+   - **Related measurement:** the "distant leverage" of Kempe swaps against their distance from the hole (`longtable/leverage/`), testing Kyle's outside-in game intuition as a probe of the global input.
+3. **Re-scope the structural target to internally 6-connected frame graphs.**
+   - The target statement becomes: R\* (equivalently LPC at some degree-5 vertex) for frame-class triangulations with no separating 4-cycle and no nontrivial separating 5-cycle.
+   - This is where the census evidence lives and where RSST/Steinberger unavoidability applies.
+   - **Required Lean work (routine):** Birkhoff's reductions — a minimal counterexample has no separating 4-cycle and no nontrivial separating 5-cycle — so that `RStarFrame` can assume internal 6-connectivity. This serves both the structural and the certificate route.
+4. **Falsification-first rule (adopted).**
+   - No conjecture enters the plan before a written kill test has been run and logged. The test must be sized to the object's minimum realisation, with a power control: census or glued graphs at the sizes the object needs, not only small-n SAT.
+   - No hand lemma is cited in a plan until it has been independently reviewed or compiled in Lean.
+5. **Goals for the 50th-anniversary deadline (about 27 Dec 2026).** Kyle's deadline fixes the write-up date. Working targets:
+   - **(a)** A combinatorics paper: Theorem W with the quarter floor, the chain-parity law (Lean), the formal reduction chain to 4CT, and the census (with its scope stated honestly).
+   - **(b)** A verified-software paper: the Lean D-reducibility checker, made sound.
+   - **(c)** Long shots, explicitly labelled:
+     - a structural proof of LPC (the forecast stays about 0.03);
+     - an R\* counterexample from gluing at scale (would bear on Tilley's Birkhoff-diamond conjecture);
+     - D-reducibility of Steinberger's all-D unavoidable set (verify the paper first).
+   - Any proof of PureClean at 66666 holes must state its counting (global) input explicitly.
+
+### Next steps, in order
+
+1. Results of the χ = 5 test and the pseudo-surface/manifold test (running 13 Oct); then re-rank the LPC readings.
+2. Independent review of Lemma E (R0-ATTEMPT-1 §Lemma E), then Lean if it passes.
+3. Lean: Birkhoff separating 4- and 5-cycle reductions; restate `RStarFrame` for internally 6-connected graphs.
+4. Checker soundness, then C-reducibility; check Steinberger (2010) and whether any Lean 4 proof of 4CT exists (Zulip search).
+5. Paper outlines (a) and (b).
