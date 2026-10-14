@@ -1,0 +1,24 @@
+census holes with untested key (not W12/S66/J9), by ring: [(15, 24)]
+TRAIN orders <= 30: 1621 graphs, 72 H1-failing
+recipe      |EXT| | test failures by order (test orders > 30)
+all          3168 | 31:2/4294  32:3/16016  33:26/58194 | total 31/78504 = 0.0004  first p31.r55#823872
+                  in-sample (train) failures 0/1621
+                  why test graphs fail: {'has a D-reducible key not in R_train': 31}
+fail          505 | 31:7/4294  32:25/16016  33:218/58194 | total 250/78504 = 0.0032  first p31.r16#80956
+                  in-sample (train) failures 0/1621
+                  why test graphs fail: {'has a D-reducible key not in R_train': 250}
+cover          35 | 31:89/4294  32:418/16016  33:1722/58194 | total 2229/78504 = 0.0284  first p31.r0#143257
+                  in-sample (train) failures 0/1621
+                  why test graphs fail: {'has a D-reducible key not in R_train': 2229}
+none(H1)        0 | 31:151/4294  32:566/16016  33:2148/58194 | total 2865/78504 = 0.0365  first p31.r0#19898
+                  in-sample (train) failures 72/1621
+== witnesses wit-r1.txt
+  all       |EXT|=  3168  R_train-free 55/57   (of which every hole tested non-D-reducible: 0)
+  fail      |EXT|=   505  R_train-free 57/57   (of which every hole tested non-D-reducible: 0)
+  cover     |EXT|=    35  R_train-free 57/57   (of which every hole tested non-D-reducible: 0)
+  none(H1)  |EXT|=     0  R_train-free 57/57   (of which every hole tested non-D-reducible: 0)
+== witnesses wit-r2.txt
+  all       |EXT|=  3168  R_train-free 49/50   (of which every hole tested non-D-reducible: 0)
+  fail      |EXT|=   505  R_train-free 50/50   (of which every hole tested non-D-reducible: 0)
+  cover     |EXT|=    35  R_train-free 50/50   (of which every hole tested non-D-reducible: 0)
+  none(H1)  |EXT|=     0  R_train-free 50/50   (of which every hole tested non-D-reducible: 0)

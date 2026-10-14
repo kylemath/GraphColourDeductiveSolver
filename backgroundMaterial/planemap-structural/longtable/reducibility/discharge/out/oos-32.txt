@@ -1,0 +1,14 @@
+census holes with untested key (not W12/S66/J9), by ring: [(15, 24)]
+TRAIN orders <= 32: 21931 graphs, 789 H1-failing
+recipe      |EXT| | test failures by order (test orders > 32)
+all         16428 | 33:1/58194 | total 1/58194 = 0.0000  first p33.r119#658955
+                  in-sample (train) failures 0/21931
+                  why test graphs fail: {'has a D-reducible key not in R_train': 1}
+fail         4058 | 33:2/58194 | total 2/58194 = 0.0000  first p33.r119#658955
+                  in-sample (train) failures 0/21931
+                  why test graphs fail: {'has a D-reducible key not in R_train': 2}
+cover         133 | 33:701/58194 | total 701/58194 = 0.0120  first p33.r0#3860310
+                  in-sample (train) failures 0/21931
+                  why test graphs fail: {'has a D-reducible key not in R_train': 701}
+none(H1)        0 | 33:2148/58194 | total 2148/58194 = 0.0369  first p33.r0#107874
+                  in-sample (train) failures 789/21931
