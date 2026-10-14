@@ -113,7 +113,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="swatch" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yel)"></i><i style="background:var(--grn)"></i><i style="background:var(--blu)"></i></div>
     <h1>Four Colour Programme</h1>
   </div>
-  <div class="asof">updated 14 Oct 2026 · 15:20 MDT</div>
+  <div class="asof">updated 14 Oct 2026 · 15:15 MDT</div>
 </div>
 
 <div class="kpis">
@@ -129,7 +129,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="step done"><span class="n">1</span><span class="t">Minimal counterexample</span><span class="d">Smallest map needing 5 colours: a triangulation</span><span class="st">classical</span></div>
     <div class="step part"><span class="n">2</span><span class="t">Clean structure</span><span class="d">Internally 6-connected, min degree 5 (Birkhoff). Lean: to do (B2)</span><span class="st">Lean partial</span></div>
     <div class="step done"><span class="n">3</span><span class="t">Curvature budget</span><span class="d">Σ(6 − deg) = 12, so degree-5 vertices must exist (Euler)</span><span class="st">done</span></div>
-    <div class="step now"><span class="here">we are here</span><span class="n">4</span><span class="t">Unavoidability</span><span class="d">Holds on the whole census, but hemi8 shows 5-centred 2-balls alone cannot work. Testing two fixes: C-reducibility, or configurations centred on the big vertex (B8b)</span><span class="st">testing</span></div>
+    <div class="step now"><span class="here">we are here</span><span class="n">4</span><span class="t">Unavoidability</span><span class="d">Every 5 surrounded by 6s is now reducible (Lean). Re-running the discharging LP with that in the set (B8b)</span><span class="st">testing</span></div>
     <div class="step part"><span class="n">5</span><span class="t">Reducibility</span><span class="d">Each 2-ball in the family is D-reducible. All 1,440 at rings 8–13 proved in Lean</span><span class="st">partial</span></div>
     <div class="step todo"><span class="n">6</span><span class="t">Checker sound ⇒ 4CT</span><span class="d">Lean: "checker says reducible" implies reducible (B3); chain to 4CT</span><span class="st">core only</span></div>
   </div>
@@ -151,7 +151,7 @@ code{font-family:var(--mono);font-size:.86em}
     <h2>Running now</h2>
     <div class="job"><span class="dot run"></span><div><div class="t">All 2-balls at rings 15–16 (1,173)</div><div class="d">The two ring-16 configurations the discharging certificate rests on are now proved reducible in Lean. Now sweeping the rest of rings 15–16.</div><div class="w">Studio Job 13 · step 5 · running</div></div></div>
     <div class="job"><span class="dot run"></span><div><div class="t">B8b · 2-balls centred on a degree-8 vertex</div><div class="d">The fix that needs no new theory: 2,397 of 2,397 reducible so far (rings 7–15), run continuing to ring 16+.</div><div class="w">MacBook agent · step 4</div></div></div>
-    <div class="job"><span class="dot run"></span><div><div class="t">Lean proof: a 5 surrounded by 6s is reducible</div><div class="d">Two independent programs agree; Lean decides whether it counts.</div><div class="w">Studio Job 16 · step 4 · top priority</div></div></div>
+    <div class="job"><span class="dot run"></span><div><div class="t">Checker soundness in Lean (B3)</div><div class="d">The one trust gap left under every reducibility result, including the 66666 wheel.</div><div class="w">MacBook agent · step 6 · gate 7 Nov</div></div></div>
     <div class="job"><span class="dot held"></span><div><div class="t">2,909 untested sender 2-balls</div><div class="d">~4 CPU-hours; shrinks the degree-7/8 families B8b has to cover.</div><div class="w">Studio Job 14 · step 4 · after Job 15</div></div></div>
     
   </section>
@@ -159,7 +159,7 @@ code{font-family:var(--mono);font-size:.86em}
   <section class="panel">
     <h2>Gates</h2>
     <div class="tl">
-      <div class="g today"><span class="dt">14 Oct · today</span><span class="t">66666 wheel C-reducible (candidate); Lean check running</span></div>
+      <div class="g today"><span class="dt">14 Oct · today</span><span class="t">66666 wheel C-reducible, Lean-confirmed; LP re-run</span></div>
       <div class="g" style="--c:var(--blu)"><span class="dt">24 Oct</span><span class="t">B8 answer: is a reducible 2-ball unavoidable?</span><span class="f">if not → 3-balls / larger family</span></div>
       <div class="g" style="--c:var(--yel)"><span class="dt">7 Nov</span><span class="t">Checker soundness + Birkhoff 4-cycle in Lean</span><span class="f">if not → paper on checker + certified data</span></div>
       <div class="g" style="--c:var(--grn)"><span class="dt">14 Nov</span><span class="t">RL arena benchmark on the hard set</span><span class="f">if not → arena supports falsification only</span></div>
@@ -188,7 +188,7 @@ code{font-family:var(--mono);font-size:.86em}
   <section class="panel">
     <h2>Recent results</h2>
     <div class="res">
-      <div class="r"><span class="k pk">14 Oct</span><div><div class="t">Candidate: a degree-5 vertex with five degree-6 neighbours is reducible</div><div class="d">C-reducible by contracting 4 edges; two independent checkers agree exactly. If Lean confirms, the hemi8 obstruction and every 66666 sender disappear.</div></div></div>
+      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">A degree-5 vertex with five degree-6 neighbours is reducible</div><div class="d">C-reducible by contracting 4 edges; two independent checkers agree and Lean confirms. The hemi8 obstruction and every 66666 sender disappear.</div></div></div>
       <div class="r"><span class="k no">14 Oct</span><div><div class="t">hemi8: a map where no degree-5 2-ball is D-reducible</div><div class="d">So 2-balls around degree-5 vertices cannot be the whole unavoidable set, and the simple discharging LP is infeasible (t = 2/3). 2-balls centred on the degree-8 vertex do reduce.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Discharging certificate survives its test</div><div class="d">Both ring-16 2-balls it depends on are reducible, confirmed in Lean.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">1,693 Lean theorems, 0 disagreements</div><div class="d">Every reducible 2-ball up to ring 13 now has a Lean certificate.</div></div></div>
