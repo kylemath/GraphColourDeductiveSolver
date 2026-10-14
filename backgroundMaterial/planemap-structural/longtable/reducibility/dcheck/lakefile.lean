@@ -221,3 +221,7 @@ lean_lib TB16_6666666667
 lean_lib TB16_6666666676
 
 lean_lib C66666
+
+lean_lib DCheckRef
+
+lean_lib DCheckS1

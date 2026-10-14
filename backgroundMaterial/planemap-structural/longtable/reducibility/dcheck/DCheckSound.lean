@@ -3,9 +3,10 @@ import DCheck
 # DCheckSound: what `dReducible C = true` must imply, and the combinatorial core (exploratory)
 
 The checker `DCheck.run` is imperative (loops, progress pointers). Its soundness splits into
-three parts. This file proves part (S2) and states (S1) and (S3) with `sorry`.
+three parts. This file proves part (S2). (S1) is proved in `DCheckS1.lean` (Run B3, 2026-10-14);
+(S3) is project-level (see below; its combinatorial core (i)–(ii) is in `DCheckS3.lean`).
 
-* **(S1) loop correctness [sorry]:** `dReducible cf = true` implies every canonical proper ring
+* **(S1) loop correctness [PROVED in `DCheckS1.lean`, `run_sound`]:** `dReducible cf = true` implies every canonical proper ring
   colouring satisfies the declarative closure predicate `Good cf` below (the least set containing
   the extendable codes and closed under the consistent-matching rule). This is a loop invariant
   for `run`: (a) `good[i] = true → Good cf ks[i]`; (b) progress pointer `prog[3i+θ-1] = p` means
@@ -96,27 +97,9 @@ theorem good_sound (cf : Conf) (P : Nat → Prop)
     obtain ⟨lab, hlab, hflip⟩ := hK k th hP h1 h3 hT
     exact ih lab hlab (hcanon _ (hflip (w lab)))
 
-/-- **(S1) Loop correctness of the checker** — NOT PROVED (statement only). -/
-theorem run_sound (cf : Conf) (hD : dReducible cf = true) :
-    ∀ k ∈ ringColourings cf.r, Good cf k := by
-  sorry
-
-/-- Every proper ring code has its canonical form in `ringColourings` — NOT PROVED. -/
-theorem canon_mem (r k : Nat) (hr : 2 ≤ r)
-    (hk : ∀ i, i < r → col k i ≠ col k ((i + 1) % r)) (hlt : k < 4 ^ r) :
-    canon r k ∈ ringColourings r := by
-  sorry
-
-/-- (S1)+(S2): checker-level soundness relative to the geometric hypothesis. Proved from the two
-`sorry`s above. -/
-theorem dReducible_sound (cf : Conf) (hD : dReducible cf = true) (hr : 2 ≤ cf.r)
-    (P : Nat → Prop) (hcanon : ∀ k, P k → P (canon cf.r k)) (hK : KempeMatching cf P)
-    (hprop : ∀ k, P k → (∀ i, i < cf.r → col k i ≠ col k ((i + 1) % cf.r)) ∧ k < 4 ^ cf.r)
-    (k : Nat) (hP : P k) : ∃ k', P k' ∧ extendsQ cf k' = true :=
-  good_sound cf P hcanon hK _
-    (run_sound cf hD _ (canon_mem cf.r k hr (hprop k hP).1 (hprop k hP).2)) (hcanon k hP)
+/-! (S1) `run_sound`, `canon_mem` and the assembled `dReducible_sound` are in `DCheckS1.lean`
+(they need the loop lemmas there, and this file is imported by it). -/
 
 end DCheck
 
 #print axioms DCheck.good_sound
-#print axioms DCheck.dReducible_sound
