@@ -4,9 +4,26 @@ import Init.Internal.Order.While
 /-!
 # DCheckS1: loop correctness of `DCheck.run` (item B3, (S1), exploratory)
 
-Proves `DCheck.S1.run_sound'`: `dReducible cf = true → ∀ k ∈ ringColourings cf.r, Good cf k`,
-by loop invariants on the factored copy `DCheck.Ref.runRef` (equal to `run` by `rfl`,
-`DCheck.run_eq_runRef`).
+Proves, with no `sorry` (axioms: propext, Classical.choice, Quot.sound):
+* `DCheck.run_sound`: `dReducible cf = true → ∀ k ∈ ringColourings cf.r, Good cf k`;
+* `DCheck.canon_mem`: every proper ring code canonicalises into `ringColourings r` (`r ≥ 2`);
+* `DCheck.dReducible_sound`: (S1)+(S2), checker soundness relative to `KempeMatching`.
+
+Method. `DCheck.run` is not edited. `DCheckRef.lean` copies it with each inner loop moved into a
+named definition (`runRef`); `run_eq_runRef : run cf = runRef cf` is `rfl`. Each loop is then
+handled by a generic invariant lemma (`forIn_range_bind`, `forIn_array_bind`, and `loop_bind`
+for the `while` loop, which terminates by the measure `2·(#matchings − ptr) + [¬stuck]` and is
+unfolded with core's `Lean.Loop.forIn_eq_of_monadTail`).
+
+The invariant (header (a)–(c) of `DCheckSound.lean`, made precise):
+* (a) `OuterInv`: `good[j]! = true → Good cf ks[j]!`, plus `good.size = N` and
+  `reached ≤ countTrue good` (so `reached = N` forces every bit);
+* (b) `ProgOK`: if `prog[3i+θ-1]! = p ≠ dead` then every matching `q < p` of the table
+  (with `q < matchTable[…].size`) has a flip `s > 0` with `Good (canon (k ^^^ flipMask … s))`;
+* (c) `mkIndex_spec` (`index[x]? = some j → ks[j]! = x`; the other direction of the bijection
+  is not needed) and `ring_mem`/`canon_eq` (completeness of `ringColourings`);
+* mask agreement `xorSel_eq`: the in-loop flipped code is `k ^^^ flipMask r k θ lab s`
+  (bitwise, `testBit`), using `s < 2^(n/2)` so that out-of-range region labels agree.
 -/
 namespace DCheck.S1
 open DCheck.Ref
@@ -187,13 +204,13 @@ theorem mkRm_spec (r n th : Nat) (arcOf lab : Array Nat) (hth : th < 4) :
     rw [get_set!]
     by_cases hg0 : lab[arcOf[v]!]! = g
     · subst hg0
-      rw [if_pos ⟨rfl, by omega⟩, Nat.testBit_or, hI _ hg j, testBit_shl_lt4 _ _ _ hth]
+      rw [ite_eq_left ⟨rfl, by omega⟩, Nat.testBit_or, hI _ hg j, testBit_shl_lt4 _ _ _ hth]
       by_cases h1 : j / 2 = v
       · subst h1; simp
       · by_cases h2 : j / 2 < v
         · simp [h1, h2, show j / 2 < v + 1 by omega]
         · simp [h1, h2, show ¬ j / 2 < v + 1 by omega]
-    · rw [if_neg (fun h => hg0 h.1), hI g hg j]
+    · rw [ite_eq_right (fun h => hg0 h.1), hI g hg j]
       by_cases h1 : j / 2 = v
       · subst h1; simp [hg0]
       · by_cases h2 : j / 2 < v
@@ -405,13 +422,13 @@ theorem good_of_all (cf : Conf) (k th : Nat) (h1 : 1 ≤ th) (h3 : th ≤ 3)
     obtain ⟨q, hq, rfl⟩ := Array.mem_iff_getElem.1 hlab
     have hs := hall q hq
     rw [SatM, getElem!_pos _ q hq] at hs
-    rw [dif_pos hs]
+    rw [dite_eq_left hs]
     exact (Classical.choose_spec hs).1
   · intro lab hlab
     obtain ⟨q, hq, rfl⟩ := Array.mem_iff_getElem.1 hlab
     have hs := hall q hq
     rw [SatM, getElem!_pos _ q hq] at hs
-    rw [dif_pos hs]
+    rw [dite_eq_left hs]
     exact (Classical.choose_spec hs).2
 
 theorem thLoop_spec (cf : Conf) (ks : Array Nat) (index : Std.HashMap Nat Nat)
@@ -535,7 +552,7 @@ theorem setFold_spec (l : List Nat) (good : Array Bool) (hl : l.Pairwise (· < �
     have ha := hf a (by simp)
     have h := ih (good.set! a true) hl.2 (fun j hj => by
       refine ⟨by simpa using (hf j (by simp [hj])).1, ?_⟩
-      rw [get_set!, if_neg (by have := hl.1 j hj; omega)]
+      rw [get_set!, ite_eq_right (by have := hl.1 j hj; omega)]
       exact (hf j (by simp [hj])).2)
     refine ⟨by simpa using h.1, by rw [h.2.1, countTrue_set _ _ ha.1 ha.2]; simp; omega, ?_⟩
     intro j hj
@@ -631,6 +648,293 @@ theorem run_sound (cf : Conf) (hD : dReducible cf = true) :
 
 end DCheck.S1
 
+/-! ## Completeness of `ringColourings` (`canon_mem`) -/
+namespace DCheck.S1
+
+theorem forIn_list_gen {α β : Type} (l : List α) (init : β) (f : α → β → Id (ForInStep β))
+    (I : List α → β → Prop) (Q : β → Prop) (h0 : I [] init) (hend : ∀ x, I l x → Q x)
+    (hstep : ∀ pre a post x, l = pre ++ a :: post → I pre x → StepOK (I (pre ++ [a])) Q (f a x)) :
+    Q (forIn l init f) := by
+  suffices ∀ rest pre x, l = pre ++ rest → I pre x → Q (forIn rest x f) from
+    this l [] init (by simp) h0
+  intro rest
+  induction rest with
+  | nil => intro pre x h hI; simp at h; subst h; exact hend x hI
+  | cons a rest ih =>
+    intro pre x h hI
+    have hs := hstep pre a rest x h hI
+    rw [List.forIn_cons]
+    show Q (match (f a x : ForInStep β) with
+      | .done b => (pure b : Id β) | .yield b => forIn rest b f)
+    revert hs
+    cases f a x with
+    | done y => exact id
+    | yield y => intro hs; exact ih (pre ++ [a]) y (by simp [h]) hs
+
+theorem forIn_array_bind {α β γ : Type} (arr : Array α) (init : β)
+    (f : α → β → Id (ForInStep β)) (g : β → Id γ) (I : List α → β → Prop) (Q : γ → Prop)
+    (h0 : I [] init) (hend : ∀ x, I arr.toList x → Q (g x).run)
+    (hstep : ∀ pre a post x, arr.toList = pre ++ a :: post → I pre x →
+      StepOK (I (pre ++ [a])) (fun x => Q (g x).run) (f a x)) :
+    Q (Id.run (forIn arr init f >>= g)) := by
+  show Q (g (forIn arr init f)).run
+  rw [← Array.forIn_toList]
+  exact forIn_list_gen arr.toList init f I (fun x => Q (g x).run) h0 hend hstep
+
+/-- One step of `canon`'s loop, as a function. -/
+def cstep (k i : Nat) (st : Array Nat × Nat × Nat) : Array Nat × Nat × Nat :=
+  if (st.1[col k i]! == 4) = true then
+    (st.1.set! (col k i) st.2.1, st.2.1 + 1, st.2.2 ||| st.2.1 <<< (2 * i))
+  else (st.1, st.2.1, st.2.2 ||| st.1[col k i]! <<< (2 * i))
+
+/-- The state `(mp, nxt, out)` of `canon`'s loop after `i` positions. -/
+def cst (k : Nat) : Nat → Array Nat × Nat × Nat
+  | 0 => (#[4, 4, 4, 4], 0, 0)
+  | i + 1 => cstep k i (cst k i)
+
+theorem canon_eq (r k : Nat) : canon r k = (cst k r).2.2 := by
+  unfold canon
+  refine forIn_range_bind 0 r _ _ _ (fun i st => st = cst k i) (fun o => o = (cst k r).2.2)
+    rfl ?_ ?_
+  · intro x hx; rw [show max 0 r = r by omega] at hx; subst hx; rfl
+  · intro i st _ _ hst; subst hst
+    dsimp only
+    split
+    · rename_i h; simp only [stepOK_yield]; simp only [cst, cstep, h]; rfl
+    · rename_i h; simp only [stepOK_yield]; simp only [cst, cstep, h]; rfl
+
+theorem col_lt (k i : Nat) : col k i < 4 := Nat.mod_lt _ (by decide)
+
+theorem col_congr (n m t : Nat) (h0 : n.testBit (2 * t) = m.testBit (2 * t))
+    (h1 : n.testBit (2 * t + 1) = m.testBit (2 * t + 1)) : col n t = col m t := by
+  unfold col
+  apply Nat.eq_of_testBit_eq
+  intro j
+  rw [show (4 : Nat) = 2 ^ 2 from rfl, Nat.testBit_mod_two_pow, Nat.testBit_mod_two_pow,
+    Nat.testBit_shiftRight, Nat.testBit_shiftRight]
+  by_cases hj : j < 2
+  · rcases (show j = 0 ∨ j = 1 by omega) with rfl | rfl
+    · simpa using h0
+    · simpa using h1
+  · simp [hj]
+
+theorem col_or_low (o c i t : Nat) (ht : t < i) : col (o ||| c <<< (2 * i)) t = col o t := by
+  apply col_congr <;> rw [Nat.testBit_or, Nat.testBit_shiftLeft] <;> simp <;> omega
+
+theorem col_or_top (o c i : Nat) (hc : c < 4) (ho : ∀ j, 2 * i ≤ j → o.testBit j = false) :
+    col (o ||| c <<< (2 * i)) i = c := by
+  have : col (o ||| c <<< (2 * i)) i = col (c <<< (2 * i)) i := by
+    apply col_congr <;> rw [Nat.testBit_or, ho _ (by omega)] <;> simp
+  rw [this]; unfold col; rw [Nat.shiftLeft_shiftRight]; exact Nat.mod_eq_of_lt hc
+
+theorem or_high (o c i : Nat) (hc : c < 4) (ho : ∀ j, 2 * i ≤ j → o.testBit j = false) :
+    ∀ j, 2 * (i + 1) ≤ j → (o ||| c <<< (2 * i)).testBit j = false := by
+  intro j hj
+  rw [Nat.testBit_or, ho j (by omega), Nat.testBit_shiftLeft,
+    testBit_ge_of_lt_pow (m := 2) hc (show 2 ≤ j - 2 * i by omega)]
+  simp
+
+def unseen (mp : Array Nat) : Nat := ((List.range 4).filter (fun a => mp[a]! == 4)).length
+
+theorem unseen_set (mp : Array Nat) (a v : Nat) (ha : a < 4) (hs : mp.size = 4)
+    (h4 : mp[a]! = 4) (hv : v ≠ 4) : unseen (mp.set! a v) + 1 = unseen mp := by
+  unfold unseen
+  simp only [List.range_succ, List.range_zero, List.nil_append, List.filter_append,
+    List.length_append, get_set!, hs]
+  rcases (show a = 0 ∨ a = 1 ∨ a = 2 ∨ a = 3 by omega) with rfl | rfl | rfl | rfl <;>
+    simp [List.filter_cons, h4, hv] <;> split <;> split <;> split <;> simp
+
+theorem unseen_pos (mp : Array Nat) (a : Nat) (ha : a < 4) (h4 : mp[a]! = 4) : 1 ≤ unseen mp := by
+  unfold unseen
+  apply List.length_pos_of_mem (a := a)
+  simp [ha, h4]
+
+/-- Invariant of `canon`'s loop after `i` positions. -/
+def CInv (k i : Nat) (st : Array Nat × Nat × Nat) : Prop :=
+  st.1.size = 4 ∧
+  (∀ a, a < 4 → st.1[a]! ≠ 4 → st.1[a]! < st.2.1) ∧
+  (∀ a b, a < 4 → b < 4 → st.1[a]! ≠ 4 → st.1[a]! = st.1[b]! → a = b) ∧
+  (∀ t, t < i → st.1[col k t]! ≠ 4) ∧
+  st.2.1 + unseen st.1 = 4 ∧
+  (∀ j, 2 * i ≤ j → st.2.2.testBit j = false) ∧
+  (∀ t, t < i → col st.2.2 t = st.1[col k t]!)
+
+theorem init4 (a : Nat) (ha : a < 4) : (#[4, 4, 4, 4] : Array Nat)[a]! = 4 := by
+  rcases (show a = 0 ∨ a = 1 ∨ a = 2 ∨ a = 3 by omega) with rfl | rfl | rfl | rfl <;> rfl
+
+theorem cinv (k i : Nat) : CInv k i (cst k i) := by
+  induction i with
+  | zero =>
+    refine ⟨rfl, fun a ha h => absurd (init4 a ha) h, fun a _ ha _ h => absurd (init4 a ha) h,
+      fun t ht => absurd ht (by omega), rfl, fun j _ => Nat.zero_testBit j,
+      fun t ht => absurd ht (by omega)⟩
+  | succ i ih =>
+    obtain ⟨hsz, hlt, hinj, hseen, hcnt, hhigh, hcol⟩ := ih
+    have ha0 := col_lt k i
+    show CInv k (i + 1) (cstep k i (cst k i))
+    unfold cstep
+    generalize cst k i = st at *
+    obtain ⟨mp, u, o⟩ := st
+    dsimp only at *
+    split
+    · rename_i h4
+      simp only [beq_iff_eq] at h4
+      have hu : u < 4 := by have := unseen_pos mp _ ha0 h4; omega
+      unfold CInv; dsimp only
+      refine ⟨by simp [hsz], ?_, ?_, ?_, ?_, or_high o u i hu hhigh, ?_⟩
+      · intro a ha hne
+        rw [get_set!] at hne ⊢
+        split
+        · omega
+        · rw [ite_eq_right ‹_›] at hne; have := hlt a ha hne; omega
+      · intro a b ha hb hne heq
+        rw [get_set!, get_set!] at heq
+        rw [get_set!] at hne
+        by_cases hA : col k i = a <;> by_cases hB : col k i = b
+        · omega
+        · rw [ite_eq_left ⟨hA, by omega⟩, ite_eq_right (fun h => hB h.1)] at heq
+          by_cases hb4 : mp[b]! = 4
+          · omega
+          · have := hlt b hb hb4; omega
+        · rw [ite_eq_right (fun h => hA h.1), ite_eq_left ⟨hB, by omega⟩] at heq
+          rw [ite_eq_right (fun h => hA h.1)] at hne
+          have := hlt a ha hne; omega
+        · rw [ite_eq_right (fun h => hA h.1), ite_eq_right (fun h => hB h.1)] at heq
+          rw [ite_eq_right (fun h => hA h.1)] at hne
+          exact hinj a b ha hb hne heq
+      · intro t ht
+        rw [get_set!]
+        by_cases hti : t = i
+        · subst hti; rw [ite_eq_left ⟨rfl, by omega⟩]; omega
+        · have h1 := hseen t (by omega)
+          have h2 : col k i ≠ col k t := fun h => h1 (h ▸ h4)
+          rw [ite_eq_right (fun h => h2 h.1)]; exact h1
+      · have := unseen_set mp (col k i) u ha0 hsz h4 (by omega); omega
+      · intro t ht
+        by_cases hti : t = i
+        · subst hti
+          rw [col_or_top o u t hu hhigh, get_set!, ite_eq_left ⟨rfl, by omega⟩]
+        · have h1 := hseen t (by omega)
+          have h2 : col k i ≠ col k t := fun h => h1 (h ▸ h4)
+          rw [col_or_low o u i t (by omega), hcol t (by omega), get_set!, ite_eq_right (fun h => h2 h.1)]
+    · rename_i h4
+      simp only [beq_iff_eq] at h4
+      have hd : mp[col k i]! < 4 := by have := hlt _ ha0 h4; omega
+      unfold CInv; dsimp only
+      refine ⟨hsz, hlt, hinj, ?_, hcnt, or_high o _ i hd hhigh, ?_⟩
+      · intro t ht
+        by_cases hti : t = i
+        · subst hti; exact h4
+        · exact hseen t (by omega)
+      · intro t ht
+        by_cases hti : t = i
+        · subst hti; rw [col_or_top o _ t hd hhigh]
+        · rw [col_or_low o _ i t (by omega), hcol t (by omega)]
+
+
+/-- The label `canon` gives to position `i`. -/
+def clab (k i : Nat) : Nat :=
+  if (cst k i).1[col k i]! = 4 then (cst k i).2.1 else (cst k i).1[col k i]!
+
+theorem step_target (r k i : Nat) (hi1 : 1 ≤ i) (hir : i < r)
+    (hk : ∀ i, i < r → col k i ≠ col k ((i + 1) % r)) :
+    clab k i < min 4 ((cst k i).2.1 + 1) ∧
+    (clab k i != col (cst k i).2.2 (i - 1) &&
+      (i + 1 != r || clab k i != col (cst k i).2.2 0)) = true ∧
+    ((cst k i).2.2 ||| clab k i <<< (2 * i),
+      if (clab k i == (cst k i).2.1) = true then (cst k i).2.1 + 1 else (cst k i).2.1) =
+      ((cst k (i + 1)).2.2, (cst k (i + 1)).2.1) := by
+  have hinv := cinv k i
+  have hprev : col k (i - 1) ≠ col k i := by
+    have := hk (i - 1) (by omega); rwa [show (i - 1 + 1) % r = i by
+      rw [show i - 1 + 1 = i by omega]; exact Nat.mod_eq_of_lt hir] at this
+  have hlast : i + 1 = r → col k i ≠ col k 0 := by
+    intro h; have := hk i hir; rwa [h, Nat.mod_self] at this
+  show _ ∧ _ ∧ _ = ((cstep k i (cst k i)).2.2, (cstep k i (cst k i)).2.1)
+  unfold clab cstep
+  generalize cst k i = st at *
+  obtain ⟨mp, u, o⟩ := st
+  obtain ⟨hsz, hlt, hinj, hseen, hcnt, hhigh, hcol⟩ := hinv
+  dsimp only at *
+  have ha0 := col_lt k i
+  have hcp := hcol (i - 1) (by omega)
+  have hc0 := hcol 0 (by omega)
+  have hsp := hseen (i - 1) (by omega)
+  have hs0 := hseen 0 (by omega)
+  by_cases h4 : mp[col k i]! = 4
+  · have hu : u < 4 := by have := unseen_pos mp _ ha0 h4; omega
+    have h1 := hlt _ (col_lt k (i - 1)) hsp
+    have h2 := hlt _ (col_lt k 0) hs0
+    simp only [h4, ite_true, beq_self_eq_true, ite_true]
+    refine ⟨by omega, ?_, by first | rfl | trivial | simp⟩
+    rw [hcp, hc0]
+    simp only [Bool.and_eq_true, bne_iff_ne, ne_eq, Bool.or_eq_true]
+    exact ⟨by omega, Or.inr (by omega)⟩
+  · have hd := hlt _ ha0 h4
+    simp only [h4, ite_false, beq_iff_eq]
+    refine ⟨by omega, ?_, by simp [Nat.ne_of_lt hd]⟩
+    rw [hcp, hc0]
+    simp only [Bool.and_eq_true, bne_iff_ne, ne_eq, Bool.or_eq_true]
+    refine ⟨fun h => hprev (hinj _ _ (col_lt k (i - 1)) ha0 hsp h.symm), ?_⟩
+    by_cases hr : i + 1 = r
+    · exact Or.inr (fun h => hlast hr (hinj _ _ ha0 (col_lt k 0) h4 h))
+    · exact Or.inl (by simpa using hr)
+
+theorem ring_mem (r k : Nat) (hr : 2 ≤ r) (hk : ∀ i, i < r → col k i ≠ col k ((i + 1) % r)) :
+    (cst k r).2.2 ∈ ringColourings r := by
+  unfold ringColourings
+  refine forIn_range_bind 1 r _ _ _
+    (fun i (cur : Array (Nat × Nat)) => ((cst k i).2.2, (cst k i).2.1) ∈ cur)
+    (fun (res : Array Nat) => (cst k r).2.2 ∈ res) ?_ ?_ ?_
+  · have : cst k 1 = cstep k 0 (#[4, 4, 4, 4], 0, 0) := rfl
+    rw [this]; unfold cstep; simp [init4 _ (col_lt k 0)]
+  · intro cur hcur
+    rw [show max 1 r = r by omega] at hcur
+    exact Array.mem_map.2 ⟨_, hcur, rfl⟩
+  · intro i cur hi1 hir hP
+    obtain ⟨hc, hcond, heq⟩ := step_target r k i hi1 hir hk
+    dsimp only
+    refine forIn_array_bind cur #[] _ _
+      (fun pre (nxt : Array (Nat × Nat)) => ((cst k i).2.2, (cst k i).2.1) ∈ pre →
+        ((cst k (i + 1)).2.2, (cst k (i + 1)).2.1) ∈ nxt)
+      (StepOK (fun cur' => ((cst k (i + 1)).2.2, (cst k (i + 1)).2.1) ∈ cur') _)
+      (fun h => by simp at h) ?_ ?_
+    · intro x hx
+      exact hx (by simpa using hP)
+    · intro pre a post x _ hI
+      obtain ⟨k', used⟩ := a
+      dsimp only
+      refine forIn_range_bind 0 (min 4 (used + 1)) _ _ _
+        (fun c' (nxt : Array (Nat × Nat)) => (∀ y ∈ x, y ∈ nxt) ∧
+          ((k', used) = ((cst k i).2.2, (cst k i).2.1) → clab k i < c' →
+            ((cst k (i + 1)).2.2, (cst k (i + 1)).2.1) ∈ nxt))
+        (StepOK (fun nxt => ((cst k i).2.2, (cst k i).2.1) ∈ pre ++ [(k', used)] →
+          ((cst k (i + 1)).2.2, (cst k (i + 1)).2.1) ∈ nxt) _)
+        ⟨fun y hy => hy, fun _ h => absurd h (by omega)⟩ ?_ ?_
+      · intro nxt ⟨hmono, hnew⟩
+        intro hmem
+        rw [List.mem_append, List.mem_singleton] at hmem
+        rcases hmem with h | h
+        · exact hmono _ (hI h)
+        · cases h; exact hnew rfl (by omega)
+      · intro c' nxt _ hc' ⟨hmono, hnew⟩
+        split
+        · simp only [stepOK_yield]
+          refine ⟨fun y hy => Array.mem_push.2 (Or.inl (hmono y hy)), fun hPa hlt => ?_⟩
+          by_cases hcc : c' = clab k i
+          · subst hcc
+            cases hPa
+            exact Array.mem_push.2 (Or.inr heq.symm)
+          · exact Array.mem_push.2 (Or.inl (hnew hPa (by omega)))
+        · rename_i hno
+          simp only [stepOK_yield]
+          refine ⟨hmono, fun hPa hlt => ?_⟩
+          by_cases hcc : c' = clab k i
+          · subst hcc; cases hPa; exact absurd hcond hno
+          · exact hnew hPa (by omega)
+
+end DCheck.S1
+
 /-! ## The (S1) statements of `DCheckSound.lean`, now proved here -/
 namespace DCheck
 
@@ -641,9 +945,9 @@ theorem run_sound (cf : Conf) (hD : dReducible cf = true) :
 
 /-- Every proper ring code has its canonical form in `ringColourings`. -/
 theorem canon_mem (r k : Nat) (hr : 2 ≤ r)
-    (hk : ∀ i, i < r → col k i ≠ col k ((i + 1) % r)) (hlt : k < 4 ^ r) :
+    (hk : ∀ i, i < r → col k i ≠ col k ((i + 1) % r)) (_hlt : k < 4 ^ r) :
     canon r k ∈ ringColourings r := by
-  sorry
+  rw [S1.canon_eq]; exact S1.ring_mem r k hr hk
 
 /-- (S1)+(S2): checker-level soundness relative to the geometric hypothesis `KempeMatching`. -/
 theorem dReducible_sound (cf : Conf) (hD : dReducible cf = true) (hr : 2 ≤ cf.r)

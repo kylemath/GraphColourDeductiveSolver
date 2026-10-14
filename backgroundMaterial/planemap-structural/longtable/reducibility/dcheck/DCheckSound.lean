@@ -17,7 +17,7 @@ three parts. This file proves part (S2). (S1) is proved in `DCheckS1.lean` (Run 
   ("codes realised by a proper colouring of the outside map `G`") that is closed under renaming and
   satisfies the Kempe-matching property `KempeMatching`, every `Good` code realised by `P` leads to
   a realised code that extends into the interior.
-* **(S3) the geometric lemma [sorry, project-level]:** in the project's terms
+* **(S3) the geometric lemma [open, project-level; abstract core in `DCheckS3.lean`]:** in the project's terms
   (`SimpleGraph.SphericalMap`, `RingReduce.ConfigOcc`, `ProperOff`, `pairGraph`), the set
   `P := {ring code of c | c proper on G off the hole}` satisfies `KempeMatching`. Content: for a
   colouring `c` and a pairing `θ`, the θ-classes `{x, x⊕θ}` give Kempe chains of `G`; their

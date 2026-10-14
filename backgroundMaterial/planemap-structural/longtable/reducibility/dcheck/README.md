@@ -33,3 +33,11 @@ run log of item B3 (checker soundness), kept inside `dcheck/` by that run's rule
    of the index bijection is used. `canon_mem` (completeness of `ringColourings`) still `sorry`.
    The theorems `run_sound`, `canon_mem` and `dReducible_sound` moved from `DCheckSound.lean` to
    `DCheckS1.lean` (same names), because `DCheckS1` imports `DCheckSound`.
+2b. 2026-10-14 15:27 MDT. **`canon_mem` proved**, so **(S1) is closed with no `sorry`**:
+   `DCheck.run_sound`, `DCheck.canon_mem` and `DCheck.dReducible_sound` (S1 + S2, relative to the
+   hypothesis `KempeMatching`) all depend only on propext, Classical.choice, Quot.sound. The
+   completeness proof models `canon`'s loop state `(mp, nxt, out)` as `cst k i` with invariant
+   `CInv` (labels injective on seen colours, `nxt + #unseen = 4`, `col out t = mp[col k t]`, no
+   bits at or above `2i`), and shows the pair `(out_i, nxt_i)` survives each round of
+   `ringColourings`. **H confirmed: no counterexample; the invariant needed only the precisions in
+   item 2.**
