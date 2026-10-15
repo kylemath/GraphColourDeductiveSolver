@@ -389,3 +389,117 @@ larger configurations: the cluster itself, i.e. a 7's 3-ball or its exact-degree
 - CPU-h from the Job 22 per-ring dfast18 means.
 
 All verdicts are engine level (dfast/cfast, no Lean). At most 4 dfast/cfast processes at once.
+
+### 7.1 Results of test G (15–16 Oct 2026; dfast and cfast only, engine level, no Lean)
+
+**Tools.**
+- `defect.py` → `defectc.cpp` (`bin/defectc`): DFS over ring degrees around a centre of degree 5, 6 or 7. Rings < K
+  take degrees 5–7, ring K and beyond are all 6. Every wheel is checked as soon as its link is complete, with wildcard
+  look-ahead tables from `defect_tables.py`. The C++ port gives the same leaves as the Python version at K = 2 for all
+  three centres and at K = 3 for centre 5.
+- The disc's link order was checked against `b8b/rings.py` on 5,655 vertices: 0 mismatches.
+- `defect_check2.py`: the receiver-centred check, done on the explicit patch.
+  - When the ring of u + S + links is a simple induced cycle in the patch, the configuration is the `gen.py` one, looked
+    up by key.
+  - When two senders share the same free big vertex B, the ring is pinched in G. The configuration that actually
+    appears then has that B inside at its exact degree. It is built from the graph and tested on its own.
+  - The first checker (`defect_check.py`, key lookup only) missed this case. It wrongly passed two K = 3 candidates:
+    their pinched configuration (ring 10) is D.
+- `defect_verify.py`: an independent rebuild of a defect from its signature with `b8b/rings.py`, which then:
+  - writes every wheel within distance 1 of Y and every receiver-centred configuration straight from the graph;
+  - checks the 6-sea;
+  - checks for separating 3-/4-cycles and nontrivial separating 5-cycles within distance 3 of Y;
+  - checks for diamond and 2.122;
+  - prints the closed-set certificate.
+
+**Search.**
+- K = 2 (cluster within distance 1 of the centre): **no** candidate with c ≥ 1 for any centre.
+- K = 3, complete: **153** wheel-level candidates (`out/defect_K3_candidates.txt`): 142 with c = 1, 11 with c = 2. **All 153 are
+  removed** by receiver-centred configurations. Tests: 138 dfast runs (`out/def_r1.out`), 181 + 3 cfast runs
+  (`out/def_r1.cfast`, `out/def_open2.cfast`), and the pinched configuration (`out/def_k3g.out`).
+- K = 4: these runs were **partial**, stopped for CPU.
+  - Centre 5: 4,370 candidates checked. Needed 45 dfast + 101 cfast runs (`out/def_k4c5.out`,
+    `out/def_k4c5[ab].cfast`). **3 survive.**
+  - Centre 6: 11,333 checked (`out/def_k4c6.out`). **2 survive**, 2 still open.
+  - Centre 7: 253,839 candidates not checked.
+  - Survivors: `out/defect_K4_survivors.txt`.
+
+**A defect that survives R_opt, fully verified: D3** = `5|55667|776675755|75576667557657` (centre 5; the ring degree
+words follow, then all 6).
+- Y has **11 fives and 10 sevens; c(Y) = +1**, and every other vertex out to distance 4 has degree 6.
+- The 10 sevens have 4, 4, 3, 3, 3, 3, 2, 2, 1, 1 five-neighbours. Two of the 5s are lone senders (57665, 56675). The
+  others have 2–4 big neighbours (55777, 67757, 75757, 77775, 75667, …).
+- `defect_verify.py`:
+  - no separating triangle, no separating 4-cycle and no nontrivial separating 5-cycle within distance 3 of Y;
+  - no diamond or 2.122;
+  - no 5- or 6-wheel word in R (Job 17, fans, the six 565xxx counted as R);
+  - 83 configurations taken from the graph: 43 wheels (5-, 6- and the ten 7-wheels) and 40 receiver-centred, 4 of them
+    the pinched in-G versions. Rings 8–14.
+- **All 83 are not D** (dfast, `out/def_verify_K4.out`) **and have no C-candidate** (cfast |X| ≤ 4:
+  `out/def_verify_D3_[012].cfast` for the 73 non-7-wheels; `out/def_w7_D3_[012].cfast` for its eight 7-wheel words).
+
+**Other survivors, under the pre-registered R_opt only.**
+- The pre-registration tested 7-wheels for D only. A cfast run on 7-wheels shows that many are C-candidates: 11 of the
+  first 18 not-D 7-wheels tested (`out/def_w7_part1.cfast`). One of them is **5666567** (|X| = 4, triad;
+  `out/def_verify_K4_[012].partial.cfast`). Counting C-candidate 7-wheels as reducible is stricter than
+  pre-registered, so it can only make the kill harder.
+- D1 (`5|55667|767666675|765757557756665`, |Y| = 19), D2 (|Y| = 21), E1 (`6|556667|65766755757|5767557666666666`,
+  |Y| = 17) and E2 (|Y| = 19) all contain the 7-wheel 5666567. They survive the pre-registered R_opt but not the
+  strict one.
+- **D3 survives both.** Its eight 7-wheel words have no C-candidate.
+
+**Certificates (exact rationals; dual weight 1 on every row of Y).**
+- Summing the sender rows (Σ out ≥ 1 − t) of D3's 11 fives and the receiver rows (Σ in ≤ 1 + t) of its 10 sevens
+  gives 11(1 − t) ≤ 10(1 + t), so **t* ≥ 1/21**.
+- Transfers between adjacent big vertices cancel inside Y, because every big neighbour of a vertex of Y is in Y.
+- This holds for **(a), (b) and (c)**, and for the rooted-word rules of §6.
+
+| rule class | lower bound on t* | binding receivers | upper bound on t* |
+|---|---|---|---|
+| (a) sender's rooted 2-ball | **1/21** (D3, strict R_opt); 1/17 (E1, pre-registered R_opt) | the ten 7s of D3 | ≤ 5/17 |
+| (b) + 7→7 / 8→7 sharing | **1/21** (Y closed under big adjacency; the sea is 6) | same | ≤ 5/17 |
+| (c) receiver's 2-ball | **1/21** | same | ≤ 5/17 |
+| any single-round rule with reach ρ and information radius r, through 6s as well | 1/\|N_{ρ+r}(Y)\|: 1/43, 1/68, 1/97 for ρ + r = 1, 2, 3 | | |
+
+The upper bound 5/17 is the §6.1 rooted-word optimum with D-only patterns. Every class here contains the rooted-word
+rules, and R_opt ⊇ the D-only R.
+
+The last row needs an argument, because 6s may also send charge:
+- A 6 whose information radius does not reach Y sees a flat hexagonal patch.
+- That view is invariant under the half-turn, so two such vertices send each other equal amounts.
+- Net flow across the boundary of N_{ρ+r}(Y) is therefore 0, while the charge inside is +1.
+
+**Verdict: H7 KILLED** (pre-registered kill criterion: test G found a defect whose every configuration in R_opt is
+tested and non-reducible). No rule class in (a), (b), (c) reaches t* ≤ 0 under R_opt, and **no local rule of any kind
+can**. The receiver-centred family with B free is locally avoidable.
+
+The cone argument of §7 (twelve copies in a geodesic sphere would make R_opt avoidable globally) was not carried out
+here; no sphere was built.
+
+**What removes the defects (engine level, `out/def_bigger16.partial.out`, ring ≤ 16, partial run).**
+- *"B fixed" receiver-centred configurations*: u + S + every link vertex of S at its exact degree, with the shared 7s
+  inside. D for all three of D1–D3: 2 of 29, 3 of 34 and 12 of 60 tested, **rings 12–15**. Examples:
+  `D3_BF_5_0-13` (ring 12) and `D1_BF_5_0-1-14` (ring 14).
+- *5-centred 2-balls with three or more big vertices* (the K-key family beyond K = 2): D at **ring 14–15** for each of
+  D1–D3 (`D3_K5_0`, `D1_K5_0`, `D1_K5_2`, `D2_K5_0`).
+- The exact-degree 2-balls of the 7s have rings 16–20, and the cluster itself (N_1(Y)) has ring 24. Neither was needed.
+
+### 7.2 Sizing (task 4 and the blanket alternatives; `k2plan_size.py`, `out/k2plan_size.txt`)
+
+CPU-h use the Job 22 dfast18 per-ring means. Nothing in this subsection was run.
+
+| family | configurations | ring ≤ 16 | ring 17–19 | ring ≥ 20 (no engine) |
+|---|---|---|---|---|
+| B fixed (7, 8 or free) variants of the 4,008 B-free overloads at a 7 that are neither D nor C-candidate | 557,130 | 203,801 (2,800 CPU-h) | 259,769 (≈ 514,000 CPU-h) | 93,560 |
+| same at an 8 (270 not-D) | 3,114 | 1,605 (24 CPU-h) | 1,384 (1,943 CPU-h) | 125 |
+| **fallback, exact-degree 2-balls at 7s** (completions of the 5,115 §6.1 HARD 7-arrangements; privates 5–8) | 4,220 of the 5,115 contain a letter 9 and have no exact 2-ball; the other 895 give 1.57·10^7 | 44,160 (874 CPU-h) | 318,208 (≈ 9.8·10^5 CPU-h) | 1.53·10^7 |
+| **fallback, 3-balls at 7s** (ring = fourth ring) | 4^13 to 4^40 completions per 2-ball | 1.1% of a random sample have ring ≤ 19 | | median ring 39, max 77 |
+
+- With one completion per arrangement (all privates 6), the exact-degree 2-balls at 7s have rings 14–34, mostly 19–24.
+- The ringf ring formula was checked against the layered build on 334 sampled B-fixed variants: 334 agree.
+- **Reading.** No blanket enumeration is feasible:
+  - 3-balls at 7s: rings are mostly ≥ 20, beyond every engine here;
+  - exact 2-balls at 7s: about 10^6 CPU-h at rings 17–19, and 10^7 configurations at ring ≥ 20;
+  - B-fixed variants: about 5·10^5 CPU-h.
+- The configurations that actually removed the defects (§7.1) are few and small (rings 12–15). That argues for a
+  *guided* loop instead: find a defect or a hard LP row, test only the configurations that kill it, and repeat.

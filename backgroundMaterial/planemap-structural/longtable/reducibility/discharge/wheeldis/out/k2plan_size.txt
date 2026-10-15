@@ -1,0 +1,11 @@
+(A) B-fixed variants of the 4008 not-reducible B-free overloads at d=7: 557130 configurations; rings [(9, 2), (10, 85), (11, 804), (12, 4384), (13, 15119), (14, 35659), (15, 62324), (16, 85424), (17, 96175), (18, 91172), (19, 72422), (20, 47960), (21, 26642), (22, 12371), (23, 4741), (24, 1466), (25, 334), (26, 44), (27, 2)]
+   ring <= 16: 203801 (2799.8 CPU-h); ring 17-19: 259769 (514090 CPU-h); ring >= 20 (no engine): 93560
+   ringf validation on a sample: 300 built, 300 agree, 0 not a simple ring in the free build
+(A) B-fixed variants of the 270 not-reducible B-free overloads at d=8: 3114 configurations; rings [(12, 6), (13, 67), (14, 261), (15, 542), (16, 729), (17, 681), (18, 463), (19, 240), (20, 92), (21, 26), (22, 6), (23, 1)]
+   ring <= 16: 1605 (23.9 CPU-h); ring 17-19: 1384 (1943 CPU-h); ring >= 20 (no engine): 125
+   ringf validation on a sample: 34 built, 34 agree, 0 not a simple ring in the free build
+(B) exact-degree 2-balls of the 5115 HARD 7-arrangements of §6.1 (ring = third ring of u):
+   4220 arrangements contain a letter 9 (degree >= 9: no exact 2-ball); the other 895 have 15652096 completions (privates in 5..8)
+   one completion per arrangement (privates all 6): rings [(14, 3), (15, 13), (16, 27), (17, 41), (18, 66), (19, 89), (20, 105), (21, 99), (22, 103), (23, 93), (24, 75), (25, 50), (26, 50), (27, 25), (28, 16), (29, 17), (30, 12), (31, 7), (32, 3), (34, 1)]
+   all completions (weighted sample): ring <= 16: 44160 (874 CPU-h); 17-19: 318208 (978548 CPU-h); >= 20: 15289728 (no engine)
+(C) 3-balls (ring = fourth ring), 1916 random completions: ring min 12, median 39, max 77; ring <= 19 in 1.10%; the third ring has 13-40 vertices, so 4^13-4^40 completions per (B) configuration
