@@ -42,3 +42,10 @@ Extra facts from smaller maps rule them out:
 **H25.** Steps 1–4 go through with the existing Jordan and surgery lemmas; no new axioms beyond native_decide.
 **Kill.** (a) Step 1 needs a Jordan-type fact not in the repo (report it exactly). (b) Long Table's criterion: if by 1 Nov the
 5-cycle case needs more than this machinery, ship the 4-cycle case (with F1 for 3-cycles) and report the 5-cycle gap.
+
+## Progress log
+- 15 Oct: **step 1 core proved** (`SideCycle.lean`, no `sorry`; axioms propext, Classical.choice, Quot.sound).
+  - `ICycle` (induced r-cycle, r ≥ 3); `cycInd_even`; `exists_cycPotential`; `side_constC`; `keepC`.
+  - `lift_next_farFaceC`: the far run at a cycle vertex lands on the next cycle vertex. This generalises F1's `lift_next_farFace`. The chord case is excluded by `ICycle.ind`, and the back-step by the periodicity argument.
+  - **`kept_ringFace`**: the kept map of side `b` has the cycle as a `RingFace`, in the orientation whose darts see the far side.
+  - Next: the other side's orientation (reversed cycle), support counting, Kempe closure on a `RingFace` side, surgery, and the finite intersection lemma.
