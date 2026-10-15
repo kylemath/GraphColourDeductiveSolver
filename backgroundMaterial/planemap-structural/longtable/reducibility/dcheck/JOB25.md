@@ -75,3 +75,4 @@ Extra facts from smaller maps rule them out:
   - Sabotage checks rejected: wrong side for `z1`, and the second chord fact dropped.
   - Scope: the cycle is assumed induced (`ICycle.ind`). The chord case reduces to separating triangles (F1). Wrapping that reduction is a small follow-up.
 - Next: the 5-cycle (fans and star need face tracking after a split, plus `meet5`).
+- 15 Oct: 5-cycle surgery, part 1: `Sep5Fan.lean`, **`RingFace.fanMap`** (insert `σ0σ2`, then `σ0σ3` in the quadrilateral; face tracking with `split_face_old`) and `RingFace.shift` (fans at every vertex). Next: the star (needs a `Fills` lemma for adding a pendant vertex, `growBefore`, which the library does not have).
