@@ -40,7 +40,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 | Soundness for DCheck16/18 (Studio Job 23) | 2 | Studio | queued after Job 19: one parametrised DCheck (p ≤ 7/8/9), run_sound + R1 for it; until then ring 16–19 Lean runs count as a second implementation, not a proved checker | 7 Nov | `dcheck/` |
 | Independent Coq/Gonthier check of w66666 (Studio Job 20) | 1, 2 | Studio | DONE 15 Oct (d6ead763): Gonthier's fourcolor (Coq 8.20.1, coq-fourcolor 1.4.3) proves `cfreducible cfW` by vm_compute, no axioms; counts 3× ours exactly (7,383/3,660/513 vs 2,461/1,220/171); X admissible incl. triad; Birkhoff diamond control true. Embedding step = our README steps 1–2 | — | `discharge/c66666/` |
 | C-reducibility census of wheels (Studio Job 17) | 1 | Studio | DONE 14 Oct (1502e852): 5-wheels 12 D / 12 C / 102 neither; 6-wheels 25 D / 12 C / 53 neither. H17 SURVIVES: every 5-wheel with link degrees ≤ 6 is D or C. C verdicts other than 66666 are candidates → Job 21 DONE: CWheels.lean, 17 wheels / 34 theorems, 0 sorry, std axioms + native_decide; six 565xxx 6-wheels NOT certified (ring-vertex merge). Job 22 running (LP with wheels in R, K ≤ 2 re-sized) | 24 Oct | `discharge/studio17/` |
-| B3 checker soundness = DCheckSound S1/S3 | 2 | Long Table agent → Studio Job 19 | S1 PROVED, no sorry (c364be83; propext, Classical.choice, Quot.sound); S3(i) nc_matching, S3(ii) flip_chains_proper proved; R1 matchTable complete (b506b96e; native_decide p=4..8). Remaining: R2 project-level glue (ConfigOcc), Studio Job 19 | 7 Nov | `dcheck/README.md` |
+| B3 checker soundness | 2 | Studio | GATE PASSED EARLY 15 Oct (f4ceccf3): ConfigOcc.colorable_of_dReducible proved, no sorry (propext, Classical.choice, Quot.sound + R1 native_decide p=4..8), r ≤ 15, one extra hypothesis (no interior self-loops); sabotage tests rejected. Next: end-to-end on the Birkhoff diamond, then Job 23 (rings 16–19) | 7 Nov | `dcheck/JOB19.md` |
 | B2 Birkhoff separating 4/5-cycle reductions in Lean | 2 | Long Table agent | not started | 7 Nov | — |
 | Arena hard set v1: 302 maps (150 census floor-tight, 50 glued, 2 R0, 100 non-reducible 66666 2-balls); max distance 2–3 | 3 | Studio | DONE 14 Oct | — | arena 883467b; msg 1230 |
 | A6 termination of "fewest locks, never revisit a star" (Studio Job 11) | 3 | Studio | DONE 14 Oct: H survives, 0/361,293 walks fail (2nd impl agrees); no strictly decreasing measure ((lock,−moves) 99.87%; lateral dF 3→3 steps) | parked | msg 1300; 1bf16c16 |
@@ -53,7 +53,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 | Date | Gate | If it fails |
 |---|---|---|
 | 24 Oct | B8: discharging LP answer | Track 1 moves to 3-balls / larger sets; arena hunts the failing cases |
-| 7 Nov | B3 loop invariant + Birkhoff 4-cycle reduction in Lean | paper narrows to checker + certified data |
+| 7 Nov | B3 loop invariant (PASSED 15 Oct, r ≤ 15) + Birkhoff 4-cycle reduction in Lean | paper narrows to checker + certified data |
 | 14 Nov | arena hard-set benchmark + first A6 result | arena becomes falsification support only |
 | 1 Dec | paper outlines frozen; no new lines | keep only evidenced claims |
 | 20 Dec | everything reproduced from a clean checkout | ship what reproduces |
@@ -72,6 +72,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-15 00:45 — Job 19 done: B3 gate passed three weeks early (soundness of DCheck to 4-colourability, r ≤ 15). Notified Kyle (gate result). Remaining Track 2: diamond end-to-end, Job 23, B2 Birkhoff 4-cycle reductions.
 - 2026-10-15 00:25 — Job 20 done: w66666 C-reducible in Gonthier's verified Coq checker. Now three engines (dfast, independent Python, fourcolor) + Lean. Treated as established modulo the embedding argument (README steps 1–2).
 - 2026-10-14 23:50 — Job 20 building (Coq 8.20.1, fourcolor 1.4.3; contract rule only forbids perimeter edges). Studio caveat: DCheckSound covers DCheck.run only; queued Job 23 to parametrise and extend soundness to DCheck16/18.
 - 2026-10-14 23:45 — K = 2 by 2-ball enumeration is infeasible (rings 17–19 ~16,500 CPU-h). Held all K=2 dfast. Started a cloud agent on a wheel-level discharging design (cheaper, uses H17), plus a check of the Rx sub-configuration argument. Accepted Studio's call to run the ring-19 key now (single core, 165 h) so it lands before 24 Oct. 24 Oct gate = K ≤ 1 answer + a K = 2 plan.

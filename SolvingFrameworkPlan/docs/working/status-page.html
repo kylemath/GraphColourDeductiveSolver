@@ -113,7 +113,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="swatch" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yel)"></i><i style="background:var(--grn)"></i><i style="background:var(--blu)"></i></div>
     <h1>Four Colour Programme</h1>
   </div>
-  <div class="asof">updated 15 Oct 2026 · 00:25 MDT</div>
+  <div class="asof">updated 15 Oct 2026 · 00:45 MDT</div>
 </div>
 
 <div class="kpis">
@@ -131,7 +131,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="step done"><span class="n">3</span><span class="t">Curvature budget</span><span class="d">Σ(6 − deg) = 12, so degree-5 vertices must exist (Euler)</span><span class="st">done</span></div>
     <div class="step now"><span class="here">we are here</span><span class="n">4</span><span class="t">Unavoidability</span><span class="d">Every 5 surrounded by 6s is now reducible (Lean). Re-running the discharging LP with that in the set (B8b)</span><span class="st">testing</span></div>
     <div class="step part"><span class="n">5</span><span class="t">Reducibility</span><span class="d">Each 2-ball in the family is D-reducible. All 1,440 at rings 8–13 proved in Lean</span><span class="st">partial</span></div>
-    <div class="step part"><span class="n">6</span><span class="t">Checker sound ⇒ 4CT</span><span class="d">Lean: loop correctness and matching table proved; one glue step (R2) left</span><span class="st">mostly done</span></div>
+    <div class="step part"><span class="n">6</span><span class="t">Checker sound ⇒ 4CT</span><span class="d">Lean: "checker says reducible" ⇒ 4-colourable, proved for rings ≤ 15. Rings 16–19 next</span><span class="st">done to ring 15</span></div>
   </div>
   <div class="legend">
     <span style="--c:var(--done)">done</span><span style="--c:var(--part)">partly done</span><span style="--c:var(--now)">current focus</span><span style="--c:var(--todo)">not started</span>
@@ -151,7 +151,7 @@ code{font-family:var(--mono);font-size:.86em}
     <h2>Running now</h2>
     <div class="job"><span class="dot held"></span><div><div class="t">Discharging LP with the new wheels</div><div class="d">17 wheels now Lean-certified. Re-sizing the two-big-vertex case (330 CPU-hours before the wheels).</div><div class="w">Studio Job 22 · step 4 · running</div></div></div>
     <div class="job"><span class="dot held"></span><div><div class="t">Lean for the last 44 large senders</div><div class="d">All 47 are reducible by the C++ checker, so the one-big-vertex discharging case closes; Lean has to agree on every one before it counts.</div><div class="w">Studio · step 4 · running · gate 24 Oct</div></div></div>
-    <div class="job"><span class="dot held"></span><div><div class="t">Last piece of checker soundness (R2)</div><div class="d">Connect the proved checker to the project's planar-map definitions.</div><div class="w">Studio Job 19 · step 6 · gate 7 Nov</div></div></div>
+    <div class="job"><span class="dot held"></span><div><div class="t">Extend the soundness proof to rings 16–19</div><div class="d">One parametrised checker, so the larger runs sit under the proof too.</div><div class="w">Studio Job 23 · step 6</div></div></div>
     <div class="job"><span class="dot held"></span><div><div class="t">Wheel-level discharging rules</div><div class="d">The two-big-vertex case is too big to enumerate (92,771 2-balls); trying rules built on "every 5 touches a 7+" instead.</div><div class="w">Coordinator agent · step 4 · gate 24 Oct</div></div></div>
   </section>
 
@@ -160,7 +160,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="tl">
       <div class="g today"><span class="dt">14 Oct · today</span><span class="t">66666 reducible; checker loop proved; LP re-run next</span></div>
       <div class="g" style="--c:var(--blu)"><span class="dt">24 Oct</span><span class="t">B8 answer: is a reducible 2-ball unavoidable?</span><span class="f">if not → 3-balls / larger family</span></div>
-      <div class="g" style="--c:var(--yel)"><span class="dt">7 Nov</span><span class="t">Checker soundness + Birkhoff 4-cycle in Lean</span><span class="f">if not → paper on checker + certified data</span></div>
+      <div class="g" style="--c:var(--grn)"><span class="dt">7 Nov</span><span class="t">Checker soundness ✓ (15 Oct) + Birkhoff 4-cycle in Lean</span><span class="f">if not → paper on checker + certified data</span></div>
       <div class="g" style="--c:var(--grn)"><span class="dt">14 Nov</span><span class="t">RL arena benchmark on the hard set</span><span class="f">if not → arena supports falsification only</span></div>
       <div class="g"><span class="dt">1 Dec</span><span class="t">Paper outlines frozen; no new lines</span></div>
       <div class="g"><span class="dt">20 Dec</span><span class="t">Everything reproduced from a clean checkout</span></div>
@@ -187,11 +187,11 @@ code{font-family:var(--mono);font-size:.86em}
   <section class="panel">
     <h2>Recent results</h2>
     <div class="res">
+      <div class="r"><span class="k ok">15 Oct</span><div><div class="t">Checker soundness proved in Lean (rings ≤ 15)</div><div class="d">"Checker says reducible" now implies 4-colourable, with no gaps. The 7 Nov gate passed three weeks early.</div></div></div>
       <div class="r"><span class="k ok">15 Oct</span><div><div class="t">Gonthier's verified Coq checker confirms the 66666 reduction</div><div class="d">The checker from the formal 4CT proof accepts it with no axioms. Three independent engines plus Lean now agree.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">One-big-vertex discharging case closes (checker; Lean pending)</div><div class="d">Every sender 2-ball with at most one 7 or 8 is reducible, so the discharging LP is feasible there.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Every 5 whose neighbours are all ≤ 6 is reducible</div><div class="d">Wheel census: 24 of 126 5-wheels reducible on their own, including all with neighbour degrees ≤ 6 (Lean pending for the new ones). So a 5 in a counterexample must touch a 7 or 8.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Checker loop correctness proved in Lean</div><div class="d">No sorry, standard axioms; matching table proved complete. Three weeks ahead of the 7 Nov gate.</div></div></div>
-      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Every sender 2-ball up to ring 16 is reducible</div><div class="d">2,848 by D-reducibility, the other 5 by the 66666 result.</div></div></div>
     </div>
   </section>
 </div>
