@@ -113,7 +113,7 @@ code{font-family:var(--mono);font-size:.86em}
     <div class="swatch" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yel)"></i><i style="background:var(--grn)"></i><i style="background:var(--blu)"></i></div>
     <h1>Four Colour Programme</h1>
   </div>
-  <div class="asof">updated 14 Oct 2026 · 17:10 MDT</div>
+  <div class="asof">updated 14 Oct 2026 · 23:35 MDT</div>
 </div>
 
 <div class="kpis">
@@ -149,8 +149,8 @@ code{font-family:var(--mono);font-size:.86em}
 <div class="cols">
   <section class="panel">
     <h2>Running now</h2>
-    <div class="job"><span class="dot held"></span><div><div class="t">Lean for the 23 new reducible wheels</div><div class="d">Then re-run the discharging LP with them; they may shrink the big 330 CPU-hour run to something small.</div><div class="w">Studio Jobs 21–22 · step 4 · after the 47 senders</div></div></div>
-    <div class="job"><span class="dot held"></span><div><div class="t">The last 47 one-big-vertex senders (running)</div><div class="d">The hemi8 obstruction is gone; these 47 large 2-balls are all that stands between us and the simplest discharging case.</div><div class="w">Studio · step 4 · running · gate 24 Oct</div></div></div>
+    <div class="job"><span class="dot held"></span><div><div class="t">Discharging LP with the new wheels</div><div class="d">17 wheels now Lean-certified. Re-sizing the two-big-vertex case (330 CPU-hours before the wheels).</div><div class="w">Studio Job 22 · step 4 · running</div></div></div>
+    <div class="job"><span class="dot held"></span><div><div class="t">Lean for the last 44 large senders</div><div class="d">All 47 are reducible by the C++ checker, so the one-big-vertex discharging case closes; Lean has to agree on every one before it counts.</div><div class="w">Studio · step 4 · running · gate 24 Oct</div></div></div>
     <div class="job"><span class="dot held"></span><div><div class="t">Last piece of checker soundness (R2)</div><div class="d">Connect the proved checker to the project's planar-map definitions.</div><div class="w">Studio Job 19 · step 6 · gate 7 Nov</div></div></div>
     <div class="job"><span class="dot held"></span><div><div class="t">Check the 66666 result in Gonthier's Coq checker</div><div class="d">A second, independent verified checker.</div><div class="w">Studio Job 20 · step 4 · install approved, queued</div></div></div>
   </section>
@@ -187,11 +187,11 @@ code{font-family:var(--mono);font-size:.86em}
   <section class="panel">
     <h2>Recent results</h2>
     <div class="res">
+      <div class="r"><span class="k ok">14 Oct</span><div><div class="t">One-big-vertex discharging case closes (checker; Lean pending)</div><div class="d">Every sender 2-ball with at most one 7 or 8 is reducible, so the discharging LP is feasible there.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Every 5 whose neighbours are all ≤ 6 is reducible</div><div class="d">Wheel census: 24 of 126 5-wheels reducible on their own, including all with neighbour degrees ≤ 6 (Lean pending for the new ones). So a 5 in a counterexample must touch a 7 or 8.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Checker loop correctness proved in Lean</div><div class="d">No sorry, standard axioms; matching table proved complete. Three weeks ahead of the 7 Nov gate.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">Every sender 2-ball up to ring 16 is reducible</div><div class="d">2,848 by D-reducibility, the other 5 by the 66666 result.</div></div></div>
       <div class="r"><span class="k ok">14 Oct</span><div><div class="t">A degree-5 vertex with five degree-6 neighbours is reducible</div><div class="d">C-reducible by contracting 4 edges; two independent checkers agree and Lean confirms. The hemi8 obstruction and every 66666 sender disappear.</div></div></div>
-      <div class="r"><span class="k no">14 Oct</span><div><div class="t">hemi8: a map where no degree-5 2-ball is D-reducible</div><div class="d">So 2-balls around degree-5 vertices cannot be the whole unavoidable set, and the simple discharging LP is infeasible (t = 2/3). 2-balls centred on the degree-8 vertex do reduce.</div></div></div>
     </div>
   </section>
 </div>
