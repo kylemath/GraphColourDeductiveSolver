@@ -1,5 +1,5 @@
 import DCheckR2B
-import DCheckR1
+import DCheckR1T
 
 /-! Job 19 piece (E), abstract part: from a ring colour sequence `f` and an equivalence `E` on ring
 positions ("same θ-Kempe chain") with the local properties of Kempe chains on a ring face, build a
@@ -352,8 +352,9 @@ variable (hf : ∀ t, f t < 4) (hθ1 : 1 ≤ θ) (hθ3 : θ ≤ 3)
 include hE hf hθ1 hθ3 hstep hEcls hNC in
 /-- **The abstract (S3) matching.** Some `matchTable` labelling gives equal labels to the arcs of
 any two linked ring positions. -/
-theorem abstract_matching (hr1 : 1 ≤ r) (hr : r ≤ 15) (hn : (TL r θ f).length ≠ 0) :
-    ∃ lab ∈ matchTable[(transitions r (code f r) θ).size / 2]!,
+theorem abstract_matching (hr1 : 1 ≤ r) (N : Nat) (hN : N ≤ 10) (hr : r < 2 * N)
+    (hn : (TL r θ f).length ≠ 0) :
+    ∃ lab ∈ (matchTableN N)[(transitions r (code f r) θ).size / 2]!,
       ∀ t t', t < r → t' < r → E t t' →
         lab[arcOf (transitions r (code f r) θ) t]! = lab[arcOf (transitions r (code f r) θ) t']! := by
   classical
@@ -396,7 +397,7 @@ theorem abstract_matching (hr1 : 1 ≤ r) (hr : r ≤ 15) (hn : (TL r θ f).leng
     have := pj.symm.trans pj'
     omega
   obtain ⟨μ, hμ, hsame⟩ := S3.nc_matching p c hNCL hPar
-  obtain ⟨lab, hlab, hlabiff⟩ := R1.matchTable_complete p (by omega) μ hμ
+  obtain ⟨lab, hlab, hlabiff⟩ := R1.matchTableN_complete N hN p (by omega) μ hμ
   refine ⟨lab, ?_, ?_⟩
   · rw [transitions_size, ← hn2, hp, Nat.mul_div_cancel_left _ (by decide)]; exact hlab
   · intro t t' ht ht' htt

@@ -1,6 +1,8 @@
 import Mathlib.Combinatorics.SimpleGraph.PlaneMap.RingReduce
 import DCheckR2A
 import DCheckR2C
+import DCheckS1T
+import DCheckTEq
 
 /-! Job 19 piece (E), geometric part, and (F): `KempeMatching` for the ring codes realised by
 proper colourings of the deleted map `G` of a `ConfigOcc`, and the D-reducibility glue
@@ -159,10 +161,11 @@ theorem ConfigOcc.ring_per (O : ConfigOcc T G r m ρ ι intAdj ringAdj) (v : ℕ
   · left; rw [Nat.mod_eq_of_lt h]
   · right; omega
 
-/-- **R2: `KempeMatching`** for the ring codes of proper colourings of `G` (rings `r ≤ 15`). -/
+/-- **R2: `KempeMatching`** for the ring codes of proper colourings of `G`, for the table
+`matchTableN N` (`N ≤ 10`) and rings `r < 2N`. -/
 theorem ConfigOcc.kempeMatching (O : ConfigOcc T G r m ρ ι intAdj ringAdj) (cf : Conf)
-    (hr : cf.r = r) (hr15 : r ≤ 15) :
-    KempeMatching cf (fun k => ∃ c : Fin n → Fin 4, ProperOff G.graph O.hole c ∧
+    (N : ℕ) (hN : N ≤ 10) (hr : cf.r = r) (hrN : r < 2 * N) :
+    KempeMatchingT (matchTableN N) cf (fun k => ∃ c : Fin n → Fin 4, ProperOff G.graph O.hole c ∧
       k = code (ringSeq ρ c) r) := by
   classical
   intro k θ ⟨c, hc, hk⟩ hθ1 hθ3 hT
@@ -200,7 +203,7 @@ theorem ConfigOcc.kempeMatching (O : ConfigOcc T G r m ρ ι intAdj ringAdj) (cf
   have hNC : ∀ i j k l, i < j → j < k → k < l → l < r → E i k → E j l → E i j :=
     fun i j k l hij hjk hkl hlr h1 h2 => O.theta_nc hc hθ hij hjk hkl hlr h1 h2
   have hn : (TL r θ f).length ≠ 0 := by rw [← transitions_size]; exact hT
-  obtain ⟨lab, hlab, hlabE⟩ := abstract_matching r θ f E hE hf hθ1 hθ3 hstep hEcls hNC hr1 hr15 hn
+  obtain ⟨lab, hlab, hlabE⟩ := abstract_matching r θ f E hE hf hθ1 hθ3 hstep hEcls hNC hr1 N hN hrN hn
   refine ⟨lab, hlab, fun s => ?_⟩
   -- the flip
   let sel : ℕ → Bool := fun t => decide (lab[arcOf (transitions r (code f r) θ) t]! ≠ 0) &&
@@ -242,10 +245,11 @@ theorem ConfigOcc.kempeMatching (O : ConfigOcc T G r m ρ ι intAdj ringAdj) (cf
 def intAdjOf (cf : Conf) (a b : Fin cf.m) : Bool := decide (b.val ∈ cf.intAdj[a.val]!)
 def ringAdjOf (cf : Conf) (a : Fin cf.m) (t : ℕ) : Bool := decide (t ∈ cf.ringAdj[a.val]!)
 
-/-- **(F) D-reducibility glue.** A configuration accepted by `DCheck.dReducible`, occurring in `T`
-with the deleted map `G` colourable off the hole, makes `T` 4-colourable (rings `2 ≤ r ≤ 15`). -/
-theorem ConfigOcc.colorable_of_dReducible (cf : Conf) (hD : dReducible cf = true)
-    (hr2 : 2 ≤ cf.r) (hr15 : cf.r ≤ 15)
+/-- **(F) D-reducibility glue, parametrised.** A configuration accepted by `dReducibleT (matchTableN N)`,
+occurring in `T` with the deleted map `G` colourable off the hole, makes `T` 4-colourable
+(`N ≤ 10`, rings `2 ≤ r < 2N`). -/
+theorem ConfigOcc.colorable_of_dReducibleT (N : ℕ) (hN : N ≤ 10) (cf : Conf)
+    (hD : dReducibleT (matchTableN N) cf = true) (hr2 : 2 ≤ cf.r) (hrN : cf.r < 2 * N)
     (hsym : ∀ a b, intAdjOf cf a b = true → intAdjOf cf b a = true)
     (hloop : ∀ a, intAdjOf cf a a = false)
     {ρ : ℕ → Fin n} {ι : Fin cf.m → Fin n}
@@ -274,8 +278,8 @@ theorem ConfigOcc.colorable_of_dReducible (cf : Conf) (hD : dReducible cf = true
     · rw [Nat.mod_eq_of_lt hi1] at h; exact O.ring_proper hc1 i (Fin.ext h)
     · rw [show (i + 1) % cf.r = 0 by rw [show i + 1 = cf.r by omega, Nat.mod_self]] at h
       exact O.ring_proper_wrap hc1 i (by omega) (Fin.ext h)
-  obtain ⟨k', ⟨c', hc', rfl⟩, hext⟩ := dReducible_sound cf hD hr2 P hcanon
-    (O.kempeMatching cf rfl hr15) hprop _ ⟨c, hc, rfl⟩
+  obtain ⟨k', ⟨c', hc', rfl⟩, hext⟩ := dReducible_soundT (matchTableN N) cf hD hr2 P hcanon
+    (O.kempeMatching cf N hN rfl hrN) hprop _ ⟨c, hc, rfl⟩
   obtain ⟨out, hsz, hlo, hok⟩ := extendsQ_sound cf _ hext
   let lam : Fin cf.m → Fin 4 := fun a => ⟨out[a.val]!, hlo a.val (by rw [hsz]; exact a.isLt)⟩
   refine O.colorable_of_ext hc' 1 (fun t => c' (ρ t)) (fun t _ => rfl) lam ?_ ?_ hsym
@@ -293,7 +297,42 @@ theorem ConfigOcc.colorable_of_dReducible (cf : Conf) (hD : dReducible cf = true
     simp only [ringSeq]
     exact (congrArg Fin.val heq).symm
 
+/-- **(F) for `DCheck`** (rings `2 ≤ r ≤ 15`). -/
+theorem ConfigOcc.colorable_of_dReducible (cf : Conf) (hD : dReducible cf = true)
+    (hr2 : 2 ≤ cf.r) (hr15 : cf.r ≤ 15)
+    (hsym : ∀ a b, intAdjOf cf a b = true → intAdjOf cf b a = true)
+    (hloop : ∀ a, intAdjOf cf a a = false)
+    {ρ : ℕ → Fin n} {ι : Fin cf.m → Fin n}
+    (O : ConfigOcc T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    {c : Fin n → Fin 4} (hc : ProperOff G.graph O.hole c) : T.graph.Colorable 4 :=
+  O.colorable_of_dReducibleT 8 (by decide) cf (by rw [← dReducible_eq_T]; exact hD) hr2 (by omega)
+    hsym hloop hc
+
+/-- **(F) for `DCheck16`** (rings `2 ≤ r ≤ 17`). -/
+theorem ConfigOcc.colorable_of_dReducible16 (cf : DCheck16.Conf) (hD : DCheck16.dReducible cf = true)
+    (hr2 : 2 ≤ cf.r) (hr : cf.r ≤ 17)
+    (hsym : ∀ a b, intAdjOf (Conf.of16 cf) a b = true → intAdjOf (Conf.of16 cf) b a = true)
+    (hloop : ∀ a, intAdjOf (Conf.of16 cf) a a = false)
+    {ρ : ℕ → Fin n} {ι : Fin cf.m → Fin n}
+    (O : ConfigOcc T G cf.r cf.m ρ ι (intAdjOf (Conf.of16 cf)) (ringAdjOf (Conf.of16 cf)))
+    {c : Fin n → Fin 4} (hc : ProperOff G.graph O.hole c) : T.graph.Colorable 4 :=
+  ConfigOcc.colorable_of_dReducibleT (cf := Conf.of16 cf) 9 (by decide)
+    (by rw [← dReducible16_eq_T]; exact hD) hr2 (by show cf.r < 2 * 9; omega) hsym hloop O hc
+
+/-- **(F) for `DCheck18`** (rings `2 ≤ r ≤ 19`; the studio14c/14d runs). -/
+theorem ConfigOcc.colorable_of_dReducible18 (cf : DCheck18.Conf) (hD : DCheck18.dReducible cf = true)
+    (hr2 : 2 ≤ cf.r) (hr : cf.r ≤ 19)
+    (hsym : ∀ a b, intAdjOf (Conf.of18 cf) a b = true → intAdjOf (Conf.of18 cf) b a = true)
+    (hloop : ∀ a, intAdjOf (Conf.of18 cf) a a = false)
+    {ρ : ℕ → Fin n} {ι : Fin cf.m → Fin n}
+    (O : ConfigOcc T G cf.r cf.m ρ ι (intAdjOf (Conf.of18 cf)) (ringAdjOf (Conf.of18 cf)))
+    {c : Fin n → Fin 4} (hc : ProperOff G.graph O.hole c) : T.graph.Colorable 4 :=
+  ConfigOcc.colorable_of_dReducibleT (cf := Conf.of18 cf) 10 (by decide)
+    (by rw [← dReducible18_eq_T]; exact hD) hr2 (by show cf.r < 2 * 10; omega) hsym hloop O hc
+
 end SimpleGraph.SphericalMap
 
 #print axioms SimpleGraph.SphericalMap.ConfigOcc.kempeMatching
 #print axioms SimpleGraph.SphericalMap.ConfigOcc.colorable_of_dReducible
+#print axioms SimpleGraph.SphericalMap.ConfigOcc.colorable_of_dReducible16
+#print axioms SimpleGraph.SphericalMap.ConfigOcc.colorable_of_dReducible18
