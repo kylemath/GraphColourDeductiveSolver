@@ -461,5 +461,6 @@ over-count.)
   not feasible on this box; ring ≤ 16 is (about 2 days on 12 cores).
 - **Discrepancy with §9.1.** With the C wheels and the Studio D results both off, this enumeration (the k1keys.py
   code with ≤ 2 big vertices) gives 104,743 non-66666 non-R K = 2 keys, against 107,279 in §9.1. The K = 1 counts
-  agree exactly. The §9.1 sizing script was not committed, so the 2,536-key gap is not explained.
+  agree exactly. The §9.1 figure came from an uncommitted B8 §7 script; the 2,536-key gap is logged as unexplained
+  and not pursued (Long Table, 15 Oct). K = 2 dfast18 runs are on hold.
 - Not done: the K = 2 LP itself (receiver DP of §8.4 item 3 not built).
