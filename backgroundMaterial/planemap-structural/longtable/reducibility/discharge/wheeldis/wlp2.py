@@ -101,6 +101,25 @@ def add_rows(dlist, many):
             A_ub.append(row); b_ub.append(d - 6); rec_rows.append((d, path)); added += 1
     return added
 DS = list(range(7, 13)); DSF = list(range(7, 31))
+WARM = next((a[5:] for a in ARGS if a.startswith('warm=')), None)   # earlier tight/row file: reuse rows still allowed
+def check(d, lk, sv):
+    SEP.stdin.write('c %d %s %s\n' % (d, lk, sv)); SEP.stdin.flush(); return SEP.stdout.readline().strip() == '1'
+nwarm = 0
+if WARM:
+    import re as _re
+    for line in open(WARM):
+        m = _re.search(r'receiver d=(\d+) link (\d+) s (\d+)', line)
+        if not m: continue
+        d, lk, sv = int(m.group(1)), m.group(2), m.group(3)
+        if d > DMAXP or not check(d, lk, sv): continue
+        U = min(d, 9); w = [int(c) for c in lk]; s_ = [int(c) for c in sv]
+        path = tuple(sorted(root([U, w[(i + 1) % d], s_[i], s_[(i - 1) % d], w[(i - 1) % d]], 0) for i in range(d) if w[i] == 5))
+        if (d, path) in have: continue
+        have.add((d, path)); info[(d, path)] = (lk, sv); row = np.zeros(nv); row[-1] = -1
+        for r in path: row[ix[r]] += 1
+        A_ub.append(row); b_ub.append(d - 6); rec_rows.append((d, path)); nwarm += 1
+    print('warm rows', nwarm, flush=True)
+ALLF = next((a[8:] for a in ARGS if a.startswith('allrows=')), None)   # write every receiver row's arrangement
 yv = np.ones(nv - 1); t = 0.0
 for it in range(5000):
     res = linprog(np.eye(nv)[-1], A_ub=np.array(A_ub), b_ub=np.array(b_ub),
@@ -148,6 +167,7 @@ tight = ['  receiver d=%d link %s s %s' % ((d,) + info.get((d, path), ('?', '?')
          if slack[ns + k] < 1e-7]
 TF = next((a[6:] for a in ARGS if a.startswith('tight=')), None)
 if TF: open(TF, 'w').write('\n'.join(tight) + '\n')
+if ALLF: open(ALLF, 'w').write('\n'.join('  receiver d=%d link %s s %s' % ((d,) + info[(d, path)]) for d, path in rec_rows if (d, path) in info) + '\n')
 out.append('tight receiver rows at the optimum: %d' % len(tight))
 open(os.path.join(HERE, 'out', 'wlp2_%s.txt' % TAG), 'w').write('\n'.join(out) + '\n')
 print('\n'.join(out[:80]))

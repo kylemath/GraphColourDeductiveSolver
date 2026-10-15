@@ -177,6 +177,21 @@ int main(int argc, char **argv) {
     char cmd[8];
     vector<double> y(NV);
     while (scanf("%7s", cmd) == 1) {
+        if (cmd[0] == 'c') {   // "c d link s": is this arrangement free of forbidden patterns (and not an RBIG wheel)?
+            char lb[40], sb[40];
+            if (scanf("%d %39s %39s", &d, lb, sb) != 3) return 10;
+            ui = d == 7 ? 0 : d == 8 ? 1 : 2; bool ok = true;
+            for (int i = 0; i < d; i++) { wl[i] = lb[i] - '5'; sl[i] = sb[i] - '5'; }
+            if ((d == 7 || d == 8) && RBIG.count(canonWord(lb))) ok = false;
+            for (int i = 0; i < d && ok; i++) {
+                int st = wl[(i + d - 1) % d] * 25 + sl[(i + d - 1) % d] * 5 + wl[i], c = sl[i] * 5 + wl[(i + 1) % d];
+                if (!AL[ui][st][c]) { ok = false; break; }
+                code[i] = wl[i] == 0 ? CO[ui][st][c] : -1;
+            }
+            // pattern check needs all codes: test every position as the 'last' one in index order
+            for (int i = 0; i < d && ok; i++) if (wl[i] == 0 && forbidden(i)) ok = false;
+            printf("%d\n", ok ? 1 : 0); fflush(stdout); continue;
+        }
         if (scanf("%d %lf %d %d", &d, &thr, &maxout, &omax) != 4) return 8;
         for (auto &x : y) if (scanf("%lf", &x) != 1) return 9;
         ui = d == 7 ? 0 : d == 8 ? 1 : 2;

@@ -49,8 +49,8 @@ out = ['# hardlp %s%s: %d HARD receiver rows; t_hard = %.6f' % (' '.join(FILES),
        'dual certificate:']
 for i, dv in enumerate(duals):
     if dv > 1e-9:
-        if i < ns: out.append('  %.4f  sender %s' % (dv, ''.join(map(str, senders[i]))))
+        if i < ns: out.append('  %.10f  sender %s' % (dv, ''.join(map(str, senders[i]))))
         else:
             d, path = keys[i - ns]; lk, sv = rows[(d, path)]
-            out.append('  %.4f  receiver d=%d link %s s %s: %s' % (dv, d, lk, sv, ' '.join('%d|%s' % (r[0], ''.join(map(str, r[1:]))) for r in path)))
+            out.append('  %.10f  receiver d=%d link %s s %s: %s' % (dv, d, lk, sv, ' '.join('%d|%s' % (r[0], ''.join(map(str, r[1:]))) for r in path)))
 open(OUTF, 'w').write('\n'.join(out) + '\n'); print('\n'.join(out))

@@ -243,3 +243,69 @@ report the binding receiver (d, link word, s word, senders) and the pattern fami
 All D verdicts in this section are dfast only (engine level, no second engine, no Lean): nothing here counts as a
 claim. Also unproved for receiver-centred configurations: that they appear in G as built (the degree-5 regularity
 proof of §3 does not cover a degree-7..15 centre).
+
+### 6.1 Results (15–16 Oct 2026; dfast only, engine level, no second engine, no Lean)
+
+**Correction to §2.1.** The table rows sum to **7,698 D / 5,015 not D** (12,713), not 7,733 / 4,980.
+`out/eq_D7_dfast.out` has 7,698 D lines. Job 27's list (`job27/notD.txt`) has the right count, 5,015.
+
+**Tools.**
+- `wlp2.py` + `sep.cpp`: the §1 LP. Receiver rows for exact d = 7..15 come from an exact branch-and-bound separation
+  (`bin/sep`) that skips every arrangement containing a forbidden pattern. Rows for d = 16..30 use the plain DP, and
+  the Karp letter-9 bound covers larger d.
+- Validation: it reproduces t* = 1/2 (`out/wlp2_val0.txt`) and t* = 3/7 (lone caps as patterns, `out/wlp2_lone78.txt`).
+- `gen.py`: LP-guided configurations. For a receiver arrangement, every sender set S (|S| ≥ 2) gives a pairs2-type
+  configuration: u + S + the links of S, with B free. Its ring is counted by an Euler formula, which matches all 18,456
+  earlier builds. Greedy mode tests each arrangement's cheapest untested S until either one is D (the arrangement is
+  killed) or every S with ring ≤ 16 has been tested and none is D (the arrangement is **HARD**).
+- `hardlp.py`: the LP with sender rows plus HARD receiver rows only. Its optimum t_hard is a **lower bound** that no
+  further D verdict at ring ≤ 16 can lower. Its dual certificates were rechecked in exact rational arithmetic.
+
+**Configurations tested (dfast, ring ≤ 16).**
+- d = 8 equal-split minimal overloads, k = 3 (`pairs2.py 8 3`; `eq_D8_k3.txt.gz`, `out/eq_D8_k3_dfast.out`):
+  **3,192 D of 3,462**. All 3,462 with ring ≤ 16 are done; 10 at ring 17–18 are untested.
+  - By type (D/not): 1+1+1 256/0, 1+1+1/2 1,795/6, 1+1+1/3 906/215, 1+1+1/4 214/47, 1+1+1/5 21/2.
+- LP-guided sender sets from tight rows of 9 LP rounds (`out/lp_dfast.out`): **433 D of 6,345**.
+  - By receiver degree (D/total): d = 7 68/1,782, 8 224/2,418, 9 133/2,045, 10 8/100.
+  - Small sender sets that are not minimal overloads are mostly not D.
+- d = 10..15 minimal-overload families were not enumerated in full. pairs2-style enumeration is 3^(~13+) per sender
+  set, and the families run to 10^4–10^6 classes at rings 12–22.
+  - Lone-sender sizes (`pairs.py d d−5`): d = 10 has 976 classes (556 at ring ≤ 16); d = 11 has 836 (263); d = 12 has
+    452 (45). From d = 12 on, rings are mostly ≥ 17.
+  - dfast on the d = 10 lone-5 family is running; it is reported in §6.2 if it finishes.
+
+**Hard results: t* > 0 in both cases (H6 KILLED).**
+
+| case | patterns forbidden | upper bound t_D (full LP) | lower bound t_hard (HARD rows) |
+|---|---|---|---|
+| D only (`out/hardlp_noC.txt`) | all D above + lone families + D overloads at 7 | **5/17 ≈ 0.294** (`out/wlp2_A6.txt`) | **47/163 ≈ 0.288** |
+| every one of the 5,015 not-D overloads at a 7 treated as reducible (Job 27 upper bound; `out/hardlp_allC.txt`) | as above + all 12,713 overloads at 7 | **2/7 ≈ 0.286** (`out/wlp2_B4.txt`) | **24/227 ≈ 0.106** |
+| same, d = 7 receivers only (`out/hardlp_allC_d7only.txt`) | — | — | **1/23 ≈ 0.043** |
+
+- The lower bounds come from 8,015 HARD arrangements (`out/hard_rows.txt`: d = 7 5,115, d = 8 2,716, d = 9 184;
+  5,771 contain no Job 27 configuration). In each, every sender set with ring ≤ 16 has been tested by dfast and is not
+  D.
+- So **no D verdict on receiver-centred configurations of this type at ring ≤ 16 can make t* ≤ 0**. The same holds
+  with every pending C verdict counted as a success, and with d = 7 alone. No verdict on this pattern class can close
+  d = 7 for rooted-word rules.
+- **Binding receivers.**
+  - D only: always **d = 7**. Example certificate: link 5567576, s 5755556, roots 7|5566 + 7|5576 + 7|7557. That is a
+    lone 55667 sender plus a 55767 sender, whose two 7s have the same rooted word, so each 7 owes it (1−t)/2.
+  - With all C counted: d = 7 and d = 8 receivers whose senders mix 7s and 8s, e.g. 7: link 5857585, s 7588575.
+  - The d = 7-only certificate uses senders 57577, 57677 and 57777, i.e. 5s with three big neighbours. Example
+    receivers: link 5575575, s 7777777; link 5657575, s 7755787.
+- In the full LP (t_D) the binding receivers are d = 7, 8 and 9 at once; under "all C" d = 10 also binds, with 6 lone
+  senders at a 10, which needs the lone-5-at-10 family. λ₉ ≈ 0.48, so d ≥ 11 are slack in both runs.
+- Without C, the noC certificate needs the 9 pending configurations listed below to be not C. Each is in Job 27's list:
+  `e7_556...6_5B....6_1110001`, `e7_B5B655._56.65.._1111110`, `e7_B55B565_B6.B565_1111111`, `e7_B55B56._B6B56.._1111110`,
+  `e7_B55B565_B6.565B_1111111`, `e7_B55B565_.66565B_1111111`, `e7_B55B56._666B5.._1111110`,
+  `e7_B55B565_.66B565_1111111`, `e7_B55B56._66656.._1111110`. The "all C" row of the table does not depend on them.
+
+**Reading.**
+- The obstruction lives in the rule class. A rooted-word rule cannot tell apart two big neighbours whose rooted words
+  are equal, and many binding senders have 2–3 free big neighbours (B).
+- What could still help:
+  - B fixed to 7 or 8 inside the configuration (bigger rings, 17+);
+  - C verdicts on the 5,912 LP-guided not-D sender sets (no cfast run here);
+  - rules that look past the sender's link, e.g. the receiver's other senders.
+- Untested: whether receiver-centred configurations appear in G as built (§6 caveat).
