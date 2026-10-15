@@ -94,3 +94,29 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
   Therefore every sender in a minimal counterexample yields a census key whose certificate applies (once B lands).
   B8 §8.3 item 5's assumption "the second ring is simple and chordless" is a **consequence** of B2, not an extra
   assumption.
+
+## Route B, refined by a hand analysis (15 Oct)
+- **The vertex-level Kempe matching itself can fail for a pinched ring.** Example: ring positions 0..5 with u at 0 and 3.
+  - Chains: an {a,b}-chain A through positions 1, u, 4, and a {c,d}-chain B joining positions 2 and 5. This is consistent
+    with planarity: A reaches u through one sector and leaves through the other.
+  - The only non-crossing pairing of transitions puts arc [3,4] alone in a region. Flipping that region would recolour u on
+    one side only, so the flip is not proper. `KempeMatching` (realised codes of `T − K`) fails.
+  - So route B cannot just "weaken the Jordan lemma".
+- **What Gonthier really does.** His remainder map (the complement of the embedded disk *darts*) splits the pinched face u into
+  its sectors. Remainder colourings may colour the sectors differently, and the Kempe closure is taken over that larger set.
+  Consistency at u returns only when patching: a planar edge 3-colouring of the whole map always gives a face 4-colouring.
+- **Faithful primal version.**
+  1. **Unpinch:** split each pinch vertex u of the outside map `G'` into its sector copies, reusing isolated interior
+     labels. The result `G''` has the configuration's face as a simple ring (`RingFace`), so `colorable`'s Kempe part
+     (`kempeMatching`, R2) applies **unchanged**. A colouring of `G'` is a colouring of `G''`, so the starting code is realised.
+  2. **Glue by potentials:** from the extending colouring of `G''` and the interior colouring λ (a colouring of the free
+     completion), label every edge of T with the colour difference in (Z/2)². Every triangle of T is a triangle of `G''` or
+     of the free completion, so the labels sum to 0 around every face.
+  3. **Fills (coordinate-wise over ZMod 2)** gives a vertex function with those differences: a proper 4-colouring of T.
+     Here the pinch identification is recovered by planarity, exactly as in Gonthier.
+- **New pieces:**
+  - (i) the (Z/2)² potential gluing lemma (general, moderate);
+  - (ii) vertex splitting at a face pinch, as a `SphericalMap` with `Fills` (the main surgery; a pinch vertex is a cut
+    vertex of `G'`);
+  - (iii) the appearance → rotation-facts extraction (unchanged).
+- The 20 Nov kill now applies to (ii) plus the extraction.
