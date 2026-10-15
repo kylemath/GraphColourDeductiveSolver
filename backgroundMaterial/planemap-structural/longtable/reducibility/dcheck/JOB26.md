@@ -64,3 +64,33 @@ coincide without creating a separating ≤ 5-cycle or a degree contradiction. If
   dart-level facts, not ring injectivity. Route (A), proving ring injectivity from minimal-counterexample properties, looks
   false in general (the 6-cycle fold).
 - This decides whether H26 survives. Under (B), it does, with more work than planned.
+
+## Route B (Long Table, 15 Oct), pre-registration
+- **Target.** `KempeMatching` for the realised ring codes when the ring is a **face-boundary walk** of the deleted map
+  (distinct darts, vertices may repeat), via a dart/edge version of the face Jordan lemma (transitions paired by edge
+  chains, as in Gonthier). `Occ` then needs no ring injectivity, and every existing certificate applies. Due 1 Dec.
+- **Kill / fallback.** If the dart-level face-Jordan lemma is not done by **20 Nov**, ship the simple-ring statement and put
+  "the ring of the appearing 2-ball is simple" in the paper as an explicit hypothesis.
+- Until then, the K ≤ 1 claim reads "appearances with a simple ring".
+
+## Track 1 question: is the census key determined by the free 2-ball? **Yes** (hand argument; the Lean proof is Job 26 step 3a)
+In a minimal counterexample (triangulated, minimum degree 5, no separating triangle, and the B2 theorem
+`colorable_of_short_separating_cycle`), the *interior* of the 2-ball of a degree-5 vertex v (v, x1..x5, the second ring)
+embeds injectively and as an induced subgraph. Only the third ring (the configuration's ring) can fold, and route B covers that.
+- **Second-ring vertices are distinct.**
+  - y (seen from x_i) = y' (seen from x_j) with x_i, x_j non-consecutive gives the 4-cycle v x_i y x_j, which has other
+    x's on both sides. That is a separating 4-cycle, excluded.
+  - With x_i, x_j consecutive, y is a third common neighbour of x_i, x_{i+1} besides v and s_i. That gives a non-facial,
+    hence separating, triangle, excluded.
+  - A second-ring vertex equal to some x_k likewise gives a short separating cycle or a degree contradiction.
+- **No extra edges.**
+  - A second-ring vertex adjacent to a non-owner x_j closes a triangle or 4-cycle through v that separates. Excluded.
+  - A chord y ~ y'' of the second ring closes a 5-cycle v x_i y y'' x_j. A separating 5-cycle must bound a single vertex,
+    which would be the x between them. But then that x has degree 5 with y, y'' as its shared neighbours, and y ~ y'' is a
+    second-ring cycle edge, not a chord. Otherwise it is a 4-cycle or triangle case. Excluded.
+- **Degrees are the true degrees in T**, which is what the key records.
+- So the key read off T is exactly the free 2-ball's key, and the free completion differs from the embedded one only by
+  identifications among third-ring vertices. Route B makes certificates sound under exactly those identifications.
+  Therefore every sender in a minimal counterexample yields a census key whose certificate applies (once B lands).
+  B8 §8.3 item 5's assumption "the second ring is simple and chordless" is a **consequence** of B2, not an extra
+  assumption.
