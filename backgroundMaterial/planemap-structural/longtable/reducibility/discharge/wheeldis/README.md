@@ -309,3 +309,11 @@ proof of §3 does not cover a degree-7..15 centre).
   - C verdicts on the 5,912 LP-guided not-D sender sets (no cfast run here);
   - rules that look past the sender's link, e.g. the receiver's other senders.
 - Untested: whether receiver-centred configurations appear in G as built (§6 caveat).
+
+### 6.2 Stopped work (coordinator: continue d = 8, 10..15 only if the d = 7 bound passed; it did not)
+
+- d = 10 lone-5 family (`pairs.py 10 5`): **203 of the 556 classes at ring ≤ 16 tested, 203/203 D**
+  (`out/pairs_D10_k5_dfast_partial.out`, rings 10–15 so far). The run was stopped.
+- Lone families at d = 13: 174 classes, rings 16–23, only 2 at ring ≤ 16. For d ≥ 13 the receiver-centred route is
+  outside dfast's ring ≤ 16 range.
+- None of this can change §6.1: the lower bounds there come from HARD rows at d = 7..9.
