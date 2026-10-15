@@ -62,3 +62,16 @@ Extra facts from smaller maps rule them out:
 - 15 Oct: **step 4 bridge proved** (`DCheckRingBridge.lean`): `closedB_realised` (the realised class predicate of a RingFace side is Kempe-closed, rings ≤ 5) and `has_realised` (a realised colouring with a renaming-invariant ring property gives a class with it). Remaining: (b) other-side orientation, (c) surgery, (d) restriction/gluing, (e) assembly.
 - 15 Oct: `DCheckRingNC.lean`: `RingNC` (the ring data the Kempe closure uses), `RingFace.toNC`, and **`RingFace.revNC`** (a ring face of the reversed ring `revR r ρ t = ρ ((r-1)t)` gives `RingNC` for `ρ`). Both sides of the cycle can now be compared on the labelling `ρ`. Kempe closure and bridge restated for `RingNC`.
 - 15 Oct: (b) done. `cycInd_cycle` (indicator 1 on cycle edges), `lift_next_farFaceC_rev`, and **`kept_ringFace_rev`**: the near side's kept map has the reversed cycle as a `RingFace`. Both sides now give `RingNC` for `ρ` (`toNC` / `revNC`). Next: support count, chord maps, assembly of the 4-cycle theorem.
+- 15 Oct: **4-cycle case proved** (`Sep4.lean`, no `sorry`).
+  ```
+  theorem colorable_of_separating_4cycle (C : ICycle T 4 ρ) (hc : CycPotential T 4 ρ c)
+      (hz0 : ¬ OnCyc 4 ρ z0) (hon0 : OnSide T c 0 z0) (hy0 : T.Adj z0 y0)
+      (hz1 : ¬ OnCyc 4 ρ z1) (hon1 : OnSide T c 1 z1) (hy1 : T.Adj z1 y1)
+      (IH : ∀ m' (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support → M.graph.Colorable 4) :
+      T.graph.Colorable 4
+  ```
+  - Proof: for each side, the kept map has the cycle as a face (either orientation). The chord maps `+ρ0ρ2` and `+ρ1ρ3` are smaller (`split_fills`), so they colour by IH. The realised class predicate is Kempe-closed with both chord facts. `meet4` gives a common class, and the two side colourings glue.
+  - Axioms: propext, Classical.choice, Quot.sound, native_decide `check4_true`, `size4`, R1 `check4..9`.
+  - Sabotage checks rejected: wrong side for `z1`, and the second chord fact dropped.
+  - Scope: the cycle is assumed induced (`ICycle.ind`). The chord case reduces to separating triangles (F1). Wrapping that reduction is a small follow-up.
+- Next: the 5-cycle (fans and star need face tracking after a split, plus `meet5`).
