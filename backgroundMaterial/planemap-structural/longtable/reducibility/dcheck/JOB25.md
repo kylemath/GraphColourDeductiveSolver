@@ -49,3 +49,13 @@ Extra facts from smaller maps rule them out:
   - `lift_next_farFaceC`: the far run at a cycle vertex lands on the next cycle vertex. This generalises F1's `lift_next_farFace`. The chord case is excluded by `ICycle.ind`, and the back-step by the periodicity argument.
   - **`kept_ringFace`**: the kept map of side `b` has the cycle as a `RingFace`, in the orientation whose darts see the far side.
   - Next: the other side's orientation (reversed cycle), support counting, Kempe closure on a `RingFace` side, surgery, and the finite intersection lemma.
+- 15 Oct: **step 2 proved** (`DCheckRingKempe.lean`): `RingFace.kempeMatching`, the Kempe closure of the ring codes realised by proper colourings of any map with a ring face and an off-ring hole. It is the R2D proof with `ConfigOcc` replaced by `RingFace` + hole.
+- 15 Oct: **step 4 core proved** (`DCheckRingMeet.lean`). `meet4` and `meet5` hold for any two class predicates that are Kempe-closed (`closedB`, table `matchTableN 3`) and satisfy the facts: chords `02`,`13` for r = 4; for r = 5, a missing colour (star) plus the 5 fans. Such predicates share a class.
+  - Axioms: propext, Quot.sound, and one native_decide each (`check4_true`, `check5_true`, a few seconds).
+  - This confirms the Python search in Lean.
+- Remaining:
+  - (a) the bridge from realised sets `P` to `closedB`/facts;
+  - (b) the other side's orientation;
+  - (c) surgery: the chord (r = 4), the fans and star (r = 5);
+  - (d) support counts, restriction and gluing;
+  - (e) assembly.
