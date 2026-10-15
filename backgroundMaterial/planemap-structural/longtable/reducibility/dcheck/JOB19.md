@@ -28,3 +28,34 @@ geometry is in `chains_noncrossing(_same)`.
 in two arcs of the same class must pass through the outside (it can't use the hole), or that `ProperOff` is too weak for
 the flip. Report the missing statement exactly.
 **Axiom budget.** propext, Classical.choice, Quot.sound, plus the existing native_decide axioms of R1 (`check4..8`).
+
+## Result (15 Oct 2026): H19 survives. R2 and the full glue are proved, with no `sorry`.
+
+`./build_r2.sh` does a clean build in about 2 min at nice 10: the StudioMathLean PlaneMap modules up to `RingReduce`, then the
+DCheck core and `DCheckR2A`–`D`.
+
+```
+theorem SimpleGraph.SphericalMap.ConfigOcc.colorable_of_dReducible (cf : DCheck.Conf)
+    (hD : dReducible cf = true) (hr2 : 2 ≤ cf.r) (hr15 : cf.r ≤ 15)
+    (hsym : ∀ a b, intAdjOf cf a b = true → intAdjOf cf b a = true)
+    (hloop : ∀ a, intAdjOf cf a a = false)
+    (O : ConfigOcc T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    {c : Fin n → Fin 4} (hc : ProperOff G.graph O.hole c) : T.graph.Colorable 4
+```
+Axioms: propext, Classical.choice, Quot.sound, and `DCheck.R1.check4..8` (the existing native_decide per-p table checks).
+
+| file | content |
+|---|---|
+| `DCheckR2A` | (A) `extendsQ_sound`: a true backtracking run gives an interior colouring (propext, Quot.sound) |
+| `DCheckR2B` | (B) `code`, `col_code`, `code_lt`, `code_ext`; (D) `canon_rename`: `canon` is an injective colour renaming |
+| `DCheckR2C` | (E, abstract) transitions as a sorted list, class parity, an even number of transitions, arc representatives `rep j = T[(j+1) mod 2p]`, connectivity of each arc to its representative (including the wrap arc), chain labels with `NCLabel`/`ParityLabel`, then `nc_matching` + `matchTable_complete` → `abstract_matching`; `flip_code`: the ring code of the flip is `k ^^^ flipMask r k θ lab s` |
+| `DCheckR2D` | (E, geometric) the θ-edge graph, `theta_cls`, θ-chain ↔ two-colour chain, `ConfigOcc.theta_nc` from `chains_noncrossing(_same)` (the only planar input), `ConfigOcc.kempeMatching`; (F) `colorable_of_dReducible` |
+
+- **One hypothesis not in the original target:** `hloop` (no self-loops in `intAdj`). `extAux` only checks earlier neighbours, so a listed self-loop would make the interior constraint impossible to satisfy. It is decidable per `Conf`.
+- **Sabotage checks, all rejected:**
+  - ring bound changed to 16 (fails at `matchTable_complete`, p ≤ 7);
+  - `hloop` dropped;
+  - the non-crossing hypothesis of `abstract_matching` replaced by `True`.
+- **Scope:**
+  - This covers `DCheck.run` certificates with ring ≤ 15. The DCheck16/DCheck18 runs (rings 16–19, including studio14c/14d) are not covered yet; that is Job 23.
+  - Not checked yet: an end-to-end use on a concrete `Conf` together with a project `ConfigOcc` (for example the diamond).
