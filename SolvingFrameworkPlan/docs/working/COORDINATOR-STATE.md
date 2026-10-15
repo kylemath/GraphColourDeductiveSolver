@@ -54,7 +54,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 | Date | Gate | If it fails |
 |---|---|---|
 | 24 Oct | B8: discharging LP answer | Track 1 moves to 3-balls / larger sets; arena hunts the failing cases |
-| 7 Nov | B3 loop invariant (PASSED 15 Oct, r ≤ 15) + Birkhoff 4-cycle reduction in Lean | paper narrows to checker + certified data |
+| 7 Nov | PASSED 15 Oct: B3 checker soundness (r ≤ 19) + Birkhoff 4-cycle reduction in Lean (f3da7361) | paper narrows to checker + certified data |
 | 14 Nov | arena hard-set benchmark + first A6 result | arena becomes falsification support only |
 | 1 Dec | paper outlines frozen; no new lines | keep only evidenced claims |
 | 20 Dec | everything reproduced from a clean checkout | ship what reproduces |
