@@ -120,3 +120,10 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
     vertex of `G'`);
   - (iii) the appearance → rotation-facts extraction (unchanged).
 - The 20 Nov kill now applies to (ii) plus the extraction.
+
+## Route B progress
+- **(i) done (15 Oct)**: `FaceGlue.lean`. `cut_of_face_sums`: on a rotation system with `Fills`, a ZMod 2 edge labelling
+  with zero sum around every face is `p u + p v`. The proof uses duality, not walks: the labelling annihilates the kernel
+  of the incidence map, so it lies in the range of the dual map, by `range_dualMap_eq_dualAnnihilator_ker`. No
+  connectivity is needed. `colouring_of_face_sums`: a nowhere-zero (ZMod 2)² labelling with zero face sums is the
+  difference labelling of a proper 4-colouring. Axioms: propext, Classical.choice, Quot.sound.
