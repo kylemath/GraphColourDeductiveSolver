@@ -1,0 +1,9 @@
+# Job 22 (Studio): K<=2 key sizes, DMAX=8, R extended by Lean-certified C wheels (11 C5 + 66666, 6 C6)
+K=0 keys 888 {'R': 888}
+K=1 keys 22428 {'R': 22428}
+K=2 keys 310968 {'R': 206318, 'Rc': 1254, 'Rx': 10625, 'U': 92447, 'notD': 324}
+K=1 non-R (U + notD) 0; by (ring, status): {}
+   untested 0 (ring <= 16: 0, ring >= 17: 0); dfast18 CPU-h at measured per-ring means: 0
+K=2 non-R (U + notD) 92771; by (ring, status): {(9, 'U'): 1, (10, 'U'): 91, (10, 'notD'): 13, (11, 'U'): 1437, (11, 'notD'): 89, (12, 'U'): 6846, (12, 'notD'): 162, (13, 'U'): 14251, (13, 'notD'): 55, (14, 'U'): 18754, (14, 'notD'): 1, (15, 'U'): 19127, (15, 'notD'): 2, (16, 'U'): 15286, (16, 'notD'): 2, (17, 'U'): 9586, (18, 'U'): 4665, (19, 'U'): 1767, (20, 'U'): 507, (21, 'U'): 111, (22, 'U'): 16, (23, 'U'): 2}
+   untested 92447 (ring <= 16: 75793, ring >= 17: 16654); dfast18 CPU-h at measured per-ring means: 17038 (no timing for rings [20, 21, 22, 23])
+dfast18 mean s per key by ring: {9: 0, 10: 0, 11: 0, 12: 0, 13: 1, 14: 4, 15: 18, 16: 103, 17: 621, 18: 3967, 19: 19736}

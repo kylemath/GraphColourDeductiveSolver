@@ -426,3 +426,40 @@ over-count.)
 - The receiver DP of §8.4 item 3 is not built. With K = 2 the sender weights are no longer forced, so this is a real
   LP over about 107k sender rows plus DP receiver rows.
 - Recommendation: first test the 47 deferred K = 1 keys. Then decide whether to spend the ~330 CPU-h on K = 2.
+
+## 10. Job 22 (Studio, 15 Oct 2026): K ≤ 1 / K ≤ 2 with the certified C wheels in R [exploratory]
+
+### 10.0 Pre-registration (written 23:37 MDT 14 Oct, before the run; script `b8b/k2size_v3.py`)
+
+- **New R.** The Job 18 R, plus the studio14b dfast18 results (47 deferred ring 17–19 keys D), plus 2-balls that
+  contain a Lean-certified C wheel (Job 21, `dcheck/CWheels.lean`; the six 565xxx 6-wheels are excluded,
+  `studio17/UNCERTIFIED.md`): as the centre's wheel (11 C 5-wheels: `Rc`), or as the full link of a first-ring
+  vertex of degree 5 or 6 (66666, the 11 C 5-wheels, the 6 certified 6-wheels: `Rx`).
+- **H22a (K ≤ 1).** There are no non-R K = 1 keys, so t* ≤ 0 trivially (engine level; Lean level waits for studio14c
+  and the ring-19 key). *Kill:* any non-R K = 1 key.
+- **H22b (K ≤ 2 sizing; a prediction, not a claim).** The C wheels remove fewer than 20% of the 107,279 non-66666
+  untested K = 2 keys, because most K = 2 keys carry a big vertex in the first ring. *Kill:* ≥ 20% removed.
+- Sanity: with the C wheels switched off, the K = 1 and K = 2 counts must reproduce §9.1 (22,428 K = 1 keys; 108,113
+  untested K = 2 keys) up to the studio14b reclassification.
+
+### 10.1 Result (`b8b/out/k2size_v3.txt`; sanity run with the C wheels off: `b8b/out/k2size_v3_noC.txt`)
+
+| | K = 1 keys | K = 2 keys | K = 2 non-R (U + notD) | of which untested, ring ≤ 16 / ≥ 17 |
+|---|---|---|---|---|
+| C wheels off | 22,428, all R | 310,968 | 104,650 (104,287 U + 363 notD) | 87,041 / 17,246 |
+| C wheels on | 22,428, all R | 310,968 | **92,771** (92,447 U + 324 notD) | **75,793 / 16,654** |
+
+- **H22a survives (engine level).** Every K = 1 key is in R: 22,428 keys, the same count as §9.1. The 47 deferred
+  keys are D by dfast18 (`studio14b/RESULT.md`). Lean level: 3 of the 47 done; 43 (rings 17–18) running as
+  `studio14c`; the ring-19 key (`6:6:6|6:6:6|6:6:6|6:6:6|8:666:6`) is not scheduled (about 165 h on one core).
+- **H22b survives.** The certified C wheels remove 11,879 of the 104,650 non-R K = 2 keys (11.4% < 20%):
+  1,254 by the centre's wheel (`Rc`) and 10,625 by a first-ring link (`Rx`). `Rx` is a sub-configuration argument
+  (the first-ring vertex's whole link lies in the 2-ball); it should be checked by Long Table before it is used.
+- **K = 2 cost (dfast18, measured per-ring means 13: 1 s, 14: 4 s, 15: 18 s, 16: 103 s, 17: 621 s, 18: 3,967 s,
+  19: 19,736 s).** Ring ≤ 16: about **560 CPU-h** (75,793 keys). Rings 17–19: about **16,500 CPU-h** (16,018 keys).
+  Rings 20–23: 636 keys, no timing (expect several times the ring-19 cost each). So a full K = 2 dfast18 pass is
+  not feasible on this box; ring ≤ 16 is (about 2 days on 12 cores).
+- **Discrepancy with §9.1.** With the C wheels and the Studio D results both off, this enumeration (the k1keys.py
+  code with ≤ 2 big vertices) gives 104,743 non-66666 non-R K = 2 keys, against 107,279 in §9.1. The K = 1 counts
+  agree exactly. The §9.1 sizing script was not committed, so the 2,536-key gap is not explained.
+- Not done: the K = 2 LP itself (receiver DP of §8.4 item 3 not built).
