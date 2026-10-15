@@ -32,3 +32,17 @@ Long Table at once.
 
 **First step.** Enumerate which ring identifications are geometrically possible for each key: which positions i, j can
 coincide without creating a separating ≤ 5-cycle or a degree contradiction. If none can, (c) follows from B2.
+
+## First finding (15 Oct): folding is geometrically possible, and it breaks the free-ring Kempe argument
+- **Folding occurs in large internally 6-connected triangulations**, not only in the icosahedron. Take a third-neighbourhood
+  vertex u adjacent to second-ring vertices y and y' on non-adjacent spokes x1, x3. This closes the 6-cycle
+  v–x1–y–u–y'–x3–v, which separates x2 from x4, x5. No separating ≤ 5-cycle is forced. Gluing two large triangulated
+  discs (minimum degree 5) along such a 6-cycle realises it. The free-completion ring then repeats u at two positions.
+- **Pinched rings break the non-crossing lemma.** With u at ring positions i and j, the outside region is a disc whose
+  boundary walk visits u twice. A Kempe chain of pair {a,b} with c(u) ∈ {a,b} can run from a position in (j, i) through u
+  to a position in (i, j). A {c,d} chain (which avoids u) can then join two positions that alternate with it, without meeting it.
+  So `chains_noncrossing` (`face_alternating_walks_meet` needs an injective ring) has no analogue, and a D-certificate
+  for the free ring does not by itself reduce a folded appearance.
+- How Gonthier handles this (`embed.v`, `embed_inj`, which uses `Birkhoff` and `chordless_perimeter`) is not yet understood
+  here. Reading it is the next step: either his argument excludes folding for radius-2 kernels by a route we have missed,
+  or his configurations' ring conditions (`good_ring_arity`) exclude it.
