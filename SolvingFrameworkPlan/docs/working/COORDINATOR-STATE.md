@@ -73,6 +73,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-15 15:15 — H27 KILLED (c1c0e605): 163/687 (23.7%, ≤27.4% before ring-merge check) two-sender overloads at a 7 neither D nor C. Sounding-board: GO WITH CHANGES — kill stands; specialising B to 7/8 is a first slice of larger configurations, not a rescue; B ≥ 9 is a rule change. Order: upper-bound LP at d=7 with all 4,980 not-D forbidden (cloud agent) → LP-weighted rule → specialise only binding cases (kill >5% neither at B=7) → 3-balls. The upper-bound LP alone decides the 24 Oct K=2 plan.
 - 2026-10-15 03:00 — Wheel-level discharging is infeasible (t* bottoms at 3/7) but receiver-centred configurations close d ≥ 16 and the lone-sender bottleneck at 7/8/9. K=2 plan = receiver-centred R: Studio Job 27 (C on not-D overloads, Lean for lone families; kill >5% two-sender overloads neither D nor C → 3-balls at 7s) and a cloud agent building the forbidden-pattern LP for d = 7..15. Rx argument accepted as sound.
 - 2026-10-15 02:50 — Job 26 route B refined (b7c25862): vertex-level Kempe matching fails at a pinch, so unpinch the outside map (split pinch vertices), reuse R2 unchanged, glue via (Z/2)² edge labelling (Tait), extract via Fills. Same 20 Nov kill. Accepted, no board change.
 - 2026-10-15 02:45 — Studio: the LP's second-ring-simple assumption follows from B2 (hand argument; Lean in Job 26 step 3a). Folding is confined to the third ring, which route B covers. No Track 1 change needed.
