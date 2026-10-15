@@ -280,7 +280,7 @@ def gen_key(line, ns):
     occ = occ.replace('public import Mathlib.Combinatorics.SimpleGraph.PlaneMap.%sCert\n' % ns, '')
     occ = occ.replace('public import', 'import')
     occ = occ.replace('import Mathlib.Combinatorics.SimpleGraph.PlaneMap.MinimalFrame',
-        'import Mathlib.Combinatorics.SimpleGraph.PlaneMap.MinimalFrame\nimport DCheckR2D\nimport DCheckTEq')
+        'import Mathlib.Combinatorics.SimpleGraph.PlaneMap.MinimalFrame\nimport DCheckR2D\nimport DCheckTEq\nimport DCheckMirror')
     occ = occ.replace('@[expose] public section\n', '')
     labels = sorted(rot)
     idx = {v: i for i, v in enumerate(labels)}
@@ -332,10 +332,18 @@ theorem colorable_of_occ_dred (hD : DCheck18.dReducible cf = true) {T : Spherica
   rw [← intAdjOf_eq, ← ringAdjOf_eq] at O
   exact ConfigOcc.colorable_of_dReducible18 (T := T) (G := G) cf hD (by decide) (by decide)
     cf_sym cf_loop O (c := cG) (fun x y e _ _ => cG.valid e)
-""" % (name, r, m, ras, ias, m, m, r, m)
+
+/-- **Mirror image**, same `hD`: an occurrence of the mirrored configuration in `T` is an occurrence
+of this one in `T.mirror` (same graph; `nx_mirror` reads every `Nx` fact backwards). -/
+theorem colorable_of_mirror_occ_dred (hD : DCheck18.dReducible cf = true) {T : SphericalMap n}
+    (htri : T.Triangulated) {ring : Fin %d → Fin n} {int : Fin %d → Fin n} (h : Occ T.mirror ring int)
+    (IH : ∀ (m' : ℕ) (N : SphericalMap m'), Nat.card N.graph.support < Nat.card T.graph.support →
+      N.graph.Colorable 4) : T.graph.Colorable 4 :=
+  colorable_of_occ_dred hD (T := T.mirror) (mirror_triangulated htri) h IH
+""" % (name, r, m, ras, ias, m, m, r, m, r, m)
     # drop the generated colorable_of_occ (it needs the certificate) and append the DCheck link
     i = occ.index('/-- **Reduction.**')
-    occ = occ[:i] + link + '\nend SimpleGraph.SphericalMap.%s\n\n#print axioms SimpleGraph.SphericalMap.%s.colorable_of_occ_dred\n' % (ns, ns)
+    occ = occ[:i] + link + '\nend SimpleGraph.SphericalMap.%s\n\n#print axioms SimpleGraph.SphericalMap.%s.colorable_of_occ_dred\n#print axioms SimpleGraph.SphericalMap.%s.colorable_of_mirror_occ_dred\n' % (ns, ns, ns)
     return occ
 
 if __name__ == "__main__":

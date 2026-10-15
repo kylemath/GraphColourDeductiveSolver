@@ -2,6 +2,7 @@ import Mathlib.Combinatorics.SimpleGraph.PlaneMap.OccToRing
 import Mathlib.Combinatorics.SimpleGraph.PlaneMap.MinimalFrame
 import DCheckR2D
 import DCheckTEq
+import DCheckMirror
 
 /-!
 # Occurrence of k6:5:6|6:6:6|6:6:6|6:6:6|8:656:6 (orientation -1) gives a ring reduction (generated)
@@ -946,6 +947,15 @@ theorem colorable_of_occ_dred (hD : DCheck18.dReducible cf = true) {T : Spherica
   exact ConfigOcc.colorable_of_dReducible18 (T := T) (G := G) cf hD (by decide) (by decide)
     cf_sym cf_loop O (c := cG) (fun x y e _ _ => cG.valid e)
 
+/-- **Mirror image**, same `hD`: an occurrence of the mirrored configuration in `T` is an occurrence
+of this one in `T.mirror` (same graph; `nx_mirror` reads every `Nx` fact backwards). -/
+theorem colorable_of_mirror_occ_dred (hD : DCheck18.dReducible cf = true) {T : SphericalMap n}
+    (htri : T.Triangulated) {ring : Fin 17 → Fin n} {int : Fin 18 → Fin n} (h : Occ T.mirror ring int)
+    (IH : ∀ (m' : ℕ) (N : SphericalMap m'), Nat.card N.graph.support < Nat.card T.graph.support →
+      N.graph.Colorable 4) : T.graph.Colorable 4 :=
+  colorable_of_occ_dred hD (T := T.mirror) (mirror_triangulated htri) h IH
+
 end SimpleGraph.SphericalMap.K17
 
 #print axioms SimpleGraph.SphericalMap.K17.colorable_of_occ_dred
+#print axioms SimpleGraph.SphericalMap.K17.colorable_of_mirror_occ_dred

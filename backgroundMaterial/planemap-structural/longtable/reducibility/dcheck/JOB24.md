@@ -30,8 +30,20 @@ Each module `K<ii>.lean` (namespace `SimpleGraph.SphericalMap.K<ii>`) contains:
 **Open premises.**
 - `hD`: one per key. It is discharged when studio14c/14d report D=true. A `native_decide` proof of it would re-run the 5–165 h evaluation.
 - Mirror orientation: each module covers the orientation that matches the dfast line. Mirror images need their own `hD` or a mirror-invariance lemma.
-- Building the build `Occ` from the discharging argument's "2-ball appears" (an `Appears → Occ` bridge, as `AppearsOcc` does for the diamond) is not done here.
+- Building `Occ` from the discharging argument's "2-ball appears" (an `Appears → Occ` bridge, as `AppearsOcc` does for the diamond) is not done here.
 
 **Ring ≤ 15 K=1 keys: not run.**
 - About 8–12 s per key. For the roughly 2.9k Studio-D keys (Job 14) that is about 8 core-h; for all roughly 19k K=1 keys in R, about 50 core-h. Generated files are about 2 MB per 50 keys, so they would be checked and logged rather than committed.
 - Their `hD` facts are dfast18 results, not Lean runs, so each key would also need a checker run (`DCheck16/18`, fast at ring ≤ 15).
+
+## Mirror lemma (15 Oct 2026): done
+`DCheckMirror.lean` builds the mirror spherical map: same graph, `next ↦ next⁻¹`.
+- `rmirror_faceOf_eq_iff`: mirror faces are the original faces with every dart reversed.
+- `rmirror_fills` and `mirror_triangulated`: `Fills` and `Triangulated` transfer.
+- `nx_mirror`: `Nx (mirror T) u v w ↔ Nx T u w v`.
+- Axioms: propext, Classical.choice, Quot.sound.
+
+Each `K<ii>` now also has `colorable_of_mirror_occ_dred`. An occurrence of the mirror image in `T` (`Occ T.mirror ring int`) reduces with the **same** `hD`, because it is an occurrence of the key itself in `T.mirror`, which has the same graph. All 49 modules recompiled clean (`results.txt`). The mirror-orientation open item is closed.
+
+## Ring ≤ 16 Studio-D set (2,855 keys of Job 14): running in the background
+`occ24/run24b.sh`, Long Table's choice: for each key, a wheelcheck18 verdict and the occurrence module, at nice 15, compiled in scratch and not committed. Config lines are in `occ24/k1_studioD.txt` (from `ball.build`); the log will be `occ24/results24b.txt`.
