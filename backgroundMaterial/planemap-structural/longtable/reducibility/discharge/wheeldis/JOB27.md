@@ -18,3 +18,21 @@ that merge two ring vertices are flagged separately, as for the 565xxx wheels in
 not certified.
 **Cores.** studio14c (12), the ring-19 key (1) and the 2,855-key run (1) come first. Job 27 runs on the remaining cores at
 nice 10.
+
+## Interim result (2026-10-15 15:15 MDT)
+
+**H27 is killed.** All 188 two-sender not-D overloads have been searched (|X| ≤ 4). Only 25 are C-candidates, and 163
+are neither D nor C. Over all 687 two-sender minimal overloads: D 499, C 25, neither 163 (23.7%, against the 5% kill).
+By type: 1/2+1 C 1, neither 23; 1/3+1 C 24, neither 84; 1/4+1 C 0, neither 48; 1/5+1 C 0, neither 8. So by the
+pre-registered rule, receiver-centred 2-balls are not enough at d = 7. The K = 2 plan moves to 3-balls or larger
+configurations at 7s.
+
+(a), all types, 2,597 / 5,015 not-D lines tested: C 1,007, neither 1,590. The untested lines are three-sender types at
+rings 13–14. By free big vertices (`B` count, C / neither / untested): 1: 1/23/0, 2: 32/113/41, 3: 222/270/515,
+4: 449/544/1199, 5: 258/520/635, 6: 45/114/28, 7: 0/6/0. Full table: `job27/tally27.txt`.
+C hits: 858 size-1 (one ring edge), 65 size-3, 108 size-4 with triads. The ring-vertex-merge check has **not** been run on the
+hits yet, so all remain candidates.
+
+(b) dfast18, 10 ring 17–18 classes of four lone senders at a 9: 4 / 10 done, all D=true (ring 17, about 15 min each).
+(c) Lean wheelcheck16: 7 family 59/59 D; 8 family 212/256 D; 9 family 210/524 D; no failures. The runs were interrupted
+by a session restart and resumed (`job27/restart.sh`).
