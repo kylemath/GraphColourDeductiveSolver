@@ -59,3 +59,4 @@ Extra facts from smaller maps rule them out:
   - (c) surgery: the chord (r = 4), the fans and star (r = 5);
   - (d) support counts, restriction and gluing;
   - (e) assembly.
+- 15 Oct: **step 4 bridge proved** (`DCheckRingBridge.lean`): `closedB_realised` (the realised class predicate of a RingFace side is Kempe-closed, rings ≤ 5) and `has_realised` (a realised colouring with a renaming-invariant ring property gives a class with it). Remaining: (b) other-side orientation, (c) surgery, (d) restriction/gluing, (e) assembly.
