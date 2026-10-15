@@ -6,7 +6,7 @@ Separating triangles are already done (F1, `MinimalFrame.colorable_of_separating
 ## Exact statements (in the F1 style: "four-colourable when every smaller map is")
 ```
 -- v : Fin k → Fin n a k-cycle of T (injective, cyclically adjacent); c its face potential (Fills applied to the
--- cycle's edge indicator, as ); side b = vertices off the cycle with OnSide c b.
+-- cycle's edge indicator, as `exists_triPotential`); side b = vertices off the cycle with OnSide c b.
 theorem colorable_of_separating_4cycle (htri : T.Triangulated) (hns : NoSep T)
     (v : Fin 4 → Fin n) (hv : CycleOK T 4 v) (c) (hc : CycPotential T v c)
     (h0 : ∃ x, x ∉ Set.range v ∧ OnSide T c 0 x) (h1 : ∃ x, x ∉ Set.range v ∧ OnSide T c 1 x)
