@@ -36,3 +36,10 @@ hits yet, so all remain candidates.
 (b) dfast18, 10 ring 17–18 classes of four lone senders at a 9: 4 / 10 done, all D=true (ring 17, about 15 min each).
 (c) Lean wheelcheck16: 7 family 59/59 D; 8 family 212/256 D; 9 family 210/524 D; no failures. The runs were interrupted
 by a session restart and resumed (`job27/restart.sh`).
+
+## (a) stopped (2026-10-15 15:20 MDT)
+
+Stopped on Long Table's instruction: the cloud upper-bound LP gives t* ≥ 24/227 > 0 even with all 5,015 not-D overloads
+counted reducible (README §6.1), so the remaining three-sender verdicts cannot change the outcome. Final (a) coverage:
+2,597 / 5,015 tested, 1,007 C-candidates (list = `C-REDUCIBLE` lines in `job27/part0?.cfast`, `k2?.cfast`), 1,590 neither.
+The ring-merge check was not run. (b) and (c) continue at nice 20.
