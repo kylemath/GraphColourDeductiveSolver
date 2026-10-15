@@ -46,3 +46,21 @@ coincide without creating a separating ≤ 5-cycle or a degree contradiction. If
 - How Gonthier handles this (`embed.v`, `embed_inj`, which uses `Birkhoff` and `chordless_perimeter`) is not yet understood
   here. Reading it is the next step: either his argument excludes folding for radius-2 kernels by a route we have missed,
   or his configurations' ring conditions (`good_ring_arity`) exclude it.
+
+## Second finding (15 Oct): how Gonthier avoids the problem, and the route for Job 26
+- Gonthier (`embed.v`) needs `embeddable` = simple perimeter + `good_ring_arity` (ring faces of arity 3..6) + `radius2`
+  kernel. Our 2-balls satisfy all three. But his `embed_inj` is **injectivity on darts**, not on ring faces. Two configuration
+  ring faces may land in one face of the counterexample, which is our fold. The perimeter stays a simple cycle of distinct
+  edges (`scycle_embd_ring`, `ucycle_embr_ring`).
+- His D-closure is on **edge traces** (colours of the perimeter edges, in the dual cubic map). His Kempe chains are
+  edge-chains in the remainder, a disc bounded by a simple edge cycle. Their non-crossing therefore does not care whether ring
+  vertices repeat. So D-reducibility stays valid for folded appearances.
+- Our Lean soundness proof (R2) instead derives `KempeMatching` from **vertex** non-crossing (`chains_noncrossing`), which
+  needs an injective ring (`RingFace.inj`), so it does not cover folded appearances. As shown above, the vertex statement is
+  false for pinched rings. The *matching* statement `KempeMatching` itself should still hold, because the transitions are
+  ring edges and are matched by dual chains.
+- **Recommended route (B):** prove `KempeMatching` for a ring given as a face boundary *walk* (distinct darts, vertices may
+  repeat), with transitions paired by edge-chains, via a dart/edge version of the face Jordan lemma. Then `Occ` needs only
+  dart-level facts, not ring injectivity. Route (A), proving ring injectivity from minimal-counterexample properties, looks
+  false in general (the 6-cycle fold).
+- This decides whether H26 survives. Under (B), it does, with more work than planned.
