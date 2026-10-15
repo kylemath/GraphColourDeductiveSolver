@@ -1,0 +1,22 @@
+     = 10
+     : nat
+     = 25
+     : nat
+     = 7383
+     : nat
+     = 3660
+     : nat
+     = true
+     : bool
+     = true
+     : bool
+     = 513
+     : nat
+     = true
+     : bool
+     = 6
+     : nat
+     = true
+     : bool
+Closed under the global context
+nice -n 10 coqc -w -notation-overridden,-ambiguous-paths fourcolor_w66666.v  0.78s user 0.09s system 87% cpu 0.997 total
