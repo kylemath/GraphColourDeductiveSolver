@@ -76,3 +76,4 @@ Extra facts from smaller maps rule them out:
   - Scope: the cycle is assumed induced (`ICycle.ind`). The chord case reduces to separating triangles (F1). Wrapping that reduction is a small follow-up.
 - Next: the 5-cycle (fans and star need face tracking after a split, plus `meet5`).
 - 15 Oct: 5-cycle surgery, part 1: `Sep5Fan.lean`, **`RingFace.fanMap`** (insert `σ0σ2`, then `σ0σ3` in the quadrilateral; face tracking with `split_face_old`) and `RingFace.shift` (fans at every vertex). Next: the star (needs a `Fills` lemma for adding a pendant vertex, `growBefore`, which the library does not have).
+- 15 Oct: **`GrowFills.lean`: `growBefore_fills`**. Adding a leaf at a nonempty corner preserves `Fills`; this was missing from the library. Axioms: propext, Classical.choice, Quot.sound. Next: the star map (pendant vertex w at σ0, then chords w–σ2, w–σ1, w–σ3, w–σ4, with face tracking).
