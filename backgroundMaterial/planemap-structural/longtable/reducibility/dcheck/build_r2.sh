@@ -10,9 +10,9 @@ P=Mathlib/Combinatorics/SimpleGraph/PlaneMap
 mkdir -p $W/dc
 [ -d "$W/Mathlib" ] || cp -c -R "$B/.lake/build/lib/lean/Mathlib" "$W/Mathlib"
 LP=$W:$W/dc:$(ls -d $B/.lake/packages/*/.lake/build/lib/lean | tr '\n' ':')
-for f in EulerSharp VacancyIcosahedral RStar SideTriangle RStarCore MinimalFrame RingJordan RingChains RingReduce; do
+for f in EulerSharp VacancyIcosahedral RStar SideTriangle RStarCore MinimalFrame RingJordan RingChains RingReduce OccToRing DiamondMCert DiamondMOcc; do
   echo "== $f"; (cd $SRC && nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$SRC" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" > /dev/null)
 done
-for f in DCheck DCheckSound DCheckRef DCheckS1 DCheckS3 DCheck16 DCheckR1 DCheckR2A DCheckR2B DCheckR2C DCheckR2D; do
+for f in DCheck DCheckSound DCheckRef DCheckS1 DCheckS3 DCheck16 DCheckR1 DCheckR2A DCheckR2B DCheckR2C DCheckR2D DCheckR2Diamond; do
   echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -o $W/dc/$f.olean -i $W/dc/$f.ilean $H/$f.lean 2>&1 | grep -v 'warning\|Hint\|Note\|linter\|^  \[\|̵\|^$' || true
 done

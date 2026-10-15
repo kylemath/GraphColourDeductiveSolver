@@ -59,3 +59,9 @@ Axioms: propext, Classical.choice, Quot.sound, and `DCheck.R1.check4..8` (the ex
 - **Scope:**
   - This covers `DCheck.run` certificates with ring ≤ 15. The DCheck16/DCheck18 runs (rings 16–19, including studio14c/14d) are not covered yet; that is Job 23.
   - Not checked yet: an end-to-end use on a concrete `Conf` together with a project `ConfigOcc` (for example the diamond).
+
+### End-to-end check on a real configuration (`DCheckR2Diamond.lean`)
+`DCheck.R2.DiamondE2E.colorable_of_occ`: a triangulation with a Birkhoff-diamond occurrence (`DiamondM.Occ`, orientation −1) is 4-colourable when every smaller spherical map is. The proof goes `DiamondM.configOcc` → `ConfigOcc.colorable_of_dReducible` with the DCheck `Conf` `cfD` (ring 6, interior 4); the generated certificate is not used.
+- `dReducible cfD = true` is proved by `native_decide`. `run`'s `while` loop is opaque to the kernel.
+- `intAdjOf cfD = DiamondM.intAdj` and `ringAdjOf cfD = DiamondM.ringAdj` are proved by `fin_cases`/`simp`; `hsym` and `hloop` by `decide`.
+- Axioms: as for the glue, plus `cfD_dReducible`'s native_decide axiom.
