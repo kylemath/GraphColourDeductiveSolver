@@ -60,14 +60,15 @@ for S in itertools.combinations(range(D), K):
                     if isR5([deg[y] for y in o]): red = True; break
             c = None if red else extract(adj, I, deg)
             out[cs] = (c, red, tuple(sorted(dem)))
-lines = []
+lines = []; side = []
 for cs, (c, red, dem) in sorted(out.items(), key=lambda kv: (kv[1][0][0] if kv[1][0] else 99)):
     if c is None or c[0] > RMAX: continue
     f = lambda t: ''.join('B' if x == B else ('.' if x in (1, 9) else str(x)) for x in t)
     nm = 'e%d_%s_%s_%s' % (D, f(cs[0]), f(cs[1]), ''.join(map(str, cs[2])))
-    lines.append('%s %d %d %s %s' % ((nm,) + c))
+    lines.append('%s %d %d %s %s' % ((nm,) + c)); side.append('%s %s' % (nm, '+'.join(str(x) for x in dem)))
 print('D=%d k=%d minimal overloaded classes %d, already-R %d, not extractable %d, written (ring <= %d) %d; rings %s; demand types %s' % (
     D, K, len(out), sum(1 for v in out.values() if v[1]), sum(1 for v in out.values() if v[0] is None and not v[1]), RMAX, len(lines),
     sorted(collections.Counter(v[0][0] for v in out.values() if v[0]).items()),
     dict(collections.Counter('+'.join(str(x) for x in v[2]) for v in out.values()))))
 open(os.path.join(HERE, 'eq_D%d_k%d.txt' % (D, K)), 'w').write('\n'.join(lines) + '\n')
+open(os.path.join(HERE, 'eq_D%d_k%d.dem' % (D, K)), 'w').write('\n'.join(side) + '\n')

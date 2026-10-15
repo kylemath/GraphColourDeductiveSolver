@@ -82,11 +82,12 @@ free completion, built with `b8b/rings.py` Layered and checked to be an induced 
 |---|---|---|---|---|
 | 7 with 2 lone-7 senders | 62 | 3 | 59 (rings 9–14) | **59/59** |
 | 8 with 3 lone-8 senders | 298 | 42 | 256 (rings 10–16) | **256/256** |
-| 9 with 4 lone-9 senders (u exactly 9) | 732 | 198 | 524 (rings 10–16; 10 more at 17–18 untested) | see §2.1 |
+| 9 with 4 lone-9 senders (u exactly 9) | 732 | 198 | 524 (rings 10–16; 10 more at 17–18 untested) | **524/524** |
 | control: 7 or 8 with 1 lone sender (= the 5-wheel) | 5 + 5 | – | 10 | 0 (matches Job 17 "neither") |
 
-Consequence: **a 7 has ≤ 1 and an 8 has ≤ 2 lone senders** in a minimal counterexample (engine level). These caps are
-what moves t* from 1/2 to 3/7.
+Consequence: **a 7 has ≤ 1, an 8 has ≤ 2 and a 9 has ≤ 3 lone senders** in a minimal counterexample (engine level).
+The 9 cap has one gap: the 10 ring 17–18 classes are untested. The caps for 7 and 8 move t* from 1/2 to 3/7. The
+LP did not use the 9 cap: letter 9 stands for every d ≥ 9.
 
 **Equal-split overload at a 7** (`pairs2.py 7 k`). These are the minimal sender sets with Σ 1/b > 1. The other big
 neighbours are left OUT of the configuration as ring vertices, so a D verdict covers every degree ≥ 7 for them,
@@ -152,3 +153,56 @@ separating 5-cycle only around one vertex), min degree 5. v has degree 5 with li
   every result here (DCheckSound S1/S3).
 - Harmless dead code: 66666 ∈ C5x can never fire for a degree-5 x_k, because x_k's link contains v.
 - No hole was found where a link degree is undetermined.
+
+### 2.1 Equal-split overloads at a 7 (dfast; `out/eq_D7_dfast.out`, `out/eq_D7_summary.txt`)
+
+12,713 configurations were tested: all of k = 2, and k = 3 at ring ≤ 14. Every other big neighbour is a free ring
+vertex.
+
+| demand type | D | not D |
+|---|---|---|
+| 1 + 1 | 59 | 0 |
+| 1 + 1/2 | 286 | **24** |
+| 1 + 1/3 | 130 | 108 |
+| 1 + 1/4 | 24 | 48 |
+| 1 + 1/5 | 0 | 8 |
+| 1/2 + 1/2 + 1/2 | 1,649 | 100 |
+| 1/2 + 1/2 + 1/3 | 2,674 | 1,103 |
+| 1/2 + 1/3 + 1/3 | 1,424 | 1,711 |
+| 1/2 + 1/2 + 1/4 | 663 | 358 |
+| 1/2 + 1/3 + 1/4 | 696 | 1,315 |
+| 1/2 + 1/2 + 1/5 | 48 | 56 |
+| 1/2 + 1/3 + 1/5 | 45 | 184 |
+| **total** | **7,733** | **4,980** |
+
+The share that is not D rises with the number of free big vertices. Example not D:
+`e7_556...6_6B....6_1110001`, ring 11. A lone 56667 sits next to a 5 with word 7,6,B,6,5, where B is free.
+
+**Reading (HA2).** HA2 survives: many ring ≤ 14 receiver-centred candidates are D, and every lone-lone family at
+7/8/9 is D. **But the equal-split rule does not close at d = 7 with D configurations and free big vertices.** The
+4,980 non-D overloads would need one of three things:
+- the B degrees fixed (7, 8 exactly; ring grows by the B's own neighbours);
+- C-reducibility (cfast; not run here);
+- a non-equal split, i.e. the LP over rooted words with these D configurations as forbidden receiver patterns. That
+  LP is not built: it needs a demand-tracking DP state at d = 7.
+
+d = 8 (Σ > 2) and d = 10..15 (Σ > d − 6) overload families are not enumerated.
+
+## 4. Verdicts
+
+- **Task A: infeasible at wheel level (HA survives).**
+  - t* = 3/5 with the 5-/6-wheel R plus fans. It drops to 1/2 with the D 7-/8-wheels, and to 3/7 with the D lone-pair
+    and lone-triple receiver configurations.
+  - The binding receiver is always a 7. The binding senders are 5s with one or two big neighbours: 55667/56667/66667
+    (lone) and 55757 (two 7s).
+  - The uniform rule "send 1/b" holds for every d ≥ 16 from wheel facts alone, by the DP plus Karp λ₉ = 2/3.
+  - d = 7..15 needs receiver-centred configurations. The lone-sender ones are all D (59 + 256 + 524). 4,980 of 12,713
+    equal-split overloads at a 7 with free big neighbours are not D.
+- **Task B: sound with conditions** (§3).
+
+## 5. Process notes
+
+- All D verdicts are dfast at engine level, not Lean.
+- Twice, briefly, 8 dfast processes ran instead of the allowed 4: the D8 k3 batch alongside the ring 15–16 wheel run,
+  and the eq batch for a few minutes. The eq batch was killed and restarted.
+- The ring 15–16 7-/8-wheel run was stopped at 211/702 to free CPU for the receiver families.
