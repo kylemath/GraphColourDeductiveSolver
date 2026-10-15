@@ -78,3 +78,15 @@ Extra facts from smaller maps rule them out:
 - 15 Oct: 5-cycle surgery, part 1: `Sep5Fan.lean`, **`RingFace.fanMap`** (insert `σ0σ2`, then `σ0σ3` in the quadrilateral; face tracking with `split_face_old`) and `RingFace.shift` (fans at every vertex). Next: the star (needs a `Fills` lemma for adding a pendant vertex, `growBefore`, which the library does not have).
 - 15 Oct: **`GrowFills.lean`: `growBefore_fills`**. Adding a leaf at a nonempty corner preserves `Fills`; this was missing from the library. Axioms: propext, Classical.choice, Quot.sound. Next: the star map (pendant vertex w at σ0, then chords w–σ2, w–σ1, w–σ3, w–σ4, with face tracking).
 - 15 Oct: **`Sep5Star.lean`: `RingFace.starMap`**. A pentagonal ring face gets a new vertex `w` joined to all five ring vertices, as a spherical map on `Fin (n+1)`: a pendant edge, then 4 chords, with explicit face tracking. Old edges are kept, and the support grows only by `w`. Next: the 5-cycle assembly (`side5`, `meet5`, gluing).
+- 15 Oct: **5-cycle case proved** (`Sep5.lean`, no `sorry`).
+  ```
+  theorem colorable_of_separating_5cycle (C : ICycle T 5 ρ) (hc : CycPotential T 5 ρ c)
+      -- two distinct non-isolated vertices off the cycle on each side
+      (hz0 hon0 hy0) (hz0' hon0' hy0') (h00 : z0 ≠ z0') (hz1 hon1 hy1) (hz1' hon1' hy1') (h11 : z1 ≠ z1')
+      (IH : ∀ m' (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support → M.graph.Colorable 4) :
+      T.graph.Colorable 4
+  ```
+  - Proof: for each side, the kept map has the cycle as a face (either orientation). The star map (`starMap` + `growBefore_fills`) is smaller because the other side has 2 vertices; it gives a ring colouring missing a colour. The fan maps at all 5 vertices (`fanMap` + `shift`; in the reversed orientation the fan at `ρ v` is the fan at reversed position `rpos 5 v`) are also smaller. `meet5` gives a common class, and the colourings glue.
+  - Axioms: propext, Classical.choice, Quot.sound, native_decide `check5_true`, `size5`, R1 `check4..9`.
+  - Sabotage checks rejected: the second vertex on a side dropped, and the star fact dropped.
+  - **H25 survives for 4- and 5-cycles.** Remaining scope notes: cycles are assumed induced (a chord gives a shorter separating cycle, so it reduces to F1 / the 4-cycle case; wrapping is a small follow-up). The "separating" hypotheses are stated with the face potential; deriving them from a plain "both components nonempty" statement is also a small follow-up.

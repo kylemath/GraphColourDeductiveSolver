@@ -13,6 +13,6 @@ LP=$W:$W/dc:$(ls -d $B/.lake/packages/*/.lake/build/lib/lean | tr '\n' ':')
 for f in EulerSharp VacancyIcosahedral RStar SideTriangle RStarCore MinimalFrame RingJordan RingChains RingReduce OccToRing DiamondMCert DiamondMOcc; do
   echo "== $f"; (cd $SRC && nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -R "$SRC" -o "$W/$P/$f.olean" -i "$W/$P/$f.ilean" "$P/$f.lean" > /dev/null)
 done
-for f in DCheck DCheckSound DCheckRef DCheckS1 DCheckS3 DCheck16 DCheck18 DCheckR1 DCheckT DCheckTEq DCheckSoundT DCheckRefT DCheckS1T DCheckR1T DCheckR2A DCheckR2B DCheckR2C DCheckR2D DCheckR2Diamond DCheckMirror DCheckRingNC DCheckRingKempe DCheckRingMeet DCheckRingBridge SideCycle Sep4; do
+for f in DCheck DCheckSound DCheckRef DCheckS1 DCheckS3 DCheck16 DCheck18 DCheckR1 DCheckT DCheckTEq DCheckSoundT DCheckRefT DCheckS1T DCheckR1T DCheckR2A DCheckR2B DCheckR2C DCheckR2D DCheckR2Diamond DCheckMirror DCheckRingNC DCheckRingKempe DCheckRingMeet DCheckRingBridge SideCycle Sep4 Sep5Fan GrowFills Sep5Star Sep5; do
   echo "== $f"; nice -n 10 env LEAN_PATH="$LP" $TC/bin/lean -o $W/dc/$f.olean -i $W/dc/$f.ilean $H/$f.lean 2>&1 | grep -v 'warning\|Hint\|Note\|linter\|^  \[\|̵\|^$' || true
 done
