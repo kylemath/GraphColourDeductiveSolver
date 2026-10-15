@@ -90,3 +90,17 @@ Extra facts from smaller maps rule them out:
   - Axioms: propext, Classical.choice, Quot.sound, native_decide `check5_true`, `size5`, R1 `check4..9`.
   - Sabotage checks rejected: the second vertex on a side dropped, and the star fact dropped.
   - **H25 survives for 4- and 5-cycles.** Remaining scope notes: cycles are assumed induced (a chord gives a shorter separating cycle, so it reduces to F1 / the 4-cycle case; wrapping is a small follow-up). The "separating" hypotheses are stated with the face potential; deriving them from a plain "both components nonempty" statement is also a small follow-up.
+- 15 Oct: **combined B2 statement proved** (`SepAll.lean`, no `sorry`).
+  ```
+  theorem colorable_of_short_separating_cycle (C : Cyc T r ρ) (hr : r ≤ 5) (hc : CycPotential T r ρ c)
+      (hs : BothSides T r ρ c) (h5 : r = 5 → BothSides2 T r ρ c)
+      (IH : ∀ m' (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support → M.graph.Colorable 4) :
+      T.graph.Colorable 4
+  ```
+  - `Cyc` allows chords. `BothSides` means a non-isolated vertex off the cycle on each side; `BothSides2` means two distinct ones on each side.
+  - Ingredients:
+    - `colorable_of_separating_3cycle`: triangles in this framework, glued by a colour permutation.
+    - Chord reduction: `chord4` and `chord5`, plus `Cyc.shift`. If a chord splits C into C1 and C2, then `cycInd C = cycInd C1 + cycInd C2`, so `c + c1` is a potential of C2. `sides_split` shows two vertices on different sides of C are separated by C1 or by C2.
+    - `colorable_of_sep4` and `colorable_of_sep5`: either the cycle is induced (the earlier theorems apply), or there is a chord (reduce).
+  - Axioms: propext, Classical.choice, Quot.sound, and native_decide `check4_true`, `check5_true`, `size4`, `size5`, R1 `check4..9`.
+- **Open (logged, not done):** a wrapper from "T − C is disconnected" (components) to `BothSides`. It needs each side of an induced cycle to be connected, which is a new Jordan-type fact. The potential (Jordan-side) form above is the statement proved.
