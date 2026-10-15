@@ -317,3 +317,75 @@ proof of §3 does not cover a degree-7..15 centre).
 - Lone families at d = 13: 174 classes, rings 16–23, only 2 at ring ≤ 16. For d ≥ 13 the receiver-centred route is
   outside dfast's ring ≤ 16 range.
 - None of this can change §6.1: the lower bounds there come from HARD rows at d = 7..9.
+
+## 7. Richer rule classes for d = 7..15: bound tests for the 24 Oct K = 2 plan (pre-registration, written 15 Oct 2026 21:40 MDT, before any computation in this section) [exploratory]
+
+**Question.** Is there any rule class, still built on the 2-ball framework, that can reach t* ≤ 0 at d = 7..15? If so,
+what reducibility work does it need?
+
+**R_opt (the optimistic R used by every bound in this section).**
+- The §6.1 R: wheel R (Job 17 D 5-/6-wheels, certified C wheels), D fans, diamond, 2.122, D 7-/8-wheels, and every
+  receiver-centred configuration (u of exact degree d + sender set S, |S| ≥ 2, + the links of S, other big vertices B
+  free; the `pairs`/`pairs2`/`gen.py` type) that is D or C.
+- **Plus, counted reducible: every configuration of these families that has not been tested.** A receiver-centred
+  configuration counts as non-reducible only if dfast says not D (dfast18 at ring 17–19) **and** cfast
+  (`--search`, |X| ≤ 4) finds no C-candidate. A 7-/8-wheel counts as non-reducible only if dfast says not D at its ring.
+  A 6-wheel containing a letter ≥ 8 is untested (Job 17 covers letters 5–7 only), so it counts as reducible.
+- Not in R_opt: 5-centred 2-ball keys (the K-key route, §8–10 of `discharge/README.md`) and anything larger than the
+  receiver-centred family. Every candidate obstruction found here is afterwards tested against those larger
+  configurations and the result is reported, because that is exactly the fallback the gate must price.
+
+**Rule classes.** All move charge only from a degree-5 vertex v to an adjacent vertex u of degree ≥ 7, except (b).
+- (a) y depends on v's 2-ball rooted at u (degrees of v's second ring too). This sees u's whole link word.
+- (b) as §6 (rooted words), plus transfers between adjacent big vertices (7→7, 8→7), depending on both endpoints'
+  2-balls (RSST-style sharing).
+- (c) y depends on u's 2-ball and the position of v in u's link (receiver-side averaging).
+- (G), the umbrella: any rule with finite reach, with any information.
+
+**Test G first (cheapest; one success kills (a), (b) and (c) together).** An *isolated positive defect* is a finite
+cluster Y of vertices of degree 5 and ≥ 7, with charge c(Y) = Σ(6 − deg) > 0, embedded in a sea of degree-6 vertices
+(every vertex outside Y has degree 6), such that nothing in the patch is in R_opt. (A cluster of charge +1 has the far
+field of a lone 5, so 12 copies placed at the 5s of a large geodesic icosahedral sphere would give a sphere with no
+configuration of R_opt.)
+- *Bound.* In (a), (c), and (b), charge moves only between adjacent vertices of degree ≠ 6. Y is closed under such
+  moves, so summing Y's sender and receiver rows with dual weight 1 gives **t* ≥ c(Y)/|Y|**, an exact rational
+  certificate. For a rule of reach ρ through 6s, the same sum over the ρ-neighbourhood N_ρ(Y) gives
+  t* ≥ c(Y)/|N_ρ(Y)| > 0.
+- *Search.* Small clusters (two or three big vertices of degree 7) whose every big vertex has exactly the sender sets
+  of an existing not-D configuration. Seeds: the Job 27 "neither" two-sender overloads at a 7 (type 1 + 1/2 and
+  1 + 1/3), then the LP-guided not-D sets. Each candidate patch is built with `b8b/rings.py` (cluster + 6-sea) and
+  checked with `ball.class_check`. Then: every 5-/6-/7-wheel is checked against the lists; every receiver-centred
+  configuration with |S| ≥ 2 is checked against the dfast registry, and any untested one is run (dfast, cfast).
+- *Then, for any defect found:* its 5-centred 2-ball keys and the exact-degree 2-ball of each of its 7s are run by
+  dfast (engine level), to see which larger family would remove it.
+
+**Tests (a), (c), (b), run only if G finds no defect.** Lower-bound LPs in the spirit of §6.1:
+- rows come from locally consistent radius-3 patches around the senders of the §6.1 HARD certificates;
+- variables are tied by isomorphism of the class's information (rooted 2-ball for (a), receiver 2-ball for (c));
+- order (a), (c), (b).
+
+A class with lower bound > 0 is dead. A class whose optimistic LP reaches t ≤ 0 passes, and is sized (configurations,
+rings, dfast CPU-h at about 1 h per key at ring 17 and about 165 h at ring 19; count above ring 16).
+
+**H7 (the hypothesis under test).** Some class among (a), (b), (c) reaches t* ≤ 0 at d = 7..15 under R_opt.
+
+**Prediction (mine, written before computing): H7 is killed by test G.** I expect an R_opt-free isolated positive
+defect with two 7s and three 5s (charge +1, t* ≥ 1/5 for (a), (b), (c)), built from the 23 Job 27 "neither" overloads
+of type 1 + 1/2 (a lone sender plus a 5 shared with a second 7). If one exists, the configuration families
+themselves are avoidable near such a cluster, so no rule of any kind can close d = 7 with R_opt. The fix must then be
+larger configurations: the cluster itself, i.e. a 7's 3-ball or its exact-degree 2-ball.
+
+**Kill criterion for H7.**
+- H7 is killed if test G finds a defect whose every configuration in R_opt has been tested and found non-reducible. It
+  is also killed if, for each of (a), (b), (c), a lower-bound LP certificate gives t > 0.
+- H7 survives for a class if its optimistic LP reaches t ≤ 0 (to 1e-7), with d ≥ 16 covered as in §1.
+- If test G finds no defect after the planned search (seeds exhausted), that is reported as a null result, not as
+  evidence for H7, and the per-class LPs decide.
+
+**Also sized (task 4): the fallback "3-balls centred at 7s".**
+- Count of the 7-centred configurations it needs, i.e. the extensions of the HARD 7-arrangements of §6.1.
+- Ring-size distribution from a random sample built with the layered builder (exact-degree 2-ball: ring = third ring;
+  3-ball: ring = fourth ring).
+- CPU-h from the Job 22 per-ring dfast18 means.
+
+All verdicts are engine level (dfast/cfast, no Lean). At most 4 dfast/cfast processes at once.
