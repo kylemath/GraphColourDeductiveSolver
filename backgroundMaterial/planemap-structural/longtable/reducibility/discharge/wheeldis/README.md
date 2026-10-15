@@ -503,3 +503,35 @@ CPU-h use the Job 22 dfast18 per-ring means. Nothing in this subsection was run.
   - B-fixed variants: about 5·10^5 CPU-h.
 - The configurations that actually removed the defects (§7.1) are few and small (rings 12–15). That argues for a
   *guided* loop instead: find a defect or a hard LP row, test only the configurations that kill it, and repeat.
+
+### 7.3 Does the B-fixed family remove every small defect? (pre-registration, written 16 Oct 2026 before the computation below) [exploratory]
+
+**Chronology note.** The B-fixed configurations of D1–D3 were run by dfast before this was written
+(`out/def_bigger16.partial.out`). They are the reason for this test, so it is not blind for those three.
+
+**R_opt+.** R_opt plus:
+- **the B-fixed family**: u + S + every link vertex of S at its exact degree, for |S| ≥ 2, built from the patch;
+- 7-wheels that are cfast C-candidates.
+
+As before, a configuration counts as non-reducible only if it is tested not D and has no C-candidate. 7-wheels and
+B-fixed configurations are tested on demand. B-fixed configurations with ring ≥ 17 count as reducible unless dfast18
+has tested them.
+
+**Method.**
+- Complete the K = 4 searches (centres 5, 6, 7; `bin/defectc`).
+- Check every candidate against R_opt with `defect_check2.py`, then the survivors against R_opt+ (option `bf`).
+- Fully verify any R_opt+ survivor with `defect_verify.py`, dfast and cfast.
+- If the centre-7 run is too large to finish in about 6 h of the 4 cores, report the share done.
+
+**H7b.** No isolated positive defect with K ≤ 4 survives R_opt+.
+
+**Prediction (mine, written before computing).** H7b survives. Each of D1–D3 had several B-fixed configurations D at
+rings 12–15, so I expect B-fixed configurations to remove every K ≤ 4 defect.
+
+**Kill criterion for H7b.** A K ≤ 4 defect survives R_opt+ with every configuration tested. Then the B-fixed family is
+not enough either, and the next family (5-centred 2-balls with K ≥ 3, or exact 2-balls at 7s) must be tested the same way.
+
+**What survival would and would not mean.**
+- It would be evidence, not proof, that R_opt+ is locally unavoidable at this scale.
+- It would not say that any rule class reaches t* ≤ 0. That needs the forbidden-pattern LP with the B-fixed
+  configurations as patterns.
