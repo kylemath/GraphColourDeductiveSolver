@@ -73,6 +73,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-15 02:50 — Job 26 route B refined (b7c25862): vertex-level Kempe matching fails at a pinch, so unpinch the outside map (split pinch vertices), reuse R2 unchanged, glue via (Z/2)² edge labelling (Tait), extract via Fills. Same 20 Nov kill. Accepted, no board change.
 - 2026-10-15 02:45 — Studio: the LP's second-ring-simple assumption follows from B2 (hand argument; Lean in Job 26 step 3a). Folding is confined to the third ring, which route B covers. No Track 1 change needed.
 - 2026-10-15 02:40 — Job 26 scope gap (folded rings). Chose B (dart-level Kempe matching, as Gonthier/RSST) over A (likely false) and C (more keys, changes LP). Kill: 20 Nov → ship simple-ring statement with explicit hypothesis. K≤1 claim scoped to simple rings meanwhile. Not a deadline-goal change, so Kyle hears in the digest, not now.
 - 2026-10-15 02:30 — B2 closed with one combined statement (7aa9d7e2). Accepted face-potential form of 'separating' for the paper; the graph-disconnection wrapper is deferred (not needed by the chain). Studio on Job 26.
