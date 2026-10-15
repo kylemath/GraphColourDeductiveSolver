@@ -1,0 +1,20 @@
+# equal-split rule, options bigw cap7=1 cap8=2
+d=7: max demand 3.0000 vs d-6 = 1; worst: 75568 75568 75575 75575 75575 75575
+d=8: max demand 4.0000 vs d-6 = 2; worst: 85566 85566 85569 85569 85575 85575
+d=9: max demand 6.0000 vs d-6 = 3 FAIL  worst: 95566 95566 95566 95566 95566 95566
+d=10: max demand 6.0000 vs d-6 = 4 FAIL  worst: 95566 95566 95566 95566 95575 95575 95575 95575
+d=11: max demand 7.0000 vs d-6 = 5 FAIL  worst: 95566 95566 95566 95566 95566 95566 95575 95575
+d=12: max demand 8.0000 vs d-6 = 6 FAIL  worst: 95566 95566 95566 95566 95566 95566 95566 95566
+d=13: max demand 8.0000 vs d-6 = 7 FAIL  worst: 95566 95566 95566 95566 95566 95566 95575 95575 95575 95575
+d=14: max demand 9.0000 vs d-6 = 8 FAIL  worst: 95566 95566 95566 95566 95566 95566 95566 95566 95575 95575
+d=15: max demand 10.0000 vs d-6 = 9 FAIL  worst: 95566 95566 95566 95566 95566 95566 95566 95566 95566 95566
+d=16: max demand 10.0000 vs d-6 = 10 OK
+d=17: max demand 11.0000 vs d-6 = 11 OK
+d=18: max demand 12.0000 vs d-6 = 12 OK
+d=19: max demand 12.0000 vs d-6 = 13 OK
+d=20: max demand 13.0000 vs d-6 = 14 OK
+d=21: max demand 14.0000 vs d-6 = 15 OK
+d=22: max demand 14.0000 vs d-6 = 16 OK
+d=23: max demand 15.0000 vs d-6 = 17 OK
+d=24: max demand 16.0000 vs d-6 = 18 OK
+letter-9 max cycle mean (demand per link position) = 0.666667; d*lam <= d-6 for all d >= 18.00
