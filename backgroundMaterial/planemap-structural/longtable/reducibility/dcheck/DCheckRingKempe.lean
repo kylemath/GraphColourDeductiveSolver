@@ -1,4 +1,4 @@
-import DCheckR2D
+import DCheckRingNC
 /-! Job 25 step 2: `KempeMatching` for the ring codes realised by proper colourings of any map `G`
 with a ring face `ρ` and an off-ring hole `h` (no `ConfigOcc` needed). Verbatim copies of
 `ConfigOcc.theta_nc` and `ConfigOcc.kempeMatching` (DCheckR2D), using only the ring and the hole. -/
@@ -9,7 +9,7 @@ open VacancySlide VacancyShortFill DCheck DCheck.R2
 variable {n : ℕ} {G : SphericalMap n} {r : ℕ} {ρ : ℕ → Fin n}
 
 /-- **Non-crossing of ring chains** in the form used by `abstract_matching`. -/
-theorem RingFace.theta_nc (R : RingFace G r ρ) {h : Fin n} (hh : ∀ t, ρ t ≠ h) {c : Fin n → Fin 4}
+theorem RingNC.theta_nc (R : RingNC G r ρ) {h : Fin n} (hh : ∀ t, ρ t ≠ h) {c : Fin n → Fin 4}
     (hc : ProperOff G.graph h c) {θ : ℕ} (hθ : θ < 4) {i j k l : ℕ} (hij : i < j) (hjk : j < k)
     (hkl : k < l) (hlr : l < r)
     (h1 : (thetaGraph G.graph h c θ).Reachable (ρ i) (ρ k))
@@ -28,10 +28,10 @@ theorem RingFace.theta_nc (R : RingFace G r ρ) {h : Fin n} (hh : ∀ t, ρ t �
       · have : c (ρ j) = fx θ hθ (c (ρ i)) := Fin.ext hy
         rw [this, fx_fx, pairGraph_comm]
     rw [hpair] at p2
-    exact chains_noncrossing_same R hij hjk hkl hlr p1 p2
+    exact R.ncs hij hjk hkl hlr p1 p2
       (fun hr => hne (pair_to_theta hθ hc hr))
   · exfalso
-    refine chains_noncrossing R (a := c (ρ i)) (b := fx θ hθ (c (ρ i)))
+    refine R.nc (a := c (ρ i)) (b := fx θ hθ (c (ρ i)))
       (a' := c (ρ j)) (b' := fx θ hθ (c (ρ j))) ?_ hij hjk hkl hlr p1 p2
     intro z hz1 hz2
     apply disj_pairs' θ hθ _ (c (ρ i)).isLt _ (c (ρ j)).isLt _ z.isLt
@@ -45,7 +45,7 @@ theorem RingFace.theta_nc (R : RingFace G r ρ) {h : Fin n} (hh : ∀ t, ρ t �
 
 /-- **R2: `KempeMatching`** for the ring codes of proper colourings of `G`, for the table
 `matchTableN N` (`N ≤ 10`) and rings `r < 2N`. -/
-theorem RingFace.kempeMatching (R : RingFace G r ρ) {h : Fin n} (hh : ∀ t, ρ t ≠ h) (cf : Conf)
+theorem RingNC.kempeMatching (R : RingNC G r ρ) {h : Fin n} (hh : ∀ t, ρ t ≠ h) (cf : Conf)
     (N : ℕ) (hN : N ≤ 10) (hr : cf.r = r) (hrN : r < 2 * N) :
     KempeMatchingT (matchTableN N) cf (fun k => ∃ c : Fin n → Fin 4, ProperOff G.graph h c ∧
       k = code (ringSeq ρ c) r) := by
@@ -125,4 +125,4 @@ theorem RingFace.kempeMatching (R : RingFace G r ρ) {h : Fin n} (hh : ∀ t, ρ
 
 end SimpleGraph.SphericalMap
 
-#print axioms SimpleGraph.SphericalMap.RingFace.kempeMatching
+#print axioms SimpleGraph.SphericalMap.RingNC.kempeMatching

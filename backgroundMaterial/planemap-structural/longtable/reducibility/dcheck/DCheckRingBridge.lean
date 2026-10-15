@@ -31,7 +31,7 @@ theorem realised_canon {k : ℕ} (hk : Realised G h r ρ k) : Realised G h r ρ 
   obtain ⟨g, hg, heq⟩ := canon_col (r := r) (ρ := ρ) c1
   exact ⟨fun v => g (c1 v), fun u v huv hu hv e => hc1 huv hu hv (hg e), heq⟩
 
-theorem realised_prop (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {k : ℕ} (hk : Realised G h r ρ k) :
+theorem realised_prop (R : RingNC G r ρ) (hh : ∀ t, ρ t ≠ h) {k : ℕ} (hk : Realised G h r ρ k) :
     (∀ i, i < r → col k i ≠ col k ((i + 1) % r)) ∧ k < 4 ^ r := by
   obtain ⟨c1, hc1, rfl⟩ := hk
   refine ⟨fun i hi => ?_, code_lt _ (ringSeq_lt ρ c1) _⟩
@@ -50,7 +50,7 @@ open Classical in
 noncomputable def gR (G : SphericalMap n) (h : Fin n) (r : ℕ) (ρ : ℕ → Fin n) (K : ℕ) : Fin K → Bool :=
   fun i => decide (Realised G h r ρ (ringColourings r)[i.val]!)
 
-theorem mem_of_realised (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
+theorem mem_of_realised (R : RingNC G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
     (hK : (ringColourings r).size = K) (hr2 : 2 ≤ r) {k : ℕ} (hk : Realised G h r ρ k) :
     ∃ i : Fin K, gR G h r ρ K i = true ∧ (ringColourings r)[i.val]! = canon r k := by
   classical
@@ -64,7 +64,7 @@ theorem mem_of_realised (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
   · show (ringColourings r)[i]! = _
     rw [getElem!_pos _ i hi, e]
 
-theorem mem_true (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
+theorem mem_true (R : RingNC G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
     (hK : (ringColourings r).size = K) (hr2 : 2 ≤ r) {k : ℕ} (hk : Realised G h r ρ k) :
     mem r K (gR G h r ρ K) (canon r k) = true := by
   obtain ⟨i, hi, e⟩ := mem_of_realised R hh hK hr2 hk
@@ -73,7 +73,7 @@ theorem mem_true (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
   exact ⟨i, List.mem_finRange _, by simp [e, hi]⟩
 
 /-- **The realised class predicate is Kempe-closed** (rings `2 ≤ r ≤ 5`). -/
-theorem closedB_realised (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
+theorem closedB_realised (R : RingNC G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
     (hK : (ringColourings r).size = K) (hr2 : 2 ≤ r) (hr5 : r ≤ 5) :
     closedB r K (gR G h r ρ K) = true := by
   classical
@@ -106,7 +106,7 @@ theorem closedB_realised (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ
   · left; simpa using hg
 
 /-- A realised colouring whose renamed ring colours satisfy `Q` puts a class with `Q` into `gR`. -/
-theorem has_realised (R : RingFace G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
+theorem has_realised (R : RingNC G r ρ) (hh : ∀ t, ρ t ≠ h) {K : ℕ}
     (hK : (ringColourings r).size = K) (hr2 : 2 ≤ r) (Q : ℕ → Bool)
     {c : Fin n → Fin 4} (hc : ProperOff G.graph h c)
     (hQ : ∀ g : Fin 4 → Fin 4, Function.Injective g → Q (code (fun t => (g (c (ρ t))).val) r) = true) :

@@ -60,3 +60,4 @@ Extra facts from smaller maps rule them out:
   - (d) support counts, restriction and gluing;
   - (e) assembly.
 - 15 Oct: **step 4 bridge proved** (`DCheckRingBridge.lean`): `closedB_realised` (the realised class predicate of a RingFace side is Kempe-closed, rings ≤ 5) and `has_realised` (a realised colouring with a renaming-invariant ring property gives a class with it). Remaining: (b) other-side orientation, (c) surgery, (d) restriction/gluing, (e) assembly.
+- 15 Oct: `DCheckRingNC.lean`: `RingNC` (the ring data the Kempe closure uses), `RingFace.toNC`, and **`RingFace.revNC`** (a ring face of the reversed ring `revR r ρ t = ρ ((r-1)t)` gives `RingNC` for `ρ`). Both sides of the cycle can now be compared on the labelling `ρ`. Kempe closure and bridge restated for `RingNC`.
