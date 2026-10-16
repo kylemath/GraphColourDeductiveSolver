@@ -44,3 +44,27 @@ receiver, 5756756/6565665 (0.163), has three fives and each one sits next to a l
   with 9s, where B (free, 7/8/9) also matches the 8s.
 - That points at **8-relaxed windows**: the same S, with the 8s left free. For the HARD28 rows these are at ring
   10-16 and almost all untested. That is round 15.
+
+## Supply count for the K = 2 gate (coordinator ask, 14:20Z) [`supply.py`; the estimate at the end is inferred]
+
+All B-fixed sender sets S (any |S| >= 2, gen28 variants) of the 617 distinct d = 7 tight rows, at ring <= 16, against
+the registry after round 14 (round 15 not included):
+
+| class | rows | meaning |
+|---|---|---|
+| forbidden by Studio's r_1..r_12 | 71 | |
+| forbidden by explore windows (round 14) | 119 | |
+| supply | 318 | some S at ring <= 16 untested (106 of these configs are in Studio's pending batch) |
+| pendC | 61 | every S at ring <= 16 tested, a notD one still waits for cfast |
+| hard (HARD28-like) | 48 | every S at ring <= 16 tested, none D/C; 4 have no S at ring <= 16 at all |
+
+- 303 of the 427 free rows have at least one S that cfast called neither.
+- The supply is expensive: for 300 of the 318 supply rows the smallest untested S is at ring 15-16. There are 564
+  distinct untested configurations, 549 of them at ring 15-16.
+- Rows that first appeared in round 12 (146): 48 forbidden, 76 supply, 14 pendC, 8 hard.
+
+**Estimate (inferred).** At Studio's ~200 configurations a round, today's supply lasts about 3 rounds. dfast D rates at
+ring 14-15 are 20-25% (round 14; Studio's round 12), so roughly a third of the supply rows should die. The rest go to
+pendC and then mostly to hard. After those rounds about two thirds of today's free rows would be HARD28-like. t* fell
+0.029 in 12 rounds (5/17 to 13/49), so the ring <= 16 supply runs out long before t* nears 0. At the 24 Oct gate the
+choice between bigger configurations (ring 17+, or configurations not centred at u) and a new rule class is real.
