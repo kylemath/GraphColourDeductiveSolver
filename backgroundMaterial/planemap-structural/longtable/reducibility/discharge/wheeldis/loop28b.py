@@ -14,7 +14,8 @@ for n in range(START, START + 60):
     pats = BASE + ['pat=' + rel(f) for f in sorted(glob.glob(os.path.join(J, 'r_*.out')))] + \
            ['cpat=' + rel(f) for f in sorted(glob.glob(os.path.join(J, 'r_*.cfast')))] + \
            ['pat=' + rel(f) for f in sorted(glob.glob(os.path.join(HERE, 'loop', '**', '*.out'), recursive=True))] + \
-           ['cpat=' + rel(f) for f in sorted(glob.glob(os.path.join(HERE, 'loop', '**', '*.cfast'), recursive=True))]
+           ['cpat=' + rel(f) for f in sorted(glob.glob(os.path.join(HERE, 'loop', '**', '*.cfast'), recursive=True))] + \
+           ['pat=' + rel(f) for f in sorted(glob.glob(os.path.join(HERE, 'loop', 'lone', 'u*.pat')))]   # lone-five killers (patterns only)
     allr = os.path.join(J, 'all_%d.txt' % n); warm = sorted(glob.glob(os.path.join(J, 'all_*.txt')))
     cmd = [sys.executable, os.path.join(HERE, 'wlp3.py'), 'tag=j28_%d' % n, 'allrows=' + allr] + pats
     if warm: cmd.append('warm=' + warm[-1])
