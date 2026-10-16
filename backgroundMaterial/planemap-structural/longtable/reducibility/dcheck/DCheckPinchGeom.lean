@@ -817,7 +817,192 @@ theorem PinchWalk.kempeMatching (P : PinchWalk G r m ρ) (h : Fin n) (hoff : ∀
       k = code (ringSeq ρ c) r) :=
   (P.ringTNC h hoff).kempeMatching cf N hN hr hrN
 
+
+/-! ## Folds: an arc of length 2 (a pendant ring vertex) -/
+
+/-- A face walk that folds back at position 1: `ρ 2 = ρ 0`, so `ρ 1` is a pendant vertex; the rest of the walk is
+injective. -/
+structure FoldWalk (G : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) : Prop where
+  threeB : 5 ≤ r
+  per : ∀ t, ρ (t + r) = ρ t
+  adj : ∀ t, G.Adj (ρ t) (ρ (t + 1))
+  step : ∀ t, G.rotation.faceNext ⟨(ρ t, ρ (t + 1)), adj t⟩ = ⟨(ρ (t + 1), ρ (t + 2)), adj (t + 1)⟩
+  fold : ρ 2 = ρ 0
+  inj : ∀ s t, 2 ≤ s → 2 ≤ t → s < r → t < r → ρ s = ρ t → s = t
+  injx : ∀ t, t < r → ρ t = ρ 1 → t = 1
+
+namespace FoldWalk
+variable {G : SphericalMap n} (F : FoldWalk G r ρ)
+include F
+
+def D (t : ℕ) : G.Dart := ⟨(ρ t, ρ (t + 1)), F.adj t⟩
+
+theorem next_D (t : ℕ) : G.rotation.next (F.D t).symm = F.D (t + 1) := by
+  rw [← face_next_apply]; exact F.step t
+
+theorem ring_r : ρ r = ρ 0 := by have := F.per 0; rwa [zero_add] at this
+
+/-- The pendant vertex has `ρ 0` as its only neighbour. -/
+theorem pendant {y : Fin n} (e : G.Adj (ρ 1) y) : y = ρ 0 := by
+  set a := (F.D 0).symm
+  have ha : G.rotation.next a = a := by
+    rw [F.next_D 0]; apply Dart.ext; apply Prod.ext
+    · rfl
+    · change ρ (0 + 1 + 1) = ρ 0; exact F.fold
+  obtain ⟨k, hk⟩ := G.rotation.cyclic a ⟨(ρ 1, y), e⟩ rfl
+  have hall : ∀ k, (⇑G.rotation.next)^[k] a = a := by
+    intro k; induction k with
+    | zero => rfl
+    | succ k ih => rw [Function.iterate_succ_apply', ih, ha]
+  rw [hall] at hk
+  exact (congrArg (fun z : G.Dart => z.snd) hk).symm
+
+theorem x_ne_u : ρ 1 ≠ ρ 0 := fun h => (F.adj 0).ne h.symm
+
+theorem ne_x {t : ℕ} (h2 : 2 ≤ t) (ht : t ≤ r) : ρ t ≠ ρ 1 := by
+  rcases Nat.eq_or_lt_of_le ht with h | h
+  · subst h; rw [F.ring_r]; exact F.x_ne_u.symm
+  · intro e; have := F.injx t h e; omega
+
+/-- Side B's map (the pendant deleted) has the B-walk as a ring face. -/
+theorem ringFaceB {N : SphericalMap n} (hN : N.graph = sideG G (fun x => x ≠ ρ 1)) (hle : N.graph ≤ G.graph)
+    (spec : ∀ d : N.Dart, RunTo G (sideG G (fun x => x ≠ ρ 1)) (liftDart hle d)
+      (liftDart hle (N.rotation.next d))) :
+    RingFace N (r - 2) (arcB r 2 ρ) := by
+  classical
+  have hr := F.threeB
+  have hmod : ∀ t, t % (r - 2) < r - 2 := fun t => Nat.mod_lt _ (by omega)
+  have Bsb : ∀ t, arcB r 2 ρ t ≠ ρ 1 := fun t => F.ne_x (by omega) (by have := hmod t; omega)
+  have hGadj : ∀ t, G.Adj (arcB r 2 ρ t) (arcB r 2 ρ (t + 1)) := fun t => by
+    simp only [arcB]
+    rcases Nat.lt_or_ge (t % (r - 2) + 1) (r - 2) with h | h
+    · rw [show (t + 1) % (r - 2) = t % (r - 2) + 1 by
+        rw [Nat.add_mod, Nat.mod_eq_of_lt (show 1 < r - 2 by omega)]; exact Nat.mod_eq_of_lt h]
+      exact F.adj _
+    · have h1 : t % (r - 2) = r - 2 - 1 := by have := hmod t; omega
+      have h2 : (t + 1) % (r - 2) = 0 := by
+        rw [Nat.add_mod, h1, Nat.mod_eq_of_lt (show 1 < r - 2 by omega), show r - 2 - 1 + 1 = r - 2 by omega,
+          Nat.mod_self]
+      rw [h1, h2, Nat.add_zero, F.fold, ← F.ring_r]
+      have := F.adj (2 + (r - 2 - 1)); rwa [show 2 + (r - 2 - 1) + 1 = r by omega] at this
+  have hNadj : ∀ t, N.Adj (arcB r 2 ρ t) (arcB r 2 ρ (t + 1)) := fun t => by
+    show N.graph.Adj _ _
+    rw [hN]; exact ⟨hGadj t, Bsb t, Bsb (t + 1)⟩
+  let DN : ℕ → N.Dart := fun t => ⟨(arcB r 2 ρ t, arcB r 2 ρ (t + 1)), hNadj t⟩
+  refine ⟨by omega, fun t => by simp [arcB], hNadj, fun t => ?_, fun s t hs ht e => ?_⟩
+  rotate_left
+  · simp only [arcB, Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at e
+    have := F.inj (2 + s) (2 + t) (by omega) (by omega) (by omega) (by omega) e; omega
+  change N.rotation.faceNext (DN t) = DN (t + 1)
+  rw [face_next_apply]
+  apply liftDart_injective hle
+  set y := (DN t).symm
+  have hrun := spec y
+  have heH : (sideG G (fun x => x ≠ ρ 1)).Adj (liftDart hle (N.rotation.next y)).fst
+      (liftDart hle (N.rotation.next y)).snd :=
+    (show N.graph ≤ sideG G (fun x => x ≠ ρ 1) from hN.le) (N.rotation.next y).adj
+  set s := (t + 1) % (r - 2) with hs
+  have hsB : s < r - 2 := hmod _
+  by_cases hs0 : s = 0
+  · have htm : t % (r - 2) = r - 2 - 1 := by
+      have h1 := hmod t
+      rcases Nat.lt_or_ge (t % (r - 2) + 1) (r - 2) with h | h
+      · exfalso
+        have : s = t % (r - 2) + 1 := by
+          rw [hs, Nat.add_mod, Nat.mod_eq_of_lt (show 1 < r - 2 by omega), Nat.mod_eq_of_lt h]
+        omega
+      · omega
+    have hy : liftDart hle y = (F.D (r - 1)).symm := by
+      apply Dart.ext; apply Prod.ext
+      · change ρ (2 + s) = ρ (r - 1 + 1); rw [hs0, Nat.add_zero, show r - 1 + 1 = r by omega, F.ring_r, F.fold]
+      · change ρ (2 + t % (r - 2)) = ρ (r - 1); rw [htm, show 2 + (r - 2 - 1) = r - 1 by omega]
+    have hn1 : G.rotation.next (liftDart hle y) = F.D 0 := by
+      rw [hy]; have := F.next_D (r - 1); rw [show r - 1 + 1 = r by omega] at this; rw [this]
+      apply Dart.ext; apply Prod.ext
+      · exact F.ring_r
+      · change ρ (r + 1) = ρ (0 + 1); rw [show r + 1 = 1 + r by omega, F.per]
+    have hn2 : G.rotation.next (F.D 0) = F.D 2 := by
+      have := F.next_D 1
+      have e : (F.D 1).symm = F.D 0 := by
+        apply Dart.ext; apply Prod.ext
+        · change ρ (1 + 1) = ρ 0; exact F.fold
+        · rfl
+      rwa [e] at this
+    have hD : liftDart hle (DN (t + 1)) = F.D 2 := by
+      apply Dart.ext; apply Prod.ext
+      · change ρ (2 + s) = ρ 2; rw [hs0, Nat.add_zero]
+      · change ρ (2 + (t + 1 + 1) % (r - 2)) = ρ (2 + 1)
+        rw [Nat.add_mod (t + 1), ← hs, hs0, zero_add, Nat.mod_eq_of_lt (show 1 % (r - 2) < r - 2 from hmod 1),
+          Nat.mod_eq_of_lt (show 1 < r - 2 by omega)]
+    rw [hD]
+    refine runTo_eq_first hrun heH (K := 2) (by omega) ?_ (fun j hj0 hj2 => ?_) ?_
+    · rw [Function.iterate_succ_apply', Function.iterate_one, hn1, hn2]
+    · obtain rfl : j = 1 := by omega
+      rw [Function.iterate_one, hn1]
+      exact fun h => h.2.2 rfl
+    · exact ⟨F.adj 2, F.ne_x le_rfl (by omega), F.ne_x (by omega) (by omega)⟩
+  · have htm : t % (r - 2) + 1 = s := by
+      have h1 := hmod t
+      rcases Nat.lt_or_ge (t % (r - 2) + 1) (r - 2) with h | h
+      · rw [hs, Nat.add_mod, Nat.mod_eq_of_lt (show 1 < r - 2 by omega), Nat.mod_eq_of_lt h]
+      · exfalso; apply hs0
+        rw [hs, Nat.add_mod, show t % (r - 2) = r - 2 - 1 by omega, Nat.mod_eq_of_lt (show 1 < r - 2 by omega),
+          show r - 2 - 1 + 1 = r - 2 by omega, Nat.mod_self]
+    have hy : liftDart hle y = (F.D (2 + s - 1)).symm := by
+      apply Dart.ext; apply Prod.ext
+      · change ρ (2 + s) = ρ (2 + s - 1 + 1); rw [show 2 + s - 1 + 1 = 2 + s by omega]
+      · change ρ (2 + t % (r - 2)) = ρ (2 + s - 1); rw [show 2 + s - 1 = 2 + t % (r - 2) by omega]
+    have hnx : G.rotation.next (liftDart hle y) = F.D (2 + s) := by
+      rw [hy]; have := F.next_D (2 + s - 1); rwa [show 2 + s - 1 + 1 = 2 + s by omega] at this
+    have hD : liftDart hle (DN (t + 1)) = F.D (2 + s) := by
+      apply Dart.ext; apply Prod.ext
+      · rfl
+      · change ρ (2 + (t + 1 + 1) % (r - 2)) = ρ (2 + s + 1)
+        rw [Nat.add_mod (t + 1), ← hs, Nat.mod_eq_of_lt (show 1 < r - 2 by omega)]
+        rcases Nat.lt_or_ge (s + 1) (r - 2) with h | h
+        · rw [Nat.mod_eq_of_lt h, Nat.add_assoc]
+        · rw [show s + 1 = r - 2 by omega, Nat.mod_self, Nat.add_zero, show 2 + s + 1 = r by omega, F.fold,
+            F.ring_r]
+    rw [hD, runTo_first hrun (by rw [hnx]; exact ⟨F.adj _, F.ne_x (by omega) (by omega),
+      F.ne_x (by omega) (by omega)⟩), hnx]
+
+/-- **Folds are θ-non-crossing.** -/
+theorem ringTNC (h : Fin n) (hoff : ∀ t, ρ t ≠ h) : RingTNC G r ρ h := by
+  classical
+  have hr := F.threeB
+  obtain ⟨GA, hGA, hleA, -⟩ := subgraph_tracked G (sideG G (fun x => x = ρ 0 ∨ x = ρ 1)) (sideG_le _ _)
+  obtain ⟨GB, hGB, hleB, specB⟩ := subgraph_tracked G (sideG G (fun x => x ≠ ρ 1)) (sideG_le _ _)
+  have RB := (F.ringFaceB hGB hleB specB).toNC.toTNC (h := h) (fun t => hoff _)
+  have hB : ∀ t, t < r - 2 → arcB r 2 ρ t = ρ (2 + t) := fun t ht => by simp [arcB, Nat.mod_eq_of_lt ht]
+  have TB : TNC GB (r - 2) (fun t => ρ (2 + t)) h := by
+    intro c' hc' θ hθ i j k l hij hjk hkl hlm h1 h2
+    have := RB.tnc hc' hθ hij hjk hkl hlm
+      (by rwa [hB i (by omega), hB k (by omega)]) (by rwa [hB j (by omega), hB l hlm])
+    rwa [hB i (by omega), hB j (by omega)] at this
+  have TA : TNC GA 2 ρ h := by intro c' hc' θ hθ i j k l hij hjk hkl hlm; omega
+  refine ⟨by omega, F.per, F.adj, hoff, ?_⟩
+  intro c' hc' θ hθ
+  exact TNC.pinch (G := G) (GA := GA) (GB := GB) (SA := fun x => x = ρ 0 ∨ x = ρ 1)
+    (SB := fun x => x ≠ ρ 1) (u := ρ 0)
+    (fun x hx hb => by rcases hx with hx | hx; exact hx; exact absurd hx hb)
+    (fun x y e => by
+      by_cases hx : x = ρ 1
+      · subst hx; exact Or.inl ⟨Or.inr rfl, Or.inl (F.pendant e)⟩
+      · by_cases hy : y = ρ 1
+        · subst hy; exact Or.inl ⟨Or.inl (F.pendant e.symm), Or.inr rfl⟩
+        · exact Or.inr ⟨hx, hy⟩)
+    (fun x y e hx hy => by show GA.graph.Adj x y; rw [hGA]; exact ⟨e, hx, hy⟩)
+    (fun x y e hx hy => by show GB.graph.Adj x y; rw [hGB]; exact ⟨e, hx, hy⟩)
+    (fun x y e => hleA e) (fun x y e => hleB e)
+    (by omega) rfl F.fold
+    (fun t ht => by rcases Nat.lt_or_ge t 1 with h1 | h1
+                    · left; rw [show t = 0 by omega]
+                    · right; rw [show t = 1 by omega])
+    (fun t h1 h2 => F.ne_x h1 (by omega)) TA TB hc' hθ
+
+end FoldWalk
 end SimpleGraph.SphericalMap
 
 #print axioms SimpleGraph.SphericalMap.PinchWalk.ringTNC
 #print axioms SimpleGraph.SphericalMap.PinchWalk.kempeMatching
+#print axioms SimpleGraph.SphericalMap.FoldWalk.ringTNC
