@@ -238,3 +238,29 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
   - Then `RingNC.kempeMatching` applies verbatim.
   - Several pinches: induct on the splits.
   - (iii) The extraction, unchanged.
+- **Caveat (found while formalising, 16 Oct).** The pairGraph field `RingNC.nc` is literally **false** for a pinched
+  walk.
+  - `Reachable` is reflexive, so the "chain" from position 0 to position m (both u) exists for any pair, even one
+    not containing c(u).
+  - A {c(u), x}-chain through u from (0, m) to (m, r) then violates it.
+  - The brute force missed this because it required both chain endpoints to be active.
+- **What `kempeMatching` actually uses is the θ form**, `theta_nc` (RingKempe's `hNC`). It is about thetaGraph
+  reachability, where every vertex is active, and it holds: `pinch_nc.py`'s `hNC` check, 0 violations.
+- **Lean plan.**
+  - (a) `RingTNC` = pos, per, adj, θ-non-crossing. `RingNC → RingTNC` (via `theta_nc`), and
+    `RingTNC.kempeMatching` (the verbatim proof).
+  - (b) Prove `RingTNC` for the pinched walk from `RingTNC` of the two sides. The steps:
+    - Walk lemma: a θ-chain between two A-side vertices stays in A, because excursions leave and re-enter through u.
+    - Collapse map: send B positions to u, which is A's index 0. It preserves interleaving when the four images are
+      distinct.
+    - Doubly degenerate cases: both chains reach u, so the conclusion holds through u.
+- **Done (16 Oct): (a) and (iv′) in Lean, `DCheckPinch.lean`.**
+  - `RingTNC` (pos/per/adj/off + θ-non-crossing; ρ need not be injective), with `RingNC.toTNC`, and
+    `RingTNC.kempeMatching`. The latter has the same axioms as R2, i.e. the R1 `native_decide` checks.
+  - `cut_reach`, the four-part walk lemma at a cut vertex.
+  - `TNC.pinch` / `RingTNC.of_pinch`. If the ring walk's positions [0, m) lie on side A and [m, r) on side B, with
+    ρ 0 = ρ m = u, and both arcs are θ-non-crossing in their side maps, then so is the whole walk in G.
+    - Five cases, by how many of i < j < k < l are below m.
+    - Axioms: propext, Classical.choice, Quot.sound. No sorry.
+- **Left:** (ii′), i.e. that keeping one side of the pinch gives a SphericalMap whose arc is a RingFace, so that
+  `RingFace.toNC` gives the side's TNC. Then (iii).
