@@ -5,11 +5,13 @@ forbids every d = 7 arrangement that contains it (wlp3 matches f-patterns on the
   build OUT RMAX FAMILY...  write the untested |S| <= 3 windows with ring <= RMAX (dfast lines) to OUT
   build8 OUT RMAX FAMILY... round 15: the same windows with every 8 made free (B = 7/8/9), rows with an 8 only
   cover FAMILY...           per arrangement: forbidden by a registry D/C pattern (any f/e/p name, any S), or not
-Family files: any lines with 'd=7 link L s S'.  Registry: every *.out / *.cfast under out/, job27/, loop/ (oracle
+Family files: any lines with 'd=<d> link L s S', d in DS (default 7; 'ds=8,9' for round 16).  Registry: every *.out / *.cfast under out/, job27/, loop/ (oracle
 files are .pat, never read), plus loop/lone/u*.pat (receiver-free D windows, as in Job 28's pattern list)."""
 import sys, os, glob, re, itertools, collections
 W = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 mode, argv = sys.argv[1], sys.argv[2:]
+DS = {7}   # receiver degrees to read from the family files; 'ds=8,9' changes it (round 16)
+for a in [a for a in argv if a.startswith('ds=')]: DS = {int(x) for x in a[3:].split(',')}; argv.remove(a)
 src = open(os.path.join(W, 'gen28.py')).read(); src = src[:src.rindex('arrs = []')]
 RM = argv[1] if mode in ('build', 'build8') else '14'
 sys.argv = ['gen28.py', '/dev/null', RM, 'small']; G = {'__file__': os.path.join(W, 'gen28.py'), '__name__': 'g28'}; exec(src, G)
@@ -18,10 +20,10 @@ def family(files):
     seen, out = set(), []
     for fn in files:
         for line in open(fn):
-            m = re.search(r'd=7 link (\d{7}) s (\d{7})', line)
-            if not m: continue
-            k = canon(m.group(1), m.group(2))
-            if k not in seen: seen.add(k); out.append((m.group(1), m.group(2), os.path.basename(fn)))
+            m = re.search(r'd=(\d+) link (\d+) s (\d+)', line)
+            if not m or int(m.group(1)) not in DS: continue
+            k = (int(m.group(1)),) + canon(m.group(2), m.group(3))
+            if k not in seen: seen.add(k); out.append((m.group(2), m.group(3), os.path.basename(fn)))
     return out
 def images(lk, sv):
     d = len(lk)
@@ -29,6 +31,7 @@ def images(lk, sv):
         a, b = lk[r:] + lk[:r], sv[r:] + sv[:r]; yield a, b
         yield ''.join(a[-i % d] for i in range(d)), ''.join(b[(-i - 1) % d] for i in range(d))
 def canon(lk, sv): return min(images(lk, sv))
+# (family keys carry d, so rows of different degree never merge)
 
 # registry: name -> 'D' / 'notD' (dfast), C from cfast
 DV, CV = {}, {}
@@ -71,9 +74,9 @@ def hits(P, lk, sv):
     return False
 PATS = {}
 for nm in list(DV) + list(CV):
-    if nm[0] in 'epf' and re.match(r'^[epf]7_', nm) and (DV.get(nm) == 'D' or CV.get(nm) == 'C'):
+    if re.match(r'^[epf]\d+_', nm) and int(nm.split('_')[0][1:]) in DS and (DV.get(nm) == 'D' or CV.get(nm) == 'C'):
         d, P = parse(nm)
-        if P: PATS[nm] = P
+        if P: PATS[nm] = (d, P)
 
 if mode in ('build', 'build8'):
     OUT, RMAX, FAM = argv[0], int(argv[1]), family(argv[2:])
@@ -82,13 +85,13 @@ if mode in ('build', 'build8'):
         if mode == 'build8':
             if '8' not in lk + sv: continue
             lk, sv = lk.replace('8', '9'), sv.replace('8', '9')
-        vs = [x for x in G['variants'](7, lk, sv) if x[1] <= 3]
+        vs = [x for x in G['variants'](len(lk), lk, sv) if x[1] <= 3]
         st['windows'] += len(vs)
         for (r, k, S, w, s, nm) in vs:
             if nm in DV or nm in CV: st['tested'] += 1; continue
             if nm in PEND: st['pending_studio'] += 1; continue
             if nm in new: continue
-            line = G['make'](7, r, S, w, s, nm)
+            line = G['make'](len(lk), r, S, w, s, nm)
             if line is None or line.startswith('RING'): st['notext'] += 1; continue
             new[nm] = line
     lines = sorted(new.values(), key=lambda x: (int(x.split()[1]), x))
@@ -98,11 +101,10 @@ else:
     FAM = family(argv)
     bysrc = collections.defaultdict(collections.Counter); why = collections.Counter()
     for lk, sv, src_ in FAM:
-        hit = [nm for nm, P in PATS.items() if hits(P, lk, sv)]
-        small = [nm for nm in hit if sum(c != '.' for c in nm.split('_')[1]) and len(parse(nm)[1]) <= 3]
+        hit = [nm for nm, (d, P) in PATS.items() if d == len(lk) and hits(P, lk, sv)]
         key = 'forbidden' if hit else 'free'
-        bysrc[src_][key] += 1
-        print('%s %s %s %s %s' % (lk, sv, src_, key, ' '.join(sorted(hit, key=len)[:3])))
+        bysrc[src_ if len(lk) == 7 else '%s:d%d' % (src_, len(lk))][key] += 1
+        print('%s %s %s %s %s' % (lk, sv, src_ if len(lk) == 7 else '%s:d%d' % (src_, len(lk)), key, ' '.join(sorted(hit, key=len)[:3])))
     for k, v in bysrc.items(): print('#', k, dict(v))
     tot = sum(sum(v.values()) for v in bysrc.values()); fb = sum(v['forbidden'] for v in bysrc.values())
     print('# total %d forbidden %d (%.1f%%); patterns %d' % (tot, fb, 100.0 * fb / max(tot, 1), len(PATS)))
