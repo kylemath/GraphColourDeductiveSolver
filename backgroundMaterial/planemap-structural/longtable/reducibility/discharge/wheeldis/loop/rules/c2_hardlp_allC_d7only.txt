@@ -1,0 +1,14 @@
+# rules_c2 /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/rules/c2_hardlp_allC_d7only.txt /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/rules/pool_hardlp_allC_d7only.txt
+pool {7: 4}, vars 19, main views with closed situations 3 (without 16)
+## mode=tie: 2 sender-situation rows (lazy), 4 receiver rows, 10 vars; t_low = 0.000000
+  0.6667 sit  A2.0[7|5757] + A2.0[7|5757] + A2.1[7|5775]
+  0.3333 recv A2 d=7 link 5557557 s 7755755
+## mode=free: 2 sender-situation rows (lazy), 4 receiver rows, 19 vars; t_low = 0.000000
+  0.5000 recv A2 d=7 link 5557557 s 7755755
+  0.5000 sit  A2.0[7|5757] + A2.1[7|5775] + A2.2[7|5757]
+## mode=nomir: 1 sender-situation rows (lazy), 4 receiver rows, 19 vars; t_low = 0.000000
+  0.5000 recv A2 d=7 link 5557557 s 7755755
+  0.5000 sit  A2.0[7|5757] + A2.1[7|5775] + A2.2[7|5757]
+## mode=noLL: 2 sender-situation rows (lazy), 4 receiver rows, 19 vars; t_low = 0.000000
+  0.5000 recv A2 d=7 link 5557557 s 7755755
+  0.5000 sit  A2.0[7|5757] + A2.1[7|5775] + A2.2[7|5757]

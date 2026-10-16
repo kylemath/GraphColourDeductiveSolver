@@ -1,0 +1,40 @@
+# rules_c2 /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/rules/c2_hardonly7.txt /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/hard_rows_d7.txt mode=tie,free,nomir
+pool {7: 5098}, vars 21049, main views with closed situations 2264 (without 18785)
+## mode=tie: 1957 sender-situation rows (lazy), 5098 receiver rows, 288 vars; t_low = 0.282051
+  0.3590 sit  A26.1[7|5566]*
+  0.2051 recv A1402 d=7 link 5567576 s 5655757
+  0.1282 sit  A26.0[7|5576]* + A26.0[7|5576]*
+  0.1026 sit  A294.4[7|5777]* + A294.4[7|5777]* + A1402.4[7|7577]* + A1402.4[7|7577]*
+  0.1026 recv A2955 d=7 link 5567557 s 5657777
+  0.0513 recv A42 d=7 link 5567576 s 5655557
+  0.0513 sit  A42.4[7|7557]* + A385.0[7|5577]* + A385.0[7|5577]*
+## mode=free: 2120 sender-situation rows (lazy), 5098 receiver rows, 21049 vars; t_low = 0.200000
+  0.1200 recv A42 d=7 link 5567576 s 5655557
+  0.1200 sit  A42.0[7|5576]* + A1402.0[7|5576]*
+  0.1200 sit  A1402.1[7|5566]*
+  0.1200 sit  A42.1[7|5566]*
+  0.1200 recv A1402 d=7 link 5567576 s 5655757
+  0.0800 recv A294 d=7 link 5567557 s 6657777
+  0.0800 sit  A294.1[7|5666]*
+  0.0400 sit  A294.4[7|5777]* + A1308.4[7|5777]* + A1402.4[7|7577]* + A1402.4[7|7577]*
+  0.0400 sit  A1308.1[7|5666]*
+  0.0400 sit  A294.4[7|5777]* + A1308.5[7|5777]* + A1402.4[7|7577]* + A2580.5[7|7577]
+  0.0400 sit  A1308.0[7|5667]* + A2580.0[7|6657]
+  0.0400 recv A2580 d=7 link 5656757 s 6585755
+  0.0400 recv A1308 d=7 link 5567557 s 6657776
+## mode=nomir: 2085 sender-situation rows (lazy), 5098 receiver rows, 21049 vars; t_low = 0.200000
+  0.0667 recv A42 d=7 link 5567576 s 5655557
+  0.0667 sit  A1308.4[7|5777]* + A1308.5[7|5777]* + A1402.4[7|7577]* + A2581.5[7|7577]
+  0.0667 sit  A42.4[7|7557]* + A387.0[7|5577]* + A388.0[7|5577]*
+  0.0667 sit  A1308.0[7|5667]* + A2581.0[7|6657]
+  0.0667 sit  A42.0[7|5576]* + A1402.0[7|5576]*
+  0.0667 sit  A1402.1[7|5566]*
+  0.0667 sit  A1308.1[7|5666]*
+  0.0667 sit  A387.1[7|5566]*
+  0.0667 sit  A388.1[7|5566]*
+  0.0667 sit  A42.1[7|5566]*
+  0.0667 recv A2581 d=7 link 5656757 s 6595755
+  0.0667 recv A1402 d=7 link 5567576 s 5655757
+  0.0667 recv A1308 d=7 link 5567557 s 6657776
+  0.0667 recv A387 d=7 link 5568567 s 5657757
+  0.0667 recv A388 d=7 link 5568567 s 5658757

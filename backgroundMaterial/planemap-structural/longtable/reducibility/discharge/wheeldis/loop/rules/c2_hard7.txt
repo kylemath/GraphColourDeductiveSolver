@@ -1,0 +1,51 @@
+# rules_c2 /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/rules/c2_hard7.txt /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/hard_rows_d7.txt /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/rules/pool_A6cert.txt
+pool {7: 5099}, vars 21052, main views with closed situations 2267 (without 18785)
+## mode=tie: 1960 sender-situation rows (lazy), 5099 receiver rows, 288 vars; t_low = 0.294118
+  0.3529 sit  A26.1[7|5566]*
+  0.2353 recv A5098 d=7 link 5567567 s 5656657
+  0.1176 recv A42 d=7 link 5567576 s 5655557
+  0.1176 sit  A1348.0[7|6667] + A1348.0[7|6667]
+  0.1176 sit  A42.4[7|7557]* + A385.0[7|5577]* + A385.0[7|5577]*
+  0.0588 sit  A26.0[7|5576]* + A26.0[7|5576]*
+## mode=free: 2203 sender-situation rows (lazy), 5099 receiver rows, 21052 vars; t_low = 0.294118
+  0.2353 sit  A5098.1[7|5566]*
+  0.2353 recv A5098 d=7 link 5567567 s 5656657
+  0.1176 sit  A42.4[7|7557]* + A5098.0[7|5577]* + A5098.0[7|5577]*
+  0.1176 recv A42 d=7 link 5567576 s 5655557
+  0.1176 sit  A5098.4[7|6667]* + A5098.4[7|6667]*
+  0.1176 sit  A42.1[7|5566]*
+  0.0588 sit  A42.0[7|5576]* + A42.0[7|5576]*
+## mode=nomir: 2021 sender-situation rows (lazy), 5099 receiver rows, 21052 vars; t_low = 0.200000
+  0.0500 recv A42 d=7 link 5567576 s 5655557
+  0.0500 sit  A1308.4[7|5777]* + A1402.4[7|7577]* + A1403.4[7|7577]* + A2954.4[7|5777]*
+  0.0500 sit  A1348.4[7|6576] + A1403.0[7|5676]*
+  0.0500 sit  A1348.0[7|6667] + A5098.4[7|6667]*
+  0.0500 sit  A42.0[7|5576]* + A1402.0[7|5576]*
+  0.0500 sit  A5098.1[7|5566]*
+  0.0500 sit  A2954.1[7|5566]*
+  0.0500 sit  A1402.1[7|5566]*
+  0.0500 sit  A1403.1[7|5666]*
+  0.0500 sit  A1308.1[7|5666]*
+  0.0500 sit  A387.1[7|5566]*
+  0.0500 recv A5098 d=7 link 5567567 s 5656657
+  0.0500 sit  A42.1[7|5566]*
+  0.0500 recv A2954 d=7 link 5567557 s 5657776
+  0.0500 recv A1402 d=7 link 5567576 s 5655757
+  0.0500 recv A1403 d=7 link 5567576 s 6655757
+  0.0500 recv A1348 d=7 link 5656567 s 6685756
+  0.0500 recv A1308 d=7 link 5567557 s 6657776
+  0.0500 recv A387 d=7 link 5568567 s 5657757
+  0.0500 sit  A42.4[7|7557]* + A387.0[7|5577]* + A5098.0[7|5577]*
+## mode=noLL: 1947 sender-situation rows (lazy), 5099 receiver rows, 21052 vars; t_low = 0.166667
+  0.0833 sit  A1738.0[7|5567]* + A2469.2[7|6557]
+  0.0833 sit  A1305.5[7|5677]* + A2469.0[7|6577] + A2576.5[7|7567]
+  0.0833 sit  A1305.0[7|5567]* + A2576.0[7|6557]
+  0.0833 sit  A1738.1[7|5566]*
+  0.0833 sit  A1462.1[7|5666]*
+  0.0833 sit  A1305.1[7|5566]*
+  0.0833 recv A2576 d=7 link 5656757 s 5575655
+  0.0833 recv A2469 d=7 link 5657567 s 5555757
+  0.0833 recv A1738 d=7 link 5569557 s 5657766
+  0.0833 recv A1462 d=7 link 5567586 s 6655657
+  0.0833 recv A1305 d=7 link 5567557 s 5657676
+  0.0833 sit  A1462.0[7|5676]* + A2576.2[7|6576]
