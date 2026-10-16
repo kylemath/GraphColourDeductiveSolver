@@ -1,5 +1,21 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 22 (16 Oct 2026, 23:00Z-): H-S, do Schnyder-orientation transfers break the 7/27 floor? (k's pick)
+
+**Pre-registered 23:00Z, before any build.** Idea and bars are mine; k chose to run it (decision card, 22:57Z).
+- **Why.** Round 20 stalls at 7/27 on d = 7 rows next to an identical copy: a rule that sees both 2-balls cannot
+  orient the edge. Every planar triangulation has a 3-orientation (Schnyder wood): each interior vertex has exactly 3
+  out-edges. A rule may read it, and reducibility is unaffected.
+- **LP.** Round 20's restricted LP at its start set (Studio's 3,181 tight rows plus the 617 family), no separation.
+  Each arrangement becomes one row per orientation of u's big edges consistent with out-degree 3 (the small
+  neighbours take the rest; the orientation is adversarial). Variables a[tau] (tail sends to head) and b[tau]
+  (head sends to tail) per oriented edge type. Round 20's symmetric rules are the special case a = x, b = x reversed,
+  so t* <= 7/27. Rows only raise t*, so a start-set t* >= 7/27 is a trustworthy kill.
+- **Survives** if t* < 0.25 at the start set (then build v-side separation with orientation). **Dies** if t* = 7/27.
+- **Guess.** Dies at exactly 7/27. The binders have 5 small neighbours, so the adversary can orient both big edges
+  either way, and the worst case over the two orientations gives |a - b| back. Orientation helps only where
+  out-degree 3 forces a big edge, i.e. rows with 5+ bigs, which do not bind.
+
 ## Round 21 (16 Oct 2026, 17:22Z-): H-A', can a HARD28-like row be forbidden through a neighbouring 7? (coordinator's test)
 
 **Pre-registered 17:22Z, before any matching.** Design and bars are Long Table's message of 17:20Z; the guess is mine.
