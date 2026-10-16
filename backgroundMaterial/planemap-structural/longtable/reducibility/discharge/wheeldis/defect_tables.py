@@ -4,8 +4,9 @@ t7[w] (7-wheel tested at all).  Usage: python3 defect_tables.py"""
 import sys, os, itertools
 HERE = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(HERE, 'defect.py')).read().replace('HERE = os.path.dirname(os.path.abspath(__file__))', 'HERE = %r' % HERE)
-sys.argv = ['defect.py', '5', '1', '1', '/dev/null']
+sys.argv = ['defect.py', '5', '1', '1', '/dev/null', 'strict7']
 exec(src[:src.index("CENTRE, K, CMIN, OUT")])
+print('C-candidate 7-wheels:', len(C7), 'C-tested negative:', len(NC7))
 lines = []
 for n, f in ((5, lambda w: isR5(w)), (6, lambda w: bad6(w)), (7, lambda w: canon(w) in D7), (7, lambda w: canon(w) in T7)):
     lines.append(' '.join('1' if f(list(w)) else '0' for w in itertools.product((5, 6, 7), repeat=n)))
