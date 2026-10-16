@@ -1,5 +1,81 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Rounds 4-5 (16 Oct 2026, 07:40-08:50Z): stepped up, four parallel streams
+
+Kyle asked for more effort, so four gaps ran at once: three workers plus this thread. Each stream has a FINDINGS.md
+under `wheeldis/loop/`.
+
+**R (G2, rules; `loop/rules/FINDINGS.md`, LP only).**
+- **Question.** Can a richer rule class beat the 5/17 bound at d = 7?
+- **Answer.** No. The 5/17 dual certificate rests on two receiver arrangements, R1 (link 5567576, s 5755556) and
+  R2 (link 5576576, s 5756656), with weights 1:2.
+  - Their shared 7s are mirror images over the union of both arrangements.
+  - So no rule that sees only that union can separate them. Classes (b) and (c) both stay at 5/17.
+  - The lever is reducibility of R1 and R2, not the rule class. This corrects README §6.1's reading.
+- On the HARD d = 7 rows, class (c) lowers the floor from 11/39 to 1/5. Its certificate uses A1402, A1308 and A2581.
+
+**R follow-up: are the certificate arrangements reducible?** (`loop/cert_bf.py`, `loop/rules/cert_bf*.{txt,out}`)
+- **Yes, for four of the five.** Every B-fixed S was built and run through dfast (24 configurations, rings 11-16).
+
+| arrangement | B-fixed S that are D (ring) | not D |
+|---|---|---|
+| R1 | (0,4) r12, (1,4) r13, (0,1,4) r13 | (0,1) r11 |
+| R2 | (0,4) r13, (0,1,4) r15 | (0,1) r12, (1,4) r15 |
+| A1402 | (0,1,4) r15 | 3 others |
+| A2581 | (0,2,5) r14 | 3 others |
+| A1308 | none of 7 tested | (0,1,4) at ring 16 pending |
+
+- So the 5/17 certificate falls once these configurations are forbidden, and so does most of the 1/5 one.
+- Job 28 did not see this: it tries the smallest-ring S first, which is (0,1) here and is not D. It should try the
+  largest S first.
+
+**A (G1, lemma A; `loop/lemmaA/FINDINGS.md`).**
+- **Question.** Is lemma A ("a 7 with >= k fives carries a reducible B-fixed configuration") true as a finite
+  statement over every neighbourhood?
+- **Answer. No, not as a blanket lemma.**
+
+| case | D at ring <= 14 | rest |
+|---|---|---|
+| k = 5, degrees <= 7 | 252 of 291 | 39 misses, all on link 5557557, with untested ring 15-16 candidates |
+| k = 4, outer 8 / 9+ allowed | ~3% | candidates mostly at ring >= 17, ~10^6 CPU-h |
+| k = 3 | 290 of 421 instances | 87 with none at ring <= 15 |
+
+- Round 1's 186/186 came from 6-sea defect patches, whose neighbourhoods are mostly 6s.
+- So K = 2 stays defect- and LP-driven, as in Job 28.
+- By-product: 29 of 40 k = 5 hits reduce to one ring-9 kernel. It is u = 7 with fives at w0, w1, w2, and
+  s0 = 5, s1 = 7, s2 = 5. It is cheap to put in Lean.
+
+**E (G4/G7, appears; `loop/appears/FINDINGS.md`).**
+- **Is "non-simple ring ⇒ killed" in defect_check2 sound?** Not as a rule. A census graph (p25#6000) has an
+  unrepairable chord and no short separating cycle.
+- **Does it ever fire?** Not on a 1/20 sample of the 418,551 K <= 4 candidates: all 352,886 non-simple rings there
+  were repaired by the fill. A full rerun is in progress.
+- **B2 for receiver-centred configurations.** It extends to the interior (hand sketch).
+- **Rings.** In 38,872 census graphs, 11,187 (u, S) rings stay non-simple after the fill. They are chords and folds;
+  there are no pinches.
+- So "appears" needs one of two things: PinchWalk extended to arcs of length 1-2, or the plan listing the filled
+  variants.
+
+**K = 5 defects (G8; this thread; `loop/defectr.cpp`, `loop/defectr2.cpp`, `loop/k5hunt.sh`, `loop/export_keys.py`).**
+- **New tools.**
+  - `defectr` is a randomised `defectc`.
+  - `defectr2` also prunes inside the DFS whenever a 7 has a reducible receiver-centred key (8,827 keys at d = 7).
+  - Validation at K = 3: the pruning removes 3,840 leaves; defect_check2 kills 3,833 of them and leaves 7 open. The 7
+    are pinched cases, which the key test ignores.
+- **Without pruning.** About 950 K = 5 candidates were sampled. All were killed by plain receiver-centred
+  configurations.
+- **With pruning.** About 660 randomised seeds (centres 5 and 7, strict tables) produced 0 R_opt survivors.
+- **Guided.** All 15 extensions of D3 to K = 5 are killed.
+- **Conditional on A3.** Complete K = 5 runs (centres 5 and 6, 45 min cap) have produced 0 leaves so far.
+- **Caveat.** These are samples, not a complete search. All defect searches use degrees 5-7 only, so clusters with a
+  vertex of degree >= 8 are untested (new gap G9).
+
+**What changes.**
+1. Give Job 28 the B-fixed sets of R1, R2, A1402 and A2581, which are D now, as forbidden patterns and re-solve. Order
+   gen28 variants largest S first.
+2. Drop "K = 2 = lemma A" from the plan wording. Keep the ring-9 kernel as a Lean candidate.
+3. In defect_check2, make an unrepaired non-simple ring "open" instead of "killed".
+
 ## Round 3 (16 Oct 2026, ~06:25Z): gap G3, is lemma B (7-wheel 5666567 C-reducible) real?
 
 **Question.** E1/E2 (and D1/D2 under R_opt) die only to the cfast C-candidate 5666567. Does a second engine agree?

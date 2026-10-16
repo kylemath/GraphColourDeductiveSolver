@@ -1,0 +1,21 @@
+# rules_c /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/rules/c_A6cert.txt /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/rules/pool_A6cert.txt
+pool {7: 2}, vars 6, situations 5 (skipped main views 0)
+## mode=tie: 5 sender-situation rows, 2 receiver rows, 5 vars; t_low = 0.294118
+  0.3529 sit  A0.1[7|5566]*
+  0.2353 recv A1 d=7 link 5567567 s 5656657
+  0.1176 sit  A1.4[7|6667]* + A1.4[7|6667]*
+  0.1176 sit  A0.4[7|7557]* + A1.0[7|5577]* + A1.0[7|5577]*
+  0.1176 recv A0 d=7 link 5567576 s 5655557
+  0.0588 sit  A0.0[7|5576]* + A0.0[7|5576]*
+## mode=free: 5 sender-situation rows, 2 receiver rows, 6 vars; t_low = 0.294118
+  0.2353 sit  A1.1[7|5566]*
+  0.2353 recv A1 d=7 link 5567567 s 5656657
+  0.1176 sit  A1.4[7|6667]* + A1.4[7|6667]*
+  0.1176 sit  A0.4[7|7557]* + A1.0[7|5577]* + A1.0[7|5577]*
+  0.1176 recv A0 d=7 link 5567576 s 5655557
+  0.1176 sit  A0.1[7|5566]*
+  0.0588 sit  A0.0[7|5576]* + A0.0[7|5576]*
+## mode=nomir: 2 sender-situation rows, 2 receiver rows, 6 vars; t_low = 0.000000
+  1.0000 sit  A0.1[7|5566]*
+## mode=noLL: 2 sender-situation rows, 2 receiver rows, 6 vars; t_low = 0.000000
+  1.0000 sit  A0.1[7|5566]*
