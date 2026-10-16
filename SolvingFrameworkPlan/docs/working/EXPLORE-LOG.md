@@ -103,6 +103,12 @@ Details in `wheeldis/loop/av/FINDINGS.md`.
 - **Kill.** 0 of 6.
 - **Guess.** 1 of 6. Exact windows at ring 14 were D 21% of the time in round 14, and these carry 8s.
 
+**Round 17 result (16:45Z): H-W5 dies, 0 D of 6.** The first run was vacuous: `bin/dfast` skips rings > 16, so all
+6 came back SKIP (`win17_dfast16cap.out`). Rerun with `bin/dfast18`, one window at a time: all 6 are not D
+(`loop/w2/win17.out`), at 4-7 minutes and about 25 MB each on one core. No cfast yet. Guess (1 of 6) was close.
+Price of option A (inferred from these 6): a ring-17 B-fixed window costs about 5 core-minutes in dfast, and these
+gave nothing.
+
 ## Round 16 (16 Oct 2026, 14:16Z-): small windows at d = 8 and d = 9
 
 **Pre-registered 14:16Z, before any build of dfast lines.** (I counted the windows by ring; no new verdicts.)

@@ -32,7 +32,7 @@ All commits are on branch `claude/project-thread-nh6pv2`.
 | 14 | H-W2: small B-fixed windows forbid >= 30% of the d = 7 family | survives, just [E]: 178 D of 636; 190 of 617 rows (30.8%) | d4d6de61 |
 | 15 | H-W3: 8-relaxed windows reach HARD28 | neither bar, leans dead [E]: 23 D of 565; +28 rows; 0 HARD28 | 18892b89 |
 | 16 | H-W4: small windows at d = 8/9 | ROUND16 | |
-| 17 | H-W5: ring-17 windows for HARD28 | ROUND17 | |
+| 17 | H-W5: ring-17 windows for HARD28 | dies [E]: 0 D of 6 (dfast18; no cfast yet) | see log |
 | 18 | H-LF: HARD28 rows are receiver-centring artefacts | leads, caveats [E]: 0 leaves at K = 3; 1,521 K = 4 leaves (capped) all killed, none at u | 39389e23 |
 | 19 | H-B0: joint (u, v) pairs add kills | dies [E]: 0 joint kills in 10 built certificate pairs | f4398168 |
 | 20 | H-L2: big-big transfers lower t* materially | dies [E, restricted LP]: t* = 7/27 = 0.2593 | 59fdb04f |
@@ -48,7 +48,11 @@ All commits are on branch `claude/project-thread-nh6pv2`.
 
 ## 4. Price of ring 17 (round 17)
 
-ROUND17PRICE
+- The 6 untested ring-17 exact windows of the HARD28 rows (covering 7 of the 14 free rows): **0 D of 6** [E].
+- Cost: 4-7 minutes and about 25 MB per window on one core with `bin/dfast18` (`bin/dfast` stops at ring 16) [E].
+- The HARD28 rows' other exact windows sit at ring 18-21. dfast's cost grows with ring size, and these are larger
+  than 17. A ring 17-21 push over the 15 HARD28 rows is cheap per window but has a 0/6 D rate so far, and cfast on
+  the 6 non-D windows is the next cheapest step. [I]
 
 ## 5. Structural findings
 
