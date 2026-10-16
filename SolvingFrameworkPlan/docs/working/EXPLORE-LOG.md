@@ -1,5 +1,17 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 16 (16 Oct 2026, 14:35Z-): small windows at d = 8 and d = 9
+
+**Pre-registered 14:35Z, before any build of dfast lines.** (I counted the windows by ring; no new verdicts.)
+- **Why.** Studio's round-12 tight set has 1,519 d = 8 rows and 1,435 d = 9 rows next to its 227 d = 7 rows. Job 28
+  attacks only the d = 7 ones. Once the d = 7 rows are forbidden, these are the next to bind, and their small windows
+  are almost all untested (about 2,200 at ring <= 14).
+- **Configurations.** Round 14's small windows (|S| = 2-3, u at exact degree 8 or 9, N(S) exact, 9 -> B).
+- **Run.** The untested ones at ring <= 14, after round 15 frees the cores.
+- **H-W4.** They forbid at least 30% of the 2,954 d = 8/9 tight rows.
+- **Kill.** Under 5%.
+- **Guess.** A lower D rate than at d = 7 (about 15% of windows), and about 25% of the rows.
+
 ## Round 15 (16 Oct 2026, 14:15Z-): 8-relaxed windows against the rows round 14 left
 
 **Pre-registered 14:15Z, before any dfast run.** (I counted the untested windows first; no verdicts were looked at.)
