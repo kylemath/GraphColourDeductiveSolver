@@ -1,5 +1,37 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Rounds 8-9 (16 Oct 2026, 10:00-11:30Z): H-L3, then the two-step rule class (H-R1)
+
+**Round 8, H-L3** ("the remaining lone-five arrangements cannot be killed from distance-2 data"): dies as worded.
+Details and table in `wheeldis/loop/lone/FINDINGS.md`. The surviving completions of A1 (d = 10, link 5656556565,
+every s = 6) have a big vertex p at distance 2 from u, reached from a lone five through a 6.
+
+**Ring-16 batch (background, finished 11:05Z).** Receiver-free: 3 D of 20 (`u10.out`). B-fixed: 6 D of 29 (`b10.out`).
+- Recount with every pattern so far (`lone10.txt`): d = 9 max 4 lone fives (2 arrangements), d = 10 max **5** (15),
+  d = 11 max 6 (7), d = 12 clear.
+- **A1 is dead**: its link contains the window 5565655 with s = 666666, the ring-16 receiver-free D configuration
+  z_5565655_666666. So the six-lone-five counting bound at d = 10 (2/7) is gone. The counting bounds left are
+  1/5 (d = 9), 1/6 (d = 10), 1/7 (d = 11).
+
+**Round 9, H-R1, pre-registered 11:10Z before any LP run.**
+- Coordinator wording: a 5 -> 6 -> big rule takes t* below 2/7 at d = 10. A1's death overtakes that, so it is tested
+  against the new one-step baseline t_B.
+- **Hypothesis.** A 5 -> 6 -> big rule lowers t* below t_B.
+- **Definitions.** A lone five w_i has a *second-ring route* if a 6-neighbour has a neighbour at distance 2 from u that
+  the arrangement leaves open (the p slot of a link 6, w_i-1 or w_i+1) or fixes as big. Routes that only reach
+  third-ring vertices do not count.
+- **Test.**
+  - Baseline: wlp3s (stall 25) with every pattern so far (pats0, u*.pat, b*.out, out/job28/r_2-4, loop/g9 D outputs).
+  - Oracle: forbid each binding lone arrangement in which every lone five has a second-ring route, as if the rule
+    fully relieved it, and rerun.
+  - The oracle ignores the load the rule puts on p, so it is optimistic for H-R1.
+- **Kill.** Any of these kills H-R1:
+  - the oracle's t equals t_B;
+  - the oracle's new bound is set by an arrangement with a lone five that has no second-ring route;
+  - the baseline binders are not lone arrangements at all.
+- **Guess.** t_B is between 1/5 and 1/4 and is set at d = 9 (link 566565656, four lone fives, all on link 6s with p
+  slots). H-R1 then survives the oracle. It still needs the p-small completions to be reducible.
+
 ## Rounds 6-7 (16 Oct 2026, 08:35-10:00Z): the LP floor after the d = 7 certificate, and the lone-five family
 
 **Certificate (G2).** A1308's S = (0,5) at ring 14 is C (cfast, |X| = 1; `loop/rules/cert_bf.cfast`). So every
