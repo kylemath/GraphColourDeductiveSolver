@@ -282,3 +282,17 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
      - At u the B sector is skipped, so faceNext_GA(ρ(m−1) → u) = u → ρ 1. Hence `RingFace GA m ρ` (injective
        on [0, m)), and likewise for GB.
   4. `RingFace.toNC` → `RingNC.toTNC` → `RingTNC.of_pinch` → `RingTNC.kempeMatching`.
+- **(ii′) done (16 Oct): `DCheckPinchGeom.lean`.**
+  - `PinchWalk G r m ρ` is a face walk (faceNext steps along it, period r) that visits ρ 0 again exactly at position m,
+    with both arcs of length ≥ 3.
+  - `PinchWalk.ringTNC` gives `RingTNC G r ρ h` (axioms propext, Classical.choice, Quot.sound; no sorry), and
+    `PinchWalk.kempeMatching` gives KempeMatching for the realised codes (plus R1's native_decide).
+  - Proof route:
+    - The A-arc closed at u is a cycle (`Cyc`, chords allowed). Take its potential c.
+    - **K1**: at an arc-interior vertex only the face corner is near (consecutive jumps).
+    - **K2/K3**: hence `hcut` for SA = arc ∪ far side, SB = rest ∪ u.
+    - **K4**: at u, the rotation runs near from ρ(m−1) to ρ 1 and far from ρ 1 to ρ(m−1) (jump-count walks).
+    - The kept maps (`subgraph_tracked`) then have the arcs as `RingFace`s (`ringFaceA`/`ringFaceB`).
+    - Finish with `RingFace.toNC.toTNC` and `TNC.pinch`.
+- **Left for Job 26:** several pinches or higher multiplicity (induction, or a general k-pinch version), and (iii), the
+  extraction of a `PinchWalk` from an appearing 2-ball, i.e. the ConfigOcc variant with a face walk.
