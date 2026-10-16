@@ -1,0 +1,266 @@
+G9 summary (exploratory, engine level)
+val_ref_c5_K3.err: centre 5 K 3 nodes 465976 pruned 293751 leaves 5
+val_ref_c6_K3.err: centre 6 K 3 nodes 2679131 pruned 1749162 leaves 22
+val_ref_c7_K3.err: centre 7 K 3 nodes 14318384 pruned 9411142 leaves 40
+val_d8_c5_K3.err: centre 5 K 3 MAXL 7 nodes 465976 pruned 293751 leaves 5 leaves_with_8 0
+val_d8_c6_K3.err: centre 6 K 3 MAXL 7 nodes 2679131 pruned 1749162 leaves 22 leaves_with_8 0
+val_d8_c7_K3.err: centre 7 K 3 MAXL 7 nodes 14318384 pruned 9411142 leaves 40 leaves_with_8 0
+g9_K2_c5.err: centre 5 K 2 MAXL 8 nodes 948 pruned 74 leaves 0 leaves_with_8 0
+g9_K2_c6.err: centre 6 K 2 MAXL 8 nodes 3495 pruned 230 leaves 0 leaves_with_8 0
+g9_K2_c7.err: centre 7 K 2 MAXL 8 nodes 11564 pruned 828 leaves 0 leaves_with_8 0
+g9_K2_c8.err: centre 8 K 2 MAXL 8 nodes 40912 pruned 3058 leaves 0 leaves_with_8 0
+g9_K3_c5.err: centre 5 K 3 MAXL 8 nodes 63575883 pruned 43674050 leaves 16 leaves_with_8 11
+g9_K3_c6.err: centre 6 K 3 MAXL 8 nodes 629173577 pruned 453311018 leaves 44 leaves_with_8 22
+g9_K3_c7.err: centre 7 K 3 MAXL 8 nodes 5375185197 pruned 3958115344 leaves 261 leaves_with_8 221
+g9_K3_c8_part1.err: ring1 55588688 start leaves 374 leaves8 374 nodes 320489211
+g9_K3_c8_part2.err: ring1 56878867 start leaves 2 leaves8 2 nodes 8112115886
+centre 6 exit 0 81 s
+centre 7 exit 0 551 s
+centre 8 exit 143 27 s
+exit 124 600 s
+== g9_chk_c5
+bf-kill available (any)                       2
+kill only at 7s                               10
+kill uses a config at an 8                    1
+killed: receiver-centred B-free (D/C)         11
+rc-kill available (any)                       11
+untested wheels with a letter 8 / centre 8 appearing (counted not reducible), #candidates containing each:
+  8-wheel 56666657: 7
+  6-wheel 566668: 7
+  6-wheel 666668: 7
+  6-wheel 557558: 3
+  6-wheel 556668: 2
+  8-wheel 56575757: 1
+  8-wheel 56575758: 1
+== g9_chk_c6
+bf-kill available (any)                       0
+kill only at 7s                               14
+kill uses a config at an 8                    8
+killed: receiver-centred B-free (D/C)         22
+rc-kill available (any)                       22
+untested wheels with a letter 8 / centre 8 appearing (counted not reducible), #candidates containing each:
+  6-wheel 666668: 12
+  6-wheel 557558: 12
+  6-wheel 566668: 10
+  6-wheel 666678: 8
+  6-wheel 556668: 5
+  8-wheel 55666667: 4
+  8-wheel 56575757: 4
+  8-wheel 56666657: 2
+  8-wheel 56566757: 2
+  8-wheel 56566667: 2
+  6-wheel 556758: 1
+== g9_chk_c7
+bf-kill available (any)                       0
+kill only at 7s                               221
+killed: receiver-centred B-free (D/C)         221
+rc-kill available (any)                       221
+untested wheels with a letter 8 / centre 8 appearing (counted not reducible), #candidates containing each:
+  6-wheel 666668: 113
+  6-wheel 556668: 89
+  6-wheel 666678: 83
+  6-wheel 566668: 81
+  6-wheel 566678: 21
+  6-wheel 576668: 14
+  8-wheel 56666658: 11
+  6-wheel 556686: 11
+  8-wheel 56666666: 11
+  8-wheel 56666657: 10
+  8-wheel 56666667: 7
+  6-wheel 556678: 6
+  6-wheel 577578: 6
+  6-wheel 556687: 6
+  6-wheel 557578: 5
+  8-wheel 55675757: 5
+  7-wheel 5666678: 4
+  7-wheel 6666668: 4
+  8-wheel 56675757: 4
+  8-wheel 56666757: 4
+  8-wheel 57575757: 4
+  6-wheel 568587: 4
+  7-wheel 5667587: 4
+  6-wheel 557568: 4
+  7-wheel 5666687: 3
+  8-wheel 56666677: 3
+  6-wheel 567568: 3
+  8-wheel 56666668: 2
+  6-wheel 566688: 2
+  7-wheel 5766668: 2
+  8-wheel 56667657: 2
+  8-wheel 55757567: 2
+  8-wheel 55675667: 2
+  8-wheel 56666567: 2
+  8-wheel 56757577: 2
+  8-wheel 56667577: 2
+  6-wheel 556787: 2
+  8-wheel 55666757: 2
+  6-wheel 666787: 2
+  8-wheel 55666658: 2
+  8-wheel 55666667: 2
+  8-wheel 55666677: 2
+  8-wheel 56676657: 1
+  8-wheel 56757657: 1
+  8-wheel 55766667: 1
+  8-wheel 55667567: 1
+  6-wheel 575787: 1
+  6-wheel 567687: 1
+  6-wheel 666768: 1
+  8-wheel 55766577: 1
+  8-wheel 56666577: 1
+  8-wheel 55757577: 1
+  8-wheel 56765757: 1
+  8-wheel 55756757: 1
+  8-wheel 55756667: 1
+  6-wheel 557787: 1
+== g9_chk_c8
+bf-kill available (any)                       0
+kill only at 7s                               192
+kill uses a config at an 8                    167
+killed: receiver-centred B-free (D/C)         359
+rc-kill available (any)                       359
+untested wheels with a letter 8 / centre 8 appearing (counted not reducible), #candidates containing each:
+  6-wheel 666668: 147
+  6-wheel 666678: 106
+  6-wheel 566668: 93
+  6-wheel 556668: 91
+  8-wheel 55666658: 25
+  8-wheel 56666658: 24
+  6-wheel 576668: 24
+  6-wheel 566678: 16
+  6-wheel 556758: 13
+  6-wheel 567658: 13
+  6-wheel 557758: 10
+  6-wheel 556678: 9
+  6-wheel 567758: 9
+  6-wheel 577578: 8
+  8-wheel 56666657: 7
+  8-wheel 55666667: 6
+  6-wheel 557587: 6
+  6-wheel 666787: 5
+  8-wheel 55766658: 4
+  7-wheel 6666668: 4
+  8-wheel 55757658: 4
+  8-wheel 55675758: 4
+  8-wheel 55585758: 4
+  8-wheel 55666758: 4
+  8-wheel 55576758: 4
+  8-wheel 55575858: 4
+  7-wheel 5667578: 4
+  8-wheel 56675758: 4
+  8-wheel 56666758: 4
+  8-wheel 57575758: 4
+  7-wheel 5666858: 4
+  7-wheel 5667758: 4
+  7-wheel 5675858: 4
+  7-wheel 5676758: 4
+  7-wheel 5766758: 4
+  6-wheel 577588: 4
+  7-wheel 5666678: 3
+  8-wheel 55676658: 2
+  8-wheel 55585668: 2
+  6-wheel 666688: 2
+  8-wheel 56666668: 2
+  8-wheel 55667658: 2
+  8-wheel 55577658: 2
+  7-wheel 6666678: 2
+  8-wheel 55766667: 2
+  6-wheel 557588: 2
+  6-wheel 556686: 2
+  7-wheel 5666768: 2
+  6-wheel 557787: 2
+  8-wheel 56666677: 2
+  8-wheel 55666677: 2
+  7-wheel 5666687: 2
+  6-wheel 556687: 2
+  8-wheel 56666667: 2
+  6-wheel 556788: 1
+  8-wheel 55575768: 1
+  8-wheel 56757568: 1
+  8-wheel 56667568: 1
+  7-wheel 5558588: 1
+  7-wheel 5567588: 1
+  6-wheel 558568: 1
+  8-wheel 56666666: 1
+  6-wheel 568658: 1
+  8-wheel 66666666: 1
+  6-wheel 566658: 1
+  6-wheel 575758: 1
+  6-wheel 556857: 1
+  6-wheel 568577: 1
+  7-wheel 5685767: 1
+== g9_chk_c8b
+bf-kill available (any)                       157
+kill only at 7s                               58
+kill uses a config at an 8                    318
+killed: receiver-centred B-free (D/C)         376
+rc-kill available (any)                       376
+untested wheels with a letter 8 / centre 8 appearing (counted not reducible), #candidates containing each:
+  6-wheel 666668: 147
+  6-wheel 666678: 106
+  6-wheel 566668: 93
+  6-wheel 556668: 91
+  8-wheel 55666658: 25
+  8-wheel 56666658: 24
+  6-wheel 576668: 24
+  6-wheel 566678: 16
+  6-wheel 556758: 13
+  6-wheel 567658: 13
+  6-wheel 557758: 10
+  6-wheel 556678: 9
+  6-wheel 567758: 9
+  6-wheel 577578: 8
+  8-wheel 56666657: 7
+  8-wheel 55666667: 6
+  6-wheel 557587: 6
+  6-wheel 666787: 5
+  8-wheel 55766658: 4
+  7-wheel 6666668: 4
+  8-wheel 55757658: 4
+  8-wheel 55675758: 4
+  8-wheel 55585758: 4
+  8-wheel 55666758: 4
+  8-wheel 55576758: 4
+  8-wheel 55575858: 4
+  7-wheel 5667578: 4
+  8-wheel 56675758: 4
+  8-wheel 56666758: 4
+  8-wheel 57575758: 4
+  7-wheel 5666858: 4
+  7-wheel 5667758: 4
+  7-wheel 5675858: 4
+  7-wheel 5676758: 4
+  7-wheel 5766758: 4
+  6-wheel 577588: 4
+  7-wheel 5666678: 3
+  8-wheel 55676658: 2
+  8-wheel 55585668: 2
+  6-wheel 666688: 2
+  8-wheel 56666668: 2
+  8-wheel 55667658: 2
+  8-wheel 55577658: 2
+  7-wheel 6666678: 2
+  8-wheel 55766667: 2
+  6-wheel 557588: 2
+  6-wheel 556686: 2
+  7-wheel 5666768: 2
+  6-wheel 557787: 2
+  8-wheel 56666677: 2
+  8-wheel 55666677: 2
+  7-wheel 5666687: 2
+  6-wheel 556687: 2
+  8-wheel 56666667: 2
+  6-wheel 556788: 1
+  8-wheel 55575768: 1
+  8-wheel 56757568: 1
+  8-wheel 56667568: 1
+  7-wheel 5558588: 1
+  7-wheel 5567588: 1
+  6-wheel 558568: 1
+  8-wheel 56666666: 1
+  6-wheel 568658: 1
+  8-wheel 66666666: 1
+  6-wheel 566658: 1
+  6-wheel 575758: 1
+  6-wheel 556857: 1
+  6-wheel 568577: 1
+  7-wheel 5685767: 1
