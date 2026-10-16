@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-16 07:45 — Job 28 round 1 done (dce41332, b9ec6143): t* = 5/17; of 174 B-fixed configs from the tight d=7 arrangements, 20 D, 10 C, 144 neither (83% neither: watch for the 20 Nov kill). Round 2 running. Flagged the 144 to the explore thread.
 - 2026-10-16 07:00 — Lemma B DONE: 7-wheel 5666567 C-reducible in Lean (4d799f71, CWheels.lean; std axioms + native_decide). Counts as established (two engines + Lean). K=2 now rests on lemma A alone (plus the K ≥ 5 defect question). Job 28 round 1: t* = 5/17, 1,961 tight arrangements all at d=7; 27 of 174 new B-fixed configs D/C so far.
 - 2026-10-16 06:35 — Job 26 (ii′) proved (5f9d86f3, DCheckPinchGeom.lean): KempeMatching for a face walk with one pinch, no ring injectivity; folded case settled for a single pinch. Left: multiple pinches (induction), extraction (iii). Lemma B Lean compiling.
 - 2026-10-16 06:25 — Explore round 3 merged: lemma B (7-wheel 5666567 C-reducible, X={I0-I1,I0-I3,R2-I3}) now has a second engine (independent Python closure = cfast exactly). Sent to Studio for CWheels.lean. Lemma A coverage so far: 3 fives 146/164, 4 fives 69/69, 5 fives 17/17.
