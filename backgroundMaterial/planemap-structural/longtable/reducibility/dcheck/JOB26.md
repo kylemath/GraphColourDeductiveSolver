@@ -264,3 +264,21 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
     - Axioms: propext, Classical.choice, Quot.sound. No sorry.
 - **Left:** (ii′), i.e. that keeping one side of the pinch gives a SphericalMap whose arc is a RingFace, so that
   `RingFace.toNC` gives the side's TNC. Then (iii).
+- **(ii′) plan (16 Oct).** G is the `ConfigOcc` outside map. Weaken `ring : RingFace` to a face walk (`step`, no
+  `inj`) that visits u exactly at positions 0 and m.
+  1. *u is a cut vertex (parity argument, via `Fills`).*
+     - Suppose a path P in G − u joins a sector-A neighbour w of u to a sector-B neighbour w'.
+     - Then φ = P + uw + uw' is even, so `Fills` gives a face potential c.
+     - Around u the potential jumps exactly at uw and uw'. These two darts separate the two corners of the face f at u
+       (corner 0 and corner m), so c(f) ≠ c(f), a contradiction.
+     - Needs a "two jumps on a rotation cycle give different values on the two arcs" lemma, generalising
+       `potential_eq_of_two_consecutive_jumps` (FaceChord.lean).
+  2. *Sides.* SA = u ∪ the components of G − u meeting sector A; SB = the rest ∪ u.
+     - `hcut`/`hint` are by definition.
+     - Ring membership: the arc A positions are joined to ρ 1 along the arc.
+  3. *Side maps.* GA = G with every edge that has an endpoint in SB \ {u} deleted. This needs edge deletion to
+     preserve `Fills` (SphericalDelete).
+     - At vertices of SA \ {u} nothing is deleted.
+     - At u the B sector is skipped, so faceNext_GA(ρ(m−1) → u) = u → ρ 1. Hence `RingFace GA m ρ` (injective
+       on [0, m)), and likewise for GB.
+  4. `RingFace.toNC` → `RingNC.toTNC` → `RingTNC.of_pinch` → `RingTNC.kempeMatching`.
