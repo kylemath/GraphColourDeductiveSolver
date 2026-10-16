@@ -14,6 +14,13 @@
 - **Guess.** Dies. Most HARD28-like rows have 8s, not 7s, next to u (32 views over 49 rows), and free s letters
   at v leave fillings with no five next to v's fives. About 3 rows closed.
 
+**Round 21 result (17:25Z): H-A' dies, 0 of 49 rows closed.** Details in `wheeldis/loop/ap/FINDINGS.md`.
+- 25 rows have an exact link 7, giving 32 views and 487,500 fillings. 89% are not killed by any v-centred D/C window
+  or wheel; per view 58%-99%. 94% of the misses carry an 8.
+- So on the current registry, L1 v1 (forbid u's row through its neighbour v) gets nothing on these rows.
+- Narrow test: existing verdicts only; kills centred at v only (many misses would die at v's fives); exact 7s only.
+- Guess check: "dies, about 3 closed" was right on the verdict and high on the count.
+
 ## Round 20 (16 Oct 2026, 15:41Z-): H-L2, do big-big transfers lower t* materially? (coordinator's test)
 
 **Pre-registered 15:41Z, before any build.** Design and bars are Long Table's message of 15:32Z. The edge type, the
