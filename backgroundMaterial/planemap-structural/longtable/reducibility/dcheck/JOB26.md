@@ -127,3 +127,46 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
   of the incidence map, so it lies in the range of the dual map, by `range_dualMap_eq_dualAnnihilator_ker`. No
   connectivity is needed. `colouring_of_face_sums`: a nowhere-zero (ZMod 2)² labelling with zero face sums is the
   difference labelling of a proper 4-colouring. Axioms: propext, Classical.choice, Quot.sound.
+
+## Check of route B step (ii), before formalising (16 Oct, hand analysis)
+**As written, (ii) does not give a simple ring.**
+- Let u be a pinch vertex at ring positions i < j. The two ring corners at u cut its rotation into sectors A
+  (darts from ring_{i+1} round to ring_{j-1}) and B (ring_{j+1} round to ring_{i-1}).
+- Splitting u into u_A, u_B keeps E, adds a vertex, and splits the configuration's face into two. So χ rises by 2,
+  i.e. G'' = G''_A ⊔ G''_B (u is a cut vertex of G').
+- Face of G''_A: u_A, ring_{i+1}, …, ring_{j-1}, a simple cycle of length j − i. Face of G''_B: u_B, ring_{j+1}, …,
+  ring_{i-1}, length r − (j − i).
+- The ring edges at position i lie in different components: (ring_{i-1}, u) is in B and (u, ring_{i+1}) is in A. So no
+  simple length-r ring face exists in G'', and the configuration cannot be glued back to G'' as one disc.
+
+**What does hold (usable pieces).**
+- Each component has a simple ring face, so `chains_noncrossing` and the vertex Jordan lemma apply **per component**.
+  The A-chains give a non-crossing matching of the A-arc transitions; likewise B.
+  - A union of matchings within two complementary arcs is non-crossing on the whole r-cycle.
+- Colourings of G'' are colourings of G' with B translated independently by t ∈ (Z/2)², a colour permutation of B.
+  Normalising t so that κ(u_B) = κ(u_A) recovers exactly the G' codes (c_i = c_j).
+- Gluing (i) works in **trace** form, as in Gonthier.
+  - The ring-edge differences of a G'' colouring sum to 0 on each arc separately.
+  - The interior λ must have the same trace. That forces λ(ring_i) = λ(ring_j), which holds when λ extends a code
+    with c_i = c_j.
+- **The gap.** After a Kempe flip in A that recolours u_A, B must be re-translated: equivalently, flip every chain of B.
+  The combined effect on the r-ring code is "flip the A-outer region plus positions i and j, and flip all of B".
+  - With the union matching, this is not obviously a union of combined-matching regions: positions i and j sit in
+    the outer region with both A-outer and B-outer.
+  - So it is not yet shown that `KempeMatching` (R2's closure semantics, vertex codes) holds for pinched appearances,
+    even granted (i) and the split.
+
+**Options (for Long Table).**
+- (B1, recommended) The original route B: KempeMatching for the pinched face of G' **directly**, with no split.
+  - For a pair partition {a,b}|{c,d}, the transitions are the ring edges whose ends are in different classes. They
+    are matched by the class-boundary curves: Tait 2-colour chains in the dual of G' of the two colours other than
+    a + b.
+  - These are disjoint curves in the disc bounded by the configuration's face, which is a simple *edge* cycle even
+    when vertices repeat. So they are non-crossing, by a dual/dart Jordan lemma.
+  - Flips act on actual vertices of G', so a code keeps c_i = c_j. The glue to the free completion λ is then plain
+    vertex gluing, because λ(ring_i) = λ(ring_j) = κ(u). (i) is not needed on this route; it stays as a general tool.
+  - The new piece is the dart-level Jordan lemma for a face-boundary walk.
+- (B2) The split route (ii) plus a per-component vertex Jordan lemma. It works only if R2's closure step accepts the
+  combined "flip in A, re-translate B" moves. A cheap brute-force test of the closure semantics on the D keys would
+  decide it before any Lean work.
+- (B3) The kill route: ship the simple-ring statement, with the fold as an explicit hypothesis.
