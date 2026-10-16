@@ -1,6 +1,6 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
-## Rounds 8-9 (16 Oct 2026, 10:00-11:30Z): H-L3, then the two-step rule class (H-R1)
+## Rounds 8-9 (16 Oct 2026, 10:00-12:10Z): H-L3, then the two-step rule class (H-R1)
 
 **Round 8, H-L3** ("the remaining lone-five arrangements cannot be killed from distance-2 data"): dies as worded.
 Details and table in `wheeldis/loop/lone/FINDINGS.md`. The surviving completions of A1 (d = 10, link 5656556565,
@@ -31,6 +31,29 @@ every s = 6) have a big vertex p at distance 2 from u, reached from a lone five 
   - the baseline binders are not lone arrangements at all.
 - **Guess.** t_B is between 1/5 and 1/4 and is set at d = 9 (link 566565656, four lone fives, all on link 6s with p
   slots). H-R1 then survives the oracle. It still needs the p-small completions to be reducible.
+
+**Round 9 result (11:05-12:10Z, over the 30-minute cap because each LP iteration takes about 40 s).**
+- **Baseline** (`loop/lp/wlp3_hr1_base.txt`, stall stop): t* >= 0.2773 (33/119), so the guess was wrong.
+  - The certificate is five **d = 7** receivers, each carrying 0 or 1 lone five; the largest dual is on
+    5675765/6575575.
+  - d = 10 has slack (load 4.11 against 4.28). d = 9 still had a violated row at the stop, so the true t* can be
+    higher.
+  - A stall-80 copy (`hr1_long`) sat at 0.2773 for 70+ iterations.
+- **Relief against load at the binders.**
+  - Each binder has at most 1 lone five that the rule could relieve.
+  - Each also has 1-2 second-ring fives (an s = 5 next to a link 6) that would send z into u through that 6, plus
+    open p slots.
+  - So with one z per target class, the rule adds at least as much load as it removes.
+- **Oracle** (`hr1_or1`): the 4 routed binders forbidden, warm start. Stall stop at t >= 3/11 (0.2727).
+  - Its certificate is two d = 7 receivers: 5676575/6556666 (1 lone five, 2 inflow fives) and 5765756/5556666
+    (**no lone five**, 2 inflow fives).
+- **Verdict: H-R1 dies (inferred, not a solved two-step LP).**
+  - The binders moved to d = 7.
+  - The oracle's bound rests on a receiver with no lone five to relieve.
+  - Every binder takes at least as much two-step inflow as it sheds.
+  - The spec for a faithful LP is `wheeldis/loop/lone/TWOSTEP.md`. It is not worth building while the binders sit at
+    d = 7, where Studio's certificate loop already works.
+- **G9:** the centre-8 K = 3 search is complete. The remaining 1,429 ring-1 words gave 0 leaves, so all 376 die.
 
 ## Rounds 6-7 (16 Oct 2026, 08:35-10:00Z): the LP floor after the d = 7 certificate, and the lone-five family
 

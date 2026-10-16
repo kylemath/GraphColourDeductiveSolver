@@ -61,3 +61,27 @@ So the sounding board's point holds: the non-6 vertex that the 566666 wheel forc
 - A2 is not killed for p = 6 or 7 at ring <= 16.
 - Reading (inferred): the cases still standing have a big vertex two steps from the lone five, through a 6. That is
   exactly what a 5 -> 6 -> big rule could use.
+
+## Round 9: ring 16, and H-R1 (a 5 -> 6 -> big rule)
+
+**Ring 16.** Receiver-free: 3 D of 20 (`u10.out`). B-fixed: 6 D of 29 (`b10.out`, five at d = 11, one at d = 9).
+- z_5565655_666666 contains A1's window, so A1 is dead.
+- Recount (`lone10.txt`, every pattern so far):
+
+| d | max lone fives | arrangements above d - 6 |
+|---|---|---|
+| 9 | 4 | 2 |
+| 10 | 5 | 15 |
+| 11 | 6 | 7 |
+| 12 | 6 | 0 |
+
+**LP** (`loop/lp/wlp3s.py`, every pattern in `pats_hr1.txt`):
+- The baseline certificate gives t* >= 0.2773 (33/119), set by five d = 7 receivers (`wlp3_hr1_base.txt`). The lone
+  family no longer binds.
+- `hr1_oracle.py` classifies certificate receivers as routed, unrouted or plain. Forbidding the 4 routed ones as an
+  optimistic stand-in for the rule (`hr1_or1.pat`) still leaves t >= 3/11 (`wlp3_hr1_or1.txt`).
+- That bound rests on a d = 7 receiver with no lone five, 5765756/5556666.
+- At every binder, the second-ring fives that feed u through a link 6 are at least as many as the lone fives the
+  rule could relieve.
+
+**Verdict.** H-R1 dies (inferred). `TWOSTEP.md` says what a faithful two-step LP would need.
