@@ -1,5 +1,33 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 11 (16 Oct 2026, 12:40Z-): binder coverage with degree 8 and deeper defects
+
+**K-cap (H-K), withdrawn before any run.**
+- The coordinator proposed forbidding arrangements with more than K letters >= 7.
+- That is not sound: no lemma bounds the bigs in a receiver's 2-ball, and round 10 shows that dense arrangements
+  complete to locally consistent defects.
+- It would also delete 559 of the 562 tight rows at the 33/119 optimum. Only 3 have <= 2 bigs.
+
+**Pre-registered 12:42Z.**
+- **Binders.** The 4 that `b7f.out` does not forbid: 5575576/6666656, 5765575/7565777, 5567576/6755556 and
+  5765756/5556666.
+- **Question.** Do they complete to positive isolated defects that survive R_opt+, either at K = 4 with letter 8,
+  or at K = 5 (capped)?
+- **H-B8.** Every completion found dies to R_opt+.
+- **Kill.** A completion survives with every configuration tested.
+- **Guess.** The letter-8 K = 4 searches finish under the 20-minute cap for at most 2 of the 4. K = 5 is far from
+  complete. Everything found dies, mostly at the centre.
+
+**Round 11 result (13:46Z).** Details in `wheeldis/loop/b7/FINDINGS.md`.
+- **K = 4 with letter 8** (20-minute cap): 1,634 leaves, complete for 5575576. All are killed by the existing
+  registry, every one by a D, and they stay killed with `strict7`.
+- **K = 5, letters 5-7** (10-minute cap): 423,160 leaves.
+  - Checked: all of the two small sets and a 1/50 or 1/20 sample of the two large ones, 10,309 leaves in total.
+  - All are killed, after 452 new dfast tests at ring <= 14 (216 D).
+- **H-B8 survives** (the K = 5 part is sampled).
+- **Guess check.** Only 1 of the 4 letter-8 searches finished, not "at most 2". Kills were mostly at the centre in
+  round 10; I did not re-split them here.
+
 ## Round 10 (16 Oct 2026, 12:30Z-): do the d = 7 LP binders sit inside an isolated defect? (coordinator's suggestion)
 
 **Pre-registered 12:30Z, before any matching.**
