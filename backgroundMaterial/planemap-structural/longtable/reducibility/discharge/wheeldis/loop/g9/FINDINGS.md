@@ -74,3 +74,34 @@ Of the 1,429 centre-8 ring-1 words left, all but 6 have at most three fives.
 - Resume centre 8 at K = 3 from word 56878867.
 - K = 4 at centres 5-7, capped and sampled the way defectr2 does it at K = 5.
 - Commit `defect_check2_8`'s degree-8 receivers into defect_check2 if G9 grows.
+
+## Probe 2: centres of degree 9-12 (16 Oct, after the LP floor moved to a degree-10 receiver)
+
+Tools:
+- `defectc9.cpp` takes centres 5-12. Letter 9 means "degree >= 9" and is used for the centre only.
+- `defect_tables9.py` writes `defect_tables9.txt`. That file (1.9 MB) is not committed; regenerate it with
+  `python3 defect_tables9.py`.
+- A word with a 9 counts as reducible only through D fans with a free vertex or through 2.122. 7/8-wheels with a 9 and
+  the centre's own wheel count as not reducible.
+- Validation: with C0 <= 8 the output is identical to defectc8 (K = 2, centres 5-8; K = 3, centres 5-7).
+- `defect_check2_9.py` (from `mk_check9.py`) takes receivers of every degree >= 7 and reads f-name verdicts from
+  out/job28, loop/lp and loop/g9.
+
+Results:
+- **K = 2, complete, centres 9-12: 0 leaves.**
+  - With ring 2 all 6, a ring-2 vertex next to a ring-1 five has link 566666 or 556666. Both are Job 17 D 6-wheels.
+  - Charge >= 1 forces ring-1 fives to be adjacent, so this cannot be avoided (`why_k2.py`).
+- **K = 3, 150 s cap per centre, far from complete:**
+  - Leaves: 897 / 650 / 292 / 113 for centres 9 / 10 / 11 / 12.
+  - No leaf has more than 4 lone fives.
+  - The existing registries kill 1,761 of the 1,952 leaves.
+  - 1,801 new dfast runs at ring <= 12 (`g9_big_r1.dfast.out`; 1,590 D) kill the other 191.
+  - Every leaf dies to a D receiver-centred configuration.
+- **The LP's d = 10 arrangement** (link 5656556565, s 6566666665):
+  - Its B-fixed S = {0, 2, 4} at ring 14 is D (`g9_lp10_r14.dfast.out`).
+  - Its ring-1 word gives no K = 3 defect (0 leaves).
+
+Not done: K = 3 complete for centres 9-12; K = 4.
+
+The check outputs `big_chk_c1{0,1,2}.d` (lists of untested configurations, 1.7-3 MB each) are not committed. Rerun
+`defect_check2_9.py` to regenerate them.
