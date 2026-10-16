@@ -211,3 +211,30 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
 - The icosahedron is vacuous: its ring is the single antipode, so codes are constant and have no transitions.
 - **Reading.** KempeMatching (vertex codes, XOR-θ flips) holds for pinched rings, which is the statement B1 must prove.
   This agrees with the hand proof above. It is a sanity check, not a proof.
+
+### Sharper (16 Oct): `RingNC` itself holds for the pinched walk, so no merge lemma is needed (`job26/pinch_nc.py`, `.out`)
+- `RingNC G r ρ` (DCheckRingNC.lean) does **not** require ρ to be injective. Its fields are the chain non-crossing
+  statements `nc` and `ncs`, by ring index. `RingNC.kempeMatching` (DCheckRingKempe.lean) then gives KempeMatching with
+  no injectivity anywhere.
+- **Brute force on G' itself** (chains of G', positions i and j both u). For every proper colouring, RingKempe's
+  `hNC` and the pairGraph forms `nc`/`ncs` were checked on pinched maps 4w+4w, 3f+5w, 5two+4w and 4f+4f (ring 8–9):
+  **0 violations**. The crossing-chord control has 384, so the test has teeth.
+- **Correction to the first finding (15 Oct).** The example "an {a,b} chain through 1, u, 4 and a {c,d} chain joining
+  2 and 5" cannot occur. u is a cut vertex of G', so any chain from side A to side B passes through u, and a {c,d}
+  chain cannot contain the {a,b}-coloured u.
+- **Hand proof sketch of `nc` for the pinched walk.**
+  - Take i < j < k < l, with chain 1 joining positions i and k and a disjoint-pair chain 2 joining j and l.
+  - At most one of the two chains contains u, so the other lies inside one side X.
+  - Then j, k, l (or i, j, k) lie in X's arc. The part of chain 1 inside X runs from its X-endpoint to u, entered
+    at the first visit (the cut-vertex property).
+  - In X's simple ring, u sits at position 0, so the crossing becomes a crossing in X. That contradicts X's own
+    `RingNC` (from its RingFace).
+  - `ncs` is the same with the same-pair bookkeeping.
+- **Plan, final.**
+  - (ii′) Keep one side of the pinch: G'_X is a SphericalMap with a simple RingFace on the arc, so `RingNC` holds by
+    the existing bridge.
+  - (iv′) `RingNC` for the pinched walk, from `RingNC` of both sides plus the cut-vertex property. This is pure graph
+    reachability, no planarity.
+  - Then `RingNC.kempeMatching` applies verbatim.
+  - Several pinches: induct on the splits.
+  - (iii) The extraction, unchanged.
