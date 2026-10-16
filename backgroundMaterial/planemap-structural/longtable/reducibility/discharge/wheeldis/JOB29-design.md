@@ -65,8 +65,49 @@ Embedding v's 2-ball in sep3's DP is too large (§5). Instead:
 5. When the oracle times out (H-LF hit the 2-minute cap on 27 of 49 rows), do **not** forbid: an unfinished
    search is not a kill.
 
+## 3a. The oracle: what it enumerates, and how much
+
+**New code, `nbroracle`** (C++, reusing gen28's `make` logic for window building and the `la.ckey` key):
+- It takes a u-arrangement a (d_u = 7: link w_0..6, s_0..6) and its big neighbours: v = w_j ≥ 7 (distance 1) and
+  v = s_j ≥ 7 (distance 2).
+- **Per-neighbour test (sound and sufficient; the first version).** Forbid a if there is one big neighbour v of
+  exact degree (letter 7 or 8) such that every filling of v's 2-ball outside the known letters contains a
+  registered D/C window centred at v. This is weaker than "every joint filling dies somewhere", but it is a plain
+  enumeration.
+  - **v = w_j, d_v = 7.** v's link has 7 letters, 5 known (u, w_{j±1}, s_{j−1}, s_j), so 2 unknown. v's s-ring
+    has 7 letters, about 2 known, so about 5 unknown. That is about 7 unknown letters, **5^7 ≈ 7.8·10^4 fillings**.
+    Each filling needs the windows at v (up to 2^5 sender sets, most pruned by ring > 16) built and keyed, about
+    20–50 µs each. That is **≈ 1–3 min per (v-overlap key) uncached**. This is right at the 2-min cap; with the memo
+    keyed by v's known letters, a round reuses most of them.
+  - **v = w_j, d_v = 8.** About 9 unknown letters, **5^9 ≈ 2·10^6 fillings**, so ≈ 40–100 min. These **time out**
+    at a 2-min cap unless pruned. Pruning: stop a filling branch as soon as a window that fits is D; enumerate in
+    DFS order, keeping the letters that most often complete a window first.
+  - **v = s_j, d_v = 7.** Only 2 link letters are known, so about 5 + 7 = 12 unknown, **5^12 ≈ 2.4·10^8**. Out of
+    reach without pruning, so skipped in the first version.
+  - **v of letter 9+.** It has no exact degree, so windows centred at v do not exist. Skip it.
+- **Joint test (complete; a later version).** No joint filling of all the neighbours' balls is window-free at every
+  v. This is a CSP over the union of the balls (DFS with a check at each v once its ball is assigned). It is
+  exponential in the number of big neighbours. H-LF's much smaller 6-sea space already hit the 2-min cap on 27 of 49
+  rows, so expect **most** arrangements to time out.
+- **Expected timeout fraction at a 2-min cap (first version).**
+  - Arrangements whose only exact-degree big neighbours are 7s on the link: few time out once memoised, perhaps
+    10–30% in the first round, falling after that.
+  - Arrangements that need an 8 neighbour, or a ring-2 v: nearly all time out.
+  - In the tight d = 7 family, the 7-on-link cases are what H-LF's kills used (45%). So the first version can at
+    best reach about that share. Ring-2 kills (48%) need the joint or ring-2 version.
+- **Before any forbid is trusted:** run the oracle on H-LF's 49 rows and compare. A forbid there must agree with the
+  explore thread's kills. A disagreement points to a bridge or enumeration bug.
+
 ## 4. Soundness checklist
 
+0. **(Long Table, first.) The oracle is NOT the 6-sea defect search.** defectb7 and defectc9, as the explore thread
+   uses them, set everything outside K to degree 6. There, "all completions die" excludes *isolated defects* only;
+   it says nothing about arbitrary neighbourhoods.
+   - For a forbid, the oracle must enumerate every filling of each neighbour v's 2-ball, with every unknown letter in
+     {5, 6, 7, 8, 9+}.
+   - In the window match, 9+ is a *free B*: a window may use a 9+ vertex only as a ring vertex, never at an exact
+     degree.
+   - This is new code (§3a), not an existing tool.
 1. **Completion exhaustiveness.** "Every completion dies" must range over all extensions consistent with a,
    including degrees ≥ 9 via the 9 = "≥ 9" letter. The configuration found must contain only exact degrees or free
    ring vertices; no exact 9 may stand for "≥ 9".
