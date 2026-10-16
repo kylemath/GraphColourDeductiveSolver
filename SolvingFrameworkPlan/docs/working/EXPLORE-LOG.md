@@ -1,5 +1,23 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 11 (16 Oct 2026, 12:40Z-): binder coverage with degree 8 and deeper defects
+
+**K-cap (H-K), withdrawn before any run.**
+- The coordinator proposed forbidding arrangements with more than K letters >= 7.
+- That is not sound: no lemma bounds the bigs in a receiver's 2-ball, and round 10 shows that dense arrangements
+  complete to locally consistent defects.
+- It would also delete 559 of the 562 tight rows at the 33/119 optimum. Only 3 have <= 2 bigs.
+
+**Pre-registered 12:42Z.**
+- **Binders.** The 4 that `b7f.out` does not forbid: 5575576/6666656, 5765575/7565777, 5567576/6755556 and
+  5765756/5556666.
+- **Question.** Do they complete to positive isolated defects that survive R_opt+, either at K = 4 with letter 8,
+  or at K = 5 (capped)?
+- **H-B8.** Every completion found dies to R_opt+.
+- **Kill.** A completion survives with every configuration tested.
+- **Guess.** The letter-8 K = 4 searches finish under the 20-minute cap for at most 2 of the 4. K = 5 is far from
+  complete. Everything found dies, mostly at the centre.
+
 ## Round 10 (16 Oct 2026, 12:30Z-): do the d = 7 LP binders sit inside an isolated defect? (coordinator's suggestion)
 
 **Pre-registered 12:30Z, before any matching.**
