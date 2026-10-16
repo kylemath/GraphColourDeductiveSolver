@@ -1,5 +1,21 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 18 (16 Oct 2026, 14:29Z-): H-LF, are the HARD28 rows artefacts of receiver-centring? (coordinator's test)
+
+**Pre-registered 14:29Z, before any search.** Design and bars are Long Table's message of 14:23Z; the guess is mine.
+- **Rows.** The 15 HARD28 rows plus the 34 other HARD28-like rows of `supply.py`: 49 rows.
+- **Search.** `defectb9` (defectc9 with letters 5-9 on rings < K and the 2-ball fix of defectb7): centre 7, link and
+  s fixed to the row, p slots free, K = 3, CMIN = 1. A 9 in a row is an exact 9 here, a sub-case of "degree >= 9".
+- **Check.** Every leaf through `defect_check2 bf` (every 7 in the patch, every S). Existing verdicts only: f-named
+  verdicts (Studio's r_*, explore windows) are bridged by canonical key (lemmaA `la.ckey`). No new dfast or cfast.
+  A leaf that is not killed (SURVIVES or open) counts as surviving.
+- **H-LF leads** if at least 2/3 of rows have no surviving leaf. **H-LF dies** if at least 1/3 of rows have one.
+- **Caveat.** A search that puts a sea of 6s from ring 3 outward rules out isolated defects only. It does not show
+  that a row is sound to forbid.
+- **Guess.** Most rows have no leaf at all at K = 3: a 2-ball with 8s and 9s rarely closes into a positive defect
+  inside a 6-sea (round 10's 7 binders had none at K = 3). So H-LF leads, and mostly vacuously. If that happens I
+  will add K = 4 with letters 5-7 on the new ring (5-minute cap per row) as a less vacuous probe.
+
 ## Round 17 (16 Oct 2026, 14:18Z-): ring-17 windows for the HARD28 rows
 
 **Pre-registered 14:18Z, before any dfast run.**
