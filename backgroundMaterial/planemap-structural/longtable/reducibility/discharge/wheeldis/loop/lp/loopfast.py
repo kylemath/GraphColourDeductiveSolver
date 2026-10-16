@@ -1,12 +1,13 @@
 """EXPLORE round 6 (exploratory): a fast local version of Job 28's loop (loop28.py), with two changes:
-  - B-fixed sender sets are tried LARGEST S FIRST (then ring), up to PER per binding arrangement per round;
+  - B-fixed sender sets are tried LARGEST S FIRST (then ring), up to PER per binding arrangement per round, plus up to
+    NSMALL with ring <= SMALLR (cheap; a small D configuration also forbids sibling arrangements);
   - patterns also include the explore-loop verdicts (loop/rules/cert_bf_*.out, loop/lp/r_*.out / *.cfast).
 LP: loop/lp/wlp3s.py (wlp3.py + early stop: the dual of the rows found so far, a valid lower-bound certificate).  Per round n: loop/lp/wlp3_xl_<n>.txt (LP output), wlp3_<n>.log, in_<n>.txt, r_<n>.out, r_<n>.cfast, log.txt.
-Usage: python3 loop/lp/loopfast.py [start=1] [maxr=3] [per=2] [procs=2] [narr=200] [stall=25]"""
+Usage: python3 loop/lp/loopfast.py [start=1] [maxr=3] [per=2] [procs=2] [narr=200] [stall=25] [small=14] [nsmall=12] [cmax=13: cfast only up to this ring]"""
 import sys, os, subprocess, re, glob, time, shutil
 HERE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))); L = os.path.join(HERE, 'loop', 'lp')
 opt = dict(a.split('=') for a in sys.argv[1:])
-START, MAXR, PER, PROCS, NARR, STALLN = (int(opt.get(k, v)) for k, v in (('start', 1), ('maxr', 3), ('per', 2), ('procs', 2), ('narr', 200), ('stall', 25)))
+START, MAXR, PER, PROCS, NARR, STALLN, SMALLR, NSMALL, CMAX = (int(opt.get(k, v)) for k, v in (('start', 1), ('maxr', 3), ('per', 2), ('procs', 2), ('narr', 200), ('stall', 25), ('small', 14), ('nsmall', 12), ('cmax', 13)))
 DF, DF18, CF = (os.path.join(HERE, 'bin', b) for b in ('dfast', 'dfast18', 'cfast'))
 rel = lambda f: os.path.relpath(f, HERE)
 BASE = ['pat=out/pairs_D7_k2_dfast.out', 'pat=out/pairs_D8_k3_dfast.out', 'pat=out/pairs_D9_k4_dfast.out',
@@ -78,13 +79,20 @@ for n in range(START, START + MAXR):
             ln = make(d, x[0], x[2], x[3], x[4], x[5])
             if ln and not ln.startswith('RINGMISMATCH'): new[x[5]] = ln; k += 1
             if k >= PER: break
+        # also the cheap ones: up to NSMALL variants with ring <= SMALLR (a small D configuration covers many siblings)
+        k = 0
+        for x in sorted(un, key=lambda x: (x[0], -x[1])):
+            if x[0] > SMALLR or k >= NSMALL: break
+            if x[5] in new: continue
+            ln = make(d, x[0], x[2], x[3], x[4], x[5])
+            if ln and not ln.startswith('RINGMISMATCH'): new[x[5]] = ln; k += 1
     inp = os.path.join(L, 'in_%d.txt' % n)
     open(inp, 'w').write(''.join(l + '\n' for l in sorted(new.values(), key=lambda x: int(x.split()[1]))))
     if not new: log('round %d: no new configuration (binding %d, already killed %d, all-tested %d)' % (n, len(arrs), killed, hard)); break
     rout = os.path.join(L, 'r_%d.out' % n); par(DF, [], inp, rout)
     nd = sum(1 for l in open(rout) if 'D=true' in l)
     dset = {x.split()[0] for x in open(rout) if 'D=true' in x}
-    cin = os.path.join(L, 'cin_%d.txt' % n); open(cin, 'w').write(''.join(l for l in open(inp) if l.split()[0] not in dset))
+    cin = os.path.join(L, 'cin_%d.txt' % n); open(cin, 'w').write(''.join(l for l in open(inp) if l.split()[0] not in dset and int(l.split()[1]) <= CMAX))
     cout = os.path.join(L, 'r_%d.cfast' % n); par(CF, ['--search', '--limit', '1'], cin, cout)
     nc = open(cout).read().count('C-REDUCIBLE')
     log('round %d: binding %d (already killed %d, all-tested %d); tested %d: D %d, C %d' % (n, len(arrs), killed, hard, len(new), nd, nc))
