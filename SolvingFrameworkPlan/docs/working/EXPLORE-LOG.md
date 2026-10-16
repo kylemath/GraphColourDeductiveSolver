@@ -1,5 +1,21 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 12 (16 Oct 2026, 13:50-14:10Z): H-AV, pair averaging between adjacent bigs
+
+**Pre-registration.** Long Table's message of 13:47Z: pair rows charge(u) + charge(v) <= 2t take t* below 3/11;
+kill if t* stays >= 3/11. I added no guess before computing.
+
+**Result: H-AV dies, exactly for the pair-row model.** Details in `wheeldis/loop/av/FINDINGS.md`.
+- Studio's round-11 certificate (`out/wlp3_j28_11.txt`) has two receivers, 5756575/6565666 and 5765756/5566666.
+  Each can sit next to a consistent copy of itself (`pairs.py`).
+- So the same dual combination, written with pair rows, certifies t >= 3/11 in the pair model.
+- The same holds for Studio's round 10 and for the explore oracle certificate (`certpair.py`).
+- This does not settle transfers that depend on both 2-balls (class b): the self-pair edge is oriented.
+
+**Reading.** The 3/11 plateau is a family, the way 2/7 was lone fives. In the current pair every five is shared with
+a link 7 (senders 56677 / 66677 / 56776). The proposed attack is the lone-five playbook: count the family, then use
+edge-centred configurations (two adjacent 7s with their common fives).
+
 ## Round 11 (16 Oct 2026, 12:40Z-): binder coverage with degree 8 and deeper defects
 
 **K-cap (H-K), withdrawn before any run.**
