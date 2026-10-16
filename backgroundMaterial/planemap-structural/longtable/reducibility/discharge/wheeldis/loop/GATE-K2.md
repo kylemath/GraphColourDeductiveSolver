@@ -16,7 +16,8 @@ All commits are on branch `claude/project-thread-nh6pv2`.
 - t* fell 0.029 in 12 rounds. Explore's own floors on the way: 33/119 (one-step baseline, round 9) and 3/11 (oracle).
 - d = 7 tight family (617 distinct rows, explore + Studio round 12): 218 forbidden after rounds 14-15 (35.3%);
   399 free, of which 14 are HARD28 and 46 of 49 HARD28-like rows are still free. [E]
-- d = 8 tight rows: 0 of 1,519 forbidden by any registry window (`loop/w2/cov8.txt`). [E]
+- d = 8/9 tight rows: 0 of 1,519 d = 8 forbidden by any registry window before round 16; after it 800 of 1,519
+  d = 8 and 1,111 of 1,435 d = 9 (`loop/w2/cov89.txt`). The LP effect is not computed yet. [E]
 
 ## 2. Hypotheses tested today
 
@@ -31,7 +32,7 @@ All commits are on branch `claude/project-thread-nh6pv2`.
 | 13 | H-E7: receiver-free windows with big link vertices | dies [E]: 0 D of 56 at ring <= 15 (d = 7 windows wrap) | 6495cd55 |
 | 14 | H-W2: small B-fixed windows forbid >= 30% of the d = 7 family | survives, just [E]: 178 D of 636; 190 of 617 rows (30.8%) | d4d6de61 |
 | 15 | H-W3: 8-relaxed windows reach HARD28 | neither bar, leans dead [E]: 23 D of 565; +28 rows; 0 HARD28 | 18892b89 |
-| 16 | H-W4: small windows at d = 8/9 | ROUND16 | |
+| 16 | H-W4: small windows forbid >= 30% of d = 8/9 tight rows | survives [E]: 687 D of 2,201; 1,911 of 2,954 rows (64.7%) | see log |
 | 17 | H-W5: ring-17 windows for HARD28 | dies [E]: 0 D of 6 (dfast18; no cfast yet) | see log |
 | 18 | H-LF: HARD28 rows are receiver-centring artefacts | leads, caveats [E]: 0 leaves at K = 3; 1,521 K = 4 leaves (capped) all killed, none at u | 39389e23 |
 | 19 | H-B0: joint (u, v) pairs add kills | dies [E]: 0 joint kills in 10 built certificate pairs | f4398168 |

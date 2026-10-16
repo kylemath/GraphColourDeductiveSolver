@@ -121,6 +121,11 @@ gave nothing.
 - **Kill.** Under 5%.
 - **Guess.** A lower D rate than at d = 7 (about 15% of windows), and about 25% of the rows.
 
+**Round 16 result (17:19Z): H-W4 survives, strongly.** 687 of 2,201 windows D (31%; guess 15%), in
+`loop/w2/win89.out`. Coverage of Studio's round-12 d = 8/9 tight rows (`loop/w2/cov89.txt`): **1,911 of 2,954
+forbidden (64.7%)**: d = 8 800 of 1,519, d = 9 1,111 of 1,435 (bar 30%; guess 25%). Before this round no d = 8 row
+was forbidden by any registry window. The D windows go to Studio as patterns; the next LP shows what t* does.
+
 ## Round 15 (16 Oct 2026, 14:15Z-): 8-relaxed windows against the rows round 14 left
 
 **Pre-registered 14:15Z, before any dfast run.** (I counted the untested windows first; no verdicts were looked at.)
