@@ -1,5 +1,26 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 21 (16 Oct 2026, 17:22Z-): H-A', can a HARD28-like row be forbidden through a neighbouring 7? (coordinator's test)
+
+**Pre-registered 17:22Z, before any matching.** Design and bars are Long Table's message of 17:20Z; the guess is mine.
+- **Views.** For each of the 49 HARD28-like rows (`loop/lf/seeds.txt`) and each exact link 7 v of u: v's arrangement
+  as fixed by u (`pairs.py view`: 5 link letters, 2-4 s letters). 32 views; every free letter over 5, 6, 7, 8, 9
+  (9 = 9+, matched only by B). 15,625 fillings per view (one view 3,125).
+- **Kill per filling.** A registered D/C window centred at v (every f7_/e7_/p7_ name with a D or C verdict in the
+  registries, w2.py matching), or a reducible wheel at v or at one of v's link fives/sixes (R5, R6 for every p,
+  RBIG). Existing verdicts only.
+- **A view is closed** if every filling is killed. **H-A' lives** if at least 1/3 of the 49 rows have a closed
+  view; **dies** if fewer than 1/6 do. Only rows with an exact link 7 can have one.
+- **Guess.** Dies. Most HARD28-like rows have 8s, not 7s, next to u (32 views over 49 rows), and free s letters
+  at v leave fillings with no five next to v's fives. About 3 rows closed.
+
+**Round 21 result (17:25Z): H-A' dies, 0 of 49 rows closed.** Details in `wheeldis/loop/ap/FINDINGS.md`.
+- 25 rows have an exact link 7, giving 32 views and 487,500 fillings. 89% are not killed by any v-centred D/C window
+  or wheel; per view 58%-99%. 94% of the misses carry an 8.
+- So on the current registry, L1 v1 (forbid u's row through its neighbour v) gets nothing on these rows.
+- Narrow test: existing verdicts only; kills centred at v only (many misses would die at v's fives); exact 7s only.
+- Guess check: "dies, about 3 closed" was right on the verdict and high on the count.
+
 ## Round 20 (16 Oct 2026, 15:41Z-): H-L2, do big-big transfers lower t* materially? (coordinator's test)
 
 **Pre-registered 15:41Z, before any build.** Design and bars are Long Table's message of 15:32Z. The edge type, the
