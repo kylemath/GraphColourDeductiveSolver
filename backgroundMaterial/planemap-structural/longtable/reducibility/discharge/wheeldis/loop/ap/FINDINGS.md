@@ -17,3 +17,7 @@ link sixes, RBIG at v). No new dfast or cfast. Runtime 14 s.
 letters leave most fillings untouched by v-centred windows, mostly because they carry 8s. Round 18's kills at
 neighbouring 7s came from leaves that were complete 6-sea patches, not from v's 2-ball alone. Caveats: existing
 verdicts only (untested v-centred windows could be D); exact 7s only (8-neighbours not tried); v-centred kills only.
+
+**Follow-up (`ap8.py`, `ap8.txt`): kills at the 8.** Of the 435,524 misses, 308,600 have an 8 on v's link. Reading
+that 8's arrangement off the filling (its own ball is mostly '?'), only 288 (0.1%) die to a d = 8 D/C window
+centred at it, 264 of them to round 16's windows. "Neighbour 7 or 8" does not change the verdict.
