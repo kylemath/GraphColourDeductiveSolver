@@ -21,7 +21,7 @@ the guess are mine.
   mix letters. H-B0 dies on the certificates. The HARD28-like rows may still show the lever: many of their
   fitting neighbours are already forbidden.
 
-**Round 19 result (16:00Z): H-B0 dies as pre-registered. The slack at u's big neighbours is the positive side for B.**
+**Round 19 result (15:31Z): H-B0 dies as pre-registered. The slack at u's big neighbours is the positive side for B.**
 Details in `wheeldis/loop/av/FINDINGS.md`.
 - 23 fitting pairs over the certificates of Studio rounds 9-12 and the explore runs. 10 were built: **0 joint
   kills**. Every kill is single (the stale receivers are forbidden on their own by later verdicts). 13 pairs could
