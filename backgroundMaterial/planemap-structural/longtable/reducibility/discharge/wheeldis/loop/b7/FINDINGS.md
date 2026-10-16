@@ -62,3 +62,31 @@ H-B7 survives.
 
 So near u (K <= 4) the d = 7 binders are not test-G obstructions. They hold only for the rooted-word rule class on
 the current pattern set. 3 of the 7 are now forbidden outright by the patterns above.
+
+## Round 11: the 4 binders b7f.out does not forbid, with degree 8 and at K = 5 (16 Oct, 12:42-13:46Z)
+
+`runk4.sh` now takes KK (ring depth, default 4) and FIX (binder list, here `fix4.txt`).
+
+**K = 4, letters 5-8** (20-minute cap per binder):
+- 1,634 leaves (`k4_m8_*.out`).
+- Complete for 5575576/6666656: 6 leaves, all with an 8.
+- Capped for the other three: 5765575 gave 1,507, 5567576 gave 121, 5765756 gave 0 so far.
+- `loop/g9/defect_check2_8.py bf`: all 1,634 killed by the existing registry, every one by a D. They stay killed with
+  `strict7`.
+
+**K = 5, letters 5-7** (10-minute cap per binder, far from complete):
+- 423,160 leaves: 5765575 gave 364,071, 5765756 gave 59,013, 5575576 gave 68, 5567576 gave 8.
+- The two large sets are kept outside the repo; rerun `KK=5 FIX=fix4.txt runk4.sh 7 600` to regenerate them.
+- Checked with `defect_check2 bf`:
+  - all 76 small-set leaves;
+  - every 50th leaf of 5765575 (7,282);
+  - every 20th leaf of 5765756 (2,951).
+- All 10,309 are killed.
+  - The 5765575 sample first left 201 open.
+  - 452 dfast tests at ring <= 14 then gave 216 D (`k5_d14.out`, copied to `out/def_b7_k5d14.out`), which closed
+    all 201.
+
+**H-B8 survives** on everything checked.
+- K = 5 is sampled and capped, so it is evidence, not coverage.
+- No completion of a standing binder survives, so the binders still look like rooted-word artefacts that more D
+  patterns remove.
