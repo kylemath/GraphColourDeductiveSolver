@@ -170,3 +170,30 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
   combined "flip in A, re-translate B" moves. A cheap brute-force test of the closure semantics on the D keys would
   decide it before any Lean work.
 - (B3) The kill route: ship the simple-ring statement, with the fold as an explicit hypothesis.
+
+### Update (16 Oct, after reading R2's closure semantics): (B2) works, and (ii) is just "keep one side"
+- In `Good`/`KempeMatching` (DCheckSound.lean) a flip XORs θ onto **every** position of the chosen regions:
+  `flipMask`, both classes at once. That is the trace-compatible move, not a one-class Kempe swap.
+- **Hand proof that the pinched case reduces to the two components.**
+  - Let k be realised by κ on G' = A ∪_u B (u at ring positions i, j). The restrictions realise the two arc codes;
+    in each, u_A (resp. u_B) is the single position i ≡ j.
+  - Per-component KempeMatching gives matchings lab_A and lab_B. Their union is a non-crossing matching of all
+    transitions, because the chords lie in complementary arcs.
+  - Its regions are the A-inner regions, the B-inner regions, and one outer region = (A's region at u_A) ∪
+    (B's region at u_B) ∪ {i, j}.
+  - For any region set S, flip the corresponding A-regions and B-regions, with the outer one in both or in neither.
+    The flipped codes give u_A and u_B the same colour, k_i ⊕ (θ if outer ∈ S).
+  - So the two colourings glue at u to a colouring of G' realising k ⊕ flipMask(S). Hence KempeMatching(G') follows
+    from KempeMatching(A) and KempeMatching(B).
+  - Higher multiplicity and several pinches follow by induction on the number of pinch splits.
+  - Needed: the merged labelling must be the table's labelling of that matching (`matchTable_complete`, R1), with s
+    translated to the table's region numbering.
+- **(ii) needs no new surgery.** A = G' with every vertex on B's side of u deleted. Then u's rotation restricts to sector
+  A, and the face becomes u, ring_{i+1}, …, ring_{j-1}. Use vertex deletion preserving `Fills` plus the face tracking from
+  Job 25 (`subgraph_tracked`, `keepC`/`OnSide`).
+- **(i) is not needed on this route.** The glue to λ is vertex gluing, since u is one vertex of T and λ(ring_i) =
+  λ(ring_j).
+- **Revised plan.**
+  - (ii′) A pinch makes u a cut vertex of G'. Keeping one side gives a SphericalMap with a simple RingFace on the arc.
+  - (iv) The combinatorial merge lemma (KempeMatching from the two arcs; pure code arithmetic plus R1).
+  - (iii) The extraction, unchanged.
