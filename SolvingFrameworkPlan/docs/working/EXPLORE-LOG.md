@@ -1,5 +1,19 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 14 (16 Oct 2026, 14:05Z-): small B-fixed windows across the d = 7 tight family
+
+**Pre-registered 14:05Z, before any build.**
+- **Why.** Studio's round 12 reached t* = 13/49. Its certificate has 4 d = 7 receivers with mostly shared fives (7-5-7).
+  Job 28 tests the largest S first, at most 3 per arrangement, so the small windows are skipped.
+- **Small windows.** A small window is a B-fixed configuration with |S| = 2 or 3 and u at exact degree 7. Its f7_
+  name has '.' outside S's letters, so one D forbids every arrangement that contains the window.
+- **Family.** `loop/e7/tight7.txt` (478 rows), plus Studio's round-12 certificate, plus the HARD28 example
+  5567586/5758756.
+- **H-W2.** Untested |S| <= 3 windows at ring <= 14, plus the D windows already in the registries, forbid at least
+  30% of the family.
+- **Kill.** Under 5%.
+- **Guess.** About 20%.
+
 ## Round 13 (16 Oct 2026, 14:15Z-): receiver-free windows with a big link vertex (the 3/11 family)
 
 **Pre-registered 14:15Z, before any build.**
