@@ -38,7 +38,8 @@ every s = 6) have a big vertex p at distance 2 from u, reached from a lone five 
     5675765/6575575.
   - d = 10 has slack (load 4.11 against 4.28). d = 9 still had a violated row at the stop, so the true t* can be
     higher.
-  - A stall-80 copy (`hr1_long`) sat at 0.2773 for 70+ iterations.
+  - A stall-80 copy (`hr1_long`) stopped with the same certificate (33/119) after 80 flat iterations, still with
+    violated rows at d = 8 and 9, so the separation is degenerate there and the true one-step t* lies in [33/119, 2/7].
 - **Relief against load at the binders.**
   - Each binder has at most 1 lone five that the rule could relieve.
   - Each also has 1-2 second-ring fives (an s = 5 next to a link 6) that would send z into u through that 6, plus
