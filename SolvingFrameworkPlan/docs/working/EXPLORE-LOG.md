@@ -1,5 +1,26 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 19 (16 Oct 2026, 15:25Z-): H-B0, can a joint (u, v) LP beat the single-receiver bound? (coordinator's test)
+
+**Pre-registered 15:25Z, before any build.** Test design is Long Table's message of 15:22Z. The precise kill reading and
+the guess are mine.
+- **Pairs.** As round 12's `certpair.py`: B fits at a link big v of A (degrees match, v's arrangement agrees with
+  every letter A fixes). Certificates: Studio rounds 10, 11 and 12, and the explore oracle. Also the 49 HARD28-like
+  rows of round 18 against every fitting row of the 617-row d = 7 tight family.
+- **Union.** One patch built from A at u. B supplies v's p slots and v's ring-3 letters. Unknown letters are filled
+  with 6 and never sit inside a configuration.
+- **Configurations.** Centred at u or at v, over every S (|S| >= 2) of the centre's fives: B-fixed (S + N(S)) and
+  receiver-centred (S + 5/6-neighbours), with defect_check2's ring repair. Each is looked up by `la.ckey` against
+  every existing D/C verdict that has a dfast line. No new dfast or cfast.
+- **Kill classes.** *single*: inside the centre's own arrangement (A at u, or B at v), which a single-receiver LP
+  already sees. *joint*: the configuration needs letters from both arrangements.
+- **H-B0 lives** if, for some certificate, every fitting pair is infeasible by a joint kill, or by a single kill on
+  the *other* receiver (A's only consistent neighbours are forbidden). **H-B0 dies** if feasible pairs survive for
+  every certificate.
+- **Guess.** Joint kills are rare: B-fixed configurations at u or v live inside one 2-ball, so only ring repair can
+  mix letters. H-B0 dies on the certificates. The HARD28-like rows may still show the lever: many of their
+  fitting neighbours are already forbidden.
+
 ## Round 18 (16 Oct 2026, 14:29Z-): H-LF, are the HARD28 rows artefacts of receiver-centring? (coordinator's test)
 
 **Pre-registered 14:29Z, before any search.** Design and bars are Long Table's message of 14:23Z; the guess is mine.
