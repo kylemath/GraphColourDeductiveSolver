@@ -20,12 +20,12 @@ sys.argv = ['gen.py', '/dev/null', '30']; exec(gsrc)
 OUT, RMAX, FILES = argv[0], int(argv[1]), argv[2:]   # gen.py's header overwrote them
 
 DV, CV = {}, {}
-for fn in glob.glob(os.path.join(HERE, 'out', 'job28', '*.out')):
+for fn in glob.glob(os.path.join(HERE, 'out', 'job28', '*.out')) + glob.glob(os.path.join(HERE, 'loop', '**', '*.out'), recursive=True):
     for line in open(fn):
         f = line.split()
         if f and f[0].startswith('f') and ('D=true' in line or 'D=false' in line):
             DV[f[0]] = 'D' if 'D=true' in line else 'notD'
-for fn in glob.glob(os.path.join(HERE, 'out', 'job28', '*.cfast')):
+for fn in glob.glob(os.path.join(HERE, 'out', 'job28', '*.cfast')) + glob.glob(os.path.join(HERE, 'loop', '**', '*.cfast'), recursive=True):
     cur = None
     for line in open(fn):
         if ' r=' in line and not line.startswith(' '): cur = line.split()[0]
