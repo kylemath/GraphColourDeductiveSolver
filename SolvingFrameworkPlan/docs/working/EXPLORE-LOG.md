@@ -21,6 +21,18 @@ the guess are mine.
   mix letters. H-B0 dies on the certificates. The HARD28-like rows may still show the lever: many of their
   fitting neighbours are already forbidden.
 
+**Round 19 result (16:00Z): H-B0 dies as pre-registered. The slack at u's big neighbours is the positive side for B.**
+Details in `wheeldis/loop/av/FINDINGS.md`.
+- 23 fitting pairs over the certificates of Studio rounds 9-12 and the explore runs. 10 were built: **0 joint
+  kills**. Every kill is single (the stale receivers are forbidden on their own by later verdicts). 13 pairs could
+  not be built: Layered cannot close a ring-3 degree-5 vertex with three inner neighbours.
+- Why: a configuration centred at u or v over its own fives lies inside that centre's 2-ball. Only pinched-ring
+  repair mixes letters. Pair infeasibility from u/v-centred configurations is not the lever.
+- 41 of the 49 HARD28-like rows (12 of the 15 HARD28) have a link 7/8 at which **no** row of the LP's tight set
+  (617 d = 7 plus 1,519 d = 8) fits. Every arrangement possible there is slack at t*, so a transfer along that edge
+  would lower u's row without making v bind. That supports option B through transfer variables, not pair rows.
+- Guess check: "joint kills rare, H-B0 dies on the certificates" held.
+
 ## Round 18 (16 Oct 2026, 14:29Z-): H-LF, are the HARD28 rows artefacts of receiver-centring? (coordinator's test)
 
 **Pre-registered 14:29Z, before any search.** Design and bars are Long Table's message of 14:23Z; the guess is mine.

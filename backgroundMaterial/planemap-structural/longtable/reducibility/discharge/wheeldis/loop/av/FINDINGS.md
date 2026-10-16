@@ -50,3 +50,43 @@ The analogue of the lone-five attack:
    windows once they are D.
 3. **Only after that,** if the family survives at ring <= 16: an LP with 7 <-> 7 transfer variables. That needs the
    joint (u, v) arrangement DP, which sep3 does not have.
+
+# Round 19: H-B0, can a joint (u, v) LP beat the single-receiver bound? (16 Oct 2026) [exploratory, no new dfast]
+
+**Test** (`b0.py`, `bridge.py`). For every fitting pair (B at a link big v of A, as `pairs.py`):
+- One patch is built from A at u. B supplies v's p slots and v's ring-3 letters. Unknown letters are 6 fillers and
+  never sit inside a configuration.
+- At u and at v, every S of the centre's fives: B-fixed and receiver-centred configurations, with defect_check2's
+  ring repair.
+- Each configuration is looked up by `la.ckey` in `bridge.pkl`: 10,757 existing D/C verdicts with dfast lines.
+- Kill classes: *single* (inside the centre's own arrangement) and *joint* (needs letters of both).
+- Positive control: the single kills on Studio's round-11 receivers are exactly the f7_ windows Studio later found D
+  (f7_..55756_..6656., f7_..65756_..5656., ...).
+
+**Certificates** (`cert_b0.txt`): Studio rounds 9-12 and the explore oracle/baseline. 23 fitting pairs.
+- 10 pairs built: **0 joint kills**. Every kill is single, and these certificates' receivers are now forbidden on
+  their own by later verdicts, so they are stale.
+- 13 pairs could not be built. Layered cannot close a ring-3 vertex of degree 5 with three inner neighbours. These
+  are not shown inconsistent.
+- **Why joint kills are structurally rare:** a configuration centred at u over u's fives lives inside u's 2-ball
+  (A's letters), and one at v inside v's (B's letters). Only a pinched-ring repair can mix the two. Configurations
+  centred at u or v cannot be the lever; the round-18 kills sat at other 7s of the patch.
+
+**Hard rows** (`hard_b0.txt`). For the 49 HARD28-like rows, which rows of the LP's tight set fit at each link 7/8?
+The tight set is the 617 d = 7 rows plus Studio's 1,519 d = 8 tight rows.
+
+| rows | a link big with no tight partner | a link big whose tight partners are all forbidden | free tight partners at every link big |
+|---|---|---|---|
+| all 49 | 41 | 2 | 6 |
+| the 15 HARD28 | 12 | 1 | 2 |
+
+- For 41 of the 49 rows, every arrangement that can sit at some big neighbour v is slack at t* (none is tight).
+- A transfer along the edge u-v would lower u's tight row without making v bind. This is evidence for a
+  neighbour-aware rule (transfer variables between adjacent bigs). It is not evidence for pair infeasibility.
+- Caveat: "tight" depends on the LP's chosen optimum (the LP is degenerate). The tight set is a small sample of all
+  arrangements.
+
+**Verdict: H-B0 dies as pre-registered.** No certificate has every fitting pair killed by a joint configuration (0
+joint kills in the 10 built pairs). The single kills only say the stale receivers are forbidden on their own. The
+neighbour-slack count above is the positive side for option B, through transfer variables rather than pair
+infeasibility.
