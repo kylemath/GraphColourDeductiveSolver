@@ -24,14 +24,15 @@ COORDINATOR-STATE.md (the coordinator thread does); errata the same day.
 | id | gap | where it stands | cheapest next probe |
 |---|---|---|---|
 | G1 | d = 7..15: which reducible family is locally unavoidable near 7s? | H7b survives: B-fixed configs kill all 418,551 K <= 4 candidates found (search incomplete). Lemma B done (Lean). Lemma A open | lemma A as a finite check (stream A); K = 5 defects by randomised search (round 4) |
-| G2 | rules: does a discharging rule reach t* <= 0 at d = 7..15 once the G1 family is forbidden? | Job 28 (Studio): rooted-word LP loop, t* = 5/17 after round 1, predicted to stall on the rule class | richer rule classes on small LPs (stream R) |
+| G2 | rules: does a discharging rule reach t* <= 0 at d = 7..15 once the G1 family is forbidden? | 5/17 certificate reducible (rounds 5-6); floor now >= 2/7, carried by lone fives at d = 10 (a counting bound, rule class irrelevant). LP loop: Studio loop28b | lone-five family at d = 9..12 (round 7, `loop/lone/`) |
+| G10 | lone-five family: receivers of degree d with more than d - 6 lone fives (only u big) | d >= 13 clear with 62 receiver-free D configurations (round 7); d = 9..12 open | B-fixed lone sets at ring 15-16; receiver-free at ring 16 |
 | G3 | 7-wheel 5666567 C-reducible (lemma B) | DONE: cfast + independent Python (round 3) + Lean (CWheels.lean, 4d799f71) | other C-candidate 7-wheels and 565xxx 6-wheels only if a defect needs them |
 | G4 | "appears" for receiver centres 7..15 (Job 26 covers 2-balls at 5s) | open | check whether the B2 hand argument transfers to receiver-centred configurations |
 | G5 | folded rings, Job 26 piece (ii) | Studio, Lean, 20 Nov kill | (Studio) |
 | G6 | 6-wheels with a letter >= 8 counted reducible, untested | untested | not needed while defects use letters 5-7 only |
-| G7 | defect_check2 marks a candidate killed when a configuration's ring is not a simple induced cycle, with no reducibility verdict (B-fixed case: no expansion tried) | found in round 4 | count how many H7b kills rest only on that; decide whether a non-simple ring forces a short separating cycle (stream E) |
-| G8 | defects with K >= 5 rings | rounds 4-5: ~950 sampled, plus ~660 pruned seeds; no R_opt survivor | longer pruned runs (background) |
-| G9 | defects containing a vertex of degree >= 8 (defectc uses 5-7 only) | never searched | extend defectc's alphabet to 8 |
+| G7 | defect_check2 marks a candidate killed when a configuration's ring is not a simple induced cycle, with no reducibility verdict (B-fixed case: no expansion tried) | CLOSED for K <= 4 (round 6): 0 of 418,551 kills rest on it; rule changed to 'open' | none |
+| G8 | defects with K >= 5 rings | rounds 4-6: ~950 sampled, plus ~660 pruned seeds; no R_opt survivor. Conditional on A(3) (f3 tables, which lemma A does not support as a blanket rule): 808 centre-7 seeds and two 45-min complete runs (stopped at the cap), 0 leaves | longer pruned runs (background) |
+| G9 | defects containing a vertex of degree >= 8 (defectc uses 5-7 only) | K <= 3 with letters 5-8: none survives (centre 8 partial); centres 9-12: K = 2 empty, K = 3 capped all killed (round 6-7) | K = 4; complete K = 3 for centres 8-12 |
 
 ## Background jobs (never waited on)
 

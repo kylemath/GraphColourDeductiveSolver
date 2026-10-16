@@ -1,5 +1,66 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Rounds 6-7 (16 Oct 2026, 08:35-10:00Z): the LP floor after the d = 7 certificate, and the lone-five family
+
+**Certificate (G2).** A1308's S = (0,5) at ring 14 is C (cfast, |X| = 1; `loop/rules/cert_bf.cfast`). So every
+arrangement in the 5/17 and 1/5 certificates now has a reducible B-fixed configuration: 4 D, 1 C.
+
+**LP after forbidding them (`loop/lp/`).**
+- `loopfast.py` is a local Job 28 loop that takes the largest S first. `wlp3s.py` is wlp3 with an early stop: once t
+  has not risen for 25 iterations it stops, and the dual of the rows found so far is a valid certificate that t* is
+  at least the printed t.
+- Result: **t* >= 2/7** (5/17 before). A full run stayed at 2/7 for about 90 iterations before I stopped it.
+- The 2/7 is carried by a single receiver: d = 10, link 5656556565.
+  - All six of its fives are **lone**: u is their only neighbour of degree >= 7.
+  - So 6(1 - t) <= 4 + t for any rule that moves charge from a 5 to its big neighbours. This is a counting
+    obstruction, so only reducibility removes it.
+  - Its ring-16 B-fixed sets are D, and so is a ring-14 one. The next round moved to a sibling arrangement.
+- Long Table then gave the LP loop itself to Studio (loop28b), so this thread stopped its loop.
+
+**Lone-five family (`loop/lone/`).**
+- **Question.** Which arrangements have more than d - 6 lone fives and contain no forbidden pattern?
+  - `lone.py` answers it with sep3, using weight 1 on lone rooted words.
+  - Before this round the answer was non-empty for every d = 9..15: up to 4, 6, 7, 8, 8, 9, 10 lone fives.
+  - d >= 16 is clear on the old patterns alone (checked up to d = 20; the maximum is floor(2d/3)).
+- **Receiver-free configurations** (`ufree.py`).
+  - The configuration is S plus all neighbours of S except u, at exact degree. u stays on the ring with its degree
+    free, so the configuration is the same at every d.
+  - **62 of them are D**, at rings 10-15. Examples: z_55655_5665 (r10); z_55655_6666 (r12), two adjacent five-pairs
+    with a 6 between them and every s = 6; z_556556_66666 (r14).
+  - As patterns for d = 7..17 (`u*.pat`), they clear d = 13, 14, 15.
+  - What is left: d = 9: 3 arrangements, d = 10: ~59, d = 11: 13, d = 12: 2.
+  - These went to Studio as wlp3 patterns.
+- **B-fixed sets of lone fives** for the rest (`bfix.py`, `iter.sh`). At ring <= 15, 24 more configurations are D.
+  - 48 arrangements are left: d = 9: 2, d = 10: 31, d = 11: 13, d = 12: 2.
+  - Most of them are lone fives alternating with 6s (e.g. 5656565656 with every s = 6), or 556 blocks with every s = 6.
+  - Ring 16 is running in the background: 20 receiver-free configurations, plus 29 B-fixed at d = 9, 11, 12. Studio
+    covers d = 10 at ring 15-16.
+- **Reading (a hypothesis, not checked).**
+  - In a real map, a 6 next to a lone five whose other neighbours are all 6 is the Job 17 D 6-wheel 566666.
+  - So these arrangements need a big vertex at distance 3, which an arrangement that records only w and s letters
+    cannot see.
+  - If ring 16 does not clear them, the LP needs either third-ring letters in the arrangement or rules that pass charge
+    through a 6.
+
+**G9, defects with an 8 or a big centre (`loop/g9/FINDINGS.md`).**
+- Ring letters 5-8 at K <= 3: every leaf with an 8 dies to a D receiver-centred configuration. Centre 8 is partial and
+  still running.
+- Centres 9-12:
+  - K = 2 has no leaves. With ring 2 all 6, a ring-2 vertex next to a five is a Job 17 D 6-wheel (566666 or 556666).
+  - K = 3 (capped) gave 1,952 leaves. All die after 1,801 new ring <= 12 dfast runs.
+- The LP's d = 10 arrangement cannot be completed to a K = 3 defect.
+
+**G7 closed for K <= 4.** The full audit of all 418,551 candidates had 0 nosimple and 0 bf_nosimple kills.
+defect_check2 now counts an unrepaired non-simple ring as open.
+
+**Kernels.** Both ring-9 lemma-A kernels went to Studio as dfast lines (`loop/lemmaA/kern9.txt`). The first is
+certified in Lean (dcheck/LemmaAKern9.lean, Studio).
+
+**What changes.**
+1. The LP's obstruction after d = 7 is the lone-five family at d = 9..12. It is a pure counting bound, so the lever is
+   reducibility, not the rule class.
+2. Receiver-free configurations are the efficient tool. One verdict covers every receiver degree.
+
 ## Rounds 4-5 (16 Oct 2026, 07:40-08:50Z): stepped up, four parallel streams
 
 Kyle asked for more effort, so four gaps ran at once: three workers plus this thread. Each stream has a FINDINGS.md
