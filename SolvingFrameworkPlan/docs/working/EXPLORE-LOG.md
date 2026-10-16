@@ -16,6 +16,13 @@
   either way, and the worst case over the two orientations gives |a - b| back. Orientation helps only where
   out-degree 3 forces a big edge, i.e. rows with 5+ bigs, which do not bind.
 
+**Round 22 result (23:08Z): H-S dies, t* = 7/27 exactly** (`wheeldis/loop/l2/s2_orient.txt`; the symmetric check
+`s2_sym.txt` gives 7/27 on the same set). 11,673 oriented rows, 1,944 transfer columns. The dual of each binder
+splits across its orientations ({} and {4} for 5765756/5556666), so the adversary undoes any tail-to-head rule.
+- Reading: two identical overloaded 7s cannot help each other, whatever the rule reads. Charge must leave the pair
+  (distance >= 2 from u), or the pair must be reducible (Studio: 3 of 5 binders killed, 2 at ring 15-16).
+- Guess check: "dies at exactly 7/27" held.
+
 ## Round 21 (16 Oct 2026, 17:22Z-): H-A', can a HARD28-like row be forbidden through a neighbouring 7? (coordinator's test)
 
 **Pre-registered 17:22Z, before any matching.** Design and bars are Long Table's message of 17:20Z; the guess is mine.
