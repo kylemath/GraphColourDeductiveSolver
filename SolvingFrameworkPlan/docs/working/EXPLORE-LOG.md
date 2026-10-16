@@ -17,6 +17,24 @@
 - **Limit.** Defects whose non-6 part reaches distance >= 4 from u are not covered (K >= 5).
 - **Guess.** 0 completions at K = 3. At K = 4, a few completions, all killed by B-fixed configurations at other 7s.
 
+**Round 10 result (12:30-13:00Z).** Details in `wheeldis/loop/b7/FINDINGS.md`.
+- **K = 3:** no binder completes. That holds for all 7, letters 5-8.
+- **K = 4** (letters 5-7, complete for these 2-balls, via `defectb7`, a defectc8 with the 2-ball fixed):
+  - 5 binders complete, with 2,064 leaves in total. 5575576/6666656 and 5676575/6556666 have no completion.
+  - All 2,064 die to R_opt+, every one by a D configuration, and they stay dead with `strict7`.
+  - Kills: the existing registry gives 1,973. New dfast at rings 10-15 gives the rest: 105 D of 260 at ring <= 14,
+    2 of 8 at ring 15.
+- **By-product: 4 B-fixed D configurations that forbid binders directly** (`loop/b7/b7f.out`; rebuilt by gen28 and
+  rerun with dfast):
+  - **f7_5567576_56.75.7** (r15) forbids the heaviest baseline binder, 5675765/6575575 (dual 0.20). That binder's
+    1,536 K = 4 completions all die to it at the centre.
+  - f7_5656757_657.555 (r13) and f7_..65757_..6555. (r12) forbid 5675756/7555565.
+  - f7_..55756_..6666. (r13) forbids the oracle binder 5676575/6556666.
+- **Verdict: H-B7 survives.** Near u (K <= 4) the d = 7 binders are not test-G obstructions, and 3 of the 7 are now
+  forbidden as patterns. I guessed a few K = 4 completions, all killed at other 7s; in fact most kills sit at the
+  centre.
+- **Not run:** K = 4 with letter 8; K >= 5.
+
 ## Rounds 8-9 (16 Oct 2026, 10:00-12:10Z): H-L3, then the two-step rule class (H-R1)
 
 **Round 8, H-L3** ("the remaining lone-five arrangements cannot be killed from distance-2 data"): dies as worded.
