@@ -123,6 +123,18 @@ theorem w6_566577_extX_reached :
     (let p := runGood cfg_w6_566577; (List.range p.1.size).all fun i =>
       !(extCAux cfg_w6_566577 [] [(0,1)] p.1[i]! cfg_w6_566577.m #[]) || p.2[i]!) = true := by native_decide
 
+/-- c7_5666567, X = {I0-I1,I0-I3,R2-I3} (bigwheels.txt indexing; lemma B of the K = 2 plan, EXPLORE-LOG round 3;
+added 16 Oct 2026 by hand in the recipe of gen_lean21.py: X has one component {R2,I0,I1,I3} with one ring vertex,
+and no loop inside the configuration) -/
+def cfg_w7_5666567 : Conf := { name := "c7_5666567", r := 13, m := 8, ringAdj := #[#[], #[12, 0], #[0, 1, 2], #[2, 3, 4], #[4, 5, 6], #[6, 7], #[7, 8, 9], #[9, 10, 11, 12]], intAdj := #[#[1, 2, 3, 4, 5, 6, 7], #[0, 2, 7], #[0, 3, 1], #[0, 4, 2], #[0, 5, 3], #[0, 6, 4], #[0, 7, 5], #[0, 1, 6]] }
+theorem w7_5666567_run : run cfg_w7_5666567 = { classes := 66430, ext := 7372, reached := 53690, depth := 18 } := by native_decide
+/-- every ring colouring that extends after contracting X is in the good set (stated as a Bool, so that the
+elaborator does not unfold the ring-13 `runGood` term; the inline form times out) -/
+def w7_5666567_extX : Bool :=
+  let p := runGood cfg_w7_5666567; (List.range p.1.size).all fun i =>
+    !(extCAux cfg_w7_5666567 [(2,3)] [(0,1),(0,3)] p.1[i]! cfg_w7_5666567.m #[]) || p.2[i]!
+theorem w7_5666567_extX_reached : w7_5666567_extX = true := by native_decide
+
 end DCheck
 
 #print axioms DCheck.w5_55558_run
@@ -159,3 +171,5 @@ end DCheck
 #print axioms DCheck.w6_556577_extX_reached
 #print axioms DCheck.w6_566577_run
 #print axioms DCheck.w6_566577_extX_reached
+#print axioms DCheck.w7_5666567_run
+#print axioms DCheck.w7_5666567_extX_reached
