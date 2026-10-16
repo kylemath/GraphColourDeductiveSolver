@@ -144,8 +144,10 @@ def check(sig):
                 elif cv == 'C': st['C'] += 1
                 elif cv is None: st['untestedC'] += 1; need.append(('c', nm, cfg, r))
                 else: st['neither'] += 1
-    if st['D'] or st['C'] or st['C7'] or st['nosimple'] or st['bfD'] or st['bfC'] or st['bf_nosimple']: v = 'killed'
-    elif st['untestedD'] or st['untestedC'] or st['untested7'] or st['untested7C'] or st['bf_untestedD'] or st['bf_untestedC']: v = 'open'
+    # an unrepaired non-simple ring is open, not killed (loop/appears/FINDINGS.md Q1; never fired on the 418,551 K <= 4
+    # candidates, EXPLORE-LOG round 6)
+    if st['D'] or st['C'] or st['C7'] or st['bfD'] or st['bfC']: v = 'killed'
+    elif st['untestedD'] or st['untestedC'] or st['untested7'] or st['untested7C'] or st['bf_untestedD'] or st['bf_untestedC'] or st['nosimple'] or st['bf_nosimple']: v = 'open'
     else: v = 'SURVIVES'
     return v, st, need
 
