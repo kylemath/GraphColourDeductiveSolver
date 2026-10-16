@@ -7,10 +7,12 @@ dihedral group; letters 5..8 exact, B free, '.' outside), which wlp3.py reads as
 Greedy (as gen.py): an arrangement is killed if some B-fixed S is already D/C (should not happen after the LP);
 otherwise its cheapest untested S (ring <= RMAX) is written.  HARD28: every S with ring <= RMAX tested, none D/C.
 Registry: out/job28/*.out (dfast18) and out/job28/*.cfast.
-Usage: python3 gen28.py OUTFILE RMAX ARRFILE [ARRFILE ...] [all]"""
+Usage: python3 gen28.py OUTFILE RMAX ARRFILE [ARRFILE ...] [all] [small] [maxper=3]  (default order: largest S first)"""
 import sys, os, glob, itertools, re, collections
 HERE = os.path.dirname(os.path.abspath(__file__))
-argv = sys.argv[1:]; ALL = 'all' in argv; argv = [a for a in argv if a != 'all']
+argv = sys.argv[1:]; ALL = 'all' in argv; SMALL = 'small' in argv
+MAXPER = int(next((a[7:] for a in argv if a.startswith('maxper=')), '3'))
+argv = [a for a in argv if a not in ('all', 'small') and not a.startswith('maxper=')]
 OUT, RMAX, FILES = argv[0], int(argv[1]), argv[2:]
 gsrc = open(os.path.join(HERE, 'gen.py')).read()
 gsrc = gsrc[:gsrc.index('arrs = []')].replace('os.path.dirname(os.path.abspath(__file__))', repr(HERE))
@@ -43,7 +45,8 @@ def variants(d, lk, sv):
             S_ = ''.join((sv[j] if sv[j] != '9' else 'B') if j in sl else '.' for j in range(d))
             key = canon_key(d, L_, S_); nm = 'f%d_%s_%s' % (d, key[1], key[2])
             res.append((r, k, S, w, s, nm))
-    return sorted(res, key=lambda x: (x[0], x[1]))
+    # default (Long Table, 16 Oct): largest S first, then smallest ring; 'small' = the round-1 order (ring, |S|)
+    return sorted(res, key=(lambda x: (x[0], x[1])) if SMALL else (lambda x: (-x[1], x[0])))
 def make(d, r, S, w, s, nm):
     link = [w[j] if w[j] is not None else 9 for j in range(d)]
     adj, name = build(d, link, {('s', j): s[j] for j in range(d) if s[j] is not None})
@@ -69,14 +72,14 @@ for d, lk, sv in arrs:
     if any(DV.get(x[5]) == 'notD' and x[5] not in CV for x in vs): st['pendingC'] += 1; continue
     un = [x for x in vs if x[5] not in DV and x[5] not in NOTEXT]
     if not ALL and any(x[5] in new for x in un): st['pending'] += 1; continue
-    got = False
+    got = 0
     for x in un:
         if x[5] in new: continue
         line = make(d, x[0], x[2], x[3], x[4], x[5]); st['built'] += 1
         if line is None: st['notext'] += 1; NOTEXT.add(x[5]); continue
         if line.startswith('RINGMISMATCH'): bad.append(line); NOTEXT.add(x[5]); continue
-        new[x[5]] = line; got = True
-        if not ALL: break
+        new[x[5]] = line; got += 1
+        if not ALL and got >= MAXPER: break
     if got or any(x[5] in new for x in un): st['pending'] += 1
     else: st['hard'] += 1; hard.append((d, lk, sv, len(vs)))
 lines = sorted(new.values(), key=lambda x: int(x.split()[1]))
