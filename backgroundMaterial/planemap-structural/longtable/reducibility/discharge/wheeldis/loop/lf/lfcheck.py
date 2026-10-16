@@ -32,16 +32,22 @@ reps = [("db = DRES.get(kb); cbv = CRES.get(kb)", "db = DRES.get(kb) or BRV(cb, 
         ("dv = TESTED.get(key) if not isinstance(key, str) else DRES.get(key)",
          "dv = (TESTED.get(key) if not isinstance(key, str) else DRES.get(key)) or BRV(cfg, 'D')"),
         ("cv = CRES.get(key)", "cv = CRES.get(key) or BRV(cfg, 'C')")]
+reps += [("                        if db == 'D': st['bfD'] += 1", "                        if db == 'D': st['bfD'] += 1; KILLS.append(('bfD', u == 0, [k_ for k_, R_ in enumerate(L.rings) if u in R_][0]))"),
+         ("                        elif cbv == 'C': st['bfC'] += 1", "                        elif cbv == 'C': st['bfC'] += 1; KILLS.append(('bfC', u == 0, [k_ for k_, R_ in enumerate(L.rings) if u in R_][0]))"),
+         ("                if dv == 'D': st['D'] += 1", "                if dv == 'D': st['D'] += 1; KILLS.append(('D', u == 0, [k_ for k_, R_ in enumerate(L.rings) if u in R_][0]))"),
+         ("                elif cv == 'C': st['C'] += 1", "                elif cv == 'C': st['C'] += 1; KILLS.append(('C', u == 0, [k_ for k_, R_ in enumerate(L.rings) if u in R_][0]))"),
+         ("        if w7 == 'D': st['D'] += 1", "        if w7 == 'D': st['D'] += 1; KILLS.append(('w7', u == 0, [k_ for k_, R_ in enumerate(L.rings) if u in R_][0]))")]
 for a, b in reps:
     assert src.count(a) == 1, a
     src = src.replace(a, b)
+KILLS = []; KR = collections.Counter()   # (kind, ring of the 7) -> leaves with such a kill
 NB = collections.Counter()
 def BRV(cfg, kind):
     v = BR.get(la.ckey(cfg))
     if v == kind or (kind == 'D' and v == 'C' and False): NB[kind] += 1; return v
     return None
 _argv = sys.argv; sys.argv = ['defect_check2.py', '/dev/null', '/dev/null', 'bf']
-G = {'__file__': os.path.join(W, 'defect_check2.py'), '__name__': 'dc2', 'BRV': BRV}
+G = {'__file__': os.path.join(W, 'defect_check2.py'), '__name__': 'dc2', 'BRV': BRV, 'KILLS': KILLS}
 exec(src, G); check = G['check']; sys.argv = _argv
 def rows(prefix, n, maxper):
     """per row: leaves found, leaves checked (evenly spaced sample of at most maxper, stopping at the first survivor)"""
@@ -53,14 +59,18 @@ def rows(prefix, n, maxper):
         idx = list(range(len(L))) if len(L) <= maxper else sorted({int(j * len(L) / maxper) for j in range(maxper)})
         surv = None; nchk = 0; st_ = collections.Counter()
         for j in idx:
-            v, st, need = check(L[j]); nchk += 1; st_[v] += 1
+            KILLS.clear(); v, st, need = check(L[j]); nchk += 1; st_[v] += 1
+            if v == 'killed':
+                st_['centre-only' if all(k[1] for k in KILLS) else 'other-only' if not any(k[1] for k in KILLS) else 'both'] += 1
+                st_['nearest kill ring %d' % min(k[2] for k in KILLS)] += 1
+                for k in set((k[0], k[2]) for k in KILLS): KR[k] += 1
             if v != 'killed': surv = (L[j], v, dict(st)); break
         res.append((i, len(L), nchk, dict(st_), surv))
         print(i, len(L), nchk, dict(st_), surv[1] if surv else '-', surv[0] if surv else '', flush=True)
     return res
 if LEAVES == 'rows':
     rows(OUT, int(sys.argv[3]), int(sys.argv[4]))
-    print('bridged kills', dict(NB))
+    print('bridged kills', dict(NB)); print('leaves with a kill of this kind at a 7 in this ring:', sorted(KR.items()))
 else:
     out = []; summ = collections.Counter()
     for line in open(LEAVES):

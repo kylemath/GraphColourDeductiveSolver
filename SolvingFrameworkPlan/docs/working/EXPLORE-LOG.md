@@ -16,6 +16,16 @@
   inside a 6-sea (round 10's 7 binders had none at K = 3). So H-LF leads, and mostly vacuously. If that happens I
   will add K = 4 with letters 5-7 on the new ring (5-minute cap per row) as a less vacuous probe.
 
+**Round 18 result (15:20Z): H-LF leads, with heavy caveats.** Details in `wheeldis/loop/lf/FINDINGS.md`.
+- K = 3 (letters 5-9): 0 leaves in all 49 rows. Complete, but vacuous.
+- K = 4 (free letters 5-7; every row capped at 2 minutes, cut from the pre-registered 5 to fit the hour, so incomplete): 1,521 leaves in 22 rows (4 of the 15
+  HARD28). **All 1,521 are killed by existing verdicts** (1,042 through the f7_ bridge), and none of the kills is at
+  the row's own 7. The nearest killing 7 is a link vertex of u for 45%, in ring 2 for 48%, and only in ring 3 for 7%.
+- By the bars: 49/49 rows have no surviving leaf. The guess (mostly vacuous) held at K = 3 and not at K = 4.
+- Reading: where these rows complete at all, a configuration centred at a neighbouring 7 kills them. That points
+  the gate at a neighbour-aware LP rather than at ring 17+ windows at u. A 6-sea search rules out isolated defects
+  only; it does not make a row sound to forbid.
+
 ## Round 17 (16 Oct 2026, 14:18Z-): ring-17 windows for the HARD28 rows
 
 **Pre-registered 14:18Z, before any dfast run.**
