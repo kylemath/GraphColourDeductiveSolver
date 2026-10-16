@@ -128,6 +128,12 @@ Details in `wheeldis/loop/av/FINDINGS.md`.
 - **Guess.** About 15% of windows D (below round 14's 28%, since 8s move onto the ring). About 4 HARD28 rows, about
   20% of the 331.
 
+**Round 15 result (16:12Z): neither bar met; leans dead.** 23 of 565 windows D (4.1%; guess 15%). Coverage of the
+617-row family (`loop/w2/cov3.txt`) goes from 190 to 218 forbidden: 28 more rows, 8.5% of the 331 with an 8 (live
+bar 20%, kill bar 5%). **0 of the 14 free HARD28 rows** fall (kill side). 46 of the 49 HARD28-like rows stay free.
+Freeing the 8s does not reach the HARD28 rows; with round 20, the binding d = 7 rows are now self-paired ones.
+The 23 D windows (`loop/w2/win8.out`) go to Studio as patterns.
+
 ## Round 14 (16 Oct 2026, 14:05Z-): small B-fixed windows across the d = 7 tight family
 
 **Pre-registered 14:05Z, before any build.**
