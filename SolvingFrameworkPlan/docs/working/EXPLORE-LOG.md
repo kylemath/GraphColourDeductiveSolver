@@ -1,5 +1,22 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 10 (16 Oct 2026, 12:30Z-): do the d = 7 LP binders sit inside an isolated defect? (coordinator's suggestion)
+
+**Pre-registered 12:30Z, before any matching.**
+- **Binders.** 7 arrangements at d = 7: the 5 from the 33/119 baseline certificate (`wlp3_hr1_base.txt`) and the 2 from
+  the oracle certificate (`wlp3_hr1_or1.txt`).
+- **Question.** Can a binder's 2-ball (u = 7, link and s fixed, p slots free) be completed to an isolated positive
+  defect (README §7 test G) centred at u?
+  - K = 2 is impossible by inspection: every binder has an s letter that is not 6, at distance 2.
+  - So the test is K = 3 (`loop/g9/g9_K3_c7.out`, complete, letters 5-8, CMIN 1) and K = 4 (`c7k4.txt`, partial).
+- **H-B7.** No binder completes to a K = 3 leaf. Any K = 4 completion dies to R_opt+, like every K <= 4 defect so far.
+- **What each answer means.**
+  - No completion: the binders are not test-G obstructions near u. They are obstructions of the rooted-word rule
+    class only, so a richer rule (README §7 classes a-c) or larger configurations could remove them.
+  - A completion that survives R_opt+: a test-G defect. Then t* > 0 for every finite-reach rule, and H7 dies.
+- **Limit.** Defects whose non-6 part reaches distance >= 4 from u are not covered (K >= 5).
+- **Guess.** 0 completions at K = 3. At K = 4, a few completions, all killed by B-fixed configurations at other 7s.
+
 ## Rounds 8-9 (16 Oct 2026, 10:00-12:10Z): H-L3, then the two-step rule class (H-R1)
 
 **Round 8, H-L3** ("the remaining lone-five arrangements cannot be killed from distance-2 data"): dies as worded.
