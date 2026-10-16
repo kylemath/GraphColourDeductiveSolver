@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-16 08:00 — Explore: Job 28's 144 'neither' don't contradict lemma A; gen28 tests mostly |S|=2 (weakest) and free big letters. Told Studio: largest-S-first, exact-degree B, 2–3 S per arrangement; rerun round 1 to compare. POSSIBLE SOUNDNESS GAP: defect_check2.check() counts 'non-simple ring, no verdict' as a kill; H7b's 418,551 'all killed' is PROVISIONAL until the explore thread's recount and the 'non-simple ring ⇒ short separating cycle' check report. K=5 random sample: ~950 candidates, all killed (exploratory).
 - 2026-10-16 07:45 — Job 28 round 1 done (dce41332, b9ec6143): t* = 5/17; of 174 B-fixed configs from the tight d=7 arrangements, 20 D, 10 C, 144 neither (83% neither: watch for the 20 Nov kill). Round 2 running. Flagged the 144 to the explore thread.
 - 2026-10-16 07:00 — Lemma B DONE: 7-wheel 5666567 C-reducible in Lean (4d799f71, CWheels.lean; std axioms + native_decide). Counts as established (two engines + Lean). K=2 now rests on lemma A alone (plus the K ≥ 5 defect question). Job 28 round 1: t* = 5/17, 1,961 tight arrangements all at d=7; 27 of 174 new B-fixed configs D/C so far.
 - 2026-10-16 06:35 — Job 26 (ii′) proved (5f9d86f3, DCheckPinchGeom.lean): KempeMatching for a face walk with one pinch, no ring injectivity; folded case settled for a single pinch. Left: multiple pinches (induction), extraction (iii). Lemma B Lean compiling.
