@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-16 06:15 — Job 26 B2 combinatorial half proved (84e37967, DCheckPinch.lean: RingTNC.of_pinch, std axioms). Note: cite RingTNC, not RingNC (its pairGraph field is false on pinched walks). Left: keep-one-side surgery, extraction. Job 28: 10,439 K=4 candidates checked, all killed.
 - 2026-10-16 06:10 — Job 26 B2 simplified (d0b1bd65): RingNC holds on the pinched walk itself (0 violations; cut-vertex argument), so RingNC.kempeMatching applies unchanged; remaining Lean = keep-one-side RingFace, RingNC from the two sides (reachability), extraction.
 - 2026-10-16 06:10 — Job 26 probe (b92f7c3b, 1308958f): KempeMatching holds on pinched rings (0 failures / 28,608 pairs, rings 8–10; crossing-chord controls fail), with a hand proof via the two sides of the pinch. Switched the proof to B2 (reuses Job 25 keep-one-side machinery; no dart-level Jordan lemma). First payoff of the short-probe pace.
 - 2026-10-16 06:05 — Job 26: splitting the pinch vertex disconnects the outside map, so the split route has a closure gap (1b856f23). Chose B1: Kempe matching on the pinched face directly via dual edge chains (dart-level Jordan lemma), with one short brute-force probe of the split-route closure on folded examples first. 20 Nov kill unchanged.
