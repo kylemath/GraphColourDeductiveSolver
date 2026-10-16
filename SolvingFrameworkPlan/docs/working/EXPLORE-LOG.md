@@ -1,5 +1,18 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 13 (16 Oct 2026, 14:15Z-): receiver-free windows with a big link vertex (the 3/11 family)
+
+**Pre-registered 14:15Z, before any build.**
+- **Family.** The d = 7 arrangements tight at a 3/11-style optimum. These are the tight rows of my round-9 runs
+  (`hr1_base`, `hr1_long`, `hr1_or1`) and the certificate receivers of Studio's rounds 9-11.
+- **Configurations.** Like round 7's `ufree.py`, but S may contain fives whose non-u neighbours include link bigs:
+  - S + N(S) - u, with 7/8 at exact degree and u on the ring with its degree free;
+  - S has 2-4 fives in an arc of at most 5 link positions;
+  - one D verdict forbids the window at every d = 7..17.
+- **H-E7.** Windows of this kind that are D at ring <= 15 forbid at least half of the tight d = 7 arrangements.
+- **Kill.** Under 10%.
+- **Guess.** About 30%: the 575 windows with every s = 6 die, and the ones with s = 5 next to the 7 do not.
+
 ## Round 12 (16 Oct 2026, 13:50-14:10Z): H-AV, pair averaging between adjacent bigs
 
 **Pre-registration.** Long Table's message of 13:47Z: pair rows charge(u) + charge(v) <= 2t take t* below 3/11;
