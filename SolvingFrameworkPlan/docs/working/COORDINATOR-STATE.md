@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-16 06:35 — Job 26 (ii′) proved (5f9d86f3, DCheckPinchGeom.lean): KempeMatching for a face walk with one pinch, no ring injectivity; folded case settled for a single pinch. Left: multiple pinches (induction), extraction (iii). Lemma B Lean compiling.
 - 2026-10-16 06:25 — Explore round 3 merged: lemma B (7-wheel 5666567 C-reducible, X={I0-I1,I0-I3,R2-I3}) now has a second engine (independent Python closure = cfast exactly). Sent to Studio for CWheels.lean. Lemma A coverage so far: 3 fives 146/164, 4 fives 69/69, 5 fives 17/17.
 - 2026-10-16 06:15 — Job 26 B2 combinatorial half proved (84e37967, DCheckPinch.lean: RingTNC.of_pinch, std axioms). Note: cite RingTNC, not RingNC (its pairGraph field is false on pinched walks). Left: keep-one-side surgery, extraction. Job 28: 10,439 K=4 candidates checked, all killed.
 - 2026-10-16 06:10 — Job 26 B2 simplified (d0b1bd65): RingNC holds on the pinched walk itself (0 violations; cut-vertex argument), so RingNC.kempeMatching applies unchanged; remaining Lean = keep-one-side RingFace, RingNC from the two sides (reachability), extraction.
