@@ -5,7 +5,7 @@
 cd "$(dirname $0)"; LOG=out/job28/governor.log
 K19=${1:-42778}   # pid of studio14d's wheelcheck18 k19 (started 14 Oct 23:41)
 secs() { ps -o time= -p $K19 | awk -F'[:.]' '{ if (NF==4) print $1*3600+$2*60+$3; else print $1*60+$2 }'; }
-order=(wheelcheck16 defectc)
+order=(wheelcheck16 defectc cfast dfast18)
 while kill -0 $K19 2>/dev/null; do
   # Job 27/28 engines below nice 20 compete with k19 (nice 15): push them to 20
   for p in $(ps -axo pid=,nice=,comm= | awk '$3 ~ /(cfast|dfast18|sep3|defectc)$/ && $2 < 20 {print $1}'); do renice -n 20 -p $p >/dev/null 2>&1; done

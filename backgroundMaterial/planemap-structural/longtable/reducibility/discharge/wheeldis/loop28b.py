@@ -7,6 +7,7 @@ import sys, os, subprocess, re, glob, time
 HERE = os.path.dirname(os.path.abspath(__file__)); J = os.path.join(HERE, 'out', 'job28')
 DFAST, CFAST = sys.argv[1], sys.argv[2]
 opt = dict(a.split('=') for a in sys.argv[3:]); START = int(opt.get('start', 3)); PROCS = int(opt.get('procs', 3))
+TCAP = int(opt.get('tcap', 400))   # max tight-row batch configurations per round
 src = open(os.path.join(HERE, 'loop28.py')).read()
 exec(src[src.index('BASE = '):src.index('for n in range(START')])   # BASE, log(), par()
 rel = lambda f: os.path.relpath(f, HERE)
@@ -19,7 +20,8 @@ for n in range(START, START + 60):
             if os.path.exists(os.path.join(HERE, 'loop', 'lone', u + '.pat'))]   # lone-five killers (patterns only; explicit
            # allowlist: loop/lone/hr1_or1.pat holds ORACLE stand-ins, never a pattern)
     allr = os.path.join(J, 'all_%d.txt' % n); warm = sorted(glob.glob(os.path.join(J, 'all_*.txt')))
-    cmd = [sys.executable, os.path.join(HERE, 'wlp3.py'), 'tag=j28_%d' % n, 'allrows=' + allr] + pats
+    tight = os.path.join(J, 'tight_%d.txt' % n)
+    cmd = [sys.executable, os.path.join(HERE, 'wlp3.py'), 'tag=j28_%d' % n, 'allrows=' + allr, 'tight=' + tight] + pats
     if warm: cmd.append('warm=' + warm[-1])
     lp = subprocess.run(['nice', '-n', '19'] + cmd, capture_output=True, text=True, cwd=HERE).stdout
     m = re.search(r't\* = (-?[\d.]+)', lp); t = float(m.group(1)) if m else None
@@ -32,6 +34,19 @@ for n in range(START, START + 60):
                        capture_output=True, text=True, cwd=HERE).stdout
     open(os.path.join(J, 'hard_%d.txt' % n), 'w').write(g)
     summ = g.strip().splitlines()[-1] if g.strip() else ''
+    # tight-row batch (Long Table, 16 Oct): every d = 7 row tight at the optimum, largest S first, <= 3 S each, capped
+    t7 = os.path.join(J, 'tight7_%d.txt' % n)
+    rows7 = [l for l in open(tight) if re.search(r'receiver d=7 ', l)] if os.path.exists(tight) else []
+    open(t7, 'w').write(''.join(rows7))
+    inpT = os.path.join(J, 'in_%d_tight.txt' % n)
+    gT = subprocess.run([sys.executable, os.path.join(HERE, 'gen28.py'), inpT, '16', t7, 'maxper=3'],
+                        capture_output=True, text=True, cwd=HERE).stdout
+    open(os.path.join(J, 'hard_%d_tight.txt' % n), 'w').write(gT)
+    have = {l.split()[0] for l in open(inp) if l.strip()}
+    extra = [l for l in open(inpT) if l.strip() and l.split()[0] not in have][:TCAP]
+    with open(inp, 'a') as f: f.write(''.join(extra))
+    tightnames = {l.split()[0] for l in extra}
+    nhardT = sum(1 for l in gT.splitlines() if l.startswith('HARD28'))
     nnew = sum(1 for l in open(inp) if l.strip()); nhard = sum(1 for l in g.splitlines() if l.startswith('HARD28'))
     if nnew == 0:
         log('round %d (cert): t* = %.6f; %d certificate receivers; no new configuration (%s); HARD28 %d -> stop' % (n, t, ncert, summ, nhard)); break
@@ -40,5 +55,12 @@ for n in range(START, START + 60):
     cin = os.path.join(J, 'cin_%d.txt' % n); open(cin, 'w').write(''.join(l for l in open(inp) if l.split()[0] not in dset))
     cout = os.path.join(J, 'r_%d.cfast' % n); par(CFAST, ['--search', '--limit', '1'], cin, cout)
     nc = open(cout).read().count('C-REDUCIBLE')
-    log('round %d (cert): t* = %.6f; %d certificate receivers; %s; tested %d: D %d, C %d, neither %d; HARD28 %d' % (
-        n, t, ncert, summ, nnew, len(dset), nc, nnew - len(dset) - nc, nhard))
+    cset = set(); cur = None
+    for l in open(cout):
+        if ' r=' in l and not l.startswith(' '): cur = l.split()[0]
+        elif 'C-REDUCIBLE' in l and cur: cset.add(cur)
+    tD = len(tightnames & dset); tC = len(tightnames & cset)
+    log('round %d (cert+tight): t* = %.6f; %d certificate receivers; %s; tested %d: D %d, C %d, neither %d; HARD28 %d; '
+        'tight batch: %d tight d=7 rows -> %d configs (cap %d): D %d, C %d, neither %d; tight HARD28 %d' % (
+        n, t, ncert, summ, nnew, len(dset), nc, nnew - len(dset) - nc, nhard,
+        len(rows7), len(tightnames), TCAP, tD, tC, len(tightnames) - tD - tC, nhardT))
