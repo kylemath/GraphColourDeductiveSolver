@@ -197,3 +197,17 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
   - (ii′) A pinch makes u a cut vertex of G'. Keeping one side gives a SphericalMap with a simple RingFace on the arc.
   - (iv) The combinatorial merge lemma (KempeMatching from the two arcs; pure code arithmetic plus R1).
   - (iii) The extraction, unchanged.
+
+### B2 brute-force test (16 Oct; `job26/pinch_km.py`, `job26/pinch_km.out`)
+- **Method.** For outside maps G' = A ∪_u B, two triangulated discs sharing the pinch vertex u, so the ring walk visits u
+  twice:
+  - enumerate every proper 4-colouring;
+  - check R2's `KempeMatching` exactly. For every realised code and θ with transitions, some non-crossing matching
+    must have every union of its regions (XOR θ) still realised.
+- **Pinched cases: 0 failures.** 4w+4w (ring 8), 3f+5w (8), 5two+4w (9), 5two+5two (10) and 4f+4f (8, no
+  interior): 28,608 (code, θ) pairs in all. The simple-ring controls (6- and 8-wheels) also have 0 failures.
+- **Negative controls fail, so the test has teeth:** outside maps with crossing chords (not planar with the ring as a
+  face) give 96 / 1,464 and 384 / 10,656 failures.
+- The icosahedron is vacuous: its ring is the single antipode, so codes are constant and have no transitions.
+- **Reading.** KempeMatching (vertex codes, XOR-θ flips) holds for pinched rings, which is the statement B1 must prove.
+  This agrees with the hand proof above. It is a sanity check, not a proof.
