@@ -6,7 +6,7 @@ A row with a big link vertex k gets  -x[out tau] + x[in tau]  (out: this centre 
 Separation: y-only sep3 (d = 7..14) for rows without in-transfers; for every tau with x > 0, the heaviest arrangement
 at the receiving end showing tau (DP over 6-letter states, own transfer terms included, best-first enumeration,
 then sep3 'c' for patterns and RBIG).
-Usage: python3 l2.py [notx] [maxit=N] [tmax=SECONDS]"""
+Usage: python3 l2.py [notx] [maxit=N] [tmax=SECONDS] [pat=FILE ...]"""
 import sys, os, re, time, heapq, collections
 import numpy as np
 import scipy.sparse as sps
@@ -18,6 +18,7 @@ MAXIT = int(next((a[6:] for a in OPTS if a.startswith('maxit=')), '60'))
 TMAX = float(next((a[5:] for a in OPTS if a.startswith('tmax=')), '2400'))
 T0 = time.time()
 jargs = [a.strip() for a in open(os.path.join(L2D, 'j28_12.args')) if a.strip()]
+jargs += [a for a in OPTS if a.startswith(('pat=', 'cpat='))]   # extra pattern files (relative to wheeldis)
 jargs = [a for a in jargs if os.path.exists(os.path.join(WD, a.split('=', 1)[-1].replace(':all', ''))) or a == 'w7plus']
 src = open(os.path.join(WD, 'wlp3.py')).read().replace('os.path.abspath(__file__)', repr(os.path.join(WD, 'wlp3.py')), 1)
 sys.argv = ['wlp3'] + jargs + ['tag=l2' + ('x' if not NOTX else '0')]
@@ -222,7 +223,7 @@ for it_ in range(MAXIT):
 
 # ---- report
 t, yv, xfull, duals, slack = solve()
-tag = 'notx' if NOTX else 'x'
+tag = ('notx' if NOTX else 'x') + ('_w' if any(a.startswith('pat=') for a in OPTS) else '')
 out = ['# l2.py %s: t* = %.6f (13/49 = %.6f); %d rows, %d transfer columns, converged=%s (%d iterations, %.0fs)' % (
     ' '.join(OPTS), t, 13 / 49, len(ROWS), len(XCOL), 'yes' if not nadd else 'NO', len(hist), time.time() - T0)]
 out.append('rows by source: %s' % dict(collections.Counter(RSRC)))

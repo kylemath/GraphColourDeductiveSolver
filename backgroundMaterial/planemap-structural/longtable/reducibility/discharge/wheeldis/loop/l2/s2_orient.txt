@@ -1,0 +1,13 @@
+# s2.py orient: t* = 0.259259 (7/27 = 0.259259, 13/49 = 0.265306); 3553 arrangements, 11673 oriented rows {7: 2282, 8: 4538, 9: 4853}, 1944 transfer columns
+binding rows (largest dual first): dual, source, arrangement, out-edges among bigs (link positions)
+  0.0741  fam617 d=7 link 5576576 s 5657756  bigs at [2, 5], out [2, 5]
+  0.0370  tight12 d=7 link 5756575 s 6555666  bigs at [1, 5], out [1]
+  0.0370  fam617 d=7 link 5765756 s 5556666  bigs at [1, 4], out [4]
+  0.0370  fam617 d=7 link 5765756 s 5556666  bigs at [1, 4], out []
+  0.0370  tight12 d=7 link 5756756 s 6565665  bigs at [1, 4], out []
+  0.0370  tight12 d=7 link 5756756 s 6565665  bigs at [1, 4], out [1, 4]
+  0.0370  tight12 d=7 link 5756575 s 6555666  bigs at [1, 5], out [5]
+  0.0370  tight12 d=7 link 5567576 s 5756756  bigs at [3, 5], out []
+  0.0370  tight12 d=7 link 5567576 s 5756756  bigs at [3, 5], out [5]
+nonzero transfers: 959; largest: b 9->7 [566|585] 3.000, b 9->9 [586|597] 3.000, b 9->9 [586|587] 3.000, b 9->9 [585|598] 3.000, b 9->9 [585|597] 3.000, b 9->9 [585|589] 3.000, b 9->9 [585|587] 3.000, b 9->9 [585|585] 3.000
+HARD28-like rows slack (worst orientation): 47 of 49 slack

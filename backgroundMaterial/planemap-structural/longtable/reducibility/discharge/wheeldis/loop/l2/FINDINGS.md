@@ -28,3 +28,21 @@ d = 7 rows whose big neighbour is a copy of themselves. L2 with 2-ball edge type
 transfer rule would need information beyond both 2-balls, or these self-paired rows must be forbidden.
 Caveats: restricted (rows the separation does not reach are missing, which can only overstate the gain);
 not converged; y-only sep3 dedups by 5-path (up to 1,425 masked rows per iteration).
+
+# Round 22: H-S, Schnyder-orientation transfers (16 Oct 2026) [exploratory; restricted LP, start set only]
+
+**Tool.** `s2.py`. Round 20's start set (3,553 arrangements), one row per orientation of u's big edges consistent
+with out-degree 3 (11,673 rows), adversarial. Variables a[kappa] (tail sends to head) and b[kappa] (head sends to
+tail) per oriented edge type, 1,944 columns. `s2.py sym` reproduces round 20's 7/27 on the same set.
+
+**Result: H-S dies. t* = 7/27 exactly** (`s2_orient.txt`; check `s2_sym.txt` also 7/27). Rows only raise t*, so
+the kill is trustworthy for this rule class.
+- The binders are the same d = 7 rows as round 20, and the dual splits across orientations of the same row:
+  5765756/5556666 binds with out-edges {} and {4}; 5756756/6565665 with {} and {1, 4}; 5567576/5756756 with {} and
+  {5}. The adversary uses both orientations of the self-paired edge, so tail-to-head transfers give |a - b| back.
+- 47 of 49 HARD28-like rows are slack at the worst orientation.
+
+**Reading.** An orientation the map chooses is adversarial row by row, so it cannot break the u-v symmetry. More
+basically: when u and v carry the same arrangement and both are over capacity, no transfer between them helps,
+whatever it reads. Charge has to leave the pair (to vertices at distance >= 2 from u), or the pair must be reducible.
+Studio reports 3 of the 5 binders killed by B-fixed D and 2 at ring 15-16 in its queue.

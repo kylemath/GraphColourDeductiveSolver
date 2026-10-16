@@ -1,5 +1,41 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 23 (16 Oct 2026, 23:28Z-): H-L2 again, with the explore windows as patterns
+
+**Registered 23:28Z, after a first look (not a clean pre-registration).** Rounds 20 and 22 used only the j28_12
+patterns. Our own windows (`loop/w2/win14.out`, `win8.out`, `win89.out`) already forbid some of their binders, so I
+reran both LPs with them (`l2.py ... pat=...`).
+- **Seen before registering.** No transfers: t* rises from 0.2405 to 7/27 over 40 iterations, not converged
+  (`l2_notx_w40.txt`). With transfers, 3 iterations: **t* = 1/5**, held by one d = 9 row with no 7/8 neighbour
+  (559565656/565566666, the lone-five counting bound); 43 of 46 HARD28-like rows slack (`l2_x_w3.txt`).
+- **Now running.** The transfer LP to convergence (60 iterations or 45 minutes).
+- **Survives** (H-L2, round 20's bar) if the converged t* < 0.22; **dies** if it climbs above 0.25.
+- **Guess.** It climbs, as the baseline did (start set now 1,453 rows, so separation does more work), and settles
+  near 0.22-0.23. Above the lone-five 1/5 either way.
+
+## Round 22 (16 Oct 2026, 23:00Z-): H-S, do Schnyder-orientation transfers break the 7/27 floor? (k's pick)
+
+**Pre-registered 23:00Z, before any build.** Idea and bars are mine; k chose to run it (decision card, 22:57Z).
+- **Why.** Round 20 stalls at 7/27 on d = 7 rows next to an identical copy: a rule that sees both 2-balls cannot
+  orient the edge. Every planar triangulation has a 3-orientation (Schnyder wood): each interior vertex has exactly 3
+  out-edges. A rule may read it, and reducibility is unaffected.
+- **LP.** Round 20's restricted LP at its start set (Studio's 3,181 tight rows plus the 617 family), no separation.
+  Each arrangement becomes one row per orientation of u's big edges consistent with out-degree 3 (the small
+  neighbours take the rest; the orientation is adversarial). Variables a[tau] (tail sends to head) and b[tau]
+  (head sends to tail) per oriented edge type. Round 20's symmetric rules are the special case a = x, b = x reversed,
+  so t* <= 7/27. Rows only raise t*, so a start-set t* >= 7/27 is a trustworthy kill.
+- **Survives** if t* < 0.25 at the start set (then build v-side separation with orientation). **Dies** if t* = 7/27.
+- **Guess.** Dies at exactly 7/27. The binders have 5 small neighbours, so the adversary can orient both big edges
+  either way, and the worst case over the two orientations gives |a - b| back. Orientation helps only where
+  out-degree 3 forces a big edge, i.e. rows with 5+ bigs, which do not bind.
+
+**Round 22 result (23:08Z): H-S dies, t* = 7/27 exactly** (`wheeldis/loop/l2/s2_orient.txt`; the symmetric check
+`s2_sym.txt` gives 7/27 on the same set). 11,673 oriented rows, 1,944 transfer columns. The dual of each binder
+splits across its orientations ({} and {4} for 5765756/5556666), so the adversary undoes any tail-to-head rule.
+- Reading: two identical overloaded 7s cannot help each other, whatever the rule reads. Charge must leave the pair
+  (distance >= 2 from u), or the pair must be reducible (Studio: 3 of 5 binders killed, 2 at ring 15-16).
+- Guess check: "dies at exactly 7/27" held.
+
 ## Round 21 (16 Oct 2026, 17:22Z-): H-A', can a HARD28-like row be forbidden through a neighbouring 7? (coordinator's test)
 
 **Pre-registered 17:22Z, before any matching.** Design and bars are Long Table's message of 17:20Z; the guess is mine.

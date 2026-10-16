@@ -1,0 +1,63 @@
+# l2.py notx maxit=60 tmax=1500 pat=loop/w2/win14.out pat=loop/w2/win8.out pat=loop/w2/win89.out: t* = 0.259259 (13/49 = 0.265306); 33000 rows, 0 transfer columns, converged=NO (40 iterations, 1512s)
+rows by source: {'tight12': 1188, 'fam617': 265, 'sep3': 31547}
+binding rows (positive dual) by source, degree: count / total dual weight
+  sep3 d=7: 1 / 0.1481
+  tight12 d=7: 2 / 0.2222
+tight rows by source, degree: {('fam617', 7): 122, ('sep3', 7): 509, ('sep3', 8): 134, ('sep3', 9): 165, ('sep3', 10): 2, ('tight12', 7): 94, ('tight12', 8): 53, ('tight12', 9): 9}
+HARD28-like rows (49): slack at t*
+  5567586 5758756 HARD28: slack -0.0000 dual 0.0000
+  5567586 5758856 HARD28: slack 0.1481 dual 0.0000
+  5568586 5658757 HARD28: slack -0.0000 dual 0.0000
+  5567586 5659857 HARD28: slack -0.0000 dual 0.0000
+  5567596 5758856 HARD28: slack -0.0000 dual 0.0000
+  5568596 5658757 HARD28: slack 0.1481 dual 0.0000
+  5568596 5758856 HARD28: slack -0.0000 dual 0.0000
+  5568586 5658657 HARD28: slack -0.0000 dual 0.0000
+  5567586 5758956 HARD28: slack -0.0000 dual 0.0000
+  5567586 5756856 HARD28: slack -0.0000 dual 0.0000
+  5568586 5658857 HARD28: slack 0.1481 dual 0.0000
+  5568586 5656757 HARD28: slack -0.0000 dual 0.0000
+  5567567 5658856 HARD28: not in the LP (forbidden by the j28_12 patterns)
+  5567567 5658857 HARD28: slack 0.0000 dual 0.0000
+  5567569 5658857 HARD28: slack 0.0000 dual 0.0000
+  5567576 5658859 hardlike: slack 0.2222 dual 0.0000
+  5567586 5757756 hardlike: slack 0.1296 dual 0.0000
+  5568586 5657657 hardlike: slack -0.0000 dual 0.0000
+  5568586 5658659 hardlike: slack 0.0741 dual 0.0000
+  5568586 5659859 hardlike: slack 0.0741 dual 0.0000
+  5568596 5756856 hardlike: slack -0.0000 dual 0.0000
+  5568596 5757756 hardlike: slack 0.1481 dual 0.0000
+  5568596 5758656 hardlike: slack -0.0000 dual 0.0000
+  5568567 5658757 hardlike: slack 0.2963 dual 0.0000
+  5569567 5658857 hardlike: slack 0.0000 dual 0.0000
+  5568568 5658757 hardlike: slack 0.2963 dual 0.0000
+  5568569 5658757 hardlike: slack 0.2963 dual 0.0000
+  5567576 5657857 hardlike: slack -0.0000 dual 0.0000
+  5567576 5657859 hardlike: slack 0.0741 dual 0.0000
+  5567576 5658857 hardlike: slack 0.1481 dual 0.0000
+  5567586 5657857 hardlike: slack -0.0000 dual 0.0000
+  5567586 5657859 hardlike: slack 0.0741 dual 0.0000
+  5567586 5658657 hardlike: slack -0.0000 dual 0.0000
+  5567586 5658659 hardlike: slack 0.0741 dual 0.0000
+  5568567 5658759 hardlike: slack 0.2996 dual 0.0000
+  5568567 5658859 hardlike: slack 0.0062 dual 0.0000
+  5568586 5655857 hardlike: slack -0.0000 dual 0.0000
+  5568586 5657857 hardlike: slack -0.0000 dual 0.0000
+  5568586 5657859 hardlike: slack 0.0741 dual 0.0000
+  5568586 5657957 hardlike: slack -0.0000 dual 0.0000
+  5568586 5657959 hardlike: slack 0.0741 dual 0.0000
+  5568586 5658957 hardlike: slack -0.0000 dual 0.0000
+  5568596 5657857 hardlike: slack -0.0000 dual 0.0000
+  5568596 5657859 hardlike: slack 0.0741 dual 0.0000
+  5657567 6587755 hardlike: slack 0.1481 dual 0.0000
+  5657658 6655688 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5657658 8655888 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5558558 8877977 hardlike: slack 0.1144 dual 0.0000
+  5656568 5989858 hardlike: slack 0.0000 dual 0.0000
+HARD28-like rows slack: 22 of 46 in the LP
+transfers x > 0: 0; largest:
+binding rows (largest dual first):
+  0.1481  sep3 d=7 link 5676575 s 6556766  y=1.2593 x=+0.0000
+  0.1481  tight12 d=7 link 5756756 s 6565665  y=1.2593 x=+0.0000
+  0.0741  tight12 d=7 link 5567576 s 5756656  y=1.2593 x=+0.0000
+iterations: 0:0.2405 1:0.2405 2:0.2405 3:0.2405 4:0.2405 5:0.2405 6:0.2405 7:0.2405 8:0.2459 9:0.2459 10:0.2459 11:0.2459 12:0.2500 13:0.2500 14:0.2500 15:0.2520 16:0.2522 17:0.2522 18:0.2593 19:0.2593 20:0.2593 21:0.2593 22:0.2593 23:0.2593 24:0.2593 25:0.2593 26:0.2593 27:0.2593 28:0.2593 29:0.2593 30:0.2593 31:0.2593 32:0.2593 33:0.2593 34:0.2593 35:0.2593 36:0.2593 37:0.2593 38:0.2593 39:0.2593
