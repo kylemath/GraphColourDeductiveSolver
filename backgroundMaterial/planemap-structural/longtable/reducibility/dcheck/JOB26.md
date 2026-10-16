@@ -127,3 +127,172 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
   of the incidence map, so it lies in the range of the dual map, by `range_dualMap_eq_dualAnnihilator_ker`. No
   connectivity is needed. `colouring_of_face_sums`: a nowhere-zero (ZMod 2)² labelling with zero face sums is the
   difference labelling of a proper 4-colouring. Axioms: propext, Classical.choice, Quot.sound.
+
+## Check of route B step (ii), before formalising (16 Oct, hand analysis)
+**As written, (ii) does not give a simple ring.**
+- Let u be a pinch vertex at ring positions i < j. The two ring corners at u cut its rotation into sectors A
+  (darts from ring_{i+1} round to ring_{j-1}) and B (ring_{j+1} round to ring_{i-1}).
+- Splitting u into u_A, u_B keeps E, adds a vertex, and splits the configuration's face into two. So χ rises by 2,
+  i.e. G'' = G''_A ⊔ G''_B (u is a cut vertex of G').
+- Face of G''_A: u_A, ring_{i+1}, …, ring_{j-1}, a simple cycle of length j − i. Face of G''_B: u_B, ring_{j+1}, …,
+  ring_{i-1}, length r − (j − i).
+- The ring edges at position i lie in different components: (ring_{i-1}, u) is in B and (u, ring_{i+1}) is in A. So no
+  simple length-r ring face exists in G'', and the configuration cannot be glued back to G'' as one disc.
+
+**What does hold (usable pieces).**
+- Each component has a simple ring face, so `chains_noncrossing` and the vertex Jordan lemma apply **per component**.
+  The A-chains give a non-crossing matching of the A-arc transitions; likewise B.
+  - A union of matchings within two complementary arcs is non-crossing on the whole r-cycle.
+- Colourings of G'' are colourings of G' with B translated independently by t ∈ (Z/2)², a colour permutation of B.
+  Normalising t so that κ(u_B) = κ(u_A) recovers exactly the G' codes (c_i = c_j).
+- Gluing (i) works in **trace** form, as in Gonthier.
+  - The ring-edge differences of a G'' colouring sum to 0 on each arc separately.
+  - The interior λ must have the same trace. That forces λ(ring_i) = λ(ring_j), which holds when λ extends a code
+    with c_i = c_j.
+- **The gap.** After a Kempe flip in A that recolours u_A, B must be re-translated: equivalently, flip every chain of B.
+  The combined effect on the r-ring code is "flip the A-outer region plus positions i and j, and flip all of B".
+  - With the union matching, this is not obviously a union of combined-matching regions: positions i and j sit in
+    the outer region with both A-outer and B-outer.
+  - So it is not yet shown that `KempeMatching` (R2's closure semantics, vertex codes) holds for pinched appearances,
+    even granted (i) and the split.
+
+**Options (for Long Table).**
+- (B1, recommended) The original route B: KempeMatching for the pinched face of G' **directly**, with no split.
+  - For a pair partition {a,b}|{c,d}, the transitions are the ring edges whose ends are in different classes. They
+    are matched by the class-boundary curves: Tait 2-colour chains in the dual of G' of the two colours other than
+    a + b.
+  - These are disjoint curves in the disc bounded by the configuration's face, which is a simple *edge* cycle even
+    when vertices repeat. So they are non-crossing, by a dual/dart Jordan lemma.
+  - Flips act on actual vertices of G', so a code keeps c_i = c_j. The glue to the free completion λ is then plain
+    vertex gluing, because λ(ring_i) = λ(ring_j) = κ(u). (i) is not needed on this route; it stays as a general tool.
+  - The new piece is the dart-level Jordan lemma for a face-boundary walk.
+- (B2) The split route (ii) plus a per-component vertex Jordan lemma. It works only if R2's closure step accepts the
+  combined "flip in A, re-translate B" moves. A cheap brute-force test of the closure semantics on the D keys would
+  decide it before any Lean work.
+- (B3) The kill route: ship the simple-ring statement, with the fold as an explicit hypothesis.
+
+### Update (16 Oct, after reading R2's closure semantics): (B2) works, and (ii) is just "keep one side"
+- In `Good`/`KempeMatching` (DCheckSound.lean) a flip XORs θ onto **every** position of the chosen regions:
+  `flipMask`, both classes at once. That is the trace-compatible move, not a one-class Kempe swap.
+- **Hand proof that the pinched case reduces to the two components.**
+  - Let k be realised by κ on G' = A ∪_u B (u at ring positions i, j). The restrictions realise the two arc codes;
+    in each, u_A (resp. u_B) is the single position i ≡ j.
+  - Per-component KempeMatching gives matchings lab_A and lab_B. Their union is a non-crossing matching of all
+    transitions, because the chords lie in complementary arcs.
+  - Its regions are the A-inner regions, the B-inner regions, and one outer region = (A's region at u_A) ∪
+    (B's region at u_B) ∪ {i, j}.
+  - For any region set S, flip the corresponding A-regions and B-regions, with the outer one in both or in neither.
+    The flipped codes give u_A and u_B the same colour, k_i ⊕ (θ if outer ∈ S).
+  - So the two colourings glue at u to a colouring of G' realising k ⊕ flipMask(S). Hence KempeMatching(G') follows
+    from KempeMatching(A) and KempeMatching(B).
+  - Higher multiplicity and several pinches follow by induction on the number of pinch splits.
+  - Needed: the merged labelling must be the table's labelling of that matching (`matchTable_complete`, R1), with s
+    translated to the table's region numbering.
+- **(ii) needs no new surgery.** A = G' with every vertex on B's side of u deleted. Then u's rotation restricts to sector
+  A, and the face becomes u, ring_{i+1}, …, ring_{j-1}. Use vertex deletion preserving `Fills` plus the face tracking from
+  Job 25 (`subgraph_tracked`, `keepC`/`OnSide`).
+- **(i) is not needed on this route.** The glue to λ is vertex gluing, since u is one vertex of T and λ(ring_i) =
+  λ(ring_j).
+- **Revised plan.**
+  - (ii′) A pinch makes u a cut vertex of G'. Keeping one side gives a SphericalMap with a simple RingFace on the arc.
+  - (iv) The combinatorial merge lemma (KempeMatching from the two arcs; pure code arithmetic plus R1).
+  - (iii) The extraction, unchanged.
+
+### B2 brute-force test (16 Oct; `job26/pinch_km.py`, `job26/pinch_km.out`)
+- **Method.** For outside maps G' = A ∪_u B, two triangulated discs sharing the pinch vertex u, so the ring walk visits u
+  twice:
+  - enumerate every proper 4-colouring;
+  - check R2's `KempeMatching` exactly. For every realised code and θ with transitions, some non-crossing matching
+    must have every union of its regions (XOR θ) still realised.
+- **Pinched cases: 0 failures.** 4w+4w (ring 8), 3f+5w (8), 5two+4w (9), 5two+5two (10) and 4f+4f (8, no
+  interior): 28,608 (code, θ) pairs in all. The simple-ring controls (6- and 8-wheels) also have 0 failures.
+- **Negative controls fail, so the test has teeth:** outside maps with crossing chords (not planar with the ring as a
+  face) give 96 / 1,464 and 384 / 10,656 failures.
+- The icosahedron is vacuous: its ring is the single antipode, so codes are constant and have no transitions.
+- **Reading.** KempeMatching (vertex codes, XOR-θ flips) holds for pinched rings, which is the statement B1 must prove.
+  This agrees with the hand proof above. It is a sanity check, not a proof.
+
+### Sharper (16 Oct): `RingNC` itself holds for the pinched walk, so no merge lemma is needed (`job26/pinch_nc.py`, `.out`)
+- `RingNC G r ρ` (DCheckRingNC.lean) does **not** require ρ to be injective. Its fields are the chain non-crossing
+  statements `nc` and `ncs`, by ring index. `RingNC.kempeMatching` (DCheckRingKempe.lean) then gives KempeMatching with
+  no injectivity anywhere.
+- **Brute force on G' itself** (chains of G', positions i and j both u). For every proper colouring, RingKempe's
+  `hNC` and the pairGraph forms `nc`/`ncs` were checked on pinched maps 4w+4w, 3f+5w, 5two+4w and 4f+4f (ring 8–9):
+  **0 violations**. The crossing-chord control has 384, so the test has teeth.
+- **Correction to the first finding (15 Oct).** The example "an {a,b} chain through 1, u, 4 and a {c,d} chain joining
+  2 and 5" cannot occur. u is a cut vertex of G', so any chain from side A to side B passes through u, and a {c,d}
+  chain cannot contain the {a,b}-coloured u.
+- **Hand proof sketch of `nc` for the pinched walk.**
+  - Take i < j < k < l, with chain 1 joining positions i and k and a disjoint-pair chain 2 joining j and l.
+  - At most one of the two chains contains u, so the other lies inside one side X.
+  - Then j, k, l (or i, j, k) lie in X's arc. The part of chain 1 inside X runs from its X-endpoint to u, entered
+    at the first visit (the cut-vertex property).
+  - In X's simple ring, u sits at position 0, so the crossing becomes a crossing in X. That contradicts X's own
+    `RingNC` (from its RingFace).
+  - `ncs` is the same with the same-pair bookkeeping.
+- **Plan, final.**
+  - (ii′) Keep one side of the pinch: G'_X is a SphericalMap with a simple RingFace on the arc, so `RingNC` holds by
+    the existing bridge.
+  - (iv′) `RingNC` for the pinched walk, from `RingNC` of both sides plus the cut-vertex property. This is pure graph
+    reachability, no planarity.
+  - Then `RingNC.kempeMatching` applies verbatim.
+  - Several pinches: induct on the splits.
+  - (iii) The extraction, unchanged.
+- **Caveat (found while formalising, 16 Oct).** The pairGraph field `RingNC.nc` is literally **false** for a pinched
+  walk.
+  - `Reachable` is reflexive, so the "chain" from position 0 to position m (both u) exists for any pair, even one
+    not containing c(u).
+  - A {c(u), x}-chain through u from (0, m) to (m, r) then violates it.
+  - The brute force missed this because it required both chain endpoints to be active.
+- **What `kempeMatching` actually uses is the θ form**, `theta_nc` (RingKempe's `hNC`). It is about thetaGraph
+  reachability, where every vertex is active, and it holds: `pinch_nc.py`'s `hNC` check, 0 violations.
+- **Lean plan.**
+  - (a) `RingTNC` = pos, per, adj, θ-non-crossing. `RingNC → RingTNC` (via `theta_nc`), and
+    `RingTNC.kempeMatching` (the verbatim proof).
+  - (b) Prove `RingTNC` for the pinched walk from `RingTNC` of the two sides. The steps:
+    - Walk lemma: a θ-chain between two A-side vertices stays in A, because excursions leave and re-enter through u.
+    - Collapse map: send B positions to u, which is A's index 0. It preserves interleaving when the four images are
+      distinct.
+    - Doubly degenerate cases: both chains reach u, so the conclusion holds through u.
+- **Done (16 Oct): (a) and (iv′) in Lean, `DCheckPinch.lean`.**
+  - `RingTNC` (pos/per/adj/off + θ-non-crossing; ρ need not be injective), with `RingNC.toTNC`, and
+    `RingTNC.kempeMatching`. The latter has the same axioms as R2, i.e. the R1 `native_decide` checks.
+  - `cut_reach`, the four-part walk lemma at a cut vertex.
+  - `TNC.pinch` / `RingTNC.of_pinch`. If the ring walk's positions [0, m) lie on side A and [m, r) on side B, with
+    ρ 0 = ρ m = u, and both arcs are θ-non-crossing in their side maps, then so is the whole walk in G.
+    - Five cases, by how many of i < j < k < l are below m.
+    - Axioms: propext, Classical.choice, Quot.sound. No sorry.
+- **Left:** (ii′), i.e. that keeping one side of the pinch gives a SphericalMap whose arc is a RingFace, so that
+  `RingFace.toNC` gives the side's TNC. Then (iii).
+- **(ii′) plan (16 Oct).** G is the `ConfigOcc` outside map. Weaken `ring : RingFace` to a face walk (`step`, no
+  `inj`) that visits u exactly at positions 0 and m.
+  1. *u is a cut vertex (parity argument, via `Fills`).*
+     - Suppose a path P in G − u joins a sector-A neighbour w of u to a sector-B neighbour w'.
+     - Then φ = P + uw + uw' is even, so `Fills` gives a face potential c.
+     - Around u the potential jumps exactly at uw and uw'. These two darts separate the two corners of the face f at u
+       (corner 0 and corner m), so c(f) ≠ c(f), a contradiction.
+     - Needs a "two jumps on a rotation cycle give different values on the two arcs" lemma, generalising
+       `potential_eq_of_two_consecutive_jumps` (FaceChord.lean).
+  2. *Sides.* SA = u ∪ the components of G − u meeting sector A; SB = the rest ∪ u.
+     - `hcut`/`hint` are by definition.
+     - Ring membership: the arc A positions are joined to ρ 1 along the arc.
+  3. *Side maps.* GA = G with every edge that has an endpoint in SB \ {u} deleted. This needs edge deletion to
+     preserve `Fills` (SphericalDelete).
+     - At vertices of SA \ {u} nothing is deleted.
+     - At u the B sector is skipped, so faceNext_GA(ρ(m−1) → u) = u → ρ 1. Hence `RingFace GA m ρ` (injective
+       on [0, m)), and likewise for GB.
+  4. `RingFace.toNC` → `RingNC.toTNC` → `RingTNC.of_pinch` → `RingTNC.kempeMatching`.
+- **(ii′) done (16 Oct): `DCheckPinchGeom.lean`.**
+  - `PinchWalk G r m ρ` is a face walk (faceNext steps along it, period r) that visits ρ 0 again exactly at position m,
+    with both arcs of length ≥ 3.
+  - `PinchWalk.ringTNC` gives `RingTNC G r ρ h` (axioms propext, Classical.choice, Quot.sound; no sorry), and
+    `PinchWalk.kempeMatching` gives KempeMatching for the realised codes (plus R1's native_decide).
+  - Proof route:
+    - The A-arc closed at u is a cycle (`Cyc`, chords allowed). Take its potential c.
+    - **K1**: at an arc-interior vertex only the face corner is near (consecutive jumps).
+    - **K2/K3**: hence `hcut` for SA = arc ∪ far side, SB = rest ∪ u.
+    - **K4**: at u, the rotation runs near from ρ(m−1) to ρ 1 and far from ρ 1 to ρ(m−1) (jump-count walks).
+    - The kept maps (`subgraph_tracked`) then have the arcs as `RingFace`s (`ringFaceA`/`ringFaceB`).
+    - Finish with `RingFace.toNC.toTNC` and `TNC.pinch`.
+- **Left for Job 26:** several pinches or higher multiplicity (induction, or a general k-pinch version), and (iii), the
+  extraction of a `PinchWalk` from an appearing 2-ball, i.e. the ConfigOcc variant with a face walk.

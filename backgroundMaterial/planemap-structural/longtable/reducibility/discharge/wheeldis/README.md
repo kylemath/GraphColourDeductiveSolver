@@ -535,3 +535,61 @@ not enough either, and the next family (5-centred 2-balls with K ≥ 3, or exact
 - It would be evidence, not proof, that R_opt+ is locally unavoidable at this scale.
 - It would not say that any rule class reaches t* ≤ 0. That needs the forbidden-pattern LP with the B-fixed
   configurations as patterns.
+
+### 7.3.1 Results (16 Oct 2026; dfast and cfast only, engine level, no Lean)
+
+**Verdict: H7b survives on every candidate found. The search is incomplete (share below).** No K ≤ 4 defect
+survives R_opt+.
+
+**Candidates checked: 418,551 in total** (`out/defect_K4_candidates_checked.txt.gz`).
+- **321,976 from the earlier partial non-strict searches.**
+  - 63 were not removed by R_opt.
+  - With strict 7-wheels, 57 more were removed and 6 survived.
+  - The B-fixed family removed all 6. That took 39 dfast tests at rings 10–16, of which 19 were D.
+- **96,575 new candidates from the strict K = 4 searches** (`bin/defectc2`/`defectc3`, centres 5, 6, 7), processed in five batches.
+  - **Batch 1 (31,589 candidates).** Two steps:
+    - R_opt with strict 7-wheels removed all but 79 (7 survivors and 72 still open on untested cfast).
+    - The B-fixed family then removed all 79, using only D verdicts.
+  - **Batches 2–5 (64,986 candidates).** These went straight to R_opt+ (`defect_bfloop.sh`), which removed all of them.
+- **B-fixed dfast tests over the whole run:** 232 tests, 105 D. By ring (tested / D):
+
+  | Ring | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
+  |---|---|---|---|---|---|---|---|
+  | Tested | 4 | 16 | 43 | 42 | 63 | 48 | 16 |
+  | D | 3 | 1 | 16 | 20 | 30 | 25 | 10 |
+
+- Every candidate was removed by a D verdict or a cfast C-candidate at ring ≤ 16. No B-fixed configuration at ring 17–19
+  was needed, and none was assumed reducible.
+
+**Share of the K = 4 search done.** The searches ran about 5.8 h on 3 cores across two container restarts. They resume
+from a ring-1 word (new optional argument 7 of `defectc.cpp`). By admissible ring-1 word (not excluded by the wheel
+tables):
+
+| Centre | Complete | Partial | Not started |
+|---|---|---|---|
+| 5 | 5 of 24 (55667–55767) | 55777 | 18 |
+| 6 | 2 of 55 (556667, 556676) | 556677 | 52 |
+| 7 | 0 of 150 | 5556667, after ~5.8 h | 149 |
+
+The words carry very unequal work, so this is not a fraction of the work. The centre-7 search is far from finishing
+at this rate; finishing it would take days, not hours.
+
+**Fixes made during the run.**
+- `defect_check2.py` now counts a cfast result as "no C-candidate" only once its search line has been written. A run
+  killed mid-search used to leave a header that counted as tested.
+- The interrupted runs were rerun under new tags (`new1b`). Their partial cfast outputs are kept.
+
+**What this means.**
+1. **R_opt+ is locally sufficient for every small defect found.**
+   - Every isolated positive defect found with K ≤ 4 is removed by R_opt+. That includes the 13 that survive R_opt with
+     strict 7-wheels (D3 among them) and the 72 left open there on untested cfast.
+   - The B-fixed configurations do it at rings 10–16, at about 2 min of dfast per needed configuration.
+   - This is evidence for the guided plan in §7.2: run defect search and dfast on the B-fixed configurations each
+     defect needs, rather than a blanket run.
+   - It is not proof:
+     - the search is incomplete;
+     - K ≥ 5 defects are untested;
+     - no forbidden-pattern LP has been solved with the B-fixed configurations as patterns, so it is still open whether
+       any rule class reaches t* ≤ 0 once these configurations are excluded.
+2. **Test G does not change.** For rule classes (a), (b) and (c) against R_opt, 1/21 ≤ t* ≤ 5/17 (§7.1). The defect D3
+   needs configurations outside the 2-ball rule framework, the B-fixed ones.

@@ -164,6 +164,7 @@ static void ring_dfs(int k) {
 int main(int argc, char** argv) {
     FILE* f = fopen(argv[1], "r"); C0 = atoi(argv[2]); K = atoi(argv[3]); CMIN = atoi(argv[4]);
     if (argc > 5) MAXLEAVES = atol(argv[5]); if (argc > 6) MAXRING = atoi(argv[6]);
+    string START = argc > 7 ? argv[7] : "";   // resume: skip ring-1 words below START (inclusive restart)
     int sz[4] = {243, 729, 2187, 2187}; vector<char>* T[4] = {&bad5, &bad6, &d7, &t7};
     for (int i = 0; i < 4; i++) { T[i]->resize(sz[i]); for (int j = 0; j < sz[i]; j++) { int x; if (fscanf(f, "%d", &x) != 1) return 1; (*T[i])[j] = x; } }
     build_feas();
@@ -183,6 +184,9 @@ int main(int argc, char** argv) {
         }
         if (!canon) continue;
         if (badw(C0, w)) continue;
+        string ws; for (int d : w) ws += char('0' + d);
+        if (ws < START) continue;
+        fprintf(stderr, "ring1 %s start leaves %ld\n", ws.c_str(), leaves); fflush(stderr);
         R[1].deg = w;
         if (!grow(1)) continue;
         ring_dfs(2);

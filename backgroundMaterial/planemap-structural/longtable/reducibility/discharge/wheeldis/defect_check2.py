@@ -18,7 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); DIS = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(DIS, 'b8b'))
 from rings import Layered
 ARGS = sys.argv[1:]
-BF = 'bf' in ARGS; ARGS = [a for a in ARGS if a != 'bf']
+BF = 'bf' in ARGS; S7 = 'strict7' in ARGS; ARGS = [a for a in ARGS if a not in ('bf', 'strict7')]
 CAND, NEWF = ARGS[0], ARGS[1]; LIMIT = int(ARGS[2]) if len(ARGS) > 2 else 10 ** 9
 gsrc = open(os.path.join(HERE, 'gen.py')).read()
 gsrc = gsrc[:gsrc.index('arrs = []')].replace('os.path.dirname(os.path.abspath(__file__))', repr(HERE))
@@ -36,8 +36,9 @@ for fn in glob.glob(os.path.join(HERE, 'job27', '*.cfast')) + glob.glob(os.path.
     for l in open(fn):
         if ' r=' in l and not l.startswith(' '):
             nm = l.split()[0]; cur = key_of_name(nm) if re.match(r'^[ep]\d+_', nm) else nm
-            CRES.setdefault(cur, 'neither')
+            if 'D=true' in l: CRES.setdefault(cur, 'neither')
         elif 'C-REDUCIBLE' in l and cur is not None: CRES[cur] = 'C'
+        elif 'search |X|' in l and cur is not None: CRES.setdefault(cur, 'neither')   # tested only once its search ended
 def canon(w):
     w = tuple(w); return min(min(s[k:] + s[:k] for k in range(len(s))) for s in (w, w[::-1]))
 T7 = {}
@@ -46,6 +47,19 @@ for fn in ('bigwheels_dfast.out', 'bigwheels1516_dfast_partial.out') + tuple(os.
         f = line.split()
         if f and f[0].startswith('c7_'): T7[tuple(map(int, f[0][3:]))] = 'D' if 'D=true' in line else 'notD'
 
+# 7-wheel C status (README §7.3, R_opt+): C-candidates count as reducible; with 'strict7' a 7-wheel must also be
+# C-tested (on demand, named c7_<canonical word>)
+STRICT7 = S7 or BF
+C7 = set(); NC7 = set()
+for fn in glob.glob(os.path.join(HERE, 'out', 'def_*.cfast')):
+    cur = None
+    for line in open(fn):
+        if ' r=' in line and not line.startswith(' '):
+            m = re.match(r'^(?:c7_|\S*_w7_\d+_)(\d{7}) ', line); cur = canon(tuple(map(int, m.group(1)))) if m else None
+        elif 'C-REDUCIBLE' in line and cur is not None: C7.add(cur)
+        elif 'search |X|' in line and cur is not None: NC7.add(cur)
+NC7 -= C7
+_bw = open(os.path.join(HERE, 'bigwheels.py')).read(); exec(_bw[_bw.index('def wheel('):_bw.index('fmt = lambda')])
 def patch(sig, sea=5):
     rings = sig.split('|'); L = Layered(int(rings[0]))
     for k in range(1, len(rings)): L.add_ring([int(c) for c in rings[k]])
@@ -84,6 +98,8 @@ def check(sig):
         cw = canon([deg[x] for x in lk]); w7 = T7.get(cw)
         if w7 == 'D': st['D'] += 1
         elif w7 is None: st['untested7'] += 1; need.append(('w7', cw))
+        elif STRICT7 and cw in C7: st['C7'] += 1
+        elif STRICT7 and cw not in NC7: st['untested7C'] += 1; need.append(('w7c', cw))
         L_ = ''.join(str(deg[x]) for x in lk); S_ = ''
         for i in range(d):
             com = [z for z in adj[lk[i]] & adj[lk[(i + 1) % d]] if z != u]; assert len(com) == 1; S_ += str(deg[com[0]])
@@ -109,6 +125,10 @@ def check(sig):
                     Ib = {u} | {lk[i] for i in S}
                     for i in S: Ib |= adj[lk[i]]
                     cb = extract_cfg(adj, deg, Ib)
+                    if cb is None:                     # pinched in G: move enclosed ring vertices inside, as above
+                        RSb = set(y for x in Ib for y in adj[x]) - Ib
+                        Ib2 = Ib | {y for y in RSb if adj[y] <= (Ib | RSb)}
+                        cb = extract_cfg(adj, deg, Ib2) if Ib2 != Ib else None
                     if cb is None: st['bf_nosimple'] += 1
                     else:
                         kb = 'b' + hashlib.sha1(cb.encode()).hexdigest()[:16]; db = DRES.get(kb); cbv = CRES.get(kb)
@@ -124,8 +144,8 @@ def check(sig):
                 elif cv == 'C': st['C'] += 1
                 elif cv is None: st['untestedC'] += 1; need.append(('c', nm, cfg, r))
                 else: st['neither'] += 1
-    if st['D'] or st['C'] or st['nosimple'] or st['bfD'] or st['bfC'] or st['bf_nosimple']: v = 'killed'
-    elif st['untestedD'] or st['untestedC'] or st['untested7'] or st['bf_untestedD'] or st['bf_untestedC']: v = 'open'
+    if st['D'] or st['C'] or st['C7'] or st['nosimple'] or st['bfD'] or st['bfC'] or st['bf_nosimple']: v = 'killed'
+    elif st['untestedD'] or st['untestedC'] or st['untested7'] or st['untested7C'] or st['bf_untestedD'] or st['bf_untestedC']: v = 'open'
     else: v = 'SURVIVES'
     return v, st, need
 
@@ -140,6 +160,9 @@ if __name__ == '__main__':
             for x in need:
                 if x[0] == 'd': needD[x[1]] = x
                 elif x[0] == 'c': needC[x[1]] = x
+                elif x[0] == 'w7c':
+                    r_, m_, ra_, ia_ = wheel(list(x[1])); f_ = lambda L: ';'.join(','.join(map(str, v)) if v else '-' for v in L)
+                    nm_ = 'c7_' + ''.join(map(str, x[1])); needC[nm_] = ('c', nm_, '%d %d %s %s' % (r_, m_, f_(ra_), f_(ia_)), r_)
                 else: need7.add(x[1])
         out.append('%s c=%s sig=%s %s' % (v, m.group(1), m.group(2), dict(st)))
     open(NEWF + '.status', 'w').write('\n'.join(out) + '\n')

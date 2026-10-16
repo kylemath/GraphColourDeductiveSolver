@@ -23,6 +23,26 @@ for fn in ('bigwheels_dfast.out', 'bigwheels1516_dfast_partial.out'):
         if not f or not f[0].startswith('c7_'): continue
         w = tuple(map(int, f[0][3:])); T7.add(w)
         if 'D=true' in line: D7.add(w)
+# README §7.3 (R_opt+): 7-wheels that cfast flags as C-candidates also count as reducible; ring-16 7-wheels from
+# out/def_w7_r16.out count as tested.
+import glob as _glob, re as _re
+C7 = set(); NC7 = set()
+for fn in _glob.glob(os.path.join(HERE, 'out', 'def_*.cfast')):
+    cur = None
+    for line in open(fn):
+        if ' r=' in line and not line.startswith(' '):
+            m = _re.match(r'^(?:c7_|\S*_w7_\d+_)(\d{7}) ', line); cur = canon(tuple(map(int, m.group(1)))) if m else None
+            if cur is not None: NC7.add(cur)
+        elif 'C-REDUCIBLE' in line and cur is not None: C7.add(cur)
+NC7 -= C7
+_p = os.path.join(HERE, 'out', 'def_w7_r16.out')
+if os.path.exists(_p):
+    for line in open(_p):
+        f = line.split()
+        if f and f[0].startswith('c7_') and ('D=true' in line or 'D=false' in line):
+            w = tuple(map(int, f[0][3:])); T7.add(w)
+            if 'D=true' in line: D7.add(w)
+if 'strict7' in ARGS: D7 |= C7
 def bad(deg, w):
     if deg == 5: return isR5(w)
     if deg == 6: return bad6(w)
