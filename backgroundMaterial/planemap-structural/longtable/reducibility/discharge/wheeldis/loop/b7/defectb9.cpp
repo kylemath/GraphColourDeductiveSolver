@@ -1,6 +1,6 @@
 // defectb9.cpp -- EXPLORE round 18 (exploratory): defectc9.cpp with letters 5..9 allowed on rings < K (MAXL = 9: an
 // exact degree-9 vertex; its own wheel has no table, so it never counts as reducible) and defectb7's optional 9th
-// argument LINK:RING2, which fixes the ring-1 word (exact) and the ring-2 letters at the given positions ('.' = free).
+// argument LINK:RING2 (and a 10th, FREEMAX: letters 5..FREEMAX on free slots of rings 2..K-1), which fixes the ring-1 word (exact) and the ring-2 letters at the given positions ('.' = free).
 // Build: g++ -O2 -std=c++17 -o defectb9 defectb9.cpp
 // defectc9.cpp -- G9 probe 2 (exploratory): defectc8 with a centre of degree C0 in 5..12. Letter 9 = degree >= 9
 // (only the centre); tables over {5..9} from defect_tables9.py (base 5). The centre's own wheel for C0 >= 9 has no
@@ -24,6 +24,7 @@ using namespace std;
 static vector<char> TB[9];      // TB[d] = reducible d-wheels (d = 5..8), base-4 index
 static vector<char> feas[9];
 static long npruned = 0;
+static int FREEMAX = 9;   // b9: letters of free (unfixed) slots on rings 2..K-1 are 5..FREEMAX
 static string FIX1, FIX2;   // b7/b9: fixed ring-1 word and ring-2 letters ('.' = free)
 static int C0, K, CMIN, MAXL = 8, NL = 4; static long MAXLEAVES = 1000000000L, leaves = 0, leaves8 = 0, nodes = 0;
 static int MAXRING = 60;
@@ -126,9 +127,10 @@ static void ring_dfs(int k) {
     vector<vector<int>> ch(a);
     for (int j = 0; j < a; j++) {
         int in = (k == 1) ? 1 : (int)r.inb[j].size(); int lo = in + 3;
-        if (k < K) { for (int d = 5; d <= MAXL; d++) if (d >= lo) ch[j].push_back(d); }
+        bool fx = (k == 2 && !FIX2.empty() && FIX2[j] != '.');
+        if (k < K) { for (int d = 5; d <= (fx || k < 2 ? MAXL : FREEMAX); d++) if (d >= lo) ch[j].push_back(d); }
         else if (6 >= lo) ch[j].push_back(6);
-        if (k == 2 && !FIX2.empty() && FIX2[j] != '.') {
+        if (fx) {
             vector<int> f; for (int d : ch[j]) if (d == FIX2[j] - '0') f.push_back(d); ch[j] = f;
         }
     }
@@ -172,10 +174,11 @@ static void ring_dfs(int k) {
     }
 }
 int main(int argc, char** argv) {
-    if (argc < 6) { fprintf(stderr, "usage: defectb9 TABLES9 C0 K CMIN MAXL [MAXLEAVES] [MAXRING] [START] [LINK:RING2]\n"); return 1; }
+    if (argc < 6) { fprintf(stderr, "usage: defectb9 TABLES9 C0 K CMIN MAXL [MAXLEAVES] [MAXRING] [START] [LINK:RING2] [FREEMAX]\n"); return 1; }
     if (argc > 9) { string a = argv[9]; size_t c = a.find(':'); FIX1 = a.substr(0, c); FIX2 = a.substr(c + 1); }
     FILE* f = fopen(argv[1], "r"); C0 = atoi(argv[2]); K = atoi(argv[3]); CMIN = atoi(argv[4]); MAXL = atoi(argv[5]);
     NL = MAXL - 4;
+    FREEMAX = argc > 10 ? atoi(argv[10]) : MAXL;
     if (argc > 6) MAXLEAVES = atol(argv[6]); if (argc > 7) MAXRING = atoi(argv[7]);
     string START = argc > 8 ? argv[8] : "";
     int lens[6] = {5, 6, 7, 7, 8, 8}; int dst[6] = {5, 6, 7, -1, 8, -1};
