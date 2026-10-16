@@ -13,6 +13,14 @@
 - **Kill.** Under 10%.
 - **Guess.** About 30%: the 575 windows with every s = 6 die, and the ones with s = 5 next to the 7 do not.
 
+**Round 13 result (14:00Z): H-E7 dies.** Details in `wheeldis/loop/e7/FINDINGS.md`.
+- 478 tight d = 7 arrangements gave 752 windows. 73 have a simple ring, and 56 have ring <= 15.
+- **dfast: 0 D of 56**, against a guess of 30%.
+- Why: at d = 7, a 5-position window wraps around the 7. Its ring is not simple, and the repair puts u back in at
+  exact degree, which is Job 28's B-fixed family.
+- So the 3/11 family cannot be killed with d-free windows, as the lone fives were. It needs B-fixed configurations at
+  u = 7, run on the whole tight family rather than one certificate pair per round.
+
 ## Round 12 (16 Oct 2026, 13:50-14:10Z): H-AV, pair averaging between adjacent bigs
 
 **Pre-registration.** Long Table's message of 13:47Z: pair rows charge(u) + charge(v) <= 2t take t* below 3/11;
