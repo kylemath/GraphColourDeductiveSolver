@@ -245,4 +245,404 @@ theorem PinchWalk.cycA (P : PinchWalk G r m ρ) : Cyc G m (arcA m ρ) := by
 
 theorem arcA_lt {t : ℕ} (ht : t < m) : arcA m ρ t = ρ t := by simp [arcA, Nat.mod_eq_of_lt ht]
 
+
+theorem arcA_succ_of_lt (P : PinchWalk G r m ρ) {s : ℕ} (hs : s < m) : arcA m ρ (s + 1) = ρ (s + 1) := by
+  rcases Nat.lt_or_ge (s + 1) m with h | h
+  · exact arcA_lt h
+  · have : s + 1 = m := by omega
+    rw [this, P.pin]; simp [arcA]
+
+theorem arcA_pred (P : PinchWalk G r m ρ) {s : ℕ} (hs0 : 0 < s) (hs : s < m) :
+    arcA m ρ (s + m - 1) = ρ (s - 1) := by
+  have hm := P.three
+  simp only [arcA]
+  rw [show s + m - 1 = (s - 1) + m by omega, Nat.add_mod_right, Nat.mod_eq_of_lt (by omega)]
+
+/-- The walk dart at an arc position is a cycle edge of the arc: indicator `1`. -/
+theorem PinchWalk.cycInd_D (P : PinchWalk G r m ρ) {s : ℕ} (hs : s < m) :
+    cycInd G m (arcA m ρ) (edgeOfDart (P.D s)) = 1 := by
+  have h := cycInd_cycle' P.cycA s
+  have e : edgeOfDart (P.D s) = edgeOfDart ⟨(arcA m ρ s, arcA m ρ (s + 1)), P.cycA.adj s⟩ := by
+    apply Subtype.ext
+    change s(ρ s, ρ (s + 1)) = s(arcA m ρ s, arcA m ρ (s + 1))
+    rw [arcA_lt hs, arcA_succ_of_lt P hs]
+  rw [e, h]
+
+/-- **K1.** At an arc vertex `ρ s` (`0 < s < m`), every dart other than the walk dart sees the far potential. -/
+theorem PinchWalk.k1 (P : PinchWalk G r m ρ) {c : G.Face → ZMod 2} (hc : CycPotential G m (arcA m ρ) c)
+    {s : ℕ} (hs0 : 0 < s) (hsm : s < m) (d : G.Dart) (hd : d.fst = ρ s) (hne : d ≠ P.D s) :
+    c (G.faceOf d) = c (G.faceOf (P.D 0)) + 1 := by
+  classical
+  set b := P.D s with hb
+  set a := (P.D (s - 1)).symm with ha
+  have hab : G.rotation.next a = b := by
+    have := P.next_D (s - 1); rw [show s - 1 + 1 = s by omega] at this; exact this
+  have hafst : a.fst = ρ s := by
+    change ρ (s - 1 + 1) = ρ s; rw [show s - 1 + 1 = s by omega]
+  have hasnd : a.snd = ρ (s - 1) := rfl
+  obtain ⟨k, hk, hmin⟩ := first_arrival b d (by rw [hd]; rfl)
+  have hk1 : 1 ≤ k := by
+    rcases Nat.eq_zero_or_pos k with h | h
+    · subst h; exact absurd hk.symm hne
+    · exact h
+  -- no intermediate dart is `a` or `b`
+  have hmid : ∀ j, 1 ≤ j → j < k →
+      cycInd G m (arcA m ρ) (edgeOfDart ((⇑G.rotation.next)^[j] b)) = 0 := by
+    intro j hj1 hjk
+    set x := (⇑G.rotation.next)^[j] b with hx
+    have hxb : x ≠ b := by
+      intro e
+      apply hmin (k - j) (by omega)
+      have h' : (⇑G.rotation.next)^[k] b = (⇑G.rotation.next)^[k - j] ((⇑G.rotation.next)^[j] b) := by
+        rw [← Function.iterate_add_apply, Nat.sub_add_cancel (by omega)]
+      rw [← hx, e] at h'
+      exact h'.symm.trans hk
+    have hxa : x ≠ a := by
+      intro e
+      apply hmin (k - (j + 1)) (by omega)
+      have h' : (⇑G.rotation.next)^[k] b =
+          (⇑G.rotation.next)^[k - (j + 1)] ((⇑G.rotation.next)^[j + 1] b) := by
+        rw [← Function.iterate_add_apply, Nat.sub_add_cancel (by omega)]
+      rw [Function.iterate_succ_apply', ← hx, e, hab] at h'
+      exact h'.symm.trans hk
+    have hxfst : x.fst = arcA m ρ s := by
+      rw [arcA_lt hsm, hx, iterate_next_fst]; rfl
+    apply cycInd_dart_off P.cycA x hxfst
+    · rw [arcA_succ_of_lt P hsm]
+      intro e; apply hxb; apply Dart.ext; apply Prod.ext
+      · rw [hxfst, arcA_lt hsm]; rfl
+      · exact e
+    · rw [arcA_pred P hs0 hsm]
+      intro e; apply hxa; apply Dart.ext; apply Prod.ext
+      · rw [hxfst, arcA_lt hsm, hafst]
+      · rw [e, hasnd]
+  have h1 : c (G.faceOf (G.rotation.next b)) = c (G.faceOf (P.D 0)) + 1 := by
+    rw [next_jump hc, P.cycInd_D hsm, hb, P.face_D]
+  have := iterate_const hc (G.rotation.next b) (k - 1) (fun j hj => by
+    rw [← Function.iterate_succ_apply]; exact hmid (j + 1) (by omega) (by omega))
+  rw [← Function.iterate_succ_apply, show (k - 1).succ = k by omega, hk, h1] at this
+  exact this
+
+
+section sides
+variable (P : PinchWalk G r m ρ) {c : G.Face → ZMod 2} (hc : CycPotential G m (arcA m ρ) c)
+
+/-- Side A: the arc cycle and its far side. -/
+def PinchWalk.SA (c : G.Face → ZMod 2) : Fin n → Prop :=
+  fun x => OnCyc m (arcA m ρ) x ∨ OnSide G c (c (G.faceOf (P.D 0)) + 1) x
+
+/-- Side B: everything else, and `u`. -/
+def PinchWalk.SB (c : G.Face → ZMod 2) : Fin n → Prop := fun x => ¬ P.SA c x ∨ x = ρ 0
+
+omit P in
+theorem onCyc_arcA_iff {x : Fin n} : OnCyc m (arcA m ρ) x ↔ ∃ t, t < m ∧ ρ t = x := by
+  constructor
+  · rintro ⟨t, ht, e⟩; exact ⟨t, ht, by rw [← e, arcA_lt ht]⟩
+  · rintro ⟨t, ht, e⟩; exact ⟨t, ht, by rw [arcA_lt ht, e]⟩
+
+theorem PinchWalk.sa_ring {t : ℕ} (ht : t < m) : P.SA c (ρ t) := Or.inl (onCyc_arcA_iff.2 ⟨t, ht, rfl⟩)
+
+theorem onSide_excl {b : ZMod 2} {x : Fin n} (h : OnSide G c b x) (d : G.Dart) (hd : d.fst = x)
+    (hne : c (G.faceOf d) ≠ b) : False := hne (h d hd)
+
+include P hc in
+/-- Across an edge leaving the cycle, the two faces have equal potential. -/
+theorem faces_eq_off {x y : Fin n} (hy : ¬ OnCyc m (arcA m ρ) y) (e : G.Adj x y) :
+    c (G.faceOf (⟨(x, y), e⟩ : G.Dart).symm) = c (G.faceOf ⟨(x, y), e⟩) := by
+  have h0 := cycInd_off' P.cycA (⟨(x, y), e⟩ : G.Dart).symm hy
+  have h1 := hc (⟨(x, y), e⟩ : G.Dart).symm
+  rw [h0, Dart.symm_symm] at h1
+  exact (show ∀ a b : ZMod 2, 0 = a + b → a = b by decide) _ _ h1
+
+include hc in
+/-- **K2.** Neighbours of an arc vertex `ρ s` (`0 < s < m`) lie on side A. -/
+theorem PinchWalk.k2 {s : ℕ} (hs0 : 0 < s) (hsm : s < m) {y : Fin n} (e : G.Adj (ρ s) y) : P.SA c y := by
+  by_cases hy : OnCyc m (arcA m ρ) y
+  · exact Or.inl hy
+  · right
+    let d : G.Dart := ⟨(ρ s, y), e⟩
+    have hne : d ≠ P.D s := by
+      intro h; apply hy
+      have : y = ρ (s + 1) := congrArg (fun z : G.Dart => z.snd) h
+      rw [this, ← arcA_succ_of_lt P hsm]; exact P.cycA.onCyc _
+    have hk := P.k1 hc hs0 hsm d rfl hne
+    have := onSide_of_dartC' P.cycA hc hy d.symm rfl
+    rwa [faces_eq_off P hc hy e, hk] at this
+
+include hc in
+/-- Off the cycle, side A propagates along edges. -/
+theorem PinchWalk.sa_off_edge {x y : Fin n} (hx : ¬ OnCyc m (arcA m ρ) x) (hxs : P.SA c x) (e : G.Adj x y) :
+    P.SA c y := by
+  rcases hxs with h | h
+  · exact absurd h hx
+  · by_cases hy : OnCyc m (arcA m ρ) y
+    · exact Or.inl hy
+    · right
+      have := onSide_of_dartC' P.cycA hc hy (⟨(x, y), e⟩ : G.Dart).symm rfl
+      rwa [faces_eq_off P hc hy e, h ⟨(x, y), e⟩ rfl] at this
+
+include hc in
+theorem PinchWalk.sa_edge {x y : Fin n} (hxs : P.SA c x) (hxu : x ≠ ρ 0) (e : G.Adj x y) : P.SA c y := by
+  by_cases hx : OnCyc m (arcA m ρ) x
+  · obtain ⟨t, ht, rfl⟩ := onCyc_arcA_iff.1 hx
+    rcases Nat.eq_zero_or_pos t with h0 | h0
+    · subst h0; exact absurd rfl hxu
+    · exact P.k2 hc h0 ht e
+  · exact P.sa_off_edge hc hx hxs e
+
+include hc in
+/-- **K3.** The B-arc vertices are on the near side, so not on side A. -/
+theorem PinchWalk.not_sa_B {t : ℕ} (hmt : m < t) (htr : t < r) : ¬ P.SA c (ρ t) := by
+  rintro (h | h)
+  · obtain ⟨s, hs, e⟩ := onCyc_arcA_iff.1 h
+    rcases P.inj s t (by have := P.threeB; omega) htr e with h | ⟨-, h⟩ | ⟨-, h⟩ <;> omega
+  · apply onSide_excl h (P.D t) rfl
+    rw [P.face_D]
+    generalize c (G.faceOf (P.D 0)) = a; revert a; decide
+
+include hc in
+theorem PinchWalk.hcut (x y : Fin n) (e : G.Adj x y) :
+    (P.SA c x ∧ P.SA c y) ∨ (P.SB c x ∧ P.SB c y) := by
+  by_cases hxu : x = ρ 0
+  · by_cases hy : P.SA c y
+    · exact Or.inl ⟨hxu ▸ P.sa_ring (by have := P.three; omega), hy⟩
+    · exact Or.inr ⟨Or.inr hxu, Or.inl hy⟩
+  · by_cases hx : P.SA c x
+    · exact Or.inl ⟨hx, P.sa_edge hc hx hxu e⟩
+    · by_cases hyu : y = ρ 0
+      · exact Or.inr ⟨Or.inl hx, Or.inr hyu⟩
+      · exact Or.inr ⟨Or.inl hx, Or.inl (fun hy => hx (P.sa_edge hc hy hyu e.symm))⟩
+
+
+end sides
+
+/-- The end of a run is the first `H`-dart along the rotation. -/
+theorem runTo_eq_first {M : SphericalMap n} {H : SimpleGraph (Fin n)} {d e e' : M.Dart}
+    (h : RunTo M H d e) (heH : H.Adj e.fst e.snd) {K : ℕ} (hK : 0 < K) (hKe : (⇑M.rotation.next)^[K] d = e')
+    (hmid : ∀ j, 0 < j → j < K → ¬ H.Adj ((⇑M.rotation.next)^[j] d).fst ((⇑M.rotation.next)^[j] d).snd)
+    (he' : H.Adj e'.fst e'.snd) : e = e' := by
+  obtain ⟨k, hk, hke, hj⟩ := h
+  rcases Nat.lt_trichotomy k K with h1 | h1 | h1
+  · exact absurd (hke ▸ heH) (hmid k hk h1)
+  · subst h1; exact hke.symm.trans hKe
+  · exact absurd (hKe ▸ he') (hj K hK h1)
+
+/-- The dart into `ρ (m-1)` at `u`. -/
+def PinchWalk.bU (P : PinchWalk G r m ρ) : G.Dart := (P.D (m - 1)).symm
+
+theorem PinchWalk.bU_fst (P : PinchWalk G r m ρ) : P.bU.fst = ρ 0 := by
+  have := P.three
+  change ρ (m - 1 + 1) = ρ 0; rw [show m - 1 + 1 = m by omega, P.pin]
+
+theorem PinchWalk.bU_snd (P : PinchWalk G r m ρ) : P.bU.snd = ρ (m - 1) := rfl
+
+theorem PinchWalk.next_bU (P : PinchWalk G r m ρ) : G.rotation.next P.bU = P.D m := by
+  have := P.next_D (m - 1); rw [show m - 1 + 1 = m by have := P.three; omega] at this; exact this
+
+theorem PinchWalk.ne_zero_ring (P : PinchWalk G r m ρ) {t : ℕ} (ht0 : 0 < t) (htr : t < r) (htm : t ≠ m) :
+    ρ t ≠ ρ 0 := by
+  intro e
+  rcases P.inj t 0 htr (by omega) e with h | ⟨h, -⟩ | ⟨h, -⟩ <;> omega
+
+/-- Darts at `u` other than the two arc darts carry indicator `0`. -/
+theorem PinchWalk.cycInd_u_off (P : PinchWalk G r m ρ) (x : G.Dart) (hx : x.fst = ρ 0)
+    (ha : x ≠ P.D 0) (hb : x ≠ P.bU) : cycInd G m (arcA m ρ) (edgeOfDart x) = 0 := by
+  have hm := P.three
+  apply cycInd_dart_off P.cycA x (s := 0) (by rw [hx, arcA_lt (by omega)])
+  · rw [arcA_lt (show 0 + 1 < m by omega)]
+    intro e; apply ha; apply Dart.ext; apply Prod.ext
+    · exact hx
+    · exact e
+  · rw [show 0 + m - 1 = m - 1 by omega, arcA_lt (show m - 1 < m by omega)]
+    intro e; apply hb; apply Dart.ext; apply Prod.ext
+    · rw [hx, P.bU_fst]
+    · rw [e, P.bU_snd]
+
+/-- Iterates avoiding a target: the general minimality step. -/
+theorem iter_ne_start {M : SphericalMap n} {d e : M.Dart} {k : ℕ}
+    (hk : (⇑M.rotation.next)^[k] d = e) (hmin : ∀ j, j < k → (⇑M.rotation.next)^[j] d ≠ e)
+    {i : ℕ} (hi1 : 1 ≤ i) (hik : i < k) : (⇑M.rotation.next)^[i] d ≠ d := by
+  intro h
+  apply hmin (k - i) (by omega)
+  have h' : (⇑M.rotation.next)^[k] d = (⇑M.rotation.next)^[k - i] ((⇑M.rotation.next)^[i] d) := by
+    rw [← Function.iterate_add_apply, Nat.sub_add_cancel (by omega)]
+  rw [h] at h'; exact h'.symm.trans hk
+
+section k4
+variable (P : PinchWalk G r m ρ) {c : G.Face → ZMod 2} (hc : CycPotential G m (arcA m ρ) c)
+include hc
+
+/-- From `bU`, the rotation sees the near potential up to its first arrival at `D 0`. -/
+theorem PinchWalk.walk_from_bU {ka : ℕ} (hka : (⇑G.rotation.next)^[ka] P.bU = P.D 0)
+    (hmin : ∀ j, j < ka → (⇑G.rotation.next)^[j] P.bU ≠ P.D 0) :
+    ∀ j, 1 ≤ j → j ≤ ka → c (G.faceOf ((⇑G.rotation.next)^[j] P.bU)) = c (G.faceOf (P.D 0)) := by
+  intro j hj1 hjk
+  have h1 : c (G.faceOf (G.rotation.next P.bU)) = c (G.faceOf (P.D 0)) := by rw [P.next_bU, P.face_D]
+  have := iterate_const hc (G.rotation.next P.bU) (j - 1) (fun i hi => by
+    rw [← Function.iterate_succ_apply]
+    apply P.cycInd_u_off
+    · rw [iterate_next_fst, P.bU_fst]
+    · exact hmin (i + 1) (by omega)
+    · exact iter_ne_start hka hmin (by omega) (by omega))
+  rw [← Function.iterate_succ_apply, show (j - 1).succ = j by omega, h1] at this
+  exact this
+
+/-- From `D 0`, the rotation sees the far potential up to its first arrival at `bU`. -/
+theorem PinchWalk.walk_from_a {kb : ℕ} (hkb : (⇑G.rotation.next)^[kb] (P.D 0) = P.bU)
+    (hmin : ∀ j, j < kb → (⇑G.rotation.next)^[j] (P.D 0) ≠ P.bU) :
+    ∀ j, 1 ≤ j → j ≤ kb → c (G.faceOf ((⇑G.rotation.next)^[j] (P.D 0))) = c (G.faceOf (P.D 0)) + 1 := by
+  intro j hj1 hjk
+  have hm := P.three
+  have h1 : c (G.faceOf (G.rotation.next (P.D 0))) = c (G.faceOf (P.D 0)) + 1 := by
+    rw [next_jump hc, P.cycInd_D (by omega)]
+  have := iterate_const hc (G.rotation.next (P.D 0)) (j - 1) (fun i hi => by
+    rw [← Function.iterate_succ_apply]
+    apply P.cycInd_u_off
+    · rw [iterate_next_fst]; rfl
+    · exact iter_ne_start hkb hmin (by omega) (by omega)
+    · exact hmin (i + 1) (by omega))
+  rw [← Function.iterate_succ_apply, show (j - 1).succ = j by omega, h1] at this
+  exact this
+
+
+/-- A dart at `u` whose reverse sees the near potential, other than `bU`, does not reach side A. -/
+theorem PinchWalk.notSA_of_near (x : G.Dart) (hx : x.fst = ρ 0) (hxb : x ≠ P.bU)
+    (h1 : c (G.faceOf x.symm) = c (G.faceOf (P.D 0))) : ¬ P.SA c x.snd := by
+  have hm := P.three; have hr := P.threeB
+  rintro (hcyc | hside)
+  · obtain ⟨t, ht, e⟩ := onCyc_arcA_iff.1 hcyc
+    rcases Nat.eq_zero_or_pos t with h0 | h0
+    · subst h0; exact x.adj.ne (hx.trans e)
+    · by_cases hxs : x.symm = P.D t
+      · apply hxb
+        have hf : x.fst = ρ (t + 1) := congrArg (fun z : G.Dart => z.snd) hxs
+        have htm : t + 1 = m := by
+          by_contra hne; exact P.ne_zero_ring (by omega) (by omega) hne (hf.symm.trans hx)
+        apply Dart.ext; apply Prod.ext
+        · rw [hx, P.bU_fst]
+        · rw [P.bU_snd, ← e, show t = m - 1 by omega]
+      · have := P.k1 hc h0 ht x.symm (show x.symm.fst = ρ t from e.symm) hxs
+        rw [this] at h1
+        generalize c (G.faceOf (P.D 0)) = a at h1; revert a h1; decide
+  · apply onSide_excl hside x.symm rfl
+    rw [h1]; generalize c (G.faceOf (P.D 0)) = a; revert a; decide
+
+/-- A dart whose reverse sees the far potential reaches side A. -/
+theorem PinchWalk.sa_of_far (x : G.Dart) (h1 : c (G.faceOf x.symm) = c (G.faceOf (P.D 0)) + 1) :
+    P.SA c x.snd := by
+  by_cases hy : OnCyc m (arcA m ρ) x.snd
+  · exact Or.inl hy
+  · right; have := onSide_of_dartC' P.cycA hc hy x.symm rfl; rwa [h1] at this
+
+end k4
+
+/-- The side graphs. -/
+def sideG (G : SphericalMap n) (S : Fin n → Prop) : SimpleGraph (Fin n) where
+  Adj x y := G.Adj x y ∧ S x ∧ S y
+  symm := ⟨fun _ _ h => ⟨h.1.symm, h.2.2, h.2.1⟩⟩
+  loopless := ⟨fun _ h => h.1.ne rfl⟩
+
+theorem sideG_le (G : SphericalMap n) (S : Fin n → Prop) : sideG G S ≤ G.graph := fun _ _ h => h.1
+
+theorem arcA_mod (t : ℕ) : arcA m ρ t = ρ (t % m) := rfl
+
+section ringA
+variable (P : PinchWalk G r m ρ) {c : G.Face → ZMod 2} (hc : CycPotential G m (arcA m ρ) c)
+  {N : SphericalMap n} (hN : N.graph = sideG G (P.SA c)) (hle : N.graph ≤ G.graph)
+  (spec : ∀ d : N.Dart, RunTo G (sideG G (P.SA c)) (liftDart hle d) (liftDart hle (N.rotation.next d)))
+include hc hN spec
+
+/-- **Side A's map has the A-arc as a ring face.** -/
+theorem PinchWalk.ringFaceA : RingFace N m (arcA m ρ) := by
+  classical
+  have hm := P.three; have hr := P.threeB
+  have hNadj : ∀ t, N.Adj (arcA m ρ t) (arcA m ρ (t + 1)) := fun t => by
+    show N.graph.Adj _ _
+    rw [hN]
+    exact ⟨P.cycA.adj t, Or.inl (P.cycA.onCyc t), Or.inl (P.cycA.onCyc (t + 1))⟩
+  let DN : ℕ → N.Dart := fun t => ⟨(arcA m ρ t, arcA m ρ (t + 1)), hNadj t⟩
+  have hHA : ∀ x y, (sideG G (P.SA c)).Adj x y ↔ G.Adj x y ∧ P.SA c x ∧ P.SA c y := fun _ _ => Iff.rfl
+  have Dsa : ∀ t, t ≤ m → P.SA c (ρ t) := fun t ht => by
+    rcases Nat.lt_or_ge t m with h | h
+    · exact P.sa_ring h
+    · rw [show t = m by omega, P.pin]; exact P.sa_ring (by omega)
+  refine ⟨by omega, fun t => by simp [arcA], hNadj, fun t => ?_, fun s t hs ht e => P.cycA.inj s t hs ht e⟩
+  change N.rotation.faceNext (DN t) = DN (t + 1)
+  rw [face_next_apply]
+  apply liftDart_injective hle
+  set y := (DN t).symm
+  have hrun := spec y
+  have heH : (sideG G (P.SA c)).Adj (liftDart hle (N.rotation.next y)).fst
+      (liftDart hle (N.rotation.next y)).snd := by
+    exact (show N.graph ≤ sideG G (P.SA c) from hN.le) (N.rotation.next y).adj
+  set s := (t + 1) % m with hs
+  have hsm : s < m := Nat.mod_lt _ (by omega)
+  have ht1 : arcA m ρ (t + 1) = ρ s := rfl
+  by_cases hs0 : s = 0
+  · -- the pinch vertex: the run from `bU` ends at `D 0`
+    have htm : t % m = m - 1 := by
+      have h1 := Nat.mod_lt t (show 0 < m by omega)
+      rcases Nat.lt_or_ge (t % m + 1) m with h | h
+      · exfalso
+        have : s = t % m + 1 := by rw [hs, Nat.add_mod, Nat.mod_eq_of_lt (show 1 < m by omega), Nat.mod_eq_of_lt h]
+        omega
+      · omega
+    have hy : liftDart hle y = P.bU := by
+      apply Dart.ext; apply Prod.ext
+      · change arcA m ρ (t + 1) = _; rw [ht1, hs0, P.bU_fst]
+      · change arcA m ρ t = _; rw [arcA_mod, htm, P.bU_snd]
+    have ht2 : (t + 2) % m = 1 := by
+      rw [show t + 2 = (t + 1) + 1 by omega, Nat.add_mod (t + 1), ← hs, hs0, zero_add,
+        Nat.mod_eq_of_lt (show 1 < m by omega), Nat.mod_eq_of_lt (show 1 < m by omega)]
+    have hD : liftDart hle (DN (t + 1)) = P.D 0 := by
+      apply Dart.ext; apply Prod.ext
+      · change arcA m ρ (t + 1) = ρ 0; rw [ht1, hs0]
+      · change arcA m ρ (t + 1 + 1) = ρ (0 + 1); rw [arcA_mod, show t + 1 + 1 = t + 2 by omega, ht2]
+    rw [hD]
+    rw [hy] at hrun
+    obtain ⟨ka, hka, hmin⟩ := first_arrival P.bU (P.D 0) (by rw [P.bU_fst]; rfl)
+    have hka0 : 0 < ka := by
+      rcases Nat.eq_zero_or_pos ka with h | h
+      · exfalso; subst h
+        have : ρ (m - 1) = ρ 1 := (congrArg (fun z : G.Dart => z.snd) hka : _)
+        rcases P.inj (m - 1) 1 (by omega) (by omega) this with h | ⟨h, -⟩ | ⟨h, -⟩ <;> omega
+      · exact h
+    refine runTo_eq_first hrun heH hka0 hka (fun j hj0 hjk => ?_) ?_
+    · rintro ⟨-, -, hsnd⟩
+      set x := (⇑G.rotation.next)^[j] P.bU
+      have hxf : x.fst = ρ 0 := by rw [iterate_next_fst, P.bU_fst]
+      have hxb : x ≠ P.bU := iter_ne_start hka hmin hj0 hjk
+      have hnear : c (G.faceOf x.symm) = c (G.faceOf (P.D 0)) := by
+        rw [← faceOf_next, show G.rotation.next x = (⇑G.rotation.next)^[j + 1] P.bU from
+          (Function.iterate_succ_apply' _ _ _).symm]
+        exact P.walk_from_bU hc hka hmin (j + 1) (by omega) (by omega)
+      exact P.notSA_of_near hc x hxf hxb hnear hsnd
+    · exact ⟨P.adj 0, P.sa_ring (by omega), P.sa_ring (by omega)⟩
+  · -- an arc vertex: nothing is skipped
+    have htm : t % m + 1 = s := by
+      have h1 := Nat.mod_lt t (show 0 < m by omega)
+      rcases Nat.lt_or_ge (t % m + 1) m with h | h
+      · rw [hs, Nat.add_mod, Nat.mod_eq_of_lt (show 1 < m by omega), Nat.mod_eq_of_lt h]
+      · exfalso; apply hs0
+        rw [hs, Nat.add_mod, show t % m = m - 1 by omega, Nat.mod_eq_of_lt (show 1 < m by omega),
+          show m - 1 + 1 = m by omega, Nat.mod_self]
+    have hy : liftDart hle y = (P.D (s - 1)).symm := by
+      apply Dart.ext; apply Prod.ext
+      · change arcA m ρ (t + 1) = ρ (s - 1 + 1); rw [ht1, show s - 1 + 1 = s by omega]
+      · change arcA m ρ t = ρ (s - 1); rw [arcA_mod, show s - 1 = t % m by omega]
+    have hnx : G.rotation.next (liftDart hle y) = P.D s := by
+      rw [hy]; have := P.next_D (s - 1); rwa [show s - 1 + 1 = s by omega] at this
+    have hD : liftDart hle (DN (t + 1)) = P.D s := by
+      apply Dart.ext; apply Prod.ext
+      · change arcA m ρ (t + 1) = ρ s; exact ht1
+      · change arcA m ρ (t + 1 + 1) = ρ (s + 1)
+        rw [show t + 1 + 1 = (t + 1) + 1 by rfl, arcA_mod, Nat.add_mod (t + 1), ← hs,
+          Nat.mod_eq_of_lt (show 1 < m by omega)]
+        rcases Nat.lt_or_ge (s + 1) m with h | h
+        · rw [Nat.mod_eq_of_lt h]
+        · rw [show s + 1 = m by omega, Nat.mod_self, P.pin]
+    rw [hD, runTo_first hrun (by rw [hnx]; exact ⟨P.adj s, Dsa s (by omega), Dsa (s + 1) (by omega)⟩), hnx]
+
+end ringA
+
 end SimpleGraph.SphericalMap
