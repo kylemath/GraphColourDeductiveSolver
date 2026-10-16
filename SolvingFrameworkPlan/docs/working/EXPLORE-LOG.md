@@ -1,5 +1,30 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 20 (16 Oct 2026, 15:41Z-): H-L2, do big-big transfers lower t* materially? (coordinator's test)
+
+**Pre-registered 15:41Z, before any build.** Design and bars are Long Table's message of 15:32Z. The edge type, the
+v-side separation and the guess are mine.
+- **LP.** wlp3_j28_12's senders, rooted variables y and pattern set (sep3; 10 d = 10 patterns from Studio's
+  `r_5..r_8.out` are not in this checkout). Rows are whole arrangements (d, link, s). Start set: Studio's 3,181
+  tight rows (d = 7, 8, 9) and the 617-row d = 7 family. Without transfers this set reproduces t* = 13/49 (it holds
+  the dual certificate); that is the baseline check.
+- **Transfers.** A variable x[tau] >= 0 per oriented edge type tau = (deg u, deg v, the two sides of the edge
+  uv, unordered), side = (common neighbour c, the vertex at u and c, the vertex at v and c). Both endpoints see all
+  of it: at u, link k and its sides are L[k-+1], L[k-+2], S[k-1], S[k]; at v the same letters read off v's link.
+  A row with a big link vertex gets -x[u->v] + x[v->u]. Degrees use letters 7, 8, 9 (9 = at least 9).
+- **v side (cutting planes).** For every tau with x > 0, the heaviest arrangement at the receiving end that shows
+  tau (5 link and 2 s letters fixed, the rest free over 5-9, its own transfer terms included) is found by a DP over
+  6-letter states, then checked against R5/R6, RBIG and every pattern (sep3 `c`). Degrees 7, 8 and 9-12 for letter
+  9. Violated allowed arrangements are added; y-only sep3 separation (d = 7-14) adds violated rows elsewhere.
+  Iterate to no violation.
+- **Survives** if t* < 0.22, or if the 49 HARD28-like rows all go slack. **Dies** if t* stays above 0.25 because
+  v's rows bind. Report what binds.
+- **Caveat.** Restricted LP, not a bound: rows outside what the separation reaches (y-only sep3 dedups by 5-path,
+  degrees >= 13) are missing, so it can only overstate the gain. Kill-side results are trustworthy; survive-side
+  results are a go signal for Studio to build L2 properly.
+- **Guess.** t* falls, but not below 0.22: about 0.24. The slack big neighbours of round 19 absorb some load, but
+  the d = 8 and d = 9 rows are tight too, so their v-rows start binding quickly. Most HARD28 rows go slack.
+
 ## Round 19 (16 Oct 2026, 15:25Z-): H-B0, can a joint (u, v) LP beat the single-receiver bound? (coordinator's test)
 
 **Pre-registered 15:25Z, before any build.** Test design is Long Table's message of 15:22Z. The precise kill reading and
