@@ -6,9 +6,8 @@ inside the 6-sea.
 ## Answer
 
 At K <= 3, no defect that contains an 8 survives. Every leaf with an 8 dies to a receiver-centred configuration (B
-free) with a tested D verdict, and a few also die to C. Two gaps remain:
-- The centre-8 K = 3 search is partial: 2,951 of 4,380 admissible ring-1 words.
-- K = 4 was not run.
+free) with a tested D verdict, and a few also die to C. The centre-8 K = 3 search is complete (all 4,380 admissible
+ring-1 words). K = 4 was not run.
 
 ## Tools (this folder)
 
@@ -41,9 +40,8 @@ cfast C-candidate 7-wheels as bad. (Inferred from the README, not rerun.)
 | 3 | 5 | 16 | 11 | complete, 10 s |
 | 3 | 6 | 44 | 22 | complete, 81 s |
 | 3 | 7 | 261 | 221 | complete, 551 s |
-| 3 | 8 | 376 | 376 | partial, about 630 s; stopped in ring-1 word 56878867 |
+| 3 | 8 | 376 | 376 | complete: 630 s up to ring-1 word 56878867, then the other 1,429 words gave 0 leaves (16 Oct, ~55 min) |
 
-Of the 1,429 centre-8 ring-1 words left, all but 6 have at most three fives.
 
 ## Checks (defect_check2_8, bf)
 
@@ -71,7 +69,6 @@ Of the 1,429 centre-8 ring-1 words left, all but 6 have at most three fives.
 
 ## Next
 
-- Resume centre 8 at K = 3 from word 56878867.
 - K = 4 at centres 5-7, capped and sampled the way defectr2 does it at K = 5.
 - Commit `defect_check2_8`'s degree-8 receivers into defect_check2 if G9 grows.
 
