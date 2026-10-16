@@ -25,6 +25,14 @@ v-side separation and the guess are mine.
 - **Guess.** t* falls, but not below 0.22: about 0.24. The slack big neighbours of round 19 absorb some load, but
   the d = 8 and d = 9 rows are tight too, so their v-rows start binding quickly. Most HARD28 rows go slack.
 
+**Round 20 result (16:09Z): H-L2 dies. t* = 7/27 = 0.2593 with transfers (baseline 13/49 reproduced).** Details in
+`wheeldis/loop/l2/FINDINGS.md`.
+- t* stayed 7/27 at iterations 0-6 (up to 86,791 rows, 9,672 transfer columns). Stopped at the hour cap.
+- What binds: five d = 7 u-rows, no d = 8-10 v-row. Three of them fit as their own 7-neighbour, so the edge reads the
+  same from both ends and any 2-ball edge rule moves no net charge across it. The other two trade 2/9 and both bind.
+- 44 of 49 HARD28-like rows go slack. The transfers do relieve them; the bound moves to self-paired d = 7 rows.
+- Guess check: "about 0.24, v-rows bind" was wrong on both counts. The binders are u-rows next to their own copy.
+
 ## Round 19 (16 Oct 2026, 15:25Z-): H-B0, can a joint (u, v) LP beat the single-receiver bound? (coordinator's test)
 
 **Pre-registered 15:25Z, before any build.** Test design is Long Table's message of 15:22Z. The precise kill reading and

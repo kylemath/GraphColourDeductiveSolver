@@ -1,0 +1,90 @@
+# l2.py maxit=1: t* = 0.259259 (13/49 = 0.265306); 7577 rows, 1002 transfer columns, converged=NO (1 iterations, 55s)
+rows by source: {'tight12': 3181, 'fam617': 372, 'sep3': 1488, 'vside': 2536}
+binding rows (positive dual) by source, degree: count / total dual weight
+  fam617 d=7: 2 / 0.1481
+  tight12 d=7: 3 / 0.2222
+tight rows by source, degree: {('fam617', 7): 55, ('sep3', 7): 5, ('sep3', 8): 4, ('sep3', 10): 1, ('tight12', 7): 35, ('tight12', 8): 235, ('tight12', 9): 197, ('vside', 7): 248, ('vside', 8): 190, ('vside', 9): 205, ('vside', 10): 103}
+HARD28-like rows (49): slack at t*
+  5567586 5758756 HARD28: slack 1.7709 dual 0.0000
+  5567586 5758856 HARD28: slack 2.3484 dual 0.0000
+  5568586 5658757 HARD28: slack 3.0748 dual 0.0000
+  5567586 5659857 HARD28: slack 0.5775 dual 0.0000
+  5567596 5758856 HARD28: slack 2.1115 dual 0.0000
+  5568596 5658757 HARD28: slack 0.9386 dual 0.0000
+  5568596 5758856 HARD28: slack 0.2395 dual 0.0000
+  5568586 5658657 HARD28: slack 5.0060 dual 0.0000
+  5567586 5758956 HARD28: slack 1.7709 dual 0.0000
+  5567586 5756856 HARD28: slack 2.5706 dual 0.0000
+  5568586 5658857 HARD28: slack 5.1369 dual 0.0000
+  5568586 5656757 HARD28: slack 2.7449 dual 0.0000
+  5567567 5658856 HARD28: slack 0.0000 dual 0.0000
+  5567567 5658857 HARD28: slack 0.0741 dual 0.0000
+  5567569 5658857 HARD28: slack 0.3639 dual 0.0000
+  5567576 5658859 hardlike: slack 0.0000 dual 0.0000
+  5567586 5757756 hardlike: slack 1.5487 dual 0.0000
+  5568586 5657657 hardlike: slack 2.7449 dual 0.0000
+  5568586 5658659 hardlike: slack 5.0060 dual 0.0000
+  5568586 5659859 hardlike: slack 5.6425 dual 0.0000
+  5568596 5756856 hardlike: slack 1.9634 dual 0.0000
+  5568596 5757756 hardlike: slack 1.9166 dual 0.0000
+  5568596 5758656 hardlike: slack 2.2108 dual 0.0000
+  5568567 5658757 hardlike: slack 2.7907 dual 0.0000
+  5569567 5658857 hardlike: slack 0.2595 dual 0.0000
+  5568568 5658757 hardlike: slack 3.5192 dual 0.0000
+  5568569 5658757 hardlike: slack 3.0805 dual 0.0000
+  5567576 5657857 hardlike: slack -0.0000 dual 0.0000
+  5567576 5657859 hardlike: slack -0.0000 dual 0.0000
+  5567576 5658857 hardlike: slack 0.0000 dual 0.0000
+  5567586 5657857 hardlike: slack 2.4225 dual 0.0000
+  5567586 5657859 hardlike: slack 2.4225 dual 0.0000
+  5567586 5658657 hardlike: slack 1.7709 dual 0.0000
+  5567586 5658659 hardlike: slack 1.7709 dual 0.0000
+  5568567 5658759 hardlike: slack 2.6128 dual 0.0000
+  5568567 5658859 hardlike: slack 2.6128 dual 0.0000
+  5568586 5655857 hardlike: slack 4.4424 dual 0.0000
+  5568586 5657857 hardlike: slack 3.0748 dual 0.0000
+  5568586 5657859 hardlike: slack 3.0748 dual 0.0000
+  5568586 5657957 hardlike: slack 3.5804 dual 0.0000
+  5568586 5657959 hardlike: slack 3.5804 dual 0.0000
+  5568586 5658957 hardlike: slack 5.6425 dual 0.0000
+  5568596 5657857 hardlike: slack 1.2174 dual 0.0000
+  5568596 5657859 hardlike: slack 1.2174 dual 0.0000
+  5657567 6587755 hardlike: slack 3.5926 dual 0.0000
+  5657658 6655688 hardlike: slack 0.8788 dual 0.0000
+  5657658 8655888 hardlike: slack 0.8788 dual 0.0000
+  5558558 8877977 hardlike: slack 1.7138 dual 0.0000
+  5656568 5989858 hardlike: slack 3.0129 dual 0.0000
+HARD28-like rows slack: 44 of 49 in the LP
+transfers x > 0: 499; largest:
+  3.0000  9->7 [569|596]
+  3.0000  9->7 [569|586]
+  3.0000  9->7 [569|576]
+  3.0000  9->7 [567|595]
+  3.0000  9->7 [567|585]
+  3.0000  9->7 [567|575]
+  3.0000  9->7 [556|558]
+  3.0000  9->7 [556|556]
+  3.0000  8->9 [556|556]
+  3.0000  8->9 [555|556]
+  3.0000  8->9 [555|555]
+  3.0000  8->7 [556|556]
+  3.0000  8->7 [555|557]
+  3.0000  7->9 [559|559]
+  3.0000  7->9 [556|556]
+  3.0000  7->8 [599|655]
+  3.0000  7->8 [589|655]
+  3.0000  7->8 [585|656]
+  3.0000  7->8 [575|757]
+  3.0000  7->8 [575|756]
+  3.0000  7->8 [575|755]
+  3.0000  7->8 [575|658]
+  3.0000  7->8 [575|657]
+  3.0000  7->8 [575|656]
+  3.0000  7->8 [555|559]
+binding rows (largest dual first):
+  0.0741  fam617 d=7 link 5765756 s 5556666  y=1.2593 x=+0.0000
+  0.0741  fam617 d=7 link 5576576 s 5657756  y=1.0370 x=+0.2222
+  0.0741  tight12 d=7 link 5567576 s 5756756  y=1.4815 x=-0.2222
+  0.0741  tight12 d=7 link 5756756 s 6565665  y=1.2593 x=+0.0000
+  0.0741  tight12 d=7 link 5756575 s 6555666  y=1.2593 x=+0.0000
+iterations: 0:0.2593
