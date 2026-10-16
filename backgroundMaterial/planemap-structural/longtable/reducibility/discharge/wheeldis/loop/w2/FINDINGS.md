@@ -68,3 +68,10 @@ ring 14-15 are 20-25% (round 14; Studio's round 12), so roughly a third of the s
 pendC and then mostly to hard. After those rounds about two thirds of today's free rows would be HARD28-like. t* fell
 0.029 in 12 rounds (5/17 to 13/49), so the ring <= 16 supply runs out long before t* nears 0. At the 24 Oct gate the
 choice between bigger configurations (ring 17+, or configurations not centred at u) and a new rule class is real.
+
+# Round 15: 8-relaxed windows (16 Oct 2026) [exploratory, dfast only]
+
+565 untested 8-relaxed windows (|S| = 2-3, every 8 free as B, 7s exact) of the 331 free rows with an 8, ring <= 16.
+**23 D (4.1%)**, in `win8.out`. Coverage (`w2.py cover`, `cov3.txt`): 218 of 617 forbidden (was 190), so 28 rows
+(8.5% of the 331). 0 of the 14 free HARD28 rows fall; 46 of the 49 HARD28-like rows stay free. H-W3 (>= 5 HARD28 and
+>= 20%) fails; the kill bar (0 HARD28 and < 5%) is met on HARD28 but not on the share. Leans dead.

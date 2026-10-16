@@ -103,6 +103,12 @@ Details in `wheeldis/loop/av/FINDINGS.md`.
 - **Kill.** 0 of 6.
 - **Guess.** 1 of 6. Exact windows at ring 14 were D 21% of the time in round 14, and these carry 8s.
 
+**Round 17 result (16:45Z): H-W5 dies, 0 D of 6.** The first run was vacuous: `bin/dfast` skips rings > 16, so all
+6 came back SKIP (`win17_dfast16cap.out`). Rerun with `bin/dfast18`, one window at a time: all 6 are not D
+(`loop/w2/win17.out`), at 4-7 minutes and about 25 MB each on one core. No cfast yet. Guess (1 of 6) was close.
+Price of option A (inferred from these 6): a ring-17 B-fixed window costs about 5 core-minutes in dfast, and these
+gave nothing.
+
 ## Round 16 (16 Oct 2026, 14:16Z-): small windows at d = 8 and d = 9
 
 **Pre-registered 14:16Z, before any build of dfast lines.** (I counted the windows by ring; no new verdicts.)
@@ -114,6 +120,11 @@ Details in `wheeldis/loop/av/FINDINGS.md`.
 - **H-W4.** They forbid at least 30% of the 2,954 d = 8/9 tight rows.
 - **Kill.** Under 5%.
 - **Guess.** A lower D rate than at d = 7 (about 15% of windows), and about 25% of the rows.
+
+**Round 16 result (17:19Z): H-W4 survives, strongly.** 687 of 2,201 windows D (31%; guess 15%), in
+`loop/w2/win89.out`. Coverage of Studio's round-12 d = 8/9 tight rows (`loop/w2/cov89.txt`): **1,911 of 2,954
+forbidden (64.7%)**: d = 8 800 of 1,519, d = 9 1,111 of 1,435 (bar 30%; guess 25%). Before this round no d = 8 row
+was forbidden by any registry window. The D windows go to Studio as patterns; the next LP shows what t* does.
 
 ## Round 15 (16 Oct 2026, 14:15Z-): 8-relaxed windows against the rows round 14 left
 
@@ -127,6 +138,12 @@ Details in `wheeldis/loop/av/FINDINGS.md`.
 - **Kill.** 0 HARD28 rows and under 5% of the 331.
 - **Guess.** About 15% of windows D (below round 14's 28%, since 8s move onto the ring). About 4 HARD28 rows, about
   20% of the 331.
+
+**Round 15 result (16:12Z): neither bar met; leans dead.** 23 of 565 windows D (4.1%; guess 15%). Coverage of the
+617-row family (`loop/w2/cov3.txt`) goes from 190 to 218 forbidden: 28 more rows, 8.5% of the 331 with an 8 (live
+bar 20%, kill bar 5%). **0 of the 14 free HARD28 rows** fall (kill side). 46 of the 49 HARD28-like rows stay free.
+Freeing the 8s does not reach the HARD28 rows; with round 20, the binding d = 7 rows are now self-paired ones.
+The 23 D windows (`loop/w2/win8.out`) go to Studio as patterns.
 
 ## Round 14 (16 Oct 2026, 14:05Z-): small B-fixed windows across the d = 7 tight family
 
