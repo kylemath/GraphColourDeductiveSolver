@@ -1,5 +1,18 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 23 (16 Oct 2026, 23:28Z-): H-L2 again, with the explore windows as patterns
+
+**Registered 23:28Z, after a first look (not a clean pre-registration).** Rounds 20 and 22 used only the j28_12
+patterns. Our own windows (`loop/w2/win14.out`, `win8.out`, `win89.out`) already forbid some of their binders, so I
+reran both LPs with them (`l2.py ... pat=...`).
+- **Seen before registering.** No transfers: t* rises from 0.2405 to 7/27 over 40 iterations, not converged
+  (`l2_notx_w40.txt`). With transfers, 3 iterations: **t* = 1/5**, held by one d = 9 row with no 7/8 neighbour
+  (559565656/565566666, the lone-five counting bound); 43 of 46 HARD28-like rows slack (`l2_x_w3.txt`).
+- **Now running.** The transfer LP to convergence (60 iterations or 45 minutes).
+- **Survives** (H-L2, round 20's bar) if the converged t* < 0.22; **dies** if it climbs above 0.25.
+- **Guess.** It climbs, as the baseline did (start set now 1,453 rows, so separation does more work), and settles
+  near 0.22-0.23. Above the lone-five 1/5 either way.
+
 ## Round 22 (16 Oct 2026, 23:00Z-): H-S, do Schnyder-orientation transfers break the 7/27 floor? (k's pick)
 
 **Pre-registered 23:00Z, before any build.** Idea and bars are mine; k chose to run it (decision card, 22:57Z).

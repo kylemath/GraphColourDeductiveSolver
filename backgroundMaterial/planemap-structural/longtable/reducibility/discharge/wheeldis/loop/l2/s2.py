@@ -6,13 +6,13 @@ feasible O is a row.  Variables per oriented edge type kappa = tkey(tail, head, 
 head) and b[kappa] (head sends to tail).  Big link k of u: k in O (u tail): -a[out_k] + b[out_k];
 k not in O (u head): +a[in_k] - b[in_k].  Round 20's symmetric rules are a = x, b[kappa] = x[reverse kappa].
 No separation: rows only raise t*, so a start-set t* that stays at 7/27 is a kill.
-Usage: python3 s2.py [sym]   (sym = round 20's model on the same start set, as a check)"""
+Usage: python3 s2.py [sym] [pat=FILE ...]   (sym = round 20's model on the same start set, as a check)"""
 import sys, os, itertools, collections
 import numpy as np, scipy.sparse as sps
 from scipy.optimize import linprog
-S2D = os.path.dirname(os.path.abspath(__file__)); SYM = 'sym' in sys.argv[1:]
+S2D = os.path.dirname(os.path.abspath(__file__)); SYM = 'sym' in sys.argv[1:]; S2X = [a for a in sys.argv[1:] if a.startswith(('pat=', 'cpat='))]
 src = open(os.path.join(S2D, 'l2.py')).read().replace('os.path.abspath(__file__)', repr(os.path.join(S2D, 'l2.py')), 1)
-sys.argv = ['l2.py']; exec(src[:src.index('# ---- LP')])
+sys.argv = ['l2.py'] + S2X; exec(src[:src.index('# ---- LP')])
 def bigs(d, lk, sv):
     U = min(d, 9); Ui = U - 5; w = [li(c) for c in lk]; s = [li(c) for c in sv]; out = []
     for i in range(d):
@@ -71,5 +71,5 @@ for z, (q, O) in enumerate(RINFO): worst[q] = min(worst.get(q, 9), slack[z])
 nsl = sum(1 for d, ck, lab in HARD if ck_in(ck) ) if False else None
 hs = [(lab, worst.get(RKEY.get((d, ck)), None)) for d, ck, lab in HARD]
 out.append('HARD28-like rows slack (worst orientation): %d of %d slack' % (sum(1 for lab, v in hs if v is not None and v > 1e-7), len(hs)))
-open(os.path.join(S2D, 's2_%s.txt' % ('sym' if SYM else 'orient')), 'w').write('\n'.join(out) + '\n')
+open(os.path.join(S2D, 's2_%s%s.txt' % ('sym' if SYM else 'orient', '_w' if S2X else '')), 'w').write('\n'.join(out) + '\n')
 print('\n'.join(out))

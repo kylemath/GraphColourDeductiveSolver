@@ -1,0 +1,71 @@
+# l2.py notx maxit=8 pat=loop/w2/win14.out pat=loop/w2/win8.out pat=loop/w2/win89.out: t* = 0.245902 (13/49 = 0.265306); 12260 rows, 0 transfer columns, converged=NO (8 iterations, 51s)
+rows by source: {'tight12': 1188, 'fam617': 265, 'sep3': 10807}
+binding rows (positive dual) by source, degree: count / total dual weight
+  fam617 d=7: 2 / 0.0656
+  sep3 d=7: 3 / 0.1148
+  tight12 d=7: 5 / 0.1967
+tight rows by source, degree: {('fam617', 7): 96, ('sep3', 7): 129, ('sep3', 8): 36, ('sep3', 9): 9, ('sep3', 10): 10, ('sep3', 12): 1, ('sep3', 13): 3, ('tight12', 7): 59, ('tight12', 8): 51, ('tight12', 9): 13}
+HARD28-like rows (49): slack at t*
+  5567586 5758756 HARD28: slack 0.0000 dual 0.0000
+  5567586 5758856 HARD28: slack 0.1148 dual 0.0000
+  5568586 5658757 HARD28: slack 0.0000 dual 0.0000
+  5567586 5659857 HARD28: slack 0.0000 dual 0.0000
+  5567596 5758856 HARD28: slack 0.0000 dual 0.0000
+  5568596 5658757 HARD28: slack 0.0000 dual 0.0000
+  5568596 5758856 HARD28: slack 0.1148 dual 0.0000
+  5568586 5658657 HARD28: slack 0.0000 dual 0.0000
+  5567586 5758956 HARD28: slack 0.1148 dual 0.0000
+  5567586 5756856 HARD28: slack 0.1148 dual 0.0000
+  5568586 5658857 HARD28: slack 0.1148 dual 0.0000
+  5568586 5656757 HARD28: slack 0.1148 dual 0.0000
+  5567567 5658856 HARD28: not in the LP (forbidden by the j28_12 patterns)
+  5567567 5658857 HARD28: slack 0.0000 dual 0.0000
+  5567569 5658857 HARD28: slack 0.0000 dual 0.0000
+  5567576 5658859 hardlike: slack 0.1148 dual 0.0000
+  5567586 5757756 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657657 hardlike: slack 0.1148 dual 0.0000
+  5568586 5658659 hardlike: slack 0.0000 dual 0.0000
+  5568586 5659859 hardlike: slack 0.0000 dual 0.0000
+  5568596 5756856 hardlike: slack 0.0000 dual 0.0000
+  5568596 5757756 hardlike: slack 0.1148 dual 0.0000
+  5568596 5758656 hardlike: slack 0.0000 dual 0.0000
+  5568567 5658757 hardlike: slack 0.0000 dual 0.0000
+  5569567 5658857 hardlike: slack 0.3197 dual 0.0000
+  5568568 5658757 hardlike: slack 0.0000 dual 0.0000
+  5568569 5658757 hardlike: slack 0.0000 dual 0.0000
+  5567576 5657857 hardlike: slack 0.0000 dual 0.0000
+  5567576 5657859 hardlike: slack 0.0000 dual 0.0000
+  5567576 5658857 hardlike: slack 0.1148 dual 0.0000
+  5567586 5657857 hardlike: slack 0.1148 dual 0.0000
+  5567586 5657859 hardlike: slack 0.1148 dual 0.0000
+  5567586 5658657 hardlike: slack 0.0000 dual 0.0000
+  5567586 5658659 hardlike: slack 0.0000 dual 0.0000
+  5568567 5658759 hardlike: slack 0.0000 dual 0.0000
+  5568567 5658859 hardlike: slack -0.0000 dual 0.0000
+  5568586 5655857 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657857 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657859 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657957 hardlike: slack 0.1148 dual 0.0000
+  5568586 5657959 hardlike: slack 0.1148 dual 0.0000
+  5568586 5658957 hardlike: slack 0.0000 dual 0.0000
+  5568596 5657857 hardlike: slack 0.1148 dual 0.0000
+  5568596 5657859 hardlike: slack 0.1148 dual 0.0000
+  5657567 6587755 hardlike: slack 0.0000 dual 0.0000
+  5657658 6655688 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5657658 8655888 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5558558 8877977 hardlike: slack 1.1469 dual 0.0000
+  5656568 5989858 hardlike: slack 1.2459 dual 0.0000
+HARD28-like rows slack: 19 of 46 in the LP
+transfers x > 0: 0; largest:
+binding rows (largest dual first):
+  0.0656  sep3 d=7 link 5775756 s 5555755  y=1.2459 x=+0.0000
+  0.0656  tight12 d=7 link 5676575 s 6556775  y=1.2459 x=+0.0000
+  0.0328  fam617 d=7 link 5765575 s 7565776  y=1.2459 x=+0.0000
+  0.0328  sep3 d=7 link 5757655 s 6655775  y=1.2459 x=+0.0000
+  0.0328  tight12 d=7 link 5567576 s 5756656  y=1.2459 x=+0.0000
+  0.0328  tight12 d=7 link 5765575 s 6565777  y=1.2459 x=+0.0000
+  0.0328  tight12 d=7 link 5675675 s 6557566  y=1.2459 x=+0.0000
+  0.0328  fam617 d=7 link 5675765 s 6557576  y=1.2459 x=+0.0000
+  0.0328  tight12 d=7 link 5757656 s 5565756  y=1.2459 x=+0.0000
+  0.0164  sep3 d=7 link 5756575 s 6666665  y=1.2459 x=+0.0000
+iterations: 0:0.2405 1:0.2405 2:0.2405 3:0.2405 4:0.2405 5:0.2405 6:0.2405 7:0.2405
