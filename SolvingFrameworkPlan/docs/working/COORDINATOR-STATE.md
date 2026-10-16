@@ -15,6 +15,13 @@ Background and history: `CoordinatorPlan.md` (13 Oct revision and later sections
 - **Rules kept:** falsification-first (hypothesis + kill criterion written before a run); no claim counts without a second
   engine or Lean; errata the same day; commit by explicit path; check `pmset -g batt` before heavy local runs.
 
+## Working pace (Kyle, 16 Oct 2026, "pace" thread)
+
+Kyle: the team waits on day-long searches instead of exploring the space between loose connections. So:
+- **Nothing waits on a long job.** Complete enumerations, rings ≥ 16, Lean and Studio jobs run in the background; decisions come from short probes and are revised when the long result lands.
+- **Short rounds** (~30 min wall, ≤ 3 cores): pick a gap, write 3 lines (question, guess, what would change the plan), probe with samples and "assume X reducible, see what's left" before proving X, log a paragraph, next round. Full pre-registration is still required before anything becomes a board claim.
+- Protocol and gap register: `EXPLORE-LOOP.md`; log: `EXPLORE-LOG.md`; scripts: `wheeldis/loop/`. Rounds run in the "Faster proof exploration loop" thread (session_017U7rjh5PgHwGyFf8diQ8nw), which does not edit this file or the dashboard; the coordinator folds its findings in.
+
 ## Kyle's status page
 
 Coordinator since 14 Oct 14:30 MDT: the cloud project thread (session_01AygaN3CzSnZpnynG8Tqb36, Claude project "Graph Colouring"). Mac check-ins keep running and follow this file; send Studio/agent results there with SendMessage too. Since 14 Oct 17:17 MDT Studio jobs go to the Studio takeover thread (session_01ARxSDJ4DJM9RbLqmcHYX65), which drives a Remote Control session on the Mac Studio (/Users/kylemathewson/GraphColourDeductiveSolver); the old Studio session (…MjMzjJ…) is near its context limit.
@@ -73,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 2026-10-16 05:45 — Adopted Kyle's new pace (short exploration rounds; long jobs never block decisions). Explore thread round 1 (engine, exploratory): assuming '7 with ≥ 3 fives' reducible, every K ≤ 3 defect is killed by the tested R_opt registry; per instance 42/42 7s with 4–5 fives and 49/58 with 3 fives have a D B-fixed configuration at ring ≤ 15. So H7b may reduce to one lemma about 7s with many fives; next rounds probe that. Job 28 continues in the background as confirmation.
 - 2026-10-16 — K=2 plan for the 24 Oct gate chosen: defect-driven loop with B-fixed receiver-centred configurations (H7b survived every defect found; ~15 CPU-min per defect) plus a forbidden-pattern LP. Richer 2-ball rules dropped (H7 killed by D3). Blanket fallbacks rejected on cost. Given to Studio as Job 28 (long searches; the cloud container restarted twice). Kill: by 20 Nov, if the LP still yields new defects without slowing, or defects need ring ≥ 17 configurations, Track 1 narrows to the publishable result (K≤1 + '2-balls fail at 7s').
 - 2026-10-16 — H7 killed by test G (48885724, wheeldis §7.1–7.2): an isolated positive defect (11 fives, 10 sevens, charge +1 in a 6-sea) avoids R_opt, so no local rule of any class closes d = 7 with that R (t* ≥ 1/21). B-fixed receiver-centred configurations (rings 12–15) remove it; §7.3 (H7b) tests whether they remove every small defect. Cloud agent resumed after a container restart.
 - 2026-10-15 15:30 — H6 killed by the upper-bound LP: receiver-centred 2-balls cannot close d = 7..15 under link-word rules. Stopped Job 27 (a) (can't change the outcome); (b)/(c) low priority; cores to studio14d/14c. Started a cloud agent on bound tests for richer rule classes plus a 3-ball sizing, so the 24 Oct K=2 plan is a costed choice. 'Appears' for 7..15 centres also unproved (noted).
