@@ -33,6 +33,7 @@ sys.argv = ['w2.py', 'cover']; exec(src[:src.index("\nif mode in ('build', 'buil
 PATS = [(nm, P) for nm, (d, P) in G['PATS'].items() if d == 7]
 print('patterns d=7: %d; RBIG 7-wheels %d (%.0fs)' % (len(PATS), len(RBIG7), time.time() - T0), flush=True)
 DIG = '56789'
+MISSF = []   # (view, filling array of the misses), for ap8.py
 def run_view(L, S):
     d = 7; fixed = list(L) + list(S); free = [j for j, c in enumerate(fixed) if c == '?']
     N = 5 ** len(free); F = np.zeros((N, 14), dtype=np.int8)
@@ -77,6 +78,7 @@ def run_view(L, S):
                 if new.any(): hitnames[nm] += int(new.sum()); killed |= h
                 why['window'] += int(new.sum())
     miss = ~killed
+    MISSF.append(((L, S), F[miss]))
     has8 = (F == 3).any(axis=1)
     ex = [(''.join(str(x + 5) for x in F[n, :7]), ''.join(str(x + 5) for x in F[n, 7:])) for n in np.nonzero(miss)[0][:3]]
     return N, int(miss.sum()), int((miss & has8).sum()), dict(why), nalign, hitnames.most_common(3), ex

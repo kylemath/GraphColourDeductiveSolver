@@ -32,11 +32,12 @@ All commits are on branch `claude/project-thread-nh6pv2`.
 | 13 | H-E7: receiver-free windows with big link vertices | dies [E]: 0 D of 56 at ring <= 15 (d = 7 windows wrap) | 6495cd55 |
 | 14 | H-W2: small B-fixed windows forbid >= 30% of the d = 7 family | survives, just [E]: 178 D of 636; 190 of 617 rows (30.8%) | d4d6de61 |
 | 15 | H-W3: 8-relaxed windows reach HARD28 | neither bar, leans dead [E]: 23 D of 565; +28 rows; 0 HARD28 | 18892b89 |
-| 16 | H-W4: small windows forbid >= 30% of d = 8/9 tight rows | survives [E]: 687 D of 2,201; 1,911 of 2,954 rows (64.7%) | see log |
-| 17 | H-W5: ring-17 windows for HARD28 | dies [E]: 0 D of 6 (dfast18; no cfast yet) | see log |
+| 16 | H-W4: small windows forbid >= 30% of d = 8/9 tight rows | survives [E]: 687 D of 2,201; 1,911 of 2,954 rows (64.7%) | e58548a5 |
+| 17 | H-W5: ring-17 windows for HARD28 | dies [E]: 0 D of 6 (dfast18; no cfast yet) | 27574906 |
 | 18 | H-LF: HARD28 rows are receiver-centring artefacts | leads, caveats [E]: 0 leaves at K = 3; 1,521 K = 4 leaves (capped) all killed, none at u | 39389e23 |
 | 19 | H-B0: joint (u, v) pairs add kills | dies [E]: 0 joint kills in 10 built certificate pairs | f4398168 |
 | 20 | H-L2: big-big transfers lower t* materially | dies [E, restricted LP]: t* = 7/27 = 0.2593 | 59fdb04f |
+| 21 | H-A': HARD28-like rows forbidden through a neighbouring 7 | dies [E, existing verdicts]: 0 of 49 rows; 89% of 487,500 fillings of v's ball unkilled | 4bf15650 |
 
 ## 3. Supply forecast (after round 14; `loop/w2/FINDINGS.md`, commit cab4d473)
 
@@ -73,8 +74,14 @@ All commits are on branch `claude/project-thread-nh6pv2`.
 
 - **A: targeted ring >= 17 at u.** Cost: see section 4; 15 HARD28 rows, their exact windows at ring 17-21. Round 18
   says these rows die at neighbouring 7s, so ring-17+ windows at u may not be the cheapest kill. [I]
-- **A': configurations centred at u's neighbouring 7s** (round 18's kill sites) as patterns for d = 7 rows. Same
-  engines; needs a non-receiver-centred pattern form in the LP. Not costed. [I]
+- **A': forbid u's row through a neighbouring big v** (round 18's kill sites). Priced by round 21 [E, existing
+  verdicts]: over v's 2-ball filled 5-9, 0 of 49 HARD28-like rows close at a link 7; 89% of fillings escape every
+  v-centred D/C window and wheel, and 94% of those carry an 8. Of the misses with a link 8, only 0.1% (288 of
+  308,600) die to a d = 8 D/C window centred at that 8 (264 to round 16's): the 8's own ball is mostly outside
+  v's. So "neighbour 7 or 8" does not rescue it. What remains of A' needs kills deeper out (round 18 found them
+  in complete 6-sea patches), i.e. a defect-style search per row, not a pattern. [I]
 - **C: narrow.** Stop at the current t* and state K = 2 as open with the evidence above. Costs nothing more; it leaves
   the gap between 13/49 (or 7/27 with transfers) and 0.
-- **Ruled out today:** cap on bigs (unsound), pair rows, 5 -> 6 -> big rules, 2-ball edge transfers below 7/27.
+- **Ruled out today:** cap on bigs (unsound), pair rows, 5 -> 6 -> big rules, 2-ball edge transfers below 7/27,
+  forbidding a row through one neighbour's 2-ball (existing verdicts).
+- **Still live:** round 16's d = 8/9 windows (1,911 rows forbidden) feed Studio's next LP; its t* is pending.
