@@ -15,7 +15,9 @@ for n in range(START, START + 60):
            ['cpat=' + rel(f) for f in sorted(glob.glob(os.path.join(J, 'r_*.cfast')))] + \
            ['pat=' + rel(f) for f in sorted(glob.glob(os.path.join(HERE, 'loop', '**', '*.out'), recursive=True))] + \
            ['cpat=' + rel(f) for f in sorted(glob.glob(os.path.join(HERE, 'loop', '**', '*.cfast'), recursive=True))] + \
-           ['pat=' + rel(f) for f in sorted(glob.glob(os.path.join(HERE, 'loop', 'lone', 'u*.pat')))]   # lone-five killers (patterns only)
+           ['pat=loop/lone/%s.pat' % u for u in ('u1', 'u2', 'u3', 'u5', 'u7', 'u10')
+            if os.path.exists(os.path.join(HERE, 'loop', 'lone', u + '.pat'))]   # lone-five killers (patterns only; explicit
+           # allowlist: loop/lone/hr1_or1.pat holds ORACLE stand-ins, never a pattern)
     allr = os.path.join(J, 'all_%d.txt' % n); warm = sorted(glob.glob(os.path.join(J, 'all_*.txt')))
     cmd = [sys.executable, os.path.join(HERE, 'wlp3.py'), 'tag=j28_%d' % n, 'allrows=' + allr] + pats
     if warm: cmd.append('warm=' + warm[-1])
