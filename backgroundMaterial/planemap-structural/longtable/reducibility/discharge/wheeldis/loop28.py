@@ -25,7 +25,7 @@ def par(binary, args, inp, out):
         chunk = lines[k::PROCS]
         if not chunk: continue
         fn = '%s.p%d' % (inp, k); open(fn, 'w').write(''.join(chunk)); parts.append(fn)
-    ps = [subprocess.Popen(['nice', '-n', '15', binary, fn] + args, stdout=open(fn + '.o', 'w'), stderr=subprocess.STDOUT)
+    ps = [subprocess.Popen(['nice', '-n', '19', binary, fn] + args, stdout=open(fn + '.o', 'w'), stderr=subprocess.STDOUT)
           for fn in parts]
     for p in ps: p.wait()
     with open(out, 'w') as o:
@@ -37,7 +37,7 @@ for n in range(START, START + MAXR):
     warm = os.path.join(J, 'all_%d.txt' % (n - 1))
     cmd = [sys.executable, os.path.join(HERE, 'wlp3.py'), 'tag=j28_%d' % n, 'tight=' + tight, 'allrows=' + allr] + pats
     if os.path.exists(warm): cmd.append('warm=' + warm)
-    lp = subprocess.run(['nice', '-n', '15'] + cmd, capture_output=True, text=True, cwd=HERE).stdout
+    lp = subprocess.run(['nice', '-n', '19'] + cmd, capture_output=True, text=True, cwd=HERE).stdout
     m = re.search(r't\* = (-?[\d.]+)', lp); t = float(m.group(1)) if m else None
     pm = re.search(r"patterns (\{.*?\});", lp)
     if t is None: log('round %d: LP failed\n%s' % (n, lp[-2000:])); break
