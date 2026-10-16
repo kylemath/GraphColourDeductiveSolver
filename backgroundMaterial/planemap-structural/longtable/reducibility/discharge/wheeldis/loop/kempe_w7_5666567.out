@@ -1,0 +1,51 @@
+c7_5666567 ring 13 interior 8 edges 47
+interior degrees [7, 5, 6, 6, 6, 5, 6, 7]
+E = 47  3V-3-r = 47
+ring colour classes 66430
+extendable classes 7372 (distinct interior ring-constraint patterns 504)
+maximal partitions per t {1: 1, 2: 2, 3: 5, 4: 14, 5: 42, 6: 132}
+ t=1: 78 (colouring,pairing) x 1 partitions x 1 swaps
+ t=2: 2860 (colouring,pairing) x 2 partitions x 3 swaps
+ t=3: 27456 (colouring,pairing) x 5 partitions x 7 swaps
+ t=4: 82368 (colouring,pairing) x 14 partitions x 15 swaps
+ t=5: 73216 (colouring,pairing) x 42 partitions x 31 swaps
+ t=6: 13312 (colouring,pairing) x 132 partitions x 63 swaps
+precompute done 15.0s
+iter 1 new 3189
+iter 2 new 2369
+iter 3 new 2062
+iter 4 new 2347
+iter 5 new 2719
+iter 6 new 2710
+iter 7 new 2702
+iter 8 new 2439
+iter 9 new 2631
+iter 10 new 3351
+iter 11 new 3312
+iter 12 new 3239
+iter 13 new 3443
+iter 14 new 4249
+iter 15 new 4199
+iter 16 new 1214
+iter 17 new 137
+iter 18 new 6
+iter 19 new 0
+D-closure: good 53690 bad 12740
+D-reducible: False
+brute cross-check: fixpoint violations in 300 samples: 0 ; iter-1 disagreements in 300 samples: 0
+
+X = ['I0-I1', 'I0-I3', 'R2-I3'] size 3
+ identified classes: [['R2', 'I0', 'I1', 'I3']]
+ loops (non-X edge inside a class): []
+ admissible: True | classes extending to contracted config: 2668 | of which bad: 0
+ C-reducible with this X: True
+
+X = ['I0-I1', 'I0-I3', 'R0-I2', 'R2-I3'] size 4
+ identified classes: [['R0', 'I2'], ['R2', 'I0', 'I1', 'I3']]
+ loops (non-X edge inside a class): []
+ admissible: True | classes extending to contracted config: 2668 | of which bad: 0
+ C-reducible with this X: True
+
+contracted-extendable sets of the two X identical: True
+
+total runtime 43.2s
