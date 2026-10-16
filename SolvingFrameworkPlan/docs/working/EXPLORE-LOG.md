@@ -1,5 +1,18 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 15 (16 Oct 2026, 14:15Z-): 8-relaxed windows against the rows round 14 left
+
+**Pre-registered 14:15Z, before any dfast run.** (I counted the untested windows first; no verdicts were looked at.)
+- **Why.** Round 14 left 427 of 617 rows. 331 of them have an 8, and an exact 8 pushes the windows to ring 15-21.
+  One HARD28 row died to a window whose 8s were free (B).
+- **Configurations.** An 8-relaxed window is a round-14 window (|S| = 2-3) with every 8 made a free ring vertex
+  (B = 7/8/9). 7s stay exact. One D forbids the window with 7, 8 or 9 in those places.
+- **Run.** The 565 untested 8-relaxed windows of the 331 rows, at ring <= 16.
+- **H-W3.** They forbid at least 5 of the 14 HARD28 rows still free, and at least 20% of the 331 rows.
+- **Kill.** 0 HARD28 rows and under 5% of the 331.
+- **Guess.** About 15% of windows D (below round 14's 28%, since 8s move onto the ring). About 4 HARD28 rows, about
+  20% of the 331.
+
 ## Round 14 (16 Oct 2026, 14:05Z-): small B-fixed windows across the d = 7 tight family
 
 **Pre-registered 14:05Z, before any build.**
@@ -13,6 +26,16 @@
   30% of the family.
 - **Kill.** Under 5%.
 - **Guess.** About 20%.
+
+**Round 14 result (14:12Z): H-W2 survives, just.** Details in `wheeldis/loop/w2/FINDINGS.md`.
+- 617 distinct d = 7 rows. 636 untested windows at ring <= 14; **dfast: 178 D** (28%).
+- Rows forbidden: 73 before (Studio's round-12 partial verdicts), **190 after (30.8%)**. The bar was 30%, and the
+  guess was 20%.
+- The 7-5-7 family with letters 5-7 is gone: 20 of 21 rows with only shared fives die.
+- What survives has an 8 near S. Exact 8s put the windows at ring 15-21.
+- The 4 receivers of 13/49 were already forbidden by Studio's round 12. Shared fives carry 81% of its sender weight.
+- HARD28: each row's only window at ring <= 16 is the 5-5 pair (not D). One row still dies, to a window from a 9-row
+  sibling whose B also matches 8.
 
 ## Round 13 (16 Oct 2026, 14:15Z-): receiver-free windows with a big link vertex (the 3/11 family)
 
