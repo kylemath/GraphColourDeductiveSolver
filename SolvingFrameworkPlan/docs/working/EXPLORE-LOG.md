@@ -1,5 +1,18 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 30 (17 Oct 2026, 04:02Z-): H-L2e, is 9/43 near the converged transfer LP? (coordinator's go, 03:57Z)
+
+**Pre-registered 04:02Z, before the run.**
+- **Why.** Round 28 stopped at maxit 8 after 6 minutes with t* flat at 9/43 for 5 iterations. Round 29 then forbade
+  4 of its 9 binders.
+- **Run.** `l2.py` with j28_12.args plus `loop/l2/full_extra.args` (now with win29; the 6-sea defect files left out
+  until Studio's second engine and name mapping), maxit 60, no iteration started after 1500 s, 1 core, 2-hour wall
+  (`loop/n9/run30.sh`). Converged means an iteration adds no row.
+- **Bars.** The go stands if t* at the end is under 0.22. Kill line (coordinator's): converged t* >= 0.22, or t*
+  still rising at the cap with no binder reachable by an untested small window at ring <= 16. Reported: t*, its
+  convergence status, and the top binders by row and by degree.
+- **Guess.** Not converged at the cap; t* ends between 9/43 and 0.215, with d = 7 rows binding.
+
 ## Round 29 (17 Oct 2026, 03:57Z-): H-B28, do small windows forbid round 28's binders?
 
 **Pre-registered 03:57Z, before any dfast run.**
@@ -10,6 +23,11 @@
 - **Lives** if at least 3 of the 9 binders are forbidden; **dies** if none is.
 - **Guess.** Two die. Round 27 killed 2 of 3 binders, but most of these are d = 7 rows whose ring <= 14 windows
   were already tested in rounds 14-15.
+
+**Round 29 result (04:00Z): H-B28 lives; 4 of 9 binders forbidden** (`wheeldis/loop/n9/FINDINGS.md`).
+- 14 windows, **4 D**, all d = 7. Forbidden: the two heaviest (5775656/6565579, 5675765/6557576) and two v-side rows
+  with 7s in the link. Five stay free, among them d = 9 565656565/677667766.
+- Guess check: "two die" was low; four did.
 
 ## Round 28 (17 Oct 2026, 03:49Z-): H-L2d, the transfer LP with the full registry (coordinator's go, 03:44Z)
 

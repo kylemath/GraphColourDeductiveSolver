@@ -109,3 +109,16 @@ binders have untested small windows. Guess ("about 0.20-0.21, d = 7 rows bind") 
 565656565/677667766 (0.021). By degree: d = 7 eight rows, dual 0.353; d = 9 one row, 0.021. None is forbidden by the
 registry (`cov28.txt`). The nine have 14 untested small windows at ring <= 16 (1 at 12, 3 at 13, 1 at 14, 6 at 15,
 3 at 16), plus 6 already in Studio's queue.
+
+# Round 29 (H-B28): small windows on round 28's binders
+
+17 Oct 2026, 03:57Z-04:00Z. `run29.sh`.
+
+**Windows.** The 14 untested windows of round 28's nine binders at ring <= 16 (`win29.txt`): **4 D** (`win29.out`),
+all d = 7 (rings 12, 13, 15, 16); the one d = 9 window is not D.
+
+**Coverage** (`cov29.txt`): **4 of 9 binders forbidden**: the two heaviest, 5775656/6565579 and 5675765/6557576
+(0.084 each), and two v-side rows, 7575775/5555555 and 7575765/5555575. Still free: 5576576/5757756,
+5567576/5756756, 5765575/7565777, 7557755/7775776, and d = 9 565656565/677667766.
+
+**Verdict.** H-B28 lives (bar: at least 3 of 9). Guess ("two die") was low.
