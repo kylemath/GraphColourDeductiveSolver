@@ -13,6 +13,18 @@
 - **Guess.** About 40%. Round 16 forbade 77% of Studio's d = 9 tight rows, but those carried 7s and 8s near the fives;
   here the fives sit in a 6-sea, where windows are larger and less often D.
 
+**Round 24 result (01:50Z): H-N9 lives on the family as built, 179 of 218 rows forbidden (82.1%); the binder is
+still free** (`wheeldis/loop/n9/FINDINGS.md`).
+- **Deviation.** The sep3 max-fives enumeration timed out, so the family is the LP's own tight rows: d = 9/10 rows
+  tight at a 4-iteration rerun of round 23 (t* = 1/5) with no 7/8 link vertex. 56 at d = 9, 162 at d = 10. No
+  existing pattern forbade any of them.
+- **Windows.** 413 untested at ring <= 14, **140 D**: 16 of 148 centred at a 9, 124 of 265 at a 10.
+- **Coverage.** d = 9: 23 of 56 (41%, between the bars on the population the pre-registration named). d = 10:
+  156 of 162.
+- **Binder.** 559565656/565566666 stays free, so t* stays at 1/5 and the LP was not rerun. 39 rows stay free;
+  they have 202 untested windows at ring 15-16 (the binder 11).
+- Guess check: "about 40%" was right for d = 9; d = 10 is far easier.
+
 ## Round 23 (16 Oct 2026, 23:28Z-): H-L2 again, with the explore windows as patterns
 
 **Registered 23:28Z, after a first look (not a clean pre-registration).** Rounds 20 and 22 used only the j28_12
