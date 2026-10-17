@@ -53,7 +53,7 @@ under-separated lower bound, not the floor. 7/33 is still under round 23's 0.22 
 
 # Round 26 (H-L2c): the transfer LP with every explore window
 
-17 Oct 2026, 02:41Z-03:41Z. `run26.sh`; iteration log `run26_iters.txt`.
+17 Oct 2026, 02:41Z-03:42Z. `run26.sh`; iteration log `run26_iters.txt`.
 
 **Run.** `l2.py` with win14, win8, win89, win9 and win25 as patterns. t* by iteration: 1/7, 1/6, 0.1776, then
 **7/33 = 0.2121 from iteration 3 through 8** (115,587 rows, 12,536 transfer columns at iteration 8). Not converged:
