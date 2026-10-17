@@ -13,6 +13,15 @@
 - **Guess.** The binder stays free: its 9 tested windows all failed, and only 11% of d = 9 windows were D at ring
   <= 14. About 5-8 of the 39 rows die, mostly the d = 10 ones.
 
+**Round 25 result (02:40Z): H-N9b lives; the binder 559565656/565566666 is forbidden** (`wheeldis/loop/n9/FINDINGS.md`).
+- dfast ran 185 of the 202 windows in the cap (17 ring-16 ones not reached): **10 D**, 6 of the binder's 11.
+- 5 more d = 9 rows forbidden, the binder among them: 184 of 218 (84.4%); d = 9 now 28 of 56. 34 rows stay free.
+- **LP check (after the verdict).** `l2.py` with every explore window, 6 iterations: **t* = 7/33 = 0.2121**, not
+  converged; d = 7 rows bind again (5576576/5756756 heaviest) plus one d = 10 row.
+- **Correction [I].** More patterns only delete rows, so round 23's true t* is at least 7/33 too: its 1/5 was an
+  under-separated lower bound, not the floor. Still under round 23's 0.22 bar, still unconverged.
+- Guess check: "binder stays free" was wrong; "5-8 rows, mostly d = 10" was wrong too (5 rows, all d = 9).
+
 ## Round 24 (17 Oct 2026, 01:06Z-): H-N9, small windows against the d = 9 five-heavy family (coordinator's go)
 
 **Pre-registered 01:06Z, before counting or any dfast run.**
