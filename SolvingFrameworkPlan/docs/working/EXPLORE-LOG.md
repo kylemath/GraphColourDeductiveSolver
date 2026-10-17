@@ -12,6 +12,12 @@
 - **Guess.** One dies, likely the d = 10 row (round 24: 47% of d = 10 windows D, against 11% at d = 9).
 - No LP rerun inside this round; the next LP run should also load `out/job28/r_12.partial.out`.
 
+**Round 27 result (03:48Z): H-B26 lives; 2 of the 3 free binders forbidden** (`wheeldis/loop/n9/FINDINGS.md`).
+- 16 windows, **6 D**: 2 of 5 at d = 7 (ring 13), 4 of 11 at d = 10.
+- Newly forbidden: d = 7 5675765/9555596 and d = 10 5656556565/6576565765. Still free: **5576576/5756756** (the
+  heaviest, dual 0.12; Studio's dfast18/cfast has its other windows).
+- Guess check: "one dies" was low; two did.
+
 ## Round 26 (17 Oct 2026, 02:41Z-): H-L2c, where does the transfer LP settle with every explore window?
 
 **Pre-registered 02:41Z, before the run.** Round 25's 6-iteration check read t* = 7/33 and was not converged.
