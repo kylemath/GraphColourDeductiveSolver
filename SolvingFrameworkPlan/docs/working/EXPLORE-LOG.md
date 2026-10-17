@@ -1,8 +1,8 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
-## Round 25 (17 Oct 2026, 01:55Z-): H-N9b, ring 15-16 windows for the 39 rows round 24 left free
+## Round 25 (17 Oct 2026, 01:47Z-): H-N9b, ring 15-16 windows for the 39 rows round 24 left free
 
-**Pre-registered 01:55Z, before any dfast run.**
+**Pre-registered 01:47Z, before any dfast run.**
 - **Why.** Round 24 left 39 of its 218 rows free (33 d = 9, 6 d = 10), the binder 559565656/565566666 among them.
   t* stays at 1/5 until the binder dies.
 - **Windows.** All 202 untested small B-fixed windows of the 39 rows at ring 15-16 (`loop/n9/win25.txt`, built by
@@ -26,7 +26,7 @@
 - **Guess.** About 40%. Round 16 forbade 77% of Studio's d = 9 tight rows, but those carried 7s and 8s near the fives;
   here the fives sit in a 6-sea, where windows are larger and less often D.
 
-**Round 24 result (01:50Z): H-N9 lives on the family as built, 179 of 218 rows forbidden (82.1%); the binder is
+**Round 24 result (01:45Z): H-N9 lives on the family as built, 179 of 218 rows forbidden (82.1%); the binder is
 still free** (`wheeldis/loop/n9/FINDINGS.md`).
 - **Deviation.** The sep3 max-fives enumeration timed out, so the family is the LP's own tight rows: d = 9/10 rows
   tight at a 4-iteration rerun of round 23 (t* = 1/5) with no 7/8 link vertex. 56 at d = 9, 162 at d = 10. No
