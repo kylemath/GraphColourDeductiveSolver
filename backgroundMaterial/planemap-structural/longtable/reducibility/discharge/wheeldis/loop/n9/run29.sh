@@ -1,5 +1,5 @@
 #!/bin/bash
-# EXPLORE round 29: dfast on the 16 untested ring <= 16 windows of round 28 binders (bind28.txt), 3 cores, 20-minute cap.
+# EXPLORE round 29: dfast on the 14 untested ring <= 16 windows of round 28's binders (bind28.txt), 3 cores, 20-minute cap.
 cd "$(dirname "$0")"
 for p in 0 1 2; do awk -v p=$p 'NR%3==p' win29.txt > w.p$p; done
 for p in 0 1 2; do timeout 1200 nice -n 5 ../../bin/dfast w.p$p > w.p$p.o 2>&1 & done; wait
