@@ -46,3 +46,15 @@ the kill is trustworthy for this rule class.
 basically: when u and v carry the same arrangement and both are over capacity, no transfer between them helps,
 whatever it reads. Charge has to leave the pair (to vertices at distance >= 2 from u), or the pair must be reducible.
 Studio reports 3 of the 5 binders killed by B-fixed D and 2 at ring 15-16 in its queue.
+
+# Round 23: H-L2 with the explore windows (16-17 Oct 2026) [exploratory; restricted LP, not a bound]
+
+`l2.py maxit=60 tmax=2700 pat=loop/w2/win14.out pat=loop/w2/win8.out pat=loop/w2/win89.out` (round 20's LP plus our
+round 14-16 windows). The start set shrinks to 1,453 allowed rows (1,188 of Studio's tight 3,181; 265 of the family).
+- **With transfers: t* = 1/5 at every iteration 0-10** (185,503 rows, 19,700 columns; time cap, not converged).
+  The only binding row is d = 9, link 559565656, s 565566666 (dual 1/5): the lone-five counting bound at d = 9.
+- **Without transfers: t* >= 7/27**, still rising after 40 iterations (0.2405 -> 0.2593; `l2_notx_w40.txt`).
+- 23 of 46 HARD28-like rows in the LP are slack at the optimum.
+Reading: the windows remove the self-paired d = 7 binders that stopped round 20; transfers then relieve every
+d = 7/8 row. Caveats as round 20: restricted rows (y-only sep3 dedups by 5-path; degrees >= 13 not separated with
+transfers), transfers capped at 3, not converged.

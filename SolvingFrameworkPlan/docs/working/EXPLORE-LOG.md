@@ -13,6 +13,17 @@ reran both LPs with them (`l2.py ... pat=...`).
 - **Guess.** It climbs, as the baseline did (start set now 1,453 rows, so separation does more work), and settles
   near 0.22-0.23. Above the lone-five 1/5 either way.
 
+**Round 23 result (00:53Z): H-L2 survives with the explore windows. t* = 1/5 held for 11 iterations** (185,503
+rows, 19,700 transfer columns; stopped at the time cap, not converged; `wheeldis/loop/l2/l2_x_w.txt`).
+- One row binds: d = 9, 559565656/565566666 (three lone fives and a 5-5 pair next to a single 9), dual 1/5. No d = 7
+  or d = 8 row binds. 23 of 46 HARD28-like rows in the LP are slack.
+- Same patterns without transfers: t* >= 7/27 and still rising at 40 iterations (`l2_notx_w40.txt`).
+- Reading: round 20 stalled because self-paired d = 7 rows bound; our small windows forbid them. With them gone,
+  big-big transfers relieve every d = 7 and d = 8 row, and the bound drops to a d = 9 lone-five row that has no
+  usable big neighbour. That is a go signal for Studio to build L2 properly (restricted LP, so it can only overstate
+  the gain), and it names the next target: the d = 9 lone-five rows.
+- Guess check: "climbs to 0.22-0.23" was wrong; it never moved from 1/5.
+
 ## Round 22 (16 Oct 2026, 23:00Z-): H-S, do Schnyder-orientation transfers break the 7/27 floor? (k's pick)
 
 **Pre-registered 23:00Z, before any build.** Idea and bars are mine; k chose to run it (decision card, 22:57Z).
