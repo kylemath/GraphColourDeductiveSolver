@@ -6,7 +6,8 @@ A row with a big link vertex k gets  -x[out tau] + x[in tau]  (out: this centre 
 Separation: y-only sep3 (d = 7..14) for rows without in-transfers; for every tau with x > 0, the heaviest arrangement
 at the receiving end showing tau (DP over 6-letter states, own transfer terms included, best-first enumeration,
 then sep3 'c' for patterns and RBIG).
-Usage: python3 l2.py [notx] [maxit=N] [tmax=SECONDS] [pat=FILE ...] [dump=FILE.npz] [tightout=FILE]"""
+Usage: python3 l2.py [notx] [maxit=N] [tmax=SECONDS] [pat=FILE ...] [dump=FILE.npz] [tightout=FILE] [binout=FILE]
+(tmax is checked before each degree of y-only separation and each v-side tau; binout is rewritten after every solve)"""
 import sys, os, re, time, heapq, collections
 import numpy as np
 import scipy.sparse as sps
@@ -190,12 +191,16 @@ def vside(k, d, G, thr, cap=400):
     return out, B[1][start], leaves
 
 # ---- main loop
-hist = []
+hist = []; TCUT = False
+BOUT = next((a[7:] for a in OPTS if a.startswith('binout=')), None)   # binding rows after every solve (survives a kill)
 for it_ in range(MAXIT):
     t, yv, xfull, duals, slack = solve()
+    if BOUT: open(BOUT, 'w').write('# iteration %d t=%.6f rows %d\n' % (it_, t, len(ROWS)) + ''.join('  %.4f  %s d=%d link %s s %s\n' % (
+        duals[q], RSRC[q], ROWS[q][0], ROWS[q][1], ROWS[q][2]) for q in np.argsort(-duals)[:20] if duals[q] > 1e-9))
     added = collections.Counter(); masked = 0
     # y-only separation
     for d in range(7, 15):
+        if time.time() - T0 > TMAX: TCUT = True; break
         thr = d - 6 + t + 1e-7
         res_, nodes = sep(d, yv, thr, 200)
         for v, lk, sv, p in res_:
@@ -214,7 +219,7 @@ for it_ in range(MAXIT):
                 for v, lk, sv in out:
                     if add_row(d, lk, sv, 'vside'): added['vside_d%d' % d] += 1
                 if leaves >= 400 and not out: vmax['capped'] += 1
-            if time.time() - T0 > TMAX: break
+            if time.time() - T0 > TMAX: TCUT = True; break
     nadd = sum(added.values())
     print('iter %d t=%.6f rows %d xcols %d tau>0 %d added %s masked %d capped %d (%.0fs)' % (
         it_, t, len(ROWS), len(XCOL), nt, dict(added), masked, vmax['capped'], time.time() - T0), flush=True)
@@ -230,7 +235,7 @@ if TOUT: open(TOUT, 'w').write(''.join('  receiver d=%d link %s s %s  src=%s dua
                                       for q in range(len(ROWS)) if slack[q] < 1e-7))
 tag = ('notx' if NOTX else 'x') + ('_w' if any(a.startswith('pat=') for a in OPTS) else '') + ('_dump' if DUMP else '')
 out = ['# l2.py %s: t* = %.6f (13/49 = %.6f); %d rows, %d transfer columns, converged=%s (%d iterations, %.0fs)' % (
-    ' '.join(OPTS), t, 13 / 49, len(ROWS), len(XCOL), 'yes' if not nadd else 'NO', len(hist), time.time() - T0)]
+    ' '.join(OPTS), t, 13 / 49, len(ROWS), len(XCOL), 'yes' if not nadd and not TCUT else 'NO', len(hist), time.time() - T0)]
 out.append('rows by source: %s' % dict(collections.Counter(RSRC)))
 bind = collections.Counter(); bindw = collections.Counter()
 for q, dv in enumerate(duals):
