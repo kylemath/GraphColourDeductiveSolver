@@ -36,6 +36,8 @@
 - **Correction [I].** More patterns only delete rows, so round 23's true t* is at least 7/33 too: its 1/5 was an
   under-separated lower bound, not the floor. Still under round 23's 0.22 bar, still unconverged.
 - Guess check: "binder stays free" was wrong; "5-8 rows, mostly d = 10" was wrong too (5 rows, all d = 9).
+- **Tail (02:56Z).** The 17 windows the cap missed: 6 D, no new row forbidden. The 34 free rows have no untested
+  window at ring <= 16 left.
 
 ## Round 24 (17 Oct 2026, 01:06Z-): H-N9, small windows against the d = 9 five-heavy family (coordinator's go)
 

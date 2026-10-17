@@ -39,6 +39,9 @@ forbidden, all d = 9: **559565656/565566666 (round 23's binder)**, 565656565/657
 
 **Verdict.** H-N9b lives (bar: the binder is forbidden). 5 of 39 rows by count. Guess ("binder stays free") wrong.
 
+**Tail (02:42Z-02:56Z, `run25b.sh`).** The 17 ring-16 windows the cap missed, on 2 cores: 6 D (`win25b.out`), but
+they forbid no new row (`cov25b.txt`: still 184 of 218). Every ring <= 16 window of the 34 free rows is now tested.
+
 **LP check (after the verdict, not pre-registered).** `l2.py` with every explore window as a pattern (win14, win8,
 win89, win9, win25), 6 iterations, 424 s: **t* = 7/33 = 0.2121**, reached at iteration 3 and unchanged for 3 more,
 not converged (`l2_r25.txt`, tight rows `tight25.txt`). Binding rows: d = 7 5576576/5756756 (dual 0.12),
