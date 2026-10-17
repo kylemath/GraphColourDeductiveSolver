@@ -6,7 +6,7 @@ A row with a big link vertex k gets  -x[out tau] + x[in tau]  (out: this centre 
 Separation: y-only sep3 (d = 7..14) for rows without in-transfers; for every tau with x > 0, the heaviest arrangement
 at the receiving end showing tau (DP over 6-letter states, own transfer terms included, best-first enumeration,
 then sep3 'c' for patterns and RBIG).
-Usage: python3 l2.py [notx] [maxit=N] [tmax=SECONDS] [pat=FILE ...]"""
+Usage: python3 l2.py [notx] [maxit=N] [tmax=SECONDS] [pat=FILE ...] [dump=FILE.npz]"""
 import sys, os, re, time, heapq, collections
 import numpy as np
 import scipy.sparse as sps
@@ -223,7 +223,9 @@ for it_ in range(MAXIT):
 
 # ---- report
 t, yv, xfull, duals, slack = solve()
-tag = ('notx' if NOTX else 'x') + ('_w' if any(a.startswith('pat=') for a in OPTS) else '')
+DUMP = next((a[5:] for a in OPTS if a.startswith('dump=')), None)   # save t, y, x of the final solve (.npz)
+if DUMP: np.savez(DUMP, t=t, y=yv, x=xfull)
+tag = ('notx' if NOTX else 'x') + ('_w' if any(a.startswith('pat=') for a in OPTS) else '') + ('_dump' if DUMP else '')
 out = ['# l2.py %s: t* = %.6f (13/49 = %.6f); %d rows, %d transfer columns, converged=%s (%d iterations, %.0fs)' % (
     ' '.join(OPTS), t, 13 / 49, len(ROWS), len(XCOL), 'yes' if not nadd else 'NO', len(hist), time.time() - T0)]
 out.append('rows by source: %s' % dict(collections.Counter(RSRC)))
