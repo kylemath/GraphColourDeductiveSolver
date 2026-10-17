@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 17 Oct 02:45Z: win9 second-engined (53bf2cfe, 140/140). Round 26 pre-registered (086ee22f, kill line 45d82655). Told Studio to re-run cfast on the 4 ring-16 S of d=7 row 5576576/5756756 (killed at the pause) and to prefer run29b over the degenerate 7/27 solve. Reason: cheap, and the row is binding again at 7/33.
 - 17 Oct 02:40Z: merged explore round 25 (eb67a07b): binder 559565656/565566666 forbidden by ring 15-16 windows (10 D of 185 run, 6 the binder's; win25.out single-engine). Family 184/218. Unconverged L2 with all windows reads t* = 7/33 (lower bound); round 23's 1/5 was under-separated, true value >= 7/33 [I]. Approved round 26: run L2 to convergence (1 core, 45-min cap) to name the next binders. Reason: in Kyle's 01:04Z scope, loop/ only.
 - 17 Oct: merged explore round 24 (b9171391): win9 gives 140 D windows, 179/218 d=9/10 rows forbidden (d=9 23/56), binder 559565656/565566666 still free. Round 25 (ring 15-16 on the free rows) running. win89 now second-engined (d36aea15, 687/687); win9 still single-engine.
 - 17 Oct: merged explore round 24 (b9171391): win9 gives 140 D windows, 179/218 d=9 rows forbidden, binder 559565656/565566666 still free. Round 25 (ring 15-16 on the 39 free rows) running. win89 and win9 still need a second engine at Studio before they count.
