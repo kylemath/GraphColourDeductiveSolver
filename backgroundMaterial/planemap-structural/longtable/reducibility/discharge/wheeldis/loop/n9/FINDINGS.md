@@ -39,6 +39,9 @@ forbidden, all d = 9: **559565656/565566666 (round 23's binder)**, 565656565/657
 
 **Verdict.** H-N9b lives (bar: the binder is forbidden). 5 of 39 rows by count. Guess ("binder stays free") wrong.
 
+**Tail (02:42Z-02:56Z, `run25b.sh`).** The 17 ring-16 windows the cap missed, on 2 cores: 6 D (`win25b.out`), but
+they forbid no new row (`cov25b.txt`: still 184 of 218). Every ring <= 16 window of the 34 free rows is now tested.
+
 **LP check (after the verdict, not pre-registered).** `l2.py` with every explore window as a pattern (win14, win8,
 win89, win9, win25), 6 iterations, 424 s: **t* = 7/33 = 0.2121**, reached at iteration 3 and unchanged for 3 more,
 not converged (`l2_r25.txt`, tight rows `tight25.txt`). Binding rows: d = 7 5576576/5756756 (dual 0.12),
@@ -47,3 +50,25 @@ not converged (`l2_r25.txt`, tight rows `tight25.txt`). Binding rows: d = 7 5576
 **Correction to round 23 [I].** Extra patterns only delete rows, so this LP relaxes round 23's, and a cutting-plane
 value is a lower bound on its LP. Round 23's true optimum is therefore at least 7/33: its 1/5 (11 iterations) was an
 under-separated lower bound, not the floor. 7/33 is still under round 23's 0.22 bar but is not converged either.
+
+# Round 26 (H-L2c): the transfer LP with every explore window
+
+17 Oct 2026, 02:41Z-03:42Z. `run26.sh`; iteration log `run26_iters.txt`.
+
+**Run.** `l2.py` with win14, win8, win89, win9 and win25 as patterns. t* by iteration: 1/7, 1/6, 0.1776, then
+**7/33 = 0.2121 from iteration 3 through 8** (115,587 rows, 12,536 transfer columns at iteration 8). Not converged:
+each iteration still added about 37,000 v-side rows. The 45-minute cap is only checked between iterations, and
+iteration 9's separation ran past the 60-minute wall, so the run was killed before its final report (no binder list,
+no tight rows, no dump).
+
+**Verdict.** The go stands (bar: under 0.22 at the end), as a lower bound only. The kill line is not met: t* is not
+converged and is not rising, and the binders below have untested small windows. Guess ("climbs to 0.215-0.225")
+wrong: it never moved off 7/33.
+
+**Binders.** Taken from round 25's 6-iteration solve, which reached the same 7/33 (`l2_r25.txt`), since this run
+lost its report. By row: d = 7 5576576/5756756 (dual 0.12), 5675765/9555596 (0.06), 5567576/5756656 (0.06); d = 10
+5656556565/6576565765 (0.06). By degree: d = 7 three rows, dual 0.24; d = 10 one row, 0.06.
+- 5567576/5756656 is already forbidden by a D window in Studio's `out/job28/r_12.partial.out`, which l2.py does not
+  load (its patterns are the j28_12 snapshot plus the pat= files).
+- The other three are free, and the four rows have 16 untested small windows at ring <= 16 (1 at ring 11, 2 at 13,
+  3 at 14, 7 at 15, 3 at 16; `bind25.txt` is the row list).

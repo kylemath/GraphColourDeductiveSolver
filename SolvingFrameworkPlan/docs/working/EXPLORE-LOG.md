@@ -1,5 +1,42 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 27 (17 Oct 2026, 03:44Z-): H-B26, do small windows forbid the 7/33 binders?
+
+**Pre-registered 03:44Z, before any dfast run.**
+- **Why.** Rounds 25-26 hold the transfer LP at 7/33 on four rows (`loop/n9/bind25.txt`): d = 7 5576576/5756756,
+  5675765/9555596, 5567576/5756656 (already forbidden in Studio's job 28 partial output), and d = 10
+  5656556565/6576565765.
+- **Windows.** Their 16 untested small B-fixed windows at ring <= 16 (`loop/n9/win27.txt`; 1 at ring 11, 2 at 13,
+  3 at 14, 7 at 15, 3 at 16), dfast on 3 cores, 30-minute cap.
+- **Lives** if at least 2 of the 3 free binders are forbidden; **dies** if none is.
+- **Guess.** One dies, likely the d = 10 row (round 24: 47% of d = 10 windows D, against 11% at d = 9).
+- No LP rerun inside this round; the next LP run should also load `out/job28/r_12.partial.out`.
+
+## Round 26 (17 Oct 2026, 02:41Z-): H-L2c, where does the transfer LP settle with every explore window?
+
+**Pre-registered 02:41Z, before the run.** Round 25's 6-iteration check read t* = 7/33 and was not converged.
+- **Run.** `l2.py` (round 20/23's restricted transfer LP) with win14, win8, win89, win9 and win25 as patterns, to
+  convergence or a 45-minute cap, 1 core (`loop/n9/run26.sh`). The value at the cap is a lower bound.
+- **Go stands** (round 23's bar) if t* at the end is under 0.22; **L2 looks weak** if it is above 0.25 (13/49 =
+  0.265 without transfers); in between, neither.
+- Also recorded: the binding rows by degree, which pick round 27's window targets.
+- **Kill line (coordinator, added 02:42Z after launch, before any of the run's output was read).** H-L2c dies if
+  the converged t* is at least 0.22, or if t* is still rising at the cap and no binder is reachable by small windows
+  (no untested B-fixed window at ring <= 16). Reported: t* with its convergence status, and the top binders by row and
+  by degree.
+- **Caveat.** win25 (and so the binder's kill) is single-engine (dfast) until Studio's second engine passes it.
+
+**Round 26 result (03:42Z): t* = 7/33 = 0.2121 from iteration 3 through 8, not converged; the go stands as a lower
+bound** (`wheeldis/loop/n9/FINDINGS.md`).
+- 115,587 rows at iteration 8, still adding about 37,000 v-side rows per iteration. The cap is checked only between
+  iterations; iteration 9 ran past the 60-minute wall and the run was killed before its report.
+- Kill line not met: not converged, not rising, and the binders have untested small windows.
+- Binders (from round 25's solve at the same 7/33): d = 7 5576576/5756756 (dual 0.12), 5675765/9555596,
+  5567576/5756656, and d = 10 5656556565/6576565765. 5567576/5756656 is already forbidden by a D window in Studio's
+  `out/job28/r_12.partial.out`, which l2.py does not load. The four have 16 untested windows at ring <= 16.
+- Guess check: "climbs to 0.215-0.225" was wrong; it never left 7/33.
+- **Guess.** It climbs a little and stops near 0.215-0.225, with d = 7 rows binding.
+
 ## Round 25 (17 Oct 2026, 01:47Z-): H-N9b, ring 15-16 windows for the 39 rows round 24 left free
 
 **Pre-registered 01:47Z, before any dfast run.**
@@ -21,6 +58,8 @@
 - **Correction [I].** More patterns only delete rows, so round 23's true t* is at least 7/33 too: its 1/5 was an
   under-separated lower bound, not the floor. Still under round 23's 0.22 bar, still unconverged.
 - Guess check: "binder stays free" was wrong; "5-8 rows, mostly d = 10" was wrong too (5 rows, all d = 9).
+- **Tail (02:56Z).** The 17 windows the cap missed: 6 D, no new row forbidden. The 34 free rows have no untested
+  window at ring <= 16 left.
 
 ## Round 24 (17 Oct 2026, 01:06Z-): H-N9, small windows against the d = 9 five-heavy family (coordinator's go)
 
