@@ -1,5 +1,16 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 29 (17 Oct 2026, 03:57Z-): H-B28, do small windows forbid round 28's binders?
+
+**Pre-registered 03:57Z, before any dfast run.**
+- **Why.** Round 28 holds the full-registry transfer LP at 9/43 on nine rows (`loop/n9/bind28.txt`): eight d = 7
+  (dual 0.353 in all) and one d = 9 (0.021). None is forbidden yet.
+- **Windows.** Their 14 untested small B-fixed windows at ring <= 16 not already in Studio's queue
+  (`loop/n9/win29.txt`; 1 at ring 12, 3 at 13, 1 at 14, 6 at 15, 3 at 16), dfast on 3 cores, 20-minute cap.
+- **Lives** if at least 3 of the 9 binders are forbidden; **dies** if none is.
+- **Guess.** Two die. Round 27 killed 2 of 3 binders, but most of these are d = 7 rows whose ring <= 14 windows
+  were already tested in rounds 14-15.
+
 ## Round 28 (17 Oct 2026, 03:49Z-): H-L2d, the transfer LP with the full registry (coordinator's go, 03:44Z)
 
 **Pre-registered 03:49Z, before the run.**
@@ -14,7 +25,7 @@
 - **Guess.** t* reads about 0.20-0.21 at the cap, not converged; 5576576/5756756 and other d = 7 rows bind.
 - **Caveat.** win25, win25b and win27 are single-engine (dfast) until Studio's second engine passes them.
 
-**Round 28 result (03:58Z): t* = 9/43 = 0.2093 from iteration 3 through 7, not converged (maxit reached at 6
+**Round 28 result (03:56Z): t* = 9/43 = 0.2093 from iteration 3 through 7, not converged (maxit reached at 6
 minutes); the go stands as a lower bound** (`wheeldis/loop/n9/FINDINGS.md`).
 - Only f/e/p-named files load: r_12.partial added 37 patterns; z_lone_studio_dfast18 (62 D), the hash-named defect
   files and fans add none (wlp3 parses `[epf]<d>_` names only).

@@ -91,7 +91,7 @@ has dfast18/cfast running on its other B-fixed S.
 
 # Round 28 (H-L2d): the transfer LP with the full registry
 
-17 Oct 2026, 03:49Z-03:57Z. `run28.sh` (`../l2/full_extra.args`); iterations `run28_iters.txt`, report `l2_r28.txt`,
+17 Oct 2026, 03:49Z-03:56Z. `run28.sh` (`../l2/full_extra.args`); iterations `run28_iters.txt`, report `l2_r28.txt`,
 tight rows `tight28.txt`.
 
 **Patterns.** Of the extra files, only the f/e/p-named ones load as patterns: r_12.partial added 37 (d = 7), the
