@@ -1,8 +1,8 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
-## Round 26 (17 Oct 2026, 02:45Z-): H-L2c, where does the transfer LP settle with every explore window?
+## Round 26 (17 Oct 2026, 02:41Z-): H-L2c, where does the transfer LP settle with every explore window?
 
-**Pre-registered 02:45Z, before the run.** Round 25's 6-iteration check read t* = 7/33 and was not converged.
+**Pre-registered 02:41Z, before the run.** Round 25's 6-iteration check read t* = 7/33 and was not converged.
 - **Run.** `l2.py` (round 20/23's restricted transfer LP) with win14, win8, win89, win9 and win25 as patterns, to
   convergence or a 45-minute cap, 1 core (`loop/n9/run26.sh`). The value at the cap is a lower bound.
 - **Go stands** (round 23's bar) if t* at the end is under 0.22; **L2 looks weak** if it is above 0.25 (13/49 =
