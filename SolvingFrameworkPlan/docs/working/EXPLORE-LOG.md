@@ -14,6 +14,15 @@
 - **Guess.** t* reads about 0.20-0.21 at the cap, not converged; 5576576/5756756 and other d = 7 rows bind.
 - **Caveat.** win25, win25b and win27 are single-engine (dfast) until Studio's second engine passes them.
 
+**Round 28 result (03:58Z): t* = 9/43 = 0.2093 from iteration 3 through 7, not converged (maxit reached at 6
+minutes); the go stands as a lower bound** (`wheeldis/loop/n9/FINDINGS.md`).
+- Only f/e/p-named files load: r_12.partial added 37 patterns; z_lone_studio_dfast18 (62 D), the hash-named defect
+  files and fans add none (wlp3 parses `[epf]<d>_` names only).
+- Kill line not met: not converged, not rising, binders reachable.
+- Binders: eight d = 7 rows (dual 0.353; heaviest 5775656/6565579 and 5675765/6557576) and one d = 9 row
+  565656565/677667766 (0.021). None is forbidden; they have 14 untested windows at ring <= 16, 6 more in Studio's queue.
+- Guess check: "0.20-0.21, d = 7 rows bind" was right.
+
 ## Round 27 (17 Oct 2026, 03:44Z-): H-B26, do small windows forbid the 7/33 binders?
 
 **Pre-registered 03:44Z, before any dfast run.**

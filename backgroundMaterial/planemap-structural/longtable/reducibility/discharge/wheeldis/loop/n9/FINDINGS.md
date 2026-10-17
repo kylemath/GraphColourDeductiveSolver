@@ -88,3 +88,24 @@ r_12 partial).
 
 **Still free: 5576576/5756756**, the heaviest binder (dual 0.12). Its windows at ring 11 and 16 here are not D; Studio
 has dfast18/cfast running on its other B-fixed S.
+
+# Round 28 (H-L2d): the transfer LP with the full registry
+
+17 Oct 2026, 03:49Z-03:57Z. `run28.sh` (`../l2/full_extra.args`); iterations `run28_iters.txt`, report `l2_r28.txt`,
+tight rows `tight28.txt`.
+
+**Patterns.** Of the extra files, only the f/e/p-named ones load as patterns: r_12.partial added 37 (d = 7), the
+explore windows the rest. z_lone_studio_dfast18 (62 D, `z_` names), def_b7_k5d14 and b7/k5_d14 (hash-named
+configurations) and fans (`f_F` names) add none, since wlp3 parses only `[epf]<d>_` names.
+
+**Run.** t* by iteration: 1/7, 0.1463, 0.1888, then **9/43 = 0.2093 from iteration 3 through 7**. maxit 8 was
+reached after 368 s (61,572 rows), so not converged; v-side separation still adds rows each iteration.
+
+**Verdict.** The go stands (under 0.22), as a lower bound. Kill line not met: not converged, not rising, and the
+binders have untested small windows. Guess ("about 0.20-0.21, d = 7 rows bind") right.
+
+**Binders** (`bind28.txt`). By row: d = 7 5775656/6565579 and 5675765/6557576 (dual 0.084 each), 5576576/5757756 and
+5567576/5756756 (0.065 each), 5765575/7565777 (0.028), three v-side d = 7 rows with 7s in the link (0.009 each); d = 9
+565656565/677667766 (0.021). By degree: d = 7 eight rows, dual 0.353; d = 9 one row, 0.021. None is forbidden by the
+registry (`cov28.txt`). The nine have 14 untested small windows at ring <= 16 (1 at 12, 3 at 13, 1 at 14, 6 at 15,
+3 at 16), plus 6 already in Studio's queue.

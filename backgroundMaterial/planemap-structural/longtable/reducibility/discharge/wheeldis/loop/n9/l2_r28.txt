@@ -1,0 +1,97 @@
+# l2.py maxit=8 tmax=1500 pat=out/job28/r_12.partial.out pat=out/job28/z_lone_studio_dfast18.out pat=out/def_b7_k5d14.out pat=out/fans_dfast.out pat=loop/b7/k5_d14.out pat=loop/w2/win14.out pat=loop/w2/win8.out pat=loop/w2/win89.out pat=loop/n9/win9.out pat=loop/n9/win25.out pat=loop/n9/win25b.out pat=loop/n9/win27.out dump=../n9/sol28.npz tightout=../n9/tight28.txt: t* = 0.209302 (13/49 = 0.265306); 61572 rows, 8210 transfer columns, converged=NO (8 iterations, 437s)
+rows by source: {'tight12': 1164, 'fam617': 265, 'sep3': 6940, 'vside': 53203}
+binding rows (positive dual) by source, degree: count / total dual weight
+  fam617 d=7: 2 / 0.1488
+  sep3 d=7: 1 / 0.0837
+  tight12 d=7: 2 / 0.0930
+  tight12 d=9: 1 / 0.0209
+  vside d=7: 3 / 0.0279
+tight rows by source, degree: {('fam617', 7): 76, ('sep3', 7): 145, ('sep3', 8): 214, ('sep3', 9): 87, ('sep3', 10): 26, ('sep3', 13): 10, ('tight12', 7): 38, ('tight12', 8): 137, ('tight12', 9): 107, ('vside', 7): 1214, ('vside', 8): 558, ('vside', 9): 469, ('vside', 10): 138, ('vside', 11): 33, ('vside', 12): 19}
+HARD28-like rows (49): slack at t*
+  5567586 5758756 HARD28: slack 0.1674 dual 0.0000
+  5567586 5758856 HARD28: slack 0.0000 dual 0.0000
+  5568586 5658757 HARD28: slack 0.0000 dual 0.0000
+  5567586 5659857 HARD28: slack 0.2135 dual 0.0000
+  5567596 5758856 HARD28: slack 0.2391 dual 0.0000
+  5568596 5658757 HARD28: slack 0.0000 dual 0.0000
+  5568596 5758856 HARD28: slack 0.0000 dual 0.0000
+  5568586 5658657 HARD28: slack 0.5463 dual 0.0000
+  5567586 5758956 HARD28: slack 0.0000 dual 0.0000
+  5567586 5756856 HARD28: slack 0.0038 dual 0.0000
+  5568586 5658857 HARD28: slack 0.0000 dual 0.0000
+  5568586 5656757 HARD28: slack 0.5463 dual 0.0000
+  5567567 5658856 HARD28: not in the LP (forbidden by the j28_12 patterns)
+  5567567 5658857 HARD28: slack 0.7637 dual 0.0000
+  5567569 5658857 HARD28: slack 1.3692 dual 0.0000
+  5567576 5658859 hardlike: slack 0.1349 dual 0.0000
+  5567586 5757756 hardlike: slack 0.0195 dual 0.0000
+  5568586 5657657 hardlike: slack 0.5463 dual 0.0000
+  5568586 5658659 hardlike: slack 0.5463 dual 0.0000
+  5568586 5659859 hardlike: slack 0.0000 dual 0.0000
+  5568596 5756856 hardlike: slack 0.1669 dual 0.0000
+  5568596 5757756 hardlike: slack 0.0000 dual 0.0000
+  5568596 5758656 hardlike: slack 0.0000 dual 0.0000
+  5568567 5658757 hardlike: slack 0.8188 dual 0.0000
+  5569567 5658857 hardlike: slack 0.5408 dual 0.0000
+  5568568 5658757 hardlike: slack 0.9171 dual 0.0000
+  5568569 5658757 hardlike: slack 1.4243 dual 0.0000
+  5567576 5657857 hardlike: slack 0.0000 dual 0.0000
+  5567576 5657859 hardlike: slack 0.0000 dual 0.0000
+  5567576 5658857 hardlike: slack 0.1349 dual 0.0000
+  5567586 5657857 hardlike: slack 0.3395 dual 0.0000
+  5567586 5657859 hardlike: slack 0.3395 dual 0.0000
+  5567586 5658657 hardlike: slack 0.3916 dual 0.0000
+  5567586 5658659 hardlike: slack 0.3916 dual 0.0000
+  5568567 5658759 hardlike: slack 0.6327 dual 0.0000
+  5568567 5658859 hardlike: slack 0.0000 dual 0.0000
+  5568586 5655857 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657857 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657859 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657957 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657959 hardlike: slack 0.0000 dual 0.0000
+  5568586 5658957 hardlike: slack 0.0000 dual 0.0000
+  5568596 5657857 hardlike: slack 0.0000 dual 0.0000
+  5568596 5657859 hardlike: slack 0.0000 dual 0.0000
+  5657567 6587755 hardlike: slack 0.0000 dual 0.0000
+  5657658 6655688 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5657658 8655888 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5558558 8877977 hardlike: slack 0.0472 dual 0.0000
+  5656568 5989858 hardlike: slack 1.3135 dual 0.0000
+HARD28-like rows slack: 25 of 46 in the LP
+transfers x > 0: 4103; largest:
+  3.0000  9->7 [657|777]
+  3.0000  7->9 [698|755]
+  3.0000  7->7 [659|875]
+  3.0000  9->7 [659|787]
+  3.0000  9->7 [655|757]
+  3.0000  7->9 [587|759]
+  3.0000  9->9 [878|975]
+  3.0000  9->9 [878|955]
+  3.0000  9->9 [877|975]
+  3.0000  9->9 [877|965]
+  3.0000  9->9 [876|975]
+  3.0000  9->9 [876|955]
+  3.0000  9->9 [875|975]
+  3.0000  9->9 [875|955]
+  3.0000  9->9 [865|975]
+  3.0000  9->9 [855|878]
+  3.0000  9->9 [855|876]
+  3.0000  9->9 [855|875]
+  3.0000  9->9 [787|875]
+  3.0000  9->9 [787|855]
+  3.0000  9->9 [777|985]
+  3.0000  9->9 [777|875]
+  3.0000  9->9 [775|857]
+  3.0000  9->9 [775|775]
+  3.0000  9->9 [767|985]
+binding rows (largest dual first):
+  0.0837  sep3 d=7 link 5775656 s 6565579  y=1.2093 x=+0.0000
+  0.0837  fam617 d=7 link 5675765 s 6557576  y=0.9535 x=+0.2558
+  0.0651  fam617 d=7 link 5576576 s 5757756  y=1.4884 x=-0.2791
+  0.0651  tight12 d=7 link 5567576 s 5756756  y=1.1860 x=+0.0233
+  0.0279  tight12 d=7 link 5765575 s 7565777  y=1.8837 x=-0.6744
+  0.0209  tight12 d=9 link 565656565 s 677667766  y=3.2093 x=+0.0000
+  0.0093  vside d=7 link 7557755 s 7775776  y=1.1860 x=+0.0233
+  0.0093  vside d=7 link 7575775 s 5555555  y=0.5581 x=+0.6512
+  0.0093  vside d=7 link 7575765 s 5555575  y=0.3721 x=+0.8372
+iterations: 0:0.1429 1:0.1463 2:0.1888 3:0.2093 4:0.2093 5:0.2093 6:0.2093 7:0.2093
