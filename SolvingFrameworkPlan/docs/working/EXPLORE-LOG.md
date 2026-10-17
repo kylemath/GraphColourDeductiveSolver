@@ -11,6 +11,14 @@
 - **Guess.** Two die, both d = 8 (round 16: 31% of d = 8/9 windows D; d = 9 windows at ring 15-16 ran 6 D of 185 in
   round 25).
 
+**Round 31 result (04:57Z): H-B30 lives; both d = 8 binders forbidden** (`wheeldis/loop/n9/FINDINGS.md`).
+- 31 windows, **9 D**: 9 of 19 at d = 8, 0 of 12 at d = 9.
+- Forbidden: 85675765/55555555 and 56565585/69695665. Free: the two d = 9 rows (no window left at ring <= 16) and the
+  d = 7 pair (Studio's 3 queued windows, then 2 at ring 18; none at ring 17).
+- Guess check: "two die, both d = 8" was right.
+- **Paused here** (coordinator, 04:53Z) until Studio's second engine and its d = 7 queue return. win31 is added to
+  `loop/l2/full_extra.args` but no LP has run with it.
+
 ## Round 30 (17 Oct 2026, 04:02Z-): H-L2e, is 9/43 near the converged transfer LP? (coordinator's go, 03:57Z)
 
 **Pre-registered 04:02Z, before the run.**

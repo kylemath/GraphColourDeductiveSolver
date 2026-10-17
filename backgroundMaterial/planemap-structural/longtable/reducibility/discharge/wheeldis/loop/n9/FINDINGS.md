@@ -144,3 +144,20 @@ and the binders below have windows left). Guess ("between 9/43 and 0.215") wrong
 **Supply.** 31 untested windows at ring <= 16, all at the d = 8/9 binders (f8: 4 at ring 12, 4 at 13, 6 at 14, 5 at
 15; f9: 5 at 15, 7 at 16), plus 8 in Studio's queue. The two d = 7 binders have no untested window at ring <= 16 outside
 Studio's queue.
+
+# Round 31 (H-B30): small windows on round 30's d = 8/9 binders
+
+17 Oct 2026, 04:52Z-04:57Z. `run31.sh`.
+
+**Windows.** The 31 untested windows of the four d = 8/9 binders at ring <= 16 (`win31.txt`): **9 D** (`win31.out`),
+9 of 19 at d = 8 (rings 12-14), 0 of 12 at d = 9 (rings 15-16).
+
+**Coverage** (`cov31.txt`): both d = 8 binders forbidden, **85675765/55555555** (two windows) and **56565585/69695665**
+(three). Still free: d = 9 565656565/668556866 and 565565565/685885865 (no window left at ring <= 16), and the d = 7
+pair 5567576/5756756 and 5586576/5757756 (only Studio's 3 queued windows and 2 at ring 18 left; none at ring 17).
+
+**Verdict.** H-B30 lives (bar: 2 of 4). Guess ("two die, both d = 8") right.
+
+**State at the pause.** The transfer LP's last read is round 30's 15/83 (lower bound, near converged); win31 is not
+in it yet (added to `../l2/full_extra.args` for the next run). This line pauses here until Studio's second engine
+and its d = 7 queue come back.
