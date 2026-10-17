@@ -32,6 +32,11 @@ XCAP = float(next((a[5:] for a in ARGS0 if a.startswith('xcap=')), '3'))
 WARMF = next((a[5:] for a in ARGS0 if a.startswith('warm=')), None)
 MANY = int(next((a[5:] for a in ARGS0 if a.startswith('many=')), '40'))   # rows kept per degree per iteration
 ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many='))]
+# Loader exclusions by name (Long Table, 17 Oct): defect-derived verdict files (out/def_*) and oracle stand-ins (hr1_or1)
+EXCL = ('out/def_', 'hr1_or1')
+DROPPED = [a for a in ARGS_W if a.startswith(('pat=', 'cpat=')) and any(e in a for e in EXCL)]
+ARGS_W = [a for a in ARGS_W if a not in DROPPED]
+print('loader excluded %d files by name: %s' % (len(DROPPED), ' '.join(a.split('=', 1)[1] for a in DROPPED)), flush=True)
 src = open(os.path.join(HERE, 'wlp3.py')).read().replace('os.path.abspath(__file__)', repr(os.path.join(HERE, 'wlp3.py')), 1)
 sys.argv = ['wlp3'] + ARGS_W
 exec(src[:src.index('A_ub, b_ub = [], []')])
