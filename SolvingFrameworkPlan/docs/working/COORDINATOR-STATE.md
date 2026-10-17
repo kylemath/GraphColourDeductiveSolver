@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 17 Oct: merged explore round 24 (b9171391): win9 gives 140 D windows, 179/218 d=9/10 rows forbidden (d=9 23/56), binder 559565656/565566666 still free. Round 25 (ring 15-16 on the free rows) running. win89 now second-engined (d36aea15, 687/687); win9 still single-engine.
 - 17 Oct: merged explore round 24 (b9171391): win9 gives 140 D windows, 179/218 d=9 rows forbidden, binder 559565656/565566666 still free. Round 25 (ring 15-16 on the 39 free rows) running. win89 and win9 still need a second engine at Studio before they count.
 - 17 Oct 01:40 — Job 28 round 13, with win14/win8/win89 in: t* = 7/27 (one d=7 binder, 5675765/6577575). Round 12 final: 13/49, 203 configurations (47 D, 15 C, 141 neither), 15 HARD28 rows. Job 29 L2 (wlp3x/sep3x, e7687c55): with transfers off it reproduces 7/27 and lone78's 3/7, so the validation passes. Transfer columns are generated exactly, so convergence gives a true bound. The first transfers-on solve is running.
 - 17 Oct 01:05 — Kyle chose "Build it". Pause lifted for: Studio builds Job 29 L2 (oriented big–big transfers) on the full pattern set including win14/win8/win89, with the win89 second engine re-queued; explore works the d=9 lone-five family. The Job 28 attack loop stays paused. k19/studio14c keep priority.
