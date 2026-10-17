@@ -8,7 +8,7 @@
 - **Go stands** (round 23's bar) if t* at the end is under 0.22; **L2 looks weak** if it is above 0.25 (13/49 =
   0.265 without transfers); in between, neither.
 - Also recorded: the binding rows by degree, which pick round 27's window targets.
-- **Kill line (coordinator, added 02:44Z after launch, before any of the run's output was read).** H-L2c dies if
+- **Kill line (coordinator, added 02:42Z after launch, before any of the run's output was read).** H-L2c dies if
   the converged t* is at least 0.22, or if t* is still rising at the cap and no binder is reachable by small windows
   (no untested B-fixed window at ring <= 16). Reported: t* with its convergence status, and the top binders by row and
   by degree.
