@@ -1,5 +1,19 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 28 (17 Oct 2026, 03:49Z-): H-L2d, the transfer LP with the full registry (coordinator's go, 03:44Z)
+
+**Pre-registered 03:49Z, before the run.**
+- **Why.** Rounds 25-27 forbid three of the four rows that held round 26 at 7/33, and l2.py did not load Studio's
+  r_12 partial output (which forbids the fourth's neighbour 5567576/5756656).
+- **Run.** `l2.py` with j28_12.args plus every registry `.out` with a D verdict it lacked (`loop/l2/full_extra.args`:
+  r_12.partial, z_lone_studio_dfast18, def_b7_k5d14, fans, b7/k5_d14, and all explore windows). 1 core, tmax 1500 s,
+  maxit 8, wall sized for round 26's last iteration (`loop/n9/run28.sh`). Values are lower bounds unless converged.
+- **Bars.** The go stands if t* at the end is under 0.22. Kill line (coordinator's): converged t* >= 0.22, or t*
+  still rising at the cap with no binder reachable by an untested small window at ring <= 16. Reported: t*, its
+  convergence status, and the top binders by row and by degree.
+- **Guess.** t* reads about 0.20-0.21 at the cap, not converged; 5576576/5756756 and other d = 7 rows bind.
+- **Caveat.** win25, win25b and win27 are single-engine (dfast) until Studio's second engine passes them.
+
 ## Round 27 (17 Oct 2026, 03:44Z-): H-B26, do small windows forbid the 7/33 binders?
 
 **Pre-registered 03:44Z, before any dfast run.**
@@ -11,6 +25,12 @@
 - **Lives** if at least 2 of the 3 free binders are forbidden; **dies** if none is.
 - **Guess.** One dies, likely the d = 10 row (round 24: 47% of d = 10 windows D, against 11% at d = 9).
 - No LP rerun inside this round; the next LP run should also load `out/job28/r_12.partial.out`.
+
+**Round 27 result (03:47Z): H-B26 lives; 2 of the 3 free binders forbidden** (`wheeldis/loop/n9/FINDINGS.md`).
+- 16 windows, **6 D**: 2 of 5 at d = 7 (ring 13), 4 of 11 at d = 10.
+- Newly forbidden: d = 7 5675765/9555596 and d = 10 5656556565/6576565765. Still free: **5576576/5756756** (the
+  heaviest, dual 0.12; Studio's dfast18/cfast has its other windows).
+- Guess check: "one dies" was low; two did.
 
 ## Round 26 (17 Oct 2026, 02:41Z-): H-L2c, where does the transfer LP settle with every explore window?
 

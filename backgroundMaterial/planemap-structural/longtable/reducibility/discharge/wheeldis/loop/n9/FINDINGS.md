@@ -72,3 +72,19 @@ lost its report. By row: d = 7 5576576/5756756 (dual 0.12), 5675765/9555596 (0.0
   load (its patterns are the j28_12 snapshot plus the pat= files).
 - The other three are free, and the four rows have 16 untested small windows at ring <= 16 (1 at ring 11, 2 at 13,
   3 at 14, 7 at 15, 3 at 16; `bind25.txt` is the row list).
+
+# Round 27 (H-B26): small windows on the 7/33 binders
+
+17 Oct 2026, 03:43Z-03:47Z. `run27.sh`.
+
+**Windows.** All 16 untested windows of the four binders at ring <= 16 (`win27.txt`): **6 D** (`win27.out`), 2 of 5
+at d = 7 (both ring 13) and 4 of 11 at d = 10.
+
+**Coverage** (`cov27.txt`): 3 of 4 binders forbidden. Newly forbidden: d = 7 **5675765/9555596** (two ring-13
+windows) and d = 10 **5656556565/6576565765** (three windows). 5567576/5756656 was already forbidden (Studio's
+r_12 partial).
+
+**Verdict.** H-B26 lives (bar: 2 of the 3 free binders). Guess ("one dies, likely the d = 10 row") was low.
+
+**Still free: 5576576/5756756**, the heaviest binder (dual 0.12). Its windows at ring 11 and 16 here are not D; Studio
+has dfast18/cfast running on its other B-fixed S.
