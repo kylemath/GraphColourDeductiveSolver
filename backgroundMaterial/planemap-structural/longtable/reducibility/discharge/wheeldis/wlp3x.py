@@ -30,7 +30,8 @@ ARGS0 = sys.argv[1:]
 NOTX = 'notx' in ARGS0
 XCAP = float(next((a[5:] for a in ARGS0 if a.startswith('xcap=')), '3'))
 WARMF = next((a[5:] for a in ARGS0 if a.startswith('warm=')), None)
-ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm='))]
+MANY = int(next((a[5:] for a in ARGS0 if a.startswith('many=')), '40'))   # rows kept per degree per iteration
+ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many='))]
 src = open(os.path.join(HERE, 'wlp3.py')).read().replace('os.path.abspath(__file__)', repr(os.path.join(HERE, 'wlp3.py')), 1)
 sys.argv = ['wlp3'] + ARGS_W
 exec(src[:src.index('A_ub, b_ub = [], []')])
@@ -163,12 +164,15 @@ while True:
         for d in dl:
             thr = d - 6 + t + 1e-7
             if d <= DMAXP:
-                for wgt, lk, sv in sepx(d, yv, {} if NOTX else xv, thr, 40): added += add_recv(d, lk, sv)
+                for wgt, lk, sv in sepx(d, yv, {} if NOTX else xv, thr, MANY): added += add_recv(d, lk, sv)
             else:
-                for wgt, path, nbig in dp9(d, yv, 0.0 if NOTX else z9, thr): added += add_row9(d, path, nbig)
+                for wgt, path, nbig in dp9(d, yv, 0.0 if NOTX else z9, thr, MANY): added += add_row9(d, path, nbig)
         if added: break
     print('iter %d t=%.6f rows %d xcols %d z9=%.4f added %d (%.0fs)' % (it, t, len(rows), len(XCOL), z9, added, time.time() - T0), flush=True)
     it += 1
+    if it % 5 == 0:   # row dump for warm restarts
+        open(os.path.join(HERE, 'out', 'wlp3x_%s_rows.txt' % TAGX), 'w').write(''.join(
+            '  receiver d=%d link %s s %s\n' % (i_[1], i_[2], i_[3]) for i_ in rinfo if i_[0] in ('recv', 'warm')))
     if not added: break
 res, yv, xv, z9, t = solve()
 duals = -res.ineqlin.marginals
