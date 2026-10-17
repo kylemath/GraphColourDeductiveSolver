@@ -161,3 +161,21 @@ pair 5567576/5756756 and 5586576/5757756 (only Studio's 3 queued windows and 2 a
 **State at the pause.** The transfer LP's last read is round 30's 15/83 (lower bound, near converged); win31 is not
 in it yet (added to `../l2/full_extra.args` for the next run). This line pauses here until Studio's second engine
 and its d = 7 queue come back.
+
+# Round 32 (H-L2f): the transfer LP with win31
+
+17 Oct 2026, 04:58Z-06:58Z. `run32.sh`; iteration log `run32_iters.txt`. **Killed at the 2-hour wall before its
+report**: no binder list, tight rows or dump.
+
+**Run.** t* by iteration: 0.0667, 0.1163, 0.1355, 0.1475, 0.1550, 0.1561, 0.1634, 0.1634, 0.1657, **0.1686 (29/172) at
+iteration 9**, still rising. Iteration 9's separation started at 1128 s and ran to 5290 s (y-only sep3 at d = 7-13,
+which l2.py did not check against tmax) and added 519 rows to 119,842; the final solve and report then did not finish
+inside the remaining 32 minutes.
+
+**Verdict: inconclusive.** 0.1686 is 0.012 under 15/83, but it is a rising lower bound, so "moves" cannot be scored;
+true(round 32) <= true(round 30) holds either way, and neither is known. The go stands (under 0.22). The kill line's
+second clause cannot be checked without the binders. Guess ("holds near 15/83") not scored.
+
+**Fix (l2.py, not yet used in a run).** `binout=FILE` rewrites the top binding rows after every solve, so a killed
+run keeps its last binders; tmax is now also checked before each degree of y-only separation, and a run cut by tmax
+is never reported as converged.

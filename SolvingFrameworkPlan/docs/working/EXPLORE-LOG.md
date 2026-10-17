@@ -12,6 +12,16 @@
   an untested small window at ring <= 16. Reported: t*, convergence, and the binders by row and by degree.
 - **Guess.** It holds near 15/83: the d = 7 pair carries 0.193 of round 30's 0.36 dual weight.
 
+**Round 32 result (07:00Z): inconclusive. Killed at the 2-hour wall before its report; t* = 29/172 = 0.1686 at
+iteration 9 and still rising** (`wheeldis/loop/n9/FINDINGS.md`).
+- Iteration 9's y-only separation (d = 7-13) ran 70 minutes and was not checked against tmax; the final solve and
+  report did not fit in the rest of the wall. No binders, tight rows or dump.
+- 0.1686 is under 15/83 but is a rising lower bound, so "moves" vs "holds" cannot be scored. Go stands (under 0.22);
+  kill line's binder clause cannot be checked.
+- Fix committed to l2.py (unused so far): `binout=FILE` after every solve, tmax checked inside y-only separation,
+  a tmax-cut run never reported converged.
+- Line paused (coordinator) until Studio's queue returns.
+
 ## Round 31 (17 Oct 2026, 04:52Z-): H-B30, do small windows forbid round 30's d = 8/9 binders?
 
 **Pre-registered 04:52Z, before any dfast run.**
