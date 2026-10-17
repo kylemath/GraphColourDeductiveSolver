@@ -1,5 +1,18 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 25 (17 Oct 2026, 01:55Z-): H-N9b, ring 15-16 windows for the 39 rows round 24 left free
+
+**Pre-registered 01:55Z, before any dfast run.**
+- **Why.** Round 24 left 39 of its 218 rows free (33 d = 9, 6 d = 10), the binder 559565656/565566666 among them.
+  t* stays at 1/5 until the binder dies.
+- **Windows.** All 202 untested small B-fixed windows of the 39 rows at ring 15-16 (`loop/n9/win25.txt`, built by
+  `w2.py build ... ds=9,10`): the binder's 11 first (8 at ring 15, 3 at 16), then 82 ring 15, then 106 ring 16.
+  dfast on 3 cores, 45-minute wall cap; windows not reached are reported as untested.
+- **H-N9b lives** if the binder is forbidden, or if at least 13 of the 39 rows (1/3) are; **dies** if the binder stays
+  free and at most 3 rows (under 10%) are forbidden.
+- **Guess.** The binder stays free: its 9 tested windows all failed, and only 11% of d = 9 windows were D at ring
+  <= 14. About 5-8 of the 39 rows die, mostly the d = 10 ones.
+
 ## Round 24 (17 Oct 2026, 01:06Z-): H-N9, small windows against the d = 9 five-heavy family (coordinator's go)
 
 **Pre-registered 01:06Z, before counting or any dfast run.**
