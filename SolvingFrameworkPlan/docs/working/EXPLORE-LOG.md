@@ -13,6 +13,16 @@
   convergence status, and the top binders by row and by degree.
 - **Guess.** Not converged at the cap; t* ends between 9/43 and 0.215, with d = 7 rows binding.
 
+**Round 30 result (04:52Z): t* = 15/83 = 0.1807 from iteration 5 through 8; the last iteration added 0.25% more
+rows, so close to converged but still a lower bound** (`wheeldis/loop/n9/FINDINGS.md`).
+- The drop from 9/43 comes from win29's four D windows forbidding start-set rows. It leans on single-engine verdicts
+  (win25/25b/27/29) until Studio's second engine passes them.
+- Go stands with margin; kill line not met.
+- Binders: d = 7 5567576/5756756 and 5586576/5757756 (0.096 each), d = 8 85675765/55555555 and 56565585/69695665
+  (0.048 each), d = 9 565656565/668556866 and 565565565/685885865. None forbidden. 31 untested windows at ring <= 16,
+  all at the d = 8/9 binders; the d = 7 two have none outside Studio's queue.
+- Guess check: "between 9/43 and 0.215" was wrong; it fell to 15/83.
+
 ## Round 29 (17 Oct 2026, 03:57Z-): H-B28, do small windows forbid round 28's binders?
 
 **Pre-registered 03:57Z, before any dfast run.**
