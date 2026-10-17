@@ -11,6 +11,11 @@
 - **Guess.** Two die. Round 27 killed 2 of 3 binders, but most of these are d = 7 rows whose ring <= 14 windows
   were already tested in rounds 14-15.
 
+**Round 29 result (04:00Z): H-B28 lives; 4 of 9 binders forbidden** (`wheeldis/loop/n9/FINDINGS.md`).
+- 14 windows, **4 D**, all d = 7. Forbidden: the two heaviest (5775656/6565579, 5675765/6557576) and two v-side rows
+  with 7s in the link. Five stay free, among them d = 9 565656565/677667766.
+- Guess check: "two die" was low; four did.
+
 ## Round 28 (17 Oct 2026, 03:49Z-): H-L2d, the transfer LP with the full registry (coordinator's go, 03:44Z)
 
 **Pre-registered 03:49Z, before the run.**
