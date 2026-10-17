@@ -1,5 +1,43 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 25 (17 Oct 2026, 01:47Z-): H-N9b, ring 15-16 windows for the 39 rows round 24 left free
+
+**Pre-registered 01:47Z, before any dfast run.**
+- **Why.** Round 24 left 39 of its 218 rows free (33 d = 9, 6 d = 10), the binder 559565656/565566666 among them.
+  t* stays at 1/5 until the binder dies.
+- **Windows.** All 202 untested small B-fixed windows of the 39 rows at ring 15-16 (`loop/n9/win25.txt`, built by
+  `w2.py build ... ds=9,10`): the binder's 11 first (8 at ring 15, 3 at 16), then 82 ring 15, then 106 ring 16.
+  dfast on 3 cores, 45-minute wall cap; windows not reached are reported as untested.
+- **H-N9b lives** if the binder is forbidden, or if at least 13 of the 39 rows (1/3) are; **dies** if the binder stays
+  free and at most 3 rows (under 10%) are forbidden.
+- **Guess.** The binder stays free: its 9 tested windows all failed, and only 11% of d = 9 windows were D at ring
+  <= 14. About 5-8 of the 39 rows die, mostly the d = 10 ones.
+
+## Round 24 (17 Oct 2026, 01:06Z-): H-N9, small windows against the d = 9 five-heavy family (coordinator's go)
+
+**Pre-registered 01:06Z, before counting or any dfast run.**
+- **Why.** Round 23's transfer LP is held at 1/5 by one d = 9 row, 559565656/565566666 (five fives, one big). With
+  transfers, d = 9 rows whose fives have no usable big are the floor.
+- **Family.** Every d = 9 arrangement with the maximum number of fives allowed by the current patterns (j28_12 plus
+  win14/win8/win89; sep3 enumeration with unit weights), and with no 7/8 link vertex. Counted first.
+- **Windows.** Round 14/16's small B-fixed windows (`w2.py build ds=9`, |S| = 2-3, u exact 9, N(S) exact) not yet
+  tested, ring <= 14 (ring 15 if there are fewer than 100 at ring <= 14), dfast on 3 cores.
+- **H-N9 lives** if the D windows forbid at least half of the family; **dies** under 10%.
+- **Guess.** About 40%. Round 16 forbade 77% of Studio's d = 9 tight rows, but those carried 7s and 8s near the fives;
+  here the fives sit in a 6-sea, where windows are larger and less often D.
+
+**Round 24 result (01:45Z): H-N9 lives on the family as built, 179 of 218 rows forbidden (82.1%); the binder is
+still free** (`wheeldis/loop/n9/FINDINGS.md`).
+- **Deviation.** The sep3 max-fives enumeration timed out, so the family is the LP's own tight rows: d = 9/10 rows
+  tight at a 4-iteration rerun of round 23 (t* = 1/5) with no 7/8 link vertex. 56 at d = 9, 162 at d = 10. No
+  existing pattern forbade any of them.
+- **Windows.** 413 untested at ring <= 14, **140 D**: 16 of 148 centred at a 9, 124 of 265 at a 10.
+- **Coverage.** d = 9: 23 of 56 (41%, between the bars on the population the pre-registration named). d = 10:
+  156 of 162.
+- **Binder.** 559565656/565566666 stays free, so t* stays at 1/5 and the LP was not rerun. 39 rows stay free;
+  they have 202 untested windows at ring 15-16 (the binder 11).
+- Guess check: "about 40%" was right for d = 9; d = 10 is far easier.
+
 ## Round 23 (16 Oct 2026, 23:28Z-): H-L2 again, with the explore windows as patterns
 
 **Registered 23:28Z, after a first look (not a clean pre-registration).** Rounds 20 and 22 used only the j28_12

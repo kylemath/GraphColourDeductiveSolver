@@ -1,6 +1,6 @@
 # Round 24 (H-N9): small windows against the d = 9/10 family that holds the transfer LP at 1/5
 
-Engine level (dfast verdicts, w2.py matching; no Lean). 17 Oct 2026, 01:06Z-01:50Z.
+Engine level (dfast verdicts, w2.py matching; no Lean). 17 Oct 2026, 01:06Z-01:45Z.
 
 **Family.** The 218 rows tight at a 4-iteration rerun of round 23's transfer LP (t* = 1/5, `tight23.txt`) with
 d = 9 or 10 and no 7/8 link vertex: 56 at d = 9, 162 at d = 10 (`fam9.txt`, built by `mk9.sh`). Deviation from the
