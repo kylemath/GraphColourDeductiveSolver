@@ -122,3 +122,25 @@ all d = 7 (rings 12, 13, 15, 16); the one d = 9 window is not D.
 5567576/5756756, 5765575/7565777, 7557755/7775776, and d = 9 565656565/677667766.
 
 **Verdict.** H-B28 lives (bar: at least 3 of 9). Guess ("two die") was low.
+
+# Round 30 (H-L2e): the full-registry transfer LP run long
+
+17 Oct 2026, 04:02Z-04:52Z. `run30.sh`; iterations `run30_iters.txt`, report `l2_r30.txt`, tight rows `tight30.txt`.
+
+**Run.** Round 28's patterns plus win29. t* by iteration: 0.0667, 0.1163, 0.1572, 1/6, 0.1669, then **15/83 = 0.1807
+from iteration 5 through 8**. Iteration 8 started before the 1500 s cutoff, took about 20 minutes, and added only
+165 rows to 66,159 (0.25%: 43 sep3 d = 7, 119 sep3 d = 8, 3 v-side). Not formally converged, but close; still a
+lower bound. 35 of the 46 HARD28-like rows in the LP are slack.
+
+**Why it fell from 9/43.** win29's four D windows forbid rows in round 28's start set (iteration 0 reads 0.0667
+against 1/7). It rests on single-engine verdicts (win25, win25b, win27, win29) until Studio's second engine passes them.
+
+**Verdict.** The go stands (bar: under 0.22), now with margin. Kill line not met (not converged and not rising,
+and the binders below have windows left). Guess ("between 9/43 and 0.215") wrong: it fell.
+
+**Binders** (`bind30.txt`, none forbidden by the registry, `cov30.txt`). By row: d = 7 5567576/5756756 and
+5586576/5757756 (dual 0.096 each); d = 8 85675765/55555555 and 56565585/69695665 (0.048 each); d = 9 565656565/668556866
+(0.024) and 565565565/685885865 (0.012). By degree: d = 7 0.193, d = 8 0.096, d = 9 0.036.
+**Supply.** 31 untested windows at ring <= 16, all at the d = 8/9 binders (f8: 4 at ring 12, 4 at 13, 6 at 14, 5 at
+15; f9: 5 at 15, 7 at 16), plus 8 in Studio's queue. The two d = 7 binders have no untested window at ring <= 16 outside
+Studio's queue.

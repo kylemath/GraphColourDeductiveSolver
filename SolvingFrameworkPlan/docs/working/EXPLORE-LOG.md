@@ -1,5 +1,16 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 31 (17 Oct 2026, 04:52Z-): H-B30, do small windows forbid round 30's d = 8/9 binders?
+
+**Pre-registered 04:52Z, before any dfast run.**
+- **Why.** Round 30 holds the transfer LP at 15/83 on six rows (`loop/n9/bind30.txt`). The two d = 7 rows have no
+  untested window at ring <= 16 outside Studio's queue; the four d = 8/9 rows have 31.
+- **Windows.** Those 31 (`loop/n9/win31.txt`; f8: 4 at ring 12, 4 at 13, 6 at 14, 5 at 15; f9: 5 at 15, 7 at 16),
+  dfast on 3 cores, 30-minute cap.
+- **Lives** if at least 2 of the 4 d = 8/9 binders are forbidden; **dies** if none is.
+- **Guess.** Two die, both d = 8 (round 16: 31% of d = 8/9 windows D; d = 9 windows at ring 15-16 ran 6 D of 185 in
+  round 25).
+
 ## Round 30 (17 Oct 2026, 04:02Z-): H-L2e, is 9/43 near the converged transfer LP? (coordinator's go, 03:57Z)
 
 **Pre-registered 04:02Z, before the run.**
@@ -12,6 +23,16 @@
   still rising at the cap with no binder reachable by an untested small window at ring <= 16. Reported: t*, its
   convergence status, and the top binders by row and by degree.
 - **Guess.** Not converged at the cap; t* ends between 9/43 and 0.215, with d = 7 rows binding.
+
+**Round 30 result (04:52Z): t* = 15/83 = 0.1807 from iteration 5 through 8; the last iteration added 0.25% more
+rows, so close to converged but still a lower bound** (`wheeldis/loop/n9/FINDINGS.md`).
+- The drop from 9/43 comes from win29's four D windows forbidding start-set rows. It leans on single-engine verdicts
+  (win25/25b/27/29) until Studio's second engine passes them.
+- Go stands with margin; kill line not met.
+- Binders: d = 7 5567576/5756756 and 5586576/5757756 (0.096 each), d = 8 85675765/55555555 and 56565585/69695665
+  (0.048 each), d = 9 565656565/668556866 and 565565565/685885865. None forbidden. 31 untested windows at ring <= 16,
+  all at the d = 8/9 binders; the d = 7 two have none outside Studio's queue.
+- Guess check: "between 9/43 and 0.215" was wrong; it fell to 15/83.
 
 ## Round 29 (17 Oct 2026, 03:57Z-): H-B28, do small windows forbid round 28's binders?
 

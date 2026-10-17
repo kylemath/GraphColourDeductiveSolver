@@ -1,0 +1,109 @@
+big wheels in R: 105 (+14 from w7plus)
+patterns: {('pairs_D7_k2_dfast.out', 7): 59, ('pairs_D8_k3_dfast.out', 8): 256, ('pairs_D9_k4_dfast.out', 9): 524, ('eq_D7_dfast.out', 7): 7698, ('eq_D8_k3_dfast.out', 8): 3192, ('lp_dfast.out', 7): 68, ('lp_dfast.out', 8): 224, ('lp_dfast.out', 9): 133, ('lp_dfast.out', 10): 8, ('pairs_D10_k5_dfast_partial.out', 10): 203, ('def_loop_new1_1.out', 7): 3, ('def_loop_old_1.out', 7): 3, ('def_r1.out', 7): 44, ('C:k2a.cfast', 7): 11, ('C:k2b.cfast', 7): 13, ('C:part00.cfast', 7): 498, ('C:part01.cfast', 7): 485, ('C:def_r1.cfast', 7): 4, ('r_1.out', 7): 14, ('r_1.out', 8): 6, ('r_10.out', 7): 4, ('r_11.out', 7): 5, ('r_2.out', 7): 169, ('r_2.out', 8): 30, ('r_2.out', 9): 43, ('r_3.out', 10): 3, ('r_4.out', 10): 3, ('r_9.out', 7): 7, ('r_D10k5.out', 10): 353, ('r_hr1.out', 7): 8, ('C:r_1.cfast', 9): 1, ('C:r_1.cfast', 7): 8, ('C:r_1.cfast', 8): 1, ('b7f.out', 7): 2, ('g9_big_r1.dfast.out', 10): 212, ('g9_big_r1.dfast.out', 11): 266, ('g9_big_r1.dfast.out', 12): 19, ('g9_c8_r1.dfast.out', 8): 53, ('g9_lp10_r14.dfast.out', 10): 1, ('b1.out', 10): 6, ('b10.out', 11): 5, ('b10.out', 9): 1, ('b6.out', 10): 16, ('b6.out', 9): 1, ('b8.out', 10): 1, ('small.out', 10): 7, ('cert_bf_1.out', 7): 3, ('C:cert_bf.cfast', 7): 1, ('u1.pat', 7): 9, ('u1.pat', 8): 17, ('u1.pat', 9): 37, ('u1.pat', 10): 49, ('u1.pat', 11): 49, ('u1.pat', 12): 49, ('u1.pat', 13): 49, ('u1.pat', 14): 49, ('u1.pat', 15): 49, ('u1.pat', 16): 49, ('u1.pat', 17): 49, ('u2.pat', 7): 1, ('u2.pat', 8): 1, ('u2.pat', 9): 13, ('u2.pat', 10): 13, ('u2.pat', 11): 13, ('u2.pat', 12): 13, ('u2.pat', 13): 13, ('u2.pat', 14): 13, ('u2.pat', 15): 13, ('u2.pat', 16): 13, ('u2.pat', 17): 13, ('u10.pat', 9): 3, ('u10.pat', 10): 3, ('u10.pat', 11): 3, ('u10.pat', 12): 3, ('u10.pat', 13): 3, ('u10.pat', 14): 3, ('u10.pat', 15): 3, ('u10.pat', 16): 3, ('u10.pat', 17): 3, ('r_12.partial.out', 7): 37, ('win14.out', 7): 178, ('win8.out', 7): 23, ('win89.out', 8): 375, ('win89.out', 9): 312, ('win9.out', 10): 124, ('win9.out', 9): 16, ('win25.out', 9): 10, ('win25b.out', 9): 6, ('win27.out', 7): 2, ('win27.out', 10): 4, ('win29.out', 7): 4}
+sep: NV=942 RBIG=104 patterns=16367
+rows from tight_12.txt: +1164 (forbidden by the j28_12 patterns: 2017)
+rows from cov2.txt: +264 (forbidden by the j28_12 patterns: 219)
+DP tables ready (2s)
+iter 0 t=0.066667 rows 4537 xcols 592 tau>0 291 added {'sep3_d7': 153, 'sep3_d8': 173, 'sep3_d9': 200, 'sep3_d10': 200, 'sep3_d11': 200, 'sep3_d12': 200, 'sep3_d13': 200, 'sep3_d14': 200, 'vside_d7': 349, 'vside_d8': 273, 'vside_d9': 240, 'vside_d10': 240, 'vside_d11': 240, 'vside_d12': 241} masked 74 capped 0 (21s)
+iter 1 t=0.116279 rows 7977 xcols 678 tau>0 339 added {'sep3_d7': 176, 'sep3_d8': 181, 'sep3_d9': 200, 'sep3_d10': 200, 'sep3_d11': 200, 'sep3_d12': 200, 'sep3_d13': 200, 'sep3_d14': 200, 'vside_d7': 384, 'vside_d8': 307, 'vside_d9': 298, 'vside_d10': 297, 'vside_d11': 299, 'vside_d12': 298} masked 43 capped 2 (37s)
+iter 2 t=0.157184 rows 11972 xcols 1066 tau>0 533 added {'sep3_d7': 169, 'sep3_d8': 119, 'sep3_d9': 78, 'sep3_d10': 124, 'sep3_d11': 122, 'sep3_d12': 42, 'sep3_d13': 13, 'vside_d7': 404, 'vside_d8': 534, 'vside_d9': 594, 'vside_d10': 597, 'vside_d11': 602, 'vside_d12': 597} masked 933 capped 8 (59s)
+iter 3 t=0.166667 rows 16956 xcols 1414 tau>0 706 added {'sep3_d7': 80, 'sep3_d8': 176, 'sep3_d9': 118, 'sep3_d10': 45, 'sep3_d11': 9, 'sep3_d12': 6, 'sep3_d14': 1, 'vside_d7': 436, 'vside_d8': 738, 'vside_d9': 841, 'vside_d10': 847, 'vside_d11': 843, 'vside_d12': 844} masked 1165 capped 14 (101s)
+iter 4 t=0.166916 rows 24304 xcols 2004 tau>0 1001 added {'sep3_d7': 123, 'sep3_d8': 143, 'sep3_d9': 185, 'sep3_d10': 143, 'sep3_d11': 37, 'sep3_d12': 77, 'vside_d7': 756, 'vside_d8': 962, 'vside_d9': 1234, 'vside_d10': 1232, 'vside_d11': 1234, 'vside_d12': 1222} masked 492 capped 0 (167s)
+iter 5 t=0.180723 rows 33550 xcols 3034 tau>0 1516 added {'sep3_d7': 38, 'sep3_d8': 17, 'vside_d7': 1460, 'vside_d8': 1446, 'vside_d9': 1569, 'vside_d10': 1565, 'vside_d11': 1581, 'vside_d12': 1570} masked 1545 capped 1 (304s)
+iter 6 t=0.180723 rows 46220 xcols 4348 tau>0 2173 added {'sep3_d7': 21, 'sep3_d8': 10, 'sep3_d9': 58, 'sep3_d10': 78, 'sep3_d11': 24, 'vside_d7': 2442, 'vside_d8': 1995, 'vside_d9': 2013, 'vside_d10': 2015, 'vside_d11': 2009, 'vside_d12': 2005} masked 809 capped 0 (635s)
+iter 7 t=0.180723 rows 66159 xcols 6992 tau>0 3496 added {'sep3_d7': 161, 'sep3_d8': 137, 'sep3_d9': 19, 'sep3_d10': 10, 'sep3_d11': 5, 'sep3_d12': 3, 'vside_d7': 4649, 'vside_d8': 2664, 'vside_d9': 3065, 'vside_d10': 3070, 'vside_d11': 3080, 'vside_d12': 3076} masked 865 capped 0 (766s)
+iter 8 t=0.180723 rows 66324 xcols 9406 tau>0 1 added {'sep3_d7': 43, 'sep3_d8': 119, 'vside_d7': 3} masked 1438 capped 0 (1984s)
+# l2.py maxit=60 tmax=1500 pat=out/job28/r_12.partial.out pat=out/job28/z_lone_studio_dfast18.out pat=out/fans_dfast.out pat=loop/w2/win14.out pat=loop/w2/win8.out pat=loop/w2/win89.out pat=loop/n9/win9.out pat=loop/n9/win25.out pat=loop/n9/win25b.out pat=loop/n9/win27.out pat=loop/n9/win29.out dump=../n9/sol30.npz tightout=../n9/tight30.txt: t* = 0.180723 (13/49 = 0.265306); 66324 rows, 9430 transfer columns, converged=NO (9 iterations, 2969s)
+rows by source: {'tight12': 1164, 'fam617': 264, 'sep3': 5636, 'vside': 59260}
+binding rows (positive dual) by source, degree: count / total dual weight
+  fam617 d=7: 1 / 0.0964
+  sep3 d=8: 1 / 0.0482
+  tight12 d=7: 1 / 0.0964
+  tight12 d=9: 2 / 0.0361
+  vside d=8: 1 / 0.0482
+tight rows by source, degree: {('fam617', 7): 46, ('sep3', 7): 141, ('sep3', 8): 165, ('sep3', 9): 132, ('sep3', 10): 56, ('tight12', 7): 24, ('tight12', 8): 108, ('tight12', 9): 83, ('vside', 7): 927, ('vside', 8): 644, ('vside', 9): 1592, ('vside', 10): 212, ('vside', 11): 86, ('vside', 12): 21}
+HARD28-like rows (49): slack at t*
+  5567586 5758756 HARD28: slack 0.1028 dual 0.0000
+  5567586 5758856 HARD28: slack 0.0482 dual 0.0000
+  5568586 5658757 HARD28: slack 0.0945 dual 0.0000
+  5567586 5659857 HARD28: slack 0.0000 dual 0.0000
+  5567596 5758856 HARD28: slack 0.0000 dual 0.0000
+  5568596 5658757 HARD28: slack 0.0000 dual 0.0000
+  5568596 5758856 HARD28: slack 0.1103 dual 0.0000
+  5568586 5658657 HARD28: slack 0.1379 dual 0.0000
+  5567586 5758956 HARD28: slack 0.2386 dual 0.0000
+  5567586 5756856 HARD28: slack 0.1782 dual 0.0000
+  5568586 5658857 HARD28: slack 0.0000 dual 0.0000
+  5568586 5656757 HARD28: slack 0.0000 dual 0.0000
+  5567567 5658856 HARD28: not in the LP (forbidden by the j28_12 patterns)
+  5567567 5658857 HARD28: slack 0.3278 dual 0.0000
+  5567569 5658857 HARD28: slack 0.4583 dual 0.0000
+  5567576 5658859 hardlike: slack 0.1241 dual 0.0000
+  5567586 5757756 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657657 hardlike: slack 0.0000 dual 0.0000
+  5568586 5658659 hardlike: slack 0.2137 dual 0.0000
+  5568586 5659859 hardlike: slack 0.4272 dual 0.0000
+  5568596 5756856 hardlike: slack 0.1103 dual 0.0000
+  5568596 5757756 hardlike: slack 0.0537 dual 0.0000
+  5568596 5758656 hardlike: slack 0.4729 dual 0.0000
+  5568567 5658757 hardlike: slack 0.1530 dual 0.0000
+  5569567 5658857 hardlike: slack 0.7369 dual 0.0000
+  5568568 5658757 hardlike: slack 0.1530 dual 0.0000
+  5568569 5658757 hardlike: slack 0.2835 dual 0.0000
+  5567576 5657857 hardlike: slack 0.0000 dual 0.0000
+  5567576 5657859 hardlike: slack 0.0759 dual 0.0000
+  5567576 5658857 hardlike: slack 0.0482 dual 0.0000
+  5567586 5657857 hardlike: slack 0.0000 dual 0.0000
+  5567586 5657859 hardlike: slack 0.0759 dual 0.0000
+  5567586 5658657 hardlike: slack 0.0482 dual 0.0000
+  5567586 5658659 hardlike: slack 0.1241 dual 0.0000
+  5568567 5658759 hardlike: slack 0.0379 dual 0.0000
+  5568567 5658859 hardlike: slack 0.3381 dual 0.0000
+  5568586 5655857 hardlike: slack 0.0000 dual 0.0000
+  5568586 5657857 hardlike: slack 0.0945 dual 0.0000
+  5568586 5657859 hardlike: slack 0.1704 dual 0.0000
+  5568586 5657957 hardlike: slack 0.4458 dual 0.0000
+  5568586 5657959 hardlike: slack 0.5217 dual 0.0000
+  5568586 5658957 hardlike: slack 0.3513 dual 0.0000
+  5568596 5657857 hardlike: slack 0.1640 dual 0.0000
+  5568596 5657859 hardlike: slack 0.2399 dual 0.0000
+  5657567 6587755 hardlike: slack 0.0000 dual 0.0000
+  5657658 6655688 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5657658 8655888 hardlike: not in the LP (forbidden by the j28_12 patterns)
+  5558558 8877977 hardlike: slack 0.5687 dual 0.0000
+  5656568 5989858 hardlike: slack 0.3941 dual 0.0000
+HARD28-like rows slack: 35 of 46 in the LP
+transfers x > 0: 4715; largest:
+  3.0000  8->9 [587|687]
+  3.0000  8->8 [567|887]
+  3.0000  8->8 [567|877]
+  3.0000  7->9 [678|959]
+  3.0000  9->9 [897|957]
+  3.0000  9->9 [896|975]
+  3.0000  9->9 [896|957]
+  3.0000  9->9 [895|975]
+  3.0000  9->9 [895|957]
+  3.0000  9->9 [875|975]
+  3.0000  9->9 [875|957]
+  3.0000  9->9 [855|957]
+  3.0000  9->9 [785|865]
+  3.0000  9->9 [779|875]
+  3.0000  9->9 [778|875]
+  3.0000  9->9 [777|878]
+  3.0000  9->9 [777|876]
+  3.0000  9->9 [775|875]
+  3.0000  9->9 [775|859]
+  3.0000  9->9 [775|795]
+  3.0000  9->9 [775|777]
+  3.0000  9->9 [767|957]
+  3.0000  9->9 [767|865]
+  3.0000  9->9 [765|985]
+  3.0000  9->9 [765|955]
+binding rows (largest dual first):
+  0.0964  tight12 d=7 link 5567576 s 5756756  y=1.4501 x=-0.2693
+  0.0964  fam617 d=7 link 5586576 s 5757756  y=1.1979 x=-0.0172
+  0.0482  vside d=8 link 85675765 s 55555555  y=2.0775 x=+0.1032
+  0.0482  sep3 d=8 link 56565585 s 69695665  y=1.7108 x=+0.4699
+  0.0241  tight12 d=9 link 565656565 s 668556866  y=3.1807 x=+0.0000
+  0.0120  tight12 d=9 link 565565565 s 685885865  y=3.1807 x=+0.0000
+iterations: 0:0.0667 1:0.1163 2:0.1572 3:0.1667 4:0.1669 5:0.1807 6:0.1807 7:0.1807 8:0.1807
