@@ -1,5 +1,18 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 24 (17 Oct 2026, 01:06Z-): H-N9, small windows against the d = 9 five-heavy family (coordinator's go)
+
+**Pre-registered 01:06Z, before counting or any dfast run.**
+- **Why.** Round 23's transfer LP is held at 1/5 by one d = 9 row, 559565656/565566666 (five fives, one big). With
+  transfers, d = 9 rows whose fives have no usable big are the floor.
+- **Family.** Every d = 9 arrangement with the maximum number of fives allowed by the current patterns (j28_12 plus
+  win14/win8/win89; sep3 enumeration with unit weights), and with no 7/8 link vertex. Counted first.
+- **Windows.** Round 14/16's small B-fixed windows (`w2.py build ds=9`, |S| = 2-3, u exact 9, N(S) exact) not yet
+  tested, ring <= 14 (ring 15 if there are fewer than 100 at ring <= 14), dfast on 3 cores.
+- **H-N9 lives** if the D windows forbid at least half of the family; **dies** under 10%.
+- **Guess.** About 40%. Round 16 forbade 77% of Studio's d = 9 tight rows, but those carried 7s and 8s near the fives;
+  here the fives sit in a 6-sea, where windows are larger and less often D.
+
 ## Round 23 (16 Oct 2026, 23:28Z-): H-L2 again, with the explore windows as patterns
 
 **Registered 23:28Z, after a first look (not a clean pre-registration).** Rounds 20 and 22 used only the j28_12
