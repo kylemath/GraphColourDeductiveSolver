@@ -13,6 +13,16 @@
   (no untested B-fixed window at ring <= 16). Reported: t* with its convergence status, and the top binders by row and
   by degree.
 - **Caveat.** win25 (and so the binder's kill) is single-engine (dfast) until Studio's second engine passes it.
+
+**Round 26 result (03:45Z): t* = 7/33 = 0.2121 from iteration 3 through 8, not converged; the go stands as a lower
+bound** (`wheeldis/loop/n9/FINDINGS.md`).
+- 115,587 rows at iteration 8, still adding about 37,000 v-side rows per iteration. The cap is checked only between
+  iterations; iteration 9 ran past the 60-minute wall and the run was killed before its report.
+- Kill line not met: not converged, not rising, and the binders have untested small windows.
+- Binders (from round 25's solve at the same 7/33): d = 7 5576576/5756756 (dual 0.12), 5675765/9555596,
+  5567576/5756656, and d = 10 5656556565/6576565765. 5567576/5756656 is already forbidden by a D window in Studio's
+  `out/job28/r_12.partial.out`, which l2.py does not load. The four have 16 untested windows at ring <= 16.
+- Guess check: "climbs to 0.215-0.225" was wrong; it never left 7/33.
 - **Guess.** It climbs a little and stops near 0.215-0.225, with d = 7 rows binding.
 
 ## Round 25 (17 Oct 2026, 01:47Z-): H-N9b, ring 15-16 windows for the 39 rows round 24 left free
