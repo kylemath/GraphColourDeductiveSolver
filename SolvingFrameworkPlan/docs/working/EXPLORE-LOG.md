@@ -1,8 +1,8 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
-## Round 31 (17 Oct 2026, 04:54Z-): H-B30, do small windows forbid round 30's d = 8/9 binders?
+## Round 31 (17 Oct 2026, 04:52Z-): H-B30, do small windows forbid round 30's d = 8/9 binders?
 
-**Pre-registered 04:54Z, before any dfast run.**
+**Pre-registered 04:52Z, before any dfast run.**
 - **Why.** Round 30 holds the transfer LP at 15/83 on six rows (`loop/n9/bind30.txt`). The two d = 7 rows have no
   untested window at ring <= 16 outside Studio's queue; the four d = 8/9 rows have 31.
 - **Windows.** Those 31 (`loop/n9/win31.txt`; f8: 4 at ring 12, 4 at 13, 6 at 14, 5 at 15; f9: 5 at 15, 7 at 16),
