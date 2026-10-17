@@ -211,6 +211,10 @@ with np.errstate(invalid='ignore'):
 lam = q.max()
 out.append('letter-9 max cycle mean (with z9) lambda = %.6f; d*lambda <= d-6+t for all d >= %s' % (
     lam, ('%.2f' % ((6 - t) / (1 - lam))) if lam < 1 else 'never'))
+import json
+json.dump({'t': float(t), 'z9': float(z9), 'y': {'%d|%s' % (r_[0], ''.join(map(str, r_[1:]))): float(yv[ix[r_]]) for r_ in roots if yv[ix[r_]] > 1e-12},
+           'x': {str(tau): float(v) for tau, v in xv.items() if v > 1e-12}, 'args': ARGS0},
+          open(os.path.join(HERE, 'out', 'wlp3x_%s_sol.json' % TAGX), 'w'))
 SEPX.stdin.close(); SEPX.wait()
 open(os.path.join(HERE, 'out', 'wlp3x_%s.txt' % TAGX), 'w').write('\n'.join(out) + '\n')
 print('\n'.join(out[:60]))

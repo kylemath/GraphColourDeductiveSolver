@@ -25,6 +25,7 @@
 // Commands on stdin: "q d thr maxout" followed by NV weights.  Output: lines "A weight link s var var ..." then "END n".
 // Build: c++ -O2 -std=c++17 -o bin/sep sep.cpp
 #include <cstdio>
+#include <cstdlib>
 #include <vector>
 #include <set>
 #include <map>
@@ -188,7 +189,7 @@ static bool forbidden(int i) {
 static long long nodelimit = 20000000; static bool aborted;
 static void dfs(int i, int st, double w) {   // (sep3x: w includes resolved transfer terms)
     nodes++;
-    if (nodes > nodelimit && !found.empty()) { aborted = true; return; }
+    if (nodelimit > 0 && nodes > nodelimit && !found.empty()) { aborted = true; return; }
     if (i == d) { if (st == a0) leaf(w); return; }
     int k = d - i;   // transitions left
     for (int c = 0; c < 25; c++) {
@@ -214,6 +215,7 @@ static void dfs(int i, int st, double w) {   // (sep3x: w includes resolved tran
     }
 }
 int main(int argc, char **argv) {
+    if (const char *e = getenv("SEP_NODELIMIT")) nodelimit = atoll(e);   // 0 = no abort (exhaustive)
     FILE *f = fopen(argv[1], "r");
     if (fscanf(f, "%d", &NV) != 1) return 1;
     for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++)
