@@ -9,8 +9,8 @@
   stated.
 - **Windows** (`loop/k39/p5win.py`). u + all seven link vertices + any subset of {s0, s2, s3, s5, s6} at R's letters,
   + s1 and s4 each absent or at 6-8, + p5 = 7 (w5's second-ring neighbour between s4 and s5). 77 windows have a
-  simple ring <= 18: ring 16: 10, 17: 19, 18: 48. All ten ring-16 windows leave both s1 and s4 open, so they cover
-  all 16 open fillings.
+  simple ring <= 18: ring 16: 10, 17: 19, 18: 48. Five of the ring-16 windows cover all 16 open fillings and five
+  cover 4 each. At ring 17, 2 cover all 16, 12 cover 4 and 5 cover 1.
 - **Engines.** kc -C in ring order. A D needs dfast too, and a C needs cfast `--search` too. Ring 16 first, then
   ring 17 for as long as the round lasts.
 - **Bars.** A kill covering (6,6) breaks the 11/71 floor as stated. A kill covering all 16 fillings with p5 = 7
