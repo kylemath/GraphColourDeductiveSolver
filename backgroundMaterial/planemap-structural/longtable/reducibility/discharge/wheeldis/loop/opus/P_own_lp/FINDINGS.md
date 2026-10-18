@@ -203,3 +203,31 @@ non-big paths. Within the 2-ball of w5 the only big vertex the row forces is u.
   loader): VALID. `pcheck upper nomax`: FEASIBLE. Dual: 55677 (8/47), 56687 (6/47), receiver d = 7
   7565765/6855555 (4/47), and the same remaining rows as s6t43 (d = 7 8567655/6655656 replaces 8566655/6656656).
   **Rule T adds nothing over L2 on this registry.**
+
+## Stage 8 spec (20:35Z, before any code): an independent 6-relay class R6x on top of s7 (L2 + argsA43noT + RSST-D)
+Not read: Studio's Job 31 spec.
+- **Geometry.** A degree-6 vertex x with link L = (n0..n5), its own wheel word, non-R6. For a five at n_i, the
+  two spokes next to x are n_{i+1} and n_{i-1}. The other common neighbour of x and n_{i+1} is n_{i+2}, and of x and
+  n_{i-1} it is n_{i-2}. The fan is n_{i+3}. Seen from the five v with 6-spoke l_k: (n1..n5) = (l_{k+1}, h_k, f_k,
+  h_{k-1}, l_{k-1}).
+- **Pull g.** Each five v pays g[kg] to each 6-neighbour x. The key is kg = (n1, c(n2), c(n3), c(n4), n5) with
+  exact spokes and small/big classes c for the hats and the fan (what v reads; exact hats would make the sender
+  enumeration 5^9 per word). Canonical form: min(kg, reversed kg).
+- **Split h (the 6 decides from its exact link).** x pays h[kh] to the big n_j, with kh = L rotated to start at
+  n_j, canonical min over the two reading directions from n_j.
+- **Conservation, one equality per canonical non-R6 6-word L:** sum over five positions i of g[kg_i(L)] = sum over
+  big positions j of h[kh_j(L)]. If L has no big, its fives' g are forced to 0. So x passes on exactly what it
+  receives and never goes negative.
+- **Sender rows** (every small/big assignment of the hats and fans next to v's 6-spokes, coupled through non-R6
+  6-wheels, as in S-lite B mode): sum of y over big roots + sum over 6-spokes of g[kg] >= 1 - t.
+- **Receiver rows** (u, letter U): the y-load, plus for each link 6 w_j the bounded inflow M[sig_j] with
+  sig_j = (U, w_{j+1}, s_j, s_{j-1}, w_{j-1}) canonical under its reflection. M[sig] >= h[kh(U, w_{j+1}, s_j, p,
+  s_{j-1}, w_{j-1})] for every p that keeps that 6-wheel non-R6. This is the conservative max over the unseen
+  private p_j, as in S-lite. Then x terms, all <= d - 6 + t. It is in jsep's window (c = 6 position), so the
+  separator stays exact.
+- **Checks.** Orientation test on kg, kh, sig. Exact certificate check from the signed HiGHS duals, rows re-derived
+  from their labels: weights rationalised, rescaled so t's reduced cost is 0, sign of every other reduced cost
+  checked, x caps priced. Upper: every sender assignment, every conservation row, jsep3 exhaustive receivers with
+  the window inflow = max_p h, tail DP + Karp.
+- **Pre-registered.** Guess: below 11/47 (the targets 55677 and 56687 have 6-spokes whose 6s also touch bigs).
+  Kill line (lead's): 11/47 with a valid lower bound means the 6-relay alone does not help on this registry.

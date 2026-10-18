@@ -225,3 +225,8 @@ our agent R and have no output from it.
   matched non-window rows.** They were loaded in s6, s6t43 and s7. Lower sides still stand; the upper (FEASIBLE) sides
   of 5/21 and 11/47 are **provisional** until re-checked without them. Studio is re-running feascheck. P2 is re-running
   our upper check on s7 minus drop44, and then the s9 solve (minus drop44 + k44 pats44 + round-45 D windows).
+- **P2 drop44 recheck (20:50Z): 11/47 and 5/21 stand on our engine.** argsA43noT_drop is argsA43noT minus the 16
+  names (11 D, 5 C, all d = 8; 4,341 -> 4,325 distinct d = 8 patterns). sol_s7 upper: FEASIBLE (0 violated d = 7..17,
+  DP d = 18..30, Karp d0 11.78); cert_s7 lower: VALID. argsA6 never contained any of the 16, so 5/21 was unaffected (upper re-run:
+  FEASIBLE). Files are in P_own_lp/s9/. Gotcha: the check needs root= the P/m wheeldis tree with out/job30/, or
+  addA_dfast18/k3x files go missing silently and give a false INFEASIBLE at d = 7 (link 9655757).
