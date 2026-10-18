@@ -99,3 +99,7 @@ Pre-registered before any probe ran.
   (`H_floor_check/FINDINGS2.md`) [hand + sep3 c-check]. w2/w4's own rows give no floor (c = 1/5 at link 7665675);
   five e now routes to s2 through e' = 6, and the chain through s2's best surviving frame (5765557 / 7575757, c2 =
   7/10) gives 1/21. A lower bound only; true floor between 1/21 and explore's first-order 0.122.
+- **I (10:30Z): rule S, a 6-relay generalising T and H, gives e a sound unpaired route, but onto a 7/27-tight big**
+  (`I_route_e/FINDINGS.md`). On frame 7665675, x4's T inflow through y can self-pair with e's, restoring 11/71 [hand];
+  this conflicts with H round 2's 1/21 (which dropped x4's inflow) and is being reconciled. Rule H's route to the
+  forced big b lands on tight rows (cap 0 at first order). Kill target: u at (6,6) + w2 frame + b's tight row.
