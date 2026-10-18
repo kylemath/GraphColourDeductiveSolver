@@ -103,3 +103,14 @@ not new to F.
 - Matcher test: 63 base-allowed frames, 0 mismatches.
 - Long Table: Opus re-solves first, and Studio is the second engine (feascheck + lowercheck on their primal and
   certificate).
+
+## twoeng after round 44/45 and the drop44 fix (18 Oct ~20:45Z)
+- Inputs: local loop/k[0-9]* (k34..k42, k3studio), with k43/k44/k45 taken from explore's d3def56a
+  (claude/project-thread-nh6pv2, extracted with git archive). kc -C2 files are ignored, including k44 rsst_C2.out,
+  rsst_C2_cf.cfast and rsst_verdicts_C2.txt (the 51 broad-only configs).
+- k44 alone: 196 D, 181 C (0 one-engine, 0 X mismatch). k45 alone: 7 D, 0 C.
+- Full set: **378 D, 383 C** (was 187 D / 209 C).
+  - Removed: exactly the 16 drop44 names (11 D, 5 C).
+  - Added: 195 D from k44 (1 was already in) and 7 D from k45; 179 C from k44 (2 were already in).
+  - 0 of the 16 present.
+- Default-glob reruns need the local loop/k43 updated to d3def56a first; the local copy still holds the 16.
