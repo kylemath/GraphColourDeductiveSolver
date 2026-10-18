@@ -50,3 +50,60 @@ This reworks the parked draft (studio/job30-ruleT-wip, 97bbe5d7).
 - H30B: t*(A+T) < t*(A).
 - Kill: t*(A+T) = t*(A) with FEASIBLE.
 - Exactness: `feascheckt.py` (exhaustive sep3xt, letter-9 DP, Rule T sender rows) on B's solution must print FEASIBLE.
+
+
+## Inputs for B (18 Oct, ~12:10Z; Long Table 11:43Z), prepared on the coordination core
+`loop/studio/k42map/map42.py` maps explore's round-42 kills (loop/k42) into receiver windows.
+- **The privates are outside u's arrangement.** u's LP row has only w_i and s_i, so no NF pattern on u can state p
+  letters, and none of the 20 k42 configurations is a pattern on u's rows.
+- **All six privates lie in the frames of w2 and w4** (d = 7). p2a/p2b are w2's link vertices and p1 is w2's s-vertex
+  between w1 and s1; likewise p4a/p4b and p5 for w4.
+  - A configuration whose image lies in F + link(F) + s-ring(F), for F in {w2, w4}, becomes a receiver window
+    f7_<link>_<s> of F. It forbids every d = 7 arrangement matching it, which is valid wherever it occurs.
+  - The s-frames of R*'s other 7s (s2, s3, s5) reach past the built patch, so they were not used.
+- Soundness check, independent of grow.py: the configuration's interior must embed (exact degrees, induced,
+  triangles onto triangles, networkx) into the window's receiver-arrangement model. A frame is skipped if two s
+  images flank an unspecified link letter. sep3xf matcher test (`matchtest.py`) on the 10 windows: 1,159 base-allowed
+  frames, 0 mismatches.
+- Verdict sets:
+  - "C cons." = kc -C's conservative X, accepted by cfast --fixed with leftover 0 (k42/cut_kcc.out, cut_fixedkc.cfast).
+  - "D" = dfast D and kc D.
+  - "C broad" = cfast's search X, accepted by kc -C2 -x with leftover 0 (loop/k3studio/k42broad_C2.kc, run here;
+    kc -C2 was validated against cfast on two-ring-vertex X shapes in explore round 40, ad376d04). Under -C, kc rejects
+    that X (k42broad_C.kc).
+- Per configuration:
+| k42 tag | configuration | verdict set | result |
+|---|---|---|---|
+| k42_f7_5566757_ooo5ooo_6xx55xxx | explore C | C cons. | PASS f7_7665575_5...... (C) |
+| k42_f7_5566757_ooo5ooo_x6xxx55x | explore C | C cons. | PASS f7_7575566_......5 (C) |
+| k42_f7_5667576_oo5oooo_6xx56xxx | explore C | C cons. | PASS f7_7665675_5...... (C) |
+| k42_f7_5667576_oo5oooo_x6xxx65x | explore C | C cons. | PASS f7_7576566_......5 (C) |
+| k42_rsst003_xx5xxxxx | RSST 2.126 | C broad | fail: leaves w2/w4 frames |
+| k42_rsst025_xxxxxxx5 | RSST 122.126 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst031_6x555xxx | RSST 122.368 | C cons. | PASS f7_.6655.._.5..... (C) |
+| k42_rsst031_x6xxx555 | RSST 122.368 | C cons. | PASS f7_...5566_.....5. (C) |
+| k42_rsst062_6xx55xxx | RSST 3.3700806 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst080_6x655xxx | RSST 2.3701166 | D | fail: leaves w2/w4 frames |
+| k42_rsst095_6x665xxx | RSST 2.3711966 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst136_6x5xxxxx | RSST 2.490806 | C cons. | PASS f7_766...5_55..... (C) |
+| k42_rsst136_x6xxxxx5 | RSST 2.490806 | C cons. | PASS f7_75...66_.....55 (C) |
+| k42_rsst137_6xx5xxxx | RSST 122.1031 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst137_x6xxxx5x | RSST 122.1031 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst142_6xx5xxxx | RSST 126.8168 | C broad | PASS f7_7665..5_5...... (Cbroad) |
+| k42_rsst142_x6xxxx5x | RSST 126.8168 | C broad | PASS f7_75..566_......5 (Cbroad) |
+| k42_rsst187_6xx65xxx | RSST 126.61686 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst187_x6xxx56x | RSST 126.61686 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst189_6xx65xxx | RSST 126.490086 | C cons. | PASS f7_76665.5_5...... (C) |
+| k42_rsst189_x6xxx56x | RSST 126.490086 | C cons. | PASS f7_75.5666_......5 (C) |
+| k42_rsst217_6x6xxxxx | RSST 2.211701966 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst251_7x55xxxx | RSST 2.504980 | C cons. | fail: leaves w2/w4 frames |
+| k42_rsst251_x7xxxx55 | RSST 2.504980 | C cons. | fail: leaves w2/w4 frames |
+- **Claim-grade windows: 10 C** (RSST 122.368, 2.490806, 126.490086, and explore's f7_5667576 / f7_5566757 frames,
+  each in its w2 and w4 orientations): `k42map_C.cfast`. **[broad] windows: 2** (RSST 126.8168 in w2 and w4):
+  `k42map_C_broad.cfast`, kept out of the claim LP. RSST 2.3701166 (the D) and RSST 2.126 leave both frames
+  (2.3701166 through u's s0), so they cannot enter.
+- Forced private letters (p5 ≥ 6; s1 = 6 ⇒ p1 ≥ 7, p2a ≥ 6, (p2a, p2b) ≠ (6, 5); s4 = 6 ⇒ p4b ≥ 6, (p4a, p4b) ≠ (5, 6)):
+  - B's option-B sender rows read only small/big z flags, so they cannot carry these.
+  - The LP feels them only through the 10 windows on w2/w4's receiver rows, and only for configurations inside those
+    frames.
+  - The rest needs option F (full z and p letters in the five's 2-ball words), which Long Table ordered pre-built.

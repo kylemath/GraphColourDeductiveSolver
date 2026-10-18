@@ -1,0 +1,9 @@
+k42_rsst003_xx5xxxxx r=8 m=4 classes=274 ext=81 reached=120 D=false depth=2 passes=3 mode=gs 0ms
+  X={R0-I1,R2-I1,R4-I2,R6-I2} adm=no
+  C=false |X|<=4 (kc-C: tested 3213, admissible 701, edges 17) best X={I2-I3,R6-I0,R2-I3} leftover 11 (2ms)
+k42_rsst142_6xx5xxxx r=12 m=7 classes=22144 ext=2798 reached=15281 D=false depth=9 passes=10 mode=gs 78ms
+  X={R0-I0,R2-I0,I0-I2,R5-I2} adm=no
+  C=false |X|<=4 (kc-C: tested 31930, admissible 14182, edges 30) best X={I1-I2,I2-I3,R5-I2} leftover 8 (119ms)
+k42_rsst142_x6xxxx5x r=12 m=7 classes=22144 ext=2798 reached=15281 D=false depth=9 passes=10 mode=gs 84ms
+  X={R0-I0,R2-I0,I0-I3,R9-I3} adm=no
+  C=false |X|<=4 (kc-C: tested 31930, admissible 14182, edges 30) best X={I2-I3,I5-I6,R9-I3,R8-I6} leftover 12 (121ms)
