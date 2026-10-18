@@ -166,6 +166,15 @@ def cmd_orientR2():
         Lr = L[k:] + L[:k]; sr = s[k:] + s[:k]
         Lf = tuple(L[(-i) % 6] for i in range(6)); sf = tuple(s[(-i - 1) % 6] for i in range(6))
         if cons2_coef(L, s) != cons2_coef(Lr, sr) or cons2_coef(L, s) != cons2_coef(Lf, sf): bad += 1
+    if Q7:
+        for _ in range(20000):
+            w = tuple(int(v) for v in rng.choice(LET, 7)); j = int(rng.integers(7))
+            if w[j] < 7 or ''.join(map(str, canon(w))) in RBIG: continue
+            n += 1; kin = qkey(tuple(w[(j + i) % 7] for i in range(7)))
+            W_ = lambda k: w[k % 7]
+            for sg in (q7sig(w[j], W_(j + 1), W_(j + 2), W_(j - 2), W_(j - 1)), q7sig(w[j], W_(j - 1), W_(j - 2), W_(j + 2), W_(j + 1))):
+                if kin not in q7keys(sg): bad += 1
+            if q7_inflow(w) != q7_inflow(canon(w)): bad += 1
     log('orientation test R6x2 (apex %s): %d + %d + 20000 cases, %d mismatches' % (AP, n, 3 * 5 ** 6, bad))
 def cmd_solveR2():
     import highspy
@@ -265,7 +274,7 @@ def cmd_solveR2():
                     mx = max(mx or -1e9, float(r_[1]) - (d - 6 + t))
                     if 'dbg' in FLAGS and n == 0:
                         cf = recv_coef_R2(d, r_[2], r_[3], xon)
-                        val = sum(v * (MV2(k[1]) if k[0] == 'M' else xv[cols[k]] if k in cols else 0) for k, v in cf.items())
+                        val = sum(v * (MV2(k[1]) if k[0] == 'M' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else xv[cols[k]] if k in cols and cols[k] < len(xv) else 0) for k, v in cf.items())
                         log('  DBG d=%d sep %s row %.9f' % (d, r_[1], val))
                     if recv(d, r_[2], r_[3]): n += 1; rowlog.write('R %d %s %s\n' % (d, r_[2], r_[3]))
             added += n; per[d] = (n, None if mx is None else round(mx, 6), round(dt, 1))

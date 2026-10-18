@@ -395,3 +395,20 @@ Not read: Studio's Job 31 spec.
   - s12r47: slack 0, dual 0.2478. Load = y 0.67920 + 0.33628 + M 0.09956 + 0.07080.
   - Nothing flows into u (all x = 0 here). What it gives: y and z to its two fives (w3, w4), and the 6-relay h to its link 6s.
 - argsA50 (d43ba26a): P2's s17/argsA50.txt = argsA47 with k3x swapped; k3x md5 equal to git show d43ba26a out/job30 (510 D / 522 C); dcount newpat 15550. s12r50 launched (23:2xZ).
+
+## Stage 14 pre-registration + spec (23:45Z, before any solve): 7-inflow R77 (flag q7), run st14q on argsA50 over s12r50
+- Hypothesis: the receiver d=7 7665566/6675666 becomes non-tight and t* drops below s12r50.
+- Kill line (Long Table): 7665566/6675666 stays tight at the same t*.
+- Class: a big w sends to an adjacent 7 u the amount q[K] >= 0. K is u's whole link read from w (w first, u's neighbours in cyclic order), canonical under the reflection fixing w.
+  - u's row (d = 7): u knows its link, so inflow is exact: load -= sum over big link positions j of q[K(link rotated at j)]. This is a function of the whole link, so it is not window-local.
+    - jsep4 = jsep3 + a table (canonical 7-link -> total inflow) subtracted at the leaf. Pruning bounds ignore it (inflow >= 0 only lowers load), so the search stays exhaustive.
+  - w's row (any d): w sees 5 of the 7 letters of u's link (its own letter, w_{i+1}, s_i, s_{i-1}, w_{i-1}). Outflow is Q[sig] >= q[K] for every completion of the 2 unseen letters (completions that make u's link RBIG are dropped, since such a 7 does not exist). This is window-local (c = 7 position).
+  - No sender rows change. No conservation, since a big is not conservative: q is charged inside its own budget row.
+  - The tail (d > 17, letter 9) has no inflow, only outflow Q, so it stays sound.
+- Validations: (V1) q7 off reproduces s12r50. (V2) Orientation: random 7-links, inflow key in the sender-side completion set under both sender orientations, and inflow invariant under canonicalisation: 0 mismatches (102652 cases incl. earlier tests). (V3) dbg separator = row value, including the leaf bonus.
+- s12r50 (reduced 6-centred, apexcls, argsA50 = d43ba26a): t* = 23/134 = 0.171641791.
+  - LOWER-R2 VALID 23/134 (57 rows).
+  - UPPER-R2 FEASIBLE: senders 0; conservation 3.9e-15; d = 7..17 exhaustive 0; Karp d0 12.20.
+  - Binders:
+    - receivers: d=7 7665566/6675666 (dual 0.194), d=7 7665666/6566565, d=7 7655666/6756666, d=10 6565656565/6655666666, d=10 6556656556/6665656665;
+    - senders: 66669, 55667 (x3 contexts), 55767 (x2), 56669 (x2), 66667.

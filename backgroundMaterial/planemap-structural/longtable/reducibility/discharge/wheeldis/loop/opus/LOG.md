@@ -305,3 +305,9 @@ our agent R and have no output from it.
   Karp lambda 0.5436]. 119 iterations, 2,067 s, with a long tail at the 1e-4 level after the x penalty came off. The new dual has
   3 rows: receiver d = 7 7665566/6665766 (2/5), senders 55667 (2/5) and 55767 (1/5). The receiver is a sibling of the relay's
   binder 7665566/6675666. It is still admissible under d43ba26a (argsA50, distinct D 15,550). s17 is running.
+- **P s12r50 (23:55Z): the reduced 6-centred relay on d43ba26a (argsA50, k3x md5 = d43ba26a, newpat 15,550) gives
+  t* = 23/134 = 0.17164** [own checkers. Lower VALID: 57 rows. Upper FEASIBLE: conservation worst 3.9e-15, d = 7..17
+  exhaustive, Karp d0 12.20]. Top binder: d = 7 7665566/6675666 (dual 0.194, slack 0). Others: d = 7 7665666/6566565 and
+  7655666/6756666, and d = 10 6565656565/6655666666 and 6556656556/6665656665. Senders: 66669, 55667, 55767, 56669, 66667.
+  Stage 14 (7 -> 7 inflow, keyed by u's whole link; new jsep4 subtracts a per-link inflow table at the leaf; the sender pays
+  the max over u's 2 unseen letters) is pre-registered, and run st14q is in progress.
