@@ -32,3 +32,13 @@ sep3x/feascheck, on both sides? Guess: yes, d = 7 the slow part. Plan-changer: a
    - Certificate JSON: list of `{"w":"p/q","row":["sender",W] | ["receiver",d,LINK,S]}`; rule-T certificates not yet.
 8. Untested: the x and T paths (no converged x or T solution exists; the T = 0 test via to_tzero.py not run).
    Next: `upper` on a full-precision 7/27 y (Studio's feascheck solution JSON), d = 7 detached (an hour or more).
+9. **Upper bound for Studio round 13 (t = 7/27): FEASIBLE** (`upper2_studio_round13.log`, 34 s wall, 3 threads).
+   `jsep2.cpp` / `jcheck2.py` (jsep/jcheck kept): bitset pattern matching (was ~45 us/node: the real bottleneck),
+   rotation break (P_0 = 5w_0+s_0 maximal), bound over 5-letter states (w,s,w,s,w) relaxing 2 letters, threads.
+   Max load - (d-6+t): d = 7, 8, 9: ~0 (tight, -2.6e-13); d = 10: -0.111; 11: -0.667; 12: -1.22; 13..17 < -1.48;
+   d = 18..30 relaxed DP and Karp (lambda = 0.4938, d0 = 11.3) fine. 342 senders pass. d = 10 margin 0.111 > 0, so
+   the 10 missing job28 r_* files cannot matter. Validation (`val/`): old jsep on the same d = 8..17 tables gives the
+   same max loads and 0 violations (d = 8: 640 s old vs 1 s); bitset == list pattern test at all 8.45M d = 7 checks;
+   y['7|5566'] + 0.01 plant: sym vs nosym give the same 21,890 dihedral violation classes (max 1.26926), and the
+   old code restricted to 586 of 625 (w0,s0,w1,s1) prefixes (38 heavy ones timed out at 60 s) gives exactly the
+   same 204,390 violating arrangements.

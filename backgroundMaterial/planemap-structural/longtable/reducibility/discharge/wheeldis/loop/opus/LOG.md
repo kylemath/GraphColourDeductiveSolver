@@ -145,3 +145,10 @@ Pre-registered before any probe ran.
 - **M (12:50Z): all 163 sender-row deletions of Studio's built F filter confirmed independently**, all by
   k42_rsst025_xxxxxxx5; reflection-closed; rotation check redundant on 2-connected interiors; 0 of 200 sampled kept
   rows should have been deleted (`M_deleted_rows/`, appended to `F_spec_review/FINDINGS.md`).
+- **N (14:55Z): independent UPPER check passes, so t* = 7/27 is now two-engine on both sides** (`J_lp_checker/`,
+  jsep2.cpp / jcheck2.py, `upper2_studio_round13.log`) [E]. Studio's full-precision round-13 solution (IEEE doubles)
+  violates no sender row (342) and no receiver row at d = 7..30, plus the Karp tail (lambda = 0.4938, covers d >=
+  11.3). Max load minus (d - 6 + t): d = 7, 8, 9 tight (-2.6e-13, float noise; e.g. d = 7 link 9655675 s 5657566),
+  d = 10 -0.111, d = 11 -0.667 and falling. The 10 missing d = 10 files cannot matter. 34 s on 3 threads (bitset
+  pattern match, rotation symmetry break, tighter bound). Validated against the old jsep on d = 8..17 and a planted
+  violation. Caveat: margins are floating point; an exact-rational recheck of the tight d = 7-9 rows is not done.
