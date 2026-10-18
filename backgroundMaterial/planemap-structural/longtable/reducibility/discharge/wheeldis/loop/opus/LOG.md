@@ -258,3 +258,7 @@ our agent R and have no output from it.
   s11b (6 -> 6 second-generation relay): with exact conservation, the edge amount can depend only on the shared pair, so
   every 6-6 edge nets to zero and the class collapses to s10. A useful version needs 6-centred 2-ball types with their own
   separator, which is new engine work.
+- **P2 s13 (21:45Z): main line (no T, L2) on Studio's aee20e3b registry (426 D / 422 C k3x + RSST-D) gives t* = 1/5**
+  [E, our engine; lower VALID; upper FEASIBLE d = 7..17 + DP to 30 + Karp lambda 0.5333, d0 12.43; 38 iterations, 381 s]. Loaded:
+  D 15,461, C 1,468, RPAT 158; 0 of the drop44 patterns; both 2/9 receivers forbidden. The dual has 4 rows: receiver d = 7
+  7765556/6575765 (2/5), senders 55757, 55767, 57667 (1/5 each). Sent to Studio. Relay s13r is running.

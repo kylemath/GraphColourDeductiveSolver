@@ -304,3 +304,25 @@ Not read: Studio's Job 31 spec.
   [6,5,6,5,5], 56669, 56667, 56967, 55696.
 - Refined: all of n2, n3, n4 (both hats and the fan), not a subset. **Exact letters in the relay pull do not
   help on this registry.**
+
+## Stage 12 pre-registration + spec (21:25Z, before any code): 6-centred relay R6x2 (keys read the 6's 2-ball)
+- Hypothesis: t* < 217/1129 on argsA44 + RSST-D + L2 + R6x2. Kill line: it stays at 217/1129.
+- 6-centred arrangement of a 6 x: link L = (n0..n5) and apexes s_i = the other common neighbour of n_i and
+  n_{i+1} (besides x). That is x's 2-ball: a d = 6 "receiver arrangement".
+- Pull g2 (five at n_i): s10's key (n_{i+1}, c(n_{i+2}), c(n_{i+3}), c(n_{i+4}), n_{i-1}) plus the apexes of the
+  five's two edges at x: a_r = s_i, a_l = s_{i-1}. Canonical: min with the reflection (reversed letters, apexes
+  swapped). From the five v with 6-spoke l_k: a_r = l_{k+2}, a_l = l_{k-2} (v's own link), so the sender rows read
+  only v's 2-ball (hats and fan as small/big, as in s10).
+- Split h2 (big at n_j): L rotated to n_j plus (s_j, s_{j-1}), canonical under the reflection about n_j.
+- Conservation, exact, per 6-centred arrangement (L, s): sum_i g2 = sum_j h2. Required for all s in {5..9}^6 with no
+  admissibility filter, which only restricts the class (sound). Separated by brute force per canonical L
+  (5^6 apex words, numpy). Each violated (L, s) is added as an equality row.
+- Receiver inflow at a link 6 x = w_j of u: x's link from u is (U, w_{j+1}, s_j, p_j, s_{j-1}, w_{j-1}), and the
+  apexes of u's two edges at x are w_{j+2} and w_{j-2}, all in jsep's window except p_j. Inflow M[sig] with
+  sig = (U, w_{j+1}, s_j, s_{j-1}, w_{j-1}, w_{j+2}, w_{j-2}) canonical, M >= h2 for every p_j that keeps the
+  6-wheel non-R6. M rows are added lazily when a receiver row first uses a sig.
+- Hand note: with exact conservation, a big's h2 can only usefully depend on an apex that a neighbouring five's g2
+  or a neighbouring big's h2 also reads. Otherwise equality over all values of that apex forces it constant. So
+  the new freedom is charge traded across a shared apex.
+- Validations: (V1) apex mode off must reproduce 217/1129 (s10's class); (V2) orientation test on g2, h2, sig;
+  (V3) planted check that separator value = row value.

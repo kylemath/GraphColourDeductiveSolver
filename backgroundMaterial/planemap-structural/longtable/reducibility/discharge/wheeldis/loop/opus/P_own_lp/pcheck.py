@@ -503,5 +503,6 @@ def find_alternative(d, lk, sv):
 exec(open(os.path.join(HERE, 'psolve.py')).read())
 exec(open(os.path.join(HERE, 'pslite.py')).read())
 exec(open(os.path.join(HERE, 'prelay.py')).read())
+exec(open(os.path.join(HERE, 'prelay2.py')).read())
 log('jcheck: %d R5, %d R6, %d fans, %d RBIG; %d senders, %d rooted vars' % (len(R5), len(R6), len(FANS), len(RBIG), len(SENDERS), len(ROOTS)))
-{'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()
+{'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()
