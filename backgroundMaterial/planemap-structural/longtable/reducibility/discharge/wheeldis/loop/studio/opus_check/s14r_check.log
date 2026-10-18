@@ -32,3 +32,4 @@ DP d=16..30 (z9 = 0.000000): clean
 Karp tail: lambda = 0.516339869, covered for d >= 12.020 (needs <= 31)
 UPPER: FEASIBLE at t = 0.186274509804
 VERDICT: PASS (upper FEASIBLE, lower VALID 19/102)
+# NOTE (18 Oct 23:16Z): Opus confirms that spec 4.5's by-d table counts per kind, so reading 1 (README) was correct. Long Table logged 19/102 as [E2] in the relay class (581f3bee).

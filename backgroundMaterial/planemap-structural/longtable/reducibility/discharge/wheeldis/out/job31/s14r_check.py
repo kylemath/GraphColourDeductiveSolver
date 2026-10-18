@@ -22,6 +22,8 @@ DIS = os.path.dirname(HERE)
 SOLF, CERTF, ARGF = sys.argv[1], sys.argv[2], sys.argv[3]
 SOL = json.load(open(SOLF)); CERT = json.load(open(CERTF)); ARGS = open(ARGF).read().split()
 EPS = 1e-9; FAIL = []
+# per-solve expectations (defaults: s14r): EXPECT_T = claimed t* as a fraction, EXPECT_PAT = 'D,C,RPAT' distinct pattern counts
+EXPECT_T = Fr(os.environ.get('EXPECT_T', '19/102')); EXPECT_PAT = tuple(int(v) for v in os.environ.get('EXPECT_PAT', '15497,1494,158').split(','))
 def fail(msg): FAIL.append(msg); print('FAIL: ' + msg, flush=True)
 LET = (5, 6, 7, 8, 9); LI = {l: l - 5 for l in LET}
 def c(l): return 1 if l >= 7 else 0
@@ -225,7 +227,7 @@ for a in ARGS:
 byd = {d: len(v) for d, v in sorted(PAT.items())}
 print('patterns distinct by kind: D %d (spec 15,497), C %d (spec 1,494), RPAT %d (spec 158); by d %s; chars outside the spec table %s'
       % (KIND['D'], KIND['C'], KIND['R'], byd, dict(odd)), flush=True)
-if (KIND['D'], KIND['C'], KIND['R']) != (15497, 1494, 158): fail('pattern counts differ from spec 4.5')
+if (KIND['D'], KIND['C'], KIND['R']) != EXPECT_PAT: fail('pattern counts %s differ from expected %s' % ((KIND['D'], KIND['C'], KIND['R']), EXPECT_PAT))
 PATL = {d: [tuple(P) for P in v] for d, v in PAT.items()}
 def patmatch(d, w, s):
     for P in PATL.get(d, ()):
@@ -300,10 +302,10 @@ for k, v in list(rc.items()):
 negrc = {k: v for k, v in rc.items() if k[0] != 'x' and v < 0}
 print('lower: tco = %s, D = %s; nonzero reduced costs %s; negative (non-x) %d' % (
     tco, D, ', '.join('%s%s=%s' % (k[0], ''.join(map(str, k[1])) if isinstance(k[1], tuple) else k[1], v) for k, v in sorted(rc.items(), key=str)), len(negrc)))
-for want in (('g', (5, 0, 0, 1, 6)), ('M', (7, 6, 6, 6, 7))):
+for want in ((('g', (5, 0, 0, 1, 6)), ('M', (7, 6, 6, 6, 7))) if EXPECT_T == Fr(19, 102) else ()):
     print('  residual %s%s: reduced cost %s' % (want[0], ''.join(map(str, want[1])), rc.get(want, Fr(0))))
 if negrc: fail('negative reduced costs %s' % negrc)
-if D != Fr(19, 102): fail('lower bound %s != 19/102' % D)
+if D != EXPECT_T: fail('lower bound %s != claimed %s' % (D, EXPECT_T))
 else: print('LOWER: VALID t >= %s' % D)
 
 # ================= receivers: Studio sep3r, after checking it against the spec rebuild =================
@@ -371,4 +373,4 @@ if d0 > 31: rbad += 1
 if rbad: fail('receiver side violated')
 SEPX.stdin.close(); SEPX.wait()
 print('UPPER: %s' % ('FEASIBLE at t = %.12f' % T if rbad == 0 and not [f for f in FAIL if 'violated' in f or 'bounds' in f] else 'NOT ESTABLISHED'))
-print('VERDICT: %s' % ('PASS (upper FEASIBLE, lower VALID 19/102)' if not FAIL else 'FAIL: ' + ' | '.join(FAIL)))
+print('VERDICT: %s' % ('PASS (upper FEASIBLE, lower VALID %s)' % EXPECT_T if not FAIL else 'FAIL: ' + ' | '.join(FAIL)))
