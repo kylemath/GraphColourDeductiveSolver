@@ -128,3 +128,38 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   - senderR rows carry flag bits, and mrowR rows are M-variable rows. wlp3r6 has neither.
 - **So Opus's class has relay moves wlp3r6 cannot express.** Per Long Table's order, the upper (relay mode) and lower
   rebuild through wlp3r6 were not forced. 19/102 cannot be second-engined through wlp3r6 as it stands.
+
+## Standalone check of Opus relay s14r (t* = 19/102, 39f457ba) from RELAY_SPEC.md (be66f349), ~23:15Z
+- Checker: out/job31/s14r_check.py, written from the spec alone (copy here as RELAY_SPEC_be66f349.md); no Opus code
+  read. Log: s14r_check.log. Registry: argsA47_pinned.txt (42c4c876 k3x + job28 r_5..r_8 + rpatD).
+- **Spec-side rebuild, all equal to the spec's check values:**
+  - R5 24 / R6 31 / FANS 7: the same sets as listed. RBIG 104.
+  - 342 sender words; 6,915 senderR rows; 102 g columns.
+  - 975 signatures; 4,760 M rows; 4,760 h columns.
+  - 994 relay words.
+  - Patterns by an independent spec-4.5 loader: D 15,497 / C 1,494 / RPAT 158.
+- **Upper: FEASIBLE at 19/102.**
+  - Bounds: 0 negative values, max x 0.0686 (<= 3).
+  - senderR: 0 violated (min slack −3e−14).
+  - cons: 0 violated (max |g − h| 3e−13).
+  - mrowR: M = max h over cand, by construction.
+  - Receivers d = 7..15: Studio sep3r, exhaustive, 0 violated. DP d = 16..30 clean.
+  - Karp λ = 0.516339869, covering d >= 12.020. Both figures are the spec's.
+- **Studio's receiver rows = the spec rows:** 784 arrangements (the 4 cert labels, the heaviest 20 at each d = 7..15,
+  600 random). 0 admissibility mismatches against a spec-4.4 admissible() with the spec-4.5 matcher, and 0 value or
+  x-key mismatches over the 771 admissible ones.
+- **Lower: VALID t >= 19/102.**
+  - All 25 rows rebuilt from their labels (7 senderR, 7 cons, 7 mrowR, 4 receiverR); every label passes its spec check.
+  - Exact cancellation: tco = 1, D = 19/102.
+  - The only nonzero reduced costs are g[50016] = 2/17 (= 36/306) and M[76667] = 8/17 (= 144/306), both >= 0,
+    matching spec 9.5. No negative reduced cost.
+- **Readings chosen where the spec is open** (none decided by Opus's code):
+  1. Spec 4.5's by-d pattern table (9,663 / 4,469 / 1,233 at d = 7/8/9) is read as counted per kind. Studio's union
+     across kinds is 9,660 / 4,465 / 1,226; the per-kind totals match exactly. This does not affect matching.
+  2. Name characters outside the 4.5 table (for example '9' in an e/f name): read as the exact letter. None occur.
+  3. Sender dedupe on the "coefficient multiset" is read as the per-word coefficient vector. That gives 6,915, as the
+     spec says.
+  4. Spec 7 searches exhaustively to d = 17. Here d = 16, 17 go to the relaxed DP: sound, since dropping patterns only
+     enlarges the set. x in the DP is bounded by z9 := the max x into a 9 (0 in s14r).
+  5. The exhaustive receiver enumeration is Studio's sep3r, not a spec-written enumerator. That is why the row
+     comparison above is included.
