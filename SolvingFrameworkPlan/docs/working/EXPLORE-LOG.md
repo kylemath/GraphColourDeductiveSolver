@@ -1,5 +1,24 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 49 (18 Oct 2026, 22:11Z-): H-R9, does the d = 9 receiver of the new 1/5 dual die, and how far do patterns reach its senders?
+
+**Pre-registered 22:11Z, before any new engine run on these targets.** Gap G2. Long Table, 22:09Z: with round 48 loaded
+(42c4c876 + r_5..r_8), Opus's main line stays at exactly 1/5 (8592bb50) with a 3-row dual: receiver d = 9
+656566565/665656666 (1/5), senders 66669 (3/5) and 56696 (1/5) in their s14 contexts. 3 cores. Round 47 B's d = 9
+relay row is paused at 1526 of 2212 windows.
+- **Receiver.** Round 44's eligible patterns miss it (only broad-only rsst588 hits). win45.py at ring <= 14 gives 2201
+  windows. 538 of them have names already run in loop/k47 (the d = 9 relay row), and **7 of those are already
+  two-engine kills (known before running).** The rest run now in loop/k47 (drive45.py, STOP=0). Hypothesis: it dies at
+  ring <= 14; kill line: it does not.
+- **Senders, s14 contexts.** All in this receiver: 66669 at w1, w6 and w8 (its 9 is u itself), 56696 at w3. Kills that
+  contain each wheel are read off as in round 48.
+- **Senders, one-ring coverage (grow49.py).** As round 46 B, with one change: a link letter 9 means degree >= 9. So that
+  vertex is never an exact image, and its privates are left out of the 2-ball's exact vertices and slots (their
+  number and adjacencies depend on the true degree). Columns: all fillings; with a 5 in ring 2; with no 5; with every
+  ring-2 letter >= 7; and (Long Table) with a 9 in ring 2.
+- **Guess.** The receiver dies at ring <= 14 (it already does). 66669's coverage is under 5% (no 5 in the wheel apart
+  from the centre, so RSST configurations need several ring-2 fives). 56696's is 30-60%.
+
 ## Round 48 (18 Oct 2026, 21:48Z-): H-R15, does the 1/5 receiver die, and how much of its senders' one-ring contexts can patterns cover?
 
 **Pre-registered 21:48Z, before any new engine run on these targets.** Gap G2. Long Table, 21:47Z: on aee20e3b, Opus's
