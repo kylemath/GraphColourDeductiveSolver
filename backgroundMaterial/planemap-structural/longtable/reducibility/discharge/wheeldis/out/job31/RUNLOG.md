@@ -33,3 +33,11 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
 - Six rows (RSELF): the max-plus DP equals brute force over the 5^6 s letters on 200 link words, 0 mismatches.
 - y6b = 0: sep3r is byte-identical to sep3xf on the 6 regression queries (regress.py MODE=R).
 - Still to do: `rzero` LP reproduction of 7/27 on the round-13 registry, once cores free (after 24b).
+
+## First solve (Long Table 18:48Z)
+- Registry: exactly the new 1/4 registry, i.e. Opus's argsA (loop/studio/opus_check/argsA_local.txt): our B claim
+  registry minus the broad 126.8168 pair, no Rule T.
+- L2 (xcap 3) + 6-relay. Warm start: Opus's 1/4 rows are not on disk here, so it uses A's last row dump (re-checked by
+  sep `c`).
+- **H31 (restated): t*(6-relay) < 1/4.** Kill line: t*(6-relay) = 1/4, with FEASIBLE.
+- It starts automatically when rzero (y56 = y6b = 0, round-13) converges, and only if rzero reproduces 7/27.
