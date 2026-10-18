@@ -55,3 +55,11 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
 - rzero reproduced 7/27 at 20:32Z, so the first solve launched. Long Table 20:36Z held it, and it was stopped at
   iteration 1 (TERM). It restarts on the corrected and expanded registry (drop44 + k44 + k45) once that settles, and
   H31 is restated against the new t*.
+
+## First solve, blind (Long Table option (b), 20:45Z)
+- Registry: 30f86cd4 / 74bad798 = drop44 + k44 + k45 (argsK45_local.txt: twoeng 378 D / 383 C, k43fix files, rsstD
+  rpat, L2, no Rule T) + 6-relay (wlp3r6).
+- Runs blind: no no-relay baseline on this registry yet, and nothing of Opus's relay work opened. H31 (Long Table): t*(relay) < t*(no-relay,
+  same registry); kill line equality. Then feascheck exhaustive in relay mode; t* and certificate recorded and committed
+  here before any of Opus's relay work is opened.
+- Started 10-18 20:45Z on the core freed by Job 30 B.
