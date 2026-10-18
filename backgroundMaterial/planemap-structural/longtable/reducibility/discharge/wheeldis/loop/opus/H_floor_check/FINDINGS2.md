@@ -17,3 +17,32 @@ lies between 1/21 and the first-order 0.122.
 
 Caveats: share rules give 0 to any five with several bigs and a 6 next to one of them, so this is only a lower bound;
 round 38's later kills not applied; sep3 is one engine; the round-1 row with p5 = 7 still needed (explore round 39).
+
+## Reconciliation with I_route_e (10:45Z): 1/21 stands
+
+I's cancellation (x4's T into w2 through y equal to e's T out) needs x4's word rooted at s2 to equal e's word rooted
+at w2. That forces e's neighbour e''s private pi = x3, and e lone forces x3 <= 6. e''s 6-wheel is then
+(7, 5, x3, x3, 5, 7): at x3 = 5 four fives in a row (2.122, reducible); at x3 = 6 it is c6_566577, C in Job 17's
+verdict file (ring 12, X = {I0-I1}, not in the uncertain list). So the self-paired arrangement is inadmissible and the
+floor at (6,6) is **1/21**; 11/71 would return only if C wheels were dropped.
+
+## The floor as a function of the surviving frame set (`floor.py`)
+
+`python3 -I floor.py WHEELDIS_DIR [KILLFILE] [no37] [nopair] [nochain]`, ~7 s; WHEELDIS_DIR is a wheeldis tree with
+`bin/sep3` built. Kill lines: dfast/kc/cfast lines, bare `f7_L_S` names (5-8 exact, B = any >= 7, '.' free), or
+`LINK SWORD` in frame coordinates. A kill removes every w2, w4 or s2 frame that some rotation/reflection of the
+window matches at all its fixed letters; round 37's window is always added unless `no37`. Validated: no extra kills
+-> 1/21; `no37` -> 11/71; a test kill of the binding s2 frame plus frame 7667575/5557777 -> 1/21 at the next s2
+frame (5765557 / 7575767).
+
+- Each surviving s1 = 6 frame at w2 (mirror at w4) bounds T <= alpha + beta t through guaranteed payment shares (units
+  of 1 - t) of w2's link fives, valid for every feasible (Y, T, t): a lone five with no T route, or all routes
+  self-paired (slot five = 5, z = 7, wheel (7,5,a,a,5,7) not reducible), pays 1; a five whose bigs all carry the
+  same rooted word and no 6 next to a big pays 1/#bigs; any other five pays 0. c = the frame's total share.
+- No chain: (alpha, beta) = (1 - c, 1 + c). One lone five with a single unpaired route to s2: (alpha, beta) =
+  (1 - c - c2, 3 + c + c2), c2 = best guaranteed share over surviving c-check-admissible s2 frames (link
+  w3 w2 e' x4 q1 q2 s3, s-word u e pi r1 r2 r3 w4).
+- Floor = max over (w2, w4) frame pairs of (0.7 - alpha0 - alpha6) / (2.7 + beta0 + beta6). c = 6/5 gives 11/71;
+  c = 1/5 with c2 = 7/10 gives 1/21.
+- Binding now: c = 1/5 at w2 frame 7665675 / 5555577 (only w3 pays); c2 = 7/10 at s2 frame 5765557 / 7575757 (w3 pays
+  1/5, q1 pays 1/2). Same at the w4 mirror.

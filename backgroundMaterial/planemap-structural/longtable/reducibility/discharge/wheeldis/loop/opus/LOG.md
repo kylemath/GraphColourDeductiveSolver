@@ -103,3 +103,6 @@ Pre-registered before any probe ran.
   (`I_route_e/FINDINGS.md`). On frame 7665675, x4's T inflow through y can self-pair with e's, restoring 11/71 [hand];
   this conflicts with H round 2's 1/21 (which dropped x4's inflow) and is being reconciled. Rule H's route to the
   forced big b lands on tight rows (cap 0 at first order). Kill target: u at (6,6) + w2 frame + b's tight row.
+- **H round 3 (10:45Z): reconciled, the rule-T floor through R at (6,6) is 1/21** (I's self-pairing needs e''s
+  6-wheel c6_566577, which is C in Job 17, or 2.122). `H_floor_check/floor.py` recomputes the floor from a kill
+  list; the formula is in FINDINGS2.md.
