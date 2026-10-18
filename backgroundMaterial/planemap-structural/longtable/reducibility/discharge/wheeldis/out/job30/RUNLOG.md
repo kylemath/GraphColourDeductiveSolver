@@ -135,3 +135,9 @@ not new to F.
   65 C, as explore's run. Default glob: **457 D / 448 C** (+31 D, +26 C, 0 lost, 0 one-engine, 0 X mismatch).
   Drop44 guard 0 flagged. Matcher (11 names, including the smallest kill f7_...5556_...576.): 488 frames, 0
   mismatches. Job 31 does not get this batch.
+- ~22:55Z: explore round 49 (3a156a49, loop/k47/r9c_kills*: kills of the s14 d=9 binder 656566565/665656666). The 5
+  r9c files were fetched by path, byte-identical; the other files of that commit (k46 grow*, A_*, win45) were not taken.
+  r9c alone: 30 D / 55 C, as explore's run. Default glob: **487 D / 503 C** (+30 D, +55 C, 0 lost, 0 one-engine, 0 X
+  mismatch). Drop44 guard 0 flagged. The 11 minimal names are all in, all C. Matcher (17 names: the 11 minimal plus a
+  sample): 1,670 frames, 0 mismatches. dcount on argsA44_local (k3x at this commit, plus r_5..r_8): **15,527** distinct
+  parsed D patterns (15,861 names), which is 15,497 + 30.
