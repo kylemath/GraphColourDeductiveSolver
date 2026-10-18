@@ -6,8 +6,10 @@
 2. `sendercheck.py SOL.json <args>`: every Studio sender row at the solution must have lhs <= -1.
 3. `lowercheck.py CERT.json <args>`: rebuild the cert rows exactly. Each row must be a Studio row, and the combination
    must give t coefficient -1 and 0 negative terms.
-- All three run with WLP3X_DEF=1 WLP_SEPF=1, from this tree's wheeldis root (so out/job30 loads). Also check the
-  loaded pattern counts per file (see s13_Dcounts.txt) against the other engine's before reporting.
+- All three run with WLP3X_DEF=1 WLP_SEPF=1, from this tree's wheeldis root (so out/job30 loads).
+4. Loaded-count check: `dcount.py ARGSFILE` counts **distinct parsed D patterns** per file (dedupe by parsed pattern,
+   not by name; Long Table 21:58Z) and gives the total. Diff it per file against the other engine's list before
+   reporting, and explain every differing file. Pin any file that moves (k3x) to the commit the solve used.
 
 # Second engine for Opus's t* = 1/4 (P_own_lp, 0daf5198), Studio, 18 Oct ~18:50Z
 Inputs (copied from claude/project-thread-7uelj0 at 0daf5198): sol_s2x.json, cert_s2x.json, argsA.txt (local copy

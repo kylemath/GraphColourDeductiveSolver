@@ -243,3 +243,19 @@ win31.out 9 8:9
 addA_dfast18.out 3 7:3
 k3x_D.out 423 7:113 8:246 9:37 10:16 11:11
 # TOTAL D 15800 (feas_s13.log, patterns loaded excluding C and RSST-D raw)
+
+# ---- Reconciliation with Opus's dcount.txt (0c135c9a, copied as opus_s13_dcount.txt), 18 Oct ~22:05Z ----
+# dcount.py: distinct parsed D patterns per file, Studio parse/fullparse/dropped, args order. It runs on
+# argsA46_pinned.txt, which pins k3x to the aee20e3b copies (k3x_*_aee20e3b), the files feas_s13 loaded (k3x_D 7:113).
+# out/job30/k3x has since moved to 42c4c876.
+# Output: studio_s13_dcount.txt. **TOTAL distinct parsed D patterns 15,466** (names 15,800), which is Opus's 15,461 + 5.
+# Per-file diff vs Opus: 224 of 229 files identical. The 5 that differ:
+#   r_5..r_8.out: Studio 3/3/3/1 names = 10 new patterns; Opus MISSING.
+#   r_D10k5.out: Studio 346 new patterns, Opus 351. 5 of its patterns were already loaded from r_5..r_8 here.
+#   Net effect of r_5..r_8: +5 distinct d=10 patterns, as Opus states.
+# Duplicates by parsed pattern (names 15,800 - 15,466 = 334): eq_D7 59, eq_D8_k3 256, b6 1, u1.pat 11 (455 names,
+# 444 patterns), and r_D10k5 7. Of the r_D10k5 7, 2 are Opus's and 5 are the r_5..r_8 overlap.
+# That gives 329 by Opus's attribution, plus the 5 r_5..r_8 overlaps.
+# Binder: the s13 receiver d=7 7765556/6575765 is ALLOWED by sep3xf `c` with r_5..r_8 loaded (lower_s13.log). All 10
+# r_5..r_8 patterns are d=10 (f10_...), so none can apply to a d=7 receiver.
+# Verdict (Long Table's rule): 15,466 matches and the binder stays admissible, so t* = 1/5 on aee20e3b is [E2].
