@@ -61,10 +61,29 @@ def parse(name):
         if None in r: continue
         P.append((i, mask(r)))
     return d, P
-PATS = []; PSRC = collections.Counter(); SEEN = set()
+def fullparse(name):
+    """Job 30: pattern name -> (d, [(slot, letter set)]) over every specified letter; slot w_i = i, s_i = d + i."""
+    f = name.split('_'); d = int(f[0][1:]); lk, sv = f[1], f[2]; k0 = f[0][0]; out = []
+    for kind, word, off in (('w', lk, 0), ('s', sv, d)):
+        for i, ch in enumerate(word):
+            if ch == '.' or (k0 == 'p' and ((kind == 'w' and ch == '9') or (kind == 's' and ch == '0'))): continue
+            out.append((off + i, sum(1 << LI[x] for x in SETS['B' if ch == 'B' else int(ch)])))
+    return d, out
+def dropped(name):
+    """Specified letters on slots that no link 5 reads (parse() would drop them, weakening the pattern)."""
+    d, F = fullparse(name); lk = name.split('_')[1]
+    five = [lk[i] == '5' for i in range(d)]
+    rd = {i for i in range(d) if five[i] or five[(i - 1) % d] or five[(i + 1) % d]} | \
+         {d + i for i in range(d) if five[i] or five[(i + 1) % d]}
+    return [sl for sl, _ in F if sl not in rd]
+PATS = []; FULLP = []; PSRC = collections.Counter(); SEEN = set()
 def addpat(nm, src):
     if nm in SEEN: return
-    SEEN.add(nm); d, P = parse(nm); assert len(P) >= 1, nm
+    SEEN.add(nm)
+    if dropped(nm):   # Job 30: state it on the whole arrangement (needs bin/sep3f / sep3xf, WLP_SEPF=1)
+        assert os.environ.get('WLP_SEPF') == '1', 'pattern %s has letters on unread slots: run with WLP_SEPF=1' % nm
+        FULLP.append(fullparse(nm)); PSRC[(src + '(full)', FULLP[-1][0])] += 1; return
+    d, P = parse(nm); assert len(P) >= 1, nm
     PATS.append((d, P)); PSRC[(src, d)] += 1
 for a in ARGS:
     if a.startswith('pat='):
@@ -95,9 +114,12 @@ for U in (7, 8, 9):
 lines.append(str(len(RBIG))); lines += sorted(RBIG)
 lines.append(str(len(PATS)))
 for d, P in PATS: lines.append('%d %d %s' % (d, len(P), ' '.join('%d %d' % pc for pc in P)))
+lines.append(str(len(FULLP)))   # Job 30 section (older sep3 binaries stop reading before it)
+for d, F in FULLP: lines.append('%d %d %s' % (d, len(F), ' '.join('%d %d' % sm for sm in F)))
 os.makedirs(os.path.join(HERE, 'bin'), exist_ok=True)
 SF = os.path.join(HERE, 'bin', 'sep3_%s.in' % TAG); open(SF, 'w').write('\n'.join(lines) + '\n')
-SEP = subprocess.Popen([os.path.join(HERE, 'bin', 'sep3'), SF], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+SEPF = 'f' if os.environ.get('WLP_SEPF') == '1' else ''
+SEP = subprocess.Popen([os.path.join(HERE, 'bin', 'sep3' + SEPF), SF], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
 def sep(d, yv, thr, many):
     SEP.stdin.write('q %d %.12f %d %d\n%s\n' % (d, thr, many, OMAX, ' '.join('%.12f' % x for x in yv))); SEP.stdin.flush()
     out = []

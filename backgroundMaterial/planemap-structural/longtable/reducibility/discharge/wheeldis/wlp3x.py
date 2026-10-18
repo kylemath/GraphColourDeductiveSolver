@@ -42,7 +42,7 @@ src = open(os.path.join(HERE, 'wlp3.py')).read().replace('os.path.abspath(__file
 sys.argv = ['wlp3'] + ARGS_W
 exec(src[:src.index('A_ub, b_ub = [], []')])
 SEP.stdin.close(); SEP.wait()                                     # replace sep3 by sep3x (same static input SF)
-SEPX = subprocess.Popen([os.path.join(HERE, 'bin', 'sep3x'), SF], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+SEPX = subprocess.Popen([os.path.join(HERE, 'bin', 'sep3x' + ('f' if os.environ.get('WLP_SEPF') == '1' else '')), SF], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
 TAGX = TAG + ('_notx' if NOTX else '_x')
 NY = len(roots)
 T0 = time.time()

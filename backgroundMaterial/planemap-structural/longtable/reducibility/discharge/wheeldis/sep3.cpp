@@ -117,8 +117,36 @@ static bool oracleHit(int i) {
     }
     return false;
 }
+// Job 30: whole-arrangement patterns. A slot is w_i (index i) or s_i (index d + i); a 5-bit letter set (bit v-5) per
+// constrained slot. All dihedral images are stored; an arrangement is forbidden when some image matches every slot.
+// Checked at the leaf on the complete (w, s) word, so letters on slots that no 5-sender reads can be stated. Rows are
+// still deduplicated by their variable (and transfer) signature, so a row survives iff some filling of it is free.
+static map<int, vector<vector<pair<int,int>>>> FULL;
+static void addFull(int dd, vector<pair<int,int>> P) {
+    auto &V = FULL[dd]; set<vector<pair<int,int>>> seen;
+    for (int refl = 0; refl < 2; refl++) for (int r = 0; r < dd; r++) {
+        vector<pair<int,int>> Q;
+        for (auto [sl_, m] : P) {
+            int isS = sl_ >= dd, i = isS ? sl_ - dd : sl_;
+            int j = refl ? (isS ? ((2 * dd - i - 1) % dd) : ((dd - i) % dd)) : i;
+            j = (j + r) % dd; Q.push_back({isS ? dd + j : j, m});
+        }
+        sort(Q.begin(), Q.end());
+        if (seen.insert(Q).second) V.push_back(Q);
+    }
+}
+static bool fullForbidden() {
+    auto it = FULL.find(d); if (it == FULL.end()) return false;
+    for (auto &Q : it->second) {
+        bool ok = true;
+        for (auto [sl_, m] : Q) { int v = sl_ < d ? wl[sl_] : sl[sl_ - d]; if (!((m >> v) & 1)) { ok = false; break; } }
+        if (ok) return true;
+    }
+    return false;
+}
 static void leaf(double w) {
     if (omax > 0 && minRing() <= omax) return;
+    if (fullForbidden()) return;
     string link(d, '0'), s(d, '0');
     for (int i = 0; i < d; i++) { link[i] = '5' + wl[i]; s[i] = '5' + sl[i]; }
     if ((d == 7 || d == 8) && RBIG.count(canonWord(link))) return;
@@ -183,8 +211,15 @@ int main(int argc, char **argv) {
         vector<pair<int,int>> P(k); for (auto &x : P) if (fscanf(f, "%d %d", &x.first, &x.second) != 2) return 7;
         addPattern(dd, P);
     }
+    int nf = 0;   // Job 30: optional section "NF" + NF lines "d k slot mask ..." (absent in older inputs)
+    if (fscanf(f, "%d", &nf) != 1) nf = 0;
+    for (int i = 0; i < nf; i++) {
+        int dd, k; if (fscanf(f, "%d %d", &dd, &k) != 2) return 13;
+        vector<pair<int,int>> P(k); for (auto &x : P) if (fscanf(f, "%d %d", &x.first, &x.second) != 2) return 14;
+        addFull(dd, P);
+    }
     fclose(f);
-    fprintf(stderr, "sep: NV=%d RBIG=%zu patterns=%d\n", NV, RBIG.size(), np);
+    fprintf(stderr, "sep: NV=%d RBIG=%zu patterns=%d full=%d\n", NV, RBIG.size(), np, nf);
     char cmd[8];
     vector<double> y(NV);
     while (scanf("%7s", cmd) == 1) {
@@ -201,6 +236,7 @@ int main(int argc, char **argv) {
             }
             // pattern check needs all codes: test every position as the 'last' one in index order
             for (int i = 0; i < d && ok; i++) if (wl[i] == 0 && forbidden(i)) ok = false;
+            if (ok && fullForbidden()) ok = false;
             printf("%d\n", ok ? 1 : 0); fflush(stdout); continue;
         }
         if (scanf("%d %lf %d %d", &d, &thr, &maxout, &omax) != 4) return 8;

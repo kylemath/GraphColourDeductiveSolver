@@ -16,7 +16,7 @@ src = open(os.path.join(HERE, 'wlp3.py')).read().replace('os.path.abspath(__file
 sys.argv = ['wlp3', 'tag=feas'] + PARGS
 exec(src[:src.index('A_ub, b_ub = [], []')])
 SEP.stdin.close(); SEP.wait()
-SX = subprocess.Popen([os.path.join(HERE, 'bin', 'sep3x_new'), SF], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True,
+SX = subprocess.Popen([os.path.join(HERE, 'bin', 'sep3xf' if os.environ.get('WLP_SEPF') == '1' else 'sep3x_new'), SF], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True,
                       env=dict(os.environ, SEP_NODELIMIT='0'))
 yv = [0.0] * len(roots)
 for k, v in SOL['y'].items():
