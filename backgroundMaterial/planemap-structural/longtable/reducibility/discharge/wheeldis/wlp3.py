@@ -90,6 +90,13 @@ for a in ARGS:
         fn = a[4:]; allf = fn.endswith(':all'); fn = fn[:-4] if allf else fn
         for line in open(fn if os.path.isabs(fn) else os.path.join(HERE, fn)):
             if line.strip() and (allf or 'D=true' in line) and re.match(r'^[epf]\d+_', line): addpat(line.split()[0], os.path.basename(fn))
+    elif a.startswith('rpat='):   # raw sep3 patterns: "d k pos mask ..." per line, '#' comments (loop/studio/rsstD)
+        fn = a[5:]
+        for line in open(fn if os.path.isabs(fn) else os.path.join(HERE, fn)):
+            f_ = line.split('#')[0].split()
+            if not f_: continue
+            d_, k_ = int(f_[0]), int(f_[1]); P_ = [(int(f_[2 + 2 * i]), int(f_[3 + 2 * i])) for i in range(k_)]
+            PATS.append((d_, P_)); PSRC[('RSST-D raw', d_)] += 1
     elif a.startswith('cpat='):
         fn = a[5:]; cur = None
         for line in open(fn if os.path.isabs(fn) else os.path.join(HERE, fn)):

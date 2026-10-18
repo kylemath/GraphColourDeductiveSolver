@@ -23,3 +23,20 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   sep3xf `c`, 0 rejects). The exact combination has every y and x term cancelling, t coefficient −1, rhs −5/21, so
   **t ≥ 5/21** (lower_s6.log).
 - So t* = 5/21 exactly on that registry, on two engines.
+
+## Second engine for t* = 11/47 (P_own_lp, bbd46d73: argsA + the full k43 batch + RSST-D + Rule T option B + L2), ~20:30Z
+- Args diff vs Studio: argsA43 = argsA6 with the single-window k43_C swapped for k43_kills_df.out (184 D) and
+  k43_kills_cf.cfast (198 C). Both are byte-identical to explore's loop/k43 files (c5a71dc0).
+- RSST-D enters through `rpat=` (their rpatD.txt is byte-identical to Studio's loop/studio/rsstD/out/rpatD.txt). It
+  was **not** in Studio's A/B base registry; it was used only in the rD1 re-solve. wlp3.py now reads `rpat=` (raw sep3
+  patterns).
+- Keys: all 1,036 Y and 104 T keys of sol_s6t43.json are canonical under Studio's ykey/tkey (0 not canonical), so
+  nothing is merged or double-counted. They load into wlp3xt's indices without error.
+- **Upper:** feascheckt.py (wlp3xt option B, sep3xt exhaustive, WLP_SEPF=1, excl = hr1_or1, RSST-D loaded). Sender
+  rows evaluated directly; d = 7..15 receivers 0 violated; DP tail clean: **FEASIBLE** at t = 11/47 (feas_s6t43.log).
+- **Lower:** lowercheckt.py rebuilds all 24 rows with Studio's code:
+  - 12 senderT rows matched to Studio's sender rows by word + bits;
+  - 4 mrows T[key] ≤ M_b, each key a Studio inflow completion for b;
+  - 8 receiverT rows, each allowed by sep3xt `c`, with inflow slots carrying M_b.
+  - Exact combination: every term cancels, t coefficient −1, rhs −11/47, so **t ≥ 11/47** (lower_s6t43.log).
+- So t* = 11/47 exactly with Rule T on that registry, on two engines.
