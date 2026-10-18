@@ -21,6 +21,20 @@ container, at 37 of 106 ring-17 windows). 3 cores.
 - **Guess.** No kill in A. Opus found no RSST-D containment, and the 8 at w0 next to two fives (w1, w7) gives large
   rings. B: private fives at w0 die often (an 8 between fives), but the all-big privates survive, as at R*.
 
+**Round 43 part A, first kill (19:40Z): the binder row is C-reducible at ring 10, on two engines with a conservative X.**
+- Window `f8_...55565_...5....` (my name `a8_u.55565.._.5......`): u (8) + w1..w5 (5, 5, 5, 6, 5) + s1 (5). Ring 10,
+  m = 7. kc -C: C with X = {I0-I1} = the single interior edge u-w1 (the 8 to its five). cfast `--fixed I0-I1`: C,
+  leftover 0. cfast `--search` also finds its own X ({R0-I0,R2-I0,I0-I2,I0-I4}, leftover 0). Not D on either engine
+  (kc and dfast agree: ext 575, reached 2,177 of 2,461). Files: `loop/k43/kills.txt`, `kills_kc.out`, `kills_cf.cfast`
+  (f-names, twoeng-ready); raw `A_kcc.out`, `A_cf.out`.
+- Every letter of the window is one of the row's exact letters, so the row 85556565/65866655 is forbidden [E2]. It
+  fixes w1-w5 and s1 only, so the five-slot encoding would drop it. It needs Job 30's link-word + non-five-slot
+  pattern type, as the dropped list did.
+- It was the 96th window (ring 10). Guess "no kill in A" was wrong.
+- **Amendment (19:40Z, before more runs):** the remaining ring <= 14 windows run on with STOP=0, with every kill recorded,
+  so that Studio gets a batch of d = 8 patterns for the re-solve instead of one. Part B is dropped, since the row is
+  already dead.
+
 ## Round 42 (18 Oct 2026, 11:33Z-): H-DEF, does every R* filling die within one ring of growth? (Long Table's target, 11:29Z)
 
 **Pre-registered 11:33Z, before any run.** Gap G2. Option D, round 18's defect-style method, on R*'s 16 open fillings.
