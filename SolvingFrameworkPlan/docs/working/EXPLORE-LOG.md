@@ -83,6 +83,9 @@ fillings stay open** (`loop/k34/fill_kcc.out`, names `x7_*`; `fillings.txt` stil
   "0 C" was right.
 - Ran 10:27-11:27Z, on 2 cores to 10:59Z and 3 after round 39 stopped. The same driver now continues part C's
   u + all link queue at ring 17 on 3 cores.
+- Part C status (13:43Z): 35 of 106 ring-17 u + all link windows are done on 1 core. None is D or C, so still 9 of 25
+  fillings are killed. The best ring-17 leftover is 1,340. There are no kc/dfast mismatches. Long Table keeps it on one core
+  until Job 30 run A's binders arrive.
 
 ## Round 40 (18 Oct 2026, 10:14Z-): H-C2V, does kc -C2 agree with cfast on X's with two ring vertices in a component? (Long Table, 10:12Z)
 
