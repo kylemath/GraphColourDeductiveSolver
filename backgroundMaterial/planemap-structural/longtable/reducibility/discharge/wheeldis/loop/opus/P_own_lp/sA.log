@@ -1,0 +1,33 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 278 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9332, 8: 3904, 9: 1100, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15038, 'C': 1046}
+warm rows admitted: 50407
+iter 0 t=0.250000000000 rows 51566 cols 6605 added 817  lp 20.0s sep 8.8s total 29s  {7: (142, np.float64(1.0), 0.7), 8: (157, np.float64(0.75), 0.6), 9: (179, np.float64(1.3923742122620002), 0.5), 10: (123, np.float64(1.167254716414), 0.5), 11: (191, np.float64(0.5529677653279998), 0.4), 12: (25, np.float64(0.7135613183930003), 0.5)}
+iter 1 t=0.250000000000 rows 51952 cols 6649 added 386  lp 0.2s sep 8.7s total 38s  {7: (86, np.float64(0.2971039377289999), 0.9), 8: (150, np.float64(0.281135531136), 0.8), 9: (150, np.float64(0.30843622354300004), 0.4)}
+iter 2 t=0.250000000000 rows 52324 cols 6657 added 372  lp 0.3s sep 8.9s total 47s  {7: (75, np.float64(0.2671874999999999), 1.2), 8: (151, np.float64(0.11345108695699979), 0.9), 9: (146, np.float64(0.13750000000000018), 0.4)}
+iter 3 t=0.250000000000 rows 52743 cols 6683 added 419  lp 0.4s sep 9.8s total 57s  {7: (111, np.float64(0.15730088495600003), 2.0), 8: (151, np.float64(0.08437500000000009), 1.1), 9: (157, np.float64(0.14126106194700006), 0.4)}
+iter 4 t=0.250000000000 rows 53136 cols 6691 added 393  lp 0.5s sep 10.1s total 68s  {7: (95, np.float64(0.11037946428699996), 2.2), 8: (147, np.float64(0.03571428571500013), 1.0), 9: (151, np.float64(0.09936755952600018), 0.4)}
+iter 5 t=0.250000000000 rows 53581 cols 6707 added 445  lp 0.6s sep 10.7s total 79s  {7: (155, np.float64(0.0703125), 2.5), 8: (140, np.float64(0.026810660518000073), 1.2), 9: (150, np.float64(0.07812500000100009), 0.4)}
+iter 6 t=0.250000000000 rows 54009 cols 6713 added 428  lp 0.4s sep 12.1s total 91s  {7: (167, np.float64(0.0625), 3.3), 8: (111, np.float64(0.013888888888999862), 1.3), 9: (150, np.float64(0.0680803571430002), 0.5)}
+iter 7 t=0.250000000000 rows 54404 cols 6721 added 395  lp 0.5s sep 11.4s total 103s  {7: (165, np.float64(0.028124999999999956), 3.3), 8: (84, np.float64(0.008568548387000163), 1.1), 9: (146, np.float64(0.04601835605300009), 0.4)}
+iter 8 t=0.250000000000 rows 54633 cols 6745 added 229  lp 0.4s sep 11.7s total 116s  {7: (20, np.float64(0.0031250000000000444), 3.3), 8: (66, np.float64(0.03571428571400004), 1.2), 9: (143, np.float64(0.04375000000099982), 0.5)}
+iter 9 t=0.250000000000 rows 54794 cols 6753 added 161  lp 0.5s sep 11.3s total 127s  {7: (35, np.float64(0.03329613095299999), 3.3), 8: (18, np.float64(0.0008680555559998915), 1.1), 9: (108, np.float64(0.02864583333299997), 0.5)}
+iter 10 t=0.250000000000 rows 55021 cols 6753 added 227  lp 0.3s sep 11.2s total 139s  {7: (75, np.float64(0.006250000000000089), 3.3), 9: (152, np.float64(0.030163043477999807), 0.5)}
+iter 11 t=0.250000000000 rows 55252 cols 6757 added 231  lp 0.3s sep 11.2s total 150s  {7: (85, np.float64(0.002083333332999926), 3.3), 9: (146, np.float64(0.04375000000199991), 0.4)}
+iter 12 t=0.250000000000 rows 55416 cols 6757 added 164  lp 0.2s sep 11.5s total 162s  {9: (164, np.float64(0.03080357142899981), 0.5)}
+iter 13 t=0.250000000000 rows 55572 cols 6759 added 156  lp 0.3s sep 11.7s total 174s  {9: (156, np.float64(0.07353801169599983), 0.4)}
+iter 14 t=0.250000000000 rows 55712 cols 6759 added 140  lp 0.2s sep 11.0s total 185s  {9: (140, np.float64(0.03348506069099999), 0.5)}
+iter 15 t=0.250000000000 rows 55842 cols 6759 added 130  lp 0.3s sep 11.4s total 197s  {9: (130, np.float64(0.025255847952999844), 0.4)}
+iter 16 t=0.250000000000 rows 55959 cols 6759 added 117  lp 0.2s sep 10.7s total 208s  {9: (117, np.float64(0.02151402640300004), 0.5)}
+iter 17 t=0.250000000000 rows 56117 cols 6759 added 158  lp 0.2s sep 11.1s total 219s  {9: (158, np.float64(0.038434072940999986), 0.5)}
+iter 18 t=0.250000000000 rows 56291 cols 6759 added 174  lp 0.2s sep 11.3s total 231s  {9: (174, np.float64(0.013888888888999862), 0.4)}
+  Karp lambda 0.509061 d0 11.71
+iter 19 t=0.250000000000 rows 56291 cols 6759 added 0  lp 0.2s sep 12.1s total 243s  {}
+  converged with x penalty; penalty removed, continuing
+  Karp lambda 0.509061 d0 11.71
+iter 20 t=0.250000000000 rows 56291 cols 6759 added 0  lp 0.0s sep 12.3s total 256s  {}
+LP t* = 0.250000000000 ; dual rows 5 ; bound duals 0 [] ; wrote sol_sA.json cert_sA.json
+  0.250000000 sender 55688
+  0.250000000 sender 66668
+  0.250000000 receiver 8 85556565 65866655
+  0.125000000 sender 55858
+  0.125000000 sender 58668

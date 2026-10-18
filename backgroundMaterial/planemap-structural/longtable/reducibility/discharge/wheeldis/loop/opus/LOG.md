@@ -171,3 +171,11 @@ Pre-registered before any probe ran.
   feasible at d = 7..30 + Karp (J upper). Binder moved from d = 7 to d = 8. Caveat: the solver and the checker share
   jsep2, so a second engine (Studio's feascheck/sep3x) is needed before this counts. Also fixed a ykey/tkey
   palindrome-swap bug in J's keys (pcheck.py); counts now 1,356 Y + 444 T, equal to Studio's.
+- **P (19:50Z): t* = 1/4 on our engine for run-A kills + L2, for run-A kills + rule T, and for both** (`P_own_lp/`)
+  [E, our engine; lower = exact certificate check, upper = exhaustive d = 7..30 + Karp]. Validation 7/27 in 33
+  iterations / 319 s, dual = j28_13. Run-A kills, x = 0: 7/27 (binder still R via filling 7576556/7767566).
+  + L2 (xcap 3): 1/4. Studio's exact run-A registry + L2: 1/4 (so run A, at lower bound 0.228, should converge to 1/4).
+  + rule T (option B), x = 0: 1/4. T + L2: 1/4. Binder at 1/4 in all: receiver d = 8 85556565/65866655 (1/4) with
+  senders 55688, 66668 (1/4) and 55858, 58668 (1/8); rule-T flags 0; neither L2 nor T reaches it. Caveats: RSST-D's 158
+  patterns not loaded, so 1/4 is an upper bound for the full registry (they could kill the d = 8 binder); T results
+  checked by our pcheck (J's code with the ykey/tkey fix), not a separate engine; float primal.

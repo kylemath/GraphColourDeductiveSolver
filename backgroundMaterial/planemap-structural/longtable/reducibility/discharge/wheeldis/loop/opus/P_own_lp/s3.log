@@ -1,0 +1,39 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9344, 8: 3904, 9: 1100, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15038, 'C': 1058}
+rule T: 1077 sender rows, 1356 Y, 444 T
+M rows (T[k] <= M_b, b = 7, 8, 9): 444
+warm rows admitted: 19455
+iter 0 t=0.219780219780 rows 22268 cols 1804 added 1292  lp 0.3s total 18s  {7: (107, np.float64(2.681319), 1.4), 8: (140, np.float64(2.014652), 1.1), 9: (68, np.float64(2.241758), 1.1), 10: (77, np.float64(2.021978), 1.2), 11: (72, np.float64(1.802198), 1.4), 12: (133, np.float64(2.362637), 1.3), 13: (139, np.float64(2.923077), 1.4), 14: (139, np.float64(2.703297), 1.7), 15: (139, np.float64(2.483516), 1.8), 16: (139, np.float64(2.263736), 1.9), 17: (139, np.float64(2.043956), 1.9)}
+iter 1 t=0.219780219780 rows 23118 cols 1804 added 850  lp 0.1s total 36s  {7: (196, np.float64(1.901099), 1.1), 8: (143, np.float64(1.414585), 1.1), 9: (152, np.float64(1.483516), 1.1), 10: (131, np.float64(1.010989), 1.3), 11: (129, np.float64(0.538462), 1.3), 12: (99, np.float64(0.087912), 1.3)}
+iter 2 t=0.219780219780 rows 23625 cols 1804 added 507  lp 0.2s total 53s  {7: (168, np.float64(1.725275), 1.2), 8: (125, np.float64(1.091575), 1.1), 9: (104, np.float64(0.681319), 1.0), 10: (110, np.float64(0.461538), 1.3)}
+iter 3 t=0.223423423423 rows 24094 cols 1804 added 469  lp 0.3s total 72s  {7: (63, np.float64(1.275676), 1.8), 8: (126, np.float64(0.702039), 1.3), 9: (183, np.float64(0.529649), 1.0), 10: (97, np.float64(0.132733), 1.1)}
+iter 4 t=0.225144097346 rows 24409 cols 1804 added 315  lp 0.3s total 90s  {7: (60, np.float64(1.099424), 2.0), 8: (128, np.float64(0.503395), 1.4), 9: (127, np.float64(0.34556), 1.0)}
+iter 5 t=0.225512671399 rows 24781 cols 1804 added 372  lp 0.2s total 108s  {7: (111, np.float64(1.13736), 1.6), 8: (136, np.float64(0.676087), 1.2), 9: (125, np.float64(0.303902), 1.2)}
+iter 6 t=0.225512671399 rows 25159 cols 1804 added 378  lp 0.2s total 127s  {7: (178, np.float64(0.776858), 2.6), 8: (110, np.float64(0.342654), 1.7), 9: (90, np.float64(0.294337), 1.3)}
+iter 7 t=0.226505883724 rows 25459 cols 1804 added 300  lp 0.2s total 146s  {7: (140, np.float64(0.497997), 2.9), 8: (71, np.float64(0.388722), 1.3), 9: (89, np.float64(0.240068), 1.0)}
+iter 8 t=0.226505883724 rows 25805 cols 1804 added 346  lp 0.2s total 165s  {7: (139, np.float64(0.586654), 2.4), 8: (68, np.float64(0.604707), 1.4), 9: (139, np.float64(0.158441), 1.0)}
+iter 9 t=0.226505883724 rows 26221 cols 1804 added 416  lp 0.2s total 185s  {7: (154, np.float64(0.391268), 3.2), 8: (138, np.float64(0.163592), 2.1), 9: (124, np.float64(0.122331), 1.1)}
+iter 10 t=0.226663835896 rows 26570 cols 1804 added 349  lp 0.2s total 207s  {7: (105, np.float64(0.406719), 5.2), 8: (142, np.float64(0.177378), 2.7), 9: (102, np.float64(0.246175), 1.2)}
+iter 11 t=0.250000000000 rows 27007 cols 1804 added 437  lp 0.7s total 228s  {7: (136, np.float64(0.375), 3.3), 8: (142, np.float64(0.239827), 1.7), 9: (159, np.float64(0.216659), 1.0)}
+iter 12 t=0.250000000000 rows 27393 cols 1804 added 386  lp 0.4s total 251s  {7: (122, np.float64(0.203503), 5.2), 8: (101, np.float64(0.098092), 2.0), 9: (121, np.float64(0.162206), 1.2), 10: (42, np.float64(0.020151), 1.1)}
+iter 13 t=0.250000000000 rows 27805 cols 1804 added 412  lp 0.4s total 275s  {7: (123, np.float64(0.249595), 5.6), 8: (152, np.float64(0.085154), 2.2), 9: (129, np.float64(0.154531), 1.2), 10: (8, np.float64(0.011192), 1.3)}
+iter 14 t=0.250000000000 rows 28165 cols 1804 added 360  lp 0.4s total 298s  {7: (117, np.float64(0.479447), 5.5), 8: (116, np.float64(0.067949), 1.9), 9: (127, np.float64(0.214837), 1.1)}
+iter 15 t=0.250000000000 rows 28521 cols 1804 added 356  lp 0.3s total 322s  {7: (100, np.float64(0.141743), 6.4), 8: (154, np.float64(0.044736), 2.2), 9: (102, np.float64(0.060889), 1.3)}
+iter 16 t=0.250000000000 rows 28896 cols 1804 added 375  lp 0.3s total 346s  {7: (119, np.float64(0.137653), 6.5), 8: (126, np.float64(0.060789), 1.8), 9: (130, np.float64(0.035371), 1.3)}
+iter 17 t=0.250000000000 rows 29198 cols 1804 added 302  lp 0.3s total 369s  {7: (151, np.float64(0.131023), 6.0), 8: (138, np.float64(0.070103), 1.9), 9: (13, np.float64(0.000346), 1.1)}
+iter 18 t=0.250000000000 rows 29455 cols 1804 added 257  lp 0.3s total 396s  {7: (141, np.float64(0.141618), 9.3), 8: (116, np.float64(0.056105), 2.0)}
+iter 19 t=0.250000000000 rows 29784 cols 1804 added 329  lp 0.3s total 422s  {7: (92, np.float64(0.097821), 8.5), 8: (143, np.float64(0.020771), 2.4), 9: (94, np.float64(0.024428), 1.1)}
+iter 20 t=0.250000000000 rows 30006 cols 1804 added 222  lp 0.2s total 449s  {7: (121, np.float64(0.079225), 8.7), 8: (101, np.float64(0.014437), 2.4)}
+iter 21 t=0.250000000000 rows 30222 cols 1804 added 216  lp 0.3s total 475s  {7: (84, np.float64(0.0625), 9.0), 8: (132, np.float64(0.019531), 2.2)}
+iter 22 t=0.250000000000 rows 30384 cols 1804 added 162  lp 0.2s total 501s  {7: (106, np.float64(0.0625), 9.5), 8: (1, np.float64(0.00625), 2.1), 9: (55, np.float64(0.03125), 1.1)}
+iter 23 t=0.250000000000 rows 30538 cols 1804 added 154  lp 0.1s total 528s  {7: (30, np.float64(0.005565), 9.8), 8: (117, np.float64(0.016267), 1.9), 9: (7, np.float64(0.011986), 1.2)}
+iter 24 t=0.250000000000 rows 30631 cols 1804 added 93  lp 0.1s total 554s  {7: (10, np.float64(0.010805), 9.4), 8: (83, np.float64(0.003324), 2.1)}
+iter 25 t=0.250000000000 rows 30641 cols 1804 added 10  lp 0.1s total 580s  {8: (10, np.float64(0.003906), 2.2)}
+  Karp lambda 0.552083 d0 12.84
+iter 26 t=0.250000000000 rows 30641 cols 1804 added 0  lp 0.1s total 608s  {}
+LP t* = 0.250000000000 ; dual rows 5 ; wrote sol_s3.json cert_s3.json
+  0.250000000 senderT 55688 [0]
+  0.250000000 senderT 66668 [0, 0]
+  0.250000000 receiverT 8 85556565 65866655
+  0.125000000 senderT 55858 []
+  0.125000000 senderT 58668 [0, 0]
