@@ -2,6 +2,14 @@
 
 ## Round 45 (18 Oct 2026, 20:17Z-): H-TOP, does the top dual row die to one of our own windows inside its 1.5-ball?
 
+**Target changed 20:22Z, still before any engine run.** Long Table (20:12Z, read 20:22Z) replaced the 9 rows: Opus's solve
+with rule T + L2 + rsstD + the full k43 batch gives t* = 11/47 on one engine (Studio checking at bbd46d73), and the
+binding receivers are d = 7 7565765/6855555 (4/47); d = 7 8566655/6656656, 7557565/6566666, 8558655/6665666,
+7557656/6565665 and d = 8 76565565/57765865 (2/47 each); d = 8 75657565 with 66656665 and with 55655565 (1/47 each).
+Round 44 B's preview hits 7 of the 8 with configurations kc already calls D or C; it misses only d = 7
+8558655/6665666. That row is this round's target (ring <= 14: 1029 windows; ring 15-16: 494 more). Bars, engines and
+kill line as below; 8556855/7565666 is dropped. Guess unchanged (no kill at ring <= 14, about 70%).
+
 **Pre-registered 20:17Z, before any engine run.** Gap G2. Long Table, 19:59Z: the next kill-sweep targets are the 9
 receiver rows of Opus's cert_s6.json (t* = 5/21, 9a914f8c), by dual weight, ring <= 14 first. Round 44 part B's preview
 (below) hits 8 of the 9 rows by RSST containment; the one it misses is the top row. 3 cores.
