@@ -64,6 +64,16 @@ core is paused for it.
 - **Guess.** No kill at ring 16. p5 = 7 adds a big vertex at the edge of the window, and big vertices rarely help
   reducibility.
 
+**Round 39 result (10:59Z): no kill. 0 of 16 windows are D or C at ring 16-17, so 0 of 16 fillings die with p5 = 7**
+(`loop/k39/fill_kcc.out`, `targets.txt`). The round stopped at its cap after 16 of the 29 windows at ring <= 17.
+- Ring 16: all 10 windows. Ring 17: 6 of 19, including both ring-17 windows that cover all 16 fillings
+  (`qb2582f426debb95f`, `qe471d5d905b19648`, leftover 14,400 and 10,142). The other 4 cover 4 fillings each.
+- Best leftover is 608 at ring 16 (`q837e5a91adbd7029`). Ring 17 leftovers are 1,920 to 14,400.
+- dfast agrees with kc on all 3 windows it ran (classes, ext and reached are equal).
+- Against the bars: no kill, so Opus's fourth arrangement (w6's rootings sharing one variable at p5 = 7) stands at
+  ring <= 16, and at ring 17 for every window that covers (6,6). Guess "no kill at ring 16" was right.
+- Not run: 13 ring-17 windows covering 1-4 fillings each, and the 48 at ring 18.
+
 **Round 39 interim (10:26Z): ring 16 is 0 of 10 windows D or C, so 0 of 16 fillings die with p5 = 7 at ring 16.** Best
 leftover 608 (`q837e5a91adbd7029`). dfast agrees with kc on the 3 windows it ran (reached 230,668, 198,006 and
 659,330). Ring 17 continues on 1 core to the round's cap.
