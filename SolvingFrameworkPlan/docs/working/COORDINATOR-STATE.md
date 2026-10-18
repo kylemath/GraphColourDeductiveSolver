@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 21:31Z: Round 46 (explore 97233611): both 2/9 receivers killed at ring ≤ 14 (74 + 21 windows, all minimal C); 3 of 4 sender contexts killed, 58778 needs ring 15-16. Structural: sender rows whose ring 2 is all ≥ 7 escape every verified RSST config one ring out (31%/53% of 55677/56687 contexts), so senders with big neighbours all round need a rule, not patterns. Batch -> Studio twoeng after Job 31 blind solve; then Opus re-solves both lines.
 - 18 Oct 21:18Z: Relay exact-letter hats: kill line met (217/1129 unchanged, 174b762f); 6->6 second-gen relay provably null. Opus approved for 6-centred types (6's split from its 2-ball; H: < 217/1129, kill = equal), structural check to Studio before first solve.
 - 18 Oct 21:07Z: t* = 2/9 now [E2] (Studio d86b4a95, 16,587 patterns). H31: t*(relay) < 2/9; Job 31 blind solve at iter 9.
 - 18 Oct 21:04Z: Opus 6-relay + L2 on corrected 30f86cd4 gives t* = 217/1129 ≈ 0.192 [E1, 0de80394; 43-row cert]; supersedes 18/79. Studio checks it only after Job 31's blind t* (independence). Relay-dual receivers (d7 7765556/6575766, 7766556/6566575; d9 656565665/665666566) queued for explore after 2/9 rows. Opus next: exact-letter hats on relay keys (kill = equality).
