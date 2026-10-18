@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 20:13Z: Opus: T + L2 + rsstD + full k43 batch gives t* = 11/47 ≈ 0.234 [E1, bbd46d73; Studio checking]; top receiver d=7 7565765/6855555 (4/47); 8 receiver rows sent to explore as round-44 targets. Single-window+T run: 14/59.
 - 18 Oct 20:05Z: t* = 5/21 now [E2] (Studio feascheck 0 violated + lowercheck 25 rows, 68294ae5). k43 batch 382/382 pass twoeng (twoeng set 187 D / 209 C). Next registry = 5/21 + batch; round 44 RSST 633 next batch; Job 31 held.
 - 18 Oct 20:03Z: Round 43 complete (c5a71dc0): 382 two-engine kills of the old d=8 row, smallest = RSST 7322.126 (C, ring 10); registry had only rsstD. Round 44 approved: explore two-engine-checks all 633 RSST configs and emits sep3xf patterns (conservative C only); published configs passing our own twoeng are ordinary registry patterns, RSST discharge rules stay off the main line pending user decision. Job 31 held until registry settles.
 - 18 Oct 20:00Z: Opus re-solve on 1/4 registry + k43 kill gives t* = 5/21 [E1, Opus LP, 9a914f8c]; dual spread over 25 rows (4 d=7, 5 d=8 top receivers) sent to explore as kill targets; Studio second-engine check queued ahead of Job 31; RSST-D only as separate labelled variant after own twoeng (user decision open). O4 kill line met (exact letters stay 1/4 on old binder).
