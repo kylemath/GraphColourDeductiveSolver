@@ -356,3 +356,22 @@ Not read: Studio's Job 31 spec.
   - Binders:
     - receivers: d=7 7765556/6575766 and 7766556/6566575; d=9 656565665/665666566 (same as s10);
     - senders: 55767, 66669, 55667 (x2), 55757, 57667, 56696, 55696.
+
+## Stage 13 pre-registration + spec (22:50Z, before any solve): 7-centred split R7h (flag zh), as s15 on argsA47
+- Hypothesis (Long Table's wording): the 7-centred class makes 55757-type sender rows non-tight, i.e. those with no 6-neighbour and ring 2 >= 7. It drops t* on argsA47 below s14r's 19/102.
+- Kill line: 55757-type rows stay tight and t* is equal.
+- Class: a big u splits what it gives each link five v by u's own 2-ball near v.
+  - On top of y[root], a second transfer z[k] >= 0 from u to v.
+  - k = (v's link read from u: U, n1, n2, n3, n4; c(hat_r), c(hat_l)), canonical under the reflection (n reversed, hats swapped).
+  - hat_r is the common neighbour of u and n1 other than v (= w_{i+2} in u's row); hat_l = w_{i-2}. c is the small/big class.
+  - The five sees both hats in its 2-ball (hat between l_j and l_{j+1} / l_{j-1}).
+  - The big sees them in jsep's window (a, f at a five position). So z is exact on both sides and no max over unseen parts is needed.
+- Sender rows: every small/big assignment of the hats next to v's big spokes and its 6-spokes. They are shared where one hat is next to both, and coupled with the 6-relay's non-R6 fan check as before.
+  - Row: sum y + sum z + sum g >= 1 - t.
+- Receiver rows: load = previous load + sum over link fives of z[k(i)] <= d - 6 + t.
+  - The separator's class key for a five position now includes a and f.
+- This is a refinement of y (z constant across hats = y), so t* <= the base relay's t* (s14r = 19/102 for s15; s12r47 for the combination).
+- Validations: (V1) zh off reproduces s14r = 19/102 (P2's run, own code). (V2) Orientation test on zkey. (V3) The upper check at the solution, exhaustive.
+- Runs:
+  - s15 = s10-relay (noapex) + zh on argsA47.
+  - s15c = reduced 6-centred (apexcls) + zh, if s15 is not worse.
