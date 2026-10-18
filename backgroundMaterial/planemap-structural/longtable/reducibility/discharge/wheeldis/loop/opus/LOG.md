@@ -214,3 +214,6 @@ our agent R and have no output from it.
   Top binder: receiver d = 7 7565765/6855555 (4/47). At 2/47: d = 7 8566655/6656656, 7557565/6566666, 8558655/6665666,
   7557656/6565665; d = 8 76565565/57765865. At 1/47: d = 8 75657565 with s-words 66656665 and 55655565. Senders: 56687
   (6/47), 55677 (4/47 under each flag setting), and others. Single-window s6t gives 14/59. Sent to Studio for a second check.
+- **Two-engine (20:17Z): Studio passes 11/47 on both sides** (8f45fca8, loop/studio/opus_check/). Inputs are
+  byte-identical. 1,036 Y + 104 T keys are canonical. feascheckt: 0 violated at d = 7..15, DP tail clean. All 24 cert rows
+  rebuild, so t* = 11/47 with rule T is [E2]. Studio asked for a no-T baseline (argsA43 minus T) for its new LP class.
