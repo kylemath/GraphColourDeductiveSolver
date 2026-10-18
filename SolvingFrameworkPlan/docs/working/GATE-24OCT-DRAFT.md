@@ -7,7 +7,7 @@ engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative
 
 **K ≤ 1 (at most one big vertex in the configuration): closed.** Every discharging sender with one big
 neighbour is in the reducible set R, so the forbidden-pattern LP has t* ≤ 0 on that case. This rests on Lean for 46
-of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about an hour). **K = 2: open.**
+of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about 4.5 h on 4 cores, done ~16:00Z 18 Oct). **K = 2: open.**
 The best LP bound is t* = 7/27 ≈ 0.259 (need ≤ 0). It did not move when big–big charge-sharing was added. The
 remaining binders are a small set of degree-7 receiver patterns whose kills lie beyond ring 16.
 
@@ -15,7 +15,7 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 
 | Piece | Status | Where |
 |---|---|---|
-| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for 2,702 of the 2,855-key Studio-D set (Job 24b, all clean). The 17 Oct outage cut off S2702–S2854 (153 keys), now re-running (~1 h) | `studio14/`, `dcheck/occ24/results24b.txt` |
+| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for 2,702 of the 2,855-key Studio-D set (Job 24b, all clean). The 17 Oct outage cut off S2702–S2854 (153 keys), now re-running (~4.5 h on 4 cores) | `studio14/`, `dcheck/occ24/results24b.txt` |
 | 47 deferred keys at rings 17–19 | 46 [L] (3 early + studio14c 43/43, d627087b); k19 (ring 19, 48.4M classes) [E2]: dfast18 and kc agree on classes 48,427,561, ext 3,909,279, D, depth 4 | `studio14b/`, `wheeldis/loop/kc/` |
 | kc validation (independent of dfast; no dfast, cfast or Lean source read) | 101 keys at rings 10–17 (82 not-D) + ring-18 D, all fields equal | `wheeldis/loop/kc/FINDINGS.md` |
 | w66666 C-reducible | [E2] computation in Lean (C66666.lean, native_decide) + Coq/Gonthier independent; C-glue (C-reducible ⇒ colourable) not formalized in Lean | `c66666/`, `dcheck/C66666.lean` |
