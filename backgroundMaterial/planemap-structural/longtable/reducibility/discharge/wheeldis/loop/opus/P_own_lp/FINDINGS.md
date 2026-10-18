@@ -162,3 +162,25 @@ non-big paths. Within the 2-ball of w5 the only big vertex the row forces is u.
   x_in = x_out at u.
 - So (b) is not built. The levers left are a kill of 85556565/65866655 (exact s-word, privates open), or a transfer
   type that tells u from w0 using letters outside the current side codes (u's 5-five link).
+
+## Stage 5a (19:45Z): exact letters (T_F, fan off) + L2 + RSST-D: **t* = 1/4** [E, lower; upper by inclusion]
+- `pslite.py exact nofan`. Senders enumerate only the read target slots; coupling is existential over the unread
+  ones (in B mode this reproduces 4b's counts exactly: 3,312 / 2,409 / 1,188 / 1,188 and 1,077 / 1,356 / 444).
+  Exact, fan off: 14,766 sender rows, 3,048 Y, **2,007 T (= G's full-letter count)**, 9 signatures, every key
+  receivable. Orientation test (exact, fan on): 1,953,125 cases, 0 mismatches. Exact with the fan on would need
+  612,951 sender rows; not run.
+- 32 iterations, 311 s. Dual: the same 5 rows (exact flags 5 everywhere). `lowerS exact nofan xon rpat`: VALID 1/4.
+  Upper: the 4a primal is feasible in this larger class (the exact keys take their small/big values). Kill line
+  (LOG O4) met: **exact letters are dead for this binder**, as pre-registered.
+
+## Stage 6 (19:57Z): + explore round 43's C kill of the d = 8 binder: argsA + L2: **t* = 5/21 = 0.2381** [E, both sides]
+- f8_...55565_...5.... (ring 10, C on two engines, conservative X I0-I1; loop/k43/kills.txt on
+  origin/claude/project-thread-nh6pv2, f1f71335) as cpat `k43_C.cfast` (`argsA6.txt`). It forbids
+  85556565/65866655 (and 65866555).
+- `solve2 xon xcap=3 xpen=1e-3`: 51 iterations, 530 s. J's `jcheck lower`: VALID t >= 5/21. J's `jcheck2 upper`:
+  FEASIBLE (342 senders, d = 7..17 exhaustive, DP to 30, Karp d0 = 11.7); d = 7, 8, 9 tight, d = 10 -0.048.
+- Dual (25 rows, broad): receivers d = 7 8556855/7565666 (4/63), 8567655/6655656, 8655675/5866555,
+  7557656/8585665 (1/63); d = 8 75565756/75666565, 76565565/56568565, 75656575/56665555, 76556565/58565765,
+  85556565/66866665 (2/63 each). The same link 85556565 survives with s-word 66866665. Senders 56687 (8/63), 55667
+  (6/63), 55668, 66668 (4/63), 55687, 55778, 55787, 56667, 56686, 56688, 56858, 56867, 58668, 66678 (2/63), 55868,
+  66667 (1/63).
