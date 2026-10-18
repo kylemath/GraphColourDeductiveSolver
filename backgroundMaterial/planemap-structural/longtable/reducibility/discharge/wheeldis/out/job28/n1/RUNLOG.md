@@ -19,3 +19,19 @@ Any C needs a C-capable second check before it counts. After any C that touches 
 | R17b | f7_5567576_56.77.7 (ring 17, kc not D) | 8 h | C-reducible, which kills R | same |
 Inputs: rowR.txt, built by gen28 `variants`/`make` from d=7 link 5675765 s 6577575. Any C goes to a C-capable second
 check at once.
+
+## Results so far (10:41Z)
+- R16 f7_.556757_.56.77.: **neither** (search done, 65 min, best leftover 886). kc -C is also not C (round 34). So it is
+  **not C on two engines**; R is not killed by it.
+- w17_6 f7_.55685B_.56.87.: neither (best leftover 1,907). w17_1..5: TIMEOUT at 2 h.
+
+## w17L_1..5 (10:41Z): the 5 win17 timeouts, 8 h cap, nice 20, one core each (runW8.sh)
+| Run | Window | Hypothesis | Kill line |
+|---|---|---|---|
+| w17L_1 | f7_.556756_.56.88. | the search finishes, and the window is C | 8 h cap → undecided, stop; neither → not C (cfast) |
+| w17L_2 | f7_.556758_.56.B8. | same | same |
+| w17L_3 | f7_.556857_.56.86. | same | same |
+| w17L_4 | f7_.556857_.56.B8. | same | same |
+| w17L_5 | f7_.556858_.56.67. | same | same |
+Pre-emption: a new kc-not-D window on row R, or a kc D/C needing a second engine, pauses (SIGSTOP) the rerun with the
+least progress.
