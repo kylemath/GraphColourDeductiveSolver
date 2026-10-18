@@ -130,3 +130,8 @@ not new to F.
   byte-identical to 97233611). k45 alone: 12 D, 0 C. Default glob: **426 D / 422 C** (+5 D, 0 lost). New D:
   f7_..55855_..66666, f7_..55865_..6656., f7_..55865_.6665.., f7_.558556_.6666.., f7_.558556_.66666.
   Drop44 guard 0 flagged. Matcher on all 5: 219 frames, 0 mismatches. The k44 C2 diagnostics stay out.
+- ~21:58Z: explore batch 4eefe5f5 (loop/k47 r7c/r7b1/r7b2 kills of the 1/5 receiver d=7 7765556/6575765). Only the 17
+  new files were fetched by path, byte-identical; the modified A_* raw files were left at 97233611. k47 alone: 74 D /
+  65 C, as explore's run. Default glob: **457 D / 448 C** (+31 D, +26 C, 0 lost, 0 one-engine, 0 X mismatch).
+  Drop44 guard 0 flagged. Matcher (11 names, including the smallest kill f7_...5556_...576.): 488 frames, 0
+  mismatches. Job 31 does not get this batch.
