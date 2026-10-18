@@ -19,6 +19,19 @@ open fillings). 2 cores, in place of part C's ring-17 queue, which resumes after
 - **Guess.** 0 C. Most of these windows have 2-6 interior vertices, and part C's u + all link windows got 0 C for the
   16 at ring 13-16 (best leftover 96).
 
+**Round 41 result (11:28Z): no kill. All 1,383 sub-patch windows at ring 6-15 are not D and not C, so the 16 open
+fillings stay open** (`loop/k34/fill_kcc.out`, names `x7_*`; `fillings.txt` still reads 9 of 25 killed, all D2).
+- By ring: 6-12: 399, 13: 243, 14: 327, 15: 414. That is every window in Opus's `f_all.txt` at ring <= 15, so Opus's
+  156 of 414 at ring 15 is now complete for D as well as C.
+- dfast ran on 347 of them (every 4th not-D window) and agrees with kc on all 347, with 0 mismatches.
+- Closest to C, as leftover over ext, is about 0.8% at ring 14-15: `x7_u5675..5_667...5` (ring 14, leftover 150) and
+  `x7_u5675.65_6...7.5` (ring 15, leftover 320). Both are the u + w0-w3 + w6 + s0/s6 corner around the w0 and w6 fives.
+- Against the bars: 0 C, so windows inside R's patch are exhausted for D and C at ring <= 15 (and for u + all link
+  windows to ring 16, part C). The 16 fillings need vertices outside the patch, which matches Opus's reading. Guess
+  "0 C" was right.
+- Ran 10:27-11:27Z, on 2 cores to 10:59Z and 3 after round 39 stopped. The same driver now continues part C's
+  u + all link queue at ring 17 on 3 cores.
+
 ## Round 40 (18 Oct 2026, 10:14Z-): H-C2V, does kc -C2 agree with cfast on X's with two ring vertices in a component? (Long Table, 10:12Z)
 
 **Pre-registered 10:14Z, before any run.** Round 38's kills 2, 4 and 5 rest on such an X. Short validation; round 39's
