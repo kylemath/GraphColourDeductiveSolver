@@ -15,7 +15,7 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 
 | Piece | Status | Where |
 |---|---|---|
-| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for 2,702 of the 2,855-key Studio-D set (Job 24b, all clean). The 17 Oct outage cut off S2702–S2854 (153 keys), now re-running (~6 h) | `studio14/`, `dcheck/occ24/results24b.txt` |
+| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for 2,702 of the 2,855-key Studio-D set (Job 24b, all clean). The 17 Oct outage cut off S2702–S2854 (153 keys); 30 more are done and clean, and the rest are running (~7 h) | `studio14/`, `dcheck/occ24/results24b.txt` |
 | 47 deferred keys at rings 17–19 | 46 [L] (3 early + studio14c 43/43, d627087b); k19 (ring 19, 48.4M classes) [E2]: dfast18 and kc agree on classes 48,427,561, ext 3,909,279, D, depth 4 | `studio14b/`, `wheeldis/loop/kc/` |
 | kc validation (independent of dfast; no dfast, cfast or Lean source read) | 101 keys at rings 10–17 (82 not-D) + ring-18 D, all fields equal | `wheeldis/loop/kc/FINDINGS.md` |
 | w66666 C-reducible | [E2] computation in Lean (C66666.lean, native_decide) + Coq/Gonthier independent; C-glue (C-reducible ⇒ colourable) not formalized in Lean | `c66666/`, `dcheck/C66666.lean` |
@@ -45,7 +45,7 @@ either: R fits as its own 7-neighbour (self-pairing, rounds 12 and 20). R's thre
 are not D [E2: kc and dfast18 agree on every count]. The certificate breaks only if all 25 (s1, s4) fillings of R die:
 9 (a 5 at s1 or s4) are dead by ring-13 D on both engines, and 16 remain (loop/k34/fill.txt). A C verdict on R's ring-16/17
 windows would cover all 16. kc -C (independent, matches cfast on 163 configs: 30/30 C, 133/133 not C) and Studio's
-cfast agree that R16 (ring 16) is not C (best leftover 886); R17a/b are still running. No D window lies inside R's own patch once s1, s4 ≥ 6 (Opus: exhaustive to ring 14, sampled to 16, 0 of 1,131), so any kill of the 16 must reach outside the patch, as explore's ring-13 C window at w2 does (C on two engines, round 37).
+cfast agree that R16, R17a and R17b (rings 16–17) are neither D nor C. No D window lies inside R's own patch once s1, s4 ≥ 6 (Opus: exhaustive to ring 14, sampled to 16, 0 of 1,131), so any kill of the 16 must reach outside the patch, as explore's ring-13 C window at w2 does (C on two engines, round 37).
 
 ## Options for K = 2 after the gate
 
