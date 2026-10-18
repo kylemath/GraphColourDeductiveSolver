@@ -123,3 +123,17 @@ the 6's second ring free (cyclic DP), so worst-case parking. F and incoming H ar
 2-ball, i.e. link, s-ring and the privates of every 6/7 link vertex, so each neighbour's wheel is exact and is checked
 against R. An outgoing H is limited by the sender 7's own row, which is charged in - out (H out is subtracted there).
 No channel reads beyond the sender's wheel, so no rule needs distance-3 information.
+
+## Round B5 (18 Oct 2026, 23:30Z, Long Table request via the coordinator): RSST on the d=7 receiver 7665566 / 6675666
+
+Pre-registered question (from the request): do the 32 RSST rules pay in full for this receiver, i.e. is every case
+with non-zero score dead to a published configuration? Bar: yes iff non-zero cases = cases with a hit.
+Result: 15,625 cases, 3,072 score 0, 12,553 non-zero (max 6), and all 12,553 contain a published configuration
+(own containment test, strict on 9+, second ring only). Details and control: `b5_lt7/README.md`, commit 9edf7d8b.
+One engine; asks for Studio's cross-check.
+
+## Round B3 progress note (23:35Z)
+
+v0 (no patterns) lost to a container restart at a lower bound of 10/27. v2 (complete 849bd5fe snapshot, Studio
+09cc8b69) runs; separation at d >= 8 hits its node limit, lower bound -1/8 after 4 iterations. Separator fixed once
+(11dcebf4: hashed pattern groups); a stronger windowed pattern-aware bound (`b3_pfh/sepb2.cpp`) is being tested.
