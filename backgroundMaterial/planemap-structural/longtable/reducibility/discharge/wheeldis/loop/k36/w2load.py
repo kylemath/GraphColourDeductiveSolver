@@ -65,6 +65,8 @@ FMT = '%.4f k=%d m=%d link %s s %s'
 CAP = {}
 for side, X in (('w2', 6), ('w4', 7)):
     rows, cnt = enum(X); rows.sort(reverse=True)
+    with open(os.path.join(H, 'rows_%s.txt' % side), 'w') as fo:
+        for r in rows: fo.write(FMT % r + '\n')
     print('\n## %s (spoke far letter %d): %s' % (side, X, dict(cnt)), flush=True)
     print('# top 8 by yload (yload, k, m, link, s):')
     for r in rows[:8]: print('  ' + FMT % r)

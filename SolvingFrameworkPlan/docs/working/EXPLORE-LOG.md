@@ -1,6 +1,67 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
-## Check (18 Oct 2026, 09:44Z): does H7's defect D3 contain RSST #110? (coordinator, 09:22Z) Yes, and it is D on kc
+## Round 38 (18 Oct 2026, 09:52Z-): H-W38, how far does w2's cap climb if its binding frames are killed one by one?
+
+**Pre-registered 09:52Z, before any code.** Gap G2. 1 core, beside part C.
+- **Why.** Round 37 killed link 7665575 at w2 with one ring-13 window. The cap then sits at the next frame
+  (0.1852, link 7665675). If frames keep dying cheaply, w2/w4 stop limiting Rule T or the L2 transfer.
+- **Loop.** Start from round 36's 62,140 w2 arrangements (`k36/rows_w2.txt`) minus round 37's kill. Each step:
+  1. Find the binding frame, argmin over surviving rows of (34/27 - yload)/k.
+  2. Build its windows: centre w2 + the link vertices around any nonempty subset of its link fives (as gen28's
+     variants), or the whole link, + any subset of the s-slots next to them, at the frame's letters (9+ left open).
+  3. Run kc -C in ring order up to ring 15, stopping at the first kill. D needs kc + dfast. C needs kc-C + cfast
+     `--search`.
+  4. A kill removes every surviving row that agrees with the window in the frame's own orientation. Then repeat.
+  Stop when a binding frame survives all its windows to ring 15, or after 40 minutes.
+- **Report.** The kills in order, each with its window and verdicts. The cap at stop, and R's first-order row
+  t >= (0.7 - 2 cap)/2.7. The frame that stops the loop. w4 gets the same numbers, since no window reads s0 or s5.
+- **Bars.** Cap >= 0.35 at stop: w2/w4 no longer block t* = 0 through R. Cap stuck at 0.1852: the first frame
+  already resists.
+- **Kill line.** Any kc/dfast D mismatch, or a kc-C C that cfast calls not C.
+- **Guess.** 3-6 frames die, and the loop stops near 0.25 at a frame whose binding fives sit at L3 and L6 with
+  big neighbours.
+
+## Round 37 (18 Oct 2026, 09:47Z-): H-W37, is w2's worst frame reducible? (coordinator's go, 09:42Z)
+
+**Pre-registered 09:47Z, before any code.** Gap G2. Uses the core freed by the broad C run.
+- **Why.** Round 36's cap T_max = 0.1506 at s1 = 6 comes from one link word at w2, 7665575, with s-words
+  5.65677, 5.65777, 5.66677, 5.65877 and 5.65977 (bounds 0.151-0.167). The next link word, 7665675, gives
+  0.1852, and s1 >= 7 gives 0.1924. Killing those five frames raises the w2/w4 cap to 0.1852. Then the first-order
+  R row is t >= 0.122 at (6,6).
+- **Windows.** Centre w2 (degree 7), the whole link 7665575 at exact letters, and any subset of the s-slots s'0 = 5,
+  s'5 = 7, s'6 = 7, and (x2, x3, x4) taken from the five target patterns (6,5,6), (6,5,7), (6,6,6), (6,5,8),
+  (6,5,9+). A 9+ slot can only be left open. Windows are deduplicated under the link's symmetry, built with gen28,
+  and run in ring order up to 18.
+- **Engines.** kc D, with each D re-run on dfast (ring <= 16) or dfast18. kc -C on every not-D window: a C there is
+  one engine, and cfast at Studio is the second.
+- **Bars.** All five frames die: the cap at s1 = 6 rises to 0.1852. Only the x3 = 5 frames (the three-five
+  triangle) die: the cap rises to 0.1637, the 5.66677 frame. None die: the 0.15 cap stands.
+- **Kill line.** Any kc/dfast mismatch.
+- **Guess.** The x3 = 5 windows with x2, x4 fixed are D at ring <= 15 (three mutually adjacent fives beside two 6s
+  are crowded). The 5.66677 frame is not D but C.
+
+**Round 37 result (09:51Z): all five worst frames are C on two engines, through one ring-13 window**
+(`loop/k37/`: `framewin.py`, `drive37.py`, `fill_kcc.out`, `targets.txt`, `cwin.cfast`).
+- The driver ran 38 of 799 windows, at rings 11-13, before every target was dead. Nothing is D.
+- `f7_5566757_...5...` (ring 13) covers all five targets. It is w2 (degree 7) + its whole link 7665575 + w0 (the
+  five at s'0, next to u and w1). It is **C with X = {w2-u} (I0-I1)** on kc-C (conservative; 1 X tested) and on
+  cfast (`--search`: same X, leftover 0).
+  - Both engines agree on classes 66,430, ext 8,537 and reached 59,788.
+  - X is one interior edge, so G/X is loopless and smaller with no global condition.
+- `f7_..57556_...65..` (ring 11, 656 only) and `f7_..57556_...66..` (ring 12, 666 only) are also C on both engines.
+  kc-C uses X = {I0-I2} (size 1), and cfast's first working X is a size-4 triad set.
+- The window fixes none of x2, x3, x4 or p. So it kills every w2 frame with link 7665575, and the w4 mirror too:
+  the window doesn't use s0 or s5, the only letters where w2's and w4's frames differ.
+- **Effect (first order, from `k36/rows_w2.txt`):** the next link word, 7665675 (k = 2), sets the s1 = 6 cap at
+  0.1852. s1 >= 7 stays at 0.1924. R's row then gives t >= 0.122 at (6,6) and >= 0.116 elsewhere. This round
+  doesn't recompute Opus's second-order floor (11/71), whose worst frame is now dead.
+- **LP note.** No five of w2 has all four of its slots fixed in this window, so wlp3/sep3 cannot use it as a
+  pattern (`parse` needs at least one). It needs the link-word + non-five-slot pattern type, which is Job 30
+  part A's sep3x extension.
+- Guess check: "x3 = 5 windows D at ring <= 15" was wrong (nothing is D). "5.66677 C" was right, but the kill is
+  broader than guessed: one window with no x-slot fixed.
+
+## Check (18 Oct 2026, 09:43Z): does H7's defect D3 contain RSST #110? (coordinator, 09:22Z) Yes, and it is D on kc
 
 This is a verification check, so it was not pre-registered. It used my own containment code
 (`loop/d3/d3_rsst.py`), not `rsst_contain.py` or Opus's `rsst_in_defect.py`.
