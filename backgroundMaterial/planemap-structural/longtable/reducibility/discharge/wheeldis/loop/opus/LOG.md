@@ -206,3 +206,6 @@ our agent R and have no output from it.
   85556565/66866665. Sent to Studio for a second-engine check.
   O4 result: exact letters (s5a, T + L2 + RSST-D, before the kill) converged at 1/4, lowerS VALID. **Kill line met:
   exact letters are dead for the old binder.**
+- **Two-engine (20:02Z): Studio passes 5/21 on both sides** (68294ae5, loop/studio/opus_check/README.md).
+  feascheck: 0 violated. lowercheck: all 25 certificate rows rebuild, exact cancellation. So t* = 5/21 for K = 2 is [E2].
+  Studio has also run all 382 windows of the full k43 batch (c5a71dc0) through twoeng: 184 D + 198 C.
