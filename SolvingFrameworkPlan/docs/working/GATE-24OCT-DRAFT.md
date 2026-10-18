@@ -51,8 +51,9 @@ cfast agree that R16 (ring 16) is not C (best leftover 886); R17a/b are still ru
 
 - **A. Ring 17–18 windows at the binders.** These were dead on cost (dfast18: 60–70 min per ring-18 D). kc does ring 18
   in about 5 minutes, so this is cheap now. Running overnight 18 Oct (explore round 34). Claims still need dfast18.
-- **D. Defect-style search at each surviving binder** (round 18's method). It asks whether the row can occur near a
-  minimal counterexample at all. Cost: per-row, capped.
+- **D. Defect-style search at R's 16 fillings: done 18 Oct (round 42), and it fails.** After one ring of growth with
+  RSST plus two-engine kills forbidden, 160,552 of 250,000 cases survive, including every case with all privates ≥ 7. Together
+  with no D/C on R's patch to ring 15 (round 41), R is not forbiddable by known configurations, so it must be paid for by rules (E).
 - **E. Change the rule class** (Opus team, 18 Oct): send charge through 6s, which could void R's certificate
   without killing R. After explore's rounds 37–38 killed 1,140 frames at w2 (C on two engines), there is no positive hand bound left on what Rule T can buy (Opus, floor.py, rerun after a side-map fix; all kills used are conservative two-engine C). Studio's Job 30 part B is the deciding run. Also: RSST's 249 D configurations, already Lean-checked, remove every known K ≤ 4 defect but not R. H7's 1/21 floor is specific to its LP solution: its defect D3 contains RSST #110, D on two engines (explore 4b12ef00).
 - **C. Narrow.** State K = 2 as open with the evidence above. Track 1's paper becomes "K ≤ 1 closed by 2-ball
