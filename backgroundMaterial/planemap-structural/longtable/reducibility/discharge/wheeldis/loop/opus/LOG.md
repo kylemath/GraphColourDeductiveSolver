@@ -248,3 +248,6 @@ our agent R and have no output from it.
   its receivers are now killed. Binders: receivers d = 7 7765556/6575766 (0.149), 7766556/6566575 (0.140), and d = 9
   656565665/665666566 (0.035), plus smaller ones. Senders 55767 (0.149), 66669 (0.109), 55667, 55757, 57667, 56696. Sent to
   Studio for a second check.
+- **Two-engine (21:07Z): Studio passes 2/9 (s9) on both sides** (d86b4a95; registry identical, 16,587 patterns;
+  0 violated rows; all 6 cert rows rebuild). Main-line K = 2 is at 2/9 [E2]. The relay value 217/1129 waits on Studio's
+  check, which comes after Job 31's blind solve.
