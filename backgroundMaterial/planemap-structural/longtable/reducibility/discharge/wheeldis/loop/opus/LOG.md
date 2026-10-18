@@ -301,3 +301,7 @@ our agent R and have no output from it.
   - The top binder is still d = 7 7665566/6675666, at dual 0.23-0.25 with slack 0 in every run. u spends its whole budget as
     y/z to its fives w3, w4 and as relay h to its link 6s, and receives nothing (x = 0). Relieving it needs inflow into u from
     w0 or s2 (the 7s), or payment to w3 and w4 from their ring-2 side.
+- **P2 s16 (23:40Z): main line on ab3f252b (argsA49) stays at t* = 1/5** [E, our engine; lower VALID; upper FEASIBLE,
+  Karp lambda 0.5436]. 119 iterations, 2,067 s, with a long tail at the 1e-4 level after the x penalty came off. The new dual has
+  3 rows: receiver d = 7 7665566/6665766 (2/5), senders 55667 (2/5) and 55767 (1/5). The receiver is a sibling of the relay's
+  binder 7665566/6675666. It is still admissible under d43ba26a (argsA50, distinct D 15,550). s17 is running.

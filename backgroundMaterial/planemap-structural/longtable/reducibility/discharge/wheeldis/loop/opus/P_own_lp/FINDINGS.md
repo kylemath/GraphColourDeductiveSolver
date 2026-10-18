@@ -394,3 +394,4 @@ Not read: Studio's Job 31 spec.
   - s15c: slack 0, dual 0.2301. Load = y7|5566 0.67257 + y7|5576 0.33628 + z7556600 0.03540 + z7557600 0.07080 + M7566657 0.07080.
   - s12r47: slack 0, dual 0.2478. Load = y 0.67920 + 0.33628 + M 0.09956 + 0.07080.
   - Nothing flows into u (all x = 0 here). What it gives: y and z to its two fives (w3, w4), and the 6-relay h to its link 6s.
+- argsA50 (d43ba26a): P2's s17/argsA50.txt = argsA47 with k3x swapped; k3x md5 equal to git show d43ba26a out/job30 (510 D / 522 C); dcount newpat 15550. s12r50 launched (23:2xZ).

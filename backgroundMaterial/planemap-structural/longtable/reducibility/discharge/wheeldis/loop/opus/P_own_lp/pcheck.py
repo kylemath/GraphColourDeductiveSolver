@@ -40,6 +40,7 @@ DIS = os.path.dirname(ROOT)
 DMAX = int(OPT.get('dmax', '17')); DTAIL = int(OPT.get('dtail', '30')); EPS = float(OPT.get('eps', '1e-9'))
 LET = (5, 6, 7, 8, 9); LI = {l: i for i, l in enumerate(LET)}
 BIN = os.path.join(HERE, 'bin', 'jsep' if 'ref' in FLAGS else 'jsep3')
+BIN4 = os.path.join(HERE, 'bin', 'jsep4'); BONUSF = [None]
 NTH = OPT.get('threads', '3'); SYMF = '0' if 'nosym' in FLAGS else '1'
 WORK = OPT.get('work', '/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/work'); os.makedirs(WORK, exist_ok=True)
 def log(*a): print(*a, flush=True)
@@ -314,7 +315,10 @@ def run_sep(d, W, thr, K, mode, pats=True):
     hdr2 = hdr.replace('.txt', '_m%d.txt' % mode); os.replace(hdr, hdr2); hdr = hdr2
     extra = [] if 'ref' in FLAGS else [NTH, SYMF]
     if mode == 2: extra.append(CLSFILE[0])
-    out = subprocess.run([BIN, hdr, wp] + extra, capture_output=True, text=True, check=True).stdout.split('\n')
+    if BONUSF[0] and d == 7:
+        if mode != 2: extra.append('none')
+        extra.append(BONUSF[0])
+    out = subprocess.run([BIN4 if (BONUSF[0] and d == 7) else BIN, hdr, wp] + extra, capture_output=True, text=True, check=True).stdout.split('\n')
     return [l.split() for l in out if l], time.time() - t0, len(inst)
 
 def karp(M):

@@ -4,6 +4,35 @@ AC = 'apexcls' in FLAGS             # reduced s12: apex letters read only as sma
 def ap(x): return (7 if x >= 7 else 5) if AC else x
 ZH = 'zh' in FLAGS                   # stage 13 (R7h): big-centred split, z[five link from the big, hat classes on both sides]
 ZV = {}
+Q7 = 'q7' in FLAGS                   # stage 14 (R77): big -> adjacent 7 inflow q[the 7's whole link, read from the sender]
+QV = {}
+def qkey(m):
+    m = tuple(m); return min(m, (m[0],) + tuple(reversed(m[1:])))
+def q7sig(U, a, b, c, e):
+    x = (U, a, b, c, e); return min(x, (U, e, c, b, a))
+def q7keys(sg):
+    U, a, b, c, e = sg
+    return sorted({qkey((U, a, b, p1, p2, c, e)) for p1 in LET for p2 in LET if ''.join(map(str, canon((U, a, b, p1, p2, c, e)))) not in RBIG})
+def q7_inflow(w):
+    """coefficient dict of q keys flowing into a 7 with link w (d = 7)"""
+    cf = collections.Counter()
+    for j in range(7):
+        if w[j] >= 7: cf[qkey(tuple(w[(j + i) % 7] for i in range(7)))] += 1
+    return cf
+_L7 = []
+def write_bonus():
+    if not _L7:
+        seen = set()
+        for w in itertools.product(LET, repeat=7):
+            c = canon(w)
+            if c not in seen: seen.add(c); _L7.append(c)
+    fn = os.path.join(WORK, 'bonus7.txt'); n = 0
+    with open(fn, 'w') as f:
+        for c in _L7:
+            v = sum(m * QV.get(k, 0.0) for k, m in q7_inflow(c).items())
+            if v > 0: f.write('%s %.15f\n' % (''.join(map(str, c)), v)); n += 1
+    BONUSF[0] = fn if n else None
+    return n
 def zkey(n, hr, hl):
     """n = (U, n1, n2, n3, n4) the five's link read from the big U (n1 = next spoke); hr = class of the hat between U and n1,
     hl = class of the hat between U and n4 (0 small / 1 big)"""
@@ -79,6 +108,10 @@ def window_table_R2(U, y, x, MV2):
             wd = (U, LET[e], LET[r], LET[q], LET[b])
             if isR5(list(wd)): continue
             W[a, b, 0, e, f, :, q, r, :] += ZV.get(zkey(wd, c2(LET[f]), c2(LET[a])), 0.0)
+    if Q7:
+        for b, e, q, r in itertools.product(range(5), repeat=4):
+            sg = q7sig(U, LET[e], LET[r], LET[q], LET[b]); ks = q7keys(sg)
+            if ks: W[:, b, 2, e, :, :, q, r, :] += max(QV.get(k, 0.0) for k in ks)
     for a, b, e, f, q, r in itertools.product(range(5), repeat=6):
         if not AP and (a or f): continue
         sg = sig2_of(U, LET[e], LET[r], LET[q], LET[b], LET[f], LET[a])
@@ -105,8 +138,13 @@ def recv_coef_R2(d, lk, sv, xon):
         if w[j] == 6:
             sg = sig2_of(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d], w[(j + 2) % d], w[(j - 2) % d])
             if sig2_keys(sg): cf[('M', sg)] += 1
+        if w[j] == 7 and Q7:
+            sg = q7sig(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d])
+            if q7keys(sg): cf[('Q', sg)] += 1
         if w[j] == 5 and ZH:
             cf[('z', zkey((U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d]), c2(w[(j + 2) % d]), c2(w[(j - 2) % d])))] += 1
+    if Q7 and d == 7:
+        for k, m in q7_inflow(w).items(): cf[('q', k)] -= m
     return cf
 def cmd_orientR2():
     bad = 0; n = 0
@@ -147,7 +185,7 @@ def cmd_solveR2():
         return cols[key]
     jt = col(('t',)); h.changeColCost(jt, 1.0)
     for r_ in ROOTS: col(('y', r_))
-    info = []; have = set(); msig = set(); conset = set()
+    info = []; have = set(); msig = set(); conset = set(); qsig = set()
     def addrow(cf, lo, hi, inf_):
         idx = np.array([col(k) for k in cf], dtype=np.int32); val = np.array([float(v) for v in cf.values()])
         h.addRow(lo, hi, len(idx), idx, val); info.append(inf_)
@@ -166,6 +204,9 @@ def cmd_solveR2():
         have.add(key)
         for k in cf:
             if k[0] == 'M': addsig(k[1])
+            if k[0] == 'Q' and k[1] not in qsig:
+                qsig.add(k[1])
+                for kk in q7keys(k[1]): addrow({('q', kk): 1.0, ('Q', k[1]): -1.0}, -inf, 0.0, ('mrowQ', list(k[1]), list(kk)))
         c2_ = dict(cf); c2_[('t',)] = -1.0
         addrow(c2_, -inf, d - 6.0, ('receiverR2', d, lk, sv)); return True
     def addcons(L, s):
@@ -196,6 +237,8 @@ def cmd_solveR2():
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         GV = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'g'}; HV2 = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'h'}
         ZV.clear(); ZV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'z'})
+        QV.clear(); QV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'q'})
+        if Q7: write_bonus()
         xd = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'x' and xv[i] > 1e-12}
         mcache = {}
         def MV2(sg):
@@ -250,6 +293,7 @@ def cmd_solveR2():
          'g': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'g' and xv[i] > 0],
          'h': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'h' and xv[i] > 0],
          'z': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'z' and xv[i] > 0], 'zh': ZH, 'apexcls': AC,
+         'q': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'q' and xv[i] > 0], 'q7': Q7,
          'x': {str(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'x' and xv[i] > 0}}
     json.dump(S, open(os.path.join(HERE, 'sol_%s.json' % tag), 'w'))
     cert = [{'w': float(dv), 'row': info[i]} for i, dv in enumerate(duals) if abs(dv) > 1e-11]
@@ -360,6 +404,11 @@ def cmd_lowerR2():
             if k not in sig2_keys(sg): log('  BAD MROW', row); ok = False; continue
             if w > 0: log('  WRONG SIGN', row); ok = False; continue
             tot[('h', k)] += w; tot[('M', sg)] -= w
+        elif row[0] == 'mrowQ':
+            sg = tuple(row[1]); k = tuple(row[2])
+            if sg != q7sig(*sg) or k not in q7keys(sg): log('  BAD MROWQ', row); ok = False; continue
+            if w > 0: log('  WRONG SIGN', row); ok = False; continue
+            tot[('q', k)] += w; tot[('Q', sg)] -= w
         elif row[0] == 'receiverR2':
             d, lk, sv = int(row[1]), row[2], row[3]
             why = admissible(d, lk, sv)
@@ -397,6 +446,9 @@ def cmd_upperR2():
     GV = {tuple(k): v for k, v in Sj['g']}; HV2 = {tuple(k): v for k, v in Sj['h']}
     ZV.clear(); ZV.update({tuple(k): v for k, v in Sj.get('z', [])})
     if Sj.get('z') and not ZH: log('SOLUTION HAS z BUT zh FLAG OFF'); return
+    QV.clear(); QV.update({tuple(k): v for k, v in Sj.get('q', [])})
+    if Sj.get('q') and not Q7: log('SOLUTION HAS q BUT q7 FLAG OFF'); return
+    if Q7: log('bonus links: %d' % write_bonus())
     xd = {int(k): v for k, v in Sj.get('x', {}).items()}
     if any(v < 0 for v in list(GV.values()) + list(HV2.values()) + list(y)): log('NEGATIVE VALUE'); 
     bad = 0
@@ -462,12 +514,12 @@ def cmd_rowR2():
     load_patterns(); xon = 'xon' in FLAGS
     Sj = json.load(open(OPT['sol'])); t = Sj['t']; d = int(OPT['d']); lk = OPT['lk']; sv = OPT['sv']
     YV = Sj['y']; HV2 = {tuple(k): v for k, v in Sj['h']}; ZV.clear(); ZV.update({tuple(k): v for k, v in Sj.get('z', [])})
-    XV = {int(k): v for k, v in Sj.get('x', {}).items()}
+    XV = {int(k): v for k, v in Sj.get('x', {}).items()}; QV.clear(); QV.update({tuple(k): v for k, v in Sj.get('q', [])})
     def MV2(sg):
         ks = sig2_keys(sg); return max(HV2.get(k, 0.0) for k in ks) if ks else 0.0
     tot = 0.0; parts = []
     for k, c in sorted(recv_coef_R2(d, lk, sv, xon).items(), key=str):
-        v = YV.get(rname(k[1]), 0.0) if k[0] == 'y' else ZV.get(k[1], 0.0) if k[0] == 'z' else XV.get(k[1], 0.0) if k[0] == 'x' else MV2(k[1])
+        v = YV.get(rname(k[1]), 0.0) if k[0] == 'y' else ZV.get(k[1], 0.0) if k[0] == 'z' else XV.get(k[1], 0.0) if k[0] == 'x' else QV.get(k[1], 0.0) if k[0] == 'q' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else MV2(k[1])
         tot += c * v
         if abs(c * v) > 1e-12: parts.append('%s%s:%+g*%.5f' % (k[0], rname(k[1]) if k[0] == 'y' else ''.join(map(str, k[1])) if k[0] != 'x' else k[1], c, v))
     w = 0.0
