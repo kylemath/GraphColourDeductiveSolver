@@ -45,7 +45,7 @@ either: R fits as its own 7-neighbour (self-pairing, rounds 12 and 20). R's thre
 are not D [E2: kc and dfast18 agree on every count]. The certificate breaks only if all 25 (s1, s4) fillings of R die:
 9 (a 5 at s1 or s4) are dead by ring-13 D on both engines, and 16 remain (loop/k34/fill.txt). A C verdict on R's ring-16/17
 windows would cover all 16. kc -C (independent, matches cfast on 163 configs: 30/30 C, 133/133 not C) and Studio's
-cfast are both running on them. No D window lies inside R's own patch once s1, s4 ≥ 6 (Opus: exhaustive to ring 14, sampled to 16, 0 of 1,131), so any kill of the 16 must reach outside the patch, as explore's ring-13 C window at w2 does (C on two engines, round 37).
+cfast agree that R16 (ring 16) is not C (best leftover 886); R17a/b are still running. No D window lies inside R's own patch once s1, s4 ≥ 6 (Opus: exhaustive to ring 14, sampled to 16, 0 of 1,131), so any kill of the 16 must reach outside the patch, as explore's ring-13 C window at w2 does (C on two engines, round 37).
 
 ## Options for K = 2 after the gate
 
