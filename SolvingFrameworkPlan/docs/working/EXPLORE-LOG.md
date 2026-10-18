@@ -27,6 +27,15 @@ ring 15-16 run is cancelled, since that sender left the dual.
   10). 7766556/6566575 has 4 kills, minimal f7_.556776_.5.5.5. (C, ring 14) and f7_5566776_...5.5. (D, ring 14).
 - Twoeng-ready: `loop/k47/r7c_kills*`, `r7b1_kills*` and `r7b2_kills*`.
 
+**Result, senders' one-ring contexts (21:52Z; `loop/k46/grow46_<word>.txt`).** Guess about right (55757 is above the
+range). Covered = some verified RSST configuration appears in the sender's 2-ball:
+- 55767: 69.4% of 9.77M fillings covered. Of the fillings with no 5 in ring 2, 0.8% are covered; of those with every
+  ring-2 letter >= 7, 0%.
+- 55757: 77.3% of 1.95M covered; no-5 fillings 11.7%; all >= 7, 0%.
+- 57667: 62.8% of 48.8M covered; no-5 fillings 3.7%; all >= 7, 0%.
+- So, as for round 46's pair: almost every context with a 5 in ring 2 dies, and almost none without one does. These
+  sender rows stay; a rule has to pay for a sender whose second ring has no 5.
+
 ## Round 47 (18 Oct 2026, 21:03Z-): H-R29, do the two receivers of the 2/9 dual die inside their 1.5-balls?
 
 **Pre-registered 21:03Z, before any engine run.** Gap G2. Long Table, 21:02Z: on the round 44/45 registry Opus gets
