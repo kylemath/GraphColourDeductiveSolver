@@ -1,0 +1,30 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9663, 8: 4469, 9: 1318, 10: 1028, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15527, 'C': 1549, 'RPAT': 158}
+solution sol_s16.json: t = 0.200000000000, 781 y (0 not a variable here), 624 x, rule T False (0 Y, 0 T)
+sender rows: 342 checked, 0 violated
+d=7 exhaustive: 0 violated (cap 20), 133798 pattern instances, 8461852 DFS nodes, 2.9s
+d=8 exhaustive: 0 violated (cap 20), 69956 pattern instances, 18522163 DFS nodes, 3.1s
+d=9 exhaustive: 0 violated (cap 20), 21639 pattern instances, 21301198 DFS nodes, 1.3s
+d=10 exhaustive: 0 violated (cap 20), 19556 pattern instances, 1827532 DFS nodes, 0.5s
+d=11 exhaustive: 0 violated (cap 20), 7029 pattern instances, 74049 DFS nodes, 0.5s
+d=12 exhaustive: 0 violated (cap 20), 1674 pattern instances, 5813 DFS nodes, 0.5s
+d=13 exhaustive: 0 violated (cap 20), 1495 pattern instances, 5715 DFS nodes, 0.5s
+d=14 exhaustive: 0 violated (cap 20), 1610 pattern instances, 5715 DFS nodes, 0.5s
+d=15 exhaustive: 0 violated (cap 20), 1725 pattern instances, 5715 DFS nodes, 0.6s
+d=16 exhaustive: 0 violated (cap 20), 1840 pattern instances, 5715 DFS nodes, 0.6s
+d=17 exhaustive: 0 violated (cap 20), 1955 pattern instances, 5715 DFS nodes, 0.7s
+d=18 relaxed DP max 9.784615 <= 12.200000
+d=19 relaxed DP max 9.953846 <= 13.200000
+d=20 relaxed DP max 10.646154 <= 14.200000
+d=21 relaxed DP max 11.415385 <= 15.200000
+d=22 relaxed DP max 11.584615 <= 16.200000
+d=23 relaxed DP max 12.276923 <= 17.200000
+d=24 relaxed DP max 13.046154 <= 18.200000
+d=25 relaxed DP max 13.215385 <= 19.200000
+d=26 relaxed DP max 13.907692 <= 20.200000
+d=27 relaxed DP max 14.676923 <= 21.200000
+d=28 relaxed DP max 14.846154 <= 22.200000
+d=29 relaxed DP max 15.538462 <= 23.200000
+d=30 relaxed DP max 16.307692 <= 24.200000
+Karp: letter-9 relaxed max cycle mean lambda = 0.543589744; d*lambda <= d-6+t for all d >= 12.708 (need <= 31)
+UPPER: FEASIBLE at t = 0.200000000000

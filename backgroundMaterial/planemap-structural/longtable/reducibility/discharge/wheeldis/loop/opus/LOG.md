@@ -316,3 +316,7 @@ our agent R and have no output from it.
   5566766/5666667). Rows are not stored canonically, since jsep3 breaks only rotation and psolve dedupes by coefficient key.
   Duplicates are redundant and do not affect soundness: the lower check rebuilds rows from labels, and the upper check is
   exhaustive.
+- **P2 s17r (00:15Z): the s10-mode relay on d43ba26a gives t* = 31/178 = 0.17416** [own checkers; lowerR VALID with 25 rows;
+  upperR FEASIBLE]. Top binder: d = 7 7665566/6675666 at 0.2247 (canonical 5566766/5666667). Then d = 10
+  6565656565/6655666666, d = 10 6556656556/6665656665, and d = 9 655666566/666555555. On the same registry the 6-centred
+  s12r50 is lower, at 23/134 = 0.17164.
