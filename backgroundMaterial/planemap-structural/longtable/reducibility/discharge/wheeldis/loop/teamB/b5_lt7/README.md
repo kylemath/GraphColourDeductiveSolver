@@ -23,3 +23,6 @@ starting after s6: (w0, w0, w1, w2, w5, w6).
 loop/studio/rsst_rules/rsst_lt7_cases.txt at 31dc6d2e) against ours, case by case: same 15,625 keys both ways
 (0 only-Studio, 0 only-ours), 0 charge mismatches with the privates in the same order; Studio's configuration count
 is >= 1 in every one of our 12,553 non-zero cases, and Studio has no non-zero case without a configuration.
+Caveat and fix: u's total charge is symmetric in five of the six privates (120 private orders give 0 mismatches), so
+the total alone does not pin the slot reading. `pernb.py` therefore also compares, per case and per link vertex w_i,
+u's sends to w_i and the min..max inflow from w_i: **0 mismatches in 15,625 cases** with the privates in the same order.
