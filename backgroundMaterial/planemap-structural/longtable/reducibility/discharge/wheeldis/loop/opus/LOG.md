@@ -95,3 +95,7 @@ Pre-registered before any probe ran.
   rings 15-20 listed in `untested_r15_20.txt`. Reading [I]: killing the open fillings needs vertices outside R's
   patch, case-split by degree, which is what explore's round 37 did (w2's link, C at ring 13). Guess check: "10-20%
   of binder windows D at ring 17-20" was wrong (0 of 7 at ring 16-17).
+- **H round 2 (10:15Z): after explore's round-37 kill, the provable rule-T floor through R drops to t >= 1/21**
+  (`H_floor_check/FINDINGS2.md`) [hand + sep3 c-check]. w2/w4's own rows give no floor (c = 1/5 at link 7665675);
+  five e now routes to s2 through e' = 6, and the chain through s2's best surviving frame (5765557 / 7575757, c2 =
+  7/10) gives 1/21. A lower bound only; true floor between 1/21 and explore's first-order 0.122.
