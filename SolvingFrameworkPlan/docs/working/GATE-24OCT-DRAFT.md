@@ -24,7 +24,7 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 
 **Scope caveat.** A 2-ball's ring can fold in large maps. Until Job 26 proves Kempe matching for a face-boundary-walk
 ring, the K ≤ 1 claim covers appearances with a simple ring. Job 26 has proved FaceGlue (i) and Kempe matching for any face walk with distinct darts, so any number of pinches
-and folds (FaceWalk.ringTNC/kempeMatching, 758a293b; sabotage test rejects). Only (iii) is left: extracting the face walk
+and folds (FaceWalk.ringTNC/kempeMatching, 758a293b; sabotage test rejects). Only (iii) is left; its first half compiles (DCheckOccWalk.lean: the checker theorems hold for an occurrence whose ring is only a face walk). Still to do: extracting the face walk
 from an appearing 2-ball and wiring it into colorable_of_occ_dred. It has a 20 Nov kill, and the fallback is to state the simple-ring hypothesis in the paper. The Track 1 hand
 argument (B2 + no separating triangle ⇒ injective, induced embedding) closes the gap on paper. Its Lean is Job 26 step 3a.
 
@@ -45,7 +45,7 @@ either: R fits as its own 7-neighbour (self-pairing, rounds 12 and 20). R's thre
 are not D [E2: kc and dfast18 agree on every count]. The certificate breaks only if all 25 (s1, s4) fillings of R die:
 9 (a 5 at s1 or s4) are dead by ring-13 D on both engines, and 16 remain (loop/k34/fill.txt). A C verdict on R's ring-16/17
 windows would cover all 16. kc -C (independent, matches cfast on 163 configs: 30/30 C, 133/133 not C) and Studio's
-cfast are both running on them. No D window lies inside R's own patch once s1, s4 ≥ 6 (Opus: exhaustive to ring 14, sampled to 16, 0 of 1,131), so any kill of the 16 must reach outside the patch, as explore's ring-13 C window at w2 does (C on two engines, round 37).
+cfast agree that R16 (ring 16) is not C (best leftover 886); R17a/b are still running. No D window lies inside R's own patch once s1, s4 ≥ 6 (Opus: exhaustive to ring 14, sampled to 16, 0 of 1,131), so any kill of the 16 must reach outside the patch, as explore's ring-13 C window at w2 does (C on two engines, round 37).
 
 ## Options for K = 2 after the gate
 
