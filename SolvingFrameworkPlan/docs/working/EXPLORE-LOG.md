@@ -1,5 +1,28 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 34 (18 Oct 2026, 08:45Z-): H-K34, do the 7/27 binder's last windows, or the other tight d = 7 rows' untested windows, hold a D? (coordinator's overnight plan, 08:40Z)
+
+**Pre-registered 08:45Z, before any run.** Gap G2 (K = 2 LP at t* = 7/27).
+- **Why.** The x = 0 dual certificate at 7/27 (`out/wlp3_j28_13.txt`, same in `out/wlp3x_j29_13_notx.txt`) has one
+  receiver row: d = 7 link 5675765 s 6577575 (weight 0.37), plus senders 55667, 55767, 77777. Its B-fixed windows
+  (|S| >= 2 of its three fives, `gen28.variants`, any ring): ring 11 {0,6} not D; ring 16 {0,3}
+  `f7_.556757_.56.77.` in Studio's queue (`out/job28/in_13.txt`, no verdict); ring 17 {3,6} `f7_.556757_.57.77.`
+  and {0,3,6} `f7_5567576_56.77.7`, never run. That is every window this row has.
+- **Part A.** kc (Gauss-Seidel) on those 3 windows. Any D is checked at once with `bin/dfast` (ring 16) or
+  `bin/dfast18` (ring 17), which are independent of kc. Both D means the certificate row is forbidden [E2] and the LP
+  must be re-solved.
+- **Part B.** The round-13 tight family (`out/job28/tight_13.txt`, 566 d = 7 rows tight at the 7/27 solution, 560
+  still free by `w2.py cover`) has 1,729 untested B-fixed windows at ring <= 18 (72 more pending at Studio):
+  ring 10-14: 571, 15: 389, 16: 307, 17: 301, 18: 161 (`loop/k34/t13_r18.txt`). Run in ring order on 3 cores, kc
+  and dfast both, until the 45-minute cap; the rest goes to the next round.
+- **Bars.** A: 1+ D of 3 changes the plan (the 7/27 certificate breaks). 0 of 3 means the certificate row has no
+  B-fixed window left at all, so route A (ring 17-18 at u) is closed for it and its fate is C (Studio's cfast) or a
+  window centred at a neighbouring 7. B: report D windows, rows newly forbidden (by `w2.py cover`), and kc/dfast
+  agreement on every window both ran.
+- **Kill line.** Any kc/dfast verdict mismatch stops the round and is reported before anything else.
+- **Guess.** A: 0 of 3 D (the row's ring-11 window has low ext and round 17 got 0 D of 6 at ring 17). B: about a
+  quarter of the ring <= 14 windows D (round 14 got 178 of 636), fewer at 15-16, and 50-150 rows newly forbidden.
+
 ## Round 33 (18 Oct 2026, 02:54Z-): H-KC, an independent D-closure engine for k19 (coordinator's job, 02:49Z)
 
 **Pre-registered 02:54Z, before any code.** Not on the paused L2 line.
