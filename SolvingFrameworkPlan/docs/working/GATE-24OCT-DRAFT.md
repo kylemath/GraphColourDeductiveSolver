@@ -54,7 +54,7 @@ cfast are both running on them. No D window lies inside R's own patch once s1, s
 - **D. Defect-style search at each surviving binder** (round 18's method). It asks whether the row can occur near a
   minimal counterexample at all. Cost: per-row, capped.
 - **E. Change the rule class** (Opus team, 18 Oct): send charge through 6s, which could void R's certificate
-  without killing R. After explore's rounds 37–38 killed 1,140 frames at w2 (C on two engines), there is no positive hand bound left on what Rule T can buy (Opus, floor.py; provisional on a side-map fix; all kills used are conservative two-engine C). Studio's Job 30 part B is the deciding run. Also: RSST's 249 D configurations, already Lean-checked, remove every known K ≤ 4 defect but not R. H7's 1/21 floor is specific to its LP solution: its defect D3 contains RSST #110, D on two engines (explore 4b12ef00).
+  without killing R. After explore's rounds 37–38 killed 1,140 frames at w2 (C on two engines), there is no positive hand bound left on what Rule T can buy (Opus, floor.py, rerun after a side-map fix; all kills used are conservative two-engine C). Studio's Job 30 part B is the deciding run. Also: RSST's 249 D configurations, already Lean-checked, remove every known K ≤ 4 defect but not R. H7's 1/21 floor is specific to its LP solution: its defect D3 contains RSST #110, D on two engines (explore 4b12ef00).
 - **C. Narrow.** State K = 2 as open with the evidence above. Track 1's paper becomes "K ≤ 1 closed by 2-ball
   reducibility; K = 2 obstructed by self-pairing", and the long shot moves to 3-balls.
 
