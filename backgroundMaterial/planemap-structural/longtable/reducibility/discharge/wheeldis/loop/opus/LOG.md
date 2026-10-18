@@ -55,3 +55,12 @@ Pre-registered before any probe ran.
   RSST-free for all 16. So RSST does not forbid the row even under a receiver-2-ball rule class. 6 u-centred kc windows
   at rings 13-14 without s1, s4: not D. The explore thread (round 34 part C) covers these fillings with u-centred
   windows; it killed the 9 fillings with a 5 at s1 or s4 by D at ring 13 on two engines.
+- **E (10:05Z): a rule through the 6s voids the 7/27 certificate in all 16 open fillings, LP effect not computed**
+  (`E_rule_change/FINDINGS.md`) [hand, plus a restricted LP]. **Rule T:** a five with big neighbour u and a
+  6-neighbour x adjacent to u sends tau to z, the other common neighbour of u and x, when z is big (here
+  w0 -> w1 -> w2 and w6 -> w5 -> w4; both z are 7s). Inflow into u comes only from a five in an s-slot between a link
+  6 and a link big, i.e. s1 or s4, so none in the open fillings; the reflection swapping u and w2 maps w0 (a 5) to
+  s1 (>= 6), so it escapes self-pairing. Row: t >= (0.7 - tau0 - tau6)/2.7. Open risk: the load lands on w2/w4 and
+  may rebind near 1/4. Rule H (lone five sends past two consecutive 6s) acts only when s1 = 5, already killed;
+  restricted LP with H: t >= 1/5, not converged, new binder d = 7 5568586/5755756, lower bound only, no gain claimed.
+  Within 2-ball rules that send only to adjacent bigs, w6 and w3 self-pair, giving a 3/17 floor for this row.
