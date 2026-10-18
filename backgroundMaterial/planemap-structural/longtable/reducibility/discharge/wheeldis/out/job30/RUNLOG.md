@@ -71,3 +71,15 @@
 - twoeng now loads all 7 (3 D, 4 C).
 - `matchtest.py`: sep3xf against an independent Python matcher on 140 frames per window (all dihedral images, half
   matching and half with one slot broken): 587 frames that the base allows, 0 mismatches.
+
+## 10:15Z: explore round 38 (loop/k38, 5 w2-frame C kills), conservative X only (Long Table)
+- f7_5667576_..5.... (14) and f7_5675767_.5..... (15): cfast's X is accepted by kc conservatively (kills_cfastX.kc,
+  adm=yes leftover 0).
+- f7_..65757_..65... (13) and f7_..65757_..55... (12): cfast's size-4 X is broad only. Studio `cfast --fixed I0-I2`
+  (kc's conservative X) gives C-REDUCIBLE, leftover 0 (loop/k3studio/k38_a_fixedX.cfast).
+- f7_..56757_...5... (13): cfast's X is broad only. Studio `cfast --fixed` with kc's conservative
+  {I0-I4,I1-I5,R1-I0,R8-I5} gives C-REDUCIBLE, leftover 0 (k38_b_fixedX.cfast).
+- So **all 5 qualify under conservative X**, and none needs the broad tag. A' (the broad-X variant) therefore equals A.
+- twoeng.py now compares X as edge sets and ignores kc -C2 (broad) files (kills_cfastX_C2.kc). Loaded at run A's
+  start: 3 D and 9 C.
+- Matcher test on the 5: 623 frames that the base allows, 0 mismatches.
