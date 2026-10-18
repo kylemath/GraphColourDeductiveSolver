@@ -57,7 +57,7 @@ and nothing was D.
   vertices in one component, which kc accepts only under -C2 (leftover 0). kc -x gives the same leftover 0 on both.
 - Step 1 kills every w2 frame with link 7665675 (the window fixes only the link and w0). Opus's floor work on that
   frame is therefore moot.
-- **Caps after the kills, by filling letter:** s1 = 6: 0.2778 (link 7669675, k = 4). s1 >= 7: 0.2454 (link 7a96575 /
+- **Caps after the kills, by filling letter:** s1 = 6: 0.2778 (link 7669675, k = 4). s1 >= 7: 0.2454 (link 76a6575 with a = s1 /
   5555977, k = 3). R's first-order row then gives t >= 0.054 at (6,6), 0.066 at (6, >=7) and 0.078 otherwise.
 - The stopping frame has three T inflows (s'0, p, x2 all 5) and yload 0.52, so its slack is not small. It binds only
   because k = 3.
