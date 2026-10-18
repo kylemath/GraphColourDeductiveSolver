@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 10:22Z: Explore round 40 (ad376d04): kc -C2 matches cfast on all 483 configs whose X has two ring vertices in one component (132 C, 351 not C), with equal leftover and every cfast X admitted. Moot for run A (all kills conservative), but it means a future broad-X kill counts as [E2] when cfast and kc -C2 agree on X. The claim rule is unchanged: same X on both engines.
 - 18 Oct 10:21Z: Rule T floor item closed: Opus fixed tcount side map (T = 444, equal to Studio's; erratum in FINDINGS); floor.py does not depend on it and gives -1/11 both ways. No positive hand floor; Job 30 part B decides.
 - 18 Oct 10:20Z: All 5 round-38 kills qualify under conservative X (Studio 361ad2dc: cfast with kc's conservative X fixed gives C, leftover 0, on the 3 broad-X ones). Run A loads 3 D + 9 C from the start; matcher 623 frames, 0 mismatches. A' = A and A'' is void. Rule T hand floor now provisional only on Opus's side-map rerun.
 - 18 Oct 10:18Z: Rule T through R has no positive hand floor after rounds 37-38 (Opus floor.py on explore's 8 windows: 1,140 w2 frames killed, survivors 7667575/5557777 c=2/5 and 7665775/5555577 c=1/5, floor -1/11). The hand method is exhausted; Job 30 part B decides. Provisional on Opus's side-map rerun and the conservative-X-only variant (k38 steps 2, 4, 5 are broad-X).
