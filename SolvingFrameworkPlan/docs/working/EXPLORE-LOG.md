@@ -1,5 +1,20 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 40 (18 Oct 2026, 10:14Z-): H-C2V, does kc -C2 agree with cfast on X's with two ring vertices in a component? (Long Table, 10:12Z)
+
+**Pre-registered 10:14Z, before any run.** Round 38's kills 2, 4 and 5 rest on such an X. Short validation; round 39's
+core is paused for it.
+- **Set** (`loop/kcc/mkval2.py 15`, fixed rule). Every registry cfast output (40 files; round 37/38's own kill files
+  excluded). Keep a configuration if it is not D, cfast's working X (C) or best X (not C) has a component holding two
+  or more ring vertices, its input line is in the wheeldis *.txt files, and its ring is <= 15. That gives 1,534:
+  132 C and 1,402 not C, rings 8-15. All 132 C run, plus every 4th not-C in ring order.
+- **Test.** kc -C2 -x with cfast's X. Pass on a configuration: kc admits the X, and kc's exact leftover equals
+  cfast's (0 for C). Also reported: kc -C2's own C/not-C verdict against cfast's.
+- **Kill line.** Any leftover mismatch, or a kc -C2 C where cfast says not C, that survives a recheck. Then kc broad
+  mode is not trusted, and round 38's kills 2, 4 and 5 stay single-engine [E1].
+- **Guess.** 0 mismatches. A few cfast X's are inadmissible for kc -C2 (its distance-4 rule is stricter), and those
+  are reported, not counted as mismatches.
+
 ## Round 39 (18 Oct 2026, 09:55Z-): H-P5, does p5 = 7 make R* reducible? (Opus's fourth floor arrangement)
 
 **Pre-registered 09:55Z, before any run.** Gap G2. 1 core, after round 38 stops.
