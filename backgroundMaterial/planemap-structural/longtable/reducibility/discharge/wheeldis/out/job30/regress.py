@@ -20,7 +20,12 @@ Q = ''.join('q %d %.12f %d %d\n%s\nX %d %s\n' % (d, d - 6 + t - DELTA, 20, 0, ' 
 # Rule T check (MODE=T): sep3xt with flags merged (every flag var = the plain root var) and T = 0 vs sep3xf
 MODE = os.environ.get('MODE', '')
 SFT = SF + '.T'
-if MODE == 'TF':   # option F table, every one of the 36 flag slots = the plain root var (merged), T = 0
+if MODE == 'R':   # Job 31: sep3r with its R section (copied from a wlp3r6 static file) and y6b = 0
+    rs = open(os.path.join(HERE, 'bin', 'sep3_r6chk.in')).read(); rsec = rs[rs.rindex('\nR\n') + 1:]
+    open(SFT, 'w').write(open(SF).read() + rsec)
+    n6b = len(rsec.split('\n')[1:]) and max(int(x) for l in rsec.split('\n')[1:] for x in l.split()) + 1
+    QT = ''.join(blk + 'R %d %s\n' % (n6b, ' '.join(['0'] * n6b)) for blk in [b_ for b_ in Q.split('q ') if b_] for blk in ['q ' + blk])
+elif MODE == 'TF':   # option F table, every one of the 36 flag slots = the plain root var (merged), T = 0
     tl = ['TF']
     for U in (7, 8, 9):
         for (wp, sp, wc) in states:
@@ -45,8 +50,8 @@ elif MODE == 'T':
     Q = Q.replace('\nX ', '\nX ').replace('\nq ', '\nq ')
     QT = ''.join(blk + 'T 0 0 0 -1 -1 -1\n' for blk in [b_ for b_ in Q.split('q ') if b_] for blk in ['q ' + blk])
 outs = {}
-for b in (('sep3xf', 'sep3xt') if MODE in ('T', 'TF') else ('sep3x_new', 'sep3xf')):
-    p = subprocess.run([os.path.join(HERE, 'bin', b), SFT if b == 'sep3xt' else SF], input=QT if b == 'sep3xt' else Q, capture_output=True, text=True)
+for b in (('sep3xf', 'sep3r') if MODE == 'R' else ('sep3xf', 'sep3xt') if MODE in ('T', 'TF') else ('sep3x_new', 'sep3xf')):
+    p = subprocess.run([os.path.join(HERE, 'bin', b), SFT if b in ('sep3xt', 'sep3r') else SF], input=QT if b in ('sep3xt', 'sep3r') else Q, capture_output=True, text=True)
     outs[b] = p.stdout; open(os.path.join(HERE, 'out', 'job30', 'reg_%s.txt' % b), 'w').write(p.stdout)
     print(b, 'lines', p.stdout.count('\n'), 'END lines:', [l for l in p.stdout.splitlines() if l.startswith('END')])
 k_ = list(outs); print('IDENTICAL' if outs[k_[0]] == outs[k_[1]] else 'DIFFERENT')
