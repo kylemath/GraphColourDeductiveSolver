@@ -7,7 +7,7 @@ engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative
 
 **K ≤ 1 (at most one big vertex in the configuration): closed.** Every discharging sender with one big
 neighbour is in the reducible set R, so the forbidden-pattern LP has t* ≤ 0 on that case. This rests on Lean for 46
-of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. **K = 2: open.**
+of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about an hour). **K = 2: open.**
 The best LP bound is t* = 7/27 ≈ 0.259 (need ≤ 0). It did not move when big–big charge-sharing was added. The
 remaining binders are a small set of degree-7 receiver patterns whose kills lie beyond ring 16.
 
