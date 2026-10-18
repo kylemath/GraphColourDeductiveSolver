@@ -23,6 +23,35 @@
   p5 = 7 windows are not D/C, so at least the 3^6 = 729 cases per filling with every private in {7, 8, 9+} survive. I
   expect about 2,000 survivors per filling, with RSST killing most cases that have a private five.
 
+**Round 42 result (11:42Z): the hypothesis dies. Every one of the 16 fillings keeps surviving closed cases after one ring
+of growth: 160,552 of 250,000 cases survive under conservative two-engine kills, and 134,232 if broad-X kills count**
+(`loop/k42/grow.py`, `tally.py`, `cases_cons.txt`, `hits.txt`).
+- **Structure.** The 2-ball has 21 exact-degree vertices, 47 edges and 27 faces among them, the same for every letter
+  choice (checked on 3). Of the 645 configurations (633 RSST + 12 explore), 15 embed with a requirement that does not
+  put a 5 at s1/s4. That gives 19 requirement patterns.
+- **Two engines on every killer.** Each (configuration, image) was cut from a representative 2-ball (24 windows, ring
+  8-14; every RSST cut has RSST's own ring size). RSST 2.3701166 (ring 12) is D on kc and dfast. The other 23 are C
+  on cfast `--search`. For 20 of them, kc -C finds a conservative X that cfast `--fixed` accepts with leftover 0
+  (`cut_kcc.out`, `cut.cfast`, `cut_fixedkc.cfast`). The other 3 are RSST 2.126 (ring 8) and 126.8168 in both
+  orientations. Those are C only with a broad X on both engines (kc -C2 and cfast agree; 2.126's X is RSST's own four
+  ring-to-interior edges).
+- **What one ring forces** (conservative; privates p1 at w1, p2a/p2b at w2 next to s1/s2, p4a/p4b at w4 next to s3/s4,
+  p5 at w5):
+  - p5 = 5 always dies (RSST 122.126, ring 9).
+  - p1 = 5 dies only by the broad 2.126. Conservatively it dies only with s1 = 7 and p2a = 5 (2.504980).
+  - s1 = 6 forces p1 >= 7, p2a >= 6 and (p2a, p2b) != (6, 5). s4 = 6 forces p4b >= 6 and (p4a, p4b) != (5, 6).
+    These come from RSST 2.211701966, 122.1031, 126.61686/126.490086, and rounds 37-38's two w2-frame kills.
+  - Everything else survives, including all 3^6 = 729 cases per filling with every private >= 7.
+- **Survivors per filling (conservative):** 66: 4,332; 67-69: 5,700; 76: 9,120; 77-79: 12,000; 86 and 96: 9,500;
+  87-89 and 97-99: 12,500.
+- **Next binder candidates, as Long Table asked.** The most five-heavy survivors:
+  - (9,9) with privates 55555x (every private a 5 except p5 >= 6).
+  - (7,7) with 565556.
+  - (6,6) with 775576.
+  These are where new windows (Opus's step ii: R* plus the privates as interior) are most likely to bite.
+- Against the bar and guess: the kill line fired on all 16 fillings. Guess "about 2,000 survivors per filling" was low.
+  Containment kills far less than guessed, because only 15 of 645 configurations reach a private at all.
+
 ## Round 41 (18 Oct 2026, 10:26Z-): H-SUBC, does the C stage kill any of R*'s 16 open fillings at a window inside R's patch that is not u + all link?
 
 **Pre-registered 10:26Z, before any run.** Gap G2, part C continued (coordinator's order, 10:14Z: round 39, then the 16
