@@ -1,0 +1,49 @@
+static 6-rows 994
+sepb: 21426572 forbidden codes
+sepb: 16437 patterns loaded
+  slow query d=8 23s
+  slow query d=9 38s
+  slow query d=10 78s
+  slow query d=11 130s
+  slow query d=12 67s
+it 1 t=-5.000000 rows=1898 vars=6020 new=31 worst={7: np.float64(39.0), 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[8, 9, 10, 11, 12, 13, 14, 15] full=False (387s)
+  slow query d=8 33s
+  slow query d=9 71s
+  slow query d=10 144s
+  slow query d=11 282s
+  slow query d=12 152s
+  slow query d=13 28s
+  slow query d=14 28s
+  slow query d=15 29s
+it 2 t=-0.125000 rows=1956 vars=6032 new=58 worst={7: np.float64(4.75), 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[8, 9, 10, 11, 12, 13, 14, 15] full=False (1168s)
+  slow query d=8 34s
+  slow query d=9 70s
+  slow query d=10 148s
+  slow query d=11 291s
+  slow query d=12 154s
+  slow query d=13 25s
+  slow query d=14 26s
+  slow query d=15 29s
+it 3 t=-0.125000 rows=1966 vars=6033 new=10 worst={7: np.float64(4.75), 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[8, 9, 10, 11, 12, 13, 14, 15] full=False (1958s)
+  slow query d=8 34s
+  slow query d=9 66s
+  slow query d=10 148s
+  slow query d=11 294s
+  slow query d=12 160s
+  slow query d=13 27s
+  slow query d=14 30s
+  slow query d=15 32s
+it 4 t=-0.125000 rows=2026 vars=6035 new=60 worst={7: np.float64(3.875), 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[8, 9, 10, 11, 12, 13, 14, 15] full=False (2763s)
+  slow query d=8 34s
+  slow query d=9 68s
+  slow query d=10 149s
+  slow query d=11 287s
+  slow query d=12 151s
+  slow query d=13 24s
+  slow query d=14 26s
+  slow query d=15 28s
+it 5 t=-0.125000 rows=2086 vars=6054 new=60 worst={7: np.float64(3.1875), 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[8, 9, 10, 11, 12, 13, 14, 15] full=False (3549s)
+  slow query d=8 29s
+  slow query d=9 61s
+  slow query d=10 125s
+  slow query d=11 251s
