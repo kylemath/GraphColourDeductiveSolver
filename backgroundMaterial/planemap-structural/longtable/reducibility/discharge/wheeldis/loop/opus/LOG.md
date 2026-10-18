@@ -42,3 +42,10 @@ Pre-registered before any probe ran.
   shape (wheels and u-centred configurations), not about reducibility. Adding RSST's 249 D configurations (already
   Lean-checked in `dcheck/`) to R removes every known defect. It does not by itself close the LP: the rules must see
   these configurations within radius 2 of a 5. Guess check: right.
+- **B (09:25Z): RSST's 633 as receiver patterns leave t* = 7/27 exactly** (`B_rsst_rows/FINDINGS.md`) [E]. A row
+  fixes only the slots its 5-senders read. On the certificate row d = 7 5675765/6577575, 0 of 633 fit the fixed slots;
+  only 128.136 (C, ring 11) fits, and only with s1 = 5 or s4 = 5, slots no sender reads, so the 16 fillings with
+  s1, s4 >= 6 stay RSST-free. Elsewhere RSST does reach the receiver (74 configurations fit a d = 7 row's fixed slots,
+  44 D, mostly fans around u) and forbids many non-binding rows: 920 of 1,385 tight_13 rows, 6 of 7 old binders, but
+  only 2 of 49 HARD28-like. LP with 387 RSST patterns added: 7/27 with the same certificate; upper bound from the
+  existing feascheck, since patterns only lower t*. Lever dropped. Guess check: "few" was right for the binders.

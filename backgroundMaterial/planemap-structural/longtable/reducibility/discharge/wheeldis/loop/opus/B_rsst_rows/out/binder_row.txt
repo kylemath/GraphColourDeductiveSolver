@@ -1,0 +1,35 @@
+sender w0 code (w_{i+1},s_i,s_{i-1},w_{i-1}) = 6 6 5 5  5-wheel (u,..): [7, 6, 6, 5, 5]
+sender w3 code (w_{i+1},s_i,s_{i-1},w_{i-1}) = 7 7 7 7  5-wheel (u,..): [7, 7, 7, 7, 7]
+sender w6 code (w_{i+1},s_i,s_{i-1},w_{i-1}) = 5 5 7 6  5-wheel (u,..): [7, 5, 5, 7, 6]
+mode strict hosts ["('w', 0)", "('w', 1)", "('w', 2)", "('w', 3)", "('w', 4)", "('w', 5)", "('w', 6)", 'u'] -> 0 RSST configs
+mode relaxed hosts ["('s', 0)", "('s', 1)", "('s', 2)", "('s', 3)", "('s', 4)", "('s', 5)", "('s', 6)", "('w', 0)", "('w', 1)", "('w', 2)", "('w', 3)", "('w', 4)", "('w', 5)", "('w', 6)", 'u'] -> 1 RSST configs
+   128.136 ring 11 C interior 6 : u=7 s1=5 w0=5 w1=6 w2=7 w3=5
+   128.136 ring 11 C interior 6 : u=7 s4=5 w3=5 w4=7 w5=6 w6=5
+   128.136 ring 11 C interior 6 : u=7 s1=5 w0=5 w1=6 w2=7 w3=5
+mode fixed hosts ["('s', 0)", "('s', 2)", "('s', 3)", "('s', 5)", "('s', 6)", "('w', 0)", "('w', 1)", "('w', 2)", "('w', 3)", "('w', 4)", "('w', 5)", "('w', 6)", 'u'] -> 0 RSST configs
+completions of the two LP-free slots s1, s4 (relaxed mode, every letter):
+  s1=5 s4=5: 128.136
+  s1=5 s4=6: 128.136
+  s1=5 s4=7: 128.136
+  s1=5 s4=8: 128.136
+  s1=5 s4=9: 128.136
+  s1=6 s4=5: 128.136
+  s1=6 s4=6: RSST-free
+  s1=6 s4=7: RSST-free
+  s1=6 s4=8: RSST-free
+  s1=6 s4=9: RSST-free
+  s1=7 s4=5: 128.136
+  s1=7 s4=6: RSST-free
+  s1=7 s4=7: RSST-free
+  s1=7 s4=8: RSST-free
+  s1=7 s4=9: RSST-free
+  s1=8 s4=5: 128.136
+  s1=8 s4=6: RSST-free
+  s1=8 s4=7: RSST-free
+  s1=8 s4=8: RSST-free
+  s1=8 s4=9: RSST-free
+  s1=9 s4=5: 128.136
+  s1=9 s4=6: RSST-free
+  s1=9 s4=7: RSST-free
+  s1=9 s4=8: RSST-free
+  s1=9 s4=9: RSST-free
