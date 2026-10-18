@@ -106,3 +106,8 @@ Pre-registered before any probe ran.
 - **H round 3 (10:45Z): reconciled, the rule-T floor through R at (6,6) is 1/21** (I's self-pairing needs e''s
   6-wheel c6_566577, which is C in Job 17, or 2.122). `H_floor_check/floor.py` recomputes the floor from a kill
   list; the formula is in FINDINGS2.md.
+- **Floor after explore's round 38 (11:00Z): the hand chain gives no positive floor** (`floor.py` with
+  `H_floor_check/kills_r38.txt`: round 37's window plus round 38's five C windows). Surviving non-dominated s1 = 6 w2
+  frames: 7667575 / 5557777 (c = 2/5, T <= 3/5 + 7/5 t) and 7665775 / 5555577 (c = 1/5); floor -1/11. So no
+  y-independent obstruction to rule T through R is left from this method; explore's first-order t >= 0.054 at (6,6)
+  is the only remaining estimate, and Job 30 part B is the real test.
