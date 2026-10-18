@@ -74,3 +74,19 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   75576556/78756665, both ALLOWED by sep3xf `c`). Exact combination: t coefficient −1, rhs −2/9, 0 negative terms, so
   **t ≥ 2/9** (lower_s9.log).
 - So the no-relay t* = 2/9 on that registry, on two engines.
+
+## Second engine for the main-line t* = 1/5 (P_own_lp s13, d065b212) on the aee20e3b registry, ~21:55Z
+- **Args:** with their three paths mapped to ours (k3x_D/C_aee20e3b byte-identical to out/job30 at aee20e3b, and
+  k42map_C_cons), argsA46 + rpatD == argsA44_local.txt. Root = this tree, so out/job30 loads (addA_dfast18 3, k3x_D
+  423 after name dedupe, k3x_C 422, k42map 9).
+- **Loaded counts vs Opus's** (D 15,461 / C 1,468 / RPAT 158): C 1,468 and RPAT 158 match. **D is 15,800 here, 339 more.**
+  Studio counts the u*.pat files once per degree (u1 455, u2 119, u10 27). The counting convention is unresolved. The
+  extra 339 patterns can only remove receiver rows, so the upper check below is on a registry at least as large.
+  patterns=16588, full=838.
+- **Upper:** feascheck sol_s13 (WLP3X_DEF=1, WLP_SEPF=1, exhaustive sep3xf d = 7..15, max-plus DP d = 16..30): 0
+  violated, **FEASIBLE** (feas_s13.log). No Rule T here, so sep3xt does not apply.
+- **Sender rows** (new, sendercheck.py; feascheck checks receivers only): all 342 Studio sender rows hold at sol_s13
+  (max lhs −1.000000000, send_s13.log). Controls: sol_s9 passes; sol_s13 with t = 0.19 violates 337.
+- **Lower:** lowercheck on the 4 cert rows (senders 55757, 55767, 57667 at 1/5; receiver d=7 7765556/6575765 at 2/5,
+  ALLOWED by sep3xf `c`). Exact: t coefficient −1, rhs −1/5, 0 negative terms, so **t ≥ 1/5** (lower_s13.log).
+- So t* = 1/5 on that registry, on two engines.
