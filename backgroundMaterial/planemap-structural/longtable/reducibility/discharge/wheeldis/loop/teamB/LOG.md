@@ -27,7 +27,7 @@ Tags as in the explore log: [E] engine, [E2] two engines agree, [I] inferred, [L
   (drule2'), so u gets far less than "all of w0".
 
 **Round B1 result (18:50Z): RSST's rules pay for R* completely. u's RSST score is exactly 0 in every one of the 250,000
-cases (16 fillings x 5^6 privates, any third ring), except the 34,375 cases with (s1 = 6 and p2a = 5) or (s4 = 6 and
+cases (16 fillings x 5^6 privates, any third ring), except the 24,375 cases (erratum 18:30Z: first written as 34,375, an addition slip; `nonzero.txt` has 24,375) with (s1 = 6 and p2a = 5) or (s4 = 6 and
 p4b = 5), where it is +1 or +2** (`b1_rsst/sweep.py`, `sweep.out`; 0 errors; min = max over the third ring in every case).
 - Those positive cases are exactly the ones explore round 42 found dead to RSST configurations ("s1 = 6 forces
   p2a >= 6; s4 = 6 forces p4b >= 6"): 0 mismatches. Two independent pieces of code agree, which is also the best check
