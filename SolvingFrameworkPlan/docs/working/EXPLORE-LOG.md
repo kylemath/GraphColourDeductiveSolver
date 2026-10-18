@@ -1,5 +1,77 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Check (18 Oct 2026, 09:44Z): does H7's defect D3 contain RSST #110? (coordinator, 09:22Z) Yes, and it is D on kc
+
+This is a verification check, so it was not pre-registered. It used my own containment code
+(`loop/d3/d3_rsst.py`), not `rsst_contain.py` or Opus's `rsst_in_defect.py`.
+- **Patch.** D3 = `5|55667|776675755|75576667557657`, built with b8b/rings.py `Layered` plus 4 all-6 rings.
+  - 135 vertices have an exact degree. Y is 11 fives and 10 sevens, as in README §7.1.
+  - Outer-ring vertices are never images.
+- **Containment.** An injective map of the configuration's interior, with exact degrees, onto an induced
+  subgraph, sending every interior triangle onto a patch face.
+- **#110, 0-based** (RSST `122.140`, ring 10, interior 5,5,5,5,7,7; this matches Opus's description).
+  - 2 embeddings with 1 image, vertices 1, 2, 6, 7, 16, 17. All of them are in Y.
+  - Cut out of the patch, it has a simple chordless 10-ring. **kc: D** (classes 2,461, ext 496, all reached,
+    depth 5). RSST's own count is ext 496.
+  - Opus had dfast D, so this is now D on two engines, and the RSST file agrees.
+- **#110, 1-based** (`126.36666`, ring 14, interior 5,5,6^6,7). It also occurs in D3 once, not inside Y. kc gives
+  D (ext 18,435, equal to RSST's).
+- **Reading.** D3 contains a D-reducible configuration, so it cannot sit in a minimal counterexample. The H7 floor
+  (t* >= 1/21 for rule classes (a)-(c), README §7.1) holds against R_opt only. It is R_opt-specific and says
+  nothing once #110 joins the forbidden set.
+
+## Round 36 (18 Oct 2026, 09:28Z-): H-W2, how much Rule-T inflow can w2/w4 take under the 7/27 y? (coordinator's go, 09:22Z)
+
+**Pre-registered 09:28Z, before any code.** Gap G2. Runs on 1 core beside round 34 part C (2 cores).
+- **Why.** Rule T (Opus, `loop/opus/G_ruleT_lp/FINDINGS.md` on branch 7uelj0) lets R's fives w0 and w6 send T
+  across their 6-spokes w1, w5 to w2, w4 instead of to u, so R's row becomes t >= (0.7 - T0 - T6)/2.7. That only
+  helps if w2 and w4 can take the load. t* = 0 needs T0 + T6 = 0.7; t* < 1/4 needs 0.025; t* < 0.22 needs 0.106.
+- **Object.** w2 seen as a receiver of degree 7 under R* with an open filling (s1 >= 6). Its link is
+  (u 7, w1 6, s1 a, e, e', s2 7, w3 5) and its s-word is (w0 5, p, x2, x3, x4, s3 7, w4 7), with a in {6,7,8,9+}
+  and e, e', p, x2, x3, x4 in {5,...,9+}: 62,500 arrangements. w4 is the mirror image (s4 for s1), same numbers.
+- **Filters.** sep3's own `c` check (the 5/6 transition table, RBIG 7-wheels, every forbidden pattern) with the
+  j28_13 pattern set plus `loop/n9/win9-31`, and w1's 6-wheel (w2, a, p, s0 = 6, w0 = 5, u) not in R6 (R fixes
+  the slot sep3 leaves free).
+- **Quantities.** yload = sum over w2's link fives of the j28_13 y of their rooted words (w3 always gives
+  y[7|7777] = 4/27). k = number of T inflows at w2: s-slots that are 5 between a (big, 6) link pair. R's own
+  (u, w1, w0) gives one in every arrangement. Report max yload against the bar 34/27, the worst arrangement, and
+  T_max = min over arrangements of (34/27 - yload)/k: the uniform T per inflow that w2 takes with y and t held
+  at the 7/27 solution (first order; y only falls under T, so it is an upper bound on w2's load).
+- **Check first.** sep3's `q` on the j28_13 y must give max d = 7 load 34/27 over all arrangements (the file's own
+  line). Otherwise the y parse or the pattern set is wrong and nothing is reported.
+- **Bars.** T_max >= 0.35: w2/w4 can absorb what t* = 0 needs from R, so the T job is worth Studio's cores. T_max
+  below 0.0125: R's own w2/w4 block even t* < 1/4 at first order; T needs a re-solved y at w2, which L2's
+  u -> w2 transfer can already try, so part 2 of the job is not worth running before part 1.
+- **Kill line.** The check above fails, or the c-check accepts R itself at u (it must, as R is the LP binder).
+- **Guess.** Some arrangement tight at 7/27 fits w2's frame (566 d = 7 rows are tight), so max yload = 34/27 and
+  T_max = 0 at first order. If not, T_max is under 0.1.
+
+**Round 36 result (09:40Z): w2 and w4 can each take T = 0.15 at first order, and they cap Rule T near
+t = 0.155** (`loop/k36/w2load.py`, `w2load.txt`).
+- Checks pass. sep3 on the j28_13 y (4 decimals) gives d = 7 max 1.2593 against the bar 1.2593. The c check accepts
+  R at u. The pattern set is 16,401 patterns and 104 RBIG wheels. The missing r_3-r_8 files carry only d = 10.
+- Of 62,500 w2 arrangements, sep3's c check rejects 360. The spoke's 6-wheel check rejects none, so w4 (spoke far
+  letter s5 = 7, not 6) gives the same numbers as w2.
+- Max yload is 1.1087, against a bar of 1.2593. That is link 7665575 s 5x65677 (any x), at s1 = 6. Its fives are
+  e (7|5566, 0.7407), e' (7|5567, 0.2199) and w3 (7|7777, 0.1481). It has k = 1, the inflow from R's own w0.
+- T_max (y and t held at 7/27) is 0.1506. The binding filling letter is 6. For s1 >= 7 it is 0.1924, set by a k = 3
+  frame (7676575 / 5556577, yload 0.6821). Counting outflow from w2's own fives changes nothing.
+- k: 45,399 arrangements have k = 1, 15,031 have k = 2, 1,590 have k = 3 and 120 have k = 4.
+- In Opus's R row t >= (0.7 - T0 - T6)/2.7 these caps give 0.148 at (6,6), 0.132 at (6, >=7) and 0.117 when both
+  are >= 7.
+- **Second order, a floor [hand, one engine].** In the worst frame, five e's only big neighbour is w2. Its only
+  6-spoke at w2 is s1, and that spoke's z is w1 = 6, so e has no T route and sends all of 1 - t to w2.
+  - 7|7777 has no 6-spoke, and its five rootings share one variable, so each gets at least (1 - t)/5.
+  - Taking e's other word (7|5567, shared with s2) as 0, w2's row gives T0 <= 2.2t - 0.2 at s1 = 6.
+  - Combined with Opus's R row at filling (6,6): t >= 1.1/7.1 = 0.155. This holds for Rule T without an L2
+    transfer out of w2, while R*(6,6) and that w2 frame stay unforbidden.
+- **Against the bars:** 0.15 sits between 0.0125 and 0.35. w2/w4 don't block T below 1/4 or 0.22, but they can't
+  take what t* = 0 needs from R (0.35 each).
+- Guess check: "some tight row fits w2's frame, T_max = 0" was wrong. The worst frame has slack 0.15. The fallback
+  "under 0.1" was also wrong.
+- **Next kill target [I].** The worst frame holds a triangle of three fives (e, e', and x3 between them) next to the
+  6 at s1. If u + w2 + that frame is reducible, the cap at s1 = 6 rises towards 0.19.
+
 ## Round 35 (18 Oct 2026, 08:54Z-): H-KCC, a C-reducibility mode for kc, then C on R's windows
 
 **Pre-registered 08:54Z, before any code.** Gap G2. Runs while round 34 part C uses the cores.
@@ -94,6 +166,22 @@ reached for all three (`loop/k34/binA_kc.out`, `binA_dfast.out`): ring 16 `f7_.5
 B-fixed window of R is now tested and not D, so route A at u is closed for R by B-fixed windows. Part C (fillings)
 is running: the 9 fillings with a 5 at s1 or s4 died at ring 13 on both engines (`f7_5567576_5....5.` and two
 others), as guessed.
+
+**Part C interim (09:15Z).** Driver v2 (`drive.py`, 09:12Z) runs kc -C per window: D, then the round-35 C stage
+if not D. The per-filling table is `loop/k34/fillings.txt`, and v1's D-only output is kept as `fill_kc_v1.out`.
+- The 9 fillings with a 5 at s1 or s4 die to `f7_5567576_5....5.`: the 7-wheel 5675765 with s6 = 5 and s4 = 5 (its
+  mirror has s1 = 5), ring 13, D on kc and dfast (ext 9,300, reached 66,430 of 66,430).
+- These 9 are exactly the fillings where a big neighbour of u can be R-shaped. Around w2 the link reads
+  u 7, w1 6, s1, e, e', s2 7, w3 5, which is a rotation of 5675765 only as 7655675 (s1 = 5); w4 likewise with
+  s4 = 5. The LP's binder R itself is filling (5, 5), the self-paired case. That fits L2's transfers giving nothing
+  [I].
+- The LP can't use this kill yet. sep3/sep3x patterns carry codes only at five positions, and s1, s4 sit next to no
+  five. Sent to the coordinator: a pattern type with letters at non-five s positions, then an L2 re-solve [I,
+  untested].
+- Base windows (no s1/s4, cover all 25 fillings): the 11 at ring 13-15 are not D and not C. kc -C on R's B-fixed
+  windows: ring 16 `f7_.556757_.56.77.` not C (105,151 admissible X, best leftover 1,332); ring 17
+  `f7_5567576_56.77.7` not C (200,526 admissible X, best leftover 3,424). In both, the C stage took under 3 s after
+  the closure.
 
 ## Round 33 (18 Oct 2026, 02:54Z-): H-KC, an independent D-closure engine for k19 (coordinator's job, 02:49Z)
 

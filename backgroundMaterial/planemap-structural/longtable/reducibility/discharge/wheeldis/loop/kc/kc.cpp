@@ -310,8 +310,16 @@ static string xname(const vector<int> &X) {
     }
     return s + "}";
 }
-struct KX { int M; vector<int> pin; vector<u32> rforb; vector<int> order; vector<vector<int>> earlier; };
+struct KX { int M; vector<int> pin; vector<u32> req; vector<u32> rforb; vector<int> order; vector<vector<int>> earlier; };
 static int ufp[80];
+// -C2 (broad): a component may hold several ring vertices.  Then r, r' are identified, which is safe unless an edge
+// of G outside K joins them (a chord).  With the X-path P from r to r' (length l <= 4), a chord closes a cycle of
+// length l + 1 that separates the two ring arcs between r and r'.  A minimal counterexample has no separating 3- or
+// 4-cycle, and a separating 5-cycle has a single vertex on one side.  So l <= 3 is safe; l = 4 is safe unless r, r'
+// are two apart on the ring and the ring vertex between them is adjacent to all three inner vertices of P (then that
+// vertex alone could fill one side).  Any other shape (a ring vertex inside P) is refused.  A ring colouring is in
+// C'(X) only if it gives the ring vertices of each component one colour.
+static bool BROAD = false; static int LMAX = 4;   // -L k: refuse ring pairs at X-distance > k (experiments)
 static int uff(int x) { while (ufp[x] != x) x = ufp[x] = ufp[ufp[x]]; return x; }
 // builds K/X; returns false if X is not admissible
 static bool build_kx(const vector<int> &X, KX &K) {
@@ -319,12 +327,38 @@ static bool build_kx(const vector<int> &X, KX &K) {
     for (int v = 0; v < V; v++) ufp[v] = v;
     vector<char> inX(alledges.size(), 0);
     for (int e : X) { inX[e] = 1; ufp[uff(cedges[e].a)] = uff(cedges[e].b); }
-    vector<int> rc(V, 0), rpin(V, -1);
-    for (int k = 0; k < n; k++) { int r = uff(m + k); if (rc[r]++) return false; rpin[r] = k; }
+    vector<int> rc(V, 0), rpin(V, -1); vector<u32> rreq(V, 0);
+    for (int k = 0; k < n; k++) {
+        int r = uff(m + k);
+        if (rc[r]++ && !BROAD) return false;
+        if (rpin[r] < 0) rpin[r] = k; else rreq[r] |= 1u << k;
+    }
     for (size_t e = 0; e < alledges.size(); e++) if (!inX[e] && uff(alledges[e].a) == uff(alledges[e].b)) return false;
-    vector<int> sid(V, -1); K.M = 0; K.pin.clear(); K.rforb.clear();
-    vector<int> rep;
-    for (int j = 0; j < m; j++) { int r = uff(j); if (sid[r] < 0) { sid[r] = K.M++; K.pin.push_back(rpin[r]); K.rforb.push_back(0); } }
+    if (BROAD) for (int k = 0; k < n; k++) {
+        int r = uff(m + k); if (rc[r] < 2) continue;
+        // BFS over X from ring vertex k
+        vector<int> dist(V, -1), par(V, -1); deque<int> dq; dist[m + k] = 0; dq.push_back(m + k);
+        while (!dq.empty()) {
+            int v = dq.front(); dq.pop_front();
+            for (int e : X) {
+                int a = cedges[e].a, b = cedges[e].b, w = (a == v) ? b : (b == v) ? a : -1;
+                if (w >= 0 && dist[w] < 0) { dist[w] = dist[v] + 1; par[w] = v; dq.push_back(w); }
+            }
+        }
+        for (int k2 = k + 1; k2 < n; k2++) {
+            if (uff(m + k2) != r) continue;
+            int l = dist[m + k2];
+            if (l > LMAX) return false;
+            if (l <= 3) continue;
+            vector<int> inner; for (int v = par[m + k2]; v != m + k; v = par[v]) inner.push_back(v);
+            for (int v : inner) if (v >= m) return false;
+            int gap = (k2 - k + n) % n;
+            int mid = (gap == 2) ? (k + 1) % n : (gap == n - 2) ? (k2 + 1) % n : -1;
+            if (mid >= 0) { bool all = true; for (int v : inner) if (!((ringMask[v] >> mid) & 1)) all = false; if (all) return false; }
+        }
+    }
+    vector<int> sid(V, -1); K.M = 0; K.pin.clear(); K.rforb.clear(); K.req.clear();
+    for (int j = 0; j < m; j++) { int r = uff(j); if (sid[r] < 0) { sid[r] = K.M++; K.pin.push_back(rpin[r]); K.req.push_back(rreq[r]); K.rforb.push_back(0); } }
     vector<set<int>> nb(K.M);
     for (size_t e = 0; e < cedges.size(); e++) {
         if (inX[e]) continue;
@@ -354,7 +388,10 @@ static bool extends_kx(const KX &K, u32 q0, u32 q1) {
         int f = 0;
         for (int v = 0; v < 4; v++) if (K.rforb[j] & mk[v]) f |= 1 << v;
         int d = 15;
-        if (K.pin[j] >= 0) { int k = K.pin[j]; d = 1 << (((q0 >> k) & 1) | (((q1 >> k) & 1) << 1)); }
+        if (K.pin[j] >= 0) {
+            int k = K.pin[j], c = ((q0 >> k) & 1) | (((q1 >> k) & 1) << 1); d = 1 << c;
+            if (K.req[j] && (K.req[j] & ~mk[c])) return false;     // identified ring vertices must share a colour
+        }
         dom[j] = d & ~f;
     }
     int s = 0; cand[0] = dom[K.order[0]];
@@ -386,10 +423,11 @@ static bool parse_x(const string &xs, vector<int> &X) {   // "{R0-I0,I2-I3}" -> 
 }
 
 int main(int argc, char **argv) {
-    bool jacobi = false, verbose = false, cmode = false; string ckpt, xfile; double tbudget = 1e18, saveint = 600; string inpath;
+    bool jacobi = false, verbose = false, cmode = false, countonly = false; string ckpt, xfile; double tbudget = 1e18, saveint = 600; string inpath;
     for (int a = 1; a < argc; a++) {
         string s = argv[a];
-        if (s == "-j") jacobi = true; else if (s == "-v") verbose = true; else if (s == "-C") cmode = true;
+        if (s == "-j") jacobi = true; else if (s == "-v") verbose = true; else if (s == "-C") cmode = true; else if (s == "-C2") { cmode = true; BROAD = true; }
+        else if (s == "-L") LMAX = atoi(argv[++a]); else if (s == "-A") countonly = true;
         else if (s == "-x") xfile = argv[++a];
         else if (s == "-c") ckpt = argv[++a]; else if (s == "-t") tbudget = atof(argv[++a]); else if (s == "-s") saveint = atof(argv[++a]);
         else inpath = s;
@@ -406,6 +444,20 @@ int main(int argc, char **argv) {
         string name;
         if (!parse(line, name)) continue;
         if (n > 20) { printf("%s r=%d SKIP (ring > 20)\n", name.c_str(), n); fflush(stdout); continue; }
+        if (countonly) {                             // -A: admissible X counts by size, no closure
+            build_edges(); int E = (int)cedges.size(); u64 tot = 0, adm = 0;
+            for (int sz = 1; sz <= 4; sz++) {
+                vector<int> c(sz); iota(c.begin(), c.end(), 0);
+                while (true) {
+                    tot++; KX K; if (build_kx(c, K)) adm++;
+                    int q = sz - 1; while (q >= 0 && c[q] == E - sz + q) q--;
+                    if (q < 0) break;
+                    c[q]++; for (int r = q + 1; r < sz; r++) c[r] = c[r - 1] + 1;
+                }
+            }
+            printf("%s r=%d m=%d edges=%d subsets=%llu admissible=%llu\n", name.c_str(), n, m, E, (unsigned long long)tot, (unsigned long long)adm);
+            fflush(stdout); continue;
+        }
         auto T0 = chrono::steady_clock::now();
         auto el = [&]() { return chrono::duration<double>(chrono::steady_clock::now() - T0).count(); };
         build_rank(); build_rank_chunks();

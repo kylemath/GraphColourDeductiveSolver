@@ -6,7 +6,9 @@ for l in open('valc_ref.txt'):
     d = dict(x.split('=', 1) for x in f[2:])
     ref[nm] = d
 kc = {}; cur = None
-for l in open('valc_kcc.txt'):
+import sys
+KF = sys.argv[1] if len(sys.argv) > 1 else 'valc_kcc.txt'
+for l in open(KF):
     if not l.startswith(' '): cur = l.split()[0]; kc[cur] = {'x': {}, 'C': None, 'D': 'D=true' in l}; continue
     m = re.match(r'\s+X=(\{[^}]*\}) adm=(\w+)(?: leftover (\d+))?', l)
     if m: kc[cur]['x'][m.group(1)] = (m.group(2), m.group(3)); continue
