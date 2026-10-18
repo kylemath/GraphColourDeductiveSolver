@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 20:38Z: 5/21 and 11/47 PROVISIONAL (upper side only): both solves loaded the 16 unsound k43 names; lower certificates stand (fewer forbidden patterns only adds rows). Studio + Opus re-running feascheck on s6/s6t43/s7 minus drop44 before any further load.
 - 18 Oct 20:37Z: Round 44/45 (explore d3def56a): RSST 633 on our engines = 249 D + 333 conservative C + 51 broad-only (excluded); 377 containment patterns (k44/pats44.txt) hit 7/8 rows of the 11/47 dual, the 8th (8558655/6665666) dies to 2 own ring-13 D windows. 16 round-43 names with free w_i dropped as unsound (kills_drop44; claimed implied by sound names): Studio re-checks 11/47 without them before anything else, then twoeng batch, then Opus re-solve (H: < 11/47).
 - 18 Oct 20:31Z: No-T baseline = 11/47 [E1, fa4705f2] = with-T value, so Rule T adds nothing over L2: Job 30 B stopped (kill line met), cores to Job 31 (H31: t* < 11/47). O4 kill line met again (exact letters stay 11/47). Opus building independent 6-relay cross-build (H: < 11/47); spec comparison held until both have numbers.
 - 18 Oct 20:19Z: t* = 11/47 now [E2] (Studio 8f45fca8, T option B + L2 + rsstD + full k43). Job 31 first solve against no-T registry (5/21 + k43 + rsstD); Opus asked for like-for-like no-T t* as baseline; H31: t*(relay) < t*(no-T), kill = equal.
