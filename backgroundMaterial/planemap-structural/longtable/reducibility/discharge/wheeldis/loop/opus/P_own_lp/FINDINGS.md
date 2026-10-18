@@ -231,3 +231,20 @@ Not read: Studio's Job 31 spec.
   the window inflow = max_p h, tail DP + Karp.
 - **Pre-registered.** Guess: below 11/47 (the targets 55677 and 56687 have 6-spokes whose 6s also touch bigs).
   Kill line (lead's): 11/47 with a valid lower bound means the 6-relay alone does not help on this registry.
+
+## Stage 8 result (20:43Z): R6x (6-relay) + L2 on argsA43noT + RSST-D: **t* = 18/79 = 0.227848** [E, both sides, own checkers]
+- `prelay.py` (`solveR / lowerR / upperR / orientR`). 6,915 sender rows, 102 g keys, 4,760 h keys, 994 conservation
+  equalities (every non-R6 6-word with a five), 975 inflow signatures, 4,760 M rows. Orientation test: 3,125 kg/sig
+  + 15,625 L x 6 kh cases, 0 mismatches. Separator vs row value (`dbg`): equal at every d in every iteration.
+- `s8.log`: 25 iterations, 377 s (warm from s7/s6/s2x rows). The last pass adds 0 rows; tail DP; Karp 0.5063, d0 11.7.
+- `lowerR` (exact, signed duals, rows re-derived, rescaled so t's reduced cost is 0): **VALID 18/79**. Negative
+  control: dropping one conservation row gives INVALID (2 negative reduced costs). `upperR`: FEASIBLE (sender rows
+  0 violated, conservation |in - out| <= 1e-9 on all 994 words, d = 7..17 exhaustive 0 violated, tail, Karp).
+- Below s7's 11/47 = 0.2340, so the kill line is not met: **the 6-relay helps on this registry**. 50 g keys are
+  used; the largest are fives sending ~0.136 into a 6 whose spokes are 6 and 7.
+- Dual (36 rows): receivers d = 7 8566655/6656656 (10/79), d = 8 75657565/66665655 (0.0591), d = 7 8558655/6665666
+  and d = 8 76565565/56865865 (4/79), d = 8 75657565/55655565 (0.0211) and /66555555 (0.0084). Senders 55667,
+  55687, 66678 (10/79), 56687 (four assignments, 6/79 + 2/79 x 3), 55668, 56667 (4/79), 66868, 55868 (2/79).
+  9 conservation rows and 10 M rows.
+- The targets: receiver 7565765/6855555 and sender 55677 have left the dual; 56687 stays.
+- Files: sol_s8.json, cert_s8.json, lower_s8.log, upper_s8.log, rows_s8.txt.

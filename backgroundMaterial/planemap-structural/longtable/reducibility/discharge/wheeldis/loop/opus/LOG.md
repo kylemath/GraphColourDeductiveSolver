@@ -230,3 +230,11 @@ our agent R and have no output from it.
   DP d = 18..30, Karp d0 11.78); cert_s7 lower: VALID. argsA6 never contained any of the 16, so 5/21 was unaffected (upper re-run:
   FEASIBLE). Files are in P_own_lp/s9/. Gotcha: the check needs root= the P/m wheeldis tree with out/job30/, or
   addA_dfast18/k3x files go missing silently and give a false INFEASIBLE at d = 7 (link 9655757).
+- **P s8 (20:55Z): our own 6-relay class on the s7 registry gives t* = 18/79 = 0.2278, down from 11/47** [E, own
+  checkers; lowerR VALID (fails as it should when a conservation row is dropped), upperR FEASIBLE d = 7..17 + DP + Karp
+  d0 11.7; 25 iterations, 377 s]. Kill line not met. The class: fives pay g to 6-neighbours, keyed by the 6's link seen
+  from the five (spokes exact, hats/fan small/big); the 6 pays h to its big neighbours, keyed by its exact link word;
+  994 conservation equalities; receiver inflow is the max over the 6's unseen private. Built without reading Job 31.
+  Binders: d = 7 8566655/6656656 (10/79), d = 8 75657565/66665655, 8558655/6665666, 76565565/56865865; senders 55667, 55687,
+  66678 (10/79), 56687. Caveats: the checkers share key construction with the LP, and the registry still has the
+  16 drop44 names (via k3x), so the upper needs a re-run on the corrected registry. Sent to Studio for a second check.
