@@ -238,3 +238,7 @@ our agent R and have no output from it.
   Binders: d = 7 8566655/6656656 (10/79), d = 8 75657565/66665655, 8558655/6665666, 76565565/56865865; senders 55667, 55687,
   66678 (10/79), 56687. Caveats: the checkers share key construction with the LP, and the registry still has the
   16 drop44 names (via k3x), so the upper needs a re-run on the corrected registry. Sent to Studio for a second check.
+- **P2 s9 (21:00Z): main line (run-A + 30f86cd4 k3x = k43-drop44 + k44 + k45, RSST-D, L2, no T) gives t* = 2/9 =
+  0.2222** [E, our engine; lower VALID exact; upper FEASIBLE d = 7..17 + DP + Karp]. All 8 receivers of the 11/47 dual are
+  killed. New 6-row dual: senders 55667 (2/9), 56668 (2/9), 55767 (1/9), 58778 (1/9); receivers d = 7 8655675/5756585 (2/9),
+  d = 8 75576556/78756665 (1/9). `P_own_lp/s9/FINDINGS.md`. Sent to Studio for a second check.
