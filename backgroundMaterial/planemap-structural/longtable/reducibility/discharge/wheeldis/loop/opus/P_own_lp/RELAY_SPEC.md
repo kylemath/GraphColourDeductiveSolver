@@ -608,3 +608,359 @@ Orientation self-test (`orientR`): 3,125 kg and sig cases plus 15,625 L x 6 kh c
   M term only when cand is non-empty, which admissibility already forces.
 - s10 was run before the `s13/` and `s14/` snapshots existed, presumably with the top-level `P_own_lp/pcheck.py`. Its md5 now differs from `s14/pcheck.py`. The diff is only
   the command dispatch table (two extra R2 commands), and `prelay.py` is identical, so the class is the same.
+
+---------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
+
+## 12. The reduced 6-centred extension ("s12r mode": R6x2 + apexcls + L2)
+
+Used for s12r (35/183 on argsA44), **s12r47** (21/113 on `s14/argsA47.txt`) and **s12r50** (**t\* = 23/134 =
+0.171641791** on `s17/argsA50.txt`).
+
+### 12.0 Which code
+
+The class is `pcheck.py solveR2 xon xcap=3 apexcls` (+ `consbasis=cons2basis_cls.json`, `xpen=1e-3`), with the
+flags `zh`, `q7` and `noapex` all **off**. The code is `prelay2.py` at the top level of `P_own_lp/`.
+
+- The `s14/` and `s17/` snapshots of prelay2.py (md5 `4a57bc28...`) predate the `apexcls` flag. They are **not** the
+  s12r engine.
+- No `cmd_s12r50.sh` exists. The flags above are inferred from `sol_s12r50.json` (`"apex": true`,
+  `"apexcls": true`, `"zh": false`, no `q` field), from the log line
+  `R6x2 (apex True): 7074 sender rows ... 11533 initial cons rows`, and from the basis size: 994 rows with s = 555555
+  plus the 10,539 new rows of the 10,750-row `cons2basis_cls.json` gives 11,533.
+- The current top-level prelay2.py (23:26) has the later `zh` and `q7` options. With both off it gives the same rows.
+  I checked this by rerunning `lowerR2 xon xcap=3 apexcls cert=cert_s12r50.json args=s17/argsA50.txt
+  rpat=rpatD.txt` on a read-only copy of the top-level engine: **VALID t >= 23/134 (57 rows)**, identical to
+  `lower_s12r50.log`.
+- The `noapex` setting of the same command is s10 mode: FINDINGS stage 12, V1 reproduced 217/1129.
+
+The registry for argsA50 is argsA47 with the k3x files swapped (d43ba26a). Patterns by d:
+
+| d   | 7     | 8     | 9     | 10    | 11  | 12 | 13..17 |
+|-----|-------|-------|-------|-------|-----|----|--------|
+| count | 9,663 | 4,469 | 1,360 | 1,028 | 347 | 84 | 65 each |
+
+By kind: D 15,550, C 1,568, RPAT 158. R5, R6, FANS and RBIG are as in section 4.4.
+
+Everything in sections 1-11 carries over (charge model, y, x, receiver admissibility, patterns, tail argument, dual
+sign rules) **except** the g, h and M keys, the conservation rows and the row labels, which change as follows.
+
+### 12.1 Apex letters
+
+For a 6 x with link `L = (L0..L5)`, the **apex** `s_i` is the common neighbour of `L_i` and `L_{i+1}` other than x.
+The 6-centred arrangement `(L, s)` is x's 2-ball, like a d = 6 receiver arrangement. With `apexcls`, every apex letter
+enters a key only through
+
+```
+ap(l) = 7 if l >= 7 else 5          (5 = "small" witness, 7 = "big" witness)
+```
+
+So an apex is a class, written with the letters 5 and 7. Hats and fans stay 0/1 classes as in s10.
+
+### 12.2 Keys (JSON formats in sol_s12r50.json)
+
+The sol file has fields `t`, `model="R6x2"`, `apex=true`, `apexcls=true`, `zh=false`, `xon`, `y`, `g`, `h`, `x` and
+`z=[]`.
+
+- **y** and **x**: as in sections 2.1 and 2.2.
+- **M**: not stored, as before. Set `M[sig] = max_{k in cand2(sig)} h[k]`.
+
+The sizes in s12r50 are 781 y, 191 g, 3,432 h and 4 x values. The new keys:
+
+**g2 (five -> 6), 7-tuple.** For a five at `L_i` of a 6 with arrangement `(L, s)`:
+
+```
+g2 = min(a, b),
+a = (L_{i+1}, c(L_{i+2}), c(L_{i+3}), c(L_{i+4}), L_{i+5}, ap(s_i),     ap(s_{i-1}))
+b = (L_{i+5}, c(L_{i+4}), c(L_{i+3}), c(L_{i+2}), L_{i+1}, ap(s_{i-1}), ap(s_i))
+```
+
+That is s10's kg followed by the classes of the apexes of the five's two edges at x. The reflection reverses the five
+letters and swaps the two apexes. JSON: `[n1, c, c, c, n5, ar, al]`, for example `[5,0,1,0,6,5,7]`.
+
+Seen from the five v with 6-spoke `l_k`, `s_i = l_{k+2}` and `s_{i-1} = l_{k-2}`. These are v's own spokes, so the
+sender reads them exactly and then applies ap.
+
+**h2 (6 -> big), 8-tuple.** For a big `L_j`, with `m = (L_j, L_{j+1}, ..., L_{j+5})`:
+
+```
+h2 = min( m + (ap(s_j), ap(s_{j-1})),   (m0, m5, m4, m3, m2, m1) + (ap(s_{j-1}), ap(s_j)) )
+```
+
+Here `s_j` is the apex beyond the edge (m0, m1) and `s_{j-1}` the one beyond (m5, m0). JSON: the 8-list, for example
+`[8,5,5,6,5,5,5,5]`.
+
+**sig2 (inflow signature), 7-tuple.** In a receiver u (letter U), a link 6 `w_j` has link
+`(U, w_{j+1}, s_j, p_j, s_{j-1}, w_{j-1})`. The apexes of x's edges to u's neighbours are `w_{j+2}` (beyond the edge
+u-w_{j+1}) and `w_{j-2}` (beyond u-w_{j-1}). Both are visible to u.
+
+```
+sig2 = min( (U, w_{j+1}, s_j, s_{j-1}, w_{j-1}, ap(w_{j+2}), ap(w_{j-2})),
+            (U, w_{j-1}, s_{j-1}, s_j, w_{j+1}, ap(w_{j-2}), ap(w_{j+2})) )
+cand2(sig2) = { h2 of the arrangement ((U, wr, sr, p, sl, wl), apexes (wrr, wll)) : p in 5..9,
+                not isR6((U, wr, sr, p, sl, wl)) }
+```
+
+In code, `cand2` is `sig2_keys(sig) = {h2_of((U,wr,sr,p,sl,wl), wrr, wll)}`.
+
+Orientation self-test (`orientR2`, FINDINGS stage 12, V2): 0 mismatches. It covers g2/sig2 reflections, h2
+reflections and 20,000 random physical rotations and reflections of `cons2_coef`.
+
+### 12.3 senderR2 rows
+
+The hidden letters, the bits, the admissibility test and the dedupe are exactly as in section 3. The label format is
+the same: `["senderR2", WORD, [hat bits, "|", fan bits]]`. Only the g key changes. For each six k:
+
+```
+g2_of(w_{k+1}, L5(H[k]), L5(F[k]), L5(H[k-1]), w_{k-1}, w_{k+2}, w_{k-2})      with L5(c) = 7 if c else 5
+```
+
+The code passes letter witnesses 5/7 for the classes, and g2_of re-classes them, so the result is the same as using
+the classes directly. The apexes are the exact sender letters `w_{k±2}` after ap.
+
+```
+t + sum_{j: w_j >= 7} y[root(w, j)] + sum_{k in sixes} g2[...]  >= 1
+```
+
+s12r50 has 7,074 rows; s10 mode had 6,915. More rows survive the dedupe because the g2 keys separate more of them.
+393 g2 keys appear in sender rows.
+
+### 12.4 cons2 rows (conservation per 6-type over apex words)
+
+For every 6-type L and **every** apex word `s in {5..9}^6` there is the equality
+
+```
+sum_{i: L_i = 5} g2(L, s, i)  -  sum_{j: L_j >= 7} h2(L, s, j)  =  0          label ["cons2", L, s]
+```
+
+This holds with no admissibility filter on s. That only shrinks the class, so it is sound. Because of ap, only the
+small/big pattern of s matters: 2^6 distinct rows per L at most.
+
+**Which L.** The solver builds rows for the 994 canonical non-R6 6-words that contain a five:
+
+1. one row per L with s = 555555;
+2. the `consbasis` rows (a QR basis per 6-type that implies every (L, s) row; `cmd_consbasisR2`);
+3. every iteration, for each L, the argmax and argmin over all 5^6 s of `sum g2 - sum h2`, added if
+   `|.| > 1e-9`.
+
+The class's conservation is all (L, s), not only the rows actually in the LP:
+
+- The upper check (12.7) tests all **1,424** canonical non-R6 6-words, including words with no five (those force
+  their h2 sum to 0), times all 5^6 apex words.
+- `lowerR2` accepts a `cons2` label when L is non-R6 and every letter of L and s is in 5..9. It does **not** require
+  L to be canonical or to contain a five. Any such row is valid for the class.
+
+Rebuild a label with `cons2_coef(L, s)`, exactly as above. Indices are mod 6, and `s_{i-1}` for i = 0 is `s_5`.
+
+### 12.5 receiverR2 rows
+
+```
+-t + sum_{i: w_i = 5}  y[root((U, w_{i+1}, s_i, s_{i-1}, w_{i-1}), 0)]
+   + sum_{j: w_j = 6}  M[sig2(j)]
+   + sum_{i: w_i >= 7} (x[tau_in(i)] - x[tau_out(i)])     <=  d - 6        label ["receiverR2", d, LINK, SWORD]
+```
+
+Admissibility is section 4.4, unchanged. The only change from s10 is that the M signature now carries
+`ap(w_{j+2})` and `ap(w_{j-2})`.
+
+### 12.6 mrowR2 rows
+
+```
+h2[k] - M[sig2] <= 0   for k in cand2(sig2)        label ["mrowR2", sig2 (7-list), k (8-list)]
+```
+
+The solver adds all `cand2` rows of a signature the first time a receiver row uses it. The initial 1,055
+signatures come from the warm rows. In s10 mode every signature was enumerated up front.
+
+`lowerR2` checks three things:
+
+- sig2 is canonical (`sig == sig2_of(*sig)`);
+- k is in `cand2(sig)` (only the stored orientation; s10's lowerR also accepted the reversed one);
+- `w <= 0`.
+
+### 12.7 Primal check (upperR2)
+
+1. **Senders.** Every senderR2 row over all admissible assignments must be at least `1 - t - EPS`.
+2. **Conservation.** All 1,424 canonical non-R6 6-words times 5^6 apex words, with `|sum g2 - sum h2| <= 1e-9`.
+   s12r50 worst: 3.9e-15.
+3. **Receivers, d = 7..17, exhaustive with jsep3.** The window at a 6 position, with M = max over cand2 of h2, now
+   depends on `(w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2}, s_{i-1}, s_i)`. That is still inside the 9-slot window, so the
+   separator stays exact. The jsep3 class table `clsR2` reflects this.
+4. **Tail d = 18..30 (relaxed DP), then Karp.** As in section 7, with one change: the relaxed matrix now also
+   maximises over `w_{i±2}` at 6 positions, as it already did for x at big positions.
+
+s12r50 (`upper_s12r50.log`): senders 0 violated; conservation 0; d = 7..17 exhaustive 0; DP 18..30 all within
+the cap; Karp λ = 0.522388060 (= 35/67) and d0 = 12.203. **UPPER-R2: FEASIBLE at t = 0.171641791045.**
+
+### 12.8 Certificate check (lowerR2)
+
+Same as section 8:
+
+| label | sign of w | bound b |
+|---|---|---|
+| senderR2 | w >= 0 | 1 |
+| receiverR2 | w <= 0 | d - 6 |
+| cons2 | any | 0 |
+| mrowR2 | w <= 0 | 0 |
+
+`tco = sum_sender w - sum_receiver w`, `D = (sum_sender w + sum_receiver w (d - 6)) / tco`, every reduced cost
+`-tot[k] / tco >= 0` except x, which is priced at its cap 3 if negative. senderR2 rows are looked up by
+`(WORD, bits)` among the deduped rows, as in section 3.
+
+### 12.9 Worked rebuild of cert_s12r50.json (57 rows; weights in units of 1/268)
+
+Every weight rationalises (`limit_denominator(10**7)`) to an integer over 268. The rows by type are 11 senderR2,
+26 cons2, 15 mrowR2 and 5 receiverR2. Each rebuilt row is listed with its value at sol_s12r50.json. All senderR2 and
+receiverR2 rows are tight: sender LHS = 1, receiver LHS = d - 6.
+
+```
+w*268 label                                row
+ +18 senderR2 55667 [0,0,0|1,0]   t + y[7|5566] + g[5010657] + g[6000755]                   >= 1
+ +24 senderR2 55667 [0,1,0|0,0]   t + y[7|5566] + g[5001657] + g[6100755]                   >= 1
+ +22 senderR2 55667 [1,0,0|0,0]   t + y[7|5566] + g[5100657] + g[6000755]                   >= 1
+  +8 senderR2 55696 [0,0,0,0|0,0] t + y[9|6556] + 2 g[5000955]                              >= 1
+ +20 senderR2 55767 [0,0|0]       t + 2 y[7|5576] + g[7000755]                              >= 1
+ +12 senderR2 55767 [0,1|0]       t + 2 y[7|5576] + g[7001755]                              >= 1
+ +12 senderR2 56669 [0,0,0,0|1,1,0] t + y[9|5666] + g[5010675] + g[6000955] + g[6010657]    >= 1
+ +12 senderR2 56669 [0,1,0,0|0,1,0] t + y[9|5666] + g[5001675] + g[6000955] + g[6011675]    >= 1
+  +6 senderR2 56696 [0,0,0,0,0|1,0,0] t + y[9|6566] + g[5000955] + g[5010657] + g[6000955]  >= 1
+ +12 senderR2 66667 [0,0,0,0,0|0,1,1,0] t + y[7|6666] + 2 g[6000755] + 2 g[6010657]         >= 1
+ +32 senderR2 66669 [0,0,0,0,0|0,1,1,0] t + y[9|6666] + 2 g[6000955] + 2 g[6010657]         >= 1
+ +11 cons2 556558 555555   2 g[5000855] + 2 g[5100655] - h[85565555]                         = 0
+ -22 cons2 556659 555555   g[5000955] + g[5100655] + g[6000955] - h[95566555]                = 0
+ -24 cons2 565659 555555   2 g[6000955] + g[6010655] - h[95656555]                           = 0
+ +12 cons2 565678 555555   g[6001855] + g[6011655] - h[76565855] - h[85656755]               = 0
+ -12 cons2 566659 555555   2 g[6000955] - h[95666555]                                        = 0
+ -64 cons2 566667 555555   g[6000755] - h[75666655]                                          = 0
+ +76 cons2 566766 555555   g[6010655] - h[76656655]                                          = 0
+ -12 cons2 566776 555555   g[6011655] - h[76566755] - h[76656755]                            = 0
+  -6 cons2 567567 555555   2 g[6100755] - 2 h[75675655]                                      = 0
+ -12 cons2 576677 555555   g[7001755] - h[75766755] - h[75776655] - h[76675755]              = 0
+ -11 cons2 556558 577555   2 g[5000855] + 2 g[5100657] - h[85565555]                         = 0
+ -24 cons2 556596 577557   g[5001657] + g[5010657] + g[6000975] - h[95655655]                = 0
+ -12 cons2 556676 755755   g[5001675] + g[5010675] - h[76556657]                             = 0
+ -12 cons2 565667 757555   g[6000775] + g[6010657] - h[75656655]                             = 0
+ -52 cons2 565667 755575   g[6000775] + g[6010655] - h[75656657]                             = 0
+ -12 cons2 565678 557555   g[6001855] + g[6011657] - h[76565855] - h[85656755]               = 0
+ +12 cons2 566659 755755   2 g[6000975] - h[95666555]                                        = 0
+ +64 cons2 566667 755555   g[6000775] - h[75666655]                                          = 0
+ -12 cons2 566766 555757   g[6010657] - h[76656657]                                          = 0
+ -76 cons2 566766 555557   g[6010657] - h[76656655]                                          = 0
+ -12 cons2 566876 757575   g[6011675] - h[76566875] - h[86656775]                            = 0
+ +12 cons2 566876 557577   g[6011657] - h[76566875] - h[86656775]                            = 0
+  -6 cons2 567567 575575   2 g[6100755] - 2 h[75675657]                                      = 0
+ -20 cons2 576667 575575   g[7000755] - 2 h[75766657]                                        = 0
+ -12 cons2 576677 575775   g[7001755] - h[75766757] - h[75776657] - h[76675777]              = 0
+ +12 cons2 576677 555775   g[7001755] - h[75766757] - h[75776655] - h[76675777]              = 0
+ -24 mrowR2 9565655 / 95655655    h - M <= 0
+ -24 mrowR2 9566555 / 95656555
+ -22 mrowR2 9556555 / 95566555
+ -12 mrowR2 7665755 / 76675755
+ -52 mrowR2 7566657 / 75656657
+ -12 mrowR2 7576755 / 75766755
+ -12 mrowR2 7666755 / 76656755
+ -12 mrowR2 7566655 / 75656655
+ -12 mrowR2 7666657 / 76656657
+ -12 mrowR2 7565657 / 75675657
+ -12 mrowR2 7656755 / 76566755
+ -40 mrowR2 7576657 / 75766657
+ -12 mrowR2 7576657 / 75776657
+ -12 mrowR2 7656657 / 76556657
+ -12 mrowR2 7565655 / 75675655
+  -8 receiverR2 10 6565656565 6655666666  -t + y[9|6556] + 4 y[9|6666] + 2 M[9556555] + 3 M[9566555]          <= 4
+  -6 receiverR2 10 6556656556 6665656665  -t + 4 y[9|5666] + y[9|6566] + M[9556555] + 4 M[9565655]           <= 4
+ -52 receiverR2 7 7665566 6675666  -t + y[7|5566] + y[7|5576] + M[7566657] + M[7576657] + 2 M[7666755]        <= 1
+ -12 receiverR2 7 7665666 6566565  -t + y[7|6666] + M[7565655] + M[7565657] + M[7656657] + M[7656755]
+                                       + M[7665755] + x[3281] - x[3781]                                       <= 1
+ -12 receiverR2 7 7655666 6756666  -t + y[7|5566] + y[7|5576] + M[7566655] + M[7576755] + M[7666657]
+                                       + M[7666755] - x[3281] + x[3781]                                       <= 1
+```
+
+Keys are written with their digits run together: `g[5010657]` is `[5,0,1,0,6,5,7]` and `h[75766657]` is
+`[7,5,7,6,6,6,5,7]`.
+
+**Hand expansion: senderR2 55767 [0,1|0].**
+
+- `w = (5,5,7,6,7)`, `sixes = [3]`, `hats = [2,3]`, so `H2 = 0`, `H3 = 1`, `F3 = 0`.
+- **y:** both 7s root to (7,5,5,7,6), giving `2 y[7|5576]`.
+- **Six k = 3:** `a = (w4=7, c=1, c=0, c=0, w2=7, ap(w0=5)=5, ap(w1=5)=5) = (7,1,0,0,7,5,5)`.
+  The reflection is `(7,0,0,1,7,5,5)`, which is smaller, giving `g[7001755]`.
+- Admissible: the wheel `(5,7,a,q,b,7)` with a in {7,8,9} and q, b in {5,6} has a non-R6 choice, e.g. (5,7,7,6,6,7) with
+  canon 576677, not in R6.
+- The [0,0|0] row differs only in the hat bit and gives `g[7000755]`.
+
+**Hand expansion: receiverR2 7 7665566 6675666.** `U = 7`, `w = (7,6,6,5,5,6,6)`, `s = (6,6,7,5,6,6,6)`.
+
+| j | w_j | (U, w_{j+1}, s_j, s_{j-1}, w_{j-1}, ap w_{j+2}, ap w_{j-2}) | its reflection | term |
+|---|-----|------------------------------------------------------------|----------------|------|
+| 0 | 7 | x in and out keys equal | | 0 |
+| 1 | 6 | (7,6,6,6,7, ap5=5, ap6=5) | (7,7,6,6,6,5,5) | `M[7666755]` |
+| 2 | 6 | (7,5,7,6,6, ap5=5, ap7=7) | (7,6,6,7,5,7,5) | `M[7576657]` |
+| 3 | 5 | five word (7,5,5,7,6) | | `y[7|5576]` |
+| 4 | 5 | five word (7,6,6,5,5) | | `y[7|5566]` |
+| 5 | 6 | (7,6,6,6,5, ap7=7, ap5=5) | (7,5,6,6,6,5,7) | `M[7566657]` |
+| 6 | 6 | (7,7,6,6,6, ap6=5, ap5=5) | | `M[7666755]` (second) |
+
+Row: `-t + y[7|5566] + y[7|5576] + M[7566657] + M[7576657] + 2 M[7666755] <= 1`.
+
+**Hand expansion: mrowR2 7576657 / 75766657.**
+
+- `cand2(7,5,7,6,6,5,7)` is the h2 of `((7,5,7,p,6,6), apexes 5, 7)`. The first orientation `(7,5,7,p,6,6,5,7)` is
+  the smaller one, so `cand2 = {(7,5,7,p,6,6,5,7) : p = 5..9}`.
+- p = 6 gives `h[75766657] - M[7576657] <= 0`.
+
+**Hand expansion: cons2 576667 / 575575.**
+
+- `L = (5,7,6,6,6,7)`, `s = (5,7,5,5,7,5)`.
+- **The five at i = 0:** `(7,0,0,0,7, ap(s0)=5, ap(s5)=5)` gives `g[7000755]`.
+- **Big j = 1:** `m = (7,6,6,6,7,5)` with `(ap s1, ap s0) = (7,5)`. The reflection `(7,5,7,6,6,6,5,7)` is smaller.
+- **Big j = 5:** `m = (7,5,7,6,6,6)` with `(ap s5, ap s4) = (5,7)`, giving the same key.
+- Row: `g[7000755] - 2 h[75766657] = 0`.
+
+**The chain.** These four rows link up:
+
+- senderR2 55767 [0,0|0] (+20) and cons2 576667/575575 (-20) cancel `g[7000755]`.
+- That cons2 row (-20 x -2 = +40) and mrowR2 7576657/75766657 (-40) cancel `h[75766657]`.
+- `M[7576657]` gets +40 and +12 from the two mrowR2 rows on that signature, and -52 from the d = 7 receiver.
+
+**Ledger (sum of w * coefficient, units of 1/268).** Every y, g, h and x key nets to 0. In particular `x[3281]` and
+`x[3781]` cancel between the two d = 7 receivers 7665666/6566565 and 7655666/6756666. Only two entries are left:
+
+```
+t           : senders 18+24+22+8+20+12+12+12+6+12+32 = 178 ; receivers 8+6+52+12+12 = 90 ; total 268 -> tco = 1
+M[7666755]  : +12 (mrowR2) - 104 (2 x d=7 receiver 7665566) - 12 (receiver 7655666) = -104  -> rc = +104/268 >= 0
+D = 178/268 + (-8*4 - 6*4 - 52*1 - 12*1 - 12*1)/268 = 178/268 - 132/268 = 46/268 = 23/134.
+```
+
+So for every feasible point, `t - (104/268) M[7666755] >= 23/134`, hence `t >= 23/134`. The primal attains
+`t = 0.17164179104477612 = 23/134`.
+
+### 12.10 Differences from s10 mode, in one place
+
+| item | s10 mode (solveR) | s12r mode (solveR2 apexcls) |
+|---|---|---|
+| g key | 5-tuple `(n1,c,c,c,n5)` | 7-tuple, plus `(ap(s_i), ap(s_{i-1}))`; the sender reads `w_{k±2}` |
+| h key | 6-tuple (rooted link) | 8-tuple, plus `(ap(s_j), ap(s_{j-1}))` |
+| M signature | 5-tuple | 7-tuple, plus `(ap(w_{j+2}), ap(w_{j-2}))`; window at a 6 reads `w_{i±2}` |
+| conservation | one equality per 6-type L (994) | one per (L, s) for all apex words s (effectively 2^6 class words); LP holds 994 s = 555555 rows + basis + separated rows; upper checks all 1,424 non-R6 L (also no-five L) x 5^6 |
+| M rows | all 975 signatures up front | lazily, per signature used |
+| lowerR mrow check | accepts either orientation | canonical signature only |
+| labels | `senderR`, `receiverR`, `cons [L]`, `mrowR` | `senderR2`, `receiverR2`, `cons2 [L, s]` (L any non-R6, not necessarily canonical), `mrowR2` |
+| tail relaxation | maximises over `w_{i±2}` only at big positions | also at 6 positions |
+| sol JSON | `model "R6x"`, `gexact` | `model "R6x2"`, `apex`, `apexcls`, `zh`, `z` (empty) |
+
+Unchanged: the charge model, y, x (L2, cap 3), sender bit format and admissibility, receiver admissibility,
+patterns, RBIG, d = 7..17 exhaustive, DP to 30, Karp.
+
+Because the class contains s10's (take g2 and h2 constant in the apex classes), t*(s12r) <= t*(s10). On argsA47
+this gives 21/113 < 19/102.
+
+### 12.11 Ambiguities (s12r mode)
+
+- No command file exists for s12r47 or s12r50. The flags and the basis file are inferred (12.0).
+- The engine that ran s12r50 is an earlier edit of the top-level prelay2.py, since the sol file lacks the `q` field
+  the current code writes. Its exact text is not preserved. The current code with `zh` and `q7` off reproduces the
+  certificate exactly, and I did not re-run upperR2.
+- The 1,424-word upper conservation check is stricter than the LP's 994 relay words. A no-five 6-type's h2 keys are
+  free in the LP (bounded only through M), but upper requires their sum to be 0 for every s. They are 0 in s12r50, so
+  this holds, but a different primal of the same LP could fail upperR2 while being LP-feasible.
