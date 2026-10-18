@@ -1,5 +1,19 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 50 (18 Oct 2026, 22:29Z-): H-RL, do the relay class's new receivers die at ring <= 14?
+
+**Pre-registered 22:29Z, before any engine run on these targets.** Gap G2. Long Table, 22:28Z: on 42c4c876 the relay
+class's dual (19/102, one engine) has two receivers not yet swept, d = 7 7665566/6675666 and d = 10
+6556656556/6665656665. The d = 9 relay rows still bind: 656565665/665666566 (round 47 B, paused at 1526 of 2212
+windows) and 656656665/665555555 (not swept before; new to this loop). Senders 66669 and 56696 are shared with the
+main line (round 49). Queued after round 49, 3 cores.
+- **Order.** d = 7, then finish round 47 B's d = 9 row, then d = 9 656656665/665555555, then d = 10.
+- **Method** as rounds 47-49: win45.py at ring <= 14, drive45.py (STOP=0) in loop/k47, minkill47.py. Windows whose
+  names were already run for another row are counted from the window files as they are built, before their engine run.
+- **Hypothesis:** each row dies at ring <= 14. **Kill line:** a row with no two-engine kill at ring <= 14.
+- **Guess.** d = 7 dies at ring <= 13 (its 55 pair sits between 6s as in 7765556). d = 9 656656665/665555555 dies
+  early, ring <= 12, since eight of its nine s letters are 5. d = 10 dies at ring 13-14 (less sure, about 60%).
+
 ## Round 49 (18 Oct 2026, 22:11Z-): H-R9, does the d = 9 receiver of the new 1/5 dual die, and how far do patterns reach its senders?
 
 **Pre-registered 22:11Z, before any new engine run on these targets.** Gap G2. Long Table, 22:09Z: with round 48 loaded
