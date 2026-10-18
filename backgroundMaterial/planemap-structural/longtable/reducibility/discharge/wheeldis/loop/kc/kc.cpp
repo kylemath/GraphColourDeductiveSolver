@@ -285,14 +285,117 @@ static bool try_pairing(u64 idx, u32 p0, u32 p1, int x) {
     return true;
 }
 
+// ---------------- C-reducibility (round 35, H-KCC) ----------------
+// Own derivation of the contract argument (no cfast/dfast/Lean source read).  X: 1..4 free-completion edges, each
+// with an interior end.  Admissible (conservative): every component of (V, X) holds at most one ring vertex, and no
+// free-completion edge outside X (ring edges included) joins two vertices of one component.  Then G/X is loopless
+// and smaller, its 4-colouring restricts to a proper ring colouring that extends to K/X (each component one colour,
+// every other edge proper), so K is C-reducible with X if no unreached class extends to K/X.
+// Vertex ids: interior 0..m-1, ring k = m + k.
+struct CEdge { int a, b; };
+static vector<CEdge> cedges, alledges;          // X candidates; candidates + ring edges (loop check)
+static void build_edges() {
+    cedges.clear();
+    for (int j = 0; j < m; j++) for (int i : intN[j]) if (j < i) cedges.push_back({j, i});
+    for (int j = 0; j < m; j++) for (u32 r = ringMask[j]; r; r &= r - 1) cedges.push_back({m + __builtin_ctz(r), j});
+    alledges = cedges;
+    for (int k = 0; k < n; k++) alledges.push_back({m + k, m + (k + 1) % n});
+}
+static string xname(const vector<int> &X) {
+    string s = "{";
+    for (size_t q = 0; q < X.size(); q++) {
+        const CEdge &e = cedges[X[q]]; char b[32];
+        if (e.a >= m) snprintf(b, 32, "R%d-I%d", e.a - m, e.b); else snprintf(b, 32, "I%d-I%d", e.a, e.b);
+        s += (q ? "," : ""); s += b;
+    }
+    return s + "}";
+}
+struct KX { int M; vector<int> pin; vector<u32> rforb; vector<int> order; vector<vector<int>> earlier; };
+static int ufp[80];
+static int uff(int x) { while (ufp[x] != x) x = ufp[x] = ufp[ufp[x]]; return x; }
+// builds K/X; returns false if X is not admissible
+static bool build_kx(const vector<int> &X, KX &K) {
+    int V = m + n;
+    for (int v = 0; v < V; v++) ufp[v] = v;
+    vector<char> inX(alledges.size(), 0);
+    for (int e : X) { inX[e] = 1; ufp[uff(cedges[e].a)] = uff(cedges[e].b); }
+    vector<int> rc(V, 0), rpin(V, -1);
+    for (int k = 0; k < n; k++) { int r = uff(m + k); if (rc[r]++) return false; rpin[r] = k; }
+    for (size_t e = 0; e < alledges.size(); e++) if (!inX[e] && uff(alledges[e].a) == uff(alledges[e].b)) return false;
+    vector<int> sid(V, -1); K.M = 0; K.pin.clear(); K.rforb.clear();
+    vector<int> rep;
+    for (int j = 0; j < m; j++) { int r = uff(j); if (sid[r] < 0) { sid[r] = K.M++; K.pin.push_back(rpin[r]); K.rforb.push_back(0); } }
+    vector<set<int>> nb(K.M);
+    for (size_t e = 0; e < cedges.size(); e++) {
+        if (inX[e]) continue;
+        int a = cedges[e].a, b = cedges[e].b, sb = sid[uff(b)];
+        if (a >= m) K.rforb[sb] |= 1u << (a - m);
+        else { int sa = sid[uff(a)]; nb[sa].insert(sb); nb[sb].insert(sa); }
+    }
+    // order: pinned first, then most placed neighbours / ring constraints
+    vector<int> pos(K.M, -1), placed(K.M, 0); K.order.clear();
+    for (int s = 0; s < K.M; s++) {
+        int best = -1, bs = -1;
+        for (int j = 0; j < K.M; j++) if (pos[j] < 0) {
+            int sc = (K.pin[j] >= 0 ? 1000 : 0) + __builtin_popcount(K.rforb[j]) + placed[j];
+            if (sc > bs) { bs = sc; best = j; }
+        }
+        pos[best] = s; K.order.push_back(best);
+        for (int i : nb[best]) placed[i]++;
+    }
+    K.earlier.assign(K.M, {});
+    for (int j = 0; j < K.M; j++) for (int i : nb[j]) if (pos[i] < pos[j]) K.earlier[j].push_back(i);
+    return true;
+}
+static bool extends_kx(const KX &K, u32 q0, u32 q1) {
+    u32 mk[4] = {~q0 & ~q1 & FULL, q0 & ~q1 & FULL, ~q0 & q1 & FULL, q0 & q1 & FULL};
+    int col[64], dom[64], cand[64];
+    for (int j = 0; j < K.M; j++) {
+        int f = 0;
+        for (int v = 0; v < 4; v++) if (K.rforb[j] & mk[v]) f |= 1 << v;
+        int d = 15;
+        if (K.pin[j] >= 0) { int k = K.pin[j]; d = 1 << (((q0 >> k) & 1) | (((q1 >> k) & 1) << 1)); }
+        dom[j] = d & ~f;
+    }
+    int s = 0; cand[0] = dom[K.order[0]];
+    while (s >= 0) {
+        if (!cand[s]) { s--; continue; }
+        int j = K.order[s];
+        int c = __builtin_ctz(cand[s]); cand[s] &= cand[s] - 1; col[j] = c;
+        if (s == K.M - 1) return true;
+        s++;
+        int jj = K.order[s], a = dom[jj];
+        for (int i : K.earlier[jj]) a &= ~(1 << col[i]);
+        cand[s] = a;
+    }
+    return false;
+}
+static bool parse_x(const string &xs, vector<int> &X) {   // "{R0-I0,I2-I3}" -> cedges indices
+    X.clear(); string t;
+    for (char c : xs) if (c != '{' && c != '}') t += c;
+    stringstream ss(t); string tok;
+    while (getline(ss, tok, ',')) {
+        size_t d = tok.find('-'); if (d == string::npos) return false;
+        auto vid = [&](const string &s) { int k = stoi(s.substr(1)); return s[0] == 'R' ? m + k : k; };
+        int a = vid(tok.substr(0, d)), b = vid(tok.substr(d + 1)); bool f = false;
+        for (size_t e = 0; e < cedges.size(); e++)
+            if ((cedges[e].a == a && cedges[e].b == b) || (cedges[e].a == b && cedges[e].b == a)) { X.push_back((int)e); f = true; break; }
+        if (!f) return false;
+    }
+    return true;
+}
+
 int main(int argc, char **argv) {
-    bool jacobi = false, verbose = false; string ckpt; double tbudget = 1e18, saveint = 600; string inpath;
+    bool jacobi = false, verbose = false, cmode = false; string ckpt, xfile; double tbudget = 1e18, saveint = 600; string inpath;
     for (int a = 1; a < argc; a++) {
         string s = argv[a];
-        if (s == "-j") jacobi = true; else if (s == "-v") verbose = true;
+        if (s == "-j") jacobi = true; else if (s == "-v") verbose = true; else if (s == "-C") cmode = true;
+        else if (s == "-x") xfile = argv[++a];
         else if (s == "-c") ckpt = argv[++a]; else if (s == "-t") tbudget = atof(argv[++a]); else if (s == "-s") saveint = atof(argv[++a]);
         else inpath = s;
     }
+    multimap<string, string> xq;                     // -x FILE: lines "name X", X evaluated exactly
+    if (!xfile.empty()) { ifstream xf(xfile); string nm, xs; while (xf >> nm >> xs) xq.insert({nm, xs}); }
     build_maxp(10);
     stamp.assign(1u << 19, 0); memo.assign(1u << 19, 0);
     ifstream fin; istream *in = &cin;
@@ -403,6 +506,63 @@ int main(int argc, char **argv) {
         printf("%s r=%d m=%d classes=%llu ext=%llu reached=%llu D=%s depth=%d passes=%d mode=%s %.0fms\n", name.c_str(), n, m,
                (unsigned long long)N, (unsigned long long)ext, (unsigned long long)g, g == N ? "true" : "false", depth, pass,
                jacobi ? "jacobi" : "gs", el() * 1000);
+        fflush(stdout);
+        if (g == N || (!cmode && xq.find(name) == xq.end())) continue;
+        // ---- C stage ----
+        build_edges();
+        vector<u64> bad;
+        for (u64 i = 0; i < N; i++) if (!isgood(i)) bad.push_back(i);
+        auto exact = [&](const KX &K) { u64 L = 0; for (u64 i : bad) if (extends_kx(K, (u32)reps[i], (u32)(reps[i] >> 32))) L++; return L; };
+        auto rg = xq.equal_range(name);
+        for (auto it = rg.first; it != rg.second; ++it) {
+            vector<int> X; KX K;
+            if (!parse_x(it->second, X)) { printf("  X=%s parse=fail\n", it->second.c_str()); continue; }
+            bool adm = build_kx(X, K);
+            if (!adm) printf("  X=%s adm=no\n", xname(X).c_str());
+            else printf("  X=%s adm=yes leftover %llu\n", xname(X).c_str(), (unsigned long long)exact(K));
+            fflush(stdout);
+        }
+        if (!cmode) continue;
+        mt19937_64 rng(12345); shuffle(bad.begin(), bad.end(), rng);
+        vector<u64> killers;                         // classes that refuted recent X, tried first
+        u64 nadm = 0, ntot = 0, bestscan = 0; vector<int> bestX, X, work;
+        bool found = false;
+        int E = (int)cedges.size();
+        for (int sz = 1; sz <= 4 && !found; sz++) {
+            vector<int> c(sz); iota(c.begin(), c.end(), 0);
+            while (!found) {
+                ntot++; KX K;
+                if (build_kx(c, K)) {
+                    nadm++; bool ref = false;
+                    for (size_t q = 0; q < killers.size(); q++) {
+                        u64 i = killers[q];
+                        if (extends_kx(K, (u32)reps[i], (u32)(reps[i] >> 32))) { ref = true; rotate(killers.begin(), killers.begin() + q, killers.begin() + q + 1); break; }
+                    }
+                    if (!ref) {
+                        u64 p = 0;
+                        for (; p < bad.size(); p++) {
+                            u64 i = bad[p];
+                            if (extends_kx(K, (u32)reps[i], (u32)(reps[i] >> 32))) {
+                                ref = true; killers.insert(killers.begin(), i); if (killers.size() > 48) killers.pop_back(); break;
+                            }
+                        }
+                        if (p >= bestscan) { bestscan = p; bestX = c; }
+                        if (!ref) { found = true; work = c; }
+                    }
+                }
+                int q = sz - 1;                       // next combination
+                while (q >= 0 && c[q] == E - sz + q) q--;
+                if (q < 0) break;
+                c[q]++; for (int r = q + 1; r < sz; r++) c[r] = c[r - 1] + 1;
+            }
+        }
+        if (found) printf("  C-REDUCIBLE X=%s size=%d (kc-C: tested %llu, admissible %llu, edges %d, %.0fms)\n", xname(work).c_str(),
+                          (int)work.size(), (unsigned long long)ntot, (unsigned long long)nadm, E, el() * 1000);
+        else {
+            u64 L = 0; if (!bestX.empty()) { KX K; build_kx(bestX, K); L = exact(K); }
+            printf("  C=false |X|<=4 (kc-C: tested %llu, admissible %llu, edges %d) best X=%s leftover %llu (%.0fms)\n",
+                   (unsigned long long)ntot, (unsigned long long)nadm, E, bestX.empty() ? "-" : xname(bestX).c_str(), (unsigned long long)L, el() * 1000);
+        }
         fflush(stdout);
     }
     return 0;

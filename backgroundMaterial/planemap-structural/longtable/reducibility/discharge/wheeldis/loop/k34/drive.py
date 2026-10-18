@@ -41,7 +41,7 @@ def work(i, line):
     with lock:
         st = open(os.path.join(H, 'fill_state.txt'), 'w')
         st.write('killed %d of 25: %s\n' % (len(killed), ' '.join(sorted(killed)))); st.close()
-with ThreadPoolExecutor(3) as ex:
+with ThreadPoolExecutor(int(os.environ.get('NW', '3'))) as ex:
     for i, line in enumerate(lines):
         nm, r = line.split()[0], int(line.split()[1])
         if r > RMAX or nm in done: continue

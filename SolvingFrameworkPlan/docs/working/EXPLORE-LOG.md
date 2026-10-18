@@ -27,6 +27,15 @@
 - **Guess.** Validation passes after one fix. Leftover counts match. kc-C misses 10-25% of cfast's C (the triad
   cases). R: 0 or 1 C among its 3 B-fixed windows at ring 16-17.
 
+**Round 35 validation (09:08Z): passes with no fix** (`loop/kcc/`, `mkvalc.py`, `cmpc.py`, `valc_kcc.txt`).
+- 163 configurations from the three files have input lines (k2a 82, r_12 77, def_r1 the 4 C ones); 30 are cfast C.
+- (a) Exact leftover equals cfast's on all 145 of cfast's X that my admissibility accepts. The other 45 (cfast best X
+  of not-C configurations) put two ring vertices in one component, so I don't test them.
+- (b) 30 of 30 cfast C are kc-C C, and 133 of 133 cfast not-C are kc-C not-C. (c) kc-C misses none of the 30.
+- Edge model agrees: kc-C's subset count equals cfast's admissible + inadmissible on every one checked (e.g. 12,950 at
+  24 edges). Guess check: "one fix" was pessimistic, and "misses 10-25%" was wrong (0 missed).
+- Running kc-C now on R's ring 16-17 B-fixed windows (1 core, beside round 34 part C).
+
 ## Round 34 (18 Oct 2026, 08:43Z-): H-K34, do the 7/27 binder's last windows, or the other tight d = 7 rows' untested windows, hold a D? (coordinator's overnight plan, 08:40Z)
 
 **Pre-registered 08:43Z, before any run.** Gap G2 (K = 2 LP at t* = 7/27).
@@ -78,6 +87,13 @@ RSST's verdict, not ours yet.)
 - **Bar.** R* is forbidden by D if all 25 fillings die. Report the killed fillings and the cheapest window for each.
 - **Guess.** The fillings with a 5 at s1 or s4 die to D at ring <= 16 (an extra five next to the link). Most of the
   16 others survive D, which leaves them to C (round 35).
+
+**Round 34 part A result (09:08Z): 0 of 3 D on both engines.** kc and dfast/dfast18 agree on classes, ext and
+reached for all three (`loop/k34/binA_kc.out`, `binA_dfast.out`): ring 16 `f7_.556757_.56.77.` reached
+352,695 / 1,793,614; ring 17 `f7_.556757_.57.77.` 629,529 and `f7_5567576_56.77.7` 1,907,986 of 5,380,840. Every
+B-fixed window of R is now tested and not D, so route A at u is closed for R by B-fixed windows. Part C (fillings)
+is running: the 9 fillings with a 5 at s1 or s4 died at ring 13 on both engines (`f7_5567576_5....5.` and two
+others), as guessed.
 
 ## Round 33 (18 Oct 2026, 02:54Z-): H-KC, an independent D-closure engine for k19 (coordinator's job, 02:49Z)
 
