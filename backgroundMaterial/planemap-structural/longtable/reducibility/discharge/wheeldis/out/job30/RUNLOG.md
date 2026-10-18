@@ -126,3 +126,7 @@ not new to F.
 - Matcher spot-check (matchtest.py, 11 sampled k47 names): 577 frames, 0 mismatches.
 - Not taken (outside this request): explore's later k45 update (round 45 complete, +5 D kills) and the k44 broad
   diagnostics (C2 files, and rsst_x_kc.out, which is kc output only and cannot pass twoeng without cfast).
+- ~21:35Z: explore's k45 update (round 45 complete, 97233611; 6 changed files copied by path, all of loop/k45 now
+  byte-identical to 97233611). k45 alone: 12 D, 0 C. Default glob: **426 D / 422 C** (+5 D, 0 lost). New D:
+  f7_..55855_..66666, f7_..55865_..6656., f7_..55865_.6665.., f7_.558556_.6666.., f7_.558556_.66666.
+  Drop44 guard 0 flagged. Matcher on all 5: 219 frames, 0 mismatches. The k44 C2 diagnostics stay out.
