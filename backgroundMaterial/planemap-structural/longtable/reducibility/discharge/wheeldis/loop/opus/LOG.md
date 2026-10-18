@@ -87,3 +87,11 @@ Pre-registered before any probe ran.
   (`H_floor_check/FINDINGS.md`) [hand + frame.py]. It is a floor for the whole rule-T class, not first order, unless
   w2/w4 can pass charge on (L2 transfer) or one of four arrangements is killed. So Job 30's order is right: part A
   (L2 with the s1/s4 = 5 kill) is what can go below 0.155; rule T alone cannot.
+- **C (10:00Z): no window inside R's fixed patch kills any of the 16 open fillings** (`C_kc_ring17/FINDINGS.md`,
+  `fillings_opus.txt`) [E, kc; D windows also dfast]. 1,350 windows on 2 cores. Windows not centred on u (connected
+  subsets of u, w0-w6, s0-s6 at exact degrees): with s1, s4 >= 6, 0 D of 1,131 at rings 6-16 (every subset at ring
+  <= 14 run). The 9 D windows found (rings 11-12, both engines) all use a five at s1 or s4, i.e. the 9 fillings explore
+  had already killed. R's 4 B-fixed windows at u (rings 11, 16, 17, 17) are all not D. 1,644 untested windows at
+  rings 15-20 listed in `untested_r15_20.txt`. Reading [I]: killing the open fillings needs vertices outside R's
+  patch, case-split by degree, which is what explore's round 37 did (w2's link, C at ring 13). Guess check: "10-20%
+  of binder windows D at ring 17-20" was wrong (0 of 7 at ring 16-17).
