@@ -262,3 +262,10 @@ our agent R and have no output from it.
   [E, our engine; lower VALID; upper FEASIBLE d = 7..17 + DP to 30 + Karp lambda 0.5333, d0 12.43; 38 iterations, 381 s]. Loaded:
   D 15,461, C 1,468, RPAT 158; 0 of the drop44 patterns; both 2/9 receivers forbidden. The dual has 4 rows: receiver d = 7
   7765556/6575765 (2/5), senders 55757, 55767, 57667 (1/5 each). Sent to Studio. Relay s13r is running.
+- **P2 D-count reconciliation (22:05Z): the 339-pattern gap to Studio (15,800 vs 15,461) is fully explained** (`s13/dcount.txt`).
+  - 329 are name duplicates that our parser maps to an earlier identical pattern (p-, e- and f-name spellings of the same
+    pattern): eq_D7 59, eq_D8_k3 256, r_D10k5 2, b6 1, u1.pat 11.
+  - 10 are the job28 r_5..r_8 files missing from our root. They add 5 distinct d = 10 patterns, and with them loaded
+    (argsA46_r58) the s13 binder is still admissible.
+  - So 1/5 holds from both sides on the full registry.
+- **P2 s13r: the relay on aee20e3b gives 217/1129, unchanged from s10, with the same binders.**

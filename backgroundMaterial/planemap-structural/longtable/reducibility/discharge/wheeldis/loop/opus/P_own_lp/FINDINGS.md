@@ -326,3 +326,17 @@ Not read: Studio's Job 31 spec.
   the new freedom is charge traded across a shared apex.
 - Validations: (V1) apex mode off must reproduce 217/1129 (s10's class); (V2) orientation test on g2, h2, sig;
   (V3) planted check that separator value = row value.
+- Stage 12 validations (21:45Z):
+  - V2: orientR2 gives 0 mismatches in both modes. Checked: 78125 key/sig reflections, 46875 h reflections, and 20000 random physical rotations/reflections of cons2_coef.
+  - V1: noapex (s10 keys) solveR2 gives t* = 0.192205491585 (sol/cert_s12v1).
+    - LOWER-R2 VALID t >= 217/1129 (43 rows).
+    - UPPER-R2 FEASIBLE: senders 0 violated. Conservation was checked on all 1424 canonical non-R6 6-links x 5^6 apex words: 0 off. d = 7..17 exhaustive: 0 violated. Karp d0 11.73.
+  - V3: with the dbg flag (first full-run attempt), the separator value equals the row value at every d = 7..17 over 3 iterations. That attempt died on a dbg-only index bug (it read new columns), so it is not a result.
+- Structure (s12_struct.txt): the full conservation system has 11.9M distinct rows and rank 69782. That is 67988 from h-blocks, since each h key fixes its 6-type, plus 1794 g-only.
+- Solver change: per-L separation of conservation rows (2 rows per L per iteration) stalled the LP, at 30 s per iteration and growing.
+  - Replaced it with a precomputed basis of actual (L, s) rows: QR with pivoting per 6-type, 92296 rows (cons2basis.json). Together they imply every (L, s) row.
+  - Separation is kept as a check.
+- 6-centred context question (coordinator), for senders 55677 and 56687 when the ring beyond them (hats and fans) is all big:
+  - In s10 the 6 is a relay with 3-4 big neighbours.
+  - 55677: its 6 sits between 5 and 7, key (5,1,1,1,7). Its g = 0 in s10; the row is met by y only (0.80779 = 1 - t, tight).
+  - 56687: g(5,1,1,1,6) = 0 and g(6,1,1,1,8) = 0.0653, with y covering the rest; tight.
