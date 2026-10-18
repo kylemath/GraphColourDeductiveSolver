@@ -129,3 +129,8 @@ This reworks the parked draft (studio/job30-ruleT-wip, 97bbe5d7).
 - H30B: t*(A+T) < t*(A). Kill line: t*(A+T) = t*(A), with FEASIBLE (feascheckt).
 - A is capped at iteration 20 (capA.sh). The A snapshot (re-solve of A's iteration-5 rows + exhaustive feascheck) runs
   in parallel (snapA.sh).
+
+## Stopped (18 Oct 20:32Z, Long Table 20:30Z): kill line met
+- Rule T adds nothing over L2 on this registry: 11/47 is reached both with T (bbd46d73; Studio [E2] 8f45fca8) and
+  without T (fa4705f2). B stopped with TERM (wlp3xt PID 37134 and sep3xt 37148); last line: iter 1 t=0.217391 rows 114485 xcols 22905 z9=3.0000 added 240 (2335s)
+- Its cores go to Job 31. F stays paused.

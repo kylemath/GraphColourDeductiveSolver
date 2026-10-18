@@ -40,3 +40,26 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   - 8 receiverT rows, each allowed by sep3xt `c`, with inflow slots carrying M_b.
   - Exact combination: every term cancels, t coefficient −1, rhs −11/47, so **t ≥ 11/47** (lower_s6t43.log).
 - So t* = 11/47 exactly with Rule T on that registry, on two engines.
+
+## Second engine for the no-T baseline t* = 11/47 (P_own_lp s7, fa4705f2), plus the round-44 drop re-check, ~20:45Z
+- **Args diff:** argsA43noT.txt + rpat=rpatD.txt matches Studio's argsNoT_local.txt line for line, apart from three
+  paths that point at Opus's directory. Those three files (k42map_C_cons, k43_kills_df, k43_kills_cf) are
+  byte-identical, and so is rpatD.
+- **Lower:** lowercheck on cert_s7.json rebuilds all rows with Studio's code. Each receiver is ALLOWED by sep3xf `c`.
+  The exact combination has t coefficient −1, rhs −11/47 and 0 negative terms, so **t ≥ 11/47** (lower_s7.log). Dropping
+  patterns only adds rows, so this holds on the drop44 registry too.
+- **Drop44 (explore d3def56a, loop/k43/kills_drop44.txt, 16 names):** explore's fixed k43 files equal Studio's loaded
+  copies minus exactly those 16 (11 D lines, 5 C blocks): k43fix_kills_df.out (173) and k43fix_kills_cf.cfast (193 C).
+  They are byte-identical to Opus's s9 *_drop44 files (10e819df).
+  - **Gotcha:** the registry also loads out/job30/k3x_D.out and k3x_C.cfast (the twoeng set). That set already carries
+    the full k43 batch, including all 16, and the loader dedupes by name. So swapping only the k43 files still loads
+    all 16. The first feasfix runs did exactly that (full=400) and are void.
+  - argsFix2_local.txt drops the 16 everywhere: k43fix_* plus k3x_D_fix.out (176) and k3x_C_fix.cfast (204), which
+    are the committed twoeng set minus the 16. A scan of every pat/cpat file in it finds 0 of the 16. Loaded:
+    patterns=16575, full=384, which is 400 − 16.
+  - **Upper, drop44 registry:** feascheck sol_s7 (WLP3X_DEF=1, WLP_SEPF=1, exhaustive sep3xf, d = 7..15 + DP)
+    0 violated, **FEASIBLE** (feasfix_s7.log). feascheckt sol_s6t43 (Rule T B) 0 violated, **FEASIBLE**
+    (feasfix_s6t43.log).
+  - 5/21 (argsA6): its only k43 file, k43_C.cfast (the 54e6a39e window f8_...55565_...5....), contains none of the
+    16, and its k3x set predates the k43 batch. So 5/21 was never affected.
+- So t* = 11/47 holds with and without T on the drop44 registry, on two engines.

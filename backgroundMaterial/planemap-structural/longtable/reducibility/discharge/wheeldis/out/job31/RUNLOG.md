@@ -48,3 +48,10 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
 - **H31: t*(relay) < t*(no-T). Kill line: t*(relay) = t*(no-T).** The baseline t*(no-T) comes from Opus's no-T
   solve, second-engined by Studio.
 - It starts when rzero converges at 7/27, on the first core that frees (24b keeps priority). T + relay comes later.
+
+## Baseline in, and solve held (18 Oct 20:45Z)
+- The no-T baseline t* = 11/47 is [E2]: Opus s7 fa4705f2, plus Studio's lowercheck VALID and feascheck FEASIBLE on the
+  drop44 registry (loop/studio/opus_check/README.md). **H31: t*(relay) < 11/47; kill line t*(relay) = 11/47.**
+- rzero reproduced 7/27 at 20:32Z, so the first solve launched. Long Table 20:36Z held it, and it was stopped at
+  iteration 1 (TERM). It restarts on the corrected and expanded registry (drop44 + k44 + k45) once that settles, and
+  H31 is restated against the new t*.
