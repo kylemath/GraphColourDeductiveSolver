@@ -1,5 +1,23 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 48 (18 Oct 2026, 21:48Z-): H-R15, does the 1/5 receiver die, and how much of its senders' one-ring contexts can patterns cover?
+
+**Pre-registered 21:48Z, before any new engine run on these targets.** Gap G2. Long Table, 21:47Z: on aee20e3b, Opus's
+main line gives t* = 1/5 on one engine (d065b212; Studio checking). The dual has 4 rows: receiver d = 7
+7765556/6575765 (2/5) and senders 55757, 55767, 57667 (1/5 each), in their s13 contexts. 3 cores. Round 47's 58778
+ring 15-16 run is cancelled, since that sender left the dual.
+- **Receiver.** RSST containment (round 44's 582) misses it. It is a sibling of round 47 B's 7765556/6575766 (only s6
+  differs). Of its 944 windows at ring <= 14, 738 have the same names as windows already run there. **Known before
+  running:** 20 of those are two-engine kills, the smallest at ring 10 (a7_u...5556_...576., which does not use s6).
+  The other 206 windows run now (win45.py/drive45.py as round 47). Hypothesis: it dies at ring <= 14 (already met);
+  kill line: it does not.
+- **Senders, cert_s13 contexts.** All three sit in that receiver: 55767 at w3, 55757 at w4, 57667 at w5. `ctx47.py`-style
+  read-off of kills that contain each wheel.
+- **Senders, all one-ring contexts (Long Table: report the fraction covered).** As round 46 B (grow46.py): each word's
+  2-ball with free ring-2 letters 5..9, and the fraction of fillings in which a verified RSST configuration appears.
+  Guess: about 50-70% covered, and none of the fillings with all ring-2 letters >= 7.
+- **Then.** Resume round 47 B's d = 9 row (756 of 2212 run, 6 C kills at ring 13 so far).
+
 ## Round 47 (18 Oct 2026, 21:03Z-): H-R29, do the two receivers of the 2/9 dual die inside their 1.5-balls?
 
 **Pre-registered 21:03Z, before any engine run.** Gap G2. Long Table, 21:02Z: on the round 44/45 registry Opus gets
