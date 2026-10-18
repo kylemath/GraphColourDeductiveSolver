@@ -65,3 +65,39 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
 - Started 10-18 20:45Z on the core freed by Job 30 B.
 - 21:06Z: no-relay baseline on the same registry is t* = 2/9 [E2] (Opus s9 f1a052b4 + Studio feascheck FEASIBLE and
   exact lowercheck, 6 rows). **H31: t*(relay) < 2/9; kill line t*(relay) = 2/9.**
+
+## Lighter restart (Long Table 22:13Z), 18 Oct ~22:20Z
+- Run 1 stopped (TERM, PIDs 47678/47689/47692) after iteration 21: t = −0.151515, 82,123 rows; iteration times rose
+  from about 30 s to 2,572 s, with t flat since iteration 16.
+  - Saved and committed (59b300b7): j31_it20_rows.txt (the iteration-20 receiver dump, 71,435 rows) and j31_run1.log.
+  - Run 1 kept no slack history, and its dump held only receiver rows. The six and recv9 rows and iteration 21's 241
+    rows were not recoverable from the running process; the restart re-separates them.
+- **Sign convention:** t in the log is the master LP's own objective, not its negation. solve() minimises t
+  (`cvec[IT] = 1.0`, then `res = linprog(cvec, ...)`; `t = res.x[IT]`). Receiver rows read load − t <= d − 6 and
+  sender rows −Σy − t <= −1. So −0.151515 is the current master optimum, which is a lower bound on t*(relay): the
+  master has a subset of the rows and rises toward t*.
+- Same class (wlp3r6), same registry (argsK45_local.txt = 30f86cd4), same separator (sep3r). Blind to sol_s10.
+- New options, off by default:
+  - `lp=ds`: scipy HiGHS dual simplex. highspy is not installed, so there is no basis carry-over between solves.
+  - `drop=5`: a cut row (receiver/six/recv9) slack (> 1e-9) for 5 consecutive solves is dropped, and its key is cleared
+    so it can be re-separated. Drops happen only on iterations that add rows, so the final solve is over a row set the
+    iterate satisfies, and it is not repeated.
+  - A full row dump with ages (out/wlp3r6_j31r_x_R6_rows_all.txt) is written every iteration.
+- Warm start: j31_it20_rows.txt, each row re-checked by sep3r `c`.
+- **H31r:** converges within 3 iterations of the restart, at a value comparable to 217/1129. **Kill line:** t still flat
+  after 3 iterations. Then report the iterate's value and what it means against H31 (t*(relay) < 2/9).
+- 22:20Z launch fixes:
+  - (a) The first launch crashed on a bookkeeping bug: recv_row also appends z9 rows through xcol(). n0 is now recorded
+    before separation.
+  - (b) The second launch loaded the wrong registry (16590/893), because out/job30/k3x had moved to 42c4c876.
+    It was stopped at iteration 1. argsK45_pinned.txt now pins k3x to 30f86cd4 (loop/studio/opus_check/k3x_*_30f86cd4).
+  - The valid restart runs from ~22:29Z with patterns=16587 full=752, the same as run 1. Warm rows: 71,430 of 71,435
+    accepted (the 5 others are key duplicates or rejected by `c` at the zero iterate).
+- **H31r falsified at 3 iterations:** iterations 0–3 give t = −0.276923, −0.276923, −0.276923, −0.252632. This is
+  iterate-for-iterate the same as run 1's iterations 0–3. **The kill line is not met as worded** (t moved at iteration
+  3), but there is no convergence and nothing near 217/1129.
+  - Cause: the binding rows are the six (relay) rows. Run 1 never dumped them, so the warm start rebuilds the relay
+    side 241 rows per iteration, exactly as run 1 did.
+  - The dual simplex alone did not cut the solve time: iteration 1 took 552 s. No row had reached age 5 yet.
+- **Against H31:** the iterate −0.2526 is a master lower bound, nowhere near the 2/9 threshold, so it says nothing
+  about t*(relay) < 2/9 yet.

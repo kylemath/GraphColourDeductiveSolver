@@ -40,7 +40,10 @@ XCAP = float(next((a[5:] for a in ARGS0 if a.startswith('xcap=')), '3'))
 WARMF = next((a[5:] for a in ARGS0 if a.startswith('warm=')), None)
 MANY = int(next((a[5:] for a in ARGS0 if a.startswith('many=')), '40'))
 MAXIT = int(next((a[6:] for a in ARGS0 if a.startswith('maxit=')), '100000'))   # 0 = solve the warm rows once, no separation   # rows kept per degree per iteration
-ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many=', 'maxit='))]
+LPM = next((a[3:] for a in ARGS0 if a.startswith('lp=')), 'highs')   # lp=ds: HiGHS dual simplex (Job 31 restart, LT 22:13Z)
+LPM = {'ds': 'highs-ds', 'ipm': 'highs-ipm'}.get(LPM, LPM)
+DROPK = int(next((a[5:] for a in ARGS0 if a.startswith('drop=')), '0'))   # drop cut rows slack for >= DROPK consecutive solves (0 = keep all)
+ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many=', 'maxit=', 'lp=', 'drop='))]
 # Loader exclusions by name (Long Table, 17 Oct): defect-derived verdict files (out/def_*) and oracle stand-ins (hr1_or1)
 EXCL = ('hr1_or1',) if os.environ.get('WLP3X_DEF') == '1' else ('out/def_', 'hr1_or1')   # def_ restored once second-engined (WLP3X_DEF=1)
 DROPPED = [a for a in ARGS_W if a.startswith(('pat=', 'cpat=')) and any(e in a for e in EXCL)]
@@ -252,7 +255,7 @@ def solve():
     A = sps.csr_matrix((data, (ri, ci)), shape=(len(rows), nc))
     cvec = np.zeros(nc); cvec[IT] = 1.0
     bounds = [(0, 1)] * NY + [(0, XCAP if not NOTX else 0)] * nx + [(0, 0 if RZERO else 1)] * (N56 + N6B) + [(0, XCAP if not NOTX else 0), (None, None)]
-    res = linprog(cvec, A_ub=A, b_ub=np.array(rhs), bounds=bounds, method='highs')
+    res = linprog(cvec, A_ub=A, b_ub=np.array(rhs), bounds=bounds, method=LPM)
     if res.status != 0: raise RuntimeError('LP status %s %s' % (res.status, res.message))
     yv = res.x[:NY]; xv = {tau: res.x[NY + i] for tau, i in XCOL.items()}; z9 = res.x[IZ]; t = res.x[IT]
     global V56; V56 = res.x[B56:B56 + N56]; V6B[:] = res.x[B6B:B6B + N6B]
@@ -268,11 +271,35 @@ if WARMF:
         if m and int(m.group(1)) <= DMAXP:
             d, lk, sv = int(m.group(1)), m.group(2), m.group(3)
             if check(d, lk, sv) and add_recv(d, lk, sv, 'warm'): nw += 1
+            continue
+        m = re.search(r'six link (\d+) s (\d+)', line)
+        if m: nw += add_six(tuple(int(c) for c in m.group(1)), tuple(int(c) for c in m.group(2))); continue
+        m = re.search(r'recv9 d=(\d+) nbig=(\d+) path (.*)$', line)
+        if m: import ast as _ast; nw += add_row9(int(m.group(1)), _ast.literal_eval(m.group(3)), int(m.group(2)))
     print('warm rows', nw, flush=True)
 DS, DSF = list(range(7, 13)), list(range(7, 31))
-it = 0
+AGE = []                                # consecutive solves with positive slack, per row (cut rows only)
+CUT = ('recv', 'warm', 'six', 'recv9')
+def unkey(k):
+    inf = rinfo[k]
+    if inf[0] in ('recv', 'warm'): have.discard((inf[1], inf[2], inf[3], tuple(sorted(q for q in rows[k] if q[0] == 'y6b'))))
+    elif inf[0] == 'six': have6.discard((tuple(int(c) for c in inf[1]), tuple(int(c) for c in inf[2])))
+    elif inf[0] == 'recv9': have9.discard((inf[1], inf[3], inf[2]))
+def dump_all():
+    L_ = []
+    for k, inf in enumerate(rinfo):
+        a_ = AGE[k] if k < len(AGE) else 0
+        if inf[0] in ('recv', 'warm'): L_.append('  receiver d=%d link %s s %s age %d\n' % (inf[1], inf[2], inf[3], a_))
+        elif inf[0] == 'six': L_.append('  six link %s s %s age %d\n' % (inf[1], inf[2], a_))
+        elif inf[0] == 'recv9': L_.append('  recv9 d=%d nbig=%d path %r\n' % (inf[1], inf[2], inf[3]))
+    open(os.path.join(HERE, 'out', 'wlp3r6_%s_rows_all.txt' % TAGX), 'w').write(''.join(L_))
+it = 0; ndrop = 0
 while True:
     res, yv, xv, z9, t = solve()
+    if DROPK:
+        sl = np.asarray(res.ineqlin.residual); AGE += [0] * (len(rows) - len(AGE))
+        for k in range(len(rows)): AGE[k] = AGE[k] + 1 if (sl[k] > 1e-9 and rinfo[k][0] in CUT) else 0
+    n0 = len(rows)                      # rows present at this solve (separation may also append z9 rows via xcol)
     if it >= MAXIT: break
     added = 0
     for v_, Lw, sv in six_sep(V56, t, MANY): added += add_six(Lw, sv)
@@ -284,13 +311,23 @@ while True:
             else:
                 for wgt, path, nbig in dp9(d, yv, 0.0 if NOTX else z9, thr, MANY): added += add_row9(d, path, nbig)
         if added: break
-    print('iter %d t=%.6f rows %d xcols %d z9=%.4f added %d (%.0fs)' % (it, t, len(rows), len(XCOL), z9, added, time.time() - T0), flush=True)
+    nd = 0
+    if DROPK and added:   # drop only when new rows came in, so the final solve is over a row set the iterate satisfies
+        keep = [k for k in range(len(rows)) if k >= n0 or AGE[k] < DROPK]
+        for k in range(n0):
+            if AGE[k] >= DROPK: unkey(k)
+        nd = len(rows) - len(keep); ndrop += nd
+        rows[:] = [rows[k] for k in keep]; rhs[:] = [rhs[k] for k in keep]; rinfo[:] = [rinfo[k] for k in keep]
+        AGE[:] = [AGE[k] if k < n0 else 0 for k in keep]
+    print('iter %d t=%.6f rows %d xcols %d z9=%.4f added %d%s (%.0fs)' % (it, t, len(rows), len(XCOL), z9, added,
+          (' dropped %d' % nd) if DROPK else '', time.time() - T0), flush=True)
+    if DROPK: dump_all()
     it += 1
     if it % 5 == 0:   # row dump for warm restarts
         open(os.path.join(HERE, 'out', 'wlp3r6_%s_rows.txt' % TAGX), 'w').write(''.join(
             '  receiver d=%d link %s s %s\n' % (i_[1], i_[2], i_[3]) for i_ in rinfo if i_[0] in ('recv', 'warm')))
     if not added: break
-res, yv, xv, z9, t = solve()
+if not DROPK: res, yv, xv, z9, t = solve()   # with drop=, the last solve is already over the final rows
 duals = -res.ineqlin.marginals
 if os.environ.get('RSELF') == '1':   # validation 3: separator weights = Python rows; six DP = brute force
     import random as _r; _r.seed(4); sc_ = float(os.environ.get('RSELF_YSCALE', '1'))
