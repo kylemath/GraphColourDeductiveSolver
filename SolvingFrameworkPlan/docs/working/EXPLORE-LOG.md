@@ -63,6 +63,22 @@ while R stands. Part B drops to after part C.
   at ring >= 17. Bar: any D on both engines forbids R and breaks the 7/27 certificate. Guess: 0 D (the 7-wheel
   part is shared by every window, and the B-fixed ones are all far from D).
 
+**Second amendment 08:58Z, before any part C window ran (the first chain never started).** The certificate reads
+only the fives' words, which use s0, s2, s3, s5, s6. s1 and s4 sit next to no five, so an LP row with any letters
+there has R's load. Forbidding R alone just moves the binder to another filling. The object to kill is R*: link
+5675765 with s0, s2, s3, s5, s6 at R's letters and (s1, s4) one of 25 fillings in {5,6,7,8,9+}^2. (The Opus team
+reports via the coordinator that RSST's 128.136, C at ring 11, sits in the fillings with a 5 at s1 or s4. That is
+RSST's verdict, not ours yet.)
+- **Part C, as run.** `loop/k34/fillwin.py`: u + all seven link vertices + any subset of {s0, s2, s3, s5, s6} + s1
+  and s4 each absent or at a letter 5-8. That gives 710 windows at ring 13-25 (13: 10, 14: 20, 15: 43, 16: 85,
+  17: 106, 18: 121, 19: 119, 20: 90, more above). Coverage includes mirror images. `loop/k34/drive.py` runs kc in
+  ring order on 3 workers up to ring 20. It skips a window once every filling it covers is killed. A kc D is re-run
+  on dfast (ring <= 16) or dfast18 (17-19), and a filling counts as killed only when both say D. Every 4th not-D
+  window at ring <= 16 also gets dfast, as an agreement check.
+- **Bar.** R* is forbidden by D if all 25 fillings die. Report the killed fillings and the cheapest window for each.
+- **Guess.** The fillings with a 5 at s1 or s4 die to D at ring <= 16 (an extra five next to the link). Most of the
+  16 others survive D, which leaves them to C (round 35).
+
 ## Round 33 (18 Oct 2026, 02:54Z-): H-KC, an independent D-closure engine for k19 (coordinator's job, 02:49Z)
 
 **Pre-registered 02:54Z, before any code.** Not on the paused L2 line.
