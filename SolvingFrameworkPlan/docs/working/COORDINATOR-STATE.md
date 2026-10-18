@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 21:07Z: t* = 2/9 now [E2] (Studio d86b4a95, 16,587 patterns). H31: t*(relay) < 2/9; Job 31 blind solve at iter 9.
 - 18 Oct 21:04Z: Opus 6-relay + L2 on corrected 30f86cd4 gives t* = 217/1129 ≈ 0.192 [E1, 0de80394; 43-row cert]; supersedes 18/79. Studio checks it only after Job 31's blind t* (independence). Relay-dual receivers (d7 7765556/6575766, 7766556/6566575; d9 656565665/665666566) queued for explore after 2/9 rows. Opus next: exact-letter hats on relay keys (kill = equality).
 - 18 Oct 21:03Z: Main line (no T, L2) on round 44/45 registry (30f86cd4) gives t* = 2/9 ≈ 0.222 [E1, Opus f1a052b4; Studio checking]. All 8 11/47 receivers killed. New 6-row dual: receivers d7 8655675/5756585 (2/9), d8 75576556/78756665 (1/9); senders 55667, 56668, 55767, 58778 -> explore round 46 retargeted. Opus relay re-solve s10 on same registry running; Job 31 blind solve on 30f86cd4.
 - 18 Oct 20:46Z: Opus own 6-relay class on s7 gives t* = 18/79 ≈ 0.228 [E1, 7756592f, spec P_own_lp/FINDINGS.md]: relay hypothesis not killed. Still on uncorrected s7 (16 drop44 via k3x); Opus re-running on 30f86cd4, Studio second-checks. Spec comparison with Job 31 held until Job 31 has a number. Explore round 46 = sender kills on 55677/56687.
