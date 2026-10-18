@@ -14,6 +14,17 @@ main line (round 49). Queued after round 49, 3 cores.
 - **Guess.** d = 7 dies at ring <= 13 (its 55 pair sits between 6s as in 7765556). d = 9 656656665/665555555 dies
   early, ring <= 12, since eight of its nine s letters are 5. d = 10 dies at ring 13-14 (less sure, about 60%).
 
+**Result so far (23:04Z).**
+- **d = 7 7665566/6675666: kill line met.** All 864 windows at ring <= 14 ran (22:43-22:51Z; 92 names already run, no
+  earlier kills), 0 mismatches. None is D, and kc -C finds no X at |X| <= 4 for any of them. Round 44's RSST
+  patterns miss the row too (eligible and broad-only alike). The row has a 5-5-5 face (w3, w4, s3) next to the 7-centre;
+  every other letter is 6 apart from w0 = s2 = 7. Guess wrong. Next for it: ring 15-16 (win45 A16), queued after the d = 10 row.
+- **d = 9 656565665/665666566 (round 47 B), complete** (all 2212 windows, 0 mismatches): 90 kill windows, 73 f-names
+  (twoeng: 28 D, 45 C with the same X). 11 minimal, first at ring 13 (C): f9_...565656_......56.,
+  f9_...565665_......5.. and f9_..5656565_......... . Twoeng-ready: `loop/k47/r9b_kills*`.
+- d = 9 656656665/665555555 running since 23:03Z: 3150 windows, 225 already run, none already kills. RSST patterns miss it.
+- d = 10 6556656556/6665656665: RSST patterns miss it. It is queued next.
+
 ## Round 49 (18 Oct 2026, 22:11Z-): H-R9, does the d = 9 receiver of the new 1/5 dual die, and how far do patterns reach its senders?
 
 **Pre-registered 22:11Z, before any new engine run on these targets.** Gap G2. Long Table, 22:09Z: with round 48 loaded
