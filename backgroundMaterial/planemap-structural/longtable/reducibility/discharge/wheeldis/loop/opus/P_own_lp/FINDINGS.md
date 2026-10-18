@@ -184,3 +184,13 @@ non-big paths. Within the 2-ball of w5 the only big vertex the row forces is u.
   85556565/66866665 (2/63 each). The same link 85556565 survives with s-word 66866665. Senders 56687 (8/63), 55667
   (6/63), 55668, 66668 (4/63), 55687, 55778, 55787, 56667, 56686, 56688, 56858, 56867, 58668, 66678 (2/63), 55868,
   66667 (1/63).
+
+## Stage 6t (20:05Z / 20:11Z): T + L2 + RSST-D + k43 [E, both sides]
+| run | registry | t* | lower | upper | time |
+|---|---|---|---|---|---|
+| s6t | argsA6 (one k43 C window) + RSST-D | 14/59 = 0.237288 | lowerT VALID (19 rows) | FEASIBLE | 30 it, 293 s |
+| s6t43 | argsA43 = argsA + all of k43 (184 D `k43_kills_df.out`, 198 C `k43_kills_cf.cfast`, from c5a71dc0) + RSST-D | **11/47 = 0.234043** | lowerT VALID (24 rows) | FEASIBLE (d0 = 11.8) | 18 it, 186 s |
+- s6t43 dual: receivers d = 7 7565765/6855555 (4/47); 8566655/6656656, 7557565/6566666, 8558655/6665666,
+  7557656/6565665, d = 8 76565565/57765865 (2/47); d = 8 75657565/66656665 and /55655565 (1/47). Senders 56687
+  (6/47), 55677 under flags 0 and 1 (4/47 each), 55667, 55668, 55687, 56667, 66667, 66677, 66678, 67768 (2/47), 55868
+  (1/47); M rows on T keys (7,6,5,5,7), (7,6,6,6,6), (7,5,6,6,6), (8,6,7,7,6), (7,6,6,6,8).

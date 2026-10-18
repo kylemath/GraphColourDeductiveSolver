@@ -209,3 +209,8 @@ our agent R and have no output from it.
 - **Two-engine (20:02Z): Studio passes 5/21 on both sides** (68294ae5, loop/studio/opus_check/README.md).
   feascheck: 0 violated. lowercheck: all 25 certificate rows rebuild, exact cancellation. So t* = 5/21 for K = 2 is [E2].
   Studio has also run all 382 windows of the full k43 batch (c5a71dc0) through twoeng: 184 D + 198 C.
+- **P s6t43 (20:15Z): T + L2 + RSST-D + the full k43 batch (184 D + 198 C) gives t* = 11/47 = 0.2340** [E, our
+  engine; lowerT VALID, 24 rows; pcheck upper FEASIBLE d = 7..17 + DP to 30 + Karp d0 = 11.8; 18 iterations, 186 s].
+  Top binder: receiver d = 7 7565765/6855555 (4/47). At 2/47: d = 7 8566655/6656656, 7557565/6566666, 8558655/6665666,
+  7557656/6565665; d = 8 76565565/57765865. At 1/47: d = 8 75657565 with s-words 66656665 and 55655565. Senders: 56687
+  (6/47), 55677 (4/47 under each flag setting), and others. Single-window s6t gives 14/59. Sent to Studio for a second check.
