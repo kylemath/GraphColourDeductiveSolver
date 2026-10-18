@@ -251,3 +251,10 @@ our agent R and have no output from it.
 - **Two-engine (21:07Z): Studio passes 2/9 (s9) on both sides** (d86b4a95; registry identical, 16,587 patterns;
   0 violated rows; all 6 cert rows rebuild). Main-line K = 2 is at 2/9 [E2]. The relay value 217/1129 waits on Studio's
   check, which comes after Job 31's blind solve.
+- **P s11a (21:30Z): exact letters (both hats and the fan) in the relay's pull keys leave t* = 217/1129** [own checkers:
+  lowerR gexact VALID with 68 rows; upperR gexact FEASIBLE]. **Kill line met: exact relay letters are dead.** Built as one m <= g
+  variable per spoke context, so it is the same as enumerating all hats x fans (1,411 g keys, 47,046 sender rows). The
+  binders are the same receivers as in s10.
+  s11b (6 -> 6 second-generation relay): with exact conservation, the edge amount can depend only on the shared pair, so
+  every 6-6 edge nets to zero and the class collapses to s10. A useful version needs 6-centred 2-ball types with their own
+  separator, which is new engine work.

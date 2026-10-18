@@ -265,3 +265,42 @@ Not read: Studio's Job 31 spec.
   (0.0345), and small weights on d = 7 7765556/6575765, 7765566/6596665, d = 9 656566556/755656665,
   656656665/665555555. Senders 55767 (0.1488), 66669 (0.1089), 55667 (0.101 + 0.030 + 0.009), 55757 (0.0788),
   57667 (0.0744 + 0.0044), 56696 (0.0434), 56669, 55696, 56667, 56967 (small). 23 conservation/M rows.
+
+## Stage 11 pre-registration (21:10Z, before any code)
+- s11a hypothesis: exact letters in the relay's pull keys (g key (n1..n5) all exact: the hats n2, n4 and the fan n3,
+  which s10 read as small/big) drop t* below 217/1129. Kill line: converges to 217/1129 with a valid lower bound.
+- Construction (full refinement, no partial): the fan of each 6-spoke appears only in that spoke's term and in that
+  6's wheel condition. So for each spoke context m = (n1, n2, n4, n5) (canonical under reflection), add m <= g[(n1,
+  n2, f, n4, n5)] for every fan f that leaves the wheel (5, n1, n2, f, n4, n5) non-R6. Sender rows: every exact
+  assignment of the hats next to 6-spokes (at most 5^5 per word) that admits a non-R6 fan at every 6-spoke:
+  sum y + sum_k m_k >= 1 - t. This is LP-equivalent to enumerating all hats x fans (min over the independent fans).
+  Upper check uses the min over fans directly. Conservation rows use exact g keys.
+- s11b (only if time): second-generation relay (6 -> neighbouring 6 -> big), pre-registered separately before
+  any code.
+
+## Stage 11b pre-registration and spec check (21:20Z): second-generation relay 6 -> 6 -> big [hand, not built]
+- Rule as asked: a 6 x may pass part of what it holds to a neighbouring 6 x', which passes it on like any relay 6.
+  Conservation stays exact at both 6s.
+- Obstruction [hand]: x' must pass on exactly what it receives, so the amount on edge x -> x' can depend only on
+  what both x and x' see. That is the edge's two common neighbours n_{j-1}, n_{j+1} (and x' = 6 itself); x does not
+  see x''s link, and x' does not see x's.
+  - That information is the same unordered pair from both ends, so the type of x -> x' equals the type of x' -> x.
+  - With a 6-6 edge type tau, every 6 pays h6[tau] out along each such edge and receives h6[tau] in: the net is 0 on
+    every 6 and every edge. The class collapses to s10 (it self-pairs, like L2 on a symmetric big-big edge).
+- Making it non-trivial needs a type read from more than the shared pair, so the receiving 6 must bound an inflow
+  it cannot see. Exact conservation then fails (only a <= version is possible, and a 6 may not go below 0). The
+  sound version is a 6-centred row family over the 6's 2-ball (its link plus each 6-neighbour's link), with its own
+  separator. That is not buildable in the remaining time, so s11b is not run.
+- Pre-registered expectation for a shared-information 6 -> 6 relay: t* = s10's value exactly, by the argument above.
+
+## Stage 11a result (21:16Z): exact pull keys: **t* = 217/1129, unchanged** [E, both sides, own checkers] -- kill line met
+- `solveR gexact`. Pull keys exact (1,411 g keys, equal to the g keys in the conservation rows). 290 spoke contexts
+  m, with 1,411 m <= g rows (one per allowed fan). 47,046 sender rows over exact hats. 35 iterations, 490 s.
+- `lowerR gexact`: VALID 217/1129 (68 rows, 20 of them m <= g). `upperR gexact` (sender rows with the min over
+  fans): FEASIBLE (senders, conservation, d = 7..17 exhaustive, Karp d0 = 11.7).
+- Dual: the same receivers as s10 (d = 7 7765556/6575766 0.1488, 7766556/6566575 0.1399, d = 9 656565665/665666566
+  0.0345, plus small ones). The senders split by exact hats: 55767 [7,7], 55757, 55667 [6,5,6] / [9,6,7] /
+  [9,5,6] / [6,9,7], 57667 [7,6,7] / [6,5,6], 56696, 66669 [5,5,5,5,5] / [5,6,5,6,6] / [5,6,5,5,5] /
+  [6,5,6,5,5], 56669, 56667, 56967, 55696.
+- Refined: all of n2, n3, n4 (both hats and the fan), not a subset. **Exact letters in the relay pull do not
+  help on this registry.**

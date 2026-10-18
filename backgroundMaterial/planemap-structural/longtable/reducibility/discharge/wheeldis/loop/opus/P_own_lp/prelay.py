@@ -1,8 +1,31 @@
 # prelay.py (Opus P_own_lp, stage 8): 6-relay class R6x on top of L2 (spec in FINDINGS.md, stage 8).
 # exec'd inside pcheck.py after psolve.py / pslite.py.
 def c2(l): return 1 if l >= 7 else 0
+GEX = 'gexact' in FLAGS     # stage 11a: exact hats and fan in the pull key
 def kg_of(n1, n2, n3, n4, n5):
-    a = (n1, c2(n2), c2(n3), c2(n4), n5); return min(a, a[::-1])
+    a = (n1, n2, n3, n4, n5) if GEX else (n1, c2(n2), c2(n3), c2(n4), n5); return min(a, a[::-1])
+def mk_of(n1, n2, n4, n5):
+    a = (n1, n2, n4, n5); return min(a, a[::-1])
+def m_fans(mk):
+    n1, n2, n4, n5 = mk; return [f for f in LET if not isR6((5, n1, n2, f, n4, n5))]
+def R_sender_rows_gex():
+    out = []
+    for w in SENDERS:
+        n = 5; sixes = [k for k in range(n) if w[k] == 6]
+        hats = sorted({h for k in sixes for h in (k, (k - 1) % n)}); seen = set()
+        base = collections.Counter()
+        for j in range(n):
+            if w[j] >= 7: base[('y', root(list(w), j))] += 1
+        for hb in itertools.product(LET, repeat=len(hats)):
+            H = dict(zip(hats, hb)); cf = collections.Counter(base); okc = True
+            for k in sixes:
+                mk = mk_of(w[(k + 1) % n], H[k], H[(k - 1) % n], w[(k - 1) % n])
+                if not m_fans(mk): okc = False; break
+                cf[('m', mk)] += 1
+            if not okc: continue
+            k_ = tuple(sorted(cf.items()))
+            if k_ not in seen: seen.add(k_); out.append((''.join(map(str, w)), dict(cf), list(hb)))
+    return out
 def kh_of(L, j):
     a = tuple(L[(j + i) % 6] for i in range(6)); b = (a[0],) + tuple(reversed(a[1:])); return min(a, b)
 def sig_of(U, wr, sr, sl, wl):
@@ -26,6 +49,7 @@ def cons_coef(L):
         if L[j] >= 7: cf[('h', kh_of(L, j))] -= 1
     return cf
 def R_sender_rows():
+    if GEX: return R_sender_rows_gex()
     out = []
     for w in SENDERS:
         n = 5; sixes = [k for k in range(n) if w[k] == 6]
@@ -109,6 +133,12 @@ def cmd_solveR():
     SR = R_sender_rows()
     for wd, cf, bits in SR:
         c2_ = dict(cf); c2_[('t',)] = 1.0; addrow(c2_, 1.0, inf, ('senderR', wd, bits))
+    nmg = 0
+    if GEX:
+        for mk in sorted({k[1] for k in cols if k[0] == 'm'}):
+            n1, n2, n4, n5 = mk
+            for f in m_fans(mk): addrow({('m', mk): 1.0, ('g', kg_of(n1, n2, f, n4, n5)): -1.0}, -inf, 0.0, ('mrowG', list(mk), f)); nmg += 1
+        log('gexact: %d m keys, %d m <= g rows' % (sum(1 for k in cols if k[0] == 'm'), nmg))
     RW = relay_words(); ncons = 0
     for L in RW:
         cf = {k: v for k, v in cons_coef(L).items() if v}
@@ -179,7 +209,7 @@ def cmd_solveR():
         if not added: break
     sol = h.getSolution(); xv = np.array(sol.col_value); t = xv[jt]; duals = np.array(sol.row_dual)
     tag = OPT.get('tag', 'run')
-    S = {'t': float(t), 'model': 'R6x', 'xon': xon,
+    S = {'t': float(t), 'model': 'R6x', 'xon': xon, 'gexact': GEX,
          'y': {rname(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'y' and xv[i] > 0},
          'g': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'g' and xv[i] > 0],
          'h': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'h' and xv[i] > 0],
@@ -211,6 +241,11 @@ def cmd_lowerR():
             L = tuple(row[1])
             if isR6(L) or canon6(L) != L: log('  BAD CONS', row); ok = False; continue
             for k, v in cons_coef(L).items(): tot[k] += w * v
+        elif row[0] == 'mrowG':
+            mk = tuple(row[1]); f = row[2]
+            if mk != mk_of(*mk) or f not in m_fans(mk): log('  BAD MROWG', row); ok = False; continue
+            if w > 0: log('  WRONG SIGN', row); ok = False; continue
+            tot[('m', mk)] += w; tot[('g', kg_of(mk[0], mk[1], f, mk[2], mk[3]))] -= w
         elif row[0] == 'mrowR':
             sg = tuple(row[1]); k = tuple(row[2])
             U, wr, sr, sl, wl = sg
@@ -246,7 +281,11 @@ def cmd_upperR():
     xd = {int(k): v for k, v in Sj.get('x', {}).items()}
     bad = 0
     for wd, cf, bits in R_sender_rows():
-        v = sum(c * (y[RIX[k[1]]] if k[0] == 'y' else G.get(k[1], 0.0)) for k, c in cf.items())
+        def val(k):
+            if k[0] == 'y': return y[RIX[k[1]]]
+            if k[0] == 'm': return min(G.get(kg_of(k[1][0], k[1][1], f, k[1][2], k[1][3]), 0.0) for f in m_fans(k[1]))
+            return G.get(k[1], 0.0)
+        v = sum(c * val(k) for k, c in cf.items())
         if v < 1 - t - EPS: bad += 1
     log('sender rows violated: %d' % bad)
     nc = 0
