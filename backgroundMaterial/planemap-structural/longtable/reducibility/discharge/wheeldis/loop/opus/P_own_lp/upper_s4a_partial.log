@@ -1,0 +1,25 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9371, 8: 3959, 9: 1176, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15038, 'C': 1058, 'RPAT': 158}
+solution sol_s4a.json: t = 0.250000000000, 0 y (0 not a variable here), 0 x, rule T True (968 Y, 80 T)
+sender rows: 342 checked, 0 violated
+d=7 exhaustive: 0 violated (cap 20), 129892 pattern instances, 5393302 DFS nodes, 2.7s
+d=7 max admissible load 1.250000000000 ; minus (d-6+t) = +0.000e+00  (link 8565765 s 6955555; 2.7s)
+d=8 exhaustive: 0 violated (cap 20), 61944 pattern instances, 4447788 DFS nodes, 1.0s
+d=8 max admissible load 2.250000000000 ; minus (d-6+t) = +0.000e+00  (link 75575565 s 78675666; 1.0s)
+d=9 exhaustive: 0 violated (cap 20), 19236 pattern instances, 36553092 DFS nodes, 1.9s
+d=9 max admissible load 3.250000000000 ; minus (d-6+t) = +0.000e+00  (link 755755655 s 989987656; 1.9s)
+d=10 exhaustive: 0 violated (cap 20), 19166 pattern instances, 466171 DFS nodes, 0.4s
+d=10 max admissible load 4.250000000000 ; minus (d-6+t) = +0.000e+00  (link 6556565655 s 6666666667; 0.8s)
+d=11 exhaustive: 0 violated (cap 20), 6853 pattern instances, 7950 DFS nodes, 0.4s
+d=11 max admissible load 4.625000000000 ; minus (d-6+t) = -6.250e-01  (link 65565656555 s 66666666678; 2.0s)
+d=12 exhaustive: 0 violated (cap 20), 1674 pattern instances, 5715 DFS nodes, 0.5s
+d=12 max admissible load 5.000000000000 ; minus (d-6+t) = -1.250e+00  (link 655656565555 s 666666666767; 2.1s)
+d=13 exhaustive: 0 violated (cap 20), 1495 pattern instances, 5715 DFS nodes, 0.5s
+d=13 max admissible load 5.500000000000 ; minus (d-6+t) = -1.750e+00  (link 6556556556565 s 6676676666666; 6.9s)
+d=14 exhaustive: 0 violated (cap 20), 1610 pattern instances, 5715 DFS nodes, 0.6s
+d=14 max admissible load 6.000000000000 ; minus (d-6+t) = -2.250e+00  (link 65565656556565 s 66666666666666; 37.0s)
+d=15 exhaustive: 0 violated (cap 20), 1725 pattern instances, 5715 DFS nodes, 0.6s
+d=15 max admissible load 6.250000000000 ; minus (d-6+t) = -3.000e+00  (link 655656565555655 s 666666666766587; 98.4s)
+d=16 exhaustive: 0 violated (cap 20), 1840 pattern instances, 5715 DFS nodes, 0.6s
+d=16 max admissible load 6.750000000000 ; minus (d-6+t) = -3.500e+00  (link 6556565655556565 s 6666666667666666; 367.3s)
+d=17 exhaustive: 0 violated (cap 20), 1955 pattern instances, 5715 DFS nodes, 0.9s

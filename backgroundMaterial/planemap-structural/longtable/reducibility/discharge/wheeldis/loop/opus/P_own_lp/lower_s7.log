@@ -1,0 +1,22 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 281 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9371, 8: 4341, 9: 1176, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15222, 'C': 1256, 'RPAT': 158}
+  w=2/47 sender 55667
+  w=2/47 sender 55668
+  w=8/47 sender 55677
+  w=2/47 sender 55687
+  w=1/47 sender 55868
+  w=2/47 sender 56667
+  w=6/47 sender 56687
+  w=2/47 sender 66667
+  w=2/47 sender 66677
+  w=2/47 sender 66678
+  w=2/47 sender 67768
+  w=1/47 receiver 8 75657565 55655565
+  w=2/47 receiver 7 8567655 6655656
+  w=4/47 receiver 7 7565765 6855555
+  w=2/47 receiver 7 8558655 6665666
+  w=2/47 receiver 7 7557565 6566666
+  w=2/47 receiver 7 7557656 6565665
+  w=2/47 receiver 8 76565565 57765865
+  w=1/47 receiver 8 75657565 66656665
+LOWER: VALID  t >= 11/47 = 0.234042553  (sum of weights 1)

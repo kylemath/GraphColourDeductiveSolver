@@ -1,0 +1,44 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9530, 8: 4458, 9: 1233, 10: 1023, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15413, 'C': 1429, 'RPAT': 158}
+conservation basis rows added: 10539
+warm rows admitted: 45340
+R6x2 (apex True): 7074 sender rows, 393 g keys in senders, 994 six-words, 11533 initial cons rows, 934 M sigs
+iter 0 t=0.191256830601 rows 68983 cols 23083 added 505  lp 212.6s total 226s  {7: (164, np.float64(1.234973), 0.9), 8: (160, np.float64(0.12185), 2.3), 9: (181, np.float64(0.296162), 0.6)}
+iter 1 t=0.191256830601 rows 69489 cols 23234 added 461  lp 1.8s total 243s  {7: (156, np.float64(0.262267), 1.6), 8: (152, np.float64(0.044287), 3.2), 9: (153, np.float64(0.106606), 0.7)}
+iter 2 t=0.191256830601 rows 69979 cols 23335 added 475  lp 5.0s total 266s  {7: (156, np.float64(0.205785), 2.2), 8: (147, np.float64(0.028577), 3.0), 9: (172, np.float64(0.048087), 0.9)}
+iter 3 t=0.191256830601 rows 70434 cols 23438 added 420  lp 3.8s total 288s  {7: (152, np.float64(0.174863), 3.2), 8: (118, np.float64(0.027771), 2.8), 9: (150, np.float64(0.033913), 1.1)}
+iter 4 t=0.191256830601 rows 70836 cols 23489 added 377  lp 3.1s total 308s  {7: (161, np.float64(0.084563), 2.8), 8: (66, np.float64(0.016184), 3.0), 9: (150, np.float64(0.020453), 1.1)}
+iter 5 t=0.191256830601 rows 71186 cols 23532 added 330  lp 4.4s total 329s  {7: (165, np.float64(0.113474), 2.8), 8: (14, np.float64(0.00294), 3.3), 9: (151, np.float64(0.02065), 1.1)}
+iter 6 t=0.191256830601 rows 71565 cols 23563 added 364  lp 1.9s total 348s  {7: (152, np.float64(0.060126), 3.0), 8: (111, np.float64(0.007322), 3.1), 9: (101, np.float64(0.013361), 0.9)}
+iter 7 t=0.191256830601 rows 71869 cols 23569 added 304  lp 2.7s total 368s  {7: (154, np.float64(0.039854), 2.9), 9: (150, np.float64(0.008095), 1.0)}
+iter 8 t=0.191256830601 rows 72116 cols 23571 added 247  lp 3.3s total 388s  {7: (150, np.float64(0.032982), 2.9), 8: (97, np.float64(0.013895), 3.1)}
+iter 9 t=0.191256830601 rows 72284 cols 23606 added 163  lp 1.9s total 403s  {7: (158, np.float64(0.035587), 2.6), 8: (5, np.float64(0.006199), 2.3)}
+iter 10 t=0.191256830601 rows 72518 cols 23606 added 234  lp 1.6s total 419s  {7: (229, np.float64(0.031661), 2.6), 8: (5, np.float64(0.004308), 2.3)}
+iter 11 t=0.191256830601 rows 72671 cols 23610 added 153  lp 1.6s total 436s  {7: (153, np.float64(0.024772), 3.2)}
+iter 12 t=0.191256830601 rows 72825 cols 23619 added 150  lp 1.9s total 452s  {7: (150, np.float64(0.02514), 2.7)}
+iter 13 t=0.191256830601 rows 72990 cols 23629 added 165  lp 2.3s total 468s  {7: (165, np.float64(0.007839), 2.6)}
+iter 14 t=0.191256830601 rows 73141 cols 23639 added 151  lp 1.4s total 484s  {7: (150, np.float64(0.008874), 2.7), 8: (1, np.float64(1.3e-05), 2.2)}
+iter 15 t=0.191256830601 rows 73217 cols 23669 added 66  lp 1.6s total 499s  {7: (66, np.float64(0.006075), 2.7)}
+iter 16 t=0.191256830601 rows 73422 cols 23669 added 205  lp 2.7s total 516s  {7: (52, np.float64(0.003062), 2.8), 8: (153, np.float64(0.000754), 2.3)}
+iter 17 t=0.191256830601 rows 73521 cols 23681 added 99  lp 1.8s total 532s  {7: (60, np.float64(0.001011), 2.9), 9: (39, np.float64(0.000656), 0.8)}
+iter 18 t=0.191256830601 rows 73555 cols 23681 added 34  lp 1.9s total 548s  {7: (14, np.float64(0.002019), 2.8), 9: (20, np.float64(0.00195), 0.7)}
+  Karp lambda 0.513661 d0 11.94
+iter 19 t=0.191256830601 rows 73555 cols 23681 added 0  lp 1.5s total 564s  {}
+  converged with x penalty; penalty removed, continuing
+  Karp lambda 0.513661 d0 11.94
+iter 20 t=0.191256830601 rows 73555 cols 23681 added 0  lp 0.1s total 580s  {}
+LP t* = 0.191256830601 ; dual rows 52 ; wrote sol_s12r.json cert_s12r.json
+  +0.153005464 senderR2 55767 [1, 1, '|', 0]
+  -0.153005464 receiverR2 7 7765556 6575766
+  -0.153005464 receiverR2 7 7766556 6566575
+  +0.109289617 senderR2 66669 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
+  +0.081967213 senderR2 55667 [1, 0, 0, '|', 0, 0]
+  +0.076502732 senderR2 55757 ['|']
+  +0.076502732 senderR2 57667 [1, 0, 1, '|', 0, 0]
+  +0.071038251 senderR2 55667 [0, 0, 0, '|', 1, 0]
+  +0.038251366 senderR2 56696 [0, 1, 0, 0, 0, '|', 0, 0, 0]
+  -0.038251366 receiverR2 9 656565665 665666566
+  +0.021857923 senderR2 55696 [0, 0, 0, 0, '|', 0, 0]
+  +0.016393443 senderR2 66669 [0, 1, 0, 0, 0, '|', 0, 0, 0, 0]
+  -0.010928962 receiverR2 9 656656665 665555555
+  (+ 39 cons2 / mrowR2 rows)

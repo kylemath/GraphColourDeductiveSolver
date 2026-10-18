@@ -1,0 +1,25 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9371, 8: 3959, 9: 1176, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15038, 'C': 1058, 'RPAT': 158}
+rule T: 1077 sender rows, 1356 Y, 444 T
+M rows (T[k] <= M_b, b = 7, 8, 9): 444
+warm rows admitted: 50075
+iter 0 t=0.250000000000 rows 52179 cols 8102 added 583  lp 33.4s total 42s  {7: (159, np.float64(1.0), 0.7), 8: (149, np.float64(0.75), 0.5), 9: (153, np.float64(0.375), 0.6), 10: (122, np.float64(0.3125), 0.5)}
+iter 1 t=0.250000000000 rows 52626 cols 8118 added 447  lp 0.2s total 51s  {7: (144, np.float64(0.60592), 1.2), 8: (152, np.float64(0.37898), 0.7), 9: (151, np.float64(0.226314), 1.1)}
+iter 2 t=0.250000000000 rows 53065 cols 8134 added 439  lp 0.3s total 62s  {7: (149, np.float64(0.25), 2.2), 8: (138, np.float64(0.13848), 0.6), 9: (152, np.float64(0.16299), 1.0)}
+iter 3 t=0.250000000000 rows 53497 cols 8134 added 432  lp 0.3s total 72s  {7: (147, np.float64(0.086538), 2.4), 8: (144, np.float64(0.100962), 0.7), 9: (141, np.float64(0.15625), 1.0)}
+iter 4 t=0.250000000000 rows 53926 cols 8136 added 429  lp 0.4s total 84s  {7: (124, np.float64(0.048306), 2.8), 8: (148, np.float64(0.077381), 1.0), 9: (157, np.float64(0.09375), 1.1)}
+iter 5 t=0.250000000000 rows 54269 cols 8138 added 343  lp 0.4s total 95s  {7: (31, np.float64(0.011364), 2.7), 8: (150, np.float64(0.011364), 1.0), 9: (162, np.float64(0.076923), 1.1)}
+iter 6 t=0.250000000000 rows 54527 cols 8138 added 258  lp 0.4s total 107s  {8: (138, np.float64(0.010465), 1.1), 9: (120, np.float64(0.108721), 1.3)}
+iter 7 t=0.250000000000 rows 54798 cols 8138 added 271  lp 0.3s total 119s  {8: (127, np.float64(0.005769), 1.3), 9: (144, np.float64(0.0625), 2.1)}
+iter 8 t=0.250000000000 rows 54964 cols 8138 added 166  lp 0.2s total 131s  {9: (166, np.float64(0.0625), 1.5)}
+  Karp lambda 0.541667 d0 12.55
+iter 9 t=0.250000000000 rows 54964 cols 8138 added 0  lp 0.2s total 143s  {}
+  converged with x penalty; penalty removed, continuing
+  Karp lambda 0.541667 d0 12.55
+iter 10 t=0.250000000000 rows 54964 cols 8138 added 0  lp 0.0s total 156s  {}
+LP t* = 0.250000000000 ; dual rows 5 ; wrote sol_s4a.json cert_s4a.json
+  0.250000000 senderT 55688 [0]
+  0.250000000 senderT 66668 [0, 0]
+  0.250000000 receiverT 8 85556565 65866655
+  0.125000000 senderT 55858 []
+  0.125000000 senderT 58668 [0, 0]

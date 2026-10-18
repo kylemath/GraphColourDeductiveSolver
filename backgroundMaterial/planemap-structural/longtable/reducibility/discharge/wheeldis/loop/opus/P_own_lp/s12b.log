@@ -1,0 +1,6 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9530, 8: 4458, 9: 1233, 10: 1023, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15413, 'C': 1429, 'RPAT': 158}
+conservation basis rows added: 92232
+warm rows admitted: 45340
+R6x2 (apex True): 7140 sender rows, 2400 g keys in senders, 994 six-words, 93226 initial cons rows, 2261 M sigs
+iter 0 t=0.191011235955 rows 158445 cols 91801 added 1191  lp 319.8s total 344s  {'cons': (24, np.float64(0.0)), 7: (155, np.float64(12.527134), 1.6), 8: (160, np.float64(14.567874), 1.2), 9: (110, np.float64(19.291721), 1.1), 10: (159, np.float64(19.56934), 1.3), 11: (111, np.float64(21.369148), 1.3), 12: (89, np.float64(23.785965), 1.3), 13: (111, np.float64(24.063584), 1.6), 14: (71, np.float64(25.863392), 1.6), 15: (68, np.float64(28.280209), 2.1), 16: (88, np.float64(28.557828), 2.4), 17: (45, np.float64(30.357636), 2.5)}

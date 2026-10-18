@@ -1,0 +1,7 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9606, 8: 4469, 9: 1233, 10: 1023, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15461, 'C': 1468, 'RPAT': 158}
+  w=1/5 sender 55757
+  w=1/5 sender 55767
+  w=1/5 sender 57667
+  w=2/5 receiver 7 7765556 6575765
+LOWER: VALID  t >= 1/5 = 0.200000000  (sum of weights 1)

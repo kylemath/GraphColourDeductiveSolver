@@ -1,0 +1,59 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9606, 8: 4469, 9: 1233, 10: 1023, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15461, 'C': 1468, 'RPAT': 158}
+R6x: 6915 sender rows, 102 g, 4760 h, 994 conservation rows (of 994 non-R6 words), 975 signatures, 4760 M rows
+warm rows admitted: 36387
+iter 0 t=0.192205491585 rows 50594 cols 14254 added 1538  lp 35.0s total 45s  {7: (271, np.float64(1.254165), 0.8), 8: (157, np.float64(2.186465), 0.5), 9: (169, np.float64(2.462356), 0.5), 10: (107, np.float64(2.270151), 0.5), 11: (71, np.float64(2.113375), 0.5), 12: (128, np.float64(2.693534), 0.5), 13: (127, np.float64(3.309123), 0.5), 14: (127, np.float64(3.116918), 0.5), 15: (127, np.float64(2.924712), 0.6), 16: (127, np.float64(2.732507), 0.7), 17: (127, np.float64(2.540301), 0.8)}
+iter 1 t=0.192205491585 rows 51308 cols 14380 added 714  lp 0.6s total 53s  {7: (163, np.float64(1.231178), 0.6), 8: (102, np.float64(1.038973), 0.5), 9: (190, np.float64(0.53027), 0.4), 10: (153, np.float64(0.121159), 0.5), 11: (106, np.float64(0.203321), 0.5)}
+iter 2 t=0.192205491585 rows 51825 cols 14414 added 517  lp 0.7s total 62s  {7: (178, np.float64(1.231178), 0.7), 8: (143, np.float64(1.038973), 0.5), 9: (194, np.float64(0.489854), 0.5), 10: (2, np.float64(0.002929), 0.5)}
+iter 3 t=0.192205491585 rows 52264 cols 14482 added 439  lp 1.0s total 72s  {7: (154, np.float64(0.788113), 0.6), 8: (151, np.float64(0.504088), 0.7), 9: (134, np.float64(0.363641), 0.4)}
+iter 4 t=0.192205491585 rows 52669 cols 14492 added 405  lp 1.8s total 83s  {7: (151, np.float64(0.32731), 0.7), 8: (149, np.float64(0.35296), 0.8), 9: (105, np.float64(0.270391), 0.6)}
+iter 5 t=0.192205491585 rows 53123 cols 14510 added 454  lp 1.9s total 94s  {7: (151, np.float64(0.447913), 0.7), 8: (152, np.float64(0.337444), 0.8), 9: (151, np.float64(0.176904), 0.4)}
+iter 6 t=0.192205491585 rows 53582 cols 14534 added 459  lp 1.5s total 104s  {7: (155, np.float64(0.336929), 0.8), 8: (152, np.float64(0.193303), 1.0), 9: (152, np.float64(0.131912), 0.5)}
+iter 7 t=0.192205491585 rows 54038 cols 14550 added 456  lp 1.4s total 115s  {7: (155, np.float64(0.292845), 0.9), 8: (152, np.float64(0.133136), 0.9), 9: (149, np.float64(0.158688), 0.5)}
+iter 8 t=0.192205491585 rows 54497 cols 14604 added 459  lp 1.5s total 125s  {7: (164, np.float64(0.686342), 0.7), 8: (143, np.float64(0.150256), 1.1), 9: (152, np.float64(0.072707), 0.5)}
+iter 9 t=0.192205491585 rows 54964 cols 14612 added 467  lp 1.0s total 135s  {7: (168, np.float64(0.290433), 1.0), 8: (151, np.float64(0.065014), 1.1), 9: (148, np.float64(0.126896), 0.5)}
+iter 10 t=0.192205491585 rows 55436 cols 14620 added 472  lp 1.7s total 146s  {7: (215, np.float64(0.240133), 1.1), 8: (147, np.float64(0.340727), 0.8), 9: (107, np.float64(0.115004), 0.5), 10: (3, np.float64(0.018997), 0.5)}
+iter 11 t=0.192205491585 rows 55880 cols 14626 added 444  lp 1.2s total 157s  {7: (145, np.float64(0.230818), 1.1), 8: (152, np.float64(0.091175), 0.9), 9: (147, np.float64(0.108519), 0.5)}
+iter 12 t=0.192205491585 rows 56339 cols 14634 added 459  lp 1.3s total 169s  {7: (155, np.float64(0.182003), 1.4), 8: (146, np.float64(0.016568), 1.3), 9: (158, np.float64(0.082903), 0.6)}
+iter 13 t=0.192205491585 rows 56772 cols 14642 added 433  lp 1.3s total 180s  {7: (141, np.float64(0.25533), 1.3), 8: (151, np.float64(0.022495), 1.3), 9: (141, np.float64(0.029969), 0.5)}
+iter 14 t=0.192205491585 rows 57092 cols 14690 added 320  lp 1.0s total 190s  {7: (162, np.float64(0.230012), 1.1), 8: (152, np.float64(0.061567), 1.0), 9: (6, np.float64(0.005139), 0.4)}
+iter 15 t=0.192205491585 rows 57435 cols 14710 added 343  lp 1.1s total 200s  {7: (155, np.float64(0.173414), 1.2), 8: (152, np.float64(0.040508), 1.1), 9: (36, np.float64(0.015281), 0.5)}
+iter 16 t=0.192205491585 rows 57747 cols 14724 added 312  lp 2.1s total 212s  {7: (162, np.float64(0.127261), 1.5), 8: (126, np.float64(0.049299), 1.2), 9: (24, np.float64(0.002566), 0.5)}
+iter 17 t=0.192205491585 rows 58032 cols 14744 added 285  lp 1.2s total 223s  {7: (151, np.float64(0.125993), 1.4), 8: (12, np.float64(0.004917), 1.1), 9: (122, np.float64(0.033546), 0.6)}
+iter 18 t=0.192205491585 rows 58333 cols 14748 added 301  lp 1.8s total 234s  {7: (155, np.float64(0.14341), 1.4), 9: (146, np.float64(0.014012), 0.4)}
+iter 19 t=0.192205491585 rows 58658 cols 14750 added 325  lp 1.2s total 244s  {7: (166, np.float64(0.091305), 1.3), 8: (24, np.float64(0.009413), 1.1), 9: (135, np.float64(0.022796), 0.5)}
+iter 20 t=0.192205491585 rows 58821 cols 14766 added 163  lp 0.7s total 254s  {7: (157, np.float64(0.069665), 1.5), 9: (6, np.float64(0.005509), 0.5)}
+iter 21 t=0.192205491585 rows 58983 cols 14770 added 162  lp 1.1s total 265s  {7: (158, np.float64(0.06023), 1.6), 8: (4, np.float64(0.025288), 1.1)}
+iter 22 t=0.192205491585 rows 59152 cols 14770 added 169  lp 0.7s total 276s  {7: (152, np.float64(0.053806), 1.5), 8: (12, np.float64(0.001793), 1.1), 9: (5, np.float64(0.003602), 0.4)}
+iter 23 t=0.192205491585 rows 59446 cols 14778 added 294  lp 1.3s total 287s  {7: (142, np.float64(0.056508), 1.8), 8: (152, np.float64(0.003235), 1.2)}
+iter 24 t=0.192205491585 rows 59789 cols 14798 added 343  lp 1.0s total 297s  {7: (155, np.float64(0.019486), 1.7), 8: (153, np.float64(0.007402), 1.1), 9: (35, np.float64(0.014368), 0.5)}
+iter 25 t=0.192205491585 rows 60004 cols 14808 added 215  lp 0.9s total 308s  {7: (152, np.float64(0.015701), 1.6), 8: (52, np.float64(0.005795), 1.0), 9: (11, np.float64(0.017231), 0.4)}
+iter 26 t=0.192205491585 rows 60164 cols 14810 added 160  lp 0.7s total 318s  {7: (76, np.float64(0.007405), 1.9), 8: (84, np.float64(0.001256), 1.1)}
+iter 27 t=0.192205491585 rows 60229 cols 14810 added 65  lp 0.7s total 329s  {8: (65, np.float64(0.023002), 1.2)}
+  Karp lambda 0.504872 d0 11.73
+iter 28 t=0.192205491585 rows 60229 cols 14810 added 0  lp 0.4s total 340s  {}
+  converged with x penalty; penalty removed, continuing
+  Karp lambda 0.504872 d0 11.73
+iter 29 t=0.192205491585 rows 60229 cols 14810 added 0  lp 0.0s total 350s  {}
+LP t* = 0.192205491585 ; dual rows 43 ; wrote sol_s13r.json cert_s13r.json
+  +0.148804252 senderR 55767 [1, 1, '|', 0]
+  -0.148804252 receiverR 7 7765556 6575766
+  -0.139946856 receiverR 7 7766556 6566575
+  +0.108945970 senderR 66669 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
+  +0.100974314 senderR 55667 [0, 0, 0, '|', 1, 0]
+  +0.078830824 senderR 55757 ['|']
+  +0.069973428 senderR 57667 [1, 0, 1, '|', 0, 0]
+  +0.043401240 senderR 56696 [1, 0, 0, 0, 0, '|', 0, 0, 0]
+  -0.034543844 receiverR 9 656565665 665666566
+  +0.030115146 senderR 55667 [1, 0, 0, '|', 0, 0]
+  +0.017714792 senderR 56669 [0, 1, 0, 0, '|', 0, 0, 0]
+  +0.010628875 senderR 55696 [0, 0, 0, 0, '|', 0, 0]
+  +0.008857396 senderR 55667 [0, 1, 1, '|', 0, 0]
+  +0.008857396 senderR 56667 [0, 1, 0, 1, '|', 0, 0, 0]
+  +0.008857396 senderR 56967 [0, 0, 0, 1, '|', 0, 0]
+  +0.008857396 senderR 57667 [0, 0, 0, '|', 0, 0]
+  -0.008857396 receiverR 7 7765556 6575765
+  -0.008857396 receiverR 9 656566556 755656665
+  -0.008857396 receiverR 7 7765566 6596665
+  -0.005314438 receiverR 9 656656665 665555555
+  (+ 23 cons / mrow rows)

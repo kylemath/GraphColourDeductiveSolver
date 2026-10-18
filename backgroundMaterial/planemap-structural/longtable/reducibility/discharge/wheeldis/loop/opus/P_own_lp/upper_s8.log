@@ -1,0 +1,17 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 281 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9371, 8: 4341, 9: 1176, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15222, 'C': 1256, 'RPAT': 158}
+sender rows violated: 0
+conservation violated (|in - out| > 1e-9): 0
+d=7: 0 violated (exhaustive, 4.3s)
+d=8: 0 violated (exhaustive, 0.8s)
+d=9: 0 violated (exhaustive, 0.4s)
+d=10: 0 violated (exhaustive, 0.5s)
+d=11: 0 violated (exhaustive, 0.6s)
+d=12: 0 violated (exhaustive, 0.6s)
+d=13: 0 violated (exhaustive, 0.6s)
+d=14: 0 violated (exhaustive, 0.6s)
+d=15: 0 violated (exhaustive, 0.6s)
+d=16: 0 violated (exhaustive, 0.6s)
+d=17: 0 violated (exhaustive, 0.7s)
+Karp lambda 0.506329114 d0 11.692
+UPPER-R: FEASIBLE at t = 0.227848101266

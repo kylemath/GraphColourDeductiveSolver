@@ -1,0 +1,41 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 280 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9344, 8: 3905, 9: 1100, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15038, 'C': 1059}
+solution sol_s6.json: t = 0.238095238095, 732 y (0 not a variable here), 49 x, rule T False (0 Y, 0 T)
+sender rows: 342 checked, 0 violated
+d=7 exhaustive: 0 violated (cap 20), 129766 pattern instances, 8762601 DFS nodes, 4.5s
+d=7 max admissible load 1.238095238095 ; minus (d-6+t) = -2.380e-13  (link 7576556 s 7966587; 4.6s)
+d=8 exhaustive: 0 violated (cap 20), 61696 pattern instances, 4988038 DFS nodes, 1.1s
+d=8 max admissible load 2.238095238095 ; minus (d-6+t) = -2.380e-13  (link 76556755 s 56565585; 1.2s)
+d=9 exhaustive: 0 violated (cap 20), 18921 pattern instances, 907675 DFS nodes, 0.4s
+d=9 max admissible load 3.238095238095 ; minus (d-6+t) = -2.380e-13  (link 755555555 s 777775856; 0.4s)
+d=10 exhaustive: 0 violated (cap 20), 19166 pattern instances, 55301 DFS nodes, 0.4s
+d=10 max admissible load 4.190476190476 ; minus (d-6+t) = -4.762e-02  (link 6556565655 s 6666666668; 0.4s)
+d=11 exhaustive: 0 violated (cap 20), 6853 pattern instances, 6532 DFS nodes, 0.4s
+d=11 max admissible load 4.650488400488 ; minus (d-6+t) = -5.876e-01  (link 65565556565 s 65658566666; 0.4s)
+d=12 exhaustive: 0 violated (cap 20), 1674 pattern instances, 5715 DFS nodes, 0.5s
+d=12 max admissible load 5.100427350427 ; minus (d-6+t) = -1.138e+00  (link 655555555555 s 577777777756; 0.5s)
+d=13 exhaustive: 0 violated (cap 20), 1495 pattern instances, 5715 DFS nodes, 0.5s
+d=13 max admissible load 5.857142857143 ; minus (d-6+t) = -1.381e+00  (link 5555555555555 s 7777777777777; 0.5s)
+d=14 exhaustive: 0 violated (cap 20), 1610 pattern instances, 5715 DFS nodes, 0.6s
+d=14 max admissible load 6.307692307692 ; minus (d-6+t) = -1.930e+00  (link 55555555555555 s 77777777777777; 0.6s)
+d=15 exhaustive: 0 violated (cap 20), 1725 pattern instances, 5715 DFS nodes, 0.7s
+d=15 max admissible load 6.758241758242 ; minus (d-6+t) = -2.480e+00  (link 555555555555555 s 777777777777777; 0.7s)
+d=16 exhaustive: 0 violated (cap 20), 1840 pattern instances, 5715 DFS nodes, 0.7s
+d=16 max admissible load 7.208791208791 ; minus (d-6+t) = -3.029e+00  (link 5555555555555555 s 7777777777777777; 0.8s)
+d=17 exhaustive: 0 violated (cap 20), 1955 pattern instances, 5715 DFS nodes, 0.7s
+d=17 max admissible load 7.659340659341 ; minus (d-6+t) = -3.579e+00  (link 55555555555555555 s 77777777777777777; 1.0s)
+d=18 relaxed DP max 9.142857 <= 12.238095
+d=19 relaxed DP max 9.221917 <= 13.238095
+d=20 relaxed DP max 9.904762 <= 14.238095
+d=21 relaxed DP max 10.666667 <= 15.238095
+d=22 relaxed DP max 10.745726 <= 16.238095
+d=23 relaxed DP max 11.428571 <= 17.238095
+d=24 relaxed DP max 12.190476 <= 18.238095
+d=25 relaxed DP max 12.269536 <= 19.238095
+d=26 relaxed DP max 12.952381 <= 20.238095
+d=27 relaxed DP max 13.714286 <= 21.238095
+d=28 relaxed DP max 13.793346 <= 22.238095
+d=29 relaxed DP max 14.476190 <= 23.238095
+d=30 relaxed DP max 15.238095 <= 24.238095
+Karp: letter-9 relaxed max cycle mean lambda = 0.507936508; d*lambda <= d-6+t for all d >= 11.710 (need <= 31)
+UPPER: FEASIBLE at t = 0.238095238095

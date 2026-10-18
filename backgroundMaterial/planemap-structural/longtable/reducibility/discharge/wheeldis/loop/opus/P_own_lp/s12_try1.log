@@ -1,0 +1,56 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9530, 8: 4458, 9: 1233, 10: 1023, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15413, 'C': 1429, 'RPAT': 158}
+warm rows admitted: 45340
+R6x2 (apex True): 7140 sender rows, 2322 g keys in senders, 994 six-words, 994 initial cons rows, 2261 M sigs
+  DBG d=7 sep 5.504004576659 row 5.504004577
+  DBG d=8 sep 6.326722603610 row 6.326722604
+  DBG d=9 sep 9.273836765828 row 9.273836766
+  DBG d=10 sep 10.602593440122 row 10.602593440
+  DBG d=11 sep 11.020213577422 row 11.020213577
+  DBG d=12 sep 12.348970251716 row 12.348970252
+  DBG d=13 sep 13.260106788711 row 13.260106789
+  DBG d=14 sep 14.575133485889 row 14.575133486
+  DBG d=15 sep 15.903890160183 row 15.903890160
+  DBG d=16 sep 16.321510297483 row 16.321510297
+  DBG d=17 sep 17.650266971777 row 17.650266972
+iter 0 t=-0.328756674294 rows 67118 cols 27262 added 2703  lp 3.9s total 19s  {'cons': (1187, np.float64(5.315027)), 7: (155, np.float64(4.832761), 0.9), 8: (155, np.float64(4.655479), 0.6), 9: (129, np.float64(6.602593), 0.7), 10: (158, np.float64(6.93135), 0.7), 11: (156, np.float64(6.34897), 0.7), 12: (138, np.float64(6.677727), 0.8), 13: (118, np.float64(6.588863), 0.8), 14: (115, np.float64(6.90389), 0.9), 15: (142, np.float64(7.232647), 1.0), 16: (144, np.float64(6.650267), 1.1), 17: (106, np.float64(6.979024), 1.2)}
+  DBG d=7 sep 3.313984242578 row 3.313984243
+  DBG d=8 sep 5.020589346966 row 5.020589347
+  DBG d=9 sep 7.383395255792 row 7.383395256
+  DBG d=10 sep 8.335341390777 row 8.335341391
+  DBG d=11 sep 9.316599659159 row 9.316599659
+  DBG d=12 sep 11.288816667412 row 11.288816667
+  DBG d=13 sep 12.375299754807 row 12.375299755
+  DBG d=14 sep 13.327245889792 row 13.327245890
+  DBG d=15 sep 14.279192024777 row 14.279192025
+  DBG d=16 sep 15.231138159762 row 15.231138160
+  DBG d=17 sep 16.183084294747 row 16.183084295
+iter 1 t=-0.104661414189 rows 71026 cols 28668 added 3540  lp 9.9s total 44s  {'cons': (1701, np.float64(4.418646)), 7: (153, np.float64(2.418646), 1.0), 8: (154, np.float64(3.125251), 0.6), 9: (161, np.float64(4.488057), 0.6), 10: (161, np.float64(4.440003), 0.7), 11: (165, np.float64(4.421261), 0.6), 12: (172, np.float64(5.393478), 0.7), 13: (173, np.float64(5.479961), 0.8), 14: (176, np.float64(5.431907), 0.8), 15: (175, np.float64(5.383853), 0.9), 16: (176, np.float64(5.3358), 1.0), 17: (173, np.float64(5.287746), 1.1)}
+  DBG d=7 sep 2.711768157881 row 2.711768158
+  DBG d=8 sep 4.080427840642 row 4.080427841
+  DBG d=9 sep 5.869787883298 row 5.869787883
+  DBG d=10 sep 7.384670661684 row 7.384670662
+  DBG d=11 sep 7.384670661684 row 7.384670662
+  DBG d=12 sep 8.451109670183 row 8.451109670
+  DBG d=13 sep 8.946405143009 row 8.946405143
+  DBG d=14 sep 9.796580283908 row 9.796580284
+  DBG d=15 sep 11.077005992526 row 11.077005993
+  DBG d=16 sep 11.077482411338 row 11.077482411
+  DBG d=17 sep 12.143445001025 row 12.143445001
+iter 2 t=-0.077652383266 rows 74924 cols 31113 added 3223  lp 29.5s total 91s  {'cons': (1689, np.float64(4.31061)), 7: (154, np.float64(1.789421), 2.1), 8: (232, np.float64(2.15808), 1.0), 9: (139, np.float64(2.94744), 0.7), 10: (117, np.float64(3.462323), 0.6), 11: (138, np.float64(2.462323), 0.7), 12: (127, np.float64(2.528762), 0.8), 13: (117, np.float64(2.024058), 0.8), 14: (134, np.float64(1.874233), 1.1), 15: (115, np.float64(2.154658), 0.9), 16: (145, np.float64(1.155135), 1.0), 17: (116, np.float64(1.221097), 1.1)}
+  DBG d=7 sep 3.325789876074 row 3.325789876
+  DBG d=8 sep 4.808966666930 row 4.808966667
+  DBG d=9 sep 6.095217779124 row 6.095217779
+  DBG d=10 sep 7.642964833628 row 7.642964834
+  DBG d=11 sep 7.642964833628 row 7.642964834
+  DBG d=12 sep 8.431404139987 row 8.431404140
+  DBG d=13 sep 9.105164792641 row 9.105164793
+  DBG d=14 sep 9.945469650584 row 9.945469651
+  DBG d=15 sep 11.464447250443 row 11.464447250
+Traceback (most recent call last):
+  File "/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/pcheck.py", line 508, in <module>
+    {'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 193, in cmd_solveR2
+  File "<string>", line 193, in <genexpr>
+IndexError: index 32596 is out of bounds for axis 0 with size 31113

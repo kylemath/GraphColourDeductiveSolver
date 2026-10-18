@@ -1,0 +1,30 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 279 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9530, 8: 4458, 9: 1233, 10: 1023, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15413, 'C': 1429, 'RPAT': 158}
+solution sol_s9.json: t = 0.222222222222, 738 y (0 not a variable here), 15 x, rule T False (0 Y, 0 T)
+sender rows: 342 checked, 0 violated
+d=7 exhaustive: 0 violated (cap 20), 131950 pattern instances, 5640903 DFS nodes, 1.5s
+d=8 exhaustive: 0 violated (cap 20), 69788 pattern instances, 4283577 DFS nodes, 1.0s
+d=9 exhaustive: 0 violated (cap 20), 20154 pattern instances, 4484081 DFS nodes, 0.7s
+d=10 exhaustive: 0 violated (cap 20), 19496 pattern instances, 414508 DFS nodes, 0.6s
+d=11 exhaustive: 0 violated (cap 20), 7029 pattern instances, 15434 DFS nodes, 0.7s
+d=12 exhaustive: 0 violated (cap 20), 1674 pattern instances, 5715 DFS nodes, 0.7s
+d=13 exhaustive: 0 violated (cap 20), 1495 pattern instances, 5715 DFS nodes, 0.7s
+d=14 exhaustive: 0 violated (cap 20), 1610 pattern instances, 5715 DFS nodes, 0.8s
+d=15 exhaustive: 0 violated (cap 20), 1725 pattern instances, 5715 DFS nodes, 0.9s
+d=16 exhaustive: 0 violated (cap 20), 1840 pattern instances, 5715 DFS nodes, 0.8s
+d=17 exhaustive: 0 violated (cap 20), 1955 pattern instances, 5715 DFS nodes, 0.7s
+d=18 relaxed DP max 9.333333 <= 12.222222
+d=19 relaxed DP max 9.520833 <= 13.222222
+d=20 relaxed DP max 10.166667 <= 14.222222
+d=21 relaxed DP max 10.888889 <= 15.222222
+d=22 relaxed DP max 11.076389 <= 16.222222
+d=23 relaxed DP max 11.722222 <= 17.222222
+d=24 relaxed DP max 12.444444 <= 18.222222
+d=25 relaxed DP max 12.631944 <= 19.222222
+d=26 relaxed DP max 13.277778 <= 20.222222
+d=27 relaxed DP max 14.000000 <= 21.222222
+d=28 relaxed DP max 14.187500 <= 22.222222
+d=29 relaxed DP max 14.833333 <= 23.222222
+d=30 relaxed DP max 15.555556 <= 24.222222
+Karp: letter-9 relaxed max cycle mean lambda = 0.518518519; d*lambda <= d-6+t for all d >= 12.000 (need <= 31)
+UPPER: FEASIBLE at t = 0.222222222222
