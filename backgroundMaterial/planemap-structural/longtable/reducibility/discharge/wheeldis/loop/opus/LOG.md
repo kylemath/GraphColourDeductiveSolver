@@ -187,3 +187,6 @@ Pre-registered before any probe ran.
   share sender enumeration]. Why: binding sender 66668 has all hats and fans small next to the 8, so neither route A
   nor O exists. What can break 1/4: a reducible kill of 85556565/65866655, a small-hat/small-fan route (Q's route C,
   6-decided relays), or exact letters instead of small/big.
+- **Two-engine (19:32Z, via coordinator): Studio reported at 18:48Z that t* = 1/4 exactly on its own LP engine as well
+  as ours, and stopped run A as redundant.** So K = 2 is at 1/4 [E2]. Next: R (reducible kill of the d = 8 binder) and
+  P stage 5 (exact letters, small-hat route); Studio's Job 31 (6-relay) is queued, complementary.
