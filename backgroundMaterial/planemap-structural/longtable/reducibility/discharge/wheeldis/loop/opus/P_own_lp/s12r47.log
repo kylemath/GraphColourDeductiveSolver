@@ -19,3 +19,33 @@ iter 12 t=0.185840707965 rows 59629 cols 23478 added 472  lp 2.3s total 216s  {7
 iter 13 t=0.185840707965 rows 60106 cols 23488 added 477  lp 2.1s total 231s  {7: (172, np.float64(0.215427), 1.5), 8: (162, np.float64(0.115249), 1.6), 9: (143, np.float64(0.038656), 0.8)}
 iter 14 t=0.185840707965 rows 60610 cols 23504 added 504  lp 2.3s total 247s  {7: (147, np.float64(0.139348), 1.7), 8: (153, np.float64(0.070796), 1.5), 9: (204, np.float64(0.002862), 0.8)}
 iter 15 t=0.185840707965 rows 60981 cols 23504 added 371  lp 2.1s total 262s  {7: (164, np.float64(0.128838), 2.1), 8: (154, np.float64(0.104614), 1.7), 9: (53, np.float64(0.030116), 0.7)}
+iter 16 t=0.185840707965 rows 61283 cols 23504 added 302  lp 2.3s total 279s  {7: (152, np.float64(0.125406), 2.4), 8: (150, np.float64(0.063053), 1.6)}
+iter 17 t=0.185840707965 rows 61650 cols 23523 added 362  lp 2.0s total 294s  {7: (151, np.float64(0.058129), 2.2), 8: (148, np.float64(0.040965), 1.8), 9: (63, np.float64(0.017699), 0.7)}
+iter 18 t=0.185840707965 rows 62036 cols 23531 added 386  lp 3.4s total 311s  {7: (189, np.float64(0.088496), 2.2), 8: (132, np.float64(0.017699), 1.9), 9: (65, np.float64(0.004425), 0.7)}
+iter 19 t=0.185840707965 rows 62204 cols 23537 added 158  lp 1.6s total 326s  {7: (158, np.float64(0.035672), 2.4)}
+iter 20 t=0.185840707965 rows 62408 cols 23548 added 199  lp 1.4s total 341s  {7: (151, np.float64(0.036652), 2.5), 8: (48, np.float64(0.02854), 1.9)}
+iter 21 t=0.185840707965 rows 62557 cols 23548 added 149  lp 1.9s total 357s  {7: (149, np.float64(0.020286), 2.7)}
+iter 22 t=0.185840707965 rows 62705 cols 23564 added 148  lp 1.3s total 371s  {7: (148, np.float64(0.023783), 2.6)}
+iter 23 t=0.185840707965 rows 62857 cols 23564 added 152  lp 1.0s total 386s  {7: (152, np.float64(0.018437), 2.6)}
+iter 24 t=0.185840707965 rows 63013 cols 23569 added 151  lp 1.5s total 401s  {7: (151, np.float64(0.014565), 2.7)}
+iter 25 t=0.185840707965 rows 63111 cols 23569 added 98  lp 1.3s total 415s  {7: (98, np.float64(0.011062), 2.6)}
+iter 26 t=0.185840707965 rows 63283 cols 23569 added 172  lp 1.0s total 430s  {7: (152, np.float64(0.004935), 2.6), 9: (20, np.float64(0.003472), 0.7)}
+iter 27 t=0.185840707965 rows 63305 cols 23569 added 22  lp 1.1s total 444s  {7: (9, np.float64(0.002212), 2.6), 8: (13, np.float64(0.000737), 1.8)}
+  Karp lambda 0.513274 d0 11.95
+iter 28 t=0.185840707965 rows 63305 cols 23569 added 0  lp 1.1s total 460s  {}
+  converged with x penalty; penalty removed, continuing
+  Karp lambda 0.513274 d0 11.95
+iter 29 t=0.185840707965 rows 63305 cols 23569 added 0  lp 0.0s total 475s  {}
+LP t* = 0.185840707965 ; dual rows 46 ; wrote sol_s12r47.json cert_s12r47.json
+  -0.247787611 receiverR2 7 7665566 6675666
+  +0.176991150 senderR2 66669 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
+  +0.141592920 senderR2 55667 [0, 0, 0, '|', 1, 0]
+  +0.123893805 senderR2 55767 [0, 0, '|', 0]
+  +0.106194690 senderR2 55667 [1, 0, 0, '|', 0, 0]
+  -0.061946903 receiverR2 9 656565665 665666566
+  +0.035398230 senderR2 55696 [0, 0, 0, 0, '|', 0, 0]
+  +0.035398230 senderR2 56696 [0, 1, 0, 0, 0, '|', 0, 0, 0]
+  +0.026548673 senderR2 66669 [0, 1, 0, 0, 0, '|', 0, 0, 0, 0]
+  +0.026548673 senderR2 56696 [1, 0, 0, 0, 0, '|', 0, 0, 0]
+  -0.017699115 receiverR2 9 656656665 665555555
+  (+ 35 cons2 / mrowR2 rows)

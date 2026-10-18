@@ -293,3 +293,11 @@ our agent R and have no output from it.
   Upper is FEASIBLE, including bounds, senders and conservation. Lower is VALID: all 25 rows rebuild, with reduced costs
   g[50016] = 2/17 and M[76667] = 8/17. **The relay line at 19/102 is [E2].** Note: the spec's by-d table (4.5) counts per kind;
   the union is 9,660/4,465/1,226.
+- **P stage 13 (23:30Z), on argsA47 (own checkers, both sides):**
+  - s12r47, the reduced 6-centred relay: **t* = 21/113 = 0.18584**, below s14r's 19/102.
+  - s15, the s10 relay + 7-centred split: 19/102.
+  - s15c, 6-centred + 7-centred: 21/113.
+  - **Kill line met: the 7-centred split adds nothing.** 55757 has no dual weight in any of the certificates, so it is not what binds.
+  - The top binder is still d = 7 7665566/6675666, at dual 0.23-0.25 with slack 0 in every run. u spends its whole budget as
+    y/z to its fives w3, w4 and as relay h to its link 6s, and receives nothing (x = 0). Relieving it needs inflow into u from
+    w0 or s2 (the 7s), or payment to w3 and w4 from their ring-2 side.

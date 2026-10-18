@@ -2,6 +2,12 @@
 AP = 'noapex' not in FLAGS          # validation V1: noapex = s10's class
 AC = 'apexcls' in FLAGS             # reduced s12: apex letters read only as small (5) / big (7) witnesses
 def ap(x): return (7 if x >= 7 else 5) if AC else x
+ZH = 'zh' in FLAGS                   # stage 13 (R7h): big-centred split, z[five link from the big, hat classes on both sides]
+ZV = {}
+def zkey(n, hr, hl):
+    """n = (U, n1, n2, n3, n4) the five's link read from the big U (n1 = next spoke); hr = class of the hat between U and n1,
+    hl = class of the hat between U and n4 (0 small / 1 big)"""
+    a = tuple(n) + (hr, hl); b = (n[0], n[4], n[3], n[2], n[1], hl, hr); return min(a, b)
 def g2_of(n1, n2, n3, n4, n5, ar, al):
     ar, al = ap(ar), ap(al)
     a = (n1, c2(n2), c2(n3), c2(n4), n5) + ((ar, al) if AP else ())
@@ -24,7 +30,8 @@ def R2_sender_rows():
     for w in SENDERS:
         n = 5; sixes = [k for k in range(n) if w[k] == 6]
         allow = {k: {(a_, q, b_) for a_ in LET for q in LET for b_ in LET if not isR6((5, w[(k + 1) % n], a_, q, b_, w[(k - 1) % n]))} for k in sixes}
-        hats = sorted({h for k in sixes for h in (k, (k - 1) % n)}); seen = set()
+        bigs = [j for j in range(n) if w[j] >= 7] if ZH else []
+        hats = sorted({h for k in sixes + bigs for h in (k, (k - 1) % n)}); seen = set()
         base = collections.Counter()
         for j in range(n):
             if w[j] >= 7: base[('y', root(list(w), j))] += 1
@@ -36,6 +43,8 @@ def R2_sender_rows():
                     if not any((a_, q, b_) in allow[k] for a_ in CLS2[H[k]] for q in CLS2[Fn[k]] for b_ in CLS2[H[(k - 1) % n]]): okc = False; break
                 if not okc: continue
                 cf = collections.Counter(base)
+                for j in bigs:
+                    cf[('z', zkey(tuple(w[(j + i) % n] for i in range(5)), H[j], H[(j - 1) % n]))] += 1
                 for k in sixes:   # classes H, Fn are already 0/1 = c2 values; pass letters 5 / 7 as class witnesses
                     L5 = lambda c: 7 if c else 5
                     cf[('g', g2_of(w[(k + 1) % n], L5(H[k]), L5(Fn[k]), L5(H[(k - 1) % n]), w[(k - 1) % n], w[(k + 2) % n], w[(k - 2) % n]))] += 1
@@ -65,6 +74,11 @@ def cons2_delta(L, GV, HV2):
     return D
 def window_table_R2(U, y, x, MV2):
     W = window_table(U, y, x)
+    if ZH:
+        for a, b, e, f, q, r in itertools.product(range(5), repeat=6):
+            wd = (U, LET[e], LET[r], LET[q], LET[b])
+            if isR5(list(wd)): continue
+            W[a, b, 0, e, f, :, q, r, :] += ZV.get(zkey(wd, c2(LET[f]), c2(LET[a])), 0.0)
     for a, b, e, f, q, r in itertools.product(range(5), repeat=6):
         if not AP and (a or f): continue
         sg = sig2_of(U, LET[e], LET[r], LET[q], LET[b], LET[f], LET[a])
@@ -77,6 +91,7 @@ def class_table_R2(xon):
     g = np.indices((5,) * 9, dtype=np.int64)
     a, b, c, e, f, p, q, r, s_ = g
     C = np.where(c == 0, 1 + ((b * 5 + e) * 5 + q) * 5 + r, 0)
+    if ZH: C = np.where(c == 0, 1 + 100000000 + (((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r), C)
     C = np.where(c == 1, 1 + 625 + (((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r), C)
     if xon: C = np.where(c >= 2, 1 + 625 + 15625 + c * 15625 + (((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r), C)
     return C.astype(np.int32)
@@ -90,6 +105,8 @@ def recv_coef_R2(d, lk, sv, xon):
         if w[j] == 6:
             sg = sig2_of(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d], w[(j + 2) % d], w[(j - 2) % d])
             if sig2_keys(sg): cf[('M', sg)] += 1
+        if w[j] == 5 and ZH:
+            cf[('z', zkey((U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d]), c2(w[(j + 2) % d]), c2(w[(j - 2) % d])))] += 1
     return cf
 def cmd_orientR2():
     bad = 0; n = 0
@@ -97,6 +114,10 @@ def cmd_orientR2():
         n += 1
         if g2_of(*a) != g2_of(a[4], a[3], a[2], a[1], a[0], a[6], a[5]): bad += 1
         if sig2_of(*a) != sig2_of(a[0], a[4], a[3], a[2], a[1], a[6], a[5]): bad += 1
+    for n_ in itertools.product(LET, repeat=5):
+        for hr, hl in ((0, 1), (1, 0), (1, 1), (0, 0)):
+            n += 1
+            if zkey(n_, hr, hl) != zkey((n_[0], n_[4], n_[3], n_[2], n_[1]), hl, hr): bad += 1
     for L in itertools.product(LET, repeat=6):
         for ar, al in ((5, 7), (8, 6), (9, 9)):
             if h2_of(L, ar, al) != h2_of((L[0],) + tuple(reversed(L[1:])), al, ar): bad += 1
@@ -112,7 +133,7 @@ def cmd_solveR2():
     import highspy
     load_patterns()
     xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]
-    p = os.path.join(WORK, 'clsR2_%d.bin' % int(xon))
+    p = os.path.join(WORK, 'clsR2_%d%s.bin' % (int(xon), 'z' if ZH else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     K = int(OPT.get('K', '300')); MAXIT = int(OPT.get('maxit', '300')); TOL = float(OPT.get('tol', '1e-9'))
@@ -174,6 +195,7 @@ def cmd_solveR2():
         h.run(); xv = np.array(h.getSolution().col_value); t = xv[jt]
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         GV = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'g'}; HV2 = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'h'}
+        ZV.clear(); ZV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'z'})
         xd = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'x' and xv[i] > 1e-12}
         mcache = {}
         def MV2(sg):
@@ -227,6 +249,7 @@ def cmd_solveR2():
          'y': {rname(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'y' and xv[i] > 0},
          'g': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'g' and xv[i] > 0],
          'h': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'h' and xv[i] > 0],
+         'z': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'z' and xv[i] > 0], 'zh': ZH, 'apexcls': AC,
          'x': {str(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'x' and xv[i] > 0}}
     json.dump(S, open(os.path.join(HERE, 'sol_%s.json' % tag), 'w'))
     cert = [{'w': float(dv), 'row': info[i]} for i, dv in enumerate(duals) if abs(dv) > 1e-11]
@@ -294,7 +317,7 @@ def cmd_structR2():
     nm = sum(len(sig2_keys(s_)) for s_ in sg)
     gs = sum(1 for k in cols if k[0] == 'g')
     out = ['s12 structural summary (%s)' % ('full s12 keys' if AP else 'fallback = s10 keys'),
-           'registry: argsA44 + RSST-D + L2 (xcap 3)',
+           'registry: %s + RSST-D + L2 (xcap 3)' % os.path.basename(OPT.get('args', '?')).replace('.txt', ''),
            'key counts by type:',
            '  y (five -> big, s1 roots): %d' % len(ROOTS),
            '  g (five -> 6): %d in conservation rows, %d of them read by sender rows' % (len(allg), gs),
@@ -306,7 +329,11 @@ def cmd_structR2():
            'conservation rank: %d (= %d from h-blocks + %d g-only)' % (rH + rG, rH, rG),
            '  g-only part: rank %d on %d g keys; g directions left free: %d' % (rG, len(allg), len(allg) - rG),
            'row counts at start of solve: sender %d ; conservation %d (rest by separation) ; M-rows if all used %d ; receivers by separation' % (len(SR), len(conset), nm)]
-    open(os.path.join(HERE, 's12_struct%s.txt' % ('' if AP else '_noapex')), 'w').write('\n'.join(out) + '\n')
+    if ZH:
+        zk = set()
+        for wd, cf, b in SR: zk.update(k for k in cf if k[0] == 'z')
+        out.insert(4, '  z (big -> five, second split): %d' % len(zk))
+    open(OPT.get('structout', os.path.join(HERE, 's12_struct%s.txt' % ('' if AP else '_noapex'))), 'w').write('\n'.join(out) + '\n')
     for l in out: log(l)
 def cmd_lowerR2():
     """exact check from signed duals (as lowerR): senderR2 >= (w>=0), cons2 = (any sign), mrowR2 h - M <= 0 (w<=0),
@@ -360,7 +387,7 @@ def all6_words():
 def cmd_upperR2():
     load_patterns()
     xon = 'xon' in FLAGS
-    p = os.path.join(WORK, 'clsR2_%d.bin' % int(xon))
+    p = os.path.join(WORK, 'clsR2_%d%s.bin' % (int(xon), 'z' if ZH else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     Sj = json.load(open(OPT['sol'])); t = Sj['t']
@@ -368,11 +395,13 @@ def cmd_upperR2():
     for k, v in Sj['y'].items():
         u, rest = k.split('|'); r_ = root(list((int(u),) + tuple(int(c) for c in rest)), 0); y[RIX[r_]] = v
     GV = {tuple(k): v for k, v in Sj['g']}; HV2 = {tuple(k): v for k, v in Sj['h']}
+    ZV.clear(); ZV.update({tuple(k): v for k, v in Sj.get('z', [])})
+    if Sj.get('z') and not ZH: log('SOLUTION HAS z BUT zh FLAG OFF'); return
     xd = {int(k): v for k, v in Sj.get('x', {}).items()}
     if any(v < 0 for v in list(GV.values()) + list(HV2.values()) + list(y)): log('NEGATIVE VALUE'); 
     bad = 0
     for wd, cf, bits in R2_sender_rows():
-        v = sum(c * (y[RIX[k[1]]] if k[0] == 'y' else GV.get(k[1], 0.0)) for k, c in cf.items())
+        v = sum(c * (y[RIX[k[1]]] if k[0] == 'y' else ZV.get(k[1], 0.0) if k[0] == 'z' else GV.get(k[1], 0.0)) for k, c in cf.items())
         if v < 1 - t - EPS: bad += 1
     log('sender rows violated: %d' % bad)
     nc = 0; worst = 0.0; A6 = all6_words()
@@ -403,13 +432,13 @@ def cmd_upperR2():
 def cmd_ctxR2():
     """sender rows of the listed words in the context 'all hats and fans big' (bits all 1): value breakdown"""
     Sj = json.load(open(OPT['sol'])); t = Sj['t']
-    GV = {tuple(k): v for k, v in Sj['g']}; YV = Sj['y']
+    GV = {tuple(k): v for k, v in Sj['g']}; YV = Sj['y']; GV.update({tuple(k): v for k, v in Sj.get('z', [])})
     def yv(r_): return YV.get(rname(r_), 0.0)
     for wd, cf, bits in R2_sender_rows():
         if wd not in OPT.get('words', '55677,56687').split(',') : continue
         b = [x for x in bits if x != '|']
         if not all(x == 1 for x in b): continue
-        parts = ['%s%s=%.5f' % (k[0], ''.join(map(str, k[1])) if k[0] == 'g' else rname(k[1]), (yv(k[1]) if k[0] == 'y' else GV.get(k[1], 0.0))) for k in cf]
+        parts = ['%s%s=%.5f' % (k[0], ''.join(map(str, k[1])) if k[0] in 'gz' else rname(k[1]), (yv(k[1]) if k[0] == 'y' else GV.get(k[1], 0.0))) for k in cf]
         tot = sum(c * (yv(k[1]) if k[0] == 'y' else GV.get(k[1], 0.0)) for k, c in cf.items())
         log('%s all-big ring: total %.5f vs 1-t %.5f  %s' % (wd, tot, 1 - t, ' '.join(parts)))
 def cmd_consbasisR2():
@@ -428,3 +457,22 @@ def cmd_consbasisR2():
         tot += r
     json.dump(out, open(OPT.get('out', os.path.join(HERE, 'cons2basis.json')), 'w'))
     log('conservation basis: %d rows over %d 6-types' % (tot, len(relay_words())))
+def cmd_rowR2():
+    """one receiver row at a solution: each term's value, load vs cap, slack, and its dual weight in cert"""
+    load_patterns(); xon = 'xon' in FLAGS
+    Sj = json.load(open(OPT['sol'])); t = Sj['t']; d = int(OPT['d']); lk = OPT['lk']; sv = OPT['sv']
+    YV = Sj['y']; HV2 = {tuple(k): v for k, v in Sj['h']}; ZV.clear(); ZV.update({tuple(k): v for k, v in Sj.get('z', [])})
+    XV = {int(k): v for k, v in Sj.get('x', {}).items()}
+    def MV2(sg):
+        ks = sig2_keys(sg); return max(HV2.get(k, 0.0) for k in ks) if ks else 0.0
+    tot = 0.0; parts = []
+    for k, c in sorted(recv_coef_R2(d, lk, sv, xon).items(), key=str):
+        v = YV.get(rname(k[1]), 0.0) if k[0] == 'y' else ZV.get(k[1], 0.0) if k[0] == 'z' else XV.get(k[1], 0.0) if k[0] == 'x' else MV2(k[1])
+        tot += c * v
+        if abs(c * v) > 1e-12: parts.append('%s%s:%+g*%.5f' % (k[0], rname(k[1]) if k[0] == 'y' else ''.join(map(str, k[1])) if k[0] != 'x' else k[1], c, v))
+    w = 0.0
+    if 'cert' in OPT:
+        for c in json.load(open(OPT['cert'])):
+            if c['row'][0] == 'receiverR2' and int(c['row'][1]) == d and c['row'][2] == lk and c['row'][3] == sv: w = c['w']
+    log('row d=%d %s/%s: load %.9f cap %.9f slack %.3g dual %.9f admissible=%s' % (d, lk, sv, tot, d - 6 + t, d - 6 + t - tot, w, admissible(d, lk, sv)))
+    log('  terms: ' + ' '.join(parts))

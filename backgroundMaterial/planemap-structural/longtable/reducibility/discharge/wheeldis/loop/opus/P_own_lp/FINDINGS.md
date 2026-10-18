@@ -375,3 +375,22 @@ Not read: Studio's Job 31 spec.
 - Runs:
   - s15 = s10-relay (noapex) + zh on argsA47.
   - s15c = reduced 6-centred (apexcls) + zh, if s15 is not worse.
+- s12r47 (reduced 6-centred, apexcls, on argsA47; warm from s14r): t* = 21/113 = 0.185840708 < s14r 19/102 = 0.186274510.
+  - LOWER-R2 VALID t >= 21/113 (46 rows).
+  - UPPER-R2 FEASIBLE: senders 0; conservation worst 1.4e-14; d = 7..17 exhaustive 0; Karp d0 11.95.
+  - Binders:
+    - receivers: d=7 7665566/6675666, d=9 656565665/665666566, d=9 656656665/665555555;
+    - senders: 66669 (two contexts), 55667 (two), 55767, 55696, 56696.
+- Stage 13 V1: zh off, noapex on argsA47 (own code) gives 19/102 = 0.186274510, the same as P2's s14r. s15 is running.
+- s15 (s10-mode relay + R7h z on argsA47): t* = 19/102, equal to s14r.
+  - LOWER-R2 VALID 19/102 (25 rows). UPPER-R2 FEASIBLE (senders 0; conservation 9e-14; d = 7..17 exhaustive 0; Karp d0 13.23).
+  - **Kill line met**: t is equal.
+  - In the s15 primal, 55757 with an all-big ring 2 is still exactly at 1 - t (y7|5575 = 0.40686 x 2, z = 0). No 55757 row carries dual weight in the s14r, s15, s12r47 or s15c certificates; on argsA47 it is not what binds.
+- s15c (reduced 6-centred + R7h): t* = 21/113, equal to s12r47.
+  - LOWER-R2 VALID 21/113 (36 rows). UPPER-R2 FEASIBLE (conservation 8.7e-13; d = 7..17 exhaustive 0; Karp d0 12.84).
+  - In this primal, 55757 all-big has slack 0.169 (y7|5575 = 0.4917). The primal is not unique, so this is not a forced property.
+- Binder d=7 7665566/6675666 (u = 7):
+  - s15: slack 0, dual 0.2353 (the largest weight). Load = y7|5566 0.65196 + y7|5576 0.32843 + z7556600 0.05882 + z7557600 0.07843 + M(75666) 0.06863 = 1 + t.
+  - s15c: slack 0, dual 0.2301. Load = y7|5566 0.67257 + y7|5576 0.33628 + z7556600 0.03540 + z7557600 0.07080 + M7566657 0.07080.
+  - s12r47: slack 0, dual 0.2478. Load = y 0.67920 + 0.33628 + M 0.09956 + 0.07080.
+  - Nothing flows into u (all x = 0 here). What it gives: y and z to its two fives (w3, w4), and the 6-relay h to its link 6s.
