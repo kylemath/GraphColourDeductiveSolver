@@ -1,0 +1,13 @@
+# Job 31 j31r2 frozen 2026-10-18 22:50Z (Long Table 22:50Z): no code changes from here; the run keeps going.
+# command: WLP3X_DEF=1 WLP_SEPF=1 nice -n 19 python3 wlp3r6.py tag=j31r2 lp=ds drop=5 many6=120 warm=out/job31/j31r_rows_all.txt $(cat loop/studio/opus_check/argsK45_pinned.txt)
+# PID 53208
+1295ad035c147e34bdd90ecb2c2a9f052c0c43c6313b643882f949fbfc29f3b5  wlp3r6.py
+24c3faf2e37548611b45f1cb12fcc65d311675c75675b09e1a28f44585c3bfe2  wlp3.py
+f22e868a9606f3b8bdeb20e4c502986d59ae0e655dce9cf20191cac6c0743149  wlp3x.py
+38abb686aef8b870dfd9cdfb095136c136a7422c592ae59a14ef775cc9878c1b  loop/studio/opus_check/argsK45_pinned.txt
+f15aea2743d4abcd3909560129c74137fd6d8cbceeb84a41e75fa39a2a3f12b4  loop/studio/opus_check/k3x_D_30f86cd4.out
+2e4d568cf4c83accc845423b5b7d73addcfe5bde6a75e94a76625170b3eedad5  loop/studio/opus_check/k3x_C_30f86cd4.cfast
+11fa634267cd183681a60d135423a4515ca9c6c48f8a226751bc1f8717590e69  bin/sep3r
+232c38c3cebb7ab87fdd54f25dfef653471313e531b148bb1d1ba0943c6a5860  sep3r.cpp
+11be7122cb40778a2be6982acd327445e1876843f71bab2fbab7dcf1a266c724  out/job31/j31r_rows_all.txt
+89053cedc2786ced6695242d823f1846da8d58e0c4f6dbbabc5cf3921c6d1483  loop/studio/rsstD/out/rpatD.txt
