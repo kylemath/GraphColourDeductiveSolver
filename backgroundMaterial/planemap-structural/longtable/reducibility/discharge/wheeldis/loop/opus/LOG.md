@@ -49,3 +49,9 @@ Pre-registered before any probe ran.
   44 D, mostly fans around u) and forbids many non-binding rows: 920 of 1,385 tight_13 rows, 6 of 7 old binders, but
   only 2 of 49 HARD28-like. LP with 387 RSST patterns added: 7/27 with the same certificate; upper bound from the
   existing feascheck, since patterns only lower t*. Lever dropped. Guess check: "few" was right for the binders.
+- **F (09:50Z): the 16 fillings with s1, s4 >= 6 stay RSST-free** (`F_free_slots/FINDINGS.md`) [E]. On the fixed
+  patch none of the 16 contains an RSST configuration. With one more ring (the six privates of the non-5 link
+  vertices at 5..9+) every filling gains hits, but each hit needs a private at 5 or 6, and all six privates at 7 is
+  RSST-free for all 16. So RSST does not forbid the row even under a receiver-2-ball rule class. 6 u-centred kc windows
+  at rings 13-14 without s1, s4: not D. The explore thread (round 34 part C) covers these fillings with u-centred
+  windows; it killed the 9 fillings with a 5 at s1 or s4 by D at ring 13 on two engines.
