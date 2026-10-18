@@ -126,3 +126,9 @@ Pre-registered before any probe ran.
 - J: an independent checker of the LP bound (dual certificate and its own exhaustive primal separation, T-aware),
   validated on 7/27, for Job 30 parts A and B. K: kill w2 frame 7696575 / 5555977 (s1 = 9, first-order binder after
   round 38) at rings 16-18, w2-centred and not, kc D and kc -C conservative, second engine on any hit.
+- **Explore round 42 (11:43Z, commit 5da381a1, loop/k42/) ran our private split (i)** on its own containment code over
+  250,000 cases, killers cut and checked on kc + dfast/cfast. Agrees with F: every hit needs a private at 5 or 6;
+  all >= 7 is free for all 16 fillings; p1 = p5 = 6 with the rest 7 dies only at s1 = 6 (RSST 2.211701966). p5 = 5
+  always dies (RSST 122.126, conservative two-engine), so w6's z-letter p5 >= 6 in R*. p1 = 5 dies only by RSST 2.126
+  (C, broad X only), so conservatively p1 = 5 survives except at s1 = 7 with p2a = 5. Survivors: loop/k42/cases_cons.txt.
+- **J's upper side waits on Studio's full-precision 7/27 solution** (Studio is pushing it, 11:43Z).
