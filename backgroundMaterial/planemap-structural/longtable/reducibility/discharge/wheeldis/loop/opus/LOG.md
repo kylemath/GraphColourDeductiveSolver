@@ -281,3 +281,11 @@ our agent R and have no output from it.
     and d = 9 656656665/665555555 (0.0131).
   - Senders: 55667, 66669, 55767, 56696, 56669, 55696.
   - Files are in `P_own_lp/s14/`.
+- **P s12r (22:40Z): the reduced 6-centred relay (apex letters small/big) on argsA44 + RSST-D + L2 gives t* = 35/183 =
+  0.19126**, below s10's 217/1129 on the same registry [own checkers. Lower VALID: 52 rows. Upper FEASIBLE: conservation
+  holds on 1,424 6-links x 5^6 apex words, d = 7..17 exhaustive, Karp d0 11.94]. Kill line not met. V1 fallback
+  reproduces 217/1129. The full exact-apex version is 158k x 91k rows and too slow for the window; its partial value is
+  0.19101, not yet a bound.
+  - Finding: sender 55757 has no 6-neighbour, so no 6-relay can reach it. Its row is y-only and tight.
+  - 55767 and 57667 are reached by the 6-centred split.
+  - Next (stage 13): a 7-centred analogue aimed at 55757, on the round 48 registry (s14/argsA47).

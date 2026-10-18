@@ -340,3 +340,19 @@ Not read: Studio's Job 31 spec.
   - In s10 the 6 is a relay with 3-4 big neighbours.
   - 55677: its 6 sits between 5 and 7, key (5,1,1,1,7). Its g = 0 in s10; the row is met by y only (0.80779 = 1 - t, tight).
   - 56687: g(5,1,1,1,6) = 0 and g(6,1,1,1,8) = 0.0653, with y covering the rest; tight.
+- s12 FULL (exact apex letters): the LP is large (158k rows, 91k columns) at 200-900 s per simplex re-solve. Still running (s12.log).
+  - Partial LP value 0.191011236 at iterations 0-2 (17/89). This is NOT a bound: rows are still being generated.
+  - The class contains s10's, so the eventual t* <= 217/1129.
+- s12r REDUCED (the working version): the same R6x2 but with the two apex letters in g2 / h2 / sig read as small/big only (flag apexcls).
+  - Size: 10750-row conservation basis; 393 g keys in senders; 934 initial M sigs.
+  - Converged in 20 iterations (580 s): t* = 0.191256830601 = 35/183 (sol_s12r / cert_s12r).
+  - LOWER-R2 VALID t >= 35/183 exactly (52 dual rows: 9 sender, 28 cons2, 11 mrow, 4 receiver).
+  - UPPER-R2 FEASIBLE:
+    - senders 0 violated;
+    - conservation: all 1424 non-R6 6-links x 5^6 apex words, worst 5.6e-12;
+    - d = 7..17 exhaustive: 0 violated;
+    - Karp d0 11.94.
+  - => s12r = 35/183 < 217/1129, verified both sides. The hypothesis holds for the reduced class; the kill line is not met.
+  - Binders:
+    - receivers: d=7 7765556/6575766 and 7766556/6566575; d=9 656565665/665666566 (same as s10);
+    - senders: 55767, 66669, 55667 (x2), 55757, 57667, 56696, 55696.
