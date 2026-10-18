@@ -8,7 +8,7 @@ engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative
 **K ≤ 1 (at most one big vertex in the configuration): closed.** Every discharging sender with one big
 neighbour is in the reducible set R, so the forbidden-pattern LP has t* ≤ 0 on that case. This rests on Lean for 46
 of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about 6 h). **K = 2: open.**
-The best LP bound is t* = 2/9 ≈ 0.222 (need ≤ 0) [E2], down from 7/27, 1/4, 5/21 and 11/47 on 18 Oct once kills outside the old binding pattern
+The best LP bound is t* = 1/5 (need ≤ 0) [E2], down from 7/27, 1/4, 5/21, 11/47 and 2/9 on 18 Oct once kills outside the old binding pattern
 were allowed into the LP. The dual is now spread over 25 rows (no single binder; 6-row dual: receivers d=7 8655675/5756585 and d=8 75576556/78756665; a 6-relay class gives ≈0.192 on one engine, second build pending); kill sweeps on those rows, the published configuration set through our own two engines, and rule-class extensions (Rule T, a 6-relay channel) are running.
 
 ## K ≤ 1 evidence
@@ -35,6 +35,7 @@ argument (B2 + no separating triangle ⇒ injective, induced embedding) closes t
 | Job 28 rounds 1–12 | 5/17 → 13/49 | loop: find patch, kill with B-fixed D/C at ring ≤ 16 |
 | Round 13 (+ win14, win8, win89) | 7/27 | binder d=7 5675765/6577575 |
 | Job 29 L2: oriented big–big transfers, full registry (16,411 patterns) | 7/27 exactly [E2] | upper bound by an exhaustive separation of the x=0 solution; lower bound by row generation (feascheck.py). Charge-sharing adds nothing on this pattern set. Upper side independently checked (Opus J_lp_checker, own separation code, all d = 7..30 plus Karp tail; float primal, no exact-rational recheck yet) |
+| 18 Oct: 2/9 registry + rounds 46 kills + k45 +5 D (aee20e3b), no T, L2 | **1/5 [E2]** | Opus's LP (d065b212) + Studio feascheck, sendercheck (342/342), lowercheck (4 rows) and parsed-pattern load count 15,466 D (df4e94b5, 9aca31ac). Dual: receiver d=7 7765556/6575765 + senders 55757, 55767, 57667 — all killed in round 48 |
 | 18 Oct: s7 minus 16 unsound k43 names + RSST containment patterns (k44, 377; 249 D + 333 conservative C of the 633 on our engines) + k45 own D, no T, L2 | **2/9 [E2]** | Opus's LP (f1a052b4) + Studio feascheck and 6-row lowercheck (d86b4a95); 16,587 patterns |
 | 18 Oct: 5/21 registry + full k43 batch (382) + rsstD + Rule T (option B), L2 | **11/47 [E2]** | Opus's LP (bbd46d73) + Studio feascheckt d=7..15 and 24-row lowercheckt (8f45fca8). Top binder d=7 7565765/6855555 |
 | 18 Oct: 1/4 registry + round-43 d=8 kill (RSST 7322.126 window, C ring 10) | **5/21 [E2]** | Opus's LP (9a914f8c) + Studio feascheck and 25-row rebuild (68294ae5). Dual over 25 rows, max weight 0.127 |
