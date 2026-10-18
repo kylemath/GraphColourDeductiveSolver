@@ -20,7 +20,7 @@
 //
 // Options:  -j  Jacobi passes (new goods used from the next pass; depth comparable with dfast's)
 //           -c FILE  checkpoint file (Gauss-Seidel only; resumes if present)   -t SEC  stop and checkpoint after SEC
-//           -v  per-pass log to stderr
+//           -s SEC  checkpoint interval (default 600)   -v  per-pass log to stderr
 #include <bits/stdc++.h>
 using namespace std;
 typedef unsigned long long u64;
@@ -70,6 +70,48 @@ static inline u64 canon_rank(u32 q0, u32 q1) {
         r += RA[i][used][last][c];
         if (c == used) used++;
         last = c;
+    }
+    return r;
+}
+
+// chunked ranking: 4 positions per table lookup (state = (used - 1) * 4 + last)
+struct RT { u32 d; uint8_t ns; };
+static RT RTAB[9][16][256]; static int NCH;
+static void build_rank_chunks() {
+    NCH = (n - 1 + 3) / 4;
+    for (int ch = 0; ch < NCH; ch++) {
+        int lo = 1 + 4 * ch, len = min(4, n - lo);
+        for (int st = 0; st < 16; st++)
+            for (int code = 0; code < 256; code++) {
+                int used = st / 4 + 1, last = st % 4; u64 r = 0; bool okk = true;
+                for (int k = 0; k < len; k++) {
+                    int c = ((code >> k) & 1) | (((code >> (4 + k)) & 1) << 1);
+                    if (c == last || c > used || c > 3) { okk = false; break; }
+                    r += RA[lo + k][used][last][c];
+                    if (c == used) used++;
+                    last = c;
+                }
+                RTAB[ch][st][code].d = okk ? (u32)r : 0;
+                RTAB[ch][st][code].ns = okk ? (uint8_t)((used - 1) * 4 + last) : 0;
+            }
+    }
+}
+static inline u64 canon_rank2(u32 q0, u32 q1) {
+    u32 mk[4] = {~q0 & ~q1 & FULL, q0 & ~q1 & FULL, ~q0 & q1 & FULL, q0 & q1 & FULL};
+    int f[4];
+    for (int v = 0; v < 4; v++) f[v] = mk[v] ? __builtin_ctz(mk[v]) : 64;
+    u32 c0 = 0, c1 = 0;
+    for (int v = 0; v < 4; v++) {
+        int L = (f[0] < f[v]) + (f[1] < f[v]) + (f[2] < f[v]) + (f[3] < f[v]);
+        if (L & 1) c0 |= mk[v];
+        if (L & 2) c1 |= mk[v];
+    }
+    u64 r = 0; int st = 0;   // position 0 has colour 0: used 1, last 0
+    for (int ch = 0; ch < NCH; ch++) {
+        int lo = 1 + 4 * ch;
+        int code = ((c0 >> lo) & 15) | (((c1 >> lo) & 15) << 4);
+        const RT &e = RTAB[ch][st][code];
+        r += e.d; st = e.ns;
     }
     return r;
 }
@@ -235,7 +277,7 @@ static bool try_pairing(u64 idx, u32 p0, u32 p1, int x) {
             u32 key = R >> 1;
             bool val;
             if (stamp[key] == cur) val = memo[key];
-            else { val = isgood(canon_rank(p0 ^ (V & xa), p1 ^ (V & xb))); stamp[key] = cur; memo[key] = val; }
+            else { val = isgood(canon_rank2(p0 ^ (V & xa), p1 ^ (V & xb))); stamp[key] = cur; memo[key] = val; }
             if (val) { found = true; break; }
         }
         if (!found) { w = (uint16_t)p; return false; }
@@ -244,11 +286,11 @@ static bool try_pairing(u64 idx, u32 p0, u32 p1, int x) {
 }
 
 int main(int argc, char **argv) {
-    bool jacobi = false, verbose = false; string ckpt; double tbudget = 1e18; string inpath;
+    bool jacobi = false, verbose = false; string ckpt; double tbudget = 1e18, saveint = 600; string inpath;
     for (int a = 1; a < argc; a++) {
         string s = argv[a];
         if (s == "-j") jacobi = true; else if (s == "-v") verbose = true;
-        else if (s == "-c") ckpt = argv[++a]; else if (s == "-t") tbudget = atof(argv[++a]);
+        else if (s == "-c") ckpt = argv[++a]; else if (s == "-t") tbudget = atof(argv[++a]); else if (s == "-s") saveint = atof(argv[++a]);
         else inpath = s;
     }
     build_maxp(10);
@@ -263,7 +305,7 @@ int main(int argc, char **argv) {
         if (n > 20) { printf("%s r=%d SKIP (ring > 20)\n", name.c_str(), n); fflush(stdout); continue; }
         auto T0 = chrono::steady_clock::now();
         auto el = [&]() { return chrono::duration<double>(chrono::steady_clock::now() - T0).count(); };
-        build_rank();
+        build_rank(); build_rank_chunks();
         u64 N = CNT[1][1][1];
         // enumerate canonical colourings in rank order
         reps.assign(N, 0);
@@ -286,7 +328,17 @@ int main(int argc, char **argv) {
             if (k != N) { fprintf(stderr, "%s: enumeration %llu != %llu\n", name.c_str(), (unsigned long long)k, (unsigned long long)N); return 2; }
             // spot-check the ranking
             for (u64 i = 0; i < N; i += max<u64>(1, N / 100000))
-                if (canon_rank((u32)reps[i], (u32)(reps[i] >> 32)) != i) { fprintf(stderr, "%s: rank mismatch at %llu\n", name.c_str(), (unsigned long long)i); return 2; }
+                if (canon_rank((u32)reps[i], (u32)(reps[i] >> 32)) != i || canon_rank2((u32)reps[i], (u32)(reps[i] >> 32)) != i) { fprintf(stderr, "%s: rank mismatch at %llu\n", name.c_str(), (unsigned long long)i); return 2; }
+            // and on permuted colourings (the hot path ranks non-canonical colourings)
+            {
+                const int P4[6][4] = {{1,0,2,3},{2,3,0,1},{3,2,1,0},{1,2,3,0},{0,3,2,1},{2,0,1,3}};
+                for (u64 i = 0; i < N; i += max<u64>(1, N / 20000))
+                    for (auto &pm : P4) {
+                        u32 a0 = (u32)reps[i], a1 = (u32)(reps[i] >> 32), b0 = 0, b1 = 0;
+                        for (int j = 0; j < n; j++) { int c = pm[((a0 >> j) & 1) | (((a1 >> j) & 1) << 1)]; b0 |= (u32)(c & 1) << j; b1 |= (u32)(c >> 1) << j; }
+                        if (canon_rank2(b0, b1) != i || canon_rank(b0, b1) != i) { fprintf(stderr, "%s: permuted rank mismatch at %llu\n", name.c_str(), (unsigned long long)i); return 2; }
+                    }
+            }
         }
         size_t W = (N + 63) / 64;
         good.assign(W, 0); wit.assign(N * 3, 0);
@@ -296,7 +348,7 @@ int main(int argc, char **argv) {
             if (f) {
                 u64 hdr[7];
                 if (fread(hdr, 8, 7, f) == 7 && hdr[0] == 0x4b43434b && hdr[1] == (u64)n && hdr[2] == N &&
-                    fread(good.data(), 8, W, f) == W) {
+                    fread(good.data(), 8, W, f) == W && fread(wit.data(), 2, N * 3, f) == N * 3) {
                     ext = hdr[3]; pass = (int)hdr[4]; startpos = hdr[5]; changed = hdr[6]; resumed = true;
                     fprintf(stderr, "%s: resumed at pass %d pos %llu\n", name.c_str(), pass, (unsigned long long)startpos);
                 }
@@ -308,7 +360,7 @@ int main(int argc, char **argv) {
             string tmp = ckpt + ".tmp";
             FILE *f = fopen(tmp.c_str(), "wb");
             u64 hdr[7] = {0x4b43434b, (u64)n, N, ext, (u64)pass, pos, (u64)changed};
-            fwrite(hdr, 8, 7, f); fwrite(good.data(), 8, W, f); fclose(f);
+            fwrite(hdr, 8, 7, f); fwrite(good.data(), 8, W, f); fwrite(wit.data(), 2, N * 3, f); fclose(f);
             rename(tmp.c_str(), ckpt.c_str());
         };
         if (!resumed) {
@@ -326,7 +378,7 @@ int main(int argc, char **argv) {
                 bool ok = false;
                 for (int x = 1; x <= 3 && !ok; x++) ok = try_pairing(i, p0, p1, x);
                 if (ok) { nw++; if (jacobi) setb(nxt, i); else setb(good, i); }
-                if (!jacobi && (i & 0xfffff) == 0 && el() - lastsave > 600) {
+                if (!jacobi && (i & 0xffff) == 0 && el() - lastsave > saveint) {
                     if (nw) changed = true;
                     save(i); lastsave = el();
                     if (el() > tbudget) { stopped = true; break; }
