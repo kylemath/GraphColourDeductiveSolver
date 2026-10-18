@@ -1,0 +1,12 @@
+# Job 30 input: D/C receiver windows whose fixed letters the five-slot encoding (wlp3.parse) loses.
+# columns: name ring verdict engines kind lost-link-positions lost-s-positions  (positions in the name's own frame)
+# kind: empty = no five has all four code slots fixed (parse asserts); lossy = some fixed letter is in no code
+# engines: dfast, dfast18, kc (D); cfast, kc-C (C, engine level; kc-C uses conservative admissibility)
+f7_..57556_...65.. 11 C cfast,kc-C lossy w26 s-
+f7_..57556_...66.. 12 C cfast,kc-C lossy w26 s-
+f7_5566757_...5... 13 C cfast,kc-C empty w0123456 s3
+f7_5567576_.....5. 13 C kc-C empty w0123456 s5
+f7_5567576_5....5. 13 D dfast,kc empty w0123456 s05
+f7_5567576_5....56 13 D dfast,kc lossy w2345 s5
+f7_5567576_5.5...6 13 D dfast,kc lossy w2345 s2
+# totals: 7 {('C', 'lossy', True): 2, ('C', 'empty', True): 1, ('C', 'empty', False): 1, ('D', 'empty', True): 1, ('D', 'lossy', True): 2}
