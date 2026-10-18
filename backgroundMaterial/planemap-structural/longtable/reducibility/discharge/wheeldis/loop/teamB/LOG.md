@@ -45,3 +45,38 @@ p4b = 5), where it is +1 or +2** (`b1_rsst/sweep.py`, `sweep.out`; 0 errors; min
 **Inventory (worker, `rsst633_inventory.md`).** RSST labels 249 D / 384 C (all ring <= 14). Lean `agreesRSST` gives
 all 633 a D / not-D verdict (one engine). Second engine D: only ~14. C engines: 382 of the 384 C configurations have
 never been run on cfast or kc -C.
+
+## Round B2 (18 Oct 2026, 19:00Z-): do our own engines confirm all 633 RSST configurations?
+
+**Pre-registered 19:00Z, before any run.**
+- **Why.** B1 says RSST's rules pay for R*; the route "RSST rules + RSST's 633 as the forbidden set" then needs only
+  reducibility of the 633 on two of our engines (unavoidability is Gonthier's Coq theorem; a local Coq 8.18 build of
+  fourcolor v1.3.1 is running as our own check of it).
+- **Run.** C (384): cfast with RSST's own contract X fixed, then kc -C (-C2 where X puts two ring vertices in one
+  component) with the same X; C counts when both give leftover 0. D (249): kc, in addition to Lean `agreesRSST`.
+- **Bars.** All 633 on two engines: the forbidden side of the route is [E2]. Any configuration not confirmed is
+  listed with its leftover.
+- **Kill line.** A cfast/kc leftover mismatch on the same X, or a kc not-D on an RSST D configuration.
+- **Guess.** All 633 confirm; a few C ones need the broad (-C2) mode because RSST's X has ring-ring contracts.
+
+## Round B3 (18 Oct 2026, 19:15Z-): an own rule family with B1's missing channels (PFH), and its t*
+
+**Pre-registered 19:15Z, before any code.** Coordinator's ask (18:09Z): turn B1's diagnosis into a rule family the
+programme owns. Runs beside B2.
+- **Rule family PFH** (charge 6 - deg; all amounts are LP variables, nothing copied from RSST's amounts):
+  - y: a 5 sends to an adjacent big, keyed by its link word rooted at the target (as now);
+  - **P (parking):** a 5 sends to an adjacent 6, keyed the same way;
+  - **F (forwarding):** a 6 sends to an adjacent big, keyed by the 6's link word rooted at the target;
+  - **H (hand-off):** a 7 or 8 sends to an adjacent big, keyed by its link word rooted at the target.
+- **Rows.** 5: out >= 1 - t for every 5-wheel not in R. 6: in - out <= t for every 6-wheel not in R, with the outer
+  letters of its fives free (max). Big of exact degree d = 7..15: in - out <= d - 6 + t over all arrangements of u's
+  2-ball (link, s, and the privates of every 6/7/8 link vertex, so their wheels are exact and checked against R);
+  d >= 16 by a max-mean-cycle bound on the same transfer graph.
+- **R, in two steps.** v0: wheel-level R only (Job 17 D/C 5-/6-wheels, RBIG 7-/8-wheels, fans), to price the channels.
+  v1: plus the registry's receiver patterns (Job 30 set) as forbidden arrangements.
+- **Engine.** Own code (`b3_pfh/`), HiGHS via scipy, exact-DP separation; reported t* is a converged LP optimum
+  (upper bound from a feasible solution checked by an independent exhaustive pass, lower bound from the row set).
+- **Bars.** v1 below 7/27: an own-rules gain to report. v1 <= 0: K=2 closed by own rules (then two-engine checks).
+  v0 above the old wheel-level 3/5: the channels add nothing at wheel level.
+- **Guess.** v0 around 0.3-0.4 (channels help wheel-level a lot); v1 between 0.1 and 0.2, binding at a 6 or at w2-type
+  7s that take hand-offs.
