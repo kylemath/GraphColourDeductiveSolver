@@ -29,13 +29,13 @@ receiver rows of Opus's cert_s6.json (t* = 5/21, 9a914f8c), by dual weight, ring
   minimal kills were all RSST-like windows. If it survives, RSST's own route needs vertices past s (privates), which a
   receiver row cannot state, so the row has to be paid for by a rule, not forbidden.
 
-**Result so far (20:35Z; sweep at ring 14, 771 of 1029 windows done).** Guess wrong; the row dies inside its 1.5-ball.
-- 7 two-engine kills (D on kc and dfast), first at ring 13. Two are inclusion-minimal, both D at ring 13:
+**Result (20:41Z; ring <= 14 complete, 1029 windows, 0 incomplete, 0 mismatches).** Guess wrong; the row dies inside its
+1.5-ball. Ring 15-16 not run (a kill exists at ring <= 14).
+- 13 two-engine kills (12 distinct f-names), all D on kc and dfast, first at ring 13. Two are inclusion-minimal, both D at ring 13:
   f7_..55855_..6666. (m 10) and f7_..55865_..665.. (m 9). Neither is an RSST containment (round 44 B misses this row).
 - The same kills also hit the 19:59Z top row d = 7 8556855/7565666, which RSST containment missed too. So all 9 rows
   of the 19:59Z list and all 8 of the 20:12Z list now have a two-engine kill at ring <= 14.
-- Twoeng-ready files: `loop/k45/kills.txt`, `kills_kc.out`, `kills_df.out` (twoeng scratch run: D 7, mismatch 0).
-  The ring-14 sweep finishes in the background, and its files will be refreshed.
+- Twoeng-ready files: `loop/k45/kills.txt`, `kills_kc.out`, `kills_df.out` (twoeng scratch run: D 12, mismatch 0).
 
 ## Round 44 part B (20:17Z): RSST containment patterns for d = 7..11 (Long Table, 20:00Z)
 
