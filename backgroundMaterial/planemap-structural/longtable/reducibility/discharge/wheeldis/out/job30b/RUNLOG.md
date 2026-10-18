@@ -107,3 +107,16 @@ This reworks the parked draft (studio/job30-ruleT-wip, 97bbe5d7).
   - The LP feels them only through the 10 windows on w2/w4's receiver rows, and only for configurations inside those
     frames.
   - The rest needs option F (full z and p letters in the five's 2-ball words), which Long Table ordered pre-built.
+
+## Long Table ruling (11:52Z): RSST 126.8168 enters B's claim load, tagged [E2, broad X]
+- Windows: f7_7665..5_5...... and f7_75..566_......5, now appended to `k42map_C.cfast`, so B's claim load is 12 C windows.
+- Reason: the X is cfast's own search X, so it is admissible under the C definition the registry already rests on.
+  kc -C2 independently reaches leftover 0 on the same X (k3studio/k42broad_C2.kc). kc -C2 was validated against cfast
+  on 483 configurations of that X shape in explore round 40 (ad376d04, 0 mismatches). That meets the same-X
+  two-engine rule. The exploratory second B run is dropped.
+- The 10 non-fitting k42 hits and RSST 2.3701166 go to option F.
+
+## Validation (3) result: t0val converged (18 Oct ~12:10Z, 339 iterations, 33,295 rows)
+- T = 0 with flags merged (notx, round-13 registry, warm tight_13): **t* = 7/27, with the j28_13 dual reproduced
+  exactly**: 10/27 sender 55667, 5/27 sender 55767, 2/27 sender 77777, 10/27 receiver d = 7 5675765/6577575.
+  (The sender rows are printed with their flag bits; merged flags make the bit rows duplicates.)
