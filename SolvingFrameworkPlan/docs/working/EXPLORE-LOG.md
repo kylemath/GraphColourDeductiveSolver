@@ -1,5 +1,24 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 41 (18 Oct 2026, 10:26Z-): H-SUBC, does the C stage kill any of R*'s 16 open fillings at a window inside R's patch that is not u + all link?
+
+**Pre-registered 10:26Z, before any run.** Gap G2, part C continued (coordinator's order, 10:14Z: round 39, then the 16
+open fillings). 2 cores, in place of part C's ring-17 queue, which resumes after.
+- **Why.** Opus's `C_kc_ring17` (`f_all.txt`, branch claude/project-thread-7uelj0, commit e2b0ea90) lists every
+  connected induced subset of R's 15 fixed vertices with s1, s4 at 6-8 (9+ left as ring), excluding round 34's u + all
+  link windows: 2,780 at ring 6-18. Opus ran kc D only on 1,131 of them at ring <= 16, all not D for the 16 fillings.
+  None has had a C stage. kc -C adds it at a few seconds per window at ring <= 15.
+- **Run.** `loop/k34/fill3.txt` = Opus's 1,383 windows at ring <= 15 + round 34's fillwin windows, in ring order, through
+  part C's own driver (`drive.py`, NW=2), which skips windows already run. Coverage by name: s1 and s4 at '.' cover every
+  letter, a letter covers itself. Same engine rules as part C: a kc D needs dfast, every 4th not-D window at ring <= 16 also
+  gets dfast, and a kc-C C goes to cfast `--search` before it counts.
+- **Bars.** Any C covering a filling with s1, s4 >= 6 kills it on one engine, and goes to cfast and to the coordinator as a
+  kill line. 0 C: windows inside R's patch are exhausted for D and C at ring <= 15, and the 16 fillings need vertices
+  outside the patch (Opus's reading).
+- **Kill line.** A kc/dfast D mismatch, or a kc-C C that cfast calls not C.
+- **Guess.** 0 C. Most of these windows have 2-6 interior vertices, and part C's u + all link windows got 0 C for the
+  16 at ring 13-16 (best leftover 96).
+
 ## Round 40 (18 Oct 2026, 10:14Z-): H-C2V, does kc -C2 agree with cfast on X's with two ring vertices in a component? (Long Table, 10:12Z)
 
 **Pre-registered 10:14Z, before any run.** Round 38's kills 2, 4 and 5 rest on such an X. Short validation; round 39's
@@ -44,6 +63,10 @@ core is paused for it.
 - **Kill line.** kc/dfast D mismatch, or a kc-C C that cfast calls not C.
 - **Guess.** No kill at ring 16. p5 = 7 adds a big vertex at the edge of the window, and big vertices rarely help
   reducibility.
+
+**Round 39 interim (10:26Z): ring 16 is 0 of 10 windows D or C, so 0 of 16 fillings die with p5 = 7 at ring 16.** Best
+leftover 608 (`q837e5a91adbd7029`). dfast agrees with kc on the 3 windows it ran (reached 230,668, 198,006 and
+659,330). Ring 17 continues on 1 core to the round's cap.
 
 ## Round 38 (18 Oct 2026, 09:52Z-): H-W38, how far does w2's cap climb if its binding frames are killed one by one?
 
