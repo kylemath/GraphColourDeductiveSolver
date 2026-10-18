@@ -35,3 +35,20 @@ check at once.
 | w17L_5 | f7_.556858_.56.67. | same | same |
 Pre-emption: a new kc-not-D window on row R, or a kc D/C needing a second engine, pauses (SIGSTOP) the rerun with the
 least progress.
+
+## Governor finding (18 Oct 10:4xZ)
+- governor28.sh's SIGSTOP pauses were not delivered to nohup-started jobs. `kill` returned 0, but the CPU time of the
+  "paused" cfast jobs kept rising. A STOP to a process started in the same command does work; TERM always works. So
+  since the restart, k19's share was only ever protected by the scheduler.
+- Replaced by **governor30.sh**, which is alarm-only.
+  - It logs k19's share every 10 min.
+  - After two readings below 92% it terminates the newest low-priority job (cfast other than R17a/R17b, dfast18,
+    kc or lean) and logs its name for re-queueing.
+  - It never touches k19, R17a, R17b or run A.
+- Rule from now on: at most 15 runnable jobs plus k19, and every new job checks the count before it starts.
+- w17L_5 was killed at 10:49Z (17 runnable jobs, k19 at 84–89%). `restartW5.sh` restarts it once the xcap test ends
+  and the count allows.
+- k19 (PID 7776): 7.94 CPU-h in 8.07 h of wall time since the 20:46 MDT restart, a 98.4% average. The loss from the
+  governor failure is small.
+  - ETA: the total is 110–165 CPU-h (20–30× dfast18's 5.48 h), so 102–157 CPU-h remain. At 98% that is about
+    22 Oct 11:00 MDT to 24 Oct 19:00 MDT. The upper end still sits on the 24 Oct gate, as before.
