@@ -1,5 +1,21 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 47 (18 Oct 2026, 21:03Z-): H-R29, do the two receivers of the 2/9 dual die inside their 1.5-balls?
+
+**Pre-registered 21:03Z, before any engine run.** Gap G2. Long Table, 21:02Z: on the round 44/45 registry Opus gets
+t* = 2/9 on one engine (f1a052b4; Studio checking). Every row of the 11/47 dual is killed. The new dual has 6 rows:
+receivers d = 7 8655675/5756585 (2/9) and d = 8 75576556/78756665 (1/9), and senders 55667, 56668 (2/9), 55767,
+58778 (1/9). Receivers first, at ring <= 14. 3 cores.
+- **RSST check first (done at 21:03Z).** Round 44's eligible patterns miss both rows. The d = 7 row holds only a
+  broad-only RSST configuration (rsst115, 5675..._.5.....), which stays out.
+- **Windows.** win45.py at ring <= 14: 923 windows for the d = 7 row, 1189 for the d = 8 row (`loop/k47/`). Ring 15-16
+  (371 and 1089 more) only if a row has no kill at ring <= 14. Engines and naming as round 45 (drive45.py STOP=0,
+  minkill45.py with the w_i rule).
+- **Hypothesis and kill line (Long Table's).** At least one of the two rows has a two-engine D/C kill at ring <= 14.
+  Kill line: neither does.
+- **Guess.** Both die at ring <= 14 (about 75% each), as every receiver since round 43 has.
+- **Then.** The four senders in their cert_s9 contexts, as round 46 part A.
+
 ## Round 46 (18 Oct 2026, 20:51Z-): H-SEND, do the two senders carrying 11/47 die to windows around them?
 
 **Pre-registered 20:51Z, before any engine run.** Gap G2. Long Table, 20:44Z: the no-T 11/47 dual (cert_s7.json, Opus
@@ -20,6 +36,15 @@ fa4705f2, second engine Studio) rests mostly on two sender rows, 55677 (8/47) an
 - **Guess.** A: 10 or more of the 14 contexts have a kill that contains the wheel. B: survivors exist for both words,
   mainly with big ring-2 letters (as R* in round 42). If so, patterns cannot remove the sender rows, and the relay
   rule has to carry them.
+
+**Result (21:03Z; part A stopped at 813 of 1039 windows when Long Table moved the targets: on the round 44/45
+registry, 55677 and 56687 no longer bind).**
+- **A.** Hypothesis confirmed; guess right. All 14 contexts have a two-engine kill that contains the sender wheel. The
+  smallest kills are at ring 10 (7557565/6566666, 7565765/6855555 w6), 11, 12 (both d = 8 75657565 rows) and 13
+  (8558655/6665666, 76565565/57765865). Per-context counts: `loop/k46/sum46.txt`.
+- **B.** Guess right. One ring out, the 582 verified RSST configurations leave 31.4% of 55677's 9.77M fillings and
+  52.6% of 56687's 244M. Every filling with all ring-2 letters >= 7 survives, for both words. So patterns alone cannot
+  remove a sender row. A sender in an all-big ring 2 has to be paid for by a rule.
 
 ## Round 45 (18 Oct 2026, 20:17Z-): H-TOP, does the top dual row die to one of our own windows inside its 1.5-ball?
 
