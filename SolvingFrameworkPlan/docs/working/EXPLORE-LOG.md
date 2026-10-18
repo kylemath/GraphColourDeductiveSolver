@@ -15,6 +15,17 @@ core is paused for it.
 - **Guess.** 0 mismatches. A few cfast X's are inadmissible for kc -C2 (its distance-4 rule is stricter), and those
   are reported, not counted as mismatches.
 
+**Round 40 result (10:19Z): passes, with 0 mismatches on 483 configurations** (`loop/kcc/val2_run.txt`, `val2_kcc2.txt`).
+- Leftover equal on all 132 C, which is leftover 0 with cfast's X. Leftover equal on all 351 not-C, with cfast's best X.
+- kc -C2 admits every one of cfast's 483 X's, each with two or more ring vertices in one component. The guess "a few
+  inadmissible" was wrong: none were.
+- kc -C2's own verdict matches cfast's on all 483: 132 C / 351 not C.
+- So kc broad mode agrees with cfast on this X shape. Separately, Studio re-ran cfast with kc's conservative X fixed
+  on round 38's kills 2, 4 and 5 (Studio commit 361ad2dc): all C, leftover 0. All six round 37-38 kills are therefore
+  conservative two-engine C.
+- Process note: the pause missed. The dfast job I meant to stop had already exited, so this ran 4 minutes on a 4th
+  core alongside round 39.
+
 ## Round 39 (18 Oct 2026, 09:55Z-): H-P5, does p5 = 7 make R* reducible? (Opus's fourth floor arrangement)
 
 **Pre-registered 09:55Z, before any run.** Gap G2. 1 core, after round 38 stops.
