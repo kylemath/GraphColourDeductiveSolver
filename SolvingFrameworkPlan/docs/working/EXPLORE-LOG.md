@@ -19,6 +19,27 @@
 - **Guess.** The x3 = 5 windows with x2, x4 fixed are D at ring <= 15 (three mutually adjacent fives beside two 6s
   are crowded). The 5.66677 frame is not D but C.
 
+**Round 37 result (09:51Z): all five worst frames are C on two engines, through one ring-13 window**
+(`loop/k37/`: `framewin.py`, `drive37.py`, `fill_kcc.out`, `targets.txt`, `cwin.cfast`).
+- The driver ran 38 of 799 windows, at rings 11-13, before every target was dead. Nothing is D.
+- `f7_5566757_...5...` (ring 13) covers all five targets. It is w2 (degree 7) + its whole link 7665575 + w0 (the
+  five at s'0, next to u and w1). It is **C with X = {w2-u} (I0-I1)** on kc-C (conservative; 1 X tested) and on
+  cfast (`--search`: same X, leftover 0).
+  - Both engines agree on classes 66,430, ext 8,537 and reached 59,788.
+  - X is one interior edge, so G/X is loopless and smaller with no global condition.
+- `f7_..57556_...65..` (ring 11, 656 only) and `f7_..57556_...66..` (ring 12, 666 only) are also C on both engines.
+  kc-C uses X = {I0-I2} (size 1), and cfast's first working X is a size-4 triad set.
+- The window fixes none of x2, x3, x4 or p. So it kills every w2 frame with link 7665575, and the w4 mirror too:
+  the window doesn't use s0 or s5, the only letters where w2's and w4's frames differ.
+- **Effect (first order, from `k36/rows_w2.txt`):** the next link word, 7665675 (k = 2), sets the s1 = 6 cap at
+  0.1852. s1 >= 7 stays at 0.1924. R's row then gives t >= 0.122 at (6,6) and >= 0.116 elsewhere. This round
+  doesn't recompute Opus's second-order floor (11/71), whose worst frame is now dead.
+- **LP note.** No five of w2 has all four of its slots fixed in this window, so wlp3/sep3 cannot use it as a
+  pattern (`parse` needs at least one). It needs the link-word + non-five-slot pattern type, which is Job 30
+  part A's sep3x extension.
+- Guess check: "x3 = 5 windows D at ring <= 15" was wrong (nothing is D). "5.66677 C" was right, but the kill is
+  broader than guessed: one window with no x-slot fixed.
+
 ## Check (18 Oct 2026, 09:43Z): does H7's defect D3 contain RSST #110? (coordinator, 09:22Z) Yes, and it is D on kc
 
 This is a verification check, so it was not pre-registered. It used my own containment code
