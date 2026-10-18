@@ -33,7 +33,7 @@ range). Covered = some verified RSST configuration appears in the sender's 2-bal
   ring-2 letter >= 7, 0%.
 - 55757: 77.3% of 1.95M covered; no-5 fillings 11.7%; all >= 7, 0%.
 - 57667: 62.8% of 48.8M covered; no-5 fillings 3.7%; all >= 7, 0%.
-- So, as for round 46's pair: almost every context with a 5 in ring 2 dies, and almost none without one does. These
+- So, as for round 46's pair: most contexts with a 5 in ring 2 die (78%, 87% and 68%), and almost none without one. These
   sender rows stay; a rule has to pay for a sender whose second ring has no 5.
 
 ## Round 47 (18 Oct 2026, 21:03Z-): H-R29, do the two receivers of the 2/9 dual die inside their 1.5-balls?
