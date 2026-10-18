@@ -221,3 +221,7 @@ our agent R and have no output from it.
   VALID, upper FEASIBLE d = 7..17 + Karp; 37 iterations, 363 s]. **So rule T gains nothing over L2 on this registry.**
   Exact letters (s5a43, T_F + L2) also stay at 11/47: exact letters are dead here too. Binders as in s6t43, plus
   sender 55677 at 8/47. Sent to Studio as the Job 31 baseline.
+- **Soundness flag (20:37Z, Long Table): 16 k43 names (k43/kills_drop44.txt) left w_i free between fixed s's, so they
+  matched non-window rows.** They were loaded in s6, s6t43 and s7. Lower sides still stand; the upper (FEASIBLE) sides
+  of 5/21 and 11/47 are **provisional** until re-checked without them. Studio is re-running feascheck. P2 is re-running
+  our upper check on s7 minus drop44, and then the s9 solve (minus drop44 + k44 pats44 + round-45 D windows).
