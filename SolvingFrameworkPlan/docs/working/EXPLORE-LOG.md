@@ -1,5 +1,115 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 42 (18 Oct 2026, 11:33Z-): H-DEF, does every R* filling die within one ring of growth? (Long Table's target, 11:29Z)
+
+**Pre-registered 11:33Z, before any run.** Gap G2. Option D, round 18's defect-style method, on R*'s 16 open fillings.
+2 cores, with part C's ring-17 queue on the third.
+- **Growth.** One ring beyond R's patch: the six privates of the non-5 link vertices (p1 of w1, p2a/p2b of w2,
+  p4a/p4b of w4, p5 of w5), each in {5, 6, 7, 8, 9+}. That gives 16 x 5^6 = 250,000 closed cases. Each case is u's
+  2-ball at exact degrees (u, w0-w6, s0-s6, the six privates; `gen.build` with fresh third-ring vertices), with 9+
+  never matched as an exact degree.
+- **Forbidden set.** RSST's 633 configurations (`studiointel/routeb/rsst/unavoidable.conf`), plus explore's
+  two-engine D/C windows (rounds 37-38's six w2-frame kills, and Job 30's `k3x_D.out` / `k3x_C.cfast` where their input
+  lines are on disk).
+- **Containment.** My own code (`loop/k42/`, extending `loop/d3/d3_rsst.py`). An injective map of the configuration's
+  interior into the 2-ball's 21 exact-degree vertices, with exact degrees, induced, and interior triangles onto faces.
+  Embeddings are enumerated once on the 2-ball's fixed structure, as degree requirements on the variable slots.
+- **Checking.** Every configuration that kills a case is cut from the patch and checked by kc (D) or kc -C conservative
+  (C), plus dfast or cfast `--search`. A case counts as dead only on two engines.
+- **Bars and kill line.** Long Table's hypothesis is that all 16 fillings die within this ring. Any filling with a
+  surviving closed case kills it. Survivors are reported, grouped by which privates are at 5/6, and the all-big ones go
+  to new u-centred windows next (Opus's step ii).
+- **Guess.** The hypothesis dies. Opus's `F_free_slots` found every RSST hit needs a private at 5 or 6, and round 39's
+  p5 = 7 windows are not D/C, so at least the 3^6 = 729 cases per filling with every private in {7, 8, 9+} survive. I
+  expect about 2,000 survivors per filling, with RSST killing most cases that have a private five.
+
+**Round 42 result (11:42Z): the hypothesis dies. Every one of the 16 fillings keeps surviving closed cases after one ring
+of growth: 160,552 of 250,000 cases survive under conservative two-engine kills, and 134,232 if broad-X kills count**
+(`loop/k42/grow.py`, `tally.py`, `cases_cons.txt`, `hits.txt`).
+- **Structure.** The 2-ball has 21 exact-degree vertices, 47 edges and 27 faces among them, the same for every letter
+  choice (checked on 3). Of the 645 configurations (633 RSST + 12 explore), 15 embed with a requirement that does not
+  put a 5 at s1/s4. That gives 19 requirement patterns.
+- **Two engines on every killer.** Each (configuration, image) was cut from a representative 2-ball (24 windows, ring
+  8-14; every RSST cut has RSST's own ring size). RSST 2.3701166 (ring 12) is D on kc and dfast. The other 23 are C
+  on cfast `--search`. For 20 of them, kc -C finds a conservative X that cfast `--fixed` accepts with leftover 0
+  (`cut_kcc.out`, `cut.cfast`, `cut_fixedkc.cfast`). The other 3 are RSST 2.126 (ring 8) and 126.8168 in both
+  orientations. Those are C only with a broad X on both engines (kc -C2 and cfast agree; 2.126's X is RSST's own four
+  ring-to-interior edges).
+- **What one ring forces** (conservative; privates p1 at w1, p2a/p2b at w2 next to s1/s2, p4a/p4b at w4 next to s3/s4,
+  p5 at w5):
+  - p5 = 5 always dies (RSST 122.126, ring 9).
+  - p1 = 5 dies only by the broad 2.126. Conservatively it dies only with s1 = 7 and p2a = 5 (2.504980).
+  - s1 = 6 forces p1 >= 7, p2a >= 6 and (p2a, p2b) != (6, 5). s4 = 6 forces p4b >= 6 and (p4a, p4b) != (5, 6).
+    These come from RSST 2.211701966, 122.1031, 126.61686/126.490086, and rounds 37-38's two w2-frame kills.
+  - Everything else survives, including all 3^6 = 729 cases per filling with every private >= 7.
+- **Survivors per filling (conservative):** 66: 4,332; 67-69: 5,700; 76: 9,120; 77-79: 12,000; 86 and 96: 9,500;
+  87-89 and 97-99: 12,500.
+- **Next binder candidates, as Long Table asked.** The most five-heavy survivors:
+  - (9,9) with privates 55555x (every private a 5 except p5 >= 6).
+  - (7,7) with 565556.
+  - (6,6) with 775576.
+  These are where new windows (Opus's step ii: R* plus the privates as interior) are most likely to bite.
+- Against the bar and guess: the kill line fired on all 16 fillings. Guess "about 2,000 survivors per filling" was low.
+  Containment kills far less than guessed, because only 15 of 645 configurations reach a private at all.
+
+## Round 41 (18 Oct 2026, 10:26Z-): H-SUBC, does the C stage kill any of R*'s 16 open fillings at a window inside R's patch that is not u + all link?
+
+**Pre-registered 10:26Z, before any run.** Gap G2, part C continued (coordinator's order, 10:14Z: round 39, then the 16
+open fillings). 2 cores, in place of part C's ring-17 queue, which resumes after.
+- **Why.** Opus's `C_kc_ring17` (`f_all.txt`, branch claude/project-thread-7uelj0, commit e2b0ea90) lists every
+  connected induced subset of R's 15 fixed vertices with s1, s4 at 6-8 (9+ left as ring), excluding round 34's u + all
+  link windows: 2,780 at ring 6-18. Opus ran kc D only on 1,131 of them at ring <= 16, all not D for the 16 fillings.
+  None has had a C stage. kc -C adds it at a few seconds per window at ring <= 15.
+- **Run.** `loop/k34/fill3.txt` = Opus's 1,383 windows at ring <= 15 + round 34's fillwin windows, in ring order, through
+  part C's own driver (`drive.py`, NW=2), which skips windows already run. Coverage by name: s1 and s4 at '.' cover every
+  letter, a letter covers itself. Same engine rules as part C: a kc D needs dfast, every 4th not-D window at ring <= 16 also
+  gets dfast, and a kc-C C goes to cfast `--search` before it counts.
+- **Bars.** Any C covering a filling with s1, s4 >= 6 kills it on one engine, and goes to cfast and to the coordinator as a
+  kill line. 0 C: windows inside R's patch are exhausted for D and C at ring <= 15, and the 16 fillings need vertices
+  outside the patch (Opus's reading).
+- **Kill line.** A kc/dfast D mismatch, or a kc-C C that cfast calls not C.
+- **Guess.** 0 C. Most of these windows have 2-6 interior vertices, and part C's u + all link windows got 0 C for the
+  16 at ring 13-16 (best leftover 96).
+
+**Round 41 result (11:28Z): no kill. All 1,383 sub-patch windows at ring 6-15 are not D and not C, so the 16 open
+fillings stay open** (`loop/k34/fill_kcc.out`, names `x7_*`; `fillings.txt` still reads 9 of 25 killed, all D2).
+- By ring: 6-12: 399, 13: 243, 14: 327, 15: 414. That is every window in Opus's `f_all.txt` at ring <= 15, so Opus's
+  156 of 414 at ring 15 is now complete for D as well as C.
+- dfast ran on 347 of them (every 4th not-D window) and agrees with kc on all 347, with 0 mismatches.
+- Closest to C, as leftover over ext, is about 0.8% at ring 14-15: `x7_u5675..5_667...5` (ring 14, leftover 150) and
+  `x7_u5675.65_6...7.5` (ring 15, leftover 320). Both are the u + w0-w3 + w6 + s0/s6 corner around the w0 and w6 fives.
+- Against the bars: 0 C, so windows inside R's patch are exhausted for D and C at ring <= 15 (and for u + all link
+  windows to ring 16, part C). The 16 fillings need vertices outside the patch, which matches Opus's reading. Guess
+  "0 C" was right.
+- Ran 10:27-11:27Z, on 2 cores to 10:59Z and 3 after round 39 stopped. The same driver now continues part C's
+  u + all link queue at ring 17 on 3 cores.
+
+## Round 40 (18 Oct 2026, 10:14Z-): H-C2V, does kc -C2 agree with cfast on X's with two ring vertices in a component? (Long Table, 10:12Z)
+
+**Pre-registered 10:14Z, before any run.** Round 38's kills 2, 4 and 5 rest on such an X. Short validation; round 39's
+core is paused for it.
+- **Set** (`loop/kcc/mkval2.py 15`, fixed rule). Every registry cfast output (40 files; round 37/38's own kill files
+  excluded). Keep a configuration if it is not D, cfast's working X (C) or best X (not C) has a component holding two
+  or more ring vertices, its input line is in the wheeldis *.txt files, and its ring is <= 15. That gives 1,534:
+  132 C and 1,402 not C, rings 8-15. All 132 C run, plus every 4th not-C in ring order.
+- **Test.** kc -C2 -x with cfast's X. Pass on a configuration: kc admits the X, and kc's exact leftover equals
+  cfast's (0 for C). Also reported: kc -C2's own C/not-C verdict against cfast's.
+- **Kill line.** Any leftover mismatch, or a kc -C2 C where cfast says not C, that survives a recheck. Then kc broad
+  mode is not trusted, and round 38's kills 2, 4 and 5 stay single-engine [E1].
+- **Guess.** 0 mismatches. A few cfast X's are inadmissible for kc -C2 (its distance-4 rule is stricter), and those
+  are reported, not counted as mismatches.
+
+**Round 40 result (10:19Z): passes, with 0 mismatches on 483 configurations** (`loop/kcc/val2_run.txt`, `val2_kcc2.txt`).
+- Leftover equal on all 132 C, which is leftover 0 with cfast's X. Leftover equal on all 351 not-C, with cfast's best X.
+- kc -C2 admits every one of cfast's 483 X's, each with two or more ring vertices in one component. The guess "a few
+  inadmissible" was wrong: none were.
+- kc -C2's own verdict matches cfast's on all 483: 132 C / 351 not C.
+- So kc broad mode agrees with cfast on this X shape. Separately, Studio re-ran cfast with kc's conservative X fixed
+  on round 38's kills 2, 4 and 5 (Studio commit 361ad2dc): all C, leftover 0. All six round 37-38 kills are therefore
+  conservative two-engine C.
+- Process note: the pause missed. The dfast job I meant to stop had already exited, so this ran 4 minutes on a 4th
+  core alongside round 39.
+
 ## Round 39 (18 Oct 2026, 09:55Z-): H-P5, does p5 = 7 make R* reducible? (Opus's fourth floor arrangement)
 
 **Pre-registered 09:55Z, before any run.** Gap G2. 1 core, after round 38 stops.
@@ -18,6 +128,20 @@
 - **Kill line.** kc/dfast D mismatch, or a kc-C C that cfast calls not C.
 - **Guess.** No kill at ring 16. p5 = 7 adds a big vertex at the edge of the window, and big vertices rarely help
   reducibility.
+
+**Round 39 result (10:59Z): no kill. 0 of 16 windows are D or C at ring 16-17, so 0 of 16 fillings die with p5 = 7**
+(`loop/k39/fill_kcc.out`, `targets.txt`). The round stopped at its cap after 16 of the 29 windows at ring <= 17.
+- Ring 16: all 10 windows. Ring 17: 6 of 19, including both ring-17 windows that cover all 16 fillings
+  (`qb2582f426debb95f`, `qe471d5d905b19648`, leftover 14,400 and 10,142). The other 4 cover 4 fillings each.
+- Best leftover is 608 at ring 16 (`q837e5a91adbd7029`). Ring 17 leftovers are 1,920 to 14,400.
+- dfast agrees with kc on all 3 windows it ran (classes, ext and reached are equal).
+- Against the bars: no kill, so Opus's fourth arrangement (w6's rootings sharing one variable at p5 = 7) stands at
+  ring <= 16, and at ring 17 for every window that covers (6,6). Guess "no kill at ring 16" was right.
+- Not run: 13 ring-17 windows covering 1-4 fillings each, and the 48 at ring 18.
+
+**Round 39 interim (10:26Z): ring 16 is 0 of 10 windows D or C, so 0 of 16 fillings die with p5 = 7 at ring 16.** Best
+leftover 608 (`q837e5a91adbd7029`). dfast agrees with kc on the 3 windows it ran (reached 230,668, 198,006 and
+659,330). Ring 17 continues on 1 core to the round's cap.
 
 ## Round 38 (18 Oct 2026, 09:52Z-): H-W38, how far does w2's cap climb if its binding frames are killed one by one?
 
