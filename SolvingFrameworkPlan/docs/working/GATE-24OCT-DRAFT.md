@@ -23,8 +23,8 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 | Per-key Occ modules (49) | [L] Job 24, hD closes as keys land | `dcheck/occ24/` |
 
 **Scope caveat.** A 2-ball's ring can fold in large maps. Until Job 26 proves Kempe matching for a face-boundary-walk
-ring, the K ≤ 1 claim covers appearances with a simple ring. Job 26 piece (i) is proved. Piece (ii), vertex
-splitting, has a 20 Nov kill, and the fallback is to state the simple-ring hypothesis in the paper. The Track 1 hand
+ring, the K ≤ 1 claim covers appearances with a simple ring. Job 26 has proved FaceGlue (i), Kempe matching on non-injective ring walks, the single pinch and the fold walk
+(5f9d86f3, b2e64eb6). Multi-pinch and (iii), extraction from an appearing 2-ball, are left; they have a 20 Nov kill, and the fallback is to state the simple-ring hypothesis in the paper. The Track 1 hand
 argument (B2 + no separating triangle ⇒ injective, induced embedding) closes the gap on paper. Its Lean is Job 26 step 3a.
 
 ## K = 2 evidence
@@ -54,5 +54,5 @@ where HARD28 rows complete to K = 4 defects, every completion dies at a neighbou
 - [ ] run29d: 7/27 binders and the xcap=1000 cap test (Studio).
 - [ ] Explore round 34+: ring 17–18 kc sweep on binders; any re-solved t*.
 - [ ] k19 Lean (22–25 Oct): upgrade [E2] → [L] if it lands.
-- [ ] Job 26 piece (ii) status.
+- [x] Job 26 status (18 Oct): single pinch + fold done; multi-pinch and (iii) left.
 - [ ] Recommendation line, once A has run.
