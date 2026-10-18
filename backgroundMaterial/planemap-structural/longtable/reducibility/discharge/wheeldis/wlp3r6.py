@@ -42,8 +42,9 @@ MANY = int(next((a[5:] for a in ARGS0 if a.startswith('many=')), '40'))
 MAXIT = int(next((a[6:] for a in ARGS0 if a.startswith('maxit=')), '100000'))   # 0 = solve the warm rows once, no separation   # rows kept per degree per iteration
 LPM = next((a[3:] for a in ARGS0 if a.startswith('lp=')), 'highs')   # lp=ds: HiGHS dual simplex (Job 31 restart, LT 22:13Z)
 LPM = {'ds': 'highs-ds', 'ipm': 'highs-ipm'}.get(LPM, LPM)
+MANY6 = int(next((a[6:] for a in ARGS0 if a.startswith('many6=')), '0'))   # six-row cap per iteration (0 = MANY)
 DROPK = int(next((a[5:] for a in ARGS0 if a.startswith('drop=')), '0'))   # drop cut rows slack for >= DROPK consecutive solves (0 = keep all)
-ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many=', 'maxit=', 'lp=', 'drop='))]
+ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many=', 'maxit=', 'lp=', 'drop=', 'many6='))]
 # Loader exclusions by name (Long Table, 17 Oct): defect-derived verdict files (out/def_*) and oracle stand-ins (hr1_or1)
 EXCL = ('hr1_or1',) if os.environ.get('WLP3X_DEF') == '1' else ('out/def_', 'hr1_or1')   # def_ restored once second-engined (WLP3X_DEF=1)
 DROPPED = [a for a in ARGS_W if a.startswith(('pat=', 'cpat=')) and any(e in a for e in EXCL)]
@@ -302,7 +303,7 @@ while True:
     n0 = len(rows)                      # rows present at this solve (separation may also append z9 rows via xcol)
     if it >= MAXIT: break
     added = 0
-    for v_, Lw, sv in six_sep(V56, t, MANY): added += add_six(Lw, sv)
+    for v_, Lw, sv in six_sep(V56, t, MANY6 or MANY): added += add_six(Lw, sv)
     for dl in (DS, DSF):
         for d in dl:
             thr = d - 6 + t + 1e-7

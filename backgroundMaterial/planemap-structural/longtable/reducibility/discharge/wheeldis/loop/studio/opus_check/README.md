@@ -115,3 +115,16 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - **Lower:** lowercheck on the 3 rows: senders 56696 at 1/5 and 66669 at 3/5; receiver d=9 656566565/665656666 at 1/5,
   ALLOWED by sep3xf `c`. Exact: t coefficient −1, rhs −1/5, 0 negative terms, so **t ≥ 1/5** (lower_s14.log).
 - So t* = 1/5 on that registry, on two engines.
+
+## Opus relay s14r (t = 19/102, 39f457ba): key mapping onto wlp3r6, stopped at step (a), ~22:45Z
+- Files: sol_s14r.json (model 'R6x': 776 y, 45 g, 889 h, 8 x) and cert_s14r.json (25 rows: 7 senderR with flag-bit
+  vectors, 7 cons over six words, 7 mrowR, 4 receiverR). Opus's lower_s14r.log and upper_s14r.log are not in 39f457ba.
+  argsA47 is unchanged since s14, so its dcount (15,497 D / 1,494 C / 158 RPAT) stands (studio_s14_dcount.txt).
+- maprelay.py (keys only; Opus code not read; map_s14r.log):
+  - y: all 776 keys are wlp3r6 y roots.
+  - **h → y6b: 889/889 one-to-one** (every h key is a wlp3r6 y6b key as written; 0 collisions, 0 R6 words).
+  - **g → y56: 0/45.** g keys are (letter, 3 flag bits, letter), with first letters 5/6/7 and last letters 6..9. wlp3r6's
+    y56 is a 6→5 move keyed by the five's full word (294 keys), with no flag-indexed moves and no moves out of a 7.
+  - senderR rows carry flag bits, and mrowR rows are M-variable rows. wlp3r6 has neither.
+- **So Opus's class has relay moves wlp3r6 cannot express.** Per Long Table's order, the upper (relay mode) and lower
+  rebuild through wlp3r6 were not forced. 19/102 cannot be second-engined through wlp3r6 as it stands.

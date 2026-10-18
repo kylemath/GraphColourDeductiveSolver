@@ -101,3 +101,8 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
   - The dual simplex alone did not cut the solve time: iteration 1 took 552 s. No row had reached age 5 yet.
 - **Against H31:** the iterate −0.2526 is a master lower bound, nowhere near the 2/9 threshold, so it says nothing
   about t*(relay) < 2/9 yet.
+- 22:38Z (Long Table 22:36Z, options (d) + (a)): the restart was stopped after: iter 7 t=-0.252632 rows 16596 xcols 23066 z9=3.0000 added 241 dropped 758 (736s)
+  Drops began once rows aged: 81k → 16.6k rows, iterations ~15 s. Its lossless dump is saved as j31r_rows_all.txt
+  (receivers + six + recv9, with ages). Relaunched as j31r2: same class, registry (argsK45_pinned) and separator,
+  lp=ds, drop=5, **many6=120** (new option: the cap on six rows per iteration; receivers keep many=40), warm from that
+  dump, nice 19. Its value no longer gates anything; it becomes a third, class-independent number.
