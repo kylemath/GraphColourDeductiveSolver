@@ -1,5 +1,28 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 42 (18 Oct 2026, 11:33Z-): H-DEF, does every R* filling die within one ring of growth? (Long Table's target, 11:29Z)
+
+**Pre-registered 11:33Z, before any run.** Gap G2. Option D, round 18's defect-style method, on R*'s 16 open fillings.
+2 cores, with part C's ring-17 queue on the third.
+- **Growth.** One ring beyond R's patch: the six privates of the non-5 link vertices (p1 of w1, p2a/p2b of w2,
+  p4a/p4b of w4, p5 of w5), each in {5, 6, 7, 8, 9+}. That gives 16 x 5^6 = 250,000 closed cases. Each case is u's
+  2-ball at exact degrees (u, w0-w6, s0-s6, the six privates; `gen.build` with fresh third-ring vertices), with 9+
+  never matched as an exact degree.
+- **Forbidden set.** RSST's 633 configurations (`studiointel/routeb/rsst/unavoidable.conf`), plus explore's
+  two-engine D/C windows (rounds 37-38's six w2-frame kills, and Job 30's `k3x_D.out` / `k3x_C.cfast` where their input
+  lines are on disk).
+- **Containment.** My own code (`loop/k42/`, extending `loop/d3/d3_rsst.py`). An injective map of the configuration's
+  interior into the 2-ball's 21 exact-degree vertices, with exact degrees, induced, and interior triangles onto faces.
+  Embeddings are enumerated once on the 2-ball's fixed structure, as degree requirements on the variable slots.
+- **Checking.** Every configuration that kills a case is cut from the patch and checked by kc (D) or kc -C conservative
+  (C), plus dfast or cfast `--search`. A case counts as dead only on two engines.
+- **Bars and kill line.** Long Table's hypothesis is that all 16 fillings die within this ring. Any filling with a
+  surviving closed case kills it. Survivors are reported, grouped by which privates are at 5/6, and the all-big ones go
+  to new u-centred windows next (Opus's step ii).
+- **Guess.** The hypothesis dies. Opus's `F_free_slots` found every RSST hit needs a private at 5 or 6, and round 39's
+  p5 = 7 windows are not D/C, so at least the 3^6 = 729 cases per filling with every private in {7, 8, 9+} survive. I
+  expect about 2,000 survivors per filling, with RSST killing most cases that have a private five.
+
 ## Round 41 (18 Oct 2026, 10:26Z-): H-SUBC, does the C stage kill any of R*'s 16 open fillings at a window inside R's patch that is not u + all link?
 
 **Pre-registered 10:26Z, before any run.** Gap G2, part C continued (coordinator's order, 10:14Z: round 39, then the 16
