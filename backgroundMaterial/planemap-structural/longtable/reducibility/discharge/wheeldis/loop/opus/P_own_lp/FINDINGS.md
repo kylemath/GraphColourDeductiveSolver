@@ -248,3 +248,20 @@ Not read: Studio's Job 31 spec.
   9 conservation rows and 10 M rows.
 - The targets: receiver 7565765/6855555 and sender 55677 have left the dual; 56687 stays.
 - Files: sol_s8.json, cert_s8.json, lower_s8.log, upper_s8.log, rows_s8.txt.
+
+## Stage 9-10 (21:05Z): corrected registry (twoeng at 30f86cd4: k3x 378 D / 383 C, drop44 removed)
+- Args: P2's `s9/argsA44.txt` (= argsA with the k3x lines pointing at s9/k3x_*_30f86cd4; md5 equal to
+  `git show 30f86cd4:` of out/job30/k3x_D.out and k3x_C.cfast; 378 D=true, 383 C-REDUCIBLE) + k42map_C_cons, plus
+  rpat=rpatD.txt. No k43_kills_* files. Pattern counts by d: 7: 9,530, 8: 4,458, 9: 1,233, 10: 1,023, 11: 347; kinds
+  D 15,413, C 1,429, RPAT 158.
+- The 16 drop44 names (`drop44_names.txt` = the k43 names absent from the 30f86cd4 k3x). `s9/chk_drop.py`: 0 of 16
+  loaded under argsA44; 16 of 16 under the old argsA43noT, so s8 did contain them.
+- **s8 re-check on argsA44:** `upperR` FEASIBLE at 18/79 (still an upper bound). `lowerR` INVALID: 6 of its receiver
+  rows are now forbidden by the new k44/k45 patterns (e.g. d = 7 8558655/6665666, 8566655/6656656).
+- **s10 = R6x + L2 on argsA44 + RSST-D: t* = 217/1129 = 0.192205** [E, both sides, own checkers]. 51 iterations,
+  719 s. `lowerR`: VALID 217/1129 (43 rows). `upperR`: FEASIBLE (senders, 994 conservation rows, d = 7..17
+  exhaustive, tail, Karp d0 = 11.7).
+- s10 dual: receivers d = 7 7765556/6575766 (0.1488), 7766556/6566575 (0.1399), d = 9 656565665/665666566
+  (0.0345), and small weights on d = 7 7765556/6575765, 7765566/6596665, d = 9 656566556/755656665,
+  656656665/665555555. Senders 55767 (0.1488), 66669 (0.1089), 55667 (0.101 + 0.030 + 0.009), 55757 (0.0788),
+  57667 (0.0744 + 0.0044), 56696 (0.0434), 56669, 55696, 56667, 56967 (small). 23 conservation/M rows.

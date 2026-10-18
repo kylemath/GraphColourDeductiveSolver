@@ -242,3 +242,9 @@ our agent R and have no output from it.
   0.2222** [E, our engine; lower VALID exact; upper FEASIBLE d = 7..17 + DP + Karp]. All 8 receivers of the 11/47 dual are
   killed. New 6-row dual: senders 55667 (2/9), 56668 (2/9), 55767 (1/9), 58778 (1/9); receivers d = 7 8655675/5756585 (2/9),
   d = 8 75576556/78756665 (1/9). `P_own_lp/s9/FINDINGS.md`. Sent to Studio for a second check.
+- **P s10 (21:15Z): our 6-relay class + L2 on argsA44 + RSST-D gives t* = 217/1129 = 0.1922** [E, own checkers;
+  lowerR VALID with 43 rows; upperR FEASIBLE with all 994 conservation rows, d = 7..17 exhaustive, DP + Karp d0 11.7; 51
+  iterations, 719 s]. Also s8 re-checked on argsA44: the upper is FEASIBLE at 18/79, but the lower is INVALID because six of
+  its receivers are now killed. Binders: receivers d = 7 7765556/6575766 (0.149), 7766556/6566575 (0.140), and d = 9
+  656565665/665666566 (0.035), plus smaller ones. Senders 55767 (0.149), 66669 (0.109), 55667, 55757, 57667, 56696. Sent to
+  Studio for a second check.
