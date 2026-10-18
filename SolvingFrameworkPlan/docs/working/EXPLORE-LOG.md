@@ -26,6 +26,32 @@
 - **Guess.** Some arrangement tight at 7/27 fits w2's frame (566 d = 7 rows are tight), so max yload = 34/27 and
   T_max = 0 at first order. If not, T_max is under 0.1.
 
+**Round 36 result (09:40Z): w2 and w4 can each take T = 0.15 at first order, and they cap Rule T near
+t = 0.155** (`loop/k36/w2load.py`, `w2load.txt`).
+- Checks pass. sep3 on the j28_13 y (4 decimals) gives d = 7 max 1.2593 against the bar 1.2593. The c check accepts
+  R at u. The pattern set is 16,401 patterns and 104 RBIG wheels. The missing r_3-r_8 files carry only d = 10.
+- Of 62,500 w2 arrangements, sep3's c check rejects 360. The spoke's 6-wheel check rejects none, so w4 (spoke far
+  letter s5 = 7, not 6) gives the same numbers as w2.
+- Max yload is 1.1087, against a bar of 1.2593. That is link 7665575 s 5x65677 (any x), at s1 = 6. Its fives are
+  e (7|5566, 0.7407), e' (7|5567, 0.2199) and w3 (7|7777, 0.1481). It has k = 1, the inflow from R's own w0.
+- T_max (y and t held at 7/27) is 0.1506. The binding filling letter is 6. For s1 >= 7 it is 0.1924, set by a k = 3
+  frame (7676575 / 5556577, yload 0.6821). Counting outflow from w2's own fives changes nothing.
+- k: 45,399 arrangements have k = 1, 15,031 have k = 2, 1,590 have k = 3 and 120 have k = 4.
+- In Opus's R row t >= (0.7 - T0 - T6)/2.7 these caps give 0.148 at (6,6), 0.132 at (6, >=7) and 0.117 when both
+  are >= 7.
+- **Second order, a floor [hand, one engine].** In the worst frame, five e's only big neighbour is w2. Its only
+  6-spoke at w2 is s1, and that spoke's z is w1 = 6, so e has no T route and sends all of 1 - t to w2.
+  - 7|7777 has no 6-spoke, and its five rootings share one variable, so each gets at least (1 - t)/5.
+  - Taking e's other word (7|5567, shared with s2) as 0, w2's row gives T0 <= 2.2t - 0.2 at s1 = 6.
+  - Combined with Opus's R row at filling (6,6): t >= 1.1/7.1 = 0.155. This holds for Rule T without an L2
+    transfer out of w2, while R*(6,6) and that w2 frame stay unforbidden.
+- **Against the bars:** 0.15 sits between 0.0125 and 0.35. w2/w4 don't block T below 1/4 or 0.22, but they can't
+  take what t* = 0 needs from R (0.35 each).
+- Guess check: "some tight row fits w2's frame, T_max = 0" was wrong. The worst frame has slack 0.15. The fallback
+  "under 0.1" was also wrong.
+- **Next kill target [I].** The worst frame holds a triangle of three fives (e, e', and x3 between them) next to the
+  6 at s1. If u + w2 + that frame is reducible, the cap at s1 = 6 rises towards 0.19.
+
 ## Round 35 (18 Oct 2026, 08:54Z-): H-KCC, a C-reducibility mode for kc, then C on R's windows
 
 **Pre-registered 08:54Z, before any code.** Gap G2. Runs while round 34 part C uses the cores.
