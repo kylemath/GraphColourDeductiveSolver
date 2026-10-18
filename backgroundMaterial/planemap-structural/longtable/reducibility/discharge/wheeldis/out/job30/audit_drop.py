@@ -1,5 +1,5 @@
 """Job 30 audit: which loaded registry patterns (wlp3 parse) carry a letter on a slot no 5-sender reads?
-parse() keeps only the slots read by a link 5 (w_{i+-1}, s_{i-1}, s_i around each w_i = 5); a letter elsewhere is
+parse() keeps only fives whose four slots are all specified, plus those slots; any other specified letter is
 dropped, which makes the encoded pattern weaker than the configuration (it would forbid more than is reducible).
 Usage: python3 out/job30/audit_drop.py <pattern args as for wlp3>   (WLP3X_DEF=1 keeps out/def_*)"""
 import sys, os, re, collections
@@ -26,9 +26,11 @@ for nm, fn in names.items():
         if ch == '.': return False
         if k0 == 'p' and ((kind == 'w' and ch == '9') or (kind == 's' and ch == '0')): return False
         return True
-    five = [lk[i] == '5' for i in range(d)]
-    rw = [five[i] or five[(i - 1) % d] or five[(i + 1) % d] for i in range(d)]
-    rs = [five[i] or five[(i + 1) % d] for i in range(d)]
+    sp = lambda ch, kind: spec(ch, kind)
+    cw = lambda i: sp(lk[i % d], 'w'); cs = lambda i: sp(sv[i % d], 's')
+    full5 = [lk[i] == '5' and cw(i + 1) and cw(i - 1) and cs(i) and cs(i - 1) for i in range(d)]   # parse() keeps these
+    rw = [full5[i] or full5[(i - 1) % d] or full5[(i + 1) % d] for i in range(d)]
+    rs = [full5[i] or full5[(i + 1) % d] for i in range(d)]
     drop = [('w', i, lk[i]) for i in range(d) if spec(lk[i], 'w') and not rw[i]] + \
            [('s', i, sv[i]) for i in range(d) if spec(sv[i], 's') and not rs[i]]
     if drop: bad[fn] += 1; ex[fn].append((nm, drop))

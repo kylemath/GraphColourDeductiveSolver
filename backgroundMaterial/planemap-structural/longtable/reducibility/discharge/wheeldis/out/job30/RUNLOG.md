@@ -44,3 +44,19 @@
 - The draft, written against E_rule_change section 3 and untested, is on branch `studio/job30-ruleT-wip` (97bbe5d7).
   It still has to be re-specified against loop/opus/G_ruleT_lp.
 - H30B: t*(A+T) < t*(A). Kill: t*(A+T) = t*(A).
+
+## Scope add (09:55Z): explore round 37 C window, and k3x windows loaded by glob
+- **`dropped()` tightened.** `parse` keeps only fives whose four slots are all specified, plus those slots. A letter
+  read only by an incomplete five was also dropped. The test now uses parse's actual coverage. Re-audit: still 0 of
+  16,411 registry patterns affected (`audit_drop.py`, same rule).
+- **f7_5566757_...5...** (ring 13, w2 + link 7665575 + w0; its s3 letter is on a slot no link 5 reads), loaded through
+  the NF section.
+  - Studio cfast: C, X = {I0-I1}, 66,430 / 8,537 / 59,788, leftover 0 (`c37_studio.cfast`). It equals explore's
+    cwin.cfast and kc -C (fill_kcc.out: C-REDUCIBLE X={I0-I1}).
+  - Matcher: 210 frames (all 14 dihedral images × letters 5..9 at the s slot × 3 random fillings). It newly forbids
+    exactly the 35 frames with 5 at that slot and nothing else, so 0 mismatches. The w4 mirror is among the images.
+- **`twoeng.py`** builds k3x_D.out / k3x_C.cfast from loop/k3*/ at run start. D needs dfast(18) D and kc D. C needs
+  cfast C and kc -C C with the same X.
+  - Today it loads 3 D (the k34 family) and 1 C (the window above).
+  - Excluded: f7_..57556_...65.. and f7_..57556_...66.. (C on both engines, but with different X), and 1 window
+    that only one engine has seen.

@@ -70,12 +70,12 @@ def fullparse(name):
             out.append((off + i, sum(1 << LI[x] for x in SETS['B' if ch == 'B' else int(ch)])))
     return d, out
 def dropped(name):
-    """Specified letters on slots that no link 5 reads (parse() would drop them, weakening the pattern)."""
-    d, F = fullparse(name); lk = name.split('_')[1]
-    five = [lk[i] == '5' for i in range(d)]
-    rd = {i for i in range(d) if five[i] or five[(i - 1) % d] or five[(i + 1) % d]} | \
-         {d + i for i in range(d) if five[i] or five[(i + 1) % d]}
-    return [sl for sl, _ in F if sl not in rd]
+    """Specified letters that parse() does not encode (it keeps only fives whose four slots are all specified, and
+    their slots); dropping them would weaken the pattern."""
+    d, F = fullparse(name); _, P = parse(name)
+    cov = set()
+    for i, _m in P: cov |= {i, (i + 1) % d, (i - 1) % d, d + i, d + (i - 1) % d}
+    return [sl for sl, _ in F if sl not in cov]
 PATS = []; FULLP = []; PSRC = collections.Counter(); SEEN = set()
 def addpat(nm, src):
     if nm in SEEN: return
