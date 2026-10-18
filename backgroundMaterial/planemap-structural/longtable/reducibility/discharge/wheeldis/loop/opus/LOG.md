@@ -76,3 +76,10 @@ Pre-registered before any probe ran.
   needs 625 DP states (about 5x per build). Validation: T = 0 must reproduce 7/27 and the j28_13 dual. Note [I]: L2's
   u -> w2 transfer already reads (6, 5, s1) against (6, s1, 5), so once the s1 = 5 kill enters L2 (explore's proposed
   sep3x state extension), L2 alone may already make this move. Run that first; T is the fallback.
+- **Cross-checks from the explore thread (via the coordinator, 09:41-09:44Z).** D3 contains RSST #110 on explore's
+  own containment code (vertices 1, 2, 6, 7, 16, 17, all inside Y); kc D with ext 496 = RSST's count, so D on two
+  engines with our dfast. H7's 1/21 floor is now logged as R_opt-specific. D1, D2, E1, E2 rest on our engines only.
+  Explore round 36: w2/w4 absorb at most T = 0.1506 at first order, so rule T's gain through this row floors near
+  t = 0.155 (hand second-order argument; independent check H running). Job 30 (Studio): part A puts the s1/s4 = 5
+  kill into L2 with non-five s-letters; part B (rule T) runs only if A holds 7/27. RSST-D (158 patterns) is in the
+  LP and t* stays 7/27 exactly, matching angle B.
