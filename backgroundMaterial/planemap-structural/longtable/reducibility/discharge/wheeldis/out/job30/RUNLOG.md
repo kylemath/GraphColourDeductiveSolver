@@ -114,3 +114,5 @@ not new to F.
   - Added: 195 D from k44 (1 was already in) and 7 D from k45; 179 C from k44 (2 were already in).
   - 0 of the 16 present.
 - Default-glob reruns need the local loop/k43 updated to d3def56a first; the local copy still holds the 16.
+- 20:47Z: local loop/k43 was updated to d3def56a, and loop/k44 and loop/k45 were added (every file byte-identical to
+  d3def56a). A default-glob twoeng then reproduces 378 D / 383 C, byte-identical to 30f86cd4, with 0 of the 16.
