@@ -1,0 +1,402 @@
+big wheels in R: 105 (+14 from w7plus)
+patterns: {('pairs_D7_k2_dfast.out', 7): 59, ('pairs_D8_k3_dfast.out', 8): 256, ('pairs_D9_k4_dfast.out', 9): 524, ('eq_D7_dfast.out', 7): 7698, ('eq_D8_k3_dfast.out', 8): 3192, ('lp_dfast.out', 7): 68, ('lp_dfast.out', 8): 224, ('lp_dfast.out', 9): 133, ('lp_dfast.out', 10): 8, ('pairs_D10_k5_dfast_partial.out', 10): 203, ('def_loop_new1_1.out', 7): 3, ('def_loop_old_1.out', 7): 3, ('def_r1.out', 7): 44, ('C:k2a.cfast', 7): 11, ('C:k2b.cfast', 7): 13, ('C:part00.cfast', 7): 498, ('C:part01.cfast', 7): 485, ('C:def_r1.cfast', 7): 4, ('r_1.out', 7): 14, ('r_1.out', 8): 6, ('r_10.out', 7): 4, ('r_11.out', 7): 5, ('r_12.out', 7): 47, ('r_2.out', 7): 169, ('r_2.out', 8): 30, ('r_2.out', 9): 43, ('r_3.out', 10): 3, ('r_4.out', 10): 3, ('r_5.out', 10): 3, ('r_6.out', 10): 3, ('r_7.out', 10): 3, ('r_8.out', 10): 1, ('r_9.out', 7): 7, ('r_D10k5.out', 10): 353, ('r_hr1.out', 7): 8, ('C:r_1.cfast', 9): 1, ('C:r_1.cfast', 7): 8, ('C:r_1.cfast', 8): 1, ('C:r_12.cfast', 7): 15, ('b7f.out', 7): 2, ('g9_big_r1.dfast.out', 10): 212, ('g9_big_r1.dfast.out', 11): 266, ('g9_big_r1.dfast.out', 12): 19, ('g9_c8_r1.dfast.out', 8): 53, ('g9_lp10_r14.dfast.out', 10): 1, ('b1.out', 10): 6, ('b10.out', 11): 5, ('b10.out', 9): 1, ('b6.out', 10): 16, ('b6.out', 9): 1, ('b8.out', 10): 1, ('small.out', 10): 7, ('cert_bf_1.out', 7): 3, ('win14.out', 7): 178, ('win8.out', 7): 23, ('win89.out', 8): 375, ('win89.out', 9): 312, ('C:cert_bf.cfast', 7): 1, ('u1.pat', 7): 9, ('u1.pat', 8): 17, ('u1.pat', 9): 37, ('u1.pat', 10): 49, ('u1.pat', 11): 49, ('u1.pat', 12): 49, ('u1.pat', 13): 49, ('u1.pat', 14): 49, ('u1.pat', 15): 49, ('u1.pat', 16): 49, ('u1.pat', 17): 49, ('u2.pat', 7): 1, ('u2.pat', 8): 1, ('u2.pat', 9): 13, ('u2.pat', 10): 13, ('u2.pat', 11): 13, ('u2.pat', 12): 13, ('u2.pat', 13): 13, ('u2.pat', 14): 13, ('u2.pat', 15): 13, ('u2.pat', 16): 13, ('u2.pat', 17): 13, ('u10.pat', 9): 3, ('u10.pat', 10): 3, ('u10.pat', 11): 3, ('u10.pat', 12): 3, ('u10.pat', 13): 3, ('u10.pat', 14): 3, ('u10.pat', 15): 3, ('u10.pat', 16): 3, ('u10.pat', 17): 3, ('win9.out', 10): 124, ('win9.out', 9): 16, ('win25.out', 9): 10, ('win25b.out', 9): 6, ('win27.out', 7): 2, ('win27.out', 10): 4, ('win29.out', 7): 4, ('win31.out', 8): 9, ('RSST', 7): 27, ('RSST', 8): 55, ('RSST', 9): 76}
+sep: NV=942 RBIG=104 patterns=16569
+warm rows 876
+iter 0 t=0.259259 rows 1116 added 240
+iter 1 t=0.259259 rows 1356 added 240
+iter 2 t=0.259259 rows 1596 added 240
+iter 3 t=0.259259 rows 1836 added 240
+iter 4 t=0.259259 rows 2076 added 240
+iter 5 t=0.259259 rows 2276 added 200
+iter 6 t=0.259259 rows 2476 added 200
+iter 7 t=0.259259 rows 2676 added 200
+iter 8 t=0.259259 rows 2876 added 200
+iter 9 t=0.259259 rows 3116 added 240
+iter 10 t=0.259259 rows 3276 added 160
+iter 11 t=0.259259 rows 3516 added 240
+iter 12 t=0.259259 rows 3756 added 240
+iter 13 t=0.259259 rows 3996 added 240
+iter 14 t=0.259259 rows 4156 added 160
+iter 15 t=0.259259 rows 4356 added 200
+iter 16 t=0.259259 rows 4596 added 240
+iter 17 t=0.259259 rows 4756 added 160
+iter 18 t=0.259259 rows 4916 added 160
+iter 19 t=0.259259 rows 5078 added 162
+iter 20 t=0.259259 rows 5238 added 160
+iter 21 t=0.259259 rows 5399 added 161
+iter 22 t=0.259259 rows 5599 added 200
+iter 23 t=0.259259 rows 5759 added 160
+iter 24 t=0.259259 rows 5923 added 164
+iter 25 t=0.259259 rows 6083 added 160
+iter 26 t=0.259259 rows 6245 added 162
+iter 27 t=0.259259 rows 6405 added 160
+iter 28 t=0.259259 rows 6565 added 160
+iter 29 t=0.259259 rows 6804 added 239
+iter 30 t=0.259259 rows 7044 added 240
+iter 31 t=0.259259 rows 7204 added 160
+iter 32 t=0.259259 rows 7368 added 164
+iter 33 t=0.259259 rows 7516 added 148
+iter 34 t=0.259259 rows 7676 added 160
+iter 35 t=0.259259 rows 7820 added 144
+iter 36 t=0.259259 rows 7942 added 122
+iter 37 t=0.259259 rows 8102 added 160
+iter 38 t=0.259259 rows 8262 added 160
+iter 39 t=0.259259 rows 8422 added 160
+iter 40 t=0.259259 rows 8552 added 130
+iter 41 t=0.259259 rows 8697 added 145
+iter 42 t=0.259259 rows 8857 added 160
+iter 43 t=0.259259 rows 9005 added 148
+iter 44 t=0.259259 rows 9165 added 160
+iter 45 t=0.259259 rows 9326 added 161
+iter 46 t=0.259259 rows 9446 added 120
+iter 47 t=0.259259 rows 9581 added 135
+iter 48 t=0.259259 rows 9741 added 160
+iter 49 t=0.259259 rows 9901 added 160
+iter 50 t=0.259259 rows 10038 added 137
+iter 51 t=0.259259 rows 10198 added 160
+iter 52 t=0.259259 rows 10358 added 160
+iter 53 t=0.259259 rows 10478 added 120
+iter 54 t=0.259259 rows 10642 added 164
+iter 55 t=0.259259 rows 10762 added 120
+iter 56 t=0.259259 rows 10882 added 120
+iter 57 t=0.259259 rows 11002 added 120
+iter 58 t=0.259259 rows 11162 added 160
+iter 59 t=0.259259 rows 11282 added 120
+iter 60 t=0.259259 rows 11402 added 120
+iter 61 t=0.259259 rows 11522 added 120
+iter 62 t=0.259259 rows 11683 added 161
+iter 63 t=0.259259 rows 11803 added 120
+iter 64 t=0.259259 rows 11963 added 160
+iter 65 t=0.259259 rows 12123 added 160
+iter 66 t=0.259259 rows 12263 added 140
+iter 67 t=0.259259 rows 12387 added 124
+iter 68 t=0.259259 rows 12529 added 142
+iter 69 t=0.259259 rows 12649 added 120
+iter 70 t=0.259259 rows 12779 added 130
+iter 71 t=0.259259 rows 12901 added 122
+iter 72 t=0.259259 rows 13021 added 120
+iter 73 t=0.259259 rows 13181 added 160
+iter 74 t=0.259259 rows 13301 added 120
+iter 75 t=0.259259 rows 13421 added 120
+iter 76 t=0.259259 rows 13541 added 120
+iter 77 t=0.259259 rows 13702 added 161
+iter 78 t=0.259259 rows 13830 added 128
+iter 79 t=0.259259 rows 13910 added 80
+iter 80 t=0.259259 rows 14058 added 148
+iter 81 t=0.259259 rows 14194 added 136
+iter 82 t=0.259259 rows 14314 added 120
+iter 83 t=0.259259 rows 14434 added 120
+iter 84 t=0.259259 rows 14554 added 120
+iter 85 t=0.259259 rows 14674 added 120
+iter 86 t=0.259259 rows 14834 added 160
+iter 87 t=0.259259 rows 14932 added 98
+iter 88 t=0.259259 rows 15052 added 120
+iter 89 t=0.259259 rows 15172 added 120
+iter 90 t=0.259259 rows 15293 added 121
+iter 91 t=0.259259 rows 15413 added 120
+iter 92 t=0.259259 rows 15524 added 111
+iter 93 t=0.259259 rows 15644 added 120
+iter 94 t=0.259259 rows 15764 added 120
+iter 95 t=0.259259 rows 15908 added 144
+iter 96 t=0.259259 rows 16028 added 120
+iter 97 t=0.259259 rows 16148 added 120
+iter 98 t=0.259259 rows 16272 added 124
+iter 99 t=0.259259 rows 16392 added 120
+iter 100 t=0.259259 rows 16512 added 120
+iter 101 t=0.259259 rows 16635 added 123
+iter 102 t=0.259259 rows 16716 added 81
+iter 103 t=0.259259 rows 16836 added 120
+iter 104 t=0.259259 rows 16956 added 120
+iter 105 t=0.259259 rows 17047 added 91
+iter 106 t=0.259259 rows 17203 added 156
+iter 107 t=0.259259 rows 17283 added 80
+iter 108 t=0.259259 rows 17365 added 82
+iter 109 t=0.259259 rows 17493 added 128
+iter 110 t=0.259259 rows 17613 added 120
+iter 111 t=0.259259 rows 17693 added 80
+iter 112 t=0.259259 rows 17815 added 122
+iter 113 t=0.259259 rows 17915 added 100
+iter 114 t=0.259259 rows 18039 added 124
+iter 115 t=0.259259 rows 18125 added 86
+iter 116 t=0.259259 rows 18205 added 80
+iter 117 t=0.259259 rows 18285 added 80
+iter 118 t=0.259259 rows 18378 added 93
+iter 119 t=0.259259 rows 18483 added 105
+iter 120 t=0.259259 rows 18574 added 91
+iter 121 t=0.259259 rows 18679 added 105
+iter 122 t=0.259259 rows 18799 added 120
+iter 123 t=0.259259 rows 18903 added 104
+iter 124 t=0.259259 rows 19023 added 120
+iter 125 t=0.259259 rows 19112 added 89
+iter 126 t=0.259259 rows 19193 added 81
+iter 127 t=0.259259 rows 19313 added 120
+iter 128 t=0.259259 rows 19433 added 120
+iter 129 t=0.259259 rows 19513 added 80
+iter 130 t=0.259259 rows 19593 added 80
+iter 131 t=0.259259 rows 19673 added 80
+iter 132 t=0.259259 rows 19773 added 100
+iter 133 t=0.259259 rows 19883 added 110
+iter 134 t=0.259259 rows 19985 added 102
+iter 135 t=0.259259 rows 20068 added 83
+iter 136 t=0.259259 rows 20148 added 80
+iter 137 t=0.259259 rows 20241 added 93
+iter 138 t=0.259259 rows 20323 added 82
+iter 139 t=0.259259 rows 20432 added 109
+iter 140 t=0.259259 rows 20525 added 93
+iter 141 t=0.259259 rows 20605 added 80
+iter 142 t=0.259259 rows 20727 added 122
+iter 143 t=0.259259 rows 20807 added 80
+iter 144 t=0.259259 rows 20887 added 80
+iter 145 t=0.259259 rows 21007 added 120
+iter 146 t=0.259259 rows 21090 added 83
+iter 147 t=0.259259 rows 21183 added 93
+iter 148 t=0.259259 rows 21291 added 108
+iter 149 t=0.259259 rows 21411 added 120
+iter 150 t=0.259259 rows 21491 added 80
+iter 151 t=0.259259 rows 21612 added 121
+iter 152 t=0.259259 rows 21711 added 99
+iter 153 t=0.259259 rows 21831 added 120
+iter 154 t=0.259259 rows 21946 added 115
+iter 155 t=0.259259 rows 22026 added 80
+iter 156 t=0.259259 rows 22108 added 82
+iter 157 t=0.259259 rows 22188 added 80
+iter 158 t=0.259259 rows 22308 added 120
+iter 159 t=0.259259 rows 22396 added 88
+iter 160 t=0.259259 rows 22478 added 82
+iter 161 t=0.259259 rows 22567 added 89
+iter 162 t=0.259259 rows 22647 added 80
+iter 163 t=0.259259 rows 22727 added 80
+iter 164 t=0.259259 rows 22808 added 81
+iter 165 t=0.259259 rows 22888 added 80
+iter 166 t=0.259259 rows 22983 added 95
+iter 167 t=0.259259 rows 23085 added 102
+iter 168 t=0.259259 rows 23176 added 91
+iter 169 t=0.259259 rows 23256 added 80
+iter 170 t=0.259259 rows 23336 added 80
+iter 171 t=0.259259 rows 23417 added 81
+iter 172 t=0.259259 rows 23497 added 80
+iter 173 t=0.259259 rows 23577 added 80
+iter 174 t=0.259259 rows 23657 added 80
+iter 175 t=0.259259 rows 23742 added 85
+iter 176 t=0.259259 rows 23862 added 120
+iter 177 t=0.259259 rows 23942 added 80
+iter 178 t=0.259259 rows 24062 added 120
+iter 179 t=0.259259 rows 24142 added 80
+iter 180 t=0.259259 rows 24222 added 80
+iter 181 t=0.259259 rows 24304 added 82
+iter 182 t=0.259259 rows 24386 added 82
+iter 183 t=0.259259 rows 24473 added 87
+iter 184 t=0.259259 rows 24553 added 80
+iter 185 t=0.259259 rows 24671 added 118
+iter 186 t=0.259259 rows 24789 added 118
+iter 187 t=0.259259 rows 24869 added 80
+iter 188 t=0.259259 rows 24976 added 107
+iter 189 t=0.259259 rows 25056 added 80
+iter 190 t=0.259259 rows 25136 added 80
+iter 191 t=0.259259 rows 25256 added 120
+iter 192 t=0.259259 rows 25355 added 99
+iter 193 t=0.259259 rows 25475 added 120
+iter 194 t=0.259259 rows 25595 added 120
+iter 195 t=0.259259 rows 25715 added 120
+iter 196 t=0.259259 rows 25797 added 82
+iter 197 t=0.259259 rows 25877 added 80
+iter 198 t=0.259259 rows 25957 added 80
+iter 199 t=0.259259 rows 26038 added 81
+iter 200 t=0.259259 rows 26158 added 120
+iter 201 t=0.259259 rows 26238 added 80
+iter 202 t=0.259259 rows 26318 added 80
+iter 203 t=0.259259 rows 26404 added 86
+iter 204 t=0.259259 rows 26484 added 80
+iter 205 t=0.259259 rows 26582 added 98
+iter 206 t=0.259259 rows 26702 added 120
+iter 207 t=0.259259 rows 26791 added 89
+iter 208 t=0.259259 rows 26911 added 120
+iter 209 t=0.259259 rows 26991 added 80
+iter 210 t=0.259259 rows 27092 added 101
+iter 211 t=0.259259 rows 27172 added 80
+iter 212 t=0.259259 rows 27267 added 95
+iter 213 t=0.259259 rows 27349 added 82
+iter 214 t=0.259259 rows 27436 added 87
+iter 215 t=0.259259 rows 27535 added 99
+iter 216 t=0.259259 rows 27615 added 80
+iter 217 t=0.259259 rows 27701 added 86
+iter 218 t=0.259259 rows 27781 added 80
+iter 219 t=0.259259 rows 27861 added 80
+iter 220 t=0.259259 rows 27981 added 120
+iter 221 t=0.259259 rows 28061 added 80
+iter 222 t=0.259259 rows 28141 added 80
+iter 223 t=0.259259 rows 28221 added 80
+iter 224 t=0.259259 rows 28309 added 88
+iter 225 t=0.259259 rows 28389 added 80
+iter 226 t=0.259259 rows 28469 added 80
+iter 227 t=0.259259 rows 28549 added 80
+iter 228 t=0.259259 rows 28665 added 116
+iter 229 t=0.259259 rows 28785 added 120
+iter 230 t=0.259259 rows 28866 added 81
+iter 231 t=0.259259 rows 28946 added 80
+iter 232 t=0.259259 rows 29026 added 80
+iter 233 t=0.259259 rows 29106 added 80
+iter 234 t=0.259259 rows 29186 added 80
+iter 235 t=0.259259 rows 29266 added 80
+iter 236 t=0.259259 rows 29346 added 80
+iter 237 t=0.259259 rows 29427 added 81
+iter 238 t=0.259259 rows 29507 added 80
+iter 239 t=0.259259 rows 29587 added 80
+iter 240 t=0.259259 rows 29667 added 80
+iter 241 t=0.259259 rows 29750 added 83
+iter 242 t=0.259259 rows 29830 added 80
+iter 243 t=0.259259 rows 29910 added 80
+iter 244 t=0.259259 rows 29991 added 81
+iter 245 t=0.259259 rows 30071 added 80
+iter 246 t=0.259259 rows 30151 added 80
+iter 247 t=0.259259 rows 30231 added 80
+iter 248 t=0.259259 rows 30311 added 80
+iter 249 t=0.259259 rows 30405 added 94
+iter 250 t=0.259259 rows 30493 added 88
+iter 251 t=0.259259 rows 30573 added 80
+iter 252 t=0.259259 rows 30653 added 80
+iter 253 t=0.259259 rows 30733 added 80
+iter 254 t=0.259259 rows 30813 added 80
+iter 255 t=0.259259 rows 30853 added 40
+iter 256 t=0.259259 rows 30933 added 80
+iter 257 t=0.259259 rows 31053 added 120
+iter 258 t=0.259259 rows 31143 added 90
+iter 259 t=0.259259 rows 31223 added 80
+iter 260 t=0.259259 rows 31303 added 80
+iter 261 t=0.259259 rows 31383 added 80
+iter 262 t=0.259259 rows 31463 added 80
+iter 263 t=0.259259 rows 31553 added 90
+iter 264 t=0.259259 rows 31633 added 80
+iter 265 t=0.259259 rows 31713 added 80
+iter 266 t=0.259259 rows 31755 added 42
+iter 267 t=0.259259 rows 31839 added 84
+iter 268 t=0.259259 rows 31959 added 120
+iter 269 t=0.259259 rows 32061 added 102
+iter 270 t=0.259259 rows 32181 added 120
+iter 271 t=0.259259 rows 32264 added 83
+iter 272 t=0.259259 rows 32345 added 81
+iter 273 t=0.259259 rows 32426 added 81
+iter 274 t=0.259259 rows 32498 added 72
+iter 275 t=0.259259 rows 32578 added 80
+iter 276 t=0.259259 rows 32658 added 80
+iter 277 t=0.259259 rows 32738 added 80
+iter 278 t=0.259259 rows 32818 added 80
+iter 279 t=0.259259 rows 32898 added 80
+iter 280 t=0.259259 rows 32923 added 25
+iter 281 t=0.259259 rows 33003 added 80
+iter 282 t=0.259259 rows 33085 added 82
+iter 283 t=0.259259 rows 33165 added 80
+iter 284 t=0.259259 rows 33245 added 80
+iter 285 t=0.259259 rows 33319 added 74
+iter 286 t=0.259259 rows 33399 added 80
+iter 287 t=0.259259 rows 33460 added 61
+iter 288 t=0.259259 rows 33540 added 80
+iter 289 t=0.259259 rows 33660 added 120
+iter 290 t=0.259259 rows 33740 added 80
+iter 291 t=0.259259 rows 33821 added 81
+iter 292 t=0.259259 rows 33901 added 80
+iter 293 t=0.259259 rows 33971 added 70
+iter 294 t=0.259259 rows 34012 added 41
+iter 295 t=0.259259 rows 34092 added 80
+iter 296 t=0.259259 rows 34172 added 80
+iter 297 t=0.259259 rows 34252 added 80
+iter 298 t=0.259259 rows 34332 added 80
+iter 299 t=0.259259 rows 34432 added 100
+iter 300 t=0.259259 rows 34512 added 80
+iter 301 t=0.259259 rows 34595 added 83
+iter 302 t=0.259259 rows 34663 added 68
+iter 303 t=0.259259 rows 34703 added 40
+iter 304 t=0.259259 rows 34783 added 80
+iter 305 t=0.259259 rows 34843 added 60
+iter 306 t=0.259259 rows 34922 added 79
+iter 307 t=0.259259 rows 35002 added 80
+iter 308 t=0.259259 rows 35042 added 40
+iter 309 t=0.259259 rows 35083 added 41
+iter 310 t=0.259259 rows 35163 added 80
+iter 311 t=0.259259 rows 35163 added 0
+/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/studio/rsstD/wlp3r.py:203: RuntimeWarning: divide by zero encountered in matmul
+  slack = np.array(b_ub) - np.array(A_ub) @ res.x
+/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/studio/rsstD/wlp3r.py:203: RuntimeWarning: overflow encountered in matmul
+  slack = np.array(b_ub) - np.array(A_ub) @ res.x
+/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/studio/rsstD/wlp3r.py:203: RuntimeWarning: invalid value encountered in matmul
+  slack = np.array(b_ub) - np.array(A_ub) @ res.x
+# wlp3 tag=rsstD1 warm=out/job28/tight_13.txt rpat=loop/studio/rsstD/out/rpatD.txt pat=out/pairs_D7_k2_dfast.out pat=out/pairs_D8_k3_dfast.out pat=out/pairs_D9_k4_dfast.out pat=out/eq_D7_dfast.out pat=out/eq_D8_k3_dfast.out pat=out/lp_dfast.out pat=out/pairs_D10_k5_dfast_partial.out pat=out/def_b7_d14.out pat=out/def_b7_e15.out pat=out/def_bf_s5.out pat=out/def_bigger16.partial.out pat=out/def_k3g.out pat=out/def_k4c5.out pat=out/def_k4c6.out pat=out/def_loop1_a.out pat=out/def_loop1_b.out pat=out/def_loop2_bf00.out pat=out/def_loop2_bf01.out pat=out/def_loop2_bf02.out pat=out/def_loop4_a.out pat=out/def_loop_new1_1.out pat=out/def_loop_new2_1.out pat=out/def_loop_new3_1.out pat=out/def_loop_old_1.out pat=out/def_loop_old_5.out pat=out/def_loop_op1_1.out pat=out/def_loop_sv1_3.out pat=out/def_r1.out pat=out/def_verify_AB.out pat=out/def_verify_K4.out pat=out/def_w7_r16.out cpat=job27/k2a.cfast cpat=job27/k2b.cfast cpat=job27/part00.cfast cpat=job27/part01.cfast cpat=out/def_k4c5a.cfast cpat=out/def_k4c5b.cfast cpat=out/def_loop1_c.cfast cpat=out/def_loop1_c00.cfast cpat=out/def_loop1_c01.cfast cpat=out/def_loop1_c02.cfast cpat=out/def_loop2_c.cfast cpat=out/def_loop_new1_2.cfast cpat=out/def_loop_new1b_2.cfast cpat=out/def_loop_new1b_2rev.cfast cpat=out/def_loop_old_2.cfast cpat=out/def_open2.cfast cpat=out/def_r1.cfast cpat=out/def_verify_D3_0.cfast cpat=out/def_verify_D3_1.cfast cpat=out/def_verify_D3_2.cfast cpat=out/def_verify_K4_0.partial.cfast cpat=out/def_verify_K4_1.partial.cfast cpat=out/def_verify_K4_2.partial.cfast cpat=out/def_w7_D3_0.cfast cpat=out/def_w7_D3_1.cfast cpat=out/def_w7_D3_2.cfast cpat=out/def_w7_part1.cfast w7plus pat=out/job28/r_1.out pat=out/job28/r_10.out pat=out/job28/r_11.out pat=out/job28/r_12.out pat=out/job28/r_12.partial.out pat=out/job28/r_2.out pat=out/job28/r_3.out pat=out/job28/r_4.out pat=out/job28/r_5.out pat=out/job28/r_6.out pat=out/job28/r_7.out pat=out/job28/r_8.out pat=out/job28/r_9.out pat=out/job28/r_D10k5.out pat=out/job28/r_bind.out pat=out/job28/r_hr1.out cpat=out/job28/r_1.cfast cpat=out/job28/r_10.cfast cpat=out/job28/r_11.cfast cpat=out/job28/r_12.cfast cpat=out/job28/r_3.cfast cpat=out/job28/r_4.cfast cpat=out/job28/r_5.cfast cpat=out/job28/r_6.cfast cpat=out/job28/r_7.cfast cpat=out/job28/r_8.cfast cpat=out/job28/r_9.cfast cpat=out/job28/r_D10k5.cfast cpat=out/job28/r_bind.cfast cpat=out/job28/r_hr1.cfast pat=loop/appears/q1_d1.out pat=loop/appears/q2_census29_34p.out pat=loop/appears/q2_census33q.out pat=loop/appears/q2_defects_s20.out pat=loop/b7/b7f.out pat=loop/b7/d14.out pat=loop/b7/e15.out pat=loop/b7/k4_m7_5567576.out pat=loop/b7/k4_m7_5575576.out pat=loop/b7/k4_m7_5675756.out pat=loop/b7/k4_m7_5675765.out pat=loop/b7/k4_m7_5676575.out pat=loop/b7/k4_m7_5765575.out pat=loop/b7/k4_m7_5765756.out pat=loop/b7/k4_m8_5567576.out pat=loop/b7/k4_m8_5575576.out pat=loop/b7/k4_m8_5765575.out pat=loop/b7/k4_m8_5765756.out pat=loop/b7/k5_d14.out pat=loop/b7/k5_m7_5567576.out pat=loop/b7/k5_m7_5575576.out pat=loop/e7/w15.out pat=loop/g9/big_K2_c10.out pat=loop/g9/big_K2_c11.out pat=loop/g9/big_K2_c12.out pat=loop/g9/big_K2_c9.out pat=loop/g9/big_K3_c10.out pat=loop/g9/big_K3_c10_lp.out pat=loop/g9/big_K3_c10_lpword.out pat=loop/g9/big_K3_c11.out pat=loop/g9/big_K3_c12.out pat=loop/g9/big_K3_c9.out pat=loop/g9/g9_K2_c5.out pat=loop/g9/g9_K2_c6.out pat=loop/g9/g9_K2_c7.out pat=loop/g9/g9_K2_c8.out pat=loop/g9/g9_K3_c5.out pat=loop/g9/g9_K3_c6.out pat=loop/g9/g9_K3_c7.out pat=loop/g9/g9_K3_c8.out pat=loop/g9/g9_K3_c8_part1.out pat=loop/g9/g9_K3_c8_part2.out pat=loop/g9/g9_big_r1.dfast.out pat=loop/g9/g9_c8_r1.dfast.out pat=loop/g9/g9_lp10_r14.dfast.out pat=loop/g9/v9_K2_c5.out pat=loop/g9/v9_K2_c6.out pat=loop/g9/v9_K2_c7.out pat=loop/g9/v9_K2_c8.out pat=loop/g9/v9_K3_c5.out pat=loop/g9/v9_K3m7_c5.out pat=loop/g9/v9_K3m7_c6.out pat=loop/g9/v9_K3m7_c7.out pat=loop/g9/val_d8_c5_K3.out pat=loop/g9/val_d8_c6_K3.out pat=loop/g9/val_d8_c7_K3.out pat=loop/g9/val_ref_c5_K3.out pat=loop/g9/val_ref_c6_K3.out pat=loop/g9/val_ref_c7_K3.out pat=loop/kempe_w7_5666567.out pat=loop/lf/k3_m9_f9_1.out pat=loop/lf/k3_m9_f9_10.out pat=loop/lf/k3_m9_f9_11.out pat=loop/lf/k3_m9_f9_12.out pat=loop/lf/k3_m9_f9_13.out pat=loop/lf/k3_m9_f9_14.out pat=loop/lf/k3_m9_f9_15.out pat=loop/lf/k3_m9_f9_16.out pat=loop/lf/k3_m9_f9_17.out pat=loop/lf/k3_m9_f9_18.out pat=loop/lf/k3_m9_f9_19.out pat=loop/lf/k3_m9_f9_2.out pat=loop/lf/k3_m9_f9_20.out pat=loop/lf/k3_m9_f9_21.out pat=loop/lf/k3_m9_f9_22.out pat=loop/lf/k3_m9_f9_23.out pat=loop/lf/k3_m9_f9_24.out pat=loop/lf/k3_m9_f9_25.out pat=loop/lf/k3_m9_f9_26.out pat=loop/lf/k3_m9_f9_27.out pat=loop/lf/k3_m9_f9_28.out pat=loop/lf/k3_m9_f9_29.out pat=loop/lf/k3_m9_f9_3.out pat=loop/lf/k3_m9_f9_30.out pat=loop/lf/k3_m9_f9_31.out pat=loop/lf/k3_m9_f9_32.out pat=loop/lf/k3_m9_f9_33.out pat=loop/lf/k3_m9_f9_34.out pat=loop/lf/k3_m9_f9_35.out pat=loop/lf/k3_m9_f9_36.out pat=loop/lf/k3_m9_f9_37.out pat=loop/lf/k3_m9_f9_38.out pat=loop/lf/k3_m9_f9_39.out pat=loop/lf/k3_m9_f9_4.out pat=loop/lf/k3_m9_f9_40.out pat=loop/lf/k3_m9_f9_41.out pat=loop/lf/k3_m9_f9_42.out pat=loop/lf/k3_m9_f9_43.out pat=loop/lf/k3_m9_f9_44.out pat=loop/lf/k3_m9_f9_45.out pat=loop/lf/k3_m9_f9_46.out pat=loop/lf/k3_m9_f9_47.out pat=loop/lf/k3_m9_f9_48.out pat=loop/lf/k3_m9_f9_49.out pat=loop/lf/k3_m9_f9_5.out pat=loop/lf/k3_m9_f9_6.out pat=loop/lf/k3_m9_f9_7.out pat=loop/lf/k3_m9_f9_8.out pat=loop/lf/k3_m9_f9_9.out pat=loop/lf/k4_m9_f7_1.out pat=loop/lf/k4_m9_f7_10.out pat=loop/lf/k4_m9_f7_11.out pat=loop/lf/k4_m9_f7_12.out pat=loop/lf/k4_m9_f7_13.out pat=loop/lf/k4_m9_f7_14.out pat=loop/lf/k4_m9_f7_15.out pat=loop/lf/k4_m9_f7_16.out pat=loop/lf/k4_m9_f7_17.out pat=loop/lf/k4_m9_f7_18.out pat=loop/lf/k4_m9_f7_19.out pat=loop/lf/k4_m9_f7_2.out pat=loop/lf/k4_m9_f7_20.out pat=loop/lf/k4_m9_f7_21.out pat=loop/lf/k4_m9_f7_22.out pat=loop/lf/k4_m9_f7_23.out pat=loop/lf/k4_m9_f7_24.out pat=loop/lf/k4_m9_f7_25.out pat=loop/lf/k4_m9_f7_26.out pat=loop/lf/k4_m9_f7_27.out pat=loop/lf/k4_m9_f7_28.out pat=loop/lf/k4_m9_f7_29.out pat=loop/lf/k4_m9_f7_3.out pat=loop/lf/k4_m9_f7_30.out pat=loop/lf/k4_m9_f7_31.out pat=loop/lf/k4_m9_f7_32.out pat=loop/lf/k4_m9_f7_33.out pat=loop/lf/k4_m9_f7_34.out pat=loop/lf/k4_m9_f7_35.out pat=loop/lf/k4_m9_f7_36.out pat=loop/lf/k4_m9_f7_37.out pat=loop/lf/k4_m9_f7_38.out pat=loop/lf/k4_m9_f7_39.out pat=loop/lf/k4_m9_f7_4.out pat=loop/lf/k4_m9_f7_40.out pat=loop/lf/k4_m9_f7_41.out pat=loop/lf/k4_m9_f7_42.out pat=loop/lf/k4_m9_f7_43.out pat=loop/lf/k4_m9_f7_44.out pat=loop/lf/k4_m9_f7_45.out pat=loop/lf/k4_m9_f7_46.out pat=loop/lf/k4_m9_f7_47.out pat=loop/lf/k4_m9_f7_48.out pat=loop/lf/k4_m9_f7_49.out pat=loop/lf/k4_m9_f7_5.out pat=loop/lf/k4_m9_f7_6.out pat=loop/lf/k4_m9_f7_7.out pat=loop/lf/k4_m9_f7_8.out pat=loop/lf/k4_m9_f7_9.out pat=loop/lone/b1.out pat=loop/lone/b10.out pat=loop/lone/b6.out pat=loop/lone/b8.out pat=loop/lone/hl3.out pat=loop/lone/u1.out pat=loop/lone/u10.out pat=loop/lone/u2.out pat=loop/lone/u3.out pat=loop/lone/u5.out pat=loop/lone/u7.out pat=loop/lp/d10/small.out pat=loop/lp/r_1.out pat=loop/lp/r_2.out pat=loop/lp/r_d10a.out pat=loop/rules/cert_bf_0.out pat=loop/rules/cert_bf_1.out pat=loop/w2/win14.out pat=loop/w2/win17.out pat=loop/w2/win17_dfast16cap.out pat=loop/w2/win8.out pat=loop/w2/win89.out cpat=loop/lemmaA/c_all.cfast cpat=loop/lone/hl3c.cfast cpat=loop/lp/r_1.cfast cpat=loop/lp/r_2.cfast cpat=loop/rules/cert_bf.cfast pat=loop/lone/u1.pat pat=loop/lone/u2.pat pat=loop/lone/u3.pat pat=loop/lone/u5.pat pat=loop/lone/u7.pat pat=loop/lone/u10.pat pat=loop/n9/win9.out pat=loop/n9/win25.out pat=loop/n9/win25b.out pat=loop/n9/win27.out pat=loop/n9/win29.out pat=loop/n9/win31.out: patterns {('pairs_D7_k2_dfast.out', 7): 59, ('pairs_D8_k3_dfast.out', 8): 256, ('pairs_D9_k4_dfast.out', 9): 524, ('eq_D7_dfast.out', 7): 7698, ('eq_D8_k3_dfast.out', 8): 3192, ('lp_dfast.out', 7): 68, ('lp_dfast.out', 8): 224, ('lp_dfast.out', 9): 133, ('lp_dfast.out', 10): 8, ('pairs_D10_k5_dfast_partial.out', 10): 203, ('def_loop_new1_1.out', 7): 3, ('def_loop_old_1.out', 7): 3, ('def_r1.out', 7): 44, ('C:k2a.cfast', 7): 11, ('C:k2b.cfast', 7): 13, ('C:part00.cfast', 7): 498, ('C:part01.cfast', 7): 485, ('C:def_r1.cfast', 7): 4, ('r_1.out', 7): 14, ('r_1.out', 8): 6, ('r_10.out', 7): 4, ('r_11.out', 7): 5, ('r_12.out', 7): 47, ('r_2.out', 7): 169, ('r_2.out', 8): 30, ('r_2.out', 9): 43, ('r_3.out', 10): 3, ('r_4.out', 10): 3, ('r_5.out', 10): 3, ('r_6.out', 10): 3, ('r_7.out', 10): 3, ('r_8.out', 10): 1, ('r_9.out', 7): 7, ('r_D10k5.out', 10): 353, ('r_hr1.out', 7): 8, ('C:r_1.cfast', 9): 1, ('C:r_1.cfast', 7): 8, ('C:r_1.cfast', 8): 1, ('C:r_12.cfast', 7): 15, ('b7f.out', 7): 2, ('g9_big_r1.dfast.out', 10): 212, ('g9_big_r1.dfast.out', 11): 266, ('g9_big_r1.dfast.out', 12): 19, ('g9_c8_r1.dfast.out', 8): 53, ('g9_lp10_r14.dfast.out', 10): 1, ('b1.out', 10): 6, ('b10.out', 11): 5, ('b10.out', 9): 1, ('b6.out', 10): 16, ('b6.out', 9): 1, ('b8.out', 10): 1, ('small.out', 10): 7, ('cert_bf_1.out', 7): 3, ('win14.out', 7): 178, ('win8.out', 7): 23, ('win89.out', 8): 375, ('win89.out', 9): 312, ('C:cert_bf.cfast', 7): 1, ('u1.pat', 7): 9, ('u1.pat', 8): 17, ('u1.pat', 9): 37, ('u1.pat', 10): 49, ('u1.pat', 11): 49, ('u1.pat', 12): 49, ('u1.pat', 13): 49, ('u1.pat', 14): 49, ('u1.pat', 15): 49, ('u1.pat', 16): 49, ('u1.pat', 17): 49, ('u2.pat', 7): 1, ('u2.pat', 8): 1, ('u2.pat', 9): 13, ('u2.pat', 10): 13, ('u2.pat', 11): 13, ('u2.pat', 12): 13, ('u2.pat', 13): 13, ('u2.pat', 14): 13, ('u2.pat', 15): 13, ('u2.pat', 16): 13, ('u2.pat', 17): 13, ('u10.pat', 9): 3, ('u10.pat', 10): 3, ('u10.pat', 11): 3, ('u10.pat', 12): 3, ('u10.pat', 13): 3, ('u10.pat', 14): 3, ('u10.pat', 15): 3, ('u10.pat', 16): 3, ('u10.pat', 17): 3, ('win9.out', 10): 124, ('win9.out', 9): 16, ('win25.out', 9): 10, ('win25b.out', 9): 6, ('win27.out', 7): 2, ('win27.out', 10): 4, ('win29.out', 7): 4, ('win31.out', 8): 9, ('RSST', 7): 27, ('RSST', 8): 55, ('RSST', 9): 76}; 342 non-R sender words, 942 rooted vars, 35163 receiver rows; t* = 0.259259
+dual certificate (rows with positive weight; receiver rows: link word w_0.., s word s_i between w_i,w_i+1):
+  0.3704  sender 55667
+  0.1852  sender 55767
+  0.0741  sender 77777
+  0.3704  receiver d=7 link 5675765 s 6577575, 3 5-nbrs: 7|5566 7|5576 7|7777
+nonzero rule weights y[rooted word u|a b c e]:
+  7|5566  0.7407
+  7|5567  0.2460
+  7|5568  0.1947
+  7|5569  0.0539
+  7|5575  0.3704
+  7|5576  0.3704
+  7|5577  0.1975
+  7|5578  0.1930
+  7|5579  0.1818
+  7|5585  0.3704
+  7|5586  0.3333
+  7|5587  0.1975
+  7|5588  0.1930
+  7|5589  0.0539
+  7|5595  0.3406
+  7|5596  0.2772
+  7|5597  0.0047
+  7|5666  0.7407
+  7|5667  0.1975
+  7|5668  0.1571
+  7|5669  0.1684
+  7|5675  0.5264
+  7|5676  0.2972
+  7|5677  0.1526
+  7|5678  0.1554
+  7|5679  0.0539
+  7|5685  0.5511
+  7|5686  0.3333
+  7|5687  0.1526
+  7|5695  0.5589
+  7|5696  0.2772
+  7|5697  0.1526
+  7|5756  0.2144
+  7|5757  0.2099
+  7|5766  0.3704
+  7|5767  0.1591
+  7|5768  0.1619
+  7|5769  0.1619
+  7|5775  0.3210
+  7|5776  0.3329
+  7|5777  0.0978
+  7|5778  0.1619
+  7|5785  0.3585
+  7|5786  0.0849
+  7|5787  0.1591
+  7|5795  0.2318
+  7|5796  0.0974
+  7|5799  0.1619
+  7|5856  0.7037
+  7|5857  0.1852
+  7|5866  0.3333
+  7|5876  0.0912
+  7|5878  0.1619
+  7|5885  0.0932
+  7|5886  0.2954
+  7|5887  0.1591
+  7|5888  0.1619
+  7|5895  0.4141
+  7|5956  0.3406
+  7|5957  0.1773
+  7|5966  0.2677
+  7|5967  0.1526
+  7|5969  0.1684
+  7|5978  0.1554
+  7|5986  0.2318
+  7|5987  0.1526
+  7|5988  0.1554
+  7|5989  0.1684
+  7|5996  0.2772
+  7|6556  0.7407
+  7|6557  0.4948
+  7|6558  0.4920
+  7|6559  0.2772
