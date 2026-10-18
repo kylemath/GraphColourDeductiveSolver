@@ -336,3 +336,20 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
 - **Left for Job 26:** (iii) only, i.e. extracting a `FaceWalk` (the third ring as a face walk of the outside map, with
   distinct darts) from an appearing 2-ball, and feeding `FaceWalk.kempeMatching` into the `ConfigOcc` /
   `colorable_of_occ_dred` route.
+- **Step (iii), D-glue half, done (18 Oct, ~11:00Z): `DCheckOccWalk.lean`.**
+  - `ConfigOccW` is ConfigOcc with the ring only a `FaceWalk`. `ConfigOccW.colorable_of_ext` is verbatim: the gluing
+    never used ring injectivity.
+  - `ConfigOccW.colorable_of_dReducibleT` and `colorable_of_dReducible18` get KempeMatching from
+    `FaceWalk.kempeMatching`. Also `FaceWalk.mk_lt`, `RingFace.toFaceWalk` and `ConfigOcc.toW`.
+  - Axioms: propext, Classical.choice, Quot.sound, plus R1's check4..9 (as the RingFace versions).
+  - `occ24/gen_occ_walk.py`: the walk form of every per-key module. `Occ` replaces `ring_inj` with `ring_dinj`
+    (dart injectivity below the period), `configOcc` builds `FaceWalk.mk_lt` and returns a ConfigOccW, and
+    `colorable_of_occ_dred` goes through ConfigOccW. In the generated proofs, `ring_inj` was used only for RingFace's
+    injectivity field.
+  - All **49 keys of studio14b/k1_r17_19.txt compile with errors=0, sorry=0** (`occ24/walk_results.txt`, about 10 s each).
+  - So for these keys, D-reducibility applies to appearances whose third ring pinches or folds, provided the ring
+    walk has distinct darts.
+  - **Left:** (a) deriving `ring_dinj` from the other Occ fields. Equal ring darts share their inner face, so the same
+    apex; `int_inj` and the apex's rotation (distinct neighbours) then force equal positions. Ring chords, where the
+    apex is a ring vertex, need a separate case. (b) Producing the walk-form `Occ` from an appearing 2-ball (rotation
+    walks), as planned in steps 1–2.
