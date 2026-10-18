@@ -289,3 +289,7 @@ our agent R and have no output from it.
   - Finding: sender 55757 has no 6-neighbour, so no 6-relay can reach it. Its row is y-only and tight.
   - 55767 and 57667 are reached by the 6-centred split.
   - Next (stage 13): a 7-centred analogue aimed at 55757, on the round 48 registry (s14/argsA47).
+- **Two-engine (23:15Z): Studio's spec-only checker (written from RELAY_SPEC.md, 24c69bf8) passes s14r at 19/102.**
+  Upper is FEASIBLE, including bounds, senders and conservation. Lower is VALID: all 25 rows rebuild, with reduced costs
+  g[50016] = 2/17 and M[76667] = 8/17. **The relay line at 19/102 is [E2].** Note: the spec's by-d table (4.5) counts per kind;
+  the union is 9,660/4,465/1,226.
