@@ -1,3 +1,14 @@
+# Studio second-engine checks of Opus results (loop/studio/opus_check)
+
+**Required steps for every no-T [E2] check (Long Table, 18 Oct 21:52Z):**
+1. `feascheck.py SOL.json <args>`: exhaustive receiver separation (sep3xf, d = 7..15) plus the max-plus DP tail.
+   It does NOT evaluate sender rows.
+2. `sendercheck.py SOL.json <args>`: every Studio sender row at the solution must have lhs <= -1.
+3. `lowercheck.py CERT.json <args>`: rebuild the cert rows exactly. Each row must be a Studio row, and the combination
+   must give t coefficient -1 and 0 negative terms.
+- All three run with WLP3X_DEF=1 WLP_SEPF=1, from this tree's wheeldis root (so out/job30 loads). Also check the
+  loaded pattern counts per file (see s13_Dcounts.txt) against the other engine's before reporting.
+
 # Second engine for Opus's t* = 1/4 (P_own_lp, 0daf5198), Studio, 18 Oct ~18:50Z
 Inputs (copied from claude/project-thread-7uelj0 at 0daf5198): sol_s2x.json, cert_s2x.json, argsA.txt (local copy
 argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast here), k42map_C_cons.cfast.
