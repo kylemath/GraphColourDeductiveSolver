@@ -30,10 +30,11 @@ ARGS0 = sys.argv[1:]
 NOTX = 'notx' in ARGS0
 XCAP = float(next((a[5:] for a in ARGS0 if a.startswith('xcap=')), '3'))
 WARMF = next((a[5:] for a in ARGS0 if a.startswith('warm=')), None)
-MANY = int(next((a[5:] for a in ARGS0 if a.startswith('many=')), '40'))   # rows kept per degree per iteration
-ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many='))]
+MANY = int(next((a[5:] for a in ARGS0 if a.startswith('many=')), '40'))
+MAXIT = int(next((a[6:] for a in ARGS0 if a.startswith('maxit=')), '100000'))   # 0 = solve the warm rows once, no separation   # rows kept per degree per iteration
+ARGS_W = [a for a in ARGS0 if a not in ('notx',) and not a.startswith(('xcap=', 'warm=', 'many=', 'maxit='))]
 # Loader exclusions by name (Long Table, 17 Oct): defect-derived verdict files (out/def_*) and oracle stand-ins (hr1_or1)
-EXCL = ('out/def_', 'hr1_or1')
+EXCL = ('hr1_or1',) if os.environ.get('WLP3X_DEF') == '1' else ('out/def_', 'hr1_or1')   # def_ restored once second-engined (WLP3X_DEF=1)
 DROPPED = [a for a in ARGS_W if a.startswith(('pat=', 'cpat=')) and any(e in a for e in EXCL)]
 ARGS_W = [a for a in ARGS_W if a not in DROPPED]
 print('loader excluded %d files by name: %s' % (len(DROPPED), ' '.join(a.split('=', 1)[1] for a in DROPPED)), flush=True)
@@ -164,6 +165,7 @@ DS, DSF = list(range(7, 13)), list(range(7, 31))
 it = 0
 while True:
     res, yv, xv, z9, t = solve()
+    if it >= MAXIT: break
     added = 0
     for dl in (DS, DSF):
         for d in dl:
