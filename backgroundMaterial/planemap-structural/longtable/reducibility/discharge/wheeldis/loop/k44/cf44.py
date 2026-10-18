@@ -3,7 +3,7 @@ kc C -> cfast --fixed with kc's conservative X (kc_cf.cfast).
 kc not D, not C (conservative search over |X| <= 4 exhausted) -> diagnostics, kept out of the registry:
   kc -x with RSST's own X (conservative scoring of that X, rsst_x_kc.out), kcc2 -C2 broad search (rsst_C2.out),
   cfast --fixed RSST's X (rsst_C2_cf.cfast), and last cfast --search --limit 1 (rsst_C2_cfsearch.cfast, 900 s cap).  usage: NW=2 python3 cf44.py"""
-import os, re, subprocess, tempfile
+import os, re, sys, subprocess, tempfile
 from concurrent.futures import ThreadPoolExecutor
 H = os.path.dirname(os.path.abspath(__file__)); B = os.path.join(H, '..', '..', 'bin'); KC = os.path.join(H, '..', 'kc')
 line = {l.split()[0]: l.rstrip('\n') for l in open(os.path.join(H, 'rsst.txt')) if l.strip()}
@@ -51,12 +51,19 @@ def search(nm):
     return ('rsst_C2_cfsearch.cfast', o or (nm + ' cfast --search: no output within 900 s'))
 NW = int(os.environ.get('NW', '2'))
 C_ = sorted(n for n in kc if kc[n][0] == 'C'); N_ = sorted(n for n in kc if kc[n][0] == 'notD')
-with ThreadPoolExecutor(NW) as ex:
-    for r in ex.map(job, C_): emit(r)
-open(os.path.join(H, 'cfC.DONE'), 'w').write('')
+RESUME = os.environ.get('RESUME') == '1'     # RESUME=1: skip phase 1 and configs already diagnosed; append
+if RESUME:
+    have = {l.split()[0] for l in open(os.path.join(H, 'rsst_C2.out')) if l.startswith('rsst')}
+    N_ = [n for n in N_ if n not in have]
+    for fn in ('rsst_x_kc.out', 'rsst_C2_cf.cfast', 'rsst_C2.out', 'rsst_C2_cfsearch.cfast'): fh[fn] = open(os.path.join(H, fn), 'a')
+else:
+    with ThreadPoolExecutor(NW) as ex:
+        for r in ex.map(job, C_): emit(r)
+    open(os.path.join(H, 'cfC.DONE'), 'w').write('')
 with ThreadPoolExecutor(NW) as ex:
     for r in ex.map(diag, N_): emit(r)
 open(os.path.join(H, 'diag.DONE'), 'w').write('')
+if os.environ.get('NOSEARCH') == '1': sys.exit(0)
 with ThreadPoolExecutor(NW) as ex:
     for r in ex.map(search, N_): emit(r)
 open(os.path.join(H, 'cf.DONE'), 'w').write('')

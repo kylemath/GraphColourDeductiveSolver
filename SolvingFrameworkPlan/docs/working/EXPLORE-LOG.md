@@ -56,9 +56,9 @@ least one of the 9 cert_s6 rows. Kill line: none of the 9 rows is hit. Broad-onl
 - **C2cons: 333**, C on kc -C with a conservative X that cfast `--fixed` accepts with leftover 0 (333 of 333 kc X's
   accepted).
 - **None: 51**, all labelled C by RSST (ring 8-14). kc -C exhausts every conservative X of size <= 4 on each.
-  Diagnostics so far on 22 of the 51 (`rsst_verdicts_C2.txt`, not registry): RSST's own X is not
-  conservative-admissible on kc (adm=no, 22 of 22), and it is C on kc -C2 broad and on cfast `--fixed` (22 of 22).
-  These are broad-only, as guessed. The other 29 diagnostics and the cfast `--search` column were paused to free cores.
+  Diagnostics on all 51 (`rsst_verdicts_C2.txt`, not registry; finished 20:44Z): RSST's own X is not
+  conservative-admissible on kc (adm=no, 51 of 51), and it is C on kc -C2 broad and on cfast `--fixed` with RSST's X
+  (51 of 51). All 51 are broad-only on both engines, as guessed. The cfast `--search` column was not run.
 - So 582 of 633 (92%) are registry-eligible on our two engines (guess: about 85% of the C ones; actual 333/384 = 87%).
 
 **Result part B (20:34Z).** Hypothesis confirmed.
