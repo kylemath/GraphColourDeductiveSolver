@@ -353,3 +353,16 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
     apex; `int_inj` and the apex's rotation (distinct neighbours) then force equal positions. Ring chords, where the
     apex is a ring vertex, need a separate case. (b) Producing the walk-form `Occ` from an appearing 2-ball (rotation
     walks), as planned in steps 1–2.
+- **(a) ring_dinj derived (18 Oct, ~11:30Z).** `gen_occ_walk.py` now emits `ring_dinj_of` per key by default, and its
+  `Occ` assumes nothing about the ring beyond the Nx facts: no `ring_inj` and no `ring_dinj`.
+  - Proof: a case analysis over ring positions s < t. The inner apex of the ring dart at each position is the rotation
+    step at the dart's head (`nx_func`), so equal darts have equal apexes.
+    - Different apex labels contradict `int_inj`.
+    - The same apex label puts two different ring positions at two indices of that interior vertex's full rotation
+      chain, which contradicts `chain_inj` (new in DCheckOccWalk: a degree-d chain has distinct entries, via the
+      rotation's minimal period).
+  - The generator asserts that every ring edge's inner apex is interior (no ring chords). It holds for all 49 keys,
+    since the generator builds a fan step only through an interior vertex.
+  - Key 0 (ring 17) compiles in 10 s, 0 errors, same axioms. All 49 are queued (`occ24/runwalkD.sh` →
+    `walkD_results.txt`) behind the core count.
+  - **Left for Job 26: (b) only**, i.e. producing these Nx facts (the walk-form Occ) from an appearing 2-ball.

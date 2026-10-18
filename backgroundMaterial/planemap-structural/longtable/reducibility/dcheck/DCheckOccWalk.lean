@@ -1,4 +1,5 @@
 import DCheckPinchGeom
+import Mathlib.Combinatorics.SimpleGraph.PlaneMap.OccToRing
 /-! Job 26 step (iii), the D-glue half (exploratory): **D-reducibility for an occurrence whose ring is only a face
 walk.** `ConfigOccW` is `ConfigOcc` with the ring a `FaceWalk` of the deleted map `G` (distinct darts; vertices may
 repeat: pinches and folds of the third ring). The gluing `colorable_of_ext` never used ring injectivity, so it is
@@ -9,7 +10,7 @@ What is left for step (iii): producing a `ConfigOccW` from an appearing 2-ball (
 outside map, with distinct darts). -/
 
 namespace SimpleGraph.SphericalMap
-open VacancySlide VacancyShortFill DCheck DCheck.R2
+open VacancySlide VacancyShortFill VacancyIcosahedral DCheck DCheck.R2
 
 variable {n : ℕ}
 
@@ -55,6 +56,36 @@ theorem FaceWalk.mk_lt (hr : 0 < r) (hper : ∀ t, ρ (t + r) = ρ t) (hadj : �
     · exact m1 t
     · exact m2 t
   rw [e1, key, e2]
+
+/-- The rotation step is a function (as AppearsOcc's `nx_func`, which the build overlay lacks). -/
+theorem nx_func {M : SphericalMap n} {u v w w' : Fin n} (h : Nx M u v w) (h' : Nx M u v w') : w = w' := by
+  obtain ⟨h1, e1⟩ := h
+  obtain ⟨h2, e2⟩ := h'
+  exact e1.symm.trans e2
+
+/-- **A full rotation chain has distinct entries.** At a vertex of degree `d`, a chain `x 0, …, x (d-1)` of
+consecutive neighbours (`Nx`) lists each neighbour once (the rotation at `v` is a single `d`-cycle). -/
+theorem chain_inj {M : SphericalMap n} {v : Fin n} {d : ℕ} (hd : M.graph.degree v = d) {x : ℕ → Fin n}
+    (h0 : M.Adj v (x 0)) (hchain : ∀ j, j + 1 < d → Nx M v (x j) (x (j + 1))) :
+    ∀ i j, i < d → j < d → x i = x j → i = j := by
+  classical
+  intro i j hi hj e
+  let R := M.rotation
+  let σ := R.neighborRotation v
+  let w : M.graph.neighborSet v := ⟨x 0, h0⟩
+  have hsemi : Function.Semiconj (M.graph.dartOfNeighborSet v) σ R.next := R.neighbor_rotation_dart v
+  have hit : ∀ k, (⇑R.next)^[k] ⟨(v, x 0), h0⟩ = M.graph.dartOfNeighborSet v (σ^[k] w) := fun k =>
+    (hsemi.iterate_right k w).symm
+  have hp : Function.minimalPeriod σ w = d := by rw [R.neighbor_period_eq_degree, hd]
+  obtain ⟨hi', ei⟩ := iterate_chain h0 (k := d - 1) (fun j hj => hchain j (by omega)) i (by omega)
+  obtain ⟨hj', ej⟩ := iterate_chain h0 (k := d - 1) (fun j hj => hchain j (by omega)) j (by omega)
+  have hij : (⇑R.next)^[i] ⟨(v, x 0), h0⟩ = (⇑R.next)^[j] ⟨(v, x 0), h0⟩ := by
+    rw [ei, ej]; apply Dart.ext; apply Prod.ext
+    · rfl
+    · exact e
+  rw [hit, hit] at hij
+  exact Function.iterate_injOn_Iio_minimalPeriod (by rw [hp]; exact hi) (by rw [hp]; exact hj)
+    (M.graph.dartOfNeighborSet_injective _ hij)
 
 /-- Every `ConfigOcc` is a `ConfigOccW`. -/
 theorem ConfigOcc.toW (O : ConfigOcc T G r m ρ ι intAdj ringAdj) : ConfigOccW T G r m ρ ι intAdj ringAdj :=
