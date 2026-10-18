@@ -23,8 +23,8 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 | Per-key Occ modules (49) | [L] Job 24, hD closes as keys land | `dcheck/occ24/` |
 
 **Scope caveat.** A 2-ball's ring can fold in large maps. Until Job 26 proves Kempe matching for a face-boundary-walk
-ring, the K ≤ 1 claim covers appearances with a simple ring. Job 26 piece (i) is proved. Piece (ii), vertex
-splitting, has a 20 Nov kill, and the fallback is to state the simple-ring hypothesis in the paper. The Track 1 hand
+ring, the K ≤ 1 claim covers appearances with a simple ring. Job 26 has proved FaceGlue (i), Kempe matching on non-injective ring walks, the single pinch and the fold walk
+(5f9d86f3, b2e64eb6). Multi-pinch and (iii), extraction from an appearing 2-ball, are left; they have a 20 Nov kill, and the fallback is to state the simple-ring hypothesis in the paper. The Track 1 hand
 argument (B2 + no separating triangle ⇒ injective, induced embedding) closes the gap on paper. Its Lean is Job 26 step 3a.
 
 ## K = 2 evidence
@@ -36,9 +36,12 @@ argument (B2 + no separating triangle ⇒ injective, induced embedding) closes t
 | Job 29 L2: oriented big–big transfers, full registry (16,411 patterns) | 7/27 exactly [E] | upper bound by an exhaustive separation of the x=0 solution; lower bound by row generation (feascheck.py). Charge-sharing adds nothing on this pattern set |
 | Explore rounds 24–32 | (restricted-LP values were under-separated; superseded) | ~30 binding rows forbidden; all windows second-engined |
 
-What blocks K = 2 [I]: self-pairing. The binding d=7 rows fit as their own 7-neighbour, so 2-ball edge rules move
-no net charge (EXPLORE-LOG rounds 12 and 20). The rows' remaining exact windows are at ring ≥ 17. Round 18:
-where HARD28 rows complete to K = 4 defects, every completion dies at a neighbouring 7, not at u.
+What blocks K = 2 [E]: one row. The 7/27 certificate is a single receiver row R = d7 5675765/6577575, whose
+fives are of sender types 55667, 55767 and 77777. With the sender rows forcing Σy ≥ 1 − t, row R gives
+1.7(1 − t) ≤ 1 + t, so t ≥ 7/27 exactly (dual weights 10/27, 10/27, 5/27, 2/27; EXPLORE-LOG 08:50Z, 98d63411).
+So only a kill of R itself, or of one of its three sender types, can move the LP. Transfers can't move it
+either: R fits as its own 7-neighbour (self-pairing, rounds 12 and 20). R's three open standard windows (rings 16–17)
+are not D on kc; cfast on them and kc on 116 wider windows of R are running 18 Oct.
 
 ## Options for K = 2 after the gate
 
@@ -46,6 +49,8 @@ where HARD28 rows complete to K = 4 defects, every completion dies at a neighbou
   in about 5 minutes, so this is cheap now. Running overnight 18 Oct (explore round 34). Claims still need dfast18.
 - **D. Defect-style search at each surviving binder** (round 18's method). It asks whether the row can occur near a
   minimal counterexample at all. Cost: per-row, capped.
+- **E. Change the rule class** (Opus team, 18 Oct): send charge through 6s, which could void R's certificate
+  without killing R. Also: RSST's 249 D configurations, already Lean-checked, remove every known K ≤ 4 defect but not R.
 - **C. Narrow.** State K = 2 as open with the evidence above. Track 1's paper becomes "K ≤ 1 closed by 2-ball
   reducibility; K = 2 obstructed by self-pairing", and the long shot moves to 3-balls.
 
@@ -54,5 +59,5 @@ where HARD28 rows complete to K = 4 defects, every completion dies at a neighbou
 - [ ] run29d: 7/27 binders and the xcap=1000 cap test (Studio).
 - [ ] Explore round 34+: ring 17–18 kc sweep on binders; any re-solved t*.
 - [ ] k19 Lean (22–25 Oct): upgrade [E2] → [L] if it lands.
-- [ ] Job 26 piece (ii) status.
+- [x] Job 26 status (18 Oct): single pinch + fold done; multi-pinch and (iii) left.
 - [ ] Recommendation line, once A has run.
