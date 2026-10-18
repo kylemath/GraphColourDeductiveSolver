@@ -142,7 +142,8 @@ if __name__ == '__main__':
     print('patterns (all configs): %s' % {d: sum(1 for k in allp if k[0] == d) for d in DS})
     print('configs with an embedding: %d' % len({c for c, d in per}))
     if len(sys.argv) > 1:
-        ok = {l.split()[0] for l in open(sys.argv[1]) if not l.startswith('#') and l.split()[1] in ('D2', 'C2cons')}
+        ok = {l.split()[0] for l in open(sys.argv[1]) if not l.startswith('#') and ('verdict=D2' in l.split() or 'verdict=C2cons' in l.split())}
+        assert ok, 'no eligible configurations read from ' + sys.argv[1]
         with open(os.path.join(H, 'pats44.txt'), 'w') as o:
             o.write('# RSST containment patterns, d = 7..11, from configurations verified on two engines (D, or C with a shared\n'
                     '# conservative X); inclusion-minimal up to dihedral images.  NF line (d k slot mask ...) | readable | configs\n')

@@ -43,6 +43,35 @@ least one of the 9 cert_s6 rows. Kill line: none of the 9 rows is hit. Broad-onl
 - **Preview (all 633, before the filter).** 413 patterns (d = 7: 167, 8: 150, 9: 63, 10: 21, 11: 11), from 341
   configurations. 8 of the 9 rows are hit; the top row, d = 7 8556855/7565666, is not.
 
+**Result part A (20:34Z).** No kill line crossed: 0 mismatches. `loop/k44/rsst_verdicts.txt`:
+- **D2: 249**, D on kc and on dfast. This is exactly the set RSST labels D (no contraction).
+- **C2cons: 333**, C on kc -C with a conservative X that cfast `--fixed` accepts with leftover 0 (333 of 333 kc X's
+  accepted).
+- **None: 51**, all labelled C by RSST (ring 8-14). kc -C exhausts every conservative X of size <= 4 on each.
+  Diagnostics so far on 22 of the 51 (`rsst_verdicts_C2.txt`, not registry): RSST's own X is not
+  conservative-admissible on kc (adm=no, 22 of 22), and it is C on kc -C2 broad and on cfast `--fixed` (22 of 22).
+  These are broad-only, as guessed. The other 29 diagnostics and the cfast `--search` column were paused to free cores.
+- So 582 of 633 (92%) are registry-eligible on our two engines (guess: about 85% of the C ones; actual 333/384 = 87%).
+
+**Result part B (20:34Z).** Hypothesis confirmed.
+- **Patterns.** From the 582 eligible configurations: 377 inclusion-minimal patterns (d = 7: 153, 8: 136, 9: 57,
+  10: 20, 11: 11), in `loop/k44/pats44.txt` (NF lines `d k slot mask ...` plus a readable form and the source configs).
+- **Windows.** `mkf44.py` writes 377 f-names (a not-5 w_i is written as both 6 and B), each with the window cut at the
+  embedding from a representative 2-ball. All 377 cuts have the source configuration's ring and interior size. On
+  `drive44.py` (kc -C, dfast, cfast `--fixed` with kc's X), all 377 are two-engine kills: 196 D and 181 C, with no
+  mismatch. Job 30's twoeng.py, run in a scratch copy on `loop/k44/*`, loads all 377 (D 196, C 181, X mismatch 0).
+- **Rows.** Long Table's 9 rows (19:59Z): 8 hit, all but d = 7 8556855/7565666. Long Table's 8 new rows (20:12Z,
+  t* = 11/47): 7 hit, all but d = 7 8558655/6665666, which goes to round 45. On each hit row, every hitting
+  configuration is D2 or C2cons.
+- **Side finding.** Round 43 named 16 windows that held s_(i-1) and s_i but not w_i (= 8 in the row) with w_i left
+  free. Those names also matched rows with w_i = 5, where s_(i-1)-s_i is an edge and the window does not appear.
+  All 16 are implied by sound registry names (checked on main's twoeng output). Each one's corrected name (w_i = 8
+  stated) is already a two-engine kill. They are removed from `loop/k43/kills*` (`kills_drop44.txt`), and win45.py and
+  gen44.py state w_i in that case. No bound is affected.
+- **Note for the LP.** Main's twoeng output already forbids 3 of the 19:59Z d = 8 rows: 85556565/66866665 by
+  f8_...55565_........, and 75656575/56665555 and 76556565/58565765 by f8_...56565_......... So cert_s6 predates the
+  full k43 batch, which fits Long Table's 20:12Z note.
+
 ## Round 44 (18 Oct 2026, 20:00Z-): H-RC, which RSST configurations are reducible on our two engines with a conservative X?
 
 **Pre-registered 20:00Z, before any run.** Gap G2. Follows round 43: the 1/4 binder died to RSST 7322.126, a C

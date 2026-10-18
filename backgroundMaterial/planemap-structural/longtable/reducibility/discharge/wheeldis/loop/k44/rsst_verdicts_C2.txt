@@ -1,0 +1,257 @@
+# EXPLORE round 44: RSST configurations that are neither D2 nor C2cons on our engines.  Diagnostics only, NOT for the
+# registry (broad admissibility or RSST's own X).
+rsst003_2o126 r=8 RSST X={R0-I0,R2-I0,R4-I2,R6-I2}
+  kc -x RSST X (conservative): X={R0-I0,R2-I0,R4-I2,R6-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I0,R2-I0,R4-I2,R6-I2} size=4 (kc-C: tested 2786, admissible 965, edges 17, 2ms)
+  cfast fixed RSST X: fixed X={R0-I0,R2-I0,R4-I2,R6-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst010_3o1324802 r=10 RSST X={R0-I4,R4-I3,R6-I3,R8-I4}
+  kc -x RSST X (conservative): X={R0-I4,R4-I3,R6-I3,R8-I4} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R4-I3,R6-I3,R0-I4,R8-I4} size=4 (kc-C: tested 23708, admissible 11345, edges 28, 37ms)
+  cfast fixed RSST X: fixed X={R0-I4,R4-I3,R6-I3,R8-I4} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst014_3o1324806 r=11 RSST X={R0-I4,R5-I3,R7-I3,R9-I4}
+  kc -x RSST X (conservative): X={R0-I4,R5-I3,R7-I3,R9-I4} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R5-I3,R7-I3,R0-I4,R9-I4} size=4 (kc-C: tested 27391, admissible 13591, edges 29, 71ms)
+  cfast fixed RSST X: fixed X={R0-I4,R5-I3,R7-I3,R9-I4} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst019_8o1540806 r=12 RSST X={R0-I1,R6-I2,R2-I1,R4-I2}
+  kc -x RSST X (conservative): X={R0-I1,R6-I2,R2-I1,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I1,R2-I1,R4-I2,R6-I2} size=4 (kc-C: tested 43199, admissible 23191, edges 33, 213ms)
+  cfast fixed RSST X: fixed X={R0-I1,R6-I2,R2-I1,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst022_8o1551606 r=13 RSST X={R0-I1,R6-I2,R2-I1,R4-I2}
+  kc -x RSST X (conservative): X={R0-I1,R6-I2,R2-I1,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I1,R2-I1,R4-I2,R6-I2} size=4 (kc-C: tested 48265, admissible 26595, edges 34, 1066ms)
+  cfast fixed RSST X: fixed X={R0-I1,R6-I2,R2-I1,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst028_126o442802 r=10 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): X={R0-I0,R6-I0,R2-I2,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I0,R6-I0,R2-I2,R4-I2} size=4 (kc-C: tested 21141, admissible 10225, edges 28, 27ms)
+  cfast fixed RSST X: fixed X={R0-I0,R6-I0,R2-I2,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst038_122o1324802 r=11 RSST X={R0-I5,R5-I4,R7-I4,R9-I5}
+  kc -x RSST X (conservative): X={R0-I5,R5-I4,R7-I4,R9-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R5-I4,R7-I4,R0-I5,R9-I5} size=4 (kc-C: tested 27736, admissible 13723, edges 29, 67ms)
+  cfast fixed RSST X: fixed X={R0-I5,R5-I4,R7-I4,R9-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst039_126o1306802 r=11 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): X={R0-I0,R6-I0,R2-I2,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I0,R6-I0,R2-I2,R4-I2} size=4 (kc-C: tested 24011, admissible 12032, edges 29, 76ms)
+  cfast fixed RSST X: fixed X={R0-I0,R6-I0,R2-I2,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst061_3o1324817 r=12 RSST X={R0-I4,R6-I3,R8-I3,R10-I4}
+  kc -x RSST X (conservative): X={R0-I4,R6-I3,R8-I3,R10-I4} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R6-I3,R8-I3,R0-I4,R10-I4} size=4 (kc-C: tested 46003, admissible 24734, edges 33, 232ms)
+  cfast fixed RSST X: fixed X={R0-I4,R6-I3,R8-I3,R10-I4} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst063_126o687602 r=12 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): X={R0-I0,R6-I0,R2-I2,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I0,R6-I0,R2-I2,R4-I2} size=4 (kc-C: tested 41005, admissible 22206, edges 33, 287ms)
+  cfast fixed RSST X: fixed X={R0-I0,R6-I0,R2-I2,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst065_128o1324802 r=12 RSST X={R0-I5,R6-I4,R8-I4,R10-I5}
+  kc -x RSST X (conservative): X={R0-I5,R6-I4,R8-I4,R10-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R6-I4,R8-I4,R0-I5,R10-I5} size=4 (kc-C: tested 46488, admissible 24954, edges 33, 253ms)
+  cfast fixed RSST X: fixed X={R0-I5,R6-I4,R8-I4,R10-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst082_126o1551602 r=13 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): X={R0-I0,R6-I0,R2-I2,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I0,R6-I0,R2-I2,R4-I2} size=4 (kc-C: tested 45696, admissible 25368, edges 34, 1361ms)
+  cfast fixed RSST X: fixed X={R0-I0,R6-I0,R2-I2,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst088_184o1324806 r=12 RSST X={R0-I5,R6-I4,R8-I4,R10-I5}
+  kc -x RSST X (conservative): X={R0-I5,R6-I4,R8-I4,R10-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R6-I4,R8-I4,R0-I5,R10-I5} size=4 (kc-C: tested 65777, admissible 36847, edges 36, 238ms)
+  cfast fixed RSST X: fixed X={R0-I5,R6-I4,R8-I4,R10-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst089_483o1324806 r=12 RSST X={R0-I5,R6-I4,R8-I4,R10-I5}
+  kc -x RSST X (conservative): X={R0-I5,R6-I4,R8-I4,R10-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R6-I4,R8-I4,R0-I5,R10-I5} size=4 (kc-C: tested 66052, admissible 36974, edges 36, 233ms)
+  cfast fixed RSST X: fixed X={R0-I5,R6-I4,R8-I4,R10-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst115_128o136 r=11 RSST X={I0-I3,R0-I0,R2-I0,R9-I3}
+  kc -x RSST X (conservative): X={I0-I3,R0-I0,R2-I0,R9-I3} adm=no
+  kc -C2 broad: C-REDUCIBLE X={I0-I3,R0-I0,R2-I0,R9-I3} size=4 (kc-C: tested 8389, admissible 4099, edges 26, 81ms)
+  cfast fixed RSST X: fixed X={I0-I3,R0-I0,R2-I0,R9-I3} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst127_126o3682802 r=12 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): X={R0-I0,R6-I0,R2-I2,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I0,R6-I0,R2-I2,R4-I2} size=4 (kc-C: tested 41005, admissible 22187, edges 33, 245ms)
+  cfast fixed RSST X: fixed X={R0-I0,R6-I0,R2-I2,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst142_126o8168 r=12 RSST X={I3-I4,R5-I3,R8-I4,R10-I4}
+  kc -x RSST X (conservative): X={I3-I4,R5-I3,R8-I4,R10-I4} adm=no
+  kc -C2 broad: C-REDUCIBLE X={I0-I4,R8-I4,R0-I5,R10-I5} size=4 (kc-C: tested 16910, admissible 9071, edges 30, 254ms)
+  cfast fixed RSST X: fixed X={I3-I4,R5-I3,R8-I4,R10-I4} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst151_126o3686402 r=13 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): X={R0-I0,R6-I0,R2-I2,R4-I2} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R0-I0,R6-I0,R2-I2,R4-I2} size=4 (kc-C: tested 45696, admissible 25367, edges 34, 1833ms)
+  cfast fixed RSST X: fixed X={R0-I0,R6-I0,R2-I2,R4-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst165_142o1324802 r=13 RSST X={R0-I5,R7-I4,R9-I4,R11-I5}
+  kc -x RSST X (conservative): X={R0-I5,R7-I4,R9-I4,R11-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R7-I4,R9-I4,R0-I5,R11-I5} size=4 (kc-C: tested 73584, admissible 42146, edges 37, 839ms)
+  cfast fixed RSST X: fixed X={R0-I5,R7-I4,R9-I4,R11-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst168_200o1324802 r=13 RSST X={R0-I5,R7-I4,R9-I4,R11-I5}
+  kc -x RSST X (conservative): X={R0-I5,R7-I4,R9-I4,R11-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R7-I4,R9-I4,R0-I5,R11-I5} size=4 (kc-C: tested 73232, admissible 41926, edges 37, 930ms)
+  cfast fixed RSST X: fixed X={R0-I5,R7-I4,R9-I4,R11-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst202_124o1324817 r=14 RSST X={R0-I5,R8-I4,R10-I4,R12-I5}
+  kc -x RSST X (conservative): X={R0-I5,R8-I4,R10-I4,R12-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R8-I4,R10-I4,R0-I5,R12-I5} size=4 (kc-C: tested 81706, admissible 47849, edges 38, 6364ms)
+  cfast fixed RSST X: fixed X={R0-I5,R8-I4,R10-I4,R12-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst206_142o1324806 r=14 RSST X={R0-I5,R8-I4,R10-I4,R12-I5}
+  kc -x RSST X (conservative): X={R0-I5,R8-I4,R10-I4,R12-I5} adm=no
+  kc -C2 broad: C-REDUCIBLE X={R8-I4,R10-I4,R0-I5,R12-I5} size=4 (kc-C: tested 82058, admissible 48002, edges 38, 7225ms)
+  cfast fixed RSST X: fixed X={R0-I5,R8-I4,R10-I4,R12-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  cfast --search: pending
+rsst215_188o1324817 r=14 RSST X={R0-I5,R8-I4,R10-I4,R12-I5}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst216_209o1324802 r=14 RSST X={R0-I5,R8-I4,R10-I4,R12-I5}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst258_140o8406 r=13 RSST X={I0-I2,R1-I0,R3-I2,R5-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst287_126o62942 r=14 RSST X={I0-I4,I0-I2,R0-I0,R5-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst329_7322o453720 r=11 RSST X={R0-I0,R5-I0,R7-I5,R9-I5}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst342_7322o1324802 r=12 RSST X={R0-I6,R6-I5,R8-I5,R10-I6}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst346_7562o460920 r=12 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst356_7566o128 r=12 RSST X={I0-I3,R6-I3,R8-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst370_7562o1307280 r=12 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst371_7562o1310580 r=12 RSST X={R0-I0,R6-I0,R2-I2,R4-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst393_7566o372 r=14 RSST X={I0-I3,R8-I3,R6-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst433_8406o123 r=12 RSST X={I0-I2,R0-I0,R2-I0,R4-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst439_7696o442802 r=13 RSST X={I0-I3,R0-I0,R9-I0,R7-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst461_7580o363 r=12 RSST X={I0-I3,R6-I3,R8-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst462_7587o123 r=12 RSST X={I0-I3,R6-I3,R8-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst468_8406o363 r=13 RSST X={I0-I2,R0-I0,R2-I0,R4-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst469_11166o140 r=13 RSST X={I0-I3,R6-I3,R8-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst488_7877o442802 r=14 RSST X={I0-I2,R0-I0,R10-I0,R3-I2}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst519_7322o1040 r=13 RSST X={I0-I4,R0-I0,R2-I0}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst544_11780o363 r=13 RSST X={I0-I3,R7-I3,R9-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst563_7566o9723 r=14 RSST X={I0-I3,R7-I3,R5-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst574_439326o126 r=12 RSST X={I0-I4,R6-I4,R8-I4}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst583_443166o126 r=13 RSST X={I0-I4,R7-I4,R9-I4}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst588_453963o126 r=13 RSST X={I0-I3,R8-I3,R6-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst595_453963o364 r=13 RSST X={I0-I3,R8-I3,R6-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst600_439328o136 r=13 RSST X={I0-I5,R0-I0,R2-I0,R11-I5}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst612_453963o136 r=14 RSST X={I0-I3,R8-I3,R6-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst614_439589o122 r=14 RSST X={I0-I3,I4-I5,R5-I3,R7-I3}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
+rsst624_26359326o126 r=13 RSST X={I0-I5,R7-I5,R9-I5}
+  kc -x RSST X (conservative): pending
+  kc -C2 broad: pending
+  cfast fixed RSST X: pending
+  cfast --search: pending
