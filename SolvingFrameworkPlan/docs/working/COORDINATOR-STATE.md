@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 22:29Z: Opus relay on 42c4c876 + r_5..r_8 gives t* = 19/102 ≈ 0.186 [E1, 39f457ba]. Studio second-checks s14r with wlp3r6 once Job 31 commits its blind value (s10 check skipped as superseded). New relay receivers (d7 7665566/6675666, d10 6556656556/6665656665) queued for explore after round 49.
 - 18 Oct 22:14Z: s14 1/5 [E2] (Studio 32c82928, full no-T checklist). Job 31 flat at -0.1515 since iter 16, ~43 min/iter: approved warm-start dual-simplex restart dropping long-slack rows, same class/registry, still blind (kill: flat after 3 more iterations -> fall back to wlp3r6 evaluation of sol_s10).
 - 18 Oct 22:10Z: s14 (42c4c876 + r_5..r_8) main line holds at 1/5 [E1, Opus 8592bb50; Studio checking]: round-48 binder killed but a new 3-row dual at 1/5 (senders 66669 at 3/5 and 56696, receiver d9 656566565/665656666). 66669 has no 5 in its wheel = the rule-needed class -> explore round 49 (receiver first, sender coverage); relay s14r running.
 - 18 Oct 22:01Z: t* = 1/5 now [E2]: 339-D gap = 329 duplicate spellings (name vs parsed dedupe) + r_5..r_8 (5 distinct d=10, binder allowed); Studio 9aca31ac load = 15,466 parsed D. README: loaded-count step dedupes by parsed pattern. Round 48 batch in k3x 42c4c876 (457 D / 448 C); Opus s14 running on it.
