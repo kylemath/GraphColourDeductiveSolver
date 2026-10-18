@@ -1,5 +1,100 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 35 (18 Oct 2026, 08:54Z-): H-KCC, a C-reducibility mode for kc, then C on R's windows
+
+**Pre-registered 08:54Z, before any code.** Gap G2. Runs while round 34 part C uses the cores.
+- **Why.** The 7/27 certificate rests on R alone (round 34 amendment), and R has no D window among its B-fixed ones.
+  C is the other route. cfast (single engine) has timed out at ring 16 on binder windows. A second C engine is also
+  what the charter needs before any C kill counts.
+- **Definition (my own derivation, no cfast/dfast/Lean source read).** X is a set of 1-4 free-completion edges,
+  each with at least one interior end. It is admissible (conservative) if every component of the graph (V, X)
+  holds at most one ring vertex and no free-completion edge outside X joins two vertices of one component. Then
+  G/X is loopless and smaller, so it is 4-coloured by minimality. Its colouring gives a proper ring colouring
+  that extends to K/X: an interior colouring with each component one colour and every other edge proper. K is C
+  if no ring class left unreached by the D-closure extends to K/X. Admissible sets with two ring vertices in a
+  component (RSST's triad cases) are left out, so this can only miss C verdicts, never add one.
+- **Engine.** kc `-C`: after the closure, enumerate admissible X by size and test unreached classes in a fixed
+  shuffled order, with early exit at the first one that extends. Report C with the first working X, or not-C
+  with the smallest leftover found. `-x FILE` evaluates given X exactly (full leftover count).
+- **Validation.** cfast outputs with verdicts: `job27/k2a.cfast` (82 configurations, 11 C) and
+  `out/job28/r_12.cfast` (77, 15 C), plus `out/def_r1.cfast` (74, 4 C). (a) For cfast's best or working X,
+  whenever my admissibility accepts it, my exact leftover equals cfast's. (b) Every kc C is cfast C. (c) Report
+  how many cfast C my conservative set misses.
+- **Kill line.** A leftover mismatch, or a kc C that cfast calls not C, which survives a recheck: kc-C is not
+  trusted and nothing is run on R.
+- **Then.** kc-C on R's ring 16-17 B-fixed windows and on any round-34 part C window that is not D. Bar: any C on
+  kc-C (with cfast to follow at Studio) breaks the 7/27 certificate.
+- **Guess.** Validation passes after one fix. Leftover counts match. kc-C misses 10-25% of cfast's C (the triad
+  cases). R: 0 or 1 C among its 3 B-fixed windows at ring 16-17.
+
+**Round 35 validation (09:08Z): passes with no fix** (`loop/kcc/`, `mkvalc.py`, `cmpc.py`, `valc_kcc.txt`).
+- 163 configurations from the three files have input lines (k2a 82, r_12 77, def_r1 the 4 C ones); 30 are cfast C.
+- (a) Exact leftover equals cfast's on all 145 of cfast's X that my admissibility accepts. The other 45 (cfast best X
+  of not-C configurations) put two ring vertices in one component, so I don't test them.
+- (b) 30 of 30 cfast C are kc-C C, and 133 of 133 cfast not-C are kc-C not-C. (c) kc-C misses none of the 30.
+- Edge model agrees: kc-C's subset count equals cfast's admissible + inadmissible on every one checked (e.g. 12,950 at
+  24 edges). Guess check: "one fix" was pessimistic, and "misses 10-25%" was wrong (0 missed).
+- Running kc-C now on R's ring 16-17 B-fixed windows (1 core, beside round 34 part C).
+
+## Round 34 (18 Oct 2026, 08:43Z-): H-K34, do the 7/27 binder's last windows, or the other tight d = 7 rows' untested windows, hold a D? (coordinator's overnight plan, 08:40Z)
+
+**Pre-registered 08:43Z, before any run.** Gap G2 (K = 2 LP at t* = 7/27).
+- **Why.** The x = 0 dual certificate at 7/27 (`out/wlp3_j28_13.txt`, same in `out/wlp3x_j29_13_notx.txt`) has one
+  receiver row: d = 7 link 5675765 s 6577575 (weight 0.37), plus senders 55667, 55767, 77777. Its B-fixed windows
+  (|S| >= 2 of its three fives, `gen28.variants`, any ring): ring 11 {0,6} not D; ring 16 {0,3}
+  `f7_.556757_.56.77.` in Studio's queue (`out/job28/in_13.txt`, no verdict); ring 17 {3,6} `f7_.556757_.57.77.`
+  and {0,3,6} `f7_5567576_56.77.7`, never run. That is every window this row has.
+- **Part A.** kc (Gauss-Seidel) on those 3 windows. Any D is checked at once with `bin/dfast` (ring 16) or
+  `bin/dfast18` (ring 17), which are independent of kc. Both D means the certificate row is forbidden [E2] and the LP
+  must be re-solved.
+- **Part B.** The round-13 tight family (`out/job28/tight_13.txt`, 566 d = 7 rows tight at the 7/27 solution, 560
+  still free by `w2.py cover`) has 1,729 untested B-fixed windows at ring <= 18 (72 more pending at Studio):
+  ring 10-14: 571, 15: 389, 16: 307, 17: 301, 18: 161 (`loop/k34/t13_r18.txt`). Run in ring order on 3 cores, kc
+  and dfast both, until the 45-minute cap; the rest goes to the next round.
+- **Bars.** A: 1+ D of 3 changes the plan (the 7/27 certificate breaks). 0 of 3 means the certificate row has no
+  B-fixed window left at all, so route A (ring 17-18 at u) is closed for it and its fate is C (Studio's cfast) or a
+  window centred at a neighbouring 7. B: report D windows, rows newly forbidden (by `w2.py cover`), and kc/dfast
+  agreement on every window both ran.
+- **Kill line.** Any kc/dfast verdict mismatch stops the round and is reported before anything else.
+- **Guess.** A: 0 of 3 D (the row's ring-11 window has low ext and round 17 got 0 D of 6 at ring 17). B: about a
+  quarter of the ring <= 14 windows D (round 14 got 178 of 636), fewer at 15-16, and 50-150 rows newly forbidden.
+
+**Amendment 08:50Z, before part C runs (part A's kc verdicts are in: 0 of 3 D).** Reading the certificate: the
+fives of R are at link positions 0 (word 55667, one big neighbour, u), 6 (55767, two 7s, u and s5, mirror images in
+the five's link) and 3 (77777). With rooted-word rules a five sends at least 1 - t in total, so y[7|5566] >= 1 - t,
+y[7|5576] >= (1 - t)/2, y[7|7777] >= (1 - t)/5, and R's load is <= 1 + t. Adding: 1.7(1 - t) <= 1 + t, so
+t >= 7/27, with dual weights 10/27, 10/27, 5/27, 2/27 (the 0.3704/0.3704/0.1852/0.0741 above). So **no kill other
+than R itself (or one of its three sender types) can move the y-class LP below 7/27**, and part B cannot move t*
+while R stands. Part B drops to after part C.
+- **Part C.** R's windows beyond B-fixed: u + all seven link vertices + any subset of the seven s-vertices, all at
+  R's letters (`loop/k34/fullwin.py`, 116 distinct windows: ring 13: 10, 14: 12, 15: 20, 16: 38, 17: 20, 18: 12,
+  19: 4; the window with every s fixed, `f7_5567576_5657757`, is ring 17). kc on all, dfast on ring <= 16, dfast18 on any kc D
+  at ring >= 17. Bar: any D on both engines forbids R and breaks the 7/27 certificate. Guess: 0 D (the 7-wheel
+  part is shared by every window, and the B-fixed ones are all far from D).
+
+**Second amendment 08:58Z, before any part C window ran (the first chain never started).** The certificate reads
+only the fives' words, which use s0, s2, s3, s5, s6. s1 and s4 sit next to no five, so an LP row with any letters
+there has R's load. Forbidding R alone just moves the binder to another filling. The object to kill is R*: link
+5675765 with s0, s2, s3, s5, s6 at R's letters and (s1, s4) one of 25 fillings in {5,6,7,8,9+}^2. (The Opus team
+reports via the coordinator that RSST's 128.136, C at ring 11, sits in the fillings with a 5 at s1 or s4. That is
+RSST's verdict, not ours yet.)
+- **Part C, as run.** `loop/k34/fillwin.py`: u + all seven link vertices + any subset of {s0, s2, s3, s5, s6} + s1
+  and s4 each absent or at a letter 5-8. That gives 710 windows at ring 13-25 (13: 10, 14: 20, 15: 43, 16: 85,
+  17: 106, 18: 121, 19: 119, 20: 90, more above). Coverage includes mirror images. `loop/k34/drive.py` runs kc in
+  ring order on 3 workers up to ring 20. It skips a window once every filling it covers is killed. A kc D is re-run
+  on dfast (ring <= 16) or dfast18 (17-19), and a filling counts as killed only when both say D. Every 4th not-D
+  window at ring <= 16 also gets dfast, as an agreement check.
+- **Bar.** R* is forbidden by D if all 25 fillings die. Report the killed fillings and the cheapest window for each.
+- **Guess.** The fillings with a 5 at s1 or s4 die to D at ring <= 16 (an extra five next to the link). Most of the
+  16 others survive D, which leaves them to C (round 35).
+
+**Round 34 part A result (09:08Z): 0 of 3 D on both engines.** kc and dfast/dfast18 agree on classes, ext and
+reached for all three (`loop/k34/binA_kc.out`, `binA_dfast.out`): ring 16 `f7_.556757_.56.77.` reached
+352,695 / 1,793,614; ring 17 `f7_.556757_.57.77.` 629,529 and `f7_5567576_56.77.7` 1,907,986 of 5,380,840. Every
+B-fixed window of R is now tested and not D, so route A at u is closed for R by B-fixed windows. Part C (fillings)
+is running: the 9 fillings with a 5 at s1 or s4 died at ring 13 on both engines (`f7_5567576_5....5.` and two
+others), as guessed.
+
 ## Round 33 (18 Oct 2026, 02:54Z-): H-KC, an independent D-closure engine for k19 (coordinator's job, 02:49Z)
 
 **Pre-registered 02:54Z, before any code.** Not on the paused L2 line.
