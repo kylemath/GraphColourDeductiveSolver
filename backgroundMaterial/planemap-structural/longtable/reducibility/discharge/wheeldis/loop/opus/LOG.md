@@ -64,3 +64,15 @@ Pre-registered before any probe ran.
   may rebind near 1/4. Rule H (lone five sends past two consecutive 6s) acts only when s1 = 5, already killed;
   restricted LP with H: t >= 1/5, not converged, new binder d = 7 5568586/5755756, lower bound only, no gain claimed.
   Within 2-ball rules that send only to adjacent bigs, w6 and w3 self-pair, giving a 3/17 floor for this row.
+- **Explore's review of rule T (via the coordinator, 09:22Z), accepted in part.** (a) T helps only if the five pays u
+  less when z is big, so it is a sender-2-ball rule, not an additive tau. H7 floors that class at 1/21 against R_opt,
+  but only via D3, and D3 contains RSST #110 (D, ring 10; angle A), so the floor does not hold against R_opt + RSST's
+  D set. (b) A restricted LP over the 7/27-tight rows is under-separated exactly where T moves load: no restricted run
+  is claimed.
+- **G (10:30Z): rule T written as a sender-2-ball rule for a sep3x/wlp3x job** (`G_ruleT_lp/FINDINGS.md`) [E counts
+  only, no LP]. Y[r, za, ze] replaces y[r] and T[r, za, ze, side] pays big z. Reading z as small/big costs 1,356 Y +
+  504 T and 1,194 sender rows (today 942 y, 342 rows). The outflow at u uses the 7-letter window sep3x already
+  resolves; the inflow at z is a per-transition weight on (w_j, s_j, w_{j+1}), sound for an upper bound. The exact bound
+  needs 625 DP states (about 5x per build). Validation: T = 0 must reproduce 7/27 and the j28_13 dual. Note [I]: L2's
+  u -> w2 transfer already reads (6, 5, s1) against (6, s1, 5), so once the s1 = 5 kill enters L2 (explore's proposed
+  sep3x state extension), L2 alone may already make this move. Run that first; T is the fallback.
