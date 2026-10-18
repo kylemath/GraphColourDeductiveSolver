@@ -1,5 +1,24 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 39 (18 Oct 2026, 09:55Z-): H-P5, does p5 = 7 make R* reducible? (Opus's fourth floor arrangement)
+
+**Pre-registered 09:55Z, before any run.** Gap G2. 1 core, after round 38 stops.
+- **Why.** Opus's 11/71 floor (`loop/opus/H_floor_check`) needs w6's sender row with z-letters (w4, p5) = (7, 7).
+  There, w6's two rootings (at u and at s5) share one variable, so u still pays (1 - t)/2 - T6. If R* with p5 = 7 is
+  reducible, the adversary must pick p5 != 7. The two rootings then split, and that floor no longer holds as
+  stated.
+- **Windows** (`loop/k39/p5win.py`). u + all seven link vertices + any subset of {s0, s2, s3, s5, s6} at R's letters,
+  + s1 and s4 each absent or at 6-8, + p5 = 7 (w5's second-ring neighbour between s4 and s5). 77 windows have a
+  simple ring <= 18: ring 16: 10, 17: 19, 18: 48. Five of the ring-16 windows cover all 16 open fillings and five
+  cover 4 each. At ring 17, 2 cover all 16, 12 cover 4 and 5 cover 1.
+- **Engines.** kc -C in ring order. A D needs dfast too, and a C needs cfast `--search` too. Ring 16 first, then
+  ring 17 for as long as the round lasts.
+- **Bars.** A kill covering (6,6) breaks the 11/71 floor as stated. A kill covering all 16 fillings with p5 = 7
+  makes every rule-T bound through w6 use split rootings. No kill: the fourth arrangement stands at ring <= 16 (17).
+- **Kill line.** kc/dfast D mismatch, or a kc-C C that cfast calls not C.
+- **Guess.** No kill at ring 16. p5 = 7 adds a big vertex at the edge of the window, and big vertices rarely help
+  reducibility.
+
 ## Round 38 (18 Oct 2026, 09:52Z-): H-W38, how far does w2's cap climb if its binding frames are killed one by one?
 
 **Pre-registered 09:52Z, before any code.** Gap G2. 1 core, beside part C.
