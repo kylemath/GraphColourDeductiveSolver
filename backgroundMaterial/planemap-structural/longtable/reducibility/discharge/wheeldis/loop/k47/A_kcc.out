@@ -17680,3 +17680,943 @@ a9_u65..5...5_...55..55 r=13 m=9 classes=66430 ext=6341 reached=14578 D=false de
   C=false |X|<=4 (kc-C: tested 74518, admissible 36803, edges 37) best X={I0-I1,R11-I1,R5-I3,R9-I8} leftover 1222 (962ms)
 a9_u65..5..65_...55..55 r=13 m=10 classes=66430 ext=7787 reached=24622 D=false depth=6 passes=7 mode=gs 669ms
   C=false |X|<=4 (kc-C: tested 102090, admissible 54800, edges 40) best X={I0-I4,I1-I2,R10-I1,R8-I4} leftover 98 (783ms)
+a9_u65..56665_.....5555 r=13 m=12 classes=66430 ext=13125 reached=66430 D=true depth=3 passes=3 mode=gs 205ms
+a9_u65..56..5_...55..55 r=13 m=10 classes=66430 ext=7903 reached=24382 D=false depth=10 passes=11 mode=gs 1126ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55159, edges 40) best X={I0-I2,I1-I5,R11-I1,R12-I2} leftover 572 (1234ms)
+a9_u65..56.65_...55..55 r=13 m=11 classes=66430 ext=9701 reached=43930 D=false depth=6 passes=7 mode=gs 496ms
+  C=false |X|<=4 (kc-C: tested 136697, admissible 78573, edges 43) best X={I0-I5,R10-I1,R12-I2,R8-I5} leftover 126 (723ms)
+a9_u65..56665_....5.555 r=13 m=12 classes=66430 ext=13167 reached=66430 D=true depth=3 passes=3 mode=gs 185ms
+a9_u65..56665_....55.55 r=13 m=12 classes=66430 ext=13152 reached=66430 D=true depth=3 passes=3 mode=gs 184ms
+a9_u65..56665_...55..55 r=13 m=12 classes=66430 ext=11934 reached=66430 D=true depth=3 passes=3 mode=gs 190ms
+a9_u65.65..65_...55..55 r=13 m=11 classes=66430 ext=9701 reached=43930 D=false depth=5 passes=6 mode=gs 472ms
+  C=false |X|<=4 (kc-C: tested 136697, admissible 78573, edges 43) best X={I0-I5,I1-I2,R3-I1,R5-I5} leftover 60 (725ms)
+a9_u65.65...5_...55..55 r=13 m=10 classes=66430 ext=7903 reached=24191 D=false depth=9 passes=10 mode=gs 886ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55263, edges 40) best X={I0-I5,I5-I9,R3-I6,R5-I9} leftover 289 (1000ms)
+a9_u65.656.65_...55..55 r=13 m=12 classes=66430 ext=11880 reached=66430 D=true depth=3 passes=3 mode=gs 190ms
+a9_u65.656..5_...55..55 r=13 m=11 classes=66430 ext=9690 reached=42042 D=false depth=5 passes=6 mode=gs 469ms
+  C=false |X|<=4 (kc-C: tested 136697, admissible 78599, edges 43) best X={I0-I5,I4-I8,R9-I5,R11-I8} leftover 210 (671ms)
+a9_u65.656665_...55..55 r=13 m=13 classes=66430 ext=14486 reached=66430 D=true depth=3 passes=3 mode=gs 145ms
+a9_u65665...5_...55..55 r=13 m=11 classes=66430 ext=9854 reached=66430 D=true depth=4 passes=4 mode=gs 299ms
+a9_u65665...5_..55...55 r=13 m=11 classes=66430 ext=10809 reached=66430 D=true depth=4 passes=4 mode=gs 194ms
+a9_u65665...5_..555...5 r=13 m=11 classes=66430 ext=10742 reached=49563 D=false depth=4 passes=5 mode=gs 312ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 43, 313ms)
+a9_u65665..65_...55..55 r=13 m=12 classes=66430 ext=12003 reached=66430 D=true depth=3 passes=3 mode=gs 202ms
+a9_u65665..65_..55...55 r=13 m=12 classes=66430 ext=13123 reached=66430 D=true depth=3 passes=3 mode=gs 169ms
+a9_u656656..5_...55..55 r=13 m=12 classes=66430 ext=12009 reached=66430 D=true depth=3 passes=3 mode=gs 189ms
+a9_u656656.65_...55..55 r=13 m=13 classes=66430 ext=14580 reached=66430 D=true depth=2 passes=2 mode=gs 128ms
+a9_u656656..5_..555...5 r=13 m=12 classes=66430 ext=13027 reached=66430 D=true depth=3 passes=3 mode=gs 174ms
+a9_u656656665_...55..55 r=13 m=14 classes=66430 ext=17592 reached=66430 D=true depth=2 passes=2 mode=gs 108ms
+a9_-...65666._...55555. r=13 m=10 classes=66430 ext=8317 reached=36750 D=false depth=7 passes=8 mode=gs 629ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53668, edges 40) best X={I0-I5,I3-I7,R0-I3,R4-I5} leftover 200 (758ms)
+a9_-...65666._..55555.. r=13 m=10 classes=66430 ext=8279 reached=38718 D=false depth=6 passes=7 mode=gs 552ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53611, edges 40) best X={I3-I8,I4-I9,R0-I3,R8-I9} leftover 120 (682ms)
+a9_-...656665_...55.55. r=13 m=10 classes=66430 ext=8344 reached=30140 D=false depth=5 passes=6 mode=gs 558ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54103, edges 40) best X={I0-I1,I1-I2,I4-I5,R1-I5} leftover 572 (684ms)
+a9_-...656665_...55..55 r=13 m=10 classes=66430 ext=7540 reached=28321 D=false depth=8 passes=9 mode=gs 855ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53665, edges 40) best X={I2-I8,I5-I6,R3-I6,R9-I8} leftover 452 (987ms)
+a9_-...656665_...555.5. r=13 m=10 classes=66430 ext=8339 reached=27950 D=false depth=5 passes=6 mode=gs 531ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54029, edges 40) best X={I2-I8,R0-I2,R10-I6,R9-I7} leftover 200 (663ms)
+a9_-...656665_...5555.. r=13 m=10 classes=66430 ext=8317 reached=36980 D=false depth=5 passes=6 mode=gs 475ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53668, edges 40) best X={I0-I6,I3-I9,I6-I7,R4-I9} leftover 520 (614ms)
+a9_-..66566.._..55555.. r=13 m=10 classes=66430 ext=8204 reached=37998 D=false depth=5 passes=6 mode=gs 522ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53562, edges 40) best X={I1-I5,I3-I7,I6-I7,R0-I1} leftover 264 (643ms)
+a9_-.56656..._.65555... r=13 m=10 classes=66430 ext=8279 reached=38754 D=false depth=5 passes=6 mode=gs 512ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53611, edges 40) best X={I0-I5,I2-I3,R0-I0,R7-I2} leftover 192 (636ms)
+a9_-.566566.._..5555... r=13 m=10 classes=66430 ext=8204 reached=38055 D=false depth=5 passes=6 mode=gs 519ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53562, edges 40) best X={I2-I7,I4-I9,R0-I4,R7-I7} leftover 88 (643ms)
+a9_-6...56665_.....5555 r=13 m=10 classes=66430 ext=8317 reached=36980 D=false depth=7 passes=8 mode=gs 600ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53668, edges 40) best X={I0-I6,R0-I4,R4-I6,R6-I8} leftover 214 (703ms)
+a9_-6....6665_....55555 r=13 m=10 classes=66430 ext=8317 reached=36750 D=false depth=7 passes=8 mode=gs 661ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53668, edges 40) best X={I0-I5,I2-I8,R0-I2,R4-I5} leftover 200 (782ms)
+a9_-6...56665_....5.555 r=13 m=10 classes=66430 ext=8339 reached=27950 D=false depth=5 passes=6 mode=gs 558ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54029, edges 40) best X={I0-I6,R0-I3,R5-I4,R4-I6} leftover 372 (705ms)
+a9_-6...56665_....55.55 r=13 m=10 classes=66430 ext=8344 reached=30140 D=false depth=6 passes=7 mode=gs 528ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54103, edges 40) best X={I2-I8,R12-I1,R0-I2,R9-I7} leftover 288 (647ms)
+a9_-6...56665_...55..55 r=13 m=10 classes=66430 ext=7540 reached=28321 D=false depth=8 passes=9 mode=gs 801ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53665, edges 40) best X={I0-I6,I1-I2,I2-I3,R4-I6} leftover 706 (907ms)
+a9_-65....665_6....5555 r=13 m=10 classes=66430 ext=8204 reached=37998 D=false depth=5 passes=6 mode=gs 509ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53562, edges 40) best X={I0-I1,I2-I7,I4-I9,R5-I0} leftover 460 (634ms)
+a9_-65...6665_.....5555 r=13 m=10 classes=66430 ext=8279 reached=38718 D=false depth=6 passes=7 mode=gs 594ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53611, edges 40) best X={I0-I6,R6-I4,R5-I6,R9-I7} leftover 272 (695ms)
+a9_-656....65_..5...555 r=13 m=9 classes=66430 ext=6634 reached=23684 D=false depth=5 passes=6 mode=gs 502ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35507, edges 37) best X={I1-I2,I3-I8,R6-I1,R7-I5} leftover 392 (564ms)
+a9_-6566....5_..55...55 r=13 m=9 classes=66430 ext=6947 reached=19967 D=false depth=5 passes=6 mode=gs 606ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36548, edges 37) best X={I4-I8,R8-I0,R1-I3,R10-I8} leftover 1307 (685ms)
+a9_-65665...._..555...5 r=13 m=9 classes=66430 ext=6901 reached=21109 D=false depth=5 passes=6 mode=gs 650ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36194, edges 37) best X={I1-I2,R8-I1} leftover 360 (730ms)
+a9_-65665...5_...5...55 r=13 m=9 classes=66430 ext=6959 reached=19591 D=false depth=6 passes=7 mode=gs 705ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36613, edges 37) best X={I1-I2,I5-I6,R8-I1,R9-I6} leftover 402 (785ms)
+a9_-65665...5_...55...5 r=13 m=9 classes=66430 ext=6851 reached=18502 D=false depth=6 passes=7 mode=gs 729ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36615, edges 37) best X={I3-I7,R0-I4,R3-I7,R2-I8} leftover 288 (806ms)
+a9_-65665...5_..5....55 r=13 m=9 classes=66430 ext=6947 reached=20086 D=false depth=6 passes=7 mode=gs 771ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36544, edges 37) best X={I0-I5,R12-I5,R9-I6,R11-I8} leftover 266 (856ms)
+a9_-65665...5_..555.... r=13 m=9 classes=66430 ext=6901 reached=20979 D=false depth=6 passes=7 mode=gs 723ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36286, edges 37) best X={I0-I5,R0-I3,R11-I5,R3-I7} leftover 951 (803ms)
+a9_-65665...5_..55....5 r=13 m=9 classes=66430 ext=7568 reached=19847 D=false depth=6 passes=7 mode=gs 770ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36968, edges 37) best X={I1-I2,I2-I3,R6-I2,R4-I7} leftover 423 (858ms)
+a9_u....5...5_...55..55 r=13 m=7 classes=66430 ext=4158 reached=6130 D=false depth=2 passes=3 mode=gs 409ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 13632, edges 31) best X={I3-I6,I4-I5,R6-I5,R9-I6} leftover 662 (438ms)
+a9_u....5..65_...55..55 r=13 m=8 classes=66430 ext=5192 reached=9364 D=false depth=4 passes=5 mode=gs 610ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23415, edges 34) best X={I0-I1,I1-I6,R4-I5,R6-I6} leftover 357 (650ms)
+a9_u....56..5_...55..55 r=13 m=8 classes=66430 ext=5192 reached=9364 D=false depth=5 passes=6 mode=gs 755ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23415, edges 34) best X={I1-I2,I1-I6,I2-I6,R4-I5} leftover 569 (795ms)
+a9_u....56665_.....5555 r=13 m=10 classes=66430 ext=8905 reached=34691 D=false depth=7 passes=8 mode=gs 668ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55688, edges 40) best X={I0-I3,I3-I7,I3-I8} leftover 168 (793ms)
+a9_u....56.65_...55..55 r=13 m=9 classes=66430 ext=6482 reached=14427 D=false depth=7 passes=8 mode=gs 947ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37270, edges 37) best X={I3-I4,R3-I1,R6-I2,R0-I4} leftover 833 (1068ms)
+a9_u....56665_....5.555 r=13 m=10 classes=66430 ext=8936 reached=26583 D=false depth=5 passes=6 mode=gs 628ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55973, edges 40) best X={I0-I3,I4-I8,R7-I3,R8-I8} leftover 96 (760ms)
+a9_u....56665_....55.55 r=13 m=10 classes=66430 ext=8911 reached=29620 D=false depth=6 passes=7 mode=gs 695ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56023, edges 40) best X={I0-I3,I3-I8,R9-I3,R6-I7} leftover 288 (862ms)
+a9_u....56665_....5555. r=13 m=10 classes=66430 ext=9733 reached=32440 D=false depth=4 passes=5 mode=gs 403ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55856, edges 40) best X={I0-I5,I3-I4,I4-I9,R12-I5} leftover 450 (520ms)
+a9_u....56665_...55..55 r=13 m=10 classes=66430 ext=8064 reached=27483 D=false depth=7 passes=8 mode=gs 722ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55842, edges 40) best X={I0-I2,R3-I1,R7-I2,R6-I8} leftover 200 (888ms)
+a9_u....56665_...55.55. r=13 m=10 classes=66430 ext=8911 reached=29620 D=false depth=6 passes=7 mode=gs 624ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56023, edges 40) best X={I0-I2,I6-I7,R6-I2,R4-I6} leftover 208 (778ms)
+a9_u....56665_...555.5. r=13 m=10 classes=66430 ext=8936 reached=26583 D=false depth=5 passes=6 mode=gs 559ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55973, edges 40) best X={I0-I3,I3-I8,R9-I3,R5-I7} leftover 192 (705ms)
+a9_u...65...5_...55..55 r=13 m=8 classes=66430 ext=5192 reached=9355 D=false depth=4 passes=5 mode=gs 590ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23415, edges 34) best X={I1-I2,R7-I2,R4-I5,R6-I6} leftover 288 (642ms)
+a9_u....56665_...5555.. r=13 m=10 classes=66430 ext=8905 reached=34691 D=false depth=7 passes=8 mode=gs 642ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55688, edges 40) best X={I0-I2,I1-I6,I2-I7,I2-I8} leftover 208 (782ms)
+a9_u...656..5_...55..55 r=13 m=9 classes=66430 ext=6399 reached=14847 D=false depth=5 passes=6 mode=gs 718ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36921, edges 37) best X={I0-I1,I3-I7,R3-I1,R5-I7} leftover 134 (803ms)
+a9_u...65..65_...55..55 r=13 m=9 classes=66430 ext=6482 reached=14393 D=false depth=7 passes=8 mode=gs 910ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37182, edges 37) best X={I1-I2,I6-I7,R7-I2,R4-I6} leftover 350 (1024ms)
+a9_u...656665_...55..55 r=13 m=11 classes=66430 ext=9882 reached=66430 D=true depth=4 passes=4 mode=gs 236ms
+a9_u...656665_...55.55. r=13 m=11 classes=66430 ext=10870 reached=66430 D=true depth=3 passes=3 mode=gs 248ms
+a9_u...656.65_...55..55 r=13 m=10 classes=66430 ext=7989 reached=24566 D=false depth=11 passes=12 mode=gs 1084ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55404, edges 40) best X={I2-I7,I3-I8,R4-I7,R5-I8} leftover 289 (1232ms)
+a9_u...656665_...555.5. r=13 m=11 classes=66430 ext=10883 reached=52586 D=false depth=4 passes=5 mode=gs 314ms
+  C-REDUCIBLE X={I4-I5} size=1 (kc-C: tested 15, admissible 15, edges 43, 315ms)
+a9_u...656665_...5555.. r=13 m=11 classes=66430 ext=10829 reached=66430 D=true depth=3 passes=3 mode=gs 202ms
+a9_u.5665...5_..555.... r=13 m=9 classes=66430 ext=7086 reached=19349 D=false depth=11 passes=12 mode=gs 1062ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37561, edges 37) best X={I0-I3,I3-I6,I4-I7,R8-I7} leftover 226 (1135ms)
+a9_u.56656..._..5555... r=13 m=10 classes=66430 ext=8502 reached=38432 D=false depth=5 passes=6 mode=gs 452ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54822, edges 40) best X={I0-I3,I3-I6,I5-I8,R7-I8} leftover 80 (600ms)
+a9_u.566566.._..5555... r=13 m=11 classes=66430 ext=10682 reached=66430 D=true depth=3 passes=3 mode=gs 218ms
+a9_u.56656..5_..555.... r=13 m=10 classes=66430 ext=8640 reached=36514 D=false depth=5 passes=6 mode=gs 535ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55378, edges 40) best X={I1-I2,I3-I4,I4-I5,R12-I1} leftover 296 (665ms)
+a9_u6...5...5_...55..55 r=13 m=8 classes=66430 ext=5192 reached=9355 D=false depth=4 passes=5 mode=gs 627ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23415, edges 34) best X={I1-I3,I5-I6,R11-I1,R5-I6} leftover 876 (677ms)
+a9_u6...5..65_...55..55 r=13 m=9 classes=66430 ext=6399 reached=14847 D=false depth=5 passes=6 mode=gs 606ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36921, edges 37) best X={I0-I1,I3-I4,R12-I1,R11-I5} leftover 265 (683ms)
+a9_u6...56665_.....5555 r=13 m=11 classes=66430 ext=10829 reached=66430 D=true depth=3 passes=3 mode=gs 196ms
+a9_u6...56..5_...55..55 r=13 m=9 classes=66430 ext=6482 reached=14393 D=false depth=7 passes=8 mode=gs 893ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37182, edges 37) best X={I2-I3,I2-I7,I3-I7,R3-I6} leftover 686 (980ms)
+a9_u6...56.65_...55..55 r=13 m=10 classes=66430 ext=7989 reached=24566 D=false depth=11 passes=12 mode=gs 1116ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55404, edges 40) best X={I2-I3,I4-I5,R2-I2,R9-I4} leftover 759 (1250ms)
+a9_u6...56665_....5.555 r=13 m=11 classes=66430 ext=10883 reached=52586 D=false depth=4 passes=5 mode=gs 342ms
+  C-REDUCIBLE X={I3-I4} size=1 (kc-C: tested 11, admissible 11, edges 43, 343ms)
+a9_u6...56665_....55.55 r=13 m=11 classes=66430 ext=10870 reached=66430 D=true depth=4 passes=4 mode=gs 252ms
+a9_u6...56665_...55..55 r=13 m=11 classes=66430 ext=9882 reached=66430 D=true depth=4 passes=4 mode=gs 245ms
+a9_u6..65...5_...55..55 r=13 m=9 classes=66430 ext=6482 reached=14393 D=false depth=6 passes=7 mode=gs 783ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37182, edges 37) best X={I2-I6,I3-I7,R4-I6,R5-I7} leftover 357 (872ms)
+a9_u6..65..65_...55..55 r=13 m=10 classes=66430 ext=7989 reached=24540 D=false depth=12 passes=13 mode=gs 1213ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55300, edges 40) best X={I1-I6,I2-I3,I3-I8,R10-I6} leftover 603 (1346ms)
+a9_u6..656..5_...55..55 r=13 m=10 classes=66430 ext=7989 reached=24540 D=false depth=11 passes=12 mode=gs 1151ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55300, edges 40) best X={I1-I5,I2-I3,R11-I1,R2-I2} leftover 1272 (1298ms)
+a9_u6..656665_...55..55 r=13 m=12 classes=66430 ext=12099 reached=66430 D=true depth=3 passes=3 mode=gs 164ms
+a9_u6..656.65_...55..55 r=13 m=11 classes=66430 ext=9847 reached=42274 D=false depth=4 passes=5 mode=gs 532ms
+  C=false |X|<=4 (kc-C: tested 136697, admissible 78763, edges 43) best X={I0-I4,I4-I9,R2-I2,R6-I4} leftover 352 (761ms)
+a9_u65....665_.....5555 r=13 m=10 classes=66430 ext=8494 reached=38030 D=false depth=5 passes=6 mode=gs 529ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54824, edges 40) best X={I0-I2,I4-I9,R11-I2,R9-I9} leftover 88 (673ms)
+a9_u65...6665_.....5555 r=13 m=11 classes=66430 ext=10766 reached=66430 D=true depth=3 passes=3 mode=gs 193ms
+a9_u65..5...5_....5..55 r=13 m=8 classes=66430 ext=5663 reached=12423 D=false depth=6 passes=7 mode=gs 705ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23772, edges 34) best X={I1-I2,R12-I2} leftover 362 (747ms)
+a9_u65..5...5_...5...55 r=13 m=8 classes=66430 ext=5663 reached=12404 D=false depth=6 passes=7 mode=gs 718ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23772, edges 34) best X={I1-I4,I3-I6,R7-I4,R2-I6} leftover 662 (763ms)
+a9_u65..5...5_...55...5 r=13 m=8 classes=66430 ext=5758 reached=10311 D=false depth=5 passes=6 mode=gs 754ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24293, edges 34) best X={I4-I5,I6-I7,R10-I5,R2-I6} leftover 868 (804ms)
+a9_u65..5..65_......555 r=13 m=9 classes=66430 ext=6836 reached=22134 D=false depth=6 passes=7 mode=gs 754ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36819, edges 37) best X={I0-I1,I4-I8,R11-I1,R9-I8} leftover 96 (838ms)
+a9_u65..5..65_....5..55 r=13 m=9 classes=66430 ext=6953 reached=21041 D=false depth=7 passes=8 mode=gs 804ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37149, edges 37) best X={I1-I5,I4-I5,I6-I8,R10-I6} leftover 206 (893ms)
+a9_u65..5..65_...5...55 r=13 m=9 classes=66430 ext=6953 reached=21040 D=false depth=6 passes=7 mode=gs 792ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37149, edges 37) best X={I0-I4,I1-I2,R10-I1,R8-I4} leftover 98 (919ms)
+a9_u65..5.665_......555 r=13 m=10 classes=66430 ext=8607 reached=38514 D=false depth=6 passes=7 mode=gs 556ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55325, edges 40) best X={I0-I1,I4-I5,R10-I1,R8-I5} leftover 80 (676ms)
+a9_u65..56.65_....5..55 r=13 m=10 classes=66430 ext=8874 reached=37793 D=false depth=7 passes=8 mode=gs 669ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56143, edges 40) best X={I1-I2,I5-I9,R10-I1,R9-I9} leftover 84 (783ms)
+a9_u65..56..5_....5..55 r=13 m=9 classes=66430 ext=7230 reached=19791 D=false depth=9 passes=10 mode=gs 1047ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38054, edges 37) best X={I0-I4,R2-I3,R5-I4,R3-I7} leftover 367 (1136ms)
+a9_u65..56..5_...55...5 r=13 m=9 classes=66430 ext=7178 reached=17434 D=false depth=10 passes=11 mode=gs 1081ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38102, edges 37) best X={I0-I4,I7-I8,R4-I4,R2-I7} leftover 346 (1152ms)
+a9_u65..56665_......555 r=13 m=11 classes=66430 ext=10915 reached=66430 D=true depth=4 passes=4 mode=gs 195ms
+a9_u65..56665_.....5.55 r=13 m=11 classes=66430 ext=10991 reached=66430 D=true depth=4 passes=4 mode=gs 179ms
+a9_u65..56665_....5..55 r=13 m=11 classes=66430 ext=11037 reached=66430 D=true depth=3 passes=3 mode=gs 233ms
+a9_u65.65...5_...5...55 r=13 m=9 classes=66430 ext=7230 reached=19701 D=false depth=7 passes=8 mode=gs 797ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38146, edges 37) best X={I0-I5,I5-I6,R3-I6,R4-I8} leftover 551 (885ms)
+a9_u65.65...5_...55...5 r=13 m=9 classes=66430 ext=7178 reached=17248 D=false depth=8 passes=9 mode=gs 961ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38194, edges 37) best X={I0-I3,R12-I3,R8-I4,R11-I7} leftover 356 (1052ms)
+a9_u65665...5_...5...55 r=13 m=10 classes=66430 ext=9086 reached=50307 D=false depth=5 passes=6 mode=gs 473ms
+  C-REDUCIBLE X={I3-I4} size=1 (kc-C: tested 11, admissible 11, edges 40, 475ms)
+a9_u65.65..65_...5...55 r=13 m=10 classes=66430 ext=8874 reached=37793 D=false depth=7 passes=8 mode=gs 659ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56143, edges 40) best X={I1-I7,I5-I9,I7-I9,R7-I5} leftover 320 (801ms)
+a9_u65.656..5_...55...5 r=13 m=10 classes=66430 ext=8808 reached=34116 D=false depth=7 passes=8 mode=gs 719ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56220, edges 40) best X={I0-I5,I3-I4,R8-I5,R9-I9} leftover 266 (864ms)
+a9_u65665...5_...55...5 r=13 m=10 classes=66430 ext=8958 reached=47238 D=false depth=6 passes=7 mode=gs 546ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 40, 547ms)
+a9_u65665...5_..5....55 r=13 m=10 classes=66430 ext=9050 reached=66430 D=true depth=4 passes=4 mode=gs 327ms
+a9_u65665...5_..55....5 r=13 m=10 classes=66430 ext=9855 reached=45223 D=false depth=6 passes=7 mode=gs 454ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 40, 456ms)
+a9_u65665...5_..555.... r=13 m=10 classes=66430 ext=9022 reached=42665 D=false depth=6 passes=7 mode=gs 542ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 40, 543ms)
+a9_u65665..65_...5...55 r=13 m=11 classes=66430 ext=11077 reached=66430 D=true depth=3 passes=3 mode=gs 235ms
+a9_u65665..65_..5....55 r=13 m=11 classes=66430 ext=11001 reached=66430 D=true depth=3 passes=3 mode=gs 229ms
+a9_u656656..5_...55...5 r=13 m=11 classes=66430 ext=10939 reached=66430 D=true depth=4 passes=4 mode=gs 262ms
+a9_u656656..5_..555.... r=13 m=11 classes=66430 ext=10976 reached=58843 D=false depth=4 passes=5 mode=gs 294ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 43, 294ms)
+a9_-...65666._...55.55. r=13 m=9 classes=66430 ext=6941 reached=20563 D=false depth=6 passes=7 mode=gs 738ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36562, edges 37) best X={I2-I6,R0-I1,R3-I5,R4-I6} leftover 256 (821ms)
+a9_-...65666._...555.5. r=13 m=9 classes=66430 ext=6864 reached=23027 D=false depth=6 passes=7 mode=gs 715ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36185, edges 37) best X={I1-I2,I1-I6,I2-I6,R3-I5} leftover 444 (786ms)
+a9_-...65666._..555.5.. r=13 m=9 classes=66430 ext=6879 reached=22667 D=false depth=5 passes=6 mode=gs 630ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36486, edges 37) best X={I0-I6,R0-I1,R5-I6,R6-I7} leftover 208 (722ms)
+a9_-...65666._..5555... r=13 m=9 classes=66430 ext=6791 reached=25401 D=false depth=4 passes=5 mode=gs 499ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35854, edges 37) best X={I1-I7,I3-I8,R6-I7,R6-I8} leftover 192 (593ms)
+a9_-...656665_...55..5. r=13 m=9 classes=66430 ext=6958 reached=20222 D=false depth=6 passes=7 mode=gs 758ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36627, edges 37) best X={I0-I6,I2-I3,R8-I2,R9-I6} leftover 128 (888ms)
+a9_-...656665_...55.5.. r=13 m=9 classes=66430 ext=6941 reached=20705 D=false depth=6 passes=7 mode=gs 703ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36558, edges 37) best X={I2-I7,R0-I1,R10-I6,R9-I7} leftover 254 (790ms)
+a9_-...656665_...555... r=13 m=9 classes=66430 ext=6864 reached=23019 D=false depth=5 passes=6 mode=gs 677ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36277, edges 37) best X={I1-I6,I2-I8,R10-I6,R7-I8} leftover 458 (744ms)
+a9_-..6656..._.65555... r=13 m=9 classes=66430 ext=6791 reached=25401 D=false depth=5 passes=6 mode=gs 515ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35854, edges 37) best X={I1-I5,I3-I7,R0-I1,R8-I7} leftover 72 (581ms)
+a9_-..66566.._..555.5.. r=13 m=9 classes=66430 ext=6825 reached=22625 D=false depth=5 passes=6 mode=gs 511ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36136, edges 37) best X={I1-I5,I2-I3,I2-I6,R0-I1} leftover 284 (595ms)
+a9_-..66566.._...5555.. r=13 m=9 classes=66430 ext=6762 reached=23677 D=false depth=6 passes=7 mode=gs 738ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35856, edges 37) best X={I1-I5,I3-I4,R7-I3,R6-I5} leftover 108 (827ms)
+a9_-.56656..._.6.555... r=13 m=9 classes=66430 ext=6879 reached=22659 D=false depth=6 passes=7 mode=gs 735ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36490, edges 37) best X={I0-I5,I3-I6,R0-I0,R7-I6} leftover 462 (817ms)
+a9_-.56656..._6.555.... r=13 m=9 classes=66430 ext=6825 reached=23520 D=false depth=6 passes=7 mode=gs 678ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35858, edges 37) best X={I1-I6,I4-I8,R8-I6,R9-I8} leftover 122 (760ms)
+a9_-.56656..._66555.... r=13 m=10 classes=66430 ext=8552 reached=38011 D=false depth=5 passes=6 mode=gs 470ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54383, edges 40) best X={I0-I5,I2-I7,R0-I0,R7-I7} leftover 264 (576ms)
+a9_-.566566.._...555... r=13 m=9 classes=66430 ext=6825 reached=22527 D=false depth=6 passes=7 mode=gs 674ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36228, edges 37) best X={I2-I6,I4-I8,R0-I4,R7-I6} leftover 92 (739ms)
+a9_-.566566.._..555.... r=13 m=9 classes=66430 ext=6762 reached=23716 D=false depth=5 passes=6 mode=gs 577ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35856, edges 37) best X={I2-I3,I3-I4,I7-I8,R6-I7} leftover 198 (646ms)
+a9_-6.....665_6....5555 r=13 m=9 classes=66430 ext=6762 reached=23677 D=false depth=6 passes=7 mode=gs 612ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35856, edges 37) best X={I0-I4,I1-I2,R7-I2,R6-I4} leftover 108 (684ms)
+a9_-6....6665_....5.555 r=13 m=9 classes=66430 ext=6864 reached=23027 D=false depth=6 passes=7 mode=gs 657ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36185, edges 37) best X={I3-I4,I3-I8,I4-I8,R3-I5} leftover 444 (762ms)
+a9_-6....6665_....55.55 r=13 m=9 classes=66430 ext=6941 reached=20563 D=false depth=6 passes=7 mode=gs 682ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36562, edges 37) best X={I3-I8,R0-I4,R3-I5,R4-I8} leftover 256 (772ms)
+a9_-6...56665_......555 r=13 m=9 classes=66430 ext=6864 reached=23019 D=false depth=5 passes=6 mode=gs 625ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36277, edges 37) best X={I3-I7,I5-I6,R0-I5,R6-I7} leftover 280 (706ms)
+a9_-6...56665_.....5.55 r=13 m=9 classes=66430 ext=6941 reached=20705 D=false depth=6 passes=7 mode=gs 721ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36558, edges 37) best X={I0-I6,R0-I0,R0-I2,R8-I7} leftover 1398 (805ms)
+a9_-6...56665_....5..55 r=13 m=9 classes=66430 ext=6958 reached=20222 D=false depth=5 passes=6 mode=gs 634ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36627, edges 37) best X={I5-I8,R0-I0,R6-I4,R4-I8} leftover 618 (719ms)
+a9_-65....665_.6....555 r=13 m=9 classes=66430 ext=6780 reached=24870 D=false depth=6 passes=7 mode=gs 631ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35807, edges 37) best X={I0-I5,R0-I2,R8-I3,R7-I5} leftover 280 (704ms)
+a9_-65....665_6....5.55 r=13 m=9 classes=66430 ext=6825 reached=22625 D=false depth=5 passes=6 mode=gs 544ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36136, edges 37) best X={I1-I6,I3-I8,R0-I1,R6-I8} leftover 115 (608ms)
+a9_-65....665_66....555 r=13 m=10 classes=66430 ext=8414 reached=39540 D=false depth=5 passes=6 mode=gs 498ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54275, edges 40) best X={I1-I6,I3-I9,R0-I1,R7-I9} leftover 99 (627ms)
+a9_-65...6665_......555 r=13 m=9 classes=66430 ext=6791 reached=25401 D=false depth=4 passes=5 mode=gs 475ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35854, edges 37) best X={I4-I8,R0-I5,R4-I6,R5-I8} leftover 168 (569ms)
+a9_-65...6665_.....5.55 r=13 m=9 classes=66430 ext=6879 reached=22667 D=false depth=5 passes=6 mode=gs 645ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36486, edges 37) best X={I0-I6,R0-I5,R5-I6,R6-I8} leftover 208 (728ms)
+a9_-656....65_.6....555 r=13 m=9 classes=66430 ext=6833 reached=24494 D=false depth=5 passes=6 mode=gs 506ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36108, edges 37) best X={I0-I5,I3-I7,R0-I3,R8-I5} leftover 98 (581ms)
+a9_-656....65_.65....55 r=13 m=9 classes=66430 ext=6885 reached=22291 D=false depth=6 passes=7 mode=gs 767ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36178, edges 37) best X={I2-I6,R7-I1,R0-I2,R2-I7} leftover 310 (846ms)
+a9_-656....65_6.....555 r=13 m=9 classes=66430 ext=6785 reached=24955 D=false depth=5 passes=6 mode=gs 516ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35523, edges 37) best X={I0-I5,I3-I7,R0-I3,R8-I5} leftover 90 (596ms)
+a9_-656....65_66....555 r=13 m=10 classes=66430 ext=8410 reached=41326 D=false depth=4 passes=5 mode=gs 363ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53963, edges 40) best X={I0-I6,I1-I2,I6-I7,R6-I6} leftover 132 (478ms)
+a9_-656....65_6.5....55 r=13 m=9 classes=66430 ext=6850 reached=22654 D=false depth=6 passes=7 mode=gs 705ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35827, edges 37) best X={I1-I2,I3-I8,R8-I0,R9-I8} leftover 192 (792ms)
+a9_-656....65_665....55 r=13 m=10 classes=66430 ext=8489 reached=41560 D=false depth=5 passes=6 mode=gs 546ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 53992, edges 40) best X={I1-I6,I2-I7,I2-I8,R0-I2} leftover 132 (742ms)
+a9_-656...665_......555 r=13 m=9 classes=66430 ext=6780 reached=24870 D=false depth=5 passes=6 mode=gs 536ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35803, edges 37) best X={I1-I2,I4-I7,R5-I1,R10-I7} leftover 375 (610ms)
+a9_-6566....5_...5...55 r=13 m=8 classes=66430 ext=5682 reached=13091 D=false depth=6 passes=7 mode=gs 788ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23362, edges 34) best X={I0-I4,R12-I4,R9-I5,R11-I7} leftover 236 (839ms)
+a9_-6566....5_..55....5 r=13 m=8 classes=66430 ext=6303 reached=13340 D=false depth=6 passes=7 mode=gs 764ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23899, edges 34) best X={I3-I6,I3-I7,R0-I3} leftover 464 (820ms)
+a9_-6566....5_.65....55 r=13 m=9 classes=66430 ext=7151 reached=20796 D=false depth=5 passes=6 mode=gs 620ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36863, edges 37) best X={I2-I6,I2-I7,R8-I1,R0-I2} leftover 180 (706ms)
+a9_-6566....5_6.5....55 r=13 m=9 classes=66430 ext=7167 reached=21138 D=false depth=5 passes=6 mode=gs 636ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36799, edges 37) best X={I0-I1,I4-I8,R9-I0,R0-I4} leftover 348 (708ms)
+a9_-6566....5_665....55 r=13 m=10 classes=66430 ext=8832 reached=39588 D=false depth=6 passes=7 mode=gs 509ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54828, edges 40) best X={I0-I1,I0-I4,R9-I0,R10-I9} leftover 264 (618ms)
+a9_-6566...65_..5....55 r=13 m=9 classes=66430 ext=6920 reached=22454 D=false depth=7 passes=8 mode=gs 854ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36481, edges 37) best X={I0-I1,I4-I8,R8-I0,R9-I8} leftover 116 (942ms)
+a9_-65665...._...55...5 r=13 m=8 classes=66430 ext=5727 reached=11536 D=false depth=5 passes=6 mode=gs 621ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23383, edges 34) best X={I2-I3,R4-I3,R1-I4,R2-I7} leftover 320 (658ms)
+a9_-65665...._.6555.... r=13 m=9 classes=66430 ext=7117 reached=22153 D=false depth=4 passes=5 mode=gs 417ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36253, edges 37) best X={I2-I5,I2-I6,R0-I2,R0-I4} leftover 300 (480ms)
+a9_-65665...._..55....5 r=13 m=8 classes=66430 ext=6306 reached=13916 D=false depth=6 passes=7 mode=gs 800ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23659, edges 34) best X={I2-I6,I4-I7,R1-I4,R5-I6} leftover 632 (853ms)
+a9_-65665...._6.555.... r=13 m=9 classes=66430 ext=7137 reached=21462 D=false depth=4 passes=5 mode=gs 475ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36801, edges 37) best X={I0-I1,I1-I2,I3-I4,R1-I4} leftover 463 (543ms)
+a9_-65665...._66555.... r=13 m=10 classes=66430 ext=8863 reached=36452 D=false depth=5 passes=6 mode=gs 471ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 54878, edges 40) best X={I2-I6,I2-I7,R0-I2,R1-I4} leftover 348 (610ms)
+a9_-65665...5_.......55 r=13 m=8 classes=66430 ext=5682 reached=12912 D=false depth=6 passes=7 mode=gs 783ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23438, edges 34) best X={I1-I2,R9-I0,R0-I5,R10-I6} leftover 476 (826ms)
+a9_-65665...5_...5....5 r=13 m=8 classes=66430 ext=6307 reached=13467 D=false depth=7 passes=8 mode=gs 750ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23955, edges 34) best X={I0-I5,I3-I7,R8-I0,R0-I3} leftover 1184 (801ms)
+a9_-65665...5_...55.... r=13 m=8 classes=66430 ext=5727 reached=11307 D=false depth=4 passes=5 mode=gs 484ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23463, edges 34) best X={I3-I6,R8-I1,R6-I2,R3-I6} leftover 921 (523ms)
+a9_-65665...5_..5.....5 r=13 m=8 classes=66430 ext=6303 reached=13409 D=false depth=6 passes=7 mode=gs 738ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23895, edges 34) best X={I1-I2,I5-I6,R8-I1,R12-I5} leftover 729 (779ms)
+a9_-65665...5_..55..... r=13 m=8 classes=66430 ext=6306 reached=13718 D=false depth=7 passes=8 mode=gs 716ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23739, edges 34) best X={I1-I2,I2-I3,R6-I2,R4-I6} leftover 351 (786ms)
+a9_-656656..._..555.... r=13 m=9 classes=66430 ext=6825 reached=23520 D=false depth=5 passes=6 mode=gs 603ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 35854, edges 37) best X={I3-I4,I3-I6,I4-I5,R7-I6} leftover 404 (680ms)
+a9_u......665_.....5555 r=13 m=8 classes=66430 ext=5702 reached=14125 D=false depth=6 passes=7 mode=gs 763ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23330, edges 34) best X={I0-I1,I1-I6,R6-I5} leftover 301 (809ms)
+a9_u.....6665_.....5555 r=13 m=9 classes=66430 ext=7265 reached=21612 D=false depth=6 passes=7 mode=gs 788ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37503, edges 37) best X={I0-I2,I1-I6,I2-I7,R8-I6} leftover 140 (875ms)
+a9_u....5...5_....5..55 r=13 m=6 classes=66430 ext=3712 reached=5242 D=false depth=2 passes=3 mode=gs 368ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 7542, edges 28) best X={I1-I4,I2-I5,R3-I1,R10-I5} leftover 670 (384ms)
+a9_u....5...5_...5...55 r=13 m=6 classes=66430 ext=3712 reached=5243 D=false depth=2 passes=3 mode=gs 332ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 7542, edges 28) best X={I1-I4,I2-I3,R12-I3,R4-I4} leftover 670 (351ms)
+a9_u....5...5_...55...5 r=13 m=6 classes=66430 ext=3712 reached=5243 D=false depth=2 passes=3 mode=gs 378ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 7542, edges 28) best X={I0-I2,I1-I5,R3-I1,R10-I2} leftover 566 (392ms)
+a9_u....5...5_...55..5. r=13 m=6 classes=66430 ext=3712 reached=5242 D=false depth=2 passes=3 mode=gs 382ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 7542, edges 28) best X={I0-I1,I1-I3,R4-I3,R6-I4} leftover 261 (397ms)
+a9_u....5..65_......555 r=13 m=7 classes=66430 ext=4553 reached=8441 D=false depth=5 passes=6 mode=gs 655ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14021, edges 31) best X={I0-I3,I3-I4,R12-I4,R10-I6} leftover 210 (679ms)
+a9_u....5..65_....5..55 r=13 m=7 classes=66430 ext=4634 reached=8016 D=false depth=4 passes=5 mode=gs 618ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I0-I3,I3-I4,R12-I4,R10-I6} leftover 261 (644ms)
+a9_u....5..65_...5...55 r=13 m=7 classes=66430 ext=4634 reached=8025 D=false depth=4 passes=5 mode=gs 619ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I0-I3,I3-I4,R12-I4,R10-I6} leftover 261 (648ms)
+a9_u....5..65_...55..5. r=13 m=7 classes=66430 ext=4747 reached=7310 D=false depth=4 passes=5 mode=gs 545ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14548, edges 31) best X={I3-I6,I4-I5,R0-I3,R3-I4} leftover 720 (570ms)
+a9_u....5.665_......555 r=13 m=8 classes=66430 ext=5783 reached=12413 D=false depth=4 passes=5 mode=gs 600ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24155, edges 34) best X={I0-I2,I3-I6,R7-I2,R8-I6} leftover 151 (653ms)
+a9_u....56..5_....5..55 r=13 m=7 classes=66430 ext=4747 reached=7310 D=false depth=4 passes=5 mode=gs 582ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14548, edges 31) best X={I0-I1,I4-I6,R4-I1,R9-I6} leftover 680 (605ms)
+a9_u....56..5_...55...5 r=13 m=7 classes=66430 ext=4634 reached=8025 D=false depth=5 passes=6 mode=gs 706ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I1-I2,R3-I1,R4-I5,R6-I6} leftover 258 (735ms)
+a9_u....56..5_...55..5. r=13 m=7 classes=66430 ext=4634 reached=8016 D=false depth=4 passes=5 mode=gs 576ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I0-I1,I1-I4,I3-I6,R0-I3} leftover 744 (605ms)
+a9_u....56..5_...555... r=13 m=7 classes=66430 ext=4553 reached=8441 D=false depth=4 passes=5 mode=gs 505ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14021, edges 31) best X={I0-I2,I1-I5,I2-I6,R6-I5} leftover 206 (529ms)
+a9_u....56.65_....5..55 r=13 m=8 classes=66430 ext=5925 reached=11371 D=false depth=6 passes=7 mode=gs 752ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24625, edges 34) best X={I3-I4,R0-I4,R12-I5,R10-I7} leftover 324 (804ms)
+a9_u....56.65_...55..5. r=13 m=8 classes=66430 ext=5925 reached=11371 D=false depth=7 passes=8 mode=gs 773ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24625, edges 34) best X={I0-I2,I2-I6,I3-I7,R11-I7} leftover 952 (829ms)
+a9_u....566.._...5555.. r=13 m=8 classes=66430 ext=5702 reached=14125 D=false depth=6 passes=7 mode=gs 776ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23330, edges 34) best X={I1-I4,I2-I5,R4-I4,R5-I5} leftover 220 (833ms)
+a9_u....566.5_...555... r=13 m=8 classes=66430 ext=5783 reached=12413 D=false depth=5 passes=6 mode=gs 651ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24155, edges 34) best X={I0-I3,I1-I5,I3-I7,R9-I3} leftover 199 (705ms)
+a9_u....5666._...5555.. r=13 m=9 classes=66430 ext=7265 reached=21612 D=false depth=7 passes=8 mode=gs 790ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37503, edges 37) best X={I0-I3,I2-I7,I3-I8,R8-I7} leftover 168 (889ms)
+a9_u....56665_.....5.55 r=13 m=9 classes=66430 ext=7415 reached=21024 D=false depth=9 passes=10 mode=gs 868ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38671, edges 37) best X={I0-I3,I3-I7,I6-I8,R9-I3} leftover 225 (946ms)
+a9_u....56665_......555 r=13 m=9 classes=66430 ext=7366 reached=21460 D=false depth=10 passes=11 mode=gs 1120ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38372, edges 37) best X={I0-I5,I5-I6,R12-I6,R10-I8} leftover 222 (1196ms)
+a9_u....56665_.....555. r=13 m=9 classes=66430 ext=8178 reached=24900 D=false depth=5 passes=6 mode=gs 591ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38582, edges 37) best X={I2-I6,I4-I7,R8-I6,R8-I7} leftover 217 (685ms)
+a9_u....56665_....5..55 r=13 m=9 classes=66430 ext=7446 reached=19667 D=false depth=13 passes=14 mode=gs 1305ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38636, edges 37) best X={I0-I5,I5-I8,R12-I6,R10-I8} leftover 250 (1401ms)
+a9_u....56665_....5.55. r=13 m=9 classes=66430 ext=8208 reached=21088 D=false depth=7 passes=8 mode=gs 823ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38799, edges 37) best X={I0-I3,R4-I1,R7-I3,R10-I7} leftover 376 (902ms)
+a9_u....56665_....55.5. r=13 m=9 classes=66430 ext=8208 reached=21088 D=false depth=6 passes=7 mode=gs 705ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38799, edges 37) best X={I0-I2,I2-I6,I3-I7,R6-I7} leftover 258 (809ms)
+a9_u....56665_....555.. r=13 m=9 classes=66430 ext=8178 reached=24900 D=false depth=6 passes=7 mode=gs 600ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38582, edges 37) best X={I0-I4,I1-I6,R11-I4,R6-I6} leftover 648 (675ms)
+a9_u....56665_...55..5. r=13 m=9 classes=66430 ext=7446 reached=19667 D=false depth=12 passes=13 mode=gs 1304ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38636, edges 37) best X={I0-I3,I6-I7,R9-I3,R6-I7} leftover 520 (1401ms)
+a9_u....56665_...55.5.. r=13 m=9 classes=66430 ext=7415 reached=21024 D=false depth=11 passes=12 mode=gs 960ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38671, edges 37) best X={I0-I3,I2-I7,I3-I8,R7-I3} leftover 337 (1037ms)
+a9_u....56665_...555... r=13 m=9 classes=66430 ext=7366 reached=21460 D=false depth=8 passes=9 mode=gs 891ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38372, edges 37) best X={I0-I4,I1-I2,R6-I2,R9-I4} leftover 273 (968ms)
+a9_u...65...5_...5...55 r=13 m=7 classes=66430 ext=4747 reached=7310 D=false depth=5 passes=6 mode=gs 576ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14548, edges 31) best X={I3-I6,R4-I1,R6-I2,R11-I6} leftover 1091 (600ms)
+a9_u...65...5_...55...5 r=13 m=7 classes=66430 ext=4634 reached=8008 D=false depth=4 passes=5 mode=gs 610ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I0-I1,I2-I5,R3-I1,R7-I2} leftover 383 (633ms)
+a9_u...65...5_...55..5. r=13 m=7 classes=66430 ext=4634 reached=8015 D=false depth=4 passes=5 mode=gs 485ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I0-I1,R3-I1,R7-I2,R4-I4} leftover 254 (508ms)
+a9_u...65...5_..555.... r=13 m=7 classes=66430 ext=4553 reached=8441 D=false depth=5 passes=6 mode=gs 703ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14021, edges 31) best X={I0-I1,I1-I4,I1-I5,I2-I6} leftover 206 (728ms)
+a9_u...65..65_...55..5. r=13 m=8 classes=66430 ext=5925 reached=11372 D=false depth=5 passes=6 mode=gs 693ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24549, edges 34) best X={I0-I4,I5-I6,R12-I4,R6-I6} leftover 881 (746ms)
+a9_u...65..65_...5...55 r=13 m=8 classes=66430 ext=5925 reached=11371 D=false depth=7 passes=8 mode=gs 837ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24549, edges 34) best X={I0-I4,I4-I5,R12-I5,R10-I7} leftover 329 (880ms)
+a9_u...656..._..5555... r=13 m=8 classes=66430 ext=5511 reached=15925 D=false depth=5 passes=6 mode=gs 746ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 22827, edges 34) best X={I0-I1,I0-I3,R5-I1,R8-I7} leftover 160 (815ms)
+a9_u...656..5_...55...5 r=13 m=8 classes=66430 ext=5709 reached=12640 D=false depth=5 passes=6 mode=gs 727ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23872, edges 34) best X={I0-I1,I3-I7,R4-I6,R5-I7} leftover 360 (779ms)
+a9_u...656..5_...555... r=13 m=8 classes=66430 ext=5595 reached=13279 D=false depth=4 passes=5 mode=gs 569ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23615, edges 34) best X={I0-I1,I0-I3,I3-I7,R4-I1} leftover 100 (611ms)
+a9_u...656..5_...55..5. r=13 m=8 classes=66430 ext=5709 reached=12639 D=false depth=6 passes=7 mode=gs 871ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23872, edges 34) best X={I0-I1,I3-I6,R3-I1,R5-I6} leftover 122 (924ms)
+a9_u...656..5_..555.... r=13 m=8 classes=66430 ext=5595 reached=13280 D=false depth=5 passes=6 mode=gs 688ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23615, edges 34) best X={I1-I6,I3-I7,R8-I3,R6-I6} leftover 404 (745ms)
+a9_u...656.65_...55..5. r=13 m=9 classes=66430 ext=7300 reached=19749 D=false depth=6 passes=7 mode=gs 809ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38269, edges 37) best X={I0-I3,I1-I6,R7-I3,R5-I6} leftover 138 (900ms)
+a9_u...6566.._...5555.. r=13 m=9 classes=66430 ext=6975 reached=22696 D=false depth=6 passes=7 mode=gs 673ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36857, edges 37) best X={I0-I1,I3-I4,R4-I1,R6-I3} leftover 108 (764ms)
+a9_u...6566.._..5555... r=13 m=9 classes=66430 ext=6957 reached=24197 D=false depth=5 passes=6 mode=gs 702ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36808, edges 37) best X={I1-I6,I3-I4,R7-I3,R6-I6} leftover 94 (805ms)
+a9_u...65666._...5555.. r=13 m=10 classes=66430 ext=8868 reached=36862 D=false depth=6 passes=7 mode=gs 509ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55749, edges 40) best X={I0-I4,I4-I8,I4-I9,R11-I5} leftover 288 (629ms)
+a9_u...6566.5_...555... r=13 m=9 classes=66430 ext=7072 reached=20879 D=false depth=6 passes=7 mode=gs 796ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37616, edges 37) best X={I0-I1,I0-I4,I4-I8,R4-I1} leftover 182 (904ms)
+a9_u...656665_...55.5.. r=13 m=10 classes=66430 ext=9061 reached=66430 D=true depth=4 passes=4 mode=gs 322ms
+a9_u...656665_...55..5. r=13 m=10 classes=66430 ext=9122 reached=50700 D=false depth=4 passes=5 mode=gs 426ms
+  C-REDUCIBLE X={I4-I5} size=1 (kc-C: tested 14, admissible 14, edges 40, 427ms)
+a9_u...656665_...555... r=13 m=10 classes=66430 ext=8997 reached=47936 D=false depth=5 passes=6 mode=gs 484ms
+  C-REDUCIBLE X={I4-I5} size=1 (kc-C: tested 15, admissible 15, edges 40, 485ms)
+a9_u..665...5_..555.... r=13 m=8 classes=66430 ext=5783 reached=12409 D=false depth=4 passes=5 mode=gs 623ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24079, edges 34) best X={I1-I5,R5-I2,R8-I3,R4-I5} leftover 347 (680ms)
+a9_u..6656..._..5555... r=13 m=9 classes=66430 ext=6957 reached=24197 D=false depth=5 passes=6 mode=gs 593ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36808, edges 37) best X={I0-I2,I2-I5,I4-I7,R6-I7} leftover 74 (691ms)
+a9_u.5..5...5_...55.... r=13 m=6 classes=66430 ext=3709 reached=4543 D=false depth=1 passes=2 mode=gs 264ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 7925, edges 28) best X={I0-I3,I2-I5,R9-I2,R2-I3} leftover 634 (279ms)
+a9_u..6656..5_..555.... r=13 m=9 classes=66430 ext=7072 reached=20869 D=false depth=6 passes=7 mode=gs 711ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37524, edges 37) best X={I0-I2,I0-I4,I2-I6,R7-I4} leftover 92 (781ms)
+a9_u..66566.._..5555... r=13 m=10 classes=66430 ext=8764 reached=38401 D=false depth=6 passes=7 mode=gs 605ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55647, edges 40) best X={I0-I1,I0-I4,I1-I6,R7-I4} leftover 160 (724ms)
+a9_u.5..56..._...555... r=13 m=7 classes=66430 ext=4553 reached=8441 D=false depth=4 passes=5 mode=gs 567ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14021, edges 31) best X={I0-I3,I2-I5,I3-I6,R6-I5} leftover 206 (594ms)
+a9_u.5..56..5_...55.... r=13 m=7 classes=66430 ext=4629 reached=6953 D=false depth=4 passes=5 mode=gs 602ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14608, edges 31) best X={I0-I3,R9-I2,R6-I3,R7-I5} leftover 524 (632ms)
+a9_u.5..566.._...555... r=13 m=8 classes=66430 ext=5783 reached=12413 D=false depth=4 passes=5 mode=gs 567ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24079, edges 34) best X={I0-I3,I2-I5,I3-I6,I3-I7} leftover 200 (620ms)
+a9_u.5.65...5_...55.... r=13 m=7 classes=66430 ext=4629 reached=6953 D=false depth=4 passes=5 mode=gs 541ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14672, edges 31) best X={I0-I2,I2-I5,I3-I6,R9-I2} leftover 258 (571ms)
+a9_u.5.656..._...555... r=13 m=8 classes=66430 ext=5595 reached=13269 D=false depth=5 passes=6 mode=gs 678ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23691, edges 34) best X={I0-I2,I0-I4,I4-I7,R8-I2} leftover 100 (727ms)
+a9_u.5.656..5_...55.... r=13 m=8 classes=66430 ext=5693 reached=11042 D=false depth=5 passes=6 mode=gs 663ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24270, edges 34) best X={I0-I4,I2-I6,R5-I4,R7-I6} leftover 124 (709ms)
+a9_u.5.6566.._...555... r=13 m=9 classes=66430 ext=7072 reached=20888 D=false depth=5 passes=6 mode=gs 650ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37616, edges 37) best X={I0-I4,I2-I6,I4-I8,R7-I6} leftover 90 (751ms)
+a9_u.5665...5_...55.... r=13 m=8 classes=66430 ext=5882 reached=11079 D=false depth=6 passes=7 mode=gs 700ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24790, edges 34) best X={I3-I6,I4-I7,R7-I6,R6-I7} leftover 288 (757ms)
+a9_u.5665...._.6555.... r=13 m=9 classes=66430 ext=7249 reached=21659 D=false depth=11 passes=12 mode=gs 1185ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37214, edges 37) best X={I0-I4,I4-I7,R7-I7,R5-I8} leftover 241 (1278ms)
+a9_u.5665...5_..55..... r=13 m=8 classes=66430 ext=6484 reached=13312 D=false depth=11 passes=12 mode=gs 1129ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24950, edges 34) best X={I0-I2,I3-I6,R10-I2} leftover 1160 (1175ms)
+a9_u.56656..._.6555.... r=13 m=10 classes=66430 ext=8831 reached=36932 D=false depth=4 passes=5 mode=gs 475ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55359, edges 40) best X={I0-I2,I2-I7,I8-I9,R12-I6} leftover 436 (616ms)
+a9_u.56656..._...555... r=13 m=9 classes=66430 ext=7090 reached=22958 D=false depth=7 passes=8 mode=gs 814ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37716, edges 37) best X={I0-I3,I4-I7,R9-I3,R7-I6} leftover 162 (904ms)
+a9_u.566566.._...555... r=13 m=10 classes=66430 ext=8937 reached=59059 D=false depth=4 passes=5 mode=gs 375ms
+  C-REDUCIBLE X={I0-I3} size=1 (kc-C: tested 3, admissible 3, edges 40, 375ms)
+a9_u.56656..5_...55.... r=13 m=9 classes=66430 ext=7210 reached=22584 D=false depth=8 passes=9 mode=gs 911ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38219, edges 37) best X={I0-I4,I4-I7,R8-I7,R6-I8} leftover 196 (1008ms)
+a9_u.566566.._..555.... r=13 m=10 classes=66430 ext=8824 reached=37106 D=false depth=5 passes=6 mode=gs 492ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56081, edges 40) best X={I5-I9,R12-I1,R8-I3,R7-I9} leftover 224 (615ms)
+a9_u6.....665_.....5555 r=13 m=9 classes=66430 ext=6975 reached=22696 D=false depth=5 passes=6 mode=gs 569ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36857, edges 37) best X={I0-I1,R11-I1,R7-I2,R9-I3} leftover 269 (645ms)
+a9_u6....6665_.....5555 r=13 m=10 classes=66430 ext=8868 reached=36862 D=false depth=5 passes=6 mode=gs 586ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55749, edges 40) best X={I0-I1,I0-I4,I4-I8,R11-I1} leftover 88 (733ms)
+a9_u6...5...5_....5..55 r=13 m=7 classes=66430 ext=4634 reached=8015 D=false depth=4 passes=5 mode=gs 531ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I0-I3,I3-I6,R11-I4,R9-I6} leftover 261 (564ms)
+a9_u6...5...5_...5...55 r=13 m=7 classes=66430 ext=4634 reached=8008 D=false depth=4 passes=5 mode=gs 593ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14195, edges 31) best X={I0-I1,I1-I4,I3-I6,R12-I1} leftover 254 (621ms)
+a9_u6...5...5_...55...5 r=13 m=7 classes=66430 ext=4747 reached=7310 D=false depth=4 passes=5 mode=gs 612ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14548, edges 31) best X={I0-I2,I2-I5,R3-I5,R5-I6} leftover 329 (641ms)
+a9_u6...5..65_......555 r=13 m=8 classes=66430 ext=5595 reached=13279 D=false depth=6 passes=7 mode=gs 717ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23615, edges 34) best X={I1-I4,I3-I4,I5-I7,R11-I5} leftover 196 (769ms)
+a9_u6...5..65_....5..55 r=13 m=8 classes=66430 ext=5709 reached=12639 D=false depth=5 passes=6 mode=gs 716ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23872, edges 34) best X={I0-I1,R12-I1,R7-I3,R9-I7} leftover 540 (773ms)
+a9_u6...5..65_...5...55 r=13 m=8 classes=66430 ext=5709 reached=12640 D=false depth=6 passes=7 mode=gs 841ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23872, edges 34) best X={I0-I1,I0-I3,R6-I2,R9-I3} leftover 861 (894ms)
+a9_u6...5.665_......555 r=13 m=9 classes=66430 ext=7072 reached=20879 D=false depth=7 passes=8 mode=gs 866ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37616, edges 37) best X={I0-I4,I1-I6,I4-I7,R10-I6} leftover 90 (959ms)
+a9_u6...56..5_....5..55 r=13 m=8 classes=66430 ext=5925 reached=11372 D=false depth=7 passes=8 mode=gs 975ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24549, edges 34) best X={I4-I7,R8-I4,R11-I5,R8-I7} leftover 634 (1033ms)
+a9_u6...56..5_...55...5 r=13 m=8 classes=66430 ext=5925 reached=11371 D=false depth=7 passes=8 mode=gs 875ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24549, edges 34) best X={I0-I2,I0-I4,I2-I6,R10-I5} leftover 1194 (918ms)
+a9_u6...56.65_....5..55 r=13 m=9 classes=66430 ext=7300 reached=19749 D=false depth=6 passes=7 mode=gs 709ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38269, edges 37) best X={I1-I5,I4-I5,I6-I8,R11-I6} leftover 274 (824ms)
+a9_u6...56665_......555 r=13 m=10 classes=66430 ext=8997 reached=47936 D=false depth=5 passes=6 mode=gs 431ms
+  C-REDUCIBLE X={I3-I4} size=1 (kc-C: tested 10, admissible 10, edges 40, 432ms)
+a9_u6...56665_.....5.55 r=13 m=10 classes=66430 ext=9061 reached=66430 D=true depth=4 passes=4 mode=gs 364ms
+a9_u6...56665_....5..55 r=13 m=10 classes=66430 ext=9122 reached=50700 D=false depth=5 passes=6 mode=gs 470ms
+  C-REDUCIBLE X={I3-I4} size=1 (kc-C: tested 11, admissible 11, edges 40, 471ms)
+a9_u6..65...5_...55...5 r=13 m=8 classes=66430 ext=5925 reached=11347 D=false depth=5 passes=6 mode=gs 700ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24549, edges 34) best X={I0-I3,I0-I4,I3-I7,I4-I5} leftover 810 (753ms)
+a9_u6..65...5_...5...55 r=13 m=8 classes=66430 ext=5925 reached=11347 D=false depth=7 passes=8 mode=gs 914ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24549, edges 34) best X={I1-I4,I1-I5,I4-I5,R9-I7} leftover 637 (966ms)
+a9_u6..65..65_...5...55 r=13 m=9 classes=66430 ext=7300 reached=19763 D=false depth=7 passes=8 mode=gs 836ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38177, edges 37) best X={I0-I5,I4-I8,I5-I6,R11-I6} leftover 549 (909ms)
+a9_u6..656..5_...55...5 r=13 m=9 classes=66430 ext=7300 reached=19763 D=false depth=6 passes=7 mode=gs 799ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38177, edges 37) best X={I0-I4,I2-I3,I4-I8,R6-I4} leftover 275 (894ms)
+a9_u65.....65_6.....555 r=13 m=9 classes=66430 ext=6939 reached=24099 D=false depth=5 passes=6 mode=gs 683ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36521, edges 37) best X={I0-I3,I2-I6,I3-I7,I3-I8} leftover 294 (776ms)
+a9_u65....665_.....5.55 r=13 m=9 classes=66430 ext=7070 reached=21651 D=false depth=6 passes=7 mode=gs 742ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37723, edges 37) best X={I4-I8,R10-I1,R0-I2,R9-I8} leftover 212 (833ms)
+a9_u65...6665_.....5.55 r=13 m=10 classes=66430 ext=8972 reached=66430 D=true depth=5 passes=5 mode=gs 340ms
+a9_u65....665_6.....555 r=13 m=10 classes=66430 ext=8728 reached=38455 D=false depth=5 passes=6 mode=gs 542ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55257, edges 40) best X={I0-I2,I0-I4,I2-I7,R7-I4} leftover 100 (686ms)
+a9_u65...6665_......555 r=13 m=10 classes=66430 ext=8858 reached=39140 D=false depth=5 passes=6 mode=gs 548ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56079, edges 40) best X={I0-I4,I4-I8,R5-I4} leftover 96 (729ms)
+a9_u65..5...5_....5...5 r=13 m=7 classes=66430 ext=5142 reached=8766 D=false depth=4 passes=5 mode=gs 577ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14852, edges 31) best X={I0-I1,I3-I6,R10-I1,R4-I6} leftover 792 (608ms)
+a9_u65..5...5_...5....5 r=13 m=7 classes=66430 ext=5142 reached=8782 D=false depth=5 passes=6 mode=gs 718ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14852, edges 31) best X={I0-I2,I0-I4,R4-I3,R8-I4} leftover 1119 (750ms)
+a9_u65..5...5_...55.... r=13 m=7 classes=66430 ext=4776 reached=6030 D=false depth=4 passes=5 mode=gs 558ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14991, edges 31) best X={R6-I0,R11-I1,R1-I5} leftover 2330 (590ms)
+a9_u65..5...5_6......55 r=13 m=8 classes=66430 ext=5769 reached=12430 D=false depth=4 passes=5 mode=gs 580ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23856, edges 34) best X={I0-I4,I4-I5,R9-I5,R7-I7} leftover 247 (622ms)
+a9_u65..5..65_6......55 r=13 m=9 classes=66430 ext=7054 reached=20902 D=false depth=6 passes=7 mode=gs 776ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37212, edges 37) best X={I0-I1,I0-I4,R7-I4,R9-I7} leftover 330 (856ms)
+a9_u65..5.665_.......55 r=13 m=9 classes=66430 ext=7099 reached=20878 D=false depth=6 passes=7 mode=gs 622ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37852, edges 37) best X={I0-I5,I1-I2,R10-I1,R8-I5} leftover 104 (698ms)
+a9_u65..56..5_.......55 r=13 m=8 classes=66430 ext=5884 reached=11603 D=false depth=6 passes=7 mode=gs 751ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24709, edges 34) best X={I0-I2,I0-I5,I5-I6,R11-I2} leftover 254 (798ms)
+a9_u65..56..5_...55.... r=13 m=8 classes=66430 ext=5960 reached=9519 D=false depth=7 passes=8 mode=gs 929ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25002, edges 34) best X={I0-I4,R1-I0,R11-I2,R9-I5} leftover 1141 (1003ms)
+a9_u65..56..5_....5...5 r=13 m=8 classes=66430 ext=6566 reached=13852 D=false depth=10 passes=11 mode=gs 1232ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25280, edges 34) best X={I0-I3,I1-I2,I1-I6,R0-I0} leftover 1836 (1298ms)
+a9_u65..56665_.......55 r=13 m=10 classes=66430 ext=9047 reached=66430 D=true depth=5 passes=5 mode=gs 281ms
+a9_u65..56.65_.......55 r=13 m=9 classes=66430 ext=7223 reached=20522 D=false depth=7 passes=8 mode=gs 716ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38220, edges 37) best X={I0-I5,I1-I7,R7-I5,R9-I7} leftover 98 (803ms)
+a9_u65.65...5_.......55 r=13 m=8 classes=66430 ext=5884 reached=11600 D=false depth=4 passes=5 mode=gs 604ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24785, edges 34) best X={I0-I2,R3-I1,R2-I2,R6-I5} leftover 377 (660ms)
+a9_u65.65...5_...5....5 r=13 m=8 classes=66430 ext=6566 reached=13760 D=false depth=8 passes=9 mode=gs 856ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25360, edges 34) best X={I0-I3,R12-I3,R9-I4,R10-I7} leftover 363 (901ms)
+a9_u65.65...5_...55.... r=13 m=8 classes=66430 ext=5960 reached=9546 D=false depth=7 passes=8 mode=gs 938ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25082, edges 34) best X={I3-I6,I4-I7,R10-I6,R9-I7} leftover 320 (991ms)
+a9_u65.65..65_.......55 r=13 m=9 classes=66430 ext=7223 reached=20515 D=false depth=6 passes=7 mode=gs 708ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38220, edges 37) best X={I0-I2,I5-I8,R2-I2,R4-I8} leftover 106 (806ms)
+a9_u65.656..5_...55.... r=13 m=9 classes=66430 ext=7333 reached=17102 D=false depth=7 passes=8 mode=gs 695ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38611, edges 37) best X={I0-I3,I5-I8,R12-I3,R10-I8} leftover 146 (769ms)
+a9_u656.....5_..5....55 r=13 m=8 classes=66430 ext=5783 reached=13184 D=false depth=5 passes=6 mode=gs 720ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24114, edges 34) best X={I2-I3,R7-I1,R4-I4,R5-I7} leftover 468 (766ms)
+a9_u656....65_......555 r=13 m=9 classes=66430 ext=7029 reached=23666 D=false depth=7 passes=8 mode=gs 714ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37349, edges 37) best X={I1-I2,I4-I8,R8-I1,R7-I8} leftover 92 (808ms)
+a9_u656...665_......555 r=13 m=10 classes=66430 ext=8836 reached=38968 D=false depth=5 passes=6 mode=gs 566ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56027, edges 40) best X={I0-I5,I1-I7,I5-I8,R7-I7} leftover 64 (711ms)
+a9_u656....65_..5....55 r=13 m=9 classes=66430 ext=7083 reached=21527 D=false depth=6 passes=7 mode=gs 725ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37721, edges 37) best X={I1-I6,I5-I8,R6-I6,R5-I8} leftover 216 (813ms)
+a9_u656.5...5_.......55 r=13 m=8 classes=66430 ext=5827 reached=12134 D=false depth=8 passes=9 mode=gs 984ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24496, edges 34) best X={I0-I5,I2-I3,I5-I7,R4-I2} leftover 306 (1039ms)
+a9_u656.5..65_.......55 r=13 m=9 classes=66430 ext=7125 reached=20704 D=false depth=6 passes=7 mode=gs 771ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37850, edges 37) best X={I0-I6,I6-I7,R5-I7,R7-I8} leftover 204 (849ms)
+a9_u6566...65_..5....55 r=13 m=10 classes=66430 ext=9004 reached=66430 D=true depth=4 passes=4 mode=gs 361ms
+a9_u6566....5_..5....55 r=13 m=9 classes=66430 ext=7378 reached=22792 D=false depth=8 passes=9 mode=gs 986ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38598, edges 37) best X={I0-I3,R8-I3,R3-I5,R11-I7} leftover 536 (1096ms)
+a9_u65665...._..555.... r=13 m=9 classes=66430 ext=7313 reached=20781 D=false depth=13 passes=14 mode=gs 1259ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38005, edges 37) best X={I0-I3,I1-I2,I3-I6,R7-I2} leftover 352 (1336ms)
+a9_u65665...5_.......55 r=13 m=9 classes=66430 ext=7441 reached=41874 D=false depth=7 passes=8 mode=gs 741ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 39000, edges 37) best X={I0-I1,I0-I3,I6-I7,R2-I0} leftover 140 (823ms)
+a9_u65665...5_...5....5 r=13 m=9 classes=66430 ext=8255 reached=32229 D=false depth=8 passes=9 mode=gs 834ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 39390, edges 37) best X={I0-I4,R9-I4,R12-I5,R11-I8} leftover 104 (911ms)
+a9_u65665...5_...55.... r=13 m=9 classes=66430 ext=7525 reached=40361 D=false depth=8 passes=9 mode=gs 878ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 37, 879ms)
+a9_u65665...5_..5.....5 r=13 m=9 classes=66430 ext=8236 reached=40937 D=false depth=7 passes=8 mode=gs 654ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 37, 656ms)
+a9_u65665..65_.......55 r=13 m=10 classes=66430 ext=9080 reached=66430 D=true depth=4 passes=4 mode=gs 328ms
+a9_u65665...5_..55..... r=13 m=9 classes=66430 ext=8256 reached=38441 D=false depth=6 passes=7 mode=gs 693ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 37, 695ms)
+a9_u656656..._..555.... r=13 m=10 classes=66430 ext=8909 reached=37162 D=false depth=6 passes=7 mode=gs 623ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 56082, edges 40) best X={I0-I1,I0-I6,R1-I0,R9-I4} leftover 320 (784ms)
+a9_u656656..5_...55.... r=13 m=10 classes=66430 ext=9216 reached=57628 D=false depth=5 passes=6 mode=gs 438ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 40, 438ms)
+a9_-...6566.._..5..55.. r=13 m=7 classes=66430 ext=5260 reached=7208 D=false depth=5 passes=6 mode=gs 654ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14379, edges 31) best X={I1-I2,I2-I3,R7-I2,R4-I4} leftover 1158 (683ms)
+a9_-...65666._...55..5. r=13 m=8 classes=66430 ext=5674 reached=13533 D=false depth=6 passes=7 mode=gs 757ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23373, edges 34) best X={I2-I6,R0-I1,R3-I5,R4-I6} leftover 218 (808ms)
+a9_-...65666._..555.... r=13 m=8 classes=66430 ext=5600 reached=15731 D=false depth=6 passes=7 mode=gs 645ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23093, edges 34) best X={I0-I6,I2-I3,R6-I2,R5-I6} leftover 100 (696ms)
+a9_-...656665_...55.... r=13 m=8 classes=66430 ext=5674 reached=13347 D=false depth=6 passes=7 mode=gs 743ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23449, edges 34) best X={I4-I5,R0-I1,R1-I5,R8-I7} leftover 956 (788ms)
+a9_-..6656..._.6.555... r=13 m=8 classes=66430 ext=5600 reached=15811 D=false depth=6 passes=7 mode=gs 824ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23017, edges 34) best X={I1-I2,I2-I3,I3-I7,R11-I7} leftover 306 (875ms)
+a9_-..66566.._...55.5.. r=13 m=8 classes=66430 ext=5629 reached=14118 D=false depth=6 passes=7 mode=gs 806ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23037, edges 34) best X={I0-I1,I1-I2,I5-I6,R5-I1} leftover 230 (845ms)
+a9_-.56656..._..5..5... r=13 m=7 classes=66430 ext=5260 reached=7308 D=false depth=5 passes=6 mode=gs 803ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14375, edges 31) best X={I1-I5,I3-I4,R7-I3,R6-I5} leftover 756 (826ms)
+a9_-.56656..._6..55.... r=13 m=8 classes=66430 ext=5698 reached=13500 D=false depth=6 passes=7 mode=gs 782ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23139, edges 34) best X={I4-I7,R0-I3,R8-I6,R9-I7} leftover 234 (833ms)
+a9_-.56656..._66.55.... r=13 m=9 classes=66430 ext=7147 reached=22401 D=false depth=6 passes=7 mode=gs 805ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37145, edges 37) best X={I2-I3,I3-I4,I7-I8,R8-I7} leftover 240 (906ms)
+a9_-.566566.._...55.... r=13 m=8 classes=66430 ext=5629 reached=14051 D=false depth=5 passes=6 mode=gs 709ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23117, edges 34) best X={I4-I7,R0-I3,R6-I6,R7-I7} leftover 207 (759ms)
+a9_-6.....665_6....5.55 r=13 m=8 classes=66430 ext=5629 reached=14119 D=false depth=5 passes=6 mode=gs 634ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23037, edges 34) best X={I4-I7,R0-I3,R6-I4,R6-I7} leftover 447 (675ms)
+a9_-6....6665_....5..55 r=13 m=8 classes=66430 ext=5674 reached=13533 D=false depth=6 passes=7 mode=gs 733ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23373, edges 34) best X={I3-I7,R0-I4,R3-I5,R4-I7} leftover 218 (774ms)
+a9_-6...56665_.......55 r=13 m=8 classes=66430 ext=5674 reached=13347 D=false depth=5 passes=6 mode=gs 725ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23449, edges 34) best X={I3-I4,I4-I5,I6-I7,R5-I4} leftover 252 (775ms)
+a9_-65....665_.....55.. r=13 m=7 classes=66430 ext=5260 reached=7014 D=false depth=5 passes=6 mode=gs 707ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14447, edges 31) best X={I3-I4,R5-I4} leftover 840 (734ms)
+a9_-65....665_.6.....55 r=13 m=8 classes=66430 ext=5581 reached=15507 D=false depth=5 passes=6 mode=gs 606ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 22783, edges 34) best X={I0-I4,I3-I4,I5-I7,R6-I5} leftover 180 (647ms)
+a9_-65....665_66.....55 r=13 m=9 classes=66430 ext=6937 reached=24621 D=false depth=5 passes=6 mode=gs 550ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36413, edges 37) best X={I0-I5,I2-I3,R8-I3,R7-I5} leftover 100 (633ms)
+a9_-65...6665_.......55 r=13 m=8 classes=66430 ext=5600 reached=15731 D=false depth=5 passes=6 mode=gs 685ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23093, edges 34) best X={I0-I5,I4-I5,I6-I7,R4-I6} leftover 172 (734ms)
+a9_-6566....._..55....5 r=13 m=7 classes=66430 ext=5260 reached=7208 D=false depth=5 passes=6 mode=gs 615ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14379, edges 31) best X={I3-I5,I3-I6,R0-I3} leftover 476 (637ms)
+a9_-656...665_.......55 r=13 m=8 classes=66430 ext=5581 reached=15508 D=false depth=5 passes=6 mode=gs 689ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 22779, edges 34) best X={I0-I1,I4-I7,R6-I0,R7-I7} leftover 90 (751ms)
+a9_-6566....5_...5....5 r=13 m=7 classes=66430 ext=5144 reached=8864 D=false depth=4 passes=5 mode=gs 616ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14409, edges 31) best X={I0-I1,I2-I3,R1-I3,R12-I4} leftover 1628 (645ms)
+a9_-6566....5_..55..... r=13 m=7 classes=66430 ext=5260 reached=7014 D=false depth=3 passes=4 mode=gs 511ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14447, edges 31) best X={I3-I6,R7-I2,R4-I5,R3-I6} leftover 1489 (543ms)
+a9_-6566....5_.65.....5 r=13 m=8 classes=66430 ext=6467 reached=14071 D=false depth=5 passes=6 mode=gs 577ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24143, edges 34) best X={I2-I6,R8-I1,R0-I2,R4-I7} leftover 458 (630ms)
+a9_-6566....5_.6.....55 r=13 m=8 classes=66430 ext=5827 reached=14430 D=false depth=5 passes=6 mode=gs 689ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23550, edges 34) best X={I1-I2,I5-I7,R8-I1,R11-I7} leftover 370 (729ms)
+a9_-6566....5_6......55 r=13 m=8 classes=66430 ext=5841 reached=14619 D=false depth=6 passes=7 mode=gs 788ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23352, edges 34) best X={I4-I5,R0-I1,R0-I4,R7-I6} leftover 526 (839ms)
+a9_-6566....5_6.5.....5 r=13 m=8 classes=66430 ext=6576 reached=13973 D=false depth=5 passes=6 mode=gs 697ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24124, edges 34) best X={I1-I6,R0-I1,R0-I4,R10-I5} leftover 270 (749ms)
+a9_-6566....5_66.....55 r=13 m=9 classes=66430 ext=7202 reached=24750 D=false depth=6 passes=7 mode=gs 573ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 36843, edges 37) best X={I1-I7,I4-I5,R0-I1,R10-I5} leftover 310 (647ms)
+a9_-6566....5_665.....5 r=13 m=9 classes=66430 ext=8118 reached=25567 D=false depth=7 passes=8 mode=gs 719ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37603, edges 37) best X={I1-I6,I4-I5,R0-I1,R0-I4} leftover 310 (834ms)
+a9_-6566...65_.......55 r=13 m=8 classes=66430 ext=5635 reached=15517 D=false depth=6 passes=7 mode=gs 764ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23088, edges 34) best X={I0-I1,I4-I7,R8-I0,R0-I4} leftover 329 (814ms)
+a9_-65665...._...5....5 r=13 m=7 classes=66430 ext=5265 reached=8559 D=false depth=7 passes=8 mode=gs 839ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14425, edges 31) best X={I2-I3,R4-I3,R0-I4,R3-I6} leftover 336 (862ms)
+a9_-65665...._.6.55.... r=13 m=8 classes=66430 ext=5911 reached=12657 D=false depth=4 passes=5 mode=gs 491ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23592, edges 34) best X={I3-I4,I3-I6,I4-I6,R2-I7} leftover 566 (530ms)
+a9_-65665...._..5.....5 r=13 m=7 classes=66430 ext=5260 reached=7308 D=false depth=5 passes=6 mode=gs 743ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14375, edges 31) best X={I1-I2,I2-I3,R6-I2,R4-I6} leftover 468 (772ms)
+a9_-65665...._.655..... r=13 m=8 classes=66430 ext=6535 reached=15045 D=false depth=5 passes=6 mode=gs 607ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23711, edges 34) best X={I2-I5,I3-I6,R0-I2,R6-I6} leftover 225 (649ms)
+a9_-65665...._6..55.... r=13 m=8 classes=66430 ext=5947 reached=12377 D=false depth=4 passes=5 mode=gs 594ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23866, edges 34) best X={I1-I5,R0-I1} leftover 570 (657ms)
+a9_-65665...._6655..... r=13 m=9 classes=66430 ext=8142 reached=25544 D=false depth=5 passes=6 mode=gs 666ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37645, edges 37) best X={I0-I5,I5-I6,R0-I1,R9-I5} leftover 289 (771ms)
+a9_-65665...._66.55.... r=13 m=9 classes=66430 ext=7385 reached=21885 D=false depth=7 passes=8 mode=gs 841ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37549, edges 37) best X={I2-I6,I4-I8,R5-I2,R0-I4} leftover 752 (928ms)
+a9_-65665...._6.55..... r=13 m=8 classes=66430 ext=6511 reached=14487 D=false depth=7 passes=8 mode=gs 911ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24126, edges 34) best X={I1-I5,I3-I7,R0-I3,R4-I6} leftover 970 (960ms)
+a9_-65665...5_........5 r=13 m=7 classes=66430 ext=5144 reached=8720 D=false depth=5 passes=6 mode=gs 681ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14473, edges 31) best X={I0-I1,I0-I5,I3-I4,R9-I0} leftover 1102 (705ms)
+a9_-65665...5_...5..... r=13 m=7 classes=66430 ext=5265 reached=8395 D=false depth=5 passes=6 mode=gs 732ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14493, edges 31) best X={I0-I1,R9-I0,R12-I5,R3-I6} leftover 1521 (762ms)
+a9_-65665...5_..5...... r=13 m=7 classes=66430 ext=5260 reached=7114 D=false depth=5 passes=6 mode=gs 657ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14443, edges 31) best X={I2-I3,I3-I4,R4-I3,R5-I6} leftover 450 (685ms)
+a9_-656656..._...55.... r=13 m=8 classes=66430 ext=5698 reached=13481 D=false depth=5 passes=6 mode=gs 642ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23135, edges 34) best X={I2-I3,I5-I7,R5-I3,R4-I7} leftover 130 (697ms)
+a9_u......665_.....5.55 r=13 m=7 classes=66430 ext=4725 reached=8523 D=false depth=4 passes=5 mode=gs 570ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14378, edges 31) best X={I0-I2,R9-I2,R7-I5,R11-I6} leftover 394 (604ms)
+a9_u......665_.....555. r=13 m=7 classes=66430 ext=5210 reached=9779 D=false depth=5 passes=6 mode=gs 659ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14544, edges 31) best X={I0-I3,I1-I4,I3-I6,R6-I4} leftover 608 (691ms)
+a9_u.....6665_......555 r=13 m=8 classes=66430 ext=5964 reached=14161 D=false depth=6 passes=7 mode=gs 794ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24434, edges 34) best X={I0-I2,I2-I6,I4-I5,R7-I2} leftover 160 (839ms)
+a9_u.....6665_.....5.55 r=13 m=8 classes=66430 ext=6026 reached=13095 D=false depth=9 passes=10 mode=gs 1150ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24891, edges 34) best X={I0-I2,I1-I6,R9-I2,R8-I6} leftover 141 (1207ms)
+a9_u....5...5_....5...5 r=13 m=5 classes=66430 ext=3314 reached=4479 D=false depth=2 passes=3 mode=gs 393ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3699, edges 25) best X={I1-I4,I2-I3,R9-I2,R5-I4} leftover 595 (401ms)
+a9_u.....6665_.....555. r=13 m=8 classes=66430 ext=6676 reached=15365 D=false depth=8 passes=9 mode=gs 966ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24881, edges 34) best X={I0-I3,I3-I6,I3-I7,R7-I5} leftover 533 (1024ms)
+a9_u....5...5_....5..5. r=13 m=5 classes=66430 ext=3314 reached=4481 D=false depth=2 passes=3 mode=gs 362ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3699, edges 25) best X={I1-I3,I2-I4,R9-I0,R11-I4} leftover 1296 (369ms)
+a9_u....5...5_...5....5 r=13 m=5 classes=66430 ext=3314 reached=4483 D=false depth=2 passes=3 mode=gs 400ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3699, edges 25) best X={I0-I1,I1-I4,I2-I3,R5-I4} leftover 1215 (408ms)
+a9_u....5...5_...5...5. r=13 m=5 classes=66430 ext=3314 reached=4479 D=false depth=2 passes=3 mode=gs 402ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3699, edges 25) best X={I0-I1,I2-I4,R4-I3,R11-I4} leftover 847 (410ms)
+a9_u....5..65_......55. r=13 m=6 classes=66430 ext=4131 reached=5978 D=false depth=4 passes=5 mode=gs 549ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8083, edges 28) best X={I2-I4,I3-I5,R0-I3,R9-I4} leftover 568 (565ms)
+a9_u....5..65_....5..5. r=13 m=6 classes=66430 ext=4237 reached=6242 D=false depth=4 passes=5 mode=gs 642ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={I0-I1,I3-I5,R4-I1,R11-I5} leftover 698 (660ms)
+a9_u....5..65_...5...5. r=13 m=6 classes=66430 ext=4237 reached=6244 D=false depth=4 passes=5 mode=gs 606ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={I0-I3,I1-I4,R7-I1,R12-I3} leftover 680 (623ms)
+a9_u....5..65_...55.... r=13 m=6 classes=66430 ext=3859 reached=4747 D=false depth=2 passes=3 mode=gs 351ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8124, edges 28) best X={I1-I5,I2-I3,R9-I2,R5-I5} leftover 1028 (368ms)
+a9_u....5.665_.......55 r=13 m=7 classes=66430 ext=4759 reached=7776 D=false depth=4 passes=5 mode=gs 651ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14847, edges 31) best X={I0-I3,R9-I3,R0-I4,R10-I6} leftover 206 (683ms)
+a9_u....56..5_.......55 r=13 m=6 classes=66430 ext=3859 reached=4747 D=false depth=2 passes=3 mode=gs 334ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8124, edges 28) best X={I0-I3,I4-I5,R11-I4,R11-I5} leftover 551 (353ms)
+a9_u....5.665_......55. r=13 m=7 classes=66430 ext=5311 reached=8793 D=false depth=5 passes=6 mode=gs 783ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15183, edges 31) best X={I2-I3,I3-I4,R0-I4,R11-I6} leftover 525 (816ms)
+a9_u....56..5_....5...5 r=13 m=6 classes=66430 ext=4237 reached=6244 D=false depth=4 passes=5 mode=gs 567ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={I0-I1,I2-I5,R4-I1,R5-I5} leftover 383 (584ms)
+a9_u....56..5_....5..5. r=13 m=6 classes=66430 ext=4237 reached=6242 D=false depth=4 passes=5 mode=gs 598ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={I2-I4,I3-I5,R3-I1,R11-I5} leftover 1494 (611ms)
+a9_u....56..5_....55... r=13 m=6 classes=66430 ext=4131 reached=5978 D=false depth=3 passes=4 mode=gs 480ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8083, edges 28) best X={I0-I3,R9-I2,R12-I3,R6-I5} leftover 1104 (497ms)
+a9_u....56.65_.......55 r=13 m=7 classes=66430 ext=4817 reached=7312 D=false depth=4 passes=5 mode=gs 604ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15049, edges 31) best X={I0-I1,I0-I3,I3-I6,R4-I1} leftover 824 (635ms)
+a9_u....56.65_....5..5. r=13 m=7 classes=66430 ext=5416 reached=8951 D=false depth=5 passes=6 mode=gs 628ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15465, edges 31) best X={I0-I2,R3-I1,R7-I2,R6-I5} leftover 314 (656ms)
+a9_u....56.65_...55.... r=13 m=7 classes=66430 ext=4817 reached=7312 D=false depth=4 passes=5 mode=gs 521ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15049, edges 31) best X={I1-I5,I2-I6,R4-I5,R5-I6} leftover 271 (548ms)
+a9_u....566.._....555.. r=13 m=7 classes=66430 ext=5210 reached=9779 D=false depth=4 passes=5 mode=gs 550ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14544, edges 31) best X={I0-I1,I3-I5,R4-I1,R7-I5} leftover 370 (576ms)
+a9_u....566.._...55.5.. r=13 m=7 classes=66430 ext=4725 reached=8523 D=false depth=4 passes=5 mode=gs 633ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14378, edges 31) best X={I2-I3,R3-I1,R6-I2,R5-I4} leftover 393 (665ms)
+a9_u....566.5_....55... r=13 m=7 classes=66430 ext=5311 reached=8793 D=false depth=5 passes=6 mode=gs 674ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15183, edges 31) best X={I2-I5,R3-I1,R4-I5} leftover 722 (709ms)
+a9_u....566.5_...55.... r=13 m=7 classes=66430 ext=4759 reached=7776 D=false depth=3 passes=4 mode=gs 491ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14847, edges 31) best X={I0-I1,I1-I5,I2-I3,R6-I2} leftover 383 (524ms)
+a9_u....5666._....555.. r=13 m=8 classes=66430 ext=6676 reached=15365 D=false depth=8 passes=9 mode=gs 1010ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24881, edges 34) best X={I2-I6,R12-I4,R8-I6,R8-I7} leftover 593 (1070ms)
+a9_u....5666._...55.5.. r=13 m=8 classes=66430 ext=6026 reached=13095 D=false depth=7 passes=8 mode=gs 988ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24891, edges 34) best X={I0-I3,I4-I7,R7-I3,R8-I7} leftover 141 (1038ms)
+a9_u....5666._...555... r=13 m=8 classes=66430 ext=5964 reached=14161 D=false depth=6 passes=7 mode=gs 858ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24434, edges 34) best X={I0-I3,I1-I5,I3-I7,R9-I3} leftover 160 (915ms)
+a9_u....56665_.......55 r=13 m=8 classes=66430 ext=6081 reached=12357 D=false depth=8 passes=9 mode=gs 999ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25400, edges 34) best X={I0-I4,R9-I4,R12-I6,R11-I7} leftover 211 (1071ms)
+a9_u....56665_......55. r=13 m=8 classes=66430 ext=6779 reached=15980 D=false depth=10 passes=11 mode=gs 1097ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25564, edges 34) best X={I0-I5,I2-I3,I3-I6,R12-I5} leftover 631 (1156ms)
+a9_u....56665_.....5.5. r=13 m=8 classes=66430 ext=6840 reached=15537 D=false depth=14 passes=15 mode=gs 1538ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25756, edges 34) best X={I0-I4,I4-I7,R5-I2,R9-I4} leftover 516 (1604ms)
+a9_u....56665_....5..5. r=13 m=8 classes=66430 ext=6870 reached=14202 D=false depth=8 passes=9 mode=gs 1015ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25725, edges 34) best X={I0-I3,I1-I6,R7-I3,R5-I6} leftover 646 (1078ms)
+a9_u....56665_.....55.. r=13 m=8 classes=66430 ext=6830 reached=15616 D=false depth=15 passes=16 mode=gs 1549ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25614, edges 34) best X={I0-I5,I2-I3,R8-I3,R11-I5} leftover 352 (1609ms)
+a9_u....56665_....5.5.. r=13 m=8 classes=66430 ext=6840 reached=15537 D=false depth=13 passes=14 mode=gs 1568ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25756, edges 34) best X={I0-I5,I2-I3,R8-I3,R11-I5} leftover 450 (1629ms)
+a9_u....56665_....55... r=13 m=8 classes=66430 ext=6779 reached=15980 D=false depth=11 passes=12 mode=gs 1240ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25564, edges 34) best X={I2-I6,I2-I7,R3-I1,R5-I6} leftover 644 (1314ms)
+a9_u...65...5_.......55 r=13 m=6 classes=66430 ext=3859 reached=4743 D=false depth=2 passes=3 mode=gs 400ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8124, edges 28) best X={I0-I2,I3-I5,R5-I2,R0-I3} leftover 566 (418ms)
+a9_u....56665_...55.... r=13 m=8 classes=66430 ext=6081 reached=12357 D=false depth=7 passes=8 mode=gs 929ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25400, edges 34) best X={I2-I3,R3-I1,R6-I2,R4-I6} leftover 290 (990ms)
+a9_u...65...5_...5....5 r=13 m=6 classes=66430 ext=4237 reached=6246 D=false depth=5 passes=6 mode=gs 753ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={I0-I3,I2-I5,R10-I3,R4-I5} leftover 642 (768ms)
+a9_u...65...5_..55..... r=13 m=6 classes=66430 ext=4131 reached=5978 D=false depth=3 passes=4 mode=gs 510ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8083, edges 28) best X={I2-I5,R10-I3,R2-I4,R5-I5} leftover 1215 (527ms)
+a9_u...65...5_...5...5. r=13 m=6 classes=66430 ext=4237 reached=6238 D=false depth=5 passes=6 mode=gs 684ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={I0-I1,R3-I1,R5-I4} leftover 628 (701ms)
+a9_u...65..65_.......55 r=13 m=7 classes=66430 ext=4817 reached=7312 D=false depth=5 passes=6 mode=gs 764ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14989, edges 31) best X={I0-I4,I4-I5,R10-I3,R12-I5} leftover 409 (802ms)
+a9_u...65..65_...55.... r=13 m=7 classes=66430 ext=4817 reached=7310 D=false depth=3 passes=4 mode=gs 541ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14989, edges 31) best X={I0-I1,R3-I1,R7-I2,R4-I5} leftover 264 (589ms)
+a9_u...65..65_...5...5. r=13 m=7 classes=66430 ext=5416 reached=8940 D=false depth=6 passes=7 mode=gs 922ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15401, edges 31) best X={I4-I6,R11-I6} leftover 784 (956ms)
+a9_u...656.65_...55.... r=13 m=8 classes=66430 ext=5934 reached=11796 D=false depth=6 passes=7 mode=gs 900ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24890, edges 34) best X={I0-I2,I2-I6,R4-I6,R6-I7} leftover 253 (960ms)
+a9_u...6566.._...55.5.. r=13 m=8 classes=66430 ext=5812 reached=13491 D=false depth=5 passes=6 mode=gs 691ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24216, edges 34) best X={I0-I4,I5-I6,R7-I4,R9-I7} leftover 355 (745ms)
+a9_u...6566.._..555.... r=13 m=8 classes=66430 ext=5740 reached=14878 D=false depth=5 passes=6 mode=gs 729ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23927, edges 34) best X={I2-I6,I3-I7,R5-I1,R6-I7} leftover 266 (781ms)
+a9_u...6566.5_...55.... r=13 m=8 classes=66430 ext=5840 reached=12446 D=false depth=5 passes=6 mode=gs 701ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24603, edges 34) best X={I0-I1,I3-I7,R3-I1,R5-I7} leftover 110 (758ms)
+a9_u...65666._...55.5.. r=13 m=9 classes=66430 ext=7395 reached=23366 D=false depth=8 passes=9 mode=gs 869ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38723, edges 37) best X={I0-I4,I5-I8,R7-I4,R8-I8} leftover 120 (969ms)
+a9_u...65666._...555... r=13 m=9 classes=66430 ext=7297 reached=22957 D=false depth=5 passes=6 mode=gs 630ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38104, edges 37) best X={I1-I6,I4-I8,R5-I6,R6-I8} leftover 111 (716ms)
+a9_u...656665_...55.... r=13 m=9 classes=66430 ext=7458 reached=42170 D=false depth=7 passes=8 mode=gs 721ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 39130, edges 37) best X={I2-I3,I3-I4,I7-I8,R6-I3} leftover 52 (823ms)
+a9_u..665...5_...55.... r=13 m=7 classes=66430 ext=4759 reached=7787 D=false depth=3 passes=4 mode=gs 471ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14787, edges 31) best X={I0-I2,R4-I2,R8-I3,R5-I5} leftover 206 (502ms)
+a9_u..665...5_..55..... r=13 m=7 classes=66430 ext=5311 reached=8789 D=false depth=5 passes=6 mode=gs 727ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15119, edges 31) best X={I1-I2,R5-I2,R8-I3,R6-I6} leftover 470 (761ms)
+a9_u..6656..._...555... r=13 m=8 classes=66430 ext=5740 reached=14878 D=false depth=5 passes=6 mode=gs 700ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23927, edges 34) best X={I0-I2,I4-I6,R4-I2,R6-I6} leftover 80 (749ms)
+a9_u..6656..5_...55.... r=13 m=8 classes=66430 ext=5840 reached=12503 D=false depth=5 passes=6 mode=gs 635ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24527, edges 34) best X={I0-I4,I1-I2,R5-I2,R7-I4} leftover 122 (692ms)
+a9_u..66566.._...555... r=13 m=9 classes=66430 ext=7244 reached=22753 D=false depth=5 passes=6 mode=gs 594ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38059, edges 37) best X={I0-I2,I4-I5,R5-I2,R7-I4} leftover 110 (683ms)
+a9_u.5....665_......55. r=13 m=7 classes=66430 ext=5311 reached=8775 D=false depth=3 passes=4 mode=gs 481ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15187, edges 31) best X={I0-I2,I3-I5,R6-I2,R5-I5} leftover 226 (514ms)
+a9_u..66566.._..555.... r=13 m=9 classes=66430 ext=7244 reached=22753 D=false depth=5 passes=6 mode=gs 604ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38059, edges 37) best X={I0-I2,I0-I4,I2-I6,R7-I4} leftover 92 (715ms)
+a9_u.5.....65_......55. r=13 m=6 classes=66430 ext=4131 reached=5981 D=false depth=4 passes=5 mode=gs 612ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8135, edges 28) best X={I0-I3,I2-I5,R1-I3,R2-I5} leftover 363 (628ms)
+a9_u.5..5...5_.......5. r=13 m=5 classes=66430 ext=3313 reached=3885 D=false depth=2 passes=3 mode=gs 362ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3956, edges 25) best X={I0-I2,R0-I0,R11-I1,R1-I3} leftover 1260 (370ms)
+a9_u.5..5...5_....5.... r=13 m=5 classes=66430 ext=3313 reached=3881 D=false depth=2 passes=3 mode=gs 404ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3952, edges 25) best X={I0-I1,I0-I2,I2-I4,R12-I1} leftover 629 (412ms)
+a9_u.5..5...5_...5..... r=13 m=5 classes=66430 ext=3313 reached=3881 D=false depth=2 passes=3 mode=gs 374ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3952, edges 25) best X={I0-I1,I0-I2,R12-I1,R7-I4} leftover 844 (383ms)
+a9_u.5..5..65_.......5. r=13 m=6 classes=66430 ext=4235 reached=5420 D=false depth=3 passes=4 mode=gs 466ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8488, edges 28) best X={I0-I1,I0-I4,I4-I5,R11-I1} leftover 728 (484ms)
+a9_u.5..56..._....55... r=13 m=6 classes=66430 ext=4131 reached=5978 D=false depth=4 passes=5 mode=gs 618ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8083, edges 28) best X={I3-I4,R9-I2,R7-I4,R3-I5} leftover 792 (632ms)
+a9_u.5..56..5_....5.... r=13 m=6 classes=66430 ext=4235 reached=5406 D=false depth=3 passes=4 mode=gs 484ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8484, edges 28) best X={I0-I3,R9-I2,R5-I3,R6-I5} leftover 259 (507ms)
+a9_u.5..566.._...55.... r=13 m=7 classes=66430 ext=4759 reached=7776 D=false depth=4 passes=5 mode=gs 628ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14787, edges 31) best X={I0-I3,I2-I5,R6-I3,R8-I5} leftover 254 (665ms)
+a9_u.5..566.._....55... r=13 m=7 classes=66430 ext=5311 reached=8793 D=false depth=4 passes=5 mode=gs 658ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15119, edges 31) best X={I2-I5,I4-I6,R7-I5,R5-I6} leftover 560 (691ms)
+a9_u.5.65...5_...5..... r=13 m=6 classes=66430 ext=4235 reached=5406 D=false depth=3 passes=4 mode=gs 481ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8536, edges 28) best X={I0-I2,R9-I2,R5-I3,R8-I5} leftover 259 (499ms)
+a9_u.5.6566.._...55.... r=13 m=8 classes=66430 ext=5840 reached=12470 D=false depth=5 passes=6 mode=gs 776ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24607, edges 34) best X={I0-I2,I4-I7,R9-I2,R7-I7} leftover 110 (825ms)
+a9_u.5665...._.6.55.... r=13 m=8 classes=66430 ext=6024 reached=12893 D=false depth=5 passes=6 mode=gs 661ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24669, edges 34) best X={I0-I4,I4-I6,R7-I6,R5-I7} leftover 251 (714ms)
+a9_u.5665...5_...5..... r=13 m=7 classes=66430 ext=5412 reached=8529 D=false depth=5 passes=6 mode=gs 731ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15632, edges 31) best X={I0-I1,I0-I3,I3-I6,R9-I3} leftover 592 (782ms)
+a9_u.5665...._.655..... r=13 m=8 classes=66430 ext=6667 reached=15437 D=false depth=12 passes=13 mode=gs 1374ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24659, edges 34) best X={I0-I2,I2-I5,I2-I6,R5-I7} leftover 325 (1423ms)
+a9_u.5665...5_..5...... r=13 m=7 classes=66430 ext=5409 reached=7314 D=false depth=6 passes=7 mode=gs 851ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15674, edges 31) best X={I0-I2,R11-I2,R8-I3,R9-I6} leftover 594 (886ms)
+a9_u.56656..._.6.55.... r=13 m=9 classes=66430 ext=7382 reached=22223 D=false depth=8 passes=9 mode=gs 873ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38412, edges 37) best X={I3-I4,I4-I5,I7-I8,R7-I7} leftover 212 (975ms)
+a9_u.566566.._...55.... r=13 m=9 classes=66430 ext=7390 reached=24041 D=false depth=10 passes=11 mode=gs 1002ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38763, edges 37) best X={I0-I3,I5-I6,R8-I3,R6-I5} leftover 96 (1103ms)
+a9_u6.....665_.....5.55 r=13 m=8 classes=66430 ext=5812 reached=13491 D=false depth=6 passes=7 mode=gs 810ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24216, edges 34) best X={I0-I2,R12-I1,R8-I2,R5-I6} leftover 390 (867ms)
+a9_u6....6665_......555 r=13 m=9 classes=66430 ext=7297 reached=22957 D=false depth=6 passes=7 mode=gs 749ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38104, edges 37) best X={I0-I1,I3-I4,R11-I1,R9-I4} leftover 106 (844ms)
+a9_u6...5...5_....5...5 r=13 m=6 classes=66430 ext=4237 reached=6238 D=false depth=4 passes=5 mode=gs 649ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={I0-I3,I1-I4,R9-I3,R10-I4} leftover 384 (695ms)
+a9_u6....6665_.....5.55 r=13 m=9 classes=66430 ext=7395 reached=23366 D=false depth=9 passes=10 mode=gs 998ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38723, edges 37) best X={I0-I4,I1-I6,R8-I4,R10-I6} leftover 88 (1111ms)
+a9_u6...5...5_...5....5 r=13 m=6 classes=66430 ext=4237 reached=6246 D=false depth=4 passes=5 mode=gs 600ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8174, edges 28) best X={R12-I1,R9-I3,R11-I4,R4-I5} leftover 1457 (616ms)
+a9_u6...5...5_...55.... r=13 m=6 classes=66430 ext=3859 reached=4743 D=false depth=2 passes=3 mode=gs 370ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8124, edges 28) best X={I0-I3,I2-I4,R10-I3,R3-I4} leftover 651 (386ms)
+a9_u6...5.665_.......55 r=13 m=8 classes=66430 ext=5840 reached=12446 D=false depth=6 passes=7 mode=gs 738ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24603, edges 34) best X={I4-I7,I5-I6,R11-I6,R10-I7} leftover 220 (787ms)
+a9_u6...56..5_.......55 r=13 m=7 classes=66430 ext=4817 reached=7310 D=false depth=4 passes=5 mode=gs 618ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14989, edges 31) best X={I1-I4,I1-I5,I4-I5,R9-I6} leftover 532 (651ms)
+a9_u6...56..5_....5...5 r=13 m=7 classes=66430 ext=5416 reached=8940 D=false depth=5 passes=6 mode=gs 725ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15401, edges 31) best X={I0-I3,R3-I2,R6-I3,R4-I6} leftover 314 (774ms)
+a9_u6...56..5_...55.... r=13 m=7 classes=66430 ext=4817 reached=7312 D=false depth=4 passes=5 mode=gs 666ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14989, edges 31) best X={I2-I3,R2-I2,R3-I5,R5-I6} leftover 270 (713ms)
+a9_u6...56.65_.......55 r=13 m=8 classes=66430 ext=5934 reached=11796 D=false depth=6 passes=7 mode=gs 856ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24890, edges 34) best X={I0-I1,I4-I7,R12-I1,R10-I7} leftover 126 (941ms)
+a9_u6..65...5_.......55 r=13 m=7 classes=66430 ext=4817 reached=7312 D=false depth=5 passes=6 mode=gs 741ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14989, edges 31) best X={I1-I5,I4-I6,R10-I5,R9-I6} leftover 271 (769ms)
+a9_u6...56665_.......55 r=13 m=9 classes=66430 ext=7458 reached=42170 D=false depth=9 passes=10 mode=gs 889ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 39130, edges 37) best X={I1-I7,I4-I5,R9-I5,R10-I7} leftover 26 (1030ms)
+a9_u6..65...5_...55.... r=13 m=7 classes=66430 ext=4817 reached=7312 D=false depth=4 passes=5 mode=gs 617ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14989, edges 31) best X={I1-I4,I2-I5,R8-I4,R4-I5} leftover 680 (648ms)
+a9_u6..65...5_...5....5 r=13 m=7 classes=66430 ext=5416 reached=8943 D=false depth=6 passes=7 mode=gs 877ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15401, edges 31) best X={I0-I3,I2-I6,R5-I3,R4-I6} leftover 475 (915ms)
+a9_u6..65..65_.......55 r=13 m=8 classes=66430 ext=5934 reached=11790 D=false depth=5 passes=6 mode=gs 769ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24814, edges 34) best X={I0-I4,R11-I1,R8-I4,R10-I7} leftover 439 (826ms)
+a9_u6..656..5_...55.... r=13 m=8 classes=66430 ext=5934 reached=11790 D=false depth=4 passes=5 mode=gs 531ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24814, edges 34) best X={I2-I3,I3-I4,I6-I7,R3-I6} leftover 250 (590ms)
+a9_u65......5_.6.....55 r=13 m=7 classes=66430 ext=4678 reached=9309 D=false depth=5 passes=6 mode=gs 663ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14026, edges 31) best X={I0-I3,I3-I4,R8-I4,R6-I6} leftover 180 (699ms)
+a9_u65......5_66.....55 r=13 m=8 classes=66430 ext=5843 reached=14808 D=false depth=4 passes=5 mode=gs 620ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23579, edges 34) best X={I2-I5,R0-I2,R8-I4,R6-I7} leftover 434 (675ms)
+a9_u65.....65_.6.....55 r=13 m=8 classes=66430 ext=5743 reached=14786 D=false depth=6 passes=7 mode=gs 841ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 23719, edges 34) best X={I0-I2,I2-I6} leftover 290 (896ms)
+a9_u65.....65_66.....55 r=13 m=9 classes=66430 ext=7140 reached=23644 D=false depth=4 passes=5 mode=gs 621ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37168, edges 37) best X={I0-I2,I2-I6,I3-I8,R7-I8} leftover 107 (722ms)
+a9_u65....665_6......55 r=13 m=9 classes=66430 ext=7215 reached=22695 D=false depth=5 passes=6 mode=gs 666ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37750, edges 37) best X={I0-I4,I1-I6,R6-I4,R8-I6} leftover 82 (752ms)
+a9_u65...6..5_.......55 r=13 m=7 classes=66430 ext=4761 reached=9053 D=false depth=5 passes=6 mode=gs 676ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14584, edges 31) best X={R10-I1,R12-I2,R7-I4,R8-I6} leftover 413 (707ms)
+a9_u65...6.65_.......55 r=13 m=8 classes=66430 ext=5853 reached=14968 D=false depth=5 passes=6 mode=gs 701ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24336, edges 34) best X={I0-I4,I1-I2,R10-I1,R8-I4} leftover 82 (746ms)
+a9_u65..5...._...55.... r=13 m=6 classes=66430 ext=3859 reached=4747 D=false depth=2 passes=3 mode=gs 391ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8124, edges 28) best X={I1-I2,I3-I4,R0-I2,R3-I4} leftover 646 (409ms)
+a9_u65...6665_.......55 r=13 m=9 classes=66430 ext=7327 reached=24931 D=false depth=6 passes=7 mode=gs 765ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38738, edges 37) best X={I1-I7,I4-I5,R8-I5,R9-I7} leftover 92 (864ms)
+a9_u65..5...5_...5..... r=13 m=6 classes=66430 ext=4264 reached=5132 D=false depth=3 passes=4 mode=gs 481ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8487, edges 28) best X={I0-I2,R10-I1,R11-I2,R8-I4} leftover 648 (501ms)
+a9_u65..5...5_....5.... r=13 m=6 classes=66430 ext=4264 reached=5135 D=false depth=4 passes=5 mode=gs 558ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8487, edges 28) best X={I0-I1,I3-I5,R9-I1,R1-I3} leftover 876 (576ms)
+a9_u65..5...5_6.......5 r=13 m=7 classes=66430 ext=5299 reached=8785 D=false depth=5 passes=6 mode=gs 777ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14954, edges 31) best X={I0-I2,I2-I6,I4-I5,R9-I5} leftover 248 (819ms)
+a9_u65..56..._...55.... r=13 m=7 classes=66430 ext=4817 reached=7310 D=false depth=4 passes=5 mode=gs 667ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14989, edges 31) best X={I0-I4,R5-I4,R2-I5,R3-I6} leftover 264 (705ms)
+a9_u65..56..5_........5 r=13 m=7 classes=66430 ext=5343 reached=8051 D=false depth=4 passes=5 mode=gs 628ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15560, edges 31) best X={I0-I3,I1-I2,R12-I2,R2-I3} leftover 840 (665ms)
+a9_u65.6....5_.......55 r=13 m=7 classes=66430 ext=4761 reached=9064 D=false depth=4 passes=5 mode=gs 627ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14644, edges 31) best X={I0-I2,R2-I2,R6-I4,R3-I5} leftover 205 (658ms)
+a9_u65..56..5_....5.... r=13 m=7 classes=66430 ext=5450 reached=7385 D=false depth=10 passes=11 mode=gs 1342ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15751, edges 31) best X={I0-I4,R2-I3,R5-I4,R3-I6} leftover 319 (1378ms)
+a9_u65.6...65_.......55 r=13 m=8 classes=66430 ext=5853 reached=14968 D=false depth=4 passes=5 mode=gs 535ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24336, edges 34) best X={I0-I2,I4-I7,R2-I2,R4-I7} leftover 90 (579ms)
+a9_u65.65...._...55.... r=13 m=7 classes=66430 ext=4817 reached=7310 D=false depth=5 passes=6 mode=gs 624ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15053, edges 31) best X={I0-I3,I3-I5,I5-I6,R9-I6} leftover 406 (652ms)
+a9_u65.65...5_........5 r=13 m=7 classes=66430 ext=5343 reached=8069 D=false depth=6 passes=7 mode=gs 859ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15624, edges 31) best X={I0-I5,I1-I6,R5-I5,R4-I6} leftover 458 (893ms)
+a9_u65.65...5_...5..... r=13 m=7 classes=66430 ext=5450 reached=7429 D=false depth=9 passes=10 mode=gs 1206ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15819, edges 31) best X={I1-I2,I3-I6,R1-I2,R10-I6} leftover 975 (1246ms)
+a9_u65.656..._...55.... r=13 m=8 classes=66430 ext=5934 reached=11789 D=false depth=5 passes=6 mode=gs 631ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24894, edges 34) best X={I0-I5,R5-I1,R11-I3,R9-I5} leftover 1094 (678ms)
+a9_u656.....5_..5.....5 r=13 m=7 classes=66430 ext=5251 reached=9081 D=false depth=5 passes=6 mode=gs 751ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15089, edges 31) best X={I0-I2,R8-I2,R4-I4,R7-I5} leftover 233 (785ms)
+a9_u656.....5_.6.....55 r=13 m=8 classes=66430 ext=5960 reached=13800 D=false depth=6 passes=7 mode=gs 752ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24417, edges 34) best X={I0-I1,I2-I6,R7-I1,R4-I7} leftover 555 (810ms)
+a9_u656.....5_6......55 r=13 m=8 classes=66430 ext=5942 reached=13846 D=false depth=5 passes=6 mode=gs 695ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24001, edges 34) best X={I1-I2,I1-I4,R4-I4,R6-I5} leftover 468 (749ms)
+a9_u656.....5_66.....55 r=13 m=9 classes=66430 ext=7374 reached=23450 D=false depth=6 passes=7 mode=gs 755ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37591, edges 37) best X={I0-I1,I1-I6,R6-I5,R8-I6} leftover 482 (885ms)
+a9_u656....65_6......55 r=13 m=9 classes=66430 ext=7258 reached=22530 D=false depth=6 passes=7 mode=gs 683ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 37519, edges 37) best X={I0-I4,I1-I2,R7-I1,R5-I4} leftover 88 (816ms)
+a9_u656....65_.6.....55 r=13 m=9 classes=66430 ext=7290 reached=22638 D=false depth=7 passes=8 mode=gs 852ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38090, edges 37) best X={I0-I4,I1-I6,R4-I4,R6-I6} leftover 106 (946ms)
+a9_u656....65_66.....55 r=13 m=10 classes=66430 ext=8981 reached=39574 D=false depth=4 passes=5 mode=gs 448ms
+  C=false |X|<=4 (kc-C: tested 102090, admissible 55833, edges 40) best X={I0-I1,I3-I8,I4-I9,R6-I9} leftover 268 (615ms)
+a9_u656...665_.......55 r=13 m=9 classes=66430 ext=7297 reached=22633 D=false depth=6 passes=7 mode=gs 723ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38396, edges 37) best X={I0-I1,I4-I5,R8-I1,R6-I5} leftover 100 (813ms)
+a9_u656.5...5_........5 r=13 m=7 classes=66430 ext=5282 reached=8308 D=false depth=4 passes=5 mode=gs 543ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 15406, edges 31) best X={I0-I3,I1-I6,R4-I1,R3-I3} leftover 743 (570ms)
+a9_u6566....5_.......55 r=13 m=8 classes=66430 ext=6027 reached=13891 D=false depth=8 passes=9 mode=gs 1190ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25084, edges 34) best X={I0-I5,I5-I7,R6-I6,R4-I7} leftover 224 (1255ms)
+a9_u6566....5_..5.....5 r=13 m=8 classes=66430 ext=6700 reached=15160 D=false depth=11 passes=12 mode=gs 1493ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25692, edges 34) best X={I0-I4,I1-I2,I4-I7,R12-I4} leftover 520 (1580ms)
+a9_u6566...65_.......55 r=13 m=9 classes=66430 ext=7375 reached=24777 D=false depth=6 passes=7 mode=gs 795ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38736, edges 37) best X={I0-I2,I5-I8,R8-I2,R5-I8} leftover 240 (892ms)
+a9_u65665...._...55.... r=13 m=8 classes=66430 ext=6099 reached=11988 D=false depth=5 passes=6 mode=gs 707ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25129, edges 34) best X={I0-I4,R9-I4,R0-I5,R10-I6} leftover 240 (753ms)
+a9_u65665...._..55..... r=13 m=8 classes=66430 ext=6683 reached=14486 D=false depth=12 passes=13 mode=gs 1376ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 25272, edges 34) best X={I0-I5,I3-I4,I5-I7,R10-I4} leftover 274 (1438ms)
+a9_u65665...5_........5 r=13 m=8 classes=66430 ext=6751 reached=23884 D=false depth=12 passes=13 mode=gs 1307ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 26029, edges 34) best X={I0-I2,I0-I6,I6-I7,R6-I2} leftover 54 (1370ms)
+a9_u65665...5_...5..... r=13 m=8 classes=66430 ext=6923 reached=25139 D=false depth=11 passes=12 mode=gs 1123ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 26050, edges 34) best X={I0-I4,R9-I4,R12-I5,R11-I7} leftover 102 (1187ms)
+a9_u65665...5_..5...... r=13 m=8 classes=66430 ext=6902 reached=34305 D=false depth=10 passes=11 mode=gs 1086ms
+  C-REDUCIBLE X={I0-I2} size=1 (kc-C: tested 2, admissible 2, edges 34, 1088ms)
+a9_-...6566.._..5...5.. r=13 m=6 classes=66430 ext=4300 reached=5216 D=false depth=3 passes=4 mode=gs 540ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 7960, edges 28) best X={R4-I0,R8-I2,R9-I3,R2-I4} leftover 1582 (554ms)
+a9_u656656..._...55.... r=13 m=9 classes=66430 ext=7482 reached=23905 D=false depth=10 passes=11 mode=gs 1113ms
+  C=false |X|<=4 (kc-C: tested 74518, admissible 38788, edges 37) best X={I0-I4,I4-I7,R8-I4,R12-I6} leftover 242 (1212ms)
+a9_-..66566.._..5..5... r=13 m=7 classes=66430 ext=5485 reached=8224 D=false depth=4 passes=5 mode=gs 668ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14887, edges 31) best X={I2-I3,I3-I4,R1-I0,R8-I3} leftover 1186 (699ms)
+a9_-...65666._.....55.. r=13 m=7 classes=66430 ext=5445 reached=8249 D=false depth=5 passes=6 mode=gs 714ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14590, edges 31) best X={R0-I0,R6-I2,R0-I4,R8-I6} leftover 1490 (745ms)
+a9_-.56656..._.....5... r=13 m=6 classes=66430 ext=4300 reached=5165 D=false depth=4 passes=5 mode=gs 582ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8012, edges 28) best X={I2-I3,I3-I4,I4-I5,R11-I5} leftover 823 (595ms)
+a9_-.56656..._.65...... r=13 m=7 classes=66430 ext=5445 reached=8235 D=false depth=4 passes=5 mode=gs 624ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14590, edges 31) best X={I1-I5,R0-I1,R9-I3,R7-I6} leftover 820 (657ms)
+a9_-6....6665_.....55.. r=13 m=7 classes=66430 ext=5445 reached=8249 D=false depth=5 passes=6 mode=gs 697ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14590, edges 31) best X={R0-I0,R0-I1,R6-I3,R8-I5} leftover 1490 (729ms)
+a9_-65....665_.....5... r=13 m=6 classes=66430 ext=4300 reached=5106 D=false depth=3 passes=4 mode=gs 535ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8016, edges 28) best X={I2-I3,R5-I0,R6-I3,R9-I5} leftover 1265 (551ms)
+a9_-6566....._...5....5 r=13 m=6 classes=66430 ext=4300 reached=5216 D=false depth=4 passes=5 mode=gs 554ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 7960, edges 28) best X={R0-I0,R7-I2,R11-I4,R3-I5} leftover 1268 (569ms)
+a9_-6566....._.65.....5 r=13 m=7 classes=66430 ext=5447 reached=8047 D=false depth=4 passes=5 mode=gs 601ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14569, edges 31) best X={I2-I5,I2-I6,R8-I1,R0-I2} leftover 360 (632ms)
+a9_-6566....._.655..... r=13 m=7 classes=66430 ext=5438 reached=8040 D=false depth=3 passes=4 mode=gs 509ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14435, edges 31) best X={I3-I5,I3-I6,R9-I1,R0-I3} leftover 680 (544ms)
+a9_-6566....._6.55..... r=13 m=7 classes=66430 ext=5451 reached=7863 D=false depth=3 passes=4 mode=gs 472ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14723, edges 31) best X={I1-I4,I2-I5,R0-I1,R4-I5} leftover 810 (503ms)
+a9_-6566....._6.5.....5 r=13 m=7 classes=66430 ext=5477 reached=7993 D=false depth=4 passes=5 mode=gs 609ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14718, edges 31) best X={I0-I4,I0-I5,I3-I6,R5-I6} leftover 863 (635ms)
+a9_-6566....5_...5..... r=13 m=6 classes=66430 ext=4300 reached=5106 D=false depth=3 passes=4 mode=gs 532ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8016, edges 28) best X={R8-I1,R6-I2,R12-I4,R1-I5} leftover 1540 (552ms)
+a9_-6566....._665.....5 r=13 m=8 classes=66430 ext=6816 reached=15259 D=false depth=5 passes=6 mode=gs 694ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24422, edges 34) best X={I3-I7,I5-I6,R8-I5,R5-I7} leftover 670 (749ms)
+a9_-6566....._6655..... r=13 m=8 classes=66430 ext=6792 reached=14724 D=false depth=6 passes=7 mode=gs 802ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24443, edges 34) best X={I2-I5,I2-I6,R0-I2,R3-I7} leftover 641 (866ms)
+a9_-6566....5_.65...... r=13 m=7 classes=66430 ext=5447 reached=7867 D=false depth=3 passes=4 mode=gs 467ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14641, edges 31) best X={I2-I5,I3-I6,R0-I2,R5-I6} leftover 300 (498ms)
+a9_-6566....5_.6......5 r=13 m=7 classes=66430 ext=5264 reached=9850 D=false depth=4 passes=5 mode=gs 675ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14544, edges 31) best X={I0-I1,I1-I2,I4-I5,R10-I5} leftover 677 (707ms)
+a9_-6566....5_6.5...... r=13 m=7 classes=66430 ext=5477 reached=7825 D=false depth=3 passes=4 mode=gs 457ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14722, edges 31) best X={I0-I4,I1-I5,R9-I0,R0-I1} leftover 405 (495ms)
+a9_-6566....5_6.......5 r=13 m=7 classes=66430 ext=5353 reached=9794 D=false depth=5 passes=6 mode=gs 726ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14431, edges 31) best X={I4-I5,R0-I1,R0-I4,R7-I6} leftover 682 (757ms)
+a9_-6566....5_66......5 r=13 m=8 classes=66430 ext=6616 reached=16987 D=false depth=6 passes=7 mode=gs 740ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24166, edges 34) best X={I0-I1,I4-I5,R9-I0,R0-I4} leftover 274 (784ms)
+a9_-6566....5_665...... r=13 m=8 classes=66430 ext=6816 reached=14918 D=false depth=6 passes=7 mode=gs 753ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24426, edges 34) best X={I0-I5,R0-I0,R0-I2,R4-I7} leftover 956 (812ms)
+a9_-65665...._........5 r=13 m=6 classes=66430 ext=4300 reached=5165 D=false depth=4 passes=5 mode=gs 609ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8012, edges 28) best X={I0-I1,I0-I5,I1-I2,R11-I5} leftover 823 (625ms)
+a9_-65665...._.6.5..... r=13 m=7 classes=66430 ext=5453 reached=9381 D=false depth=4 passes=5 mode=gs 583ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14578, edges 31) best X={I0-I1,I1-I5,I3-I4,R4-I3} leftover 838 (613ms)
+a9_-65665...._.65...... r=13 m=7 classes=66430 ext=5438 reached=8164 D=false depth=4 passes=5 mode=gs 618ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14435, edges 31) best X={I2-I3,I3-I4,R4-I3,R5-I6} leftover 454 (648ms)
+a9_-65665...._6..5..... r=13 m=7 classes=66430 ext=5461 reached=9253 D=false depth=4 passes=5 mode=gs 561ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14783, edges 31) best X={I0-I1,I3-I4,R7-I1,R1-I4} leftover 762 (589ms)
+a9_-65665...._6.5...... r=13 m=7 classes=66430 ext=5451 reached=7964 D=false depth=3 passes=4 mode=gs 511ms
+  C=false |X|<=4 (kc-C: tested 36456, admissible 14719, edges 31) best X={I1-I2,I3-I4,R6-I2,R4-I3} leftover 663 (541ms)
+a9_-65665...._66.5..... r=13 m=8 classes=66430 ext=6815 reached=15728 D=false depth=6 passes=7 mode=gs 792ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24678, edges 34) best X={I4-I7,I5-I6,R0-I4,R9-I5} leftover 810 (851ms)
+a9_-65665...._665...... r=13 m=8 classes=66430 ext=6792 reached=14921 D=false depth=6 passes=7 mode=gs 727ms
+  C=false |X|<=4 (kc-C: tested 52955, admissible 24443, edges 34) best X={I1-I2,I2-I3,I5-I6,R6-I2} leftover 680 (775ms)
+a9_-65665...5_......... r=13 m=6 classes=66430 ext=4300 reached=5053 D=false depth=3 passes=4 mode=gs 508ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8068, edges 28) best X={I2-I3,R4-I3} leftover 1421 (525ms)
+a9_u......665_.....5.5. r=13 m=6 classes=66430 ext=4343 reached=6529 D=false depth=4 passes=5 mode=gs 631ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8310, edges 28) best X={I0-I3,R8-I1,R10-I2,R11-I5} leftover 847 (650ms)
+a9_u.....6..5_.......55 r=13 m=5 classes=66430 ext=3121 reached=3807 D=false depth=1 passes=2 mode=gs 293ms
+  C=false |X|<=4 (kc-C: tested 15275, admissible 3711, edges 25) best X={I3-I4,R0-I0,R5-I1,R12-I3} leftover 1004 (305ms)
+a9_u......665_.....55.. r=13 m=6 classes=66430 ext=4341 reached=5549 D=false depth=5 passes=6 mode=gs 770ms
+  C=false |X|<=4 (kc-C: tested 24157, admissible 8348, edges 28) best X={I1-I2,I2-I3,R10-I2,R8-I5} leftover 393 (788ms)

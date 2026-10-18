@@ -25,6 +25,17 @@ main line (round 49). Queued after round 49, 3 cores.
 - d = 9 656656665/665555555 running since 23:03Z: 3150 windows, 225 already run, none already kills. RSST patterns miss it.
 - d = 10 6556656556/6665656665: RSST patterns miss it. It is queued next.
 
+**Pre-registered 23:07Z (Long Table, 23:05Z), before either run: two follow-ons for d = 7 7665566/6675666.**
+- **Ring 15-16 sweep** (win45 A16, drive45 STOP=0), after the d = 10 row. Hypothesis: some window at ring 15-16 is D or
+  C on both engines. **Kill line (Long Table):** no D/C at ring <= 16 means the row is R*-like and goes to the rule
+  side. Guess: about 40% that it dies.
+- **Growth census one ring out** (`loop/k50/census50.py`, as round 42 for R*), run between the d = 9 and d = 10 rows. The
+  row fixes u, w and s, so one ring out is the 6 privates of the non-5 link vertices (2 at w0, 1 each at w1, w2, w5,
+  w6), letters 5..9 with 9 never exact. That is 15,625 cases, so the census is exhaustive rather than a 50k sample.
+  The forbidden set is the verified registry as this loop sees it: the 582 two-engine RSST configurations plus every
+  explore name that twoeng accepts. It is reported separately for RSST alone and for RSST plus explore. Guess: 20-40%
+  covered, about 0% of the cases with no private 5.
+
 ## Round 49 (18 Oct 2026, 22:11Z-): H-R9, does the d = 9 receiver of the new 1/5 dual die, and how far do patterns reach its senders?
 
 **Pre-registered 22:11Z, before any new engine run on these targets.** Gap G2. Long Table, 22:09Z: with round 48 loaded
