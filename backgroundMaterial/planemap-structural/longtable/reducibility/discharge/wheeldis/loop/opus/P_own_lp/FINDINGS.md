@@ -194,3 +194,12 @@ non-big paths. Within the 2-ball of w5 the only big vertex the row forces is u.
   7557656/6565665, d = 8 76565565/57765865 (2/47); d = 8 75657565/66656665 and /55655565 (1/47). Senders 56687
   (6/47), 55677 under flags 0 and 1 (4/47 each), 55667, 55668, 55687, 56667, 66667, 66677, 66678, 67768 (2/47), 55868
   (1/47); M rows on T keys (7,6,5,5,7), (7,6,6,6,6), (7,5,6,6,6), (8,6,7,7,6), (7,6,6,6,8).
+
+## Stage 5a on the k43 registry (20:19Z) and the no-T baseline s7 (20:29Z) [E, both sides]
+- s5a43 (exact letters, T_F + L2 + RSST-D + k43): 25 iterations, 274 s, **11/47**. `lowerS` VALID 11/47, 26 rows,
+  the same receivers and senders as s6t43 with exact flags. The upper bound follows by inclusion (s6t43's primal).
+  So exact letters are dead on the new binders too.
+- s7 (`argsA43noT.txt` + rpat, L2, no rule T): 37 iterations, 363 s, **11/47**. `pcheck lower` (J's cmd_lower + rpat
+  loader): VALID. `pcheck upper nomax`: FEASIBLE. Dual: 55677 (8/47), 56687 (6/47), receiver d = 7
+  7565765/6855555 (4/47), and the same remaining rows as s6t43 (d = 7 8567655/6655656 replaces 8566655/6656656).
+  **Rule T adds nothing over L2 on this registry.**

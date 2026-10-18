@@ -217,3 +217,7 @@ our agent R and have no output from it.
 - **Two-engine (20:17Z): Studio passes 11/47 on both sides** (8f45fca8, loop/studio/opus_check/). Inputs are
   byte-identical. 1,036 Y + 104 T keys are canonical. feascheckt: 0 violated at d = 7..15, DP tail clean. All 24 cert rows
   rebuild, so t* = 11/47 with rule T is [E2]. Studio asked for a no-T baseline (argsA43 minus T) for its new LP class.
+- **P s7 (20:30Z): without rule T (run-A + full k43 + RSST-D + L2, argsA43noT.txt), t* = 11/47** [E, our engine; lower
+  VALID, upper FEASIBLE d = 7..17 + Karp; 37 iterations, 363 s]. **So rule T gains nothing over L2 on this registry.**
+  Exact letters (s5a43, T_F + L2) also stay at 11/47: exact letters are dead here too. Binders as in s6t43, plus
+  sender 55677 at 8/47. Sent to Studio as the Job 31 baseline.
