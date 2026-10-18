@@ -40,6 +40,32 @@
 - **Guess.** 3-6 frames die, and the loop stops near 0.25 at a frame whose binding fives sit at L3 and L6 with
   big neighbours.
 
+**Round 38 result (10:08Z): 5 more frames die (C on two engines), and w2's cap climbs from 0.1852 to 0.2454**
+(`loop/k38/greedy.py`, `greedy.out`, `kills.txt`, `kills.cfast`, `commonx.py`). It ran 85 windows in 12 minutes,
+and nothing was D.
+
+| step | binding frame (link / s) | cap | killing window (ring) | rows removed | X common to kc and cfast |
+|---|---|---|---|---|---|
+| 1 | 7665675 / 5966577 | 0.1852 | f7_5667576_..5.... (14): whole link + s'0 | 625 | yes, conservative |
+| 2 | 7696575 / 5556577 | 0.1924 | f7_..65757_..65... (13) | 100 | cfast's X, broad only |
+| 3 | 7675675 / 5556577 | 0.1924 | f7_5675767_.5..... (15) | 125 | yes, conservative |
+| 4 | 7696575 / 5555577 | 0.1968 | f7_..65757_..55... (12) | 100 | cfast's X, broad only |
+| 5 | 7695675 / 5555577 | 0.1968 | f7_..56757_...5... (13) | 250 | cfast's X, broad only |
+| 6 | 7696575 / 5555977 | **0.2454** | none at ring <= 15 | - | STOP |
+
+- In steps 2 and 4, kc's own conservative X is the single interior edge {I0-I2}. cfast reports a size-4 X with two ring
+  vertices in one component, which kc accepts only under -C2 (leftover 0). kc -x gives the same leftover 0 on both.
+- Step 1 kills every w2 frame with link 7665675 (the window fixes only the link and w0). Opus's floor work on that
+  frame is therefore moot.
+- **Caps after the kills, by filling letter:** s1 = 6: 0.2778 (link 7669675, k = 4). s1 >= 7: 0.2454 (link 7a96575 /
+  5555977, k = 3). R's first-order row then gives t >= 0.054 at (6,6), 0.066 at (6, >=7) and 0.078 otherwise.
+- The stopping frame has three T inflows (s'0, p, x2 all 5) and yload 0.52, so its slack is not small. It binds only
+  because k = 3.
+- Against the bars: neither 0.35 nor stuck at 0.1852. Guess check: "3-6 frames die, stop near 0.25" was right (5
+  died, stop at 0.245). "Binding fives at L3 and L6" was wrong: the stopping frame's fives are L4 and L6, with three
+  s-fives feeding T.
+- `kills.cfast` is cfast's own output for the 5 windows, cpat-ready once Job 30's pattern type exists.
+
 ## Round 37 (18 Oct 2026, 09:47Z-): H-W37, is w2's worst frame reducible? (coordinator's go, 09:42Z)
 
 **Pre-registered 09:47Z, before any code.** Gap G2. Uses the core freed by the broad C run.
