@@ -83,3 +83,7 @@ Pre-registered before any probe ran.
   t = 0.155 (hand second-order argument; independent check H running). Job 30 (Studio): part A puts the s1/s4 = 5
   kill into L2 with non-five s-letters; part B (rule T) runs only if A holds 7/27. RSST-D (158 patterns) is in the
   LP and t* stays 7/27 exactly, matching angle B.
+- **H (10:55Z): explore's rule-T floor t >= 11/71 = 0.1549 at (6,6) checked independently and holds**
+  (`H_floor_check/FINDINGS.md`) [hand + frame.py]. It is a floor for the whole rule-T class, not first order, unless
+  w2/w4 can pass charge on (L2 transfer) or one of four arrangements is killed. So Job 30's order is right: part A
+  (L2 with the s1/s4 = 5 kill) is what can go below 0.155; rule T alone cannot.
