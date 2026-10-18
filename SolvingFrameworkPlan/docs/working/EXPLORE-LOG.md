@@ -1,8 +1,8 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
-## Round 34 (18 Oct 2026, 08:45Z-): H-K34, do the 7/27 binder's last windows, or the other tight d = 7 rows' untested windows, hold a D? (coordinator's overnight plan, 08:40Z)
+## Round 34 (18 Oct 2026, 08:43Z-): H-K34, do the 7/27 binder's last windows, or the other tight d = 7 rows' untested windows, hold a D? (coordinator's overnight plan, 08:40Z)
 
-**Pre-registered 08:45Z, before any run.** Gap G2 (K = 2 LP at t* = 7/27).
+**Pre-registered 08:43Z, before any run.** Gap G2 (K = 2 LP at t* = 7/27).
 - **Why.** The x = 0 dual certificate at 7/27 (`out/wlp3_j28_13.txt`, same in `out/wlp3x_j29_13_notx.txt`) has one
   receiver row: d = 7 link 5675765 s 6577575 (weight 0.37), plus senders 55667, 55767, 77777. Its B-fixed windows
   (|S| >= 2 of its three fives, `gen28.variants`, any ring): ring 11 {0,6} not D; ring 16 {0,3}
@@ -22,6 +22,19 @@
 - **Kill line.** Any kc/dfast verdict mismatch stops the round and is reported before anything else.
 - **Guess.** A: 0 of 3 D (the row's ring-11 window has low ext and round 17 got 0 D of 6 at ring 17). B: about a
   quarter of the ring <= 14 windows D (round 14 got 178 of 636), fewer at 15-16, and 50-150 rows newly forbidden.
+
+**Amendment 08:50Z, before part C runs (part A's kc verdicts are in: 0 of 3 D).** Reading the certificate: the
+fives of R are at link positions 0 (word 55667, one big neighbour, u), 6 (55767, two 7s, u and s5, mirror images in
+the five's link) and 3 (77777). With rooted-word rules a five sends at least 1 - t in total, so y[7|5566] >= 1 - t,
+y[7|5576] >= (1 - t)/2, y[7|7777] >= (1 - t)/5, and R's load is <= 1 + t. Adding: 1.7(1 - t) <= 1 + t, so
+t >= 7/27, with dual weights 10/27, 10/27, 5/27, 2/27 (the 0.3704/0.3704/0.1852/0.0741 above). So **no kill other
+than R itself (or one of its three sender types) can move the y-class LP below 7/27**, and part B cannot move t*
+while R stands. Part B drops to after part C.
+- **Part C.** R's windows beyond B-fixed: u + all seven link vertices + any subset of the seven s-vertices, all at
+  R's letters (`loop/k34/fullwin.py`, 116 distinct windows: ring 13: 10, 14: 12, 15: 20, 16: 38, 17: 20, 18: 12,
+  19: 4; the window with every s fixed, `f7_5567576_5657757`, is ring 17). kc on all, dfast on ring <= 16, dfast18 on any kc D
+  at ring >= 17. Bar: any D on both engines forbids R and breaks the 7/27 certificate. Guess: 0 D (the 7-wheel
+  part is shared by every window, and the B-fixed ones are all far from D).
 
 ## Round 33 (18 Oct 2026, 02:54Z-): H-KC, an independent D-closure engine for k19 (coordinator's job, 02:49Z)
 
