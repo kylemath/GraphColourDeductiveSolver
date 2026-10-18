@@ -95,6 +95,22 @@ B-fixed window of R is now tested and not D, so route A at u is closed for R by 
 is running: the 9 fillings with a 5 at s1 or s4 died at ring 13 on both engines (`f7_5567576_5....5.` and two
 others), as guessed.
 
+**Part C interim (09:15Z).** Driver v2 (`drive.py`, 09:12Z) runs kc -C per window: D, then the round-35 C stage
+if not D. The per-filling table is `loop/k34/fillings.txt`, and v1's D-only output is kept as `fill_kc_v1.out`.
+- The 9 fillings with a 5 at s1 or s4 die to `f7_5567576_5....5.`: the 7-wheel 5675765 with s6 = 5 and s4 = 5 (its
+  mirror has s1 = 5), ring 13, D on kc and dfast (ext 9,300, reached 66,430 of 66,430).
+- These 9 are exactly the fillings where a big neighbour of u can be R-shaped. Around w2 the link reads
+  u 7, w1 6, s1, e, e', s2 7, w3 5, which is a rotation of 5675765 only as 7655675 (s1 = 5); w4 likewise with
+  s4 = 5. The LP's binder R itself is filling (5, 5), the self-paired case. That fits L2's transfers giving nothing
+  [I].
+- The LP can't use this kill yet. sep3/sep3x patterns carry codes only at five positions, and s1, s4 sit next to no
+  five. Sent to the coordinator: a pattern type with letters at non-five s positions, then an L2 re-solve [I,
+  untested].
+- Base windows (no s1/s4, cover all 25 fillings): the 11 at ring 13-15 are not D and not C. kc -C on R's B-fixed
+  windows: ring 16 `f7_.556757_.56.77.` not C (105,151 admissible X, best leftover 1,332); ring 17
+  `f7_5567576_56.77.7` not C (200,526 admissible X, best leftover 3,424). In both, the C stage took under 3 s after
+  the closure.
+
 ## Round 33 (18 Oct 2026, 02:54Z-): H-KC, an independent D-closure engine for k19 (coordinator's job, 02:49Z)
 
 **Pre-registered 02:54Z, before any code.** Not on the paused L2 line.
