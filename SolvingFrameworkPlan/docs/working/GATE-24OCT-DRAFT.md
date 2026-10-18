@@ -36,9 +36,12 @@ argument (B2 + no separating triangle ⇒ injective, induced embedding) closes t
 | Job 29 L2: oriented big–big transfers, full registry (16,411 patterns) | 7/27 exactly [E] | upper bound by an exhaustive separation of the x=0 solution; lower bound by row generation (feascheck.py). Charge-sharing adds nothing on this pattern set |
 | Explore rounds 24–32 | (restricted-LP values were under-separated; superseded) | ~30 binding rows forbidden; all windows second-engined |
 
-What blocks K = 2 [I]: self-pairing. The binding d=7 rows fit as their own 7-neighbour, so 2-ball edge rules move
-no net charge (EXPLORE-LOG rounds 12 and 20). The rows' remaining exact windows are at ring ≥ 17. Round 18:
-where HARD28 rows complete to K = 4 defects, every completion dies at a neighbouring 7, not at u.
+What blocks K = 2 [E]: one row. The 7/27 certificate is a single receiver row R = d7 5675765/6577575, whose
+fives are of sender types 55667, 55767 and 77777. With the sender rows forcing Σy ≥ 1 − t, row R gives
+1.7(1 − t) ≤ 1 + t, so t ≥ 7/27 exactly (dual weights 10/27, 10/27, 5/27, 2/27; EXPLORE-LOG 08:50Z, 98d63411).
+So only a kill of R itself, or of one of its three sender types, can move the LP. Transfers can't move it
+either: R fits as its own 7-neighbour (self-pairing, rounds 12 and 20). R's three open standard windows (rings 16–17)
+are not D on kc; cfast on them and kc on 116 wider windows of R are running 18 Oct.
 
 ## Options for K = 2 after the gate
 
