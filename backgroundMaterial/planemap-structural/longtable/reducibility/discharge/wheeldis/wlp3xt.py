@@ -172,6 +172,13 @@ def xcol(tau):
         if tau_to(tau) == 2:  # z9 >= x[tau]
             rows.append({('x', tau): 1.0, ('z9',): -1.0}); rhs.append(0.0); rinfo.append(('z9', tau))
     return XCOL[tau]
+TKILL = next((a_[6:] for a_ in ARGS0 if a_.startswith('tkill=')), None)   # option F sender-side kills (out/job30f)
+if TKILL:
+    assert TFULL, 'tkill needs tfull'
+    sys.path.insert(0, os.path.join(HERE, 'out', 'job30f')); import tkill as TK
+    KS_, KSK_ = TK.load(TKILL if os.path.isabs(TKILL) else os.path.join(HERE, TKILL))
+    DIES = TK.make_dies(tuple(KS_), isR5, isR6); NDEL = NREFL = 0; DELROWS = []
+    print('tkill: %d configurations (2-connected interiors), %d skipped by C1: %s' % (len(KS_), len(KSK_), ' '.join(k[0] for k in KSK_)), flush=True)
 for w_ in senders:            # sender rows: -sum y[root, f] - sum tau - t <= -1, every bigness of the far vertices
     w_ = list(w_)
     E = [j for j in range(5) if max(w_[j], w_[(j + 1) % 5]) >= 7 and min(w_[j], w_[(j + 1) % 5]) == 6]
@@ -193,7 +200,14 @@ for w_ in senders:            # sender rows: -sum y[root, f] - sum tau - t <= -1
             r[('y', YI[ykey(raw, fa, fe)])] -= 1.0
             if BIG(fa): r[('tau', TI[tkey(raw, fa, fe, 'a')])] -= 1.0
             if BIG(fe): r[('tau', TI[tkey(raw, fa, fe, 'e')])] -= 1.0
+        if TKILL:
+            fl = tuple(sorted(((('t', e), z) for e, z in B.items()), key=str))
+            dd = DIES(tuple(w_), fl); w2_, fl2 = TK.reflect(tuple(w_), fl)
+            if DIES(w2_, fl2) != dd: NREFL += 1
+            if dd: NDEL += 1; DELROWS.append('%s %s' % (''.join(map(str, w_)), ' '.join('%s%d=%d' % (x[0][0], x[0][1], x[1]) for x in fl))); continue
         rows.append(dict(r)); rhs.append(-1.0); rinfo.append(('sender', ''.join(map(str, w_)) + ('/' + ''.join(map(str, bits)) if E else '')))
+if TKILL: open(os.path.join(HERE, 'out', 'job30f', 'deleted_rows.txt'), 'w').write('\n'.join(DELROWS) + '\n')
+if TKILL: print('tkill: %d sender rows deleted (every filling of the read slots contains a K); reflection self-check mismatches: %d' % (NDEL, NREFL), flush=True)
 print('sender rows: %d' % sum(1 for i_ in rinfo if i_[0] == 'sender'), flush=True)
 def recv_row(d, lk, sv, TN):
     """receiver row of an exact-d arrangement (d <= DMAXP), inflow completions TN[b] = var or -1."""

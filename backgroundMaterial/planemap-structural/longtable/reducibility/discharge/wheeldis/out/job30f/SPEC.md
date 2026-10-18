@@ -86,3 +86,26 @@
   at most |K| per row. Expected small, since K has ≤ 8 interior vertices.
 - (c) Rows whose read slot is a private of a link vertex lettered 9 cannot be split, since the private count is
   unknown. Proposal: leave them unsplit (sound, just weaker).
+
+## Opus review (loop/opus/F_spec_review, a6feb65e): sound with conditions C1–C5, as implemented (18 Oct ~12:45Z)
+Code: `out/job30f/tkill.py` and `wlp3xt.py tfull tkill=out/job30f/kills.txt`. Kill list: `out/job30f/kills.txt`, the
+cut lines of the 10 non-fitting k42 hits plus 2.3701166.
+- **C1, choice made: only configurations with a 2-connected interior.** For those, "exact degrees, induced, triangles
+  onto faces" fixes the rotation up to one global mirror. rsst062 (3.3700806, the only interior cut vertex) is
+  excluded and reported at load. Opus found its flip K' also C with the same X, so it could be added later as K and K'.
+  10 configurations are used.
+- **C2:** an interior vertex never maps onto a vertex lettered 9 (`ok()` requires the letter ≤ 8 and exact). All
+  interior degrees are ≤ 7.
+- **C3:** no cap. `dies()` splits on a wildcard slot of any partial embedding, over the full 5..9 product, until every
+  branch is decided. A row is deleted iff every filling dies.
+- **C4:** reflection self-check on every row: the word reflected, t_k → t'_{−k−1}, privates reversed, z_a ↔ z_e
+  through the slot map. Fillings that make a fully lettered link 5-wheel R5, or a 6-wheel R6 with its exact q, cannot
+  occur and count as dead.
+- **C5:** 122.1031's X has a ring–interior edge. Its admissibility rests on the registry's existing "C cons." standard
+  (inherited RSST free-completion / ring-injectivity argument), not on anything new in F.
+- Validation:
+  - Own matcher vs networkx on random fully lettered models: 30,000 checks, 0 mismatches, 160 positive embeddings.
+  - Filter on F's 19,626 sender rows: **163 deleted**, 19,463 kept; reflection self-check 0 mismatches.
+  - Each deleted row was checked by networkx on 200 random full fillings: 25,855 contain a K, 6,745 cannot occur,
+    **0 escape**.
+  - TCHECK (T bijection, 2,007 T) and TSELF (weights 5e-10, all 160 rows with inflow) pass on the filtered family.

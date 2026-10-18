@@ -83,3 +83,12 @@
 - twoeng.py now compares X as edge sets and ignores kc -C2 (broad) files (kills_cfastX_C2.kc). Loaded at run A's
   start: 3 D and 9 C.
 - Matcher test on the 5: 623 frames that the base allows, 0 mismatches.
+
+## C5 (Opus F review, 18 Oct)
+122.1031's X has a ring–interior edge (R8-I3, or R6-I2 mirrored). Its admissibility rests on the registry's existing
+"C cons." standard (the inherited RSST free-completion / ring-injectivity argument), as for every C window here. It is
+not new to F.
+
+## Hypothesis and kill line for F (before F runs)
+- H30F: t*(A+F) < t*(A+B).
+- Kill: t*(A+F) = t*(A+B), with F FEASIBLE (feascheckt in tfull + tkill mode).
