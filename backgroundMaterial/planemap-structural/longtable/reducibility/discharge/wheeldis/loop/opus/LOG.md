@@ -152,3 +152,11 @@ Pre-registered before any probe ran.
   d = 10 -0.111, d = 11 -0.667 and falling. The 10 missing d = 10 files cannot matter. 34 s on 3 threads (bitset
   pattern match, rotation symmetry break, tighter bound). Validated against the old jsep on d = 8..17 and a planted
   violation. Caveat: margins are floating point; an exact-rational recheck of the tight d = 7-9 rows is not done.
+
+## Round O3 (18:00Z-): race (Kyle, 17:51Z: a second, sealed team on the same gap; first to a verified t* <= 0 for K = 2, or the largest verified drop, wins). Never read loop/teamB/.
+
+- P: our own LP engine on jsep2 (exhaustive separation in seconds): validate 7/27 to true convergence, then run-A
+  kills, L2 transfers, rule T; every value is a converged primal passing `jcheck2 upper` plus a dual passing
+  `jcheck lower`, else a lower bound. Guess: rule T with the run-A kills lands near 0.15-0.2.
+- Q: next rule class beyond T (rule S 6-relay, RSST-style 6-receivers/senders, asymmetric big-big transfers), ranked
+  by gain per engine cost, spec ready for P's engine.
