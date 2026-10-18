@@ -14,3 +14,12 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   - With exact rational weights 1/4, 1/8, 1/8, 1/4, 1/4, every y and x term cancels. The t coefficient is −1 and the rhs
     is −1/4, so **t ≥ 1/4** (lower_s2x.log).
 - So t* = 1/4 exactly on that registry, on two engines (Opus's jsep2 and Studio's sep3xf/wlp3x).
+
+## Second engine for t* = 5/21 (P_own_lp, 9a914f8c: argsA + L2 + the k43 kill), 18 Oct ~20:05Z
+- Args diff vs Studio's 1/4 registry: only cpat k43_C.cfast (f8_...55565_...5...., the window Studio verified, 54e6a39e).
+- **Upper:** feascheck sol_s6.json (WLP3X_DEF=1, WLP_SEPF=1, exhaustive, d = 7..15 + DP): 0 violated everywhere,
+  **FEASIBLE** at t = 5/21 (feas_s6.log).
+- **Lower:** lowercheck on cert_s6.json: all 25 rows rebuilt as Studio rows (16 senders, 9 receivers, each allowed by
+  sep3xf `c`, 0 rejects). The exact combination has every y and x term cancelling, t coefficient −1, rhs −5/21, so
+  **t ≥ 5/21** (lower_s6.log).
+- So t* = 5/21 exactly on that registry, on two engines.
