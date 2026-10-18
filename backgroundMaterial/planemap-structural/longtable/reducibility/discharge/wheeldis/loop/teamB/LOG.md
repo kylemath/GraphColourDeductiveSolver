@@ -105,3 +105,21 @@ worker run, ~33 min on 2 cores).
 and Coq proves them unavoidable against RSST's 633. Our engines independently confirm all 633 reducible on two
 engines each. What remains is the programme's own bridge: whether "appears" in Gonthier's sense matches the Lean
 ConfigOcc / Job 26 semantics. Coq covers that internally for its own proof.
+
+**B3 channel spec (for Long Table's spec comparison; written 18:50Z).** Charge 6 - deg, so a 5 must get rid of
+1 - t, a 6 may end at most t above 0, and a big vertex of degree d may take at most d - 6 + t net. Every amount is an
+LP variable >= 0 and depends only on the sender's own wheel: its link word read around it, rooted at the receiver,
+identified under reflection. Four channels, all along single edges, each with a fixed direction:
+(y) 5 -> adjacent big (letter 7, 8 or 9+), keyed by the 5's link rooted at the big. This is the existing class.
+(P) parking: 5 -> adjacent 6, keyed by the 5's link rooted at the 6.
+(F) forwarding: 6 -> adjacent big, keyed by the 6's full link word (6 letters, privates included) rooted at the big.
+(H) hand-on: a vertex of exact degree 7 -> adjacent big, keyed by the 7's full link word (7 letters) rooted at the
+target. It is an oriented transfer: each ordered edge (7, big) with its key carries its own variable, so 7 -> 7
+transfers in both directions are separate variables. Nothing from degree >= 8 senders yet.
+What limits each weight: y and P are paid out of the 5's unit (5-row: sum of y + P >= 1 - t, one row per non-R
+5-wheel). P is limited by the receiving 6's row: sum of P in - sum of F out <= t, over every non-R exact 6-wheel, with
+the 6's second ring free (cyclic DP), so worst-case parking. F and incoming H are limited by the receiver's row
+(d = 7..15 exact; letter 9 for d >= 9; d >= 16 by a max-cycle-mean bound). That row is maximised over u's whole
+2-ball, i.e. link, s-ring and the privates of every 6/7 link vertex, so each neighbour's wheel is exact and is checked
+against R. An outgoing H is limited by the sender 7's own row, which is charged in - out (H out is subtracted there).
+No channel reads beyond the sender's wheel, so no rule needs distance-3 information.
