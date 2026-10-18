@@ -41,8 +41,11 @@ What blocks K = 2 [E]: one row. The 7/27 certificate is a single receiver row R 
 fives are of sender types 55667, 55767 and 77777. With the sender rows forcing Σy ≥ 1 − t, row R gives
 1.7(1 − t) ≤ 1 + t, so t ≥ 7/27 exactly (dual weights 10/27, 10/27, 5/27, 2/27; EXPLORE-LOG 08:50Z, 98d63411).
 So only a kill of R itself, or of one of its three sender types, can move the LP. Transfers can't move it
-either: R fits as its own 7-neighbour (self-pairing, rounds 12 and 20). R's three open standard windows (rings 16–17)
-are not D on kc; cfast on them and kc on 116 wider windows of R are running 18 Oct.
+either: R fits as its own 7-neighbour (self-pairing, rounds 12 and 20). R's three B-fixed windows (rings 16–17)
+are not D [E2: kc and dfast18 agree on every count]. The certificate breaks only if all 25 (s1, s4) fillings of R die:
+9 (a 5 at s1 or s4) are dead by ring-13 D on both engines, and 16 remain (loop/k34/fill.txt). A C verdict on R's ring-16/17
+windows would cover all 16. kc -C (independent, matches cfast on 163 configs: 30/30 C, 133/133 not C) and Studio's
+cfast are both running on them.
 
 ## Options for K = 2 after the gate
 
