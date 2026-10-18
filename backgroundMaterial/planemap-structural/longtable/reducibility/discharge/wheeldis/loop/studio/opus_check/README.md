@@ -103,3 +103,15 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - **Lower:** lowercheck on the 4 cert rows (senders 55757, 55767, 57667 at 1/5; receiver d=7 7765556/6575765 at 2/5,
   ALLOWED by sep3xf `c`). Exact: t coefficient −1, rhs −1/5, 0 negative terms, so **t ≥ 1/5** (lower_s13.log).
 - So t* = 1/5 on that registry, on two engines.
+
+## Second engine for t* = 1/5 on 42c4c876 + job28 r_5..r_8 (P_own_lp s14, 8592bb50), ~22:15Z
+- **Args:** argsA47 + rpatD, with Opus's paths mapped to ours, equals argsA44_local.txt with out/job30 k3x at
+  42c4c876. All 11 files they ship (k3x_D/C_42c4c876, k42map_C_cons, job28 r_5..r_8 .out/.cfast) are byte-identical
+  to ours. The check runs on argsA47_pinned.txt (k3x pinned to 42c4c876).
+- **Counts (dcount.py):** 15,497 distinct parsed D patterns (15,831 names, 334 duplicates), C 1,494, RPAT 158. All
+  match Opus's figures (studio_s14_dcount.txt).
+- **Upper:** feascheck 0 violated at d = 7..15 plus the DP tail: **FEASIBLE** (feas_s14.log).
+  sendercheck: 342/342 sender rows hold, max lhs −1 (send_s14.log).
+- **Lower:** lowercheck on the 3 rows: senders 56696 at 1/5 and 66669 at 3/5; receiver d=9 656566565/665656666 at 1/5,
+  ALLOWED by sep3xf `c`. Exact: t coefficient −1, rhs −1/5, 0 negative terms, so **t ≥ 1/5** (lower_s14.log).
+- So t* = 1/5 on that registry, on two engines.
