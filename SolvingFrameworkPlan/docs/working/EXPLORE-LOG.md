@@ -1,5 +1,26 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 38 (18 Oct 2026, 09:52Z-): H-W38, how far does w2's cap climb if its binding frames are killed one by one?
+
+**Pre-registered 09:52Z, before any code.** Gap G2. 1 core, beside part C.
+- **Why.** Round 37 killed link 7665575 at w2 with one ring-13 window. The cap then sits at the next frame
+  (0.1852, link 7665675). If frames keep dying cheaply, w2/w4 stop limiting Rule T or the L2 transfer.
+- **Loop.** Start from round 36's 62,140 w2 arrangements (`k36/rows_w2.txt`) minus round 37's kill. Each step:
+  1. Find the binding frame, argmin over surviving rows of (34/27 - yload)/k.
+  2. Build its windows: centre w2 + the link vertices around any nonempty subset of its link fives (as gen28's
+     variants), or the whole link, + any subset of the s-slots next to them, at the frame's letters (9+ left open).
+  3. Run kc -C in ring order up to ring 15, stopping at the first kill. D needs kc + dfast. C needs kc-C + cfast
+     `--search`.
+  4. A kill removes every surviving row that agrees with the window in the frame's own orientation. Then repeat.
+  Stop when a binding frame survives all its windows to ring 15, or after 40 minutes.
+- **Report.** The kills in order, each with its window and verdicts. The cap at stop, and R's first-order row
+  t >= (0.7 - 2 cap)/2.7. The frame that stops the loop. w4 gets the same numbers, since no window reads s0 or s5.
+- **Bars.** Cap >= 0.35 at stop: w2/w4 no longer block t* = 0 through R. Cap stuck at 0.1852: the first frame
+  already resists.
+- **Kill line.** Any kc/dfast D mismatch, or a kc-C C that cfast calls not C.
+- **Guess.** 3-6 frames die, and the loop stops near 0.25 at a frame whose binding fives sit at L3 and L6 with
+  big neighbours.
+
 ## Round 37 (18 Oct 2026, 09:47Z-): H-W37, is w2's worst frame reducible? (coordinator's go, 09:42Z)
 
 **Pre-registered 09:47Z, before any code.** Gap G2. Uses the core freed by the broad C run.
