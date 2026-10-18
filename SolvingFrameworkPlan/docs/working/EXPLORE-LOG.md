@@ -1,5 +1,26 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 46 (18 Oct 2026, 20:51Z-): H-SEND, do the two senders carrying 11/47 die to windows around them?
+
+**Pre-registered 20:51Z, before any engine run.** Gap G2. Long Table, 20:44Z: the no-T 11/47 dual (cert_s7.json, Opus
+fa4705f2, second engine Studio) rests mostly on two sender rows, 55677 (8/47) and 56687 (6/47). 3 cores.
+- **Part A (Long Table's task).** The senders' contexts in cert_s7: every receiver row of cert_s7 with a 5 at w_i whose
+  link word is 55677 or 56687. There are 14 contexts in 7 receivers (all 7 receivers except 8567655/6655656). Windows:
+  win45.py windows of those rows at ring <= 14 that contain the whole sender wheel (u, w_i-1, w_i, w_i+1, s_i-1, s_i).
+  That gives 1039 distinct windows, ring 10-14 (`loop/k46/ctx46_A.txt`, `ctx46_A.map`). Engines as round 45
+  (drive45.py, STOP=0).
+- **Hypothesis and kill line (Long Table's).** At least one sender context in cert_s7 has a two-engine D/C kill at ring
+  <= 14. Kill line: none does. **Known before running:** round 45's kill f7_..55855_..6666. (D, ring 13) holds the
+  56687 wheel at w1 of 8558655/6665666. So for 56687 the hypothesis is already met in one context. The open part is
+  how many of the 14 contexts die, and whether 55677 dies in any.
+- **Part B (added).** The sender row is one word for every context, so a kill in some contexts does not remove it. Only
+  a death in every context does. One ring of growth, as round 42: the sender's 2-ball (centre 5, its link, a ring 2 of
+  10 slots for 55677 and 12 for 56687, letters 5..9 with 9 = at least 9, fresh third ring). Count the fillings in which
+  one of round 44's 582 verified RSST configurations appears (RSST appearance, as round 42). Report the survivors.
+- **Guess.** A: 10 or more of the 14 contexts have a kill that contains the wheel. B: survivors exist for both words,
+  mainly with big ring-2 letters (as R* in round 42). If so, patterns cannot remove the sender rows, and the relay
+  rule has to carry them.
+
 ## Round 45 (18 Oct 2026, 20:17Z-): H-TOP, does the top dual row die to one of our own windows inside its 1.5-ball?
 
 **Target changed 20:22Z, still before any engine run.** Long Table (20:12Z, read 20:22Z) replaced the 9 rows: Opus's solve
