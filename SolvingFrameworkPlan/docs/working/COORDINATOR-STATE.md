@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 20:19Z: t* = 11/47 now [E2] (Studio 8f45fca8, T option B + L2 + rsstD + full k43). Job 31 first solve against no-T registry (5/21 + k43 + rsstD); Opus asked for like-for-like no-T t* as baseline; H31: t*(relay) < t*(no-T), kill = equal.
 - 18 Oct 20:13Z: Opus: T + L2 + rsstD + full k43 batch gives t* = 11/47 ≈ 0.234 [E1, bbd46d73; Studio checking]; top receiver d=7 7565765/6855555 (4/47); 8 receiver rows sent to explore as round-44 targets. Single-window+T run: 14/59.
 - 18 Oct 20:05Z: t* = 5/21 now [E2] (Studio feascheck 0 violated + lowercheck 25 rows, 68294ae5). k43 batch 382/382 pass twoeng (twoeng set 187 D / 209 C). Next registry = 5/21 + batch; round 44 RSST 633 next batch; Job 31 held.
 - 18 Oct 20:03Z: Round 43 complete (c5a71dc0): 382 two-engine kills of the old d=8 row, smallest = RSST 7322.126 (C, ring 10); registry had only rsstD. Round 44 approved: explore two-engine-checks all 633 RSST configs and emits sep3xf patterns (conservative C only); published configs passing our own twoeng are ordinary registry patterns, RSST discharge rules stay off the main line pending user decision. Job 31 held until registry settles.
