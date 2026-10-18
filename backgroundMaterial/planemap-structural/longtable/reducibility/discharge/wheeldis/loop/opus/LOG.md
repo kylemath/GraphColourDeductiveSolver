@@ -311,3 +311,8 @@ our agent R and have no output from it.
   7655666/6756666, and d = 10 6565656565/6655666666 and 6556656556/6665656665. Senders: 66669, 55667, 55767, 56669, 66667.
   Stage 14 (7 -> 7 inflow, keyed by u's whole link; new jsep4 subtracts a per-link inflow table at the leaf; the sender pays
   the max over u's 2 unseen letters) is pre-registered, and run st14q is in progress.
+- **P2 s17 (00:05Z 19 Oct): main line on d43ba26a gives t* = 1/5, with the same 3-row dual as s16** [E, our engine; lower
+  VALID; upper FEASIBLE]. Reflection check: 7665566/6665766 and 7665566/6675666 are the same arrangement (canonical
+  5566766/5666667). Rows are not stored canonically, since jsep3 breaks only rotation and psolve dedupes by coefficient key.
+  Duplicates are redundant and do not affect soundness: the lower check rebuilds rows from labels, and the upper check is
+  exhaustive.
