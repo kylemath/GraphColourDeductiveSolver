@@ -1,5 +1,25 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Check (18 Oct 2026, 09:44Z): does H7's defect D3 contain RSST #110? (coordinator, 09:22Z) Yes, and it is D on kc
+
+This is a verification check, so it was not pre-registered. It used my own containment code
+(`loop/d3/d3_rsst.py`), not `rsst_contain.py` or Opus's `rsst_in_defect.py`.
+- **Patch.** D3 = `5|55667|776675755|75576667557657`, built with b8b/rings.py `Layered` plus 4 all-6 rings.
+  - 135 vertices have an exact degree. Y is 11 fives and 10 sevens, as in README §7.1.
+  - Outer-ring vertices are never images.
+- **Containment.** An injective map of the configuration's interior, with exact degrees, onto an induced
+  subgraph, sending every interior triangle onto a patch face.
+- **#110, 0-based** (RSST `122.140`, ring 10, interior 5,5,5,5,7,7; this matches Opus's description).
+  - 2 embeddings with 1 image, vertices 1, 2, 6, 7, 16, 17. All of them are in Y.
+  - Cut out of the patch, it has a simple chordless 10-ring. **kc: D** (classes 2,461, ext 496, all reached,
+    depth 5). RSST's own count is ext 496.
+  - Opus had dfast D, so this is now D on two engines, and the RSST file agrees.
+- **#110, 1-based** (`126.36666`, ring 14, interior 5,5,6^6,7). It also occurs in D3 once, not inside Y. kc gives
+  D (ext 18,435, equal to RSST's).
+- **Reading.** D3 contains a D-reducible configuration, so it cannot sit in a minimal counterexample. The H7 floor
+  (t* >= 1/21 for rule classes (a)-(c), README §7.1) holds against R_opt only. It is R_opt-specific and says
+  nothing once #110 joins the forbidden set.
+
 ## Round 36 (18 Oct 2026, 09:28Z-): H-W2, how much Rule-T inflow can w2/w4 take under the 7/27 y? (coordinator's go, 09:22Z)
 
 **Pre-registered 09:28Z, before any code.** Gap G2. Runs on 1 core beside round 34 part C (2 cores).
