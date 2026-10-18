@@ -49,6 +49,8 @@ are not D on kc; cfast on them and kc on 116 wider windows of R are running 18 O
   in about 5 minutes, so this is cheap now. Running overnight 18 Oct (explore round 34). Claims still need dfast18.
 - **D. Defect-style search at each surviving binder** (round 18's method). It asks whether the row can occur near a
   minimal counterexample at all. Cost: per-row, capped.
+- **E. Change the rule class** (Opus team, 18 Oct): send charge through 6s, which could void R's certificate
+  without killing R. Also: RSST's 249 D configurations, already Lean-checked, remove every known K ≤ 4 defect but not R.
 - **C. Narrow.** State K = 2 as open with the evidence above. Track 1's paper becomes "K ≤ 1 closed by 2-ball
   reducibility; K = 2 obstructed by self-pairing", and the long shot moves to 3-balls.
 
