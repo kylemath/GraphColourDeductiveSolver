@@ -171,3 +171,11 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - feascheck: 0 violated at d = 7..15 plus the DP tail, **FEASIBLE**. sendercheck: 342/342 hold.
 - lowercheck: the 3 rows (senders 55667 at 2/5 and 55767 at 1/5; receiver d=7 7665566/6665766 at 2/5, ALLOWED) give
   exactly **t >= 1/5**.
+
+## Second engine for t* = 1/5 on d43ba26a + r_5..r_8 (P_own_lp s17, 99fd70df), ~00:05Z 19 Oct
+- Args: argsA50 + rpatD, with paths mapped, equals argsA44_local with k3x pinned to d43ba26a. The 10 shipped files are
+  byte-identical.
+- dcount: 15,550 distinct D (15,884 names), identical to Opus's dcount.txt file by file (0 of 229 differ).
+- feascheck: 0 violated at d = 7..15 plus the DP tail, **FEASIBLE**. sendercheck: 342/342 hold.
+- lowercheck: the 3 rows (the same dual as s16: senders 55667 2/5, 55767 1/5; receiver d=7 7665566/6665766 2/5,
+  ALLOWED) give exactly **t >= 1/5**.
