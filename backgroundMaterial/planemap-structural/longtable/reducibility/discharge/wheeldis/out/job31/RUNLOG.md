@@ -63,3 +63,5 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
   same registry); kill line equality. Then feascheck exhaustive in relay mode; t* and certificate recorded and committed
   here before any of Opus's relay work is opened.
 - Started 10-18 20:45Z on the core freed by Job 30 B.
+- 21:06Z: no-relay baseline on the same registry is t* = 2/9 [E2] (Opus s9 f1a052b4 + Studio feascheck FEASIBLE and
+  exact lowercheck, 6 rows). **H31: t*(relay) < 2/9; kill line t*(relay) = 2/9.**

@@ -63,3 +63,14 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   - 5/21 (argsA6): its only k43 file, k43_C.cfast (the 54e6a39e window f8_...55565_...5....), contains none of the
     16, and its k3x set predates the k43 batch. So 5/21 was never affected.
 - So t* = 11/47 holds with and without T on the drop44 registry, on two engines.
+
+## Second engine for the no-relay baseline t* = 2/9 (P_own_lp s9, f1a052b4) on the 30f86cd4 registry, ~21:06Z
+- **Args:** argsA44.txt + rpatD = Studio's argsK45_local.txt, except that ours also lists k43fix_kills_df/cf. Every
+  name in those two files is already in k3x_D/C (30f86cd4), so the loaded set is the same. Their k3x_*_30f86cd4 and
+  k42map_C_cons are byte-identical to ours. Loaded: patterns=16587, full=752, the same as Job 31's blind solve.
+- **Upper:** feascheck sol_s9 (WLP3X_DEF=1, WLP_SEPF=1, exhaustive sep3xf, d = 7..15 + DP): 0 violated, **FEASIBLE**
+  (feas_s9.log).
+- **Lower:** lowercheck on all 6 cert rows (senders 55667, 55767, 56668, 58778; receivers d=7 8655675/5756585 and d=8
+  75576556/78756665, both ALLOWED by sep3xf `c`). Exact combination: t coefficient −1, rhs −2/9, 0 negative terms, so
+  **t ≥ 2/9** (lower_s9.log).
+- So the no-relay t* = 2/9 on that registry, on two engines.
