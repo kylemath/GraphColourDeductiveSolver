@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 23:42Z: Reduced 6-centred relay on d43ba26a gives t* = 23/134 ≈ 0.172 [E1, Opus 833abac2]; top binder still 7665566/6675666 (dual 0.194). Studio spec-only check after RELAY_SPEC extension. Stage 14 solving.
 - 18 Oct 23:29Z: s16 main line (ab3f252b) holds at 1/5 [E1]; its binder d7 7665566/6665766 is the reflection of the relay binder (canonical 5566766/5666667, no D/C at ring <= 14). One R*-like row now holds both lines -> stage 14 is the critical path; census + ring 15-16 sweep queued at explore. s17 on d43ba26a solving.
 - 18 Oct 23:17Z: Stage 13 (7-centred) kill line met: adds nothing (s15 = 19/102). Reduced 6-centred relay on argsA47 = 21/113 ≈ 0.1858 [E1]; re-running on d43ba26a, spec update for Studio's checker. Stage 14 approved: R*-like relay row 7665566/6675666 (u receives nothing; big nbrs only w0, s2) needs inflow from 7s or ring-2 payment to w3/w4 (kill: stays tight at same t*).
 - 18 Oct 23:16Z: Relay t* = 19/102 ≈ 0.186 now [E2] (Opus 39f457ba + Studio spec-only checker 24c69bf8; readings listed in log). Best programme bound. r9b batch in k3x d43ba26a (510 D / 522 C). j31r2 iter 14, t = -0.2412 rising, frozen code 5ffbdc96.
