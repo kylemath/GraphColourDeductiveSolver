@@ -26,6 +26,16 @@ receivers d = 7 8655675/5756585 (2/9) and d = 8 75576556/78756665 (1/9), and sen
   covers them, and `ctx47.py` reads off kills that contain each wheel. A 58778 wheel alone has ring 15, so it has no
   window at ring <= 14. Its contexts need ring 15-16 windows, which run last.
 
+**Result part A (21:29Z; both rows complete at ring <= 14, 0 incomplete, 0 mismatches).** Hypothesis confirmed; guess
+right for both rows.
+- d = 7 8655675/5756585: 74 two-engine kills (37 D, 37 C), 71 f-names, first at ring 11. The 4 minimal are all C:
+  f7_..55675_....5.. (ring 11), f7_..55685_....55. (12), f7_...5675_....58. (14) and f7_..56758_...5... (14).
+- d = 8 75576556/78756665: 21 kills (15 D, 6 C), 11 f-names, first at ring 13. The 3 minimal f-names are
+  f8_...55675_...665.. (C, ring 13), f8_..576556_...5.66. (D, 14) and f8_55675576_..5...5. (D, 14).
+- Senders (`ctx47.py`): 55767 at w2 dies to a wheel window at ring 13 (D), 55667 at w3 at ring 11 (D), and 56668 at
+  w5 and w6 at ring 13 (C). 58778 has no wheel window at ring <= 14 (its wheel alone has ring 15).
+- Twoeng-ready: `loop/k47/r7a_kills*.txt` and `r8a_kills*` (twoeng scratch run on loop/k47/*: D 43, C 39, X mismatch 0).
+
 ## Round 46 (18 Oct 2026, 20:51Z-): H-SEND, do the two senders carrying 11/47 die to windows around them?
 
 **Pre-registered 20:51Z, before any engine run.** Gap G2. Long Table, 20:44Z: the no-T 11/47 dual (cert_s7.json, Opus
