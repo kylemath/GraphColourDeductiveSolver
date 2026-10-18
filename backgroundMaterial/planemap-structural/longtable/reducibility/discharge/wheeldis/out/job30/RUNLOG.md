@@ -141,3 +141,8 @@ not new to F.
   mismatch). Drop44 guard 0 flagged. The 11 minimal names are all in, all C. Matcher (17 names: the 11 minimal plus a
   sample): 1,670 frames, 0 mismatches. dcount on argsA44_local (k3x at this commit, plus r_5..r_8): **15,527** distinct
   parsed D patterns (15,861 names), which is 15,497 + 30.
+- ~23:12Z: explore 1287f92d (loop/k47/r9b_kills*: kills of the d=9 relay row 656565665/665666566). The 5 files were
+  fetched by path, byte-identical; r7d is empty and skipped. r9b alone: 28 D / 45 C, as explore's run. Default glob:
+  **510 D / 522 C**: +23 D, +19 C. 5 D and 26 C were already in the set from earlier batches, as were 8 of the 11
+  minimal names. 0 lost, 0 one-engine, 0 X mismatch. Drop44 guard 0. Matcher (8 names: the 3 new minimal plus a
+  sample): 797 frames, 0 mismatches. dcount (argsA44_local): **15,550** distinct parsed D (15,884 names), +23.
