@@ -85,3 +85,23 @@ programme owns. Runs beside B2.
 (commits bc3e3470, a3b52bb7, loop/studio/rsst_rules/). Its result matches `nonzero.txt` exactly: 24,375 cases, an
 empty set difference in both directions, and 0 charge mismatches. Erratum to my 18:30Z note to the coordinator: I
 called case 66565565 +1, but it has p4b = 6, so it scores 0 and is not in `nonzero.txt`.
+
+**Round B2 result (19:35Z): all 633 RSST configurations confirmed on two of our engines** (`b2_rsst633/results.tsv`,
+worker run, ~33 min on 2 cores).
+- Validation first: both engines reproduce studio15's recorded numbers for 2.126 and 122.126 exactly.
+- D (249/249): kc D and cfast's D closure both give D; kc ext = cfast ext = RSST's header count on all 249.
+- C (384/384): with RSST's own contract X, cfast `--fixed` leftover 0 (all X Gonthier-admissible) and kc `-x` leftover
+  0 (307 conservative, 77 under -C2: two ring vertices in one X component). On every one, classes, ext and reached
+  agree between the engines, and the unreached count equals RSST's header.
+- Kill line not hit: 0 mismatches, 0 unconfirmed. Guess right ("all confirm, a few need -C2").
+- With Lean `agreesRSST` (one engine, all 633 D / not-D) this is three engines for D and two for C.
+
+**Coq check of unavoidability (b2_coq/).** Gonthier's fourcolor v1.3.1 built from source in this container (Coq 8.18,
+119 files, exit 0, ~23 min on 2 cores). `Print Assumptions` gives "Closed under the global context" for both
+`unavoidability : reducibility -> forall G, ~ minimal_counter_example G` (RSST's 32 rules + 633 configurations) and
+`four_color`. [L, Coq]
+
+**Reading [E2 + Coq].** The published route is complete as far as this programme's checks go. The rules are RSST's 32,
+and Coq proves them unavoidable against RSST's 633. Our engines independently confirm all 633 reducible on two
+engines each. What remains is the programme's own bridge: whether "appears" in Gonthier's sense matches the Lean
+ConfigOcc / Job 26 semantics. Coq covers that internally for its own proof.
