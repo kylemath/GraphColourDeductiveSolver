@@ -1,5 +1,26 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 43 (18 Oct 2026, 19:35Z-): H-D8, is the new 1/4 binder (d = 8 85556565/65866655) reducible inside its patch or one ring out? (Long Table, 19:33Z)
+
+**Pre-registered 19:35Z, before any run.** Gap G2. Top priority, ahead of part C's R* queue (its driver died with the
+container, at 37 of 106 ring-17 windows). 3 cores.
+- **Why.** The K = 2 bound is t* = 1/4 [E2] (Studio d64c8442, Opus b5e6763d). Certificate: 1/4 receiver d = 8 u,
+  link w0..w7 = 85556565, s 65866655 (s_i between w_i and w_i+1), plus senders 55688 (w1, w7), 66668 (w5), 55858
+  (w2), 58668 (w3). Every letter of u's row is exact and every s-slot touches a five, so any window inside the patch
+  kills the whole row. No RSST-D pattern forbids it (Opus).
+- **Part A (inside the patch).** Every connected induced subset of the 17 fixed vertices (u, w0-w7, s0-s7) at exact
+  degrees, the rest free ring (`loop/k43/win43.py`). That gives 2,229 windows with a simple ring <= 17: ring 6-14:
+  1,671, 15: 393, 16: 135, 17: 30. Run kc -C (D, then conservative C) in ring order, fives-heavy first within a
+  ring, on 3 cores. A kc D needs dfast/dfast18 too, and a kc C needs cfast `--fixed` with kc's X (leftover 0). The
+  round stops at the first two-engine kill.
+- **Part B (one ring out).** The privates of the non-5 link vertices: three at w0 (8), one at w4 (6), one at w6 (6),
+  each 5..9+, so 3,125 cases. Run round 42's containment (RSST 633 + explore's twoeng kills), then windows with the
+  surviving privates as interior for the five-heavy survivors.
+- **Bars.** A two-engine kill in A forbids the row [E2], and the LP must be re-solved. B kills the row only if every
+  private case dies. Long Table's kill line: no D and no conservative C to ring 16 on the patch plus one ring.
+- **Guess.** No kill in A. Opus found no RSST-D containment, and the 8 at w0 next to two fives (w1, w7) gives large
+  rings. B: private fives at w0 die often (an 8 between fives), but the all-big privates survive, as at R*.
+
 ## Round 42 (18 Oct 2026, 11:33Z-): H-DEF, does every R* filling die within one ring of growth? (Long Table's target, 11:29Z)
 
 **Pre-registered 11:33Z, before any run.** Gap G2. Option D, round 18's defect-style method, on R*'s 16 open fillings.
