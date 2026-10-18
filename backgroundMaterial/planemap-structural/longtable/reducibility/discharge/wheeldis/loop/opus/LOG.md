@@ -160,3 +160,14 @@ Pre-registered before any probe ran.
   `jcheck lower`, else a lower bound. Guess: rule T with the run-A kills lands near 0.15-0.2.
 - Q: next rule class beyond T (rule S 6-relay, RSST-style 6-receivers/senders, asymmetric big-big transfers), ranked
   by gain per engine cost, spec ready for P's engine.
+- **Q (19:15Z): next rule class spec** (`Q_rule_class/FINDINGS.md`): S-lite (rule T + fan route O, no engine cost)
+  first, then P6 (link 6 privates as state). With round 42's letters, w2 can absorb T up to 0.796 at R*(6,6), so T
+  alone leaves R*'s row with no floor; the new route targets (s1, p1, p5) are 7/27-tight at d = 7, so beyond T the
+  gain at R* is second order. New self-pair found at s1 = 7 for route O.
+- **P interim (19:20Z): with run-A's kills and L2 transfers, our own engine converges to t* = 1/4 exactly** [E, one
+  engine family]. Stage 1 (round-13 args, x = 0) reproduces 7/27 in 33 iterations, 5.3 min. Stage 2 (run-A kills +
+  ring-16 kills + round-42 conservative windows), x = 0: 7/27. With L2 (xcap 3): **t* = 1/4**, dual certificate
+  1/4 55688 + 1/4 66668 + 1/8 55858 + 1/8 58668 + 1/4 receiver d = 8 85556565/65866655 (J lower VALID), primal
+  feasible at d = 7..30 + Karp (J upper). Binder moved from d = 7 to d = 8. Caveat: the solver and the checker share
+  jsep2, so a second engine (Studio's feascheck/sep3x) is needed before this counts. Also fixed a ykey/tkey
+  palindrome-swap bug in J's keys (pcheck.py); counts now 1,356 Y + 444 T, equal to Studio's.

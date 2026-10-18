@@ -1,0 +1,13 @@
+patterns: 275 files read, 10 missing ['out/job28/r_5.out', 'out/job28/r_6.out', 'out/job28/r_7.out', 'out/job28/r_8.out', 'out/job28/r_3.cfast', 'out/job28/r_4.cfast', 'out/job28/r_5.cfast', 'out/job28/r_6.cfast', 'out/job28/r_7.cfast', 'out/job28/r_8.cfast']; distinct by d {7: 9320, 8: 3904, 9: 1100, 10: 1003, 11: 336, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15035, 'C': 1037}
+solution /tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/lpu/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/lp_upper/round13_7_27_sol.json: t = 0.259259259259, 690 y (0 not a variable here), 0 x, rule T False (0 Y, 0 T)
+p1 (H/S target) at (6,6)       d=7 max load 1.259259  cap = 0.000000  at link 5666558 s 7576568
+p1 frame, no extras            d=7 max load 1.259259  cap = 0.000000  at link 5666585 s 5575669
+p5 (T from s5-root) (6,6)      d=7 max load 1.259259  cap = 0.000000  at link 5667575 s 6755585
+p1 (H/S target) at (6,6)       d=8 max load 1.964120  cap = 0.295139  at link 56665765 s 65775565
+p1 frame, no extras            d=8 max load 1.964120  cap = 0.295139  at link 56665765 s 65775565
+p5 (T from s5-root) (6,6)      d=8 max load 2.157407  cap = 0.101852  at link 56675655 s 67556886
+w2 (T target) p1=7             d=7 max load 0.462963  cap = 0.796296  at link 7667575 s 5755577
+w2 (T target) p1=8             d=7 max load 0.462963  cap = 0.796296  at link 7667575 s 5855577
+w2 (T target) p1=9             d=7 max load 0.462963  cap = 0.796296  at link 7667575 s 5955577
+s1 (S-opp target) s1=7         d=7 max load 1.259259  cap = 0.000000  at link 5675955 s 6755697
+s1 (S-opp target) s1=8         d=8 max load 2.259259  cap = 0.000000  at link 56758565 s 67556765
