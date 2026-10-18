@@ -24,3 +24,21 @@ Pre-registered before any probe ran.
 | B, RSST forbids LP rows | How many free tight rows (7/27 binders, HARD28-like 49) are forbidden by an RSST configuration inside the row's fixed patch? | Few: a d = 7 row fixes little beyond u's link and second ring, and most RSST configurations need exact degrees further out | Many: rerun the LP with RSST patterns (lower bound plus a feasibility upper bound) |
 | C, kc at ring 17-20 | Do the binders' untested windows at ring 17-20 turn D now that kc makes ring 18-19 a matter of minutes? | A minority (10-20%) turn D; ring 17 was 0 of 6 | A binder dies: the ring <= 16 supply limit in GATE-K2 §3-4 no longer binds |
 | D, RSST rules vs the LP's rule class | Do RSST's 32 rules lie in a rule class the LP optimises over? If so, R + RSST makes the LP feasible by RSST's theorem | Mostly yes (class (a), sender 2-ball), with gaps at ">= d" degree letters and RSST's degree >= 12 hand argument | Yes with small gaps: the link is concrete and costable |
+
+### O1 results so far
+
+- **D (09:00Z): RSST's rules sit outside every LP rule class** (`D_rsst_rules/FINDINGS.md`) [cited, from Gonthier's
+  fourcolor `theories/proof/discharge.v:73-140`]. The 32 rules are 38 parts, each moving 1/10 LP unit from a sender of
+  degree 5..8 to a receiver >= 6, reading the sender's 2-ball over {5,6,7,8,9+}. Only rule 2 fits (a)/(c) whole; 6-senders,
+  6-receivers and 7->8+ transfers fit nowhere. So RSST's theorem does not make the present LP feasible once RSST's
+  configurations are added. The guaranteed hybrid is Gonthier's proof re-encoded; mixing "own rules for K <= 1, RSST's
+  for the rest" voids both certificates (RSST's 5s pay their 6s). Gonthier's discharging covers degree >= 12 by a
+  computed cap, not by hand. Guess check: "mostly class (a)" was wrong.
+- **A (09:05Z): every H7 defect contains RSST configurations, D-reducible ones among them** (`A_rsst_defects/FINDINGS.md`)
+  [E]. D1 25 hits (11 D), D2 21 (6 D), D3 15 (7 D; #110 at ring 10, four 5s and two 7s, wholly inside the cluster), E1 20
+  (11 D), E2 21 (11 D). All 50 D hits re-extracted and D by dfast; all 59 C hits are cfast C-candidates (|X| <= 4).
+  453 of 453 sampled K = 3 / K = 4 defect candidates contain an RSST D configuration (rings 8-11). Controls: icosahedron
+  hits only the diamond; pure 6-sea none. Reading [I]: H7's "no local rule closes against R_opt" is a fact about R_opt's
+  shape (wheels and u-centred configurations), not about reducibility. Adding RSST's 249 D configurations (already
+  Lean-checked in `dcheck/`) to R removes every known defect. It does not by itself close the LP: the rules must see
+  these configurations within radius 2 of a 5. Guess check: right.
