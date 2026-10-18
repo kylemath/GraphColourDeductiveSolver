@@ -1,5 +1,32 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 35 (18 Oct 2026, 08:54Z-): H-KCC, a C-reducibility mode for kc, then C on R's windows
+
+**Pre-registered 08:54Z, before any code.** Gap G2. Runs while round 34 part C uses the cores.
+- **Why.** The 7/27 certificate rests on R alone (round 34 amendment), and R has no D window among its B-fixed ones.
+  C is the other route. cfast (single engine) has timed out at ring 16 on binder windows. A second C engine is also
+  what the charter needs before any C kill counts.
+- **Definition (my own derivation, no cfast/dfast/Lean source read).** X is a set of 1-4 free-completion edges,
+  each with at least one interior end. It is admissible (conservative) if every component of the graph (V, X)
+  holds at most one ring vertex and no free-completion edge outside X joins two vertices of one component. Then
+  G/X is loopless and smaller, so it is 4-coloured by minimality. Its colouring gives a proper ring colouring
+  that extends to K/X: an interior colouring with each component one colour and every other edge proper. K is C
+  if no ring class left unreached by the D-closure extends to K/X. Admissible sets with two ring vertices in a
+  component (RSST's triad cases) are left out, so this can only miss C verdicts, never add one.
+- **Engine.** kc `-C`: after the closure, enumerate admissible X by size and test unreached classes in a fixed
+  shuffled order, with early exit at the first one that extends. Report C with the first working X, or not-C
+  with the smallest leftover found. `-x FILE` evaluates given X exactly (full leftover count).
+- **Validation.** cfast outputs with verdicts: `job27/k2a.cfast` (82 configurations, 11 C) and
+  `out/job28/r_12.cfast` (77, 15 C), plus `out/def_r1.cfast` (74, 4 C). (a) For cfast's best or working X,
+  whenever my admissibility accepts it, my exact leftover equals cfast's. (b) Every kc C is cfast C. (c) Report
+  how many cfast C my conservative set misses.
+- **Kill line.** A leftover mismatch, or a kc C that cfast calls not C, which survives a recheck: kc-C is not
+  trusted and nothing is run on R.
+- **Then.** kc-C on R's ring 16-17 B-fixed windows and on any round-34 part C window that is not D. Bar: any C on
+  kc-C (with cfast to follow at Studio) breaks the 7/27 certificate.
+- **Guess.** Validation passes after one fix. Leftover counts match. kc-C misses 10-25% of cfast's C (the triad
+  cases). R: 0 or 1 C among its 3 B-fixed windows at ring 16-17.
+
 ## Round 34 (18 Oct 2026, 08:43Z-): H-K34, do the 7/27 binder's last windows, or the other tight d = 7 rows' untested windows, hold a D? (coordinator's overnight plan, 08:40Z)
 
 **Pre-registered 08:43Z, before any run.** Gap G2 (K = 2 LP at t* = 7/27).
