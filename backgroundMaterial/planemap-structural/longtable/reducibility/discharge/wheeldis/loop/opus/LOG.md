@@ -190,3 +190,12 @@ Pre-registered before any probe ran.
 - **Two-engine (19:32Z, via coordinator): Studio reported at 18:48Z that t* = 1/4 exactly on its own LP engine as well
   as ours, and stopped run A as redundant.** So K = 2 is at 1/4 [E2]. Next: R (reducible kill of the d = 8 binder) and
   P stage 5 (exact letters, small-hat route); Studio's Job 31 (6-relay) is queued, complementary.
+
+## Round O4 (pre-registered 19:35Z): exact letters at the d = 8 binder
+Studio verdict (d64c8442, loop/studio/opus_check/README.md): sol_s2x passes both sides on Studio's engine, so
+t* = 1/4 is [E2]. Long Table has given the reducible kill of 85556565/65866655 to the exploration loop, so we stopped
+our agent R and have no output from it.
+- **Hypothesis:** exact letters for the hat, fan and z letters (5, 6, 7, 8, 9+ in place of small/big) in rule T
+  (+ L2, + S-lite if cheap) let the five 66668 next to the 8 pay a big vertex other than u, and drop t* below 1/4.
+- **Kill line:** if exact-letter T + L2 on the run-A registry + RSST-D converges to 1/4 (lower VALID), exact
+  letters are dead for this binder. Next would be a 6-decided relay (Studio's Job 31 class), not refining further.
