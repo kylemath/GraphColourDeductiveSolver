@@ -10,3 +10,12 @@ Target: the 7/27 certificate (receiver d=7 5675765/6577575; senders 55667, 55767
 | r16_1..3 | f7_5567576_56.76.7, f7_5567567_56.77.6, f7_.557657_.56.77. (2 h TIMEOUT on 17 Oct) | 6 h | the search finishes, and at least one is C | cap hit -> undecided, stop |
 
 Any C needs a C-capable second check before it counts. After any C that touches the certificate: re-solve wlp3 notx.
+
+## Row R (added ~08:55Z, after explore 8a9d0be1)
+| Run | Window | Cap | Hypothesis | Kill line |
+|---|---|---|---|---|
+| R16 | f7_.556757_.56.77. (ring 16; kc and explore dfast: not D, reached 352,695 of 1,793,614) | 6 h | C-reducible, which kills R (the only receiver row of the 7/27 certificate) | cap hit or `neither` -> undecided / not C, stop |
+| R17a | f7_.556757_.57.77. (ring 17, kc not D) | 8 h | C-reducible, which kills R | same |
+| R17b | f7_5567576_56.77.7 (ring 17, kc not D) | 8 h | C-reducible, which kills R | same |
+Inputs: rowR.txt, built by gen28 `variants`/`make` from d=7 link 5675765 s 6577575. Any C goes to a C-capable second
+check at once.

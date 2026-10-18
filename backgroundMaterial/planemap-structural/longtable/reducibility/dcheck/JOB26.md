@@ -296,3 +296,43 @@ embeds injectively and as an induced subgraph. Only the third ring (the configur
     - Finish with `RingFace.toNC.toTNC` and `TNC.pinch`.
 - **Left for Job 26:** several pinches or higher multiplicity (induction, or a general k-pinch version), and (iii), the
   extraction of a `PinchWalk` from an appearing 2-ball, i.e. the ConfigOcc variant with a face walk.
+
+## Several pinches: pre-registration (18 Oct, ~09:00Z, before any Lean)
+- **Statement.** `FaceWalk G r ρ`: per, adj, step (each walk dart's `faceNext` is the next walk dart), and **dart
+  injectivity** within a period (`D s = D t`, `s, t < r` → `s = t`; Gonthier's "distinct darts"). No vertex injectivity.
+  Target: `FaceWalk.ringTNC : FaceWalk G r ρ → (∀ t, ρ t ≠ h) → RingTNC G r ρ h`, hence `kempeMatching`.
+- **Proof plan.** Strong induction on r.
+  - r ≤ 3: `tnc` is vacuous (it needs i < j < k < l < r).
+  - Vertex-injective on [0, r): it is a `RingFace` (`toNC.toTNC`).
+  - Otherwise pick a repeat ρ i = ρ j (i < j < i + r) with j − i minimal, and rotate so that i = 0 (lemma:
+    `RingTNC` is invariant under rotation, since the conclusion follows by transitivity through the shared k).
+    - The inner arc [0, m], m = j − i, has no repeats, so it is a simple closed walk: a fold if m = 2, a cycle if m ≥ 3
+      (m = 1 is impossible since adj is irreflexive).
+    - **Cross condition**, i.e. arc-interior vertices never reappear outside the arc. This follows from K1: a later
+      visit's dart lies on the same face, so it sees the near potential. Hence it is the arc dart, and dart
+      injectivity applies.
+  - Generalise `PinchWalk`/`FoldWalk` so that the B side is only a `FaceWalk` of the side map `GB`. That means u may
+    reappear in B, and B may repeat. `ringFaceB` splits into its `step` part (unchanged proof) and dart injectivity
+    (darts lift injectively). The IH gives `RingTNC GB`. A is a `RingFace` as now, and `RingTNC.of_pinch` combines them.
+- **H26m.** This goes through, reusing K1–K4 and the side-map machinery unchanged except for the injectivity uses
+  (DCheckPinchGeom lines 241, 398, 445, 608, 693 and FoldWalk.inj).
+- **Kill.** If the induction needs a fact about faces of G not in the repo, such as "a face's darts form one
+  `faceNext` orbit of length r" in a form we cannot derive from `step` + dart injectivity, stop and report it. The
+  20 Nov route-B kill still stands.
+- **Done (18 Oct, ~09:20Z): `FaceWalk.ringTNC` / `FaceWalk.kempeMatching` (DCheckPinchGeom.lean). H26m survives.**
+  Any face walk with distinct darts (`FaceWalk`: per, adj, step, dinj; vertices may repeat any number of times) is
+  θ-non-crossing, so KempeMatching holds for its realised codes.
+  - `PinchWalk` and `FoldWalk` are generalised. Only the arc [0, m) need be injective (`injA`); the rest may repeat,
+    `u` included, plus `dinj`. `ringFaceB` becomes `walkB`, which makes the far side a `FaceWalk` of the side map.
+    `ringTNC` takes the far side's `RingTNC` as a hypothesis (`IH`).
+  - The cross condition (arc-interior vertices never reappear) comes from K1 plus `dinj`, inside `not_sa_B`.
+  - `FaceWalk.rot` and `RingTNC.of_rot` (rotation invariance; four cyclic cases, each closed by transitivity
+    through the two chains). `pendant_of_fold`.
+  - Induction (`Nat.strong_induction_on`): if r ≤ 3 the claim is vacuous. Otherwise take the minimal cyclic gap d of a
+    repeat (`Nat.find`). If d ≥ r it is a `RingFace`; d = 1 is impossible; d = 2 is a fold (`injx` from the pendant
+    plus `dinj`); d ≥ 3 is a pinch (d + 3 ≤ r, since a far side of 1 is a self-loop and of 2 a closer repeat).
+  - Axioms: propext, Classical.choice, Quot.sound (`ringTNC`); `kempeMatching` adds R1's check4..9. No sorry.
+  - Sabotage check: dropping `dinj` from `FaceWalk` gives 8 errors.
+- **Left for Job 26:** (iii) only, i.e. extracting a `FaceWalk` (the third ring as a face walk of the outside map, with
+  distinct darts) from an appearing 2-ball, and feeding `FaceWalk.kempeMatching` into the `ConfigOcc` /
+  `colorable_of_occ_dred` route.

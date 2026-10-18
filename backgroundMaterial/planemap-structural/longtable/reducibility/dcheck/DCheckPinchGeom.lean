@@ -192,8 +192,17 @@ theorem first_arrival (d e : T.Dart) (he : d.fst = e.fst) :
   have hex : ∃ k, (⇑T.rotation.next)^[k] d = e := T.rotation.cyclic d e he
   refine ⟨Nat.find hex, Nat.find_spec hex, fun j hj h => Nat.find_min hex hj h⟩
 
-/-- **The pinched face walk.** `ρ` is a face walk of `G` (period `r`) that visits `ρ 0` again exactly at
-position `m`. -/
+/-- **A face walk**: `faceNext` steps along `ρ` (period `r`), and its darts are distinct within a period.
+Vertices may repeat. -/
+structure FaceWalk (G : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) : Prop where
+  pos : 0 < r
+  per : ∀ t, ρ (t + r) = ρ t
+  adj : ∀ t, G.Adj (ρ t) (ρ (t + 1))
+  step : ∀ t, G.rotation.faceNext ⟨(ρ t, ρ (t + 1)), adj t⟩ = ⟨(ρ (t + 1), ρ (t + 2)), adj (t + 1)⟩
+  dinj : ∀ s t, s < r → t < r → ρ s = ρ t → ρ (s + 1) = ρ (t + 1) → s = t
+
+/-- **The pinched face walk.** `ρ` is a face walk of `G` (period `r`, distinct darts) whose arc `ρ 0 … ρ (m-1)` is
+injective and closes up at `ρ m = ρ 0`. The rest of the walk may repeat vertices, `ρ 0` included. -/
 structure PinchWalk (G : SphericalMap n) (r m : ℕ) (ρ : ℕ → Fin n) : Prop where
   three : 3 ≤ m
   threeB : m + 3 ≤ r
@@ -201,7 +210,8 @@ structure PinchWalk (G : SphericalMap n) (r m : ℕ) (ρ : ℕ → Fin n) : Prop
   adj : ∀ t, G.Adj (ρ t) (ρ (t + 1))
   step : ∀ t, G.rotation.faceNext ⟨(ρ t, ρ (t + 1)), adj t⟩ = ⟨(ρ (t + 1), ρ (t + 2)), adj (t + 1)⟩
   pin : ρ m = ρ 0
-  inj : ∀ s t, s < r → t < r → ρ s = ρ t → s = t ∨ (s = 0 ∧ t = m) ∨ (s = m ∧ t = 0)
+  injA : ∀ s t, s < m → t < m → ρ s = ρ t → s = t
+  dinj : ∀ s t, s < r → t < r → ρ s = ρ t → ρ (s + 1) = ρ (t + 1) → s = t
 
 variable {G : SphericalMap n} {m : ℕ}
 
@@ -237,11 +247,7 @@ theorem PinchWalk.cycA (P : PinchWalk G r m ρ) : Cyc G m (arcA m ρ) := by
       rw [h1, h2, ← P.pin]
       have := P.adj (m - 1); rwa [show m - 1 + 1 = m by omega] at this
   · simp only [arcA, Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at h
-    have := P.threeB
-    rcases P.inj s t (by omega) (by omega) h with h | ⟨-, h⟩ | ⟨h, -⟩
-    · exact h
-    · omega
-    · omega
+    exact P.injA s t hs ht h
 
 theorem arcA_lt {t : ℕ} (ht : t < m) : arcA m ρ t = ρ t := by simp [arcA, Nat.mod_eq_of_lt ht]
 
@@ -392,10 +398,18 @@ theorem PinchWalk.sa_edge {x y : Fin n} (hxs : P.SA c x) (hxu : x ≠ ρ 0) (e :
 
 include hc in
 /-- **K3.** The B-arc vertices are on the near side, so not on side A. -/
-theorem PinchWalk.not_sa_B {t : ℕ} (hmt : m < t) (htr : t < r) : ¬ P.SA c (ρ t) := by
+theorem PinchWalk.not_sa_B {t : ℕ} (hmt : m < t) (htr : t < r) (hu : ρ t ≠ ρ 0) : ¬ P.SA c (ρ t) := by
   rintro (h | h)
   · obtain ⟨s, hs, e⟩ := onCyc_arcA_iff.1 h
-    rcases P.inj s t (by have := P.threeB; omega) htr e with h | ⟨-, h⟩ | ⟨-, h⟩ <;> omega
+    rcases Nat.eq_zero_or_pos s with h0 | h0
+    · subst h0; exact hu e.symm
+    · -- an arc vertex visited again: that walk dart sees the near potential, so it is the arc dart (K1)
+      by_cases hd : P.D t = P.D s
+      · have h2 : ρ (t + 1) = ρ (s + 1) := congrArg (fun z : G.Dart => z.snd) hd
+        have := P.dinj t s htr (by omega) e.symm h2; omega
+      · have hk := P.k1 hc h0 hs (P.D t) e.symm hd
+        rw [P.face_D t] at hk
+        generalize c (G.faceOf (P.D 0)) = a at hk; revert a hk; decide
   · apply onSide_excl h (P.D t) rfl
     rw [P.face_D]
     generalize c (G.faceOf (P.D 0)) = a; revert a; decide
@@ -439,10 +453,10 @@ theorem PinchWalk.bU_snd (P : PinchWalk G r m ρ) : P.bU.snd = ρ (m - 1) := rfl
 theorem PinchWalk.next_bU (P : PinchWalk G r m ρ) : G.rotation.next P.bU = P.D m := by
   have := P.next_D (m - 1); rw [show m - 1 + 1 = m by have := P.three; omega] at this; exact this
 
-theorem PinchWalk.ne_zero_ring (P : PinchWalk G r m ρ) {t : ℕ} (ht0 : 0 < t) (htr : t < r) (htm : t ≠ m) :
+theorem PinchWalk.ne_zero_ring (P : PinchWalk G r m ρ) {t : ℕ} (ht0 : 0 < t) (htm : t < m) :
     ρ t ≠ ρ 0 := by
   intro e
-  rcases P.inj t 0 htr (by omega) e with h | ⟨h, -⟩ | ⟨h, -⟩ <;> omega
+  have := P.injA t 0 htm (by have := P.three; omega) e; omega
 
 /-- Darts at `u` other than the two arc darts carry indicator `0`. -/
 theorem PinchWalk.cycInd_u_off (P : PinchWalk G r m ρ) (x : G.Dart) (hx : x.fst = ρ 0)
@@ -517,7 +531,7 @@ theorem PinchWalk.notSA_of_near (x : G.Dart) (hx : x.fst = ρ 0) (hxb : x ≠ P.
       · apply hxb
         have hf : x.fst = ρ (t + 1) := congrArg (fun z : G.Dart => z.snd) hxs
         have htm : t + 1 = m := by
-          by_contra hne; exact P.ne_zero_ring (by omega) (by omega) hne (hf.symm.trans hx)
+          by_contra hne; exact P.ne_zero_ring (t := t + 1) (by omega) (by omega) (hf.symm.trans hx)
         apply Dart.ext; apply Prod.ext
         · rw [hx, P.bU_fst]
         · rw [P.bU_snd, ← e, show t = m - 1 by omega]
@@ -605,7 +619,7 @@ theorem PinchWalk.ringFaceA : RingFace N m (arcA m ρ) := by
       rcases Nat.eq_zero_or_pos ka with h | h
       · exfalso; subst h
         have : ρ (m - 1) = ρ 1 := (congrArg (fun z : G.Dart => z.snd) hka : _)
-        rcases P.inj (m - 1) 1 (by omega) (by omega) this with h | ⟨h, -⟩ | ⟨h, -⟩ <;> omega
+        have h' := P.injA (m - 1) 1 (by omega) (by omega) this; omega
       · exact h
     refine runTo_eq_first hrun heH hka0 hka (fun j hj0 hjk => ?_) ?_
     · rintro ⟨-, -, hsnd⟩
@@ -662,12 +676,14 @@ theorem PinchWalk.sb_ring {t : ℕ} (h1 : m ≤ t) (h2 : t ≤ r) : P.SB c (ρ t
   · subst h; exact Or.inr P.pin
   · rcases Nat.eq_or_lt_of_le h2 with h' | h'
     · subst h'; exact Or.inr P.ring_r
-    · exact Or.inl (P.not_sa_B hc h h')
+    · by_cases hu : ρ t = ρ 0
+      · exact Or.inr hu
+      · exact Or.inl (P.not_sa_B hc h h' hu)
 
 include hN spec
 
-/-- **Side B's map has the B-arc as a ring face.** -/
-theorem PinchWalk.ringFaceB : RingFace N (r - m) (arcB r m ρ) := by
+/-- **Side B's map has the B-arc as a face walk** (a ring face when the B-arc is injective). -/
+theorem PinchWalk.walkB : FaceWalk N (r - m) (arcB r m ρ) := by
   classical
   have hm := P.three; have hr := P.threeB
   have hrB3 : 3 ≤ (r - m) := by omega
@@ -687,10 +703,16 @@ theorem PinchWalk.ringFaceB : RingFace N (r - m) (arcB r m ρ) := by
     show N.graph.Adj _ _
     rw [hN]; exact ⟨hGadj t, Bsb t, Bsb (t + 1)⟩
   let DN : ℕ → N.Dart := fun t => ⟨(arcB r m ρ t, arcB r m ρ (t + 1)), hNadj t⟩
-  refine ⟨by omega, fun t => by simp [arcB], hNadj, fun t => ?_, fun s t hs ht e => ?_⟩
+  have hB1 : ∀ s, s < r - m → arcB r m ρ (s + 1) = ρ (m + s + 1) := fun s hs => by
+    simp only [arcB]
+    rcases Nat.lt_or_ge (s + 1) (r - m) with h | h
+    · rw [Nat.mod_eq_of_lt h, Nat.add_assoc]
+    · rw [show s + 1 = r - m by omega, Nat.mod_self, Nat.add_zero, show m + s + 1 = r by omega, P.pin, P.ring_r]
+  refine ⟨by omega, fun t => by simp [arcB], hNadj, fun t => ?_, fun s t hs ht e1 e2 => ?_⟩
   rotate_left
-  · simp only [arcB, Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at e
-    rcases P.inj (m + s) (m + t) (by omega) (by omega) e with h | ⟨h, -⟩ | ⟨-, h⟩ <;> omega
+  · rw [hB1 s hs, hB1 t ht] at e2
+    simp only [arcB, Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at e1
+    have := P.dinj (m + s) (m + t) (by omega) (by omega) e1 e2; omega
   change N.rotation.faceNext (DN t) = DN (t + 1)
   rw [face_next_apply]
   apply liftDart_injective hle
@@ -780,14 +802,16 @@ theorem PinchWalk.ringFaceB : RingFace N (r - m) (arcB r m ρ) := by
 end ringB
 
 /-- **(ii′) assembled: a pinched face walk is θ-non-crossing.** -/
-theorem PinchWalk.ringTNC (P : PinchWalk G r m ρ) (h : Fin n) (hoff : ∀ t, ρ t ≠ h) : RingTNC G r ρ h := by
+theorem PinchWalk.ringTNC (P : PinchWalk G r m ρ) (h : Fin n) (hoff : ∀ t, ρ t ≠ h)
+    (IH : ∀ N : SphericalMap n, FaceWalk N (r - m) (arcB r m ρ) → RingTNC N (r - m) (arcB r m ρ) h) :
+    RingTNC G r ρ h := by
   classical
   have hm := P.three; have hr := P.threeB
   obtain ⟨c, hc⟩ := exists_cycPotential' P.cycA
   obtain ⟨GA, hGA, hleA, specA⟩ := subgraph_tracked G (sideG G (P.SA c)) (sideG_le _ _)
   obtain ⟨GB, hGB, hleB, specB⟩ := subgraph_tracked G (sideG G (P.SB c)) (sideG_le _ _)
   have RA := (P.ringFaceA hc hGA hleA specA).toNC.toTNC (h := h) (fun t => hoff _)
-  have RB := (P.ringFaceB hc hGB hleB specB).toNC.toTNC (h := h) (fun t => hoff _)
+  have RB := IH GB (P.walkB hc hGB hleB specB)
   have TA : TNC GA m ρ h := by
     intro c' hc' θ hθ i j k l hij hjk hkl hlm h1 h2
     have := RA.tnc hc' hθ hij hjk hkl hlm
@@ -811,25 +835,26 @@ theorem PinchWalk.ringTNC (P : PinchWalk G r m ρ) (h : Fin n) (hoff : ∀ t, ρ
     (by omega) rfl P.pin (fun t ht => P.sa_ring ht) (fun t h1 h2 => P.sb_ring hc h1 (by omega)) TA TB hc' hθ
 
 /-- **`KempeMatching` for a pinched ring** (the codes realised by colourings of `G` off the hole). -/
-theorem PinchWalk.kempeMatching (P : PinchWalk G r m ρ) (h : Fin n) (hoff : ∀ t, ρ t ≠ h) (cf : Conf)
+theorem PinchWalk.kempeMatching (P : PinchWalk G r m ρ) (h : Fin n) (hoff : ∀ t, ρ t ≠ h)
+    (IH : ∀ N : SphericalMap n, FaceWalk N (r - m) (arcB r m ρ) → RingTNC N (r - m) (arcB r m ρ) h) (cf : Conf)
     (N : ℕ) (hN : N ≤ 10) (hr : cf.r = r) (hrN : r < 2 * N) :
     KempeMatchingT (matchTableN N) cf (fun k => ∃ c : Fin n → Fin 4, ProperOff G.graph h c ∧
       k = code (ringSeq ρ c) r) :=
-  (P.ringTNC h hoff).kempeMatching cf N hN hr hrN
+  (P.ringTNC h hoff IH).kempeMatching cf N hN hr hrN
 
 
 /-! ## Folds: an arc of length 2 (a pendant ring vertex) -/
 
-/-- A face walk that folds back at position 1: `ρ 2 = ρ 0`, so `ρ 1` is a pendant vertex; the rest of the walk is
-injective. -/
+/-- A face walk that folds back at position 1: `ρ 2 = ρ 0`, so `ρ 1` is a pendant vertex, visited once. The rest
+of the walk may repeat vertices. -/
 structure FoldWalk (G : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) : Prop where
-  threeB : 5 ≤ r
+  threeB : 4 ≤ r
   per : ∀ t, ρ (t + r) = ρ t
   adj : ∀ t, G.Adj (ρ t) (ρ (t + 1))
   step : ∀ t, G.rotation.faceNext ⟨(ρ t, ρ (t + 1)), adj t⟩ = ⟨(ρ (t + 1), ρ (t + 2)), adj (t + 1)⟩
   fold : ρ 2 = ρ 0
-  inj : ∀ s t, 2 ≤ s → 2 ≤ t → s < r → t < r → ρ s = ρ t → s = t
   injx : ∀ t, t < r → ρ t = ρ 1 → t = 1
+  dinj : ∀ s t, s < r → t < r → ρ s = ρ t → ρ (s + 1) = ρ (t + 1) → s = t
 
 namespace FoldWalk
 variable {G : SphericalMap n} (F : FoldWalk G r ρ)
@@ -864,11 +889,11 @@ theorem ne_x {t : ℕ} (h2 : 2 ≤ t) (ht : t ≤ r) : ρ t ≠ ρ 1 := by
   · subst h; rw [F.ring_r]; exact F.x_ne_u.symm
   · intro e; have := F.injx t h e; omega
 
-/-- Side B's map (the pendant deleted) has the B-walk as a ring face. -/
-theorem ringFaceB {N : SphericalMap n} (hN : N.graph = sideG G (fun x => x ≠ ρ 1)) (hle : N.graph ≤ G.graph)
+/-- Side B's map (the pendant deleted) has the B-walk as a face walk. -/
+theorem walkB {N : SphericalMap n} (hN : N.graph = sideG G (fun x => x ≠ ρ 1)) (hle : N.graph ≤ G.graph)
     (spec : ∀ d : N.Dart, RunTo G (sideG G (fun x => x ≠ ρ 1)) (liftDart hle d)
       (liftDart hle (N.rotation.next d))) :
-    RingFace N (r - 2) (arcB r 2 ρ) := by
+    FaceWalk N (r - 2) (arcB r 2 ρ) := by
   classical
   have hr := F.threeB
   have hmod : ∀ t, t % (r - 2) < r - 2 := fun t => Nat.mod_lt _ (by omega)
@@ -889,10 +914,16 @@ theorem ringFaceB {N : SphericalMap n} (hN : N.graph = sideG G (fun x => x ≠ �
     show N.graph.Adj _ _
     rw [hN]; exact ⟨hGadj t, Bsb t, Bsb (t + 1)⟩
   let DN : ℕ → N.Dart := fun t => ⟨(arcB r 2 ρ t, arcB r 2 ρ (t + 1)), hNadj t⟩
-  refine ⟨by omega, fun t => by simp [arcB], hNadj, fun t => ?_, fun s t hs ht e => ?_⟩
+  have hB1 : ∀ s, s < r - 2 → arcB r 2 ρ (s + 1) = ρ (2 + s + 1) := fun s hs => by
+    simp only [arcB]
+    rcases Nat.lt_or_ge (s + 1) (r - 2) with h | h
+    · rw [Nat.mod_eq_of_lt h, Nat.add_assoc]
+    · rw [show s + 1 = r - 2 by omega, Nat.mod_self, Nat.add_zero, show 2 + s + 1 = r by omega, F.fold, F.ring_r]
+  refine ⟨by omega, fun t => by simp [arcB], hNadj, fun t => ?_, fun s t hs ht e1 e2 => ?_⟩
   rotate_left
-  · simp only [arcB, Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at e
-    have := F.inj (2 + s) (2 + t) (by omega) (by omega) (by omega) (by omega) e; omega
+  · rw [hB1 s hs, hB1 t ht] at e2
+    simp only [arcB, Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at e1
+    have := F.dinj (2 + s) (2 + t) (by omega) (by omega) e1 e2; omega
   change N.rotation.faceNext (DN t) = DN (t + 1)
   rw [face_next_apply]
   apply liftDart_injective hle
@@ -967,12 +998,14 @@ theorem ringFaceB {N : SphericalMap n} (hN : N.graph = sideG G (fun x => x ≠ �
       F.ne_x (by omega) (by omega)⟩), hnx]
 
 /-- **Folds are θ-non-crossing.** -/
-theorem ringTNC (h : Fin n) (hoff : ∀ t, ρ t ≠ h) : RingTNC G r ρ h := by
+theorem ringTNC (h : Fin n) (hoff : ∀ t, ρ t ≠ h)
+    (IH : ∀ N : SphericalMap n, FaceWalk N (r - 2) (arcB r 2 ρ) → RingTNC N (r - 2) (arcB r 2 ρ) h) :
+    RingTNC G r ρ h := by
   classical
   have hr := F.threeB
   obtain ⟨GA, hGA, hleA, -⟩ := subgraph_tracked G (sideG G (fun x => x = ρ 0 ∨ x = ρ 1)) (sideG_le _ _)
   obtain ⟨GB, hGB, hleB, specB⟩ := subgraph_tracked G (sideG G (fun x => x ≠ ρ 1)) (sideG_le _ _)
-  have RB := (F.ringFaceB hGB hleB specB).toNC.toTNC (h := h) (fun t => hoff _)
+  have RB := IH GB (F.walkB hGB hleB specB)
   have hB : ∀ t, t < r - 2 → arcB r 2 ρ t = ρ (2 + t) := fun t ht => by simp [arcB, Nat.mod_eq_of_lt ht]
   have TB : TNC GB (r - 2) (fun t => ρ (2 + t)) h := by
     intro c' hc' θ hθ i j k l hij hjk hkl hlm h1 h2
@@ -1001,8 +1034,184 @@ theorem ringTNC (h : Fin n) (hoff : ∀ t, ρ t ≠ h) : RingTNC G r ρ h := by
     (fun t h1 h2 => F.ne_x h1 (by omega)) TA TB hc' hθ
 
 end FoldWalk
+
+/-! ## Several pinches: every face walk with distinct darts is θ-non-crossing
+
+Strong induction on the length. Rotate the walk to its closest repeat `ρ 0 = ρ d` (cyclic gap `d` minimal). The arc
+`[0, d)` is then injective; `d = 1` is impossible, `d = 2` is a fold, `d ≥ 3` a pinch. The far side of the arc is a
+shorter face walk of the side map (`walkB`), which the induction hypothesis covers. -/
+
+section multi
+variable {G : SphericalMap n}
+
+theorem per_add_mul (hper : ∀ t, ρ (t + r) = ρ t) (x k : ℕ) : ρ (x + r * k) = ρ x := by
+  induction k with
+  | zero => simp
+  | succ k ih => rw [Nat.mul_succ, ← Nat.add_assoc, hper, ih]
+
+theorem per_mod' (hper : ∀ t, ρ (t + r) = ρ t) (x : ℕ) : ρ (x % r) = ρ x := by
+  conv_rhs => rw [← Nat.mod_add_div x r]
+  rw [per_add_mul hper]
+
+theorem per_cong (hper : ∀ t, ρ (t + r) = ρ t) {x y : ℕ} (h : x % r = y % r) : ρ x = ρ y := by
+  rw [← per_mod' hper x, h, per_mod' hper y]
+
+/-- Rotating a face walk. -/
+theorem FaceWalk.rot (W : FaceWalk G r ρ) (a : ℕ) : FaceWalk G r (fun t => ρ (a + t)) where
+  pos := W.pos
+  per t := by show ρ (a + (t + r)) = ρ (a + t); rw [← Nat.add_assoc]; exact W.per _
+  adj t := W.adj (a + t)
+  step t := W.step (a + t)
+  dinj s t hs ht e1 e2 := by
+    have h1 : ρ ((a + s) % r) = ρ ((a + t) % r) := by rw [per_mod' W.per, per_mod' W.per]; exact e1
+    have h2 : ρ ((a + s) % r + 1) = ρ ((a + t) % r + 1) := by
+      rw [per_cong W.per (Nat.ModEq.add_right 1 (Nat.mod_modEq (a + s) r)),
+        per_cong W.per (Nat.ModEq.add_right 1 (Nat.mod_modEq (a + t) r))]
+      exact e2
+    have := W.dinj _ _ (Nat.mod_lt _ W.pos) (Nat.mod_lt _ W.pos) h1 h2
+    have := Nat.ModEq.add_left_cancel' a this
+    rwa [Nat.ModEq, Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at this
+
+/-- θ-non-crossing is invariant under rotation (the conclusion follows by transitivity through the chains). -/
+theorem RingTNC.of_rot {a : ℕ} (ha : a < r) (hper : ∀ t, ρ (t + r) = ρ t) (hadj : ∀ t, G.Adj (ρ t) (ρ (t + 1)))
+    (hoff : ∀ t, ρ t ≠ h) (R : RingTNC G r (fun t => ρ (a + t)) h) : RingTNC G r ρ h := by
+  refine ⟨R.pos, hper, hadj, hoff, ?_⟩
+  intro c hc θ hθ i j k l hij hjk hkl hlr h1 h2
+  have T : ∀ {x y z w : ℕ}, x < y → y < z → z < w → w < r →
+      (thetaGraph G.graph h c θ).Reachable (ρ (a + x)) (ρ (a + z)) →
+      (thetaGraph G.graph h c θ).Reachable (ρ (a + y)) (ρ (a + w)) →
+      (thetaGraph G.graph h c θ).Reachable (ρ (a + x)) (ρ (a + y)) :=
+    fun h0 h1 h2 h3 => R.tnc hc hθ h0 h1 h2 h3
+  have up : ∀ p, a ≤ p → ρ (a + (p - a)) = ρ p := fun p hp => by rw [Nat.add_sub_cancel' hp]
+  have dn : ∀ p, p < a → ρ (a + (p + r - a)) = ρ p := fun p hp => by
+    rw [show a + (p + r - a) = p + r by omega, hper]
+  by_cases hi : a ≤ i
+  · have := T (x := i - a) (y := j - a) (z := k - a) (w := l - a) (by omega) (by omega) (by omega) (by omega)
+      (by rwa [up i hi, up k (by omega)]) (by rwa [up j (by omega), up l (by omega)])
+    rwa [up i hi, up j (by omega)] at this
+  by_cases hj : a ≤ j
+  · -- order j' < k' < l' < i'
+    have := T (x := j - a) (y := k - a) (z := l - a) (w := i + r - a) (by omega) (by omega) (by omega) (by omega)
+      (by rwa [up j hj, up l (by omega)]) (by rw [up k (by omega), dn i (by omega)]; exact h1.symm)
+    rw [up j hj, up k (by omega)] at this
+    exact h1.trans this.symm
+  by_cases hk : a ≤ k
+  · -- order k' < l' < i' < j'
+    have := T (x := k - a) (y := l - a) (z := i + r - a) (w := j + r - a) (by omega) (by omega) (by omega)
+      (by omega) (by rw [up k hk, dn i (by omega)]; exact h1.symm) (by rw [up l (by omega), dn j (by omega)]; exact h2.symm)
+    rw [up k hk, up l (by omega)] at this
+    exact (h1.trans this).trans h2.symm
+  by_cases hl : a ≤ l
+  · -- order l' < i' < j' < k'
+    have := T (x := l - a) (y := i + r - a) (z := j + r - a) (w := k + r - a) (by omega) (by omega) (by omega)
+      (by omega) (by rw [up l hl, dn j (by omega)]; exact h2.symm) (by rw [dn i (by omega), dn k (by omega)]; exact h1)
+    rw [up l hl, dn i (by omega)] at this
+    exact this.symm.trans h2.symm
+  · have := T (x := i + r - a) (y := j + r - a) (z := k + r - a) (w := l + r - a) (by omega) (by omega) (by omega)
+      (by omega) (by rwa [dn i (by omega), dn k (by omega)]) (by rwa [dn j (by omega), dn l (by omega)])
+    rwa [dn i (by omega), dn j (by omega)] at this
+
+/-- A fold makes the middle vertex pendant (only the step at the fold is used). -/
+theorem pendant_of_fold (hadj : ∀ t, G.Adj (ρ t) (ρ (t + 1)))
+    (hstep : G.rotation.faceNext ⟨(ρ 0, ρ 1), hadj 0⟩ = ⟨(ρ 1, ρ 2), hadj 1⟩) (hfold : ρ 2 = ρ 0)
+    {y : Fin n} (e : G.Adj (ρ 1) y) : y = ρ 0 := by
+  set a : G.Dart := (⟨(ρ 0, ρ 1), hadj 0⟩ : G.Dart).symm
+  have ha : G.rotation.next a = a := by
+    have : G.rotation.next a = ⟨(ρ 1, ρ 2), hadj 1⟩ := by rw [← face_next_apply]; exact hstep
+    rw [this]; apply Dart.ext; apply Prod.ext
+    · rfl
+    · exact hfold
+  obtain ⟨k, hk⟩ := G.rotation.cyclic a ⟨(ρ 1, y), e⟩ rfl
+  have hall : ∀ k, (⇑G.rotation.next)^[k] a = a := by
+    intro k; induction k with
+    | zero => rfl
+    | succ k ih => rw [Function.iterate_succ_apply', ih, ha]
+  rw [hall] at hk
+  exact (congrArg (fun z : G.Dart => z.snd) hk).symm
+
+/-- **Every face walk with distinct darts is θ-non-crossing** (any number of pinches and folds). -/
+theorem FaceWalk.ringTNC : ∀ (r : ℕ) {G : SphericalMap n} {ρ : ℕ → Fin n}, FaceWalk G r ρ →
+    ∀ h : Fin n, (∀ t, ρ t ≠ h) → RingTNC G r ρ h := by
+  intro r
+  induction r using Nat.strong_induction_on with
+  | _ r ih =>
+  intro G ρ W h hoff
+  classical
+  by_cases hr3 : r ≤ 3
+  · exact ⟨W.pos, W.per, W.adj, hoff, fun {_} _ {_} _ {i j k l} hij hjk hkl hlr => by omega⟩
+  have hex : ∃ d, 0 < d ∧ ∃ s, s < r ∧ ρ s = ρ (s + d) :=
+    ⟨r, W.pos, 0, W.pos, by rw [zero_add]; exact (W.per 0).symm.trans (by rw [zero_add])⟩
+  obtain ⟨hd0, s0, hs0, e0⟩ := Nat.find_spec hex
+  set d := Nat.find hex with hd
+  have hmin : ∀ d', 0 < d' → d' < d → ∀ s, ρ s ≠ ρ (s + d') := by
+    intro d' h0 hlt s e
+    exact Nat.find_min hex hlt ⟨h0, s % r, Nat.mod_lt _ W.pos,
+      (per_mod' W.per s).trans (e.trans (per_cong W.per (Nat.ModEq.add_right d' (Nat.mod_modEq s r)).symm))⟩
+  by_cases hdr : r ≤ d
+  · -- no repeat at all: a ring face
+    have inj : ∀ s t, s < r → t < r → ρ s = ρ t → s = t := by
+      intro s t hs ht e
+      by_contra hne
+      rcases Nat.lt_or_gt_of_ne hne with hlt | hlt
+      · exact hmin (t - s) (by omega) (by omega) s (by rw [Nat.add_sub_cancel' hlt.le]; exact e)
+      · exact hmin (s - t) (by omega) (by omega) t (by rw [Nat.add_sub_cancel' hlt.le]; exact e.symm)
+    exact (show RingFace G r ρ from ⟨W.pos, W.per, W.adj, W.step, inj⟩).toNC.toTNC hoff
+  push_neg at hdr
+  -- rotate to the closest repeat
+  set σ : ℕ → Fin n := fun t => ρ (s0 + t) with hσ
+  have Wσ : FaceWalk G r σ := W.rot s0
+  have hoffσ : ∀ t, σ t ≠ h := fun t => hoff _
+  have hpin : σ d = σ 0 := by simp only [hσ, Nat.add_zero]; exact e0.symm
+  have injA : ∀ p q, p < d → q < d → σ p = σ q → p = q := by
+    intro p q hp hq e
+    by_contra hne
+    rcases Nat.lt_or_gt_of_ne hne with hlt | hlt
+    · exact hmin (q - p) (by omega) (by omega) (s0 + p) (by
+        rw [show s0 + p + (q - p) = s0 + q by omega]; exact e)
+    · exact hmin (p - q) (by omega) (by omega) (s0 + q) (by
+        rw [show s0 + q + (p - q) = s0 + p by omega]; exact e.symm)
+  have hd1 : d ≠ 1 := by
+    intro h1; apply (W.adj s0).ne; rw [e0, h1]
+  apply RingTNC.of_rot (a := s0) hs0 W.per W.adj hoff
+  have hoffB : ∀ m t, arcB r m σ t ≠ h := fun m t => hoffσ _
+  rcases Nat.lt_or_ge d 3 with hd3 | hd3
+  · -- d = 2: a fold
+    have hd2 : d = 2 := by omega
+    have hfold : σ 2 = σ 0 := by rw [← hd2]; exact hpin
+    have hpend : ∀ {y : Fin n}, G.Adj (σ 1) y → y = σ 0 := fun e => pendant_of_fold Wσ.adj (Wσ.step 0) hfold e
+    have F : FoldWalk G r σ := by
+      refine ⟨by omega, Wσ.per, Wσ.adj, Wσ.step, hfold, fun t ht e => ?_, Wσ.dinj⟩
+      rcases Nat.eq_zero_or_pos t with h0 | h0
+      · subst h0; exact absurd e (Wσ.adj 0).ne
+      · have hn : σ (t + 1) = σ 0 := hpend (e ▸ Wσ.adj t)
+        exact Wσ.dinj t 1 ht (by omega) e (by rw [hn, hfold])
+    exact F.ringTNC h hoffσ (fun N WN => ih (r - 2) (by omega) WN h (hoffB 2))
+  · -- d ≥ 3: a pinch; the far side has at least 3 positions
+    have hB : d + 3 ≤ r := by
+      by_contra hlt
+      rcases Nat.lt_or_ge (d + 1) r with h2 | h2
+      · -- r = d + 2: σ d = σ (d + 2), a closer repeat
+        have e2 : σ d = σ (d + 2) := by
+          rw [hpin, show d + 2 = r by omega]; simp only [hσ, Nat.add_zero, W.per]
+        exact hmin 2 (by omega) (by omega) (s0 + d) (by simpa [hσ, Nat.add_assoc] using e2)
+      · -- r = d + 1: σ d = σ (d + 1) = σ 0, adjacent to itself
+        apply (Wσ.adj d).ne
+        rw [hpin, show d + 1 = r by omega]; simp only [hσ, Nat.add_zero, W.per]
+    have P : PinchWalk G r d σ := ⟨hd3, hB, Wσ.per, Wσ.adj, Wσ.step, hpin, injA, Wσ.dinj⟩
+    exact P.ringTNC h hoffσ (fun N WN => ih (r - d) (by omega) WN h (hoffB d))
+
+/-- **`KempeMatching` for any face walk with distinct darts.** -/
+theorem FaceWalk.kempeMatching (W : FaceWalk G r ρ) (h : Fin n) (hoff : ∀ t, ρ t ≠ h) (cf : Conf)
+    (N : ℕ) (hN : N ≤ 10) (hr : cf.r = r) (hrN : r < 2 * N) :
+    KempeMatchingT (matchTableN N) cf (fun k => ∃ c : Fin n → Fin 4, ProperOff G.graph h c ∧
+      k = code (ringSeq ρ c) r) :=
+  (FaceWalk.ringTNC r W h hoff).kempeMatching cf N hN hr hrN
+
+end multi
 end SimpleGraph.SphericalMap
 
 #print axioms SimpleGraph.SphericalMap.PinchWalk.ringTNC
 #print axioms SimpleGraph.SphericalMap.PinchWalk.kempeMatching
 #print axioms SimpleGraph.SphericalMap.FoldWalk.ringTNC
+#print axioms SimpleGraph.SphericalMap.FaceWalk.ringTNC
+#print axioms SimpleGraph.SphericalMap.FaceWalk.kempeMatching
