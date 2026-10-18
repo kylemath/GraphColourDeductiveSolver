@@ -7,6 +7,8 @@ common neighbour of u' and x, when z is big ("routed through the 6").
 - Receiver u: a link five at w_i uses y[root, f], with f read from w_{i+-1}, w_{i+-2} (z = w_{i+-2}). Inflow: each s_j = 5
   with {w_j, w_{j+1}} = {6, big b} receives tau[root of s_j at b, side 6]. s_j's three other letters are outside u's
   patch, so the row takes the completion with the largest current tau (one row per completion, generated lazily).
+- Option tfull: option F, z read as its letter 5..9 (Y[r, z_a, z_e], T[r, z_a, z_e, side], T only for z >= 7; the
+  inflow T is keyed by the receiver's own letter). Sender rows run over every z-letter assignment, with the coupling.
 - Options as wlp3x, plus tmerge (flags merged: y[root, f] = y[root, 00]) and tzero (tau fixed at 0). With both, the
   model is wlp3x's exactly (validation 3).
 - Spec: loop/opus/G_ruleT_lp/FINDINGS.md (branch claude/project-thread-7uelj0), option B (z read as small/big):
@@ -60,6 +62,12 @@ sys.argv = ['wlp3'] + ARGS_W
 exec(src[:src.index('A_ub, b_ub = [], []')])
 SEP.stdin.close(); SEP.wait()                                     # replace sep3 by sep3x (same static input SF)
 TMERGE = 'tmerge' in ARGS0; TZERO = 'tzero' in ARGS0
+TFULL = 'tfull' in ARGS0   # option F: z read as its letter 5..9 (G_ruleT_lp option F) instead of small/big
+def FL(spoke):             # values of a side's z field: 0 = the spoke is not 6
+    return ((5, 6, 7, 8, 9) if TFULL else (0, 1)) if spoke == 6 else (0,)
+def BIG(z): return z >= 7 if TFULL else z == 1
+def ZOF(spoke, beyond):    # the z field read from an arrangement: spoke letter and the letter beyond it
+    return (beyond if TFULL else int(beyond >= 7)) if spoke == 6 else 0
 # ---- Rule T variables ----
 def rev5(r): return (r[0], r[4], r[3], r[2], r[1])
 def canon_root(raw):
@@ -78,53 +86,61 @@ def tkey(raw, fa, fe, side):
     if TMERGE: fa = fe = 0
     if r == rev5(r) and (fe, fa, 'e' if side == 'a' else 'a') < (fa, fe, side): fa, fe, side = fe, fa, ('e' if side == 'a' else 'a')
     return (r, fa, fe, side)
-YT = sorted({ykey(r, fa, fe) for r in roots for fa in (0, 1) for fe in (0, 1) if (not fa or r[1] == 6) and (not fe or r[4] == 6)})
+YT = sorted({ykey(r, fa, fe) for r in roots for fa in FL(r[1]) for fe in FL(r[4])})
 YI = {k: i for i, k in enumerate(YT)}
-TAUV = sorted({tkey(r, fa, fe, sd) for r in roots for fa in (0, 1) for fe in (0, 1) for sd in ('a', 'e')
-               if (not fa or r[1] == 6) and (not fe or r[4] == 6) and (fa if sd == 'a' else fe)})
+TAUV = sorted({tkey(r, fa, fe, sd) for r in roots for fa in FL(r[1]) for fe in FL(r[4]) for sd in ('a', 'e')
+               if BIG(fa if sd == 'a' else fe)})
 TI = {k: i for i, k in enumerate(TAUV)}
-print('rule T: %d flag-split Y vars (from %d roots), %d tau vars%s%s' % (len(YT), len(roots), len(TAUV),
+print('rule T%s: %d flag-split Y vars (from %d roots), %d tau vars%s%s' % (' option F (z letters)' if TFULL else '', len(YT), len(roots), len(TAUV),
       ', flags merged' if TMERGE else '', ', tau fixed at 0' if TZERO else ''), flush=True)
 # inflow completions (conservative per-transition version of G_ruleT_lp section 2(ii)): s_j = 5 between a 6 and a big
 # b, rooted at b towards the 6: word (b, X1, X2, X3, 6), side e (the 6), f_e = 1 (z = the receiver, big); its other
 # flag f_a is free when X1 = 6. The 6-wheel side condition on the 6's private is dropped (over-counts: sound).
-INS = {}
+INS = {}   # (b, receiver letter U) -> T vars the five s_j can send to the receiver
 for b in (7, 8, 9):
-    S_ = set()
-    for X in itertools.product(L, repeat=3):
-        if isR5([6, b, X[0], X[1], X[2]]): continue
-        for fa in ((0, 1) if X[0] == 6 else (0,)):
-            S_.add(TI[tkey((b, X[0], X[1], X[2], 6), fa, 1, 'e')])
-    INS[b] = sorted(S_)
+    for U_ in (7, 8, 9):
+        S_ = set()
+        for X in itertools.product(L, repeat=3):
+            if isR5([6, b, X[0], X[1], X[2]]): continue
+            for fa in FL(X[0]):
+                S_.add(TI[tkey((b, X[0], X[1], X[2], 6), fa, U_ if TFULL else 1, 'e')])
+        INS[(b, U_)] = sorted(S_)
 if os.environ.get('TCHECK') == '1':   # validation (2): z reads the same T from its side as the five sends
-    recv = set(v for b in INS for v in INS[b]); sent = set(TI.values())
+    recv = set(v for k in INS for v in INS[k]); sent = set(TI.values())
     print('TCHECK: T vars %d; receivable at z %d; sent but never receivable %d; receivable but not a T var %d' % (
         len(sent), len(recv), len(sent - recv), len(recv - sent)), flush=True)
 # static T section for sep3xt: flag vars per (U, state, choice)
-tl = ['T']
+tl = ['TF' if TFULL else 'T']
 for U in (7, 8, 9):
     for (wp, sp, wc) in states:
         for sc in L:
             for wn in L:
-                fv = [-1] * 4
-                if wc == 5 and not isR5([U, wn, sc, sp, wp]):
-                    for q in range(4):
-                        fa, fe = q >> 1, q & 1
-                        if (fa and wn != 6) or (fe and wp != 6): continue
-                        fv[q] = YI[ykey((U, wn, sc, sp, wp), fa, fe)]
+                if TFULL:   # 36 slots, index 6 c_a + c_e, code 0 = spoke not 6, 1..5 = z letter 5..9
+                    fv = [-1] * 36
+                    if wc == 5 and not isR5([U, wn, sc, sp, wp]):
+                        for fa in FL(wn):
+                            for fe in FL(wp):
+                                fv[(fa - 4 if fa else 0) * 6 + (fe - 4 if fe else 0)] = YI[ykey((U, wn, sc, sp, wp), fa, fe)]
+                else:
+                    fv = [-1] * 4
+                    if wc == 5 and not isR5([U, wn, sc, sp, wp]):
+                        for q in range(4):
+                            fa, fe = q >> 1, q & 1
+                            if (fa and wn != 6) or (fe and wp != 6): continue
+                            fv[q] = YI[ykey((U, wn, sc, sp, wp), fa, fe)]
                 tl.append(' '.join(map(str, fv)))
 _sf = open(SF).read().split('\n', 1); open(SF, 'w').write(str(len(YT)) + '\n' + _sf[1])   # NV = Y vars in T mode
 open(SF, 'a').write('\n'.join(tl) + '\n')
 SEPX = subprocess.Popen([os.path.join(HERE, 'bin', 'sep3xt'), SF], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
-TAGX = TAG + ('_notx' if NOTX else '_x') + '_T'
+TAGX = TAG + ('_notx' if NOTX else '_x') + ('_TF' if TFULL else '_T')
 NY = len(YT); NT = len(TAUV)
 TV = np.zeros(NT)   # current tau values
-def tin():
-    """per big letter b: (max tau over the inflow completions, its var or -1)."""
+def tin(U_=9):
+    """per big letter b: (max tau over the inflow completions into a receiver of letter U_, its var or -1)."""
     out = {}
     for b in (7, 8, 9):
         best, bv = 0.0, -1
-        for v in INS[b]:
+        for v in INS[(b, U_)]:
             if TV[v] > best + 1e-12: best, bv = TV[v], v
         out[b] = (best, bv)
     return out
@@ -159,21 +175,24 @@ def xcol(tau):
 for w_ in senders:            # sender rows: -sum y[root, f] - sum tau - t <= -1, every bigness of the far vertices
     w_ = list(w_)
     E = [j for j in range(5) if max(w_[j], w_[(j + 1) % 5]) >= 7 and min(w_[j], w_[(j + 1) % 5]) == 6]
-    for bits in itertools.product((0, 1), repeat=len(E)):
+    for bits in itertools.product(((5, 6, 7, 8, 9) if TFULL else (0, 1)), repeat=len(E)):
         B = dict(zip(E, bits))
         # coupling (G_ruleT_lp section 1): around each 6-spoke k, the far vertices zL (edge k-1,k) and zR (edge k,k+1)
         # must admit a non-R 6-wheel (5, x[k+1], zR, q, zL, x[k-1]) with letters in their flag sets
-        def zset(e): return (7, 8, 9) if B.get(e) == 1 else ((5, 6) if e in B else L)
+        def zset(e):
+            if e not in B: return L
+            return (B[e],) if TFULL else ((7, 8, 9) if B[e] == 1 else (5, 6))
         if not all(any(not isR6([5, w_[(k + 1) % 5], zR, q, zL, w_[(k - 1) % 5]]) for zR in zset(k) for zL in zset((k - 1) % 5) for q in L)
                    for k in range(5) if w_[k] == 6): continue
         r = collections.defaultdict(float); r[('t',)] = -1.0
         for j in range(5):
             if w_[j] < 7: continue
             raw = tuple(w_[j:] + w_[:j])
-            fa = int(raw[1] == 6 and B.get(j, 0) == 1); fe = int(raw[4] == 6 and B.get((j - 1) % 5, 0) == 1)
+            fa = (B[j] if TFULL else int(B[j] == 1)) if raw[1] == 6 else 0
+            fe = (B[(j - 1) % 5] if TFULL else int(B[(j - 1) % 5] == 1)) if raw[4] == 6 else 0
             r[('y', YI[ykey(raw, fa, fe)])] -= 1.0
-            if fa: r[('tau', TI[tkey(raw, fa, fe, 'a')])] -= 1.0
-            if fe: r[('tau', TI[tkey(raw, fa, fe, 'e')])] -= 1.0
+            if BIG(fa): r[('tau', TI[tkey(raw, fa, fe, 'a')])] -= 1.0
+            if BIG(fe): r[('tau', TI[tkey(raw, fa, fe, 'e')])] -= 1.0
         rows.append(dict(r)); rhs.append(-1.0); rinfo.append(('sender', ''.join(map(str, w_)) + ('/' + ''.join(map(str, bits)) if E else '')))
 print('sender rows: %d' % sum(1 for i_ in rinfo if i_[0] == 'sender'), flush=True)
 def recv_row(d, lk, sv, TN):
@@ -182,7 +201,7 @@ def recv_row(d, lk, sv, TN):
     r = collections.defaultdict(float); r[('t',)] = -1.0
     for i in range(d):
         if w[i] == 5:
-            fa = int(w[(i + 1) % d] == 6 and w[(i + 2) % d] >= 7); fe = int(w[(i - 1) % d] == 6 and w[(i - 2) % d] >= 7)
+            fa = ZOF(w[(i + 1) % d], w[(i + 2) % d]); fe = ZOF(w[(i - 1) % d], w[(i - 2) % d])
             r[('y', YI[ykey((U, w[(i + 1) % d], s_[i], s_[(i - 1) % d], w[(i - 1) % d]), fa, fe)])] += 1.0
         a_, b_ = w[i], w[(i + 1) % d]
         if s_[i] == 5 and min(a_, b_) == 6 and max(a_, b_) >= 7 and TN[max(a_, b_)] >= 0: r[('tau', TN[max(a_, b_)])] += 1.0
@@ -191,7 +210,7 @@ def recv_row(d, lk, sv, TN):
             xcol(ti); xcol(to); r[('x', ti)] += 1.0; r[('x', to)] -= 1.0
     return {k: v for k, v in r.items() if v != 0.0}
 def add_recv(d, lk, sv, kind='recv'):
-    TN = {b: v for b, (_, v) in tin().items()}
+    TN = {b: v for b, (_, v) in tin(min(d, 9)).items()}
     key = (d, lk, sv, TN[7], TN[8], TN[9])
     if key in have: return False
     have.add(key); rows.append(recv_row(d, lk, sv, TN)); rhs.append(d - 6.0); rinfo.append((kind, d, lk, sv)); return True
@@ -201,14 +220,13 @@ BIGSTATE = np.array([1.0 if states[a][2] >= 7 else 0.0 for a in range(NS)])
 def tri9w(yv):
     """letter-9 transitions with Rule T weights: max over the flags (conservative: the far letters are not in the
     state) plus the inflow constant. Returns (a, b, weight, terms)."""
-    TN = tin(); out = []
+    TN = tin(9); out = []
     for a, b, rr in TRI[9]:
         (wp, sp, wc), (_, sc, wn) = states[a], states[b]; val, terms = 0.0, []
         if wc == 5:
             best = None
-            for fa in (0, 1):
-                for fe in (0, 1):
-                    if (fa and wn != 6) or (fe and wp != 6): continue
+            for fa in FL(wn):
+                for fe in FL(wp):
                     v = YI[ykey((9, wn, sc, sp, wp), fa, fe)]
                     if best is None or yv[v] > yv[best]: best = v
             val += yv[best]; terms.append(('y', best))
@@ -246,7 +264,7 @@ def add_row9(d, path, nbig):
 # ---- separation through sep3x ----
 def sepx(d, yv, xv, thr, many):
     xs = [(tau, v) for tau, v in xv.items() if v > 1e-12]
-    TN = tin()
+    TN = tin(min(d, 9))
     SEPX.stdin.write('q %d %.12f %d %d\n%s\nX %d %s\nT %.12f %.12f %.12f %d %d %d\n' % (d, thr, many, OMAX, ' '.join('%.12f' % x for x in yv),
                      len(xs), ' '.join('%d %.12f' % kv for kv in xs), TN[7][0], TN[8][0], TN[9][0], TN[7][1], TN[8][1], TN[9][1]))
     SEPX.stdin.flush(); out = []
@@ -307,10 +325,10 @@ res, yv, xv, z9, t = solve()
 duals = -res.ineqlin.marginals
 if os.environ.get('TSELF') == '1':   # validation: sep3xt's reported weights equal the Python row values
     import random as _rnd; _rnd.seed(5)
-    yv = np.array([_rnd.random() for _ in range(NY)]); TV[:] = [_rnd.random() * 0.5 for _ in range(NT)]
+    ysc = float(os.environ.get('TSELF_YSCALE', '1')); yv = np.array([_rnd.random() * ysc for _ in range(NY)]); TV[:] = [_rnd.random() * 0.5 for _ in range(NT)]
     worst = 0.0; nrow = 0; nin = 0
     for d in range(7, 11):
-        TN = {b: v for b, (_, v) in tin().items()}
+        TN = {b: v for b, (_, v) in tin(min(d, 9)).items()}
         for wgt, lk, sv in sepx(d, yv, {}, d - 6.0, 40):
             r_ = recv_row(d, lk, sv, TN)
             val = sum(c * (yv[k[1]] if k[0] == 'y' else TV[k[1]] if k[0] == 'tau' else 0.0) for k, c in r_.items() if k[0] in ('y', 'tau'))

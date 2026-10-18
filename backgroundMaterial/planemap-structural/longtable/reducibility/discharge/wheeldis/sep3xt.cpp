@@ -7,7 +7,8 @@
 //     var is charged once w_{j-2..j+2} are known (the RES step table of the transfers), as a correction <= 0.
 //   - Receiver u, inflow: s_j = 5 with {w_j, w_{j+1}} = {6, big b} adds TIN[b] (max over the five's unknown
 //     letters of tau, computed by the caller). It is a per-transition constant, so it is exact in the bound.
-//   Static input: after the Job 30 section, "T" + 3*125*25 lines of 4 flag-var indices (-1 = invalid flag).
+//   Static input: after the Job 30 section, "T" + 3*125*25 lines of 4 flag-var indices (-1 = invalid flag), or "TF"
+//   (option F: z read as its letter) + lines of 36 (index 6 c_a + c_e, code 0 = spoke not 6, 1..5 = z letter 5..9).
 //   Query: after the X section, "T tin7 tin8 tin9 var7 var8 var9" (vars for row signatures, -1 = none).
 // Build: c++ -O2 -std=c++17 -o bin/sep3xt sep3xt.cpp
 // sep3x.cpp -- Job 29 L2: sep3 + oriented big-big transfer terms (exact branch and bound).
@@ -78,7 +79,7 @@ static int d, ui; static double thr; static int maxout;
 static vector<vector<double>> Bnd;   // Bnd[k][x*125+a0]
 static int wl[32], sl[32], code[32], vars[32]; static int a0;
 static vector<double> XV(140625, 0.0); static double XINMAX = 0.0; static bool HASX = false;
-static int FV[3][125][25][4]; static bool TMODE = false;      // Rule T
+static int FV[3][125][25][36]; static bool TMODE = false, TFULL = false;   // Rule T; TFULL = option F (z letters)
 static double TIN[3]; static int TVAR[3]; static vector<double> YV; static double W5[125][25];
 static int fvar[32];
 static vector<int> RES[33]; static int NRES[34];   // positions resolved at step i; NRES[i+1] = number resolved after step i
@@ -101,8 +102,10 @@ static inline double contrib(int j) {
     if (TMODE && wj == 0) {   // Rule T: the five's exact flag var, as a correction to the max used in the bound
         auto W_ = [&](int k) { return wl[((k % d) + d) % d]; }; auto S_ = [&](int k) { return sl[((k % d) + d) % d]; };
         int st = W_(j - 1) * 25 + S_(j - 1) * 5 + 0, c = S_(j) * 5 + W_(j + 1);
-        int fa = (W_(j + 1) == 1 && W_(j + 2) >= 2), fe = (W_(j - 1) == 1 && W_(j - 2) >= 2);
-        int v = FV[ui][st][c][fa * 2 + fe]; fvar[j] = v;
+        int fa, fe;
+        if (TFULL) { fa = W_(j + 1) == 1 ? W_(j + 2) + 1 : 0; fe = W_(j - 1) == 1 ? W_(j - 2) + 1 : 0; }   // z letter code 1..5
+        else { fa = (W_(j + 1) == 1 && W_(j + 2) >= 2); fe = (W_(j - 1) == 1 && W_(j - 2) >= 2); }
+        int v = FV[ui][st][c][fa * 6 + fe]; fvar[j] = v;
         if (v < 0) return -1e18;   // not a valid transition (pruned)
         return YV[v] - W5[st][c];
     }
@@ -297,9 +300,12 @@ int main(int argc, char **argv) {
         addFull(dd, P);
     }
     { char tb[4]; if (fscanf(f, "%3s", tb) == 1 && tb[0] == 'T') {
-        TMODE = true;
-        for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++)
-            for (int q = 0; q < 4; q++) if (fscanf(f, "%d", &FV[u][a][c][q]) != 1) return 15;
+        TMODE = true; TFULL = (tb[1] == 'F');   // "T": 4 flag vars (2 f_a + f_e); "TF": 36 (6 c_a + c_e, codes 0 = no 6, 1..5 = z letter)
+        for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++) {
+            for (int q = 0; q < 36; q++) FV[u][a][c][q] = -1;
+            if (TFULL) { for (int q = 0; q < 36; q++) if (fscanf(f, "%d", &FV[u][a][c][q]) != 1) return 15; }
+            else for (int q = 0; q < 4; q++) if (fscanf(f, "%d", &FV[u][a][c][(q >> 1) * 6 + (q & 1)]) != 1) return 15;
+        }
     } }
     fclose(f);
     fprintf(stderr, "sep: rule T %s\n", TMODE ? "on" : "off");
@@ -337,7 +343,7 @@ int main(int argc, char **argv) {
             if (!TMODE) { W[a][c] = AL[ui][a][c] ? (VA[ui][a][c] >= 0 ? y[VA[ui][a][c]] : 0.0) : -1e18; continue; }
             if (!AL[ui][a][c]) { W[a][c] = -1e18; continue; }
             double m5 = 0.0;
-            if (a % 5 == 0) { m5 = -1e18; for (int q = 0; q < 4; q++) { int v = FV[ui][a][c][q]; if (v >= 0) m5 = max(m5, y[v]); } }
+            if (a % 5 == 0) { m5 = -1e18; for (int q = 0; q < 36; q++) { int v = FV[ui][a][c][q]; if (v >= 0) m5 = max(m5, y[v]); } }
             W5[a][c] = m5;
             int wc = a % 5, sc = c / 5, wn = c % 5; double inflow = 0.0;
             if (sc == 0 && ((wc == 1 && wn >= 2) || (wc >= 2 && wn == 1))) inflow = TIN[max(wc, wn) - 2];
