@@ -7,7 +7,7 @@ engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative
 
 **K ≤ 1 (at most one big vertex in the configuration): closed.** Every discharging sender with one big
 neighbour is in the reducible set R, so the forbidden-pattern LP has t* ≤ 0 on that case. This rests on Lean for 46
-of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about 4.5 h on 4 cores, done ~16:00Z 18 Oct). **K = 2: open.**
+of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about 6 h). **K = 2: open.**
 The best LP bound is t* = 7/27 ≈ 0.259 (need ≤ 0). It did not move when big–big charge-sharing was added. The
 remaining binders are a small set of degree-7 receiver patterns whose kills lie beyond ring 16.
 
@@ -15,7 +15,7 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 
 | Piece | Status | Where |
 |---|---|---|
-| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for 2,702 of the 2,855-key Studio-D set (Job 24b, all clean). The 17 Oct outage cut off S2702–S2854 (153 keys), now re-running (~4.5 h on 4 cores) | `studio14/`, `dcheck/occ24/results24b.txt` |
+| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for 2,702 of the 2,855-key Studio-D set (Job 24b, all clean). The 17 Oct outage cut off S2702–S2854 (153 keys), now re-running (~6 h) | `studio14/`, `dcheck/occ24/results24b.txt` |
 | 47 deferred keys at rings 17–19 | 46 [L] (3 early + studio14c 43/43, d627087b); k19 (ring 19, 48.4M classes) [E2]: dfast18 and kc agree on classes 48,427,561, ext 3,909,279, D, depth 4 | `studio14b/`, `wheeldis/loop/kc/` |
 | kc validation (independent of dfast; no dfast, cfast or Lean source read) | 101 keys at rings 10–17 (82 not-D) + ring-18 D, all fields equal | `wheeldis/loop/kc/FINDINGS.md` |
 | w66666 C-reducible | [E2] computation in Lean (C66666.lean, native_decide) + Coq/Gonthier independent; C-glue (C-reducible ⇒ colourable) not formalized in Lean | `c66666/`, `dcheck/C66666.lean` |
@@ -24,7 +24,7 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 
 **Scope caveat.** A 2-ball's ring can fold in large maps. Until Job 26 proves Kempe matching for a face-boundary-walk
 ring, the K ≤ 1 claim covers appearances with a simple ring. Job 26 has proved FaceGlue (i) and Kempe matching for any face walk with distinct darts, so any number of pinches
-and folds (FaceWalk.ringTNC/kempeMatching, 758a293b; sabotage test rejects). Only (iii) is left; its first half compiles (DCheckOccWalk.lean: the checker theorems hold for an occurrence whose ring is only a face walk). All 49 ring 17–19 keys now compile in walk form (488bf3f7). Still to do: deriving dart-injectivity from the occurrence, and extracting the face walk
+and folds (FaceWalk.ringTNC/kempeMatching, 758a293b; sabotage test rejects). Only (iii) is left; its first half compiles (DCheckOccWalk.lean: the checker theorems hold for an occurrence whose ring is only a face walk). All 49 ring 17–19 keys now compile in walk form (488bf3f7). Dart-injectivity is now derived from the occurrence (41c2adbf; batch re-check running). Still to do: extracting the face walk
 from an appearing 2-ball and wiring it into colorable_of_occ_dred. It has a 20 Nov kill, and the fallback is to state the simple-ring hypothesis in the paper. The Track 1 hand
 argument (B2 + no separating triangle ⇒ injective, induced embedding) closes the gap on paper. Its Lean is Job 26 step 3a.
 
@@ -51,8 +51,9 @@ cfast agree that R16 (ring 16) is not C (best leftover 886); R17a/b are still ru
 
 - **A. Ring 17–18 windows at the binders.** These were dead on cost (dfast18: 60–70 min per ring-18 D). kc does ring 18
   in about 5 minutes, so this is cheap now. Running overnight 18 Oct (explore round 34). Claims still need dfast18.
-- **D. Defect-style search at each surviving binder** (round 18's method). It asks whether the row can occur near a
-  minimal counterexample at all. Cost: per-row, capped.
+- **D. Defect-style search at R's 16 fillings: done 18 Oct (round 42), and it fails.** After one ring of growth with
+  RSST plus two-engine kills forbidden, 160,552 of 250,000 cases survive, including every case with all privates ≥ 7. Together
+  with no D/C on R's patch to ring 15 (round 41), R is not forbiddable by known configurations, so it must be paid for by rules (E).
 - **E. Change the rule class** (Opus team, 18 Oct): send charge through 6s, which could void R's certificate
   without killing R. After explore's rounds 37–38 killed 1,140 frames at w2 (C on two engines), there is no positive hand bound left on what Rule T can buy (Opus, floor.py, rerun after a side-map fix; all kills used are conservative two-engine C). Studio's Job 30 part B is the deciding run. Also: RSST's 249 D configurations, already Lean-checked, remove every known K ≤ 4 defect but not R. H7's 1/21 floor is specific to its LP solution: its defect D3 contains RSST #110, D on two engines (explore 4b12ef00).
 - **C. Narrow.** State K = 2 as open with the evidence above. Track 1's paper becomes "K ≤ 1 closed by 2-ball
