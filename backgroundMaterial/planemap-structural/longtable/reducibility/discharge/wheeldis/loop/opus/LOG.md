@@ -273,3 +273,4 @@ our agent R and have no output from it.
   FEASIBLE d = 7..17 + DP + Karp]. The round 48 kills forbid the s13 binder, but a new 3-row dual appears at the same value:
   senders 66669 (3/5) and 56696 (1/5), and receiver d = 9 656566565/665656666 (1/5). Patterns: D 15,497, C 1,494, RPAT 158.
   s13r checks: lowerR VALID 217/1129, upperR FEASIBLE.
+- **Two-engine (22:13Z): Studio passes s14 at 1/5** (32c82928; args byte-identical, dcount exact, all 3 rows rebuild). [E2]
