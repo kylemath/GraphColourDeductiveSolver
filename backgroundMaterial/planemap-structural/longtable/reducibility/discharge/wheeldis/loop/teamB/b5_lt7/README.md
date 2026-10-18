@@ -18,3 +18,8 @@ starting after s6: (w0, w0, w1, w2, w5, w6).
 - Control (`rstar_control.py`): on R*'s non-zero cases (round 42 found each dead to RSST configurations) the test
   hits 300/300 sampled; it also hits 135/300 R* zero-score cases, as expected (configurations can appear anywhere).
 - One engine (our code). Studio's independent cross-check, as for R*, would make it two.
+
+**Two-engine check (23:55Z).** Studio's independent scoring (`studio_lt7_cases_31dc6d2e.txt`, copied from
+loop/studio/rsst_rules/rsst_lt7_cases.txt at 31dc6d2e) against ours, case by case: same 15,625 keys both ways
+(0 only-Studio, 0 only-ours), 0 charge mismatches with the privates in the same order; Studio's configuration count
+is >= 1 in every one of our 12,553 non-zero cases, and Studio has no non-zero case without a configuration.
