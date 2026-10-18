@@ -60,3 +60,14 @@
   - Today it loads 3 D (the k34 family) and 1 C (the window above).
   - Excluded: f7_..57556_...65.. and f7_..57556_...66.. (C on both engines, but with different X), and 1 window
     that only one engine has seen.
+
+## 10:05Z: explore's dropped list (loop/drop/dropped.txt, 7 windows) and fixed-X agreement
+- The list equals my audit plus three windows that arrived later. Nothing is missing on either side.
+- f7_..57556_...65.. (11) and f7_..57556_...66.. (12): kc -C -x with Studio cfast's X {R0-I0,I0-I1,I0-I3,I3-I7}
+  accepts it with leftover 0 (loop/k37/lt_cfastX.kc). twoeng.py now reads kc fixed-X lines.
+- f7_5567576_.....5. (13): cfast's search finds a size-4 X, and kc finds {I0-I4}. Studio `cfast --fixed I0-I4` gives
+  C-REDUCIBLE, leftover 0, on both of explore's lines (loop/k3studio/c5_fixedX.cfast). twoeng.py now reads cfast
+  fixed-X lines. Rule: some single X accepted by both engines.
+- twoeng now loads all 7 (3 D, 4 C).
+- `matchtest.py`: sep3xf against an independent Python matcher on 140 frames per window (all dihedral images, half
+  matching and half with one slot broken): 587 frames that the base allows, 0 mismatches.
