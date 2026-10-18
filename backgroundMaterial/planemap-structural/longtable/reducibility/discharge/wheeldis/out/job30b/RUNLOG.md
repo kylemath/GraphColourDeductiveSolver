@@ -120,3 +120,12 @@ This reworks the parked draft (studio/job30-ruleT-wip, 97bbe5d7).
 - T = 0 with flags merged (notx, round-13 registry, warm tight_13): **t* = 7/27, with the j28_13 dual reproduced
   exactly**: 10/27 sender 55667, 5/27 sender 55767, 2/27 sender 77777, 10/27 receiver d = 7 5675765/6577575.
   (The sender rows are printed with their flag bits; merged flags make the bit rows duplicates.)
+
+## Run B launch (18 Oct ~17:25Z, Long Table 17:16Z: start B now, in parallel with A)
+- Model: wlp3xt (option B, Rule T) + L2 transfers (xcap 3).
+- Registry: A's (run29b's + addA) + twoeng at launch (3 D, 11 C, now including the two n1 C windows
+  f7_.557657_.56.77. and f7_5567567_56.77.6, 8fd1fe03 / a2c5e767) + k42map_C.cfast (12 windows, 2 of them [E2, broad X]).
+- Warm start: A's latest row dump (out/wlp3x_j30A_x_rows.txt, iteration 5, 103,736 rows); each row is re-checked by sep `c`.
+- H30B: t*(A+T) < t*(A). Kill line: t*(A+T) = t*(A), with FEASIBLE (feascheckt).
+- A is capped at iteration 20 (capA.sh). The A snapshot (re-solve of A's iteration-5 rows + exhaustive feascheck) runs
+  in parallel (snapA.sh).
