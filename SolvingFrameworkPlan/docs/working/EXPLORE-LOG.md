@@ -33,6 +33,29 @@ relay row is paused at 1526 of 2212 windows.
 - **Guess.** The receiver dies at ring <= 14 (it already does). 66669's coverage is under 5% (no 5 in the wheel apart
   from the centre, so RSST configurations need several ring-2 fives). 56696's is 30-60%.
 
+**Result, receiver and s14 contexts (22:42Z; 2201 of 2201 windows, 0 mismatches).** Hypothesis confirmed.
+- d = 9 656566565/665656666: 100 two-engine kill windows (31 D, 69 C), first at ring 13. They have 85 distinct f-names,
+  and twoeng gives 30 D and 55 C with the same X on both engines. Inclusion-minimal: 16 windows, 11 f-names, all C (5
+  at ring 13, 6 at ring 14). Ring 13: f9_...565656_......56., f9_...565665_......5.., f9_...565665_....56... and
+  f9_..5656565_......... . Twoeng-ready: `loop/k47/r9c_kills*`.
+- Sender wheels in this row: 56696 at w3 is in 31 of its 83 wheel windows' kills, smallest at ring 13 (C,
+  a9_u.565665.._..56.....). 66669 has kills at all three places, each smallest at ring 14 (C): w1 4 of 29, w6 3 of 19,
+  w8 4 of 20.
+
+**Result, senders' one-ring contexts (22:44Z; `loop/k46/grow49_<word>.txt`).** Guess half right: 56696 is in range, but
+66669 is well above 5% overall. Only its contexts with no 5 are that low. Covered = some verified RSST configuration
+appears in the 2-ball (a 9 is never an exact image).
+- Both words have their 9 in the link already (it is u in the receiver). So Long Table's 9 column counts fillings
+  with a 9 in ring 2.
+
+| sender | fillings | all | with a 5 in ring 2 | no 5 | all >= 7 | with a 9 in ring 2 |
+|---|---|---|---|---|---|---|
+| 56696 | 390,625 | 49.2% | 57.6% | 7.4% | 0% | 46.3% |
+| 66669 | 1,953,125 | 29.9% | 34.1% | 3.0% | 0% | 27.4% |
+
+- The pattern is the same as rounds 46 and 48: contexts with a 5 in ring 2 die often, and those without one almost never
+  do. A 9 in ring 2 lowers coverage only a little.
+
 ## Round 48 (18 Oct 2026, 21:48Z-): H-R15, does the 1/5 receiver die, and how much of its senders' one-ring contexts can patterns cover?
 
 **Pre-registered 21:48Z, before any new engine run on these targets.** Gap G2. Long Table, 21:47Z: on aee20e3b, Opus's
