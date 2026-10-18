@@ -80,3 +80,8 @@ programme owns. Runs beside B2.
   v0 above the old wheel-level 3/5: the channels add nothing at wheel level.
 - **Guess.** v0 around 0.3-0.4 (channels help wheel-level a lot); v1 between 0.1 and 0.2, binding at a 6 or at w2-type
   7s that take hand-offs.
+
+**B1 confirmation (18:34Z): [E2].** Studio scored R*'s 250,000 cases with its own code straight from discharge.v
+(commits bc3e3470, a3b52bb7, loop/studio/rsst_rules/). Its result matches `nonzero.txt` exactly: 24,375 cases, an
+empty set difference in both directions, and 0 charge mismatches. Erratum to my 18:30Z note to the coordinator: I
+called case 66565565 +1, but it has p4b = 6, so it scores 0 and is not in `nonzero.txt`.
