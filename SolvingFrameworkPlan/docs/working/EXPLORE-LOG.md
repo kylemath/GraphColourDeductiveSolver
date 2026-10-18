@@ -36,6 +36,11 @@ main line (round 49). Queued after round 49, 3 cores.
   explore name that twoeng accepts. It is reported separately for RSST alone and for RSST plus explore. Guess: 20-40%
   covered, about 0% of the cases with no private 5.
 
+**Note 23:28Z (Long Table, 23:27Z).** The new main-line receiver, d = 7 7665566/6665766 (s16, ab3f252b, 2/5), is
+7665566/6675666 reflected (w_i -> w_-i, s_i -> s_-i-1). Both have canonical key 5566766/5666667, so they are the
+same row. Its ring <= 14 result is therefore already known: no kill in 864 windows. The census and the ring 15-16
+sweep above serve both lines. New order (q50d.sh): census, then the d = 7 ring 15-16 sweep, then the d = 10 row.
+
 ## Round 49 (18 Oct 2026, 22:11Z-): H-R9, does the d = 9 receiver of the new 1/5 dual die, and how far do patterns reach its senders?
 
 **Pre-registered 22:11Z, before any new engine run on these targets.** Gap G2. Long Table, 22:09Z: with round 48 loaded
