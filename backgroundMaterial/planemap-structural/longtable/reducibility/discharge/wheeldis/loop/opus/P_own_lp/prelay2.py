@@ -1,14 +1,19 @@
 # prelay2.py (Opus P_own_lp, stage 12): 6-centred relay R6x2 (spec in FINDINGS.md stage 12).  exec'd in pcheck.py.
 AP = 'noapex' not in FLAGS          # validation V1: noapex = s10's class
+AC = 'apexcls' in FLAGS             # reduced s12: apex letters read only as small (5) / big (7) witnesses
+def ap(x): return (7 if x >= 7 else 5) if AC else x
 def g2_of(n1, n2, n3, n4, n5, ar, al):
+    ar, al = ap(ar), ap(al)
     a = (n1, c2(n2), c2(n3), c2(n4), n5) + ((ar, al) if AP else ())
     b = (n5, c2(n4), c2(n3), c2(n2), n1) + ((al, ar) if AP else ())
     return min(a, b)
 def h2_of(m, ar, al):
     """m = the 6's link rotated to start at the big; ar = apex beyond (m0, m1), al = apex beyond (m5, m0)"""
+    ar, al = ap(ar), ap(al)
     a = tuple(m) + ((ar, al) if AP else ()); b = (m[0],) + tuple(reversed(m[1:])) + ((al, ar) if AP else ())
     return min(a, b)
 def sig2_of(U, wr, sr, sl, wl, wrr, wll):
+    wrr, wll = ap(wrr), ap(wll)
     a = (U, wr, sr, sl, wl) + ((wrr, wll) if AP else ()); b = (U, wl, sl, sr, wr) + ((wll, wrr) if AP else ())
     return min(a, b)
 def sig2_keys(sig):

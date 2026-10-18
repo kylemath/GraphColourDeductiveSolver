@@ -274,3 +274,10 @@ our agent R and have no output from it.
   senders 66669 (3/5) and 56696 (1/5), and receiver d = 9 656566565/665656666 (1/5). Patterns: D 15,497, C 1,494, RPAT 158.
   s13r checks: lowerR VALID 217/1129, upperR FEASIBLE.
 - **Two-engine (22:13Z): Studio passes s14 at 1/5** (32c82928; args byte-identical, dcount exact, all 3 rows rebuild). [E2]
+- **P2 s14r (22:30Z): the relay class on 42c4c876 + r_5..r_8 gives t* = 19/102 = 0.1863**, down from 217/1129 [own
+  checkers; lowerR VALID with 25 rows; upperR FEASIBLE, 0 sender and 0 conservation violations, d = 7..17 exhaustive, Karp
+  d0 12.02; 53 iterations, 978 s].
+  - Receivers: d = 7 7665566/6675666 (0.2353), d = 9 656565665/665666566 (0.0523), d = 10 6556656556/6665656665 (0.0163),
+    and d = 9 656656665/665555555 (0.0131).
+  - Senders: 55667, 66669, 55767, 56696, 56669, 55696.
+  - Files are in `P_own_lp/s14/`.
