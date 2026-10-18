@@ -24,8 +24,15 @@ This reworks the parked draft (studio/job30-ruleT-wip, 97bbe5d7).
 
 ## Counts
 - 1,356 Y and 1,194 sender rows: both equal Opus's option-B counts.
-- 444 T vars vs Opus's 504. I merge T keys of reflection-symmetric roots ((B, 6, b, b, 6) with swapped flags and side);
-  that probably accounts for the difference.
+- 444 T vars vs Opus's 504 (resolved, `loop/studio/tc/tdiff.py`, `tdiff.out`). The difference is a side-label slip in
+  tcount_flag.py: it appends the side after `key()` has possibly reflected the word, so 201 reflected roots get the
+  wrong side.
+  - Its T2 contains 231 impossible keys, e.g. ((7,5,5,7,6), 0, 1, 'a'): a T across side a, whose letter is 5.
+  - Recomputing Opus's own enumeration with the physical side carried through the reflection gives exactly
+    Studio's 444 keys.
+  - All 444 Studio keys have the side letter 6 and that side's flag set.
+  - Explicit pairs: (7,6,6,5,5) across side a → ((7,5,5,6,6), 0, 1, 'e'); (8,6,7,5,5) → ((8,5,5,7,6), 0, 1, 'e');
+    (7,6,5,6,6) → itself, side a.
 
 ## Validation
 - (2) z reads what the five sends (TCHECK): every T var (444) is receivable at its z through the inflow table, and every
@@ -42,4 +49,4 @@ This reworks the parked draft (studio/job30-ruleT-wip, 97bbe5d7).
 ## Run B (after A converges): A's registry plus round 38 (twoeng glob), L2 + Rule T, warm from A's final rows
 - H30B: t*(A+T) < t*(A).
 - Kill: t*(A+T) = t*(A) with FEASIBLE.
-- Exactness: B needs a T-aware feascheck before any claim; I'll write it while A runs.
+- Exactness: `feascheckt.py` (exhaustive sep3xt, letter-9 DP, Rule T sender rows) on B's solution must print FEASIBLE.
