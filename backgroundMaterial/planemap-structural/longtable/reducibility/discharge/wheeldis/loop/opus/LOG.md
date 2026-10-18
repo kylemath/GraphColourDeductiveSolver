@@ -269,3 +269,7 @@ our agent R and have no output from it.
     (argsA46_r58) the s13 binder is still admissible.
   - So 1/5 holds from both sides on the full registry.
 - **P2 s13r: the relay on aee20e3b gives 217/1129, unchanged from s10, with the same binders.**
+- **P2 s14 (22:15Z): main line on 42c4c876 (+ job28 r_5..r_8) stays at t* = 1/5** [E, our engine; lower VALID; upper
+  FEASIBLE d = 7..17 + DP + Karp]. The round 48 kills forbid the s13 binder, but a new 3-row dual appears at the same value:
+  senders 66669 (3/5) and 56696 (1/5), and receiver d = 9 656566565/665656666 (1/5). Patterns: D 15,497, C 1,494, RPAT 158.
+  s13r checks: lowerR VALID 217/1129, upperR FEASIBLE.

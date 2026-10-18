@@ -164,7 +164,9 @@ def cmd_solveR2():
     if 'structonly' in FLAGS: return h, cols, info, conset, RW, SR
     T0 = time.time(); rowlog = open(os.path.join(HERE, 'rows_%s.txt' % OPT.get('tag', 'run')), 'w')
     for it in range(MAXIT):
-        t1 = time.time(); h.run(); xv = np.array(h.getSolution().col_value); t = xv[jt]
+        t1 = time.time()
+        if 'ipm0' in FLAGS: h.setOptionValue('solver', 'ipm' if it == 0 else 'simplex')
+        h.run(); xv = np.array(h.getSolution().col_value); t = xv[jt]
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         GV = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'g'}; HV2 = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'h'}
         xd = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'x' and xv[i] > 1e-12}
