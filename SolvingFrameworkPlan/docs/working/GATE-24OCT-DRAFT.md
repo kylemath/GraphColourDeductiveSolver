@@ -8,8 +8,8 @@ engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative
 **K ≤ 1 (at most one big vertex in the configuration): closed.** Every discharging sender with one big
 neighbour is in the reducible set R, so the forbidden-pattern LP has t* ≤ 0 on that case. This rests on Lean for 46
 of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about 6 h). **K = 2: open.**
-The best LP bound is t* = 7/27 ≈ 0.259 (need ≤ 0). It did not move when big–big charge-sharing was added. The
-remaining binders are a small set of degree-7 receiver patterns whose kills lie beyond ring 16.
+The best LP bound is t* = 1/4 (need ≤ 0), down from 7/27 on 18 Oct once kills outside the old binding pattern
+were allowed into the LP. The binder is now a degree-8 receiver pattern; rule-class extensions (Rule T, a 6-relay channel) are running.
 
 ## K ≤ 1 evidence
 
@@ -35,6 +35,7 @@ argument (B2 + no separating triangle ⇒ injective, induced embedding) closes t
 | Job 28 rounds 1–12 | 5/17 → 13/49 | loop: find patch, kill with B-fixed D/C at ring ≤ 16 |
 | Round 13 (+ win14, win8, win89) | 7/27 | binder d=7 5675765/6577575 |
 | Job 29 L2: oriented big–big transfers, full registry (16,411 patterns) | 7/27 exactly [E2] | upper bound by an exhaustive separation of the x=0 solution; lower bound by row generation (feascheck.py). Charge-sharing adds nothing on this pattern set. Upper side independently checked (Opus J_lp_checker, own separation code, all d = 7..30 plus Karp tail; float primal, no exact-rational recheck yet) |
+| 18 Oct: run A's 12 whole-arrangement kills + 2 ring-16 C + 10 k42map windows, L2 | **1/4 exactly [E2]** | Opus's LP engine + Studio feascheck and row rebuild (d64c8442). Binder moves to d=8 receiver 85556565/65866655 with senders 55688, 66668, 55858, 58668 |
 | Explore rounds 24–32 | (restricted-LP values were under-separated; superseded) | ~30 binding rows forbidden; all windows second-engined |
 
 What blocks K = 2 [E]: one row. The 7/27 certificate is a single receiver row R = d7 5675765/6577575, whose
