@@ -116,3 +116,13 @@ Pre-registered before any probe ran.
   floor.py with conservative-X kills only (round 37's two cwin windows + f7_5566757 + f7_5667576, file
   `H_floor_check/kills_conservative_r38.txt`) and with all round 37-38 kills: both give no positive floor (-1/11),
   binding 7667575 / 5557777 at w2 and w4. (floor.py's "killed" count is of its dominance-ordered scan, not a total.)
+- **Explore rounds 39-41 (via the coordinator, 11:00Z).** Round 39: R* + p5 = 7 (w6's rootings sharing one variable),
+  0 D / 0 C on 16 windows at rings 16-17 including both ring-17 windows covering all 16 fillings; best leftover 608.
+  That arrangement stands at ring <= 17. Round 40: kc -C2 vs cfast, 0 mismatches on 483. Round 41: kc -C over C's
+  1,383 sub-patch windows of R* at ring <= 15, 1,131 done, all not D and not C.
+
+## Round O2 (11:35Z-): checker and the last w2 frame
+
+- J: an independent checker of the LP bound (dual certificate and its own exhaustive primal separation, T-aware),
+  validated on 7/27, for Job 30 parts A and B. K: kill w2 frame 7696575 / 5555977 (s1 = 9, first-order binder after
+  round 38) at rings 16-18, w2-centred and not, kc D and kc -C conservative, second engine on any hit.
