@@ -132,3 +132,8 @@ Pre-registered before any probe ran.
   always dies (RSST 122.126, conservative two-engine), so w6's z-letter p5 >= 6 in R*. p1 = 5 dies only by RSST 2.126
   (C, broad X only), so conservatively p1 = 5 survives except at s1 = 7 with p2a = 5. Survivors: loop/k42/cases_cons.txt.
 - **J's upper side waits on Studio's full-precision 7/27 solution** (Studio is pushing it, 11:43Z).
+- **K (12:05Z): w2 frame 7696575 / 5555977 survives every window tested at rings 6-18** (`K_frame_kill/FINDINGS.md`)
+  [E, kc D and kc -C conservative]. 819 windows (connected subsets of the frame's 13 known vertices, w2-centred and
+  five-clusters); tested 351/351 at rings 6-14, 40/131 at 15, 21/143 at 16, 6/117 at 17, 1/62 at 18: 0 D, 0 C. Best C
+  leftover rises with ring (1,162; 2,782; 6,402; 20,140). H-K dies by its kill line (0 hits of 28 at rings 16-18).
+  Reading [I]: killing it needs letters beyond the frame, split into cases, like R* itself.
