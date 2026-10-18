@@ -1,6 +1,25 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
-## Check (18 Oct 2026, 09:44Z): does H7's defect D3 contain RSST #110? (coordinator, 09:22Z) Yes, and it is D on kc
+## Round 37 (18 Oct 2026, 09:47Z-): H-W37, is w2's worst frame reducible? (coordinator's go, 09:42Z)
+
+**Pre-registered 09:47Z, before any code.** Gap G2. Uses the core freed by the broad C run.
+- **Why.** Round 36's cap T_max = 0.1506 at s1 = 6 comes from one link word at w2, 7665575, with s-words
+  5.65677, 5.65777, 5.66677, 5.65877 and 5.65977 (bounds 0.151-0.167). The next link word, 7665675, gives
+  0.1852, and s1 >= 7 gives 0.1924. Killing those five frames raises the w2/w4 cap to 0.1852. Then the first-order
+  R row is t >= 0.122 at (6,6).
+- **Windows.** Centre w2 (degree 7), the whole link 7665575 at exact letters, and any subset of the s-slots s'0 = 5,
+  s'5 = 7, s'6 = 7, and (x2, x3, x4) taken from the five target patterns (6,5,6), (6,5,7), (6,6,6), (6,5,8),
+  (6,5,9+). A 9+ slot can only be left open. Windows are deduplicated under the link's symmetry, built with gen28,
+  and run in ring order up to 18.
+- **Engines.** kc D, with each D re-run on dfast (ring <= 16) or dfast18. kc -C on every not-D window: a C there is
+  one engine, and cfast at Studio is the second.
+- **Bars.** All five frames die: the cap at s1 = 6 rises to 0.1852. Only the x3 = 5 frames (the three-five
+  triangle) die: the cap rises to 0.1637, the 5.66677 frame. None die: the 0.15 cap stands.
+- **Kill line.** Any kc/dfast mismatch.
+- **Guess.** The x3 = 5 windows with x2, x4 fixed are D at ring <= 15 (three mutually adjacent fives beside two 6s
+  are crowded). The 5.66677 frame is not D but C.
+
+## Check (18 Oct 2026, 09:43Z): does H7's defect D3 contain RSST #110? (coordinator, 09:22Z) Yes, and it is D on kc
 
 This is a verification check, so it was not pre-registered. It used my own containment code
 (`loop/d3/d3_rsst.py`), not `rsst_contain.py` or Opus's `rsst_in_defect.py`.
