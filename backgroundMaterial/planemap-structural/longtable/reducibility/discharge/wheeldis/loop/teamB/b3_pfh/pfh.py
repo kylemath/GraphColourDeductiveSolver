@@ -30,6 +30,7 @@ OPTS = {a.split('=')[0]: (a.split('=')[1] if '=' in a else True) for a in ARGS}
 USE_P = 'noP' not in OPTS
 USE_H = 'noH' not in OPTS
 DEX = int(OPTS.get('dex', 15))
+LIMIT = int(float(OPTS.get('limit', 2e7)))
 
 
 def isRbig(w):
@@ -326,7 +327,7 @@ def wbest(c, x):
     return best, bk
 
 
-def sepb_query(d, x, thr, many):
+def sepb_query(d, x, thr, many, limit=0):
     U = min(d, 9)
     T = wcands(U)
     vals = []
@@ -339,12 +340,13 @@ def sepb_query(d, x, thr, many):
         for wd in itertools.product(L, repeat=7):
             hv.append('%.12f' % (sum(val(x, ('h', rooted(list(wd), j))) for j in range(7) if wd[j] >= 7) if USE_H else 0.0))
         SEPB.stdin.write('H\n%s\n' % ' '.join(hv))
-    SEPB.stdin.write('Q %d %.12f %d\n' % (d, thr, many))
+    SEPB.stdin.write('Q %d %.12f %d %d\n' % (d, thr, many, limit))
     SEPB.stdin.flush()
     out = []
     while True:
         f = SEPB.stdout.readline().split()
         if f[0] == 'END':
+            sepb_query.trunc = (f[2] == 'TRUNC')
             return out
         v, ws, ss = float(f[1]), f[2], f[3]
         wv = [int(c) for c in ws]; sv = [int(c) for c in ss]
@@ -416,7 +418,9 @@ def main():
         prep7()
     seen = set()
     it = 0
+    full = False      # REG: node-limited separation until a pass finds nothing, then one exhaustive pass
     while True:
+        trunc = []
         x, t, res = solve(rows)
         new = 0
         worst = {}
@@ -432,7 +436,12 @@ def main():
                 worst['6'] = max(worst.get('6', -9), vv - t)
         if REG:
             for d in range(7, DEX + 1):
-                res_ = sepb_query(d, x, d - 6 + t + 1e-9, 60)
+                tq = time.time()
+                res_ = sepb_query(d, x, d - 6 + t + 1e-9, 60, 0 if full else LIMIT)
+                if sepb_query.trunc:
+                    trunc.append(d)
+                if time.time() - tq > 20:
+                    print('  slow query d=%d %.0fs' % (d, time.time() - tq), flush=True)
                 worst[d] = (res_[0][0] - (d - 6) - t) if res_ else 0
                 for v_, tm, ws, ss in res_:
                     key = (d, tuple(sorted(tm)))
@@ -442,10 +451,14 @@ def main():
                         LASTARR[key] = (ws, ss)
                         new += 1
             it += 1
-            print('it %d t=%.6f rows=%d vars=%d new=%d worst=%s (%.0fs)' % (
-                it, t, len(rows), len(VARL), new, {k: round(v, 4) for k, v in worst.items()}, time.time() - t0), flush=True)
+            print('it %d t=%.6f rows=%d vars=%d new=%d worst=%s trunc=%s full=%s (%.0fs)' % (
+                it, t, len(rows), len(VARL), new, {k: round(v, 4) for k, v in worst.items()}, trunc, full, time.time() - t0), flush=True)
             if new == 0:
-                break
+                if full or not trunc:
+                    break
+                full = True
+            else:
+                full = False
             continue
         # d = 7 (explicit, with hand-off out)
         v7, tm7, w7 = best7(x, thr=1 + t + 1e-9)

@@ -4,21 +4,39 @@
 // by the caller; -inf = forbidden window). For d = 7 the leaf also pays H_OUT(word) (u's hand-offs; >= 0, so the
 // bound stays an upper bound) and words in RBIG7 are skipped. A pattern = slot masks over w (slot i) and s (slot
 // d + i); all 2d dihedral images are stored; an arrangement matching any image at every slot is forbidden.
-// Protocol (stdin): "T U" + 3125 doubles | "H" + 78125 doubles | "Q d thr many" -> lines "R val wword sword", "END n".
+// Protocol (stdin): "T U" + 3125 doubles | "H" + 78125 doubles | "Q d thr many limit(0 = none)" -> lines "R val wword sword", "END n".
 #include <bits/stdc++.h>
 using namespace std;
 static const double NEG = -1e300;
 double W[10][3125];
 double HOUT[78125];
 bool RB7[78125];
-struct Pat { int d; vector<pair<int,int>> sm; };
-vector<Pat> pats[40];
 int d_, U_; double thr_; size_t many_;
 int w[40], s[40];
-long long nodes;
+struct Pat { int d; vector<pair<int,int>> sm; };
+vector<Pat> pats[40];
+// images grouped by slot set; each group stores the sorted codes of every letter tuple it forbids, and is checked
+// at the DFS step where its last slot is assigned (step 0 = the fixed outer triple)
+long long nodes, limit_; bool trunc_;
 double G[41][125];
 priority_queue<double, vector<double>, greater<double>> heap;
 vector<tuple<double,string,string>> found;
+struct Grp { vector<int> sl; vector<unsigned long long> codes; int ord; };
+vector<Grp> grps[40];
+vector<int> bucket[40][80];
+inline int slot_order(int d, int sl) {
+  if (sl < d) { int i = sl; if (i == 0 || i == d - 1) return 0; return 2 * (i - 1) + 2; }
+  int i = sl - d; if (i == d - 1) return 0; return 2 * i + 1;
+}
+inline bool hit(int b) {
+  for (int gi : bucket[d_][b]) {
+    auto &g = grps[d_][gi];
+    unsigned long long c = 0;
+    for (int sl : g.sl) c = c * 5 + (sl < d_ ? w[sl] : s[sl - d_]);
+    if (binary_search(g.codes.begin(), g.codes.end(), c)) return true;
+  }
+  return false;
+}
 inline int wc(int a, int b, int c, int e, int f) { return (((a*5+b)*5+c)*5+e)*5+f; }
 double bar() { return (heap.size() >= many_) ? max(thr_, heap.top()) : thr_; }
 bool forbidden() {
@@ -38,6 +56,7 @@ int a0w1, a0s1, a0w0;   // fixed w_{d-1}, s_{d-1}, w_0
 void dfs(int i, double acc) {
   // here w_0..w_i and s_0..s_{i-1} assigned (plus w_{d-1}, s_{d-1}); next choose s_i then w_{i+1}
   nodes++;
+  if (limit_ && nodes > limit_) { trunc_ = true; return; }
   int d = d_;
   if (i == d - 1) {
     // s_{d-1}, w_{d-1} fixed; add contribution of position d-1 (w_{d-2}, s_{d-2}, w_{d-1}, s_{d-1}, w_0) and 0
@@ -51,7 +70,6 @@ void dfs(int i, double acc) {
       tot -= HOUT[code];
     }
     if (tot <= bar()) return;
-    if (forbidden()) return;
     string ws, ss;
     for (int k = 0; k < d; k++) { ws += char('5'+w[k]); ss += char('5'+s[k]); }
     found.emplace_back(tot, ws, ss);
@@ -61,10 +79,12 @@ void dfs(int i, double acc) {
   for (int sc = 0; sc < 5; sc++) {
     if (i == 0) {} // s_0 free
     s[i] = sc;
+    if (hit(2 * i + 1)) continue;
     int wnmax = (i + 1 == d - 1) ? 1 : 5;
     for (int wn = 0; wn < wnmax; wn++) {
       int wnext = (i + 1 == d - 1) ? a0w1 : wn;
       w[i+1] = wnext;
+      if (i + 1 < d - 1 && hit(2 * i + 2)) continue;
       double acc2 = acc;
       if (i >= 1) {
         double c = W[U_][wc(w[i-1], s[i-1], w[i], s[i], w[i+1])];
@@ -83,6 +103,7 @@ int main(int argc, char** argv) {
   // argv[1] = pattern file, argv[2] = RBIG7 file (raw 7-letter words, letters 5..9)
   ifstream pf(argv[1]); int d, n;
   int npat = 0;
+  static map<vector<int>, int> gidx[40];
   while (pf >> d >> n) {
     vector<pair<int,int>> sm(n);
     for (auto &q : sm) pf >> q.first >> q.second;
@@ -100,9 +121,32 @@ int main(int argc, char** argv) {
       vector<pair<int,int>> v(m.begin(), m.end());
       imgs.insert(v);
     }
-    for (auto &v : imgs) { pats[d].push_back({d, v}); }
+    for (auto &v : imgs) {
+      pats[d].push_back({d, v});
+      vector<int> sl; for (auto &q : v) sl.push_back(q.first);   // map keeps slots sorted
+      auto it = gidx[d].find(sl);
+      int gi;
+      if (it == gidx[d].end()) {
+        gi = grps[d].size(); gidx[d][sl] = gi;
+        int b = 0; for (int x : sl) b = max(b, slot_order(d, x));
+        grps[d].push_back({sl, {}, b}); bucket[d][b].push_back(gi);
+      } else gi = it->second;
+      // expand masks into codes
+      vector<unsigned long long> cur{0};
+      for (auto &q : v) {
+        vector<unsigned long long> nx;
+        for (auto c : cur) for (int l = 0; l < 5; l++) if ((q.second >> l) & 1) nx.push_back(c * 5 + l);
+        cur.swap(nx);
+      }
+      auto &cv = grps[d][gi].codes; cv.insert(cv.end(), cur.begin(), cur.end());
+    }
     npat++;
   }
+  size_t ncode = 0;
+  for (int dd = 0; dd < 40; dd++) for (auto &g : grps[dd]) {
+    sort(g.codes.begin(), g.codes.end()); g.codes.erase(unique(g.codes.begin(), g.codes.end()), g.codes.end()); ncode += g.codes.size();
+  }
+  fprintf(stderr, "sepb: %zu forbidden codes\n", ncode);
   ifstream rf(argv[2]); string ww;
   while (rf >> ww) { int code = 0; for (char c : ww) code = code*5 + (c - '5'); RB7[code] = true; }
   fprintf(stderr, "sepb: %d patterns loaded\n", npat);
@@ -112,7 +156,7 @@ int main(int argc, char** argv) {
     if (cmd == "T") { int u; cin >> u; for (int k = 0; k < 3125; k++) { double x; cin >> x; W[u][k] = (x < -1e200) ? NEG : x; } }
     else if (cmd == "H") { for (int k = 0; k < 78125; k++) cin >> HOUT[k]; }
     else if (cmd == "Q") {
-      cin >> d_ >> thr_ >> many_;
+      cin >> d_ >> thr_ >> many_ >> limit_; trunc_ = false;
       U_ = min(d_, 9) - 5 + 5;  // letter value 7..9 used as index
       U_ = min(d_, 9);
       nodes = 0; found.clear(); heap = decltype(heap)();
@@ -151,13 +195,15 @@ int main(int argc, char** argv) {
         // G[1][(w_0, s_0, w_1)] : positions 1..d-2 + close. Start DFS at i = 0 (choose s_0, w_1).
         double ub = NEG;
         for (int st = 0; st < 125; st++) if (st / 25 == a0w0) ub = max(ub, G[1][st]);
+        if (trunc_) break;
         if (ub <= bar()) continue;
+        d_ = dd; if (hit(0)) continue;
         dfs(0, 0.0);
       }
       sort(found.begin(), found.end(), [](auto &x, auto &y){ return get<0>(x) > get<0>(y); });
       size_t k = 0;
       for (auto &f : found) { if (k++ >= many_) break; printf("R %.12f %s %s\n", get<0>(f), get<1>(f).c_str(), get<2>(f).c_str()); }
-      printf("END %lld\n", nodes); fflush(stdout);
+      printf("END %lld %s\n", nodes, trunc_ ? "TRUNC" : "FULL"); fflush(stdout);
     }
   }
 }
