@@ -15,6 +15,16 @@ receivers d = 7 8655675/5756585 (2/9) and d = 8 75576556/78756665 (1/9), and sen
   Kill line: neither does.
 - **Guess.** Both die at ring <= 14 (about 75% each), as every receiver since round 43 has.
 - **Then.** The four senders in their cert_s9 contexts, as round 46 part A.
+- **Part B (added 21:04Z, before any part-B run).** Long Table, 21:03Z: Opus's 6-relay class on the same registry gives
+  217/1129 (about 0.192) on one engine (0de80394), with different receivers. They matter if the relay becomes the main
+  line: d = 7 7765556/6575766 (0.149) and 7766556/6566575 (0.140), and d = 9 656565665/665666566 (0.035). Round 44's
+  eligible patterns miss all three. Windows at ring <= 14: 816, 899 and 2212. Same engines, hypothesis (at least one
+  row dies at ring <= 14) and kill line (none does). They run after part A's two rows. Guess: the two d = 7 rows die
+  (about 70% each). The d = 9 row is less likely (about 50%), since it has only four fives, none adjacent.
+- **Senders.** All seven cert_s9 sender contexts sit inside part A's two rows (55767 at w2 and 55667 at w3 of the
+  d = 7 row; 58778 at w6 of it and at w1, w2 of the d = 8 row; 56668 at w5, w6 of the d = 8 row). So part A's sweep
+  covers them, and `ctx47.py` reads off kills that contain each wheel. A 58778 wheel alone has ring 15, so it has no
+  window at ring <= 14. Its contexts need ring 15-16 windows, which run last.
 
 ## Round 46 (18 Oct 2026, 20:51Z-): H-SEND, do the two senders carrying 11/47 die to windows around them?
 
