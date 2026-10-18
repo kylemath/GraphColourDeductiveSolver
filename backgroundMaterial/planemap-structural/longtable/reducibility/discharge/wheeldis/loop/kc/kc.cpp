@@ -319,7 +319,7 @@ static int ufp[80];
 // are two apart on the ring and the ring vertex between them is adjacent to all three inner vertices of P (then that
 // vertex alone could fill one side).  Any other shape (a ring vertex inside P) is refused.  A ring colouring is in
 // C'(X) only if it gives the ring vertices of each component one colour.
-static bool BROAD = false;
+static bool BROAD = false; static int LMAX = 4;   // -L k: refuse ring pairs at X-distance > k (experiments)
 static int uff(int x) { while (ufp[x] != x) x = ufp[x] = ufp[ufp[x]]; return x; }
 // builds K/X; returns false if X is not admissible
 static bool build_kx(const vector<int> &X, KX &K) {
@@ -348,6 +348,7 @@ static bool build_kx(const vector<int> &X, KX &K) {
         for (int k2 = k + 1; k2 < n; k2++) {
             if (uff(m + k2) != r) continue;
             int l = dist[m + k2];
+            if (l > LMAX) return false;
             if (l <= 3) continue;
             vector<int> inner; for (int v = par[m + k2]; v != m + k; v = par[v]) inner.push_back(v);
             for (int v : inner) if (v >= m) return false;
@@ -422,10 +423,11 @@ static bool parse_x(const string &xs, vector<int> &X) {   // "{R0-I0,I2-I3}" -> 
 }
 
 int main(int argc, char **argv) {
-    bool jacobi = false, verbose = false, cmode = false; string ckpt, xfile; double tbudget = 1e18, saveint = 600; string inpath;
+    bool jacobi = false, verbose = false, cmode = false, countonly = false; string ckpt, xfile; double tbudget = 1e18, saveint = 600; string inpath;
     for (int a = 1; a < argc; a++) {
         string s = argv[a];
         if (s == "-j") jacobi = true; else if (s == "-v") verbose = true; else if (s == "-C") cmode = true; else if (s == "-C2") { cmode = true; BROAD = true; }
+        else if (s == "-L") LMAX = atoi(argv[++a]); else if (s == "-A") countonly = true;
         else if (s == "-x") xfile = argv[++a];
         else if (s == "-c") ckpt = argv[++a]; else if (s == "-t") tbudget = atof(argv[++a]); else if (s == "-s") saveint = atof(argv[++a]);
         else inpath = s;
@@ -442,6 +444,20 @@ int main(int argc, char **argv) {
         string name;
         if (!parse(line, name)) continue;
         if (n > 20) { printf("%s r=%d SKIP (ring > 20)\n", name.c_str(), n); fflush(stdout); continue; }
+        if (countonly) {                             // -A: admissible X counts by size, no closure
+            build_edges(); int E = (int)cedges.size(); u64 tot = 0, adm = 0;
+            for (int sz = 1; sz <= 4; sz++) {
+                vector<int> c(sz); iota(c.begin(), c.end(), 0);
+                while (true) {
+                    tot++; KX K; if (build_kx(c, K)) adm++;
+                    int q = sz - 1; while (q >= 0 && c[q] == E - sz + q) q--;
+                    if (q < 0) break;
+                    c[q]++; for (int r = q + 1; r < sz; r++) c[r] = c[r - 1] + 1;
+                }
+            }
+            printf("%s r=%d m=%d edges=%d subsets=%llu admissible=%llu\n", name.c_str(), n, m, E, (unsigned long long)tot, (unsigned long long)adm);
+            fflush(stdout); continue;
+        }
         auto T0 = chrono::steady_clock::now();
         auto el = [&]() { return chrono::duration<double>(chrono::steady_clock::now() - T0).count(); };
         build_rank(); build_rank_chunks();

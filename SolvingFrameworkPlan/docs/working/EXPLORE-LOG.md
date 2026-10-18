@@ -1,5 +1,31 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 36 (18 Oct 2026, 09:28Z-): H-W2, how much Rule-T inflow can w2/w4 take under the 7/27 y? (coordinator's go, 09:22Z)
+
+**Pre-registered 09:28Z, before any code.** Gap G2. Runs on 1 core beside round 34 part C (2 cores).
+- **Why.** Rule T (Opus, `loop/opus/G_ruleT_lp/FINDINGS.md` on branch 7uelj0) lets R's fives w0 and w6 send T
+  across their 6-spokes w1, w5 to w2, w4 instead of to u, so R's row becomes t >= (0.7 - T0 - T6)/2.7. That only
+  helps if w2 and w4 can take the load. t* = 0 needs T0 + T6 = 0.7; t* < 1/4 needs 0.025; t* < 0.22 needs 0.106.
+- **Object.** w2 seen as a receiver of degree 7 under R* with an open filling (s1 >= 6). Its link is
+  (u 7, w1 6, s1 a, e, e', s2 7, w3 5) and its s-word is (w0 5, p, x2, x3, x4, s3 7, w4 7), with a in {6,7,8,9+}
+  and e, e', p, x2, x3, x4 in {5,...,9+}: 62,500 arrangements. w4 is the mirror image (s4 for s1), same numbers.
+- **Filters.** sep3's own `c` check (the 5/6 transition table, RBIG 7-wheels, every forbidden pattern) with the
+  j28_13 pattern set plus `loop/n9/win9-31`, and w1's 6-wheel (w2, a, p, s0 = 6, w0 = 5, u) not in R6 (R fixes
+  the slot sep3 leaves free).
+- **Quantities.** yload = sum over w2's link fives of the j28_13 y of their rooted words (w3 always gives
+  y[7|7777] = 4/27). k = number of T inflows at w2: s-slots that are 5 between a (big, 6) link pair. R's own
+  (u, w1, w0) gives one in every arrangement. Report max yload against the bar 34/27, the worst arrangement, and
+  T_max = min over arrangements of (34/27 - yload)/k: the uniform T per inflow that w2 takes with y and t held
+  at the 7/27 solution (first order; y only falls under T, so it is an upper bound on w2's load).
+- **Check first.** sep3's `q` on the j28_13 y must give max d = 7 load 34/27 over all arrangements (the file's own
+  line). Otherwise the y parse or the pattern set is wrong and nothing is reported.
+- **Bars.** T_max >= 0.35: w2/w4 can absorb what t* = 0 needs from R, so the T job is worth Studio's cores. T_max
+  below 0.0125: R's own w2/w4 block even t* < 1/4 at first order; T needs a re-solved y at w2, which L2's
+  u -> w2 transfer can already try, so part 2 of the job is not worth running before part 1.
+- **Kill line.** The check above fails, or the c-check accepts R itself at u (it must, as R is the LP binder).
+- **Guess.** Some arrangement tight at 7/27 fits w2's frame (566 d = 7 rows are tight), so max yload = 34/27 and
+  T_max = 0 at first order. If not, T_max is under 0.1.
+
 ## Round 35 (18 Oct 2026, 08:54Z-): H-KCC, a C-reducibility mode for kc, then C on R's windows
 
 **Pre-registered 08:54Z, before any code.** Gap G2. Runs while round 34 part C uses the cores.
