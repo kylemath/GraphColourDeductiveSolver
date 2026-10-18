@@ -163,3 +163,11 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
      enlarges the set. x in the DP is bounded by z9 := the max x into a 9 (0 in s14r).
   5. The exhaustive receiver enumeration is Studio's sep3r, not a spec-written enumerator. That is why the row
      comparison above is included.
+
+## Second engine for t* = 1/5 on ab3f252b + r_5..r_8 (P_own_lp s16, f5ecb2cb), ~23:55Z
+- Args: argsA49 + rpatD, with paths mapped, equals argsA44_local with k3x pinned to ab3f252b. The 10 shipped files
+  (k3x_D/C_ab3f252b, job28 r_5..r_8) are byte-identical.
+- dcount: 15,527 distinct D (15,861 names), identical to Opus's dcount.txt file by file (0 of 229 differ).
+- feascheck: 0 violated at d = 7..15 plus the DP tail, **FEASIBLE**. sendercheck: 342/342 hold.
+- lowercheck: the 3 rows (senders 55667 at 2/5 and 55767 at 1/5; receiver d=7 7665566/6665766 at 2/5, ALLOWED) give
+  exactly **t >= 1/5**.
