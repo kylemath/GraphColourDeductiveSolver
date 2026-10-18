@@ -5,10 +5,10 @@ with 'mode=', kc -C blocks). A window is loaded only if
   ignored): cfast (search, or --fixed X with leftover 0) and kc -C (search, or
   kc -C -x X with leftover 0).
 Writes out/job30/k3x_D.out (dfast lines) and out/job30/k3x_C.cfast (cfast blocks), and prints a summary.
-Usage: python3 out/job30/twoeng.py [glob ...]   (default loop/k3*/*)"""
+Usage: python3 out/job30/twoeng.py [glob ...]   (default loop/k[0-9]*/*: explore's round folders, and k3studio)"""
 import sys, os, glob, re, collections
 HERE = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
-pats = sys.argv[1:] or ['loop/k3*/*']
+pats = sys.argv[1:] or ['loop/k[0-9]*/*']
 files = sorted(f for g in pats for f in glob.glob(os.path.join(HERE, g)) if os.path.isfile(f))
 BROAD = [f for f in files if 'C2' in os.path.basename(f)]   # kc -C2 (broad admissibility) verdicts: never used (Long Table, 18 Oct)
 files = [f for f in files if f not in BROAD]

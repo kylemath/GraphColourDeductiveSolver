@@ -92,3 +92,14 @@ not new to F.
 ## Hypothesis and kill line for F (before F runs)
 - H30F: t*(A+F) < t*(A+B).
 - Kill: t*(A+F) = t*(A+B), with F FEASIBLE (feascheckt in tfull + tkill mode).
+
+## 19:45Z: explore k43, f8_...55565_...5.... (kills the 1/4 binder, d = 8 85556565/65866655)
+- twoeng: C on both engines with one X, {I0-I1}: kc -C, and cfast --fixed with leftover 0 (loop/k43, f1f71335).
+  The default glob is widened from loop/k3*/* to loop/k[0-9]*/*. twoeng now loads 3 D and 12 C.
+- Loaded through the NF/whole-arrangement type: parse() would drop the letters on slots 3–7 and s3, so the window
+  is routed to FULLP.
+- sep3xf `c` on the binder row: 1 without the window, **0 with it**. networkx: the configuration's interior (degrees
+  5555568) embeds into the row's arrangement model (induced, triangles onto triangles).
+- Matcher test: 63 base-allowed frames, 0 mismatches.
+- Long Table: Opus re-solves first, and Studio is the second engine (feascheck + lowercheck on their primal and
+  certificate).
