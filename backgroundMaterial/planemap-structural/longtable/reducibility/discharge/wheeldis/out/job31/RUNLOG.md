@@ -106,3 +106,9 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
   (receivers + six + recv9, with ages). Relaunched as j31r2: same class, registry (argsK45_pinned) and separator,
   lp=ds, drop=5, **many6=120** (new option: the cap on six rows per iteration; receivers keep many=40), warm from that
   dump, nice 19. Its value no longer gates anything; it becomes a third, class-independent number.
+- 22:50Z: relay-mode upper checker out/job31/feascheckr.py, prepared for j31r2's solution. It checks bounds, every
+  sender and z9 row, all six rows over every non-R6 link word (six_sep), receivers at d = 7..15 with exhaustive sep3r
+  (SEP_NODELIMIT=0), the DP at d = 16..30, and the Karp tail.
+  - Validation on run r6zero's solution (7/27): FEASIBLE (feasr_r6zero.log).
+  - Control with the same solution and t = 0.25: INFEASIBLE, 402 violated (feasr_r6zero_t025.log).
+  - A relay-active control (perturbed y6b) runs on j31r2's own solution.
