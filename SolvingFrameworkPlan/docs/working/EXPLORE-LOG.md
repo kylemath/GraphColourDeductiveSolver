@@ -1,5 +1,22 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 44 (18 Oct 2026, 20:00Z-): H-RC, which RSST configurations are reducible on our two engines with a conservative X?
+
+**Pre-registered 20:00Z, before any run.** Gap G2. Follows round 43: the 1/4 binder died to RSST 7322.126, a C
+configuration, while the LP registry has only RSST's D ones (Studio rsstD). 3 cores. Long Table told at 20:00Z, and may
+redirect.
+- **Set.** All 633 configurations of `studiointel/routeb/rsst/unavoidable.conf`, ring 6-14, written as kc/dfast lines
+  (`loop/k44/rsst2kc.py`). RSST's labels: 249 with no contraction (D), 384 with a contraction of 1-4 edges (C).
+- **Engines.** kc -C (D, then conservative C) and dfast on all. For a kc C, cfast `--fixed` with kc's X. For any
+  configuration kc -C leaves not C: kc broad (kcc2 -C2), cfast `--search`, and cfast `--fixed` with RSST's own
+  contraction set.
+- **Output.** A table `loop/k44/rsst_verdicts.txt`: per configuration, RSST label; kc/dfast D; conservative C (with the
+  shared X); broad-only C; or neither.
+- **Bars and kill line.** Any configuration RSST labels D that kc or dfast calls not D, or any kc/dfast D mismatch, is
+  reported first. That would mean a ring-order or format bug in the conversion, or an engine bug.
+- **Guess.** All 249 D agree on both engines. Of the 384 C, about 85% are conservative on both engines. The rest
+  (contractions with two ring vertices in one component, like 2.126 and 126.8168 in round 42) are broad only.
+
 ## Round 43 (18 Oct 2026, 19:35Z-): H-D8, is the new 1/4 binder (d = 8 85556565/65866655) reducible inside its patch or one ring out? (Long Table, 19:33Z)
 
 **Pre-registered 19:35Z, before any run.** Gap G2. Top priority, ahead of part C's R* queue (its driver died with the
