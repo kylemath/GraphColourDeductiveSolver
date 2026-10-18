@@ -15,10 +15,10 @@ remaining binders are a small set of degree-7 receiver patterns whose kills lie 
 
 | Piece | Status | Where |
 |---|---|---|
-| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for the 2,855-key Studio-D set (Job 24b) | `studio14/`, `dcheck/occ24/results24b.txt` |
+| K=1 sender keys at rings ≤ 16: 2,848 non-66666 keys all D; 5 others 66666-centred, covered by w66666 | [E] dfast; Lean for 2,702 of the 2,855-key Studio-D set (Job 24b, all clean). The 17 Oct outage cut off S2702–S2854 (153 keys), now re-running (~1 h) | `studio14/`, `dcheck/occ24/results24b.txt` |
 | 47 deferred keys at rings 17–19 | 46 [L] (3 early + studio14c 43/43, d627087b); k19 (ring 19, 48.4M classes) [E2]: dfast18 and kc agree on classes 48,427,561, ext 3,909,279, D, depth 4 | `studio14b/`, `wheeldis/loop/kc/` |
 | kc validation (independent of dfast; no dfast, cfast or Lean source read) | 101 keys at rings 10–17 (82 not-D) + ring-18 D, all fields equal | `wheeldis/loop/kc/FINDINGS.md` |
-| w66666 C-reducible | [L] (C66666.lean) + Coq/Gonthier independent | `c66666/`, `dcheck/C66666.lean` |
+| w66666 C-reducible | [E2] computation in Lean (C66666.lean, native_decide) + Coq/Gonthier independent; C-glue (C-reducible ⇒ colourable) not formalized in Lean | `c66666/`, `dcheck/C66666.lean` |
 | Checker soundness, r ≤ 19 | [L] Jobs 19 and 23 | `dcheck/JOB19.md`, `dcheck/JOB23.md` |
 | Per-key Occ modules (49) | [L] Job 24, hD closes as keys land | `dcheck/occ24/` |
 
