@@ -41,3 +41,10 @@ L2 (wlp3x: rooted-word y, big-big transfers x), plus:
   sep `c`).
 - **H31 (restated): t*(6-relay) < 1/4.** Kill line: t*(6-relay) = 1/4, with FEASIBLE.
 - It starts automatically when rzero (y56 = y6b = 0, round-13) converges, and only if rzero reproduces 7/27.
+
+## First solve: registry and hypothesis reset (Long Table 20:17Z)
+- Registry: the no-T registry = 5/21 + the full k43 batch (184 D + 198 C) + RSST-D (rpat=), with L2 and no Rule T.
+  Args: loop/studio/opus_check/argsNoT_local.txt, a copy of argsA43_local.txt, which already carries rpatD.
+- **H31: t*(relay) < t*(no-T). Kill line: t*(relay) = t*(no-T).** The baseline t*(no-T) comes from Opus's no-T
+  solve, second-engined by Studio.
+- It starts when rzero converges at 7/27, on the first core that frees (24b keeps priority). T + relay comes later.
