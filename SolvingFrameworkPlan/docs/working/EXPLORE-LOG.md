@@ -1,5 +1,40 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 45 (18 Oct 2026, 20:17Z-): H-TOP, does the top dual row die to one of our own windows inside its 1.5-ball?
+
+**Pre-registered 20:17Z, before any engine run.** Gap G2. Long Table, 19:59Z: the next kill-sweep targets are the 9
+receiver rows of Opus's cert_s6.json (t* = 5/21, 9a914f8c), by dual weight, ring <= 14 first. Round 44 part B's preview
+(below) hits 8 of the 9 rows by RSST containment; the one it misses is the top row. 3 cores.
+- **Target.** d = 7, link 8556855, s 7565666 (dual weight 0.0635, the largest receiver row). If round 44's two-engine
+  filter leaves any other of the 9 rows with no eligible containment hit, that row joins this round in weight order.
+- **Windows.** `loop/k45/win45.py` (round 43's win43.py for any row): every connected induced subset of the 15 fixed
+  vertices (u, w_i, s_i) at exact degrees, simple ring. Ring <= 14: 927 windows; ring 15-16: 324 more, run only if
+  ring <= 14 has no kill. One change from round 43: a window holding s_(i-1) and s_i states w_i's 5-ness in its name
+  (F/N), because s_(i-1)-s_i is an edge iff w_i = 5 (see round 44's finding on round 43's names).
+- **Engines.** `loop/k45/drive45.py` (copy of drive43.py), STOP=0: kc -C on every window; kc D goes to dfast; kc C goes
+  to cfast `--fixed` with kc's X. A kill is D on both engines or C with that shared conservative X. Kills get f-names
+  and twoeng-ready files as in round 43 (minkill.py), with the w_i fix.
+- **Hypothesis and kill line.** Long Table's: at least one row has a D/C configuration at ring <= 14; kill line: none
+  of the 9 does. Round 44 B answers this for 8 rows (pending its two-engine filter); this round answers it for the
+  top row. Kill line for the top row: no window at ring <= 16 is a two-engine kill.
+- **Guess.** No kill at ring <= 14 (about 70%). RSST containment misses the row in the 1.5-ball, and round 43's
+  minimal kills were all RSST-like windows. If it survives, RSST's own route needs vertices past s (privates), which a
+  receiver row cannot state, so the row has to be paid for by a rule, not forbidden.
+
+## Round 44 part B (20:17Z): RSST containment patterns for d = 7..11 (Long Table, 20:00Z)
+
+**Set by Long Table at 20:00Z; written into this log at 20:17Z, after a preview run at 20:13Z on all 633 configurations
+(before the two-engine filter).** Hypothesis: the RSST C set (kc -C plus cfast `--fixed` with a conservative X) kills at
+least one of the 9 cert_s6 rows. Kill line: none of the 9 rows is hit. Broad-only configurations are kept out.
+- **Method.** `loop/k44/gen44.py`: round 42's embedding code on the 1.5-ball the LP's rows describe (u, w_i, s_i;
+  s_(i-1)-s_i an edge iff w_i = 5), exact degrees (u = d, w/s 5..8), induced, interior triangles onto faces. Each
+  embedding gives a pattern (d, slot letter sets) in wlp3's NF form (slot w_i = i, s_i = d + i), including w_i's
+  5-ness when both s_(i-1) and s_i are used. Dihedral images identified; implied patterns dropped.
+- **Sanity checks (preview).** The round-43 binder row d = 8 85556565/65866655 is hit by RSST 7322.126 (as round 43
+  found on two engines). R*'s 16 fillings are not hit (as rounds 41-42 found).
+- **Preview (all 633, before the filter).** 413 patterns (d = 7: 167, 8: 150, 9: 63, 10: 21, 11: 11), from 341
+  configurations. 8 of the 9 rows are hit; the top row, d = 7 8556855/7565666, is not.
+
 ## Round 44 (18 Oct 2026, 20:00Z-): H-RC, which RSST configurations are reducible on our two engines with a conservative X?
 
 **Pre-registered 20:00Z, before any run.** Gap G2. Follows round 43: the 1/4 binder died to RSST 7322.126, a C
