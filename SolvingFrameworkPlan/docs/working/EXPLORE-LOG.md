@@ -18,6 +18,15 @@ ring 15-16 run is cancelled, since that sender left the dual.
   Guess: about 50-70% covered, and none of the fillings with all ring-2 letters >= 7.
 - **Then.** Resume round 47 B's d = 9 row (756 of 2212 run, 6 C kills at ring 13 so far).
 
+**Result, receiver and cert_s13 contexts (21:52Z; 944 of 944 windows, 0 mismatches).** Hypothesis confirmed.
+- d = 7 7765556/6575765: 46 two-engine kills (28 D, 18 C), first at ring 10. Minimal: f7_...5556_...576. (D, ring 10,
+  m 8; it also kills the sibling 7765556/6575766) and f7_5556776_...5.5. (D, ring 13).
+- Senders in this row: 55767 at w3 has a wheel-containing kill at ring 12 (D); 55757 at w4 and 57667 at w5 both have
+  one at ring 10 (D, the same window).
+- Round 47 B, the two d = 7 relay rows (complete): 7765556/6575766 has 27 kills, minimal f7_...5556_...576. (D, ring
+  10). 7766556/6566575 has 4 kills, minimal f7_.556776_.5.5.5. (C, ring 14) and f7_5566776_...5.5. (D, ring 14).
+- Twoeng-ready: `loop/k47/r7c_kills*`, `r7b1_kills*` and `r7b2_kills*`.
+
 ## Round 47 (18 Oct 2026, 21:03Z-): H-R29, do the two receivers of the 2/9 dual die inside their 1.5-balls?
 
 **Pre-registered 21:03Z, before any engine run.** Gap G2. Long Table, 21:02Z: on the round 44/45 registry Opus gets
