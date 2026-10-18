@@ -44,3 +44,16 @@ never used as exact.
   coupling filter must use that sub-row's exact q.
 - C5 [I]: 122.1031's X has a ring-interior edge (R8-I3, or R6-I2 mirrored); its admissibility rests on the inherited
   RSST free-completion / ring-injectivity argument, the registry's existing "C cons." standard, not new to F.
+
+## Check of Studio's built filter (bd8472d9, out/job30f/deleted_rows.txt), 12:50Z [E]
+
+Own model and matcher (`M_deleted_rows/`; only wlp.py's registry reused, not Studio's filter): exact degrees, induced,
+triangles onto faces, rotation at every interior vertex up to one global mirror, no interior vertex on a 9.
+- **All 163 deletions confirmed**: every filling of each row's read slots over 5..9 contains a K. All 163 are killed
+  by one configuration, k42_rsst025_xxxxxxx5 (ring 9, 5 interior). R5/R6 "cannot occur" never needed.
+- Own enumeration gives 19,626 sender rows; all 163 are among them.
+- Deleted set closed under every dihedral map fixing the word (z_a <-> z_e, side swapped): 0 failures.
+- C1: on the 10 configurations with 2-connected interiors the rotation check never rejected an embedding that passed
+  degrees/induced/triangles (9,302 embeddings on 3,000 rows); it does reject on rsst062. So 2-connected-only suffices.
+- Completeness: 200 random kept rows (seed 1), 0 that should have been deleted; the full pass over 19,463 kept rows
+  did not finish in 30 minutes.

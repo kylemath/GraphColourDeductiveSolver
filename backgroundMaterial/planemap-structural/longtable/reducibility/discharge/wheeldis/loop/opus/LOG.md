@@ -142,3 +142,6 @@ Pre-registered before any probe ran.
   cap loses strength only, drop it; (c) unsplit privates of a 9: sound. Gap: the embed test is weaker than RSST's
   "appears" when K's interior has a cut vertex (only 3.3700806 among 24; its flip is also C, so no wrong deletion
   today); C1 requires a rotation check or re-cut verdicts.
+- **M (12:50Z): all 163 sender-row deletions of Studio's built F filter confirmed independently**, all by
+  k42_rsst025_xxxxxxx5; reflection-closed; rotation check redundant on 2-connected interiors; 0 of 200 sampled kept
+  rows should have been deleted (`M_deleted_rows/`, appended to `F_spec_review/FINDINGS.md`).
