@@ -116,3 +116,13 @@ not new to F.
 - Default-glob reruns need the local loop/k43 updated to d3def56a first; the local copy still holds the 16.
 - 20:47Z: local loop/k43 was updated to d3def56a, and loop/k44 and loop/k45 were added (every file byte-identical to
   d3def56a). A default-glob twoeng then reproduces 378 D / 383 C, byte-identical to 30f86cd4, with 0 of the 16.
+
+## twoeng after explore round 47 part A (97233611, loop/k47), 18 Oct ~21:32Z
+- loop/k47 fetched by explicit path; 26 files, byte-identical to 97233611. k47 alone: 43 D, 39 C (0 one-engine, 0 X
+  mismatch), as explore's scratch run.
+- Default glob: **421 D / 422 C** (was 378 / 383: +43 D, +39 C; the 82 new names are exactly k47's).
+- Drop44 guard (a '.' link slot w_i with both s_(i-1) and s_i fixed): the rule flags 16/16 of the drop44 names, 0 of
+  the 82 new names and 0 of the existing registry. Nothing excluded.
+- Matcher spot-check (matchtest.py, 11 sampled k47 names): 577 frames, 0 mismatches.
+- Not taken (outside this request): explore's later k45 update (round 45 complete, +5 D kills) and the k44 broad
+  diagnostics (C2 files, and rsst_x_kc.out, which is kc output only and cannot pass twoeng without cfast).
