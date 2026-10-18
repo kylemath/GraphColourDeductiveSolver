@@ -16,6 +16,7 @@ ARGS = sys.argv[1:]
 src = open(os.path.join(WD, 'wlp.py')).read().replace('__file__', repr(os.path.join(WD, 'wlp.py')))
 sys.argv = ['wlp']
 exec(src[:src.index('# sender rows')])
+HERE = os.path.join(WD, 'loop', 'teamB', 'b3_pfh')
 sys.argv = [sys.argv[0]] + ARGS
 L = (5, 6, 7, 8, 9)
 RBIG = set()
@@ -43,6 +44,7 @@ def rooted(word, j):
 
 
 VAR = {}
+LASTARR = {}
 VARL = []
 
 
@@ -293,6 +295,69 @@ def best7(x, thr=None, cap=300):
     return best
 
 
+REG = 'reg' in OPTS
+SEPB = None
+if REG:
+    import subprocess
+    RB7S = set()
+    for line in open(os.path.join(HERE, 'rbig7.txt')):
+        RB7S.add(canon(tuple(map(int, line.strip()))))
+    RBIG |= RB7S          # w7plus 7-wheels also forbidden as link-vertex wheels
+    SEPB = subprocess.Popen([os.path.join(HERE, 'sepb'), os.path.join(HERE, 'reg_patterns.txt'),
+                             os.path.join(HERE, 'rbig7.txt')], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+WCAND = {}
+
+
+def wcands(U):
+    if U not in WCAND:
+        T = {}
+        for wp, sp, wc, sc, wn in itertools.product(L, repeat=5):
+            T[(wp, sp, wc, sc, wn)] = contrib_cands(U, wp, sp, wc, sc, wn)
+        WCAND[U] = T
+    return WCAND[U]
+
+
+def wbest(c, x):
+    best, bk = -np.inf, None
+    for k in c:
+        vv = 0.0 if k is None else val(x, k)
+        if vv > best:
+            best, bk = vv, k
+    return best, bk
+
+
+def sepb_query(d, x, thr, many):
+    U = min(d, 9)
+    T = wcands(U)
+    vals = []
+    for key in itertools.product(L, repeat=5):
+        b, _ = wbest(T[key], x)
+        vals.append('-1e300' if b == -np.inf else '%.12f' % b)
+    SEPB.stdin.write('T %d\n%s\n' % (U, ' '.join(vals)))
+    if d == 7:
+        hv = []
+        for wd in itertools.product(L, repeat=7):
+            hv.append('%.12f' % (sum(val(x, ('h', rooted(list(wd), j))) for j in range(7) if wd[j] >= 7) if USE_H else 0.0))
+        SEPB.stdin.write('H\n%s\n' % ' '.join(hv))
+    SEPB.stdin.write('Q %d %.12f %d\n' % (d, thr, many))
+    SEPB.stdin.flush()
+    out = []
+    while True:
+        f = SEPB.stdout.readline().split()
+        if f[0] == 'END':
+            return out
+        v, ws, ss = float(f[1]), f[2], f[3]
+        wv = [int(c) for c in ws]; sv = [int(c) for c in ss]
+        terms = []
+        for i in range(d):
+            _, k = wbest(T[(wv[i - 1], sv[i - 1], wv[i], sv[i], wv[(i + 1) % d])], x)
+            if k is not None:
+                terms.append((1, k))
+        if d == 7 and USE_H:
+            terms += [(-1, ('h', rooted(wv, j))) for j in range(7) if wv[j] >= 7]
+        out.append((v, terms, ws, ss))
+
+
 def solve(rows):
     """rows: list of (terms[(coef, varindex)], tcoef, rhs) meaning sum coef*x + tcoef*t <= rhs."""
     n = len(VARL) + 1
@@ -318,7 +383,37 @@ def main():
     rows = []
     for w, terms in S5:          # -(sum) - t <= -1
         rows.append(([(-1, i) for i in terms], -1, -1))
-    prep7()
+    if USE_P:
+        valid = {}
+        for a in L:
+            for b in L:
+                ks = set()
+                for x5 in L:
+                    for y5 in L:
+                        ww = (6, a, x5, y5, b)
+                        if not isR5(ww):
+                            ks.add(('p', rooted(list(ww), 0)))
+                valid[(a, b)] = ks
+                for k in ks:          # p[k] - M[a,b] <= 0
+                    rows.append(([(1, var(k)), (-1, var(('M', a, b)))], 0, 0))
+        n6 = 0
+        for v in V6:
+            terms = []
+            ok = True
+            for k in range(6):
+                if v[k] == 5:
+                    if not valid[(v[(k + 1) % 6], v[k - 1])]:
+                        ok = False
+                        break
+                    terms.append((1, var(('M', v[(k + 1) % 6], v[k - 1]))))
+                elif v[k] >= 7:
+                    terms.append((-1, var(('f', rooted(list(v), k)))))
+            if ok and any(c > 0 for c, _ in terms):
+                rows.append((terms, -1, 0))
+                n6 += 1
+        print('static 6-rows', n6, flush=True)
+    if not REG:
+        prep7()
     seen = set()
     it = 0
     while True:
@@ -326,7 +421,7 @@ def main():
         new = 0
         worst = {}
         # 6 rows
-        for v in V6:
+        for v in ([] if USE_P else V6):
             vv, tm = six_row(v, x)
             if tm is not None and vv > t + 1e-9:
                 key = ('6', tuple(sorted(tm)))
@@ -335,6 +430,23 @@ def main():
                     rows.append(([(sg, var(k)) for sg, k in tm], -1, 0))
                     new += 1
                 worst['6'] = max(worst.get('6', -9), vv - t)
+        if REG:
+            for d in range(7, DEX + 1):
+                res_ = sepb_query(d, x, d - 6 + t + 1e-9, 60)
+                worst[d] = (res_[0][0] - (d - 6) - t) if res_ else 0
+                for v_, tm, ws, ss in res_:
+                    key = (d, tuple(sorted(tm)))
+                    if key not in seen:
+                        seen.add(key)
+                        rows.append(([(sg, var(k)) for sg, k in tm], -1, d - 6))
+                        LASTARR[key] = (ws, ss)
+                        new += 1
+            it += 1
+            print('it %d t=%.6f rows=%d vars=%d new=%d worst=%s (%.0fs)' % (
+                it, t, len(rows), len(VARL), new, {k: round(v, 4) for k, v in worst.items()}, time.time() - t0), flush=True)
+            if new == 0:
+                break
+            continue
         # d = 7 (explicit, with hand-off out)
         v7, tm7, w7 = best7(x, thr=1 + t + 1e-9)
         for _v, tm, _w in best7.many:
