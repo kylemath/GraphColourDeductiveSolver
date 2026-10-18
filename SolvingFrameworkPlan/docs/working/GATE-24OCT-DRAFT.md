@@ -34,7 +34,7 @@ argument (B2 + no separating triangle ⇒ injective, induced embedding) closes t
 |---|---|---|
 | Job 28 rounds 1–12 | 5/17 → 13/49 | loop: find patch, kill with B-fixed D/C at ring ≤ 16 |
 | Round 13 (+ win14, win8, win89) | 7/27 | binder d=7 5675765/6577575 |
-| Job 29 L2: oriented big–big transfers, full registry (16,411 patterns) | 7/27 exactly [E] | upper bound by an exhaustive separation of the x=0 solution; lower bound by row generation (feascheck.py). Charge-sharing adds nothing on this pattern set |
+| Job 29 L2: oriented big–big transfers, full registry (16,411 patterns) | 7/27 exactly [E2] | upper bound by an exhaustive separation of the x=0 solution; lower bound by row generation (feascheck.py). Charge-sharing adds nothing on this pattern set. Upper side independently checked (Opus J_lp_checker, own separation code, all d = 7..30 plus Karp tail; float primal, no exact-rational recheck yet) |
 | Explore rounds 24–32 | (restricted-LP values were under-separated; superseded) | ~30 binding rows forbidden; all windows second-engined |
 
 What blocks K = 2 [E]: one row. The 7/27 certificate is a single receiver row R = d7 5675765/6577575, whose
