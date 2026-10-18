@@ -25,6 +25,14 @@
   Reported: D/not-D, classes, ext, reached, passes, time.
 - **Guess.** Validation passes after one or two bug fixes; k19 comes back D with ext 3,909,279, in 2-6 hours.
 
+**Round 33 result (04:15Z): H-KC passes; k19 is D on an independent engine** (`wheeldis/loop/kc/FINDINGS.md`).
+- Validation, final build: 98 ring 10-16 windows (80 not D), c7_5666567, the ring-17 not-D and D keys and a ring-18
+  D key. Classes, ext, reached and D equal dfast on every key; Jacobi depth equal on all 101 where compared.
+- **k19: D = true**, classes 48,427,561, ext 3,909,279 (both equal to dfast18), reached all, 3 Gauss-Seidel passes,
+  25 minutes and 683 MB on one core.
+- No dfast, cfast or Lean source read. Guess check: "one or two bug fixes" was pessimistic (none needed); "2-6
+  hours" was long (25 minutes).
+
 ## Round 32 (17 Oct 2026, 04:58Z-): H-L2f, does the floor move once the d = 8 binders are gone? (coordinator's go, 04:58Z)
 
 **Pre-registered 04:58Z, before the run.**
@@ -36,6 +44,10 @@
   under 0.22. Kill line (coordinator's): converged t* >= 0.22, or still rising at the cap with no binder reachable by
   an untested small window at ring <= 16. Reported: t*, convergence, and the binders by row and by degree.
 - **Guess.** It holds near 15/83: the d = 7 pair carries 0.193 of round 30's 0.36 dual weight.
+
+**Superseded (17 Oct 17:30Z, coordinator state):** Studio's Job 29 L2 with exact transfer columns gives t* = 7/27
+exactly on the full registry. Every restricted-LP value from rounds 23-32 (1/5, 7/33, 9/43, 15/83, 0.169) was
+under-separated; charge-sharing gives no gain. The window kills themselves stand (second-engined).
 
 **Round 32 result (07:00Z): inconclusive. Killed at the 2-hour wall before its report; t* = 29/172 = 0.1686 at
 iteration 9 and still rising** (`wheeldis/loop/n9/FINDINGS.md`).
