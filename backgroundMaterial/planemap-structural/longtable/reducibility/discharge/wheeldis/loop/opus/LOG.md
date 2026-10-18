@@ -111,3 +111,8 @@ Pre-registered before any probe ran.
   frames: 7667575 / 5557777 (c = 2/5, T <= 3/5 + 7/5 t) and 7665775 / 5555577 (c = 1/5); floor -1/11. So no
   y-independent obstruction to rule T through R is left from this method; explore's first-order t >= 0.054 at (6,6)
   is the only remaining estimate, and Job 30 part B is the real test.
+- **Erratum and recheck (11:15Z).** G's tcount scripts gave reflected roots the wrong T side (Studio found it, 78ed61e7);
+  fixed, T = 444 (small/big, equal to Studio's) and 2,007 (full letters). floor.py and I_route_e never used them.
+  floor.py with conservative-X kills only (round 37's two cwin windows + f7_5566757 + f7_5667576, file
+  `H_floor_check/kills_conservative_r38.txt`) and with all round 37-38 kills: both give no positive floor (-1/11),
+  binding 7667575 / 5557777 at w2 and w4. (floor.py's "killed" count is of its dominance-ordered scan, not a total.)

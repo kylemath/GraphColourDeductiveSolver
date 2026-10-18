@@ -20,8 +20,8 @@ Tags: [E] = computed here (counts only), [hand] = my reading of sep3x.cpp / wlp3
 - Y[r, za, ze] >= 0: what v sends to u. It replaces wlp3's y[r].
   - za is in {5,...,9} if a = 6, and '-' otherwise. ze is the same for e.
 - T[r, za, ze, side] >= 0: what v sends to z_side. It exists only when that spoke is 6 and z_side >= 7.
-- Option F (full letters): **3,048 Y + 2,250 T** [E, tcount.py].
-- Option B (z read only as small {5,6} or big {7,8,9+}): **1,356 Y + 504 T** [E, tcount_flag.py].
+- Option F (full letters): **3,048 Y + 2,007 T** [E, tcount.py].
+- Option B (z read only as small {5,6} or big {7,8,9+}): **1,356 Y + 444 T** [E, tcount_flag.py].
 - Today's base: 942 rooted y.
 - Recommendation: run B first. F matters only if the gain depends on z's exact degree. T's inflow at z depends on z's letter through the receiver row anyway.
 
@@ -81,7 +81,7 @@ It reads the 7-letter window (w_{i-2}, w_{i-1}, s_{i-1}, w_i, s_i, w_{i+1}, w_{i
 | start states (w_0 = 5) | 25 per d | (b) 125 (w_{-2} added) |
 | d > DMAXP rows (letter-9 DP) and Karp bound | 125 states | 625 states for exact flags; Karp O(n·E), about 1e7 ops. Or 125 with max over z: conservative |
 | pattern codes CO | unchanged | unchanged (patterns read only the 5s' 4 slots) |
-| LP | 942 y + transfer columns, 342 sender rows | +414 (B) / +2,106 (F) Y columns, +504 / +2,250 T columns, 1,194 / 19,626 sender rows |
+| LP | 942 y + transfer columns, 342 sender rows | +414 (B) / +2,106 (F) Y columns, +444 / +2,007 T columns, 1,194 / 19,626 sender rows |
 
 **Estimates and checks.**
 - Growth estimate [I]: (b) costs about 5x per Bnd build, and the DFS node count should fall, since the bound is tighter than (a). (a) costs nothing extra per build, but may inflate nodes wherever the LP sets Y[r, flagged] far below Y[r, unflagged]. That is the binder's own case. So use (b) [I].
@@ -106,3 +106,9 @@ It reads the 7-letter window (w_{i-2}, w_{i-1}, s_{i-1}, w_i, s_i, w_{i+1}, w_{i
   - It has not been run or validated. Do not cite it.
 - `bin/sep3`: a symlink to E's binary.
 - No LP was run. **No t* value, and no bound of either kind, is claimed.**
+
+**Erratum (18 Oct, 11:15Z).** tcount.py and tcount_flag.py added the side label after key() had reflected the word,
+without swapping the side, so reflected roots got the wrong side (found by Studio, commit 78ed61e7, loop/studio/tc/
+tdiff.py). Fixed with tkey(), which carries the physical side through the reflection. Corrected counts: T = 444
+(small/big, equal to Studio's) and 2,007 (full letters); Y and sender rows unchanged. floor.py and I_route_e do not use
+these scripts.

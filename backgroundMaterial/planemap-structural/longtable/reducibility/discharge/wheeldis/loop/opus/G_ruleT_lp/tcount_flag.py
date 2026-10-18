@@ -7,6 +7,8 @@ def zopts(o):  # o = (B,a,b,c,e) oriented at big root; z letters for side a / si
     return ([None] if o[1] != 6 else list(L)), ([None] if o[4] != 6 else list(L))
 def key(o, za, ze):
     r = (o[0], o[4], o[3], o[2], o[1]); return min((tuple(o), za, ze), (r, ze, za))
+def tkey(o, za, ze, sd):
+    r = (o[0], o[4], o[3], o[2], o[1]); return min((tuple(o), za, ze, sd), (r, ze, za, 'e' if sd == 'a' else 'a'))
 CL = lambda z: z if z is None else (0 if z < 7 else 1)
 Y, T, rows, rows_flag = set(), set(), 0, 0
 for w in senders:
@@ -30,11 +32,9 @@ for w in senders:
         for za in A:
             for ze in E:
                 Y.add(key(o, CL(za), CL(ze)))
-                if za is not None and za >= 7: T.add(key(o, CL(za), CL(ze)) + ('a',))
-                if ze is not None and ze >= 7: T.add(key(o, CL(za), CL(ze)) + ('e',))
-T2 = set()  # canonical T: side a under reflection becomes side e
-for (o, za, ze, sd) in T:
-    r = (o[0], o[4], o[3], o[2], o[1]); T2.add(min((o, za, ze, sd), (r, ze, za, 'e' if sd == 'a' else 'a')))
+                if za is not None and za >= 7: T.add(tkey(o, CL(za), CL(ze), 'a'))
+                if ze is not None and ze >= 7: T.add(tkey(o, CL(za), CL(ze), 'e'))
+T2 = T  # canonicalised with the physical side carried through the reflection (fix, 18 Oct: Studio tdiff.py)
 print('non-R sender words', len(senders), ' base rooted y vars', len(roots))
 print('rule-T Y vars (rooted word + own z letters)', len(Y), ' T vars', len(T2))
 print('roots with a 6 spoke next to the root', sum(1 for r in roots if 6 in (r[1], r[4])))
