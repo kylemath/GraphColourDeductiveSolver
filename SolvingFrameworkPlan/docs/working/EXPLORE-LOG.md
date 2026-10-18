@@ -35,6 +35,23 @@ container, at 37 of 106 ring-17 windows). 3 cores.
   so that Studio gets a batch of d = 8 patterns for the re-solve instead of one. Part B is dropped, since the row is
   already dead.
 
+**Round 43 result (19:59Z): 383 of the 1,671 sub-patch windows at ring <= 14 kill the row on two engines (184 D, 199
+C with a conservative X), and 7 of them are inclusion-minimal** (`loop/k43/KILL`, `kills_min.txt`; twoeng-ready
+`kills.txt`, `kills_kc.out`, `kills_df.out`, `kills_cf.cfast` with 382 distinct f-names). There were 0 kc/dfast
+mismatches, and cfast accepted kc's X on every kc C.
+- By ring (D / C / neither): 6-9: 0/0/90; 10: 0/2/90; 11: 12/13/221; 12: 59/36/280; 13: 70/55/332; 14: 43/93/275.
+- Minimal kills:
+  - `f8_...55565_........`, ring 10, m 6: the 8 with consecutive neighbours 5,5,5,6,5 and nothing else. C, X = u-w1.
+    This is exactly RSST 7322.126 (checked: centre adjacent to all, path 5,5,5,6,5). Its mirror 5,5,6,5,5 is RSST
+    7326.122.
+  - `f8_...56565_........` (ring 11, C).
+  - D at ring 11-12: `f8_.555.565_......5.`, `f8_...55585_....565.`, `f8_...55656_.....66.`, `f8_...55856_...5655.`.
+  - `f8_.5558565_......6.` (ring 14, C).
+- **Reading [I].** The 1/4 binder is an RSST C configuration. The registry has only RSST's D configurations (Studio
+  rsstD: 158 patterns, Lean-backed D), and those in the five-slot encoding only. RSST's C configurations, checked on
+  our two engines with a conservative X and loaded through the non-five-slot pattern type, are the obvious next batch
+  for the LP.
+
 ## Round 42 (18 Oct 2026, 11:33Z-): H-DEF, does every R* filling die within one ring of growth? (Long Table's target, 11:29Z)
 
 **Pre-registered 11:33Z, before any run.** Gap G2. Option D, round 18's defect-style method, on R*'s 16 open fillings.
