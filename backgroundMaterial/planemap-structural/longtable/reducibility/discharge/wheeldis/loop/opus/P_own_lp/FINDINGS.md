@@ -136,3 +136,29 @@
   sender rows. To go further: a kill of
   85556565/65866655 (it takes no RSST-D pattern), or a route out of 66668 that reads small hats and fans (rule C, or
   6-decides relays), or option-F letters.
+
+## Stage 5 spec (19:40Z, before any run)
+**(a) Exact letters (S-lite_F).** Same geometry as 4b. Each read target letter is kept as an exact class in
+{5,6,7,8,9+} instead of small/big. Flag of a 6-spoke side F = (c(A), c(O)); a non-6 spoke gets (-1,-1); with the fan
+off, c(O) = -1. Keys and canonicalisation are as in 4b (tuples compare lexicographically; the reflection swaps
+(Fa, Fe) and the side, the palindrome takes the lexicographic min, pos is unchanged). Orientation test is required.
+- Senders enumerate only the target slots some key reads: h_j and f_{j+1} for a 6 at l_{j+1}, h_{j-1} and f_{j-1}
+  for a 6 at l_{j-1}, j a big root. The coupling is existential over the unread hats and fans: each 6-spoke wheel
+  (5, l_{k+1}, h_k, f_k, h_{k-1}, l_{k-1}) must be non-R6 for some letters agreeing with the read classes. Route
+  A / O pays iff the target letter is >= 7.
+- Inflow signatures now carry the receiver's own letter (u is the A or O target): I1/I2 ('A', B, c(U), c(O)) and
+  I3 ('O', B, b, c(A), c(U)); the M_sig rows are over all candidate keys.
+- Pre-registered guess: t* = 1/4, unchanged. Hand reason: in u's row every target letter that w5's (66668) keys read
+  is fixed (A = w7 = 5, O = s6 = 5; A = w3 = 5, O = s3 = 6), and so are w7's and w3's u-side flags. The exact
+  assignment that u's row shows is realisable (u's row is admissible), so each certificate row stays a genuine row
+  with the same coefficients.
+- Plan-changer: t* < 1/4 means the certificate needed a small/big merge of two exact letters; report at once.
+**(b) Small-hat route (route C, hat(x, y)).** For the binding five w5 = 66668 in u's row, x in {w4, w6}, the C
+targets are p4 and p6 (the privates of w4 and w6). The row allows p4 in 5..9 and p6 in 6..9: (8,5,5,5,6,5) is R6,
+the other letters are not (`r6.py`). So the adversary can keep C small. w0 and s2 lie at distance >= 3 from w5 along
+non-big paths. Within the 2-ball of w5 the only big vertex the row forces is u.
+- **Obstruction claim [hand]:** no sender-2-ball rule (routes A, O, C through any 6-spoke) gives w5 a route in
+  u's worst case. u -> w0 by L2 is self-paired: the edge's side codes read (5,6,5)/(5,5,6) from both ends, so
+  x_in = x_out at u.
+- So (b) is not built. The levers left are a kill of 85556565/65866655 (exact s-word, privates open), or a transfer
+  type that tells u from w0 using letters outside the current side codes (u's 5-five link).

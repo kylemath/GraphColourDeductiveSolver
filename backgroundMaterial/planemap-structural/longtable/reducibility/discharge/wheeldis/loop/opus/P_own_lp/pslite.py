@@ -18,68 +18,93 @@ def sk(raw, fa, fe, sd, pos):
     return (raw, fa, fe, sd, pos)
 CLS2 = {0: (5, 6), 1: BIGL}
 OON = ['nofan' not in FLAGS]
+EXACT = 'exact' in FLAGS          # stage 5a: exact target letters 5..9 instead of small/big
+CLASSES = LET if EXACT else (0, 1)
+def cls(l): return l if EXACT else (1 if l >= 7 else 0)
+def clsset(c): return (c,) if EXACT else CLS2[c]
+def mkF(cA, cO): return (10 * cA + (cO if OON[0] else 0)) if EXACT else (2 * cA + (cO if OON[0] else 0))
+def payA(F): return (F // 10 >= 7) if EXACT else bool(F & 2)
+def payO(F): return OON[0] and ((F % 10 >= 7) if EXACT else bool(F & 1))
+def allF(): return sorted({mkF(a, b) for a in CLASSES for b in CLASSES})
+def all_sigs():
+    sg = set(); cO = CLASSES if OON[0] else (CLASSES[0],)
+    for Bl in BIGL:
+        for cU in {cls(l) for l in BIGL}:
+            for co in cO: sg.add(('A', Bl, cU, co if OON[0] else 0))
+            if OON[0]:
+                for bl in LET:
+                    for ca in CLASSES: sg.add(('O', Bl, bl, ca, cU))
+    return sg
 def S_sender_rows(Oon=True):
     out = []
     for w in SENDERS:
         n = 5; sixes = [k for k in range(n) if w[k] == 6]
-        hats = sorted({h for k in sixes for h in (k, (k - 1) % n)})     # h_k between l_k and l_{k+1}
-        fans = list(sixes)
-        seen = set()
-        for hb in itertools.product((0, 1), repeat=len(hats)):
-            H = dict(zip(hats, hb))
-            for fb in itertools.product((0, 1), repeat=len(fans)):
-                Fn = dict(zip(fans, fb)); okc = True
+        allow = {}
+        for k in sixes:   # allowed (h_k, f_k, h_{k-1}) letter triples of the 6-spoke wheel
+            allow[k] = {(a_, q, b_) for a_ in LET for q in LET for b_ in LET if not isR6((5, w[(k + 1) % n], a_, q, b_, w[(k - 1) % n]))}
+        rh, rf = set(), set()
+        for j in range(n):
+            if w[j] < 7: continue
+            if w[(j + 1) % n] == 6: rh.add(j); rf.add((j + 1) % n)
+            if w[(j - 1) % n] == 6: rh.add((j - 1) % n); rf.add((j - 1) % n)
+        if not OON[0]: rf = set()
+        rh, rf = sorted(rh), sorted(rf); seen = set()
+        for hb in itertools.product(CLASSES, repeat=len(rh)):
+            H = dict(zip(rh, hb))
+            for fb in itertools.product(CLASSES, repeat=len(rf)):
+                Fn = dict(zip(rf, fb)); okc = True
                 for k in sixes:
-                    if all(isR6((5, w[(k + 1) % n], a_, q, b_, w[(k - 1) % n])) for a_ in CLS2[H[k]] for q in CLS2[Fn[k]] for b_ in CLS2[H[(k - 1) % n]]): okc = False; break
+                    A1 = clsset(H[k]) if k in H else LET; Q = clsset(Fn[k]) if k in Fn else LET; B1 = clsset(H[(k - 1) % n]) if (k - 1) % n in H else LET
+                    if not any((a_, q, b_) in allow[k] for a_ in A1 for q in Q for b_ in B1): okc = False; break
                 if not okc: continue
                 cf = collections.Counter()
                 for j in range(n):
                     if w[j] < 7: continue
                     raw = tuple(w[(j + i) % n] for i in range(5)); ka, ke = (j + 1) % n, (j - 1) % n
-                    fa = 2 * H[j] + (Fn[ka] if Oon else 0) if w[ka] == 6 else 0
-                    fe = 2 * H[ke] + (Fn[ke] if Oon else 0) if w[ke] == 6 else 0
+                    fa = mkF(H[j], Fn.get(ka, 0)) if w[ka] == 6 else 0
+                    fe = mkF(H[ke], Fn.get(ke, 0)) if w[ke] == 6 else 0
                     cf[('Y', yk(raw, fa, fe))] += 1
-                    for sd, ff in (('a', fa), ('e', fe)):
-                        if (sd == 'a' and w[ka] != 6) or (sd == 'e' and w[ke] != 6): continue
-                        if ff & 2: cf[('S', sk(raw, fa, fe, sd, 'A'))] += 1
-                        if Oon and ff & 1: cf[('S', sk(raw, fa, fe, sd, 'O'))] += 1
+                    for sd, ff, sp in (('a', fa, ka), ('e', fe, ke)):
+                        if w[sp] != 6: continue
+                        if payA(ff): cf[('S', sk(raw, fa, fe, sd, 'A'))] += 1
+                        if payO(ff): cf[('S', sk(raw, fa, fe, sd, 'O'))] += 1
                 k_ = tuple(sorted(cf.items()))
                 if k_ not in seen: seen.add(k_); out.append((''.join(map(str, w)), dict(cf), list(hb) + ['|'] + list(fb)))
     return out
 SIGC = {}
 def sig_keys(sig):
-    """candidate S keys of an inflow signature: ('A', Bl, lamO) = route A into u, O-letter class lamO;
-    ('O', Bl, bl, lamA) = route O into u from root letter Bl, b-letter bl, A class lamA."""
+    """candidate S keys of an inflow signature: ('A', Bl, cU, cO): route A into u (u = A, class cU), O class cO;
+    ('O', Bl, bl, cA, cU): route O into u from root letter Bl, b-letter bl, A class cA."""
     if sig in SIGC: return SIGC[sig]
-    s = set()
+    s = set(); FE = allF()
     if sig[0] == 'A':
-        _, Bl, lo = sig
+        _, Bl, cU, co = sig
         for p, m, o in itertools.product(LET, repeat=3):
             raw = (Bl, 6, p, m, o)
             if isR5(raw): continue
-            for fe in ((0, 1, 2, 3) if o == 6 else (0,)): s.add(sk(raw, 2 + lo, fe, 'a', 'A'))
+            for fe in (FE if o == 6 else (0,)): s.add(sk(raw, mkF(cU, co), fe, 'a', 'A'))
     else:
-        _, Bl, bl, la = sig
+        _, Bl, bl, ca, cU = sig
         for m, o in itertools.product(LET, repeat=2):
             raw = (Bl, 6, bl, m, o)
             if isR5(raw): continue
-            for fe in ((0, 1, 2, 3) if o == 6 else (0,)): s.add(sk(raw, 2 * la + 1, fe, 'a', 'O'))
+            for fe in (FE if o == 6 else (0,)): s.add(sk(raw, mkF(ca, cU), fe, 'a', 'O'))
     SIGC[sig] = sorted(s); return SIGC[sig]
 def big(l): return 1 if l >= 7 else 0
 def six_inflow_sigs(U, wl, wr, sr, sl):
     """inflow signatures at a link 6 x = w_j with w_{j-1} = wl, w_{j+1} = wr, s_j = sr, s_{j-1} = sl (letters)."""
-    out = []; o = OON[0]
-    if sr == 5 and wr >= 7: out.append(('A', wr, big(wl) if o else 0))   # I1: five s_j, root w_{j+1}, O = w_{j-1}
-    if sl == 5 and wl >= 7: out.append(('A', wl, big(wr) if o else 0))   # I2: five s_{j-1}, root w_{j-1}, O = w_{j+1}
+    out = []; o = OON[0]; cU = cls(U)
+    if sr == 5 and wr >= 7: out.append(('A', wr, cU, cls(wl) if o else 0))   # I1: five s_j, root w_{j+1}, O = w_{j-1}
+    if sl == 5 and wl >= 7: out.append(('A', wl, cU, cls(wr) if o else 0))   # I2: five s_{j-1}, root w_{j-1}, O = w_{j+1}
     if o and not isR6((U, wr, sr, 5, sl, wl)):                             # I3: p_j = 5 allowed
-        if sr >= 7: out.append(('O', sr, sl, big(wr)))               # root s_j, A = w_{j+1}
-        if sl >= 7: out.append(('O', sl, sr, big(wl)))               # root s_{j-1}, A = w_{j-1}
+        if sr >= 7: out.append(('O', sr, sl, cls(wr), cU))           # root s_j, A = w_{j+1}
+        if sl >= 7: out.append(('O', sl, sr, cls(wl), cU))           # root s_{j-1}, A = w_{j-1}
     return out
 def five_key(U, wn, si, sp, wp, wnn, snn, wpp, spp):
     """Y key of a link five w_i: raw (U, w_{i+1}, s_i, s_{i-1}, w_{i-1}); side a = w_{i+1}: A = w_{i+2}, O = s_{i+1};
     side e = w_{i-1}: A = w_{i-2}, O = s_{i-2}."""
-    fa = 2 * big(wnn) + (big(snn) if OON[0] else 0) if wn == 6 else 0
-    fe = 2 * big(wpp) + (big(spp) if OON[0] else 0) if wp == 6 else 0
+    fa = mkF(cls(wnn), cls(snn)) if wn == 6 else 0
+    fe = mkF(cls(wpp), cls(spp)) if wp == 6 else 0
     return yk((U, wn, si, sp, wp), fa, fe)
 SV = {}; MV = {}; KIDX = {}
 def window_table_S(U, x):
@@ -155,11 +180,7 @@ def cmd_solveS():
     Skeys = {k[1] for k in cols if k[0] == 'S'}
     nY = sum(1 for k in cols if k[0] == 'Y'); nSA = sum(1 for k in Skeys if k[4] == 'A'); nSO = len(Skeys) - nSA
     # inflow signatures and M rows
-    sigs = set()
-    for Bl in BIGL:
-        for lo in (0, 1): sigs.add(('A', Bl, lo))
-        for bl in LET:
-            for la in (0, 1): sigs.add(('O', Bl, bl, la))
+    sigs = all_sigs()
     have_sig = set(); nm = 0; covered = set()
     for sg in sorted(sigs, key=str):
         ks = [k for k in sig_keys(sg) if k in Skeys]
@@ -229,7 +250,7 @@ def cmd_solveS():
     sol = h.getSolution(); xv = np.array(sol.col_value); t = xv[jt]; duals = np.array(sol.row_dual); cd = np.array(sol.col_dual)
     tag = OPT.get('tag', 'run')
     fk = lambda k: [list(k[0])] + list(k[1:])
-    S = {'t': float(t), 'model': 'S-lite', 'fan': Oon, 'xon': xon,
+    S = {'t': float(t), 'model': 'S-lite', 'fan': Oon, 'xon': xon, 'exact': EXACT,
          'Y': [[fk(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'Y' and xv[i] > 0],
          'S': [[fk(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'S' and xv[i] > 0],
          'x': {str(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'x' and xv[i] > 0}}
@@ -246,6 +267,7 @@ def cmd_upperS():
     mode 0/1 on window_table_S (inflow = max over each signature's candidates), relaxed DP + Karp tail."""
     load_patterns()
     Sj = json.load(open(OPT['sol'])); t = Sj['t']; Oon = Sj.get('fan', True); OON[0] = Oon
+    assert Sj.get('exact', False) == EXACT, 'pass exact flag consistently'
     tk = lambda e: (tuple(e[0]),) + tuple(e[1:])
     SV.clear(); MV.clear()
     for e, v in Sj['Y']: SV[('Y', tk(e))] = v
@@ -256,11 +278,7 @@ def cmd_upperS():
         v = sum(c * SV.get(k, 0.0) for k, c in cf.items())
         if v < 1 - t - EPS: bad += 1; log('  VIOLATED sender %s %s %.9f' % (wd, bits, v))
     log('sender rows: violated %d' % bad)
-    sigs = set()
-    for Bl in BIGL:
-        for lo in (0, 1): sigs.add(('A', Bl, lo))
-        for bl in LET:
-            for la in (0, 1): sigs.add(('O', Bl, bl, la))
+    sigs = all_sigs()
     for sg in sigs: MV[sg] = max([SV.get(('S', k), 0.0) for k in sig_keys(sg)] + [0.0])
     # every S key with value must be receivable
     allc = set(k for sg in sigs for k in sig_keys(sg))
@@ -293,11 +311,7 @@ def cmd_lowerS():
         SR[(wd, tuple(map(str, bits)))] = cf
         for k in cf:
             if k[0] == 'S': Skeys.add(k[1])
-    sigs = set()
-    for Bl in BIGL:
-        for lo in (0, 1): sigs.add(('A', Bl, lo))
-        for bl in LET:
-            for la in (0, 1): sigs.add(('O', Bl, bl, la))
+    sigs = all_sigs()
     have_sig = {sg for sg in sigs if any(k in Skeys for k in sig_keys(sg))}
     tot = collections.defaultdict(Fraction); sw = Fraction(0); rhs = Fraction(0); ok = True
     tk = lambda e: (tuple(e[0]),) + tuple(e[1:])
@@ -329,8 +343,8 @@ def cmd_orientS():
     """orientation test: keys read clockwise == anticlockwise, for every raw word, flag pair, side, pos."""
     bad = 0; n = 0
     for raw in itertools.product(LET, repeat=5):
-        for fa in range(4):
-            for fe in range(4):
+        for fa in allF():
+            for fe in allF():
                 n += 1
                 if yk(raw, fa, fe) != yk(rev5(raw), fe, fa): bad += 1
                 for sd in 'ae':

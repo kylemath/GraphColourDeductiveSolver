@@ -199,3 +199,10 @@ our agent R and have no output from it.
   (+ L2, + S-lite if cheap) let the five 66668 next to the 8 pay a big vertex other than u, and drop t* below 1/4.
 - **Kill line:** if exact-letter T + L2 on the run-A registry + RSST-D converges to 1/4 (lower VALID), exact
   letters are dead for this binder. Next would be a 6-decided relay (Studio's Job 31 class), not refining further.
+- **P s6 (19:55Z): with explore's k43 kill (f8_...55565_...5...., C ring 10), argsA + L2 converges to t* = 5/21
+  = 0.2381** [E, our engine; J lower VALID, J upper FEASIBLE d = 7..17 + Karp d0 = 11.7; 51 iterations, 530 s]. The
+  dual is spread over 25 rows, max weight 0.127 (sender 56687). Receivers: d = 7 8556855/7565666 (4/63), 8567655/6655656,
+  8655675/5866555, 7557656/8585665; d = 8 75565756/75666565, 76565565/56568565, 75656575/56665555, 76556565/58565765,
+  85556565/66866665. Sent to Studio for a second-engine check.
+  O4 result: exact letters (s5a, T + L2 + RSST-D, before the kill) converged at 1/4, lowerS VALID. **Kill line met:
+  exact letters are dead for the old binder.**
