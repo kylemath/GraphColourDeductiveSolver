@@ -155,6 +155,18 @@ def load_patterns():
             if not f or f[0].startswith('#'): continue
             if re.match(r'^[epf]\d+_', f[0]): addpat(f[0], 'NF')
             else: addpat('f%s_%s_%s' % (f[0], f[1], f[2]), 'NF')
+    for fn in [f for f in OPT.get('rpat', '').split(',') if f]:   # raw sep3 patterns: d k (pos mask)*k ; mask 4x5 bits over (w_{i+1}, s_i, s_{i-1}, w_{i-1})
+        for line in open(fn):
+            f = line.split('#')[0].split()
+            if not f: continue
+            d, k = int(f[0]), int(f[1]); slots = {}
+            for j in range(k):
+                i, m = int(f[2 + 2 * j]), int(f[3 + 2 * j])
+                rd = [('w', (i + 1) % d), ('s', i), ('s', (i - 1) % d), ('w', (i - 1) % d)]
+                ent = [(('w', i), frozenset((5,)))] + [(rd[t], frozenset(LET[b] for b in range(5) if (m >> (5 * t + b)) & 1)) for t in range(4)]
+                for sl, S_ in ent: slots[sl] = slots.get(sl, frozenset(LET)) & S_
+            P = tuple(sorted(slots.items()))
+            if P not in PATS[d]: PATS[d].add(P); PSRC['RPAT'] += 1
     log('patterns: %d files read, %d missing %s; distinct by d %s; by kind %s' % (
         nf, len(missing), missing, {d: len(v) for d, v in sorted(PATS.items())}, dict(PSRC)))
 _INST = {}
@@ -489,5 +501,6 @@ def find_alternative(d, lk, sv):
     return None
 
 exec(open(os.path.join(HERE, 'psolve.py')).read())
+exec(open(os.path.join(HERE, 'pslite.py')).read())
 log('jcheck: %d R5, %d R6, %d fans, %d RBIG; %d senders, %d rooted vars' % (len(R5), len(R6), len(FANS), len(RBIG), len(SENDERS), len(ROOTS)))
-{'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()
+{'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()

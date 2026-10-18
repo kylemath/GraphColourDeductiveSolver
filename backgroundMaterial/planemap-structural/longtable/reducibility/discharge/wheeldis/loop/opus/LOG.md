@@ -179,3 +179,11 @@ Pre-registered before any probe ran.
   senders 55688, 66668 (1/4) and 55858, 58668 (1/8); rule-T flags 0; neither L2 nor T reaches it. Caveats: RSST-D's 158
   patterns not loaded, so 1/4 is an upper bound for the full registry (they could kill the d = 8 binder); T results
   checked by our pcheck (J's code with the ykey/tkey fix), not a separate engine; float primal.
+- **P stage 4 (19:30Z): neither RSST-D nor S-lite moves the bound; t* = 1/4 stands** (`P_own_lp/FINDINGS.md` §4a-4b).
+  4a: run-A registry + RSST-D's 158 patterns (all rotations/reflections; 27/55/76 at d = 7/8/9; they forbid 152/251/1,413
+  generated rows) + T + L2 -> 1/4 [lower VALID, upper FEASIBLE d = 7..17 exhaustive + tail + Karp]. No RSST-D pattern
+  forbids the d = 8 binder 85556565/65866655 or R's filling 7576556/7767566. 4b: S-lite (T + fan route O, I1-I3 inflows,
+  conservative max over keys; orientation test 0/50k mismatches; fan-off reproduces T exactly) -> 1/4 [own checkers,
+  share sender enumeration]. Why: binding sender 66668 has all hats and fans small next to the 8, so neither route A
+  nor O exists. What can break 1/4: a reducible kill of 85556565/65866655, a small-hat/small-fan route (Q's route C,
+  6-decided relays), or exact letters instead of small/big.

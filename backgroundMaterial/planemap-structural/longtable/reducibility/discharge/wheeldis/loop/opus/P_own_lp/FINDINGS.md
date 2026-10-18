@@ -98,6 +98,41 @@
 - The 1/4 wall is the d = 8 row 85556565/65866655 with senders 55688, 66668 (1/4 each) and 55858, 58668 (1/8 each).
   Stage 4 (S-lite, Q_rule_class) was not built for lack of time. Sender 66668 binds with both T flags 0 (z small), so
   S-lite's fan route O through the 6 is the one candidate that could reach it.
-- Caveats: floats in the primal (tight rows at d = 7-10 sit at 0.0). RSST-D's 158 raw patterns are not loaded;
-  leaving them out can only raise t*. The rule-T upper check is P's (J's code with the key fix), not an independent
+- Caveats: floats in the primal (tight rows at d = 7-10 sit at 0.0). RSST-D's 158 raw patterns are not loaded in
+  stages 1-3 (lead's correction: leaving them out keeps the upper side but not the lower; see stage 4a). The rule-T upper check is P's (J's code with the key fix), not an independent
   second engine for T.
+
+## Stage 4a (19:15Z): + RSST-D (158 raw sep3 patterns), rule T + L2: **t* = 1/4** [E, both sides]
+- `rpat=rpatD.txt` (Studio's loop/studio/rsstD/out/rpatD.txt): decoded as d, k, then (five position i, 20-bit mask
+  over (w_{i+1}, s_i, s_{i-1}, w_{i-1}) x 5 letter bits, wlp3.mask), w_i = 5 implied; expanded over all 2d
+  symmetries. Loaded 158 new patterns (27 / 55 / 76 at d = 7 / 8 / 9). They are active: of stage 3b's generated
+  rows, 152 of 1,790 (d = 7), 251 of 2,212 (d = 8) and 1,413 of 1,946 (d = 9) are now forbidden.
+- No RSST-D pattern forbids the binder 85556565/65866655 (`admissible` = None) or R's 7576556/7767566.
+- solveT xon + rpat (`s4a.log`): 11 iterations, 156 s, the same five-row dual, so t* = 1/4.
+  `lowerT xon rpat`: VALID 1/4. `pcheck upper nomax rpat`: FEASIBLE (342 senders; d = 7..17 exhaustive, 0
+  violated; d = 18..30 DP; Karp lambda 0.5417, d0 = 12.5) (`upper_s4a.log`). The per-d max-load printout is slow
+  at d >= 15 with the RSST patterns (`upper_s4a_partial.log`), so this check skips it.
+
+## Stage 4b (19:30Z): S-lite (rule T + fan route O) + L2 + RSST-D: **t* = 1/4** [E, both sides, own checkers]
+- `pslite.py` (Q_rule_class spec; option B small/big). Flags per 6-spoke F = 2[A big] + [O big]. Keys Y(raw, Fa,
+  Fe) and S(raw, Fa, Fe, side, pos), canonical under (B,e,c,b,a) with the flag pair and side swapped together (also
+  in the palindromic case). Senders: every small/big class of each hat next to a 6-spoke and each 6-spoke's fan,
+  coupled through non-R6 6-wheels: 3,312 sender rows, 2,409 Y, 1,188 S_A, 1,188 S_O. Receiver inflow at a link 6
+  w_j: I1 (s_j = 5, root w_{j+1}), I2 (mirror), I3 (p_j = 5 allowed by the 6-wheel, roots s_j / s_{j-1}, u = fan).
+  Each slot charges the max over its candidate keys (36 signatures, 2,376 M rows, every S key receivable).
+  Conservative: max over the unseen letters (p_j, m, n, far flag), with I1/I2/I3 maximised separately.
+- Validation. (i) Orientation test: 50,000 raw/flag cases x sides x pos, 0 mismatches. (ii) Fan off (`nofan`)
+  reproduces rule T exactly: 1,077 rows, 1,356 Y, 444 S_A, 444 M rows. Its LP gives 1/4 (`s4b0.log`, 33 iterations,
+  1 thread; lowerS VALID), with an alternative five-row dual. (iii) Plant S_O > 0.3 + `dbg`: the separator's window
+  value equals the generated row's value on the top violator at d = 7 and 8 in every iteration (`splant.log`).
+- Full run (`s4b.log`): fan on, xon xcap 3, rpat, warm stages 3b/4a/2b: 35 iterations, 468 s on 2 threads. The last pass
+  adds 0 rows; tail DP holds; Karp lambda 0.5773, d0 = 13.6. `lowerS xon rpat`: VALID 1/4 (`lower_s4b.log`).
+  `upperS rpat`: FEASIBLE: senders, d = 7..17 exhaustive, tail, all S > 0 keys receivable (`upper_s4b.log`).
+- Dual: 1/4 sender 55688 (flags 0), 1/4 sender 66668 with hats all small and fans (0,1,1,0), 1/8 55858, 1/8 58668,
+  1/4 receiver d = 8 85556565/65866655. In 66668 the 8 sits between two 6-spokes whose hats and fans are all small
+  (only the two far 6s have big fans, and those reach no big root), so that five has no T or O route and pays only u.
+- Reading [I]: the 1/4 wall is u = 8 with five link fives (w1, w2, w3, w5, w7; their words 55688 twice, 55858,
+  58668, 66668), whose only big neighbours are u, w0 = 8 and s2 = 8. The certificate pairs u's row with those five
+  sender rows. To go further: a kill of
+  85556565/65866655 (it takes no RSST-D pattern), or a route out of 66668 that reads small hats and fans (rule C, or
+  6-decides relays), or option-F letters.
