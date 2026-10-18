@@ -137,3 +137,8 @@ Pre-registered before any probe ran.
   five-clusters); tested 351/351 at rings 6-14, 40/131 at 15, 21/143 at 16, 6/117 at 17, 1/62 at 18: 0 D, 0 C. Best C
   leftover rises with ring (1,162; 2,782; 6,402; 20,140). H-K dies by its kill line (0 hits of 28 at rings 16-18).
   Reading [I]: killing it needs letters beyond the frame, split into cases, like R* itself.
+- **Spec review (12:25Z): Studio's rule T option F kill filter is sound with conditions C1-C5**
+  (`F_spec_review/FINDINGS.md`). (a) no extra edges at distance 2: justified (small README fix); (b) the |K| split
+  cap loses strength only, drop it; (c) unsplit privates of a 9: sound. Gap: the embed test is weaker than RSST's
+  "appears" when K's interior has a cut vertex (only 3.3700806 among 24; its flip is also C, so no wrong deletion
+  today); C1 requires a rotation check or re-cut verdicts.

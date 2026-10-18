@@ -1,0 +1,35 @@
+k42_rsst003_xx5xxxxx 8 4 cutvertices: []
+k42_rsst025_xxxxxxx5 9 5 cutvertices: []
+k42_rsst031_6x555xxx 10 6 cutvertices: []
+k42_rsst031_x6xxx555 10 6 cutvertices: []
+k42_rsst062_6xx55xxx 12 8 cutvertices: [(1, [0, 3, 4], 'DIFFERENT'), (1, [2, 5, 6, 7], 'DIFFERENT')]
+k42_rsst080_6x655xxx 12 8 cutvertices: []
+k42_rsst136_6x5xxxxx 12 7 cutvertices: []
+k42_rsst136_x6xxxxx5 12 7 cutvertices: []
+k42_rsst137_x6xxxx5x 12 7 cutvertices: []
+k42_rsst137_6xx5xxxx 12 7 cutvertices: []
+k42_rsst142_6xx5xxxx 12 7 cutvertices: []
+k42_rsst142_x6xxxx5x 12 7 cutvertices: []
+k42_rsst095_6x665xxx 13 8 cutvertices: []
+k42_rsst187_x6xxx56x 13 8 cutvertices: []
+k42_rsst187_6xx65xxx 13 8 cutvertices: []
+k42_rsst189_6xx65xxx 13 8 cutvertices: []
+k42_rsst189_x6xxx56x 13 8 cutvertices: []
+k42_rsst217_6x6xxxxx 13 8 cutvertices: []
+k42_rsst251_x7xxxx55 13 8 cutvertices: []
+k42_rsst251_7x55xxxx 13 8 cutvertices: []
+k42_f7_5566757_ooo5ooo_x6xxx55x 13 9 cutvertices: []
+k42_f7_5566757_ooo5ooo_6xx55xxx 13 9 cutvertices: []
+k42_f7_5667576_oo5oooo_x6xxx65x 14 9 cutvertices: []
+k42_f7_5667576_oo5oooo_6xx56xxx 14 9 cutvertices: []
+k42_rsst062_6xx55xxx_flip034 k42_rsst062_6xx55xxx_flip2567 True
+k42_rsst062_6xx55xxx_flip034 k42_rsst062_6xx55xxx False
+k42_rsst062_6xx55xxx_flip2567 k42_rsst062_6xx55xxx False
+k42_rsst062_6xx55xxx_flip034 r=12 m=8 classes=22144 ext=3208 reached=19960 D=false depth=6 passes=7 mode=gs 196ms
+  C-REDUCIBLE X={I2-I6} size=1 (kc-C: tested 8, admissible 8, edges 33, 196ms)
+k42_rsst062_6xx55xxx_flip2567 r=12 m=8 classes=22144 ext=3208 reached=19960 D=false depth=6 passes=7 mode=gs 147ms
+  C-REDUCIBLE X={I2-I6} size=1 (kc-C: tested 8, admissible 8, edges 33, 147ms)
+k42_rsst062_6xx55xxx r=12 m=8 classes=22144 ext=3208 reached=19960 D=false depth=6 passes=7 mode=gs 150ms
+  C-REDUCIBLE X={I2-I6} size=1 (kc-C: tested 8, admissible 8, edges 33, 150ms)
+k42_rsst062_6xx55xxx_flip034 r=12 m=8 classes=22144 ext=3208 reached=19960 bad=2184 D=false depth=13 (0.4s)
+  fixed X={I2-I6} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
