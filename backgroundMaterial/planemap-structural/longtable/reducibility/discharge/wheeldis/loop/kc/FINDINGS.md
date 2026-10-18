@@ -24,3 +24,6 @@ An earlier build (plain ranker) also matched dfast on the first 61 windows.
 **D = true**, classes 48,427,561, ext 3,909,279, reached 48,427,561, in 3 passes (36,531,067 + 7,987,132 + 83 new),
 1,511 s, 683 MB peak (`k19_kc.out`, `k19_kc_log.txt`). dfast18: classes 48,427,561, ext 3,909,279, D = true, depth 4,
 19,736 s. Classes, ext and the verdict agree.
+
+**k19, Jacobi mode** (`k19_kcj.out`, `k19_kcj_log.txt`): D = true, **depth 4** (15,239,237 + 22,263,380 + 6,973,931 +
+41,734 new), 3,563 s, 689 MB. Depth equals dfast18's 4, so classes, ext, reached, verdict and depth all agree.

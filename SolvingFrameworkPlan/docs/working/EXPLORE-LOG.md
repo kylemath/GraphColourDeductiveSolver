@@ -30,6 +30,7 @@
   D key. Classes, ext, reached and D equal dfast on every key; Jacobi depth equal on all 101 where compared.
 - **k19: D = true**, classes 48,427,561, ext 3,909,279 (both equal to dfast18), reached all, 3 Gauss-Seidel passes,
   25 minutes and 683 MB on one core.
+- Jacobi rerun (05:15Z): depth 4, equal to dfast18's; 59 minutes.
 - No dfast, cfast or Lean source read. Guess check: "one or two bug fixes" was pessimistic (none needed); "2-6
   hours" was long (25 minutes).
 
