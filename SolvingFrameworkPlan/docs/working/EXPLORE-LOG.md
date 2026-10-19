@@ -115,7 +115,7 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   H0 = H1 = H3 = H4 = 6, H2 big, F3 = 6. Its 10 exact vertices give 142 windows (139 distinct), all at ring <= 14;
   none is D, kc -C finds no X, and the whole exact set (ring 14) has best leftover 260. Our 4 non-registry-dead
   cases of this context are exactly Opus's 4 admissible ones. Guess (70% survives) right. `loop/k51/F_*`,
-  `loop/k51/fam51_family_1f025ab7.log`.
+  `loop/k51/fam51_family_1f025ab7.txt` (copy of the run log).
 - **Survey (pre-registered 11:39Z, after the kill line; minutes of CPU): every sender, no stop** (SURVEY=1), to list
   which contexts our engines kill outright and which cases survive, for Opus's stage 20. Not a claim and no kill
   line; any kills go to Studio as usual. Guess: about half the 26 contexts die (the 12 registry-dead ones plus a few).
