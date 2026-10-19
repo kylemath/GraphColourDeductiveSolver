@@ -236,3 +236,11 @@ not new to F.
   f7_..65757_ entries are fully covered by other entries (0 sole arrangements); f7_..56757_...5... is the only match
   for 185,957 of its 390,625 arrangements (e.g. 5656757/5575667): it is load-bearing at pattern level, and the LP
   re-solve decides whether t* moves.
+- ~20:15Z 19 Oct: rows 1-2 f-names (explore 0c2d546e, loop/k47/s52r1_kills*, s52r2_kills*; 10 files fetched by path,
+  byte-identical), on the ring-merge head 7a3857a0. 568 distinct f-names (381 + 446, deduped). Trace to Studio's own
+  e2cb4e69 kill windows (out/job30/s52r12/trace.py): 102 D exact + 305 D up to rotation / reflection (each a Studio kc D
+  + dfast18 D window) + 20 C exact with the same X. The other 141 C: Studio re-run (out/job30/s52r12/: kc -C -s 60 -t
+  600, then cfast --fixed kc's X): 141/141 C-REDUCIBLE leftover 0 (2 redone after a stream restart cut their cfast).
+  Default glob: **2,397 D / 1,010 C** (+407 D, +161 C = exactly the 568 names, 0 lost). Ring-merge hold 3 (the same
+  3, none new), drop44 0, letter-9 0, centre-degree < 7 held 0. Matcher (the 8 minimal names): 497 frames, 0
+  mismatches. dcount (argsA44_local): **17,437** distinct parsed D (17,771 names), +407.
