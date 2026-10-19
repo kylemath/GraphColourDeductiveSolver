@@ -262,3 +262,15 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - dcount: 15,844 D (16,178 names), identical to Opus's file by file (0 of 229 differ).
 - feascheck: **FEASIBLE**, 0 violated at d = 7..15 plus the DP tail. sendercheck: 342/342.
 - lowercheck: the same 3-row dual as s17, exactly **t >= 1/5**. **PASS.**
+
+## s18r (t* = 9/52, s10-mode relay, b88ed8b7 + r_5..r_8; 332fbdd3), s14r_check.py, ~02:30Z 19 Oct
+- EXPECT_T=9/52; EXPECT_PAT=15844,-1,158 (-1 = not given: the C count was compared by hand). Log: s18r_check.log.
+- Patterns by Studio's spec loader: D 15,844 / C 1,650 / RPAT 158, equal to Opus's s18r.log (C 1,650). By d,
+  9,660 / 4,465 / 1,729 / ... is the union across kinds; Opus counts per kind, 9,663 / 4,469 / 1,736 / ..., reading 1.
+- Upper: bounds clean (max x 0.043); senderR 6,915 rows, 0 violated; cons 994, 0 violated; receivers d = 7..15 0
+  (Studio rows = spec rows on 788 arrangements); DP clean; Karp λ = 0.512820513, covering d >= 11.961.
+  **FEASIBLE.**
+- Lower: 45 rows rebuilt (14 senderR, 9 cons, 14 mrowR, 8 receiverR); tco = 1, **D = 9/52**. The only nonzero reduced
+  cost is M[76667] = 3/26 >= 0. **PASS.**
+- Checker fix in this run: the first launch died on an IndentationError from my EXPECT_PAT edit (a comment had
+  swallowed the fail call). It was fixed and rerun; no result came from the broken launch.

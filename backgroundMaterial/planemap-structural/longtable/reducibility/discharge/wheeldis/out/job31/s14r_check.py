@@ -227,7 +227,8 @@ for a in ARGS:
 byd = {d: len(v) for d, v in sorted(PAT.items())}
 print('patterns distinct by kind: D %d (spec 15,497), C %d (spec 1,494), RPAT %d (spec 158); by d %s; chars outside the spec table %s'
       % (KIND['D'], KIND['C'], KIND['R'], byd, dict(odd)), flush=True)
-if (KIND['D'], KIND['C'], KIND['R']) != EXPECT_PAT: fail('pattern counts %s differ from expected %s' % ((KIND['D'], KIND['C'], KIND['R']), EXPECT_PAT))
+# EXPECT_PAT entry -1 = not given
+if any(e >= 0 and g != e for g, e in zip((KIND['D'], KIND['C'], KIND['R']), EXPECT_PAT)): fail('pattern counts %s differ from expected %s' % ((KIND['D'], KIND['C'], KIND['R']), EXPECT_PAT))
 PATL = {d: [tuple(P) for P in v] for d, v in PAT.items()}
 def patmatch(d, w, s):
     for P in PATL.get(d, ()):
