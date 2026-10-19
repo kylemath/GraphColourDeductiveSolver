@@ -1,0 +1,13 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+L set 994 (with a five): distinct conservation rows 151056; keys g2 393, h2 12347, v 9165
+L set 1,424 (all non-R6): distinct conservation rows 219610; keys g2 393, h2 18683, v 13869
+V signatures (U = 7) 2850, mrowV rows 13869, v keys reachable from candV 13869
+sig2 signatures 3825, h2 keys reachable from cand2 18683
+/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job31/st15_struct.py:75: RuntimeWarning: divide by zero encountered in matmul
+  rloc += rb; P = N @ Gm
+/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job31/st15_struct.py:75: RuntimeWarning: overflow encountered in matmul
+  rloc += rb; P = N @ Gm
+/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job31/st15_struct.py:75: RuntimeWarning: invalid value encountered in matmul
+  rloc += rb; P = N @ Gm
+conservation rank over L set 994 (with a five): local 13505 + shared g2 part 165 = 13670 (numerical, tol 1e-9)
+conservation rank over L set 1,424 (all non-R6): local 19982 + shared g2 part 165 = 20147 (numerical, tol 1e-9)

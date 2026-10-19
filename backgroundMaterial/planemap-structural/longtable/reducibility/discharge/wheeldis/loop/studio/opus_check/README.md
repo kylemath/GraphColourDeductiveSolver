@@ -224,3 +224,26 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - **Lower:** 57 rows rebuilt (11 senderR2, 26 cons2, 15 mrowR2, 5 receiverR2); tco = 1, **D = 23/134**. The only
   nonzero reduced cost is M[7666755] = 26/67 (= 104/268) >= 0, as spec 12.9.
 - **Verdict: PASS**, upper FEASIBLE and lower VALID at 23/134.
+
+## Stage 15 (RELAY_SPEC section 13, d3bc1f93): structure self-test from the spec alone, ~01:25Z 19 Oct
+- out/job31/st15_struct.py (s12r_check.py's spec-side code plus section 13's cv / v / sigV / candV and cons2 with v
+  terms; no Opus code, cmd_st15.sh, snap/st15 or cons2basis_v6.json). Log: st15_struct.log.
+- Over the 994 non-R6 6-words with a five × all cv apex classes (3^6, which covers every 5^6 apex word), every 13.5
+  value reproduces:
+
+| item | Studio | spec 13.5 / s16_struct |
+|---|---|---|
+| distinct conservation rows | 151,056 | 151,056 |
+| g2 keys | 393 | 393 |
+| h2 keys | 12,347 | 12,347 |
+| v keys | 9,165 | 9,165 |
+| V signatures (U = 7) / mrowV rows | 2,850 / 13,869 | 2,850 / 13,869 |
+| sig2 signatures (M) | 3,825 | 3,825 |
+| conservation rank | 13,670 (local 13,505 + shared g2 165) | 13,670 |
+
+- The rank is numerical (SVD, tol 1e-9). It splits h2/v columns, which are local to a 6-type, from the shared g2
+  columns. The numpy matmul RuntimeWarnings in the log are not a real failure: the exact rank match shows the result
+  is sound.
+- Over all 1,424 non-R6 words (the upper check's set): 219,610 rows, h2 18,683, v 13,869, rank 20,147. candV reaches
+  all 13,869 v keys and cand2 all 18,683 h2 keys. So v keys outside the 994-word conservation appear only through
+  mrowV and the no-five words' conservation.
