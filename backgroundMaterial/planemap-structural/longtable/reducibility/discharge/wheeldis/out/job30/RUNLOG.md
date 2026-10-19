@@ -146,3 +146,8 @@ not new to F.
   **510 D / 522 C**: +23 D, +19 C. 5 D and 26 C were already in the set from earlier batches, as were 8 of the 11
   minimal names. 0 lost, 0 one-engine, 0 X mismatch. Drop44 guard 0. Matcher (8 names: the 3 new minimal plus a
   sample): 797 frames, 0 mismatches. dcount (argsA44_local): **15,550** distinct parsed D (15,884 names), +23.
+- ~01:40Z 19 Oct: explore 3b08eef3 (loop/k47/r9d_kills*: kills of the relay d=9 row 656656665/665555555). The 5
+  files were fetched by path, byte-identical; r7d16 is empty and skipped. r9d alone: 295 D / 88 C, as explore's run.
+  Default glob: **804 D / 604 C** (+294 D, +82 C; 1 D and 6 C were already in, as were 2 of the 29 minimal names).
+  0 lost, 0 one-engine, 0 X mismatch. Drop44 guard 0. Matcher (43 names: the 27 new minimal plus a sample): 4,066
+  frames, 0 mismatches. dcount (argsA44_local): **15,844** distinct parsed D (16,178 names), +294.
