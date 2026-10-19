@@ -1,0 +1,4 @@
+argsA64 (s33z/argsA64.txt = reg_A64/args_A64.txt): s31/argsA62.txt with only the two k3x lines changed, to reg_A64/k3x_{D,C}_A64.
+Registry: main c6395bf1 (Registry: admit r54j -> 2,472 D / 1,081 C), files W/out/job30/k3x_D.out (md5 973048ec...) and k3x_C.cfast (md5 98e51807...).
+= fb267af9 (adm54d: r54a, r54b, r54k12, r54c, r54d) + r54j (kills d8 76656566/56655565). Ring-merge 3 absent; the 89 CGLUE-XRING names present.
+kc lines for registry(): ex60 + git archive 09a6a667 W/loop + git archive c6395bf1 W/loop (registry() asserts every name found).

@@ -1,0 +1,6 @@
+argsA63 (s33z/argsA63.txt = reg_A63/args_A63.txt): s31/argsA62.txt with only the two k3x lines changed, to reg_A63/k3x_{D,C}_A63.
+Registry: main fb267af9 (Registry: admit r54d -> 2,443 D / 1,070 C), files W/out/job30/k3x_D.out and k3x_C.cfast.
+  k3x_D md5 090995196b6d0802e9551f797731fda7, k3x_C md5 8eb27ac90489c695d24266884855aa27, byte-identical (cmp) to explore's
+  adm54d at origin/claude/project-thread-nh6pv2 09a6a667 W/loop/k54/adm54d/ (which the prep first fetched; same bytes).
+Contents: main 21b1a8a1 (r54a, r54b, r54k12, r54c) + 18 r54d names. Ring-merge 3 absent; the 89 CGLUE-XRING names (27964810) all present.
+kc lines for s16_filter's registry(): ex60 + git archive 21b1a8a1 W/loop + git archive 09a6a667 W/loop (registry() asserts every name found).
