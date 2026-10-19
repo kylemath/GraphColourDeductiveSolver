@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 23:40Z 19 Oct: CGlue is FULLY SORRY-FREE in Lean, built here (28174683 contract_edge' / contract_subgraph_gen for any X on any spherical map; 1ebfc919; 60269a51). #print axioms: the standard three plus checker native_decide, no sorryAx. Registry recount on 3cfd7f18: 1,010 C entries = 898 one-interior-edge + 1 ring-interior + 111 multi-edge (32 / 43 / 36 at |X| = 2 / 3 / 4). The only open link is Unavoidable R, which must also supply OccExact and XRingSimple for C occurrences. Pending before the gate cites it: Studio's independent build (claim rule) and an adversarial review of the statement. The w66666 star reducer is on hold, since it is redundant if the build passes.
 - 23:10Z 19 Oct: s32p pricing against the l3q cert (Opus 445989dc).
   - The 8-channel hypothesis is REFUTED for the d7-with-8 rows: all rc >= 0.
   - Three 8-centred families price negative, and all of them relieve the d8 rows: Z (-9/160), ZR (-9/160, -1/40) and RR (-7/160, -3/80). None depends on the suspect entry.
