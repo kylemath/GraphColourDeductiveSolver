@@ -41,6 +41,27 @@ main line (round 49). Queued after round 49, 3 cores.
 same row. Its ring <= 14 result is therefore already known: no kill in 864 windows. The census and the ring 15-16
 sweep above serve both lines. New order (q50d.sh): census, then the d = 7 ring 15-16 sweep, then the d = 10 row.
 
+**Result, 19 Oct (01:29Z).**
+- **d = 7 7665566/6675666 (= main line 7665566/6665766) at ring 15-16: kill line met, so the row is R*-like and goes to
+  the rule side on both lines.** All 1374 windows at ring <= 16 ran (510 of them new at ring 15-16; 23:54Z-01:22Z), 0
+  mismatches, slowest kc run 182 s against a 600 s limit. None is D, and kc -C finds no X at |X| <= 4 for any of them.
+  The best leftovers at ring 15 are 256 (a7_u7665566_.6.566. and a7_u7665566_6..56.6). Guess (about 40% that it dies)
+  was on the wrong side.
+- **Growth census of the same row one ring out (23:54Z, `loop/k50/census50_7_7665566_6675666.txt`).** Exhaustive over
+  15,625 cases. The registry is 582 RSST configurations plus 1402 explore names (twoeng: 804 D, 598 C with the same X;
+  the 3 broad-only C kills from k38 are excluded). No configuration sits in the row itself. **80.3% is covered**: every
+  case with a 5 among the six privates (11,529 of 11,529) dies, and so do the no-5 cases with p51 (the private of w5)
+  equal to 6 (1,024; rsst098). Each private 5 kills on its own: rsst180 at p01 or p02, rsst052 at p11 or p61, rsst025,
+  rsst050 or f7_...5565_....... at p21, and rsst050 at p51. **Survivors: 3,072 cases, exactly those with every private
+  >= 6 and p51 >= 7.** Explore names cover nothing that RSST does not. With a 9 one ring out, 77.6% is covered; with
+  every private >= 7, 0%. Guess (20-40%) was too low. For the rule side, the row needs paying for only when its six
+  privates are all big (p51 >= 7).
+- **d = 9 656656665/665555555, complete (23:54Z, 3150 windows, 0 mismatches): dies at ring 13.** 398 kill windows, 383
+  f-names (twoeng: 295 D, 88 C). 29 minimal f-names, 15 of them at ring 13 (8 C, 7 D), e.g. f9_...565665_.......55 (C)
+  and f9_...565666_....55.5. (D). Guess (ring <= 12) was one ring too low. Twoeng-ready: `loop/k47/r9d_kills*`.
+- **d = 10 6556656556/6665656665: dies at ring 14.** 2097 windows (none run before). 1097 had run when the queue hit its
+  2-hour limit at 01:28Z; 13 of them are two-engine kills, all at ring 14 (10 D, 3 C). The rest resumed at 01:29Z.
+
 ## Round 49 (18 Oct 2026, 22:11Z-): H-R9, does the d = 9 receiver of the new 1/5 dual die, and how far do patterns reach its senders?
 
 **Pre-registered 22:11Z, before any new engine run on these targets.** Gap G2. Long Table, 22:09Z: with round 48 loaded
