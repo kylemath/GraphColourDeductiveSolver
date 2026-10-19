@@ -371,3 +371,9 @@ our agent R and have no output from it.
 - **P2 s20r (03:30Z): the s10 relay on argsA53 is unchanged at 37/214** [own checkers, both sides]. Top receiver: 7665566/6665766 (0.159). The d = 10 row 6565656565/6655666666 still binds in both relay classes.
 - **Two-engine (03:31Z): Studio's §12 spec-only checker passes s20c at 8/47 = 0.1702** (38de2a15; dcount identical; receivers d = 7..15 exact; all 41 rows rebuild). **The relay line at 8/47 is [E2], our best so far.**
 - **Two-engine (03:39Z): Studio passes s19r and s20r at 37/214** (72851550, spec-only). Nothing of ours is waiting on Studio.
+- **P stage 16 A' interim (03:45Z).**
+  - The census configs (rsst025, 050, 052, 098, 180) are all in the conservative 582. The f7_ census name is in k3x_C 09d8ac38.
+  - Check 4, with the full 3-ball test, gives exactly 3,072 / 15,625.
+  - The projection that LP terms can see (window w_{j+-2}, s_{j-2..j+1}) gives 7,500. That is a weaker filter, and still conservative. It keeps p51 = 5, p51 = 6 and p21 = 5.
+  - Filter off reproduces 23/134 (st15f), and argsA52 gives 6/35 (st16b0).
+  - The filtered solve st16ap is at LP 6/37, but it is unconverged and unchecked, so it is not a bound.
