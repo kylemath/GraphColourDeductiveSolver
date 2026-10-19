@@ -132,11 +132,15 @@ theorem DEntry.colorable (e : DEntry) {T : SphericalMap n} (h : OccursW e.cf T)
     e.hloop O (c := fun x => cG x) (fun _ _ huv _ _ => cG.valid huv)
 
 /-- A C-reducible registry entry. Only the configuration is recorded here; its C certificate is
-a `native_decide` fact in `C66666.lean`/`CWheels.lean` style, which `CGlue` would consume. -/
+a `native_decide` fact in `C66666.lean`/`CWheels.lean` style, which `CGlue` would consume.
+
+**Superseded** by `CGlue.CEntry` in `CGlue.lean` (it records X, the labels and the C certificate). -/
 structure CEntry where
   cf : DCheck.Conf
 
-/-- **Open link: C-glue.** Soundness of C-reducibility for the listed entries. Not formalized. -/
+/-- **Open link: C-glue.** Soundness of C-reducibility for the listed entries. Not formalized.
+
+**Superseded** by `CGlue.CGlueX` in `CGlue.lean`, which is proved there (`CGlue.cGlueX`, no `sorry`). -/
 def CGlue (Cs : List CEntry) : Prop :=
   ∀ e ∈ Cs, ∀ (n : ℕ) (T : SphericalMap n), T.Triangulated → OccursC e.cf T →
     SmallerColorable T → T.graph.Colorable 4
@@ -146,7 +150,9 @@ theorem cGlue_nil : CGlue [] := by
   intro e he
   simp at he
 
-/-- The registry `R`: D-reducible and C-reducible configurations. -/
+/-- The registry `R`: D-reducible and C-reducible configurations.
+
+**Superseded** by `CGlue.Registry` in `CGlue.lean` (C entries with `OccursCX`). -/
 structure Registry where
   D : List DEntry
   C : List CEntry
@@ -156,7 +162,9 @@ def Registry.Contains (R : Registry) (T : SphericalMap n) : Prop :=
   (∃ e ∈ R.D, OccursW e.cf T) ∨ (∃ e ∈ R.C, OccursC e.cf T)
 
 /-- **Unavoidability of `R`** (to be supplied by the discharging LP at `t* ≤ 0`): every
-internally 6-connected triangulation contains a configuration of `R`. -/
+internally 6-connected triangulation contains a configuration of `R`.
+
+**Superseded** by `CGlue.Unavoidable` in `CGlue.lean` (C entries with `OccursCX`). -/
 def Unavoidable (R : Registry) : Prop :=
   ∀ (m : ℕ) (T : SphericalMap m), Internally6 T → R.Contains T
 

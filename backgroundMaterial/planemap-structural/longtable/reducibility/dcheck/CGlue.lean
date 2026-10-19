@@ -400,6 +400,24 @@ def OccExact (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) (ι : Fin m →
   (∀ a b, intAdj a b = true → T.Adj (ι a) (ι b)) ∧
   (∀ a t, t < r → ringAdj a t = true → T.Adj (ι a) (ρ t))
 
+/-- `XRingSimple` is vacuous when `X` has no ring–interior edge: such entries (921 of the 1,010 on
+Studio head 3cfd7f18) need no ring condition beyond the D occurrence's (folds and pinches allowed). -/
+theorem xRingSimple_nil (r : ℕ) (ρ : ℕ → Fin n) : XRingSimple [] r ρ := by
+  intro t a h
+  simp at h
+
+/-- **Bridge to `OccExact` from rotation facts.** If every listed neighbour of each interior vertex
+occurs in the rotation of `T` at that vertex, as in the per-key rotation occurrences (`occ24`'s
+`Occ`: "the rotation of `T` at every interior vertex is the free-completion rotation") and in
+Job 26's 2-ball embedding, then the occurrence is exact. -/
+theorem occExact_of_nx {r : ℕ} {ι : Fin m → Fin n} {intAdj : Fin m → Fin m → Bool}
+    {ringAdj : Fin m → ℕ → Bool}
+    (hI : ∀ a b, intAdj a b = true → ∃ u, Nx T (ι a) u (ι b))
+    (hR : ∀ a t, t < r → ringAdj a t = true → ∃ u, Nx T (ι a) u (ρ t)) :
+    OccExact T r ρ ι intAdj ringAdj :=
+  ⟨fun a b h => (hI a b h).elim fun _ hu => nx_adj_right hu,
+    fun a t ht h => (hR a t ht h).elim fun _ hu => nx_adj_right hu⟩
+
 /-! ## C4: the contracted reducer
 
 C4 is split into two lemmas and an assembly, all proved:
@@ -766,6 +784,15 @@ theorem occursCX_of_configOcc (e : CEntry) {T G : SphericalMap n} {ρ : ℕ → 
     OccursCX e T :=
   ⟨G, ρ, ι, O.toW, hex, fun _ _ _ ht s hs e => O.ring.inj s _ hs ht e⟩
 
+/-- **Interior-only X: folds allowed.** For an entry with `eqR = []`, a C occurrence is just a D-style
+face-walk occurrence (`ConfigOccW`: folded and pinched rings allowed) that is exact. -/
+theorem occursCX_of_interior (e : CEntry) (hR : e.eqR = []) {T G : SphericalMap n}
+    {ρ : ℕ → Fin n} {ι : Fin e.cf.m → Fin n}
+    (O : ConfigOccW T G e.cf.r e.cf.m ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf)))
+    (hex : OccExact T e.cf.r ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf))) :
+    OccursCX e T :=
+  ⟨G, ρ, ι, O, hex, by rw [hR]; exact xRingSimple_nil _ _⟩
+
 /-- **C-soundness, per entry.** An occurrence of a C entry in a map whose smaller maps are all
 colourable makes it colourable: colour the contracted map `T'` (smaller, C4), pull the colouring
 back along `π` (it meets the X constraints), and run the D tail on its ring code (C1–C3). -/
@@ -954,3 +981,5 @@ end SimpleGraph.SphericalMap
 #print axioms SimpleGraph.SphericalMap.CGlue.four_color_of_unavoidableC1
 #print axioms SimpleGraph.SphericalMap.contract_subgraph
 #print axioms SimpleGraph.SphericalMap.CGlue.cGlueX
+#print axioms SimpleGraph.SphericalMap.CGlue.occursCX_of_interior
+#print axioms SimpleGraph.SphericalMap.occExact_of_nx
