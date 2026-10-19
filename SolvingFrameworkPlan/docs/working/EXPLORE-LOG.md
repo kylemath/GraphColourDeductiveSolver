@@ -32,6 +32,9 @@ None of these rows was swept before in any orientation (canon_key against every 
   twoeng on `loop/k47/r54a_kills*`: 1 D both engines, 8 C same X, 0 mismatch), every X interior-only ({I0-I1},
   {I0-I2}, {I0-I5}), so the ring-merge guard holds none. Inclusion-minimal: f10_...5656565_.......5.. (C) and
   f10_...5656565_......5... (C), both ring 14, m 9. Hypothesis right for this row (dies by ring 14).
+- **22:27Z, d7 8658656/6665555 (r54b, dual 0.025) dies at ring 14.** No kill at ring <= 13 (575 windows); at ring 14 (309
+  windows) 4 two-engine D (twoeng on `loop/k47/r54b_kills*`: 4 D both engines), 4 f-names, minimal f7_..56856_...566.
+  (ring 14, m 9: the hub, link run 5-6-8-5-6 and s-letters 5-6-6). Hypothesis right for this row.
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
