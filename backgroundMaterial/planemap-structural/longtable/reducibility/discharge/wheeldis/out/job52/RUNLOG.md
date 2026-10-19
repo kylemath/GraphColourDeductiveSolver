@@ -53,3 +53,7 @@
   a7_u7665..6_67...6., a7_u7665..6_.7...66, a7_u76..566_67...6., a7_u7665..6_676...6, a7_u76..566_6...766,
   a7_u7665..6_6.6..66), 0 kc D, 0 kc C. Hypothesis (two-engine kill at ring <= 18) not met on the windows decided;
   the 7 timeouts carry no verdict.
+- 20:15Z 19 Oct: row 11 addendum (Long Table 19:27Z; out/job52/row11_open.py, the row10_open method with kc -t 10800
+  on a dfast18 D): the 7 ring-18 kc timeouts all **dfast18 D=false** (868-1,222 s each). No D, so no kc -t 10800 run
+  and no cfast (no kc X). Row 11 final: 225/225 windows decided, 0 two-engine kills; the hypothesis (a two-engine
+  kill at ring <= 18) fails on this binder row.
