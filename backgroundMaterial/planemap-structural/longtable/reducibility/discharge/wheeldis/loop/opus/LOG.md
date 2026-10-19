@@ -472,3 +472,8 @@ our agent R and have no output from it.
 ## s24h stopped; s25 prep on 0125c46b, 19 Oct ~11:40Z
 - s24h on 4b28f532 was stopped mid-solve on Long Table's change of plan. It was at iteration 16 with t = 2/13, unconverged and uncertified. Not a bound.
 - s25 on 0125c46b (1,897 D / 838 C, dcount 16,937, includes the r7h kill of 7676556/7759565): argsA59 built. Strict kill tables are byte-identical again; check 4 = 7,500. Ready for the stage 21 production run.
+
+## Stage 23: reverse hat rr (big → five at distance 2, flag hatrr, §15r), s22h setup, 19 Oct ~12:00Z. NULL
+- t* = 16/101 exactly. Lower VALID (115 rows). Upper: sol_s22h is FEASIBLE under the hatrr engine. Gain 0.
+- rr carries real weight: 3.7 total, on keys (5,1,6,8), (5,1,5,9) and similar. Whatever the face 7 pushes out returns through y, and every face row stays tight.
+- Engine gap found: upperR2 on sol_st23r itself is INFEASIBLE (6 conservation rows on no-five 6-links, worst 0.0078). Without v6, solveR2 separates conservation only over 6-words that contain a five. Earlier claimed bounds are unaffected, because each passed upperR2 over all 1,424 types. Future solves must either separate on all 1,424 or check upperR2 on their own solution (as they do).

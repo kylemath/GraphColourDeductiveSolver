@@ -757,3 +757,27 @@ Built by s19e/mkfamily.py, run on the s19e engine (hat5 class, s21/argsA54.txt, 
   - 6<->6 transfers;
   - keys finer than the existing ones.
 - **Lead (outside §18).** Two r columns have reduced cost > 0 under cert_st20xL: r(5,0,6,7) at 2/303 and r(5,0,7,5,0,7) at 1/303. The second touches the d=9 row 655566556/757656565 and the face sender 55767. Their reverse would be a distance-2 transfer from the hat big to the five. That is not ruled out by this cert, and it was not built.
+
+## Stage 23 pre-registration (before any solve): reverse hat channel rr (flag `hatrr`, RELAY_SPEC 15r), run st23r on s22/argsA55.txt over s22h
+- **Rule.** A new column `rr[K] >= 0` under §15's key K, moving charge from the big hat b to the five v (b -> v). It has coefficient -1 in v's senderR2 row and -1 in b's receiverR2 load, i.e. exactly -r, so r becomes free in sign.
+- **Soundness.** Both ends compute the same K (§15 table). Charge is conserved, as the physical test checks: for r and for rr, v's coefficient equals b's, and rr is -1 at v. Two controls: brokenkey, and brokensign (b gets +rr).
+- **Regression:** with hatrr off, the s23d engine must reproduce s22h = 16/101: lowerR2 on s22/hf/cert_s22hL.json and upperR2 on s22/hf/sol_s22h.json.
+- **Recipe.** The s22h recipe (s22/hf/cmd_s22h.sh) with `hatrr` added:
+  - keeppen solve (xpen 1e-3);
+  - nosep solve for the lower bound;
+  - lowerR2 on the nosep cert, and upperR2 on the keeppen solution itself.
+- **Kill lines:**
+  - (1) the gain is under 0.005, i.e. the upper bound on the solution is not <= 0.1534;
+  - (2) the rr columns enter with total weight under 1e-3.
+- **Report:** t, both checks, the rr weight and where it flows, and whether anything reaches the face 7s.
+
+## Stage 23 result: **the reverse hat channel rr is null on argsA55. t* = 16/101 exactly; kill line (1) is met**
+- **Physical test** (s23d/orient_hatrr*.log). Over 100,000 diamonds there are 0 mismatches: keys agree, r and rr conserve charge, and rr points b -> v. The brokenkey control gives 15,898 mismatches; the brokensign control (b gets +rr) gives 100,000.
+- **Regression** (hatrr off, s23d engine): LOWER-R2 VALID 16/101 on cert_s22hL (114 rows), and UPPER-R2 FEASIBLE at 16/101 on sol_s22h (s23d/val_off_*.log).
+- **st23r** (keeppen, 10:50Z-11:35Z, about 45 min while sharing CPU with another job). Fixed point t = 0.158441558 after 10 iterations.
+  - **UPPER-R2 on sol_st23r itself: INFEASIBLE (6).** All sender rows and every d = 7..17 receiver and the tail pass. The 6 failures are conservation on no-five 6-links, such as (6,7,9,7,6,8), with worst 0.0078.
+  - **Cause: an engine gap, not rr.** Without v6, the solver separates conservation only over 6-words that contain a five. upperR2 checks all 1,424 words. Here h ended up positive on keys that are shared with no-five links. Earlier solutions happened to have h = 0 on those keys.
+- **st23rL** (nosep): **LOWER-R2 VALID t >= 16/101 (115 rows)**, unchanged.
+- **The class optimum.** sol_s22h (rr = 0) is UPPER-R2 FEASIBLE at 16/101 under the hatrr engine (s23d/upper_s22h_hatrr.log). So **t*(hatrr) = 16/101 exactly**: the gain is 0, below the 0.005 target, and kill line (1) is met.
+- **rr weight.** Kill line (2) is not hit. rr enters with total 3.667 over 19 keys at sol_st23rL, and 3.790 over 29 keys at sol_st23r. It flows mostly on diamonds with one five-spoke (big Z1) and one big spoke: (5,1,6,8) 0.705, (5,1,5,9) 0.605, (5,1,5,8) 0.590, (5,1,6,9) 0.407. No rr key also carries r.
+- **Face 7s** (s23d/kill_st23r.log, section 1 convention, load = inflow). rr does reach the face 7s, as an **outflow from the 7 to the face's third five**: rr[506507] = 0.0074 at sol_st23rL and 0.0039 at sol_st23r. This replaces st20xL's r[506507] = +0.023, which ran from that five into the 7. The face fives' y rises to compensate (y7|5566 0.714 -> 0.745), so the face rows stay tight at 1 + 16/101: 0.745 + 0.421 - 0.0074. The face fives have nowhere else to send, so whatever the 7 pushes out comes back through y.

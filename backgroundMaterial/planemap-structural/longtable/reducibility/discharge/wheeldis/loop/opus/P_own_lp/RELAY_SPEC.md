@@ -1378,6 +1378,79 @@ off the engine is s17d's. The class contains s21f's (r = 0), so t*(H5) <= s21f's
   - No convex split of the weight keeps both keys <= 0. So the s21f certificate is not valid for the H5 class, and
     the channel has negative reduced cost at the s21f dual.
 
+## 15r. Stage 23: reverse hat channel (flag `hatrr`, requires `hat5`). Written before any solve
+
+Written by Opus before any solve. Engine: `P_own_lp/s23d/`. prelay2.py is s20d's engine plus `hatrr`; the backup is
+`s23d/prelay2_st20_backup.py`. With `hatx` off this is the s22h class (`xon apexcls filt16 killtab=s22/f/kill/kill6 hat5`)
+on `s22/argsA55.txt` (5fa0adb0).
+
+**Direction, stated plainly** (section 1 convention: a five starts at +1 and sends; a big's load is its inflow and is
+capped at d - 6 + t):
+
+- `r[K]`, from §15, moves charge **from the five v to its big hat b**.
+- `rr[K] >= 0`, new, moves charge **from the big hat b to the five v** (b → v, distance 2, the two tips of the diamond).
+- In the mirror convention of the FINDINGS prose, where "the 7 pays its fives", the words swap: r is "b pays v" and rr
+  is "v pays b". The coefficients below are what is meant.
+
+| row | r[K] (v → b) | rr[K] (b → v) | meaning of rr |
+|---|---|---|---|
+| v's senderR2 (`t + sends >= 1`) | +1 | **-1** | v receives rr, so it must send rr more (v's row is credited with charge) |
+| b's receiverR2 (`-t + load <= d - 6`) | +1 | **-1** | b's net inflow falls by rr (b's load is debited) |
+
+So rr has exactly the coefficients of -r, but a column of its own with rr >= 0. Equivalently, r becomes free in sign.
+
+**Key.** The key is §15's K, unchanged, read from both ends exactly as in the §15 table. It is computed by the same
+`h5_sender` (at v, for each big hat H[k] = 1) and `h5_recv` (at b, for each apex s_i = 5). There is one rr column for
+every key that has an r column.
+
+**Rows and window.**
+
+- **senderR2.** For each k with H[k] = 1, the row gains `+ r[K] - rr[K]`.
+- **receiverR2.** For each i with s_i = 5, the load gains `+ r[K] - rr[K]`.
+- **Window.** `W[., b, c, e, f, ., q, r = 5, s] += r[K] - rr[K]`. The slots are the same, so d = 7..17 stays exact. The
+  class table already folds K's id at r = 5, which is the same key. Window entries may now be negative, as they already
+  are under v6. The separator is max-plus, so negative entries are fine.
+- **Tail.** As in §15, with net r - rr inside W9's load.
+- All other rows are unchanged.
+
+**Soundness.** Each rr transfer is one amount of charge moved from b to v under a key that both ends compute
+identically (§15 table). b's receiver row subtracts it (load) and v's sender row adds it (v must send it on), so total
+charge is conserved.
+
+The checks treat rr like any other column:
+
+- upperR2 reads `rr` from the solution, includes it in every sender row, and includes it in the window via RRV.
+- lowerR2 prices rr through the same ledger (coefficients -1 / -1), so each rr needs reduced cost >= 0.
+
+With `hatrr` off, the engine is s20d's byte-for-byte in behaviour. The class contains s22h's (rr = 0), so
+t*(hatrr) <= 16/101.
+
+**Physical test** (`orientR2 ... hat5 hatrr`, in `hat5_selftest`). On each random diamond the test checks that the
+sender key equals the receiver key in both orientations, as in §15. It then takes the coefficients each row actually
+receives from the code paths (`hat_sender_terms` at v, `hat_recv_terms` at b) and checks three things:
+
+- for r and for rr, v's coefficient equals b's coefficient, so charge is conserved;
+- rr has coefficient -1 at v, so it points b → v;
+- r has coefficient +1, so it points v → b.
+
+There are two controls:
+
+- `brokenkey`, from §15: the receiver reads s_{i-1} on the wrong side;
+- `brokensign`, new: b's row gets +rr instead of -rr.
+
+Logs: `s23d/orient_hatrr.log`, `s23d/orient_hatrr_brokenkey.log`, `s23d/orient_hatrr_brokensign.log`.
+
+**Why this channel.** The stage 22 probe (s22d/probe22.log) found two r keys with reduced cost > 0 at cert_st20xL
+(16/101): r(5,0,6,7) at 2/303, and r(5,0,7,5,0,7) at 1/303, which touches the d = 9 row 655566556/757656565 and the
+face sender 55767. Their rr columns therefore have negative reduced cost at that dual, so the 16/101 cert is not valid
+for the hatrr class.
+
+**Kill lines** (Long Table):
+
+- the gain is under 0.005, i.e. the upper bound on the solution itself is not <= 0.1534;
+- the rr columns enter with total weight under 1e-3.
+
+
 ## 16. Stage 20: exact hat letters on sender rows (flag `hatx`, requires `hat5`). Written before any solve
 
 Engine: `P_own_lp/s20d/` (prelay2.py = s19e's engine + `hatx`; backup `s20d/prelay2_st19b_backup.py`). The
