@@ -330,3 +330,6 @@ our agent R and have no output from it.
   similar 7-neighbours equally, and w0 is itself a 7 of the tight family (7665666/6566565 and 7655666/6756666 bind too).
   Paying this row needs radius-3 information: a two-step relay through the 6s w2 and w5, or a wider separator window.
   New separator bin/jsep4 (per-link inflow at the leaf) is in P_own_lp.
+- **Two-engine (01:06Z): Studio's spec-only checker (from §12) passes s12r50 at 23/134** (139b490e). Upper is FEASIBLE,
+  with receivers swept exhaustively, cons2 checked on 1,424 x 64, and senders and mrowR2 passing. Lower is VALID on all 57 rows.
+  **The relay line at 23/134 = 0.1716 is [E2], our best K = 2 value so far.**
