@@ -179,3 +179,14 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - feascheck: 0 violated at d = 7..15 plus the DP tail, **FEASIBLE**. sendercheck: 342/342 hold.
 - lowercheck: the 3 rows (the same dual as s16: senders 55667 2/5, 55767 1/5; receiver d=7 7665566/6665766 2/5,
   ALLOWED) give exactly **t >= 1/5**.
+
+## s17r (t* = 31/178, s10-mode relay, d43ba26a + r_5..r_8; 7ee49976), s14r_check.py, ~00:20Z 19 Oct
+- EXPECT_T=31/178, EXPECT_PAT=15550,1568,158 (spec 12.0's counts for argsA50); registry argsA50_pinned.txt.
+  Log: s17r_check.log. The "(spec 15,497)" text in its pattern line is s14r's label; the check compares against
+  EXPECT_PAT.
+- Spec side: R5/R6/FANS/RBIG as spec; 6,915 senderR rows, 102 g, 975 sigs, 994 relay words. Patterns D 15,550 /
+  C 1,568 / RPAT 158.
+- Upper: bounds clean (max x 0.0318); senderR 0 violated; cons 0; receivers d = 7..15 0 (Studio rows = spec rows on
+  784 arrangements); DP clean; Karp λ = 0.505617978, covering d >= 11.784. **FEASIBLE**.
+- Lower: 25 rows rebuilt, tco = 1, **D = 31/178**; the only nonzero reduced cost is M[76667] = 40/89 >= 0.
+- **PASS.**
