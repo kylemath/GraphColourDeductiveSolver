@@ -553,3 +553,13 @@ our agent R and have no output from it.
 - The binder moves to near-identical rows each round: 7665566 → 7765566 → 7766556, and the d10 weight moves to the same row via another arrangement.
 - Kill line hit: forbidding single arrangements does not approach 0, so kills alone are not the route. Rows have to be killed by coefficient class, or paid by rules; l3q (s28q) already removes the face-7 binder.
 - These are oracle numbers, not bounds.
+
+## s32p: pricing next rule families against the l3q cert (47/320, 7360eb92), 445989dc
+- Hypothesis (a drule-shaped 8-channel pays the d7-with-8 rows) is refuted: every column touching 8658656/6665555, 8658656/6665556 or 8568656/6655555 has rc ≥ 0. The d10 row is untouched.
+- Negative families, all relieving d8 rows:
+  - Z, five→big with a hat-class key: −9/160;
+  - ZR, its reverse big→five: −9/160 and −1/40;
+  - RR, big hat→five across a diamond: −7/160 and −3/80.
+- Null families: YR, O5/O5F, D, O, the generalised LG l3q, and VG.
+- No negative column relies on the suspect f7_..56757_...5....
+- Spec: s32p/RELAY_SPEC_s22.md (Z±, RR). Next: a capped solve with l3q + zh + ZR + hatrr. Expect gain to stop at the d7 and d10 rows.
