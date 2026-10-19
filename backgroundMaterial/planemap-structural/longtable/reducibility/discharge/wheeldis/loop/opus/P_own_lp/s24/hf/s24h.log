@@ -1,0 +1,23 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9696, 8: 4522, 9: 2418, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 16459, 'C': 1836, 'RPAT': 158}
+conservation basis rows added: 10539
+warm rows admitted: 44238
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 994 six-words, 11533 initial cons rows, 1125 M sigs
+iter 0 t=0.153846153846 rows 82730 cols 23999 added 976  lp 470.4s total 483s  {7: (162, np.float64(2.732258), 0.7), 8: (152, np.float64(2.13057), 0.6), 9: (161, np.float64(0.844065), 0.6), 10: (169, np.float64(0.828117), 0.5), 11: (163, np.float64(0.93145), 0.5), 12: (168, np.float64(0.615385), 0.5), 13: (1, np.float64(0.062051), 0.5)}
+iter 1 t=0.153846153846 rows 83185 cols 24049 added 446  lp 14.2s total 509s  {7: (133, np.float64(1.399188), 0.6), 8: (147, np.float64(0.506846), 0.7), 9: (150, np.float64(0.158201), 0.9), 10: (16, np.float64(0.107499), 0.5)}
+iter 2 t=0.153846153846 rows 83727 cols 24140 added 500  lp 21.4s total 542s  {7: (159, np.float64(1.115717), 0.7), 8: (166, np.float64(0.398609), 0.7), 9: (174, np.float64(0.112882), 1.0), 10: (1, np.float64(0.002415), 0.5)}
+iter 3 t=0.153846153846 rows 84181 cols 24191 added 451  lp 11.8s total 566s  {7: (154, np.float64(0.873647), 0.8), 8: (151, np.float64(0.280539), 0.9), 9: (143, np.float64(0.007177), 1.0), 10: (3, np.float64(0.038462), 0.5)}
+iter 4 t=0.153846153846 rows 84670 cols 24206 added 465  lp 30.4s total 609s  {7: (151, np.float64(0.556312), 1.1), 8: (156, np.float64(0.165725), 1.2), 9: (158, np.float64(0.047678), 1.1)}
+iter 5 t=0.153846153846 rows 85112 cols 24214 added 442  lp 126.3s total 752s  {7: (148, np.float64(0.277296), 1.8), 8: (147, np.float64(0.2405), 1.4), 9: (146, np.float64(0.044179), 1.7), 10: (1, np.float64(0.007726), 0.7)}
+iter 6 t=0.153846153846 rows 85493 cols 24241 added 359  lp 203.4s total 974s  {7: (150, np.float64(0.23518), 2.8), 8: (151, np.float64(0.159694), 1.8), 9: (58, np.float64(0.038462), 1.7)}
+iter 7 t=0.153846153846 rows 85963 cols 24251 added 441  lp 432.8s total 1432s  {7: (151, np.float64(0.195828), 3.7), 8: (149, np.float64(0.149585), 3.4), 9: (141, np.float64(0.029896), 1.9)}
+iter 8 t=0.153846153846 rows 86411 cols 24264 added 443  lp 275.3s total 1732s  {7: (144, np.float64(0.197498), 4.7), 8: (150, np.float64(0.063927), 3.2), 9: (148, np.float64(0.112565), 1.7), 10: (1, np.float64(0.018238), 1.0)}
+iter 9 t=0.153846153846 rows 86828 cols 24270 added 417  lp 241.7s total 1998s  {7: (140, np.float64(0.128763), 4.7), 8: (150, np.float64(0.133975), 2.7), 9: (127, np.float64(0.03256), 1.7)}
+iter 10 t=0.153846153846 rows 87223 cols 24328 added 347  lp 109.4s total 2134s  {7: (151, np.float64(0.16095), 5.2), 8: (149, np.float64(0.102767), 2.8), 9: (47, np.float64(0.046338), 2.1)}
+iter 11 t=0.153846153846 rows 87682 cols 24346 added 449  lp 229.9s total 2389s  {7: (152, np.float64(0.097064), 5.1), 8: (151, np.float64(0.04639), 3.0), 9: (146, np.float64(0.010619), 2.2)}
+iter 12 t=0.153846153846 rows 88024 cols 24368 added 332  lp 199.5s total 2614s  {7: (152, np.float64(0.089363), 4.7), 8: (150, np.float64(0.048764), 3.1), 9: (30, np.float64(0.005794), 2.1)}
+iter 13 t=0.153846153846 rows 88385 cols 24385 added 337  lp 73.9s total 2711s  {7: (147, np.float64(0.081465), 4.8), 8: (150, np.float64(0.081343), 3.0), 9: (40, np.float64(0.016017), 1.9)}
+iter 14 t=0.153846153846 rows 88710 cols 24401 added 305  lp 145.7s total 2883s  {7: (151, np.float64(0.052791), 5.4), 8: (154, np.float64(0.053954), 3.7)}
+iter 15 t=0.153846153846 rows 89001 cols 24408 added 286  lp 119.2s total 3027s  {7: (138, np.float64(0.062746), 5.0), 8: (128, np.float64(0.047012), 3.1), 9: (20, np.float64(0.000793), 2.1)}
+iter 16 t=0.153846153846 rows 89308 cols 24410 added 307  lp 31.6s total 3084s  {7: (151, np.float64(0.045493), 5.3), 8: (156, np.float64(0.033466), 3.4)}
+--- s24h stopped 11:15:38 at iter 16 per coordinator change of plan (not converged; no nosep/lower/upper run)

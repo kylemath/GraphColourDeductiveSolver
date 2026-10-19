@@ -468,3 +468,7 @@ our agent R and have no output from it.
 - The Euler family 6-(1+e/3)d with face charge e, and 5-5-5 shared charge, are pure re-basings with T=0. Free face-to-corner rules reduce to edge transfers that are already spanned. The reverse columns have reduced cost 0 on cert_st20xL. §18 written.
 - Probe on family.json: the face 7 still binds at 16/101. Kill line met.
 - Open lead (not built): the reverse hat channel (big to five at distance 2). Two r columns have positive reduced cost on cert_st20xL.
+
+## s24h stopped; s25 prep on 0125c46b, 19 Oct ~11:40Z
+- s24h on 4b28f532 was stopped mid-solve on Long Table's change of plan. It was at iteration 16 with t = 2/13, unconverged and uncertified. Not a bound.
+- s25 on 0125c46b (1,897 D / 838 C, dcount 16,937, includes the r7h kill of 7676556/7759565): argsA59 built. Strict kill tables are byte-identical again; check 4 = 7,500. Ready for the stage 21 production run.
