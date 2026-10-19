@@ -214,3 +214,9 @@ not new to F.
   rotation / reflection, with 0 untraced. Matcher (the minimal f8_..556855_..5.566. plus a sample, 6 names): 266
   frames, 0 mismatches. dcount (argsA44_local): **16,960** distinct parsed D (17,294 names), +20. The frozen
   wlp3 / sep3r and st24b's pinned 0125c46b inputs are untouched.
+- ~18:40Z 19 Oct: explore's d10 binder 6565665656/6555555565 kills, 8d59c29e (loop/k47/r52j_kills*). 4 files fetched
+  by path, byte-identical. Studio re-ran both engines on all 59 f-names (out/job30/r52j/studio_kc.out: kc -C -s 60
+  -t 600; studio_df.out: out/job52/dfast18): 59/59 D on both, 0 dropped, 0 one-engine. Default glob on ffa42f2d:
+  **1,979 D / 841 C** (+59 D, exactly the 59 r52j names, 0 lost). Drop44 0, letter-9 0, centre-degree < 7 held 0.
+  Matcher (the 5 minimal names): 476 frames, 0 mismatches. dcount (argsA44_local): **17,019** distinct parsed D
+  (17,353 names), +59. Frozen wlp3 / sep3r untouched.
