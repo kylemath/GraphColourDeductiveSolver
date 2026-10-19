@@ -1,0 +1,5 @@
+cd /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s18d
+# regression: hat5 off reproduces st16b0 = 6/35 on argsA52
+python3 pcheck.py lowerR2 apexcls v6 xon cert=../cert_st16b0.json xcap=3 root=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/m/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis args=../s19/argsA52.txt rpat=../rpatD.txt work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr18v > val_off_lower.log 2>&1
+python3 pcheck.py upperR2 apexcls v6 xon nomax sol=../sol_st16b0.json root=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/m/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis args=../s19/argsA52.txt rpat=../rpatD.txt threads=1 work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr18v2 > val_off_upper.log 2>&1
+# solve (s21f recipe + hat5): keeppen solve, then exact unpenalised LP over the same rows (nosep), then both checks

@@ -1296,3 +1296,84 @@ The full tables were regenerated with strict matching and unknowns coded 5 (`s16
 | U8 = U9 | 6dc44bbaae0e7a9a9136f191a5aa6ce8 |
 
 The filter does not read unknowns, so st16ap stands.
+
+## 15. Stage 18: hat channel H5 (flag `hat5`). Written before any solve
+
+Written by Opus before any solve. Engine: `P_own_lp/s18d/` (prelay2.py = s17d's engine + `hat5`; backup
+`s18d/prelay2_st17_backup.py`). Base class: s21f (RELAY_SPEC 12 + 14′: `xon apexcls filt16`, no v6), on
+`s21/argsA54.txt` (880d25c6) with `killtab=s21/f/kill/kill6`.
+
+**Transfer.** Let v be a five, and let x, y be consecutive spokes of v. Let b be the other apex of the edge xy, i.e. the
+hat of v between x and y. When b is big (letter >= 7), b sends `r[K] >= 0` to v. b and v are at distance 2; they are
+the two tips of the diamond (v, x, b, y).
+
+**Key.** `K = min(side(x) + side(y), side(y) + side(x))`. For a shared spoke z of the diamond, let
+
+- `Z1` = z's neighbour adjacent to b, other than the other spoke;
+- `Z2` = z's neighbour adjacent to v, other than the other spoke (used when z = 5);
+- `Zo` = z's neighbour opposite the other spoke in z's 6-cycle (used when z = 6).
+
+Then
+
+```
+side(z) = (5, c2(Z1), letter(Z2))     if z = 5
+          (6, c2(Z1), c2(Zo))         if z = 6
+          (z,)                        if z >= 7
+```
+
+with `c2` = small {5,6} → 0 / big → 1. The key does not contain b's letter: v sees b only as a class, and v
+receives only when that class is big.
+
+**Both ends see K.** Rotation around a five z: (v, other spoke, b, Z1, Z2). Around a six z: (v, other spoke, b, Z1, Zo, Z2).
+
+| entry | five v (sender row, link w, hats H, fans F; z = w_k, other spoke w_{k+1}) | big b (receiver row; z = w_i, other spoke w_{i+1}, s_i = v) |
+|---|---|---|
+| z | link letter w_k | link letter w_i |
+| Z1, z = 5 | hat H[k-1] (class) | link letter w_{i-1} |
+| Z2, z = 5 | link letter w_{k-1} | apex s_{i-1} |
+| Z1, z = 6 | fan F[k] (class) | link letter w_{i-1} |
+| Zo, z = 6 | hat H[k-1] (class) | apex s_{i-1} |
+
+The y side is the mirror: H[k+1], w_{k+2} and F[k+1] at v; w_{i+2} and s_{i+1} at b. Every entry is a class where one
+end reads only a class, and an exact letter only where both ends read it exactly (Z2 at a five). The reflection of
+either link swaps the two sides, and the min removes that.
+
+**Tested on a physical model** (`orientR2 ... hat5`, `hat5_selftest`). Random local triangulations are built
+around a diamond:
+
+- x and y have degree 5, 6 or 7, with explicit rotation lists;
+- every vertex gets a random letter, and b a random big letter;
+- every hat, apex and fan is read by one generic rule, apex(c; p, q) = the common neighbour of p and q other than c;
+- the sender key comes from v's view and the receiver key from b's view, in both orientations of b's link.
+
+Result over 100,000 diamonds: 0 mismatches (`s18d/orient_hat5.log`). Broken-key control, where the receiver reads
+s_{i-1} from the wrong side: 15,898 mismatches (`s18d/orient_hat5_brokenkey.log`).
+
+**Rows.**
+
+- **senderR2.** With hat5 on, all five hats are enumerated as small/big classes (fans only at 6-spokes, as before).
+  For each k with H[k] = 1, the row gains `+ r[K]`, with K computed as above.
+- **receiverR2** (every d). For each i with s_i = 5, the load gains `+ r[K(w_{i-1}, w_i, w_{i+1}, w_{i+2}, s_{i-1}, s_{i+1})]`.
+- **Window.** At position i the term is `W[., b, c, e, f, ., q, r = 5, s] += r[K]`. All of its slots are in the 9-slot
+  window, so d = 7..17 stays exact. The jsep3 class table folds K's id into the class at r = 5 (solver only; the
+  upper check, mode 0, does not use classes).
+- **Tail** d >= 18 (U = 9 window): the outflow is part of W9, so the relaxed DP and Karp bound it from above.
+- cons2, mrowR2, mrowV and v are unchanged.
+
+**Soundness.** In G each transfer is one edge of charge, from b to v, under one key that both compute identically
+(table above). Every big b of G is covered by its receiver row (d <= 17 exhaustive, d >= 18 relaxed), which pays
+r[K] at every apex five. Every five v is covered by an enumerated sender row, because all hat classes are enumerated,
+which credits r[K] at every big hat. So the total charge is unchanged. upperR2 checks every sender row, every d = 7..17
+receiver exhaustively with the outflow in the window, conservation, and the tail. lowerR2 prices r through the
+generic ledger: r appears in sender rows (+) and receiver rows (+ load), so each r needs reduced cost >= 0. With hat5
+off the engine is s17d's. The class contains s21f's (r = 0), so t*(H5) <= s21f's t*.
+
+**Why this channel (pre-build screen, `s18d/screen_*.py` on `s21/cf/cert_s21fL.json`).**
+
+- Big ↔ big diamond (apex big to centre big): no key feeding a 7 has negative reduced cost. Only 9 ↔ 9 keys do.
+- Hat channel, coarse key {x, y}: every reduced cost >= 0; {6,7}, {5,6} and {6,8} are tied at 0.
+- Hat channel, fine key: three sender rows need a hat at a five-spoke that s21f does not enumerate. One of them is
+  55669 [1,0,0|0,0], weight 0.08, a face five with a big hat next to its face-mate.
+  - Whichever way that hat class splits, the resulting key has tot > 0: 0.08 - 0.048 or 0.08.
+  - No convex split of the weight keeps both keys <= 0. So the s21f certificate is not valid for the H5 class, and
+    the channel has negative reduced cost at the s21f dual.

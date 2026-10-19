@@ -557,3 +557,43 @@ Not read: Studio's Job 31 spec.
   - 8 of the cert's 10 receivers carry a 5-5-5 face: 7766556/6567566, 7676556/7756595, 7766556/6576576, 9 655665556/756567565, 7765556/6575966, 7665556/6675966, 7665566/6665766 and 7665566/6765766. The two without one are 7665666/6566655 and 7766566/6556655.
   - The binding senders are the same face fives as in st16ap2: 55669, 55667 x4, 55767 x3, 55759, 55769; also 57669 and 66667.
 - Reading: pooling among the three fives of the face cannot help, because the face's 6-ring has the same bigs (u and the 7 across the other face edge) whichever five is paid. The deficit is the face's, not a single five's. Files: s17d/{prelay2.py, cmd_st17f.sh, cmd_st17fL.sh, st17f_run1.log, st17fL.log, lower_st17fL.log, kill_st17fL.log, sol_st17fL.json, cert_st17fL.json, engine_md5.txt}.
+
+## Stage 18 pre-registration (06:56Z, before any solve): hat channel H5 (flag `hat5`, RELAY_SPEC 15), run st18h on s21/argsA54.txt over s21f
+- **Rule.** A big b that is the hat of a five v (the other apex of the edge between two consecutive spokes x, y of v) sends r[K] >= 0 to v, at distance 2.
+  - K = the canonical pair of side tuples. A five-spoke contributes (5, c2(nbr at b), letter(nbr at v)), a six-spoke (6, c2(nbr at b), c2(nbr opposite)), and a big spoke (letter).
+  - The full specification and the table of who sees what are in RELAY_SPEC 15.
+  - Base class: s21f (`xon apexcls filt16 killtab=s21/f/kill/kill6`, no v6).
+- **Choice.** The pre-build screens are on s21/cf/cert_s21fL.json (lower 4/25), plus the argsA52 certs st17fL and st16ap2L.
+  - Big ↔ big diamond: null for every key into a 7; at s21f only 9 ↔ 9 keys price negative. Not built.
+  - Hat channel: negative reduced cost forced at row 55669 [1,0,0|0,0], weight 0.08. This is a face five with a big hat next to its face-mate (RELAY_SPEC 15). Built.
+- **Soundness.** In G, b debits and v credits the same r[K]. RELAY_SPEC 15 tabulates that both ends compute K identically. The physical test gives 0 mismatches over 100k random diamonds; the broken-key control gives 15,898 (s18d/orient_hat5*.log).
+  - upperR2 checks every sender row (all hat classes enumerated) and every d = 7..17 receiver exhaustively, with the outflow in the window, plus conservation and the tail.
+  - lowerR2 prices r through the ledger.
+- **Kill lines (Long Table):**
+  - (1) the stage dies if t* does not go below 65/406;
+  - (2) it dies if both 7665566/6675666 and 7655667/6756656 stay tight (rowR2 at the new solution);
+  - (3) the coordinator's line also applies: "the rule fails if any 5-5-5-face 7 row stays tight at the optimum";
+  - (4) stop if the solve runs past 3 x s21f's wall time (3 x 1771 s ≈ 90 min) without t moving.
+- **Progress:** UPPER-R2 FEASIBLE on the new solution itself with t < 65/406 = 0.160099, together with the nosep LOWER-R2 VALID on the same rows. The s21f gap (lower 4/25, upper 65/406) is reported as it stands.
+- **Regression:** with hat5 off, the s18d engine must reproduce 6/35 on argsA52 (lowerR2 on cert_st16b0.json, upperR2 on sol_st16b0.json).
+
+## Stage 18 result (07:57Z): hat channel H5 on argsA54: **upper 17/107 = 0.158879, below s21f's 65/406, but Long Table's kill line (2) is met**
+- **Tests.**
+  - Physical key test: 100,000 random diamonds, 0 mismatches (s18d/orient_hat5.log).
+  - Broken-key control: 15,898 mismatches (s18d/orient_hat5_brokenkey.log).
+  - Regression with hat5 off, on argsA52: LOWER-R2 VALID 6/35 on cert_st16b0.json and UPPER-R2 FEASIBLE at 6/35 on sol_st16b0.json (s18d/val_off_*.log).
+- **Solve st18h** (s21f recipe + hat5; 20,676 sender rows with all hats enumerated, against 7,074 for s21f):
+  - The keeppen fixed point is t = 0.158878504673 = **17/107**: 21 iterations, 2,089 s, inside the 90-minute line. The warm-row LP started at 0.15875 and t rose as rows were added.
+  - **UPPER-R2 FEASIBLE at 17/107 on sol_st18h.json** (the new solution itself): senders 0; conservation 1,424 x 5^6, worst 1.3e-13; d = 7..17 exhaustive, 0 violated; Karp λ = 0.5561, d0 = 13.16.
+  - nosep LP over the same rows (st18hL): **LOWER-R2 VALID t >= 10/63 = 0.158730 (138 rows)**.
+  - So t*(H5 on argsA54) is in [10/63, 17/107]. The s21f baseline was [4/25, 65/406].
+  - 86 r columns are positive. The largest are r[6,0,1,6,1,0] 0.155, r[5,0,7,9] 0.153, r[5,0,9,9] 0.141 and r[5,0,8,9] 0.140. The second group are 5-spokes with a big spoke on the other side, i.e. a big hat sending to a five whose face-neighbour is a 5.
+- **Kill lines.**
+  - (1) t* below 65/406: **passed** (upper 17/107 < 65/406, both checks on our engine).
+  - (2) "dies if both 7665566/6675666 and 7655667/6756656 stay tight": **MET.** Both have slack 0 at sol_st18h, and again at sol_st18hL. Their dual weight is 0 in both certs.
+    - At sol_st18h: 7665566/6675666 = y7|5566 0.599 + y7|5576 0.312 + M 0.139 + M 0.109. 7655667/6756656 carries r[6007] 0.049 outflow.
+  - (3) "any 5-5-5-face 7 row stays tight": met as well. The heaviest cert row is still 7665566/6765766, with dual 0.104 in the st18hL cert (0.083 at sol_st18h).
+- **Cert support (st18hL).**
+  - Receivers: 7665566/6765766 0.104; 9 655566556/759556565 0.055; 7676556/7759565 0.055; 10 6556655556/6665669665 0.022; 8 86555665/56576665 and 86566656/55566555 0.013.
+  - Senders: face fives 55669, 55667, 55767 and 55959; also 56669, 56959 and 55686.
+- Files: s18d/{prelay2.py, cmd_st18h.sh, st18h.log, sol_st18h.json, cert_st18h.json, st18hL.log, sol_st18hL.json, cert_st18hL.json, lower_st18hL.log, upper_st18h.log, kill_st18h.log, kill_st18hL.log, screen_*.py, engine_md5.txt}. RELAY_SPEC 15.

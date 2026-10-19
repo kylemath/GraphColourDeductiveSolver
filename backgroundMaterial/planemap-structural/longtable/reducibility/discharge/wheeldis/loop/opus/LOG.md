@@ -410,3 +410,12 @@ our agent R and have no output from it.
 - Kill line hit: binder 7665566/6675666 and 7655667/6756656 stay tight (slack 0).
 - Why it fails: moving charge among the three fives cannot help, because the ring around the face holds the same big vertices whichever five is paid. Any fix needs charge from outside that ring.
 - Files: P_own_lp/s17d/.
+
+## Stage 18: hat channel (flag hat5, RELAY_SPEC §15), argsA54 + §14′ filter, 19 Oct ~08:30Z
+- Rule: a big hat of a five sends r[K] to it. K is read identically from both ends (§15 table). Physical test: 100k random triangulations, 0 mismatches; broken-key control gives 15,898. Regression check with the flag off: 6/35.
+- Bracket 10/63 <= t* <= 17/107 = 0.15888, both checked on our engine:
+  - Upper: sol_st18h, FEASIBLE on itself.
+  - Lower: cert_st18hL, VALID, 138 rows.
+- Below s21f's 65/406. Studio check pending.
+- Long Table's kill line (2) is hit: 7665566/6675666 and 7655667/6756656 both stay tight, with no r flowing into the binder. The bound improves, but the face family is still unpaid.
+- Worker's recommendation: for this family, use a reducibility lemma (a 7 with a 5-5-5 face plus a nearby 5) rather than another rule extension.
