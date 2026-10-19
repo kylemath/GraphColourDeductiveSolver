@@ -1,8 +1,8 @@
 # CGlue Lean draft (Long Table, 19 Oct 2026)
 
 File: `backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/CGlue.lean`. It imports `ClaimGlue` and
-`C66666`. Scope: `CGLUE-SCOPE.md`. This note covers the statement, the proof outline, the one remaining `sorry`, and the
-build.
+`C66666`. Scope: `CGLUE-SCOPE.md`. This note covers the statement, the proof outline, the one remaining `sorry` (C4a,
+pure map geometry), and the build. **The file builds in this container with 0 errors.**
 
 ## Statement
 
@@ -29,7 +29,7 @@ theorem four_color_of_unavoidableC (R : Registry) (hU : Unavoidable R) (M : Sphe
 
 - `Registry`, `Contains` and `Unavoidable` are local copies of ClaimGlue's definitions. D entries are
   `ClaimGlue.DEntry`; C entries are the `CEntry` above, with occurrence `OccursCX`.
-- `four_color_of_unavoidableC` has **no CGlue hypothesis**. Its open links are `Unavoidable R` and the C4 `sorry`.
+- `four_color_of_unavoidableC` has **no CGlue hypothesis**. Its open links are `Unavoidable R` and the C4a `sorry`.
 - `ClaimGlue.lean` is unchanged. Its `CEntry` records only a `DCheck.Conf`, with no X and no certificate, so its
   `CGlue` cannot be discharged as stated. `CGlue.lean` is meant to replace it.
 
@@ -63,87 +63,117 @@ theorem four_color_of_unavoidableC (R : Registry) (hU : Unavoidable R) (M : Sphe
 
 ## Proof outline
 
+Every row below type-checks in this container (`lean` v4.35.0-rc3 against Mathlib 300d0e5 with the PlaneMap overlay).
+
 | Piece | Lean | Status |
 |---|---|---|
-| C1 good bits are `GoodT` | `DCheck.S1T.runGoodRefT_sound` (the `OuterInv` invariant of Job 23's `runRef_sound`, counting part dropped) | proved, type-checked |
-| verdict → `GoodT` | `DCheck.cReducibleT_good` | proved, type-checked |
-| C2 `extCAux` completeness | `DCheck.CG.extCAux_complete` (any `lam` meeting the X constraints is found by the backtracking) | proved, type-checked |
-| C2 map form + `canon` | `extCAux_canon` (rename `lam` by `canon_rename`'s `g`) | proved, unbuilt |
-| C3 D tail | `ConfigOccW.colorable_of_goodT` (`good_soundT` + `FaceWalk.kempeMatching` + `colorable_of_ext`; folded/pinched rings covered) | proved, unbuilt |
-| C1–C3 assembled | `ConfigOccW.colorable_of_cReducible18` | proved, unbuilt |
-| C4 reducer | `ConfigOccW.contract_reducer` | **`sorry`** |
-| C6 | `CEntry.colorable`, `cGlueX`, `MinimalCounterexample.avoids`, `four_color_of_unavoidableC` | proved from C4, unbuilt |
+| C1 good bits are `GoodT` | `DCheck.S1T.runGoodRefT_sound` (the `OuterInv` invariant of Job 23's `runRef_sound`, counting part dropped) | proved |
+| verdict → `GoodT` | `DCheck.cReducibleT_good` | proved |
+| C2 `extCAux` completeness | `DCheck.CG.extCAux_complete` (any `lam` meeting the X constraints is found by the backtracking) | proved |
+| C2 map form + `canon` | `extCAux_canon` (rename `lam` by `canon_rename`'s `g`) | proved |
+| C3 D tail | `ConfigOccW.colorable_of_goodT` (`good_soundT` + `FaceWalk.kempeMatching` + `colorable_of_ext`; folded/pinched rings covered) | proved |
+| C1–C3 assembled | `ConfigOccW.colorable_of_cReducible18` | proved |
+| C4a contraction of a subgraph | `contract_subgraph` | **`sorry`** (the only one) |
+| C4b label argument | `ConfigOccW.xGraph_labels` (`xLabel`, constant on X-components) | proved |
+| C4 reducer | `ConfigOccW.contract_reducer` (from C4a + C4b + `OccExact`) | proved from C4a |
+| C6 | `CEntry.colorable`, `cGlueX`, `MinimalCounterexample.avoids`, `four_color_of_unavoidableC` | proved from C4a |
 
 The argument of `CEntry.colorable`:
-1. C4 gives `T'`, which is smaller, and a vertex map `π`.
-2. `T'` is 4-colourable by minimality. Pull the colouring back along `π`: `c = col ∘ π` on the deleted map `G` and
-   `lam a = col (π (ι a))` on the interior.
-3. `c` is proper on `G` because `G`'s edges survive in `T'`. `(c, lam)` meet the X constraints because X edges are
-   identified and every other listed edge survives.
-4. C2 shows that `extCAux` accepts the canonical ring code.
-5. The verdict and C1 show that this code is `GoodT`.
-6. C3 shows that `T` is 4-colourable.
+1. C4 contracts the X-graph (`xGraph`) inside `T`. This gives a smaller map `T'` and a vertex map `π`.
+2. `T'` is 4-colourable by minimality.
+3. Pull the colouring back along `π`: `c = col ∘ π` on the deleted map `G` and `lam a = col (π (ι a))` on the
+   interior.
+4. `c` is proper on `G`, because `G`'s edges survive in `T'` (C4b).
+5. `(c, lam)` meets the X constraints: X-edges are identified, and every other listed edge survives (C4b plus
+   `OccExact`).
+6. C2 shows that `extCAux` accepts the canonical ring code. The verdict and C1 show that this code is `GoodT`. C3 then
+   shows that `T` is 4-colourable.
 
-**Sanity instance (in the file).**
+**C4b in one paragraph.**
+- Define the label `xLabel`:
+  - `ι a` gets `lbl[a]`;
+  - a ring vertex `ρ t` touched by `eqR` gets `lbl[m + t]`. This is well defined by `XRingSimple`;
+  - every other vertex gets a fresh value (`Sum.inr v`).
+- X-edges join equal labels (`admissibleX`). So the label is constant along `xGraph` edges, hence on its components
+  (induction on walks).
+- Every kept edge joins different labels:
+  - a listed ring or interior edge outside X, by `admissibleX`;
+  - an edge of `G`, because ring labels are distinct and fresh values are injective.
+- So no kept edge lies inside one X-component.
+
+**Sanity instance (in the file, built).**
 - `e66666` is the 66666 wheel with Job 16's X = {R0-I1, I2-I3, I3-I4, I4-I5} and labels `[100,0,101,101,101,101,0..9]`.
-- Verified separately here (Mathlib-free scratch build):
-  - `cReducibleT (matchTableN 10) w66666 [(0,1)] [(2,3),(3,4),(4,5)] = true` (native_decide, about 70 s);
-  - **sabotage**: X = {I0-I1} gives `false`.
+- `cf66666_hC : cReducible18 cf66666 [(0,1)] [(2,3),(3,4),(4,5)] = true` (native_decide).
+- **Sabotage:** `cf66666_not_I0I1 : cReducible18 cf66666 [] [(0,1)] = false`. The single contraction X = {I0-I1} is
+  not certified for this wheel, so the verdict is not vacuous.
+- `hadm`, `hsym`, `hloop` and `hrr` use `native_decide`. Kernel `decide` gets stuck on `Array.anyM`, which is
+  well-founded recursion.
 
 ## The remaining sorry (exactly one)
 
-**`ConfigOccW.contract_reducer` (C4).**
-- *Hypotheses:* `admissibleX`, the occurrence `ConfigOccW`, `OccExact`, `XRingSimple`.
-- *Conclusion:* there exist `T' : SphericalMap n` and `π : Fin n → Fin n` such that:
-  - `Nat.card T'.graph.support < Nat.card T.graph.support`;
-  - every edge of `G` is kept under `π`;
-  - each listed ring–interior edge is identified if it is in `eqR`, and kept as an edge of `T'` otherwise;
-  - each listed interior edge is identified if it is in `eqI` (either orientation), and kept otherwise.
-- *Why the statement is true:* `T'` is `T` with the X-components contracted.
-  - X-edges are real edges (`OccExact`), so contracting them keeps the map planar.
-  - Labels are constant on X-components (`admissibleX`), so no kept listed edge becomes a loop.
-  - An X-component and the ring vertex of a different listed edge never merge: they could only meet through a ring
-    vertex the walk revisits, which `XRingSimple` rules out.
-  - Each X-component contains at most one non-interior vertex, so `G`'s edges survive.
-  - The support shrinks because |X| ≥ 1 real edge is contracted and the merged-away vertices become isolated.
-- *What it needs:*
-  - (i) Edge contraction on `SphericalMap`: merge the rotations at the two ends, drop the contracted edge, and drop the
-    two digons it leaves. `Fills` must be preserved. Iterate over the ≤ 4 X-edges.
-    - Alternative: refill the ring face of `G` with the contracted configuration, using Job 25's
-      `split`/`RingFace.chordMap`, `growBefore_fills` and `Sep5Star.starMap`.
-  - (ii) The support count.
-  - (iii) The label/component argument: X-edges join equal labels, so labels are constant on components. Plain list
-    lemmas unpack `admissibleX`.
-- *Estimated size:*
-  - general X: 1,000–2,500 lines;
-  - X a single interior edge (87% of the registry): 300–500 lines, since the contraction is a single edge merge;
-  - (iii) alone: about 150 lines.
-- *Star-reducer shortcut for w66666 (the scope's recommendation 1).* `three_colour_reached` plus a generalised
-  `Sep5Star.starMap` avoids C4 entirely for that one entry. It would sit next to this file as a second sanity route.
+**`contract_subgraph` (C4a): pure map geometry, with no configuration data.**
 
-No `axiom` is added. `#print axioms` lines are at the end of the file. Expected footprint:
-- standard axioms;
-- the D chain's native_decide axioms;
-- `cf66666_hC`'s native_decide;
-- `sorryAx`, through C4 only.
+```lean
+theorem contract_subgraph (T : SphericalMap n) (H : SimpleGraph (Fin n)) (hH : H ≤ T.graph) (hne : ∃ x y, H.Adj x y) :
+    ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
+      Nat.card T'.graph.support < Nat.card T.graph.support ∧
+      (∀ x y, H.Reachable x y → π x = π y) ∧
+      (∀ x y, T.Adj x y → ¬ H.Reachable x y → T'.Adj (π x) (π y))
+```
+
+- *Meaning:* contract each component of a subgraph `H` (with at least one edge) to one vertex. The merged-away vertices
+  become isolated.
+- *Why the statement is true:*
+  - the result is a minor of a spherical map, so it is planar;
+  - edges between different components survive;
+  - at least two support vertices merge, so the support shrinks.
+  - The one library-dependent premise is that `SphericalMap` (rotation system plus `Fills`) can represent this
+    contraction. That is exactly what the lemma's proof has to build.
+- *What it needs:*
+  - edge contraction on `SphericalMap`: merge the rotations at the two ends, delete the contracted edge, and delete the
+    digons it leaves at its two triangles. `Fills` must be kept;
+  - iterate along a spanning forest of `H`. In the registry use that is ≤ 4 edges;
+  - the support count.
+  - Alternative: refill the ring face of `G` with the contracted configuration, using Job 25's
+    `split`/`RingFace.chordMap`, `growBefore_fills` and `Sep5Star.starMap`.
+- *Estimated size:*
+  - general: 800–2,000 lines;
+  - a single contracted edge (741 of the 852 registry C entries have X = one interior edge): 300–500 lines;
+  - the iteration over ≤ 4 edges: about 100 lines on top of the single-edge case.
+- *Star-reducer shortcut for w66666 (scope recommendation 1).* `three_colour_reached` plus a generalised
+  `Sep5Star.starMap` would discharge that one entry with no contraction at all.
+
+**Not sorries, but hypotheses to keep in view.**
+- `Unavoidable R` must supply C occurrences with `OccExact` (listed adjacencies are real) and `XRingSimple` (C5).
+- For simple rings, `XRingSimple` is automatic: see `occursCX_of_configOcc`.
+
+No `axiom` is added. `#print axioms` at the end of the file shows:
+- C1, C2 and C4b: only `propext, Classical.choice, Quot.sound`;
+- `colorable_of_cReducible18`: those, plus the D chain's `DCheck.R1.check4..9` native_decide axioms;
+- `CEntry.colorable` and `four_color_of_unavoidableC`: additionally `sorryAx`, through C4a only, and (for the latter)
+  `DCheck.Meet.*`;
+- `e66666`: its own native_decide axioms.
 
 ## Build
 
-**This container.**
-- Lean v4.35.0-rc3 is at `/root/leantc`, with a partial Mathlib 300d0e5 build at `/root/mlb` (the PlaneMap overlay was
-  already built).
-- The Mathlib-free part of the chain built in about 2 min: `DCheck`, `DCheckRef`, `DCheckSound`, `DCheckS1`, `DCheckT`,
-  `DCheckRefT`, `DCheckSoundT`, `DCheckS1T`, `DCheckR2A`, `DCheck16`, `DCheck18`, `DCheckTEq`, `C66666`.
-- On that chain, CGlue's C1/C2/verdict sections (everything before "C2 (map form)") **type-check with 0 errors and no
-  sorry**. `#print axioms runGoodRefT_sound`, `extCAux_complete` and `cReducibleT_good` show only
-  `propext, Classical.choice, Quot.sound`.
-- The rest of the file needs `MinimalFrame` and the PlaneMap-dependent dcheck chain (`DCheckR2D` … `ClaimGlue`). See
-  the build-status line below.
+**This container: builds, 0 errors.**
+- `CGlue.lean` is 815 lines. It compiles with one `declaration uses sorry` warning, at `contract_subgraph`.
+- Toolchain: Lean v4.35.0-rc3 at `/root/leantc`, against the partial Mathlib 300d0e5 build at `/root/mlb`.
+- Only the missing targets were built (`lake build` of `PlaneMap.MinimalFrame`, `RingReduce`, `OccToRing`); this was
+  not a full Mathlib build.
+- The dcheck chain was built with plain `lean -o`, in this order: `DCheck` … `SepAll`, `DCheckPinch`,
+  `DCheckPinchGeom`, `DCheckOccWalk`, `ClaimGlue`, `C66666`, `CGlue`. Every module exits 0. The slowest are
+  `DCheckR1T` (280 s), `C66666` (73 s) and `DCheckR1` (68 s); `CGlue` itself takes about 40 s.
+- The script used was the session scratchpad's `build_dc.sh`, not committed. It is `glue.sh`'s loop with
+  `LEAN_PATH=/root/mlb/.lake/build/lib/lean:<out>:<mlb packages>`.
 
 **Studio.**
-1. Run `out/lean_glue/glue.sh` as for `ClaimGlue`. Use the af2f63f5 tree, where SepAll's `Cyc` is renamed `SepCyc`.
-2. Add `C66666` and `CGlue` after `ClaimGlue`, each as `lean -o $W/dc/<f>.olean -i $W/dc/<f>.ilean $H/<f>.lean` from
-   `dcheck/`.
+1. Run `out/lean_glue/glue.sh` as for `ClaimGlue` (the af2f63f5 tree, where SepAll's `Cyc` is renamed `SepCyc`).
+2. Then add `C66666` and `CGlue`, each as `lean -o $W/dc/<f>.olean -i $W/dc/<f>.ilean $H/<f>.lean` from `dcheck/`.
 3. Check the `#print axioms` lines at the end of `CGlue.lean`.
 
-Build status of the full file: see the last section.
+## Next steps
+1. Prove C4a. Start with the single-edge contraction (`SphericalMap.contractEdge`), then iterate over ≤ 4 edges.
+2. Generate one `CEntry` per registry C key: `hC` by native_decide, at rings 14–16 (tens of CPU-hours, like Job 24b);
+   `lbl` from the X-components.
+3. Extend the occurrence bridge so that it also yields `OccExact` and `XRingSimple`.
