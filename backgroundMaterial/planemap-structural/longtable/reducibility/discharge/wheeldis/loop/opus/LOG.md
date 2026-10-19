@@ -368,3 +368,4 @@ our agent R and have no output from it.
 - **P2 s20c (03:15Z): the reduced 6-centred relay on 8e008f86 (argsA53, dcount 15,877) gives t* = 8/47 = 0.17021**
   [own checkers; lowerR2 VALID with 41 rows; upperR2 FEASIBLE]. Receivers: 5566766/5666667 (0.2021), d = 10 6565656565/6655666666
   (0.0532), d = 7 8665566/5675665 (new) and d = 8 76566656/65566556 (new, 0.0319 each). Senders: 66669, 55667, 55767, 55686, 55696.
+- **P2 s20r (03:30Z): the s10 relay on argsA53 is unchanged at 37/214** [own checkers, both sides]. Top receiver: 7665566/6665766 (0.159). The d = 10 row 6565656565/6655666666 still binds in both relay classes.
