@@ -347,3 +347,6 @@ our agent R and have no output from it.
   case is reducible, but u's 2-ball cannot rule it out. Stage 16 needs reducibility information on the privates (radius 3):
   either drop killed private values from V's min using verified 3-ball patterns in the separator, or key v on the private's
   class.
+- **P2 s18r (02:10Z): the s10 relay on b88ed8b7 (argsA51) gives t* = 9/52 = 0.17308**, down from 31/178 [own checkers;
+  lowerR VALID with 45 rows; upperR FEASIBLE]. Receivers: d = 7 7655667/6756656 (new, 0.0865), d = 7 7665566/6665766 (0.0865),
+  d = 10 6565656565/6655666666 (0.0385), plus small ones. s19c (6-centred) and s19r on 09d8ac38 (argsA52, dcount 15,855) are running.
