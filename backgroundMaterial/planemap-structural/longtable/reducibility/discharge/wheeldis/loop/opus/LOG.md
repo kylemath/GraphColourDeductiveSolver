@@ -333,3 +333,4 @@ our agent R and have no output from it.
 - **Two-engine (01:06Z): Studio's spec-only checker (from §12) passes s12r50 at 23/134** (139b490e). Upper is FEASIBLE,
   with receivers swept exhaustively, cons2 checked on 1,424 x 64, and senders and mrowR2 passing. Lower is VALID on all 57 rows.
   **The relay line at 23/134 = 0.1716 is [E2], our best K = 2 value so far.**
+- **P2 s18 (01:50Z): main line on b88ed8b7 (argsA51, distinct D 15,844) stays at t* = 1/5**, with the same 3-row dual as s17 (binder 5566766/5666667) [E, our engine; lower VALID; upper FEASIBLE]. s18r and s18c are running.
