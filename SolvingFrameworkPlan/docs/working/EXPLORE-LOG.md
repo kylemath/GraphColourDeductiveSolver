@@ -107,7 +107,7 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   with the same X). Minimal: f7_.556686_....55. (a7_u86655.6_5.....5, C, X = {I0-I6}). It holds the face's link
   fives w3, w4 but not the apex s3. So of the face rows at ring 14, 7676556 and 8665566 die without using the apex,
   while 7765566 and 7655566 stay R*-like at ring 14, and 7665566, 7655666, 7655667 at ring 16. Twoeng-ready:
-  `loop/k47/r7k_kills*`.
+  `loop/k47/r7k_kills*`. Studio admitted the 6 (11:41Z): registry fbc18afa, 1,900 D / 841 C, dcount 16,940.
 - **fam51 (11:37Z, on the 26 senders; registry snapshot 582 RSST + 2,735 twoeng names, 3,317 configurations).**
   **Kill line met within a minute: the face family survives.** The three heaviest contexts (55667 [0,0,0,1,0|1,0],
   [0,0,0,0,0|1,1], [0,0,1,1,0|0,0]; max dual 0.101, 0.097, 0.058) are registry-dead in all 32 cases. The fourth,
