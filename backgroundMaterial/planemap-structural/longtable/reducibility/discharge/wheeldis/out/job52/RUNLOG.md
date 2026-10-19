@@ -67,3 +67,6 @@
   7 7655666/6756666 SURVIVES (155/155, 8 kc timeouts); 7 7665566/6675666 SURVIVES (165/165, 6 kc timeouts);
   7 8655567/5685756 CAPPED (1,210/1,257, 47 left, 2 timeouts); 7 8765556/6575866 CAPPED (909/992, 83 left, 2 timeouts);
   7 7655667/6756656 CAPPED (209/243, 34 left, 7 timeouts); 7 7765566/6575666 CAPPED (725/784, 59 left, 3 timeouts).
+- 21:20Z 19 Oct: row 12 addendum (Long Table 20:38Z; out/job52/row12_open.py): the 11 ring-18 kc timeouts all
+  **dfast18 D=false** (661-1,593 s each). No D, so no kc -t 10800 and no cfast. Row 12 final: 414/414 decided, 0
+  two-engine kills; the ring <= 18 hypothesis fails on this binder row too.
