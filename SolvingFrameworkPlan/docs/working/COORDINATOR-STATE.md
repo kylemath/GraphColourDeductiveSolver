@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21:30Z 19 Oct: s26r ball census on the face binder (Opus e6bf1acb) is inconclusive. The registry forces an extra big within distance 3. In the tight case (privates 666666 plus one big t >= 7 next to s3) there are 87 patterns. Ball sums leave capacity, so the block is sharing, not total charge, and no radius >= 3 rule is ruled out. s25c now has a t >= 7 -> s3 column. The 87 patterns are sent to explore at ring <= 16, ahead of 5 of the non-family rows.
 - 21:14Z 19 Oct: (Opus 87d218f6)
   - 2/13 [E2] STANDS without the 3 ring-merge C entries: upper FEASIBLE on 0125c46b-3 and on 7a3857a0, lower VALID.
   - s29's 0.153144 is WITHDRAWN: it needed f7_..56757_...5... (47 d=7 rows). On 7a3857a0, 43/281 <= t* <= 2/13.
