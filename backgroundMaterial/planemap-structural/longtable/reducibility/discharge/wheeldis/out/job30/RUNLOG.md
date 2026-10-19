@@ -151,3 +151,7 @@ not new to F.
   Default glob: **804 D / 604 C** (+294 D, +82 C; 1 D and 6 C were already in, as were 2 of the 29 minimal names).
   0 lost, 0 one-engine, 0 X mismatch. Drop44 guard 0. Matcher (43 names: the 27 new minimal plus a sample): 4,066
   frames, 0 mismatches. dcount (argsA44_local): **15,844** distinct parsed D (16,178 names), +294.
+- ~02:00Z 19 Oct: explore d6196b7b (loop/k47/r10a_kills*: kills of the relay d=10 row 6556656556/6665656665). 5 files
+  fetched by path, byte-identical. r10a alone: 11 D / 8 C, as explore's run. Default glob: **815 D / 612 C** (+11 D,
+  +8 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher (10 names: all 7 minimal plus a sample): 933
+  frames, 0 mismatches. dcount (argsA44_local): **15,855** distinct parsed D (16,189 names), +11.
