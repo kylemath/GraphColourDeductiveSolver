@@ -247,3 +247,11 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - Over all 1,424 non-R6 words (the upper check's set): 219,610 rows, h2 18,683, v 13,869, rank 20,147. candV reaches
   all 13,869 v keys and cand2 all 18,683 h2 keys. So v keys outside the 994-word conservation appear only through
   mrowV and the no-five words' conservation.
+- Update (19 Oct ~02:05Z, section 13 at 6d5a0803): Opus moved v6-mode conservation to all 1,424 non-R6 6-types,
+  after run 2's free-charge leak (48 no-five types). The new 13.5 targets are 1,424 types, 219,610 rows, rank 20,147,
+  h2 18,683, v 13,869. These are exactly the all-1,424 figures st15_struct.log already gives; the script and inputs are
+  unchanged.
+  - st15_check.py already tests conservation on all 1,424 types and accepts cons2 labels for any non-R6 L.
+  - V: confirmed rebuild V = min over candV of v, with missing v as 0. st15_check now also compares every stored
+    V entry [sigV, LP value, min]: the rebuilt min must equal the stored min, and the LP value must be <= the min
+    (mrowV).
