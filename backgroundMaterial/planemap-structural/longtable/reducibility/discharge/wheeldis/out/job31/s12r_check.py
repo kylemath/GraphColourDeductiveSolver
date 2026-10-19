@@ -310,6 +310,7 @@ print('lower: tco = %s, D = %s; nonzero reduced costs: %s; negative (non-x) %d' 
     tco, D, ', '.join('%s[%s] = %s' % (k[0], ''.join(map(str, k[1])) if isinstance(k[1], tuple) else k[1], v) for k, v in sorted(rc.items(), key=str)), len(negrc)))
 if negrc: fail('negative reduced costs %s' % negrc)
 if D != EXPECT_T: fail('lower bound %s != claimed %s' % (D, EXPECT_T))
+elif negrc: print('LOWER: NOT ESTABLISHED (D = %s but negative reduced costs)' % D)
 else: print('LOWER: VALID t >= %s' % D)
 
 # ================= receivers: Studio sep3r on the apex relaxation, exact re-check of what it reports =================

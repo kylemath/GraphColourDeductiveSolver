@@ -306,6 +306,7 @@ for want in ((('g', (5, 0, 0, 1, 6)), ('M', (7, 6, 6, 6, 7))) if EXPECT_T == Fr(
     print('  residual %s%s: reduced cost %s' % (want[0], ''.join(map(str, want[1])), rc.get(want, Fr(0))))
 if negrc: fail('negative reduced costs %s' % negrc)
 if D != EXPECT_T: fail('lower bound %s != claimed %s' % (D, EXPECT_T))
+elif negrc: print('LOWER: NOT ESTABLISHED (D = %s but negative reduced costs)' % D)
 else: print('LOWER: VALID t >= %s' % D)
 
 # ================= receivers: Studio sep3r, after checking it against the spec rebuild =================
