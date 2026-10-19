@@ -21,6 +21,12 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   as undecided with the windows left. Rows are reported as they close; kills go the usual twoeng route.
 - **Guess:** the rows already R*-like to ring 16 stay R*-like at 17-18 (70% each). Of the unswept rows, at least
   one dies at ring <= 16, as 7676556 and 8665566 did at 14 (65%).
+- **Addition (pre-registered 12:45Z; Long Table, 12:44Z): the six non-family receivers of cert_s22hL**, after the
+  13 family rows, heaviest first: 8765556/6575965 and 8765556/6575966 (0.020 each), d = 8 77665656/65665555 (0.020),
+  d = 10 6556655556/6665669665 (0.010), d = 9 765556565/566966665 (0.007), d = 7 9559656/6665555 (0.003; w0 >= 9 never
+  in a window). Ring <= 16 first; ring 17-18 only for a row that survives to 16. Same caps and kill line. Explore runs
+  them after its three family rows (`loop/k47/rows52.txt`). Guess: at least four of the six die at ring <= 16, as the
+  non-face rows did (65%).
 
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
