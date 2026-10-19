@@ -1,8 +1,9 @@
 # Round 51: one binder row (ring <= 14, then 15-16 only if no kill), as a task that fits the 2-hour limit.
-# usage: sh q51row.sh D LK SV PREFIX   -> touches R51_<PREFIX>.DONE
+# usage: sh q51row.sh RINGS D LK SV PREFIX [D LK SV PREFIX ...]   -> touches R51_<PREFIX>.DONE per row
+# RINGS = "14 16" (full kill line) or "14" (face rows, Long Table 07:02Z: ring <= 14 only)
 cd "$(dirname "$0")"
 row() {   # D LK SV PREFIX
-  for R in 14 16; do
+  for R in $RINGS; do
     W=win45_$1_$2_$3_A$R.txt
     [ -f $W ] || python3 win45.py $R $1 $2 $3
     python3 - $W <<'PY'
@@ -17,5 +18,6 @@ PY
     [ -s $4_kills.txt ] && break
   done
 }
-row $1 $2 $3 $4; touch R51_$4.DONE
+RINGS=$1; shift
+while [ $# -ge 4 ]; do row $1 $2 $3 $4; touch R51_$4.DONE; shift 4; done
 grep -c MISMATCH A_df.out A_cf.out KILL

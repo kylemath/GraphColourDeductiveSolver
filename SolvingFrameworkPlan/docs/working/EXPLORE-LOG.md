@@ -40,6 +40,12 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   655665556/666559575 (canonical 555665566/595566657). Both have one s letter 9, which win45 leaves out of windows.
   Same method and kill line. Guess: both die at ring <= 14, since they have a 555 run in the link like the d = 9 rows
   that died (60% each).
+- **Rule change (07:03Z; Long Table, 07:02Z).** Three of three face rows were R*-like at ring 16. So face rows
+  (7765566, 7676556, 7655566, 8665566, d = 9 655566556) now run to ring <= 14 only. A kill there falsifies the face
+  hypothesis and is reported at once; no kill is logged as "face row, presumed R*-like (ring 14)". Non-face rows
+  (d = 8 76566656 and the two new d = 9 rows) keep the ring-16 kill line and run first. Part 2 follows as the one
+  pattern-side test left for the face family. Order: 7765566 (ring 14, running), 76566656, 765556565, 655665556, then
+  the face rows, then part 2 (`loop/k47/rows51.txt`).
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).

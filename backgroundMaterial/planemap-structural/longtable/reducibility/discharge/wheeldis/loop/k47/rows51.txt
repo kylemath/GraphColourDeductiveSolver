@@ -1,13 +1,15 @@
-# Round 51 binder queue, read by q51f.sh one row at a time (D LK SV PREFIX); a row is done when R51_<PREFIX>.DONE exists.
-# Edit freely: q51f re-reads this file before every row.  Part 2 (win51 survivor windows) runs when no row is left.
-7 7655666 6756666 r7f   # part 1 row 2: its first run stopped at the 2-hour limit with 9 ring-16 windows left
-10 6565656565 6655666666 r10b
-7 7655667 6756656 r7g
-7 7765566 6575666 r7j   # moved up: s21c's top receiver (Long Table 05:39Z)
-9 655566556 757656565 r9e
-7 7676556 7759565 r7h
-7 7655566 6759676 r7i
-7 8665566 5675665 r7k
-8 76566656 65566556 r8b
-9 765556565 566956665 r9f   # s21c (Long Table 05:39Z)
-9 655665556 666559575 r9g   # s21c
+# Round 51 binder queue (D LK SV PREFIX RINGS).  Since 05:11Z each row runs as its own job (q51row.sh) so it fits the
+# 2-hour limit.  Long Table 07:02Z: face rows (a 5-5-5 face next to the centre) run to ring <= 14 only, non-face
+# rows keep ring 16 and run first.  A row is done when R51_<PREFIX>.DONE exists.
+7 7655666 6756666 r7f   14,16   done: no kill at ring <= 16
+10 6565656565 6655666666 r10b   14,16   done: dies at ring 13
+7 7655667 6756656 r7g   14,16   done: no kill at ring <= 16
+7 7765566 6575666 r7j   14   face row (ring 14 only)
+8 76566656 65566556 r8b   14,16   non-face
+9 765556565 566956665 r9f   14,16   non-face
+9 655665556 666559575 r9g   14,16   non-face
+9 655566556 757656565 r9e   14   face (w1, w2, s1)
+7 7676556 7759565 r7h   14   face
+7 7655566 6759676 r7i   14   face
+7 8665566 5675665 r7k   14   face
+# then part 2: win51 survivor windows of the binder, ring <= 16 (at most 300), then the first 200 at ring 17
