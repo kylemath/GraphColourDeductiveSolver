@@ -597,3 +597,38 @@ Not read: Studio's Job 31 spec.
   - Receivers: 7665566/6765766 0.104; 9 655566556/759556565 0.055; 7676556/7759565 0.055; 10 6556655556/6665669665 0.022; 8 86555665/56576665 and 86566656/55566555 0.013.
   - Senders: face fives 55669, 55667, 55767 and 55959; also 56669, 56959 and 55686.
 - Files: s18d/{prelay2.py, cmd_st18h.sh, st18h.log, sol_st18h.json, cert_st18h.json, st18hL.log, sol_st18hL.json, cert_st18hL.json, lower_st18hL.log, upper_st18h.log, kill_st18h.log, kill_st18hL.log, screen_*.py, engine_md5.txt}. RELAY_SPEC 15.
+
+## Stage 19 oracle pre-registration (08:10Z, before any solve): W forbidden by assumption (flag `w19`), over st18h
+- **W (the window that would have to be proved reducible).** Six vertices:
+  - a vertex u of degree exactly 7;
+  - a 5-5-5 face (w_i, w_{i+1}, s_i): two consecutive link fives of u and their apex, all of degree 5;
+  - a link 6 of u next to the face, w_{i-1} or w_{i+2}, of degree exactly 6;
+  - that 6's private p (its neighbour not adjacent to u) of degree exactly 5.
+  - In the binder 7665566/6675666 these are the cases p2 = 5 and p5 = 5; the second is the st15f blocker.
+- **Why this one.** It is the smallest window the binder rows suggest that is also visible to an LP term. A link 6's window (w_{j±2}, s_{j-2..j+1}) sees a face only when the face is next to it.
+  - Probe on sol_st18h: in all four binders the face-adjacent 6s already have private 5 removed by the §14′ filter (masks 28/30), and the M values are flat over the allowed privates (0.1393 / 0.1090).
+  - W generalises those filter kills to every U = 7 window with a face next to the 6. Over all 5^8 U = 7 windows, 6,225 have such a face. p = 5 is already killed in 2,856 of them, and W adds 3,369.
+  - Privates of 6s farther from the face, and the 7's own privates, are not in any term's window, so they are not in W.
+- **Use.** amask(U = 7, ...) additionally clears the bit for p = 5 when (w_{j+1}, w_{j+2}, s_{j+1}) = (5, 5, 5) or (w_{j-1}, w_{j-2}, s_{j-2}) = (5, 5, 5). Everything else is st18h (hat5, s21/argsA54.txt, §14′ filter with s21/f/kill/kill6).
+- **Result type.** An oracle bound for the class "no W". It is not a theorem until W is proved reducible.
+- **Kill lines:**
+  - (1) the oracle upper bound does not go below 17/107;
+  - (2) the binder moves to face rows with no private 5, and there is no gain.
+  - Wall cap: 90 minutes of solve.
+- **If the gain is real:** report the W instances the LP certificate needs (as patterns), the gain, and the new binders.
+
+## Stage 19 oracle result (08:45Z): **W is null. The lower bound is unchanged at 10/63, and kill line (2) is met**
+- **Regression.** With w19 off, the s19d engine on cert_st18hL gives LOWER-R2 VALID 10/63 (s19d/val_off_lower.log).
+- **Oracle solve st19w** (st18h + w19):
+  - keeppen fixed point: t = 197/1240 = 0.158870968 (9 iterations, 1,037 s);
+  - **UPPER-R2 FEASIBLE at 197/1240 on sol_st19w.json**;
+  - nosep (st19wL): **LOWER-R2 VALID t >= 10/63 (112 rows)**, the same lower bound as st18hL without the oracle.
+  - The upper moves by 7.5e-6 (17/107 → 197/1240) inside the open gap [10/63, 17/107]. That is a better primal point, not a gain in t*: assuming W is reducible proves nothing below 10/63.
+- **Binders (cert_st19wL).**
+  - The heaviest receiver moves from 7665566/6765766 to 7766556/6567566 (0.101), a face row whose two face-adjacent 6s already have private 5 forbidden by W. Kill line (2) is met: the binder moves to face rows with no private 5, and there is no gain.
+  - The other receivers are as in st18hL: 9 655566556/759556565 and 7676556/7759565 (0.058); 10 6556655556/6665669665; and d = 8 86555665/56586665, 86566656/55566555 and 85586556/66656565.
+- **Why (rowR2 at sol_st19wL).** All four face rows have load exactly y7|5566 0.738 + y7|5576 0.421 = 1 + t, with M = 0 and no r. The rows are 7665566/6675666, 7655667/6756656, 7766556/6567566 and 7665566/6765766.
+  - The 7's whole budget goes to its two face fives through y.
+  - Those y values are set by the face fives' worst sender contexts in the cert. The heaviest is 55667 [0,0,0,1,0|1,0] (0.101); then 55667 [0,0,1,1,0|0,0], 55669 [0,0,1,0,0|0,0], 55767 [0,0,0,0,0|0] and 55769, all with at most two big hats. Nothing about the link 6s' privates enters.
+  - **So a lemma that helps must forbid a face five's worst context**, i.e. a 5-5-5 face whose surrounding hats are mostly small (the listed sender contexts), and not a private of a link 6. That is a sender-side window, and Explore should test that one.
+- Files: s19d/{prelay2.py (= s18d + w19), cmd_st19w.sh, st19w.log, sol_st19w.json, cert_st19w.json, st19wL.log, sol_st19wL.json, cert_st19wL.json, lower_st19wL.log, upper_st19w.log, kill_st19wL.log, val_off_lower.log, engine_md5.txt}.

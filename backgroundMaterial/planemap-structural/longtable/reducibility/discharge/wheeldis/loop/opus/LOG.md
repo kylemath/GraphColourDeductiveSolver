@@ -424,3 +424,12 @@ our agent R and have no output from it.
 - t* = 4/25 = 0.16 exactly. Lower VALID (90 rows); upper FEASIBLE on our engine. Studio check pending.
 - This closes s21f's bracket, but the value is still above stage 18's 17/107 (hat5 on 880d25c6).
 - Next: hat5 on 5fa0adb0.
+
+## Stage 19 oracle: face 7 + adjacent link-6 private 5 forbidden by assumption (flag w19), stage 18 setup, 19 Oct ~09:00Z. NULL
+- Lower stays exactly 10/63 (VALID, 112 rows). Upper 197/1240 is FEASIBLE but sits inside the old gap, so there is no gain in t*.
+- Kill line (2) met: the binder moves to 7766556/6567566, a face row whose face-adjacent 6s already have private 5 forbidden.
+- Why it is null:
+  - In all four face rows, the 7's whole budget goes through y to its two face fives: y7|5566 + y7|5576 = 1 + t. The link-6 privates never enter.
+  - The y values are set by the face fives' worst sender contexts: 55667, 55669, 55767, 55769, with at most two big hats.
+  - So a useful lemma must be on the sender side: a 5-5-5 face with its hat ring mostly small.
+- Files: P_own_lp/s19d/.
