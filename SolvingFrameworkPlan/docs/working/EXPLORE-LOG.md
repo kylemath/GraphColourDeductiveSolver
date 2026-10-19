@@ -50,6 +50,16 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
 - **16:39Z, tally.** Of the 13 family rows: 3 dead (Studio rows 1-3), 1 survives to ring 18 (7655566/6759676), 2
   undecided with their remainder at Studio (7665566/6765766, 7766556/6576576), 7 running (6 at Studio, 1 here).
 
+- **Addition (pre-registered 17:07Z, before any engine run on these targets; Long Table 17:06Z): the 2/13 production
+  binders** (Opus 20ee527a, 0125c46b). The face row 7665566/6675676 (0.231) is the mirror of 7665566/6765766 (same
+  canon_key), so it is not swept again: its ring 17-18 remainder is already first in Studio's Job 52 queue. The two
+  d = 10 rows (0.038 each) are new to every round's log and go ahead of the six non-family rows: 6565665656/6555555565
+  (no 5-5-5 face next to the centre) and 6565555665/6665956566 (two faces, w3 w4 s3 and w5 w6 s5, around the centre's
+  run of four 5s; s4 >= 9 never in a window). Ring <= 16 on explore (`q52r16.sh`, 2 h cap); a row with no kill there
+  sends its ring 17-18 windows to Studio. Kill line unchanged. Guess: 6565665656/6555555565 dies at ring <= 14, as
+  every non-face row has (75%); 6565555665/6665956566 dies at ring <= 14 through its run of fives, as d = 9
+  655566556 did (60%).
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
