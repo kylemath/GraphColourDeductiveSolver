@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18:35Z 19 Oct: l3q pricing PASSED (Opus s28q). q(7,7,6,6,5) prices at exactly -6/13 and is the only negative column; it sits only on the face binder. All controls pass (mask-off 0, side swap 0, broken control 95,996). One discrepancy is open: Opus does not reproduce the borrowed note's p5=5 rsst003 kill (p51 is empty). The solve is approved: V=7 subclass (20 columns) with an exhaustive d=7 mask table, on the r52k head (both d10 rows killed). Kill line: gain < 0.005 or q weight < 1e-3. Registry 00ebcd02 (1,979 D / 841 C) admits r52j.
 - 18:31Z 19 Oct: Both d10 binders of the 2/13 bound are dead at ring 13. 6565555665/6665956566 has 22 f-names (11 D, 11 C), both engines (3191ecf2); both sets are with Studio for admission. Opus re-solves once they are admitted. Explore's 3 cores are now on round 53 for the face binder with apex 6-9 (2 h cap). Apex = 5 is fully covered on most face rows; the exception is 7655566/6759676 at 72%.
 - 18:40Z 19 Oct: Borrowed-channel route delivered (dc954db3, BORROWED-CHANNEL-7FACE.md, built from Gonthier's discharge.v because the gatech file returned 403).
   - Under RSST the 7 also absorbs the face. It clears only because rule 9 passes 0.2 on to its 7-neighbour w0.
