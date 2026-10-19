@@ -66,6 +66,11 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
 - d = 7 7655667/6756656: no kill at ring <= 14 (784 windows, 375 already run). Its ring 15-16 windows (1411 at ring
   <= 16) started 04:38Z. The queue job hit its 2-hour limit at 05:11Z with 249 ring-16 windows left. From now on each
   row runs as its own job (`q51row.sh`), so one job fits inside the limit.
+- **7655667/6756656: kill line met at ring <= 16, so R*-like; reported, and stopped there** (07:02Z; all 1411 windows,
+  0 mismatches; the last 249 ring-16 windows took 05:11-07:01Z, slowest kc 285 s). None is D, and kc -C finds no X at
+  |X| <= 4. Best leftovers: 144 at ring 14, 256 at ring 15 (a7_u7655667_..56.56), 656 at ring 16. Guess (40%) was on
+  the wrong side. That makes three rows with a 5-5-5 face next to the 7-centre (7665566, 7655666, 7655667), and all
+  three are R*-like. Only 7665666, which has no such face, died.
 
 ## Round 50 (18 Oct 2026, 22:29Z-): H-RL, do the relay class's new receivers die at ring <= 14?
 
