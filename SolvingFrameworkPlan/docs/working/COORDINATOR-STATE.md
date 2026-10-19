@@ -80,6 +80,10 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18:10Z 19 Oct: FULL PUSH on K=2 before the gate. Kyle (18:08Z): "don't hold back, we've never been closer". The narrow wording is the fallback only.
+  - Studio queue reordered so the binders go first: face 7665566 remainder, then 7766556/6576576 remainder, then the d10 ring 17-18 windows.
+  - Explore: pre-empts 7766556/6567566 (not a binder) and starts the d10 rows now.
+  - Opus: runs an oracle probe that forbids the current binders and re-solves, to measure the next t* and how many kill rounds remain. Kill line: gain < 0.005, which would mean siblings re-bind and kills alone can't close it. Opus also re-solves on ffa42f2d and after each admission.
 - 18:05Z 19 Oct: GATE WORDING DECIDED. Kyle delegated it ("Don't wait on me you decide", 18:04Z). Option C (Narrow) is adopted: K≤1 closed; K=2 open at 2/13 [E2], with the face-7 pattern and the two d10 rows named. If K=2 reaches ≤ 0 on both engines and passes the claim rule before 24 Oct, the wording is upgraded. GATE-24OCT-DRAFT.md is marked final. Work on the gap continues.
 - 17:57Z 19 Oct: NEW [E2] BOUND. K=2 t* = 2/13 ≈ 0.1538 exactly on 0125c46b (st24b: Opus 20ee527a, Studio spec-only c905eae0, both kill lines unmet). It beats 16/101. The drop comes only from registry kills; the input diff is k3x only. Gate draft and dashboard are updated. Next to move it: explore's two d10 binder rows and the face 7665566 remainder at Studio.
 - 17:22Z 19 Oct: Registry head is now ffa42f2d: 1,920 D / 841 C, dcount 16,960. That is +20 D from the row-3 f-names, admitted by both engines with 0 lost, 0 one-engine and all guards 0. Re-solve is passive: these are d=8 family rows, not current 2/13 binders.
