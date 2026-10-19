@@ -57,3 +57,8 @@
   on a dfast18 D): the 7 ring-18 kc timeouts all **dfast18 D=false** (868-1,222 s each). No D, so no kc -t 10800 run
   and no cfast (no kc X). Row 11 final: 225/225 windows decided, 0 two-engine kills; the hypothesis (a two-engine
   kill at ring <= 18) fails on this binder row.
+- 20:37Z 19 Oct: row 12 (binder 7 7766556/6576576, ring 16-18 todo, 414 windows), 6 parallel parts from 18:10Z:
+  **SURVIVES**, 0 two-engine kills. 403 kc neither (99 ring 16, 192 ring 17, 112 ring 18), 11 kc timeouts at -t 600
+  (all ring 18: a7_u77665.._65.6..6, a7_u77665.._6.76..., a7_u77665.._6576..., a7_u7.66556_6.7...6,
+  a7_u776..56_657...., a7_u77665.._.57...6, a7_u77665.._6..6..6, a7_u776..56_.57...6, a7_u7766556_6.7...6,
+  a7_u7766..6_.57...6, a7_u776..56_65...76), 0 kc D, 0 kc C.
