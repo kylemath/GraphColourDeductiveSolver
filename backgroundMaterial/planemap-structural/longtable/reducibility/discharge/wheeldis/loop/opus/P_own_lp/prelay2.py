@@ -9,13 +9,23 @@ QV = {}
 V6 = 'v6' in FLAGS                   # stage 15: a 6 next to a 7 passes v[its link at u + 3-class apexes] on to the 7
 VV = {}
 def cv(x): return x if x < 7 else 7
+F16 = 'filt16' in FLAGS              # stage 16 A': allowed-private sets from the 3-ball containment filter (s16_filter.local)
+KT = {}
+def kt_load():
+    if F16 and not KT:
+        for U in (7, 8, 9): KT[U] = np.load(OPT['killtab'] + '_U%d.npy' % U)
+def amask(U, a, b, e, f, s0, s1, s2, s3):
+    """allowed-letter bitmask (bit i = LET[i]) for the private of a 6 at w_j: a,b,e,f = w_{j-2},w_{j-1},w_{j+1},w_{j+2};
+    s0..s3 = s_{j-2..j+1}; letters 5..9"""
+    kt_load(); return 31 & ~int(KT[U][a - 5, b - 5, e - 5, f - 5, s0 - 5, s1 - 5, s2 - 5, s3 - 5])
+def pallow(sig): return [p for i, p in enumerate(LET) if not F16 or (sig[-1] >> i) & 1]
 def v_of(m, ar, al):
     a = tuple(m) + (cv(ar), cv(al)); b = (m[0],) + tuple(reversed(m[1:])) + (cv(al), cv(ar)); return min(a, b)
 def sigv_of(U, wr, sr, sl, wl, wrr, wll):
     a = (U, wr, sr, sl, wl, cv(wrr), cv(wll)); b = (U, wl, sl, sr, wr, cv(wll), cv(wrr)); return min(a, b)
 def sigv_keys(sg):
-    U, wr, sr, sl, wl, wrr, wll = sg
-    return sorted({v_of((U, wr, sr, p, sl, wl), wrr, wll) for p in LET if not isR6((U, wr, sr, p, sl, wl))})
+    U, wr, sr, sl, wl, wrr, wll = sg[:7]
+    return sorted({v_of((U, wr, sr, p, sl, wl), wrr, wll) for p in pallow(sg) if not isR6((U, wr, sr, p, sl, wl))})
 def qkey(m):
     m = tuple(m); return min(m, (m[0],) + tuple(reversed(m[1:])))
 def q7sig(U, a, b, c, e):
@@ -63,7 +73,7 @@ def sig2_of(U, wr, sr, sl, wl, wrr, wll):
     return min(a, b)
 def sig2_keys(sig):
     U, wr, sr, sl, wl = sig[:5]; wrr, wll = (sig[5], sig[6]) if AP else (0, 0)
-    return sorted({h2_of((U, wr, sr, p, sl, wl), wrr, wll) for p in LET if not isR6((U, wr, sr, p, sl, wl))})
+    return sorted({h2_of((U, wr, sr, p, sl, wl), wrr, wll) for p in pallow(sig) if not isR6((U, wr, sr, p, sl, wl))})
 def R2_sender_rows():
     out = []
     for w in SENDERS:
@@ -125,8 +135,14 @@ def window_table_R2(U, y, x, MV2):
             W[a, b, 0, e, f, :, q, r, :] += ZV.get(zkey(wd, c2(LET[f]), c2(LET[a])), 0.0)
     if V6 and U == 7:
         for a, b, e, f, q, r in itertools.product(range(5), repeat=6):
-            ks = sigv_keys(sigv_of(U, LET[e], LET[r], LET[q], LET[b], LET[f], LET[a]))
-            if ks: W[a, b, 1, e, f, :, q, r, :] -= min(VV.get(k, 0.0) for k in ks)
+            sv0 = sigv_of(U, LET[e], LET[r], LET[q], LET[b], LET[f], LET[a])
+            if not F16:
+                ks = sigv_keys(sv0)
+                if ks: W[a, b, 1, e, f, :, q, r, :] -= min(VV.get(k, 0.0) for k in ks)
+                continue
+            for p_, s_ in itertools.product(range(5), repeat=2):
+                ks = sigv_keys(sv0 + (amask(U, LET[a], LET[b], LET[e], LET[f], LET[p_], LET[q], LET[r], LET[s_]),))
+                if ks: W[a, b, 1, e, f, p_, q, r, s_] -= min(VV.get(k, 0.0) for k in ks)
     if Q7:
         for b, e, q, r in itertools.product(range(5), repeat=4):
             sg = q7sig(U, LET[e], LET[r], LET[q], LET[b]); ks = q7keys(sg)
@@ -134,6 +150,11 @@ def window_table_R2(U, y, x, MV2):
     for a, b, e, f, q, r in itertools.product(range(5), repeat=6):
         if not AP and (a or f): continue
         sg = sig2_of(U, LET[e], LET[r], LET[q], LET[b], LET[f], LET[a])
+        if F16:
+            for p_, s_ in itertools.product(range(5), repeat=2):
+                v = MV2(sg + (amask(U, LET[a], LET[b], LET[e], LET[f], LET[p_], LET[q], LET[r], LET[s_]),))
+                if v is not None: W[a, b, 1, e, f, p_, q, r, s_] += v
+            continue
         v = MV2(sg)
         if v is None: continue
         if AP: W[a, b, 1, e, f, :, q, r, :] += v
@@ -145,7 +166,9 @@ def class_table_R2(xon):
     C = np.where(c == 0, 1 + ((b * 5 + e) * 5 + q) * 5 + r, 0)
     if ZH: C = np.where(c == 0, 1 + 100000000 + (((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r), C)
     C = np.where(c == 1, 1 + 625 + (((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r), C)
-    if xon: C = np.where(c >= 2, 1 + 625 + 15625 + c * 15625 + (((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r), C)
+    if F16: C = np.where(c == 1, 1 + 625 + (((((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r) * 5 + p) * 5 + s_), C)
+    o16 = 390625 - 15625 if F16 else 0
+    if xon: C = np.where(c >= 2, 1 + 625 + 15625 + o16 + c * 15625 + (((((a * 5 + b) * 5 + e) * 5 + f) * 5 + q) * 5 + r), C)
     return C.astype(np.int32)
 def recv_coef_R2(d, lk, sv, xon):
     cy, cx = recv_coef(d, lk, sv, xon); cf = collections.Counter()
@@ -156,9 +179,11 @@ def recv_coef_R2(d, lk, sv, xon):
     for j in range(d):
         if w[j] == 6:
             sg = sig2_of(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d], w[(j + 2) % d], w[(j - 2) % d])
+            if F16: am = amask(U, w[(j - 2) % d], w[(j - 1) % d], w[(j + 1) % d], w[(j + 2) % d], s[(j - 2) % d], s[(j - 1) % d], s[j], s[(j + 1) % d]); sg = sg + (am,)
             if sig2_keys(sg): cf[('M', sg)] += 1
         if w[j] == 6 and V6 and U == 7 and d == 7:
             sv_ = sigv_of(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d], w[(j + 2) % d], w[(j - 2) % d])
+            if F16: sv_ = sv_ + (am,)
             if sigv_keys(sv_): cf[('V', sv_)] -= 1
         if w[j] == 7 and Q7:
             sg = q7sig(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d])
@@ -209,7 +234,7 @@ def cmd_solveR2():
     import highspy
     load_patterns()
     xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]
-    p = os.path.join(WORK, 'clsR2_%d%s.bin' % (int(xon), 'z' if ZH else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s.bin' % (int(xon), 'z' if ZH else '', 'f' if F16 else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     K = int(OPT.get('K', '300')); MAXIT = int(OPT.get('maxit', '300')); TOL = float(OPT.get('tol', '1e-9'))
@@ -405,6 +430,11 @@ def cmd_structR2():
             wr, sr, sl, wl, wrr, wll = t7
             if not AP and (wrr != 5 or wll != 5): continue
             s_ = sig2_of(U, wr, sr, sl, wl, wrr, wll)
+            if F16:   # one signature per allowed-private set seen in some window (s_{j-2}, s_{j+1} free)
+                for s0, s3 in itertools.product(LET, repeat=2):
+                    x_ = s_ + (amask(U, wll, wl, wr, wrr, s0, sl, sr, s3),)
+                    if sig2_keys(x_): sg.add(x_)
+                continue
             if sig2_keys(s_): sg.add(s_)
     nm = sum(len(sig2_keys(s_)) for s_ in sg)
     gs = sum(1 for k in cols if k[0] == 'g')
@@ -425,6 +455,12 @@ def cmd_structR2():
         vs = set()
         for t7 in itertools.product(LET, repeat=6):
             s_ = sigv_of(7, *t7)
+            if F16:
+                wr, sr, sl, wl, wrr, wll = t7
+                for s0, s3 in itertools.product(LET, repeat=2):
+                    x_ = s_ + (amask(7, wll, wl, wr, wrr, s0, sl, sr, s3),)
+                    if sigv_keys(x_): vs.add(x_)
+                continue
             if sigv_keys(s_): vs.add(s_)
         out.insert(6, '  v (new in s16): %d' % len(allv)); out.insert(7, '  V (new in s16, signatures): %d; V-rows if all used %d' % (len(vs), sum(len(sigv_keys(x)) for x in vs)))
         out[0] = 's16 structural summary (stage 15 class on the reduced 6-centred relay)'
@@ -456,13 +492,16 @@ def cmd_lowerR2():
             for k, v in cons2_coef(L, s).items(): tot[k] += w * v
         elif row[0] == 'mrowR2':
             sg = tuple(row[1]); k = tuple(row[2])
-            if len(sg) != (7 if AP else 5) or sg != sig2_of(*(sg if AP else sg + (5, 5))): log('  NONCANON SIG', row); ok = False; continue
+            g0 = sg[:-1] if F16 else sg
+            if F16 and not (0 <= sg[-1] < 32): log('  BAD MASK', row); ok = False; continue
+            if len(g0) != (7 if AP else 5) or g0 != sig2_of(*(g0 if AP else g0 + (5, 5))): log('  NONCANON SIG', row); ok = False; continue
             if k not in sig2_keys(sg): log('  BAD MROW', row); ok = False; continue
             if w > 0: log('  WRONG SIGN', row); ok = False; continue
             tot[('h', k)] += w; tot[('M', sg)] -= w
         elif row[0] == 'mrowV':
             sg = tuple(row[1]); k = tuple(row[2])
-            if sg != sigv_of(*sg) or k not in sigv_keys(sg): log('  BAD MROWV', row); ok = False; continue
+            g0 = sg[:7]
+            if g0 != sigv_of(*g0) or len(sg) != (8 if F16 else 7) or k not in sigv_keys(sg): log('  BAD MROWV', row); ok = False; continue
             if w > 0: log('  WRONG SIGN', row); ok = False; continue
             tot[('V', sg)] += w; tot[('v', k)] -= w
         elif row[0] == 'mrowQ':
@@ -497,7 +536,7 @@ def all6_words():
 def cmd_upperR2():
     load_patterns()
     xon = 'xon' in FLAGS
-    p = os.path.join(WORK, 'clsR2_%d%s.bin' % (int(xon), 'z' if ZH else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s.bin' % (int(xon), 'z' if ZH else '', 'f' if F16 else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     Sj = json.load(open(OPT['sol'])); t = Sj['t']

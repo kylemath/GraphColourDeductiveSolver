@@ -357,3 +357,7 @@ our agent R and have no output from it.
   others), tested one ring beyond u's 2-ball. Nothing was solved. §14, s16_census.py and s16_census_kills.json are committed.
   Next: confirm that the 6 census configurations are in the conservative 582 / k3x, then port them as a containment test
   at a link-6 private (A'), or fall back to option B.
+- **P2 s19c (02:40Z): the reduced 6-centred relay on 09d8ac38 (argsA52) gives t* = 6/35 = 0.17143**, below 23/134
+  [own checkers; lowerR2 VALID with 91 rows; upperR2 FEASIBLE, conservation 1,424 x 5^6, worst 1.3e-13]. Main binder: still
+  5566766/5666667 (0.2). Then d = 10 6565656565/6655666666, d = 9 655566556/757656565, and d = 7 7655566/6759676,
+  7676556/7759565 and 7666566/5656656 (1/35 each). s19r is running.
