@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 22:02Z 19 Oct: The s27o conditional-floor oracle hit its kill line (Opus f642dadc). Forbidding the binder arrangements leaves t* at 2/13, and the binders slide to near-twins (7665566 -> 7765566 -> 7766556; the d10 via another arrangement). Single-arrangement kills will not reach 0; classes must be paid by rules or killed whole. Decision: explore keeps cheap kills, and Opus starts pricing the next rule family against the l3q cert (47/320) for the d8 rows and the d7-with-8 family. Kill line: all reduced costs >= 0.
 - 22:30Z 19 Oct: CGlue Lean draft (42379553, CGlue.lean, 815 lines) builds here with 0 errors. ONE sorry remains: contract_subgraph (C4a, map contraction). C1-C3 and C4b are proved. four_color_of_unavoidableC needs no CGlue hypothesis, modulo C4a. Occurrence side conditions OccExact and XRingSimple move to the unavoidability step. Ring-merge X entries fail admissibleX, as intended. Sabotage test passes. Next: the same worker proves single-edge contraction (about 300-500 lines), which covers 741/852 C entries sorry-free. Studio to rebuild via glue.sh + C66666 + CGlue.
 - 21:55Z 19 Oct: l3q V=7 PASSES its kill line (Opus 11f050ea, one engine, provisional) on 7360eb92.
   - Upper 0.147857, lower 47/320 = 0.146875. Gain 0.0061 over the 43/281 baseline. q weight 0.08 (drule9 shape).
