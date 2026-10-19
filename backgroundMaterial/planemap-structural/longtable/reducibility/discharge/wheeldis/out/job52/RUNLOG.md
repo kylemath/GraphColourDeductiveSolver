@@ -62,3 +62,8 @@
   (all ring 18: a7_u77665.._65.6..6, a7_u77665.._6.76..., a7_u77665.._6576..., a7_u7.66556_6.7...6,
   a7_u776..56_657...., a7_u77665.._.57...6, a7_u77665.._6..6..6, a7_u776..56_.57...6, a7_u7766556_6.7...6,
   a7_u7766..6_.57...6, a7_u776..56_65...76), 0 kc D, 0 kc C.
+- 20:54Z 19 Oct: rows 4-9 final after the 20:09Z resume (fresh runners, each with what was left of its own 6 h cap),
+  0 two-engine kills on all six:
+  7 7655666/6756666 SURVIVES (155/155, 8 kc timeouts); 7 7665566/6675666 SURVIVES (165/165, 6 kc timeouts);
+  7 8655567/5685756 CAPPED (1,210/1,257, 47 left, 2 timeouts); 7 8765556/6575866 CAPPED (909/992, 83 left, 2 timeouts);
+  7 7655667/6756656 CAPPED (209/243, 34 left, 7 timeouts); 7 7765566/6575666 CAPPED (725/784, 59 left, 3 timeouts).
