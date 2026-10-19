@@ -98,6 +98,7 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   3 D). Minimal: f7_5567676_..5..5. (a7_u7676556_..5...5): the 7-centre, its whole link and s2 = s6 = 5. It holds
   the face's link fives w4, w5 but not the apex s4, so the kill does not use the face triangle. This is family.json's
   receiver 7676556/7759565 itself (dual 0.055-0.058 in all three certs), now dead. Twoeng-ready: `loop/k47/r7h_kills*`.
+  Studio admitted the 3 (11:23Z): registry 0125c46b, 1,897 D / 838 C, dcount 16,937.
 - **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
   `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
   against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8
