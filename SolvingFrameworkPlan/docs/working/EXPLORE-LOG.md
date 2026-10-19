@@ -80,7 +80,8 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
 - **d = 9 655665556/666559575 (part 1f, non-face) dies at ring 12** (09:57Z; all 2942 windows at ring <= 14, 55
   already run, 0 mismatches; 08:40-09:56Z). 591 kill windows and 514 f-names (twoeng: 457 D, 57 C with the same X).
   17 are minimal, 8 of them at ring 12: e.g. f9_..5556655_......... (D) and f9_...555665_.....5... (C). Guess (60%)
-  right. Twoeng-ready: `loop/k47/r9g_kills*`. **All non-face rows of round 51 have died** (7665666, both d = 10,
+  right. Twoeng-ready: `loop/k47/r9g_kills*` (Studio admitted all 514 at 10:09Z: registry 4b28f532, 1,419 D / 790 C,
+  dcount 16,459). **All non-face rows of round 51 have died** (7665666, both d = 10,
   d = 8 76566656, both d = 9), at ring 12-13; every face row tried is R*-like. Face rows at ring 14 now run.
 - **Face rule falsified for the d = 9 face row 655566556/757656565 (10:02Z, reported at once): it dies at ring 12.**
   With 1228 of 3290 ring-14 windows run: 185 two-engine kills (ring 12: 38 D, 3 C; ring 13: 150 D, 1 C), 0
