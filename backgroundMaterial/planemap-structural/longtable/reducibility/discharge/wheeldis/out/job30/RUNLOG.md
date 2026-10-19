@@ -169,3 +169,11 @@ not new to F.
   **869 D / 658 C** (+28 D, +25 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher (17 names: all 4
   minimal plus a sample): 1,233 frames, 0 mismatches. dcount (argsA44_local): **15,909** distinct parsed D (16,243
   names), +28.
+- ~09:00Z 19 Oct: explore round 51, a4b32eb2 (loop/k47/r9f_kills*: kills of the part-1f d=9 binder
+  765556565/566956665). 5 files fetched by path, byte-identical. r9f alone: 93 D / 75 C, as explore's run. Default glob
+  on 5fa0adb0: **962 D / 733 C** (+93 D, +75 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher on all
+  19 minimal windows: 1,435 frames, 0 mismatches. dcount (argsA44_local): **16,002** distinct parsed D (16,336
+  names), +93.
+  - Letter 9: none of the 168 names contains a 9. The binder's 9 is s_3 of its s-word, outside every kill window.
+    Studio's parse / fullparse raise (AssertionError / KeyError) on a 9 in a non-p name rather than misreading it, so a
+    future f-name with a 9 cannot slip in silently, but would need an explicit reading (9 = {>= 9}) added first.
