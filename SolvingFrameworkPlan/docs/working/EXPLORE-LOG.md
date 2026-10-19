@@ -49,6 +49,11 @@ None of these rows was swept before in any orientation (canon_key against every 
   4 C), 72 f-names (twoeng: 32 D, 40 C same X, 0 mismatch); one C has ring edges in X ({I0-I5,I1-I2,R2-I0,R0-I2}: R2
   and R0 stay in different classes, so no ring merge), the rest interior-only. Minimal: f8_...56656_.....56. (C X={I3-I4},
   ring 12, m 8) and three at ring 14.
+- **23:19Z, queue change (Long Table 23:18Z).** Opus's 11/75 cert (l3q on 3cfd7f18) has d7 8658656/6665556, d8
+  76656566/56655565 and d7 8658656/7665555 at -2/75 after the three killed above. 76656566/56655565 is not a typo for
+  76656656/56655565: canon_key gives 56566766/55565566 and 56656676/55566556, two rows (both were in the l3q list).
+  New order after 85656765/56665565 (running): r54i 8658656/6665556, r54j 76656566/56655565, then `rows54b.txt`: r54l
+  8658656/7665555 (new, never swept), then r54e-h (the remaining 0.0125 rows).
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
