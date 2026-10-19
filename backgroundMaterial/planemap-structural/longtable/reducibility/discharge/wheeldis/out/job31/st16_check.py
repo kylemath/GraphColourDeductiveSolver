@@ -15,6 +15,7 @@ DIS = os.path.dirname(HERE)
 SOLF, CERTF, ARGF = sys.argv[1], sys.argv[2], sys.argv[3]
 SOL = json.load(open(SOLF)); CERT = json.load(open(CERTF)); ARGS = open(ARGF).read().split()
 EPS = 1e-9; FAIL = []
+V6 = os.environ.get('V6', '1') == '1'   # V6=0: filtered s12r mode (section 14' mask on M only; no v, no V)
 # per-solve expectations (defaults: s14r): EXPECT_T = claimed t* as a fraction, EXPECT_PAT = 'D,C,RPAT' distinct pattern counts
 EXPECT_T = Fr(os.environ.get('EXPECT_T', '19/102')); EXPECT_PAT = tuple(int(v) for v in os.environ.get('EXPECT_PAT', '15497,1494,158').split(','))
 def fail(msg): FAIL.append(msg); print('FAIL: ' + msg, flush=True)
@@ -117,7 +118,7 @@ VV = {tuple(k): v for k, v in SOL.get('v', [])}
 T = SOL['t']
 print('solution t = %.15f (claimed %s = %.15f), model %s apex %s apexcls %s zh %s: %d y, %d g, %d h, %d x, z %s' % (
     T, EXPECT_T, float(EXPECT_T), SOL.get('model'), SOL.get('apex'), SOL.get('apexcls'), SOL.get('zh'), len(Y), len(G), len(H), len(X), SOL.get('z')), flush=True)
-if SOL.get('model') != 'R6x2' or not SOL.get('apexcls') or SOL.get('zh') or not SOL.get('v6'): fail('solution is not s16 mode (model/apexcls/zh/v6)')
+if SOL.get('model') != 'R6x2' or not SOL.get('apexcls') or SOL.get('zh') or bool(SOL.get('v6')) != V6: fail('solution mode differs from V6=%d (model/apexcls/zh/v6)' % V6)
 print('v values %d' % len(VV))
 if abs(T - float(EXPECT_T)) > 1e-12: fail('solution t differs from the claimed value')
 badlen = [k for k in G if len(k) != 7] + [k for k in H if len(k) != 8] + [k for k in VV if len(k) != 8]
@@ -190,7 +191,7 @@ def cons2_row(L, s):
             r[('g', g2_raw(L[(i + 1) % 6], c(L[(i + 2) % 6]), c(L[(i + 3) % 6]), c(L[(i + 4) % 6]), L[(i + 5) % 6], ap(s[i]), ap(s[(i - 1) % 6])))] += 1
         elif L[i] >= 7:
             m = tuple(L[(i + k) % 6] for k in range(6)); r[('h', h2_of(m, s[i], s[(i - 1) % 6]))] -= 1
-            if L[i] == 7: r[('v', v_of(m, s[i], s[(i - 1) % 6]))] += 1
+            if V6 and L[i] == 7: r[('v', v_of(m, s[i], s[(i - 1) % 6]))] += 1
     return {k: v for k, v in r.items() if v != 0}
 ALL6 = sorted({canon(L) for L in itertools.product(LET, repeat=6) if not isR6(L)})
 cres = {'five': [0, 0, 0.0], 'nofive': [0, 0, 0.0]}
@@ -290,7 +291,7 @@ def recv_spec(d, link, sword):
             mk = pmask(U, W(i - 2), W(i - 1), W(i + 1), W(i + 2), S(i - 2), S(i - 1), S(i), S(i + 1))
             sg = sig2_of(U, W(i + 1), S(i), S(i - 1), W(i - 1), ap(W(i + 2)), ap(W(i - 2))) + (mk,)
             if cand2(sg): r[('M', sg)] += 1
-            if U == 7:
+            if V6 and U == 7:
                 sv_ = sigV_of(U, W(i + 1), S(i), S(i - 1), W(i - 1), cv(W(i + 2)), cv(W(i - 2))) + (mk,)
                 if candV(sv_): r[('V', sv_)] -= 1
         else:
@@ -379,7 +380,7 @@ for _ui, _U in enumerate((7, 8, 9)):
         sg = sig2_of(_U, wp1, s0, sm1, wm1, ap(wp2), ap(wm2)) + (mk,)
         if sg not in _mcM: _mcM[sg] = Mval(sg) if cand2(sg) else 0.0
         v_ = _mcM[sg]
-        if _U == 7:
+        if V6 and _U == 7:
             sv_ = sigV_of(_U, wp1, s0, sm1, wm1, cv(wp2), cv(wm2)) + (mk,)
             if sv_ not in _mcV: _mcV[sv_] = Vval(sv_) if candV(sv_) else 0.0
             v_ -= _mcV[sv_]
@@ -395,7 +396,7 @@ for k, v in Y.items(): yv[ix[k]] = v
 V56[:] = 0.0; V6B[:] = 0.0
 def Vlow(k6):   # the least v over the private and the cv apex pairs, for the 5-signature of this rooted 6-link
     U, a1, b1, _, d1, e1 = k6
-    if U != 7: return 0.0
+    if U != 7 or not V6: return 0.0
     lst = [VV.get(v_of((U, a1, b1, p, d1, e1), ar, al), 0.0) for p in LET if not isR6((U, a1, b1, p, d1, e1)) for ar in CV for al in CV]
     return min(lst) if lst else 0.0
 for k6, i6 in I6B.items():   # relaxation: the largest h2 over the apex pairs, minus (at a 7) the least possible V
