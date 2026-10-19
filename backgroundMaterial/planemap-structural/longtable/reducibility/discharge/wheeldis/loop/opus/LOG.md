@@ -361,3 +361,6 @@ our agent R and have no output from it.
   [own checkers; lowerR2 VALID with 91 rows; upperR2 FEASIBLE, conservation 1,424 x 5^6, worst 1.3e-13]. Main binder: still
   5566766/5666667 (0.2). Then d = 10 6565656565/6655666666, d = 9 655566556/757656565, and d = 7 7655566/6759676,
   7676556/7759565 and 7666566/5656656 (1/35 each). s19r is running.
+- **P2 s19r (02:55Z): the s10 relay on argsA52 gives t* = 37/214 = 0.17290** [own checkers; lowerR VALID with 45 rows; upperR
+  FEASIBLE]. Top binder: d = 7 7765566/6575666 (0.159, new). The d = 10 row 6565656565/6655666666 survives r10a and binds in
+  s18r, s19c and s19r, so it is the next kill target.

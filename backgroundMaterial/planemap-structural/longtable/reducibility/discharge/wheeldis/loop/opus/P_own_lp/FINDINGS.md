@@ -481,3 +481,18 @@ Not read: Studio's Job 31 spec.
 - Next options:
   - (B) v keyed on the private's class: the fallback named by Long Table.
   - Port the 6 census configurations (after confirming each is in the conservative RSST 582 or in k3x) to a 3-ball containment test at a link-6 private.
+
+## Stage 16 A′ pre-registration (before any solve): 3-ball containment filter, full forbidden set (spec: RELAY_SPEC 14′)
+- Item 1 (registry). rsst025 (C2cons), rsst050 (D2), rsst052 (D2), rsst098 (D2) and rsst180 (C2cons) are all in the conservative 582. f7_...5565_....... is in k3x_C 09d8ac38. None is broad-X only, so none is dropped. Forbidden set = 582 + 1,427 twoeng names (all have kc lines).
+- Check 4:
+  - Full 3-ball test: **3,072 / 15,625**, exactly census50's number (`s16_check4full.py`).
+  - LP-visible projection: 7,500 (`s16_check4.py`). The kills lost are rsst180 at w0's privates (no LP term reads them) and rsst052 at p11/p61 (it needs w_{j±3}).
+  - The st15f blocking case p51 = 5 is kept (rsst050), and so are p51 = 6 (rsst098) and p21 = 5.
+  - **Proceeding:** the gating number is reproduced by the full test. The LP uses its sound projection. Both numbers are reported.
+- Validation 1 (filter off): the patched engine without `filt16` on st15f's cert/sol must give lower VALID 23/134 and upper FEASIBLE.
+- Validation 2 (filter on): at the binder, rsst050 drops p51 = 5 and rsst098 drops p51 = 6 (mask 28 at M/V sig (7,5,6,6,6,5,7)), and rsst025 / rsst050 / f7_...5565_....... drop p21 = 5 (mask 30).
+- Hypothesis: on argsA52 with filt16, t* < 23/134 and the binder is non-tight.
+  - Kill line (a): binder 7665566/6675666 stays tight at 23/134.
+  - Kill line (b): the min moves to the survivor context (all privates >= 6 and p51 >= 7).
+  - Baseline: the same engine without filt16 on argsA52, run alongside.
+- Runs: cmd_st16ap.sh; engine snap/st16ap (md5 snap/st16ap_md5.txt).

@@ -1157,3 +1157,83 @@ census has 3,072.
 - The census case that blocks st15f is p5 = 5 (the 6 at w5 with private 5). It is not dropped. p5's known
   neighbours (w5, s4, s5) are all 6s, and no registry wheel pattern can be centred there.
 - Per Long Table's condition 4, stage 16 (A) is **not solved**.
+
+## 14′. Stage 16 A′: private filter by 3-ball containment of the full forbidden set (written before any solve)
+
+Written by Opus before any solve. It replaces 14's wheel-pattern filter.
+
+**Forbidden set.** These are the same files and the same reading as explore's `k50/census50.py`. It lives on branch
+origin/claude/project-thread-nh6pv2; it was extracted with `git archive` at 3b08eef3 and the k-dirs at 09d8ac38. The set has
+2,009 configurations:
+
+- **582 RSST configurations.** These are the names in `loop/k44/rsst_verdicts.txt` with `verdict=D2` or `verdict=C2cons`
+  (round 44's two-engine verification). They are read as configurations by `k42/grow.rsst()` from
+  `studiointel/routeb/rsst/unavoidable.conf`, with names from `loop/k44/rsst.txt`.
+- **1,427 twoeng names at 09d8ac38.** These are every name in `s19/k3x_D_09d8ac38.out` (md5 3ed293d9...) and
+  `s19/k3x_C_09d8ac38.cfast` (md5 61cf5dc8...). They are read as configurations from their kc lines (`grow.kcline`,
+  first match over `loop/k[0-9]*/*`). All 1,427 have kc lines, and the code asserts this.
+- No broad-X C names are used. RSST discharge rules are not used, and drop44 names are absent.
+- The six census killers are all in the set:
+
+  | Name | Source |
+  |---|---|
+  | rsst025 | C2cons |
+  | rsst050 | D2 |
+  | rsst052 | D2 |
+  | rsst098 | D2 |
+  | rsst180 | C2cons |
+  | f7_...5565_....... | k3x_C 09d8ac38 |
+
+**Containment** is `k42/grow.embeddings` unchanged: exact degrees, induced, interior triangles onto faces. Letter 9
+means degree >= 9 and never matches exactly. The frame is u's 3-ball built by `b8b/rings.Layered`, exactly as in
+census50.
+
+1. **Full test (`s16_filter.fullrow`).** u, the whole link and every apex are fixed. For each private slot on its own,
+   that slot is the only free vertex and every other private has degree 99. A value is killed when some configuration
+   embeds using it.
+2. **LP test (`s16_filter.local`).** This is what a V or M term can see. It is the full test with every vertex the
+   term does not know set to degree 99:
+   - Known: u, with degree U for U = 7 or 8; for U = 9, i.e. d >= 9, u has degree 99.
+   - Known: the window w_{j-2..j+2} with w_j = 6.
+   - Known: s_{j-2..j+1}.
+   - Variable: the private p of w_j.
+   - Degree 99: every other link vertex, apex and private.
+
+   A kill found this way holds in every completion, because 99 vertices never match. The kill is applied in the same
+   way to every row and every window. The tables are `s16ap/kill6_U{7,8,9}.json` and `.npy` (`s16_killnpy.py`). They
+   are mirror-symmetric with 0 exceptions, and U=8 is identical to U=9.
+
+**Use in the LP** (flag `filt16 killtab=s16ap/kill6`). M and V signatures get the allowed-p bitmask appended:
+`sig2_of(...) + (mask,)` and `sigv_of(...) + (mask,)`.
+
+- The mask is computed from the row: w_{j±1}, w_{j±2} exact, and s_{j-2..j+1}.
+- `sig2_keys` and `sigv_keys` range only over the allowed p, so M = max over the allowed p, and V = min over the
+  allowed p.
+- The separator window has all of a, b, e, f, S(i-2..i+1), so the window table stays exact. The class table splits
+  c = 1 by S(i-2) and S(i+1).
+- With the flag off, the engine is the st15f engine.
+
+**Check 4 (binder 7665566/6675666, 15,625 cases):**
+
+| Test | Survivors | Matches census50? |
+|---|---|---|
+| Full test (`s16_check4full.py`) | **3,072** | yes, exactly |
+| LP test (`s16_check4.py`) | 7,500 | no |
+
+Per-slot kills under the full test:
+
+| Slot | Killed values |
+|---|---|
+| p01 | 5 (rsst180) |
+| p02 | 5 (rsst180) |
+| p11 | 5 (rsst052) |
+| p21 | 5 (rsst025, rsst050, f7_...5565_.......) |
+| p51 | 5 (rsst050), 6 (rsst098) |
+| p61 | 5 (rsst052) |
+
+The LP test loses three kills:
+
+- p01 and p02: rsst180 needs w_{j..j+4}. These are privates of the 7, and no LP term reads them.
+- p11 and p61: rsst052 needs w_{j±3}.
+
+It keeps p21 = 5 and p51 ∈ {5, 6}, the st15f blocking case.
