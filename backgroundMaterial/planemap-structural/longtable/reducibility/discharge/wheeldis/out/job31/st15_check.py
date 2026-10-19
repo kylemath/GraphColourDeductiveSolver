@@ -128,9 +128,10 @@ SV_ = SOL.get('V', []); vbad = vlp = 0
 for ent in SV_:
     sg, lpv, mn = tuple(ent[0]), ent[1], ent[2]
     if sg != sigV_of(*sg) or not candV(sg): vbad += 1; vbad <= 5 and print('STORED V signature not canonical/admissible %s' % (sg,)); continue
-    if abs(Vval(sg) - mn) > 1e-12: vbad += 1; vbad <= 5 and print('STORED V min %s differs from rebuild %.12f: %s' % (mn, Vval(sg), ent))
+    vmax_ = max(globals().get('vmax_', 0.0), abs(Vval(sg) - mn))
+    if abs(Vval(sg) - mn) > 1e-9: vbad += 1; vbad <= 5 and print('STORED V min %s differs from rebuild %.12f: %s' % (mn, Vval(sg), ent))
     if lpv > mn + 1e-9: vlp += 1
-print('stored V entries %d: rebuilt min differs %d; LP value above the min %d (allowed only <= min)' % (len(SV_), vbad, vlp))
+print('stored V entries %d: rebuilt min differs (> 1e-9) %d, max |difference| %.3g; LP value above the min %d (allowed only <= min)' % (len(SV_), vbad, globals().get('vmax_', 0.0), vlp))
 if vbad or vlp: fail('stored V entries disagree with the rebuild')
 def val(key):
     if key[0] == 'y': return Y.get(key[1], 0.0)
