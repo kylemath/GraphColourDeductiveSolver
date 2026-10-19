@@ -410,7 +410,57 @@ def sepb_query(d, x, thr, many, limit=0):
         out.append((v, terms, ws, ss))
 
 
+HW = {'h': None, 'rows': [], 'ncol': 0}
+
+
+def solve_warm(rows):
+    """persistent HiGHS model: new rows and columns are added and the previous basis is reused (dual simplex warm
+    start). Column 0 is t, column i + 1 is VARL[i]. Rebuilt from scratch if earlier rows were removed."""
+    import highspy
+    inf = highspy.kHighsInf
+    n = len(VARL)
+    loaded = HW['rows']
+    if HW['h'] is None or len(rows) < len(loaded) or any(a is not b for a, b in zip(rows, loaded)):
+        h = highspy.Highs()
+        h.setOptionValue('output_flag', False)
+        h.addCol(1.0, -5.0, inf, 0, np.array([], dtype=np.int32), np.array([], dtype=np.float64))
+        HW.update(h=h, rows=[], ncol=0)
+    h = HW['h']
+    if HW['ncol'] < n:
+        k = n - HW['ncol']
+        ub = CAP if CAP is not None else inf
+        h.addCols(k, np.zeros(k), np.zeros(k), np.full(k, ub), 0, np.zeros(k, dtype=np.int32),
+                  np.array([], dtype=np.int32), np.array([], dtype=np.float64))
+        HW['ncol'] = n
+    new = rows[len(HW['rows']):]
+    if new:
+        starts, idx, vals, lo, up = [], [], [], [], []
+        for terms, tc, rhs in new:
+            starts.append(len(idx))
+            acc = {}
+            for c, i in terms:
+                acc[i + 1] = acc.get(i + 1, 0) + c
+            if tc:
+                acc[0] = acc.get(0, 0) + tc
+            for j, v in acc.items():
+                if v:
+                    idx.append(j)
+                    vals.append(v)
+            lo.append(-inf)
+            up.append(rhs)
+        h.addRows(len(new), np.array(lo), np.array(up), len(idx), np.array(starts, dtype=np.int32),
+                  np.array(idx, dtype=np.int32), np.array(vals, dtype=np.float64))
+        HW['rows'] = list(rows)
+    h.run()
+    st = h.getModelStatus()
+    assert st == highspy.HighsModelStatus.kOptimal, h.modelStatusToString(st)
+    col = np.array(h.getSolution().col_value)
+    return col[1:], col[0], None
+
+
 def solve(rows):
+    if 'warm' in OPTS and TFIX is None and CENTER is None:
+        return solve_warm(rows)
     """rows: list of (terms[(coef, varindex)], tcoef, rhs) meaning sum coef*x + tcoef*t <= rhs."""
     n = len(VARL) + 1
     from scipy.sparse import csr_matrix
@@ -511,6 +561,23 @@ def main():
         LASTARR.update(C['LASTARR'])
         it = C['it']
         print('resumed from %s at it %d (%d rows)' % (ck, it, len(rows)), flush=True)
+        if 'killed' in OPTS:      # B6: drop rows of arrangements the oracle killed (harvest.py)
+            KA = set()
+            for line in open(os.path.join(HERE, OPTS['killed'])):
+                f = line.split()
+                KA.add((int(f[0]), f[1], f[2]))
+            keep = []
+            for row in rows:
+                terms, tc, rhs = row
+                if tc == -1 and rhs >= 1:
+                    rk = (rhs + 6, tuple(sorted((c, VARL[i]) for c, i in terms)))
+                    arr = LASTARR.get(rk)
+                    if arr and (rk[0], arr[0], arr[1]) in KA:
+                        seen.discard(rk)
+                        continue
+                keep.append(row)
+            print('dropped %d rows of oracle-killed arrangements' % (len(rows) - len(keep)), flush=True)
+            rows[:] = keep
     while True:
         if it and it % 20 == 0:
             import pickle
