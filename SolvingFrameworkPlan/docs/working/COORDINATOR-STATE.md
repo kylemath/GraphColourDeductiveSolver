@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19 Oct 09:04Z: Letter-9 rule adopted (Studio 8682f8ac, test md5 fd1175241aa2…, 823/823 frames match). A 9 in the link or s-word means exactly 9; such names match no LP letter, so they are excluded and logged. A 9 only at the centre of an f9_ name is admitted normally. Frozen parser unchanged.
 - 19 Oct 09:00Z: s22f = 4/25 exactly [E2] on 5fa0adb0 (Studio 14feb53c). st18h 17/107 is also upper-feasible on 5fa0adb0, so the best bound stays 17/107. Letter-9 ruling: in an f-name, a 9 means exactly 9, not ≥9, because the win45 cutter certifies at exact degree. Nothing with a 9 is admitted until Studio's rule note and test md5 land.
 - 19 Oct 08:46Z: Studio admitted r9f: registry 35aeebb8, 962 D / 733 C, dcount 16,002, all checks 0. s22f lower rebuilt VALID at 4/25. Studio's f-name parser fails safe on letter 9; asked Studio to add a spec'd ≥9 reading before the next d=9 row's batch.
 - 19 Oct 08:44Z: Stage 19 oracle (window W: 7 + 5-5-5 face + link 6 with private 5) NULL, kill line (2) hit (fd0d9b9d): lower stays 10/63, upper 197/1240 inside the old gap, binder moves to 7766556. Reason: the face-7's budget all goes to its two face fives via y, so no lemma about the 7's surroundings helps. Stage 19b APPROVED, sender-side oracle: forbid the face fives' worst sender contexts (55667/55669/55767/55769, at most 2 big hats). Kill: no lower move or upper gain < solver noise, or binder shifts with gain < 0.005.
