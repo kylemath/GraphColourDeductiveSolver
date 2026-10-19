@@ -197,3 +197,8 @@ not new to F.
   run. Default glob on 03c34729: **1,897 D / 838 C** (+3 D: f7_5567676_..5..5., f7_5567676_5.5..5.,
   f7_5567676_5.5..56; 0 lost). Drop44 guard 0. Letter-9 rule: 0 excluded. Matcher on the minimal window
   f7_5567676_..5..5.: 63 frames, 0 mismatches. dcount (argsA44_local): **16,937** distinct parsed D (17,271 names), +3.
+- ~11:45Z 19 Oct: explore round 51 r7k, eb40c36f (loop/k47/r7k_kills*: kills of the d=7 face row 8665566/5675665).
+  Files fetched by path, byte-identical. r7k alone: 3 D / 3 C, as explore's run. Default glob on 0125c46b:
+  **1,900 D / 841 C** (+3 D, +3 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Letter-9 rule: 0 excluded.
+  Matcher on the minimal window f7_.556686_....55. (C): 63 frames, 0 mismatches. dcount (argsA44_local): **16,940**
+  distinct parsed D (17,274 names), +3.
