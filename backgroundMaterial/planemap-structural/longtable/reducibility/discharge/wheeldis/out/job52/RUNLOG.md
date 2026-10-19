@@ -25,3 +25,9 @@
   -t 600 limit, all ring 18: a7_u7655..6_675..76, a7_u7..5566_6...676, a7_u76..566_6...676, a7_u765..66_.7...76.
   No two-engine kill.
 - Best leftover: 256 bad classes (0.04 % of classes) at a7_u7655566_675...6 (ring 15), X={I0-I5,I10-I11,R8-I5,R8-I11}.
+- Row 10 addendum (Long Table 16:31Z), 19 Oct 16:33-17:12Z: the 4 ring-18 kc timeouts were run on dfast18
+  (row10_open.py: heavy slots, 30 s poll behind rows 11 and 12, 20 GB floor, 6 h per window). All 4 are
+  **dfast18 D=false**: a7_u76..566_6...676 (1,100 s), a7_u7655..6_675..76 (1,339 s), a7_u765..66_.7...76 (694 s),
+  a7_u7..5566_6...676 (1,049 s). No cfast was run (there is no kc X). dfast18 peaked at about 9.6 GB RSS on ring 18.
+- **Row 10 final: SURVIVES**, with all 255 windows decided: 251 kc "neither" and 4 dfast18 D=false. No two-engine
+  kill. Best leftover 256 (ring 15).
