@@ -80,6 +80,26 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18:31Z 19 Oct: Both d10 binders of the 2/13 bound are dead at ring 13. 6565555665/6665956566 has 22 f-names (11 D, 11 C), both engines (3191ecf2); both sets are with Studio for admission. Opus re-solves once they are admitted. Explore's 3 cores are now on round 53 for the face binder with apex 6-9 (2 h cap). Apex = 5 is fully covered on most face rows; the exception is 7655566/6759676 at 72%.
+- 18:40Z 19 Oct: Borrowed-channel route delivered (dc954db3, BORROWED-CHANNEL-7FACE.md, built from Gonthier's discharge.v because the gatech file returned 403).
+  - Under RSST the 7 also absorbs the face. It clears only because rule 9 passes 0.2 on to its 7-neighbour w0.
+  - Our big-big column self-pairs. The letters that break the tie sit 3 steps out.
+  - Proposed own-family l3q (60 columns) was sent to Opus for pricing against cert_st24bL. Hypothesis: reduced cost -6/13. Kill line: reduced cost >= 0 or gain < 0.005. Control: mask off gives 0.
+  - This is an idea source, not a claim.
+- 18:26Z 19 Oct: Explore results (8d59c29e).
+  - The d10 binder 6565665656/6555555565 dies at ring 13 (97 D windows on two engines, 59 f-names) and is with Studio for admission.
+  - The face binder 7665566/6765766 is reducible whenever the face apex t = 5 (a 5,5,5,6 ring-7 D). With t >= 6 the registry covers about 70%; fillings with all slots >= 7 all survive.
+  - Forwarded to Opus: the s25c face rule only needs to pay when the apex is >= 6.
+  - Round 53 (split and kill) has started.
+- 18:12Z 19 Oct: SEAL AMENDED by Kyle ("Leak info about progress but not technique between competing teams"). Verified bound numbers and binder patterns may pass between the Opus team and Team B. Rule specs, channel designs and lane details stay sealed. Team B's notes in this file stay "details sealed".
+- 18:15Z 19 Oct: Six sprint routes were set (Kyle: "plan sprint routes to jump over obstacles").
+  - Studio: deeper kills.
+  - Explore: split-and-kill by second-ring degrees.
+  - Opus: conditional floor, then a whole-face rule.
+  - Long Table: borrowed channel. This finds which published RSST rule pays the 7 with a 5-5-5 face and recasts it as our own column family for Opus to price. It is an idea source only, per the 18 Oct decision. Output goes to BORROWED-CHANNEL-7FACE.md.
+  - Team B: own-rules race (details sealed).
+  - Long Table: claim glue. This is the Lean module reducibility + Unavoidable R -> 4-colourable, with output to CLAIM-GLUE.md.
+  Long Table started both of its routes as background workers.
 - 18:10Z 19 Oct: FULL PUSH on K=2 before the gate. Kyle (18:08Z): "don't hold back, we've never been closer". The narrow wording is the fallback only.
   - Studio queue reordered so the binders go first: face 7665566 remainder, then 7766556/6576576 remainder, then the d10 ring 17-18 windows.
   - Explore: pre-empts 7766556/6567566 (not a binder) and starts the d10 rows now.
