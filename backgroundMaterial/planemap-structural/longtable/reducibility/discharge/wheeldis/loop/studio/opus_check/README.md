@@ -274,3 +274,17 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   cost is M[76667] = 3/26 >= 0. **PASS.**
 - Checker fix in this run: the first launch died on an IndentationError from my EXPECT_PAT edit (a comment had
   swallowed the fail call). It was fixed and rerun; no result came from the broken launch.
+
+## s19c (t* = 6/35, s12r mode, 09d8ac38 + r_5..r_8; fe4e417f), s12r_check.py, ~03:00Z 19 Oct
+- Args argsA52 + rpatD, with paths mapped, equal argsA44_local with k3x pinned to 09d8ac38 (argsA52_pinned.txt). The
+  10 shipped files are byte-identical. dcount: 15,855 D, identical to Opus's file by file (0 of 229 differ).
+  Spec loader: D 15,855 / C 1,658 / RPAT 158, equal to s19c.log. Log: s19c_check.log. CAP=3000000.
+- Upper:
+  - Bounds clean (max x 0.040). senderR2 7,074 rows, 0 violated (381 g2 keys).
+  - cons2 over 1,424 × 64: 994 with a five, 0 violated (max 1.3e−13); 430 without, 0 violated (max 0).
+  - Receivers d = 7..15 via sep3r_ak, arrangement-keyed, on the apex relaxation. Relaxed reports 201,343 / 50,764 /
+    0 ... 0, all complete and all re-evaluated exactly: 0 violated. The relaxed rows were checked against the spec
+    rows on 786 arrangements first.
+  - DP d = 16..30 clean. Karp λ = 0.523809524, covering d >= 12.240. **FEASIBLE.**
+- Lower: 91 rows rebuilt (14 senderR2, 53 cons2, 18 mrowR2, 6 receiverR2); all 18 mrowR2 in canonical orientation.
+  tco = 1, **D = 6/35**. Nonzero reduced costs: M[7777755] = 1/35, h[76656775] = 2/5, both >= 0. **PASS.**
