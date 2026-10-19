@@ -45,6 +45,13 @@ mism = sorted(n for n in cC if n in kC and not (cX[n] & kC[n]))
 sys.path.insert(0, os.path.join(HERE, 'out', 'job31'))
 from letter9 import lp_reading
 L9 = sorted(n for n in set(okD) | set(okC) if lp_reading(n) == 'unmatchable')
+# sender-context names (centre degree < 7, e.g. explore's p5_ form, Long Table 11:48Z): not receiver patterns; they wait
+# for RELAY_SPEC 17's sender 2-ball filter and are never written to k3x (logged)
+SND = sorted(n for n in set(okD) | set(okC) if int(re.match(r'^[epf](\d+)_', n).group(1)) < 7)
+okD = [n for n in okD if n not in SND]; okC = [n for n in okC if n not in SND]
+if SND:
+    with open(os.path.join(HERE, 'out', 'job30', 'sender_names_held.log'), 'a') as _sf:
+        for n in SND: _sf.write('%s held (two-engine %s; centre degree < 7: sender context, not a receiver pattern)\n' % (n, 'D' if n in dD and n in kD else 'C'))
 okD = [n for n in okD if n not in L9]; okC = [n for n in okC if n not in L9]
 if L9:
     with open(os.path.join(HERE, 'out', 'job30', 'letter9_excluded.log'), 'a') as _lf:
@@ -55,4 +62,5 @@ print('broad (kc -C2) files ignored: %s' % ' '.join(os.path.relpath(f, HERE) for
 print('files %d; D both engines %d (dfast-only %d, kc-only %d); C both engines same X %d (X mismatch %d: %s; one engine only %d)' % (
     len(files), len(okD), len(set(dD) - kD), len(kD - set(dD)), len(okC), len(mism), ' '.join(mism[:5]),
     len(set(cC) ^ set(kC))))
+print('sender-context names held out of k3x: %d (out/job30/sender_names_held.log)' % len(SND))
 print('letter-9 rule: %d two-engine names with a link/s 9 excluded (logged in out/job30/letter9_excluded.log)' % len(L9))

@@ -202,3 +202,8 @@ not new to F.
   **1,900 D / 841 C** (+3 D, +3 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Letter-9 rule: 0 excluded.
   Matcher on the minimal window f7_.556686_....55. (C): 63 frames, 0 mismatches. dcount (argsA44_local): **16,940**
   distinct parsed D (17,274 names), +3.
+- 19 Oct ~11:55Z: twoeng guard for sender-context names (explore's p5_ form, heads-up via Long Table 11:48Z). A
+  two-engine name whose centre degree is < 7 is held out of k3x and logged to out/job30/sender_names_held.log, to wait
+  for RELAY_SPEC 17. Without the guard, a default-glob run would have written p5_ D names into k3x_D.out, and the
+  receiver loader would misread them: the p prefix already means "p-name, 9/0 free", F/N/x are not letters, and d = 5
+  has no receiver. Regression: 1,900 D / 841 C, k3x unchanged.
