@@ -1,0 +1,10 @@
+# s30t T1: sol_st24b (t = 2/13) on 0125c46b with ALL C excluded (D only). Exact counts from jsep3 on the upperR2 work tables
+# (wr30t_u hdr_<d>_m0.txt with K = 1e12, mode 0; mode 1 for MAX). Rows are canonical (SYM=1, up to rotation/reflection).
+d=7  violated 1056572  worst load 1.866710420043 (cap 1.153846) excess 0.712864  9556665/6855557
+d=8  violated  680271  worst load 2.851507491519 (cap 2.153846) excess 0.697661  85655565/57599575
+d=9  violated  483624  worst load 3.826452800766 (cap 3.153846) excess 0.672607  655656565/667555759
+d=10 violated   11356  worst load 4.464984751365 (cap 4.153846) excess 0.311139  6565565565/6666766666
+d=11..17 0; sender rows 0; conservation 0; Karp d0 12.812.  Total 2,231,823 violated receiver rows.
+# Repair sample: 2000 rows (500 random per d=7..10) -> cmatch_sample.txt. 1989/2000 match >= 1 cpat C pattern of argsA59
+# (mostly k3x_C_0125c46b f8/f9/f10 5-6 chains and f7_...5566_/f7_...5565_); 11 match none (repaired by C configs in the
+# kill tables, i.e. RSST C2cons / k3x_C via filt16, or C wheels). None of the 2000 matches the 3 ring-merge names.
