@@ -77,6 +77,20 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   X). 19 are minimal: f9_...556565_....5.... and f9_..5556565_......... (C, ring 12), then 5 at ring 13 and 12 at
   ring 14. Guess (60%) right. Twoeng-ready: `loop/k47/r9f_kills*`. Studio admitted all 168 (08:45Z): registry 35aeebb8, 962 D / 733 C,
   dcount 16,002. (Studio's parser rejects f-names with a 9; win45 and win51 never put a 9 in a window.)
+- **Part 2 re-pointed (pre-registered 09:33Z; Long Table, 09:32Z), before any engine run on the new target.** Opus's
+  stage 19 and 19b oracles (loop/opus/P_own_lp/FINDINGS.md) show that the LP rebuilds 10/63 from whichever members
+  of a face five's context family are left, so a kill counts only if it covers the whole family. The generic ring-17
+  probe below is replaced. Target: the 5-5-5 face at a 7 with w3 = 6, the near hats fixed, and every sibling sender
+  context, as listed by Opus in P_own_lp/s19e/family.json (work from that file; not written yet at 09:33Z).
+  - **Method.** Each member, expanded over its small vertices (5 or 6), big vertices left on the ring. Windows at
+    ring 17-18 (and below), dfast18 + kc for D, cfast + kc -C with conservative X for C. Runs after 655665556 and the
+    four face rows at ring 14.
+  - **Hypothesis:** every family member has a D/C window at ring <= 18. **Kill line:** any member with no D/C window
+    at ring <= 18 means the family survives; stop and report which member. **Cap:** 1 h per member, 8 h in total.
+  - **Letter 9 (adopted 09:32Z):** a 9 in a link or s-word means exactly 9 in a name; names with a 9 are excluded and
+    logged, and Studio is warned before any 9s appear.
+  - **Guess:** the family survives (70%). The 7-centred view of the same faces had no window at ring <= 16, and the
+    members with H0 or the far hats big leave those vertices on the ring, so their windows are weaker still.
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
