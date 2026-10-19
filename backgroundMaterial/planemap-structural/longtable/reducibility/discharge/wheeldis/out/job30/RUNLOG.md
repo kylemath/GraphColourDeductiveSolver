@@ -220,3 +220,9 @@ not new to F.
   **1,979 D / 841 C** (+59 D, exactly the 59 r52j names, 0 lost). Drop44 0, letter-9 0, centre-degree < 7 held 0.
   Matcher (the 5 minimal names): 476 frames, 0 mismatches. dcount (argsA44_local): **17,019** distinct parsed D
   (17,353 names), +59. Frozen wlp3 / sep3r untouched.
+- ~18:50Z 19 Oct: explore's second d10 binder 6565555665/6665956566 kills, 3191ecf2 (loop/k47/r52k_kills*). 5 files
+  fetched by path, byte-identical. Studio re-ran both engines on all 22 f-names (out/job30/r52k/: kc -C -s 60 -t 600;
+  kc D -> out/job52/dfast18; kc X -> cfast --fixed X with leftover 0): 11 D + 11 C, 0 dropped, 0 one-engine, no 9.
+  Default glob on 00ebcd02: **1,990 D / 852 C** (+11 D, +11 C, exactly the 22 r52k names, 0 lost). Drop44 0,
+  letter-9 0, centre-degree < 7 held 0. Matcher (the 4 minimal names): 293 frames, 0 mismatches. dcount
+  (argsA44_local): **17,030** distinct parsed D (17,364 names), +11.
