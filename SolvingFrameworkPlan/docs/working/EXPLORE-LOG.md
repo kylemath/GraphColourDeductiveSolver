@@ -47,8 +47,8 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   run, none D or C, no kc timeouts (best leftover 144 at ring 14, 328 at ring 15, 656 at ring 16); 99 ring-16 windows
   not reached. Its 414 windows left (99 at ring 16, 192 at ring 17, 123 at ring 18) are in
   `loop/k47/win52_7_7766556_6576576_todo.txt`, for Studio. 7766556/6567566 started at 16:39Z.
-- **16:39Z, tally.** Of the 14 rows: 3 dead (Studio rows 1-3), 1 survives to ring 18 (7655566/6759676), 2 undecided
-  with their remainder at Studio (7665566/6765766, 7766556/6576576), 8 running.
+- **16:39Z, tally.** Of the 13 family rows: 3 dead (Studio rows 1-3), 1 survives to ring 18 (7655566/6759676), 2
+  undecided with their remainder at Studio (7665566/6765766, 7766556/6576576), 7 running (6 at Studio, 1 here).
 
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
