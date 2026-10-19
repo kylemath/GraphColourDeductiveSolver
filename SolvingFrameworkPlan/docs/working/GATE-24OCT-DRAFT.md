@@ -1,4 +1,6 @@
-# 24 Oct gate (B8, discharging LP answer): DRAFT, 18 Oct 2026
+# 24 Oct gate (B8, discharging LP answer): FINAL WORDING (option C, Narrow), decided 19 Oct 2026 18:05Z
+
+**Decision (19 Oct 18:04Z):** Kyle handed the wording to the team ("Don't wait on me you decide"). The claim is: K ≤ 1 closed; K = 2 open at t* = 2/13 [E2]. The binding patterns are named: the 7 with three 5s around one face (7665566/6675676 and siblings), and two cases centred on a 10 (6565665656/6555555565, 6565555665/6665956566). Upgrade rule: if K = 2 reaches t* ≤ 0 on both engines and passes the claim rule (second engine or Lean) before 24 Oct, the wording is upgraded then. Otherwise this text stands, with numbers refreshed to the latest [E2] values on the day.
 
 Draft kept by the coordinator and revised as results land. Tags: **[L]** proved in Lean, **[E2]** two independent
 engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative to `longtable/reducibility/discharge/`.
@@ -9,7 +11,7 @@ engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative
 neighbour is in the reducible set R, so the forbidden-pattern LP has t* ≤ 0 on that case. This rests on Lean for 46
 of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. All 2,855 smaller keys are Lean-checked (Job 24b, 34f14406). **K = 2: open.**
 The best LP bound is t* = 2/13 ≈ 0.1538 exactly (need ≤ 0) [E2 upper and lower, the same configuration with conservation over all 1,424 types, registry 0125c46b, Opus 20ee527a + Studio c905eae0; the drop is from registry kills alone], with 16/101 ≈ 0.1584 [E2, closed] in the 6-centred relay class with the §14′ filter plus the §15 five→big-hat channel on registry 5fa0adb0, with 17/107 [E2 upper] on 880d25c6, with 65/406 [E2 upper] without the hat channel on 880d25c6 and exactly 4/25 [E2, upper = lower] without it on 5fa0adb0, with 8/47 [E2] without the filter, with 9/52 [E2] in the 6-relay class and 1/5 [E2] without a relay; down from 7/27, 1/4, 5/21, 11/47, 2/9 19/102 on 18 Oct, 23/134, 6/35 and 8/47 early 19 Oct once kills outside the old binding pattern
-were allowed into the LP. What binds now is one family: a 7 whose link carries a 5-5-5 face (7665566, 7766556 and siblings). Under every rule shape tried on 19 Oct (stages 17–23: face pool, five→hat, oracle lemmas on the 7 and on the face fives, exact hat letters, face re-basing, reverse hat, sender registry filter) the 7 pays the whole face deficit and t* stays at 16/101. Neither the published 8,200-config set nor our engines to ring 16 kill the surviving rows (explore r51, fam51 e367efab).
+were allowed into the LP. What binds now is a 7 whose link carries a 5-5-5 face (7665566, 7766556 and siblings), together with two d=10 rows (6565665656/6555555565 and 6565555665/6665956566, 0.038 each at 2/13). Under every rule shape tried on 19 Oct (stages 17–23: face pool, five→hat, oracle lemmas on the 7 and on the face fives, exact hat letters, face re-basing, reverse hat, sender registry filter) the 7 pays the whole face deficit and t* stays at 16/101. Neither the published 8,200-config set nor our engines to ring 16 kill the surviving rows (explore r51, fam51 e367efab).
 
 ## K ≤ 1 evidence
 
@@ -80,4 +82,4 @@ cfast agree that R16, R17a and R17b (rings 16–17) are neither D nor C. No D wi
 - [ ] Explore round 34+: ring 17–18 kc sweep on binders; any re-solved t*.
 - [ ] k19 Lean (22–25 Oct): upgrade [E2] → [L] if it lands.
 - [x] Job 26 status (18 Oct 09:05Z): multi-pinch proved; only (iii) left.
-- [x] Recommendation line (draft, 19 Oct 12:45Z): **go with C (Narrow) for 24 Oct**: K ≤ 1 closed ([L] except k19 [E2]); K = 2 open at t* = 2/13 [E2], with the obstruction named as the 7 with a 5-5-5 face. After the gate, keep two lanes on K = 2: ring 17–18 reducibility on the surviving face receivers, and a new rule structure keyed on a 7's whole second neighbourhood (design first; it must show a negatively priced column on the current certificate before any solve). Kyle decides.
+- [x] Recommendation line (19 Oct 12:45Z; ADOPTED 19 Oct 18:05Z, Kyle delegated): **go with C (Narrow) for 24 Oct**: K ≤ 1 closed ([L] except k19 [E2]); K = 2 open at t* = 2/13 [E2], with the obstruction named as the 7 with a 5-5-5 face. After the gate, keep two lanes on K = 2: ring 17–18 reducibility on the surviving face receivers, and a new rule structure keyed on a 7's whole second neighbourhood (design first; it must show a negatively priced column on the current certificate before any solve). Kyle decides.
