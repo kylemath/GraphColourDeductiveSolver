@@ -65,7 +65,7 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   windows at ring 14-16 give 20 distinct f-names (mirror pairs), and one inclusion-minimal f-name,
   f8_..556855_..5.566. (ring 14, m = 11). twoeng passes all 20 as D on both engines. They are in
   `loop/k47/s52r3_kills*` (from `loop/k47/minkill52.py`, minkill47 reading a Studio row folder) and go to Studio
-  for admission.
+  for admission. Admitted 17:21Z (registry ffa42f2d: 1,920 D / 841 C, +20 D, guards 0).
 
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
