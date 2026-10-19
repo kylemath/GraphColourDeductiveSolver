@@ -46,6 +46,23 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   (d = 8 76566656 and the two new d = 9 rows) keep the ring-16 kill line and run first. Part 2 follows as the one
   pattern-side test left for the face family. Order: 7765566 (ring 14, running), 76566656, 765556565, 655665556, then
   the face rows, then part 2 (`loop/k47/rows51.txt`).
+- **Part 3 (pre-registered 07:09Z, Long Table 07:08Z; result 07:25Z): the published set D of Inoue, Kawarabayashi,
+  Miyashita, Mohar, Thomassen, Thorup (arXiv:2603.24880).** Published configurations are allowed as registry patterns
+  once our two engines verify them; their rules are not. Hypothesis: some configuration in D is reducible on our
+  engines and contains a face-family row, so it kills the family. Kill line: no candidate matches the family, or none
+  survives twoeng. Guess: no row match, since our own ring <= 16 windows of these rows were never reducible.
+  - Fetched by git from github.com/near-linear-4ct/reducible-configurations (MIT, HEAD c2ce7a96). It has 8200 .conf
+    files, not 8202: the README says the set is D minus the degree-3 and degree-4 vertices. Rings 6-18 (69 at ring
+    17, 15 at ring 18). All 8200 rings are free-completion cycles. 7040 have every degree <= 8, and 955 contain a
+    7-5-5 / 5-5-5 kite. As kc lines: `loop/k51/nl51_kc.txt`.
+  - `loop/k51/nl51.py` uses round 44's containment. **No configuration in D appears in the 1.5-ball of any face row**
+    (7665566/6675666, 7655666/6756666, 7655667/6756656; reflections are included because all images are matched).
+    **Kill line met: no candidate matches the family, so there was nothing to run on the engines.** Guess right.
+  - One ring out (each row's 2-ball, privates 5..9): for 7665566 and 7655666, D covers exactly the cases our
+    registry already covers (12,553 of 15,625; with no private 5, 1,024 of 4,096). For 7655667 (7 privates), D adds
+    576 cases (registry 64,877 of 78,125, with D 65,453), all with a private 5. The no-5 cases stay at 7,168 of
+    16,384. So D does not reach the big-privates survivors either. `loop/k51/nl51_hits.txt` lists D's requirements.
+  - The d = 8 sweep (76566656) was paused 07:10-07:16Z for this and then resumed.
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
