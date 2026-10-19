@@ -403,3 +403,10 @@ our agent R and have no output from it.
   - Lower VALID: cert_s21fL.json, unpenalised LP over the same rows.
 - Gap 9.9e-5, not closed. The bound that counts is the upper one: t* <= 65/406. Studio check pending.
 - Cert binders: d7 7665566/6765766 (0.144), d7 7676556/7759565, d9 655566556/759556565, d10 6556655556/6665669665.
+
+## Stage 17: face pool (5→5 across a 5-5-5 face, flag face5), argsA52, 19 Oct ~07:00Z. KILLED (null)
+- t* = 6/37 exactly, with lower VALID (cert_st17fL, 177 rows). The upper bound carries over from sol_st16ap2 (the rule class contains the old one). The LP uses the rule (28 transfers positive) and gains nothing.
+- Filter-off regression check passes: reproduces 6/35.
+- Kill line hit: binder 7665566/6675666 and 7655667/6756656 stay tight (slack 0).
+- Why it fails: moving charge among the three fives cannot help, because the ring around the face holds the same big vertices whichever five is paid. Any fix needs charge from outside that ring.
+- Files: P_own_lp/s17d/.

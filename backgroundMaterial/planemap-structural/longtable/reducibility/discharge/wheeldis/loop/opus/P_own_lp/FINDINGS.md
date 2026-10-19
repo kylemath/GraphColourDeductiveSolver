@@ -520,3 +520,40 @@ Not read: Studio's Job 31 spec.
   - 24 cert rows use masked (filtered) signatures.
 - s17_struct.txt (blind) is written.
 - Engine: snap/st16ap2, md5s in snap/st16ap2_md5.txt (outputs appended). Commands: cmd_st16ap.sh.
+
+## Stage 17 pre-registration (05:30Z, before any solve): face pool F5 on 5-5-5 faces (flag `face5`), run st17f on s19/argsA52.txt over st16ap2
+- **Why this class.** Long Table (round 51): the irreducible d = 7 family is "a 7 carrying a 5-5-5 face". The st16ap2L cert agrees. Of its 9 receivers, 7 contain two consecutive link fives w_i, w_{i+1} with apex s_i = 5: 7766556/6576576, 7676556/7756595, 9 655665556/756567565, 7665566/6765766, 7765556/6575966, 7665556/6675966 and 7766556/6566576. Only 7665666/6566655 and 7766566/6556655 lack one. 9 of its 13 sender rows (55669, 55667 x5, 55767 x3, 55759, 55769) are fives on such a face, since the word has two adjacent 5s. Every existing transfer is vertex-to-vertex and keyed on one vertex's 2-ball. So a face five whose own outside neighbours are poor (e.g. 55667 with small hats) cannot use a face-mate that has a big outside neighbour.
+- **Rule F5 (five -> five across a 5-5-5 face).** Let F = (a, b, c) be a face of three fives. Around F lies a 6-ring: e_ab (the third vertex of the other face on edge ab), and likewise e_bc and e_ca; k_a (a's one outside neighbour adjacent to neither b nor c), and likewise k_b and k_c. Five a sends to its face-mate b the amount f[K] >= 0, where
+  `K(a->b) = (e_ab exact letter, c2(k_a), c2(e_ca), c2(k_b), c2(e_bc), c2(k_c))`. c2 is small {5,6} = 0 / big = 1.
+  - Both ends read K exactly. a's link is (b, e_ab, k_a, e_ca, c); its hats include k_b, e_bc and k_c. b's link is (a, e_ab, k_b, e_bc, c); its hats include k_a, e_ca and k_c. e_ab is a link letter at both ends; every other entry is a class, and each is either a link letter or a hat at each end.
+  - The roles are defined by adjacency, not by orientation, so K is invariant under reflection.
+  - One f per (directed face edge, face). A five on two 5-5-5 faces has a separate exchange on each.
+- **Rows.** Only senderR2 changes. For a five v with word w, each consecutive pair of 5-spokes (k, k+1) gives a face. For that face, v's row gains `+ f[K(b->v)] + f[K(c->v)] - f[K(v->b)] - f[K(v->c)]`, with b = w_k and c = w_{k+1}. The row becomes `t + sum y + sum g2 + sum f_in - sum f_out >= 1`.
+  - The hats enumerated are extended to H[k-1], H[k] and H[k+1], each as a small/big class, as for 6-spokes.
+  - New admissibility (sound, restriction only): drop an assignment if, for a face-mate b = w_k, every completion of b's link (5, w_{k-1}, H[k-1], H[k], w_{k+1}) by letters in the hat classes is R5.
+  - Receivers, cons2, mrowR2, mrowV, the separator and the tail are unchanged, because fives are not receivers.
+- **Why it is sound.** In G every transfer is credited to b and debited from a with the same key, computed from b's view and a's view respectively. So the total charge is conserved without a new conservation row. Every five of G sits in one enumerated sender row, because the enumeration is exhaustive over admissible classes and the dropped assignments are R5 at a face-mate. **upperR2 checks this.** Its sender step enumerates the same rows (R2_sender_rows), now with the f terms read from the sol file's new field `f`. Every assignment must satisfy LHS >= 1 - t - EPS. Conservation (1,424 x 5^6), d = 7..17 exhaustive, and the tail are re-run unchanged. lowerR2 prices f through the generic ledger, so every f column needs reduced cost >= 0. With f = 0 and the flag off, the class is st16ap2's, so t*(st17f) <= 6/37 apart from the mate filter, which only shrinks the class.
+- **Kill line (verbatim): "the rule fails if any 5-5-5-face 7 row stays tight at the optimum"**. It is checked with rowR2 at sol_st17f (slack) and cert_st17f (dual) on:
+  - the binder 7665566/6675666;
+  - 7655666/6756666;
+  - 7655667/6756656;
+  - every d = 7 receiver row in the final LP that has a 5-5-5 face (consecutive link fives with apex 5).
+- **Progress:** t* < 6/37 = 0.162162 with LOWER-R2 VALID and UPPER-R2 FEASIBLE, both from the s17d engine. An LP value without both checks, or without convergence, is not a bound.
+- **Validation:** the s17d engine with `face5` off must reproduce, on argsA52, the filter-off baseline st16b0: lower VALID 6/35 on cert_st16b0.json, and upper FEASIBLE on sol_st16b0.json.
+- **Engine:** P_own_lp/s17d/ (prelay2.py is a copy of top-level 4f400216 plus face5; backup s17d/prelay2_st16ap2_backup.py).
+
+## Stage 17 result (07:05Z): **face pool F5 is null on argsA52. t* = 6/37, and the kill line is met**
+- **Validation (face5 off, s17d engine):** cert_st16b0.json gives LOWER-R2 VALID 6/35 (185 rows). sol_st16b0.json gives UPPER-R2 FEASIBLE at 6/35 (conservation worst 8.8e-14, d = 7..17 exhaustive with 0 violated). Logs: s17d/val_off_*.log. No regression.
+- **face5 orientation and physical test:** over 95,622 random 5-5-5 faces, the f terms of the three fives' own views sum to 0, with 0 mismatches. A mutated key gives 57,406 mismatches, so the test bites. With face5 there are 7,830 sender rows (7,074 without).
+- **Solve.**
+  - Run 1 (st17f, keeppen) was stopped after iteration 0. Its LP over the warm rows alone already gave t = 6/37.
+  - The exact unpenalised LP over the same rows (st17fL, nosep) gives **LOWER-R2 VALID t >= 6/37 (177 rows)** with face5 on. 28 f columns are positive in that LP, so the rule is used but buys nothing.
+  - The face5 class contains st16ap2's class, and the mate filter only shrinks it. So st16ap2's primal (f = 0, UPPER FEASIBLE at 6/37) is feasible for it, and **t*(F5) = 6/37 exactly**. That is not progress.
+- **Kill line ("the rule fails if any 5-5-5-face 7 row stays tight at the optimum"): MET.** rowR2 at sol_st17fL / cert_st17fL gives:
+  - binder 7665566/6675666: slack 0, dual 0;
+  - 7655666/6756666: slack 0.081, dual 0;
+  - 7655667/6756656: slack 0, dual 0;
+  - 7766556/6576576: slack 0, dual 0.054.
+  - 8 of the cert's 10 receivers carry a 5-5-5 face: 7766556/6567566, 7676556/7756595, 7766556/6576576, 9 655665556/756567565, 7765556/6575966, 7665556/6675966, 7665566/6665766 and 7665566/6765766. The two without one are 7665666/6566655 and 7766566/6556655.
+  - The binding senders are the same face fives as in st16ap2: 55669, 55667 x4, 55767 x3, 55759, 55769; also 57669 and 66667.
+- Reading: pooling among the three fives of the face cannot help, because the face's 6-ring has the same bigs (u and the 7 across the other face edge) whichever five is paid. The deficit is the face's, not a single five's. Files: s17d/{prelay2.py, cmd_st17f.sh, cmd_st17fL.sh, st17f_run1.log, st17fL.log, lower_st17fL.log, kill_st17fL.log, sol_st17fL.json, cert_st17fL.json, engine_md5.txt}.
