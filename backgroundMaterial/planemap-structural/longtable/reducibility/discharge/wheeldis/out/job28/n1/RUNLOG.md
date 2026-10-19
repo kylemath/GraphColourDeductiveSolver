@@ -52,3 +52,6 @@ least progress.
   governor failure is small.
   - ETA: the total is 110–165 CPU-h (20–30× dfast18's 5.48 h), so 102–157 CPU-h remain. At 98% that is about
     22 Oct 11:00 MDT to 24 Oct 19:00 MDT. The upper end still sits on the 24 Oct gate, as before.
+- 19 Oct ~01:55Z: Job 24b DONE (2,855 keys, all clean; 34f14406). w17L_3 (f7_.556857_.56.86.) and w17L_4
+  (f7_.556857_.56.B8.) requeued with requeue34.sh: 8 h cap, nice 20, one core each; same hypothesis and kill lines as
+  the table above. w17L_5 had already finished its restart (neither, 18 Oct 14:22).
