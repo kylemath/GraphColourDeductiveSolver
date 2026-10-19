@@ -442,10 +442,12 @@ def studio_val(d, lk, sv):
 def xk(rr): return collections.Counter({k[1]: cf for k, cf in rr.items() if k[0] == 'x'})
 tests = [(e['row'][1], e['row'][2], e['row'][3]) for e in CERT if e['row'][0] == 'receiverR2']
 _devs = []
-for d in range(7, DMAXP + 1):
+CALD = min(DMAXP, int(os.environ.get('CALD', str(DMAXP))))   # calibration degrees (a validation step only)
+for d in range(7, CALD + 1):
     _o = sepx(d, yv, xv, -1e9, 20); tests += [(d, lk, sv) for _, lk, sv in _o]
     _devs += [abs(wq - spec_val(d, lk, sv)) for wq, lk, sv in _o]
-print('sep3r_ak exact leaf weights vs spec rows on the heaviest 20 per d (d = 7..%d): %d compared, max |difference| %.3g' % (DMAXP, len(_devs), max(_devs + [0.0])), flush=True)
+    print('  calibration d=%d: %d heaviest compared' % (d, len(_o)), flush=True)
+print('sep3r_ak exact leaf weights vs spec rows on the heaviest 20 per d (d = 7..%d): %d compared, max |difference| %.3g' % (CALD, len(_devs), max(_devs + [0.0])), flush=True)
 if max(_devs + [0.0]) > 1e-9: fail('sep3r_ak exact leaf weights differ from the spec rows')
 random.seed(7)
 for d in (7, 8, 9, 10):
