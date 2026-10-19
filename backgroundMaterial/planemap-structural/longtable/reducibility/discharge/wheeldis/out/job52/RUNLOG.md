@@ -37,3 +37,14 @@
   lowest are a8_u.558655._.665.5.., a8_u.558655._.66565.., a8_u855..556_66...5.5 and a8_u855..556_66...565 (ring 14).
 - All 2,464 ring <= 16 windows run (40 kc D, 2,424 neither). After the first kill, 812 ring 17-18 windows were skipped.
 - Files: row_8_85586556_66656565/kills.txt, results.txt, STATUS, and the kill windows' kc / dfast18 outputs.
+
+## Long Table 18:09Z reorder: K=2 push on the 2/13 binders (rows 11 and 12 first)
+- Rows 1 and 2 finalised (f-name collection wrapped up at a clean point, about 18:12Z; runners and engine children
+  TERMed after their last completed window):
+  - Row 1, 8 86555665/56586665: **KILLED**. 415 two-engine kills (284 D, 131 C) at rings 11-16; 2,398 of 2,655
+    ring <= 16 windows run (257 not run), 247 ring 17-18 skipped.
+  - Row 2, 8 86555665/56576665: **KILLED**. 489 kills (400 D, 89 C) at rings 11-16; 2,619 of 2,738 ring <= 16 run
+    (119 not run), 185 ring 17-18 skipped.
+- Rows 4-9 paused with SIGSTOP on each runner and its engine chain (12 processes, state T, 0 % CPU; PIDs in
+  paused_pids.txt). The in-flight engines' wall alarms will fire on resume, so the plan is to relaunch fresh runners
+  (completed windows are skipped). Paused time counts against nothing.
