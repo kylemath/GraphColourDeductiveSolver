@@ -970,17 +970,35 @@ f9_...555665_.....5... r=12 m=8 classes=22144 ext=3234 reached=14756 bad=7388 D=
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...555665_.....5.6. r=13 m=9 classes=66430 ext=8257 reached=43982 bad=22448 D=false depth=10 (2.9s)
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_.....6... r=13 m=8 classes=66430 ext=6787 reached=37870 bad=28560 D=false depth=25 (3.3s)
+  fixed X={I0-I4,I4-I7,R6-I4} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_.....6.6. r=14 m=9 classes=199291 ext=17279 reached=113301 bad=85990 D=false depth=25 (16.8s)
+  fixed X={I0-I4,I4-I7,R7-I4} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...555665_....57... r=13 m=9 classes=66430 ext=7507 reached=39927 bad=26503 D=false depth=19 (3.2s)
-  fixed X={I0-I6,I6-I8,R9-I6} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_...555665_....57.6. r=14 m=10 classes=199291 ext=19116 reached=119522 bad=79769 D=false depth=19 (14.7s)
-  fixed X={I0-I6,I6-I9,R9-I6} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  fixed X={I0-I1,I1-I7,R6-I1} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_....57.6. r=14 m=10 classes=199291 ext=19116 reached=119522 bad=79769 D=false depth=19 (15.1s)
+  fixed X={I0-I1,I1-I7,R7-I1} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...555665_...5.5... r=12 m=9 classes=22144 ext=3627 reached=15519 bad=6625 D=false depth=9 (0.5s)
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...555665_...5.5.6. r=13 m=10 classes=66430 ext=9252 reached=46270 bad=20160 D=false depth=9 (2.3s)
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_...5.6... r=13 m=9 classes=66430 ext=7676 reached=39248 bad=27182 D=false depth=20 (2.5s)
+  fixed X={I0-I4,I4-I8,R6-I4} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_...5.6.6. r=14 m=10 classes=199291 ext=19526 reached=117322 bad=81969 D=false depth=20 (13.3s)
+  fixed X={I0-I4,I4-I8,R7-I4} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_...576... r=13 m=10 classes=66430 ext=9357 reached=59059 bad=7371 D=false depth=8 (2.2s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_...576.6. r=14 m=11 classes=199291 ext=23751 reached=177997 bad=21294 D=false depth=8 (10.9s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_...757... r=14 m=10 classes=199291 ext=18920 reached=122277 bad=77014 D=false depth=19 (13.4s)
+  fixed X={I0-I1,I1-I7,R6-I1} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...555665_..5.57... r=14 m=10 classes=199291 ext=18289 reached=121953 bad=77338 D=false depth=19 (15.9s)
   fixed X={I0-I6,I6-I9,R10-I6} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_...555665_..75..5.. r=14 m=10 classes=199291 ext=18728 reached=125481 bad=73810 D=false depth=9 (11.1s)
+f9_...555665_..6...5.. r=14 m=9 classes=199291 ext=16812 reached=125481 bad=73810 D=false depth=10 (10.4s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_..6.5.5.. r=14 m=10 classes=199291 ext=18812 reached=125481 bad=73810 D=false depth=8 (8.7s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...555665_..75..5.. r=14 m=10 classes=199291 ext=18728 reached=125481 bad=73810 D=false depth=9 (8.9s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...555665_..75.5... r=14 m=10 classes=199291 ext=18513 reached=88143 bad=111148 D=false depth=9 (10.9s)
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
@@ -1015,14 +1033,18 @@ f9_...556565_....56.6. r=14 m=10 classes=199291 ext=20881 reached=114417 bad=848
 f9_...556655_......5.. r=12 m=8 classes=22144 ext=3235 reached=14954 bad=7190 D=false depth=15 (0.6s)
   fixed X={I3-I4} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556655_.....5... r=12 m=8 classes=22144 ext=3258 reached=19191 bad=2953 D=false depth=13 (0.5s)
-  fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  fixed X={I1-I2,I5-I6} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556655_.....5..6 r=14 m=9 classes=199291 ext=16714 reached=107933 bad=91358 D=false depth=13 (11.6s)
   fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556655_.....5.6. r=13 m=9 classes=66430 ext=8274 reached=57909 bad=8521 D=false depth=13 (3.2s)
   fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556655_.....5.66 r=14 m=10 classes=199291 ext=20982 reached=174085 bad=25206 D=false depth=14 (13.7s)
   fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_...556655_.....56.. r=13 m=9 classes=66430 ext=8255 reached=56969 bad=9461 D=false depth=13 (2.9s)
+f9_...556655_.....5.7. r=14 m=9 classes=199291 ext=16615 reached=108541 bad=90750 D=false depth=13 (12.5s)
+  fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_.....56.. r=13 m=9 classes=66430 ext=8255 reached=56969 bad=9461 D=false depth=13 (3.1s)
+  fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_.....567. r=14 m=10 classes=199291 ext=20857 reached=169729 bad=29562 D=false depth=13 (15.6s)
   fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556655_....5...6 r=14 m=9 classes=199291 ext=16592 reached=84369 bad=114922 D=false depth=15 (11.1s)
   fixed X={I3-I4} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
@@ -1034,8 +1056,22 @@ f9_...556655_....5.6.. r=13 m=9 classes=66430 ext=8210 reached=44378 bad=22052 D
   fixed X={I3-I4} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556655_....55..6 r=14 m=10 classes=199291 ext=19977 reached=125481 bad=73810 D=false depth=8 (10.0s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_...5...5. r=12 m=9 classes=22144 ext=3209 reached=15633 bad=6511 D=false depth=16 (0.4s)
+  fixed X={I0-I1,I2-I3,R7-I1,R9-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_...5...56 r=13 m=10 classes=66430 ext=7939 reached=47855 bad=18575 D=false depth=17 (2.6s)
+  fixed X={I0-I1,I2-I3,R8-I1,R10-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_...5..75. r=13 m=10 classes=66430 ext=8142 reached=47626 bad=18804 D=false depth=16 (3.2s)
+  fixed X={I0-I1,I1-I7,R7-I1} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556655_...5.5..6 r=14 m=10 classes=199291 ext=18368 reached=125481 bad=73810 D=false depth=11 (9.1s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_...5.5.7. r=14 m=10 classes=199291 ext=18273 reached=125481 bad=73810 D=false depth=11 (9.8s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_...56..7. r=14 m=10 classes=199291 ext=18063 reached=125481 bad=73810 D=false depth=9 (11.0s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_...565.7. r=14 m=11 classes=199291 ext=22156 reached=125481 bad=73810 D=false depth=6 (9.3s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...556655_...57..56 r=14 m=11 classes=199291 ext=20134 reached=145553 bad=53738 D=false depth=17 (12.9s)
+  fixed X={I0-I1,I1-I7,R8-I1} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...556665_...5.5... r=13 m=9 classes=66430 ext=7560 reached=43363 bad=23067 D=false depth=16 (1.4s)
   fixed X={I1-I2} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...557565_...56.... r=13 m=9 classes=66430 ext=7562 reached=40176 bad=26254 D=false depth=22 (1.5s)
@@ -1174,10 +1210,16 @@ f9_...565765_.....55.. r=14 m=9 classes=199291 ext=17010 reached=110073 bad=8921
   fixed X={I0-I6} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...565765_....5.5.. r=14 m=9 classes=199291 ext=17038 reached=158299 bad=40992 D=false depth=21 (9.8s)
   fixed X={I0-I2} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...566556_.....656. r=13 m=10 classes=66430 ext=8978 reached=59059 bad=7371 D=false depth=8 (2.4s)
+  fixed X={I0-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...566556_.....6565 r=14 m=11 classes=199291 ext=22309 reached=177137 bad=22154 D=false depth=9 (11.0s)
+  fixed X={I0-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...566556_.....666. r=14 m=10 classes=199291 ext=21635 reached=177137 bad=22154 D=false depth=10 (12.7s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...566556_...5..66. r=14 m=10 classes=199291 ext=21559 reached=140792 bad=58499 D=false depth=11 (12.6s)
   fixed X={I4-I5} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...566556_...6.656. r=14 m=11 classes=199291 ext=22737 reached=177997 bad=21294 D=false depth=8 (12.0s)
+  fixed X={I0-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...566566_.....555. r=13 m=10 classes=66430 ext=8937 reached=59059 bad=7371 D=false depth=9 (1.4s)
   fixed X={I0-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...566566_.....5555 r=14 m=11 classes=199291 ext=21931 reached=177137 bad=22154 D=false depth=10 (7.4s)
@@ -1204,6 +1246,8 @@ f9_...656566_...5...5. r=14 m=9 classes=199291 ext=17701 reached=107728 bad=9156
   fixed X={I0-I3,I1-I2,R1-I1,R7-I3} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_...656656_...5...5. r=14 m=9 classes=199291 ext=17599 reached=123990 bad=75301 D=false depth=27 (9.1s)
   fixed X={I0-I5,I1-I2,R10-I1,R8-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_...665566_...5.5.5. r=14 m=10 classes=199291 ext=19072 reached=118601 bad=80690 D=false depth=15 (12.1s)
+  fixed X={I0-I4} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5556565_......... r=12 m=8 classes=22144 ext=3261 reached=17986 bad=4158 D=false depth=11 (0.5s)
   fixed X={I0-I5} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5556565_........5 r=13 m=9 classes=66430 ext=8054 reached=52878 bad=13552 D=false depth=12 (2.6s)
@@ -1288,9 +1332,41 @@ f9_..5556655_..5.5...6 r=14 m=11 classes=199291 ext=22536 reached=125481 bad=738
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5556655_..5.55..6 r=14 m=12 classes=199291 ext=26927 reached=125481 bad=73810 D=false depth=5 (8.2s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_..5556655_.75...... r=14 m=10 classes=199291 ext=18704 reached=125481 bad=73810 D=false depth=10 (12.4s)
+f9_..5556655_.6....... r=14 m=9 classes=199291 ext=16850 reached=125481 bad=73810 D=false depth=12 (10.6s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_..5556655_.75..5... r=14 m=11 classes=199291 ext=22721 reached=125481 bad=73810 D=false depth=7 (11.6s)
+f9_..5556655_.6.....5. r=14 m=10 classes=199291 ext=18383 reached=125481 bad=73810 D=false depth=10 (8.9s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6....65. r=14 m=11 classes=199291 ext=22125 reached=125481 bad=73810 D=false depth=6 (7.9s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6...5... r=14 m=10 classes=199291 ext=20514 reached=125481 bad=73810 D=false depth=8 (8.7s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6...5.5. r=14 m=11 classes=199291 ext=22432 reached=125481 bad=73810 D=false depth=8 (9.4s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6...565. r=14 m=12 classes=199291 ext=26991 reached=125481 bad=73810 D=false depth=5 (8.6s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6.5..... r=14 m=10 classes=199291 ext=18731 reached=125481 bad=73810 D=false depth=9 (8.4s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6.5...5. r=14 m=11 classes=199291 ext=20459 reached=125481 bad=73810 D=false depth=9 (9.8s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6.5..65. r=14 m=12 classes=199291 ext=24577 reached=125481 bad=73810 D=false depth=5 (7.9s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6.5.5... r=14 m=11 classes=199291 ext=22828 reached=125481 bad=73810 D=false depth=7 (8.5s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6.5.5.5. r=14 m=12 classes=199291 ext=24961 reached=125481 bad=73810 D=false depth=6 (7.8s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.6.5.565. r=14 m=13 classes=199291 ext=29959 reached=125481 bad=73810 D=false depth=4 (7.1s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.75...... r=14 m=10 classes=199291 ext=18704 reached=125481 bad=73810 D=false depth=10 (9.9s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.75....5. r=14 m=11 classes=199291 ext=20426 reached=125481 bad=73810 D=false depth=8 (9.1s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.75...65. r=14 m=12 classes=199291 ext=24546 reached=125481 bad=73810 D=false depth=6 (7.5s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.75..5... r=14 m=11 classes=199291 ext=22721 reached=125481 bad=73810 D=false depth=7 (8.6s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.75..5.5. r=14 m=12 classes=199291 ext=24851 reached=125481 bad=73810 D=false depth=7 (7.8s)
+  fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5556655_.75..565. r=14 m=13 classes=199291 ext=29839 reached=125481 bad=73810 D=false depth=4 (7.3s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5556655_.75.5.... r=14 m=11 classes=199291 ext=22419 reached=125481 bad=73810 D=false depth=7 (11.9s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
@@ -1304,10 +1380,10 @@ f9_..5565657_...5...5. r=14 m=10 classes=199291 ext=20136 reached=116647 bad=826
   fixed X={I0-I5} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5565675_......5.. r=14 m=9 classes=199291 ext=17321 reached=168845 bad=30446 D=false depth=20 (10.0s)
   fixed X={I0-I1,I0-I5,I1-I8,R4-I5} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_..5566556_....5.... r=13 m=9 classes=66430 ext=8297 reached=57909 bad=8521 D=false depth=13 (2.7s)
-  fixed X={I1-I2,I6-I7} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5566556_....5.... r=13 m=9 classes=66430 ext=8297 reached=57909 bad=8521 D=false depth=13 (3.2s)
+  fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5566556_....5...5 r=14 m=10 classes=199291 ext=20579 reached=174380 bad=24911 D=false depth=14 (13.0s)
-  fixed X={I1-I2,I6-I7} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+  fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5566556_....5..6. r=14 m=10 classes=199291 ext=21053 reached=174085 bad=25206 D=false depth=14 (12.9s)
   fixed X={I1-I2,I6-I7} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5566556_....5.6.. r=14 m=10 classes=199291 ext=21031 reached=174827 bad=24464 D=false depth=13 (13.1s)
@@ -1324,6 +1400,14 @@ f9_..5566556_...5..6.. r=14 m=10 classes=199291 ext=20914 reached=134135 bad=651
   fixed X={I4-I5} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5566556_...5.6... r=14 m=10 classes=199291 ext=20835 reached=134307 bad=64984 D=false depth=15 (13.9s)
   fixed X={I4-I5} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5566556_...65.... r=14 m=10 classes=199291 ext=20991 reached=172093 bad=27198 D=false depth=13 (16.0s)
+  fixed X={I2-I3,I4-I5} (2 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5566556_..5...5.. r=13 m=10 classes=66430 ext=8101 reached=46980 bad=19450 D=false depth=16 (2.7s)
+  fixed X={I0-I1,I2-I3,R8-I1,R10-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5566556_..5...5.5 r=14 m=11 classes=199291 ext=20166 reached=140887 bad=58404 D=false depth=17 (13.4s)
+  fixed X={I0-I1,I2-I3,R9-I1,R11-I2} (4 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5566556_..57..5.. r=14 m=11 classes=199291 ext=20555 reached=143055 bad=56236 D=false depth=16 (12.2s)
+  fixed X={I0-I1,I1-I8,R8-I1} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5567565_....55... r=14 m=10 classes=199291 ext=20650 reached=173101 bad=26190 D=false depth=14 (15.0s)
   fixed X={I0-I7} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5655665_......... r=13 m=8 classes=66430 ext=6874 reached=44782 bad=21648 D=false depth=20 (1.9s)
@@ -1446,14 +1530,26 @@ f9_..5665556_....5.5.5 r=14 m=11 classes=199291 ext=22784 reached=138375 bad=609
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5665556_....5.57. r=14 m=11 classes=199291 ext=23138 reached=138511 bad=60780 D=false depth=9 (12.7s)
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_..5665556_....75... r=14 m=10 classes=199291 ext=19193 reached=120477 bad=78814 D=false depth=19 (14.6s)
-  fixed X={I0-I7,I7-I9,R10-I7} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665556_....6.... r=14 m=9 classes=199291 ext=17362 reached=115030 bad=84261 D=false depth=26 (16.3s)
+  fixed X={I0-I5,I5-I8,R10-I5} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665556_....6.5.. r=14 m=10 classes=199291 ext=19444 reached=118554 bad=80737 D=false depth=20 (14.6s)
+  fixed X={I0-I5,I5-I9,R10-I5} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665556_....675.. r=14 m=11 classes=199291 ext=23623 reached=174721 bad=24570 D=false depth=8 (12.1s)
+  fixed X={I0-I2} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665556_....75... r=14 m=10 classes=199291 ext=19193 reached=120477 bad=78814 D=false depth=19 (15.0s)
+  fixed X={I0-I1,I1-I8,R5-I1} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5665556_..6.5.... r=14 m=10 classes=199291 ext=21055 reached=132002 bad=67289 D=false depth=10 (12.1s)
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5665556_..6.5.5.. r=14 m=11 classes=199291 ext=23392 reached=138221 bad=61070 D=false depth=10 (11.8s)
   fixed X={I2-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
-f9_..5665566_.......5. r=14 m=9 classes=199291 ext=17503 reached=151331 bad=47960 D=false depth=17 (14.2s)
-  fixed X={I0-I2} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665566_.......5. r=14 m=9 classes=199291 ext=17503 reached=151331 bad=47960 D=false depth=17 (15.0s)
+  fixed X={I0-I5} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665566_.....5.5. r=14 m=10 classes=199291 ext=19182 reached=151331 bad=47960 D=false depth=15 (14.1s)
+  fixed X={I0-I5} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665566_....65.5. r=14 m=11 classes=199291 ext=23258 reached=171751 bad=27540 D=false depth=10 (13.6s)
+  fixed X={I0-I4} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
+f9_..5665566_....656.. r=14 m=11 classes=199291 ext=22733 reached=174721 bad=24570 D=false depth=9 (12.4s)
+  fixed X={I0-I4} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5665575_.......5. r=14 m=9 classes=199291 ext=16900 reached=136903 bad=62388 D=false depth=22 (9.2s)
   fixed X={I0-I1} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
 f9_..5665656_.......5. r=14 m=9 classes=199291 ext=17838 reached=137944 bad=61347 D=false depth=24 (10.7s)

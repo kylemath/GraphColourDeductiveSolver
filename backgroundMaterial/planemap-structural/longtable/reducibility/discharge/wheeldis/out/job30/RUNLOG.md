@@ -186,3 +186,9 @@ not new to F.
   on 35aeebb8: **1,419 D / 790 C** (+457 D, +57 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Letter-9
   rule: 0 excluded. Matcher on all 17 minimal windows: 1,234 frames, 0 mismatches. dcount (argsA44_local): **16,459**
   distinct parsed D (16,793 names), +457.
+- ~11:20Z 19 Oct: explore round 51 r9e, 43fdc043 (loop/k47/r9e_kills*: kills of the d=9 face row 655566556/757656565).
+  5 files fetched by path, byte-identical. r9e alone: 540 D / 59 C, as explore's run. Default glob on 4b28f532:
+  **1,894 D / 838 C**: +475 D, +48 C. 65 D, 11 C and 6 of the 17 minimal names were already in the set, from r9g's
+  overlapping windows. 0 lost, 0 one-engine, 0 X mismatch. Drop44 guard 0. Letter-9 rule: 0 excluded. Matcher on all
+  17 minimal windows: 1,248 frames, 0 mismatches. dcount (argsA44_local): **16,934** distinct parsed D (17,268 names),
+  +475.
