@@ -433,3 +433,9 @@ our agent R and have no output from it.
   - The y values are set by the face fives' worst sender contexts: 55667, 55669, 55767, 55769, with at most two big hats.
   - So a useful lemma must be on the sender side: a 5-5-5 face with its hat ring mostly small.
 - Files: P_own_lp/s19d/.
+
+## s22h / s22c on 5fa0adb0, 19 Oct ~09:20Z
+- s22h, hat5 + §14′ filter: t* = 16/101 = 0.15842 exactly. Lower VALID (114 rows), upper FEASIBLE (Karp d0 13.20). Our engine only; Studio check pending. Below 17/107.
+- s22c, unfiltered: 86/515, unchanged.
+- Binders: face rows on top (d7 7665566/6765766 0.112, 7676556/7759565 0.066). Senders: 55667, 55669, 55769.
+- Next: s23h on 35aeebb8 (kills the d=9 binder).
