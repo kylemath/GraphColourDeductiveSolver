@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18 Oct 23:55Z: KYLE DECISION: continue with our own discharge rules; the published rules are a benchmark only (they show the destination exists). Published reducible configurations verified on our own two engines stay usable as registry patterns. Main line: stage 14 rule for the R*-like row 5566766/5666667.
 - 18 Oct 23:52Z: Published-rules payment of the R*-like row now full two-engine (case-list diff 15,625/15,625, charges 0 mismatches; details sealed).
 - 18 Oct 23:50Z: Told Kyle: own rules stuck on one R*-like row (canonical 5566766/5666667) that published rules pay for on two independent checks; recommendation moved to both tracks; decision remains his (card in project chat). Details sealed elsewhere.
 - 18 Oct 23:42Z: Reduced 6-centred relay on d43ba26a gives t* = 23/134 ≈ 0.172 [E1, Opus 833abac2]; top binder still 7665566/6675666 (dual 0.194). Studio spec-only check after RELAY_SPEC extension. Stage 14 solving.
