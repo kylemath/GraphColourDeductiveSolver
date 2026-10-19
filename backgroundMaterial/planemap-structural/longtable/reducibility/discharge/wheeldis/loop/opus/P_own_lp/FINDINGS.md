@@ -462,3 +462,22 @@ Not read: Studio's Job 31 spec.
   - Sound version: the receiver row carries a per-row candidate set, the kills taken from verified D/C patterns over u's 3-ball (the privates). That needs separation over privates as extra slots: jsep with d extra slots, or per-row pricing of V with pattern lookups.
   - Alternative from Long Table: the big privates (p51 >= 7, others >= 6) send toward u via the 6s at w2 and w5. That needs a 6 to pass on from its private big, which is already allowed (h from p to x when p is big, v from x to u).
   - What is missing is that v must be allowed to depend on p's class, and V must take the min only over the surviving p. So both routes need the kill information on privates.
+
+## Stage 16 (A) pre-registration + falsifying sanity check (02:40Z): private filter from registry patterns — STOPPED at check 4
+- Registry: s19/argsA52.txt (P2), i.e. 09d8ac38. k3x md5s equal `git show 09d8ac38` out/job30 (k3x_D 3ed293d9..., k3x_C 61cf5dc8...); dcount newpat 15855; rpat=rpatD.txt; drop44 names not in the args.
+- Hypothesis: with V's min restricted to registry-allowed privates, binder 7665566/6675666 becomes non-tight and t* < 23/134.
+  - Kill lines: (a) the binder stays tight at 23/134; (b) V stays 0 because the min moves to the census-survivor context.
+- Filter (as specified in RELAY_SPEC 14): drop a private value p iff some registry item, with every slot it constrains known, forbids the arrangement. The items are:
+  - R6 of the private's 6-wheel;
+  - a registry wheel pattern of exact degree d, centred at a vertex of exact-degree letter (7 or 8) whose arrangement contains p.
+  - In the binder those centres are w0 (7: link u, w1, s0, q1, q2, s6, w6; apexes w2, p1, ?, ?, ?, p6, w5) and s2 (7: link p2, w2, w3, s3, ?, ?, ?; apexes s1, u, w4, ?, ?, ?, ?).
+- Sanity check 4 (s16_census.py, 9.8 min): over the binder's 15625 one-ring-out cases (p1, p2, p5, p6 = privates of the link 6s; q1, q2 = w0's unseen neighbours), the filter leaves **12320 survivors, not the census's 3072. FAIL, so stage 16 (A) stops here, as instructed.**
+  - Killed 3305 cases:
+    - 3080 first by C:f7_...5565_....... (s2-centred; in s19/k3x_C_09d8ac38.cfast), which kills p2 = 5 in all 3125 cases;
+    - 225 by C:f7_.6655.._.5..... (w0-centred; k42map_C_cons.cfast).
+  - Not killed: p5 = 5 (661/3125 killed, the same as for every other p5 value, i.e. only via other privates), p5 = 6, p1 = 5, p6 = 5, q1 = 5, q2 = 5.
+  - The binding case in st15f is exactly p5 = 5 (mrowV V[7,5,6,6,6,5,7] <= v[7,5,6,5,6,6,5,7]: the 6 at w5 with private 5).
+  - Why no registry pattern can drop it: p5's known neighbours are w5, s4, s5, all 6s. Every registry pattern is a wheel centred at a vertex of degree >= 7, and no exact-degree big vertex in u's 2-ball is adjacent to p5. The census kills of p5 come from RSST configurations (rsst180, ...), which need the configuration itself tested in the private's 3-ball frame. As loaded, rpatD has them only in u's own window.
+- Next options:
+  - (B) v keyed on the private's class: the fallback named by Long Table.
+  - Port the 6 census configurations (after confirming each is in the conservative RSST 582 or in k3x) to a 3-ball containment test at a link-6 private.

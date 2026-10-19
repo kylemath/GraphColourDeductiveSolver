@@ -350,3 +350,10 @@ our agent R and have no output from it.
 - **P2 s18r (02:10Z): the s10 relay on b88ed8b7 (argsA51) gives t* = 9/52 = 0.17308**, down from 31/178 [own checkers;
   lowerR VALID with 45 rows; upperR FEASIBLE]. Receivers: d = 7 7655667/6756656 (new, 0.0865), d = 7 7665566/6665766 (0.0865),
   d = 10 6565656565/6655666666 (0.0385), plus small ones. s19c (6-centred) and s19r on 09d8ac38 (argsA52, dcount 15,855) are running.
+- **P stage 16 (A) stopped at Long Table's check 4 (02:40Z): the registry-only private filter does not reproduce the
+  census.** On the binder's 15,625 one-ring-out cases it leaves 12,320 survivors; the census has 3,072. The binding case is
+  p5 = 5, where all of the private's known neighbours are 6s. Every registry pattern is a wheel centred at degree >= 7,
+  so none can be centred where it would see p5. The census kills of p5 come from whole RSST configurations (rsst180 and
+  others), tested one ring beyond u's 2-ball. Nothing was solved. §14, s16_census.py and s16_census_kills.json are committed.
+  Next: confirm that the 6 census configurations are in the conservative 582 / k3x, then port them as a containment test
+  at a link-6 private (A'), or fall back to option B.

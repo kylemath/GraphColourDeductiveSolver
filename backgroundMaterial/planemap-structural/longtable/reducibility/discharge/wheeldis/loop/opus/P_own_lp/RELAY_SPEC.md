@@ -1124,3 +1124,36 @@ Kill lines:
 - v goes only to neighbours of letter 7 (degree exactly 7). An 8 or 9 next to the 6 gets none. That is a restriction
   of the class, so it is sound.
 - cv reads an apex of letter 8 or 9 as 7. Same remark.
+
+## 14. Stage 16 (A): private filter for V's minimum. Specified, failed the census check, not solved
+
+Written by Opus before any solve. Registry: `s19/argsA52.txt` = 09d8ac38 (k3x_D md5 3ed293d9..., k3x_C md5
+61cf5dc8...), plus `rpat=rpatD.txt`. drop44 names are absent from the args.
+
+**Filter.** In V's min over the private p_j of a link 6 w_j of u, drop p when one of these forbids it:
+
+1. `isR6((U, w_{j+1}, s_j, p, s_{j-1}, w_{j-1}))`. This is already in section 13.
+2. A registry wheel pattern P of degree d in {7, 8} matches **surely** at a centre c with letter d.
+   - c is any vertex of u's 2-ball adjacent to p_j, i.e. s_j or s_{j-1}.
+   - In the census also w_{j±1}'s extra neighbours count (for the 7 w0 of the binder, its two unseen neighbours).
+   - "Surely" means: some rotation/reflection of P (pcheck `pname`, slots w_i / s_i = apex of w_i w_{i+1}) constrains only slots of c's arrangement that are known from u's 2-ball plus the tested privates, and every one of those letters lies in P's set.
+   - Unknown slots must be unconstrained (set = all of 5..9).
+
+**Frames used at the binder 7665566/6675666:**
+
+```
+w0 (7): link  (u=7, w1=6, s0=6, q1, q2, s6=6, w6=6)    apexes (w2=6, p1, ?, ?, ?, p6, w5=6)
+s2 (7): link  (p2, w2=6, w3=5, s3=5, ?, ?, ?)          apexes (s1=6, u=7, w4=5, ?, ?, ?, ?)
+```
+
+Each case's killing pattern, with its rotation and reflection, is listed in `s16_census_kills.json`. The code is
+`s16_census.py`.
+
+**Falsifying check: FAILED.** Over the 15,625 one-ring-out cases the filter leaves **12,320 survivors**, while the
+census has 3,072.
+
+- Killed: 3,080 cases by `f7_...5565_.......` (k3x_C 09d8ac38, centred at s2), which kills every p2 = 5, and 225
+  cases by `f7_.6655.._.5.....` (k42map_C_cons, centred at w0).
+- The census case that blocks st15f is p5 = 5 (the 6 at w5 with private 5). It is not dropped. p5's known
+  neighbours (w5, s4, s5) are all 6s, and no registry wheel pattern can be centred there.
+- Per Long Table's condition 4, stage 16 (A) is **not solved**.
