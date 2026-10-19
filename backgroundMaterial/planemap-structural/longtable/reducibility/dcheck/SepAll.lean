@@ -12,14 +12,14 @@ open VacancySlide VacancyCliqueLift VacancyIcosahedral RotationSystem PlaneMapCo
 variable {n : ℕ} {T : SphericalMap n} {r : ℕ} {ρ : ℕ → Fin n} {c : T.Face → ZMod 2}
 
 /-- A cycle (chords allowed). -/
-structure Cyc (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) : Prop where
+structure SepCyc (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) : Prop where
   three : 3 ≤ r
   per : ∀ t, ρ (t + r) = ρ t
   adj : ∀ t, T.Adj (ρ t) (ρ (t + 1))
   inj : ∀ s t, s < r → t < r → ρ s = ρ t → s = t
 
 /-- A triangle is induced. -/
-theorem Cyc.icycle3 (C : Cyc T 3 ρ) : ICycle T 3 ρ := by
+theorem SepCyc.icycle3 (C : SepCyc T 3 ρ) : ICycle T 3 ρ := by
   refine ⟨C.three, C.per, C.adj, C.inj, fun s t hs ht h => ?_⟩
   have hne : s ≠ t := fun e => by subst e; exact h.ne rfl
   rcases (show s = 0 ∨ s = 1 ∨ s = 2 by omega) with rfl | rfl | rfl <;>
@@ -118,7 +118,7 @@ theorem colorable_of_separating_3cycle (C : ICycle T 3 ρ) (hc : CycPotential T 
 
 /-! ### Chords: shifting, and splitting at the chord `ρ0 ρ2` -/
 
-theorem Cyc.per_mod (C : Cyc T r ρ) (t : ℕ) : ρ (t % r) = ρ t := by
+theorem SepCyc.per_mod (C : SepCyc T r ρ) (t : ℕ) : ρ (t % r) = ρ t := by
   conv_rhs => rw [← Nat.mod_add_div t r]
   induction t / r with
   | zero => simp
@@ -138,7 +138,7 @@ theorem sum_shift_range (g : ℕ → ZMod 2) (hg : ∀ t, g (t + r) = g t) :
       simp only [show ∀ t, t + 1 + v = t + (v + 1) by intro t; omega, Nat.zero_add]
       rw [show r' + (v + 1) = v + (r' + 1) by omega, hg]
 
-theorem Cyc.shift (C : Cyc T r ρ) (v : ℕ) : Cyc T r (fun t => ρ (t + v)) := by
+theorem SepCyc.shift (C : SepCyc T r ρ) (v : ℕ) : SepCyc T r (fun t => ρ (t + v)) := by
   refine ⟨C.three, fun t => ?_, fun t => ?_, fun s t hs ht e => ?_⟩
   · show ρ (t + r + v) = ρ (t + v); rw [show t + r + v = (t + v) + r by omega, C.per]
   · have := C.adj (t + v); rwa [show t + v + 1 = t + 1 + v by omega] at this
@@ -148,7 +148,7 @@ theorem Cyc.shift (C : Cyc T r ρ) (v : ℕ) : Cyc T r (fun t => ρ (t + v)) := 
     have h2 : s % r = t % r := Nat.ModEq.add_right_cancel' v this
     rwa [Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at h2
 
-theorem cycInd_shift (C : Cyc T r ρ) (v : ℕ) : cycInd T r (fun t => ρ (t + v)) = cycInd T r ρ := by
+theorem cycInd_shift (C : SepCyc T r ρ) (v : ℕ) : cycInd T r (fun t => ρ (t + v)) = cycInd T r ρ := by
   classical
   funext e
   unfold cycInd
@@ -156,12 +156,12 @@ theorem cycInd_shift (C : Cyc T r ρ) (v : ℕ) : cycInd T r (fun t => ρ (t + v
     (fun t => by simp only [show t + r + 1 = (t + 1) + r by omega, C.per]) v
   simpa [show ∀ t, t + v + 1 = t + 1 + v by intro t; omega] using this
 
-theorem onCyc_of_shift (C : Cyc T r ρ) (v : ℕ) {x : Fin n} (h : OnCyc r (fun t => ρ (t + v)) x) :
+theorem onCyc_of_shift (C : SepCyc T r ρ) (v : ℕ) {x : Fin n} (h : OnCyc r (fun t => ρ (t + v)) x) :
     OnCyc r ρ x := by
   obtain ⟨t, -, rfl⟩ := h
   exact ⟨(t + v) % r, Nat.mod_lt _ (by have := C.three; omega), C.per_mod _⟩
 
-theorem BothSides.shift (C : Cyc T r ρ) (v : ℕ) (h : BothSides T r ρ c) :
+theorem BothSides.shift (C : SepCyc T r ρ) (v : ℕ) (h : BothSides T r ρ c) :
     BothSides T r (fun t => ρ (t + v)) c := by
   obtain ⟨⟨x, y, hx, h0, hxy⟩, ⟨x', y', hx', h1, hxy'⟩⟩ := h
   exact ⟨⟨x, y, fun h => hx (onCyc_of_shift C v h), h0, hxy⟩,
@@ -190,7 +190,7 @@ theorem cycInd4 (a b d f : Fin n) (e : T.graph.edgeSet) :
   rfl
 
 open Classical in
-theorem cycIndR4 (C : Cyc T 4 ρ) (e : T.graph.edgeSet) :
+theorem cycIndR4 (C : SepCyc T 4 ρ) (e : T.graph.edgeSet) :
     cycInd T 4 ρ e = (if e.val = s(ρ 0, ρ 1) then 1 else 0) + (if e.val = s(ρ 1, ρ 2) then 1 else 0) +
       (if e.val = s(ρ 2, ρ 3) then 1 else 0) + (if e.val = s(ρ 3, ρ 0) then 1 else 0) := by
   unfold cycInd
@@ -198,7 +198,7 @@ theorem cycIndR4 (C : Cyc T 4 ρ) (e : T.graph.edgeSet) :
   rw [show ρ (3 + 1) = ρ 0 by rw [show 3 + 1 = 0 + 4 by rfl, C.per]]
 
 open Classical in
-theorem cycIndR5 (C : Cyc T 5 ρ) (e : T.graph.edgeSet) :
+theorem cycIndR5 (C : SepCyc T 5 ρ) (e : T.graph.edgeSet) :
     cycInd T 5 ρ e = (if e.val = s(ρ 0, ρ 1) then 1 else 0) + (if e.val = s(ρ 1, ρ 2) then 1 else 0) +
       (if e.val = s(ρ 2, ρ 3) then 1 else 0) + (if e.val = s(ρ 3, ρ 4) then 1 else 0) +
       (if e.val = s(ρ 4, ρ 0) then 1 else 0) := by
@@ -211,7 +211,7 @@ theorem zmod2_dbl (q : ZMod 2) : q + q = 0 := by generalize q = x; revert x; dec
 theorem cyc3_icycle {a b d : Fin n} (hab : T.Adj a b) (hbd : T.Adj b d) (hda : T.Adj d a) :
     ICycle T 3 (cyc3 a b d) := by
   have hne1 := hab.ne; have hne2 := hbd.ne; have hne3 := hda.ne
-  refine Cyc.icycle3 ⟨le_rfl, fun t => ?_, fun t => ?_, fun s t hs ht e => ?_⟩
+  refine SepCyc.icycle3 ⟨le_rfl, fun t => ?_, fun t => ?_, fun s t hs ht e => ?_⟩
   · unfold cyc3; congr 2; simp [Nat.add_mod_right]
   · unfold cyc3
     rcases (show t % 3 = 0 ∨ t % 3 = 1 ∨ t % 3 = 2 by omega) with h | h | h
@@ -228,7 +228,7 @@ theorem cyc3_icycle {a b d : Fin n} (hab : T.Adj a b) (hbd : T.Adj b d) (hda : T
 
 theorem cyc4_cyc {a b d f : Fin n} (hab : T.Adj a b) (hbd : T.Adj b d) (hdf : T.Adj d f)
     (hfa : T.Adj f a) (hne : ∀ x y : Fin 4, x ≠ y → ![a, b, d, f] x ≠ ![a, b, d, f] y) :
-    Cyc T 4 (cyc4 a b d f) := by
+    SepCyc T 4 (cyc4 a b d f) := by
   refine ⟨by omega, fun t => ?_, fun t => ?_, fun s t hs ht e => ?_⟩
   · unfold cyc4; congr 2; simp [Nat.add_mod_right]
   · unfold cyc4
@@ -249,7 +249,7 @@ theorem cyc4_cyc {a b d f : Fin n} (hab : T.Adj a b) (hbd : T.Adj b d) (hdf : T.
         rwa [Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at this)) e
 
 /-- Sides of a sub-cycle from sides of the cycle, through the potential sum. -/
-theorem sides_split (C : Cyc T r ρ) {rA : ℕ} {ρA : ℕ → Fin n} (CA : ICycle T rA ρA)
+theorem sides_split (C : SepCyc T r ρ) {rA : ℕ} {ρA : ℕ → Fin n} (CA : ICycle T rA ρA)
     {cA : T.Face → ZMod 2} (hcA : CycPotential T rA ρA cA) {rB : ℕ} {ρB : ℕ → Fin n}
     (hsubA : ∀ x, OnCyc rA ρA x → OnCyc r ρ x) (hsubB : ∀ x, OnCyc rB ρB x → OnCyc r ρ x)
     (hs : BothSides T r ρ c) :
@@ -299,11 +299,11 @@ theorem onCyc4_sub {a b d f : Fin n} {x : Fin n} (h : OnCyc 4 (cyc4 a b d f) x) 
   unfold cyc4
   rcases (show t = 0 ∨ t = 1 ∨ t = 2 ∨ t = 3 by omega) with rfl | rfl | rfl | rfl <;> simp
 
-theorem onC (C : Cyc T r ρ) (t : ℕ) : OnCyc r ρ (ρ t) :=
+theorem onC (C : SepCyc T r ρ) (t : ℕ) : OnCyc r ρ (ρ t) :=
   ⟨t % r, Nat.mod_lt _ (by have := C.three; omega), C.per_mod t⟩
 
 /-- **A 4-cycle with the chord `ρ0 ρ2`** reduces to one of its two triangles. -/
-theorem chord4 (C : Cyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
+theorem chord4 (C : SepCyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
     (hs : BothSides T 4 ρ c)
     (IH : ∀ (m' : ℕ) (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support →
       M.graph.Colorable 4) : T.graph.Colorable 4 := by
@@ -339,14 +339,14 @@ theorem chord4 (C : Cyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hch : T.Adj (ρ 0)
   · exact colorable_of_separating_3cycle CA hcA h IH
   · exact colorable_of_separating_3cycle CB hcB h IH
 
-theorem shift_potential (C : Cyc T r ρ) (hc : CycPotential T r ρ c) (v : ℕ) :
+theorem shift_potential (C : SepCyc T r ρ) (hc : CycPotential T r ρ c) (v : ℕ) :
     CycPotential T r (fun t => ρ (t + v)) c := by
   intro d; rw [cycInd_shift C v]; exact hc d
 
-theorem shift_mod (C : Cyc T r ρ) (u t : ℕ) : ρ (t + u) = ρ ((t + u) % r) := (C.per_mod _).symm
+theorem shift_mod (C : SepCyc T r ρ) (u t : ℕ) : ρ (t + u) = ρ ((t + u) % r) := (C.per_mod _).symm
 
 /-- **Separating 4-cycles, chords allowed.** -/
-theorem colorable_of_sep4 (C : Cyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hs : BothSides T 4 ρ c)
+theorem colorable_of_sep4 (C : SepCyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hs : BothSides T 4 ρ c)
     (IH : ∀ (m' : ℕ) (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support →
       M.graph.Colorable 4) : T.graph.Colorable 4 := by
   classical
@@ -371,7 +371,7 @@ theorem colorable_of_sep4 (C : Cyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hs : Bo
 
 /-- **A 5-cycle with the chord `ρ0 ρ2`** reduces to the triangle `ρ0 ρ1 ρ2` or the 4-cycle
 `ρ0 ρ2 ρ3 ρ4`. -/
-theorem chord5 (C : Cyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
+theorem chord5 (C : SepCyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
     (hs : BothSides T 5 ρ c)
     (IH : ∀ (m' : ℕ) (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support →
       M.graph.Colorable 4) : T.graph.Colorable 4 := by
@@ -380,7 +380,7 @@ theorem chord5 (C : Cyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hch : T.Adj (ρ 0)
   have a40 : T.Adj (ρ 4) (ρ 0) := by have := C.adj 4; rwa [p5] at this
   have CA : ICycle T 3 (cyc3 (ρ 0) (ρ 1) (ρ 2)) := cyc3_icycle (C.adj 0) (C.adj 1) hch.symm
   have inj : ∀ i j, i < 5 → j < 5 → i ≠ j → ρ i ≠ ρ j := fun i j hi hj h e => h (C.inj i j hi hj e)
-  have CB : Cyc T 4 (cyc4 (ρ 0) (ρ 2) (ρ 3) (ρ 4)) := by
+  have CB : SepCyc T 4 (cyc4 (ρ 0) (ρ 2) (ρ 3) (ρ 4)) := by
     refine cyc4_cyc hch (C.adj 2) (C.adj 3) a40 ?_
     intro x y hxy
     fin_cases x <;> fin_cases y <;> simp at hxy ⊢ <;>
@@ -418,7 +418,7 @@ theorem BothSides2.both (h : BothSides2 T r ρ c) : BothSides T r ρ c := by
   exact ⟨⟨x, y, hx, h0, hxy⟩, ⟨x', y', hx', h1, hxy'⟩⟩
 
 /-- **Separating 5-cycles with two vertices on each side, chords allowed.** -/
-theorem colorable_of_sep5 (C : Cyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hs : BothSides2 T 5 ρ c)
+theorem colorable_of_sep5 (C : SepCyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hs : BothSides2 T 5 ρ c)
     (IH : ∀ (m' : ℕ) (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support →
       M.graph.Colorable 4) : T.graph.Colorable 4 := by
   classical
@@ -447,7 +447,7 @@ theorem colorable_of_sep5 (C : Cyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hs : Bo
 (for `r = 5`: two on each side), then `T` is four-colourable as soon as every spherical map of
 smaller support is. So a minimal counterexample has no separating 3- or 4-cycle, and no separating
 5-cycle other than one around a single vertex. -/
-theorem colorable_of_short_separating_cycle (C : Cyc T r ρ) (hr : r ≤ 5) (hc : CycPotential T r ρ c)
+theorem colorable_of_short_separating_cycle (C : SepCyc T r ρ) (hr : r ≤ 5) (hc : CycPotential T r ρ c)
     (hs : BothSides T r ρ c) (h5 : r = 5 → BothSides2 T r ρ c)
     (IH : ∀ (m' : ℕ) (M : SphericalMap m'), Nat.card M.graph.support < Nat.card T.graph.support →
       M.graph.Colorable 4) : T.graph.Colorable 4 := by
