@@ -19,3 +19,9 @@
     + cfast leftover 0).
 - Started 12:50Z, all 10 rows in parallel. Nothing is admitted to any registry: explore does minkill and the f-names
   first.
+
+## Row 10: 7 7655566/6759676, finished 16:28Z (wall 13,067 s)
+- **SURVIVES**, with 4 windows undecided. 255 windows run: 251 kc "neither" (no D, no C) and 4 kc timeouts at the
+  -t 600 limit, all ring 18: a7_u7655..6_675..76, a7_u7..5566_6...676, a7_u76..566_6...676, a7_u765..66_.7...76.
+  No two-engine kill.
+- Best leftover: 256 bad classes (0.04 % of classes) at a7_u7655566_675...6 (ring 15), X={I0-I5,I10-I11,R8-I5,R8-I11}.
