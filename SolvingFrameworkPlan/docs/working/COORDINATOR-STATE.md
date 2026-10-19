@@ -80,6 +80,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19:55Z 19 Oct: Face binder 7665566/6765766 splits on p6 (the far-side 6's private neighbour), found by the drawing-thread probe. This is one engine (kc) so far; Studio is second-engining it now.
+  - p6 = 5 is dead: window b7p5_u...5566_...5766 is D at ring 13. Its ring-14 w0 variant is also D.
+  - p6 = 6 and p6 = 7 are not D at ring 14-15. p6 = 8 is running.
+  - Bringing s5, s6 and w0 inside without fixing p6 does not help (49k of 199k colourings never fixed).
+  - The face rule now only needs to pay when apex >= 6 and p6 >= 6. Opus restricts its masks to that.
 - 19:45Z 19 Oct: Solo window probe (drawing thread) on face binder 7665566/6675666, ring-10 window.
   - The ring-colour lock is at the 7 or at its far-side 6, which has 4 ring contacts. It is not at the face.
   - Every contraction leaves at least 861 colourings unfixed.
