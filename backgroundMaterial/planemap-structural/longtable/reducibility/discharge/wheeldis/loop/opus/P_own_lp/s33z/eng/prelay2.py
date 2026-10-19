@@ -361,6 +361,36 @@ def R2_sender_rows():
     if WF19: log('wf19: %d of %d forbidden sender contexts skipped' % (nwf[0], len(WF19)))
     if HX: log('hatx: %d sender contexts have no jointly admissible exact hat letters (dropped)' % nhx[0])
     return out
+L6R = 'l6r' in FLAGS                 # stage 33 (RELAY_SPEC_s23, s34b): z6[K] in [0, z6cap], a 6 x -> adjacent 6 y (payer L has a five);
+Z6V = {}; Z6W = {}; Z6CAP = float(OPT.get('z6cap', '3'))   # payee credit Z6[sigma] >= 0 uncapped; mrowZ: z6[K] - Z6[sigma(K)] <= 0
+def z6_refl7(a): return (a[4], a[3], a[2], a[1], a[0], a[6], a[5])
+def z6_refl6(g): return (g[3], g[2], g[1], g[0], g[5], g[4])
+def zkey6_ab(L, j, sj, sjm):
+    a = (L[(j + 1) % 6], ap(L[(j + 2) % 6]), L[(j + 3) % 6], ap(L[(j + 4) % 6]), L[(j + 5) % 6], ap(sj), ap(sjm)); return min(a, z6_refl7(a))
+def zsig6_of_key(K):
+    g = (K[0], K[1], K[3], K[4], K[5], K[6]); return min(g, z6_refl6(g))
+def zsig6_ab(L, k, sk, skm):
+    g = (L[(k + 1) % 6], ap(sk), ap(skm), L[(k - 1) % 6], ap(L[(k + 2) % 6]), ap(L[(k - 2) % 6])); return min(g, z6_refl6(g))
+_Z6F = []
+def z6_first():
+    """first-family z6 keys: canonical non-R6 6-words with a five, positions with L_j = 6, apex classes (s_j, s_{j-1}) in {5,7}^2"""
+    if not _Z6F:
+        ks = set()
+        for L in all6_words():
+            if 5 not in L: continue
+            for j in range(6):
+                if L[j] == 6:
+                    for a_, b_ in itertools.product((5, 7), repeat=2): ks.add(zkey6_ab(L, j, a_, b_))
+        _Z6F.append(sorted(ks))
+    return _Z6F[0]
+def z6_terms(L, s):
+    cf = collections.Counter()
+    if not L6R: return cf
+    for j in range(6):
+        if L[j] == 6:
+            if 5 in L: cf[('z6', zkey6_ab(L, j, s[j], s[(j - 1) % 6]))] -= 1     # x pays out
+            cf[('Z6', zsig6_ab(L, j, s[j], s[(j - 1) % 6]))] += 1                  # x is the payee of its 6-neighbour L_j
+    return cf
 def cons2_coef(L, s):
     cf = collections.Counter()
     for i in range(6):
@@ -368,6 +398,7 @@ def cons2_coef(L, s):
     for j in range(6):
         if L[j] >= 7: cf[('h', h2_of(tuple(L[(j + i) % 6] for i in range(6)), s[j], s[(j - 1) % 6]))] -= 1
         if V6 and L[j] == 7: cf[('v', v_of(tuple(L[(j + i) % 6] for i in range(6)), s[j], s[(j - 1) % 6]))] += 1
+    if L6R: cf.update(z6_terms(L, s))
     return cf
 SALL = np.array(list(itertools.product(range(5), repeat=6)), dtype=np.int64)   # apex words (letter indices)
 def cons2_delta(L, GV, HV2):
@@ -385,6 +416,12 @@ def cons2_delta(L, GV, HV2):
         if V6 and L[j] == 7:
             m = tuple(L[(j + i) % 6] for i in range(6))
             T = np.array([[VV.get(v_of(m, LET[a], LET[b]), 0.0) for b in range(5)] for a in range(5)])
+            D += T[SALL[:, j], SALL[:, (j - 1) % 6]]
+        if L6R and L[j] == 6:   # RELAY_SPEC_s23.4
+            if 5 in L:
+                T = np.array([[Z6V.get(zkey6_ab(L, j, LET[a], LET[b]), 0.0) for b in range(5)] for a in range(5)])
+                D -= T[SALL[:, j], SALL[:, (j - 1) % 6]]
+            T = np.array([[Z6W.get(zsig6_ab(L, j, LET[a], LET[b]), 0.0) for b in range(5)] for a in range(5)])
             D += T[SALL[:, j], SALL[:, (j - 1) % 6]]
     return D
 def window_table_R2(U, y, x, MV2):
@@ -547,7 +584,8 @@ def cmd_solveR2():
     def col(key):
         if key not in cols:
             cols[key] = len(names); names.append(key)
-            h.addVar(-inf if key[0] == 't' else 0.0, XCAP if key[0] == 'x' else DCAP if key[0] == 'D' else LQCAP if key[0] == 'lq' else ZCAP if (ZR and key[0] in ('z', 'zr', 'rr')) else inf)
+            h.addVar(-inf if key[0] == 't' else 0.0, XCAP if key[0] == 'x' else DCAP if key[0] == 'D' else LQCAP if key[0] == 'lq' else ZCAP if (ZR and key[0] in ('z', 'zr', 'rr')) else Z6CAP if key[0] == 'z6' else inf)
+            if key[0] == 'z6' and XPEN[0]: h.changeColCost(cols[key], XPEN[0])   # RELAY_SPEC_s23: z6 carries the x penalty
             if ZR and key[0] in ('z', 'zr', 'rr') and XPEN[0]: h.changeColCost(cols[key], XPEN[0])   # stage 33: z, zr, rr carry the x penalty
             if key[0] == 'x' and XPEN[0]: h.changeColCost(cols[key], XPEN[0])
             if key[0] == 'D' and DPEN[0]: h.changeColCost(cols[key], DPEN[0])
@@ -591,6 +629,9 @@ def cmd_solveR2():
         if not cf or kk in conset: return False
         conset.add(kk); addrow(cf, 0.0, 0.0, ('cons2', list(L), list(s))); return True
     # initial conservation rows: one apex word per L (all apexes 5) -- the rest by separation
+    if L6R:   # RELAY_SPEC_s23.4: all mrowZ rows and both column sets up front
+        for K in z6_first(): addrow({('z6', K): 1.0, ('Z6', zsig6_of_key(K)): -1.0}, -inf, 0.0, ('mrowZ', list(K)))
+        log('l6r: %d mrowZ rows, %d Z6 signatures' % (len(z6_first()), len({zsig6_of_key(K) for K in z6_first()})))
     for L in RW: addcons(L, (5,) * 6)
     if 'consbasis' in OPT:
         nb = sum(addcons(tuple(L), tuple(s_)) for L, s_ in json.load(open(OPT['consbasis'])))
@@ -614,6 +655,7 @@ def cmd_solveR2():
         GV = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'g'}; HV2 = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'h'}
         ZV.clear(); ZV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'z'})
         ZRV.clear(); ZRV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'zr'})
+        Z6V.clear(); Z6V.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'z6'}); Z6W.clear(); Z6W.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'Z6'})
         QV.clear(); QV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'q'})
         VV.clear(); VV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'v'})
         RV.clear(); RV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'r'})
@@ -670,7 +712,7 @@ def cmd_solveR2():
         if not added and XPEN[0]:
             XPEN[0] = 0.0
             for k, i in cols.items():
-                if k[0] in ('x', 'D', 'lq') or (ZR and k[0] in ('z', 'zr', 'rr')): h.changeColCost(i, 0.0)
+                if k[0] in ('x', 'D', 'lq', 'z6') or (ZR and k[0] in ('z', 'zr', 'rr')): h.changeColCost(i, 0.0)
             log('  converged with x penalty; penalty removed, continuing'); continue
         if not added: break
     sol = h.getSolution(); xv = np.array(sol.col_value); t = xv[jt]; duals = np.array(sol.row_dual)
@@ -689,6 +731,7 @@ def cmd_solveR2():
          'D': [[repr(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'D' and xv[i] > 0], 'big2': DD,
          'lq': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'lq' and xv[i] > 0],
          'lQ': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'lQ' and xv[i] > 0], 'l3q': L3Q,
+         'z6': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'z6' and xv[i] > 0], 'Z6': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'Z6' and xv[i] > 0], 'l6r': L6R,
          'V': [[list(k[1]), float(xv[i]), min([float(xv[cols[('v', kk)]]) if ('v', kk) in cols else 0.0 for kk in sigv_keys(k[1])] or [0.0])] for k, i in cols.items() if k[0] == 'V'],
          'x': {str(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'x' and xv[i] > 0}}
     json.dump(S, open(os.path.join(HERE, 'sol_%s.json' % tag), 'w'))
@@ -709,6 +752,9 @@ def cons2_block(L):
             m = tuple(L[(j + i) % 6] for i in range(6))
             terms.append((j, -1.0, [[('h', h2_of(m, LET[a], LET[b])) for b in range(5)] for a in range(5)]))
             if V6 and L[j] == 7: terms.append((j, 1.0, [[('v', v_of(m, LET[a], LET[b])) for b in range(5)] for a in range(5)]))
+        if L6R and L[j] == 6:
+            if 5 in L: terms.append((j, -1.0, [[('z6', zkey6_ab(L, j, LET[a], LET[b])) for b in range(5)] for a in range(5)]))
+            terms.append((j, 1.0, [[('Z6', zsig6_ab(L, j, LET[a], LET[b])) for b in range(5)] for a in range(5)]))
     keys = {}
     for _, _, T in terms:
         for rw in T:
@@ -836,6 +882,11 @@ def cmd_lowerR2():
             if sg != q7sig(*sg) or k not in q7keys(sg): log('  BAD MROWQ', row); ok = False; continue
             if w > 0: log('  WRONG SIGN', row); ok = False; continue
             tot[('q', k)] += w; tot[('Q', sg)] -= w
+        elif row[0] == 'mrowZ':
+            K = tuple(row[1])
+            if not L6R or K not in set(z6_first()): log('  BAD MROWZ', row); ok = False; continue
+            if w > 0: log('  WRONG SIGN', row); ok = False; continue
+            tot[('z6', K)] += w; tot[('Z6', zsig6_of_key(K))] -= w
         elif row[0] == 'mrowL':
             sg = tuple(row[1]); k = tuple(row[2])
             if not L3Q or len(sg) != 3 or sg[0] > 6 or sg[1] > 6 or k[:2] != sg[:2] or k[2] not in l3q_mask_letters(sg[2]): log('  BAD MROWL', row); ok = False; continue
@@ -858,6 +909,7 @@ def cmd_lowerR2():
             elif k[0] == 'D': D += rc * Fraction(OPT.get('dcap', '3'))   # stage 24: D is capped like x (RELAY_SPEC 19.5), priced at its cap
             elif k[0] == 'lq': D += rc * Fraction(OPT.get('lqcap', '3'))   # stage 28: q is capped like x, priced at its cap
             elif ZR and k[0] in ('z', 'zr', 'rr'): D += rc * Fraction(OPT.get('zcap', '3'))   # stage 33: z, zr, rr capped, priced at cap
+            elif k[0] == 'z6': D += rc * Fraction(OPT.get('z6cap', '3'))   # RELAY_SPEC_s23.5: z6 capped, priced at cap
             else: neg.append((k, rc))
     if neg: log('  negative reduced costs:', len(neg), neg[:5]); ok = False
     log('rows by type: %s' % dict(cnt))
@@ -883,6 +935,14 @@ def cmd_upperR2():
     if Sj.get('z') and not ZH: log('SOLUTION HAS z BUT zh FLAG OFF'); return
     ZRV.clear(); ZRV.update({tuple(k): v for k, v in Sj.get('zr', [])})
     if Sj.get('zr') and not ZR: log('SOLUTION HAS zr BUT zr FLAG OFF'); return
+    Z6V.clear(); Z6V.update({tuple(k): v for k, v in Sj.get('z6', [])}); Z6W.clear(); Z6W.update({tuple(k): v for k, v in Sj.get('Z6', [])})
+    if (Sj.get('z6') or Sj.get('Z6')) and not L6R: log('SOLUTION HAS z6 BUT l6r FLAG OFF'); return
+    if any(v < 0 or v > Z6CAP + 1e-9 for v in Z6V.values()) or any(v < 0 for v in Z6W.values()): log('z6 VALUE OUTSIDE [0, z6cap] or Z6 < 0'); return
+    if L6R:
+        nz = sum(1 for K, v in Z6V.items() if v > Z6W.get(zsig6_of_key(K), 0.0) + 1e-9)
+        bz = sum(1 for K in Z6V if K not in set(z6_first()))
+        log('l6r: %d z6 > 0 (total %.9f), %d Z6 > 0; mrowZ violated %d; z6 keys outside the first family %d' % (len(Z6V), sum(Z6V.values()), len(Z6W), nz, bz))
+        if nz or bz: log('UPPER-R2: INFEASIBLE (mrowZ)'); return
     if ZR and any(v < 0 or v > ZCAP + 1e-9 for v in list(ZV.values()) + list(ZRV.values()) + [v_ for k_, v_ in Sj.get('rr', [])]): log('z / zr / rr VALUE OUTSIDE [0, zcap]'); return
     QV.clear(); QV.update({tuple(k): v for k, v in Sj.get('q', [])})
     if Sj.get('q') and not Q7: log('SOLUTION HAS q BUT q7 FLAG OFF'); return

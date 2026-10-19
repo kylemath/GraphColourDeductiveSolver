@@ -11,3 +11,7 @@ nice -n 5 python3 pcheck.py lowerR2 $F zh zr hatrr cert=$B/s28q/eng/cert_s28A60L
 nice -n 5 python3 pcheck.py orientR2 $F zh zr hatrr $A work=${WK}c > $S/reg_orient.log 2>&1
 nice -n 5 python3 pcheck.py orientR2 $F zh zr hatrr brokenkey $A work=${WK}c > $S/reg_orient_broken.log 2>&1
 nice -n 5 python3 pcheck.py orientR2 $F zh zr hatrr brokensign $A work=${WK}c > $S/reg_orient_brokensign.log 2>&1
+# stage 33 + l6r (RELAY_SPEC_s23)
+nice -n 5 python3 pcheck.py lowerR2 $F cert=$B/s28q/eng/cert_s28A60L.json xcap=3 $A work=${WK}a > $S/reg_off_lower_l6r.log 2>&1
+nice -n 5 python3 pcheck.py lowerR2 $F l6r cert=$B/s28q/eng/cert_s28A60L.json xcap=3 $A work=${WK}d > $S/reg_l6r_lower.log 2>&1
+nice -n 5 python3 pcheck.py lowerR2 $F zh zr hatrr l6r cert=$B/s28q/eng/cert_s28A60L.json xcap=3 $A work=${WK}e > $S/reg_stack_lower.log 2>&1
