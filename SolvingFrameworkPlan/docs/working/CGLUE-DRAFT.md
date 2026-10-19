@@ -1,8 +1,16 @@
 # CGlue Lean draft (Long Table, 19 Oct 2026)
 
-File: `backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/CGlue.lean`. It imports `ClaimGlue` and
-`C66666`. Scope: `CGLUE-SCOPE.md`. This note covers the statement, the proof outline, the one remaining `sorry` (C4a,
-pure map geometry), and the build. **The file builds in this container with 0 errors.**
+Files: `backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/CGlue.lean` (imports `ClaimGlue`, `C66666`,
+`CContract`) and `dcheck/CContract.lean` (single-edge contraction; imports `ClaimGlue`). Scope: `CGLUE-SCOPE.md`. This
+note covers the statement, the proof outline, the one remaining `sorry` (C4a for X with ≥ 2 edges, pure map geometry),
+and the build. **Both files build in this container with 0 errors.**
+
+**Status, 19 Oct 2026 (update).**
+- Entries whose X is **one interior edge** (`eqR = []`, `eqI = [p0]`; 741 of the 852 registry C entries, the count
+  recorded in the scope work, not re-counted here) are covered **with no `sorry`**: `CEntry1.colorable`, `cGlueX1`,
+  `four_color_of_unavoidableC1`. Their `#print axioms` show no `sorryAx`.
+- The other **111** entries (|X| ≥ 2, or X with a ring–interior edge) still go through the general C4a
+  `contract_subgraph`, which stays the one named `sorry`.
 
 ## Statement
 
@@ -25,7 +33,20 @@ def OccursCX (e : CEntry) (T : SphericalMap n) : Prop :=
 theorem CEntry.colorable (e : CEntry) (h : OccursCX e T) (IH : SmallerColorable T) : T.graph.Colorable 4
 theorem cGlueX (Cs : List CEntry) : CGlueX Cs        -- ClaimGlue's `CGlue`, restated for these entries, proved
 theorem four_color_of_unavoidableC (R : Registry) (hU : Unavoidable R) (M : SphericalMap n) : M.graph.Colorable 4
+
+-- one interior edge: no sorry
+structure CEntry1 extends CEntry where
+  p0 : ℕ × ℕ;  hR : eqR = [];  hI : eqI = [p0]               -- rfl, per key
+theorem CEntry1.colorable (e : CEntry1) (htri : T.Triangulated) (h : OccursCX e.toCEntry T)
+    (IH : SmallerColorable T) : T.graph.Colorable 4
+theorem cGlueX1 (Cs : List CEntry1) : CGlueX1 Cs     -- CGlueX with a `T.Triangulated` premise
+theorem four_color_of_unavoidableC1 (R : Registry1) (hU : Unavoidable1 R) (M : SphericalMap n) : M.graph.Colorable 4
 ```
+
+`Registry1` holds D entries and `CEntry1` entries. For it, the only open link is `Unavoidable1 R`. `T.Triangulated` is
+available where the gate calls the entries (`four_color_of_smaller_gate` supplies it). No separating triangle is not a
+premise: `CEntry1.colorable` argues by contradiction, so `T` is a minimal counterexample and
+`MinimalCounterexample.noSep` applies. `XRingSimple [] …` is vacuous.
 
 - `Registry`, `Contains` and `Unavoidable` are local copies of ClaimGlue's definitions. D entries are
   `ClaimGlue.DEntry`; C entries are the `CEntry` above, with occurrence `OccursCX`.
@@ -73,10 +94,13 @@ Every row below type-checks in this container (`lean` v4.35.0-rc3 against Mathli
 | C2 map form + `canon` | `extCAux_canon` (rename `lam` by `canon_rename`'s `g`) | proved |
 | C3 D tail | `ConfigOccW.colorable_of_goodT` (`good_soundT` + `FaceWalk.kempeMatching` + `colorable_of_ext`; folded/pinched rings covered) | proved |
 | C1–C3 assembled | `ConfigOccW.colorable_of_cReducible18` | proved |
-| C4a contraction of a subgraph | `contract_subgraph` | **`sorry`** (the only one) |
+| C4a contraction of a subgraph | `contract_subgraph` | **`sorry`** (the only one; used only for |X| ≥ 2 or ring–interior X) |
+| C4a, one edge | `contract_subgraph1` (`CContract.lean`), from `contract_edge` | proved |
 | C4b label argument | `ConfigOccW.xGraph_labels` (`xLabel`, constant on X-components) | proved |
 | C4 reducer | `ConfigOccW.contract_reducer` (from C4a + C4b + `OccExact`) | proved from C4a |
+| C4 reducer, any contraction | `ConfigOccW.contract_reducer_of` (C4b + a given contraction of `xGraph`) | proved |
 | C6 | `CEntry.colorable`, `cGlueX`, `MinimalCounterexample.avoids`, `four_color_of_unavoidableC` | proved from C4a |
+| C6, one interior edge | `xGraph_one`, `CEntry1.colorable`, `cGlueX1`, `MinimalCounterexample.avoids1`, `four_color_of_unavoidableC1` | **proved, no sorry** |
 
 The argument of `CEntry.colorable`:
 1. C4 contracts the X-graph (`xGraph`) inside `T`. This gives a smaller map `T'` and a vertex map `π`.
@@ -109,6 +133,34 @@ The argument of `CEntry.colorable`:
 - `hadm`, `hsym`, `hloop` and `hrr` use `native_decide`. Kernel `decide` gets stuck on `Array.anyM`, which is
   well-founded recursion.
 
+## Single-edge contraction (`CContract.lean`, proved)
+
+```lean
+theorem contract_edge (T : SphericalMap n) (htri : T.Triangulated) (hns : NoSep T) {a b : Fin n} (hba : T.Adj b a) :
+    ∃ T' : SphericalMap n, supportSize T' < supportSize T ∧
+      (∀ p q, T.Adj p q → p ≠ b → q ≠ b → T'.Adj p q) ∧
+      (∀ y, T.Adj b y → y ≠ a → T'.Adj a y)
+theorem contract_subgraph1 (T) (htri : T.Triangulated) (hns : NoSep T) (H) (hH : H ≤ T.graph)
+    (hone : ∀ p q, H.Adj p q → s(p, q) = s(u, v)) (hne : ∃ x y, H.Adj x y) :
+    -- the conclusion of contract_subgraph, with π = (b ↦ a)
+```
+
+Construction (536 lines with the helpers):
+1. **Flip** (`flip_exists`). Take the edge `x y` shared by the triangles `x y z` and `y x u`, with `z u` not an edge.
+   Erase `x y` (`eraseEdge`; `Fills` is kept by `fills_eraseRotation`). Insert `z u` in the merged face (`split`;
+   `Fills` is kept by `split_fills`). The rotation steps (`Nx`) of the new triangle `x z u` hold, and every rotation
+   step at a dart outside the two triangles is unchanged. Helpers: `nx_erase`, `nx_erase_skipA/B`, `nx_split_old`,
+   `nx_split_a/b`.
+2. **Rotation chain** (`rot_chain`). List `b`'s rotation from `a`: `w 0 = a`, …, `w (deg b) = a`. The entries are
+   distinct (`chain_inj`) and cover `N(b)` (`nbr_of_chain`).
+3. **Sweep** (`SweepInv`, `sweepInv_zero`, `sweepInv_succ`, `sweep_all`). Flip `b w i` for `i = 1 … deg b − 3`; each
+   flip adds `a w (i+1)`. `a w (i+1)` is not already an edge: the only common neighbours of `a` and `b` are `w 1` and
+   `w (d−1)`, because every triangle is facial (`NoSep`).
+4. **Delete** `b`'s remaining three edges (`subgraph_closed` onto `isolateGraph b`). The support loses `b` and gains
+   nothing.
+
+`#print axioms` for `flip_exists`, `contract_edge` and `contract_subgraph1`: `[propext, Classical.choice, Quot.sound]`.
+
 ## The remaining sorry (exactly one)
 
 **`contract_subgraph` (C4a): pure map geometry, with no configuration data.**
@@ -138,8 +190,13 @@ theorem contract_subgraph (T : SphericalMap n) (H : SimpleGraph (Fin n)) (hH : H
     `split`/`RingFace.chordMap`, `growBefore_fills` and `Sep5Star.starMap`.
 - *Estimated size:*
   - general: 800–2,000 lines;
-  - a single contracted edge (741 of the 852 registry C entries have X = one interior edge): 300–500 lines;
-  - the iteration over ≤ 4 edges: about 100 lines on top of the single-edge case.
+  - a single contracted edge (741 of the 852 registry C entries have X = one interior edge): **done**, see above;
+  - the remaining iteration over ≤ 4 edges: `contract_edge` makes `T'` triangulated only up to the digons it deletes.
+    The next edge's ends are adjacent in `T'`, but `T'` is no longer known to be triangulated without separating
+    triangles. The plan is to state `contract_edge`'s output facts directly about `T'`, or to contract a spanning tree
+    of `H` in one sweep around the merged vertex.
+  - ring–interior single edges (`eqR = [(t, a)]`, `eqI = []`): `contract_subgraph1` applies unchanged. The missing piece
+    is an `xGraph_one` lemma for that shape, about 30 lines.
 - *Star-reducer shortcut for w66666 (scope recommendation 1).* `three_colour_reached` plus a generalised
   `Sep5Star.starMap` would discharge that one entry with no contraction at all.
 
@@ -152,12 +209,18 @@ No `axiom` is added. `#print axioms` at the end of the file shows:
 - `colorable_of_cReducible18`: those, plus the D chain's `DCheck.R1.check4..9` native_decide axioms;
 - `CEntry.colorable` and `four_color_of_unavoidableC`: additionally `sorryAx`, through C4a only, and (for the latter)
   `DCheck.Meet.*`;
+- **`CEntry1.colorable`, `cGlueX1`**: `[propext, Classical.choice, Quot.sound, DCheck.R1.check4..9 native_decide]`, with
+  **no `sorryAx`**;
+- **`four_color_of_unavoidableC1`**: the same, plus `DCheck.Meet.check4_true/check5_true/size4/size5` native_decide,
+  with **no `sorryAx`**;
 - `e66666`: its own native_decide axioms.
 
 ## Build
 
 **This container: builds, 0 errors.**
-- `CGlue.lean` is 815 lines. It compiles with one `declaration uses sorry` warning, at `contract_subgraph`.
+- `CGlue.lean` is 959 lines. It compiles with one `declaration uses sorry` warning, at `contract_subgraph`.
+- `CContract.lean` is 536 lines. It compiles with no `sorry` (about 8 s). Build order: `… ClaimGlue, C66666, CContract,
+  CGlue`.
 - Toolchain: Lean v4.35.0-rc3 at `/root/leantc`, against the partial Mathlib 300d0e5 build at `/root/mlb`.
 - Only the missing targets were built (`lake build` of `PlaneMap.MinimalFrame`, `RingReduce`, `OccToRing`); this was
   not a full Mathlib build.
@@ -169,11 +232,12 @@ No `axiom` is added. `#print axioms` at the end of the file shows:
 
 **Studio.**
 1. Run `out/lean_glue/glue.sh` as for `ClaimGlue` (the af2f63f5 tree, where SepAll's `Cyc` is renamed `SepCyc`).
-2. Then add `C66666` and `CGlue`, each as `lean -o $W/dc/<f>.olean -i $W/dc/<f>.ilean $H/<f>.lean` from `dcheck/`.
+2. Then add `C66666`, `CContract` and `CGlue`, each as `lean -o $W/dc/<f>.olean -i $W/dc/<f>.ilean $H/<f>.lean` from `dcheck/`.
 3. Check the `#print axioms` lines at the end of `CGlue.lean`.
 
 ## Next steps
-1. Prove C4a. Start with the single-edge contraction (`SphericalMap.contractEdge`), then iterate over ≤ 4 edges.
+1. Prove C4a for |X| ≥ 2: iterate `contract_edge`, which needs either a version without the triangulation premise or
+   a one-sweep contraction of a tree. Add `xGraph_one` for one ring–interior edge.
 2. Generate one `CEntry` per registry C key: `hC` by native_decide, at rings 14–16 (tens of CPU-hours, like Job 24b);
    `lbl` from the X-components.
 3. Extend the occurrence bridge so that it also yields `OccExact` and `XRingSimple`.
