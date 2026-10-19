@@ -155,3 +155,7 @@ not new to F.
   fetched by path, byte-identical. r10a alone: 11 D / 8 C, as explore's run. Default glob: **815 D / 612 C** (+11 D,
   +8 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher (10 names: all 7 minimal plus a sample): 933
   frames, 0 mismatches. dcount (argsA44_local): **15,855** distinct parsed D (16,189 names), +11.
+- ~02:45Z 19 Oct: explore 40dae1f9 (loop/k47/r7e_kills*: kills of the d=7 row 7665666/6566565). 5 files fetched by
+  path, byte-identical. r7e alone: 22 D / 11 C, as explore's run. Default glob: **837 D / 623 C** (+22 D, +11 C,
+  0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher (12 names: all 4 minimal plus a sample): 783 frames,
+  0 mismatches. dcount (argsA44_local): **15,877** distinct parsed D (16,211 names), +22.
