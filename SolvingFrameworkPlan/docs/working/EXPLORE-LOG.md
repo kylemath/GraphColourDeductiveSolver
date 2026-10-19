@@ -70,7 +70,8 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   before the pause, 0 mismatches; 07:16-07:48Z). 98 kill windows and 53 f-names (twoeng: 28 D, 25 C, all C with
   the same X on both engines). Minimal: f8_.656.656_.55..55. (D, ring 12), f8_...56665_......55 (C, ring 12),
   f8_...56665_.....65. and f8_...56665_....6.5. (C, ring 13). Guess (70% at ring <= 14) right. It stopped at ring 14
-  because it has kills. Twoeng-ready: `loop/k47/r8b_kills*`.
+  because it has kills. Twoeng-ready: `loop/k47/r8b_kills*`. Studio admitted all 53 (07:53Z): registry 5fa0adb0,
+  869 D / 658 C, dcount 15,909.
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
