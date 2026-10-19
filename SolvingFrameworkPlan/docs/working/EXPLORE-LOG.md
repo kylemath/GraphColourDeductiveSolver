@@ -119,6 +119,16 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
 - **Survey (pre-registered 11:39Z, after the kill line; minutes of CPU): every sender, no stop** (SURVEY=1), to list
   which contexts our engines kill outright and which cases survive, for Opus's stage 20. Not a claim and no kill
   line; any kills go to Studio as usual. Guess: about half the 26 contexts die (the 12 registry-dead ones plus a few).
+  - **Survey result (11:47Z; 11:39-11:46Z, 1,437 distinct windows, 0 mismatches): 16 of the 26 contexts die in
+    every case, 10 survive.** 12 die on the registry alone (Opus's 8 inadmissible ones and 55667 [0,1,0,0,0|1,1],
+    [0,1,0,1,0|0,0], [0,1,0,1,0|1,0], 55758 [0,0,0,0,0]); 4 more need engine windows: 55767 [0,0,0,0,0|0] and
+    [0,0,1,1,0|0], 55858 [0,0,0,0,0], 55668 [0,1,0,0,0|0,0]. Engine kills: 14 windows, all D on both engines (twoeng
+    14 D, 0 C), e.g. p5_u556.._.6..._..5.. at ring 8; list in `loop/k51/fam51_survey_kills.txt`.
+  - Survivors (context: surviving cases in slot order, see the log): 55769 [0,0,1,0,0|0] (4 cases) and
+    [1,0,1,0,0|0] (all 16); 55667 [1,0,1,1,0|0,0] (2); 55669 [1,0,1,0,0|0,0] (8), [0,1,0,0,0|1,0] (1),
+    [0,1,0,0,0|0,0] (1); 55686 [1,0,0,1,0|0,0] (1); 55959 [0,0,0,0,0] (4); 55668 [0,1,0,1,0|0,0] (1); 55676
+    [1,0,1,1,0|0,0] (1). In every survivor the all-6 case survives. The 10 carry 0.005-0.058 each; the dead 16
+    include the three heaviest (0.101, 0.097, 0.058). Guess (about half die) right. `loop/k51/fam51_survey.txt`.
 - **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
   `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
   against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8
