@@ -77,6 +77,11 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   X). 19 are minimal: f9_...556565_....5.... and f9_..5556565_......... (C, ring 12), then 5 at ring 13 and 12 at
   ring 14. Guess (60%) right. Twoeng-ready: `loop/k47/r9f_kills*`. Studio admitted all 168 (08:45Z): registry 35aeebb8, 962 D / 733 C,
   dcount 16,002. (Studio's parser rejects f-names with a 9; win45 and win51 never put a 9 in a window.)
+- **d = 9 655665556/666559575 (part 1f, non-face) dies at ring 12** (09:57Z; all 2942 windows at ring <= 14, 55
+  already run, 0 mismatches; 08:40-09:56Z). 591 kill windows and 514 f-names (twoeng: 457 D, 57 C with the same X).
+  17 are minimal, 8 of them at ring 12: e.g. f9_..5556655_......... (D) and f9_...555665_.....5... (C). Guess (60%)
+  right. Twoeng-ready: `loop/k47/r9g_kills*`. **All non-face rows of round 51 have died** (7665666, both d = 10,
+  d = 8 76566656, both d = 9), at ring 12-13; every face row tried is R*-like. Face rows at ring 14 now run.
 - **Part 2 re-pointed (pre-registered 09:33Z; Long Table, 09:32Z), before any engine run on the new target.** Opus's
   stage 19 and 19b oracles (loop/opus/P_own_lp/FINDINGS.md) show that the LP rebuilds 10/63 from whichever members
   of a face five's context family are left, so a kill counts only if it covers the whole family. The generic ring-17
