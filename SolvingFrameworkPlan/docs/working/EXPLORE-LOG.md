@@ -75,6 +75,9 @@ None of these rows was swept before in any orientation (canon_key against every 
 - **23:46Z, d7 8658656/7665555 (r54l, -2/75) dies at ring 14 by r54b's four f-names** (`r54l_kills*` byte-identical to
   `r54b_kills*`; the windows avoid s0, where the rows differ). Already on main. All three -2/75 rows of the 11/75 cert
   are dead; the -1/75 rows start with d7 8666655/5677657 (face row).
+- **23:56Z, d7 face row 8666655/5677657 (r54m, -1/75): no kill at ring <= 14** (735 windows). Its ring 15-16 (491 windows,
+  ~2 h here) is moved behind the other -1/75 rows: `rows54c.txt` runs d8 76556675/66665555, d8 76765656/55556665, the
+  d7 face row 8556856/7565666, then r54m's ring 15-16, then r54e-h.
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 

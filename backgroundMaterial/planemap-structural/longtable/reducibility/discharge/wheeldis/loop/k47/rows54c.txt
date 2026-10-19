@@ -1,0 +1,12 @@
+# Round 54 third queue (explore 23:56Z): the 11/75 cert's -1/75 rows with the non-face rows first, since the d7 face row
+# 8666655/5677657 (r54m) had no kill at ring <= 14 and its ring 15-16 would hold the queue ~2 h; r54m resumes after.
+# D LK SV PREFIX   run by: python3 q54.py rows54c.txt 14 7000
+8 76556675 66665555 r54n   -1/75
+8 76765656 55556665 r54p   -1/75
+7 8556856 7565666 r54o   -1/75 face row (5-5-5 face w1 w2 s1)
+7 8666655 5677657 r54m   -1/75 face row (5-5-5 face w5 w6 s5): ring <= 14 done, 0 kills; ring 15-16 resumes here
+# not in the 11/75 cert (l3q lower cert on 7360eb92 only):
+8 85566556 66666855 r54e   0.0125 (l3q lower cert)
+8 85556655 66866666 r54f   0.0125
+7 8568656 6655555 r54g   0.0125
+8 76665656 56566655 r54h   0.0125
