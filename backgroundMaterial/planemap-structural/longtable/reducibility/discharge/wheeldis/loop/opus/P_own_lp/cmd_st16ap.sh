@@ -17,3 +17,6 @@ python3 pcheck.py solveR2 xon apexcls v6 $F dbg tag=st16ap root=$M args=s19/args
 python3 pcheck.py solveR2 xon apexcls v6 dbg tag=st16b0 root=$M args=s19/argsA52.txt rpat=rpatD.txt consbasis=cons2basis_v6.json $W K=300 xcap=3 xpen=1e-3 threads=1 work=$S/wr41 > st16b0.log 2>&1
 python3 pcheck.py lowerR2 apexcls v6 xon $F cert=cert_st16ap.json xcap=3 root=$M args=s19/argsA52.txt rpat=rpatD.txt work=$S/wr40 > lower_st16ap.log 2>&1
 python3 pcheck.py upperR2 apexcls v6 xon nomax $F sol=sol_st16ap.json root=$M args=s19/argsA52.txt rpat=rpatD.txt threads=2 work=$S/wr44 > upper_st16ap.log 2>&1
+# baseline checks
+python3 pcheck.py lowerR2 apexcls v6 xon cert=cert_st16b0.json xcap=3 root=$M args=s19/argsA52.txt rpat=rpatD.txt work=$S/wr41 > lower_st16b0.log 2>&1
+python3 pcheck.py upperR2 apexcls v6 xon nomax sol=sol_st16b0.json root=$M args=s19/argsA52.txt rpat=rpatD.txt threads=1 work=$S/wr45 > upper_st16b0.log 2>&1
