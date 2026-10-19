@@ -324,3 +324,9 @@ our agent R and have no output from it.
   - Studio passes s16 and s17 at 1/5 (96890972, be2f93b9).
   - Studio's spec-only checker passes s17r at 31/178 (d667219b). All 25 rows rebuild; the only nonzero reduced cost is M[76667] = 40/89.
   - **Relay line at 31/178 = 0.1742 is [E2].** s12r50 (23/134) is being checked from §12.
+- **P stage 14 (00:30Z): 7 -> 7 inflow + reduced 6-centred on argsA50 gives st14q = 23/134** [own checkers, both sides].
+  **Kill line met: the binder 7665566/6675666 stays tight (dual 0.194, q = 0).** Reason: the only sender, w0, cannot see
+  u's fives w3 and w4, since those are the 2 letters of u's link it misses, and every other letter it sees is a 6. So it must pay all
+  similar 7-neighbours equally, and w0 is itself a 7 of the tight family (7665666/6566565 and 7655666/6756666 bind too).
+  Paying this row needs radius-3 information: a two-step relay through the 6s w2 and w5, or a wider separator window.
+  New separator bin/jsep4 (per-link inflow at the leaf) is in P_own_lp.

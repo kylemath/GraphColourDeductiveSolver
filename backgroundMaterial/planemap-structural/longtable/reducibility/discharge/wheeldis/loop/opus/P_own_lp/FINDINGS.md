@@ -412,3 +412,13 @@ Not read: Studio's Job 31 spec.
   - Binders:
     - receivers: d=7 7665566/6675666 (dual 0.194), d=7 7665666/6566565, d=7 7655666/6756666, d=10 6565656565/6655666666, d=10 6556656556/6665656665;
     - senders: 66669, 55667 (x3 contexts), 55767 (x2), 56669 (x2), 66667.
+- s12r50 reproducibility: upperR2 re-run with current code (zh, q7 off; apexcls; consbasis given) FEASIBLE at 23/134 (upper_s12r50_recheck.log). cmd_s12r50.sh; engine snapshot + md5s in snap/ (s12r50_solve = engine at launch, s12r50_check = current).
+- st14q (stage 14: R77 q7 + reduced 6-centred, argsA50): 84 iterations, 3076 s.
+  - t* = 23/134, equal to s12r50.
+  - LOWER-R2 VALID 23/134 (60 rows incl. 3 mrowQ). UPPER-R2 FEASIBLE (jsep4 with leaf inflow table, 200 links; senders 0; conservation 4.6e-13; d = 7..17 exhaustive 0; Karp d0 12.20).
+  - V3 dbg: separator = row value to 5e-10 over 117 rows.
+  - **Kill line met**: 7665566/6675666 (and its mirror 6665766) is still tight with dual 0.194. In the primal, q into it is 0: load = y 0.72015 + 0.41418 + h 0.03731.
+  - Obstruction, read from the certificate: it puts weight 0.194 on Q[7|6666] >= q[7665566] and 0.045 each on Q[7|6666] >= q[7665666] and Q[7|5666] >= q[7655666].
+    - The only possible sender, w0, is a 7 whose visible part of u is all 6s. The fives w3, w4 are exactly the 2 letters w0 cannot see.
+    - So w0 must pay the same to every 7-neighbour with that view. w0 is itself a 7 in the same tight family (7665666/6566565 and 7655666/6756666 bind).
+  - Next: a key the sender can see must include u's w3, w4. That means radius-3 information (a two-step relay through the 6s w2/w5, or jsep with a wider window).
