@@ -35,6 +35,16 @@ None of these rows was swept before in any orientation (canon_key against every 
 - **22:27Z, d7 8658656/6665555 (r54b, dual 0.025) dies at ring 14.** No kill at ring <= 13 (575 windows); at ring 14 (309
   windows) 4 two-engine D (twoeng on `loop/k47/r54b_kills*`: 4 D both engines), 4 f-names, minimal f7_..56856_...566.
   (ring 14, m 9: the hub, link run 5-6-8-5-6 and s-letters 5-6-6). Hypothesis right for this row.
+- **22:48Z, d8 face row 75666556/66666565 (dual 0.044) dies at ring 12 on our own windows.** Long Table 22:33Z asked for
+  RSST 8406.123 (rsst433; interior u, w0, w7, w1, w5, w6, s5, s7) on kc as an independent engine: kc D false (as in
+  k44), kc -C conservative false (|X| <= 4, best leftover 12; `loop/k54/rsst433_kc.out`). The same interior is this
+  row's window a8_u75...556_.....5.5 (ring 12): also neither. But its neighbour a8_u75...556_.....565 (add s6 = 6) is
+  C on kc -C with X={I0-I3} and on cfast --fixed (leftover 0). The row's ring <= 12 windows (477) were then run on both
+  engines in `loop/k54/` (drive45 and minkill47 copies, own A_kcc.out and KILL, NW 1): 3 two-engine kills, 3 f-names
+  (twoeng: 1 D, 2 C same X, 0 mismatch), every X {I0-I3}, interior-only. Minimal: f8_...55675_...565.. (C, ring 12, m
+  9) and f8_..556665_..5..... (C, ring 12, m 8: the face w5 w6 s5 with the link run w1..w4 = 5666 and the hub). Guess
+  (face row survives ring 16) wrong. Studio's ring 15-18 files for this row are no longer needed; its ring <= 14 run here
+  is dropped.
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
