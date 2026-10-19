@@ -369,3 +369,4 @@ our agent R and have no output from it.
   [own checkers; lowerR2 VALID with 41 rows; upperR2 FEASIBLE]. Receivers: 5566766/5666667 (0.2021), d = 10 6565656565/6655666666
   (0.0532), d = 7 8665566/5675665 (new) and d = 8 76566656/65566556 (new, 0.0319 each). Senders: 66669, 55667, 55767, 55686, 55696.
 - **P2 s20r (03:30Z): the s10 relay on argsA53 is unchanged at 37/214** [own checkers, both sides]. Top receiver: 7665566/6665766 (0.159). The d = 10 row 6565656565/6655666666 still binds in both relay classes.
+- **Two-engine (03:31Z): Studio's §12 spec-only checker passes s20c at 8/47 = 0.1702** (38de2a15; dcount identical; receivers d = 7..15 exact; all 41 rows rebuild). **The relay line at 8/47 is [E2], our best so far.**
