@@ -1,5 +1,38 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 53 (19 Oct 2026, 18:24Z-): H-S53, split and kill, do the surviving face rows die one ring out, piece by piece?
+
+**Pre-registered 18:24Z, before any engine window of this round.** Coordinator 18:10Z, from the user's sprint plan
+("split and kill"): extend each surviving face row by the degrees just outside it and attack each extension on its
+own. Extensions that die become registry kills; the survivors go to Opus via Long Table as the sharper binders a face
+rule should read.
+- **Tool** `loop/k53/cen53.py` (census50 + cen51 for receiver rows). Slots: the privates of each exact non-5 link
+  vertex (census50's) and the ring-3 vertices next to s_(i-1), s_i, s_(i+1) of each 5-5-5 face w_i w_(i+1) s_i,
+  each 5..9 (9 = >= 9, never exact). For 7665566/6765766 that is 10 slots (p01 p02 p11 p21 p51 p61, and next to the
+  face w3 w4 s3: t(p21,s2), the apex t(s2,s3,s4), t(s4), t(s4,p51)), so 5^10 fillings. A five at the apex closes
+  off its two ring-3 neighbours (they become adjacent), so the fillings are split into the apex = 5 part and the
+  apex 6..9 part, each with a letter-independent structure (checked). The builder gained a ring vertex with no
+  outward neighbour for this (cen53.LZ).
+- **Method.** 1. Registry containment (census50's matcher: 582 RSST on two engines + explore's twoeng names, 3,337
+  configurations). 2. Engine windows: connected interiors of the row's exact vertices plus 1-2 slots at letters
+  5..8, ring <= 16 on this machine, fewer slots first, then more fives, then smaller ring; kc -C -t 600, kc D on
+  dfast, kc C on cfast --fixed with kc's X; a window whose requirement is already covered is skipped. Coverage is
+  the exact count of fillings in the union of requirement cylinders. Ring 17+ windows go to Studio as to-do files.
+- **Rows**, by weight: 7665566/6765766 (the 0.231 binder's mirror), then Long Table's list 7665566/6675666,
+  7655666/6756666, 7655667/6756656, 7765566/6575666, 7655566/6759676, then 7766556/6576576 and 7766556/6567566.
+  2 h engine cap per row here.
+- **Kill line, per row:** the row is killed when every filling is covered. Otherwise the uncovered set, per slot
+  and in closed form where it is a product, is the survivor reported to Long Table.
+- **Tool check before this pre-registration (18:18-18:21Z, registry only, no engine run).** On 7665566/6765766 the
+  apex = 5 part is covered entirely: with the apex t(s2,s3,s4) = 5, {w3, s3, apex, s2} (5, 5, 5, 6) is a ring-7
+  configuration inside the row (rsst001, also f7_.....55_.....65; re-run here on kc and dfast, both D). The apex
+  6..9 part is 69.56% covered (19 minimal requirements, all RSST). Total 75.65%; uncovered 2,378,112 of 9,765,625,
+  including all 59,049 fillings with every slot >= 7 and 1,028,352 of the 1,048,576 with every slot >= 6. The same
+  tool on 7665566/6675666 without ring-3 slots reproduces round 50's census exactly (80.34%, 3,072 survivors).
+- **Guess:** engine windows add less than 5 points on the apex 6..9 part of 7665566/6765766 (the uncovered fillings
+  with every slot >= 6 have no five beyond the face), 70%. On every other face row, apex = 5 is covered by the
+  registry alone wherever the face has a 6 next to it on the apex side (as s2 here), 75%.
+
 ## Round 52 (19 Oct 2026, 12:44Z-): H-F18, do the surviving face receivers die at ring 17-18?
 
 **Pre-registered 12:44Z, before any engine run on these targets.** Gap G2. Long Table, 12:41Z: Opus's stage 21 is
@@ -72,6 +105,12 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   before its cap to start the d = 10 binders. 1,305 of 1,421 ring <= 16 windows run, no D/C. Its 352 windows left (116
   at ring 16, 167 at ring 17, 69 at ring 18) are in `loop/k47/win52_7_7766556_6567566_todo.txt`, for Studio.
   6565665656/6555555565 started at 18:09Z, then 6565555665/6665956566.
+
+- **18:22Z, d = 10 6565665656/6555555565 (2/13 binder, 0.038): dies at ring 13.** Stopped once dead (1,300 of 11,004
+  ring <= 16 windows run, so ring 15-16 is not needed): 97 two-engine kills (16 D at ring 13, 81 D at ring 14), 59
+  f-names, 5 inclusion-minimal, e.g. f10_...5656656_....55.55. (ring 13, m = 12). twoeng passes all 59 as D on both
+  engines; `loop/k47/r52j_kills*`, to Studio for admission. Guess (dies at ring <= 14, 75%) right.
+  6565555665/6665956566 started at 18:23Z (stopped once dead at ring <= 13, if it is).
 
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 

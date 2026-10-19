@@ -1,0 +1,22 @@
+# cen53 start 18:14Z: row 7 7665566/6675666, 6 privates p01 p02 p11 p21 p51 p61, 15625 fillings, RMAX 16, KMAX 2, TSEC 600, cap 0 s, registry /tmp/claude-0/-home-claude/e93ccb28-7843-5c35-aaad-eabd09ceeb9b/scratchpad/fam/tw53
+registry (3337 configurations, 16 names not found): 0 inside the 1.5-ball; 7 minimal requirements, covers 12553 of 15625 fillings (80.34%)
+  reg p21=5 | rsst025_122o126
+  reg p51=5 | rsst050_2o504366
+  reg p11=5 | rsst052_122o431
+  reg p61=5 | rsst052_122o431
+  reg p51=6 | rsst098_2o260517966
+  reg p01=5 | rsst180_122o61866
+  reg p02=5 | rsst180_122o61866
+engine windows: 32923 (connected subsets 209477), by privates [(1, 11080), (2, 21843)], by ring [(8, 23), (9, 80), (10, 201), (11, 476), (12, 957), (13, 2079), (14, 4582), (15, 9351), (16, 15174)]
+engines: 0 windows run, 0 skipped as covered, 0 kills, 18:15Z; capped True
+coverage: registry 12553 + windows -> 12553 of 15625 fillings (80.34%); uncovered 3072
+  private p01 uncovered by letter {5: 0, 6: 768, 7: 768, 8: 768, 9: 768}
+  private p02 uncovered by letter {5: 0, 6: 768, 7: 768, 8: 768, 9: 768}
+  private p11 uncovered by letter {5: 0, 6: 768, 7: 768, 8: 768, 9: 768}
+  private p21 uncovered by letter {5: 0, 6: 768, 7: 768, 8: 768, 9: 768}
+  private p51 uncovered by letter {5: 0, 6: 0, 7: 1024, 8: 1024, 9: 1024}
+  private p61 uncovered by letter {5: 0, 6: 768, 7: 768, 8: 768, 9: 768}
+  fillings with every private >= 6: 4096, uncovered 3072
+  fillings with every private >= 7: 729, uncovered 729
+  uncovered set IS the product of its letters per private (p01 in 6789 p02 in 6789 p11 in 6789 p21 in 6789 p51 in 789 p61 in 6789; box 3072)
+# cen53 end 18:15Z
