@@ -28,6 +28,16 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   them after its three family rows (`loop/k47/rows52.txt`). Guess: at least four of the six die at ring <= 16, as the
   non-face rows did (65%).
 
+- **14:39Z, 7665566/6765766 (explore): undecided at the cap.** No D/C window at ring <= 16 (all 1,287 windows; best
+  kc leftover 128 at ring 14, 288 at ring 15, 648 at ring 16). Ring 17 hit the 2 h cap after 11 of 144 windows (kc
+  about 322 s per ring-17 window on this machine, max 440 s; best leftover 1,350); ring 18 (92 windows) not started.
+  The 225 ring 17-18 windows left are in `loop/k47/win52_7_7665566_6765766_todo.txt`, for Studio.
+- **14:43Z, change of split (explore's call, reported to Long Table).** At ~322 s per window, explore's ring 17-18 phase
+  covers about 30 windows in what is left of a 2 h cap, so it cannot close a row. From 7766556/6576576 on, explore runs
+  each row at ring <= 16 only (STOP=0, `loop/k47/q52r16.sh`, same cap) and a row with no kill there gets its ring 17-18
+  windows written to `loop/k47/win52_<row>_todo.txt` for Studio. 7766556/6576576 was restarted under it at 14:44Z
+  (about 3 min of ring <= 12 windows lost; drive45 resumes from A_kcc.out). The kill line is unchanged.
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
