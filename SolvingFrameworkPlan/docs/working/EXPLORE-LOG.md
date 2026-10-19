@@ -12,6 +12,13 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   at ring <= 16 means R*-like; report it and stop. Guess: 7665666/6566565 dies at ring <= 14 (three 5s in its s word
   and a 5 in its link, like the d = 9 rows that died). 7655666/6756666 has the binder's 55 pair with one 5 in s, so it
   is closer to the binder. I give it 40% that it dies.
+- **Part 1b (pre-registered 02:08Z; Long Table, 02:08Z): two relay binders from s18r (9/52)**, run after part 1 and
+  before part 2: d = 10 6565656565/6655666666 (canonical 5656565656/5666666665) and d = 7 7655667/6756656 (canonical
+  5566776/5665667). Neither has been swept before, and the RSST patterns miss both. Each runs at ring <= 14 first, then
+  ring 15-16 only if no kill. Hypothesis: each dies at ring <= 16. Kill line: no D/C at ring <= 16 means R*-like;
+  report it and stop. The third binder, 5566766/5666667, is round 50's row (R*-like) and is not rerun. Guess: d = 10
+  dies at ring <= 14 (ten link letters alternating 6 and 5, like the d = 9 rows that died). d = 7 7655667 has the
+  5-5-5 face (w2, w3, s2) again, between two 7s, so I give it 40%.
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
