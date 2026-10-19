@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19 Oct 01:07Z: s12r50 t* = 23/134 ≈ 0.172 accepted as [E2] in the reduced 6-centred relay class (Opus + Studio spec-only checker 139b490e; receivers exhaustive d=7..15 via arrangement-keyed relaxation; first 5,000-cap run void). Gate draft + dashboard updated. Stage 15 solving; Studio extends checker from §13.
 - 19 Oct 00:35Z: Opus stage 14 (7->7 inflow on reduced 6-relay, d43ba26a) KILLED: t* stays 23/134, binder 5566766/5666667 tight q=0; sender w0 cannot see u's fives w3/w4, so the row needs radius-3 information. Stage 15 approved: 6->7 relay via w2/w5 keyed by the 6-centred 2-ball type; kill line = row stays tight at 23/134; needs RELAY_SPEC §13 before solving. Ring 15-16 reduction of the row stays with explore.
 - 19 Oct 00:18Z: s17r relay t* = 31/178 ≈ 0.174 [E2] on d43ba26a (Opus + Studio spec-only checker d667219b). s16/s17 main line 1/5 [E2] (96890972, be2f93b9). s12r50 (23/134) spec-only check running; dashboard update after it lands.
 - 18 Oct 23:55Z: KYLE DECISION: continue with our own discharge rules; the published rules are a benchmark only (they show the destination exists). Published reducible configurations verified on our own two engines stay usable as registry patterns. Main line: stage 14 rule for the R*-like row 5566766/5666667.
