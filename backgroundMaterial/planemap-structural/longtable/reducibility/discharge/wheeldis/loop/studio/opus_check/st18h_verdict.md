@@ -51,3 +51,9 @@
   big. Studio implemented the rows as written: the five's row +r, the big's load +r.
 - Hats at five-spokes are enumerated without an extra admissibility test, since section 15 states none. The row count
   20,676 matches Opus's.
+
+## Step 4: the same upper check on registry 5fa0adb0 (argsA55_pinned; dcount 15,909, patterns 15,909 / 1,704 / 158)
+- **FEASIBLE at 17/107.** Log: st18h_5fa0_check.log.
+- Bounds, senderR2 (20,676 rows) and cons2: 0 violated.
+- C++ exact weights vs spec rows: max 4.7e-10. Relaxed rows vs spec rows: 820 arrangements, 0 mismatches.
+- Receivers d = 7..17: 0 exact violators. DP d = 18..30 clean. Karp λ = 0.556074766, covering d >= 13.158.

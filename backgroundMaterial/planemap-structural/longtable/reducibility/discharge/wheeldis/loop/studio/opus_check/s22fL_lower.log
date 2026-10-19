@@ -1,0 +1,16 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+solution t = 0.160000000000000 (claimed 4/25 = 0.160000000000000), model R6x2 apex True apexcls True zh False: 813 y, 258 g, 4745 h, 18 x, z []
+v values 0; r values 0; sol hat5 None
+bounds: 0 negative values; max x = 0.059438 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 7074 (spec 7,074), violated 0, min slack -8.32e-14; g2 keys in sender rows 381 (spec 393)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 1.77e-13
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+patterns distinct by kind: D 15909 (spec 15,497), C 1704 (spec 1,494), RPAT 158 (spec 158); by d {7: 9693, 8: 4518, 9: 1729, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+cert rows 90: {'senderR2': 20, 'cons2': 42, 'mrowR2': 19, 'receiverR2': 9}; mrowR2/mrowV not in canonical orientation: 0 []
+lower: tco = 1, D = 4/25; nonzero reduced costs: M[766675531] = 3/25, M[767675531] = 3/25, M[777775531] = 1/25; negative (non-x) 0
+LOWER: VALID t >= 4/25
+VERDICT (lower only): PASS (lower VALID 4/25)
