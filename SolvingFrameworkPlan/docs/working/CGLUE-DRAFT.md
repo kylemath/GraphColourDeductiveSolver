@@ -30,6 +30,42 @@ build in this container with 0 errors and no `sorry`** (the same holds for `CSan
 - `ClaimGlue.lean`'s `CEntry`, `CGlue`, `Registry` and `Unavoidable` carry a "Superseded by `CGlue.…`" docstring note.
   There are no other changes to that file.
 
+**Status, fourth update (option (a), done for all 89).**
+- **Folded rings at touched positions are now allowed.** `CEntryF.colorable`, `cGlueXF` and
+  `four_color_of_unavoidableCF` use `OccursCXF`. That is `ConfigOccW` + `OccExact` + `NbrInj` + `ApexFacts`, with **no
+  `XRingSimple`**, plus a per-key decidable check `foldSafeX`. There is no `sorry`; `#print axioms` shows only
+  `propext`, `Classical.choice`, `Quot.sound` and the `native_decide` axioms.
+- **How a loop is ruled out.**
+  - Labels: `xKappa` labels each vertex by its X-component, and the label is still constant after a fold. So a loop
+    needs a fold `ρ p = ρ q` of a specific pair (D1: a kept ring neighbour against the component's ring vertex; D2: the
+    ring vertices of two adjacent components).
+  - Triangle rule (`exclB`, `excl_sound`), for the cycle of length 3. Consecutive positions are `G`-adjacent. One
+    interior vertex seeing both positions is handled by `NbrInj`. Two adjacent interior vertices seeing them are
+    handled by `NoSep` + `ApexFacts` → `CommonNbr`, then `NbrInj`.
+  - Short-cycle rule (`cycEx`, `cyc_sound`), for cycles of length 4 and 5.
+    - If `ρ p = ρ q`, an interior path `c₀…c_{k-1}` (2 ≤ k ≤ 4) from a neighbour of `p` to a neighbour of `q` closes a
+      cycle of length `k + 1 ≤ 5` in `T`.
+    - On a path edge whose ends have no common ring neighbour, `CommonNbr` + `nbr` make the two face apexes interior
+      common neighbours. If none of these is on the path, the apexes are off the cycle and on opposite sides
+      (`apex_sides`: the cycle potential flips across the edge).
+    - For length 5, each apex also has an interior neighbour off the path, on the same side (`side_step_cyc`).
+    - This contradicts `NoShortSepCycle` (Birkhoff, proved; `MinimalCounterexample.noShortSep`).
+- **Coverage.** All 89 `CGLUE-XRING-ENTRIES.txt` entries pass `foldSafeX`, with one label per X-component, in a
+  Lean `#eval` over the configurations from the kill files. 85 need only the triangle rule. Four need the short-cycle
+  rule:
+  - `f7_..57556_...65..`, `f7_..57556_...66..` and `f7_5675767_.5.....`, with 4-cycles;
+  - `f9_..5565675_......5..`, with 4- and 5-cycles. This one is checked in the file as `cfF9_needs_cycle` / `cfF9_fold`.
+  - Seven names have two configurations in the kill files. Only the one that matches its X is admissible. The two
+    non-matching `f9_...555665_…` configurations fail `foldSafeX`, but they cannot be `CEntry`s, because `hadm` fails.
+- **What the occurrence must still supply.**
+  - `NbrInj`: the listed ring neighbours of one interior vertex are distinct vertices of `T`. This follows from the true
+    degree.
+  - `ApexFacts`: the apex of a facial triangle on a listed interior edge is a configuration vertex adjacent to both
+    ends. This follows from the rotation at interior vertices being the configuration's rotation.
+  - Both are local rotation facts, of the same kind as `OccExact`, and replace the global `XRingSimple`.
+- **Labels.** A registry `CEntryF` should use one label per X-component. `foldSafeX` depends on `lbl` only through
+  equality, and per-component labels give the smallest danger set.
+
 ## What is assumed
 
 `four_color_of_unavoidableC R hU` proves every spherical map 4-colourable, with no `sorry` and no `axiom` beyond the
@@ -55,6 +91,8 @@ these occurrence conditions for C entries:
      It is the same kind of argument as JOB26's hand proof that the second ring is simple; not attempted in this round.
    - Route (b), allowing folds in `OccursCX`, needs a fold-aware label argument (C4b). With an unknown fold pattern, two
      X-components may merge in `T`, and admissibility per key cannot see that.
+   - **Update (fourth round): route (a) is now proved.** See the status block above. Under `OccursCXF` / `RegistryF`,
+     `XRingSimple` is replaced by the local facts `NbrInj` and `ApexFacts`.
 3. **The D-side occurrence fields** (`ConfigOccW`: face walk, deletion map `G`, `nbr`), as for D entries.
 
 The C-reducibility verdicts (`hC`) and side facts are per-key `native_decide` facts. They enter only when a `CEntry` is
@@ -266,7 +304,7 @@ for the 89).
 ## Build
 
 **This container: builds, 0 errors.**
-- `CGlue.lean` is 985 lines, `CContract.lean` 822 lines and `CSanity.lean` 216 lines. None has a `sorry`.
+- `CGlue.lean` is 1,652 lines (after the fourth update), `CContract.lean` 822 lines and `CSanity.lean` 216 lines. None has a `sorry`.
 - Build times: `CContract` about 6 s, `CGlue` about 37 s, `CSanity` about 7 s (its `native_decide` check of the 1,586
   vertex sets runs in well under a second).
 - Rebuilt after the `ClaimGlue` docstring change: `ClaimGlue`, `C66666`, `CContract`, `CGlue` and `CSanity` all exit 0.
@@ -292,5 +330,5 @@ for the 89).
 1. (Done: C4a for every X.)
 2. Generate one `CEntry` per registry C key: `hC` by native_decide, at rings 14–16 (tens of CPU-hours, like Job 24b);
    `lbl` from the X-components.
-3. Extend the occurrence bridge so that it also yields `OccExact` (through `occExact_of_nx`) and, for the 89 entries,
-   `XRingSimple`, or prove route (a).
+3. Extend the occurrence bridge so that it also yields `OccExact` (through `occExact_of_nx`), `NbrInj` and `ApexFacts`.
+   Route (a) is proved (`CEntryF`), so `XRingSimple` is no longer needed.
