@@ -105,7 +105,10 @@ static map<vector<int>, Res> found;
 static bool ARRKEY = false;
 static double RBEST[125][25];   // relaxed six value used in W at (state, c)
 static vector<double> EX6;        // SEP_EXACT6: exact six-window values [ui][wm2][wm1][wp1][wp2][sm2][sm1][s0][sp1] (letters 0..4)
-static bool HASEX6 = false;   // sep3r_ak (s12r_check.py): key results by arrangement, not by row (env SEP_ARRKEY=1)
+static bool HASEX6 = false;
+static double RREL[125][25];   // SEP_RTAB (stage 18 hat channel): relaxed r term at an apex five s_i (max over w_{i+2}, s_{i+1})
+static vector<double> REX;     // exact r term [w_{i-1}][w_i][w_{i+1}][w_{i+2}][s_{i-1}][s_{i+1}] (letters 0..4)
+static bool HASR = false;   // sep3r_ak (s12r_check.py): key results by arrangement, not by row (env SEP_ARRKEY=1)
 static long long nodes;
 static string canonWord(const string &w) {
     string best = w; int n = w.size();
@@ -203,8 +206,16 @@ static void leaf(double w) {
             long idx = ((((((((long)ui * 5 + W_(i - 2)) * 5 + W_(i - 1)) * 5 + W_(i + 1)) * 5 + W_(i + 2)) * 5 + S_(i - 2)) * 5 + S_(i - 1)) * 5 + S_(i)) * 5 + S_(i + 1);
             w += EX6[idx] - RBEST[st][c];
         }
-        if (w <= thr) return;
     }
+    if (HASR) {     // stage 18: swap each apex five's relaxed r term for the exact one
+        auto W_ = [&](int k) { return wl[((k % d) + d) % d]; }; auto S_ = [&](int k) { return sl[((k % d) + d) % d]; };
+        for (int i = 0; i < d; i++) if (sl[i] == 0) {
+            int st = W_(i - 1) * 25 + S_(i - 1) * 5 + W_(i), c = 0 * 5 + W_(i + 1);
+            long idx = ((((long)W_(i - 1) * 5 + W_(i)) * 5 + W_(i + 1)) * 5 + W_(i + 2)) * 25 + S_(i - 1) * 5 + S_(i + 1);
+            w += REX[idx] - RREL[st][c];
+        }
+    }
+    if ((HASEX6 || HASR) && w <= thr) return;
     if (omax > 0 && minRing() <= omax) return;
     if (fullForbidden()) return;
     string link(d, '0'), s(d, '0');
@@ -276,6 +287,10 @@ int main(int argc, char **argv) {
     if (const char *e = getenv("SEP_EXACT6")) { FILE *g = fopen(e, "rb"); if (!g) return 30; EX6.assign(3L * 390625, 0.0);
         if (fread(EX6.data(), sizeof(double), EX6.size(), g) != EX6.size()) return 31; fclose(g); HASEX6 = true;
         fprintf(stderr, "sep: exact six-window table loaded (%s)\n", e); }
+    if (const char *e = getenv("SEP_RTAB")) { FILE *g = fopen(e, "rb"); if (!g) return 32; REX.assign(15625, 0.0);
+        if (fread(&RREL[0][0], sizeof(double), 125 * 25, g) != 125 * 25) return 33;
+        if (fread(REX.data(), sizeof(double), REX.size(), g) != REX.size()) return 34; fclose(g); HASR = true;
+        fprintf(stderr, "sep: hat-channel r table loaded (%s)\n", e); }
     FILE *f = fopen(argv[1], "r");
     if (fscanf(f, "%d", &NV) != 1) return 1;
     for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++)
@@ -342,6 +357,7 @@ int main(int argc, char **argv) {
                 for (int q = 0; q < 5; q++) { int vv = RV[ui][a][c][q]; if (vv >= 0 && RY[vv] > best + 1e-15) { best = RY[vv]; bv = vv; } }
                 W[a][c] += best; RA[a][c] = bv; RMAXV = max(RMAXV, best); RBEST[a][c] = best;
             }
+            if (HASR && AL[ui][a][c] && c / 5 == 0) W[a][c] += RREL[a][c];   // apex five s_i: + relaxed r
         }
         // M[a][b] (max-plus one step), Bnd[k] = M^k
         vector<double> M(125 * 125, -1e18);
@@ -361,7 +377,7 @@ int main(int argc, char **argv) {
         found.clear(); nodes = 0; CT = thr; aborted = false;
         // start states: w_0 = 5 (every arrangement of positive weight has a 5; rotate it to position 0)
         vector<pair<double,int>> starts;
-        bool anyStartR = HASX || RMAXV > 0;
+        bool anyStartR = HASX || RMAXV > 0 || HASR;
         for (int a = 0; a < 125; a++) if ((anyStartR || a % 5 == 0) && Bnd[d][a * 125 + a] + d * XINMAX > thr + 1e-9)
             starts.push_back({-(Bnd[d][a * 125 + a] + d * XINMAX), a});
         sort(starts.begin(), starts.end());
