@@ -1,5 +1,29 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
+
+**Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
+engine, provisional, on registry 7360eb92) pays the face binder 7665566/6675676 by rule and reaches upper 0.147857 /
+lower 47/320. Its receiver binders (lower cert, `opus/P_own_lp/s28q/s28A60L.log`) are what kills must move now, ahead
+of round 53b's 87 tight patterns (which matter less once the face is paid by the rule). Queue `loop/k47/rows54.txt`,
+by dual: d10 6565656565/6556666666 (0.078), d7 8658656/6665555 (0.025), seven rows at 0.0125 (d8 76656656/56655565,
+85656765/56665565, 85566556/66666855, 85556655/66866666, 76665656/56566655, d7 8568656/6655555; and 86555665/56586665,
+not queued: it died at Studio as Job 52 row 1, admitted in 3cfd7f18, after the solve's 7360eb92), d7 8658656/6665556
+and d8 76656566/56655565 (0.006), and d8 75666556/66666565 (0.044) last here: it is the only face row of the list
+(5-5-5 face w5 w6 s5), the kind that survived ring 16 every time in rounds 52-53, so it is offered to Studio.
+None of these rows was swept before in any orientation (canon_key against every win45 file and this log).
+- **Tool** `loop/k47/q54.py`: q52r16 and stop14 in one driver. Per row, win45 windows in the 1.5-ball at ring <= 16,
+  drive45 (kc D / kc -C -t 600, dfast / cfast --fixed, STOP=0, NW 3, 7,000 s cap), stopped once every ring <= 14 window
+  is done and the row has a two-engine kill (or at its first kill after that); minkill47 f-names; a row with no kill at
+  ring <= 16 gets its remaining ring <= 18 windows written as a Studio to-do file.
+- **Hypothesis (Long Table):** the d10 and d8 binders die by ring <= 14, as the earlier d10s did. **Kill line:** they
+  survive ring <= 16.
+- **Guess:** every non-face row dies at ring <= 14 (each 80%; all ten 35%), as every non-face row of rounds 50-52 did;
+  the face row 75666556/66666565 survives ring 16 (65%).
+- **Also closed at 21:56Z: 8765556/6575965 (r52d, s22hL 0.020), pre-empted for this round.** No two-engine kill at ring
+  <= 15 or in 164 of its 176 ring-16 windows; its 106 windows not run (12 at ring 16, 66 at 17, 28 at 18) are in
+  `loop/k47/win52_7_8765556_6575965_todo.txt` for Studio. It is not a binder of the l3q solve.
+
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
 **Pre-registered 21:42Z, before any engine window of this round.** Long Table 21:28Z, from Opus s26r (e6bf1acb): face
