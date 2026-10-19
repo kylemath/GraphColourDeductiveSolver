@@ -9,7 +9,7 @@ of each 5-5-5 face w_i w_(i+1) s_i (the face's second ring beyond the row), each
   2. engine windows: connected interiors of the exact vertices (u, w, s; letter 9 never) plus 1..KMAX privates at
      letters 5..8, free ring <= RMAX; order fewer privates, more fives, smaller ring.  kc -C (-t TSEC), a kc D re-run
      on dfast (ring <= 16) or dfast18, a kc C on cfast --fixed with kc's X (drive45's rule).  A window whose
-     requirement is already covered is skipped.
+     requirement is already covered (no uncovered filling in its cylinder) is skipped.
 Coverage is the exact count of fillings in the union of the requirement cylinders (cen51.count).  Survivors are
 reported per private (letters left), with the counts for every private >= 6 and >= 7, and whether the uncovered set
 is a product of per-private letter sets.
@@ -213,14 +213,14 @@ def main():
                 req = {v: c[3][u] for u, v in e if v not in EXp}
                 if not req: inrow.append(c[0])
                 if all(l in LETp[x] and l != 9 for x, l in req.items()):
-                    k = tuple(sorted(req.items())); cyl.append(dict(req)); src.setdefault(k, c[0])
+                    k = tuple(sorted(req.items(), key=repr)); cyl.append(dict(req)); src.setdefault(k, c[0])
         cyl = minimal(cyl); n0 = count(cyl, SLp, LETp)
         say('part %s (%d fillings): registry %d inside the fixed vertices; %d minimal requirements, covers %d (%.2f%%)%s' % (
             lab, PT, len(inrow), len(cyl), n0, 100.0 * n0 / PT, ' [%s]' % ' '.join(sorted(set(inrow))[:3]) if inrow else ''))
-        for c in cyl[:40]: say('  reg %s | %s' % (' '.join('%s=%d' % (sname(k), v) for k, v in sorted(c.items())) or '(none)', src[tuple(sorted(c.items()))]))
+        for c in cyl[:40]: say('  reg %s | %s' % (' '.join('%s=%d' % (sname(k), v) for k, v in sorted(c.items(), key=repr)) or '(none)', src[tuple(sorted(c.items(), key=repr))]))
         idx = {x: k for k, x in enumerate(P)}
         def ring(S, lets):
-            ll = dict(fix); ll.update(lets); key = tuple(sorted(ll.items()))
+            ll = dict(fix); ll.update(lets); key = tuple(sorted(ll.items(), key=repr))
             if key not in bc: bc[key] = build(ll)
             adj, name, _ = bc[key]; inv = {v: x for x, v in name.items()}; deg = dict(EXp); deg.update(lets)
             return F.extract(adj, [inv[x] for x in S], {inv[x]: deg[x] for x in S}), deg
@@ -243,7 +243,13 @@ def main():
         cand.sort(key=lambda w: w[:4])
         say('  engine windows: %d (connected subsets %d), by free slots %s, by ring %s' % (len(cand), len(seen),
             sorted(collections.Counter(w[0] for w in cand).items()), sorted(collections.Counter(w[2] for w in cand).items())))
-        nrun = nskip = 0; kills = []
+        nrun = nskip = 0; kills = []; memo = {}; ver = [0]
+        def gain(req):
+            k = (ver[0], tuple(sorted(req.items(), key=repr)))
+            if k not in memo:
+                sub = {x: ((req[x],) if x in req else LETp[x]) for x in SLp}
+                memo[k] = prod(len(sub[x]) for x in SLp) - count(cyl, SLp, sub)
+            return memo[k]
         with ThreadPoolExecutor(NW) as ex:
             it = iter(cand); fut = {}
             def top():
@@ -251,7 +257,7 @@ def main():
                 while len(fut) < NW and time.time() - T0 < CAP:
                     w = next(it, None)
                     if w is None: return
-                    if covered(cyl, w[4]): nskip += 1; continue
+                    if covered(cyl, w[4]) or not gain(w[4]): nskip += 1; continue
                     fut[ex.submit(eng.verdict, w[5])] = w
             top()
             while fut:
@@ -260,7 +266,7 @@ def main():
                     w = fut.pop(f); v = f.result(); nrun += 1
                     if v.startswith('MISMATCH') or v == 'CFAST-REJECTS': say('  !! %s %s' % (v, w[3]))
                     if F.kills(v):
-                        cyl.append(dict(w[4])); kills.append((w, v)); say('  kill %s ring %d %s' % (v, w[2], w[3]))
+                        cyl.append(dict(w[4])); kills.append((w, v)); ver[0] += 1; say('  kill %s ring %d %s' % (v, w[2], w[3]))
                 top()
         cyl = minimal(cyl); n1 = count(cyl, SLp, LETp); done_all[0] += n1; done_all[1] += PT
         say('  engines: %d windows run, %d skipped as covered, %d kills, %s; capped %s' % (nrun, nskip, len(kills),

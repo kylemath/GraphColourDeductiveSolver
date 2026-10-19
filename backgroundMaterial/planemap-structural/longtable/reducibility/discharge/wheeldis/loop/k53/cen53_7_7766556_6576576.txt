@@ -1,0 +1,64 @@
+# cen53 start 18:24Z: row 7 7766556/6576576, 11 slots p01 p02 p11 p12 p21 p31 p61 tp31/s3 ts3/s4/s5 ts5 tp61/s5, 48828125 fillings in 2 parts (ts3/s4/s5=5; ts3/s4/s5=6-9), RMAX 16, KMAX 2, TSEC 600, cap 0 s, registry /tmp/claude-0/-home-claude/e93ccb28-7843-5c35-aaad-eabd09ceeb9b/scratchpad/fam/tw53
+registry: 3337 configurations (16 names not found)
+part ts3/s4/s5=5 (9765625 fillings): registry 12 inside the fixed vertices; 1 minimal requirements, covers 9765625 (100.00%) [f10_........55_........65 f11_.........55_.........65 f7_.....55_.....65]
+  reg (none) | rsst001_2o122
+  engine windows: 62073 (connected subsets 867822), by free slots [(0, 425), (1, 14475), (2, 47173)], by ring [(6, 1), (7, 32), (8, 122), (9, 334), (10, 720), (11, 1357), (12, 2621), (13, 4781), (14, 8750), (15, 16386), (16, 26969)]
+  engines: 0 windows run, 0 skipped as covered, 0 kills, 18:26Z; capped True
+  coverage: registry 9765625 + windows -> 9765625 of 9765625 (100.00%); uncovered 0
+  slot p01            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot p02            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot p11            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot p12            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot p21            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot p31            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot p61            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot tp31/s3        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot ts5            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  slot tp61/s5        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  fillings with every free slot >= 6: 1048576, uncovered 0
+  fillings with every free slot >= 7: 59049, uncovered 0
+  uncovered set IS the product of its letters per slot (p01 in  p02 in  p11 in  p12 in  p21 in  p31 in  p61 in  tp31/s3 in  ts5 in  tp61/s5 in ; box 0)
+part ts3/s4/s5=6-9 (39062500 fillings): registry 0 inside the fixed vertices; 24 minimal requirements, covers 26612644 (68.13%)
+  reg p61=5 | rsst025_122o126
+  reg p01=5 | rsst137_122o1031
+  reg p12=5 | rsst137_122o1031
+  reg p31=6 tp31/s3=5 | rsst006_2o7566
+  reg ts3/s4/s5=6 ts5=5 | rsst025_122o126
+  reg p61=6 tp61/s5=5 | rsst032_122o7566
+  reg p21=5 p31=5 | rsst033_126o128
+  reg p21=5 p31=6 | rsst072_2o1368366
+  reg p21=6 p31=6 | rsst094_2o1609566
+  reg ts3/s4/s5=7 ts5=5 | rsst116_0o211701722
+  reg p01=6 p02=5 | rsst187_126o61686
+  reg p02=5 p11=5 | rsst282_122o62946
+  reg p31=5 tp31/s3=6 ts3/s4/s5=6 | rsst006_2o7566
+  reg p31=6 tp31/s3=6 ts3/s4/s5=6 | rsst018_2o79077962
+  reg tp61/s5=5 ts3/s4/s5=6 ts5=6 | rsst032_122o7566
+  reg p11=5 p12=6 p21=5 | rsst034_126o363
+  reg p61=6 tp61/s5=6 ts5=5 | rsst046_126o7566
+  reg p21=6 p31=5 tp31/s3=5 | rsst084_486o191
+  reg tp61/s5=5 ts3/s4/s5=7 ts5=6 | rsst139_126o207
+  reg p21=5 p31=7 tp31/s3=5 | rsst192_186o1031
+  reg tp31/s3=5 ts3/s4/s5=8 ts5=5 | rsst411_7563o136
+  reg p61=6 tp61/s5=6 ts3/s4/s5=6 ts5=6 | rsst099_122o79077966
+  reg tp31/s3=5 tp61/s5=5 ts3/s4/s5=8 ts5=6 | rsst463_7682o380
+  reg p31=5 tp31/s3=6 ts3/s4/s5=8 ts5=5 | rsst467_8402o368
+  engine windows: 49800 (connected subsets 493019), by free slots [(1, 11825), (2, 37975)], by ring [(7, 4), (8, 58), (9, 186), (10, 456), (11, 987), (12, 1945), (13, 3629), (14, 6879), (15, 13129), (16, 22527)]
+  engines: 0 windows run, 0 skipped as covered, 0 kills, 18:27Z; capped True
+  coverage: registry 26612644 + windows -> 26612644 of 39062500 (68.13%); uncovered 12449856
+  slot p01            uncovered by letter {5: 0, 6: 2704080, 7: 3248592, 8: 3248592, 9: 3248592}
+  slot p02            uncovered by letter {5: 1633536, 6: 2704080, 7: 2704080, 8: 2704080, 9: 2704080}
+  slot p11            uncovered by letter {5: 2104128, 6: 2586432, 7: 2586432, 8: 2586432, 9: 2586432}
+  slot p12            uncovered by letter {5: 0, 6: 3057024, 7: 3130944, 8: 3130944, 9: 3130944}
+  slot p21            uncovered by letter {5: 1626240, 6: 2272032, 7: 2850528, 8: 2850528, 9: 2850528}
+  slot p31            uncovered by letter {5: 2172672, 6: 1391040, 7: 2888832, 8: 2998656, 9: 2998656}
+  slot p61            uncovered by letter {5: 0, 6: 2588976, 7: 3286960, 8: 3286960, 9: 3286960}
+  slot tp31/s3        uncovered by letter {5: 1941888, 6: 2468016, 7: 2679984, 8: 2679984, 9: 2679984}
+  slot ts3/s4/s5      uncovered by letter {6: 2580480, 7: 2804368, 8: 3453904, 9: 3611104}
+  slot ts5            uncovered by letter {5: 1244448, 6: 2593392, 7: 2870672, 8: 2870672, 9: 2870672}
+  slot tp61/s5        uncovered by letter {5: 1779024, 6: 2588976, 7: 2693952, 8: 2693952, 9: 2693952}
+  fillings with every free slot >= 6: 4194304, uncovered 3868416
+  fillings with every free slot >= 7: 177147, uncovered 177147
+  uncovered set is NOT the product of its letters per slot (p01 in 6789 p02 in 56789 p11 in 56789 p12 in 6789 p21 in 56789 p31 in 56789 p61 in 6789 tp31/s3 in 56789 ts3/s4/s5 in 6789 ts5 in 56789 tp61/s5 in 56789; box 20000000)
+total: 36378269 of 48828125 fillings covered (74.50%), uncovered 12449856
+# cen53 end 18:27Z

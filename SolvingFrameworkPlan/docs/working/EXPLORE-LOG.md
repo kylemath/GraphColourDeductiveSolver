@@ -33,6 +33,24 @@ rule should read.
   with every slot >= 6 have no five beyond the face), 70%. On every other face row, apex = 5 is covered by the
   registry alone wherever the face has a 6 next to it on the apex side (as s2 here), 75%.
 
+- **18:45Z, registry step on all eight face rows** (`loop/k53/cen53_<row>.txt`; a slot-name sort bug crashed six rows'
+  first runs at the engine step, fixed and rerun 18:28-18:44Z). Coverage of the 5^k fillings by the registry alone:
+
+  | row | slots | apex = 5 | apex 6-9 | total |
+  |---|---|---|---|---|
+  | 7665566/6765766 (0.231 binder) | 10 | 100% | 69.56% | 75.65% |
+  | 7665566/6675666 | 10 | 100% | 83.84% | 87.07% |
+  | 7655666/6756666 | 10 | 100% | 83.84% | 87.07% |
+  | 7655667/6756656 | 11 | 100% | 86.06% | 88.85% |
+  | 7765566/6575666 | 11 | 100% | 86.32% | 89.06% |
+  | 7655566/6759676 | 12 | 72.07% | 63.75% | 65.41% |
+  | 7766556/6576576 | 11 | 100% | 68.13% | 74.50% |
+  | 7766556/6567566 | 11 | 100% | 78.11% | 82.49% |
+
+  Apex = 5 dies by the same ring-7 kite (the face's two 5s on the apex side, the apex, and the 6 beside them) in
+  every row that has a 6 next to the face on the apex side. 7655566/6759676 has 7 and >= 9 there, so its apex = 5
+  part is not covered. Second guess right (8 of 8 as predicted).
+
 ## Round 52 (19 Oct 2026, 12:44Z-): H-F18, do the surviving face receivers die at ring 17-18?
 
 **Pre-registered 12:44Z, before any engine run on these targets.** Gap G2. Long Table, 12:41Z: Opus's stage 21 is
