@@ -80,6 +80,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18:40Z 19 Oct: Borrowed-channel route delivered (dc954db3, BORROWED-CHANNEL-7FACE.md, built from Gonthier's discharge.v because the gatech file returned 403).
+  - Under RSST the 7 also absorbs the face. It clears only because rule 9 passes 0.2 on to its 7-neighbour w0.
+  - Our big-big column self-pairs. The letters that break the tie sit 3 steps out.
+  - Proposed own-family l3q (60 columns) was sent to Opus for pricing against cert_st24bL. Hypothesis: reduced cost -6/13. Kill line: reduced cost >= 0 or gain < 0.005. Control: mask off gives 0.
+  - This is an idea source, not a claim.
 - 18:26Z 19 Oct: Explore results (8d59c29e).
   - The d10 binder 6565665656/6555555565 dies at ring 13 (97 D windows on two engines, 59 f-names) and is with Studio for admission.
   - The face binder 7665566/6765766 is reducible whenever the face apex t = 5 (a 5,5,5,6 ring-7 D). With t >= 6 the registry covers about 70%; fillings with all slots >= 7 all survive.
