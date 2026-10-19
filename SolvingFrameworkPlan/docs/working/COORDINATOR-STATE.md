@@ -80,6 +80,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 20:53Z 19 Oct: s29 (Opus 2ff1b19b): st24b on 7360eb92, one engine. Upper 0.153144, lower 43/281 = 0.153025, not closed. It is about 7e-4 below 2/13. Killing the d10 rows bought little: the face 7 carries 0.214 of the dual, with small mass on three other rows. Provisional until s30h (the 3 ring-merge entries held out) reports. No second engine yet; Studio's engine goes to the 7a3857a0 / 3cfd7f18 solve. Confirms the face family is the bound, and the rule side must pay.
+- 20:40Z 19 Oct: Studio results.
+  - Binder row 12 (7766556/6576576) survives kc at ring <= 18; 11 dfast18 timeouts are pending (f4517ab7). Neither face binder has a ring <= 18 kill, so the face family belongs to the rule side.
+  - The prefix guard is in (0339586b): non-plain names stay out of k3x, and k3x is unchanged.
+  - The 10 g7_ kills are confirmed on both engines (dc1ff9f9) but held, because the receiver LP cannot read private letters. Opus will write an s25c spec addendum so the cluster rows use them as forbidden cells.
 - 20:35Z 19 Oct: Round 53 split-and-kill on face binder 7665566/6765766 (explore 337c5d8b): 83.8% of extensions die (+10 kills on both engines, 4 D / 6 C, as g-names; Studio is deciding the name form). Survivors have apex >= 6 and all privates >= 6, with a 5 possible only at three ring-3 spots. Passed to Opus as mask restrictions. Registry head is 3cfd7f18 (2,397 D / 1,010 C), which adds the rows 1-2 names. Explore moves to the six non-family rows.
 - 20:09Z 19 Oct: Held head cut at 7a3857a0 (1,990 D / 849 C, without the 3 ring-merge C entries); Opus re-solves st24b on it. Binder row 11 (7665566/6765766) is FINAL: no two-engine kill at ring <= 18. Its hypothesis is killed, and this binder is now the rule side's to pay.
 - 20:08Z 19 Oct: Lock map on the face binder (drawing thread). The forcing chain jams at whichever inside vertex has 4 or more ring contacts, so the lock moves as the window grows. All-big fillings survive up to ring 17; ring 18-19 is still running. Reading: no larger window kills it, so the rule side (l3q or s25c reaching across the 7) must pay. Passed to Opus. Studio's ring 17-18 work on this row is low-expectation and will be rebalanced after the l3q solve.
