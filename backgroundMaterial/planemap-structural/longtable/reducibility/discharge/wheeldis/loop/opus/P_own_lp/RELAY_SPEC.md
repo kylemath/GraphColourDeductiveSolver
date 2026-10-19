@@ -723,7 +723,28 @@ t + sum_{j: w_j >= 7} y[root(w, j)] + sum_{k in sixes} g2[...]  >= 1
 ```
 
 s12r50 has 7,074 rows; s10 mode had 6,915. More rows survive the dedupe because the g2 keys separate more of them.
-393 g2 keys appear in sender rows.
+
+**Correction (key count).** **381** g2 keys appear in the sender rows; an earlier version of this section said 393.
+The log's "393 g keys in senders" counts every g column that exists when the line is printed, and by then the
+initial cons2 rows (s = 555555 plus the basis) have already been added. Checked on the engine snapshot
+`snap/s12r50_solve`:
+
+| set | g2 keys |
+|---|---|
+| deduped admissible sender rows | 381 |
+| including inadmissible assignments | 386 (adds 5000657, 5000675, 5000677, 6000657, 6000677) |
+| all g2 keys of all cons2 rows | 393 = the 381 + 12 |
+
+The 12 extra keys are exactly the keys with spokes `n1, n5` in {5,6} and both apexes small (ending 5,5): 5001655,
+5010655, 5011655, 5100655, 5101655, 5110655, 5111655, 6001655, 6010655, 6011655, 6101655, 6111655.
+
+- **Why no sender has them.** Such a five has all five spokes small. Every small 5-word is R5, so no sender row
+  contains these keys and they are unpaid columns.
+- **Why that is still sound.** These keys occur only in cons2 rows for arrangements (L, s) that contain such a five,
+  and those arrangements cannot occur in G.
+- **In the solution.** 10 of the 12 are positive in `sol_s12r50.json`, which gives Studio's 391 = 381 + 10. The two
+  that are not positive are 6101655 and 6111655.
+- **s10 mode.** This does not happen there: kg has no apexes, so every kg key a cons row uses is also a sender key.
 
 ### 12.4 cons2 rows (conservation per 6-type over apex words)
 
