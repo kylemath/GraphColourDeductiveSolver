@@ -306,7 +306,7 @@ if REG:
     for line in open(os.path.join(HERE, 'rbig7.txt')):
         RB7S.add(canon(tuple(map(int, line.strip()))))
     RBIG |= RB7S          # w7plus 7-wheels also forbidden as link-vertex wheels
-    SEPB = subprocess.Popen([os.path.join(HERE, 'sepb'), os.path.join(HERE, 'reg_patterns.txt'),
+    SEPB = subprocess.Popen([os.path.join(HERE, 'sepb'), os.path.join(HERE, OPTS.get('pats', 'reg_patterns.txt')),
                              os.path.join(HERE, 'rbig7.txt')], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
 WCAND = {}
 
