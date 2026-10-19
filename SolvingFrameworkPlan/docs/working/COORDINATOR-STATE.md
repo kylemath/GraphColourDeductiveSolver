@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19 Oct 09:25Z: Opus s22h (hat5 + §14′ filter, 5fa0adb0, fd6ea00e) claims t* = 16/101 ≈ 0.1584 exactly (upper feasible, lower 114 rows). Moved by the d=8 kills. Sent to Studio for a §15 check; not [E2] yet. Binders: the face family 7665566 and 7676556. s22c unfiltered stays 86/515. Next: s23h on 35aeebb8; stage 19b running.
 - 19 Oct 09:04Z: Letter-9 rule adopted (Studio 8682f8ac, test md5 fd1175241aa2…, 823/823 frames match). A 9 in the link or s-word means exactly 9; such names match no LP letter, so they are excluded and logged. A 9 only at the centre of an f9_ name is admitted normally. Frozen parser unchanged.
 - 19 Oct 09:00Z: s22f = 4/25 exactly [E2] on 5fa0adb0 (Studio 14feb53c). st18h 17/107 is also upper-feasible on 5fa0adb0, so the best bound stays 17/107. Letter-9 ruling: in an f-name, a 9 means exactly 9, not ≥9, because the win45 cutter certifies at exact degree. Nothing with a 9 is admitted until Studio's rule note and test md5 land.
 - 19 Oct 08:46Z: Studio admitted r9f: registry 35aeebb8, 962 D / 733 C, dcount 16,002, all checks 0. s22f lower rebuilt VALID at 4/25. Studio's f-name parser fails safe on letter 9; asked Studio to add a spec'd ≥9 reading before the next d=9 row's batch.
