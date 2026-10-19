@@ -500,3 +500,9 @@ our agent R and have no output from it.
 - Both lower bounds are VALID at 2/13 with the identical 34-row cert. All D reduced costs are >= 0 against it.
 - Binders: face 7 7665567/6765756 (0.231) and two d=10 rows. The face 7 does not bind alone.
 - Re-run needs: D capped with a penalty, solves run one at a time, a longer cap, and warm starts.
+
+## st24b: hat5 + §14′ filter + consall on 0125c46b (argsA59), 19 Oct ~17:05Z
+- t* = 2/13 = 0.15385 exactly on our engine. Upper FEASIBLE on sol_st24b itself (all 1,424 conservation types pass, worst 3.1e-13). Lower VALID (36 rows). Studio check pending.
+- This is the new best, below 16/101 [E2 on 5fa0adb0]. The new registry kills (d9 face row, r7h) are what moved it.
+- Stage 24 D columns (capped at 3): t* stays at exactly 2/13 (the cert is VALID in the big2 class; D = 0 is feasible). Gain 0, kill line met.
+- Binders: face 7 7665566/6675676 (0.231) and two d=10 rows (0.038 each).

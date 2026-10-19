@@ -826,3 +826,25 @@ Built by s19e/mkfamily.py, run on the s19e engine (hat5 class, s21/argsA54.txt, 
   - D needs a cap (x-style 3, or the Steinberger 1/2) and a small penalty, to stop free circulations and keep the LP well conditioned.
   - The solves should run one at a time with more threads.
   - consall makes the LP slower (st24b's LP took 1,352 s at iteration 2).
+
+## Stage 24 re-run pre-registration (14:49Z, before the result): sequential solves, 4 threads, 3 h cap each (s24d/cmd_st24r.sh)
+- **st24b.** Run first, alone. Warm rows: s22/hf/rows_s22h, s23/hf/rows_s23h and s24d/rows_st24b_run1.
+- **st24d.** Run after st24b. D is capped at 3 (`dcap=3`) with penalty `dpen=1e-3`, alongside xpen 1e-3. Warm rows: st24b's final rows plus rows_st24d_run1.
+- **Engine.** lowerR2 now prices D at its cap, like x. upperR2 rejects D outside [0, 3]. Backup: s24d/prelay2_st24a_backup.py.
+- **Checks.** For each run: nosep, lowerR2, and upperR2 on the solution itself, with all 1,424 conservation types.
+- **Kill line:** the gain is under 0.005 against st24b.
+
+## Stage 24 re-run result: **baseline closed at t* = 2/13 on 0125c46b; with D (cap 3) t* = 2/13 exactly; gain 0, so the kill line is met**
+- **st24b** (14:49Z-16:45Z, 4 threads, alone).
+  - keeppen converged after 73 iterations (6,891 s). There were no violated rows at the penalised fixed point, and t = 0.153846153846 at every iteration.
+  - **UPPER-R2 FEASIBLE at 2/13** on sol_st24b itself: 0 sender rows violated; **conservation over all 1,424 types passes** (worst 3.1e-13); d = 7..17 exhaustive; Karp tail.
+  - nosep: **LOWER-R2 VALID 2/13 (36 rows).**
+  - **t\*(baseline) = 2/13.**
+- **With D (`big2`, dcap = 3).** The bound is decided exactly, without the solve.
+  - cert_st24bL is **LOWER-R2 VALID 2/13 in the big2 class** (s24d/lower_st24bL_big2.log). D is priced at its cap there, and the bound is unchanged.
+  - sol_st24b (D = 0) is **UPPER-R2 FEASIBLE at 2/13 in the big2 class** (s24d/upper_st24b_big2.log, all 1,424 types pass).
+  - So **t\*(D) = 2/13**, and the gain is 0. The st24d solve had started at 17:01Z and was stopped after about 2 min, since its answer was already fixed (noted in s24d/st24d.log).
+- **Binders (cert_st24bL).**
+  - Receivers: the face 7 **7665566/6675676** (w3 = w4 = s3 = 5) at 0.231, plus d = 10 rows 6565665656/6555555565 and 6565555665/6665956566 at 0.038 each.
+  - Senders: face fives (55667 x2, 55767, 55669, 55696, 55959), together with 56696 and 66669 x2.
+  - The face 7 does not bind alone (the two d = 10 rows also carry weight), so no "face-family floor" is reported. The face 7 carries 0.231 of the 0.308 receiver weight.

@@ -127,6 +127,8 @@ RRV = {}
 CONSALL = 'consall' in FLAGS         # stage 24 (RELAY_SPEC 19.5): separate conservation over all 1,424 non-R6 6-words, not only five-containing ones
 DD = 'big2' in FLAGS                 # stage 24 (RELAY_SPEC 19): D[K] >= 0, big -> big apex across a diamond (both directions)
 DV = {}
+DCAP = float(OPT.get('dcap', '3'))   # stage 24 re-run: 0 <= D <= dcap (default 3, like x); dpen = penalty like xpen
+DPEN = [float(OPT.get('dpen', '0'))]
 def d_canon2(a, b): return min(a + b, b + a)
 def d_side(z, link_nb, apex_nb, out):
     """RELAY_SPEC 19.2/19.3 side of a shared spoke z read at a receiver centre T: link_nb = z's other T-adjacent link nbr,
@@ -488,8 +490,9 @@ def cmd_solveR2():
     def col(key):
         if key not in cols:
             cols[key] = len(names); names.append(key)
-            h.addVar(-inf if key[0] == 't' else 0.0, XCAP if key[0] == 'x' else inf)
+            h.addVar(-inf if key[0] == 't' else 0.0, XCAP if key[0] == 'x' else DCAP if key[0] == 'D' else inf)
             if key[0] == 'x' and XPEN[0]: h.changeColCost(cols[key], XPEN[0])
+            if key[0] == 'D' and DPEN[0]: h.changeColCost(cols[key], DPEN[0])
         return cols[key]
     jt = col(('t',)); h.changeColCost(jt, 1.0)
     for r_ in ROOTS: col(('y', r_))
@@ -601,7 +604,7 @@ def cmd_solveR2():
         if not added and XPEN[0]:
             XPEN[0] = 0.0
             for k, i in cols.items():
-                if k[0] == 'x': h.changeColCost(i, 0.0)
+                if k[0] in ('x', 'D'): h.changeColCost(i, 0.0)
             log('  converged with x penalty; penalty removed, continuing'); continue
         if not added: break
     sol = h.getSolution(); xv = np.array(sol.col_value); t = xv[jt]; duals = np.array(sol.row_dual)
@@ -777,6 +780,7 @@ def cmd_lowerR2():
         rc = -v / tco
         if rc < 0:
             if k[0] == 'x': D += rc * XCAP
+            elif k[0] == 'D': D += rc * Fraction(OPT.get('dcap', '3'))   # stage 24: D is capped like x (RELAY_SPEC 19.5), priced at its cap
             else: neg.append((k, rc))
     if neg: log('  negative reduced costs:', len(neg), neg[:5]); ok = False
     log('rows by type: %s' % dict(cnt))
@@ -811,7 +815,7 @@ def cmd_upperR2():
     if Sj.get('rr') and not HRR: log('SOLUTION HAS rr BUT hatrr FLAG OFF'); return
     DV.clear(); DV.update({eval(k): v for k, v in Sj.get('D', [])})
     if Sj.get('D') and not DD: log('SOLUTION HAS D BUT big2 FLAG OFF'); return
-    if any(v < 0 for v in DV.values()): log('NEGATIVE D VALUE'); return
+    if any(v < 0 or v > DCAP + 1e-9 for v in DV.values()): log('D VALUE OUTSIDE [0, dcap]'); return
     FV.clear(); FV.update({tuple(k): v for k, v in Sj.get('f', [])})
     if Sj.get('f') and not F5: log('SOLUTION HAS f BUT face5 FLAG OFF'); return
     xd = {int(k): v for k, v in Sj.get('x', {}).items()}

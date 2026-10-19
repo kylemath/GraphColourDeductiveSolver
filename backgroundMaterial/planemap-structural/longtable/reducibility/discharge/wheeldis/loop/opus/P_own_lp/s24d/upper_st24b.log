@@ -1,8 +1,17 @@
 jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
 patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9699, 8: 4522, 9: 2941, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 16937, 'C': 1884, 'RPAT': 158}
-Traceback (most recent call last):
-  File "/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s24d/pcheck.py", line 512, in <module>
-    {'rowR2': cmd_rowR2, 'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "<string>", line 796, in cmd_upperR2
-FileNotFoundError: [Errno 2] No such file or directory: 'sol_st24b.json'
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 3.06e-13)
+d=7: 0 violated (exhaustive, 2.4s)
+d=8: 0 violated (exhaustive, 1.5s)
+d=9: 0 violated (exhaustive, 1.2s)
+d=10: 0 violated (exhaustive, 0.4s)
+d=11: 0 violated (exhaustive, 0.3s)
+d=12: 0 violated (exhaustive, 0.4s)
+d=13: 0 violated (exhaustive, 0.4s)
+d=14: 0 violated (exhaustive, 0.4s)
+d=15: 0 violated (exhaustive, 0.5s)
+d=16: 0 violated (exhaustive, 0.5s)
+d=17: 0 violated (exhaustive, 0.5s)
+Karp lambda 0.543709218 d0 12.812
+UPPER-R2: FEASIBLE at t = 0.153846153846

@@ -1,20 +1,20 @@
 jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
 patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9699, 8: 4522, 9: 2941, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 16937, 'C': 1884, 'RPAT': 158}
 conservation basis rows added: 10539
-warm rows admitted: 57702
-R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1284 M sigs
+warm rows admitted: 43990
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1399 M sigs
 nosep: LP over the warm rows only, t = 0.153846153846 (a lower bound once lowerR2 checks the cert)
-LP t* = 0.153846153846 ; dual rows 34 ; wrote sol_st24bL.json cert_st24bL.json
-  -0.230769231 receiverR2 7 7665567 6765756
-  +0.153846154 senderR2 55667 [0, 0, 0, 0, 0, '|', 1, 1]
-  +0.115384615 senderR2 55767 [0, 0, 1, 1, 0, '|', 0]
-  +0.076923077 senderR2 55667 [0, 1, 0, 0, 0, '|', 0, 1]
+LP t* = 0.153846153846 ; dual rows 36 ; wrote sol_st24bL.json cert_st24bL.json
+  -0.230769231 receiverR2 7 7665566 6675676
+  +0.153846154 senderR2 55667 [0, 1, 0, 0, 0, '|', 0, 1]
+  +0.115384615 senderR2 55767 [0, 0, 0, 0, 0, '|', 0]
+  +0.076923077 senderR2 55667 [0, 0, 0, 0, 0, '|', 1, 1]
+  +0.076923077 senderR2 55669 [0, 0, 1, 0, 0, '|', 0, 0]
   +0.076923077 senderR2 55696 [0, 0, 0, 0, 0, '|', 0, 0]
   +0.076923077 senderR2 56696 [1, 0, 0, 0, 0, '|', 0, 0, 0]
-  +0.076923077 senderR2 55669 [0, 1, 0, 0, 0, '|', 0, 0]
-  +0.038461538 senderR2 66669 [0, 1, 0, 0, 0, '|', 0, 0, 0, 0]
-  -0.038461538 receiverR2 10 6565665656 6555565555
   +0.038461538 senderR2 55959 [0, 0, 0, 0, 0, '|']
   +0.038461538 senderR2 66669 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
-  -0.038461538 receiverR2 10 6555565656 6595666665
-  (+ 22 cons2 / mrowR2 rows)
+  +0.038461538 senderR2 66669 [0, 1, 0, 0, 0, '|', 0, 0, 0, 0]
+  -0.038461538 receiverR2 10 6565665656 6555555565
+  -0.038461538 receiverR2 10 6565555665 6665956566
+  (+ 24 cons2 / mrowR2 rows)
