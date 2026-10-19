@@ -273,3 +273,7 @@ not new to F.
   R0-I2}, components {I0,I5,R2} and {I1,I2,R0}: ring-merge guard **pass**. Default glob on 4d266b63: **2,435 D / 1,060
   C** (+32 D, +40 C, exactly the 72, 0 lost). Ring-merge the same 3; prefix / centre 0 new; drop44 0; letter-9 0.
   Matcher (the minimal names + the hand-check name): 432 frames, 0 mismatches. dcount **17,475** (17,809 names), +32.
+- ~23:45Z 19 Oct: falsification re-run of explore's r54d admission (fb267af9, d8 85656765/56665565 ring 13; Long Table
+  23:25Z item d). Studio's kc -C -s 60 -t 600 + dfast18 / cfast --fixed on all 18 names (out/job30/r54d_studio/): 8 D,
+  10 C, 0 fail. Guards on the 18: ring-merge 0 held (the 6 ring-edge X {I0-I1,Rk-I1}, k = 5..8, have one ring vertex
+  per component), prefix 0, centre < 7 0, letter 9 0. The 3 ring-merge entries stay out of main's k3x_C (1,070 C).
