@@ -964,3 +964,128 @@ this gives 21/113 < 19/102.
 - The 1,424-word upper conservation check is stricter than the LP's 994 relay words. A no-five 6-type's h2 keys are
   free in the LP (bounded only through M), but upper requires their sum to be 0 for every s. They are 0 in s12r50, so
   this holds, but a different primal of the same LP could fail upperR2 while being LP-feasible.
+
+## 13. Stage 15: the 6 -> 7 pass-on ("s16 mode": s12r mode + v6)
+
+Written by Opus (the builder) before the solve. Run tag `st15`, registry `s17/argsA50.txt`. This section only
+adds to section 12. Everything there carries over unchanged, including apexcls for g2, h2 and sig2.
+
+### 13.0 Which code
+
+`pcheck.py solveR2 xon xcap=3 xpen=1e-3 apexcls v6 consbasis=cons2basis_v6.json`, with `zh`, `q7` and `noapex` off.
+The code is the top-level `prelay2.py`. The engine snapshot and md5s are in `snap/st15/`, and the commands are in
+`cmd_st15.sh`.
+
+`cons2basis_v6.json` comes from `pcheck.py consbasisR2 apexcls v6 out=cons2basis_v6.json`. It has 15,649 (L, s)
+rows: a QR-pivoted basis of each 6-type's block, now including the v columns.
+
+### 13.1 New keys
+
+**cv (3-class apex reading, used only by the new keys):** `cv(l) = l if l < 7 else 7`, so 5 / 6 / big. The g2, h2 and
+sig2 keys keep `ap` (5 / big).
+
+**v (6 -> 7 pass-on), 8-tuple.** In a 6-centred arrangement (L, s) (section 12.1), take each position j with
+`L_j = 7` (a neighbour of degree exactly 7; letters 8 and 9 get no v). With `m = (L_j, L_{j+1}, ..., L_{j+5})`:
+
+```
+v = min( m + (cv(s_j), cv(s_{j-1})),   (m0, m5, m4, m3, m2, m1) + (cv(s_{j-1}), cv(s_j)) )
+```
+
+This has the same shape as h2, but with cv in place of ap. v >= 0 is charge the 6 sends **to** that 7. JSON in
+`sol_st15.json`: field `v`, a list of `[8-list, value]`. The flag is `"v6": true`.
+
+**V (pass-on inflow signature), 7-tuple, only in receivers of letter U = 7 (d = 7).** For a link 6 `w_j` of u:
+
+```
+sigV = min( (7, w_{j+1}, s_j, s_{j-1}, w_{j-1}, cv(w_{j+2}), cv(w_{j-2})),
+            (7, w_{j-1}, s_{j-1}, s_j, w_{j+1}, cv(w_{j-2}), cv(w_{j+2})) )
+candV(sigV) = { v of the arrangement ((7, wr, sr, p, sl, wl), apexes (wrr, wll)) : p in 5..9,
+                not isR6((7, wr, sr, p, sl, wl)) }        (code: sigv_keys)
+```
+
+The 6's link read from u is `(U, w_{j+1}, s_j, p_j, s_{j-1}, w_{j-1})`. Its apexes beyond the edges u-w_{j+1} and
+u-w_{j-1} are `w_{j+2}` and `w_{j-2}`. u sees everything except the private p_j.
+
+**Example (the target).** In 7665566/6675666, x = w2 = 6 has link (from u) `(7, w3=5, s2=7, p, s1=6, w1=6)` with
+apexes `w4 = 5` and `w0 = 7`. So `sigV = min((7,5,7,6,6,5,7), (7,6,6,7,5,7,5))`. The 6 at w2 sees both fives.
+
+### 13.2 Changed rows
+
+**cons2** (section 12.4) gains the v terms. For every non-R6 L and every s in {5..9}^6:
+
+```
+sum_{i: L_i = 5} g2(L,s,i) + sum_{j: L_j = 7} v(L,s,j) - sum_{j: L_j >= 7} h2(L,s,j) = 0      label ["cons2", L, s]
+```
+
+`cons2_coef(L, s)` (with v6) rebuilds it. A 6 still passes on exactly what it receives: its fives and its 7s are paid
+from its h inflow. Because of cv, a block now has at most 3^6 distinct rows.
+
+**receiverR2** (section 12.5): only for d = 7 (U = 7), add
+
+```
+- sum_{j: w_j = 6, candV(sigV(j)) nonempty} V[sigV(j)]
+```
+
+to the left side. The rest is unchanged.
+
+**New: mrowV rows.**
+
+```
+V[sigV] - v[k] <= 0   for every k in candV(sigV)        label ["mrowV", sigV (7-list), k (8-list)]
+```
+
+They are added lazily the first time a receiver uses sigV. Since V enters the receiver with a minus sign, it is
+bounded by the **minimum** of v over the unseen p_j. That is the conservative choice for inflow: u counts only what
+it receives whatever p_j is.
+
+### 13.3 Window / separator
+
+The window entry at a 6 position (c = 6) for U = 7 gets `- min_{k in candV(sigV)} v[k]`. The window reads
+`(w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2}, s_{i-1}, s_i)`, which are already window slots, and the jsep3 class table
+`clsR2` already keys the c = 6 class by those slots. d = 7..17 stays exhaustive.
+
+The tail d >= 18 uses the U = 9 window, which has no V, so it is unchanged and sound.
+
+### 13.4 Checks
+
+**upperR2:**
+
+1. Senders, as before.
+2. Conservation over all 1,424 non-R6 L times 5^6 s, with the v terms (`cons2_delta` adds `+v` at the 7 positions).
+3. d = 7..17 exhaustive with the new window term (min over candV).
+4. Tail and Karp.
+
+**lowerR2:** as in section 12.8, plus:
+
+| label | sign of w | bound b | check |
+|---|---|---|---|
+| mrowV | w <= 0 | 0 | `sigV == sigv_of(*sigV)` and `k in candV(sigV)` |
+
+The reduced costs of v and V come from the generic ledger: v appears in cons2 (+) and mrowV (-); V appears in
+receivers (-) and mrowV (+).
+
+### 13.5 Sizes before the solve (s16_struct.txt)
+
+| item | value |
+|---|---|
+| v keys | 9,165 |
+| V signatures | 2,850 (13,869 mrowV rows if all used) |
+| h2 keys | 12,347 |
+| g2 keys | 393 |
+| conservation rows over all (L, s) | 151,056 distinct |
+| conservation rank | 13,670 (s12r mode: 8,771) |
+
+### 13.6 Class inclusion and kill lines
+
+The class contains s12r's (take v = 0), so t*(st15) <= 23/134.
+
+Kill lines:
+
+1. 7665566/6675666 stays tight at 23/134.
+2. The solve runs past 3 x s12r50's wall time (3 x 713 s) without t* moving below 23/134; then I stop and report.
+
+### 13.7 Ambiguities
+
+- v goes only to neighbours of letter 7 (degree exactly 7). An 8 or 9 next to the 6 gets none. That is a restriction
+  of the class, so it is sound.
+- cv reads an apex of letter 8 or 9 as 7. Same remark.

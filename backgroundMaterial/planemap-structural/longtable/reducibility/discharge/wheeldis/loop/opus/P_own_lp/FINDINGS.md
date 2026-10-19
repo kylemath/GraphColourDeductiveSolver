@@ -422,3 +422,16 @@ Not read: Studio's Job 31 spec.
     - The only possible sender, w0, is a 7 whose visible part of u is all 6s. The fives w3, w4 are exactly the 2 letters w0 cannot see.
     - So w0 must pay the same to every 7-neighbour with that view. w0 is itself a 7 in the same tight family (7665666/6566565 and 7655666/6756666 bind).
   - Next: a key the sender can see must include u's w3, w4. That means radius-3 information (a two-step relay through the 6s w2/w5, or jsep with a wider window).
+
+## Stage 15 pre-registration + spec (00:50Z, before any code): 6 -> 7 pass-on V6 (flag v6), run st15 on argsA50 over s12r50
+- Hypothesis: binder 7665566/6675666 becomes non-tight and t* < 23/134. Kill line: the row stays tight at 23/134.
+- Class (added to the reduced 6-centred R6x2):
+  - A 6 x next to a 7 u passes v[K] >= 0 to u.
+  - K = x's link rotated at u, m = (U=7, n1, n2, n3, n4, n5), plus the two apexes of x's arrangement beyond the edges (u, n1) and (u, n5), read in 3 classes: 5 / 6 / big.
+  - From u, with x = w_j: m = (7, w_{j+1}, s_j, p_j, s_{j-1}, w_{j-1}), and the apexes are w_{j+2}, w_{j-2}. For x = w2 next to 7665566 that is (7, w3=5, s2, p, s1, w1) with apexes w4 = 5 and w0, so the key sees both fives.
+  - K is canonical under the reflection about u (as h2).
+- Conservation per 6-centred arrangement (L, s), exact over all apex words: sum_i g2 + sum_{j: L_j = 7} v = sum_j h2.
+  - The 6 still passes on exactly what it receives. The new rows are separated / basis-precomputed as before.
+- Receiver u (d = 7 only, U = 7): load -= sum over link 6s of mV[sig]. sig = (7, w_{j+1}, s_j, s_{j-1}, w_{j-1}, cv(w_{j+2}), cv(w_{j-2})), canonical. mV <= v[K(p)] for every private p that keeps the 6-wheel non-R6.
+  - That is the conservative MIN over the unseen p, since it is inflow. Window-local (c = 6 position, U = 7).
+- Validations: (V1) v6 off = s12r50 (same code path). (V2) Orientation: reflection of the v key and sig, and invariance of the new conservation coefficients under physical rotation/reflection. (V3) dbg separator = row value.
