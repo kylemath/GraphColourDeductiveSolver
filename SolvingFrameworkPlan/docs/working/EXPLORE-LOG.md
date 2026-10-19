@@ -117,6 +117,12 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   86555665/56576665: 489 kills (400 D, 89 C), 446 f-names (twoeng: 357 D, 89 C), 8 minimal, same lowest. Files
   `loop/k47/s52r1_kills*`, `s52r2_kills*` (minkill52), to Studio for admission.
 
+- **18:29Z, d = 10 6565555665/6665956566 (2/13 binder, 0.038): dies at ring 13.** Stopped once dead (1,295 of 11,467
+  ring <= 16 windows): 22 two-engine kills (9 D and 11 C at ring 13, 2 D at ring 14), 22 f-names (twoeng: 11 D, 11 C
+  with the same X, all pass), 4 minimal, e.g. f10_...5555665_.......5.. (ring 13, D). No name holds a 9. Files
+  `loop/k47/r52k_kills*`, to Studio for admission. Guess (dies at ring <= 14 through its run of fives, 60%) right.
+  Both 2/13 d = 10 binders are dead; the six non-family rows are next on explore's queue after round 53's binder run.
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
