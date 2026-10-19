@@ -348,6 +348,8 @@ def cmd_solveR2():
             lam = karp(Mr); log('  Karp lambda %.6f d0 %.2f' % (lam, (6 - t) / (1 - lam) if lam < 1 else 1e9))
         rowlog.flush()
         log('iter %d t=%.12f rows %d cols %d added %d  lp %.1fs total %.0fs  %s' % (it, t, h.getNumRow(), h.getNumCol(), added, tlp, time.time() - T0, {d: v for d, v in per.items() if v[0]}))
+        if not added and XPEN[0] and 'keeppen' in FLAGS:
+            log('  converged with x penalty; keeppen: stopping here (no violated row at this solution; sol = this solution)'); break
         if not added and XPEN[0]:
             XPEN[0] = 0.0
             for k, i in cols.items():
