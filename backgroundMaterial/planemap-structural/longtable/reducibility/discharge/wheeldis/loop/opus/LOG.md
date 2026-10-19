@@ -419,3 +419,8 @@ our agent R and have no output from it.
 - Below s21f's 65/406. Studio check pending.
 - Long Table's kill line (2) is hit: 7665566/6675666 and 7655667/6756656 both stay tight, with no r flowing into the binder. The bound improves, but the face family is still unpaid.
 - Worker's recommendation: for this family, use a reducibility lemma (a 7 with a 5-5-5 face plus a nearby 5) rather than another rule extension.
+
+## s22f: 5fa0adb0 (kills the d=8 binder), 6-centred relay with §14′ filter, no hat5, 19 Oct ~08:50Z
+- t* = 4/25 = 0.16 exactly. Lower VALID (90 rows); upper FEASIBLE on our engine. Studio check pending.
+- This closes s21f's bracket, but the value is still above stage 18's 17/107 (hat5 on 880d25c6).
+- Next: hat5 on 5fa0adb0.

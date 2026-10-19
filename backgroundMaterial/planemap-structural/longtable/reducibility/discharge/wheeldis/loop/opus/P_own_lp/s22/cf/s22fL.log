@@ -1,0 +1,37 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9696, 8: 4522, 9: 1736, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15909, 'C': 1704, 'RPAT': 158}
+conservation basis rows added: 10539
+warm rows admitted: 46487
+R6x2 (apex True): 7074 sender rows, 393 g keys in senders, 994 six-words, 11533 initial cons rows, 1225 M sigs
+nosep: LP over the warm rows only, t = 0.160000000000 (a lower bound once lowerR2 checks the cert)
+LP t* = 0.160000000000 ; dual rows 90 ; wrote sol_s22fL.json cert_s22fL.json
+  -0.120000000 receiverR2 7 7665566 6765766
+  +0.080000000 senderR2 55767 [0, 0, '|', 0]
+  +0.080000000 senderR2 55667 [1, 0, 0, '|', 0, 1]
+  +0.040000000 senderR2 55667 [0, 0, 0, '|', 1, 1]
+  +0.040000000 senderR2 55667 [0, 1, 1, '|', 0, 0]
+  +0.040000000 senderR2 55686 [0, 0, 1, 0, '|', 0, 0]
+  +0.040000000 senderR2 55769 [1, 0, '|', 0]
+  +0.040000000 senderR2 56669 [0, 1, 0, 0, '|', 0, 0, 0]
+  +0.040000000 senderR2 56669 [1, 0, 0, 0, '|', 0, 1, 0]
+  +0.040000000 senderR2 56959 [0, 0, '|', 0]
+  -0.040000000 receiverR2 9 655566556 759556565
+  -0.040000000 receiverR2 7 7676556 7759565
+  +0.040000000 senderR2 55669 [0, 1, 0, '|', 0, 0]
+  +0.020000000 senderR2 55669 [1, 0, 0, '|', 1, 0]
+  +0.020000000 senderR2 55667 [0, 0, 1, '|', 1, 0]
+  +0.020000000 senderR2 55668 [1, 0, 1, '|', 1, 0]
+  +0.020000000 senderR2 55758 ['|']
+  +0.020000000 senderR2 55959 ['|']
+  +0.020000000 senderR2 56688 [0, 0, 0, '|', 1, 0]
+  +0.020000000 senderR2 56688 [0, 0, 1, '|', 1, 0]
+  +0.020000000 senderR2 56886 [0, 0, 0, 0, '|', 0, 0]
+  +0.020000000 senderR2 57668 [1, 0, 0, '|', 0, 0]
+  -0.020000000 receiverR2 8 86555665 56576665
+  -0.020000000 receiverR2 7 7766556 6567566
+  -0.020000000 receiverR2 7 8655566 5685765
+  -0.020000000 receiverR2 8 85656765 65555665
+  -0.020000000 receiverR2 8 85586565 66655556
+  -0.020000000 receiverR2 10 6556655556 6665669665
+  +0.020000000 senderR2 55669 [0, 0, 0, '|', 1, 0]
+  (+ 61 cons2 / mrowR2 rows)
