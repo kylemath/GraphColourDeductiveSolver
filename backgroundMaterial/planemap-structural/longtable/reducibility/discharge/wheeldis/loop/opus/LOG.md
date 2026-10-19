@@ -340,3 +340,10 @@ our agent R and have no output from it.
   the sound class from below, so sound st15 t* is in [1/6, 23/134]. Fix st15f: conservation now covers all 1,424 non-R6
   6-types in the solver, the separator and the basis (22,126 rows). s16_struct.txt and RELAY_SPEC §13 are updated, and §13 now
   states that V[sig] = min over candV of v. Running since 01:41Z.
+- **P st15f (02:05Z): the sound 6 -> 7 pass-on on argsA50 gives t* = 23/134** [own checkers; lower VALID with 107 rows;
+  upper FEASIBLE, conservation on all 1,424 x 5^6 words, worst 3.2e-13; 927 s]. **Kill line met: the binder stays tight**
+  (dual 0.194, V = 0). Why: the weight sits on V[7,5,6,6,6,5,7] <= v[...], the case where the private of the 6 at w2 is a 5.
+  That 6 then has a second five to pay, and u takes the min over the private it cannot see. Per the round-50 census that
+  case is reducible, but u's 2-ball cannot rule it out. Stage 16 needs reducibility information on the privates (radius 3):
+  either drop killed private values from V's min using verified 3-ball patterns in the separator, or key v on the private's
+  class.

@@ -445,3 +445,20 @@ Not read: Studio's Job 31 spec.
 - Fix (st15f): in v6 mode, conservation over ALL 1424 canonical non-R6 6-types (solver init, per-L separation and basis). cons2basis_v6.json is rebuilt: 22126 rows.
   - s16_struct.txt regenerated: 1424 6-types; conservation rank 20147; h 18683; v 13869; V sigs 2850.
   - st15f launched 01:41Z (warm from runs 1 and 2). Kill-line clock (3 x 713 s) restarts here.
+- **st15f (sound stage 15): t* = 23/134, equal to s12r50.** 9 iterations, 927 s, within the 2139 s limit.
+  - LOWER-R2 VALID 23/134 (107 rows: 11 sender, 61 cons2, 16 mrowR2, 14 mrowV, 5 receiver).
+  - UPPER-R2 FEASIBLE: senders 0; conservation over all 1424 6-types x 5^6 worst 3.2e-13; d = 7..17 exhaustive 0; Karp d0 12.20.
+  - dbg separator = row value (< 5e-10).
+  - **Kill line 1 met.** The binder 7665566/6665766 (the mirror of 6675666) is tight (slack 0), with dual 0.194, the same as s12r50.
+    - Load = y7|5566 0.67537 + y7|5576 0.36317 + relay h 0.08209 + 0.05101. V inflow = 0.
+  - Why (from the certificate): the 0.194 weight sits on mrowV V[7,5,6,6,6,5,7] <= v[7,5,6,5,6,6,5,7].
+    - That is the completion p = 5 of the 6 at w2's private. In that completion the 6 x has a second five to pay. V is the min over p, so p = 5 sets V to 0.
+    - Round-50 census: every binder completion with a five among the privates is reducible (D/C at ring <= 16). The arrangement that forces V = 0 does not occur in a minimal counterexample, but u's 2-ball cannot see that.
+  - Sizes as in s16_struct.txt (regenerated). Engine snap/st15f, md5s snap/st15f_md5.txt, cmd_st15f.sh.
+
+## Stage 16 pre-registration (02:10Z, not built): private-context pass-on
+- Hypothesis: binder 7665566/6675666 becomes non-tight, so t* < 23/134. Kill line: it stays tight at 23/134.
+- Idea (from the st15f certificate and the round-50 census): in V's min over the 6's private p_j, drop each p whose extended arrangement is reducible. The survivors in the binder are exactly: all six privates >= 6 and p51 >= 7.
+  - Sound version: the receiver row carries a per-row candidate set, the kills taken from verified D/C patterns over u's 3-ball (the privates). That needs separation over privates as extra slots: jsep with d extra slots, or per-row pricing of V with pattern lookups.
+  - Alternative from Long Table: the big privates (p51 >= 7, others >= 6) send toward u via the 6s at w2 and w5. That needs a 6 to pass on from its private big, which is already allowed (h from p to x when p is big, v from x to u).
+  - What is missing is that v must be allowed to depend on p's class, and V must take the min only over the surviving p. So both routes need the kill information on privates.
