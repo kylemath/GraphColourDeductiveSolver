@@ -572,3 +572,16 @@ our agent R and have no output from it.
   - It is independent of the suspect entry.
   - Spec: s34b/RELAY_SPEC_s23.md. Folded into the stacked s33z solve.
 - (C) l3q 7→8: dead (rc +7/160, +7/80, 0). The mask-drop control turns them negative.
+
+## s28q l3q: validity and newest head (04176194)
+- On 7a3857a0 (suspect entries held out): sol_s28A60 is UPPER FEASIBLE at 0.147857 and cert_s28A60L is LOWER VALID at 47/320. So the l3q result does not need the suspect entries.
+- On 3cfd7f18 (argsA62, dcount 17,437), keeppen + nosep give:
+  - **0.146667 = 11/75 ≤ t* ≤ 0.147790**, one engine;
+  - q weight 0.073–0.087.
+- Binders of the 11/75 cert, each at about −1/15 or less:
+  - d10 6565656565/6556666666;
+  - d8 75666556/66666565;
+  - d7-with-8 rows 8658656/6665556 and 8658656/7665555;
+  - d8 76656566/56655565.
+  - The face 7 is gone.
+- Provenance note in RELAY_SPEC_s21.md: l3q restates RSST rule 9 (drule9) as an own rule, and any claim must name it.
