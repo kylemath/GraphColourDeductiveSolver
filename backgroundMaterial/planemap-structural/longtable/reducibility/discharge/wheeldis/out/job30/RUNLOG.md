@@ -177,3 +177,7 @@ not new to F.
   - Letter 9: none of the 168 names contains a 9. The binder's 9 is s_3 of its s-word, outside every kill window.
     Studio's parse / fullparse raise (AssertionError / KeyError) on a 9 in a non-p name rather than misreading it, so a
     future f-name with a 9 cannot slip in silently, but would need an explicit reading (9 = {>= 9}) added first.
+- 19 Oct ~09:10Z: letter-9 rule (8682f8ac, Long Table confirmed) applied at admission in twoeng.py. Two-engine names
+  with a 9 in the link or s word are excluded from k3x and logged to out/job30/letter9_excluded.log (letter9.lp_reading).
+  f9_ names whose only 9 is the centre are admitted as normal. The frozen wlp3.py parser is unchanged. Regression on
+  the default glob: 962 D / 733 C, k3x byte-identical (0 names excluded).

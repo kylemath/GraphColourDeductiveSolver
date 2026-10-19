@@ -39,9 +39,20 @@ for fn in files:
 okD = sorted(n for n in dD if n in kD)
 okC = sorted(n for n in cC if cX[n] & kC.get(n, set()))
 mism = sorted(n for n in cC if n in kC and not (cX[n] & kC[n]))
+# letter-9 rule (loop/studio/opus_check/letter9_rule.md, Long Table 09:03Z): a 9 in an f-name's link or s word is an
+# interior vertex of exact degree 9, which no LP letter matches (LP 9 = >= 9): exclude and log; a 9 only at an f9_
+# centre is exact and admitted as normal
+sys.path.insert(0, os.path.join(HERE, 'out', 'job31'))
+from letter9 import lp_reading
+L9 = sorted(n for n in set(okD) | set(okC) if lp_reading(n) == 'unmatchable')
+okD = [n for n in okD if n not in L9]; okC = [n for n in okC if n not in L9]
+if L9:
+    with open(os.path.join(HERE, 'out', 'job30', 'letter9_excluded.log'), 'a') as _lf:
+        for n in L9: _lf.write('%s excluded (two-engine %s; link/s 9 = exact degree 9, LP-unmatchable)\n' % (n, 'D' if n in dD and n in kD else 'C'))
 open(os.path.join(HERE, 'out', 'job30', 'k3x_D.out'), 'w').write(''.join(dD[n] + '\n' for n in okD))
 open(os.path.join(HERE, 'out', 'job30', 'k3x_C.cfast'), 'w').write(''.join('%s\n%s\n' % (cC[n][1], cC[n][2]) for n in okC))
 print('broad (kc -C2) files ignored: %s' % ' '.join(os.path.relpath(f, HERE) for f in BROAD))
 print('files %d; D both engines %d (dfast-only %d, kc-only %d); C both engines same X %d (X mismatch %d: %s; one engine only %d)' % (
     len(files), len(okD), len(set(dD) - kD), len(kD - set(dD)), len(okC), len(mism), ' '.join(mism[:5]),
     len(set(cC) ^ set(kC))))
+print('letter-9 rule: %d two-engine names with a link/s 9 excluded (logged in out/job30/letter9_excluded.log)' % len(L9))
