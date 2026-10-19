@@ -106,9 +106,19 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   at ring <= 14 ran (401 already run; 11:24-11:36Z), 0 mismatches. 8 kill windows and 6 f-names (twoeng: 3 D, 3 C
   with the same X). Minimal: f7_.556686_....55. (a7_u86655.6_5.....5, C, X = {I0-I6}). It holds the face's link
   fives w3, w4 but not the apex s3. So of the face rows at ring 14, 7676556 and 8665566 die without using the apex,
-  while 7765566 and 7655566 stay R*-like; the d = 7 face rows with u = 7 and a 6 on each side of the face
-  (7665566, 7655666, 7655667) are R*-like to ring 16. Twoeng-ready: `loop/k47/r7k_kills*`.
-- **fam51 started 11:37Z** on the 26 senders (registry snapshot: 582 RSST + 2,735 twoeng names, 1,900 D / 835 C).
+  while 7765566 and 7655566 stay R*-like at ring 14, and 7665566, 7655666, 7655667 at ring 16. Twoeng-ready:
+  `loop/k47/r7k_kills*`.
+- **fam51 (11:37Z, on the 26 senders; registry snapshot 582 RSST + 2,735 twoeng names, 3,317 configurations).**
+  **Kill line met within a minute: the face family survives.** The three heaviest contexts (55667 [0,0,0,1,0|1,0],
+  [0,0,0,0,0|1,1], [0,0,1,1,0|0,0]; max dual 0.101, 0.097, 0.058) are registry-dead in all 32 cases. The fourth,
+  **55769 [0,0,1,0,0|0] (dual 0.055 st18hL, 0.058 st19wL), survives at its all-6 case**: v = 5, link 5,5,7,6,>=9,
+  H0 = H1 = H3 = H4 = 6, H2 big, F3 = 6. Its 10 exact vertices give 142 windows (139 distinct), all at ring <= 14;
+  none is D, kc -C finds no X, and the whole exact set (ring 14) has best leftover 260. Our 4 non-registry-dead
+  cases of this context are exactly Opus's 4 admissible ones. Guess (70% survives) right. `loop/k51/F_*`,
+  `loop/k51/fam51_family_1f025ab7.log`.
+- **Survey (pre-registered 11:39Z, after the kill line; minutes of CPU): every sender, no stop** (SURVEY=1), to list
+  which contexts our engines kill outright and which cases survive, for Opus's stage 20. Not a claim and no kill
+  line; any kills go to Studio as usual. Guess: about half the 26 contexts die (the 12 registry-dead ones plus a few).
 - **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
   `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
   against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8

@@ -11,7 +11,8 @@ Big and free vertices are never in a window (they sit on its ring).  Windows are
 shared by several cases or members runs once.  Kill line: a member with a case that has no D/C at ring <= RMAX.
 Window names p5_<u|-><w>_<s>_<f> (u = the five v): w_k letter if in the window, F/N if s_(k-1) and s_k are in it (edge iff w_k = 5),
 x if only its fan is in it (w_k = 6); s_k and F_k letters or '.'.
-usage: python3 fam51.py FAMILY [RMAX TSEC CAP_MEMBER_S CAP_TOTAL_S]   (NW workers, default 3)"""
+usage: python3 fam51.py FAMILY [RMAX TSEC CAP_MEMBER_S CAP_TOTAL_S]   (NW workers, default 3; SURVEY=1 lists every
+surviving case of every member instead of stopping at the first; TWOENG = dir of twoeng's k3x_D.out, k3x_C.cfast)"""
 import sys, os, re, json, time, itertools, subprocess, tempfile, threading
 from concurrent.futures import ThreadPoolExecutor, FIRST_COMPLETED, wait
 H = os.path.dirname(os.path.abspath(__file__)); LOOP = os.path.join(H, '..')
@@ -208,10 +209,10 @@ def main():
     FAM = sys.argv[1]; A = sys.argv[2:]
     RMAX = int(A[0]) if A else 18; TSEC = int(A[1]) if len(A) > 1 else 600
     CAPM = int(A[2]) if len(A) > 2 else 3600; CAPT = int(A[3]) if len(A) > 3 else 28800
-    NW = int(os.environ.get('NW', '3')); TW = os.environ['TWOENG']          # twoeng output dir (k3x_D.out, k3x_C.cfast)
+    NW = int(os.environ.get('NW', '3')); TW = os.environ['TWOENG']; SURVEY = os.environ.get('SURVEY') == '1'
     members = load(FAM)
     REG, miss = registry(os.path.join(TW, 'k3x_D.out'), os.path.join(TW, 'k3x_C.cfast'))
-    tag = os.path.splitext(os.path.basename(FAM))[0]
+    tag = os.path.splitext(os.path.basename(FAM))[0] + ('_survey' if SURVEY else '')
     log = open(os.path.join(H, 'fam51_%s.log' % tag), 'a')
     def say(*a):
         s = ' '.join(map(str, a)); print(s, flush=True); log.write(s + '\n'); log.flush()
@@ -219,7 +220,7 @@ def main():
         % (tag, time.strftime('%H:%MZ', time.gmtime()), len(members), RMAX, TSEC, CAPM, CAPT, len(REG), miss))
     eng = Engines(TSEC); bcache = {}; T0 = time.time(); verdicts = []
     for m in members:
-        t0 = time.time(); slots, cs = cases(m); st = 'killed'; hold = None
+        t0 = time.time(); slots, cs = cases(m); st = 'killed'; hold = None; surv = []
         say('member %s: %d cases over %s%s' % (m['id'], len(cs), ' '.join('%s%s' % (x[0], ''.join(map(str, x[1:]))) for x in slots),
             ' (max dual %.3f, %d admissible per Opus)' % (m['dual'], m['adm']) if 'adm' in m else ''))
         for deg in cs:
@@ -246,13 +247,16 @@ def main():
                     top()
             if found:
                 say('  case %s: %s ring %d %s' % (cid, found[1], found[0][0], found[0][3])); continue
-            st = 'cap' if capped else 'timeouts' if tos else 'survives'
-            hold = (cid, len(ws), tos[:5]); break
+            st1 = 'cap' if capped else 'timeouts' if tos else 'survives'
+            if SURVEY and st1 == 'survives':           # survey mode: list every surviving case, keep going
+                say('  case %s: SURVIVES (%d windows at ring <= %d)' % (cid, len(ws), RMAX)); surv.append(cid); continue
+            st = st1; hold = (cid, len(ws), tos[:5]); break
+        if surv and st == 'killed': st = 'survives'; hold = (','.join(surv), 0, [])
         dt = time.time() - t0
         if st == 'killed': say('member %s KILLED (%d s)' % (m['id'], dt))
         else: say('member %s %s at case %s: %d windows at ring <= %d, timeouts %s (%d s)' % ((m['id'], st.upper()) + hold[:2] + (RMAX, hold[2], dt)))
         verdicts.append((m['id'], st, hold))
-        if st == 'survives': say('# KILL LINE MET: member %s case %s has no D/C window at ring <= %d' % (m['id'], hold[0], RMAX)); break
+        if st == 'survives' and not SURVEY: say('# KILL LINE MET: member %s case %s has no D/C window at ring <= %d' % (m['id'], hold[0], RMAX)); break
         if time.time() - T0 > CAPT: say('# total cap hit'); break
     say('# %s end %s: %s' % (tag, time.strftime('%H:%MZ', time.gmtime()), '; '.join('%s %s' % (a, b) for a, b, _ in verdicts)))
 
