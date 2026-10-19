@@ -393,29 +393,76 @@ def OccExact (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) (ι : Fin m →
   (∀ a b, intAdj a b = true → T.Adj (ι a) (ι b)) ∧
   (∀ a t, t < r → ringAdj a t = true → T.Adj (ι a) (ρ t))
 
-/-! ## C4: the contracted reducer (open) -/
+/-! ## C4: the contracted reducer
 
-/-- **C4 (OPEN, the one `sorry` of this file): contracting `X` gives a smaller reducer.**
+C4 is split into two open lemmas and a proved assembly:
+* C4a `contract_subgraph` (OPEN, geometry): contracting the components of a subgraph
+  `H ≤ T` with an edge gives a smaller spherical map that keeps every edge between components;
+* C4b `ConfigOccW.xGraph_labels` (OPEN, combinatorics): the X-graph has an edge, and no listed edge
+  outside `X` and no edge of `G` joins two vertices of one X-component (the label argument);
+* `ConfigOccW.contract_reducer` (PROVED from C4a + C4b): the reducer in the form `CEntry.colorable` uses. -/
 
-Statement. Let `cf` occur in `T` (deleted map `G`, face-walk ring `ρ`, interior `ι`), exactly
-(`OccExact`), with `X = eqR ∪ eqI` locally admissible (`admissibleX`) and globally simple
-(`XRingSimple`). Then there are a spherical map `T'` on the same vertex type and a vertex map `π`
-(the quotient by the X-components; the merged-away vertices become isolated) with
-* `T'` of strictly smaller support (`|X| ≥ 1` real edges are contracted);
-* every edge of `G` kept (`π` is injective on the non-interior vertices of a class: each
-  X-component meets at most one ring vertex, by the distinct ring labels and `XRingSimple`);
-* each listed ring–interior edge: identified if in `eqR`, kept otherwise;
-* each listed interior edge: identified if in `eqI` (either orientation), kept otherwise.
+/-- **C4a (OPEN): contraction of a subgraph of a spherical map.** Contracting each connected
+component of `H ≤ T` (with at least one edge) to one vertex gives a spherical map `T'` on the same
+vertex type (merged-away vertices isolated) with smaller support, and a vertex map `π` that is
+constant on `H`-components and keeps every edge of `T` between different components.
 
-What the proof needs (estimate 1,000–2,500 lines for general X, 300–500 for one interior edge):
-(i) edge contraction on `SphericalMap` (merge the rotations of the two ends, delete the
-contracted edge and the digons it creates at its two incident triangles; `Fills` is preserved),
-iterated over the ≤ 4 edges of `X`, or equivalently refilling the ring face of `G` with the
-contracted configuration (Job 25 `split`/`RingFace.chordMap`, `growBefore_fills`,
-`Sep5Star.starMap`); (ii) the support count; (iii) the label argument above: X-edges join equal
-labels, so an X-component has one label, so a kept edge never becomes a loop. -/
-theorem ConfigOccW.contract_reducer (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ)
+True because a contraction of connected subgraphs of a planar map is planar (a minor) and merges at
+least two support vertices. What the proof needs: edge contraction on `SphericalMap` (merge the
+rotations at the two ends, delete the contracted edge and the digons it leaves, keep `Fills`),
+iterated over a spanning forest of `H` (in our use ≤ 4 edges); or, for the occurrence at hand,
+refilling the ring face of `G` with the contracted configuration (Job 25 `split`/`RingFace.chordMap`,
+`growBefore_fills`, `Sep5Star.starMap`). Estimate: 800–2,000 lines; one edge (87% of the registry):
+300–500 lines. -/
+theorem contract_subgraph (T : SphericalMap n) (H : SimpleGraph (Fin n))
+    (hH : H ≤ T.graph) (hne : ∃ x y, H.Adj x y) :
+    ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
+      Nat.card T'.graph.support < Nat.card T.graph.support ∧
+      (∀ x y, H.Reachable x y → π x = π y) ∧
+      (∀ x y, T.Adj x y → ¬ H.Reachable x y → T'.Adj (π x) (π y)) := by
+  sorry
+
+/-- The X-graph of an occurrence: the contracted edges `ι a – ρ t` (`eqR`) and `ι a – ι b` (`eqI`),
+among the listed adjacencies. -/
+def xGraph (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (ρ : ℕ → Fin n) (ι : Fin cf.m → Fin n) :
+    SimpleGraph (Fin n) :=
+  SimpleGraph.fromRel fun x y =>
+    (∃ (a : Fin cf.m) (t : ℕ), ringAdjOf cf a t = true ∧ eqR.contains (t, a.val) = true ∧
+      x = ι a ∧ y = ρ t) ∨
+    (∃ a b : Fin cf.m, intAdjOf cf a b = true ∧
+      (eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = true ∧ x = ι a ∧ y = ι b)
+
+/-- **C4b (OPEN): the label argument.** Under local admissibility and `XRingSimple`, the X-graph
+has an edge, and its components never contain both ends of a listed edge outside `X` or of an edge
+of `G`.
+
+Proof sketch (≈150–300 lines, list lemmas only). Unpack `admissibleX` with `List.all_eq_true`. Put
+`Λ (ι a) = lbl[a]`, `Λ (ρ t) = lbl[m + t]` for a ring position `t` touched by `eqR` (well defined by
+`XRingSimple`), and `Λ v = B + v` otherwise, with `B` above every label. `Λ` is constant along
+X-edges (X-edges join equal labels), hence on X-components (`Reachable` induction). A listed edge
+outside `X` joins different labels; a `G`-edge joins two different ring vertices, which get distinct
+ring labels or a fresh value. -/
+theorem ConfigOccW.xGraph_labels (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ)
     (hadm : admissibleX cf eqR eqI lbl = true) {ι : Fin cf.m → Fin n}
+    (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hs : XRingSimple eqR cf.r ρ) :
+    (∃ x y, (xGraph cf eqR eqI ρ ι).Adj x y) ∧
+    (∀ (a : Fin cf.m) t, ringAdjOf cf a t = true → eqR.contains (t, a.val) = false →
+      ¬ (xGraph cf eqR eqI ρ ι).Reachable (ι a) (ρ t)) ∧
+    (∀ a b : Fin cf.m, intAdjOf cf a b = true →
+      (eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = false →
+      ¬ (xGraph cf eqR eqI ρ ι).Reachable (ι b) (ι a)) ∧
+    (∀ x y, G.Adj x y → ¬ (xGraph cf eqR eqI ρ ι).Reachable x y) := by
+  sorry
+
+/-- **C4: contracting `X` gives a smaller reducer** (proved from C4a and C4b). Let `cf` occur in
+`T` exactly (`OccExact`), with `X = eqR ∪ eqI` locally admissible and globally simple. Then there
+are a spherical map `T'` of smaller support and a vertex map `π` that keeps every edge of `G`,
+identifies each listed edge in `X` and keeps each other listed edge. -/
+theorem ConfigOccW.contract_reducer (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ)
+    (hadm : admissibleX cf eqR eqI lbl = true)
+    (hloop : ∀ a, intAdjOf cf a a = false)
+    (hrr : ∀ a, a < cf.m → ∀ t ∈ cf.ringAdj[a]!, t < cf.r) {ι : Fin cf.m → Fin n}
     (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
     (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
     (hs : XRingSimple eqR cf.r ρ) :
@@ -430,7 +477,41 @@ theorem ConfigOccW.contract_reducer (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (l
           π (ι b) = π (ι a)) ∧
         ((eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = false →
           T'.Adj (π (ι b)) (π (ι a)))) := by
-  sorry
+  classical
+  have hlt : ∀ (a : Fin cf.m) t, ringAdjOf cf a t = true → t < cf.r :=
+    fun a t hat => hrr a.val a.isLt t (of_decide_eq_true hat)
+  have hXR : ∀ (a : Fin cf.m) t, ringAdjOf cf a t = true → eqR.contains (t, a.val) = true →
+      (xGraph cf eqR eqI ρ ι).Adj (ι a) (ρ t) := by
+    intro a t hat h
+    rw [xGraph, SimpleGraph.fromRel_adj]
+    exact ⟨fun e => O.ringOff t a e.symm, Or.inl (Or.inl ⟨a, t, hat, h, rfl, rfl⟩)⟩
+  have hXI : ∀ a b : Fin cf.m, intAdjOf cf a b = true →
+      (eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = true →
+      (xGraph cf eqR eqI ρ ι).Adj (ι b) (ι a) := by
+    intro a b hab h
+    rw [xGraph, SimpleGraph.fromRel_adj]
+    refine ⟨fun e => ?_, Or.inr (Or.inr ⟨a, b, hab, h, rfl, rfl⟩)⟩
+    have hba : b = a := O.ιinj e
+    subst hba
+    rw [hloop] at hab
+    exact Bool.false_ne_true hab
+  have hle : xGraph cf eqR eqI ρ ι ≤ T.graph := by
+    intro x y hxy
+    rw [xGraph, SimpleGraph.fromRel_adj] at hxy
+    obtain ⟨-, h | h⟩ := hxy
+    · rcases h with ⟨a, t, hat, -, rfl, rfl⟩ | ⟨a, b, hab, -, rfl, rfl⟩
+      · exact hex.2 a t (hlt a t hat) hat
+      · exact hex.1 a b hab
+    · rcases h with ⟨a, t, hat, -, rfl, rfl⟩ | ⟨a, b, hab, -, rfl, rfl⟩
+      · exact (hex.2 a t (hlt a t hat) hat).symm
+      · exact (hex.1 a b hab).symm
+  obtain ⟨hne, hnR, hnI, hnG⟩ := ConfigOccW.xGraph_labels cf eqR eqI lbl hadm O hs
+  obtain ⟨T', π, hcard, hπ, hkeep⟩ := contract_subgraph T _ hle hne
+  refine ⟨T', π, hcard, fun x y hxy => hkeep x y ((O.hG x y).1 hxy).1 (hnG x y hxy),
+    fun a t hat => ⟨fun h => hπ _ _ (hXR a t hat h).reachable,
+      fun h => hkeep _ _ (hex.2 a t (hlt a t hat) hat) (hnR a t hat h)⟩,
+    fun a b hab => ⟨fun h => hπ _ _ (hXI a b hab h).reachable,
+      fun h => hkeep _ _ (hex.1 a b hab).symm (hnI a b hab h)⟩⟩
 
 /-! ## C6: registry entries, soundness, claim -/
 
@@ -480,7 +561,7 @@ theorem CEntry.colorable (e : CEntry) {T : SphericalMap n} (h : OccursCX e T)
     (IH : SmallerColorable T) : T.graph.Colorable 4 := by
   obtain ⟨G, ρ, ι, O, hex, hs⟩ := h
   obtain ⟨T', π, hcard, hGe, hR, hI⟩ :=
-    ConfigOccW.contract_reducer (Conf.of18 e.cf) e.eqR e.eqI e.lbl e.hadm O hex hs
+    ConfigOccW.contract_reducer (Conf.of18 e.cf) e.eqR e.eqI e.lbl e.hadm e.hloop e.hrr O hex hs
   obtain ⟨col⟩ := IH n T' hcard
   refine ConfigOccW.colorable_of_cReducible18 e.cf e.eqR e.eqI e.hC e.hr2 e.hr e.hsym e.hloop
     e.hrr O (c := fun x => col (π x)) (fun _ _ huv _ _ => col.valid (hGe _ _ huv))
