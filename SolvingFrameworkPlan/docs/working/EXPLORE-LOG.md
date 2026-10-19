@@ -45,6 +45,10 @@ None of these rows was swept before in any orientation (canon_key against every 
   9) and f8_..556665_..5..... (C, ring 12, m 8: the face w5 w6 s5 with the link run w1..w4 = 5666 and the hub). Guess
   (face row survives ring 16) wrong. Studio's ring 15-18 files for this row are no longer needed; its ring <= 14 run here
   is dropped.
+- **22:57Z, d8 76656656/56655565 (r54c, dual 0.0125) dies at ring 12.** 82 two-engine kills at ring 12-14 (ring 12: 4 D,
+  4 C), 72 f-names (twoeng: 32 D, 40 C same X, 0 mismatch); one C has ring edges in X ({I0-I5,I1-I2,R2-I0,R0-I2}: R2
+  and R0 stay in different classes, so no ring merge), the rest interior-only. Minimal: f8_...56656_.....56. (C X={I3-I4},
+  ring 12, m 8) and three at ring 14.
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
