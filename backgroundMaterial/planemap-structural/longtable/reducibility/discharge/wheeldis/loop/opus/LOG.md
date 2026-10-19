@@ -412,7 +412,7 @@ our agent R and have no output from it.
 - Files: P_own_lp/s17d/.
 
 ## Stage 18: hat channel (flag hat5, RELAY_SPEC §15), argsA54 + §14′ filter, 19 Oct ~08:30Z
-- Rule: a big hat of a five sends r[K] to it. K is read identically from both ends (§15 table). Physical test: 100k random triangulations, 0 mismatches; broken-key control gives 15,898. Regression check with the flag off: 6/35.
+- Rule: a five sends r[K] to a big hat of it (five → big; prose corrected ee11d33e, rows unchanged). K is read identically from both ends (§15 table). Physical test: 100k random triangulations, 0 mismatches; broken-key control gives 15,898. Regression check with the flag off: 6/35.
 - Bracket 10/63 <= t* <= 17/107 = 0.15888, both checked on our engine:
   - Upper: sol_st18h, FEASIBLE on itself.
   - Lower: cert_st18hL, VALID, 138 rows.
