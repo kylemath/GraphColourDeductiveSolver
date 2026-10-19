@@ -88,7 +88,7 @@ other than one around a single vertex (Birkhoff; Job 25). -/
 theorem MinimalCounterexample.noShortSep {T : SphericalMap n} (hT : MinimalCounterexample T) :
     NoShortSepCycle T := by
   intro r ρ c C hr hc hs h5
-  exact hT.not_colorable (colorable_of_short_separating_cycle C hr hc hs h5 hT.smaller)
+  exact hT.not_colorable (colorable_of_short_separating_cycle ⟨C.three, C.per, C.adj, C.inj⟩ hr hc hs h5 hT.smaller)
 
 /-! ## Registry entries and their soundness -/
 
