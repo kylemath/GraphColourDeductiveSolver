@@ -59,6 +59,22 @@ rule should read.
   Separately, Studio's row 11 (this row at ring 17-18, 225 windows, bcf5d050): no kill; 218 kc neither, 7 ring-18 kc
   timeouts now on dfast18.
 
+- **20:32Z, 7665566/6765766 (the 0.231 binder) after the engine step: 83.77% of its extensions die; survivors named.**
+  The two engine runs (526 + 369 windows, 2 h cap reached at 20:31Z) found 10 two-engine kills (4 D, 6 C, every C
+  with an interior-only X), all in the apex 6-9 part, e.g. g7_-..655.._..65..._...5...... (p21 = 5, ring 8, D) and
+  g7_-.6655.._..65..._..55...... (ring 11, C X={I0-I1}). With the registry they cover 79.71% of the apex 6-9 part, so
+  8,180,473 of 9,765,625 fillings (83.77%, from 75.65%). Recount with every cached kill in
+  `loop/k53/cen53_final_7_7665566_6765766.txt`.
+  - **Every private at 5 now dies** (p01, p02, p11, p21, p51, p61), and so does apex = 5.
+  - **Survivors: apex >= 6 and all six privates >= 6.** Three ring-3 vertices beside the face can still be 5 in
+    some survivors: t(p21,s2) next to s2, t(s4) and t(s4,p51) next to s4 (195,840, 122,880 and 169,728 survivors
+    with that one slot at 5). 1,028,352 of the 1,048,576 fillings with every slot >= 6 survive, and all 59,049 with
+    every slot >= 7.
+  - First guess (engines add less than 5 points on the apex 6-9 part) was wrong: they added 10.15 points, all from
+    windows with a five among the slots.
+  Explore's cores go next to the six non-family rows (8765556/6575965 started 20:32Z), the face rows' engine steps
+  after, unless Long Table reorders.
+
 ## Round 52 (19 Oct 2026, 12:44Z-): H-F18, do the surviving face receivers die at ring 17-18?
 
 **Pre-registered 12:44Z, before any engine run on these targets.** Gap G2. Long Table, 12:41Z: Opus's stage 21 is
