@@ -1,0 +1,15 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9700, 8: 4522, 9: 2941, 10: 1063, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 16937, 'C': 1884, 'RPAT': 158, 'FORBID': 3}
+conservation basis rows added: 10539
+warm rows admitted: 43987
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1399 M sigs
+iter 0 t=0.147630831828 rows 83864 cols 26659 added 753  lp 1381.8s total 1438s  {7: (160, np.float64(1.409477), 3.9), 8: (160, np.float64(1.878222), 2.2), 9: (151, np.float64(1.064996), 2.8), 10: (133, np.float64(0.884685), 2.4), 11: (149, np.float64(0.315448), 2.4)}
+iter 1 t=0.147630831828 rows 84549 cols 26738 added 681  lp 41.5s total 1538s  {7: (150, np.float64(0.251235), 8.0), 8: (238, np.float64(1.261846), 2.4), 9: (153, np.float64(0.903101), 2.7), 10: (126, np.float64(0.74697), 2.3), 11: (14, np.float64(0.100292), 2.5)}
+iter 2 t=0.147630831828 rows 85168 cols 26793 added 616  lp 102.8s total 1689s  {7: (160, np.float64(0.137063), 8.9), 8: (154, np.float64(0.338925), 3.6), 9: (152, np.float64(0.668619), 1.9), 10: (150, np.float64(0.276182), 1.9)}
+iter 3 t=0.147604327666 rows 85791 cols 26813 added 623  lp 131.7s total 1866s  {7: (149, np.float64(0.202053), 7.0), 8: (165, np.float64(1.261978), 2.4), 9: (162, np.float64(0.460804), 2.2), 10: (147, np.float64(0.261747), 2.4)}
+iter 4 t=0.147604327666 rows 86250 cols 26865 added 459  lp 90.5s total 2008s  {7: (148, np.float64(0.173892), 8.9), 8: (155, np.float64(0.196797), 4.8), 9: (148, np.float64(0.414072), 3.0), 10: (8, np.float64(0.042528), 2.2)}
+iter 5 t=0.147604327666 rows 86706 cols 26890 added 451  lp 70.2s total 2135s  {7: (140, np.float64(0.088924), 11.4), 8: (150, np.float64(0.154969), 4.9), 9: (161, np.float64(0.182393), 4.8)}
+iter 6 t=0.148400488400 rows 87186 cols 26934 added 470  lp 257.3s total 2450s  {7: (151, np.float64(0.079998), 11.4), 8: (162, np.float64(0.11523), 6.0), 9: (156, np.float64(0.091216), 5.7), 10: (1, np.float64(0.037314), 2.4)}
+iter 7 t=0.153846153846 rows 87625 cols 27059 added 424  lp 394.1s total 2901s  {7: (150, np.float64(0.133306), 9.7), 8: (125, np.float64(0.111576), 7.6), 9: (149, np.float64(0.095206), 6.1)}
+iter 8 t=0.153846153846 rows 88101 cols 27093 added 447  lp 82.5s total 3042s  {7: (146, np.float64(0.072295), 10.9), 8: (150, np.float64(0.069259), 8.0), 9: (151, np.float64(0.103133), 6.0)}
+iter 9 t=0.153846153846 rows 88569 cols 27292 added 463  lp 82.3s total 3184s  {7: (153, np.float64(0.06862), 11.3), 8: (157, np.float64(0.035953), 9.0), 9: (152, np.float64(0.024187), 6.1), 10: (1, np.float64(0.005844), 2.3)}

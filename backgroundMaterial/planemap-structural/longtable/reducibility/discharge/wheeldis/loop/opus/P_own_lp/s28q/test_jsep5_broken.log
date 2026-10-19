@@ -1,0 +1,10 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+  MISMATCH 7757575 6555655 23.249884131267 16.516382954983573 {('lQ', (5, 5, 31)): 1, ('lQ', (5, 5, 0)): 1, ('lQ', (5, 5, 30)): 1, ('lQ', (5, 5, 28)): 1, ('lQ', (5, 5, 1)): 1, ('lQ', (5, 6, 28)): 1}
+  MISMATCH 7757575 6565655 22.915000456262 12.97015258457665 {('lQ', (5, 5, 31)): 1, ('lQ', (5, 5, 0)): 2, ('lQ', (5, 6, 0)): 1, ('lQ', (5, 5, 1)): 1, ('lQ', (5, 6, 28)): 1}
+  MISMATCH 7757575 6565656 22.837880791523 13.897694654400869 {('lQ', (5, 6, 30)): 1, ('lQ', (5, 5, 0)): 2, ('lQ', (5, 6, 0)): 1, ('lQ', (5, 5, 1)): 1, ('lQ', (5, 6, 28)): 1}
+seed 0 rows 300 with l3q terms 300 mismatches 300 1.2s
+seed 1 rows 600 with l3q terms 600 mismatches 600 1.3s
+seed 2 rows 900 with l3q terms 900 mismatches 900 1.4s
+seed 3 rows 1200 with l3q terms 1200 mismatches 1200 1.4s
+payer-hit rows 326
+JSEP5 TEST (BROKEN CONTROL: no leaf correction): 1200 rows, 1200 with l3q terms, 1200 mismatches

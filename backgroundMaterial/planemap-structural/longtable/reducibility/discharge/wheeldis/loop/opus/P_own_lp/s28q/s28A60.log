@@ -1,0 +1,7 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9705, 8: 4542, 9: 2941, 10: 1142, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17030, 'C': 1898, 'RPAT': 158}
+conservation basis rows added: 10539
+warm rows admitted: 35830
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1335 M sigs
+iter 0 t=0.141955835962 rows 75720 cols 25975 added 1029  lp 440.2s total 484s  {7: (169, np.float64(2.81808), 2.9), 8: (149, np.float64(2.870195), 1.8), 9: (161, np.float64(2.006309), 2.9), 10: (171, np.float64(1.491249), 2.0), 11: (169, np.float64(1.072272), 2.2), 12: (159, np.float64(0.722397), 3.0), 13: (51, np.float64(0.207337), 2.4)}
+iter 1 t=0.141955835962 rows 76759 cols 26066 added 1010  lp 36.9s total 567s  {7: (152, np.float64(1.48192), 2.5), 8: (207, np.float64(1.31824), 2.3), 9: (149, np.float64(0.76807), 2.5), 10: (151, np.float64(0.624346), 2.4), 11: (160, np.float64(0.142022), 2.7), 12: (191, np.float64(0.251145), 2.7)}

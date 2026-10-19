@@ -1,0 +1,40 @@
+cert /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s24d/cert_st24bL.json rows 36 tco 1 objective 2/13 level 3
+  S 55667 00000|11                           w=1/13     contexts=1
+  S 55667 01000|01                           w=2/13     contexts=1
+  S 55669 00100|00                           w=1/13     contexts=1
+  S 55696 00000|00                           w=1/13     contexts=1
+  S 55767 00000|0                            w=3/26     contexts=1
+  S 55959 00000|                             w=1/26     contexts=1
+  S 56696 10000|000                          w=1/13     contexts=1
+  S 66669 00000|0110                         w=1/26     contexts=1
+  S 66669 01000|0000                         w=1/26     contexts=1
+  R 10 6565665656 6555555565                 w=-1/26    contexts=4
+  R 10 6565555665 6665956566                 w=-1/26    contexts=4
+  R 7 7665566 6675676                        w=-3/13    contexts=2
+
+phi keys touched: 15.  lifting LP: best worst-case tot = 0.153846154  (INFEASIBLE: some phi column has rc < 0 under every lifting)
+columns with rc < 0 at the best lifting: 5, sum of -rc = 0.461538462
+  NEG phi (7, 5, 5, 6, 6, 0, 0, 1, 2, 0) rc = -0.153846 [('55667 01000|01', '01000|01', np.float64(0.153846), 1)]
+  NEG phi (7, 5, 5, 6, 6, 0, 0, 0, 2, 0) rc = -0.076923 [('55667 00000|11', '00000|11', np.float64(0.076923), 1)]
+  NEG phi (9, 5, 5, 6, 6, 0, 0, 0, 2, 0) rc = -0.076923 [('55669 00100|00', '00100|00', np.float64(0.076923), 1)]
+  NEG phi (9, 5, 5, 9, 5, 0, 0, 0, 0, 0) rc = -0.076923 [('55959 00000|', '00000|', np.float64(0.038462), 2)]
+  NEG phi (9, 6, 5, 5, 6, 0, 2, 0, 2, 0) rc = -0.076923 [('55696 00000|00', '00000|00', np.float64(0.076923), 1)]
+
+lifting used (contexts with weight):
+  S 55667 00000|11 ctx 00000|11 lam 0.076923
+  S 55667 01000|01 ctx 01000|01 lam 0.153846
+  S 55669 00100|00 ctx 00100|00 lam 0.076923
+  S 55696 00000|00 ctx 00000|00 lam 0.076923
+  S 55767 00000|0 ctx 00000|0 lam 0.115385
+  S 55959 00000| ctx 00000| lam 0.038462
+  S 56696 10000|000 ctx 10000|000 lam 0.076923
+  S 66669 00000|0110 ctx 00000|0110 lam 0.038462
+  S 66669 01000|0000 ctx 01000|0000 lam 0.038462
+  R 10 6565665656 6555555565 ctx {"('e', 3)": 1, "('e', 6)": 1} lam 0.038462
+  R 10 6565555665 6665956566 ctx {"('apexpriv', 3)": 1, "('apexpriv', 5)": 1} lam 0.038462
+  R 7 7665566 6675676 ctx {"('apexpriv', 3)": 0} lam 0.230769
+
+label-only pricing (exact, no lifting): 3 phi columns with rc < 0
+  rc = -2/13 = -0.153846  (7, 5, 5, 6, 6, 0, 0, 1, 2, 0)
+  rc = -1/13 = -0.076923  (7, 5, 5, 6, 6, 0, 0, 0, 2, 0)
+  rc = -1/13 = -0.076923  (9, 5, 5, 6, 6, 0, 0, 0, 2, 0)
