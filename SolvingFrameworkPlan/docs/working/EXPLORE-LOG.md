@@ -93,6 +93,11 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
     59 C with the same X). 17 minimal, 5 at ring 12 (e.g. f9_..5556655_......... D, f9_...556655_.....5... C).
     Twoeng-ready: `loop/k47/r9e_kills*`. Studio admitted them (11:14Z; 65 D and 11 C were already in from r9g):
     registry 03c34729, 1,894 D / 838 C, dcount 16,934.
+- **Face rule falsified for the d = 7 face row 7676556/7759565 (11:21Z, reported at once): it dies at ring 14 (D).** All
+  612 windows at ring <= 14 ran (113 already run; 11:12-11:21Z), 0 mismatches. 3 kill windows and 3 f-names (twoeng:
+  3 D). Minimal: f7_5567676_..5..5. (a7_u7676556_..5...5): the 7-centre, its whole link and s2 = s6 = 5. It holds
+  the face's link fives w4, w5 but not the apex s4, so the kill does not use the face triangle. This is family.json's
+  receiver 7676556/7759565 itself (dual 0.055-0.058 in all three certs), now dead. Twoeng-ready: `loop/k47/r7h_kills*`.
 - **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
   `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
   against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8
