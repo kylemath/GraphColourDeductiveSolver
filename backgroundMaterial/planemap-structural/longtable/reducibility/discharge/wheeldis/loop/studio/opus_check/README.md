@@ -190,3 +190,37 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   784 arrangements); DP clean; Karp λ = 0.505617978, covering d >= 11.784. **FEASIBLE**.
 - Lower: 25 rows rebuilt, tco = 1, **D = 31/178**; the only nonzero reduced cost is M[76667] = 40/89 >= 0.
 - **PASS.**
+
+## s12r50 (t* = 23/134, s12r mode, d43ba26a + r_5..r_8; 833abac2), spec-only check, ~01:15Z 19 Oct
+- Checker: out/job31/s12r_check.py, from RELAY_SPEC section 12 (99fd70df) plus sections 1-11; no Opus code or data
+  (no prelay2.py, pcheck.py or cons2basis_cls.json). It reuses s14r_check.py's reducible sets, pattern loader and
+  admissibility unchanged. Run: CAP=3000000 EXPECT_T=23/134 EXPECT_PAT=15550,1568,158. Log: s12r50_check.log.
+- Spec side:
+  - R5/R6/FANS/RBIG as the spec; patterns D 15,550 / C 1,568 / RPAT 158 (section 12.0).
+  - Solution flags model R6x2, apexcls, zh off. Bounds clean (max x 0.057).
+- **senderR2:** 7,074 rows (spec), 0 violated (min slack −4e−15).
+  - g2 keys in sender rows: **381**. Spec 12.3 said 393; Opus has since corrected the text. 393 = these 381 plus 12
+    g columns loaded only from cons2 rows.
+  - s12r50_extra12.log, Studio code:
+    - (a) all 7,008 cons2 occurrences of those 12 keys (any non-R6 L in every orientation, s_i and s_{i-1} over 5..9)
+      come from a five whose 5-word is in R5 (55566, 55666, 56566, 56666, 66666).
+    - (b) no admissible senderR2 assignment uses them, and receiverR2 rows have no g terms.
+    - 10 of the 12 are positive in the solution; 6101655 and 6111655 are not.
+- **cons2:** all 1,424 non-R6 6-words × the 64 apex class words (= every 5^6 apex word, through ap):
+  - 994 words with a five: 0 violated (max 3.9e−15);
+  - 430 without a five: 0 violated (max 0).
+- **mrowR2:** all 15 cert rows are in canonical orientation (0 not), and each key is in cand2 in the stored
+  orientation.
+- **Receivers d = 7..15, exhaustive.** sep3r cannot read ap(w_{j±2}).
+  - It runs on the relaxation y6b := max over the apex pairs of h2, through **bin/sep3r_ak**: sep3r.cpp copied, plus
+    SEP_ARRKEY=1, which keys results by arrangement rather than by row. sep3r.cpp is frozen for Job 31 and untouched.
+  - Without that key, two arrangements with one relaxed row could hide an exact violator. The first run (cap 5,000,
+    row-keyed) was void for that reason and for the cap.
+  - Relaxed reports by d: 348,160 / 318,264 / 145,962 / 30 / 0 ... 0 (d = 7..15). All are complete (under the cap),
+    and every one was re-evaluated exactly with the spec row: **0 violated**.
+  - Before the search: the relaxed Studio rows were checked against the spec rows on 785 arrangements.
+    0 admissibility mismatches; relaxed value never below exact; 0 x-key mismatches.
+- **Tail:** DP d = 16..30 clean. Karp λ = 0.522388060 (35/67), d0 = 12.203, as spec 12.7.
+- **Lower:** 57 rows rebuilt (11 senderR2, 26 cons2, 15 mrowR2, 5 receiverR2); tco = 1, **D = 23/134**. The only
+  nonzero reduced cost is M[7666755] = 26/67 (= 104/268) >= 0, as spec 12.9.
+- **Verdict: PASS**, upper FEASIBLE and lower VALID at 23/134.
