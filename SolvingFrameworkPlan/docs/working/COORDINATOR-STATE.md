@@ -80,6 +80,12 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 23:55Z 19 Oct: The adversarial review of CGlue says GO WITH CHANGES.
+  - The Lean statement is sound. cfast is not trusted: hC is computed in Lean.
+  - The global no-loop part of C-soundness is ASSUMED via XRingSimple + OccExact inside Unavoidable, and nothing produces them yet. Folded rings exist (JOB26), so this may fail for the ~89 entries whose X touches a ring edge. The 898 one-interior-edge entries are unaffected.
+  - Only e66666 is instantiated as a CEntry. k3x_C lists 1,018 vs 1,010 counted.
+  - Gate wording must name OccExact and XRingSimple.
+  - The worker is assigned the icosahedron sanity lemma, the no-loop proof or fold-tolerant OccursCX, and the count reconciliation.
 - 23:40Z 19 Oct: CGlue is FULLY SORRY-FREE in Lean, built here (28174683 contract_edge' / contract_subgraph_gen for any X on any spherical map; 1ebfc919; 60269a51). #print axioms: the standard three plus checker native_decide, no sorryAx. Registry recount on 3cfd7f18: 1,010 C entries = 898 one-interior-edge + 1 ring-interior + 111 multi-edge (32 / 43 / 36 at |X| = 2 / 3 / 4). The only open link is Unavoidable R, which must also supply OccExact and XRingSimple for C occurrences. Pending before the gate cites it: Studio's independent build (claim rule) and an adversarial review of the statement. The w66666 star reducer is on hold, since it is redundant if the build passes.
 - 23:10Z 19 Oct: s32p pricing against the l3q cert (Opus 445989dc).
   - The 8-channel hypothesis is REFUTED for the d7-with-8 rows: all rc >= 0.
