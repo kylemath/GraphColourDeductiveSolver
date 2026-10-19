@@ -1,19 +1,16 @@
-# s33z: signed Z± (zh + zr, RELAY_SPEC_s22) + hatrr + l3q on 3cfd7f18 (s31/argsA62, killtab s31/f/kill/kill6, l3q tab62).
-# 1) bounded wait (5-min checks) for the l3q worker's A62 solve (s28q/done_s28A62.txt); after 03:00Z run anyway at threads=1.
-# 2) keeppen solve (3 h cap) -> nosep L solve (3 h cap) -> lowerR2 on the L cert -> upperR2 on the keeppen solution.
+# s33z: signed Z± (zh + zr, RELAY_SPEC_s22) + hatrr + l3q on Studio head SHA (reg_SHA from prep_head.sh: args, kill6, l3q tables).
+# usage: bash cmd_s33.sh SHA [threads]   (the wait for the l3q A62 solve is done outside, by wait_s33.sh)
+# keeppen solve (3 h cap) -> nosep L solve (3 h cap) -> lowerR2 on the L cert -> upperR2 on the keeppen solution.
 B=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp
 S=$B/s33z; cd $S/eng
 M=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/m/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis
 WK=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr33
 export OMP_NUM_THREADS=1
-TH=2
-while [ ! -e $B/s28q/done_s28A62.txt ]; do
-  if [ $(date -u +%H%M) -ge 0300 ] && [ $(date -u +%H%M) -lt 1200 ]; then TH=1; echo "03:00Z reached without done_s28A62; running at threads=1" >> $S/wait.log; break; fi
-  echo "$(date -u +%H:%M:%SZ) waiting for s28q/done_s28A62.txt" >> $S/wait.log; sleep 300
-done
-echo "$(date -u +%H:%M:%SZ) start, threads=$TH" >> $S/wait.log
-A="root=$M args=$B/s31/argsA62.txt rpat=$B/rpatD.txt"
-F="xon apexcls filt16 killtab=$B/s31/f/kill/kill6 hat5 consall l3q l3qtab=$B/s28q/tab62_1.json,$B/s28q/tab62_-1.json lqcap=3 zh zr hatrr zcap=3"
+SHA=$1; TH=${2:-2}; Q=$S/reg_$SHA
+[ -e $Q/prep_done.txt ] || { echo "no prep for $SHA" >> $S/wait.log; exit 3; }
+echo "$(date -u +%H:%M:%SZ) start on $SHA, threads=$TH" >> $S/wait.log
+A="root=$M args=$Q/args_$SHA.txt rpat=$B/rpatD.txt"
+F="xon apexcls filt16 killtab=$Q/f/kill/kill6 hat5 consall l3q l3qtab=$Q/tab_1.json,$Q/tab_-1.json lqcap=3 zh zr hatrr zcap=3"
 CB=consbasis=$B/s21/cf/cons2basis_cls.json
 WARM=$B/s28q/eng/rows_s28A60.txt
 [ -s $B/s28q/eng/rows_s28A62.txt ] && WARM=$B/s28q/eng/rows_s28A62.txt,$WARM
