@@ -67,6 +67,12 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   `loop/k47/s52r3_kills*` (from `loop/k47/minkill52.py`, minkill47 reading a Studio row folder) and go to Studio
   for admission. Admitted 17:21Z (registry ffa42f2d: 1,920 D / 841 C, +20 D, guards 0).
 
+- **18:09Z, 7766556/6567566 (explore): no kill to ring 16, stopped early for the binders.** The user asked for full
+  effort on whatever binds now (relayed 18:08Z). This row has no weight in the 2/13 bound, so explore stopped it 27 min
+  before its cap to start the d = 10 binders. 1,305 of 1,421 ring <= 16 windows run, no D/C. Its 352 windows left (116
+  at ring 16, 167 at ring 17, 69 at ring 18) are in `loop/k47/win52_7_7766556_6567566_todo.txt`, for Studio.
+  6565665656/6555555565 started at 18:09Z, then 6565555665/6665956566.
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
