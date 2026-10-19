@@ -60,6 +60,13 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   every non-face row has (75%); 6565555665/6665956566 dies at ring <= 14 through its run of fives, as d = 9
   655566556 did (60%).
 
+- **17:19Z, Studio rows 3 and 10 final.** 7655566/6759676 survives with every window decided (the 4 ring-18 kc timeouts
+  are dfast18 D=false; Studio 85134cf8). 85586556/66656565 is killed (Studio c503910a): 40 two-engine D
+  windows at ring 14-16 give 20 distinct f-names (mirror pairs), and one inclusion-minimal f-name,
+  f8_..556855_..5.566. (ring 14, m = 11). twoeng passes all 20 as D on both engines. They are in
+  `loop/k47/s52r3_kills*` (from `loop/k47/minkill52.py`, minkill47 reading a Studio row folder) and go to Studio
+  for admission.
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
