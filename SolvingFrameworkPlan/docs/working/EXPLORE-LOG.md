@@ -89,6 +89,9 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   link run w1..w7 = 5556655 with no s vertex. So a 5-5-5 face at a 9 dies through the centre's fives; the face
   hypothesis stands for the d = 7 rows only. The same window kills family.json's receiver 9 655566556/759556565
   (same link). The row runs on to the end of ring 14.
+  - Complete (11:13Z; all 3290 windows, 0 mismatches; 09:57-11:12Z): 681 kill windows and 599 f-names (twoeng: 540 D,
+    59 C with the same X). 17 minimal, 5 at ring 12 (e.g. f9_..5556655_......... D, f9_...556655_.....5... C).
+    Twoeng-ready: `loop/k47/r9e_kills*`.
 - **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
   `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
   against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8
