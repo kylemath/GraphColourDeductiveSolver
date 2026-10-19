@@ -27,8 +27,8 @@ None of these rows was swept before in any orientation (canon_key against every 
   17-18 windows (`loop/k47/win54_8_75666556_66666565_r1516.txt`, 1,563, and `_r1718.txt`, 542; 2438e43f); explore runs
   ring <= 14 (1,611 windows) after the queue (R54_r54k.DONE marks it skipped by q54; scratchpad post54.sh runs it, then
   round 53b).
-- **22:15Z, d10 6565656565/6556666666 (r54a, dual 0.078) dies at ring 14.** No kill at ring <= 13 (1,762 windows, many
-  already run under the same names for rounds 52j-k); at ring 14 16 two-engine kills (15 C, 1 D), 9 f-names (1 D, 8 C,
+- **22:15Z, d10 6565656565/6556666666 (r54a, dual 0.078) dies at ring 14.** No kill at ring <= 13 (902 windows); at ring
+  14 (957 windows) 16 two-engine kills (15 C, 1 D), 9 f-names (1 D, 8 C,
   twoeng on `loop/k47/r54a_kills*`: 1 D both engines, 8 C same X, 0 mismatch), every X interior-only ({I0-I1},
   {I0-I2}, {I0-I5}), so the ring-merge guard holds none. Inclusion-minimal: f10_...5656565_.......5.. (C) and
   f10_...5656565_......5... (C), both ring 14, m 9. Hypothesis right for this row (dies by ring 14).
