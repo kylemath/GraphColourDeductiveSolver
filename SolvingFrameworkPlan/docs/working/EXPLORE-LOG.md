@@ -46,6 +46,9 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   (d = 8 76566656 and the two new d = 9 rows) keep the ring-16 kill line and run first. Part 2 follows as the one
   pattern-side test left for the face family. Order: 7765566 (ring 14, running), 76566656, 765556565, 655665556, then
   the face rows, then part 2 (`loop/k47/rows51.txt`).
+- **7765566/6575666 (s21c's top receiver): face row, presumed R*-like (ring 14).** All 763 windows at ring <= 14 ran
+  (578 already run, 07:02-07:06Z), with 0 mismatches and no D or C. The best ring-14 leftover is 128
+  (a7_u..65566_.57566.). It ran under the face rule, so it stopped at ring 14. `r7j_kills*` is empty.
 - **Part 3 (pre-registered 07:09Z, Long Table 07:08Z; result 07:25Z): the published set D of Inoue, Kawarabayashi,
   Miyashita, Mohar, Thomassen, Thorup (arXiv:2603.24880).** Published configurations are allowed as registry patterns
   once our two engines verify them; their rules are not. Hypothesis: some configuration in D is reducible on our
