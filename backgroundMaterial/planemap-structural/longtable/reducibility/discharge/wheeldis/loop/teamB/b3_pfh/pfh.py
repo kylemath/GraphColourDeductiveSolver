@@ -31,6 +31,8 @@ USE_P = 'noP' not in OPTS
 USE_H = 'noH' not in OPTS
 DEX = int(OPTS.get('dex', 15))
 LIMIT = int(float(OPTS.get('limit', 2e7)))
+MANY = int(OPTS.get('many', 60))
+CAP = float(OPTS['cap']) if 'cap' in OPTS else None   # optional upper bound on every transfer (a rule-class restriction)
 
 
 def isRbig(w):
@@ -374,7 +376,7 @@ def solve(rows):
     A = csr_matrix((vv, (ri, ci)), shape=(len(rows), n))
     cobj = np.zeros(n)
     cobj[-1] = 1
-    bounds = [(0, None)] * (n - 1) + [(-5, None)]
+    bounds = [(0, CAP)] * (n - 1) + [(-5, None)]
     res = linprog(cobj, A_ub=A, b_ub=b, bounds=bounds, method='highs')
     assert res.status == 0, res.message
     return res.x[:-1], res.x[-1], res
@@ -456,7 +458,7 @@ def main():
         if REG:
             for d in range(7, DEX + 1):
                 tq = time.time()
-                res_ = sepb_query(d, x, d - 6 + t + 1e-9, 60, 0 if full else LIMIT)
+                res_ = sepb_query(d, x, d - 6 + t + 1e-9, MANY, 0 if full else LIMIT)
                 if sepb_query.trunc:
                     trunc.append(d)
                 if time.time() - tq > 20:
