@@ -1,0 +1,34 @@
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver--claude-worktrees-inspiring-lamport-831744/0e83ace3-9fad-4ff7-8f00-938be72dceb2/scratchpad/glue_wt/backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/SepAll.lean:252:21: warning: Variable name `C` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _C
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver--claude-worktrees-inspiring-lamport-831744/0e83ace3-9fad-4ff7-8f00-938be72dceb2/scratchpad/glue_wt/backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/SepAll.lean:356:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/private/tmp/claude-501/-Users-kylemathewson-GraphColourDeductiveSolver--claude-worktrees-inspiring-lamport-831744/0e83ace3-9fad-4ff7-8f00-938be72dceb2/scratchpad/glue_wt/backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/SepAll.lean:430:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+'SimpleGraph.SphericalMap.colorable_of_short_separating_cycle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.Meet.check4_true._native.native_decide.ax_1_1,
+ DCheck.Meet.check5_true._native.native_decide.ax_1_1,
+ DCheck.Meet.size4._native.native_decide.ax_1_1,
+ DCheck.Meet.size5._native.native_decide.ax_1_1,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.colorable_of_separating_3cycle' depends on axioms: [propext, Classical.choice, Quot.sound]

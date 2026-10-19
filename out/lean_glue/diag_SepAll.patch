@@ -1,0 +1,84 @@
+15c15
+< structure Cyc (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) : Prop where
+---
+> structure SepCyc (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) : Prop where
+22c22
+< theorem Cyc.icycle3 (C : Cyc T 3 ρ) : ICycle T 3 ρ := by
+---
+> theorem SepCyc.icycle3 (C : SepCyc T 3 ρ) : ICycle T 3 ρ := by
+121c121
+< theorem Cyc.per_mod (C : Cyc T r ρ) (t : ℕ) : ρ (t % r) = ρ t := by
+---
+> theorem SepCyc.per_mod (C : SepCyc T r ρ) (t : ℕ) : ρ (t % r) = ρ t := by
+141c141
+< theorem Cyc.shift (C : Cyc T r ρ) (v : ℕ) : Cyc T r (fun t => ρ (t + v)) := by
+---
+> theorem SepCyc.shift (C : SepCyc T r ρ) (v : ℕ) : SepCyc T r (fun t => ρ (t + v)) := by
+151c151
+< theorem cycInd_shift (C : Cyc T r ρ) (v : ℕ) : cycInd T r (fun t => ρ (t + v)) = cycInd T r ρ := by
+---
+> theorem cycInd_shift (C : SepCyc T r ρ) (v : ℕ) : cycInd T r (fun t => ρ (t + v)) = cycInd T r ρ := by
+159c159
+< theorem onCyc_of_shift (C : Cyc T r ρ) (v : ℕ) {x : Fin n} (h : OnCyc r (fun t => ρ (t + v)) x) :
+---
+> theorem onCyc_of_shift (C : SepCyc T r ρ) (v : ℕ) {x : Fin n} (h : OnCyc r (fun t => ρ (t + v)) x) :
+164c164
+< theorem BothSides.shift (C : Cyc T r ρ) (v : ℕ) (h : BothSides T r ρ c) :
+---
+> theorem BothSides.shift (C : SepCyc T r ρ) (v : ℕ) (h : BothSides T r ρ c) :
+193c193
+< theorem cycIndR4 (C : Cyc T 4 ρ) (e : T.graph.edgeSet) :
+---
+> theorem cycIndR4 (C : SepCyc T 4 ρ) (e : T.graph.edgeSet) :
+201c201
+< theorem cycIndR5 (C : Cyc T 5 ρ) (e : T.graph.edgeSet) :
+---
+> theorem cycIndR5 (C : SepCyc T 5 ρ) (e : T.graph.edgeSet) :
+214c214
+<   refine Cyc.icycle3 ⟨le_rfl, fun t => ?_, fun t => ?_, fun s t hs ht e => ?_⟩
+---
+>   refine SepCyc.icycle3 ⟨le_rfl, fun t => ?_, fun t => ?_, fun s t hs ht e => ?_⟩
+231c231
+<     Cyc T 4 (cyc4 a b d f) := by
+---
+>     SepCyc T 4 (cyc4 a b d f) := by
+252c252
+< theorem sides_split (C : Cyc T r ρ) {rA : ℕ} {ρA : ℕ → Fin n} (CA : ICycle T rA ρA)
+---
+> theorem sides_split (C : SepCyc T r ρ) {rA : ℕ} {ρA : ℕ → Fin n} (CA : ICycle T rA ρA)
+302c302
+< theorem onC (C : Cyc T r ρ) (t : ℕ) : OnCyc r ρ (ρ t) :=
+---
+> theorem onC (C : SepCyc T r ρ) (t : ℕ) : OnCyc r ρ (ρ t) :=
+306c306
+< theorem chord4 (C : Cyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
+---
+> theorem chord4 (C : SepCyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
+342c342
+< theorem shift_potential (C : Cyc T r ρ) (hc : CycPotential T r ρ c) (v : ℕ) :
+---
+> theorem shift_potential (C : SepCyc T r ρ) (hc : CycPotential T r ρ c) (v : ℕ) :
+346c346
+< theorem shift_mod (C : Cyc T r ρ) (u t : ℕ) : ρ (t + u) = ρ ((t + u) % r) := (C.per_mod _).symm
+---
+> theorem shift_mod (C : SepCyc T r ρ) (u t : ℕ) : ρ (t + u) = ρ ((t + u) % r) := (C.per_mod _).symm
+349c349
+< theorem colorable_of_sep4 (C : Cyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hs : BothSides T 4 ρ c)
+---
+> theorem colorable_of_sep4 (C : SepCyc T 4 ρ) (hc : CycPotential T 4 ρ c) (hs : BothSides T 4 ρ c)
+374c374
+< theorem chord5 (C : Cyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
+---
+> theorem chord5 (C : SepCyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hch : T.Adj (ρ 0) (ρ 2))
+383c383
+<   have CB : Cyc T 4 (cyc4 (ρ 0) (ρ 2) (ρ 3) (ρ 4)) := by
+---
+>   have CB : SepCyc T 4 (cyc4 (ρ 0) (ρ 2) (ρ 3) (ρ 4)) := by
+421c421
+< theorem colorable_of_sep5 (C : Cyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hs : BothSides2 T 5 ρ c)
+---
+> theorem colorable_of_sep5 (C : SepCyc T 5 ρ) (hc : CycPotential T 5 ρ c) (hs : BothSides2 T 5 ρ c)
+450c450
+< theorem colorable_of_short_separating_cycle (C : Cyc T r ρ) (hr : r ≤ 5) (hc : CycPotential T r ρ c)
+---
+> theorem colorable_of_short_separating_cycle (C : SepCyc T r ρ) (hr : r ≤ 5) (hc : CycPotential T r ρ c)

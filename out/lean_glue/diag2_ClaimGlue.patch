@@ -1,0 +1,4 @@
+91c91
+<   exact hT.not_colorable (colorable_of_short_separating_cycle C hr hc hs h5 hT.smaller)
+---
+>   exact hT.not_colorable (colorable_of_short_separating_cycle ⟨C.three, C.per, C.adj, C.inj⟩ hr hc hs h5 hT.smaller)
