@@ -675,3 +675,46 @@ Not read: Studio's Job 31 spec.
 - **Reading.** The certificate is degenerate over the hat classes of the face's ring. For each face five there is a whole family of contexts (varying H0, and the fans or hats away from the 7) with the same dual value, and the LP rebuilds 10/63 from whichever members are left. Forbidding contexts one by one cannot work.
   - A lemma that helps must remove the face five's context **for every class of H0 and of the far hats at once**. In practice that means the 5-5-5 face next to the 7, with only w3 = 6 and the two near hats fixed: the whole family, not a small window. Long Table found no D/C kill for it at ring <= 16.
 - Files: s19e/{Wf.txt, prelay2.py (= s19d + wf19), prelay2_st19_backup.py, cmd_st19f.sh, st19f.log, sol_st19f.json, cert_st19f.json, rows_st19f.txt, st19fL.log, sol_st19fL.json, cert_st19fL.json, lower_st19fL.log, upper_st19f.log, engine_md5.txt}.
+
+## family.json README (s19e/family.json: the 5-5-5-face family, shared with Explore and Studio)
+Built by s19e/mkfamily.py, run on the s19e engine (hat5 class, s21/argsA54.txt, killtab s21/f/kill/kill6), from the three 10/63 certs: st18hL, st19wL, st19fL.
+- **`definition`.**
+  - The face: two consecutive receiver link fives with apex 5, or two consecutive sender spokes w_k = w_{k+1} = 5.
+  - The hat convention: H[k] = class of the hat between w_k and w_{k+1}, 0 = small {5,6} / 1 = big >= 7. F[k] = class of the private of the 6-spoke w_k, listed in spoke order.
+  - The w3 condition.
+  - `fixed_bits_per_word`: per sender word, the H/F bits that are equal across every sibling context in the certs, with null where they vary. Example: 55667 always has H4 = 0, i.e. the hat between the 7 and the face-mate is small.
+- **`receivers`** (13 rows): every face receiver with weight in any of the three certs, plus the six Long Table named. Fields:
+  - d, link, apex (as stored);
+  - canonical: the min over the 2d rotations/reflections, with the apex word reflected as s'_i = s_{-i-1};
+  - faces_at_i;
+  - dual: weight per cert;
+  - admissible_argsA54.
+  - The named rows 7665566/6675666, 7655667/6756656 and 7655666/6756666 have no weight in these certs; they are tight with dual 0.
+- **`senders`** (26 contexts): word, H, F, face_pairs, dual per cert, and `expansion`.
+  - `expansion` lists every exact 5/6 choice of the small vertices, with big vertices left as {7,8,>=9}. Each case is checked for joint admissibility, i.e. one letter per vertex shared by all spokes:
+    - every 6-spoke wheel (5, w_{k+1}, H[k], F[k], H[k-1], w_{k-1}) must be non-R6;
+    - every five-spoke link (5, w_{k-1}, H[k-1], H[k], w_{k+1}) must be non-R5;
+    - big vertices may take any of 7/8/9.
+  - Each context also records `why_not`, `n_cases` and `n_admissible`.
+- **Finding (important for stage 20).** 8 of the 26 contexts have no admissible exact completion; they carry 0.42 of the summed max dual weight. Every 5/6 choice of their small hats makes a five-spoke's link R5 or a 6-spoke's wheel R6. They are:
+  - 55667 [0,0,0,0,0|1,1], 55667 [0,0,0,1,0|1,0], 55667 [0,0,1,1,0|0,0];
+  - 55668 [0,0,0,0,0|1,0];
+  - 55669 [0,0,0,0,0|1,0], 55669 [0,0,1,0,0|0,0];
+  - 55676 [0,0,1,1,0|0,0];
+  - 55686 [0,0,0,1,0|0,0].
+  - The engine's class-level sender admissibility checks each 6-spoke against hat classes independently, so a shared hat can be 5 for one spoke and 6 for the next. It never checks five-spoke links at all. These contexts are therefore impossible but still in the LP.
+  - Three of the five stage 19b contexts are among them, which is why 19b's siblings could rebuild the bound. Exact hat letters with joint admissibility (stage 20) remove them soundly, with no oracle.
+
+## Stage 20 pre-registration (before any solve): exact hat letters in sender admissibility (flag `hatx`, RELAY_SPEC 16), run st20x on s22/argsA55.txt over s22h
+- **Rule.**
+  - Sender contexts must have one exact letter per hat, in its class and shared by the two spokes it touches, that makes every 6-spoke wheel non-R6 and every five-spoke link non-R5.
+  - Keys are unchanged: they read hats only by class.
+  - This is a sound restriction of the class (it drops R5/R6-containing contexts). It is not an oracle.
+- **Soundness.** A dropped context contains a reducible wheel at a spoke in every exact completion. Both-ends table: RELAY_SPEC 16. Physical test: 0 mismatches over 199,707 readings, broken control 80,050 (s20d/orient_hatx*.log). upperR2 and lowerR2 use the same enumeration.
+- **Regression:** with hatx off, the s20d engine must reproduce s22h = 16/101: lowerR2 on s22/hf/cert_s22hL.json and upperR2 on s22/hf/sol_s22h.json.
+- **Kill lines:**
+  - (1) the upper bound (on the solution itself) is not <= 0.1534, i.e. the gain is under 0.005 below 16/101;
+  - (2) the face family stays tight and is paid only by y and M;
+  - (3) the solve wall time exceeds 3 x s22h (about 50 min).
+- **Progress:** upper FEASIBLE <= 0.1534 on the new solution, with the nosep lower VALID.
+- **Report:** t, the binders, and whether r or g flows into the face rows.
