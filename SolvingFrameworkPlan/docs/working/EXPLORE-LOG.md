@@ -129,6 +129,17 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
     [0,1,0,0,0|0,0] (1); 55686 [1,0,0,1,0|0,0] (1); 55959 [0,0,0,0,0] (4); 55668 [0,1,0,1,0|0,0] (1); 55676
     [1,0,1,1,0|0,0] (1). In every survivor the all-6 case survives. The 10 carry 0.005-0.058 each; the dead 16
     include the three heaviest (0.101, 0.097, 0.058). Guess (about half die) right. `loop/k51/fam51_survey.txt`.
+- **Census one ring out of 55769 [0,0,1,0,0|0], all-6 case (pre-registered 11:48Z; Long Table, 11:39Z), before any
+  run.** Opus's stage 21 has not reported yet (96a5cd72), so the hold rule does not apply. `loop/k51/cen51.py`. One ring
+  out = the 13 vertices of the exact set's ring other than w4: H2 (7, 8, >= 9), p21 p22 (privates of w2), p41 p44 (w4's
+  privates next to H3/H4) and 8 ring-3 vertices next to H0 H1 H3 H4 F3; letters 5..9, 3 x 5^12 fillings.
+  - Coverage: registry containment first, then engine windows (interior = exact vertices plus 1-3 slots at letters
+    5..8, free-completion ring <= 16; fewer slots, more fives, smaller ring first; covered requirements skipped).
+    Exact count of covered fillings. Cap 2 h (engines 6,000 s).
+  - **Kill line** (Long Table: "nothing in the uncovered part shrinks below the all-6 core"), read as: every filling
+    with all 13 slots >= 6 stays uncovered, so the case survives one ring out with nothing smaller to aim at.
+  - **Guess:** coverage comes from fillings with a 5 next to the core; the all->= 6 fillings stay uncovered, so the
+    kill line is met (75%).
 - **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
   `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
   against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8
