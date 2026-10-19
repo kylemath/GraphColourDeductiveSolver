@@ -158,11 +158,11 @@ def gname(S, deg):
     return 'g%d_%s%s_%s_%s' % (D, 'u' if ('u',) in S else '-', w, s, p)
 
 class Engines:
-    """fam51.Engines with this round's files (G_kcc.out, G_df.out, G_cf.out, G_res.txt)."""
-    def __init__(self, TSEC):
+    """fam51.Engines with this round's files (<pre>_kcc.out, _df.out, _cf.out, _res.txt; pre G for cen53)."""
+    def __init__(self, TSEC, pre='G'):
         self.T = TSEC; self.lock = threading.Lock()
-        self.ko, self.do, self.co = (open(os.path.join(H, x), 'a') for x in ('G_kcc.out', 'G_df.out', 'G_cf.out'))
-        self.res = {}; fr = os.path.join(H, 'G_res.txt')
+        self.ko, self.do, self.co = (open(os.path.join(H, pre + x), 'a') for x in ('_kcc.out', '_df.out', '_cf.out'))
+        self.res = {}; fr = os.path.join(H, pre + '_res.txt')
         if os.path.exists(fr):
             for l in open(fr):
                 f = l.rstrip('\n').split(' ', 2)

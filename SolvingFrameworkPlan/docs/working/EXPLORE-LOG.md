@@ -1,5 +1,30 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
+
+**Pre-registered 21:42Z, before any engine window of this round.** Long Table 21:28Z, from Opus s26r (e6bf1acb): face
+binder 7665566/6675676 (Opus's orientation; the mirror of explore's 7665566/6765766). In its tightest one-ring-out
+survivors the six privates are 666666 and ring 3 is all 5 or 6 except t = r13, the apex next to s2, s3 and s4, at 7,
+8 or >= 9: 29 ring-3 words per value of t, 87 patterns (`s26r/tight29.txt`). Every ring-3 five sits on the far side
+of the wheel (r0-r8 and r19, around w0, w1, w6 and their privates); r9-r18 on the face side are all 6 apart from t.
+Run ahead of the other five non-family rows, right after 8765556/6575965.
+- **Tool** `loop/k53/tight53.py` (on cen53): builds each exact 3-ball in Opus's frame (ring-3 order checked vertex by
+  vertex against Opus's touch list), then 1. registry containment of the whole 3-ball (twoeng snapshot `tw54`: 2,413 D
+  and 1,007 C on both engines, the three X-mismatch C names Studio holds out excluded); 2. windows: connected sets of
+  exact vertices (9 = >= 9 is never in a window) with at most 8 vertices, at least 3 fives, free ring <= 16,
+  deduplicated by kc line across the 87 patterns, run most fives first, then smaller ring, then most patterns served;
+  kc -C -t 600, kc D on dfast, kc C on cfast --fixed with kc's X (cen53's engines; cen53's own verdicts reused where
+  the kc line is identical). A pattern dies at its first two-engine kill; windows serving only dead patterns are
+  skipped. NW = 3, 7,000 s cap. Names h7_<u><w>_<s>_<privates>_<r0..r19>.
+- **Hypothesis (Long Table):** some of the 87 die. **Kill line:** all 87 survive ring <= 16 (no two-engine D or C
+  among the windows tried). Ring 17-18 windows of the survivors go to Studio as usual.
+- **Guess:** all 87 survive, 70%. The far-side fives are two steps or more from the face, and the face side looks
+  like the binder's 1.5-ball (no kill to ring 18) with sixes around it. If anything dies it is a pattern with three or
+  more far-side fives close together (as 56665566666667666665), through a window that does not contain the face.
+- **Tool check before this pre-registration (21:36-21:42Z, cap 0, no engine run).** Registry: none of the 87
+  contains any of the 3,986 registry configurations. Windows at MMAX 8, FMIN 3, ring <= 16: 4,276 distinct kc lines
+  (18 with five fives, 415 with four, 3,843 with three; by ring 6-13: 900, 14: 911, 15: 1,303, 16: 1,162).
+
 ## Round 53 (19 Oct 2026, 18:24Z-): H-S53, split and kill, do the surviving face rows die one ring out, piece by piece?
 
 **Pre-registered 18:24Z, before any engine window of this round.** Coordinator 18:10Z, from the user's sprint plan
