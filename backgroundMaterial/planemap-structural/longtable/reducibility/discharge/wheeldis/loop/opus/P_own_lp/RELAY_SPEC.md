@@ -1202,6 +1202,15 @@ census50.
    A kill found this way holds in every completion, because 99 vertices never match. The kill is applied in the same
    way to every row and every window. The tables are `s16ap/kill6_U{7,8,9}.json` and `.npy` (`s16_killnpy.py`). They
    are mirror-symmetric with 0 exceptions, and U=8 is identical to U=9.
+   - **U = 8 (correction, Studio 19 Oct).** The shipped U8 table is byte-identical to U9: no kill in it uses u as a known 8,
+     so in effect u is *unknown* at U = 8. The spec for the shipped tables is therefore: u known (degree 7) only for U = 7;
+     for U = 8 and U = 9, u is unknown (degree 99, never matched). A literal "u known = 8" table is a strict superset
+     (Studio counts +10,259 kills). It would also be sound, but st16ap did not use it. Using fewer kills is conservative.
+   - **.npy layout (`s16_killnpy.py`).** `numpy.save` of a uint8 array of shape (5,)*8, C order. Indices
+     [a, b, e, f, s0, s1, s2, s3] are the letters of w_{j-2}, w_{j-1}, w_{j+1}, w_{j+2}, s_{j-2}, s_{j-1}, s_j, s_{j+1},
+     each minus 5 (letter 9 means >= 9). Bit i (value 1<<i, i = 0..4) set means private letter 5+i is killed.
+     JSON -> npy: a JSON key (s0..s3, p) kills bit p-5 in every entry whose s-letters equal the key's nonzero s-requirements
+     (0 means free). md5s are for the .npy file as written by numpy (header included): U7 27a64538..., U8 = U9 6dc44bba....
 
 **Use in the LP** (flag `filt16 killtab=s16ap/kill6`). M and V signatures get the allowed-p bitmask appended:
 `sig2_of(...) + (mask,)` and `sigv_of(...) + (mask,)`.
