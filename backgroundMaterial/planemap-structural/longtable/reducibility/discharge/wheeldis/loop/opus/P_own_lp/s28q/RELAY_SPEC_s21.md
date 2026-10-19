@@ -1,5 +1,16 @@
 # RELAY_SPEC §21: l3q, a 7 paying an adjacent 7, keyed out to link distance 3 (stage 28, Opus s28q)
 
+> **Provenance.** l3q is not an original rule. It restates, in our own LP class, the channel of RSST discharging rule 9
+> (Robertson, Sanders, Seymour and Thomas 1997, rule 9; Gonthier's `fourcolor` encoding `drule9`, theories/proof/discharge.v):
+> `Part $ 6- $ 6- $ 7+ $ * $ * $ * $ 5 $` at a hub of degree 7. Read along u's link, that rule says a 7 sends 1 RSST unit
+> (0.1 in our scale) to a big link neighbour v = w_i when w_{i∓1} ≤ 6, w_{i∓2} ≤ 6 and w_{i∓3} = 5, once per side.
+> - The derivation is in SolvingFrameworkPlan/docs/working/BORROWED-CHANNEL-7FACE.md (origin/main, dc954db3 or later), built
+>   from the public RSST rules only.
+> - Long Table's route 4 asked for exactly this kind of own-rule restatement of a borrowed RSST channel.
+> - Here the amounts q are LP variables, not RSST's fixed 0.1. The key (c, a, a2) generalises drule9's side condition
+>   (≤ 6, ≤ 6, 5) to exact letters. The payee credit Q with a containment mask is our own construction.
+> - Any claim that cites an l3q number must name RSST rule 9 / drule9 as the source of the channel.
+
 Source: SolvingFrameworkPlan/docs/working/BORROWED-CHANNEL-7FACE.md (origin/main ≥ dc954db3). Pricing is in s28q/pricer28.log:
 rc(q̂(7,7,6,6,5)) = −6/13 on cert_st24bL, and the mask-off control gives exactly 0.
 This section is the **V = 7 subfamily (20 q columns)**, which is the one being solved. Everything in §1–§19 carries over
@@ -112,3 +123,19 @@ unchanged (§1 scale, charge 6 − d; a big's load is its inflow, at most d − 
 - The engine is s28q/eng/, a copy of s24d with the md5s of s24d/engine_md5.txt, patched as above.
 - **Flag off:** `lowerR2` on s24d/cert_st24bL.json with argsA59 gives VALID t ≥ 2/13 (`s28q/reg_off_lower.log`).
 - **Kill lines** (note): a gain over the same-registry baseline under 0.005, or a total q weight under 1e−3.
+
+## 21.8 Results (V = 7 subfamily, st24b flags + l3q, threads = 2)
+
+| registry | keeppen solution t (upperR2) | nosep cert (lowerR2) | q > 0 |
+|---|---|---|---|
+| 7360eb92 (argsA60) | 0.147856590432, FEASIBLE | 47/320 = 0.146875, VALID | q(6,5,5) 0.0496, q(6,6,5) 0.0384 |
+| 7a3857a0 (argsA61), re-check of the 7360eb92 sol/cert | 0.147856590432, FEASIBLE | 47/320, VALID | same |
+| **3cfd7f18 (argsA62)** | **0.147790407823, FEASIBLE** | **11/75 = 0.146667, VALID** | q(6,5,5) 0.0504, q(6,6,5) 0.0369 (L: q(5,6,5) 0.01, q(6,5,5) 0.0317, q(6,6,5) 0.0317) |
+
+- The l3q mask table is the same on all three forbidden sets: 3,424, 3,421 and 3,989 configurations, with 380 masks of 30 and
+  the rest 31 (`tab6{0,1,2}_*.json`, `tab62_check.log`).
+- **Binders at 3cfd7f18** (`binders_s28A62L.txt`):
+  - d = 10 6565656565/6556666666 (−1/15);
+  - d = 8 75666556/66666565 (−1/15);
+  - then d = 7 rows with an 8 in the link and d = 8 rows (−2/75, −1/75).
+  - No mrowL row binds, and the face-7 row 7665566/6675676 no longer binds.
