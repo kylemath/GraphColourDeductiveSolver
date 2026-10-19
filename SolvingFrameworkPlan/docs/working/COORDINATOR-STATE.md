@@ -80,6 +80,8 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19 Oct 11:22Z: The d=7 face row 7676556/7759565 is NOT R*-like. It dies at ring 14 (D, f7_5567676_..5..5., not through the face triangle); 612 windows, 0 mismatches; 3 f-names sent as r7h_kills*. This is a family.json receiver with dual 0.055–0.058, so 2 of the 13 receivers are now dead. Explore continues with 7655566, then 8665566, then fam51.
+- 19 Oct 11:15Z: Studio admitted r9e: registry 03c34729, 1,894 D / 838 C, dcount 16,934; all checks 0.
 - 19 Oct 11:13Z: Explore r51: d=9 face row 655566556 complete (3,290 windows, 0 mismatches; 599 f-names, 540 D / 59 C, sent as r9e_kills* at 43fdc043). It dies at ring 12, never through the face. The three d=7 face rows are now running at ring 14; fam51 comes next.
 - 19 Oct 10:58Z: s22h = 16/101 exactly [E2] on 5fa0adb0 (Studio 6a5f89a0). Gate draft and dashboard updated. Studio's next job is stage 21 (§17) from the spec.
 - 19 Oct 10:45Z: Stage 22 (face/balanced initial charge, §18, 41760510) KILLED: null by construction. On a triangulation, every face-based re-basing is the current vertex charge plus a zero flow; free face→corner rules reduce to existing edge transfers, and the family.json probe gives no change. Stage 23 APPROVED (§15r reverse hat, big → five at distance 2), because two r columns price positive on cert_st20xL. Kill line: gain < 0.005 vs s22h, or reverse weight < 1e-3. If stage 21 lands first, run 21 + 23 combined.
