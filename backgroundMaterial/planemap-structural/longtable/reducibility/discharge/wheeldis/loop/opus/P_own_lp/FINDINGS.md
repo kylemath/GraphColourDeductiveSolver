@@ -718,3 +718,22 @@ Built by s19e/mkfamily.py, run on the s19e engine (hat5 class, s21/argsA54.txt, 
   - (3) the solve wall time exceeds 3 x s22h (about 50 min).
 - **Progress:** upper FEASIBLE <= 0.1534 on the new solution, with the nosep lower VALID.
 - **Report:** t, the binders, and whether r or g flows into the face rows.
+
+## Stage 20 result (10:35Z): **hatx is null on argsA55. Lower 16/101 is unchanged; kill lines (1) and (2) are met**
+- **Regression** (hatx off, s20d engine): LOWER-R2 VALID 16/101 on s22/hf/cert_s22hL.json and UPPER-R2 FEASIBLE at 16/101 on sol_s22h.json (s20d/val_off_*.log).
+- **Tests:** 199,707 spoke readings, 0 mismatches; broken-key control 80,050 (s20d/orient_hatx*.log).
+- **st20x.**
+  - hatx drops 696 sender contexts with no jointly admissible exact hat letters, leaving 20,082 sender rows after dedupe (20,676 in s22h).
+  - keeppen fixed point t = 0.158441558 (5 iterations; solve 09:39:29Z–10:07:30Z, ~28 min, inside the 50-minute line). That is slightly above 16/101 because of the x penalty; the s22h solution is still feasible in this smaller class.
+  - **UPPER-R2 FEASIBLE at 0.158441558** on sol_st20x.json.
+  - nosep (st20xL): **LOWER-R2 VALID 16/101 (106 rows)**, unchanged.
+  - Kill line (1) is met: no gain, and the target was <= 0.1534.
+- **Binders (cert_st20xL).**
+  - Receivers: 7665566/6765766 0.092; 7676556/7759565 0.066; d = 9 655665556/657565955 and 655566556/757656565.
+  - Senders: the face fives again, now as **jointly admissible** contexts, most with H0 big (the vertex across the face edge): 55667 [1,0,0,0,0|1,1] 0.086, 55667 [1,0,1,1,0|0,0], 55669 [1,0,1,0,0|0,0], 55769 [0,0,1,0,0|0] (0.066 each), and 55767 [0,0,0,0,0|0] 0.056. The last two have admissible all-small completions.
+- **How the face rows are paid** (rowR2, s20d/kill_st20x.log).
+  - Every face row is tight, at both solutions.
+  - At sol_st20xL: load = r[506507] 0.023 + y7|5566 0.714 + y7|5576 0.421 = 1 + t.
+  - At sol_st20x: y drops to 0.349 / 0.326, but r[506507] rises to 0.246 and M 0.143 / 0.095 still apply. r[506507] is the 7's **outflow** to the face's third five, the 7 being a hat of that five.
+  - **Nothing flows into the face rows.** No r reaches the 7, g only goes to fives, and the 7 is only ever a payer. Kill line (2) is met in substance: the face 7 pays its two face fives and the face's third five through y, M and r, and the LP only moves charge among these.
+- **Reading.** Exact hats remove the impossible contexts (family.json's 8), but the face family is genuinely admissible once H0 is big, and the bound holds there. The deficit of a 5-5-5 face next to a 7 is paid entirely by that 7 under every rule class tried (stages 17-20), so the family needs either a reducibility argument for the whole face family or a rule that brings charge into the 7 from outside its 2-ball.

@@ -1377,3 +1377,71 @@ off the engine is s17d's. The class contains s21f's (r = 0), so t*(H5) <= s21f's
   - Whichever way that hat class splits, the resulting key has tot > 0: 0.08 - 0.048 or 0.08.
   - No convex split of the weight keeps both keys <= 0. So the s21f certificate is not valid for the H5 class, and
     the channel has negative reduced cost at the s21f dual.
+
+## 16. Stage 20: exact hat letters on sender rows (flag `hatx`, requires `hat5`). Written before any solve
+
+Engine: `P_own_lp/s20d/` (prelay2.py = s19e's engine + `hatx`; backup `s20d/prelay2_st19b_backup.py`). The
+baseline is s22h (16/101 on `s22/argsA55.txt`, 5fa0adb0, `killtab=s22/f/kill/kill6`, hat5).
+
+**Change.** A sender row's context is still the tuple of hat and fan classes (H[0..4] | F[6-spokes]), as in
+section 15. It is now admissible only if there are exact letters `h_k ∈ CLS2[H[k]]`, **one per hat and shared by
+the two spokes that hat touches**, such that:
+
+```
+every 6-spoke k :  some f in CLS2[F[k]] with (5, w_{k+1}, h_k, f, h_{k-1}, w_{k-1}) not R6
+every 5-spoke k :  (5, w_{k-1}, h_{k-1}, h_k, w_{k+1}) not R5          (new: five-spoke links were never checked)
+```
+
+`CLS2[0] = {5,6}` and `CLS2[1] = {7,8,9}`, with 9 meaning >= 9. Before, each 6-spoke was tested against the hat
+classes on its own, so one hat could be 5 for one spoke and 6 for its neighbour, and five-spoke links were not tested.
+A five-spoke x = w_k of v has exactly the neighbours v, w_{k+1}, h_k, h_{k-1}, w_{k-1} in this cyclic order: these are
+all five, since x has degree 5. A 6-spoke's six neighbours are v, w_{k+1}, h_k, F_k, h_{k-1}, w_{k-1}. So both tests read
+the spoke's own wheel exactly.
+
+**Keys are unchanged.** g2, r (hat5) and y are computed exactly as in sections 12 and 15. They read a hat only
+through `c2` or `ap`, and the class is `c2(exact letter)`, which is the same class as before. Hence:
+
+- Two contexts with the same classes have the same coefficients.
+- The hatx rows are exactly the hat5 rows minus the class contexts that have no jointly admissible exact completion.
+- The class shrinks, which is sound because the dropped contexts contain an R5 or R6 wheel, which cannot occur in a
+  minimal counterexample.
+- Receiver rows, cons2, mrowR2, the window and the tail are untouched.
+
+**Both-ends key table** (what each end reads for every key that touches a sender five v; class = c2 of the exact
+letter at both ends):
+
+| key | entry | at the five v (sender row) | at the other end |
+|---|---|---|---|
+| y[root] | v's link | w0..w4 exact | big u: its link fives' words (U, w_{i+1}, s_i, s_{i-1}, w_{i-1}) exact |
+| g2 (five → 6-spoke x = w_k) | n1, n5 | w_{k+1}, w_{k-1} exact | 6 x: L_{i+1}, L_{i+5} exact |
+| | c(n2), c(n3), c(n4) | c2(h_k), c2(F_k), c2(h_{k-1}) | 6 x: c2(L_{i+2}), c2(L_{i+3}), c2(L_{i+4}) |
+| | ap(s_i), ap(s_{i-1}) | ap(w_{k+2}), ap(w_{k-2}) | 6 x: ap of its apexes beyond (v, L_{i+1}) and (L_{i+5}, v) |
+| r (hat5, big b = h_k → v) | side tuples | §15 table (link letters exact; hats, fans as c2) | big b: §15 table |
+| admissibility (new) | five-spoke link | (5, w_{k-1}, h_{k-1}, h_k, w_{k+1}), exact h | the spoke's own rotation (5 neighbours) |
+| admissibility | 6-spoke wheel | (5, w_{k+1}, h_k, F_k, h_{k-1}, w_{k-1}), exact h | the spoke's own rotation (6 neighbours) |
+
+**Physical test** (`orientR2 ... hat5 hatx`, `hatx_selftest`). Around a five, each vertex gets a random letter and
+each 5- or 6-spoke an explicit rotation list. The checks are:
+
+- (a) a five-spoke's own link equals the sender's reading;
+- (b) a 6-spoke's own wheel equals the sender's reading;
+- (c) the g2 key the 6 computes from its own arrangement (link from v, apexes from v's rotation) equals the sender's g2.
+
+Results:
+
+| run | readings | mismatches | log |
+|---|---|---|---|
+| test | 199,707 | 0 | `s20d/orient_hatx.log` |
+| broken-key control (sender reads h_{k+1} for h_{k-1}) | 199,707 | 80,050 | `s20d/orient_hatx_brokenkey.log` |
+
+The hat5 diamond test was re-run in the same logs: 0 mismatches, and 15,898 under its broken control.
+
+**Checks.**
+
+- upperR2 enumerates the same (shrunk) sender rows. Everything else is unchanged.
+- lowerR2 rejects a cert row that names a dropped context ("NOT A SENDER ROW"). Every cert row is re-derived.
+- Studio can rebuild the drop set from this section alone: for each class context, loop over the exact hat letters in
+  their classes.
+
+**Why.** family.json (FINDINGS) shows that 8 of the 26 face-five contexts in the 10/63 certs fail this test, together
+carrying 0.42 of the summed dual weight.

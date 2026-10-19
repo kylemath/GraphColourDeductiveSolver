@@ -456,3 +456,9 @@ our agent R and have no output from it.
 - Our LP still keeps them as live sender rows. Cause: the sender filter only checks R6 per 6-spoke wheel and never applies registry configurations. Sender rows are registry-independent.
 - In cert_s22hL, 0.297 of the 0.677 total sender dual weight sits on 2-ball-dead rows.
 - Next: stage 21, a strict sender 2-ball containment filter. Scripts are in P_own_lp/sndchk/.
+
+## Stage 20: exact hat letters for sender admissibility (flag hatx, §16), s22h setup on 5fa0adb0, 19 Oct ~10:45Z. NULL
+- 696 impossible contexts dropped (20,082 sender rows remain). Lower stays exactly 16/101 (VALID); upper is FEASIBLE at 0.158442 (penalty point). No gain.
+- Kill lines (1) and (2) both hit. The face rows stay tight; r[506507] is the 7 paying the face's third five, i.e. outflow.
+- The face family is admissible once H0 (the vertex across the face edge) is big.
+- Stage 21 (the sender 2-ball registry filter) is a different and stronger test, and it is running.
