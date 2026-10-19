@@ -207,3 +207,10 @@ not new to F.
   for RELAY_SPEC 17. Without the guard, a default-glob run would have written p5_ D names into k3x_D.out, and the
   receiver loader would misread them: the p prefix already means "p-name, 9/0 free", F/N/x are not letters, and d = 5
   has no receiver. Regression: 1,900 D / 841 C, k3x unchanged.
+- ~17:25Z 19 Oct: explore's row-3 f-names, 2270659c (loop/k47/s52r3_kills*: the mirror-pair names of Job 52 row 3's 40
+  kill windows). 4 files fetched by path, byte-identical. s52r3 alone: 20 D / 0 C, as explore's count. Default glob on
+  fbc18afa: **1,920 D / 841 C** (+20 D, 0 lost, 0 one-engine). Drop44 0, letter-9 0, centre-degree < 7 held 0.
+  Trace-back: all 20 names match one of Studio's own c503910a row-3 kill windows (kc D + dfast18 D) up to
+  rotation / reflection, with 0 untraced. Matcher (the minimal f8_..556855_..5.566. plus a sample, 6 names): 266
+  frames, 0 mismatches. dcount (argsA44_local): **16,960** distinct parsed D (17,294 names), +20. The frozen
+  wlp3 / sep3r and st24b's pinned 0125c46b inputs are untouched.
