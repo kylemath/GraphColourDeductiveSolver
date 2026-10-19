@@ -1,0 +1,17 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+solution t = 0.153846153846154 (claimed 2/13 = 0.153846153846154), model R6x2 apex True apexcls True zh False: 816 y, 277 g, 4354 h, 20 x, z []
+v values 0; r values 69; sol hat5 True
+bounds: 0 negative values; max x = 0.087002 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack -7.01e-14; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 3.06e-13
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+patterns distinct by kind: D 16937 (spec 15,497), C 1884 (spec 1,494), RPAT 158 (spec 158); by d {7: 9696, 8: 4518, 9: 2934, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+cert rows 36: {'senderR2': 9, 'cons2': 17, 'mrowR2': 7, 'receiverR2': 3}; mrowR2/mrowV not in canonical orientation: 0 []
+lower: tco = 1, D = 2/13; nonzero reduced costs: M[766675531] = 3/13, M[767675531] = 3/13, r[506507] = 3/13, r[506509] = 1/13; negative (non-x) 0
+LOWER: VALID t >= 2/13
+VERDICT (lower only): PASS (lower VALID 2/13)
