@@ -563,3 +563,12 @@ our agent R and have no output from it.
 - Null families: YR, O5/O5F, D, O, the generalised LG l3q, and VG.
 - No negative column relies on the suspect f7_..56757_...5....
 - Spec: s32p/RELAY_SPEC_s22.md (Z±, RR). Next: a capped solve with l3q + zh + ZR + hatrr. Expect gain to stop at the d7 and d10 rows.
+
+## s34b: pricing borrowed-channel round 2 against cert_s28A60L (47/320), 9b3d19c0 / 329cc27f
+- (A) z6/l6r, a 6 relaying to an adjacent 6: 22 of 68 keys price negative, exactly as LT predicted.
+  - Best: K=(5,5,5,7,5,5,5) at −13/20, then (5,5,6,7,6,7,5) at −21/40.
+  - Shared-σ composites reach −141/160.
+  - All four controls pass.
+  - It is independent of the suspect entry.
+  - Spec: s34b/RELAY_SPEC_s23.md. Folded into the stacked s33z solve.
+- (C) l3q 7→8: dead (rc +7/160, +7/80, 0). The mask-drop control turns them negative.
