@@ -334,3 +334,9 @@ our agent R and have no output from it.
   with receivers swept exhaustively, cons2 checked on 1,424 x 64, and senders and mrowR2 passing. Lower is VALID on all 57 rows.
   **The relay line at 23/134 = 0.1716 is [E2], our best K = 2 value so far.**
 - **P2 s18 (01:50Z): main line on b88ed8b7 (argsA51, distinct D 15,844) stays at t* = 1/5**, with the same 3-row dual as s17 (binder 5566766/5666667) [E, our engine; lower VALID; upper FEASIBLE]. s18r and s18c are running.
+- **P st15 run 2 (01:45Z): LP t* = 1/6, but the upper check FAILED, so the primal is unsound.** Cause (our bug): v6 kept
+  conservation only on the 994 6-types that contain a five. A 6 with no five next to a 7 could then pass charge to the
+  7 with nothing coming in. upperR2 caught it: 48 6-types, worst error 0.066. The run-2 lower bound (VALID, 128 rows) still bounds
+  the sound class from below, so sound st15 t* is in [1/6, 23/134]. Fix st15f: conservation now covers all 1,424 non-R6
+  6-types in the solver, the separator and the basis (22,126 rows). s16_struct.txt and RELAY_SPEC §13 are updated, and §13 now
+  states that V[sig] = min over candV of v. Running since 01:41Z.

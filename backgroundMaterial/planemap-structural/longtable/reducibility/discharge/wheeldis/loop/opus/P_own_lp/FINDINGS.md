@@ -435,3 +435,13 @@ Not read: Studio's Job 31 spec.
 - Receiver u (d = 7 only, U = 7): load -= sum over link 6s of mV[sig]. sig = (7, w_{j+1}, s_j, s_{j-1}, w_{j-1}, cv(w_{j+2}), cv(w_{j-2})), canonical. mV <= v[K(p)] for every private p that keeps the 6-wheel non-R6.
   - That is the conservative MIN over the unseen p, since it is inflow. Window-local (c = 6 position, U = 7).
 - Validations: (V1) v6 off = s12r50 (same code path). (V2) Orientation: reflection of the v key and sig, and invariance of the new conservation coefficients under physical rotation/reflection. (V3) dbg separator = row value.
+- st15 run 1 (00:41Z) was killed by the container restart at 1998 s (LP value 1/6). Run 2 (restart, warm from run-1 rows) converged at 595 s: LP t* = 1/6.
+  - LOWER-R2 VALID 1/6 (128 rows). **UPPER-R2 INFEASIBLE**: conservation is broken on 48 no-five 6-types (e.g. 666677, 666787; worst 0.066).
+  - Cause, a soundness hole in my v6 build: the LP's conservation rows covered only the 994 6-types with a five (as in s12 mode). In s12 mode that is harmless, because a no-five 6's h2 only costs.
+    - With v6, a no-five 6 next to a 7 could send v with no h coming in: free charge. The LP used it.
+    - The upper check (all 1424 6-types) caught it.
+  - Run 2's 1/6 IS still a valid lower bound for the sound class: its LP is a relaxation (fewer rows), and the cert checks exactly. So the sound st15 t* is in [1/6, 23/134].
+  - Run 2's binder 7665566/6675666 had dual 0 and slack 0, paid in part by V inflow 2 x 0.02083 (via w2, w5). Moot, since the primal is unsound.
+- Fix (st15f): in v6 mode, conservation over ALL 1424 canonical non-R6 6-types (solver init, per-L separation and basis). cons2basis_v6.json is rebuilt: 22126 rows.
+  - s16_struct.txt regenerated: 1424 6-types; conservation rank 20147; h 18683; v 13869; V sigs 2850.
+  - st15f launched 01:41Z (warm from runs 1 and 2). Kill-line clock (3 x 713 s) restarts here.

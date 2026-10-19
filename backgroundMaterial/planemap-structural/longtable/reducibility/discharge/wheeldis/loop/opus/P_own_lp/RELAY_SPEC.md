@@ -1059,6 +1059,19 @@ They are added lazily the first time a receiver uses sigV. Since V enters the re
 bounded by the **minimum** of v over the unseen p_j. That is the conservative choice for inflow: u counts only what
 it receives whatever p_j is.
 
+**Rebuilding V (answer to Studio).** V is not needed in the solution: rebuild it as `V[sigV] = min_{k in candV(sigV)} v[k]`, with v
+missing from the sol taken as 0. That is the largest value mrowV allows, and it is exactly what upperR2 and the
+separator use. From st15 on, `sol_*.json` also stores `V` as `[sigV, LP value, min over candV of v]` for every
+signature in the LP, so the rebuild can be compared. The LP value can be below the min (that only makes u's load
+larger), and upperR2 uses the min.
+
+**Which L (soundness fix, 01:40Z).** With v6, the conservation rows must cover **all 1,424** canonical non-R6
+6-types, including those without a five. In s12 mode, a no-five 6's h2 only costs, so 994 relay words were enough.
+With v6, a no-five 6 next to a 7 could otherwise send v with no h coming in, which is free charge. Run 2 of st15 did
+exactly that, and upperR2 rejected it on 48 such 6-types. In v6 mode the solver, the per-L separation and
+`consbasisR2` therefore all loop over `all6_words()`. The basis has 22,126 rows. Run tag `st15f`, commands in
+`cmd_st15f.sh`.
+
 ### 13.3 Window / separator
 
 The window entry at a 6 position (c = 6) for U = 7 gets `- min_{k in candV(sigV)} v[k]`. The window reads
@@ -1089,12 +1102,13 @@ receivers (-) and mrowV (+).
 
 | item | value |
 |---|---|
-| v keys | 9,165 |
+| v keys | 13,869 (9,165 over the 994 five-containing types only) |
 | V signatures | 2,850 (13,869 mrowV rows if all used) |
-| h2 keys | 12,347 |
+| h2 keys | 18,683 (12,347 over 994 types) |
 | g2 keys | 393 |
-| conservation rows over all (L, s) | 151,056 distinct |
-| conservation rank | 13,670 (s12r mode: 8,771) |
+| 6-types in conservation | 1,424 (all non-R6) |
+| conservation rows over all (L, s) | 219,610 distinct (151,056 over 994 types) |
+| conservation rank | 20,147 (994-type version: 13,670; s12r mode: 8,771) |
 
 ### 13.6 Class inclusion and kill lines
 

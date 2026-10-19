@@ -6,6 +6,16 @@ ZH = 'zh' in FLAGS                   # stage 13 (R7h): big-centred split, z[five
 ZV = {}
 Q7 = 'q7' in FLAGS                   # stage 14 (R77): big -> adjacent 7 inflow q[the 7's whole link, read from the sender]
 QV = {}
+V6 = 'v6' in FLAGS                   # stage 15: a 6 next to a 7 passes v[its link at u + 3-class apexes] on to the 7
+VV = {}
+def cv(x): return x if x < 7 else 7
+def v_of(m, ar, al):
+    a = tuple(m) + (cv(ar), cv(al)); b = (m[0],) + tuple(reversed(m[1:])) + (cv(al), cv(ar)); return min(a, b)
+def sigv_of(U, wr, sr, sl, wl, wrr, wll):
+    a = (U, wr, sr, sl, wl, cv(wrr), cv(wll)); b = (U, wl, sl, sr, wr, cv(wll), cv(wrr)); return min(a, b)
+def sigv_keys(sg):
+    U, wr, sr, sl, wl, wrr, wll = sg
+    return sorted({v_of((U, wr, sr, p, sl, wl), wrr, wll) for p in LET if not isR6((U, wr, sr, p, sl, wl))})
 def qkey(m):
     m = tuple(m); return min(m, (m[0],) + tuple(reversed(m[1:])))
 def q7sig(U, a, b, c, e):
@@ -86,6 +96,7 @@ def cons2_coef(L, s):
         if L[i] == 5: cf[('g', g2_of(L[(i + 1) % 6], L[(i + 2) % 6], L[(i + 3) % 6], L[(i + 4) % 6], L[(i + 5) % 6], s[i], s[(i - 1) % 6]))] += 1
     for j in range(6):
         if L[j] >= 7: cf[('h', h2_of(tuple(L[(j + i) % 6] for i in range(6)), s[j], s[(j - 1) % 6]))] -= 1
+        if V6 and L[j] == 7: cf[('v', v_of(tuple(L[(j + i) % 6] for i in range(6)), s[j], s[(j - 1) % 6]))] += 1
     return cf
 SALL = np.array(list(itertools.product(range(5), repeat=6)), dtype=np.int64)   # apex words (letter indices)
 def cons2_delta(L, GV, HV2):
@@ -100,6 +111,10 @@ def cons2_delta(L, GV, HV2):
             m = tuple(L[(j + i) % 6] for i in range(6))
             T = np.array([[HV2.get(h2_of(m, LET[a], LET[b]), 0.0) for b in range(5)] for a in range(5)])
             D -= T[SALL[:, j], SALL[:, (j - 1) % 6]]
+        if V6 and L[j] == 7:
+            m = tuple(L[(j + i) % 6] for i in range(6))
+            T = np.array([[VV.get(v_of(m, LET[a], LET[b]), 0.0) for b in range(5)] for a in range(5)])
+            D += T[SALL[:, j], SALL[:, (j - 1) % 6]]
     return D
 def window_table_R2(U, y, x, MV2):
     W = window_table(U, y, x)
@@ -108,6 +123,10 @@ def window_table_R2(U, y, x, MV2):
             wd = (U, LET[e], LET[r], LET[q], LET[b])
             if isR5(list(wd)): continue
             W[a, b, 0, e, f, :, q, r, :] += ZV.get(zkey(wd, c2(LET[f]), c2(LET[a])), 0.0)
+    if V6 and U == 7:
+        for a, b, e, f, q, r in itertools.product(range(5), repeat=6):
+            ks = sigv_keys(sigv_of(U, LET[e], LET[r], LET[q], LET[b], LET[f], LET[a]))
+            if ks: W[a, b, 1, e, f, :, q, r, :] -= min(VV.get(k, 0.0) for k in ks)
     if Q7:
         for b, e, q, r in itertools.product(range(5), repeat=4):
             sg = q7sig(U, LET[e], LET[r], LET[q], LET[b]); ks = q7keys(sg)
@@ -138,6 +157,9 @@ def recv_coef_R2(d, lk, sv, xon):
         if w[j] == 6:
             sg = sig2_of(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d], w[(j + 2) % d], w[(j - 2) % d])
             if sig2_keys(sg): cf[('M', sg)] += 1
+        if w[j] == 6 and V6 and U == 7 and d == 7:
+            sv_ = sigv_of(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d], w[(j + 2) % d], w[(j - 2) % d])
+            if sigv_keys(sv_): cf[('V', sv_)] -= 1
         if w[j] == 7 and Q7:
             sg = q7sig(U, w[(j + 1) % d], s[j], s[(j - 1) % d], w[(j - 1) % d])
             if q7keys(sg): cf[('Q', sg)] += 1
@@ -166,6 +188,13 @@ def cmd_orientR2():
         Lr = L[k:] + L[:k]; sr = s[k:] + s[:k]
         Lf = tuple(L[(-i) % 6] for i in range(6)); sf = tuple(s[(-i - 1) % 6] for i in range(6))
         if cons2_coef(L, s) != cons2_coef(Lr, sr) or cons2_coef(L, s) != cons2_coef(Lf, sf): bad += 1
+    if V6:
+        for a in itertools.product(LET, repeat=7):
+            n += 1
+            if sigv_of(*a) != sigv_of(a[0], a[4], a[3], a[2], a[1], a[6], a[5]): bad += 1
+        for L in itertools.product(LET, repeat=6):
+            for ar, al in ((5, 6), (6, 9), (8, 5)):
+                if v_of(L, ar, al) != v_of((L[0],) + tuple(reversed(L[1:])), al, ar): bad += 1
     if Q7:
         for _ in range(20000):
             w = tuple(int(v) for v in rng.choice(LET, 7)); j = int(rng.integers(7))
@@ -194,14 +223,14 @@ def cmd_solveR2():
         return cols[key]
     jt = col(('t',)); h.changeColCost(jt, 1.0)
     for r_ in ROOTS: col(('y', r_))
-    info = []; have = set(); msig = set(); conset = set(); qsig = set()
+    info = []; have = set(); msig = set(); conset = set(); qsig = set(); vsig = set()
     def addrow(cf, lo, hi, inf_):
         idx = np.array([col(k) for k in cf], dtype=np.int32); val = np.array([float(v) for v in cf.values()])
         h.addRow(lo, hi, len(idx), idx, val); info.append(inf_)
     SR = R2_sender_rows()
     for wd, cf, bits in SR:
         c2_ = dict(cf); c2_[('t',)] = 1.0; addrow(c2_, 1.0, inf, ('senderR2', wd, bits))
-    RW = relay_words()
+    RW = all6_words() if V6 else relay_words()   # v6: no-five 6-types must conserve too (v out = h in)
     def addsig(sg):
         if sg in msig: return
         msig.add(sg)
@@ -213,6 +242,9 @@ def cmd_solveR2():
         have.add(key)
         for k in cf:
             if k[0] == 'M': addsig(k[1])
+            if k[0] == 'V' and k[1] not in vsig:
+                vsig.add(k[1])
+                for kk in sigv_keys(k[1]): addrow({('V', k[1]): 1.0, ('v', kk): -1.0}, -inf, 0.0, ('mrowV', list(k[1]), list(kk)))
             if k[0] == 'Q' and k[1] not in qsig:
                 qsig.add(k[1])
                 for kk in q7keys(k[1]): addrow({('q', kk): 1.0, ('Q', k[1]): -1.0}, -inf, 0.0, ('mrowQ', list(k[1]), list(kk)))
@@ -247,6 +279,7 @@ def cmd_solveR2():
         GV = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'g'}; HV2 = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'h'}
         ZV.clear(); ZV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'z'})
         QV.clear(); QV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'q'})
+        VV.clear(); VV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'v'})
         if Q7: write_bonus()
         xd = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'x' and xv[i] > 1e-12}
         mcache = {}
@@ -255,6 +288,7 @@ def cmd_solveR2():
                 ks = sig2_keys(sg); mcache[sg] = max(HV2.get(k, 0.0) for k in ks) if ks else None
             return mcache[sg]
         tlp = time.time() - t1; added = 0; per = {}
+        if 'nosep' in FLAGS: log('nosep: LP over the warm rows only, t = %.12f (a lower bound once lowerR2 checks the cert)' % t); break
         nc = 0; worst = 0.0
         for L in RW:   # conservation separation
             D = cons2_delta(L, GV, HV2)
@@ -274,7 +308,7 @@ def cmd_solveR2():
                     mx = max(mx or -1e9, float(r_[1]) - (d - 6 + t))
                     if 'dbg' in FLAGS and n == 0:
                         cf = recv_coef_R2(d, r_[2], r_[3], xon)
-                        val = sum(v * (MV2(k[1]) if k[0] == 'M' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else xv[cols[k]] if k in cols and cols[k] < len(xv) else 0) for k, v in cf.items())
+                        val = sum(v * (MV2(k[1]) if k[0] == 'M' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else min([VV.get(kk, 0.0) for kk in sigv_keys(k[1])] or [0.0]) if k[0] == 'V' else xv[cols[k]] if k in cols and cols[k] < len(xv) else 0) for k, v in cf.items())
                         log('  DBG d=%d sep %s row %.9f' % (d, r_[1], val))
                     if recv(d, r_[2], r_[3]): n += 1; rowlog.write('R %d %s %s\n' % (d, r_[2], r_[3]))
             added += n; per[d] = (n, None if mx is None else round(mx, 6), round(dt, 1))
@@ -303,6 +337,8 @@ def cmd_solveR2():
          'h': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'h' and xv[i] > 0],
          'z': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'z' and xv[i] > 0], 'zh': ZH, 'apexcls': AC,
          'q': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'q' and xv[i] > 0], 'q7': Q7,
+         'v': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'v' and xv[i] > 0], 'v6': V6,
+         'V': [[list(k[1]), float(xv[i]), min([float(xv[cols[('v', kk)]]) if ('v', kk) in cols else 0.0 for kk in sigv_keys(k[1])] or [0.0])] for k, i in cols.items() if k[0] == 'V'],
          'x': {str(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'x' and xv[i] > 0}}
     json.dump(S, open(os.path.join(HERE, 'sol_%s.json' % tag), 'w'))
     cert = [{'w': float(dv), 'row': info[i]} for i, dv in enumerate(duals) if abs(dv) > 1e-11]
@@ -320,6 +356,7 @@ def cons2_block(L):
         if L[j] >= 7:
             m = tuple(L[(j + i) % 6] for i in range(6))
             terms.append((j, -1.0, [[('h', h2_of(m, LET[a], LET[b])) for b in range(5)] for a in range(5)]))
+            if V6 and L[j] == 7: terms.append((j, 1.0, [[('v', v_of(m, LET[a], LET[b])) for b in range(5)] for a in range(5)]))
     keys = {}
     for _, _, T in terms:
         for rw in T:
@@ -334,17 +371,19 @@ def cmd_structR2():
     h, cols, info, conset, RW, SR = cmd_solveR2()
     # full conservation system over all L in RW x all 5^6 apex words. h keys are private to one L (the key fixes L),
     # so rank = sum_L rank(H_L) + rank of the stacked g-only consequences of each block.
-    allg = {}; allh = set(); nrows = 0; rH = 0; Gstack = []; rL_tot = 0; gonly = set()
+    allg = {}; allh = set(); allv = set(); nrows = 0; rH = 0; Gstack = []; rL_tot = 0; gonly = set()
     for L in RW:
         A, ks = cons2_block(L)
         U_ = np.unique(A, axis=0); U_ = U_[np.abs(U_).sum(1) > 0]
-        hi = [c for c, k in enumerate(ks) if k[0] == 'h']; gi = [c for c, k in enumerate(ks) if k[0] == 'g']
+        hi = [c for c, k in enumerate(ks) if k[0] != 'g']; gi = [c for c, k in enumerate(ks) if k[0] == 'g']
         for k in ks:
             if k[0] == 'g': allg.setdefault(k, len(allg))
-            else: allh.add(k)
+            elif k[0] == 'h': allh.add(k)
+            else: allv.add(k)
         if not hi:
             for r_ in U_: gonly.add(tuple((ks[c], r_[c]) for c in np.nonzero(r_)[0]))
         else: nrows += len(U_)
+        if not len(U_) or not len(ks): continue
         u, sv, vt = np.linalg.svd(U_, full_matrices=False); r = int((sv > 1e-9 * max(1, sv[0])).sum()); B = vt[:r]
         rL_tot += r
         Bh = B[:, hi]
@@ -377,11 +416,19 @@ def cmd_structR2():
            '  h (6 -> big): %d' % len(allh),
            '  M (receiver inflow signatures): %d' % len(sg),
            '  x (big-big, tau codes): lazy',
-           '6-types (canonical non-R6 6-links with a five): %d' % len(RW),
+           '6-types (canonical non-R6 6-links%s): %d' % ('' if V6 else ' with a five', len(RW)),
            'conservation rows (distinct, all 6-types x all apex words): %d' % nrows,
            'conservation rank: %d (= %d from h-blocks + %d g-only)' % (rH + rG, rH, rG),
            '  g-only part: rank %d on %d g keys; g directions left free: %d' % (rG, len(allg), len(allg) - rG),
            'row counts at start of solve: sender %d ; conservation %d (rest by separation) ; M-rows if all used %d ; receivers by separation' % (len(SR), len(conset), nm)]
+    if V6:
+        vs = set()
+        for t7 in itertools.product(LET, repeat=6):
+            s_ = sigv_of(7, *t7)
+            if sigv_keys(s_): vs.add(s_)
+        out.insert(6, '  v (new in s16): %d' % len(allv)); out.insert(7, '  V (new in s16, signatures): %d; V-rows if all used %d' % (len(vs), sum(len(sigv_keys(x)) for x in vs)))
+        out[0] = 's16 structural summary (stage 15 class on the reduced 6-centred relay)'
+        out = [l.replace('from h-blocks', 'from private blocks') for l in out]
     if ZH:
         zk = set()
         for wd, cf, b in SR: zk.update(k for k in cf if k[0] == 'z')
@@ -413,6 +460,11 @@ def cmd_lowerR2():
             if k not in sig2_keys(sg): log('  BAD MROW', row); ok = False; continue
             if w > 0: log('  WRONG SIGN', row); ok = False; continue
             tot[('h', k)] += w; tot[('M', sg)] -= w
+        elif row[0] == 'mrowV':
+            sg = tuple(row[1]); k = tuple(row[2])
+            if sg != sigv_of(*sg) or k not in sigv_keys(sg): log('  BAD MROWV', row); ok = False; continue
+            if w > 0: log('  WRONG SIGN', row); ok = False; continue
+            tot[('V', sg)] += w; tot[('v', k)] -= w
         elif row[0] == 'mrowQ':
             sg = tuple(row[1]); k = tuple(row[2])
             if sg != q7sig(*sg) or k not in q7keys(sg): log('  BAD MROWQ', row); ok = False; continue
@@ -458,6 +510,8 @@ def cmd_upperR2():
     QV.clear(); QV.update({tuple(k): v for k, v in Sj.get('q', [])})
     if Sj.get('q') and not Q7: log('SOLUTION HAS q BUT q7 FLAG OFF'); return
     if Q7: log('bonus links: %d' % write_bonus())
+    VV.clear(); VV.update({tuple(k): v for k, v in Sj.get('v', [])})
+    if Sj.get('v') and not V6: log('SOLUTION HAS v BUT v6 FLAG OFF'); return
     xd = {int(k): v for k, v in Sj.get('x', {}).items()}
     if any(v < 0 for v in list(GV.values()) + list(HV2.values()) + list(y)): log('NEGATIVE VALUE'); 
     bad = 0
@@ -468,7 +522,9 @@ def cmd_upperR2():
     nc = 0; worst = 0.0; A6 = all6_words()
     for L in A6:   # every non-R6 6-arrangement, with or without a five, every apex word
         Dl = cons2_delta(L, GV, HV2); m = float(np.abs(Dl).max()); worst = max(worst, m)
-        if m > 1e-9: nc += 1
+        if m > 1e-9:
+            nc += 1
+            if nc <= 8: log("  cons off: L=%s five=%s worst %.4g" % (L, 5 in L, m))
     log('conservation: %d canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: %d (worst %.3g)' % (len(A6), nc, worst)); bad += nc
     mcache = {}
     def MV2(sg):
@@ -507,7 +563,7 @@ def cmd_consbasisR2():
     together they imply every (L, s) row. Written as JSON [[L, s], ...]."""
     import scipy.linalg as sla
     out = []; tot = 0
-    for L in relay_words():
+    for L in (all6_words() if V6 else relay_words()):
         A, ks = cons2_block(L)
         U_, idx = np.unique(A, axis=0, return_index=True)
         keep = np.abs(U_).sum(1) > 0; U_ = U_[keep]; idx = idx[keep]
@@ -517,18 +573,18 @@ def cmd_consbasisR2():
         for q in P[:r]: out.append([list(L), [LET[v] for v in SALL[idx[q]]]])
         tot += r
     json.dump(out, open(OPT.get('out', os.path.join(HERE, 'cons2basis.json')), 'w'))
-    log('conservation basis: %d rows over %d 6-types' % (tot, len(relay_words())))
+    log('conservation basis: %d rows over %d 6-types' % (tot, len(all6_words() if V6 else relay_words())))
 def cmd_rowR2():
     """one receiver row at a solution: each term's value, load vs cap, slack, and its dual weight in cert"""
     load_patterns(); xon = 'xon' in FLAGS
     Sj = json.load(open(OPT['sol'])); t = Sj['t']; d = int(OPT['d']); lk = OPT['lk']; sv = OPT['sv']
     YV = Sj['y']; HV2 = {tuple(k): v for k, v in Sj['h']}; ZV.clear(); ZV.update({tuple(k): v for k, v in Sj.get('z', [])})
-    XV = {int(k): v for k, v in Sj.get('x', {}).items()}; QV.clear(); QV.update({tuple(k): v for k, v in Sj.get('q', [])})
+    XV = {int(k): v for k, v in Sj.get('x', {}).items()}; QV.clear(); QV.update({tuple(k): v for k, v in Sj.get('q', [])}); VV.clear(); VV.update({tuple(k): v for k, v in Sj.get('v', [])})
     def MV2(sg):
         ks = sig2_keys(sg); return max(HV2.get(k, 0.0) for k in ks) if ks else 0.0
     tot = 0.0; parts = []
     for k, c in sorted(recv_coef_R2(d, lk, sv, xon).items(), key=str):
-        v = YV.get(rname(k[1]), 0.0) if k[0] == 'y' else ZV.get(k[1], 0.0) if k[0] == 'z' else XV.get(k[1], 0.0) if k[0] == 'x' else QV.get(k[1], 0.0) if k[0] == 'q' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else MV2(k[1])
+        v = YV.get(rname(k[1]), 0.0) if k[0] == 'y' else ZV.get(k[1], 0.0) if k[0] == 'z' else XV.get(k[1], 0.0) if k[0] == 'x' else QV.get(k[1], 0.0) if k[0] == 'q' else VV.get(k[1], 0.0) if k[0] == 'v' else min([VV.get(kk, 0.0) for kk in sigv_keys(k[1])] or [0.0]) if k[0] == 'V' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else MV2(k[1])
         tot += c * v
         if abs(c * v) > 1e-12: parts.append('%s%s:%+g*%.5f' % (k[0], rname(k[1]) if k[0] == 'y' else ''.join(map(str, k[1])) if k[0] != 'x' else k[1], c, v))
     w = 0.0
