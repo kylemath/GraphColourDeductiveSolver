@@ -49,6 +49,17 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   This also settles s19c's 7666566/5656656, its mirror image.
 - 7655666/6756666: no kill at ring <= 14 (875 windows, 0 mismatches). Its ring 15-16 windows have been running since
   02:19Z (1372 at ring <= 16, 910 already run).
+- **7655666/6756666: kill line met at ring <= 16, so the row is R*-like; reported, and stopped there.** All 1372
+  windows ran (the last 9 after the first job hit its 2-hour limit at 03:54Z), 0 mismatches, slowest kc 237 s. None
+  is D, and kc -C finds no X at |X| <= 4. The best leftovers, all with u, w and s2 in the window, are 128 at ring 14
+  (a7_u7655666_..56..6), 256 at ring 15 and 512 at ring 16. They double with each ring, as for the binder. Guess (40%
+  that it dies) was on the wrong side. Like the binder, it has the 5-5-5 face (w2, w3, s2) next to the 7-centre.
+- **d = 10 6565656565/6655666666 dies at ring 13 (C)** (1832 windows, 110 already run, 0 mismatches; 03:59-04:31Z).
+  26 kill windows and 14 f-names (twoeng: 4 D, 10 C). Minimal: f10_...5656565_......55.. (C, ring 13) and
+  f10_...5656565_........55 (C, ring 14). Guess right. Twoeng-ready: `loop/k47/r10b_kills*`.
+- d = 7 7655667/6756656: no kill at ring <= 14 (784 windows, 375 already run). Its ring 15-16 windows (1411 at ring
+  <= 16) started 04:38Z. The queue job hit its 2-hour limit at 05:11Z with 249 ring-16 windows left. From now on each
+  row runs as its own job (`q51row.sh`), so one job fits inside the limit.
 
 ## Round 50 (18 Oct 2026, 22:29Z-): H-RL, do the relay class's new receivers die at ring <= 14?
 
