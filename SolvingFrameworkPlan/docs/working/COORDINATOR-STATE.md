@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 20:53Z 19 Oct: s29 (Opus 2ff1b19b): st24b on 7360eb92, one engine. Upper 0.153144, lower 43/281 = 0.153025, not closed. It is about 7e-4 below 2/13. Killing the d10 rows bought little: the face 7 carries 0.214 of the dual, with small mass on three other rows. Provisional until s30h (the 3 ring-merge entries held out) reports. No second engine yet; Studio's engine goes to the 7a3857a0 / 3cfd7f18 solve. Confirms the face family is the bound, and the rule side must pay.
 - 20:40Z 19 Oct: Studio results.
   - Binder row 12 (7766556/6576576) survives kc at ring <= 18; 11 dfast18 timeouts are pending (f4517ab7). Neither face binder has a ring <= 18 kill, so the face family belongs to the rule side.
   - The prefix guard is in (0339586b): non-plain names stay out of k3x, and k3x is unchanged.
