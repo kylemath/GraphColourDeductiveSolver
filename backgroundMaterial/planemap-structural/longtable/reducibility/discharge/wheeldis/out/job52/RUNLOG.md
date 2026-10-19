@@ -70,3 +70,10 @@
 - 21:20Z 19 Oct: row 12 addendum (Long Table 20:38Z; out/job52/row12_open.py): the 11 ring-18 kc timeouts all
   **dfast18 D=false** (661-1,593 s each). No D, so no kc -t 10800 and no cfast. Row 12 final: 414/414 decided, 0
   two-engine kills; the ring <= 18 hypothesis fails on this binder row too.
+- 22:00Z 19 Oct: row 14 (face binder d8 75666556/66666565, 2438e43f, md5s checked): Part A r1718 (542 windows) in
+  out/job52/row14_A_r1718, 7 parts, binder heavy priority; Part B r1516 (1,563) in row14_B_r1516, 4 parts. job52.py
+  gains ROWDIR (output dir) and EXTRAKILL (A and B share kills). **KILLED at ring 15 in the first minute**
+  (a8_u.5666556_...665.5 first: kc D 2 s, dfast18 D 18 s). Part A ran one window per part before the kill reached it:
+  6 kc neither, 1 two-engine C at ring 17 (a8_u.5666556_.666.5.5, kc X={I0-I3} 67 s, cfast --fixed leftover 0 456 s);
+  then all parts stopped ring 17-18. Part B continues ring 15-16 for f-names (snapshot 22:30Z: 547 run, 168 kills,
+  96 D / 73 C incl. A's). Nothing admitted.
