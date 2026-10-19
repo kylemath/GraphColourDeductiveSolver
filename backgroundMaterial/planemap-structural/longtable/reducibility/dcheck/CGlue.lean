@@ -188,7 +188,7 @@ theorem extCAux_complete (cf : Conf) (eqR eqI : List (Nat × Nat)) (k : Nat) (la
       rw [Array.all_eq_true]
       intro i hi
       have ht := hR cols.size ha _ (Array.getElem_mem hi)
-      rcases Bool.eq_false_or_eq_true (eqR.contains (cf.ringAdj[cols.size]![i], cols.size)) with hc | hc
+      rcases Bool.eq_false_or_eq_true (eqR.contains ((cf.ringAdj[cols.size]!)[i], cols.size)) with hc | hc
       · exact cond_eq_true hc (ht.1 hc)
       · exact cond_ne_true hc (ht.2 hc)
     have hint : (cf.intAdj[cols.size]!).all (fun b => b >= cols.size ||
@@ -197,12 +197,12 @@ theorem extCAux_complete (cf : Conf) (eqR eqI : List (Nat × Nat)) (k : Nat) (la
       rw [Array.all_eq_true]
       intro i hi
       rw [Bool.or_eq_true]
-      by_cases hb : cf.intAdj[cols.size]![i] < cols.size
+      by_cases hb : (cf.intAdj[cols.size]!)[i] < cols.size
       · right
         have ht := hI cols.size ha _ (Array.getElem_mem hi) hb
         rw [hcols _ hb]
-        rcases Bool.eq_false_or_eq_true (eqI.contains (cf.intAdj[cols.size]![i], cols.size) ||
-            eqI.contains (cols.size, cf.intAdj[cols.size]![i])) with hc | hc
+        rcases Bool.eq_false_or_eq_true (eqI.contains ((cf.intAdj[cols.size]!)[i], cols.size) ||
+            eqI.contains (cols.size, (cf.intAdj[cols.size]!)[i])) with hc | hc
         · exact cond_eq_true hc (ht.1 hc)
         · exact cond_ne_true hc (ht.2 hc)
       · left; exact decide_eq_true (by omega)
@@ -548,7 +548,11 @@ theorem cf66666_hC : cReducible18 cf66666 [(0, 1)] [(2, 3), (3, 4), (4, 5)] = tr
 /-- Labels: `I0` ↦ 100, `I1` ↦ 0 (= `R0`), `I2..I5` ↦ 101, `R t` ↦ `t`. -/
 theorem cf66666_hadm : admissibleX (Conf.of18 cf66666) [(0, 1)] [(2, 3), (3, 4), (4, 5)]
     [100, 0, 101, 101, 101, 101, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9] = true := by
-  decide
+  native_decide
+
+/-- Sabotage: the single contraction `X = {I0-I1}` is not certified for the 66666 wheel. -/
+theorem cf66666_not_I0I1 : cReducible18 cf66666 [] [(0, 1)] = false := by
+  native_decide
 
 /-- The 66666 wheel as a C entry. -/
 def e66666 : CEntry where
@@ -560,9 +564,9 @@ def e66666 : CEntry where
   hadm := cf66666_hadm
   hr2 := by decide
   hr := by decide
-  hsym := by decide
-  hloop := by decide
-  hrr := by decide
+  hsym := by native_decide
+  hloop := by native_decide
+  hrr := by native_decide
 
 end CGlue
 end SimpleGraph.SphericalMap
@@ -572,3 +576,4 @@ end SimpleGraph.SphericalMap
 #print axioms SimpleGraph.SphericalMap.ConfigOccW.colorable_of_cReducible18
 #print axioms SimpleGraph.SphericalMap.CGlue.CEntry.colorable
 #print axioms SimpleGraph.SphericalMap.CGlue.four_color_of_unavoidableC
+#print axioms SimpleGraph.SphericalMap.CGlue.e66666
