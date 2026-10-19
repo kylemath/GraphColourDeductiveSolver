@@ -737,3 +737,23 @@ Built by s19e/mkfamily.py, run on the s19e engine (hat5 class, s21/argsA54.txt, 
   - At sol_st20x: y drops to 0.349 / 0.326, but r[506507] rises to 0.246 and M 0.143 / 0.095 still apply. r[506507] is the 7's **outflow** to the face's third five, the 7 being a hat of that five.
   - **Nothing flows into the face rows.** No r reaches the 7, g only goes to fives, and the 7 is only ever a payer. Kill line (2) is met in substance: the face 7 pays its two face fives and the face's third five through y, M and r, and the LP only moves charge among these.
 - **Reading.** Exact hats remove the impossible contexts (family.json's 8), but the face family is genuinely admissible once H0 is big, and the bound holds there. The deficit of a 5-5-5 face next to a 7 is paid entirely by that 7 under every rule class tried (stages 17-20), so the family needs either a reducibility argument for the whole face family or a rule that brings charge into the 7 from outside its 2-ball.
+
+## Stage 22 pre-registration (design-only, before the probe): face / balanced initial charge (RELAY_SPEC 18), no LP solve
+- **Question.** Does re-basing the initial charge onto faces (balanced d-6 / 2len-6, or 6-d / 6-2len, or the Euler family vertex 6-(1+e/3)d with face charge e, or a shared charge on each 5-5-5 face) change t* for the current rule shapes (y, g, h, M, r, x)?
+- **Equivalence check.** Write each re-basing as old charge + a fixed conservative local flow T. If T = 0, or T lies in the cone of existing columns, the LP is the same (null by construction). Any free face->corner rule composes to co-facial edge transfers; those in existing directions are spanned, and the reverse directions (big->five, 6->five, big->6) are screened exactly against cert_st20xL (16/101): a reverse column is profitable iff its forward column has reduced cost > 0.
+- **Probe.** s22d/probe22.py (stage-20 engine copy, md5 in s22d/engine_md5.txt), on cert_st20xL and s19e/family.json only. Log: s22d/probe22.log.
+- **Kill line (verbatim from the brief):** stop if the face family still binds at a value >= the current t*, which is 16/101 on 5fa0adb0.
+
+## Stage 22 result (design-only): **the face / balanced re-basing is null by construction; the kill line is met**
+- **Balanced charges (d-6 / 2len-6, or 6-d / 6-2len).** These give charge 0 to every face, because every face of a triangulation is a triangle. They are the current LP, or its sign mirror.
+- **Euler family (vertex 6-(1+e/3)d, face e).** These are the only Euler-valid linear face charges on a triangulation (RELAY_SPEC 18.1). The family differs from the current charge by a fixed local flow (e/3 from each vertex to each incident face). Under the current rule shapes, with faces as transit, that flow composes to T = 0, so the LP and t* are unchanged.
+- **Free face rules.** These compose to co-facial edge transfers. Their only new directions at existing keys are the reverses of y, g and h. On cert_st20xL, every y, g and h column has reduced cost exactly 0, so every reverse column has reduced cost 0 as well. Together with the unchanged primal this gives **t* = 16/101 exactly** (s22d/probe22.log; the run takes 3 s, with no LP).
+- **5-5-5 shared charge.**
+  - With faces as transit, the shared charge is again T = 0.
+  - If faces are allowed to hold charge, the old cert gives a lower bound of t >= 144/1069 (0.1347). That is a normalisation artifact and not progress: at t <= 0 the faces hold nothing, so the zero crossing is that of the current LP (RELAY_SPEC 18.4).
+- **Probe on family.json.** Under every re-basing, all 13 receivers and the 18 admissible sender contexts keep their rows. The face 7 row 7665566/6765766 stays tight at 1 + 16/101, so the 7 still goes negative and binds at 16/101. **The kill line is met.**
+- **Not covered here.** The following are new channels or key refinements, not re-basings:
+  - 5<->5 transfers on non-5-5-5 faces;
+  - 6<->6 transfers;
+  - keys finer than the existing ones.
+- **Lead (outside §18).** Two r columns have reduced cost > 0 under cert_st20xL: r(5,0,6,7) at 2/303 and r(5,0,7,5,0,7) at 1/303. The second touches the d=9 row 655566556/757656565 and the face sender 55767. Their reverse would be a distance-2 transfer from the hat big to the five. That is not ruled out by this cert, and it was not built.

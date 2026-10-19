@@ -1,0 +1,54 @@
+cert /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s20d/cert_st20xL.json rows 106  t-coefficient 1  objective 16/101 = 0.15841584158415842
+
+reduced costs over the columns the cert touches (rc = -(sum w*coef)/tco; dual feasibility needs rc >= 0, x priced at cap):
+  family  rc>0  rc=0  rc<0  max rc
+  M          3    20     0  28/303
+  g          0    48     0  0
+  h          0    42     0  0
+  r          2    14     0  2/303
+  x          0     6     0  0
+  y          0    20     0  0
+
+reverse-direction columns (same key, opposite direction): profitable iff forward rc > 0
+  face-family cert rows (5-5-5 face at a receiver, or sender with w0 = w1 = 5): 24
+  big->five (reverse y): 0 profitable keys, 0 of them in a face-family row; top: []
+  6->five (reverse g): 0 profitable keys, 0 of them in a face-family row; top: []
+  big->6 (reverse h): 0 profitable keys, 0 of them in a face-family row; top: []
+
+family.json: s21/argsA54.txt (880d25c6), kill tables s21/f/kill/kill6, engine s19e (hat5 class)
+
+(i) e-family re-basing (vertex 6-(1+e/3)d, face e; e/3 back to each corner): every row changes by
+    vertex: -(e/3)d + (e/3)d = 0 ; so every receiver cap and every sender RHS is unchanged:
+    checked for all 13 receivers and 26 sender contexts (e = 3 shown; identity in e)
+
+(ii) 5-5-5 shared charge: each 5-5-5 face takes sigma from each corner.
+    (a) face transit (must end at 0) under current shapes: only disposal is sigma back to each corner -> delta 0.
+    (b) face kept as a holder (ends <= t): sigma <= t/3, sender RHS 1 - k*sigma, k = #5-5-5 faces at v.
+        cert_st20xL sender rows with k >= 1: 16 of 25 ; dual weight on them 0.528052805280528
+        old cert stays dual-feasible; t-column becomes kappa = 1069/909 = 1.176017601760176
+        so t*(b) >= (16/101)/kappa = 144/1069 = 0.13470533208606175 (a normalisation, see RELAY_SPEC 18.4)
+
+(iii) face rows of the family at sol_st20xL (kill_st20x.log): load r 0.02339 + y 0.71423 + y 0.42079 = 1 + t.
+     Under (i) and (ii)(a) the receiver row of the face 7 is the same row: the 7 ends at charge t* = 16/101 > 0
+     (balanced/negative convention: at -16/101), i.e. it still goes negative and still binds at 16/101.
+     receiver d=7 7655666/6756666 faces_at_i=[2] duals(10/63 certs)={}
+     receiver d=7 7655667/6756656 faces_at_i=[2] duals(10/63 certs)={}
+     receiver d=7 7665566/6675666 faces_at_i=[3] duals(10/63 certs)={}
+     receiver d=7 7665566/6765766 faces_at_i=[3] duals(10/63 certs)={'st18hL': -0.1037}
+     receiver d=7 7676556/7759565 faces_at_i=[4] duals(10/63 certs)={'st18hL': -0.055, 'st19wL': -0.0582, 'st19fL': -0.055}
+     receiver d=7 7766556/6567566 faces_at_i=[4] duals(10/63 certs)={'st19wL': -0.1005}
+     receiver d=7 7766556/6576576 faces_at_i=[4] duals(10/63 certs)={'st19fL': -0.1037}
+     receiver d=7 8655567/5685756 faces_at_i=[3] duals(10/63 certs)={'st18hL': -0.0063, 'st19fL': -0.0063}
+     receiver d=7 8765556/6575866 faces_at_i=[3] duals(10/63 certs)={'st18hL': -0.0063, 'st19fL': -0.0063}
+     receiver d=8 85586556/66656565 faces_at_i=[5] duals(10/63 certs)={'st18hL': -0.0063, 'st19wL': -0.0079, 'st19fL': -0.0063}
+     receiver d=8 86555665/56576665 faces_at_i=[2] duals(10/63 certs)={'st18hL': -0.0127, 'st19fL': -0.0127}
+     receiver d=8 86555665/56586665 faces_at_i=[2] duals(10/63 certs)={'st19wL': -0.0159}
+     receiver d=9 655566556/759556565 faces_at_i=[1, 6] duals(10/63 certs)={'st18hL': -0.055, 'st19wL': -0.0582, 'st19fL': -0.055}
+     sender contexts surviving exact admissibility: 18 of 26; k555 per word: {('55667', 1): 4, ('55668', 1): 2, ('55669', 1): 3, ('55676', 1): 1, ('55686', 1): 1, ('55758', 1): 1, ('55767', 1): 2, ('55769', 1): 2, ('55858', 1): 1, ('55959', 1): 1}
+
+columns with rc > 0 in the non-face-local families (reverse would be a distance-2 or bound column, not a face rule):
+   ('M', (7, 6, 7, 6, 7, 5, 5, 31)) rc 28/303 ; in face-family rows: 1 ; rows: ['["receiverR2", 7, "7665566", "6765766"]']
+   ('M', (7, 6, 6, 6, 7, 5, 5, 31)) rc 28/303 ; in face-family rows: 1 ; rows: ['["receiverR2", 7, "7665566", "6765766"]']
+   ('M', (7, 7, 7, 7, 7, 5, 5, 31)) rc 20/303 ; in face-family rows: 1 ; rows: ['["receiverR2", 7, "7676556", "7759565"]']
+   ('r', (5, 0, 6, 7)) rc 2/303 ; in face-family rows: 0 ; rows: ['["receiverR2", 9, "765556565", "566966665"]']
+   ('r', (5, 0, 7, 5, 0, 7)) rc 1/303 ; in face-family rows: 2 ; rows: ['["receiverR2", 9, "655566556", "757656565"]', '["senderR2", "55767", [1, 0, 1, 1, 0, "|", 0]]']

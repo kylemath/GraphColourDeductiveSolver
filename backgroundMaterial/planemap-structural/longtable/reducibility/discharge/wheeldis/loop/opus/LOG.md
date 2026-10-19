@@ -462,3 +462,9 @@ our agent R and have no output from it.
 - Kill lines (1) and (2) both hit. The face rows stay tight; r[506507] is the 7 paying the face's third five, i.e. outflow.
 - The face family is admissible once H0 (the vertex across the face edge) is big.
 - Stage 21 (the sender 2-ball registry filter) is a different and stronger test, and it is running.
+
+## Stage 22 (design only): balanced/face initial charge, 19 Oct ~11:00Z. NULL by construction
+- In a triangulation every face is a triangle, so balanced charges reduce to the current vertex charge or its mirror.
+- The Euler family 6-(1+e/3)d with face charge e, and 5-5-5 shared charge, are pure re-basings with T=0. Free face-to-corner rules reduce to edge transfers that are already spanned. The reverse columns have reduced cost 0 on cert_st20xL. §18 written.
+- Probe on family.json: the face 7 still binds at 16/101. Kill line met.
+- Open lead (not built): the reverse hat channel (big to five at distance 2). Two r columns have positive reduced cost on cert_st20xL.

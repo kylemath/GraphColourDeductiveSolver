@@ -1445,3 +1445,110 @@ The hat5 diamond test was re-run in the same logs: 0 mismatches, and 15,898 unde
 
 **Why.** family.json (FINDINGS) shows that 8 of the 26 face-five contexts in the 10/63 certs fail this test, together
 carrying 0.42 of the summed dual weight.
+
+---------------------------------------------------------------------------------------------------------------
+
+## 18. Stage 22: face / balanced initial charge. Design only, written before the probe; no LP solved
+
+Conventions. Section 1 uses the positive convention (vertex `6 - d`, a five starts at +1 and sends). FINDINGS prose
+often uses the mirror (vertex `d - 6`, "the 7 pays its fives"). Negating every charge and every rule value maps the LP
+onto itself, so the two are the same LP read with opposite signs. Below, G is a triangulation: V vertices, E edges,
+F faces, every face a triangle, so 3F = 2E, and with V - E + F = 2 we get E = 3V - 6 and F = 2V - 4.
+
+### 18.1 The candidate initial charges, exactly, with their Euler totals
+
+| name | vertex v | face f | total |
+|---|---|---|---|
+| current (section 1) | `6 - d(v)` | none | 6V - 2E = 12 |
+| balanced (mirror) | `d(v) - 6` | `2 len(f) - 6` = 0 on a triangle | 2E - 6V + 0 = -12 |
+| vertex/face, positive | `6 - d(v)` | `6 - 2 len(f)` = 0 on a triangle | 12 + 0 = 12 |
+| Euler family, parameter e | `6 - (1 + e/3) d(v)` | `e` | see below |
+| e = 3 ("face charging") | `6 - 2 d(v)` | `6 - len(f)` = +3 | 6V - 4E + 3F = 12 |
+| 5-5-5 shared charge, parameter sigma | `6 - d(v) - sigma k(v)`, k(v) = number of 5-5-5 faces at v | `3 sigma` on each 5-5-5 face, 0 elsewhere | 12 |
+
+**Euler family.** Take any charge that is linear in the local data of a triangulation: vertex `a + b d`, face `c`. The
+total is `aV + 2bE + cF = (a + 6b + 2c) V - 12b - 4c`. This equals 12 for every V exactly when `a + 6b + 2c = 0` and
+`-12b - 4c = 12`. Writing c = e, that gives `b = -(1 + e/3)` and `a = 6`. So the only Euler-valid linear face charges on a
+triangulation are the one-parameter family in the table. e = 0 is the current charge.
+
+The two "balanced" rows from the brief put 0 on every face, because every face is a triangle. Their vertex charge is
+the current one, or its mirror. **They are the current LP, not a new one.**
+
+### 18.2 How each charge maps onto the rule shapes (y, g, h, M, r, x)
+
+- **Euler family.** `c_e - c_0` is the fixed, conservative, local flow `T_e`: every vertex sends e/3 to each of its d
+  incident faces, and each face receives 3 * e/3 = e.
+- **5-5-5 shared charge.** `T_sigma` is the flow in which each corner of a 5-5-5 face sends sigma to that face.
+
+The existing rule shapes have no face variables. A face therefore has to dispose of its charge through a fixed rule. If
+faces are transit elements that must end at 0, as a 6 does under its cons row (this is the only reading that keeps the
+meaning of t, see 18.4), the only fixed rule available is to hand back what the face received: e/3, or sigma, to each
+corner. **The composite flow is then T = 0, every row of the LP is unchanged, and t\* is unchanged. This is a pure
+re-basing, and it is null by construction.**
+
+### 18.3 Equivalence check when face rules are free (a "new LP" only in form)
+
+Suppose instead that each face gets free rules phi_F(corner) >= 0, with transit (sum of phi = what the face
+received). Composed with T, these rules redistribute charge among the three corners of F. Those corners are pairwise
+adjacent, so the redistribution is a sum of edge transfers along F's three edges, keyed by what F sees.
+
+The existing columns already span the following, at any key no finer than the column's own key (a coarser key just
+ties finer columns together):
+
+- five -> big: y
+- five -> 6: g
+- 6 -> big: h
+- big <-> big: x (both ways, cap 3)
+- five <-> five on a 5-5-5 face: f (stage 17, `face5`, null)
+
+The face rules add only these:
+
+- (a) the reverse directions big -> five, 6 -> five and big -> 6;
+- (b) five <-> five on faces that are not 5-5-5, and 6 <-> 6;
+- (c) keys finer than the existing ones.
+
+**Screen for (a).** A reverse column with the same key as its forward column has every coefficient negated, so its
+reduced cost is `-rc(forward)`. It can beat a cert only if `rc(forward) > 0` strictly. We computed this on cert_st20xL
+(16/101, argsA55) with lowerR2's own row reconstruction (s22d/probe22.py, s22d/probe22.log):
+
+- Every y (20), g (48) and h (42) column the cert touches has rc exactly 0. A column the cert does not touch has rc 0
+  as well.
+- So no reverse column is profitable. The cert remains a valid dual for the LP with (a) added, which gives t >= 16/101.
+- The current primal (all face rules at the identity) is still feasible, which gives t <= 16/101.
+- **So t\* = 16/101 exactly with (a) added.**
+
+(b) and (c) are not re-basings. (b) is a new routing channel (5 -> 6 -> 6 -> big, or 5 -> 5 off the face). (c) is
+key refinement, the axis that stages 18 and 20 tested. Neither follows from the initial charge, and neither is
+screened here.
+
+Side observation: two r columns and three M columns have rc > 0. Reversing M is meaningless. Reversing r would be a
+distance-2 transfer from the hat big to the five, which is not a face rule. It is out of scope here, and it is recorded
+in FINDINGS stage 22.
+
+### 18.4 Faces as charge holders (why "end at 0" is the right reading)
+
+If a face may end with charge <= t instead of 0, there are F = 2V - 4 extra holders, each absorbing up to t. The value
+of t then measures something different.
+
+Example: under the 5-5-5 shared charge with the face as a holder, sigma <= t/3, and a sender row becomes
+`sends + t (1 + k/3) >= 1`. The old cert stays dual-feasible after rescaling by
+`kappa = 1 + (sum over sender rows of w k)/3 = 1069/909`. This gives t >= 144/1069 = 0.1347 (16 of the 25 sender rows
+have k = 1).
+
+That lower number is a normalisation effect, not progress:
+
+- At t <= 0 a face can hold at most 0, so sigma <= 0 and the fives only gain charge.
+- Hence any solution with t <= 0 under this variant yields one for the current LP with sigma = 0.
+- So the variant can never prove unavoidability where the current LP cannot.
+
+### 18.5 Probe on s19e/family.json (arithmetic only)
+
+- **Rows checked.**
+  - For all 13 face-family receivers and all 26 sender contexts, the Euler family (any e) changes neither the receiver
+    cap `d - 6` nor the sender RHS 1. This identity is asserted in probe22.py.
+  - 18 of the 26 contexts survive exact admissibility, and each has exactly one 5-5-5 face (k = 1). The 5-5-5 transit
+    variant leaves those rows unchanged too.
+- **The face 7.** Its row 7665566/6765766 (dual 0.092 in cert_st20xL) is therefore the same row, tight at load
+  `r 0.023 + y 0.714 + y 0.421 = 1 + 16/101`. The face 7 ends at +16/101 in the section 1 convention, which is -16/101
+  in the balanced one: it still goes negative.
+- **Kill line.** The face family still binds at exactly 16/101, which is >= the current t\*, so the kill line is met.
