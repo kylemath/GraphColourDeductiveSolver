@@ -1237,3 +1237,53 @@ The LP test loses three kills:
 - p11 and p61: rsst052 needs w_{j±3}.
 
 It keeps p21 = 5 and p51 ∈ {5, 6}, the st15f blocking case.
+
+**Unknown-vertex rule (Long Table soundness point; part of 14′, testable).** An unknown vertex must never satisfy a
+pattern constraint.
+
+- *Unknown* means any vertex the term cannot read:
+  - link vertices outside w_{j-2..j+2};
+  - apexes other than s_{j-2..j+1};
+  - every private other than w_j's;
+  - u itself when U = 9 (d >= 9).
+- A configuration counts as matched only when every vertex it constrains is inside the readable window. A constrained
+  vertex is an interior vertex of the configuration, i.e. one with an exact degree.
+- If any constrained vertex would sit on an unknown, there is no match. This holds whatever the unknown's code, including
+  open-ended letters (>= 7, 9 = >= 9, big).
+- Implementation: `s16_filter.local(..., unk, strict=True)` rejects any embedding with an image in the unknown set before
+  reading requirements. The code `unk` is used both as the unknown's degree and as the structure letter of unknown link
+  vertices.
+- With code 99 the old matcher was already strict, because grow.embeddings needs an exact degree and 99 never equals a
+  configuration degree.
+
+**Test (check 4, LP-visible projection, binder 7665566/6675666).** The md5 is over the sorted survivor list, one 6-letter
+case per line.
+
+| Unknown code | Matcher | Survivors | Survivor-set md5 |
+|---|---|---|---|
+| 99 | strict | 7,500 | 9b4d02bace5786cbf0f6c5c7c7434dbc |
+| 5 | strict | 7,500 | 9b4d02bace5786cbf0f6c5c7c7434dbc |
+| 7 | strict | 7,500 | 9b4d02bace5786cbf0f6c5c7c7434dbc |
+| 99 | non-strict, as used for the s16ap kill tables | 7,500 | 9b4d02bace5786cbf0f6c5c7c7434dbc |
+| 7 | non-strict | 7,500 | 9b4d02bace5786cbf0f6c5c7c7434dbc |
+| 5 | non-strict | 3,072 | f2582478b7d13efd37762057aad6cb01 |
+
+The non-strict code-5 row is the failure the rule exists to prevent. Commands:
+
+```
+python3 s16_check4.py EXDIR TD TC unk=CODE strict=1|0
+python3 s16_filter.py ... unk=5 strict=1
+```
+
+The second command regenerates the full tables as `s16ap/kunk5_U*`, which are compared entry by entry with
+`s16ap/kill6_U*.npy`.
+
+The full tables were regenerated with strict matching and unknowns coded 5 (`s16ap/kunk5_U*.npy`) and coded 7
+(`s16ap/kunk7_U*.npy`). Both are byte-identical to the tables the st16ap solve uses:
+
+| Table | md5 |
+|---|---|
+| U7 | 27a64538719969f93aa731b25c011911 |
+| U8 = U9 | 6dc44bbaae0e7a9a9136f191a5aa6ce8 |
+
+The filter does not read unknowns, so st16ap stands.

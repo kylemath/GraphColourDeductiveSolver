@@ -496,3 +496,8 @@ Not read: Studio's Job 31 spec.
   - Kill line (b): the min moves to the survivor context (all privates >= 6 and p51 >= 7).
   - Baseline: the same engine without filt16 on argsA52, run alongside.
 - Runs: cmd_st16ap.sh; engine snap/st16ap (md5 snap/st16ap_md5.txt).
+- Unknown-vertex check (Long Table): **PASS.** The rule is in RELAY_SPEC 14′.
+  - Check 4 LP projection, strict matcher, unknowns coded 99, 5 and 7: 7,500 / 7,500 / 7,500, all the same set (md5 9b4d02bace5786cbf0f6c5c7c7434dbc).
+  - The non-strict matcher at code 5 gives 3,072 (md5 f2582478...), which shows why the rule is needed. At codes 99 and 7 the non-strict matcher already gives 7,500, the same set.
+  - Full kill tables regenerated strict at codes 5 and 7 are identical to s16ap/kill6 (U7 27a64538..., U8 = U9 6dc44bba...). st16ap is not void.
+  - Strict matching is now the default in s16_filter.py (md5 1bd72e9d...); its output is identical to the snapshot.

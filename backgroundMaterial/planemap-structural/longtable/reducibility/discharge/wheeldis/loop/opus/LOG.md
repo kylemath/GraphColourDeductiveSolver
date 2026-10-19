@@ -377,3 +377,9 @@ our agent R and have no output from it.
   - The projection that LP terms can see (window w_{j+-2}, s_{j-2..j+1}) gives 7,500. That is a weaker filter, and still conservative. It keeps p51 = 5, p51 = 6 and p21 = 5.
   - Filter off reproduces 23/134 (st15f), and argsA52 gives 6/35 (st16b0).
   - The filtered solve st16ap is at LP 6/37, but it is unconverged and unchecked, so it is not a bound.
+
+## Stage 16 A′: unknown-vertex soundness check (Long Table's request), 19 Oct
+- Rule (now in RELAY_SPEC §14′): a pattern counts as matched only when every vertex it constrains lies inside the readable window. If any constrained vertex is unknown, there is no match.
+- Check 4 strict (LP-visible projection), unknowns coded 99, 5 and 7: 7,500 survivors in every case, same set md5 9b4d02ba. Control: the non-strict matcher at code 5 gives 3,072 (f2582478), so the rule bites.
+- Kill tables regenerated strict, with unknowns at 5 and at 7: byte-identical to the tables st16ap uses (U7 27a64538, U8 = U9 6dc44bba). st16ap stands.
+- st16ap is at iteration 36 with LP t = 6/37. This is interim only: d=7 separation is still adding rows (max violation about 0.08).

@@ -14,13 +14,14 @@ for j in range(D):
 kill = {}                        # slot -> set of killed values
 for j in sorted({j for j, _ in slots}):
     win = tuple(LK[(j + o) % D] for o in (-2, -1, 1, 2)); s = [SV[(j + o) % D] for o in (-2, -1, 0, 1)]
-    VAR, out = local(C, D, win, LK[j])
+    VAR, out = local(C, D, win, LK[j], unk=int(OPT.get('unk', '99')), strict=OPT.get('strict', '1') == '1')
     for key, names in out.items():
         if all(a == 0 or a == b for a, b in zip(key[:4], s)):
             for t, val in enumerate(key[4:]):
                 if val: kill.setdefault((j, t + 1), {}).setdefault(val, set()).update(names)
 for sl in slots: print('slot p%d%d' % sl, {v: sorted(n)[:4] for v, n in sorted(kill.get(sl, {}).items())})
-LET = (5, 6, 7, 8, 9); n = 0
+LET = (5, 6, 7, 8, 9); n = 0; import hashlib; H = hashlib.md5()
 for case in itertools.product(LET, repeat=len(slots)):
-    if not any(v in kill.get(sl, {}) for sl, v in zip(slots, case)): n += 1
+    if not any(v in kill.get(sl, {}) for sl, v in zip(slots, case)): n += 1; H.update((''.join(map(str, case)) + '\n').encode())
+print('survivor set md5 %s' % H.hexdigest())
 print('survivors %d of %d' % (n, 5 ** len(slots)))

@@ -56,20 +56,26 @@ def build(D, LK):
     pa = {x: {name[y] for y in adj[inv[x]] if y in name} for x in inv}
     pf = {frozenset(name[y] for y in f) for f in L.tris if all(y in name for y in f)}
     return list(inv), pa, pf
-def local(C, U, win, wj):
+def local(C, U, win, wj, unk=NEVER, strict=True):
     """win = (a, b, e, f) letters of w_{j-2}, w_{j-1}, w_{j+1}, w_{j+2}; w_j = wj. Returns {req tuple over VAR: [names]}"""
     D = U if U < 9 else 10; j = 2
     LK = [9] * D; a, b, e, f = win
     for k, l in ((0, a), (1, b), (2, wj), (3, e), (4, f)): LK[k] = l
-    P, pa, pf = build(D, LK)
+    LKs = [l if (k <= 4 or unk == NEVER) else unk for k, l in enumerate(LK)]   # structure letters of unknown link vertices
+    P, pa, pf = build(D, LKs)
+    UNKV = set()                                                               # unknown vertices: never part of a match
     fd = {('u',): U if U < 9 else NEVER}
-    for i in range(D): fd[('w', i)] = LK[i] if (i <= 4 and LK[i] < 9) else NEVER
+    if U >= 9: UNKV.add(('u',))
+    for i in range(D):
+        fd[('w', i)] = LK[i] if (i <= 4 and LK[i] < 9) else NEVER
+        if i > 4: fd[('w', i)] = unk; UNKV.add(('w', i))
     VAR = [('s', 0), ('s', 1), ('s', 2), ('s', 3)] + sorted(x for x in P if x[0] == 'p' and x[1] == j)
     for x in P:
-        if x[0] in ('s', 'p') and x not in VAR: fd[x] = NEVER
+        if x[0] in ('s', 'p') and x not in VAR: fd[x] = unk; UNKV.add(x)
     out = collections.defaultdict(list)
     for c in C:
         for e_ in grow.embeddings(c, P, pa, pf, fd):
+            if strict and any(v in UNKV for u, v in e_): continue   # RELAY_SPEC 14': a constrained vertex on an unknown = no match
             req = dict((v, c[3][u]) for u, v in e_ if v not in fd)
             if not any(req.get(x) for x in VAR[4:]): continue      # must use a private of w_j
             if sum(1 for x in VAR[4:] if req.get(x)) > 1: continue   # single-private kills only
@@ -82,7 +88,7 @@ if __name__ == '__main__':
     res = {}; t0 = time.time(); n = 0
     for U in Us:
         for win in wins:
-            VAR, out = local(C, U, win, wj); n += 1
+            VAR, out = local(C, U, win, wj, unk=int(OPTS.get('unk', '99')), strict=OPTS.get('strict', '1') == '1'); n += 1
             if out: res['%d %s' % (U, ''.join(map(str, win)))] = {''.join(str(k) for k in key): sorted(set(v))[:6] for key, v in out.items()}
             if n % 100 == 0: print('  %d windows %.0fs' % (n, time.time() - t0), flush=True)
     json.dump({'wj': wj, 'VAR': [list(map(str, x)) for x in VAR], 'kills': res}, open(OUT, 'w'))
