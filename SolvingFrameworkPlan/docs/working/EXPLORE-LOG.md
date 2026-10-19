@@ -34,6 +34,12 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   7765566, before part 2. Same method and kill line. The queue now reads its rows from `loop/k47/rows51.txt`
   (q51f.sh), so later additions need no restart. Guess: 8665566 has the 5-5-5 face (w3, w4, s3) under an 8, so 40%.
   The d = 8 row has four 5s in s and two in its link, so it dies at ring <= 14 (70%).
+- **Part 1f (pre-registered 05:39Z; Long Table, 05:39Z).** On 880d25c6 (Studio admitted r10b: 841 D / 633 C, dcount
+  15,881), s21c shows the d = 10 row has left the dual. Its top receiver, 7765566/6575666, moves up to run right after
+  7655667. Two new d = 9 rows go last, before part 2: 765556565/566956665 (canonical 555656576/695666556) and
+  655665556/666559575 (canonical 555665566/595566657). Both have one s letter 9, which win45 leaves out of windows.
+  Same method and kill line. Guess: both die at ring <= 14, since they have a 555 run in the link like the d = 9 rows
+  that died (60% each).
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
