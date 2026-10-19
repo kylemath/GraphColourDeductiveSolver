@@ -80,6 +80,14 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18:15Z 19 Oct: Six sprint routes were set (Kyle: "plan sprint routes to jump over obstacles").
+  - Studio: deeper kills.
+  - Explore: split-and-kill by second-ring degrees.
+  - Opus: conditional floor, then a whole-face rule.
+  - Long Table: borrowed channel. This finds which published RSST rule pays the 7 with a 5-5-5 face and recasts it as our own column family for Opus to price. It is an idea source only, per the 18 Oct decision. Output goes to BORROWED-CHANNEL-7FACE.md.
+  - Team B: own-rules race (details sealed).
+  - Long Table: claim glue. This is the Lean module reducibility + Unavoidable R -> 4-colourable, with output to CLAIM-GLUE.md.
+  Long Table started both of its routes as background workers.
 - 18:10Z 19 Oct: FULL PUSH on K=2 before the gate. Kyle (18:08Z): "don't hold back, we've never been closer". The narrow wording is the fallback only.
   - Studio queue reordered so the binders go first: face 7665566 remainder, then 7766556/6576576 remainder, then the d10 ring 17-18 windows.
   - Explore: pre-empts 7766556/6567566 (not a binder) and starts the d10 rows now.
