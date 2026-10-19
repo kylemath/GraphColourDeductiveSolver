@@ -52,6 +52,22 @@ okD = [n for n in okD if n not in SND]; okC = [n for n in okC if n not in SND]
 if SND:
     with open(os.path.join(HERE, 'out', 'job30', 'sender_names_held.log'), 'a') as _sf:
         for n in SND: _sf.write('%s held (two-engine %s; centre degree < 7: sender context, not a receiver pattern)\n' % (n, 'D' if n in dD and n in kD else 'C'))
+# ring-merge hold (CGLUE-SCOPE a7557788, Long Table 19:27Z): a C entry whose recorded X has a connected component holding
+# two or more ring vertices R* merges ring vertices under contraction (the case Job 21 refused); held out of k3x, logged
+def ringmerge(x):
+    par = {}
+    def fd(a):
+        while par.setdefault(a, a) != a: a = par[a]
+        return a
+    for e in x:
+        a, b = e.split('-'); par[fd(a)] = fd(b)
+    comp = collections.Counter(fd(v) for v in par if v.startswith('R'))
+    return max(comp.values(), default=0) >= 2
+RM = sorted(n for n in okC if ringmerge(cC[n][0]))
+okC = [n for n in okC if n not in RM]
+if RM:
+    with open(os.path.join(HERE, 'out', 'job30', 'c_ringmerge_held.log'), 'a') as _rf:
+        for n in RM: _rf.write('%s held (two-engine C; X=%s has a component with two ring vertices)\n' % (n, '{' + ','.join(sorted(cC[n][0])) + '}'))
 okD = [n for n in okD if n not in L9]; okC = [n for n in okC if n not in L9]
 if L9:
     with open(os.path.join(HERE, 'out', 'job30', 'letter9_excluded.log'), 'a') as _lf:
@@ -63,4 +79,5 @@ print('files %d; D both engines %d (dfast-only %d, kc-only %d); C both engines s
     len(files), len(okD), len(set(dD) - kD), len(kD - set(dD)), len(okC), len(mism), ' '.join(mism[:5]),
     len(set(cC) ^ set(kC))))
 print('sender-context names held out of k3x: %d (out/job30/sender_names_held.log)' % len(SND))
+print('ring-merge hold: %d C entries with an X component on two ring vertices held (out/job30/c_ringmerge_held.log): %s' % (len(RM), ' '.join(RM)))
 print('letter-9 rule: %d two-engine names with a link/s 9 excluded (logged in out/job30/letter9_excluded.log)' % len(L9))

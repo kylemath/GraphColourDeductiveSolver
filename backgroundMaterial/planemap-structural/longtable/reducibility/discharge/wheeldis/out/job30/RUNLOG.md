@@ -226,3 +226,13 @@ not new to F.
   Default glob on 00ebcd02: **1,990 D / 852 C** (+11 D, +11 C, exactly the 22 r52k names, 0 lost). Drop44 0,
   letter-9 0, centre-degree < 7 held 0. Matcher (the 4 minimal names): 293 frames, 0 mismatches. dcount
   (argsA44_local): **17,030** distinct parsed D (17,364 names), +11.
+- ~20:08Z 19 Oct: ring-merge hold (CGLUE-SCOPE a7557788, Long Table 19:27Z / 20:05Z). New twoeng guard: a C entry
+  whose recorded X has a connected component with >= 2 ring vertices is held out of k3x and logged to
+  out/job30/c_ringmerge_held.log. Of 852 C it holds exactly the 3 named: f7_..56757_...5... (X={R1-I0,I0-I1,I0-I4,
+  R8-I4}: R1 ~ R8), f7_..65757_..55... (X={R0-I0,I0-I2,I0-I4,R5-I4}: R0 ~ R5), f7_..65757_..65... (X={R0-I0,I0-I2,
+  I0-I4,R6-I4}: R0 ~ R6). Head on 7360eb92: **1,990 D / 849 C** (-3 C), D byte-identical; dcount (argsA44_local)
+  **17,030** (C entries are not counted). Dependency (out/job30/ringmerge_dep.py, .out; registry name patterns only,
+  all 14 dihedral images, wlp3's loader read-only): on argsA59_pinned (0125c46b) and on this head, the two
+  f7_..65757_ entries are fully covered by other entries (0 sole arrangements); f7_..56757_...5... is the only match
+  for 185,957 of its 390,625 arrangements (e.g. 5656757/5575667): it is load-bearing at pattern level, and the LP
+  re-solve decides whether t* moves.
