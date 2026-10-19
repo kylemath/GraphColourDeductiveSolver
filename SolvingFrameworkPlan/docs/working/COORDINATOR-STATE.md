@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19 Oct 11:40Z: fam51 closed (e367efab), kill line met: the family survives as a pattern. Its three heaviest senders (55667 ×3, dual 0.101/0.097/0.058) are registry-dead in every case, so stage 21 should remove them. 55769 [0,0,1,0,0|0] survives at its all-6 case: 142 windows, all at ring ≤ 14, no D/C. 8665566 face row dies at ring 14 (C, not via apex). Approved: a 26-sender survey sent to Opus, then a one-ring-out census of 55769 (2 h cap), held if stage 21 drops its dual weight.
 - 19 Oct 11:23Z: Studio admitted r7h: registry 0125c46b, 1,897 D / 838 C, dcount 16,937; matcher 0/63 on the minimal ring-14 window. This is the production snapshot for stage 21.
 - 19 Oct 11:22Z: The d=7 face row 7676556/7759565 is NOT R*-like. It dies at ring 14 (D, f7_5567676_..5..5., not through the face triangle); 612 windows, 0 mismatches; 3 f-names sent as r7h_kills*. This is a family.json receiver with dual 0.055–0.058, so 2 of the 13 receivers are now dead. Explore continues with 7655566, then 8665566, then fam51.
 - 19 Oct 11:15Z: Studio admitted r9e: registry 03c34729, 1,894 D / 838 C, dcount 16,934; all checks 0.
