@@ -69,13 +69,13 @@ variable {mt : Array (Array (Array Nat))}
 /-- **C1.** Every good bit of `runGoodRefT` is a `GoodT` code (`runRef_sound`'s invariant, with the
 counting part dropped). -/
 theorem runGoodRefT_sound (cf : Conf) :
-    ∀ j, (runGoodRefT mt cf)[j]! = true → GoodT mt cf (ringColourings cf.r)[j]! := by
+    ∀ j : Nat, (runGoodRefT mt cf)[j]! = true → GoodT mt cf (ringColourings cf.r)[j]! := by
   have hI := mkIndex_spec (ringColourings cf.r)
   unfold runGoodRefT
   refine forIn_range_bind 0 ((ringColourings cf.r).size + 1) _ _ _
     (fun _ (st : Array Bool × Nat × Array Nat × Nat) =>
       OuterInv mt cf (ringColourings cf.r) st.1 st.2.1 st.2.2.1)
-    (fun (res : Array Bool) => ∀ j, res[j]! = true → GoodT mt cf (ringColourings cf.r)[j]!)
+    (fun (res : Array Bool) => ∀ j : Nat, res[j]! = true → GoodT mt cf (ringColourings cf.r)[j]!)
     ?_ (fun x hx => hx.2.1) ?_
   · refine ⟨by simp, fun j hj => ?_, Nat.le_refl _, ?_⟩
     · by_cases hjs : j < (ringColourings cf.r).size
@@ -187,26 +187,24 @@ theorem extCAux_complete (cf : Conf) (eqR eqI : List (Nat × Nat)) (k : Nat) (la
         col k t == lam cols.size else col k t != lam cols.size) = true := by
       rw [Array.all_eq_true]
       intro i hi
-      dsimp only
       have ht := hR cols.size ha _ (Array.getElem_mem hi)
-      cases hc : eqR.contains (cf.ringAdj[cols.size]![i], cols.size)
-      · exact cond_ne_true hc (ht.2 hc)
+      rcases Bool.eq_false_or_eq_true (eqR.contains (cf.ringAdj[cols.size]![i], cols.size)) with hc | hc
       · exact cond_eq_true hc (ht.1 hc)
+      · exact cond_ne_true hc (ht.2 hc)
     have hint : (cf.intAdj[cols.size]!).all (fun b => b >= cols.size ||
         (if eqI.contains (b, cols.size) || eqI.contains (cols.size, b) then
           cols[b]! == lam cols.size else cols[b]! != lam cols.size)) = true := by
       rw [Array.all_eq_true]
       intro i hi
-      dsimp only
       rw [Bool.or_eq_true]
       by_cases hb : cf.intAdj[cols.size]![i] < cols.size
       · right
         have ht := hI cols.size ha _ (Array.getElem_mem hi) hb
         rw [hcols _ hb]
-        cases hc : (eqI.contains (cf.intAdj[cols.size]![i], cols.size) ||
-            eqI.contains (cols.size, cf.intAdj[cols.size]![i]))
-        · exact cond_ne_true hc (ht.2 hc)
+        rcases Bool.eq_false_or_eq_true (eqI.contains (cf.intAdj[cols.size]![i], cols.size) ||
+            eqI.contains (cols.size, cf.intAdj[cols.size]![i])) with hc | hc
         · exact cond_eq_true hc (ht.1 hc)
+        · exact cond_ne_true hc (ht.2 hc)
       · left; exact decide_eq_true (by omega)
     have hx : lam cols.size ∈ [0, 1, 2, 3] := by
       rcases (by have := hlt cols.size; omega :
@@ -260,11 +258,13 @@ theorem extCAux_canon (cf : Conf) (eqR eqI : List (ℕ × ℕ))
   have hcol : ∀ t, t < cf.r →
       col (canon cf.r (code (ringSeq ρ c) cf.r)) t = (g (c (ρ t))).val := by
     intro t ht
-    rw [heq, col_code _ (fun t => (g _).isLt) _ _ ht]
-    have : (⟨ringSeq ρ c t % 4, Nat.mod_lt _ (by decide)⟩ : Fin 4) = c (ρ t) :=
+    have e1 : (⟨ringSeq ρ c t % 4, Nat.mod_lt _ (by decide)⟩ : Fin 4) = c (ρ t) :=
       Fin.ext (Nat.mod_eq_of_lt (c (ρ t)).isLt)
-    rw [this]
-  apply CG.extCAux_complete cf eqR eqI _ (CG.lamN fun a => g (lam a)) (CG.lamN_lt _)
+    rw [heq, col_code (fun t => (g ⟨ringSeq ρ c t % 4, Nat.mod_lt _ (by decide)⟩).val)
+      (fun _ => Fin.isLt _) cf.r t ht]
+    exact congrArg (fun x => (g x).val) e1
+  refine CG.extCAux_complete cf eqR eqI _ (CG.lamN fun a => g (lam a)) (CG.lamN_lt _) ?_ ?_
+    cf.m #[] (by simp) (by simp)
   · intro a ha t ht
     have hx := hX.1 ⟨a, ha⟩ t (decide_eq_true ht)
     rw [hcol t (hrr a ha t ht), CG.lamN_of_lt _ ha]
@@ -276,7 +276,7 @@ theorem extCAux_canon (cf : Conf) (eqR eqI : List (ℕ × ℕ))
     exact ⟨fun h => congrArg (fun x => (g x).val) (hx.1 h),
       fun h e => hx.2 h (hg (Fin.ext e))⟩
 
-variable {r m : ℕ} {ι : Fin m → Fin n} {intAdj : Fin m → Fin m → Bool} {ringAdj : Fin m → ℕ → Bool}
+variable {m : ℕ}
 
 /-- **C3, the D tail from a good code.** If the canonical ring code of a colouring of `G` (proper
 off the hole) is in the D-closure `GoodT`, then `T` is 4-colourable. (`ConfigOccW.colorable_of_dReducibleT`
