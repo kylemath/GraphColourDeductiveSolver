@@ -1,0 +1,18 @@
+r2 666666 ring2 order s6 p01 p02 s0 p11 s1 p21 s2 s3 s4 p51 s5 p61
+  big at r13 (touches s2,s3,s4) = 7: 29 survivors, max sum(6-d) 2, witness 56665566666667666665
+  big at r13 (touches s2,s3,s4) = 8: 29 survivors, max sum(6-d) 1, witness 56665566666668666665
+  big at r13 (touches s2,s3,s4) = >=9: 29 survivors, max sum(6-d) 0, witness 56665566666669666665
+  total one-big survivors 87
+r2 666655 ring2 order s6 p01 p02 s0 p11 s1 p21 s2 s3 s4 p51 s5 p61
+  total one-big survivors 0
+r2 666656 ring2 order s6 p01 p02 s0 p11 s1 p21 s2 s3 s4 p51 s5 p61
+  big at r11 (touches p21,s2) = 7: 13 survivors, max sum(6-d) 3, witness 6565656666676656666
+  big at r11 (touches p21,s2) = 8: 13 survivors, max sum(6-d) 2, witness 6565656666686656666
+  big at r11 (touches p21,s2) = >=9: 13 survivors, max sum(6-d) 1, witness 6565656666696656666
+  big at r12 (touches s2) = 7: 13 survivors, max sum(6-d) 3, witness 6565656666667656666
+  big at r12 (touches s2) = 8: 13 survivors, max sum(6-d) 2, witness 6565656666668656666
+  big at r12 (touches s2) = >=9: 13 survivors, max sum(6-d) 1, witness 6565656666669656666
+  big at r13 (touches s2,s3,s4) = 7: 26 survivors, max sum(6-d) 3, witness 6565656666666756666
+  big at r13 (touches s2,s3,s4) = 8: 26 survivors, max sum(6-d) 2, witness 6565656666666856666
+  big at r13 (touches s2,s3,s4) = >=9: 26 survivors, max sum(6-d) 1, witness 6565656666666956666
+  total one-big survivors 156

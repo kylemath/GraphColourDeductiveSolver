@@ -531,3 +531,17 @@ our agent R and have no output from it.
 - s30t (T1, D only, all C removed): UPPER INFEASIBLE. 2,231,823 canonical rows break at d=7..10, with worst excess 0.71 (9556665/6855557).
   - 1989 of a 2000-row sample are repaired by cpat C entries, chiefly f10_/f9_/f8_ and f7_...5566_.....5..
   - Conclusion: K=2 unavoidability needs C (CGlue), and the hypothesis is confirmed.
+
+## s26r: ball census around the face binder 7665566/6675676 (0125c46b, 3,317-config kill set), 19 Oct ~21Z
+- Survivors, strict §14′ matching:
+  - radius 2: 6,144 of 15,625;
+  - radius 3: about 4.8e22 of 6.9e22, counted exactly by frontier DP with 88 controls and 0 mismatches.
+  - Every r2 survivor extends to r3.
+- With all surroundings 5/6: 3 survive at r2 and 0 at r3. So the registry forces an extra big within distance 3 of u.
+- Tight case: privates 666666 with exactly one big in ring 3. That big must be t, the ring-3 vertex next to s2, s3 and s4, and adjacent to the face five s3. There are 29 survivors each for t = 7, 8 and ≥9, listed in tight29.txt and onebig.log.
+  - All-6 except t = 7 gives ball sum Σ(6−d) = −2, i.e. spare capacity.
+  - So the ball holds enough charge. The obstruction is sharing: t, s2, s5 and u serve other fives too.
+- Ball-sum maximum: +1 at r2 (p51 = p61 = 5) and +7 at r3 (8-heavy ring 2 with boundary fives).
+- No ball-sum test can rule out radius ≥ 3 rules.
+- Cone criterion: a flat-lattice cone with no registry configuration and total charge in [1,5] would kill every local rule. 3 SA searches found none; the best had 4 hits. Not exhaustive.
+- Verdict: inconclusive, which supports the rule-side route. Rules should let t or s3 see past ring 3.
