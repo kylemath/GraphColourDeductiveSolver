@@ -255,3 +255,10 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   - V: confirmed rebuild V = min over candV of v, with missing v as 0. st15_check now also compares every stored
     V entry [sigV, LP value, min]: the rebuilt min must equal the stored min, and the LP value must be <= the min
     (mrowV).
+
+## Second engine for s18 (t* = 1/5 on b88ed8b7 + r_5..r_8; 05985316), ~02:15Z 19 Oct
+- Args: argsA51 + rpatD, with paths mapped, equals argsA44_local with k3x pinned to b88ed8b7. The 10 shipped files
+  are byte-identical.
+- dcount: 15,844 D (16,178 names), identical to Opus's file by file (0 of 229 differ).
+- feascheck: **FEASIBLE**, 0 violated at d = 7..15 plus the DP tail. sendercheck: 342/342.
+- lowercheck: the same 3-row dual as s17, exactly **t >= 1/5**. **PASS.**
