@@ -25,6 +25,10 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   Same method and kill line. Two rows carry an s letter 9 (degree >= 9). win45.py now leaves letter-9 vertices out of
   windows, since a 9 is never exact; no earlier swept row had a 9. Guess: d = 9 dies at ring <= 14. The two d = 7 rows
   with a 9 at s3 die at ring <= 14 (both have a 556 or 555 run next to a 5 in s), 60%.
+- **Part 1d (pre-registered 02:47Z; Long Table, 02:46Z): s19r's top binder d = 7 7765566/6575666** (canonical
+  5566776/5666657, new), last in the binder list, before part 2. Same method and kill line. It has the 5-5-5 face
+  (w3, w4, s3) under two 7s, one ring from the binder, so I give it 40%. d = 10 6565656565 already runs first after
+  part 1, as asked.
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
