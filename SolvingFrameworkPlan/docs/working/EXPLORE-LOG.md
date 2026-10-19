@@ -1,5 +1,27 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 52 (19 Oct 2026, 12:44Z-): H-F18, do the surviving face receivers die at ring 17-18?
+
+**Pre-registered 12:44Z, before any engine run on these targets.** Gap G2. Long Table, 12:41Z: Opus's stage 21 is
+null (the sender weight moves to H0-big siblings), so the 55769 census is dropped as moot (stopped 12:41Z after 1,940
+windows: registry covers 51.0% of its 3 x 5^12 fillings, plus 2 new D windows at ring 8; not a result). New priority:
+ring 17-18 reducibility of the surviving face receivers, split with Studio by whole rows.
+- **Rows** (13, no two are mirrors): 7665566/6765766 (cert_s22hL dual 0.112, the only one with s22hL weight), then
+  by family.json dual 7766556/6576576 (0.104), 7766556/6567566 (0.101), 86555665/56586665 (0.016), 86555665/56576665
+  (0.013), 85586556/66656565 (0.008), 8655567/5685756 (0.006), 8765556/6575866 (0.006), and the dual-0 rows
+  7655666/6756666, 7655667/6756656, 7665566/6675666 (R*-like to ring 16), 7765566/6575666, 7655566/6759676 (R*-like
+  to ring 14).
+- **Split.** Explore: 7665566/6765766, then 7766556/6576576 and 7766556/6567566 (2 h each, `loop/k47/q52row.sh`).
+  Studio: the other ten, whole rows, 6 h each, from `loop/k47/win52_<row>_todo.txt` (the row's ring <= 18 windows
+  not yet run).
+- **Method** as rounds 45-51: win45 windows of the row's 1.5-ball at ring <= 18 (letter-9 vertices never in a window),
+  kc -C (-t 600) with D re-run on dfast (ring <= 16) or dfast18, C on cfast --fixed with kc's conservative X.
+  Explore runs ring <= 16 with STOP=0, then ring 17-18 with STOP=1 (first two-engine kill closes the row).
+- **Kill line, per row:** no D/C window at ring <= 18 means the row survives. A row that hits its cap is reported
+  as undecided with the windows left. Rows are reported as they close; kills go the usual twoeng route.
+- **Guess:** the rows already R*-like to ring 16 stay R*-like at 17-18 (70% each). Of the unswept rows, at least
+  one dies at ring <= 16, as 7676556 and 8665566 did at 14 (65%).
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
