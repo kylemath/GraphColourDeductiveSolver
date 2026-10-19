@@ -192,3 +192,8 @@ not new to F.
   overlapping windows. 0 lost, 0 one-engine, 0 X mismatch. Drop44 guard 0. Letter-9 rule: 0 excluded. Matcher on all
   17 minimal windows: 1,248 frames, 0 mismatches. dcount (argsA44_local): **16,934** distinct parsed D (17,268 names),
   +475.
+- ~11:30Z 19 Oct: explore round 51 r7h, deded528 (loop/k47/r7h_kills*: kills of the d=7 face row 7676556/7759565; the
+  cfast file is empty, since there are no C names). Files fetched by path, byte-identical. r7h alone: 3 D, as explore's
+  run. Default glob on 03c34729: **1,897 D / 838 C** (+3 D: f7_5567676_..5..5., f7_5567676_5.5..5.,
+  f7_5567676_5.5..56; 0 lost). Drop44 guard 0. Letter-9 rule: 0 excluded. Matcher on the minimal window
+  f7_5567676_..5..5.: 63 frames, 0 mismatches. dcount (argsA44_local): **16,937** distinct parsed D (17,271 names), +3.
