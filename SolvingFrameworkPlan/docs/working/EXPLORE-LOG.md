@@ -68,6 +68,13 @@ None of these rows was swept before in any orientation (canon_key against every 
   21b1a8a1 (scratch copy): 2,443 D / 1,070 C, +8 D +10 C = exactly the 18, 0 lost, ring-merge / prefix / letter-9 0 new,
   regression byte-identical. This session pushes only to its own branch, so the result is `loop/k54/adm54d/` (k3x
   files + RUNLOG entry, 09a6a667) for Long Table to copy onto main.
+- **23:45Z, d8 76656566/56655565 (r54j, -2/75) dies at ring 11.** 40 two-engine kills at ring 11-14 (ring 11: 1 D;
+  12: 2 D; 13: 5 D, 2 C), 40 f-names (twoeng: 29 D, 11 C same X, all X interior-only, 0 mismatch). Minimal:
+  f8_...65656_...5556. (D, ring 11, m 10) and three at ring 14. Admission check on main fd5ac400 (`loop/k54/adm.py`):
+  2,472 D / 1,081 C, +40 exactly, 0 lost, guards 0 new; files in `loop/k54/adm54j/` (3b5fd9c2).
+- **23:46Z, d7 8658656/7665555 (r54l, -2/75) dies at ring 14 by r54b's four f-names** (`r54l_kills*` byte-identical to
+  `r54b_kills*`; the windows avoid s0, where the rows differ). Already on main. All three -2/75 rows of the 11/75 cert
+  are dead; the -1/75 rows start with d7 8666655/5677657 (face row).
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
