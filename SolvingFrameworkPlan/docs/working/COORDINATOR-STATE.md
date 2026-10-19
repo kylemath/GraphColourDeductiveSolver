@@ -80,6 +80,12 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19:30Z 19 Oct: CGlue scope delivered (a7557788, CGLUE-SCOPE.md).
+  - General CGlue in Lean is about 1.7-3.8k lines, 4-7 days, so not before the gate.
+  - K<=1 needs CGlue only for w66666. The 'star reducer' (about 400-700 lines) removes it. Assigned to Studio's Lean lane after k19. Kill line: 23 Oct 18:00Z.
+  - Three registry C entries merge two ring vertices (the case Job 21 refused). Studio holds them out of k3x.
+  - Opus runs T1 (st24b upper check with C excluded): it decides whether K=2 needs C at all.
+  - T2 (a three-colour-reach flag in cfast) is with Studio when idle.
 - 19:00Z 19 Oct: The claim-glue route is delivered (93797745, CLAIM-GLUE.md). four_color_of_unavoidable (R, Unavoidable R, CGlue R.C) is written with no sorry; the D-only variant needs no CGlue. It is not type-checked yet (Mathlib cache is blocked here), so it is sent to Studio to compile. TWO OPEN HYPOTHESES:
   - (1) Unavoidable R. This is the LP at t* <= 0 plus Job 26(iii).
   - (2) CGlue, the soundness of C-reducibility. It is NOT formalized, and the registry has 852 C entries. A zero claim before 24 Oct therefore needs either CGlue proved, or the C entries replaced by D, or the claim scoped as [E2] for the C part.
