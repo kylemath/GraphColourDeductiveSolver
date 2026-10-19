@@ -159,3 +159,8 @@ not new to F.
   path, byte-identical. r7e alone: 22 D / 11 C, as explore's run. Default glob: **837 D / 623 C** (+22 D, +11 C,
   0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher (12 names: all 4 minimal plus a sample): 783 frames,
   0 mismatches. dcount (argsA44_local): **15,877** distinct parsed D (16,211 names), +22.
+- ~05:20Z 19 Oct: explore 452045da (loop/k47/r10b_kills*: kills of the relay binder d=10 6565656565/6655666666).
+  5 files fetched by path, byte-identical. r10b alone: 4 D / 10 C, as explore's run. Default glob on the 8e008f86 set:
+  **841 D / 633 C** (+4 D, +10 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher on all 14 new names
+  (both minimal ones included): 1,402 frames, 0 mismatches. dcount (argsA44_local): **15,881** distinct parsed D
+  (16,215 names), +4. Explore reports no kills of 7655666/6756666 at ring <= 16, so there is nothing to admit for it.
