@@ -1304,7 +1304,7 @@ Written by Opus before any solve. Engine: `P_own_lp/s18d/` (prelay2.py = s17d's 
 `s21/argsA54.txt` (880d25c6) with `killtab=s21/f/kill/kill6`.
 
 **Transfer.** Let v be a five, and let x, y be consecutive spokes of v. Let b be the other apex of the edge xy, i.e. the
-hat of v between x and y. When b is big (letter >= 7), b sends `r[K] >= 0` to v. b and v are at distance 2; they are
+hat of v between x and y. When b is big (letter >= 7), v sends `r[K] >= 0` to b (five → big; corrected 19 Oct per Studio, as the rows were always written). b and v are at distance 2; they are
 the two tips of the diamond (v, x, b, y).
 
 **Key.** `K = min(side(x) + side(y), side(y) + side(x))`. For a shared spoke z of the diamond, let
@@ -1322,7 +1322,7 @@ side(z) = (5, c2(Z1), letter(Z2))     if z = 5
 ```
 
 with `c2` = small {5,6} → 0 / big → 1. The key does not contain b's letter: v sees b only as a class, and v
-receives only when that class is big.
+sends only when that class is big.
 
 **Both ends see K.** Rotation around a five z: (v, other spoke, b, Z1, Z2). Around a six z: (v, other spoke, b, Z1, Zo, Z2).
 
@@ -1357,14 +1357,14 @@ s_{i-1} from the wrong side: 15,898 mismatches (`s18d/orient_hat5_brokenkey.log`
 - **Window.** At position i the term is `W[., b, c, e, f, ., q, r = 5, s] += r[K]`. All of its slots are in the 9-slot
   window, so d = 7..17 stays exact. The jsep3 class table folds K's id into the class at r = 5 (solver only; the
   upper check, mode 0, does not use classes).
-- **Tail** d >= 18 (U = 9 window): the outflow is part of W9, so the relaxed DP and Karp bound it from above.
+- **Tail** d >= 18 (U = 9 window): the inflow r is part of W9's load, so the relaxed DP and Karp bound it from above.
 - cons2, mrowR2, mrowV and v are unchanged.
 
-**Soundness.** In G each transfer is one edge of charge, from b to v, under one key that both compute identically
-(table above). Every big b of G is covered by its receiver row (d <= 17 exhaustive, d >= 18 relaxed), which pays
-r[K] at every apex five. Every five v is covered by an enumerated sender row, because all hat classes are enumerated,
-which credits r[K] at every big hat. So the total charge is unchanged. upperR2 checks every sender row, every d = 7..17
-receiver exhaustively with the outflow in the window, conservation, and the tail. lowerR2 prices r through the
+**Soundness.** In G each transfer is one edge of charge, from v to b, under one key that both compute identically
+(table above). Every big b of G is covered by its receiver row (d <= 17 exhaustive, d >= 18 relaxed), which takes in
+r[K] from every apex five (load). Every five v is covered by an enumerated sender row, because all hat classes are enumerated,
+which pays out r[K] at every big hat. So the total charge is unchanged. upperR2 checks every sender row, every d = 7..17
+receiver exhaustively with the inflow in the window, conservation, and the tail. lowerR2 prices r through the
 generic ledger: r appears in sender rows (+) and receiver rows (+ load), so each r needs reduced cost >= 0. With hat5
 off the engine is s17d's. The class contains s21f's (r = 0), so t*(H5) <= s21f's t*.
 
