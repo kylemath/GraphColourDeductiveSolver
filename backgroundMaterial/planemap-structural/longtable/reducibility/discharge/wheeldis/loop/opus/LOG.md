@@ -520,3 +520,14 @@ our agent R and have no output from it.
 - Gap 1.2e-4, so the value is not exact. It moves down from 2/13 = 0.153846 by about 7e-4.
 - Binders (L dual): the face 7 7665566/6675676 at 0.214 dominates. The two d10 rows are gone (explore's r52j/r52k kills). Small mass sits on 8 76656566/56655565, 7 8658656/6675556 and 8 75765656/66565555.
 - Caveat: 7360eb92 still contains the three suspect ring-merge C entries. The validity check runs in s30h on 0125c46b−3 and 7a3857a0.
+
+## s30h / s30t: held-out C validity and T1 (87d218f6), 19 Oct ~21Z
+- s30h: sol_st24b stays UPPER FEASIBLE at 2/13 on 0125c46b minus the 3 ring-merge C entries (f7_..56757_...5..., f7_..65757_..55..., f7_..65757_..65...). It is also FEASIBLE on Studio's held head 7a3857a0.
+  - cert_st24bL is VALID on the −3 variant, so 2/13 is still exact on 0125c46b−3.
+  - Kill npy are unchanged (27a64538 / 6dc44bba).
+- s29 correction: sol_s29 is INFEASIBLE on 7a3857a0. 47 d=7 rows break (worst excess 0.0446, e.g. 7576565/6658557), and every one is matched only by f7_..56757_...5....
+  - So the s29 upper of 0.153144 rested on the suspect entry and is withdrawn.
+  - On 7a3857a0 we have 43/281 <= t* <= 2/13. cert_st24bL is INVALID there, because the r52k D entries kill 2 d10 rows; cert_s29L is VALID there.
+- s30t (T1, D only, all C removed): UPPER INFEASIBLE. 2,231,823 canonical rows break at d=7..10, with worst excess 0.71 (9556665/6855557).
+  - 1989 of a 2000-row sample are repaired by cpat C entries, chiefly f10_/f9_/f8_ and f7_...5566_.....5..
+  - Conclusion: K=2 unavoidability needs C (CGlue), and the hypothesis is confirmed.
