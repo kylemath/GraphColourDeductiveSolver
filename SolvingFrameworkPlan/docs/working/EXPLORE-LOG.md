@@ -51,6 +51,14 @@ rule should read.
   every row that has a 6 next to the face on the apex side. 7655566/6759676 has 7 and >= 9 there, so its apex = 5
   part is not covered. Second guess right (8 of 8 as predicted).
 
+- **19:28Z, 7665566/6765766 engine step, order changed (explore's call).** First run 18:29-19:27Z in the pre-registered
+  order (fewer slots, then more fives): 526 windows, 2 kills, both one five-slot windows: g7_-..655.._..65..._...5......
+  (p21 = 5, ring 8, D) and g7_u76.5566_6..5..._..5....... (p11 = 5, ring 14, C X={I0-I2}). After its five-slot windows
+  the order reached one-slot windows at 6-8, which add no five to a row whose only fives are the face. Restarted with
+  more fives first, then fewer slots (ORDER=fives), verdicts kept (G_res.txt), for the rest of the 2 h cap (3,700 s).
+  Separately, Studio's row 11 (this row at ring 17-18, 225 windows, bcf5d050): no kill; 218 kc neither, 7 ring-18 kc
+  timeouts now on dfast18.
+
 ## Round 52 (19 Oct 2026, 12:44Z-): H-F18, do the surviving face receivers die at ring 17-18?
 
 **Pre-registered 12:44Z, before any engine run on these targets.** Gap G2. Long Table, 12:41Z: Opus's stage 21 is

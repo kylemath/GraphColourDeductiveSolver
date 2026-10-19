@@ -16,7 +16,7 @@ is a product of per-private letter sets.
 Window names g<D>_<u|-><w>_<s>_<privates>: w and s as win45 (F/N when s_(i-1), s_i are in and w_i is not), then one
 character per private in slot order (letter, or '.').
 usage: python3 cen53.py D LK SV RMAX KMAX TSEC CAP_S   (TWOENG = dir of twoeng's k3x_D.out, k3x_C.cfast; NW workers,
-default 3)  -> cen53_<D>_<LK>_<SV>.txt (appended), kc/dfast/cfast output in G_*.out, verdicts cached in G_res.txt"""
+default 3; ORDER=fives runs more fives first, then fewer slots)  -> cen53_<D>_<LK>_<SV>.txt (appended), kc/dfast/cfast output in G_*.out, verdicts cached in G_res.txt"""
 import sys, os, re, time, itertools, collections, subprocess, tempfile, threading
 from concurrent.futures import ThreadPoolExecutor, FIRST_COMPLETED, wait
 H = os.path.dirname(os.path.abspath(__file__)); LOOP = os.path.join(H, '..')
@@ -218,6 +218,7 @@ def main():
         say('part %s (%d fillings): registry %d inside the fixed vertices; %d minimal requirements, covers %d (%.2f%%)%s' % (
             lab, PT, len(inrow), len(cyl), n0, 100.0 * n0 / PT, ' [%s]' % ' '.join(sorted(set(inrow))[:3]) if inrow else ''))
         for c in cyl[:40]: say('  reg %s | %s' % (' '.join('%s=%d' % (sname(k), v) for k, v in sorted(c.items(), key=repr)) or '(none)', src[tuple(sorted(c.items(), key=repr))]))
+        if n0 == PT: say('  all covered by the registry; no engine windows'); continue
         idx = {x: k for k, x in enumerate(P)}
         def ring(S, lets):
             ll = dict(fix); ll.update(lets); key = tuple(sorted(ll.items(), key=repr))
@@ -240,7 +241,8 @@ def main():
                 if idx[y] > idx[min(S, key=lambda z: idx[z])] and (y not in LETp or len(T) < KMAX):
                     grow_(S | {y}, (ext | pa[y]) - S - {y})
         for x in P: grow_(frozenset([x]), frozenset(pa[x]))
-        cand.sort(key=lambda w: w[:4])
+        if os.environ.get('ORDER') == 'fives': cand.sort(key=lambda w: (w[1], w[0], w[2], w[3]))   # more fives first, then fewer slots
+        else: cand.sort(key=lambda w: w[:4])
         say('  engine windows: %d (connected subsets %d), by free slots %s, by ring %s' % (len(cand), len(seen),
             sorted(collections.Counter(w[0] for w in cand).items()), sorted(collections.Counter(w[2] for w in cand).items())))
         nrun = nskip = 0; kills = []; memo = {}; ver = [0]
