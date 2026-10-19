@@ -364,3 +364,4 @@ our agent R and have no output from it.
 - **P2 s19r (02:55Z): the s10 relay on argsA52 gives t* = 37/214 = 0.17290** [own checkers; lowerR VALID with 45 rows; upperR
   FEASIBLE]. Top binder: d = 7 7765566/6575666 (0.159, new). The d = 10 row 6565656565/6655666666 survives r10a and binds in
   s18r, s19c and s19r, so it is the next kill target.
+- **Two-engine (03:00Z): Studio's spec-only checker passes s19c at 6/35 = 0.1714** (50150249). Upper FEASIBLE: receivers exhaustive, DP and Karp clean. Lower VALID: all 91 rows. **Relay line at 6/35 is [E2], our best so far.**
