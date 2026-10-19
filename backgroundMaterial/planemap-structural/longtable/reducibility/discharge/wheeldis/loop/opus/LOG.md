@@ -390,3 +390,8 @@ our agent R and have no output from it.
 - Kill line (a) not met. Kill line (b) partly met: the binder is tight in the solution but has dual weight 0; the mrowV at the binder's w5 now binds at p51=7 (the survivor context).
 - Cert support: d=7 7766556/6576576, 7676556/7756595, d=9 655665556/756567565; heaviest row M[9,5,6,5,6,5,5].
 - Studio's spec-only upper check is running. This is our engine only until it passes.
+
+## s21c: registry 880d25c6 (Studio; kills the d=10 binder), 6-centred relay, filter off, 19 Oct ~05:40Z
+- t* = 86/515 = 0.16699. Lower check VALID (136 rows); upper check FEASIBLE (worst conservation 1.1e-13, Karp d0 12.26). Previous unfiltered best: 8/47 on 8e008f86. Our engine only; Studio check pending.
+- The d=10 binder 6565656565/6655666666 has dropped out of the dual. Main receiver is now d=7 7765566/6575666 (0.144).
+- Next: filtered solve (filt16) on 880d25c6, with kill tables regenerated strict on 582 + 1474 configs.
