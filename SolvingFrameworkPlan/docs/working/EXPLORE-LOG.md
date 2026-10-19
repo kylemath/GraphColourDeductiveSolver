@@ -66,6 +66,11 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
     576 cases (registry 64,877 of 78,125, with D 65,453), all with a private 5. The no-5 cases stay at 7,168 of
     16,384. So D does not reach the big-privates survivors either. `loop/k51/nl51_hits.txt` lists D's requirements.
   - The d = 8 sweep (76566656) was paused 07:10-07:16Z for this and then resumed.
+- **d = 8 76566656/65566556 (s20c, non-face) dies at ring 12** (07:49Z; all 1497 windows at ring <= 14, 824 run
+  before the pause, 0 mismatches; 07:16-07:48Z). 98 kill windows and 53 f-names (twoeng: 28 D, 25 C, all C with
+  the same X on both engines). Minimal: f8_.656.656_.55..55. (D, ring 12), f8_...56665_......55 (C, ring 12),
+  f8_...56665_.....65. and f8_...56665_....6.5. (C, ring 13). Guess (70% at ring <= 14) right. It stopped at ring 14
+  because it has kills. Twoeng-ready: `loop/k47/r8b_kills*`.
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
