@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18:12Z 19 Oct: SEAL AMENDED by Kyle ("Leak info about progress but not technique between competing teams"). Verified bound numbers and binder patterns may pass between the Opus team and Team B. Rule specs, channel designs and lane details stay sealed. Team B's notes in this file stay "details sealed".
 - 18:15Z 19 Oct: Six sprint routes were set (Kyle: "plan sprint routes to jump over obstacles").
   - Studio: deeper kills.
   - Explore: split-and-kill by second-ring degrees.
