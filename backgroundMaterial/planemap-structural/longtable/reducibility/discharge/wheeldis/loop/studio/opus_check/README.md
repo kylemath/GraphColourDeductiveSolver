@@ -316,3 +316,16 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   - Lower: 48 rows (15 senderR, 10 cons, 14 mrowR, 9 receiverR); tco = 1, **D = 37/214**. Reduced costs
     M[76667] = 31/107 and h[777577] = 3/214, both >= 0. **PASS.** Log: s20r_check.log.
 - The d=10 row 6565656565/6655666666 is in both duals at weight −8/214, so it binds in these rebuilds too.
+
+## s21c (t* = 86/515, s12r mode with the filter off, 880d25c6 + r_5..r_8; df8c25a4), s12r_check.py, ~07:00Z 19 Oct
+- sol md5 fa29398b77d36c85b657a773a94a8559, cert md5 b930382f49458e51e46e91bd21b08c9c (136 rows), both as stated.
+  argsA54 pinned to 880d25c6; the 10 shipped files are byte-identical. dcount 15,881, identical file by file. Spec
+  loader: D 15,881 / C 1,679 / RPAT 158, as s21c.log.
+- Upper:
+  - Bounds clean (max x 0.036). senderR2 7,074 rows, 0 violated.
+  - cons2 1,424 × 64: 994 with a five, 0 violated (max 1.1e−13); 430 without, 0 violated (max 0).
+  - Receivers via sep3r_ak (arrangement-keyed, apex relaxation): relaxed reports 270,866 / 140,156 / 232,614 / 0 ...
+    (d = 7..15), complete under the 3M cap and all exact-checked: 0 violated.
+  - DP clean. Karp λ = 0.524271845, covering d >= 12.261. **FEASIBLE.**
+- Lower: 136 rows (21 senderR2, 76 cons2, 28 mrowR2, 11 receiverR2), all mrowR2 canonical; tco = 1, **D = 86/515**.
+  Nonzero reduced costs: M[7666757] = 74/515, g[5001657] = 24/515, h[77757755] = 12/515, all >= 0. **PASS.**
