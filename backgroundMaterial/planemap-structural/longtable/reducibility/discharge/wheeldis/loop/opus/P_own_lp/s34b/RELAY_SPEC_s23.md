@@ -137,7 +137,7 @@ then share one payee credit.
 - **Physical:** 0 mismatches, against 42,986 in the broken control.
 
 **Non-vacuity**, with s34b `realise`: non-R6 canonical words, including the 2.122 three-fives rule.
-- K* has payer words 565658 and 565659 with (s_j, s_{j−1}) = (5, 5). These are the d10's link 6 when its private is 5.
+- K* has payer words 565658 and 565659 with (s_j, s_{j−1}) = (5, 5). 565659 is the d10's link 6 when its private is 5; 565658 is the same shape with an 8 centre.
 - σ* = (5,5,7,5,5,5) has 14 payee words, for example 556558, 556559 and 556568, with (s′_k, s′_{k−1}) = (5, 7) or (7, 5).
   These are an apex 6 of u, with a five on each side of x.
 - Every one of the first six negative keys has both payer and payee words.
