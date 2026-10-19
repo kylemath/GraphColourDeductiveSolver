@@ -54,6 +54,12 @@ None of these rows was swept before in any orientation (canon_key against every 
   76656656/56655565: canon_key gives 56566766/55565566 and 56656676/55566556, two rows (both were in the l3q list).
   New order after 85656765/56665565 (running): r54i 8658656/6665556, r54j 76656566/56655565, then `rows54b.txt`: r54l
   8658656/7665555 (new, never swept), then r54e-h (the remaining 0.0125 rows).
+- **23:23Z, d8 85656765/56665565 (r54d, l3q 0.0125; not in the 11/75 cert) dies at ring 13.** 19 two-engine kills at ring
+  13-14 (ring 13: 1 D, 1 C), 18 f-names (twoeng: 8 D, 10 C same X, 0 mismatch); 6 C carry one ring edge each (X = {I0-I1,
+  R5..R8-I1}: one ring vertex per X, so no ring merge), 4 are interior-only. Minimal: f8_...56765_....55.. (D, ring 13, m
+  8), f8_...56585_....655. (C, ring 13) and five at ring 14. Opus 23:19Z sent the 11/75 cert's full list (3e9b61bd): four
+  -1/75 rows added to `rows54b.txt` after r54l (d7 8666655/5677657 and 8556856/7565666, both face rows; d8
+  76556675/66665555 and 76765656/55556665), ahead of r54e-h (not in that cert).
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
