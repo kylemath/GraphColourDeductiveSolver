@@ -288,3 +288,16 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
   - DP d = 16..30 clean. Karp λ = 0.523809524, covering d >= 12.240. **FEASIBLE.**
 - Lower: 91 rows rebuilt (14 senderR2, 53 cons2, 18 mrowR2, 6 receiverR2); all 18 mrowR2 in canonical orientation.
   tco = 1, **D = 6/35**. Nonzero reduced costs: M[7777755] = 1/35, h[76656775] = 2/5, both >= 0. **PASS.**
+
+## s20c (t* = 8/47, s12r mode, 8e008f86 + r_5..r_8; bf4a1f95), s12r_check.py, ~03:30Z 19 Oct
+- Args argsA53 + rpatD equal ours with k3x pinned to 8e008f86 (argsA53_pinned.txt). The 10 shipped files are
+  byte-identical. dcount: 15,877, identical file by file. Spec loader: D 15,877 / C 1,669 / RPAT 158, as s20c.log.
+- Upper:
+  - Bounds clean (max x 0.050). senderR2 7,074 rows, 0 violated.
+  - cons2 1,424 × 64: 994 with a five, 0 violated (max 3.1e−13); 430 without, 0 violated (max 0).
+  - Receivers via sep3r_ak: relaxed reports 513,459 / 981,452 / 43,362 / 0 ... (d = 7..15), complete under the 3M
+    cap and all exact-checked: 0 violated. The relaxed rows were checked against the spec rows on 784 arrangements.
+  - DP clean. Karp λ = 0.531914894, covering d >= 12.455. **FEASIBLE.**
+- Lower: 41 rows (6 senderR2, 23 cons2, 8 mrowR2, 4 receiverR2), all mrowR2 canonical; tco = 1, **D = 8/47**. The
+  only nonzero reduced cost is M[7666755] = 19/47 >= 0. **PASS.**
+- The d=10 row 6565656565/6655666666 is in the dual at weight −5/94, so it binds in this rebuild too.
