@@ -60,6 +60,14 @@ None of these rows was swept before in any orientation (canon_key against every 
   8), f8_...56585_....655. (C, ring 13) and five at ring 14. Opus 23:19Z sent the 11/75 cert's full list (3e9b61bd): four
   -1/75 rows added to `rows54b.txt` after r54l (d7 8666655/5677657 and 8556856/7565666, both face rows; d8
   76556675/66665555 and 76765656/55556665), ahead of r54e-h (not in that cert).
+- **23:25Z, d7 8658656/6665556 (r54i, -2/75 in the 11/75 cert) dies at ring 14 by r54b's four f-names** (`r54i_kills*`
+  byte-identical to `r54b_kills*`: the killing windows avoid s6, the one letter the rows differ in). Already admitted on
+  main with r54b (0c11734b); nothing new to admit. It shows in the 11/75 cert only because that cert is on 3cfd7f18.
+- **23:29Z, admission head for r54d (Long Table 23:24Z: Studio silent).** Main already held r54a, r54b, r54k12 and r54c
+  (Studio, 22:25-23:03Z; registry 2,435 D / 1,060 C). r54d's 18 f-names through main's own twoeng and guards on main
+  21b1a8a1 (scratch copy): 2,443 D / 1,070 C, +8 D +10 C = exactly the 18, 0 lost, ring-merge / prefix / letter-9 0 new,
+  regression byte-identical. This session pushes only to its own branch, so the result is `loop/k54/adm54d/` (k3x
+  files + RUNLOG entry, 09a6a667) for Long Table to copy onto main.
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
