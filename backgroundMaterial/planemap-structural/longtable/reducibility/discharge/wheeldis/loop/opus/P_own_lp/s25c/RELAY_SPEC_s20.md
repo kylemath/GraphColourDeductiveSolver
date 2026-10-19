@@ -144,3 +144,15 @@ kill); the lifting may put the binder on t = 6 or t big, and no split balances.
 `cmd_st25.sh`: solveR2 keeppen (xpen 1e-3, warm = s22h, s23h, st24b run1 and final rows, 3 h cap), solveR2 nosep,
 lowerR2 on the nosep cert, upperR2 nomax on the keeppen solution (all 1,424 conservation types). Kill line: gain below
 0.005, i.e. the upper bound on the solution itself is not <= 2/13 - 0.005 = 0.148846.
+
+## 20.8 Variant F6: the far-side 6 (coordinator steer, priced before any solve of it)
+
+Unit widened across the 7: the cluster row of the binder 7665566/6675676 also reads its two 6s next to the big spoke w0,
+opposite the face (w1 and w6), exactly, with their privates p1 and p6; their M terms become the exact h2 of the actual
+private. The far-side 6s' other outer neighbours (s0, s1, s5, s6, w0, w2/w5) are already in u's row.
+Pricing (`pricer25f6.py`, `pricer25_F6.log`): the filt16 mask allows every private (31) at both 6s; **every one of the 25
+liftings (p1, p6) keeps all reduced costs >= 0**, so cert_st24bL stays valid and F6 is null. Reason: the cert never loads
+these two M terms (no mrowR2 row on their signatures; their rc is +3/13), so making them exact only adds load where
+the dual already has slack. On the five's side the far-side 6 is the face five's hat h4 (= w_{i-2}), already read as a
+class in the z key; a five cannot read its letter or private. A transfer keyed on the far-side 6 and its private would
+need a row type at distance 3 from the face fives.
