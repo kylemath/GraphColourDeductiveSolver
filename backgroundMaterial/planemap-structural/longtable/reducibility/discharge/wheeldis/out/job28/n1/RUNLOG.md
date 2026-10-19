@@ -55,3 +55,6 @@ least progress.
 - 19 Oct ~01:55Z: Job 24b DONE (2,855 keys, all clean; 34f14406). w17L_3 (f7_.556857_.56.86.) and w17L_4
   (f7_.556857_.56.B8.) requeued with requeue34.sh: 8 h cap, nice 20, one core each; same hypothesis and kill lines as
   the table above. w17L_5 had already finished its restart (neither, 18 Oct 14:22).
+- 19 Oct: requeue finished (R34.DONE). w17L_3 f7_.556857_.56.86.: rc=0, 9,972 s, **neither** (best X leftover 2,175).
+  w17L_4 f7_.556857_.56.B8.: rc=0, 6,545 s, **neither** (leftover 1,873). Neither window is C by cfast, so there is
+  no kill. All 5 w17L windows are now neither.
