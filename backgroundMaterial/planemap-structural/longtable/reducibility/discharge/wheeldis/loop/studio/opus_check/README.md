@@ -301,3 +301,18 @@ argsA_local.txt with their absolute k42map path pointed at k42map_C_cons.cfast h
 - Lower: 41 rows (6 senderR2, 23 cons2, 8 mrowR2, 4 receiverR2), all mrowR2 canonical; tco = 1, **D = 8/47**. The
   only nonzero reduced cost is M[7666755] = 19/47 >= 0. **PASS.**
 - The d=10 row 6565656565/6655666666 is in the dual at weight −5/94, so it binds in this rebuild too.
+
+## s19r and s20r (both t* = 37/214, s10-mode relay), s14r_check.py, ~03:50Z 19 Oct
+- s19r (09d8ac38 + r_5..r_8; bf4a1f95). Opus's log gives only the decimal 0.172897196262; it rationalises to 37/214,
+  and the exact rebuild lands on it.
+  - EXPECT_PAT=15855,1658,158 (as s19c). Bounds clean (max x 0.055). senderR 6,915 rows and cons 994, 0 violated.
+  - Receivers d = 7..15 0 (rows = spec on 789 arrangements). DP clean. Karp λ = 0.514018692, covering d >= 11.990.
+    **FEASIBLE.**
+  - Lower: 45 rows (14 senderR, 9 cons, 13 mrowR, 9 receiverR); tco = 1, **D = 37/214**. Reduced costs
+    M[76667] = 14/107 and h[777577] = 3/214, both >= 0. **PASS.** Log: s19r_check.log.
+- s20r (8e008f86 + r_5..r_8; eb11059b): EXPECT_PAT=15877,1669,158 on argsA53_pinned (argsA53 unchanged since s20c).
+  - Bounds clean (max x 0.028). senderR and cons, 0 violated. Receivers d = 7..15 0. DP clean.
+    Karp λ = 0.514408100, covering d >= 12.000. **FEASIBLE.**
+  - Lower: 48 rows (15 senderR, 10 cons, 14 mrowR, 9 receiverR); tco = 1, **D = 37/214**. Reduced costs
+    M[76667] = 31/107 and h[777577] = 3/214, both >= 0. **PASS.** Log: s20r_check.log.
+- The d=10 row 6565656565/6655666666 is in both duals at weight −8/214, so it binds in these rebuilds too.
