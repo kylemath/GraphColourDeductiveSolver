@@ -320,3 +320,7 @@ our agent R and have no output from it.
   upperR FEASIBLE]. Top binder: d = 7 7665566/6675666 at 0.2247 (canonical 5566766/5666667). Then d = 10
   6565656565/6655666666, d = 10 6556656556/6665656665, and d = 9 655666566/666555555. On the same registry the 6-centred
   s12r50 is lower, at 23/134 = 0.17164.
+- **Two-engine (00:18Z 19 Oct):**
+  - Studio passes s16 and s17 at 1/5 (96890972, be2f93b9).
+  - Studio's spec-only checker passes s17r at 31/178 (d667219b). All 25 rows rebuild; the only nonzero reduced cost is M[76667] = 40/89.
+  - **Relay line at 31/178 = 0.1742 is [E2].** s12r50 (23/134) is being checked from §12.
