@@ -1,4 +1,4 @@
-# Round 52 explore queue (D LK SV PREFIX). One row per job: sh q52row.sh D LK SV PREFIX (ring <= 16 STOP=0, then 17-18 STOP=1, 2 h cap).
+# Round 52 explore queue (D LK SV PREFIX). One row per job: sh q52row.sh (from r52b on: q52r16.sh, ring <= 16 only) D LK SV PREFIX (ring <= 16 STOP=0, then 17-18 STOP=1, 2 h cap).
 # Studio runs the other ten family rows (win52_*_todo.txt).  Non-family s22hL rows go 17-18 only if they survive to 16.
 7 7665566 6765766 r52a   family, s22hL 0.112   done: no kill to ring 16; rest at Studio
 7 7766556 6576576 r52b   family   done: no kill to ring 16 (99 left); rest at Studio
