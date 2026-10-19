@@ -77,3 +77,6 @@
   6 kc neither, 1 two-engine C at ring 17 (a8_u.5666556_.666.5.5, kc X={I0-I3} 67 s, cfast --fixed leftover 0 456 s);
   then all parts stopped ring 17-18. Part B continues ring 15-16 for f-names (snapshot 22:30Z: 547 run, 168 kills,
   96 D / 73 C incl. A's). Nothing admitted.
+- 22:50Z 19 Oct: row 14 stopped (Long Table 22:49Z: the row is already dead at ring 12 on explore's windows). Final:
+  Part A 7 run, 1 kill (ring-17 C); Part B 940 of 1,563 run, 219 two-engine kills (ring 15 and 16). All kills in
+  row14_*/kills*.txt with each window's kc / dfast18 / cfast output; nothing admitted.
