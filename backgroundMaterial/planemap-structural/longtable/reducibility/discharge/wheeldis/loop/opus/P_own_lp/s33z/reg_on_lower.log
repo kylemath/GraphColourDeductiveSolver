@@ -1,0 +1,4 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9705, 8: 4542, 9: 2941, 10: 1142, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17030, 'C': 1898, 'RPAT': 158}
+rows by type: {'senderR2': 17, 'cons2': 67, 'mrowR2': 24, 'receiverR2': 12}
+LOWER-R2: VALID  t >= -331/320 = -1.034375000  (120 rows)
