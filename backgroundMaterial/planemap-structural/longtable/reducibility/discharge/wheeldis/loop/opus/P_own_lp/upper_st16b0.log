@@ -1,0 +1,17 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9663, 8: 4469, 9: 1736, 10: 1047, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 15855, 'C': 1658, 'RPAT': 158}
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 8.83e-14)
+d=7: 0 violated (exhaustive, 7.6s)
+d=8: 0 violated (exhaustive, 4.6s)
+d=9: 0 violated (exhaustive, 1.7s)
+d=10: 0 violated (exhaustive, 1.3s)
+d=11: 0 violated (exhaustive, 1.3s)
+d=12: 0 violated (exhaustive, 1.4s)
+d=13: 0 violated (exhaustive, 1.3s)
+d=14: 0 violated (exhaustive, 1.6s)
+d=15: 0 violated (exhaustive, 1.6s)
+d=16: 0 violated (exhaustive, 1.7s)
+d=17: 0 violated (exhaustive, 1.8s)
+Karp lambda 0.523809524 d0 12.240
+UPPER-R2: FEASIBLE at t = 0.171428571429

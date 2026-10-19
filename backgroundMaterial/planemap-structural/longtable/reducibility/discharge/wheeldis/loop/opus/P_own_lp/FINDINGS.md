@@ -501,3 +501,22 @@ Not read: Studio's Job 31 spec.
   - The non-strict matcher at code 5 gives 3,072 (md5 f2582478...), which shows why the rule is needed. At codes 99 and 7 the non-strict matcher already gives 7,500, the same set.
   - Full kill tables regenerated strict at codes 5 and 7 are identical to s16ap/kill6 (U7 27a64538..., U8 = U9 6dc44bba...). st16ap is not void.
   - Strict matching is now the default in s16_filter.py (md5 1bd72e9d...); its output is identical to the snapshot.
+
+## Stage 16 A′ result: **t* = 6/37 = 0.162162** on argsA52, verified on both sides
+- **Filter on (st16ap2).**
+  - Upper: UPPER-R2 FEASIBLE at 6/37 on sol_st16ap2.json. 0 senders violated; conservation over all 1424 6-types × 5^6, worst 7e-12; d = 7..17 exhaustive; Karp lambda 0.5135, d0 12.0.
+  - Lower: LOWER-R2 VALID t >= 6/37 (211 rows) on cert_st16ap2L.json. This cert is from the unpenalised LP over the same rows, with nosep. Run 2's own cert came from the penalised LP and was INVALID.
+  - Run history:
+    - Run 1 (st16ap) reached 6/37 at iteration 17. After the x penalty was removed it did not settle in 19 more iterations, so I killed it.
+    - Run 2 restarted from all rows with `keeppen` and stopped at the penalised fixed point, iteration 9, with 0 violated rows.
+- **Baseline, filter off, same engine and registry (st16b0):** 6/35 = 0.171429, lower VALID (185 rows), upper FEASIBLE. The filter's own gain on argsA52 is therefore 6/35 → 6/37. The change from argsA50 to argsA52 alone took 23/134 to 6/35.
+- **Kill lines.**
+  - (a) Not met. t* falls below 23/134, and below the argsA52 baseline 6/35.
+  - (b) Partly met, stated explicitly. The binder 7665566/6675666 is still tight in the upper solution (load = cap = 43/37) but has dual weight 0 in the exact cert. Its V is still 0.
+  - On (b): the cert has mrowV V[7,5,6,6,6,5,7 | allowed 7,8,9] <= v[7,5,6,7,6,6,5,7] at weight 0.027. So at the binder's w5 signature the min has moved to p51 = 7, the survivor context.
+- **New certificate support.**
+  - Receivers: 7766556/6576576 (0.108), 7676556/7756595 (0.054), 9 655665556/756567565 (0.054), and six d = 7 rows at 0.027 or below.
+  - Heaviest row: mrowR2 M[9,5,6,5,6,5,5 | allowed 5,7,8,9] (0.162).
+  - 24 cert rows use masked (filtered) signatures.
+- s17_struct.txt (blind) is written.
+- Engine: snap/st16ap2, md5s in snap/st16ap2_md5.txt (outputs appended). Commands: cmd_st16ap.sh.

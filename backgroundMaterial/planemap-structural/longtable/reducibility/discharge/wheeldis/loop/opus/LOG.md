@@ -383,3 +383,10 @@ our agent R and have no output from it.
 - Check 4 strict (LP-visible projection), unknowns coded 99, 5 and 7: 7,500 survivors in every case, same set md5 9b4d02ba. Control: the non-strict matcher at code 5 gives 3,072 (f2582478), so the rule bites.
 - Kill tables regenerated strict, with unknowns at 5 and at 7: byte-identical to the tables st16ap uses (U7 27a64538, U8 = U9 6dc44bba). st16ap stands.
 - st16ap is at iteration 36 with LP t = 6/37. This is interim only: d=7 separation is still adding rows (max violation about 0.08).
+
+## Stage 16 A′ result, 19 Oct ~05:20Z
+- Filtered 6-centred relay: t* = 6/37 = 0.1622 on argsA52 (09d8ac38). Lower check VALID (cert_st16ap2L.json, 211 rows); upper check FEASIBLE (sol_st16ap2.json). Same engine with the filter off gives 6/35.
+- The filter is the LP-visible projection of the 3-ball test (7,500 survivors on check 4; the full 3-ball test gives 3,072). Strict unknown rule passes.
+- Kill line (a) not met. Kill line (b) partly met: the binder is tight in the solution but has dual weight 0; the mrowV at the binder's w5 now binds at p51=7 (the survivor context).
+- Cert support: d=7 7766556/6576576, 7676556/7756595, d=9 655665556/756567565; heaviest row M[9,5,6,5,6,5,5].
+- Studio's spec-only upper check is running. This is our engine only until it passes.
