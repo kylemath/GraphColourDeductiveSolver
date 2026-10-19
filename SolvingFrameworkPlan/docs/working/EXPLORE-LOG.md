@@ -112,6 +112,11 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   engines; `loop/k47/r52j_kills*`, to Studio for admission. Guess (dies at ring <= 14, 75%) right.
   6565555665/6665956566 started at 18:23Z (stopped once dead at ring <= 13, if it is).
 
+- **18:26Z, Studio rows 1-2 final (Studio e2cb4e69).** 86555665/56586665: 415 two-engine kills (284 D, 131 C) at ring
+  11-16, 381 f-names (twoeng: 255 D, 126 C, all pass), 7 minimal, lowest f8_..555665_........ (ring 11, D).
+  86555665/56576665: 489 kills (400 D, 89 C), 446 f-names (twoeng: 357 D, 89 C), 8 minimal, same lowest. Files
+  `loop/k47/s52r1_kills*`, `s52r2_kills*` (minkill52), to Studio for admission.
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
