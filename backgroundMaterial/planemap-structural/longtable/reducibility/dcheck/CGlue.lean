@@ -1,5 +1,6 @@
 import ClaimGlue
 import C66666
+import CContract
 
 /-!
 # CGlue: soundness of C-reducibility (Long Table, 19 Oct 2026, draft)
@@ -25,12 +26,16 @@ returning the final `good` array; the verdict is `cReducible18 cf eqR eqI` (`nat
   `T'` of smaller support and a vertex map `π` that keeps every edge of the deleted map `G`,
   identifies along `X`, and keeps every other listed configuration edge. It splits into
   - C4a `contract_subgraph` [**OPEN, the only `sorry`**]: contracting a subgraph of a spherical
-    map is a smaller spherical map (pure map geometry, no configuration data);
+    map is a smaller spherical map (pure map geometry, no configuration data). The one-edge case
+    is PROVED: `contract_subgraph1` (`CContract.lean`, via `contract_edge`) on triangulations
+    without separating triangles;
   - C4b `ConfigOccW.xGraph_labels` [PROVED]: the label argument (no kept edge inside an X-component).
 * C5 (global loop-freeness) is not a lemma here: it is the occurrence field `XRingSimple` (no ring
   position touched by `X` is revisited by the face walk), proved for simple rings
   (`occursCX_of_configOcc`). Local loop-freeness is `admissibleX` (decide, per key).
 * C6 `CEntry.colorable`, `four_color_of_unavoidableC` [PROVED from C1–C4].
+* C6, one interior edge (`CEntry1`: `eqR = []`, `eqI = [p0]`): `CEntry1.colorable`, `cGlueX1`,
+  `four_color_of_unavoidableC1` [PROVED, no `sorry`].
 
 **Axioms.** No new `axiom`. One `sorry` (C4a). Inherits the `native_decide` axioms of the D chain;
 per-key `hC` adds one each.
@@ -609,17 +614,22 @@ theorem ConfigOccW.xGraph_labels (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl 
     · exact Sum.inr_ne_inl e
     · exact hne (Fin.ext (Sum.inr_injective e))
 
-/-- **C4: contracting `X` gives a smaller reducer** (proved from C4a and C4b). Let `cf` occur in
+/-- **C4 from a contraction of the X-graph** (proved from `hcon` and C4b). Let `cf` occur in
 `T` exactly (`OccExact`), with `X = eqR ∪ eqI` locally admissible and globally simple. Then there
 are a spherical map `T'` of smaller support and a vertex map `π` that keeps every edge of `G`,
 identifies each listed edge in `X` and keeps each other listed edge. -/
-theorem ConfigOccW.contract_reducer (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ)
+theorem ConfigOccW.contract_reducer_of (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ)
     (hadm : admissibleX cf eqR eqI lbl = true)
     (hloop : ∀ a, intAdjOf cf a a = false)
     (hrr : ∀ a, a < cf.m → ∀ t ∈ cf.ringAdj[a]!, t < cf.r) {ι : Fin cf.m → Fin n}
     (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
     (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
-    (hs : XRingSimple eqR cf.r ρ) :
+    (hs : XRingSimple eqR cf.r ρ)
+    (hcon : ∀ H : SimpleGraph (Fin n), H = xGraph cf eqR eqI ρ ι → H ≤ T.graph →
+      (∃ x y, H.Adj x y) → ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
+        Nat.card T'.graph.support < Nat.card T.graph.support ∧
+        (∀ x y, H.Reachable x y → π x = π y) ∧
+        (∀ x y, T.Adj x y → ¬ H.Reachable x y → T'.Adj (π x) (π y))) :
     ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
       Nat.card T'.graph.support < Nat.card T.graph.support ∧
       (∀ x y, G.Adj x y → T'.Adj (π x) (π y)) ∧
@@ -660,12 +670,65 @@ theorem ConfigOccW.contract_reducer (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (l
       · exact (hex.2 a t (hlt a t hat) hat).symm
       · exact (hex.1 a b hab).symm
   obtain ⟨hne, hnR, hnI, hnG⟩ := ConfigOccW.xGraph_labels cf eqR eqI lbl hadm hloop O hs
-  obtain ⟨T', π, hcard, hπ, hkeep⟩ := contract_subgraph T _ hle hne
+  obtain ⟨T', π, hcard, hπ, hkeep⟩ := hcon _ rfl hle hne
   refine ⟨T', π, hcard, fun x y hxy => hkeep x y ((O.hG x y).1 hxy).1 (hnG x y hxy),
     fun a t hat => ⟨fun h => hπ _ _ (hXR a t hat h).reachable,
       fun h => hkeep _ _ (hex.2 a t (hlt a t hat) hat) (hnR a t hat h)⟩,
     fun a b hab => ⟨fun h => hπ _ _ (hXI a b hab h).reachable,
       fun h => hkeep _ _ (hex.1 a b hab).symm (hnI a b hab h)⟩⟩
+
+/-- **C4: contracting `X` gives a smaller reducer** (proved from C4a and C4b). -/
+theorem ConfigOccW.contract_reducer (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ)
+    (hadm : admissibleX cf eqR eqI lbl = true)
+    (hloop : ∀ a, intAdjOf cf a a = false)
+    (hrr : ∀ a, a < cf.m → ∀ t ∈ cf.ringAdj[a]!, t < cf.r) {ι : Fin cf.m → Fin n}
+    (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hs : XRingSimple eqR cf.r ρ) :
+    ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
+      Nat.card T'.graph.support < Nat.card T.graph.support ∧
+      (∀ x y, G.Adj x y → T'.Adj (π x) (π y)) ∧
+      (∀ (a : Fin cf.m) t, ringAdjOf cf a t = true →
+        (eqR.contains (t, a.val) = true → π (ι a) = π (ρ t)) ∧
+        (eqR.contains (t, a.val) = false → T'.Adj (π (ι a)) (π (ρ t)))) ∧
+      (∀ a b : Fin cf.m, intAdjOf cf a b = true →
+        ((eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = true →
+          π (ι b) = π (ι a)) ∧
+        ((eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = false →
+          T'.Adj (π (ι b)) (π (ι a)))) :=
+  ConfigOccW.contract_reducer_of cf eqR eqI lbl hadm hloop hrr O hex hs
+    (fun H _ hle hne => contract_subgraph T H hle hne)
+
+/-- The X-graph of a single interior edge `p0 = (b, a)`: every edge is `ι a – ι b`. -/
+theorem xGraph_one_edge (cf : Conf) (p0 : ℕ × ℕ) (ρ : ℕ → Fin n) (ι : Fin cf.m → Fin n)
+    {x y : Fin n} (h : (xGraph cf [] [p0] ρ ι).Adj x y) :
+    ∃ a b : Fin cf.m, (b.val, a.val) = p0 ∧ s(x, y) = s(ι a, ι b) := by
+  rw [xGraph, SimpleGraph.fromRel_adj] at h
+  obtain ⟨-, h⟩ := h
+  rcases h with (⟨a, t, -, hc, -, -⟩ | ⟨a, b, -, hc, rfl, rfl⟩) |
+      (⟨a, t, -, hc, -, -⟩ | ⟨a, b, -, hc, rfl, rfl⟩)
+  · simp at hc
+  · simp only [List.contains_cons, List.contains_nil, Bool.or_false, Bool.or_eq_true,
+      beq_iff_eq] at hc
+    rcases hc with hc | hc
+    · exact ⟨a, b, hc, rfl⟩
+    · exact ⟨b, a, hc, Sym2.eq_swap⟩
+  · simp at hc
+  · simp only [List.contains_cons, List.contains_nil, Bool.or_false, Bool.or_eq_true,
+      beq_iff_eq] at hc
+    rcases hc with hc | hc
+    · exact ⟨a, b, hc, Sym2.eq_swap⟩
+    · exact ⟨b, a, hc, rfl⟩
+
+/-- Any two edges of a single-interior-edge X-graph are the same edge. -/
+theorem xGraph_one (cf : Conf) (p0 : ℕ × ℕ) (ρ : ℕ → Fin n) (ι : Fin cf.m → Fin n)
+    {x y x' y' : Fin n} (h : (xGraph cf [] [p0] ρ ι).Adj x y)
+    (h' : (xGraph cf [] [p0] ρ ι).Adj x' y') : s(x, y) = s(x', y') := by
+  obtain ⟨a, b, hab, e⟩ := xGraph_one_edge cf p0 ρ ι h
+  obtain ⟨a', b', hab', e'⟩ := xGraph_one_edge cf p0 ρ ι h'
+  have ha : a = a' := Fin.ext (congrArg Prod.snd (hab.trans hab'.symm))
+  have hb : b = b' := Fin.ext (congrArg Prod.fst (hab.trans hab'.symm))
+  rw [e, e', ha, hb]
 
 /-! ## C6: registry entries, soundness, claim -/
 
@@ -711,11 +774,20 @@ theorem occursCX_of_configOcc (e : CEntry) {T G : SphericalMap n} {ρ : ℕ → 
 /-- **C-soundness, per entry.** An occurrence of a C entry in a map whose smaller maps are all
 colourable makes it colourable: colour the contracted map `T'` (smaller, C4), pull the colouring
 back along `π` (it meets the X constraints), and run the D tail on its ring code (C1–C3). -/
-theorem CEntry.colorable (e : CEntry) {T : SphericalMap n} (h : OccursCX e T)
-    (IH : SmallerColorable T) : T.graph.Colorable 4 := by
-  obtain ⟨G, ρ, ι, O, hex, hs⟩ := h
+theorem CEntry.colorable_of_contract (e : CEntry) {T G : SphericalMap n} {ρ : ℕ → Fin n}
+    {ι : Fin e.cf.m → Fin n}
+    (O : ConfigOccW T G e.cf.r e.cf.m ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf)))
+    (hex : OccExact T e.cf.r ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf)))
+    (hs : XRingSimple e.eqR e.cf.r ρ) (IH : SmallerColorable T)
+    (hcon : ∀ H : SimpleGraph (Fin n), H = xGraph (Conf.of18 e.cf) e.eqR e.eqI ρ ι →
+      H ≤ T.graph → (∃ x y, H.Adj x y) → ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
+        Nat.card T'.graph.support < Nat.card T.graph.support ∧
+        (∀ x y, H.Reachable x y → π x = π y) ∧
+        (∀ x y, T.Adj x y → ¬ H.Reachable x y → T'.Adj (π x) (π y))) :
+    T.graph.Colorable 4 := by
   obtain ⟨T', π, hcard, hGe, hR, hI⟩ :=
-    ConfigOccW.contract_reducer (Conf.of18 e.cf) e.eqR e.eqI e.lbl e.hadm e.hloop e.hrr O hex hs
+    ConfigOccW.contract_reducer_of (Conf.of18 e.cf) e.eqR e.eqI e.lbl e.hadm e.hloop e.hrr O hex hs
+      hcon
   obtain ⟨col⟩ := IH n T' hcard
   refine ConfigOccW.colorable_of_cReducible18 e.cf e.eqR e.eqI e.hC e.hr2 e.hr e.hsym e.hloop
     e.hrr O (c := fun x => col (π x)) (fun _ _ huv _ _ => col.valid (hGe _ _ huv))
@@ -725,6 +797,12 @@ theorem CEntry.colorable (e : CEntry) {T : SphericalMap n} (h : OccursCX e T)
   · exact ⟨fun h => congrArg col ((hI a b hab).1 h),
       fun h => col.valid ((hI a b hab).2 h)⟩
 
+/-- **C-soundness, per entry** (uses C4a `contract_subgraph`). -/
+theorem CEntry.colorable (e : CEntry) {T : SphericalMap n} (h : OccursCX e T)
+    (IH : SmallerColorable T) : T.graph.Colorable 4 := by
+  obtain ⟨G, ρ, ι, O, hex, hs⟩ := h
+  exact e.colorable_of_contract O hex hs IH (fun H _ hle hne => contract_subgraph T H hle hne)
+
 /-- **CGlue in ClaimGlue's form**, for this file's entries and occurrences. -/
 def CGlueX (Cs : List CEntry) : Prop :=
   ∀ e ∈ Cs, ∀ (n : ℕ) (T : SphericalMap n), OccursCX e T → SmallerColorable T →
@@ -733,6 +811,68 @@ def CGlueX (Cs : List CEntry) : Prop :=
 /-- **The hypothesis is a theorem** (modulo C4a). -/
 theorem cGlueX (Cs : List CEntry) : CGlueX Cs :=
   fun e _ _ _ h IH => e.colorable h IH
+
+/-! ### Single-interior-edge entries: no `sorry`
+
+When `X` is one interior edge (`eqR = []`, `eqI = [p0]`), C4a is `contract_subgraph1`
+(`CContract.lean`), proved for triangulations without separating triangles. A minimal
+counterexample has none (`MinimalCounterexample.noSep`), so the soundness below needs only
+`T.Triangulated`. -/
+
+/-- A C entry whose contraction set is one interior edge. -/
+structure CEntry1 extends CEntry where
+  /-- the contracted interior edge `(b, a)` -/
+  p0 : ℕ × ℕ
+  hR : eqR = []
+  hI : eqI = [p0]
+
+/-- **C-soundness for a single-interior-edge entry** (no `sorry`). -/
+theorem CEntry1.colorable (e : CEntry1) {T : SphericalMap n} (htri : T.Triangulated)
+    (h : OccursCX e.toCEntry T) (IH : SmallerColorable T) : T.graph.Colorable 4 := by
+  by_contra hcol
+  have hns : NoSep T := MinimalCounterexample.noSep ⟨hcol, IH⟩ htri
+  obtain ⟨G, ρ, ι, O, hex, hs⟩ := h
+  refine hcol (e.toCEntry.colorable_of_contract O hex hs IH (fun H hHx hle hne => ?_))
+  obtain ⟨x, y, hxy⟩ := hne
+  rw [e.hR, e.hI] at hHx
+  subst hHx
+  exact contract_subgraph1 T htri hns _ hle
+    (fun p q hpq => xGraph_one (Conf.of18 e.cf) e.p0 ρ ι hpq hxy) ⟨x, y, hxy⟩
+
+/-- **CGlue for single-interior-edge entries**, on triangulations. -/
+def CGlueX1 (Cs : List CEntry1) : Prop :=
+  ∀ e ∈ Cs, ∀ (n : ℕ) (T : SphericalMap n), T.Triangulated → OccursCX e.toCEntry T →
+    SmallerColorable T → T.graph.Colorable 4
+
+/-- **The hypothesis is a theorem** (no `sorry`). -/
+theorem cGlueX1 (Cs : List CEntry1) : CGlueX1 Cs :=
+  fun e _ _ _ htri h IH => e.colorable htri h IH
+
+/-- A registry of D entries and single-interior-edge C entries. -/
+structure Registry1 where
+  D : List DEntry
+  C1 : List CEntry1
+
+def Registry1.Contains (R : Registry1) (T : SphericalMap n) : Prop :=
+  (∃ e ∈ R.D, OccursW e.cf T) ∨ (∃ e ∈ R.C1, OccursCX e.toCEntry T)
+
+def Unavoidable1 (R : Registry1) : Prop :=
+  ∀ (m : ℕ) (T : SphericalMap m), Internally6 T → R.Contains T
+
+theorem MinimalCounterexample.avoids1 (R : Registry1) {T : SphericalMap n}
+    (hT : MinimalCounterexample T) (htri : T.Triangulated) : ¬ R.Contains T := by
+  rintro (⟨e, -, h⟩ | ⟨e, -, h⟩)
+  · exact hT.not_colorable (e.colorable h hT.smaller)
+  · exact hT.not_colorable (e.colorable htri h hT.smaller)
+
+/-- **Claim glue for D + single-edge C registries, with no `sorry`.** The one open link is
+`Unavoidable1 R`. -/
+theorem four_color_of_unavoidableC1 (R : Registry1) (hU : Unavoidable1 R) {n : ℕ}
+    (M : SphericalMap n) : M.graph.Colorable 4 := by
+  refine four_color_of_smaller_gate (fun m T hm hconn htri hdeg IH => ?_) M
+  by_contra hcol
+  have hT : MinimalCounterexample T := ⟨hcol, IH⟩
+  exact MinimalCounterexample.avoids1 R hT htri (hU m T (hT.internally6 hm hconn htri hdeg))
 
 /-- A registry of D entries (`ClaimGlue.DEntry`) and C entries (this file). -/
 structure Registry where
@@ -813,3 +953,7 @@ end SimpleGraph.SphericalMap
 #print axioms SimpleGraph.SphericalMap.CGlue.four_color_of_unavoidableC
 #print axioms SimpleGraph.SphericalMap.ConfigOccW.xGraph_labels
 #print axioms SimpleGraph.SphericalMap.CGlue.e66666
+#print axioms SimpleGraph.SphericalMap.contract_subgraph1
+#print axioms SimpleGraph.SphericalMap.CGlue.CEntry1.colorable
+#print axioms SimpleGraph.SphericalMap.CGlue.cGlueX1
+#print axioms SimpleGraph.SphericalMap.CGlue.four_color_of_unavoidableC1
