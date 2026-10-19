@@ -32,6 +32,8 @@ USE_H = 'noH' not in OPTS
 DEX = int(OPTS.get('dex', 15))
 LIMIT = int(float(OPTS.get('limit', 2e7)))
 MANY = int(OPTS.get('many', 60))
+TFIX = float(OPTS['tfix']) if 'tfix' in OPTS else None   # feasibility mode at a fixed t (certificate if separation ends clean)
+CENTER = float(OPTS['center']) if 'center' in OPTS else None   # phase-2 centring offset for the separation point
 CAP = float(OPTS['cap']) if 'cap' in OPTS else None   # optional upper bound on every transfer (a rule-class restriction)
 
 
@@ -377,9 +379,37 @@ def solve(rows):
     cobj = np.zeros(n)
     cobj[-1] = 1
     bounds = [(0, CAP)] * (n - 1) + [(-5, None)]
+    if TFIX is not None:
+        # fixed-t mode: is there x with t = TFIX? maximise a common margin m on every row carrying t (feasible iff m >= 0)
+        from scipy.sparse import hstack
+        tc = np.array([1.0 if r[1] != 0 else 0.0 for r in rows])
+        A2 = hstack([A, csr_matrix(tc.reshape(-1, 1))]).tocsr()
+        c2 = np.zeros(n + 1)
+        c2[-1] = -1
+        b2 = [(0, CAP)] * (n - 1) + [(TFIX, TFIX), (-1, 1)]
+        r2 = linprog(c2, A_ub=A2, b_ub=b, bounds=b2, method='highs')
+        assert r2.status == 0, r2.message
+        print('  margin %.6f' % r2.x[-1], flush=True)
+        if r2.x[-1] < -1e-9:
+            print('INFEASIBLE at t = %.6f : t* > %.6f (generated rows only, so a valid lower bound)' % (TFIX, TFIX), flush=True)
+            sys.exit(0)
+        return r2.x[:n - 1], TFIX, r2
     res = linprog(cobj, A_ub=A, b_ub=b, bounds=bounds, method='highs')
     assert res.status == 0, res.message
-    return res.x[:-1], res.x[-1], res
+    if CENTER is None:
+        return res.x[:-1], res.x[-1], res
+    # phase 2 (separation point only): t fixed a little above the optimum, maximise a common margin m on every row
+    # that carries t, so the next separation sees a centred x instead of an extreme vertex. The reported t is phase 1's.
+    from scipy.sparse import hstack
+    tc = np.array([1.0 if r[1] != 0 else 0.0 for r in rows])
+    A2 = hstack([A, csr_matrix(tc.reshape(-1, 1))]).tocsr()
+    c2 = np.zeros(n + 1)
+    c2[-1] = -1
+    b2 = [(0, CAP)] * (n - 1) + [(res.x[-1] + CENTER, res.x[-1] + CENTER), (0, 1)]
+    r2 = linprog(c2, A_ub=A2, b_ub=b, bounds=b2, method='highs')
+    if r2.status != 0:
+        return res.x[:-1], res.x[-1], res
+    return r2.x[:n - 1], res.x[-1], res
 
 
 def main():
