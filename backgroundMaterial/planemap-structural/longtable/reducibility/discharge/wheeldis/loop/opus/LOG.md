@@ -477,3 +477,14 @@ our agent R and have no output from it.
 - t* = 16/101 exactly. Lower VALID (115 rows). Upper: sol_s22h is FEASIBLE under the hatrr engine. Gain 0.
 - rr carries real weight: 3.7 total, on keys (5,1,6,8), (5,1,5,9) and similar. Whatever the face 7 pushes out returns through y, and every face row stays tight.
 - Engine gap found: upperR2 on sol_st23r itself is INFEASIBLE (6 conservation rows on no-five 6-links, worst 0.0078). Without v6, solveR2 separates conservation only over 6-words that contain a five. Earlier claimed bounds are unaffected, because each passed upperR2 over all 1,424 types. Future solves must either separate on all 1,424 or check upperR2 on their own solution (as they do).
+
+## Stage 21: sender 2-ball registry filter (flag s2b, §17), s22h setup on 5fa0adb0, 19 Oct ~12:20Z. NULL
+- 894 of 26,280 hat5 contexts dropped; 19,916 sender rows remain. Every context decided exactly; 16,548 also enumerated literally (0 disagreements). Domain sizes are in sdrop_ctx.tsv.
+- Controls:
+  - empty registry: 0 dropped;
+  - degree+1 shift: 0 dropped, a different set;
+  - witness recheck: 340 checked, 0 failures.
+- Explore cross-check: we drop none of explore's 10 survivors. We keep 4 of its 16 dead contexts, which need windows not yet in the registry.
+- Result: lower stays exactly 16/101 (VALID, 113 rows); upper is FEASIBLE at 61/385. Gain 0, so the kill line is hit.
+- Sender dual weight (0.677) moves to H0-big siblings, the same degeneracy as stage 19b. Weight on registry-dead rows is now 0. Weight on explore-dead-but-kept rows is 0.076 (55767).
+- Files: P_own_lp/s21s/ (the worker was blocked from writing to the repo; the lead copied the files in).
