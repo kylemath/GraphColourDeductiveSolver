@@ -1,9 +1,10 @@
 # CGlue Lean draft (Long Table, 19 Oct 2026)
 
 Files: `backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/CGlue.lean` (imports `ClaimGlue`, `C66666`,
-`CContract`) and `dcheck/CContract.lean` (contraction geometry; imports `ClaimGlue`). Scope: `CGLUE-SCOPE.md`. This note
+`CContract`), `dcheck/CContract.lean` (contraction geometry; imports `ClaimGlue`) and `dcheck/CSanity.lean` (the
+icosahedron is `Internally6`; imports `CGlue`). The 89 `XRingSimple` entries are listed in `CGLUE-XRING-ENTRIES.txt`. Scope: `CGLUE-SCOPE.md`. This note
 covers the statement, the proof outline, the contraction proof (C4a), the registry counts and the build. **Both files
-build in this container with 0 errors and no `sorry`.**
+build in this container with 0 errors and no `sorry`** (the same holds for `CSanity.lean`).
 
 **Status, 19 Oct 2026 (second update).**
 - **CGlue has no `sorry`.** C4a (`contract_subgraph`) is proved for every X shape, on any spherical map. The proof needs
@@ -13,21 +14,72 @@ build in this container with 0 errors and no `sorry`.**
 - The single-edge path from the first update (`CEntry1`, `contract_edge`, `contract_subgraph1`) is still in the files.
   It is now a special case.
 
-**Registry X shapes (recount on Studio head 3cfd7f18: 1,010 C).**
-- Source: `discharge/wheeldis/out/job30/k3x_C.cfast` at 3cfd7f18. It holds 1,010 C entries, each with its
-  `fixed X={…}` line, and all 1,010 are C-REDUCIBLE. This is the default glob's C set; the 3 ring-merge entries are
-  held out.
+**Status, third update (review "go with changes").**
+- **Sanity, done.** The icosahedron is `Internally6`, so `¬ CGlue.Unavoidable ⟨[], []⟩`. See `CSanity.lean`:
+  `Icosahedron.internally6`, `Icosahedron.noShortSep`, `CGlue.not_unavoidable_nil` and `not_unavoidable1_nil`.
+- **Folded rings: (c) done, (a) not done.**
+  - `XRingSimple` constrains only the ring positions that `eqR` touches. For the **921** entries with interior-only X it
+    is vacuous (`xRingSimple_nil`). For them `OccursCX` is just the D-style face-walk occurrence (`ConfigOccW`: folds
+    and pinches allowed) plus `OccExact` (`occursCX_of_interior`).
+  - The **89** entries whose X has a ring–interior edge still need `XRingSimple`. They are listed by name in
+    `CGLUE-XRING-ENTRIES.txt`.
+  - Route (a), deriving no-loop from Birkhoff / `NoShortSepCycle`, is not proved. Route (b) has no cheap form. Both are
+    discussed under "What is assumed".
+- **`OccExact` bridge, done:** `occExact_of_nx`. It follows when every listed neighbour of each interior vertex occurs
+  in `T`'s rotation there, as in the per-key rotation occurrences and Job 26's 2-ball embedding.
+- `ClaimGlue.lean`'s `CEntry`, `CGlue`, `Registry` and `Unavoidable` carry a "Superseded by `CGlue.…`" docstring note.
+  There are no other changes to that file.
 
-| X shape | Entries |
-|---|---|
-| one interior edge (`eqR = []`, \|eqI\| = 1) | **898** |
-| one ring–interior edge (\|eqR\| = 1, `eqI = []`) | **1** |
-| multi-edge, \|X\| = 2 | 32 (18 interior only, 14 with one ring edge; 13 + 1 are two disjoint edges, 18 are paths) |
-| multi-edge, \|X\| = 3 | 43 (5 interior only, 38 with one ring edge; 34 stars, 7 paths, 2 path + edge) |
-| multi-edge, \|X\| = 4 | 36 (5 with one ring edge, 31 with two ring edges) |
-| **multi-edge total** | **111** |
+## What is assumed
 
-All three classes are now covered by the general C4a. The 898 were already covered by the single-edge path.
+`four_color_of_unavoidableC R hU` proves every spherical map 4-colourable, with no `sorry` and no `axiom` beyond the
+`native_decide` ones. Its single hypothesis is `Unavoidable R`. Through `Registry.Contains`, that hypothesis assumes
+these occurrence conditions for C entries:
+
+1. **`OccExact`** (all 1,010 entries). Every listed configuration adjacency, interior–interior or interior–ring, is an
+   edge of `T`.
+   - `ConfigOccW.nbr` gives only the converse.
+   - Not yet produced by anything in Lean. The bridge `occExact_of_nx` reduces it to rotation facts at the interior
+     vertices, which a rotation-based occurrence (`occ24`'s `Occ`, Job 26's 2-ball embedding) supplies.
+2. **`XRingSimple`** (only the 89 entries with a ring–interior edge in X). A ring position touched by `eqR` is visited
+   only once by the face walk.
+   - Not produced by anything in Lean.
+   - Simple rings give it (`occursCX_of_configOcc`).
+   - Folded rings do occur in large internally 6-connected triangulations (JOB26.md, first finding). So for these 89
+     entries it is a real assumption about the occurrence, not a consequence of `Internally6`.
+   - What closing it would take, route (a): show that a fold at a touched position in a minimal counterexample cannot
+     make the contraction create a loop. A loop would be a kept edge joining two vertices of one X-component in `T`. It
+     closes a cycle `ρ t – ι a – … – ι b – ρ t` of length ≤ |X| + 1 ≤ 5. That cycle would have to separate, which
+     contradicts `NoShortSepCycle` (Birkhoff, proved).
+   - The missing Lean piece is the "both sides non-empty" argument for that cycle, from the occurrence's rotation facts.
+     It is the same kind of argument as JOB26's hand proof that the second ring is simple; not attempted in this round.
+   - Route (b), allowing folds in `OccursCX`, needs a fold-aware label argument (C4b). With an unknown fold pattern, two
+     X-components may merge in `T`, and admissibility per key cannot see that.
+3. **The D-side occurrence fields** (`ConfigOccW`: face walk, deletion map `G`, `nbr`), as for D entries.
+
+The C-reducibility verdicts (`hC`) and side facts are per-key `native_decide` facts. They enter only when a `CEntry` is
+built for a key; no registry-wide `CEntry` list exists yet.
+
+**Registry X shapes (recount; reconciling 1,010 and 1,018).**
+- Source: `discharge/wheeldis/out/job30/k3x_C.cfast`. Each entry has its `fixed X={…}` line and is C-REDUCIBLE. This
+  is the default glob's C set; the 3 ring-merge entries are held out.
+- **1,010 vs 1,018.** The second update counted Studio head **3cfd7f18**, where the file lists 1,010 entries. The next
+  registry commit, **0555b8e9** ("Admit d10 l3q binder r54a", explore 419e31dc), adds 8 C entries, giving **1,018**.
+  All 8 are `f10_...5656565_…` with one interior edge: {I0-I1} ×3, {I0-I2} ×3, {I0-I5} ×2.
+- Names are distinct in both files, and no entry was removed. So the multi-edge and ring counts are unchanged.
+
+| X shape | 3cfd7f18 (1,010) | 0555b8e9 (1,018) |
+|---|---|---|
+| one interior edge (`eqR = []`, \|eqI\| = 1) | 898 | 906 |
+| one ring–interior edge (\|eqR\| = 1, `eqI = []`) | 1 | 1 |
+| multi-edge, \|X\| = 2 | 32 (18 interior only, 14 with one ring edge; 13 + 1 are two disjoint edges, 18 are paths) | 32 |
+| multi-edge, \|X\| = 3 | 43 (5 interior only, 38 with one ring edge; 34 stars, 7 paths, 2 path + edge) | 43 |
+| multi-edge, \|X\| = 4 | 36 (5 with one ring edge, 31 with two ring edges) | 36 |
+| **multi-edge total** | **111** | **111** |
+| **X interior only** (no `XRingSimple` needed) | **921** | **929** |
+| **X with a ring–interior edge** (`XRingSimple` needed) | **89** | **89** |
+
+C4a covers every class. `XRingSimple` is needed only in the last row.
 
 ## Statement
 
@@ -199,9 +251,8 @@ triangle bookkeeping unnecessary, so neither triangulation nor `NoSep` is needed
 `#print axioms` gives `[propext, Classical.choice, Quot.sound]` for each of `contract_edge'`, `contract_subgraph_gen`,
 `contract_subgraph`, `flip_exists`, `contract_edge` and `contract_subgraph1`.
 
-**Hypotheses to keep in view (not sorries).**
-- `Unavoidable R` must supply C occurrences with `OccExact` (listed adjacencies are real) and `XRingSimple` (C5).
-- For simple rings, `XRingSimple` is automatic: see `occursCX_of_configOcc`.
+**Hypotheses to keep in view (not sorries):** see "What is assumed" above (`OccExact` for all entries, `XRingSimple`
+for the 89).
 
 **Axioms.** No `axiom` is added and there is no `sorry`. `#print axioms` at the end of `CGlue.lean` shows:
 - C1, C2, C4a and C4b: only `propext, Classical.choice, Quot.sound`;
@@ -215,25 +266,31 @@ triangle bookkeeping unnecessary, so neither triangulation nor `NoSep` is needed
 ## Build
 
 **This container: builds, 0 errors.**
-- `CGlue.lean` is 956 lines and `CContract.lean` is 822 lines. Neither has a `sorry`. `CContract` builds in about 8 s,
-  `CGlue` in about 40 s. Build order: `… ClaimGlue, C66666, CContract,
+- `CGlue.lean` is 985 lines, `CContract.lean` 822 lines and `CSanity.lean` 216 lines. None has a `sorry`.
+- Build times: `CContract` about 6 s, `CGlue` about 37 s, `CSanity` about 7 s (its `native_decide` check of the 1,586
+  vertex sets runs in well under a second).
+- Rebuilt after the `ClaimGlue` docstring change: `ClaimGlue`, `C66666`, `CContract`, `CGlue` and `CSanity` all exit 0.
+- `#print axioms` for `Icosahedron.noShortSep`, `Icosahedron.internally6` and `CGlue.not_unavoidable_nil`:
+  `[propext, Classical.choice, Quot.sound, Icosahedron.ico_check native_decide]`.
+- `#print axioms` for `occursCX_of_interior` and `occExact_of_nx`: `[propext, Classical.choice, Quot.sound]`. Build order: `… ClaimGlue, C66666, CContract,
   CGlue`.
 - Toolchain: Lean v4.35.0-rc3 at `/root/leantc`, against the partial Mathlib 300d0e5 build at `/root/mlb`.
 - Only the missing targets were built (`lake build` of `PlaneMap.MinimalFrame`, `RingReduce`, `OccToRing`); this was
   not a full Mathlib build.
 - The dcheck chain was built with plain `lean -o`, in this order: `DCheck` … `SepAll`, `DCheckPinch`,
-  `DCheckPinchGeom`, `DCheckOccWalk`, `ClaimGlue`, `C66666`, `CGlue`. Every module exits 0. The slowest are
+  `DCheckPinchGeom`, `DCheckOccWalk`, `ClaimGlue`, `C66666`, `CContract`, `CGlue`, `CSanity`. Every module exits 0. The slowest are
   `DCheckR1T` (280 s), `C66666` (73 s) and `DCheckR1` (68 s); `CGlue` itself takes about 40 s.
 - The script used was the session scratchpad's `build_dc.sh`, not committed. It is `glue.sh`'s loop with
   `LEAN_PATH=/root/mlb/.lake/build/lib/lean:<out>:<mlb packages>`.
 
 **Studio.**
 1. Run `out/lean_glue/glue.sh` as for `ClaimGlue` (the af2f63f5 tree, where SepAll's `Cyc` is renamed `SepCyc`).
-2. Then add `C66666`, `CContract` and `CGlue`, each as `lean -o $W/dc/<f>.olean -i $W/dc/<f>.ilean $H/<f>.lean` from `dcheck/`.
+2. Then add `C66666`, `CContract`, `CGlue` and `CSanity`, each as `lean -o $W/dc/<f>.olean -i $W/dc/<f>.ilean $H/<f>.lean` from `dcheck/`.
 3. Check the `#print axioms` lines at the end of `CGlue.lean`.
 
 ## Next steps
 1. (Done: C4a for every X.)
 2. Generate one `CEntry` per registry C key: `hC` by native_decide, at rings 14–16 (tens of CPU-hours, like Job 24b);
    `lbl` from the X-components.
-3. Extend the occurrence bridge so that it also yields `OccExact` and `XRingSimple`.
+3. Extend the occurrence bridge so that it also yields `OccExact` (through `occExact_of_nx`) and, for the 89 entries,
+   `XRingSimple`, or prove route (a).
