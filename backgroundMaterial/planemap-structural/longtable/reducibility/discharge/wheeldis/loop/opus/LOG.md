@@ -450,3 +450,9 @@ our agent R and have no output from it.
 - t* = 98/619 = 0.15832 exactly. Lower VALID (105 rows), upper FEASIBLE (Karp d0 12.70). Our engine only; Studio check pending.
 - Kill tables are still byte-identical to before; check 4 is unchanged at 7,500.
 - Top binder is now d7 7766556/6567566 (0.120). The face family still dominates.
+
+## Sender-side admissibility gap (Long Table / explore question), 19 Oct ~10:30Z
+- The 4 contexts explore flagged (55667 [0,1,0,0,0][1,1], [0,1,0,1,0][0,0], [0,1,0,1,0][1,0]; 55758 [0,0,0,0,0]) are dead on OUR registries too (5fa0adb0 and 35aeebb8). Every completion of the sender 2-ball contains a registry config: f10 Birkhoff diamond at the 5-5-5 face, f7_...5565_, rsst006 and others.
+- Our LP still keeps them as live sender rows. Cause: the sender filter only checks R6 per 6-spoke wheel and never applies registry configurations. Sender rows are registry-independent.
+- In cert_s22hL, 0.297 of the 0.677 total sender dual weight sits on 2-ball-dead rows.
+- Next: stage 21, a strict sender 2-ball containment filter. Scripts are in P_own_lp/sndchk/.
