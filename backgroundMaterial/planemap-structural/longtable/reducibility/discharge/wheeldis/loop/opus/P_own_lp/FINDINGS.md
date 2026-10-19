@@ -632,3 +632,46 @@ Not read: Studio's Job 31 spec.
   - Those y values are set by the face fives' worst sender contexts in the cert. The heaviest is 55667 [0,0,0,1,0|1,0] (0.101); then 55667 [0,0,1,1,0|0,0], 55669 [0,0,1,0,0|0,0], 55767 [0,0,0,0,0|0] and 55769, all with at most two big hats. Nothing about the link 6s' privates enters.
   - **So a lemma that helps must forbid a face five's worst context**, i.e. a 5-5-5 face whose surrounding hats are mostly small (the listed sender contexts), and not a private of a link 6. That is a sender-side window, and Explore should test that one.
 - Files: s19d/{prelay2.py (= s18d + w19), cmd_st19w.sh, st19w.log, sol_st19w.json, cert_st19w.json, st19wL.log, sol_st19wL.json, cert_st19wL.json, lower_st19wL.log, upper_st19w.log, kill_st19wL.log, val_off_lower.log, engine_md5.txt}.
+
+## Stage 19b pre-registration (before any solve): sender-side oracle Wf (flag `wf19`, list s19e/Wf.txt), over st18h
+- **Wf.** Five sender contexts of a five v, taken from the cert_st19wL support. With hat5 every context is its own row: each listed (word, bits) is the only context producing its coefficient row (checked by full enumeration), so forbidding the label forbids exactly that context.
+- **Notation.**
+  - The link w0..w4 is the canonical word, with exact letters.
+  - H[k] is the class of the hat between w_k and w_{k+1} (0 = small {5,6}, 1 = big >= 7). F[k] is the class of the private of the 6-spoke w_k.
+  - In every context, w0 = w1 = 5, so (v, w0, w1) is a 5-5-5 face. H0 is the vertex across the face edge w0 w1, i.e. the third vertex of the other face on that edge.
+
+| # | word w0..w4 | big hats | small hats | fans | free vertices (small / big) |
+|---|---|---|---|---|---|
+| 1 | 5 5 6 6 7 | H3 (between 6 and 7) | H0 H1 H2 H4 | F2 big, F3 small | 5 small, 2 big |
+| 2 | 5 5 6 6 7 | H2, H3 | H0 H1 H4 | F2, F3 small | 5 small, 2 big |
+| 3 | 5 5 6 6 9 | H2 | H0 H1 H3 H4 | F2, F3 small | 6 small, 1 big; w4 is >= 9 |
+| 4 | 5 5 7 6 7 | none | H0..H4 | F3 small | 6 small, 0 big |
+| 5 | 5 5 7 6 9 | H2 | H0 H1 H3 H4 | F3 small | 5 small, 1 big; w4 is >= 9 |
+
+- **What Explore would have to prove.** No context is a single configuration, because each small vertex is 5 or 6.
+  - Each context is a family of 2^(#small) exact cases on its small vertices: 32 or 64. The big vertices can stay on the ring, unconstrained.
+  - The common core of all five is the 5-5-5 face (v, w0, w1) with w3 = 6 and with H0, H1 and H4 small. These are the vertices around the face's edges at v.
+  - **#4 (55767, everything small) is the most plausible single-family target.** Its interior is exactly v's closed 2-ball apart from the two 7s, and every free vertex has degree <= 6.
+  - #3 and #5 contain a >= 9 spoke, which would have to sit on the ring.
+- **Use.** In R2_sender_rows, skip any context in Wf (flag `wf19 wf=s19e/Wf.txt`). upperR2 and lowerR2 use the same enumeration, so the oracle class is consistent. Everything else is st18h (hat5, argsA54, §14′ filter); w19 is off.
+- **Kill lines:**
+  - (a) the lower bound stays at 10/63, or the upper does not drop below 17/107 by more than solver noise (1e-6);
+  - (b) the binder only moves to the next-worst context of the same face, with a gain under 0.005.
+  - Cap: 90 minutes of solve.
+- **If the gain is real:** drop contexts one at a time to find the minimal window list; report it with the new t and the binders.
+
+## Stage 19b result (09:40Z): **Wf is null. Lower 10/63 and upper 17/107 are both unchanged; kill lines (a) and (b) are met**
+- **Run.** The first launch read a Wf.txt that my own edit had broken (context #1 missing). I killed it within a minute; it produced nothing usable, and its 08:45 error logs were overwritten. Re-run from 08:46Z with all 5 contexts: the log shows "wf19: 5 of 5 forbidden sender contexts skipped", leaving 20,671 sender rows.
+- **st19f** (st18h + wf19):
+  - keeppen fixed point: t = 0.158878504673 = **17/107**, exactly st18h's value (5 iterations, 970 s);
+  - **UPPER-R2 FEASIBLE at 17/107** on sol_st19f.json;
+  - nosep (st19fL): **LOWER-R2 VALID 10/63 (127 rows)**, unchanged.
+  - Kill line (a) is met on both sides.
+- **Where the weight went (cert_st19fL).** Mostly to sibling contexts of the same faces, at the same total.
+  - Three are the forbidden context with only H0 flipped to big, i.e. the vertex across the face edge w0 w1 made big: 55667 [1,0,1,1,0|0,0], 55669 [1,0,1,0,0|0,0] and 55769 [1,0,1,0,0|0] (0.055 each).
+  - The others are 55667 [0,0,0,0,0|1,1] (0.097, the 55667 face five with all hats small and both fans big) and 55767 [0,0,1,1,0|0] (0.058).
+  - Receivers: 7766556/6576576 0.104; 9 655566556/759556565 and 7676556/7759565 0.055; 10 6556655556/6665669665.
+  - Kill line (b) is met: the binder moves to the next contexts of the same face, with gain 0.
+- **Reading.** The certificate is degenerate over the hat classes of the face's ring. For each face five there is a whole family of contexts (varying H0, and the fans or hats away from the 7) with the same dual value, and the LP rebuilds 10/63 from whichever members are left. Forbidding contexts one by one cannot work.
+  - A lemma that helps must remove the face five's context **for every class of H0 and of the far hats at once**. In practice that means the 5-5-5 face next to the 7, with only w3 = 6 and the two near hats fixed: the whole family, not a small window. Long Table found no D/C kill for it at ring <= 16.
+- Files: s19e/{Wf.txt, prelay2.py (= s19d + wf19), prelay2_st19_backup.py, cmd_st19f.sh, st19f.log, sol_st19f.json, cert_st19f.json, rows_st19f.txt, st19fL.log, sol_st19fL.json, cert_st19fL.json, lower_st19fL.log, upper_st19f.log, engine_md5.txt}.

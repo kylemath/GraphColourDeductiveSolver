@@ -439,3 +439,9 @@ our agent R and have no output from it.
 - s22c, unfiltered: 86/515, unchanged.
 - Binders: face rows on top (d7 7665566/6765766 0.112, 7676556/7759565 0.066). Senders: 55667, 55669, 55769.
 - Next: s23h on 35aeebb8 (kills the d=9 binder).
+
+## Stage 19b: sender-side oracle (5 worst face-five contexts forbidden, flag wf19), stage 18 setup, 19 Oct ~09:30Z. NULL
+- Result: lower bound stays at 10/63 (VALID, 127 rows) and the upper bound stays at exactly 17/107. Both kill lines are hit.
+- The weight moves to sibling contexts of the same face (H0 flipped to big, other hat or fan classes). The certificate is degenerate across the whole hat/fan family of a face five.
+- Conclusion: no small lemma on the sender or receiver side can help. Stages 17, 18, 19 and 19b all say the 5-5-5-face family needs either a large reducibility argument (no D/C kill was found at ring ≤16) or a change of method.
+- Files: P_own_lp/s19e/.
