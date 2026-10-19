@@ -48,3 +48,8 @@
 - Rows 4-9 paused with SIGSTOP on each runner and its engine chain (12 processes, state T, 0 % CPU; PIDs in
   paused_pids.txt). The in-flight engines' wall alarms will fire on resume, so the plan is to relaunch fresh runners
   (completed windows are skipped). Paused time counts against nothing.
+- 19:25Z 19 Oct: row 11 (binder 7 7665566/6765766, ring 17-18 todo, 225 windows), 6 parallel parts from 18:10Z:
+  **SURVIVES**, 0 two-engine kills. 218 kc neither, 7 kc timeout at -t 600 (all ring 18: a7_u76..566_67....6,
+  a7_u7665..6_67...6., a7_u7665..6_.7...66, a7_u76..566_67...6., a7_u7665..6_676...6, a7_u76..566_6...766,
+  a7_u7665..6_6.6..66), 0 kc D, 0 kc C. Hypothesis (two-engine kill at ring <= 18) not met on the windows decided;
+  the 7 timeouts carry no verdict.
