@@ -80,6 +80,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 18:26Z 19 Oct: Explore results (8d59c29e).
+  - The d10 binder 6565665656/6555555565 dies at ring 13 (97 D windows on two engines, 59 f-names) and is with Studio for admission.
+  - The face binder 7665566/6765766 is reducible whenever the face apex t = 5 (a 5,5,5,6 ring-7 D). With t >= 6 the registry covers about 70%; fillings with all slots >= 7 all survive.
+  - Forwarded to Opus: the s25c face rule only needs to pay when the apex is >= 6.
+  - Round 53 (split and kill) has started.
 - 18:12Z 19 Oct: SEAL AMENDED by Kyle ("Leak info about progress but not technique between competing teams"). Verified bound numbers and binder patterns may pass between the Opus team and Team B. Rule specs, channel designs and lane details stay sealed. Team B's notes in this file stay "details sealed".
 - 18:15Z 19 Oct: Six sprint routes were set (Kyle: "plan sprint routes to jump over obstacles").
   - Studio: deeper kills.
