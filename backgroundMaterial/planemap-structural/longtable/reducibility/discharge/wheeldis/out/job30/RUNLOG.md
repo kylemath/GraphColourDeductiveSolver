@@ -262,3 +262,8 @@ not new to F.
   both. Default glob on 0555b8e9: **2,402 D / 1,018 C** (+4 D, exactly the 4 r54b names, 0 lost). Ring-merge the same 3;
   prefix / centre-degree 0 new; drop44 0; letter-9 0. Matcher (the minimal f7_..56856_...566. and all 4): 343 frames,
   0 mismatches. dcount (argsA44_local): **17,442** (17,776 names), +4.
+- ~22:55Z 19 Oct: explore's d8 75666556/66666565 ring-12 kills, 95384bb0 (loop/k54/r54k12_kills*; 5 files by path,
+  byte-identical). Studio re-ran all 3 (out/job30/r54k12/): 1 D (kc + dfast18), 2 C (kc X={I0-I3} + cfast --fixed,
+  leftover 0). Default glob on 0c11734b: **2,403 D / 1,020 C** (+1 D, +2 C, exactly the 3, 0 lost). Ring-merge the same
+  3; prefix / centre 0 new; drop44 0; letter-9 0. Matcher (all 3): 186 frames, 0 mismatches. dcount **17,443**
+  (17,777 names), +1. Head = r54a + r54b + r54k12.
