@@ -395,3 +395,11 @@ our agent R and have no output from it.
 - t* = 86/515 = 0.16699. Lower check VALID (136 rows); upper check FEASIBLE (worst conservation 1.1e-13, Karp d0 12.26). Previous unfiltered best: 8/47 on 8e008f86. Our engine only; Studio check pending.
 - The d=10 binder 6565656565/6655666666 has dropped out of the dual. Main receiver is now d=7 7765566/6575666 (0.144).
 - Next: filtered solve (filt16) on 880d25c6, with kill tables regenerated strict on 582 + 1474 configs.
+
+## s21f: 880d25c6, 6-centred relay with the §14′ filter, 19 Oct ~06:30Z
+- Kill tables regenerated strict on 2056 configs (582 + 1474): byte-identical to s16ap/kill6, since the 47 new names add no local kills. Check 4: 7,500 survivors at unknown codes 99, 5 and 7 (md5 9b4d02ba).
+- Bracket 4/25 <= t* <= 65/406 (0.16000 to 0.16010), checked on both sides on our engine:
+  - Upper FEASIBLE: sol_s21f.json, keeppen fixed point.
+  - Lower VALID: cert_s21fL.json, unpenalised LP over the same rows.
+- Gap 9.9e-5, not closed. The bound that counts is the upper one: t* <= 65/406. Studio check pending.
+- Cert binders: d7 7665566/6765766 (0.144), d7 7676556/7759565, d9 655566556/759556565, d10 6556655556/6665669665.
