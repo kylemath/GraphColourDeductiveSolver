@@ -29,6 +29,11 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   5566776/5666657, new), last in the binder list, before part 2. Same method and kill line. It has the 5-5-5 face
   (w3, w4, s3) under two 7s, one ring from the binder, so I give it 40%. d = 10 6565656565 already runs first after
   part 1, as asked.
+- **Part 1e (pre-registered 03:11Z; Long Table, 03:10Z): s20c (8/47) binders d = 7 8665566/5675665** (canonical
+  5566866/5665567) **and d = 8 76566656/65566556** (canonical 56665676/56655665). Both are new, and they run after
+  7765566, before part 2. Same method and kill line. The queue now reads its rows from `loop/k47/rows51.txt`
+  (q51f.sh), so later additions need no restart. Guess: 8665566 has the 5-5-5 face (w3, w4, s3) under an 8, so 40%.
+  The d = 8 row has four 5s in s and two in its link, so it dies at ring <= 14 (70%).
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
