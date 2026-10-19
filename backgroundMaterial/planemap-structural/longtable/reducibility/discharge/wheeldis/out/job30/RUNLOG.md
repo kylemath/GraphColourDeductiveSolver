@@ -244,3 +244,10 @@ not new to F.
   Default glob: **2,397 D / 1,010 C** (+407 D, +161 C = exactly the 568 names, 0 lost). Ring-merge hold 3 (the same
   3, none new), drop44 0, letter-9 0, centre-degree < 7 held 0. Matcher (the 8 minimal names): 497 frames, 0
   mismatches. dcount (argsA44_local): **17,437** distinct parsed D (17,771 names), +407.
+- ~20:40Z 19 Oct: prefix guard (Long Table 20:34Z). twoeng reads every block header `<name> r=N ` (was [epf] only, so
+  a non-plain block could never inherit the previous name), and holds out of k3x any two-engine name that is not a
+  plain [epf]<d>_<d link letters>_<d s letters> name the wlp3 parser reads (g7_, s5_, b7p5_, ...), logged to
+  out/job30/sender_names_held.log with the reason; the letter-9 reader runs on plain names only. Re-run on 3cfd7f18:
+  k3x_D / k3x_C byte-identical (2,397 D / 1,010 C), nothing new held from k3x. The log now lists the 1,101 non-plain
+  two-engine names the old header regex silently skipped (582 rsst*, 404 a8_, 94 a7_, 21 k42*: RSST verdict lines and
+  window-name files, never in k3x).

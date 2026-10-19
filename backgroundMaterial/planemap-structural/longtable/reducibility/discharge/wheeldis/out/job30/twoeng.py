@@ -19,7 +19,7 @@ for fn in files:
     try: lines = open(fn).read().splitlines()
     except UnicodeDecodeError: continue
     for line in lines:
-        m = re.match(r'^([epf]\d+_\S+) r=\d+ ', line)
+        m = re.match(r'^([A-Za-z]\w*_\S+) r=\d+ ', line)   # any header name (Long Table 20:34Z), so a non-plain block never inherits the previous name
         if m:
             cur, curkc = m.group(1), 'mode=' in line
             if 'D=true' in line:
@@ -42,16 +42,21 @@ mism = sorted(n for n in cC if n in kC and not (cX[n] & kC[n]))
 # letter-9 rule (loop/studio/opus_check/letter9_rule.md, Long Table 09:03Z): a 9 in an f-name's link or s word is an
 # interior vertex of exact degree 9, which no LP letter matches (LP 9 = >= 9): exclude and log; a 9 only at an f9_
 # centre is exact and admitted as normal
+# prefix guard (Long Table 20:34Z): only a plain receiver name the wlp3 parser reads, [epf]<d>_<d link letters>_<d s
+# letters>, may enter k3x; g7_, s5_, b7p5_ and any other form (privates, ring-3 vertices) is held and logged
+def plain(n):
+    m = re.fullmatch(r'([epf])(\d+)_([5-9B.]+)_([0-9B.]+)', n)
+    return bool(m) and len(m.group(3)) == int(m.group(2)) == len(m.group(4))
 sys.path.insert(0, os.path.join(HERE, 'out', 'job31'))
 from letter9 import lp_reading
-L9 = sorted(n for n in set(okD) | set(okC) if lp_reading(n) == 'unmatchable')
+L9 = sorted(n for n in set(okD) | set(okC) if plain(n) and lp_reading(n) == 'unmatchable')
 # sender-context names (centre degree < 7, e.g. explore's p5_ form, Long Table 11:48Z): not receiver patterns; they wait
 # for RELAY_SPEC 17's sender 2-ball filter and are never written to k3x (logged)
-SND = sorted(n for n in set(okD) | set(okC) if int(re.match(r'^[epf](\d+)_', n).group(1)) < 7)
+SND = sorted(n for n in set(okD) | set(okC) if not plain(n) or int(re.match(r'^[epf](\d+)_', n).group(1)) < 7)
 okD = [n for n in okD if n not in SND]; okC = [n for n in okC if n not in SND]
 if SND:
     with open(os.path.join(HERE, 'out', 'job30', 'sender_names_held.log'), 'a') as _sf:
-        for n in SND: _sf.write('%s held (two-engine %s; centre degree < 7: sender context, not a receiver pattern)\n' % (n, 'D' if n in dD and n in kD else 'C'))
+        for n in SND: _sf.write('%s held (two-engine %s; %s)\n' % (n, 'D' if n in dD and n in kD else 'C', 'not a plain [epf]<d>_link_s name the parser reads' if not plain(n) else 'centre degree < 7: sender context, not a receiver pattern'))
 # ring-merge hold (CGLUE-SCOPE a7557788, Long Table 19:27Z): a C entry whose recorded X has a connected component holding
 # two or more ring vertices R* merges ring vertices under contraction (the case Job 21 refused); held out of k3x, logged
 def ringmerge(x):
