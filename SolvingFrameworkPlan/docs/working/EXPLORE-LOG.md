@@ -38,6 +38,18 @@ ring 17-18 reducibility of the surviving face receivers, split with Studio by wh
   windows written to `loop/k47/win52_<row>_todo.txt` for Studio. 7766556/6576576 was restarted under it at 14:44Z
   (about 3 min of ring <= 12 windows lost; drive45 resumes from A_kcc.out). The kill line is unchanged.
 
+- **16:28Z-16:31Z, Studio's rows (Studio's reports).** Rows 1-3 die: 86555665/56586665 and 86555665/56576665 at ring
+  11 (D), 85586556/66656565 at ring 14 (D); 373, 459 and 40 two-engine kill windows so far, f-names still being
+  collected. 7655566/6759676 **survives** (final, Studio commit 0bc4f723): no two-engine kill in 255 windows to ring
+  18; 4 ring-18 windows timed out on kc at 600 s and are on dfast18, with any D to be confirmed by kc -t 3600; best
+  kc leftover 256 bad classes at ring 15.
+- **16:39Z, 7766556/6576576 (explore): no kill to ring 16, undecided at the cap.** 1,197 of 1,296 ring <= 16 windows
+  run, none D or C, no kc timeouts (best leftover 144 at ring 14, 328 at ring 15, 656 at ring 16); 99 ring-16 windows
+  not reached. Its 414 windows left (99 at ring 16, 192 at ring 17, 123 at ring 18) are in
+  `loop/k47/win52_7_7766556_6576576_todo.txt`, for Studio. 7766556/6567566 started at 16:39Z.
+- **16:39Z, tally.** Of the 14 rows: 3 dead (Studio rows 1-3), 1 survives to ring 18 (7655566/6759676), 2 undecided
+  with their remainder at Studio (7665566/6765766, 7766556/6576576), 8 running.
+
 ## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
 
 **Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
