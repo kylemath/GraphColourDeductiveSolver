@@ -506,3 +506,9 @@ our agent R and have no output from it.
 - This is the new best, below 16/101 [E2 on 5fa0adb0]. The new registry kills (d9 face row, r7h) are what moved it.
 - Stage 24 D columns (capped at 3): t* stays at exactly 2/13 (the cert is VALID in the big2 class; D = 0 is feasible). Gain 0, kill line met.
 - Binders: face 7 7665566/6675676 (0.231) and two d=10 rows (0.038 each).
+
+## s28q: pricing of l3q (borrowed-channel note, dc954db3), against cert_st24bL, 19 Oct ~18:50Z
+- One column is negative: q̂(7,7,6,6,5) = −6/13. It sits only on the face binder 7665566/6675676 and confirms the hypothesis exactly.
+- Controls pass. Mask off gives 0. With the side swapped, coefficients go to 0. Physical test: 0 mismatches; broken control: 95,996.
+- The note's p5=5 rsst003 kill does not reproduce, though the survivor count (6,400) matches.
+- Next: solve with V=7 only (20 columns), so only d=7 needs the wider view. Gain is likely capped by the d10 rows, which Studio's r52j/r52k kills address.

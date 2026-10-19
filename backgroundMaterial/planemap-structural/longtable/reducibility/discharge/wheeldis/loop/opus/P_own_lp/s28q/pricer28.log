@@ -1,0 +1,63 @@
+physical test (u deg 7, v deg 7..11, random mirror/rotation, 100000 edges): 0 key mismatches
+broken control (payee reads the + side apex across the - side edge): 95996 mismatches
+receiverR2 row 10 6565665656 6555555565 w -1/26 | engine row builder: 8 existing columns
+receiverR2 row 10 6565555665 6665956566 w -1/26 | engine row builder: 7 existing columns
+receiverR2 row 7 7665566 6675676 w -3/13 | engine row builder: 7 existing columns
+cert /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s24d/cert_st24bL.json rows 36 tco 1 objective 2/13
+
+[mask win] l3q columns touched by the cert:
+  ('Q', (7, 7, 6, 6), 30)            rc 6/13   = +0.461538  rows: ['7 7665566/6675676 coef +2']
+  ('q', (7, 7, 6, 6, 5))             rc -6/13  = -0.461538  rows: ['7 7665566/6675676 coef -2']
+[mask win] composite q^ over the 60 first-family keys (Q at its mrowQ minimum):
+  q^(7, 7, 6, 6, 5) rc -6/13 = -0.461538 rows: ['7 7665566/6675676 coef -2']
+  q^(7, 7, 6, 6, 6) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 7) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 8) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 9) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  all other first-family keys: rc = 0 (no cert row touches them)
+[mask win] exact pricing (best mrowQ duals; min over a2-subsets per signature): min rc -6/13 ((7, 7, 6, 6), (5,))
+
+[mask full] l3q columns touched by the cert:
+  ('Q', (7, 7, 6, 6), 30)            rc 6/13   = +0.461538  rows: ['7 7665566/6675676 coef +2']
+  ('q', (7, 7, 6, 6, 5))             rc -6/13  = -0.461538  rows: ['7 7665566/6675676 coef -2']
+[mask full] composite q^ over the 60 first-family keys (Q at its mrowQ minimum):
+  q^(7, 7, 6, 6, 5) rc -6/13 = -0.461538 rows: ['7 7665566/6675676 coef -2']
+  q^(7, 7, 6, 6, 6) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 7) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 8) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 9) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  all other first-family keys: rc = 0 (no cert row touches them)
+[mask full] exact pricing (best mrowQ duals; min over a2-subsets per signature): min rc -6/13 ((7, 7, 6, 6), (5,))
+
+[CONTROL mask off] l3q columns touched by the cert:
+  ('Q', (7, 7, 6, 6), 31)            rc 6/13   = +0.461538  rows: ['7 7665566/6675676 coef +2']
+  ('q', (7, 7, 6, 6, 5))             rc -6/13  = -0.461538  rows: ['7 7665566/6675676 coef -2']
+[CONTROL mask off] composite q^ over the 60 first-family keys (Q at its mrowQ minimum):
+  q^(7, 7, 6, 6, 6) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 7) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 8) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 9) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  all other first-family keys: rc = 0 (no cert row touches them)
+[CONTROL mask off] exact pricing (best mrowQ duals; min over a2-subsets per signature): min rc 0 None
+
+[CONTROL swapped side] l3q columns touched by the cert:
+  ('Q', (7, 7, 6, 6), 30)            rc 6/13   = +0.461538  rows: ['7 7665566/6675676 coef +2']
+  ('q', (7, 7, 6, 6, 5))             rc -6/13  = -0.461538  rows: ['7 7665566/6675676 coef -2']
+[CONTROL swapped side] composite q^ over the 60 first-family keys (Q at its mrowQ minimum):
+  q^(7, 7, 6, 6, 5) rc -6/13 = -0.461538 rows: ['7 7665566/6675676 coef -2']
+  q^(7, 7, 6, 6, 6) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 7) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 8) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  q^(7, 7, 6, 6, 9) rc 6/13 = +0.461538 rows: ['7 7665566/6675676 coef +2']
+  all other first-family keys: rc = 0 (no cert row touches them)
+[CONTROL swapped side] exact pricing (best mrowQ duals; min over a2-subsets per signature): min rc -6/13 ((7, 7, 6, 6), (5,))
+
+HYPOTHESIS rc(q^(7,7,6,6,5)) = -6/13: got -6/13 -> CONFIRMED
+CONTROL mask off: rc(q^(7,7,6,6,5)) = 0 -> PASS; min composite rc over family 0
+with q capped at 3 (as x / D in lowerR2), the cert bound would be 2/13 + 3 * (-6/13) = -16/13
+
+side test 7665567/6765756 (d = 7): payer + payee terms and composite coefficients, correct vs swapped mask side
+  [correct] terms: {('q', (7, 7, 6, 6, 5)): -1, ('q', (7, 7, 7, 6, 5)): -1, ('q', (7, 7, 7, 6, 6)): -1, ('q', (7, 7, 6, 5, 5)): -1, ('Q', (7, 7, 6, 6), 30): 1, ('Q', (7, 7, 7, 6), 31): 2, ('Q', (7, 7, 6, 5), 30): 1}
+  [correct] composites: {(7, 7, 6, 5, 5): -1, (7, 7, 6, 5, 6): 1, (7, 7, 6, 5, 7): 1, (7, 7, 6, 5, 8): 1, (7, 7, 6, 5, 9): 1, (7, 7, 6, 6, 5): -1, (7, 7, 6, 6, 6): 1, (7, 7, 6, 6, 7): 1, (7, 7, 6, 6, 8): 1, (7, 7, 6, 6, 9): 1}
+  [swapped] terms: {('q', (7, 7, 6, 6, 5)): -1, ('q', (7, 7, 7, 6, 5)): -1, ('q', (7, 7, 7, 6, 6)): -1, ('q', (7, 7, 6, 5, 5)): -1, ('Q', (7, 7, 6, 6), 31): 1, ('Q', (7, 7, 7, 6), 30): 2, ('Q', (7, 7, 6, 5), 31): 1}
+  [swapped] composites: {(7, 7, 6, 5, 6): 1, (7, 7, 6, 5, 7): 1, (7, 7, 6, 5, 8): 1, (7, 7, 6, 5, 9): 1, (7, 7, 6, 6, 6): 1, (7, 7, 6, 6, 7): 1, (7, 7, 6, 6, 8): 1, (7, 7, 6, 6, 9): 1}
