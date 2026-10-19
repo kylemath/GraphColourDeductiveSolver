@@ -419,7 +419,26 @@ def main():
     seen = set()
     it = 0
     full = False      # REG: node-limited separation until a pass finds nothing, then one exhaustive pass
+    ck = os.path.join(HERE, 'ckpt_%s.pkl' % OPTS.get('tag', 'run'))
+    if 'resume' in OPTS and os.path.exists(ck):
+        import pickle
+        with open(ck, 'rb') as fi:
+            C = pickle.load(fi)
+        assert C['VARL'][:len(VARL)] == VARL, 'checkpoint from a different model'
+        VARL[:] = C['VARL']
+        VAR.clear()
+        VAR.update({k: i for i, k in enumerate(VARL)})
+        rows[:] = C['rows']
+        seen |= C['seen']
+        LASTARR.update(C['LASTARR'])
+        it = C['it']
+        print('resumed from %s at it %d (%d rows)' % (ck, it, len(rows)), flush=True)
     while True:
+        if it and it % 20 == 0:
+            import pickle
+            with open(ck + '.tmp', 'wb') as fo:
+                pickle.dump({'VARL': VARL, 'rows': rows, 'seen': seen, 'LASTARR': LASTARR, 'it': it}, fo)
+            os.replace(ck + '.tmp', ck)
         trunc = []
         x, t, res = solve(rows)
         new = 0
