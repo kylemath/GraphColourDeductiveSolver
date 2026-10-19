@@ -262,3 +262,14 @@ not new to F.
   both. Default glob on 0555b8e9: **2,402 D / 1,018 C** (+4 D, exactly the 4 r54b names, 0 lost). Ring-merge the same 3;
   prefix / centre-degree 0 new; drop44 0; letter-9 0. Matcher (the minimal f7_..56856_...566. and all 4): 343 frames,
   0 mismatches. dcount (argsA44_local): **17,442** (17,776 names), +4.
+- ~22:55Z 19 Oct: explore's d8 75666556/66666565 ring-12 kills, 95384bb0 (loop/k54/r54k12_kills*; 5 files by path,
+  byte-identical). Studio re-ran all 3 (out/job30/r54k12/): 1 D (kc + dfast18), 2 C (kc X={I0-I3} + cfast --fixed,
+  leftover 0). Default glob on 0c11734b: **2,403 D / 1,020 C** (+1 D, +2 C, exactly the 3, 0 lost). Ring-merge the same
+  3; prefix / centre 0 new; drop44 0; letter-9 0. Matcher (all 3): 186 frames, 0 mismatches. dcount **17,443**
+  (17,777 names), +1. Head = r54a + r54b + r54k12.
+- ~23:05Z 19 Oct: explore's d8 binder 76656656/56655565 ring-12 kills, c0eae309 (loop/k47/r54c_kills*; 5 files by
+  path, byte-identical). Studio re-ran all 72 (out/job30/r54c/): 32 D (kc + dfast18), 40 C (kc X + cfast --fixed X,
+  leftover 0), 0 dropped, 0 one-engine. Hand check (Long Table 22:58Z): f8_...65676_...56.5. X={I0-I5,I1-I2,R2-I0,
+  R0-I2}, components {I0,I5,R2} and {I1,I2,R0}: ring-merge guard **pass**. Default glob on 4d266b63: **2,435 D / 1,060
+  C** (+32 D, +40 C, exactly the 72, 0 lost). Ring-merge the same 3; prefix / centre 0 new; drop44 0; letter-9 0.
+  Matcher (the minimal names + the hand-check name): 432 frames, 0 mismatches. dcount **17,475** (17,809 names), +32.
