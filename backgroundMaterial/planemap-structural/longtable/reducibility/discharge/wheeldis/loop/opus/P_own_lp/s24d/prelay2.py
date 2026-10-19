@@ -124,6 +124,21 @@ RV = {}
 HRR = 'hatrr' in FLAGS               # stage 23 (RELAY_SPEC 15r): reverse hat channel, the big hat b sends rr[K] >= 0 to the five v
 assert not HRR or H5, 'hatrr needs hat5'
 RRV = {}
+CONSALL = 'consall' in FLAGS         # stage 24 (RELAY_SPEC 19.5): separate conservation over all 1,424 non-R6 6-words, not only five-containing ones
+DD = 'big2' in FLAGS                 # stage 24 (RELAY_SPEC 19): D[K] >= 0, big -> big apex across a diamond (both directions)
+DV = {}
+def d_canon2(a, b): return min(a + b, b + a)
+def d_side(z, link_nb, apex_nb, out):
+    """RELAY_SPEC 19.2/19.3 side of a shared spoke z read at a receiver centre T: link_nb = z's other T-adjacent link nbr,
+    apex_nb = the apex across (link_nb, z); out = T is the paying tip"""
+    if z == 5: return ((5, link_nb, apex_nb),) if out else ((5, apex_nb, link_nb),)
+    if z == 6: return ((6, apex_nb),)
+    return ((z,),)
+def d_keys(U, wm1, wi, wi1, wi2, sm1, si, sp1):
+    """(out key U -> s_i, in key s_i -> U) at a position with s_i big"""
+    ko = (U, si, d_canon2(d_side(wi, wm1, sm1, True), d_side(wi1, wi2, sp1, True)))
+    ki = (si, U, d_canon2(d_side(wi, wm1, sm1, False), d_side(wi1, wi2, sp1, False)))
+    return ko, ki
 def hat_sender_terms(w, H, Fn, k):
     """coefficients the five v's senderR2 row gets from its big hat H[k]: r (v -> b) +1; rr (b -> v) -1"""
     K = h5_sender(w, H, Fn, k); out = {('r', K): 1}
@@ -342,6 +357,11 @@ def window_table_R2(U, y, x, MV2):
         for b, c, e, f, q, s_ in itertools.product(range(5), repeat=6):
             K_ = h5_recv(LET[b], LET[c], LET[e], LET[f], LET[q], LET[s_])
             W[:, b, c, e, f, :, q, 0, s_] += RV.get(K_, 0.0) - RRV.get(K_, 0.0)
+    if DD:
+        for b, c, e, f, q, r, s_ in itertools.product(range(5), range(5), range(5), range(5), range(5), (2, 3, 4), range(5)):
+            ko, ki = d_keys(U, LET[b], LET[c], LET[e], LET[f], LET[q], LET[r], LET[s_])
+            v = DV.get(ki, 0.0) - DV.get(ko, 0.0)
+            if v: W[:, b, c, e, f, :, q, r, s_] += v
     for a, b, e, f, q, r in itertools.product(range(5), repeat=6):
         if not AP and (a or f): continue
         sg = sig2_of(U, LET[e], LET[r], LET[q], LET[b], LET[f], LET[a])
@@ -371,6 +391,14 @@ def class_table_R2(xon):
             T[b_, c_, e_, f_, q_, s2] = ids.setdefault(h5_recv(LET[b_], LET[c_], LET[e_], LET[f_], LET[q_], LET[s2]), len(ids)) + 1
         C = np.where(r == 0, C + 500000 * T[b, c, e, f, q, s_], C)
         assert int(C.max()) < 2 ** 31 - 1
+    if DD:   # D term at a position with s_i big depends on (b, c, e, f, q, r, s): fold a U-independent id into the class
+        ids = {}; T7 = np.zeros((5,) * 7, dtype=np.int64)
+        for b_, c_, e_, f_, q_, r_, s2 in itertools.product(range(5), repeat=7):
+            if r_ < 2: continue
+            ko, ki = d_keys(0, LET[b_], LET[c_], LET[e_], LET[f_], LET[q_], LET[r_], LET[s2])
+            T7[b_, c_, e_, f_, q_, r_, s2] = ids.setdefault((ko, ki), len(ids)) + 1
+        C = np.where(r >= 2, C + 500000 * T7[b, c, e, f, q, r, s_], C)
+        assert int(C.max()) < 2 ** 31 - 1, 'class overflow'
     return C.astype(np.int32)
 def recv_coef_R2(d, lk, sv, xon):
     cy, cx = recv_coef(d, lk, sv, xon); cf = collections.Counter()
@@ -398,6 +426,11 @@ def recv_coef_R2(d, lk, sv, xon):
                 for k2, c2v in hat_recv_terms(h5_recv(w[(i - 1) % d], w[i], w[(i + 1) % d], w[(i + 2) % d], s[(i - 1) % d], s[(i + 1) % d])).items(): cf[k2] += c2v
     if Q7 and d == 7:
         for k, m in q7_inflow(w).items(): cf[('q', k)] -= m
+    if DD:
+        for i in range(d):
+            if s[i] >= 7:
+                ko, ki = d_keys(U, w[(i - 1) % d], w[i], w[(i + 1) % d], w[(i + 2) % d], s[(i - 1) % d], s[i], s[(i + 1) % d])
+                cf[('D', ko)] -= 1; cf[('D', ki)] += 1
     return cf
 def cmd_orientR2():
     bad = 0; n = 0
@@ -446,7 +479,7 @@ def cmd_solveR2():
     import highspy
     load_patterns()
     xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]
-    p = os.path.join(WORK, 'clsR2_%d%s%s.bin' % (int(xon), 'z' if ZH else '', 'f' if F16 else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     K = int(OPT.get('K', '300')); MAXIT = int(OPT.get('maxit', '300')); TOL = float(OPT.get('tol', '1e-9'))
@@ -467,7 +500,7 @@ def cmd_solveR2():
     SR = R2_sender_rows()
     for wd, cf, bits in SR:
         c2_ = dict(cf); c2_[('t',)] = 1.0; addrow(c2_, 1.0, inf, ('senderR2', wd, bits))
-    RW = all6_words() if V6 else relay_words()   # v6: no-five 6-types must conserve too (v out = h in)
+    RW = all6_words() if (V6 or CONSALL) else relay_words()   # v6: no-five 6-types must conserve too (v out = h in)
     def addsig(sg):
         if sg in msig: return
         msig.add(sg)
@@ -519,6 +552,7 @@ def cmd_solveR2():
         VV.clear(); VV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'v'})
         RV.clear(); RV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'r'})
         RRV.clear(); RRV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'rr'})
+        DV.clear(); DV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'D'})
         if Q7: write_bonus()
         xd = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'x' and xv[i] > 1e-12}
         mcache = {}
@@ -582,6 +616,7 @@ def cmd_solveR2():
          'f': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'f' and xv[i] > 0], 'face5': F5,
          'r': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'r' and xv[i] > 0], 'hat5': H5,
          'rr': [[list(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'rr' and xv[i] > 0], 'hatrr': HRR,
+         'D': [[repr(k[1]), float(xv[i])] for k, i in cols.items() if k[0] == 'D' and xv[i] > 0], 'big2': DD,
          'V': [[list(k[1]), float(xv[i]), min([float(xv[cols[('v', kk)]]) if ('v', kk) in cols else 0.0 for kk in sigv_keys(k[1])] or [0.0])] for k, i in cols.items() if k[0] == 'V'],
          'x': {str(k[1]): float(xv[i]) for k, i in cols.items() if k[0] == 'x' and xv[i] > 0}}
     json.dump(S, open(os.path.join(HERE, 'sol_%s.json' % tag), 'w'))
@@ -755,7 +790,7 @@ def all6_words():
 def cmd_upperR2():
     load_patterns()
     xon = 'xon' in FLAGS
-    p = os.path.join(WORK, 'clsR2_%d%s%s.bin' % (int(xon), 'z' if ZH else '', 'f' if F16 else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     Sj = json.load(open(OPT['sol'])); t = Sj['t']
@@ -774,6 +809,9 @@ def cmd_upperR2():
     if Sj.get('r') and not H5: log('SOLUTION HAS r BUT hat5 FLAG OFF'); return
     RRV.clear(); RRV.update({tuple(k): v for k, v in Sj.get('rr', [])})
     if Sj.get('rr') and not HRR: log('SOLUTION HAS rr BUT hatrr FLAG OFF'); return
+    DV.clear(); DV.update({eval(k): v for k, v in Sj.get('D', [])})
+    if Sj.get('D') and not DD: log('SOLUTION HAS D BUT big2 FLAG OFF'); return
+    if any(v < 0 for v in DV.values()): log('NEGATIVE D VALUE'); return
     FV.clear(); FV.update({tuple(k): v for k, v in Sj.get('f', [])})
     if Sj.get('f') and not F5: log('SOLUTION HAS f BUT face5 FLAG OFF'); return
     xd = {int(k): v for k, v in Sj.get('x', {}).items()}
@@ -848,7 +886,7 @@ def cmd_rowR2():
         ks = sig2_keys(sg); return max(HV2.get(k, 0.0) for k in ks) if ks else 0.0
     tot = 0.0; parts = []
     for k, c in sorted(recv_coef_R2(d, lk, sv, xon).items(), key=str):
-        v = YV.get(rname(k[1]), 0.0) if k[0] == 'y' else dict((tuple(a), b) for a, b in Sj.get('r', [])).get(k[1], 0.0) if k[0] == 'r' else dict((tuple(a), b) for a, b in Sj.get('rr', [])).get(k[1], 0.0) if k[0] == 'rr' else ZV.get(k[1], 0.0) if k[0] == 'z' else XV.get(k[1], 0.0) if k[0] == 'x' else QV.get(k[1], 0.0) if k[0] == 'q' else VV.get(k[1], 0.0) if k[0] == 'v' else min([VV.get(kk, 0.0) for kk in sigv_keys(k[1])] or [0.0]) if k[0] == 'V' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else MV2(k[1])
+        v = YV.get(rname(k[1]), 0.0) if k[0] == 'y' else dict((tuple(a), b) for a, b in Sj.get('r', [])).get(k[1], 0.0) if k[0] == 'r' else dict((tuple(a), b) for a, b in Sj.get('rr', [])).get(k[1], 0.0) if k[0] == 'rr' else dict((eval(a), b) for a, b in Sj.get('D', [])).get(k[1], 0.0) if k[0] == 'D' else ZV.get(k[1], 0.0) if k[0] == 'z' else XV.get(k[1], 0.0) if k[0] == 'x' else QV.get(k[1], 0.0) if k[0] == 'q' else VV.get(k[1], 0.0) if k[0] == 'v' else min([VV.get(kk, 0.0) for kk in sigv_keys(k[1])] or [0.0]) if k[0] == 'V' else max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0]) if k[0] == 'Q' else MV2(k[1])
         tot += c * v
         if abs(c * v) > 1e-12: parts.append('%s%s:%+g*%.5f' % (k[0], rname(k[1]) if k[0] == 'y' else ''.join(map(str, k[1])) if k[0] != 'x' else k[1], c, v))
     w = 0.0

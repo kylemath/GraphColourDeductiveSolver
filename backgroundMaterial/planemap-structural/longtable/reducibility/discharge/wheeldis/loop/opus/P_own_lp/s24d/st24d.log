@@ -1,0 +1,9 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9699, 8: 4522, 9: 2941, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 16937, 'C': 1884, 'RPAT': 158}
+conservation basis rows added: 10539
+warm rows admitted: 54905
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1256 M sigs
+iter 0 t=0.153846153846 rows 95040 cols 30587 added 1575  lp 495.9s total 515s  {7: (148, np.float64(3.461329), 0.8), 8: (153, np.float64(3.148464), 0.7), 9: (152, np.float64(3.764475), 0.7), 10: (149, np.float64(4.21065), 0.7), 11: (152, np.float64(4.072703), 0.7), 12: (139, np.float64(4.211088), 0.7), 13: (146, np.float64(3.761384), 0.8), 14: (134, np.float64(3.389296), 0.8), 15: (139, np.float64(3.527681), 0.9), 16: (131, np.float64(3.666066), 0.9), 17: (132, np.float64(3.216362), 1.1)}
+iter 1 t=0.153846153846 rows 96591 cols 30707 added 1492  lp 84.1s total 619s  {7: (158, np.float64(1.479692), 1.0), 8: (157, np.float64(1.299638), 0.7), 9: (147, np.float64(1.839718), 0.8), 10: (155, np.float64(1.456663), 0.7), 11: (152, np.float64(1.464441), 0.7), 12: (160, np.float64(1.393065), 0.8), 13: (175, np.float64(1.379981), 0.9), 14: (177, np.float64(1.595182), 0.9), 15: (174, np.float64(0.772699), 0.9), 16: (33, np.float64(0.9879), 1.1), 17: (4, np.float64(0.165417), 1.1)}
+iter 2 t=0.153846153846 rows 97535 cols 30755 added 907  lp 89.8s total 728s  {7: (147, np.float64(0.590462), 1.2), 8: (146, np.float64(0.758099), 1.1), 9: (151, np.float64(0.982258), 0.8), 10: (156, np.float64(0.739171), 0.7), 11: (150, np.float64(0.686768), 0.7), 12: (150, np.float64(0.676754), 0.8), 13: (7, np.float64(0.203188), 0.9)}
+solve exit 124

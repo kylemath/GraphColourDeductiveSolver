@@ -493,3 +493,10 @@ our agent R and have no output from it.
 - Both ends can read only two families: D (big to big apex across a diamond) and O (big to the big private of a 6-spoke). Physical test: 0 mismatches; broken-key control: 119,502.
 - Pricing, exact, against cert_s22hL and cert_st23rL: 3 D columns price negative, all 9+ to 9+, relieving the d=9/10 binders (smallest reduced cost −8/303). The D(7↔9) columns sit at exactly 0, and every O column is positive. Nothing prices into the face 7 rows.
 - No solve was run; one needs Long Table's go, and the solveR2 conservation gap must be closed first.
+
+## Stage 24 solve attempt on 0125c46b (argsA59), 19 Oct ~14:40Z. UNCONVERGED
+- New engine flags: consall (conservation separated over all 1,424 types; fixes the §19.5 gap) and big2 (the D family). D row-sum test: 0 mismatches. Regression with both flags off: 16/101.
+- Baseline st24b and st24d (with D) both hit the 90-min cap. Neither has an upper bound.
+- Both lower bounds are VALID at 2/13 with the identical 34-row cert. All D reduced costs are >= 0 against it.
+- Binders: face 7 7665567/6765756 (0.231) and two d=10 rows. The face 7 does not bind alone.
+- Re-run needs: D capped with a penalty, solves run one at a time, a longer cap, and warm starts.

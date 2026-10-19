@@ -797,3 +797,32 @@ Built by s19e/mkfamily.py, run on the s19e engine (hat5 class, s21/argsA54.txt, 
   - Every O column is > 0, and every column touching a 7 is >= 0.
 - **Kill line (all rc >= 0): not met.** Stopped before any solve, as the brief requires. Any gain must come from the d = 9/10 binders; the face-7 rows are not priced into.
 - **Note for any solve.** The solveR2 conservation gap (no-five 6-words are not separated without v6, which broke upperR2 on sol_st23r) has to be closed first (RELAY_SPEC 19.5).
+
+## Stage 24 solve pre-registration (before any solve): D columns (flag `big2`) on s25/argsA59.txt (0125c46b), with the conservation fix `consall`
+- **Engine.** s24d/prelay2.py (s23d plus `consall` and `big2`; backup s24d/prelay2_st23_backup.py). Changes are recorded in RELAY_SPEC 19.5. The consistency test is s24d/test_big2.log (0 mismatches).
+- **Regression** (flags off): lowerR2 on s22/hf/cert_s22hL.json on argsA55 must give 16/101.
+- **Baseline st24b.** `xon apexcls filt16 killtab=s25/f/kill/kill6 hat5 consall`, run as keeppen (xpen 1e-3), then nosep, then lowerR2 on the nosep cert and upperR2 on the keeppen solution. upperR2 must pass all 1,424 conservation types.
+- **With D, st24d.** The same flags plus `big2` (the full D family of RELAY_SPEC 19), with the same recipe and checks.
+- **Kill line:** the gain is under 0.005 against the st24b baseline on the same registry. Cap: 90 min per solve.
+- **Report:** t* with and without D, the binders, and, if the face 7 rows bind alone, their value as "face-family floor under §15+§19".
+
+## Stage 24 solve result: **neither keeppen solve converged within the 90-min cap, so there is no upper bound and no gain is shown. Both lower bounds are VALID at 2/13 with the identical 34-row cert, and D buys nothing at that dual**
+- **Regression** (new flags off, argsA55): LOWER-R2 VALID 16/101 on cert_s22hL (s24d/val_off_lower.log).
+- **st24b** (baseline, consall, argsA59 / 0125c46b).
+  - keeppen ran for 5 iterations in 90 min (12:50Z-14:20Z, run in parallel with st24d, 2 threads each) and was killed by the timeout (exit 124). The LP value was 2/13 at every iteration, and violated rows were still being added (worst 0.07 at d = 7 on the last iteration).
+  - **Unconverged, so this is not an upper bound.** No sol_st24b.json was written, so upperR2 and the 1,424-type conservation check could not run.
+  - nosep over the rows generated so far: **LOWER-R2 VALID t >= 2/13 (34 rows).**
+- **st24d** (consall + big2).
+  - keeppen completed only 3 iterations (728 s); the LP of the 4th iteration then ran until the timeout. Separator violations were large at every d = 7..17 (up to 4.2 on iteration 0), because D is uncapped and unpenalised.
+  - **Unconverged, so no upper bound and no upperR2.**
+  - nosep: **LOWER-R2 VALID t >= 2/13 (34 rows).** These are exactly st24b's cert rows, and lowerR2 found every D reduced cost >= 0 against them.
+  - At that solution D carries 1,559 positive columns summing to 2,950. These are free circulations (D in both directions, no cap or penalty) and carry no meaning.
+- **Binders (cert_st24bL = cert_st24dL).**
+  - Receivers: the face 7 **7665567/6765756** (w3 = w4 = s3 = 5) at 0.231, plus two d = 10 rows (6565665656/6555565555 and 6555565656/6595666665) at 0.038 each.
+  - Senders: face fives (55667 x2, 55669, 55696, 55767, 55959), together with 56696 and 66669 x2.
+  - The face 7 does not bind alone, so no "face-family floor" is reported.
+- **Kill line (gain < 0.005 vs the same-registry baseline).** It cannot be evaluated formally without converged uppers. The evidence points to no gain: t*(D) >= 2/13 by a valid cert that is identical to the baseline's.
+- **For any re-run.**
+  - D needs a cap (x-style 3, or the Steinberger 1/2) and a small penalty, to stop free circulations and keep the LP well conditioned.
+  - The solves should run one at a time with more threads.
+  - consall makes the LP slower (st24b's LP took 1,352 s at iteration 2).

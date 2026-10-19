@@ -1,0 +1,11 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9699, 8: 4522, 9: 2941, 10: 1061, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 16937, 'C': 1884, 'RPAT': 158}
+conservation basis rows added: 10539
+warm rows admitted: 54877
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1256 M sigs
+iter 0 t=0.153846153846 rows 94405 cols 26090 added 957  lp 718.9s total 741s  {7: (135, np.float64(0.160498), 2.7), 8: (151, np.float64(0.098862), 2.8), 9: (157, np.float64(0.76), 0.8), 10: (168, np.float64(0.923077), 0.7), 11: (171, np.float64(0.961061), 0.7), 12: (174, np.float64(0.615385), 1.0), 13: (1, np.float64(0.076923), 0.9)}
+iter 1 t=0.153846153846 rows 94921 cols 26097 added 503  lp 107.0s total 867s  {7: (140, np.float64(0.123896), 2.8), 8: (153, np.float64(0.052534), 2.3), 9: (167, np.float64(0.313945), 1.0), 10: (43, np.float64(0.133508), 0.7)}
+iter 2 t=0.153846153846 rows 95389 cols 26110 added 453  lp 1352.5s total 2239s  {7: (136, np.float64(0.076923), 3.4), 8: (161, np.float64(0.092619), 2.4), 9: (156, np.float64(0.251484), 1.1)}
+iter 3 t=0.153846153846 rows 95843 cols 26135 added 450  lp 580.6s total 2841s  {7: (150, np.float64(0.162075), 3.6), 8: (150, np.float64(0.048917), 2.2), 9: (150, np.float64(0.094489), 2.2)}
+iter 4 t=0.153846153846 rows 96305 cols 26135 added 462  lp 149.5s total 3011s  {7: (148, np.float64(0.071022), 4.1), 8: (157, np.float64(0.024478), 2.2), 9: (157, np.float64(0.050203), 2.1)}
+solve exit 124

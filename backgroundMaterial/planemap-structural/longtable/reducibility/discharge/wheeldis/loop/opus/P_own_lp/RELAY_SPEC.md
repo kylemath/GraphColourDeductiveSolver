@@ -1836,6 +1836,23 @@ failed on 6 such links. Pricing against a cert is not affected, because cert row
 `big2` solve should either use `all6_words()` for separation or seed those rows, so the solution it reports passes
 upperR2.
 
+**Fix (stage 24 solve, flag `consall`, engine `s24d/prelay2.py`; backup `s24d/prelay2_st23_backup.py`).** With
+`consall`, solveR2 uses `RW = all6_words()` (all 1,424 canonical non-R6 6-words) whenever v6 is off. It seeds one cons2
+row per word and separates over every word, so no-five 6-types also conserve (sum of h out = 0 when no g comes in).
+Without the flag the old behaviour is unchanged. upperR2 already checked all 1,424 words.
+
+**Implementation of D (flag `big2`).**
+
+- **Receiver rows.** For each i with s_i >= 7, the row gets `-D[(U, s_i, sides_out)] + D[(s_i, U, sides_in)]`, using
+  `d_keys` and `d_side` (19.2), with U = min(d, 9).
+- **Window.** At slots (b, c, e, f, q, r >= 7, s) the same two terms are added. The jsep3 class table folds a
+  U-independent id of the (out, in) key pair into the class at r >= 7.
+- **Checks.** upperR2 reads `D` from the solution. lowerR2 prices D through the generic ledger, so each D needs
+  rc >= 0.
+- **Consistency test** (`s24d/test_big2.py`, log `s24d/test_big2.log`). Over 1,500 random rows with d = 7..11 and 2,292
+  D keys, the window's D part summed over positions equals the row's D coefficients times random values. Result: 0
+  mismatches. The class table's maximum is 841,500,525, below 2^31.
+
 ### 19.6 Pricing (kill-line test, exact, `s24d/pricer24_{s22hL,st23rL}.log`)
 
 Reduced cost is `rc = -(sum w * coef) / tco`. A column that the cert does not touch has rc = 0.

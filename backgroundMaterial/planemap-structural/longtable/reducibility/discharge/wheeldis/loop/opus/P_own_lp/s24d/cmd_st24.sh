@@ -1,0 +1,22 @@
+# Stage 24 solve: baseline st24b and D columns st24d on s25/argsA59.txt (0125c46b). Engine P_own_lp/s24d.
+cd /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s24d
+M=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/m/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis
+A="root=$M args=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s25/argsA59.txt rpat=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/rpatD.txt"
+F0="xon apexcls filt16 killtab=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s25/f/kill/kill6 hat5 consall"
+WR=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s22/hf/rows_s22h.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s23d/rows_st23r.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s22/cf/rows_s22f.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s18d/rows_st18h.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s21/cf/rows_s21f.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s21/c/rows_s21c.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s20/c/rows_s20c.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s19/c/rows_s19c.txt
+CB=consbasis=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s21/cf/cons2basis_cls.json
+# regression, new flags off, old registry: must give 16/101
+python3 pcheck.py lowerR2 xon apexcls filt16 killtab=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s22/f/kill/kill6 hat5 cert=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s22/hf/cert_s22hL.json xcap=3 root=$M args=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s22/argsA55.txt rpat=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/rpatD.txt work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr24v > val_off_lower.log 2>&1
+grep -q "VALID  t >= 16/101" val_off_lower.log || { echo REGRESSION FAILED > regression_failed.txt; exit 1; }
+run1(){ tag=$1; shift; F="$*"
+  date -u +%H:%M:%SZ > ${tag}_start.txt
+  timeout 5400 python3 pcheck.py solveR2 $F keeppen tag=$tag $A $CB warm=$WR K=300 xcap=3 xpen=1e-3 threads=2 work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr24_$tag > $tag.log 2>&1 || echo "solve exit $?" >> $tag.log
+  date -u +%H:%M:%SZ > ${tag}_end.txt
+  python3 pcheck.py solveR2 $F nosep tag=${tag}L $A $CB warm=rows_$tag.txt,$WR K=300 xcap=3 threads=2 work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr24_${tag}L > ${tag}L.log 2>&1
+  python3 pcheck.py lowerR2 $F cert=cert_${tag}L.json xcap=3 $A work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr24_${tag}L > lower_${tag}L.log 2>&1
+  python3 pcheck.py upperR2 $F nomax sol=sol_$tag.json $A threads=2 work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr24_${tag}u > upper_$tag.log 2>&1
+}
+run1 st24b $F0 &
+run1 st24d $F0 big2 &
+wait
+echo DONE > done.txt
