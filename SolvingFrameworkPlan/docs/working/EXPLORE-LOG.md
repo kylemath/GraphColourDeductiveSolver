@@ -1,5 +1,25 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 51 (19 Oct 2026, 01:54Z-): H-W0, do the binder's 7-sender rows die, and do its survivors die at ring 17?
+
+**Pre-registered 01:54Z, before any engine run on these targets.** Gap G2. Long Table, 01:52Z: Opus's stage-14 certificate
+has two co-tight d = 7 rows, 7665666/6566565 and 7655666/6756666. They are the 7s that act as sender w0 to the binder
+7665566/6675666. Neither row has been swept before (canonical keys 5666766/6565656 and 5566676/5666667), and round 44's
+RSST patterns miss both (eligible and broad-only alike). 3 cores.
+- **Part 1, the two rows.** win45.py at ring <= 14 first, all windows, kc + dfast/dfast18 + kc -C with |X| <= 4
+  (drive45.py, STOP=0). Only if a row has no kill there, its ring 15-16 windows (A16). Then minkill47.py, and twoeng via
+  Studio. Hypothesis (Long Table): each dies at ring <= 16; a kill changes what w0 can afford. **Kill line:** no D/C
+  at ring <= 16 means R*-like; report it and stop. Guess: 7665666/6566565 dies at ring <= 14 (three 5s in its s word
+  and a 5 in its link, like the d = 9 rows that died). 7655666/6756666 has the binder's 55 pair with one 5 in s, so it
+  is closer to the binder. I give it 40% that it dies.
+- **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
+  p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
+  with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
+  Ring 17 windows are ordered by more fives, then more sixes, and the first 200 run with a 600 s cap per window.
+  Hypothesis (Long Table): some survivor sub-context becomes D or C at ring 17. **Kill line:** 0 kills in the first
+  200 windows; stop and report the best leftover. Guess: 0 kills. The survivors have no 5 beyond the binder's three,
+  and ring 15-16 got no closer than leftover 256.
+
 ## Round 50 (18 Oct 2026, 22:29Z-): H-RL, do the relay class's new receivers die at ring <= 14?
 
 **Pre-registered 22:29Z, before any engine run on these targets.** Gap G2. Long Table, 22:28Z: on 42c4c876 the relay
