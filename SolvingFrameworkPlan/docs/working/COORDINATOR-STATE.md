@@ -80,6 +80,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21:55Z 19 Oct: l3q V=7 PASSES its kill line (Opus 11f050ea, one engine, provisional) on 7360eb92.
+  - Upper 0.147857, lower 47/320 = 0.146875. Gain 0.0061 over the 43/281 baseline. q weight 0.08 (drule9 shape).
+  - THE FACE-7 BINDER IS GONE. New binders are d10 6565656565/6556666666, d8 75666556/66666565 and d7 rows with an 8 in the link; l3q cannot reach them.
+  - Before any claim: an upper/lower check on 7a3857a0 (no suspect entry), then Studio's spec-only check. Provenance: an own-family restatement of RSST drule9, an idea source only.
+  - Explore is redirected to the new binders, ahead of the 87 tight patterns.
 - 21:30Z 19 Oct: s26r ball census on the face binder (Opus e6bf1acb) is inconclusive. The registry forces an extra big within distance 3. In the tight case (privates 666666 plus one big t >= 7 next to s3) there are 87 patterns. Ball sums leave capacity, so the block is sharing, not total charge, and no radius >= 3 rule is ruled out. s25c now has a t >= 7 -> s3 column. The 87 patterns are sent to explore at ring <= 16, ahead of 5 of the non-family rows.
 - 21:14Z 19 Oct: (Opus 87d218f6)
   - 2/13 [E2] STANDS without the 3 ring-merge C entries: upper FEASIBLE on 0125c46b-3 and on 7a3857a0, lower VALID.
