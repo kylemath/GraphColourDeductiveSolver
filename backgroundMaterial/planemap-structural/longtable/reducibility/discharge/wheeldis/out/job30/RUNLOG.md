@@ -164,3 +164,8 @@ not new to F.
   **841 D / 633 C** (+4 D, +10 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher on all 14 new names
   (both minimal ones included): 1,402 frames, 0 mismatches. dcount (argsA44_local): **15,881** distinct parsed D
   (16,215 names), +4. Explore reports no kills of 7655666/6756666 at ring <= 16, so there is nothing to admit for it.
+- ~07:55Z 19 Oct: explore round 51, 33a69199 (loop/k47/r8b_kills*: kills of the s20c d=8 binder 76566656/65566556).
+  5 files fetched by path, byte-identical. r8b alone: 28 D / 25 C, as explore's run. Default glob on 880d25c6:
+  **869 D / 658 C** (+28 D, +25 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Matcher (17 names: all 4
+  minimal plus a sample): 1,233 frames, 0 mismatches. dcount (argsA44_local): **15,909** distinct parsed D (16,243
+  names), +28.
