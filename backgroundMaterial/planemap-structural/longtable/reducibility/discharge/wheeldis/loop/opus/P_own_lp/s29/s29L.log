@@ -1,0 +1,31 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9705, 8: 4542, 9: 2941, 10: 1142, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17030, 'C': 1898, 'RPAT': 158}
+conservation basis rows added: 10539
+warm rows admitted: 47598
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1410 M sigs
+nosep: LP over the warm rows only, t = 0.153024911032 (a lower bound once lowerR2 checks the cert)
+LP t* = 0.153024911032 ; dual rows 83 ; wrote sol_s29L.json cert_s29L.json
+  -0.213523132 receiverR2 7 7665566 6675676
+  +0.113879004 senderR2 55667 [0, 1, 0, 0, 0, '|', 0, 1]
+  +0.106761566 senderR2 55767 [0, 0, 0, 0, 0, '|', 0]
+  +0.099644128 senderR2 55667 [0, 1, 0, 0, 0, '|', 1, 1]
+  +0.056939502 senderR2 55686 [0, 0, 0, 0, 0, '|', 0, 0]
+  +0.042704626 senderR2 55676 [0, 0, 1, 1, 0, '|', 0, 0]
+  -0.042704626 receiverR2 8 76656566 56655565
+  -0.042704626 receiverR2 7 8658656 6675556
+  +0.042704626 senderR2 66669 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
+  +0.042704626 senderR2 56686 [1, 0, 1, 0, 0, '|', 0, 0, 0]
+  +0.028469751 senderR2 66787 [0, 1, 0, 0, 1, '|', 0, 0]
+  -0.028469751 receiverR2 8 75765656 66565555
+  +0.028469751 senderR2 56696 [1, 0, 0, 0, 0, '|', 0, 0, 0]
+  +0.021352313 senderR2 56686 [1, 0, 0, 0, 0, '|', 0, 0, 0]
+  +0.014234875 senderR2 55686 [0, 0, 1, 1, 0, '|', 0, 0]
+  -0.014234875 receiverR2 10 6565656565 6556666666
+  +0.014234875 senderR2 55667 [0, 1, 0, 1, 0, '|', 1, 0]
+  -0.014234875 receiverR2 7 8655865 5657567
+  +0.007117438 senderR2 56686 [1, 0, 0, 0, 0, '|', 0, 1, 0]
+  +0.007117438 senderR2 66668 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
+  -0.007117438 receiverR2 8 75765656 55566865
+  +0.007117438 senderR2 55787 [0, 0, 0, 0, 0, '|']
+  +0.003558719 senderR2 66868 [0, 0, 0, 0, 0, '|', 0, 0, 0]
+  (+ 60 cons2 / mrowR2 rows)

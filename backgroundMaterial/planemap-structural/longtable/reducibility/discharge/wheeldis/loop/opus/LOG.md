@@ -512,3 +512,11 @@ our agent R and have no output from it.
 - Controls pass. Mask off gives 0. With the side swapped, coefficients go to 0. Physical test: 0 mismatches; broken control: 95,996.
 - The note's p5=5 rsst003 kill does not reproduce, though the survivor count (6,400) matches.
 - Next: solve with V=7 only (20 columns), so only d=7 needs the wider view. Gain is likely capped by the d10 rows, which Studio's r52j/r52k kills address.
+
+## s29: st24b engine re-solve on 7360eb92 (argsA60), 18:52–20:10Z 19 Oct
+- Inputs: dcount 17,030 parsed D (expected 17,030). Kill tables U7 27a64538, U8 = U9 6dc44bba, byte-identical to s25.
+- Upper: keeppen solve converged; UPPER-R2 FEASIBLE at t = 0.153144115. sol_s29 3ea9511a.
+- Lower: nosep over the warm rows gives LOWER-R2 VALID, t >= 43/281 = 0.153025 (83 rows). cert_s29L fe5193b4.
+- Gap 1.2e-4, so the value is not exact. It moves down from 2/13 = 0.153846 by about 7e-4.
+- Binders (L dual): the face 7 7665566/6675676 at 0.214 dominates. The two d10 rows are gone (explore's r52j/r52k kills). Small mass sits on 8 76656566/56655565, 7 8658656/6675556 and 8 75765656/66565555.
+- Caveat: 7360eb92 still contains the three suspect ring-merge C entries. The validity check runs in s30h on 0125c46b−3 and 7a3857a0.
