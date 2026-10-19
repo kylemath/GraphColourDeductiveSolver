@@ -80,6 +80,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 23:10Z 19 Oct: s32p pricing against the l3q cert (Opus 445989dc).
+  - The 8-channel hypothesis is REFUTED for the d7-with-8 rows: all rc >= 0.
+  - Three 8-centred families price negative, and all of them relieve the d8 rows: Z (-9/160), ZR (-9/160, -1/40) and RR (-7/160, -3/80). None depends on the suspect entry.
+  - Next: a stacked solve (l3q + Z +/- + RR) on 3cfd7f18.
+  - The d7-with-8 rows are explore's to kill (running). The d10 row is already dead (r54a).
 - 23:05Z 19 Oct: The whole ring-19 2-ball window on 7665566/6765766 survives (drawing thread, kc). All-big fillings survive to ring 18. Studio stops window growth on the face-7 rows; that family is paid by l3q. Studio's slot order is now: r54a d10 admission, then d8 75666556 ring 17-18, then the l3q spec-only check.
 - 23:00Z 19 Oct: CGlue single-edge case is SORRY-FREE in Lean (c1f8373c CContract.lean, 536 lines: flip_exists, contract_edge, contract_subgraph1; 97f94ee7 CGlue.lean: CEntry1.colorable, cGlueX1, four_color_of_unavoidableC1). #print axioms shows the standard three plus checker native_decide, with no sorryAx. Built here; Studio will cross-build. This covers the C entries with X = one interior edge (about 741/852 per the scope, recount pending). Next for the same worker: recount on 3cfd7f18, then multi-edge contraction.
 - 22:17Z 19 Oct: The top l3q binder, d10 6565656565/6556666666 (0.078), is dead at ring 14 (explore 419e31dc). It gives 9 f-names (1 D, 8 C, interior X, both engines), which are with Studio for admission. Explore now runs d7 8658656.
