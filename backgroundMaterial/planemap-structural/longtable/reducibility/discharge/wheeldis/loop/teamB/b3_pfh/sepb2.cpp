@@ -153,12 +153,10 @@ void dfs(int j, int st, double acc) {
   }
 }
 
-int main(int argc, char** argv) {
-  ifstream pf(argv[1]); int d, n, npat = 0;
-  static map<vector<int>, int> gidx[40];
-  while (pf >> d >> n) {
-    vector<pair<int,int>> sm(n);
-    for (auto &q : sm) pf >> q.first >> q.second;
+map<vector<int>, int> gidx[40];
+// add one pattern (all its dihedral images); returns the groups touched
+set<int> add_pattern(int d, const vector<pair<int,int>> &sm) {
+  set<int> touched;
     set<vector<pair<int,int>>> imgs;
     for (int refl = 0; refl < 2; refl++) for (int r = 0; r < d; r++) {
       map<int,int> m; bool ok = true;
@@ -189,8 +187,18 @@ int main(int argc, char** argv) {
         for (auto c : cur) for (int l = 0; l < 5; l++) if ((q.second >> l) & 1) nx.push_back(c * 5 + l);
         cur.swap(nx);
       }
+      touched.insert(gi);
       auto &cv = grps[d][gi].codes; cv.insert(cv.end(), cur.begin(), cur.end());
     }
+  return touched;
+}
+
+int main(int argc, char** argv) {
+  ifstream pf(argv[1]); int d, n, npat = 0;
+  while (pf >> d >> n) {
+    vector<pair<int,int>> sm(n);
+    for (auto &q : sm) pf >> q.first >> q.second;
+    add_pattern(d, sm);
     npat++;
   }
   size_t ncode = 0;
@@ -205,6 +213,14 @@ int main(int argc, char** argv) {
   string cmd;
   while (cin >> cmd) {
     if (cmd == "T") { int u; cin >> u; for (int k = 0; k < 3125; k++) { double x; cin >> x; W[u][k] = (x < -1e200) ? NEG : x; } }
+    else if (cmd == "P") {   // add a pattern at run time: "P d n slot mask ..."
+      int d, n; cin >> d >> n; vector<pair<int,int>> sm(n);
+      for (auto &q : sm) cin >> q.first >> q.second;
+      for (int gi : add_pattern(d, sm)) {
+        auto &g = grps[d][gi]; sort(g.codes.begin(), g.codes.end()); g.codes.erase(unique(g.codes.begin(), g.codes.end()), g.codes.end());
+      }
+      built[d] = false;
+    }
     else if (cmd == "H") { for (int k = 0; k < 78125; k++) cin >> HOUT[k]; }
     else if (cmd == "Q") {
       cin >> d_ >> thr_ >> many_ >> limit_; trunc_ = false;

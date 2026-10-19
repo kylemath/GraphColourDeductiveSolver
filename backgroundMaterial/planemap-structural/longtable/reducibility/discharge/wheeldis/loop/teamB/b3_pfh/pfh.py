@@ -308,8 +308,54 @@ if REG:
     for line in open(os.path.join(HERE, 'rbig7.txt')):
         RB7S.add(canon(tuple(map(int, line.strip()))))
     RBIG |= RB7S          # w7plus 7-wheels also forbidden as link-vertex wheels
-    SEPB = subprocess.Popen([os.path.join(HERE, 'sepb'), os.path.join(HERE, OPTS.get('pats', 'reg_patterns.txt')),
+    SEPB = subprocess.Popen([os.path.join(HERE, OPTS.get('sepb', 'sepb')), os.path.join(HERE, OPTS.get('pats', 'reg_patterns.txt')),
                              os.path.join(HERE, 'rbig7.txt')], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+ORACLE = OPTS.get('oracle')     # B6: kill separated arrangements that contain a verified RSST configuration (file of patterns)
+ORC = {}
+if ORACLE:
+    sys.path.insert(0, os.path.join(WD, 'loop', 'teamB', 'b6_rpat'))
+    import rpat
+    ORACLE = os.path.join(HERE, ORACLE)
+    OPAT = []
+    if os.path.exists(ORACLE):
+        for line in open(ORACLE):
+            f = line.split()
+            if f and not line.startswith('#'):
+                d0, n0 = int(f[0]), int(f[1])
+                OPAT.append((d0, [(int(f[2 + 2 * k]), int(f[3 + 2 * k])) for k in range(n0)]))
+                SEPB.stdin.write('P %s\n' % line.split('#')[0].strip())
+        SEPB.stdin.flush()
+    print('oracle patterns loaded', len(OPAT), flush=True)
+
+
+def pat_hits(d, sm, ws, ss):
+    """does pattern sm (slot masks, any dihedral image) match arrangement (ws, ss)?"""
+    wv = [int(c) - 5 for c in ws]
+    sv = [int(c) - 5 for c in ss]
+    for refl in (0, 1):
+        for r in range(d):
+            ok = True
+            for sl, m in sm:
+                if sl < d:
+                    j = ((-sl) % d if refl else sl)
+                    let = wv[(j + r) % d]
+                else:
+                    i = sl - d
+                    j = ((-i - 1) % d if refl else i)
+                    let = sv[(j + r) % d]
+                if not (m >> let) & 1:
+                    ok = False
+                    break
+            if ok:
+                return True
+    return False
+
+
+def oracle_kill(d, ws, ss):
+    k = (d, ws, ss)
+    if k not in ORC:
+        ORC[k] = rpat.kill(d, [int(c) for c in ws], [int(c) for c in ss])
+    return ORC[k]
 WCAND = {}
 
 
@@ -472,6 +518,7 @@ def main():
                 pickle.dump({'VARL': VARL, 'rows': rows, 'seen': seen, 'LASTARR': LASTARR, 'it': it}, fo)
             os.replace(ck + '.tmp', ck)
         trunc = []
+        kills = 0
         x, t, res = solve(rows)
         new = 0
         worst = {}
@@ -496,14 +543,40 @@ def main():
                 worst[d] = (res_[0][0] - (d - 6) - t) if res_ else 0
                 for v_, tm, ws, ss in res_:
                     key = (d, tuple(sorted(tm)))
+                    if ORACLE:
+                        kk = oracle_kill(d, ws, ss)
+                        if kk:
+                            name, pt = kk
+                            line = rpat.fmt(d, pt)
+                            if (d, pt) not in OPAT:
+                                OPAT.append((d, pt))
+                                with open(ORACLE, 'a') as fo:
+                                    fo.write('%s # %s %s/%s\n' % (line, name, ws, ss))
+                                SEPB.stdin.write('P %s\n' % line)
+                                SEPB.stdin.flush()
+                                # drop rows of arrangements this pattern kills (they would over-constrain the LP)
+                                keep = []
+                                for row in rows:
+                                    terms, tc, rhs = row
+                                    if tc == -1 and rhs >= 1:
+                                        rk = (rhs + 6, tuple(sorted((c, VARL[i]) for c, i in terms)))
+                                        arr = LASTARR.get(rk)
+                                        if arr and rk[0] == d and pat_hits(d, pt, arr[0], arr[1]):
+                                            seen.discard(rk)
+                                            continue
+                                    keep.append(row)
+                                kills += len(rows) - len(keep)
+                                rows[:] = keep
+                                new += 1
+                            continue
                     if key not in seen:
                         seen.add(key)
                         rows.append(([(sg, var(k)) for sg, k in tm], -1, d - 6))
                         LASTARR[key] = (ws, ss)
                         new += 1
             it += 1
-            print('it %d t=%.6f rows=%d vars=%d new=%d worst=%s trunc=%s full=%s (%.0fs)' % (
-                it, t, len(rows), len(VARL), new, {k: round(v, 4) for k, v in worst.items()}, trunc, full, time.time() - t0), flush=True)
+            print('it %d t=%.6f rows=%d vars=%d new=%d opat=%d rowsdropped=%d worst=%s trunc=%s full=%s (%.0fs)' % (
+                it, t, len(rows), len(VARL), new, len(OPAT) if ORACLE else 0, kills, {k: round(v, 4) for k, v in worst.items()}, trunc, full, time.time() - t0), flush=True)
             if new == 0:
                 if full or not trunc:
                     break
