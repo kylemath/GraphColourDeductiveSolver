@@ -367,8 +367,28 @@ NS, TRI, states, BIGSTATE, best6, SEPX = (NS_[k] for k in ('NS', 'TRI', 'states'
 # row can differ in their exact value, so sep3r's row-keyed dedupe could hide an exact violator
 SEPX.stdin.close(); SEPX.wait()
 import subprocess as _sp
+# exact six-window table for sep3r_ak's leaf correction (SEP_EXACT6): M[sig2 + mask] - (U = 7) V[sigV + mask], per spec
+# 12.5 / 13.2 / 14', over the full window (w_{i-2}, w_{i-1}, w_{i+1}, w_{i+2}, s_{i-2}, s_{i-1}, s_i, s_{i+1}); the search
+# still prunes on the relaxed bound, so it stays exhaustive, and only exact violators are reported
+_EX = _np.zeros((3,) + (5,) * 8)
+_mcM, _mcV = {}, {}   # separate caches: a sig2 and a sigV can be the same tuple
+for _ui, _U in enumerate((7, 8, 9)):
+    for _ix in itertools.product(range(5), repeat=8):
+        wm2, wm1, wp1, wp2, sm2, sm1, s0, sp1 = (q + 5 for q in _ix)
+        mk = pmask(_U, wm2, wm1, wp1, wp2, sm2, sm1, s0, sp1)
+        sg = sig2_of(_U, wp1, s0, sm1, wm1, ap(wp2), ap(wm2)) + (mk,)
+        if sg not in _mcM: _mcM[sg] = Mval(sg) if cand2(sg) else 0.0
+        v_ = _mcM[sg]
+        if _U == 7:
+            sv_ = sigV_of(_U, wp1, s0, sm1, wm1, cv(wp2), cv(wm2)) + (mk,)
+            if sv_ not in _mcV: _mcV[sv_] = Vval(sv_) if candV(sv_) else 0.0
+            v_ -= _mcV[sv_]
+        _EX[(_ui,) + _ix] = v_
+EX6F = os.path.join(HERE, 'out', 'job31', 'st16', 'ex6_%s.bin' % os.path.basename(SOLF).replace('.json', ''))
+_EX.astype('<f8').tofile(EX6F)
+print('exact six-window table: %d entries written (%s); min %.6f, max %.6f' % (_EX.size, os.path.basename(EX6F), _EX.min(), _EX.max()), flush=True)
 SEPX = _sp.Popen([os.path.join(HERE, 'bin', 'sep3r_ak'), NS_['SF']], stdin=_sp.PIPE, stdout=_sp.PIPE, text=True,
-                 env=dict(os.environ, SEP_NODELIMIT='0', SEP_ARRKEY='1'))
+                 env=dict(os.environ, SEP_NODELIMIT='0', SEP_ARRKEY='1', SEP_EXACT6=EX6F))
 NS_['SEPX'] = SEPX
 yv = np.zeros(NY)
 for k, v in Y.items(): yv[ix[k]] = v
@@ -386,7 +406,12 @@ def studio_val(d, lk, sv):
     return sum(cf * (yv[k[1]] if k[0] == 'y' else xv.get(k[1], 0.0) if k[0] == 'x' else V6B[k[1]] if k[0] == 'y6b' else 0.0) for k, cf in r_.items() if k[0] != 't')
 def xk(rr): return collections.Counter({k[1]: cf for k, cf in rr.items() if k[0] == 'x'})
 tests = [(e['row'][1], e['row'][2], e['row'][3]) for e in CERT if e['row'][0] == 'receiverR2']
-for d in range(7, DMAXP + 1): tests += [(d, lk, sv) for _, lk, sv in sepx(d, yv, xv, -1e9, 20)]
+_devs = []
+for d in range(7, DMAXP + 1):
+    _o = sepx(d, yv, xv, -1e9, 20); tests += [(d, lk, sv) for _, lk, sv in _o]
+    _devs += [abs(wq - spec_val(d, lk, sv)) for wq, lk, sv in _o]
+print('sep3r_ak exact leaf weights vs spec rows on the heaviest 20 per d (d = 7..%d): %d compared, max |difference| %.3g' % (DMAXP, len(_devs), max(_devs + [0.0])), flush=True)
+if max(_devs + [0.0]) > 1e-9: fail('sep3r_ak exact leaf weights differ from the spec rows')
 random.seed(7)
 for d in (7, 8, 9, 10):
     for _ in range(150): tests.append((d, ''.join(random.choice('5666777889') for _ in range(d)), ''.join(random.choice('5566677889') for _ in range(d))))
@@ -405,6 +430,8 @@ rbad = 0; CAP = int(os.environ.get('CAP', '5000')); import time as _tm
 for d in range(7, DMAXP + 1):
     _t0 = _tm.time(); out = sepx(d, yv, xv, d - 6 + T + EPS, CAP)
     exact_bad = [(spec_val(d, lk, sv), lk, sv) for _, lk, sv in out if spec_val(d, lk, sv) > d - 6 + T + EPS]
+    dev = max([abs(wq - spec_val(d, lk, sv)) for wq, lk, sv in out] + [0.0])
+    if dev > 1e-9: fail('d=%d: sep3r_ak exact weight differs from the spec row by %.3g' % (d, dev))
     for v_, lk, sv in exact_bad[:5]: print('VIOLATED receiverR2 d=%d exact load %.12f link %s s %s' % (d, v_, lk, sv))
     full = len(out) < CAP
     if not full: fail('d=%d: relaxation reports >= %d arrangements; exact check incomplete' % (d, CAP))
