@@ -80,6 +80,11 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19:45Z 19 Oct: Solo window probe (drawing thread) on face binder 7665566/6675666, ring-10 window.
+  - The ring-colour lock is at the 7 or at its far-side 6, which has 4 ring contacts. It is not at the face.
+  - Every contraction leaves at least 861 colourings unfixed.
+  - Passed to Opus as a rule-side hint: reach across the 7 to the far-side 6.
+  - Studio row 11 (7665566/6765766) has no kill across 225 ring 17-18 windows; 7 kc timeouts remain on dfast18.
 - 19:30Z 19 Oct: CGlue scope delivered (a7557788, CGLUE-SCOPE.md).
   - General CGlue in Lean is about 1.7-3.8k lines, 4-7 days, so not before the gate.
   - K<=1 needs CGlue only for w66666. The 'star reducer' (about 400-700 lines) removes it. Assigned to Studio's Lean lane after k19. Kill line: 23 Oct 18:00Z.
