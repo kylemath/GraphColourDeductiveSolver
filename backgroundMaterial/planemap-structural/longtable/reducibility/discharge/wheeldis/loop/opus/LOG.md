@@ -488,3 +488,8 @@ our agent R and have no output from it.
 - Result: lower stays exactly 16/101 (VALID, 113 rows); upper is FEASIBLE at 61/385. Gain 0, so the kill line is hit.
 - Sender dual weight (0.677) moves to H0-big siblings, the same degeneracy as stage 19b. Weight on registry-dead rows is now 0. Weight on explore-dead-but-kept rows is 0.076 (55767).
 - Files: P_own_lp/s21s/ (the worker was blocked from writing to the repo; the lead copied the files in).
+
+## Stage 24 (design + pricing): second-neighbourhood big-big columns (§19), 19 Oct ~13:10Z
+- Both ends can read only two families: D (big to big apex across a diamond) and O (big to the big private of a 6-spoke). Physical test: 0 mismatches; broken-key control: 119,502.
+- Pricing, exact, against cert_s22hL and cert_st23rL: 3 D columns price negative, all 9+ to 9+, relieving the d=9/10 binders (smallest reduced cost −8/303). The D(7↔9) columns sit at exactly 0, and every O column is positive. Nothing prices into the face 7 rows.
+- No solve was run; one needs Long Table's go, and the solveR2 conservation gap must be closed first.

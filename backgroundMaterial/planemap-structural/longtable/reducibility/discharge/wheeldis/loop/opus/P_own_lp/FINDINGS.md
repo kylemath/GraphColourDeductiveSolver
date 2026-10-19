@@ -781,3 +781,19 @@ Built by s19e/mkfamily.py, run on the s19e engine (hat5 class, s21/argsA54.txt, 
 - **The class optimum.** sol_s22h (rr = 0) is UPPER-R2 FEASIBLE at 16/101 under the hatrr engine (s23d/upper_s22h_hatrr.log). So **t*(hatrr) = 16/101 exactly**: the gain is 0, below the 0.005 target, and kill line (1) is met.
 - **rr weight.** Kill line (2) is not hit. rr enters with total 3.667 over 19 keys at sol_st23rL, and 3.790 over 29 keys at sol_st23r. It flows mostly on diamonds with one five-spoke (big Z1) and one big spoke: (5,1,6,8) 0.705, (5,1,5,9) 0.605, (5,1,5,8) 0.590, (5,1,6,9) 0.407. No rr key also carries r.
 - **Face 7s** (s23d/kill_st23r.log, section 1 convention, load = inflow). rr does reach the face 7s, as an **outflow from the 7 to the face's third five**: rr[506507] = 0.0074 at sol_st23rL and 0.0039 at sol_st23r. This replaces st20xL's r[506507] = +0.023, which ran from that five into the 7. The face fives' y rises to compensate (y7|5566 0.714 -> 0.745), so the face rows stay tight at 1 + 16/101: 0.745 + 0.421 - 0.0074. The face fives have nowhere else to send, so whatever the 7 pushes out comes back through y.
+
+## Stage 24 (design only): second-neighbourhood big -> big columns D and O (RELAY_SPEC 19), priced against cert_s22hL and cert_st23rL. No solve
+- **Families.**
+  - D: a big sends to a big apex across a diamond.
+  - O: a big sends to the big private of a 6-spoke.
+  - These are the only two-step big-big pairs that both receiver windows can see (completeness argument in RELAY_SPEC 19.1). Adjacent 7->7 and 8->7 are already x.
+- **Keys and test.** Keys are read exactly from both ends. The physical test gives 0 mismatches over 100,000 diamonds and 100,000 hexagons; the broken control gives 119,502 (s24d/pricer24_*.log).
+- **Pricing, exact.** The two certs give the same result.
+  - Three D columns have negative reduced cost, all 9+ -> 9+ and paid out of d = 9/10 binders:
+    - ((5,5,5),(5,6,5)) at -8/303;
+    - ((5,5,6),(5,5,6)) at -1/101, on the d = 10 row 6556655556/6665669665;
+    - ((5,5,6),(5,6,6)) at -2/303.
+  - The d = 9 rows involved are 655566556/759556565 and 655665556/657565955, and 765556565/566966665.
+  - Every O column is > 0, and every column touching a 7 is >= 0.
+- **Kill line (all rc >= 0): not met.** Stopped before any solve, as the brief requires. Any gain must come from the d = 9/10 binders; the face-7 rows are not priced into.
+- **Note for any solve.** The solveR2 conservation gap (no-five 6-words are not separated without v6, which broke upperR2 on sol_st23r) has to be closed first (RELAY_SPEC 19.5).

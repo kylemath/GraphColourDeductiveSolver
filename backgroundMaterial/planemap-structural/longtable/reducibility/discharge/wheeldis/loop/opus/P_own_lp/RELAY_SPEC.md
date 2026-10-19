@@ -1720,3 +1720,141 @@ That lower number is a normalisation effect, not progress:
   `r 0.023 + y 0.714 + y 0.421 = 1 + 16/101`. The face 7 ends at +16/101 in the section 1 convention, which is -16/101
   in the balanced one: it still goes negative.
 - **Kill line.** The face family still binds at exactly 16/101, which is >= the current t\*, so the kill line is met.
+
+---------------------------------------------------------------------------------------------------------------
+
+## 19. Stage 24: second-neighbourhood big -> big transfers (flag `big2`, design only). Written before the pricing step
+
+The convention is that of section 1: load = inflow, capped at d - 6 + t. Engine copy: `P_own_lp/s24d/` (s23d's code,
+unchanged). Pricer: `s24d/pricer24.py`. No solver code has been written.
+
+### 19.1 What a big's receiver row can see at distance 2 (completeness)
+
+A receiverR2 row of a big u is labelled by u's exact link word w and apex word s (letters 5..9, where 9 means >= 9).
+Inside u's row:
+
+- the only distance-2 vertices visible with an exact letter are the apexes s_i, the far tips of the diamonds
+  (u, w_i, s_i, w_{i+1});
+- the private A of a 6-spoke is visible only as the allowed-letter set amask (§14′).
+
+These are all of u's second neighbours that lie next to a link vertex of u, as each spoke type shows:
+
+| spoke z = w_i | z's neighbours other than u and the two link neighbours |
+|---|---|
+| five | s_{i-1} and s_i (z has exactly 5 neighbours) |
+| 6 | s_{i-1}, s_i, and the private A |
+| big | apexes and further vertices; the further ones are not in u's window |
+
+So a two-step big–big rule that both rows can read is one of two kinds:
+
+- **D (diamond)**: the far tip is an apex.
+- **O (opposite)**: the far tip is the private of a 6-spoke.
+
+A pair of bigs at distance 2 whose only common neighbour is a big spoke is invisible to both rows. It would need a new
+row type that resolves a big spoke's own link. Rules keyed on a 7's whole second neighbourhood beyond that are not
+expressible in the current rows. Here **D ∪ O is the complete visible family.**
+
+Adjacent big–big transfers, the first-stage 7->7 and 8->7, are already the x columns (L2, cap 3).
+
+### 19.2 Column families and keys
+
+**D[K] >= 0.** u (big) sends to s (big). s is the apex across u's link edge (x, y); u and s are the two tips of the
+diamond (u, x, s, y). Each column has its own direction: D(u -> s) and D(s -> u) are different columns.
+
+- Key: `K = (L_from, L_to, min(side(x) + side(y), side(y) + side(x)))`, where `L = min(degree, 9)`.
+- For a shared spoke z, with rotation (from-tip, other spoke, to-tip, ..., X):
+
+```
+side(z) = ((5, a_from, a_to),)   z = 5: a_from = z's neighbour adjacent to the from-tip, a_to = adjacent to the to-tip (exact letters)
+          ((6, B),)              z = 6: B = z's neighbour at distance 2 from both tips (an apex at both ends), exact
+          ((z,),)                z >= 7
+```
+
+**O[K] >= 0.** u (big) sends to the private A of a 6-spoke z = w_j, with A big. In the hexagon of z,
+(u, w_{j+1}, s_j, A, s_{j-1}, w_{j-1}), the two tips are opposite.
+
+- Key: `K = min(((w_{j-1}, s_{j-1}), (w_{j+1}, s_j)), reflected)`. Each pair is (from-adjacent, to-adjacent).
+- No tip letter is in the key, because each tip sees the other only as a class.
+
+**Optional caps** (Steinberger/Mayer style), not needed for pricing:
+
+- `D/O[from 7 -> to 8+] <= 1/2`;
+- caps on second-stage 8 -> 7.
+
+A cap is an upper bound on a column. It cannot make a column with negative reduced cost profitable or unprofitable at
+small values, so it does not change the pricing verdict.
+
+### 19.3 Visibility from both ends
+
+**D.** Take u's row at position i with s_i big. The from-tip reads:
+
+- a five spoke z = w_i: a_from = w_{i-1} (link), a_to = s_{i-1} (apex), because z's rotation is (u, w_{i+1}, s_i, s_{i-1}, w_{i-1});
+- a 6 spoke z = w_i: B = s_{i-1}, from z's rotation (u, w_{i+1}, s_i, A, B, w_{i-1});
+- the y side is the mirror, with w_{i+2} and s_{i+1}.
+
+In s's own row, x and y are consecutive link letters with u as their apex:
+
+- a five z: s's link neighbour of z is s_{i-1} (adjacent to s), and the apex across that edge is w_{i-1};
+- a 6 z: s's link neighbour of z is A, and the apex across (A, z) is B.
+
+So s reads a_to = s_{i-1} and a_from = w_{i-1} exactly, as its link and apex. For a 6 it reads the same B. Both tips'
+letters are exact at both ends, as the centre's letter capped at 9 or as an apex letter.
+
+**O.** u reads its links (w_{j±1}) and apexes (s_{j-1}, s_j). A reads the same four letters with the roles swapped:
+s_{j-1} and s_j are A's links and w_{j±1} are A's apexes. Each tip sees the other only through amask.
+
+**Physical test** (`pricer24_*.log`). Each spoke gets an explicit rotation list, and both ends read every letter by
+the generic neighbour rule.
+
+| test | cases | mismatches |
+|---|---|---|
+| diamonds, x and y of degree 5/6/7, plus random hexagons | 100,000 each | 0 |
+| broken-key control (s reads a five side with from/to swapped; A swaps its pairs) | 100,000 each | 119,502 |
+
+### 19.4 How the columns enter the rows
+
+| row | D (u -> s) | O (u -> A) |
+|---|---|---|
+| receiverR2 of the payer u | -1 for each matching position i with s_i big | -1, only if amask forces A big (every allowed private big): the row must hold for every private, so the minimum counts |
+| receiverR2 of the payee | +1 (u is its apex) | +1 if amask allows a big private |
+| senderR2, cons2, mrowR2, mrowV | 0 | 0 |
+
+D and O move charge only between bigs; they never touch a five or a 6.
+
+- **Window** (if built). D sits at a position i with S(i) big and reads (b, c, e, f, q, r, s) = (w_{i-1}, class(w_i),
+  w_{i+1}, w_{i+2}, s_{i-1}, s_i, s_{i+1}). All of these are 9-slot window slots, so d = 7..17 stays exact. O sits at a
+  6-spoke and needs amask, which is in the window via the filt16 slots.
+- **Tail.** Both are linear in W9.
+- **Soundness.** Each transfer is one amount under one key that both ends compute (19.3). The O rows are conservative:
+  the payer counts only forced transfers, and the payee counts every possible one.
+
+### 19.5 Note: the conservation gap in solveR2
+
+Without v6, solveR2 separates conservation only over 6-words that contain a five (`relay_words`). upperR2 checks all
+1,424 canonical words. In stage 23 this left h positive on keys shared with no-five links, and upperR2 on sol_st23r
+failed on 6 such links. Pricing against a cert is not affected, because cert rows are re-derived from their labels. A
+`big2` solve should either use `all6_words()` for separation or seed those rows, so the solution it reports passes
+upperR2.
+
+### 19.6 Pricing (kill-line test, exact, `s24d/pricer24_{s22hL,st23rL}.log`)
+
+Reduced cost is `rc = -(sum w * coef) / tco`. A column that the cert does not touch has rc = 0.
+
+| cert | D touched | D rc < 0 | D rc = 0 | D rc > 0 | O touched | O min rc |
+|---|---|---|---|---|---|---|
+| cert_s22hL (16/101) | 10 | 3 | 4 | 3 | 18 | 2/303 > 0 |
+| cert_st23rL (16/101) | 10 | 3 | 4 | 3 | 19 | 2/303 > 0 |
+
+The negative columns are the same three in both certs. All are 9+ -> 9+ diamonds, paid out of a d = 9 or d = 10 binder:
+
+| column | rc | binder rows |
+|---|---|---|
+| D(9 -> 9, ((5,5,5),(5,6,5))) | -8/303 = -0.0264 | 9 655566556/759556565 (s22hL); 9 655665556/657565955 and 9 655566556/759556565 (st23rL) |
+| D(9 -> 9, ((5,5,6),(5,5,6))) | -1/101 = -0.0099 | 10 6556655556/6665669665 |
+| D(9 -> 9, ((5,5,6),(5,6,6))) | -2/303 = -0.0066 | 9 765556565/566966665 |
+
+**No column into or out of a 7 prices negative.** D(7 <-> 9) is at 0, and every O column is > 0. The face-family 7
+rows (7665566/6765766 and 7676556/7759565) gain nothing at either dual.
+
+**Kill line (all rc >= 0): not met.** The 16/101 certs are not valid for the `big2` class. Any gain would come from
+relieving the d = 9/10 binders. Per the brief, no solve is run.
