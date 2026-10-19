@@ -23,6 +23,15 @@ None of these rows was swept before in any orientation (canon_key against every 
 - **Also closed at 21:56Z: 8765556/6575965 (r52d, s22hL 0.020), pre-empted for this round.** No two-engine kill at ring
   <= 15 or in 164 of its 176 ring-16 windows; its 106 windows not run (12 at ring 16, 66 at 17, 28 at 18) are in
   `loop/k47/win52_7_8765556_6575965_todo.txt` for Studio. It is not a binder of the l3q solve.
+- **22:00Z, d8 face row 75666556/66666565 moved (Long Table 21:57Z, Studio 21:58Z).** Studio runs its ring 15-16 and
+  17-18 windows (`loop/k47/win54_8_75666556_66666565_r1516.txt`, 1,563, and `_r1718.txt`, 542; 2438e43f); explore runs
+  ring <= 14 (1,611 windows) after the queue (R54_r54k.DONE marks it skipped by q54; scratchpad post54.sh runs it, then
+  round 53b).
+- **22:15Z, d10 6565656565/6556666666 (r54a, dual 0.078) dies at ring 14.** No kill at ring <= 13 (1,762 windows, many
+  already run under the same names for rounds 52j-k); at ring 14 16 two-engine kills (15 C, 1 D), 9 f-names (1 D, 8 C,
+  twoeng on `loop/k47/r54a_kills*`: 1 D both engines, 8 C same X, 0 mismatch), every X interior-only ({I0-I1},
+  {I0-I2}, {I0-I5}), so the ring-merge guard holds none. Inclusion-minimal: f10_...5656565_.......5.. (C) and
+  f10_...5656565_......5... (C), both ring 14, m 9. Hypothesis right for this row (dies by ring 14).
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
