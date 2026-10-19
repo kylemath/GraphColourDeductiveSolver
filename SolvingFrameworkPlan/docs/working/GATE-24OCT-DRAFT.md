@@ -7,9 +7,9 @@ engines agree, **[E]** one engine, **[I]** inferred. Evidence paths are relative
 
 **K ≤ 1 (at most one big vertex in the configuration): closed.** Every discharging sender with one big
 neighbour is in the reducible set R, so the forbidden-pattern LP has t* ≤ 0 on that case. This rests on Lean for 46
-of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. For the 2,855 smaller keys, Lean has checked 2,702. The outage cut off the last 153, which are re-running (about 6 h). **K = 2: open.**
+of the 47 large keys and two independent engines for the last one. Lean on that key finishes 22–25 Oct. All 2,855 smaller keys are Lean-checked (Job 24b, 34f14406). **K = 2: open.**
 The best LP bound is t* = 16/101 ≈ 0.1584 exactly (need ≤ 0) [E2 upper and lower, 6-centred relay class with the §14′ filter plus the §15 five→big-hat channel, 19 Oct, registry 5fa0adb0], with 17/107 [E2 upper] on 880d25c6, with 65/406 [E2 upper] without the hat channel on 880d25c6 and exactly 4/25 [E2, upper = lower] without it on 5fa0adb0, with 8/47 [E2] without the filter, with 9/52 [E2] in the 6-relay class and 1/5 [E2] without a relay; down from 7/27, 1/4, 5/21, 11/47, 2/9 19/102 on 18 Oct, 23/134, 6/35 and 8/47 early 19 Oct once kills outside the old binding pattern
-were allowed into the LP. The dual is now spread over 25 rows (no single binder; 6-row dual: receivers d=7 8655675/5756585 and d=8 75576556/78756665; a 6-relay class gives ≈0.192 on one engine, second build pending); kill sweeps on those rows, the published configuration set through our own two engines, and rule-class extensions (Rule T, a 6-relay channel) are running.
+were allowed into the LP. What binds now is one family: a 7 whose link carries a 5-5-5 face (7665566, 7766556 and siblings). Under every rule shape tried on 19 Oct (stages 17–23: face pool, five→hat, oracle lemmas on the 7 and on the face fives, exact hat letters, face re-basing, reverse hat, sender registry filter) the 7 pays the whole face deficit and t* stays at 16/101. Neither the published 8,200-config set nor our engines to ring 16 kill the surviving rows (explore r51, fam51 e367efab).
 
 ## K ≤ 1 evidence
 
@@ -79,4 +79,4 @@ cfast agree that R16, R17a and R17b (rings 16–17) are neither D nor C. No D wi
 - [ ] Explore round 34+: ring 17–18 kc sweep on binders; any re-solved t*.
 - [ ] k19 Lean (22–25 Oct): upgrade [E2] → [L] if it lands.
 - [x] Job 26 status (18 Oct 09:05Z): multi-pinch proved; only (iii) left.
-- [ ] Recommendation line, once A has run.
+- [x] Recommendation line (draft, 19 Oct 12:45Z): **go with C (Narrow) for 24 Oct**: K ≤ 1 closed ([L] except k19 [E2]); K = 2 open at t* = 16/101 [E2], with the obstruction named as the 7 with a 5-5-5 face. After the gate, keep two lanes on K = 2: ring 17–18 reducibility on the surviving face receivers, and a new rule structure keyed on a 7's whole second neighbourhood (design first; it must show a negatively priced column on the current certificate before any solve). Kyle decides.
