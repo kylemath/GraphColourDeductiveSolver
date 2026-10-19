@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19 Oct 11:23Z: Studio admitted r7h: registry 0125c46b, 1,897 D / 838 C, dcount 16,937; matcher 0/63 on the minimal ring-14 window. This is the production snapshot for stage 21.
 - 19 Oct 11:22Z: The d=7 face row 7676556/7759565 is NOT R*-like. It dies at ring 14 (D, f7_5567676_..5..5., not through the face triangle); 612 windows, 0 mismatches; 3 f-names sent as r7h_kills*. This is a family.json receiver with dual 0.055–0.058, so 2 of the 13 receivers are now dead. Explore continues with 7655566, then 8665566, then fam51.
 - 19 Oct 11:15Z: Studio admitted r9e: registry 03c34729, 1,894 D / 838 C, dcount 16,934; all checks 0.
 - 19 Oct 11:13Z: Explore r51: d=9 face row 655566556 complete (3,290 windows, 0 mismatches; 599 f-names, 540 D / 59 C, sent as r9e_kills* at 43fdc043). It dies at ring 12, never through the face. The three d=7 face rows are now running at ring 14; fam51 comes next.
