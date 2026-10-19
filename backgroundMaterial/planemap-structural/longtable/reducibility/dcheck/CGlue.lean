@@ -7,7 +7,7 @@ import CContract
 
 `ClaimGlue.lean` proves "reducible registry + `Unavoidable R` ⇒ 4-colourable" with the C entries
 behind an explicit hypothesis `CGlue R.C`. This file replaces that hypothesis by a theorem,
-`CEntry.colorable`, modulo ONE named geometric gap (`ConfigOccW.contract_reducer`, C4 below).
+`CEntry.colorable`, with no `sorry` (C4a, the contraction geometry, is in `CContract.lean`).
 Scope: `SolvingFrameworkPlan/docs/working/CGLUE-SCOPE.md`; write-up: `CGLUE-DRAFT.md`.
 
 **What a C entry certifies** (cfast / `C66666.lean`, `CWheels.lean`). For a contraction set
@@ -25,19 +25,18 @@ returning the final `good` array; the verdict is `cReducible18 cf eqR eqI` (`nat
 * C4 `ConfigOccW.contract_reducer` [PROVED from C4a]: contracting `X` in `T` gives a spherical map
   `T'` of smaller support and a vertex map `π` that keeps every edge of the deleted map `G`,
   identifies along `X`, and keeps every other listed configuration edge. It splits into
-  - C4a `contract_subgraph` [**OPEN, the only `sorry`**]: contracting a subgraph of a spherical
-    map is a smaller spherical map (pure map geometry, no configuration data). The one-edge case
-    is PROVED: `contract_subgraph1` (`CContract.lean`, via `contract_edge`) on triangulations
-    without separating triangles;
+  - C4a `contract_subgraph` [PROVED: `CContract.contract_subgraph_gen`]: contracting a subgraph of
+    a spherical map is a smaller spherical map (pure map geometry, no configuration data; any
+    spherical map, no triangulation needed);
   - C4b `ConfigOccW.xGraph_labels` [PROVED]: the label argument (no kept edge inside an X-component).
 * C5 (global loop-freeness) is not a lemma here: it is the occurrence field `XRingSimple` (no ring
   position touched by `X` is revisited by the face walk), proved for simple rings
   (`occursCX_of_configOcc`). Local loop-freeness is `admissibleX` (decide, per key).
 * C6 `CEntry.colorable`, `four_color_of_unavoidableC` [PROVED from C1–C4].
 * C6, one interior edge (`CEntry1`: `eqR = []`, `eqI = [p0]`): `CEntry1.colorable`, `cGlueX1`,
-  `four_color_of_unavoidableC1` [PROVED, no `sorry`].
+  `four_color_of_unavoidableC1` [PROVED; an earlier special case, now subsumed by C6].
 
-**Axioms.** No new `axiom`. One `sorry` (C4a). Inherits the `native_decide` axioms of the D chain;
+**Axioms.** No new `axiom`, no `sorry`. Inherits the `native_decide` axioms of the D chain;
 per-key `hC` adds one each.
 -/
 
@@ -403,32 +402,28 @@ def OccExact (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) (ι : Fin m →
 
 /-! ## C4: the contracted reducer
 
-C4 is split into two open lemmas and a proved assembly:
-* C4a `contract_subgraph` (OPEN, geometry): contracting the components of a subgraph
-  `H ≤ T` with an edge gives a smaller spherical map that keeps every edge between components;
+C4 is split into two lemmas and an assembly, all proved:
+* C4a `contract_subgraph` (PROVED, geometry; `CContract.contract_subgraph_gen`): contracting the
+  components of a subgraph `H ≤ T` with an edge gives a smaller spherical map that keeps every edge
+  between components;
 * C4b `ConfigOccW.xGraph_labels` (PROVED, combinatorics): the X-graph has an edge, and no listed
   edge outside `X` and no edge of `G` joins two vertices of one X-component (the label argument);
 * `ConfigOccW.contract_reducer` (PROVED from C4a + C4b): the reducer in the form `CEntry.colorable` uses. -/
 
-/-- **C4a (OPEN): contraction of a subgraph of a spherical map.** Contracting each connected
-component of `H ≤ T` (with at least one edge) to one vertex gives a spherical map `T'` on the same
-vertex type (merged-away vertices isolated) with smaller support, and a vertex map `π` that is
-constant on `H`-components and keeps every edge of `T` between different components.
-
-True because a contraction of connected subgraphs of a planar map is planar (a minor) and merges at
-least two support vertices. What the proof needs: edge contraction on `SphericalMap` (merge the
-rotations at the two ends, delete the contracted edge and the digons it leaves, keep `Fills`),
-iterated over a spanning forest of `H` (in our use ≤ 4 edges); or, for the occurrence at hand,
-refilling the ring face of `G` with the contracted configuration (Job 25 `split`/`RingFace.chordMap`,
-`growBefore_fills`, `Sep5Star.starMap`). Estimate: 800–2,000 lines; one edge (87% of the registry):
-300–500 lines. -/
+/-- **C4a: contraction of a subgraph of a spherical map** (proved in `CContract.lean`).
+Contracting each connected component of `H ≤ T` (with at least one edge) to one vertex gives a
+spherical map `T'` on the same vertex type (merged-away vertices isolated) with smaller support,
+and a vertex map `π` that is constant on `H`-components and keeps every edge of `T` between
+different components. Proof: `contract_edge'` (one edge, any spherical map: chords `a w i` added in
+the faces at `b`, the edges `b w i` erased, `b` isolated), iterated by strong induction on the
+support (`contract_all`). -/
 theorem contract_subgraph (T : SphericalMap n) (H : SimpleGraph (Fin n))
     (hH : H ≤ T.graph) (hne : ∃ x y, H.Adj x y) :
     ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
       Nat.card T'.graph.support < Nat.card T.graph.support ∧
       (∀ x y, H.Reachable x y → π x = π y) ∧
-      (∀ x y, T.Adj x y → ¬ H.Reachable x y → T'.Adj (π x) (π y)) := by
-  sorry
+      (∀ x y, T.Adj x y → ¬ H.Reachable x y → T'.Adj (π x) (π y)) :=
+  contract_subgraph_gen T H hH hne
 
 /-- The X-graph of an occurrence: the contracted edges `ι a – ρ t` (`eqR`) and `ι a – ι b` (`eqI`),
 among the listed adjacencies. -/
@@ -808,11 +803,11 @@ def CGlueX (Cs : List CEntry) : Prop :=
   ∀ e ∈ Cs, ∀ (n : ℕ) (T : SphericalMap n), OccursCX e T → SmallerColorable T →
     T.graph.Colorable 4
 
-/-- **The hypothesis is a theorem** (modulo C4a). -/
+/-- **The hypothesis is a theorem.** -/
 theorem cGlueX (Cs : List CEntry) : CGlueX Cs :=
   fun e _ _ _ h IH => e.colorable h IH
 
-/-! ### Single-interior-edge entries: no `sorry`
+/-! ### Single-interior-edge entries (special case, kept; subsumed by `CEntry.colorable`)
 
 When `X` is one interior edge (`eqR = []`, `eqI = [p0]`), C4a is `contract_subgraph1`
 (`CContract.lean`), proved for triangulations without separating triangles. A minimal
@@ -896,7 +891,7 @@ theorem MinimalCounterexample.avoids (R : Registry) {T : SphericalMap n}
   · exact hT.not_colorable (e.colorable h hT.smaller)
 
 /-- **Claim glue with C entries discharged.** If `R` is unavoidable, every spherical map is
-four-colourable. Open links: `Unavoidable R` and C4a (`contract_subgraph`). -/
+four-colourable. The one open link is `Unavoidable R`. -/
 theorem four_color_of_unavoidableC (R : Registry) (hU : Unavoidable R) {n : ℕ}
     (M : SphericalMap n) : M.graph.Colorable 4 := by
   refine four_color_of_smaller_gate (fun m T hm hconn htri hdeg IH => ?_) M
@@ -957,3 +952,5 @@ end SimpleGraph.SphericalMap
 #print axioms SimpleGraph.SphericalMap.CGlue.CEntry1.colorable
 #print axioms SimpleGraph.SphericalMap.CGlue.cGlueX1
 #print axioms SimpleGraph.SphericalMap.CGlue.four_color_of_unavoidableC1
+#print axioms SimpleGraph.SphericalMap.contract_subgraph
+#print axioms SimpleGraph.SphericalMap.CGlue.cGlueX
