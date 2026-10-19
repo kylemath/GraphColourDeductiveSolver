@@ -545,3 +545,11 @@ our agent R and have no output from it.
 - No ball-sum test can rule out radius ≥ 3 rules.
 - Cone criterion: a flat-lattice cone with no registry configuration and total charge in [1,5] would kill every local rule. 3 SA searches found none; the best had 4 hits. Not exhaustive.
 - Verdict: inconclusive, which supports the rule-side route. Rules should let t or s3 see past ring 3.
+
+## s27o: conditional-floor oracle, iterated binder forbids (no l3q), 18:13–22:13Z 19 Oct
+- Round 1 forbids 3 binder arrangements: t* = 2/13 exactly (lower VALID, upper FEASIBLE).
+- Round 2 forbids 6: lower VALID 0.152564, upper ≤ 2/13.
+- Round 3 forbids 28: pool-only lower 0.137, not separated.
+- The binder moves to near-identical rows each round: 7665566 → 7765566 → 7766556, and the d10 weight moves to the same row via another arrangement.
+- Kill line hit: forbidding single arrangements does not approach 0, so kills alone are not the route. Rows have to be killed by coefficient class, or paid by rules; l3q (s28q) already removes the face-7 binder.
+- These are oracle numbers, not bounds.
