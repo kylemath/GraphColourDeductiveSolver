@@ -251,3 +251,9 @@ not new to F.
   k3x_D / k3x_C byte-identical (2,397 D / 1,010 C), nothing new held from k3x. The log now lists the 1,101 non-plain
   two-engine names the old header regex silently skipped (582 rsst*, 404 a8_, 94 a7_, 21 k42*: RSST verdict lines and
   window-name files, never in k3x).
+- ~22:25Z 19 Oct: explore's d10 l3q binder 6565656565/6556666666 kills, 419e31dc (loop/k47/r54a_kills*; 5 files by
+  path, byte-identical). Studio re-ran both engines on all 9 f-names (out/job30/r54a/): 1 D (kc + dfast18), 8 C (kc X
+  + cfast --fixed X, leftover 0; X {I0-I1} x3, {I0-I2} x3, {I0-I5} x2), 0 dropped, 0 one-engine. Default glob on
+  0339586b (= 3cfd7f18 registry): **2,398 D / 1,018 C** (+1 D, +8 C, exactly the 9 r54a names, 0 lost). Ring-merge
+  hold: the same 3, none new; prefix / centre-degree: the same 1,101 non-plain names, none new; drop44 0; letter-9 0.
+  Matcher (the 2 minimal names): 222 frames, 0 mismatches. dcount (argsA44_local): **17,438** (17,772 names), +1.
