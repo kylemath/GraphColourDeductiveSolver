@@ -102,6 +102,13 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
 - **7655566/6759676: face row, presumed R*-like (ring 14)** (11:25Z; all 628 windows at ring <= 14, 335 already run,
   11:21-11:24Z; 0 mismatches, no D or C). Best leftovers: 32 at ring 12, 64 at ring 13, 128 at ring 14
   (a7_u7655566_.75.6..). `r7i_kills*` is empty.
+- **Face rule falsified for 8665566/5675665 too (11:37Z, reported at once): it dies at ring 14 (C).** All 938 windows
+  at ring <= 14 ran (401 already run; 11:24-11:36Z), 0 mismatches. 8 kill windows and 6 f-names (twoeng: 3 D, 3 C
+  with the same X). Minimal: f7_.556686_....55. (a7_u86655.6_5.....5, C, X = {I0-I6}). It holds the face's link
+  fives w3, w4 but not the apex s3. So of the face rows at ring 14, 7676556 and 8665566 die without using the apex,
+  while 7765566 and 7655566 stay R*-like; the d = 7 face rows with u = 7 and a 6 on each side of the face
+  (7665566, 7655666, 7655667) are R*-like to ring 16. Twoeng-ready: `loop/k47/r7k_kills*`.
+- **fam51 started 11:37Z** on the 26 senders (registry snapshot: 582 RSST + 2,735 twoeng names, 1,900 D / 835 C).
 - **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
   `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
   against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8
