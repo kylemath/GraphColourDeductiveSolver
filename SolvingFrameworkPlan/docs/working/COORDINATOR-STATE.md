@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 19 Oct ~00:10Z (20 Oct): Borrowed channel round 2 (BORROWED-CHANNEL-2.md, 2417a735) acted on. Opus will price z6/l6r (a 6 relaying to an adjacent 6, hyp 22/68 keys negative, best -13/20 at K=(5,5,5,7,5,5,5), kill rc>=0 or gain<0.005) against the 47/320 l3q cert, and will price l3q 7->8 but not solve it (expected to die). Studio and explore will two-engine-verify RSST 8406.123, which is contained in d8 75666556/66666565 and would kill that row, and RSST 2.126, the unverified single-slot killer in all five binders. Reason: these are the cheapest moves left on the remaining d8 binders and on the d10 weights.
 - 23:55Z 19 Oct: The adversarial review of CGlue says GO WITH CHANGES.
   - The Lean statement is sound. cfast is not trusted: hC is computed in Lean.
   - The global no-loop part of C-soundness is ASSUMED via XRingSimple + OccExact inside Unavoidable, and nothing produces them yet. Folded rings exist (JOB26), so this may fail for the ~89 entries whose X touches a ring edge. The 898 one-interior-edge entries are unaffected.
