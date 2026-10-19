@@ -31,3 +31,9 @@
   a7_u7..5566_6...676 (1,049 s). No cfast was run (there is no kc X). dfast18 peaked at about 9.6 GB RSS on ring 18.
 - **Row 10 final: SURVIVES**, with all 255 windows decided: 251 kc "neither" and 4 dfast18 D=false. No two-engine
   kill. Best leftover 256 (ring 15).
+
+## Row 3: 8 85586556/66656565, finished 17:15Z (wall 15,923 s)
+- **KILLED**: 40 two-engine kills, all D (kc D + dfast18 D), 0 C. They are at rings 14 (4), 15 (16) and 16 (20). The
+  lowest are a8_u.558655._.665.5.., a8_u.558655._.66565.., a8_u855..556_66...5.5 and a8_u855..556_66...565 (ring 14).
+- All 2,464 ring <= 16 windows run (40 kc D, 2,424 neither). After the first kill, 812 ring 17-18 windows were skipped.
+- Files: row_8_85586556_66656565/kills.txt, results.txt, STATUS, and the kill windows' kc / dfast18 outputs.
