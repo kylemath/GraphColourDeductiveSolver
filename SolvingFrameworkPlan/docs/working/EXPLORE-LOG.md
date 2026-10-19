@@ -82,6 +82,19 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   17 are minimal, 8 of them at ring 12: e.g. f9_..5556655_......... (D) and f9_...555665_.....5... (C). Guess (60%)
   right. Twoeng-ready: `loop/k47/r9g_kills*`. **All non-face rows of round 51 have died** (7665666, both d = 10,
   d = 8 76566656, both d = 9), at ring 12-13; every face row tried is R*-like. Face rows at ring 14 now run.
+- **Face rule falsified for the d = 9 face row 655566556/757656565 (10:02Z, reported at once): it dies at ring 12.**
+  With 1228 of 3290 ring-14 windows run: 185 two-engine kills (ring 12: 38 D, 3 C; ring 13: 150 D, 1 C), 0
+  mismatches. The kills avoid the face: the smallest, a9_u.5556655._......... (D, ring 12), is the 9-centre and its
+  link run w1..w7 = 5556655 with no s vertex. So a 5-5-5 face at a 9 dies through the centre's fives; the face
+  hypothesis stands for the d = 7 rows only. The same window kills family.json's receiver 9 655566556/759556565
+  (same link). The row runs on to the end of ring 14.
+- **fam51 dry run on family.json (Opus 1f025ab7, copied to `loop/k51/family_1f025ab7.json`; 10:02Z, no engines).**
+  `loop/k51/fam51.py`: each sender context's exact cases (Opus's expansion, admissible or not) are first matched
+  against our registry (582 RSST + 2,203 twoeng names; census50's matcher, interior onto exact vertices only). All 8
+  contexts Opus marks inadmissible are registry-dead in every case, and so are 55667 [0,1,0,0,0|1,1], 55667
+  [0,1,0,1,0|0,0], 55667 [0,1,0,1,0|1,0] and 55758 [0,0,0,0,0] (Opus: 4, 8, 4 and 4 admissible cases). 14 contexts
+  keep 1-16 cases. A sender's exact vertices give windows only up to ring 14-16, so ring 17-18 arises only for the
+  receivers. Order: senders by max dual, heaviest first, then the receivers.
 - **Part 2 re-pointed (pre-registered 09:33Z; Long Table, 09:32Z), before any engine run on the new target.** Opus's
   stage 19 and 19b oracles (loop/opus/P_own_lp/FINDINGS.md) show that the LP rebuilds 10/63 from whichever members
   of a face five's context family are left, so a kill counts only if it covers the whole family. The generic ring-17
