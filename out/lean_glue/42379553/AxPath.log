@@ -1,0 +1,53 @@
+'SimpleGraph.SphericalMap.contract_subgraph' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.ConfigOccW.xGraph_labels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.ConfigOccW.contract_reducer' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'SimpleGraph.SphericalMap.ConfigOccW.colorable_of_cReducible18' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.ConfigOccW.colorable_of_goodT' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.CGlue.occursCX_of_configOcc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.CGlue.CEntry.colorable' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.CGlue.cGlueX' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.CGlue.cf66666_hC' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ SimpleGraph.SphericalMap.CGlue.cf66666_hC._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.CGlue.cf66666_not_I0I1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ SimpleGraph.SphericalMap.CGlue.cf66666_not_I0I1._native.native_decide.ax_1_1]
