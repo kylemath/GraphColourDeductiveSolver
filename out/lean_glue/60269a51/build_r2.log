@@ -1,0 +1,217 @@
+== EulerSharp
+== VacancyIcosahedral
+== RStar
+== SideTriangle
+== RStarCore
+== MinimalFrame
+== RingJordan
+== RingChains
+== RingReduce
+== OccToRing
+== DiamondMCert
+== DiamondMOcc
+== DCheck
+== DCheckSound
+'DCheck.good_sound' depends on axioms: [propext, Quot.sound]
+== DCheckRef
+== DCheckS1
+'DCheck.run_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DCheck.dReducible_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+== DCheckS3
+'DCheck.S3.nc_matching' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DCheck.S3.flip_chains_proper' depends on axioms: [propext, Quot.sound]
+== DCheck16
+== DCheck18
+== DCheckR1
+'DCheck.R1.ncm_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DCheck.R1.covers_of_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DCheck.R1.matchTable_complete' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1]
+'DCheck.R1.matchTable16_complete' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1]
+== DCheckT
+== DCheckTEq
+'DCheck.dReducible16_eq_T' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DCheck.dReducible18_eq_T' depends on axioms: [propext, Classical.choice, Quot.sound]
+== DCheckSoundT
+== DCheckRefT
+== DCheckS1T
+'DCheck.dReducible_soundT' depends on axioms: [propext, Classical.choice, Quot.sound]
+== DCheckR1T
+'DCheck.R1.matchTableN_complete' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+== DCheckR2A
+'DCheck.R2.extendsQ_sound' depends on axioms: [propext, Quot.sound]
+== DCheckR2B
+'DCheck.R2.canon_rename' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DCheck.R2.col_code' depends on axioms: [propext, Quot.sound]
+'DCheck.R2.code_lt' depends on axioms: [propext, Quot.sound]
+== DCheckR2C
+  Array.toList_filter
+'DCheck.R2.abstract_matching' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'DCheck.R2.flip_code' depends on axioms: [propext, Classical.choice, Quot.sound]
+== DCheckR2D
+'SimpleGraph.SphericalMap.ConfigOcc.kempeMatching' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.ConfigOcc.colorable_of_dReducible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.ConfigOcc.colorable_of_dReducible16' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.ConfigOcc.colorable_of_dReducible18' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+== DCheckR2Diamond
+'DCheck.R2.DiamondE2E.colorable_of_occ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1,
+ DCheck.R2.DiamondE2E.cfD_dReducible._native.native_decide.ax_1_1]
+== DCheckMirror
+'SimpleGraph.SphericalMap.mirror_triangulated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.nx_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+== DCheckRingNC
+'SimpleGraph.SphericalMap.RingFace.revNC' depends on axioms: [propext, Classical.choice, Quot.sound]
+== DCheckRingKempe
+'SimpleGraph.SphericalMap.RingNC.kempeMatching' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+== DCheckRingMeet
+'DCheck.Meet.meet4' depends on axioms: [propext, Quot.sound, DCheck.Meet.check4_true._native.native_decide.ax_1_1]
+'DCheck.Meet.meet5' depends on axioms: [propext, Quot.sound, DCheck.Meet.check5_true._native.native_decide.ax_1_1]
+== DCheckRingBridge
+  List.mem_singleton
+'SimpleGraph.SphericalMap.closedB_realised' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.has_realised' depends on axioms: [propext, Classical.choice, Quot.sound]
+== SideCycle
+'SimpleGraph.SphericalMap.kept_ringFace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.kept_ringFace_rev' depends on axioms: [propext, Classical.choice, Quot.sound]
+== Sep4
+'SimpleGraph.SphericalMap.colorable_of_separating_4cycle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.Meet.check4_true._native.native_decide.ax_1_1,
+ DCheck.Meet.size4._native.native_decide.ax_1_1,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+== Sep5Fan
+'SimpleGraph.SphericalMap.RingFace.fanMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+== GrowFills
+'SimpleGraph.PlaneMapConstruction.growBefore_fills' depends on axioms: [propext, Classical.choice, Quot.sound]
+== Sep5Star
+'SimpleGraph.SphericalMap.RingFace.starMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+== Sep5
+'SimpleGraph.SphericalMap.colorable_of_separating_5cycle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.Meet.check5_true._native.native_decide.ax_1_1,
+ DCheck.Meet.size5._native.native_decide.ax_1_1,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+== SepAll
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+'SimpleGraph.SphericalMap.colorable_of_short_separating_cycle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.Meet.check4_true._native.native_decide.ax_1_1,
+ DCheck.Meet.check5_true._native.native_decide.ax_1_1,
+ DCheck.Meet.size4._native.native_decide.ax_1_1,
+ DCheck.Meet.size5._native.native_decide.ax_1_1,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.colorable_of_separating_3cycle' depends on axioms: [propext, Classical.choice, Quot.sound]
