@@ -257,3 +257,8 @@ not new to F.
   0339586b (= 3cfd7f18 registry): **2,398 D / 1,018 C** (+1 D, +8 C, exactly the 9 r54a names, 0 lost). Ring-merge
   hold: the same 3, none new; prefix / centre-degree: the same 1,101 non-plain names, none new; drop44 0; letter-9 0.
   Matcher (the 2 minimal names): 222 frames, 0 mismatches. dcount (argsA44_local): **17,438** (17,772 names), +1.
+- ~22:35Z 19 Oct: explore's d7 l3q binder 8658656/6665555 kills, 45371779 (loop/k47/r54b_kills*; 4 files by path,
+  byte-identical). Studio re-ran kc -C -s 60 -t 600 and out/job52/dfast18 on all 4 f-names (out/job30/r54b/): 4/4 D on
+  both. Default glob on 0555b8e9: **2,402 D / 1,018 C** (+4 D, exactly the 4 r54b names, 0 lost). Ring-merge the same 3;
+  prefix / centre-degree 0 new; drop44 0; letter-9 0. Matcher (the minimal f7_..56856_...566. and all 4): 343 frames,
+  0 mismatches. dcount (argsA44_local): **17,442** (17,776 names), +4.
