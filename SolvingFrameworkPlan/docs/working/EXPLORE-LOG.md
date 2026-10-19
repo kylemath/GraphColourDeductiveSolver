@@ -19,6 +19,12 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   report it and stop. The third binder, 5566766/5666667, is round 50's row (R*-like) and is not rerun. Guess: d = 10
   dies at ring <= 14 (ten link letters alternating 6 and 5, like the d = 9 rows that died). d = 7 7655667 has the
   5-5-5 face (w2, w3, s2) again, between two 7s, so I give it 40%.
+- **Part 1c (pre-registered 02:38Z; Long Table, 02:36Z): s19c (6/35 on 09d8ac38) secondary binders**, low priority,
+  after part 1b and before part 2: d = 9 655566556/757656565, d = 7 7676556/7759565, d = 7 7655566/6759676. The fourth,
+  d = 7 7666566/5656656, is 7665666/6566565 (part 1) under reflection (canonical 5666766/6565656), so it is not rerun.
+  Same method and kill line. Two rows carry an s letter 9 (degree >= 9). win45.py now leaves letter-9 vertices out of
+  windows, since a 9 is never exact; no earlier swept row had a 9. Guess: d = 9 dies at ring <= 14. The two d = 7 rows
+  with a 9 at s3 die at ring <= 14 (both have a 556 or 555 run next to a 5 in s), 60%.
 - **Part 2, if cores remain: the binder's census survivors at ring 17.** These are the cases with every private >= 6 and
   p51 >= 7. A new generator, `loop/k47/win51.py`, takes windows of the binder's 2-ball that use at least one private,
   with each private in the window at an exact letter its survivor set allows (6..8, p51 7..8; a 9 is never exact).
@@ -26,6 +32,14 @@ RSST patterns miss both (eligible and broad-only alike). 3 cores.
   Hypothesis (Long Table): some survivor sub-context becomes D or C at ring 17. **Kill line:** 0 kills in the first
   200 windows; stop and report the best leftover. Guess: 0 kills. The survivors have no 5 beyond the binder's three,
   and ring 15-16 got no closer than leftover 256.
+
+**Result so far (02:38Z).**
+- **7665666/6566565 dies at ring 12 (D).** All 1139 windows at ring <= 14 ran, 0 mismatches: 39 kill windows and 33
+  f-names (twoeng: 22 D, 11 C). Minimal: f7_...6566_...665. (D, ring 12) and f7_..66566_..5..5. (D, ring 12), then
+  f7_..56676_...5.5. (C, ring 13) and f7_5666766_...5... (C, ring 14). Guess right. Twoeng-ready: `loop/k47/r7e_kills*`.
+  This also settles s19c's 7666566/5656656, its mirror image.
+- 7655666/6756666: no kill at ring <= 14 (875 windows, 0 mismatches). Its ring 15-16 windows have been running since
+  02:19Z (1372 at ring <= 16, 910 already run).
 
 ## Round 50 (18 Oct 2026, 22:29Z-): H-RL, do the relay class's new receivers die at ring <= 14?
 

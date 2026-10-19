@@ -1,8 +1,8 @@
 """EXPLORE round 45: round 43's window sweep (win43.py) for any receiver row: d, link LK, s word SV (s_i between w_i
 and w_i+1; every letter exact).  Change from win43: a window holding s_{i-1} and s_i also states w_i's letter in its
 name, since s_{i-1}-s_i is an edge iff w_i = 5 (round 43's names dropped it; see EXPLORE-LOG round 44): F = w_i is 5,
-N = w_i is not 5, w_i itself outside the window.  Part A: every connected induced subset X of the 17 fixed vertices
-(u, w_i, s_i) at exact degrees, the rest of the map free ring; ring <= RMAX, simple ring.  Built on
+N = w_i is not 5, w_i itself outside the window.  Part A: every connected induced subset X of the fixed vertices
+(u, w_i, s_i; not those of letter 9, which means degree >= 9) at exact degrees, the rest of the map free ring; ring <= RMAX, simple ring.  Built on
 gen.build's layered 2-ball (fresh third ring, privates free).  Names a<d>_<u|-><w letters>_<s letters>.
 Writes win45_<d>_<LK>_<SV>_A<RMAX>.txt (kc/dfast lines, ring order).  usage: python3 win45.py RMAX d LK SV"""
 import sys, os, collections
@@ -57,6 +57,7 @@ if __name__ == '__main__':
     adj, name, faces = build(r2); inv = {v: x for x, v in name.items()}
     V = [('u',)] + [('w', j) for j in range(D)] + [('s', j) for j in range(D)]
     deg = {('u',): D}; deg.update({('w', j): int(LK[j]) for j in range(D)}); deg.update({('s', j): int(SV[j]) for j in range(D)})
+    V = [x for x in V if x == ('u',) or deg[x] != 9]; deg = {x: deg[x] for x in V}   # letter 9 = degree >= 9: never exact, never in a window (round 51)
     for x in V: assert len(adj[inv[x]]) == deg[x], x
     nb = {x: {name[y] for y in adj[inv[x]] if name.get(y) in deg} for x in V}
     # connected subsets by canonical growth (each found once: grow from its least vertex, extensions above it)
