@@ -181,3 +181,8 @@ not new to F.
   with a 9 in the link or s word are excluded from k3x and logged to out/job30/letter9_excluded.log (letter9.lp_reading).
   f9_ names whose only 9 is the centre are admitted as normal. The frozen wlp3.py parser is unchanged. Regression on
   the default glob: 962 D / 733 C, k3x byte-identical (0 names excluded).
+- ~10:10Z 19 Oct: explore round 51 r9g, c3d5cfc3 (loop/k47/r9g_kills*: kills of the part-1f binder d=9
+  655665556/666559575). 5 files fetched by path, byte-identical. r9g alone: 457 D / 57 C, as explore's run. Default glob
+  on 35aeebb8: **1,419 D / 790 C** (+457 D, +57 C, 0 lost, 0 one-engine, 0 X mismatch). Drop44 guard 0. Letter-9
+  rule: 0 excluded. Matcher on all 17 minimal windows: 1,234 frames, 0 mismatches. dcount (argsA44_local): **16,459**
+  distinct parsed D (16,793 names), +457.
