@@ -61,6 +61,12 @@ sweep above serve both lines. New order (q50d.sh): census, then the d = 7 ring 1
   and f9_...565666_....55.5. (D). Guess (ring <= 12) was one ring too low. Twoeng-ready: `loop/k47/r9d_kills*`.
 - **d = 10 6556656556/6665656665: dies at ring 14.** 2097 windows (none run before). 1097 had run when the queue hit its
   2-hour limit at 01:28Z; 13 of them are two-engine kills, all at ring 14 (10 D, 3 C). The rest resumed at 01:29Z.
+- **d = 10, complete (01:51Z; 2097 windows, 0 mismatches; resumed again after a container restart at 01:41Z).** Dies at
+  ring 14: 19 kill windows, 19 f-names (twoeng: 11 D, 8 C). 7 minimal, all at ring 14 (5 C, 2 D), e.g.
+  f10_..55665565_.......... (C) and f10_...5566565_......65.. (D). Guess (ring 13-14) was right. Twoeng-ready:
+  `loop/k47/r10a_kills*`.
+- **Round 50 closed.** Of the relay class's four rows, three die (both d = 9 at ring 13, d = 10 at ring 14). The d = 7
+  7665566 family, which is also the main line's row, has no kill at ring <= 16 and goes to the rule side.
 
 ## Round 49 (18 Oct 2026, 22:11Z-): H-R9, does the d = 9 receiver of the new 1/5 dual die, and how far do patterns reach its senders?
 
