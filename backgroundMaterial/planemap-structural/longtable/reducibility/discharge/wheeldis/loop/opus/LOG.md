@@ -660,3 +660,25 @@ our agent R and have no output from it.
   - keeppen fyq1 hit the 5 h cap at iter 13, unconverged. Penalised t is 0.12744 and the worst d7/d8/d9 violations are about 0.04.
   - nosep fyqL, lowerR2 and upperR2 are running unattended. Results land in fyq/lower_fyqL.log, fyq/upper_*.log and fyq/run.log ("DONE" line).
   - No l3q+fy bound yet. The pricing shows only that the l3q cert does not survive fy, not by how much t* rises.
+
+## Round s39o: off-centre matching (offc) and whole-window raw patterns (rpatN, rpatN2, rpatN3)
+- Spec: P_own_lp/s39o/OFFC_SPEC.md. Spec delta for Studio: P_own_lp/s39o/RELAY_SPEC_s39o.md. Engine: s39o/eng (a copy of s33z/eng plus offc.py and the rpatN loader). s33z/eng is untouched; s28q and s33z keep separate pcheck.py copies.
+- Controls:
+  - flag off reproduces A67 q66 byte for byte (55686/438047 ≤ t* ≤ 0.128958);
+  - offc fires on the 7 off-centre configurations of the d12 row 555555555555/757575757575;
+  - the networkx physical test has 0 mismatches over 955,500 pairs, and its broken control has 8;
+  - rpatN oracle: 0 mismatches over 45 rows.
+- A67, l3q only (FQ), keeppen t:
+  - (i) rpatN: 0.125956, with nosep lower 636/5071;
+  - (ii) offc: 0.128330;
+  - (iii) offc+rpatN: stopped unconverged, flat at 0.125896, as directed.
+  - offc alone gains only 0.0006, so it is not used further.
+- rpatN2 (6,053 configs, 2,059 patterns) and then rpatN3: the whole 2026 set loop/k51/nl51_kc.txt, 8,200 configs, two-engine D, 2,287 patterns, md5 e153fc41….
+- **A74 (95ba762d), l3q + rpatN3: 20/183 = 0.109290 ≤ t* ≤ 1/9 = 0.111111.**
+  - Upper: FEASIBLE. Lower: nosep VALID, 160 rows.
+  - That is 0.0148 below rpatN's 0.125956 upper and 0.0178 below q66's upper.
+  - 10 binders, 8 of them d7. Their canonical keys are in s39o/run_n3_A74/binders_canon.txt.
+- Stacked F + rpatN2/rpatN3: still unconverged.
+  - The A70 run timed out with t flat at 0.1001.
+  - The run_s3_A74 run on A74 is still going: t 0.0985 at iter 15, about 10 min per iteration.
+- RSST 2.126 and 8406.123 are absent from every solve.

@@ -34,6 +34,15 @@ u (degree d) or a letter 5..8, and 9 is never exact. Edges: `u w_i`, `w_i w_{i+1
     `rpatN2_check56.log`);
   - one exhaustive separator pass takes 77 s with rpatN and 76 s with rpatN2.
 
+- **rpatN3** = `s39o/rpatN3.txt`, md5 `e153fc4146e166b56f3bd64a75f38141`, 2,287 patterns (d7 621, d8 839, d9 631, d10 188,
+  d11 7, d12 1). It contains every rpatN2 pattern.
+  - Source: explore's whole 2026 set `loop/k51/nl51_kc.txt` (6368d2f5), md5 `b9bc6e8bd9b86cf3a95873c05d9e7c34`, 8,200 configurations,
+    rings 6-18. All 8,200 are D on two engines (`loop/k53/nl54d_verdicts.txt`, 6368d2f5, md5 `952575cace5f1137365bfcff8e1fcd84`).
+  - Count check: rpatN2's 6,053 + job54d (rings 16-18, 610/610 two-engine D) + job54e (ring 15, 1,535/1,535) from main da31feea
+    = 8,198 names, all in nl51 with identical lines; nl51 adds nl1281_r15 and nl1282_r15. Both sources give the same 2,287
+    patterns (`k57/rpatN3_union8198.txt`, same pattern set, differs only in its header).
+  - Build time 48 s. One exhaustive separator pass (as for rpatN2): 81 s with rpatN3 against 85 s with rpatN2 in the same run.
+
 ## 39.3 offc (flag `offc`; §2, §4)
 - Each registry entry (pat=, cpat=, nf, rpat, rpatN) gets a configuration K.
   - K = u + the exact singleton slots, with the induced window structure.
@@ -56,6 +65,17 @@ u (degree d) or a letter 5..8, and 9 is never exact. Edges: `u w_i`, `w_i w_{i+1
 | reference q66 (none) | 0.128957775 | 55686/438047 = 0.127123 |
 | (i) rpatN | 0.125955995 | 636/5071 = 0.125419 |
 | (ii) offc | 0.128329786 | — |
-| (iii) offc + rpatN | see LOG.md s39o | see LOG.md s39o |
+| (iii) offc + rpatN | stopped unconverged (t flat 0.125896) | — |
 
-The stacked run is s33z F + rpatN2 (`run39s.sh s2`). Its results are in LOG.md.
+## 39.5 Result on A74 (main 95ba762d, 2,645 D / 1,156 C): l3q + rpatN3 — the pair for Studio
+- Flags (one engine, `s39o/eng/pcheck.py`): `xon apexcls filt16 killtab=reg_A74/f/kill/kill6 hat5 consall l3q
+  l3qtab=reg_A74/tab_1.json,reg_A74/tab_-1.json lqcap=3 rpatN=s39o/rpatN3.txt` with `args=reg_A74/args_A74.txt rpat=rpatD.txt`,
+  conservation basis `s21/cf/cons2basis_cls.json`. No offc and no stacked flags. Registry tables are `s33z/reg_A74`
+  (`prep_tag.sh A74 95ba762d`; k3x_D md5 3c71d994…, k3x_C md5 14bbdeed…).
+- keeppen K (warm from run_n's rows plus the partial A73 rows) converged at iter 34: t = 1/9, 132,551 rows.
+- **UPPER-R2 FEASIBLE at t = 0.111111111111** (sol_q39n3A74.json, md5 2680fb64…).
+- **LOWER-R2 VALID t ≥ 20/183 = 0.109289617** (nosep cert cert_q39n3A74L.json, 160 rows, md5 9ba47b69…).
+- Binders (10 receiver rows, canonical keys in `run_n3_A74/binders_canon.txt`); 8 of the 10 are d7.
+- RSST 2.126 and 8406.123 are not in any input: they are not in rpatD, the args registry or nl51_kc, and offc excludes them by name.
+
+The stacked run (s33z F + rpatN3, `run39s.sh s3 A74`) is still running. See LOG.md.
