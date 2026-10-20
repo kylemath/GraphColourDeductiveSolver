@@ -26,7 +26,7 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   8586566/6555565 (nl5571_r12), 85658655/65555666 (nl5226_r13, nl7047_r13), 85555856/65856665 (nl2606_r13). These are 6
   configurations, all D on both engines (`loop/k56/row56_hits_kc.txt`), none among round 55's 35, and they carry 32.5
   percent of the |w| (0.076251 of 0.234865). No registry hit, and no hit that avoids u. The guess (no hit through u)
-  was wrong: rpatN took only the 35, so the next rows are hit by others. The confirmed list so far (6,052 D, rings
+  was wrong: rpatN took only the 35, so the next rows are hit by others. The confirmed list so far (6,053 D, rings
   6-15 in part) is in `loop/k56/nl54d_confirmed_D_kc.txt` for a full rpatN intake. The 8 rows left (67.5 percent of the
   |w|) go to part 2.
 
