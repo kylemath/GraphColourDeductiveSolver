@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 20 Oct ~10:10Z: Admitted explore r56b (built f084611c on cd2e2f2f; kills d8 75566556/86666965 at ring 12-14, 27 kills / 3 minimal f-names; +19 D +8 C, additive, md5 k3x_D 8107f2af / k3x_C ccabe91c) -> registry 2,599 D / 1,123 C. Next: r56c (d8 85565856/65666565).
 - 20 Oct ~09:50Z: Admitted explore r56a (built 98f7068a on 6f74ffd2; kills d10 6556565565/6566669666, the top rpatN binder; +25 D +18 C, additive, md5 k3x_D 61d36116 / k3x_C 1c6f6425) at cd2e2f2f -> registry 2,580 D / 1,115 C. Opus to run stacked + rpatN2 on this head; [E2] bound unchanged until Studio checks it.
 - 20 Oct 09:25Z: NEW BEST [E2]: 55686/438047 (0.127123) <= t* <= 0.128958 on A67 (l3q), with Studio's spec-only check passing (d4a91750, merge 51d5fb68). This replaces 11/75..0.1478. Gate text, dashboard and memory are updated. Next: the stacked solve + rpatN2 (one engine at present: rpatN gives 0.1254..0.1260).
 - 20 Oct 08:55Z: fy vs l3q is settled. A67 is byte-identical to A63, so fy-only's lower bound of 2/15 (0.1333) exceeds l3q-only's upper of 0.1290 on the same registry: our own whole-face rule is strictly weaker than l3q, the column adapted from RSST rule 9. fy-only work stops, and only fy on top of l3q is priced, at low priority. Bound provenance stays as ruled at 19 Oct 23:20Z.
