@@ -1,0 +1,15 @@
+pcell: 10 names from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s36g/g7_q.txt; amask bits set U7/U8/U9 = [1249, 1249, 1249]; l3q keys hit 0; f-patterns added 0
+  pcell q7-_....556_....56._::::::5 = q7-_....556_....56._::::::5 : {'A7': 14, 'A8': 14, 'A9': 14}  [cons2-row skip possible at 6 w[6]; not applied]
+  pcell q7u_.556676_.5...6._::::::5 = q7u_.556676_.5...6._::::::5 : not absorbed single private but no window holds every constrained slot (strict rule): needs a wider window / new separator state
+  pcell q7-_....556_....56._::::::5_s5/p6L1=5 = q7-_....556_....56._::::::5_s5/p6L1=5 : not absorbed ring-3 slot(s) 1: no row of the engine reads ring 3 except cons2/cluster rows [cons2-row skip possible at 6 w[6]; not applied]
+  pcell q7u_....556_....56._::::::5_s5/p6L1=5 = q7u_....556_....56._::::::5_s5/p6L1=5 : not absorbed ring-3 slot(s) 1: no row of the engine reads ring 3 except cons2/cluster rows [cons2-row skip possible at 6 w[6]; not applied]
+  pcell q7-_....556_...756._::::::5_s3/p3R1=5 = q7-_....556_...756._::::::5_s3/p3R1=5 : not absorbed ring-3 slot(s) 1: no row of the engine reads ring 3 except cons2/cluster rows
+  pcell q7-_....556_...756._::::::5_s3#2=5 = q7-_....556_...756._::::::5_s3#2=5 : not absorbed ring-3 slot(s) 1: no row of the engine reads ring 3 except cons2/cluster rows
+  pcell q7-_...5566_...56.._:::::5:5 = q7-_...5566_...56.._:::::5:5 : not absorbed 2 constrained privates: joint cell, not a product of per-spoke masks [cons2-row skip possible at 6 w[5]; not applied]
+  pcell q7-_....556_....567_5*::::::5 = q7-_....556_....567_5*::::::5 : not absorbed 2 constrained privates: joint cell, not a product of per-spoke masks [cons2-row skip possible at 6 w[6]; not applied]
+  pcell q7-_...5566_...567._:::::5:5 = q7-_...5566_...567._:::::5:5 : not absorbed 2 constrained privates: joint cell, not a product of per-spoke masks [cons2-row skip possible at 6 w[5]; not applied]
+  pcell q7u_5566766_5...6.6_:::::5:_p6L1/s6=5 = q7u_5566766_5...6.6_:::::5:_p6L1/s6=5 : not absorbed ring-3 slot(s) 1: no row of the engine reads ring 3 except cons2/cluster rows
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+pcellcheck: 1171875 amask entries; differ from the g7 flag reference: 0; differ from the plain kill table: 3499
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+pcellcheck: 1171875 amask entries; differ from the plain reference: 0; differ from the plain kill table: 0
