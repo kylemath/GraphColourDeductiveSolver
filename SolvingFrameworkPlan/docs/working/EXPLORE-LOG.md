@@ -47,6 +47,12 @@
   c3751a267e7101d4b76856e3c41d9edc, 746b73e0). Rule-side with the other face rows for now (Long Table 17:59Z). Long
   Table 18:54Z: Studio runs r57c's ring 15 from the top (job57c); this machine takes it from the bottom once the queue
   ends (`loop/k47/win57c_r15_rev.txt`, STOP=1).
+- **18:58Z, r57c dies at ring 15 (Studio job57c, dc7e2902):** 37 two-engine kills, all D (kc + dfast18), in the first 65
+  ring-15 windows. minkill47 on Studio's KILL / A_*.out (window file md5 equal to ours): 12 f-names, 3 minimal, all
+  ring 15 with 13 interior vertices: f10_..56566565_...5.5.55., f10_..56566565_..5..5.55., f10_..56566565_..55...55.
+  (u, 8 link vertices and three 5s of the second ring). Files `loop/k47/r57c_kills*` (a046cdd6). Admission head adm57c on
+  main 601538bd, regression byte-identical: +12 D (12 names, none on main), `loop/k57/adm57c/`. The bottom-up run here
+  never started (stopped before r57f closed).
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
