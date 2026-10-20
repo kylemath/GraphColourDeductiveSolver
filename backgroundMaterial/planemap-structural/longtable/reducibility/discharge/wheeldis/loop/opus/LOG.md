@@ -707,3 +707,7 @@ our agent R and have no output from it.
 - Lean status (CXRing 96 = out/lean_cxring/2a4bc4cf/entries.txt, CXInt 345 = out/lean_cxint/95ba762d/entries.txt, CWheels.lean): 98 of 130 proved (CXInt 73, CXRing 23, CWheels 2). Every k3x_C cover entry at rings 9–13 and 15 is already in Lean; **the 20 k3x_C entries not in Lean are all ring 14** (3 more ring-14 ones are CXRing). Not in Lean: those 20, 10 RSST C2cons (rings 11–13, table kills only), e7_B56656._6B.66.._1111110 (r14, job27 part01.cfast) and f9_....5565B_....6655. (r12, job28 r_1.cfast).
 - By ring: 9:1, 10:6, 11:23, 12:38, 13:37, **14:24 (3 Lean), 15:1 (Lean), 16:0**.
 - RSST 2.126 and 8406.123 are verdict=none and absent throughout. CPU nice 10, threads 1.
+
+## 20 Oct ~21:05Z — [E2] A67 upper rechecked without the 10 NO-C job27 entries
+- Removed Studio rmsweep2 NO-C entries (e7_B55B565_/e7_B56B565_..._1111111, ring 12; 6 in part00, 4 in part01) by disabling their headers in filtered copies; d7 distinct patterns 9709 -> 9699 (non-vacuous).
+- upperR2 on run_A67/sol_q66.json, same FQ flags and tables: **UPPER-R2 FEASIBLE at 0.128957775395**, all d=7..17 exhaustive 0 violated. The [E2] pair 55686/438047 <= t* <= 0.128958 stands without them. Log: s33z/run_A67/no10/.
