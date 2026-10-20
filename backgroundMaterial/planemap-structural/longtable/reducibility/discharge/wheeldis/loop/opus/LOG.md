@@ -713,6 +713,6 @@ our agent R and have no output from it.
 - upperR2 on run_A67/sol_q66.json, same FQ flags and tables: **UPPER-R2 FEASIBLE at 0.128957775395**, all d=7..17 exhaustive 0 violated. The [E2] pair 55686/438047 <= t* <= 0.128958 stands without them. Log: s33z/run_A67/no10/.
 
 ## 20 Oct 22:02Z — [E2] l3q + rpatN3 on A74 CONFIRMED by Studio
-- Studio spec-only check (loop/studio/opus_check/s39o_verdict.md): UPPER FEASIBLE at 1/9 (d=7..17, 0 violators, Karp λ 5/9), LOWER VALID exactly 20/183; Studio's own rpatN3 build = our 2,287 patterns; tables = reg_A74.
+- Studio spec-only check (loop/studio/opus_check/s39o_verdict.md, 545aa972, merge 2c139411): UPPER FEASIBLE at 1/9 (d=7..17, 0 violators, Karp λ 5/9), LOWER VALID exactly 20/183; Studio's own rpatN3 build = our 2,287 patterns; tables = reg_A74.
 - **New two-engine bound: 20/183 = 0.109290 <= t* <= 1/9 = 0.111111 [E2]** on A74 (main 95ba762d), rules l3q (RSST rule 9 restatement) + rpatN3 (u-centred patterns from all 8,200 two-engine-D configurations of the 2026 set, nl51_kc.txt). Previous [E2]: 0.127123..0.128958.
 - C cover (s41c): 130 C entries suffice for the upper; 32 not yet in Lean (20 ring-14, 10 RSST C, 2 old cpat), in Studio's CCover batch. The upper holds without the 129 ring-merge cpat entries.
