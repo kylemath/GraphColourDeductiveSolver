@@ -73,6 +73,15 @@ once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill;
   verdicts to `loop/k53/S_res.txt` (346 windows with both engines in, 223 C and 123 none; kills equal Studio's KILL).
   They go into the census cache once the running census closes; a rerun then counts them exactly.
 
+- **02:51Z, every ring <= 14 split window run here: 86.68 percent of the 14-slot fillings, 0 of 25 children dead.**
+  The big part, p41 >= 6 with apex 6-9 (3,906,250,000 fillings), went from registry 75.27 percent to 79.19 percent:
+  2,836 windows run, 857 skipped as covered, 7 kills (3 of them ring-15 replays from cen53), and its 72 joint windows
+  gave none. Per child in that part: ts6 = 5 is at 89.8-90.9 percent; ts6 >= 6 is at 75.4-79.9 percent; ts3 hardly
+  matters. Every filling with all free slots >= 7 is uncovered. The p41 = 5 part dies through the extra five beside
+  s3 and s4; with p41 >= 6 the s3/s6 windows at ring <= 14 do almost nothing. Log `loop/k53/cen54_7_8666655_5677657.txt`.
+- **02:52Z, census rerun with Studio's batch 1 merged into G_res.txt** (`loop/k53/merge54.py`, 346 lines), same settings:
+  ring <= 14 and Studio's ring 15-16 verdicts replay from the cache.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
