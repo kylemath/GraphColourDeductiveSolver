@@ -79,14 +79,23 @@ def pc_norm(N):
         l = fix(('p', i, sd, k)); P[l[1:]] = v
     T = {}
     for ch, v in N.T.items():
-        T[('#', fix(ch[1]), ch[2]) if ch[0] == '#' else tuple(fix(l) for l in ch)] = v
+        T[('#', fix(ch[1]), ch[2]) if ch[0] == '#' else _fwd(N, [fix(l) for l in ch])] = v
     N.P, N.T = P, T
     return N
 
 def _r2_order(N, l):
-    """position of a ring-2 label in forward ring-2 order (for orienting chains): s_{i-1} < p_{i,L1} < .. < p_{i,R1} < s_i"""
-    if l[0] == 's': return (l[1] % N.d, 3, 0)
-    i, sd, k = l[1:]; return ((i - 1) % N.d, 1, k) if sd == 'L' else ((i - 1) % N.d, 2, -k)
+    """linear position of a ring-2 label in forward ring-2 order: s_{i-1} < p_{i,L1} < .. < p_{i,R1} < s_i
+    (s_i -> 3i; privates of w_i -> 3(i-1) + 1 for L, + 2 for R; ties by k)"""
+    if l[0] == 's': return (3 * (l[1] % N.d), 0)
+    i, sd, k = l[1:]; return (3 * ((i - 1) % N.d) + (1 if sd == 'L' else 2), k if sd == 'L' else -k)
+def _fwd(N, ch):
+    """chain labels in forward ring-2 order, cyclically: sort by position, then start after the largest cyclic gap
+    (PRIVCELL_SPEC 1.9 point 1)"""
+    ls = sorted(ch, key=lambda l: _r2_order(N, l))
+    if len(ls) < 2: return tuple(ls)
+    P = 3 * N.d; pos = [_r2_order(N, l)[0] for l in ls]
+    gaps = [((pos[(t + 1) % len(ls)] - pos[t]) % P, t) for t in range(len(ls))]
+    g, t = max(gaps); return tuple(ls[t + 1:] + ls[:t + 1])
 
 def pc_render(N):
     ch = lambda S: '.' if S is None else PC_INV[S]
@@ -211,16 +220,16 @@ def g7_to_q(nm):
     W = [None if c == '.' else PC_CH[c] for c in lk[1:]]; S = [None if c == '.' else PC_CH[c] for c in sw]
     N = PCName(7, lk[0] == 'u', W, S, {}, {})
     named = {('s', i) for i in range(7) if S[i] is not None}
-    for k, ch in enumerate(sl):   # apexes that share a ring-3 chain with a private count as its named neighbours
-        x = G7_SLOTS[k]
-        if ch != '.' and x[0] == 't': named |= {('s', int(y[1:])) for y in x[1:].split('/') if y[0] == 's'}
+    chains = [x[1:].split('/') for k, x in enumerate(G7_SLOTS) if sl[k] != '.' and x[0] == 't']
+    def named_nb(I, K, sI):   # PRIVCELL_SPEC 1.6 / 1.9 point 2: apex s_sI named, or in a named ring-3 chain with p_{I,K}
+        return ('s', sI) in named or any('p%d%d' % (I, K) in c and 's%d' % sI in c for c in chains)
     def plab(I, K):
         """g7 private p_{I,K} (frame degree of w_I known).  Name pins w_I: L K.  Otherwise the label must keep the
         frame adjacency to a named apex: K = 1 next to s_{I-1} -> L1; K = n next to s_I -> R1; both named with n = 1
         cannot be written without pinning w_I (refused)."""
         n = G7_FRAME_W[I] - 5
         if N.npriv(I) is not None: return ('p', I, 'L', K)
-        left = K == 1 and ('s', (I - 1) % 7) in named; right = K == n and ('s', I) in named
+        left = K == 1 and named_nb(I, K, (I - 1) % 7); right = K == n and named_nb(I, K, I)
         if left and right: raise ValueError('%s: p%d%d touches two named apexes, parent not pinned' % (nm, I, K))
         if right: return ('p', I, 'R', n + 1 - K)
         if left: return ('p', I, 'L', K)
@@ -234,7 +243,7 @@ def g7_to_q(nm):
             ls = [lab(y) for y in x[1:].split('/')]
             if len(ls) == 1:   # t(s4) of the frame: the 2nd ring-3 neighbour of s4 from s3's side (t(s2/s3/s4), t(s4), t(s4/p51))
                 N.T[('#', ls[0], 2)] = v
-            else: N.T[tuple(sorted(ls, key=lambda l: _r2_order(N, l)))] = v
+            else: N.T[_fwd(N, ls)] = v
     return pc_norm(N)
 
 # ---------------- absorption (part 2) ----------------
@@ -272,6 +281,15 @@ def pc_window_sets(N, j, wR, sR):
             s[o] = N.S[i]
     return w, s
 PC_LOG = []
+PC_CLASS = {'A': 'amask', 'L': 'l3q', 'F': 'fpat'}
+def pc_class_hint(nm):
+    """optional k3p trailing token (PRIVCELL_SPEC 1.9 point 7): class=<..> ; a hint only, never read by the guard"""
+    PC_LOG.clear(); pc_build([nm]); _, cn, kind, sites, why = PC_LOG[-1]
+    if sites: cl = sorted({PC_CLASS[k[0]] for k in sites})
+    elif kind == 'P': cl = ['sepx']
+    elif 'ring-3' in why: cl = ['r3h', 'cluster']
+    else: cl = ['M2', 'cluster']
+    return 'class=' + ','.join(cl)
 def pc_build(names, kt_shape=(5,) * 8, dmax=17):
     """names (q-form strings) -> (AM {U: uint8 array of extra kill bits}, L3 {(sg,c,w2,w3,w4,a,o): bits}, PATS {d: set})"""
     import numpy as np
@@ -330,5 +348,6 @@ if __name__ == '__main__':
         if cmd == 'g7':
             q = g7_to_q(a); print(a, pc_canon(q))
         elif cmd == 'canon': print(a, pc_canon(pc_parse(a)))
+        elif cmd == 'class': print(a, pc_class_hint(a))
         elif cmd == 'pattern':
             N = pc_parse(a); V, E = pc_pattern(N); print(a); print('  V', {k: sorted(v) for k, v in V.items()}); print('  E', E); print('  arc', pc_arc(N))

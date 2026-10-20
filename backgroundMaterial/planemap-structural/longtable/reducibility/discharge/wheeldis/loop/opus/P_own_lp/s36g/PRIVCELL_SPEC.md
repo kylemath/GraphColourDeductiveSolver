@@ -40,11 +40,15 @@ C      := 'u'  the centre is in the configuration (interior) with exact degree D
 LINK   := D chars, slot w_i          SWORD := D chars, slot s_i
 PRIV   := D groups joined by ':' ; group i holds the privates of w_i:
             ''                  no private of w_i is constrained
-            c_1 .. c_n          (only when LINK[i] is an exact 5..8, so n = n_i): p_{i,1} .. p_{i,n}
+            c_1 .. c_n          (only when LINK[i] is an exact 5..8, so n = n_i): p_{i,1} .. p_{i,n}, all n_i
+                                chars written, free ones as '.' (1.9 point 4)
             c_1..c_a '*' c'_b..c'_1   (only when LINK[i] is not exact): p_{i,L1..La} from the s_{i-1} end,
-                                p_{i,Rb..R1} from the s_i end; the name requires n_i >= a + b (distinct vertices)
+                                p_{i,Rb..R1} from the s_i end; the name requires n_i >= a + b (distinct vertices);
+                                the '*' is always written, so an empty R part gives 'L*' and an empty L part '*R'
+                                (1.9 point 3)
 R3     := items joined by ',' ; item := CHAIN '=' c
-CHAIN  := LAB '/' LAB ['/' LAB ..]   the ring-3 vertex adjacent to these consecutive ring-2 vertices (forward order)
+CHAIN  := LAB '/' LAB ['/' LAB ..]   the ring-3 vertex adjacent to these consecutive ring-2 vertices, ALWAYS written
+                                     in forward ring-2 order (s_{i-1}, p_{i,L1}, .., p_{i,R1}, s_i, ..; 1.9 point 1)
         | LAB '#' k                  the k-th ring-3 neighbour of LAB, counted from its ring-2 predecessor's side
 LAB    := 's'i | 'p'i'L'k | 'p'i'R'k    (exact parent: always written 'L'k, k = 1..n_i)
 c      := '.' | '5' | '6' | '7' | '8' | 'B' | '9'
@@ -91,7 +95,10 @@ After each image, a label p_{i,Rk} with an exact parent is rewritten as p_{i,L(n
 also normalises:
 
 - a group of an exact parent that has no constrained private is written `''`;
-- in a non-exact group, trailing free chars of the L part and leading free chars of the R part are dropped;
+- in a non-exact group, trailing free chars of the L part and leading free chars of the R part are dropped, and the
+  `*` stays even when one side is empty (`5*`, `*5`);
+- every chain is put in forward ring-2 order, cyclically (after a reflection this is the reversed chain). A name whose
+  chain is not written forward is read, but it is not canonical, so it fails G0's round-trip until rewritten;
 - R3 items are sorted.
 
 The loader canonicalises on read, and two names are the same name iff their canonical strings are equal. (Code:
@@ -126,7 +133,8 @@ The loader canonicalises on read, and two names are the same name iff their cano
   w_i is not exact, only the end pieces s_{i-1}–p_{i,L1}–…–p_{i,La} and p_{i,Rb}–…–p_{i,R1}–s_i are determined;
 - t–each label of its chain, and t(y#k)–y.
 
-**Faces.** The faces are the frame triangles among the listed vertices: (u, w_i, w_{i+1}), (w_i, w_{i+1}, s_i),
+**Faces.** The faces are the frame triangles among the listed vertices (and, for G5, every 3-cycle of listed vertices
+must be one of them; 1.9 point 5): (u, w_i, w_{i+1}), (w_i, w_{i+1}, s_i),
 (w_i, consecutive ring-2 pair of its chain) and (t, consecutive chain pair).
 
 **Determinacy (well-formedness).** A name is well formed only if every label and adjacency it uses is fixed by its own
@@ -152,13 +160,17 @@ The conversion (`g7_to_q`):
 
 - **Centre, link, apexes.** d = 7. C, W and S are copied.
 - **A private whose parent the name pins.** It becomes L k.
-- **A private whose parent is `.`.** It keeps the frame adjacency to a named apex:
-  - L1 if it is the first private and s_{I-1} is named, or shares a chain with a named private;
-  - R1 if it is the last private and s_I is named;
+- **A private whose parent is `.`.** It keeps the frame adjacency to a named apex. An apex counts as named for p_{I,K}
+  if its own slot is constrained, or if a constrained ring-3 slot's chain contains both p_{I,K} and that apex
+  (1.9 point 2):
+  - L1 if it is the first private and s_{I-1} is named for it;
+  - R1 if it is the last private and s_I is named for it;
   - if both apply with n = 1, the name cannot be written without pinning w_I, and the converter refuses it. This does
     not happen for the 10 names.
 - **Ring-3 slots.**
-  - t(a/b/..) becomes a chain in forward order.
+  - t(a/b/..) becomes a chain in forward ring-2 order, **sorted after the labels are converted**, whatever order the g7
+    slot is spelt in. For example t(p51/s4) is spelt backwards: forward order is s4/p5L1, which the reflection in
+    #5 turns into p3R1/s3.
   - t(s4) becomes s4#2, the middle one of s4's three ring-3 neighbours t(s2/s3/s4), t(s4), t(s4/p51); it needs s4
     exact, and s4 = 7 in that name.
 
@@ -170,7 +182,7 @@ The 10 names of `s25c/g7_names.txt` in canonical q-form (`s36g/g7_q.txt`):
 | 2 | g7_u76.5566_6..5..._..5....... | `q7u_.556676_.5...6._::::::5` | C X={I0-I2}, ring 14 |
 | 3 | g7_-..655.._..65..._...5..5... | `q7-_....556_....56._::::::5_s5/p6L1=5` | D, ring 8 |
 | 4 | g7_u..655.._..65..._...5..5... | `q7u_....556_....56._::::::5_s5/p6L1=5` | D, ring 9 |
-| 5 | g7_-..655.._..657.._...5.....5 | `q7-_....556_...756._::::::5_s3/p3R1=5` | C, ring 11 |
+| 5 | g7_-..655.._..657.._...5.....5 | `q7-_....556_...756._::::::5_p3R1/s3=5` | C, ring 11 |
 | 6 | g7_-..655.._..657.._...5....5. | `q7-_....556_...756._::::::5_s3#2=5` | C, ring 11 |
 | 7 | g7_-.6655.._..65..._..55...... | `q7-_...5566_...56.._:::::5:5` | C, ring 11 |
 | 8 | g7_-..655.._.765..._..55...... | `q7-_....556_....567_5*::::::5` | C, ring 11 |
@@ -181,6 +193,51 @@ The patterns (vertex list and edges) of all 10 are printed in `s36g/selftest.log
 against the kc lines of Studio's held file (origin/main `loop/studio/sender_held/g7_53/held53_7_7665566_6765766.txt`).
 All 10 have the same vertex set and degrees as the m interior vertices, and their interior–interior kc edges **equal**
 the pattern edges, which is stronger than "forced ⊆ kc" (`framecheck.log`, 0 failures).
+
+### 1.9 Resolved ambiguities (Studio 9a4c2e79)
+
+These are Studio's seven points from `loop/studio/opus_check/privcell_verdict.md` (9a4c2e79, merge fb968de7). The rule
+text above has been edited so each point reads on its own.
+
+1. **Chain order when a g7 slot is not spelt forward (#5). Adopted.** A chain is always written in forward ring-2 order,
+   cyclically, so it reads s_{i-1}, p_{i,L1}, .., p_{i,R1}, s_i, and the start is placed after the largest cyclic gap.
+   - The converter now sorts each chain after converting its labels, and every image re-sorts. Before the fix it kept
+     the g7 slot's literal order t(p51/s4) and then reversed it under reflection, so #5 came out as `s3/p3R1`.
+   - #5 is now `..._p3R1/s3=5`. The pattern is unchanged; only the string, and therefore name identity and dedup,
+     changed.
+   - A non-forward chain is still read, but it is not canonical (1.4).
+2. **"Shares a chain with a named private" (1.6). Replaced by a precise rule.** An apex counts as named for p_{I,K} if
+   its own slot is constrained, *or* if a constrained ring-3 chain contains both p_{I,K} and that apex. Then L1 is
+   used next to a named s_{I-1}, and R1 next to a named s_I.
+   - The old clause meant this, but its wording did not.
+   - It is not exercised by the 10 names: wherever it would apply, the apex is also named directly. So Studio's
+     reading, the two apex clauses only, gives the same result on all 10.
+   - The extra clause matters only for a name that pins t(p/s) but leaves s free.
+3. **R-empty non-exact group. Adopted:** written `L*`, and an L-empty group `*R`. The `*` is never dropped. #8's `5*`
+   is this case.
+4. **Exact-parent group. Adopted:** written with all n_i chars, free ones as `.`. For example, a 7 with only its
+   second private constrained is `.5`.
+5. **G5 triangles. Adopted:** every 3-cycle among the kc interior vertices must be a frame face.
+   - This is at least as strict as reading "interior face": a separating interior 3-cycle is held. That is the safe
+     direction, because the frame disc has no separating triangle among named vertices.
+   - Face counts agree on all 10.
+6. **The u centre is a constrained slot. Adopted:** for C = `u` it is a vertex of the pattern (1.5) with degree D, and
+   it takes part in G3's bijection. This matches every m here (#2: 10, #4: 8, #10: 13).
+7. **k3p lines and the absorption class. Adopted:** there is no required class. The coordinator's suggestion is
+   adopted as an optional, ignorable `class=` token (3.1).
+   - Values: `amask`, `l3q`, `fpat`, `sepx`, `M2`, `r3h`, `cluster`. `sepx` is added for case A′, which needs
+     separator state only.
+   - Opus's reading for the 10 names:
+
+     | # | class |
+     |---|---|
+     | 1 | amask |
+     | 2 | sepx |
+     | 3, 4, 5, 6, 10 | r3h,cluster |
+     | 7, 8, 9 | M2,cluster |
+
+**Status.** After the fix, all 10 canonical strings in `s36g/g7_q.txt` are byte-identical to Studio's table, and the
+checks (Part 4) were re-run.
 
 ---
 
@@ -364,7 +421,7 @@ A two-engine name in q-form, or any form the converter maps to q-form, is **admi
 - **G2 (ring-merge).** For C: run the union-find of `out/job30/twoeng.py ringmerge` on X. If a component holds two or
   more ring vertices, the name is held. X must merge interior vertices only.
 - **G3 (interior = named).** There is a bijection between the kc line's m interior vertices and the name's constrained
-  slots, with equal exact degrees. This is Studio's g7_check (a) and (b).
+  slots, with equal exact degrees. For C = `u` the centre is one of those slots, with degree D (1.9 point 6). This is Studio's g7_check (a) and (b).
   - Every constrained slot is an exact `5`–`8`.
   - A `9` or `B` anywhere means held. This is the letter-9 rule: an LP letter 9 is ≥ 9 and never an exact degree, and
     `B` is a family that the engines did not check.
@@ -376,13 +433,27 @@ A two-engine name in q-form, or any form the converter maps to q-form, is **admi
     vertices, and no edge between named vertices that the frame keeps at distance ≥ 2.
   - The containment matcher is induced, so a missing or extra edge would make the name fire where the configuration
     does not embed.
-- **G5 (faces).** Every interior triangle of the kc configuration maps onto a frame face of 1.5. This is
-  grow.embeddings' face condition.
+- **G5 (faces).** Every 3-cycle among the kc line's interior vertices maps onto a frame face of 1.5 (1.9 point 5).
+  This covers grow.embeddings' face condition, and it also holds a separating interior triangle.
 - **G6 (placement).** A `-` name's arc A satisfies |A| ≤ D − 1, or the name is marked "D only". Otherwise 1.4 lets it be
   placed at d' ≠ D, where its induced pattern differs.
 
-An admitted name is passed on with the absorption class the loader will give it (Part 2: F / A / A′ / L / X, plus
-cons2). Studio and Opus can then compare which rows each engine changes.
+An admitted k3p line **may** carry an optional token `class=<c>[,<c>..]` naming the Part 2 absorption the loader will
+use. It goes after the kc fields and before the parenthesised comment. The values are:
+
+| value | meaning |
+|---|---|
+| `amask` | case A |
+| `l3q` | case L |
+| `fpat` | case F |
+| `sepx` | case A′, separator state |
+| `M2` | case X with two or more privates |
+| `r3h` | case X with ring 3 |
+| `cluster` | the cluster-row route |
+
+The token is a **hint only**. The guard never reads it, a missing or wrong token never changes admissibility, and the
+Opus loader recomputes the class itself (`pc_class_hint` in `eng/privcell.py`) and logs any disagreement (1.9
+point 7).
 
 ### 3.2 Worked examples
 
