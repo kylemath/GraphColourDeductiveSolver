@@ -53,6 +53,11 @@
   (u, 8 link vertices and three 5s of the second ring). Files `loop/k47/r57c_kills*` (a046cdd6). Admission head adm57c on
   main 601538bd, regression byte-identical: +12 D (12 names, none on main), `loop/k57/adm57c/`. The bottom-up run here
   never started (stopped before r57f closed).
+- **19:01Z, r57e (7766656/6577556, 2/183, non-face): no kill at ring <= 14** (adm57c admitted at 38a59465). Its 658 ring
+  <= 14 windows took 5 minutes (many cached). The second non-face row of this round past ring 14 (with r57c). 1,054
+  windows left (274 at 15, 286 at 16, 252 at 17, 242 at 18; `loop/k47/win52_7_7766656_6577556_todo.txt`, md5
+  c2a78cfe1dc8899490163c6a8269938b, 10b99675). Studio is on CXInt, so its ring 15-16 windows (`loop/k47/win57e_r1516.txt`,
+  560) run here on 3 cores when the queue ends, STOP=1.
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
