@@ -80,3 +80,8 @@
 - 22:50Z 19 Oct: row 14 stopped (Long Table 22:49Z: the row is already dead at ring 12 on explore's windows). Final:
   Part A 7 run, 1 kill (ring-17 C); Part B 940 of 1,563 run, 219 two-engine kills (ring 15 and 16). All kills in
   row14_*/kills*.txt with each window's kc / dfast18 / cfast output; nothing admitted.
+- 20 Oct (finals committed 19:12Z): row 13 (7 7766556/6567566, todo md5 bc7b943b = explore's head copy 8410a37c / f15e3888,
+  352 windows: 116 ring 16, 167 ring 17, 69 ring 18), 2 parts, Studio engines (kc -C -s 60 -t 600; dfast18 / cfast
+  --fixed), run 20:09Z 19 Oct - ~01:15Z 20 Oct: **SURVIVES**, 352/352 decided by kc, 0 two-engine kills: 343 kc neither
+  (116 r16, 167 r17, 60 r18), 9 ring-18 kc timeouts, 0 kc D, 0 kc C. This is the top face row of job57face (Long Table
+  19:09Z): its ring-17 windows give no two-engine kill, so job57face's kill line is met before it starts.
