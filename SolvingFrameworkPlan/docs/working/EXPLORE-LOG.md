@@ -82,6 +82,10 @@ None of these rows was swept before in any orientation (canon_key against every 
   C), 85 f-names (twoeng: 72 D, 13 C same X, all X interior-only, 0 mismatch); 11 minimal, e.g. f8_...56675_.....55.
   (C, ring 13, m 8) and f8_...55675_...66.5. (D, ring 13). Admission check on main 33720b50 (00:30Z): 2,544 D / 1,094 C,
   +85 exactly, 0 lost, guards 0 new; files in `loop/k54/adm54n/`.
+- **00:49Z, d8 76765656/55556665 (r54p, -1/75) dies at ring 13.** 11 two-engine kills at ring 13-14 (ring 13: 2 D),
+  11 f-names (twoeng: 8 D, 3 C same X, interior-only, 0 mismatch); minimal f8_...65656_...5.66. (D, ring 13, m 9) and two
+  at ring 14. Admission check on main 15bc20c7 (00:50Z): 2,552 D / 1,097 C, +11 exactly, 0 lost, guards 0 new; files in
+  `loop/k54/adm54p/`. Every non-face binder of the 11/75 cert is now dead; left are the two d7 face rows.
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
