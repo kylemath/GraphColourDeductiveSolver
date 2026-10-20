@@ -650,3 +650,13 @@ our agent R and have no output from it.
 - Not automatic:
   - a minus-89 re-solve if X is INFEASIBLE;
   - the e87 re-price on a new cert.
+
+## s35f fy (our whole-face rule, RELAY_SPEC_s20 level 1) vs l3q on A63 = A67 (identical k3x, kill tables, dcount 17,595), 20 Oct
+- **fy-only is strictly worse than l3q on A63 = A67, since 2/15 > 0.128958.** fy-only round 1 (s35f2, 5 h cap, unconverged): nosep LOWER-R2 VALID t ≥ 2/15 (cert r1_cert_s35fL 8f28c05d). Its upper on the nosep solution is INFEASIBLE, so there is no fy-only upper; the l3q-only upper on A67 is 0.128958 (sol_q66). Rounds 2–3 were stopped and their rows kept.
+- **fy priced against the l3q cert s33z/run_A67/cert_q66L (t ≥ 55686/438047):** P_own_lp/s35f/fyq/pricer35.py rebuilds the cert with the s33z engine (q66 flags), adds fy z columns (sender +1 per big spoke, receiver +1 per link five; keys verbatim from s25c), and runs a lifting LP over all same-coefficient sender contexts (26,280 contexts undeduped; 78 used by the 66 cert senders).
+  - 37 fy columns have rc < 0. The most negative is z(7,5,5,6,6; h 0,0,·,·,0) at rc = −31300/438047 = −0.0715, from senders 55667 00000|11 and 00100|00. Lifting does not help: the best lifting is still −0.0715.
+  - Cross-check: the fy port of the l3q engine (fyq/eng = s33z/eng + port_fy.py) gives cert_q66L LOWER-R2 INVALID with the same 37 negatives. Without fy it gives VALID 55686/438047, and the fy upper on sol_q66 (z = 0) is FEASIBLE 0.128957775, unchanged.
+- Gate (≥ 0.002) passed, so l3q+fy was re-solved warm on A67 (fyq/run_fyq.sh, nice 15, threads 2):
+  - keeppen fyq1 hit the 5 h cap at iter 13, unconverged. Penalised t is 0.12744 and the worst d7/d8/d9 violations are about 0.04.
+  - nosep fyqL, lowerR2 and upperR2 are running unattended. Results land in fyq/lower_fyqL.log, fyq/upper_*.log and fyq/run.log ("DONE" line).
+  - No l3q+fy bound yet. The pricing shows only that the l3q cert does not survive fy, not by how much t* rises.
