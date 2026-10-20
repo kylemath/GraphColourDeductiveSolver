@@ -1,10 +1,12 @@
 """EXPLORE round 54b (Long Table 01:14Z): cen53 with the engine windows put on degree splits of the private ring-3
 neighbours of chosen s vertices.  J3S=3 adds the ring-3 neighbours of s3 to the slots (on top of the face's
 s_(i-1), s_i, s_(i+1)); FOCUS=3,6 names s vertices.  Engine windows: joint ones first (a ring-3 slot next to each
-FOCUS s, not counting slots next to the face's s), then single ones (holding the private ring-3 neighbour, next to
-that s alone, of some FOCUS s); no others, except windows whose kc line already has a verdict in G_res.txt (free, run before all).  The child
+FOCUS s, not counting slots next to the face's s), then two at one 7 (a FOCUS s inside with two of its slot
+neighbours, the drawing thread's 01:43Z lemma: the lock goes when its ring contacts drop to <= 3), then single ones
+(holding the private ring-3 neighbour, next to that s alone, of some FOCUS s); no others, except windows whose kc line already has a verdict in G_res.txt (free, run before all).  The child
 report is by the letters of the private ring-3 neighbours (next to that s alone).  CAP is shared out over the
-parts by their fillings the registry leaves uncovered.  A filling with no planar 3-ball is skipped as a window.  After
+parts by their fillings the registry leaves uncovered.  RLOC=14 runs only cached windows and windows at ring
+<= 14 here; DUMP=<file> writes the joint and single windows above RLOC, in run order, as a window file for Studio.  A filling with no planar 3-ball is skipped as a window.  After
 each part the coverage is also given per split child (one letter per FOCUS slot), and the children are totalled over
 the parts at the end.  Log cen54_<D>_<LK>_<SV>.txt.  cen53's docstring follows.
 EXPLORE round 53, split and kill (coordinator 18:10Z, from the user's sprint plan): a face receiver row that has no
@@ -240,18 +242,10 @@ def main():
                     k = tuple(sorted(req.items(), key=repr)); cyl.append(dict(req)); src.setdefault(k, c[0])
         cyl = minimal(cyl); n0 = count(cyl, SLp, LETp)
         return P, pa, pf, PT, fix, cyl, src, inrow, n0
-    PRE = [regpart(EXp, SLp, LETp) for lab, EXp, SLp, LETp in PARTS]   # cen54: registry first, then the cap is shared
-    UNC = sum(r[3] - r[8] for r in PRE) or 1                            # out over the parts by uncovered fillings
-    for (lab, EXp, SLp, LETp), (P, pa, pf, PT, fix, cyl, src, inrow, n0) in zip(PARTS, PRE):
-        T0 = time.time(); PCAP = CAP * (PT - n0) / UNC
-        say('part %s (%d fillings): registry %d inside the fixed vertices; %d minimal requirements, covers %d (%.2f%%)%s' % (
-            lab, PT, len(inrow), len(cyl), n0, 100.0 * n0 / PT, ' [%s]' % ' '.join(sorted(set(inrow))[:3]) if inrow else ''))
-        for c in cyl[:40]: say('  reg %s | %s' % (' '.join('%s=%d' % (sname(k), v) for k, v in sorted(c.items(), key=repr)) or '(none)', src[tuple(sorted(c.items(), key=repr))]))
-        if n0 == PT:
-            say('  all covered by the registry; no engine windows'); done_all[0] += PT; done_all[1] += PT
-            if FOC: children(cyl, EXp, SLp, LETp, True)
-            continue
+    SK = (lambda w: (w[6], w[1], w[0], w[2], w[3])) if os.environ.get('ORDER') == 'fives' else (lambda w: (w[6],) + w[:4])   # fives: more fives first, then fewer slots
+    def enum(P, pa, fix, EXp, SLp, LETp):
         idx = {x: k for k, x in enumerate(P)}
+        A7 = {j: {x for x in pa[('s', j)] if x in LETS} for j in FOCUS}     # slots next to s_j (its ring contacts beyond ring 2)
         def ring(S, lets):
             ll = dict(fix); ll.update(lets); key = tuple(sorted(ll.items(), key=repr))
             if key not in bc:
@@ -272,17 +266,40 @@ def main():
                         lets = dict(zip(T, ls)); c, deg = ring(S, lets)
                         if c and c[0] <= RMAX:
                             nm = gname(S, deg); hit = ('%d %d %s %s' % c) in eng.res
-                            tier = 0 if hit else 1 if all(QF[j] & S for j in FOCUS) else 2 if any(x in S for x in FOC) else 3
-                            if FOC and tier == 3: continue
+                            tier = (0 if hit else 1 if all(QF[j] & S for j in FOCUS) else
+                                    2 if any(('s', j) in S and len(A7[j] & S) >= 2 for j in FOCUS) else 3 if any(x in S for x in FOC) else 4)
+                            if FOC and tier == 4: continue
                             cand.append((len(T), -sum(deg[x] == 5 for x in S), c[0], nm, lets, '%s %d %d %s %s' % ((nm,) + c), tier))
             for y in ext:
                 if idx[y] > idx[min(S, key=lambda z: idx[z])] and (y not in LETp or len(T) < KMAX):
                     grow_(S | {y}, (ext | pa[y]) - S - {y})
         for x in P: grow_(frozenset([x]), frozenset(pa[x]))
-        if os.environ.get('ORDER') == 'fives': cand.sort(key=lambda w: (w[6], w[1], w[0], w[2], w[3]))   # more fives first, then fewer slots
-        else: cand.sort(key=lambda w: (w[6],) + w[:4])
-        say('  engine windows: %d (connected subsets %d; %s), by free slots %s, by ring %s' % (len(cand), len(seen),
-            '%d cached, run first; %d joint, then %d single' % tuple(sum(w[6] == t for w in cand) for t in (0, 1, 2)), sorted(collections.Counter(w[0] for w in cand).items()), sorted(collections.Counter(w[2] for w in cand).items())))
+        cand.sort(key=SK)
+        return cand, len(seen)
+    PRE = [regpart(EXp, SLp, LETp) for lab, EXp, SLp, LETp in PARTS]   # cen54: registry first, then the cap is shared
+    UNC = sum(r[3] - r[8] for r in PRE) or 1                            # out over the parts by uncovered fillings
+    CAND = [enum(r[0], r[1], r[4], p[1], p[2], p[3]) if r[8] < r[3] else ([], 0) for p, r in zip(PARTS, PRE)]   # cen54: windows of every part first
+    RLOC = int(os.environ.get('RLOC', RMAX))     # cen54: uncached joint/single windows with ring > RLOC are not run here
+    if os.environ.get('DUMP'):                   # ... and are written in run order (deduplicated by kc line) for Studio
+        ks = set(); out = []
+        for w in sorted((w for cand, _ in CAND for w in cand if w[6] in (1, 2, 3) and w[2] > RLOC), key=SK):
+            k = w[5].split(' ', 1)[1]
+            if k not in ks: ks.add(k); out.append(w)
+        open(os.environ['DUMP'], 'w').write(''.join(w[5] + '\n' for w in out))
+        say('dump: %d windows at ring %d-%d (%d joint, %d two at one 7, %d single; by ring %s) -> %s' % (len(out), RLOC + 1, RMAX,
+            sum(w[6] == 1 for w in out), sum(w[6] == 2 for w in out), sum(w[6] == 3 for w in out), sorted(collections.Counter(w[2] for w in out).items()), os.environ['DUMP']))
+    for pi, ((lab, EXp, SLp, LETp), (P, pa, pf, PT, fix, cyl, src, inrow, n0)) in enumerate(zip(PARTS, PRE)):
+        T0 = time.time(); PCAP = CAP * (PT - n0) / UNC
+        say('part %s (%d fillings): registry %d inside the fixed vertices; %d minimal requirements, covers %d (%.2f%%)%s' % (
+            lab, PT, len(inrow), len(cyl), n0, 100.0 * n0 / PT, ' [%s]' % ' '.join(sorted(set(inrow))[:3]) if inrow else ''))
+        for c in cyl[:40]: say('  reg %s | %s' % (' '.join('%s=%d' % (sname(k), v) for k, v in sorted(c.items(), key=repr)) or '(none)', src[tuple(sorted(c.items(), key=repr))]))
+        if n0 == PT:
+            say('  all covered by the registry; no engine windows'); done_all[0] += PT; done_all[1] += PT
+            if FOC: children(cyl, EXp, SLp, LETp, True)
+            continue
+        cand, nseen = CAND[pi]
+        say('  engine windows: %d (connected subsets %d; %s), by free slots %s, by ring %s' % (len(cand), nseen,
+            '%d cached, run first; %d joint, %d two at one 7, then %d single' % tuple(sum(w[6] == t for w in cand) for t in (0, 1, 2, 3)), sorted(collections.Counter(w[0] for w in cand).items()), sorted(collections.Counter(w[2] for w in cand).items())))
         nrun = nskip = 0; kills = []; memo = {}; ver = [0]
         def gain(req):
             k = (ver[0], tuple(sorted(req.items(), key=repr)))
@@ -291,7 +308,7 @@ def main():
                 memo[k] = prod(len(sub[x]) for x in SLp) - count(cyl, SLp, sub)
             return memo[k]
         with ThreadPoolExecutor(NW) as ex:
-            it = iter(cand); fut = {}
+            it = iter([w for w in cand if not w[6] or w[2] <= RLOC]); fut = {}
             def top():
                 nonlocal nskip
                 while len(fut) < NW and time.time() - T0 < PCAP:

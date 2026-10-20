@@ -47,6 +47,16 @@ once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill;
     84-88 percent. The drawing thread's 19 single-slot windows at ring 13-16 had no D (relayed 01:25Z), and a child
     with ts3 or ts6 = 9 (degree >= 9) can never have that slot inside a window.
 
+- **01:45Z, cen54 relaunched with Studio taking ring 15-16 (no engine verdict of the 01:38Z start counts; it was stopped
+  at 01:41Z and again at 01:44Z while enumerating, its log is in `loop/k53/cen54run1_7_8666655_5677657.txt`).** Changes
+  before any new verdict: (1) a third window tier from the drawing thread (01:43Z, kc surgery on the ring-12 face
+  window: D exactly when s3's ring contacts drop to <= 3), "two at one 7": s3 or s6 inside with two of its slot
+  neighbours (p31, p41 and the three ring-3 ones for s3; p01, the apex, ts6, tp01/s6 for s6). Run order: cached,
+  joint, two at one 7, single. (2) Long Table 01:14Z: Studio has ring 15-16 slots, so RLOC=14 runs only cached windows
+  and windows at ring <= 14 here, and DUMP writes the uncached ring 15-16 windows of the three tiers, in run order and
+  deduplicated by kc line, to `loop/k53/win54s_7_8666655_5677657_r1516.txt` for Studio. Their verdicts come back into
+  the census cache, and a rerun then counts every window exactly. Hypothesis, kill line and guess unchanged.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one

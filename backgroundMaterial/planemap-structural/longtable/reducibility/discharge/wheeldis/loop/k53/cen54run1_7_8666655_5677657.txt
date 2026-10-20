@@ -1,0 +1,44 @@
+# cen54 start 01:38Z: row 7 8666655/5677657, 14 slots p01 p02 p03 p11 p21 p31 p41 ts4/s5/s6 ts6 tp01/s6 tp31/s3 ts3 tp41/s3 tp41/s4, focus ts6 ts3, 6103515625 fillings in 4 parts (p41=5 ts4/s5/s6=5; p41=5 ts4/s5/s6=6-9; p41=6-9 ts4/s5/s6=5; p41=6-9 ts4/s5/s6=6-9), RMAX 16, KMAX 2, TSEC 600, cap 7200 s, registry /tmp/claude-0/-home-claude/e93ccb28-7843-5c35-aaad-eabd09ceeb9b/scratchpad/adm54p
+registry: 4229 configurations (2 names not found)
+part p41=5 ts4/s5/s6=5 (244140625 fillings): registry 12 inside the fixed vertices; 1 minimal requirements, covers 244140625 (100.00%) [f10_........55_........65 f11_.........55_.........65 f7_.....55_.....65]
+  reg (none) | rsst001_2o122
+  all covered by the registry; no engine windows
+part p41=5 ts4/s5/s6=6-9 (976562500 fillings): registry 0 inside the fixed vertices; 33 minimal requirements, covers 764118148 (78.25%)
+  reg p21=5 | rsst100_126o22326
+  reg p11=5 | rsst101_126o25866
+  reg p11=6 | rsst109_126o36666
+  reg p01=5 | rsst539_7580o8163
+  reg tp41/s3=5 tp41/s4=5 | rsst002_3o442802
+  reg tp41/s3=5 tp41/s4=6 | rsst005_3o1306802
+  reg tp41/s4=6 ts4/s5/s6=6 | rsst006_2o7566
+  reg ts4/s5/s6=6 ts6=5 | rsst025_122o126
+  reg p31=5 tp31/s3=5 | rsst032_122o7566
+  reg p31=5 tp41/s3=5 | rsst032_122o7566
+  reg p31=6 tp31/s3=5 | rsst046_126o7566
+  reg p31=5 tp41/s4=5 | rsst054_126o191
+  reg ts4/s5/s6=7 ts6=5 | rsst116_0o211701722
+  reg p02=5 p03=5 | rsst417_7322o8406
+  reg p01=6 tp01/s6=5 | f8_..567576_....555.
+  reg tp31/s3=5 tp41/s3=5 ts3=5 | rsst023_122o122
+  reg tp31/s3=5 tp41/s3=6 ts3=5 | rsst025_122o126
+  reg tp31/s3=5 tp41/s3=5 ts3=6 | rsst025_122o126
+  reg tp41/s3=5 tp41/s4=7 ts4/s5/s6=6 | rsst031_122o368
+  reg tp01/s6=5 ts4/s5/s6=6 ts6=6 | rsst032_122o7566
+  reg tp41/s3=6 tp41/s4=5 ts3=5 | rsst047_0o82101962
+  reg p31=5 tp31/s3=6 ts3=5 | rsst058_126o453962
+  reg p31=5 tp41/s3=6 ts3=5 | rsst058_126o453962
+  reg p31=6 tp31/s3=6 ts3=5 | rsst075_126o453966
+  reg tp41/s3=7 tp41/s4=5 ts3=5 | rsst135_0o211701962
+  reg tp01/s6=5 ts4/s5/s6=7 ts6=6 | rsst139_126o207
+  reg tp41/s4=5 ts4/s5/s6=8 ts6=5 | rsst411_7563o136
+  reg tp41/s4=6 ts4/s5/s6=8 ts6=5 | rsst467_8402o368
+  reg p01=6 p02=6 p03=5 | f8_55667576_....55..
+  reg tp31/s3=5 tp41/s3=6 tp41/s4=5 ts3=6 | rsst033_126o128
+  reg p31=5 tp31/s3=6 tp41/s3=6 ts3=6 | rsst046_126o7566
+  reg p31=6 tp31/s3=6 tp41/s3=5 ts3=6 | rsst099_122o79077966
+  reg tp01/s6=5 tp41/s4=5 ts4/s5/s6=8 ts6=6 | rsst463_7682o380
+  engine windows: 11123 (connected subsets 1225783; 108 cached, run first; 344 joint, then 10671 single), by free slots [(1, 1058), (2, 10065)], by ring [(7, 1), (8, 7), (9, 40), (10, 113), (11, 248), (12, 476), (13, 862), (14, 1531), (15, 2784), (16, 5061)]
+  kill C{I0-I3} ring 13 g7_-8...655_5...65._..5...5.......
+  kill C{I0-I1} ring 12 g7_u.6..655_5...65._......5......5
+# cen54 start 01:42Z: row 7 8666655/5677657, 14 slots p01 p02 p03 p11 p21 p31 p41 ts4/s5/s6 ts6 tp01/s6 tp31/s3 ts3 tp41/s3 tp41/s4, focus ts6 ts3, 6103515625 fillings in 4 parts (p41=5 ts4/s5/s6=5; p41=5 ts4/s5/s6=6-9; p41=6-9 ts4/s5/s6=5; p41=6-9 ts4/s5/s6=6-9), RMAX 16, KMAX 2, TSEC 600, cap 7200 s, registry /tmp/claude-0/-home-claude/e93ccb28-7843-5c35-aaad-eabd09ceeb9b/scratchpad/adm54p
+registry: 4229 configurations (2 names not found)
