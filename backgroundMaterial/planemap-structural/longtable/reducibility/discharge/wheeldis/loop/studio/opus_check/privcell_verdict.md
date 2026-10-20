@@ -57,3 +57,15 @@ same either way; only the canonical string, and so name identity and dedup, diff
 6. A 'u' centre counts as a constrained slot of degree D in G3's bijection (matches every m here).
 7. Part 3 says an admitted name is passed on with its Part 2 absorption class; Part 2 was out of scope here, so k3p lines
    carry no class.
+
+## Re-check on PRIVCELL_SPEC 7ce95033 (section 1.9), 20 Oct ~02:50Z
+Spec md5 39025324, g7_q.txt md5 0068d510 (Opus's fixed converter). Read: the section 1.9 text and the changed Part 1 /
+Part 3 lines (diff against a9da7812); no Opus code.
+- Guard updates (privguard.py): point 1, chains sorted into forward ring-2 order (cyclic, start after the largest gap) in
+  conversion and every image, and G0 requires an input q-name to be written canonically; point 2, an apex is "named"
+  for p_{I,K} if its slot is constrained or a constrained ring-3 chain contains both (not exercised by the 10 names).
+  Points 3-6 were already Studio's reading. Point 7's class= token is optional and ignored; k3p lines carry none.
+- Result: the new g7_q.txt is **byte-identical** to Studio's canonical column (0 of 10 differ; studio_q_7ce95033.txt).
+  Every g7_q string parses, is well formed and is its own canonical form. **All 10 pass G0-G6** (4 D, 6 C to k3p),
+  each with exactly 1 bijection satisfying G3, G4 and G5 (privcell/privguard_run_7ce95033.log). Kill line not met.
+- Control: Opus's old #5 string `..._s3/p3R1=5` is now held at G0 (input not canonical, chain not forward).

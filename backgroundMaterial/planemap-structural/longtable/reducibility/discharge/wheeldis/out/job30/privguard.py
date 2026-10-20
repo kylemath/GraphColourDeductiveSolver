@@ -12,6 +12,8 @@ Part 3: guard G0..G6 for a two-engine name with its kc line:
 G3-G5 are decided by an exhaustive search over all degree-preserving bijections (the name is admitted iff one bijection
 passes all three), so the check does not rely on any given frame map.
 Admitted names go to out/job30/k3p_D.out / k3p_C.cfast (never k3x); held names to out/job30/privguard_held.log.
+Updated for PRIVCELL_SPEC 7ce95033 section 1.9 (points 1 and 2; points 3-6 were already Studio's reading; point 7's
+class= hint is optional and ignored, so k3p lines carry none).
 Usage: python3 out/job30/privguard.py check  ENTRIES   (lines: g7-or-q-name  kc-line-fields(r m ringadj intadj)  verdict  [X])
        python3 out/job30/privguard.py g7 NAME..      (print the canonical q-name)
        python3 out/job30/privguard.py canon NAME..   (print the canonical form)"""
@@ -94,6 +96,19 @@ def priv_slots(N):
     return out
 
 # ---------------- render / images / canonical ----------------
+def fwd_sort(N, labs):
+    """1.9 point 1: a chain in forward ring-2 order, cyclically: s_{i-1}, p_{i,L1}, .., p_{i,R1}, s_i; the start goes after
+    the largest cyclic gap of the positions"""
+    D = N.D
+    def key(l):
+        if l[0] == 's': return ((l[1] + 1) % D, 0)
+        return (l[1] % D, l[3] if l[2] == 'L' else 1000 - l[3])
+    ks = sorted(set(key(l) for l in labs)); idx = sorted({k[0] for k in ks})
+    if len(idx) > 1:
+        gaps = [((idx[(j + 1) % len(idx)] - idx[j]) % D, idx[(j + 1) % len(idx)]) for j in range(len(idx))]
+        start = max(gaps)[1]
+    else: start = idx[0]
+    return tuple(sorted(labs, key=lambda l: (((key(l)[0] - start) % D), key(l)[1])))
 def render(N):
     gs = []
     for i, g in enumerate(N.priv):
@@ -104,7 +119,7 @@ def render(N):
             gs.append('' if all(c == '.' for c in g) else ''.join(g))
     items = []
     for kind, x, c in N.r3:
-        if kind == 'chain': items.append('/'.join(lab_str(l) for l in x) + '=' + c)
+        if kind == 'chain': items.append('/'.join(lab_str(l) for l in fwd_sort(N, [norm_lab(N, l_) for l_ in x])) + '=' + c)
         else: items.append('%s#%d=%s' % (lab_str(x[0]), x[1], c))
     s = 'q%d%s_%s_%s_%s' % (N.D, N.C, ''.join(N.link), ''.join(N.sword), ':'.join(gs))
     return s + ('_' + ','.join(sorted(items)) if items else '')
@@ -256,13 +271,16 @@ def g7_to_q(g):
     if not m: raise ValueError('not a g7 name')
     C, W, S, Tt = m.groups(); D = 7
     named_s = {i for i in range(D) if S[i] != '.'}
+    tchains = [sl[1] for sl, c in zip(G7SLOTS[6:], Tt[6:]) if c != '.' and isinstance(sl[1], tuple)]
+    def named_for(I, k, apex):   # 1.9 point 2
+        return apex in named_s or any(('p', I, k) in ch and ('s', apex) in ch for ch in tchains)
     def plab(I, k, constrained_privs):
         """q label of g7 private p_{I,k} (frame n = G7W[I] - 5)"""
         n = G7W[I] - 5
         if W[I] != '.': return ('p', I, 'L', k)
         first, last = k == 1, k == n
-        L = first and (((I - 1) % D) in named_s or any(I == J and k == 1 for (J, kk) in constrained_privs if False))
-        R = last and I in named_s
+        L = first and named_for(I, k, (I - 1) % D)
+        R = last and named_for(I, k, I)
         if L and R and n == 1: raise ValueError('p%d%d: both sides apply with n = 1' % (I, k))
         if L: return ('p', I, 'L', 1)
         if R: return ('p', I, 'R', 1)
@@ -359,7 +377,8 @@ def guard(name, kcf, verdict, X):
         N = g7_to_q(name) if name.startswith('g7_') else parse(name)
         q0 = render(N); qc = canon(N); Nc = parse(qc)
         wf = wellformed(Nc); rt = canon(parse(qc)) == qc
-        R['G0'] = (not wf and rt, 'canonical %s; round-trip %s%s' % (qc, rt, '; ' + '; '.join(wf) if wf else ''))
+        incanon = name.startswith('g7_') or name == qc
+        R['G0'] = (not wf and rt and incanon, 'canonical %s; round-trip %s%s%s' % (qc, rt, '' if incanon else '; input not canonical', '; ' + '; '.join(wf) if wf else ''))
     except ValueError as ex:
         R['G0'] = (False, 'parse/convert: %s' % ex); return False, None, R
     R['G1'] = (verdict in ('D', 'C'), verdict)
