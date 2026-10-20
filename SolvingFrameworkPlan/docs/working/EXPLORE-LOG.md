@@ -45,6 +45,11 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   (14, C); files `loop/k47/r56b_kills*` (44894a8d). Admission head adm56b on cd2e2f2f, regression byte-identical:
   +19 D, +8 C (27 names), `loop/k56/adm56b/` (10:07Z).
 
+- **10:42Z, r56c (d8 85565856/65666565, 11.2 percent) dies at ring 13-14** (adm56b admitted at 5304f959). Its 1,473
+  ring <= 14 windows (10:06-10:42Z) gave 30 kills, 4 minimal, all C: f8_...55865_...565.. and f8_.5565.56_.....56.
+  (ring 13), f8_...56585_....665. and f8_..565586_....565. (14); files `loop/k47/r56c_kills*` (f6f1fd10). Admission
+  head adm56c on 5304f959, regression byte-identical: +11 D, +19 C (30 names), `loop/k56/adm56c/` (10:43Z).
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
