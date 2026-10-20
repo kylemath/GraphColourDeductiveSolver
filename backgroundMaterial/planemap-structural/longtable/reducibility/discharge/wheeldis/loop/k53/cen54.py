@@ -1,12 +1,13 @@
 """EXPLORE round 54b (Long Table 01:14Z): cen53 with the engine windows put on degree splits of the private ring-3
 neighbours of chosen s vertices.  J3S=3 adds the ring-3 neighbours of s3 to the slots (on top of the face's
-s_(i-1), s_i, s_(i+1)); FOCUS=3,6 names s vertices.  Engine windows: joint ones first (a ring-3 slot next to each
-FOCUS s, not counting slots next to the face's s), then two at one 7 (a FOCUS s inside with two of its slot
-neighbours, the drawing thread's 01:43Z lemma: the lock goes when its ring contacts drop to <= 3), then single ones
-(holding the private ring-3 neighbour, next to that s alone, of some FOCUS s); no others, except windows whose kc line already has a verdict in G_res.txt (free, run before all).  The child
+s_(i-1), s_i, s_(i+1)); FOCUS=3,6 names s vertices.  Engine windows by class, run in TORDER (default
+'3,6,joint,single' for FOCUS=3,6): 'j' two at s_j (s_j inside with two of its slot neighbours; the drawing thread's
+01:43Z exposure lemma: the lock goes when its ring contacts drop to <= 3); 'joint' (a ring-3 slot next to each FOCUS
+s, not counting slots next to the face's s); 'single' (the private ring-3 neighbour, next to that s alone, of some
+FOCUS s inside); a window in several classes takes the earliest; no others.  Tier 1.. = position in TORDER.  Tier 0: windows whose kc line already has a verdict in G_res.txt (free).  The child
 report is by the letters of the private ring-3 neighbours (next to that s alone).  CAP is shared out over the
 parts by their fillings the registry leaves uncovered.  RLOC=14 runs only cached windows and windows at ring
-<= 14 here; DUMP=<file> writes the joint and single windows above RLOC, in run order, as a window file for Studio.  A filling with no planar 3-ball is skipped as a window.  After
+<= 14 here; DUMP=<file> writes the uncached windows above RLOC, in run order, as a window file for Studio.  A filling with no planar 3-ball is skipped as a window.  After
 each part the coverage is also given per split child (one letter per FOCUS slot), and the children are totalled over
 the parts at the end.  Log cen54_<D>_<LK>_<SV>.txt.  cen53's docstring follows.
 EXPLORE round 53, split and kill (coordinator 18:10Z, from the user's sprint plan): a face receiver row that has no
@@ -125,6 +126,7 @@ LETS = {x: (5, 6, 7, 8, 9) for x in SLOTS}
 FOCUS = [int(j) for j in os.environ.get('FOCUS', '').split(',') if j]
 FOC = [x for x in SL3 if len(x) == 3 and x[1][0] == 's' and x[1][1] in FOCUS]   # ring-3 vertices next to s_j alone
 assert {x[1][1] for x in FOC} == set(FOCUS), FOC
+TORD = os.environ.get('TORDER', ','.join([str(j) for j in FOCUS] + ['joint', 'single'])).split(',')   # tier order
 QF = {j: {x for x in SL3 if ('s', j) in x[1:-1] and not any(('s', i) in x[1:-1] for i in FACES)} for j in FOCUS}   # off the face
 def sname(x): return 'p%d%d' % x[1:] if x[0] == 'p' else 't' + '/'.join(''.join(map(str, y)) for y in x[1:-1]) + ('#%d' % x[-1] if x[-1] > 1 else '')
 
@@ -266,9 +268,11 @@ def main():
                         lets = dict(zip(T, ls)); c, deg = ring(S, lets)
                         if c and c[0] <= RMAX:
                             nm = gname(S, deg); hit = ('%d %d %s %s' % c) in eng.res
-                            tier = (0 if hit else 1 if all(QF[j] & S for j in FOCUS) else
-                                    2 if any(('s', j) in S and len(A7[j] & S) >= 2 for j in FOCUS) else 3 if any(x in S for x in FOC) else 4)
-                            if FOC and tier == 4: continue
+                            cls = ['joint'] if all(QF[j] & S for j in FOCUS) else []
+                            cls += [str(j) for j in FOCUS if ('s', j) in S and len(A7[j] & S) >= 2]
+                            if any(x in S for x in FOC): cls.append('single')
+                            tier = 0 if hit else min((1 + TORD.index(c) for c in cls if c in TORD), default=99)
+                            if FOC and tier == 99: continue
                             cand.append((len(T), -sum(deg[x] == 5 for x in S), c[0], nm, lets, '%s %d %d %s %s' % ((nm,) + c), tier))
             for y in ext:
                 if idx[y] > idx[min(S, key=lambda z: idx[z])] and (y not in LETp or len(T) < KMAX):
@@ -282,12 +286,12 @@ def main():
     RLOC = int(os.environ.get('RLOC', RMAX))     # cen54: uncached joint/single windows with ring > RLOC are not run here
     if os.environ.get('DUMP'):                   # ... and are written in run order (deduplicated by kc line) for Studio
         ks = set(); out = []
-        for w in sorted((w for cand, _ in CAND for w in cand if w[6] in (1, 2, 3) and w[2] > RLOC), key=SK):
+        for w in sorted((w for cand, _ in CAND for w in cand if w[6] and w[2] > RLOC), key=SK):
             k = w[5].split(' ', 1)[1]
             if k not in ks: ks.add(k); out.append(w)
         open(os.environ['DUMP'], 'w').write(''.join(w[5] + '\n' for w in out))
-        say('dump: %d windows at ring %d-%d (%d joint, %d two at one 7, %d single; by ring %s) -> %s' % (len(out), RLOC + 1, RMAX,
-            sum(w[6] == 1 for w in out), sum(w[6] == 2 for w in out), sum(w[6] == 3 for w in out), sorted(collections.Counter(w[2] for w in out).items()), os.environ['DUMP']))
+        say('dump: %d windows at ring %d-%d (by tier %s; by ring %s) -> %s' % (len(out), RLOC + 1, RMAX,
+            sorted(collections.Counter(w[6] for w in out).items()), sorted(collections.Counter(w[2] for w in out).items()), os.environ['DUMP']))
     for pi, ((lab, EXp, SLp, LETp), (P, pa, pf, PT, fix, cyl, src, inrow, n0)) in enumerate(zip(PARTS, PRE)):
         T0 = time.time(); PCAP = CAP * (PT - n0) / UNC
         say('part %s (%d fillings): registry %d inside the fixed vertices; %d minimal requirements, covers %d (%.2f%%)%s' % (
@@ -299,7 +303,7 @@ def main():
             continue
         cand, nseen = CAND[pi]
         say('  engine windows: %d (connected subsets %d; %s), by free slots %s, by ring %s' % (len(cand), nseen,
-            '%d cached, run first; %d joint, %d two at one 7, then %d single' % tuple(sum(w[6] == t for w in cand) for t in (0, 1, 2, 3)), sorted(collections.Counter(w[0] for w in cand).items()), sorted(collections.Counter(w[2] for w in cand).items())))
+            'by tier %s' % sorted(collections.Counter(w[6] for w in cand).items()), sorted(collections.Counter(w[0] for w in cand).items()), sorted(collections.Counter(w[2] for w in cand).items())))
         nrun = nskip = 0; kills = []; memo = {}; ver = [0]
         def gain(req):
             k = (ver[0], tuple(sorted(req.items(), key=repr)))

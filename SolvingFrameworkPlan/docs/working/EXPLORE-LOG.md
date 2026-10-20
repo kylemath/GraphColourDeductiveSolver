@@ -57,6 +57,12 @@ once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill;
   deduplicated by kc line, to `loop/k53/win54s_7_8666655_5677657_r1516.txt` for Studio. Their verdicts come back into
   the census cache, and a rerun then counts every window exactly. Hypothesis, kill line and guess unchanged.
 
+- **01:52Z, run order back to the pre-registered one (Long Table 01:48Z).** The exposure lemma failed on real windows (the
+  drawing thread, 01:47Z: with two of s3's ring-3 neighbours inside the window is still not D at ring 13-16, 7 of 22
+  done). cen54 now takes the order as TORDER; the run (restarted 01:51Z, before any new verdict) uses
+  `joint,single,6,3`: the pre-registered joint and single windows first, then the two-at-one-7 windows (s6, then s3).
+  The 01:48Z start used `joint,6,3,single` and was stopped while enumerating.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
