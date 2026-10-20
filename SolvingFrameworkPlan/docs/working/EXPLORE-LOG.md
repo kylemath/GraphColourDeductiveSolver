@@ -102,6 +102,12 @@ None of these rows was swept before in any orientation (canon_key against every 
   11 f-names (twoeng: 8 D, 3 C same X, interior-only, 0 mismatch); minimal f8_...65656_...5.66. (D, ring 13, m 9) and two
   at ring 14. Admission check on main 15bc20c7 (00:50Z): 2,552 D / 1,097 C, +11 exactly, 0 lost, guards 0 new; files in
   `loop/k54/adm54p/`. Every non-face binder of the 11/75 cert is now dead; left are the two d7 face rows.
+- **01:00Z, d7 face row 8556856/7565666 (r54o, -1/75) dies at ring 14.** 4 two-engine D, 4 f-names: f7_..56856_...566.
+  (r54b's minimal, already on main: the row contains it outright, which round 54b's registry step confirms, 100 percent of
+  both apex parts) and three new, f7_.556856_...566., f7_.556856_.5.566., f7_.556856_.56566.. Admission check on main
+  58aab9b0 (01:02Z): 2,555 D / 1,097 C, +3 D exactly, 0 lost, guards 0 new; files in `loop/k54/adm54o/` (7b7afa11). So of
+  the 11/75 cert's binders only the d7 face row 8666655/5677657 is left (Studio has its ring 15-18 to-do, 778 windows,
+  4099e8f5).
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
