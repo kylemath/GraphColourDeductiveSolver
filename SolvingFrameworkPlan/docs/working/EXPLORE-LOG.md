@@ -35,6 +35,12 @@ binders the set kills outright.
   its link. Once Studio's rpatD route takes in the two-engine list (round 54d), these 27 rows should leave the LP,
   provided its pattern match looks at the whole 1.5-ball.
 
+- **06:31Z, hit sites** (Opus 06:30Z: their admissibility check, and rpatD, embed a configuration only with a vertex on u;
+  off-centre matching may come later as a flag). `loop/k55/sites55.py` lists every embedding with its vertex map
+  (`loop/k55/sites55_rows45_A67.txt`). All 27 rows have a hit that runs through u, so matching through u is enough
+  for all of them. The d12 row's 6 registry configurations and nl0040_r8 avoid u, but nl8199_r13 (a 12 with ten
+  fives) runs through u there. Every hit uses only exact vertices of the row's 1.5-ball (Opus's strict condition).
+
 ## Round 54d (20 Oct 2026, 04:37Z-): H-NL95, do our two engines confirm the published 2026 set?
 
 **Pre-registered 04:37Z, before any engine run of this round.** Long Table 04:35Z (in place of round 53b, stopped
