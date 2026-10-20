@@ -682,3 +682,14 @@ our agent R and have no output from it.
   - The A70 run timed out with t flat at 0.1001.
   - The run_s3_A74 run on A74 is still going: t 0.0985 at iter 15, about 10 min per iteration.
 - RSST 2.126 and 8406.123 are absent from every solve.
+- s39o addendum: RELAY_SPEC_s39o.md §39.6 now covers everything Studio needs to reproduce the A74 l3q + rpatN3 pair:
+  - source nl51_kc.txt (md5 b9bc6e8b…);
+  - rpatN3.txt (md5 e153fc41…): 2,288 lines, which is 1 header + 2,287 patterns, with counts by d and the build rule;
+  - head 95ba762d, the flags and the warm-row provenance;
+  - the cert and sol md5s.
+- Why 8,200 configurations give 2,287 patterns (s39o/rpatN_funnel.py):
+  - 53 have no vertex of degree ≥ 7;
+  - 5,956 have a centre but don't fit one 1.5-ball window: non-centre vertices must be exact 5–8 neighbours or apexes;
+  - 2,191 embed, giving 42,998 embeddings;
+  - dihedral and automorphism dedup leaves 2,455 (configuration, pattern) pairs;
+  - 168 patterns are shared by two configurations, which leaves 2,287.

@@ -79,3 +79,65 @@ u (degree d) or a letter 5..8, and 9 is never exact. Edges: `u w_i`, `w_i w_{i+1
 - RSST 2.126 and 8406.123 are not in any input: they are not in rpatD, the args registry or nl51_kc, and offc excludes them by name.
 
 The stacked run (s33z F + rpatN3, `run39s.sh s3 A74`) is still running. See LOG.md.
+
+## 39.6 rpatN3: reproducing the A74 pair (for Studio)
+**Inputs**
+- Head: main `95ba762d` (A74), 2,645 D / 1,156 C. Registry tables: `s33z/reg_A74`, built by `bash s33z/prep_tag.sh A74 95ba762d`.
+  - `k3x_D_A74.out` md5 `3c71d99430999f3dc59f2ea5f25fb331`; `k3x_C_A74.cfast` md5 `14bbdeedcd492cdc4e77fd2b52aaf5b3`.
+  - All kill6/tab md5s are in `reg_A74/md5_prep.txt`.
+- Source: explore's `loop/k51/nl51_kc.txt` at 6368d2f5, md5 `b9bc6e8bd9b86cf3a95873c05d9e7c34`. It holds 8,200 configurations,
+  every one D on two engines (`loop/k53/nl54d_verdicts.txt`, md5 `952575cace5f1137365bfcff8e1fcd84`, 8,200 × D).
+- Patterns: `s39o/rpatN3.txt`, md5 `e153fc4146e166b56f3bd64a75f38141`.
+  - The file has 2,288 lines: one `#` header and **2,287 patterns**.
+  - By d: d7 621, d8 839, d9 631, d10 188, d11 7, d12 1.
+- Build: `python3 s39o/rpatN_build.py nl51_kc.txt rpatN3.txt` (48 s). The rule is 39.2:
+  1. Every vertex c of degree 7..17 is a centre, c -> u, in the degree-deg(c) window.
+  2. Embeddings must be injective, exact with equal degree, induced, and send interior triangles onto faces.
+  3. The pattern pins each image slot to its letter. A non-image `w_i` between images `s_{i-1}, s_i` is pinned to `5`
+     (configuration edge) or `N` = {6,7,8,9} (non-edge). Every other slot is free (`.`).
+  4. Patterns are deduped up to the 2d rotations/reflections of `pcheck.instances`.
+
+**Why 8,200 configurations give only 2,287 patterns** (`s39o/rpatN_funnel.py`, output in `k57/rpatN3_funnel.txt`)
+| step | count |
+|---|---|
+| configurations | 8,200 |
+| no vertex of degree ≥ 7, so no possible centre (the max degree is 5 or 6 in 53 of them) | −53 |
+| has a centre, but no embedding with that centre at u | −5,956 |
+| configurations with ≥ 1 u-centred embedding | 2,191 |
+| embeddings found (18,593 centres tried) | 42,998 |
+| distinct (configuration, pattern) pairs after dihedral dedup | 2,455 |
+| distinct patterns (168 patterns are shared by two configurations) | **2,287** |
+
+There are three reasons for the losses.
+1. **Centres.** Only a vertex of degree 7..17 can sit at u. Rows have d ≥ 7, so a configuration with no vertex of degree ≥ 7 has
+   no u-centred image.
+2. **The window.** The whole configuration must fit inside u's 1.5-ball: u, its d neighbours w_i, and the d apexes s_i. Every other
+   configuration vertex must therefore be a neighbour of c or the apex of two consecutive neighbours. Every such vertex must also be
+   exact: 5–8, because letter 9 means "≥ 9" and is never exact. So any non-centre vertex of degree ≥ 9 blocks the centre.
+   Adjacency and faces must also match the window exactly (induced, triangles onto faces; s_{i-1}–s_i exists only when w_i = 5).
+   Most of the 2026 set has rings 12–18 and reaches past the 1.5-ball: 5,956 configurations have centres but no window embedding.
+   Those configurations are still in the registry/offc route. rpatN only adds the u-centred whole-window kills.
+3. **Dedup.** The pattern records only the pinned letters. The 2d rotations/reflections of one embedding, and the automorphisms
+   of the configuration, all collapse to one canonical (LINK, SWORD). That takes 42,998 embeddings down to 2,455 (configuration,
+   pattern) pairs. Different configurations can also give the same pinned pattern (168 cases), which leaves 2,287.
+
+- Cross-check: rpatN2's 6,053 configurations, plus job54d (610) and job54e (1,535) from main da31feea, make 8,198 names. They give
+  the same 2,287-pattern set; nl51 adds nl1281_r15 and nl1282_r15, which contribute no new pattern. rpatN3 ⊇ rpatN2 ⊇ rpatN.
+
+**Solve** (`bash s39o/run39.sh n3 A74`, engine `s39o/eng/pcheck.py`, one engine)
+- Flags: `xon apexcls filt16 killtab=reg_A74/f/kill/kill6 hat5 consall l3q l3qtab=reg_A74/tab_1.json,reg_A74/tab_-1.json lqcap=3
+  rpatN=s39o/rpatN3.txt`.
+- Options: `root=<repo copy> args=reg_A74/args_A74.txt rpat=P_own_lp/rpatD.txt consbasis=s21/cf/cons2basis_cls.json xcap=3`.
+- K: `solveR2 … keeppen K=300 xpen=1e-3 lpmax=300`.
+- Warm-row provenance, in order:
+  1. `run_n3_A73/rows_q39n3A73_partial.txt`: the partial n3 A73 rows (8 iterations, rpatN3 on A73), `run_n2_A73/rows_q39n2A73_partial.txt` (16 iterations,
+     rpatN2 on A73), and `run_n/rows_q39n.txt` (the converged A67 rpatN rows);
+  2. then the q66 warm set: `s33z/eng/rows_q66.txt`, `rows_s33A66a`, `rows_s33A64`, `rows_q64A64`, `rows_q66A66a`,
+     `s28q/eng/rows_s28A62`, `rows_s28A60`, `s24d/rows_st24b_final`.
+  - 74,292 warm rows were admitted. Warm rows only seed the LP. Every row is re-checked by the exhaustive separator, so the result does not depend on them.
+- K converged at iter 34: t = 1/9, 132,551 rows. Stage L is `solveR2 nosep` warm from the K rows, then `lowerR2`. Stage U is
+  `upperR2 nomax` on the K sol.
+- **UPPER-R2 FEASIBLE at t = 0.111111111111.** `sol_q39n3A74.json`, md5 `2680fb645a9c6f0f00a67ebc09fc6cb0`.
+- **LOWER-R2 VALID t ≥ 20/183 = 0.109289617** (160 rows). `cert_q39n3A74L.json`, md5 `9ba47b6930210930f82bc2572b69250f`;
+  `sol_q39n3A74L.json`, md5 `ef795f4de100266cf76affbb68451ff9`.
+- Binders: the 10 receiver rows with canonical keys are in `run_n3_A74/binders_canon.txt` (`s39o/binder_keys.py`).
