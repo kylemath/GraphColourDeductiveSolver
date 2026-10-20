@@ -1,0 +1,14 @@
+pcell: 1 names from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/pcell/k3p.txt; amask bits set U7/U8/U9 = [1249, 1249, 1249]; l3q keys hit 0; f-patterns added 0
+  pcell q7-_....556_....56._::::::5 = q7-_....556_....56._::::::5 : {'A7': 14, 'A8': 14, 'A9': 14}  [cons2-row skip possible at 6 w[6]; not applied]
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10264, 8: 6166, 9: 3519, 10: 1413, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17685, 'C': 2202, 'RPAT': 158, 'RPATN': 2080}
+l6r: 886 mrowZ rows, 210 Z6 signatures
+conservation basis rows added: 10539
+warm rows admitted: 79991
+R6x2 (apex True): 22476 sender rows, 393 g keys in senders, 1424 six-words, 11963 initial cons rows, 2579 M sigs
+  lpmax: simplex hit 300s at iter 0; IPM + simplex 225.7s, status Optimal
+iter 0 t=0.042761474059 rows 129707 cols 46947 added 2037  lp 540.1s total 567s  {'cons': (631, np.float64(1.836352)), 7: (160, np.float64(1.412905), 1.4), 8: (160, np.float64(1.834797), 1.6), 9: (139, np.float64(2.816688), 0.9), 10: (121, np.float64(2.734877), 0.9), 11: (122, np.float64(2.240371), 0.8), 12: (112, np.float64(2.095132), 0.9), 13: (119, np.float64(1.725476), 1.0), 14: (113, np.float64(1.443568), 1.0), 15: (112, np.float64(1.085732), 1.1), 16: (132, np.float64(0.803823), 1.1), 17: (116, np.float64(0.434167), 1.3)}
+  lpmax: simplex hit 300s at iter 1; IPM + simplex 235.4s, status Optimal
+iter 1 t=0.091639468106 rows 131498 cols 47560 added 1738  lp 547.3s total 1140s  {'cons': (673, np.float64(1.046061)), 7: (160, np.float64(0.657191), 2.6), 8: (147, np.float64(1.774375), 1.6), 9: (150, np.float64(2.197877), 0.9), 10: (118, np.float64(2.185119), 0.8), 11: (137, np.float64(1.404527), 0.9), 12: (110, np.float64(1.440471), 1.1), 13: (136, np.float64(0.627609), 1.1), 14: (107, np.float64(0.695822), 0.9)}
+  lpmax: simplex hit 300s at iter 2; IPM + simplex 260.9s, status Optimal
+iter 2 t=0.095757080705 rows 133146 cols 48181 added 1560  lp 572.5s total 1737s  {'cons': (597, np.float64(1.357223)), 7: (163, np.float64(1.09474), 1.8), 8: (164, np.float64(1.784322), 1.3), 9: (162, np.float64(1.969089), 1.2), 10: (180, np.float64(1.380775), 1.1), 11: (149, np.float64(0.873332), 1.1), 12: (142, np.float64(0.657371), 1.3), 13: (3, np.float64(0.069057), 1.1)}

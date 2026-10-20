@@ -28,3 +28,10 @@ warm: /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-struct
 07:27:32Z [A67] e87 pricing done: 227 lines
 08:37:51Z [A67] K2 restarted with lpmax=60 (simplex wasted 25 min/iter before IPM; IPM+crossover ~2 min); iters 0-1 rows kept as rows_s33_rK2a
 08:37:51Z [A67] K2 (xpen=1e-5) start
+11:37:51Z [A67] K2 exit 124 (not converged)
+11:47:40Z [A67] fallback: nosep over all rows incl. K2: LOWER-R2: VALID  t >= 72410015967778382521022841611624647705 ... = 0.104190947  (1241 rows)
+11:47:40Z [A67] resume_s33 start (pid 1294)
+12:35:25Z [A67] U: UPPER-R2: FEASIBLE at t = 0.125836450687
+12:36:25Z [A67] X: UPPER-R2: INFEASIBLE (60) at t = 0.125836450687 | LOWER-R2: VALID  t >= 4330904327474336825108100590295277783567769334884788702525
+12:39:53Z [A67] C: sole-cover set: 162 entries; greedy cover of the rest: 18 entries; total 180
+12:40:03Z [A67] resume_s33 all stages done
