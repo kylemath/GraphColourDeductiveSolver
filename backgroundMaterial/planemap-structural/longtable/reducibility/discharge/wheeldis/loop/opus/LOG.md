@@ -640,3 +640,13 @@ our agent R and have no output from it.
 - Studio spec-only check d4a91750 (loop/studio/opus_check/s33z_verdict.md): UPPER FEASIBLE at 0.128957775395, LOWER VALID exactly 55686/438047; Karp λ 0.5539; 0 table diffs vs reg_A67.
 - **New two-engine bound: 55686/438047 = 0.127123 <= t* <= 0.128958 [E2]** on A67 (main 2c97e14d out/job30, 2,555 D / 1,097 C, dcount 17,595), l3q only (RSST rule 9 restatement; claim must name the source). Previous [E2]: 11/75 = 0.146667.
 - One engine since: l3q+rpatN (35 confirmed 2026-set configs) 636/5071 = 0.125419 <= t* <= 0.125956 (s39o/run_n). fy-only >= 2/15 > 0.128958, so the own whole-face rule alone is strictly worse than l3q.
+- 09:30Z status of the xpen=1e-5 keeppen (k2_A67.sh, `lpmax=60`, so every LP effectively runs on IPM at about 3 to 4 min):
+  - iter 3: t = 0.125000; max violation 1.7 on cons, 6.4 at d8; about 2,300 rows added per iteration, about 15 min per iteration.
+  - Its 3 h cap ends at 11:44Z.
+- If it converges: resume_s33.sh redoes L, N, U, X, C and B on the new solution.
+- If it does not (k2_fallback.sh):
+  - nosep over every row, K2's included, for a tighter lower (run_A67/lower_s33L2.log);
+  - then N, U, X (minus-89), C (ccover) and B (8666655) on the converged xpen=1e-3 solution, sol_s33 5ecddc80.
+- Not automatic:
+  - a minus-89 re-solve if X is INFEASIBLE;
+  - the e87 re-price on a new cert.
