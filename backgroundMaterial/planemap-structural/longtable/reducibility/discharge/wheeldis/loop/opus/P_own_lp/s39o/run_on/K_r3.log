@@ -1,0 +1,36 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+offc: 20352 registry entries -> 16026 distinct configurations K; distinct off-centre patterns by d {7: 5811, 8: 4970, 9: 2877, 10: 992, 11: 152, 12: 100, 13: 93, 14: 93, 15: 93, 16: 93, 17: 93} (built in 126.0s)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 5)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 6)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 7)
+  offc C           4  skipped: (r, m) = (0, 0) not reproduced (|exact| = 8)
+  offc C         116  skipped: ambiguous s-s pair
+  offc C        2042  u in K, (r, m) confirmed
+  offc D        1075  skipped: ambiguous s-s pair
+  offc D         601  u in K (no r/m on record)
+  offc D       16264  u in K, (r, m) confirmed
+  offc D          49  u not in K, (r, m) confirmed
+  offc RPAT      158  u in K (no r/m on record)
+  offc RPATN      37  u in K (rpatN: u-centred by construction)
+  offc cache offc_6bcbc02d032d6b6a1aaad170a128ee02.pkl (read, 0.5s)
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 15482, 8: 10204, 9: 5706, 10: 2013, 11: 472, 12: 158, 13: 131, 14: 131, 15: 131, 16: 131, 17: 131}; by kind {'D': 17595, 'C': 2143, 'RPAT': 158, 'RPATN': 36, 'OFFC': 14758}
+conservation basis rows added: 10539
+warm rows admitted: 72915
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1592 M sigs
+  lpmax: simplex hit 60s at iter 0; IPM + simplex 63.8s, status Optimal
+iter 0 t=0.125896457696 rows 114462 cols 29948 added 1232  lp 136.6s total 176s  {7: (154, np.float64(12.772005), 2.7), 8: (132, np.float64(20.764511), 1.7), 9: (126, np.float64(22.481581), 1.6), 10: (133, np.float64(24.487113), 1.7), 11: (154, np.float64(26.204182), 1.9), 12: (45, np.float64(28.209715), 2.2), 13: (120, np.float64(29.926784), 2.1), 14: (134, np.float64(31.932317), 2.8), 15: (105, np.float64(33.649386), 2.9), 16: (75, np.float64(35.654919), 3.9), 17: (54, np.float64(37.371988), 4.9)}
+  write_l3q: noise QX.max 0 PQ.min -4.15e-12 (clipped)
+iter 1 t=0.125896457689 rows 115830 cols 30407 added 1189  lp 49.3s total 258s  {'cons': (24, np.float64(0.0)), 7: (154, np.float64(1.683034), 1.9), 8: (175, np.float64(4.556592), 2.3), 9: (119, np.float64(7.518192), 1.5), 10: (126, np.float64(9.179214), 1.8), 11: (91, np.float64(8.179214), 1.8), 12: (112, np.float64(9.840236), 1.9), 13: (82, np.float64(8.840236), 1.9), 14: (89, np.float64(10.501259), 2.0), 15: (73, np.float64(9.501259), 2.2), 16: (76, np.float64(11.162281), 2.8), 17: (68, np.float64(10.162281), 2.9)}
+  lpmax: simplex hit 60s at iter 2; IPM + simplex 70.4s, status Optimal
+iter 2 t=0.125896457696 rows 117644 cols 30954 added 1581  lp 142.0s total 442s  {7: (155, np.float64(8.425649), 1.9), 8: (157, np.float64(12.450517), 2.4), 9: (169, np.float64(12.684346), 2.0), 10: (179, np.float64(12.817655), 1.8), 11: (144, np.float64(13.1322), 1.7), 12: (124, np.float64(15.889505), 2.4), 13: (135, np.float64(16.022814), 2.9), 14: (171, np.float64(16.156122), 2.9), 15: (165, np.float64(16.470667), 3.3), 16: (75, np.float64(19.227973), 3.7), 17: (107, np.float64(19.361281), 4.3)}
+iter 3 t=0.125896457696 rows 118914 cols 31347 added 1140  lp 52.4s total 530s  {7: (168, np.float64(1.132348), 2.4), 8: (147, np.float64(3.439578), 1.7), 9: (118, np.float64(6.419198), 2.0), 10: (122, np.float64(5.511945), 1.7), 11: (105, np.float64(5.656556), 1.7), 12: (92, np.float64(6.600896), 2.0), 13: (97, np.float64(5.693643), 2.4), 14: (78, np.float64(5.838254), 3.1), 15: (65, np.float64(6.782594), 3.1), 16: (84, np.float64(5.875341), 2.6), 17: (64, np.float64(6.019952), 2.6)}
+  lpmax: simplex hit 60s at iter 4; IPM + simplex 74.6s, status Optimal
+iter 4 t=0.125896457696 rows 120883 cols 32003 added 1609  lp 146.3s total 714s  {7: (161, np.float64(5.69556), 2.7), 8: (149, np.float64(4.980361), 1.8), 9: (142, np.float64(8.700349), 1.6), 10: (170, np.float64(9.939447), 2.0), 11: (140, np.float64(10.31191), 2.0), 12: (153, np.float64(11.551008), 2.0), 13: (144, np.float64(10.928881), 2.2), 14: (134, np.float64(12.042471), 2.5), 15: (148, np.float64(11.538801), 2.6), 16: (141, np.float64(12.7779), 3.0), 17: (127, np.float64(13.150362), 3.0)}
+  lpmax: simplex hit 60s at iter 5; IPM + simplex 74.0s, status Optimal
+iter 5 t=0.125896457696 rows 122841 cols 32510 added 1615  lp 147.1s total 897s  {7: (146, np.float64(5.884223), 1.9), 8: (163, np.float64(7.097266), 2.1), 9: (160, np.float64(11.44788), 1.8), 10: (149, np.float64(13.21055), 1.7), 11: (159, np.float64(12.915169), 1.9), 12: (141, np.float64(14.677839), 1.7), 13: (152, np.float64(14.382459), 2.3), 14: (129, np.float64(16.145128), 2.2), 15: (147, np.float64(15.849748), 2.6), 16: (125, np.float64(17.612418), 2.8), 17: (144, np.float64(17.317037), 2.7)}
+  lpmax: simplex hit 60s at iter 6; IPM + simplex 79.0s, status Optimal
+iter 6 t=0.125896457696 rows 124198 cols 32827 added 1184  lp 151.4s total 1086s  {7: (152, np.float64(2.155068), 2.1), 8: (150, np.float64(4.632962), 2.3), 9: (96, np.float64(13.49661), 1.9), 10: (91, np.float64(16.503586), 1.7), 11: (115, np.float64(15.622507), 1.7), 12: (85, np.float64(18.629482), 1.9), 13: (127, np.float64(17.748403), 2.1), 14: (74, np.float64(20.755379), 2.5), 15: (123, np.float64(19.8743), 3.1), 16: (75, np.float64(22.881275), 3.1), 17: (96, np.float64(22.000196), 6.4)}
+iter 7 t=0.125896457696 rows 126291 cols 33333 added 1782  lp 57.8s total 1593s  {7: (158, np.float64(1.13862), 2.2), 8: (132, np.float64(1.810195), 2.0), 9: (153, np.float64(8.538003), 1.9), 10: (192, np.float64(8.281909), 2.1), 11: (167, np.float64(8.549979), 2.6), 12: (153, np.float64(10.254093), 3.6), 13: (153, np.float64(9.997999), 6.0), 14: (194, np.float64(9.741906), 12.1), 15: (172, np.float64(10.009976), 29.9), 16: (154, np.float64(11.714089), 87.4), 17: (154, np.float64(11.457996), 286.4)}
+iter 8 t=0.125896457696 rows 127949 cols 33555 added 1510  lp 63.8s total 1694s  {7: (157, np.float64(0.670596), 4.3), 8: (124, np.float64(1.347945), 2.7), 9: (143, np.float64(3.062475), 2.1), 10: (144, np.float64(2.621837), 2.1), 11: (139, np.float64(2.140302), 1.9), 12: (150, np.float64(2.378963), 2.2), 13: (133, np.float64(1.897428), 2.3), 14: (138, np.float64(1.456791), 2.2), 15: (137, np.float64(0.975255), 2.5), 16: (152, np.float64(1.213917), 2.5), 17: (93, np.float64(0.732381), 2.7)}
+  lpmax: simplex hit 60s at iter 9; IPM + simplex 86.3s, status Optimal
+iter 9 t=0.125896457696 rows 128994 cols 33929 added 886  lp 158.6s total 1888s  {7: (173, np.float64(2.257602), 2.1), 8: (155, np.float64(3.407738), 2.1), 9: (97, np.float64(15.392356), 1.6), 10: (87, np.float64(14.701029), 1.5), 11: (82, np.float64(14.721705), 1.9), 12: (83, np.float64(18.565106), 2.0), 13: (52, np.float64(17.87378), 2.2), 14: (42, np.float64(17.894456), 2.8), 15: (54, np.float64(21.737857), 3.1), 16: (34, np.float64(21.04653), 2.7), 17: (27, np.float64(21.067207), 3.3)}

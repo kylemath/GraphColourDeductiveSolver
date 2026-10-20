@@ -13,3 +13,12 @@
 08:58:29Z [s39o s2] K start (rpatN=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s39o/rpatN2.txt, full s33z flags)
 09:00:26Z [s39o o] K converged: iter 3 t=0.128329785637 rows 114363 cols
 09:01:43Z [s39o o] keeppen done (t=0.128329785637); L/U/B stages stopped to free CPU (variant ii needs only the keeppen t)
+10:16:56Z [s39o on] K stalled in one simplex LP (iter 10 > 50 min); restarted warm with lpmax=60 (IPM fallback, as s33z K2) at normal nice
+10:16:56Z [s39o on] K start (offc rpatN=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s39o/rpatN.txt)
+11:10:13Z [s39o on] lpmax=60 gives IPM (non-vertex) LPs: t flat at 0.125896457696 over iters 0-9 while ~1,500 rows/iter are added; restarted warm with lpmax=400
+11:10:13Z [s39o on] K start (offc rpatN=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s39o/rpatN.txt)
+11:34:55Z [s39o] on (offc+rpatN) stopped, unconverged, keeppen t flat at 0.125896457696 (CPU to s2); s2 on A67 stopped at iter 17 (t=0.0879, 24,134 rows) and retargeted to A70 (dbb8509c) warm from its rows + the s33z K rows
+11:34:55Z [s39o s2 A70] K start (rpatN=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s39o/rpatN2.txt, full s33z flags)
+13:05:29Z [s39o n2 A73] K start (rpatN=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s39o/rpatN2.txt)
+14:10:22Z [s39o] n2 A73 stopped at iter 16 (t flat 0.113564668770, ~455 rows/iter) and switched to rpatN3 (n3 A73) warm from its rows, per coordinator
+14:10:22Z [s39o n3 A73] K start (rpatN=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s39o/rpatN3.txt)
