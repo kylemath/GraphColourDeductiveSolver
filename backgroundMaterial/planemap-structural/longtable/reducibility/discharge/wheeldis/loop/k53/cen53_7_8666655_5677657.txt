@@ -1,0 +1,42 @@
+# cen53 start 01:01Z: row 7 8666655/5677657, 11 slots p01 p02 p03 p11 p21 p31 p41 ts4/s5/s6 ts6 tp01/s6 tp41/s4, 48828125 fillings in 2 parts (ts4/s5/s6=5; ts4/s5/s6=6-9), RMAX 16, KMAX 2, TSEC 600, cap 7000 s, registry /tmp/claude-0/-home-claude/e93ccb28-7843-5c35-aaad-eabd09ceeb9b/scratchpad/adm54p
+registry: 4229 configurations (2 names not found)
+part ts4/s5/s6=5 (9765625 fillings): registry 12 inside the fixed vertices; 1 minimal requirements, covers 9765625 (100.00%) [f10_........55_........65 f11_.........55_.........65 f7_.....55_.....65]
+  reg (none) | rsst001_2o122
+  all covered by the registry; no engine windows
+part ts4/s5/s6=6-9 (39062500 fillings): registry 0 inside the fixed vertices; 19 minimal requirements, covers 28367620 (72.62%)
+  reg p21=5 | rsst100_126o22326
+  reg p11=5 | rsst101_126o25866
+  reg p11=6 | rsst109_126o36666
+  reg p01=5 | rsst539_7580o8163
+  reg p41=6 tp41/s4=5 | rsst006_2o7566
+  reg ts4/s5/s6=6 ts6=5 | rsst025_122o126
+  reg p31=5 p41=6 | rsst072_2o1368366
+  reg ts4/s5/s6=7 ts6=5 | rsst116_0o211701722
+  reg p02=5 p03=5 | rsst417_7322o8406
+  reg p01=6 tp01/s6=5 | f8_..567576_....555.
+  reg p41=5 tp41/s4=6 ts4/s5/s6=6 | rsst006_2o7566
+  reg p41=6 tp41/s4=6 ts4/s5/s6=6 | rsst018_2o79077962
+  reg tp01/s6=5 ts4/s5/s6=6 ts6=6 | rsst032_122o7566
+  reg p31=5 p41=5 tp41/s4=5 | rsst054_126o191
+  reg tp01/s6=5 ts4/s5/s6=7 ts6=6 | rsst139_126o207
+  reg tp41/s4=5 ts4/s5/s6=8 ts6=5 | rsst411_7563o136
+  reg p01=6 p02=6 p03=5 | f8_55667576_....55..
+  reg tp01/s6=5 tp41/s4=5 ts4/s5/s6=8 ts6=6 | rsst463_7682o380
+  reg p41=5 tp41/s4=6 ts4/s5/s6=8 ts6=5 | rsst467_8402o368
+  engine windows: 45800 (connected subsets 496274), by free slots [(1, 11326), (2, 34474)], by ring [(7, 4), (8, 50), (9, 161), (10, 362), (11, 746), (12, 1498), (13, 3157), (14, 6551), (15, 12420), (16, 20851)]
+  kill C{I0-I1} ring 12 g7_u.6..655_5...65._......5...5
+  kill C{I0-I3} ring 13 g7_-8...655_5...65._..5...5....
+  kill C{I0-I1} ring 13 g7_u.6..655_5...65._..5...5....
+  kill C{I0-I1} ring 13 g7_u8...655_5...65._..5...5....
+  kill C{I0-I3} ring 14 g7_-8...655_5...65._.5....5....
+  kill C{I0-I1} ring 14 g7_u.6.6655_5...65._.....55....
+  kill C{I0-I1} ring 14 g7_u.6.6655_5..765._.....55....
+  kill D ring 14 g7_u.666655_5...65._.....55....
+  kill D ring 14 g7_u86..655_5...65._..5.......5
+  kill C{I0-I3} ring 15 g7_-8...655_5...657_......5..5.
+  kill C{I0-I3} ring 15 g7_-8...655_5...657_......5.5..
+  kill D ring 15 g7_u86..655_5...657_..5......5.
+  kill D ring 15 g7_u86..655_5...657_..5.....5..
+  kill D ring 15 g7_u86.6655_5...65._..5..5.....
+  kill D ring 15 g7_u8666655_5....5._..5..5.....
+  kill D ring 15 g7_u8666655_5...65._..5..5.....

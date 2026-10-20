@@ -16,6 +16,37 @@ once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill;
 - **Guess:** neither row reaches 75% (55%); the apex = 5 part dies in both (each has a 6 beside the face on the apex
   side: s2 = 6, s4 = 6), 80%.
 
+- **01:01Z, 8556856/7565666: every extension covered by the registry, no engine window needed** (`loop/k53/cen53_7_8556856_7565666.txt`).
+  The row itself holds a registry configuration (f7_..56856_...566., inside the fixed vertices), as round 54's r54o
+  sweep found at ring 14; the apex = 5 part also holds f10/f11/f7 ones. cen53 then crashed on its total line (a
+  division by zero when every part is covered by the registry); fixed in cen54.
+- **01:18Z, 8666655/5677657 stopped at 82.28 percent (Long Table 01:14Z redirect).** Slots p01 p02 p03 p11 p21 p31 p41,
+  apex ts4/s5/s6, ts6, tp01/s6, tp41/s4 (11, 48,828,125 fillings). Apex = 5: all covered by the registry. Apex 6-9:
+  registry 72.62 percent, plus 16 two-engine kills at ring 12-15 (7 D, 9 C; `loop/k53/cen53_7_8666655_5677657.txt`,
+  verdicts in `G_res.txt`) -> 77.85 percent of that part, 82.28 percent of the row, when it was stopped with most of its
+  45,800 windows unrun.
+- **01:37Z, re-registered as round 54b part 2: s3/s6 splits on 8666655/5677657** (Long Table 01:14Z; the drawing thread
+  runs the same splits on its own engine). Long Table's lock map puts most run-outs on s3 (46-70 percent) and s6 (21-46
+  percent), the two 7s of ring 2; each has one private ring-3 neighbour, ts3 and ts6 (next to that s alone).
+  - **Tool** `loop/k53/cen54.py` (cen53 plus J3S, FOCUS, the child table, a shared cap, and the total-line fix):
+    J3S=3 adds s3's three ring-3 neighbours tp31/s3, ts3, tp41/s3 to the slots (14 slots, 6,103,515,625 fillings;
+    p41 = 5 now changes the induced structure, so 4 parts). Engine windows: verdicts already cached first (cen53's 16
+    kills replay for free), then joint windows (a ring-3 slot next to s3 and one next to s6 other than the apex, both
+    inside), then single windows (ts3 or ts6 inside); no other window. 1-2 slots per window at 5..8, ring <= 16,
+    ORDER=fives, kc -C -t 600 / dfast / cfast --fixed, registry main 3d6c4f9a (`adm54p`) plus round 44's RSST set.
+    NW 3, 7,200 s cap shared over the parts by their uncovered fillings.
+  - **Registry alone (dry run, cap 0, 01:21-01:35Z, `loop/k53/cen54dry_7_8666655_5677657.txt`):** 80.69 percent of
+    the 14-slot fillings. The two apex = 5 parts are covered; p41 = 5 with apex 6-9 is at 78.25 percent; p41 >= 6
+    with apex 6-9 is at 75.27 percent. Per child (ts6, ts3) the registry covers 76.81-91.60 percent, so no child is
+    dead yet. A KMAX 3 dry run was stopped after 10 min of window enumeration, so the run is at KMAX 2.
+  - **Children:** the 25 letter pairs (ts6, ts3) in 5..9. A child dies when every extension of it (the other 12
+    slots) is covered. Fillings coverage is reported too.
+  - **Hypothesis (Long Table):** the split children die at ring <= 16. **Kill line:** fewer than 50 percent of them die
+    (13 or fewer of 25), and then the row goes to the rule side.
+  - **Guess:** the kill line is hit, 85 percent: no child dies outright (75 percent), and fillings coverage ends at
+    84-88 percent. The drawing thread's 19 single-slot windows at ring 13-16 had no D (relayed 01:25Z), and a child
+    with ts3 or ts6 = 9 (degree >= 9) can never have that slot inside a window.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
