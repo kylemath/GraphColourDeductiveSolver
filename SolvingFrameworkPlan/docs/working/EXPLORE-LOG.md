@@ -50,6 +50,11 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   (ring 13), f8_...56585_....665. and f8_..565586_....565. (14); files `loop/k47/r56c_kills*` (f6f1fd10). Admission
   head adm56c on 5304f959, regression byte-identical: +11 D, +19 C (30 names), `loop/k56/adm56c/` (10:43Z).
 
+- **10:45Z, r56d (d10 6556565565/6566668666, 11.2 percent) dies to r56a's kills** (adm56c admitted at dbb8509c). It
+  differs from r56a only at s7 (8 for 9), so the window cache answered it in 2 minutes. Its kill files are
+  byte-identical to r56a's: the same 86 kills, 43 names and 6 minimal f-names, all already on main since cd2e2f2f. No
+  admission is needed; the rpatN cert kept it only because it predates adm56a (10:46Z).
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
