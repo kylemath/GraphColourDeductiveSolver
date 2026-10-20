@@ -1,5 +1,22 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 54d (20 Oct 2026, 04:37Z-): H-NL95, do our two engines confirm the published 2026 set?
+
+**Pre-registered 04:37Z, before any engine run of this round.** Long Table 04:35Z (in place of round 53b, stopped
+04:36Z): run all 8,200 configurations of the 2026 set (`loop/k51/nl51_kc.txt`, md5 b9bc6e8bd9b86cf3a95873c05d9e7c34)
+through our engines for a two-engine list. The confirmed ones enter the LP as raw patterns by Studio's rpatD route,
+the way the RSST D patterns did (no twoeng guard change).
+- **Tool** `loop/k53/nl54e.py` (cen53's verdict rule: kc -C -s 60 -t 600; a kc D re-run on dfast, ring <= 16, or
+  dfast18; a kc C on cfast --fixed with kc's X; cache and outputs `loop/k53/N54_*`, so the 8 of round 54c replay). NW 3,
+  smaller rings first. Rings 6-15 here (7,590 configurations). Rings 16-18 (610, `loop/k53/nl54d_r1618.txt`, md5
+  51e894e4440bcf3b8c03018cc9537ccf) go to Studio if the ring-15 rate puts them past about 6 hours here (ring 14 took
+  about 11 core-seconds each in round 54c, mostly dfast).
+- **Bar.** The paper says every configuration in the set is D-reducible.
+- **Hypothesis / kill line.** At least 95 percent come out D or C on both engines. Under 90 percent: stop and report the
+  mismatches (a contract difference or a bug on one side).
+- **Guess.** Every configuration at ring <= 15 comes out D on both (90 percent); no MISMATCH-D or CFAST-REJECTS at all
+  (85 percent); any shortfall is kc timeouts at ring 16-18.
+
 ## Round 54c (20 Oct 2026, 04:02Z-): H-NL54, does the published 2026 set kill any survivor of 8666655/5677657?
 
 **Pre-registered 04:02Z, before any containment or engine run of this round.** Coordinator 03:56Z, from the user's
@@ -278,6 +295,8 @@ Run ahead of the other five non-family rows, right after 8765556/6575965.
 - **03:43Z, engine run started** as pre-registered (registry `tw54`, NW 3, 7,000 s cap), now that round 54b has closed.
 - **04:35Z, engine run restarted** (the container restart at about 03:56Z killed it after 117 verdicts; those replay
   from `T_res.txt`), same command and cap.
+- **04:36Z, stopped for round 54d** (Long Table 04:35Z: the 2026 set on our engines instead). Verdicts so far stay in
+  `T_res.txt`; the run resumes from them later.
 
 
 ## Round 53 (19 Oct 2026, 18:24Z-): H-S53, split and kill, do the surviving face rows die one ring out, piece by piece?
