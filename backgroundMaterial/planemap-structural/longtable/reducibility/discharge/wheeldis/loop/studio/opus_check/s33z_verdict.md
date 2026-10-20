@@ -39,3 +39,15 @@ names in s33z/ were seen via git ls-tree only.
 - Spec point (now fixed in section 21.3 at 11a19fb0): the mrowL label is ['mrowL', [c, a, m], [c, a, a2]]; Studio's reader
   matches it. A first lower run read the order the other way round and failed on labels only.
 - Descriptive only: g2 keys in sender rows 381 (spec 12.3's 393), as in earlier checks.
+
+## Re-check with the 10 ring-merge-held job27 C entries removed (Long Table 20 Oct 20:56Z), 20 Oct 23:25Z
+The ring-merge sweep (ca350e1b) found 10 job27 cpat entries (part00 6, part01 4; e7_B5*B565_*_1111111) with no ring-distinct C
+X. They are held out (out/job30/held10/; args loop/studio/opus_check/s33z/argsA67_local_rpat_held10.txt; C patterns
+2,143 -> 2,133, d = 7 9,706 -> 9,696). The section 14' kill tables and l3q masks do not change (forbidden set RSST + k3x).
+- **sol_q66 upper still FEASIBLE at t = 0.128957775395** with them held out (s33z/s33z_upper_held10.log): bounds clean;
+  senderR2 20,676 rows 0 violated; cons2 1,424 x 729 0 violated; mrowL 0; d = 7 l3q leaf 3,000 rows (2,888 with l3q terms)
+  max 4.0e-10; relaxed vs spec rows 3,700, 0 mismatches; receivers d = 7..17 exhaustive, 0 exact violators; DP d = 18..30
+  clean; Karp lambda 0.553931244, covers d >= 13.162. Hypothesis met, kill line not met.
+- Arrangement dependency (out/job30/ringmerge_cpat_dep.out, c799c5bc): the 10 are the sole match for 6,111 d = 7
+  arrangements, max exact load 1.0904 < 1.1290; all 45 receiverR2 rows of cert_q66L are admissible with them included,
+  so the lower 55686/438047 does not depend on them either.
