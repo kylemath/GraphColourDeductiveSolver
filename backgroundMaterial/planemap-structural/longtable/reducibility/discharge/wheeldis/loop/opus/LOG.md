@@ -585,3 +585,11 @@ our agent R and have no output from it.
   - d8 76656566/56655565.
   - The face 7 is gone.
 - Provenance note in RELAY_SPEC_s21.md: l3q restates RSST rule 9 (drule9) as an own rule, and any claim must name it.
+
+## [E2] l3q on 3cfd7f18: 11/75 ≤ t* ≤ 0.147790, 20 Oct 01:08Z
+- Studio's spec-only check (495f335a, loop/studio/opus_check/s28q_verdict.md) CONFIRMS both bounds:
+  - upper FEASIBLE at 0.147790407823;
+  - lower VALID at exactly 11/75.
+- Studio's own masks match tab62_±1 on all 5,000 entries, under reading (A) of §21.4.
+- rpatD (158 RSST raw patterns) is passed on the command line by cmd_s28.sh (`rpat=$B/rpatD.txt`), not in argsA62.
+- Best two-engine bound so far, down from 2/13 = 0.1538. Provenance: l3q restates RSST rule 9.
