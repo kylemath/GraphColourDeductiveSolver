@@ -1,0 +1,30 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9709, 8: 5339, 9: 2941, 10: 1151, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17595, 'C': 2143, 'RPAT': 158}
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 1.39e-16)
+d=7: 20 violated (exhaustive, 0.3s)
+d=8: 20 violated (exhaustive, 0.2s)
+d=9: 20 violated (exhaustive, 0.1s)
+d=10: 20 violated (exhaustive, 0.1s)
+d=11: 20 violated (exhaustive, 0.0s)
+d=12: 20 violated (exhaustive, 0.0s)
+d=13: 20 violated (exhaustive, 0.0s)
+d=14: 20 violated (exhaustive, 0.0s)
+d=15: 20 violated (exhaustive, 0.0s)
+d=16: 20 violated (exhaustive, 0.0s)
+d=17: 20 violated (exhaustive, 0.0s)
+d=18 relaxed 62.121384 > cap; exact pattern-free: 20 violated
+d=19 relaxed 65.121384 > cap; exact pattern-free: 20 violated
+d=20 relaxed 68.121384 > cap; exact pattern-free: 20 violated
+d=21 relaxed 71.683429 > cap; exact pattern-free: 20 violated
+d=22 relaxed 74.683429 > cap; exact pattern-free: 20 violated
+d=23 relaxed 77.683429 > cap; exact pattern-free: 20 violated
+d=24 relaxed 82.828512 > cap; exact pattern-free: 20 violated
+d=25 relaxed 85.828512 > cap; exact pattern-free: 20 violated
+d=26 relaxed 88.828512 > cap; exact pattern-free: 20 violated
+d=27 relaxed 92.390557 > cap; exact pattern-free: 20 violated
+d=28 relaxed 95.390557 > cap; exact pattern-free: 20 violated
+d=29 relaxed 98.390557 > cap; exact pattern-free: 20 violated
+d=30 relaxed 103.535639 > cap; exact pattern-free: 20 violated
+Karp lambda 3.451187982 d0 1000000000.000
+UPPER-R2: INFEASIBLE (481) at t = 0.133333333333
