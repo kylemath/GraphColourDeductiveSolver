@@ -21,7 +21,12 @@
   fewer than 3 of the 5 die at ring <= 14.
 - **Guess.** Part 1: no hit through u (rpatN3 holds the whole set); a hit that avoids u in at most 2 rows (60 percent).
   Part 2: all 5 non-face rows die at ring <= 14 (65 percent); the face row 7665566/6775676 does not (75 percent). That
-  would kill 31/183 + 0 of the 74/183 (41.9 percent of the |w|); the rest is face rows.
+  would kill 34/183 of the 74/183 (45.9 percent of the |w|); the rest is face rows.
+
+- **17:58Z, part 1: no hit at all** (`loop/k57/row57.txt`, 15 s): none of the 10 rows holds a configuration of the
+  registry at 95ba762d (4,381 with RSST) or of the 2026 set, through u or avoiding it. So sites55 has nothing to list.
+  Guess right on both counts (no hit through u; at most 2 off u). Part 2 started 17:58Z (`loop/k57/rows57q.txt`, r57a-f,
+  log `loop/k57/q57.log`).
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
