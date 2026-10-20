@@ -1,5 +1,28 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
+
+**Pre-registered 17:57Z, before any containment or engine run of this round.** Opus 17:54Z (cc Long Table): l3q + rpatN3
+(the whole `loop/k51/nl51_kc.txt` as raw patterns) on A74 (main 95ba762d, 2,645 D / 1,156 C), one engine, 20/183 =
+0.109290 <= t* <= 1/9, cert `s39o/run_n3_A74/cert_q39n3A74L.json` (md5 9ba47b69). 10 receiverR2 rows, |w| 74/183
+(`loop/k57/rows57.txt`). canon_key against every row in this log and in loop/k4*/k5* files:
+- 4 face rows were swept before at ring <= 16 with no kill (todo files for Studio exist): 7766556/6567566 (18/183, top),
+  7766556/6566576 (= 7655667/6756656 mirrored, 10/183), 7766556/6576576 (6/183), 7665566/6675676 (= 7665566/6765766
+  mirrored, 2/183). Together 36/183 (48.6 percent of the |w|). Not rerun here; they are rule-side (round 53).
+- 6 rows are new: 7656766/6666555 (15/183), 7666566/6566666 (10/183), d10 6565665656/6556565565 (5/183), 7665566/6775676
+  (4/183, a 5-5-5 face row), 7766656/6577556 and 7656766/6656565 (2/183 each). Five of them have no two adjacent 5s in
+  the link (non-face).
+- **Part 1, containment** (`loop/k55/row55.py`, then `sites55.py`): registry at 95ba762d and the whole 2026 set (verdicts
+  from `loop/k53/nl54d_verdicts.txt`), on all 10 rows. Hits that avoid u are listed apart, since rpatN3 only matches
+  through u.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 14, DNW 3) on the 6 new rows by |w|; minkill47; a row with no kill
+  sends its ring 15-18 windows to Studio. Kills go to Long Table as admission heads (adm.py on current main).
+- **Hypothesis.** The 5 new non-face rows die at ring <= 14, as every non-face row has (rounds 50-56). **Kill line:**
+  fewer than 3 of the 5 die at ring <= 14.
+- **Guess.** Part 1: no hit through u (rpatN3 holds the whole set); a hit that avoids u in at most 2 rows (60 percent).
+  Part 2: all 5 non-face rows die at ring <= 14 (65 percent); the face row 7665566/6775676 does not (75 percent). That
+  would kill 31/183 + 0 of the 74/183 (41.9 percent of the |w|); the rest is face rows.
+
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
 **Pre-registered 08:43Z, before any containment or engine run of this round.** Long Table 08:41Z: with rpatN (round 55's 35
