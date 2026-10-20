@@ -30,6 +30,14 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   6-15 in part) is in `loop/k56/nl54d_confirmed_D_kc.txt` for a full rpatN intake. The 8 rows left (67.5 percent of the
   |w|) go to part 2.
 
+- **09:46Z, r56a (d10 6556565565/6566669666, 23.5 percent) dies at ring 13-14.** Its 2,182 ring <= 14 windows
+  (08:45-09:46Z, NW 2) gave 86 two-engine kills: 47 D and 35 C at ring 14, 2 C and 2 D at ring 13. These reduce to 43
+  f-names and 6 minimal: f10_...5565655_........5. (ring 13, C), f10_...5565655_.....66... (14, D), and four C at ring
+  14. Twoeng-ready files are `loop/k47/r56a_kills*` (f282e4bf), sent to Long Table 09:47Z.
+- Round 54d's ring 15: Studio took the remainder as job54e, in reverse order from nl8192 (Long Table agreed 08:46Z).
+  Its batch 1 (ff9c1f83) gave 404 lines, all D, and its nl54d is at 450 of 610 at ring 16-18, all D. This machine's
+  one worker goes up from nl1283 and stops where the two meet.
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
