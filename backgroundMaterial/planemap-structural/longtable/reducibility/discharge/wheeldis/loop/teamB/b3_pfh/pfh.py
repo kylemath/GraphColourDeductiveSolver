@@ -420,16 +420,22 @@ def solve_warm(rows):
     inf = highspy.kHighsInf
     n = len(VARL)
     loaded = HW['rows']
+    off = 2 if TFIX is not None else 1      # tfix: column 0 = t fixed at TFIX, column 1 = common margin m (maximised)
     if HW['h'] is None or len(rows) < len(loaded) or any(a is not b for a, b in zip(rows, loaded)):
         h = highspy.Highs()
         h.setOptionValue('output_flag', False)
-        h.addCol(1.0, -5.0, inf, 0, np.array([], dtype=np.int32), np.array([], dtype=np.float64))
+        if TFIX is None:
+            h.addCol(1.0, -5.0, inf, 0, np.array([], dtype=np.int32), np.array([], dtype=np.float64))
+        else:
+            h.addCol(0.0, TFIX, TFIX, 0, np.array([], dtype=np.int32), np.array([], dtype=np.float64))
+            h.addCol(-1.0, -1.0, 1.0, 0, np.array([], dtype=np.int32), np.array([], dtype=np.float64))
         HW.update(h=h, rows=[], ncol=0)
     h = HW['h']
     if HW['ncol'] < n:
         k = n - HW['ncol']
         ub = CAP if CAP is not None else inf
-        h.addCols(k, np.zeros(k), np.zeros(k), np.full(k, ub), 0, np.zeros(k, dtype=np.int32),
+        cost = np.full(k, 1e-7) if TFIX is not None else np.zeros(k)   # tfix: tiny cost keeps unconstrained transfers at 0
+        h.addCols(k, cost, np.zeros(k), np.full(k, ub), 0, np.zeros(k, dtype=np.int32),
                   np.array([], dtype=np.int32), np.array([], dtype=np.float64))
         HW['ncol'] = n
     new = rows[len(HW['rows']):]
@@ -439,9 +445,11 @@ def solve_warm(rows):
             starts.append(len(idx))
             acc = {}
             for c, i in terms:
-                acc[i + 1] = acc.get(i + 1, 0) + c
+                acc[i + off] = acc.get(i + off, 0) + c
             if tc:
                 acc[0] = acc.get(0, 0) + tc
+                if off == 2:
+                    acc[1] = 1.0
             for j, v in acc.items():
                 if v:
                     idx.append(j)
@@ -455,11 +463,16 @@ def solve_warm(rows):
     st = h.getModelStatus()
     assert st == highspy.HighsModelStatus.kOptimal, h.modelStatusToString(st)
     col = np.array(h.getSolution().col_value)
-    return col[1:], col[0], None
+    if off == 2:
+        print('  margin %.6f' % col[1], flush=True)
+        if col[1] < -1e-9:
+            print('INFEASIBLE at t = %.6f : t* > %.6f (generated rows only, so a valid lower bound)' % (TFIX, TFIX), flush=True)
+            sys.exit(0)
+    return col[off:], col[0], None
 
 
 def solve(rows):
-    if 'warm' in OPTS and TFIX is None and CENTER is None:
+    if 'warm' in OPTS and CENTER is None:
         return solve_warm(rows)
     """rows: list of (terms[(coef, varindex)], tcoef, rhs) meaning sum coef*x + tcoef*t <= rhs."""
     n = len(VARL) + 1
