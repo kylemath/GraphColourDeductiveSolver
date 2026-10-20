@@ -1445,10 +1445,12 @@ theorem cGlueX1 (Cs : List CEntry1) : CGlueX1 Cs :=
 
 `OccursCXF` drops `XRingSimple`. In its place it asks for `NbrInj` and `ApexFacts`, which are facts about
 the configuration's own vertices and their listed neighbours. Soundness then needs a per-key check,
-`foldSafeX` (decidable), and `T.Triangulated`, which gives `NoSep` for a minimal counterexample. -/
+`foldSafeX` (decidable), and `T.Triangulated`, which gives `NoSep` and `NoShortSepCycle` for a minimal
+counterexample. -/
 
-/-- A C entry whose X-graph is fold-safe: every D1 and D2 fold is excluded by a length-3 cycle
-argument (`exclB`). -/
+/-- A C entry whose X-graph is fold-safe: every D1 and D2 fold is excluded, either by a length-3
+cycle argument (`exclB`, using `NoSep`) or by a short cycle of length 4 or 5 whose sides are both
+non-empty (`cycEx`, using `NoShortSepCycle`). -/
 structure CEntryF extends CEntry where
   hfold : foldSafeX (Conf.of18 cf) eqR eqI lbl = true
 
