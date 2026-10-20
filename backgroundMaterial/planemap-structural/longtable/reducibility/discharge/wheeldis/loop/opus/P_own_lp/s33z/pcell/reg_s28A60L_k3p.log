@@ -1,0 +1,7 @@
+pcell: 1 names from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/pcell/k3p.txt; amask bits set U7/U8/U9 = [1249, 1249, 1249]; l3q keys hit 0; f-patterns added 0
+  pcell q7-_....556_....56._::::::5 = q7-_....556_....56._::::::5 : {'A7': 14, 'A8': 14, 'A9': 14}  [cons2-row skip possible at 6 w[6]; not applied]
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9705, 8: 4542, 9: 2941, 10: 1142, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17030, 'C': 1898, 'RPAT': 158}
+  negative reduced costs: 3 [(('M', (8, 5, 6, 5, 8, 5, 5, 29)), Fraction(-1, 80)), (('M', (8, 5, 6, 5, 7, 5, 5, 29)), Fraction(-7, 160)), (('M', (8, 5, 6, 6, 6, 5, 5, 31)), Fraction(-7, 160))]
+rows by type: {'senderR2': 17, 'cons2': 67, 'mrowR2': 24, 'receiverR2': 12}
+LOWER-R2: INVALID  t >= 47/320 = 0.146875000  (120 rows)

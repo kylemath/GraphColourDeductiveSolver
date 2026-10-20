@@ -23,7 +23,34 @@ def amask(U, a, b, e, f, s0, s1, s2, s3):
     s0..s3 = s_{j-2..j+1}; letters 5..9"""
     kt_load(); m = 31 & ~int(KT[U][a - 5, b - 5, e - 5, f - 5, s0 - 5, s1 - 5, s2 - 5, s3 - 5])
     if W19 and U == 7 and ((e == 5 and f == 5 and s3 == 5) or (b == 5 and a == 5 and s0 == 5)): m &= ~1   # stage 19 oracle W
+    if PCAM: m &= ~int(PCAM[U][a - 5, b - 5, e - 5, f - 5, s0 - 5, s1 - 5, s2 - 5, s3 - 5])   # s36g PRIVCELL_SPEC 2.3: absorbed private-cell names
     return m
+# s36g (PRIVCELL_SPEC.md): private-cell names, option pcell=FILE (one q-name per line).  Absorbed as filt16 amask bits
+# (PCAM), l3q mask bits (PCL3) and receiver f-patterns (PATS); every other name is logged with its reason.  No file: no change.
+PCAM = {}; PCL3 = {}
+if OPT.get('pcell'):
+    exec(open(os.path.join(HERE, 'privcell.py')).read().split("if __name__ == '__main__':")[0], globals())
+    _pcn = [l.split()[0] for l in open(OPT['pcell']) if l.strip() and not l.startswith('#')]
+    PCAM, PCL3, _pcp = pc_build(_pcn, dmax=DMAX)
+    if not F16: PCAM = {}
+    _pnew = 0
+    for _d, _ps in _pcp.items():
+        for _P in _ps:
+            if _P not in PATS[_d]: PATS[_d].add(_P); PSRC['PCELL'] += 1; _pnew += 1
+    log('pcell: %d names from %s; amask bits set U7/U8/U9 = %s; l3q keys hit %d; f-patterns added %d' % (len(_pcn), OPT['pcell'],
+        [int((PCAM[U] != 0).sum()) if PCAM else 0 for U in (7, 8, 9)], len(PCL3), _pnew))
+    for _nm, _cn, _k, _st, _why in PC_LOG: log('  pcell %s = %s : %s %s' % (_nm, _cn, _st if _st else 'not absorbed', _why))
+def cmd_pcellcheck():
+    """amask with pcell vs the s25c g7 flag formula (flag g7ref: KT & ~bit 0 under the g7 condition) or vs the plain KT, over every (U, a, b, e, f, s0..s3)"""
+    kt_load(); bad = 0; n = 0; nk = 0
+    for U in (7, 8, 9):
+        for a, b, e, f, s0, s1, s2, s3 in itertools.product(LET, repeat=8):
+            m = amask(U, a, b, e, f, s0, s1, s2, s3); n += 1
+            g = 31 & ~int(KT[U][a - 5, b - 5, e - 5, f - 5, s0 - 5, s1 - 5, s2 - 5, s3 - 5])
+            if 'g7ref' in FLAGS and ((e == 5 and f == 5 and s2 == 6 and s3 == 5) or (b == 5 and a == 5 and s1 == 6 and s0 == 5)): g &= ~1
+            if m != g: bad += 1
+            if m != 31 & ~int(KT[U][a - 5, b - 5, e - 5, f - 5, s0 - 5, s1 - 5, s2 - 5, s3 - 5]): nk += 1
+    log('pcellcheck: %d amask entries; differ from the %s reference: %d; differ from the plain kill table: %d' % (n, 'g7 flag' if 'g7ref' in FLAGS else 'plain', bad, nk))
 def pallow(sig): return [p for i, p in enumerate(LET) if not F16 or (sig[-1] >> i) & 1]
 def v_of(m, ar, al):
     a = tuple(m) + (cv(ar), cv(al)); b = (m[0],) + tuple(reversed(m[1:])) + (cv(al), cv(ar)); return min(a, b)
@@ -140,6 +167,10 @@ def l3q_load():
         for fn in OPT['l3qtab'].split(','):
             for k, v in json.load(open(fn)).items():
                 sg, wd, ao = k.split(); L3T[(int(sg),) + tuple(int(ch) for ch in wd) + tuple(int(ch) for ch in ao)] = v[0]
+        if PCL3:   # s36g PRIVCELL_SPEC 2.4: absorbed private-cell names clear a2 letters
+            _n0 = sum(1 for k in L3T if L3T[k] & PCL3.get(k, 0))
+            for k in L3T: L3T[k] &= ~PCL3.get(k, 0)
+            log('pcell: l3q masks changed %d of %d' % (_n0, len(L3T)))
         assert len(L3T) == 2 * 2500, len(L3T)
 def l3q_terms(d, w, s):
     """RELAY_SPEC_s21 21.3: payer -1 on lq (c, a, a2) and payee +1 on lQ (c, a', mask) at every link 7, both sides; d = 7 only"""
@@ -171,7 +202,10 @@ def write_l3q():
         i = (((((0 if sg == 1 else 1) * 5 + LI[c]) * 5 + LI[w2]) * 5 + LI[w3]) * 5 + LI[w4]) * 25 + LI[a] * 5 + LI[o]
         QX[i] = l3q_Qeff(c, a, m) - l3q_UB(c, a); MK[i] = m
     for (c, a, a2), v in LQV.items(): PQ[(LI[c] * 5 + LI[a]) * 5 + LI[a2]] = v
-    assert QX.max() <= 1e-15 and PQ.min() >= -1e-15
+    if QX.max() > 1e-15 or PQ.min() < -1e-15:   # s33z: LP noise (seen at A66 keeppen iter 10); clip |noise| <= 1e-9, else fail as before
+        log('  write_l3q: noise QX.max %.3g PQ.min %.3g (clipped)' % (QX.max(), PQ.min()))
+        assert QX.max() <= 1e-9 and PQ.min() >= -1e-9
+        QX = np.minimum(QX, 0.0); PQ = np.maximum(PQ, 0.0)
     fn = os.path.join(WORK, 'l3q.bin')
     with open(fn, 'wb') as f: f.write(QX.astype(np.float64).tobytes()); f.write(PQ.astype(np.float64).tobytes()); f.write(MK.astype(np.float64).tobytes())
     L3FILE[0] = fn; return fn
@@ -630,7 +664,7 @@ def cmd_solveR2():
         conset.add(kk); addrow(cf, 0.0, 0.0, ('cons2', list(L), list(s))); return True
     # initial conservation rows: one apex word per L (all apexes 5) -- the rest by separation
     if L6R:   # RELAY_SPEC_s23.4: all mrowZ rows and both column sets up front
-        for K in z6_first(): addrow({('z6', K): 1.0, ('Z6', zsig6_of_key(K)): -1.0}, -inf, 0.0, ('mrowZ', list(K)))
+        for Kz in z6_first(): addrow({("z6", Kz): 1.0, ("Z6", zsig6_of_key(Kz)): -1.0}, -inf, 0.0, ("mrowZ", list(Kz)))
         log('l6r: %d mrowZ rows, %d Z6 signatures' % (len(z6_first()), len({zsig6_of_key(K) for K in z6_first()})))
     for L in RW: addcons(L, (5,) * 6)
     if 'consbasis' in OPT:
@@ -650,7 +684,10 @@ def cmd_solveR2():
     for it in range(MAXIT):
         t1 = time.time()
         if 'ipm0' in FLAGS: h.setOptionValue('solver', 'ipm' if it == 0 else 'simplex')
-        h.run(); xv = np.array(h.getSolution().col_value); t = xv[jt]
+        h.run()
+        if 'ipm0' in FLAGS and it == 0 and 'polish' in FLAGS:   # stage 33: re-run simplex from the IPM crossover basis (vertex duals for lowerR2)
+            t_ = time.time(); h.setOptionValue('solver', 'simplex'); h.run(); log('  polish: simplex from the IPM basis %.1fs, status %s' % (time.time() - t_, h.modelStatusToString(h.getModelStatus())))
+        xv = np.array(h.getSolution().col_value); t = xv[jt]
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         GV = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'g'}; HV2 = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'h'}
         ZV.clear(); ZV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'z'})
@@ -852,7 +889,7 @@ def cmd_lowerR2():
     SR = {(wd, tuple(map(str, b))): cf for wd, cf, b in R2_sender_rows()}
     tot = collections.defaultdict(Fraction); D = Fraction(0); ok = True; tco = Fraction(0); cnt = collections.Counter()
     for c in C:
-        w = Fraction(c['w']).limit_denominator(10 ** 7); row = c['row']; cnt[row[0]] += 1
+        w = Fraction(c['w']).limit_denominator(int(float(OPT.get('wden', '1e7')))); row = c['row']; cnt[row[0]] += 1   # s33: wden= rationalising limit (default 1e7 as before)
         if row[0] == 'senderR2':
             cf = SR.get((row[1], tuple(map(str, row[2]))))
             if cf is None: log('  NOT A SENDER ROW', row); ok = False; continue
@@ -901,7 +938,7 @@ def cmd_lowerR2():
             tco -= w; D += w * (d - 6)
         else: log('  UNKNOWN', row); ok = False
     if tco <= 0: log('  t coefficient sum not positive'); ok = False; tco = Fraction(1)
-    D = D / tco; neg = []
+    D = D / tco; neg = []; UCAP = Fraction(OPT['ucap']) if 'ucap' in OPT else None; nu = 0; du = Fraction(0)
     for k, v in tot.items():
         rc = -v / tco
         if rc < 0:
@@ -910,7 +947,9 @@ def cmd_lowerR2():
             elif k[0] == 'lq': D += rc * Fraction(OPT.get('lqcap', '3'))   # stage 28: q is capped like x, priced at its cap
             elif ZR and k[0] in ('z', 'zr', 'rr'): D += rc * Fraction(OPT.get('zcap', '3'))   # stage 33: z, zr, rr capped, priced at cap
             elif k[0] == 'z6': D += rc * Fraction(OPT.get('z6cap', '3'))   # RELAY_SPEC_s23.5: z6 capped, priced at cap
+            elif UCAP is not None: D += rc * UCAP; nu += 1; du += rc * UCAP   # s33 ucap=: every column capped at UCAP in the LP family, priced at cap
             else: neg.append((k, rc))
+    if UCAP is not None: log('  ucap=%s: %d uncapped columns priced at cap, total %.3g' % (UCAP, nu, float(du)))
     if neg: log('  negative reduced costs:', len(neg), neg[:5]); ok = False
     log('rows by type: %s' % dict(cnt))
     log('LOWER-R2: %s  t >= %s = %.9f  (%d rows)' % ('VALID' if ok else 'INVALID', D, float(D), len(C)))
@@ -984,9 +1023,12 @@ def cmd_upperR2():
         return mcache[sg]
     for d in range(7, DMAX + 1):
         W = window_table_R2(min(d, 9), y, xd, MV2)
-        res, dt, ni = run_sep(d, W, d - 6 + t + EPS, 20, 0)
+        res, dt, ni = run_sep(d, W, d - 6 + t + EPS, int(float(OPT.get('vK', '20'))), 0)   # s33z (from s30t): vK = max rows reported
         v = [r for r in res if r[0] == 'V']; bad += len(v)
         log('d=%d: %d violated (exhaustive, %.1fs)' % (d, len(v), dt))
+        if 'vfile' in OPT:   # s33z: every reported violated row to a file: d load excess link sv
+            with open(OPT['vfile'], 'a') as vf:
+                for r_ in v: vf.write('%d %s %.9f %s %s\n' % (d, r_[1], float(r_[1]) - (d - 6 + t), r_[2], r_[3]))
     W9 = window_table_R2(9, y, xd, MV2); M = relaxed_M(W9)
     for d in range(DMAX + 1, DTAIL + 1):
         v = closed_max(M, d)
@@ -1044,3 +1086,50 @@ def cmd_rowR2():
             if c['row'][0] == 'receiverR2' and int(c['row'][1]) == d and c['row'][2] == lk and c['row'][3] == sv: w = c['w']
     log('row d=%d %s/%s: load %.9f cap %.9f slack %.3g dual %.9f admissible=%s' % (d, lk, sv, tot, d - 6 + t, d - 6 + t - tot, w, admissible(d, lk, sv)))
     log('  terms: ' + ' '.join(parts))
+def _canon_row(d, lk, sv):
+    """(link, sv) up to the 2d rotations / reflections (w_i -> w_{-i}, s_i -> s_{-i-1}, as pcheck instances)"""
+    out = []
+    for r in range(d):
+        for refl in (False, True):
+            W_ = [None] * d; S_ = [None] * d
+            for i in range(d):
+                j = (i + r) % d if not refl else (r - i) % d; W_[j] = lk[i]
+                j = (i + r) % d if not refl else (r - i - 1) % d; S_[j] = sv[i]
+            out.append((''.join(W_), ''.join(S_)))
+    return min(out)
+def cmd_binderR2():
+    """s33z: for receiver rows row=d:link:sv[,..] -> the row's dual in cert= (rank by |w|) and the load split by column family in sol=;
+    plus the top receiver binders of the cert (top=N)."""
+    load_patterns(); xon = 'xon' in FLAGS
+    Sj = json.load(open(OPT['sol'])); t = Sj['t']; C = json.load(open(OPT['cert'])) if 'cert' in OPT else []
+    VAL = {('y', k): v for k, v in Sj['y'].items()}
+    for fam in ('g', 'h', 'z', 'zr', 'r', 'rr', 'lq', 'lQ', 'z6', 'Z6', 'q', 'f'):
+        for k, v in Sj.get(fam, []): VAL[(fam, tuple(k))] = v
+    for k, v in Sj.get('D', []): VAL[('D', eval(k))] = v
+    for k, v in Sj.get('x', {}).items(): VAL[('x', int(k))] = v
+    HV2 = {tuple(k): v for k, v in Sj['h']}
+    if L3Q: l3q_load()
+    def val(k):
+        if k[0] == 'y': return VAL.get(('y', rname(k[1])), 0.0)
+        if k[0] == 'M': return max([HV2.get(tuple(h), 0.0) for h in sig2_keys(k[1])] or [0.0])
+        return VAL.get(k, 0.0)
+    GRP = {'y': 'base y', 'x': 'base x', 'M': 'base M (hat6)', 'r': 'hat5 r', 'rr': 'RR rr', 'z': 'zh z', 'zr': 'ZR zr', 'lq': 'l3q lq', 'lQ': 'l3q lQ', 'D': 'D', 'Q': 'q7', 'q': 'q7', 'V': 'v6'}
+    rec = [(c['w'], c['row']) for c in C if c['row'][0] == 'receiverR2']
+    rk = sorted(rec, key=lambda x: x[0])   # receiver duals are <= 0; most negative = strongest binder
+    idx = {(r[1],) + _canon_row(r[1], r[2], r[3]): (i, w) for i, (w, r) in enumerate(rk)}
+    totw = sum(-w for w, r in rec) or 1.0
+    log('cert: %d rows, %d receiverR2 (sum |w| %.6f); t = %.9f' % (len(C), len(rec), totw, t))
+    def show(d, lk, sv):
+        cf = recv_coef_R2(d, lk, sv, xon); g = collections.defaultdict(float); top = []
+        for k, c in cf.items():
+            v = val(k)
+            if v and c: g[GRP.get(k[0], k[0])] += c * v; top.append((c * v, k))
+        tot = sum(g.values()); key = (d,) + _canon_row(d, lk, sv)
+        i, w = idx.get(key, (None, 0.0))
+        log('row d=%d %s/%s: dual %s%s; load %.9f vs cap %.9f (slack %.3g); admissible: %s' % (d, lk, sv, '%.9g' % w if i is not None else 'not in cert',
+            ' (rank %d of %d by |w|, %.2f%% of receiver |w|)' % (i + 1, len(rk), 100 * -w / totw) if i is not None else '', tot, d - 6 + t, d - 6 + t - tot, admissible(d, lk, sv) or 'yes'))
+        log('   by family: ' + ', '.join('%s %+.6f' % (a, b) for a, b in sorted(g.items(), key=lambda x: -abs(x[1]))))
+        log('   top terms: ' + '; '.join('%s %+.6f' % (repr(k), v) for v, k in sorted(top, key=lambda x: -abs(x[0]))[:12]))
+    for spec in [s_ for s_ in OPT.get('row', '').split(',') if s_]:
+        d, lk, sv = spec.split(':'); show(int(d), lk, sv)
+    for w, r in rk[:int(OPT.get('top', '0'))]: show(r[1], r[2], r[3])

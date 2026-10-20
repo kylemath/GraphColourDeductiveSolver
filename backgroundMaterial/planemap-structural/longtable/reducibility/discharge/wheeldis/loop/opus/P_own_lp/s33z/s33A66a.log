@@ -1,0 +1,24 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9706, 8: 5339, 9: 2941, 10: 1151, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17592, 'C': 2143, 'RPAT': 158}
+l6r: 886 mrowZ rows, 210 Z6 signatures
+conservation basis rows added: 10539
+warm rows admitted: 30172
+R6x2 (apex True): 22476 sender rows, 393 g keys in senders, 1424 six-words, 11963 initial cons rows, 1127 M sigs
+iter 0 t=0.103136528641 rows 72250 cols 33478 added 1464  lp 454.3s total 476s  {'cons': (352, np.float64(0.814331)), 7: (201, np.float64(1.717981), 1.0), 8: (154, np.float64(2.415093), 0.9), 9: (145, np.float64(2.278044), 0.9), 10: (166, np.float64(1.718045), 1.0), 11: (158, np.float64(1.19496), 1.0), 12: (134, np.float64(1.071771), 1.0), 13: (154, np.float64(0.511772), 1.1)}
+iter 1 t=0.107857057619 rows 73451 cols 34065 added 1060  lp 318.6s total 816s  {'cons': (368, np.float64(0.224753)), 7: (158, np.float64(1.383715), 1.1), 8: (165, np.float64(1.460715), 1.2), 9: (163, np.float64(0.973417), 1.2), 10: (130, np.float64(0.959134), 0.9), 11: (75, np.float64(0.297599), 0.9), 12: (1, np.float64(0.107857), 1.1)}
+iter 2 t=0.109406515590 rows 74434 cols 34494 added 900  lp 195.8s total 1034s  {'cons': (296, np.float64(0.222584)), 7: (145, np.float64(0.685379), 2.0), 8: (157, np.float64(1.452967), 1.2), 9: (157, np.float64(0.485022), 1.5), 10: (145, np.float64(0.210618), 1.0)}
+iter 3 t=0.109599287715 rows 75092 cols 34797 added 601  lp 138.3s total 1195s  {'cons': (146, np.float64(0.081531)), 7: (156, np.float64(0.464607), 2.3), 8: (142, np.float64(1.2346), 1.4), 9: (144, np.float64(0.285537), 2.3), 10: (13, np.float64(0.070742), 1.1)}
+iter 4 t=0.112864159132 rows 75884 cols 35354 added 665  lp 288.1s total 1508s  {'cons': (191, np.float64(0.154229)), 7: (152, np.float64(0.449936), 2.7), 8: (159, np.float64(0.647364), 2.4), 9: (154, np.float64(0.282714), 2.2), 10: (9, np.float64(0.04679), 1.0)}
+iter 5 t=0.115630107772 rows 76482 cols 35569 added 542  lp 411.7s total 1944s  {'cons': (83, np.float64(0.070879)), 7: (150, np.float64(0.336265), 3.0), 8: (154, np.float64(0.540237), 2.9), 9: (154, np.float64(0.234602), 1.8), 10: (1, np.float64(0.038983), 1.0)}
+iter 6 t=0.120375239707 rows 77074 cols 35726 added 524  lp 717.4s total 2687s  {'cons': (58, np.float64(0.076788)), 7: (151, np.float64(0.274813), 3.5), 8: (163, np.float64(0.497236), 2.9), 9: (150, np.float64(0.173704), 2.0), 10: (2, np.float64(0.004797), 1.0)}
+iter 7 t=0.121051992034 rows 77668 cols 35993 added 523  lp 463.1s total 3168s  {'cons': (41, np.float64(0.059719)), 7: (154, np.float64(0.295064), 2.6), 8: (151, np.float64(0.381633), 2.2), 9: (161, np.float64(0.664181), 0.7), 10: (16, np.float64(0.142366), 0.7)}
+iter 8 t=0.121815088950 rows 78215 cols 36114 added 500  lp 583.3s total 3772s  {'cons': (39, np.float64(0.038827)), 7: (153, np.float64(0.292974), 2.1), 8: (152, np.float64(0.329023), 3.0), 9: (156, np.float64(0.33404), 1.7)}
+iter 9 t=0.121844035805 rows 78819 cols 36283 added 521  lp 548.4s total 4341s  {'cons': (38, np.float64(0.079397)), 7: (153, np.float64(0.22334), 2.8), 8: (153, np.float64(0.283362), 2.7), 9: (144, np.float64(0.140726), 2.1), 10: (33, np.float64(0.141985), 0.6)}
+Traceback (most recent call last):
+  File "/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/eng/pcheck.py", line 517, in <module>
+    {'pcellcheck': cmd_pcellcheck, 'binderR2': cmd_binderR2, 'rowR2': cmd_rowR2, 'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 670, in cmd_solveR2
+  File "<string>", line 174, in write_l3q
+AssertionError
+solve exit 1

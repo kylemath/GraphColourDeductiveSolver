@@ -54,7 +54,7 @@ EXCL6 = {'565667', '565676', '565677', '565757', '565767', '565777'}   # README 
 for line in open(os.path.join(DIS, 'studio17', 'wheels17_verdicts.txt')):
     if line.startswith('#') or not line.strip(): continue
     f = line.split(); fam, wd = f[0].split('_'); v = f[2]
-    if v == 'D' or (v == 'C' and wd not in EXCL6):
+    if v == 'D' or (v == 'C' and wd not in EXCL6 and 'noCw' not in FLAGS):   # s33z (from s30t): noCw drops C wheel verdicts
         (R5 if fam == 'c5' else R6).add(canon(map(int, wd)))
 FANS = []
 for line in open(os.path.join(ROOT, 'out', 'fans_dfast.out')):
@@ -86,7 +86,7 @@ if 'now7plus' not in FLAGS:   # R_opt+ (README s7.3): later D 7/8-wheels and cfa
         for line in open(fn):
             f = line.split()
             if f and re.match(r'^c[78]_\d+$', f[0]) and 'D=true' in line: addbig(f[0][3:])
-    for fn in glob.glob(os.path.join(ROOT, 'out', 'def_*.cfast')):
+    for fn in ([] if 'noC' in FLAGS else glob.glob(os.path.join(ROOT, 'out', 'def_*.cfast'))):   # s33z (from s30t): noC drops cfast C 7-wheels
         cur = None
         for line in open(fn):
             if ' r=' in line and not line.startswith(' '):
@@ -137,7 +137,7 @@ def load_patterns():
     excl = [e for e in OPT.get('excl', '').split(',') if e]
     nf = 0; missing = []
     for a in args:
-        if not a.startswith(('pat=', 'cpat=')) or any(e in a for e in excl): continue
+        if not a.startswith(('pat=', 'cpat=')) or any(e in a for e in excl) or ('noC' in FLAGS and a.startswith('cpat=')): continue   # s33z (from s30t): noC drops every cpat= file
         fn = a.split('=', 1)[1]; allf = fn.endswith(':all'); fn = fn[:-4] if allf else fn
         p = fn if os.path.isabs(fn) else os.path.join(ROOT, fn)
         if not os.path.exists(p): missing.append(fn); continue
@@ -514,4 +514,4 @@ exec(open(os.path.join(HERE, 'pslite.py')).read())
 exec(open(os.path.join(HERE, 'prelay.py')).read())
 exec(open(os.path.join(HERE, 'prelay2.py')).read())
 log('jcheck: %d R5, %d R6, %d fans, %d RBIG; %d senders, %d rooted vars' % (len(R5), len(R6), len(FANS), len(RBIG), len(SENDERS), len(ROOTS)))
-{'rowR2': cmd_rowR2, 'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()
+{'pcellcheck': cmd_pcellcheck, 'binderR2': cmd_binderR2, 'rowR2': cmd_rowR2, 'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()

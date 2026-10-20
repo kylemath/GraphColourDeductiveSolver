@@ -1,0 +1,11 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9706, 8: 5243, 9: 2941, 10: 1151, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17512, 'C': 2127, 'RPAT': 158}
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '8658656', '6665556'] pattern ((2, 2), (3, 2), (4, 1), (5, 2), (6, 8), (7, 1), (8, 2), (9, 1), (10, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '8658656', '7665555'] pattern ((2, 2), (3, 2), (4, 1), (5, 2), (6, 8), (7, 1), (8, 2), (9, 1), (10, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 10, '6565656565', '6556666666'] pattern ((0, 2), (1, 2), (2, 1), (3, 1), (4, 2), (5, 1), (6, 1), (7, 2), (8, 2), (10, 1), (18, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 8, '76656566', '56655565'] pattern ((0, 4), (1, 1), (2, 2), (4, 2), (5, 2), (6, 1), (7, 1), (8, 2), (9, 1), (10, 1), (11, 1), (12, 2))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 8, '75666556', '66666565'] pattern ((0, 4), (2, 1), (10, 1), (11, 1), (12, 1), (13, 2), (14, 2), (15, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '8556856', '7565666'] pattern ((4, 1), (6, 2), (7, 1), (8, 8), (9, 2), (10, 1), (11, 2), (12, 2))
+  negative reduced costs: 30 [(('y', (7, 5, 5, 6, 6)), Fraction(-1, 58)), (('r', (5, 0, 5, 6, 1, 0)), Fraction(-4, 29)), (('r', (6, 0, 0, 7)), Fraction(-9, 58)), (('y', (8, 5, 5, 6, 6)), Fraction(-5, 29)), (('r', (5, 0, 5, 6, 0, 0)), Fraction(-2, 29))]
+rows by type: {'senderR2': 18, 'cons2': 56, 'mrowR2': 26, 'receiverR2': 9}
+LOWER-R2: INVALID  t >= 41/58 = 0.706896552  (109 rows)

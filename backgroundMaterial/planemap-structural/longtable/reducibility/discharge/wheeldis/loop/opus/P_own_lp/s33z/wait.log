@@ -3,3 +3,14 @@
 23:17:16Z s28A62 done (l3q-only 3cfd7f18: lower 11/75, upper 0.147790408). No sha from coordinator: prep newest origin/main registry head 2e9f5993 (r54a + r54b/45371779 + r54k12 + r54c)
 23:30:55Z coordinator: registry = explore adm54d (09a6a667 / main 21b1a8a1), tag A63. 2e9f5993 prep stopped mid kill-table step (nothing used from it).
 23:47:35Z coordinator: newer head c6395bf1 (r54j); A63 prep + go stopped before any solve; switching to A64
+00:06:54Z start on A64, threads=2
+warm: /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/rows_s28A62.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/rows_s28A60.txt
+00:17:15Z keeppen on A64 crashed in run_sep (K shadowed by the l6r mrowZ loop, fixed); restart keeppen only (cmd_s33k.sh)
+00:17:15Z start on A64, threads=2
+warm: /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/rows_s28A62.txt,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/rows_s28A60.txt
+00:31:49Z coordinator: also upperR2 on 15bc20c7 (A65); prep_A65 started (-P1)
+00:52:05Z coordinator: target now 3d6c4f9a (A66). A64 stacked keeppen at iter 4 (t=0.0855, 30 min) -> restart on A66 after prep; A65 prep/upper, q64 (l3q-only A64, iter 6 t=0.1322) and m89-on-A64 stopped; q64 rows kept as rows_q64A64.txt
+01:04:01Z coordinator: post-solve upper vs newest origin/main at that step (917ca254 now; same k3x as f14db5d7) -> up_newest.sh; m89 checks on A66 queued after it
+01:12:00Z A64 keeppen stopped at iter 7 t=0.103567873333 rows 6; start A66
+02:38:24Z A66 keeppen (iter 9 t=0.121844) and q66 (iter 8 t=0.128995) both died in write_l3q assert (LP noise; now clipped <=1e-9). Coordinator: k3p #1 into main stack [E2 guard] -> restart A66 stacked with pcell=k3p.txt warm (rows kept as rows_s33A66a/rows_q66A66a); run_k3p variant dropped
+02:38:58Z A66 stacked + k3p start
