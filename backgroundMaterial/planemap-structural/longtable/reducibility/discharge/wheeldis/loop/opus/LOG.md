@@ -716,3 +716,25 @@ our agent R and have no output from it.
 - Studio spec-only check (loop/studio/opus_check/s39o_verdict.md, 545aa972, merge 2c139411): UPPER FEASIBLE at 1/9 (d=7..17, 0 violators, Karp λ 5/9), LOWER VALID exactly 20/183; Studio's own rpatN3 build = our 2,287 patterns; tables = reg_A74.
 - **New two-engine bound: 20/183 = 0.109290 <= t* <= 1/9 = 0.111111 [E2]** on A74 (main 95ba762d), rules l3q (RSST rule 9 restatement) + rpatN3 (u-centred patterns from all 8,200 two-engine-D configurations of the 2026 set, nl51_kc.txt). Previous [E2]: 0.127123..0.128958.
 - C cover (s41c): 130 C entries suffice for the upper; 32 not yet in Lean (20 ring-14, 10 RSST C, 2 old cpat), in Studio's CCover batch. The upper holds without the 129 ring-merge cpat entries.
+
+## Round s40f: l3q + fy + rpatN3 on A74 (partial, K hit its 4 h cap)
+- Engine `P_own_lp/s40f/eng` is s39o/eng with `s35f/fyq/port_fy.py` applied to prelay2.py. The result is identical to fyq's prelay2, md5 04d18faa….
+  - pcheck.py also gains `exname=FILE`, which drops C entries by name.
+- Controls on A74, fy off: lowerR2 on cert_q39n3A74L gives VALID 20/183, with a byte-identical log. upperR2 on sol_q39n3A74 gives FEASIBLE 1/9.
+- fy pricing against cert_q39n3A74L (`s40f/pricer40.py` → `pricer40.out`): INVALID, with 4 negative z columns.
+  - Most negative first: z(7,6,6,6,6;0,·,·,·,1) −10/183, then three at −2/183.
+  - **None touches a cert receiver row, including all 5 face rows.**
+  - The face rows' own fy keys have rc 2/183 or 0. At level 1, fy masks h2, the face apex's private t, which is what the face rows hinge on.
+- K (`s40f/run40.sh`: warm from the n3 A74 rows, fyq1 rows and the q66 set; nice 5, threads 2, lpmax=300) hit the 4 h cap at iter 23.
+  - t was flat at 2/19 = 0.105263 and the worst violations were still 0.4–1.1.
+  - The IPM-fallback iterations gave violations up to 5, and at iter 17 separation took 5,000 s, d17 alone 3,275 s.
+  - Rows are checkpointed in `s40f/run/rows_q40fy_partial.txt` (145,517 LP rows; run40.sh resumes).
+  - No fy pair yet, so the kill line can't be evaluated.
+- Heads: the coordinator moved the head A75 → A76 → A77 → A78 (b6dc7610) during K, which kept running on A74 under the head policy.
+  - Registry `s33z/reg_A78` is built. The partial A76 and A77 preps were stopped and removed.
+- Ring-merge hold-outs (`s40f/exname_rm128.txt`): 129 FAIL lines of out/job30/ringmerge_cpat_sweep.out, minus f9_....5565B_....6655. (kept), leaving 128.
+  - e7_B56656._6B.66.._1111110 is not a FAIL line.
+  - On A78, 128 entries are dropped: job27 part00 69, part01 59.
+  - On A78 + exname, upperR2 on the A74 n3 sol (no fy) is still **FEASIBLE at 1/9**.
+  - The n3 cert has 4 rows killed on A78, so a new lower is needed.
+- PID 6187 (fyq A67 nosep) was not stopped; it ended at its own 5 h cap. RSST 2.126 and 8406.123 are absent from every solve.

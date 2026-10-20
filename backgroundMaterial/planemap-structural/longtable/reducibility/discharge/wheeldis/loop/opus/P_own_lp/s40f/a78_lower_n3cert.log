@@ -1,0 +1,10 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10153, 8: 6166, 9: 3519, 10: 1425, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17700, 'C': 2088, 'RPAT': 158, 'RPATN': 2080}
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '7656766', '6666555'] pattern ((0, 4), (1, 2), (2, 2), (4, 1), (10, 2), (11, 1), (12, 2), (13, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '7656766', '6656565'] pattern ((0, 4), (1, 2), (2, 2), (3, 2), (4, 1), (5, 1), (6, 2), (12, 2), (13, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '7666566', '6566666'] pattern ((2, 2), (3, 1), (4, 2), (5, 2), (6, 2), (7, 2), (8, 1), (9, 2), (10, 2))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 10, '6565665656', '6556565565'] pattern ((0, 2), (1, 2), (2, 1), (3, 1), (4, 2), (5, 1), (6, 1), (12, 1), (13, 1), (14, 2), (15, 1), (16, 1), (17, 2), (18, 2))
+  negative reduced costs: 21 [(('r', (6, 0, 0, 7)), Fraction(-34, 151)), (('r', (6, 0, 0, 6, 0, 0)), Fraction(-10, 151)), (('r', (6, 0, 0, 6, 1, 0)), Fraction(-10, 151)), (('y', (7, 6, 5, 6, 6)), Fraction(-2, 151)), (('r', (5, 0, 6, 6, 1, 0)), Fraction(-2, 151))]
+rows by type: {'senderR2': 15, 'cons2': 101, 'mrowL': 5, 'mrowR2': 29, 'receiverR2': 10}
+LOWER-R2: INVALID  t >= 67/151 = 0.443708609  (160 rows)
