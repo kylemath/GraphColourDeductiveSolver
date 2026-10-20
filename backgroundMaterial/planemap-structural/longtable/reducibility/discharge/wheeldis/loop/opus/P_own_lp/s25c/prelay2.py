@@ -11,6 +11,7 @@ V6 = 'v6' in FLAGS                   # stage 15: a 6 next to a 7 passes v[its li
 VV = {}
 def cv(x): return x if x < 7 else 7
 W19 = 'w19' in FLAGS                 # stage 19 oracle: W (7, 5-5-5 face, face-adjacent 6 with private 5) forbidden by assumption
+G7 = 'g7' in FLAGS                   # stage 25 (RELAY_SPEC_s20 s25c-g): explore's g7_ kill #1 (LP-visible) in the private mask
 F16 = 'filt16' in FLAGS              # stage 16 A': allowed-private sets from the 3-ball containment filter (s16_filter.local)
 KT = {}
 def kt_load():
@@ -20,6 +21,7 @@ def amask(U, a, b, e, f, s0, s1, s2, s3):
     """allowed-letter bitmask (bit i = LET[i]) for the private of a 6 at w_j: a,b,e,f = w_{j-2},w_{j-1},w_{j+1},w_{j+2};
     s0..s3 = s_{j-2..j+1}; letters 5..9"""
     kt_load(); m = 31 & ~int(KT[U][a - 5, b - 5, e - 5, f - 5, s0 - 5, s1 - 5, s2 - 5, s3 - 5])
+    if G7 and ((e == 5 and f == 5 and s2 == 6 and s3 == 5) or (b == 5 and a == 5 and s1 == 6 and s0 == 5)): m &= ~1   # stage 25 s25c-g: g7_-..655.._..65..._...5...... (D, ring 8), any U
     if W19 and U == 7 and ((e == 5 and f == 5 and s3 == 5) or (b == 5 and a == 5 and s0 == 5)): m &= ~1   # stage 19 oracle W
     return m
 def pallow(sig): return [p for i, p in enumerate(LET) if not F16 or (sig[-1] >> i) & 1]
@@ -509,7 +511,7 @@ def cmd_solveR2():
     import highspy
     load_patterns()
     xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]
-    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'g' if G7 else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     K = int(OPT.get('K', '300')); MAXIT = int(OPT.get('maxit', '300')); TOL = float(OPT.get('tol', '1e-9'))
@@ -822,7 +824,7 @@ def all6_words():
 def cmd_upperR2():
     load_patterns()
     xon = 'xon' in FLAGS
-    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'g' if G7 else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     Sj = json.load(open(OPT['sol'])); t = Sj['t']

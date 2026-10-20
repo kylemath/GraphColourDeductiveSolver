@@ -1,0 +1,32 @@
+g7 names read: 10
+  g7_-..655.._..65..._...5...... -> our cell constraints {'p51': 5}
+  g7_u76.5566_6..5..._..5....... -> our cell constraints {'p61': 5}
+  g7_-..655.._..65..._...5..5... -> our cell constraints {'p51': 5, 'tp51/s4': 5}
+  g7_u..655.._..65..._...5..5... -> our cell constraints {'p51': 5, 'tp51/s4': 5}
+  g7_-..655.._..657.._...5.....5 -> our cell constraints {'p51': 5, 'tp21/s2': 5}
+  g7_-..655.._..657.._...5....5. -> our cell constraints {'p51': 5, 'ts2': 5}
+  g7_-.6655.._..65..._..55...... -> our cell constraints {'p61': 5, 'p51': 5}
+  g7_-..655.._.765..._..55...... -> our cell constraints {'p61': 5, 'p51': 5}
+  g7_-.6655.._.765..._..55...... -> our cell constraints {'p61': 5, 'p51': 5}
+  g7_u7665566_6.65..._..5...5... -> our cell constraints {'p61': 5, 'tp51/s4': 5}
+mrowR2 rows dropped (U = 7, binder-only signatures): [([7, 5, 6, 7, 6, 5, 7, 31], [7, 5, 6, 5, 7, 6, 5, 7]), ([7, 5, 7, 6, 6, 5, 7, 30], [7, 5, 7, 6, 6, 6, 5, 7])]
+binder 7665566/6675676 weight -3/13; amask-allowed privates {'p11': [5, 6, 7, 8, 9], 'p21': [6, 7, 8, 9], 'p51': [5, 6, 7, 8, 9], 'p61': [5, 6, 7, 8, 9]}
+ring-3 slots in our coordinates: ['tp21/s2', 'tp51/s4', 'ts2', 'ts2/s3/s4']
+
+[without g7 (filt16 amask only)] cells 12500 (6-spoke private combos 500); lifting worst tot = 0.230769231 -> INFEASIBLE: no lifting keeps all rc >= 0
+   rc -0.230769  ('h', (7, 5, 7, 6, 6, 6, 5, 7))
+   rc -0.230769  ('h', (7, 5, 6, 5, 7, 6, 5, 7))
+   rc -0.230769  ('z', (7, 5, 5, 6, 6, 0, 0, 2, 2, 0))
+   rc -0.076923  ('z', (9, 5, 5, 6, 6, 0, 0, 2, 2, 0))
+
+[with g7 kills] cells 8000 (6-spoke private combos 320); lifting worst tot = 0.230769231 -> INFEASIBLE: no lifting keeps all rc >= 0
+   rc -0.230769  ('h', (7, 5, 6, 5, 7, 6, 5, 7))
+   rc -0.230769  ('z', (7, 5, 5, 6, 6, 0, 0, 2, 2, 0))
+   rc -0.076923  ('z', (9, 5, 5, 6, 6, 0, 0, 2, 2, 0))
+
+[Explore's round-53 region: every private >= 6] cells 4096 (6-spoke private combos 256); lifting worst tot = 0.230769231 -> INFEASIBLE: no lifting keeps all rc >= 0
+   rc -0.230769  ('h', (7, 5, 6, 5, 7, 6, 5, 7))
+   rc -0.230769  ('z', (7, 5, 5, 6, 6, 0, 0, 2, 2, 0))
+   rc -0.076923  ('z', (9, 5, 5, 6, 6, 0, 0, 2, 2, 0))
+
+summary: worst rc without g7 -0.230769, with g7 -0.230769, region>=6 -0.230769 (0 = null)

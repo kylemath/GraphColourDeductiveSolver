@@ -593,3 +593,13 @@ our agent R and have no output from it.
 - Studio's own masks match tab62_±1 on all 5,000 entries, under reading (A) of §21.4.
 - rpatD (158 RSST raw patterns) is passed on the command line by cmd_s28.sh (`rpat=$B/rpatD.txt`), not in argsA62.
 - Best two-engine bound so far, down from 2/13 = 0.1538. Provenance: l3q restates RSST rule 9.
+
+## s25c: whole-face cluster rule (own family, RELAY_SPEC_s20.md incl. §s25c-g), 0125c46b
+- Pricing against cert_st24bL: level 1 (flag fy) has z(7,5,5,6,6;…) at rc −3/13; levels 2–3 are infeasible to lift. Far-side-6 variant: null. "t pays s3": −1/13 only when t ≥ 9.
+- Physical both-end test: 0 mismatches over 179k pairs; broken control 25,794.
+- g7 kills: of the 10 names, only g7_-..655.._..65..._...5...... is visible to the LP. It makes h(7,5,6,5,7,6,5,7) price at −3/13, and cert_st24bL becomes INVALID under g7.
+- Solves hit the 3 h cap unconverged (box at load 10–13):
+  - fy: t* ∈ [226/1531 = 0.14762, 2/13];
+  - fy+g7: [6/43, 2/13] (partial rows).
+  - No upper bound.
+- fy is our own rule. It cuts the face-7 dual from 0.231 to 0.094 in cert_st25yL.
