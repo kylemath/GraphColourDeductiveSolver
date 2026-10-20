@@ -70,6 +70,17 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   wheel with every s = 6. Its 15,292 ring 15-18 windows (1,547 at 15, 3,120 at 16, 4,825 at 17, 5,800 at 18) are in
   `loop/k47/win52_10_6565656565_6666666666_todo.txt` (md5 00668f512330fe42bccc1886cf21f399, 3838695a) for Studio (12:07Z).
 
+- **12:37Z, r56h (d10 6566565665/6655566555, 1.3 percent) dies at ring 14.** Its 2,150 ring <= 14 windows
+  (12:06-12:37Z) gave 47 kills, 25 f-names and 4 minimal. 3 of the minimal ones are r56e's (already on main); the new
+  one is f10_.5656.5656_..55...55. (D). Files `loop/k47/r56h_kills*` (b2b9c623). Admission head adm56h on eb3813b4,
+  regression byte-identical: 7 of the 25 names already on main, +16 D, +2 C, `loop/k56/adm56h/`.
+- **12:38Z, verdict on H-RPN: the hypothesis holds, the kill line is not hit.** 12 of the 13 binders die. 5 die to 6
+  configurations of the 2026 set (32.5 percent of the |w|), 6 to ring 12-14 windows (r56a, b, c, e, f, h) and 1 to
+  r56a's kills (r56d). Together that is 98.1 percent of the |w|. Only r56g (1.9 percent, the alternating 6-5 d10 wheel)
+  has no kill at ring <= 14; its ring 15-18 to-do is held until Opus's A72 list shows whether it still binds. Guesses:
+  part 1 was wrong (5 rows, not <= 2), part 2 right (at least 10 of 13 die). The d10 rows died at ring 13-14 rather
+  than 12-13.
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
