@@ -98,6 +98,12 @@ once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill;
   percent) was right too, at 86.68 percent. The surprise was the p41 = 5 part: a five at p41 beside s3 and s4 opens
   joint s3+s6 windows that die at ring 11-14.
 
+- **03:46Z, Studio's job 54s stopped (Long Table 03:43Z; main c21a5dd1): lines 1-777 done, 577 two-engine kills (523 C,
+  54 D).** 573 are p41 = 5 windows (the closed part). The other 4 (g7_u86...55_5...657_5.......5..... and three
+  siblings, C) all have p01 = 5 and ts6 = 5, inside the p01 = 5 fillings the census already covered, so the census
+  stays at 86.68 percent with 0 of 25 children dead. All 777 verdicts are in `S_res.txt` and G_res.txt (the 5 windows
+  cut mid-confirmation, `out/job54s/STOPPED.txt`, have none). The trimmed 54t file waits at Studio as idle filler.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
