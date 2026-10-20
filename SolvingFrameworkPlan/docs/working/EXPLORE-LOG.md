@@ -78,6 +78,10 @@ None of these rows was swept before in any orientation (canon_key against every 
 - **23:56Z, d7 face row 8666655/5677657 (r54m, -1/75): no kill at ring <= 14** (735 windows). Its ring 15-16 (491 windows,
   ~2 h here) is moved behind the other -1/75 rows: `rows54c.txt` runs d8 76556675/66665555, d8 76765656/55556665, the
   d7 face row 8556856/7565666, then r54m's ring 15-16, then r54e-h.
+- **00:29Z, d8 76556675/66665555 (r54n, -1/75) dies at ring 13.** 85 two-engine kills at ring 13-14 (ring 13: 13 D, 5
+  C), 85 f-names (twoeng: 72 D, 13 C same X, all X interior-only, 0 mismatch); 11 minimal, e.g. f8_...56675_.....55.
+  (C, ring 13, m 8) and f8_...55675_...66.5. (D, ring 13). Admission check on main 33720b50 (00:30Z): 2,544 D / 1,094 C,
+  +85 exactly, 0 lost, guards 0 new; files in `loop/k54/adm54n/`.
 
 ## Round 53b (19 Oct 2026, 21:42Z-): H-T87, do any of Opus's 87 tightest survivors of the face binder die at ring <= 16?
 
