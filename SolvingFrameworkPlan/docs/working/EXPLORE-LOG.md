@@ -58,6 +58,17 @@
   windows left (274 at 15, 286 at 16, 252 at 17, 242 at 18; `loop/k47/win52_7_7766656_6577556_todo.txt`, md5
   c2a78cfe1dc8899490163c6a8269938b, 10b99675). Studio is on CXInt, so its ring 15-16 windows (`loop/k47/win57e_r1516.txt`,
   560) run here on 3 cores when the queue ends, STOP=1.
+- **19:08Z, r57f (7656766/6656565, 2/183) dies at ring 13.** Its 914 ring <= 14 windows (18:59-19:07Z) gave 12 kills, 12
+  f-names, 3 minimal, all C at ring 13: f7_...5676_..56.5. (X={I0-I1,I2-I3,R2-I0,R8-I2}, two components with one ring
+  vertex each), f7_..65676_..5..5. (X={I0-I5}), f7_..65676_..65.5. (X={I0-I1}). Files `loop/k47/r57f_kills*`
+  (2c06b9b0). Admission head adm57f on main 9c9b030f (= 38a59465's registry), regression byte-identical: +12 C (12
+  names, none held by the ring-merge guard), `loop/k57/adm57f/`.
+- **19:08Z, verdict on H-A74 at ring <= 14: the hypothesis fails in part, the kill line is not hit.** 3 of the 5
+  non-face rows die at ring <= 14 (r57a 14, r57b 13, r57f 13; the kill line was fewer than 3). r57c died at ring 15 at
+  Studio, and r57e has no kill at ring <= 14 (its ring 15-16 run here from 19:07Z). Dead so far: 32/183 of the 74/183
+  (43.2 percent of the |w|); left: the 5 face rows (40/183) and r57e (2/183). Guesses: part 1 right; part 2 wrong on
+  all 5 non-face rows dying at ring <= 14 (65 percent), right on the face row 7665566/6775676 not dying (75 percent).
+  Lesson: non-face d10 rows with two 6-6 steps and d7 rows with a 7-7 pair can need ring 15.
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
