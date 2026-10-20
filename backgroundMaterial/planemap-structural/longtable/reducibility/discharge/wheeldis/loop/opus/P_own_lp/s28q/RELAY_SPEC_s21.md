@@ -53,6 +53,7 @@ unchanged (§1 scale, charge 6 − d; a big's load is its inflow, at most d − 
   - This satisfies every mrowL row, including rows not yet generated, and it does not change any row the LP already has.
   - Separation and upperR2 both use Qeff, so the solution the upper check certifies is fully specified.
 - **lowerR2:** mrowL rows are checked for signature validity and for a2 ∈ m, with sign w ≤ 0.
+- **Row label (file format, fixed 20 Oct per Studio):** an mrowL row is written `['mrowL', [c, a, m], [c, a, a2]]`: the lQ key (c, a, mask m as a 5-bit int, bit k = letter 5+k) comes first, then the lq key (c, a, a2). Example from cert_q66L: `['mrowL', [6, 5, 30], [6, 5, 6]]` is lq[(6,5,6)] − lQ[(6,5,30)] ≤ 0.
   - An lq column with negative reduced cost is priced at its cap, like x and D.
   - An lQ column with negative reduced cost makes the certificate invalid.
 
