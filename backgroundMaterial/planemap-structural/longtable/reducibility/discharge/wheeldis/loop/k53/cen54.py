@@ -9,7 +9,10 @@ report is by the letters of the private ring-3 neighbours (next to that s alone)
 parts by their fillings the registry leaves uncovered.  RLOC=14 runs only cached windows and windows at ring
 <= 14 here; DUMP=<file> writes the uncached windows above RLOC, in run order, as a window file for Studio.  A filling with no planar 3-ball is skipped as a window.  After
 each part the coverage is also given per split child (one letter per FOCUS slot), and the children are totalled over
-the parts at the end.  Log cen54_<D>_<LK>_<SV>.txt.  cen53's docstring follows.
+the parts at the end.  Log cen54_<D>_<LK>_<SV>.txt.  Round 54c: XREG=<kc file> also matches those configurations
+(the published 2026 set) for containment, kept apart from the registry: the engine windows run exactly as without
+them, and after each part the coverage with them is given, with every minimal requirement only they supply; XOUT=<file>
+gets those configurations' kc lines (to be checked on our engines before anything counts).  cen53's docstring follows.
 EXPLORE round 53, split and kill (coordinator 18:10Z, from the user's sprint plan): a face receiver row that has no
 D/C window inside its 1.5-ball, extended one ring out by the degrees of its privates, and each extension attacked
 separately.  The row fixes u (degree D), w_i (LK) and s_i (SV); one ring out = the privates p_i1..p_ik of each exact
@@ -215,7 +218,7 @@ class Engines:
 
 def main():
     RMAX, KMAX, TSEC, CAP = (int(a) for a in sys.argv[4:8]); NW = int(os.environ.get('NW', '3')); TW = os.environ['TWOENG']
-    log = open(os.path.join(H, 'cen54_%d_%s_%s.txt' % (D, sys.argv[2], sys.argv[3])), 'a')
+    log = open(os.path.join(H, 'cen54%s_%d_%s_%s.txt' % (os.environ.get('LOGSFX', ''), D, sys.argv[2], sys.argv[3])), 'a')   # LOGSFX: round 54c
     def say(*a):
         s = ' '.join(map(str, a)); print(s, flush=True); log.write(s + '\n'); log.flush()
     TOT = prod(len(LETS[x]) for x in SLOTS); PARTS = parts()
@@ -224,26 +227,50 @@ def main():
         TOT, len(PARTS), '; '.join(p[0] for p in PARTS), RMAX, KMAX, TSEC, CAP, TW))
     REG, miss = F.registry(os.path.join(TW, 'k3x_D.out'), os.path.join(TW, 'k3x_C.cfast'))
     say('registry: %d configurations (%d names not found)' % (len(REG), miss))
+    XN = set(); XL = {}; XI = []; XNEED = set(); xall = [0, 0]; xchild = {}
+    if os.environ.get('XREG'):          # cen54 round 54c: the 2026 set, kept apart from the registry
+        for l in open(os.environ['XREG']):
+            if l.strip(): XL[l.split()[0]] = l.rstrip('\n')
+        XR = [grow.kcline(l, 'xreg') for l in XL.values()]; XN = set(XL); REG = REG + XR
+        say('extra configurations %s: %d (containment only; not counted until our engines pass them)' % (os.environ['XREG'], len(XR)))
     eng = Engines(TSEC); T0 = time.time(); bc = {}; done_all = [0, 0]; child = {}
-    def children(cyl, EXp, SLp, LETp, full):
+    def children(cyl, EXp, SLp, LETp, full, child=child, tag=''):
         fl = [(EXp[x],) if x in EXp else LETp[x] for x in FOC]
         for ls in itertools.product(*fl):
             fx = {x: l for x, l in zip(FOC, ls) if x in SLp}
             sub = {x: ((fx[x],) if x in fx else LETp[x]) for x in SLp}; nb = prod(len(sub[x]) for x in SLp)
             nc = nb if full else count(cyl, SLp, sub); c = child.setdefault(ls, [0, 0]); c[0] += nc; c[1] += nb
-            if not full: say('  child %s: %d of %d covered (%.2f%%)' % (' '.join('%s=%d' % (sname(x), l) for x, l in zip(FOC, ls)), nc, nb, 100.0 * nc / nb))
+            if not full: say('  %schild %s: %d of %d covered (%.2f%%)' % (tag, ' '.join('%s=%d' % (sname(x), l) for x, l in zip(FOC, ls)), nc, nb, 100.0 * nc / nb))
     def regpart(EXp, SLp, LETp):
         P, pa, pf = structure(EXp, SLp, LETp); PT = prod(len(LETp[x]) for x in SLp)
         fix = {x: v for x, v in EXp.items() if x in LETS}
-        cyl = []; src = {}; inrow = []
+        cyl = []; src = {}; inrow = []; xreq = []; xs = collections.defaultdict(set); xin = set()
         for c in REG:
             for e in grow.embeddings(c, P, pa, pf, EXp):
                 req = {v: c[3][u] for u, v in e if v not in EXp}
-                if not req: inrow.append(c[0])
+                if not req and c[0] not in XN: inrow.append(c[0])
                 if all(l in LETp[x] and l != 9 for x, l in req.items()):
-                    k = tuple(sorted(req.items(), key=repr)); cyl.append(dict(req)); src.setdefault(k, c[0])
+                    k = tuple(sorted(req.items(), key=repr))
+                    if c[0] in XN: xreq.append(dict(req)); xs[k].add(c[0]); xin.add(c[0]); continue
+                    cyl.append(dict(req)); src.setdefault(k, c[0])
         cyl = minimal(cyl); n0 = count(cyl, SLp, LETp)
+        XI.append((minimal(xreq), xs, xin))
         return P, pa, pf, PT, fix, cyl, src, inrow, n0
+    def xpart(pi, cyl, n1, EXp, SLp, LETp, PT):
+        xmin, xs, xin = XI[pi]
+        cx = minimal(cyl + xmin); nx = count(cx, SLp, LETp); need = [c for c in cx if not covered(cyl, c)]
+        xall[0] += nx; xall[1] += PT
+        say('  2026 set: %d of its configurations fit this part (%d minimal requirements); with them %d of %d (%.2f%%), +%d over registry + windows; %d requirements only they supply' % (
+            len(xin), len(xmin), nx, PT, 100.0 * nx / PT, nx - n1, len(need)))
+        for c in need:
+            k = tuple(sorted(c.items(), key=repr)); sv = sorted(xs[k]); XNEED.update(sv)
+            sub = {x: ((c[x],) if x in c else LETp[x]) for x in SLp}
+            say('  nl %s | %s%s | adds %d' % (' '.join('%s=%d' % (sname(a), v) for a, v in sorted(c.items(), key=repr)) or '(none)',
+                ' '.join(sv[:4]), ' +%d' % (len(sv) - 4) if len(sv) > 4 else '', prod(len(sub[x]) for x in SLp) - count(cyl, SLp, sub)))
+        for lo, nm_ in ((6, 'every free slot >= 6'), (7, 'every free slot >= 7')):
+            sub = {x: tuple(l for l in LETp[x] if l >= lo) for x in SLp}; nb = prod(len(sub[x]) for x in SLp)
+            say('  with the 2026 set, fillings with %s: %d, uncovered %d (without it %d)' % (nm_, nb, nb - count(cx, SLp, sub), nb - count(cyl, SLp, sub)))
+        if FOC: children(cx, EXp, SLp, LETp, nx == PT, xchild, '2026 set ')
     SK = (lambda w: (w[6], w[1], w[0], w[2], w[3])) if os.environ.get('ORDER') == 'fives' else (lambda w: (w[6],) + w[:4])   # fives: more fives first, then fewer slots
     def enum(P, pa, fix, EXp, SLp, LETp):
         idx = {x: k for k, x in enumerate(P)}
@@ -299,6 +326,7 @@ def main():
         for c in cyl[:40]: say('  reg %s | %s' % (' '.join('%s=%d' % (sname(k), v) for k, v in sorted(c.items(), key=repr)) or '(none)', src[tuple(sorted(c.items(), key=repr))]))
         if n0 == PT:
             say('  all covered by the registry; no engine windows'); done_all[0] += PT; done_all[1] += PT
+            if XN: xpart(pi, cyl, PT, EXp, SLp, LETp, PT)
             if FOC: children(cyl, EXp, SLp, LETp, True)
             continue
         cand, nseen = CAND[pi]
@@ -330,6 +358,7 @@ def main():
                         cyl.append(dict(w[4])); kills.append((w, v)); ver[0] += 1; say('  kill %s ring %d %s' % (v, w[2], w[3]))
                 top()
         cyl = minimal(cyl); n1 = count(cyl, SLp, LETp); done_all[0] += n1; done_all[1] += PT
+        if XN: xpart(pi, cyl, n1, EXp, SLp, LETp, PT)
         say('  engines: %d windows run, %d skipped as covered, %d kills, %s; capped %s' % (nrun, nskip, len(kills),
             time.strftime('%H:%MZ', time.gmtime()), '%s (part cap %d s)' % (time.time() - T0 >= PCAP, PCAP)))
         say('  coverage: registry %d + windows -> %d of %d (%.2f%%); uncovered %d' % (n0, n1, PT, 100.0 * n1 / PT, PT - n1))
@@ -350,6 +379,13 @@ def main():
         dead = [k for k, c in child.items() if c[0] == c[1]]
         say('children (%s): %d of %d dead; by child, percent covered over all parts:' % (' '.join(sname(x) for x in FOC), len(dead), len(child)))
         for k in sorted(child): say('  %s %.2f%%%s' % (''.join(map(str, k)), 100.0 * child[k][0] / child[k][1], ' dead' if k in dead else ''))
+    if XN:
+        say('2026 set total: %d of %d fillings covered (%.2f%%), uncovered %d; %d of its configurations supply a requirement' % (
+            xall[0], xall[1], 100.0 * xall[0] / xall[1], xall[1] - xall[0], len(XNEED)))
+        if FOC:
+            dead = [k for k, c in xchild.items() if c[0] == c[1]]
+            say('2026 set children: %d of %d dead; %s' % (len(dead), len(xchild), ' '.join('%s %.2f%%' % (''.join(map(str, k)), 100.0 * c[0] / c[1]) for k, c in sorted(xchild.items()))))
+        if os.environ.get('XOUT'): open(os.environ['XOUT'], 'w').write(''.join(XL[n] + '\n' for n in sorted(XNEED)))
     say('# cen54 end %s' % time.strftime('%H:%MZ', time.gmtime()))
 
 if __name__ == '__main__':

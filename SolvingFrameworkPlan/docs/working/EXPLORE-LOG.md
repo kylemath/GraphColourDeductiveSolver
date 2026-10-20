@@ -1,5 +1,59 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 54c (20 Oct 2026, 04:02Z-): H-NL54, does the published 2026 set kill any survivor of 8666655/5677657?
+
+**Pre-registered 04:02Z, before any containment or engine run of this round.** Coordinator 03:56Z, from the user's
+literature points (point 1): search the public 2026 set (Inoue, Kawarabayashi, Miyashita, Mohar, Thomassen, Thorup,
+github.com/near-linear-4ct/reducible-configurations, MIT, HEAD c2ce7a96; 8,200 .conf files, already converted to kc
+lines in round 51 as `loop/k51/nl51_kc.txt`) for every configuration that sits inside the survivors of the last d7
+face binder, and list its 7-next-to-7 and triangle-of-7s shapes with ring size. The set is a map only: a
+configuration counts here only after kc -C and dfast/dfast18 (D) or cfast --fixed (C) pass it on our side, the same
+rule as round 44's RSST set, and anything admitted is proved by our engines and Lean.
+- **Tool** `loop/k53/cen54.py` with a new XREG option: the 2026 set is added to the registry for containment (same
+  matcher, letters 5..8 only, 9 never exact), each part reports its coverage with and without the 2026 set and every
+  minimal requirement that only a 2026 configuration supplies, and XOUT writes those configurations' names. Same frame
+  and settings as round 54b part 2 (14 slots, FOCUS 3,6, TORDER joint,single,6,3, RLOC 14, every window cached).
+  Then every 2026 configuration that supplies a requirement goes through kc -C -t 600, dfast (ring <= 16) or dfast18,
+  and cfast --fixed on a kc C (cen53's verdict rule, own cache `N54_*`), NW 3; the census is rerun with only the
+  confirmed ones. Shapes: `loop/k53/nl54c.py` counts the configurations with a 7-7 edge, a 7-7-7 triangle and a
+  7-5-5/5-5-5 kite (a 7 next to a face of three 5s), by ring size.
+- **Bars.** Round 54b's census: 86.68 percent of 6,103,515,625 fillings, part p41 >= 6 / apex 6-9 at 79.19 percent,
+  every filling with all free slots >= 7 uncovered, 0 of 25 children dead.
+- **Kill line.** No confirmed 2026 configuration covers a filling of the big part with all free slots >= 7: the set
+  does not reach this binder inside the frame, and the row stays on the rule side.
+- **Guess.** Kill line hit (80 percent). Round 51 found the set adds nothing to the face rows beyond our registry; the
+  all->= 7 box puts 7s and 8s in every free slot, and the set's 7-clusters need rings 14-18, which the frame's 3-ball
+  may not hold. Coverage of the whole row rises by under 1 point (70 percent).
+
+- **04:03-04:31Z, census with the 2026 set** (`loop/k53/cen54.py` XREG, log `loop/k53/cen54c_7_8666655_5677657.txt`;
+  the engine windows replay round 54b exactly from the cache). Configurations of the set that fit each part: 168, 158,
+  221 and 176. Eight supply a requirement that nothing of ours covers (`loop/k53/nl54c_need.txt`, md5
+  633fefa2d39feaba2b31f7659071f63c): nl0004_r8, and seven at ring 14 (nl2192, nl2974, nl2975, nl2976, nl2982, nl6210,
+  nl6741). All eight are D on kc -C and dfast (`loop/k53/nl54e.py`, `N54_res.txt`, 04:32Z), so they count.
+  - Part p41 = 5, apex 6-9: nl0004_r8 (a ring-8 5-6-5-6-5: w4 = 6 and s4 = 6 with their common fives w5 and p41,
+    plus s5) sits inside the fixed vertices, so it closes the part outright; round 54b had left 20,544 fillings there.
+    Our windows never tried it because round 54b only ran windows at the 7s.
+  - Part p41 >= 6, apex 6-9: 79.19 to 80.14 percent (+36,996,288). Of that, nl0004_r8 again gives +27,331,200 (with
+    tp41/s4 = 5 and apex 6), nl6741_r14 +7,908,864 (p01 = 6, p02 = 5, p03 = 6), and the other five +2.4 million between
+    them, all with a five in some slot.
+  - Fillings with every free slot >= 7: 4,782,969, uncovered 4,782,969 with or without the set. With every free slot
+    >= 6: 198,180,864 uncovered, with or without it.
+  - Whole row 86.68 to 87.29 percent; children 0 of 25 dead (84.24-94.20 to 85.00-94.31 percent).
+- **04:33Z, the same box one step wider** (`loop/k53/box54c.py`, containment only): add the ring-3 neighbours of s0,
+  s1 and s2 (6 more slots, 20 in all) and take the part with p11, p21, p31, p41 and the apex at 6-9. Box: round 54b's
+  14 slots at 7-9, the 6 new ones at 5-9 (74,733,890,625 fillings). The registry covers 3.36 percent, and every one of
+  its 11 box hits needs fives at the new slots on the far side (beside s1 and s2) plus p11 or p21 = 7. The 2026 set
+  covers 1.45 percent, all of it inside the registry's 3.36 (both together: 3.3636 percent, the same). Nothing of
+  either touches the lock at s3 and s6.
+- **Shapes** (`loop/k53/nl54c.py`, list `loop/k53/nl54c_shapes.txt`): of the 8,200 configurations, 6,882 have a 7,
+  3,795 a 7-7 edge (rings 10-18, most at 14-15), 686 a 7-7-7 triangle (rings 12-18), 486 a cluster of four or more 7s
+  (rings 13-18), and 1,141 a 7 next to a 5-5-5 face (642 of them also with a 7-7 edge).
+- **04:34Z, verdict on H-NL54: the kill line is hit.** No configuration of the 2026 set covers a filling of the big part
+  with all free slots >= 7, and one ring wider it adds nothing the registry does not already have. The set's
+  7-clusters do not reach the lock at s3 and s6 inside this frame; the row stays on the rule side. Guess (kill line
+  hit, 80 percent): right; coverage up by under a point (70 percent): right, +0.61. Surprise: a ring-8 configuration
+  missing from our registry closes the p41 = 5 part, because round 54b had restricted the windows to the 7s.
+
 ## Round 54b (20 Oct 2026, 00:52Z-): H-S54, split and kill on the two d7 face binders left in the 11/75 cert
 
 **Pre-registered 00:52Z, before any engine window of this round.** Long Table 00:51Z: every non-face binder of Opus's

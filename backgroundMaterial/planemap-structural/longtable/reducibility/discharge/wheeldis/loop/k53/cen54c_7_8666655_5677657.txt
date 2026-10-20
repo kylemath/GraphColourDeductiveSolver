@@ -1,0 +1,312 @@
+# cen54 start 04:03Z: row 7 8666655/5677657, 14 slots p01 p02 p03 p11 p21 p31 p41 ts4/s5/s6 ts6 tp01/s6 tp31/s3 ts3 tp41/s3 tp41/s4, focus ts6 ts3, 6103515625 fillings in 4 parts (p41=5 ts4/s5/s6=5; p41=5 ts4/s5/s6=6-9; p41=6-9 ts4/s5/s6=5; p41=6-9 ts4/s5/s6=6-9), RMAX 16, KMAX 2, TSEC 600, cap 7200 s, registry /tmp/claude-0/-home-claude/e93ccb28-7843-5c35-aaad-eabd09ceeb9b/scratchpad/adm54p
+registry: 4229 configurations (2 names not found)
+extra configurations ../k51/nl51_kc.txt: 8200 (containment only; not counted until our engines pass them)
+part p41=5 ts4/s5/s6=5 (244140625 fillings): registry 12 inside the fixed vertices; 1 minimal requirements, covers 244140625 (100.00%) [f10_........55_........65 f11_.........55_.........65 f7_.....55_.....65]
+  reg (none) | rsst001_2o122
+  all covered by the registry; no engine windows
+  2026 set: 168 of its configurations fit this part (1 minimal requirements); with them 244140625 of 244140625 (100.00%), +0 over registry + windows; 0 requirements only they supply
+  with the 2026 set, fillings with every free slot >= 6: 16777216, uncovered 0 (without it 0)
+  with the 2026 set, fillings with every free slot >= 7: 531441, uncovered 0 (without it 0)
+part p41=5 ts4/s5/s6=6-9 (976562500 fillings): registry 0 inside the fixed vertices; 33 minimal requirements, covers 764118148 (78.25%)
+  reg p21=5 | rsst100_126o22326
+  reg p11=5 | rsst101_126o25866
+  reg p11=6 | rsst109_126o36666
+  reg p01=5 | rsst539_7580o8163
+  reg tp41/s3=5 tp41/s4=5 | rsst002_3o442802
+  reg tp41/s3=5 tp41/s4=6 | rsst005_3o1306802
+  reg tp41/s4=6 ts4/s5/s6=6 | rsst006_2o7566
+  reg ts4/s5/s6=6 ts6=5 | rsst025_122o126
+  reg p31=5 tp41/s3=5 | rsst032_122o7566
+  reg p31=5 tp31/s3=5 | rsst032_122o7566
+  reg p31=6 tp31/s3=5 | rsst046_126o7566
+  reg p31=5 tp41/s4=5 | rsst054_126o191
+  reg ts4/s5/s6=7 ts6=5 | rsst116_0o211701722
+  reg p02=5 p03=5 | rsst417_7322o8406
+  reg p01=6 tp01/s6=5 | f8_..567576_....555.
+  reg tp31/s3=5 tp41/s3=5 ts3=5 | rsst023_122o122
+  reg tp31/s3=5 tp41/s3=5 ts3=6 | rsst025_122o126
+  reg tp31/s3=5 tp41/s3=6 ts3=5 | rsst025_122o126
+  reg tp41/s3=5 tp41/s4=7 ts4/s5/s6=6 | rsst031_122o368
+  reg tp01/s6=5 ts4/s5/s6=6 ts6=6 | rsst032_122o7566
+  reg tp41/s3=6 tp41/s4=5 ts3=5 | rsst047_0o82101962
+  reg p31=5 tp31/s3=6 ts3=5 | rsst058_126o453962
+  reg p31=5 tp41/s3=6 ts3=5 | rsst058_126o453962
+  reg p31=6 tp31/s3=6 ts3=5 | rsst075_126o453966
+  reg tp41/s3=7 tp41/s4=5 ts3=5 | rsst135_0o211701962
+  reg tp01/s6=5 ts4/s5/s6=7 ts6=6 | rsst139_126o207
+  reg tp41/s4=5 ts4/s5/s6=8 ts6=5 | rsst411_7563o136
+  reg tp41/s4=6 ts4/s5/s6=8 ts6=5 | rsst467_8402o368
+  reg p01=6 p02=6 p03=5 | f8_55667576_....55..
+  reg tp31/s3=5 tp41/s3=6 tp41/s4=5 ts3=6 | rsst033_126o128
+  reg p31=5 tp31/s3=6 tp41/s3=6 ts3=6 | rsst046_126o7566
+  reg p31=6 tp31/s3=6 tp41/s3=5 ts3=6 | rsst099_122o79077966
+  reg tp01/s6=5 tp41/s4=5 ts4/s5/s6=8 ts6=6 | rsst463_7682o380
+  engine windows: 23649 (connected subsets 1225783; by tier [(0, 2718), (1, 44), (2, 9025), (3, 2337), (4, 9525)]), by free slots [(1, 2314), (2, 21335)], by ring [(7, 1), (8, 11), (9, 66), (10, 203), (11, 503), (12, 1016), (13, 1861), (14, 3351), (15, 6024), (16, 10613)]
+  kill C{I0-I1} ring 14 g7_u.6.6655_5..765._......5....55.
+  kill C{I0-I1} ring 14 g7_u.6..655_5...65._......5....55.
+  kill C{I0-I1} ring 14 g7_u.6..655_5..765._......5....55.
+  kill C{I0-I3} ring 15 g7_-8...655_5...657_......5.5....5
+  kill C{I0-I3} ring 15 g7_-8...655_5...657_......5.55....
+  kill C{I0-I3} ring 15 g7_-8...655_5...657_..5...5.5.....
+  kill C{I0-I1} ring 15 g7_u.6..655_5..765._......5....5.5
+  kill C{I0-I1} ring 15 g7_u.6.6655_5..765._......5...55..
+  kill C{I0-I1} ring 15 g7_u.6..655_5..765._......5...55..
+  kill C{I0-I1} ring 15 g7_u.6.6655_5..765._.....55....5..
+  kill D ring 15 g7_u.666655_5..765._.....55....5..
+  kill C{I0-I3} ring 16 g7_-8...655_5...657_......5..5..5.
+  kill C{I0-I3} ring 16 g7_-8...655_5...657_.5....5.5.....
+  kill C{I0-I3} ring 16 g7_-8...655_5...657_......5.5...5.
+  kill C{I0-I3} ring 16 g7_-8...655_5..765._..5...5....5..
+  kill C{I0-I1} ring 16 g7_u.6..655_5..765._..5...5....5..
+  kill C{I0-I1} ring 16 g7_u.6.6655_5..765._..5...5....5..
+  kill C{I0-I1} ring 12 g7_u.6..655_5...65._......5......5
+  kill C{I0-I3} ring 13 g7_-8...655_5...65._..5...5.......
+  kill C{I0-I1} ring 13 g7_u.6..655_5...65._..5...5.......
+  kill C{I0-I3} ring 14 g7_-8...655_5...65._.5....5.......
+  kill C{I0-I1} ring 14 g7_u.6.6655_5...65._.....55.......
+  kill C{I0-I1} ring 14 g7_u.6..655_5..765._......5.....5.
+  kill C{I0-I1} ring 14 g7_u.6.6655_5..765._......5.....5.
+  kill C{I0-I3} ring 15 g7_-8...655_5...657_......5..5....
+  kill C{I0-I3} ring 15 g7_-8...655_5...657_......5.5.....
+  kill C{I0-I1} ring 15 g7_u.6..655_5..765._......5....5..
+  kill C{I0-I1} ring 15 g7_u.6.6655_5..765._......5....5..
+  kill C{I0-I1} ring 16 g7_u.6..655_5..765._......5...56..
+  kill D ring 15 g7_u.666655_5..765._......5....5..
+  kill C{I0-I1} ring 11 g7_-....655_...765._......5...5...
+  kill C{I0-I1} ring 12 g7_-...6655_...765._......5...5...
+  kill C{I0-I1} ring 13 g7_-....655_...765._......5...57..
+  kill C{I0-I1} ring 11 g7_-....655_...765._......5.....6.
+  kill C{I0-I1} ring 12 g7_-....655_....657_......5.6.....
+  kill C{I0-I1} ring 12 g7_-....655_...765._......5.....7.
+  kill C{I0-I1} ring 12 g7_-....655_...765._......5....6..
+  kill C{I0-I1} ring 12 g7_-....655_...765._......5...6...
+  kill C{I0-I1} ring 12 g7_-...6655_...765._.....65.......
+  kill C{I0-I1} ring 12 g7_-....655_...765._.....65.......
+  kill D ring 12 g7_u...6655_...765._.....65.......
+  kill C{I0-I1} ring 13 g7_-....655_....657_......5.7.....
+  kill C{I0-I1} ring 13 g7_-....655_...765._......5.....8.
+  kill C{I0-I1} ring 13 g7_-....655_...765._......5....7..
+  kill C{I0-I1} ring 13 g7_-....655_...765._......5...7...
+  kill C{I0-I1} ring 13 g7_-...6655_...765._.....75.......
+  kill C{I0-I1} ring 13 g7_-....655_...765._.....75.......
+  kill C{I0-I1} ring 13 g7_u...6655_...765._.....75.......
+  kill C{I0-I1} ring 14 g7_-....655_....657_......5.8.....
+  kill C{I0-I1} ring 14 g7_-....655_...765._......5....8..
+  kill C{I0-I1} ring 14 g7_-....655_...765._......5...8...
+  kill C{I0-I1} ring 14 g7_-....655_...765._.....85.......
+  kill C{I0-I1} ring 14 g7_u...6655_...765._.....85.......
+  kill C{I0-I1} ring 14 g7_-...6655_...765._.....85.......
+  kill C{I0-I1} ring 12 g7_-....655_....657_......56.6....
+  kill C{I0-I1} ring 12 g7_-....655_....657_6.....56......
+  kill C{I0-I1} ring 13 g7_-....655_....657_......57.6....
+  kill C{I0-I1} ring 13 g7_-....655_....657_6.....5..6....
+  kill C{I0-I1} ring 13 g7_-....655_....657_......56.7....
+  kill C{I0-I1} ring 13 g7_-....655_....657_7.....56......
+  kill C{I0-I1} ring 13 g7_-....655_....657_6.....57......
+  kill C{I0-I1} ring 14 g7_-....655_....657_......58.6....
+  kill C{I0-I1} ring 14 g7_-....655_....657_......56.8....
+  kill C{I0-I1} ring 14 g7_-....655_....657_......57.7....
+  kill C{I0-I1} ring 14 g7_-....655_....657_6.....58......
+  kill C{I0-I1} ring 14 g7_-....655_....657_6.....5..7....
+  kill C{I0-I1} ring 14 g7_-....655_....657_7.....5..6....
+  kill C{I0-I1} ring 14 g7_-....655_....657_7.....57......
+  kill C{I0-I1} ring 14 g7_-....655_....657_8.....56......
+  2026 set: 158 of its configurations fit this part (1 minimal requirements); with them 976562500 of 976562500 (100.00%), +20544 over registry + windows; 1 requirements only they supply
+  nl (none) | nl0004_r8 | adds 20544
+  with the 2026 set, fillings with every free slot >= 6: 67108864, uncovered 0 (without it 20544)
+  with the 2026 set, fillings with every free slot >= 7: 1594323, uncovered 0 (without it 5346)
+  engines: 154 windows run, 7653 skipped as covered, 69 kills, 04:12Z; capped False (part cap 1297 s)
+  coverage: registry 764118148 + windows -> 976541956 of 976562500 (100.00%); uncovered 20544
+  child ts6=5 ts3=5: 39062500 of 39062500 covered (100.00%)
+  child ts6=5 ts3=6: 39062500 of 39062500 covered (100.00%)
+  child ts6=5 ts3=7: 39062500 of 39062500 covered (100.00%)
+  child ts6=5 ts3=8: 39062500 of 39062500 covered (100.00%)
+  child ts6=5 ts3=9: 39062500 of 39062500 covered (100.00%)
+  child ts6=6 ts3=5: 39062500 of 39062500 covered (100.00%)
+  child ts6=6 ts3=6: 39062500 of 39062500 covered (100.00%)
+  child ts6=6 ts3=7: 39062500 of 39062500 covered (100.00%)
+  child ts6=6 ts3=8: 39062500 of 39062500 covered (100.00%)
+  child ts6=6 ts3=9: 39062500 of 39062500 covered (100.00%)
+  child ts6=7 ts3=5: 39062500 of 39062500 covered (100.00%)
+  child ts6=7 ts3=6: 39062500 of 39062500 covered (100.00%)
+  child ts6=7 ts3=7: 39062500 of 39062500 covered (100.00%)
+  child ts6=7 ts3=8: 39062500 of 39062500 covered (100.00%)
+  child ts6=7 ts3=9: 39062500 of 39062500 covered (100.00%)
+  child ts6=8 ts3=5: 39062500 of 39062500 covered (100.00%)
+  child ts6=8 ts3=6: 39062500 of 39062500 covered (100.00%)
+  child ts6=8 ts3=7: 39062500 of 39062500 covered (100.00%)
+  child ts6=8 ts3=8: 39062500 of 39062500 covered (100.00%)
+  child ts6=8 ts3=9: 39062500 of 39062500 covered (100.00%)
+  child ts6=9 ts3=5: 39062500 of 39062500 covered (100.00%)
+  child ts6=9 ts3=6: 39062500 of 39062500 covered (100.00%)
+  child ts6=9 ts3=7: 39062500 of 39062500 covered (100.00%)
+  child ts6=9 ts3=8: 39062500 of 39062500 covered (100.00%)
+  child ts6=9 ts3=9: 39041956 of 39062500 covered (99.95%)
+  slot p01            uncovered by letter {5: 0, 6: 1536, 7: 4608, 8: 6912, 9: 7488}
+  slot p02            uncovered by letter {5: 0, 6: 5136, 7: 5136, 8: 5136, 9: 5136}
+  slot p03            uncovered by letter {5: 0, 6: 5136, 7: 5136, 8: 5136, 9: 5136}
+  slot p11            uncovered by letter {5: 0, 6: 0, 7: 6848, 8: 6848, 9: 6848}
+  slot p21            uncovered by letter {5: 0, 6: 5136, 7: 5136, 8: 5136, 9: 5136}
+  slot p31            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 20544}
+  slot ts4/s5/s6      uncovered by letter {6: 576, 7: 3072, 8: 6912, 9: 9984}
+  slot ts6            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 20544}
+  slot tp01/s6        uncovered by letter {5: 0, 6: 1536, 7: 4608, 8: 6912, 9: 7488}
+  slot tp31/s3        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 20544}
+  slot ts3            uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 20544}
+  slot tp41/s3        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 20544}
+  slot tp41/s4        uncovered by letter {5: 0, 6: 4992, 7: 5184, 8: 5184, 9: 5184}
+  fillings with every free slot >= 6: 67108864, uncovered 20544
+  fillings with every free slot >= 7: 1594323, uncovered 5346
+  uncovered set is NOT the product of its letters per slot (p01 in 6789 p02 in 6789 p03 in 6789 p11 in 789 p21 in 6789 p31 in 9 ts4/s5/s6 in 6789 ts6 in 9 tp01/s6 in 6789 tp31/s3 in 9 ts3 in 9 tp41/s3 in 9 tp41/s4 in 6789; box 49152)
+part p41=6-9 ts4/s5/s6=5 (976562500 fillings): registry 12 inside the fixed vertices; 1 minimal requirements, covers 976562500 (100.00%) [f10_........55_........65 f11_.........55_.........65 f7_.....55_.....65]
+  reg (none) | rsst001_2o122
+  all covered by the registry; no engine windows
+  2026 set: 221 of its configurations fit this part (1 minimal requirements); with them 976562500 of 976562500 (100.00%), +0 over registry + windows; 0 requirements only they supply
+  with the 2026 set, fillings with every free slot >= 6: 67108864, uncovered 0 (without it 0)
+  with the 2026 set, fillings with every free slot >= 7: 1594323, uncovered 0 (without it 0)
+part p41=6-9 ts4/s5/s6=6-9 (3906250000 fillings): registry 0 inside the fixed vertices; 29 minimal requirements, covers 2940126880 (75.27%)
+  reg p21=5 | rsst100_126o22326
+  reg p11=5 | rsst101_126o25866
+  reg p11=6 | rsst109_126o36666
+  reg p01=5 | rsst539_7580o8163
+  reg p41=6 tp41/s4=5 | rsst006_2o7566
+  reg ts4/s5/s6=6 ts6=5 | rsst025_122o126
+  reg p31=5 tp31/s3=5 | rsst062_3o3700806
+  reg p31=5 p41=6 | rsst072_2o1368366
+  reg ts4/s5/s6=7 ts6=5 | rsst116_0o211701722
+  reg p02=5 p03=5 | rsst417_7322o8406
+  reg p01=6 tp01/s6=5 | f8_..567576_....555.
+  reg p41=6 tp41/s4=6 ts4/s5/s6=6 | rsst018_2o79077962
+  reg tp01/s6=5 ts4/s5/s6=6 ts6=6 | rsst032_122o7566
+  reg p41=6 tp41/s3=5 ts3=5 | rsst052_122o431
+  reg p41=6 tp41/s3=6 ts3=5 | rsst073_126o431
+  reg p31=6 tp31/s3=5 ts3=5 | rsst087_3o3927606
+  reg p31=6 p41=6 tp31/s3=5 | rsst100_126o22326
+  reg tp01/s6=5 ts4/s5/s6=7 ts6=6 | rsst139_126o207
+  reg p41=7 tp41/s3=5 ts3=5 | rsst153_196o428
+  reg p31=5 p41=7 tp41/s3=5 | rsst183_126o8172
+  reg p41=7 tp41/s3=6 ts3=5 | rsst200_496o428
+  reg tp41/s4=5 ts4/s5/s6=8 ts6=5 | rsst411_7563o136
+  reg p01=6 p02=6 p03=5 | f8_55667576_....55..
+  reg p31=5 tp31/s3=6 tp41/s3=5 ts3=5 | rsst025_122o126
+  reg p41=6 tp31/s3=5 tp41/s3=6 ts3=6 | rsst101_126o25866
+  reg p41=7 tp31/s3=5 tp41/s3=5 ts3=6 | rsst186_126o26822
+  reg p41=7 tp31/s3=5 tp41/s3=6 ts3=6 | rsst233_546o389
+  reg tp01/s6=5 tp41/s4=5 ts4/s5/s6=8 ts6=6 | rsst463_7682o380
+  reg p41=8 tp41/s3=5 tp41/s4=5 ts3=5 | f8_...56675_....5.5.
+  engine windows: 12862 (connected subsets 667078; by tier [(0, 3004), (2, 5315), (3, 1701), (4, 2842)]), by free slots [(1, 729), (2, 12133)], by ring [(8, 6), (9, 42), (10, 110), (11, 236), (12, 489), (13, 960), (14, 1821), (15, 3325), (16, 5873)]
+  kill D ring 14 g7_u86..655_5...65._..5..........5
+  kill D ring 15 g7_u86..655_5...657_..5.....5.....
+  kill D ring 15 g7_u86..655_5...657_..5......5....
+  kill D ring 15 g7_u86.6655_5...65._..5..5........
+  kill D ring 12 g7_u...6655_...765._......6.....5.
+  kill C{I0-I3} ring 13 g7_u...6655_...7.5._.....6....5...
+  kill C{I0-I1} ring 13 g7_u...6655_...765._......7.....5.
+  2026 set: 176 of its configurations fit this part (62 minimal requirements); with them 3130452208 of 3906250000 (80.14%), +36996288 over registry + windows; 6 requirements only they supply
+  nl tp41/s4=5 ts4/s5/s6=6 | nl0004_r8 | adds 27331200
+  nl p01=6 p02=5 p03=6 | nl6741_r14 | adds 7908864
+  nl p31=6 tp31/s3=6 tp41/s3=5 ts3=5 | nl2974_r14 nl2982_r14 | adds 812640
+  nl p31=5 tp31/s3=6 tp41/s3=5 ts3=6 | nl2975_r14 nl2976_r14 | adds 795840
+  nl p41=6 tp01/s6=5 tp41/s4=6 ts4/s5/s6=8 ts6=5 | nl2192_r14 | adds 257760
+  nl p41=6 tp01/s6=5 tp41/s4=6 ts4/s5/s6=8 ts6=6 | nl6210_r14 | adds 257760
+  with the 2026 set, fillings with every free slot >= 6: 268435456, uncovered 198180864 (without it 198180864)
+  with the 2026 set, fillings with every free slot >= 7: 4782969, uncovered 4782969 (without it 4782969)
+  2026 set child ts6=5 ts3=5: 142348960 of 156250000 covered (91.10%)
+  2026 set child ts6=5 ts3=6: 140794816 of 156250000 covered (90.11%)
+  2026 set child ts6=5 ts3=7: 140485648 of 156250000 covered (89.91%)
+  2026 set child ts6=5 ts3=8: 140485648 of 156250000 covered (89.91%)
+  2026 set child ts6=5 ts3=9: 140485648 of 156250000 covered (89.91%)
+  2026 set child ts6=6 ts3=5: 126370816 of 156250000 covered (80.88%)
+  2026 set child ts6=6 ts3=6: 123018304 of 156250000 covered (78.73%)
+  2026 set child ts6=6 ts3=7: 122372944 of 156250000 covered (78.32%)
+  2026 set child ts6=6 ts3=8: 122372944 of 156250000 covered (78.32%)
+  2026 set child ts6=6 ts3=9: 122372944 of 156250000 covered (78.32%)
+  2026 set child ts6=7 ts3=5: 123948736 of 156250000 covered (79.33%)
+  2026 set child ts6=7 ts3=6: 120315424 of 156250000 covered (77.00%)
+  2026 set child ts6=7 ts3=7: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=7 ts3=8: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=7 ts3=9: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=8 ts3=5: 123948736 of 156250000 covered (79.33%)
+  2026 set child ts6=8 ts3=6: 120315424 of 156250000 covered (77.00%)
+  2026 set child ts6=8 ts3=7: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=8 ts3=8: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=8 ts3=9: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=9 ts3=5: 123948736 of 156250000 covered (79.33%)
+  2026 set child ts6=9 ts3=6: 120315424 of 156250000 covered (77.00%)
+  2026 set child ts6=9 ts3=7: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=9 ts3=8: 119616784 of 156250000 covered (76.55%)
+  2026 set child ts6=9 ts3=9: 119616784 of 156250000 covered (76.55%)
+  engines: 2957 windows run, 901 skipped as covered, 7 kills, 04:27Z; capped False (part cap 5902 s)
+  coverage: registry 2940126880 + windows -> 3093455920 of 3906250000 (79.19%); uncovered 812794080
+  child ts6=5 ts3=5: 142082080 of 156250000 covered (90.93%)
+  child ts6=5 ts3=6: 140495200 of 156250000 covered (89.92%)
+  child ts6=5 ts3=7: 140262640 of 156250000 covered (89.77%)
+  child ts6=5 ts3=8: 140262640 of 156250000 covered (89.77%)
+  child ts6=5 ts3=9: 140262640 of 156250000 covered (89.77%)
+  child ts6=6 ts3=5: 124797040 of 156250000 covered (79.87%)
+  child ts6=6 ts3=6: 121240240 of 156250000 covered (77.59%)
+  child ts6=6 ts3=7: 120733360 of 156250000 covered (77.27%)
+  child ts6=6 ts3=8: 120733360 of 156250000 covered (77.27%)
+  child ts6=6 ts3=9: 120733360 of 156250000 covered (77.27%)
+  child ts6=7 ts3=5: 122205040 of 156250000 covered (78.21%)
+  child ts6=7 ts3=6: 118345840 of 156250000 covered (75.74%)
+  child ts6=7 ts3=7: 117800080 of 156250000 covered (75.39%)
+  child ts6=7 ts3=8: 117800080 of 156250000 covered (75.39%)
+  child ts6=7 ts3=9: 117800080 of 156250000 covered (75.39%)
+  child ts6=8 ts3=5: 122205040 of 156250000 covered (78.21%)
+  child ts6=8 ts3=6: 118345840 of 156250000 covered (75.74%)
+  child ts6=8 ts3=7: 117800080 of 156250000 covered (75.39%)
+  child ts6=8 ts3=8: 117800080 of 156250000 covered (75.39%)
+  child ts6=8 ts3=9: 117800080 of 156250000 covered (75.39%)
+  child ts6=9 ts3=5: 122205040 of 156250000 covered (78.21%)
+  child ts6=9 ts3=6: 118345840 of 156250000 covered (75.74%)
+  child ts6=9 ts3=7: 117800080 of 156250000 covered (75.39%)
+  child ts6=9 ts3=8: 117800080 of 156250000 covered (75.39%)
+  child ts6=9 ts3=9: 117800080 of 156250000 covered (75.39%)
+  slot p01            uncovered by letter {5: 0, 6: 173324928, 7: 213156384, 8: 213156384, 9: 213156384}
+  slot p02            uncovered by letter {5: 147411168, 6: 162558816, 7: 167608032, 8: 167608032, 9: 167608032}
+  slot p03            uncovered by letter {5: 75738240, 6: 184263960, 7: 184263960, 8: 184263960, 9: 184263960}
+  slot p11            uncovered by letter {5: 0, 6: 0, 7: 270931360, 8: 270931360, 9: 270931360}
+  slot p21            uncovered by letter {5: 0, 6: 203198520, 7: 203198520, 8: 203198520, 9: 203198520}
+  slot p31            uncovered by letter {5: 108804000, 6: 148708800, 7: 185093760, 8: 185093760, 9: 185093760}
+  slot p41            uncovered by letter {6: 124669920, 7: 189193920, 8: 248636160, 9: 250294080}
+  slot ts4/s5/s6      uncovered by letter {6: 175175520, 7: 182478720, 8: 223451520, 9: 231688320}
+  slot ts6            uncovered by letter {5: 77884800, 6: 173012640, 7: 187298880, 8: 187298880, 9: 187298880}
+  slot tp01/s6        uncovered by letter {5: 104346720, 6: 177111840, 7: 177111840, 8: 177111840, 9: 177111840}
+  slot tp31/s3        uncovered by letter {5: 109154880, 6: 175369440, 7: 176089920, 8: 176089920, 9: 176089920}
+  slot ts3            uncovered by letter {5: 147755760, 6: 164477040, 7: 166853760, 8: 166853760, 9: 166853760}
+  slot tp41/s3        uncovered by letter {5: 97823040, 6: 164477040, 7: 183498000, 8: 183498000, 9: 183498000}
+  slot tp41/s4        uncovered by letter {5: 117561600, 6: 168330720, 7: 175633920, 8: 175633920, 9: 175633920}
+  fillings with every free slot >= 6: 268435456, uncovered 198180864
+  fillings with every free slot >= 7: 4782969, uncovered 4782969
+  uncovered set is NOT the product of its letters per slot (p01 in 6789 p02 in 56789 p03 in 56789 p11 in 789 p21 in 6789 p31 in 56789 p41 in 6789 ts4/s5/s6 in 6789 ts6 in 56789 tp01/s6 in 56789 tp31/s3 in 56789 ts3 in 56789 tp41/s3 in 56789 tp41/s4 in 56789; box 1500000000)
+total: 5290701001 of 6103515625 fillings covered (86.68%), uncovered 812814624
+children (ts6 ts3): 0 of 25 dead; by child, percent covered over all parts:
+  55 94.20%
+  56 93.55%
+  57 93.45%
+  58 93.45%
+  59 93.45%
+  65 87.12%
+  66 85.66%
+  67 85.45%
+  68 85.45%
+  69 85.45%
+  75 86.06%
+  76 84.47%
+  77 84.25%
+  78 84.25%
+  79 84.25%
+  85 86.06%
+  86 84.47%
+  87 84.25%
+  88 84.25%
+  89 84.25%
+  95 86.06%
+  96 84.47%
+  97 84.25%
+  98 84.25%
+  99 84.24%
+2026 set total: 5327717833 of 6103515625 fillings covered (87.29%), uncovered 775797792; 8 of its configurations supply a requirement
+2026 set children: 0 of 25 dead; 55 94.31% 56 93.67% 57 93.54% 58 93.54% 59 93.54% 65 87.76% 66 86.39% 67 86.12% 68 86.12% 69 86.12% 75 86.77% 76 85.28% 77 85.00% 78 85.00% 79 85.00% 85 86.77% 86 85.28% 87 85.00% 88 85.00% 89 85.00% 95 86.77% 96 85.28% 97 85.00% 98 85.00% 99 85.00%
+# cen54 end 04:31Z
