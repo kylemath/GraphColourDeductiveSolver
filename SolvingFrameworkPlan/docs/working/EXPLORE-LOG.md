@@ -1,5 +1,35 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
+
+**Pre-registered 08:43Z, before any containment or engine run of this round.** Long Table 08:41Z: with rpatN (round 55's 35
+configurations fed in through u; Opus 4da3d055, `loop/opus/P_own_lp/s39o/run_n/cert_q39nL.json`, 636/5071 <= t* <=
+0.125956 on A67, one engine) the binders move to d8 and d10 rows. 13 receiverR2 rows, |w| 0.234865, none seen before
+(canon_key against every row in this log and in loop/k4*/k5* row files): d10 6556565565/6566669666 (23.5 percent),
+then 75566556/86666965, 85565856/65666565, 86567565/55568555, d7 8586566/6555565 and d10 6556565565/6566668666 (11.2
+percent each), and 7 smaller (`loop/k56/rows56.txt`).
+- **Part 1, containment** (`loop/k55/row55.py`, then `sites55.py`): A67's registry and the whole 2026 set, each hit marked
+  with its round 54d verdict (rings 6-14 all D; ring 15 under way, now on one worker). A hit by a configuration not yet
+  run is run ahead on our engines. Hits that avoid u are listed apart, since rpatN only matches through u.
+- **Part 2, kill sweep** (round 54's queue, `loop/k47/q54.py` logic as `loop/k56/q56.py`): win45 windows in each row's
+  1.5-ball, drive45 (kc -C -t 600, dfast, cfast --fixed) on ring <= 14 only, NW 2 beside round 54d, rows by |w|;
+  minkill47 on the kills; a row with no kill at ring <= 14 sends its ring 15-18 windows to Studio. Kills go to Long
+  Table as admissions (twoeng-ready files).
+- **Hypothesis.** Most of the 13 die at ring <= 14: every non-face row so far died at ring 12-14 (rounds 50-54), and
+  none of these has the 5-5-5 face shape. **Kill line:** fewer than half of the |w| dies at ring <= 14.
+- **Guess.** Part 1 finds no hit through u (rpatN already took those), and at most 2 rows with a hit by a configuration
+  confirmed after rpatN or one that avoids u (60 percent). Part 2: at least 10 of the 13 die at ring <= 14 (65
+  percent); the d10 rows die at ring 12-13, like the two d10 binders of round 50.
+
+- **08:44Z, part 1: 5 of the 13 rows hold a 2026 configuration, all through u** (`loop/k56/row56.txt`,
+  `loop/k56/sites56.txt`): 86567565/55568555 and 85658656/65555555 (nl1683_r12, nl7047_r13, nl7089_r13), d7
+  8586566/6555565 (nl5571_r12), 85658655/65555666 (nl5226_r13, nl7047_r13), 85555856/65856665 (nl2606_r13). These are 6
+  configurations, all D on both engines (`loop/k56/row56_hits_kc.txt`), none among round 55's 35, and they carry 32.5
+  percent of the |w| (0.076251 of 0.234865). No registry hit, and no hit that avoids u. The guess (no hit through u)
+  was wrong: rpatN took only the 35, so the next rows are hit by others. The confirmed list so far (6,052 D, rings
+  6-15 in part) is in `loop/k56/nl54d_confirmed_D_kc.txt` for a full rpatN intake. The 8 rows left (67.5 percent of the
+  |w|) go to part 2.
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
