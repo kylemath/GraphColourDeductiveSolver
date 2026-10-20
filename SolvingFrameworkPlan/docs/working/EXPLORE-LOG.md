@@ -65,6 +65,11 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   `loop/k47/r56f_kills*` (1cb4c561). Admission head adm56f on 387326d2, regression byte-identical: +10 D (10 names),
   `loop/k56/adm56f/` (12:00Z).
 
+- **12:05Z, r56g (d10 6565656565/6666666666, 1.9 percent): no kill at ring <= 14** (adm56f admitted at eb3813b4). All
+  1,470 ring <= 14 windows were run (11:59-12:05Z; many replayed from the cache). The row is the alternating 6-5 d10
+  wheel with every s = 6. Its 15,292 ring 15-18 windows (1,547 at 15, 3,120 at 16, 4,825 at 17, 5,800 at 18) are in
+  `loop/k47/win52_10_6565656565_6666666666_todo.txt` (md5 00668f512330fe42bccc1886cf21f399, 3838695a) for Studio (12:07Z).
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
