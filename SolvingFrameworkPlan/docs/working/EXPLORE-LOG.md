@@ -1,5 +1,40 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
+
+**Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
+l3q-only cert on registry A67 (main 2c97e14d, 2,555 D / 1,097 C; 0.127123 <= t* <= 0.128958, one engine) has 45
+receiverR2 binders (Opus 93b85890, `loop/opus/P_own_lp/s33z/run_A67/cert_q66L.json`); 8666655/5677657 no longer binds
+(slack 0.078). Round 54c's ring-8 surprise says the 2026 set holds small D configurations that RSST's 633 lacks, and
+Long Table means to feed the confirmed set into the LP as raw patterns (round 54d). This round previews that: which
+binders the set kills outright.
+- **Tool** `loop/k55/row55.py`: for each binder row, cen54's frame with no slots (u, the link and the second ring,
+  exact vertices only, letter 9 never exact); containment (round 42/44 matcher) of A67's registry (as fam51: RSST 582
+  plus the k3x names) and of the 2026 set. A hit means the configuration sits wholly inside the row's 1.5-ball. Each
+  2026 hit is marked with its round 54d verdict if it has one. One core, while round 54d runs on two.
+- **Bar.** A67's registry has no hit in any binder (the LP would not use a row that holds a registry configuration).
+- **Hypothesis / kill line.** At least one of the 45 binders holds a 2026 configuration. Kill line: none does, so the
+  set can only reach these rows one ring out, through the privates.
+- **Guess.** Kill line hit (70 percent): round 51 found no row hits in three face rows, and the binders are rows the
+  LP keeps exactly because nothing small sits inside them.
+
+- **06:24Z, run** (`loop/k55/row55.py`, 37 s; rows `loop/k55/rows45_A67.txt`; result `loop/k55/row55_A67.txt`). 27 of
+  the 45 binders hold a 2026 configuration wholly inside their 1.5-ball: 35 distinct configurations at rings 8-15
+  (`loop/k55/row55_hits_kc.txt`). All 35 are D on kc -C and dfast: 31 from round 54d's run, plus 4 (nl4516_r15,
+  nl7091_r14, nl7546_r14, nl8104_r14) run ahead at 06:25Z. The 27 rows carry 0.198798 of the 0.372122 receiver |w|
+  (53.4 percent). Not hit: the top binder 7766556/6576576 (19 percent), its siblings 7766556/6566576 and
+  7766556/6567566, 7766555/6566959, 7665567/5765765, 9656775/5556655, 7665566/6675676, and 11 others. On the d7 rows
+  the configuration uses u itself. For example, 7576565/7557766 holds nl0278_r11 = u, w1..w4, s1, s2 (degrees 7, 5,
+  7, 6, 5, 5, 5; `loop/k55/row55_emb_samples.txt`).
+- **The bar failed on one row.** A67's registry hits the d12 binder 555555555555/757575757575 seven times
+  (f7_.....55_....575, f10_........55_.......575, f11_...; for instance a 7 at s0 with its fives w0, w1, s1, s11).
+  None of these configurations uses u. Either the LP's admissibility check only looks at configurations through u,
+  or the matchers differ: a question for Opus. The other 44 rows have no registry hit.
+- **06:28Z, verdict on H-NLROW: the hypothesis holds (27 of 45), the kill line is not hit; the guess (70 percent on the
+  kill line) was wrong.** RSST's 633 and our k3x names miss small configurations that the 2026 set has, around u and
+  its link. Once Studio's rpatD route takes in the two-engine list (round 54d), these 27 rows should leave the LP,
+  provided its pattern match looks at the whole 1.5-ball.
+
 ## Round 54d (20 Oct 2026, 04:37Z-): H-NL95, do our two engines confirm the published 2026 set?
 
 **Pre-registered 04:37Z, before any engine run of this round.** Long Table 04:35Z (in place of round 53b, stopped
