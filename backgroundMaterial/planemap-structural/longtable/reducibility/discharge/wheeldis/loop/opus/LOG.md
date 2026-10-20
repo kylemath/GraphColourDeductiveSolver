@@ -763,3 +763,24 @@ our agent R and have no output from it.
   - Moving the face rows needs a transfer out of the face 7, or exact letters.
 - No solve was run: step 4 is gated on the kill line. CPU: nice 10, threads 1. s42a was untouched. RSST 2.126 and
   8406.123 are absent (no new patterns).
+
+## Round s44: fb (face big → its k-vertex), spec + build + pricing on the A74 cert: KILL LINE PASSED (fb6 = 7→6)
+- Spec first: `P_own_lp/s44/RELAY_SPEC_s44.md` (sha def18bc8), results in §44.7.
+  - Only the k-vertices w_{i−1} and w_{i+2} of a face (w_i, w_{i+1}, s_i) are neighbours of u that read the whole face,
+    so the transfer goes there.
+  - The key σ = (U, X, side tuples (c, a, b, e)) has e unmasked only at a five and needs a face side. It is exact at
+    both ends, so no mrow is needed.
+  - fb6: payee a 6, credit in cons2. fb7: payee a big, credit in its receiver row. Both are window-local, and the
+    jsep binaries are unchanged.
+  - The relation to l3q, e87, x, v6 and fy is in §44.5.
+- Engine `s44/eng` = s43/eng + `port_fb.py`, flags `fb` and `fbdir=6|7|67`.
+- Controls:
+  - fb off on A74: lower VALID 20/183 (byte-identical log), upper FEASIBLE 1/9.
+  - `phys44.py`: 167,586 pairs (63,518 with a face), 0 mismatches. The broken slot map mismatches 58,051.
+  - `sepfb44chk.py`: window 6,312 rows and cons2 198,800 (L, s), 0 mismatches.
+- Pricing against cert_q39n3A74L:
+  - **fb7 touches no cert row**, since every face row's k-vertices are 6s.
+  - **fb6 has 8 negative columns. 4 touch face rows, and all 5 face rows are covered:** −18/183 (6567566),
+    −10/183 (6567566, 6675676), −10/183 (6566576, 6576576), −1/183 (6775676).
+  - First-order gain at cap 0.05: 0.0150 (face columns 0.0107). At cap 0.1: 0.0301 (face columns 0.0213).
+- Not solved; reported first as asked. nice 10, threads 1, and s42a untouched. RSST 2.126 and 8406.123 absent.

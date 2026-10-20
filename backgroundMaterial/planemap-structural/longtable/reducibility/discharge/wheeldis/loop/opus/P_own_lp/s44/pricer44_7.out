@@ -1,0 +1,15 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10264, 8: 6166, 9: 3519, 10: 1413, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17685, 'C': 2202, 'RPAT': 158, 'RPATN': 2080}
+rows by type: {'senderR2': 15, 'cons2': 101, 'mrowL': 5, 'mrowR2': 29, 'receiverR2': 10}
+LOWER-R2: VALID  t >= 20/183 = 0.109289617  (160 rows)
+
+fb (fbdir=7) against cert_q39n3A74L.json: fb keys in cert rows 0; negative fb columns 0; other negative columns 0 []
+every fb key in a cert row, with rc and rows:
+FACE row R 7 7665566 6775676: fb keys []
+FACE row R 7 7766556 6566576: fb keys []
+FACE row R 7 7766556 6567566: fb keys []
+FACE row R 7 7766556 6576576: fb keys []
+FACE row R 7 7665566 6675676: fb keys []
+KILL LINE (fbdir=7): NOT passed; negative fb columns touching a face row: 0 of 0
+first-order gain at cap 0.05: all fb 0.000000, face-touching fb 0.000000
+first-order gain at cap 0.1: all fb 0.000000, face-touching fb 0.000000

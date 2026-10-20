@@ -148,3 +148,52 @@ rc = −(Σ_rows w · coef) / tco ≥ 0, summed over the cert's receiverR2 and c
 - For each negative column it lists the cert rows it touches.
 - **Kill line:** some column with rc < 0 has a nonzero coefficient in one of the 5 face rows.
 - **Gain:** first-order, Σ max(0, −rc)·cap at caps 0.05 and 0.1, both for all columns and for the face-row columns only.
+
+## 44.7 Results (written after the runs; the spec above was committed first, def18bc8)
+
+**Engine.** `s44/eng` = `s43/eng` + `s44/port_fb.py`. md5s are in `s44/engine_src_md5.txt`. jsep binaries are unchanged
+from s43.
+
+**Control (a): fb off, A74.**
+- lowerR2 on cert_q39n3A74L: **VALID 20/183**, log byte-identical to `s39o/run_n3_A74/lower.log`.
+- upperR2 nomax on sol_q39n3A74: **FEASIBLE 1/9**, identical modulo timings (`ctl_*_off.log`).
+
+**Control (b).**
+- **`phys44.py` (`phys44.log`):** explicit rotation systems. The independent key is read from vertex identities, as
+  common neighbours from every rotation that holds the pair, and compared with the engine's payer key (u's row, random
+  orientation) and payee key (X's own row, random orientation, plus cons2_coef for a 6).
+  - **167,586 (u, X) pairs, 63,518 with a face side (31,761 six payees, 31,757 big payees): 0 mismatches.**
+  - Broken control (payee read with the payer's slot map): 58,051 of 63,518 mismatch.
+- **`sepfb44chk.py` (`sepfb44chk.log`):** with random fb values, the window terms (separator output at d = 7, 8, 9, and
+  random rows summed over the window) were checked against recv_coef_R2, **6,312 rows, 0 mismatches**. cons2_delta was
+  checked against cons2_coef, **198,800 (L, s), 0 mismatches**.
+
+**Pricing (`pricer44.py`; `pricer44_6.out`, `pricer44_7.out`, `pricer44_67.out`; exact via the engine's lowerR2, with no
+row split).**
+- **fb7 (fbdir=7): no fb7 key occurs in any cert row**: no rc < 0 and nothing touches a face row. Every face row's
+  k-vertices are 6s.
+- **fb6 (fbdir=6) and both together (fbdir=67) are identical:** 8 negative columns, 4 of them on face rows.
+  **KILL LINE PASSED by fb6.**
+
+  | fb6 key σ = (U, X, T_min, T_max) | rc | cert rows |
+  |---|---|---|
+  | (7,6, 5655, 7670) | **−18/183** | 7766556/6567566 (face) |
+  | (7,6, 5755, 6670) | **−10/183** | 7766556/6567566, 7665566/6675676 (face); cons2 576667/575575 (w −5/183, ×2) |
+  | (7,6, 5755, 7670) | **−10/183** | 7766556/6566576, 7766556/6576576 (face); cons2 577677/577775 (w −1/61, ×2) |
+  | (7,6, 5755, 6770) | −1/183 | 7665566/6775676 (face); cons2 576767/577775 |
+  | (9,6, 5655, 7550) | −8/183 | cons2 only (556597, 567579 ×2) |
+  | (8,6, 5655, 7550) | −4/183 | cons2 556587/555555 |
+  | (9,6, 5655, 9550) | −2/183 | cons2 566599/555555 |
+  | (7,6, 5555, 9670) | −2/183 | cons2 556697/555775 |
+
+  All 5 face rows carry at least one negative column. 7766556/6567566 carries two (−18/183 and −10/183).
+- **First-order gain Σ max(0, −rc)·cap:**
+
+  | cap | all fb6 columns | face-row columns only |
+  |---|---|---|
+  | 0.05 | 0.0150 | 0.0107 |
+  | 0.1 | 0.0301 | 0.0213 |
+
+  These are dual-side estimates at the current cert, not a new bound.
+
+**Step 4: no solve was run.** As asked, it is reported first.
