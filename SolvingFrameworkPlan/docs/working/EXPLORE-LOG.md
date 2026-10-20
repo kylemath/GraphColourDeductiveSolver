@@ -36,6 +36,11 @@
   (18:13-18:21Z) gave 3 kills, 3 f-names, all D; the minimal one is f7_..65666_..66.5. (ring 13). Files
   `loop/k47/r57b_kills*` (757968f3). Admission head adm57b on 05f86461, regression byte-identical: +3 D (3 names),
   `loop/k57/adm57b/`.
+- **18:53Z, r57c (d10 6565665656/6556565565, 5/183): no kill at ring <= 14** (adm57b admitted at ff24fa64). All 2,120
+  ring <= 14 windows ran (18:21-18:52Z). Unlike r56g's alternating wheel, the link has two 6-6 steps, so r56g's ring-15
+  kills do not fit. Its 15,783 ring 15-18 windows (2,900 at 15, 5,802 at 16, 5,120 at 17, 1,961 at 18; the whole
+  wheel is ring 16) are in `loop/k47/win52_10_6565665656_6556565565_todo.txt` (md5 31a7d98e0053a5206669992f5f856195,
+  3b6b0676) for Studio.
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
