@@ -610,3 +610,28 @@ our agent R and have no output from it.
 - **0.12712 ≤ t* ≤ 0.12896, one engine.** Down from [11/75, 0.14779], because explore's r54 kills removed the old binders.
 - 8666655/5677657 does not bind: no dual, slack 0.078.
 - Top binder is face-7 7766556/6576576 at −0.071 (19% of receiver weight). Next come d7 7666655, 7667565, 7656666, 7766555, 7665567, 9656775, 8666565 and d9 755666556, each at about −0.016.
+
+## s33z stacked (l3q + zh + ZR + hatrr + l6r + pcell k3p #1 [E2 guard]) on A67 (main 2c97e14d, 2,555 D / 1,097 C), 20 Oct 07:25Z — keeppen xpen=1e-3
+- keeppen converged at iter 9 after a warm restart: UPPER-R2 FEASIBLE at t = 0.125836450687.
+  - Run 1 hit its 3 h cap when the iter-17 simplex stalled. New option `lpmax`: past the limit, re-solve with IPM, then simplex.
+  - Solution sol_s33 is 5ecddc80. Every column is ≤ 0.85; the families z, zr, rr, lq and z6 are each ≤ 0.055.
+- nosep (IPM + simplex polish): LOWER-R2 VALID at t ≥ 0.103861775 (cert_s33L 6811771a, 1,718 rows, exact fraction 2336/2337 digits).
+  - Priced with `ucap=100`: 372 uncapped columns at about 1e-11 noise are priced at a cap of 100, costing 5.3e-9 in total.
+  - The claim is therefore for the family with every column ≤ 100; the largest value in use is 0.85.
+- **0.10386 ≤ t* ≤ 0.12584, one engine, A67. The gap is the x-penalty.**
+  - xpen = 1e-3 on x, D, lq, z, zr, rr and z6, all capped at 3.
+  - Running now: keeppen at xpen = 1e-5, warm (s33z/k2_A67.sh), then nosep, lower and upper again.
+- l3q-only on the same head (entry above): [0.127123, 0.128958]. The stacked upper is 0.003121 below the l3q-only upper.
+- e87 re-priced against this cert (s33z/e87/A67, pricer38s = s38e pricer on the s33z engine, masks rebuilt on A67, 31 d7 payee rows).
+  - Best composite rc and projected gain at cap 1/2:
+
+    | Family | Variant | rc | gain ≤ |
+    |---|---|---|---|
+    | E1 | (control, = engine x) | ≈ 0 | — |
+    | E2 | full | −0.008554 | 0.0043 |
+    | E2 | win | −0.006066 | 0.0030 |
+    | E3 | full | −0.010092 | 0.0050 |
+    | LG8 | full | −0.000028 | 0 |
+  - Controls: E1 against x gives 0 mismatches; the physical test gives 0.
+  - No composite touches 8666655. That row is in this cert only as payee 8666655/7777666, with dual 1634/5844141 ≈ 2.8e-4. There is no K2 relief to take.
+  - To be re-priced on the xpen = 1e-5 cert before any e87 port.

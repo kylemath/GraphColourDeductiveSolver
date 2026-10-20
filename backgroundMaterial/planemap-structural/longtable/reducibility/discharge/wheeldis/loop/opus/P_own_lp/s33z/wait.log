@@ -22,3 +22,9 @@ warm: /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-struct
 06:18:19Z [A67] K run 1 timed out (3 h; iter 16 t=0.125794, iter 17 LP stalled >75 min). Added lpmax=1500 (simplex time limit -> IPM+simplex). Re-run resume warm.
 06:18:19Z [A67] resume_s33 start (pid 9990)
 06:18:19Z [A67] K keeppen start, warm 8 files
+07:15:44Z [A67] K converged: iter 9 t=0.125836450687 rows 94779 cols 
+07:24:26Z [A67] L: LOWER-R2: VALID  t >= 43309043274743368251081005902952777835677693348847887025252284570760 | UPPER-R2: FEASIBLE at t = 0.125836450687
+07:26:01Z [A67] K2 (xpen=1e-5) start
+07:27:32Z [A67] e87 pricing done: 227 lines
+08:37:51Z [A67] K2 restarted with lpmax=60 (simplex wasted 25 min/iter before IPM; IPM+crossover ~2 min); iters 0-1 rows kept as rows_s33_rK2a
+08:37:51Z [A67] K2 (xpen=1e-5) start
