@@ -1,0 +1,107 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9702, 8: 5110, 9: 2941, 10: 1142, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17437, 'C': 2056, 'RPAT': 158}
+cert /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/cert_s28A62L.json rows 109 tco 1
+CONTROL flag-off reproduction: bound Dn/tco = 11/75, capped-column adjustment 0, total 11/75 = 0.146666667 (target 11/75: True); uncapped rc<0: 0
+EX x columns touched: 10; rc<0 (priced at cap 3): []
+   x keys into 7 from >= 8: [((8, 7, (5, 7, 5), (6, 5, 6)), '0'), ((8, 7, (6, 6, 5), (6, 6, 5)), '0'), ((8, 7, (5, 6, 6), (6, 5, 5)), '0'), ((8, 7, (6, 5, 5), (6, 7, 5)), '0'), ((8, 7, (5, 7, 5), (6, 6, 5)), '0')]
+   x keys 7 -> >= 8:        [((7, 8, (5, 5, 7), (6, 6, 5)), '0'), ((7, 8, (6, 5, 6), (6, 5, 6)), '0'), ((7, 8, (5, 6, 6), (6, 5, 5)), '0'), ((7, 8, (6, 5, 5), (6, 5, 7)), '0'), ((7, 8, (5, 5, 7), (6, 5, 6)), '0')]
+
+family variant  payer keys  payee items  best composite rc (key set)   single keys rc<0
+E1   none       5      7   0 = 0.000000  S=[('E1', 8, 7, (5, 7, 5), (6, 5, 6))]   neg singles 0
+      single ('E1', 8, 7, (5, 6, 6), (6, 5, 5)) rc 0 = 0.000000 payer rows ['R8 75666556/66666565 @w0'] payee rows ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3', 'R7 8556856/7565666 @w4']
+      single ('E1', 8, 7, (5, 7, 5), (6, 5, 6)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0'] payee rows ['R7 8666655/5677657 @w0']
+      single ('E1', 8, 7, (5, 7, 5), (6, 6, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6'] payee rows ['R7 8556856/7565666 @w0']
+      single ('E1', 8, 7, (6, 5, 5), (6, 7, 5)) rc 0 = 0.000000 payer rows ['R8 76765656/55556665 @w0', 'R8 76765656/55556665 @w2'] payee rows ['R7 8658656/7665555 @w0']
+E2   full       6      7   -1/25 = -0.040000  S=[('E2', 8, 7, (5, 7, 5, 5), (6, 5, 6, 6)), ('E2', 8, 7, (6, 5, 5, 5), (6, 7, 5, 5)), ('E2', 8, 7, (5, 6, 6, 6), (6, 5, 5, 6))]   neg singles 3
+      single ('E2', 8, 7, (5, 6, 6, 6), (6, 5, 5, 6)) rc -1/75 = -0.013333 payer rows ['R8 75666556/66666565 @w0'] payee rows ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3']
+      single ('E2', 8, 7, (5, 7, 5, 5), (6, 5, 6, 6)) rc -1/75 = -0.013333 payer rows ['R8 76556675/66665555 @w0'] payee rows []
+      single ('E2', 8, 7, (6, 5, 5, 5), (6, 7, 5, 5)) rc -1/75 = -0.013333 payer rows ['R8 76765656/55556665 @w2'] payee rows []
+      single ('E2', 8, 7, (5, 7, 5, 5), (6, 6, 5, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6'] payee rows ['R7 8556856/7565666 @w0']
+E2   win        6      7   -2/75 = -0.026667  S=[('E2', 8, 7, (6, 5, 5, 5), (6, 7, 5, 5)), ('E2', 8, 7, (5, 6, 6, 6), (6, 5, 5, 6))]   neg singles 2
+      single ('E2', 8, 7, (5, 6, 6, 6), (6, 5, 5, 6)) rc -1/75 = -0.013333 payer rows ['R8 75666556/66666565 @w0'] payee rows ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3']
+      single ('E2', 8, 7, (6, 5, 5, 5), (6, 7, 5, 5)) rc -1/75 = -0.013333 payer rows ['R8 76765656/55556665 @w2'] payee rows []
+      single ('E2', 8, 7, (5, 7, 5, 5), (6, 5, 6, 6)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0'] payee rows ['R7 8666655/5677657 @w0']
+      single ('E2', 8, 7, (5, 7, 5, 5), (6, 6, 5, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6'] payee rows ['R7 8556856/7565666 @w0']
+E2   none       6      7   0 = 0.000000  S=[('E2', 8, 7, (5, 7, 5, 5), (6, 5, 6, 6))]   neg singles 0
+      single ('E2', 8, 7, (5, 6, 6, 6), (6, 5, 5, 6)) rc 0 = 0.000000 payer rows ['R8 75666556/66666565 @w0'] payee rows ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3', 'R7 8556856/7565666 @w4']
+      single ('E2', 8, 7, (5, 7, 5, 5), (6, 5, 6, 6)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0'] payee rows ['R7 8666655/5677657 @w0']
+      single ('E2', 8, 7, (5, 7, 5, 5), (6, 6, 5, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6'] payee rows ['R7 8556856/7565666 @w0']
+      single ('E2', 8, 7, (6, 6, 5, 6), (6, 6, 5, 6)) rc 0 = 0.000000 payer rows ['R8 76656566/56655565 @w0'] payee rows ['R7 8658656/6665556 @w0']
+E3   full       6      7   -1/25 = -0.040000  S=[('E3', 8, 7, (5, 7, 5, 5, 6), (6, 5, 6, 6, 5)), ('E3', 8, 7, (6, 5, 5, 5, 6), (6, 7, 5, 5, 6)), ('E3', 8, 7, (5, 6, 6, 6, 6), (6, 5, 5, 6, 5))]   neg singles 3
+      single ('E3', 8, 7, (5, 6, 6, 6, 6), (6, 5, 5, 6, 5)) rc -1/75 = -0.013333 payer rows ['R8 75666556/66666565 @w0'] payee rows ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3']
+      single ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 5, 6, 6, 5)) rc -1/75 = -0.013333 payer rows ['R8 76556675/66665555 @w0'] payee rows []
+      single ('E3', 8, 7, (6, 5, 5, 5, 6), (6, 7, 5, 5, 6)) rc -1/75 = -0.013333 payer rows ['R8 76765656/55556665 @w2'] payee rows []
+      single ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 6, 5, 5, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6'] payee rows ['R7 8556856/7565666 @w0']
+E3   win        6      7   -2/75 = -0.026667  S=[('E3', 8, 7, (6, 5, 5, 5, 6), (6, 7, 5, 5, 6)), ('E3', 8, 7, (5, 6, 6, 6, 6), (6, 5, 5, 6, 5))]   neg singles 2
+      single ('E3', 8, 7, (5, 6, 6, 6, 6), (6, 5, 5, 6, 5)) rc -1/75 = -0.013333 payer rows ['R8 75666556/66666565 @w0'] payee rows ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3']
+      single ('E3', 8, 7, (6, 5, 5, 5, 6), (6, 7, 5, 5, 6)) rc -1/75 = -0.013333 payer rows ['R8 76765656/55556665 @w2'] payee rows []
+      single ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 5, 6, 6, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0'] payee rows ['R7 8666655/5677657 @w0']
+      single ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 6, 5, 5, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6'] payee rows ['R7 8556856/7565666 @w0']
+E3   none       6      7   0 = 0.000000  S=[('E3', 8, 7, (5, 7, 5, 5, 6), (6, 5, 6, 6, 5))]   neg singles 0
+      single ('E3', 8, 7, (5, 6, 6, 6, 6), (6, 5, 5, 6, 5)) rc 0 = 0.000000 payer rows ['R8 75666556/66666565 @w0'] payee rows ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3', 'R7 8556856/7565666 @w4']
+      single ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 5, 6, 6, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0'] payee rows ['R7 8666655/5677657 @w0']
+      single ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 6, 5, 5, 5)) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6'] payee rows ['R7 8556856/7565666 @w0']
+      single ('E3', 8, 7, (6, 6, 5, 6, 5), (6, 6, 5, 6, 5)) rc 0 = 0.000000 payer rows ['R8 76656566/56655565 @w0'] payee rows ['R7 8658656/6665556 @w0']
+LG8  full       6     14   0 = 0.000000  S=[('LG8', 8, 7, 6, 5, 5)]   neg singles 0
+      single ('LG8', 8, 7, 5, 6, 6) rc 0 = 0.000000 payer rows ['R8 75666556/66666565 @w0+1'] payee rows ['R7 8658656/6665556 @w3-', 'R7 8658656/7665555 @w3-', 'R7 8556856/7565666 @w4+']
+      single ('LG8', 8, 7, 5, 7, 6) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0-1', 'R8 76556675/66665555 @w6+1'] payee rows ['R7 8666655/5677657 @w0-', 'R7 8556856/7565666 @w0+']
+      single ('LG8', 8, 7, 6, 5, 5) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0+1', 'R8 75666556/66666565 @w0-1'] payee rows ['R7 8666655/5677657 @w0+', 'R7 8658656/6665556 @w3+', 'R7 8658656/7665555 @w3+', 'R7 8556856/7565666 @w4-']
+      single ('LG8', 8, 7, 6, 6, 5) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6-1', 'R8 76656566/56655565 @w0+1', 'R8 76656566/56655565 @w0-1'] payee rows ['R7 8658656/6665556 @w0+', 'R7 8658656/6665556 @w0-', 'R7 8556856/7565666 @w0-']
+LG8  win        6     14   0 = 0.000000  S=[('LG8', 8, 7, 6, 5, 5)]   neg singles 0
+      single ('LG8', 8, 7, 5, 6, 6) rc 0 = 0.000000 payer rows ['R8 75666556/66666565 @w0+1'] payee rows ['R7 8658656/6665556 @w3-', 'R7 8658656/7665555 @w3-', 'R7 8556856/7565666 @w4+']
+      single ('LG8', 8, 7, 5, 7, 6) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0-1', 'R8 76556675/66665555 @w6+1'] payee rows ['R7 8666655/5677657 @w0-', 'R7 8556856/7565666 @w0+']
+      single ('LG8', 8, 7, 6, 5, 5) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0+1', 'R8 75666556/66666565 @w0-1'] payee rows ['R7 8666655/5677657 @w0+', 'R7 8658656/6665556 @w3+', 'R7 8658656/7665555 @w3+', 'R7 8556856/7565666 @w4-']
+      single ('LG8', 8, 7, 6, 6, 5) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6-1', 'R8 76656566/56655565 @w0+1', 'R8 76656566/56655565 @w0-1'] payee rows ['R7 8658656/6665556 @w0+', 'R7 8658656/6665556 @w0-', 'R7 8556856/7565666 @w0-']
+LG8  none       6     14   0 = 0.000000  S=[('LG8', 8, 7, 5, 7, 6)]   neg singles 0
+      single ('LG8', 8, 7, 5, 6, 6) rc 0 = 0.000000 payer rows ['R8 75666556/66666565 @w0+1'] payee rows ['R7 8658656/6665556 @w3-', 'R7 8658656/7665555 @w3-', 'R7 8556856/7565666 @w4+']
+      single ('LG8', 8, 7, 5, 7, 6) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w0-1', 'R8 76556675/66665555 @w6+1'] payee rows ['R7 8666655/5677657 @w0-', 'R7 8556856/7565666 @w0+']
+      single ('LG8', 8, 7, 6, 6, 5) rc 0 = 0.000000 payer rows ['R8 76556675/66665555 @w6-1', 'R8 76656566/56655565 @w0+1', 'R8 76656566/56655565 @w0-1'] payee rows ['R7 8658656/6665556 @w0+', 'R7 8658656/6665556 @w0-', 'R7 8556856/7565666 @w0-']
+      single ('LG8', 8, 7, 6, 7, 6) rc 0 = 0.000000 payer rows ['R8 76765656/55556665 @w0+1', 'R8 76765656/55556665 @w2-1'] payee rows ['R7 8658656/7665555 @w0+']
+
+CONTROL E1 = engine x: every E1 key against x tau(U, 7, ...) rc
+   ('E1', 8, 7, (5, 7, 5), (6, 5, 6))  E1 rc 0  x(U->7) rc 0  | sign flip 0  x(7->U) rc 0
+   ('E1', 8, 7, (5, 7, 5), (6, 6, 5))  E1 rc 0  x(U->7) rc 0  | sign flip 0  x(7->U) rc 0
+   ('E1', 8, 7, (6, 6, 5), (6, 6, 5))  E1 rc 0  x(U->7) rc 0  | sign flip 0  x(7->U) rc 0
+   ('E1', 8, 7, (6, 5, 5), (6, 7, 5))  E1 rc 0  x(U->7) rc 0  | sign flip 0  x(7->U) rc 0
+   ('E1', 8, 7, (5, 6, 6), (6, 5, 5))  E1 rc 0  x(U->7) rc 0  | sign flip 0  x(7->U) rc 0
+CONTROL E1/x agreement and sign flip: 0 mismatches
+CONTROL sign flip E2 full: singles rc+ ['-1/75', '-1/75', '-1/75', '0', '0', '1/75'] / flipped ['-1/75', '0', '0', '1/75', '1/75', '1/75'] (flipped = -original for each key: True)
+CONTROL sign flip E3 full: singles rc+ ['-1/75', '-1/75', '-1/75', '0', '0', '1/75'] / flipped ['-1/75', '0', '0', '1/75', '1/75', '1/75'] (flipped = -original for each key: True)
+CONTROL sign flip LG8 full: singles rc+ ['0', '0', '0', '0', '0', '2/25'] / flipped ['-2/25', '0', '0', '0', '0', '0'] (flipped = -original for each key: True)
+CONTROL non-vacuity (payee rows dropped -> pure payer gain must price negative) E2 full: best -11/75 = -0.146667 with 6 keys
+CONTROL non-vacuity (payee rows dropped -> pure payer gain must price negative) E3 full: best -11/75 = -0.146667 with 6 keys
+CONTROL non-vacuity (payee rows dropped -> pure payer gain must price negative) LG8 full: best -22/75 = -0.293333 with 6 keys
+CONTROL non-vacuity masks E2 full: 7 payee items, 6 with a strict kill (mask smaller than none)
+CONTROL non-vacuity masks E3 full: 7 payee items, 6 with a strict kill (mask smaller than none)
+CONTROL non-vacuity masks LG8 full: 14 payee items, 5 with a strict kill (mask smaller than none)
+   E1 payer key ('E1', 8, 7, (5, 6, 6), (6, 5, 5)) gain 1/15 rows ['R8 75666556/66666565 @w0'] ; payee items (full/none) ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3', 'R7 8556856/7565666 @w4']
+   E1 payer key ('E1', 8, 7, (5, 7, 5), (6, 5, 6)) gain 1/75 rows ['R8 76556675/66665555 @w0'] ; payee items (full/none) ['R7 8666655/5677657 @w0']
+   E1 payer key ('E1', 8, 7, (5, 7, 5), (6, 6, 5)) gain 1/75 rows ['R8 76556675/66665555 @w6'] ; payee items (full/none) ['R7 8556856/7565666 @w0']
+   E1 payer key ('E1', 8, 7, (6, 5, 5), (6, 7, 5)) gain 2/75 rows ['R8 76765656/55556665 @w0', 'R8 76765656/55556665 @w2'] ; payee items (full/none) ['R7 8658656/7665555 @w0']
+   E1 payer key ('E1', 8, 7, (6, 6, 5), (6, 6, 5)) gain 2/75 rows ['R8 76656566/56655565 @w0'] ; payee items (full/none) ['R7 8658656/6665556 @w0']
+   E2 payer key ('E2', 8, 7, (5, 6, 6, 6), (6, 5, 5, 6)) gain 1/15 rows ['R8 75666556/66666565 @w0'] ; payee items (full/none) ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3']
+   E2 payer key ('E2', 8, 7, (5, 7, 5, 5), (6, 5, 6, 6)) gain 1/75 rows ['R8 76556675/66665555 @w0'] ; payee items (full/none) []
+   E2 payer key ('E2', 8, 7, (5, 7, 5, 5), (6, 6, 5, 5)) gain 1/75 rows ['R8 76556675/66665555 @w6'] ; payee items (full/none) ['R7 8556856/7565666 @w0']
+   E2 payer key ('E2', 8, 7, (6, 5, 5, 5), (6, 7, 5, 5)) gain 1/75 rows ['R8 76765656/55556665 @w2'] ; payee items (full/none) []
+   E2 payer key ('E2', 8, 7, (6, 5, 5, 6), (6, 7, 5, 5)) gain 1/75 rows ['R8 76765656/55556665 @w0'] ; payee items (full/none) ['R7 8658656/7665555 @w0']
+   E2 payer key ('E2', 8, 7, (6, 6, 5, 6), (6, 6, 5, 6)) gain 2/75 rows ['R8 76656566/56655565 @w0'] ; payee items (full/none) ['R7 8658656/6665556 @w0']
+   E3 payer key ('E3', 8, 7, (5, 6, 6, 6, 6), (6, 5, 5, 6, 5)) gain 1/15 rows ['R8 75666556/66666565 @w0'] ; payee items (full/none) ['R7 8658656/6665556 @w3', 'R7 8658656/7665555 @w3']
+   E3 payer key ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 5, 6, 6, 5)) gain 1/75 rows ['R8 76556675/66665555 @w0'] ; payee items (full/none) []
+   E3 payer key ('E3', 8, 7, (5, 7, 5, 5, 6), (6, 6, 5, 5, 5)) gain 1/75 rows ['R8 76556675/66665555 @w6'] ; payee items (full/none) ['R7 8556856/7565666 @w0']
+   E3 payer key ('E3', 8, 7, (6, 5, 5, 5, 6), (6, 7, 5, 5, 6)) gain 1/75 rows ['R8 76765656/55556665 @w2'] ; payee items (full/none) []
+   E3 payer key ('E3', 8, 7, (6, 5, 5, 6, 6), (6, 7, 5, 5, 6)) gain 1/75 rows ['R8 76765656/55556665 @w0'] ; payee items (full/none) ['R7 8658656/7665555 @w0']
+   E3 payer key ('E3', 8, 7, (6, 6, 5, 6, 5), (6, 6, 5, 6, 5)) gain 2/75 rows ['R8 76656566/56655565 @w0'] ; payee items (full/none) ['R7 8658656/6665556 @w0']
+   LG8 payer key ('LG8', 8, 7, 5, 6, 6) gain 1/15 rows ['R8 75666556/66666565 @w0+1'] ; payee items (full/none) ['R7 8658656/6665556 @w3-', 'R7 8658656/7665555 @w3-', 'R7 8556856/7565666 @w4+']
+   LG8 payer key ('LG8', 8, 7, 5, 7, 6) gain 2/75 rows ['R8 76556675/66665555 @w0-1', 'R8 76556675/66665555 @w6+1'] ; payee items (full/none) ['R7 8666655/5677657 @w0-', 'R7 8556856/7565666 @w0+']
+   LG8 payer key ('LG8', 8, 7, 6, 5, 5) gain 2/25 rows ['R8 76556675/66665555 @w0+1', 'R8 75666556/66666565 @w0-1'] ; payee items (full/none) ['R7 8666655/5677657 @w0+', 'R7 8658656/6665556 @w3+', 'R7 8658656/7665555 @w3+', 'R7 8556856/7565666 @w4-']
+   LG8 payer key ('LG8', 8, 7, 6, 5, 6) gain 2/75 rows ['R8 76765656/55556665 @w0-1', 'R8 76765656/55556665 @w2+1'] ; payee items (full/none) ['R7 8666655/5677657 @w0+', 'R7 8658656/6665556 @w3+', 'R7 8658656/7665555 @w0-', 'R7 8658656/7665555 @w3+', 'R7 8556856/7565666 @w4-']
+   LG8 payer key ('LG8', 8, 7, 6, 6, 5) gain 1/15 rows ['R8 76556675/66665555 @w6-1', 'R8 76656566/56655565 @w0+1', 'R8 76656566/56655565 @w0-1'] ; payee items (full/none) ['R7 8658656/6665556 @w0+', 'R7 8658656/6665556 @w0-', 'R7 8556856/7565666 @w0-']
+   LG8 payer key ('LG8', 8, 7, 6, 7, 6) gain 2/75 rows ['R8 76765656/55556665 @w0+1', 'R8 76765656/55556665 @w2-1'] ; payee items (full/none) ['R7 8658656/7665555 @w0+']
+
+CONTROL physical both-end test (100,000 random 8..12 - 7 edges, explicit rotations, random offset + mirror at both ends): E3 (hence E2, E1) + LG8 key mismatches 0; broken control (payee reads e from the wrong side) 76763
+
+ASK (B) r67o:
+   cert cons2 rows with a 7 whose two flanking apexes are class 7 (eligible for h = all>=9): [('1/75', (5, 6, 6, 7, 7, 6), (5, 5, 7, 7, 7, 5), 3), ('1/75', (5, 6, 6, 7, 7, 6), (5, 5, 7, 7, 7, 5), 4), ('-1/75', (5, 6, 6, 7, 7, 6), (7, 5, 5, 7, 7, 7), 4), ('-1/75', (5, 6, 6, 7, 7, 6), (7, 5, 7, 7, 5, 7), 3), ('1/300', (5, 7, 6, 7, 6, 7), (7, 7, 7, 7, 7, 7), 1), ('1/300', (5, 7, 6, 7, 6, 7), (7, 7, 7, 7, 7, 7), 3), ('1/300', (5, 7, 6, 7, 6, 7), (7, 7, 7, 7, 7, 7), 5), ('1/300', (5, 7, 6, 7, 6, 7), (5, 7, 7, 7, 7, 5), 3), ('-1/150', (5, 7, 6, 7, 6, 7), (5, 7, 5, 5, 7, 7), 5), ('1/150', (5, 7, 6, 7, 6, 7), (5, 5, 7, 7, 5, 7), 3)]
+   w4 of 8666655/5677657 at p41 = 5: L = (5, 6, 5, 7, 6, 7) (L0 = p41, L3 = u, L5 = s3); cert cons2 rows with this L: [('-1/150', (5, 5, 5, 5, 5, 5))]
+   (b) needs s4 = p31 >= 9 and s5 = the apex across (s3, p41) >= 9, i.e. s = (., ., 5, 5, 7, 7): not in the cert -> dual 0 -> rc(r67o) = 0
+   existing h key from w4 into u (p41 = 5): (7, 5, 6, 5, 7, 6, 5, 5) rc 0; its mrowR2 sig in the cert: [('-1/75', (7, 5, 6, 7, 6, 5, 5, 31))]
