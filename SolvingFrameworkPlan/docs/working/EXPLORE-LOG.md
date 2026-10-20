@@ -215,6 +215,7 @@ Run ahead of the other five non-family rows, right after 8765556/6575965.
 - **Tool check before this pre-registration (21:36-21:42Z, cap 0, no engine run).** Registry: none of the 87
   contains any of the 3,986 registry configurations. Windows at MMAX 8, FMIN 3, ring <= 16: 4,276 distinct kc lines
   (18 with five fives, 415 with four, 3,843 with three; by ring 6-13: 900, 14: 911, 15: 1,303, 16: 1,162).
+- **03:43Z, engine run started** as pre-registered (registry `tw54`, NW 3, 7,000 s cap), now that round 54b has closed.
 
 ## Round 53 (19 Oct 2026, 18:24Z-): H-S53, split and kill, do the surviving face rows die one ring out, piece by piece?
 
