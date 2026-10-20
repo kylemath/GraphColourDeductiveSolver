@@ -1,5 +1,21 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 54b (20 Oct 2026, 00:52Z-): H-S54, split and kill on the two d7 face binders left in the 11/75 cert
+
+**Pre-registered 00:52Z, before any engine window of this round.** Long Table 00:51Z: every non-face binder of Opus's
+11/75 cert is dead (round 54); the two left are d7 face rows, 8556856/7565666 (face w1 w2 s1) and 8666655/5677657 (face
+w5 w6 s5), both -1/75. Studio is offered 8666655/5677657 at ring 15-18; explore runs round 53's split and kill on both
+once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill; its ring 15-18 to-do goes to Studio).
+- **Tool** `loop/k53/cen53.py` unchanged (slots: the privates of each exact non-5 link vertex and the ring-3 vertices
+  beside the face, letters 5..9, 9 = >= 9; apex parts; registry containment, then engine windows with ORDER=fives, 1-2
+  slots at 5..8, ring <= 16, kc -C -t 600 / dfast / cfast --fixed; exact coverage of the fillings). Registry: main
+  3d6c4f9a's k3x (2,552 D / 1,097 C, the copy checked for r54p) plus round 44's RSST set. NW 3, 7,000 s cap per row,
+  8556856/7565666 first.
+- **Hypothesis (Long Table):** as for round 53's binder, >= 75% of each row's one-ring-out extensions die. **Kill line:**
+  under 50%: the row is the rule side's (z6 or the stacked solve must pay it).
+- **Guess:** neither row reaches 75% (55%); the apex = 5 part dies in both (each has a 6 beside the face on the apex
+  side: s2 = 6, s4 = 6), 80%.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
