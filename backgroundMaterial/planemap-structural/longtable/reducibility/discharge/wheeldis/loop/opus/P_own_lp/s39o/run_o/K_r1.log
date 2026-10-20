@@ -1,0 +1,35 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+offc: 20315 registry entries -> 15990 distinct configurations K; distinct off-centre patterns by d {7: 5790, 8: 4960, 9: 2874, 10: 991, 11: 152, 12: 99, 13: 93, 14: 93, 15: 93, 16: 93, 17: 93} (built in 146.5s)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 5)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 6)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 7)
+  offc C           4  skipped: (r, m) = (0, 0) not reproduced (|exact| = 8)
+  offc C         116  skipped: ambiguous s-s pair
+  offc C        2042  u in K, (r, m) confirmed
+  offc D        1075  skipped: ambiguous s-s pair
+  offc D         601  u in K (no r/m on record)
+  offc D       16264  u in K, (r, m) confirmed
+  offc D          49  u not in K, (r, m) confirmed
+  offc RPAT      158  u in K (no r/m on record)
+  offc cache offc_5aceeb2cf03aa176b18ef39e643e3313.pkl (built, 147.3s)
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 15440, 8: 10184, 9: 5700, 10: 2011, 11: 472, 12: 156, 13: 131, 14: 131, 15: 131, 16: 131, 17: 131}; by kind {'D': 17595, 'C': 2143, 'RPAT': 158, 'OFFC': 14722}
+conservation basis rows added: 10539
+warm rows admitted: 70505
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1605 M sigs
+iter 0 t=0.127824442867 rows 111102 cols 29562 added 455  lp 1037.4s total 1088s  {7: (151, np.float64(0.159445), 16.1), 8: (159, np.float64(0.258463), 6.5), 9: (144, np.float64(0.080257), 7.3), 10: (1, np.float64(0.001125), 1.5)}
+iter 1 t=0.127824442867 rows 111560 cols 29579 added 453  lp 32.6s total 1189s  {7: (152, np.float64(0.05683), 19.4), 8: (149, np.float64(0.152629), 11.7), 9: (152, np.float64(0.058226), 11.4)}
+iter 2 t=0.128063239555 rows 112029 cols 29581 added 461  lp 207.2s total 1476s  {7: (151, np.float64(0.087403), 24.9), 8: (154, np.float64(0.09558), 16.7), 9: (155, np.float64(0.046338), 11.4), 10: (1, np.float64(0.001691), 1.8)}
+iter 3 t=0.128063239555 rows 112451 cols 29585 added 422  lp 80.6s total 1639s  {7: (156, np.float64(0.043684), 25.9), 8: (126, np.float64(0.055823), 18.7), 9: (140, np.float64(0.023442), 12.5)}
+iter 4 t=0.128256644043 rows 112843 cols 29587 added 382  lp 131.5s total 1858s  {7: (150, np.float64(0.044293), 27.9), 8: (149, np.float64(0.039705), 20.9), 9: (83, np.float64(0.027349), 11.9)}
+iter 5 t=0.128292794111 rows 113206 cols 29589 added 363  lp 111.7s total 2054s  {7: (151, np.float64(0.024207), 27.9), 8: (173, np.float64(0.030285), 19.8), 9: (39, np.float64(0.008328), 12.0)}
+iter 6 t=0.128343080813 rows 113370 cols 29597 added 164  lp 199.7s total 2344s  {7: (108, np.float64(0.004472), 29.0), 8: (56, np.float64(0.003324), 20.6)}
+  write_l3q: noise QX.max 0 PQ.min -3.33e-13 (clipped)
+iter 7 t=0.128313212580 rows 113413 cols 29598 added 43  lp 69.7s total 2498s  {'cons': (1, np.float64(0.001259)), 7: (35, np.float64(0.001259), 27.2), 8: (1, np.float64(0.002193), 19.3), 9: (6, np.float64(7.1e-05), 11.4)}
+iter 8 t=0.128329785637 rows 113435 cols 29598 added 22  lp 44.6s total 2626s  {7: (19, np.float64(0.001678), 26.5), 8: (3, np.float64(0.000313), 19.1)}
+iter 9 t=0.128329785637 rows 113438 cols 29598 added 3  lp 41.4s total 2751s  {7: (1, np.float64(0.002625), 27.5), 8: (2, np.float64(0.000598), 18.4)}
+iter 10 t=0.128329785637 rows 113460 cols 29598 added 22  lp 38.6s total 2873s  {7: (22, np.float64(0.00033), 28.0)}
+iter 11 t=0.128329785637 rows 113463 cols 29598 added 3  lp 15.1s total 2974s  {7: (3, np.float64(1.5e-05), 27.6)}
+iter 12 t=0.128329785637 rows 113618 cols 29598 added 155  lp 17.5s total 3073s  {'cons': (2, np.float64(0.0)), 7: (153, np.float64(2e-06), 28.2)}
+iter 13 t=0.128329785637 rows 113773 cols 29598 added 155  lp 57.9s total 3197s  {7: (151, np.float64(0.00734), 22.2), 8: (4, np.float64(0.001843), 15.7)}
+Traceback (most recent call last):
+  File "/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/dis

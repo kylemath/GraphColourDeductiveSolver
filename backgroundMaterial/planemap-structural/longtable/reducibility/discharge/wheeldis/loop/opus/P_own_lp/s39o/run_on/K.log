@@ -1,0 +1,19 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+offc: 20352 registry entries -> 16026 distinct configurations K; distinct off-centre patterns by d {7: 5811, 8: 4970, 9: 2877, 10: 992, 11: 152, 12: 100, 13: 93, 14: 93, 15: 93, 16: 93, 17: 93} (built in 126.0s)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 5)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 6)
+  offc C           2  skipped: (r, m) = (0, 0) not reproduced (|exact| = 7)
+  offc C           4  skipped: (r, m) = (0, 0) not reproduced (|exact| = 8)
+  offc C         116  skipped: ambiguous s-s pair
+  offc C        2042  u in K, (r, m) confirmed
+  offc D        1075  skipped: ambiguous s-s pair
+  offc D         601  u in K (no r/m on record)
+  offc D       16264  u in K, (r, m) confirmed
+  offc D          49  u not in K, (r, m) confirmed
+  offc RPAT      158  u in K (no r/m on record)
+  offc RPATN      37  u in K (rpatN: u-centred by construction)
+  offc cache offc_6bcbc02d032d6b6a1aaad170a128ee02.pkl (read, 0.4s)
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 15482, 8: 10204, 9: 5706, 10: 2013, 11: 472, 12: 158, 13: 131, 14: 131, 15: 131, 16: 131, 17: 131}; by kind {'D': 17595, 'C': 2143, 'RPAT': 158, 'RPATN': 36, 'OFFC': 14758}
+conservation basis rows added: 10539
+warm rows admitted: 68658
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1569 M sigs
