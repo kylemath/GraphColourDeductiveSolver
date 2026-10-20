@@ -39,7 +39,8 @@ def confs_in(p, n):
     return out
 def isring(x): return any(e.startswith('R') or '-R' in e for e in x)
 listed = []
-order = sorted(n for n in names if not isring(names[n][0]) and int(names[n][1][0]) <= RMAX)
+EXTRA = [x for x in os.environ.get('EXTRA', '').split(',') if x]   # Long Table 20 Oct 14:17Z: always included
+order = sorted(n for n in names if not isring(names[n][0]) and (int(names[n][1][0]) <= RMAX or n in EXTRA))
 def parse(s):
     r, m, ra, ia = s.split(); r = int(r); m = int(m)
     ra = [[] if g == '-' else list(map(int, g.split(','))) for g in ra.split(';')]
@@ -87,6 +88,8 @@ sys.stdout.write("""import CXRing
 
 namespace SimpleGraph.SphericalMap.CGlue
 open DCheck DCheck.R2
+
+set_option maxRecDepth 100000
 
 def xiEntries : List XRData := [
 """ % RMAX + ",\n".join(items) + """]
