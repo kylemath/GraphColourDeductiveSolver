@@ -139,6 +139,7 @@ def load_patterns():
     elif 'args' in OPT: args = open(OPT['args']).read().split()
     else: args = []
     excl = [e for e in OPT.get('excl', '').split(',') if e]
+    EXN = set(l.split()[0] for l in open(OPT['exname']) if l.strip() and not l.startswith('#')) if 'exname' in OPT else set(); EXHIT = collections.Counter()
     nf = 0; missing = []
     for a in args:
         if not a.startswith(('pat=', 'cpat=')) or any(e in a for e in excl) or ('noC' in FLAGS and a.startswith('cpat=')): continue   # s33z (from s30t): noC drops every cpat= file
@@ -153,7 +154,10 @@ def load_patterns():
             cur = None
             for line in open(p):
                 if ' r=' in line and not line.startswith(' '): cur = line.split()[0]; currm = _rm(line)
-                elif 'C-REDUCIBLE' in line and cur and re.match(r'^[epf]\d+_', cur): addpat(cur, 'C', currm)
+                elif 'C-REDUCIBLE' in line and cur and re.match(r'^[epf]\d+_', cur):
+                    if cur in EXN: EXHIT[(fn, cur)] += 1; continue   # s40f exname=: C entry held out by name (ring-merge sweep FAILs)
+                    addpat(cur, 'C', currm)
+    if EXN: log('exname: %d names held out; %d C entries dropped (%d distinct names) in %s' % (len(EXN), sum(EXHIT.values()), len(set(n for _, n in EXHIT)), dict(collections.Counter(f_ for f_, _ in EXHIT))))
     if 'nf' in OPT:   # Job 30 part A: whole-arrangement kill patterns, one per line: d LINK SWORD  (or a name f<d>_...)
         for line in open(OPT['nf']):
             f = line.split()

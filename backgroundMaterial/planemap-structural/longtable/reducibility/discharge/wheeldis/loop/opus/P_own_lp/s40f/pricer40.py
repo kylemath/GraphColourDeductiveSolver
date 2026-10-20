@@ -24,7 +24,7 @@ f = f.replace(OLD, "    NEG[:] = sorted(neg, key=lambda kv: kv[1]); TOT.update(t
 G['NEG'] = []; G['TOT'] = {}; G['TCO'] = [None]
 exec(f, G); G['cmd_lowerR2']()
 NEG = G['NEG']; C = json.load(open(CERT))
-FACE = {('7766556', '6567566'), ('7766556', '6566576'), ('7766556', '6576576'), ('7665566', '6675676')}
+FACE = {('7766556', '6567566'), ('7766556', '6566576'), ('7766556', '6576576'), ('7665566', '6675676'), ('7665566', '6775676')}   # 4 coordinator face rows + 7665566/6775676 (A77: no kill at ring <= 14)
 recv = []
 for c in C:
     r = c['row']
@@ -42,4 +42,4 @@ for i, (k, rc) in enumerate(NEG):
           '; '.join('%.6f %s x%d%s' % (h[0], h[1], h[2], ' FACE' if h[3] else '') for h in hits) or 'no receiver row'))
 print('negative columns touching a face binder: %d of %d' % (touch, len(NEG)))
 for w, rr, cf, fc in recv:
-    if fc: print('FACE row %s w=%.6f fy keys: %s' % (' '.join(map(str, rr)), float(w), sorted((k[1], v) for k, v in cf.items() if k[0] == 'z')))
+    if fc: print('FACE row %s w=%.6f fy keys (key, coef, rc): %s' % (' '.join(map(str, rr)), float(w), sorted((str(k[1]), v, str(-G['TOT'].get(k, 0) / G['TCO'][0])) for k, v in cf.items() if k[0] == 'z')))
