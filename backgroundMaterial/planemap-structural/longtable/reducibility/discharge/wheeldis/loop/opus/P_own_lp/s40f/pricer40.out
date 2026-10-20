@@ -1,0 +1,17 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10264, 8: 6166, 9: 3519, 10: 1413, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17685, 'C': 2202, 'RPAT': 158, 'RPATN': 2080}
+  negative reduced costs: 4 [(('z', (7, 5, 5, 6, 6, 0, 0, 2, 2, 0)), Fraction(-2, 183)), (('z', (7, 6, 5, 5, 6, 1, 2, 2, 2, 1)), Fraction(-2, 183)), (('z', (7, 6, 5, 6, 6, 0, 2, 2, 2, 1)), Fraction(-2, 183)), (('z', (7, 6, 6, 6, 6, 0, 2, 2, 2, 1)), Fraction(-10, 183))]
+rows by type: {'senderR2': 15, 'cons2': 101, 'mrowL': 5, 'mrowR2': 29, 'receiverR2': 10}
+LOWER-R2: INVALID  t >= 20/183 = 0.109289617  (160 rows)
+
+fy pricing against cert_q39n3A74L.json: 4 negative columns (all kinds); by kind {'z': 4}
+rank  rc  (exact)  key  | cert receiverR2 rows with nonzero coef (w, d link sword, coef) [FACE = one of the 4 A74 face binders]
+  1  -0.054645  -10/183  z (7, 6, 6, 6, 6, 0, 2, 2, 2, 1) - | no receiver row
+  2  -0.010929  -2/183  z (7, 5, 5, 6, 6, 0, 0, 2, 2, 0) - | no receiver row
+  3  -0.010929  -2/183  z (7, 6, 5, 5, 6, 1, 2, 2, 2, 1) - | no receiver row
+  4  -0.010929  -2/183  z (7, 6, 5, 6, 6, 0, 2, 2, 2, 1) - | no receiver row
+negative columns touching a face binder: 0 of 4
+FACE row 7 7766556 6566576 w=-0.054645 fy keys: [((7, 5, 5, 6, 6, 0, 1, 2, 2, 0), 1), ((7, 5, 5, 7, 6, 0, 0, 2, 2, 1), 1)]
+FACE row 7 7766556 6567566 w=-0.098361 fy keys: [((7, 5, 5, 6, 6, 0, 1, 2, 2, 1), 1), ((7, 5, 5, 7, 6, 0, 0, 2, 2, 0), 1)]
+FACE row 7 7766556 6576576 w=-0.032787 fy keys: [((7, 5, 5, 6, 6, 0, 1, 2, 2, 0), 1), ((7, 5, 5, 7, 6, 0, 0, 2, 2, 1), 1)]
+FACE row 7 7665566 6675676 w=-0.010929 fy keys: [((7, 5, 5, 6, 6, 0, 1, 2, 2, 0), 1), ((7, 5, 5, 7, 6, 0, 0, 2, 2, 0), 1)]

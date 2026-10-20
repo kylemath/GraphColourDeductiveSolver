@@ -1,0 +1,8 @@
+18:50:31Z noC upper start
+18:53:09Z noC upper: UPPER-R2: INFEASIBLE (453642) at t = 0.111111111111 ; vrows 453640
+18:53:29Z ccover: sole-cover set: 102 entries; greedy cover of the rest: 24 entries; total 126
+18:56:32Z [ctl_base] tables=reg_A74 flags='': UPPER-R2: FEASIBLE at t = 0.111111111111
+18:56:35Z [ctl_noC] tables=noC flags='noC noCw': 
+18:59:04Z [a_noC_fulltab] tables=reg_A74 flags='noC noCw vK=1e12 vfile=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/s41c_v_a.txt': UPPER-R2: INFEASIBLE (363222) at t = 0.111111111111 ; vrows 363220
+18:59:07Z [b_noCcpat_Dtab] tables=noC flags='noC vK=1e12 vfile=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/s41c_v_b.txt':  ; vrows 0
+19:00:25Z [ctl_noC] tables=noC flags='noC noCw': UPPER-R2: INFEASIBLE (82) at t = 0.111111111111

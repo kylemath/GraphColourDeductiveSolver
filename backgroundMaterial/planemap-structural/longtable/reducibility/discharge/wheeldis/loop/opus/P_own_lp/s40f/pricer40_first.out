@@ -1,0 +1,15 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10264, 8: 6166, 9: 3519, 10: 1413, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17685, 'C': 2202, 'RPAT': 158, 'RPATN': 2080}
+  negative reduced costs: 4 [(('z', (7, 5, 5, 6, 6, 0, 0, 2, 2, 0)), Fraction(-2, 183)), (('z', (7, 6, 5, 5, 6, 1, 2, 2, 2, 1)), Fraction(-2, 183)), (('z', (7, 6, 5, 6, 6, 0, 2, 2, 2, 1)), Fraction(-2, 183)), (('z', (7, 6, 6, 6, 6, 0, 2, 2, 2, 1)), Fraction(-10, 183))]
+rows by type: {'senderR2': 15, 'cons2': 101, 'mrowL': 5, 'mrowR2': 29, 'receiverR2': 10}
+LOWER-R2: INVALID  t >= 20/183 = 0.109289617  (160 rows)
+
+fy pricing against cert_q39n3A74L.json: 4 negative columns (all kinds); by kind {'z': 4}
+rank  rc  (exact)  key  | cert receiverR2 rows with nonzero coef (w, d link sword, coef) [FACE = one of the 4 A74 face binders]
+Traceback (most recent call last):
+  File "/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s40f/pricer40.py", line 41, in <module>
+    print('%3d  %+.6f  %s  %s %s | %s' % (i + 1, float(rc), rc, k[0], k[1], 'TOUCHES-FACE' if tf else '-',
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          '; '.join('%.6f %s x%d%s' % (h[0], h[1], h[2], ' FACE' if h[3] else '') for h in hits) or 'no receiver row'))
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: not all arguments converted during string formatting

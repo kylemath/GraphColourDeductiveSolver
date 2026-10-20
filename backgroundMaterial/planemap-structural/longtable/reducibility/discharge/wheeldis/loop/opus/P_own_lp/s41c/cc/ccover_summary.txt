@@ -1,0 +1,135 @@
+# C-cover analysis: VFILE /tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/s41c_vrows_A74.txt
+# ARGS /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A74/args_A74.txt
+violated rows (all C out): 453640; by d {7: 305475, 8: 82724, 9: 64319, 10: 1122}
+rows with no cpat / C 7-wheel cover: 32706
+sole-cover set: 102 entries; greedy cover of the rest: 24 entries; total 126
+overlap with the 89 XRing entries: sole 18, greedy 2
+## sole-cover set (entry, #rows it alone covers, #rows it covers)
+S f7_..56565_....... r=10 CXInt [k3x_C_A74.cfast] sole=61531 cov=105555
+S f9_...555565_......... r=11 CXInt [k3x_C_A74.cfast] sole=25389 cov=28837
+S f9_...565565_......... r=12 CXInt [k3x_C_A74.cfast] sole=15393 cov=21230
+S f7_..56566_.....5. r=11 CXInt [k3x_C_A74.cfast] sole=13970 cov=13970
+S f7_...5665_.....5. r=10 CXInt [k3x_C_A74.cfast] sole=5836 cov=7494
+S f7_...5565_....... r=9 CXInt [k3x_C_A74.cfast] sole=4753 cov=104069
+S f7_..56575_.....5. r=11 CXInt [k3x_C_A74.cfast] sole=3659 cov=8407
+S f8_..565565_........ r=11 CXInt [k3x_C_A74.cfast] sole=3494 cov=3512
+S f7_..56575_....5.. r=11 CXInt [k3x_C_A74.cfast] sole=2867 cov=6667
+S f7_..56576_.....5. r=12 CXRing [k3x_C_A74.cfast] sole=2446 cov=5358 XRING
+S f8_..565665_........ r=12 CXInt [k3x_C_A74.cfast] sole=1846 cov=3306
+S f7_..55666_.....5. r=11 CXInt [k3x_C_A74.cfast] sole=1568 cov=1568
+S f7_..55676_.....5. r=12 CXInt [k3x_C_A74.cfast] sole=1413 cov=2429
+S f8_...56556_.....56. r=11 CXInt [k3x_C_A74.cfast] sole=1362 cov=2574
+S f7_...5656_.....5. r=10 CXInt [k3x_C_A74.cfast] sole=1314 cov=1326
+S f7_..56666_.....5. r=12 CXRing [k3x_C_A74.cfast] sole=1258 cov=1258 XRING
+S f7_...5665_.....65 r=11 CXInt [k3x_C_A74.cfast] sole=1212 cov=1356
+S f8_.55.5565_.5...... r=11 CXInt [k3x_C_A74.cfast] sole=1177 cov=1356
+S f7_..55576_.....5. r=11 CXInt [k3x_C_A74.cfast] sole=1029 cov=1223
+S f7_...5576_...5.5. r=11 CXRing [k3x_C_A74.cfast] sole=941 cov=2176 XRING
+S f7_.556676_.....5. r=13 CXInt [k3x_C_A74.cfast] sole=921 cov=1178
+S f8_...55565_........ r=10 CXInt [k3x_C_A74.cfast] sole=886 cov=37268
+S f8_..565765_.....5.. r=13 CXInt [k3x_C_A74.cfast] sole=718 cov=7227
+S f7_...5676_..55.5. r=12 CXRing [k3x_C_A74.cfast] sole=594 cov=594 XRING
+S f8_.5656765_....5... r=14 notLean [k3x_C_A74.cfast] sole=565 cov=715
+S f7_...5775_...5.65 r=13 CXRing [k3x_C_A74.cfast] sole=512 cov=1515 XRING
+S f9_..5565675_......5.. r=14 CXRing [k3x_C_A74.cfast] sole=502 cov=1174 XRING
+S f7_..56665_....... r=11 CXInt [k3x_C_A74.cfast] sole=454 cov=2102
+S f7_...5675_.....65 r=12 CXRing [k3x_C_A74.cfast] sole=448 cov=489 XRING
+S f7_...5675_.....55 r=11 CXRing [k3x_C_A74.cfast] sole=424 cov=663 XRING
+S f7_.565776_...5.5. r=14 notLean [k3x_C_A74.cfast] sole=410 cov=410
+S f7_..56765_....5.. r=12 CXInt [k3x_C_A74.cfast] sole=407 cov=496
+S f9_...565656_.......5. r=13 CXInt [k3x_C_A74.cfast] sole=370 cov=1056
+S f7_...5666_....55. r=11 CXInt [k3x_C_A74.cfast] sole=362 cov=482
+S f9_..5556565_......... r=12 CXInt [k3x_C_A74.cfast] sole=306 cov=3562
+S f7_..56575_.....65 r=12 CXInt [k3x_C_A74.cfast] sole=270 cov=270
+S f9_...566566_....5..5. r=14 notLean [k3x_C_A74.cfast] sole=239 cov=244
+S f9_...565556_......56. r=12 CXInt [k3x_C_A74.cfast] sole=228 cov=1528
+S f8_...56556_......5. r=11 CXInt [k3x_C_A74.cfast] sole=197 cov=13225
+S f8_...55655_........ r=10 CXRing [k3x_C_A74.cfast] sole=196 cov=792 XRING
+S f7_.566676_.....5. r=14 notLean [k3x_C_A74.cfast] sole=176 cov=385
+S f7_...5685_....565 r=13 CXInt [k3x_C_A74.cfast] sole=162 cov=203
+S f8_...55575_.....5.. r=11 CXInt [k3x_C_A74.cfast] sole=143 cov=299
+S f7_..55765_...5... r=11 CXInt [k3x_C_A74.cfast] sole=140 cov=140
+S f8_...55676_.....55. r=13 CXInt [k3x_C_A74.cfast] sole=127 cov=127
+S f10_...5655665_.......5.. r=14 notLean [k3x_C_A74.cfast] sole=124 cov=784
+S f7_5666766_...5... r=14 notLean [k3x_C_A74.cfast] sole=116 cov=152
+S f8_..565575_......5. r=12 CXInt [k3x_C_A74.cfast] sole=111 cov=111
+S f7_..56675_.....65 r=13 CXInt [k3x_C_A74.cfast] sole=108 cov=160
+S f7_...5676_....55. r=12 CXInt [k3x_C_A74.cfast] sole=104 cov=996
+S f7_..57575_...5.5. r=12 CXInt [k3x_C_A74.cfast] sole=104 cov=133
+S f9_...565566_.......5. r=13 CXInt [k3x_C_A74.cfast] sole=92 cov=190
+S f8_...56765_....5.65 r=14 notLean [k3x_C_A74.cfast] sole=84 cov=236
+S f8_..565566_......5. r=12 CXInt [k3x_C_A74.cfast] sole=84 cov=680
+S f8_...55665_....5... r=11 CXInt [k3x_C_A74.cfast] sole=80 cov=80
+S f10_...5565565_.......... r=13 CXInt [k3x_C_A74.cfast] sole=76 cov=80
+S e7_B56656._6B.66.._1111110 r=14 notLean [part01.cfast] sole=74 cov=74
+S f7_..56675_.....5. r=12 CXInt [k3x_C_A74.cfast] sole=67 cov=315
+S f7_..56676_..5..5. r=13 CXRing [k3x_C_A74.cfast] sole=64 cov=353 XRING
+S f8_..565576_......5. r=13 CXInt [k3x_C_A74.cfast] sole=64 cov=64
+S f7_...6576_...5.5. r=12 CXRing [k3x_C_A74.cfast] sole=56 cov=2160 XRING
+S f9_....5565B_....6655. r=12 notLean [r_1.cfast] sole=52 cov=1805
+S f10_...5565665_.......5.. r=14 notLean [k3x_C_A74.cfast] sole=51 cov=201
+S f7_...5775_...5.55 r=12 CXRing [k3x_C_A74.cfast] sole=51 cov=51 XRING
+S f8_...56765_....5.5. r=13 CXInt [k3x_C_A74.cfast] sole=44 cov=63
+S f8_...56665_.....5.. r=12 CXInt [k3x_C_A74.cfast] sole=40 cov=474
+S f9_...565556_......66. r=13 CXInt [k3x_C_A74.cfast] sole=40 cov=192
+S f8_..566566_......5. r=13 CXInt [k3x_C_A74.cfast] sole=38 cov=54
+S f8_..566575_......5. r=13 CXInt [k3x_C_A74.cfast] sole=37 cov=46
+S f8_...56656_......5. r=12 CXRing [k3x_C_A74.cfast] sole=35 cov=907 XRING
+S f7_.566666_.....5. r=13 CXInt [k3x_C_A74.cfast] sole=32 cov=32
+S f7_.566765_....5.. r=13 CXInt [k3x_C_A74.cfast] sole=32 cov=136
+S f8_..555676_......5. r=13 CXInt [k3x_C_A74.cfast] sole=32 cov=188
+S f8_..567575_...5..5. r=14 notLean [k3x_C_A74.cfast] sole=32 cov=495
+S f9_...565656_......66. r=14 notLean [k3x_C_A74.cfast] sole=32 cov=1872
+S f7_..56585_....55. r=12 CXInt [k3x_C_A74.cfast] sole=26 cov=44
+S f8_...55765_...5.5.. r=12 CXInt [k3x_C_A74.cfast] sole=26 cov=26
+S f10_...5656565_......66.. r=15 CXInt [k3x_C_A74.cfast] sole=19 cov=108
+S f7_5675767_.5..... r=15 CXRing [k3x_C_A74.cfast] sole=16 cov=20 XRING
+S f8_.5565.65_......5. r=12 CXInt [k3x_C_A74.cfast] sole=16 cov=16
+S f7_...5756_....65. r=11 CXInt [k3x_C_A74.cfast] sole=14 cov=14
+S f7_...6676_...555. r=13 CXRing [k3x_C_A74.cfast] sole=14 cov=127 XRING
+S f7_.566766_...5.5. r=14 notLean [k3x_C_A74.cfast] sole=12 cov=56
+S f7_.566775_....55. r=14 notLean [k3x_C_A74.cfast] sole=12 cov=12
+S f8_...56576_....5.5. r=13 CXRing [k3x_C_A74.cfast] sole=12 cov=34 XRING
+S f10_..56556565_.......... r=14 notLean [k3x_C_A74.cfast] sole=10 cov=168
+S f7_..55776_....55. r=13 CXInt [k3x_C_A74.cfast] sole=10 cov=34
+S f8_...56665_....6.5. r=13 CXRing [k3x_C_A74.cfast] sole=10 cov=12 XRING
+S f8_..566576_.....55. r=14 notLean [k3x_C_A74.cfast] sole=8 cov=17
+S f9_...557565_...56.... r=13 CXInt [k3x_C_A74.cfast] sole=7 cov=691
+S f7_.556686_....55. r=14 notLean [k3x_C_A74.cfast] sole=6 cov=44
+S f8_...55576_......5. r=12 CXRing [k3x_C_A74.cfast] sole=6 cov=96 XRING
+S f9_..5656665_......5.. r=14 notLean [k3x_C_A74.cfast] sole=6 cov=30
+S f9_..5656665_.....5... r=14 notLean [k3x_C_A74.cfast] sole=6 cov=6
+S f10_...5655565_.......... r=13 CXInt [k3x_C_A74.cfast] sole=4 cov=4
+S f7_..57566_...5.5. r=12 CXInt [k3x_C_A74.cfast] sole=4 cov=4
+S f7_.565676_.....5. r=13 CXInt [k3x_C_A74.cfast] sole=4 cov=16
+S f9_...556565_.......5. r=12 CXInt [k3x_C_A74.cfast] sole=4 cov=5956
+S f9_...556665_...5.5... r=13 CXInt [k3x_C_A74.cfast] sole=4 cov=28
+S f8_...56585_....665. r=14 notLean [k3x_C_A74.cfast] sole=3 cov=21
+S f7_..57666_..5..5. r=13 CXInt [k3x_C_A74.cfast] sole=2 cov=2
+S f9_...565665_....66... r=14 notLean [k3x_C_A74.cfast] sole=2 cov=113
+## greedy cover (order, entry, #new rows)
+G1 f8_...56565_........ r=11 CXInt [k3x_C_A74.cfast] new=12729 cov=26789
+G2 f7_...5566_.....5. r=10 CXInt [k3x_C_A74.cfast] new=6627 cov=6731
+G3 f9_..5656565_......... r=13 CXRing [k3x_C_A74.cfast] new=2214 cov=6754 XRING
+G4 f7_5566757_...5... r=13 CXInt [k3x_C_A74.cfast] new=1250 cov=1250
+G5 f7_..55675_....5.. r=11 CXInt [k3x_C_A74.cfast] new=782 cov=782
+G6 f8_...56575_......65 r=13 CXInt [k3x_C_A74.cfast] new=746 cov=748
+G7 f7_...5766_....55. r=12 CXInt [k3x_C_A74.cfast] new=685 cov=750
+G8 f7_...5575_...66.. r=11 CXInt [k3x_C_A74.cfast] new=479 cov=1676
+G9 f8_...56575_......5. r=12 CXInt [k3x_C_A74.cfast] new=325 cov=902
+G10 f9_...565665_......5.. r=13 CXInt [k3x_C_A74.cfast] new=238 cov=238
+G11 f8_...55675_...665.. r=13 CXInt [k3x_C_A74.cfast] new=106 cov=1223
+G12 f8_...55755_...6B5B. r=12 notLean [r_1.cfast] new=67 cov=67
+G13 f7_..57576_...5.5. r=13 CXInt [k3x_C_A74.cfast] new=62 cov=71
+G14 f7_5667576_..5.... r=14 CXRing [k3x_C_A74.cfast] new=59 cov=209 XRING
+G15 f9_..5655665_......... r=13 CXInt [k3x_C_A74.cfast] new=54 cov=76
+G16 f7_..56676_...5.5. r=13 CXInt [k3x_C_A74.cfast] new=45 cov=165
+G17 f8_...65676_...5.55. r=14 notLean [k3x_C_A74.cfast] new=36 cov=36
+G18 f7_..65756_..65B6. r=13 notLean [r_1.cfast] new=35 cov=204
+G19 f7_..55685_....55. r=12 CXInt [k3x_C_A74.cfast] new=22 cov=31
+G20 f8_...56575_.....5.. r=12 CXInt [k3x_C_A74.cfast] new=19 cov=1960
+G21 f9_...565665_....56... r=13 CXInt [k3x_C_A74.cfast] new=12 cov=12
+G22 f8_...56675_.....55. r=13 CXInt [k3x_C_A74.cfast] new=8 cov=98
+G23 f10_...5656565_........55 r=14 notLean [k3x_C_A74.cfast] new=6 cov=10
+G24 f8_..566765_....5.55 r=14 notLean [k3x_C_A74.cfast] new=6 cov=10
+## XRing entries covering >= 1 violated row: 47 of 89

@@ -693,3 +693,6 @@ our agent R and have no output from it.
   - 2,191 embed, giving 42,998 embeddings;
   - dihedral and automorphism dedup leaves 2,455 (configuration, pattern) pairs;
   - 168 patterns are shared by two configurations, which leaves 2,287.
+
+## 20 Oct 19:02Z — s35f fyq (l3q+fy on A67) ended without a bound
+- keeppen hit its 5 h cap (t ≈ 0.1274), and the nosep stage hit its 5 h cap without writing a cert, so lowerR2 had no input (lower_fyqL.log: FileNotFoundError). Superseded by s40f (l3q+fy+rpatN3 on A74+).

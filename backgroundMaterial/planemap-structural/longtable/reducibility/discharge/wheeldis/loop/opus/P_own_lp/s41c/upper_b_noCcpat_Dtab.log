@@ -1,0 +1,15 @@
+jcheck: 24 R5, 31 R6, 7 fans, 91 RBIG; 342 senders, 942 rooted vars
+patterns: 241 files read, 0 missing []; distinct by d {7: 9049, 8: 5609, 9: 3162, 10: 1340, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17685, 'RPAT': 158, 'RPATN': 2080}
+l3q: 3 q > 0 (total 0.133383383); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 1.21e-12)
+d=7: 305475 violated (exhaustive, 35.1s)
+d=8: 82724 violated (exhaustive, 35.7s)
+d=9: 64319 violated (exhaustive, 23.6s)
+d=10: 1122 violated (exhaustive, 2.5s)
+d=11: 0 violated (exhaustive, 1.8s)
+d=12: 0 violated (exhaustive, 1.5s)
+d=13: 0 violated (exhaustive, 1.6s)
+d=14: 0 violated (exhaustive, 1.7s)
+d=15: 0 violated (exhaustive, 2.3s)
+d=16: 0 violated (exhaustive, 1.9s)
