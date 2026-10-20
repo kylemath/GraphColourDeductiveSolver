@@ -1,0 +1,31 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+section 14 prime kill tables from out/job31/s33z/kill
+l3q: lq 3 values {(5, 6, 5): 0.027587241593598332, (6, 5, 5): 0.030119499091335433, (6, 6, 5): 0.03011949909129935}, lQ 3 values {(5, 6, 31): 0.027587241593598332, (6, 5, 31): 0.030119499091335433, (6, 6, 31): 0.03011949909129935}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 380, 31: 4620}
+l3q UB(c, a) over the table masks: {(5, 5): 0.0, (5, 6): 0.027587241594, (6, 5): 0.030119499091, (6, 6): 0.030119499091}
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.128957775394873 (claimed 25791555079/200000000000 = 0.128957775395000), model R6x2 apex True apexcls True zh False: 837 y, 289 g, 4897 h, 131 x, z []
+v values 0; r values 80; sol hat5 True
+bounds: 0 negative values; max x = 0.091069 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack -5.77e-13; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 2.72e-12
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+patterns distinct by kind: D 17595 (spec 15,497), C 2143 (spec 1,494), RPAT 158 (spec 158); by d {7: 9706, 8: 5335, 9: 2934, 10: 1151, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+patterns at d=7: 9706, of which held 10 (distinct)
+e7_B55B565_.56B6BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 594; max load among sole 1.060547 vs 1.128958; above threshold 0
+e7_B55B565_.56BBB5_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 378; max load among sole 0.973778 vs 1.128958; above threshold 0
+e7_B55B565_B5.66BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 810; max load among sole 1.060547 vs 1.128958; above threshold 0
+e7_B56B565_55.5BBB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 0.989952 vs 1.128958; above threshold 0
+e7_B56B565_55.B6BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 1.073798 vs 1.128958; above threshold 0
+e7_B56B565_55.BB6B_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 1.090411 vs 1.128958; above threshold 0
+e7_B55B565_.565BBB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 297; max load among sole 0.945681 vs 1.128958; above threshold 0
+e7_B55B565_.56BB6B_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 594; max load among sole 1.055265 vs 1.128958; above threshold 0
+e7_B55B565_B5.BB66_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 792; max load among sole 1.083025 vs 1.128958; above threshold 0
+e7_B56B565_55.BBB5_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 378; max load among sole 0.984625 vs 1.128958; above threshold 0
+lower cert: 45 receiverR2 rows, all admissible WITH the 10 (so none exists only because of them): True
+kill tables / l3q masks: forbidden set is RSST + k3x (no cpat file): 0 killed bits change
+RESULT: sole arrangements 6111, above the upper threshold 0 -> no dependency

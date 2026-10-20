@@ -1,0 +1,34 @@
+# Dependency of s33z (A67, sol_q66 upper 0.128957775395 / cert 55686/438047) and s39o (A74, sol 1/9 / cert 20/183) on the 10 job27 C entries the ring-merge sweep holds (out/job30/ringmerge_cpat_dep.py; Studio st21_check set-up, read-only).
+# Method: every receiver arrangement each held entry matches in its own frame (d = 7), kept if admissible under all OTHER patterns ('sole'), exact receiverR2 load under the solution compared with d - 6 + t.
+
+## s33z (A67)
+section 14 prime kill tables from out/job31/s33z/kill
+e7_B55B565_.56B6BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 594; max load among sole 1.060547 vs 1.128958; above threshold 0
+e7_B55B565_.56BBB5_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 378; max load among sole 0.973778 vs 1.128958; above threshold 0
+e7_B55B565_B5.66BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 810; max load among sole 1.060547 vs 1.128958; above threshold 0
+e7_B56B565_55.5BBB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 0.989952 vs 1.128958; above threshold 0
+e7_B56B565_55.B6BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 1.073798 vs 1.128958; above threshold 0
+e7_B56B565_55.BB6B_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 1.090411 vs 1.128958; above threshold 0
+e7_B55B565_.565BBB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 297; max load among sole 0.945681 vs 1.128958; above threshold 0
+e7_B55B565_.56BB6B_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 594; max load among sole 1.055265 vs 1.128958; above threshold 0
+e7_B55B565_B5.BB66_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 792; max load among sole 1.083025 vs 1.128958; above threshold 0
+e7_B56B565_55.BBB5_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 378; max load among sole 0.984625 vs 1.128958; above threshold 0
+lower cert: 45 receiverR2 rows, all admissible WITH the 10 (so none exists only because of them): True
+kill tables / l3q masks: forbidden set is RSST + k3x (no cpat file): 0 killed bits change
+RESULT: sole arrangements 6111, above the upper threshold 0 -> no dependency
+
+## s39o (A74)
+section 14 prime kill tables from out/job31/s39o/kill
+e7_B55B565_.56B6BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 594; max load among sole 1.034851 vs 1.111111; above threshold 0
+e7_B55B565_.56BBB5_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 378; max load among sole 1.050850 vs 1.111111; above threshold 0
+e7_B55B565_B5.66BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 567; max load among sole 1.052293 vs 1.111111; above threshold 0
+e7_B56B565_55.5BBB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 486; max load among sole 1.050091 vs 1.111111; above threshold 0
+e7_B56B565_55.B6BB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 1.012995 vs 1.111111; above threshold 0
+e7_B56B565_55.BB6B_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 756; max load among sole 1.016633 vs 1.111111; above threshold 0
+e7_B55B565_.565BBB_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 297; max load among sole 1.063805 vs 1.111111; above threshold 0
+e7_B55B565_.56BB6B_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 594; max load among sole 1.021785 vs 1.111111; above threshold 0
+e7_B55B565_B5.BB66_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 594; max load among sole 1.009835 vs 1.111111; above threshold 0
+e7_B56B565_55.BBB5_1111111: 1215 arrangements matched in its frame; sole (admissible without the 10) 378; max load among sole 1.039893 vs 1.111111; above threshold 0
+lower cert: 10 receiverR2 rows, all admissible WITH the 10 (so none exists only because of them): True
+kill tables / l3q masks: forbidden set is RSST + k3x (no cpat file): 0 killed bits change
+RESULT: sole arrangements 5400, above the upper threshold 0 -> no dependency
