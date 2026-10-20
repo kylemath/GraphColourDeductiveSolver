@@ -1,0 +1,42 @@
+violated rows/cells with all C out: 453642 ({'7': 305475, '8': 82724, '9': 64319, '10': 1122, 'cons': 2})
+uncovered by any C entry: 3303
+C entries covering >= 1 row: 655
+sole-cover entries: 104; rows left after the sole set: 18874; greedy adds 25; joint-table additions 1; cover total 130
+cover by kind: {'k3x_C': 116, 'RSST': 10, 'cpat-other': 2, 'C6wheel': 2}
+cover by Lean status: {'CXInt': 73, 'notLean': 32, 'CXRing': 23, 'CWheels': 2}
+sole by Lean status: {'CXRing': 17, 'notLean': 29, 'CXInt': 56, 'CWheels': 2}
+cover by ring (lean status counts):
+  ring 9: 1  {'CXInt': 1}
+  ring 10: 6  {'CXInt': 5, 'CXRing': 1}
+  ring 11: 23  {'CXInt': 17, 'CXRing': 3, 'notLean': 2, 'CWheels': 1}
+  ring 12: 38  {'CXInt': 22, 'notLean': 6, 'CXRing': 9, 'CWheels': 1}
+  ring 13: 37  {'notLean': 3, 'CXInt': 27, 'CXRing': 7}
+  ring 14: 24  {'notLean': 21, 'CXRing': 3}
+  ring 15: 1  {'CXInt': 1}
+ring 14-16 cover entries:
+  f8_.5656765_....5... r=14 notLean k3x_C S sole=565 cov=715
+  f9_..5565675_......5.. r=14 CXRing k3x_C S sole=502 cov=1174
+  f9_...566566_....5..5. r=14 notLean k3x_C S sole=239 cov=244
+  f7_.565776_...5.5. r=14 notLean k3x_C S sole=232 cov=410
+  f10_...5655665_.......5.. r=14 notLean k3x_C S sole=103 cov=784
+  f7_5666766_...5... r=14 notLean k3x_C S sole=90 cov=152
+  f7_.566676_.....5. r=14 notLean k3x_C S sole=84 cov=385
+  f8_...56765_....5.65 r=14 notLean k3x_C S sole=84 cov=236
+  f10_...5565665_.......5.. r=14 notLean k3x_C S sole=51 cov=201
+  e7_B56656._6B.66.._1111110 r=14 notLean cpat-other S sole=48 cov=74
+  f8_..567575_...5..5. r=14 notLean k3x_C S sole=32 cov=495
+  f9_...565656_......66. r=14 notLean k3x_C S sole=32 cov=1872
+  f10_...5656565_......66.. r=15 CXInt k3x_C S sole=19 cov=108
+  f10_..56556565_.......... r=14 notLean k3x_C S sole=10 cov=168
+  f8_..566576_.....55. r=14 notLean k3x_C S sole=8 cov=17
+  f7_.556686_....55. r=14 notLean k3x_C S sole=6 cov=44
+  f9_..5656665_......5.. r=14 notLean k3x_C S sole=6 cov=30
+  f9_..5656665_.....5... r=14 notLean k3x_C S sole=6 cov=6
+  f8_...56585_....665. r=14 notLean k3x_C S sole=3 cov=21
+  f7_.566766_...5.5. r=14 notLean k3x_C S sole=2 cov=56
+  f9_...565665_....66... r=14 notLean k3x_C S sole=2 cov=113
+  f8_..565676_...5..5. r=14 notLean k3x_C G sole=0 cov=178
+  f7_5667576_..5.... r=14 CXRing k3x_C G sole=0 cov=209
+  f8_.5566765_.....5.. r=14 CXRing k3x_C G sole=0 cov=6
+  f10_..56565656_.......55. r=14 notLean k3x_C G sole=0 cov=8
+
