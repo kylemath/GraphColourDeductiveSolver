@@ -63,6 +63,16 @@ once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill;
   `joint,single,6,3`: the pre-registered joint and single windows first, then the two-at-one-7 windows (s6, then s3).
   The 01:48Z start used `joint,6,3,single` and was stopped while enumerating.
 
+- **02:05Z, part p41 = 5, apex 6-9 closed here: 100.00 percent (20,544 of 976,562,500 uncovered).** Registry 78.25
+  percent plus 75 two-engine kills (4 D, 71 C, rings 11-15; 161 windows run, 6,876 skipped as covered). 24 of the 25
+  children (ts6, ts3) are dead; ts6 = 9, ts3 = 9 is at 99.95 percent. Every uncovered filling has p31, ts6, tp31/s3,
+  ts3 and tp41/s3 all >= 9 (s3 with every outer contact of degree >= 9, which no window can hold). Many kills are
+  joint windows, e.g. g7_-....655_....657_......5..6..5. (C, ring 13). The two apex = 5 parts are registry-covered.
+- **02:41Z, Studio batch 1 (main 315a6285, `out/job54s/`): the 336 joint windows at ring 15-16 are done, 218 two-engine C
+  kills, 0 D, 0 cfast rejections.** `loop/k53/imp54.py` reads Studio's drive45-format files and writes cen53-rule
+  verdicts to `loop/k53/S_res.txt` (346 windows with both engines in, 223 C and 123 none; kills equal Studio's KILL).
+  They go into the census cache once the running census closes; a rerun then counts them exactly.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
