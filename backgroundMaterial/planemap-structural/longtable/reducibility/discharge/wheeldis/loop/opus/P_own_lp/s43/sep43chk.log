@@ -1,0 +1,5 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+z2 keys with random values: 3812 (face keys 704)
+d=7: 400 rows returned (1.0s), decoupled run returned 400
+d=8: 400 rows returned (1.1s), decoupled run returned 400
+SEP43: PASS  (800 rows checked, 800 with a face, 0 mismatches; rows where the decoupled UB is strictly larger: 206)

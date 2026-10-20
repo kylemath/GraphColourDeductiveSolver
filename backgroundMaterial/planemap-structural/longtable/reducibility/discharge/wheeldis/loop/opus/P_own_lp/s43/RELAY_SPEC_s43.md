@@ -180,3 +180,63 @@ rc(z2[K]) ≥ 0 for every K2. Here rc = −(Σ_S λ coef − Σ_R λ coef) / tco
   - If (P2) is feasible, stop and report what h2 still cannot see.
   - If (P2) is infeasible, report the most negative columns at the (P1) optimum, the rows they touch, and the
     first-order gain Σ max(0, −rc)·cap at caps 0.05 and 0.1.
+
+## 43.6 Results (written after the runs; the spec above was committed first, ccb15e11)
+
+**Engine.** `s43/eng` = `s40f/eng` + `s43/port_fy2.py` (prelay2.py, pcheck.py) + `bin/jsep6` (from `jsep6.cpp`).
+md5s are in `s43/engine_src_md5.txt`.
+
+**Control (a): fy2 off reproduces s39o (A74).**
+- lowerR2 on cert_q39n3A74L: **VALID 20/183**, log byte-identical to `s39o/run_n3_A74/lower.log` (`ctl_lower_off.log`).
+- upperR2 nomax on sol_q39n3A74: **FEASIBLE 1/9**, identical modulo timings (`ctl_upper_off.log`).
+
+**Control (b): keys and coupling.**
+- `phys43.py` (`phys43.log`) builds explicit rotation systems around u, and every hat is read by a generic rule from
+  both rotations that contain the pair. An independent key is checked against the engine's sender key and against the
+  engine's receiver cell keys.
+  - **253,282 (five, big) pairs on 67,603 rows (39,366 with a face), 0 mismatches. Lemma 2 checked on 95,984 face fives.**
+  - Broken control (t read as s_{i+1}'s letter): 18,353 of 66,850 rows mismatch.
+- `sep43chk.py` (`sep43chk.log`): jsep6 mode 2 at d = 7 and 8 with random z2.
+  - Each returned load is compared with an independent Python max over cells.
+  - **800 rows, all with a face, 0 mismatches.**
+  - The decoupled UB (face file 'none') is strictly larger on 206 of them.
+
+**Pricing (step 3, `pricer43.py` → `pricer43.out`, `why43.out`): kill line NOT passed.**
+- Lifting LP over the 15 sender and 10 receiver rows of cert_q39n3A74L. The 5 face rows split into 2 cells each (t small
+  or big, both allowed).
+  - **(P2) is feasible with worst face-key rc = 0.**
+  - The lifting puts every face row in its t-small cell (cells 4:0 and 3:0).
+- The face rows' 8 z2 keys then have rc:
+  - (7,5,5,6,6;0,1,0,·,0) +2/183;
+  - (7,5,5,6,6;0,1,0,·,1), (7,5,5,7,6;0,0,0,·,0) and (7,5,5,7,6;0,0,0,·,1) exactly 0;
+  - the four t-big keys 0 (untouched).
+- Every cert sender that pays a face key has h2 = 0, i.e. t small:
+  - 55667 [1,0,0,1,0|1,0];
+  - 55667 [1,0,1,0,0|0,·];
+  - 55767 [0,0,0,0,0], [0,0,0,1,0], [0,0,1,1,0].
+  So t does not separate the face receivers from their payers.
+- (P1) is INVALID with the 4 sender-only columns of s40f, now at level 2. None touches a receiver row:
+  - z(7,6,6,6,6;0,·,·,·,1) −10/183;
+  - z(7,5,5,6,6;0,0,1,·,0) −2/183 (55667 [0,1,0,0,0|1,1], the one paying sender with t big);
+  - z(7,6,5,6,6;0,·,·,·,1) −2/183;
+  - z(7,6,5,5,6;1,·,·,·,1) −2/183.
+  First-order gain if capped at 0.05 / 0.1: 0.0044 / 0.0087, all from sender-only columns and none from the face rows.
+
+**What level 2 still cannot see (exploratory pricing, `pricer43p.py`; not specified or built).**
+- After t, the only masked hat of both face keys is h3, the private of the far-side 6 (w3 or w6). u's row knows it
+  only through filt16's allowed-private mask.
+- Unmasking it, with receiver cells over the 6's private classes allowed by amask ("2P", `pricer43p.out`): **(P2) is
+  still feasible, rc 0.**
+- Adding the fan class of a link-6 spoke as well, which u reads exactly as s_{i+1} or s_{i−2} ("2P+fan",
+  `pricer43pf.out`): **(P2) is still feasible.**
+- At 2P+fan the face five's z key is its whole sender context (n, all five hats, the visible fan). The only exception is
+  the fan of the apex 6 (n3), which is at ring 3 from u.
+- The cert pays each face row with fives whose own context is exactly that face five's context. Any five→big column
+  keyed on the five's view therefore has equal sender and receiver weight on the face rows (rc = 0), at every cluster
+  level.
+- The face rows can only move with something that is not a five→big refinement. Two candidates:
+  - a transfer out of the face 7 itself (big→big or 7→6, keyed on its face);
+  - exact letters (5 vs 6 for t or the private), but the sender's hat5 rows read classes only, so the five end cannot
+    match exact letters.
+
+**Step 4 (A78 warm solve) was not run:** the kill line failed.

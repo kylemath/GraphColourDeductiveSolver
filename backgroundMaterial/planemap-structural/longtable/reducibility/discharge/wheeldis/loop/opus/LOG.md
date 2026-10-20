@@ -738,3 +738,28 @@ our agent R and have no output from it.
   - On A78 + exname, upperR2 on the A74 n3 sol (no fy) is still **FEASIBLE at 1/9**.
   - The n3 cert has 4 rows killed on A78, so a new lower is needed.
 - PID 6187 (fyq A67 nosep) was not stopped; it ended at its own 5 h cap. RSST 2.126 and 8406.123 are absent from every solve.
+
+## Round s43: fy cluster level 2 (fy2, face apex private t), built + priced on the A74 cert: kill line NOT passed
+- Spec first: `P_own_lp/s43/RELAY_SPEC_s43.md` (sha ccb15e11), with results added in §43.6.
+  - Faces are w_i = w_{i+1} = s_i = 5, and t_i is s_i's fourth neighbour. Lemma: h2 of both face fives is t_i.
+  - A five in two faces is R5.
+  - The z key unmasks h2 at faces. Receiver rows split into cells (c2(t) per face, R5-filtered at s_i, never empty).
+  - The separator window holds the per-five UB. The new jsep6 couples the two face fives exactly at the leaf.
+- Engine `s43/eng` = s40f/eng + `port_fy2.py` + jsep6, behind the flag `fy2` (needs `fy`).
+- Control (a), fy2 off on A74:
+  - lowerR2 on cert_q39n3A74L gives VALID 20/183, byte-identical log;
+  - upperR2 on sol_q39n3A74 gives FEASIBLE 1/9, identical modulo timings.
+- Control (b):
+  - `phys43.py`: 253,282 (five, big) pairs on 67,603 explicit rotation systems, 0 mismatches. The broken-t control has
+    18,353 mismatching rows.
+  - `sep43chk.py`: jsep6 face coupling against an independent max over cells, 800 rows, 0 mismatches.
+- Pricing against cert_q39n3A74L (`pricer43.out`): **the face-restricted lifting is feasible (rc 0)**.
+  - All 5 face rows sit in their t-small cell. Every sender paying a face key has t small.
+  - The face keys' rc are +2/183 or 0. The 4 negative columns are the sender-only ones from s40f (−10/183 and 3 × −2/183).
+- Exploratory (`pricer43p.py`): unmasking the far-side 6's private as well (2P), and adding the visible 6 fan (2P+fan),
+  leaves the face lifting feasible.
+  - The cert pays each face row with fives of exactly that face five's context, so no five→big refinement can price
+    negative there.
+  - Moving the face rows needs a transfer out of the face 7, or exact letters.
+- No solve was run: step 4 is gated on the kill line. CPU: nice 10, threads 1. s42a was untouched. RSST 2.126 and
+  8406.123 are absent (no new patterns).
