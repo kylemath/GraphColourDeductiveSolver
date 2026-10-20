@@ -38,6 +38,13 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   Its batch 1 (ff9c1f83) gave 404 lines, all D, and its nl54d is at 450 of 610 at ring 16-18, all D. This machine's
   one worker goes up from nl1283 and stops where the two meet.
 
+- **09:48Z, admission head adm56a** (`loop/k54/adm.py` on main 6f74ffd2, regression byte-identical: +25 D, +18 C,
+  43 names); Long Table admitted it at cd2e2f2f (2,580 D / 1,115 C).
+- **10:06Z, r56b (d8 75566556/86666965, 11.2 percent) dies at ring 12-14.** Its 1,146 ring <= 14 windows (09:46-10:06Z)
+  gave 27 kills, 3 minimal: f8_...55665_...66... (ring 12, C), f8_55665567_......5. (13, D), f8_...65576_...66.5.
+  (14, C); files `loop/k47/r56b_kills*` (44894a8d). Admission head adm56b on cd2e2f2f, regression byte-identical:
+  +19 D, +8 C (27 names), `loop/k56/adm56b/` (10:07Z).
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
