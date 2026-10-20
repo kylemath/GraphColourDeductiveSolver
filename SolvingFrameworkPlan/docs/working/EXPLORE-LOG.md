@@ -80,6 +80,14 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   has no kill at ring <= 14; its ring 15-18 to-do is held until Opus's A72 list shows whether it still binds. Guesses:
   part 1 was wrong (5 rows, not <= 2), part 2 right (at least 10 of 13 die). The d10 rows died at ring 13-14 rather
   than 12-13.
+- **14:16Z, r56g dies at ring 15 (Studio job52d10 batch 1, 1a340174, ring 15 lines 1-1,066).** 16 two-engine kills, 3
+  f-names (`loop/k47/minkill47.py` on Studio's KILL / A_*.out; window file md5 equal to ours): the whole wheel
+  f10_5656565656_.......... (ring 15, D, kc + dfast18) and two C names with interior-only X, f10_.565656565_..........
+  (u and 9 of the 10 link vertices) and f10_...5656565_......66.. (both X={I0-I3}). The first C sits inside the row's
+  link alone, so the row dies whatever its second ring holds. Re-run here (kc -C, dfast, cfast --fixed): same verdicts,
+  same class counts and X as Studio. Files `loop/k47/r56g_kills*` (311068f8). Admission head adm56g on main 3e801c10,
+  regression byte-identical: +1 D, +2 C (3 names, none already on main), `loop/k56/adm56g/`. With it all 13 rpatN
+  binders are dead. Studio's remaining ring 15-16 windows of this row can only add redundant kills.
 
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
