@@ -99,3 +99,6 @@ R.append(("        if L6R and L[j] == 6:   # RELAY_SPEC_s23.4\n",
           "            D += T4[SALL[:, j], SALL[:, (j - 1) % 6], SALL[:, (j + 1) % 6], SALL[:, (j - 2) % 6]]\n"
           "        if L6R and L[j] == 6:   # RELAY_SPEC_s23.4\n"))
 patch('prelay2.py', R)
+# s44 run: binderR2 reads fb values too (reporting only)
+patch('prelay2.py', [("    for fam in ('g', 'h', 'z', 'zr', 'r', 'rr', 'lq', 'lQ', 'z6', 'Z6', 'q', 'f'):",
+                      "    for fam in ('g', 'h', 'z', 'zr', 'r', 'rr', 'lq', 'lQ', 'z6', 'Z6', 'q', 'f', 'fb'):")])

@@ -1238,7 +1238,7 @@ def cmd_binderR2():
     load_patterns(); xon = 'xon' in FLAGS
     Sj = json.load(open(OPT['sol'])); t = Sj['t']; C = json.load(open(OPT['cert'])) if 'cert' in OPT else []
     VAL = {('y', k): v for k, v in Sj['y'].items()}
-    for fam in ('g', 'h', 'z', 'zr', 'r', 'rr', 'lq', 'lQ', 'z6', 'Z6', 'q', 'f'):
+    for fam in ('g', 'h', 'z', 'zr', 'r', 'rr', 'lq', 'lQ', 'z6', 'Z6', 'q', 'f', 'fb'):
         for k, v in Sj.get(fam, []): VAL[(fam, tuple(k))] = v
     for k, v in Sj.get('D', []): VAL[('D', eval(k))] = v
     for k, v in Sj.get('x', {}).items(): VAL[('x', int(k))] = v
