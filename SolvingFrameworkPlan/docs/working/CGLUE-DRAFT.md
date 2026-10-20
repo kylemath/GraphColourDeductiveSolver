@@ -107,7 +107,7 @@ build in this container with 0 errors and no `sorry`** (the same holds for `CSan
   - `xrEntries_ok` (one `native_decide`) proves admissibility, fold safety and the `CEntry` side facts for all 96.
   - `XRData.toCEntryF` builds the `CEntryF` once `hC` is supplied.
   - `hC` is not computed here. Timing: about 33 s at ring 11 (`f7_..57556_...65..`, checked), and more than
-    13 CPU-minutes at ring 14. The 48 ring-14 and 3 larger entries are a Studio batch (Job 24b scale).
+    60 CPU-minutes at ring 14 (`f9_..5565675_......5..`; stopped unfinished). The 48 ring-14 and 3 larger entries are a Studio batch (Job 24b scale).
 
 ## What is assumed
 
