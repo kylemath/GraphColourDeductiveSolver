@@ -73,6 +73,10 @@
   finals committed on main 19:10Z), 7766556/6576576 (414) and 7665566/6765766 (225), and 213 of 7655667/6756656's 243,
   all with 0 two-engine kills. Left: 30 ring-18 windows of 7655667/6756656 and 319 of r57d (`loop/k57/face57_7_*_rest.txt`,
   36e47b3c). Long Table's kill line for job57face is met, so it is not running; the face rows stay rule-side.
+  Correction 19:11Z: 7766556/6567566's finals reached main only at b3c6bddf; all 352 of its windows had run (343 kc
+  neither, 9 ring-18 kc timeouts), so its rest file is void. Studio runs r57d (rest file, all rings) and r57e rings 17-18.
+- **21:30Z, r57e ring 15-16: no kill.** All 560 windows (274 at 15, 286 at 16; 19:07-21:28Z, 3 cores) ran with 0 two-engine
+  kills and 0 kc timeouts. Its rings 17-18 are at Studio.
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
