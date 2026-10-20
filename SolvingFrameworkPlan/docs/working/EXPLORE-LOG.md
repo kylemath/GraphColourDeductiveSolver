@@ -55,6 +55,11 @@ percent each), and 7 smaller (`loop/k56/rows56.txt`).
   byte-identical to r56a's: the same 86 kills, 43 names and 6 minimal f-names, all already on main since cd2e2f2f. No
   admission is needed; the rpatN cert kept it only because it predates adm56a (10:46Z).
 
+- **11:30Z, r56e (d10 6566565665/6655556556, 3.9 percent) dies at ring 14.** Its 2,033 ring <= 14 windows
+  (10:45-11:30Z) gave 18 kills, 5 minimal (4 C, 1 D, all ring 14: f10_...5656656_.......55.,
+  f10_...5665656_.....5556., _.....6555., _....5..55. (D), _...5...55.); files `loop/k47/r56e_kills*` (a5a70479).
+  Admission head adm56e on dbb8509c, regression byte-identical: +8 D, +10 C (18 names), `loop/k56/adm56e/` (11:31Z).
+
 ## Round 55 (20 Oct 2026, 06:23Z-): H-NLROW, does a 2026 configuration sit inside a binder of the A67 l3q cert?
 
 **Pre-registered 06:23Z, before any containment run of this round.** Opus 06:20Z (sent at Long Table's request): the
