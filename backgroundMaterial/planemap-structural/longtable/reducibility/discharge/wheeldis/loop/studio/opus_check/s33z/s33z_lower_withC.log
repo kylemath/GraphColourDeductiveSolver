@@ -1,0 +1,21 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+section 14 prime kill tables from out/job31/s33z/kill
+l3q: lq 3 values {(5, 6, 5): 0.027587241593598332, (6, 5, 5): 0.030119499091335433, (6, 6, 5): 0.03011949909129935}, lQ 3 values {(5, 6, 31): 0.027587241593598332, (6, 5, 31): 0.030119499091335433, (6, 6, 31): 0.03011949909129935}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 380, 31: 4620}
+l3q UB(c, a) over the table masks: {(5, 5): 0.0, (5, 6): 0.027587241594, (6, 5): 0.030119499091, (6, 6): 0.030119499091}
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.128957775394873 (claimed 55686/438047 = 0.127123345211815), model R6x2 apex True apexcls True zh False: 837 y, 289 g, 4897 h, 131 x, z []
+v values 0; r values 80; sol hat5 True
+bounds: 0 negative values; max x = 0.091069 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack -5.77e-13; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 2.72e-12
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+patterns distinct by kind: D 17595 (spec 15,497), C 2143 (spec 1,494), RPAT 158 (spec 158); by d {7: 9706, 8: 5335, 9: 2934, 10: 1151, 11: 347, 12: 84, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+cert rows 401: {'senderR2': 66, 'cons2': 206, 'mrowL': 12, 'mrowR2': 72, 'receiverR2': 45}; mrowR2/mrowV not in canonical orientation: 0 []
+lower: tco = 1, D = 55686/438047; nonzero reduced costs: M[766675530] = 1580/438047, M[766765530] = 7460/438047, g[5111655] = 2320/438047, r[5057] = 11280/438047, r[5058] = 6960/438047, r[506507] = 42540/438047, r[506516] = 2320/438047, r[5067] = 4700/438047, r[5068] = 4640/438047, r[509519] = 6960/438047, r[515611] = 2320/438047, r[5159] = 6960/438047, r[5177] = 3340/438047, r[611611] = 1160/438047; negative (non-x) 0
+LOWER: VALID t >= 55686/438047
+VERDICT (lower only): PASS (lower VALID 55686/438047)

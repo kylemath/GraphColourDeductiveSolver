@@ -117,7 +117,9 @@ def candV(sig):
     U, wr, sr, sl, wl, ar, al = sig[:7]; m = sig[7] if len(sig) == 8 else 31
     return {v_of((U, wr, sr, p, sl, wl), ar, al) for p in LET if not isR6((U, wr, sr, p, sl, wl)) and (m >> (p - 5)) & 1}
 import numpy as _np
-KT = {7: _np.load(os.path.join(HERE, 'out', 'job31', 'st16', 'kill_U7.npy')), 9: _np.load(os.path.join(HERE, 'out', 'job31', 'st16', 'kill_U9.npy'))}
+KILLDIR = os.environ.get('KILLDIR', os.path.join(HERE, 'out', 'job31', 'st16'))   # section 14' tables of the solve's registry
+KT = {7: _np.load(os.path.join(KILLDIR, 'kill_U7.npy')), 9: _np.load(os.path.join(KILLDIR, 'kill_U9.npy'))}
+print('section 14 prime kill tables from %s' % KILLDIR)
 KT[8] = KT[9]
 def pmask(U, wm2, wm1, wp1, wp2, sm2, sm1, s0, sp1):
     K = KT[U][wm2 - 5, wm1 - 5, wp1 - 5, wp2 - 5, sm2 - 5, sm1 - 5, s0 - 5, sp1 - 5]
@@ -389,7 +391,8 @@ for e in CERT:
         r = {('h', hk): 1, ('M', sg): -1}
         if w > 0: fail('mrowR2 weight > 0 %s' % lab)
     elif kind == 'mrowL':   # section 21.3: lq[(c, a, a2)] - lQ[(c, a, m)] <= 0 for a2 in m
-        qk, Qk = tuple(lab[1]), tuple(lab[2])
+        # label order (not fixed by section 21.3; the s33z certs use it): ['mrowL', [c, a, m] (lQ), [c, a, a2] (lq)]
+        Qk, qk = tuple(lab[1]), tuple(lab[2])
         if not (qk[:2] == Qk[:2] and qk[0] in (5, 6) and qk[1] in (5, 6) and (Qk[2] >> (qk[2] - 5)) & 1): fail('mrowL label invalid %s' % lab)
         r = {('lq', qk): 1, ('lQ', Qk): -1}
         if w > 0: fail('mrowL weight > 0 %s' % lab)

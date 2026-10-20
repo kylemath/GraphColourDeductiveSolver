@@ -32,8 +32,9 @@ for l in open(os.path.join(HERE, 'loop', 'k44', 'rsst_verdicts.txt')):
     ver[f[0].split('_')[0]] = v[0][8:] if v else None
 R = [c for c in G['rsst']() if ver.get(c[0]) in ('D2', 'C2cons')]
 names = []
-for fn in ('k3x_D_09d8ac38.out', 'k3x_C_09d8ac38.cfast'):
-    for l in open(os.path.join(HERE, 'loop', 'studio', 'opus_check', fn)):
+K3X = os.environ.get('K3X')   # 'D_FILE,C_FILE' (s33z: the solve's registry); default the 09d8ac38 pair
+for fn in (K3X.split(',') if K3X else (os.path.join(HERE, 'loop', 'studio', 'opus_check', 'k3x_D_09d8ac38.out'), os.path.join(HERE, 'loop', 'studio', 'opus_check', 'k3x_C_09d8ac38.cfast'))):
+    for l in open(fn if os.path.isabs(fn) else os.path.join(HERE, fn)):
         if re.match(r'^[epf]\d+_\S+ r=\d+ ', l): names.append(l.split()[0])
 names = list(dict.fromkeys(names))
 want = set(names); kc = {}
