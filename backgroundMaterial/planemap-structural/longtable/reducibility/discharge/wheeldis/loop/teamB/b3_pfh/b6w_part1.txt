@@ -606,3 +606,249 @@ sepb2: d=7 tables built (644799 marks)
   slow query d=7 35s
   slow query d=8 90s
   slow query d=9 34s
+sepb2: 16437 patterns loaded, 21426572 forbidden codes
+oracle patterns loaded 3531
+static 6-rows 994
+resumed from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/teamB/b3_pfh/ckpt_b6w.pkl at it 1180 (84946 rows)
+sepb2: d=7 tables built (644799 marks)
+sepb2: d=8 tables built (153917 marks)
+sepb2: d=9 tables built (45936 marks)
+sepb2: d=10 tables built (32177 marks)
+sepb2: d=11 tables built (28380 marks)
+sepb2: d=12 tables built (31755 marks)
+sepb2: d=13 tables built (45098 marks)
+sepb2: d=14 tables built (24369 marks)
+sepb2: d=15 tables built (38642 marks)
+it 1181 t=0.106719 rows=85100 vars=9089 new=154 opat=3531 rowsdropped=0 worst={7: np.float64(11.9941), 8: np.float64(21.8933), 9: np.float64(21.6076), 10: np.float64(25.8933), 11: np.float64(25.6076), 12: np.float64(29.8933), 13: np.float64(29.6076), 14: np.float64(33.8933), 15: np.float64(33.6076)} trunc=[] full=False (754s)
+it 1182 t=0.106719 rows=85307 vars=9089 new=207 opat=3531 rowsdropped=0 worst={7: np.float64(11.6758), 8: np.float64(11.2685), 9: np.float64(21.2385), 10: np.float64(25.8933), 11: np.float64(25.2385), 12: np.float64(29.8933), 13: np.float64(29.2385), 14: np.float64(33.8933), 15: np.float64(33.2385)} trunc=[] full=False (994s)
+it 1183 t=0.106719 rows=85447 vars=9089 new=140 opat=3531 rowsdropped=0 worst={7: np.float64(11.5979), 8: np.float64(1.9251), 9: np.float64(11.8598), 10: np.float64(14.376), 11: np.float64(13.5469), 12: np.float64(16.0867), 13: np.float64(15.2576), 14: np.float64(17.7738), 15: np.float64(16.9447)} trunc=[] full=False (1194s)
+it 1184 t=0.106719 rows=85587 vars=9089 new=140 opat=3531 rowsdropped=0 worst={7: np.float64(11.051), 8: np.float64(0.8442), 9: np.float64(3.0534), 10: np.float64(2.3986), 11: np.float64(1.9694), 12: np.float64(2.1067), 13: np.float64(1.4519), 14: np.float64(1.0228), 15: np.float64(1.1601)} trunc=[] full=False (1437s)
+it 1185 t=0.106719 rows=85684 vars=9089 new=97 opat=3531 rowsdropped=0 worst={7: np.float64(8.0692), 8: np.float64(0.4919), 9: np.float64(1.0946), 10: np.float64(0.7286), 11: np.float64(0.3284), 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (1550s)
+  slow query d=8 44s
+it 1186 t=0.106719 rows=85767 vars=9089 new=83 opat=3531 rowsdropped=0 worst={7: np.float64(2.8864), 8: np.float64(0.2719), 9: np.float64(0.6284), 10: np.float64(0.1603), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (1680s)
+  slow query d=8 46s
+  slow query d=9 28s
+it 1187 t=0.106719 rows=85874 vars=9089 new=107 opat=3531 rowsdropped=0 worst={7: np.float64(1.0299), 8: np.float64(0.2929), 9: np.float64(0.3909), 10: np.float64(0.1279), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (1850s)
+  slow query d=8 50s
+  slow query d=9 42s
+it 1188 t=0.106719 rows=85973 vars=9098 new=99 opat=3531 rowsdropped=0 worst={7: np.float64(0.5852), 8: np.float64(0.2194), 9: np.float64(0.2821), 10: np.float64(0.0483), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (2028s)
+  slow query d=8 66s
+  slow query d=9 28s
+it 1189 t=0.106719 rows=86065 vars=9098 new=92 opat=3531 rowsdropped=0 worst={7: np.float64(0.5077), 8: np.float64(0.1696), 9: np.float64(0.3111), 10: np.float64(0.0238), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (2202s)
+  slow query d=8 33s
+  slow query d=9 49s
+it 1190 t=0.106719 rows=86149 vars=9100 new=84 opat=3531 rowsdropped=0 worst={7: np.float64(0.4902), 8: np.float64(0.3485), 9: np.float64(0.2623), 10: np.float64(0.0023), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (2363s)
+  slow query d=8 62s
+  slow query d=9 56s
+it 1191 t=0.106719 rows=86224 vars=9108 new=75 opat=3531 rowsdropped=0 worst={7: np.float64(0.69), 8: np.float64(0.2115), 9: np.float64(0.2323), 10: np.float64(0.0011), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (2552s)
+  slow query d=8 71s
+  slow query d=9 51s
+it 1192 t=0.106719 rows=86300 vars=9108 new=76 opat=3531 rowsdropped=0 worst={7: np.float64(0.4177), 8: np.float64(0.2013), 9: np.float64(0.2276), 10: np.float64(0.0071), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (2758s)
+  slow query d=8 79s
+  slow query d=9 32s
+it 1193 t=0.106719 rows=86385 vars=9108 new=85 opat=3531 rowsdropped=0 worst={7: np.float64(0.4197), 8: np.float64(0.216), 9: np.float64(0.3089), 10: np.float64(0.0154), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (2962s)
+  slow query d=7 24s
+  slow query d=8 55s
+  slow query d=9 52s
+it 1194 t=0.106719 rows=86444 vars=9110 new=59 opat=3531 rowsdropped=0 worst={7: np.float64(0.3737), 8: np.float64(0.1759), 9: np.float64(0.2527), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (3169s)
+  slow query d=7 22s
+  slow query d=8 55s
+  slow query d=9 43s
+it 1195 t=0.106719 rows=86530 vars=9112 new=86 opat=3531 rowsdropped=0 worst={7: np.float64(0.4494), 8: np.float64(0.2331), 9: np.float64(0.3254), 10: np.float64(0.0055), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (3375s)
+  slow query d=8 70s
+  slow query d=9 35s
+it 1196 t=0.106719 rows=86619 vars=9112 new=89 opat=3531 rowsdropped=0 worst={7: np.float64(0.8008), 8: np.float64(0.1462), 9: np.float64(0.2572), 10: np.float64(0.02), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (3557s)
+  slow query d=7 27s
+  slow query d=8 82s
+it 1197 t=0.106719 rows=86821 vars=9112 new=202 opat=3531 rowsdropped=0 worst={7: np.float64(0.3741), 8: np.float64(0.1296), 9: np.float64(3.1511), 10: np.float64(3.4299), 11: np.float64(2.6584), 12: np.float64(2.9373), 13: np.float64(2.1657), 14: np.float64(2.4446), 15: np.float64(1.6731)} trunc=[] full=False (3825s)
+  slow query d=7 30s
+  slow query d=8 72s
+  slow query d=9 31s
+it 1198 t=0.106719 rows=86905 vars=9112 new=84 opat=3531 rowsdropped=0 worst={7: np.float64(0.3641), 8: np.float64(0.1546), 9: np.float64(0.2684), 10: np.float64(0.0127), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (4047s)
+  slow query d=7 30s
+  slow query d=8 66s
+  slow query d=9 34s
+it 1199 t=0.106719 rows=86984 vars=9112 new=79 opat=3531 rowsdropped=0 worst={7: np.float64(0.3343), 8: np.float64(0.2087), 9: np.float64(0.2648), 10: np.float64(0.0101), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (4248s)
+  slow query d=7 33s
+  slow query d=8 66s
+  slow query d=9 41s
+it 1200 t=0.106719 rows=87065 vars=9112 new=81 opat=3531 rowsdropped=0 worst={7: np.float64(0.3335), 8: np.float64(0.1647), 9: np.float64(0.2815), 10: np.float64(0.0082), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (4458s)
+  slow query d=7 21s
+  slow query d=8 74s
+  slow query d=9 51s
+it 1201 t=0.106719 rows=87155 vars=9112 new=90 opat=3531 rowsdropped=0 worst={7: np.float64(0.4321), 8: np.float64(0.1173), 9: np.float64(0.2555), 10: np.float64(0.0212), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (4680s)
+  slow query d=7 28s
+  slow query d=8 75s
+  slow query d=9 38s
+it 1202 t=0.106719 rows=87246 vars=9112 new=91 opat=3531 rowsdropped=0 worst={7: np.float64(0.3596), 8: np.float64(0.1262), 9: np.float64(0.2695), 10: np.float64(0.0418), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (4896s)
+  slow query d=7 38s
+  slow query d=8 45s
+  slow query d=9 48s
+it 1203 t=0.106719 rows=87326 vars=9112 new=80 opat=3531 rowsdropped=0 worst={7: np.float64(0.2664), 8: np.float64(0.2595), 9: np.float64(0.2669), 10: np.float64(0.004), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (5099s)
+  slow query d=7 30s
+  slow query d=8 74s
+  slow query d=9 57s
+it 1204 t=0.106719 rows=87413 vars=9117 new=87 opat=3531 rowsdropped=0 worst={7: np.float64(0.4098), 8: np.float64(0.1281), 9: np.float64(0.2325), 10: np.float64(0.0194), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (5333s)
+  slow query d=7 24s
+  slow query d=8 74s
+it 1205 t=0.106719 rows=87502 vars=9117 new=89 opat=3531 rowsdropped=0 worst={7: np.float64(0.4148), 8: np.float64(0.1408), 9: np.float64(0.4037), 10: np.float64(0.0292), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (5529s)
+  slow query d=7 28s
+  slow query d=8 79s
+  slow query d=9 37s
+it 1206 t=0.106719 rows=87584 vars=9117 new=82 opat=3531 rowsdropped=0 worst={7: np.float64(0.3958), 8: np.float64(0.097), 9: np.float64(0.2708), 10: np.float64(0.0143), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (5743s)
+  slow query d=7 33s
+  slow query d=8 82s
+  slow query d=9 39s
+it 1207 t=0.106719 rows=87667 vars=9117 new=83 opat=3531 rowsdropped=0 worst={7: np.float64(0.3081), 8: np.float64(0.0975), 9: np.float64(0.2751), 10: np.float64(0.0088), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (5977s)
+  slow query d=7 42s
+  slow query d=8 69s
+  slow query d=9 31s
+it 1208 t=0.106719 rows=87761 vars=9117 new=94 opat=3531 rowsdropped=0 worst={7: np.float64(0.272), 8: np.float64(0.1425), 9: np.float64(0.3452), 10: np.float64(0.0124), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (6196s)
+  slow query d=7 37s
+  slow query d=8 76s
+  slow query d=9 35s
+it 1209 t=0.106719 rows=87850 vars=9117 new=89 opat=3531 rowsdropped=0 worst={7: np.float64(0.3032), 8: np.float64(0.1208), 9: np.float64(0.3452), 10: np.float64(0.031), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (6417s)
+  slow query d=7 38s
+  slow query d=8 77s
+  slow query d=9 41s
+it 1210 t=0.106719 rows=87935 vars=9117 new=85 opat=3531 rowsdropped=0 worst={7: np.float64(0.2876), 8: np.float64(0.1207), 9: np.float64(0.2224), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (6641s)
+  slow query d=7 37s
+  slow query d=8 74s
+  slow query d=9 26s
+it 1211 t=0.106719 rows=88032 vars=9117 new=97 opat=3531 rowsdropped=0 worst={7: np.float64(0.3343), 8: np.float64(0.1243), 9: np.float64(0.2826), 10: np.float64(0.0226), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (6850s)
+  slow query d=7 41s
+  slow query d=8 70s
+  slow query d=9 25s
+it 1212 t=0.106719 rows=88105 vars=9117 new=73 opat=3531 rowsdropped=0 worst={7: np.float64(0.2456), 8: np.float64(0.1265), 9: np.float64(0.289), 10: np.float64(0.0024), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (7043s)
+  slow query d=7 43s
+  slow query d=8 69s
+  slow query d=9 22s
+it 1213 t=0.106719 rows=88198 vars=9117 new=93 opat=3531 rowsdropped=0 worst={7: np.float64(0.2611), 8: np.float64(0.1338), 9: np.float64(0.3374), 10: np.float64(0.0119), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (7249s)
+  slow query d=7 46s
+  slow query d=8 77s
+  slow query d=9 40s
+it 1214 t=0.106719 rows=88294 vars=9119 new=96 opat=3531 rowsdropped=0 worst={7: np.float64(0.2629), 8: np.float64(0.1176), 9: np.float64(0.2455), 10: np.float64(0.0247), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (7482s)
+  slow query d=7 39s
+  slow query d=8 50s
+  slow query d=9 29s
+it 1215 t=0.106719 rows=88377 vars=9119 new=83 opat=3531 rowsdropped=0 worst={7: np.float64(0.2782), 8: np.float64(0.3494), 9: np.float64(0.2666), 10: np.float64(0.0006), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (7671s)
+  slow query d=7 24s
+  slow query d=8 73s
+  slow query d=9 29s
+it 1216 t=0.106719 rows=88463 vars=9119 new=86 opat=3531 rowsdropped=0 worst={7: np.float64(0.4638), 8: np.float64(0.1083), 9: np.float64(0.2397), 10: np.float64(0.0039), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (7865s)
+  slow query d=7 42s
+  slow query d=8 68s
+  slow query d=9 24s
+it 1217 t=0.106719 rows=88541 vars=9119 new=78 opat=3531 rowsdropped=0 worst={7: np.float64(0.2498), 8: np.float64(0.1274), 9: np.float64(0.3175), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (8063s)
+  slow query d=7 38s
+  slow query d=8 79s
+  slow query d=9 29s
+it 1218 t=0.106719 rows=88629 vars=9119 new=88 opat=3531 rowsdropped=0 worst={7: np.float64(0.3233), 8: np.float64(0.1328), 9: np.float64(0.2715), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (8271s)
+  slow query d=7 35s
+  slow query d=8 90s
+  slow query d=9 33s
+it 1219 t=0.106719 rows=88702 vars=9121 new=73 opat=3531 rowsdropped=0 worst={7: np.float64(0.2555), 8: np.float64(0.0916), 9: np.float64(0.2542), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (8493s)
+  slow query d=7 41s
+  slow query d=8 34s
+  slow query d=9 24s
+it 1220 t=0.107527 rows=88794 vars=9121 new=92 opat=3531 rowsdropped=0 worst={7: np.float64(0.2245), 8: np.float64(0.3328), 9: np.float64(0.3171), 10: np.float64(0.0462), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (8658s)
+  slow query d=7 30s
+  slow query d=8 68s
+  slow query d=9 48s
+it 1221 t=0.107527 rows=88881 vars=9121 new=87 opat=3531 rowsdropped=0 worst={7: np.float64(0.3238), 8: np.float64(0.1201), 9: np.float64(0.2491), 10: np.float64(0.043), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (8870s)
+  slow query d=7 28s
+  slow query d=8 81s
+  slow query d=9 65s
+it 1222 t=0.107527 rows=88962 vars=9121 new=81 opat=3531 rowsdropped=0 worst={7: np.float64(0.253), 8: np.float64(0.102), 9: np.float64(0.2101), 10: np.float64(0.0031), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (9100s)
+  slow query d=7 37s
+  slow query d=8 85s
+  slow query d=9 64s
+it 1223 t=0.107527 rows=89042 vars=9121 new=80 opat=3531 rowsdropped=0 worst={7: np.float64(0.214), 8: np.float64(0.0933), 9: np.float64(0.1671), 10: np.float64(0.0089), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (9351s)
+  slow query d=7 36s
+  slow query d=8 78s
+  slow query d=9 54s
+it 1224 t=0.107527 rows=89147 vars=9121 new=105 opat=3531 rowsdropped=0 worst={7: np.float64(0.2353), 8: np.float64(0.1435), 9: np.float64(0.1889), 10: np.float64(0.0394), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (9578s)
+  slow query d=7 38s
+  slow query d=8 61s
+  slow query d=9 61s
+it 1225 t=0.107527 rows=89212 vars=9121 new=65 opat=3531 rowsdropped=0 worst={7: np.float64(0.2158), 8: np.float64(0.2374), 9: np.float64(0.2073), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (9803s)
+  slow query d=7 35s
+  slow query d=8 67s
+  slow query d=9 57s
+it 1226 t=0.107527 rows=89313 vars=9125 new=101 opat=3531 rowsdropped=0 worst={7: np.float64(0.2752), 8: np.float64(0.1805), 9: np.float64(0.1747), 10: np.float64(0.0106), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (10034s)
+  slow query d=7 33s
+  slow query d=8 85s
+  slow query d=9 58s
+it 1227 t=0.107527 rows=89397 vars=9125 new=84 opat=3531 rowsdropped=0 worst={7: np.float64(0.224), 8: np.float64(0.0979), 9: np.float64(0.1746), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (10270s)
+  slow query d=7 44s
+  slow query d=8 95s
+  slow query d=9 52s
+it 1228 t=0.107527 rows=89470 vars=9125 new=73 opat=3531 rowsdropped=0 worst={7: np.float64(0.2034), 8: np.float64(0.1402), 9: np.float64(0.184), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (10519s)
+  slow query d=7 41s
+  slow query d=8 94s
+  slow query d=9 56s
+it 1229 t=0.107527 rows=89549 vars=9125 new=79 opat=3531 rowsdropped=0 worst={7: np.float64(0.1903), 8: np.float64(0.0827), 9: np.float64(0.1661), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (10773s)
+  slow query d=7 37s
+  slow query d=8 76s
+  slow query d=9 45s
+it 1230 t=0.107527 rows=89630 vars=9125 new=81 opat=3531 rowsdropped=0 worst={7: np.float64(0.2274), 8: np.float64(0.1343), 9: np.float64(0.2125), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (10988s)
+  slow query d=7 41s
+  slow query d=8 78s
+  slow query d=9 54s
+it 1231 t=0.107527 rows=89738 vars=9125 new=108 opat=3531 rowsdropped=0 worst={7: np.float64(0.1767), 8: np.float64(0.109), 9: np.float64(0.2975), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (11224s)
+  slow query d=7 37s
+  slow query d=8 88s
+  slow query d=9 54s
+it 1232 t=0.107527 rows=89825 vars=9125 new=87 opat=3531 rowsdropped=0 worst={7: np.float64(0.1491), 8: np.float64(0.0925), 9: np.float64(0.1989), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (11453s)
+  slow query d=7 38s
+  slow query d=8 79s
+  slow query d=9 43s
+it 1233 t=0.107527 rows=89920 vars=9125 new=95 opat=3531 rowsdropped=0 worst={7: np.float64(0.1549), 8: np.float64(0.1042), 9: np.float64(0.1888), 10: np.float64(0.0026), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (11673s)
+  slow query d=7 28s
+  slow query d=8 84s
+  slow query d=9 54s
+it 1234 t=0.107527 rows=90007 vars=9125 new=87 opat=3531 rowsdropped=0 worst={7: np.float64(0.2278), 8: np.float64(0.108), 9: np.float64(0.1631), 10: np.float64(0.0068), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (11890s)
+  slow query d=7 33s
+  slow query d=8 88s
+  slow query d=9 68s
+it 1235 t=0.107527 rows=90089 vars=9125 new=82 opat=3531 rowsdropped=0 worst={7: np.float64(0.2151), 8: np.float64(0.0692), 9: np.float64(0.1442), 10: np.float64(0.0067), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (12126s)
+  slow query d=7 37s
+  slow query d=8 95s
+  slow query d=9 87s
+it 1236 t=0.107527 rows=90178 vars=9125 new=89 opat=3531 rowsdropped=0 worst={7: np.float64(0.1878), 8: np.float64(0.0846), 9: np.float64(0.1454), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (12404s)
+  slow query d=7 41s
+  slow query d=8 99s
+  slow query d=9 84s
+it 1237 t=0.107527 rows=90255 vars=9125 new=77 opat=3531 rowsdropped=0 worst={7: np.float64(0.1785), 8: np.float64(0.0678), 9: np.float64(0.1471), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (12682s)
+  slow query d=7 43s
+  slow query d=8 103s
+  slow query d=9 72s
+it 1238 t=0.107527 rows=90337 vars=9125 new=82 opat=3531 rowsdropped=0 worst={7: np.float64(0.1604), 8: np.float64(0.0617), 9: np.float64(0.1716), 10: np.float64(0.0086), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (12960s)
+  slow query d=7 45s
+  slow query d=8 100s
+  slow query d=9 61s
+it 1239 t=0.107527 rows=90429 vars=9125 new=92 opat=3531 rowsdropped=0 worst={7: np.float64(0.1608), 8: np.float64(0.0787), 9: np.float64(0.1938), 10: np.float64(0.0054), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (13228s)
+  slow query d=7 38s
+  slow query d=8 104s
+  slow query d=9 63s
+it 1240 t=0.107527 rows=90546 vars=9125 new=117 opat=3531 rowsdropped=0 worst={7: np.float64(0.1684), 8: np.float64(0.0638), 9: np.float64(0.1698), 10: np.float64(0.0057), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (13496s)
+  slow query d=7 36s
+  slow query d=8 108s
+  slow query d=9 43s
+it 1241 t=0.107527 rows=90646 vars=9125 new=100 opat=3531 rowsdropped=0 worst={7: np.float64(0.16), 8: np.float64(0.0527), 9: np.float64(0.1757), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (13755s)
+  slow query d=7 34s
+  slow query d=8 113s
+  slow query d=9 54s
+it 1242 t=0.107527 rows=90763 vars=9125 new=117 opat=3531 rowsdropped=0 worst={7: np.float64(0.1803), 8: np.float64(0.1045), 9: np.float64(0.1749), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (14021s)
+  slow query d=7 32s
+  slow query d=8 102s
+  slow query d=9 43s
+it 1243 t=0.107527 rows=90858 vars=9125 new=95 opat=3531 rowsdropped=0 worst={7: np.float64(0.2097), 8: np.float64(0.0862), 9: np.float64(0.2024), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (14262s)
+  slow query d=7 38s
+  slow query d=8 119s
+  slow query d=9 38s
+it 1244 t=0.107527 rows=91010 vars=9125 new=152 opat=3531 rowsdropped=0 worst={7: np.float64(0.1925), 8: np.float64(0.0653), 9: np.float64(0.2063), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (14522s)
+  slow query d=7 38s
+  slow query d=8 106s
+  slow query d=9 48s
+it 1245 t=0.107527 rows=91090 vars=9125 new=80 opat=3531 rowsdropped=0 worst={7: np.float64(0.2731), 8: np.float64(0.0992), 9: np.float64(0.2215), 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (14777s)
