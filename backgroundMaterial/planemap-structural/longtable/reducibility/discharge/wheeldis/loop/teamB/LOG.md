@@ -137,3 +137,8 @@ One engine; asks for Studio's cross-check.
 v0 (no patterns) lost to a container restart at a lower bound of 10/27. v2 (complete 849bd5fe snapshot, Studio
 09cc8b69) runs; separation at d >= 8 hits its node limit, lower bound -1/8 after 4 iterations. Separator fixed once
 (11dcebf4: hashed pattern groups); a stronger windowed pattern-aware bound (`b3_pfh/sepb2.cpp`) is being tested.
+
+## B6 round (20 Oct ~16:00Z): smoothed row generation
+- s5 (cap=3, own rules + B6 oracle, Wentges 0.5): lower bound rose 7/61 -> 2/17 -> 1/8 = 0.125 at it 1285; worst violations now <= 0.09 (one engine, unconverged: lower bound only).
+- Consequence: the t = 0.12 certificate (f12) cannot close in this class; stopped at it 1300 (margin 0.016552 on generated rows, violations ~0.5).
+- Replaced by f129: tfix = 0.1289 (just under the rival's published upper bound 0.1290), resumed from f12's rows. Closing it would give t* <= 0.1289 in the cap=3 own-rules class.
