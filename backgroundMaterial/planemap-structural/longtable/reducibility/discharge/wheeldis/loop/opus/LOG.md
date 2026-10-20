@@ -603,3 +603,10 @@ our agent R and have no output from it.
   - fy+g7: [6/43, 2/13] (partial rows).
   - No upper bound.
 - fy is our own rule. It cuts the face-7 dual from 0.231 to 0.094 in cert_st25yL.
+
+## l3q-only on A67 (main 2c97e14d out/job30, 2,555 D / 1,097 C, dcount 17,595), s33z/run_A67/q66, 20 Oct ~04:27Z
+- keeppen converged: UPPER-R2 FEASIBLE at t = 0.128957775 (sol_q66 6dd8178d).
+- nosep: LOWER-R2 VALID at t ≥ 55686/438047 = 0.127123 (cert_q66L 096a717b, 401 rows).
+- **0.12712 ≤ t* ≤ 0.12896, one engine.** Down from [11/75, 0.14779], because explore's r54 kills removed the old binders.
+- 8666655/5677657 does not bind: no dual, slack 0.078.
+- Top binder is face-7 7766556/6576576 at −0.071 (19% of receiver weight). Next come d7 7666655, 7667565, 7656666, 7766555, 7665567, 9656775, 8666565 and d9 755666556, each at about −0.016.

@@ -684,7 +684,14 @@ def cmd_solveR2():
     for it in range(MAXIT):
         t1 = time.time()
         if 'ipm0' in FLAGS: h.setOptionValue('solver', 'ipm' if it == 0 else 'simplex')
+        LPMAX = float(OPT.get('lpmax', '0'))   # s33z: per-LP time limit (s); on a stalled simplex re-run with IPM (+ simplex polish)
+        if LPMAX: h.setOptionValue('time_limit', h.getRunTime() + LPMAX)
         h.run()
+        if LPMAX and h.getModelStatus() == highspy.HighsModelStatus.kTimeLimit:
+            t_ = time.time(); h.setOptionValue('time_limit', highspy.kHighsInf); h.setOptionValue('solver', 'ipm'); h.run()
+            h.setOptionValue('solver', 'simplex'); h.run()
+            log('  lpmax: simplex hit %.0fs at iter %d; IPM + simplex %.1fs, status %s' % (LPMAX, it, time.time() - t_, h.modelStatusToString(h.getModelStatus())))
+        if LPMAX: h.setOptionValue('time_limit', highspy.kHighsInf)
         if 'ipm0' in FLAGS and it == 0 and 'polish' in FLAGS:   # stage 33: re-run simplex from the IPM crossover basis (vertex duals for lowerR2)
             t_ = time.time(); h.setOptionValue('solver', 'simplex'); h.run(); log('  polish: simplex from the IPM basis %.1fs, status %s' % (time.time() - t_, h.modelStatusToString(h.getModelStatus())))
         xv = np.array(h.getSolution().col_value); t = xv[jt]

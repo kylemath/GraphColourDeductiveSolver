@@ -17,3 +17,8 @@ warm: /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-struct
 02:58:39Z container restart ~02:50Z killed all runs (checkpoint 3fe47d3e). Newest origin/main 2c97e14d: k3x_D ea44e0f9 (2,555 D, r54o since A66) != A66 -> rebuild as A67; resume_s33.sh
 03:16:22Z [A67] resume_s33 start (pid 2723)
 03:16:22Z [A67] K keeppen start, warm 7 files
+04:27:47Z [A67] q66: LOWER-R2: VALID  t >= 55686/438047 = 0.127123345  (401 rows) | UPPER-R2: FEASIBLE at t = 0.128957775395 | binders done
+06:16:22Z [A67] K exit 124 (not converged); re-run resume_s33.sh A67 2c97e14d to continue warm
+06:18:19Z [A67] K run 1 timed out (3 h; iter 16 t=0.125794, iter 17 LP stalled >75 min). Added lpmax=1500 (simplex time limit -> IPM+simplex). Re-run resume warm.
+06:18:19Z [A67] resume_s33 start (pid 9990)
+06:18:19Z [A67] K keeppen start, warm 8 files

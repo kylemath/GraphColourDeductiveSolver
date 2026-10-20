@@ -60,7 +60,7 @@ if ! done_ K; then
   snap rows_s33; WS=$(ls rows_s33_r*.txt 2>/dev/null | paste -sd, -); WARM=${WS:+$WS,}$BASE; echo "$WARM" > $RD/warm_K.txt
   note "K keeppen start, warm $(echo $WARM | tr ',' '\n' | wc -l) files"
   date -u +%H:%M:%SZ > $RD/K_start.txt
-  timeout 10800 nice -n 5 python3 pcheck.py solveR2 $F keeppen tag=s33 $A $CB warm=$WARM K=300 xcap=3 xpen=1e-3 threads=2 work=${WK}s > $RD/s33.log 2>&1; ec=$?
+  timeout 10800 nice -n 5 python3 pcheck.py solveR2 $F keeppen tag=s33 $A $CB warm=$WARM K=300 xcap=3 xpen=1e-3 lpmax=1500 threads=2 work=${WK}s > $RD/s33.log 2>&1; ec=$?
   if [ $ec = 0 ] && [ sol_s33.json -nt $RD/K_start.txt ]; then cp sol_s33.json rows_s33.txt $RD/; mark K; note "K converged: $(grep '^iter' $RD/s33.log | tail -1 | cut -c1-40)"
   else note "K exit $ec (not converged); re-run resume_s33.sh $TAG $SHA to continue warm"; wait $QP; exit 4; fi
 fi
