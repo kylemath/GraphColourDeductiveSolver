@@ -494,6 +494,18 @@ theorem xLabel_fresh (cf : Conf) (eqR : List (ℕ × ℕ)) (lbl : List ℕ) (ρ 
   unfold xLabel
   rw [dif_neg h0, dif_neg h1]
 
+/-- **No loops after contraction** (the conclusion of C4b): the X-graph has an edge, and none of
+its components contains both ends of a listed edge outside `X` or of an edge of `G`. -/
+def XLoopFree (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (ρ : ℕ → Fin n) (ι : Fin cf.m → Fin n)
+    (G : SphericalMap n) : Prop :=
+  (∃ x y, (xGraph cf eqR eqI ρ ι).Adj x y) ∧
+  (∀ (a : Fin cf.m) t, ringAdjOf cf a t = true → eqR.contains (t, a.val) = false →
+    ¬ (xGraph cf eqR eqI ρ ι).Reachable (ι a) (ρ t)) ∧
+  (∀ a b : Fin cf.m, intAdjOf cf a b = true →
+    (eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = false →
+    ¬ (xGraph cf eqR eqI ρ ι).Reachable (ι b) (ι a)) ∧
+  (∀ x y, G.Adj x y → ¬ (xGraph cf eqR eqI ρ ι).Reachable x y)
+
 /-- **C4b: the label argument.** Under local admissibility and `XRingSimple`, the X-graph
 has an edge, and its components never contain both ends of a listed edge outside `X` or of an edge
 of `G`.
@@ -637,7 +649,7 @@ theorem ConfigOccW.contract_reducer_of (cf : Conf) (eqR eqI : List (ℕ × ℕ))
     (hrr : ∀ a, a < cf.m → ∀ t ∈ cf.ringAdj[a]!, t < cf.r) {ι : Fin cf.m → Fin n}
     (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
     (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
-    (hs : XRingSimple eqR cf.r ρ)
+    (hlab : XLoopFree cf eqR eqI ρ ι G)
     (hcon : ∀ H : SimpleGraph (Fin n), H = xGraph cf eqR eqI ρ ι → H ≤ T.graph →
       (∃ x y, H.Adj x y) → ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
         Nat.card T'.graph.support < Nat.card T.graph.support ∧
@@ -682,7 +694,7 @@ theorem ConfigOccW.contract_reducer_of (cf : Conf) (eqR eqI : List (ℕ × ℕ))
     · rcases h with ⟨a, t, hat, -, rfl, rfl⟩ | ⟨a, b, hab, -, rfl, rfl⟩
       · exact (hex.2 a t (hlt a t hat) hat).symm
       · exact (hex.1 a b hab).symm
-  obtain ⟨hne, hnR, hnI, hnG⟩ := ConfigOccW.xGraph_labels cf eqR eqI lbl hadm hloop O hs
+  obtain ⟨hne, hnR, hnI, hnG⟩ := hlab
   obtain ⟨T', π, hcard, hπ, hkeep⟩ := hcon _ rfl hle hne
   refine ⟨T', π, hcard, fun x y hxy => hkeep x y ((O.hG x y).1 hxy).1 (hnG x y hxy),
     fun a t hat => ⟨fun h => hπ _ _ (hXR a t hat h).reachable,
@@ -709,7 +721,8 @@ theorem ConfigOccW.contract_reducer (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (l
           π (ι b) = π (ι a)) ∧
         ((eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = false →
           T'.Adj (π (ι b)) (π (ι a)))) :=
-  ConfigOccW.contract_reducer_of cf eqR eqI lbl hadm hloop hrr O hex hs
+  ConfigOccW.contract_reducer_of cf eqR eqI lbl hadm hloop hrr O hex
+    (ConfigOccW.xGraph_labels cf eqR eqI lbl hadm hloop O hs)
     (fun H _ hle hne => contract_subgraph T H hle hne)
 
 /-- The X-graph of a single interior edge `p0 = (b, a)`: every edge is `ι a – ι b`. -/
@@ -742,6 +755,561 @@ theorem xGraph_one (cf : Conf) (p0 : ℕ × ℕ) (ρ : ℕ → Fin n) (ι : Fin 
   have ha : a = a' := Fin.ext (congrArg Prod.snd (hab.trans hab'.symm))
   have hb : b = b' := Fin.ext (congrArg Prod.fst (hab.trans hab'.symm))
   rw [e, e', ha, hb]
+
+/-! ## C5 for folded rings: fold-safe entries (no `XRingSimple`)
+
+A fold (`ρ p = ρ q` for positions `p ≠ q`) can only create a loop if it identifies a kept ring
+neighbour `s` of an X-component with the component's ring vertex `t` (D1), or the ring vertices
+`t`, `t'` of two X-components joined by a kept interior edge (D2). `foldSafeX` (decidable, per key)
+checks that every such pair is excluded by `exclB`. A pair is excluded when the positions are
+consecutive on the ring (`G`-adjacent, so distinct); or when one interior vertex sees both (`NbrInj`:
+the listed neighbours of an interior vertex are distinct vertices of `T`, which the true degree
+gives); or when two adjacent interior vertices see them. In that last case the common vertex would
+close a triangle with the interior edge. With no separating triangle the triangle is facial, so the
+vertex is a configuration apex of that edge (`ApexFacts`), and `NbrInj` at both ends gives `p = q`.
+This is option (a) for cycles of length 3. Pairs that need a cycle of length 4 or 5 are excluded by
+`cycEx` (see "Folds excluded by a short cycle" below), using `NoShortSepCycle`.
+
+Status (19 Oct 2026): with one label per X-component, `foldSafeX` holds for all 89 ring-X entries
+(`CGLUE-XRING-ENTRIES.txt`). 85 need only the triangle rule. Four need the short-cycle rule:
+`f7_..57556_...65..`, `f7_..57556_...66..` and `f7_5675767_.5.....` (4-cycles), and
+`f9_..5565675_......5..` (4- and 5-cycles; `cfF9_fold`). -/
+
+/-- Ring position `t` is touched by `eqR`. -/
+def touchedB (eqR : List (ℕ × ℕ)) (t : ℕ) : Bool := eqR.any (fun p => p.1 == t)
+
+/-- Positions `p` and `q` cannot be folded together (see the section docstring). -/
+def exclB (cf : Conf) (p q : ℕ) : Bool :=
+  q == (p + 1) % cf.r || p == (q + 1) % cf.r ||
+  (List.range cf.m).any (fun c => decide (p ∈ cf.ringAdj[c]!) &&
+    (decide (q ∈ cf.ringAdj[c]!) ||
+      (cf.intAdj[c]!).toList.any (fun a => decide (a < cf.m) && decide (q ∈ cf.ringAdj[a]!))))
+
+/-! ### Folds excluded by a short cycle (option (a), cycles of length 4 and 5)
+
+If `ρ p = ρ q` and an interior path `c₀ … c_{k-1}` (`2 ≤ k ≤ 4`) runs from a neighbour of `p` to a
+neighbour of `q`, then `ρ p, ι c₀, …, ι c_{k-1}` is a cycle of `T` of length `k + 1 ≤ 5`. Take a path
+edge `c_j c_{j+1}` whose ends have no common ring neighbour. The two faces on that edge have apexes
+that are common neighbours of its ends, so by `CommonNbr` and `nbr` they are interior vertices
+adjacent to both. If none of these lies on the path, the two apexes are off the cycle and lie on
+opposite sides of it, since the cycle's potential changes across the edge. For `k = 4` each apex
+also has an interior neighbour off the path, which lies on the same side (`side_step_cyc`). Then
+`NoShortSepCycle` is contradicted, so `ρ p ≠ ρ q`. The certificate is checked by `cycCertB`,
+and `cycEx` searches all interior paths of 2 to 4 vertices. -/
+
+/-- A short-cycle certificate for excluding the fold `ρ p = ρ q`. -/
+def cycCertB (cf : Conf) (p q : ℕ) (path : List ℕ) (j : ℕ) : Bool :=
+  decide (2 ≤ path.length) && decide (path.length ≤ 4) && decide path.Nodup &&
+  path.all (fun i => decide (i < cf.m)) &&
+  decide (p ∈ cf.ringAdj[path.getD 0 0]!) && decide (q ∈ cf.ringAdj[path.getD (path.length - 1) 0]!) &&
+  (List.range (path.length - 1)).all (fun i => decide (path.getD (i + 1) 0 ∈ cf.intAdj[path.getD i 0]!)) &&
+  decide (j + 1 < path.length) &&
+  (cf.ringAdj[path.getD j 0]!).toList.all (fun s => !decide (s ∈ cf.ringAdj[path.getD (j + 1) 0]!)) &&
+  (cf.intAdj[path.getD j 0]!).toList.all (fun e => !decide (e ∈ cf.intAdj[path.getD (j + 1) 0]!) ||
+    (!decide (e ∈ path) && (decide (path.length < 4) ||
+      (cf.intAdj[e]!).toList.any (fun f => decide (f < cf.m) && !decide (f ∈ path)))))
+
+/-- One step of the path enumeration. -/
+def extendP (cf : Conf) (ps : List (List ℕ)) : List (List ℕ) :=
+  ps.flatMap (fun p => (cf.intAdj[p.getLast!]!).toList.map (fun x => p ++ [x]))
+
+/-- Candidate interior paths with 2 to 4 vertices. -/
+def candP (cf : Conf) : List (List ℕ) :=
+  let p1 := (List.range cf.m).map (fun c => [c])
+  let p2 := extendP cf p1
+  let p3 := extendP cf p2
+  p2 ++ p3 ++ extendP cf p3
+
+/-- Search for a short-cycle certificate. -/
+def cycEx (cf : Conf) (p q : ℕ) : Bool :=
+  (candP cf).any (fun path => (List.range 3).any (fun j => cycCertB cf p q path j))
+
+/-- **Fold safety** (decidable, per key): every D1 and D2 pair is excluded. -/
+def foldSafeX (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ) : Bool :=
+  let L : ℕ → ℕ := fun i => lbl.getD i 0
+  (List.range cf.m).all (fun a =>
+    (cf.ringAdj[a]!).all (fun s => eqR.contains (s, a) ||
+      (List.range cf.r).all (fun t =>
+        !touchedB eqR t || L (cf.m + t) != L a || s == t || exclB cf s t || cycEx cf s t)) &&
+    (cf.intAdj[a]!).all (fun b => eqI.contains (b, a) || eqI.contains (a, b) ||
+      (List.range cf.r).all (fun t => (List.range cf.r).all (fun t' =>
+        !touchedB eqR t || !touchedB eqR t' || L (cf.m + t) != L a || L (cf.m + t') != L b ||
+          t == t' || exclB cf t t' || cycEx cf t t'))))
+
+/-- The listed ring neighbours of each interior vertex are distinct vertices of `T`. This follows
+from the true degree (`T.degree (ι a)` equals the number of listed neighbours) with `nbr` and
+`OccExact`. -/
+def NbrInj (r : ℕ) (ρ : ℕ → Fin n) (ringAdj : Fin m → ℕ → Bool) : Prop :=
+  ∀ c p q, ringAdj c p = true → ringAdj c q = true → p < r → q < r → ρ p = ρ q → p = q
+
+/-- The apex of a facial triangle on a listed interior edge is a configuration vertex adjacent to both
+ends. This follows from the rotation of `T` at the interior vertices being the configuration's rotation
+(`occ24`'s `Occ`, Job 26's 2-ball embedding). -/
+def ApexFacts (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) (ι : Fin m → Fin n)
+    (intAdj : Fin m → Fin m → Bool) (ringAdj : Fin m → ℕ → Bool) : Prop :=
+  ∀ c a, intAdj c a = true → ∀ w, Facial T (ι c) (ι a) w →
+    (∃ e, w = ι e) ∨ ∃ p, p < r ∧ w = ρ p ∧ ringAdj c p = true ∧ ringAdj a p = true
+
+/-- Every common neighbour in `T` of the two ends of a listed interior edge is a configuration
+vertex adjacent to both. -/
+def CommonNbr (T : SphericalMap n) (r : ℕ) (ρ : ℕ → Fin n) (ι : Fin m → Fin n)
+    (intAdj : Fin m → Fin m → Bool) (ringAdj : Fin m → ℕ → Bool) : Prop :=
+  ∀ c a, intAdj c a = true → ∀ w, T.Adj (ι c) w → T.Adj (ι a) w →
+    (∃ e, w = ι e) ∨ ∃ p, p < r ∧ w = ρ p ∧ ringAdj c p = true ∧ ringAdj a p = true
+
+/-- With no separating triangle, apex facts give common-neighbour facts. -/
+theorem commonNbr_of_apex {r : ℕ} {ι : Fin m → Fin n} {intAdj : Fin m → Fin m → Bool}
+    {ringAdj : Fin m → ℕ → Bool} (hns : NoSep T) (hex : OccExact T r ρ ι intAdj ringAdj)
+    (hA : ApexFacts T r ρ ι intAdj ringAdj) : CommonNbr T r ρ ι intAdj ringAdj :=
+  fun c a h w h1 h2 => hA c a h w (hns _ _ _ (hex.1 c a h) h2 h1.symm)
+
+/-- **Excluded pairs do not fold.** -/
+theorem excl_sound (cf : Conf) {ι : Fin cf.m → Fin n}
+    (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hNI : NbrInj cf.r ρ (ringAdjOf cf)) (hCN : CommonNbr T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    {p q : ℕ} (hp : p < cf.r) (hq : q < cf.r) (hpq : p ≠ q) (h : exclB cf p q = true) :
+    ρ p ≠ ρ q := by
+  intro he
+  simp only [exclB, Bool.or_eq_true, beq_iff_eq, List.any_eq_true, List.mem_range,
+    Bool.and_eq_true, decide_eq_true_eq] at h
+  simp only [List.any_eq_true, Array.mem_toList_iff, Bool.and_eq_true,
+    decide_eq_true_eq] at h
+  rcases h with (h | h) | ⟨c, hc, hcp, h⟩
+  · have a := O.ring.adj p
+    rw [← per_mod' O.ring.per (p + 1), ← h, ← he] at a
+    exact G.graph.ne_of_adj a rfl
+  · have a := O.ring.adj q
+    rw [← per_mod' O.ring.per (q + 1), ← h, he] at a
+    exact G.graph.ne_of_adj a rfl
+  · have hcp' : ringAdjOf cf ⟨c, hc⟩ p = true := decide_eq_true (by simpa using hcp)
+    rcases h with hcq | ⟨a, ha, ham, haq⟩
+    · exact hpq (hNI ⟨c, hc⟩ p q hcp' (decide_eq_true (by simpa using hcq)) hp hq he)
+    · have hca : intAdjOf cf ⟨c, hc⟩ ⟨a, ham⟩ = true := decide_eq_true (by simpa using ha)
+      have haq' : ringAdjOf cf ⟨a, ham⟩ q = true := decide_eq_true (by simpa using haq)
+      have h1 := hex.2 ⟨c, hc⟩ p hp hcp'
+      have h2 := hex.2 ⟨a, ham⟩ q hq haq'
+      rw [← he] at h2
+      rcases hCN _ _ hca (ρ p) h1 h2 with ⟨e, he'⟩ | ⟨p', hp', he', hc', ha'⟩
+      · exact O.ringOff p e he'
+      · have e1 := hNI _ p' p hc' hcp' hp' hp he'.symm
+        have e2 := hNI _ p' q ha' haq' hp' hq (he'.symm.trans he)
+        exact hpq (e1.symm.trans e2)
+
+/-- The side of a cycle propagates along an edge off the cycle. -/
+theorem side_step_cyc {r : ℕ} {ρ' : ℕ → Fin n} {c : T.Face → ZMod 2} (C : Cyc T r ρ')
+    (hc : CycPotential T r ρ' c) {x y : Fin n} (hx : ¬ OnCyc r ρ' x)
+    (hy : ¬ OnCyc r ρ' y) (hxy : T.Adj x y) {b : ZMod 2} (h : OnSide T c b x) :
+    OnSide T c b y := by
+  intro e he
+  let d : T.Dart := ⟨(x, y), hxy⟩
+  have h0 := cycInd_off' C d hx
+  have hp := hc d
+  rw [h0] at hp
+  have hd : c (T.faceOf d) = b := h d rfl
+  have key : ∀ u v : ZMod 2, 0 = u + v → v = u := by decide
+  have hs : c (T.faceOf d.symm) = b := (key _ _ hp).trans hd
+  rw [side_constC' C hc hy e d.symm he rfl]
+  exact hs
+
+/-- **The two apexes of a cycle edge lie on opposite sides** (when both are off the cycle). -/
+theorem apex_sides {r : ℕ} {ρ' : ℕ → Fin n} {c : T.Face → ZMod 2} (C : Cyc T r ρ')
+    (hc : CycPotential T r ρ' c) (k : ℕ) {w1 w2 : Fin n}
+    (h1 : Nx T (ρ' k) (ρ' (k + 1)) w1) (h2 : Nx T (ρ' (k + 1)) (ρ' k) w2)
+    (o1 : ¬ OnCyc r ρ' w1) (o2 : ¬ OnCyc r ρ' w2) :
+    ∃ b, OnSide T c b w1 ∧ OnSide T c (b + 1) w2 := by
+  obtain ⟨a1, e1⟩ := h1
+  obtain ⟨a2, e2⟩ := h2
+  let d : T.Dart := ⟨(ρ' k, ρ' (k + 1)), a1⟩
+  have s1 := onSide_of_dartC' C hc o1 (T.rotation.faceNext (T.rotation.next d))
+    (by rw [RotationSystem.face_next_fst]; exact e1)
+  rw [faceNext_face, faceOf_next] at s1
+  have s2 := onSide_of_dartC' C hc o2 (T.rotation.faceNext (T.rotation.next d.symm))
+    (by rw [RotationSystem.face_next_fst]; exact e2)
+  rw [faceNext_face, faceOf_next, Dart.symm_symm] at s2
+  have hp := hc d
+  rw [show cycInd T r ρ' (RotationSystem.edgeOfDart d) = 1 from cycInd_cycle' C k] at hp
+  have key : ∀ u v : ZMod 2, 1 = u + v → u = v + 1 := by decide
+  refine ⟨_, s1, ?_⟩
+  rw [← key _ _ hp]
+  exact s2
+
+theorem succ_mod_cases (t K : ℕ) (hK : 1 < K) :
+    ((t + 1) % K = t % K + 1 ∧ t % K + 1 < K) ∨ ((t + 1) % K = 0 ∧ t % K + 1 = K) := by
+  have hlt := Nat.mod_lt t (by omega : 0 < K)
+  rw [Nat.add_mod, Nat.mod_eq_of_lt hK]
+  by_cases h : t % K + 1 < K
+  · exact Or.inl ⟨Nat.mod_eq_of_lt h, h⟩
+  · have e : t % K + 1 = K := by omega
+    exact Or.inr ⟨by rw [e, Nat.mod_self], e⟩
+
+/-- **Short-cycle exclusion is sound** in a triangulation with no short separating cycle. -/
+theorem cyc_sound (cf : Conf) {ι : Fin cf.m → Fin n}
+    (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hCN : CommonNbr T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hloop : ∀ a, intAdjOf cf a a = false) (htri : T.Triangulated)
+    (hNS : ClaimGlue.NoShortSepCycle T)
+    {p q : ℕ} (hp : p < cf.r) (hq : q < cf.r) {path : List ℕ} {j : ℕ}
+    (h : cycCertB cf p q path j = true) : ρ p ≠ ρ q := by
+  classical
+  intro he
+  simp only [cycCertB, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, List.mem_range,
+    Bool.or_eq_true, Bool.not_eq_true', decide_eq_false_iff_not, List.any_eq_true,
+    Array.mem_toList_iff] at h
+  obtain ⟨⟨⟨⟨⟨⟨⟨⟨⟨hk2, hk4⟩, hnd⟩, hm⟩, hp0⟩, hqk⟩, hcons⟩, hj⟩, hring⟩, hint⟩ := h
+  set k := path.length with hk
+  set P : ℕ → ℕ := fun i => path.getD i 0 with hP
+  have gd : ∀ i (hi : i < k), path.getD i 0 = path[i] := fun i hi => by
+    rw [List.getD_eq_getElem?_getD, List.getElem?_eq_getElem hi, Option.getD_some]
+  have hPmem : ∀ i, i < k → P i ∈ path := fun i hi => by
+    simp only [hP, gd i hi]; exact List.getElem_mem hi
+  have hPm : ∀ i, i < k → P i < cf.m := fun i hi => hm _ (hPmem i hi)
+  have hPinj : ∀ i i', i < k → i' < k → P i = P i' → i = i' := fun i i' hi hi' e =>
+    (hnd.getD_inj hi hi').1 e
+  let ιN : ℕ → Fin n := fun i => if h : i < cf.m then ι ⟨i, h⟩ else ρ p
+  have hιN : ∀ i (hi : i < k), ιN (P i) = ι ⟨P i, hPm i hi⟩ := fun i hi => dif_pos _
+  let ρ' : ℕ → Fin n := fun t => if t % (k + 1) = 0 then ρ p else ιN (P (t % (k + 1) - 1))
+  have hK : 1 < k + 1 := by omega
+  -- adjacencies
+  have aInt : ∀ i, i + 1 < k → T.Adj (ιN (P i)) (ιN (P (i + 1))) := fun i hi => by
+    rw [hιN i (by omega), hιN (i + 1) hi]
+    exact hex.1 _ _ (decide_eq_true (hcons i (by omega)))
+  have aFirst : T.Adj (ρ p) (ιN (P 0)) := by
+    rw [hιN 0 (by omega)]; exact (hex.2 _ p hp (decide_eq_true hp0)).symm
+  have aLast : T.Adj (ιN (P (k - 1))) (ρ p) := by
+    rw [hιN (k - 1) (by omega), he]; exact hex.2 _ q hq (decide_eq_true hqk)
+  have C : Cyc T (k + 1) ρ' := by
+    refine ⟨by omega, fun t => ?_, fun t => ?_, fun s t hs ht e => ?_⟩
+    · simp only [ρ', Nat.add_mod_right]
+    · rcases succ_mod_cases t (k + 1) hK with ⟨h1, h2⟩ | ⟨h1, h2⟩
+      · simp only [ρ', h1, Nat.add_eq_zero_iff, one_ne_zero, and_false, if_false]
+        by_cases h0 : t % (k + 1) = 0
+        · rw [if_pos h0, h0]; exact aFirst
+        · rw [if_neg h0, show t % (k + 1) + 1 - 1 = (t % (k + 1) - 1) + 1 by omega]
+          exact aInt _ (by omega)
+      · simp only [ρ', h1, if_true]
+        rw [if_neg (by omega), show t % (k + 1) - 1 = k - 1 by omega]
+        exact aLast
+    · simp only [ρ', Nat.mod_eq_of_lt hs, Nat.mod_eq_of_lt ht] at e
+      by_cases hs0 : s = 0 <;> by_cases ht0 : t = 0
+      · omega
+      · rw [if_pos hs0, if_neg ht0, hιN _ (by omega)] at e; exact absurd e (O.ringOff _ _)
+      · rw [if_neg hs0, if_pos ht0, hιN _ (by omega)] at e; exact absurd e.symm (O.ringOff _ _)
+      · rw [if_neg hs0, if_neg ht0, hιN _ (by omega), hιN _ (by omega)] at e
+        have := hPinj _ _ (by omega) (by omega) (congrArg Fin.val (O.ιinj e))
+        omega
+  -- off the cycle
+  have off : ∀ e : Fin cf.m, e.val ∉ path → ¬ OnCyc (k + 1) ρ' (ι e) := by
+    rintro e he' ⟨t, ht, hte⟩
+    simp only [ρ', Nat.mod_eq_of_lt ht] at hte
+    by_cases ht0 : t = 0
+    · rw [if_pos ht0] at hte; exact O.ringOff _ _ hte
+    · rw [if_neg ht0, hιN _ (by omega)] at hte
+      have := congrArg Fin.val (O.ιinj hte)
+      exact he' (this ▸ hPmem _ (by omega))
+  -- the edge
+  have hu : ρ' (j + 1) = ιN (P j) := by
+    simp only [ρ', Nat.mod_eq_of_lt (show j + 1 < k + 1 by omega)]; rw [if_neg (by omega)]; rfl
+  have hv : ρ' (j + 1 + 1) = ιN (P (j + 1)) := by
+    simp only [ρ', Nat.mod_eq_of_lt (show j + 1 + 1 < k + 1 by omega)]; rw [if_neg (by omega)]; rfl
+  set ci : Fin cf.m := ⟨P j, hPm j (by omega)⟩
+  set ci' : Fin cf.m := ⟨P (j + 1), hPm (j + 1) hj⟩
+  have huv : intAdjOf cf ci ci' = true := decide_eq_true (hcons j (by omega))
+  rw [hιN j (by omega)] at hu
+  rw [hιN (j + 1) hj] at hv
+  -- apexes are interior common neighbours
+  have apex : ∀ w, T.Adj (ι ci) w → T.Adj (ι ci') w →
+      ∃ e : Fin cf.m, w = ι e ∧ ¬ OnCyc (k + 1) ρ' (ι e) ∧
+        (k = 4 → ∃ f : Fin cf.m, f ≠ e ∧ T.Adj (ι e) (ι f) ∧ ¬ OnCyc (k + 1) ρ' (ι f)) := by
+    intro w h1 h2
+    rcases hCN ci ci' huv w h1 h2 with ⟨e, rfl⟩ | ⟨p', -, rfl, hc1, hc2⟩
+    · have he1 : intAdjOf cf ci e = true := by
+        rcases O.nbr ci _ h1 with ⟨b, hb, hb'⟩ | ⟨t, -, ht, -⟩
+        · rwa [O.ιinj hb]
+        · exact absurd ht.symm (O.ringOff _ _)
+      have he2 : intAdjOf cf ci' e = true := by
+        rcases O.nbr ci' _ h2 with ⟨b, hb, hb'⟩ | ⟨t, -, ht, -⟩
+        · rwa [O.ιinj hb]
+        · exact absurd ht.symm (O.ringOff _ _)
+      rcases hint e.val (of_decide_eq_true he1) with hn | ⟨hn, hf⟩
+      · exact absurd (of_decide_eq_true he2) hn
+      refine ⟨e, rfl, off e hn, fun h4 => ?_⟩
+      rcases hf with hf | ⟨f, hf, hfm, hfp⟩
+      · omega
+      refine ⟨⟨f, hfm⟩, fun hfe => ?_, hex.1 _ _ (decide_eq_true hf), off _ hfp⟩
+      have := hloop e
+      rw [← hfe] at this
+      simp only [intAdjOf, decide_eq_false_iff_not] at this
+      exact this (by simpa [← hfe] using hf)
+    · exact absurd (of_decide_eq_true hc2) (hring p' (of_decide_eq_true hc1))
+  -- the two apexes
+  obtain ⟨c, hc⟩ := exists_cycPotential' C
+  have n1 : Nx T (ρ' (j + 1)) (ρ' (j + 1 + 1)) (T.rotation.next ⟨(ρ' (j + 1), ρ' (j + 1 + 1)), C.adj (j + 1)⟩).snd :=
+    ⟨C.adj (j + 1), rfl⟩
+  have n2 : Nx T (ρ' (j + 1 + 1)) (ρ' (j + 1))
+      (T.rotation.next ⟨(ρ' (j + 1 + 1), ρ' (j + 1)), (C.adj (j + 1)).symm⟩).snd :=
+    ⟨(C.adj (j + 1)).symm, rfl⟩
+  generalize (T.rotation.next ⟨(ρ' (j + 1), ρ' (j + 1 + 1)), C.adj (j + 1)⟩).snd = w1 at n1
+  generalize (T.rotation.next ⟨(ρ' (j + 1 + 1), ρ' (j + 1)), (C.adj (j + 1)).symm⟩).snd = w2 at n2
+  have n1' := n1
+  have n2' := n2
+  rw [hu, hv] at n1' n2'
+  obtain ⟨e1, rfl, o1, x1⟩ := apex w1 (nx_adj_right n1') (nx_adj_left (nx_tri htri n1').2)
+  obtain ⟨e2, rfl, o2, x2⟩ := apex w2 (nx_adj_left (nx_tri htri n2').2) (nx_adj_right n2')
+  obtain ⟨b, s1, s2⟩ := apex_sides C hc (j + 1) n1 n2 o1 o2
+  have a1 : T.Adj (ι e1) (ι ci) := (nx_adj_right n1').symm
+  have a2 : T.Adj (ι e2) (ι ci') := (nx_adj_right n2').symm
+  have zb : ∀ b' : ZMod 2, b' = b ∨ b' = b + 1 := by
+    intro b'; generalize b = x; revert b' x; decide
+  refine hNS (k + 1) ρ' c C (by omega) hc ?_ ?_
+  · rcases zb 0 with h0 | h0 <;> rcases zb 1 with h1 | h1
+    · exact absurd (h0.trans h1.symm) (by decide)
+    · exact ⟨⟨_, _, o1, h0 ▸ s1, a1⟩, ⟨_, _, o2, h1 ▸ s2, a2⟩⟩
+    · exact ⟨⟨_, _, o2, h0 ▸ s2, a2⟩, ⟨_, _, o1, h1 ▸ s1, a1⟩⟩
+    · exact absurd (h0.trans h1.symm) (by decide)
+  · intro h5 b'
+    obtain ⟨f1, hf1, af1, of1⟩ := x1 (by omega)
+    obtain ⟨f2, hf2, af2, of2⟩ := x2 (by omega)
+    have t1 := side_step_cyc C hc o1 of1 af1 s1
+    have t2 := side_step_cyc C hc o2 of2 af2 s2
+    rcases zb b' with rfl | rfl
+    · exact ⟨_, _, _, _, fun h => hf1 (O.ιinj h).symm, o1, s1, a1, of1, t1, af1.symm⟩
+    · exact ⟨_, _, _, _, fun h => hf2 (O.ιinj h).symm, o2, s2, a2, of2, t2, af2.symm⟩
+
+/-- `cycEx` is sound. -/
+theorem cycEx_sound (cf : Conf) {ι : Fin cf.m → Fin n}
+    (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hCN : CommonNbr T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hloop : ∀ a, intAdjOf cf a a = false) (htri : T.Triangulated)
+    (hNS : ClaimGlue.NoShortSepCycle T)
+    {p q : ℕ} (hp : p < cf.r) (hq : q < cf.r) (h : cycEx cf p q = true) : ρ p ≠ ρ q := by
+  simp only [cycEx, List.any_eq_true] at h
+  obtain ⟨path, -, j, -, h⟩ := h
+  exact cyc_sound cf O hex hCN hloop htri hNS hp hq h
+
+/-- The X-class of an interior vertex with label `l`: the ring vertex of the touched position with
+that label, if any, and `l` otherwise. -/
+noncomputable def kInt (cf : Conf) (eqR : List (ℕ × ℕ)) (lbl : List ℕ) (ρ : ℕ → Fin n) (l : ℕ) :
+    Fin n ⊕ (ℕ ⊕ Fin n) := by
+  classical
+  exact if h : ∃ t, t < cf.r ∧ touchedB eqR t = true ∧ lbl.getD (cf.m + t) 0 = l then
+    .inl (ρ (Classical.choose h)) else .inr (.inl l)
+
+/-- The X-class of a vertex of `T`, constant on X-components even when the ring folds. -/
+noncomputable def xKappa (cf : Conf) (eqR : List (ℕ × ℕ)) (lbl : List ℕ) (ρ : ℕ → Fin n)
+    (ι : Fin cf.m → Fin n) (v : Fin n) : Fin n ⊕ (ℕ ⊕ Fin n) := by
+  classical
+  exact if h : ∃ a : Fin cf.m, ι a = v then kInt cf eqR lbl ρ (lbl.getD (Classical.choose h).val 0)
+    else if ∃ t, t < cf.r ∧ touchedB eqR t = true ∧ ρ t = v then .inl v else .inr (.inr v)
+
+theorem kInt_touched (cf : Conf) (eqR : List (ℕ × ℕ)) (lbl : List ℕ) (ρ : ℕ → Fin n)
+    (hArg : ∀ s t, s < cf.r → t < cf.r → s = t ∨ lbl.getD (cf.m + s) 0 ≠ lbl.getD (cf.m + t) 0)
+    {t : ℕ} (ht : t < cf.r) (htt : touchedB eqR t = true) :
+    kInt cf eqR lbl ρ (lbl.getD (cf.m + t) 0) = .inl (ρ t) := by
+  have h : ∃ t', t' < cf.r ∧ touchedB eqR t' = true ∧
+      lbl.getD (cf.m + t') 0 = lbl.getD (cf.m + t) 0 := ⟨t, ht, htt, rfl⟩
+  unfold kInt
+  rw [dif_pos h]
+  obtain ⟨h1, -, h3⟩ := Classical.choose_spec h
+  rcases hArg _ t h1 ht with e | e
+  · rw [e]
+  · exact absurd h3 e
+
+theorem kInt_cases (cf : Conf) (eqR : List (ℕ × ℕ)) (lbl : List ℕ) (ρ : ℕ → Fin n) (l : ℕ) :
+    (∃ t, t < cf.r ∧ touchedB eqR t = true ∧ lbl.getD (cf.m + t) 0 = l ∧
+      kInt cf eqR lbl ρ l = .inl (ρ t)) ∨ kInt cf eqR lbl ρ l = .inr (.inl l) := by
+  unfold kInt
+  by_cases h : ∃ t, t < cf.r ∧ touchedB eqR t = true ∧ lbl.getD (cf.m + t) 0 = l
+  · rw [dif_pos h]
+    obtain ⟨h1, h2, h3⟩ := Classical.choose_spec h
+    exact Or.inl ⟨_, h1, h2, h3, rfl⟩
+  · rw [dif_neg h]; exact Or.inr rfl
+
+theorem xKappa_int (cf : Conf) (eqR : List (ℕ × ℕ)) (lbl : List ℕ) (ρ : ℕ → Fin n)
+    {ι : Fin cf.m → Fin n} (hinj : Function.Injective ι) (a : Fin cf.m) :
+    xKappa cf eqR lbl ρ ι (ι a) = kInt cf eqR lbl ρ (lbl.getD a.val 0) := by
+  have h : ∃ a', ι a' = ι a := ⟨a, rfl⟩
+  unfold xKappa
+  rw [dif_pos h, hinj (Classical.choose_spec h)]
+
+theorem xKappa_off (cf : Conf) (eqR : List (ℕ × ℕ)) (lbl : List ℕ) (ρ : ℕ → Fin n)
+    (ι : Fin cf.m → Fin n) {v : Fin n} (hv : ∀ a, v ≠ ι a) :
+    ((∃ t, t < cf.r ∧ touchedB eqR t = true ∧ ρ t = v) ∧ xKappa cf eqR lbl ρ ι v = .inl v) ∨
+    ((¬ ∃ t, t < cf.r ∧ touchedB eqR t = true ∧ ρ t = v) ∧
+      xKappa cf eqR lbl ρ ι v = .inr (.inr v)) := by
+  have h0 : ¬ ∃ a : Fin cf.m, ι a = v := fun ⟨a, ha⟩ => hv a ha.symm
+  unfold xKappa
+  rw [dif_neg h0]
+  by_cases h1 : ∃ t, t < cf.r ∧ touchedB eqR t = true ∧ ρ t = v
+  · rw [if_pos h1]; exact Or.inl ⟨h1, rfl⟩
+  · rw [if_neg h1]; exact Or.inr ⟨h1, rfl⟩
+
+theorem touchedB_of_mem {eqR : List (ℕ × ℕ)} {t a : ℕ} (h : (t, a) ∈ eqR) : touchedB eqR t = true :=
+  List.any_eq_true.2 ⟨(t, a), h, by simp⟩
+
+/-- **C4b for folded rings.** Under local admissibility, fold safety, `NbrInj` and `CommonNbr`
+(no `XRingSimple`), the contraction creates no loop. -/
+theorem ConfigOccW.xGraph_labels_fold (cf : Conf) (eqR eqI : List (ℕ × ℕ)) (lbl : List ℕ)
+    (hadm : admissibleX cf eqR eqI lbl = true) (hsafe : foldSafeX cf eqR eqI lbl = true)
+    (hloop : ∀ a, intAdjOf cf a a = false) {ι : Fin cf.m → Fin n}
+    (O : ConfigOccW T G cf.r cf.m ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hex : OccExact T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (hNI : NbrInj cf.r ρ (ringAdjOf cf)) (hCN : CommonNbr T cf.r ρ ι (intAdjOf cf) (ringAdjOf cf))
+    (htri : T.Triangulated) (hNS : ClaimGlue.NoShortSepCycle T) :
+    XLoopFree cf eqR eqI ρ ι G := by
+  classical
+  have hX := hadm
+  simp only [admissibleX, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true,
+    Array.all_eq_true, List.mem_range, Bool.or_eq_true, beq_iff_eq] at hadm
+  obtain ⟨⟨⟨⟨⟨⟨hA1, -⟩, -⟩, hAR⟩, hAI⟩, hAm⟩, hArg⟩ := hadm
+  have hArg' : ∀ s t, s < cf.r → t < cf.r →
+      s = t ∨ lbl.getD (cf.m + s) 0 ≠ lbl.getD (cf.m + t) 0 := by
+    intro s t hs ht
+    rcases hArg s hs t ht with h | h
+    · exact Or.inl h
+    · exact Or.inr (by simpa using h)
+  simp only [foldSafeX, Bool.and_eq_true, List.all_eq_true, Array.all_eq_true, List.mem_range,
+    Bool.or_eq_true, beq_iff_eq, Bool.not_eq_true', bne_iff_ne, ne_eq] at hsafe
+  set H := xGraph cf eqR eqI ρ ι with hH
+  set κ := xKappa cf eqR lbl ρ ι with hκ
+  have hRing : ∀ (a : Fin cf.m) t, ringAdjOf cf a t = true → t < cf.r ∧
+      (eqR.contains (t, a.val) = true → lbl.getD a.val 0 = lbl.getD (cf.m + t) 0) ∧
+      (¬ eqR.contains (t, a.val) = true → lbl.getD a.val 0 ≠ lbl.getD (cf.m + t) 0) := by
+    intro a t hat
+    obtain ⟨i, hi, rfl⟩ := Array.mem_iff_getElem.1 (of_decide_eq_true hat)
+    have := (hAm a.val a.isLt).1 i hi
+    exact ⟨this.1, ite_beq_spec this.2⟩
+  have hInt : ∀ a b : Fin cf.m, intAdjOf cf a b = true →
+      ((eqI.contains (b.val, a.val) = true ∨ eqI.contains (a.val, b.val) = true) →
+        lbl.getD a.val 0 = lbl.getD b.val 0) ∧
+      (¬ (eqI.contains (b.val, a.val) = true ∨ eqI.contains (a.val, b.val) = true) →
+        lbl.getD a.val 0 ≠ lbl.getD b.val 0) := by
+    intro a b hab
+    obtain ⟨i, hi, hb⟩ := Array.mem_iff_getElem.1 (of_decide_eq_true hab)
+    have := (hAm a.val a.isLt).2 i hi
+    rw [hb] at this
+    exact ite_beq_spec this.2
+  have hexcl := fun {p q : ℕ} => excl_sound cf O hex hNI hCN (p := p) (q := q)
+  have hcyc := fun {p q : ℕ} => cycEx_sound cf O hex hCN hloop htri hNS (p := p) (q := q)
+  -- κ is constant along X-edges, hence on X-components
+  have hadj : ∀ x y, H.Adj x y → κ x = κ y := by
+    have one : ∀ x y, ((∃ (a : Fin cf.m) (t : ℕ), ringAdjOf cf a t = true ∧
+        eqR.contains (t, a.val) = true ∧ x = ι a ∧ y = ρ t) ∨
+        (∃ a b : Fin cf.m, intAdjOf cf a b = true ∧
+          (eqI.contains (b.val, a.val) || eqI.contains (a.val, b.val)) = true ∧
+          x = ι a ∧ y = ι b)) → κ x = κ y := by
+      rintro x y (⟨a, t, hat, h, rfl, rfl⟩ | ⟨a, b, hab, h, rfl, rfl⟩)
+      · obtain ⟨htr, heq, -⟩ := hRing a t hat
+        have htt : touchedB eqR t = true := touchedB_of_mem (by simpa using h)
+        rw [hκ, xKappa_int cf eqR lbl ρ O.ιinj, heq h, kInt_touched cf eqR lbl ρ hArg' htr htt]
+        rcases xKappa_off cf eqR lbl ρ ι (v := ρ t) (fun b => O.ringOff t b) with ⟨-, e⟩ | ⟨hn, -⟩
+        · exact e.symm
+        · exact absurd ⟨t, htr, htt, rfl⟩ hn
+      · rw [hκ, xKappa_int cf eqR lbl ρ O.ιinj, xKappa_int cf eqR lbl ρ O.ιinj,
+          (hInt a b hab).1 (by simpa using h)]
+    intro x y hxy
+    rw [hH, xGraph, SimpleGraph.fromRel_adj] at hxy
+    rcases hxy.2 with h | h
+    · exact one x y h
+    · exact (one y x h).symm
+  have hreach : ∀ x y, H.Reachable x y → κ x = κ y := by
+    rintro x y ⟨p⟩
+    induction p with
+    | nil => rfl
+    | cons h _ ih => exact (hadj _ _ h).trans ih
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · -- an X-edge exists (as in `xGraph_labels`)
+    by_cases hR0 : eqR = []
+    · have hI0 : eqI ≠ [] := by
+        intro h; rw [hR0, h] at hA1; simp at hA1
+      obtain ⟨⟨b, a⟩, hp⟩ := List.exists_mem_of_ne_nil eqI hI0
+      obtain ⟨⟨ha, hb⟩, hc⟩ := hAI _ hp
+      have hab : intAdjOf cf ⟨a, ha⟩ ⟨b, hb⟩ = true := decide_eq_true (by simpa using hc)
+      refine ⟨ι ⟨a, ha⟩, ι ⟨b, hb⟩, ?_⟩
+      rw [xGraph, SimpleGraph.fromRel_adj]
+      refine ⟨fun e => ?_, Or.inl (Or.inr ⟨⟨a, ha⟩, ⟨b, hb⟩, hab, by simp [hp], rfl, rfl⟩)⟩
+      have := O.ιinj e
+      rw [← this, hloop] at hab
+      exact Bool.false_ne_true hab
+    · obtain ⟨⟨t, a⟩, hp⟩ := List.exists_mem_of_ne_nil eqR hR0
+      obtain ⟨ha, hc⟩ := hAR _ hp
+      have hat : ringAdjOf cf ⟨a, ha⟩ t = true := decide_eq_true (by simpa using hc)
+      refine ⟨ι ⟨a, ha⟩, ρ t, ?_⟩
+      rw [xGraph, SimpleGraph.fromRel_adj]
+      exact ⟨fun e => O.ringOff t _ e.symm,
+        Or.inl (Or.inl ⟨⟨a, ha⟩, t, hat, by simp [hp], rfl, rfl⟩)⟩
+  · -- a listed ring edge outside X (D1)
+    intro a s hat h hr
+    have e := hreach _ _ hr
+    obtain ⟨hsr, -, hne⟩ := hRing a s hat
+    have hne' : lbl.getD a.val 0 ≠ lbl.getD (cf.m + s) 0 :=
+      hne (fun h' => by rw [h] at h'; exact Bool.false_ne_true h')
+    rw [hκ, xKappa_int cf eqR lbl ρ O.ιinj] at e
+    rcases xKappa_off cf eqR lbl ρ ι (v := ρ s) (fun b => O.ringOff s b) with ⟨-, hl⟩ | ⟨-, hl⟩
+    · rw [hl] at e
+      rcases kInt_cases cf eqR lbl ρ (lbl.getD a.val 0) with ⟨t, ht, htt, hlt, hk⟩ | hk
+      · rw [hk] at e
+        have hρ : ρ t = ρ s := Sum.inl_injective e
+        have hst : s ≠ t := fun h' => hne' (by rw [← hlt, h'])
+        -- the D1 check
+        obtain ⟨i, hi, hsi⟩ := Array.mem_iff_getElem.1 (of_decide_eq_true hat)
+        have hD1 := ((hsafe a.val a.isLt).1 i hi)
+        rw [hsi] at hD1
+        rcases hD1 with hD1 | hD1
+        · rw [h] at hD1; exact Bool.false_ne_true hD1
+        · rcases hD1 t ht with (((h1 | h1) | h1) | h1) | h1
+          · exact absurd htt (by simp [h1])
+          · exact h1 hlt
+          · exact hst h1
+          · exact hexcl hsr ht hst h1 hρ.symm
+          · exact hcyc hsr ht h1 hρ.symm
+      · rw [hk] at e; exact Sum.inr_ne_inl e
+    · rw [hl] at e
+      rcases kInt_cases cf eqR lbl ρ (lbl.getD a.val 0) with ⟨t, -, -, -, hk⟩ | hk <;>
+        rw [hk] at e
+      · exact Sum.inl_ne_inr e
+      · exact (Sum.inl_ne_inr (Sum.inr_injective e))
+  · -- a listed interior edge outside X (D2)
+    intro a b hab h hr
+    have e := hreach _ _ hr
+    have hne : lbl.getD a.val 0 ≠ lbl.getD b.val 0 := (hInt a b hab).2 (by simpa using h)
+    rw [hκ, xKappa_int cf eqR lbl ρ O.ιinj, xKappa_int cf eqR lbl ρ O.ιinj] at e
+    rcases kInt_cases cf eqR lbl ρ (lbl.getD a.val 0) with ⟨t, ht, htt, hlt, hka⟩ | hka <;>
+      rcases kInt_cases cf eqR lbl ρ (lbl.getD b.val 0) with ⟨t', ht', htt', hlt', hkb⟩ | hkb <;>
+      rw [hka, hkb] at e
+    · have hρ : ρ t' = ρ t := Sum.inl_injective e
+      have htt'' : t ≠ t' := fun h' => hne (by rw [← hlt, ← hlt', h'])
+      obtain ⟨i, hi, hbi⟩ := Array.mem_iff_getElem.1 (of_decide_eq_true hab)
+      have hD2 := ((hsafe a.val a.isLt).2 i hi)
+      rw [hbi] at hD2
+      rcases hD2 with (hD2 | hD2) | hD2
+      · exact absurd h (by rw [hD2, Bool.true_or]; decide)
+      · exact absurd h (by rw [hD2, Bool.or_true]; decide)
+      · rcases hD2 t ht t' ht' with ((((((h1 | h1) | h1) | h1) | h1) | h1) | h1)
+        · exact absurd htt (by simp [h1])
+        · exact absurd htt' (by simp [h1])
+        · exact h1 hlt
+        · exact h1 hlt'
+        · exact htt'' h1
+        · exact hexcl ht ht' htt'' h1 hρ.symm
+        · exact hcyc ht ht' h1 hρ.symm
+    · exact Sum.inr_ne_inl e
+    · exact Sum.inl_ne_inr e
+    · exact hne (Sum.inl_injective (Sum.inr_injective e)).symm
+  · -- an edge of G
+    intro x y hxy hr
+    have e := hreach _ _ hr
+    obtain ⟨-, hx, hy⟩ := (O.hG x y).1 hxy
+    have hne : x ≠ y := G.graph.ne_of_adj hxy
+    rw [hκ] at e
+    rcases xKappa_off cf eqR lbl ρ ι hx with ⟨-, hlx⟩ | ⟨-, hlx⟩ <;>
+      rcases xKappa_off cf eqR lbl ρ ι hy with ⟨-, hly⟩ | ⟨-, hly⟩ <;> rw [hlx, hly] at e
+    · exact hne (Sum.inl_injective e)
+    · exact Sum.inl_ne_inr e
+    · exact Sum.inr_ne_inl e
+    · exact hne (Sum.inr_injective (Sum.inr_injective e))
 
 /-! ## C6: registry entries, soundness, claim -/
 
@@ -800,7 +1368,7 @@ theorem CEntry.colorable_of_contract (e : CEntry) {T G : SphericalMap n} {ρ : �
     {ι : Fin e.cf.m → Fin n}
     (O : ConfigOccW T G e.cf.r e.cf.m ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf)))
     (hex : OccExact T e.cf.r ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf)))
-    (hs : XRingSimple e.eqR e.cf.r ρ) (IH : SmallerColorable T)
+    (hlab : XLoopFree (Conf.of18 e.cf) e.eqR e.eqI ρ ι G) (IH : SmallerColorable T)
     (hcon : ∀ H : SimpleGraph (Fin n), H = xGraph (Conf.of18 e.cf) e.eqR e.eqI ρ ι →
       H ≤ T.graph → (∃ x y, H.Adj x y) → ∃ (T' : SphericalMap n) (π : Fin n → Fin n),
         Nat.card T'.graph.support < Nat.card T.graph.support ∧
@@ -808,8 +1376,8 @@ theorem CEntry.colorable_of_contract (e : CEntry) {T G : SphericalMap n} {ρ : �
         (∀ x y, T.Adj x y → ¬ H.Reachable x y → T'.Adj (π x) (π y))) :
     T.graph.Colorable 4 := by
   obtain ⟨T', π, hcard, hGe, hR, hI⟩ :=
-    ConfigOccW.contract_reducer_of (Conf.of18 e.cf) e.eqR e.eqI e.lbl e.hadm e.hloop e.hrr O hex hs
-      hcon
+    ConfigOccW.contract_reducer_of (Conf.of18 e.cf) e.eqR e.eqI e.lbl e.hadm e.hloop e.hrr O hex
+      hlab hcon
   obtain ⟨col⟩ := IH n T' hcard
   refine ConfigOccW.colorable_of_cReducible18 e.cf e.eqR e.eqI e.hC e.hr2 e.hr e.hsym e.hloop
     e.hrr O (c := fun x => col (π x)) (fun _ _ huv _ _ => col.valid (hGe _ _ huv))
@@ -823,7 +1391,9 @@ theorem CEntry.colorable_of_contract (e : CEntry) {T G : SphericalMap n} {ρ : �
 theorem CEntry.colorable (e : CEntry) {T : SphericalMap n} (h : OccursCX e T)
     (IH : SmallerColorable T) : T.graph.Colorable 4 := by
   obtain ⟨G, ρ, ι, O, hex, hs⟩ := h
-  exact e.colorable_of_contract O hex hs IH (fun H _ hle hne => contract_subgraph T H hle hne)
+  exact e.colorable_of_contract O hex
+    (ConfigOccW.xGraph_labels _ e.eqR e.eqI e.lbl e.hadm e.hloop O hs) IH
+    (fun H _ hle hne => contract_subgraph T H hle hne)
 
 /-- **CGlue in ClaimGlue's form**, for this file's entries and occurrences. -/
 def CGlueX (Cs : List CEntry) : Prop :=
@@ -854,7 +1424,8 @@ theorem CEntry1.colorable (e : CEntry1) {T : SphericalMap n} (htri : T.Triangula
   by_contra hcol
   have hns : NoSep T := MinimalCounterexample.noSep ⟨hcol, IH⟩ htri
   obtain ⟨G, ρ, ι, O, hex, hs⟩ := h
-  refine hcol (e.toCEntry.colorable_of_contract O hex hs IH (fun H hHx hle hne => ?_))
+  refine hcol (e.toCEntry.colorable_of_contract O hex
+    (ConfigOccW.xGraph_labels _ e.eqR e.eqI e.lbl e.hadm e.hloop O hs) IH (fun H hHx hle hne => ?_))
   obtain ⟨x, y, hxy⟩ := hne
   rw [e.hR, e.hI] at hHx
   subst hHx
@@ -869,6 +1440,70 @@ def CGlueX1 (Cs : List CEntry1) : Prop :=
 /-- **The hypothesis is a theorem** (no `sorry`). -/
 theorem cGlueX1 (Cs : List CEntry1) : CGlueX1 Cs :=
   fun e _ _ _ htri h IH => e.colorable htri h IH
+
+/-! ### Fold-safe entries (folded rings allowed; `XRingSimple` replaced by local facts)
+
+`OccursCXF` drops `XRingSimple`. In its place it asks for `NbrInj` and `ApexFacts`, which are facts about
+the configuration's own vertices and their listed neighbours. Soundness then needs a per-key check,
+`foldSafeX` (decidable), and `T.Triangulated`, which gives `NoSep` and `NoShortSepCycle` for a minimal
+counterexample. -/
+
+/-- A C entry whose X-graph is fold-safe: every D1 and D2 fold is excluded, either by a length-3
+cycle argument (`exclB`, using `NoSep`) or by a short cycle of length 4 or 5 whose sides are both
+non-empty (`cycEx`, using `NoShortSepCycle`). -/
+structure CEntryF extends CEntry where
+  hfold : foldSafeX (Conf.of18 cf) eqR eqI lbl = true
+
+/-- **C occurrence with folds allowed.** A face-walk occurrence that is exact, with distinct listed
+ring neighbours and the configuration's own triangles on its interior edges. -/
+def OccursCXF (e : CEntry) (T : SphericalMap n) : Prop :=
+  ∃ (G : SphericalMap n) (ρ : ℕ → Fin n) (ι : Fin e.cf.m → Fin n),
+    ConfigOccW T G e.cf.r e.cf.m ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf)) ∧
+    OccExact T e.cf.r ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf)) ∧
+    NbrInj e.cf.r ρ (ringAdjOf (Conf.of18 e.cf)) ∧
+    ApexFacts T e.cf.r ρ ι (intAdjOf (Conf.of18 e.cf)) (ringAdjOf (Conf.of18 e.cf))
+
+/-- **C-soundness for fold-safe entries** (no `XRingSimple`, no `sorry`). -/
+theorem CEntryF.colorable (e : CEntryF) {T : SphericalMap n} (htri : T.Triangulated)
+    (h : OccursCXF e.toCEntry T) (IH : SmallerColorable T) : T.graph.Colorable 4 := by
+  by_contra hcol
+  have hns : NoSep T := MinimalCounterexample.noSep ⟨hcol, IH⟩ htri
+  obtain ⟨G, ρ, ι, O, hex, hNI, hA⟩ := h
+  exact hcol (e.toCEntry.colorable_of_contract O hex
+    (ConfigOccW.xGraph_labels_fold _ e.eqR e.eqI e.lbl e.hadm e.hfold e.hloop O hex hNI
+      (commonNbr_of_apex hns hex hA) htri (MinimalCounterexample.noShortSep ⟨hcol, IH⟩)) IH
+    (fun H _ hle hne => contract_subgraph T H hle hne))
+
+/-- **CGlue for fold-safe entries**, on triangulations. -/
+def CGlueXF (Cs : List CEntryF) : Prop :=
+  ∀ e ∈ Cs, ∀ (n : ℕ) (T : SphericalMap n), T.Triangulated → OccursCXF e.toCEntry T →
+    SmallerColorable T → T.graph.Colorable 4
+
+/-- **The hypothesis is a theorem** (no `sorry`). -/
+theorem cGlueXF (Cs : List CEntryF) : CGlueXF Cs :=
+  fun e _ _ _ htri h IH => e.colorable htri h IH
+
+/-- A registry of D entries and fold-safe C entries. -/
+structure RegistryF where
+  D : List DEntry
+  CF : List CEntryF
+
+def RegistryF.Contains (R : RegistryF) (T : SphericalMap n) : Prop :=
+  (∃ e ∈ R.D, OccursW e.cf T) ∨ (∃ e ∈ R.CF, OccursCXF e.toCEntry T)
+
+def UnavoidableF (R : RegistryF) : Prop :=
+  ∀ (m : ℕ) (T : SphericalMap m), Internally6 T → R.Contains T
+
+/-- **Claim glue for D + fold-safe C registries, with no `sorry`.** The one open link is
+`UnavoidableF R`. -/
+theorem four_color_of_unavoidableCF (R : RegistryF) (hU : UnavoidableF R) {n : ℕ}
+    (M : SphericalMap n) : M.graph.Colorable 4 := by
+  refine four_color_of_smaller_gate (fun m T hm hconn htri hdeg IH => ?_) M
+  by_contra hcol
+  have hT : MinimalCounterexample T := ⟨hcol, IH⟩
+  rcases hU m T (hT.internally6 hm hconn htri hdeg) with ⟨e, -, h⟩ | ⟨e, -, h⟩
+  · exact hT.not_colorable (e.colorable h hT.smaller)
+  · exact hT.not_colorable (e.colorable htri h hT.smaller)
 
 /-- A registry of D entries and single-interior-edge C entries. -/
 structure Registry1 where
@@ -965,6 +1600,33 @@ def e66666 : CEntry where
   hloop := by native_decide
   hrr := by native_decide
 
+/-- The 66666 wheel's X is fold-safe. -/
+theorem cf66666_fold : foldSafeX (Conf.of18 cf66666) [(0, 1)] [(2, 3), (3, 4), (4, 5)]
+    [100, 0, 101, 101, 101, 101, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9] = true := by
+  native_decide
+
+/-- The 66666 wheel as a fold-safe C entry. -/
+def e66666F : CEntryF := { e66666 with hfold := cf66666_fold }
+
+/-- A ring-X entry whose folds need cycles of length 4 and 5: `f9_..5565675_......5..` with
+X = {I0-I1, I0-I5, I1-I8, R4-I5}. -/
+def cfF9 : DCheck18.Conf :=
+  { name := "f9_..5565675_......5..", r := 14, m := 9,
+    ringAdj := #[#[0, 1], #[7, 8], #[10, 11, 12], #[0, 12, 13], #[1, 2, 3], #[3, 4], #[4, 5, 6],
+      #[6, 7], #[8, 9, 10]],
+    intAdj := #[#[1, 2, 3, 4, 5, 6, 7], #[0, 2, 7, 8], #[0, 1, 3, 8], #[0, 2], #[0, 5], #[0, 4, 6],
+      #[0, 5, 7], #[0, 1, 6], #[1, 2]] }
+
+/-- The fold `ρ 8 = ρ 4` is not excluded by a triangle, but it is excluded by a short cycle (here
+`ρ 4, I5, I0, I1, I8`, length 5, apexes on the edge `I0-I1`). -/
+theorem cfF9_needs_cycle : exclB (Conf.of18 cfF9) 8 4 = false ∧ cycEx (Conf.of18 cfF9) 8 4 = true := by
+  native_decide
+
+/-- With the short-cycle rule the entry is fold-safe (labels: one per X-component). -/
+theorem cfF9_fold : foldSafeX (Conf.of18 cfF9) [(4, 5)] [(1, 0), (5, 0), (8, 1)]
+    [0, 0, 1, 2, 3, 0, 4, 5, 0, 6, 7, 8, 9, 0, 10, 11, 12, 13, 14, 15, 16, 17, 18] = true := by
+  native_decide
+
 end CGlue
 end SimpleGraph.SphericalMap
 
@@ -983,3 +1645,10 @@ end SimpleGraph.SphericalMap
 #print axioms SimpleGraph.SphericalMap.CGlue.cGlueX
 #print axioms SimpleGraph.SphericalMap.CGlue.occursCX_of_interior
 #print axioms SimpleGraph.SphericalMap.occExact_of_nx
+#print axioms SimpleGraph.SphericalMap.ConfigOccW.xGraph_labels_fold
+#print axioms SimpleGraph.SphericalMap.CGlue.CEntryF.colorable
+#print axioms SimpleGraph.SphericalMap.CGlue.cGlueXF
+#print axioms SimpleGraph.SphericalMap.CGlue.four_color_of_unavoidableCF
+#print axioms SimpleGraph.SphericalMap.CGlue.e66666F
+#print axioms SimpleGraph.SphericalMap.cyc_sound
+#print axioms SimpleGraph.SphericalMap.CGlue.cfF9_fold
