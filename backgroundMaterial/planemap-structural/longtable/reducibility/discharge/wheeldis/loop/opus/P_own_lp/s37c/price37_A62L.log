@@ -3,3 +3,45 @@ part p41=5 ts4/s5/s6=6-9: 33 registry + 306 window cylinders; covered 99.9979%
 part p41=6-9 ts4/s5/s6=5: 1 registry + 0 window cylinders; covered 100.0000%
 part p41=6-9 ts4/s5/s6=6-9: 29 registry + 9 window cylinders; covered 79.1925%
 binder 8666655/5677657: amask/R6-allowed privates {'p11': [5, 6, 7, 8, 9], 'p21': [5, 6, 7, 8, 9], 'p31': [5, 6, 7, 8, 9], 'p41': [5, 6, 7, 8, 9]}
+6-private groups: 625 allowed, 240 alive (have an uncovered filling of the other 10 slots)
+  p11 letters alive: [7, 8, 9]
+  p21 letters alive: [6, 7, 8, 9]
+  p31 letters alive: [5, 6, 7, 8, 9]
+  p41 letters alive: [5, 6, 7, 8, 9]
+binder M signatures: [(7, 5, 6, 7, 6, 5, 5, 31), (7, 6, 6, 5, 8, 5, 5, 31), (7, 6, 6, 7, 6, 7, 5, 31), (7, 6, 7, 7, 6, 5, 5, 31)]
+cert /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/cert_s28A62L.json: 109 rows, tco 1, binder weight -1/75, freed mrowR2 rows of the binder signatures: 3 [((7, 6, 6, 5, 8, 5, 5, 31), (7, 6, 6, 6, 5, 8, 5, 5), '-1/75'), ((7, 5, 6, 7, 6, 5, 5, 31), (7, 5, 6, 5, 7, 6, 5, 5), '-1/75'), ((7, 6, 7, 7, 6, 5, 5, 31), (7, 6, 7, 5, 7, 6, 5, 5), '-1/75')]
+
+[census kills (registry + two-engine windows) + filt16 amask] groups 240; lifting worst uncapped tot e = 0.006666667 -> cert INVALID: no lifting keeps every rc >= 0
+   column ('h', (7, 6, 6, 6, 5, 8, 5, 5)) rc -0.006667
+   column ('h', (7, 5, 6, 5, 7, 6, 5, 5)) rc -0.006667
+   column ('M', (7, 6, 6, 5, 8, 5, 5, 31)) rc -0.006667
+   column ('M', (7, 5, 6, 7, 6, 5, 5, 31)) rc -0.006667
+
+[control: amask only, no census kills] groups 625; lifting worst uncapped tot e = -0.000000000 -> cert VALID in the cluster class; lifted bound t >= 0.146666667 (cert 0.14666666666666667)
+   lifting group (p11,p21,p31,p41) = (6, 5, 5, 5) lam 1.0000
+
+[restricted dual, cert rows as they are (sanity: = cert bound)] rows 126, columns 170: v = 0.146666667
+
+[restricted dual, binder -> 240 alive cluster groups] rows 365, columns 170: v = 0.141935484
+
+[restricted dual, control: binder -> all 625 amask groups (no census kills)] rows 750, columns 170: v = 0.146666667
+  gain bound from the restricted dual: t_new >= 0.141935484, so the gain is at most 0.004731183 (cert 0.146666667)
+
+[restricted dual over the L-solve rows, binder as is (sanity)] rows 92796 (receivers 54710 admissible), columns 26268, 57s: v = 0.146666667
+
+[restricted dual over the L-solve rows, binder -> 240 alive cluster groups] rows 93035 (receivers 54710 admissible), columns 26268, 51s: v = 0.146478873
+  rigorous bracket: 0.146478873 <= t*_new <= 0.146666667 (old primal stays feasible); gain at most 0.000187793
+
+primal /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/sol_s28A62L.json (t = 0.146666667): binder load 1.146666667, cap 1.146666667 (slack 0)
+  M values {'p11': 0.003333, 'p21': 0.0, 'p31': 0.0, 'p41': 0.06}; h by letter {'p11': {5: 0.003333, 6: 0.003333, 7: 0.0, 8: 0.0, 9: 0.0}, 'p21': {5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0}, 'p31': {5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0}, 'p41': {5: 0.06, 6: 0.06, 7: 0.02, 8: 0.02, 9: 0.02}}
+  cluster rows: max load over the 240 alive groups 1.143333333 at (7, 6, 6, 6); load drop 0.003333333; projected gain |dual| x drop = 0.000044
+
+primal /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/sol_s28A62L.json (t = 0.146666667): binder load 1.146666667, cap 1.146666667 (slack 0)
+  M values {'p11': 0.003333, 'p21': 0.0, 'p31': 0.0, 'p41': 0.06}; h by letter {'p11': {5: 0.003333, 6: 0.003333, 7: 0.0, 8: 0.0, 9: 0.0}, 'p21': {5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0}, 'p31': {5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0}, 'p41': {5: 0.06, 6: 0.06, 7: 0.02, 8: 0.02, 9: 0.02}}
+  cluster rows: max load over the 228 alive groups 1.143333333 at (7, 6, 6, 6); load drop 0.003333333; projected gain |dual| x drop = 0.000044
+  what-if p41 >= 6 only: load drop 0.003333333, first-order gain 0.000044
+
+primal /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s28q/eng/sol_s28A62L.json (t = 0.146666667): binder load 1.146666667, cap 1.146666667 (slack 0)
+  M values {'p11': 0.003333, 'p21': 0.0, 'p31': 0.0, 'p41': 0.06}; h by letter {'p11': {5: 0.003333, 6: 0.003333, 7: 0.0, 8: 0.0, 9: 0.0}, 'p21': {5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0}, 'p31': {5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0}, 'p41': {5: 0.06, 6: 0.06, 7: 0.02, 8: 0.02, 9: 0.02}}
+  cluster rows: max load over the 180 alive groups 1.103333333 at (7, 6, 5, 7); load drop 0.043333333; projected gain |dual| x drop = 0.000578
+  what-if p41 >= 7 only: load drop 0.043333333, first-order gain 0.000578
