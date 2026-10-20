@@ -32,6 +32,10 @@
   2 f-names, both minimal and C: f7_..56766_...655. (X={I0-I1,I1-I7,R1-I0}, one ring vertex) and f7_..65676_..66.5.
   (X={I0-I5}); files `loop/k47/r57a_kills*` (3f914cbe). Admission head adm57a on main 989bec15, regression
   byte-identical: +2 C (2 names), `loop/k57/adm57a/`.
+- **18:22Z, r57b (7666566/6566666, 10/183) dies at ring 13** (adm57a admitted at 05f86461). Its 879 ring <= 14 windows
+  (18:13-18:21Z) gave 3 kills, 3 f-names, all D; the minimal one is f7_..65666_..66.5. (ring 13). Files
+  `loop/k47/r57b_kills*` (757968f3). Admission head adm57b on 05f86461, regression byte-identical: +3 D (3 names),
+  `loop/k57/adm57b/`.
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
