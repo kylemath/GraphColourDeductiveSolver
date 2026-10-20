@@ -139,6 +139,16 @@ the way the RSST D patterns did (no twoeng guard change).
 - **Guess.** Every configuration at ring <= 15 comes out D on both (90 percent); no MISMATCH-D or CFAST-REJECTS at all
   (85 percent); any shortfall is kc timeouts at ring 16-18.
 
+- **14:04Z, done: all 8,200 configurations are D on both engines** (`loop/k53/imp54d.py`, list `loop/k53/nl54d_verdicts.txt`,
+  md5 952575cace5f1137365bfcff8e1fcd84). This machine ran rings 6-14 (5,895) and part of ring 15 (`N54_res.txt`). Studio
+  ran rings 16-18 (job54d, 610, kc + dfast18) and the ring-15 remainder (job54e, 1,535), both on main at da31feea, with
+  input md5s equal to ours. Every Studio name has kc D=true, dfast/dfast18 D=true and a KILL line D. 494 configurations
+  ran on both machines with 0 disagreements. By ring: 1, 1, 5, 15, 60, 210, 779, 2,025, 2,799, 1,695, 526, 69, 15 (rings
+  6-18). No C, no MISMATCH-D, no CFAST-REJECTS and no timeout.
+- **Verdict on H-NL95: the hypothesis holds (100 percent, bar 95), the kill line is not hit. Guesses: right on ring <= 15
+  all D (90 percent) and on no mismatch (85 percent); wrong that any shortfall would be timeouts at ring 16-18, since
+  there was none.** The confirmed list is `loop/k51/nl51_kc.txt` itself (md5 b9bc6e8bd9b86cf3a95873c05d9e7c34).
+
 ## Round 54c (20 Oct 2026, 04:02Z-): H-NL54, does the published 2026 set kill any survivor of 8666655/5677657?
 
 **Pre-registered 04:02Z, before any containment or engine run of this round.** Coordinator 03:56Z, from the user's
