@@ -3,10 +3,13 @@ registry, no rpatD), runs admissible() on the 45 A67 binders (k55/rows45_A67.txt
 (k55/sites55_rows45_A67.txt): a row must be killed by pattern iff the sites file lists an embedding through u ('u ' line) of a
 2026-set configuration.  Also counts, per (row, configuration), the u-embeddings of rpatN_build's own enumerator on the concrete row
 against the sites file count.
-usage: python3 rpatN_check.py RPATN [root=DIR]"""
+usage: python3 rpatN_check.py RPATN [root=DIR] [KC=kcfile SITES=sitesfile ROWS=rowsfile]  (defaults: round-55 files)"""
 import sys, os, re, collections
 H = os.path.dirname(os.path.abspath(__file__))
-RP = sys.argv[1]; extra = sys.argv[2:]
+RP = sys.argv[1]; extra = [a for a in sys.argv[2:] if not a.startswith(('KC=', 'SITES=', 'ROWS='))]
+KW = dict(a.split('=', 1) for a in sys.argv[2:] if a.startswith(('KC=', 'SITES=', 'ROWS=')))
+KCF = KW.get('KC', os.path.join(H, 'k55', 'row55_hits_kc.txt')); SITF = KW.get('SITES', os.path.join(H, 'k55', 'sites55_rows45_A67.txt'))
+ROWF = KW.get('ROWS', os.path.join(H, 'k55', 'rows45_A67.txt'))
 sys.argv = [os.path.join(H, 'eng', 'pcheck.py'), 'none', 'rpatN=' + RP] + extra
 ns = {'__file__': sys.argv[0], '__name__': 'pcheck_lib'}
 exec(open(sys.argv[0]).read().replace("}.get(CMD, lambda: print(__doc__))()", "}.get(CMD, lambda: None)()"), ns)
@@ -14,14 +17,14 @@ ns['load_patterns']()
 sys.path.insert(0, H); import rpatN_build as B
 # oracle
 site = collections.defaultdict(dict); cur = None
-for l in open(os.path.join(H, 'k55', 'sites55_rows45_A67.txt')):
+for l in open(SITF):
     if l.startswith('#'): continue
     m = re.match(r'^\S+ d(\d+) (\d+)/(\d+):', l)
     if m: cur = (int(m.group(1)), m.group(2), m.group(3)); continue
     m = re.match(r'^  (\S+) \((2026 set D|registry), .*: (\d+) embeddings, (\d+) through u', l)
     if m and m.group(2) == '2026 set D': site[cur][m.group(1)] = (int(m.group(3)), int(m.group(4)))
-rows = [l.split() for l in open(os.path.join(H, 'k55', 'rows45_A67.txt')) if l.strip() and not l.startswith('#')]
-confs = {B.kc(l)[0]: B.kc(l) for l in open(os.path.join(H, 'k55', 'row55_hits_kc.txt')) if l.strip()}
+rows = [l.split() for l in open(ROWF) if l.strip() and not l.startswith('#')]
+confs = {B.kc(l)[0]: B.kc(l) for l in open(KCF) if l.strip()}
 def u_emb(conf, d, lk, sv):
     """u-embeddings of conf into the concrete row (d, lk, sv): rpatN_build's enumerator at centre c, then the pattern's
     slots checked against the row's letters"""
