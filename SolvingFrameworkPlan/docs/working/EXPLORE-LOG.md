@@ -82,6 +82,22 @@ once 8556856/7565666's ring <= 14 sweep closes (stopped there if it has no kill;
 - **02:52Z, census rerun with Studio's batch 1 merged into G_res.txt** (`loop/k53/merge54.py`, 346 lines), same settings:
   ring <= 14 and Studio's ring 15-16 verdicts replay from the cache.
 
+- **03:41Z, rerun with Studio's batch 1: no change, 86.68 percent and 0 of 25 children dead** (the first rerun, 02:52Z,
+  was cut by a container restart; rerun 03:15-03:41Z, `cen54r` in the k53 log). All 223 of Studio's ring 15-16 C kills
+  are p41 = 5 windows, in the part the ring <= 14 kills had already closed; the 72 joint windows that can reach the
+  p41 >= 6 part gave nothing at any ring.
+- **03:42Z, verdict on H-S54 part 2: the kill line is hit.** 0 of the 25 split children (ts6, ts3) die: every ring <= 14
+  window of the three tiers was run here, and every joint window at ring 15-16 at Studio. The children stand at
+  84.24-94.20 percent over all parts. They live in the part p41 >= 6, apex 6-9, which is at 79.19 percent. Its uncovered
+  fillings include every filling with all free slots >= 7, and none with p01 = 5, p21 = 5 or p11 <= 6. Still unrun:
+  9,049 single and two-at-one-7 windows at ring 15-16 that can reach that part (trimmed Studio file
+  `loop/k53/win54t_7_8666655_5677657_r1516.txt`, md5 bccd67a0f6c1aaa0d2fb3449454d8e4a, d8ab6e2b; the 10,552 p41 = 5
+  lines left in the full file can change nothing). For a child to die, those windows would have to cover its
+  all->= 7 fillings, which no window at ring <= 14 touched. So the call is the rule side for 8666655/5677657.
+  Guess (kill line hit, 85 percent): right, including "no child dies outright". The fillings coverage guess (84-88
+  percent) was right too, at 86.68 percent. The surprise was the p41 = 5 part: a five at p41 beside s3 and s4 opens
+  joint s3+s6 windows that die at ring 11-14.
+
 ## Round 54 (19 Oct 2026, 21:56Z-): H-L3Q, do the receiver binders of Opus's l3q solve die at ring <= 16?
 
 **Pre-registered 21:56Z, before any engine window of this round.** Long Table 21:53Z: Opus's l3q rule solve (11f050ea, one
