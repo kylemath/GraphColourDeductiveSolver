@@ -148,6 +148,11 @@ the way the RSST D patterns did (no twoeng guard change).
 - **Verdict on H-NL95: the hypothesis holds (100 percent, bar 95), the kill line is not hit. Guesses: right on ring <= 15
   all D (90 percent) and on no mismatch (85 percent); wrong that any shortfall would be timeouts at ring 16-18, since
   there was none.** The confirmed list is `loop/k51/nl51_kc.txt` itself (md5 b9bc6e8bd9b86cf3a95873c05d9e7c34).
+- **14:08Z, 8,202 vs 8,200 (Long Table 14:05Z): the two missing ones are the one-vertex configurations, a vertex of degree 3
+  and a vertex of degree 4** (ring 3 and ring 4). The repo README says the directory holds the set "except for a vertex
+  of degree 3, 4"; our base (minimum degree 5) already excludes both. Not a parse drop: the files run D0000-D8199 with
+  no gap and all 8,200 parse. Not duplicates: `loop/k53/dup54.py` gives 8,200 distinct canonical forms, with or without
+  reflections (self-test: 21 relabelled and mirrored copies all match their originals).
 
 ## Round 54c (20 Oct 2026, 04:02Z-): H-NL54, does the published 2026 set kill any survivor of 8666655/5677657?
 
