@@ -100,6 +100,8 @@ build in this container with 0 errors and no `sorry`** (the same holds for `CSan
     mirror configurations, both C-checked with the same X). Each was checked against the configuration its verdict
     was computed on: the first `loop/k*/` cfast block twoeng.py takes, matched by r and m.
   - All are `admissibleX` and `foldSafeX` with that labelling. No entry violates it.
+  - Re-run after r54n/r54p, on **1,097** C entries (1,098 configurations): all pass again. There are no new ring-X
+    entries, so `CXRing.lean` is unchanged at 96.
   - Ring-merge X, which would break the labelling, are held out by twoeng.py (`c_ringmerge_held.log`).
 - **The 96 ring-X entries as Lean data** (`dcheck/CXRing.lean`): `xrEntries`, the 89 of `CGLUE-XRING-ENTRIES.txt`
   plus 7 admitted since (r54c/r54d).
