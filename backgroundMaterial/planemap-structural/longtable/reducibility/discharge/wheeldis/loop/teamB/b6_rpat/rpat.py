@@ -19,7 +19,36 @@ from rings import Layered
 from rstar import disc_rot
 import contain
 
-CONFS = contain.CONFS
+CONFS = list(contain.CONFS)
+
+
+def load_nl(cdir):
+    """the 2026 set (github.com/near-linear-4ct/reducible-configurations, MIT): all 8,200 D on both of our engines
+    (explore round 54d + Studio nl54d/nl54e).  .conf: blank, 'n r', then 'v deg nbrs' per interior vertex, cyclic order."""
+    out = []
+    for fn in sorted(os.listdir(cdir)):
+        if not fn.endswith('.conf'):
+            continue
+        L = [l.split() for l in open(os.path.join(cdir, fn)) if l.strip()]
+        n, r = int(L[0][0]), int(L[0][1])
+        adj = {int(f[0]): [int(x) for x in f[2:]] for f in L[1:]}
+        assert sorted(adj) == list(range(r + 1, n + 1)) and all(int(f[1]) == len(f) - 2 for f in L[1:]), fn
+        out.append((fn[:-5], r, adj))
+    return out
+
+
+if os.environ.get('RPAT_NL'):
+    CONFS += load_nl(os.environ['RPAT_NL'])
+
+
+def degsig(adj):
+    c = {}
+    for a in adj:
+        c[len(adj[a])] = c.get(len(adj[a]), 0) + 1
+    return c
+
+
+SIGS = [degsig(c[2]) for c in CONFS]
 FULL = 31
 NOT5 = 30
 
@@ -128,7 +157,12 @@ def kill(d, link, sword):
     """first configuration (in RSST order) appearing in the arrangement for every privates / third ring:
     returns (name, pattern) or None."""
     rot, deg, known, slot = disc(d, link, sword)
-    for c in CONFS:
+    have = {}
+    for x in known:
+        have[deg[x]] = have.get(deg[x], 0) + 1
+    for c, sg in zip(CONFS, SIGS):
+        if any(have.get(k, 0) < v for k, v in sg.items()):
+            continue
         m = embed_map(c, rot, deg, known)
         if m is not None:
             return c[0], pattern(d, link, sword, m, slot)

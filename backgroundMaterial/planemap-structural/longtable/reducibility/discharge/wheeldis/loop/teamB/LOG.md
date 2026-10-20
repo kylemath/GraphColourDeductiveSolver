@@ -142,3 +142,10 @@ v0 (no patterns) lost to a container restart at a lower bound of 10/27. v2 (comp
 - s5 (cap=3, own rules + B6 oracle, Wentges 0.5): lower bound rose 7/61 -> 2/17 -> 1/8 = 0.125 at it 1285; worst violations now <= 0.09 (one engine, unconverged: lower bound only).
 - Consequence: the t = 0.12 certificate (f12) cannot close in this class; stopped at it 1300 (margin 0.016552 on generated rows, violations ~0.5).
 - Replaced by f129: tfix = 0.1289 (just under the rival's published upper bound 0.1290), resumed from f12's rows. Closing it would give t* <= 0.1289 in the cap=3 own-rules class.
+
+## B6b (20 Oct ~21:00Z): oracle widened to the confirmed 2026 set
+- rpat.py now also embeds the 8,200 two-engine-D configurations of the 2026 set (RPAT_NL; source in b6_rpat/NL_SOURCE.txt) with a degree-count prefilter.
+- Self-check (gencheck seed 7, both sets): 3,858 generalisation checks, 0 failures.
+- Harvest over s5's 106,977 arrangements: 26,625 killed, 4,916 patterns (b3_pfh/nl_harvest_*.txt).
+- s5 (RSST only) holds at lower bound 1/8 with violations <= 0.05; f129 (tfix 0.1289) stopped (margin solution not converging, violations ~0.8).
+- s6 = s5's rows minus 11,415 rows of newly killed arrangements, oracle 8,493 patterns, smoothed; running.
