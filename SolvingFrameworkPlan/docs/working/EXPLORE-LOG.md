@@ -69,6 +69,10 @@
   (43.2 percent of the |w|); left: the 5 face rows (40/183) and r57e (2/183). Guesses: part 1 right; part 2 wrong on
   all 5 non-face rows dying at ring <= 14 (65 percent), right on the face row 7665566/6775676 not dying (75 percent).
   Lesson: non-face d10 rows with two 6-6 steps and d7 rows with a 7-7 pair can need ring 15.
+- **19:10Z, the face rows at Studio.** Studio's job52 already ran every ring 16-18 to-do window of 7766556/6567566 (352,
+  finals committed on main 19:10Z), 7766556/6576576 (414) and 7665566/6765766 (225), and 213 of 7655667/6756656's 243,
+  all with 0 two-engine kills. Left: 30 ring-18 windows of 7655667/6756656 and 319 of r57d (`loop/k57/face57_7_*_rest.txt`,
+  36e47b3c). Long Table's kill line for job57face is met, so it is not running; the face rows stay rule-side.
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
