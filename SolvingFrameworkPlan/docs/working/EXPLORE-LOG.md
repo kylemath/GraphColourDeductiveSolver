@@ -41,6 +41,12 @@
   kills do not fit. Its 15,783 ring 15-18 windows (2,900 at 15, 5,802 at 16, 5,120 at 17, 1,961 at 18; the whole
   wheel is ring 16) are in `loop/k47/win52_10_6565665656_6556565565_todo.txt` (md5 31a7d98e0053a5206669992f5f856195,
   3b6b0676) for Studio.
+- **18:55Z, r57d (face row 7665566/6775676, 4/183): no kill at ring <= 14**, as guessed. Its 753 ring <= 14 windows took 2
+  minutes (most replayed from the cache: it shares windows with the 7665566/6765766 family). 463 ring 15-18 windows are
+  left (65 at 15, 131 at 16, 178 at 17, 89 at 18; `loop/k47/win52_7_7665566_6775676_todo.txt`, md5
+  c3751a267e7101d4b76856e3c41d9edc, 746b73e0). Rule-side with the other face rows for now (Long Table 17:59Z). Long
+  Table 18:54Z: Studio runs r57c's ring 15 from the top (job57c); this machine takes it from the bottom once the queue
+  ends (`loop/k47/win57c_r15_rev.txt`, STOP=1).
 
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
