@@ -28,6 +28,11 @@
   Guess right on both counts (no hit through u; at most 2 off u). Part 2 started 17:58Z (`loop/k57/rows57q.txt`, r57a-f,
   log `loop/k57/q57.log`).
 
+- **18:14Z, r57a (7656766/6666555, 15/183) dies at ring 14.** Its 978 ring <= 14 windows (17:58-18:12Z) gave 4 kills,
+  2 f-names, both minimal and C: f7_..56766_...655. (X={I0-I1,I1-I7,R1-I0}, one ring vertex) and f7_..65676_..66.5.
+  (X={I0-I5}); files `loop/k47/r57a_kills*` (3f914cbe). Admission head adm57a on main 989bec15, regression
+  byte-identical: +2 C (2 names), `loop/k57/adm57a/`.
+
 ## Round 56 (20 Oct 2026, 08:43Z-): H-RPN, do the 13 binders of Opus's rpatN solve die, to the 2026 set or to our windows?
 
 **Pre-registered 08:43Z, before any containment or engine run of this round.** Long Table 08:41Z: with rpatN (round 55's 35
