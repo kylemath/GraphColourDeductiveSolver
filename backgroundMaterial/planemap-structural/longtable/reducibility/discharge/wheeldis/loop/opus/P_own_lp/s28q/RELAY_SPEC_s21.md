@@ -72,6 +72,7 @@ unchanged (§1 scale, charge 6 − d; a big's load is its inflow, at most d − 
   - r52k (7360eb92) is ex60 with s29/k3x_{D,C}_7360eb92: 3,424 configurations.
   - Containment is k42 `grow.embeddings` (exact degrees, induced, interior triangles onto faces).
 - A letter is **killed** when some embedding uses only known vertices plus a2 at that letter.
+  - **Reading (explicit, as checked by Studio 20 Oct):** only an embedding that *uses a2* kills a letter. An embedding on known vertices alone, without a2, kills nothing in this table. Such a window is dead whatever a2 is, but it is left to the receiver rows rather than encoded as an empty mask. This reading gives 380 masks of 30 (of 5,000). The alternative reading, where an a2-free embedding kills every letter, would give 60 empty masks and is **not** the spec. Killing fewer letters only enlarges the mask, so this reading is the conservative (sound) one.
 - The mask is the set of letters not killed. Since the payee credits Q at least the maximum over the mask, the credit is at least
   the true inflow (sound).
 - **Table** (`s28q/l3qtab.py`, exhaustive): σ ∈ ±1, c, a ∈ {5, 6}, w2, w3, w4, o ∈ 5..9, so 2·2·2·625 = **5,000 masks**
