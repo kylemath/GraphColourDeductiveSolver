@@ -306,6 +306,17 @@ for a in ARGS:
             P = frozenset((kd, ix_, frozenset(S)) for (kd, ix_), S in slots.items() if S != set(LET))
             if (d, P) not in seenp['R']: seenp['R'].add((d, P)); KIND['R'] += 1
             PAT[d].add(P)
+RPATN = os.environ.get('RPATN')   # RELAY_SPEC_s39o 39.2: whole-window raw patterns 'd LINK SWORD', 5-8 exact, N = {6,7,8,9}, . free
+NRPATN = collections.Counter(); FULLX = []
+if RPATN:
+    NSET = {'5': {5}, '6': {6}, '7': {7}, '8': {8}, 'N': {6, 7, 8, 9}}
+    for line in open(RPATN):
+        if line.startswith('#') or not line.strip(): continue
+        f = line.split('#')[0].split(); d = int(f[0]); lk, sw = f[1], f[2]
+        P = frozenset([('w', i, frozenset(NSET[ch])) for i, ch in enumerate(lk) if ch != '.'] + [('s', i, frozenset(NSET[ch])) for i, ch in enumerate(sw) if ch != '.'])
+        PAT[d].add(P); NRPATN[d] += 1
+        FULLX.append('%d %d %s' % (d, len(P), ' '.join('%d %d' % ((i if kd == 'w' else d + i), sum(1 << (x - 5) for x in S)) for kd, i, S in sorted(P))))
+    print('rpatN patterns from %s: %d, by d %s' % (os.path.basename(RPATN), sum(NRPATN.values()), dict(sorted(NRPATN.items()))), flush=True)
 byd = {d: len(v) for d, v in sorted(PAT.items())}
 print('patterns distinct by kind: D %d (spec 15,497), C %d (spec 1,494), RPAT %d (spec 158); by d %s; chars outside the spec table %s'
       % (KIND['D'], KIND['C'], KIND['R'], byd, dict(odd)), flush=True)
@@ -482,6 +493,9 @@ if HAT5:
     with open(RTF, 'wb') as _f: _f.write(RREL_.astype('<f8').tobytes()); _f.write(REX_.astype('<f8').tobytes())
     SEPX.stdin.close(); SEPX.wait()
     SEPENV = dict(os.environ, SEP_NODELIMIT='0', SEP_ARRKEY='1', SEP_EXACT6=EX6F, SEP_RTAB=RTF)
+    if RPATN:
+        FXF = os.path.join(HERE, 'out', 'job31', 'st16', 'fullx_%s.txt' % os.path.basename(SOLF).replace('.json', ''))
+        open(FXF, 'w').write('\n'.join(FULLX) + '\n'); SEPENV['SEP_FULLX'] = FXF
     if L3Q:   # section 21.6: relaxed window term at a d = 7 link 7, exact payee / payer terms at the leaf
         L3R = _np.zeros((125, 25)); L3X = _np.zeros(31250); L3P = _np.zeros(125)
         for wm1, sm1, s0, wp1 in itertools.product(LET, repeat=4):

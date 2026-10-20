@@ -333,6 +333,14 @@ int main(int argc, char **argv) {
         vector<pair<int,int>> P(k); for (auto &x : P) if (fscanf(f, "%d %d", &x.first, &x.second) != 2) return 14;
         addFull(dd, P);
     }
+    if (const char *e = getenv("SEP_FULLX")) {   // RELAY_SPEC_s39o rpatN: extra whole-window patterns "d k slot mask ..." per line
+        FILE *g = fopen(e, "r"); if (!g) return 39; int dd, k;
+        while (fscanf(g, "%d %d", &dd, &k) == 2) {
+            vector<pair<int,int>> P(k); for (auto &x : P) if (fscanf(g, "%d %d", &x.first, &x.second) != 2) return 40;
+            addFull(dd, P); nf++;
+        }
+        fclose(g);
+    }
     { char tb[4]; if (fscanf(f, "%3s", tb) == 1 && tb[0] == 'R') {
         RMODE = true;
         for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++)
