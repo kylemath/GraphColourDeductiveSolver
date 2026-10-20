@@ -635,3 +635,8 @@ our agent R and have no output from it.
   - Controls: E1 against x gives 0 mismatches; the physical test gives 0.
   - No composite touches 8666655. That row is in this cert only as payee 8666655/7777666, with dual 1634/5844141 ≈ 2.8e-4. There is no K2 relief to take.
   - To be re-priced on the xpen = 1e-5 cert before any e87 port.
+
+## 20 Oct 09:22Z — [E2] l3q on A67 CONFIRMED by Studio
+- Studio spec-only check d4a91750 (loop/studio/opus_check/s33z_verdict.md): UPPER FEASIBLE at 0.128957775395, LOWER VALID exactly 55686/438047; Karp λ 0.5539; 0 table diffs vs reg_A67.
+- **New two-engine bound: 55686/438047 = 0.127123 <= t* <= 0.128958 [E2]** on A67 (main 2c97e14d out/job30, 2,555 D / 1,097 C, dcount 17,595), l3q only (RSST rule 9 restatement; claim must name the source). Previous [E2]: 11/75 = 0.146667.
+- One engine since: l3q+rpatN (35 confirmed 2026-set configs) 636/5071 = 0.125419 <= t* <= 0.125956 (s39o/run_n). fy-only >= 2/15 > 0.128958, so the own whole-face rule alone is strictly worse than l3q.
