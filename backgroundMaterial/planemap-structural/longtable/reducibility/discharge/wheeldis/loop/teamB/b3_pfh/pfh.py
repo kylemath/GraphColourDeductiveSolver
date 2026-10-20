@@ -32,6 +32,8 @@ USE_H = 'noH' not in OPTS
 DEX = int(OPTS.get('dex', 15))
 LIMIT = int(float(OPTS.get('limit', 2e7)))
 MANY = int(OPTS.get('many', 60))
+SMOOTH = float(OPTS['smooth']) if 'smooth' in OPTS else None
+SM = {'xc': None, 'plain': False}
 TFIX = float(OPTS['tfix']) if 'tfix' in OPTS else None   # feasibility mode at a fixed t (certificate if separation ends clean)
 CENTER = float(OPTS['center']) if 'center' in OPTS else None   # phase-2 centring offset for the separation point
 CAP = float(OPTS['cap']) if 'cap' in OPTS else None   # optional upper bound on every transfer (a rule-class restriction)
@@ -600,6 +602,14 @@ def main():
         trunc = []
         kills = 0
         x, t, res = solve(rows)
+        xl = x
+        smoothed = False
+        if SMOOTH and SM['xc'] is not None and not SM['plain']:
+            xc = np.zeros(len(xl))
+            m = min(len(xl), len(SM['xc']))
+            xc[:m] = SM['xc'][:m]
+            x = SMOOTH * xl + (1 - SMOOTH) * xc     # Wentges smoothing: separate at a point between the LP optimum and the last separation point
+            smoothed = True
         new = 0
         worst = {}
         # 6 rows
@@ -657,6 +667,12 @@ def main():
             it += 1
             print('it %d t=%.6f rows=%d vars=%d new=%d opat=%d rowsdropped=%d worst=%s trunc=%s full=%s (%.0fs)' % (
                 it, t, len(rows), len(VARL), new, len(OPAT) if ORACLE else 0, kills, {k: round(v, 4) for k, v in worst.items()}, trunc, full, time.time() - t0), flush=True)
+            if new == 0 and smoothed:      # nothing at the smoothed point: separate at the LP optimum itself next
+                SM['plain'] = True
+                SM['xc'] = xl
+                continue
+            SM['plain'] = False
+            SM['xc'] = x
             if new == 0:
                 if full or not trunc:
                     break
