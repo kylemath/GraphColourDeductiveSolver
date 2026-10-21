@@ -93,8 +93,10 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
 - **18:19Z, r63k (7576666/7757575, d7 non-face row, fb-off -0.0051) dies at ring 15.** Closed after 7 min (400 ring
   <= 13 windows done, 651 of 952 at ring <= 15): 1 kill, f7_5766667_.5.5.5. (ring 15, m 11, D on kc + dfast). Files
   `loop/k47/r63k_kills*` (1ce0d47e). Head adm63k on main aa74d7ec (A103): regression byte-identical, +1 D, 0 lost, guards
-  unchanged, `loop/k63/adm63k/` (k3x_D 0ad6c997, k3x_C d74d51f5). Long Table's 18:05Z contraction ruling (interior-only X
-  sound at any size) leaves every explore C admission as it is: all have interior-only X of one edge. Row55 at adm63k:
+  unchanged, `loop/k63/adm63k/` (k3x_D 0ad6c997, k3x_C d74d51f5). Long Table's 18:05Z contraction ruling: interior-only
+  X is sound at any size; a group pinned to one rim vertex needs the per-entry foldSafeX check. The 76 C kills of rounds
+  62-63 all have interior-only X. On main aa74d7ec, 111 of 1,310 C entries have a pinned X, 73 of them from explore kill
+  files of rounds 7-61 (`loop/k63/pinnedX_main_aa74d7ec.txt`, 89197dcc), listed for that check. Row55 at adm63k:
   r63l-p hold nothing. Next r63l 7657575/7665566 (non-face). Logged 18:20Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
