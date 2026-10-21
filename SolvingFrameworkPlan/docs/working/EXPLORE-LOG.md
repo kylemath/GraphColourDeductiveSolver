@@ -27,6 +27,12 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   on kc + dfast). Files `loop/k47/r63a_kills*` (5a3152f1). Head adm63a on main 8ec00aea (A97): regression byte-identical,
   +34 D, +0 C, 0 lost, guards unchanged, `loop/k63/adm63a/` (k3x_D 68ebf3a0, k3x_C 9f8cfe39). Row55 at adm63a: the other
   15 queue rows hold nothing (`loop/k63/row63_A97a.txt`). Next r63b 6555565665/6696666666 (d10). Logged 16:39Z.
+- **16:41Z, r63b (6555565665/6696666666, d10 non-face row, keeppen -0.0055) dies at ring 13.** Closed after 3 min (838
+  ring <= 13 windows done): 3 kills, 2 f-names, both minimal: f10_..56555565_.......... (ring 13, m 9, C, X = {I0-I2} on
+  both engines; it needs u and eight link letters, no apex) and f10_.555565665_.......... (ring 14, D). Files
+  `loop/k47/r63b_kills*` (16137895). Head adm63b on main 753720ad (A98, adm63a admitted): regression byte-identical, +1 D,
+  +1 C, 0 lost, ring-merge hold still the same 3 names, `loop/k63/adm63b/` (k3x_D a3212e80, k3x_C 2087d442). Row55 at
+  adm63b: r63c-p hold nothing (`loop/k63/row_adm63b.txt`). Next r63c 65656566556/65555656565 (d11). Logged 16:43Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
