@@ -104,6 +104,9 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   adm63l on main 83c23ac1 (A104): regression byte-identical, +6 D, +12 C, 0 lost, guards unchanged, `loop/k63/adm63l/`
   (k3x_D 39b7902e, k3x_C aaa4bd78). All 12 new C entries have a one-edge interior-only X. Row55 at adm63l: r63m-p hold
   nothing. Next r63m 9657556/5677565 (face). Logged 18:24Z.
+- **18:36Z, r63m (9657556/5677565, d7 face row, fb-off -0.0027) has no kill at ring <= 15** (727 windows, 15 min).
+  To-do `loop/k47/win52_7_9657556_5677565_todo.txt` (34f5d2da): 63 windows, 55 at ring 16 and 8 at ring 17, to the
+  farm (standing rule), staged in /mnt/project-files/explore/todo63/. Next r63n 7656756/7556677 (non-face). Logged 18:37Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
