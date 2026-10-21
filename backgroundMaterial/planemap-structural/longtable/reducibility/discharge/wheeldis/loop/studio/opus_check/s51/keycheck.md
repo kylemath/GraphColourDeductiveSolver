@@ -36,7 +36,14 @@ s42a A78 cert/sol and the A83 nosep cert/sol). I did not open s51/pricer51.py, s
 | broken rows `sign`, first-order pricing | **caught**: every xo key goes negative (A78 334 keys, Σ 5056/421; A83 565 keys) |
 | broken rows `end` | not separable by my pricing (it equals the correct build: 0 negative). Its catch needs A1 resolved, or a solved cert |
 
-## A1 (open): the §51.3 pricing table is not reproducible from the spec text
+## A1: answered (coordinator, 09:17Z): the §51.3 table is an optimised spread, not a function of the cert
+- **The answer:** Opus's table splits each row that has unpinned unseen outer letters into one row per compatible completion, with the
+  weight split convexly and relabels allowed. An LP then picks the split that minimises Σ max(0, −rc), and the result is rationalised.
+- **What follows:** the table is a best-case estimate, so it **does not gate this key check**. I will reproduce it exactly from Opus's
+  §51.3a addendum and its dumped per-candidate mrowX duals for A78 / A83 when they arrive (still spec-only: pricer51.py stays unopened).
+  The broken-`end` catch will come from the first solved xo cert.
+
+### A1 as first raised: the §51.3 pricing table is not reproducible from the spec text
 §51.3 reports, for "x_outMW (this spec)" on the old certs (which have no mrowX rows): A78 Σ max(0, −rc) = 96/421 (4 keys at −24/421),
 and A83 2618/29923 (10 negative, most negative −426/29923). The spec does not state how xo columns are priced on a cert that has XQ
 in its receiver rows but no mrowX rows. I tried three readings:
