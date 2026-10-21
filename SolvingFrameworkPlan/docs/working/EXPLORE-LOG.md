@@ -1,5 +1,24 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 58 (21 Oct 2026, 00:40Z-): H-A78, do the new binders of Opus's A78 solve die at ring <= 14?
+
+**Pre-registered 00:40Z, before any containment or engine run of this round.** Opus 00:37Z: s42a, l3q + rpatN3 on A78
+(b6dc7610, 2,660 D / 1,170 C) minus the 128 ring-merge hold-outs (`loop/opus/P_own_lp/s42a/exname_A78.txt`), one engine,
+nosep LOWER VALID 44/421 = 0.104513 (keeppen t = 0.109439); cert `s42a/run_A78/cert_q42aA78L.json` (md5 0c88b25b) with
+13 receiverR2 rows. Opus sent the top 10 (140/421 of |w|; `loop/k58/rows58.txt`); the other 3 are asked for. canon_key:
+the two 4/421 rows are the exhausted face rows 7766556/6576576 and 7665566/6675676 (round 57). The 8 new rows: 3
+non-face (8677656/5566555 24/421, 76765656/66565565 and 76567656/76675555 12/421 each) and 5 face rows (7766556/6567568
+and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 65655565565/66659665666 12/421 each).
+7766556/6567568 differs from the exhausted top A74 row 7766556/6567566 only at s6 (8 for 6).
+- **Part 1, containment** (`loop/k55/row55.py`): registry at b6dc7610 (hits by one of the 128 hold-outs marked) and the
+  whole 2026 set, on the 10 rows, through u or avoiding it.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 14, DNW 3) on the 8 new rows by |w|, non-face first within a weight;
+  leftovers' ring 15-18 windows to Studio. Kills go to Long Table as admission heads.
+- **Hypothesis.** The 3 non-face rows die at ring <= 14; at most 1 of the 5 face rows does. **Kill line:** fewer than 2 of
+  the 3 non-face rows die at ring <= 15 (here or at Studio).
+- **Guess.** Part 1: no hit (70 percent). Part 2: all 3 non-face rows die at ring <= 14 (55 percent, after round 57's two
+  ring-15 rows); no face row dies at ring <= 14 (60 percent), the 8s next to the face notwithstanding.
+
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
 **Pre-registered 17:57Z, before any containment or engine run of this round.** Opus 17:54Z (cc Long Table): l3q + rpatN3
