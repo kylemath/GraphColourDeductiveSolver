@@ -48,6 +48,21 @@ Opus code, cmd script, rows file or log. Team B material: none.
 - **What the fb amounts do here:** they are ≤ 2.65e−13 and change nothing at this precision: (a) and (b) agree line for line.
 - **Self-test:** the largest fb amount set to 0.5 is caught, with cons2 (with fb) violated on 100 words (max 0.5), FAIL.
 
+## Race re-check (21 Oct, after the SEPTAG finding) and solo re-run of (a)
+- **The shared file:** every st21_check run wrote the shared separator pattern file bin/sep3_s16chk.in, plus tables named after the
+  solution basename (out/job31/st16/{l3q,ex6,rtab,fb}_<sol>.bin).
+- **(b):** fb off, so it reads no fb table. Its l3q, ex6 and rtab tables are identical in content across the concurrent A83 runs (same
+  solution). Its 4 logged separator loads (patterns 16,495, full 3,873 / 6,160) equal a solo A83 build (pattern file md5 29c64e9d,
+  39,228 lines). **Clean.**
+- **(a):** it shared fb_sol_q44fbA83.bin with the concurrent fb self-test (fb set to 0.5). That could have lowered receiver loads, and
+  the logs cannot prove which version it read. So **(a) was re-run solo**:
+  - SEPTAG a83rerunA, with its own solution copy (fb_sol_q44fbA83_rerunA.bin); calibration at d = 7 only;
+  - pattern file bin/sep3_a83rerunA.in, md5 **29c64e9d** = the solo A83 build; 4 loads, all 16,495 / 3,873 / 6,160;
+  - result: receivers d = 7..17 exhaustive, **0 violated**; DP d = 18..30 clean (z9 = 0.109540); **Karp λ = 0.572808649**, covers
+    d ≥ 13.797; **FEASIBLE at t = 0.105883918328** (log s44A83/upper_a_fbon_rerun.log). The same as the first run.
+- **The lower check:** it reads no separator file (LOWER_ONLY exits before any separator table or pattern file is read or written).
+- **From now on,** every run uses its own SEPTAG and its own solution copy.
+
 ## Verdict
 **A83 [E2] pair confirmed: 132/1301 (0.101460) <= t* <= 0.105883918328.** The lower is exact, with no cap term; the upper is FEASIBLE
 with and without fb. No kill line was met.

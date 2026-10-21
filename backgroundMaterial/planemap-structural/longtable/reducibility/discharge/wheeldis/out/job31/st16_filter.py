@@ -31,6 +31,9 @@ for l in open(os.path.join(HERE, 'loop', 'k44', 'rsst_verdicts.txt')):
     f = l.split(); v = [x for x in f if x.startswith('verdict=')]
     ver[f[0].split('_')[0]] = v[0][8:] if v else None
 R = [c for c in G['rsst']() if ver.get(c[0]) in ('D2', 'C2cons')]
+if os.environ.get('RSSTC_KEEP'):   # s52c cover check: keep the RSST C2cons entries named in this file only (D2 all kept)
+    _kp = {l.split()[0].split('_')[0] for l in open(os.environ['RSSTC_KEEP']) if l.strip() and not l.startswith('#') and l.startswith('rsst')}
+    R = [c for c in R if ver.get(c[0]) == 'D2' or c[0] in _kp]; print('RSSTC_KEEP: %d RSST C2cons kept (%s)' % (sum(ver.get(c[0]) == 'C2cons' for c in R), sorted(_kp)), flush=True)
 names = []
 K3X = os.environ.get('K3X')   # 'D_FILE,C_FILE' (s33z: the solve's registry); default the 09d8ac38 pair
 for fn in (K3X.split(',') if K3X else (os.path.join(HERE, 'loop', 'studio', 'opus_check', 'k3x_D_09d8ac38.out'), os.path.join(HERE, 'loop', 'studio', 'opus_check', 'k3x_C_09d8ac38.cfast'))):

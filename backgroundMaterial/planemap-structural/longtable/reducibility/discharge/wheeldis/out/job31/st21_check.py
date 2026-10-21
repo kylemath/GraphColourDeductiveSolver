@@ -72,6 +72,17 @@ for line in open(os.path.join(DIS, 'studio17', 'wheels17_verdicts.txt')):
     fam, word = f[0].split('_', 1); v = f[2]
     if v == 'D' or (v == 'C' and word not in UNC):
         (R5 if fam == 'c5' else R6).add(canon(tuple(int(ch) for ch in word)))
+if os.environ.get('CKEEP'):   # s52c cover check (Opus's reading, coordinator 15:53Z): C wheels out of R5 / R6 (and RBIG below) unless kept
+    _ck = {l.split()[0] for l in open(os.environ['CKEEP']) if l.strip() and not l.startswith('#')}; _dr = []
+    R5, R6 = set(), set()
+    for line in open(os.path.join(DIS, 'studio17', 'wheels17_verdicts.txt')):
+        f = line.split()
+        if not f or f[0].startswith('#'): continue
+        fam, word = f[0].split('_', 1); v = f[2]
+        keepC = v == 'C' and word not in UNC and fam == 'c6' and f[0] in _ck   # only the kept C 6-wheels; every c5 C dropped
+        if v == 'D' or keepC: (R5 if fam == 'c5' else R6).add(canon(tuple(int(ch) for ch in word)))
+        elif v == 'C' and word not in UNC: _dr.append(f[0])
+    print('CKEEP: R5 = c5 D only (%d), R6 = c6 D + kept C 6-wheels (%d); C wheels dropped: %s' % (len(R5), len(R6), _dr), flush=True)
 FANS = []
 for line in open(os.path.join(HERE, 'out', 'fans_dfast.out')):
     if 'D=true' in line:
@@ -93,7 +104,7 @@ for fn in [os.path.join(HERE, 'out', 'bigwheels1516_dfast_partial.out')] + glob.
     for line in open(fn):
         f = line.split()
         if f and re.match(r'^c[78]_\d+$', f[0]) and 'D=true' in line: RBIG.add(canon(tuple(int(ch) for ch in f[0][3:])))
-for fn in glob.glob(os.path.join(HERE, 'out', 'def_*.cfast')):
+for fn in ([] if os.environ.get('CKEEP') else glob.glob(os.path.join(HERE, 'out', 'def_*.cfast'))):   # CKEEP: RBIG = D big wheels only
     cur = None
     for line in open(fn):
         if ' r=' in line and not line.startswith(' '):
@@ -107,7 +118,8 @@ s2 = lambda S: {''.join(map(str, w)) for w in S}
 print('R5 %d (spec 24, same set: %s); R6 %d (spec 31, same: %s); FANS %d (spec 7, same: %s); RBIG %d (spec 104)' % (
     len(R5), s2(R5) == set(SPEC_R5), len(R6), s2(R6) == set(SPEC_R6), len(FANS),
     {''.join('F' if x is None else str(x) for x in p) for p in FANS} == set(SPEC_FANS), len(RBIG)), flush=True)
-if s2(R5) != set(SPEC_R5) or s2(R6) != set(SPEC_R6) or len(FANS) != 7 or len(RBIG) != 104: fail('reducible sets differ from spec 4.4')
+if os.environ.get('CKEEP'): print('CKEEP: RBIG = D big wheels only: %d (spec 104 with C)' % len(RBIG), flush=True)
+elif s2(R5) != set(SPEC_R5) or s2(R6) != set(SPEC_R6) or len(FANS) != 7 or len(RBIG) != 104: fail('reducible sets differ from spec 4.4')
 
 # ================= spec 2 / 12.1-12.2: keys =================
 def root5(a):
@@ -744,8 +756,9 @@ if LOWER_ONLY:
     print('VERDICT (lower only): %s' % ('PASS (lower VALID %s)' % EXPECT_T if not FAIL else 'FAIL: ' + ' | '.join(FAIL))); sys.exit(0)
 # ================= receivers: Studio sep3r on the apex relaxation, exact re-check of what it reports =================
 os.environ['SEP_NODELIMIT'] = '0'
-src = open(os.path.join(HERE, 'wlp3r6.py')).read().replace('os.path.abspath(__file__)', repr(os.path.join(HERE, 'wlp3r6.py')), 1)
-sys.argv = ['wlp3r6', 'tag=s16chk', 'dmaxp=%s' % os.environ.get('DMAXP', '17')] + ARGS
+_WL = 'wlp3r6_ck.py' if os.environ.get('CKEEP') else 'wlp3r6.py'   # s52c: the CKEEP copies (frozen wlp3*.py untouched)
+src = open(os.path.join(HERE, _WL)).read().replace('os.path.abspath(__file__)', repr(os.path.join(HERE, _WL)), 1)
+sys.argv = ['wlp3r6', 'tag=%s' % os.environ.get('SEPTAG', 's16chk'), 'dmaxp=%s' % os.environ.get('DMAXP', '17')] + ARGS
 NS_ = {'__name__': 'studio_wlp3r6'}
 exec(src[:src.index('DS, DSF = list(range(7, 13))')], NS_)
 import numpy as np
