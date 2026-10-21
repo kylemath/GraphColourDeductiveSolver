@@ -1,0 +1,14 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10157, 8: 6217, 9: 3519, 10: 1439, 11: 372, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17744, 'C': 2132, 'RPAT': 158, 'RPATN': 2080}
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '7666766', '6556565'] pattern ((0, 4), (2, 2), (3, 1), (4, 2), (5, 1), (6, 2), (12, 2), (13, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 8, '76555566', '66757666'] pattern ((0, 4), (1, 2), (2, 2), (3, 2), (4, 1), (5, 4), (6, 1), (7, 1), (8, 1), (10, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 8, '76765656', '66565565'] pattern ((0, 4), (6, 2), (7, 2), (8, 1), (9, 1), (10, 2), (11, 1), (12, 1), (13, 2), (14, 2))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 10, '6556665566', '6565565655'] pattern ((0, 2), (1, 2), (2, 1), (3, 1), (4, 1), (12, 1), (13, 1), (14, 1), (15, 2), (16, 2), (17, 1), (18, 2))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 8, '76567656', '76675555'] pattern ((0, 4), (2, 2), (3, 2), (4, 1), (10, 2), (11, 1), (12, 1), (13, 1), (14, 2), (15, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '8677656', '5566555'] pattern ((0, 8), (1, 1), (2, 2), (3, 1), (8, 2), (9, 1), (10, 1), (11, 1), (12, 2), (13, 1))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '7656766', '6556656'] pattern ((0, 4), (2, 2), (3, 1), (4, 1), (5, 1), (6, 2), (8, 4), (10, 2), (11, 1), (12, 2))
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 11, '65655565565', '66659665666'] pattern ((2, 1), (4, 2), (5, 2), (6, 1), (7, 1), (8, 1), (10, 1), (12, 2), (13, 2), (14, 1), (15, 1), (16, 1))
+  negative reduced costs: 39 [(('r', (5, 0, 5, 6, 1, 0)), Fraction(-19, 86)), (('r', (6, 0, 0, 7)), Fraction(-13, 86)), (('M', (9, 5, 6, 6, 5, 5, 5, 29)), Fraction(-6, 43)), (('y', (9, 5, 5, 6, 6)), Fraction(-5, 43)), (('lQ', (6, 6, 31)), Fraction(-9, 86))]
+rows by type: {'senderR2': 22, 'cons2': 86, 'mrowL': 5, 'mrowR2': 29, 'receiverR2': 13}
+LOWER-R2: INVALID  t >= -11/86 = -0.127906977  (155 rows)
