@@ -107,6 +107,17 @@ list too); its window cache carries over.
   windows at ring <= 15). Logged 15:39Z.
 - **15:41Z, adm62g admitted at main 152388f6 (A93 = 3,045 D / 1,306 C, md5 match).** Per Long Table, the r62i and r62j
   ring 16-18 to-dos (3aeb605d, 69241d00) went to Studio for its face-row slot, ahead of the 23 timeouts.
+- **15:39Z, r62l (7556656656/6565555555, d10 face row, -0.0046) was already dead at A93.** early62.py closed it in a
+  minute from the cache: 21 kills, 5 minimal f-names (all D at ring 14). 19 of the 21 are r62e's names, already on main
+  since adm62c: r62e's row differs only at s0 (7 against 6), and row55 at A93 finds 19 registry names inside r62l's
+  1.5-ball. So rows62_alive.txt (built at A86) was stale for it. Files `loop/k47/r62l_kills*` (f01b7133). Head adm62h on
+  main 21d03c99 (A93) adds only the 2 new minimal D names, f10_..55665665_.....55555 and f10_.55.656656_.5..55.55.
+  (ring 14): +2 D, +0 C, 0 lost, guards unchanged, `loop/k62/adm62h/` (k3x_D 76334228, k3x_C 26c6c0fe); optional.
+- **16:00Z, r62m (9657765/5556655, non-face, -0.0046) has no kill at ring <= 15** (858 windows, mostly cached from round
+  59). To-do `loop/k47/win52_7_9657765_5556655_todo.txt` (5e361e87): 108 windows (83 at ring 16, 25 at 17), held.
+- **16:03Z, recheck of the rows not yet run against A93 + adm62h** (`loop/k62/row62_A93.txt`): r62o 7655667/6657655 holds
+  12 registry names (e.g. f7_.556776_....55., r62g's kills, adm62e), so it is already dead; marked `R56_r62o.DONE` and the
+  queue skips it. r62n, p, q, r, s hold nothing. Next r62n 7766555/6576956 (face). Logged 16:03Z.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
