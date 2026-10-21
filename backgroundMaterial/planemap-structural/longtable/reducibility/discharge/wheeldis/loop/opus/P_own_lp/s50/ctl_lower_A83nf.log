@@ -1,0 +1,5 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10157, 8: 6217, 9: 3519, 10: 1439, 11: 372, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17744, 'C': 2132, 'RPAT': 158, 'RPATN': 2080}
+rows by type: {'senderR2': 41, 'cons2': 120, 'mrowL': 15, 'mrowR2': 47, 'receiverR2': 33}
+LOWER-R2: VALID  t >= 132/1301 = 0.101460415  (256 rows)

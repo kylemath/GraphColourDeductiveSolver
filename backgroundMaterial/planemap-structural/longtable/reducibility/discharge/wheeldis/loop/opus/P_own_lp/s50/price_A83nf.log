@@ -1,0 +1,124 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10157, 8: 6217, 9: 3519, 10: 1439, 11: 372, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17744, 'C': 2132, 'RPAT': 158, 'RPATN': 2080}
+rows by type: {'senderR2': 41, 'cons2': 120, 'mrowL': 15, 'mrowR2': 47, 'receiverR2': 33}
+LOWER-R2: VALID  t >= 132/1301 = 0.101460415  (256 rows)
+lowerR2 captured: tco 1, D 132/1301 = 0.101460415, 358 columns, 0 uncapped negative (9s)
+control 0: rebuilt ledger = lowerR2 ledger on all 358 columns (exact)
+relabel freedom: senders [(1, 35), (2, 6)]; cons2 [(64, 13), (96, 4), (144, 18), (160, 9), (192, 2), (216, 9), (240, 3), (324, 16), (360, 10), (400, 3), (432, 2), (486, 4), (540, 14), (648, 2), (729, 1), (810, 3), (900, 4), (1200, 1), (1296, 2)]; receivers [(1, 33)] (29s)
+
+=== y0 [y, level 0 (control)]: rows touched 74 (fully pinned 74), refined columns 27 (old 27), LP vars 41, LP min sum max(0,-rc) 0 (0.0s)
+    exact split: rc<0 0, most negative 0 = 0.000000, sum max(0,-rc) = 0 = 0.000000; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('receiverR2', True), 33), (('senderR2', True), 41)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.000000, cap 0.1 0.000000, cap 0.3 0.000000
+    CONTROL y0: 27 columns (27 touched), every rc equals lowerR2 rc exactly; negative uncapped 0 (lowerR2 lists 0)
+
+=== x0 [x, level 0 (control)]: rows touched 27 (fully pinned 27), refined columns 32 (old 32), LP vars 0, LP min sum max(0,-rc) 0 (0.0s)
+    exact split: rc<0 0, most negative 0 = 0.000000, sum max(0,-rc) = 0 = 0.000000; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('receiverR2', True), 27)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.000000, cap 0.1 0.000000, cap 0.3 0.000000
+    x at its real cap 3: valid bound after the split D = 132/1301 = 0.101460415 (old 0.101460415)
+    CONTROL x0: 30 columns (32 touched), every rc equals lowerR2 rc exactly; negative uncapped 0 (lowerR2 lists 0)
+
+=== h0 [h2, level 0 (control)]: rows touched 167 (fully pinned 167), refined columns 128 (old 128), LP vars 120, LP min sum max(0,-rc) 0 (0.0s)
+    exact split: rc<0 0, most negative 0 = 0.000000, sum max(0,-rc) = 0 = 0.000000; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('cons2', True), 120), (('mrowR2', True), 47)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.000000, cap 0.1 0.000000, cap 0.3 0.000000
+    CONTROL h0: 128 columns (128 touched), every rc equals lowerR2 rc exactly; negative uncapped 0 (lowerR2 lists 0)
+
+=== g0 [g2, level 0 (control)]: rows touched 158 (fully pinned 158), refined columns 68 (old 68), LP vars 158, LP min sum max(0,-rc) 0 (0.0s)
+    exact split: rc<0 0, most negative 0 = 0.000000, sum max(0,-rc) = 0 = 0.000000; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('cons2', True), 120), (('senderR2', True), 38)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.000000, cap 0.1 0.000000, cap 0.3 0.000000
+    CONTROL g0: 68 columns (68 touched), every rc equals lowerR2 rc exactly; negative uncapped 0 (lowerR2 lists 0)
+
+=== y_ap [y + both apex letters exact (hats U-n1, n4-U)]: rows touched 74 (fully pinned 33), refined columns 215 (old 27), LP vars 354, LP min sum max(0,-rc) 0.312352 (0.0s)
+    exact split: rc<0 20, most negative -2232/29923 = -0.074591, sum max(0,-rc) = 18693/59846 = 0.312352; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('receiverR2', True), 33), (('senderR2', False), 41)]; negative keys touching a receiverR2 (binder) row: 1, their sum max(0,-rc) 2232/29923 = 0.074591
+    gain sum max(0,-rc)*cap: cap 0.05 0.015618, cap 0.1 0.031235, cap 0.3 0.093706
+    rc -2232/29923 = -0.074591  key (7, 5, 5, 6, 6, 6, 6) | S 55667 01000|11 +0.14036; R 7 7665566/7765766 -0.04612; R 7 7665566/6675676 -0.02577; S 55667 01000|01 +0.01247; R 7 7665567/5765765 -0.00779; S 55667 00100|00 +0.00302
+    rc -60/1301 = -0.046118  key (7, 6, 5, 6, 7, 5, 7) | S 56776 10101|00 +0.04612
+    rc -852/29923 = -0.028473  key (9, 5, 5, 6, 6, 5, 5) | S 55669 01000|00 +0.02847
+    rc -714/29923 = -0.023861  key (7, 5, 5, 9, 7, 5, 5) | S 55779 00000| +0.02386
+    rc -714/29923 = -0.023861  key (7, 7, 5, 5, 9, 5, 6) | S 55779 00000| +0.02386
+    rc -618/29923 = -0.020653  key (9, 5, 6, 6, 6, 5, 5) | S 56669 01000|000 +0.01357; S 56669 00000|110 +0.00708
+    rc -426/29923 = -0.014237  key (9, 6, 5, 5, 6, 5, 6) | S 55696 00000|00 +0.01424
+    rc -426/29923 = -0.014237  key (9, 6, 5, 6, 6, 7, 7) | S 56696 10110|000 +0.01424
+    rc -309/29923 = -0.010327  key (9, 6, 6, 6, 6, 7, 7) | S 66669 01011|0000 +0.01033
+    rc -12/1301 = -0.009224  key (7, 6, 5, 5, 7, 7, 5) | S 55677 10101|0 +0.00922
+    as-labelled (no relabel freedom): rc<0 20, most negative -0.074591, sum max(0,-rc) 0.312352
+
+=== y_hats [y + the five's 5 hats exact]: rows touched 74 (fully pinned 0), refined columns 4289 (old 27), LP vars 405753, LP min sum max(0,-rc) 0.435952 (4.6s)
+    exact split: rc<0 31, most negative -4573/29923 = -0.152826, sum max(0,-rc) = 13045/29923 = 0.435952; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('receiverR2', False), 33), (('senderR2', False), 41)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.021798, cap 0.1 0.043595, cap 0.3 0.130786
+    rc -4573/29923 = -0.152826  key (7, 5, 5, 6, 6, 5, 5, 7, 6, 5) | S 55667 01000|11 +0.14036; S 55667 01000|01 +0.01247
+    rc -60/1301 = -0.046118  key (7, 6, 5, 6, 7, 5, 7, 7, 5, 7) | S 56776 10101|00 +0.04612
+    rc -852/29923 = -0.028473  key (9, 5, 5, 6, 6, 5, 5, 7, 6, 5) | S 55669 01000|00 +0.02847
+    rc -714/29923 = -0.023861  key (7, 5, 5, 9, 7, 6, 6, 6, 6, 6) | S 55779 00000| +0.02386
+    rc -714/29923 = -0.023861  key (7, 7, 5, 5, 9, 6, 6, 6, 6, 6) | S 55779 00000| +0.02386
+    rc -426/29923 = -0.014237  key (9, 6, 5, 5, 6, 5, 6, 5, 6, 6) | S 55696 00000|00 +0.01424
+    rc -426/29923 = -0.014237  key (9, 6, 5, 6, 6, 7, 6, 7, 6, 7) | S 56696 10110|000 +0.01424
+    rc -733/59846 = -0.012248  key (9, 5, 6, 6, 6, 5, 6, 5, 5, 5) | S 56669 00000|110 +0.01225
+    rc -362/29923 = -0.012098  key (7, 5, 5, 9, 5, 5, 5, 5, 5, 5) | S 55759 00000| +0.01210
+    rc -362/29923 = -0.012098  key (9, 5, 5, 7, 5, 5, 5, 5, 5, 5) | S 55759 00000| +0.01210
+    as-labelled (no relabel freedom): rc<0 31, most negative -0.152826, sum max(0,-rc) 0.435952
+
+=== x_out [x sides + outer (second-ring) letters]: rows touched 27 (fully pinned 0), refined columns 888 (old 32), LP vars 606, LP min sum max(0,-rc) 0.201049 (0.0s)
+    exact split: rc<0 15, most negative -60/1301 = -0.046118, sum max(0,-rc) = 6016/29923 = 0.201049; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('receiverR2', False), 27)]; negative keys touching a receiverR2 (binder) row: 15, their sum max(0,-rc) 6016/29923 = 0.201049
+    gain sum max(0,-rc)*cap: cap 0.05 0.010052, cap 0.1 0.020105, cap 0.3 0.060315
+    x at its real cap 3: valid bound after the split D = -15012/29923 = -0.501687665 (old 0.101460415)
+    rc -60/1301 = -0.046118  key (7, 7, (5, 6, 5, 5, 5), (6, 6, 7, 9, 6)) | R 7 7667565/7966555 +0.04612
+    rc -60/1301 = -0.046118  key (7, 7, (5, 5, 6, 5, 5), (6, 7, 6, 6, 7)) | R 7 7676655/6667656 +0.04612
+    rc -426/29923 = -0.014237  key (7, 9, (6, 5, 5, 5, 6), (6, 5, 5, 6, 5)) | R 7 9657656/5666555 +0.00922; R 7 9657656/5667555 +0.00501
+    rc -426/29923 = -0.014237  key (9, 7, (6, 5, 5, 6, 5), (6, 5, 5, 6, 5)) | R 9 755676556/756556665 +0.01424
+    rc -288/29923 = -0.009625  key (7, 9, (5, 7, 5, 5, 5), (6, 5, 5, 5, 6)) | R 7 9656775/5556655 +0.02386; R 9 755676556/756556665 -0.01424
+    rc -288/29923 = -0.009625  key (9, 7, (5, 5, 7, 5, 5), (6, 5, 5, 5, 6)) | R 10 7556656656/7565555555 +0.00962
+    rc -12/1301 = -0.009224  key (7, 7, (5, 6, 6, 6, 6), (6, 5, 7, 5, 6)) | R 7 9657656/5667555 +0.00501; R 7 8657656/6667556 +0.00421
+    rc -12/1301 = -0.009224  key (7, 7, (6, 6, 6, 7, 5), (6, 7, 7, 5, 6)) | R 7 7675566/7566676 +0.00922
+    rc -12/1301 = -0.009224  key (7, 7, (5, 6, 6, 6, 6), (6, 7, 5, 5, 6)) | R 7 7566576/6676655 +0.00922
+    rc -181/29923 = -0.006049  key (7, 7, (5, 6, 6, 6, 6), (6, 5, 6, 5, 7)) | R 7 9657656/5666555 +0.00922; R 7 7657665/7665765 -0.00317
+    as-labelled (no relabel freedom): rc<0 15, most negative -0.046118, sum max(0,-rc) 0.201049; Dcap3 -0.501687665
+
+=== h_ap [h2 apexes exact]: rows touched 167 (fully pinned 0), refined columns 710 (old 128), LP vars 4425, LP min sum max(0,-rc) 0 (0.0s)
+    exact split: rc<0 0, most negative 0 = 0.000000, sum max(0,-rc) = 0 = 0.000000; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('cons2', False), 120), (('mrowR2', False), 47)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.000000, cap 0.1 0.000000, cap 0.3 0.000000
+    as-labelled (no relabel freedom): rc<0 0, most negative 0.000000, sum max(0,-rc) 0.000000
+    cons2 weights free-sign split: rc<0 0, sum max(0,-rc) 0.000000
+
+=== h_apf [h2 apexes exact + the two apexes at the 6's opposite private]: rows touched 167 (fully pinned 0), refined columns 12546 (old 128), LP vars 27788, LP min sum max(0,-rc) 2.08772 (0.3s)
+    exact split: rc<0 91, most negative -3498/29923 = -0.116900, sum max(0,-rc) = 749651/359076 = 2.087722; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('cons2', False), 120), (('mrowR2', False), 47)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.104386, cap 0.1 0.208772, cap 0.3 0.626317
+    rc -3498/29923 = -0.116900  key (8, 5, 6, 6, 5, 8, 5, 5, 5, 5) | C 566588/555555 +0.11690
+    rc -3498/29923 = -0.116900  key (8, 5, 6, 5, 5, 7, 5, 5, 5, 7) | C 556587/757557 +0.11690
+    rc -3498/29923 = -0.116900  key (7, 5, 5, 6, 5, 8, 7, 5, 5, 7) | C 556587/757557 +0.11690
+    rc -3498/29923 = -0.116900  key (7, 5, 5, 6, 5, 8, 5, 5, 7, 5) | C 556587/575755 +0.11690
+    rc -3498/29923 = -0.116900  key (8, 5, 6, 5, 5, 7, 7, 5, 7, 5) | C 556587/575755 +0.11690
+    rc -3498/29923 = -0.116900  key (9, 6, 6, 5, 5, 7, 5, 5, 7, 7) | C 556697/775557 +0.11690
+    rc -3498/29923 = -0.116900  key (7, 5, 5, 6, 6, 9, 7, 5, 7, 5) | C 556697/775557 +0.11690
+    rc -3498/29923 = -0.116900  key (8, 5, 6, 6, 5, 8, 7, 5, 5, 7) | C 566588/757757 +0.11690
+    rc -2232/29923 = -0.074591  key (7, 5, 5, 6, 6, 7, 7, 9, 8, 7) | C 556677/575577 +0.07459
+    rc -2232/29923 = -0.074591  key (7, 6, 6, 5, 5, 7, 7, 7, 6, 5) | C 556677/555775 +0.07459
+    as-labelled (no relabel freedom): rc<0 83, most negative -0.116900, sum max(0,-rc) 2.087722
+    cons2 weights free-sign split: rc<0 98, sum max(0,-rc) 2.087722
+
+=== g_hf [g2 hats and fan exact]: rows touched 158 (fully pinned 120), refined columns 468 (old 68), LP vars 4046, LP min sum max(0,-rc) 2.21488 (0.0s)
+    exact split: rc<0 55, most negative -3498/29923 = -0.116900, sum max(0,-rc) = 397655/179538 = 2.214879; x 3 cap priced old neg sum 0.000000
+    pinned by label (kind, pinned): [(('cons2', True), 120), (('senderR2', False), 38)]; negative keys touching a receiverR2 (binder) row: 0, their sum max(0,-rc) 0 = 0.000000
+    gain sum max(0,-rc)*cap: cap 0.05 0.110744, cap 0.1 0.221488, cap 0.3 0.664464
+    rc -3498/29923 = -0.116900  key (5, 7, 8, 5, 6, 5, 5) | C 556587/555555 +0.11690
+    rc -3498/29923 = -0.116900  key (6, 5, 5, 7, 8, 5, 5) | C 556587/555555 +0.11690
+    rc -3498/29923 = -0.116900  key (6, 5, 5, 7, 8, 7, 7) | C 556587/777757 +0.11690
+    rc -3498/29923 = -0.116900  key (5, 7, 8, 5, 6, 7, 7) | C 556587/777757 +0.11690
+    rc -3498/29923 = -0.116900  key (6, 6, 5, 8, 8, 7, 5) | C 566588/757555 +0.11690
+    rc -3498/29923 = -0.116900  key (6, 6, 5, 8, 8, 5, 7) | C 566588/555757 +0.11690
+    rc -2232/29923 = -0.074591  key (5, 7, 7, 6, 6, 7, 5) | C 556677/755777 +0.07459
+    rc -2232/29923 = -0.074591  key (5, 6, 6, 7, 7, 7, 7) | C 556677/755777 +0.07459
+    rc -2094/29923 = -0.069980  key (5, 6, 5, 9, 7, 7, 5) | C 556597/777555 +0.06998
+    rc -2094/29923 = -0.069980  key (5, 7, 9, 5, 6, 7, 7) | C 556597/777555 +0.06998
+    as-labelled (no relabel freedom): rc<0 55, most negative -0.116900, sum max(0,-rc) 2.214879
+
+DONE A83nf (77s)
