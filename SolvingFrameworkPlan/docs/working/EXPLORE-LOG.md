@@ -51,6 +51,12 @@ list too); its window cache carries over.
   windows (153 at ring 16, 101 at 17, 74 at 18), `loop/k47/win52_7_7766655_6567659_todo.txt` (md5 d94566865ea43bbab4e7437bd3e7f7c7), held. So far
   the three swept d7 face rows of the list have no kill at ring <= 15, as guessed. Next r62d 755676556/756556665
   (d9 face, -0.0142, 2888 windows at ring <= 15).
+- **11:22Z, r62d (755676556/756556665, d9 face row, -0.0142) dies at ring 14.** The row's 7000 s cap ended the drive
+  before every ring <= 15 window ran; 60 kills, 60 f-names, 10 minimal (3 D and 2 C at ring 14, 3 D and 2 C at ring 15),
+  e.g. f9_...556755_...665... (ring 14, D on kc + dfast). Files `loop/k47/r62d_kills*` (bfd676a4). Admission head adm62b
+  on main 031289d1 (k3x = A87), regression byte-identical: +41 D, +19 C (60 names, none on main), 0 lost, guards
+  unchanged, `loop/k62/adm62b/` (k3x_D 4ebe6db2, k3x_C 3fd7d7d2). First face row of the list to die, a d9 hub as in
+  round 58. Main 031289d1 promotes A83 [E2]: 132/1301 <= t* <= 0.105884. Next r62e 7556656656/7565555555 (d10 face).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
