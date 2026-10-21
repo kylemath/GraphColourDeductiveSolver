@@ -43,6 +43,10 @@ list too); its window cache carries over.
   7766556/6567566 w1 priv66. Containment at A87 (`loop/k60/cont60.py`, adm62a's k3x): neither holds a registry or 2026
   configuration (`loop/k60/cont60_batch4.txt`), so both are new. They go into kpriv (a record since Opus s49) once
   Studio's second engine is in; no explore core spent on them.
+- **09:17Z, kpriv v4.** Studio tw4 (main ef61be62, out/job_tw4/done.txt): both batch 4 windows are D on kc and dfast18,
+  adjacency checked. Added as g7_7665566_6.....6_w0:66 and g7_7766556_65....._w1:66 (ring 16, D2), each isomorphic to
+  my own window. `loop/k60/kpriv.txt` = `kpriv_v4.txt` (md5 e286be4b8b0eb5117b0612ae54de90b6): 16 engine kills, 31 containment patterns;
+  grid: 7766556 w1 and 7665566 w0 each dead 10 of 25. Copies in /mnt/project-files/explore/pair60/.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
