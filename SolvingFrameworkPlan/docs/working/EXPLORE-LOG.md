@@ -36,6 +36,10 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
   b55a18fbe17053cfbb33117bb636e537). Net of every window Studio's job5x already ran (same name, same window):
   `loop/k58/face58_7_7766556_6567568_rest.txt` (350, md5 f10a3dc4b8c63f86921d26316badfbad) and
   `face58_7_8665556_7675865_rest.txt` (566, md5 a378f87bd7518487a658c3cfe6e042a3), 31c62876.
+  Long Table 00:51Z: face rows go to the fb6 rule first; only their ring-15 windows run here once the queue is clear.
+- **00:59Z, r58d (d8 76765656/66565565, 12/421) dies at ring 12.** Its 1,105 ring <= 14 windows (00:50-00:57Z) gave 9
+  kills, 6 f-names (4 D, 2 C), 1 minimal: f8_...65656_...6556. (ring 12, D). Files `loop/k47/r58d_kills*` (10084eee).
+  Admission head adm58d on main bc898a8b, regression byte-identical: +4 D, +2 C (6 names), `loop/k58/adm58d/`.
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
