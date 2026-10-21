@@ -47,6 +47,10 @@ row file in loop/k4*, k5*, k60 and this log: 19 rows new (8 face, 11 non-face); 
   Files `loop/k47/r60f_kills*` (8e891e37). Admission head adm61a on main 1985544f, regression byte-identical: +4 D,
   +13 C (17 names, none on main), 0 lost, ring-merge and letter-9 guards unchanged, `loop/k61/adm61a/` (k3x_D cf3a0094,
   k3x_C 7575c7ca). Its pair windows (Long Table 05:40Z, if no kill) are not needed. Next row r61a 7766656/6566556 (07:21Z).
+- **07:28Z, r61a (7766656/6566556, the top non-face row, = round 59's r59b) has no kill at ring <= 15.** All 1159
+  ring <= 15 windows ran (r59b had done the 776 at ring <= 14): 0 kills. To-do for Studio: 652 windows (213 at ring 16,
+  295 at 17, 144 at 18), `loop/k47/win52_7_7766656_6566556_todo.txt` (md5 2c099d2c0f4f94e6f55e6179a1c18085). adm61a was
+  admitted at bd503acc (A85 = 2,711 D / 1,231 C). Next row r61b 7667565/7666555 (07:29Z).
 
 ## Round 60 (21 Oct 2026, 05:36Z-): H-A83, do the top binders of Opus's A83 keeppen solve die at ring <= 15?
 
