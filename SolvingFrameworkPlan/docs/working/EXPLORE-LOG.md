@@ -68,6 +68,9 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   Head adm63g on main 71ead743 (A102): regression byte-identical, +1 D, +4 C, 0 lost, ring-merge hold the same 3,
   `loop/k63/adm63g/` (k3x_D be9cdfe6, k3x_C d74d51f5). Row55 at adm63g: r63h-p hold nothing. Next r63h 9658656/5695555
   (non-face, -0.0107). Logged 17:16Z.
+- **17:20Z, r63h (9658656/5695555, d7 non-face row, fb-off -0.0107) has no kill at ring <= 15** (521 windows, 5 min).
+  To-do `loop/k47/win52_7_9658656_5695555_todo.txt` (b0ec34f9): 40 windows at ring 16-18, copied to todo63/ for Long Table to
+  place. Next r63i 7555767/7756656 (face). Logged 17:22Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
