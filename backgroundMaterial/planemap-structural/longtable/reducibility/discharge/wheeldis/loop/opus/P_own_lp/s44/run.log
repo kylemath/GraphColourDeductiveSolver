@@ -17,3 +17,9 @@
 03:20:44Z [s44] control (a) lower rerun on repaired engine: byte-identical to s39o
 03:21:14Z [s44] repair control M2: LOWER-R2: INVALID  t
 03:22:04Z [s44] lowerR2 fix (exact cert repair, RELAY_SPEC_s44 §44.8): A78 cert_q44fbA78L rechecked -> VALID t >= 0.093306161279 (run_A78/lower_rep.log; repaired cert run_A78/cert_q44fbA78L_rep.json); controls G VALID, M2 INVALID (repair refused), (a) byte-identical; A83 L stage will use the patched engine
+05:23:31Z [s44] A83 K converged: iter 19 t=0.105883918328 rows 159666 cols 39061 added 0  lp 
+05:23:31Z [s44] A83 keeppen t = 0.105883918328
+06:47:12Z [s44] L nosep cert + binders_canon ready
+06:47:23Z [s44] L: LOWER-R2: VALID  t >= 4153/41957 = 0.098982291  (818 rows)
+06:48:45Z [s44] U: UPPER-R2: FEASIBLE at t = 0.105883918328
+06:48:54Z [s44] all stages done (work dirs removed)
