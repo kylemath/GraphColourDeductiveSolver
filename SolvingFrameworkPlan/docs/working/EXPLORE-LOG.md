@@ -172,6 +172,17 @@ list too); its window cache carries over.
   regression byte-identical, +2 D, +0 C, 0 lost, `loop/k62/adm62k/` (k3x_D d76bc52f, k3x_C 9f8cfe39). Row55 at adm62k
   (`loop/k62/row62_A96k.txt`): both names sit inside r62r 7666675/7565755 too, so r62r dies with this head (it is
   running; early62.py will close it from the cache); r62s 7766555/6566959 holds nothing. Logged 16:27Z.
+- **16:33Z, r62s (7766555/6566959, d7 face row, -0.0014) has no kill at ring <= 15.** To-do
+  `loop/k47/win52_7_7766555_6566959_todo.txt` (d3ca923a): 87 windows (74 at ring 16, 11 at 17, 2 at 18), for Studio's
+  face-row slot. The round 63 queue started at 16:33Z.
+- **Round 62 verdict (16:34Z).** Queue of 19 rows (15 face, 4 non-face) run out. Non-face: 3 of 4 died (r62f, q, r), |w|
+  0.0122 of 0.0168 (73%); the kill line (under half) is not hit and the hypothesis holds on them; guess (at least 70
+  percent) hit. Face: 9 of 15 rows have two-engine kills at ring <= 15 (|w| 0.0568 of 0.1848, 31%), so the guess "at most
+  a third of the face rows die" missed. The split is by degree: all 6 face rows with d >= 9 died (r62d, e, h, k, l, p); of
+  the 9 d7 face rows only r62g, n and o died (r62l and r62o were already dead by earlier admissions), and r62a, b, c, i,
+  j and s have no kill at ring <= 15 (to-dos at Studio). Part 1 guess missed (9 dead at A86, guessed 5-8). The 33-row list
+  at A97 (`loop/k62/row62_A97_all.txt`): 22 rows dead, |w| 0.1694 of 0.3865 (43.8%; 0.0961 at A86). Admitted from this
+  round: adm62a-k, A86 -> A97 (3,057 D / 1,310 C).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
