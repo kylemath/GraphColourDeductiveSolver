@@ -137,6 +137,12 @@ list too); its window cache carries over.
   kill), r62m held, and r62p, q, r, s still to run here. Long Table 16:12Z: target an upper below 0.1; Opus starts a
   stacked solve on A95; finish this list (d >= 8 first: only r62p is left, and it is running), then switch to the
   stacked solve's binders as soon as they arrive.
+- **16:24Z, r62p (6556656656/6565655655, d10 face row, -0.0018) dies at ring 15.** early62.py closed it after 20 min
+  (all 1029 ring <= 13 windows done, 2095 of 5090 ring <= 15): 4 kills, all D at ring 15, minimal
+  f10_..55665665_..5.55.55. (m 14, kc + dfast). Files `loop/k47/r62p_kills*` (56e122fc). Head adm62j on main cff84a19
+  (A95): regression byte-identical, +4 D, +0 C, 0 lost, guards unchanged, `loop/k62/adm62j/` (k3x_D e1029e2d, k3x_C
+  9f8cfe39). Row55 at adm62j: r62q, r, s hold nothing (`loop/k62/row62_A95j.txt`). Every d >= 8 row of the list is now
+  dead. Next r62q 7666675/7575755 (d7, non-face). Logged 16:25Z.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
