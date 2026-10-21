@@ -51,6 +51,12 @@ row file in loop/k4*, k5*, k60 and this log: 19 rows new (8 face, 11 non-face); 
   ring <= 15 windows ran (r59b had done the 776 at ring <= 14): 0 kills. To-do for Studio: 652 windows (213 at ring 16,
   295 at 17, 144 at 18), `loop/k47/win52_7_7766656_6566556_todo.txt` (md5 2c099d2c0f4f94e6f55e6179a1c18085). adm61a was
   admitted at bd503acc (A85 = 2,711 D / 1,231 C). Next row r61b 7667565/7666555 (07:29Z).
+- **07:58Z, r61b (7667565/7666555, non-face) dies at ring 13.** Its 1185 ring <= 15 windows gave 5 kills, 5 f-names,
+  1 minimal: f7_5657667_555...6 (ring 13, D, kc + dfast). Files `loop/k47/r61b_kills*` (6f29eda1). Admission head adm61b
+  on main 183648ae (k3x = adm61a), regression byte-identical: +4 D, +1 C (5 names, none on main), 0 lost, guards
+  unchanged, `loop/k61/adm61b/` (k3x_D c1b1b4e1, k3x_C 6c27df6f). Main 183648ae records Opus s49: the private-split row
+  key is not funded, kpriv.txt stays as a record, the lever is registry kills on the binders; so no more pair windows
+  here, all cores stay on the row sweep. Next row r61c 76665566/55666665 (d8, 07:59Z).
 
 ## Round 60 (21 Oct 2026, 05:36Z-): H-A83, do the top binders of Opus's A83 keeppen solve die at ring <= 15?
 
