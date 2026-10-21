@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21 Oct 05:27Z: s42a C cover (143 entries, Opus s46c f2acc3e7) is fully in Lean. The 6 new interior-only entries are proved (CCover2, Studio 7e1db5e1, merge 9887c7d9), and CC2All is clean with no sorry. So the [E2] upper 0.10944 assumes nothing on the C side beyond CGlue's occurrence hypotheses. Gate text updated.
 - 21 Oct 05:25Z: ADMITTED adm59a (explore f6f5dd7c, base 18eecb9e): r59a = 8657656/6667656 (10.1% of |w| on the A78 fb6 nosep cert, its top non-face row) dies at ring 13, minimal f7_..56756_....66. (C, X={I3-I4}). +3 D +4 C, lost 0, md5 match. Kill files from d411d8fc. A84.
 - 21 Oct 03:44Z: r57e face row 7766656/6577556, rings 17-18: 0 kills (Studio ea5b6a2a; 442 neither, 52 ring-18 timeouts in out/job57e/timeouts18.txt). The window side on the face rows is close to exhausted, so the rule side (fb6 on A83) is the main hope. The 52 timeouts get long kc + dfast18 as filler only, with a kill line of no kill in the first 15.
 - 21 Oct 03:42Z: Studio confirms the s42a lower 44/421 has no cap-priced terms (no rc<0 column; 9 positive: M×3, h×1, r×5), so it holds for any caps. Cap qualifier removed from the gate line. fb6 on A83: the lower is quoted 'for the fb ≤ 3 family' (596/950 fb at cap on A78), only an upper counts as a gain, and an uncapped nosep runs only if the upper improves.
