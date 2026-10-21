@@ -50,6 +50,7 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   mostly cached). To-do `loop/k47/win52_7_7665566_7675676_todo.txt` (e653ea7b): 469 windows (187 at ring 16, 162 at 17,
   120 at 18), copied to /mnt/project-files/explore/todo63/; Long Table to place it (Studio or the farm). Guess "r63d has
   no kill at ring <= 15" hit. Next r63e 75576556/66666566 (d8 face, fb-off). Logged 17:08Z.
+- **17:09Z, r63d's to-do goes to the farm** (Long Table), ahead of k47f-h there; file handed over.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
