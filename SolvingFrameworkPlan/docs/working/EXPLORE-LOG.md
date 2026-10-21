@@ -22,6 +22,25 @@ cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py
   5s, ring 6, kc line `t555_r6 6 3 0,4,5;0,1,2;2,3,4 1,2;0,2;0,1` (`loop/k60/tri/`): kc -C D=false (31 classes, 17
   reached), C=false (|X| <= 4, 121 admissible X tested, best leaves 2); dfast D=false. Add-ons (a) triple wheel and (c)
   reach-2 census follow the A83 rows.
+- **05:47Z, add-on (a), the C3 triple wheel (Kyle's logbook, via Long Table 05:26Z; coordinator 05:39Z/05:42Z): our kc
+  agrees on all 10 windows, and none of them is a new configuration.** My own builder (`loop/k60/tw60.py`, free disc,
+  each u_i of row 7766556/6567566 with link w0, w1 = u_(i+1), u_(i+2) counterclockwise) finds the wheel realisable (45
+  vertices, 27 closed), and its windows C_13, C_14 and C_18 are isomorphic (`loop/k60/tw/iso60.py`, networkx) to the
+  "Formal problem statement" thread's TC3_C13/C14/C18 (ring 15 each). Our kc -C on their 10 lines (data copy in
+  `loop/k60/tw/in/`, `kc3b.log`): D on C13, C14, C18, P11, both P12 and P10 (ring 14-15); neither D nor C (|X| <= 4) on
+  P7, P9 and P8, as their kc said. Our dfast: D on my tw13 (depth 10, 31 s); the rest of the dfast runs were stopped,
+  as Studio's dfast18 already has the second engine. **Containment** (`loop/k60/tw/twreg60.py`, registry main 7cd777a3):
+  the wheel's closed vertices hold RSST 62 (C), RSST 80 (D) and RSST 137 (C), three placements each, and one RSST 137
+  placement lies inside the two-hub window P11: {u0, w4, w5, w6, s6, w0 = u1, w0's private next to s6} (`twreg60.txt`).
+  So the two-hub windows and the wheel are already excluded by the registry. For the LP: P11 is row 7766556/6567566
+  plus w0's two privates (both 5, as u1 has the same row), radius 2 from u0. A receiverR2 row fixes only u, link and
+  apexes, so pcheck cannot see a configuration that needs a link private; rows split by the big link vertices'
+  privates would be needed (told Long Table 05:52Z).
+- **05:52Z, pair table by containment** (`loop/k60/pair60.py`, for the other thread's pair census: rows 7766556/6567566,
+  7665566/6675676 and 7766655/6567659, each link 7 w_k, its privates a (next to s_k) and b (next to s_(k-1)) at 5..9).
+  First lines, 7766556/6567566 at w0: b = 5 dies by RSST 137 (priv55 also RSST 62, priv65), a = 5, b = 6 by RSST 187;
+  priv57, 58, 59, 66 and 67 open (registry 70-81 percent of their open completions). Sent to that thread with our
+  earlier results on its rows (rounds 52-53, 57-58).
 
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 
