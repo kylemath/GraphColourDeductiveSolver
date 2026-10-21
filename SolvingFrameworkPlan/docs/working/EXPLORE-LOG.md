@@ -1,5 +1,34 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 59 (21 Oct 2026, 05:08Z-): H-FB6, do the new binders of Opus's A78 fb6 cert die at ring <= 14, and does a run of face 7s force a configuration?
+
+**Pre-registered 05:08Z, before any containment, engine or census run of this round.** Coordinator 05:01Z: next round on
+the newest shared cert, row55 first, then the non-face rows not yet swept; plus Opus's census question. Newest shared
+cert: `loop/opus/P_own_lp/s44/run_A78/cert_q44fbA78L.json` (Opus 54c2c642; l3q + rpatN3 + fb6 cap 3 on A78 b6dc7610,
+128 ring-merge hold-outs; nosep lower VALID 0.093306161 after exact repair, upper still 0.109439357), 48 receiverR2 rows
+(sum |w| 0.3998), as `loop/k59/rows59_all.txt` from `binders_canon.txt`. Opus's A83 solve is still in K. canon_key
+(`loop/k59/canon59.py`) against every row in loop/k4*, k5* (contents and file names) and this log:
+- 7766556/6567566 (27.35% of |w|) is the exhausted face row (rounds 57-58, rule-side).
+- 7656766/6556656 (0.43%) and d8 76555566/66757666 (0.02%) are r58j and r58f, dead and admitted at 240b5a08, after A78.
+- **43 rows are new: 34 non-face (61.67% of |w|), 11 face (10.53%).** Two of the 34 (7566576/6676655, 7656765/7556766)
+  were in round 55's A67 list but never swept. Face rows here include d11 65556565556/65955559565, d10
+  7556656655/6565555656 and d8 76556755/76567666.
+- **Part 1, containment** (`loop/k55/row55.py`): registry at main 93441313 (out/job30 k3x, 2,704 D / 1,214 C) and the
+  whole 2026 set on all 48 rows, through u or avoiding it. Control: r58f and r58j must hit their own kills.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 14, DNW 3) on the new rows Part 1 leaves, non-face by |w| first, then
+  face rows; leftovers' ring 15-18 windows go to Studio as to-do files, kills to Long Table as admission heads.
+- **Part 3, face-7 chain census** (Opus's question: does a long run of face 7s in their sea of 6s force a registry
+  configuration?). Default reading unless Opus refines it: a chain of L face 7s, each paying a k-vertex 6 (fb6) that is
+  adjacent to the next face 7; chain bigs exactly 7, chain 6s exactly 6, faces 5-5-5, every other vertex of the chain's
+  1-ring free over 5..8 and 9 (9 = >= 9, never fixed in a window). Coverage = share of fillings holding a configuration
+  of the main registry, RSST or the 2026 set, for L = 1, 2, 3.
+- **Hypothesis.** Most new non-face rows die at ring <= 14, as in rounds 56-58. **Kill line:** less than half of the new
+  non-face |w| (30.8% of the cert) dies at ring <= 15 here or at Studio. For Part 3: coverage climbs with L but stays
+  below 100% at L = 3 (no termination lemma from the registry alone).
+- **Guess.** Part 1: 1-4 new rows hit, beyond the 2 controls (55 percent). Part 2: at least 80% of the new non-face |w|
+  dies at ring <= 14 (60 percent); at most 3 of the 11 face rows die (65 percent). Part 3: L = 1 under 90%, L = 3 under
+  100% (60 percent).
+
 ## Round 58 (21 Oct 2026, 00:40Z-): H-A78, do the new binders of Opus's A78 solve die at ring <= 14?
 
 **Pre-registered 00:40Z, before any containment or engine run of this round.** Opus 00:37Z: s42a, l3q + rpatN3 on A78
