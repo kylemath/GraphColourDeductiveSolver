@@ -82,6 +82,13 @@ list too); its window cache carries over.
   rows k47d/k47e, since a D there kills a row of |w| 0.033 or 0.024; Long Table set the order instead (12:58Z): A84
   upper, the s52c Lean batch, k47d, k47e, then the 23 timeouts with a kill line (stop if the first 8 give nothing).
   Studio's k47c (7676655/6667656) is running.
+- **14:29Z, r62h (65656565555/65555667576, d11 face row, -0.0060) dies at ring 12.** It ran to the 7000 s cap (the
+  early-close rule was not applied: nothing watched for it): 465 kills, 257 f-names, 12 minimal f-names (2 D at ring 12,
+  5 D and 3 C at ring 14, 7 C at ring 15 among the 17 minimal windows), e.g. f11_.......5565_......57665 (ring 12, D,
+  a placement avoiding u). Files `loop/k47/r62h_kills*` (fab77d05). Admission head adm62f on main f6098c1d (A91),
+  regression byte-identical: +242 D, +15 C (257 names, none on main), 0 lost, guards unchanged, `loop/k62/adm62f/`
+  (k3x_D de05aafd, k3x_C 379ee1d8). From 14:31Z `loop/k62/early62.py` applies the early-close rule by itself (stop,
+  minkill47, mark the row closed, restart the queue). Next r62i 7556676/7567566 (face, -0.0060).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
