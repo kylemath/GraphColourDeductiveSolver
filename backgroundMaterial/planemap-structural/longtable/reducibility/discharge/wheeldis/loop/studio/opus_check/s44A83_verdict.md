@@ -1,5 +1,7 @@
 # s44 A83 [E2] pair (registry A83 = main 240b5a08, 128 rm128 held out): Studio spec-only check
 
+**Verdict: confirmed, 132/1301 <= t* <= 0.105883918328** (lower VALID exactly; upper FEASIBLE with fb on and with fb off).
+
 ## Independence statement
 I built this from RELAY_SPEC_s39o §39.6, s40f, RELAY_SPEC_s44 (§44.3 caps, §44.8) and the earlier s21 / s28q / s33z specs. I opened
 only data files:
@@ -31,11 +33,21 @@ Opus code, cmd script, rows file or log. Team B material: none.
   - **one receiverR2 multiplier scaled by 1.02:** caught as a claim mismatch. The cert stays dual-feasible (0 negative columns) but
     gives the weaker D = 150895/1496331 = 0.100843 ≠ 132/1301.
 
-## UPPER (sol_q44fbA83.json, 9757148b, md5 cfc41a44; claim FEASIBLE at t = 0.105883918328): in progress
-- **Inputs:** 73 fb6 values, max 2.65e−13, all in [0, 3], all keys fbdir = 6.
-- **Clean so far:**
-  - senderR2: 20,676 rows, 0 violated;
-  - cons2: 994 + 430 words, 0 violated; with fb, all 1,424 × 5^6 apex words, 0 violated;
-  - mrowL: 0 violated.
-- **Self-test:** the largest fb amount set to 0.5 is caught (cons2 with fb violated 100, max 0.5).
-- **(a) fb on and (b) fb off:** receivers d = 7, 8 have 0 violated each; the runs continue to d = 17, then DP and Karp.
+## UPPER (sol_q44fbA83.json, 9757148b, md5 cfc41a44; claim FEASIBLE at t = 0.105883918328): **FEASIBLE, both ways**
+- **Inputs:** 73 fb6 values, min 1.3e−14, max 2.65e−13, all in [0, 3], all keys fbdir = 6.
+- **Senders and conservation:** senderR2 20,676 rows, 0 violated (min slack −8.0e−13). cons2 994 + 430 words, 0 violated (max 3.4e−12).
+  With fb on, cons2 over all 1,424 × 5^6 exact apex words: 0 violated (max 3.4e−12). mrowL: 0 violated.
+- **Separator calibration:** exact leaf vs spec rows, heaviest 20 per d for d = 7..17: max 4.6e−10. Relaxed vs spec on 820 arrangements:
+  0 below exact.
+
+| run | receivers violated (d = 7..17, exhaustive) | worst | DP d = 18..30 | Karp λ (Opus 0.572809) | verdict |
+|---|---|---|---|---|---|
+| (a) as given, fb on (fbdir 6, fbcap 3) | **0** at every d (the relaxation reports 0 above the threshold d − 6 + t at every d) | none | clean (z9 = 0.109540) | **0.572808649**, covers d ≥ 13.797 | **FEASIBLE at t = 0.105883918328** |
+| (b) fb zeroed and the family off | **0** at every d | none | clean | **0.572808649**, covers d ≥ 13.797 | **FEASIBLE at t = 0.105883918328** |
+
+- **What the fb amounts do here:** they are ≤ 2.65e−13 and change nothing at this precision: (a) and (b) agree line for line.
+- **Self-test:** the largest fb amount set to 0.5 is caught, with cons2 (with fb) violated on 100 words (max 0.5), FAIL.
+
+## Verdict
+**A83 [E2] pair confirmed: 132/1301 (0.101460) <= t* <= 0.105883918328.** The lower is exact, with no cap term; the upper is FEASIBLE
+with and without fb. No kill line was met.
