@@ -118,6 +118,15 @@ list too); its window cache carries over.
 - **16:03Z, recheck of the rows not yet run against A93 + adm62h** (`loop/k62/row62_A93.txt`): r62o 7655667/6657655 holds
   12 registry names (e.g. f7_.556776_....55., r62g's kills, adm62e), so it is already dead; marked `R56_r62o.DONE` and the
   queue skips it. r62n, p, q, r, s hold nothing. Next r62n 7766555/6576956 (face). Logged 16:03Z.
+- **16:01Z, r62n (7766555/6576956, d7 face row, -0.0046) dies at ring 13.** Most of its ring <= 13 windows were cached,
+  and early62.py closed it in its first minute: 6 kills, 1 minimal, f7_..55776_..56.5. (ring 13, m 9, C with X = {I0-I3}
+  on both engines). This makes 6 of the 8 d7 rows of this queue that hold no kill at ring 15 or die only at ring 13-15.
+- **16:03Z, r62o (7655667/6657655) closed the same way**, before its skip marker took effect: 4 kills, minimal
+  f7_.556776_.5..55. (ring 14, C), the registry name already on main from adm62e. Head adm62i for both rows on main
+  949eb544 (A94, adm62h admitted): regression byte-identical, +4 D, +4 C, 0 lost, guards unchanged, `loop/k62/adm62i/`
+  (k3x_D 7c229314, k3x_C 9f8cfe39); files `loop/k47/r62n_kills*`, `r62o_kills*` (62ebab34). Row55 at adm62i: r62p, q, r,
+  s still hold nothing (`loop/k62/row62_A94i.txt`). Next r62p 6556656656/6565655655 (d10 face, 5090 windows at ring
+  <= 15). Logged 16:05Z.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
