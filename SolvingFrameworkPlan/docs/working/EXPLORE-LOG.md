@@ -45,6 +45,19 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
   X={I0-I1,I0-I3,I1-I7,R9-I8}, one ring vertex). Files `loop/k47/r58e_kills*` (c157eb56). Admission head adm58e on main
   a7ac801e, regression byte-identical: +5 C (5 names), `loop/k58/adm58e/`. All 3 non-face rows of the top 10 are dead
   at ring 12-13 (48/421).
+- **01:48Z, two face rows die, one does not** (adm58e admitted at 55732ff4).
+  - r58f (d8 76555566/66757666, 12/421, a run of four 5s in the link) dies at ring 11: 1,261 windows (01:08-01:19Z), 51
+    kills, 40 f-names, 1 minimal f-name f8_...55556_....576. (ring 11, D).
+  - r58g (8665566/6765765, 12/421): no kill at ring <= 14 (723 windows, 01:19-01:21Z). To-do
+    `loop/k47/win52_7_8665566_6765765_todo.txt` (713: 224/192/181/116 at ring 15/16/17/18, md5
+    2fe1b45802fb043d5e5c6440005acf70); net of Studio's runs `loop/k58/face58_7_8665566_6765765_rest.txt` (676, md5
+    0d76f470b537463d7f19601273accc13).
+  - r58h (d11 65655565565/66659665666, 12/421) dies at ring 14: 1,848 windows (01:22-01:46Z), 19 kills, 19 f-names, 2
+    minimal, both C with u and 8 link vertices only: f11_...55565565_........... (X={I0-I5}) and
+    f11_...55655565_........... (X={I0-I3}).
+  Files `loop/k47/r58f_kills*`, `r58h_kills*` (898fd2f2). One admission head for both, adm58fh on main 55732ff4,
+  regression byte-identical: +30 D, +29 C (59 names, none on main), `loop/k58/adm58fh/`. The face-row guess (none dies
+  at ring <= 14) was wrong for 2 of 5: a long 5-run in the link (r58f) or a d11 hub (r58h) is not the d7 face lock.
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
