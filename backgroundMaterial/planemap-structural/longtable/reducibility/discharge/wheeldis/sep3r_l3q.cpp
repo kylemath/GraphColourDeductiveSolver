@@ -1,6 +1,8 @@
 // sep3r_l3q: copy of sep3r_ak.cpp with one more opt-in table, SEP_L3Q (RELAY_SPEC section 21, l3q at d = 7): a relaxed
 // window term at each link 7 (the max payee credit for the two (c, a) signatures it reads) and, at the leaf, the exact
 // payee credit (mask table, Qeff) and payer debit -q. Without SEP_L3Q it behaves as sep3r_ak.
+// SEP_L3Q8 (s47, l3qV = 7,8; opt-in): relaxed UB8 window term at a d = 8 link 7, exact Qeff8 payee credits at the d = 8 leaf, and
+// the payer debit -q8 at a d = 7 link 8 at the leaf only. Without SEP_L3Q8 nothing changes.
 // sep3r_ak: copy of sep3r.cpp (frozen for Job 31) with one opt-in change, SEP_ARRKEY=1: results keyed by arrangement.
 // sep3r.cpp -- Job 31 (6-relay), built from sep3x.cpp (with the Job 30 whole-arrangement patterns).
 //   A link 6 at w_i of a big receiver u passes y6b[q] to u, q = the six's wheel (u, w_{i+1}, s_i, p, s_{i-1}, w_{i-1})
@@ -113,6 +115,7 @@ static double RREL[125][25];   // SEP_RTAB (stage 18 hat channel): relaxed r ter
 static vector<double> REX;     // exact r term [w_{i-1}][w_i][w_{i+1}][w_{i+2}][s_{i-1}][s_{i+1}] (letters 0..4)
 static bool HASR = false;
 static bool HASFB = false; static double FBREL[3][125][25]; static vector<double> FBX;   // SEP_FB6 (RELAY_SPEC s44): relaxed fb window term [ui][state][c]; exact [ui][a][b][c][e][f][p][q][r][s]
+static bool HASL8 = false; static double L8REL[125][25]; static vector<double> L8X, L8P;   // SEP_L3Q8 (s47, l3qV = 8): relaxed d = 8 term at a link 7 [state][c]; exact payee Qeff8 [sigma][c][a][w2][w3][w4][o]; payer q8[c][a][a2] (d = 7 at a link 8)
 static bool HASL = false; static double L3REL[125][25]; static vector<double> L3QEX, L3PQ;   // SEP_L3Q: relaxed term [state][c]; exact payee [sigma][c][a][w2][w3][w4][o]; payer q[c][a][a2]   // sep3r_ak (s12r_check.py): key results by arrangement, not by row (env SEP_ARRKEY=1)
 static long long nodes;
 static string canonWord(const string &w) {
@@ -234,6 +237,24 @@ static void leaf(double w) {
             }
         }
     }
+    if (HASL8 && d == 8) {   // s47 (iii): swap each link 7's relaxed V = 8 term for the exact payee credits Qeff8 (indices mod 8)
+        auto W_ = [&](int k) { return wl[((k % d) + d) % d]; }; auto S_ = [&](int k) { return sl[((k % d) + d) % d]; };
+        for (int i = 0; i < d; i++) if (wl[i] == 2) {
+            int st = W_(i - 1) * 25 + S_(i - 1) * 5 + 2, c = S_(i) * 5 + W_(i + 1);
+            w -= L8REL[st][c];
+            for (int sg = 0; sg < 2; sg++) {
+                int e = sg == 0 ? 1 : -1;
+                int cc = W_(i + e), a = sg == 0 ? S_(i) : S_(i - 1), o = sg == 0 ? S_(i - 1) : S_(i);
+                long q = (((((long)sg * 5 + cc) * 5 + a) * 5 + W_(i + 2 * e)) * 5 + W_(i + 3 * e)) * 5 + W_(i + 4 * e);
+                w += L8X[q * 5 + o];
+            }
+        }
+    }
+    if (HASL8 && d == 7) {   // s47 (iii): d = 7 payer debit at every link 8, leaf only (not in the window: it is <= 0)
+        auto W_ = [&](int k) { return wl[((k % d) + d) % d]; };
+        for (int i = 0; i < d; i++) if (wl[i] == 3)
+            for (int sg = 0; sg < 2; sg++) { int e = sg == 0 ? 1 : -1; w -= L8P[(W_(i + e) * 5 + W_(i + 2 * e)) * 5 + W_(i + 3 * e)]; }
+    }
     if (HASFB) {   // s44: swap each position's relaxed fb term for the exact window term
         auto W_ = [&](int k) { return wl[((k % d) + d) % d]; }; auto S_ = [&](int k) { return sl[((k % d) + d) % d]; };
         for (int i = 0; i < d; i++) {
@@ -242,7 +263,7 @@ static void leaf(double w) {
             w += FBX[idx] - FBREL[ui][st][c];
         }
     }
-    if ((HASEX6 || HASR || HASL || HASFB) && w <= thr) return;
+    if ((HASEX6 || HASR || HASL || HASL8 || HASFB) && w <= thr) return;
     if (omax > 0 && minRing() <= omax) return;
     if (fullForbidden()) return;
     string link(d, '0'), s(d, '0');
@@ -321,6 +342,10 @@ int main(int argc, char **argv) {
         if (fread(&L3REL[0][0], sizeof(double), 125 * 25, g) != 125 * 25) return 36;
         if (fread(L3QEX.data(), sizeof(double), 31250, g) != 31250) return 37;
         if (fread(L3PQ.data(), sizeof(double), 125, g) != 125) return 38; fclose(g); HASL = true; }
+    if (const char *e = getenv("SEP_L3Q8")) { FILE *g = fopen(e, "rb"); if (!g) return 45; L8X.assign(31250, 0.0); L8P.assign(125, 0.0);
+        if (fread(&L8REL[0][0], sizeof(double), 125 * 25, g) != 125 * 25) return 46;
+        if (fread(L8X.data(), sizeof(double), 31250, g) != 31250) return 47;
+        if (fread(L8P.data(), sizeof(double), 125, g) != 125) return 48; fclose(g); HASL8 = true; }
     if (const char *e = getenv("SEP_RTAB")) { FILE *g = fopen(e, "rb"); if (!g) return 32; REX.assign(15625, 0.0);
         if (fread(&RREL[0][0], sizeof(double), 125 * 25, g) != 125 * 25) return 33;
         if (fread(REX.data(), sizeof(double), REX.size(), g) != REX.size()) return 34; fclose(g); HASR = true;
@@ -401,6 +426,7 @@ int main(int argc, char **argv) {
             }
             if (HASR && AL[ui][a][c] && c / 5 == 0) W[a][c] += RREL[a][c];   // apex five s_i: + relaxed r
             if (HASL && ui == 0 && d == 7 && AL[ui][a][c] && a % 5 == 2) W[a][c] += L3REL[a][c];   // link 7 at d = 7: + relaxed l3q
+            if (HASL8 && ui == 1 && d == 8 && AL[ui][a][c] && a % 5 == 2) W[a][c] += L8REL[a][c];   // s47 (ii): link 7 at d = 8: + UB8(e, r) + UB8(b, q)
             if (HASFB && AL[ui][a][c]) W[a][c] += FBREL[ui][a][c];   // s44: + relaxed fb window term
         }
         // M[a][b] (max-plus one step), Bnd[k] = M^k
