@@ -105,6 +105,8 @@ list too); its window cache carries over.
   adm62g on main dfaae8ee (A92), regression byte-identical: +1 D, +1 C, 0 lost, guards unchanged (ring-merge hold 3,
   letter-9 0), `loop/k62/adm62g/` (k3x_D 8a238386, k3x_C 26c6c0fe). Next r62l 7556656656/6565555555 (d10 face, 5038
   windows at ring <= 15). Logged 15:39Z.
+- **15:41Z, adm62g admitted at main 152388f6 (A93 = 3,045 D / 1,306 C, md5 match).** Per Long Table, the r62i and r62j
+  ring 16-18 to-dos (3aeb605d, 69241d00) went to Studio for its face-row slot, ahead of the 23 timeouts.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
