@@ -12,7 +12,7 @@ The queue was far from finished; every kc/kcf job is stopped.
 | Box D | 167 | 23 | 144 never run |
 | Box E | f_02+f_03 (80); c17_02+03 (235) | 80; 7 | 228 ring-17 unfinished |
 | Box F | r63j ring-16 reversed (312) | 171 at 20:57Z | c17_01 never started |
-| Studio (Mac) | s5 kcf over k47c (622) | 45 | s1,s2,s3,s6,s4 never started; Studio sends final counts and sha |
+| Studio (Mac) | s5 kcf over k47c (622) | 113 | 0 FZERO, 0 kills, 0 timeouts; 509 unfinished listed in out/job_F63/s5/unfinished_s5.txt (commit 9be448b5 on main); s1,s2,s3,s6,s4 never started; k47d stopped at 313/391 |
 
 Unfinished queues, ready to resume: farm63/q/ (s1..s6, c17_00..05, c_gr; MD5SUMS) plus
 /mnt/project-files/explore/todo63/ (win52_* r64e, r64f low priority).
