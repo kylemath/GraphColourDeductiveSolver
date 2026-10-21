@@ -10,6 +10,9 @@
 # split is then rationalised, renormalised and re-evaluated exactly (Fractions).  Every completion's refined vector is
 # coarsened back and must equal the engine's row coefficients for that family (assert); level-0 refinements must
 # reproduce lowerR2's reduced costs exactly (control).
+# Optional (s51, default off): env SPREAD51=<path.json> writes the chosen exact split of the refinement SPREAD51_REF
+# (default x_outMW; relabel freedom on) per cert row / relabel mode / big position / completion, with the implied mrowX
+# dual per candidate (RELAY_SPEC_s51 §51.3a).  Nothing else changes: same LP, same log lines, same price_TAG.json.
 import os, sys, json, re, collections, itertools, time
 from fractions import Fraction
 import numpy as np
@@ -156,6 +159,9 @@ def g_coarse(K): return ('g', g2_of(*K))
 # ---------------------------------------------------------------- occurrences per row and refinement
 # a row -> list of modes; mode = (const Counter, [component: list of distinct Counters]); weights spread convexly
 def cls_of(c): return CLS2[c2(c)]
+class CL(list):
+    """a component's distinct vectors (a plain list) + .vars and .asg[j] = the letter assignments giving vector j"""
+    pass
 def product_vectors(occs, dom):
     """occs: list of (coef, fn(assign) -> refined key, var names); dom: var -> letters.  Returns (const, [components])"""
     const = collections.Counter(); par = {}
@@ -175,12 +181,13 @@ def product_vectors(occs, dom):
         size = 1
         for v in vs: size *= len(dom[v])
         assert size <= 4 * 10 ** 6, ('component too large', vs, size)
-        seen = set(); out = []
+        seen = {}; out = CL(); out.vars = vs; out.asg = []
         for combo in itertools.product(*[dom[v] for v in vs]):
             asg = dict(zip(vs, combo)); cf = collections.Counter()
             for cfv, fn, _ in os_: cf[fn(asg)] += cfv
             cf = frozenset((k, v) for k, v in cf.items() if v)
-            if cf not in seen: seen.add(cf); out.append(dict(cf))
+            if cf not in seen: seen[cf] = len(out); out.append(dict(cf)); out.asg.append([])
+            out.asg[seen[cf]].append(combo)
         comps.append(out)
     return dict(const), comps
 def recv_occ(ref, d, w, s):
@@ -329,7 +336,7 @@ REFN = dict(REFS)
 # ---------------------------------------------------------------- the spread LP and its exact evaluation
 from scipy.optimize import linprog
 from scipy.sparse import coo_matrix
-def price(ref, relabel=True, cfree=False):
+def price(ref, relabel=True, cfree=False, dump=None):
     f = ref[0]
     RM = []
     for r in ROWS:
@@ -408,12 +415,15 @@ def price(ref, relabel=True, cfree=False):
         sa = sum(al)
         if sa == 0: al = [Fraction(1)] + [Fraction(0)] * (len(al) - 1); sa = Fraction(1)
         al = [a / sa for a in al]
+        if dump is not None: dump[r['ci']] = dict(al=al, mu=[])
         for (ai, const, comps, cs), a in zip(st, al):
+            if dump is not None: dump[r['ci']]['mu'].append([])
             if a == 0: continue
             for kk, cv in const.items(): totR[kk] += w * a * cv; contrib[kk].append((w * a * cv, r))
             for comp, mus in zip(comps, cs):
                 mu = [fr(x[vi]) for vi in mus]; sm = sum(mu)
                 if sm == 0: mu = [Fraction(1)] + [Fraction(0)] * (len(mu) - 1); sm = Fraction(1)
+                if dump is not None: dump[r['ci']]['mu'][-1].append([m_ / sm for m_ in mu])
                 for v, m_ in zip(comp, mu):
                     if m_ == 0: continue
                     for kk, cv in v.items(): totR[kk] += w * a * (m_ / sm) * cv; contrib[kk].append((w * a * (m_ / sm) * cv, r))
@@ -433,7 +443,77 @@ def price(ref, relabel=True, cfree=False):
                minrc=neg[0][0] if neg else Fraction(0), S=S, SB=SB, NB=NB, pin=dict(pin), lp=res.fun, nvar=nv, oldneg=-oldneg, neg=neg, contrib=contrib, rcR=rcR,
                t=time.time() - t1)
     if f == 'x': out['Dcap3'] = DP + XCAP * oldneg * -1 + XCAP * -S   # D with x priced at its real cap 3 after the split
+    if dump is not None: out['struct'] = struct; out['totR'] = totR
     return out
+def write_spread(o, dump, path):
+    """per cert row / relabel mode / big position / completion: outer letters and exact weight; implied mrowX duals"""
+    ref = o['ref']; assert ref in ('x_outM', 'x_outMW'), ref
+    F = lambda q: str(q)
+    def side_letter(v, d, i):   # var ('T', i, 'p', m) or ('T', i, 'X', m, sd) -> '+' / '-'
+        if v[2] == 'p': return '+' if v[3] == (i + 1) % d else '-'
+        return '+' if v[4] == -1 else '-'
+    rows_out = []; QD = {}; chk = collections.defaultdict(Fraction)
+    for r, one, st in o['struct']:
+        if r['kind'] != 'receiverR2': continue
+        ex = dump[r['ci']]; md_lab = REL[r['ci']]
+        assert len(md_lab) == len(st) == len(ex['al'])
+        modes = []
+        for (d, w, s), (ai, const, comps, cs), a, mus in zip(md_lab, st, ex['al'], ex['mu']):
+            occs, dom = recv_occ(ref, d, w, s); U = min(d, 9); W_ = lambda k: w[k % d]; S_ = lambda k: s[k % d]
+            bigs = [i for i in range(d) if w[i] >= 7]; assert len(occs) == 2 * len(bigs)
+            byvars = {tuple(c.vars): (c, mu) for c, mu in zip(comps, mus)}
+            used = set(); pos = []
+            for k_, i in enumerate(bigs):
+                (_, fin, vs), (_, fout, vs2) = occs[2 * k_], occs[2 * k_ + 1]; assert vs == vs2
+                vp = next((v for v in vs if side_letter(v, d, i) == '+'), None); vm = next((v for v in vs if side_letter(v, d, i) == '-'), None)
+                def mask(v, seen):
+                    return sum(1 << (l_ - 5) for l_ in (dom[v] if v is not None else [seen]))
+                Ap = (W_(i + 1), S_(i), W_(i + 2), S_(i + 1), mask(vp, S_(i + 1)))
+                Am = (W_(i - 1), S_(i - 1), W_(i - 2), S_(i - 2), mask(vm, S_(i - 2)))
+                swap = Am < Ap; q = (U, W_(i), min(Ap, Am), max(Ap, Am))
+                if vs:
+                    key = tuple(sorted({v for v in vs}))
+                    comp, mu = byvars[key]; used.add(key)
+                    cand = []
+                    for j, (vec, m_) in enumerate(zip(comp, mu)):
+                        asgs = [dict(zip(comp.vars, cb)) for cb in comp.asg[j]]
+                        lets = [(a_.get(vp, S_(i + 1)) if vp else S_(i + 1), a_.get(vm, S_(i - 2)) if vm else S_(i - 2)) for a_ in asgs]
+                        cand.append((lets, vec, r['w'] * a * m_))
+                else:
+                    vec = collections.Counter(); vec[fin({})] += 1; vec[fout({})] -= 1
+                    cand = [([(S_(i + 1), S_(i - 2))], {k2: v2 for k2, v2 in vec.items() if v2}, r['w'] * a)]
+                comp_out = []
+                for lets, vec, wt in cand:
+                    eA, eB = (lets[0][1], lets[0][0]) if swap else lets[0]
+                    for kk, cv in vec.items(): chk[kk] += wt * cv
+                    if a != 0:
+                        qd = QD.setdefault(q, dict(recv=Fraction(0), cand=collections.defaultdict(Fraction)))
+                        qd['cand'][(eA, eB)] += wt
+                    comp_out.append({'outer_letters': [{'e+': ep, 'e-': em} for ep, em in lets], 'weight': F(wt),
+                                     'mrowX_candidate': [eA, eB], 'mrowX_dual': F(wt),
+                                     'vector': [[list(kk[:2]) + [list(kk[2]), list(kk[3])], cv] for kk, cv in sorted(vec.items())]})
+                if a != 0: QD[q]['recv'] += r['w'] * a
+                pos.append({'i': i, 'V': W_(i), 'q': [q[0], q[1], list(q[2]), list(q[3])], 'A_is_plus_side': not swap,
+                            'unseen': {'e+': vp is not None, 'e-': vm is not None},
+                            'domain': {'e+': (dom[vp] if vp else [S_(i + 1)]), 'e-': (dom[vm] if vm else [S_(i - 2)])},
+                            'completions': comp_out})
+            assert used == set(byvars), (lab(r), used, set(byvars))
+            for kk, cv in const.items(): pass   # const = the pinned positions, already written per position above
+            modes.append({'relabel': [d, ''.join(map(str, w)), ''.join(map(str, s))], 'alpha': F(a), 'row_weight_share': F(r['w'] * a), 'positions': pos})
+        rows_out.append({'ci': r['ci'], 'label': r['label'], 'w': F(r['w']), 'modes': modes})
+    # the written split reproduces the pricer's exact refined ledger, hence its rc and sum max(0, -rc)
+    assert {k: v for k, v in chk.items() if v} == {k: v for k, v in o['totR'].items() if v}, 'spread ledger differs'
+    mrowx = []
+    for q, qd in sorted(QD.items()):
+        sy = sum(qd['cand'].values(), Fraction(0)); assert sy == qd['recv'], (q, sy, qd['recv'])   # XQ[q] column balances
+        mrowx.append({'q': [q[0], q[1], list(q[2]), list(q[3])], 'sum_receiver_weight': F(qd['recv']),
+                      'duals': [{'cand': [eA, eB], 'w': F(v)} for (eA, eB), v in sorted(qd['cand'].items()) if v]})
+    json.dump({'ref': ref, 'tag': TAG, 'cert': CERT, 'tco': F(TCO), 'S': F(o['S']), 'nneg': o['nneg'], 'minrc': F(o['minrc']),
+               'neg': [[F(rc), [kk[0], kk[1], list(kk[2]), list(kk[3])]] for rc, kk in o['neg']],
+               'note': 'weights exact (Fractions as strings); receiver and mrowX duals are <= 0; rc(key) = -sum(weight*coef)/tco',
+               'rows': rows_out, 'mrowX': mrowx}, open(path, 'w'), indent=1)
+    print('    spread written: %s (%d receiver rows, %d credit keys q, %d mrowX duals != 0); ledger and XQ balances checked' % (
+        path, len(rows_out), len(mrowx), sum(len(m['duals']) for m in mrowx)), flush=True)
 def show(o, top=10):
     caps = ('0.05', '0.1', '0.3')
     print('\n=== %s [%s]: rows touched %d (fully pinned %d), refined columns %d (old %d), LP vars %d, LP min sum max(0,-rc) %.6g (%.1fs)' % (
@@ -453,7 +533,9 @@ def show(o, top=10):
 RES = {}
 for ref, nm in REFS:
     if ONLY and ref not in ONLY: continue
-    o = price(ref); RES[ref] = o; show(o)
+    SPD = {} if (os.environ.get('SPREAD51') and ref == os.environ.get('SPREAD51_REF', 'x_outMW')) else None
+    o = price(ref, dump=SPD); RES[ref] = o; show(o)
+    if SPD is not None: write_spread(o, SPD, os.environ['SPREAD51'])
     if ref.endswith('0'):   # control: level 0 = lowerR2's rc on every column of the family, exactly
         f = ref[0]; mine = {COARSE[f](kk): rc for kk, rc in o['rcR'].items()}
         eng = {k: rc for k, rc in RC0.items() if k[0] == f}

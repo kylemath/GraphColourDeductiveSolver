@@ -123,6 +123,79 @@ The window-local domain costs nothing against the exact amask domain on either c
 the A83 first-order potential (the top two A83 binders' keys need the shared private). Logs: `s51/price51_A78.log`,
 `s51/price51_A83nf.log`.
 
+## 51.3a How the §51.3 pricing table was computed
+
+Added for Studio (their ambiguity A1). **This is an optimistic first-order estimate. It is not part of the soundness of
+upperR2 / lowerR2 under xo (§51.5, §51.6), and no claim in this spec depends on it.** It holds every dual of an existing s50
+cert fixed and asks only how the weight of each receiver row could be spread over the letters that the receiver cannot see.
+That spread is chosen as favourably as possible: per-position decoupling, relabel freedom, and the best convex split. It is
+not re-solved against the new rows and columns that a real xo LP has. So the table is an estimate of the first-order loss,
+not a bound. The bound that was actually certified is control (b) in §51.10: lowerR2 xo on the carried cert.
+
+Code: `s51/pricer51.py REG CERT TAG x0,x_out,x_outM,x_outMW`, with refinement `x_outMW`. Run as
+`python3 pricer51.py A78 $B/s42a/run_A78/cert_q42aA78L.json A78 x0,x_out,x_outM,x_outMW` and
+`python3 pricer51.py A83 $B/s44/run_A83nf/cert_q44nfA83L.json A83nf x0,x_out,x_outM,x_outMW` (`$B` = `P_own_lp`). The
+steps, exactly as the code does them:
+
+1. **Cert rows.** Every cert row is rebuilt from its label with the s50 engine's own functions (`R2_sender_rows`,
+   `cons2_coef`, `recv_coef_R2`; mrow rows from the label). lowerR2 runs first (old x, `xcap=3`). The rebuilt ledger
+   `tot[k] = Σ_rows w·coef[k]`, the t coefficient `tco` and `D` must equal lowerR2's exactly (control 0). Reduced cost:
+   `rc[k] = −tot[k]/tco`. Both certs have `tco = 1`. Old x appears only in receiverR2 rows, so only receiver rows
+   (weights `w <= 0`) take part.
+2. **Relabel freedom.** A receiver row `(d, link w, apexes s)` may be read under any other label that gives the identical
+   old row. The code takes every slot, link letter or apex, one at a time, and keeps each other letter for which
+   `recv_coef_R2` gives the identical coefficient dict and `admissible` passes. It then takes every combination of these
+   per-slot alternatives and keeps a combination only if the combined label still gives the identical row and is
+   admissible. Each kept label is a **mode** of the row. On both certs every receiver row has exactly one mode (log line
+   `relabel freedom: … receivers [(1, n)]`), so this freedom is present in the code but unused here.
+3. **Unseen outer letters, per position (M-style).** In a mode, every big `w_i` gives the two terms `in`/`out` of §51.2,
+   with the s50 functions `fin`/`fout`. Each term has its own unseen pair `(e+, e−)`. The pair belongs to that position
+   only and is **not** shared with another position: in big–6–big, the 6's private is a separate variable in each of the
+   two x terms. A side with `c = 5` has no variable, because e is the seen `s_{i+1}`, resp. `s_{i−2}`. A side with c ≥ 7
+   has a variable with domain all of LET. A side with c = 6 has a variable whose domain is:
+   - `x_outMW` (this spec, R3): the letters p with the bit LI[p] set in `OR_{o1,o2 ∈ LET} amask(…)`, taken over the two
+     slots outside the window at i (exactly the two amask calls in §51.3), and with `isR6((U, w_{i+2}, s_{i+1}, p, s_i,
+     w_i))` false for +, resp. `(U, w_i, s_{i−1}, p, s_{i−2}, w_{i−2})` for −;
+   - `x_outM`: the engine's own private domain of that 6, `pdom`. That is `pallow(sig2_of(...) + (amask(...) with the
+     actual window letters,))` ∩ non-R6.
+
+   The mask `m±` of §51.3 is exactly the bit set of this domain.
+4. **Completions.** For each position, the code enumerates every assignment of its variables from their domains and
+   builds the refined vector `{in: +1, out: −1}`, with zero terms dropped. Assignments that give the same vector are merged
+   into one completion. A position whose letters are all seen goes into the row's constant part, as a single completion.
+   Every completion is coarsened back to the old key, and the result must equal the engine's x coefficients of the row
+   (assert).
+5. **Spread LP (HiGHS, `scipy.optimize.linprog`, `method='highs-ds'`).** The variables are:
+   - `α_{r,mode} >= 0` with `Σ_mode α = 1`, only when the row has more than one mode;
+   - `μ_{r,mode,pos,j} >= 0` with `Σ_j μ = α` (or `= 1` for a single mode);
+   - one `z_k >= 0` per refined key k, with `z_k >= Σ w_r·μ·coef_k + (pinned constant part)_k`.
+
+   The objective is `min Σ_k z_k / tco`, which is `min Σ_k max(0, −rc_k)` over the refined columns. The weights `w_r` enter
+   as floats in this LP only.
+6. **Rationalisation and exact re-evaluation.** Every LP value v becomes `Fraction(max(v, 0)).limit_denominator(10^9)`. The
+   α of a row are renormalised to sum to 1 (if they are all 0, all weight goes to the first mode). Each position's μ are
+   renormalised to sum to 1 within the position (if they are all 0, all weight goes to the first completion). The exact
+   weight of completion j is `w_r · α · μ_j / Σμ`. From these weights the refined ledger `totR` is rebuilt in Fractions.
+   The coarsened `totR` must equal lowerR2's old x ledger (assert). Then `rc = −totR/tco`. The table reports
+   `Σ max(0, −rc)`, the count of keys with rc < 0, and the most negative rc, all exact. The log line
+   `x at its real cap 3: … D` is the arithmetic `D − 3·Σ max(0, −rc)`. It is not a separately certified bound.
+7. **Equivalence with mrowX duals.** The exact weight of a completion at a position with credit key q (§51.3, built from the
+   same mode) is the dual of the mrowX row `[q, [eA, eB]]`. Here `(eA, eB)` is the completion's `(e+, e−)`, swapped when
+   `A− < A+`. Summed over all receiver positions with the same q, these duals satisfy `Σ_cand y = Σ w_r·(XQ coefficient)`,
+   which is the balance of the free column XQ[q]. Both are `<= 0`, as §51.6 requires. Spreading a row's weight convexly over
+   completions is therefore the same as choosing one mrowX dual per candidate.
+
+Reproduction files: `s51/spread_A78.json` and `s51/spread_A83nf.json`. They are written by the same runs, with environment
+`SPREAD51=<path>` (refinement `SPREAD51_REF`, default `x_outMW`); without it the pricer behaves as before. Each file holds:
+- for every receiver row: its mode(s), α, and every big position with q, its domains and its completions (outer letters
+  `e+`/`e−` of every merged assignment, the exact weight, the refined vector, the mrowX candidate and its dual);
+- per q, the mrowX duals.
+
+The rerun at nice 10 with one thread reproduced both logs line for line apart from timings. Recomputing from the JSON alone
+gives the same totals in two independent ways: from the completion vectors, and from the mrowX duals with in/out keys built
+by the §51.3 formulas. A78: 96/421, 4 negative, minimum −24/421. A83: 2618/29923, 10 negative, minimum −426/29923. On A83,
+38 credit keys carry dual weight, 4 of them on more than one candidate.
+
 ## 51.4 Rows and coefficients
 
 | row | change under xo |
