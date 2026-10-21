@@ -47,6 +47,10 @@ list too); its window cache carries over.
   adjacency checked. Added as g7_7665566_6.....6_w0:66 and g7_7766556_65....._w1:66 (ring 16, D2), each isomorphic to
   my own window. `loop/k60/kpriv.txt` = `kpriv_v4.txt` (md5 e286be4b8b0eb5117b0612ae54de90b6): 16 engine kills, 31 containment patterns;
   grid: 7766556 w1 and 7665566 w0 each dead 10 of 25. Copies in /mnt/project-files/explore/pair60/.
+- **09:25Z, r62c (7766655/6567659, d7 face row, -0.0224) has no kill at ring <= 15** (876 windows, 0 kills). To-do 328
+  windows (153 at ring 16, 101 at 17, 74 at 18), `loop/k47/win52_7_7766655_6567659_todo.txt` (md5 d94566865ea43bbab4e7437bd3e7f7c7), held. So far
+  the three swept d7 face rows of the list have no kill at ring <= 15, as guessed. Next r62d 755676556/756556665
+  (d9 face, -0.0142, 2888 windows at ring <= 15).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
