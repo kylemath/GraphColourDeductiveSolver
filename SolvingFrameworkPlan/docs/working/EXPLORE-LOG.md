@@ -120,7 +120,7 @@ list too); its window cache carries over.
   queue skips it. r62n, p, q, r, s hold nothing. Next r62n 7766555/6576956 (face). Logged 16:03Z.
 - **16:01Z, r62n (7766555/6576956, d7 face row, -0.0046) dies at ring 13.** Most of its ring <= 13 windows were cached,
   and early62.py closed it in its first minute: 6 kills, 1 minimal, f7_..55776_..56.5. (ring 13, m 9, C with X = {I0-I3}
-  on both engines). This makes 6 of the 8 d7 rows of this queue that hold no kill at ring 15 or die only at ring 13-15.
+  on both engines). The d7 rows run so far: r62f, g, n died; r62a, b, c, i, j have no kill at ring <= 15.
 - **16:03Z, r62o (7655667/6657655) closed the same way**, before its skip marker took effect: 4 kills, minimal
   f7_.556776_.5..55. (ring 14, C), the registry name already on main from adm62e. Head adm62i for both rows on main
   949eb544 (A94, adm62h admitted): regression byte-identical, +4 D, +4 C, 0 lost, guards unchanged, `loop/k62/adm62i/`
