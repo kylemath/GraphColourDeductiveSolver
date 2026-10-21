@@ -18,6 +18,10 @@ cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py
   rows die and the two d7 rows do not (40 percent).
 - **05:36Z, part 1: no hit** (`loop/k60/row60.txt`): none of the 7 rows holds a configuration of the registry at 7cd777a3
   (4,505 with RSST) or of the 2026 set. Guess right. Part 2 started 05:36Z (`loop/k60/rows60q.txt`, log `loop/k60/q60.log`).
+- **05:38Z, Long Table's add-on (b): the bare 5-5-5 triangle is not reducible** (expected so; a run to cite). Three interior
+  5s, ring 6, kc line `t555_r6 6 3 0,4,5;0,1,2;2,3,4 1,2;0,2;0,1` (`loop/k60/tri/`): kc -C D=false (31 classes, 17
+  reached), C=false (|X| <= 4, 121 admissible X tested, best leaves 2); dfast D=false. Add-ons (a) triple wheel and (c)
+  reach-2 census follow the A83 rows.
 
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 
