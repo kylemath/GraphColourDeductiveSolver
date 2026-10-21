@@ -94,6 +94,10 @@ list too); its window cache carries over.
   `loop/k47/win52_7_7556676_7567566_todo.txt` (3aeb605d). It is the fourth d7 face row with no kill at ring <= 15
   (after r62a-c); the to-do is held behind Studio's current order and goes to Long Table with the next admission head.
   Next r62j 7655566/6759677 (811 windows at ring <= 16, 693 at ring <= 15). Logged 15:08Z.
+- **15:14Z, r62j (7655566/6759677, d7 face row, -0.0060) has no kill at ring <= 15.** All 693 ring <= 15 windows ran in
+  9 min: 0 kills. To-do `loop/k47/win52_7_7655566_6759677_todo.txt` (69241d00): 235 windows (113 at ring 16, 79 at 17,
+  43 at 18), held with r62i's. So far 5 of the 7 d7 rows in this queue have no kill at ring <= 15 (r62a-c, i, j); the d >= 9
+  rows r62d, e, h all died. Next r62k 65565656556/65666666665 (d11). Logged 15:16Z.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
