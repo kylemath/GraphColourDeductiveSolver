@@ -31,6 +31,9 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
   859ea7f9 (k3x of A106), regression byte-identical, +0 D, +3 C (1336 -> 1339), 0 lost, guards unchanged,
   `loop/k63/adm63o2/` (k3x_D c6a69241, k3x_C c5e8ed9e). adm64a is also built on A106; whichever is admitted second gets
   rebuilt.
+- **19:13Z, adm63o rebuilt again as adm63o3** on main 4e672f33 (A107, adm64a admitted first): regression
+  byte-identical, +0 D, +3 C (1336 -> 1339), 0 lost, guards unchanged, `loop/k63/adm63o3/` (k3x_D 85b12ae9, k3x_C
+  c5e8ed9e). adm63o2 is superseded.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
