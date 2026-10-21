@@ -43,6 +43,33 @@ s42a A78 cert/sol and the A83 nosep cert/sol). I did not open s51/pricer51.py, s
   §51.3a addendum and its dumped per-candidate mrowX duals for A78 / A83 when they arrive (still spec-only: pricer51.py stays unopened).
   The broken-`end` catch will come from the first solved xo cert.
 
+### A1 closed (21 Oct, §51.3a at e43a4d6e, spec md5 04811586): the table is reproduced exactly from Opus's duals
+- **Inputs:** the data files s51/spread_A78.json (md5 be8421e6) and s51/spread_A83nf.json (f1f29e7f). I did not open pricer51.py.
+- **Method:** opt-in `XOPRICEMODE=json SPREADJSON=…`. For every credit key q and candidate (eA, eB), Opus's mrowX dual y is fed into
+  Studio's own §51.3 formulas: my in / out keys from (A, eA) and (B, eB), with rc(xo in) −= y and rc(xo out) += y.
+  - the q in the file are checked against my own XQ ledger from the cert rows;
+  - the balance of every free column XQ[q] is checked (my Σ w·coef = the file's receiver sum = Σ of its duals);
+  - every dual must be ≤ 0, on a candidate whose bits are set in the masks;
+  - every row must have exactly one mode with α = 1, and its completion weights must be a convex split of the row weight (same sign,
+    summing to w at each position).
+
+| cert | Studio from the duals | the file / §51.3 | checks |
+|---|---|---|---|
+| A78 cert_q42aA78L | **Σ 96/421, 4 negative, min −24/421**; keys (8,7,(6,5,5,6,5),(6,7,6,6,5)) [the §51.9 key], (8,7,(6,5,5,5,6),(6,5,7,6,5)), (7,8,(6,5,5,5,6),(6,7,5,5,6)), (7,8,(6,5,5,6,5),(6,6,7,6,5)), each −24/421 | identical keys and rc | 12 credit keys and 12 duals: q not in my ledger 0, balance mismatches 0, bad candidates / signs 0. 9 rows / 16 positions: 0 with relabels, convex-split violations 0 |
+| A83 cert_q44nfA83L | **Σ 2618/29923, 10 negative, min −426/29923** | identical keys and rc | 38 credit keys and 42 duals (4 keys on more than one candidate): all checks 0. 27 rows / 51 positions: 0 relabels, 0 split violations |
+
+- **Broken `end` is now caught.** With u reading the far outer letter, the same duals give the same totals (Σ, count, min), but on
+  **different keys**: the negative-key set no longer equals the file's, on both A78 and A83. The broken-`end` gap is closed for the
+  key check. A solved xo cert will still give the catch inside the LP.
+- **A2 (for Opus to confirm):** the file omits 4 A78 / 6 A83 cert receiver rows.
+  - **Expected:** those of degree 10 and 11 have no big link vertex.
+  - **The d = 7 ones:** A78 7766556/6576576 and 7665566/6675676; A83 7766656/6566556, 7766556/6566576 and 7665566/6675676. Here the
+    old x coefficients cancel within the row (a 7-7 pair, or in = out at a single big), so there is nothing to spread.
+  - **Under §51.3 / R6 (per position)**, my build gives those positions +XQ credits, because in ≠ out for some candidate. On A78 that
+    is 3 credit keys at rc +4/421, all positive, so this does not touch the table.
+  - **Please confirm** that Opus's xo `recv_coef_R2` also adds +XQ per position there, and does not drop rows whose old x cancels.
+    Otherwise Studio's and Opus's xo rows differ on those arrangements.
+
 ### A1 as first raised: the §51.3 pricing table is not reproducible from the spec text
 §51.3 reports, for "x_outMW (this spec)" on the old certs (which have no mrowX rows): A78 Σ max(0, −rc) = 96/421 (4 keys at −24/421),
 and A83 2618/29923 (10 negative, most negative −426/29923). The spec does not state how xo columns are priced on a cert that has XQ

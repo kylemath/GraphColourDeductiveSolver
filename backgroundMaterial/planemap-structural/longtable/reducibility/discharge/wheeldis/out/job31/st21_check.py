@@ -663,6 +663,38 @@ if XO:
                 cs = xo_cands(qk); share = [(cs[0], Fr(1))] if os.environ['XOPRICEMODE'] == 'one' else [(c_, Fr(1, len(cs))) for c_ in cs]
                 for (eA, eB, i_, o_), f_ in share:
                     if i_ != o_: _fo[i_] += v * f_; _fo[o_] -= v * f_
+        if os.environ.get('XOPRICEMODE') == 'json':   # s51.3a: Opus's chosen spread (data file SPREADJSON), duals fed into Studio's own key formulas
+            SJ = json.load(open(os.environ['SPREADJSON'])); _fo = collections.defaultdict(Fr); bad_q = bad_bal = bad_c = 0; nd = 0
+            for ent in SJ['mrowX']:
+                U_, V_, A_, B_ = ent['q']; qk = (U_, V_, tuple(A_), tuple(B_))
+                ys = [(tuple(dd['cand']), Fr(dd['w'])) for dd in ent['duals']]
+                if qk not in _xq and Fr(ent['sum_receiver_weight']) != 0: bad_q += 1
+                # balance of the free column XQ[q]: my ledger tot[XQ q] (receiver rows) = sum of its mrowX duals (= the file's receiver sum)
+                if -_xq.get(qk, Fr(0)) * tco != sum(y for _, y in ys) or Fr(ent['sum_receiver_weight']) != sum(y for _, y in ys): bad_bal += 1
+                for (eA, eB), y in ys:
+                    if y > 0 or not ((A_[4] >> LI[eA]) & 1 and (B_[4] >> LI[eB]) & 1): bad_c += 1; continue
+                    ia_, oa_ = xo_sides_in_out(tuple(A_), eA); ib_, ob_ = xo_sides_in_out(tuple(B_), eB)
+                    ti_, to_ = tauo(V_, U_, ia_, ib_), tauo(U_, V_, oa_, ob_); nd += 1
+                    if ti_ != to_: _fo[ti_] -= y / tco; _fo[to_] += y / tco
+            mine_q = [qk for qk, v in _xq.items() if v]; inj = {(e['q'][0], e['q'][1], tuple(e['q'][2]), tuple(e['q'][3])) for e in SJ['mrowX']}
+            print('SPREADJSON %s: %d credit keys (Studio XQ ledger: %d nonzero, %d not in the file), %d duals; q not in Studio ledger %d, '
+                  'XQ balance mismatches %d, bad candidates / signs %d' % (os.path.basename(os.environ['SPREADJSON']), len(SJ['mrowX']), len(mine_q),
+                  len([q_ for q_ in mine_q if q_ not in inj]), nd, bad_q, bad_bal, bad_c), flush=True)
+            for q_ in [q_ for q_ in mine_q if q_ not in inj]:
+                cs = xo_cands(q_); print('  Studio-only credit key %s: rc %s, %d candidates, distinct (in, out) pairs %d' % (q_, _xq[q_], len(cs), len({(i_, o_) for _, _, i_, o_ in cs})))
+            # rows: one mode each, alpha 1, completion weights a convex split of the row weight (same sign, summing to w per position)
+            nm_ = sum(len(rw['modes']) != 1 for rw in SJ['rows']); split_bad = 0; npos = 0
+            for rw in SJ['rows']:
+                wr = Fr(rw['w'])
+                for md in rw['modes']:
+                    if Fr(md['alpha']) != 1: split_bad += 1
+                    for ps in md['positions']:
+                        npos += 1; ws = [Fr(cp['weight']) for cp in ps['completions']]
+                        if sum(ws) != wr * Fr(md['alpha']) or any(x * wr < 0 for x in ws if x): split_bad += 1
+            print('SPREADJSON rows: %d receiver rows, %d with more than one mode (relabel), %d positions, convex-split violations %d' % (len(SJ['rows']), nm_, npos, split_bad), flush=True)
+            _negJ = {tuple([n[1][0], n[1][1], tuple(n[1][2]), tuple(n[1][3])]): Fr(n[0]) for n in SJ['neg']}
+            _negS = {tauo_dec(t_): v for t_, v in _fo.items() if v < 0}
+            print('SPREADJSON vs the file: stated S %s, nneg %s, min %s; negative keys equal (same rc): %s' % (SJ['S'], SJ['nneg'], SJ['minrc'], _negJ == _negS), flush=True)
         _neg = sorted((v, t_) for t_, v in _fo.items() if v < 0)
         print('XOPRICE first-order xo: %d keys with rc != 0; negative %d, sum max(0, -rc) = %s; most negative %s' % (len([1 for v in _fo.values() if v]), len(_neg), sum(-v for v, _ in _neg), _neg[0][0] if _neg else 0), flush=True)
         for v, t_ in _neg[:12]: print('  xo %s rc %s' % (tauo_dec(t_), v))
