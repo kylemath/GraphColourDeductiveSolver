@@ -22,6 +22,11 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
 - **Guess.** r64a (d10) dies (80 percent); at least 8 of the 16 non-face d7 rows die (55 percent); at most 2 of the 6
   d7 face rows die (65 percent). Caveat: the weights come from older certs (A78, A83 fb on); whether these rows bind in
   s53's stacked solve is unknown, so a kill here widens the registry but may not move the bound.
+- **19:10Z, r64a (7556656655/6565555656, d10 face row, fbA83 -0.0042) dies at ring 14.** Closed after 3 min (1109
+  ring <= 13 windows done, 1426 of 6029 at ring <= 15): 18 kills, 11 f-names, 2 minimal, f10_.55.556656_.5..5.555.
+  (m 14) and f10_.556656655_...5555.5. (m 15), both ring 14, D on kc + dfast. Head adm64a on main ec6eeaa9 (A106):
+  regression byte-identical, +11 D, +0 C, 0 lost, guards unchanged, `loop/k64/adm64a/` (k3x_D 85b12ae9, k3x_C 7214a21e).
+  Row55 at adm64a: r64b-w hold nothing. Next r64b 7655667/7657656 (face). Logged 19:11Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
