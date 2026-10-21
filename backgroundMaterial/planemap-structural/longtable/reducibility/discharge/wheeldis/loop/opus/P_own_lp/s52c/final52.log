@@ -1,16 +1,16 @@
 violated rows/cells with all C out: 686769 ({'7': 227468, '8': 96961, '9': 360909, '10': 1429, 'cons': 2})
 uncovered by any C entry: 1462
 C entries covering >= 1 row: 625
-sole-cover entries: 121; rows left after the sole set: 21521; greedy adds 32; joint-table additions 0; cover total 153
-cover by kind: {'k3x_C': 141, 'RSST': 8, 'cpat-other': 2, 'C6wheel': 2}
-cover by Lean status: {'CXInt': 83, 'CCover': 26, 'CXRing': 24, 'CCover2': 5, 'notLean': 13, 'CWheels': 2}
-sole by Lean status: {'CXRing': 18, 'CXInt': 68, 'notLean': 5, 'CCover': 25, 'CCover2': 3, 'CWheels': 2}
+sole-cover entries: 121; rows left after the sole set: 21521; greedy adds 32; joint-table additions 1; cover total 154
+cover by kind: {'k3x_C': 141, 'RSST': 9, 'cpat-other': 2, 'C6wheel': 2}
+cover by Lean status: {'CXInt': 83, 'CCover': 27, 'CXRing': 24, 'CCover2': 5, 'notLean': 13, 'CWheels': 2}
+sole by Lean status: {'CXInt': 68, 'CCover': 25, 'CCover2': 3, 'CXRing': 18, 'CWheels': 2, 'notLean': 5}
 cover by ring (lean status counts):
   ring 9: 1  {'CXInt': 1}
   ring 10: 7  {'CXInt': 6, 'CXRing': 1}
   ring 11: 24  {'CXInt': 18, 'CXRing': 4, 'CCover': 1, 'CWheels': 1}
   ring 12: 39  {'CXInt': 24, 'CCover': 6, 'CXRing': 8, 'CWheels': 1}
-  ring 13: 41  {'CCover': 2, 'CXInt': 33, 'CXRing': 5, 'CCover2': 1}
+  ring 13: 42  {'CCover': 3, 'CXInt': 33, 'CXRing': 5, 'CCover2': 1}
   ring 14: 38  {'CXRing': 5, 'CCover': 17, 'CCover2': 4, 'notLean': 12}
   ring 15: 2  {'CXInt': 1, 'CXRing': 1}
   ring 16: 1  {'notLean': 1}
