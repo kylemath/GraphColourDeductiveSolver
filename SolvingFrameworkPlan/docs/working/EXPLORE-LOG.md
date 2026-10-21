@@ -65,6 +65,11 @@ list too); its window cache carries over.
   322cb1ad (A88), regression byte-identical: +19 D (19 names, none on main), 0 lost, guards unchanged,
   `loop/k62/adm62c/` (k3x_D 5dc8fa5a, k3x_C 3fd7d7d2 unchanged). Second face row of the list to die (a d10 hub).
   The queue restarted at 11:26Z on r62f 7675566/7566676 (non-face, -0.0092).
+- **11:59Z, r62f (7675566/7566676, non-face, -0.0092) dies at ring 12.** All 1047 ring <= 15 windows ran: 19 kills,
+  19 f-names, 2 minimal: f7_...5576_...665. (ring 12, C, X={I0-I1}) and f7_..65576_..66.5. (ring 13, C, X={I0-I1}).
+  Files `loop/k47/r62f_kills*` (fff481c3). Admission head adm62d on main ee836bb3 (A89), regression byte-identical:
+  +3 D, +16 C (19 names, none on main), 0 lost, guards unchanged, `loop/k62/adm62d/` (k3x_D 53611985, k3x_C a6dc9722).
+  Next r62g 7665567/5765765 (face, -0.0078).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
