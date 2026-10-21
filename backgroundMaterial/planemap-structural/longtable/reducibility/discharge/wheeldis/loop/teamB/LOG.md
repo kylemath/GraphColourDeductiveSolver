@@ -149,3 +149,9 @@ v0 (no patterns) lost to a container restart at a lower bound of 10/27. v2 (comp
 - Harvest over s5's 106,977 arrangements: 26,625 killed, 4,916 patterns (b3_pfh/nl_harvest_*.txt).
 - s5 (RSST only) holds at lower bound 1/8 with violations <= 0.05; f129 (tfix 0.1289) stopped (margin solution not converging, violations ~0.8).
 - s6 = s5's rows minus 11,415 rows of newly killed arrangements, oracle 8,493 patterns, smoothed; running.
+
+## B6c (21 Oct 02:10Z): current shared registry
+- reg_patterns_m127.txt: load_reg.py run on main 127184ef (registry 2,660 D / 1,170 C): 20,242 patterns (+3,818, -13 vs the old snapshot; removing kills can only raise t*).
+- s7 = s5's rows minus 2026-killed rows, new registry, 2026 oracle, smoothed. Lower bound dipped to 0.0828 then 0.0909 at it 1352; violations falling (about 2 -> 1). One engine, unconverged.
+- s6 (same without the new registry) stopped as dominated at it 1358 (lower bound 0.0920).
+- Known: rows from before the registry change are not re-filtered against the new patterns, so s7 can only overstate t*.
