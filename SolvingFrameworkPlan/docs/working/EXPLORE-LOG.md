@@ -34,6 +34,9 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
 - **19:13Z, adm63o rebuilt again as adm63o3** on main 4e672f33 (A107, adm64a admitted first): regression
   byte-identical, +0 D, +3 C (1336 -> 1339), 0 lost, guards unchanged, `loop/k63/adm63o3/` (k3x_D 85b12ae9, k3x_C
   c5e8ed9e). adm63o2 is superseded.
+- **19:24Z, r64b (7655667/7657656, d7 face row, fbA83 -0.0129) has no kill at ring <= 15** (1016 windows, 14 min).
+  To-do `loop/k47/win52_7_7655667_7657656_todo.txt` (96809f52): 531 windows (204 at ring 16, 212 at ring 17, 115 at
+  ring 18), to the farm, staged in todo63/. Next r64c 7676655/6756657 (face). Logged 19:25Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
