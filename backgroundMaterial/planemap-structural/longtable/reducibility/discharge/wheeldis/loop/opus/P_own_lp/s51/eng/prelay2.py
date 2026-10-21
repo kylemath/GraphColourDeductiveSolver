@@ -60,7 +60,7 @@ def pallow(sig): return [p for i, p in enumerate(LET) if not F16 or (sig[-1] >> 
 # position, q = (U, V, A, B), A/B = visible side tuples (c, a, b, o, mask of the unseen outer letter); mrowX rows bound XQ.
 XO = 'xo' in FLAGS
 assert not XO or 'xon' in FLAGS, 'xo needs xon'
-XOB = OPT.get('xobroken', '')        # controls only: 'end' = u reads the far outer letter; 'sign' = receiver gets -XQ
+XOB = OPT.get('xobroken', '')        # controls only: 'end' = in-key outer letters read at the wrong end; 'sign' = receiver gets -XQ
 assert XOB in ('', 'end', 'sign')
 XOV = {}                             # tauo -> value (solution / LP)
 XNOMASK = [False]                    # xoselftest only
@@ -113,9 +113,10 @@ def xo_cands(q):
             if not (A[4] >> LI[eA]) & 1: continue
             for eB in LET:
                 if not (B[4] >> LI[eB]) & 1: continue
-                if XOB == 'end':   # broken control: u reads the outer letter at the wrong end
+                if XOB == 'end':   # broken control: the in-key's outer letters read at the wrong end (out-key correct), so the
+                    # receiver's inflow no longer matches the sender's outflow (a one-sided bug; swapping both is a relabelling)
                     ti = tauo(V, U, sidex(A[0], A[1], A[2], A[3], eA), sidex(B[0], B[1], B[2], B[3], eB))
-                    to = tauo(U, V, sidex(A[0], A[2], A[1], eA, A[3]), sidex(B[0], B[2], B[1], eB, B[3]))
+                    to = tauo(U, V, sidex(A[0], A[2], A[1], A[3], eA), sidex(B[0], B[2], B[1], B[3], eB))
                 else:
                     ti = tauo(V, U, sidex(A[0], A[1], A[2], eA, A[3]), sidex(B[0], B[1], B[2], eB, B[3]))
                     to = tauo(U, V, sidex(A[0], A[2], A[1], A[3], eA), sidex(B[0], B[2], B[1], B[3], eB))
@@ -151,7 +152,7 @@ def xo_win(W, U):
                 o = 3 if XOB == 'end' else 4
                 touched.add((fl, SM[2], SM[0], SP[0], SP[2], SM[o], SM[1], SP[1], SP[o]))
             if fl == U:   # out key at V = tl: + side (c, w_{i+2}, s_i, s_{i+1}, e+)
-                o = 4 if XOB == 'end' else 3
+                o = 3
                 touched.add((tl, SM[1], SM[0], SP[0], SP[1], SM[o], SM[2], SP[2], SP[o]))
     for V, a, b, e, f, p, q_, r, s_ in touched:
         Wl = {-2: a, -1: b, 0: V, 1: e, 2: f}; Sl = {-2: p, -1: q_, 0: r, 1: s_}

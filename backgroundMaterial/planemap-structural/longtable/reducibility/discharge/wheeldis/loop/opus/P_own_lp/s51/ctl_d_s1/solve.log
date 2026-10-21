@@ -1,0 +1,24 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10153, 8: 6166, 9: 3519, 10: 1425, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17700, 'C': 2088, 'RPAT': 158, 'RPATN': 2080}
+conservation basis rows added: 10539
+warm rows admitted: 24729
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1477 M sigs
+nosep: LP over the warm rows only, t = 0.071428571429 (a lower bound once lowerR2 checks the cert)
+LP t* = 0.071428571429 ; dual rows 45 ; wrote sol_s51s1.json cert_s51s1.json
+  +0.178571429 senderR2 55669 [0, 0, 0, 0, 0, '|', 1, 0]
+  +0.178571429 senderR2 55669 [0, 0, 1, 0, 0, '|', 0, 0]
+  +0.142857143 senderR2 56696 [1, 0, 0, 0, 0, '|', 0, 0, 0]
+  +0.107142857 senderR2 66669 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
+  +0.071428571 senderR2 56669 [0, 0, 0, 0, 0, '|', 1, 1, 0]
+  +0.071428571 senderR2 56669 [0, 1, 0, 0, 0, '|', 0, 0, 0]
+  -0.071428571 receiverR2 11 65565656556 65666666665
+  -0.071428571 receiverR2 10 6556656656 6565655655
+  +0.035714286 senderR2 66669 [0, 1, 0, 0, 0, '|', 0, 0, 0, 0]
+  +0.023809524 senderR2 66969 [0, 0, 0, 0, 0, '|', 0, 0, 1]
+  -0.023809524 receiverR2 11 65655655565 96656695669
+  +0.011904762 senderR2 55959 [0, 0, 0, 0, 0, '|']
+  +0.011904762 senderR2 59669 [0, 0, 0, 0, 0, '|', 0, 0]
+  l3q: q total 0.348214286, 5 q > 0: [((5, 6, 5), np.float64(0.074404762)), ((6, 6, 5), np.float64(0.068452381)), ((6, 6, 6), np.float64(0.068452381)), ((6, 6, 7), np.float64(0.068452381)), ((6, 6, 8), np.float64(0.068452381))]; Q total 0.211309524
+  (+ 32 cons2 / mrowR2 rows)
+  xo: 153178 xo > 0 (total 458637.312797619, max 3.000000000); 12760 XQ columns, 157617 mrowX rows in the LP, 0 in the cert

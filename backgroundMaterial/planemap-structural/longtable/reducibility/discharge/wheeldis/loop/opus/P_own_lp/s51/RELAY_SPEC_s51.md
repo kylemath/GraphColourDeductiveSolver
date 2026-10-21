@@ -206,7 +206,27 @@ Position i = 0 (V = 7): window (a,b,c,e,f; p,q,r,s) = (w6,w7,w0,w1,w2; s6,s7,s0,
 
 ---------------------------------------------------------------------------------------------------------------
 
-Controls planned (§51.10 will be filled in after the build): (a) default flags reproduce `s42a/run_A78/upper.log` and the
-s42a lowerR2 log byte for byte (timings stripped); (b) hand check of one refined key's reduced cost on the A78 cert against
-s50's −24/421; (c) broken builds (`xobroken=end`: u reads the far outer letter; `xobroken=sign`: receiver gets −XQ) caught by
-upperR2 / lowerR2; (d) smoke solve uses xo columns.
+## 51.10 Engine and controls (added after the build; 51.1–51.9 unchanged)
+
+**Engine.** `s51/eng` = byte copy of `s47/eng` + `python3 s51/port_s51.py s51/eng` (edits `prelay2.py`, `pcheck.py` only; `bin/`
+unchanged: the xo term is window-local, so jsep3/5/7 need no leaf change). md5s in `s51/engine_src_md5.txt`. New command
+`xoselftest`. Control-only option `xobroken=sign` (the receiver gets −XQ) or `xobroken=end` (the in-key's outer letters are read
+at the wrong end, while the out-key is read correctly).
+
+Note on the "wrong end" control. Swapping the reading at **both** ends (both the in-key and the out-key) is only a consistent
+renaming of the xo columns. xo appears only in mrowX rows, which are all built by the same code, so that LP is isomorphic and
+no row-level check can see the swap. It is also harmless. The harmful bug is one-sided: the inflow is credited under a name that
+differs from the name the sender's outflow uses. That is what `xobroken=end` implements.
+
+| control | result |
+|---|---|
+| (a) default flags vs s42a A78 | upperR2 log and lowerR2 log **byte-identical** to `s42a/run_A78/upper.log` / `lower.log` (timings stripped): FEASIBLE 0.109439356774, VALID 44/421 |
+| xoselftest (both ends of random edges, independent link-list construction) | 20,000 edges, **0** key mismatches; `xobroken=end`: 17,375 mismatches |
+| (b) hand check, A78 cert carried into xo (`handcheck51.py`) | key (8,7,(6,5,5,6,5),(6,7,6,6,5)) = out key of q0 = (8,7,(6,5,5,6,29),(6,6,7,6,31)) at candidate (5,5); receiver 8 76765656/66565565, w −12/421, XQ coefficient 2 (positions 0 and 2 are mirror images) → **rc −24/421 = s50**; the split LP's Σ max(0,−rc) is **96/421** over the same 4 keys (= s50); lowerR2 xo on the carried cert (172 rows, 17 mrowX) **VALID −244/421 = s50's cap-3 bound** |
+| (c) broken builds | `sign`: upperR2 on the s42a solution converted to xo (`conv51.py`, the old x on all 625 outer completions): correct **FEASIBLE** at 0.109439356774, sign-broken **INFEASIBLE (61)**; lowerR2 on the carried cert −1660/421 instead of −244/421. `end`: lowerR2 on the carried cert **−520/421** instead of −244/421; upperR2 on the converted solution is FEASIBLE, as it must be (xo constant in the outer letters cannot tell the ends apart) |
+| (d) smoke, A78 | **s2** (keeppen xpen 1e−3, warm = the 24,729 s42a rows, maxit 3): LPs of 224k–228k rows × 339k–342k columns (279 s / 37 s / 55 s); the xo window separation added 1,382 / 1,173 / 732 rows; t 0.091998 → 0.092012 (not converged). Final LP: **49 xo > 0** (total 4.48, max 0.126), 13,773 XQ columns, 159,815 mrowX rows, **462 mrowX rows with dual weight**. **s1 / s3** nosep (the L-stage path; s3 adds s2's separated rows): lowerR2 xo **VALID 1/14 = the LP t** (45 / 42 rows). Without the penalty, xo sits at the cap on 153k / 155k keys whose far-end receivers are not among the warm rows, so a nosep bound before separation is weak (old-x nosep on the same rows: 44/421) |
+
+Caveat (s2). The cert of the penalised LP that stopped at maxit (1,017 rows) fails lowerR2. The cause is float noise of at
+most 7e−12 on g/h/M/r/y/lQ columns, which the §44.8 repair cannot pin, because y and r sit only in sender and receiver rows. This
+is rationalisation noise of a large LP, not an xo effect: XQ noise is 1.5e−11 and is box-priced. run51 takes its cert from the
+nosep L solve, as run44d does.
