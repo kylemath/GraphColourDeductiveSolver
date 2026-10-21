@@ -98,6 +98,12 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   62-63 all have interior-only X. On main aa74d7ec, 111 of 1,310 C entries have a pinned X, 73 of them from explore kill
   files of rounds 7-61 (`loop/k63/pinnedX_main_aa74d7ec.txt`, 89197dcc), listed for that check. Row55 at adm63k:
   r63l-p hold nothing. Next r63l 7657575/7665566 (non-face). Logged 18:20Z.
+- **18:21Z, r63l (7657575/7665566, d7 non-face row, fb-off -0.0027) dies at ring 11.** Closed after 2 min (652 ring
+  <= 13 windows done, 668 of 1347 at ring <= 15): 21 kills, 18 f-names, 2 minimal, f7_..57575_...55.. (ring 11, m 8, C,
+  X {I0-I3}) and f7_...5756_...566. (ring 12, m 8, D on kc + dfast). Files `loop/k47/r63l_kills*` (373209c2). Head
+  adm63l on main 83c23ac1 (A104): regression byte-identical, +6 D, +12 C, 0 lost, guards unchanged, `loop/k63/adm63l/`
+  (k3x_D 39b7902e, k3x_C aaa4bd78). All 12 new C entries have a one-edge interior-only X. Row55 at adm63l: r63m-p hold
+  nothing. Next r63m 9657556/5677565 (face). Logged 18:24Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
