@@ -107,6 +107,9 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
 - **18:36Z, r63m (9657556/5677565, d7 face row, fb-off -0.0027) has no kill at ring <= 15** (727 windows, 15 min).
   To-do `loop/k47/win52_7_9657556_5677565_todo.txt` (34f5d2da): 63 windows, 55 at ring 16 and 8 at ring 17, to the
   farm (standing rule), staged in /mnt/project-files/explore/todo63/. Next r63n 7656756/7556677 (non-face). Logged 18:37Z.
+- **18:59Z, r63n (7656756/7556677, d7 non-face row, fb-off -0.0017) has no kill at ring <= 15** (945 windows, 23
+  min). To-do `loop/k47/win52_7_7656756_7556677_todo.txt` (67291d93): 635 windows (249 at ring 16, 215 at ring 17, 171
+  at ring 18), to the farm, staged in todo63/. Next r63o 7557565/7576886 (face). Logged 19:00Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
