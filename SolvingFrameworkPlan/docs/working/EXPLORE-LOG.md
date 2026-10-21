@@ -143,6 +143,12 @@ list too); its window cache carries over.
   (A95): regression byte-identical, +4 D, +0 C, 0 lost, guards unchanged, `loop/k62/adm62j/` (k3x_D e1029e2d, k3x_C
   9f8cfe39). Row55 at adm62j: r62q, r, s hold nothing (`loop/k62/row62_A95j.txt`). Every d >= 8 row of the list is now
   dead. Next r62q 7666675/7575755 (d7, non-face). Logged 16:25Z.
+- **16:27Z, r62q (7666675/7575755, d7 non-face row, -0.0015) dies at ring 14.** early62.py closed it 2 min in (500
+  ring <= 13 windows done): 3 kills, 2 f-names, both D on kc + dfast at ring 14, minimal f7_.576666_55.5.5. (m 11) and
+  f7_5766667_5.5.5.5. Files `loop/k47/r62q_kills*` (10b01f1c). Head adm62k on main 5e5cfd02 (A96, adm62j admitted):
+  regression byte-identical, +2 D, +0 C, 0 lost, `loop/k62/adm62k/` (k3x_D d76bc52f, k3x_C 9f8cfe39). Row55 at adm62k
+  (`loop/k62/row62_A96k.txt`): both names sit inside r62r 7666675/7565755 too, so r62r dies with this head (it is
+  running; early62.py will close it from the cache); r62s 7766555/6566959 holds nothing. Logged 16:27Z.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
