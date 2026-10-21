@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21 Oct 14:34Z: ADMITTED adm62f (explore ba13cdc1, base f6098c1d): r62h = d11 face row 65656565555/65555667576 dies at ring 12, with 257 f-names and 12 minimal, e.g. f11_.......5565_......57665 (D, kc + dfast). +242 D +15 C, lost 0, md5 match. Kill files from fab77d05. Registry A92 = 3,044 D / 1,305 C.
 - 21 Oct 12:35Z: ADMITTED adm62e (explore eaf859e7, base 0355bbbd): r62g = d7 face row 7665567/5765765 (face w3 w4 s3) dies at ring 14, the first d7 face row to die, minimal f7_.556776_....55. and f7_5566776_....5.. (C, X={I0-I1}). +8 D +13 C, lost 0, md5 match. Kill files from c7ee18cc. Registry A91 = 2,802 D / 1,290 C.
 - 21 Oct 12:04Z: ADMITTED adm62d (explore d0590d03, base ee836bb3): r62f = 7675566/7566676 (non-face) dies at ring 12, minimal f7_...5576_...665. (C, X={I0-I1}). +3 D +16 C, lost 0, md5 match. Kill files from fff481c3. Registry A90 = 2,794 D / 1,277 C.
 - 21 Oct 11:30Z: ADMITTED adm62c (explore ec676026, base 322cb1ad): r62e = d10 face row 7556656656/7565555555 dies at ring 14, with 19 kills, all D, e.g. f10_...5665665_....555555. +19 D +0 C, lost 0, md5 match. Kill files from 1e215181. Registry A89 = 2,791 D / 1,261 C.
