@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21 Oct 02:05Z: CCover DONE (Studio a0baac7e, merge 14a1d688): 32/32 hC proved, CCAll clean. All 130 C entries of the A74 1/9 cover now proved in Lean. Gate draft updated. s42a upper: bounds, senderR2, cons2, mrowL, l3q leaf clean; receivers/DP/Karp next.
 - 21 Oct ~01:50Z: Admitted r58f + r58h (built f16eb8e4 on 55732ff4; kills d8 76555566/66757666 at ring 11 and d11 65655565565/66659665666 at ring 14, 12/421 each; +30 D +29 C, additive, md5 k3x_D 863d8580 / k3x_C 134c45b6) -> registry 2,694 D / 1,208 C (A82). A78 top 10: 72/421 dead; left face rows r58b, r58c, r58g (60/421) + 2 exhausted old face rows (8/421), all for fb6.
 - 21 Oct ~01:12Z: Admitted r58e (built 9d83adb6 on a7ac801e; kills d8 76567656/76675555, 12/421, ring 13; +5 C, additive, md5 k3x_C ecd364c2) -> registry 2,664 D / 1,179 C (A81). All 3 non-face A78 top rows dead (48/421). Entries with one ring vertex per X component (r57a, r57f, r58e names) pass the ring-merge guard by design; their Lean hC goes via the CXRing path.
 - 21 Oct ~01:01Z: Admitted r58d (built 1d7af3f8 on bc898a8b; kills d8 76765656/66565565, 12/421, ring 12; +4 D +2 C, additive, md5 k3x_D 671a5a1a / k3x_C 365f2702) -> registry 2,664 D / 1,174 C (A80). Face rows r58b/r58c no kill at ring<=14: route = fb6; explore runs their ring 15 only as a cheap check.
