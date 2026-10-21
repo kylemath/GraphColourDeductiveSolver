@@ -27,6 +27,10 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
   (m 14) and f10_.556656655_...5555.5. (m 15), both ring 14, D on kc + dfast. Head adm64a on main ec6eeaa9 (A106):
   regression byte-identical, +11 D, +0 C, 0 lost, guards unchanged, `loop/k64/adm64a/` (k3x_D 85b12ae9, k3x_C 7214a21e).
   Row55 at adm64a: r64b-w hold nothing. Next r64b 7655667/7657656 (face). Logged 19:11Z.
+- **19:12Z, adm63o rebuilt as adm63o2** (Studio passed foldSafeX on its 3 pinned-X entries, main 859ea7f9): on main
+  859ea7f9 (k3x of A106), regression byte-identical, +0 D, +3 C (1336 -> 1339), 0 lost, guards unchanged,
+  `loop/k63/adm63o2/` (k3x_D c6a69241, k3x_C c5e8ed9e). adm64a is also built on A106; whichever is admitted second gets
+  rebuilt.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
