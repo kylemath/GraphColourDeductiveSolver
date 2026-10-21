@@ -877,3 +877,5 @@ our agent R and have no output from it.
   - A83 (run44c.sh) is still in K. Its L stage calls the patched engine, so it picks the fix up with no restart.
   - run44b.sh (A82) is not running: no process and no "A82 run start" note, so it was stopped before its wait ended. It was not restarted.
 - RSST 2.126 and 8406.123 were not used.
+
+- 2026-10-21 03:29Z [E2] s42a CONFIRMED by Studio (9bc9b2b2, loop/studio/opus_check/s42a_verdict.md): A78 b6dc7610 with the 128 ring-merge cpat names held out, l3q + rpatN3. **44/421 = 0.104513 <= t* <= 0.109439356774.** Upper FEASIBLE (receivers 0 violators, Karp lambda 0.5731); lower VALID at exactly 44/421. Sources: RSST rule 9 (l3q) and the 2026 set (used as a map, proved D on our two engines). C cover for Studio's Lean batch in progress (s46c).
