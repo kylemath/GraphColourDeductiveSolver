@@ -22,6 +22,11 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   fewer than 2 of the 5 d >= 8 rows die at ring <= 15.
 - **Guess.** All 3 keeppen d >= 8 rows die (70 percent); r63d has no kill at ring <= 15 (70 percent); both fb-off d8
   rows die (60 percent); at least half of the swept d7 non-face |w| dies (55 percent).
+- **16:38Z, r63a (65556565556/65955559565, d11 face row, keeppen -0.0055) dies at ring 13.** early62's rule closed it
+  after 5 min (1181 ring <= 13 windows done): 59 kills, 34 f-names, minimal f11_...55565655_......55... (ring 13, m 11, D
+  on kc + dfast). Files `loop/k47/r63a_kills*` (5a3152f1). Head adm63a on main 8ec00aea (A97): regression byte-identical,
+  +34 D, +0 C, 0 lost, guards unchanged, `loop/k63/adm63a/` (k3x_D 68ebf3a0, k3x_C 9f8cfe39). Row55 at adm63a: the other
+  15 queue rows hold nothing (`loop/k63/row63_A97a.txt`). Next r63b 6555565665/6696666666 (d10). Logged 16:39Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
