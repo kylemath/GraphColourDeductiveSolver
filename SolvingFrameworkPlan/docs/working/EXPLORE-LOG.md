@@ -56,6 +56,12 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   `loop/k47/r63e_kills*` (e2d5d602). Head adm63e on main 23e25c28 (A100): regression byte-identical, +2 D, +0 C, 0 lost,
   guards unchanged, `loop/k63/adm63e/` (k3x_D aa11802b, k3x_C 2087d442). Row55 at adm63e: r63f-p hold nothing. Next r63f
   95765665/66566555 (d8, non-face). Logged 17:12Z.
+- **17:13Z, r63f (95765665/66566555, d8 non-face row, fb-off -0.0107) dies at ring 13.** Closed after 2 min (660 ring
+  <= 13 windows done): 6 kills, 6 f-names (4 D, 2 C), minimal f8_...56656_.....66. (ring 13, m 8, C, X = {I3-I4} on both
+  engines). Files `loop/k47/r63f_kills*` (13a8a2fa). Head adm63f on main cfd6f2b2 (A101): regression byte-identical, +4 D,
+  +2 C, 0 lost, ring-merge hold the same 3, `loop/k63/adm63f/` (k3x_D f929e0ed, k3x_C f068e760). All 5 d >= 8 rows of
+  round 63 died at ring <= 15 (kill line not hit; guesses on the keeppen and fb-off d >= 8 rows hit). Row55 at adm63f:
+  r63g-p hold nothing. Next the d7 rows, r63g 8666565/5666765 (non-face, -0.0405). Logged 17:14Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
