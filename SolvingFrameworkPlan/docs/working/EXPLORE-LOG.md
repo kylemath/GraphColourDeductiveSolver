@@ -90,6 +90,11 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
   binder_rows_swept.tsv (the 50 rows of rounds 54-64 with kill or to-do) and opus_binder_rows.tsv (113 merged Opus
   binder rows, 69 dead / 44 alive at adm64g), with README and MD5SUMS. Built by `loop/k64/dataset/mkds.py` and
   `mkrows.py`.
+- **21:13Z, adm64h (r64h) on main 5b690b9d (A110, which already stores r64h's kill files), at Long Table's request.**
+  Rerunning main's own twoeng on main is NOT byte-identical to main's k3x, but the only difference is
+  f7_5676676_.5.5.5. (r64h's kill), because main carries the kill files without the k3x line. The head equals that
+  rerun: D 3124 -> 3125 (+1), C unchanged at 1339, 0 lost, `loop/k64/adm64h/` (k3x_D 1ccf362a, k3x_C c5e8ed9e). Explore
+  is done with the discharging line.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
