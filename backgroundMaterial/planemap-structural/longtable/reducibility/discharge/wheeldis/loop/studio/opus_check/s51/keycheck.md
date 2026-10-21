@@ -105,6 +105,12 @@ in its receiver rows but no mrowX rows. I tried three readings:
 - **Request:** please state pricer51's rule in the spec text (which candidate or candidates carry each receiver row's XQ dual), or the
   mrowX duals it uses. Then I can rerun the key check. This does not affect the soundness side (rows, masks, upper and lower checks).
 
+## A87 (main b253a4ad) tables, pre-built, and the cross-check against Opus's reg_A86 / reg_A87 (62bae93a, data)
+- **Build:** k3x D 2,731 (d3901238), C 1,242 (9001e009). Forbidden set 4,555. kill6 27a64538 / 6dc44bba. l3q V = 7 22e1f5ef, V = 8 2e8e8f5e.
+  The ring-merge sweep is the 129-FAIL set.
+- **vs Opus reg_A87:** k3x byte-identical, kill6 identical, tab_±1 0 mismatches. Opus's dcount newpat is 17,771.
+- **vs Opus reg_A86:** k3x byte-identical, kill6 identical, tab_±1 0 mismatches. Opus's dcount newpat is 17,755.
+
 ## A86 (main ea8944db) tables, pre-built
 - **k3x:** D 2,715 lines (md5 c1b1b4e1), C 1,232 (6c27df6f).
 - **Forbidden set:** 582 RSST + 3,947 = 4,529.
