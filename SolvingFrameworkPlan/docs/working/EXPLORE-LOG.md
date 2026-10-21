@@ -1,5 +1,28 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 64 (21 Oct 2026, 19:06Z-): H-S44FB, do the never-swept live rows of Opus's s44 fb-on certs die at ring <= 15?
+
+**Pre-registered 19:06Z, before any engine run on this list (containment already done, below).** Long Table 19:00Z: after
+r63p, until s53's binders arrive, take the next rows from the latest valid certificate on main (the A83 fb-off cert),
+skipping rows already dead, by |w|. That cert's 33 rows are all handled (22 dead in the registry at main 0945f0f8, the
+other 11 swept to ring 15 in rounds 59-62 and now at Studio or the farm), so this round takes the next lists of Opus's
+on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, cert_q44fbA83L, 36 rows, c9b95658) and
+`s44/run_A78/binders_canon.txt` (fb on, 48 rows, ee32da74), copied to `loop/k64/`.
+- **Part 1, containment.** All 7 Opus binder lists (s39o A74, s42a A78, s44 A78, s44 A83, s44 A83nf, s47 A84, s47
+  A84nf) merged by canonical key: 113 rows, 63 dead in the registry at main 0945f0f8 + 2026 set, 50 live. A canonical-key
+  lookup against every explore queue log, window file name and to-do (`loop/k64/lookup64.txt`) leaves 23 never swept:
+  8 from the s44 A83 cert, 15 only in the s44 A78 cert. Rechecked at adm63p's k3x (`loop/k64/row64_adm63p.txt`): all 23
+  live.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 15, DNW 3, early close by `loop/k64/early64.py` = early62.py):
+  queue `loop/k64/rows64q.txt`: r64a d10 face 7556656655/6565555656 first, then the 7 A83 d7 rows by |w|, then the 15
+  A78 rows by |w|. 6 of the d7 rows are face rows, 16 non-face. Containment is rechecked against the current main after
+  every admission; a row with no kill goes to the farm (Long Table 17:22Z).
+- **Hypothesis.** These rows behave like round 63's d7 rows: non-face rows mostly die at ring <= 15, face rows mostly
+  do not. **Kill line:** fewer than 5 of the 16 non-face d7 rows die at ring <= 15.
+- **Guess.** r64a (d10) dies (80 percent); at least 8 of the 16 non-face d7 rows die (55 percent); at most 2 of the 6
+  d7 face rows die (65 percent). Caveat: the weights come from older certs (A78, A83 fb on); whether these rows bind in
+  s53's stacked solve is unknown, so a kill here widens the registry but may not move the bound.
+
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
 **Pre-registered 16:31Z, before any engine run on these lists (containment already done, below).** Long Table 16:28Z:
