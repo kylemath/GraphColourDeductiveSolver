@@ -71,6 +71,8 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
 - **17:20Z, r63h (9658656/5695555, d7 non-face row, fb-off -0.0107) has no kill at ring <= 15** (521 windows, 5 min).
   To-do `loop/k47/win52_7_9658656_5695555_todo.txt` (b0ec34f9): 40 windows at ring 16-18, copied to todo63/ for Long Table to
   place. Next r63i 7555767/7756656 (face). Logged 17:22Z.
+- **17:22Z, Long Table's standing rule:** every row with no kill at ring <= 15 goes to the farm in |w| order, with only
+  a note of the row and its window count to Long Table. r63h's to-do sent to the farm, behind r63d.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
