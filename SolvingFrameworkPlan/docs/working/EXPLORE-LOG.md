@@ -40,6 +40,12 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
 - **19:52Z, r64c (7676655/6756657, d7 face row, fbA83 -0.0073) has no kill at ring <= 15** (1066 windows, 28 min).
   To-do `loop/k47/win52_7_7676655_6756657_todo.txt` (b222a185): 620 windows (276 at ring 16, 213 at ring 17, 131 at
   ring 18), to the farm, staged in todo63/. Next r64d 7676656/7556666 (non-face). Logged 19:53Z.
+- **20:02Z, r64d (7676656/7556666, d7 non-face row, fbA83 -0.0073) dies at ring 15.** Closed after 10 min (451 ring
+  <= 13 windows done, 836 of 1148 at ring <= 15): 1 kill, f7_.656676_.66.55. (ring 15, m 11, D on kc + dfast). Files
+  `loop/k47/r64d_kills*` (7d0201d7). Head adm64d on main d07458e4 (A108): regression byte-identical, +1 D, +0 C, 0
+  lost, guards unchanged, `loop/k64/adm64d/` (k3x_D 469ea0c9, k3x_C c5e8ed9e). Row55 at adm64d: the same kill also
+  lies in **r64k 7676656/7557666** (fbA78 -0.0042), so r64k is closed by containment (R56_r64k.DONE) and not run; r64e-w
+  otherwise hold nothing. Next r64e 7756566/6557666 (non-face). Logged 20:03Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
