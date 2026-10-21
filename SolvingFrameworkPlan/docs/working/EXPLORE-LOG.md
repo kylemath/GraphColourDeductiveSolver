@@ -130,6 +130,13 @@ list too); its window cache carries over.
 - **16:06Z, admissions.** adm62h is on main at 949eb544 (A94) and adm62i at cff84a19 (A95 = 3,051 D / 1,310 C), both
   md5 match. Long Table: keep r62m's to-do held (small weight; its neighbour r60b survived ring 18). New rule: before
   each row, re-check the alive list against the current main (row55, as for r62o); explore reruns it after every close.
+- **16:13Z, the A83 fb-off list at A95** (row55 of all 33 rows against main cff84a19, `loop/k62/row62_A95_all.txt`):
+  19 rows dead, |w| 0.1646 of 0.3865 (42.6%; 0.0961 at A86). 14 alive (0.2219): 6 of them at Studio for ring 16-18
+  (7676655/6667656, 7665566/7765766, 7766655/6567659, 7556676/7567566, 7655566/6759677 queued; 7766656/6566556 and
+  9656775/5556655 already ran there with no kill), 7665566/6675676 and 7766556/6566576 ran there earlier (job57face, no
+  kill), r62m held, and r62p, q, r, s still to run here. Long Table 16:12Z: target an upper below 0.1; Opus starts a
+  stacked solve on A95; finish this list (d >= 8 first: only r62p is left, and it is running), then switch to the
+  stacked solve's binders as soon as they arrive.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
