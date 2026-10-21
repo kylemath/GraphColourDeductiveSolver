@@ -98,6 +98,13 @@ list too); its window cache carries over.
   9 min: 0 kills. To-do `loop/k47/win52_7_7655566_6759677_todo.txt` (69241d00): 235 windows (113 at ring 16, 79 at 17,
   43 at 18), held with r62i's. So far 5 of the 7 d7 rows in this queue have no kill at ring <= 15 (r62a-c, i, j); the d >= 9
   rows r62d, e, h all died. Next r62k 65565656556/65666666665 (d11). Logged 15:16Z.
+- **15:38Z, r62k (65565656556/65666666665, d11 face row, -0.0052) dies at ring 15.** early62.py closed it on its own
+  (first automatic close): 2 kills once all 921 ring <= 13 windows were done (1647 of 3379 ring <= 15 done). Minimal kill
+  f11_..556565655_.........5. (ring 15, m 11, C with X = {I0-I4} on both engines: kc -C and cfast fixed X); its
+  superset f11_..556565655_........65. is D on both engines. Files `loop/k47/r62k_kills*` (774ee3bb). Admission head
+  adm62g on main dfaae8ee (A92), regression byte-identical: +1 D, +1 C, 0 lost, guards unchanged (ring-merge hold 3,
+  letter-9 0), `loop/k62/adm62g/` (k3x_D 8a238386, k3x_C 26c6c0fe). Next r62l 7556656656/6565555555 (d10 face, 5038
+  windows at ring <= 15). Logged 15:39Z.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
