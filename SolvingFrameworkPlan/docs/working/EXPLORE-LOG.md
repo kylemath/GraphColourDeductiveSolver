@@ -73,6 +73,13 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   place. Next r63i 7555767/7756656 (face). Logged 17:22Z.
 - **17:22Z, Long Table's standing rule:** every row with no kill at ring <= 15 goes to the farm in |w| order, with only
   a note of the row and its window count to Long Table. r63h's to-do sent to the farm, behind r63d.
+- **17:32Z, ring-19 to-dos for the farm** (Long Table 17:30Z; the farm cleared r63h's 40 ring 16-18 windows, no kill):
+  `loop/k47/win63_7_<LK>_<SV>_r19_todo.txt` from win45.py at RMAX 19, copied to todo63/: 7766656/6566556 46 windows
+  (2f4bd58e), 7665566/6675676 30 (25ad9d8a), 7766556/6566576 25 (1c0c38db), 9656775/5556655 1 (ba125eb1); r63h
+  9658656/5695555 has none (its 1.5-ball tops out at ring 18, so it is exhausted). Timing from Studio's job_k47 kc on
+  7766656/6566556: median 14 s / 69 s / 261 s at ring 16 / 17 / 18 (p90 at the 600 s cap at 18), about x4 per ring, so
+  ring 19 should run about 17 min median with a long tail (k19 took 25 min); the farm times 2-3 windows first. A ring-19
+  kc kill needs Studio's dfast18 or cfast (this container has 15 GB).
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
