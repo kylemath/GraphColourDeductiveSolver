@@ -56,6 +56,16 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
 - **20:57Z, r64f (7677656/7566555, d7 non-face row, fbA83 -0.0042) has no kill at ring <= 15** (1010 windows, 23 min).
   To-do `loop/k47/win52_7_7677656_7566555_todo.txt` (1701af79): 962 windows (372 at ring 16, 308 at ring 17, 282 at ring
   18), to the farm, staged in todo63/. Next r64g 9567565/5676765 (non-face). Logged 20:58Z.
+- **20:58Z, r64g (9567565/5676765, d7 non-face row, fbA83 -0.0042) has a two-engine kill at ring 13 that the letter-9
+  rule keeps out.** Closed after 1 min (479 ring <= 13 windows done, 494 of 908 at ring <= 15): 1 kill, window
+  a7_uN56.565_56...65 (ring 13, m 10, D on kc + dfast), f-name f7_.565956_..6556.. The window does not contain w0 (the
+  row's letter-9 link vertex); its name has N there because s6 and s0 are both inside, and minkill47 writes an N as the
+  row's own letter, so the 9 in the f-name is the ring vertex w0 of degree >= 9, not an interior vertex. Check: win45.py
+  on 8567565/5676765 gives the same window name with a byte-identical kc line (on 6567565 and 7567565 there is no such
+  window), so this configuration lies in every row with w0 >= 8. Head adm64g on main eb986740 (A109): regression
+  byte-identical, but twoeng's letter-9 rule excludes the name (1 excluded), so +0 D, +0 C. Asked Long Table to rule on
+  a 9 at an N position. Until then r64g is not dead for the LP; its other 414 ring <= 15 windows are not run. Next r64h
+  7667656/6565775 (non-face). Logged 21:02Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
