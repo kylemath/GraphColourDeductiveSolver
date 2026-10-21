@@ -110,6 +110,22 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
 - **18:59Z, r63n (7656756/7556677, d7 non-face row, fb-off -0.0017) has no kill at ring <= 15** (945 windows, 23
   min). To-do `loop/k47/win52_7_7656756_7556677_todo.txt` (67291d93): 635 windows (249 at ring 16, 215 at ring 17, 171
   at ring 18), to the farm, staged in todo63/. Next r63o 7557565/7576886 (face). Logged 19:00Z.
+- **19:01Z, r63o (7557565/7576886, d7 face row, fb-off -0.0014) dies at ring 14.** Closed after 2 min (515 ring <= 13
+  windows done, 541 of 879 at ring <= 15): 3 kills, 3 f-names, 2 minimal, f7_.557565_.5...8. and f7_.557565_.5..8..
+  (ring 14, m 9, C). Files `loop/k47/r63o_kills*`. Head adm63o on main 0945f0f8 (A105 + Lean's foldSafeX pass on the
+  111): regression byte-identical, +0 D, +3 C, 0 lost, guards unchanged, `loop/k63/adm63o/` (k3x_C 1f17e838). **All 3
+  new C entries have a pinned X**: two components, {I0, I3} on rim vertex R0 and {I5, I8 or I9} on R7 or R2, each on one
+  rim vertex, so not a ring-merge hold, but each needs the per-entry foldSafeX check before admission.
+- **19:02Z, r63p (7566576/7676755, d7 non-face row, fb-off -0.0014) dies at ring 13.** Closed after 1 min (518 ring
+  <= 13 windows done, 741 of 1177 at ring <= 15): 12 kills, 8 f-names, 2 minimal, f7_..57675_...55.. (X {I0-I5}) and
+  f7_.566576_.....5. (X {I0-I1}), both ring 13, m 8, C. Head adm63p on main 0945f0f8, independent of adm63o:
+  regression byte-identical, +1 D, +7 C, 0 lost, guards unchanged, `loop/k63/adm63p/` (k3x_D c6a69241, k3x_C
+  7214a21e); all 7 new C entries have an interior-only X. The queue is empty; early63 stopped.
+- **Verdict (19:06Z).** 16 rows swept: 10 die at ring <= 15 (r63a, b, c, e, f, g, k, l, o, p), 6 do not (r63d, h, i,
+  j, m, n; all handed to the farm). **Kill line not met:** all 5 d >= 8 rows died, so the hypothesis stands (rounds 62-63:
+  11 of 11 d >= 8 rows died). Guesses: 3 keeppen d >= 8 rows die, hit; r63d no kill, hit; both fb-off d8 rows die, hit;
+  at least half of the swept d7 non-face |w| dies, hit (0.0497 of 0.0724, 69 percent: r63g, k, l, p died, r63h, j, n did
+  not). d7 face rows: 1 of 4 died (r63o, the smallest |w|). Logged 19:05Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
