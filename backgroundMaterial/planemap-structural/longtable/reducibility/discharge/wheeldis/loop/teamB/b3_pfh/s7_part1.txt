@@ -1,0 +1,99 @@
+sepb2: 20242 patterns loaded, 21490084 forbidden codes
+oracle patterns loaded 8553
+static 6-rows 994
+resumed from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/teamB/b3_pfh/ckpt_s7.pkl at it 1340 (98389 rows)
+dropped 11415 rows of oracle-killed arrangements
+sepb2: d=7 tables built (1090607 marks)
+sepb2: d=8 tables built (594948 marks)
+sepb2: d=9 tables built (486528 marks)
+sepb2: d=10 tables built (536405 marks)
+sepb2: d=11 tables built (603358 marks)
+sepb2: d=12 tables built (32942 marks)
+sepb2: d=13 tables built (46410 marks)
+sepb2: d=14 tables built (25770 marks)
+sepb2: d=15 tables built (40168 marks)
+it 1341 t=0.082759 rows=87135 vars=9184 new=161 opat=8553 rowsdropped=0 worst={7: np.float64(17.3961), 8: np.float64(15.9172), 9: np.float64(21.6175), 10: np.float64(25.9172), 11: np.float64(25.6175), 12: np.float64(29.9172), 13: np.float64(29.6175), 14: np.float64(33.9172), 15: np.float64(33.6175)} trunc=[] full=False (1172s)
+it 1342 t=0.082759 rows=87307 vars=9188 new=172 opat=8553 rowsdropped=0 worst={7: np.float64(11.7322), 8: np.float64(14.2963), 9: np.float64(16.9924), 10: np.float64(17.0562), 11: np.float64(18.6549), 12: np.float64(20.6842), 13: np.float64(20.7479), 14: np.float64(22.3467), 15: np.float64(24.3759)} trunc=[] full=False (2641s)
+it 1343 t=0.082759 rows=87467 vars=9188 new=160 opat=8553 rowsdropped=0 worst={7: np.float64(8.9247), 8: np.float64(14.2926), 9: np.float64(16.901), 10: np.float64(16.0001), 11: np.float64(18.2438), 12: np.float64(20.5622), 13: np.float64(19.6613), 14: np.float64(21.9051), 15: np.float64(24.2235)} trunc=[] full=False (3928s)
+it 1344 t=0.082759 rows=87654 vars=9191 new=201 opat=8567 rowsdropped=0 worst={7: np.float64(8.8513), 8: np.float64(11.2976), 9: np.float64(10.3391), 10: np.float64(12.3175), 11: np.float64(11.9003), 12: np.float64(13.9003), 13: np.float64(13.0001), 14: np.float64(14.9786), 15: np.float64(14.5614)} trunc=[] full=False (4875s)
+sepb2: d=7 tables built (1090667 marks)
+it 1345 t=0.082759 rows=87881 vars=9191 new=227 opat=8567 rowsdropped=0 worst={7: np.float64(6.5437), 8: np.float64(11.2294), 9: np.float64(6.7206), 10: np.float64(7.9419), 11: np.float64(7.1256), 12: np.float64(8.3468), 13: np.float64(7.5305), 14: np.float64(8.7518), 15: np.float64(7.9354)} trunc=[] full=False (5957s)
+it 1346 t=0.082759 rows=88031 vars=9191 new=150 opat=8567 rowsdropped=0 worst={7: np.float64(6.2718), 8: np.float64(9.731), 9: np.float64(3.2656), 10: np.float64(3.6289), 11: np.float64(2.8079), 12: np.float64(3.1712), 13: np.float64(2.3502), 14: np.float64(2.7135), 15: np.float64(1.8925)} trunc=[] full=False (6349s)
+it 1347 t=0.082759 rows=88139 vars=9204 new=108 opat=8567 rowsdropped=0 worst={7: np.float64(4.1579), 8: np.float64(8.9828), 9: np.float64(1.6976), 10: np.float64(1.4948), 11: np.float64(0.7229), 12: np.float64(0.6338), 13: 0, 14: 0, 15: 0} trunc=[] full=False (6655s)
+  slow query d=8 33s
+  slow query d=9 24s
+it 1348 t=0.082759 rows=88232 vars=9206 new=131 opat=8605 rowsdropped=0 worst={7: np.float64(3.3699), 8: np.float64(6.2538), 9: np.float64(0.8953), 10: np.float64(0.6276), 11: np.float64(0.4414), 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (6945s)
+sepb2: d=8 tables built (594948 marks)
+  slow query d=8 62s
+  slow query d=9 322s
+sepb2: d=10 tables built (536405 marks)
+it 1349 t=0.090909 rows=88317 vars=9206 new=126 opat=8646 rowsdropped=0 worst={7: np.float64(1.8089), 8: np.float64(5.7483), 9: np.float64(0.5327), 10: np.float64(0.4912), 11: np.float64(0.1825), 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (7495s)
+sepb2: d=7 tables built (1090667 marks)
+  slow query d=8 28s
+sepb2: d=9 tables built (486528 marks)
+  slow query d=9 443s
+  slow query d=10 62s
+it 1350 t=0.090909 rows=88373 vars=9206 new=88 opat=8678 rowsdropped=0 worst={7: np.float64(0.9478), 8: np.float64(3.3935), 9: np.float64(0.4254), 10: np.float64(0.219), 11: np.float64(0.077), 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (8222s)
+sepb2: d=8 tables built (594948 marks)
+  slow query d=8 28s
+  slow query d=9 767s
+  slow query d=10 67s
+it 1351 t=0.090909 rows=88455 vars=9206 new=136 opat=8732 rowsdropped=0 worst={7: np.float64(1.1548), 8: np.float64(2.808), 9: np.float64(0.3645), 10: np.float64(0.0981), 11: np.float64(0.0328), 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (9256s)
+sepb2: d=7 tables built (1090667 marks)
+  slow query d=8 35s
+  slow query d=9 960s
+sepb2: d=10 tables built (536405 marks)
+  slow query d=10 60s
+it 1352 t=0.090909 rows=88534 vars=9210 new=93 opat=8746 rowsdropped=0 worst={7: np.float64(0.8558), 8: np.float64(2.0586), 9: np.float64(0.3347), 10: np.float64(0.0397), 11: np.float64(0.0152), 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (10430s)
+sepb2: d=7 tables built (1090667 marks)
+  slow query d=7 29s
+  slow query d=8 81s
+  slow query d=9 894s
+  slow query d=10 52s
+it 1353 t=0.090909 rows=88611 vars=9217 new=109 opat=8778 rowsdropped=0 worst={7: np.float64(0.6119), 8: np.float64(1.2079), 9: np.float64(0.317), 10: np.float64(0.0198), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (11704s)
+sepb2: d=7 tables built (1090667 marks)
+  slow query d=7 41s
+  slow query d=8 110s
+sepb2: d=9 tables built (486528 marks)
+  slow query d=9 660s
+  slow query d=10 48s
+it 1354 t=0.090909 rows=88655 vars=9227 new=87 opat=8821 rowsdropped=0 worst={7: np.float64(0.492), 8: np.float64(0.9633), 9: np.float64(0.3372), 10: np.float64(0.0278), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (12803s)
+sepb2: d=7 tables built (1090667 marks)
+  slow query d=7 25s
+sepb2: d=8 tables built (595028 marks)
+  slow query d=8 174s
+  slow query d=9 457s
+  slow query d=10 40s
+it 1355 t=0.090909 rows=88713 vars=9227 new=100 opat=8863 rowsdropped=0 worst={7: np.float64(0.6862), 8: np.float64(0.8246), 9: np.float64(0.3863), 10: np.float64(0.0223), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (13690s)
+  slow query d=7 39s
+sepb2: d=8 tables built (595538 marks)
+  slow query d=8 332s
+sepb2: d=9 tables built (486530 marks)
+  slow query d=9 827s
+  slow query d=10 41s
+it 1356 t=0.090909 rows=88800 vars=9227 new=119 opat=8895 rowsdropped=0 worst={7: np.float64(0.6025), 8: np.float64(0.7064), 9: np.float64(0.2896), 10: np.float64(0.0905), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (15169s)
+  slow query d=7 46s
+sepb2: d=8 tables built (595548 marks)
+  slow query d=8 343s
+  slow query d=9 664s
+  slow query d=10 46s
+it 1357 t=0.090909 rows=88871 vars=9232 new=115 opat=8939 rowsdropped=0 worst={7: np.float64(0.5143), 8: np.float64(0.6505), 9: np.float64(0.3465), 10: np.float64(0.0453), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (16556s)
+sepb2: d=7 tables built (1090697 marks)
+  slow query d=7 52s
+sepb2: d=8 tables built (595548 marks)
+  slow query d=8 650s
+  slow query d=9 1142s
+  slow query d=10 38s
+it 1358 t=0.090909 rows=88947 vars=9237 new=128 opat=8991 rowsdropped=0 worst={7: np.float64(0.465), 8: np.float64(0.5822), 9: np.float64(0.2757), 10: np.float64(0.0226), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (18644s)
+  slow query d=7 68s
+sepb2: d=8 tables built (595720 marks)
+  slow query d=8 284s
+  slow query d=9 1497s
+  slow query d=10 39s
+it 1359 t=0.090909 rows=89017 vars=9241 new=88 opat=9009 rowsdropped=0 worst={7: np.float64(0.3907), 8: np.float64(0.6022), 9: np.float64(0.2577), 10: np.float64(0.0113), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (20740s)
+  slow query d=7 75s
+  slow query d=8 436s
+sepb2: d=9 tables built (486530 marks)
+  slow query d=9 1469s
+  slow query d=10 45s
+it 1360 t=0.090909 rows=89097 vars=9241 new=112 opat=9041 rowsdropped=0 worst={7: np.float64(0.3588), 8: np.float64(0.6045), 9: np.float64(0.2613), 10: np.float64(0.0231), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (23038s)

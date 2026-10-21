@@ -155,3 +155,7 @@ v0 (no patterns) lost to a container restart at a lower bound of 10/27. v2 (comp
 - s7 = s5's rows minus 2026-killed rows, new registry, 2026 oracle, smoothed. Lower bound dipped to 0.0828 then 0.0909 at it 1352; violations falling (about 2 -> 1). One engine, unconverged.
 - s6 (same without the new registry) stopped as dominated at it 1358 (lower bound 0.0920).
 - Known: rows from before the registry change are not re-filtered against the new patterns, so s7 can only overstate t*.
+
+## B6d (21 Oct 04:30Z): hold out the 128 ring-merge C entries
+- load_reg_main.py: as load_reg.py, but job27 part00/part01 replaced by the shared out/job30/held128 copies (the 128 ring-merge C entries removed, as in the programme's A78 bound). Run on main cc360fa2 (2,704 D / 1,214 C): reg_patterns_cc360.txt, 20,202 patterns.
+- s7 stopped at it 1360 (lower bound 0.0909, violations <= 0.6); s8 resumes its rows on reg_patterns_cc360.txt. Removing kills only adds rows, so the resumed rows stay valid.
