@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21 Oct 05:30Z: Opus A83 keeppen (l3q + rpatN3 + fb6) converged at t = 0.105884 [one engine, not a bound]. fb6 is unused again (all fb ≤ 3e-13), so the drop comes from A83 registry kills. The top rows have moved off the 7766556 face row to d7 7665566/6675676, 9656775/5556655, 7766655/6567659, d9 755676556/756556665 and others. Explore is redirected to these rows ahead of the census. Waiting on nosep L, lowerR2 and upperR2, then Studio.
 - 21 Oct 05:27Z: s42a C cover (143 entries, Opus s46c f2acc3e7) is fully in Lean. The 6 new interior-only entries are proved (CCover2, Studio 7e1db5e1, merge 9887c7d9), and CC2All is clean with no sorry. So the [E2] upper 0.10944 assumes nothing on the C side beyond CGlue's occurrence hypotheses. Gate text updated.
 - 21 Oct 05:25Z: ADMITTED adm59a (explore f6f5dd7c, base 18eecb9e): r59a = 8657656/6667656 (10.1% of |w| on the A78 fb6 nosep cert, its top non-face row) dies at ring 13, minimal f7_..56756_....66. (C, X={I3-I4}). +3 D +4 C, lost 0, md5 match. Kill files from d411d8fc. A84.
 - 21 Oct 03:44Z: r57e face row 7766656/6577556, rings 17-18: 0 kills (Studio ea5b6a2a; 442 neither, 52 ring-18 timeouts in out/job57e/timeouts18.txt). The window side on the face rows is close to exhausted, so the rule side (fb6 on A83) is the main hope. The 52 timeouts get long kc + dfast18 as filler only, with a kill line of no kill in the first 15.
