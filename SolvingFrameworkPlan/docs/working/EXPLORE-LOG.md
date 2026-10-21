@@ -70,6 +70,9 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
   rows (8/421). Guesses: part 1 right; all 3 top non-face rows at ring <= 14 right (55 percent); no face row dying
   wrong (3 of 6 died). Ring-15 check of r58b, r58c, r58g (24 + 188 + 222 windows net of Studio,
   `loop/k47/win58_7_*_r15.txt`, STOP=1 per row) started 02:37Z, as Long Table asked (00:51Z).
+- **03:09Z, face rows' ring-15 check: no kill.** r58b 24, r58c 188, r58g 222 windows (02:37-03:07Z), all run, 0 kc D,
+  0 kc C accepted by cfast, 0 kc timeouts. Their ring 16-18 windows wait on Opus's fb6 rule (Long Table 02:38Z: fb6
+  reaches all three).
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
