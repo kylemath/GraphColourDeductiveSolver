@@ -38,6 +38,10 @@ cert: `loop/opus/P_own_lp/s44/run_A78/cert_q44fbA78L.json` (Opus 54c2c642; l3q +
   better weight. The queue runs on as cheap filler; the A83 fb6 L cert's rows go to its head when it lands. Part 3: Opus
   confirms reading (a) and the defaults; low priority (Long Table parked longer chain keys unless fb6 leaves the face rows
   binding at A83), so it runs when the queue is idle.
+- **05:18Z, r59a (8657656/6667656, 10.07% of |w|) dies at ring 13.** Its 748 ring <= 14 windows (05:10-05:16Z) gave 7 kills,
+  7 f-names (3 D, 4 C), 1 minimal: f7_..56756_....66. (ring 13, C, X={I3-I4}). Files `loop/k47/r59a_kills*` (d411d8fc).
+  Admission head adm59a on main 18eecb9e, regression byte-identical: +3 D, +4 C (7 names), `loop/k59/adm59a/`
+  (k3x_D efdd2d6c, k3x_C 808b8aff).
 
 ## Round 58 (21 Oct 2026, 00:40Z-): H-A78, do the new binders of Opus's A78 solve die at ring <= 14?
 
