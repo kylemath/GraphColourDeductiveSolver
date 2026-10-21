@@ -310,8 +310,15 @@ if REG:
     for line in open(os.path.join(HERE, 'rbig7.txt')):
         RB7S.add(canon(tuple(map(int, line.strip()))))
     RBIG |= RB7S          # w7plus 7-wheels also forbidden as link-vertex wheels
-    SEPB = subprocess.Popen([os.path.join(HERE, OPTS.get('sepb', 'sepb')), os.path.join(HERE, OPTS.get('pats', 'reg_patterns.txt')),
-                             os.path.join(HERE, 'rbig7.txt')], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+    SEPBS = [subprocess.Popen([os.path.join(HERE, OPTS.get('sepb', 'sepb')), os.path.join(HERE, OPTS.get('pats', 'reg_patterns.txt')),
+                               os.path.join(HERE, 'rbig7.txt')], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+             for _ in range(int(OPTS.get('nsep', 1)))]     # nsep: separation for different d runs in parallel processes
+    SEPB = SEPBS[0]
+
+
+def sepb_all(line):
+    for P_ in SEPBS:
+        P_.stdin.write(line)
 ORACLE = OPTS.get('oracle')     # B6: kill separated arrangements that contain a verified RSST configuration (file of patterns)
 ORC = {}
 if ORACLE:
@@ -325,8 +332,9 @@ if ORACLE:
             if f and not line.startswith('#'):
                 d0, n0 = int(f[0]), int(f[1])
                 OPAT.append((d0, [(int(f[2 + 2 * k]), int(f[3 + 2 * k])) for k in range(n0)]))
-                SEPB.stdin.write('P %s\n' % line.split('#')[0].strip())
-        SEPB.stdin.flush()
+                sepb_all('P %s\n' % line.split('#')[0].strip())
+        for P_ in SEPBS:
+            P_.stdin.flush()
     print('oracle patterns loaded', len(OPAT), flush=True)
 
 
@@ -399,6 +407,11 @@ def wbest(c, x):
 
 
 def sepb_query(d, x, thr, many, limit=0):
+    sepb_send(d, x, thr, many, limit, SEPB)
+    return sepb_recv(d, x, SEPB)
+
+
+def sepb_send(d, x, thr, many, limit, SEPB):
     U = min(d, 9)
     T = wcands(U)
     vals = []
@@ -413,6 +426,11 @@ def sepb_query(d, x, thr, many, limit=0):
         SEPB.stdin.write('H\n%s\n' % ' '.join(hv))
     SEPB.stdin.write('Q %d %.12f %d %d\n' % (d, thr, many, limit))
     SEPB.stdin.flush()
+
+
+def sepb_recv(d, x, SEPB):
+    U = min(d, 9)
+    T = wcands(U)
     out = []
     while True:
         f = SEPB.stdout.readline().split()
@@ -642,9 +660,20 @@ def main():
                     new += 1
                 worst['6'] = max(worst.get('6', -9), vv - t)
         if REG:
-            for d in range(7, DEX + 1):
+            DS = list(range(7, DEX + 1))
+            PEND = {}
+            nsent = 0
+            for P_ in SEPBS[:len(DS)]:
+                dd = DS[nsent]; nsent += 1
+                sepb_send(dd, x, dd - 6 + t + 1e-9, MANY, 0 if full else LIMIT, P_)
+                PEND[dd] = P_
+            for d in DS:
                 tq = time.time()
-                res_ = sepb_query(d, x, d - 6 + t + 1e-9, MANY, 0 if full else LIMIT)
+                res_ = sepb_recv(d, x, PEND[d])
+                if nsent < len(DS):     # hand the next degree to the process that just finished
+                    dd = DS[nsent]; nsent += 1
+                    sepb_send(dd, x, dd - 6 + t + 1e-9, MANY, 0 if full else LIMIT, PEND[d])
+                    PEND[dd] = PEND[d]
                 if sepb_query.trunc:
                     trunc.append(d)
                 if time.time() - tq > 20:
@@ -663,8 +692,9 @@ def main():
                                 OPAT.append((d, pt))
                                 with open(ORACLE, 'a') as fo:
                                     fo.write('%s # %s %s/%s\n' % (line, name, ws, ss))
-                                SEPB.stdin.write('P %s\n' % line)
-                                SEPB.stdin.flush()
+                                for P_ in SEPBS:
+                                    P_.stdin.write('P %s\n' % line)
+                                    P_.stdin.flush()
                                 # drop rows of arrangements this pattern kills (they would over-constrain the LP)
                                 keep = []
                                 for row in rows:
