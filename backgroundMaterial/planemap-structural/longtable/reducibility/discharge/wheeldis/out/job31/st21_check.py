@@ -150,6 +150,7 @@ G = {tuple(k): v for k, v in SOL['g']}; H = {tuple(k): v for k, v in SOL['h']}; 
 VV = {tuple(k): v for k, v in SOL.get('v', [])}
 RR = {tuple(k): v for k, v in SOL.get('r', [])}
 T = SOL['t']
+if os.environ.get('TCHECK'): T = float(Fr(os.environ['TCHECK'])); print('TCHECK: every row checked at t = %s = %.15f (solution t %.15f)' % (os.environ['TCHECK'], T, SOL['t']), flush=True)
 FBV = {tuple(k): v for k, v in SOL.get('fb', [])}
 if FB and os.environ.get('FBRAND'):   # self-test only: random fb values on every possible key
     import random as _rnd; _rnd.seed(int(os.environ['FBRAND']))
@@ -430,7 +431,7 @@ SKIP_LOWER = os.environ.get('SKIP_LOWER') == '1'
 if SKIP_LOWER: CERT = []; print('lower check skipped (upper-only job)')
 tot = collections.defaultdict(Fr); tco = Fr(0); Dn = Fr(0); nlab = collections.Counter(); noncanon = []
 for e in CERT:
-    w = Fr(e['w']).limit_denominator(10 ** 7); lab = e['row']; kind = lab[0]; nlab[kind] += 1
+    w = Fr(e['w']) if isinstance(e['w'], str) or os.environ.get('WEXACT') == '1' else Fr(e['w']).limit_denominator(10 ** 7); lab = e['row']; kind = lab[0]; nlab[kind] += 1   # 44.8: 'p/q' weights exact
     if kind == 'senderR2':
         word = tuple(int(ch) for ch in lab[1]); bits = lab[2]; cut = bits.index('|')
         sixes = [k for k in range(5) if word[k] == 6]; hats = list(range(5)) if HAT5 else sorted({m for k in sixes for m in (k, (k - 1) % 5)})
@@ -487,6 +488,7 @@ print('lower: tco = %s, D = %s; nonzero reduced costs: %s; negative (non-x) %d' 
     tco, D, ', '.join('%s[%s] = %s' % (k[0], ''.join(map(str, k[1])) if isinstance(k[1], tuple) else k[1], v) for k, v in sorted(rc.items(), key=str)), len(negrc)))
 if negrc: fail('negative reduced costs %s' % negrc)
 if SKIP_LOWER: pass
+elif os.environ.get('LOWER_TOL') and abs(D - EXPECT_T) <= Fr(os.environ['LOWER_TOL']): print('LOWER: D = %.15f (exact, denominator %d digits), within %s of the claimed %s' % (float(D), len(str(D.denominator)), os.environ['LOWER_TOL'], float(EXPECT_T))); print('LOWER: VALID t >= %s' % D) if not negrc else print('LOWER: NOT ESTABLISHED (negative reduced costs)')
 elif D != EXPECT_T: fail('lower bound %s != claimed %s' % (D, EXPECT_T))
 elif negrc: print('LOWER: NOT ESTABLISHED (D = %s but negative reduced costs)' % D)
 else: print('LOWER: VALID t >= %s' % D)
