@@ -70,6 +70,23 @@ s42a A78 cert/sol and the A83 nosep cert/sol). I did not open s51/pricer51.py, s
   - **Please confirm** that Opus's xo `recv_coef_R2` also adds +XQ per position there, and does not drop rows whose old x cancels.
     Otherwise Studio's and Opus's xo rows differ on those arrangements.
 
+### A2 closed (coordinator 09:27Z, Opus's rule statement; port_s51.py not opened)
+- **Opus's rule:** +XQ[q] at every big link position where xo_term(q) holds (both visible masks ≠ 0, and some candidate has
+  in ≠ out), per position, regardless of old-x cancellation.
+- **Studio's build (xo_q) matches in all three places** (logs s51/a2_check_{A78,A83}.log, a2_zero_*.log):
+  1. **all in = out → no term:** a scan of 200,000 random big windows at U = 7 (A78 and A83 tables) found 124 with every
+     candidate in = out. All of them get no term, and xo_q agrees with the classification on all 200,000.
+  2. **a zero visible mask → no term:** exhaustive over all 28,125 c = 6 visible combinations on the A78 / A83 kill tables, no mask
+     is 0 (so the case does not arise there). A synthetic unit test with pmask = 0 gives masks 0 on one or both sides → q = None,
+     i.e. no term.
+  3. **the five d = 7 arrangements do get +XQ:**
+     - A78 7766556/6576576: i = 0 and i = 1 (masks 31/31, 25 of 25 candidates in ≠ out);
+     - A78 7665566/6675676: i = 0 (23 of 25 in ≠ out);
+     - A83 7766656/6566556: i = 0 (masks 31/30, 20 of 20) and i = 1;
+     - A83 7766556/6566576: i = 0 and i = 1;
+     - A83 7665566/6675676: i = 0.
+- **No change to the build.** The real cross-check is the solved A87 xo cert.
+
 ### A1 as first raised: the §51.3 pricing table is not reproducible from the spec text
 §51.3 reports, for "x_outMW (this spec)" on the old certs (which have no mrowX rows): A78 Σ max(0, −rc) = 96/421 (4 keys at −24/421),
 and A83 2618/29923 (10 negative, most negative −426/29923). The spec does not state how xo columns are priced on a cert that has XQ

@@ -195,9 +195,41 @@ def xo_q(U, a, b, c, e, f, p, q, r, s_):   # the credit key of a big-centre wind
     return _XQK[k]
 def XQeff(qk): return max(XOV.get(i_, 0.0) - XOV.get(o_, 0.0) for _, _, i_, o_ in xo_cands(qk))
 if os.environ.get('XODBG'):   # debug: XODBG='U a b c e f p q r s'
-    _w = tuple(int(x) for x in os.environ['XODBG'].split()); print('XODBG sides', xo_window_sides(*_w), 'q', xo_q(*_w))
-    if xo_q(*_w):
-        for c_ in xo_cands(xo_q(*_w)): print('  cand', c_[:2], 'in', tauo_dec(c_[2]), 'out', tauo_dec(c_[3]))
+    for _ws in os.environ['XODBG'].split(';'):
+        if _ws.startswith('row '):   # 'row d link sword': every big position of that receiver
+            _, d_, lk_, sv_ = _ws.split(); d_ = int(d_); w_ = [int(x) for x in lk_]; s_ = [int(x) for x in sv_]; U_ = min(d_, 9)
+            Wd = lambda k: w_[k % d_]; Sd = lambda k: s_[k % d_]
+            for i_ in range(d_):
+                if w_[i_] >= 7:
+                    wnd = (U_, Wd(i_ - 2), Wd(i_ - 1), w_[i_], Wd(i_ + 1), Wd(i_ + 2), Sd(i_ - 2), Sd(i_ - 1), Sd(i_), Sd(i_ + 1))
+                    Ap, Am = xo_window_sides(*wnd); qk = xo_q(*wnd); cs = xo_cands((U_, w_[i_], min(Ap, Am), max(Ap, Am))) if Ap[4] and Am[4] else []
+                    print('XODBG row %s %s %s i=%d: masks (%d, %d), candidates %d, with in != out %d -> %s' % (d_, lk_, sv_, i_, Ap[4], Am[4], len(cs),
+                          sum(i2 != o2 for _, _, i2, o2 in cs), ('+XQ%s' % (qk,)) if qk else 'no term'))
+            continue
+        _w = tuple(int(x) for x in _ws.split()); print('XODBG sides', xo_window_sides(*_w), 'q', xo_q(*_w))
+    if os.environ.get('XOSCAN'):   # every big-centre window at the given U: reasons for 'no term' (R6)
+        import random as _rs; _rs.seed(1); cnt = collections.Counter(); ex = {}
+        U_ = int(os.environ['XOSCAN'])
+        for _ in range(int(os.environ.get('XOSCANN', '200000'))):
+            wnd = (U_, _rs.choice(LET), _rs.choice(LET), _rs.choice((7, 8, 9))) + tuple(_rs.choice(LET) for _ in range(6))
+            Ap, Am = xo_window_sides(*wnd)
+            if not (Ap[4] and Am[4]): why = 'mask 0'
+            else:
+                cs = xo_cands((U_, wnd[3], min(Ap, Am), max(Ap, Am)))
+                why = 'all in = out' if all(i2 == o2 for _, _, i2, o2 in cs) else 'term'
+            assert (why == 'term') == bool(xo_q(*wnd)), wnd
+            cnt[why] += 1; ex.setdefault(why, wnd)
+        print('XOSCAN U=%d: %s; examples %s' % (U_, dict(cnt), ex))
+    if os.environ.get('XOZERO'):   # exhaustive: c = 6 visible sides with an empty domain mask, and the window gets no term
+        nz = 0; tot_ = 0; ex0 = None
+        for U_, c_ in itertools.product((7, 8, 9), (7, 8, 9)):
+            for b_, f_, q_, r_, s_ in itertools.product(LET, repeat=5):
+                tot_ += 1; wnd = (U_, 5, b_, c_, 6, f_, 5, q_, r_, s_)
+                Ap, Am = xo_window_sides(*wnd)
+                if Ap[4] == 0:
+                    nz += 1; ex0 = ex0 or wnd
+                    assert xo_q(*wnd) is None, wnd
+        print('XOZERO: %d + side (c = 6) visible combinations, %d with mask 0 (each gives no term); example %s' % (tot_, nz, ex0))
     sys.exit(0)
 def xo_windows_of(t_):   # every (U, window) at which key t_ is an in- or an out-key of some candidate (s51.5 (5)), forward-verified
     fl, tl, S1, S2 = tauo_dec(t_); out = set()
