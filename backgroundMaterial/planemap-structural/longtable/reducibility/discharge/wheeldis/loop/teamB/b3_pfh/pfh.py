@@ -358,6 +358,25 @@ def oracle_kill(d, ws, ss):
     if k not in ORC:
         ORC[k] = rpat.kill(d, [int(c) for c in ws], [int(c) for c in ss])
     return ORC[k]
+
+
+OPOOL = []
+
+
+def _okill(k):
+    return k, rpat.kill(k[0], [int(c) for c in k[1]], [int(c) for c in k[2]])
+
+
+def oracle_prefetch(d, res_):
+    """run the oracle on the uncached arrangements of one separation result in parallel (OPOOL workers)"""
+    todo = sorted({(d, ws, ss) for _, _, ws, ss in res_} - set(ORC))
+    if len(todo) < 8:
+        return
+    if not OPOOL:
+        import multiprocessing
+        OPOOL.append(multiprocessing.Pool(int(OPTS.get('ojobs', 3))))
+    for k, v in OPOOL[0].imap_unordered(_okill, todo, chunksize=4):
+        ORC[k] = v
 WCAND = {}
 
 
@@ -631,6 +650,8 @@ def main():
                 if time.time() - tq > 20:
                     print('  slow query d=%d %.0fs' % (d, time.time() - tq), flush=True)
                 worst[d] = (res_[0][0] - (d - 6) - t) if res_ else 0
+                if ORACLE:
+                    oracle_prefetch(d, res_)
                 for v_, tm, ws, ss in res_:
                     key = (d, tuple(sorted(tm)))
                     if ORACLE:

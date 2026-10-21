@@ -1,0 +1,25 @@
+sepb2: 20202 patterns loaded, 21097691 forbidden codes
+oracle patterns loaded 9041
+static 6-rows 994
+resumed from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/teamB/b3_pfh/ckpt_s8.pkl at it 1360 (89097 rows)
+sepb2: d=7 tables built (1090771 marks)
+sepb2: d=8 tables built (595908 marks)
+sepb2: d=9 tables built (486530 marks)
+sepb2: d=10 tables built (536405 marks)
+sepb2: d=11 tables built (603358 marks)
+sepb2: d=12 tables built (32942 marks)
+sepb2: d=13 tables built (46410 marks)
+sepb2: d=14 tables built (25770 marks)
+sepb2: d=15 tables built (40168 marks)
+it 1361 t=0.090909 rows=89218 vars=9241 new=121 opat=9041 rowsdropped=0 worst={7: np.float64(19.9091), 8: np.float64(13.9421), 9: np.float64(23.9091), 10: np.float64(25.9091), 11: np.float64(27.9091), 12: np.float64(29.9091), 13: np.float64(31.9091), 14: np.float64(33.9091), 15: np.float64(35.9091)} trunc=[] full=False (695s)
+it 1362 t=0.090909 rows=89363 vars=9241 new=145 opat=9041 rowsdropped=0 worst={7: np.float64(19.9091), 8: np.float64(11.5714), 9: np.float64(17.0164), 10: np.float64(16.7135), 11: np.float64(18.7135), 12: np.float64(20.7189), 13: np.float64(20.416), 14: np.float64(22.416), 15: np.float64(24.4213)} trunc=[] full=False (2319s)
+it 1363 t=0.090909 rows=89527 vars=9241 new=164 opat=9041 rowsdropped=0 worst={7: np.float64(12.6515), 8: np.float64(5.767), 9: np.float64(11.4551), 10: np.float64(12.6582), 11: np.float64(13.1016), 12: np.float64(15.4032), 13: np.float64(14.6198), 14: np.float64(15.8229), 15: np.float64(16.2663)} trunc=[] full=False (3039s)
+it 1364 t=0.090909 rows=89583 vars=9241 new=56 opat=9041 rowsdropped=0 worst={7: np.float64(11.4308), 8: np.float64(2.8835), 9: np.float64(5.4378), 10: np.float64(6.032), 11: np.float64(5.5607), 12: np.float64(6.3975), 13: np.float64(5.6006), 14: np.float64(6.1948), 15: np.float64(5.7235)} trunc=[] full=False (3306s)
+it 1365 t=0.090909 rows=89733 vars=9241 new=150 opat=9041 rowsdropped=0 worst={7: np.float64(8.8454), 8: np.float64(1.4417), 9: np.float64(2.7887), 10: np.float64(2.9455), 11: np.float64(2.2745), 12: np.float64(2.44), 13: np.float64(1.6323), 14: np.float64(1.7892), 15: np.float64(1.1181)} trunc=[] full=False (4780s)
+  slow query d=8 98s
+it 1366 t=0.090909 rows=89852 vars=9241 new=119 opat=9041 rowsdropped=0 worst={7: np.float64(8.2923), 8: np.float64(0.7209), 9: np.float64(1.6737), 10: np.float64(1.445), 11: np.float64(0.7042), 12: np.float64(0.7548), 13: 0, 14: 0, 15: 0} trunc=[] full=False (5481s)
+  slow query d=8 388s
+  slow query d=9 23s
+it 1367 t=0.090909 rows=89916 vars=9241 new=64 opat=9041 rowsdropped=0 worst={7: np.float64(8.2873), 8: np.float64(0.4681), 9: np.float64(0.8307), 10: np.float64(0.3998), 11: 0, 12: 0, 13: 0, 14: 0, 15: 0} trunc=[] full=False (6054s)
+  slow query d=8 753s
+  slow query d=9 429s

@@ -159,3 +159,4 @@ v0 (no patterns) lost to a container restart at a lower bound of 10/27. v2 (comp
 ## B6d (21 Oct 04:30Z): hold out the 128 ring-merge C entries
 - load_reg_main.py: as load_reg.py, but job27 part00/part01 replaced by the shared out/job30/held128 copies (the 128 ring-merge C entries removed, as in the programme's A78 bound). Run on main cc360fa2 (2,704 D / 1,214 C): reg_patterns_cc360.txt, 20,202 patterns.
 - s7 stopped at it 1360 (lower bound 0.0909, violations <= 0.6); s8 resumes its rows on reg_patterns_cc360.txt. Removing kills only adds rows, so the resumed rows stay valid.
+- 07:20Z: iterations had slowed to 17-30 min (d=8 queries at the 2e7 node limit, and the oracle running 8,833 configurations serially on every new arrangement). s10 = same rows with limit=2e6 for the node-limited passes (the closing pass stays exhaustive) and the oracle run in a 3-worker pool (ojobs). Now about 5 min per iteration.
