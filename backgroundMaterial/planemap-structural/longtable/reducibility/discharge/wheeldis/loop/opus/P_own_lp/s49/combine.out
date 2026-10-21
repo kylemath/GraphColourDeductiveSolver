@@ -1,0 +1,67 @@
+7676655/6667656 w -0.047191 base 1.105883918 cap 1.105883918: A red 0.114258 (of which row-mask only 0.114258) gainA 0.005392; B extra 0.324543 gainB 0.015316
+   w0: dead 9 (mine 9, grid 0, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a6 mask [5, 6, 7, 8, 9] a2 p0,2 Qeff 0.054770 red_min surv 0.0547697980409112; all a2=5 cells dead True
+      l3q side -1 c5 a6 mask [5, 6, 7, 8, 9] a2 p0,1 Qeff 0.004719 red_min surv 0.004718744645302257; all a2=5 cells dead True
+      X worst all 1.105884 ['57', '7667565', '7666555']; surv 0.9883243414306907 cell 66 ['66', '7666665', '7668555']; extra 0.11755957689772212; spare_surv 0.11755957689772056
+   w2: dead 9 (mine 5, grid 0, l3q-table extra 4) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a6 mask [6, 7, 8, 9] a2 p2,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      l3q side -1 c6 a6 mask [5, 6, 7, 8, 9] a2 p2,1 Qeff 0.054770 red_min surv 0.0547697980409112; all a2=5 cells dead True
+      X worst all 1.105884 ['55', '7665566', '6965767']; surv 0.8989006338893969 cell 66 ['66', '7666666', '6565657']; extra 0.20698328443937675; spare_surv 0.20698328443901437
+7665566/7765766 w -0.047191 base 1.096314256 cap 1.105883918: A red 0.000000 (of which row-mask only 0.000000) gainA 0.000000; B extra 0.063739 gainB 0.003008
+   w0: dead 6 (mine 6, grid 0, l3q-table extra 0) five-all-dead False; surv 66 67 68 69 75 76 77 78 79 85 86 87 88 89 95 96 97 98 99
+      l3q side -1 c6 a6 mask [6, 7, 8, 9] a2 p0,1 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['55', '7675566', '6566696']; surv 1.0421445028190266 cell 75 ['75', '7675766', '6555656']; extra 0.06373941550974815; spare_surv 0.06373941550938467
+7766656/6566556 w -0.044045 base 1.096368423 cap 1.105883918: A red 0.000000 (of which row-mask only 0.000000) gainA 0.000000; B extra 0.137879 gainB 0.006073
+   w0: dead 2 (mine 2, grid 0, l3q-table extra 0) five-all-dead False; surv 56 57 58 59 66 67 68 69 75 76 77 78 79 85 86 87 88 89 95 96 97 98 99
+      l3q side -1 c6 a6 mask [5, 6, 7, 8, 9] a2 p0,1 Qeff 0.054770 red_min surv 0.0; all a2=5 cells dead False
+      X worst all 1.105884 ['55', '7765566', '6765765']; surv 0.9680051064166446 cell 56 ['56', '7766566', '6665565']; extra 0.13787881191176687; spare_surv 0.13787881191176665
+   w1: dead 9 (mine 9, grid 0, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a5 mask [6, 7, 8, 9] a2 p1,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['76', '7656767', '6555656']; surv 1.105883918328673 cell 76 ['76', '7656767', '6555656']; extra 0.0; spare_surv -2.617905892066119e-13
+7667565/7666555 w -0.042996 base 1.105883918 cap 1.105883918: A red 0.054770 (of which row-mask only 0.054770) gainA 0.002355; B extra 0.219954 gainB 0.009457
+   w0: dead 6 (mine 6, grid 0, l3q-table extra 0) five-all-dead False; surv 66 67 68 69 75 76 77 78 79 85 86 87 88 89 95 96 97 98 99
+      l3q side -1 c5 a5 mask [6, 7, 8, 9] a2 p0,1 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['66', '7676655', '6669656']; surv 1.1058839183287745 cell 66 ['66', '7676655', '6669656']; extra 0.0; spare_surv -3.632649736573512e-13
+   w3: dead 9 (mine 9, grid 0, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c5 a6 mask [6, 7, 8, 9] a2 p3,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      l3q side -1 c6 a6 mask [5, 6, 7, 8, 9] a2 p3,1 Qeff 0.054770 red_min surv 0.0547697980409112; all a2=5 cells dead True
+      X worst all 1.105884 ['75', '7565766', '6555766']; surv 0.8859300197959646 cell 76 ['76', '7566766', '6555766']; extra 0.21995389853244818; spare_surv 0.21995389853244662
+7766556/6576576 w -0.021045 base 1.066263780 cap 1.105883918: A red 0.000000 (of which row-mask only 0.000000) gainA 0.000000; B extra 0.174824 gainB 0.003679
+   w0: dead 10 (mine 6, grid 0, l3q-table extra 4) five-all-dead True; surv 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side -1 c6 a6 mask [6, 7, 8, 9] a2 p0,1 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['55', '7765566', '6765765']; surv 0.9310597801274159 cell 76 ['76', '7766766', '6555755']; extra 0.17482413820099563; spare_surv 0.1748241382009954
+   w1: dead 9 (mine 9, grid 0, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a5 mask [6, 7, 8, 9] a2 p1,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['76', '7656767', '6555656']; surv 1.105883918328673 cell 76 ['76', '7656767', '6555656']; extra 0.0; spare_surv -2.617905892066119e-13
+7665566/6675676 w 0.000000 base 1.105883918 cap 1.105883918: A red 0.000000 (of which row-mask only 0.000000) gainA 0.000000; B extra 0.180026 gainB 0.000000
+   w0: dead 9 (mine 0, grid 9, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a6 mask [6, 7, 8, 9] a2 p0,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      l3q side -1 c6 a6 mask [6, 7, 8, 9] a2 p0,1 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['55', '7665566', '6965796']; surv 0.9258580715208494 cell 66 ['66', '7666666', '6565656']; extra 0.1800258468081669; spare_surv 0.18002584680756184
+9656775/5556655 w 0.000000 base 1.105883918 cap 1.105883918: A red 0.054770 (of which row-mask only 0.054770) gainA 0.000000; B extra 0.228209 gainB 0.000000
+   w4: dead 9 (mine 0, grid 9, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side -1 c6 a6 mask [5, 6, 7, 8, 9] a2 p4,1 Qeff 0.054770 red_min surv 0.0547697980409112; all a2=5 cells dead True
+      X worst all 1.105884 ['55', '7765566', '5865765']; surv 0.9310597801275095 cell 76 ['76', '7766766', '5555755']; extra 0.17482413820093268; spare_surv 0.1748241382009018
+   w5: dead 10 (mine 0, grid 10, l3q-table extra 0) five-all-dead True; surv 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c5 a5 mask [5, 6, 7, 8, 9] a2 p5,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['66', '7556667', '9569656']; surv 1.0524991495329261 cell 76 ['76', '7556767', '9567656']; extra 0.053384768795848414; spare_surv 0.05338476879548515
+7766655/6567659 w 0.000000 base 1.105883918 cap 1.105883918: A red 0.000000 (of which row-mask only 0.000000) gainA 0.000000; B extra 0.266719 gainB 0.000000
+   w0: dead 5 (mine 0, grid 5, l3q-table extra 0) five-all-dead False; surv 56 57 58 59 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      X worst all 1.105884 ['65', '7765695', '6655555']; surv 0.8391650402645209 cell 56 ['56', '7766595', '6755555']; extra 0.2667188780638906; spare_surv 0.2667188780638904
+   w1: dead 10 (mine 0, grid 10, l3q-table extra 0) five-all-dead True; surv 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a5 mask [6, 7, 8, 9] a2 p1,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['76', '7656767', '6555655']; surv 1.1058839183285427 cell 76 ['76', '7656767', '6555655']; extra 0.0; spare_surv -1.3145040611561853e-13
+7666567/5665565 w 0.000000 base 1.105883918 cap 1.105883918: A red 0.054770 (of which row-mask only 0.054770) gainA 0.000000; B extra 0.109472 gainB 0.000000
+   w0: dead 9 (mine 0, grid 9, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a5 mask [6, 7, 8, 9] a2 p0,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['86', '7656857', '6555956']; surv 1.1058839183284916 cell 86 ['86', '7656857', '6555956']; extra 0.0; spare_surv -8.038014698286133e-14
+   w6: dead 9 (mine 0, grid 9, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side -1 c6 a6 mask [5, 6, 7, 8, 9] a2 p6,1 Qeff 0.054770 red_min surv 0.0547697980409112; all a2=5 cells dead True
+      X worst all 1.105884 ['65', '7755666', '6956965']; surv 0.9964119422195399 cell 77 ['77', '7757766', '6555555']; extra 0.10947197610923465; spare_surv 0.10947197610887138
+7766556/6567566 w 0.000000 base 1.084637370 cap 1.105883918: A red 0.000000 (of which row-mask only 0.000000) gainA 0.000000; B extra 0.174824 gainB 0.000000
+   w0: dead 10 (mine 0, grid 10, l3q-table extra 0) five-all-dead True; surv 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side -1 c6 a6 mask [6, 7, 8, 9] a2 p0,1 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['55', '7765566', '6765765']; surv 0.9310597801274159 cell 76 ['76', '7766766', '6555755']; extra 0.17482413820099563; spare_surv 0.1748241382009954
+   w1: dead 9 (mine 0, grid 9, l3q-table extra 0) five-all-dead True; surv 66 67 68 69 76 77 78 79 86 87 88 89 96 97 98 99
+      l3q side +1 c6 a5 mask [6, 7, 8, 9] a2 p1,2 Qeff 0.000000 red_min surv 0.0; all a2=5 cells dead True
+      X worst all 1.105884 ['76', '7656767', '6555656']; surv 1.105883918328673 cell 76 ['76', '7656767', '6555656']; extra 0.0; spare_surv -2.617905892066119e-13
