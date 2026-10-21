@@ -37,8 +37,9 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
 - **19:24Z, r64b (7655667/7657656, d7 face row, fbA83 -0.0129) has no kill at ring <= 15** (1016 windows, 14 min).
   To-do `loop/k47/win52_7_7655667_7657656_todo.txt` (96809f52): 531 windows (204 at ring 16, 212 at ring 17, 115 at
   ring 18), to the farm, staged in todo63/. Next r64c 7676655/6756657 (face). Logged 19:25Z.
-- **19:52Z, r64c (7676655/6756657, d7 face row, fbA83 -0.0073) has no kill at ring <= 15** (19:52Z row r64c closed windows, 0 min). To-do `loop/k47/win52_7_7676655_6756657_todo.txt`
-  (b222a185): 620 windows (276 at ring 16, 213 at ring 17, 131 at ring 18), to the farm, staged in todo63/. Next r64d 7676656/7556666 (non-face). Logged 19:53Z.
+- **19:52Z, r64c (7676655/6756657, d7 face row, fbA83 -0.0073) has no kill at ring <= 15** (1066 windows, 28 min).
+  To-do `loop/k47/win52_7_7676655_6756657_todo.txt` (b222a185): 620 windows (276 at ring 16, 213 at ring 17, 131 at
+  ring 18), to the farm, staged in todo63/. Next r64d 7676656/7556666 (non-face). Logged 19:53Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
