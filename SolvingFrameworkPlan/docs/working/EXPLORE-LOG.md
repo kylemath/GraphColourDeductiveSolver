@@ -40,6 +40,11 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
 - **00:59Z, r58d (d8 76765656/66565565, 12/421) dies at ring 12.** Its 1,105 ring <= 14 windows (00:50-00:57Z) gave 9
   kills, 6 f-names (4 D, 2 C), 1 minimal: f8_...65656_...6556. (ring 12, D). Files `loop/k47/r58d_kills*` (10084eee).
   Admission head adm58d on main bc898a8b, regression byte-identical: +4 D, +2 C (6 names), `loop/k58/adm58d/`.
+- **01:09Z, r58e (d8 76567656/76675555, 12/421) dies at ring 13.** Its 1,055 ring <= 14 windows (00:57-01:07Z) gave 9
+  kills, 5 f-names, all C, 2 minimal: f8_..567656_....555. (ring 13, X={I0-I1}) and f8_.656.656_.55..66. (ring 14,
+  X={I0-I1,I0-I3,I1-I7,R9-I8}, one ring vertex). Files `loop/k47/r58e_kills*` (c157eb56). Admission head adm58e on main
+  a7ac801e, regression byte-identical: +5 C (5 names), `loop/k58/adm58e/`. All 3 non-face rows of the top 10 are dead
+  at ring 12-13 (48/421).
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
