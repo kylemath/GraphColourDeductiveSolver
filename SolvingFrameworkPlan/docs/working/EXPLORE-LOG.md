@@ -33,6 +33,10 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   `loop/k47/r63b_kills*` (16137895). Head adm63b on main 753720ad (A98, adm63a admitted): regression byte-identical, +1 D,
   +1 C, 0 lost, ring-merge hold still the same 3 names, `loop/k63/adm63b/` (k3x_D a3212e80, k3x_C 2087d442). Row55 at
   adm63b: r63c-p hold nothing (`loop/k63/row_adm63b.txt`). Next r63c 65656566556/65555656565 (d11). Logged 16:43Z.
+- **16:52Z, hand-off to the "Parallel kill hunt with small agents" thread** (a kc farm in cloud containers, at its request):
+  the six d7 face to-dos (Studio k47c-h) and r62m's held to-do, copied with MD5SUMS to /mnt/project-files/explore/todo63/,
+  plus pointers to Studio's 23 ring-18 timeouts. Long Table decides any split with Studio (suggested: whole rows from the
+  back of Studio's queue). Farm kills come back here as kc-only candidates for dfast/cfast, minkill and admission.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
