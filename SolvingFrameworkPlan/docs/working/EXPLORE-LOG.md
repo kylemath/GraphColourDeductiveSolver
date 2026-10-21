@@ -64,7 +64,8 @@ cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py
   containment patterns (RSST 062, 137, 187 and nl1338 placements). Each engine kill is named from my own window and
   checked isomorphic to the line the engines ran on. Reading of a 9 in a pair name: the private is on the ring, so
   g7_7766556_6.....6_w0:5. (priv59) kills w0's private next to s0 at 5 whatever the other private is; with RSST 137 at
-  w0:.5 and w1:5., both link 7s of 7766556/6567566 lose every five on one side (Studio's 59s question).
+  w0:.5, w0 of 7766556/6567566 has no five among its privates in any surviving completion, and w1 loses the five next
+  to s1 (RSST 137 at w1:5.; w1:75 kills one more cell).
 
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 
