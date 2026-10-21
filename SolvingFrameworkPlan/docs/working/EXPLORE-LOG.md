@@ -31,6 +31,10 @@ list too); its window cache carries over.
   byte-identical: +16 D, +10 C (26 names, none on main), 0 lost, ring-merge and letter-9 guards unchanged,
   `loop/k62/adm62a/` (k3x_D d3901238, k3x_C 9001e009). The queue `loop/k62/rows62q.txt` started 08:30Z with r62a
   7676655/6667656 (1046 windows at ring <= 15), DNW 3.
+- **08:59Z, r62a (7676655/6667656, d7 5-5-5 face row, -0.0461) has no kill at ring <= 15** (1046 windows, 0 kills),
+  as expected for a d7 face row. To-do 622 windows (304 at ring 16, 189 at 17, 129 at 18),
+  `loop/k47/win52_7_7676655_6667656_todo.txt` (md5 6794f7c7a7a4edf5b163172a78403c05). adm62a admitted at b253a4ad (A87 = 2,731 D / 1,242 C).
+  Next r62b 7665566/7765766 (face, -0.0461).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
