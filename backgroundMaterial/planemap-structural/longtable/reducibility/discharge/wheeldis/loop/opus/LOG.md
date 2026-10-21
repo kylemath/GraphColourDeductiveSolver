@@ -887,3 +887,9 @@ our agent R and have no output from it.
   - Lean status: CXInt 84, CXRing 26, CCover 25 (origin/main out/lean_ccover/1c56a79e/entries.txt), CWheels 2, **not in Lean 6** (all k3x_C, ring 13-14): f7_..65676_..66.5., f8_...56585_.....565, f9_...565765_....5.5.., f7_..65676_..5..5., f10_...5656656_.......55., f7_.656766_.65.5..
   - Check: upperR2 keeping only the cover's C (ckeep_A78.txt) gives FEASIBLE at 0.109439356774. Dropping the first sole entry (f9_...555565_.........) gives INFEASIBLE (20).
   - RSST 2.126 and 8406.123 were not used.
+
+- 2026-10-21 05:45Z s47: l3qV V = 8 separation + upper check built (RELAY_SPEC_s47.md), so l3qV=7,8 can stack with fb6 in one warm solve.
+  - Engine s47/eng = s44/eng (4045b217, with the 44.8 repair) + s45/port_l3qV.py + s47/port_s47.py + bin/jsep7 (jsep6 + a V = 8 leaf file). V = 8: U = 8 window UB at link 7s + exact leaf correction at d = 8; d = 7 payer at link 8s leaf-only. senderR2 / cons2 carry no l3q terms (unchanged). V = 9 still refused.
+  - Controls on s42a A78: (a) default upperR2 log byte-identical to s42a/run_A78/upper.log (timings stripped); (b) l3qV=7,8 upper FEASIBLE at 0.109439356774; (d) lowerR2 l3qV=7,8 VALID -244/421 = s45 pricing; jsep7 exactness test 2400 rows 0 mismatches (broken 1398); (c) brokensignV fails at d = 7 (20 rows, all 8665566) where the correct check has 0 at d = 7 (both fail at d = 8 on the hand-made q8 solution: no s42a-based V = 8 solution passes in full, see 47.6).
+  - V = 8 tables: full A78 and A83 tables built (identical md5, 50/2500 masks per side not 31). Target moved to A84 (517b0129): A84 FAIL set unchanged (sweep md5 a2ec92e5 at 517b0129 = 618c0899 copy).
+  - Launcher s44/run44d.sh (tag q47A84, s47/run_A84/, fb6 cap 3 + l3qV=7,8, 128 exname hold-outs) waits for reg_A84/prep_done.txt, builds the A84 V = 8 tables, waits for run44c (ALL.done or its PID gone), then runs K/L/lower/U/B at nice 10 threads 1. RSST 2.126 and 8406.123 not used.

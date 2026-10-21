@@ -1,0 +1,17 @@
+04:49:52Z [s47] controls a b d start
+04:51:22Z [s47] control (a): byte-identical to s42a/run_A78/upper.log (timings stripped); UPPER-R2: FEASIBLE at t = 0.109439356774
+04:52:52Z [s47] control (b): l3qV=7,8 UPPER-R2: FEASIBLE at t = 0.109439356774; s42a UPPER-R2: FEASIBLE at t = 0.109439356774
+04:53:00Z [s47] control (d): l3qV=7,8 LOWER-R2: VALID  t >= -244/421 = -0.579572447  (155 rows); s45 l3qV=7,8,9 LOWER-R2: VALID  t >= -244/421 = -0.579572447  (155 rows)
+04:53:08Z [s47] control (c) start
+04:56:52Z [s47] control (c): c1 correct sign UPPER-R2: INFEASIBLE (20) at t = 0.129439356774 | c2 brokensignV UPPER-R2: INFEASIBLE (40) at t = 0.129439356774 | c3 q8 = 1 UPPER-R2: INFEASIBLE (20) at t = 0.129439356774 | c4 l3qV=7 on a V8 sol: SOLUTION HAS lq / lQ KEYS OF A FAMILY THAT IS OFF OR MALFORMED (l3qV=7): [(8, 6, 6, 5)]
+05:00:51Z [s44d] run44d launched (pid 19871); waiting for run44c (pid 11315) and the V = 8 tables
+05:12:58Z [s47] full-table controls start (DT 0.003 DQ 0.002)
+05:14:28Z [s47] control (b'), full table: UPPER-R2: FEASIBLE at t = 0.109439356774
+05:14:36Z [s47] control (d'), full table: LOWER-R2: VALID  t >= -244/421 = -0.579572447  (155 rows)
+05:18:49Z [s47] control (c), full table, t + 0.003, q[(8,6,6,5)] = 0.002: correct sign UPPER-R2: INFEASIBLE (6) at t = 0.112439356774 | brokensignV UPPER-R2: INFEASIBLE (26) at t = 0.112439356774
+05:18:54Z [s47] smoke solve s1 start
+05:21:17Z [s47] smoke s1: iter 2 t=-1.000000000000 rows 43656 cols 18055 added 1877  lp 10.5s to | LOWER-R2: VALID  t >= -1 = -1.000000000  (5 rows) | sol: V = 8 lq > 0: [[[8, 5, 5, 5], 0.25], [[8, 5, 5, 8], 0.25], [[8, 6, 5, 6], 0.06250000000012683], [[8, 6, 6, 5], 0.18
+05:22:40Z [s44d] run44d launched (pid 21728); waiting for reg_A84 prep, run44c (pid 11315) and the A84 V = 8 tables
+05:22:40Z [s44d] A84 ring-merge FAIL set (517b0129) = exname_rm128 + the kept f9 name: unchanged
+05:32:05Z [s47] control (c) scan t + 0.4, q[(8,6,6,5)] = 0.2: correct UPPER-R2: INFEASIBLE (20) at t = 0.509439356774 | brokensignV UPPER-R2: INFEASIBLE (28) at t = 0.509439356774
+05:33:41Z [s47] control (c) scan t + 1.0, q[(8,6,6,5)] = 0.5: correct UPPER-R2: INFEASIBLE (20) at t = 1.109439356774 | brokensignV UPPER-R2: INFEASIBLE (40) at t = 1.109439356774

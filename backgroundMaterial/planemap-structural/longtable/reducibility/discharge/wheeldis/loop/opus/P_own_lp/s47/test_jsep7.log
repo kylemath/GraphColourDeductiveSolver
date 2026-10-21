@@ -1,0 +1,13 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+l3qV: V = 8 table 5000 masks (full)
+d 7 seed 0 rows 300 mismatches 0 1.2s
+d 7 seed 1 rows 600 mismatches 0 1.4s
+d 7 seed 2 rows 900 mismatches 0 1.2s
+d 7 seed 3 rows 1200 mismatches 0 1.8s
+d=7: 1200 rows, 100 with V = 8 terms (payer 100, payee 0), 0 mismatches
+d 8 seed 0 rows 300 mismatches 0 1.3s
+d 8 seed 1 rows 600 mismatches 0 1.4s
+d 8 seed 2 rows 900 mismatches 0 2.5s
+d 8 seed 3 rows 1200 mismatches 0 1.6s
+d=8: 1200 rows, 1200 with V = 8 terms (payer 0, payee 1200), 0 mismatches
+JSEP7 TEST: 2400 rows, 0 mismatches

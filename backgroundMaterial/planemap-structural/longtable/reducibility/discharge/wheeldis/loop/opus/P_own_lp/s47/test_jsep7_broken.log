@@ -1,0 +1,19 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+l3qV: V = 8 table 5000 masks (full)
+  MISMATCH d=7 8576756 5555576 28.636879744441 27.325698653670774
+  MISMATCH d=7 8575765 6555566 28.595003022213 28.547563327501166
+  MISMATCH d=7 8576756 6555577 28.540517689386 27.22933659861538
+d 7 seed 0 rows 300 mismatches 138 1.1s
+d 7 seed 1 rows 600 mismatches 195 1.3s
+d 7 seed 2 rows 900 mismatches 198 1.2s
+d 7 seed 3 rows 1200 mismatches 198 1.8s
+d=7: 1200 rows, 198 with V = 8 terms (payer 198, payee 0), 198 mismatches
+  MISMATCH d=8 75757575 55555556 30.658877536801 12.86075122405166
+  MISMATCH d=8 75757575 55555555 30.572658445426 7.7027004178460725
+  MISMATCH d=8 75757575 55555656 30.426984650220 17.700690052300153
+d 8 seed 0 rows 300 mismatches 300 0.9s
+d 8 seed 1 rows 600 mismatches 600 0.9s
+d 8 seed 2 rows 900 mismatches 900 1.0s
+d 8 seed 3 rows 1200 mismatches 1200 0.9s
+d=8: 1200 rows, 1200 with V = 8 terms (payer 0, payee 1200), 1200 mismatches
+JSEP7 TEST (BROKEN CONTROL: no V = 8 leaf file): 2400 rows, 1398 mismatches

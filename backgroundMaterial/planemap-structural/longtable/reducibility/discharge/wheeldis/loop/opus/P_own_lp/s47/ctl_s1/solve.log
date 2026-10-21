@@ -1,0 +1,17 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10153, 8: 6166, 9: 3519, 10: 1425, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17700, 'C': 2088, 'RPAT': 158, 'RPATN': 2080}
+conservation basis rows added: 10539
+l3qV: V = 8 table 5000 masks (full)
+warm rows admitted: 3000
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 230 M sigs
+iter 0 t=-1.500000000000 rows 38741 cols 17349 added 1700  lp 10.4s total 36s  {7: (192, np.float64(20.0), 2.1), 8: (91, np.float64(29.5), 1.4), 9: (162, np.float64(22.5), 1.5), 10: (139, np.float64(24.0), 1.4), 11: (160, np.float64(25.5), 1.4), 12: (172, np.float64(27.5), 1.5), 13: (167, np.float64(29.0), 1.7), 14: (169, np.float64(30.5), 1.7), 15: (147, np.float64(32.5), 1.9), 16: (149, np.float64(34.0), 2.1), 17: (152, np.float64(35.5), 2.4)}
+  write_l3q: noise QX.max 0 PQ.min -3.24e-14 (clipped)
+iter 1 t=-1.000000000000 rows 41237 cols 17692 added 1852  lp 9.9s total 74s  {7: (163, np.float64(15.0), 2.0), 8: (169, np.float64(15.0), 1.9), 9: (179, np.float64(16.0), 1.7), 10: (186, np.float64(15.0), 1.4), 11: (162, np.float64(17.0), 1.6), 12: (170, np.float64(19.0), 1.6), 13: (167, np.float64(18.0), 1.8), 14: (166, np.float64(20.0), 2.0), 15: (173, np.float64(22.0), 2.2), 16: (186, np.float64(21.0), 2.5), 17: (131, np.float64(23.0), 2.8)}
+iter 2 t=-1.000000000000 rows 43656 cols 18055 added 1877  lp 10.5s total 114s  {7: (160, np.float64(12.5), 2.0), 8: (157, np.float64(13.0), 2.6), 9: (162, np.float64(13.0), 2.0), 10: (161, np.float64(13.0), 1.7), 11: (172, np.float64(14.0), 1.5), 12: (165, np.float64(15.0), 1.8), 13: (180, np.float64(20.0), 1.8), 14: (180, np.float64(21.0), 1.9), 15: (180, np.float64(22.0), 2.1), 16: (180, np.float64(23.0), 2.2), 17: (180, np.float64(24.0), 2.4)}
+LP t* = -1.000000000000 ; dual rows 5 ; wrote sol_s47s1.json cert_s47s1.json
+  -0.400000000 receiverR2 8 85758575 75577557
+  -0.400000000 receiverR2 7 8558555 8688768
+  +0.200000000 senderR2 57887 [0, 0, 0, 0, 0, '|']
+  l3q: q total 0.937500000, 5 q > 0: [((8, 5, 5, 5), np.float64(0.25)), ((8, 5, 5, 8), np.float64(0.25)), ((8, 6, 5, 6), np.float64(0.0625)), ((8, 6, 6, 5), np.float64(0.1875)), ((8, 6, 6, 6), np.float64(0.1875))]; Q total 0.500000000
+  (+ 0 cons2 / mrowR2 rows)
