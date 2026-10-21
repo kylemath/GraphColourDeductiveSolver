@@ -1,8 +1,9 @@
 #!/bin/bash
-# usage: bash farm63/work.sh CHUNKFILE   (run from repo root). Compiles kc, runs every window with kc -C -s 60 -t 600 on 4 cores.
+# usage: bash farm63/work.sh OUTDIR CHUNKFILE...   (run from repo root)
+# Compiles kc, runs every window line with kc -C -s 60 -t 600, 4 at a time. One output file per window in OUTDIR.
 set -u
-C=$1; B=$(basename $C .txt); mkdir -p /tmp/w/$B; g++ -O2 -o /tmp/w/kcc farm63/kc.cpp || exit 1
-run1() { N=$(echo "$1" | cut -d' ' -f1); echo "$1" | timeout 900 /tmp/w/kcc -C -s 60 -t 600 > /tmp/w/$2/$N.tmp 2>&1 && mv /tmp/w/$2/$N.tmp /tmp/w/$2/$N.txt; }
-export -f run1
-grep -v '^$' $C | xargs -d '\n' -P4 -I{} bash -c 'run1 "$1" '$B {} _ >/dev/null 2>&1
-echo DONE > /tmp/w/$B.done
+O=$1; shift; mkdir -p $O; g++ -O2 -o $O/kcc farm63/kc.cpp || exit 1
+run1() { N=${1%% *}; [ -s $O/$N.txt ] && return; echo "$1" | timeout 900 $O/kcc -C -s 60 -t 600 > $O/$N.tmp 2>&1; [ -s $O/$N.tmp ] && mv $O/$N.tmp $O/$N.txt; }
+export -f run1; export O
+cat "$@" | grep -v '^$' | xargs -d '\n' -P4 -I{} bash -c 'run1 "$1"' _ {} >/dev/null 2>&1
+echo DONE > $O/ALL.done
