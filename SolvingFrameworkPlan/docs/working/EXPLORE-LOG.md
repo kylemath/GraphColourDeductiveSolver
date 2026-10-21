@@ -26,6 +26,9 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
   and 7656766/6556656 (2/421 each, non-face) and d10 6556665566/6565565655 (1/421, face), all new, no registry or 2026 hit
   (row58.txt rerun on 13 rows). They run after r58h as `loop/k58/rows58q2.txt` (r58i-k, log `loop/k58/q58b.log`). The
   13 rows' |w| is 145/421; non-face 52/421, of it 48/421 in r58a, d, e.
+- **00:47Z, r58a (8677656/5566555, 24/421) dies at ring 13.** Its 721 ring <= 14 windows (00:40-00:46Z) gave 2 C kills, 2
+  f-names, 1 minimal: f7_..65686_..5555. (ring 13, X={I0-I1}). Files `loop/k47/r58a_kills*` (ecd187e1). Admission head
+  adm58a on main 41990698 (registry = b6dc7610), regression byte-identical: +2 C (2 names), `loop/k58/adm58a/`.
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
