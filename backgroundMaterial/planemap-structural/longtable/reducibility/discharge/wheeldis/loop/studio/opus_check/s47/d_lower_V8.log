@@ -1,0 +1,36 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+section 14 prime kill tables from out/job31/s42a/kill
+l3q: lq 3 values {(6, 5, 5): 0.10496383647389931, (5, 6, 5): 0.003027375919996411, (6, 6, 5): 0.053671312193350446}, lQ 3 values {(6, 5, 31): 0.10496383647389931, (5, 6, 31): 0.003027375919996411, (6, 6, 31): 0.053671312193350446}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 380, 31: 4620}
+l3qV8: V = 8 mask table 5000 entries, masks {30: 100, 31: 4900}
+l3q UB(c, a) over the table masks: {(5, 5): 0.0, (5, 6): 0.00302737592, (6, 5): 0.104963836474, (6, 6): 0.053671312193}
+l3qV8: lq8 {}, lQ8 {}; UB8(c, a) {(5, 5): 0.0, (5, 6): 0.0, (6, 5): 0.0, (6, 6): 0.0}
+V = 8 mrowL over every table mask and every a2 in it, at Qeff8: violated 0
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.109439356774024 (claimed -244/421 = -0.579572446555820), model R6x2 apex True apexcls True zh False: 801 y, 321 g, 5577 h, 138 x, z []
+v values 0; r values 68; sol hat5 True
+bounds: 0 negative values; max x = 0.195371 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack -1.55e-15; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 4.75e-15
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+rpatN patterns from s39o_rpatN3_studio.txt: 2287, by d {7: 621, 8: 839, 9: 631, 10: 188, 11: 7, 12: 1}
+patterns distinct by kind: D 17700 (spec 15,497), C 2088 (spec 1,494), RPAT 158 (spec 158); by d {7: 10150, 8: 6162, 9: 3512, 10: 1425, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+cert rows 155: {'senderR2': 22, 'cons2': 86, 'mrowL': 5, 'mrowR2': 29, 'receiverR2': 13}; mrowR2/mrowV not in canonical orientation: 0 []
+l3qV8 lower: lq8 columns in rows 3, nonzero rc [((8, 6, 5, 5), Fraction(-24, 421)), ((8, 6, 5, 6), Fraction(-24, 421)), ((8, 6, 6, 5), Fraction(-48, 421))]; lQ8 columns in rows 4, nonzero rc [((8, 6, 5, 30), Fraction(24, 421)), ((8, 6, 5, 31), Fraction(24, 421)), ((8, 6, 6, 30), Fraction(12, 421)), ((8, 6, 6, 31), Fraction(36, 421))]
+  lq(8, 6, 5, 5) raw rc -24/421, bundle rc 0
+  lq(8, 6, 5, 6) raw rc -24/421, bundle rc 24/421
+  lq(8, 6, 5, 7) raw rc 0, bundle rc 48/421
+  lq(8, 6, 5, 8) raw rc 0, bundle rc 48/421
+  lq(8, 6, 5, 9) raw rc 0, bundle rc 48/421
+  lq(8, 6, 6, 5) raw rc -48/421, bundle rc -12/421
+  lq(8, 6, 6, 6) raw rc 0, bundle rc 48/421
+  lq(8, 6, 6, 7) raw rc 0, bundle rc 48/421
+  lq(8, 6, 6, 8) raw rc 0, bundle rc 48/421
+  lq(8, 6, 6, 9) raw rc 0, bundle rc 48/421
+lower: tco = 1, D = -244/421; nonzero reduced costs: M[767685531] = 12/421, M[866675531] = 12/421, M[876675531] = 12/421, h[76657875] = 24/421, lQ[86530] = 24/421, lQ[86531] = 24/421, lQ[86630] = 12/421, lQ[86631] = 36/421, lq[8655] = -24/421, lq[8656] = -24/421, lq[8665] = -48/421, r[506506] = 8/421, r[506507] = 44/421, r[506509] = 12/421, r[507507] = 12/421, r[507508] = 24/421; negative (non-x) 0
+LOWER: VALID t >= -244/421
+VERDICT (lower only): PASS (lower VALID -244/421)
