@@ -89,6 +89,11 @@ list too); its window cache carries over.
   regression byte-identical: +242 D, +15 C (257 names, none on main), 0 lost, guards unchanged, `loop/k62/adm62f/`
   (k3x_D de05aafd, k3x_C 379ee1d8). From 14:31Z `loop/k62/early62.py` applies the early-close rule by itself (stop,
   minkill47, mark the row closed, restart the queue). Next r62i 7556676/7567566 (face, -0.0060).
+- **15:05Z, r62i (7556676/7567566, d7 face row, -0.0060) has no kill at ring <= 15.** All 1090 ring <= 15 windows ran
+  (kc -C, then dfast/cfast) in 36 min: 0 kills. The 595 windows left (293 at ring 16, 183 at 17, 119 at 18) are in
+  `loop/k47/win52_7_7556676_7567566_todo.txt` (3aeb605d). It is the fourth d7 face row with no kill at ring <= 15
+  (after r62a-c); the to-do is held behind Studio's current order and goes to Long Table with the next admission head.
+  Next r62j 7655566/6759677 (811 windows at ring <= 16, 693 at ring <= 15). Logged 15:08Z.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
