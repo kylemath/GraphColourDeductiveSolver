@@ -112,6 +112,7 @@ static bool HASEX6 = false;
 static double RREL[125][25];   // SEP_RTAB (stage 18 hat channel): relaxed r term at an apex five s_i (max over w_{i+2}, s_{i+1})
 static vector<double> REX;     // exact r term [w_{i-1}][w_i][w_{i+1}][w_{i+2}][s_{i-1}][s_{i+1}] (letters 0..4)
 static bool HASR = false;
+static bool HASFB = false; static double FBREL[3][125][25]; static vector<double> FBX;   // SEP_FB6 (RELAY_SPEC s44): relaxed fb window term [ui][state][c]; exact [ui][a][b][c][e][f][p][q][r][s]
 static bool HASL = false; static double L3REL[125][25]; static vector<double> L3QEX, L3PQ;   // SEP_L3Q: relaxed term [state][c]; exact payee [sigma][c][a][w2][w3][w4][o]; payer q[c][a][a2]   // sep3r_ak (s12r_check.py): key results by arrangement, not by row (env SEP_ARRKEY=1)
 static long long nodes;
 static string canonWord(const string &w) {
@@ -233,7 +234,15 @@ static void leaf(double w) {
             }
         }
     }
-    if ((HASEX6 || HASR || HASL) && w <= thr) return;
+    if (HASFB) {   // s44: swap each position's relaxed fb term for the exact window term
+        auto W_ = [&](int k) { return wl[((k % d) + d) % d]; }; auto S_ = [&](int k) { return sl[((k % d) + d) % d]; };
+        for (int i = 0; i < d; i++) {
+            int st = W_(i - 1) * 25 + S_(i - 1) * 5 + W_(i), c = S_(i) * 5 + W_(i + 1);
+            long idx = ((((((((((long)ui * 5 + W_(i - 2)) * 5 + W_(i - 1)) * 5 + W_(i)) * 5 + W_(i + 1)) * 5 + W_(i + 2)) * 5 + S_(i - 2)) * 5 + S_(i - 1)) * 5 + S_(i)) * 5 + S_(i + 1));
+            w += FBX[idx] - FBREL[ui][st][c];
+        }
+    }
+    if ((HASEX6 || HASR || HASL || HASFB) && w <= thr) return;
     if (omax > 0 && minRing() <= omax) return;
     if (fullForbidden()) return;
     string link(d, '0'), s(d, '0');
@@ -305,6 +314,9 @@ int main(int argc, char **argv) {
     if (const char *e = getenv("SEP_EXACT6")) { FILE *g = fopen(e, "rb"); if (!g) return 30; EX6.assign(3L * 390625, 0.0);
         if (fread(EX6.data(), sizeof(double), EX6.size(), g) != EX6.size()) return 31; fclose(g); HASEX6 = true;
         fprintf(stderr, "sep: exact six-window table loaded (%s)\n", e); }
+    if (const char *e = getenv("SEP_FB6")) { FILE *g = fopen(e, "rb"); if (!g) return 41; FBX.assign(3L * 1953125, 0.0);
+        if (fread(&FBREL[0][0][0], sizeof(double), 3 * 125 * 25, g) != 3 * 125 * 25) return 42;
+        if (fread(FBX.data(), sizeof(double), FBX.size(), g) != FBX.size()) return 43; fclose(g); HASFB = true; }
     if (const char *e = getenv("SEP_L3Q")) { FILE *g = fopen(e, "rb"); if (!g) return 35; L3QEX.assign(31250, 0.0); L3PQ.assign(125, 0.0);
         if (fread(&L3REL[0][0], sizeof(double), 125 * 25, g) != 125 * 25) return 36;
         if (fread(L3QEX.data(), sizeof(double), 31250, g) != 31250) return 37;
@@ -389,6 +401,7 @@ int main(int argc, char **argv) {
             }
             if (HASR && AL[ui][a][c] && c / 5 == 0) W[a][c] += RREL[a][c];   // apex five s_i: + relaxed r
             if (HASL && ui == 0 && d == 7 && AL[ui][a][c] && a % 5 == 2) W[a][c] += L3REL[a][c];   // link 7 at d = 7: + relaxed l3q
+            if (HASFB && AL[ui][a][c]) W[a][c] += FBREL[ui][a][c];   // s44: + relaxed fb window term
         }
         // M[a][b] (max-plus one step), Bnd[k] = M^k
         vector<double> M(125 * 125, -1e18);
@@ -408,7 +421,7 @@ int main(int argc, char **argv) {
         found.clear(); nodes = 0; CT = thr; aborted = false;
         // start states: w_0 = 5 (every arrangement of positive weight has a 5; rotate it to position 0)
         vector<pair<double,int>> starts;
-        bool anyStartR = HASX || RMAXV > 0 || HASR || (HASL && d == 7);
+        bool anyStartR = HASX || RMAXV > 0 || HASR || (HASL && d == 7) || HASFB;
         for (int a = 0; a < 125; a++) if ((anyStartR || a % 5 == 0) && Bnd[d][a * 125 + a] + d * XINMAX > thr + 1e-9)
             starts.push_back({-(Bnd[d][a * 125 + a] + d * XINMAX), a});
         sort(starts.begin(), starts.end());

@@ -28,6 +28,23 @@ EPS = 1e-9; FAIL = []
 V6 = os.environ.get('V6', '1') == '1'
 HAT5 = os.environ.get('HAT5', '1') == '1'
 L3Q = os.environ.get('L3Q', '0') == '1'; L3TAB = os.environ.get('L3TAB', '')
+# RELAY_SPEC s44 (fb, face-keyed big -> k-vertex transfer): FB=1, FBDIR = 6 / 7 / 67 (default 67), FBCAP optional
+FB = os.environ.get('FB', '0') == '1'; FBDIR = os.environ.get('FBDIR', '67'); FBCAP = os.environ.get('FBCAP')
+def fb_face(T): return T[0] == 5 and T[2] == 5 and T[3] == 5          # (c, b, e) = (5, 5, 5): c first, b third, e fourth
+def fb_key(U, X, Tp, Tm):
+    """44.2: sigma = (U, X, min(T+, T-), max(T+, T-)); a column iff a face side and X >= 6 (fb6: X = 6, fb7: X >= 7)"""
+    if X < 6 or not (fb_face(Tp) or fb_face(Tm)): return None
+    if X == 6 and '6' not in FBDIR: return None
+    if X >= 7 and '7' not in FBDIR: return None
+    return (U, X) + min(Tp, Tm) + max(Tp, Tm)
+def fb_payer_T(W, S, j):   # u's row at j: T+ = (w_{j+1}, s_j, w_{j+2}, e+), T- = (w_{j-1}, s_{j-1}, w_{j-2}, e-)
+    Tp = (W(j + 1), S(j), W(j + 2), S(j + 1) if W(j + 1) == 5 else 0)
+    Tm = (W(j - 1), S(j - 1), W(j - 2), S(j - 2) if W(j - 1) == 5 else 0)
+    return Tp, Tm
+def fb_payee_T(L, t, k):   # X's row at u = L_k: T+ = (L_{k+1}, L_{k+2}, t_k, t_{k+1} if L_{k+1} = 5), T- mirrored
+    Tp = (L(k + 1), L(k + 2), t(k), t(k + 1) if L(k + 1) == 5 else 0)
+    Tm = (L(k - 1), L(k - 2), t(k - 1), t(k - 2) if L(k - 1) == 5 else 0)
+    return Tp, Tm
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from st18_keys import key_sender, key_receiver   # V6=0: filtered s12r mode (section 14' mask on M only; no v, no V)
 # per-solve expectations (defaults: s14r): EXPECT_T = claimed t* as a fraction, EXPECT_PAT = 'D,C,RPAT' distinct pattern counts
@@ -133,6 +150,16 @@ G = {tuple(k): v for k, v in SOL['g']}; H = {tuple(k): v for k, v in SOL['h']}; 
 VV = {tuple(k): v for k, v in SOL.get('v', [])}
 RR = {tuple(k): v for k, v in SOL.get('r', [])}
 T = SOL['t']
+FBV = {tuple(k): v for k, v in SOL.get('fb', [])}
+if FB and os.environ.get('FBRAND'):   # self-test only: random fb values on every possible key
+    import random as _rnd; _rnd.seed(int(os.environ['FBRAND']))
+    for U_ in LET:
+        for X_ in LET:
+            for Tp_ in itertools.product(LET, LET, LET, LET + (0,)):
+                for Tm_ in itertools.product(LET, LET, LET, LET + (0,)):
+                    k_ = fb_key(U_, X_, Tp_, Tm_) if (Tp_[3] == 0) == (Tp_[0] != 5) and (Tm_[3] == 0) == (Tm_[0] != 5) else None
+                    if k_ and k_ not in FBV: FBV[k_] = _rnd.random() * 0.05
+    print('FBRAND: %d random fb values' % len(FBV), flush=True)
 LQ = {tuple(k): v for k, v in SOL.get('lq', [])}; LQQ = {tuple(k): v for k, v in SOL.get('lQ', [])}; LQCAP = float(SOL.get('lqcap', 3))
 MASK = {}
 if L3Q:
@@ -190,6 +217,7 @@ def val(key):
     if key[0] == 'V': return Vval(key[1])
     if key[0] == 'x': return X.get(key[1], 0.0)
     if key[0] == 'lq': return LQ.get(key[1], 0.0)
+    if key[0] == 'fb': return FBV.get(key[1], 0.0)
     if key[0] == 'lQ': return Qeff(*key[1])
     raise KeyError(key)
 
@@ -241,6 +269,12 @@ def cons2_row(L, s):
         elif L[i] >= 7:
             m = tuple(L[(i + k) % 6] for k in range(6)); r[('h', h2_of(m, s[i], s[(i - 1) % 6]))] -= 1
             if V6 and L[i] == 7: r[('v', v_of(m, s[i], s[(i - 1) % 6]))] += 1
+    if FB:   # 44.3: cons2 (L, s) of a 6 X: +1 for each k with L_k >= 7 and a face side
+        Lf = lambda q: L[q % 6]; sf = lambda q: s[q % 6]
+        for k in range(6):
+            if L[k] >= 7:
+                Tp, Tm = fb_payee_T(Lf, sf, k); key = fb_key(L[k], 6, Tp, Tm)
+                if key: r[('fb', key)] += 1
     return {k: v for k, v in r.items() if v != 0}
 ALL6 = sorted({canon(L) for L in itertools.product(LET, repeat=6) if not isR6(L)})
 cres = {'five': [0, 0, 0.0], 'nofive': [0, 0, 0.0]}
@@ -254,6 +288,18 @@ print('cons2: %d non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 ape
 for sub in ('five', 'nofive'):
     print('  %-7s %d words (%s): violated %d, max |sum g2 - sum h2| %.3g' % (sub, cres[sub][0], 'spec 994' if sub == 'five' else 'spec 430', cres[sub][1], cres[sub][2]), flush=True)
 if len(ALL6) != 1424 or cres['five'][0] != 994: fail('6-word counts')
+if FB and not os.environ.get('LOWER_ONLY') == '1':   # 44.3: fb6 inflow depends on exact apex letters: all 5^6 apex words
+    fbbad = 0; fbmax = 0.0
+    for L in ALL6:
+        base = {}
+        for s5 in itertools.product(LET, repeat=6):
+            a5 = tuple(ap(x) for x in s5)
+            if a5 not in base: base[a5] = sum(cf * val(k) for k, cf in cons2_row(L, a5).items() if k[0] != 'fb')
+            v = base[a5] + sum(cf * val(k) for k, cf in cons2_row(L, s5).items() if k[0] == 'fb')
+            fbmax = max(fbmax, abs(v))
+            if abs(v) > 1e-9: fbbad += 1; fbbad <= 5 and print('VIOLATED cons2+fb %s s %s: %.3g' % (''.join(map(str, L)), ''.join(map(str, s5)), v))
+    print('cons2 with fb over all 1,424 x 5^6 exact apex words: violated %d, max |sum| %.3g' % (fbbad, fbmax), flush=True)
+    if fbbad: fail('cons2 with fb violated')
 if cres['five'][1] or cres['nofive'][1]: fail('cons2 violated')
 hcan = [k for k in H if k != min(k, (k[0], k[5], k[4], k[3], k[2], k[1], k[7], k[6]))]
 gcan = [k for k in G if k != g2_raw(*k)]
@@ -359,6 +405,14 @@ def recv_spec(d, link, sword):
             ti = tau(w[i], U, side(W(i - 1), S(i - 1), W(i - 2)), side(W(i + 1), S(i), W(i + 2)))
             to = tau(U, w[i], side(W(i - 1), W(i - 2), S(i - 1)), side(W(i + 1), W(i + 2), S(i)))
             r[('x', ti)] += 1; r[('x', to)] -= 1
+    if FB:   # 44.3: payer (any d) -1 at w_j >= 6; fb7 payee +1 at w_k >= 7 when the centre is >= 7
+        for j in range(d):
+            if w[j] >= 6:
+                Tp, Tm = fb_payer_T(W, S, j); key = fb_key(U, w[j], Tp, Tm)
+                if key: r[('fb', key)] -= 1
+            if w[j] >= 7 and U >= 7:
+                Tp, Tm = fb_payee_T(W, S, j); key = fb_key(w[j], U, Tp, Tm)
+                if key: r[('fb', key)] += 1
     if L3Q and d == 7:   # section 21.3: payer and payee terms at each link 7, both sides
         for i in range(d):
             if w[i] != 7: continue
@@ -423,7 +477,12 @@ D = Dn / tco if tco else Fr(0); rc = {k: -v / tco for k, v in tot.items() if v !
 for k, v in list(rc.items()):
     if k[0] == 'x' and v < 0: D += v * 3
     if k[0] == 'lq' and v < 0: D += v * Fr(LQCAP).limit_denominator(1000)   # section 21.3: priced at its cap
-negrc = {k: v for k, v in rc.items() if k[0] not in ('x', 'lq') and v < 0}
+if FB and FBCAP:
+    for k, v in list(rc.items()):
+        if k[0] == 'fb' and v < 0: D += v * Fr(FBCAP)
+FBNEG = sorted(((v, k[1]) for k, v in rc.items() if k[0] == 'fb' and v < 0))
+if FB: print('fb columns with rc < 0: %d %s' % (len(FBNEG), ['%s rc=%s' % (''.join(map(str, kk[:2])) + ' ' + ''.join(map(str, kk[2:6])) + ' ' + ''.join(map(str, kk[6:])), vv) for vv, kk in FBNEG]), flush=True)
+negrc = {k: v for k, v in rc.items() if k[0] not in ('x', 'lq') and not (k[0] == 'fb' and FBCAP) and v < 0}
 print('lower: tco = %s, D = %s; nonzero reduced costs: %s; negative (non-x) %d' % (
     tco, D, ', '.join('%s[%s] = %s' % (k[0], ''.join(map(str, k[1])) if isinstance(k[1], tuple) else k[1], v) for k, v in sorted(rc.items(), key=str)), len(negrc)))
 if negrc: fail('negative reduced costs %s' % negrc)
@@ -507,6 +566,26 @@ if HAT5:
         with open(L3F, 'wb') as _f: _f.write(L3R.astype('<f8').tobytes()); _f.write(L3X.astype('<f8').tobytes()); _f.write(L3P.astype('<f8').tobytes())
         SEPENV['SEP_L3Q'] = L3F
         print('l3q separator tables: relaxed max %.6f, exact payee max %.6f, payer max %.6f (%s)' % (L3R.max(), L3X.max(), L3P.max(), os.path.basename(L3F)), flush=True)
+    if FB:   # s44 window term: payer at c >= 6, fb7 payee at c >= 7 when U >= 7; exact table + relaxed max over (a, f, p, s)
+        FBX_ = _np.zeros((3,) + (5,) * 9); FBREL_ = _np.full((3, 125, 25), 0.0)
+        for ui_, U_ in enumerate((7, 8, 9)):
+            for a_, b_, c_, e_, f_, p_, q_, r_, s_ in itertools.product(LET, repeat=9):
+                v_ = 0.0
+                if c_ >= 6:
+                    k_ = fb_key(U_, c_, (e_, r_, f_, s_ if e_ == 5 else 0), (b_, q_, a_, p_ if b_ == 5 else 0))
+                    if k_: v_ -= FBV.get(k_, 0.0)
+                if c_ >= 7 and U_ >= 7:
+                    k_ = fb_key(c_, U_, (e_, f_, r_, s_ if e_ == 5 else 0), (b_, a_, q_, p_ if b_ == 5 else 0))
+                    if k_: v_ += FBV.get(k_, 0.0)
+                FBX_[ui_, a_ - 5, b_ - 5, c_ - 5, e_ - 5, f_ - 5, p_ - 5, q_ - 5, r_ - 5, s_ - 5] = v_
+            # relaxed: state (b, q, c) and choice (r, e): max over a, f, p, s
+            R_ = FBX_[ui_].max(axis=(0, 4, 5, 8))   # dims left: b, c, e, q, r
+            for b_, c_, e_, q_, r_ in itertools.product(range(5), repeat=5):
+                FBREL_[ui_, b_ * 25 + q_ * 5 + c_, r_ * 5 + e_] = R_[b_, c_, e_, q_, r_]
+        FBF = os.path.join(HERE, 'out', 'job31', 'st16', 'fb_%s.bin' % os.path.basename(SOLF).replace('.json', ''))
+        with open(FBF, 'wb') as _f: _f.write(FBREL_.astype('<f8').tobytes()); _f.write(FBX_.astype('<f8').tobytes())
+        SEPENV['SEP_FB6'] = FBF
+        print('fb separator tables: %d fb values; exact min %.6f max %.6f; relaxed max %.6f (%s)' % (len(FBV), FBX_.min(), FBX_.max(), FBREL_.max(), os.path.basename(FBF)), flush=True)
     SEPX = _sp.Popen([os.path.join(HERE, 'bin', 'sep3r_l3q' if L3Q else 'sep3r_ak'), NS_['SF']], stdin=_sp.PIPE, stdout=_sp.PIPE, text=True, env=SEPENV)
     NS_['SEPX'] = SEPX
     print('hat-channel tables: relaxed max %.6f, exact max %.6f (%s)' % (RREL_.max(), REX_.max(), os.path.basename(RTF)), flush=True)
@@ -517,9 +596,13 @@ def l3rel_row(d, lk, sv):
     if not (L3Q and d == 7): return 0.0
     w = [int(c) for c in lk]; s_ = [int(c) for c in sv]
     return sum(UB(w[(i + 1) % d], s_[i]) + UB(w[(i - 1) % d], s_[(i - 1) % d]) for i in range(d) if w[i] == 7)
+def fbrel_row(d, lk, sv):
+    if not FB: return 0.0
+    w = [int(c) for c in lk]; s_ = [int(c) for c in sv]; ui_ = min(d, 9) - 7
+    return sum(FBREL_[ui_, (w[(i - 1) % d] - 5) * 25 + (s_[(i - 1) % d] - 5) * 5 + w[i] - 5, (s_[i] - 5) * 5 + w[(i + 1) % d] - 5] for i in range(d))
 def studio_val(d, lk, sv):
     r_ = recv_row(d, lk, sv)
-    return l3rel_row(d, lk, sv) + rrel_row(d, lk, sv) + sum(cf * (yv[k[1]] if k[0] == 'y' else xv.get(k[1], 0.0) if k[0] == 'x' else V6B[k[1]] if k[0] == 'y6b' else 0.0) for k, cf in r_.items() if k[0] != 't')
+    return fbrel_row(d, lk, sv) + l3rel_row(d, lk, sv) + rrel_row(d, lk, sv) + sum(cf * (yv[k[1]] if k[0] == 'y' else xv.get(k[1], 0.0) if k[0] == 'x' else V6B[k[1]] if k[0] == 'y6b' else 0.0) for k, cf in r_.items() if k[0] != 't')
 def xk(rr): return collections.Counter({k[1]: cf for k, cf in rr.items() if k[0] == 'x'})
 tests = [(e['row'][1], e['row'][2], e['row'][3]) for e in CERT if e['row'][0] == 'receiverR2']
 _devs = []
@@ -563,6 +646,7 @@ for a_, b_, rr in TRI[9]:
     v_ = (yv[ix[rr]] if rr is not None else 0.0) + z9 * BIGSTATE[a_]
     if wc == 6: v_ += best6(9, wn, sc, sp, wp)[0]
     if HAT5 and sc == 5: v_ += RREL_[(wp - 5) * 25 + (sp - 5) * 5 + wc - 5, wn - 5]   # section 15 r at the apex five
+    if FB: v_ += FBREL_[2, (wp - 5) * 25 + (sp - 5) * 5 + wc - 5, (sc - 5) * 5 + wn - 5]   # s44 relaxed fb at U = 9
     Mk[a_, b_] = max(Mk[a_, b_], v_)
 Pk = Mk.copy(); dpbad = 0
 for k_ in range(2, 31):
