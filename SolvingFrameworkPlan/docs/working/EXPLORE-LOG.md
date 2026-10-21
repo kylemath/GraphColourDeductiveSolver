@@ -1,5 +1,24 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 60 (21 Oct 2026, 05:36Z-): H-A83, do the top binders of Opus's A83 keeppen solve die at ring <= 15?
+
+**Pre-registered 05:36Z, before any containment or engine run of this round.** Opus 05:25Z: the A83 keeppen (l3q + rpatN3
++ fb6 on 240b5a08) converged at t = 0.105884, one engine, not a bound; its top receiver rows (keeppen duals, not yet the
+nosep cert's canonical binders). Long Table 05:25Z: these come first, ahead of the round 59 filler and the 59s census
+(both paused at 05:36Z); check against main 7cd777a3 and the 2026 set, then windows at rings 12-15; reconcile with the nosep
+cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py`):
+- 7665566/6675676 (dual -0.0281) is the exhausted face row (rounds 57-58: every window to ring 18 run, no kill); no rerun.
+- 9656775/5556655 (-0.0210, non-face) was in round 55's A67 list, never swept.
+- New: face rows 7766655/6567659 (-0.0200), d9 755676556/756556665 (-0.0143), 7655667/7657655 (-0.0118), d10
+  7556656656/7565555555 (-0.0087); non-face 7666567/5665565 (-0.0107).
+- **Part 1, containment** (`loop/k55/row55.py`) on all 7, main 7cd777a3 (k3x = adm59a's, efdd2d6c / 808b8aff) + 2026 set.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 15, DNW 3) on the 6 rows that are not exhausted, non-face first.
+- **Hypothesis.** Both non-face rows die at ring <= 15. **Kill line:** neither does.
+- **Guess.** Part 1: no hit (75 percent). Part 2: both non-face rows die (65 percent); of the 4 face rows, the d9 and d10
+  rows die and the two d7 rows do not (40 percent).
+- **05:36Z, part 1: no hit** (`loop/k60/row60.txt`): none of the 7 rows holds a configuration of the registry at 7cd777a3
+  (4,505 with RSST) or of the 2026 set. Guess right. Part 2 started 05:36Z (`loop/k60/rows60q.txt`, log `loop/k60/q60.log`).
+
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 
 **Pre-registered 05:26Z, before any run of this census.** Long Table 05:13Z (doc "Capacity transport rule",

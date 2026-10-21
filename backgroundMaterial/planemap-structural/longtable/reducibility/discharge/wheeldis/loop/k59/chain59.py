@@ -6,9 +6,12 @@ u_j next to the face), and u_j+1 is another neighbour of X_j, exactly 7, with a 
 L = 1 is u1, its face and X1; L = 2 adds u2 and its face; L = 3 adds X2, u3 and its face.  u1's face is (w0, w1, s0)
 and X1 = w6 (the other k-vertex w2 is its mirror).
 The patch is the free disc of the closed vertices (each with its whole neighbourhood, no identifications); its boundary
-vertices are the 1-ring slots, each 5..9 (9 = degree >= 9, never exact).  A slot whose letter equals its disc degree
-closes off (an edge between its two boundary neighbours), so fillings are split into parts with a fixed structure, as
-in cen53; letters below a slot's disc degree are impossible and not counted.
+vertices are the 1-ring slots, each 5..9 (9 = degree >= 9, never exact).  Letters below a slot's disc degree k are
+impossible.  A slot at exactly k closes off (an edge between its two boundary neighbours) and changes the structure;
+splitting on every such slot gives up to 2^(slots) parts (32,129 for one L = 3 shape), so the census is run on the
+open fillings (every slot above its disc degree, one fixed structure), and the closing fillings' share of the possible
+ones is reported beside it.  An uncovered open filling is a genuine escape, so a "no" stands; a "yes" needs the closing
+fillings too.
 A filling is covered when a configuration's interior maps onto the patch (grow.embeddings: exact degrees, induced,
 interior triangles onto faces; a slot's letter becomes a requirement): the registry (fam51.registry: RSST 582 + the
 twoeng names of TD/TC) and, kept apart, the 2026 set (XKC).  Coverage = covered / possible fillings, per shape.
@@ -33,7 +36,7 @@ class Disc:
     def wheel(self, d, lab):
         c = self.new(lab); W = [self.new() for _ in range(d)]
         for i in range(d): self.tri(c, W[i], W[(i + 1) % d])
-        self.B = W; self.deg[c] = d; return c, W
+        self.B = list(W); self.deg[c] = d; return c, W
     def close(self, v, d):
         """Give boundary vertex v degree d and make it interior; False if impossible (no chord, no sphere)."""
         if v in self.deg: return self.deg[v] == d
@@ -92,9 +95,14 @@ def faces_at(D, c, tag):
 def shapes(LMAX):
     D = Disc(); u1, W = D.wheel(7, 'u1')
     D = with_face(D, u1, W[0], W[1], 'f1'); assert D is not None
+    for i, w in enumerate(W):
+        if D.lab[w][0] == 'v': D.lab[w] = 'w%d' % i
     X1 = W[6]; assert D.close(X1, 6); D.lab[X1] = 'X1'
-    out = {1: [(D, 'u1 face w0w1, X1 = w6')]}
-    cur = [(D, u1, X1, {u1}, {X1}, 'X1=w6')]
+    for x in D.adj[X1]:              # X1's other neighbours: s6 (apex across w6 w0), s5 (across w5 w6), p (its private)
+        if D.lab[x][0] != 'v': continue
+        D.lab[x] = 's6' if W[0] in D.adj[x] else ('s5' if W[5] in D.adj[x] else 'p6')
+    out = {1: [(D, 'u1 face w0 w1 s0, X1 = w6')]}
+    cur = [(D, u1, X1, {u1}, {X1}, 'X1 = w6')]
     for L in range(2, LMAX + 1):
         nxt = []; out[L] = []
         for D0, up, Xp, U, XS, desc in cur:
@@ -104,7 +112,7 @@ def shapes(LMAX):
                 if not D1.close(u, 7): continue
                 D1.lab[u] = 'u%d' % L
                 for E, (y, z), (k1, k2) in faces_at(D1, u, 'f%d' % L):
-                    d2 = '%s; u%d = nbr %s of %s, face %s%s' % (desc, L, D0.lab[u], D0.lab[Xp], E.lab[y], E.lab[z])
+                    d2 = '%s; u%d = %s, face %s %s' % (desc, L, D0.lab[u], *(D1.lab[x] if D1.lab[x][0] != 'v' else 'new' for x in (y, z)))
                     out[L].append((E, d2))
                     if L < LMAX:
                         for k in (k1, k2):
@@ -112,7 +120,7 @@ def shapes(LMAX):
                             E2 = E.copy()
                             if not E2.close(k, 6): continue
                             E2.lab[k] = 'X%d' % L
-                            nxt.append((E2, u, k, U | {u}, XS | {k}, d2 + ', X%d = %s' % (L, E.lab[k])))
+                            nxt.append((E2, u, k, U | {u}, XS | {k}, d2 + ', X%d = %s' % (L, E.lab[k] if E.lab[k][0] != 'v' else 'new')))
         cur = nxt
     for L in out:            # dedupe isomorphic shapes (WL hash)
         seen = {}; keep = []
@@ -123,33 +131,36 @@ def shapes(LMAX):
         out[L] = keep
     return out
 
-def parts(D):
-    """[(disc, lets)]: fillings of the boundary split so each part has a fixed structure."""
-    res = []
-    def rec(D, lets):
-        lets = {x: tuple(l for l in ls if l == 9 or l >= len(D.adj[x])) for x, ls in lets.items() if x in D.B}
-        if any(not ls for ls in lets.values()): return
-        for x in D.B:
-            k = len(D.adj[x])
-            if k <= 8 and k in lets[x]:
-                E = D.copy()
-                if E.close(x, k):
-                    l2 = dict(lets); del l2[x]; rec(E, l2)
-                l3 = dict(lets); l3[x] = tuple(l for l in lets[x] if l != k); rec(D, l3)
-                return
-        res.append((D, lets))
-    rec(D, {x: (5, 6, 7, 8, 9) for x in D.B})
-    return res
+def open_lets(D):
+    """Slot letters of the open fillings (above the disc degree), and the number of possible fillings in all."""
+    lets = {x: tuple(l for l in (5, 6, 7, 8, 9) if l > len(D.adj[x]) or (l == 9 and len(D.adj[x]) >= 9)) for x in D.B}
+    allp = prod(len([l for l in (5, 6, 7, 8, 9) if l >= len(D.adj[x]) or l == 9]) for x in D.B)
+    return lets, allp
 
-def count(cyl, slots, lets):
-    cyl = [c for c in cyl if all(v in lets[k] for k, v in c.items())]
+def count(cyl, slots, lets, memo=None):
+    """Number of fillings of slots (letters lets) inside the union of the cylinders (dicts slot -> letter).  Branches on the
+    most frequent slot; letters that no cylinder names there share one sub-problem, and sub-problems are memoised (keyed
+    by the cylinders and the letters of the slots they name, so one memo can serve calls that differ in other letters)."""
+    cyl = [frozenset(c.items()) for c in cyl if all(v in lets[k] for k, v in c.items())]
     if not cyl: return 0
-    if any(not c for c in cyl): return prod(len(lets[x]) for x in slots)
-    fr = collections.Counter(x for c in cyl for x in c); x = max(slots, key=lambda s: fr[s])
-    rest = [s for s in slots if s != x]; tot = 0
-    for l in lets[x]:
-        tot += count([{k: v for k, v in c.items() if k != x} for c in cyl if c.get(x, l) == l], rest, lets)
-    return tot
+    if memo is None: memo = {}
+    def inv(cs): return {k for c in cs for k, _ in c}
+    def cov(cs):                       # covered count over the slots the cylinders name
+        cs = frozenset(cs); I = inv(cs); key = (cs, tuple((x, lets[x]) for x in sorted(I)))
+        if key in memo: return memo[key]
+        if frozenset() in cs: r = prod(len(lets[x]) for x in I)
+        else:
+            fr = collections.Counter(k for c in cs for k, _ in c); x = max(fr, key=lambda s: (fr[s], s))
+            named = {v for c in cs for k, v in c if k == x}; r = 0; rest = I - {x}
+            base = [c for c in cs if all(k != x for k, _ in c)]
+            for l in lets[x]:
+                if l not in named and l != min(set(lets[x]) - named, default=None): continue
+                sub = [frozenset((k, v) for k, v in c if k != x) for c in cs if dict(c).get(x, l) == l]
+                if sub: v = cov(sub) * prod(len(lets[y]) for y in rest - inv(sub))
+                else: v = 0
+                r += v * (len(set(lets[x]) - named) if l not in named else 1)
+        memo[key] = r; return r
+    return cov(cyl) * prod(len(lets[x]) for x in slots if x not in inv(cyl))
 def prod(it):
     p = 1
     for v in it: p *= v
@@ -187,22 +198,20 @@ def main():
     SH = shapes(LMAX)
     for L in sorted(SH):
         say('# L = %d: %d shapes (after merging isomorphic ones)' % (L, len(SH[L])))
-        T = C1 = C2 = 0; full1 = full2 = 0; worst = None
+        T = C1 = C2 = AP = 0; full1 = full2 = 0; worst = None
         for j, (E, desc, mult) in enumerate(SH[L]):
-            t0 = time.time(); st = sr = sx = 0; nparts = 0; reqs = collections.Counter()
-            for Dp, lets in parts(E):
-                nparts += 1
-                tot, cr, cx, cyr, wr, cyx, wx = cover(Dp, lets, REG, XR)
-                st += tot; sr += cr; sx += cx
-                for c in cyr: reqs[wr[tuple(sorted(c.items()))]] += 1
+            t0 = time.time(); lets, allp = open_lets(E)
+            st, sr, sx, cyr, wr, cyx, wx = cover(E, lets, REG, XR)
+            reqs = collections.Counter(wr[tuple(sorted(c.items()))] for c in cyr)
+            AP += allp
             T += st; C1 += sr; C2 += sx; full1 += sr == st; full2 += sx == st
             r = sx / st if st else 1.0
             if worst is None or r < worst[0]: worst = (r, j)
-            say('L%d shape %d (x%d): %s | %d parts, %d fillings, registry %.4f%%, +2026 %.4f%% | %d boundary, %.0fs | top %s' % (
-                L, j, mult, desc, nparts, st, 100.0 * sr / st if st else 100, 100.0 * sx / st if st else 100, len(E.B),
-                time.time() - t0, ' '.join('%s:%d' % kv for kv in reqs.most_common(3))))
-        say('# L = %d total: %d shapes, %d fillings, registry %.4f%% (%d shapes at 100%%), with 2026 %.4f%% (%d at 100%%), worst shape %s at %.4f%%' % (
-            L, len(SH[L]), T, 100.0 * C1 / T if T else 100, full1, 100.0 * C2 / T if T else 100, full2,
+            say('L%d shape %d (x%d): %s | %d slots, %d open fillings (%.1f%% of %d possible), covered: registry %.4f%%, +2026 %.4f%%, %d left | %.0fs | top %s' % (
+                L, j, mult, desc, len(E.B), st, 100.0 * st / allp, allp, 100.0 * sr / st if st else 100,
+                100.0 * sx / st if st else 100, st - sx, time.time() - t0, ' '.join('%s:%d' % kv for kv in reqs.most_common(3))))
+        say('# L = %d total: %d shapes, %d open fillings (%.1f%% of possible), registry %.4f%% (%d shapes at 100%%), with 2026 %.4f%% (%d at 100%%), worst shape %s at %.4f%%' % (
+            L, len(SH[L]), T, 100.0 * T / AP if AP else 100, 100.0 * C1 / T if T else 100, full1, 100.0 * C2 / T if T else 100, full2,
             worst[1] if worst else '-', 100 * worst[0] if worst else 100))
 
 if __name__ == '__main__':

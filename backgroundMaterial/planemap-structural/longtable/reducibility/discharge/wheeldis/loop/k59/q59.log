@@ -1,0 +1,25 @@
+05:10Z row r59a 7 8657656 6667656 - 1402 windows at ring <= 16, 748 at ring <= 14
+05:16Z ring <= 14 done; 7 kills
+05:16Z stopped drive [822]
+05:16Z drive ended; ring <= 14 all done: True ; kills 7
+kills 7 distinct f-names 7 minimal 1 minimal f-names 1
+Counter({('13', 'C'): 1})
+05:16Z row r59a closed
+05:16Z row r59b 7 7766656 6566556 - 1538 windows at ring <= 16, 776 at ring <= 14
+05:18Z ring <= 14 done; 0 kills
+05:18Z drive ended; ring <= 14 all done: True ; kills 0
+kills 0 distinct f-names 0 minimal 0 minimal f-names 0
+Counter()
+05:18Z 758 windows left -> win52_7_7766656_6566556_todo.txt
+05:18Z row r59b closed
+05:18Z row r59c 7 7566576 6676655 - 1940 windows at ring <= 16, 1014 at ring <= 14
+05:25Z queue stopped by explore for the saturation census (Long Table 05:18Z); relaunched with DNW=2
+05:25Z row r59c 7 7566576 6676655 - 1940 windows at ring <= 16, 1014 at ring <= 14
+05:35Z ring <= 14 done; 26 kills
+05:35Z stopped drive [3309]
+05:35Z drive ended; ring <= 14 all done: True ; kills 26
+kills 26 distinct f-names 15 minimal 5 minimal f-names 3
+Counter({('13', 'C'): 5})
+05:35Z row r59c closed
+05:35Z row r59d 7 7766656 6567556 - 1421 windows at ring <= 16, 716 at ring <= 14
+05:35Z queue stopped by explore: A83 keeppen binders first (Long Table 05:25Z)
