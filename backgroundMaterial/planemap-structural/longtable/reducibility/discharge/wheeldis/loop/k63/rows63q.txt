@@ -1,0 +1,20 @@
+# Round 63 queue (explore 21 Oct, Long Table 16:28Z): Opus s47 A84 keeppen binders (run_A84, 12 rows) alive at A97 and not run
+# before, d >= 8 first, then d7; then the s47 A84 fb-off binders (run_A84nf, 29 rows) alive at A97 and never run, d >= 8 first,
+# then by |w|.  Rows exhausted to ring 18 or at Studio are left out.  run by: DNW=3 python3 ../k56/q56.py ../k63/rows63q.txt 15 7000
+# D LK SV PREFIX   weight face/non-face list
+11 65556565556 65955559565 r63a   -0.0055 FACE keeppen
+10 6555565665 6696666666 r63b   -0.0055 nonf keeppen
+11 65656566556 65555656565 r63c   -0.0017 FACE keeppen
+7 7665566 7675676 r63d   -0.0660 FACE keeppen
+8 75576556 66666566 r63e   -0.0202 FACE nf
+8 95765665 66566555 r63f   -0.0107 nonf nf
+7 8666565 5666765 r63g   -0.0405 nonf nf
+7 9658656 5695555 r63h   -0.0107 nonf nf
+7 7555767 7756656 r63i   -0.0103 FACE nf
+7 7577656 7566556 r63j   -0.0103 nonf nf
+7 7576666 7757575 r63k   -0.0051 nonf nf
+7 7657575 7665566 r63l   -0.0027 nonf nf
+7 9657556 5677565 r63m   -0.0027 FACE nf
+7 7656756 7556677 r63n   -0.0017 nonf nf
+7 7557565 7576886 r63o   -0.0014 FACE nf
+7 7566576 7676755 r63p   -0.0014 nonf nf

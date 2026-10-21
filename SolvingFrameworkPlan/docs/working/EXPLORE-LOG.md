@@ -1,5 +1,28 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
+
+**Pre-registered 16:31Z, before any engine run on these lists (containment already done, below).** Long Table 16:28Z:
+after r62s, until the s53 stacked solve's binders arrive, sweep the A84 s47 keeppen binders, each checked against A97
+first. Lists (Opus branch claude/project-thread-7uelj0, copied to `loop/k63/`): `s47/run_A84/binders_canon.txt` (keeppen,
+l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47/run_A84nf/binders_canon.txt` (fb off,
+29 rows, md5 b5908f18), as a filler after it.
+- **Part 1, containment** (`loop/k55/row55.py`) at main 8ec00aea (A97 = 3,057 D / 1,310 C) + 2026 set
+  (`loop/k63/row63_s47A84_A97.txt`, `row63_s47A84nf_A97.txt`): keeppen 4 of 12 dead (|w| 0.0924 of 0.4219, 21.9%;
+  7667565/7966555, 7657665/7666665, 7556676/6667665, 6665665665/6555555555); fb-off 14 of 29 dead (0.1289 of 0.3578).
+  Of the 8 live keeppen rows, 4 are exhausted or at Studio (7766656/6566556 and 7665566/6675676 run to ring 18 with no kill;
+  7676655/6667656 queued there as k47c; 7766556/6567566 run in Studio's job57face); canon_key lookup (`loop/k63/lookup63.txt`)
+  finds the other 4 never run.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 15, DNW 3, early close by `loop/k63/early63.py` = early62.py):
+  queue `loop/k63/rows63q.txt`, 16 rows: the 4 keeppen rows, d >= 8 first (r63a d11 65556565556/65955559565, r63b d10
+  6555565665/6696666666, r63c d11 65656566556/65555656565, then r63d d7 face 7665566/7675676, |w| 0.0660), then the 12
+  never-run live fb-off rows, d8 first (75576556/66666566, 95765665/66566555), then d7 by |w|. Before each row its
+  containment is rechecked against the current main (row55) after every admission.
+- **Hypothesis.** Rows with d >= 8 die at ring <= 15 (round 62: all 6 did); d7 face rows mostly do not. **Kill line:**
+  fewer than 2 of the 5 d >= 8 rows die at ring <= 15.
+- **Guess.** All 3 keeppen d >= 8 rows die (70 percent); r63d has no kill at ring <= 15 (70 percent); both fb-off d8
+  rows die (60 percent); at least half of the swept d7 non-face |w| dies (55 percent).
+
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
 **Pre-registered 08:08Z, before any containment or engine run on this list.** Opus 08:07Z: the fb-off nosep cert
