@@ -23,6 +23,14 @@ list too); its window cache carries over.
   windows for Studio; 7665566/6675676 and 7766556/6566576 to ring 16) and r61c 76665566/55666665 is finishing in round
   61's queue. Queue `loop/k62/rows62q.txt`: 19 rows (15 face, 4 non-face) by |w|, r62a 7676655/6667656 first, DNW 3, taking
   over when r61c closes (`loop/k62/q62.log`).
+- **08:30Z, r61c (76665566/55666665, d8 non-face, -0.0042 here) dies; round 62's queue takes over.** Round 61's queue
+  had run 1429 of the row's 2352 ring <= 15 windows in 32 minutes, with a kill already in hand, so I stopped it by hand
+  (the rest were slow d8 ring-15 windows) and ran minkill47 on what was done: 26 kills, 26 f-names, 7 minimal (smallest
+  f8_...55666_...66.5., ring 13, D on kc + dfast; 2 more D, 4 C, one with X={I0-I7,I1-I8,R0-I0} on a single ring vertex).
+  Files `loop/k47/r61c_kills*` (cb4283d9). Admission head adm62a on main cc47b00a (k3x = A86), regression
+  byte-identical: +16 D, +10 C (26 names, none on main), 0 lost, ring-merge and letter-9 guards unchanged,
+  `loop/k62/adm62a/` (k3x_D d3901238, k3x_C 9001e009). The queue `loop/k62/rows62q.txt` started 08:30Z with r62a
+  7676655/6667656 (1046 windows at ring <= 15), DNW 3.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
