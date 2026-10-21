@@ -58,6 +58,18 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
   Files `loop/k47/r58f_kills*`, `r58h_kills*` (898fd2f2). One admission head for both, adm58fh on main 55732ff4,
   regression byte-identical: +30 D, +29 C (59 names, none on main), `loop/k58/adm58fh/`. The face-row guess (none dies
   at ring <= 14) was wrong for 2 of 5: a long 5-run in the link (r58f) or a d11 hub (r58h) is not the d7 face lock.
+- **02:37Z, the 3 small rows all die at ring 14** (adm58fh admitted at 5fa0ba6c). r58i (7666766/6556565, 2/421): 808
+  windows, 2 kills, 1 f-name f7_..66676_..55.5. (C, X={I0-I1}). r58j (7656766/6556656, 2/421): 914 windows, 1 kill
+  f7_5676676_5..5..5 (C, X={I1-I7,I5-I6,R11-I6,R13-I7}, two components with one ring vertex each). r58k (d10 face
+  6556665566/6565565655, 1/421): 2,493 windows (01:59-02:36Z), 48 kills, 14 f-names, 5 minimal (2 D, 3 C). Files
+  `loop/k47/r58i_kills*`, `r58j_kills*`, `r58k_kills*` (e41819e5). One admission head adm58ik on main 37b5a51a
+  (registry = 5fa0ba6c), regression byte-identical: +10 D, +6 C (16 names), `loop/k58/adm58ik/`.
+- **02:37Z, verdict on H-A78 at ring <= 14: the hypothesis holds, the kill line is not hit.** All 5 non-face rows die
+  at ring 12-14 (r58a, d, e, i, j; 52/421), and 3 of the 6 new face rows too (r58f ring 11, r58h and r58k ring 14;
+  25/421). Dead: 77/145 of the 13 rows' |w|. Left: the face rows r58b, r58c, r58g (60/421) and the two exhausted face
+  rows (8/421). Guesses: part 1 right; all 3 top non-face rows at ring <= 14 right (55 percent); no face row dying
+  wrong (3 of 6 died). Ring-15 check of r58b, r58c, r58g (24 + 188 + 222 windows net of Studio,
+  `loop/k47/win58_7_*_r15.txt`, STOP=1 per row) started 02:37Z, as Long Table asked (00:51Z).
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
