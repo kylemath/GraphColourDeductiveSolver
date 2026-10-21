@@ -84,6 +84,12 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
   containment). Partial tally of 9 rows: 5 dead (r64a d10, r64d, g, h, k, all at ring <= 15), 4 with no kill at ring
   <= 15 and handed to the farm (r64b, c face; r64e, f non-face). Of the 6 non-face d7 rows decided, 4 died. The kill
   line (fewer than 5 of the 16 non-face rows die) and the guesses stay open. Logged 21:08Z.
+- **21:12Z, data for the "Interpretable route to four colours" thread** (coordinator relay of k's refocus):
+  /mnt/project-files/explore/dataset/ holds windows_judged.tsv (97,174 kc-judged windows with configuration line,
+  interior degrees and kc/dfast/cfast labels: 2,912 two-engine D, 1,017 two-engine C, 93,215 neither),
+  binder_rows_swept.tsv (the 50 rows of rounds 54-64 with kill or to-do) and opus_binder_rows.tsv (113 merged Opus
+  binder rows, 69 dead / 44 alive at adm64g), with README and MD5SUMS. Built by `loop/k64/dataset/mkds.py` and
+  `mkrows.py`.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
