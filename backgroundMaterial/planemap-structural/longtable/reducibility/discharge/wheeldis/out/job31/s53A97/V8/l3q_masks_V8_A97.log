@@ -1,0 +1,7 @@
+forbidden set: 582 RSST + 4367 k3x (k3x_D_8ec00aea.out, k3x_C_8ec00aea.cfast) = 4949 configurations
+sigma +1: a2 = ('p', 0, 2), a = ('s', 0), o = ('s', 7); 10 requirement sets (10 use a2, 0 avoid a2)
+sigma -1: a2 = ('p', 0, 1), a = ('s', 7), o = ('s', 0); 10 requirement sets (10 use a2, 0 avoid a2)
+reading A (kill only through a2): masks by side {(-1, 30): 50, (-1, 31): 2450, (1, 30): 50, (1, 31): 2450}
+reading B (an a2-free embedding kills all): {('B', -1, 30): 50, ('B', -1, 31): 2450, ('B', 1, 30): 50, ('B', 1, 31): 2450}
+studio_l3qtabV8_+1.json: md5 2e8e8f5ee1e88efae667e49bb3ee4047; killed letters: {(5,): 50, (): 2450}
+studio_l3qtabV8_-1.json: md5 2e8e8f5ee1e88efae667e49bb3ee4047; killed letters: {(5,): 50, (): 2450}
