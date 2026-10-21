@@ -42,6 +42,11 @@ row file in loop/k4*, k5*, k60 and this log: 19 rows new (8 face, 11 non-face); 
   letters), 31 containment patterns unchanged. `loop/k60/kpriv60.py` now reads a grown window's apex letters from its
   x60 name; each new kill is checked isomorphic to my own window and contains no registry or 2026 configuration. Grid
   `loop/k60/pair60_grid.txt`: 9656775 w5 dead 10 of 25, 7666567 w6 dead 9 of 25. Copies in /mnt/project-files/explore/pair60/.
+- **07:19Z, r60f (7666567/5665565, round 60's keeppen binder) dies at ring 14.** Its ring <= 15 windows gave 17 kills,
+  17 f-names, 2 minimal: f7_..56776_..5.55. (ring 14, C, X={I0-I5}) and f7_5666776_....5.. (ring 15, C, X={I0-I7}).
+  Files `loop/k47/r60f_kills*` (8e891e37). Admission head adm61a on main 1985544f, regression byte-identical: +4 D,
+  +13 C (17 names, none on main), 0 lost, ring-merge and letter-9 guards unchanged, `loop/k61/adm61a/` (k3x_D cf3a0094,
+  k3x_C 7575c7ca). Its pair windows (Long Table 05:40Z, if no kill) are not needed. Next row r61a 7766656/6566556 (07:21Z).
 
 ## Round 60 (21 Oct 2026, 05:36Z-): H-A83, do the top binders of Opus's A83 keeppen solve die at ring <= 15?
 
