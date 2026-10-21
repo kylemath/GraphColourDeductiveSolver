@@ -28,6 +28,20 @@ row file in loop/k4*, k5*, k60 and this log: 19 rows new (8 face, 11 non-face); 
   NW 1, STOP 0), 7766655 first since r60f's row sweep may make 7666567 moot. **Hypothesis:** as at 9656775 w5, one
   added 5 apex beside the pair kills the cell. **Kill line:** no window of a cell dies. **Guess:** 7766655 w0 dies
   (35 percent: the open s6 leaves less of the ring closed), 7666567 w6 dies (55 percent).
+- **The two other open five cells, result (07:09Z).** 7666567/5665565 w6 cell 59 dies: the two ring-15 windows
+  `...5565` (adds s3, s4) and `5..5565` are D on kc and dfast (`loop/k60p/KILL`), so **a = 5 next to s6 at w6 is dead for
+  every b**; the 10 ring-16 windows were not run (stopped once the cell was dead). 7766655/6567659 w0 cell 95: all 6
+  windows (ring 16) are not D on kc (reached 24-30 percent of the classes) and none is a C kill, so that cell is not
+  dead; the kill line holds for it. Guesses: 7666567 dies (55 percent) right, 7766655 dies (35 percent) not. With
+  9656775 w5, 8 of the 9 link 7s of the pair table have no five private left; the one open five cell is 7766655/6567659
+  w0, b = 5 next to the >= 9 apex s6, a >= 6. None of the 5 pair-table rows is a row of Opus's A83 nosep cert except
+  7665566/6675676 (canon59), so the queue core went back to the row sweep (q61 restarted with DNW 3, 07:09Z, resuming from
+  the window cache).
+- **kpriv v3 (07:09Z).** `loop/k60/kpriv.txt` (md5 2b824170064aa2afe94224945449c218; v2 kept as `kpriv_v2.txt`): 14 engine kills
+  (v2's 11 plus g7_.656775_..5.65._w5:.5, g7_.656775_.5..65._w5:.5 and g7_7666567_...5565_w6:5., the minimal ones by
+  letters), 31 containment patterns unchanged. `loop/k60/kpriv60.py` now reads a grown window's apex letters from its
+  x60 name; each new kill is checked isomorphic to my own window and contains no registry or 2026 configuration. Grid
+  `loop/k60/pair60_grid.txt`: 9656775 w5 dead 10 of 25, 7666567 w6 dead 9 of 25. Copies in /mnt/project-files/explore/pair60/.
 
 ## Round 60 (21 Oct 2026, 05:36Z-): H-A83, do the top binders of Opus's A83 keeppen solve die at ring <= 15?
 
