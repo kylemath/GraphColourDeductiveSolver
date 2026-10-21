@@ -1,0 +1,33 @@
+# s48 (Opus): stage-1 loads of the 13 receiverR2 rows of s42a/run_A78/cert_q42aA78L.json (md5 0c88b25b), evaluated at the
+# upper solution s42a/run_A78/sol_q42aA78.json (md5 8773a6dc, UPPER-R2 FEASIBLE at t = 0.109439356774). Script s48/loads.py.
+# Units: the engine's. Charge of a vertex of degree d is 6 - d (a five starts at +1); a receiver row says (6 - d) + load <= t.
+# load = sum over recv_coef_R2(d, link, sv, xon) of coef * value, with the A78 flags (xon apexcls filt16 hat5 consall l3q).
+#   y = five -> big direct; M = five -> big through a 6 hat (max of h over sig2_keys); r = five -> big through a 5 hat (hat5);
+#   x = L2 tau big <-> big (in - out); lq/lQ = l3q 7 -> 7 (payer -lq, payee +lQ at Qeff = max(lQ, max lq over mask), as upperR2).
+#   D (big2), z, q, v, rr, f are 0 / absent in this solution.
+# L1   = (6 - d) + (y + M + r)          : load after stage 1 (fives pay bigs by the LP's sender solution), big-big flows removed.
+# LF   = L1 + (x + lq + lQ)             : the LP's own final charge (the row's left side minus t). Matches pcheck binderR2 exactly.
+# slk  = t - LF                         : row slack at the upper solution (0 = tight).
+# Big neighbour v = w_j (letter >= 7): its row is (u, w_{j+1}, s_j, privates.., s_{j-1}, w_{j-1}) with apexes fixed only at
+#   t_0 = w_{j+2}, t_{-1} = w_{j-2}, and t_1 = s_{j+1} if w_{j+1} = 5, t_{-2} = s_{j-2} if w_{j-1} = 5 (Lemma 44.1, RELAY_SPEC_s44).
+#   The d_v - 5 privates and the other apexes are free (5^7 fillings for a 7, 5^9 for an 8). Every filling admissible as v's own
+#   row (engine admissible(): R5, R6, RBIG, all A78 patterns incl. rpatN3, exname hold-outs) is evaluated with the same load.
+#   Exact max/min by branch and bound on the engine's window table (window_table_R2; exact for L1, an upper bound for LF);
+#   check: 5183 random admissible fillings, |L1 - window| > 1e-9 in 0, LF - window <= 3.3e-16.
+#   k1 = [worst, best] spare after stage 1 = [max(0, -max L1(v)), max(0, -min L1(v))] over v's fillings.
+#   kF = worst-case spare at the LP's final charge = max(0, -max LF(v)). Max LF(v) is >= 0.1047 > 0 for every v (= t for most).
+#   Joint reducibility across u's and v's balls (radius 3) is NOT checked: worst cases are over v's own admissible rows only.
+# w(dual)   d link        second ring L1(u)     LF(u)     slk     big neighbours  (wj:degree k1=[worst,best] kF)
+-0.057007  7 7766556     6567568     +0.268075 +0.109439 0.0000  w0:7 k1=[0.0062,1.0000] kF=0.0000 | w1:7 k1=[0.0000,0.9810] kF=0.0000
+-0.057007  7 8677656     5566555     -0.053053 +0.109439 0.0000  w0:8 k1=[0.0000,1.8465] kF=0.0000 | w2:7 k1=[0.0000,0.9076] kF=0.0000 | w3:7 k1=[0.0000,0.9463] kF=0.0000
+-0.057007  7 8665556     7675865     +0.109439 +0.109439 -0.0000  w0:8 k1=[0.0000,1.8465] kF=0.0000
+-0.028504  8 76555566    66757666    -0.022084 +0.109439 -0.0000  w0:7 k1=[0.0000,1.0000] kF=0.0000
+-0.028504  8 76765656    66565565    +0.109439 +0.109439 -0.0000  w0:7 k1=[0.0000,0.9793] kF=0.0000 | w2:7 k1=[0.0000,0.9793] kF=0.0000
+-0.028504  8 76567656    76675555    +0.117155 +0.109439 -0.0000  w0:7 k1=[0.0000,0.9456] kF=0.0000 | w4:7 k1=[0.0000,0.9456] kF=0.0000
+-0.028504  7 8665566     6765765     +0.240963 +0.109439 -0.0000  w0:8 k1=[0.0221,2.0000] kF=0.0000
+-0.028504 11 65655565565 66659665666 +0.021235 +0.021235 0.0882  no big link neighbour
+-0.009501  7 7766556     6576576     +0.221530 +0.062895 0.0465  w0:7 k1=[0.0000,0.9463] kF=0.0000 | w1:7 k1=[0.0000,0.9810] kF=0.0000
+-0.009501  7 7665566     6675676     +0.216782 +0.109439 0.0000  w0:7 k1=[0.0000,1.0000] kF=0.0000
+-0.004751  7 7666766     6556565     -0.212532 +0.104738 0.0047  w0:7 k1=[0.0000,0.9639] kF=0.0000 | w4:7 k1=[0.0000,0.9639] kF=0.0000
+-0.004751  7 7656766     6556656     -0.107567 +0.107118 0.0023  w0:7 k1=[0.1060,0.8726] kF=0.0000 | w4:7 k1=[0.1060,0.8726] kF=0.0000
+-0.002375 10 6556665566  6565565655  +0.068884 +0.068884 0.0406  no big link neighbour
