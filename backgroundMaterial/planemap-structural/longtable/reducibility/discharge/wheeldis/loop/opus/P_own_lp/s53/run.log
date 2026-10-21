@@ -1,1 +1,7 @@
 13:35:41Z [s53] run53 launched (pid 11193); waiting for s51 K (s51/run_A87/K.done or run51p pid 708 gone)
+14:33:02Z [s53] relaunch: registry moved to A92 (LT, main e3d45d7d); old waiter stopped
+14:33:02Z [s53] run53 launched (pid 12320); waiting for s51 K (s51/run_A87/K.done or run51p pid 708 gone)
+16:12:34Z [s53] waiter stopped: LT moved target to A95 (cff84a19), start now without waiting on s51
+16:12:49Z [s53] run53 launched (pid 13977) on A95: prep + V8 tables first (s53/prep95.sh), no wait on s51 (LT 16:12Z)
+16:29:07Z [s53] A95 prep stopped mid kill6; relaunch on A97 (8ec00aea, LT 16:28Z)
+16:29:07Z [s53] run53 launched (pid 14422) on A97: prep + V8 tables first (s53/prep95.sh), no wait on s51 (LT 16:12Z)
