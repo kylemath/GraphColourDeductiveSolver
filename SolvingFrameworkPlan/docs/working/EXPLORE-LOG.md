@@ -20,6 +20,14 @@ row file in loop/k4*, k5*, k60 and this log: 19 rows new (8 face, 11 non-face); 
   7657665/7665765 (new) and 7657656/7666556, all non-face; no 2026 configuration hits a row through u (`loop/k61/row61.txt`).
   Guess 0-2 missed (4). Sweep queue `loop/k61/rows61q.txt`: 34 rows (r60f first, then the non-face rows by |w|, then the
   face rows, round 60's r60c-r60g merged in by |w|), started 06:54Z, DNW 2 (`loop/k61/q61.log`).
+- **06:59Z, pre-registered before any verdict: the two other open five cells of the pair grid**, by the same
+  windows. 7766655/6567659 w0 cell 95 (b = 5 next to s6, a on the ring; a = 5 is already dead) and 7666567/5665565 w6
+  cell 59 (a = 5 next to s6, b on the ring; b = 5 is already dead). `loop/k60/pw60.py` base window plus
+  `loop/k60/pw60x.py` grown by every subset of the other exact apexes, ring <= 16: 6 windows for 7766655 w0 (all ring
+  16; s6 = 9 is open, so the base already has ring 16), 12 for 7666567 w6 (2 at ring 15). Run in `loop/k60p` (drive45,
+  NW 1, STOP 0), 7766655 first since r60f's row sweep may make 7666567 moot. **Hypothesis:** as at 9656775 w5, one
+  added 5 apex beside the pair kills the cell. **Kill line:** no window of a cell dies. **Guess:** 7766655 w0 dies
+  (35 percent: the open s6 leaves less of the ring closed), 7666567 w6 dies (55 percent).
 
 ## Round 60 (21 Oct 2026, 05:36Z-): H-A83, do the top binders of Opus's A83 keeppen solve die at ring <= 15?
 
@@ -109,6 +117,13 @@ cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py
   <= 16 (38 windows, `loop/k60/pairkc/x60_9656775_w5.txt`; cells 95 = a on the ring, 75, 85), run in `loop/k60p` (drive45,
   NW 1, STOP 0). **Hypothesis:** a window with a on the ring dies, so b = 5 dies at w5 for every a. **Kill line:** no
   window dies. **Guess:** some 95 window dies (45 percent): the ring-14 ones add the 5s s1, s2 beside s4's side.
+- **Grown pair windows on 9656775/5556655 w5, result (06:59Z).** Stopped after 15 of the 38 windows, all 13 at ring <= 15
+  and 2 at ring 16, because the hypothesis was settled. 12 windows are D on kc and dfast (`loop/k60p/KILL`): 10 of the
+  95 cell (a on the ring) and 2 of the 75 cell; a 13th (75 `..5.65.`, ring 16) was D on kc when dfast was stopped. Only
+  the windows adding s6 alone (`....655`) are not D. The smallest kills add one 5 apex beside the pair: `..5.65.` (s2)
+  and `.5..65.` (s1), ring 15, and `.55.65.` (both) at ring 14. A 95 kill leaves a on the ring, so it holds for every a:
+  **b = 5 at w5 is dead for every a**, the hypothesis holds and the kill line (no window dies) is not hit. Guess (some 95
+  window dies, 45 percent) right. Name for kpriv: g7_.656775_..5.65._w5:.5 (and the s1 twin).
 
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 
