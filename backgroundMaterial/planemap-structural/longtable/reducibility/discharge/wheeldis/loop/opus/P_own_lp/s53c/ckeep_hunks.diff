@@ -1,0 +1,54 @@
+--- /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s44/eng/pcheck.py	2026-10-20 22:21:38.069810848 +0000
++++ /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s52c/eng/pcheck.py	2026-10-21 11:10:46.311090408 +0000
+@@ -35,6 +35,9 @@
+ for a in sys.argv[2:]:
+     if '=' in a: k, v = a.split('=', 1); OPT[k] = v
+     else: FLAGS.add(a)
++# s41c ckeep=FILE (with noC noCw): keep only the C entries named in FILE (first field per line): cpat names, C 7-wheels c7_<canon word>,
++# studio17 C wheels c5_/c6_<word>. Without ckeep= nothing changes. (s46c: ported onto s39o/eng with exname; exname hold-outs apply first. s52c: same hunks onto s44/eng.)
++CKEEP = set(l.split()[0] for l in open(OPT['ckeep']) if l.strip() and not l.startswith('#')) if 'ckeep' in OPT else None
+ ROOT = OPT.get('root', os.path.normpath(os.path.join(HERE, '..', '..', '..')))
+ DIS = os.path.dirname(ROOT)
+ DMAX = int(OPT.get('dmax', '17')); DTAIL = int(OPT.get('dtail', '30')); EPS = float(OPT.get('eps', '1e-9'))
+@@ -54,7 +57,7 @@
+ for line in open(os.path.join(DIS, 'studio17', 'wheels17_verdicts.txt')):
+     if line.startswith('#') or not line.strip(): continue
+     f = line.split(); fam, wd = f[0].split('_'); v = f[2]
+-    if v == 'D' or (v == 'C' and wd not in EXCL6 and 'noCw' not in FLAGS):   # s33z (from s30t): noCw drops C wheel verdicts
++    if v == 'D' or (v == 'C' and wd not in EXCL6 and ('noCw' not in FLAGS or (CKEEP is not None and f[0] in CKEEP))):   # s33z (from s30t): noCw drops C wheel verdicts
+         (R5 if fam == 'c5' else R6).add(canon(map(int, wd)))
+ FANS = []
+ for line in open(os.path.join(ROOT, 'out', 'fans_dfast.out')):
+@@ -86,12 +89,12 @@
+         for line in open(fn):
+             f = line.split()
+             if f and re.match(r'^c[78]_\d+$', f[0]) and 'D=true' in line: addbig(f[0][3:])
+-    for fn in ([] if 'noC' in FLAGS else glob.glob(os.path.join(ROOT, 'out', 'def_*.cfast'))):   # s33z (from s30t): noC drops cfast C 7-wheels
++    for fn in ([] if 'noC' in FLAGS and CKEEP is None else glob.glob(os.path.join(ROOT, 'out', 'def_*.cfast'))):   # s33z (from s30t): noC drops cfast C 7-wheels
+         cur = None
+         for line in open(fn):
+             if ' r=' in line and not line.startswith(' '):
+                 m = re.match(r'^(?:c7_|\S*_w7_\d+_)(\d{7}) ', line); cur = m.group(1) if m else None
+-            elif 'C-REDUCIBLE' in line and cur: addbig(cur)
++            elif 'C-REDUCIBLE' in line and cur and (CKEEP is None or 'noC' not in FLAGS or 'c7_' + ''.join(map(str, canon(map(int, cur)))) in CKEEP): addbig(cur)
+ 
+ # ---------------- variables ----------------
+ def root(w, j):   # rooted word read from position j, up to reflection of the link
+@@ -142,7 +145,7 @@
+     EXN = set(l.split()[0] for l in open(OPT['exname']) if l.strip() and not l.startswith('#')) if 'exname' in OPT else set(); EXHIT = collections.Counter()
+     nf = 0; missing = []
+     for a in args:
+-        if not a.startswith(('pat=', 'cpat=')) or any(e in a for e in excl) or ('noC' in FLAGS and a.startswith('cpat=')): continue   # s33z (from s30t): noC drops every cpat= file
++        if not a.startswith(('pat=', 'cpat=')) or any(e in a for e in excl) or ('noC' in FLAGS and CKEEP is None and a.startswith('cpat=')): continue   # s33z (from s30t): noC drops every cpat= file
+         fn = a.split('=', 1)[1]; allf = fn.endswith(':all'); fn = fn[:-4] if allf else fn
+         p = fn if os.path.isabs(fn) else os.path.join(ROOT, fn)
+         if not os.path.exists(p): missing.append(fn); continue
+@@ -156,7 +159,7 @@
+                 if ' r=' in line and not line.startswith(' '): cur = line.split()[0]; currm = _rm(line)
+                 elif 'C-REDUCIBLE' in line and cur and re.match(r'^[epf]\d+_', cur):
+                     if cur in EXN: EXHIT[(fn, cur)] += 1; continue   # s40f exname=: C entry held out by name (ring-merge sweep FAILs)
+-                    addpat(cur, 'C', currm)
++                    if CKEEP is None or 'noC' not in FLAGS or cur in CKEEP: addpat(cur, 'C', currm)
+     if EXN: log('exname: %d names held out; %d C entries dropped (%d distinct names) in %s' % (len(EXN), sum(EXHIT.values()), len(set(n for _, n in EXHIT)), dict(collections.Counter(f_ for f_, _ in EXHIT))))
+     if 'nf' in OPT:   # Job 30 part A: whole-arrangement kill patterns, one per line: d LINK SWORD  (or a name f<d>_...)
+         for line in open(OPT['nf']):
