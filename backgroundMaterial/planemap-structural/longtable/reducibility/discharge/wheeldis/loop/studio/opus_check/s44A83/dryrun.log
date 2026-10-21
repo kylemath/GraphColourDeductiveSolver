@@ -1,0 +1,25 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+section 14 prime kill tables from out/job31/s44A83/kill
+fb: 73 values, min 1.29e-14, max 2.65e-13; out of bounds 0; keys outside fbdir=6 0
+l3q: lq 3 values {(5, 6, 5): 0.004718744645302257, (6, 6, 5): 0.0547697980409112, (6, 5, 5): 0.09438993622155423}, lQ 3 values {(6, 6, 31): 0.0547697980409112, (6, 5, 31): 0.09438993622155423, (5, 6, 31): 0.004718744645302257}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 380, 31: 4620}
+l3q UB(c, a) over the table masks: {(5, 5): 0.0, (5, 6): 0.004718744645, (6, 5): 0.094389936222, (6, 6): 0.054769798041}
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.105883918328411 (claimed 0 = 0.000000000000000), model R6x2 apex True apexcls True zh False: 816 y, 372 g, 6895 h, 199 x, z []
+v values 0; r values 75; sol hat5 True
+bounds: 0 negative values; max x = 0.154852 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack -7.98e-13; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 3.44e-12
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+rpatN patterns from s39o_rpatN3_studio.txt: 2287, by d {7: 621, 8: 839, 9: 631, 10: 188, 11: 7, 12: 1}
+patterns distinct by kind: D 17744 (spec 15,497), C 2132 (spec 1,494), RPAT 158 (spec 158); by d {7: 10154, 8: 6213, 9: 3512, 10: 1439, 11: 372, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+FAIL: pattern counts (17744, 2132, 158) differ from expected (0, 0, 0)
+lower check skipped (upper-only job)
+cert rows 0: {}; mrowR2/mrowV not in canonical orientation: 0 []
+fb columns with rc < 0: 0 []
+lower: tco = 0, D = 0; nonzero reduced costs: ; negative (non-x) 0
+VERDICT (lower only): FAIL: pattern counts (17744, 2132, 158) differ from expected (0, 0, 0)

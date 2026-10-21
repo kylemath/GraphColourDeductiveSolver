@@ -1,0 +1,22 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+section 14 prime kill tables from out/job31/s44A83/kill
+l3q: lq 11 values {(5, 6, 5): 0.022562793237669077, (5, 6, 6): 0.0010408870116859203, (5, 6, 7): 0.0010408870116859203, (5, 6, 8): 0.0010408870116859203, (5, 6, 9): 0.0010408870116859203, (6, 6, 5): 0.24347032605270402, (6, 6, 6): 0.1831321246691513, (6, 6, 7): 0.1831321246691513, (6, 6, 8): 0.1831321246691513, (6, 6, 9): 0.042026290739261896, (6, 5, 5): 0.060338201383552836}, lQ 5 values {(5, 6, 31): 0.022562793237669077, (6, 6, 31): 0.24347032605270402, (5, 6, 30): 0.0010408870116859203, (6, 5, 31): 0.060338201383552836, (6, 6, 30): 0.1831321246691513}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 380, 31: 4620}
+l3q UB(c, a) over the table masks: {(5, 5): 0.0, (5, 6): 0.022562793238, (6, 5): 0.060338201384, (6, 6): 0.243470326053}
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.101460415065335 (claimed 132/1301 = 0.101460415065334), model R6x2 apex True apexcls True zh False: 691 y, 163 g, 2164 h, 9208 x, z []
+v values 0; r values 76; sol hat5 True
+bounds: 0 negative values; max x = 3.000000 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack -1.92e-14; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 1.82e-14
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+rpatN patterns from s39o_rpatN3_studio.txt: 2287, by d {7: 621, 8: 839, 9: 631, 10: 188, 11: 7, 12: 1}
+patterns distinct by kind: D 17744 (spec 15,497), C 2132 (spec 1,494), RPAT 158 (spec 158); by d {7: 10154, 8: 6213, 9: 3512, 10: 1439, 11: 372, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+cert rows 256: {'senderR2': 41, 'cons2': 120, 'mrowL': 15, 'mrowR2': 47, 'receiverR2': 33}; mrowR2/mrowV not in canonical orientation: 0 []
+lower: tco = 1, D = 132/1301; nonzero reduced costs: M[766665730] = 54/1301, M[766675531] = 2151/29923, M[766767530] = 947/29923, M[767775531] = 1561/29923, M[769677531] = 60/1301, M[769777531] = 60/1301, M[776675531] = 2941/59846, h[76756775] = 2427/29923, r[5057] = 66/1301, r[5059] = 6/1301, r[506507] = 2522/29923, r[506517] = 1057/59846, r[506519] = 671/29923, r[507509] = 181/29923, r[509519] = 43/29923, r[5157] = 1057/59846, r[5159] = 714/29923; negative (non-x) 0
+LOWER: VALID t >= 132/1301
+VERDICT (lower only): PASS (lower VALID 132/1301)
