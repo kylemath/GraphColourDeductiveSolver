@@ -40,6 +40,12 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
 - **16:53Z, Long Table's split.** The farm gets whole rows k47f (7556676/7567566), k47g (7655566/6759677), k47h
   (7766555/6566959), the 23 ring-18 timeouts and r62m (9657765/5556655); Studio keeps k47c, d, e and drops the rest. Farm
   kills come here for dfast/cfast and admission.
+- **17:01Z, r63c (65656566556/65555656565, d11 face row, keeppen -0.0017) dies at ring 15.** Closed after 18 min (968
+  ring <= 13 windows done, 1951 of 4276 at ring <= 15): 6 kills, 4 f-names, all D, minimal f11_..556656565_..5.5.5555.
+  (ring 15, m 16, kc + dfast). Files `loop/k47/r63c_kills*` (b97ccd92). Head adm63c on main 628e449d (A99): regression
+  byte-identical, +4 D, +0 C, 0 lost, guards unchanged, `loop/k63/adm63c/` (k3x_D f441f9ec, k3x_C 2087d442). All three
+  keeppen d >= 8 rows died (guess hit). Row55 at adm63c: r63d-p hold nothing. Next r63d 7665566/7675676 (d7 face,
+  -0.0660). Logged 17:03Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
