@@ -77,9 +77,11 @@ list too); its window cache carries over.
   main), 0 lost, guards unchanged, `loop/k62/adm62e/` (k3x_D 704f2b00, k3x_C f68473fd).
 - **12:57Z, Studio's ring 16-18 runs on the two swept non-face rows: no kill** (Studio 12:56Z, main 875ed193 / merge
   2671621c). 7766656/6566556 (k47, 652 windows): kc D or C on 0, neither on 630, 22 ring-18 windows hit the 600 s kc
-  limit (its out/job_k47/ is not on main yet; asked Studio to push it). 9656775/5556655 (k47b, 106 windows, out/job_k47b/):
+  limit (out/job_k47/, on main at f6098c1d, timeouts.txt 22 lines). 9656775/5556655 (k47b, 106 windows, out/job_k47b/):
   kc D or C on 0, neither on 105, 1 ring-18 timeout. Asked Studio to run the 23 timeouts at kc -t 10800 before the face
-  rows k47d/k47e, since a D there kills a row of |w| 0.033 or 0.024. Studio's k47c (7676655/6667656) is running.
+  rows k47d/k47e, since a D there kills a row of |w| 0.033 or 0.024; Long Table set the order instead (12:58Z): A84
+  upper, the s52c Lean batch, k47d, k47e, then the 23 timeouts with a kill line (stop if the first 8 give nothing).
+  Studio's k47c (7676655/6667656) is running.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
