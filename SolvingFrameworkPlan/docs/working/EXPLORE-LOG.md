@@ -28,6 +28,16 @@ cert: `loop/opus/P_own_lp/s44/run_A78/cert_q44fbA78L.json` (Opus 54c2c642; l3q +
 - **Guess.** Part 1: 1-4 new rows hit, beyond the 2 controls (55 percent). Part 2: at least 80% of the new non-face |w|
   dies at ring <= 14 (60 percent); at most 3 of the 11 face rows die (65 percent). Part 3: L = 1 under 90%, L = 3 under
   100% (60 percent).
+- **05:09Z, part 1: 3 new rows are already dead** (`loop/k59/row59.txt`, 36 s; registry at 93441313 = 4,498 with RSST).
+  d8 76656566/56655665 (11.16% of |w|) holds r58d's f8_...65656_...6556., 7666766/7556565 (1.87%) r58i's
+  f7_..66676_..55.5., 7667656/7566556 (0.55%) f7_5676676_5..5..5; every hit runs through u (`loop/k59/sites55_rows59hit.txt`),
+  so A83 drops them. Controls pass: r58f (40 hits) and r58j hit. No 2026 hit on any row. Guess right (3 new rows).
+  Part 2 started 05:10Z on the other 42 (`loop/k59/rows59q.txt`, r59a-r59ap, log `loop/k59/q59.log`).
+- **05:13Z, Opus: this cert is a weak nosep cert** (lower 0.0933, below the [E2] 44/421; fb6 is about 0 in the converged
+  A78 solution), so its non-face rows mostly reflect nosep looseness, not the true binders; round 58's s42a list stays the
+  better weight. The queue runs on as cheap filler; the A83 fb6 L cert's rows go to its head when it lands. Part 3: Opus
+  confirms reading (a) and the defaults; low priority (Long Table parked longer chain keys unless fb6 leaves the face rows
+  binding at A83), so it runs when the queue is idle.
 
 ## Round 58 (21 Oct 2026, 00:40Z-): H-A78, do the new binders of Opus's A78 solve die at ring <= 14?
 
