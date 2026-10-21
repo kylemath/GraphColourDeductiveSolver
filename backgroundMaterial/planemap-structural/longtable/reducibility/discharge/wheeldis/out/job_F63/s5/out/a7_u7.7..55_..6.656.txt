@@ -1,0 +1,8 @@
+a7_u7.7..55_..6.656 r=16 m=9 classes=1793614 ext=62867 reached=141146 D=false depth=5 passes=6 mode=gs 14727ms
+  FILL bad=1652468 of 1793614
+  A chord-only: best pair R12-R14 leftover 1088952 (65.9% of bad)
+  B separator+chord: 291 splits, best S=108 u=R5 v=R8 leftover 21646; contracting S into u or v instead: best S=7 into R8 leftover 3304; contraction <= split in 256 cases
+  C0 contract T into one ring vertex (T+u induces a tree), |T|<=8: tested 454, best T=27 into R8 (|T|=4) leftover 1704; best by size: 1:10204 2:4766 3:2176 4:1704 5:1704 6:5562 7:7039
+  C1 contract T into one ring vertex (any connected T), |T|<=8: tested 1643, best T=10f into R8 (|T|=5) leftover 1136; best by size: 1:10204 2:4766 3:2176 4:1704 5:1136 6:1136 7:1704 8:1988
+  D general contraction (one ring vertex per group, no cap), 40 restarts: best leftover 1088 pinned=yes groups[0,8R4,4,0,0,8R4,2,0,3R5]
+  C=false |X|<=4 (kc-C: tested 102090, admissible 50198, edges 40) best X={I0-I1,I0-I2,R8-I0,R8-I7} leftover 1704 (89760ms)

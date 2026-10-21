@@ -1,0 +1,19 @@
+farm63 MacBook Pro (Apple M4 Pro, 14 cores, 48 GB) handoff. kc -C -s 60 -t KT; kcf -C -F 8.
+lane | done (verdict) | notD | timeouts (INCOMPLETE) | KILL_D | KILL_C | unfinished | note
+ring19 | 42/46 | 42 | 4 | 0 | 0 | 4 | row 7766656/6566556, ring 19
+ring19_reruns | 0/4 | 0 | 0 | 0 | 0 | 4 | ring-19 windows that hit KT=3600, re-run at KT=14400
+to18_b | 11/11 | 11 | 0 | 0 | 0 | 0 | ring-18 timeouts list b
+to18_a | 0/12 | 0 | 0 | 0 | 0 | 12 | ring-18 timeouts list a
+r63d_1_tail | 120/120 | 120 | 0 | 0 | 0 | 0 | r63d_1.txt lines 116-235
+r63h | 40/40 | 40 | 0 | 0 | 0 | 0 | 
+gr | 163/200 | 163 | 0 | 0 | 0 | 37 | chunks g_00-g_04 (r_00-r_02 and g_05 handed to GPT)
+r63i_r16 | 284/284 | 284 | 0 | 0 | 0 | 0 | 
+r63i_r17 | 0/169 | 0 | 0 | 0 | 0 | 169 | not started
+r63i_r18 | 0/72 | 0 | 0 | 0 | 0 | 72 | taken back from Gemini, not started
+r64b | 83/327 | 83 | 0 | 0 | 0 | 244 | ring 17-18
+r63j | 0/292 | 0 | 0 | 0 | 0 | 292 | ring 17-18, not started
+r64c | 0/344 | 0 | 0 | 0 | 0 | 344 | ring 17-18, not started
+f_08-f_14_backup | 0/275 | 0 | 0 | 0 | 0 | 275 | backup only, not started
+ring21 | 0/8 | 0 | 0 | 0 | 0 | 8 | PARKED: kc skips r>20
+kcf (-C -F 8) | 48 windows done | best D leftover 256 (a7_u7555767_.756.56) | FZERO lines 0
+unfinished_<lane>.txt hold the exact window lines not finished (timeouts and killed runs annotated).
