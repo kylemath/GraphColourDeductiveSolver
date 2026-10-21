@@ -1,0 +1,21 @@
+jcheck: 12 R5, 25 R6, 7 fans, 91 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 0 C entries dropped (0 distinct names) in {}
+patterns: 241 files read, 0 missing []; distinct by d {7: 9052, 8: 5609, 9: 3162, 10: 1352, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17700, 'RPAT': 158, 'RPATN': 2080}
+l3q: 3 q > 0 (total 0.161662525); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 0
+  cons off: L=(5, 5, 6, 5, 7, 7) five=True worst 0.3904
+  cons off: L=(5, 6, 6, 5, 7, 7) five=True worst 0.2934
+conservation: 1426 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 2 (worst 0.39)
+d=7: 231701 violated (exhaustive, 26.4s)
+d=8: 105548 violated (exhaustive, 25.3s)
+d=9: 100519 violated (exhaustive, 16.4s)
+d=10: 381 violated (exhaustive, 2.0s)
+d=11: 0 violated (exhaustive, 1.3s)
+d=12: 0 violated (exhaustive, 1.3s)
+d=13: 0 violated (exhaustive, 1.4s)
+d=14: 0 violated (exhaustive, 1.6s)
+d=15: 0 violated (exhaustive, 1.8s)
+d=16: 0 violated (exhaustive, 2.3s)
+d=17: 0 violated (exhaustive, 2.0s)
+Karp lambda 0.568701326 d0 13.658
+UPPER-R2: INFEASIBLE (438151) at t = 0.109439356774

@@ -1,0 +1,47 @@
+violated rows/cells with all C out: 438523 ({'7': 232073, '8': 105548, '9': 100519, '10': 381, 'cons': 2})
+uncovered by any C entry: 2271
+C entries covering >= 1 row: 582
+sole-cover entries: 112; rows left after the sole set: 16515; greedy adds 31; joint-table additions 0; cover total 143
+cover by kind: {'k3x_C': 131, 'RSST': 8, 'cpat-other': 2, 'C6wheel': 2}
+cover by Lean status: {'CXInt': 84, 'CCover': 25, 'CXRing': 26, 'notLean': 6, 'CWheels': 2}
+sole by Lean status: {'CCover': 24, 'CXInt': 65, 'notLean': 3, 'CXRing': 18, 'CWheels': 2}
+cover by ring (lean status counts):
+  ring 9: 1  {'CXInt': 1}
+  ring 10: 7  {'CXInt': 6, 'CXRing': 1}
+  ring 11: 24  {'CXInt': 18, 'CXRing': 4, 'CCover': 1, 'CWheels': 1}
+  ring 12: 39  {'CXInt': 24, 'CCover': 6, 'CXRing': 8, 'CWheels': 1}
+  ring 13: 41  {'CCover': 2, 'CXInt': 34, 'CXRing': 4, 'notLean': 1}
+  ring 14: 29  {'CCover': 16, 'notLean': 5, 'CXRing': 8}
+  ring 15: 2  {'CXRing': 1, 'CXInt': 1}
+ring 14-16 cover entries:
+  f8_.5656765_....5... r=14 CCover k3x_C S sole=480 cov=544
+  f7_.565776_...5.5. r=14 CCover k3x_C S sole=310 cov=444
+  f9_...566566_....5..5. r=14 CCover k3x_C S sole=230 cov=244
+  f7_..65676_..66.5. r=14 notLean k3x_C S sole=133 cov=834
+  f9_..5565675_......5.. r=14 CXRing k3x_C S sole=120 cov=406
+  f7_.566676_.....5. r=14 CCover k3x_C S sole=72 cov=488
+  f9_...565656_......66. r=14 CCover k3x_C S sole=54 cov=2337
+  f10_...5655665_.......5.. r=14 CCover k3x_C S sole=44 cov=206
+  f8_..567575_...5..5. r=14 CCover k3x_C S sole=42 cov=760
+  e7_B56656._6B.66.._1111110 r=14 CCover cpat-other S sole=24 cov=76
+  f8_..566576_.....55. r=14 CCover k3x_C S sole=24 cov=83
+  f8_...56585_.....565 r=14 notLean k3x_C S sole=20 cov=313
+  f9_..5656665_......5.. r=14 CCover k3x_C S sole=16 cov=44
+  f9_..5656665_.....5... r=14 CCover k3x_C S sole=16 cov=24
+  f7_5675767_.5..... r=15 CXRing k3x_C S sole=12 cov=158
+  f10_...5656565_......66.. r=15 CXInt k3x_C S sole=11 cov=63
+  f9_...565765_....5.5.. r=14 notLean k3x_C S sole=9 cov=35
+  f10_...5565665_.......5.. r=14 CCover k3x_C S sole=6 cov=71
+  f9_...565665_....66... r=14 CCover k3x_C S sole=6 cov=270
+  f7_5666766_...5... r=14 CCover k3x_C S sole=4 cov=180
+  f8_...56585_....665. r=14 CCover k3x_C S sole=3 cov=13
+  f9_...656656_...5...5. r=14 CXRing k3x_C S sole=2 cov=22
+  f9_..5656565_.......6. r=14 CXRing k3x_C G sole=0 cov=5216
+  f8_..565676_...5..5. r=14 CCover k3x_C G sole=0 cov=107
+  f7_5667576_..5.... r=14 CXRing k3x_C G sole=0 cov=621
+  f7_..56758_...5.5. r=14 CXRing k3x_C G sole=0 cov=52
+  f8_.5566765_.....5.. r=14 CXRing k3x_C G sole=0 cov=12
+  f10_...5656656_.......55. r=14 notLean k3x_C G sole=0 cov=18
+  f8_...65676_...56.5. r=14 CXRing k3x_C G sole=0 cov=92
+  f8_..556856_..5655.. r=14 CXRing k3x_C G sole=0 cov=31
+  f7_.656766_.65.5.. r=14 notLean k3x_C G sole=0 cov=136

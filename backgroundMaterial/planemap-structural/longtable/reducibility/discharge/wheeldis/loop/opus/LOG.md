@@ -879,3 +879,11 @@ our agent R and have no output from it.
 - RSST 2.126 and 8406.123 were not used.
 
 - 2026-10-21 03:29Z [E2] s42a CONFIRMED by Studio (9bc9b2b2, loop/studio/opus_check/s42a_verdict.md): A78 b6dc7610 with the 128 ring-merge cpat names held out, l3q + rpatN3. **44/421 = 0.104513 <= t* <= 0.109439356774.** Upper FEASIBLE (receivers 0 violators, Karp lambda 0.5731); lower VALID at exactly 44/421. Sources: RSST rule 9 (l3q) and the 2026 set (used as a map, proved D on our two engines). C cover for Studio's Lean batch in progress (s46c).
+
+- 2026-10-21 04:30Z s46c: C cover for the s42a A78 upper (sol_q42aA78 8773a6dc, b6dc7610, the 128 exname names held out), built the same way as s41c's ccover_A74.
+  - Engine s46c/eng = s39o/eng (with the exname port) + s41c's ckeep= patch. Control: s42a's upper rerun unchanged gives FEASIBLE at 0.109439356774, identical to s42a/run_A78/upper.log (timings stripped). ckeep_all control also identical.
+  - All C out: 438521 receiver rows + 2 conservation cells. D-only tables have the same md5 as s41c/noC. Held-out names were never cover candidates.
+  - **Cover: 143 C entries** (112 sole + 31 greedy, no joint-table additions): 131 k3x_C, 8 RSST, 2 old cpat, 2 C 6-wheels.
+  - Lean status: CXInt 84, CXRing 26, CCover 25 (origin/main out/lean_ccover/1c56a79e/entries.txt), CWheels 2, **not in Lean 6** (all k3x_C, ring 13-14): f7_..65676_..66.5., f8_...56585_.....565, f9_...565765_....5.5.., f7_..65676_..5..5., f10_...5656656_.......55., f7_.656766_.65.5..
+  - Check: upperR2 keeping only the cover's C (ckeep_A78.txt) gives FEASIBLE at 0.109439356774. Dropping the first sole entry (f9_...555565_.........) gives INFEASIBLE (20).
+  - RSST 2.126 and 8406.123 were not used.
