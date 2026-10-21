@@ -51,6 +51,11 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   120 at 18), copied to /mnt/project-files/explore/todo63/; Long Table to place it (Studio or the farm). Guess "r63d has
   no kill at ring <= 15" hit. Next r63e 75576556/66666566 (d8 face, fb-off). Logged 17:08Z.
 - **17:09Z, r63d's to-do goes to the farm** (Long Table), ahead of k47f-h there; file handed over.
+- **17:10Z, r63e (75576556/66666566, d8 face row, fb-off -0.0202) dies at ring 13.** Closed after 3 min (922 ring <= 13
+  windows done): 4 kills, 2 f-names, both D at ring 13, minimal f8_..556755_..5..66. (m 10, kc + dfast). Files
+  `loop/k47/r63e_kills*` (e2d5d602). Head adm63e on main 23e25c28 (A100): regression byte-identical, +2 D, +0 C, 0 lost,
+  guards unchanged, `loop/k63/adm63e/` (k3x_D aa11802b, k3x_C 2087d442). Row55 at adm63e: r63f-p hold nothing. Next r63f
+  95765665/66566555 (d8, non-face). Logged 17:12Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
