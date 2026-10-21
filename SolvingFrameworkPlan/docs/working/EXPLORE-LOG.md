@@ -66,6 +66,24 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
   byte-identical, but twoeng's letter-9 rule excludes the name (1 excluded), so +0 D, +0 C. Asked Long Table to rule on
   a 9 at an N position. Until then r64g is not dead for the LP; its other 414 ring <= 15 windows are not run. Next r64h
   7667656/6565775 (non-face). Logged 21:02Z.
+- **21:05Z, Long Table rules (a) on r64g: a letter 9 at a window position marked N/F is a ring-vertex degree and
+  reads as LP >= 9** (COORDINATOR-STATE 2a4e4df1). The interior-9 guard is unchanged. Implemented narrowly as a patch to
+  out/job30/twoeng.py, `loop/k64/l9ring/twoeng.py` (diff `twoeng_l9ring.diff` against main 2a4e4df1's copy): a name
+  with link/s 9 is admitted only with a line in `loop/k*/letter9_ring_ok.txt` whose window and row rebuild the f-name with
+  every 9 at an N/F position and none interior, that is D on both engines, and whose kc line at 8 equals the kill line.
+  Negative tests in the scratch tree (wrong kc line at 8, an interior 9, a row with no 9) are all excluded. Evidence
+  `loop/k64/letter9_ring_ok.txt` (kcc -C on the w0 = 8 line: D, same counts). Head adm64g by `loop/k64/adm64.py` on
+  main 2a4e4df1 (A109): main's twoeng regression byte-identical, the patched twoeng on main alone byte-identical, then
+  with r64g's files +1 D (3123 -> 3124), +0 C, 0 lost, 1 name through the exception, `loop/k64/adm64g/` (k3x_D
+  3539059c, k3x_C c5e8ed9e). Row55 at adm64g: r64g and r64k dead.
+- **21:06Z, r64h (7667656/6565775, d7 non-face row, fbA83 -0.0021) dies at ring 15.** Closed after 8 min (453 ring
+  <= 13 windows done, 782 of 1121 at ring <= 15): 1 kill, f7_5676676_.5.5.5. (ring 15, m 11, D on kc + dfast). Kill
+  files `loop/k47/r64h_kills*`; no head built (paused).
+- **21:08Z, round 64 paused** (user k 21:06Z: refocus all resources on the "Interpretable route to four colours"
+  thread, save the discharging path for now). Queue and early64 stopped by hand; r64i-w not run (r64k dead by
+  containment). Partial tally of 9 rows: 5 dead (r64a d10, r64d, g, h, k, all at ring <= 15), 4 with no kill at ring
+  <= 15 and handed to the farm (r64b, c face; r64e, f non-face). Of the 6 non-face d7 rows decided, 4 died. The kill
+  line (fewer than 5 of the 16 non-face rows die) and the guesses stay open. Logged 21:08Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
