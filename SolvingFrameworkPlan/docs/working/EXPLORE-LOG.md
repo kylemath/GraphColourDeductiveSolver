@@ -22,6 +22,10 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
 - **00:41Z, part 1: no hit** (`loop/k58/row58.txt`): none of the 10 rows holds a configuration of the registry at b6dc7610
   (4,410 with RSST) or of the 2026 set, through u or avoiding it, so the 128 hold-outs do not matter here. Guess right.
   Part 2 started 00:40Z (`loop/k58/rows58q.txt`, r58a-h, log `loop/k58/q58.log`).
+- **00:42Z, the other 3 rows** (Opus 00:41Z; L cert at b4b974a8, md5 0c88b25b47eba186b06bcbfb3ae309b8 checked): 7666766/6556565
+  and 7656766/6556656 (2/421 each, non-face) and d10 6556665566/6565565655 (1/421, face), all new, no registry or 2026 hit
+  (row58.txt rerun on 13 rows). They run after r58h as `loop/k58/rows58q2.txt` (r58i-k, log `loop/k58/q58b.log`). The
+  13 rows' |w| is 145/421; non-face 52/421, of it 48/421 in r58a, d, e.
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
