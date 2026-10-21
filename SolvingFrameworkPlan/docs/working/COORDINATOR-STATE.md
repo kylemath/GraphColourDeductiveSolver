@@ -80,6 +80,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21 Oct 16:42Z: ADMITTED adm63a (explore 69f0c355, base 8ec00aea): r63a = A84 keeppen d11 face row 65556565556/65955559565 dies at ring 13, minimal f11_...55565655_......55... (D). +34 D, lost 0, md5 match. Kill files from 5a3152f1. Registry A98 = 3,091 D / 1,310 C. Round 62 verdict: every face row with d >= 9 died (6/6), only 3 of 9 d7 face rows died, and the other 6 are at Studio for ring 16-18. s53 is solving on A97.
 - 21 Oct 16:31Z: ADMITTED adm62k (explore e064b7df, base 5e5cfd02): r62q = 7666675/7575755 dies at ring 14 (f7_.576666_55.5.5., D, kc + dfast), and r62r 7666675/7565755 dies with it. +2 D, lost 0, md5 match. Kill files from 10b01f1c. Registry A97 = 3,057 D / 1,310 C.
 - 21 Oct 16:29Z: ADMITTED adm62j (explore 6ea63e14, base cff84a19): r62p = d10 face row 6556656656/6565655655 dies at ring 15, minimal f10_..55665665_..5.55.55. (D, kc + dfast). +4 D, lost 0, md5 match. Kill files from 56e122fc. Registry A96 = 3,055 D / 1,310 C. Every d >= 8 row of the A83 fb-off list is now dead, and only d7 rows remain alive (19 of 33 dead at A95). Target set by Kyle 16:11Z: an upper below 0.1 today. s53 is solving on A95.
 - 21 Oct 16:09Z: ADMITTED adm62i (explore 2ad3985c, base 949eb544): r62n = d7 face row 7766555/6576956 dies at ring 13, minimal f7_..55776_..56.5. (C, X={I0-I3}), plus 2 spare r62o kills. +4 D +4 C, lost 0, md5 match. Kill files from 62ebab34. Registry A95 = 3,051 D / 1,310 C.
