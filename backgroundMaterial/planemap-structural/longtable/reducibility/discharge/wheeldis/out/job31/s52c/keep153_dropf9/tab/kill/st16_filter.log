@@ -1,0 +1,17 @@
+RSSTC_KEEP: 9 RSST C2cons kept (['rsst072', 'rsst118', 'rsst137', 'rsst140', 'rsst148', 'rsst178', 'rsst180', 'rsst187', 'rsst217'])
+forbidden set: 258 RSST (D2 249, C2cons 9) + 2844 twoeng = 3102
+check 4 full test, per-slot kills: {'p01': {5: ['rsst180']}, 'p02': {5: ['rsst180']}, 'p11': {5: ['rsst052']}, 'p21': {5: ['f7_...5565_.......', 'rsst050']}, 'p51': {5: ['rsst050'], 6: ['rsst098']}, 'p61': {5: ['rsst052']}}
+check 4 full test: 3072 survivors (spec 3,072)
+K_U7 in the spec layout (uint8 (5,)*8, bit i = letter 5+i killed): file md5 975b02ac7c6a1d2e28683694bcdb8532, raw-array md5 101d52bfca73ea916797b78eccb34c94
+K_U7: 62737 killed (window, p) of 1953125; mirror-symmetry exceptions 0; tobytes md5 3f1b74188edf6b9f09730630c7a8321c
+K_U8 in the spec layout (uint8 (5,)*8, bit i = letter 5+i killed): file md5 6dc44bbaae0e7a9a9136f191a5aa6ce8, raw-array md5 b907227611e72bfcf76eb882f9b48714
+K_U8: 56464 killed (window, p) of 1953125; mirror-symmetry exceptions 0; tobytes md5 9690a51396b803718b1d606c17a6bd89
+K_U9 in the spec layout (uint8 (5,)*8, bit i = letter 5+i killed): file md5 6dc44bbaae0e7a9a9136f191a5aa6ce8, raw-array md5 b907227611e72bfcf76eb882f9b48714
+K_U9: 56464 killed (window, p) of 1953125; mirror-symmetry exceptions 0; tobytes md5 9690a51396b803718b1d606c17a6bd89
+U8 == U9: True
+check 4 LP projection: 7500 survivors (spec 7,500); md5 of sorted lines joined by newline + trailing newline: 9b4d02bace5786cbf0f6c5c7c7434dbc
+check 4 LP projection: 7500 survivors (spec 7,500); md5 of sorted lines joined by newline: b41cda5e1d30d37d7181c29c49952286
+LP-visible kills at the binder: {'p11': [], 'p21': [5], 'p51': [5, 6], 'p61': []}
+unknown link letters coded 5, strict: tables identical to the default: True
+unknown link letters coded 7, strict: tables identical to the default: True
+control, non-strict with unknowns as degree 5: 4800 survivors (spec 3,072 = the failure the strict rule prevents); md5 03800b8685ae6f158f6313cfff591019
