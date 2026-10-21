@@ -1,0 +1,20 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10153, 8: 6166, 9: 3519, 10: 1425, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17700, 'C': 2088, 'RPAT': 158, 'RPATN': 2080}
+  negative reduced costs: 87 [(('g', (5, 1, 1, 0, 6, 7, 5)), Fraction(-78727015335036870547822541005039951, 140119878205484860332651290623058998358950897032)), (('g', (5, 1, 1, 0, 9, 5, 7)), Fraction(-23928447774473969, 43349696169733705759606105044)), (('g', (5, 1, 0, 1, 9, 5, 7)), Fraction(-35367, 82244843378521208)), (('g', (5, 0, 0, 1, 9, 7, 5)), Fraction(-2108930566, 6407341159514671831869)), (('g', (5, 1, 0, 1, 9, 5, 5)), Fraction(-44872269172390328504581, 150095866818109148718129124977175976))]
+rows by type: {'senderR2': 70, 'cons2': 884, 'mrowR2': 100, 'mrowL': 16, 'receiverR2': 48}
+LOWER-R2 (unrepaired): INVALID  t >= 85955310164580217053426751608958699133861512554862174956633676630786772133773706261011975383939103216102049282744311850814054911512656631986151645510113124226277009563004109/921217945062825724856606413994359359767158187164425589639211181394601389806785426084736556078898926987878791895725963346055298182055700417986215647112149159332983311405645840 = 0.093306161  (1118 rows)
+REPAIR: round 0: 87 columns pinned to rc 0, 87 weights moved (max 4.3e-13); 86 negative columns left
+REPAIR: round 1: 173 columns pinned to rc 0, 170 weights moved (max 4.37e-13); 59 negative columns left
+REPAIR: round 2: 232 columns pinned to rc 0, 220 weights moved (max 4.66e-13); 55 negative columns left
+REPAIR: round 3: 287 columns pinned to rc 0, 269 weights moved (max 6.36e-13); 27 negative columns left
+REPAIR: round 4: 314 columns pinned to rc 0, 293 weights moved (max 6.36e-13); 31 negative columns left
+REPAIR: round 5: 345 columns pinned to rc 0, 316 weights moved (max 4.28e-13); 13 negative columns left
+REPAIR: round 6: 358 columns pinned to rc 0, 328 weights moved (max 5.36e-13); 17 negative columns left
+REPAIR: round 7: 375 columns pinned to rc 0, 339 weights moved (max 6.57e-13); 4 negative columns left
+REPAIR: round 8: 379 columns pinned to rc 0, 342 weights moved (max 6.57e-13); 0 negative columns left
+REPAIR: exact cert written to /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s44/run_A78/cert_q44fbA78L_rep.json; rechecking it from the file (norepair)
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10153, 8: 6166, 9: 3519, 10: 1425, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17700, 'C': 2088, 'RPAT': 158, 'RPATN': 2080}
+rows by type: {'senderR2': 70, 'cons2': 884, 'mrowR2': 100, 'mrowL': 16, 'receiverR2': 48}
+LOWER-R2: VALID  t >= 9131798417383828794737422683430434648108827196955564620922443875358190045148123432346366274129557465888704773423704416514293889206776519/97869189903453453829216630108874886467822675977763758121876035062914728902480847775528217438784541840936981404352470133168479486393123800 = 0.093306161  (1118 rows)

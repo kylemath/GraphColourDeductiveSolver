@@ -857,3 +857,23 @@ our agent R and have no output from it.
   - l3qV's raw r58 price matches it, but most of that is spent on the d = 8 rows' Q credit. The bundle is −12/421 on r58c
     and r58g, a third of fb6's.
 - RSST 2.126 and 8406.123 were not used.
+
+## s44 (cont. 2): lowerR2 INVALID on the A78 fb6 nosep cert: float noise, exact repair (RELAY_SPEC_s44.md §44.8)
+- **Cause.**
+  - 87 uncapped g/h columns with rc between −5.6e−13 and −2.5e−16 (sum 5.8e−12), from rationalising each of 1118 weights on its own (884 free cons2 rows).
+  - No fb column was negative. fb is priced at cap 3 at both ends, and the cons2 +1 sign is shared with the solve.
+  - The LP was Optimal with t* 0.093306161292. Exact floats (wden 1e12/1e18) still leave 1e−14 noise.
+- **Fix.** s44/eng/prelay2.py `cmd_lowerR2`, via s44/port_repair.py:
+  - String weights are taken exactly.
+  - If the only failure is uncapped columns with |rc| ≤ 1e−9, the free cons2 weights and the negative mrow* weights get an exact rational solve that pins those rc to 0 (moves ≤ 1e−6, signs kept).
+  - The repaired cert is written as `*_rep.json` and rechecked from the file by the unchanged checker (`norepair`).
+- **A78 result: VALID t ≥ 0.093306161279** (s44/run_A78/lower_rep.log, cert_q44fbA78L_rep.json; 9 rounds, weights moved ≤ 6.6e−13). The upper bound is still FEASIBLE at 0.109439356774.
+- **Controls (s44/ctl_rep/).**
+  - G: own fb6-cap-3 nosep cert from the 48 cert receiver rows. INVALID by noise, repaired to VALID 0.093306161.
+  - M2: payer sign flipped in the solve only, fb uncapped. LP t* inflated to 0.093350740; check INVALID (fb rc −0.194), repair refused.
+  - M: cons2 sign flipped. The LP is looser (t* −5/7), so the cert is a genuine weak bound and is VALID.
+  - (a): fb-off A74 lower log byte-identical to s39o.
+- **A82 and A83.**
+  - A83 (run44c.sh) is still in K. Its L stage calls the patched engine, so it picks the fix up with no restart.
+  - run44b.sh (A82) is not running: no process and no "A82 run start" note, so it was stopped before its wait ended. It was not restarted.
+- RSST 2.126 and 8406.123 were not used.

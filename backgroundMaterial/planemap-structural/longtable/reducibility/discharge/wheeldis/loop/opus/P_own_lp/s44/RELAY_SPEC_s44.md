@@ -197,3 +197,38 @@ row split).**
   These are dual-side estimates at the current cert, not a new bound.
 
 **Step 4: no solve was run.** As asked, it is reported first.
+
+## 44.8 lowerR2 INVALID on cert_q44fbA78L: float noise, and an exact repair (s44 cont.)
+
+**Why it failed.** `lowerR2` on the A78 fb6 nosep cert (1118 rows: 70 senderR2, 884 cons2, 100 mrowR2, 16 mrowL, 48 receiverR2)
+found 87 uncapped columns with negative reduced cost, all g (45) and h (42), the worst −5.6e−13, total 5.8e−12.
+- **fb was not the cause.** No fb column is negative. fb is priced at cap 3 (both ends: payer −1 in u's receiver row, payee +1 in the 6's cons2 row).
+  The check and the solve build cons2 from the same `cons2_coef`.
+- **The dual is clean.** LP status Optimal, t* = 0.093306161292. The bound before the noise was 0.093306161289.
+- **The cause is rational recovery.** Each weight is rationalised on its own (`limit_denominator(1e7)`). On 884 free cons2 rows this leaves residuals around 1e−13 on reduced costs that are 0 in the LP. Taking the floats exactly (wden 1e12, 1e18) does not help: residuals of 1e−14 remain, spread over g, h, r, y and M.
+- The receiverR2 count (48) and the weight on 7766556/6567566 in the report are just the cert's rows and weights. They are not failures.
+- Earlier certs (s42a, 155 rows, few cons2 rows) never had enough free rows to show this.
+
+**Fix (engine s44/eng/prelay2.py, `port_repair.py`).** The check itself is unchanged: rows are re-derived from labels, signs are enforced, capped families are priced at cap, and any negative uncapped column makes the cert INVALID. Two additions:
+1. A weight given as the string "p/q" is taken exactly. Float weights are rationalised as before.
+2. **Repair.** It runs only when nothing else failed and every negative column is uncapped with |rc| ≤ reptol (default 1e−9).
+   - Only free cons2 weights and strictly negative mrow* weights move. Those touch neither t's coefficient nor D.
+   - An exact sparse rational solve sets the negative columns' reduced cost to exactly 0. Columns pushed negative by a round are added in the next round.
+   - The solve is refused if a weight would move by more than repmax (1e−6) or an mrow weight would change sign.
+   - The repaired cert is written next to the input as `*_rep.json`, with exact string weights. The full check then reruns from that file with `norepair`.
+   - The final `LOWER-R2:` line is the verdict on that file. The first pass is labelled `(unrepaired)`.
+   - Soundness rests only on the unchanged checker applied to the written file. The repair never decides validity.
+
+**Results.**
+
+| cert | before | repair | after |
+|---|---|---|---|
+| A78 cert_q44fbA78L | INVALID, 87 g/h, worst −5.6e−13 | 9 rounds, 379 columns pinned, 342 weights moved by ≤ 6.6e−13 | **VALID t ≥ 0.093306161279** (exact, denominator 137 digits) |
+| control G: own nosep solve, fb6 cap 3, warm = the 48 receiver rows of that cert (reg_A78) | INVALID, 91 g/h, all noise | 9 rounds, ≤ 7.0e−12 | **VALID 0.093306161** (1049 rows) |
+| control M2: same solve, payer sign flipped in the solve only (eng_mis2), fb uncapped | INVALID, 93 columns, fb down to −0.194 | refused (beyond reptol) | **INVALID** (inflated LP t* 0.093350740 > true 0.093306161) |
+| control M: cons2 inflow sign flipped in the solve only (eng_mis), fb uncapped | VALID −5/7 | none | VALID −0.714 |
+| control (a) rerun: fb off, A74 n3 cert | VALID 20/183 | none | log byte-identical to s39o |
+
+- Control M is a weak bound, but a genuine one. The mis-signed LP is looser than the true LP (t* −5/7), so its dual stays feasible in the true LP and the exact check accepts it. M2 is the mis-signing that inflates t, and the check rejects it.
+- The A78 nosep lower bound 0.0933061613 sits below the keeppen upper bound 0.109439356774. The nosep LP covers only the warm rows.
+- A83 (`run44c.sh`) runs `pcheck.py lowerR2` from s44/eng in its L stage, which had not started when this was patched, so it picks the repair up. Its repaired cert lands at s44/eng/cert_q44fbA83L_rep.json.
