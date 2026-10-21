@@ -38,6 +38,11 @@ list too); its window cache carries over.
 - **09:06Z, r62b (7665566/7765766, d7 face row, -0.0461) has no kill at ring <= 15** (935 windows, 0 kills). To-do 391
   windows (114 at ring 16, 158 at 17, 119 at 18), `loop/k47/win52_7_7665566_7765766_todo.txt` (md5 01403e0e8691f73a56a36a0d3ba48ea6), held for Studio
   behind its three queued rows. Next r62c 7766655/6567659 (face, -0.0224).
+- **09:11Z, the Formal thread's pair batch 4** (`/mnt/project-files/general-rule/triplewheel/kills_batch4.txt`, md5
+  ae008728, copied to `loop/k60/in60/`): two kc kills at ring 16 in open cells, 7665566/6675676 w0 priv66 and
+  7766556/6567566 w1 priv66. Containment at A87 (`loop/k60/cont60.py`, adm62a's k3x): neither holds a registry or 2026
+  configuration (`loop/k60/cont60_batch4.txt`), so both are new. They go into kpriv (a record since Opus s49) once
+  Studio's second engine is in; no explore core spent on them.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
