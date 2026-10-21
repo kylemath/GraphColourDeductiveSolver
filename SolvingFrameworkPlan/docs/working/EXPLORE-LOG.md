@@ -80,6 +80,10 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   7766656/6566556: median 14 s / 69 s / 261 s at ring 16 / 17 / 18 (p90 at the 600 s cap at 18), about x4 per ring, so
   ring 19 should run about 17 min median with a long tail (k19 took 25 min); the farm times 2-3 windows first. A ring-19
   kc kill needs Studio's dfast18 or cfast (this container has 15 GB).
+- **17:45Z, ring-20 and ring-21 to-dos for the farm** (its request): 7766656/6566556 ring 20 15 windows (a290def4), no
+  ring 21 (ball tops out at 20); 7665566/6675676 ring 20 13 (b7bd5c3d), ring 21 6 (46b164d8); 7766556/6566576 ring 20 9
+  (b4c84a8f), ring 21 2 (fec13f32); in todo63/. kc memory from loop/kc/FINDINGS.md: 253 MB at ring 18, 683 MB at ring
+  19 (about 14 bytes per class, classes x3 per ring), so about 2-2.5 GB at ring 20 and 6-7 GB at ring 21 (extrapolated).
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
