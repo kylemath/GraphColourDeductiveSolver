@@ -99,8 +99,11 @@ There are no mrow rows: both ends read the same exact key, so no max or min sign
 - **cons2 separation (`cons2_delta`) and the upperR2 conservation check:** + fb[σ] at every k with L_k ≥ 7, evaluated
   over all 5^6 apex words via a 5^4 table in (t_k, t_{k−1}, t_{k+1}, t_{k−2}). cons2_coef carries the same term, so
   lowerR2 re-derives it from the label.
-- **Bounds:** fb is uncapped in the LP family. The cap `fbcap` is optional, default none. Under keeppen it carries the
-  x penalty, like lq.
+- **Bounds:** the cap `fbcap` is optional, default none. Every s44 run (run44.sh, run44b.sh, run44c.sh) uses fbcap=3, so
+  each fb amount is a variable in [0, 3]. A lower bound then holds for the family with fb ≤ 3, exactly as lqcap=3 does for
+  l3q. lowerR2 prices a negative fb column at its cap, adding cap·rc to the bound, and that is the correct dual for a bounded
+  variable. A negative fb column below cap is therefore not a failure. Uncapped (fbcap none), the same column makes the cert
+  INVALID. Under keeppen fb carries the x penalty, like lq.
 - **Sub-flags:** `fbdir=6`, `fbdir=7` or `fbdir=67` (default 67) restrict the family.
 - **Sol JSON:** carries 'fb': [[σ, value], ...]. upperR2 refuses fb values without the flag.
 
