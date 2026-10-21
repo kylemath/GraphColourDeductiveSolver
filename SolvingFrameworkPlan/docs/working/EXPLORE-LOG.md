@@ -50,6 +50,9 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
   windows kc-neither (304/189/127 at ring 16/17/18), 2 ring-18 windows timed out. Ring 19-21 to-dos built here with
   win45.py as for the other exhausted rows: `loop/k47/win63_7_7676655_6667656_r19/r20/r21_todo.txt`, 60 / 19 / 5
   windows (a3be9ba6, 0d455379, 132a97c4), staged in todo63/ for the farm. Logged 20:07Z.
+- **20:34Z, r64e (7756566/6557666, d7 non-face row, fbA83 -0.0042) has no kill at ring <= 15** (1136 windows, 32 min).
+  To-do `loop/k47/win52_7_7756566_6557666_todo.txt` (52958966): 562 windows (288 at ring 16, 179 at ring 17, 95 at ring
+  18), to the farm, staged in todo63/. Next r64f 7677656/7566555 (non-face). Logged 20:35Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
