@@ -33,6 +33,14 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 1. Verified-checker paper (Track 2). 2. Combinatorics paper: curvature-organised unavoidable set / 2-ball reducibility
 (Track 1). 3. Long shot: a full proof via Track 1.
 
+## Discharging line: PAUSED 21 Oct 21:06Z (Kyle: "lets refocus all resources on that route and save the other path for now")
+Resources moved to the learned-model route (thread "Interpretable route to four colours"). Resume checkpoint:
+- Citable [E2] pair: 132/1301 ~ 0.10146 <= t* <= 0.105883918328 on registry A83 (240b5a08), l3q + rpatN3, 128 ring-merge held out; Studio f9dc12ca + d0c65a60; C cover s52c 154 entries, 153 with hC in Lean (CC3V07 building).
+- One-engine upper: 0.098789365409 on A97 (8ec00aea), s53 = l3q + rpatN3 + l3qV=7,8, fb and xo off; Opus abf07125 (claude/project-thread-7uelj0, P_own_lp/s53/run_A97/sol_q53A97.json fa4d7844). Studio second-engine check in flight; A97 lower (Opus L stage) and C cover s53c pending. Previous one-engine: A84 0.104204 (86f93859).
+- Registry head: A109 = main eb986740 (k3x_D 469ea0c9, 3,123 D; k3x_C c5e8ed9e, 1,339 C). All 111+3 rim-pinned C entries pass foldSafeX in Lean.
+- Allowed to finish: Studio s53 A97 upper check, k19, CC3V07 / CCover3, admissibleXU. Stopped: new solves, explore kill rounds (round 64 at r64h; adm64g letter-9 head not admitted), kc farm queues, chord-split kcf runs, A84 copies.
+- Open on resume: A97 lower and binders; d7 face rows with no kill to ring 18 (k47c 7676655/6667656 |w| 0.046, 7766656/6566556, 7665566/6675676, 7766556/6566576, 9656775/5556655, r63d/h/i/j/m/n, r64b/c/e/f at the farm); uncapped kcf -F pass (ruling aa74d7ec); letter-9 N/F exception (2a4e4df1); xo parked (628e449d).
+
 ## Board
 
 | Item | Track | Owner | Status | Next gate | Evidence |
@@ -80,6 +88,9 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Decision log (newest first; one line each, with reason)
 
+- 21 Oct 21:08Z: DISCHARGING LINE PAUSED on Kyle's direction (relayed 21:06Z). Checkpoint section added above the Board. In-flight closers (Studio s53 check, k19, CC3V07, admissibleXU) may finish; new solves, kill rounds and farm queues stop. Studio's freed cores and Long Table's help go to the learned-model route.
+- 21 Oct 21:05Z: RULING, letter-9 exception (explore 18703fa1, r64g 9567565/5676765). A letter 9 at a window position marked N/F (a ring vertex, not interior) may be admitted and read as LP >=9. Reason: ring-vertex degrees are not part of the configuration (both engines check the free completion), and the same name with that letter set to 8 gives a byte-identical kc line. The twoeng letter-9 guard stays in force for INTERIOR 9s (kc exact 9 vs LP >=9). Per-name conditions: dfast D plus a kc rerun with the letter set to 8 giving the identical line, both logged in the head.
+- 21 Oct 20:55Z: ONE-ENGINE UPPER BELOW 0.1. s53 (l3q + rpatN3 + l3qV=7,8, fb and xo off, 128 held out) on registry A97 (8ec00aea) is FEASIBLE at t = 0.098789365409 (Opus upperR2, abf07125 on claude/project-thread-7uelj0; sol_q53A97.json fa4d7844; 0 senders violated, conservation 1,424 links x 5^6, d=7..17 exhaustive, Karp lambda 0.5688). Studio's spec-only second-engine check is queued top priority. The A97 C cover (s53c) and the nosep lower and binders are running at Opus. This is not [E2] yet, and the gate stays at the A83 pair.
 - 21 Oct 20:06Z: ADMITTED adm64d -> registry A109 (k3x_D.out 469ea0c9, 3,123 D; C unchanged c5e8ed9e). r64d d7 non-face row 7676656/7556666 dies at ring 15 (f7_.656676_.66.55., m 11, D on kc and dfast); r64k 7676656/7557666 dies by containment. 0 lost. Farm: no kills yet at ring 16-19. Ring 21 stays parked: there is no validated kc and no second engine there, so ring 20 is the last tier, and spare farm capacity goes to the uncapped kcf -F pass.
 - 21 Oct 19:17Z: ADMITTED adm63o2 (C only) -> registry A108 (D 85b12ae9 unchanged, 3,122; k3x_C.cfast c5e8ed9e, 1,339 C). It adds the 3 r63o pinned-X C entries that passed foldSafeX at Studio 859ea7f9. The union with adm64a is valid because 64a touched only D. r63o d7 face row 7557565/7576886 dies at ring 14. 0 lost.
 - 21 Oct 19:14Z: ADMITTED adm64a -> registry A107 (k3x_D.out 85b12ae9, 3,122 D; C unchanged 7214a21e). r64a d10 face row 7556656655/6565555656 (s44 A83 fb-on cert, |w| 0.0042) dies at ring 14: +11 D on kc and dfast. 0 lost. The adm63o pinned-X entries passed foldSafeX (Studio 859ea7f9), and explore is rebuilding that head on this main.
