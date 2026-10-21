@@ -1,5 +1,21 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
+
+**Pre-registered 08:08Z, before any containment or engine run on this list.** Opus 08:07Z: the fb-off nosep cert
+`loop/opus/P_own_lp/s44/run_A83nf/cert_q44nfA83L.json` (Opus commit 9dd82e31, md5 ea86f98d; A83 240b5a08, l3q + rpatN3,
+fb off) is valid, lower 132/1301 = 0.1015 against upper 0.1059; its 33 receiver rows (`binders_canon.txt`, md5 949f9d75)
+replace round 61's fb nosep list. Round 61's queue is stopped after its current row r61c (76665566/55666665, on the new
+list too); its window cache carries over.
+- **Part 1, containment** (`loop/k55/row55.py`) on all 33 at main ea8944db (A86 = 2,715 D / 1,232 C) + 2026 set, and
+  canon_key lookup (`loop/k59/canon59.py`) against the row files and this log for rows already swept.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 15, DNW 3): the rows not dead at A86 and not already swept at ring
+  <= 15, by |w|, face rows included in weight order (the top three rows include face rows).
+- **Hypothesis.** The non-face rows die at ring <= 15 as in rounds 56-61; the face rows mostly do not. **Kill line:** under
+  half of the swept non-face |w| dies at ring <= 15.
+- **Guess.** Part 1: 5-8 of the 33 dead at A86 (60 percent; rounds 59a, 60f and 61b kills sit on near rows). Part 2: at
+  least 70 percent of the swept non-face |w| dies (55 percent); at most a third of the swept face rows die (65 percent).
+
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
 **Pre-registered 06:53Z, before any containment or engine run of this round.** Opus 06:51Z: the A83 nosep cert
