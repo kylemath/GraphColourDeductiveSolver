@@ -31,7 +31,7 @@ row file in loop/k4*, k5*, k60 and this log: 19 rows new (8 face, 11 non-face); 
 - **The two other open five cells, result (07:09Z).** 7666567/5665565 w6 cell 59 dies: the two ring-15 windows
   `...5565` (adds s3, s4) and `5..5565` are D on kc and dfast (`loop/k60p/KILL`), so **a = 5 next to s6 at w6 is dead for
   every b**; the 10 ring-16 windows were not run (stopped once the cell was dead). 7766655/6567659 w0 cell 95: all 6
-  windows (ring 16) are not D on kc (reached 24-30 percent of the classes) and none is a C kill, so that cell is not
+  windows (ring 16) are not D on kc (reached 24-59 percent of the classes) and kc found no C for any, so that cell is not
   dead; the kill line holds for it. Guesses: 7666567 dies (55 percent) right, 7766655 dies (35 percent) not. With
   9656775 w5, 8 of the 9 link 7s of the pair table have no five private left; the one open five cell is 7766655/6567659
   w0, b = 5 next to the >= 9 apex s6, a >= 6. None of the 5 pair-table rows is a row of Opus's A83 nosep cert except
