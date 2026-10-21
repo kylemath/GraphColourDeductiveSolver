@@ -19,6 +19,10 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
 - **Guess.** Part 1: no hit (70 percent). Part 2: all 3 non-face rows die at ring <= 14 (55 percent, after round 57's two
   ring-15 rows); no face row dies at ring <= 14 (60 percent), the 8s next to the face notwithstanding.
 
+- **00:41Z, part 1: no hit** (`loop/k58/row58.txt`): none of the 10 rows holds a configuration of the registry at b6dc7610
+  (4,410 with RSST) or of the 2026 set, through u or avoiding it, so the 128 hold-outs do not matter here. Guess right.
+  Part 2 started 00:40Z (`loop/k58/rows58q.txt`, r58a-h, log `loop/k58/q58.log`).
+
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
 **Pre-registered 17:57Z, before any containment or engine run of this round.** Opus 17:54Z (cc Long Table): l3q + rpatN3
