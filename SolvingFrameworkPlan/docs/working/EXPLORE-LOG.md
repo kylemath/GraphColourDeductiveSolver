@@ -46,6 +46,10 @@ on branch claude/project-thread-7uelj0: `s44/run_A83/binders_canon.txt` (fb on, 
   lost, guards unchanged, `loop/k64/adm64d/` (k3x_D 469ea0c9, k3x_C c5e8ed9e). Row55 at adm64d: the same kill also
   lies in **r64k 7676656/7557666** (fbA78 -0.0042), so r64k is closed by containment (R56_r64k.DONE) and not run; r64e-w
   otherwise hold nothing. Next r64e 7756566/6557666 (non-face). Logged 20:03Z.
+- **20:06Z, Studio: k47c = r62a 7676655/6667656 (d7 face) has no kill to ring 18** (main 8029cc50): 620 of 622
+  windows kc-neither (304/189/127 at ring 16/17/18), 2 ring-18 windows timed out. Ring 19-21 to-dos built here with
+  win45.py as for the other exhausted rows: `loop/k47/win63_7_7676655_6667656_r19/r20/r21_todo.txt`, 60 / 19 / 5
+  windows (a3be9ba6, 0d455379, 132a97c4), staged in todo63/ for the farm. Logged 20:07Z.
 
 ## Round 63 (21 Oct 2026, 16:31Z-): H-S47, do the live rows of Opus's s47 A84 solves die at ring <= 15?
 
