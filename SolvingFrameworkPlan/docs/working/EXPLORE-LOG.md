@@ -127,6 +127,9 @@ list too); its window cache carries over.
   (k3x_D 7c229314, k3x_C 9f8cfe39); files `loop/k47/r62n_kills*`, `r62o_kills*` (62ebab34). Row55 at adm62i: r62p, q, r,
   s still hold nothing (`loop/k62/row62_A94i.txt`). Next r62p 6556656656/6565655655 (d10 face, 5090 windows at ring
   <= 15). Logged 16:05Z.
+- **16:06Z, admissions.** adm62h is on main at 949eb544 (A94) and adm62i at cff84a19 (A95 = 3,051 D / 1,310 C), both
+  md5 match. Long Table: keep r62m's to-do held (small weight; its neighbour r60b survived ring 18). New rule: before
+  each row, re-check the alive list against the current main (row55, as for r62o); explore reruns it after every close.
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
