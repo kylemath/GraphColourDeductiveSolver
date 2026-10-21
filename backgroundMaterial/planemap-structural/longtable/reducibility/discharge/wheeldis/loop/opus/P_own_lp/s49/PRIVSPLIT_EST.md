@@ -325,3 +325,87 @@ These rows have no weight in the final cert, apart from 7665566/6675676 at rank 
 
 Files: `privsplit_est.py`, `price_l3q.py`, `combine.py` (+ `combine.out`, `combine.json`, `res_final.json`, `price_final.json`,
 `rows_final.txt`, `spec_final.json`, `kpriv_kc.txt` = kpriv v3 kc lines, `pair60_grid3.txt`, `run_final.log`).
+
+## Rerun on the fb-off A83 cert (s44/run_A83nf/cert_q44nfA83L.json)
+
+This section uses the valid fb-off nosep cert:
+
+- `cert_q44nfA83L.json`: LOWER-R2 VALID, t ≥ 132/1301 = 0.101460;
+- 33 receiver rows, Σ|w| 0.386492;
+- top-5 Σ|w| **0.197189**.
+
+Everything else is as above. Loads still come from the same A83 keeppen solution (`sol_q44fbA83.json`), which is fb-on; only the
+weights come from the fb-off cert. The kills, l3q masks and X pricing are the same pipeline.
+
+Four of the top 5 were already done above. Two rows were new to the final pipeline, and only they were re-run:
+
+- 7667565/7966555, new at rank 1;
+- 7665566/6675676 at rank 5, which before had only the provisional 2-ball run plus the grid.
+
+Their files are `rows_nf.txt`, `res_nf.json`, `spec_nf.json` and `price_nf.json`. The combined result is `combine_nf.out` / `combine_nf.json`, made with
+`RES=res_final.json,res_nf.json PRICE=price_final.json,price_nf.json CERT=../s44/run_A83nf/cert_q44nfA83L.json python3 combine.py`.
+
+**Row 1 (new): 7667565 / 7966555, d = 7, w = −0.046118.**
+
+- Big link vertices: w0 = 7 and w3 = 7.
+- Keeppen load 1.096314, which is slack 0.0096.
+
+**w0: 6/25 cells dead.**
+
+| cell(s) | killed by |
+|---|---|
+| 55 | D `e7_B5555.._B5BB..._1111100` |
+| 56–59 | nl0279_r10 |
+| 65 | C `f7_...5565_.......` |
+
+Three open five cells remain: 75, 85 and 95.
+
+**w3: 9/25 cells dead, which is every five cell.**
+
+| cell(s) | killed by |
+|---|---|
+| 55 | D `e7_B5565B._BBB56.._1111110` |
+| 56 | C `f7_...5665_.....5.` |
+| 57–59 | C `f7_..56675_.....65` |
+| 65 | D `f7_.566675_.....65` |
+| 75, 85, 95 | nl0311_r11 |
+
+This is the same kill pattern as 7667565/7666555, because the s1 = 9 change does not touch these windows.
+
+**Gains:**
+- **(A)** lQ(6,6,31) at w3 σ− (a2 = p3,1) has every a2 = 5 cell dead. Relief 0.054770, gain ≤ 0.002526.
+- **(B)**
+  - X = w0: extra spare 0. The worst surviving filling is cell 66 at X-row 7676655/6669656, still at the cap.
+  - X = w3: extra spare 0.219954.
+  - Gain ≤ 0.010144.
+
+**Row 5 (re-run): 7665566 / 6675676, w = −0.025766.**
+
+- w0: 9/25 cells dead, which is every five cell: 55 by nl0498_r13 and the eight others by nl3706_r14. This agrees with the grid.
+- (A): 0, because both lQ masks already exclude 5.
+- (B): extra spare 0.180026, gain ≤ 0.004639.
+
+| rank | row | \|w\| (fb-off) | (A) relief | (A) gain ≤ | (B) extra spare | (B) gain ≤ |
+|---|---|---|---|---|---|---|
+| 1 | 7667565/7966555 | 0.046118 | 0.054770 | 0.002526 | 0.219954 | 0.010144 |
+| 2 | 7676655/6667656 | 0.046118 | 0.114258 | 0.005269 | 0.324543 | 0.014967 |
+| 3 | 7665566/7765766 | 0.046118 | 0 | 0 | 0.063739 | 0.002940 |
+| 4 | 7766656/6566556 | 0.033068 | 0 | 0 | 0.137879 | 0.004559 |
+| 5 | 7665566/6675676 | 0.025766 | 0 | 0 | 0.180026 | 0.004639 |
+| | **total** | 0.197189 | | **0.007795** | | **0.037249** |
+
+**Does the (A) per-row l3q mask gain reach 0.005?**
+
+- **Yes, as a first-order bound.** The total is 0.0078, and row 2 alone (7676655/6667656) gives 0.0053.
+- Every (A) term is reachable with the row-level mask alone, with no split key.
+- It is still an upper bound, for two reasons:
+  - The relief on row 2, 0.114, is much larger than the gap to the next binders. The LP will move to other rows long before the full
+    |w| × relief is realised.
+  - Row 1 is already slack 0.0096 under the keeppen solution it is priced on.
+- Read 0.005 as "the bound is above 0.005", not as "a re-solve will gain 0.005".
+
+**Rerun summary:**
+- Rows fully killed: **0 of 5**.
+- Rows partly split: **5 of 5**, over 8 link 7s.
+- |w| fully killed: **0 of 0.197189**.
+- (A) ≤ 0.0078; (B) ≤ 0.0372 (first order; not jointly achievable).

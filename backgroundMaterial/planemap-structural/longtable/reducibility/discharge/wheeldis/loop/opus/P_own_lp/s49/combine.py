@@ -8,7 +8,7 @@ is a = next to s_k, b = next to s_{k-1}, i.e. our 'ba').
 (B) payer spare: X = w_j as its own d7 centre; worst admissible load over its fillings with privates in surviving cells
     vs all cells (keeppen sol).  extra spare = worst_all - worst_surv.
 usage: python3 combine.py > combine.out"""
-import json, itertools, re
+import json, itertools, re, os
 B = '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp'
 SOL = json.load(open(B + '/s44/run_A83/sol_q44fbA83.json')); t = SOL['t']
 LQ = {tuple(k): v for k, v in SOL['lq']}; LQQ = {tuple(k): v for k, v in SOL['lQ']}
@@ -30,8 +30,15 @@ for l in open('pair60_grid3.txt'):
         a = m.group(1); marks = m.group(2).split()
         for b, mk in zip('56789', marks):
             if mk != 'o': grid[cur].add(b + a)
-res = {(r['link'], r['sword']): r for r in json.load(open('res_final.json'))}
-pr = {(r['link'], r['sword']): r for r in json.load(open('price_final.json'))}
+res = {(r['link'], r['sword']): r for f in os.environ.get('RES', 'res_final.json').split(',') for r in json.load(open(f))}
+pr = {(r['link'], r['sword']): r for f in os.environ.get('PRICE', 'price_final.json').split(',') for r in json.load(open(f))}
+if os.environ.get('CERT'):   # weights and row order from another cert's top N receiver rows
+    _rc = sorted([(c['w'], c['row']) for c in json.load(open(os.environ['CERT'])) if c['row'][0] == 'receiverR2'], key=lambda x: x[0])[:int(os.environ.get('TOPN', '5'))]
+    _pr = {}
+    for w_, r_ in _rc:
+        k_ = (r_[2], r_[3]); assert k_ in pr, k_
+        _pr[k_] = dict(pr[k_], w=w_)
+    pr = _pr
 out = []
 for (LK, SV), P in pr.items():
     d = P['d']; lk = [int(c) for c in LK]; sv = [int(c) for c in SV]; n = d
@@ -81,7 +88,7 @@ for (LK, SV), P in pr.items():
     Bx = sum(X['extra_spare'] or 0 for X in row['X'].values())
     row.update({'A_red': A, 'A_red_nosplit': Aall, 'B_extra': Bx, 'gainA': abs(w) * A, 'gainB': abs(w) * Bx})
     out.append(row)
-json.dump(out, open('combine.json', 'w'), indent=1)
+json.dump(out, open(os.environ.get('OUT', 'combine.json'), 'w'), indent=1)
 for r in out:
     print('%s/%s w %.6f base %.9f cap %.9f: A red %.6f (of which row-mask only %.6f) gainA %.6f; B extra %.6f gainB %.6f' % (
         r['link'], r['sword'], r['w'], r['base'], r['cap'], r['A_red'], r['A_red_nosplit'], r['gainA'], r['B_extra'], r['gainB']))
