@@ -1,5 +1,26 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
+
+**Pre-registered 06:53Z, before any containment or engine run of this round.** Opus 06:51Z: the A83 nosep cert
+`loop/opus/P_own_lp/s44/run_A83/cert_q44fbA83L.json` (e484da88, Opus commit 9757148b; l3q + rpatN3 + fb6 cap 3 on
+240b5a08, upper FEASIBLE 0.105884 one engine, lower 0.0990, loose), 36 canonical receiver rows (`loop/k61/rows61_all.txt`),
+to be weighed with the keeppen duals of round 60. canon_key (`loop/k59/canon59.py`, `loop/k61/lookup61.txt`) against every
+row file in loop/k4*, k5*, k60 and this log: 19 rows new (8 face, 11 non-face); 17 seen, of which 7766556/6576576 and
+7665566/6675676 are the exhausted face rows and most others are round 59's unswept filler queue (r59c on).
+- **Part 1, containment** (`loop/k55/row55.py`) on all 36, registry main 517b0129 (= 7cd777a3's k3x) + 2026 set.
+- **Part 2, kill sweep** (`loop/k56/q56.py`, ring <= 15, DNW 2 while the third core runs pair work): the non-face rows
+  not dead and not exhausted, by |w|, merged ahead of round 60's remaining face rows; then the new face rows by |w|.
+- **Hypothesis.** Most non-face rows die at ring <= 15, as in rounds 56-59. **Kill line:** under half of the non-face |w|
+  dies at ring <= 15.
+- **Guess.** Part 1: 0-2 rows already dead (60 percent). Part 2: at least 70 percent of the non-face |w| dies (55 percent);
+  at most 2 of the 8 new face rows die (70 percent).
+- **Part 1 result (06:56Z).** 4 of the 36 rows are dead through u at main 517b0129, all by round 59a's minimal kill
+  `f7_..56756_....66.` (ring 13, C, X={I3-I4}, admitted after the cert's base 240b5a08): 8657656/6667556, 7566576/6676655,
+  7657665/7665765 (new) and 7657656/7666556, all non-face; no 2026 configuration hits a row through u (`loop/k61/row61.txt`).
+  Guess 0-2 missed (4). Sweep queue `loop/k61/rows61q.txt`: 34 rows (r60f first, then the non-face rows by |w|, then the
+  face rows, round 60's r60c-r60g merged in by |w|), started 06:54Z, DNW 2 (`loop/k61/q61.log`).
+
 ## Round 60 (21 Oct 2026, 05:36Z-): H-A83, do the top binders of Opus's A83 keeppen solve die at ring <= 15?
 
 **Pre-registered 05:36Z, before any containment or engine run of this round.** Opus 05:25Z: the A83 keeppen (l3q + rpatN3
@@ -83,6 +104,11 @@ cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py
   five among a link 7's privates dies on 6 of the 9 (both sides); the open five cells are 7766655 w0 b = 5 with a >= 6,
   9656775 w5 b = 5 with a >= 7, 7666567 w6 a = 5 with b >= 7. Cells with both privates >= 6 are open almost everywhere
   (E at 7766556 w0:66 and 7766655 w1:66). kpriv v2 (`loop/k60/kpriv.txt`, 11 engine kills, 31 containment patterns).
+- **06:50Z, pre-registered before any verdict: grown pair windows on 9656775/5556655 w5, the open five cells** (b = 5, next to
+  s4, with a >= 7). `loop/k60/pw60x.py`: the pair window plus every subset of the other exact apexes s0, s1, s2, s6, at ring
+  <= 16 (38 windows, `loop/k60/pairkc/x60_9656775_w5.txt`; cells 95 = a on the ring, 75, 85), run in `loop/k60p` (drive45,
+  NW 1, STOP 0). **Hypothesis:** a window with a on the ring dies, so b = 5 dies at w5 for every a. **Kill line:** no
+  window dies. **Guess:** some 95 window dies (45 percent): the ring-14 ones add the 5s s1, s2 beside s4's side.
 
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 
