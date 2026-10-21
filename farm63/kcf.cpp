@@ -546,7 +546,7 @@ static void run_fillings(const vector<u64> &bad, u64 N, int TMAX) {
       for (int rs = 0; rs < RESTARTS; rs++) {
         vector<int> g(m), pin(m, -1); iota(g.begin(), g.end(), 0);
         // random seed: one random ring contraction
-        { int j = R() % m; u32 r = ringMask[j]; if (r) { int c = __builtin_popcount(r), k = R() % c; while (k--) r &= r - 1; pin[j] = __builtin_ctz(r); } }
+        if (!getenv("NOPIN")) { int j = R() % m; u32 r = ringMask[j]; if (r) { int c = __builtin_popcount(r), k = R() % c; while (k--) r &= r - 1; pin[j] = __builtin_ctz(r); } }
         u64 cur = score(g, pin, ~0ull);
         for (int it = 0; it < STEPS; it++) {
           vector<int> g2 = g, p2 = pin; int j = R() % m, typ = R() % 3;
@@ -554,19 +554,20 @@ static void run_fillings(const vector<u64> &bad, u64 N, int TMAX) {
               if (p2[a] >= 0 && p2[b] >= 0 && p2[a] != p2[b]) continue;
               // move j alone into b's group
               g2[j] = b; if (p2[b] < 0) { /* keep */ } if (!gconn(g2, a)) continue; if (p2[a] >= 0) { bool still = false; for (int q = 0; q < m; q++) if (g2[q] == a && ((ringMask[q] >> p2[a]) & 1)) still = true; if (!still) p2[a] = -1; } }
-          else if (typ == 1) { int a = g2[j]; u32 r = 0; for (int q = 0; q < m; q++) if (g2[q] == a) r |= ringMask[q]; if (!r) continue;
+          else if (typ == 1) { if (getenv("NOPIN")) continue; int a = g2[j]; u32 r = 0; for (int q = 0; q < m; q++) if (g2[q] == a) r |= ringMask[q]; if (!r) continue;
               int c = __builtin_popcount(r), k = R() % (c + 1); if (k == c) p2[a] = -1; else { while (k--) r &= r - 1; p2[a] = __builtin_ctz(r); } }
           else { int a = g2[j]; int nf = -1; for (int q = 0; q < m; q++) { bool used = false; for (int z = 0; z < m; z++) if (g2[z] == q) used = true; if (!used) { nf = q; break; } }
               if (nf < 0) continue; g2[j] = nf; p2[nf] = -1; if (!gconn(g2, a)) continue;
               if (p2[a] >= 0) { bool still = false; for (int q = 0; q < m; q++) if (g2[q] == a && ((ringMask[q] >> p2[a]) & 1)) still = true; if (!still) p2[a] = -1; } }
-          u64 s = score(g2, p2, cur + 1);
+          u64 s = score(g2, p2, cur == ~0ull ? ~0ull : cur + 1);
           if (s < cur || (s == cur && R() % 2)) { g = g2; pin = p2; cur = s; }
           if (cur == 0) break;
         }
         if (cur < best) { best = cur; string d; for (int j = 0; j < m; j++) { d += to_string(g[j]); if (pin[g[j]] >= 0) d += "R" + to_string(pin[g[j]]); d += j + 1 < m ? "," : ""; } bs = d; }
         if (best == 0) break;
       }
-      printf("  D general contraction (one ring vertex per group, no cap), %d restarts: best leftover %llu  groups[%s]\n", RESTARTS, (unsigned long long)best, bs.c_str()); }
+      bool pinned = bs.find('R') != string::npos;
+      printf("  D general contraction (one ring vertex per group, no cap), %d restarts: best leftover %llu pinned=%s groups[%s]%s\n", RESTARTS, (unsigned long long)best, pinned ? "yes" : "no", bs.c_str(), best == 0 ? " FZERO" : ""); }
     fflush(stdout);
 }
 
