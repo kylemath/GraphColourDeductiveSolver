@@ -37,6 +37,9 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   the six d7 face to-dos (Studio k47c-h) and r62m's held to-do, copied with MD5SUMS to /mnt/project-files/explore/todo63/,
   plus pointers to Studio's 23 ring-18 timeouts. Long Table decides any split with Studio (suggested: whole rows from the
   back of Studio's queue). Farm kills come back here as kc-only candidates for dfast/cfast, minkill and admission.
+- **16:53Z, Long Table's split.** The farm gets whole rows k47f (7556676/7567566), k47g (7655566/6759677), k47h
+  (7766555/6566959), the 23 ring-18 timeouts and r62m (9657765/5556655); Studio keeps k47c, d, e and drops the rest. Farm
+  kills come here for dfast/cfast and admission.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
