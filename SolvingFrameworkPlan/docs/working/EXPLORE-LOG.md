@@ -46,6 +46,10 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   byte-identical, +4 D, +0 C, 0 lost, guards unchanged, `loop/k63/adm63c/` (k3x_D f441f9ec, k3x_C 2087d442). All three
   keeppen d >= 8 rows died (guess hit). Row55 at adm63c: r63d-p hold nothing. Next r63d 7665566/7675676 (d7 face,
   -0.0660). Logged 17:03Z.
+- **17:07Z, r63d (7665566/7675676, d7 face row, keeppen -0.0660) has no kill at ring <= 15** (943 windows, 6 min,
+  mostly cached). To-do `loop/k47/win52_7_7665566_7675676_todo.txt` (e653ea7b): 469 windows (187 at ring 16, 162 at 17,
+  120 at 18), copied to /mnt/project-files/explore/todo63/; Long Table to place it (Studio or the farm). Guess "r63d has
+  no kill at ring <= 15" hit. Next r63e 75576556/66666566 (d8 face, fb-off). Logged 17:08Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
