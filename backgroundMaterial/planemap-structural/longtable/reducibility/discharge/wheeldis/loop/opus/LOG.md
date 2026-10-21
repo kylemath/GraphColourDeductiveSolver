@@ -784,3 +784,22 @@ our agent R and have no output from it.
     −10/183 (6567566, 6675676), −10/183 (6566576, 6576576), −1/183 (6775676).
   - First-order gain at cap 0.05: 0.0150 (face columns 0.0107). At cap 0.1: 0.0301 (face columns 0.0213).
 - Not solved; reported first as asked. nice 10, threads 1, and s42a untouched. RSST 2.126 and 8406.123 absent.
+
+## s42a: warm l3q + rpatN3 on A78 (b6dc7610), ring-merge hold-outs excluded (21 Oct 00:40Z)
+- Hold-out check: `out/job30/ringmerge_cpat_sweep.out` on origin/main (34f9ba55) has 129 FAIL lines. Keeping f9_....5565B_....6655. leaves
+  **128 names**. e7_B56656._6B.66.._1111110 is not a FAIL line; it appears only in job27 notD/k2notD/eq_D7_k2.
+  `s42a/exname_A78.txt` is the same set as `s40f/exname_rm127.txt` (misnamed: it holds 128) and `s40f/exname_rm128.txt`.
+  On A78 it drops **128 C entries** (job27/part00 69, part01 59). It does not touch the kill6 or l3q tables.
+- Engine: `s39o/eng/pcheck.py` gets the s40f `exname=` hunk (load_patterns only).
+  Control: with no option, the A74 n3 cert lowerR2 log is **byte-identical** to `run_n3_A74/lower.log` (`s42a/ctl42.sh`).
+- Run: `s42a/run42.sh` uses the run39 n3 flags on reg_A78 with exname. Settings: nice 5, threads 2, lpmax=300 with IPM fallback.
+  Warm sources: `run_n3_A74/rows_q39n3A74`, `run_n/rows_q39n`, then the q66 set (70,818 rows admitted).
+  - K keeppen converged at iter 41: **t = 0.109439356774**, 138,767 rows, 7,291 s.
+  - **LOWER-R2 VALID t >= 44/421 = 0.104513064** (155 rows; nosep warm from the K rows).
+  - **UPPER-R2 FEASIBLE at t = 0.109439356774** (K sol; float LP t, no small-denominator rational).
+  - md5s: `sol_q42aA78.json` 8773a6dc12edab14545561db4936ab04, `cert_q42aA78L.json` 0c88b25b47eba186b06bcbfb3ae309b8,
+    `sol_q42aA78L.json` 6971c2df4fbe8a63a873bbae6f361678.
+  - Compared with the A74 pair (20/183 .. 1/9), the 128 hold-outs cost about 0.0017 at the upper end.
+  - The cert has 13 receiverR2 rows. The top 3 are at −24/421 each: 7:5566776/5765686, 7:5677686/5665555 and 7:5556686/8576756.
+    The full list is in `run_A78/binders_canon.txt`.
+- RSST 2.126 and 8406.123 were not used.
