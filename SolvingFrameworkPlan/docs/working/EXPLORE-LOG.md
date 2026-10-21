@@ -57,6 +57,14 @@ list too); its window cache carries over.
   on main 031289d1 (k3x = A87), regression byte-identical: +41 D, +19 C (60 names, none on main), 0 lost, guards
   unchanged, `loop/k62/adm62b/` (k3x_D 4ebe6db2, k3x_C 3fd7d7d2). First face row of the list to die, a d9 hub as in
   round 58. Main 031289d1 promotes A83 [E2]: 132/1301 <= t* <= 0.105884. Next r62e 7556656656/7565555555 (d10 face).
+- **11:26Z, r62e (7556656656/7565555555, d10 face row, -0.0096) dies at ring 14.** I stopped its drive by hand once
+  kills were in hand and every ring <= 13 window had run (1054 of 4573 ring <= 15 windows done; the cap would have spent
+  about two hours more on the ring 14-15 windows). Rule from here on, as for r61c: a row with a kill in hand and its
+  ring <= 13 windows done is closed without waiting for the rest. 19 kills, 19 f-names, 5 minimal, all ring 14 and D on
+  kc + dfast (e.g. f10_...5665665_....555555). Files `loop/k47/r62e_kills*` (1e215181). Admission head adm62c on main
+  322cb1ad (A88), regression byte-identical: +19 D (19 names, none on main), 0 lost, guards unchanged,
+  `loop/k62/adm62c/` (k3x_D 5dc8fa5a, k3x_C 3fd7d7d2 unchanged). Second face row of the list to die (a d10 hub).
+  The queue restarted at 11:26Z on r62f 7675566/7566676 (non-face, -0.0092).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 
