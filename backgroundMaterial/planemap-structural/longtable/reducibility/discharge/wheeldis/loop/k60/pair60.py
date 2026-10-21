@@ -1,11 +1,12 @@
 """EXPLORE round 60 (coordinator 05:39Z/05:42Z): the pair census of the "Formal problem statement" thread asked from our side,
 by containment only.  For a receiver row LK/SV (u, link and apexes closed; an apex letter 9 = >= 9 stays open) and a
-link 7 w_k, its two privates p_k_1 (next to s_k) and p_k_2 (next to s_(k-1)) get letters a, b in 5..9 (9 = >= 9, left
+link 7 w_k (a link or apex letter 9 = >= 9 stays open), its two privates p_k_1 (next to s_k) and p_k_2 (next to s_(k-1)) get letters a, b in 5..9 (9 = >= 9, left
 open), the names of that thread's census (priv<a><b>).  Reported per (k, a, b): a configuration of the registry (RSST
 582 + twoeng names of TD/TC) or of the 2026 set (XKC) inside the closed vertices, if any; else the share of the open
 fillings of the boundary (each slot above its disc degree, as sat59.py) that the registry, then registry + 2026 set,
 covers.
-usage: python3 pair60.py TD TC XKC [ROW ...]   (ROW = LK/SV, default the three rows of that census) -> k60/pair60.txt"""
+usage: python3 pair60.py TD TC XKC [ROW ...]   (ROW = LK/SV, default the three rows of that census) -> k60/pair60.txt
+(or k60/$PAIROUT)"""
 import sys, os, itertools, time
 H = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(H, '..', 'k59'))
 TD, TC, XKC = sys.argv[1:4]
@@ -17,7 +18,8 @@ import grow
 def frame(LK, SV):
     d = len(LK); D = C.Disc(); u, W = D.wheel(d, 'u')
     for i in range(d):
-        assert D.close(W[i], LK[i]); D.lab[W[i]] = 'w%d' % i
+        D.lab[W[i]] = 'w%d' % i
+        if LK[i] != 9: assert D.close(W[i], LK[i])
     S = []
     for i in range(d):
         s = [x for x in D.adj[W[i]] & D.adj[W[(i + 1) % d]] if x != u]; assert len(s) == 1; S.append(s[0]); D.lab[s[0]] = 's%d' % i
@@ -26,7 +28,7 @@ def frame(LK, SV):
     return D, u, W, S
 
 def privates(D, W, S, k):
-    d = len(W); pk = [x for x in D.adj[W[k]] if x not in D.deg and x not in S]
+    d = len(W); pk = [x for x in D.adj[W[k]] if x not in D.deg and x not in S and x not in W]
     assert len(pk) == 2, pk
     p1 = [x for x in pk if S[k] in D.adj[x]]; p2 = [x for x in pk if S[k - 1] in D.adj[x]]
     assert len(p1) == len(p2) == 1 and p1 != p2
@@ -46,7 +48,7 @@ def cyls(E, lets, CONF):
 def main():
     REG, miss = C.F.registry(TD, TC)
     XR = [grow.kcline(l, 'xreg') for l in open(XKC) if l.strip()]
-    out = open(os.path.join(H, 'pair60.txt'), 'w')
+    out = open(os.path.join(H, os.environ.get('PAIROUT', 'pair60.txt')), 'w')
     def say(*a):
         s = ' '.join(map(str, a)); print(s, flush=True); out.write(s + '\n'); out.flush()
     say('# pair60 %s: registry %d (%d names not found), 2026 set %d; letters a = p_k_1 (next to s_k), b = p_k_2 (next to s_(k-1)), 9 = >= 9 open' % (
@@ -66,6 +68,7 @@ def main():
                     if l == 9: lets[x] = (9,)
                 for i in range(len(SV)):
                     if SV[i] == 9: lets[S[i]] = (9,)
+                    if LK[i] == 9: lets[W[i]] = (9,)
                 SL = sorted(lets); tot = C.prod(len(lets[x]) for x in SL)
                 cr, ir = cyls(D, lets, REG)
                 if ir:

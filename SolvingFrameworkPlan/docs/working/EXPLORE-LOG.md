@@ -41,6 +41,30 @@ cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py
   First lines, 7766556/6567566 at w0: b = 5 dies by RSST 137 (priv55 also RSST 62, priv65), a = 5, b = 6 by RSST 187;
   priv57, 58, 59, 66 and 67 open (registry 70-81 percent of their open completions). Sent to that thread with our
   earlier results on its rows (rounds 52-53, 57-58).
+- **06:09Z, Formal thread's pair census, batch 1 (10 kc D lines, data copy `loop/k60/in60/`): 6 already hold a registry
+  configuration** (`loop/k60/cont60.py`, `cont60_batch1.txt`): 7766655/6567659 w1 priv55, 56, 57, 59 (RSST 187), priv65
+  (RSST 221), 7665566/6675676 w0 priv75 (RSST 180). The other 4 hold no registry or 2026 configuration and our kc -C says
+  D on each (`loop/k60/in60/kc4.log`): 7766556/6567566 w0 priv57 (ring 17), w0 priv59 (16), w1 priv75 (16),
+  7766655/6567659 w1 priv66 (16); Studio's dfast18 has them. Naming check: my own pair windows (`loop/k60/pw60.py`)
+  are isomorphic to theirs name for name (a = private next to s_k). If they hold, w0's private next to s0 at 5 dies on
+  7766556/6567566 for every partner but 8 (priv58, ring 18, running there).
+- **06:07Z, r60b (9656775/5556655, non-face): no kill at ring <= 15** (851 windows; 106 at ring 16 left,
+  `loop/k47/win52_7_9656775_5556655_todo.txt`). r60f (7666567/5665565) started 06:07Z.
+- **06:09Z, pre-registered at launch (no verdict read yet): pair windows on r60b** (Long Table 05:40Z: pair windows for the
+  round 60 non-face rows with no kill). My builder `loop/k60/pw60.py`: u + every exact link vertex + s_(k-1), s_k + w_k's
+  privates at (a, b), for the link 7s w4 and w5 (50 windows, rings 14-21, `loop/k60/pairkc/pw_9656775.txt`). Containment
+  (`pairkc/cont_9656775.txt`): w5 55 and 65 hold registry configurations, w5 56 and 66 hold 2026 ones; the 13 open ones at
+  ring <= 16 run here (`loop/k60p/`, drive45 copy, NW 1, STOP 0, kc -C then dfast/cfast). **Hypothesis:** a pair window
+  kills at least one (a, b) child at ring <= 16. **Kill line:** none of the 13 dies. **Guess:** 2-4 of the 13 die
+  (50 percent), mostly with a five among a, b.
+- **06:22Z, private-split kills file, version 1** (Long Table 06:19Z ruling: name form g<d>_<link>_<s>_w<k>:<pp>, kept out of
+  k3x in out/job30/kpriv.txt, which Long Table commits to main; the LP reads it only through a split row key). Built by
+  `loop/k60/kpriv60.py` as `loop/k60/kpriv.txt` (md5 3f3bb86315179f1a8898a5ec6153b62d): 6 engine kills (the Formal thread's
+  4, two-engine on Studio main cff0fe6f plus our kc; r60b's w4:55 D and w4:56 C from the pair windows here) and 5
+  containment patterns (RSST 062, 137, 187 and nl1338 placements). Each engine kill is named from my own window and
+  checked isomorphic to the line the engines ran on. Reading of a 9 in a pair name: the private is on the ring, so
+  g7_7766556_6.....6_w0:5. (priv59) kills w0's private next to s0 at 5 whatever the other private is; with RSST 137 at
+  w0:.5 and w1:5., both link 7s of 7766556/6567566 lose every five on one side (Studio's 59s question).
 
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 
