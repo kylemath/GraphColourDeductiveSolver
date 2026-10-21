@@ -15,6 +15,14 @@ list too); its window cache carries over.
   half of the swept non-face |w| dies at ring <= 15.
 - **Guess.** Part 1: 5-8 of the 33 dead at A86 (60 percent; rounds 59a, 60f and 61b kills sit on near rows). Part 2: at
   least 70 percent of the swept non-face |w| dies (55 percent); at most a third of the swept face rows die (65 percent).
+- **Part 1 result (08:12Z).** 9 of the 33 rows are dead through u at A86 (`loop/k62/row62.txt`), no 2026 hit: the top row
+  7667565/7966555 (-0.0461) by r61b's f7_5657667_555...6 family; 7656667/6557655 and 7666567/5665565 (= r60f) by r60f's
+  f7_..56776_..5.55. family; 9657656/5666555, 9657656/5667555, 7657665/7665665, 7566576/6676655, 8657656/6667556 and
+  7657665/7665765 by r59a's f7_..56756_....66. family. Dead |w| 0.0961 of 0.3865. Guess 5-8 missed (9). Of the 24 alive,
+  4 are already swept at ring <= 15 with no kill (7766656/6566556 at Studio for 16-18; 9656775/5556655, r60b, to-do 106
+  windows for Studio; 7665566/6675676 and 7766556/6566576 to ring 16) and r61c 76665566/55666665 is finishing in round
+  61's queue. Queue `loop/k62/rows62q.txt`: 19 rows (15 face, 4 non-face) by |w|, r62a 7676655/6667656 first, DNW 3, taking
+  over when r61c closes (`loop/k62/q62.log`).
 
 ## Round 61 (21 Oct 2026, 06:53Z-): H-A83N, do the rows of Opus's A83 nosep cert die at ring <= 15?
 

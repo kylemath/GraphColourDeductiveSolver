@@ -1,0 +1,27 @@
+# Round 62 queue (explore 21 Oct): Opus's valid A83 fb-off cert (9dd82e31, 33 rows), the 9 rows dead at A86 (ea8944db) and
+# the rows already swept at ring <= 15 dropped, the rest by |w|. run by: DNW=3 python3 ../k56/q56.py rows62q.txt 15 7000
+# D LK SV PREFIX   weight face/non-face
+7 7676655 6667656 r62a   -0.0461 FACE
+7 7665566 7765766 r62b   -0.0461 FACE
+7 7766655 6567659 r62c   -0.0224 FACE
+9 755676556 756556665 r62d   -0.0142 FACE
+10 7556656656 7565555555 r62e   -0.0096 FACE
+7 7675566 7566676 r62f   -0.0092 nonf
+7 7665567 5765765 r62g   -0.0078 FACE
+11 65656565555 65555667576 r62h   -0.0060 FACE
+7 7556676 7567566 r62i   -0.0060 FACE
+7 7655566 6759677 r62j   -0.0060 FACE
+11 65565656556 65666666665 r62k   -0.0052 FACE
+10 7556656656 6565555555 r62l   -0.0046 FACE
+7 9657765 5556655 r62m   -0.0046 nonf
+7 7766555 6576956 r62n   -0.0046 FACE
+7 7655667 6657655 r62o   -0.0030 FACE
+10 6556656656 6565655655 r62p   -0.0018 FACE
+7 7666675 7575755 r62q   -0.0015 nonf
+7 7666675 7565755 r62r   -0.0015 nonf
+7 7766555 6566959 r62s   -0.0014 FACE
+# skipped 7766656/6566556 -0.0330 (nonf): r61a, ring <= 15 done, ring 16-18 at Studio
+# skipped 7665566/6675676 -0.0257 (FACE): exhausted face row, ring <= 16 done
+# skipped 9656775/5556655 -0.0238 (nonf): r60b, ring <= 15 done
+# skipped 76665566/55666665 -0.0042 (nonf): r61c, running in round 61's queue
+# skipped 7766556/6566576 -0.0015 (FACE): face row, ring <= 16 done
