@@ -1,5 +1,27 @@
 # Exploration log (newest first; protocol in EXPLORE-LOOP.md) [exploratory, engine level]
 
+## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
+
+**Pre-registered 05:26Z, before any run of this census.** Long Table 05:13Z (doc "Capacity transport rule",
+https://claude.ai/artifact/CjS4g6uaJQyT1nuAdswLzG; first before the round 59 filler rows, 05:18Z; diagnostic only, nothing
+admitted). Stage 1 equal split (each 5 splits its unit over its neighbours of degree >= 7); stage 2: an overloaded big u
+sends each adjacent big v with spare min(sigma(u)/k(u), kappa(v)/m(v)). On the row (u = 7, link 7766556, s 6567566):
+w5 pays u 1, w4 pays u 1/2 (s3 = 7), so L(u) = +1/2, to go to w0 and w1.
+- **Window:** u's 2-ball closed (u, link and s all exact), w0's privates p0a (next to s0), p0b (next to s6) and w1's p1a
+  (next to s0), p1b (next to s1) each 5..9; a private at 5..8 is closed and its neighbours become slots; every other
+  boundary vertex is a slot 5..9 (9 = >= 9, never exact). Open fillings only (each slot above its disc degree); the
+  closing fillings' share is reported beside. `loop/k59/sat59.py` (frame from chain59.py).
+- **Loads:** L(w0) = -1 + sum over w0's 5-privates x of 1/l(x); L(w1) = -1 + 1/l(s1) + sum over w1's 5-privates of 1/l(x);
+  l = number of neighbours of degree >= 7 (letters 7, 8, 9). kappa = max(-L, 0).
+- **Dead** if the registry (main 517b0129 k3x + RSST 582) holds a configuration in the window, or u is saturated: k = number
+  of w0, w1 with spare >= 1, and kappa(v)/m(v) >= 1/(2k) for each. m(v) is counted two ways: m_lo = u (+ the other link 7
+  if it is overloaded) and m_hi = m_lo + v's large privates (their loads lie outside the window). Long Table's short form
+  (kappa(w0), kappa(w1) >= 1/4) is reported too; the 2026 set is matched apart.
+- **Hypothesis (Long Table):** every completion dies. **Kill line:** a survivor the registry does not kill falsifies the
+  rule on this row.
+- **Guess.** Survivors exist (70 percent), where w0's two privates are 5s that pay it in full (w0 then carries a 5-5 edge of
+  its own, the arrangement the 44/421 cert gives it).
+
 ## Round 59 (21 Oct 2026, 05:08Z-): H-FB6, do the new binders of Opus's A78 fb6 cert die at ring <= 14, and does a run of face 7s force a configuration?
 
 **Pre-registered 05:08Z, before any containment, engine or census run of this round.** Coordinator 05:01Z: next round on
