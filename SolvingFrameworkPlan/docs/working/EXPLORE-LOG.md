@@ -29,6 +29,13 @@ and 8665556/7675865 24/421 each; 76555566/66757666, 8665566/6765765 and d11 6565
 - **00:47Z, r58a (8677656/5566555, 24/421) dies at ring 13.** Its 721 ring <= 14 windows (00:40-00:46Z) gave 2 C kills, 2
   f-names, 1 minimal: f7_..65686_..5555. (ring 13, X={I0-I1}). Files `loop/k47/r58a_kills*` (ecd187e1). Admission head
   adm58a on main 41990698 (registry = b6dc7610), regression byte-identical: +2 C (2 names), `loop/k58/adm58a/`.
+- **00:51Z, face rows r58b (7766556/6567568) and r58c (8665556/7675865), 24/421 each: no kill at ring <= 14**, as guessed
+  (adm58a admitted at bc898a8b). r58b's 697 windows took a minute (shared with the exhausted 7766556/6567566); r58c's
+  680 took 3. To-dos `loop/k47/win52_7_7766556_6567568_todo.txt` (486: 24/117/185/160 at ring 15/16/17/18, md5
+  9c495355abf87a206dd2281ff96661cc) and `win52_7_8665556_7675865_todo.txt` (584: 200/174/123/87, md5
+  b55a18fbe17053cfbb33117bb636e537). Net of every window Studio's job5x already ran (same name, same window):
+  `loop/k58/face58_7_7766556_6567568_rest.txt` (350, md5 f10a3dc4b8c63f86921d26316badfbad) and
+  `face58_7_8665556_7675865_rest.txt` (566, md5 a378f87bd7518487a658c3cfe6e042a3), 31c62876.
 
 ## Round 57 (20 Oct 2026, 17:57Z-): H-A74, do the new binders of Opus's A74 solve die at ring <= 14?
 
