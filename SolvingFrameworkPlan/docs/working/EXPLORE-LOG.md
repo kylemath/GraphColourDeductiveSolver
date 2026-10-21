@@ -84,6 +84,9 @@ l3q + l3qV 8 + rpatN3 + fb6 cap 3, t = 0.097910, 12 rows, md5 48c424fc) and `s47
   ring 21 (ball tops out at 20); 7665566/6675676 ring 20 13 (b7bd5c3d), ring 21 6 (46b164d8); 7766556/6566576 ring 20 9
   (b4c84a8f), ring 21 2 (fec13f32); in todo63/. kc memory from loop/kc/FINDINGS.md: 253 MB at ring 18, 683 MB at ring
   19 (about 14 bytes per class, classes x3 per ring), so about 2-2.5 GB at ring 20 and 6-7 GB at ring 21 (extrapolated).
+- **17:45Z, r63i (7555767/7756656, d7 face row, fb-off -0.0103) has no kill at ring <= 15** (1019 windows, 30 min).
+  To-do `loop/k47/win52_7_7555767_7756656_todo.txt`: 525 windows at ring 16-18, to the farm (standing rule). Next r63j
+  7577656/7566556 (non-face). Logged 17:46Z.
 
 ## Round 62 (21 Oct 2026, 08:08Z-): H-A83NF, do the rows of Opus's valid A83 fb-off cert die at ring <= 15?
 
