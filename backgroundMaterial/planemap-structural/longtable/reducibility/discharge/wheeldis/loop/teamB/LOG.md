@@ -162,3 +162,14 @@ v0 (no patterns) lost to a container restart at a lower bound of 10/27. v2 (comp
 - 07:20Z: iterations had slowed to 17-30 min (d=8 queries at the 2e7 node limit, and the oracle running 8,833 configurations serially on every new arrangement). s10 = same rows with limit=2e6 for the node-limited passes (the closing pass stays exhaustive) and the oracle run in a 3-worker pool (ojobs). Now about 5 min per iteration.
 - 12:00Z: profiling showed the single sepb2 process was ~65% of wall time. pfh.py nsep=N runs N sepb2 processes and hands each degree to the next free one (P patterns go to all). s11 = s10's rows with nsep=3, ojobs=2: about 1-2 min per iteration after the cold start.
 - 18:25Z: s11 stalled. t sat at exactly 1/11 for ~60 iterations (it 1360-1425) while violations swung between 0.3 and 18, which looks like dual degeneracy. Lower bound 1/11 ≈ 0.0909 stands (one engine, generated rows). Switched to f100: tfix = 0.100 with margin maximised, resumed from s11's it-1420 rows. If it closes, t* <= 0.100 in this class; if it goes infeasible, the class lower bound is above 0.100.
+
+## PAUSED (21 Oct 21:07Z, on k's instruction via the coordinator)
+State at pause (one engine, no two-engine number yet):
+- Class: own rules (y, p, f, h; cap=3), registry patterns reg_patterns_cc360.txt (main cc360fa2, 128 ring-merge C held out), oracle = RSST 633 + the 8,200 confirmed 2026 configurations (f100_oracle.txt, 9,993 patterns).
+- Lower bound 1/11 ≈ 0.0909 (s11, generated rows, unconverged).
+- f100 (tfix 0.100) at it 1440: margin 0.009091 on generated rows, max violation about 0.5; not closed.
+Resume:
+  gunzip -c b3_pfh/ckpt_saved/ckpt_f100_it1440.pkl.gz > b3_pfh/ckpt_f100.pkl
+  clone github.com/near-linear-4ct/reducible-configurations into b6_rpat/nl (see NL_SOURCE.txt), then in b3_pfh:
+  RPAT_NL=$PWD/../b6_rpat/nl/D python3 -u pfh.py reg tag=f100 pats=reg_patterns_cc360.txt dex=15 cap=3 many=400 limit=2e6 ojobs=2 nsep=3 sepb=sepb2 oracle=f100_oracle.txt resume warm tfix=0.100 smooth=0.5
+  (build sepb2 from sepb2.cpp first if the binary is missing.)
