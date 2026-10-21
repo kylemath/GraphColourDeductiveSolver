@@ -824,3 +824,36 @@ our agent R and have no output from it.
 - `s44/run44b.sh`, the A82 solve with the same settings as run44, waits for run_A78/ALL.done and reg_A82/prep_done.txt,
   then runs at nice 5, threads 2. Warm rows: the s44 A78 rows, the s42a A78 rows, the n3 A74 rows and the WQ set. The
   keeppen t goes to s44/run.log.
+
+## s45: l3q extended to payees of degree 8 and 9 (`l3qV=7,8,9`), priced on the s42a A78 cert (pricing only, no solve)
+- Spec `P_own_lp/s45/RELAY_SPEC_s45.md` (committed first, 96a1cbd5).
+  - Source: RSST rule 9 / drule9, whose payee letter is 7+. §21 was its 7 → 7 part.
+  - The 2026-set rule named by the probe is **not yet cited**: /mnt/project-files/pubrules gave I/O errors all session,
+    so FINDINGS_2026-10-21.md and REPORT_A78_A74.md could not be read.
+  - Keys for V ≥ 8: lq (V, c, a, a2) and lQ (V, c, a, m). Payee rows are d = 8 (V = 8) and d ≥ 9 (V = 9).
+  - Mask table T_V: D = V, centre degree 8, or 99 for V = 9 (strict). Built by `s45/l3qtabV.py`.
+- Engine `s45/eng` = s44/eng + `s45/port_l3qV.py`. The default l3qV=7 path is unchanged. solveR2 and upperR2 refuse l3qV ≠ 7
+  (exit 7, checked), because separation for V ≥ 8 is not built.
+- **Control (a):** lowerR2 on cert_q42aA78L (A78, exname_rm128), default and explicit l3qV=7: VALID 44/421. The log is
+  byte-identical to s42a/run_A78/lower.log.
+- **Control (b):** `s45/phys45.py`, 50,000 random 7-centred rotation systems with link degrees up to 11:
+  - 65,543 payer terms and 38,792 payees (19,756 V = 8, 19,036 V = 9; probe mask table);
+  - 0 payer and 0 payee mismatches against identity-derived keys;
+  - broken control (payee apex across the wrong edge): 12,343 of 15,607 mismatch. PASS.
+  - Builder check: l3qtabV V = 7 reproduces s33z/reg_A78/tab_1.json on 10 of 10 sampled keys.
+- **V = 8 masks:** only the 8 cert payee keys were built (`s45/tabV/tabV8cert_*.json`, `l3qpartial`). The exname hold-outs
+  are job27 C entries and are not in the k3x mask registry, so the masks are the same with and without them.
+- **Pricing** (`s45/pricer45.py` → `s45/pricer45_q42a.out`, exact, new columns only, tco 1):
+  - negative lq (raw):
+    - (8,6,6,5) −48/421: r58c x−1, r58g x−2;
+    - (8,6,5,5) −24/421: r58c;
+    - (8,6,5,6) −24/421: 7 8677656/5566555.
+  - lQ, all ≥ 0: (8,6,6,31) +36, (8,6,6,30) +12, (8,6,5,31) +24, (8,6,5,30) +24 (/421). These come from the cert's three d = 8 rows.
+  - Bundle (lq + the cert lQ of each mask containing a2): (8,6,6,5) **−12/421**, (8,6,5,5) 0, (8,6,5,6) +24/421.
+  - V = 9: no coefficient in any cert row, so rc is 0.
+  - First-order gain at cap 0.05 / 0.1: raw 0.0114 / 0.0228 (r58-touching 0.0086 / 0.0171); bundle 0.0014 / 0.0029.
+- **Compared with fb6** on the same cert: fb6 (7,6,5755,6680) is −36/421 on r58c and r58g, with no pooled payee cost in
+  the cert. Its face-row gain is 0.0086 / 0.0171.
+  - l3qV's raw r58 price matches it, but most of that is spent on the d = 8 rows' Q credit. The bundle is −12/421 on r58c
+    and r58g, a third of fb6's.
+- RSST 2.126 and 8406.123 were not used.

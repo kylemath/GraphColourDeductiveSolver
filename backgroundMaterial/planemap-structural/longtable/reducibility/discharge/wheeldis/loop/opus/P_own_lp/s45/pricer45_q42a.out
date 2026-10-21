@@ -1,0 +1,32 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10153, 8: 6166, 9: 3519, 10: 1425, 11: 353, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 17700, 'C': 2088, 'RPAT': 158, 'RPATN': 2080}
+l3qV: V = 8 table 8 masks (partial)
+l3qV: V = 9 table 0 masks (partial)
+rows by type: {'senderR2': 22, 'cons2': 86, 'mrowL': 5, 'mrowR2': 29, 'receiverR2': 13}
+LOWER-R2: VALID  t >= -244/421 = -0.579572447  (155 rows)
+
+l3qV=7,8,9 against cert_q42aA78L.json (tco 1): other negative uncapped columns 0 []
+new columns in the family: lq 40 (V = 8, 9); new keys with a coefficient in a cert row: 7
+every new key in a cert row:
+  lQ (8, 6, 5, 30) rc 24/421 (+0.057007)
+      rows: R 8 76765656/66565565 w=-12/421 x+2
+  lQ (8, 6, 5, 31) rc 24/421 (+0.057007)
+      rows: R 8 76567656/76675555 w=-12/421 x+2
+  lQ (8, 6, 6, 30) rc 12/421 (+0.028504)
+      rows: R 8 76555566/66757666 w=-12/421 x+1
+  lQ (8, 6, 6, 31) rc 36/421 (+0.085511)
+      rows: R 8 76555566/66757666 w=-12/421 x+1; R 8 76765656/66565565 w=-12/421 x+2
+  lq (8, 6, 5, 5) rc -24/421 (-0.057007) | bundle rc 0 (+0.000000) with [(8, 6, 5, 31)]
+      rows: R 7 8665556/7675865 (r58c) w=-24/421 x-1
+  lq (8, 6, 5, 6) rc -24/421 (-0.057007) | bundle rc 24/421 (+0.057007) with [(8, 6, 5, 30), (8, 6, 5, 31)]
+      rows: R 7 8677656/5566555 w=-24/421 x-1
+  lq (8, 6, 6, 5) rc -48/421 (-0.114014) | bundle rc -12/421 (-0.028504) with [(8, 6, 6, 31)]
+      rows: R 7 8665556/7675865 (r58c) w=-24/421 x-1; R 7 8665566/6765765 (r58g) w=-12/421 x-2
+NEGATIVE new lq columns: 3 of 40
+NEGATIVE new lQ columns: 0 (lQ rc < 0 would make the extended cert invalid outright)
+first-order gain at cap 0.05: raw all 0.011401 (r58-touching 0.008551); bundle all 0.001425 (r58-touching 0.001425)
+first-order gain at cap 0.1: raw all 0.022803 (r58-touching 0.017102); bundle all 0.002850 (r58-touching 0.002850)
+r58 row R 7 7766556/6567568 (r58b) w=-24/421: new keys []
+r58 row R 7 8665556/7675865 (r58c) w=-24/421: new keys [((8, 6, 6, 5), -1, '-48/421'), ((8, 6, 5, 5), -1, '-24/421')]
+r58 row R 7 8665566/6765765 (r58g) w=-12/421: new keys [((8, 6, 6, 5), -2, '-48/421')]
