@@ -10,11 +10,12 @@ option). With the default `l3qV=7` it is s44/eng.
 >   neighbour of any degree ≥ 7. §21 restated only the 7 → 7 part. §45 adds the 7 → 8 and 7 → 9+ parts of the same channel.
 > - **The 2026 set's rule:** the published-rules probe (`pubrules/FINDINGS_2026-10-21.md`, `REPORT_A78_A74.md`; a map, not a
 >   claim) reports that on the face rows r58c = 7 8665556/7675865 and r58g = 7 8665566/6765765, both RSST and the 2026 rules
->   have the face 7 pay its link 8 (0.2–0.4 units). **Which 2026 rule it is (by name/number) is not recorded here yet.** The
->   shared folder returned I/O errors for the whole session, so the probe notes could not be read. A later commit will add
->   the name. Until then, l3qV numbers cite RSST rule 9 as the source.
+>   have the face 7 pay its link 8 (0.2–0.4 units). The rules are (Long Table, from `wheeldis/loop/pubrules/FINDINGS_2026-10-21.md` lines 33-34 on branch
+>   `claude/project-thread-agfle4`): RSST drule8, drule9, drule9m and drule20, and 2026 rule008, rule009 (both sides) and
+>   rule014, all with target "7+". l3qV numbers cite RSST drule9 and 2026 rule009 as the sources. Status: parked, dominated
+>   by fb6 (§44).
 > - The amounts are LP variables. The key, mask and credit are §21's own construction, unchanged except that V is in the key.
->   Any claim citing an l3qV number must name RSST rule 9 / drule9 (and the 2026 rule, once named) as the source.
+>   Any claim citing an l3qV number must name RSST rule 9 / drule9 and 2026 rule009 as the source.
 
 ## 45.1 Transfer
 - A vertex u of degree exactly 7 sends `q[κ] ≥ 0` to each link neighbour v = w_i with letter V(v) ∈ `l3qV`, once per side σ.
