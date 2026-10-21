@@ -803,3 +803,24 @@ our agent R and have no output from it.
   - The cert has 13 receiverR2 rows. The top 3 are at −24/421 each: 7:5566776/5765686, 7:5677686/5665555 and 7:5556686/8576756.
     The full list is in `run_A78/binders_canon.txt`.
 - RSST 2.126 and 8406.123 were not used.
+
+## Round s44 (cont.): fb6 on A78, pricing on the s42a cert, A82 launched
+- The A78 fb6 keeppen (run44.sh; l3q + rpatN3 + fb6, cap 3, exname_rm128) converged at iter 32 with **t = 0.109439356774**.
+  That equals s42a's t without fb6, even though 23 fb columns are nonzero. The nosep, lowerR2 and upperR2 stages are
+  still running.
+- fb6 priced against the s42a A78 cert (cert_q42aA78L, 44/421; `s44/pricer44_q42a.out`), on the face rows r58b, r58c
+  and r58g. These are the explore round-58 queue at fe44e46b, loop/k58/rows58q.txt: r58b = 7 7766556/6567568,
+  r58c = 7 8665556/7675865, r58g = 7 8665566/6765765.
+  - **Kill line PASSED:**
+    - r58b: fb6 (7,6,5655,7870) −24/421;
+    - r58c and r58g: fb6 (7,6,5755,6680) −36/421, which touches both;
+    - r58g also: fb6 (7,6,5655,6780) −12/421.
+  - 11 negative fb6 columns in all. The largest is (8,6,5655,7550) −56/421 on cons2 556587 alone.
+  - First-order gain at cap 0.05 / 0.1: all columns 0.0290 / 0.0580, face-row columns only 0.0086 / 0.0171.
+- The A82 ring-merge FAIL set was rechecked. out/job30/ringmerge_cpat_sweep.out at 5fa0ba6c is identical to the 618c0899
+  copy, with 129 FAIL lines. exname_rm128 = those lines minus f9_....5565B_....6655., unchanged.
+- reg_A82 is being built (`s33z/prep_tag.sh A82 5fa0ba6c`): 2,694 D / 1,208 C, the 3 ring-merge names absent, and the 89
+  XRING names present.
+- `s44/run44b.sh`, the A82 solve with the same settings as run44, waits for run_A78/ALL.done and reg_A82/prep_done.txt,
+  then runs at nice 5, threads 2. Warm rows: the s44 A78 rows, the s42a A78 rows, the n3 A74 rows and the WQ set. The
+  keeppen t goes to s44/run.log.

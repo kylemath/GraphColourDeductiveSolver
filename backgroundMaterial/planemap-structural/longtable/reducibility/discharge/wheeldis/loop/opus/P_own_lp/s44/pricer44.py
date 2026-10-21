@@ -1,6 +1,6 @@
 # s44 fb pricer (RELAY_SPEC_s44 44.6): fb adds columns only, so the engine's own lowerR2 (flag fb, fbdir=ARG) prices them
 # exactly against cert_q39n3A74L.  Prints every negative column and the cert rows (receiverR2 / cons2) it touches.
-#   python3 pricer44.py 6|7|67
+#   python3 pricer44.py 6|7|67 [CERT REG EXNAME FACEROWS(link/sv,..)]   (default: the A74 n3 cert, its 5 face rows)
 import os, sys, json, re, collections
 from fractions import Fraction
 DIR = sys.argv[1]
@@ -8,9 +8,11 @@ B = '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structu
 E = B + '/s44/eng'; Q = B + '/s33z/reg_A74'; H = B + '/s39o'
 M = '/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/m/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis'
 CERT = H + '/run_n3_A74/cert_q39n3A74L.json'
+XA = sys.argv[2:]
+if XA: CERT = XA[0]; Q = B + '/s33z/reg_' + XA[1]
 ARGS = ['xon', 'apexcls', 'filt16', 'killtab=' + Q + '/f/kill/kill6', 'hat5', 'consall', 'l3q',
         'l3qtab=' + Q + '/tab_1.json,' + Q + '/tab_-1.json', 'lqcap=3', 'rpatN=' + H + '/rpatN3.txt', 'fb', 'fbdir=' + DIR,
-        'cert=' + CERT, 'xcap=3', 'root=' + M, 'args=' + Q + '/args_A74.txt', 'rpat=' + B + '/rpatD.txt',
+        'cert=' + CERT, 'xcap=3', 'root=' + M, 'args=' + Q + '/args_%s.txt' % (XA[1] if XA else 'A74')] + (['exname=' + XA[2]] if XA else []) + ['x=1', 'rpat=' + B + '/rpatD.txt',
         'work=/tmp/claude-0/-home-claude/501dd3ae-0fa3-53a8-b24b-82020727c8dd/scratchpad/P/wr44_price' + DIR]
 sys.argv = [E + '/pcheck.py', 'none'] + ARGS
 src = open(E + '/pcheck.py').read(); last = src.rstrip().rsplit('\n', 1)
@@ -26,6 +28,7 @@ exec(f, G); G['cmd_lowerR2']()
 NEG = [(k, rc) for k, rc in G['NEG'] if k[0] == 'fb']; other = [(k, rc) for k, rc in G['NEG'] if k[0] != 'fb']
 C = json.load(open(CERT)); tco = G['TCO'][0]
 FACE = {('7766556', '6567566'), ('7766556', '6566576'), ('7766556', '6576576'), ('7665566', '6675676'), ('7665566', '6775676')}
+if XA: FACE = {tuple(x.split('/')) for x in XA[3].split(',')}
 rows = []
 for c in C:
     r = c['row']; w = Fraction(c['w']).limit_denominator(10 ** 7)
