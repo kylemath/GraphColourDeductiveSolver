@@ -1,0 +1,27 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10236, 8: 6243, 9: 3579, 10: 1464, 11: 631, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 2228, 'RPAT': 158, 'RPATN': 2080}
+pm: family y model D: 942 keys in the universe, 3 distinct feature vectors, 3 features
+conservation basis rows added: 10539
+l3qV: V = 8 table 5000 masks (full)
+warm rows admitted: 21241
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1179 M sigs
+nosep: LP over the warm rows only, t = 0.183544303797 (a lower bound once lowerR2 checks the cert)
+pm: most negative modelled value per family {'y': 0.0}
+LP t* = 0.183544303797 ; dual rows 40 ; wrote sol_t0_yD.json cert_t0_yD.json
+  +0.278481013 senderR2 55759 [0, 0, 0, 0, 0, '|']
+  +0.094936709 senderR2 55696 [0, 0, 0, 0, 0, '|', 0, 0]
+  +0.088607595 senderR2 55669 [1, 1, 0, 0, 0, '|', 0, 0]
+  -0.088607595 receiverR2 10 7557556565 5855866555
+  -0.088607595 receiverR2 7 9555955 6595595
+  +0.075949367 senderR2 56669 [0, 0, 0, 0, 0, '|', 1, 1, 0]
+  +0.075949367 senderR2 56669 [0, 1, 0, 0, 0, '|', 0, 0, 0]
+  +0.056962025 senderR2 55757 [0, 0, 0, 0, 0, '|']
+  +0.050632911 senderR2 55697 [0, 0, 0, 0, 0, '|', 0]
+  +0.037974684 senderR2 56669 [1, 0, 0, 0, 0, '|', 0, 1, 0]
+  +0.025316456 senderR2 55669 [0, 1, 0, 0, 0, '|', 0, 0]
+  -0.025316456 receiverR2 10 6566555665 6655956556
+  -0.006329114 receiverR2 10 6556656656 6565565655
+  -0.006329114 receiverR2 11 65655555656 55598895555
+  l3q: q total 1.296331092, 10 q > 0: [((6, 5, 5), np.float64(0.089060852)), ((6, 5, 6), np.float64(0.089060852)), ((6, 5, 8), np.float64(0.089060852)), ((6, 5, 9), np.float64(0.089060852)), ((8, 5, 5, 5), np.float64(0.175904866)), ((8, 5, 5, 6), np.float64(0.175904866)), ((8, 5, 5, 8), np.float64(0.175904866)), ((8, 5, 5, 9), np.float64(0.11399822)), ((8, 6, 5, 5), np.float64(0.149187434)), ((8, 6, 5, 6), np.float64(0.149187434))]; Q total 0.828306303
+  (+ 26 cons2 / mrowR2 rows)

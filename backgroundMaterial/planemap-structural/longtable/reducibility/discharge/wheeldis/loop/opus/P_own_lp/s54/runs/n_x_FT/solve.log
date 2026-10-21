@@ -1,0 +1,18 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10236, 8: 6243, 9: 3579, 10: 1464, 11: 631, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 2228, 'RPAT': 158, 'RPATN': 2080}
+pm: family x model FT: 70875 keys in the universe, 9 distinct feature vectors, 9 features
+conservation basis rows added: 10539
+l3qV: V = 8 table 5000 masks (full)
+warm rows admitted: 21241
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1179 M sigs
+nosep: LP over the warm rows only, t = 0.111111111111 (a lower bound once lowerR2 checks the cert)
+pm: most negative modelled value per family {'x': 0.0}
+LP t* = 0.111111111111 ; dual rows 26 ; wrote sol_n_x_FT.json cert_n_x_FT.json
+  +0.222222222 senderR2 55667 [0, 1, 0, 0, 0, '|', 1, 1]
+  +0.222222222 senderR2 55676 [0, 0, 1, 0, 1, '|', 0, 0]
+  -0.222222222 receiverR2 7 7665566 6765766
+  -0.222222222 receiverR2 7 7656676 6556566
+  +0.111111111 senderR2 55767 [0, 0, 0, 0, 0, '|', 0]
+  l3q: q total 0.596465239, 13 q > 0: [((6, 5, 5), np.float64(0.087155976)), ((6, 5, 6), np.float64(0.049429455)), ((6, 5, 7), np.float64(0.049429455)), ((6, 5, 8), np.float64(0.049429455)), ((6, 5, 9), np.float64(0.041950227)), ((6, 6, 5), np.float64(0.037726521)), ((8, 5, 5, 5), np.float64(0.004764172)), ((8, 5, 5, 6), np.float64(0.004764172)), ((8, 5, 5, 9), np.float64(0.004764172)), ((8, 6, 5, 5), np.float64(0.094234266)), ((8, 6, 5, 6), np.float64(0.094234266)), ((8, 6, 5, 8), np.float64(0.010617052)), ((8, 6, 6, 5), np.float64(0.067966049))]; Q total 0.440274878
+  (+ 19 cons2 / mrowR2 rows)

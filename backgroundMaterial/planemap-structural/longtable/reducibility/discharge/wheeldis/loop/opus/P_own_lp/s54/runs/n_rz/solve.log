@@ -1,0 +1,27 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10236, 8: 6243, 9: 3579, 10: 1464, 11: 631, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 2228, 'RPAT': 158, 'RPATN': 2080}
+pm: family r model zero: 153 keys in the universe, 0 distinct feature vectors, 0 features
+conservation basis rows added: 10539
+l3qV: V = 8 table 5000 masks (full)
+warm rows admitted: 21241
+R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1179 M sigs
+nosep: LP over the warm rows only, t = 0.089201877934 (a lower bound once lowerR2 checks the cert)
+pm: most negative modelled value per family {'r': 0}
+LP t* = 0.089201877934 ; dual rows 77 ; wrote sol_n_rz.json cert_n_rz.json
+  +0.187793427 senderR2 55676 [0, 0, 1, 0, 1, '|', 0, 0]
+  -0.187793427 receiverR2 7 7766656 6566556
+  +0.140845070 senderR2 55667 [0, 1, 0, 0, 0, '|', 1, 1]
+  -0.140845070 receiverR2 7 7665566 6765766
+  +0.093896714 senderR2 55767 [0, 0, 0, 0, 0, '|', 0]
+  +0.046948357 senderR2 55667 [0, 1, 0, 1, 0, '|', 1, 1]
+  -0.046948357 receiverR2 7 7655666 7657686
+  +0.037558685 senderR2 56669 [0, 0, 0, 0, 0, '|', 1, 1, 0]
+  +0.037558685 senderR2 56669 [0, 1, 0, 0, 0, '|', 0, 1, 0]
+  -0.023474178 receiverR2 7 7666676 6565655
+  +0.018779343 senderR2 66669 [0, 1, 0, 0, 0, '|', 0, 0, 0, 0]
+  -0.018779343 receiverR2 11 65566556565 66656666666
+  +0.009389671 senderR2 66669 [0, 0, 0, 0, 0, '|', 0, 1, 1, 0]
+  +0.009389671 senderR2 66669 [0, 1, 0, 0, 0, '|', 0, 0, 1, 0]
+  l3q: q total 0.154055139, 3 q > 0: [((5, 6, 5), np.float64(0.03003323)), ((6, 5, 5), np.float64(0.02543036)), ((6, 6, 5), np.float64(0.098591549))]; Q total 0.154055139
+  (+ 59 cons2 / mrowR2 rows)
