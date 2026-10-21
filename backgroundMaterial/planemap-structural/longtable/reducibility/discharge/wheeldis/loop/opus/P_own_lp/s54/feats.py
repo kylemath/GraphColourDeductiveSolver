@@ -94,6 +94,27 @@ def tree_model(fn):
     T = json.load(open(fn))   # {"family": f, "leaves": {"<repr key>": leaf_id}} ; unknown keys -> leaf "other"
     m = {tuple(json.loads(k)) if k.startswith('[') else int(k): v for k, v in T['leaves'].items()}
     return lambda k: {('leaf', m.get(k if not isinstance(k, tuple) else tuple(k), 'other')): 1}
+def x_sideFT(k):
+    fl, tl, s1, s2 = x_dec(k); return _c(('s', fl, tl) + s1, ('s', fl, tl) + s2)
+FEATS['x']['sideFT'] = x_sideFT
+# dictionaries for the lasso path: the union of a family's models, each feature tagged with its model name
+DICT = {'y': ('D', 'addD', 'pairD', 'full'), 'g': ('const', 'add', 'pair', 'full'), 'h': ('D', 'addD', 'pair', 'full'),
+        'x': ('FT', 'side', 'sideFT'), 'r': ('const', 'type', 'side', 'full'), 'lq': ('const', 'full')}
+def dict_model(fam, parts=None):
+    fs = [(m, FEATS[fam][m]) for m in (parts or DICT[fam])]
+    def f(k):
+        out = {}
+        for m, fn in fs:
+            for q, c in fn(k).items(): out[(m,) + tuple(q)] = c
+        return out
+    return f
+def sup_model(fam, fn):
+    import json
+    S = json.load(open(fn)); keep = {eval(q) for q in S[fam]}   # feature reprs per family
+    base = dict_model(fam, S.get('parts', {}).get(fam))
+    return lambda k: {q: c for q, c in base(k).items() if q in keep}
 def model(fam, name):
     if name.startswith('tree:'): return tree_model(name[5:])
+    if name == 'dict': return dict_model(fam)
+    if name.startswith('sup:'): return sup_model(fam, name[4:])
     return FEATS[fam][name]

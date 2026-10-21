@@ -977,11 +977,28 @@ def cmd_solveR2():
         for r_ in ROOTS: col(('y', r_))
     info = []; have = set(); msig = set(); conset = set(); qsig = set(); vsig = set(); lsig = set(); xqsig = set()
     def addrow(cf, lo, hi, inf_):
+        if TREES and inf_[0] != 'pmbound': PMROWS.append((cf, lo, hi, inf_)); PMROWIX.append(len(info))   # s54 grow: keep every row
         cf = pm_expand(cf)   # s54
         idx = np.array([col(k) for k in cf], dtype=np.int32); val = np.array([float(v) for v in cf.values()])
         h.addRow(lo, hi, len(idx), idx, val); info.append(inf_)
+        while PMBQ:   # s54 lazyb: bound rows of the modelled keys this row used
+            cfb, lob, hib, infb = PMBQ.pop(); addrow(cfb, lob, inf if hib is None else hib, infb)
+    def rebuild():   # s54 grow: a new LP over every row so far, re-expanded on the current trees
+        nonlocal h
+        h = highspy.Highs(); h.setOptionValue('output_flag', False)
+        cols.clear(); names.clear(); info.clear()
+        assert col(('t',)) == jt; h.changeColCost(jt, 1.0)
+        if 'y' not in PM:
+            for r_ in ROOTS: col(('y', r_))
+        rows_ = list(PMROWS); PMROWS.clear(); PMROWIX.clear()
+        for cf_, lo_, hi_, inf_ in pm_bound_rows(): addrow(cf_, lo_, inf if hi_ is None else hi_, inf_)
+        for cf_, lo_, hi_, inf_ in rows_: addrow(cf_, lo_, hi_, inf_)
+    GROUND = [0]
     SR = R2_sender_rows()
     for cf_, lo_, hi_, inf_ in pm_bound_rows(): addrow(cf_, lo_, inf if hi_ is None else hi_, inf_)   # s54
+    for cf_, lo_, hi_, inf_ in pm_abs_rows(): addrow(cf_, lo_, inf if hi_ is None else hi_, inf_)   # s54 lasso
+    for k_, i_ in cols.items():
+        if k_[0] == 'ab': h.changeColCost(i_, LASSO)
     for wd, cf, bits in SR:
         c2_ = dict(cf); c2_[('t',)] = 1.0; addrow(c2_, 1.0, inf, ('senderR2', wd, bits))
     RW = all6_words() if (V6 or CONSALL) else relay_words()   # v6: no-five 6-types must conserve too (v out = h in)
@@ -1088,6 +1105,10 @@ def cmd_solveR2():
                     worst = max(worst, abs(D[idx]))
                     if addcons(L, tuple(LET[v] for v in SALL[idx])): nc += 1
         added += nc; per['cons'] = (nc, round(worst, 6))
+        if LAZYB:   # s54
+            nb_ = 0
+            for cfb, lob, hib, infb in pm_lazy_check(PMV): addrow(cfb, lob, inf if hib is None else hib, infb); nb_ += 1
+            added += nb_; per['bnd'] = (nb_, None)
         Wc = {}
         for d in range(7, DMAX + 1):
             U = min(d, 9)
@@ -1114,6 +1135,37 @@ def cmd_solveR2():
             lam = karp(Mr); log('  Karp lambda %.6f d0 %.2f' % (lam, (6 - t) / (1 - lam) if lam < 1 else 1e9))
         rowlog.flush()
         log('iter %d t=%.12f rows %d cols %d added %d  lp %.1fs total %.0fs  %s' % (it, t, h.getNumRow(), h.getNumCol(), added, tlp, time.time() - T0, {d: v for d, v in per.items() if v[0]}))
+        if not added and TREES:   # s54 grow: converged at this tree; snapshot, then split and rebuild
+            nl = sum(_count(TREES[f]) for f in TREES)
+            log('GROW round %d: leaves %d %s t = %.12f (converged, %d rows)' % (GROUND[0], nl, {f: _count(TREES[f]) for f in TREES}, t, h.getNumRow()))
+            for f in TREES: log('  tree %s:\n%s' % (f, tree_str(TREES[f], f)))
+            pm_snapshot(os.path.join(OPT.get('outdir', HERE), 'sol_%s_g%03d.json' % (OPT.get('tag', 'run'), nl)), t, xv, cols, {'grow_round': GROUND[0]})
+            GROUND[0] += 1
+            if (GROWMAX and nl >= GROWMAX) or t <= GTARGET: break
+            made = pm_grow_step(h, cols, xv, t, info)
+            if not made: log('  grow: no split with a positive first-order gain; stopping'); break
+            st0 = pm_state(); res = []; t_ = time.time()
+            for c in made:   # strong branching: LP over the current rows with this one split
+                pm_restore(st0); pm_apply(c); rebuild(); h.run()
+                tc = h.getSolution().col_value[jt] if h.getModelStatus() == highspy.HighsModelStatus.kOptimal else 1e9
+                res.append((tc, -c[0], c)); log('    try %s leaf %d k[%d] %s %d: t = %.9f' % (c[1], c[2], c[3], c[4], c[5], tc))
+            res.sort(key=lambda r: (round(r[0], 10), r[1])); best = res[0][2]; pair = None
+            if res[0][0] > t - 1e-9 and GPAIR:   # no single split helps: two splits at once among the top GPAIR (by gradient)
+                top = [c for c in made[:GPAIR]]; bp = (res[0][0], None)
+                for i_ in range(len(top)):
+                    for j_ in range(i_ + 1, len(top)):
+                        if top[i_][1:3] == top[j_][1:3]: continue   # same leaf: not two independent splits
+                        pm_restore(st0); pm_apply(top[i_]); pm_apply(top[j_]); rebuild(); h.run()
+                        tc = h.getSolution().col_value[jt] if h.getModelStatus() == highspy.HighsModelStatus.kOptimal else 1e9
+                        if tc < bp[0] - 1e-9: bp = (tc, (top[i_], top[j_]))
+                log('    pair lookahead over %d: best t %.9f %s' % (len(top), bp[0], None if bp[1] is None else [(c[1], c[2], c[3], c[4], c[5]) for c in bp[1]]))
+                if bp[1] is not None: pair = bp[1]
+            pm_restore(st0)
+            if pair: pm_apply(pair[0]); pm_apply(pair[1]); best = pair[1]; res[0] = (bp[0],) + res[0][1:]
+            else: pm_apply(best)
+            rebuild()
+            log('  grow: split %s leaf %d on k[%d] %s %d (LP t %.9f, was %.9f; %.0fs); leaves now %s' % (best[1], best[2], best[3], '==' if best[4] == 'eq' else '<=', best[5], res[0][0], t, time.time() - t_, {f: _count(TREES[f]) for f in TREES}))
+            continue
         if not added and XPEN[0] and 'keeppen' in FLAGS:
             log('  converged with x penalty; keeppen: stopping here (no violated row at this solution; sol = this solution)'); break
         if not added and XPEN[0]:

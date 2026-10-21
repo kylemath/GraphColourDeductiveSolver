@@ -6,3 +6,13 @@ conservation basis rows added: 10539
 l3qV: V = 8 table 5000 masks (full)
 warm rows admitted: 21241
 R6x2 (apex True): 20676 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 1179 M sigs
+nosep: LP over the warm rows only, t = 0.111111111111 (a lower bound once lowerR2 checks the cert)
+pm: most negative modelled value per family {'lq': 0.0}
+LP t* = 0.111111111111 ; dual rows 40 ; wrote sol_n_lq_c.json cert_n_lq_c.json
+  +0.222222222 senderR2 55667 [0, 1, 0, 0, 0, '|', 1, 1]
+  +0.222222222 senderR2 55676 [0, 0, 1, 0, 1, '|', 0, 0]
+  -0.222222222 receiverR2 7 7665566 6765766
+  -0.222222222 receiverR2 7 7766656 6566556
+  +0.111111111 senderR2 55767 [0, 0, 0, 0, 0, '|', 0]
+  l3q: q total 0.000000000, 0 q > 0: []; Q total 0.740672422
+  (+ 32 cons2 / mrowR2 rows)

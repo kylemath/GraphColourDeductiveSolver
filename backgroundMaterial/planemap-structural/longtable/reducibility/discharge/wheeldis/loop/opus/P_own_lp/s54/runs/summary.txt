@@ -13,3 +13,13 @@ n_xz y:free,x:zero LP t* = 0.113399692501 ; dual rows 605 ; |
 n_r_type y:free,r:type LP t* = 0.089201877934 ; dual rows 73 ;  | 
 n_gh_pair y:free,g:pair,h:pair LP t* = 0.134986225895 ; dual rows 133 ; | 
 n_rz y:free,r:zero LP t* = 0.089201877934 ; dual rows 77 ;  | 
+n_lq_c y:free,lq:const LP t* = 0.111111111111 ; dual rows 40 ;  | 
+n_lqz y:free,lq:zero LP t* = 0.111111111111 ; dual rows 34 ;  | 
+L_yD y:D,g:zero,h:zero,x:zero,r:zero,lq:zero LP t* = 0.666666666667 ; dual rows 2 ; w | UPPER-R2: FEASIBLE at t = 0.666666666667
+L_yadd y:add,g:zero,h:zero,x:zero,r:zero,lq:zero LP t* = 0.413988657845 ; dual rows 9 ; w | UPPER-R2: FEASIBLE at t = 0.413988657845
+L_ypair y:pair,g:zero,h:zero,x:zero,r:zero,lq:zero LP t* = 0.296703296703 ; dual rows 11 ;  | UPPER-R2: FEASIBLE at t = 0.296703296703
+L_ypxl y:pair,g:zero,h:zero,x:FT,r:zero,lq:const LP t* = 0.282736528925 ; dual rows 45 ;  | UPPER-R2: FEASIBLE at t = 0.282736528925
+G1 y:tree,g:tree,h:tree,x:tree,r:tree,lq:tree  | 
+L_yfree y:free,g:zero,h:zero,x:zero,r:zero,lq:zero LP t* = 0.259259259259 ; dual rows 4 ; w | UPPER-R2: INFEASIBLE (20) at t = 0.259259259259
+L_yfree y:free,g:zero,h:zero,x:zero,r:zero,lq:zero LP t* = 0.259259259259 ; dual rows 4 ; w | UPPER-R2: FEASIBLE at t = 0.259259259259
+n_lasso3 y:dict,g:dict,h:dict,x:dict,r:dict,lq:dict LP t* = 0.115459051741 ; dual rows 22708 | 

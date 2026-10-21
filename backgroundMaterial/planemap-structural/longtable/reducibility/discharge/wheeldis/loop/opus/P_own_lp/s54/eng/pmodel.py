@@ -10,7 +10,7 @@ PM = {}
 for _it in [s for s in OPT.get('pm', '').split(',') if s]:
     _f, _m = _it.split(':', 1)
     if _m != 'free': PM[_f] = _m
-PMF = {f: _fg['model'](f, m) for f, m in PM.items()}
+PMF = {f: _fg['model'](f, m) for f, m in PM.items() if not (m == 'tree' or m.startswith('treefile:'))}
 _phic = {}
 def phi(fam, key):
     k_ = (fam, key)
@@ -21,6 +21,9 @@ def pm_expand(cf):
     out = collections.Counter()
     for k, v in cf.items():
         if k[0] in PM:
+            if LAZYB:
+                r_ = pm_bound_row(k[0], k[1])
+                if r_: PMBQ.append(r_)
             for f, c in phi(k[0], k[1]).items(): out[('th', k[0], f)] += v * c
         else: out[k] += v
     return {k: v for k, v in out.items() if v != 0}
@@ -59,9 +62,29 @@ def pm_universe(fam):
                     for V in LQVX: U.add((V, c_, a_, a2))
     UNIV[fam] = sorted(U, key=str); return UNIV[fam]
 PMCAP = {'x': lambda: float(OPT.get('xcap', '3')), 'lq': lambda: LQCAP}
+LAZYB = 'lazyb' in FLAGS; PMBSEEN = set(); PMBQ = []
+def pm_bound_row(fam, k):
+    ph = phi(fam, k)
+    if not ph: return None
+    sig = (fam, tuple(sorted(ph.items(), key=str)))
+    if sig in PMBSEEN: return None
+    PMBSEEN.add(sig); hi = PMCAP[fam]() if fam in PMCAP else None
+    return ({('th', fam, f): c for f, c in ph.items()}, 0.0, hi, ('pmbound', fam, repr(k)))
+def pm_lazy_check(PMV):
+    """lazyb: bound rows of every universe key whose modelled value is outside its bounds"""
+    out = []
+    for fam, V in PMV.items():
+        hi = PMCAP[fam]() if fam in PMCAP else None
+        for k, v in V.items():
+            if v < -1e-10 or (hi is not None and v > hi + 1e-10):
+                r = pm_bound_row(fam, k)
+                if r: out.append(r)
+    return out
 def pm_bound_rows():
     """[(cf over theta, lo, hi, label)] : one row per distinct feature vector of each modelled family"""
     out = []
+    if LAZYB:
+        PMBSEEN.clear(); log('pm: lazy bound rows (keys in rows + violated universe keys)'); return out
     for fam in PM:
         seen = set(); hi = PMCAP[fam]() if fam in PMCAP else None
         for k in pm_universe(fam):
@@ -74,3 +97,119 @@ def pm_bound_rows():
     return out
 def pm_values(fam, TH):
     return {k: sum(c * TH.get((fam, f), 0.0) for f, c in phi(fam, k).items()) for k in pm_universe(fam)}
+# ---------------- s54 tree growth (pm=fam:tree): data-driven partition refinement by LP duals ----------------
+# Each 'tree' family is piecewise constant on the leaves of a binary tree whose tests are "key position p == v" or
+# "key position p <= v" on the raw canonical key (x: decoded to fl, tl, c1, a1, b1, c2, a2, b2).  At each converged LP
+# (no violated row) the duals give every key's gradient G_k = sum_rows dual_r * a_rk; splitting leaf l into K1 / K2 gives
+# new columns with reduced costs d1 = -sum_K1 G, d2 = -sum_K2 G.  The split with the largest first-order gain is taken
+# (top `gk` per round, distinct leaves), the LP is rebuilt over all rows so far, and separation resumes.
+PMROWS = []; PMROWIX = []
+TREES = {}; NLEAF = {}
+GROWMAX = int(OPT.get('growmax', '0')); GK = int(OPT.get('gk', '12')); GPF = int(OPT.get('gpf', '3')); GPAIR = int(OPT.get('gpair', '0')); GTARGET = float(OPT.get('gtarget', '-1'))
+def keytup(fam, k):
+    if fam == 'x':
+        fl, tl, s1, s2 = _fg['x_dec'](k); return (fl, tl) + s1 + s2
+    return tuple(k)
+def tree_leaf(node, kt):
+    while 'leaf' not in node:
+        p, op, v = node['p'], node['op'], node['v']; val = kt[p] if p < len(kt) else -1
+        node = node['T'] if ((val == v) if op == 'eq' else (val <= v)) else node['F']
+    return node['leaf']
+def _mk_tree_model(fam):
+    return lambda k: {('leaf', tree_leaf(TREES[fam], keytup(fam, k))): 1}
+for _f, _m in list(PM.items()):
+    if _m == 'tree' or _m.startswith('treefile:'):
+        TREES[_f] = json.load(open(_m[9:])) if _m.startswith('treefile:') else {'leaf': 0}
+        def _nl(n): return 1 if 'leaf' in n else _nl(n['T']) + _nl(n['F'])
+        def _ml(n): return n['leaf'] if 'leaf' in n else max(_ml(n['T']), _ml(n['F']))
+        NLEAF[_f] = _ml(TREES[_f]) + 1; PMF[_f] = _mk_tree_model(_f)
+def tree_str(node, fam, ind=''):
+    if 'leaf' in node: return '%sleaf %d\n' % (ind, node['leaf'])
+    return '%sif k[%d] %s %d:\n%s%selse:\n%s' % (ind, node['p'], '==' if node['op'] == 'eq' else '<=', node['v'], tree_str(node['T'], fam, ind + '  '), ind, tree_str(node['F'], fam, ind + '  '))
+def _count(n): return 1 if 'leaf' in n else _count(n['T']) + _count(n['F'])
+def pm_snapshot(fn, t, xv, cols, extra=None):
+    TH = {k[1:]: float(xv[i]) for k, i in cols.items() if k[0] == 'th'}
+    S = {'t': float(t), 'model': 'R6x2', 'apex': AP, 'xon': 'xon' in FLAGS, 'apexcls': AC, 'hat5': H5, 'l3q': L3Q, 'zh': ZH, 'fy': FY, 'fy2': FY2}
+    for fam in ('y', 'g', 'h', 'x', 'r', 'lq', 'lQ'):
+        if fam in PM: V_ = pm_values(fam, TH)
+        else: V_ = {k[1]: float(xv[i]) for k, i in cols.items() if k[0] == fam}
+        if fam == 'y': S['y'] = {rname(k): float(v) for k, v in V_.items() if v > 0}
+        elif fam == 'x': S['x'] = {str(k): float(v) for k, v in V_.items() if v > 0}
+        else: S[fam] = [[list(k), float(v)] for k, v in V_.items() if v > 0]
+    S['pm'] = PM; S['theta'] = [[f[0], repr(f[1]), v] for f, v in sorted(TH.items(), key=str)]
+    S['trees'] = TREES
+    if extra: S.update(extra)
+    json.dump(S, open(fn, 'w'))
+def pm_grow_step(h, cols, xv, t, info):
+    """one growth round at a converged LP; returns the list of splits made (empty = stop)"""
+    dual = np.array(h.getSolution().row_dual)
+    G = collections.defaultdict(float)
+    for (cf, lo, hi, inf_), ri in zip(PMROWS, PMROWIX):
+        yv = dual[ri]
+        if yv == 0.0: continue
+        for k, v in cf.items():
+            if k[0] in TREES: G[(k[0], k[1])] += yv * v
+    TH = {k[1:]: float(xv[i]) for k, i in cols.items() if k[0] == 'th'}
+    # check against HiGHS's own reduced costs of the leaf columns (bound rows add their dual)
+    cd = np.array(h.getSolution().col_dual); worst = 0.0
+    lg = collections.defaultdict(float)
+    for (fam, k), g in G.items(): lg[(fam, tree_leaf(TREES[fam], keytup(fam, k)))] += g
+    cands = []
+    byleaf = collections.defaultdict(list)
+    for (fam, k), g in G.items():
+        if abs(g) > 1e-13: byleaf[(fam, tree_leaf(TREES[fam], keytup(fam, k)))].append((keytup(fam, k), g))
+    seen_ = set()
+    for (fam, lf), items in byleaf.items():
+        tot = sum(g for _, g in items); th = TH.get((fam, ('leaf', lf)), 0.0)
+        cap = PMCAP[fam]() if fam in PMCAP else None
+        L = max(len(kt) for kt, _ in items)
+        for p in range(L):
+            vals = sorted({kt[p] if p < len(kt) else -1 for kt, _ in items})
+            if len(vals) < 2: continue
+            for op in ('eq', 'le'):
+                for v in (vals if op == 'eq' else vals[:-1]):
+                    if op == 'eq' and len(vals) == 2 and v == vals[1]: continue   # same split as eq vals[0]
+                    K1 = frozenset(kt for kt, g in items if ((kt[p] if p < len(kt) else -1) == v if op == 'eq' else (kt[p] if p < len(kt) else -1) <= v))
+                    sig_ = (fam, lf, min(K1, frozenset(kt for kt, _ in items) - K1, key=lambda z: sorted(z)))
+                    if sig_ in seen_: continue
+                    seen_.add(sig_)
+                    s1 = sum(g for kt, g in items if kt in K1)
+                    sc = 0.0
+                    for d in (-s1, -(tot - s1)):   # reduced cost of each child
+                        up = -d if (cap is None or th < cap - 1e-9) else 0.0
+                        dn = d if th > 1e-9 else 0.0
+                        sc = max(sc, up, dn)
+                    if sc > 1e-12: cands.append((sc, fam, lf, p, op, v))
+    cands.sort(key=lambda c: -c[0]); made = []; per = collections.Counter()
+    for c in cands:   # strong-branching shortlist: the best GK candidates, at most GPF per family
+        if per[c[1]] >= GPF: continue
+        per[c[1]] += 1; made.append(c)
+        if len(made) >= GK: break
+    log('  grow: %d candidates; shortlist %s' % (len(cands), [(f, lf, p, op, v, round(sc, 4)) for sc, f, lf, p, op, v in made]))
+    return made
+def pm_apply(c):
+    sc, fam, lf, p, op, v = c
+    def _split(node, lf, p, op, v, fam):
+        if 'leaf' in node:
+            if node['leaf'] != lf: return node
+            a = NLEAF[fam]; NLEAF[fam] += 1
+            return {'p': p, 'op': op, 'v': v, 'T': {'leaf': lf}, 'F': {'leaf': a}}
+        return {'p': node['p'], 'op': node['op'], 'v': node['v'], 'T': _split(node['T'], lf, p, op, v, fam), 'F': _split(node['F'], lf, p, op, v, fam)}
+    TREES[fam] = _split(TREES[fam], lf, p, op, v, fam)
+    for kk in [kk for kk in _phic if kk[0] == fam]: del _phic[kk]
+def pm_state(): return (json.loads(json.dumps(TREES)), dict(NLEAF))
+def pm_restore(st):
+    TREES.clear(); TREES.update(json.loads(json.dumps(st[0]))); NLEAF.clear(); NLEAF.update(st[1]); _phic.clear()
+
+# ---------------- s54 lasso path (lasso=LAMBDA): objective t + LAMBDA * sum_f |theta_f| over every modelled feature ----------------
+LASSO = float(OPT.get('lasso', '0'))
+def pm_abs_rows():
+    out = []
+    if not LASSO: return out
+    for fam in PM:
+        fs = sorted({f for k in pm_universe(fam) for f in phi(fam, k)}, key=str)
+        for f in fs:
+            out.append(({('ab', fam, f): 1.0, ('th', fam, f): -1.0}, 0.0, None, ('pmabs', fam, repr(f), '+')))
+            out.append(({('ab', fam, f): 1.0, ('th', fam, f): 1.0}, 0.0, None, ('pmabs', fam, repr(f), '-')))
+    log('lasso %g: %d |theta| rows' % (LASSO, len(out)))
+    return out
