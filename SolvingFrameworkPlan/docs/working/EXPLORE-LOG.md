@@ -66,6 +66,23 @@ cert when it lands. Rows `loop/k60/rows60k.txt`. canon_key (`loop/k59/canon59.py
   g7_7766556_6.....6_w0:5. (priv59) kills w0's private next to s0 at 5 whatever the other private is; with RSST 137 at
   w0:.5, w0 of 7766556/6567566 has no five among its privates in any surviving completion, and w1 loses the five next
   to s1 (RSST 137 at w1:5.; w1:75 kills one more cell).
+- **06:44Z, r60b pair windows: 3 of the 13 open ones at ring <= 16 die, all at w4** (`loop/k60p/`, KILL): w4:55 D (ring 15,
+  kc + dfast), w4:56 and w4:65 C (ring 16, X = {I4-I5}, interior only, kc -C + cfast --fixed leftover 0). No kill at w5
+  (59, 95, 99 at ring 15; 57, 69, 75, 96 at 16) or at w4 59, 95, 99. Hypothesis held, kill line not hit; guess (2-4)
+  right. The row stays alive: w4 with a five beside a 5 or 6 dies, everything else is open (ring 17-21 windows not
+  run). w4:55 and w4:56 are in kpriv v1; w4:65 goes into v2.
+- **06:44Z, the Formal thread's batches 2 and 3**: containment (`loop/k60/cont60_batch2.txt`, `cont60_batch3.txt`):
+  7665566/6675676 w0 priv95 holds RSST 180; 7766655/6567659 w0 priv55, 56, 59 hold nl1323_r15 (2026 set). The other 4
+  (7766556/6567566 w0 priv66 ring 17, w1 priv95 ring 15; 7766655/6567659 w1 priv75 ring 16, w1 priv95 ring 15) are D on
+  Studio's kc + dfast18 (main 9ce86aa4, 4dffd10a); our kc -C: D on w0 priv66 and 7766655 w1 priv75
+  (`loop/k60/in60/kc_b2.log`), batch 3 running.
+- **06:49Z, pair table done and kpriv version 2.** pair60 finished in a fast containment-only mode (FAST=1, RESUME=1, the cells
+  already counted kept their coverage numbers) on the 3 face rows and the 2 non-face round 60 rows, 9 link 7s x 25 cells
+  (`loop/k60/pair60.txt`). Grid with the engine kills (`loop/k60/grid60.py` -> `pair60_grid.txt`): dead cells per link 7
+  are 10, 9 (7766556 w0, w1), 9 (7665566 w0), 5, 10 (7766655 w0, w1), 9, 7 (9656775 w4, w5), 9, 6 (7666567 w0, w6). Every
+  five among a link 7's privates dies on 6 of the 9 (both sides); the open five cells are 7766655 w0 b = 5 with a >= 6,
+  9656775 w5 b = 5 with a >= 7, 7666567 w6 a = 5 with b >= 7. Cells with both privates >= 6 are open almost everywhere
+  (E at 7766556 w0:66 and 7766655 w1:66). kpriv v2 (`loop/k60/kpriv.txt`, 11 engine kills, 31 containment patterns).
 
 ## Round 59s (21 Oct 2026, 05:26Z-): H-SAT, does capacity transport pay the face row 7766556/6567566 in every completion?
 

@@ -5,6 +5,8 @@ open), the names of that thread's census (priv<a><b>).  Reported per (k, a, b): 
 582 + twoeng names of TD/TC) or of the 2026 set (XKC) inside the closed vertices, if any; else the share of the open
 fillings of the boundary (each slot above its disc degree, as sat59.py) that the registry, then registry + 2026 set,
 covers.
+FAST=1: containment inside the closed vertices only (no coverage counts); RESUME=1: skip the cells already in the
+output file and append to it.
 usage: python3 pair60.py TD TC XKC [ROW ...]   (ROW = LK/SV, default the three rows of that census) -> k60/pair60.txt
 (or k60/$PAIROUT)"""
 import sys, os, itertools, time
@@ -45,10 +47,18 @@ def cyls(E, lets, CONF):
             if all(req[v] in lets[v] for v in req): out.append(req)
     return C.minimal(out), sorted(set(inside))
 
+def inside_fast(E, CONF):
+    P = sorted(E.deg); Ps = set(P); pa = {v: E.adj[v] & Ps for v in P}; pf = {t for t in E.tris if t <= Ps}; fd = dict(E.deg)
+    return sorted({c[0] for c in CONF if len(c[2]) <= len(P) and grow.embeddings(c, P, pa, pf, fd)})
+
 def main():
     REG, miss = C.F.registry(TD, TC)
     XR = [grow.kcline(l, 'xreg') for l in open(XKC) if l.strip()]
-    out = open(os.path.join(H, os.environ.get('PAIROUT', 'pair60.txt')), 'w')
+    FAST = os.environ.get('FAST') == '1'; ON = os.path.join(H, os.environ.get('PAIROUT', 'pair60.txt'))
+    done = set()
+    if os.environ.get('RESUME') == '1' and os.path.exists(ON):
+        done = {tuple(l.split()[:3]) for l in open(ON) if not l.startswith('#') and ': ' in l}
+    out = open(ON, 'a' if done else 'w')
     def say(*a):
         s = ' '.join(map(str, a)); print(s, flush=True); out.write(s + '\n'); out.flush()
     say('# pair60 %s: registry %d (%d names not found), 2026 set %d; letters a = p_k_1 (next to s_k), b = p_k_2 (next to s_(k-1)), 9 = >= 9 open' % (
@@ -59,6 +69,7 @@ def main():
             if LK[k] != 7: continue
             dead = 0
             for a, b in itertools.product((5, 6, 7, 8, 9), repeat=2):
+                if (row, 'w%d' % k, 'priv%d%d:' % (a, b)) in done: continue
                 t0 = time.time(); D, u, W, S = frame(LK, SV); p1, p2 = privates(D, W, S, k); ok = True
                 for x, l in ((p1, a), (p2, b)):
                     if l <= 8 and not D.close(x, l): ok = False
@@ -70,6 +81,12 @@ def main():
                     if SV[i] == 9: lets[S[i]] = (9,)
                     if LK[i] == 9: lets[W[i]] = (9,)
                 SL = sorted(lets); tot = C.prod(len(lets[x]) for x in SL)
+                if FAST:
+                    ir = inside_fast(D, REG); ix = [] if ir else inside_fast(D, XR)
+                    if ir or ix: dead += 1
+                    say('%s w%d priv%d%d: %s' % (row, k, a, b, ('DEAD, registry inside: %s' % ' '.join(ir[:4])) if ir else
+                        ('DEAD, 2026 set inside: %s' % ' '.join(ix[:4])) if ix else 'open (FAST: no coverage count)'))
+                    continue
                 cr, ir = cyls(D, lets, REG)
                 if ir:
                     dead += 1; say('%s w%d priv%d%d: DEAD, registry inside: %s' % (row, k, a, b, ' '.join(ir[:4]))); continue
@@ -79,7 +96,7 @@ def main():
                                                                                              100.0 * C.count(cr, SL, lets) / tot)); continue
                 say('%s w%d priv%d%d: open, %d slots; registry covers %.2f%%, with the 2026 set %.2f%% of the open fillings (%.0fs)' % (
                     row, k, a, b, len(SL), 100.0 * C.count(cr, SL, lets) / tot, 100.0 * C.count(cr + cx, SL, lets) / tot, time.time() - t0))
-            say('# %s w%d: %d of 25 letter pairs dead by containment' % (row, k, dead))
+            say('# %s w%d: %d of the 25 letter pairs run here dead by containment%s' % (row, k, dead, ' (resumed)' if done else ''))
 
 if __name__ == '__main__':
     main()
