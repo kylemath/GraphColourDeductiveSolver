@@ -61,6 +61,8 @@ for l in open(ENG):
     head, kcl = l.split(' | ', 1); f = head.split(); tag, row, k, ab, ev = f[0], f[1], int(f[2]), f[3], ' '.join(f[4:])
     a, b = int(ab[0]), int(ab[1]); D, u, W, S, p1, p2, LK, SV = case(row, k, a, b)
     I0 = [u] + [w for w in W if w in D.deg] + [s for s in (S[k - 1], S[k]) if s in D.deg] + [x for x in (p1, p2) if x in D.deg]
+    nm = kcl.split()[0]                      # pw60x.py's grown window: its apex letters add those apexes
+    if nm.startswith('x60_'): I0 += [S[i] for i, c in enumerate(nm.split('_')[-1]) if c != '.' and S[i] not in I0]
     mine, il, rl = tw60.window(D, I0, 'mine')
     iso = I.GraphMatcher(graph(mine), graph(kcl), node_match=lambda x, y: x['t'] == y['t']).is_isomorphic()
     assert iso, (row, k, ab)
