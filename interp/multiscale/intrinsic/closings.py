@@ -88,7 +88,7 @@ def job(a):
         for kb, Db, cb, ib in cols['B']:
             o = closing_R(T_, A, B, ca, cb, Rmax=8)
             o.update(kA=ka, kB=kb, DA=Da, DB=Db, iA=ia, iB=ib); res.append(o)
-            if o.get('R', 99) >= 4:
+            if not isinstance(o.get('R'), int) or o['R'] >= 4:
                 pickle.dump(dict(F=F, seed=seed, adj=T_.adj, A=A, colA=ca, colB=cb, out=o),
                             open('/mnt/project-files/multiscale/intrinsic/hardc_%d_%d_%s%s.pkl' % (F, seed, ka, kb), 'wb'))
     return dict(F=F, seed=seed, T=T, tmax=TMAX, L=len(seam), mA=cA.m, mB=cB.m, parity='even+even', fails=dict(fails), res=res, sec=round(time.time()-t0))
@@ -103,6 +103,6 @@ if __name__ == '__main__':
         for r in P.imap_unordered(job, jobs):
             open(out, 'a').write(json.dumps(r)+'\n')
             rr = r.get('res', [])
-            print(r.get('F'), r.get('seed'), 'L', r.get('L'), r.get('fails'), 'R', sorted(collections.Counter(x.get('R') for x in rr).items()),
-                  'byKind', sorted(collections.Counter((x['kA'], x['kB'], x.get('R')) for x in rr).items()),
+            print(r.get('F'), r.get('seed'), 'L', r.get('L'), r.get('fails'), 'R', sorted(collections.Counter(x.get('R') for x in rr).items(), key=str),
+                  'byKind', sorted(collections.Counter((x['kA'], x['kB'], x.get('R')) for x in rr).items(), key=str),
                   'drifts', sorted(set((x['iA']['drift'], x['iA']['t'], x['iA']['tau_int']) for x in rr)), r.get('sec'), flush=True)

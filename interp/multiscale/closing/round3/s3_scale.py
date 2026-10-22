@@ -97,7 +97,7 @@ def job(a):
     for i in range(k):
         for j in range(k):
             o = closing_fast(T, A, B, ca[i], cb[j], Rmax=8 if F < 35 else 4); res.append(o)
-            if o.get('R', 9) >= 3 or o.get('W_band', 9) >= 3:
+            if not isinstance(o.get('R'), int) or o['R'] >= 3 or not isinstance(o.get('W_band', 0), int) or o.get('W_band', 0) >= 3:
                 pickle.dump(dict(F=F, kind=kind, seed=seed, adj=T.adj, A=A, colA=ca[i], colB=cb[j], out=o),
                             open(OUT + 'hard_%d_%s_%d_%d_%d.pkl' % (F, kind, seed, i, j), 'wb'))
     return dict(F=F, kind=kind, seed=seed, n=n, L=len(seam), mA=cA.m, mB=cB.m, odd_seam1=os1, odd_d=odd_d[:4],
