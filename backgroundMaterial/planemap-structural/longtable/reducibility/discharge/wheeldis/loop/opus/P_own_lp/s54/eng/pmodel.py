@@ -10,7 +10,7 @@ PM = {}
 for _it in [s for s in OPT.get('pm', '').split(',') if s]:
     _f, _m = _it.split(':', 1)
     if _m != 'free': PM[_f] = _m
-PMF = {f: _fg['model'](f, m) for f, m in PM.items() if not (m == 'tree' or m.startswith('treefile:'))}
+PMF = {f: _fg['model'](f, m) for f, m in PM.items() if not (m in ('tree', 'sel') or m.startswith('treefile:'))}
 _phic = {}
 def phi(fam, key):
     k_ = (fam, key)
@@ -63,10 +63,11 @@ def pm_universe(fam):
     UNIV[fam] = sorted(U, key=str); return UNIV[fam]
 PMCAP = {'x': lambda: float(OPT.get('xcap', '3')), 'lq': lambda: LQCAP}
 LAZYB = 'lazyb' in FLAGS; PMBSEEN = set(); PMBQ = []
+SEL = {f for f, m in PM.items() if m == 'sel'}
 def pm_bound_row(fam, k):
     ph = phi(fam, k)
-    if not ph: return None
-    sig = (fam, tuple(sorted(ph.items(), key=str)))
+    if not ph and fam not in SEL: return None
+    sig = (fam, 'key', k) if fam in SEL else (fam, tuple(sorted(ph.items(), key=str)))   # sel: one (possibly empty) row per key, so new columns can enter it
     if sig in PMBSEEN: return None
     PMBSEEN.add(sig); hi = PMCAP[fam]() if fam in PMCAP else None
     return ({('th', fam, f): c for f, c in ph.items()}, 0.0, hi, ('pmbound', fam, repr(k)))
@@ -213,3 +214,157 @@ def pm_abs_rows():
             out.append(({('ab', fam, f): 1.0, ('th', fam, f): 1.0}, 0.0, None, ('pmabs', fam, repr(f), '-')))
     log('lasso %g: %d |theta| rows' % (LASSO, len(out)))
     return out
+# ---------------- s54 forward selection (pm=fam:sel): column generation over each family's feature dictionary ----------------
+# The active features of a 'sel' family are its columns.  At each converged LP every dictionary feature f is priced exactly
+# (reduced cost of the new column theta_f: d_f = -sum_rows dual_r * A_rf, bound rows included); the GK best |d_f| (at most
+# GPF per family) are tried by adding the column to the LP and re-solving (warm), and the one that lowers t most is kept.
+# If no single column helps, pairs among the GPAIR best are tried.  Then separation resumes (lazy bounds required).
+SEL = {f for f, m in PM.items() if m == 'sel'}
+ACTIVE = {f: set() for f in SEL}
+_DC = {}
+def _dmk(f):
+    base = _fg['dict2_model'](f)
+    def g(k):
+        kk = (f, k)
+        if kk not in _DC: _DC[kk] = base(k)
+        return _DC[kk]
+    return g
+DICTF = {f: _dmk(f) for f in SEL}   # dict2, memoised
+if 'selinit' in OPT:
+    for fam, fs in json.load(open(OPT['selinit'])).items():
+        if fam in SEL: ACTIVE[fam].update(eval(q) for q in fs)
+def _mk_sel(fam):
+    return lambda k: {q: c for q, c in DICTF[fam](k).items() if q in ACTIVE[fam]}
+for _f in SEL: PMF[_f] = _mk_sel(_f)
+assert not SEL or LAZYB, 'sel needs lazyb'
+def sel_price(h, info):
+    dual = np.array(h.getSolution().row_dual)
+    G = collections.defaultdict(float)
+    for (cf, lo, hi, inf_), ri in zip(PMROWS, PMROWIX):
+        yv = dual[ri]
+        if yv == 0.0: continue
+        for k, v in cf.items():
+            if k[0] in SEL: G[(k[0], k[1])] += yv * v
+    for ri, inf_ in enumerate(info):
+        if inf_[0] == 'pmbound' and inf_[1] in SEL and dual[ri] != 0.0: G[(inf_[1], eval(inf_[2]))] += dual[ri]
+    d = collections.defaultdict(float)
+    for (fam, k), g in G.items():
+        if abs(g) < 1e-14: continue
+        for q, c in DICTF[fam](k).items():
+            if q not in ACTIVE[fam]: d[(fam, q)] -= c * g
+    return d
+def sel_column(fam, q, info):
+    """the new column theta_(fam, q) over the current LP rows: (row indices, values)"""
+    A = collections.defaultdict(float)
+    for (cf, lo, hi, inf_), ri in zip(PMROWS, PMROWIX):
+        for k, v in cf.items():
+            if k[0] == fam:
+                c = DICTF[fam](k[1]).get(q)
+                if c: A[ri] += v * c
+    for ri, inf_ in enumerate(info):
+        if inf_[0] == 'pmbound' and inf_[1] == fam:
+            c = DICTF[fam](eval(inf_[2])).get(q)
+            if c: A[ri] += c
+    idx = np.array(sorted(A), dtype=np.int32); val = np.array([A[i] for i in idx])
+    return idx, val
+def sel_columns(cands, info):
+    """all new columns of cands in one pass over the rows: {(fam, q): (idx, val)}"""
+    want = collections.defaultdict(set)
+    for fam, q in cands: want[fam].add(q)
+    A = {c: collections.defaultdict(float) for c in cands}
+    for (cf, lo, hi, inf_), ri in zip(PMROWS, PMROWIX):
+        for k, v in cf.items():
+            if k[0] in want:
+                for q, c in DICTF[k[0]](k[1]).items():
+                    if q in want[k[0]]: A[(k[0], q)][ri] += v * c
+    for ri, inf_ in enumerate(info):
+        if inf_[0] == 'pmbound' and inf_[1] in want:
+            for q, c in DICTF[inf_[1]](eval(inf_[2])).items():
+                if q in want[inf_[1]]: A[(inf_[1], q)][ri] += c
+    out = {}
+    for c_, M in A.items():
+        idx = np.array(sorted(M), dtype=np.int32); out[c_] = (idx, np.array([M[i] for i in idx]))
+    return out
+SELCOL = {}
+def sel_try(h, jt, cands, info):
+    """add the columns of cands at once, solve, read t, delete them again"""
+    import highspy
+    n0 = h.getNumCol()
+    for fam, q in cands:
+        idx, val = SELCOL[(fam, q)] if (fam, q) in SELCOL else sel_column(fam, q, info); h.addCol(0.0, -highspy.kHighsInf, highspy.kHighsInf, len(idx), idx, val)
+    h.run()
+    ok = h.getModelStatus() == highspy.HighsModelStatus.kOptimal
+    tc = h.getSolution().col_value[jt] if ok else 1e9
+    h.deleteCols(len(cands), np.arange(n0, n0 + len(cands), dtype=np.int32))
+    return tc
+GBLOCK = int(OPT.get('gblock', '0'))
+def sel_block_pool(d):
+    """candidates for a block step: the GBLOCK best priced features + every non-'full' (non per-key) dictionary feature"""
+    pool = [fq for fq, v in sorted(d.items(), key=lambda kv: -abs(kv[1]))[:GBLOCK]]
+    seen = set(pool)
+    for fam in [f for f in OPT.get('gbfam', 'y,g,h').split(',') if f in SEL]:
+        fs = set()
+        for k in pm_universe(fam):
+            for q in DICTF[fam](k):
+                if q[0] != 'K' and q not in ACTIVE[fam] and not (fam == 'x' and len(q) == 6): fs.add(q)
+        for q in sorted(fs, key=str):
+            if (fam, q) not in seen: seen.add((fam, q)); pool.append((fam, q))
+    return pool
+def sel_block(h, jt, t, d, info):
+    """plateau: lasso over a candidate pool (penalty only on new columns); the first lambda that lowers t gives the block"""
+    import highspy
+    inf = highspy.kHighsInf; pool = sel_block_pool(d); t_ = time.time()
+    n0 = h.getNumCol(); m0 = h.getNumRow()
+    CC = sel_columns(pool, info); log('    block: %d columns built in %.0fs' % (len(CC), time.time() - t_))
+    for fam, q in pool:
+        idx, val = CC[(fam, q)]; h.addCol(0.0, -inf, inf, len(idx), idx, val)
+    nn = len(pool)
+    for i in range(nn): h.addCol(1.0, 0.0, inf, 0, np.array([], dtype=np.int32), np.array([]))   # u_i >= |theta_i|
+    for i in range(nn):
+        h.addRow(0.0, inf, 2, np.array([n0 + nn + i, n0 + i], dtype=np.int32), np.array([1.0, -1.0]))
+        h.addRow(0.0, inf, 2, np.array([n0 + nn + i, n0 + i], dtype=np.int32), np.array([1.0, 1.0]))
+    out = ([], 1e9)
+    h.setOptionValue('solver', 'ipm')
+    for lam in [float(x) for x in OPT.get('gblam', '1e-3,1e-4').split(',')]:
+        for i in range(nn): h.changeColCost(n0 + nn + i, lam)
+        h.run()
+        if h.getModelStatus() != highspy.HighsModelStatus.kOptimal: continue
+        xv_ = np.array(h.getSolution().col_value); th = xv_[n0:n0 + nn]
+        sel_ = [pool[i] for i in range(nn) if abs(th[i]) > 1e-9]
+        log('    block lambda %g: t %.9f with %d new columns' % (lam, xv_[jt], len(sel_)))
+        if xv_[jt] < t - 1e-6 and sel_: out = (sel_, xv_[jt]); break
+    h.setOptionValue('solver', 'simplex')
+    h.deleteRows(2 * nn, np.arange(m0, m0 + 2 * nn, dtype=np.int32)); h.deleteCols(2 * nn, np.arange(n0, n0 + 2 * nn, dtype=np.int32))
+    log('    block over %d candidates (%.0fs): %s' % (nn, time.time() - t_, out[0][:20]))
+    return out
+def sel_step(h, jt, t, info):
+    t_ = time.time(); d = sel_price(h, info)
+    ranked = sorted(d.items(), key=lambda kv: -abs(kv[1]))
+    short = []; per = collections.Counter()
+    for (fam, q), v in ranked:
+        if abs(v) < 1e-10: break
+        if per[fam] >= GPF: continue
+        per[fam] += 1; short.append(((fam, q), v))
+        if len(short) >= GK: break
+    log('  sel: %d priced features with |d| > 0; shortlist %s' % (sum(1 for v in d.values() if abs(v) > 1e-10), [(f, q, round(v, 4)) for (f, q), v in short[:12]]))
+    res = []; SELCOL.clear(); SELCOL.update(sel_columns([c for c, _ in short], info))
+    for (fam, q), v in short:
+        tc = sel_try(h, jt, [(fam, q)], info); res.append((tc, (fam, q)))
+        log('    try %s %s (d %.4g): t = %.9f' % (fam, q, v, tc))
+    res.sort(key=lambda r: r[0]); pick = [res[0][1]] if res else []; tb = res[0][0] if res else 1e9
+    if (not res or tb > t - 1e-9) and GPAIR:
+        top = [c for c, _ in short[:GPAIR]]; bp = (tb, None)
+        for i_ in range(len(top)):
+            for j_ in range(i_ + 1, len(top)):
+                tc = sel_try(h, jt, [top[i_], top[j_]], info)
+                if tc < bp[0] - 1e-9: bp = (tc, [top[i_], top[j_]])
+        log('    pair lookahead over %d: best t %.9f %s' % (len(top), bp[0], bp[1]))
+        if bp[1]: pick = bp[1]; tb = bp[0]
+    if (not pick or tb > t - 1e-9) and GBLOCK:
+        pick, tb = sel_block(h, jt, t, d, info)
+    elif tb > t - 1e-9: pick = []
+    for fam, q in pick:
+        ACTIVE[fam].add(q)
+        for kk in [kk for kk in _phic if kk[0] == fam]: del _phic[kk]
+    log('  sel: added %s (LP t %.9f, was %.9f; %.0fs); active %s' % (pick, tb, t, time.time() - t_, {f: len(ACTIVE[f]) for f in SEL}))
+    return pick

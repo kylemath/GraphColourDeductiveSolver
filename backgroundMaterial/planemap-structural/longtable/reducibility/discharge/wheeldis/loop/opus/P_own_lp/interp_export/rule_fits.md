@@ -64,4 +64,34 @@ pair features; h: R^2 <= 0.55), so rounding them is hopeless. The parametric LP 
 
 The simplest rule so far: **"a 5 sends 1/3 to each neighbour of degree >= 7"** (t = 2/3).
 
-(Lasso path and refits in progress.)
+## 4. All families together: lasso path and forward selection (in progress)
+
+- **Lasso path** (`s54/lpath.sh`): one LP over the pool with every family on a generic dictionary (y: D, addD, pairD,
+  full; g: const, add, pair, full; h: D, addD, pair, full; x: FT, side, sideFT; r: const, type, side, full; lq: const,
+  full; about 22,000 features) and objective t + lambda * sum |theta|. Its support is then **refit** (lambda = 0) with
+  separation to convergence, and upperR2 checks the refit.
+- **Forward selection** (`pm=...:sel`, column generation): start from nothing; at each converged LP price every
+  dictionary feature exactly from the duals, try the 24 best as new columns, keep the one that lowers t most, separate
+  again. Snapshots `s54/runs/S1*/sol_*_sNNN.json`.
+
+| rule (all families) | nonzero params | verified t | upperR2 |
+|---|---|---|---|
+| selection: y const | 1 | 2/3 | (converged LP; = the y-per-D rule) |
+| selection: + flank 6 | 2 | 1/2 | converged LP |
+| selection: + flank 5 | 3 | 5/11 = 0.454545 | converged LP |
+| selection: + flank-far pair 6-6 | 4 | 10/23 = 0.434783 | converged LP |
+| selection: + pair 5-5 | 5 | 19/44 = 0.431818 | converged LP |
+| selection: + pair 5-6 | 6 | 7/17 = 0.411765 | converged LP |
+| lasso 0.3 refit (y only) | 14 | 2/5 = 0.400000 | FEASIBLE |
+| lasso 0.1 refit | 27 | 0.305482 | FEASIBLE |
+| lasso 0.03 refit | 86 | 0.189687 | FEASIBLE |
+| lasso 0.01 refit | 137 | 0.158213 | FEASIBLE |
+| lasso 0.01 refit, second pass (pool + refit rows) | 159 | 0.152003 | FEASIBLE |
+| lasso 0.003 refit | 436 | 0.145762 | FEASIBLE |
+| lasso 0.001 refit | 366 | 0.137847 | FEASIBLE |
+
+Finding so far: the 6-relay (g, h) is what takes t below 1/7, and it needs only 3 to 7 h features
+("6 -> big: per first link nbr 5 / 6 followed by a 5, per small apex beside a first link nbr 5"), but g then needs
+key-level corrections. Forward selection stalls at 7/17 with 6 y features, because the relay needs g and h columns
+together; a lasso block step over the candidate pool is being added for that.
+

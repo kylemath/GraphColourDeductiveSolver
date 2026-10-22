@@ -1,0 +1,10 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10236, 8: 6243, 9: 3579, 10: 1464, 11: 631, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 2228, 'RPAT': 158, 'RPATN': 2080}
+pm: lazy bound rows (keys in rows + violated universe keys)
+conservation basis rows added: 10539
+l3qV: V = 8 table 5000 masks (full)
+warm rows admitted: 75105
+R6x2 (apex True): 20676 sender rows, 0 g keys in senders, 1424 six-words, 11962 initial cons rows, 1508 M sigs
+iter 0 t=0.118457052416 rows 118082 cols 2796 added 446  lp 98.9s total 156s  {7: (147, np.float64(0.128602), 28.9), 8: (152, np.float64(0.586563), 3.2), 9: (146, np.float64(0.227732), 4.9), 11: (1, np.float64(0.003349), 1.3)}
+iter 1 t=0.119163834804 rows 118400 cols 2798 added 308  lp 21.5s total 239s  {7: (151, np.float64(0.041305), 27.9), 8: (155, np.float64(0.134638), 9.8), 9: (2, np.float64(0.008411), 4.7)}

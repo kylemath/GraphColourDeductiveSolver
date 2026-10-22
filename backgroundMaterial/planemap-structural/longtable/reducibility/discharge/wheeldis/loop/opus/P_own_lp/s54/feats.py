@@ -113,6 +113,22 @@ def sup_model(fam, fn):
     S = json.load(open(fn)); keep = {eval(q) for q in S[fam]}   # feature reprs per family
     base = dict_model(fam, S.get('parts', {}).get(fam))
     return lambda k: {q: c for q, c in base(k).items() if q in keep}
+def y_const(k): return {('c',): 1}
+def h_const(k): return {('c',): 1}
+def x_const(k): return {('c',): 1}
+FEATS['y']['const'] = y_const; FEATS['h']['const'] = h_const; FEATS['x']['const'] = x_const
+# dict2 (forward selection): hierarchical union, features keyed by their definition (same tail = same feature, merged)
+DICT2 = {'y': ('const', 'D', 'add', 'addD', 'pair', 'pairD', 'full'), 'g': ('const', 'add', 'pair', 'full'),
+         'h': ('const', 'D', 'nf', 'add', 'addD', 'pair', 'full'), 'x': ('const', 'FT', 'add', 'side', 'sideFT'),
+         'r': ('const', 'type', 'side', 'full'), 'lq': ('const', 'full')}
+def dict2_model(fam):
+    fs = [FEATS[fam][m] for m in DICT2[fam]]
+    def f(k):
+        out = {}
+        for fn in fs:
+            for q, c in fn(k).items(): out[tuple(q)] = c
+        return out
+    return f
 def model(fam, name):
     if name.startswith('tree:'): return tree_model(name[5:])
     if name == 'dict': return dict_model(fam)

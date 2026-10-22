@@ -977,7 +977,7 @@ def cmd_solveR2():
         for r_ in ROOTS: col(('y', r_))
     info = []; have = set(); msig = set(); conset = set(); qsig = set(); vsig = set(); lsig = set(); xqsig = set()
     def addrow(cf, lo, hi, inf_):
-        if TREES and inf_[0] != 'pmbound': PMROWS.append((cf, lo, hi, inf_)); PMROWIX.append(len(info))   # s54 grow: keep every row
+        if (TREES or SEL) and inf_[0] != 'pmbound': PMROWS.append((cf, lo, hi, inf_)); PMROWIX.append(len(info))   # s54 grow: keep every row
         cf = pm_expand(cf)   # s54
         idx = np.array([col(k) for k in cf], dtype=np.int32); val = np.array([float(v) for v in cf.values()])
         h.addRow(lo, hi, len(idx), idx, val); info.append(inf_)
@@ -1135,6 +1135,14 @@ def cmd_solveR2():
             lam = karp(Mr); log('  Karp lambda %.6f d0 %.2f' % (lam, (6 - t) / (1 - lam) if lam < 1 else 1e9))
         rowlog.flush()
         log('iter %d t=%.12f rows %d cols %d added %d  lp %.1fs total %.0fs  %s' % (it, t, h.getNumRow(), h.getNumCol(), added, tlp, time.time() - T0, {d: v for d, v in per.items() if v[0]}))
+        if not added and SEL:   # s54 forward selection: converged with these features; snapshot, price, add, rebuild
+            na = sum(len(ACTIVE[f]) for f in SEL)
+            log('SEL round %d: features %d %s t = %.12f (converged, %d rows)' % (GROUND[0], na, {f: len(ACTIVE[f]) for f in SEL}, t, h.getNumRow()))
+            pm_snapshot(os.path.join(OPT.get('outdir', HERE), 'sol_%s_s%03d.json' % (OPT.get('tag', 'run'), na)), t, xv, cols, {'sel_round': GROUND[0], 'active': {f: sorted(map(repr, ACTIVE[f])) for f in SEL}})
+            GROUND[0] += 1
+            if (GROWMAX and na >= GROWMAX) or t <= GTARGET: break
+            if not sel_step(h, jt, t, info): log('  sel: nothing to add; stopping'); break
+            t_ = time.time(); rebuild(); log('  sel: LP rebuilt (%d rows, %d cols) in %.1fs' % (h.getNumRow(), h.getNumCol(), time.time() - t_)); continue
         if not added and TREES:   # s54 grow: converged at this tree; snapshot, then split and rebuild
             nl = sum(_count(TREES[f]) for f in TREES)
             log('GROW round %d: leaves %d %s t = %.12f (converged, %d rows)' % (GROUND[0], nl, {f: _count(TREES[f]) for f in TREES}, t, h.getNumRow()))
