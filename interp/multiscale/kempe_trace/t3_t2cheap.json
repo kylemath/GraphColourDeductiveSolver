@@ -1,0 +1,161 @@
+{
+ "same_word": [
+  {
+   "trial": 0,
+   "W_band": 1,
+   "same_as_opus": false,
+   "summary": {
+    "nblocks": 21,
+    "nsingle": 3,
+    "depth": 2,
+    "maxspan": 13,
+    "noncrossing": true
+   },
+   "exact_w": {
+    "5": false,
+    "6": true
+   },
+   "W_after": 1
+  },
+  {
+   "trial": 1,
+   "W_band": 1,
+   "same_as_opus": false,
+   "summary": {
+    "nblocks": 21,
+    "nsingle": 10,
+    "depth": 2,
+    "maxspan": 15,
+    "noncrossing": true
+   },
+   "exact_w": {
+    "5": true
+   },
+   "W_after": 1
+  },
+  {
+   "trial": 2,
+   "W_band": 1,
+   "same_as_opus": false,
+   "summary": {
+    "nblocks": 21,
+    "nsingle": 4,
+    "depth": 2,
+    "maxspan": 12,
+    "noncrossing": true
+   },
+   "exact_w": {
+    "5": true
+   },
+   "W_after": 3
+  },
+  {
+   "trial": 3,
+   "W_band": 1,
+   "same_as_opus": false,
+   "summary": {
+    "nblocks": 21,
+    "nsingle": 9,
+    "depth": 2,
+    "maxspan": 12,
+    "noncrossing": true
+   },
+   "exact_w": {
+    "5": false,
+    "6": true
+   },
+   "W_after": 1
+  },
+  {
+   "trial": 4,
+   "W_band": 1,
+   "same_as_opus": false,
+   "summary": {
+    "nblocks": 21,
+    "nsingle": 7,
+    "depth": 2,
+    "maxspan": 12,
+    "noncrossing": true
+   },
+   "exact_w": {
+    "5": false,
+    "6": true
+   },
+   "W_after": 1
+  }
+ ],
+ "random_words": [
+  {
+   "trial": 0,
+   "W_band": 1,
+   "A": {
+    "nblocks": 21,
+    "nsingle": 11,
+    "depth": 2,
+    "maxspan": 16,
+    "noncrossing": true
+   },
+   "B": {
+    "nblocks": 21,
+    "nsingle": 9,
+    "depth": 2,
+    "maxspan": 15,
+    "noncrossing": true
+   }
+  },
+  {
+   "trial": 1,
+   "W_band": 1,
+   "A": {
+    "nblocks": 21,
+    "nsingle": 11,
+    "depth": 2,
+    "maxspan": 15,
+    "noncrossing": true
+   },
+   "B": {
+    "nblocks": 21,
+    "nsingle": 14,
+    "depth": 1,
+    "maxspan": 15,
+    "noncrossing": true
+   }
+  },
+  {
+   "trial": 2,
+   "W_band": 1,
+   "A": {
+    "nblocks": 21,
+    "nsingle": 10,
+    "depth": 2,
+    "maxspan": 15,
+    "noncrossing": true
+   },
+   "B": {
+    "nblocks": 21,
+    "nsingle": 10,
+    "depth": 2,
+    "maxspan": 15,
+    "noncrossing": true
+   }
+  },
+  {
+   "trial": 3,
+   "W_band": 1,
+   "A": {
+    "nblocks": 21,
+    "nsingle": 12,
+    "depth": 1,
+    "maxspan": 15,
+    "noncrossing": true
+   },
+   "B": {
+    "nblocks": 21,
+    "nsingle": 12,
+    "depth": 1,
+    "maxspan": 16,
+    "noncrossing": true
+   }
+  }
+ ]
+}

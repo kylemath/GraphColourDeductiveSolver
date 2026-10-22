@@ -1,0 +1,766 @@
+{
+ "opus": {
+  "A": {
+   "word": "032012023031012013",
+   "summary": {
+    "nblocks": 21,
+    "nsingle": 0,
+    "depth": 2,
+    "maxspan": 10,
+    "noncrossing": true
+   },
+   "traces": {
+    "(0, 1)": [
+     [
+      0,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      9,
+      15,
+      16
+     ],
+     [
+      11,
+      12,
+      13
+     ]
+    ],
+    "(0, 2)": [
+     [
+      0,
+      12
+     ],
+     [
+      2,
+      3,
+      9
+     ],
+     [
+      5,
+      6,
+      7
+     ],
+     [
+      14,
+      15
+     ]
+    ],
+    "(0, 3)": [
+     [
+      0,
+      1,
+      17
+     ],
+     [
+      3,
+      15
+     ],
+     [
+      6,
+      12
+     ],
+     [
+      8,
+      9,
+      10
+     ]
+    ],
+    "(1, 2)": [
+     [
+      2,
+      16
+     ],
+     [
+      4,
+      5,
+      13,
+      14
+     ],
+     [
+      7,
+      11
+     ]
+    ],
+    "(1, 3)": [
+     [
+      1,
+      10,
+      11
+     ],
+     [
+      4,
+      8
+     ],
+     [
+      13,
+      16,
+      17
+     ]
+    ],
+    "(2, 3)": [
+     [
+      1,
+      2,
+      5
+     ],
+     [
+      7,
+      8,
+      17
+     ],
+     [
+      10,
+      14
+     ]
+    ]
+   }
+  },
+  "B": {
+   "word": "130130320320210210",
+   "summary": {
+    "nblocks": 21,
+    "nsingle": 3,
+    "depth": 2,
+    "maxspan": 8,
+    "noncrossing": true
+   },
+   "traces": {
+    "(0, 1)": [
+     [
+      0,
+      16,
+      17
+     ],
+     [
+      2,
+      3,
+      13,
+      14
+     ],
+     [
+      5,
+      11
+     ],
+     [
+      8
+     ]
+    ],
+    "(0, 2)": [
+     [
+      2
+     ],
+     [
+      5,
+      17
+     ],
+     [
+      7,
+      8,
+      14,
+      15
+     ],
+     [
+      10,
+      11,
+      12
+     ]
+    ],
+    "(0, 3)": [
+     [
+      1,
+      2,
+      8,
+      9
+     ],
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      11,
+      17
+     ],
+     [
+      14
+     ]
+    ],
+    "(1, 2)": [
+     [
+      0,
+      10
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      12,
+      13,
+      15,
+      16
+     ]
+    ],
+    "(1, 3)": [
+     [
+      0,
+      1,
+      3,
+      4
+     ],
+     [
+      6,
+      16
+     ],
+     [
+      9,
+      13
+     ]
+    ],
+    "(2, 3)": [
+     [
+      1,
+      15
+     ],
+     [
+      4,
+      12
+     ],
+     [
+      6,
+      7,
+      9,
+      10
+     ]
+    ]
+   }
+  }
+ },
+ "round3_hard": [
+  {
+   "file": "hard_20_polew_0_2_0.pkl",
+   "side": "A",
+   "L": 113,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 116,
+   "nsingle": 59,
+   "depth": 2,
+   "maxspan": 86,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_20_polew_0_2_0.pkl",
+   "side": "B",
+   "L": 113,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 116,
+   "nsingle": 61,
+   "depth": 2,
+   "maxspan": 91,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_20_polew_0_3_0.pkl",
+   "side": "A",
+   "L": 113,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 116,
+   "nsingle": 58,
+   "depth": 3,
+   "maxspan": 79,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_20_polew_0_3_0.pkl",
+   "side": "B",
+   "L": 113,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 116,
+   "nsingle": 61,
+   "depth": 2,
+   "maxspan": 91,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_25_pole_1_0_0.pkl",
+   "side": "A",
+   "L": 130,
+   "R": 3,
+   "W": 3,
+   "partial": false,
+   "nblocks": 133,
+   "nsingle": 71,
+   "depth": 2,
+   "maxspan": 103,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_25_pole_1_0_0.pkl",
+   "side": "B",
+   "L": 130,
+   "R": 3,
+   "W": 3,
+   "partial": false,
+   "nblocks": 133,
+   "nsingle": 73,
+   "depth": 3,
+   "maxspan": 118,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_25_pole_1_3_1.pkl",
+   "side": "A",
+   "L": 130,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 133,
+   "nsingle": 80,
+   "depth": 2,
+   "maxspan": 116,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_25_pole_1_3_1.pkl",
+   "side": "B",
+   "L": 130,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 133,
+   "nsingle": 58,
+   "depth": 3,
+   "maxspan": 87,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_25_pole_1_3_4.pkl",
+   "side": "A",
+   "L": 130,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 133,
+   "nsingle": 80,
+   "depth": 2,
+   "maxspan": 116,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_25_pole_1_3_4.pkl",
+   "side": "B",
+   "L": 130,
+   "R": 3,
+   "W": 2,
+   "partial": false,
+   "nblocks": 133,
+   "nsingle": 72,
+   "depth": 2,
+   "maxspan": 105,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_1_3.pkl",
+   "side": "A",
+   "L": 183,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 211,
+   "nsingle": 115,
+   "depth": 2,
+   "maxspan": 41,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_1_3.pkl",
+   "side": "B",
+   "L": 183,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 224,
+   "nsingle": 103,
+   "depth": 3,
+   "maxspan": 36,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_3_0.pkl",
+   "side": "A",
+   "L": 183,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 220,
+   "nsingle": 100,
+   "depth": 2,
+   "maxspan": 29,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_3_0.pkl",
+   "side": "B",
+   "L": 183,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 215,
+   "nsingle": 96,
+   "depth": 2,
+   "maxspan": 27,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_4_3.pkl",
+   "side": "A",
+   "L": 183,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 214,
+   "nsingle": 101,
+   "depth": 2,
+   "maxspan": 46,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_4_3.pkl",
+   "side": "B",
+   "L": 183,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 224,
+   "nsingle": 103,
+   "depth": 3,
+   "maxspan": 36,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_4_4.pkl",
+   "side": "A",
+   "L": 183,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 214,
+   "nsingle": 101,
+   "depth": 2,
+   "maxspan": 46,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_0_4_4.pkl",
+   "side": "B",
+   "L": 183,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 214,
+   "nsingle": 111,
+   "depth": 2,
+   "maxspan": 58,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_1_4_1.pkl",
+   "side": "A",
+   "L": 181,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 212,
+   "nsingle": 110,
+   "depth": 2,
+   "maxspan": 43,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_35_pole_1_4_1.pkl",
+   "side": "B",
+   "L": 181,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 214,
+   "nsingle": 96,
+   "depth": 2,
+   "maxspan": 26,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_40_pole_0_1_2.pkl",
+   "side": "A",
+   "L": 219,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 250,
+   "nsingle": 140,
+   "depth": 2,
+   "maxspan": 71,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_40_pole_0_1_2.pkl",
+   "side": "B",
+   "L": 219,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 262,
+   "nsingle": 144,
+   "depth": 2,
+   "maxspan": 36,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_40_polew_1_0_3.pkl",
+   "side": "A",
+   "L": 233,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 271,
+   "nsingle": 132,
+   "depth": 2,
+   "maxspan": 40,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_40_polew_1_0_3.pkl",
+   "side": "B",
+   "L": 233,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 275,
+   "nsingle": 139,
+   "depth": 2,
+   "maxspan": 36,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_pole_0_0_2.pkl",
+   "side": "A",
+   "L": 252,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 304,
+   "nsingle": 140,
+   "depth": 3,
+   "maxspan": 27,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_pole_0_0_2.pkl",
+   "side": "B",
+   "L": 252,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 286,
+   "nsingle": 144,
+   "depth": 2,
+   "maxspan": 54,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_pole_0_0_4.pkl",
+   "side": "A",
+   "L": 252,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 304,
+   "nsingle": 140,
+   "depth": 3,
+   "maxspan": 27,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_pole_0_0_4.pkl",
+   "side": "B",
+   "L": 252,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 296,
+   "nsingle": 143,
+   "depth": 2,
+   "maxspan": 49,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_pole_1_2_0.pkl",
+   "side": "A",
+   "L": 266,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 319,
+   "nsingle": 147,
+   "depth": 2,
+   "maxspan": 28,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_pole_1_2_0.pkl",
+   "side": "B",
+   "L": 266,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 302,
+   "nsingle": 177,
+   "depth": 2,
+   "maxspan": 59,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_0_0_4.pkl",
+   "side": "A",
+   "L": 286,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 324,
+   "nsingle": 200,
+   "depth": 2,
+   "maxspan": 126,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_0_0_4.pkl",
+   "side": "B",
+   "L": 286,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 334,
+   "nsingle": 172,
+   "depth": 2,
+   "maxspan": 33,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_0_1_2.pkl",
+   "side": "A",
+   "L": 286,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 328,
+   "nsingle": 188,
+   "depth": 2,
+   "maxspan": 74,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_0_1_2.pkl",
+   "side": "B",
+   "L": 286,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 330,
+   "nsingle": 190,
+   "depth": 2,
+   "maxspan": 60,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_0_3_3.pkl",
+   "side": "A",
+   "L": 286,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 322,
+   "nsingle": 187,
+   "depth": 2,
+   "maxspan": 48,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_0_3_3.pkl",
+   "side": "B",
+   "L": 286,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 335,
+   "nsingle": 165,
+   "depth": 2,
+   "maxspan": 46,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_1_2_0.pkl",
+   "side": "A",
+   "L": 283,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 338,
+   "nsingle": 147,
+   "depth": 2,
+   "maxspan": 50,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_1_2_0.pkl",
+   "side": "B",
+   "L": 283,
+   "R": 3,
+   "W": 2,
+   "partial": true,
+   "nblocks": 328,
+   "nsingle": 169,
+   "depth": 2,
+   "maxspan": 54,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_1_2_2.pkl",
+   "side": "A",
+   "L": 283,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 338,
+   "nsingle": 147,
+   "depth": 2,
+   "maxspan": 50,
+   "noncrossing": true
+  },
+  {
+   "file": "hard_50_polew_1_2_2.pkl",
+   "side": "B",
+   "L": 283,
+   "R": 3,
+   "W": 3,
+   "partial": true,
+   "nblocks": 336,
+   "nsingle": 184,
+   "depth": 2,
+   "maxspan": 48,
+   "noncrossing": true
+  }
+ ]
+}
