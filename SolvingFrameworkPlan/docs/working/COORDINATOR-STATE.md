@@ -35,7 +35,7 @@ https://claude.ai/artifact/6qHXnnJhWsY9jX1WyyKRpG (source `status-page.html` her
 
 ## Discharging line: PAUSED 21 Oct 21:06Z (Kyle: "lets refocus all resources on that route and save the other path for now")
 Resources moved to the learned-model route (thread "Interpretable route to four colours"). Resume checkpoint:
-- Citable [E2] pair: 132/1301 ~ 0.10146 <= t* <= 0.105883918328 on registry A83 (240b5a08), l3q + rpatN3, 128 ring-merge held out; Studio f9dc12ca + d0c65a60; C cover s52c 154 entries, 153 with hC in Lean (CC3V07 building).
+- Citable [E2] pair: 132/1301 ~ 0.10146 <= t* <= 0.105883918328 on registry A83 (240b5a08), l3q + rpatN3, 128 ring-merge held out; Studio f9dc12ca + d0c65a60; C cover s52c 154 entries, all with hC in Lean (98405345).
 - [E2] upper (Studio 19e90dc3, 22:09Z): 0.098789365409 on A97 (8ec00aea), s53 = l3q + rpatN3 + l3qV=7,8, fb and xo off; Opus abf07125 (claude/project-thread-7uelj0, P_own_lp/s53/run_A97/sol_q53A97.json fa4d7844). Studio second-engine check in flight; A97 lower (Opus L stage) and C cover s53c pending. Previous one-engine: A84 0.104204 (86f93859).
 - Registry head: A111 (k3x_D 1ccf362a, 3,125 D; k3x_C c5e8ed9e, 1,339 C); letter-9 ring exception live in twoeng.py. All 111+3 rim-pinned C entries pass foldSafeX in Lean.
 - Allowed to finish: Studio s53 A97 upper check, k19, CC3V07 / CCover3, admissibleXU. Stopped: new solves, explore kill rounds (round 64 at r64h; adm64g letter-9 head not admitted), kc farm queues, chord-split kcf runs, A84 copies.
@@ -88,6 +88,7 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 22 Oct 22:36Z: CCover3 complete. CC3V07 (ring 16, 11.2 h) exited 0 with no sorry; CC3All is clean. All 154 A83 cover C entries have hC in Lean (Studio 98405345), so the C side of the 0.105884 [E2] upper is fully Lean-backed. Gate text updated. admissibleXU is next.
 - 21 Oct 22:10Z: PROMOTED [E2] UPPER BELOW 0.1: t* <= 0.098789365409 on A97 (s53; Opus abf07125, Studio 19e90dc3 s53A97_verdict.md: receivers d=7..17 0 violated, DP d=18..30 clean, Karp lambda 0.568812590 matches, senders/cons2/mrowL V=7,8 clean, perturbed lq(8,6,6,5) caught). There is no A97 lower (line paused), so the quoted interval is upper-only, with the last pair being A83 0.1015..0.1059. The A97 C cover is not fully Lean-backed (s53c partial). Gate, dashboard and memory updated.
 - 21 Oct 21:18Z: ADMITTED adm64h -> registry A111 (k3x_D.out 1ccf362a, 3,125 D; C unchanged c5e8ed9e). r64h 7667656/6565775 dies at ring 15 (f7_5676676_.5.5.5., D on kc and dfast). 0 lost. Explore is now done with the discharging line. Final paused registry head: A111.
 - 21 Oct 21:14Z: ADMITTED adm64g -> registry A110 (k3x_D.out 3539059c, 3,124 D; C unchanged c5e8ed9e). Kill: r64g 9567565/5676765 via f7_.565956_..6556. (ring 13), the first name through the letter-9 ring exception. twoeng.py now carries the narrow N/F check: evidence lines in loop/k64/letter9_ring_ok.txt; negative tests excluded wrong kc8 lines, interior 9s and rows with no 9; the base regression is byte-identical. r64h 7667656/6565775 kill files are stored (ring 15, D on kc and dfast); its head is to be built on A110 after the pause (banks a finished result). Round 64 stops at r64h.
