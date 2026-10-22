@@ -1,0 +1,21 @@
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 128 names held out; 128 C entries dropped (128 distinct names) in {'job27/part00.cfast': 69, 'job27/part01.cfast': 59}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 10236, 8: 6243, 9: 3579, 10: 1464, 11: 631, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 2228, 'RPAT': 158, 'RPATN': 2080}
+l3qV: 0 V >= 8 q > 0 (total 0.000000000), 0 V >= 8 Q > 0
+l3qV: V = 8 table 5000 masks (full)
+l3q: 0 q > 0 (total 0.000000000); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 0)
+d=7: 0 violated (exhaustive, 1.4s)
+d=8: 0 violated (exhaustive, 1.0s)
+d=9: 0 violated (exhaustive, 1.1s)
+d=10: 0 violated (exhaustive, 1.2s)
+d=11: 0 violated (exhaustive, 1.2s)
+d=12: 0 violated (exhaustive, 1.4s)
+d=13: 0 violated (exhaustive, 1.5s)
+d=14: 0 violated (exhaustive, 1.7s)
+d=15: 0 violated (exhaustive, 1.9s)
+d=16: 0 violated (exhaustive, 1.9s)
+d=17: 0 violated (exhaustive, 2.2s)
+Karp lambda 0.375000000 d0 8.800
+UPPER-R2: FEASIBLE at t = 0.500000000000
