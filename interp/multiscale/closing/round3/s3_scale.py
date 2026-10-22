@@ -115,5 +115,5 @@ if __name__ == '__main__':
         for r in P.imap_unordered(job, jobs):
             out.write(json.dumps(r)+'\n'); out.flush()
             rr = r.get('res', [])
-            print(r.get('F'), r.get('kind'), r.get('seed'), 'L', r.get('L'), r.get('err'), r.get('rej'), 'R', sorted(collections.Counter(x.get('R') for x in rr).items()),
-                  'W', sorted(collections.Counter(x.get('W_band') for x in rr).items()), 'maxch', max([x.get('conf_changed', 0) for x in rr], default=None), r.get('sec'), flush=True)
+            print(r.get('F'), r.get('kind'), r.get('seed'), 'L', r.get('L'), r.get('err'), r.get('rej'), 'R', sorted(collections.Counter(x.get('R') for x in rr).items(), key=str),
+                  'W', sorted(collections.Counter(x.get('W_band') for x in rr).items(), key=str), 'maxch', max([x.get('conf_changed', 0) for x in rr], default=None), r.get('sec'), flush=True)
