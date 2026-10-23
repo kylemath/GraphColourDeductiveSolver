@@ -1,0 +1,308 @@
+## completion by family x config
+
+| config | L18-prioB | L18-rand | ctrl | ico10 | ico14 | ico16 | ico22 |
+|---|---|---|---|---|---|---|---|
+| d=0,guard=0 | 12/20 (FAIL-F 4, FAIL-last-F 4) | 10/20 (FAIL-F 4, FAIL-last-F 5, UNK 1) | - | 6/20 (FAIL-F 9, FAIL-last-F 5) | - | - | - |
+| d=10,guard=1 | 14/20 (FAIL-F 3, FAIL-last-F 3) | 13/20 (FAIL-F 3, FAIL-last-F 4) | - | 6/20 (FAIL-F 9, FAIL-last-F 5) | - | - | - |
+| d=20,guard=1 | 14/20 (FAIL-F 3, FAIL-last-F 3) | 12/20 (FAIL-F 3, FAIL-last-F 5) | 3/8 (UNK 3, timeout 2) | 8/20 (FAIL-F 6, FAIL-last-F 6) | - | - | - |
+| d=20,guard=1,dead=1,ord=dip | 15/17 (FAIL-D 2) | 17/20 (FAIL-D 2, FAIL-F 1) | - | 8/20 (FAIL-D 7, FAIL-F 5) | - | - | - |
+| d=40,guard=0,dead=1 | 15/20 (FAIL-D 4, FAIL-F 1) | 11/20 (FAIL-D 7, FAIL-F 1, UNK 1) | - | 9/20 (FAIL-D 6, FAIL-F 5) | 1/8 (FAIL-D 5, FAIL-F 1, UNK 1) | 1/6 (FAIL-D 3, FAIL-F 2) | 0/3 (FAIL-D 3) |
+| d=40,guard=1 | 15/20 (FAIL-F 2, FAIL-last-F 3) | 13/20 (FAIL-F 2, FAIL-last-F 5) | - | 9/20 (FAIL-F 6, FAIL-last-F 5) | - | - | - |
+| d=5,guard=1 | 14/20 (FAIL-F 3, FAIL-last-F 3) | 11/20 (FAIL-F 3, FAIL-last-F 5, UNK 1) | - | 5/20 (FAIL-F 10, FAIL-last-F 5) | - | - | - |
+
+## events: backtrack depth used
+
+d=0,guard=0                        F events   31 resolved    0 | depth max None mean nan hist {} | changed step vortex 0/0 | graph dist median None max None
+d=10,guard=1                       F events   32 resolved    5 | depth max 8 mean 4.8 hist {1: 1, 3: 1, 5: 3} | changed step vortex 1/5 | graph dist median 8.0 max 39
+d=10,guard=1                       G events  286 resolved   50 | depth max 10 mean 1.7 hist {0: 34, 1: 2, 2: 3, 3: 1, 5: 8, 10: 2} | changed step vortex 10/16 | graph dist median 3.0 max 49
+d=20,guard=1                       F events   37 resolved   11 | depth max 18 mean 7.2 hist {1: 2, 3: 2, 5: 4, 10: 3} | changed step vortex 2/11 | graph dist median 4.0 max 39
+d=20,guard=1                       G events  677 resolved  212 | depth max 19 mean 3.7 hist {0: 97, 1: 16, 2: 11, 3: 9, 4: 8, 5: 39, 10: 32} | changed step vortex 97/115 | graph dist median 11.0 max 57
+d=20,guard=1,dead=1,ord=dip        F events   12 resolved    6 | depth max 18 mean 9.2 hist {1: 1, 3: 1, 5: 1, 10: 3} | changed step vortex 1/6 | graph dist median 10.0 max 39
+d=20,guard=1,dead=1,ord=dip        D events   14 resolved    3 | depth max 17 mean 9.7 hist {1: 1, 10: 2} | changed step vortex 0/3 | graph dist median 7.0 max 9
+d=20,guard=1,dead=1,ord=dip        G events  270 resolved   52 | depth max 18 mean 4.5 hist {0: 27, 1: 3, 2: 2, 3: 1, 5: 7, 10: 12} | changed step vortex 16/25 | graph dist median 9.0 max 57
+d=40,guard=0,dead=1                F events   18 resolved    8 | depth max 19 mean 11.1 hist {1: 1, 3: 1, 5: 1, 10: 5} | changed step vortex 0/8 | graph dist median 11.5 max 16
+d=40,guard=0,dead=1                D events   34 resolved    6 | depth max 35 mean 16.7 hist {1: 1, 4: 1, 5: 1, 20: 3} | changed step vortex 2/6 | graph dist median 8.0 max 33
+d=40,guard=1                       F events   38 resolved   15 | depth max 37 mean 16.5 hist {3: 2, 5: 5, 10: 3, 20: 5} | changed step vortex 2/15 | graph dist median 4.0 max 39
+d=40,guard=1                       G events  292 resolved   67 | depth max 38 mean 6.6 hist {0: 35, 1: 2, 2: 3, 3: 1, 5: 8, 10: 9, 20: 9} | changed step vortex 16/32 | graph dist median 9.0 max 57
+d=5,guard=1                        F events   31 resolved    2 | depth max 3 mean 2.0 hist {1: 1, 3: 1} | changed step vortex 1/2 | graph dist median 25.5 max 39
+d=5,guard=1                        G events  284 resolved   40 | depth max 5 mean 0.7 hist {0: 31, 1: 2, 2: 3, 3: 1, 5: 3} | changed step vortex 5/9 | graph dist median 3.0 max 16
+
+## peaks (all runs that ran >= 90% of steps)
+
+L18      d=0,guard=0                          runs  34  slope cuts nan  slope |t| nan  | n=890: c 2.3 t 3.6
+L18      d=10,guard=1                         runs  37  slope cuts nan  slope |t| nan  | n=890: c 1.9 t 2.9
+L18      d=20,guard=1                         runs  37  slope cuts nan  slope |t| nan  | n=890: c 1.9 t 2.9
+L18      d=20,guard=1,dead=1,ord=dip          runs  32  slope cuts nan  slope |t| nan  | n=890: c 1.8 t 2.4
+L18      d=40,guard=0,dead=1                  runs  27  slope cuts nan  slope |t| nan  | n=890: c 1.9 t 3.2
+L18      d=40,guard=1                         runs  37  slope cuts nan  slope |t| nan  | n=890: c 1.9 t 2.9
+L18      d=5,guard=1                          runs  36  slope cuts nan  slope |t| nan  | n=890: c 2.0 t 3.0
+ctrl     d=20,guard=1                         runs   4  slope cuts 0.11  slope |t| 0.27  | n=1002: c 23.3 t 15.0  n=1962: c 25.0 t 17.8
+ico      d=0,guard=0                          runs  18  slope cuts nan  slope |t| nan  | n=1002: c 6.1 t 6.6
+ico      d=10,guard=1                         runs  20  slope cuts nan  slope |t| nan  | n=1002: c 6.0 t 6.6
+ico      d=20,guard=1                         runs  20  slope cuts nan  slope |t| nan  | n=1002: c 6.0 t 6.2
+ico      d=20,guard=1,dead=1,ord=dip          runs  20  slope cuts nan  slope |t| nan  | n=1002: c 5.9 t 6.5
+ico      d=40,guard=0,dead=1                  runs  35  slope cuts 0.04  slope |t| 0.08  | n=1002: c 6.1 t 6.5  n=1962: c 6.3 t 7.2  n=2562: c 6.3 t 7.8  n=4842: c 6.3 t 6.7
+ico      d=40,guard=1                         runs  20  slope cuts nan  slope |t| nan  | n=1002: c 5.8 t 6.1
+ico      d=5,guard=1                          runs  19  slope cuts nan  slope |t| nan  | n=1002: c 6.1 t 6.5
+
+## last-vertex / dead-state analysis: steps from full enclosure to end
+
+ico10:21:rand:any:d=0,guard=0 FAIL faillast True full_n 949 n-full 53 t_at_full 3.464
+ico10:22:rand:any:d=0,guard=0 ok faillast False full_n 978 n-full 24 t_at_full 0.0
+ico10:23:rand:any:d=0,guard=0 FAIL faillast True full_n 976 n-full 26 t_at_full 3.464
+ico10:27:rand:any:d=0,guard=0 ok faillast False full_n 1001 n-full 1 t_at_full 0.0
+ico10:25:rand:any:d=0,guard=0 FAIL faillast False full_n 972 n-full 30 t_at_full 9.165
+ico10:32:rand:any:d=0,guard=0 ok faillast False full_n 951 n-full 51 t_at_full 0.0
+ico10:33:rand:any:d=0,guard=0 FAIL faillast True full_n 973 n-full 29 t_at_full 3.464
+ico10:37:rand:any:d=0,guard=0 FAIL faillast True full_n 997 n-full 5 t_at_full 3.464
+ico10:38:rand:any:d=0,guard=0 FAIL faillast True full_n 987 n-full 15 t_at_full 3.464
+ico10:39:rand:any:d=0,guard=0 ok faillast False full_n 981 n-full 21 t_at_full 3.464
+L18:1:rand:any:d=0,guard=0 FAIL faillast False full_n 675 n-full 215 t_at_full 3.464
+L18:3:rand:any:d=0,guard=0 FAIL faillast True full_n 513 n-full 377 t_at_full 3.464
+L18:5:rand:any:d=0,guard=0 ok faillast False full_n 788 n-full 102 t_at_full 0.0
+L18:4:rand:any:d=0,guard=0 ok faillast False full_n 714 n-full 176 t_at_full 0.0
+L18:6:rand:any:d=0,guard=0 ok faillast False full_n 843 n-full 47 t_at_full 0.0
+L18:7:rand:any:d=0,guard=0 ok faillast False full_n 566 n-full 324 t_at_full 0.0
+L18:8:rand:any:d=0,guard=0 FAIL faillast True full_n 639 n-full 251 t_at_full 3.464
+L18:10:rand:any:d=0,guard=0 FAIL faillast True full_n 812 n-full 78 t_at_full 3.464
+L18:9:rand:any:d=0,guard=0 ok faillast False full_n 825 n-full 65 t_at_full 0.0
+L18:12:rand:any:d=0,guard=0 ok faillast False full_n 763 n-full 127 t_at_full 0.0
+L18:13:rand:any:d=0,guard=0 ok faillast False full_n 598 n-full 292 t_at_full 3.464
+L18:11:rand:any:d=0,guard=0 FAIL faillast False full_n 683 n-full 207 t_at_full 3.464
+L18:14:rand:any:d=0,guard=0 ok faillast False full_n 820 n-full 70 t_at_full 0.0
+L18:15:rand:any:d=0,guard=0 FAIL faillast False full_n 618 n-full 272 t_at_full 3.464
+L18:16:rand:any:d=0,guard=0 FAIL faillast True full_n 623 n-full 267 t_at_full 3.464
+L18:17:rand:any:d=0,guard=0 ok faillast False full_n 782 n-full 108 t_at_full 0.0
+L18:18:rand:any:d=0,guard=0 ok faillast False full_n 695 n-full 195 t_at_full 0.0
+L18:19:rand:any:d=0,guard=0 FAIL faillast True full_n 870 n-full 20 t_at_full 3.464
+L18:0:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 745 n-full 145 t_at_full 0.0
+L18:2:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 749 n-full 141 t_at_full 0.0
+L18:1:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 776 n-full 114 t_at_full 0.0
+L18:4:prioB:any:face=seam,d=0,guard=0 FAIL faillast False full_n 770 n-full 120 t_at_full 6.0
+L18:5:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 718 n-full 172 t_at_full 0.0
+L18:7:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 599 n-full 291 t_at_full 0.0
+L18:6:prioB:any:face=seam,d=0,guard=0 FAIL faillast False full_n 766 n-full 124 t_at_full 3.464
+L18:8:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 712 n-full 178 t_at_full 0.0
+L18:10:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 745 n-full 145 t_at_full 0.0
+L18:9:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 738 n-full 152 t_at_full 0.0
+L18:12:prioB:any:face=seam,d=0,guard=0 FAIL faillast False full_n 729 n-full 161 t_at_full 3.464
+L18:14:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 733 n-full 157 t_at_full 0.0
+L18:13:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 720 n-full 170 t_at_full 0.0
+L18:11:prioB:any:face=seam,d=0,guard=0 FAIL faillast True full_n 676 n-full 214 t_at_full 3.464
+L18:17:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 689 n-full 201 t_at_full 0.0
+L18:15:prioB:any:face=seam,d=0,guard=0 FAIL faillast True full_n 659 n-full 231 t_at_full 3.464
+L18:16:prioB:any:face=seam,d=0,guard=0 FAIL faillast True full_n 777 n-full 113 t_at_full 3.464
+L18:19:prioB:any:face=seam,d=0,guard=0 ok faillast False full_n 719 n-full 171 t_at_full 0.0
+L18:18:prioB:any:face=seam,d=0,guard=0 FAIL faillast True full_n 737 n-full 153 t_at_full 3.464
+
+## dead-state (D) events: depth from the enclosing step, by map
+
+L18:11:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(682, 17, True, 71, 7)]
+L18:11:rand:any:d=40,guard=0,dead=1 FAIL [(682, None, False, 58, None)]
+L18:13:rand:any:d=40,guard=0,dead=1 FAIL [(597, None, False, 775, None)]
+L18:15:prioB:any:face=seam,d=40,guard=0,dead=1 FAIL [(658, None, False, 66, None)]
+L18:15:rand:any:d=40,guard=0,dead=1 FAIL [(617, None, False, 929, None)]
+L18:16:prioB:any:face=seam,d=40,guard=0,dead=1 FAIL [(776, None, False, 107, None)]
+L18:16:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(622, None, False, 220, None)]
+L18:16:rand:any:d=40,guard=0,dead=1 FAIL [(622, None, False, 721, None)]
+L18:18:prioB:any:face=seam,d=40,guard=0,dead=1 FAIL [(736, None, False, 43, None)]
+L18:19:rand:any:d=40,guard=0,dead=1 FAIL [(869, None, False, 176, None)]
+L18:1:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(674, None, False, 20, None)]
+L18:1:rand:any:d=40,guard=0,dead=1 FAIL [(674, None, False, 40, None)]
+L18:3:rand:any:d=40,guard=0,dead=1 ok [(512, 32, True, 104, 33)]
+L18:4:prioB:any:face=seam,d=20,guard=1,dead=1,ord=dip FAIL [(769, None, False, 24, None)]
+L18:4:prioB:any:face=seam,d=40,guard=0,dead=1 FAIL [(769, None, False, 164, None)]
+L18:6:prioB:any:face=seam,d=20,guard=1,dead=1,ord=dip FAIL [(765, None, False, 108, None)]
+L18:8:rand:any:d=40,guard=0,dead=1 FAIL [(638, None, False, 92, None)]
+ico10:21:rand:any:d=40,guard=0,dead=1 ok [(948, 5, True, 16, 9)]
+ico10:23:rand:any:d=20,guard=1,dead=1,ord=dip ok [(975, 1, True, 2, 9)]
+ico10:23:rand:any:d=40,guard=0,dead=1 ok [(975, 1, True, 2, 9)]
+ico10:24:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(936, None, False, 90, None)]
+ico10:24:rand:any:d=40,guard=0,dead=1 FAIL [(936, None, False, 288, None)]
+ico10:25:rand:any:d=20,guard=1,dead=1,ord=dip ok [(991, 11, True, 38, 6)]
+ico10:25:rand:any:d=40,guard=0,dead=1 FAIL [(971, None, False, 127, None)]
+ico10:26:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(994, None, False, 55, None)]
+ico10:32:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(950, None, False, 47, None)]
+ico10:33:rand:any:d=40,guard=0,dead=1 ok [(972, 35, True, 317, 7), (996, 4, True, 15, 2)]
+ico10:34:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(967, None, False, 45, None)]
+ico10:34:rand:any:d=40,guard=0,dead=1 FAIL [(967, None, False, 175, None)]
+ico10:37:rand:any:d=40,guard=0,dead=1 ok [(996, 23, True, 392, 5)]
+ico10:38:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(986, None, False, 88, None)]
+ico10:38:rand:any:d=40,guard=0,dead=1 FAIL [(986, None, False, 208, None)]
+ico10:39:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(980, None, False, 84, None)]
+ico10:39:rand:any:d=40,guard=0,dead=1 FAIL [(980, None, False, 235, None)]
+ico10:40:rand:any:d=20,guard=1,dead=1,ord=dip FAIL [(994, None, False, 128, None)]
+ico10:40:rand:any:d=40,guard=0,dead=1 FAIL [(994, None, False, 224, None)]
+ico14:11:rand:any:d=40,guard=0,dead=1 FAIL [(1892, None, False, 77, None)]
+ico14:13:rand:any:d=40,guard=0,dead=1 FAIL [(1861, None, False, 179, None)]
+ico14:14:rand:any:d=40,guard=0,dead=1 FAIL [(1933, None, False, 248, None)]
+ico14:17:rand:any:d=40,guard=0,dead=1 FAIL [(1868, None, False, 160, None)]
+ico14:18:rand:any:d=40,guard=0,dead=1 FAIL [(1804, None, False, 146, None)]
+ico16:11:rand:any:d=40,guard=0,dead=1 FAIL [(2403, None, False, 139, None)]
+ico16:13:rand:any:d=40,guard=0,dead=1 FAIL [(2490, None, False, 183, None)]
+ico16:14:rand:any:d=40,guard=0,dead=1 FAIL [(2458, None, False, 120, None)]
+ico22:11:rand:any:d=40,guard=0,dead=1 FAIL [(4618, None, False, 70, None)]
+ico22:13:rand:any:d=40,guard=0,dead=1 FAIL [(4783, None, False, 458, None)]
+ico22:14:rand:any:d=40,guard=0,dead=1 FAIL [(4582, None, False, 40, None)]
+
+## F events resolved: (failure n, depth, graph dist, changed step is vortex, last-vertex)
+
+ico10:23:rand:any:d=40,guard=1 [(1002, 27, 4, False, True)]
+ico10:25:rand:any:d=40,guard=1 [(1002, 37, 6, False, True)]
+ico10:24:rand:any:d=40,guard=1 [(988, 9, 9, False, False)]
+ico10:34:rand:any:d=40,guard=1 [(905, 12, 1, False, False), (946, 13, 14, False, False), (999, 8, 4, False, False)]
+ico10:27:rand:any:d=40,guard=1 [(994, 33, 4, False, False)]
+L18:2:rand:any:d=40,guard=1 [(517, 8, 8, False, False)]
+ico10:40:rand:any:d=40,guard=1 [(971, 18, 4, False, False), (998, 3, 3, True, False)]
+L18:13:rand:any:d=40,guard=1 [(819, 32, 1, False, False)]
+L18:11:rand:any:d=40,guard=1 [(515, 3, 39, True, False)]
+L18:6:prioB:any:face=seam,d=40,guard=1 [(868, 33, 7, False, False)]
+L18:12:prioB:any:face=seam,d=40,guard=1 [(814, 6, 1, False, False), (819, 6, 1, False, False)]
+ico10:24:rand:any:d=40,guard=0,dead=1 [(897, 1, 12, False, False)]
+ico10:34:rand:any:d=40,guard=0,dead=1 [(905, 12, 1, False, False), (946, 13, 14, False, False)]
+ico10:35:rand:any:d=40,guard=0,dead=1 [(974, 18, 10, False, False)]
+L18:0:rand:any:d=40,guard=0,dead=1 [(701, 3, 13, False, False)]
+ico10:40:rand:any:d=40,guard=0,dead=1 [(971, 18, 4, False, False)]
+ico16:15:rand:any:d=40,guard=0,dead=1 [(2450, 5, 16, False, False), (2486, 19, 11, False, False)]
+defect14_1:11:rand:any:d=20,guard=1 [(1954, 1, 2, False, False)]
+ico10:24:rand:any:d=10,guard=1 [(897, 1, 12, False, False)]
+L18:2:rand:any:d=10,guard=1 [(517, 8, 8, False, False)]
+L18:11:rand:any:d=10,guard=1 [(515, 3, 39, True, False)]
+L18:12:prioB:any:face=seam,d=10,guard=1 [(814, 6, 1, False, False), (819, 6, 1, False, False)]
+ico10:24:rand:any:d=5,guard=1 [(897, 1, 12, False, False)]
+L18:11:rand:any:d=5,guard=1 [(515, 3, 39, True, False)]
+ico10:24:rand:any:d=20,guard=1 [(897, 1, 12, False, False)]
+ico10:34:rand:any:d=20,guard=1 [(905, 12, 1, False, False), (946, 13, 14, False, False), (999, 8, 4, False, False)]
+L18:2:rand:any:d=20,guard=1 [(517, 8, 8, False, False)]
+ico10:40:rand:any:d=20,guard=1 [(971, 18, 4, False, False), (998, 3, 3, True, False)]
+L18:11:rand:any:d=20,guard=1 [(515, 3, 39, True, False)]
+L18:12:prioB:any:face=seam,d=20,guard=1 [(814, 6, 1, False, False), (819, 6, 1, False, False)]
+ico10:24:rand:any:d=20,guard=1,dead=1,ord=dip [(897, 1, 12, False, False)]
+ico10:34:rand:any:d=20,guard=1,dead=1,ord=dip [(905, 12, 1, False, False), (946, 13, 14, False, False)]
+L18:2:rand:any:d=20,guard=1,dead=1,ord=dip [(517, 8, 8, False, False)]
+ico10:40:rand:any:d=20,guard=1,dead=1,ord=dip [(971, 18, 4, False, False)]
+L18:11:rand:any:d=20,guard=1,dead=1,ord=dip [(515, 3, 39, True, False)]
+
+## unresolved F events: last-vertex?, used
+
+ico10:21:rand:any:d=40,guard=1 [(1002, True, True, 702)]
+ico10:22:rand:any:d=40,guard=1 [(964, False, False, 90)]
+ico10:24:rand:any:d=40,guard=1 [(989, False, True, 318)]
+ico10:28:rand:any:d=40,guard=1 [(964, False, False, 75)]
+ico10:30:rand:any:d=40,guard=1 [(933, False, False, 102)]
+ico10:32:rand:any:d=40,guard=1 [(1002, True, True, 279)]
+ico10:35:rand:any:d=40,guard=1 [(986, False, True, 174)]
+ico10:34:rand:any:d=40,guard=1 [(1002, True, True, 249)]
+ico10:36:rand:any:d=40,guard=1 [(993, False, False, 57)]
+ico10:38:rand:any:d=40,guard=1 [(1002, True, True, 388)]
+ico10:37:rand:any:d=40,guard=1 [(1002, True, True, 891)]
+L18:3:rand:any:d=40,guard=1 [(890, True, True, 458)]
+L18:8:rand:any:d=40,guard=1 [(890, True, True, 390)]
+L18:10:rand:any:d=40,guard=1 [(890, True, True, 416)]
+L18:13:rand:any:d=40,guard=1 [(890, True, True, 92)]
+L18:11:rand:any:d=40,guard=1 [(798, False, True, 40)]
+L18:15:rand:any:d=40,guard=1 [(890, True, True, 410)]
+L18:16:rand:any:d=40,guard=1 [(648, False, True, 113)]
+L18:3:prioB:any:face=seam,d=40,guard=1 [(445, False, False, 40)]
+L18:4:prioB:any:face=seam,d=40,guard=1 [(890, True, True, 181)]
+L18:12:prioB:any:face=seam,d=40,guard=1 [(848, False, True, 110)]
+L18:11:prioB:any:face=seam,d=40,guard=1 [(890, True, True, 339)]
+L18:18:prioB:any:face=seam,d=40,guard=1 [(890, True, True, 90)]
+ico10:26:rand:any:d=40,guard=0,dead=1 [(871, False, False, 340)]
+ico10:28:rand:any:d=40,guard=0,dead=1 [(964, False, False, 75)]
+ico10:30:rand:any:d=40,guard=0,dead=1 [(933, False, False, 102)]
+ico10:36:rand:any:d=40,guard=0,dead=1 [(993, False, False, 55)]
+ico10:35:rand:any:d=40,guard=0,dead=1 [(986, False, True, 507)]
+L18:0:rand:any:d=40,guard=0,dead=1 [(729, False, False, 62)]
+L18:3:prioB:any:face=seam,d=40,guard=0,dead=1 [(445, False, False, 40)]
+ico14:12:rand:any:d=40,guard=0,dead=1 [(1562, False, False, 112)]
+ico16:12:rand:any:d=40,guard=0,dead=1 [(2486, False, False, 137)]
+ico16:15:rand:any:d=40,guard=0,dead=1 [(2506, False, False, 225)]
+ico10:21:rand:any:d=10,guard=1 [(1002, True, True, 48)]
+ico10:23:rand:any:d=10,guard=1 [(1002, True, True, 32)]
+ico10:24:rand:any:d=10,guard=1 [(988, False, True, 19)]
+ico10:25:rand:any:d=10,guard=1 [(979, False, True, 17)]
+ico10:27:rand:any:d=10,guard=1 [(994, False, False, 57)]
+ico10:28:rand:any:d=10,guard=1 [(964, False, False, 10)]
+ico10:30:rand:any:d=10,guard=1 [(933, False, False, 16)]
+ico10:33:rand:any:d=10,guard=1 [(1002, True, True, 33)]
+ico10:34:rand:any:d=10,guard=1 [(905, False, False, 14)]
+ico10:35:rand:any:d=10,guard=1 [(986, False, True, 10)]
+ico10:36:rand:any:d=10,guard=1 [(993, False, False, 25)]
+ico10:37:rand:any:d=10,guard=1 [(1002, True, True, 91)]
+ico10:38:rand:any:d=10,guard=1 [(1002, True, True, 50)]
+ico10:40:rand:any:d=10,guard=1 [(971, False, False, 13)]
+L18:1:rand:any:d=10,guard=1 [(753, False, True, 22)]
+L18:8:rand:any:d=10,guard=1 [(890, True, True, 53)]
+L18:10:rand:any:d=10,guard=1 [(890, True, True, 58)]
+L18:11:rand:any:d=10,guard=1 [(798, False, True, 10)]
+L18:13:rand:any:d=10,guard=1 [(819, False, True, 10)]
+L18:15:rand:any:d=10,guard=1 [(890, True, True, 45)]
+L18:16:rand:any:d=10,guard=1 [(890, True, True, 25)]
+L18:3:prioB:any:face=seam,d=10,guard=1 [(445, False, False, 10)]
+L18:4:prioB:any:face=seam,d=10,guard=1 [(890, True, True, 10)]
+L18:6:prioB:any:face=seam,d=10,guard=1 [(868, False, True, 10)]
+L18:12:prioB:any:face=seam,d=10,guard=1 [(848, False, True, 10)]
+L18:11:prioB:any:face=seam,d=10,guard=1 [(890, True, True, 22)]
+L18:18:prioB:any:face=seam,d=10,guard=1 [(890, True, True, 28)]
+ico10:21:rand:any:d=5,guard=1 [(1002, True, True, 10)]
+ico10:23:rand:any:d=5,guard=1 [(1002, True, True, 10)]
+ico10:24:rand:any:d=5,guard=1 [(988, False, True, 5)]
+ico10:25:rand:any:d=5,guard=1 [(979, False, True, 5)]
+ico10:26:rand:any:d=5,guard=1 [(871, False, False, 5)]
+ico10:28:rand:any:d=5,guard=1 [(964, False, False, 5)]
+ico10:27:rand:any:d=5,guard=1 [(994, False, False, 10)]
+ico10:30:rand:any:d=5,guard=1 [(933, False, False, 5)]
+ico10:33:rand:any:d=5,guard=1 [(1002, True, True, 8)]
+ico10:34:rand:any:d=5,guard=1 [(905, False, False, 9)]
+ico10:35:rand:any:d=5,guard=1 [(986, False, True, 5)]
+ico10:36:rand:any:d=5,guard=1 [(993, False, False, 11)]
+ico10:37:rand:any:d=5,guard=1 [(1002, True, True, 36)]
+ico10:38:rand:any:d=5,guard=1 [(1002, True, True, 18)]
+ico10:40:rand:any:d=5,guard=1 [(971, False, False, 8)]
+L18:1:rand:any:d=5,guard=1 [(753, False, True, 6)]
+L18:3:rand:any:d=5,guard=1 [(890, True, True, 14)]
+L18:8:rand:any:d=5,guard=1 [(890, True, True, 31)]
+L18:10:rand:any:d=5,guard=1 [(890, True, True, 24)]
+L18:11:rand:any:d=5,guard=1 [(798, False, True, 5)]
+L18:13:rand:any:d=5,guard=1 [(819, False, True, 5)]
+L18:15:rand:any:d=5,guard=1 [(890, True, True, 17)]
+L18:16:rand:any:d=5,guard=1 [(890, True, True, 10)]
+L18:3:prioB:any:face=seam,d=5,guard=1 [(445, False, False, 5)]
+L18:6:prioB:any:face=seam,d=5,guard=1 [(868, False, True, 5)]
+L18:11:prioB:any:face=seam,d=5,guard=1 [(890, True, True, 11)]
+L18:12:prioB:any:face=seam,d=5,guard=1 [(814, False, True, 5)]
+L18:15:prioB:any:face=seam,d=5,guard=1 [(890, True, True, 5)]
+L18:18:prioB:any:face=seam,d=5,guard=1 [(890, True, True, 17)]
+ico10:21:rand:any:d=20,guard=1 [(1002, True, True, 167)]
+ico10:23:rand:any:d=20,guard=1 [(1002, True, True, 99)]
+ico10:24:rand:any:d=20,guard=1 [(988, False, True, 45)]
+ico10:25:rand:any:d=20,guard=1 [(1002, True, True, 202)]
+ico10:28:rand:any:d=20,guard=1 [(964, False, False, 33)]
+ico10:30:rand:any:d=20,guard=1 [(933, False, False, 53)]
+ico10:34:rand:any:d=20,guard=1 [(1002, True, True, 77)]
+ico10:36:rand:any:d=20,guard=1 [(993, False, False, 35)]
+ico10:35:rand:any:d=20,guard=1 [(986, False, True, 118)]
+ico10:27:rand:any:d=20,guard=1 [(994, False, False, 217)]
+ico10:37:rand:any:d=20,guard=1 [(1002, True, True, 259)]
+ico10:38:rand:any:d=20,guard=1 [(1002, True, True, 180)]
+L18:3:rand:any:d=20,guard=1 [(890, True, True, 168)]
+L18:1:rand:any:d=20,guard=1 [(753, False, True, 123)]
+L18:8:rand:any:d=20,guard=1 [(890, True, True, 82)]
+L18:10:rand:any:d=20,guard=1 [(890, True, True, 142)]
+L18:13:rand:any:d=20,guard=1 [(819, False, True, 20)]
+L18:11:rand:any:d=20,guard=1 [(798, False, True, 20)]
+L18:15:rand:any:d=20,guard=1 [(890, True, True, 165)]
+L18:16:rand:any:d=20,guard=1 [(890, True, True, 215)]
+L18:3:prioB:any:face=seam,d=20,guard=1 [(445, False, False, 20)]
+L18:4:prioB:any:face=seam,d=20,guard=1 [(890, True, True, 31)]
+L18:6:prioB:any:face=seam,d=20,guard=1 [(868, False, True, 20)]
+L18:12:prioB:any:face=seam,d=20,guard=1 [(848, False, True, 43)]
+L18:11:prioB:any:face=seam,d=20,guard=1 [(890, True, True, 164)]
+L18:18:prioB:any:face=seam,d=20,guard=1 [(890, True, True, 38)]
+ico10:28:rand:any:d=20,guard=1,dead=1,ord=dip [(964, False, False, 33)]
+ico10:30:rand:any:d=20,guard=1,dead=1,ord=dip [(933, False, False, 53)]
+ico10:35:rand:any:d=20,guard=1,dead=1,ord=dip [(986, False, True, 118)]
+ico10:36:rand:any:d=20,guard=1,dead=1,ord=dip [(993, False, False, 35)]
+ico10:27:rand:any:d=20,guard=1,dead=1,ord=dip [(994, False, False, 217)]
+L18:11:rand:any:d=20,guard=1,dead=1,ord=dip [(764, False, True, 20)]
