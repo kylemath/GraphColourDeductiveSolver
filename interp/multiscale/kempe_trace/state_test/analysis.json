@@ -1,0 +1,3770 @@
+{
+ "L10_A": {
+  "L": 10,
+  "w": 2,
+  "k0": 5,
+  "n": 327,
+  "obstructing": 326,
+  "modes": {
+   "all:ob": 150,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:ob": 80,
+   "hmatch:pass": 1,
+   "hmatch:ob": 5,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 9698,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 327
+   },
+   "height_all": {
+    "states": 66,
+    "states_ob": 65,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_row0": {
+    "states": 225,
+    "states_ob": 224,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_row0+h": {
+    "states": 225,
+    "states_ob": 224,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_roww": {
+    "states": 244,
+    "states_ob": 243,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 252,
+    "states_ob": 251,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 252,
+    "states_ob": 251,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 245,
+    "states_ob": 244,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 252,
+    "states_ob": 251,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 252,
+    "states_ob": 251,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 249,
+    "states_ob": 248,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 8,
+  "FULL_recs_in_those": 49,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      6
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      10
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      14
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    7
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 255,
+  "row0_collisions_first_difference": {},
+  "row0_collision_examples": []
+ },
+ "L10_B": {
+  "L": 10,
+  "w": 2,
+  "k0": 7,
+  "n": 363,
+  "obstructing": 214,
+  "modes": {
+   "all:pass": 65,
+   "all:ob": 85,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 64,
+   "deep:ob": 16,
+   "hmatch:pass": 20,
+   "hmatch:ob": 22,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 10062,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 363
+   },
+   "height_all": {
+    "states": 82,
+    "states_ob": 42,
+    "mixed_classes": 31,
+    "recs_in_mixed": 161
+   },
+   "trace_row0": {
+    "states": 268,
+    "states_ob": 128,
+    "mixed_classes": 7,
+    "recs_in_mixed": 43
+   },
+   "trace_row0+h": {
+    "states": 268,
+    "states_ob": 128,
+    "mixed_classes": 7,
+    "recs_in_mixed": 43
+   },
+   "trace_roww": {
+    "states": 290,
+    "states_ob": 144,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "trace_rows0,w": {
+    "states": 305,
+    "states_ob": 158,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 305,
+    "states_ob": 158,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 305,
+    "states_ob": 158,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 305,
+    "states_ob": 158,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 305,
+    "states_ob": 158,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 299,
+    "states_ob": 153,
+    "mixed_classes": 1,
+    "recs_in_mixed": 6
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 8,
+  "FULL_recs_in_those": 33,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      false,
+      2
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      6
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      9
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    7
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 271,
+  "row0_collisions_first_difference": {
+   "prefix_0..1": 31,
+   "row w only": 5
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "all",
+    "pass_mode": "all",
+    "ob_rows": [
+     "3210230310",
+     "2032301203",
+     "0121012031"
+    ],
+    "pass_rows": [
+     "3210230310",
+     "1032302102",
+     "0210123023"
+    ],
+    "rows_whose_word_differs": [
+     1,
+     2
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.0536
+     ],
+     [
+      2.0,
+      1.249
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.0536
+     ],
+     [
+      2.0,
+      1.0536
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "3210230310",
+     "2132312123",
+     "0301020301"
+    ],
+    "pass_rows": [
+     "3210230310",
+     "2132312123",
+     "0320120301"
+    ],
+    "rows_whose_word_differs": [
+     2
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.3839
+     ],
+     [
+      2.0,
+      1.3218
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.3839
+     ],
+     [
+      2.0,
+      1.3077
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "3210230310",
+     "2132312123",
+     "1320103030"
+    ],
+    "pass_rows": [
+     "3210230310",
+     "2132312123",
+     "0320103031"
+    ],
+    "rows_whose_word_differs": [
+     2
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.3839
+     ],
+     [
+      2.0,
+      1.833
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.3839
+     ],
+     [
+      2.0,
+      1.3839
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "3210230310",
+     "2132312123",
+     "1020103030"
+    ],
+    "pass_rows": [
+     "3210230310",
+     "2132312123",
+     "1021023030"
+    ],
+    "rows_whose_word_differs": [
+     2
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.3839
+     ],
+     [
+      2.0,
+      1.833
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      0.9699
+     ],
+     [
+      2.0,
+      1.3839
+     ],
+     [
+      2.0,
+      1.3748
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ },
+ "L11_A": {
+  "L": 11,
+  "w": 2,
+  "k0": 6,
+  "n": 351,
+  "obstructing": 349,
+  "modes": {
+   "all:ob": 150,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 2,
+   "deep:ob": 78,
+   "hmatch:ob": 30,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 11084,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 351
+   },
+   "height_all": {
+    "states": 123,
+    "states_ob": 123,
+    "mixed_classes": 2,
+    "recs_in_mixed": 27
+   },
+   "trace_row0": {
+    "states": 273,
+    "states_ob": 272,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "trace_row0+h": {
+    "states": 273,
+    "states_ob": 272,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "trace_roww": {
+    "states": 295,
+    "states_ob": 293,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 295,
+    "states_ob": 293,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 295,
+    "states_ob": 293,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 295,
+    "states_ob": 293,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 295,
+    "states_ob": 293,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 295,
+    "states_ob": 293,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 290,
+    "states_ob": 289,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 9,
+  "FULL_recs_in_those": 30,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      6
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    6
+   ],
+   [
+    [
+     "below",
+     "deep"
+    ],
+    2
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 274,
+  "row0_collisions_first_difference": {
+   "row w only": 1
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "21031021021",
+     "30312313230",
+     "12123102012"
+    ],
+    "pass_rows": [
+     "21031021021",
+     "30312313230",
+     "12123102102"
+    ],
+    "rows_whose_word_differs": [
+     2
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.3659
+     ],
+     [
+      2.0,
+      1.7587
+     ],
+     [
+      2.0,
+      2.0455
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.3659
+     ],
+     [
+      2.0,
+      1.7587
+     ],
+     [
+      2.0,
+      1.6364
+     ]
+    ],
+    "first_prefix_differing": "row w only"
+   }
+  ]
+ },
+ "L11_B": {
+  "L": 11,
+  "w": 2,
+  "k0": 6,
+  "n": 333,
+  "obstructing": 308,
+  "modes": {
+   "all:pass": 8,
+   "all:ob": 142,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 17,
+   "deep:ob": 63,
+   "hmatch:ob": 12,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 11974,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 333
+   },
+   "height_all": {
+    "states": 121,
+    "states_ob": 112,
+    "mixed_classes": 9,
+    "recs_in_mixed": 60
+   },
+   "trace_row0": {
+    "states": 279,
+    "states_ob": 254,
+    "mixed_classes": 1,
+    "recs_in_mixed": 3
+   },
+   "trace_row0+h": {
+    "states": 279,
+    "states_ob": 254,
+    "mixed_classes": 1,
+    "recs_in_mixed": 3
+   },
+   "trace_roww": {
+    "states": 300,
+    "states_ob": 275,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 304,
+    "states_ob": 279,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 304,
+    "states_ob": 279,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 304,
+    "states_ob": 279,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 304,
+    "states_ob": 279,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 304,
+    "states_ob": 279,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 295,
+    "states_ob": 270,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 2,
+  "FULL_recs_in_those": 6,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    2
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    2
+   ]
+  ],
+  "distinct_colourings": 295,
+  "row0_collisions_first_difference": {
+   "prefix_0..1": 2
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "below",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "03202102302",
+     "32131323121",
+     "01020201203"
+    ],
+    "pass_rows": [
+     "03202102302",
+     "32131323121",
+     "21020201230"
+    ],
+    "rows_whose_word_differs": [
+     2
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      0.9545
+     ],
+     [
+      2.0,
+      1.3513
+     ],
+     [
+      2.0,
+      1.6404
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      0.9545
+     ],
+     [
+      2.0,
+      1.3513
+     ],
+     [
+      2.0,
+      1.6364
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "below",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "03202102302",
+     "32131323121",
+     "01020201203"
+    ],
+    "pass_rows": [
+     "03202102302",
+     "32131323121",
+     "21020201230"
+    ],
+    "rows_whose_word_differs": [
+     2
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      0.9545
+     ],
+     [
+      2.0,
+      1.3513
+     ],
+     [
+      2.0,
+      1.6404
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      0.9545
+     ],
+     [
+      2.0,
+      1.3513
+     ],
+     [
+      2.0,
+      1.6364
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ },
+ "L12_A": {
+  "L": 12,
+  "w": 2,
+  "k0": 6,
+  "n": 501,
+  "obstructing": 495,
+  "modes": {
+   "all:ob": 150,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 3,
+   "deep:ob": 77,
+   "hmatch:pass": 3,
+   "hmatch:ob": 177,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 12486,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 46,
+    "states_ob": 44,
+    "mixed_classes": 5,
+    "recs_in_mixed": 103
+   },
+   "trace_row0": {
+    "states": 412,
+    "states_ob": 406,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_row0+h": {
+    "states": 412,
+    "states_ob": 406,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_roww": {
+    "states": 421,
+    "states_ob": 415,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 438,
+    "states_ob": 432,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 438,
+    "states_ob": 432,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 431,
+    "states_ob": 425,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 438,
+    "states_ob": 432,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 438,
+    "states_ob": 432,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 434,
+    "states_ob": 428,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 10,
+  "FULL_recs_in_those": 34,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    6
+   ],
+   [
+    [
+     "below",
+     "deep"
+    ],
+    3
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 269,
+  "row0_collisions_first_difference": {},
+  "row0_collision_examples": []
+ },
+ "L12_B": {
+  "L": 12,
+  "w": 2,
+  "k0": 6,
+  "n": 501,
+  "obstructing": 493,
+  "modes": {
+   "all:pass": 2,
+   "all:ob": 148,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 3,
+   "deep:ob": 77,
+   "hmatch:pass": 3,
+   "hmatch:ob": 177,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 12360,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 51,
+    "states_ob": 49,
+    "mixed_classes": 6,
+    "recs_in_mixed": 105
+   },
+   "trace_row0": {
+    "states": 409,
+    "states_ob": 401,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_row0+h": {
+    "states": 409,
+    "states_ob": 401,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_roww": {
+    "states": 421,
+    "states_ob": 413,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 429,
+    "states_ob": 421,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 429,
+    "states_ob": 421,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 429,
+    "states_ob": 421,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 429,
+    "states_ob": 421,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 429,
+    "states_ob": 421,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 422,
+    "states_ob": 414,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 14,
+  "FULL_recs_in_those": 83,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    5
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      7
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      20
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      14
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      10
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    9
+   ],
+   [
+    [
+     "below",
+     "deep"
+    ],
+    3
+   ],
+   [
+    [
+     "below",
+     "collar",
+     "deep",
+     "orig"
+    ],
+    1
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 267,
+  "row0_collisions_first_difference": {},
+  "row0_collision_examples": []
+ },
+ "L13_A": {
+  "L": 13,
+  "w": 3,
+  "k0": 9,
+  "n": 357,
+  "obstructing": 139,
+  "modes": {
+   "all:pass": 114,
+   "all:ob": 36,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 74,
+   "deep:ob": 6,
+   "hmatch:pass": 30,
+   "hmatch:ob": 6,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 17664,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 357
+   },
+   "height_all": {
+    "states": 194,
+    "states_ob": 43,
+    "mixed_classes": 1,
+    "recs_in_mixed": 9
+   },
+   "trace_row0": {
+    "states": 261,
+    "states_ob": 57,
+    "mixed_classes": 2,
+    "recs_in_mixed": 5
+   },
+   "trace_row0+h": {
+    "states": 261,
+    "states_ob": 57,
+    "mixed_classes": 2,
+    "recs_in_mixed": 5
+   },
+   "trace_roww": {
+    "states": 289,
+    "states_ob": 74,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "trace_rows0,w": {
+    "states": 300,
+    "states_ob": 82,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 300,
+    "states_ob": 82,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 296,
+    "states_ob": 78,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 300,
+    "states_ob": 82,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 300,
+    "states_ob": 82,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 279,
+    "states_ob": 64,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "prefix_0..2": {
+    "states": 295,
+    "states_ob": 78,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 7,
+  "FULL_recs_in_those": 41,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      15
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      8
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    6
+   ],
+   [
+    [
+     "below",
+     "collar",
+     "orig"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 271,
+  "row0_collisions_first_difference": {
+   "row w only": 1,
+   "prefix_0..1": 2
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "1210210323123",
+     "0303103101031",
+     "2121231232320",
+     "3030312010101"
+    ],
+    "pass_rows": [
+     "1210210323123",
+     "0303103101031",
+     "2121231232320",
+     "1303012010103"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.1185
+     ],
+     [
+      2.0,
+      1.433
+     ],
+     [
+      2.0,
+      1.9304
+     ],
+     [
+      2.0,
+      2.3316
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.1185
+     ],
+     [
+      2.0,
+      1.433
+     ],
+     [
+      2.0,
+      1.9304
+     ],
+     [
+      2.0,
+      1.8653
+     ]
+    ],
+    "first_prefix_differing": "row w only"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "1210210323123",
+     "0303103101031",
+     "2121231232320",
+     "3030312010101"
+    ],
+    "pass_rows": [
+     "1210210323123",
+     "0303103101031",
+     "2121231232320",
+     "1303010310103"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.1185
+     ],
+     [
+      2.0,
+      1.433
+     ],
+     [
+      2.0,
+      1.9304
+     ],
+     [
+      2.0,
+      2.3316
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.1185
+     ],
+     [
+      2.0,
+      1.433
+     ],
+     [
+      2.0,
+      1.9304
+     ],
+     [
+      2.0,
+      1.7925
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "1210210323123",
+     "0303103101031",
+     "2121231232320",
+     "3030312010101"
+    ],
+    "pass_rows": [
+     "1210210323123",
+     "0303103101031",
+     "2121231232320",
+     "1030312010103"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.1185
+     ],
+     [
+      2.0,
+      1.433
+     ],
+     [
+      2.0,
+      1.9304
+     ],
+     [
+      2.0,
+      2.3316
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.1185
+     ],
+     [
+      2.0,
+      1.433
+     ],
+     [
+      2.0,
+      1.9304
+     ],
+     [
+      2.0,
+      1.8653
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ },
+ "L13_B": {
+  "L": 13,
+  "w": 3,
+  "k0": 9,
+  "n": 387,
+  "obstructing": 149,
+  "modes": {
+   "all:pass": 108,
+   "all:ob": 42,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 77,
+   "deep:ob": 3,
+   "hmatch:pass": 53,
+   "hmatch:ob": 13,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 18222,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 387
+   },
+   "height_all": {
+    "states": 222,
+    "states_ob": 56,
+    "mixed_classes": 2,
+    "recs_in_mixed": 4
+   },
+   "trace_row0": {
+    "states": 302,
+    "states_ob": 73,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_row0+h": {
+    "states": 302,
+    "states_ob": 73,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_roww": {
+    "states": 339,
+    "states_ob": 101,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 339,
+    "states_ob": 101,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 339,
+    "states_ob": 101,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 339,
+    "states_ob": 101,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 339,
+    "states_ob": 101,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 339,
+    "states_ob": 101,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 328,
+    "states_ob": 92,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..2": {
+    "states": 334,
+    "states_ob": 97,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 4,
+  "FULL_recs_in_those": 13,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    3
+   ],
+   [
+    [
+     "below",
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 277,
+  "row0_collisions_first_difference": {},
+  "row0_collision_examples": []
+ },
+ "L14_A": {
+  "L": 14,
+  "w": 3,
+  "k0": 7,
+  "n": 501,
+  "obstructing": 445,
+  "modes": {
+   "all:pass": 16,
+   "all:ob": 134,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 20,
+   "deep:ob": 60,
+   "hmatch:pass": 20,
+   "hmatch:ob": 160,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 18490,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 334,
+    "states_ob": 297,
+    "mixed_classes": 5,
+    "recs_in_mixed": 54
+   },
+   "trace_row0": {
+    "states": 406,
+    "states_ob": 355,
+    "mixed_classes": 6,
+    "recs_in_mixed": 13
+   },
+   "trace_row0+h": {
+    "states": 406,
+    "states_ob": 355,
+    "mixed_classes": 6,
+    "recs_in_mixed": 13
+   },
+   "trace_roww": {
+    "states": 420,
+    "states_ob": 364,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 426,
+    "states_ob": 370,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 426,
+    "states_ob": 370,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 426,
+    "states_ob": 370,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 426,
+    "states_ob": 370,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 426,
+    "states_ob": 370,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 424,
+    "states_ob": 368,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..2": {
+    "states": 426,
+    "states_ob": 370,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 7,
+  "FULL_recs_in_those": 44,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      7
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      14
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    7
+   ]
+  ],
+  "distinct_colourings": 253,
+  "row0_collisions_first_difference": {
+   "prefix_0..1": 7
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "30302023010102"
+    ],
+    "pass_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "03012023101012"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      2.0148
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.9085
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "30302023101010"
+    ],
+    "pass_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "30310203101010"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      2.4068
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      2.1844
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "03012023010102"
+    ],
+    "pass_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "03010203101012"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.8722
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.7296
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "03010203101012"
+    ],
+    "pass_rows": [
+     "10213203232012",
+     "03102031010123",
+     "21231312323231",
+     "03010203101012"
+    ],
+    "rows_whose_word_differs": [],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.7296
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.7296
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ },
+ "L14_B": {
+  "L": 14,
+  "w": 3,
+  "k0": 7,
+  "n": 501,
+  "obstructing": 441,
+  "modes": {
+   "all:pass": 16,
+   "all:ob": 134,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 24,
+   "deep:ob": 56,
+   "hmatch:pass": 20,
+   "hmatch:ob": 160,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 18188,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 331,
+    "states_ob": 294,
+    "mixed_classes": 6,
+    "recs_in_mixed": 52
+   },
+   "trace_row0": {
+    "states": 403,
+    "states_ob": 348,
+    "mixed_classes": 6,
+    "recs_in_mixed": 13
+   },
+   "trace_row0+h": {
+    "states": 403,
+    "states_ob": 348,
+    "mixed_classes": 6,
+    "recs_in_mixed": 13
+   },
+   "trace_roww": {
+    "states": 421,
+    "states_ob": 363,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 428,
+    "states_ob": 369,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 428,
+    "states_ob": 369,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 428,
+    "states_ob": 369,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 428,
+    "states_ob": 369,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 428,
+    "states_ob": 369,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 424,
+    "states_ob": 366,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "prefix_0..2": {
+    "states": 428,
+    "states_ob": 369,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 6,
+  "FULL_recs_in_those": 28,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      false,
+      2
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      6
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      8
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    5
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 254,
+  "row0_collisions_first_difference": {
+   "prefix_0..1": 6,
+   "prefix_0..2": 1
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "10101020213032"
+    ],
+    "pass_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "10101302010302"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      2.2932
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.7296
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "10101020210302"
+    ],
+    "pass_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "10101302010302"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      2.1844
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.7296
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "01010320213032"
+    ],
+    "pass_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "10101320210302"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.9286
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.9085
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "01010320210302"
+    ],
+    "pass_rows": [
+     "32302312012102",
+     "01013020130321",
+     "23232131321213",
+     "10101320210302"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.8722
+     ]
+    ],
+    "pass_heights": [
+     [
+      2.0,
+      1.4674
+     ],
+     [
+      2.0,
+      1.9085
+     ],
+     [
+      2.0,
+      2.1429
+     ],
+     [
+      2.0,
+      1.9085
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ },
+ "L15_A": {
+  "L": 15,
+  "w": 3,
+  "k0": 7,
+  "n": 501,
+  "obstructing": 491,
+  "modes": {
+   "all:pass": 2,
+   "all:ob": 148,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 5,
+   "deep:ob": 75,
+   "hmatch:pass": 3,
+   "hmatch:ob": 177,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 22188,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 175,
+    "states_ob": 172,
+    "mixed_classes": 4,
+    "recs_in_mixed": 45
+   },
+   "trace_row0": {
+    "states": 422,
+    "states_ob": 412,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "trace_row0+h": {
+    "states": 422,
+    "states_ob": 412,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "trace_roww": {
+    "states": 448,
+    "states_ob": 438,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 456,
+    "states_ob": 446,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 456,
+    "states_ob": 446,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 448,
+    "states_ob": 438,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 456,
+    "states_ob": 446,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 456,
+    "states_ob": 446,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 448,
+    "states_ob": 438,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..2": {
+    "states": 455,
+    "states_ob": 445,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 8,
+  "FULL_recs_in_those": 33,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    4
+   ],
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      12
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      7
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    7
+   ],
+   [
+    [
+     "below",
+     "collar",
+     "orig"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 284,
+  "row0_collisions_first_difference": {
+   "prefix_0..1": 1
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "130130130232130",
+     "202321202101021",
+     "313103031323230",
+     "120232120210102"
+    ],
+    "pass_rows": [
+     "130130130232130",
+     "202321202101021",
+     "313103031323230",
+     "120232120201012"
+    ],
+    "rows_whose_word_differs": [
+     3
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.5
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      1.5
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.5
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      1.7321
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ },
+ "L15_B": {
+  "L": 15,
+  "w": 3,
+  "k0": 7,
+  "n": 501,
+  "obstructing": 493,
+  "modes": {
+   "all:pass": 3,
+   "all:ob": 147,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 2,
+   "deep:ob": 78,
+   "hmatch:pass": 3,
+   "hmatch:ob": 177,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 21134,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 194,
+    "states_ob": 188,
+    "mixed_classes": 2,
+    "recs_in_mixed": 31
+   },
+   "trace_row0": {
+    "states": 396,
+    "states_ob": 388,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_row0+h": {
+    "states": 396,
+    "states_ob": 388,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_roww": {
+    "states": 426,
+    "states_ob": 418,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_rows0,w": {
+    "states": 439,
+    "states_ob": 431,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 439,
+    "states_ob": 431,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 426,
+    "states_ob": 418,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 439,
+    "states_ob": 431,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 439,
+    "states_ob": 431,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 434,
+    "states_ob": 426,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..2": {
+    "states": 436,
+    "states_ob": 428,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 7,
+  "FULL_recs_in_those": 31,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      6
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      8
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      5
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    6
+   ],
+   [
+    [
+     "below",
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 266,
+  "row0_collisions_first_difference": {},
+  "row0_collision_examples": []
+ },
+ "L18_A": {
+  "L": 18,
+  "w": 4,
+  "k0": 10,
+  "n": 501,
+  "obstructing": 263,
+  "modes": {
+   "all:pass": 109,
+   "all:ob": 41,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 34,
+   "deep:ob": 46,
+   "hmatch:pass": 95,
+   "hmatch:ob": 85,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 30526,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 310,
+    "states_ob": 116,
+    "mixed_classes": 13,
+    "recs_in_mixed": 89
+   },
+   "trace_row0": {
+    "states": 374,
+    "states_ob": 155,
+    "mixed_classes": 10,
+    "recs_in_mixed": 44
+   },
+   "trace_row0+h": {
+    "states": 374,
+    "states_ob": 155,
+    "mixed_classes": 10,
+    "recs_in_mixed": 44
+   },
+   "trace_roww": {
+    "states": 411,
+    "states_ob": 175,
+    "mixed_classes": 2,
+    "recs_in_mixed": 5
+   },
+   "trace_rows0,w": {
+    "states": 427,
+    "states_ob": 190,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 427,
+    "states_ob": 190,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 421,
+    "states_ob": 184,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 427,
+    "states_ob": 190,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 427,
+    "states_ob": 190,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 413,
+    "states_ob": 180,
+    "mixed_classes": 3,
+    "recs_in_mixed": 6
+   },
+   "prefix_0..2": {
+    "states": 419,
+    "states_ob": 185,
+    "mixed_classes": 2,
+    "recs_in_mixed": 4
+   },
+   "prefix_0..3": {
+    "states": 424,
+    "states_ob": 189,
+    "mixed_classes": 2,
+    "recs_in_mixed": 4
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 7,
+  "FULL_recs_in_those": 40,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      6
+     ]
+    ],
+    3
+   ],
+   [
+    [
+     [
+      true,
+      8
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      false,
+      2
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    5
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ],
+   [
+    [
+     "below",
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 255,
+  "row0_collisions_first_difference": {
+   "prefix_0..1": 44,
+   "prefix_0..2": 1,
+   "row w only": 2
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "030301202020101012"
+    ],
+    "pass_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "030301202023010102"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.8868
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.3848
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "030301202020101012"
+    ],
+    "pass_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "030301202023010102"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.8868
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.3848
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "303031020203101012"
+    ],
+    "pass_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "303031202023010102"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.6458
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.6458
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "303031020203101012"
+    ],
+    "pass_rows": [
+     "031012023021013023",
+     "212323131213232131",
+     "303010202030101020",
+     "212123131312323231",
+     "030301202023010102"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.6458
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.3848
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ },
+ "L18_B": {
+  "L": 18,
+  "w": 4,
+  "k0": 10,
+  "n": 501,
+  "obstructing": 282,
+  "modes": {
+   "all:pass": 100,
+   "all:ob": 50,
+   "below:ob": 80,
+   "collar:ob": 10,
+   "deep:pass": 24,
+   "deep:ob": 56,
+   "hmatch:pass": 95,
+   "hmatch:ob": 85,
+   "orig:ob": 1
+  },
+  "parity_bad": 0,
+  "parity_tot": 30670,
+  "vars": {
+   "height_row0": {
+    "states": 1,
+    "states_ob": 1,
+    "mixed_classes": 1,
+    "recs_in_mixed": 501
+   },
+   "height_all": {
+    "states": 316,
+    "states_ob": 127,
+    "mixed_classes": 13,
+    "recs_in_mixed": 85
+   },
+   "trace_row0": {
+    "states": 380,
+    "states_ob": 172,
+    "mixed_classes": 8,
+    "recs_in_mixed": 30
+   },
+   "trace_row0+h": {
+    "states": 380,
+    "states_ob": 172,
+    "mixed_classes": 8,
+    "recs_in_mixed": 30
+   },
+   "trace_roww": {
+    "states": 412,
+    "states_ob": 195,
+    "mixed_classes": 1,
+    "recs_in_mixed": 2
+   },
+   "trace_rows0,w": {
+    "states": 428,
+    "states_ob": 209,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_deep_1..w": {
+    "states": 428,
+    "states_ob": 209,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "trace_all_indep": {
+    "states": 422,
+    "states_ob": 203,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL_noparity": {
+    "states": 428,
+    "states_ob": 209,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "FULL": {
+    "states": 428,
+    "states_ob": 209,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   },
+   "prefix_0..1": {
+    "states": 420,
+    "states_ob": 201,
+    "mixed_classes": 2,
+    "recs_in_mixed": 4
+   },
+   "prefix_0..2": {
+    "states": 420,
+    "states_ob": 201,
+    "mixed_classes": 2,
+    "recs_in_mixed": 4
+   },
+   "prefix_0..3": {
+    "states": 428,
+    "states_ob": 209,
+    "mixed_classes": 0,
+    "recs_in_mixed": 0
+   }
+  },
+  "FULL_classes_with_distinct_colourings": 9,
+  "FULL_recs_in_those": 49,
+  "FULL_those_outcomes": [
+   [
+    [
+     [
+      true,
+      2
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      3
+     ]
+    ],
+    2
+   ],
+   [
+    [
+     [
+      true,
+      7
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      4
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      14
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      6
+     ]
+    ],
+    1
+   ],
+   [
+    [
+     [
+      true,
+      8
+     ]
+    ],
+    1
+   ]
+  ],
+  "FULL_those_modes": [
+   [
+    [
+     "below"
+    ],
+    8
+   ],
+   [
+    [
+     "deep"
+    ],
+    1
+   ]
+  ],
+  "distinct_colourings": 257,
+  "row0_collisions_first_difference": {
+   "prefix_0..1": 23,
+   "prefix_0..3": 2
+  },
+  "row0_collision_examples": [
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "010103020201303032"
+    ],
+    "pass_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "101010202021030302"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.3848
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.8868
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "010103020201303032"
+    ],
+    "pass_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "101010202021030302"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.3848
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.8868
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "010103020201303032"
+    ],
+    "pass_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "101010202021030302"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.3848
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.8868
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   },
+   {
+    "ob_mode": "deep",
+    "pass_mode": "deep",
+    "ob_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "101010202021303032"
+    ],
+    "pass_rows": [
+     "013032021023031021",
+     "232121313231212313",
+     "101030202010303020",
+     "232321313132121213",
+     "101010202021030302"
+    ],
+    "rows_whose_word_differs": [
+     4
+    ],
+    "ob_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.983
+     ]
+    ],
+    "pass_heights": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      0.0,
+      1.7321
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      0.0,
+      2.6458
+     ],
+     [
+      0.0,
+      2.8868
+     ]
+    ],
+    "first_prefix_differing": "prefix_0..1"
+   }
+  ]
+ }
+}
