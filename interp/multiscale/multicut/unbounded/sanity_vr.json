@@ -1,0 +1,201 @@
+{
+"cstar": [
+{
+"m": 4,
+"w": 2,
+"L": 12,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 6,
+"Kmin_any": 4
+},
+{
+"m": 4,
+"w": 3,
+"L": 14,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 6,
+"Kmin_any": 4
+},
+{
+"m": 8,
+"w": 2,
+"L": 20,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 12,
+"Kmin_any": 8
+},
+{
+"m": 8,
+"w": 3,
+"L": 22,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 12,
+"Kmin_any": 8
+},
+{
+"m": 16,
+"w": 2,
+"L": 36,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 24,
+"Kmin_any": 16
+},
+{
+"m": 16,
+"w": 3,
+"L": 38,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 24,
+"Kmin_any": 16
+},
+{
+"m": 32,
+"w": 2,
+"L": 68,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 48,
+"Kmin_any": 32
+},
+{
+"m": 32,
+"w": 3,
+"L": 70,
+"t": 0.0,
+"nodd_enclosed": 0,
+"Kmin_nc": 48,
+"Kmin_any": 32
+}
+],
+"slopes": [
+{
+"L": 12,
+"r0": 0.9,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 12,
+"r0": 0.9,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 12,
+"r0": 0.9,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 12,
+"r0": 1.2,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 12,
+"r0": 1.2,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 12,
+"r0": 1.2,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 24,
+"r0": 1.2,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 24,
+"r0": 1.2,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 24,
+"r0": 1.2,
+"Kmin_nc": 1,
+"Kmin_any": 1
+},
+{
+"L": 48,
+"r0": 1.2,
+"Kmin_nc": 4,
+"Kmin_any": 3
+},
+{
+"L": 48,
+"r0": 1.2,
+"Kmin_nc": 5,
+"Kmin_any": 4
+},
+{
+"L": 48,
+"r0": 1.2,
+"Kmin_nc": 4,
+"Kmin_any": 3
+},
+{
+"L": 96,
+"r0": 1.2,
+"Kmin_nc": 10,
+"Kmin_any": 7
+},
+{
+"L": 96,
+"r0": 1.2,
+"Kmin_nc": 10,
+"Kmin_any": 7
+},
+{
+"L": 96,
+"r0": 1.2,
+"Kmin_nc": 8,
+"Kmin_any": 6
+},
+{
+"L": 192,
+"r0": 1.2,
+"Kmin_nc": null,
+"Kmin_any": 16
+},
+{
+"L": 192,
+"r0": 1.2,
+"Kmin_nc": 29,
+"Kmin_any": 19
+},
+{
+"L": 192,
+"r0": 1.2,
+"Kmin_nc": 19,
+"Kmin_any": 13
+}
+],
+"random_t0": {
+"walks_circumradius_gt1": 300,
+"accepted_uncapped_anywhere": {
+"nc": 253,
+"any": 300
+},
+"Kmin_max": {
+"nc": 48,
+"any": 32
+},
+"Kmin_mean": {
+"nc": 20.35,
+"any": 14.46
+}
+}
+}
