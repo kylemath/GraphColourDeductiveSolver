@@ -1,0 +1,80 @@
+map    config                         N  ok last flat  oth unk   pkc   pkt t!=0full
+L18    base                          20  10    5    3    1   1   2.5   3.6    9
+L18    st=soft,orc=self,r=2           2   2    0    0    0   0   2.0   2.7    0
+L18    st=soft,orc=self,r=all         2   2    0    0    0   0   2.0   2.0    0
+L18    st=soft,pot=loc,r=all         17  11    1    1    3   1   2.4   3.7    2
+L18    st=tie,orc=self,r=2           13  11    0    1    1   0   1.8   3.2    1
+L18    st=tie,orc=self,r=all         13  10    3    0    0   0   2.0   3.4    3
+L18    st=tie,pot=loc,r=all          16   9    2    2    2   1   2.6   3.6    5
+L18    st=tie,r=2                    20  12    3    3    1   1   2.7   3.9    5
+L18    st=tie,r=all                  20  12    3    2    3   0   3.0   4.2    6
+L18    tz=1                          20  12    0    5    1   2   2.3   3.6    0
+ico10  base                          20   6    5    1    8   0   6.0   6.7    7
+ico10  st=soft,orc=self,r=2          13   8    3    1    1   0   5.9   6.2    4
+ico10  st=soft,orc=self,r=all        13   8    3    1    1   0   6.2   6.6    3
+ico10  st=soft,pot=loc,r=all          6   4    0    1    1   0   6.0   6.2    1
+ico10  st=soft,r=all                  2   1    0    0    1   0   6.0   5.6    0
+ico10  st=tie,orc=self,r=2           13   4    7    0    2   0   6.2   6.0    6
+ico10  st=tie,orc=self,r=all         13   6    6    0    1   0   6.4   5.9    8
+ico10  st=tie,pot=loc,r=2             6   3    0    0    3   0   5.7   7.0    1
+ico10  st=tie,pot=loc,r=8             5   3    0    0    2   0   5.8   7.2    1
+ico10  st=tie,pot=loc,r=all           6   3    0    0    3   0   5.7   7.0    1
+ico10  st=tie,r=0                     7   5    1    0    1   0   5.9   7.0    2
+ico10  st=tie,r=2                    20   9    4    1    6   0   6.2   5.7    6
+ico10  st=tie,r=8                     4   2    0    1    1   0   6.5   7.3    1
+ico10  st=tie,r=all                  20   9    2    3    6   0   6.5   6.0    7
+ico10  tz=1                          20   8    0    4    8   0   6.0   6.5    0
+L18    ord=dip                    | this 6/15 ok, 3 last  | base 7/15 ok, 3 last  | tz 8/15 ok, 0 last  | dip 6/15 ok, 3 last 
+L18    st=soft,orc=self,r=2       | this 2/2 ok, 0 last   | base 0/2 ok, 1 last   | tz 1/2 ok, 0 last   | dip 0/2 ok, 1 last  
+L18    st=soft,orc=self,r=all     | this 2/2 ok, 0 last   | base 0/2 ok, 1 last   | tz 1/2 ok, 0 last   | dip 0/2 ok, 1 last  
+L18    st=soft,pot=loc,r=all      | this 11/17 ok, 1 last | base 8/17 ok, 4 last  | tz 9/17 ok, 0 last  | dip 5/12 ok, 2 last 
+L18    st=tie,orc=self,r=2        | this 11/13 ok, 0 last | base 10/13 ok, 3 last | tz 12/13 ok, 0 last | dip 5/9 ok, 3 last  
+L18    st=tie,orc=self,r=all      | this 10/13 ok, 3 last | base 10/13 ok, 3 last | tz 12/13 ok, 0 last | dip 5/9 ok, 3 last  
+L18    st=tie,pot=loc,r=all       | this 9/16 ok, 2 last  | base 7/16 ok, 4 last  | tz 8/16 ok, 0 last  | dip 4/11 ok, 2 last 
+L18    st=tie,r=2                 | this 12/20 ok, 3 last | base 10/20 ok, 5 last | tz 12/20 ok, 0 last | dip 6/15 ok, 3 last 
+L18    st=tie,r=all               | this 12/20 ok, 3 last | base 10/20 ok, 5 last | tz 12/20 ok, 0 last | dip 6/15 ok, 3 last 
+L18    tz=1                       | this 12/20 ok, 0 last | base 10/20 ok, 5 last | tz 12/20 ok, 0 last | dip 6/15 ok, 3 last 
+ico10  ord=dip                    | this 2/20 ok, 8 last  | base 6/20 ok, 5 last  | tz 8/20 ok, 0 last  | dip 2/20 ok, 8 last 
+ico10  st=soft,orc=self,r=2       | this 8/13 ok, 3 last  | base 6/13 ok, 4 last  | tz 8/13 ok, 0 last  | dip 2/13 ok, 7 last 
+ico10  st=soft,orc=self,r=all     | this 8/13 ok, 3 last  | base 6/13 ok, 4 last  | tz 8/13 ok, 0 last  | dip 2/13 ok, 7 last 
+ico10  st=soft,pot=loc,r=all      | this 4/6 ok, 0 last   | base 1/6 ok, 2 last   | tz 1/6 ok, 0 last   | dip 0/6 ok, 3 last  
+ico10  st=soft,r=all              | this 1/2 ok, 0 last   | base 1/2 ok, 1 last   | tz 1/2 ok, 0 last   | dip 0/2 ok, 1 last  
+ico10  st=tie,orc=self,r=2        | this 4/13 ok, 7 last  | base 6/13 ok, 4 last  | tz 8/13 ok, 0 last  | dip 2/13 ok, 7 last 
+ico10  st=tie,orc=self,r=all      | this 6/13 ok, 6 last  | base 6/13 ok, 4 last  | tz 8/13 ok, 0 last  | dip 2/13 ok, 7 last 
+ico10  st=tie,pot=loc,r=2         | this 3/6 ok, 0 last   | base 1/6 ok, 2 last   | tz 1/6 ok, 0 last   | dip 0/6 ok, 3 last  
+ico10  st=tie,pot=loc,r=8         | this 3/5 ok, 0 last   | base 1/5 ok, 2 last   | tz 1/5 ok, 0 last   | dip 0/5 ok, 3 last  
+ico10  st=tie,pot=loc,r=all       | this 3/6 ok, 0 last   | base 1/6 ok, 2 last   | tz 1/6 ok, 0 last   | dip 0/6 ok, 3 last  
+ico10  st=tie,r=0                 | this 5/7 ok, 1 last   | base 2/7 ok, 2 last   | tz 2/7 ok, 0 last   | dip 1/7 ok, 3 last  
+ico10  st=tie,r=2                 | this 9/20 ok, 4 last  | base 6/20 ok, 5 last  | tz 8/20 ok, 0 last  | dip 2/20 ok, 8 last 
+ico10  st=tie,r=8                 | this 2/4 ok, 0 last   | base 1/4 ok, 2 last   | tz 1/4 ok, 0 last   | dip 0/4 ok, 2 last  
+ico10  st=tie,r=all               | this 9/20 ok, 2 last  | base 6/20 ok, 5 last  | tz 8/20 ok, 0 last  | dip 2/20 ok, 8 last 
+ico10  tz=1                       | this 8/20 ok, 0 last  | base 6/20 ok, 5 last  | tz 8/20 ok, 0 last  | dip 2/20 ok, 8 last 
+map    config                         N  ok last flat  oth unk   pkc   pkt t!=0full
+L18    log=1,chk=1                    6   2    1    1    1   1   2.8   3.6    2
+defect10_3 base                           1   1    0    0    0   0  28.0  19.1    0
+defect10_3 st=tie,pot=loc,r=all           1   1    0    0    0   0  28.0  19.1    0
+defect10_3 st=tie,r=2                     1   1    0    0    0   0  29.0  24.3    0
+defect10_3 st=tie,r=all                   1   1    0    0    0   0  29.0  19.1    0
+flip10_1 base                           1   1    0    0    0   0  23.0  20.3    0
+flip10_1 st=tie,pot=loc,r=all           1   1    0    0    0   0  23.0  20.3    0
+flip10_1 st=tie,r=2                     1   1    0    0    0   0  23.0  22.0    0
+flip10_1 st=tie,r=all                   1   1    0    0    0   0  27.0  19.1    0
+ico10  log=1,chk=1                   10   3    2    1    4   0   6.2   6.7    3
+ico14  log=1                          3   0    2    0    1   0   6.0   7.9    2
+ico16  log=1                          2   1    0    0    1   0   6.5   8.0    1
+ico16  st=soft,pot=loc,r=all          1   1    0    0    0   0   6.0   7.2    0
+ico16  st=tie,pot=loc,r=all           1   1    0    0    0   0   6.0   7.2    1
+ico16  st=tie,r=1                     1   1    0    0    0   0   6.0   8.7    0
+ico16  st=tie,r=2                     1   0    1    0    0   0   6.0   6.0    1
+ico16  st=tie,r=all                   1   0    0    1    0   0   8.0   7.2    1
+ico16  tz=1                           1   0    0    1    0   0   6.0   7.2    0
+ico4   log=1                         12  12    0    0    0   0   3.9   4.9    1
+ico6   log=1                         12  12    0    0    0   0   1.0   1.5    0
+ico8   log=1                         12   4    1    1    6   0   5.7   6.4    4
+ico4   n=  162 runs=12 ok=12 lastfail= 0 tfull!=0= 1 | d_last median 1.0 (range 1-2) | median dmin over run 1.0 | max dmin 2.0
+ico6   n=  362 runs=12 ok=12 lastfail= 0 tfull!=0= 0 | d_last median 1.0 (range 1-2) | median dmin over run 1.0 | max dmin 2.0
+ico8   n=  642 runs=12 ok= 4 lastfail= 1 tfull!=0= 4 | d_last median 1 (range 1-2) | median dmin over run 1.0 | max dmin 3.0
+L18    n=  890 runs= 6 ok= 2 lastfail= 1 tfull!=0= 2 | d_last median 1.0 (range 1-1) | median dmin over run 1.0 | max dmin 8.0
+ico10  n= 1002 runs=10 ok= 3 lastfail= 2 tfull!=0= 3 | d_last median 1.0 (range 1-2) | median dmin over run 1.0 | max dmin 3.5
+ico14  n= 1962 runs= 3 ok= 0 lastfail= 2 tfull!=0= 2 | d_last median 1.0 (range 1-1) | median dmin over run 1 | max dmin 6
+ico16  n= 2562 runs= 2 ok= 1 lastfail= 0 tfull!=0= 1 | d_last median 1.5 (range 1-2) | median dmin over run 1.0 | max dmin 4.5
