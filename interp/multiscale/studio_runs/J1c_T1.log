@@ -1,0 +1,344 @@
+side 20 1 A rand None {'tau_int': 0.866, 'onelap': 3.0, 'drift': 6.0, 't': 2.0, 'hodge': 3.257} 8
+side 20 1 A rand None {'tau_int': 0.866, 'onelap': 3.5, 'drift': 7.0, 't': 2.0, 'hodge': 2.929} 8
+side 20 0 A rand None {'tau_int': 0.866, 'onelap': 5.268, 'drift': 10.5, 't': 2.0, 'hodge': 5.539} 17
+side 20 0 A rand None {'tau_int': 0.866, 'onelap': 4.5, 'drift': 9.0, 't': 2.0, 'hodge': 4.063} 31
+side 20 0 A drift 25 {'tau_int': 0.866, 'onelap': 12.53, 'drift': 25.0, 't': 2.0, 'hodge': 11.862} 119
+side 20 1 A drift 26 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 12.091} 151
+side 20 0 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.974} 175
+side 20 0 B rand None {'tau_int': 0.866, 'onelap': 4.444, 'drift': 8.5, 't': 2.0, 'hodge': 4.53} 184
+side 20 0 B drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 12.055} 353
+side 20 1 B rand None {'tau_int': 0.866, 'onelap': 5.074, 'drift': 10.0, 't': 2.0, 'hodge': 5.117} 479
+side 20 1 B rand None {'tau_int': 0.866, 'onelap': 7.55, 'drift': 15.0, 't': 2.0, 'hodge': 7.486} 488
+side 20 1 B drift 26 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 12.101} 842
+20 1 L 210 {'drift_UNSAT': 2} R [('>8', 2), (2, 1), (3, 1), (4, 1), (5, 1), (7, 1), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', 7), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 2), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1)] drifts [(6.0, 2.0, 0.866), (7.0, 2.0, 0.866), (25.5, 2.0, 0.866)] 2931
+side 20 2 A rand None {'tau_int': 0.866, 'onelap': 6.0, 'drift': 12.0, 't': 2.0, 'hodge': 5.788} 21
+side 20 2 A rand None {'tau_int': 0.866, 'onelap': 5.074, 'drift': 10.0, 't': 2.0, 'hodge': 5.264} 24
+side 20 2 A drift 26 {'tau_int': 0.866, 'onelap': 15.025, 'drift': 30.0, 't': 2.0, 'hodge': 15.351} 188
+side 20 2 B rand None {'tau_int': 0.866, 'onelap': 5.568, 'drift': 11.0, 't': 2.0, 'hodge': 5.086} 250
+side 20 2 B rand None {'tau_int': 0.866, 'onelap': 8.5, 'drift': 17.0, 't': 2.0, 'hodge': 8.01} 254
+side 20 2 B drift 26 {'tau_int': 0.866, 'onelap': 13.0, 'drift': 26.0, 't': 2.0, 'hodge': 12.613} 470
+20 0 L 206 {'drift_UNSAT': 2} R [('>8', 3), (3, 1), (4, 1), (5, 1), (7, 1), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', '>8'), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 7), 1)] drifts [(9.0, 2.0, 0.866), (10.5, 2.0, 0.866), (25.0, 2.0, 0.866)] 3554
+side 20 3 A rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.896} 4
+side 20 3 A rand None {'tau_int': 0.866, 'onelap': 10.759, 'drift': 21.5, 't': 2.0, 'hodge': 10.779} 10
+side 20 3 A drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 11.708} 112
+side 20 3 B rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.57} 172
+side 20 3 B rand None {'tau_int': 0.866, 'onelap': 6.062, 'drift': 12.0, 't': 2.0, 'hodge': 5.383} 176
+side 20 3 B drift 25 {'tau_int': 0.866, 'onelap': 13.0, 'drift': 26.0, 't': 2.0, 'hodge': 12.39} 305
+20 2 L 208 {'drift_UNSAT': 2} R [('>8', 5), (5, 1), (6, 1), (7, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 1), (('rand', 'rand', 7), 2)] drifts [(10.0, 2.0, 0.866), (12.0, 2.0, 0.866), (30.0, 2.0, 0.866)] 3549
+side 20 4 A rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.26} 4
+side 20 4 A rand None {'tau_int': 0.866, 'onelap': 6.5, 'drift': 13.0, 't': 2.0, 'hodge': 6.733} 17
+side 20 4 A drift 25 {'tau_int': 0.866, 'onelap': 13.0, 'drift': 26.0, 't': 2.0, 'hodge': 12.456} 66
+20 3 L 200 {'drift_UNSAT': 2} R [(4, 1), (5, 1), (8, 7)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', 8), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 8), 2)] drifts [(12.5, 2.0, 0.866), (21.5, 2.0, 0.866), (24.0, 2.0, 0.866)] 3046
+side 20 5 A rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 3.537} 4
+side 20 5 A rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 7.752} 8
+side 20 4 B rand None {'tau_int': 0.866, 'onelap': 5.268, 'drift': 10.5, 't': 2.0, 'hodge': 5.655} 139
+side 20 4 B rand None {'tau_int': 0.866, 'onelap': 6.062, 'drift': 12.0, 't': 2.0, 'hodge': 5.525} 140
+side 20 5 A drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.82} 68
+side 20 5 B rand None {'tau_int': 0.866, 'onelap': 4.5, 'drift': 9.0, 't': 2.0, 'hodge': 4.71} 116
+side 20 5 B rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 5.477} 119
+side 20 4 B drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.705} 282
+side 20 5 B drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 11.373} 182
+20 5 L 200 {'drift_UNSAT': 2} R [('>8', 1), (5, 4), (8, 4)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', '>8'), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 5), 4)] drifts [(7.5, 2.0, 0.866), (14.5, 2.0, 0.866), (24.5, 2.0, 0.866)] 1208
+side 20 6 A rand None {'tau_int': 0.866, 'onelap': 6.062, 'drift': 12.0, 't': 2.0, 'hodge': 5.726} 17
+side 20 6 A rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 4.992} 23
+side 20 6 A drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 11.685} 122
+side 20 6 B rand None {'tau_int': 0.866, 'onelap': 9.5, 'drift': 19.0, 't': 2.0, 'hodge': 8.84} 204
+side 20 6 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 6.073} 207
+side 20 6 B drift 25 {'tau_int': 0.866, 'onelap': 12.5, 'drift': 25.0, 't': 2.0, 'hodge': 11.869} 337
+20 4 L 206 {'drift_UNSAT': 2} R [('>8', 4), (3, 1), (4, 1), (5, 2), (6, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 5), 1), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 1)] drifts [(13.0, 2.0, 0.866), (13.5, 2.0, 0.866), (26.0, 2.0, 0.866)] 3292
+side 20 7 A rand None {'tau_int': 0.866, 'onelap': 4.5, 'drift': 9.0, 't': 2.0, 'hodge': 5.087} 4
+side 20 7 A rand None {'tau_int': 0.866, 'onelap': 3.969, 'drift': 7.5, 't': 2.0, 'hodge': 3.838} 18
+side 20 7 A drift 27 {'tau_int': 0.866, 'onelap': 13.029, 'drift': 26.0, 't': 2.0, 'hodge': 13.216} 175
+side 20 7 B rand None {'tau_int': 0.866, 'onelap': 5.568, 'drift': 11.0, 't': 2.0, 'hodge': 5.804} 237
+side 20 7 B rand None {'tau_int': 0.866, 'onelap': 4.583, 'drift': 9.0, 't': 2.0, 'hodge': 5.197} 257
+side 20 7 B drift 27 {'tau_int': 0.866, 'onelap': 13.757, 'drift': 27.5, 't': 2.0, 'hodge': 13.115} 447
+20 6 L 206 {'drift_UNSAT': 2} R [('>8', 2), (5, 4), (6, 1), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 5), 1), (('rand', 'drift', 8), 2), (('rand', 'rand', 5), 3), (('rand', 'rand', 6), 1)] drifts [(9.5, 2.0, 0.866), (12.0, 2.0, 0.866), (24.0, 2.0, 0.866)] 2991
+side 20 8 A rand None {'tau_int': 0.866, 'onelap': 5.895, 'drift': 11.5, 't': 2.0, 'hodge': 5.366} 7
+side 20 8 A rand None {'tau_int': 0.866, 'onelap': 7.0, 'drift': 14.0, 't': 2.0, 'hodge': 6.265} 11
+side 20 8 A drift 25 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 13.169} 137
+side 20 8 B rand None {'tau_int': 0.866, 'onelap': 3.606, 'drift': 7.0, 't': 2.0, 'hodge': 3.815} 202
+side 20 8 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 6.099} 207
+side 20 8 B drift 25 {'tau_int': 0.866, 'onelap': 14.257, 'drift': 28.5, 't': 2.0, 'hodge': 13.541} 270
+20 7 L 218 {'drift_UNSAT': 2} R [('>8', 4), (4, 3), (6, 1), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 3), (('rand', 'rand', 6), 1)] drifts [(7.5, 2.0, 0.866), (9.0, 2.0, 0.866), (26.0, 2.0, 0.866)] 2320
+side 20 9 A rand None {'tau_int': 0.866, 'onelap': 3.606, 'drift': 7.0, 't': 2.0, 'hodge': 3.93} 9
+side 20 9 A rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.973} 19
+side 20 9 A drift 25 {'tau_int': 0.866, 'onelap': 12.816, 'drift': 25.5, 't': 2.0, 'hodge': 13.057} 90
+side 20 9 B rand None {'tau_int': 0.866, 'onelap': 5.568, 'drift': 11.0, 't': 2.0, 'hodge': 5.232} 295
+20 8 L 204 {'drift_UNSAT': 2} R [('>8', 3), (5, 1), (6, 3), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 3)] drifts [(11.5, 2.0, 0.866), (14.0, 2.0, 0.866), (25.5, 2.0, 0.866)] 1591
+side 20 9 B rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 4.581} 300
+side 20 10 A rand None {'tau_int': 0.866, 'onelap': 5.0, 'drift': 10.0, 't': 2.0, 'hodge': 5.167} 6
+side 20 10 A rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 4.379} 21
+side 20 9 B drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.558} 380
+side 20 10 A drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 11.376} 97
+side 20 10 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 6.285} 151
+side 20 10 B rand None {'tau_int': 0.866, 'onelap': 8.0, 'drift': 16.0, 't': 2.0, 'hodge': 8.261} 158
+side 20 10 B drift 25 {'tau_int': 0.866, 'onelap': 13.0, 'drift': 26.0, 't': 2.0, 'hodge': 12.412} 260
+20 9 L 200 {'drift_UNSAT': 2} R [('>8', 3), (3, 1), (4, 2), (5, 1), (6, 1), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', 6), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 2), (('rand', 'rand', 5), 1)] drifts [(7.0, 2.0, 0.866), (12.5, 2.0, 0.866), (25.5, 2.0, 0.866)] 1634
+side 20 11 A rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 5.004} 6
+side 20 11 A rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.885} 15
+side 20 11 A drift 28 {'tau_int': 0.866, 'onelap': 14.0, 'drift': 28.0, 't': 2.0, 'hodge': 13.319} 207
+side 20 11 B rand None {'tau_int': 0.866, 'onelap': 6.5, 'drift': 13.0, 't': 2.0, 'hodge': 6.801} 550
+side 20 11 B rand None {'tau_int': 0.866, 'onelap': 5.408, 'drift': 10.5, 't': 2.0, 'hodge': 5.806} 562
+side 20 11 B drift 28 {'tau_int': 0.866, 'onelap': 13.757, 'drift': 27.5, 't': 2.0, 'hodge': 13.235} 820
+20 10 L 204 {'drift_UNSAT': 2} R [(4, 1), (5, 1), (7, 1), (8, 6)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', 7), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', 8), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 8), 2)] drifts [(9.5, 2.0, 0.866), (10.0, 2.0, 0.866), (24.0, 2.0, 0.866)] 2693
+side 20 12 A rand None {'tau_int': 0.866, 'onelap': 6.0, 'drift': 12.0, 't': 2.0, 'hodge': 5.34} 8
+side 20 12 A rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 6.73} 11
+side 20 12 A drift 25 {'tau_int': 0.866, 'onelap': 12.53, 'drift': 25.0, 't': 2.0, 'hodge': 12.175} 97
+side 20 12 B rand None {'tau_int': 0.866, 'onelap': 4.5, 'drift': 9.0, 't': 2.0, 'hodge': 4.898} 351
+side 20 12 B rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 5.228} 361
+side 20 12 B drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.743} 392
+20 11 L 226 {'drift_UNSAT': 2} R [('>8', 2), (3, 1), (5, 1), (6, 2), (7, 1), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', 7), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 2)] drifts [(11.0, 2.0, 0.866), (12.5, 2.0, 0.866), (28.0, 2.0, 0.866)] 2959
+side 20 13 A rand None {'tau_int': 0.866, 'onelap': 4.0, 'drift': 8.0, 't': 2.0, 'hodge': 4.14} 10
+side 20 13 A rand None {'tau_int': 0.866, 'onelap': 6.5, 'drift': 13.0, 't': 2.0, 'hodge': 6.03} 20
+side 20 13 A drift 25 {'tau_int': 0.866, 'onelap': 12.53, 'drift': 25.0, 't': 2.0, 'hodge': 11.882} 68
+side 20 13 B rand None {'tau_int': 0.866, 'onelap': 6.0, 'drift': 12.0, 't': 2.0, 'hodge': 6.435} 143
+side 20 13 B rand None {'tau_int': 0.866, 'onelap': 4.272, 'drift': 8.5, 't': 2.0, 'hodge': 4.342} 148
+side 20 13 B drift 25 {'tau_int': 0.866, 'onelap': 14.027, 'drift': 28.0, 't': 2.0, 'hodge': 13.318} 233
+20 13 L 200 {'drift_UNSAT': 2} R [(3, 1), (4, 2), (6, 2), (8, 4)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', 6), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', 8), 2), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 2), (('rand', 'rand', 6), 1)] drifts [(8.0, 2.0, 0.866), (13.0, 2.0, 0.866), (25.0, 2.0, 0.866)] 1108
+side 20 14 A rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.674} 2
+side 20 14 A rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 3.701} 15
+side 20 14 A drift 27 {'tau_int': 0.866, 'onelap': 13.5, 'drift': 27.0, 't': 2.0, 'hodge': 12.963} 161
+side 20 14 B rand None {'tau_int': 0.866, 'onelap': 6.0, 'drift': 12.0, 't': 2.0, 'hodge': 5.923} 528
+side 20 14 B rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.683} 542
+side 20 14 B drift 27 {'tau_int': 0.866, 'onelap': 13.257, 'drift': 26.5, 't': 2.0, 'hodge': 12.88} 719
+20 12 L 206 {'drift_UNSAT': 2} R [('>8', 4), (6, 3), (7, 1), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 6), 3), (('rand', 'rand', 7), 1)] drifts [(12.0, 2.0, 0.866), (14.5, 2.0, 0.866), (25.0, 2.0, 0.866)] 4990
+side 20 15 A rand None {'tau_int': 0.866, 'onelap': 3.279, 'drift': 6.5, 't': 2.0, 'hodge': 3.088} 6
+side 20 15 A rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.939} 22
+side 20 15 A drift 26 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 12.248} 117
+side 20 15 B rand None {'tau_int': 0.866, 'onelap': 3.122, 'drift': 6.0, 't': 2.0, 'hodge': 2.879} 228
+side 20 15 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 6.016} 229
+side 20 15 B drift 26 {'tau_int': 0.866, 'onelap': 14.0, 'drift': 28.0, 't': 2.0, 'hodge': 13.356} 307
+20 14 L 216 {'drift_TIMEOUT': 1, 'drift_UNSAT': 1} R [('>8', 2), (3, 1), (4, 2), (7, 1), (8, 3)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', '>8'), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 2), (('rand', 'rand', 7), 1)] drifts [(7.5, 2.0, 0.866), (12.5, 2.0, 0.866), (27.0, 2.0, 0.866)] 3365
+side 20 16 A rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 4.41} 6
+side 20 16 A rand None {'tau_int': 0.866, 'onelap': 2.5, 'drift': 5.0, 't': 2.0, 'hodge': 2.711} 16
+side 20 16 A drift 27 {'tau_int': 0.866, 'onelap': 15.0, 'drift': 30.0, 't': 2.0, 'hodge': 14.896} 105
+side 20 16 B rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 6.939} 201
+side 20 16 B rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 6.037} 203
+side 20 16 B drift 27 {'tau_int': 0.866, 'onelap': 13.528, 'drift': 27.0, 't': 2.0, 'hodge': 12.823} 390
+20 15 L 208 {'drift_UNSAT': 2} R [('>8', 4), (3, 2), (4, 1), (5, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 5), 1), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 3), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1)] drifts [(6.5, 2.0, 0.866), (12.5, 2.0, 0.866), (25.5, 2.0, 0.866)] 2319
+side 20 17 A rand None {'tau_int': 0.866, 'onelap': 3.5, 'drift': 7.0, 't': 2.0, 'hodge': 4.067} 4
+side 20 17 A rand None {'tau_int': 0.866, 'onelap': 4.272, 'drift': 8.5, 't': 2.0, 'hodge': 4.108} 7
+side 20 17 A drift 25 {'tau_int': 0.866, 'onelap': 12.53, 'drift': 25.0, 't': 2.0, 'hodge': 11.885} 48
+20 16 L 216 {'drift_UNSAT': 2} R [('>8', 4), (4, 3), (5, 1), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 3), (('rand', 'rand', 5), 1)] drifts [(5.0, 2.0, 0.866), (9.5, 2.0, 0.866), (30.0, 2.0, 0.866)] 1321
+side 20 18 A rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 4.817} 5
+side 20 18 A rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.865} 11
+side 20 17 B rand None {'tau_int': 0.866, 'onelap': 7.858, 'drift': 15.5, 't': 2.0, 'hodge': 8.212} 114
+side 20 17 B rand None {'tau_int': 0.866, 'onelap': 6.062, 'drift': 12.0, 't': 2.0, 'hodge': 5.413} 128
+side 20 18 A drift 26 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 12.171} 135
+side 20 17 B drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 12.248} 263
+side 20 18 B rand None {'tau_int': 0.866, 'onelap': 3.5, 'drift': 7.0, 't': 2.0, 'hodge': 3.788} 181
+side 20 18 B rand None {'tau_int': 0.866, 'onelap': 4.272, 'drift': 8.5, 't': 2.0, 'hodge': 3.976} 200
+side 20 18 B drift 26 {'tau_int': 0.866, 'onelap': 13.5, 'drift': 27.0, 't': 2.0, 'hodge': 12.904} 330
+20 17 L 204 {'drift_UNSAT': 2} R [('>8', 2), (5, 2), (6, 2), (8, 3)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', 8), 2), (('rand', 'rand', 5), 2), (('rand', 'rand', 6), 2)] drifts [(7.0, 2.0, 0.866), (8.5, 2.0, 0.866), (25.0, 2.0, 0.866)] 2769
+side 20 19 A rand None {'tau_int': 0.866, 'onelap': 4.924, 'drift': 9.5, 't': 2.0, 'hodge': 4.333} 10
+side 20 19 A rand None {'tau_int': 0.866, 'onelap': 7.5, 'drift': 15.0, 't': 2.0, 'hodge': 7.815} 21
+side 20 19 A drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 12.224} 242
+side 20 19 B rand None {'tau_int': 0.866, 'onelap': 4.093, 'drift': 8.0, 't': 2.0, 'hodge': 4.465} 308
+side 20 19 B rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 4.917} 311
+20 18 L 208 {'drift_UNSAT': 2} R [('>8', 3), (2, 1), (3, 1), (4, 1), (5, 1), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 2), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1)] drifts [(9.5, 2.0, 0.866), (11.5, 2.0, 0.866), (25.5, 2.0, 0.866)] 3033
+side 20 20 A rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 6.14} 18
+side 20 19 B drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 11.733} 370
+side 20 20 A rand None {'tau_int': 0.866, 'onelap': 6.5, 'drift': 13.0, 't': 2.0, 'hodge': 5.779} 30
+side 20 20 A drift 26 {'tau_int': 0.866, 'onelap': 13.257, 'drift': 26.5, 't': 2.0, 'hodge': 12.971} 181
+side 20 20 B rand None {'tau_int': 0.866, 'onelap': 3.279, 'drift': 6.5, 't': 2.0, 'hodge': 3.212} 239
+side 20 20 B rand None {'tau_int': 0.866, 'onelap': 5.074, 'drift': 10.0, 't': 2.0, 'hodge': 4.798} 242
+side 20 20 B drift 26 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 12.2} 338
+20 20 L 208 {'drift_UNSAT': 2} R [('>8', 3), (4, 2), (5, 1), (7, 1), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', '>8'), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 4), 2), (('rand', 'rand', 5), 1), (('rand', 'rand', 7), 1)] drifts [(11.5, 2.0, 0.866), (13.0, 2.0, 0.866), (26.5, 2.0, 0.866)] 2409
+side 20 21 A rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.323} 13
+side 20 21 A rand None {'tau_int': 0.866, 'onelap': 5.268, 'drift': 10.5, 't': 2.0, 'hodge': 4.438} 20
+20 19 L 206 {'drift_UNSAT': 2} R [('>8', 1), (5, 2), (6, 1), (8, 5)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', 8), 2), (('rand', 'rand', 5), 2), (('rand', 'rand', 6), 1), (('rand', 'rand', 8), 1)] drifts [(9.5, 2.0, 0.866), (15.0, 2.0, 0.866), (24.5, 2.0, 0.866)] 2942
+side 20 21 A drift 27 {'tau_int': 0.866, 'onelap': 13.257, 'drift': 26.5, 't': 2.0, 'hodge': 12.72} 183
+side 20 22 A rand None {'tau_int': 0.866, 'onelap': 4.093, 'drift': 8.0, 't': 2.0, 'hodge': 4.877} 4
+side 20 22 A rand None {'tau_int': 0.866, 'onelap': 8.761, 'drift': 17.5, 't': 2.0, 'hodge': 8.231} 17
+side 20 21 B rand None {'tau_int': 0.866, 'onelap': 5.0, 'drift': 10.0, 't': 2.0, 'hodge': 4.528} 244
+side 20 21 B rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 5.241} 246
+side 20 22 A drift 25 {'tau_int': 0.866, 'onelap': 13.811, 'drift': 27.5, 't': 2.0, 'hodge': 13.087} 101
+side 20 22 B rand None {'tau_int': 0.866, 'onelap': 7.053, 'drift': 14.0, 't': 2.0, 'hodge': 6.513} 150
+side 20 22 B rand None {'tau_int': 0.866, 'onelap': 7.762, 'drift': 15.5, 't': 2.0, 'hodge': 7.063} 161
+side 20 21 B drift 27 {'tau_int': 0.866, 'onelap': 13.029, 'drift': 26.0, 't': 2.0, 'hodge': 12.484} 369
+side 20 22 B drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.708} 270
+20 22 L 200 {'drift_UNSAT': 2} R [('>8', 1), (4, 2), (6, 1), (7, 1), (8, 4)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', 8), 2), (('rand', 'rand', 4), 2), (('rand', 'rand', 6), 1), (('rand', 'rand', 7), 1)] drifts [(8.0, 2.0, 0.866), (17.5, 2.0, 0.866), (27.5, 2.0, 0.866)] 2266
+side 20 23 A rand None {'tau_int': 0.866, 'onelap': 7.858, 'drift': 15.5, 't': 2.0, 'hodge': 7.185} 6
+side 20 23 A rand None {'tau_int': 0.866, 'onelap': 5.895, 'drift': 11.5, 't': 2.0, 'hodge': 6.405} 9
+side 20 23 A drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 12.008} 66
+side 20 23 B rand None {'tau_int': 0.866, 'onelap': 4.5, 'drift': 9.0, 't': 2.0, 'hodge': 4.65} 156
+side 20 23 B rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 3.81} 168
+side 20 23 B drift 25 {'tau_int': 0.866, 'onelap': 12.031, 'drift': 24.0, 't': 2.0, 'hodge': 11.35} 285
+20 23 L 200 {'drift_UNSAT': 2} R [('>8', 4), (3, 1), (4, 2), (5, 1), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 4), 2), (('rand', 'rand', 5), 1)] drifts [(11.5, 2.0, 0.866), (15.5, 2.0, 0.866), (24.0, 2.0, 0.866)] 830
+side 20 24 A rand None {'tau_int': 0.866, 'onelap': 9.836, 'drift': 19.5, 't': 2.0, 'hodge': 10.154} 6
+side 20 24 A rand None {'tau_int': 0.866, 'onelap': 5.0, 'drift': 10.0, 't': 2.0, 'hodge': 4.798} 8
+side 20 24 A drift 26 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 12.248} 91
+20 21 L 216 {'drift_UNSAT': 2} R [('>8', 3), (3, 2), (4, 2), (8, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', '>8'), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 3), 2), (('rand', 'rand', 4), 2)] drifts [(10.5, 2.0, 0.866), (11.5, 2.0, 0.866), (26.5, 2.0, 0.866)] 3428
+side 20 24 B rand None {'tau_int': 0.866, 'onelap': 4.583, 'drift': 9.0, 't': 2.0, 'hodge': 4.847} 154
+side 20 25 A rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.105} 5
+side 20 24 B rand None {'tau_int': 0.866, 'onelap': 3.969, 'drift': 7.5, 't': 2.0, 'hodge': 3.88} 158
+side 20 25 A rand None {'tau_int': 0.866, 'onelap': 7.053, 'drift': 14.0, 't': 2.0, 'hodge': 7.49} 9
+side 20 25 A drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.82} 78
+side 20 25 B rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 6.03} 129
+side 20 25 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 6.345} 131
+side 20 24 B drift 26 {'tau_int': 0.866, 'onelap': 12.53, 'drift': 25.0, 't': 2.0, 'hodge': 12.433} 320
+side 20 25 B drift 25 {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.738} 216
+20 25 L 200 {'drift_UNSAT': 2} R [(5, 2), (6, 1), (7, 1), (8, 5)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', 8), 2), (('rand', 'rand', 5), 2), (('rand', 'rand', 6), 1), (('rand', 'rand', 7), 1)] drifts [(13.5, 2.0, 0.866), (14.0, 2.0, 0.866), (24.5, 2.0, 0.866)] 1425
+side 20 26 A rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 4.094} 3
+side 20 26 A rand None {'tau_int': 0.866, 'onelap': 7.0, 'drift': 14.0, 't': 2.0, 'hodge': 7.443} 5
+side 20 26 A drift 26 {'tau_int': 0.866, 'onelap': 13.0, 'drift': 26.0, 't': 2.0, 'hodge': 13.153} 112
+side 20 26 B rand None {'tau_int': 0.866, 'onelap': 4.093, 'drift': 8.0, 't': 2.0, 'hodge': 4.259} 191
+side 20 26 B rand None {'tau_int': 0.866, 'onelap': 7.5, 'drift': 15.0, 't': 2.0, 'hodge': 6.887} 196
+side 20 26 B drift 26 {'tau_int': 0.866, 'onelap': 13.257, 'drift': 26.5, 't': 2.0, 'hodge': 12.625} 362
+20 26 L 212 {'drift_UNSAT': 2} R [('>8', 1), (2, 1), (4, 1), (5, 1), (6, 1), (8, 4)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', 8), 2), (('rand', 'rand', 2), 1), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 1)] drifts [(7.5, 2.0, 0.866), (14.0, 2.0, 0.866), (26.0, 2.0, 0.866)] 2292
+side 20 27 A rand None {'tau_int': 0.866, 'onelap': 7.762, 'drift': 15.5, 't': 2.0, 'hodge': 7.268} 4
+side 20 27 A rand None {'tau_int': 0.866, 'onelap': 7.762, 'drift': 15.5, 't': 2.0, 'hodge': 7.457} 11
+20 24 L 208 {'drift_UNSAT': 2} R [('>8', 4), (3, 2), (7, 2), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 1), (('drift', 'rand', 8), 1), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 3), 2), (('rand', 'rand', 7), 2)] drifts [(10.0, 2.0, 0.866), (19.5, 2.0, 0.866), (25.5, 2.0, 0.866)] 3955
+side 20 28 A rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.225} 4
+side 20 28 A rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 3.864} 11
+side 20 28 A drift 25 {'tau_int': 0.866, 'onelap': 14.0, 'drift': 28.0, 't': 2.0, 'hodge': 13.627} 101
+side 20 27 A drift 26 {'tau_int': 0.866, 'onelap': 12.53, 'drift': 25.0, 't': 2.0, 'hodge': 12.158} 235
+side 20 28 B rand None {'tau_int': 0.866, 'onelap': 5.074, 'drift': 10.0, 't': 2.0, 'hodge': 5.469} 169
+side 20 28 B rand None {'tau_int': 0.866, 'onelap': 7.762, 'drift': 15.5, 't': 2.0, 'hodge': 8.351} 174
+side 20 28 B drift 25 {'tau_int': 0.866, 'onelap': 12.5, 'drift': 25.0, 't': 2.0, 'hodge': 11.85} 222
+side 20 27 B rand None {'tau_int': 0.866, 'onelap': 5.0, 'drift': 10.0, 't': 2.0, 'hodge': 5.191} 337
+side 20 27 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.054} 344
+side 20 27 B drift 26 {'tau_int': 0.866, 'onelap': 13.257, 'drift': 26.5, 't': 2.0, 'hodge': 12.6} 442
+20 27 L 210 {'drift_UNSAT': 2} R [(5, 1), (6, 2), (7, 2), (8, 4)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', 7), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 2), (('rand', 'rand', 7), 1)] drifts [(15.5, 2.0, 0.866), (25.0, 2.0, 0.866)] 2104
+side 20 29 A rand None {'tau_int': 0.866, 'onelap': 6.5, 'drift': 13.0, 't': 2.0, 'hodge': 6.087} 10
+side 20 29 A rand None {'tau_int': 0.866, 'onelap': 7.762, 'drift': 15.5, 't': 2.0, 'hodge': 8.137} 16
+side 20 29 A drift 26 {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 2.0, 'hodge': 12.056} 88
+side 20 29 B rand None {'tau_int': 0.866, 'onelap': 4.5, 'drift': 9.0, 't': 2.0, 'hodge': 4.808} 145
+side 20 29 B rand None {'tau_int': 0.866, 'onelap': 3.5, 'drift': 7.0, 't': 2.0, 'hodge': 3.365} 148
+side 20 29 B drift 26 {'tau_int': 0.866, 'onelap': 13.528, 'drift': 27.0, 't': 2.0, 'hodge': 12.808} 324
+20 28 L 200 {'drift_UNSAT': 2} R [('>8', 4), (3, 1), (5, 1), (7, 2), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 1), (('rand', 'drift', 8), 1), (('rand', 'rand', 3), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 7), 2)] drifts [(7.5, 2.0, 0.866), (13.5, 2.0, 0.866), (28.0, 2.0, 0.866)] 2717
+side 25 0 A rand None {'tau_int': 0.866, 'onelap': 5.074, 'drift': 10.0, 't': 2.0, 'hodge': 5.681} 17
+side 25 0 A rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.285} 61
+side 25 0 A drift 31 {'tau_int': 0.866, 'onelap': 15.256, 'drift': 30.5, 't': 2.0, 'hodge': 14.705} 186
+side 25 0 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.091} 549
+side 25 0 B rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 4.315} 552
+side 25 0 B drift 31 {'tau_int': 0.866, 'onelap': 17.5, 'drift': 35.0, 't': 2.0, 'hodge': 17.083} 770
+20 29 L 208 {'drift_UNSAT': 2} R [(4, 1), (5, 1), (6, 1), (8, 6)] byKind [(('drift', 'drift', 8), 1), (('drift', 'rand', 8), 2), (('rand', 'drift', 8), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 1), (('rand', 'rand', 8), 1)] drifts [(13.0, 2.0, 0.866), (15.5, 2.0, 0.866), (25.5, 2.0, 0.866)] 1601
+side 25 1 A rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 6.257} 26
+side 25 1 A rand None {'tau_int': 0.866, 'onelap': 7.762, 'drift': 15.5, 't': 2.0, 'hodge': 7.178} 32
+side 25 1 A drift 32 {'tau_int': 0.866, 'onelap': 15.524, 'drift': 31.0, 't': 2.0, 'hodge': 15.271} 121
+side 25 1 B rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 6.902} 234
+side 25 1 B rand None {'tau_int': 0.866, 'onelap': 6.557, 'drift': 13.0, 't': 2.0, 'hodge': 6.047} 235
+side 25 1 B drift 32 {'tau_int': 0.866, 'onelap': 17.255, 'drift': 34.5, 't': 2.0, 'hodge': 16.802} 804
+25 0 L 254 {'drift_UNSAT': 2} R [('>8', 5), (4, 3), (6, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 3), (('rand', 'rand', 6), 1)] drifts [(10.0, 2.0, 0.866), (13.5, 2.0, 0.866), (30.5, 2.0, 0.866)] 1756
+side 25 2 A rand None {'tau_int': 0.866, 'onelap': 11.533, 'drift': 23.0, 't': 2.0, 'hodge': 11.258} 20
+side 25 2 A rand None {'tau_int': 0.866, 'onelap': 8.261, 'drift': 16.5, 't': 2.0, 'hodge': 7.766} 25
+side 25 2 A drift 31 {'tau_int': 0.866, 'onelap': 16.756, 'drift': 33.5, 't': 2.0, 'hodge': 16.26} 298
+side 25 2 B rand None {'tau_int': 0.866, 'onelap': 5.268, 'drift': 10.5, 't': 2.0, 'hodge': 5.48} 410
+side 25 2 B rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 5.413} 412
+side 25 2 B drift 31 {'tau_int': 0.866, 'onelap': 20.0, 'drift': 40.0, 't': 2.0, 'hodge': 19.654} 524
+25 1 L 260 {'drift_UNSAT': 2} R [('>8', 6), (5, 1), (6, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', '>8'), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 2)] drifts [(12.5, 2.0, 0.866), (15.5, 2.0, 0.866), (31.0, 2.0, 0.866)] 2310
+side 25 3 A rand None {'tau_int': 0.866, 'onelap': 9.26, 'drift': 18.5, 't': 2.0, 'hodge': 8.741} 7
+side 25 3 A rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 5.435} 13
+side 25 3 A drift 31 {'tau_int': 0.866, 'onelap': 17.255, 'drift': 34.5, 't': 2.0, 'hodge': 16.824} 158
+side 25 3 B rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.476} 338
+side 25 3 B rand None {'tau_int': 0.866, 'onelap': 6.557, 'drift': 13.0, 't': 2.0, 'hodge': 6.193} 354
+side 25 3 B drift 31 {'tau_int': 0.866, 'onelap': 16.256, 'drift': 32.5, 't': 2.0, 'hodge': 15.792} 539
+25 2 L 254 {'drift_UNSAT': 2} R [('>8', 7), (6, 1), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', '>8'), 2), (('rand', 'rand', 6), 1), (('rand', 'rand', 8), 1)] drifts [(16.5, 2.0, 0.866), (23.0, 2.0, 0.866), (33.5, 2.0, 0.866)] 3278
+side 25 4 A rand None {'tau_int': 0.866, 'onelap': 8.5, 'drift': 17.0, 't': 2.0, 'hodge': 7.899} 25
+side 25 4 A rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.272} 98
+side 25 4 A drift 34 {'tau_int': 0.866, 'onelap': 17.0, 'drift': 34.0, 't': 2.0, 'hodge': 16.725} 596
+side 25 4 B rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 6.728} 789
+side 25 4 B rand None {'tau_int': 0.866, 'onelap': 7.0, 'drift': 14.0, 't': 2.0, 'hodge': 6.457} 801
+25 3 L 250 {'drift_UNSAT': 2} R [('>8', 5), (5, 1), (6, 1), (7, 1), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 1), (('rand', 'rand', 7), 1), (('rand', 'rand', 8), 1)] drifts [(11.0, 2.0, 0.866), (18.5, 2.0, 0.866), (34.5, 2.0, 0.866)] 3787
+side 25 5 A rand None {'tau_int': 0.866, 'onelap': 10.759, 'drift': 21.5, 't': 2.0, 'hodge': 10.19} 22
+side 25 5 A rand None {'tau_int': 0.866, 'onelap': 8.261, 'drift': 16.5, 't': 2.0, 'hodge': 7.578} 53
+side 25 5 A drift 32 {'tau_int': 0.866, 'onelap': 17.5, 'drift': 35.0, 't': 2.0, 'hodge': 17.085} 180
+side 25 5 B rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 6.135} 368
+side 25 5 B rand None {'tau_int': 0.866, 'onelap': 8.352, 'drift': 16.5, 't': 2.0, 'hodge': 7.765} 398
+side 25 5 B drift 32 {'tau_int': 0.866, 'onelap': 18.0, 'drift': 36.0, 't': 2.0, 'hodge': 17.715} 913
+25 4 L 276 {'drift_UNSAT': 1, 'drift_TIMEOUT': 2} R [('>8', 3), (4, 1), (5, 1), (7, 1)] byKind [(('drift', 'rand', '>8'), 2), (('rand', 'rand', '>8'), 1), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 7), 1)] drifts [(13.5, 2.0, 0.866), (17.0, 2.0, 0.866), (34.0, 2.0, 0.866)] 3836
+side 25 6 A rand None {'tau_int': 0.866, 'onelap': 9.26, 'drift': 18.5, 't': 2.0, 'hodge': 9.22} 8
+side 25 6 A rand None {'tau_int': 0.866, 'onelap': 6.062, 'drift': 12.0, 't': 2.0, 'hodge': 5.414} 11
+side 25 6 B rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.189} 1020
+side 25 6 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 4.944} 1026
+side 25 6 B drift 34 {'tau_int': 0.866, 'onelap': 16.756, 'drift': 33.5, 't': 2.0, 'hodge': 16.478} 1566
+25 5 L 260 {'drift_UNSAT': 2} R [('>8', 5), (5, 2), (7, 2)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 5), 2), (('rand', 'rand', 7), 2)] drifts [(16.5, 2.0, 0.866), (21.5, 2.0, 0.866), (35.0, 2.0, 0.866)] 4949
+side 25 7 A rand None {'tau_int': 0.866, 'onelap': 10.259, 'drift': 20.5, 't': 2.0, 'hodge': 9.941} 9
+side 25 7 A rand None {'tau_int': 0.866, 'onelap': 11.258, 'drift': 22.5, 't': 2.0, 'hodge': 10.807} 17
+side 25 7 A drift 33 {'tau_int': 0.866, 'onelap': 17.5, 'drift': 35.0, 't': 2.0, 'hodge': 18.063} 549
+25 6 L 274 {'drift_TIMEOUT': 1, 'drift_UNSAT': 2} R [('>8', 3), (4, 2), (8, 1)] byKind [(('rand', 'drift', '>8'), 2), (('rand', 'rand', '>8'), 1), (('rand', 'rand', 4), 2), (('rand', 'rand', 8), 1)] drifts [(12.0, 2.0, 0.866), (18.5, 2.0, 0.866)] 3672
+side 25 8 A rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 7.439} 7
+side 25 8 A rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.366} 61
+side 25 7 B rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 6.509} 687
+side 25 7 B rand None {'tau_int': 0.866, 'onelap': 6.0, 'drift': 12.0, 't': 2.0, 'hodge': 6.144} 699
+side 25 8 A drift 33 {'tau_int': 0.866, 'onelap': 16.256, 'drift': 32.5, 't': 2.0, 'hodge': 15.748} 567
+side 25 7 B drift 33 {'tau_int': 0.866, 'onelap': 16.5, 'drift': 33.0, 't': 2.0, 'hodge': 16.107} 1234
+side 25 8 B rand None {'tau_int': 0.866, 'onelap': 5.408, 'drift': 10.5, 't': 2.0, 'hodge': 4.921} 699
+side 25 8 B rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 3.91} 710
+side 25 8 B drift 33 {'tau_int': 0.866, 'onelap': 20.019, 'drift': 40.0, 't': 2.0, 'hodge': 19.678} 942
+25 7 L 270 {'drift_UNSAT': 2} R [('>8', 6), (6, 2), (7, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', '>8'), 1), (('rand', 'rand', 6), 2), (('rand', 'rand', 7), 1)] drifts [(20.5, 2.0, 0.866), (22.5, 2.0, 0.866), (35.0, 2.0, 0.866)] 3493
+side 25 9 A rand None {'tau_int': 0.866, 'onelap': 5.895, 'drift': 11.5, 't': 2.0, 'hodge': 6.318} 36
+side 25 9 A rand None {'tau_int': 0.866, 'onelap': 8.0, 'drift': 16.0, 't': 2.0, 'hodge': 7.475} 44
+side 25 9 B rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 3.833} 808
+side 25 9 B rand None {'tau_int': 0.866, 'onelap': 7.5, 'drift': 15.0, 't': 2.0, 'hodge': 7.025} 811
+25 8 L 264 {'drift_UNSAT': 2} R [('>8', 5), (4, 1), (5, 1), (6, 1), (7, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 1), (('rand', 'rand', 7), 1)] drifts [(11.5, 2.0, 0.866), (14.5, 2.0, 0.866), (32.5, 2.0, 0.866)] 3807
+side 25 10 A rand None {'tau_int': 0.866, 'onelap': 4.272, 'drift': 8.5, 't': 2.0, 'hodge': 4.701} 6
+side 25 10 A rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.344} 38
+side 25 10 B rand None {'tau_int': 0.866, 'onelap': 4.272, 'drift': 8.5, 't': 2.0, 'hodge': 4.931} 793
+side 25 10 B rand None {'tau_int': 0.866, 'onelap': 7.0, 'drift': 14.0, 't': 2.0, 'hodge': 6.555} 862
+side 25 10 B drift 34 {'tau_int': 0.866, 'onelap': 18.0, 'drift': 36.0, 't': 2.0, 'hodge': 17.701} 1462
+25 9 L 278 {'drift_TIMEOUT': 2, 'drift_UNSAT': 2} R [(4, 1), (5, 1), (6, 1), (7, 1)] byKind [(('rand', 'rand', 4), 1), (('rand', 'rand', 5), 1), (('rand', 'rand', 6), 1), (('rand', 'rand', 7), 1)] drifts [(11.5, 2.0, 0.866), (16.0, 2.0, 0.866)] 2579
+side 25 11 A rand None {'tau_int': 0.866, 'onelap': 7.762, 'drift': 15.5, 't': 2.0, 'hodge': 6.961} 5
+side 25 11 A rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.359} 9
+side 25 11 A drift 34 {'tau_int': 0.866, 'onelap': 17.797, 'drift': 35.5, 't': 2.0, 'hodge': 17.311} 558
+side 25 11 B rand None {'tau_int': 0.866, 'onelap': 8.261, 'drift': 16.5, 't': 2.0, 'hodge': 7.635} 1000
+side 25 11 B rand None {'tau_int': 0.866, 'onelap': 4.77, 'drift': 9.5, 't': 2.0, 'hodge': 5.264} 1030
+25 10 L 274 {'drift_TIMEOUT': 1, 'drift_UNSAT': 2} R [('>8', 2), (4, 2), (6, 2)] byKind [(('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 2), (('rand', 'rand', 6), 2)] drifts [(8.5, 2.0, 0.866), (11.5, 2.0, 0.866)] 2962
+side 25 12 A rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.352} 11
+side 25 12 A rand None {'tau_int': 0.866, 'onelap': 1.732, 'drift': 3.0, 't': 2.0, 'hodge': 1.722} 11
+side 25 12 A drift 32 {'tau_int': 0.866, 'onelap': 19.02, 'drift': 38.0, 't': 2.0, 'hodge': 18.637} 271
+side 25 11 B drift 34 {'tau_int': 0.866, 'onelap': 18.0, 'drift': 36.0, 't': 2.0, 'hodge': 17.62} 1588
+side 25 12 B rand None {'tau_int': 0.866, 'onelap': 6.874, 'drift': 13.5, 't': 2.0, 'hodge': 6.974} 408
+side 25 12 B rand None {'tau_int': 0.866, 'onelap': 8.0, 'drift': 16.0, 't': 2.0, 'hodge': 7.43} 424
+side 25 12 B drift 32 {'tau_int': 0.866, 'onelap': 15.756, 'drift': 31.5, 't': 2.0, 'hodge': 15.483} 909
+25 11 L 274 {'drift_UNSAT': 1, 'drift_TIMEOUT': 1} R [('>8', 5), (4, 1), (5, 3)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 3)] drifts [(11.5, 2.0, 0.866), (15.5, 2.0, 0.866), (35.5, 2.0, 0.866)] 3222
+side 25 13 A rand None {'tau_int': 0.866, 'onelap': 11.0, 'drift': 22.0, 't': 2.0, 'hodge': 10.627} 20
+side 25 13 A rand None {'tau_int': 0.866, 'onelap': 7.0, 'drift': 14.0, 't': 2.0, 'hodge': 7.403} 26
+side 25 13 A drift 33 {'tau_int': 0.866, 'onelap': 17.5, 'drift': 35.0, 't': 2.0, 'hodge': 17.03} 542
+side 25 13 B rand None {'tau_int': 0.866, 'onelap': 9.0, 'drift': 18.0, 't': 2.0, 'hodge': 8.366} 939
+side 25 13 B rand None {'tau_int': 0.866, 'onelap': 7.5, 'drift': 15.0, 't': 2.0, 'hodge': 7.104} 953
+25 12 L 256 {'drift_UNSAT': 2} R [('>8', 5), (4, 1), (5, 2), (6, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 2), (('rand', 'rand', 6), 1)] drifts [(3.0, 2.0, 0.866), (13.5, 2.0, 0.866), (38.0, 2.0, 0.866)] 2898
+side 25 14 A rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.499} 110
+side 25 14 A rand None {'tau_int': 0.866, 'onelap': 7.858, 'drift': 15.5, 't': 2.0, 'hodge': 7.523} 142
+side 25 13 B drift 33 {'tau_int': 0.866, 'onelap': 16.023, 'drift': 32.0, 't': 2.0, 'hodge': 15.658} 1512
+side 25 14 A drift 34 {'tau_int': 0.866, 'onelap': 18.255, 'drift': 36.5, 't': 2.0, 'hodge': 17.915} 712
+side 25 14 B rand None {'tau_int': 0.866, 'onelap': 5.5, 'drift': 11.0, 't': 2.0, 'hodge': 5.261} 927
+side 25 14 B rand None {'tau_int': 0.866, 'onelap': 5.074, 'drift': 10.0, 't': 2.0, 'hodge': 4.493} 932
+25 14 L 276 {'drift_UNSAT': 2, 'drift_TIMEOUT': 1} R [('>8', 2), (4, 1), (5, 2), (6, 1)] byKind [(('drift', 'rand', '>8'), 2), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 2), (('rand', 'rand', 6), 1)] drifts [(11.5, 2.0, 0.866), (15.5, 2.0, 0.866), (36.5, 2.0, 0.866)] 2350
+side 25 15 A rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 4.215} 5
+side 25 15 A rand None {'tau_int': 0.866, 'onelap': 6.5, 'drift': 13.0, 't': 2.0, 'hodge': 6.194} 42
+side 25 15 A drift 33 {'tau_int': 0.866, 'onelap': 18.0, 'drift': 36.0, 't': 2.0, 'hodge': 17.612} 515
+side 25 15 B rand None {'tau_int': 0.866, 'onelap': 7.263, 'drift': 14.5, 't': 2.0, 'hodge': 6.727} 654
+side 25 15 B rand None {'tau_int': 0.866, 'onelap': 6.0, 'drift': 12.0, 't': 2.0, 'hodge': 5.336} 693
+25 13 L 268 {'drift_TIMEOUT': 1, 'drift_UNSAT': 1} R [('>8', 7), (6, 1), (7, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', '>8'), 2), (('rand', 'rand', 6), 1), (('rand', 'rand', 7), 1)] drifts [(14.0, 2.0, 0.866), (22.0, 2.0, 0.866), (35.0, 2.0, 0.866)] 6051
+side 25 16 A rand None {'tau_int': 0.866, 'onelap': 9.0, 'drift': 18.0, 't': 2.0, 'hodge': 8.575} 19
+side 25 16 A rand None {'tau_int': 0.866, 'onelap': 8.761, 'drift': 17.5, 't': 2.0, 'hodge': 9.239} 20
+side 25 16 A drift 33 {'tau_int': 0.866, 'onelap': 16.756, 'drift': 33.5, 't': 2.0, 'hodge': 16.293} 108
+side 25 16 B rand None {'tau_int': 0.866, 'onelap': 8.047, 'drift': 16.0, 't': 2.0, 'hodge': 8.358} 493
+side 25 16 B rand None {'tau_int': 0.866, 'onelap': 4.583, 'drift': 9.0, 't': 2.0, 'hodge': 4.16} 507
+side 25 16 B drift 33 {'tau_int': 0.866, 'onelap': 17.255, 'drift': 34.5, 't': 2.0, 'hodge': 16.785} 1071
+25 15 L 268 {'drift_UNSAT': 2, 'drift_TIMEOUT': 1} R [('>8', 2), (4, 2), (6, 2)] byKind [(('drift', 'rand', '>8'), 2), (('rand', 'rand', 4), 2), (('rand', 'rand', 6), 2)] drifts [(7.5, 2.0, 0.866), (13.0, 2.0, 0.866), (36.0, 2.0, 0.866)] 3879
+side 25 17 A rand None {'tau_int': 0.866, 'onelap': 12.258, 'drift': 24.5, 't': 2.0, 'hodge': 11.751} 22
+side 25 17 A rand None {'tau_int': 0.866, 'onelap': 6.062, 'drift': 12.0, 't': 2.0, 'hodge': 5.604} 30
+side 25 17 B rand None {'tau_int': 0.866, 'onelap': 9.26, 'drift': 18.5, 't': 2.0, 'hodge': 8.709} 1017
+side 25 17 B rand None {'tau_int': 0.866, 'onelap': 6.5, 'drift': 13.0, 't': 2.0, 'hodge': 5.919} 1021
+side 25 17 B drift 34 {'tau_int': 0.866, 'onelap': 17.0, 'drift': 34.0, 't': 2.0, 'hodge': 17.199} 1527
+25 16 L 268 {'drift_TIMEOUT': 1, 'drift_UNSAT': 1} R [('>8', 6), (7, 2), (8, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', '>8'), 1), (('rand', 'rand', 7), 2), (('rand', 'rand', 8), 1)] drifts [(17.5, 2.0, 0.866), (18.0, 2.0, 0.866), (33.5, 2.0, 0.866)] 3350
+side 25 18 A rand None {'tau_int': 0.866, 'onelap': 6.764, 'drift': 13.5, 't': 2.0, 'hodge': 6.45} 4
+side 25 18 A rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.567} 8
+side 25 18 A drift 35 {'tau_int': 0.866, 'onelap': 18.0, 'drift': 36.0, 't': 2.0, 'hodge': 17.657} 473
+side 25 18 B rand None {'tau_int': 0.866, 'onelap': 6.265, 'drift': 12.5, 't': 2.0, 'hodge': 5.816} 708
+side 25 18 B rand None {'tau_int': 0.866, 'onelap': 5.766, 'drift': 11.5, 't': 2.0, 'hodge': 5.538} 711
+25 17 L 272 {'drift_TIMEOUT': 1, 'drift_UNSAT': 2} R [('>8', 3), (4, 1), (5, 2)] byKind [(('rand', 'drift', '>8'), 2), (('rand', 'rand', '>8'), 1), (('rand', 'rand', 4), 1), (('rand', 'rand', 5), 2)] drifts [(12.0, 2.0, 0.866), (24.5, 2.0, 0.866)] 3018
+side 25 19 A rand None {'tau_int': 0.866, 'onelap': 4.272, 'drift': 8.5, 't': 2.0, 'hodge': 3.815} 7
+side 25 19 A rand None {'tau_int': 0.866, 'onelap': 8.5, 'drift': 17.0, 't': 2.0, 'hodge': 7.804} 19
+side 25 18 B drift 35 {'tau_int': 0.433, 'onelap': 19.755, 'drift': 39.5, 't': 2.0, 'hodge': 19.398} 1275
+side 25 19 B rand None {'tau_int': 0.866, 'onelap': 8.846, 'drift': 17.5, 't': 2.0, 'hodge': 9.214} 1022
+side 25 19 B rand None {'tau_int': 0.866, 'onelap': 5.568, 'drift': 11.0, 't': 2.0, 'hodge': 6.076} 1052
+side 25 19 B drift 33 {'tau_int': 0.866, 'onelap': 16.5, 'drift': 33.0, 't': 2.0, 'hodge': 16.211} 1545
+25 18 L 280 {'drift_UNSAT': 2} R [('>8', 5), (4, 3), (6, 1)] byKind [(('drift', 'drift', '>8'), 1), (('drift', 'rand', '>8'), 2), (('rand', 'drift', '>8'), 2), (('rand', 'rand', 4), 3), (('rand', 'rand', 6), 1)] drifts [(12.5, 2.0, 0.866), (13.5, 2.0, 0.866), (36.0, 2.0, 0.866)] 2810
+side 25 20 A rand None {'tau_int': 0.866, 'onelap': 5.895, 'drift': 11.5, 't': 2.0, 'hodge': 5.294} 18
+side 25 20 A rand None {'tau_int': 0.866, 'onelap': 6.0, 'drift': 12.0, 't': 2.0, 'hodge': 5.429} 27
+side 25 20 B rand None {'tau_int': 0.866, 'onelap': 7.0, 'drift': 14.0, 't': 2.0, 'hodge': 6.621} 813
+side 25 20 B rand None {'tau_int': 0.866, 'onelap': 3.775, 'drift': 7.5, 't': 2.0, 'hodge': 3.619} 820

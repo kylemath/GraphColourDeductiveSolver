@@ -1,0 +1,27 @@
+side 20 0 A rand None {'tau_int': 0.866, 'onelap': 26.5, 'drift': 53.0, 't': 46.0, 'hodge': 13.282} 2
+side 20 0 A rand None {'tau_int': 0.866, 'onelap': 11.758, 'drift': 23.5, 't': 22.0, 'hodge': 3.474} 3
+side 20 1 A rand None {'tau_int': 0.866, 'onelap': 26.5, 'drift': 53.0, 't': 52.0, 'hodge': 5.653} 3
+side 20 1 A rand None {'tau_int': 0.866, 'onelap': 11.822, 'drift': 23.5, 't': 22.0, 'hodge': 6.462} 3
+side 20 1 A drift 26 {'tau_int': 0.866, 'onelap': 14.756, 'drift': 29.5, 't': 28.0, 'hodge': 4.707} 4
+side 20 0 A drift 25 {'tau_int': 0.866, 'onelap': 21.254, 'drift': 42.5, 't': 40.0, 'hodge': 7.121} 4
+side 20 0 A drift 51 {'tau_int': 0.866, 'onelap': 26.014, 'drift': 52.0, 't': 52.0, 'hodge': 4.703} 8
+side 20 0 B rand None {'tau_int': 0.866, 'onelap': 19.02, 'drift': 38.0, 't': 34.0, 'hodge': 7.936} 9
+side 20 0 B rand None {'tau_int': 0.866, 'onelap': 19.5, 'drift': 39.0, 't': 34.0, 'hodge': 10.417} 10
+side 20 0 B drift 25 {'tau_int': 0.866, 'onelap': 15.5, 'drift': 31.0, 't': 22.0, 'hodge': 6.846} 12
+side 20 0 B drift 51 {'tau_int': 0.866, 'onelap': 28.0, 'drift': 56.0, 't': 52.0, 'hodge': 11.864} 13
+side 20 1 A drift 52 {'tau_int': 0.866, 'onelap': 26.0, 'drift': 52.0, 't': 52.0, 'hodge': 10.407} 18
+side 20 1 B rand None {'tau_int': 0.866, 'onelap': 13.257, 'drift': 26.5, 't': 22.0, 'hodge': 7.171} 19
+side 20 1 B rand None {'tau_int': 0.866, 'onelap': 23.0, 'drift': 46.0, 't': 46.0, 'hodge': 4.561} 19
+side 20 1 B drift 26 {'tau_int': 0.866, 'onelap': 14.756, 'drift': 29.5, 't': 28.0, 'hodge': 5.5} 23
+side 20 1 B drift 52 {'tau_int': 0.866, 'onelap': 27.0, 'drift': 54.0, 't': 46.0, 'hodge': 13.822} 29
+20 0 L 206 {} R [('>8', 15), (7, 1)] byKind [(('drift', 'drift', '>8'), 4), (('drift', 'rand', '>8'), 4), (('rand', 'drift', '>8'), 3), (('rand', 'drift', 7), 1), (('rand', 'rand', '>8'), 4)] drifts [(23.5, 22.0, 0.866), (42.5, 40.0, 0.866), (52.0, 52.0, 0.866), (53.0, 46.0, 0.866)] 230
+side 20 2 A rand None {'tau_int': 0.866, 'onelap': 12.757, 'drift': 25.5, 't': 22.0, 'hodge': 3.683} 3
+side 20 2 A rand None {'tau_int': 0.866, 'onelap': 21.0, 'drift': 42.0, 't': 40.0, 'hodge': 8.377} 4
+side 20 2 A drift 26 {'tau_int': 0.866, 'onelap': 18.5, 'drift': 37.0, 't': 34.0, 'hodge': 7.945} 6
+side 20 2 A drift 52 {'tau_int': 0.866, 'onelap': 26.0, 'drift': 52.0, 't': 52.0, 'hodge': 4.828} 17
+side 20 2 B rand None {'tau_int': 0.866, 'onelap': 19.255, 'drift': 38.5, 't': 34.0, 'hodge': 3.682} 18
+side 20 2 B rand None {'tau_int': 0.866, 'onelap': 15.0, 'drift': 30.0, 't': 28.0, 'hodge': 5.83} 19
+side 20 2 B drift 26 {'tau_int': 0.866, 'onelap': 15.256, 'drift': 30.5, 't': 28.0, 'hodge': 4.212} 23
+side 20 2 B drift 52 {'tau_int': 0.866, 'onelap': 26.514, 'drift': 53.0, 't': 46.0, 'hodge': 13.337} 23
+/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

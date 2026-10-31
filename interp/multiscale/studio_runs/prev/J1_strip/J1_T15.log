@@ -1,0 +1,18 @@
+side 20 0 A rand None {'tau_int': 1.299, 'onelap': 8.047, 'drift': 16.0, 't': 10.0, 'hodge': 5.242} 2
+side 20 1 A rand None {'tau_int': 1.299, 'onelap': 12.031, 'drift': 24.0, 't': 22.0, 'hodge': 6.887} 3
+side 20 0 A rand None {'tau_int': 1.299, 'onelap': 15.0, 'drift': 30.0, 't': 28.0, 'hodge': 5.089} 3
+side 20 1 A rand None {'tau_int': 1.299, 'onelap': 11.533, 'drift': 23.0, 't': 16.0, 'hodge': 5.719} 4
+side 20 1 A drift 26 {'tau_int': 0.866, 'onelap': 15.305, 'drift': 30.5, 't': 28.0, 'hodge': 4.173} 5
+side 20 1 A drift 52 {'tau_int': 1.299, 'onelap': 26.0, 'drift': 52.0, 't': 52.0, 'hodge': 6.657} 7
+side 20 1 B rand None {'tau_int': 1.299, 'onelap': 14.309, 'drift': 28.5, 't': 28.0, 'hodge': 5.667} 8
+side 20 1 B rand None {'tau_int': 1.299, 'onelap': 17.255, 'drift': 34.5, 't': 34.0, 'hodge': 5.496} 8
+side 20 1 B drift 26 {'tau_int': 1.299, 'onelap': 27.0, 'drift': 54.0, 't': 52.0, 'hodge': 11.648} 8
+side 20 0 A drift 25 {'tau_int': 1.299, 'onelap': 14.027, 'drift': 28.0, 't': 22.0, 'hodge': 7.078} 9
+side 20 0 A drift 51 {'tau_int': 0.433, 'onelap': 26.0, 'drift': 52.0, 't': 52.0, 'hodge': 8.581} 11
+side 20 0 B rand None {'tau_int': 1.299, 'onelap': 14.807, 'drift': 29.5, 't': 28.0, 'hodge': 5.505} 12
+side 20 0 B rand None {'tau_int': 1.299, 'onelap': 9.539, 'drift': 19.0, 't': 16.0, 'hodge': 8.775} 13
+side 20 0 B drift 25 {'tau_int': 1.299, 'onelap': 26.5, 'drift': 53.0, 't': 52.0, 'hodge': 11.102} 13
+side 20 1 B drift 52 {'tau_int': 1.299, 'onelap': 27.253, 'drift': 54.5, 't': 52.0, 'hodge': 9.629} 14
+side 20 0 B drift 51 {'tau_int': 1.299, 'onelap': 26.254, 'drift': 52.5, 't': 52.0, 'hodge': 12.36} 22
+/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
