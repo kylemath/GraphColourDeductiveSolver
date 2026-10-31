@@ -85,6 +85,6 @@ cfast agree that R16, R17a and R17b (rings 16–17) are neither D nor C. No D wi
 
 - [ ] run29d: 7/27 binders and the xcap=1000 cap test (Studio).
 - [ ] Explore round 34+: ring 17–18 kc sweep on binders; any re-solved t*.
-- [ ] k19 Lean (22–25 Oct): upgrade [E2] → [L] if it lands.
+- [ ] k19 Lean: the 22 Oct run was killed by a Mac shutdown on 23 Oct 18:47Z with no result (Studio cd013c90, loop/studio/k19_end.md; ~200 CPU-h lost over two attempts). k19 stays [E2]. It is restarted at lowest priority on one spare core, and the verdict upgrades [E2] → [L] if it lands.
 - [x] Job 26 status (18 Oct 09:05Z): multi-pinch proved; only (iii) left.
 - [x] Recommendation line (19 Oct 12:45Z; ADOPTED 19 Oct 18:05Z, Kyle delegated): **go with C (Narrow) for 24 Oct**: K ≤ 1 closed ([L] except k19 [E2]); K = 2 open at t* = 2/13 [E2], with the obstruction named as the 7 with a 5-5-5 face. After the gate, keep two lanes on K = 2: ring 17–18 reducibility on the surviving face receivers, and a new rule structure keyed on a 7's whole second neighbourhood (design first; it must show a negatively priced column on the current certificate before any solve). Kyle decides.
