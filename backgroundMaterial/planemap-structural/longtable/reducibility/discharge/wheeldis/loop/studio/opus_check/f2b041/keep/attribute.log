@@ -1,0 +1,28 @@
+violators 55937 (d7 46704, d8 9233)
+  d=7     56  admissible in both: rule d7_w6 + rule d7_w7 side +1 + rule d7_w7 side -1   e.g. 7675766 5656756
+  d=7  17052  admissible in both: rule d7_w7 side +1   e.g. 6765687 7655655
+  d=7   9729  admissible in both: rule d7_w7 side +1 + rule d7_w7 side -1   e.g. 7767656 7576556
+  d=7  17046  admissible in both: rule d7_w7 side -1   e.g. 8656767 6556755
+  d=7   2821  full-inadmissible: dropped receiver C pattern   e.g. 7767656 5576556
+  d=8   2816  admissible in both: V8 mask side +1   e.g. 75655676 69666755
+  d=8   1285  admissible in both: V8 mask side +1 + V8 mask side -1   e.g. 77655556 66857976
+  d=8     32  admissible in both: V8 mask side +1 + V8 mask side -1 + rule d8_w7 side +1 + rule d8_w7 side -1   e.g. 76765556 66679566
+  d=8    192  admissible in both: V8 mask side +1 + rule d8_w7 side +1   e.g. 75756556 67696669
+  d=8     96  admissible in both: V8 mask side +1 + rule d8_w7 side +1 + rule d8_w7 side -1   e.g. 75756556 67696666
+  d=8    192  admissible in both: V8 mask side +1 + rule d8_w7 side -1   e.g. 76756556 65696665
+  d=8   2816  admissible in both: V8 mask side -1   e.g. 76765565 55766696
+  d=8    192  admissible in both: V8 mask side -1 + rule d8_w7 side +1   e.g. 76765565 56566696
+  d=8     96  admissible in both: V8 mask side -1 + rule d8_w7 side +1 + rule d8_w7 side -1   e.g. 76556575 66669676
+  d=8    192  admissible in both: V8 mask side -1 + rule d8_w7 side -1   e.g. 76556575 96669676
+  d=8    444  admissible in both: rule d8_w7 side +1   e.g. 85655675 55966969
+  d=8    376  admissible in both: rule d8_w7 side +1 + rule d8_w7 side -1   e.g. 65565857 66955966
+  d=8    440  admissible in both: rule d8_w7 side -1   e.g. 85765565 96966955
+  d=8     64  full-inadmissible: dropped receiver C pattern   e.g. 76576575 75576556
+position-level causes (count of positions/sides):
+   27011 rule d7_w7 side +1
+   27005 rule d7_w7 side -1
+    4613 V8 mask side -1
+    4613 V8 mask side +1
+    1468 rule d8_w7 side +1
+    1464 rule d8_w7 side -1
+      56 rule d7_w6
