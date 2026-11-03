@@ -1,0 +1,9 @@
+RSSTC_KEEP: 10 RSST C2cons kept (['rsst051', 'rsst072', 'rsst118', 'rsst137', 'rsst140', 'rsst148', 'rsst178', 'rsst180', 'rsst187', 'rsst217'])
+forbidden set: 259 RSST + 3674 k3x (k3x_D_A100.out, k3x_C_A100_keep95.cfast) = 3933 configurations
+EXTRA_KC: +8209 configurations from loop/studio/opus_check/f2b041/tierA/nl51_kc.txt,loop/studio/opus_check/f2b041/tierA/k3p_D.out,loop/studio/opus_check/f2b041/keep95/k3p_C_keep95.cfast; forbidden set now 12142
+sigma +1: a2 = ('p', 0, 2), a = ('s', 0), o = ('s', 7); 3 requirement sets (3 use a2, 0 avoid a2)
+sigma -1: a2 = ('p', 0, 1), a = ('s', 7), o = ('s', 0); 3 requirement sets (3 use a2, 0 avoid a2)
+reading A (kill only through a2): masks by side {(-1, 30): 15, (-1, 31): 2485, (1, 30): 15, (1, 31): 2485}
+reading B (an a2-free embedding kills all): {('B', -1, 30): 15, ('B', -1, 31): 2485, ('B', 1, 30): 15, ('B', 1, 31): 2485}
+studio_l3qtabV8_+1.json: md5 8f45e75e9ed756390e867b591926aac0; killed letters: {(5,): 15, (): 2485}
+studio_l3qtabV8_-1.json: md5 8f45e75e9ed756390e867b591926aac0; killed letters: {(5,): 15, (): 2485}

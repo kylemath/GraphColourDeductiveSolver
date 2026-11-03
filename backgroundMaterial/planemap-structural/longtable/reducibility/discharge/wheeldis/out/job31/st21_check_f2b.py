@@ -24,7 +24,7 @@ HERE = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 DIS = os.path.dirname(HERE)
 SOLF, CERTF, ARGF = sys.argv[1], sys.argv[2], sys.argv[3]
 SOL = json.load(open(SOLF)); CERT = json.load(open(CERTF)); ARGS = open(ARGF).read().split()
-EPS = 1e-9; FAIL = []
+EPS = float(os.environ.get('EPS', '1e-9')); FAIL = []   # f2b041e: EPS overridable; TEXACT / SEPEPS below
 V6 = os.environ.get('V6', '1') == '1'
 HAT5 = os.environ.get('HAT5', '1') == '1'
 L3Q = os.environ.get('L3Q', '0') == '1'; L3TAB = os.environ.get('L3TAB', '')
@@ -424,6 +424,24 @@ for w in SENDERS:
             v = sum(cf * val(k) for k, cf in r.items()); worst = min(worst, v - (1 - T))
             if v < 1 - T - EPS: nbad += 1; nbad <= 5 and print('VIOLATED senderR2 %s H%s F%s: %.12f < %.12f' % (''.join(map(str, w)), H_, F_, v, 1 - T))
 print('senderR2 rows %d (spec 7,074), violated %d, min slack %.3g; g2 keys in sender rows %d (spec 393)' % (nrows, nbad, worst, len(GSEND)), flush=True)
+TEXACT = Fr(os.environ['TEXACT']) if os.environ.get('TEXACT') else None
+if TEXACT is not None:   # f2b041e: every sender row in exact rationals (the solution's floats read as exact binary fractions) at t = TEXACT
+    _xs = []; _nf = 0
+    for w in SENDERS:
+        sixes = [k for k in range(5) if w[k] == 6]; hats = list(range(5)) if HAT5 else sorted({m for k in sixes for m in (k, (k - 1) % 5)}); seen = set()
+        for hb in itertools.product((0, 1), repeat=len(hats)):
+            for fb in itertools.product((0, 1), repeat=len(sixes)):
+                H_ = dict(zip(hats, hb)); F_ = dict(zip(sixes, fb)); r = sender_row(w, H_, F_)
+                if r is None: continue
+                key = tuple(sorted(r.items()))
+                if key in seen: continue
+                seen.add(key); vf = sum(cf * val(k) for k, cf in r.items())
+                if vf - (1 - T) < 1e-9: _nf += 1
+                _xs.append((sum(cf * Fr(val(k)) for k, cf in r.items()) - (1 - TEXACT), ''.join(map(str, w)), H_, F_))
+    _xs.sort(key=lambda z: z[0]); _neg = [z for z in _xs if z[0] < 0]
+    print('TEXACT %s: senderR2 %d rows in exact rationals: float slack < 1e-9 in %d rows; exact min slack %s (= %.6g); exact violated %d' % (TEXACT, len(_xs), _nf, _xs[0][0], float(_xs[0][0]), len(_neg)), flush=True)
+    for z in _xs[:3]: print('   tightest sender row %s H%s F%s exact slack %.6g' % (z[1], z[2], z[3], float(z[0])))
+    if _neg: fail('senderR2 violated in exact rationals at t = %s' % TEXACT)
 if nbad: fail('senderR2 violated')
 if nrows != 7074 and not HAT5: fail('senderR2 row count differs from spec 12.3')
 if HAT5: print('senderR2 rows with all five hat classes enumerated (section 15): %d (section 15 states no count)' % nrows)
@@ -537,6 +555,34 @@ print('patterns distinct by kind: D %d (spec 15,497), C %d (spec 1,494), RPAT %d
       % (KIND['D'], KIND['C'], KIND['R'], byd, dict(odd)), flush=True)
 if (KIND['D'], KIND['C'], KIND['R']) != EXPECT_PAT: fail('pattern counts %s differ from expected %s' % ((KIND['D'], KIND['C'], KIND['R']), EXPECT_PAT))
 PATL = {d: [tuple(P) for P in v] for d, v in PAT.items()}
+ATTR = collections.defaultdict(list)   # f2b041 job 2: C patterns of ATTR_ARGS (the full args) that are not in this run's PAT
+def _pm1(d, w, s, P):
+    for r in range(d):
+        for refl in (False, True):
+            ok = True
+            for kd, i, S in P:
+                if kd == 'w': x_ = w[(r - i) % d] if refl else w[(i + r) % d]
+                else: x_ = s[(r - i - 1) % d] if refl else s[(i + r) % d]
+                if x_ not in S: ok = False; break
+            if ok: return True
+    return False
+if os.environ.get('ATTR_ARGS'):
+    for a in open(os.environ['ATTR_ARGS']).read().split():
+        if not a.startswith('cpat='): continue
+        fn = a[5:]; p = fn if os.path.isabs(fn) else os.path.join(HERE, fn)
+        if not os.path.exists(p): continue
+        lines = open(p).read().splitlines()
+        for k, l in enumerate(lines):
+            if ' r=' in l and not l.startswith(' '):
+                for l2 in lines[k + 1:]:
+                    if ' r=' in l2 and not l2.startswith(' '): break
+                    if 'C-REDUCIBLE' in l2:
+                        nm = l.split()[0]
+                        if re.match(r'^[epf]\d+_', nm):
+                            d_, P_ = parse_name(nm)
+                            if P_ not in PAT[d_] and nm not in [x for x, _ in ATTR[d_]]: ATTR[d_].append((nm, P_))
+                        break
+    print('ATTR_ARGS: %d dropped C patterns by d %s' % (sum(len(v) for v in ATTR.values()), {k: len(v) for k, v in sorted(ATTR.items())}), flush=True)
 def patmatch(d, w, s):
     for P in PATL.get(d, ()):
         for r in range(d):
@@ -564,7 +610,7 @@ def admissible(d, w, s):
 F2BR = os.environ.get('F2B'); F2BHALF = os.environ.get('F2BHALF'); F2BON = [bool(F2BR)]
 F2BG = {}
 if F2BR:
-    if V6 or FB or XO: fail('F2B is built only for V6=0, FB=0, XO=0')
+    if V6 or FB: fail('F2B is built only for V6=0, FB=0')   # f2b041e: XO=1 allowed (the xo window term is independent of the f2b leaf delta)
     _RJ = json.load(open(F2BR))
     def _f2c(rl, d_):
         out_ = []
@@ -967,6 +1013,13 @@ def studio_val(d, lk, sv):
     return fbrel_row(d, lk, sv) + l3rel_row(d, lk, sv) + rrel_row(d, lk, sv) + sum(cf * (yv[k[1]] if k[0] == 'y' else xv.get(k[1], 0.0) if k[0] == 'x' else V6B[k[1]] if k[0] == 'y6b' else 0.0) for k, cf in r_.items() if k[0] != 't')
 def xk(rr): return collections.Counter({k[1]: cf for k, cf in rr.items() if k[0] == 'x'})
 tests = [(e['row'][1], e['row'][2], e['row'][3]) for e in CERT if e['row'][0] == 'receiverR2']
+if os.environ.get('REPLAY'):   # f2b041 job 2: per-arrangement admissibility, row value and row terms for the violators in REPLAY files
+    with open(os.environ['REPLAY_OUT'], 'w') as _ro:
+        for _fn in os.environ['REPLAY'].split(','):
+            for _l in open(_fn):
+                _f = _l.split(); d, lk, sv = int(_f[0]), _f[2], _f[3]; _w = [int(c) for c in lk]; _s = [int(c) for c in sv]
+                _rs = recv_spec(d, lk, sv); _ro.write(json.dumps([d, lk, sv, bool(admissible(d, _w, _s)), spec_val(d, lk, sv), sorted([repr(k), v] for k, v in _rs.items())]) + '\n')
+    print('REPLAY written %s' % os.environ['REPLAY_OUT'], flush=True); sys.exit(0)
 if F2BR:   # f2b041 self-test: spec delta (rules on minus rules off, spec_val) vs the C++ leaf delta ("f" command)
     def _cdelta(d, lk, sv):
         SEPX.stdin.write('f %d %s %s\n' % (d, lk, sv)); SEPX.stdin.flush(); return float(SEPX.stdout.readline())
@@ -1020,13 +1073,24 @@ rbad = 0; CAP = int(os.environ.get('CAP', '5000')); import time as _tm
 _DL = [int(x) for x in os.environ['DLIST'].split(',')] if os.environ.get('DLIST') else list(range(7, DMAXP + 1))   # f2b041: degrees split over processes
 print('receiver degrees this process: %s' % _DL, flush=True)
 for d in _DL:
-    _t0 = _tm.time(); out = sepx(d, yv, xv, d - 6 + T + EPS, CAP)
+    _t0 = _tm.time(); out = sepx(d, yv, xv, d - 6 + T + float(os.environ.get('SEPEPS', str(EPS))), CAP)
     exact_bad = [(spec_val(d, lk, sv), lk, sv) for _, lk, sv in out if spec_val(d, lk, sv) > d - 6 + T + EPS]
+    if TEXACT is not None:   # f2b041e: every reported row (all within SEPEPS of the bound) re-checked in exact rationals at t = TEXACT
+        _ex = sorted((sum(cf * Fr(val(k)) for k, cf in recv_spec(d, lk, sv).items()) - (d - 6 + TEXACT), lk, sv) for _, lk, sv in out)
+        exact_bad = [(float(e_) + d - 6 + T, lk, sv) for e_, lk, sv in _ex if e_ > 0]
+        print('TEXACT d=%d: %d rows reported within SEPEPS %s of the bound; exact max excess %s; exact violated %d' % (d, len(_ex), os.environ.get('SEPEPS', str(EPS)), ('%.6g' % float(_ex[-1][0])) if _ex else '-', len(exact_bad)), flush=True)
     dev = max([abs(wq - spec_val(d, lk, sv)) for wq, lk, sv in out] + [0.0])
     if dev > 1e-9: fail('d=%d: sep3r_ak exact weight differs from the spec row by %.3g' % (d, dev))
     for v_, lk, sv in exact_bad[:5]: print('VIOLATED receiverR2 d=%d exact load %.12f link %s s %s' % (d, v_, lk, sv))
     full = len(out) < CAP
     if not full: fail('d=%d: relaxation reports >= %d arrangements; exact check incomplete' % (d, CAP))
+    if os.environ.get('VIOLDUMP') and exact_bad:   # f2b041 job 2: every exact violator, with the dropped C patterns (ATTR_ARGS) that forbid it
+        with open(os.environ['VIOLDUMP'] + '_d%d.txt' % d, 'w') as _vf:
+            _na = collections.Counter()
+            for v_, lk, sv in sorted(exact_bad, reverse=True):
+                _w = [int(c) for c in lk]; _s = [int(c) for c in sv]; _hit = [nm for nm, P in ATTR.get(d, ()) if _pm1(d, _w, _s, P)]
+                _na[len(_hit) > 0] += 1; _vf.write('%d %.12f %s %s %s\n' % (d, v_, lk, sv, ' '.join(_hit) or '-'))
+        print('VIOLDUMP d=%d: %d violators; forbidden by a dropped C pattern %d, by none %d' % (d, len(exact_bad), _na[True], _na[False]), flush=True)
     rbad += len(exact_bad)
     print('receivers d=%d: relaxation reports %d above threshold%s; exact violated %d (%.0fs)' % (d, len(out), '' if full else ' (CAP hit)', len(exact_bad), _tm.time() - _t0), flush=True)
 z9 = max([v for tq, v in X.items() if (tq // 15625) % 3 == 2] + [0.0])
@@ -1043,8 +1107,10 @@ for k_ in range(2, 31):
     Pk = (Pk[:, :, None] + Mk[None, :, :]).max(axis=1)
     if k_ >= DMAXP + 1:
         v_ = np.diag(Pk).max()
+        _dpm = max(globals().get('_dpm', -1e18), v_ - (k_ - 6 + T))   # f2b041e: largest (bound - threshold) over d = 18..30
         if v_ > k_ - 6 + T + EPS: dpbad += 1; print('DP d=%d relaxed closed-walk bound %.12f > %.12f (not decided)' % (k_, v_, k_ - 6 + T))
 rbad += dpbad
+print('DP margin: max over d of (closed-walk bound - (d - 6 + t)) = %.6g' % globals().get('_dpm', float('nan')), flush=True)
 print('DP d=%d..30 (Studio max-plus with the relaxed r, z9 = %.6f): %s' % (DMAXP + 1, z9, 'clean' if dpbad == 0 else '%d undecided' % dpbad))
 n_ = NS; Dk = np.full((n_ + 1, n_), -np.inf); Dk[0, :] = 0.0
 for k in range(1, n_ + 1): Dk[k] = (Dk[k - 1][:, None] + Mk).max(axis=0)

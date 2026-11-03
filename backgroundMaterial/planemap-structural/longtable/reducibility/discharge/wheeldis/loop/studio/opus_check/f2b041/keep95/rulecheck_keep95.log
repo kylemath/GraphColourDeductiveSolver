@@ -1,0 +1,28 @@
+forbidden set 12142 configurations
+structures to enumerate: 640
+forbidden set 12142 configurations
+forbidden set 12142 configurations
+forbidden set 12142 configurations
+forbidden set 12142 configurations
+  0 / 640 structures
+  50 / 640 structures
+  100 / 640 structures
+  150 / 640 structures
+  200 / 640 structures
+  250 / 640 structures
+  300 / 640 structures
+  350 / 640 structures
+  400 / 640 structures
+  450 / 640 structures
+  500 / 640 structures
+  550 / 640 structures
+  600 / 640 structures
+DERIVE: {'d7_w6': 2359, 'd8_w6': 1684, 'd9_w6': 435, 'd7_w7': {'1': 1352, '-1': 1352}, 'd8_w7': {'1': 853, '-1': 853}} -> loop/studio/opus_check/f2b041/keep95/rules_studio_keep95.json
+d7_w6 side 0: 1386 rules, target ('p', 0, 1): {'PASS': 1346, 'structures_checked': 5642, 'FAIL': 40}
+d8_w6 side 0: 1176 rules, target ('p', 0, 1): {'PASS': 1146, 'structures_checked': 6638, 'FAIL': 30}
+d9_w6 side 0: 60 rules, target ('p', 0, 1): {'PASS': 60, 'structures_checked': 2592}
+d7_w7 side 1: 938 rules, target ('p', 0, 2): {'PASS': 856, 'structures_checked': 3639, 'FAIL': 82}
+d7_w7 side -1: 938 rules, target ('p', 0, 1): {'PASS': 856, 'structures_checked': 3639, 'FAIL': 82}
+d8_w7 side 1: 728 rules, target ('p', 0, 2): {'PASS': 691, 'structures_checked': 3581, 'FAIL': 37}
+d8_w7 side -1: 728 rules, target ('p', 0, 1): {'PASS': 691, 'structures_checked': 3581, 'FAIL': 37}
+TOTAL: PASS 5646 FAIL 308

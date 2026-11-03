@@ -1,0 +1,18 @@
+RSSTC_KEEP: 10 RSST C2cons kept (['rsst051', 'rsst072', 'rsst118', 'rsst137', 'rsst140', 'rsst148', 'rsst178', 'rsst180', 'rsst187', 'rsst217'])
+forbidden set: 259 RSST (D2 249, C2cons 10) + 3674 twoeng = 3933
+EXTRA_KC: +8209 configurations from loop/studio/opus_check/f2b041/tierA/nl51_kc.txt,loop/studio/opus_check/f2b041/tierA/k3p_D.out,loop/studio/opus_check/f2b041/keep95/k3p_C_keep95.cfast; forbidden set now 12142
+check 4 full test, per-slot kills: {'p01': {5: ['nl3706_r14', 'rsst180']}, 'p02': {5: ['nl3706_r14', 'nl3740_r14', 'rsst180']}, 'p11': {5: ['nl0091_r11', 'nl0737_r14', 'rsst052']}, 'p21': {5: ['f7_...5565_.......', 'nl0092_r11', 'rsst050']}, 'p51': {5: ['nl0004_r8', 'nl0092_r11', 'q7-_....556_....56._::::::5', 'rsst050'], 6: ['nl0201_r12', 'rsst098']}, 'p61': {5: ['nl0091_r11', 'nl0737_r14', 'rsst052']}}
+check 4 full test: 3072 survivors (spec 3,072)
+K_U7 in the spec layout (uint8 (5,)*8, bit i = letter 5+i killed): file md5 40097bb8aa4a1ee0d2d3dc1d2fb80f81, raw-array md5 fdf77149f75239b6ec7941be21cd0f3c
+K_U7: 84046 killed (window, p) of 1953125; mirror-symmetry exceptions 0; tobytes md5 a90ddd53b20866a43a507f68b899245d
+K_U8 in the spec layout (uint8 (5,)*8, bit i = letter 5+i killed): file md5 618eb3001e0119b3e116af850f95ab99, raw-array md5 5ca18d12f98889c80355d467ce932e4a
+K_U8: 73342 killed (window, p) of 1953125; mirror-symmetry exceptions 0; tobytes md5 97596690d0063bcfb79e5264afbd0051
+K_U9 in the spec layout (uint8 (5,)*8, bit i = letter 5+i killed): file md5 618eb3001e0119b3e116af850f95ab99, raw-array md5 5ca18d12f98889c80355d467ce932e4a
+K_U9: 73342 killed (window, p) of 1953125; mirror-symmetry exceptions 0; tobytes md5 97596690d0063bcfb79e5264afbd0051
+U8 == U9: True
+check 4 LP projection: 7500 survivors (spec 7,500); md5 of sorted lines joined by newline + trailing newline: 9b4d02bace5786cbf0f6c5c7c7434dbc
+check 4 LP projection: 7500 survivors (spec 7,500); md5 of sorted lines joined by newline: b41cda5e1d30d37d7181c29c49952286
+LP-visible kills at the binder: {'p11': [], 'p21': [5], 'p51': [5, 6], 'p61': []}
+unknown link letters coded 5, strict: tables identical to the default: True
+unknown link letters coded 7, strict: tables identical to the default: True
+control, non-strict with unknowns as degree 5: 4800 survivors (spec 3,072 = the failure the strict rule prevents); md5 03800b8685ae6f158f6313cfff591019
