@@ -55,6 +55,17 @@ FORB = R + [kc[n] for n in names]
 print('forbidden set: %d RSST (D2 %d, C2cons %d) + %d twoeng = %d' % (len(R), sum(ver.get(c[0]) == 'D2' for c in R),
       sum(ver.get(c[0]) == 'C2cons' for c in R), len(names), len(FORB)), flush=True)
 
+if os.environ.get('EXTRA_KC'):   # f2b Tier A (opt-in): raw kc lines (name r m ringadj intadj ...) from these files, deduped by name
+    _seen = {c[0] for c in FORB}; _nx = 0
+    for _fn in os.environ['EXTRA_KC'].split(','):
+        for _l in open(_fn):
+            if not _l.strip() or _l[0].isspace() or _l.startswith('#'): continue
+            _f = _l.split()
+            if len(_f) >= 5 and _f[1].isdigit() and _f[2].isdigit() and ';' in _f[3] + _f[4]:
+                _c = G['kcline'](_l, 'extra')
+                if _c[0] not in _seen: _seen.add(_c[0]); FORB.append(_c); _nx += 1
+    print('EXTRA_KC: +%d configurations from %s; forbidden set now %d' % (_nx, os.environ['EXTRA_KC'], len(FORB)), flush=True)
+
 def frame(D, LK, SV):
     G['D'] = D; G['LK'] = LK; G['SV'] = dict(SV)
     r2 = {('s', j): v for j, v in SV.items()}

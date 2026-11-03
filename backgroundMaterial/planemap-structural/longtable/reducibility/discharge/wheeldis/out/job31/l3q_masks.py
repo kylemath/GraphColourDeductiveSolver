@@ -40,6 +40,17 @@ for fn in sorted(glob.glob(os.path.join(HERE, 'loop', 'k[0-9]*', '*'))):
 missing = [n for n in names if n not in kc]; assert not missing, ('no kc line', len(missing), missing[:5])
 FORB = R + [kc[n] for n in names]
 print('forbidden set: %d RSST + %d k3x (%s, %s) = %d configurations' % (len(R), len(names), os.path.basename(KD), os.path.basename(KC), len(FORB)), flush=True)
+
+if os.environ.get('EXTRA_KC'):   # f2b Tier A (opt-in): raw kc lines (name r m ringadj intadj ...) from these files, deduped by name
+    _seen = {c[0] for c in FORB}; _nx = 0
+    for _fn in os.environ['EXTRA_KC'].split(','):
+        for _l in open(_fn):
+            if not _l.strip() or _l[0].isspace() or _l.startswith('#'): continue
+            _f = _l.split()
+            if len(_f) >= 5 and _f[1].isdigit() and _f[2].isdigit() and ';' in _f[3] + _f[4]:
+                _c = G['kcline'](_l, 'extra')
+                if _c[0] not in _seen: _seen.add(_c[0]); FORB.append(_c); _nx += 1
+    print('EXTRA_KC: +%d configurations from %s; forbidden set now %d' % (_nx, os.environ['EXTRA_KC'], len(FORB)), flush=True)
 D = int(os.environ.get('L3QV', '7'))   # RELAY_SPEC s45.3: V = 8 -> link length 8, centre degree exactly 8 (V = 7 default unchanged)
 assert D in (7, 8), 'V = 9 (centre never exact, excluded from embeddings) is not built here'
 def frame(lk_fill, sv_fill):

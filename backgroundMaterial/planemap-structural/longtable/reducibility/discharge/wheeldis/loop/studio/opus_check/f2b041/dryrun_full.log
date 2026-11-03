@@ -1,0 +1,24 @@
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+section 14 prime kill tables from out/job31/f2bA/kill
+l3q: lq 21 values {(5, 5, 5): 0.058190709046450496, (5, 6, 5): 0.10556649391200851, (6, 5, 5): 0.09000102270975494, (6, 6, 5): 0.10101203908008861, (6, 6, 6): 0.00761350607275052, (6, 6, 7): 0.00761350607275052, (6, 6, 8): 0.00761350607275052, (8, 5, 5, 5): 0.025860114643490608, (8, 5, 5, 6): 0.004658406357228561, (8, 5, 5, 7): 0.004658406357228561, (8, 5, 5, 8): 0.004658406357228561, (8, 5, 5, 9): 0.002160673822770158, (8, 5, 6, 5): 0.07972589163148111, (8, 6, 5, 5): 0.0645379285850185, (8, 6, 5, 6): 0.001294158602034457, (8, 6, 5, 7): 0.001294158602034457, (8, 6, 5, 8): 0.001294158602034457, (8, 6, 6, 5): 0.06190487747461977, (8, 6, 6, 6): 0.010440305111167131, (8, 6, 6, 7): 0.010440305111167131, (8, 6, 6, 8): 0.0015590279607753943}, lQ 12 values {(5, 5, 31): 0.058190709046450496, (5, 6, 31): 0.10556649391200851, (6, 5, 31): 0.09000102270975494, (6, 6, 30): 0.00761350607275052, (6, 6, 31): 0.10101203908008861, (8, 5, 5, 30): 0.004658406357228561, (8, 5, 5, 31): 0.025860114643490608, (8, 5, 6, 31): 0.07972589163148111, (8, 6, 5, 30): 0.001294158602034457, (8, 6, 5, 31): 0.0645379285850185, (8, 6, 6, 30): 0.010440305111167131, (8, 6, 6, 31): 0.06190487747461977}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 400, 31: 4600}
+l3q UB(c, a) over the table masks: {(5, 5): 0.058190709046, (5, 6): 0.105566493912, (6, 5): 0.09000102271, (6, 6): 0.10101203908}
+FAIL: SOLUTION HAS lq / lQ KEYS OF A FAMILY THAT IS OFF OR MALFORMED (l3qV=7): [(8, 5, 5, 5), (8, 5, 5, 6), (8, 5, 5, 7), (8, 5, 5, 8), (8, 5, 5, 9)]
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.041565000000000 (claimed 0 = 0.000000000000000), model R6x2 apex True apexcls True zh False: 942 y, 393 g, 18683 h, 1178 x, z 0.1779951100244499
+v values 0; r values 73; sol hat5 True
+bounds: 0 negative values; max x = 0.177995 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack 2.07e-07; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 4.12e-13
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+rpatN patterns from s39o_rpatN3_studio.txt: 2287, by d {7: 621, 8: 839, 9: 631, 10: 188, 11: 7, 12: 1}
+patterns distinct by kind: D 18136 (spec 15,497), C 2229 (spec 1,494), RPAT 158 (spec 158); by d {7: 10233, 8: 6239, 9: 3572, 10: 1466, 11: 669, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+FAIL: pattern counts (18136, 2229, 158) differ from expected (0, 0, 0)
+lower check skipped (upper-only job)
+cert rows 0: {}; mrowR2/mrowV not in canonical orientation: 0 []
+lower: tco = 0, D = 0; nonzero reduced costs: ; negative (non-x) 0
+VERDICT (lower only): FAIL: SOLUTION HAS lq / lQ KEYS OF A FAMILY THAT IS OFF OR MALFORMED (l3qV=7): [(8, 5, 5, 5), (8, 5, 5, 6), (8, 5, 5, 7), (8, 5, 5, 8), (8, 5, 5, 9)] | pattern counts (18136, 2229, 158) differ from expected (0, 0, 0)
