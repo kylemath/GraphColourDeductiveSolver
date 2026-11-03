@@ -46,3 +46,37 @@ X.
 - foldSafeX for the 27 pinned entries.
 - The earlier scratch Lean build directory was cleaned up, so the olean build against ~/mathlib4-planemap-build is being redone
   first.
+
+## Note: what Lean needs for C that agreesRSST does not give
+- **agreesRSST covers D only.** DCheckThms.agreesRSST(c) checks that Studio's D run on an RSST configuration reproduces RSST's
+  header fields: the ext count, and D iff RSST's contract size is 0. It is proved per configuration by native_decide (rsst_r*_agree).
+  - It says nothing about contraction. For an RSST C2cons entry it only records that the configuration is not D.
+  - So no C reducibility follows from agreesRSST. Each C entry needs its own hC.
+- **Per entry, Lean needs four things.** All four already exist in dcheck and were used for CXRing, CCover, CCover2, CCover3, K63F
+  and K63O.
+  1. **The contraction X as data, checked locally.** This is the `XRData` record (CXRing.lean): cf, eqR / eqI and lbl. `XRData.ok`
+     bundles three checks, decided by native_decide:
+     - `admissibleX`: X is a forest of edges between the listed vertices, the contraction stays loop-free, and the ring-merge
+       guard holds (CGlue.lean:375);
+     - `foldSafeX`: when X pins a group to rim vertices, no fold creates a loop (CGlue.lean:828);
+     - the induced-adjacency side condition.
+
+     Since |X| ≤ 4 here, `admissibleX` suffices. `admissibleXU` (CGlueU.lean, no |X| cap) is not needed.
+  2. **The C reachability certificate.** `cReducible18 cf eqR eqI = true` (CGlue.lean:137, through DCheck18's run on the contracted
+     colourings), one native_decide theorem per entry. This is the hC, and it is the expensive step.
+  3. **Glue.** `cGlueXF` (CGlue) turns `XRData.ok` + hC into C-reducibility of an occurrence: the colouring extends after
+     contracting X. No new glue is needed.
+  4. **Assembly.** `hC_all` over the list (fin_cases), then `#print axioms`. The expected axioms are propext, Classical.choice and
+     Quot.sound, plus the native_decide aux.
+- **Reused here:**
+  - the CXRing XRData type and the gen_ccover3.py generator (the EXTRAFILE path, as for CCover's 10 RSST entries);
+  - CGlue's admissibleX / foldSafeX / cReducible18 / cGlueXF;
+  - the CCover3 per-entry module layout.
+  - CGlueU (admissibleXU) and CWheels are not needed: no |X| ≥ 5, and no wheels.
+- **Files** (rsst118/lean/):
+  - CR118.lean holds the 118 XRData entries with kc's X, and proves `r118Entries_ok` (admissibleX ∧ foldSafeX ∧ the side condition
+    for all 118, including the 27 pinned), `r118_admissible_all`, `r118_foldSafe_all` and the length.
+  - R118V00..19 hold hC_0..hC_117, six per module.
+  - R118All proves `hC_all`.
+- **Build:** the dcheck chain at main fb35d2d1 (build_r2 → … → CGlue → CXRing), rebuilt into ~/studio_lean_builds/rsst118_fb35d2d1.
+  The mathlib oleans are read-only, there is no lake, and it runs at nice 15.
