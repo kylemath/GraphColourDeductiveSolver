@@ -124,3 +124,17 @@ Real solve (not run): `python3 pcheck.py solveR2 $FUP fy fy2 [toracle7|tkill=FIL
   whether a violated row exists.
 - The tkill drop rule (A_i empty -> row excluded) is stricter than s43's fallback. It applies only when some entry fired; with no firing entry, s43's
   fallback {0,1} is kept.
+
+## Converged oracle (4 Nov 2026) -- NOT CONVERGED, run still going [P] single engine
+- Coverage: `toracle7` is one table entry with d = any and no window pattern, so it fires at EVERY 5-5-5 face of every receiver row d = 7..17 (all link
+  classes; jsept log: ~3.4e8 face fires at d=7..9 per separation sweep). Apex t in {5,6} is killed; t in {7,8,9} is the single class-1 cell; a row whose class-1
+  apex link is R5 for all of 7,8,9 is dropped. This is a fixed-class oracle ("t >= 7"), not a per-context min over cells (a min over cells is a disjunction, not an LP).
+  No code was changed to widen it.
+- Run: `run61L.sh` (nohup, nice 10, threads=3, K=300, keeppen xpen=1e-3 lpmax=45, maxit=400). Warm = s60/s53/A83/A84/A87 rows + the 5,985 z-bearing rows
+  from the STEP 2 oracle run (run_L/ckpt/seed_K_oracle.txt), 106,799 admitted. Rows are checkpointed to eng/rows_q61L_p1.txt every iteration; the wrapper re-warms from run_L/ckpt/*.txt on restart.
+- Trace (run_L/L_p1.log), LP t (lower bound on the oracle LP optimum), max violation d=7 / d=17:
+  iter 0: t=0.000000 rows 157,751 cols 47,936, viol 1.16 / 7.9; iter 1: t=0 rows 159,449 cols 48,108, viol 1.00 / 1.7; iter 2: t=0 rows 161,278 cols 48,427, viol 0.86 / 1.9.
+  ~1,700 rows added per iteration; iterations take 10 min to 90 min (d=17 separation is the sink, 4,264 s once). After 2.5 h only 3 iterations: far from converged.
+- Result: no converged oracle t. The only [P] bound remains t*(oracle) <= 0.041565 (upperR2 FEASIBLE with z=0 under toracle7, see c3). LP t = 0 is only the empty lower bound.
+  Active z columns / contexts in the dual: not measurable until convergence (cols grew 47,936 -> 48,427, includes all column types).
+- Verdict: undecided. Violations ~1 at d=7 are not shrinking quickly; convergence needs hundreds of ~1,700-row iterations (days at this speed), so this should go to the Mac Studio.

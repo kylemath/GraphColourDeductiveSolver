@@ -1,0 +1,6 @@
+# s61_t3 tkill: mesh row 5757575/7755777 (u=7, w_0..6=5757575, s_0..6=7755777), t = 5 at s2 (k16) or s3 (k26) -- NO ACTIVE ENTRY.
+# D confirmed by kc, dfast, dfast18, A_rsst dfast on the 4 smallest D windows of each of k16/k26 (ring 12 and three ring 13), 2026-11-04.
+# The tkill format cannot express it: every entry implies a face w@0=55 s@0=5 (three mutually adjacent 5s), and this row has no such face
+# (w_6=w_0=5 but s_6=7; s_2=5 sits under w_2=5,w_3=7). An entry would never fire, so none is written. A new key class would be needed.
+# Smallest window (k16, ring 12, m=8), for the record:
+# b7_u575...5_.75...._t5 12 8 0,1,2;4,5;5,6,7;0;2,3,4;7,8,9;0,11;9,10,11 1,2,3,4;0,2,4;0,1,3,5;0,2,5,6;0,1;2,3,6,7;3,5,7;5,6
