@@ -1,0 +1,20 @@
+'DCheck.w66666_run' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.w66666_run._native.native_decide.ax_1_1]
+'DCheck.runGood_agrees' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.runGood_agrees._native.native_decide.ax_1_1]
+'DCheck.three_colour_reached' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.three_colour_reached._native.native_decide.ax_1_1]
+'DCheck.extX_iff_three' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.extX_iff_three._native.native_decide.ax_1_1]
+'DCheck.extX_reached' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.extX_reached._native.native_decide.ax_1_1]

@@ -80,3 +80,32 @@ X.
   - R118All proves `hC_all`.
 - **Build:** the dcheck chain at main fb35d2d1 (build_r2 → … → CGlue → CXRing), rebuilt into ~/studio_lean_builds/rsst118_fb35d2d1.
   The mathlib oleans are read-only, there is no lake, and it runs at nice 15.
+
+## Part 2: Lean (done, 4 Nov 02:16Z)
+**Result: 118 / 118 hC proved in Lean.**
+
+**Build.** The dcheck chain at main fb35d2d1 (build_r2, DCheckPinch, DCheckPinchGeom, DCheckOccWalk, ClaimGlue, C66666, CContract,
+CGlue and CXRing) built with exit 0 into ~/studio_lean_builds/rsst118_fb35d2d1 (lean/build.log). The mathlib oleans were read-only,
+there was no lake, and the build ran at nice 15.
+
+**Modules** (lean/status.txt):
+- **CR118:** exit 0, sorry 0, error 0. It proves:
+  - `r118Entries_ok`, i.e. XRData.ok (admissibleX ∧ foldSafeX ∧ the side condition) for all 118 entries, including the 27
+    rim-pinned ones;
+  - `r118_admissible_all`;
+  - `r118_foldSafe_all`;
+  - `r118Entries_length`.
+- **R118V00..R118V19:** all 20 modules exit 0 with sorry 0 and error 0. They prove hC_0..hC_117
+  (`cReducible18 cf eqR eqI = true`, by native_decide). Wall time per module ran from 899 s to 14,278 s, at about 3.0 GB RSS each.
+- **R118All:** exit 0. It proves `hC_all (k : Fin 118)` by fin_cases.
+
+**Axioms** (`#print axioms`): R118V.hC_all depends on propext, Classical.choice and Quot.sound, plus the per-entry native_decide aux
+(hC_k._native.native_decide.ax_1_1) and r118Entries_length's aux. The CR118 theorems have the same form. sorryAx appears 0 times
+in all logs.
+
+**With part 1, the 118 RSST C2cons of the keep95 cover are:**
+- C on both Studio engines with kc's X (part 1, 2c275fc1);
+- C-reducible in Lean: XRData.ok plus hC, which feed CGlue's cGlueXF exactly as for CXRing, CCover, CCover2 and CCover3.
+
+**Still open on the keep95p131 C side:** the 13 k3x C entries of the 131, and the core95 entries that are not yet Lean-backed. Their
+status is in Opus's list; they have not been checked here.
