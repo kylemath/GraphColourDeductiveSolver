@@ -1,0 +1,32 @@
+# A3W results (Studio engines): 8486 windows
+by kind / ring / verdict: [(('apex', 15, 'neither'), 906), (('apex', 16, 'neither'), 1240), (('apex', 17, 'neither'), 1616), (('plain', 15, 'neither'), 2294), (('plain', 16, 'neither'), 2430)]
+kc INCOMPLETE (t600): 0
+per row (row index = a3_rows.json order): (row, kind, ring) -> neither count; D/C = 0 everywhere
+row  0 d8 77655556 65758586 mass 0.0193 | apex t7 r15:51 apex t7 r16:73 apex t7 r17:133 apex t8 r15:23 apex t8 r16:51 apex t8 r17:73 plain r15:437 plain r16:454
+row  1 d7 6667655 7776756 mass 0.0383 | apex t7 r15:35 apex t7 r16:43 apex t7 r17:70 apex t8 r15:33 apex t8 r16:35 apex t8 r17:43 plain r15:238 plain r16:210
+row  2 d7 6667655 7876756 mass 0.0084 | apex t7 r15:33 apex t7 r16:35 apex t7 r17:63 apex t8 r15:33 apex t8 r16:33 apex t8 r17:35 plain r15:197 plain r16:199
+row  3 d7 7666556 7676586 mass 0.0055 | apex t7 r15:40 apex t7 r16:46 apex t7 r17:65 apex t8 r15:21 apex t8 r16:40 apex t8 r17:46 plain r15:255 plain r16:196
+row  4 d7 7666556 8876576 mass 0.0019 | apex t7 r15:33 apex t7 r16:31 apex t7 r17:33 apex t8 r15:33 apex t8 r16:33 apex t8 r17:31 plain r15:159 plain r16:204
+row  5 d7 7655666 7657686 mass 0.0017 | apex t7 r15:28 apex t7 r16:52 apex t7 r17:65 apex t8 r15:36 apex t8 r16:28 apex t8 r17:52 plain r15:221 plain r16:201
+row  6 d7 7665566 6765776 mass 0.1388 | apex t7 r15:60 apex t7 r16:52 apex t7 r17:64 apex t8 r15:13 apex t8 r16:60 apex t8 r17:52 plain r15:196 plain r16:231
+row  7 d7 7665566 7765766 mass 0.0557 | apex t7 r15:48 apex t7 r16:55 apex t7 r17:53 apex t8 r15:24 apex t8 r16:48 apex t8 r17:55 plain r15:224 plain r16:234
+row  8 d7 7665566 6765766 mass 0.0170 | apex t7 r15:52 apex t7 r16:66 apex t7 r17:72 apex t8 r15:25 apex t8 r16:52 apex t8 r17:66 plain r15:246 plain r16:227
+row  9 d7 7665566 7765767 mass 0.0131 | apex t7 r15:39 apex t7 r16:39 apex t7 r17:57 apex t8 r15:24 apex t8 r16:39 apex t8 r17:39 plain r15:245 plain r16:188
+row 10 d7 7665566 7795676 mass 0.0012 | apex t7 r15:31 apex t7 r16:29 apex t7 r17:61 apex t8 r15:16 apex t8 r16:31 apex t8 r17:29 plain r15:171 plain r16:229
+row 11 d7 7665566 6785687 mass 0.0005 | apex t7 r15:33 apex t7 r16:46 apex t7 r17:44 apex t8 r15:12 apex t8 r16:33 apex t8 r17:46 plain r15:194 plain r16:181
+row 12 d7 7655667 7657656 mass 0.0134 | apex t7 r15:48 apex t7 r16:50 apex t7 r17:84 apex t8 r15:29 apex t8 r16:48 apex t8 r17:50 plain r15:295 plain r16:263
+row 13 d7 7665567 7765756 mass 0.0019 | apex t7 r15:27 apex t7 r16:65 apex t7 r17:70 apex t8 r15:26 apex t8 r16:27 apex t8 r17:65 plain r15:255 plain r16:254
+best (smallest) C leftover over |X|<=4:
+   (192, 'a8_u.7655556_.57585..', 15, 'plain')
+   (192, 't7_8_77655556_65758586_s1s2s3s4s5tuw2w3w4w5w6w7', 15, 'apex')
+   (216, 'a8_u..655556_.5.585.6', 15, 'plain')
+   (224, 'a8_u7.655556_.5.585..', 15, 'plain')
+   (240, 'a8_-..65555._..75858.', 15, 'plain')
+   (240, 'a8_u..65555._.5.5858.', 15, 'plain')
+   (240, 'a8_u7.65555._.575.5..', 15, 'plain')
+   (240, 't7_8_77655556_65758586_s1s2s3s5tuw1w2w3w4w5w6', 15, 'apex')
+   (240, 't7_8_77655556_65758586_s1s2s3s5tuw2w3w4w5w6w7', 15, 'apex')
+   (240, 't8_8_77655556_65758586_s3s4s5tuw2w3w4w5w6w7', 15, 'apex')
+swarm res.jsonl: 286 records, matched by name 286, not in ours 0; verdict disagreements 0; leftover value differs 267
+swarm smallest leftover 298
+r15.kc: 157 windows, all in ours: True
