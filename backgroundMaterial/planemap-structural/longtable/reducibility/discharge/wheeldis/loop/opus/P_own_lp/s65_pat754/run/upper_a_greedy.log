@@ -1,0 +1,38 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s64_keep95p131f/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9235, 8: 5906, 9: 3334, 10: 1435, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 598, 'RPAT': 158, 'RPATN': 2080}
+pat754: 754 listed rows -> 754 distinct classes; unmatched 6: [(7, 'C', 'e7_B555.65_6B5..65_1111011'), (7, 'C', 'f7_..57575_...55..'), (7, 'C', 'f7_.566576_.....5.'), (8, 'C', 'f8_...56656_.....66.'), (10, 'D', 'f10_.555565665_..........'), (10, 'C', 'f10_..56555565_..........')]
+pat754: kept P per d {7: 237, 8: 263, 9: 198, 10: 39, 11: 12, 12: 5, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0} (total 754)
+greedy d=7: 1657 violators, 8 candidate patterns, 5 added
+  ADD d=7 covers=1400 f7_..57575_...5.5. [C] s3=5 s5=5 w2=5 w3=7 w4=5 w5=7 w6=5
+  ADD d=7 covers=102 ? [?] s3=5 s4=5 s5=6 s6=5 w2=5 w3=7 w4=5 w5=7 w6=5
+  ADD d=7 covers=75 ? [?] s4=5 s5=5 w1=5 w2=6 w3=6 w4=5 w5=7 w6=6
+  ADD d=7 covers=59 e7_B555B56_B5B.56._1111111 [D] s0=789 s1=5 s2=789 s4=5 s5=6 w0=789 w1=5 w2=5 w3=5 w4=789 w5=5 w6=6
+  ADD d=7 covers=21 e7_B555B56_65B.56._1111111 [D] s0=6 s1=5 s2=789 s4=5 s5=6 w0=789 w1=5 w2=5 w3=5 w4=789 w5=5 w6=6
+greedy d=8: 2 violators, 2 candidate patterns, 1 added
+  ADD d=8 covers=2 ? [?] s3=5 s4=5 s5=5 s6=6 w3=6 w4=5 w5=8 w6=5 w7=6
+greedy d=10: 759 violators, 28 candidate patterns, 5 added
+  ADD d=10 covers=606 ? [?] s6=5 s7=6 w2=5 w3=6 w4=5 w5=5 w6=5 w7=5 w8=6 w9=5
+  ADD d=10 covers=118 ? [?] s2=5 s8=5 w2=5 w3=6 w4=5 w5=5 w6=5 w7=5 w8=6 w9=5
+  ADD d=10 covers=27 f10_...5565665_.....56... [C] s5=5 s6=6 w3=5 w4=5 w5=6 w6=5 w7=6 w8=6 w9=5
+  ADD d=10 covers=4 f10_55656....._6665...... [D] s0=6 s1=6 s2=6 s3=5 w0=5 w1=5 w2=6 w3=5 w4=6
+  ADD d=10 covers=4 ? [?] s7=5 s8=5 w3=5 w4=5 w5=5 w6=5 w7=7 w8=5 w9=6
+l3qV: 14 V >= 8 q > 0 (total 0.274486819), 7 V >= 8 Q > 0
+l3qV: V = 8 table 5000 masks (full)
+l3q: 21 q > 0 (total 0.652097602); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 4.12e-13)
+d=7: 0 violated (exhaustive, 7.3s)
+d=8: 0 violated (exhaustive, 5.6s)
+d=9: 0 violated (exhaustive, 4.3s)
+d=10: 0 violated (exhaustive, 1.5s)
+d=11: 0 violated (exhaustive, 1.3s)
+d=12: 0 violated (exhaustive, 1.3s)
+d=13: 0 violated (exhaustive, 1.8s)
+d=14: 0 violated (exhaustive, 1.6s)
+d=15: 0 violated (exhaustive, 1.8s)
+d=16: 0 violated (exhaustive, 1.8s)
+d=17: 0 violated (exhaustive, 2.2s)
+Karp lambda 0.521723955 d0 12.458
+UPPER-R2: FEASIBLE at t = 0.041565000000

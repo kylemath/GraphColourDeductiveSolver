@@ -1,0 +1,24 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s64_keep95p131f/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9235, 8: 5906, 9: 3334, 10: 1435, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 598, 'RPAT': 158, 'RPATN': 2080}
+pat754: 754 listed rows -> 754 distinct classes; unmatched 6: [(7, 'C', 'e7_B555.65_6B5..65_1111011'), (7, 'C', 'f7_..57575_...55..'), (7, 'C', 'f7_.566576_.....5.'), (8, 'C', 'f8_...56656_.....66.'), (10, 'D', 'f10_.555565665_..........'), (10, 'C', 'f10_..56555565_..........')]
+pat754: kept P per d {7: 237, 8: 263, 9: 198, 10: 39, 11: 12, 12: 5, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0} (total 754)
+l3qV: 14 V >= 8 q > 0 (total 0.274486819), 7 V >= 8 Q > 0
+l3qV: V = 8 table 5000 masks (full)
+l3q: 21 q > 0 (total 0.652097602); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 4.12e-13)
+d=7: 1657 violated (exhaustive, 6.5s)
+d=8: 2 violated (exhaustive, 5.1s)
+d=9: 0 violated (exhaustive, 4.1s)
+d=10: 759 violated (exhaustive, 1.4s)
+d=11: 0 violated (exhaustive, 1.2s)
+d=12: 0 violated (exhaustive, 1.4s)
+d=13: 0 violated (exhaustive, 1.4s)
+d=14: 0 violated (exhaustive, 1.8s)
+d=15: 0 violated (exhaustive, 1.9s)
+d=16: 0 violated (exhaustive, 2.1s)
+d=17: 0 violated (exhaustive, 2.3s)
+Karp lambda 0.521723955 d0 12.458
+UPPER-R2: INFEASIBLE (2418) at t = 0.041565000000
