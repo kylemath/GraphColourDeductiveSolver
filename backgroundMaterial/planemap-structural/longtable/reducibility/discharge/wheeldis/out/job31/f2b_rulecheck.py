@@ -16,6 +16,7 @@ usage: python3 out/job31/f2b_rulecheck.py RULES.json OUT.json  (env as the f2bA 
 import os, sys, re, glob, json, itertools, collections, multiprocessing as mp
 HERE = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 RULES, OUTF = sys.argv[1], sys.argv[2]
+PROV = os.environ.get('PROVENANCE')   # opt-in logging: TSV of every justifying configuration per derived rule (DERIVE)
 G = {'__file__': os.path.join(HERE, 'loop', 'k42', 'grow.py'), '__name__': 'grow'}
 exec(open(G['__file__']).read(), G)
 # ---- forbidden set: exactly as out/job31/l3q_masks.py (RSST D2 / C2cons + k3x D, C kc lines + EXTRA_KC raw kc lines) ----
@@ -73,14 +74,16 @@ def job(arg):
     fd = {('w', 0): w0}
     if d in (7, 8): fd[('u',)] = d
     Ps = set(P); pa2 = {x: pa[x] & Ps for x in P}; pf2 = {f for f in pf if f <= Ps}
-    T = targets(d, w0, pa); tset = set(T.values()); out = set()
+    T = targets(d, w0, pa); tset = set(T.values()); out = set(); PRV = {}
     for cfg in FORB:
         for e in G['embeddings'](cfg, P, pa2, pf2, fd):
             r = tuple(sorted((v, cfg[3][u]) for u, v in e if v not in fd))
-            if any(v in tset for v, _ in r): out.add(r)
+            if any(v in tset for v, _ in r):
+                out.add(r)
+                if PROV: PRV.setdefault(r, set()).add(cfg[0])   # provenance (logging only): every justifying configuration
     for k in range(1, d):   # structure sanity: s_{k-1} s_k adjacent iff w_k = 5
         assert ((('s', k) in pa[('s', k - 1)]) == bool((Z >> k) & 1)), (d, Z, k)
-    return (d, w0, Z), {str(sg): v for sg, v in T.items()}, sorted(out)
+    return (d, w0, Z), {str(sg): v for sg, v in T.items()}, (sorted(out), {r: sorted(v) for r, v in PRV.items()} if PROV else None)
 
 if __name__ == '__main__':
     RJ = json.load(open(RULES))
@@ -88,11 +91,12 @@ if __name__ == '__main__':
     jobs = sorted({(d, w0, Z) for _, d, w0, _ in groups for Z in range(0, 1 << d, 2)})   # bit 0 (w_0) unused
     print('structures to enumerate: %d' % len(jobs), flush=True)
     with mp.Pool(int(os.environ.get('NPROC', '8'))) as pool:
-        RES = {}; TG = {}
+        RES = {}; TG = {}; PRES = {}
         for n_, (key, tg, rs) in enumerate(pool.imap_unordered(job, jobs, chunksize=1)):
-            RES[key] = rs; TG[key[:2]] = tg
+            RES[key] = rs[0]; TG[key[:2]] = tg; PRES[key] = rs[1]
             if n_ % 50 == 0: print('  %d / %d structures' % (n_, len(jobs)), flush=True)
     if os.environ.get('DERIVE'):   # job 2: Studio's own rule set from the same requirement sets (rules JSON format, offsets 0..d-1)
+        DRP = collections.defaultdict(set)   # provenance: rule -> justifying configuration names
         DR = {'d7_w6': set(), 'd8_w6': set(), 'd9_w6': set(), 'd7_w7': {'1': set(), '-1': set()}, 'd8_w7': {'1': set(), '-1': set()}}
         for (d, w0, Z), rs in RES.items():
             for sgs, t in TG[(d, w0)].items():
@@ -105,9 +109,19 @@ if __name__ == '__main__':
                         if (k - 1) in sq and k in sq and k not in wq: wq[k] = (5,) if (Z >> k) & 1 else (6, 7, 8, 9)
                     rule = (rd[tt], tuple(sorted((k, al) for k, al in wq.items())), tuple(sorted(sq.items())))
                     (DR['d%d_w6' % d] if w0 == 6 else DR['d%d_w7' % d][sgs]).add(rule)
+                    if PROV: DRP[('d%d_w6' % d, '0') if w0 == 6 else ('d%d_w7' % d, sgs), rule] |= set(PRES[(d, w0, Z)][r])
         enc = lambda S: [[p, [[k, list(al)] for k, al in wq], [[k, v] for k, v in sq]] for p, wq, sq in sorted(S)]
         J = {g: (enc(v) if isinstance(v, set) else {sg: enc(x) for sg, x in v.items()}) for g, v in DR.items()}
         json.dump(J, open(os.environ['DERIVE'], 'w'))
+        if PROV:
+            with open(PROV, 'w') as _pf:
+                _pf.write('# group\trule (p, w_req, s_req)\tside\tn_justifiers\tconfig names\n')
+                for g_ in sorted(DR):
+                    for sg_, S_ in (sorted(DR[g_].items()) if isinstance(DR[g_], dict) else [('0', DR[g_])]):
+                        for rule in sorted(S_):
+                            nm_ = sorted(DRP[((g_, sg_), rule)])
+                            _pf.write('%s\t%s\t%s\t%d\t%s\n' % (g_, json.dumps([rule[0], [[k, list(al)] for k, al in rule[1]], [[k, v] for k, v in rule[2]]]), sg_, len(nm_), ','.join(nm_)))
+            print('PROVENANCE written %s' % PROV, flush=True)
         print('DERIVE: %s -> %s' % ({g: (len(v) if isinstance(v, set) else {k: len(x) for k, x in v.items()}) for g, v in DR.items()}, os.environ['DERIVE']), flush=True)
     rep = {'targets': {'%d_%d' % k: v for k, v in TG.items()}, 'groups': {}, 'fail': []}
     CTRL = os.environ.get('CONTROL', '')   # negative controls: 'swap' = w7 rules checked against the other side's private; 'pshift' = killed letter p -> p+1 (9 -> 5)

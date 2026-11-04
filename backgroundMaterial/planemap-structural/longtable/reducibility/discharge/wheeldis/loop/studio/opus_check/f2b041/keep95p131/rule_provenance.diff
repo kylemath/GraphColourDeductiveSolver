@@ -1,0 +1,38 @@
+18a19
+> PROV = os.environ.get('PROVENANCE')   # opt-in logging: TSV of every justifying configuration per derived rule (DERIVE)
+76c77
+<     T = targets(d, w0, pa); tset = set(T.values()); out = set()
+---
+>     T = targets(d, w0, pa); tset = set(T.values()); out = set(); PRV = {}
+80c81,83
+<             if any(v in tset for v, _ in r): out.add(r)
+---
+>             if any(v in tset for v, _ in r):
+>                 out.add(r)
+>                 if PROV: PRV.setdefault(r, set()).add(cfg[0])   # provenance (logging only): every justifying configuration
+83c86
+<     return (d, w0, Z), {str(sg): v for sg, v in T.items()}, sorted(out)
+---
+>     return (d, w0, Z), {str(sg): v for sg, v in T.items()}, (sorted(out), {r: sorted(v) for r, v in PRV.items()} if PROV else None)
+91c94
+<         RES = {}; TG = {}
+---
+>         RES = {}; TG = {}; PRES = {}
+93c96
+<             RES[key] = rs; TG[key[:2]] = tg
+---
+>             RES[key] = rs[0]; TG[key[:2]] = tg; PRES[key] = rs[1]
+95a99
+>         DRP = collections.defaultdict(set)   # provenance: rule -> justifying configuration names
+107a112
+>                     if PROV: DRP[('d%d_w6' % d, '0') if w0 == 6 else ('d%d_w7' % d, sgs), rule] |= set(PRES[(d, w0, Z)][r])
+110a116,124
+>         if PROV:
+>             with open(PROV, 'w') as _pf:
+>                 _pf.write('# group\trule (p, w_req, s_req)\tside\tn_justifiers\tconfig names\n')
+>                 for g_ in sorted(DR):
+>                     for sg_, S_ in (sorted(DR[g_].items()) if isinstance(DR[g_], dict) else [('0', DR[g_])]):
+>                         for rule in sorted(S_):
+>                             nm_ = sorted(DRP[((g_, sg_), rule)])
+>                             _pf.write('%s\t%s\t%s\t%d\t%s\n' % (g_, json.dumps([rule[0], [[k, list(al)] for k, al in rule[1]], [[k, v] for k, v in rule[2]]]), sg_, len(nm_), ','.join(nm_)))
+>             print('PROVENANCE written %s' % PROV, flush=True)
