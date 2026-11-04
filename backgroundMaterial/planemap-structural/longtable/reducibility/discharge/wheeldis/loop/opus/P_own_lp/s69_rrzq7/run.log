@@ -1,0 +1,9 @@
+s69_rrzq7 run log [P] single engine, own rules, not yet two-engine
+Wed Nov  4 19:36:19 UTC 2026: controls done (see below). K solve started: bash runK69.sh 200 (nohup, nice 15, threads=2), log runK/K.log, checkpoint eng/rows_q69rrz.txt (rewritten each iteration), final sol -> eng/sol_q69rrz.json + runK/.
+Resume: WARM0=$PWD/eng/rows_q69rrz.txt, ; export WARM0 ; bash runK69.sh 200   (note: copy rows file first since the tag rewrites it: cp eng/rows_q69rrz.txt rows_resume.txt, WARM0=$PWD/rows_resume.txt,)
+Controls: (a) upperR2 hatrr zh zr zcap=3 sol_c_repaired_opusfmt: FEASIBLE t=0.041565, d=7..17 0 violated (logs/upper_ctrl_a.log)
+(b) f2bself=4000/d with random positive rr(134)/z(2453)/zr(2453) + q7 random: PASS max diff 5e-13 (logs/upper_self_rand.log); needed 2-line harness fix in eng/f2bglue.py selftest val(): z/zr keys were 'unsupported'.
+(c) orientR2 plain 0 mismatches; brokenkey 15898; brokensign 100000 (logs/orient_*.log)
+A K LP value is a transient pointer only, no bound claimed.
+Wed Nov  4 21:37:46 UTC 2026: K solve still running (pid via ps solveR2, tag q69rrz), 6 iterations done: t -0.013217, -0.013063, -0.013057, -0.012776, -0.012776, -0.012776 (LP pointer only, partial row set, no bound). ~15 min/iter. Warm admission took ~35 min at start.
+Positive rr/z counts not logged for iters 0-5 (logging line added to eng/prelay2.py afterwards, only effective on a restart).
