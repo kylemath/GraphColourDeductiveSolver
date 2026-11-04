@@ -1,0 +1,3284 @@
+# s71 ruleset: greedy+ILP cover of kill boxes (U7,U9), l3q a2-kill boxes and keep95p131f rules (9,326). Combinatorial cover on recorded provenance, NOT a minimality proof of the proof stack.
+# name	source	lean_need	ring	in_E0_S	forced(sole justifier of some item)	forced_kinds
+rsst001	RSST D	hD	7	1	0	
+rsst004	RSST D	hD	8	0	0	
+rsst005	RSST D	hD	9	1	0	
+rsst006	RSST D	hD	9	1	0	
+rsst024	RSST D	hD	9	1	0	
+rsst026	RSST D	hD	9	0	0	
+rsst008	RSST D	hD	10	1	0	
+rsst012	RSST D	hD	10	0	0	
+rsst027	RSST D	hD	10	1	0	
+rsst030	RSST D	hD	10	0	0	
+rsst016	RSST D	hD	11	0	0	
+rsst017	RSST D	hD	11	0	0	
+rsst040	RSST D	hD	11	0	0	
+rsst043	RSST D	hD	11	0	0	
+rsst049	RSST D	hD	11	1	0	
+rsst052	RSST D	hD	11	1	0	
+rsst060	RSST D	hD	11	1	0	
+rsst104	RSST D	hD	11	1	0	
+rsst114	RSST D	hD	11	1	0	
+rsst117	RSST D	hD	11	0	0	
+rsst119	RSST D	hD	11	1	0	
+rsst133	RSST D	hD	11	1	0	
+rsst201	RSST D	hD	11	1	0	
+rsst404	RSST D	hD	11	1	0	
+rsst021	RSST D	hD	12	0	0	
+rsst064	RSST D	hD	12	0	0	
+rsst078	RSST D	hD	12	1	0	
+rsst080	RSST D	hD	12	1	0	
+rsst084	RSST D	hD	12	0	0	
+rsst091	RSST D	hD	12	1	0	
+rsst092	RSST D	hD	12	1	0	
+rsst096	RSST D	hD	12	1	0	
+rsst097	RSST D	hD	12	1	0	
+rsst146	RSST D	hD	12	1	0	
+rsst153	RSST D	hD	12	1	0	
+rsst156	RSST D	hD	12	1	0	
+rsst157	RSST D	hD	12	1	0	
+rsst173	RSST D	hD	12	1	0	
+rsst174	RSST D	hD	12	1	0	
+rsst176	RSST D	hD	12	1	0	
+rsst235	RSST D	hD	12	0	0	
+rsst242	RSST D	hD	12	1	0	
+rsst243	RSST D	hD	12	1	0	
+rsst246	RSST D	hD	12	1	0	
+rsst360	RSST D	hD	12	1	0	
+rsst405	RSST D	hD	12	1	0	
+rsst406	RSST D	hD	12	1	0	
+rsst419	RSST D	hD	12	1	0	
+rsst420	RSST D	hD	12	1	0	
+rsst422	RSST D	hD	12	1	0	
+rsst490	RSST D	hD	12	1	0	
+rsst522	RSST D	hD	12	1	0	
+rsst086	RSST D	hD	13	0	0	
+rsst105	RSST D	hD	13	1	0	
+rsst170	RSST D	hD	13	1	0	
+rsst207	RSST D	hD	13	0	0	
+rsst219	RSST D	hD	13	1	0	
+rsst275	RSST D	hD	13	0	0	
+rsst383	RSST D	hD	13	1	0	
+rsst394	RSST D	hD	13	1	0	
+rsst395	RSST D	hD	13	1	0	
+rsst517	RSST D	hD	13	1	0	
+rsst109	RSST D	hD	14	1	0	
+rsst222	RSST D	hD	14	1	0	
+rsst240	RSST D	hD	14	1	1	R
+rsst278	RSST D	hD	14	1	0	
+rsst305	RSST D	hD	14	1	0	
+rsst313	RSST D	hD	14	1	1	R
+rsst315	RSST D	hD	14	0	1	R
+rsst316	RSST D	hD	14	1	1	R
+rsst397	RSST D	hD	14	1	0	
+rsst400	RSST D	hD	14	1	0	
+rsst493	RSST D	hD	14	1	0	
+q7-_....556_....56._::::::5	k3p D	hD	-1	1	1	KT,R
+q7-_....556_....56._::::::5_s5/p6L1=5	k3p D	hD	-1	1	1	R
+f7_..55675_.....5.	k3x D	hD	7	1	0	
+f7_..55865_..6656.	k3x D	hD	7	1	1	R
+f7_..56856_..5566.	k3x D	hD	7	1	1	R
+f7_..65556_..675.5	k3x D	hD	7	1	1	R
+f7_..65556_.5.5765	k3x D	hD	7	1	1	R
+f7_..65666_..665.5	k3x D	hD	7	1	1	R
+f7_.556855_...566.	k3x D	hD	7	1	1	R
+f7_.556856_...566.	k3x D	hD	7	1	1	R
+f7_.558556_.6666..	k3x D	hD	7	1	1	R
+f7_.576556_..5.5.5	k3x D	hD	7	1	1	R
+f7_.576556_..565.5	k3x D	hD	7	1	1	R
+f7_.586556_.55.5.5	k3x D	hD	7	1	1	R
+f7_.655567_5.5765.	k3x D	hD	7	1	1	R
+f7_.665666_.5..5.5	k3x D	hD	7	1	1	R
+f8_.....555_....5775	k3x D	hD	8	1	0	
+f8_....5555_....6775	k3x D	hD	8	1	0	
+f8_...55865_...6655.	k3x D	hD	8	1	1	R
+f8_...56765_....556.	k3x D	hD	8	1	1	R
+f8_..566566_...556.5	k3x D	hD	8	1	1	R
+f8_..566566_..5556.5	k3x D	hD	8	1	1	R
+f8_..656566_..5556.5	k3x D	hD	8	1	1	R
+f8_..656566_..6555.5	k3x D	hD	8	1	1	R
+f8_..656656_..655..5	k3x D	hD	8	1	1	R
+f8_..656656_..6555.5	k3x D	hD	8	1	1	R
+f8_.5566556_.66....5	k3x D	hD	8	1	1	R
+f8_.5586556_.665.5.5	k3x D	hD	8	1	1	R
+f8_.5586556_.66565.5	k3x D	hD	8	1	1	R
+f8_.5665556_.......5	k3x D	hD	8	1	1	R
+f8_.5665556_.....5.5	k3x D	hD	8	1	1	R
+f8_.5665556_....75.5	k3x D	hD	8	1	1	R
+f8_.5665556_...6...5	k3x D	hD	8	1	1	R
+f8_.5665556_...6.5.5	k3x D	hD	8	1	1	R
+f8_.5665556_...675.5	k3x D	hD	8	1	1	R
+f8_.5665556_...685.5	k3x D	hD	8	1	1	R
+f8_.5665556_..6....5	k3x D	hD	8	1	1	R
+f8_.5665556_..6..5.5	k3x D	hD	8	1	1	R
+f8_.5665556_..6.75.5	k3x D	hD	8	1	1	R
+f8_.5665556_..66...5	k3x D	hD	8	1	1	R
+f8_.5665556_..66.5.5	k3x D	hD	8	1	1	R
+f8_.5665556_..6675.5	k3x D	hD	8	1	1	R
+f8_.5665556_..6685.5	k3x D	hD	8	1	1	R
+f8_.5665556_.6.....5	k3x D	hD	8	1	1	R
+f8_.5665556_.6...5.5	k3x D	hD	8	1	1	R
+f8_.5665556_.6..75.5	k3x D	hD	8	1	1	R
+f8_.5665556_.6.6...5	k3x D	hD	8	1	1	R
+f8_.5665556_.6.6.5.5	k3x D	hD	8	1	1	R
+f8_.5665556_.6.675.5	k3x D	hD	8	1	1	R
+f8_.5665556_.6.685.5	k3x D	hD	8	1	1	R
+f8_.5665556_.66....5	k3x D	hD	8	1	1	R
+f8_.5665556_.66..5.5	k3x D	hD	8	1	1	R
+f8_.5665556_.66.75.5	k3x D	hD	8	1	1	R
+f8_.5665556_.666...5	k3x D	hD	8	1	1	R
+f8_.5665556_.666.5.5	k3x D	hD	8	1	1	R
+f8_.5665556_.66675.5	k3x D	hD	8	1	1	R
+f8_.6656566_..5556.5	k3x D	hD	8	1	1	R
+f8_.6656566_..6555.5	k3x D	hD	8	1	1	R
+f11_.......5565_......57665	k3x D	hD	11	1	1	R
+f11_......55565_......57665	k3x D	hD	11	1	1	R
+f11_.....555565_......57665	k3x D	hD	11	1	1	R
+f11_.....555565_.....757665	k3x D	hD	11	1	1	R
+nl0004_r8	nl51	hD	8	1	1	KT,R
+nl0008_r9	nl51	hD	9	1	1	KT,R
+nl0009_r9	nl51	hD	9	1	1	KT,R
+nl0044_r9	nl51	hD	9	1	1	KT,R
+nl0012_r10	nl51	hD	10	1	1	R
+nl0013_r10	nl51	hD	10	1	1	R
+nl0016_r10	nl51	hD	10	1	0	
+nl0050_r10	nl51	hD	10	1	1	R
+nl0057_r10	nl51	hD	10	0	1	R
+nl0059_r10	nl51	hD	10	1	1	KT,R
+nl0060_r10	nl51	hD	10	1	1	KT,R
+nl0061_r10	nl51	hD	10	1	1	KT,R
+nl0064_r10	nl51	hD	10	0	1	R
+nl0065_r10	nl51	hD	10	1	1	R
+nl0066_r10	nl51	hD	10	1	1	KT,R
+nl0067_r10	nl51	hD	10	1	1	R
+nl0069_r10	nl51	hD	10	1	1	KT,R
+nl0072_r10	nl51	hD	10	0	1	R
+nl0271_r10	nl51	hD	10	1	1	R
+nl0279_r10	nl51	hD	10	1	1	R
+nl0280_r10	nl51	hD	10	1	1	R
+nl0281_r10	nl51	hD	10	1	1	R
+nl0017_r11	nl51	hD	11	1	0	
+nl0018_r11	nl51	hD	11	1	0	
+nl0019_r11	nl51	hD	11	1	0	
+nl0022_r11	nl51	hD	11	1	1	R
+nl0077_r11	nl51	hD	11	1	1	R
+nl0078_r11	nl51	hD	11	1	0	
+nl0080_r11	nl51	hD	11	1	1	R
+nl0092_r11	nl51	hD	11	1	0	
+nl0100_r11	nl51	hD	11	0	1	R
+nl0101_r11	nl51	hD	11	1	1	KT,R
+nl0105_r11	nl51	hD	11	0	1	R
+nl0106_r11	nl51	hD	11	0	1	R
+nl0109_r11	nl51	hD	11	1	1	R
+nl0110_r11	nl51	hD	11	1	1	R
+nl0111_r11	nl51	hD	11	1	1	R
+nl0112_r11	nl51	hD	11	1	1	R
+nl0113_r11	nl51	hD	11	1	1	KT,R
+nl0114_r11	nl51	hD	11	1	1	R
+nl0115_r11	nl51	hD	11	1	1	KT,R
+nl0121_r11	nl51	hD	11	1	1	R
+nl0122_r11	nl51	hD	11	0	1	R
+nl0123_r11	nl51	hD	11	1	1	R
+nl0126_r11	nl51	hD	11	1	1	R
+nl0127_r11	nl51	hD	11	1	1	R
+nl0128_r11	nl51	hD	11	1	1	R
+nl0145_r11	nl51	hD	11	1	0	
+nl0146_r11	nl51	hD	11	1	1	KT,R
+nl0147_r11	nl51	hD	11	1	1	KT,R
+nl0148_r11	nl51	hD	11	1	1	KT,R
+nl0149_r11	nl51	hD	11	1	1	KT,R
+nl0273_r11	nl51	hD	11	1	1	R
+nl0283_r11	nl51	hD	11	1	1	R
+nl0284_r11	nl51	hD	11	1	1	R
+nl0287_r11	nl51	hD	11	1	1	R
+nl0288_r11	nl51	hD	11	1	1	R
+nl0292_r11	nl51	hD	11	1	1	KT,R
+nl0293_r11	nl51	hD	11	1	1	R
+nl0294_r11	nl51	hD	11	1	1	R
+nl0296_r11	nl51	hD	11	1	1	L3Q,R
+nl0297_r11	nl51	hD	11	1	1	R
+nl0298_r11	nl51	hD	11	1	1	L3Q,R
+nl0300_r11	nl51	hD	11	1	1	R
+nl0302_r11	nl51	hD	11	1	1	R
+nl0309_r11	nl51	hD	11	1	1	R
+nl0311_r11	nl51	hD	11	1	1	R
+nl0312_r11	nl51	hD	11	1	1	R
+nl0313_r11	nl51	hD	11	1	1	R
+nl0348_r11	nl51	hD	11	1	1	R
+nl0351_r11	nl51	hD	11	1	1	R
+nl0352_r11	nl51	hD	11	1	1	R
+nl0805_r11	nl51	hD	11	0	1	R
+nl0806_r11	nl51	hD	11	1	1	R
+nl0811_r11	nl51	hD	11	1	1	R
+nl1594_r11	nl51	hD	11	1	1	R
+nl1599_r11	nl51	hD	11	1	1	R
+nl1600_r11	nl51	hD	11	1	1	R
+nl1601_r11	nl51	hD	11	1	1	R
+nl1776_r11	nl51	hD	11	1	1	R
+nl1778_r11	nl51	hD	11	1	1	R
+nl1800_r11	nl51	hD	11	1	1	R
+nl1801_r11	nl51	hD	11	1	1	R
+nl1802_r11	nl51	hD	11	1	1	R
+nl2823_r11	nl51	hD	11	1	1	R
+nl2836_r11	nl51	hD	11	0	1	R
+nl2837_r11	nl51	hD	11	1	1	R
+nl2838_r11	nl51	hD	11	1	1	R
+nl2840_r11	nl51	hD	11	1	1	R
+nl3110_r11	nl51	hD	11	1	1	R
+nl3111_r11	nl51	hD	11	1	1	R
+nl0026_r12	nl51	hD	12	1	0	
+nl0028_r12	nl51	hD	12	1	1	R
+nl0030_r12	nl51	hD	12	0	1	R
+nl0031_r12	nl51	hD	12	0	1	R
+nl0132_r12	nl51	hD	12	1	0	
+nl0133_r12	nl51	hD	12	1	1	R
+nl0139_r12	nl51	hD	12	1	1	R
+nl0154_r12	nl51	hD	12	1	0	
+nl0158_r12	nl51	hD	12	1	0	
+nl0159_r12	nl51	hD	12	1	1	R
+nl0162_r12	nl51	hD	12	1	1	R
+nl0163_r12	nl51	hD	12	1	1	R
+nl0165_r12	nl51	hD	12	1	1	R
+nl0168_r12	nl51	hD	12	1	1	KT,R
+nl0169_r12	nl51	hD	12	1	1	KT,R
+nl0173_r12	nl51	hD	12	1	1	KT,R
+nl0174_r12	nl51	hD	12	1	1	R
+nl0175_r12	nl51	hD	12	1	1	R
+nl0176_r12	nl51	hD	12	1	1	R
+nl0177_r12	nl51	hD	12	1	1	R
+nl0178_r12	nl51	hD	12	1	1	R
+nl0179_r12	nl51	hD	12	1	1	R
+nl0180_r12	nl51	hD	12	1	1	R
+nl0181_r12	nl51	hD	12	1	1	R
+nl0182_r12	nl51	hD	12	1	1	R
+nl0184_r12	nl51	hD	12	1	1	R
+nl0186_r12	nl51	hD	12	0	1	R
+nl0187_r12	nl51	hD	12	1	1	R
+nl0188_r12	nl51	hD	12	1	1	R
+nl0195_r12	nl51	hD	12	1	1	R
+nl0196_r12	nl51	hD	12	1	0	
+nl0201_r12	nl51	hD	12	1	0	
+nl0207_r12	nl51	hD	12	0	1	R
+nl0208_r12	nl51	hD	12	1	1	KT,R
+nl0211_r12	nl51	hD	12	1	1	KT,R
+nl0212_r12	nl51	hD	12	1	1	KT,R
+nl0213_r12	nl51	hD	12	1	1	KT,R
+nl0214_r12	nl51	hD	12	1	1	R
+nl0215_r12	nl51	hD	12	1	1	R
+nl0216_r12	nl51	hD	12	1	1	R
+nl0252_r12	nl51	hD	12	1	0	
+nl0253_r12	nl51	hD	12	1	1	KT,R
+nl0303_r12	nl51	hD	12	1	0	
+nl0306_r12	nl51	hD	12	1	0	
+nl0316_r12	nl51	hD	12	1	1	R
+nl0319_r12	nl51	hD	12	1	1	R
+nl0323_r12	nl51	hD	12	0	1	R
+nl0324_r12	nl51	hD	12	0	1	R
+nl0325_r12	nl51	hD	12	1	1	R
+nl0326_r12	nl51	hD	12	1	1	R
+nl0329_r12	nl51	hD	12	1	1	L3Q,R
+nl0331_r12	nl51	hD	12	1	1	R
+nl0332_r12	nl51	hD	12	1	1	R
+nl0333_r12	nl51	hD	12	1	1	L3Q,R
+nl0334_r12	nl51	hD	12	1	1	R
+nl0336_r12	nl51	hD	12	1	1	R
+nl0337_r12	nl51	hD	12	1	1	R
+nl0338_r12	nl51	hD	12	1	1	R
+nl0339_r12	nl51	hD	12	1	1	KT,R
+nl0340_r12	nl51	hD	12	1	1	R
+nl0341_r12	nl51	hD	12	0	1	R
+nl0346_r12	nl51	hD	12	1	1	R
+nl0353_r12	nl51	hD	12	1	1	R
+nl0354_r12	nl51	hD	12	0	1	R
+nl0356_r12	nl51	hD	12	1	1	R
+nl0357_r12	nl51	hD	12	1	1	R
+nl0358_r12	nl51	hD	12	1	1	R
+nl0359_r12	nl51	hD	12	1	1	R
+nl0361_r12	nl51	hD	12	1	1	R
+nl0362_r12	nl51	hD	12	1	1	R
+nl0363_r12	nl51	hD	12	1	1	R
+nl0364_r12	nl51	hD	12	1	1	R
+nl0365_r12	nl51	hD	12	1	1	R
+nl0367_r12	nl51	hD	12	1	1	R
+nl0371_r12	nl51	hD	12	1	1	R
+nl0372_r12	nl51	hD	12	1	1	R
+nl0373_r12	nl51	hD	12	1	1	R
+nl0375_r12	nl51	hD	12	0	1	R
+nl0376_r12	nl51	hD	12	1	1	R
+nl0377_r12	nl51	hD	12	1	1	R
+nl0378_r12	nl51	hD	12	1	1	R
+nl0379_r12	nl51	hD	12	1	1	R
+nl0382_r12	nl51	hD	12	1	1	R
+nl0383_r12	nl51	hD	12	1	1	R
+nl0385_r12	nl51	hD	12	0	1	R
+nl0386_r12	nl51	hD	12	1	1	R
+nl0389_r12	nl51	hD	12	1	1	R
+nl0391_r12	nl51	hD	12	1	1	R
+nl0392_r12	nl51	hD	12	1	1	R
+nl0393_r12	nl51	hD	12	1	1	R
+nl0394_r12	nl51	hD	12	1	1	R
+nl0395_r12	nl51	hD	12	1	1	R
+nl0402_r12	nl51	hD	12	1	1	R
+nl0403_r12	nl51	hD	12	1	1	R
+nl0404_r12	nl51	hD	12	1	0	
+nl0420_r12	nl51	hD	12	1	1	R
+nl0421_r12	nl51	hD	12	1	1	R
+nl0427_r12	nl51	hD	12	0	1	R
+nl0428_r12	nl51	hD	12	1	1	KT,R
+nl0429_r12	nl51	hD	12	1	1	KT,R
+nl0430_r12	nl51	hD	12	1	1	R
+nl0431_r12	nl51	hD	12	1	1	KT,R
+nl0432_r12	nl51	hD	12	1	1	KT,R
+nl0433_r12	nl51	hD	12	1	1	KT,R
+nl0434_r12	nl51	hD	12	1	1	R
+nl0435_r12	nl51	hD	12	1	1	R
+nl0436_r12	nl51	hD	12	1	1	KT,R
+nl0439_r12	nl51	hD	12	1	1	R
+nl0440_r12	nl51	hD	12	1	1	KT,R
+nl0445_r12	nl51	hD	12	1	1	R
+nl0447_r12	nl51	hD	12	1	1	R
+nl0448_r12	nl51	hD	12	1	1	R
+nl0450_r12	nl51	hD	12	1	1	R
+nl0521_r12	nl51	hD	12	1	1	R
+nl0522_r12	nl51	hD	12	1	1	R
+nl0526_r12	nl51	hD	12	1	1	R
+nl0527_r12	nl51	hD	12	1	1	R
+nl0528_r12	nl51	hD	12	1	1	R
+nl0614_r12	nl51	hD	12	1	1	R
+nl0800_r12	nl51	hD	12	1	1	R
+nl0807_r12	nl51	hD	12	1	1	R
+nl0808_r12	nl51	hD	12	1	1	R
+nl0809_r12	nl51	hD	12	1	1	R
+nl0810_r12	nl51	hD	12	0	1	R
+nl0817_r12	nl51	hD	12	0	1	R
+nl0818_r12	nl51	hD	12	1	1	R
+nl0819_r12	nl51	hD	12	1	1	R
+nl0820_r12	nl51	hD	12	1	1	R
+nl0821_r12	nl51	hD	12	1	1	R
+nl0860_r12	nl51	hD	12	0	1	R
+nl0861_r12	nl51	hD	12	1	1	R
+nl0862_r12	nl51	hD	12	1	1	R
+nl0863_r12	nl51	hD	12	1	1	R
+nl0864_r12	nl51	hD	12	1	1	R
+nl0865_r12	nl51	hD	12	1	1	R
+nl0866_r12	nl51	hD	12	1	1	R
+nl0867_r12	nl51	hD	12	1	1	R
+nl0868_r12	nl51	hD	12	1	1	R
+nl0928_r12	nl51	hD	12	0	1	R
+nl0929_r12	nl51	hD	12	1	1	R
+nl0930_r12	nl51	hD	12	1	1	R
+nl1618_r12	nl51	hD	12	1	1	R
+nl1622_r12	nl51	hD	12	1	1	R
+nl1626_r12	nl51	hD	12	1	1	R
+nl1639_r12	nl51	hD	12	1	0	
+nl1644_r12	nl51	hD	12	1	1	R
+nl1645_r12	nl51	hD	12	1	1	R
+nl1647_r12	nl51	hD	12	1	1	R
+nl1658_r12	nl51	hD	12	1	1	R
+nl1660_r12	nl51	hD	12	1	1	R
+nl1668_r12	nl51	hD	12	1	1	R
+nl1669_r12	nl51	hD	12	1	1	R
+nl1670_r12	nl51	hD	12	1	1	R
+nl1671_r12	nl51	hD	12	1	1	R
+nl1677_r12	nl51	hD	12	1	1	R
+nl1692_r12	nl51	hD	12	1	1	R
+nl1694_r12	nl51	hD	12	1	0	
+nl1695_r12	nl51	hD	12	1	1	R
+nl1696_r12	nl51	hD	12	1	1	R
+nl1697_r12	nl51	hD	12	1	1	R
+nl1700_r12	nl51	hD	12	1	1	R
+nl1728_r12	nl51	hD	12	1	1	R
+nl1751_r12	nl51	hD	12	1	1	R
+nl1752_r12	nl51	hD	12	1	1	R
+nl1782_r12	nl51	hD	12	1	0	
+nl1793_r12	nl51	hD	12	1	1	R
+nl1794_r12	nl51	hD	12	1	0	
+nl1795_r12	nl51	hD	12	1	1	R
+nl1809_r12	nl51	hD	12	1	1	R
+nl1810_r12	nl51	hD	12	1	1	R
+nl1811_r12	nl51	hD	12	1	1	R
+nl1813_r12	nl51	hD	12	1	1	R
+nl1817_r12	nl51	hD	12	1	1	R
+nl1819_r12	nl51	hD	12	1	1	R
+nl1821_r12	nl51	hD	12	1	1	R
+nl1822_r12	nl51	hD	12	1	1	R
+nl1824_r12	nl51	hD	12	1	1	R
+nl1825_r12	nl51	hD	12	1	1	R
+nl1826_r12	nl51	hD	12	1	1	R
+nl1827_r12	nl51	hD	12	1	1	R
+nl1828_r12	nl51	hD	12	1	1	R
+nl1829_r12	nl51	hD	12	1	1	R
+nl1833_r12	nl51	hD	12	1	1	R
+nl1834_r12	nl51	hD	12	1	1	R
+nl1838_r12	nl51	hD	12	1	1	R
+nl1839_r12	nl51	hD	12	1	1	R
+nl1850_r12	nl51	hD	12	1	1	R
+nl1851_r12	nl51	hD	12	1	1	R
+nl1853_r12	nl51	hD	12	1	1	R
+nl1868_r12	nl51	hD	12	1	1	R
+nl1870_r12	nl51	hD	12	1	1	R
+nl1874_r12	nl51	hD	12	1	1	R
+nl1942_r12	nl51	hD	12	1	1	R
+nl1946_r12	nl51	hD	12	1	1	R
+nl1951_r12	nl51	hD	12	1	1	R
+nl1952_r12	nl51	hD	12	1	1	R
+nl1957_r12	nl51	hD	12	1	1	R
+nl1958_r12	nl51	hD	12	1	1	R
+nl1959_r12	nl51	hD	12	1	1	R
+nl1960_r12	nl51	hD	12	1	1	R
+nl2045_r12	nl51	hD	12	1	1	R
+nl2046_r12	nl51	hD	12	1	1	R
+nl2271_r12	nl51	hD	12	1	1	R
+nl2289_r12	nl51	hD	12	1	1	R
+nl2290_r12	nl51	hD	12	1	1	R
+nl2824_r12	nl51	hD	12	1	1	R
+nl2825_r12	nl51	hD	12	1	0	
+nl2826_r12	nl51	hD	12	0	1	R
+nl2827_r12	nl51	hD	12	0	1	R
+nl2842_r12	nl51	hD	12	1	1	R
+nl2848_r12	nl51	hD	12	1	0	
+nl2851_r12	nl51	hD	12	1	0	
+nl2852_r12	nl51	hD	12	0	1	R
+nl2853_r12	nl51	hD	12	0	1	R
+nl2854_r12	nl51	hD	12	1	1	R
+nl2855_r12	nl51	hD	12	0	1	R
+nl2859_r12	nl51	hD	12	1	1	R
+nl2861_r12	nl51	hD	12	1	1	R
+nl2862_r12	nl51	hD	12	1	0	
+nl2865_r12	nl51	hD	12	1	1	R
+nl2866_r12	nl51	hD	12	0	1	R
+nl2867_r12	nl51	hD	12	1	1	R
+nl2870_r12	nl51	hD	12	1	1	R
+nl2873_r12	nl51	hD	12	1	1	R
+nl2874_r12	nl51	hD	12	1	1	R
+nl2875_r12	nl51	hD	12	1	1	R
+nl2877_r12	nl51	hD	12	1	1	R
+nl2879_r12	nl51	hD	12	0	1	R
+nl2880_r12	nl51	hD	12	1	1	R
+nl2881_r12	nl51	hD	12	1	1	R
+nl2882_r12	nl51	hD	12	0	1	R
+nl2884_r12	nl51	hD	12	1	1	R
+nl2898_r12	nl51	hD	12	1	1	R
+nl2899_r12	nl51	hD	12	1	0	
+nl2900_r12	nl51	hD	12	1	1	R
+nl2927_r12	nl51	hD	12	1	1	KT,R
+nl2928_r12	nl51	hD	12	1	1	R
+nl2930_r12	nl51	hD	12	1	1	R
+nl3010_r12	nl51	hD	12	1	1	KT,R
+nl3096_r12	nl51	hD	12	1	0	
+nl3099_r12	nl51	hD	12	1	1	R
+nl3105_r12	nl51	hD	12	1	0	
+nl3107_r12	nl51	hD	12	1	0	
+nl3108_r12	nl51	hD	12	1	1	R
+nl3114_r12	nl51	hD	12	1	1	R
+nl3116_r12	nl51	hD	12	1	1	R
+nl3117_r12	nl51	hD	12	1	1	R
+nl3118_r12	nl51	hD	12	0	1	R
+nl3119_r12	nl51	hD	12	1	1	R
+nl3120_r12	nl51	hD	12	1	1	R
+nl3121_r12	nl51	hD	12	1	1	R
+nl3122_r12	nl51	hD	12	1	1	R
+nl3123_r12	nl51	hD	12	1	1	R
+nl3124_r12	nl51	hD	12	1	1	R
+nl3126_r12	nl51	hD	12	1	1	R
+nl3127_r12	nl51	hD	12	1	1	R
+nl3128_r12	nl51	hD	12	1	1	R
+nl3129_r12	nl51	hD	12	1	1	R
+nl3130_r12	nl51	hD	12	0	1	R
+nl3133_r12	nl51	hD	12	1	1	R
+nl3134_r12	nl51	hD	12	1	1	R
+nl3137_r12	nl51	hD	12	1	1	R
+nl3140_r12	nl51	hD	12	1	1	R
+nl3142_r12	nl51	hD	12	1	1	R
+nl3148_r12	nl51	hD	12	1	1	R
+nl3150_r12	nl51	hD	12	1	1	R
+nl3151_r12	nl51	hD	12	1	1	R
+nl3189_r12	nl51	hD	12	1	1	R
+nl3190_r12	nl51	hD	12	0	1	R
+nl3247_r12	nl51	hD	12	1	1	R
+nl3249_r12	nl51	hD	12	1	1	R
+nl3407_r12	nl51	hD	12	1	1	R
+nl3885_r12	nl51	hD	12	1	1	R
+nl3888_r12	nl51	hD	12	1	1	R
+nl3889_r12	nl51	hD	12	1	1	R
+nl3890_r12	nl51	hD	12	1	1	R
+nl3905_r12	nl51	hD	12	1	1	R
+nl3906_r12	nl51	hD	12	1	1	R
+nl3932_r12	nl51	hD	12	1	1	R
+nl5071_r12	nl51	hD	12	1	1	R
+nl5076_r12	nl51	hD	12	1	1	R
+nl5083_r12	nl51	hD	12	1	1	R
+nl5093_r12	nl51	hD	12	1	1	R
+nl5096_r12	nl51	hD	12	1	1	R
+nl5098_r12	nl51	hD	12	1	1	R
+nl5100_r12	nl51	hD	12	1	1	R
+nl5101_r12	nl51	hD	12	1	1	R
+nl5105_r12	nl51	hD	12	1	1	R
+nl5106_r12	nl51	hD	12	1	1	R
+nl5107_r12	nl51	hD	12	1	1	R
+nl5108_r12	nl51	hD	12	1	1	R
+nl5111_r12	nl51	hD	12	1	1	R
+nl5182_r12	nl51	hD	12	1	1	R
+nl5184_r12	nl51	hD	12	1	1	R
+nl5186_r12	nl51	hD	12	1	1	R
+nl5464_r12	nl51	hD	12	1	1	R
+nl5467_r12	nl51	hD	12	1	1	R
+nl5476_r12	nl51	hD	12	1	1	R
+nl5481_r12	nl51	hD	12	1	1	R
+nl5482_r12	nl51	hD	12	1	1	R
+nl5512_r12	nl51	hD	12	1	1	R
+nl5527_r12	nl51	hD	12	1	1	R
+nl5576_r12	nl51	hD	12	1	1	R
+nl5578_r12	nl51	hD	12	1	1	R
+nl5671_r12	nl51	hD	12	1	1	R
+nl6331_r12	nl51	hD	12	1	1	R
+nl6343_r12	nl51	hD	12	1	1	R
+nl0034_r13	nl51	hD	13	0	1	R
+nl0035_r13	nl51	hD	13	0	1	R
+nl0036_r13	nl51	hD	13	0	1	R
+nl0037_r13	nl51	hD	13	0	1	R
+nl0191_r13	nl51	hD	13	1	1	R
+nl0218_r13	nl51	hD	13	1	1	R
+nl0219_r13	nl51	hD	13	1	1	R
+nl0220_r13	nl51	hD	13	1	1	R
+nl0222_r13	nl51	hD	13	1	1	R
+nl0223_r13	nl51	hD	13	1	1	R
+nl0224_r13	nl51	hD	13	1	1	R
+nl0225_r13	nl51	hD	13	1	1	R
+nl0226_r13	nl51	hD	13	1	1	R
+nl0227_r13	nl51	hD	13	1	1	R
+nl0228_r13	nl51	hD	13	1	1	R
+nl0229_r13	nl51	hD	13	1	1	R
+nl0230_r13	nl51	hD	13	1	1	R
+nl0231_r13	nl51	hD	13	1	1	R
+nl0234_r13	nl51	hD	13	1	1	R
+nl0235_r13	nl51	hD	13	1	1	R
+nl0236_r13	nl51	hD	13	1	1	R
+nl0237_r13	nl51	hD	13	0	1	R
+nl0238_r13	nl51	hD	13	0	1	R
+nl0239_r13	nl51	hD	13	1	1	R
+nl0240_r13	nl51	hD	13	1	1	R
+nl0241_r13	nl51	hD	13	0	1	R
+nl0243_r13	nl51	hD	13	1	0	
+nl0244_r13	nl51	hD	13	1	0	
+nl0245_r13	nl51	hD	13	1	1	R
+nl0250_r13	nl51	hD	13	1	1	R
+nl0254_r13	nl51	hD	13	1	1	KT,R
+nl0255_r13	nl51	hD	13	1	1	KT,R
+nl0256_r13	nl51	hD	13	1	1	KT,R
+nl0257_r13	nl51	hD	13	1	1	R
+nl0258_r13	nl51	hD	13	1	1	R
+nl0260_r13	nl51	hD	13	1	1	R
+nl0262_r13	nl51	hD	13	0	1	R
+nl0398_r13	nl51	hD	13	1	0	
+nl0411_r13	nl51	hD	13	1	1	R
+nl0413_r13	nl51	hD	13	1	1	R
+nl0417_r13	nl51	hD	13	1	1	R
+nl0419_r13	nl51	hD	13	0	1	R
+nl0454_r13	nl51	hD	13	1	1	R
+nl0455_r13	nl51	hD	13	1	1	R
+nl0456_r13	nl51	hD	13	1	1	R
+nl0457_r13	nl51	hD	13	0	1	R
+nl0458_r13	nl51	hD	13	1	1	R
+nl0459_r13	nl51	hD	13	1	1	R
+nl0461_r13	nl51	hD	13	0	1	R
+nl0466_r13	nl51	hD	13	1	1	R
+nl0467_r13	nl51	hD	13	1	1	R
+nl0468_r13	nl51	hD	13	1	1	R
+nl0469_r13	nl51	hD	13	1	1	R
+nl0470_r13	nl51	hD	13	1	1	R
+nl0471_r13	nl51	hD	13	1	1	R
+nl0472_r13	nl51	hD	13	1	1	R
+nl0474_r13	nl51	hD	13	0	1	R
+nl0476_r13	nl51	hD	13	1	1	R
+nl0477_r13	nl51	hD	13	1	1	R
+nl0478_r13	nl51	hD	13	0	1	R
+nl0479_r13	nl51	hD	13	1	1	R
+nl0480_r13	nl51	hD	13	1	1	R
+nl0481_r13	nl51	hD	13	1	1	R
+nl0482_r13	nl51	hD	13	0	1	R
+nl0483_r13	nl51	hD	13	1	1	R
+nl0484_r13	nl51	hD	13	1	1	R
+nl0485_r13	nl51	hD	13	1	1	R
+nl0486_r13	nl51	hD	13	1	1	R
+nl0487_r13	nl51	hD	13	1	1	R
+nl0488_r13	nl51	hD	13	1	1	R
+nl0489_r13	nl51	hD	13	0	1	R
+nl0490_r13	nl51	hD	13	1	1	R
+nl0491_r13	nl51	hD	13	1	1	R
+nl0492_r13	nl51	hD	13	1	1	R
+nl0493_r13	nl51	hD	13	1	1	R
+nl0494_r13	nl51	hD	13	0	1	R
+nl0496_r13	nl51	hD	13	1	1	R
+nl0497_r13	nl51	hD	13	1	1	R
+nl0499_r13	nl51	hD	13	0	1	R
+nl0500_r13	nl51	hD	13	1	1	R
+nl0501_r13	nl51	hD	13	1	1	R
+nl0502_r13	nl51	hD	13	1	1	R
+nl0503_r13	nl51	hD	13	1	1	R
+nl0504_r13	nl51	hD	13	1	1	R
+nl0505_r13	nl51	hD	13	1	1	R
+nl0506_r13	nl51	hD	13	1	1	R
+nl0507_r13	nl51	hD	13	1	0	
+nl0508_r13	nl51	hD	13	1	1	R
+nl0510_r13	nl51	hD	13	1	1	R
+nl0512_r13	nl51	hD	13	1	1	R
+nl0513_r13	nl51	hD	13	1	1	R
+nl0514_r13	nl51	hD	13	1	1	R
+nl0515_r13	nl51	hD	13	1	1	R
+nl0517_r13	nl51	hD	13	1	1	R
+nl0519_r13	nl51	hD	13	1	1	R
+nl0520_r13	nl51	hD	13	1	1	R
+nl0529_r13	nl51	hD	13	0	1	R
+nl0533_r13	nl51	hD	13	1	1	R
+nl0539_r13	nl51	hD	13	1	1	R
+nl0540_r13	nl51	hD	13	1	1	R
+nl0541_r13	nl51	hD	13	1	1	R
+nl0542_r13	nl51	hD	13	1	1	R
+nl0543_r13	nl51	hD	13	1	1	R
+nl0544_r13	nl51	hD	13	1	1	R
+nl0547_r13	nl51	hD	13	1	1	R
+nl0567_r13	nl51	hD	13	1	1	R
+nl0568_r13	nl51	hD	13	1	0	
+nl0582_r13	nl51	hD	13	0	1	R
+nl0584_r13	nl51	hD	13	1	1	KT,R
+nl0585_r13	nl51	hD	13	1	1	KT,R
+nl0586_r13	nl51	hD	13	1	1	KT,R
+nl0590_r13	nl51	hD	13	1	1	R
+nl0591_r13	nl51	hD	13	1	1	KT,R
+nl0597_r13	nl51	hD	13	1	1	R
+nl0598_r13	nl51	hD	13	1	1	R
+nl0599_r13	nl51	hD	13	1	1	R
+nl0600_r13	nl51	hD	13	1	1	KT,R
+nl0601_r13	nl51	hD	13	1	1	KT,R
+nl0602_r13	nl51	hD	13	1	1	KT,R
+nl0615_r13	nl51	hD	13	0	1	R
+nl0616_r13	nl51	hD	13	1	1	R
+nl0617_r13	nl51	hD	13	0	1	R
+nl0618_r13	nl51	hD	13	0	1	R
+nl0619_r13	nl51	hD	13	1	1	R
+nl0620_r13	nl51	hD	13	1	1	R
+nl0621_r13	nl51	hD	13	0	1	R
+nl0622_r13	nl51	hD	13	0	1	R
+nl0623_r13	nl51	hD	13	1	1	R
+nl0624_r13	nl51	hD	13	1	1	R
+nl0626_r13	nl51	hD	13	1	1	R
+nl0627_r13	nl51	hD	13	1	1	R
+nl0628_r13	nl51	hD	13	1	1	R
+nl0630_r13	nl51	hD	13	1	1	R
+nl0631_r13	nl51	hD	13	1	1	R
+nl0632_r13	nl51	hD	13	1	1	R
+nl0633_r13	nl51	hD	13	1	1	R
+nl0634_r13	nl51	hD	13	1	1	R
+nl0635_r13	nl51	hD	13	1	1	R
+nl0697_r13	nl51	hD	13	1	1	R
+nl0698_r13	nl51	hD	13	1	1	R
+nl0700_r13	nl51	hD	13	1	1	R
+nl0701_r13	nl51	hD	13	1	1	R
+nl0725_r13	nl51	hD	13	0	1	R
+nl0726_r13	nl51	hD	13	0	1	R
+nl0727_r13	nl51	hD	13	0	1	R
+nl0728_r13	nl51	hD	13	1	1	R
+nl0813_r13	nl51	hD	13	1	1	R
+nl0815_r13	nl51	hD	13	1	1	R
+nl0816_r13	nl51	hD	13	0	0	
+nl0826_r13	nl51	hD	13	1	1	R
+nl0827_r13	nl51	hD	13	1	1	R
+nl0828_r13	nl51	hD	13	1	1	R
+nl0829_r13	nl51	hD	13	1	1	R
+nl0831_r13	nl51	hD	13	0	1	R
+nl0832_r13	nl51	hD	13	1	1	R
+nl0834_r13	nl51	hD	13	1	1	R
+nl0835_r13	nl51	hD	13	1	1	R
+nl0836_r13	nl51	hD	13	0	1	R
+nl0837_r13	nl51	hD	13	1	1	R
+nl0839_r13	nl51	hD	13	0	1	R
+nl0840_r13	nl51	hD	13	1	1	R
+nl0841_r13	nl51	hD	13	1	1	R
+nl0842_r13	nl51	hD	13	1	1	R
+nl0843_r13	nl51	hD	13	1	0	
+nl0844_r13	nl51	hD	13	1	1	R
+nl0845_r13	nl51	hD	13	1	1	R
+nl0847_r13	nl51	hD	13	1	1	R
+nl0849_r13	nl51	hD	13	1	1	R
+nl0851_r13	nl51	hD	13	1	1	R
+nl0852_r13	nl51	hD	13	1	1	R
+nl0853_r13	nl51	hD	13	1	1	R
+nl0854_r13	nl51	hD	13	1	1	R
+nl0869_r13	nl51	hD	13	1	1	R
+nl0872_r13	nl51	hD	13	1	1	R
+nl0874_r13	nl51	hD	13	0	1	R
+nl0875_r13	nl51	hD	13	1	1	R
+nl0876_r13	nl51	hD	13	1	1	R
+nl0877_r13	nl51	hD	13	1	1	R
+nl0878_r13	nl51	hD	13	1	1	R
+nl0879_r13	nl51	hD	13	1	1	R
+nl0880_r13	nl51	hD	13	1	1	R
+nl0881_r13	nl51	hD	13	1	1	R
+nl0882_r13	nl51	hD	13	0	1	R
+nl0883_r13	nl51	hD	13	1	1	R
+nl0884_r13	nl51	hD	13	0	1	R
+nl0886_r13	nl51	hD	13	0	1	R
+nl0887_r13	nl51	hD	13	1	1	R
+nl0888_r13	nl51	hD	13	0	1	R
+nl0891_r13	nl51	hD	13	1	1	R
+nl0898_r13	nl51	hD	13	0	0	
+nl0899_r13	nl51	hD	13	0	1	R
+nl0901_r13	nl51	hD	13	0	0	
+nl0920_r13	nl51	hD	13	1	1	R
+nl0921_r13	nl51	hD	13	1	1	R
+nl0922_r13	nl51	hD	13	0	1	R
+nl0923_r13	nl51	hD	13	1	1	R
+nl0934_r13	nl51	hD	13	0	1	R
+nl0936_r13	nl51	hD	13	1	1	R
+nl0937_r13	nl51	hD	13	1	1	R
+nl0938_r13	nl51	hD	13	1	1	R
+nl0939_r13	nl51	hD	13	1	1	R
+nl0940_r13	nl51	hD	13	0	1	R
+nl0941_r13	nl51	hD	13	1	1	R
+nl0942_r13	nl51	hD	13	1	1	R
+nl0943_r13	nl51	hD	13	0	1	R
+nl0944_r13	nl51	hD	13	1	1	R
+nl0945_r13	nl51	hD	13	1	1	R
+nl0946_r13	nl51	hD	13	1	1	R
+nl0947_r13	nl51	hD	13	1	1	R
+nl0949_r13	nl51	hD	13	1	1	R
+nl0950_r13	nl51	hD	13	0	1	R
+nl0955_r13	nl51	hD	13	0	1	R
+nl0956_r13	nl51	hD	13	1	1	R
+nl1064_r13	nl51	hD	13	0	1	R
+nl1067_r13	nl51	hD	13	0	1	R
+nl1070_r13	nl51	hD	13	1	1	R
+nl1196_r13	nl51	hD	13	1	1	R
+nl1197_r13	nl51	hD	13	1	1	R
+nl1428_r13	nl51	hD	13	1	1	R
+nl1429_r13	nl51	hD	13	0	1	R
+nl1430_r13	nl51	hD	13	1	1	R
+nl1431_r13	nl51	hD	13	0	1	R
+nl1441_r13	nl51	hD	13	0	1	R
+nl1673_r13	nl51	hD	13	1	1	R
+nl1686_r13	nl51	hD	13	1	1	R
+nl1688_r13	nl51	hD	13	1	1	R
+nl1708_r13	nl51	hD	13	1	1	R
+nl1709_r13	nl51	hD	13	1	1	R
+nl1714_r13	nl51	hD	13	1	1	R
+nl1720_r13	nl51	hD	13	1	1	R
+nl1721_r13	nl51	hD	13	1	1	R
+nl1722_r13	nl51	hD	13	1	1	R
+nl1723_r13	nl51	hD	13	1	1	R
+nl1730_r13	nl51	hD	13	1	1	R
+nl1731_r13	nl51	hD	13	1	1	R
+nl1733_r13	nl51	hD	13	1	1	R
+nl1734_r13	nl51	hD	13	1	1	R
+nl1735_r13	nl51	hD	13	1	1	R
+nl1736_r13	nl51	hD	13	1	1	R
+nl1744_r13	nl51	hD	13	1	1	R
+nl1745_r13	nl51	hD	13	1	1	R
+nl1747_r13	nl51	hD	13	1	1	R
+nl1753_r13	nl51	hD	13	1	1	R
+nl1754_r13	nl51	hD	13	1	1	R
+nl1755_r13	nl51	hD	13	1	1	R
+nl1756_r13	nl51	hD	13	1	1	R
+nl1757_r13	nl51	hD	13	1	1	R
+nl1760_r13	nl51	hD	13	1	1	R
+nl1761_r13	nl51	hD	13	1	1	R
+nl1770_r13	nl51	hD	13	1	1	R
+nl1840_r13	nl51	hD	13	1	1	R
+nl1844_r13	nl51	hD	13	1	1	R
+nl1846_r13	nl51	hD	13	1	0	
+nl1847_r13	nl51	hD	13	1	0	
+nl1879_r13	nl51	hD	13	1	1	R
+nl1880_r13	nl51	hD	13	1	1	R
+nl1885_r13	nl51	hD	13	1	1	R
+nl1888_r13	nl51	hD	13	1	1	R
+nl1896_r13	nl51	hD	13	1	1	R
+nl1897_r13	nl51	hD	13	1	1	R
+nl1902_r13	nl51	hD	13	1	1	R
+nl1906_r13	nl51	hD	13	1	1	R
+nl1907_r13	nl51	hD	13	1	1	R
+nl1908_r13	nl51	hD	13	1	1	R
+nl1909_r13	nl51	hD	13	1	1	R
+nl1910_r13	nl51	hD	13	1	1	R
+nl1911_r13	nl51	hD	13	1	1	R
+nl1912_r13	nl51	hD	13	1	1	R
+nl1918_r13	nl51	hD	13	1	1	R
+nl1919_r13	nl51	hD	13	1	1	R
+nl1920_r13	nl51	hD	13	1	1	R
+nl1926_r13	nl51	hD	13	1	1	R
+nl1930_r13	nl51	hD	13	1	1	R
+nl1931_r13	nl51	hD	13	1	1	R
+nl1933_r13	nl51	hD	13	1	1	R
+nl1934_r13	nl51	hD	13	0	1	R
+nl1936_r13	nl51	hD	13	1	1	R
+nl1937_r13	nl51	hD	13	0	1	R
+nl1938_r13	nl51	hD	13	1	1	R
+nl1940_r13	nl51	hD	13	1	1	R
+nl1961_r13	nl51	hD	13	1	1	R
+nl1962_r13	nl51	hD	13	1	1	R
+nl1963_r13	nl51	hD	13	1	1	R
+nl1965_r13	nl51	hD	13	1	1	R
+nl1966_r13	nl51	hD	13	1	1	R
+nl1968_r13	nl51	hD	13	1	1	R
+nl1971_r13	nl51	hD	13	1	1	R
+nl1972_r13	nl51	hD	13	1	1	R
+nl1973_r13	nl51	hD	13	1	1	R
+nl1975_r13	nl51	hD	13	1	1	R
+nl1978_r13	nl51	hD	13	1	1	R
+nl1980_r13	nl51	hD	13	1	1	R
+nl1981_r13	nl51	hD	13	1	1	R
+nl1982_r13	nl51	hD	13	1	1	R
+nl1984_r13	nl51	hD	13	1	1	R
+nl1985_r13	nl51	hD	13	1	1	R
+nl1986_r13	nl51	hD	13	1	1	R
+nl1987_r13	nl51	hD	13	1	1	R
+nl1989_r13	nl51	hD	13	1	1	R
+nl1991_r13	nl51	hD	13	1	1	R
+nl1994_r13	nl51	hD	13	1	1	R
+nl1995_r13	nl51	hD	13	1	1	R
+nl1996_r13	nl51	hD	13	1	1	R
+nl2008_r13	nl51	hD	13	1	1	R
+nl2009_r13	nl51	hD	13	1	1	R
+nl2010_r13	nl51	hD	13	1	1	R
+nl2012_r13	nl51	hD	13	1	0	
+nl2013_r13	nl51	hD	13	1	1	R
+nl2016_r13	nl51	hD	13	1	0	
+nl2017_r13	nl51	hD	13	1	0	
+nl2028_r13	nl51	hD	13	1	1	R
+nl2031_r13	nl51	hD	13	1	0	
+nl2032_r13	nl51	hD	13	1	1	R
+nl2033_r13	nl51	hD	13	1	1	KT,R
+nl2034_r13	nl51	hD	13	1	1	KT,R
+nl2048_r13	nl51	hD	13	1	1	R
+nl2049_r13	nl51	hD	13	1	1	R
+nl2058_r13	nl51	hD	13	1	1	R
+nl2059_r13	nl51	hD	13	1	1	R
+nl2060_r13	nl51	hD	13	1	1	R
+nl2067_r13	nl51	hD	13	1	1	R
+nl2069_r13	nl51	hD	13	1	1	R
+nl2071_r13	nl51	hD	13	1	1	R
+nl2072_r13	nl51	hD	13	1	1	R
+nl2073_r13	nl51	hD	13	1	1	R
+nl2075_r13	nl51	hD	13	1	1	R
+nl2145_r13	nl51	hD	13	1	1	R
+nl2148_r13	nl51	hD	13	1	1	R
+nl2149_r13	nl51	hD	13	1	1	R
+nl2152_r13	nl51	hD	13	1	1	R
+nl2153_r13	nl51	hD	13	1	1	R
+nl2156_r13	nl51	hD	13	0	1	R
+nl2158_r13	nl51	hD	13	1	1	R
+nl2159_r13	nl51	hD	13	1	1	R
+nl2160_r13	nl51	hD	13	1	1	R
+nl2161_r13	nl51	hD	13	1	1	R
+nl2179_r13	nl51	hD	13	1	1	R
+nl2180_r13	nl51	hD	13	1	0	
+nl2208_r13	nl51	hD	13	1	1	R
+nl2273_r13	nl51	hD	13	1	1	R
+nl2275_r13	nl51	hD	13	1	1	R
+nl2276_r13	nl51	hD	13	1	1	R
+nl2279_r13	nl51	hD	13	1	1	R
+nl2280_r13	nl51	hD	13	1	1	R
+nl2281_r13	nl51	hD	13	1	1	R
+nl2282_r13	nl51	hD	13	1	1	R
+nl2283_r13	nl51	hD	13	1	1	R
+nl2284_r13	nl51	hD	13	1	1	R
+nl2292_r13	nl51	hD	13	1	1	R
+nl2293_r13	nl51	hD	13	1	1	R
+nl2301_r13	nl51	hD	13	1	0	
+nl2302_r13	nl51	hD	13	1	1	R
+nl2303_r13	nl51	hD	13	1	1	R
+nl2305_r13	nl51	hD	13	1	1	R
+nl2306_r13	nl51	hD	13	1	1	R
+nl2307_r13	nl51	hD	13	1	1	R
+nl2308_r13	nl51	hD	13	1	1	R
+nl2310_r13	nl51	hD	13	1	1	R
+nl2311_r13	nl51	hD	13	1	1	R
+nl2374_r13	nl51	hD	13	1	1	R
+nl2376_r13	nl51	hD	13	0	1	R
+nl2377_r13	nl51	hD	13	1	1	R
+nl2378_r13	nl51	hD	13	1	1	R
+nl2380_r13	nl51	hD	13	1	1	R
+nl2426_r13	nl51	hD	13	0	1	R
+nl2427_r13	nl51	hD	13	1	1	R
+nl2829_r13	nl51	hD	13	1	0	
+nl2830_r13	nl51	hD	13	0	1	R
+nl2886_r13	nl51	hD	13	1	1	R
+nl2888_r13	nl51	hD	13	1	1	R
+nl2889_r13	nl51	hD	13	1	0	
+nl2890_r13	nl51	hD	13	1	0	
+nl2892_r13	nl51	hD	13	1	1	R
+nl2893_r13	nl51	hD	13	0	0	
+nl2909_r13	nl51	hD	13	0	0	
+nl2910_r13	nl51	hD	13	1	0	
+nl2911_r13	nl51	hD	13	0	1	R
+nl2912_r13	nl51	hD	13	1	1	R
+nl2913_r13	nl51	hD	13	1	0	
+nl2915_r13	nl51	hD	13	0	0	
+nl2916_r13	nl51	hD	13	0	0	
+nl2917_r13	nl51	hD	13	1	1	R
+nl2918_r13	nl51	hD	13	1	1	R
+nl2923_r13	nl51	hD	13	1	1	R
+nl2932_r13	nl51	hD	13	1	1	R
+nl2935_r13	nl51	hD	13	1	1	KT,R
+nl2936_r13	nl51	hD	13	1	1	R
+nl2937_r13	nl51	hD	13	1	1	R
+nl2938_r13	nl51	hD	13	1	1	R
+nl2939_r13	nl51	hD	13	1	1	R
+nl2940_r13	nl51	hD	13	1	1	R
+nl2941_r13	nl51	hD	13	1	1	R
+nl2942_r13	nl51	hD	13	0	1	R
+nl2943_r13	nl51	hD	13	1	1	R
+nl2944_r13	nl51	hD	13	1	1	R
+nl2945_r13	nl51	hD	13	0	1	R
+nl2948_r13	nl51	hD	13	1	1	R
+nl2949_r13	nl51	hD	13	1	1	R
+nl2950_r13	nl51	hD	13	1	1	KT,R
+nl2955_r13	nl51	hD	13	1	0	
+nl2956_r13	nl51	hD	13	1	1	R
+nl2957_r13	nl51	hD	13	1	1	R
+nl2958_r13	nl51	hD	13	1	0	
+nl2959_r13	nl51	hD	13	0	1	R
+nl2960_r13	nl51	hD	13	0	1	R
+nl2963_r13	nl51	hD	13	0	1	R
+nl2964_r13	nl51	hD	13	0	1	R
+nl2967_r13	nl51	hD	13	1	0	
+nl2969_r13	nl51	hD	13	1	0	
+nl2970_r13	nl51	hD	13	1	0	
+nl2984_r13	nl51	hD	13	1	0	
+nl2985_r13	nl51	hD	13	1	1	R
+nl2986_r13	nl51	hD	13	1	1	R
+nl3011_r13	nl51	hD	13	1	1	KT,R
+nl3012_r13	nl51	hD	13	1	1	R
+nl3013_r13	nl51	hD	13	1	1	R
+nl3016_r13	nl51	hD	13	1	1	R
+nl3017_r13	nl51	hD	13	0	1	R
+nl3018_r13	nl51	hD	13	1	1	R
+nl3019_r13	nl51	hD	13	0	1	R
+nl3145_r13	nl51	hD	13	1	0	
+nl3153_r13	nl51	hD	13	1	0	
+nl3154_r13	nl51	hD	13	0	0	
+nl3155_r13	nl51	hD	13	1	1	R
+nl3156_r13	nl51	hD	13	0	1	R
+nl3162_r13	nl51	hD	13	1	1	R
+nl3167_r13	nl51	hD	13	0	1	R
+nl3168_r13	nl51	hD	13	0	0	
+nl3170_r13	nl51	hD	13	0	0	
+nl3173_r13	nl51	hD	13	1	1	R
+nl3174_r13	nl51	hD	13	1	1	R
+nl3175_r13	nl51	hD	13	0	0	
+nl3176_r13	nl51	hD	13	0	1	R
+nl3182_r13	nl51	hD	13	1	1	R
+nl3186_r13	nl51	hD	13	1	1	R
+nl3192_r13	nl51	hD	13	1	1	R
+nl3193_r13	nl51	hD	13	1	1	R
+nl3194_r13	nl51	hD	13	1	1	R
+nl3195_r13	nl51	hD	13	1	1	R
+nl3196_r13	nl51	hD	13	1	1	R
+nl3197_r13	nl51	hD	13	1	1	R
+nl3199_r13	nl51	hD	13	1	1	R
+nl3200_r13	nl51	hD	13	0	1	R
+nl3203_r13	nl51	hD	13	1	1	R
+nl3204_r13	nl51	hD	13	1	1	R
+nl3205_r13	nl51	hD	13	1	1	R
+nl3207_r13	nl51	hD	13	0	1	R
+nl3208_r13	nl51	hD	13	1	1	R
+nl3209_r13	nl51	hD	13	1	1	R
+nl3210_r13	nl51	hD	13	1	1	R
+nl3211_r13	nl51	hD	13	1	1	R
+nl3212_r13	nl51	hD	13	1	1	R
+nl3213_r13	nl51	hD	13	1	1	R
+nl3215_r13	nl51	hD	13	0	1	R
+nl3216_r13	nl51	hD	13	1	1	R
+nl3217_r13	nl51	hD	13	1	1	R
+nl3218_r13	nl51	hD	13	0	1	R
+nl3219_r13	nl51	hD	13	1	1	R
+nl3220_r13	nl51	hD	13	0	1	R
+nl3221_r13	nl51	hD	13	1	1	R
+nl3223_r13	nl51	hD	13	1	1	R
+nl3225_r13	nl51	hD	13	1	1	R
+nl3230_r13	nl51	hD	13	1	1	R
+nl3231_r13	nl51	hD	13	1	1	R
+nl3232_r13	nl51	hD	13	1	1	R
+nl3233_r13	nl51	hD	13	1	1	R
+nl3234_r13	nl51	hD	13	0	1	R
+nl3235_r13	nl51	hD	13	1	1	R
+nl3236_r13	nl51	hD	13	1	1	R
+nl3237_r13	nl51	hD	13	0	1	R
+nl3238_r13	nl51	hD	13	1	1	R
+nl3239_r13	nl51	hD	13	1	1	R
+nl3242_r13	nl51	hD	13	1	1	R
+nl3244_r13	nl51	hD	13	1	1	R
+nl3253_r13	nl51	hD	13	1	1	R
+nl3258_r13	nl51	hD	13	1	1	R
+nl3260_r13	nl51	hD	13	1	1	R
+nl3262_r13	nl51	hD	13	1	1	R
+nl3267_r13	nl51	hD	13	0	1	R
+nl3273_r13	nl51	hD	13	1	1	R
+nl3274_r13	nl51	hD	13	1	1	R
+nl3275_r13	nl51	hD	13	1	1	R
+nl3278_r13	nl51	hD	13	1	1	R
+nl3280_r13	nl51	hD	13	1	1	R
+nl3281_r13	nl51	hD	13	1	1	R
+nl3282_r13	nl51	hD	13	1	1	R
+nl3285_r13	nl51	hD	13	1	1	R
+nl3286_r13	nl51	hD	13	1	1	R
+nl3287_r13	nl51	hD	13	0	1	R
+nl3289_r13	nl51	hD	13	0	1	R
+nl3292_r13	nl51	hD	13	1	1	R
+nl3294_r13	nl51	hD	13	0	1	R
+nl3297_r13	nl51	hD	13	0	1	R
+nl3298_r13	nl51	hD	13	1	0	
+nl3299_r13	nl51	hD	13	1	0	
+nl3300_r13	nl51	hD	13	0	1	R
+nl3302_r13	nl51	hD	13	0	1	R
+nl3306_r13	nl51	hD	13	1	1	R
+nl3307_r13	nl51	hD	13	0	1	R
+nl3308_r13	nl51	hD	13	1	1	R
+nl3310_r13	nl51	hD	13	0	1	R
+nl3311_r13	nl51	hD	13	1	1	R
+nl3312_r13	nl51	hD	13	1	1	R
+nl3313_r13	nl51	hD	13	1	1	R
+nl3314_r13	nl51	hD	13	1	1	R
+nl3316_r13	nl51	hD	13	1	1	R
+nl3317_r13	nl51	hD	13	1	1	R
+nl3318_r13	nl51	hD	13	1	1	R
+nl3319_r13	nl51	hD	13	0	1	R
+nl3320_r13	nl51	hD	13	1	1	R
+nl3321_r13	nl51	hD	13	1	1	R
+nl3323_r13	nl51	hD	13	1	1	R
+nl3324_r13	nl51	hD	13	1	1	R
+nl3347_r13	nl51	hD	13	0	1	R
+nl3350_r13	nl51	hD	13	1	1	R
+nl3353_r13	nl51	hD	13	0	0	
+nl3354_r13	nl51	hD	13	0	0	
+nl3355_r13	nl51	hD	13	1	1	R
+nl3356_r13	nl51	hD	13	0	1	R
+nl3357_r13	nl51	hD	13	0	0	
+nl3409_r13	nl51	hD	13	1	1	KT,R
+nl3410_r13	nl51	hD	13	1	1	R
+nl3412_r13	nl51	hD	13	1	1	KT,R
+nl3414_r13	nl51	hD	13	0	1	R
+nl3415_r13	nl51	hD	13	1	1	KT,R
+nl3416_r13	nl51	hD	13	1	1	R
+nl3422_r13	nl51	hD	13	1	1	R
+nl3423_r13	nl51	hD	13	1	1	R
+nl3424_r13	nl51	hD	13	1	1	R
+nl3425_r13	nl51	hD	13	1	1	R
+nl3427_r13	nl51	hD	13	1	1	R
+nl3428_r13	nl51	hD	13	1	1	R
+nl3430_r13	nl51	hD	13	1	1	R
+nl3434_r13	nl51	hD	13	0	1	R
+nl3435_r13	nl51	hD	13	0	1	R
+nl3436_r13	nl51	hD	13	1	1	KT,R
+nl3438_r13	nl51	hD	13	1	1	R
+nl3439_r13	nl51	hD	13	1	1	R
+nl3442_r13	nl51	hD	13	1	1	R
+nl3443_r13	nl51	hD	13	1	1	R
+nl3444_r13	nl51	hD	13	1	1	R
+nl3445_r13	nl51	hD	13	1	1	R
+nl3446_r13	nl51	hD	13	1	1	R
+nl3447_r13	nl51	hD	13	1	1	R
+nl3448_r13	nl51	hD	13	0	1	R
+nl3449_r13	nl51	hD	13	1	1	R
+nl3450_r13	nl51	hD	13	1	1	R
+nl3451_r13	nl51	hD	13	1	1	R
+nl3452_r13	nl51	hD	13	1	1	R
+nl3453_r13	nl51	hD	13	1	1	R
+nl3560_r13	nl51	hD	13	1	1	R
+nl3561_r13	nl51	hD	13	1	1	R
+nl3671_r13	nl51	hD	13	1	1	R
+nl3722_r13	nl51	hD	13	1	1	R
+nl3887_r13	nl51	hD	13	0	0	
+nl3891_r13	nl51	hD	13	1	1	R
+nl3893_r13	nl51	hD	13	1	1	R
+nl3894_r13	nl51	hD	13	0	1	R
+nl3897_r13	nl51	hD	13	1	1	R
+nl3899_r13	nl51	hD	13	1	1	R
+nl3900_r13	nl51	hD	13	1	1	R
+nl3901_r13	nl51	hD	13	0	1	R
+nl3902_r13	nl51	hD	13	1	1	R
+nl3903_r13	nl51	hD	13	1	1	R
+nl3908_r13	nl51	hD	13	1	1	R
+nl3909_r13	nl51	hD	13	1	1	R
+nl3910_r13	nl51	hD	13	1	1	R
+nl3912_r13	nl51	hD	13	1	1	R
+nl3913_r13	nl51	hD	13	1	1	R
+nl3915_r13	nl51	hD	13	1	1	R
+nl3919_r13	nl51	hD	13	1	1	R
+nl3920_r13	nl51	hD	13	0	1	R
+nl3921_r13	nl51	hD	13	0	1	R
+nl3922_r13	nl51	hD	13	1	1	R
+nl3923_r13	nl51	hD	13	1	1	R
+nl3924_r13	nl51	hD	13	1	1	R
+nl3925_r13	nl51	hD	13	1	1	R
+nl3926_r13	nl51	hD	13	1	1	R
+nl3927_r13	nl51	hD	13	1	1	R
+nl3928_r13	nl51	hD	13	1	1	R
+nl3934_r13	nl51	hD	13	0	1	R
+nl3946_r13	nl51	hD	13	1	1	R
+nl3947_r13	nl51	hD	13	1	1	R
+nl3948_r13	nl51	hD	13	1	1	R
+nl3949_r13	nl51	hD	13	1	1	R
+nl3951_r13	nl51	hD	13	1	1	R
+nl3952_r13	nl51	hD	13	1	1	R
+nl3953_r13	nl51	hD	13	1	1	R
+nl3954_r13	nl51	hD	13	0	1	R
+nl3955_r13	nl51	hD	13	0	1	R
+nl3957_r13	nl51	hD	13	1	1	R
+nl3958_r13	nl51	hD	13	1	1	R
+nl3959_r13	nl51	hD	13	0	1	R
+nl3960_r13	nl51	hD	13	1	1	R
+nl3961_r13	nl51	hD	13	0	1	R
+nl3962_r13	nl51	hD	13	0	1	R
+nl3963_r13	nl51	hD	13	0	1	R
+nl3964_r13	nl51	hD	13	1	1	R
+nl3965_r13	nl51	hD	13	1	1	R
+nl3966_r13	nl51	hD	13	1	1	R
+nl3968_r13	nl51	hD	13	1	1	R
+nl3972_r13	nl51	hD	13	1	1	R
+nl3973_r13	nl51	hD	13	1	1	R
+nl3977_r13	nl51	hD	13	1	1	R
+nl4055_r13	nl51	hD	13	1	1	R
+nl4056_r13	nl51	hD	13	1	1	R
+nl4057_r13	nl51	hD	13	1	1	R
+nl4058_r13	nl51	hD	13	1	1	R
+nl4059_r13	nl51	hD	13	1	1	R
+nl4061_r13	nl51	hD	13	0	1	R
+nl4062_r13	nl51	hD	13	1	1	R
+nl4063_r13	nl51	hD	13	1	1	R
+nl4068_r13	nl51	hD	13	1	1	R
+nl4069_r13	nl51	hD	13	1	1	R
+nl4070_r13	nl51	hD	13	1	1	R
+nl4071_r13	nl51	hD	13	1	1	R
+nl4072_r13	nl51	hD	13	1	1	R
+nl4073_r13	nl51	hD	13	1	1	R
+nl4075_r13	nl51	hD	13	1	1	R
+nl4076_r13	nl51	hD	13	0	1	R
+nl4078_r13	nl51	hD	13	0	1	R
+nl4079_r13	nl51	hD	13	1	1	R
+nl4080_r13	nl51	hD	13	1	1	R
+nl4744_r13	nl51	hD	13	1	1	R
+nl4745_r13	nl51	hD	13	1	1	R
+nl4746_r13	nl51	hD	13	1	1	R
+nl4780_r13	nl51	hD	13	1	1	R
+nl5114_r13	nl51	hD	13	1	1	R
+nl5117_r13	nl51	hD	13	1	1	R
+nl5126_r13	nl51	hD	13	1	0	
+nl5129_r13	nl51	hD	13	1	0	
+nl5133_r13	nl51	hD	13	1	0	
+nl5138_r13	nl51	hD	13	1	0	
+nl5139_r13	nl51	hD	13	1	0	
+nl5140_r13	nl51	hD	13	1	1	R
+nl5143_r13	nl51	hD	13	1	1	R
+nl5146_r13	nl51	hD	13	1	0	
+nl5147_r13	nl51	hD	13	1	1	R
+nl5149_r13	nl51	hD	13	1	0	
+nl5165_r13	nl51	hD	13	1	1	R
+nl5168_r13	nl51	hD	13	1	1	R
+nl5169_r13	nl51	hD	13	1	1	R
+nl5171_r13	nl51	hD	13	1	1	R
+nl5172_r13	nl51	hD	13	1	1	R
+nl5174_r13	nl51	hD	13	1	1	R
+nl5175_r13	nl51	hD	13	1	1	R
+nl5178_r13	nl51	hD	13	1	1	R
+nl5187_r13	nl51	hD	13	1	1	R
+nl5192_r13	nl51	hD	13	1	1	R
+nl5194_r13	nl51	hD	13	1	1	R
+nl5195_r13	nl51	hD	13	1	1	R
+nl5197_r13	nl51	hD	13	0	1	R
+nl5198_r13	nl51	hD	13	1	1	R
+nl5200_r13	nl51	hD	13	1	1	R
+nl5201_r13	nl51	hD	13	1	1	R
+nl5204_r13	nl51	hD	13	1	1	R
+nl5205_r13	nl51	hD	13	1	1	R
+nl5209_r13	nl51	hD	13	1	1	R
+nl5219_r13	nl51	hD	13	1	0	
+nl5220_r13	nl51	hD	13	1	1	R
+nl5222_r13	nl51	hD	13	1	1	R
+nl5224_r13	nl51	hD	13	1	1	R
+nl5225_r13	nl51	hD	13	1	1	R
+nl5227_r13	nl51	hD	13	1	0	
+nl5228_r13	nl51	hD	13	1	1	R
+nl5236_r13	nl51	hD	13	1	0	
+nl5237_r13	nl51	hD	13	1	1	R
+nl5238_r13	nl51	hD	13	1	0	
+nl5239_r13	nl51	hD	13	1	0	
+nl5242_r13	nl51	hD	13	1	1	R
+nl5257_r13	nl51	hD	13	1	0	
+nl5265_r13	nl51	hD	13	1	1	R
+nl5269_r13	nl51	hD	13	1	1	R
+nl5270_r13	nl51	hD	13	1	1	R
+nl5272_r13	nl51	hD	13	1	1	R
+nl5273_r13	nl51	hD	13	1	1	R
+nl5274_r13	nl51	hD	13	1	1	R
+nl5275_r13	nl51	hD	13	1	1	R
+nl5276_r13	nl51	hD	13	1	1	R
+nl5277_r13	nl51	hD	13	1	1	R
+nl5278_r13	nl51	hD	13	1	1	R
+nl5279_r13	nl51	hD	13	1	1	R
+nl5280_r13	nl51	hD	13	1	1	R
+nl5281_r13	nl51	hD	13	1	1	R
+nl5282_r13	nl51	hD	13	1	1	R
+nl5283_r13	nl51	hD	13	1	1	R
+nl5284_r13	nl51	hD	13	1	1	R
+nl5285_r13	nl51	hD	13	1	1	R
+nl5287_r13	nl51	hD	13	1	1	R
+nl5288_r13	nl51	hD	13	1	1	R
+nl5289_r13	nl51	hD	13	1	1	R
+nl5290_r13	nl51	hD	13	1	1	R
+nl5291_r13	nl51	hD	13	1	1	R
+nl5292_r13	nl51	hD	13	1	1	R
+nl5305_r13	nl51	hD	13	1	1	R
+nl5308_r13	nl51	hD	13	1	1	R
+nl5309_r13	nl51	hD	13	1	1	R
+nl5332_r13	nl51	hD	13	1	1	R
+nl5360_r13	nl51	hD	13	1	1	R
+nl5361_r13	nl51	hD	13	1	1	R
+nl5379_r13	nl51	hD	13	1	1	R
+nl5381_r13	nl51	hD	13	1	1	R
+nl5382_r13	nl51	hD	13	1	1	R
+nl5425_r13	nl51	hD	13	1	1	R
+nl5496_r13	nl51	hD	13	1	1	R
+nl5497_r13	nl51	hD	13	1	1	R
+nl5500_r13	nl51	hD	13	1	1	R
+nl5501_r13	nl51	hD	13	1	1	R
+nl5502_r13	nl51	hD	13	1	1	R
+nl5503_r13	nl51	hD	13	1	1	R
+nl5505_r13	nl51	hD	13	1	0	
+nl5507_r13	nl51	hD	13	1	1	R
+nl5508_r13	nl51	hD	13	1	0	
+nl5515_r13	nl51	hD	13	1	1	R
+nl5516_r13	nl51	hD	13	1	1	R
+nl5518_r13	nl51	hD	13	1	1	R
+nl5519_r13	nl51	hD	13	1	1	R
+nl5523_r13	nl51	hD	13	1	1	R
+nl5535_r13	nl51	hD	13	1	1	R
+nl5537_r13	nl51	hD	13	1	1	R
+nl5539_r13	nl51	hD	13	1	1	KT,R
+nl5540_r13	nl51	hD	13	1	1	R
+nl5541_r13	nl51	hD	13	1	1	R
+nl5543_r13	nl51	hD	13	1	1	R
+nl5545_r13	nl51	hD	13	1	1	R
+nl5546_r13	nl51	hD	13	1	1	R
+nl5552_r13	nl51	hD	13	1	1	R
+nl5554_r13	nl51	hD	13	1	1	R
+nl5555_r13	nl51	hD	13	1	1	R
+nl5556_r13	nl51	hD	13	1	1	R
+nl5557_r13	nl51	hD	13	1	1	R
+nl5558_r13	nl51	hD	13	1	1	R
+nl5559_r13	nl51	hD	13	1	1	R
+nl5560_r13	nl51	hD	13	1	1	R
+nl5563_r13	nl51	hD	13	1	1	R
+nl5567_r13	nl51	hD	13	1	1	R
+nl5568_r13	nl51	hD	13	1	1	R
+nl5569_r13	nl51	hD	13	1	1	R
+nl5581_r13	nl51	hD	13	1	1	R
+nl5582_r13	nl51	hD	13	1	1	R
+nl5583_r13	nl51	hD	13	1	1	R
+nl5592_r13	nl51	hD	13	1	1	R
+nl5593_r13	nl51	hD	13	1	1	R
+nl5594_r13	nl51	hD	13	1	1	R
+nl5595_r13	nl51	hD	13	1	1	R
+nl5596_r13	nl51	hD	13	1	1	R
+nl5597_r13	nl51	hD	13	0	1	R
+nl5598_r13	nl51	hD	13	1	1	R
+nl5599_r13	nl51	hD	13	1	1	R
+nl5601_r13	nl51	hD	13	1	1	R
+nl5603_r13	nl51	hD	13	1	1	R
+nl5605_r13	nl51	hD	13	1	1	R
+nl5606_r13	nl51	hD	13	1	1	R
+nl5607_r13	nl51	hD	13	1	1	R
+nl5608_r13	nl51	hD	13	0	1	R
+nl5609_r13	nl51	hD	13	1	1	R
+nl5610_r13	nl51	hD	13	1	1	R
+nl5612_r13	nl51	hD	13	1	1	R
+nl5613_r13	nl51	hD	13	1	1	R
+nl5615_r13	nl51	hD	13	1	1	R
+nl5618_r13	nl51	hD	13	0	1	R
+nl5620_r13	nl51	hD	13	1	1	R
+nl5622_r13	nl51	hD	13	1	1	R
+nl5627_r13	nl51	hD	13	1	1	R
+nl5628_r13	nl51	hD	13	1	1	R
+nl5631_r13	nl51	hD	13	1	1	R
+nl5633_r13	nl51	hD	13	1	1	R
+nl5636_r13	nl51	hD	13	0	1	R
+nl5637_r13	nl51	hD	13	1	1	R
+nl5641_r13	nl51	hD	13	1	1	R
+nl5644_r13	nl51	hD	13	1	1	R
+nl5645_r13	nl51	hD	13	1	1	R
+nl5646_r13	nl51	hD	13	1	1	R
+nl5652_r13	nl51	hD	13	1	1	R
+nl5653_r13	nl51	hD	13	1	1	R
+nl5675_r13	nl51	hD	13	1	0	
+nl5676_r13	nl51	hD	13	1	1	R
+nl5677_r13	nl51	hD	13	1	1	R
+nl5678_r13	nl51	hD	13	1	1	R
+nl5679_r13	nl51	hD	13	1	0	
+nl5682_r13	nl51	hD	13	1	1	R
+nl5683_r13	nl51	hD	13	1	1	R
+nl5687_r13	nl51	hD	13	0	1	R
+nl5688_r13	nl51	hD	13	1	0	
+nl5689_r13	nl51	hD	13	1	0	
+nl5690_r13	nl51	hD	13	1	1	R
+nl5691_r13	nl51	hD	13	1	1	R
+nl5692_r13	nl51	hD	13	1	0	
+nl5739_r13	nl51	hD	13	1	1	R
+nl5741_r13	nl51	hD	13	1	1	R
+nl5744_r13	nl51	hD	13	1	1	KT,R
+nl5746_r13	nl51	hD	13	1	1	KT,R
+nl5751_r13	nl51	hD	13	1	1	R
+nl5753_r13	nl51	hD	13	1	1	R
+nl5754_r13	nl51	hD	13	1	1	R
+nl5755_r13	nl51	hD	13	1	1	R
+nl5757_r13	nl51	hD	13	1	1	R
+nl5759_r13	nl51	hD	13	1	1	R
+nl5760_r13	nl51	hD	13	1	1	R
+nl5762_r13	nl51	hD	13	1	1	R
+nl5764_r13	nl51	hD	13	1	1	R
+nl5771_r13	nl51	hD	13	1	1	R
+nl5774_r13	nl51	hD	13	1	1	R
+nl5775_r13	nl51	hD	13	1	1	R
+nl5776_r13	nl51	hD	13	1	1	R
+nl5782_r13	nl51	hD	13	1	1	R
+nl5784_r13	nl51	hD	13	0	1	R
+nl5789_r13	nl51	hD	13	1	1	R
+nl5792_r13	nl51	hD	13	1	1	R
+nl5793_r13	nl51	hD	13	1	1	R
+nl5796_r13	nl51	hD	13	1	0	
+nl5798_r13	nl51	hD	13	1	1	R
+nl5861_r13	nl51	hD	13	1	1	R
+nl5862_r13	nl51	hD	13	1	1	R
+nl5863_r13	nl51	hD	13	1	1	R
+nl5864_r13	nl51	hD	13	1	1	R
+nl5869_r13	nl51	hD	13	0	1	R
+nl5870_r13	nl51	hD	13	1	1	R
+nl5874_r13	nl51	hD	13	1	1	R
+nl5875_r13	nl51	hD	13	1	1	R
+nl5876_r13	nl51	hD	13	1	1	R
+nl5877_r13	nl51	hD	13	1	1	R
+nl5881_r13	nl51	hD	13	1	1	R
+nl5882_r13	nl51	hD	13	1	1	R
+nl5885_r13	nl51	hD	13	0	1	R
+nl5888_r13	nl51	hD	13	1	1	R
+nl6010_r13	nl51	hD	13	1	1	R
+nl6040_r13	nl51	hD	13	1	1	R
+nl6042_r13	nl51	hD	13	1	1	R
+nl6048_r13	nl51	hD	13	1	1	R
+nl6324_r13	nl51	hD	13	1	1	R
+nl6327_r13	nl51	hD	13	1	1	R
+nl6329_r13	nl51	hD	13	1	1	R
+nl6330_r13	nl51	hD	13	1	1	R
+nl6335_r13	nl51	hD	13	1	1	R
+nl6337_r13	nl51	hD	13	1	1	R
+nl6339_r13	nl51	hD	13	1	1	R
+nl6340_r13	nl51	hD	13	1	1	R
+nl6342_r13	nl51	hD	13	0	1	R
+nl6353_r13	nl51	hD	13	1	0	
+nl6354_r13	nl51	hD	13	1	1	R
+nl6358_r13	nl51	hD	13	1	1	R
+nl6360_r13	nl51	hD	13	1	1	R
+nl6361_r13	nl51	hD	13	1	1	R
+nl6362_r13	nl51	hD	13	1	1	R
+nl6367_r13	nl51	hD	13	1	1	R
+nl6368_r13	nl51	hD	13	1	1	R
+nl6371_r13	nl51	hD	13	1	1	R
+nl6372_r13	nl51	hD	13	1	1	R
+nl6373_r13	nl51	hD	13	1	1	R
+nl6374_r13	nl51	hD	13	1	1	R
+nl6375_r13	nl51	hD	13	1	1	R
+nl6376_r13	nl51	hD	13	1	1	R
+nl6424_r13	nl51	hD	13	1	1	R
+nl6427_r13	nl51	hD	13	1	1	R
+nl6431_r13	nl51	hD	13	1	1	R
+nl6432_r13	nl51	hD	13	1	1	R
+nl6433_r13	nl51	hD	13	1	1	R
+nl6434_r13	nl51	hD	13	1	1	R
+nl6435_r13	nl51	hD	13	1	1	R
+nl6437_r13	nl51	hD	13	1	1	R
+nl6438_r13	nl51	hD	13	1	1	R
+nl6440_r13	nl51	hD	13	1	1	R
+nl6441_r13	nl51	hD	13	1	1	R
+nl6442_r13	nl51	hD	13	1	1	R
+nl6443_r13	nl51	hD	13	1	1	R
+nl6444_r13	nl51	hD	13	1	1	R
+nl6619_r13	nl51	hD	13	1	1	R
+nl6620_r13	nl51	hD	13	1	1	R
+nl6622_r13	nl51	hD	13	1	1	R
+nl6625_r13	nl51	hD	13	1	1	R
+nl7121_r13	nl51	hD	13	1	1	R
+nl0039_r14	nl51	hD	14	0	1	R
+nl0247_r14	nl51	hD	14	1	1	R
+nl0263_r14	nl51	hD	14	1	1	R
+nl0264_r14	nl51	hD	14	0	1	R
+nl0265_r14	nl51	hD	14	1	1	R
+nl0552_r14	nl51	hD	14	0	1	R
+nl0555_r14	nl51	hD	14	1	1	R
+nl0556_r14	nl51	hD	14	1	1	R
+nl0559_r14	nl51	hD	14	0	1	R
+nl0560_r14	nl51	hD	14	0	1	R
+nl0562_r14	nl51	hD	14	1	1	R
+nl0563_r14	nl51	hD	14	0	0	
+nl0565_r14	nl51	hD	14	1	0	
+nl0578_r14	nl51	hD	14	1	0	
+nl0605_r14	nl51	hD	14	1	1	R
+nl0606_r14	nl51	hD	14	1	1	R
+nl0607_r14	nl51	hD	14	1	1	R
+nl0608_r14	nl51	hD	14	1	1	R
+nl0609_r14	nl51	hD	14	1	0	
+nl0611_r14	nl51	hD	14	1	1	R
+nl0636_r14	nl51	hD	14	1	1	R
+nl0637_r14	nl51	hD	14	0	1	R
+nl0639_r14	nl51	hD	14	1	1	R
+nl0641_r14	nl51	hD	14	1	1	R
+nl0642_r14	nl51	hD	14	1	1	R
+nl0644_r14	nl51	hD	14	1	1	R
+nl0647_r14	nl51	hD	14	1	1	R
+nl0648_r14	nl51	hD	14	0	1	R
+nl0650_r14	nl51	hD	14	1	1	R
+nl0651_r14	nl51	hD	14	0	1	R
+nl0652_r14	nl51	hD	14	1	1	R
+nl0653_r14	nl51	hD	14	1	1	R
+nl0654_r14	nl51	hD	14	1	1	R
+nl0655_r14	nl51	hD	14	1	1	R
+nl0658_r14	nl51	hD	14	1	1	R
+nl0661_r14	nl51	hD	14	0	1	R
+nl0669_r14	nl51	hD	14	1	1	R
+nl0673_r14	nl51	hD	14	1	1	R
+nl0674_r14	nl51	hD	14	1	1	R
+nl0675_r14	nl51	hD	14	1	1	R
+nl0677_r14	nl51	hD	14	1	1	R
+nl0678_r14	nl51	hD	14	1	1	R
+nl0680_r14	nl51	hD	14	1	1	R
+nl0681_r14	nl51	hD	14	1	1	R
+nl0684_r14	nl51	hD	14	0	1	R
+nl0686_r14	nl51	hD	14	1	1	R
+nl0687_r14	nl51	hD	14	1	1	R
+nl0689_r14	nl51	hD	14	1	1	R
+nl0703_r14	nl51	hD	14	0	1	R
+nl0704_r14	nl51	hD	14	1	1	R
+nl0705_r14	nl51	hD	14	0	1	R
+nl0707_r14	nl51	hD	14	0	0	
+nl0713_r14	nl51	hD	14	0	1	R
+nl0714_r14	nl51	hD	14	0	1	R
+nl0718_r14	nl51	hD	14	0	1	R
+nl0724_r14	nl51	hD	14	1	1	KT,R
+nl0729_r14	nl51	hD	14	1	1	R
+nl0730_r14	nl51	hD	14	0	1	R
+nl0731_r14	nl51	hD	14	1	1	R
+nl0732_r14	nl51	hD	14	1	1	R
+nl0735_r14	nl51	hD	14	1	1	R
+nl0736_r14	nl51	hD	14	1	1	R
+nl0737_r14	nl51	hD	14	1	1	R
+nl0738_r14	nl51	hD	14	1	1	R
+nl0739_r14	nl51	hD	14	1	1	R
+nl0740_r14	nl51	hD	14	1	1	R
+nl0741_r14	nl51	hD	14	1	1	R
+nl0742_r14	nl51	hD	14	1	0	
+nl0753_r14	nl51	hD	14	1	1	R
+nl0757_r14	nl51	hD	14	0	1	R
+nl0758_r14	nl51	hD	14	1	1	R
+nl0894_r14	nl51	hD	14	0	1	R
+nl0895_r14	nl51	hD	14	1	0	
+nl0902_r14	nl51	hD	14	0	1	R
+nl0906_r14	nl51	hD	14	1	1	R
+nl0909_r14	nl51	hD	14	1	0	
+nl0911_r14	nl51	hD	14	0	0	
+nl0915_r14	nl51	hD	14	0	0	
+nl0924_r14	nl51	hD	14	1	1	R
+nl0925_r14	nl51	hD	14	1	1	R
+nl0926_r14	nl51	hD	14	0	1	R
+nl0957_r14	nl51	hD	14	0	1	R
+nl0959_r14	nl51	hD	14	1	1	R
+nl0960_r14	nl51	hD	14	1	1	R
+nl0962_r14	nl51	hD	14	1	1	R
+nl0964_r14	nl51	hD	14	1	1	R
+nl0965_r14	nl51	hD	14	1	1	R
+nl0966_r14	nl51	hD	14	1	1	R
+nl0967_r14	nl51	hD	14	1	1	R
+nl0968_r14	nl51	hD	14	1	1	R
+nl0969_r14	nl51	hD	14	1	1	R
+nl0972_r14	nl51	hD	14	1	1	R
+nl0974_r14	nl51	hD	14	0	1	R
+nl0976_r14	nl51	hD	14	1	1	R
+nl0977_r14	nl51	hD	14	1	1	R
+nl0978_r14	nl51	hD	14	1	1	R
+nl0979_r14	nl51	hD	14	1	1	R
+nl0980_r14	nl51	hD	14	1	1	R
+nl0982_r14	nl51	hD	14	1	1	R
+nl0984_r14	nl51	hD	14	1	1	R
+nl0985_r14	nl51	hD	14	1	1	R
+nl0986_r14	nl51	hD	14	1	1	R
+nl0988_r14	nl51	hD	14	1	1	R
+nl0992_r14	nl51	hD	14	0	1	R
+nl0993_r14	nl51	hD	14	1	1	R
+nl0994_r14	nl51	hD	14	1	1	R
+nl0995_r14	nl51	hD	14	0	1	R
+nl0996_r14	nl51	hD	14	1	1	R
+nl0997_r14	nl51	hD	14	1	1	R
+nl0998_r14	nl51	hD	14	1	1	R
+nl1000_r14	nl51	hD	14	0	1	R
+nl1002_r14	nl51	hD	14	0	1	R
+nl1003_r14	nl51	hD	14	1	1	R
+nl1004_r14	nl51	hD	14	1	1	R
+nl1005_r14	nl51	hD	14	0	1	R
+nl1006_r14	nl51	hD	14	0	1	R
+nl1007_r14	nl51	hD	14	0	1	R
+nl1016_r14	nl51	hD	14	1	1	R
+nl1017_r14	nl51	hD	14	1	1	R
+nl1018_r14	nl51	hD	14	1	1	R
+nl1019_r14	nl51	hD	14	1	1	R
+nl1021_r14	nl51	hD	14	1	1	R
+nl1025_r14	nl51	hD	14	1	1	R
+nl1026_r14	nl51	hD	14	0	1	R
+nl1027_r14	nl51	hD	14	0	1	R
+nl1032_r14	nl51	hD	14	0	1	R
+nl1033_r14	nl51	hD	14	0	1	R
+nl1041_r14	nl51	hD	14	1	1	R
+nl1042_r14	nl51	hD	14	1	1	R
+nl1044_r14	nl51	hD	14	1	1	R
+nl1046_r14	nl51	hD	14	1	1	R
+nl1047_r14	nl51	hD	14	0	1	R
+nl1048_r14	nl51	hD	14	1	1	R
+nl1050_r14	nl51	hD	14	1	1	KT,R
+nl1051_r14	nl51	hD	14	1	1	R
+nl1052_r14	nl51	hD	14	1	1	R
+nl1054_r14	nl51	hD	14	0	1	R
+nl1055_r14	nl51	hD	14	1	1	R
+nl1057_r14	nl51	hD	14	1	1	R
+nl1058_r14	nl51	hD	14	0	1	R
+nl1059_r14	nl51	hD	14	0	1	R
+nl1074_r14	nl51	hD	14	1	1	R
+nl1075_r14	nl51	hD	14	1	1	R
+nl1078_r14	nl51	hD	14	1	1	R
+nl1081_r14	nl51	hD	14	1	1	R
+nl1082_r14	nl51	hD	14	1	1	R
+nl1083_r14	nl51	hD	14	1	1	R
+nl1084_r14	nl51	hD	14	0	1	R
+nl1087_r14	nl51	hD	14	0	1	R
+nl1090_r14	nl51	hD	14	0	1	R
+nl1150_r14	nl51	hD	14	1	1	R
+nl1151_r14	nl51	hD	14	1	1	R
+nl1153_r14	nl51	hD	14	0	1	R
+nl1155_r14	nl51	hD	14	1	1	R
+nl1156_r14	nl51	hD	14	1	1	R
+nl1157_r14	nl51	hD	14	1	1	R
+nl1158_r14	nl51	hD	14	1	1	R
+nl1159_r14	nl51	hD	14	1	1	R
+nl1160_r14	nl51	hD	14	1	1	R
+nl1161_r14	nl51	hD	14	0	1	R
+nl1163_r14	nl51	hD	14	0	1	R
+nl1166_r14	nl51	hD	14	0	1	R
+nl1169_r14	nl51	hD	14	1	1	R
+nl1170_r14	nl51	hD	14	1	1	R
+nl1199_r14	nl51	hD	14	0	1	R
+nl1200_r14	nl51	hD	14	0	1	R
+nl1201_r14	nl51	hD	14	0	1	R
+nl1202_r14	nl51	hD	14	0	1	R
+nl1203_r14	nl51	hD	14	0	1	R
+nl1204_r14	nl51	hD	14	0	1	R
+nl1209_r14	nl51	hD	14	1	1	R
+nl1210_r14	nl51	hD	14	0	1	R
+nl1211_r14	nl51	hD	14	0	1	R
+nl1213_r14	nl51	hD	14	1	1	R
+nl1215_r14	nl51	hD	14	1	1	R
+nl1217_r14	nl51	hD	14	1	1	R
+nl1295_r14	nl51	hD	14	0	1	R
+nl1296_r14	nl51	hD	14	1	1	R
+nl1297_r14	nl51	hD	14	1	1	R
+nl1364_r14	nl51	hD	14	1	1	R
+nl1418_r14	nl51	hD	14	1	1	R
+nl1419_r14	nl51	hD	14	0	1	R
+nl1420_r14	nl51	hD	14	0	1	R
+nl1421_r14	nl51	hD	14	0	1	R
+nl1424_r14	nl51	hD	14	1	1	R
+nl1425_r14	nl51	hD	14	1	1	R
+nl1426_r14	nl51	hD	14	0	1	R
+nl1427_r14	nl51	hD	14	1	1	R
+nl1432_r14	nl51	hD	14	1	1	R
+nl1437_r14	nl51	hD	14	0	1	R
+nl1443_r14	nl51	hD	14	0	1	R
+nl1444_r14	nl51	hD	14	0	1	R
+nl1445_r14	nl51	hD	14	1	1	R
+nl1446_r14	nl51	hD	14	0	1	R
+nl1447_r14	nl51	hD	14	0	1	R
+nl1448_r14	nl51	hD	14	1	1	R
+nl1449_r14	nl51	hD	14	1	1	R
+nl1450_r14	nl51	hD	14	0	1	R
+nl1738_r14	nl51	hD	14	1	0	
+nl1739_r14	nl51	hD	14	1	1	R
+nl1764_r14	nl51	hD	14	1	1	R
+nl1768_r14	nl51	hD	14	1	1	R
+nl1769_r14	nl51	hD	14	1	1	R
+nl2000_r14	nl51	hD	14	1	0	
+nl2002_r14	nl51	hD	14	1	1	R
+nl2003_r14	nl51	hD	14	1	1	R
+nl2041_r14	nl51	hD	14	1	0	
+nl2044_r14	nl51	hD	14	1	1	R
+nl2081_r14	nl51	hD	14	1	1	R
+nl2082_r14	nl51	hD	14	1	1	R
+nl2088_r14	nl51	hD	14	1	1	R
+nl2091_r14	nl51	hD	14	1	1	R
+nl2094_r14	nl51	hD	14	1	1	R
+nl2095_r14	nl51	hD	14	1	1	R
+nl2100_r14	nl51	hD	14	1	1	R
+nl2102_r14	nl51	hD	14	1	1	R
+nl2103_r14	nl51	hD	14	1	1	R
+nl2107_r14	nl51	hD	14	1	1	R
+nl2108_r14	nl51	hD	14	1	1	R
+nl2109_r14	nl51	hD	14	1	1	R
+nl2110_r14	nl51	hD	14	1	1	R
+nl2111_r14	nl51	hD	14	1	1	R
+nl2112_r14	nl51	hD	14	1	1	R
+nl2114_r14	nl51	hD	14	1	1	R
+nl2115_r14	nl51	hD	14	1	1	R
+nl2116_r14	nl51	hD	14	1	1	R
+nl2117_r14	nl51	hD	14	1	1	R
+nl2118_r14	nl51	hD	14	1	1	R
+nl2119_r14	nl51	hD	14	1	1	R
+nl2120_r14	nl51	hD	14	1	1	R
+nl2121_r14	nl51	hD	14	1	1	R
+nl2122_r14	nl51	hD	14	1	1	R
+nl2123_r14	nl51	hD	14	1	1	R
+nl2127_r14	nl51	hD	14	1	1	R
+nl2128_r14	nl51	hD	14	1	1	R
+nl2129_r14	nl51	hD	14	1	1	R
+nl2130_r14	nl51	hD	14	1	1	R
+nl2133_r14	nl51	hD	14	1	1	R
+nl2134_r14	nl51	hD	14	1	1	R
+nl2136_r14	nl51	hD	14	1	1	R
+nl2138_r14	nl51	hD	14	1	1	R
+nl2140_r14	nl51	hD	14	1	1	R
+nl2165_r14	nl51	hD	14	1	1	R
+nl2166_r14	nl51	hD	14	1	1	R
+nl2168_r14	nl51	hD	14	1	1	R
+nl2169_r14	nl51	hD	14	1	1	R
+nl2173_r14	nl51	hD	14	0	1	R
+nl2183_r14	nl51	hD	14	1	1	R
+nl2184_r14	nl51	hD	14	1	1	R
+nl2190_r14	nl51	hD	14	1	1	R
+nl2191_r14	nl51	hD	14	1	1	R
+nl2192_r14	nl51	hD	14	1	1	R
+nl2194_r14	nl51	hD	14	1	1	R
+nl2197_r14	nl51	hD	14	1	1	R
+nl2215_r14	nl51	hD	14	1	1	R
+nl2216_r14	nl51	hD	14	1	1	R
+nl2217_r14	nl51	hD	14	1	1	R
+nl2218_r14	nl51	hD	14	1	1	R
+nl2219_r14	nl51	hD	14	1	1	R
+nl2220_r14	nl51	hD	14	1	1	R
+nl2227_r14	nl51	hD	14	1	1	R
+nl2228_r14	nl51	hD	14	1	1	R
+nl2229_r14	nl51	hD	14	1	1	R
+nl2230_r14	nl51	hD	14	1	1	R
+nl2248_r14	nl51	hD	14	1	0	
+nl2249_r14	nl51	hD	14	1	1	R
+nl2255_r14	nl51	hD	14	1	1	R
+nl2295_r14	nl51	hD	14	1	0	
+nl2296_r14	nl51	hD	14	1	1	R
+nl2325_r14	nl51	hD	14	1	1	R
+nl2328_r14	nl51	hD	14	1	1	R
+nl2329_r14	nl51	hD	14	1	1	R
+nl2340_r14	nl51	hD	14	1	1	R
+nl2344_r14	nl51	hD	14	1	1	R
+nl2345_r14	nl51	hD	14	1	1	R
+nl2346_r14	nl51	hD	14	1	1	R
+nl2347_r14	nl51	hD	14	1	1	R
+nl2349_r14	nl51	hD	14	1	1	R
+nl2350_r14	nl51	hD	14	1	1	R
+nl2351_r14	nl51	hD	14	0	1	R
+nl2352_r14	nl51	hD	14	1	1	R
+nl2359_r14	nl51	hD	14	1	1	R
+nl2360_r14	nl51	hD	14	1	1	R
+nl2361_r14	nl51	hD	14	1	1	R
+nl2364_r14	nl51	hD	14	1	0	
+nl2366_r14	nl51	hD	14	1	1	R
+nl2367_r14	nl51	hD	14	0	1	R
+nl2370_r14	nl51	hD	14	1	1	R
+nl2381_r14	nl51	hD	14	1	1	R
+nl2383_r14	nl51	hD	14	1	1	R
+nl2384_r14	nl51	hD	14	1	1	R
+nl2385_r14	nl51	hD	14	1	1	R
+nl2386_r14	nl51	hD	14	0	1	R
+nl2389_r14	nl51	hD	14	1	1	R
+nl2391_r14	nl51	hD	14	1	1	R
+nl2394_r14	nl51	hD	14	1	1	R
+nl2395_r14	nl51	hD	14	0	1	R
+nl2398_r14	nl51	hD	14	0	1	R
+nl2399_r14	nl51	hD	14	0	1	R
+nl2402_r14	nl51	hD	14	1	1	R
+nl2405_r14	nl51	hD	14	0	1	R
+nl2406_r14	nl51	hD	14	0	1	R
+nl2411_r14	nl51	hD	14	1	1	R
+nl2412_r14	nl51	hD	14	1	1	R
+nl2430_r14	nl51	hD	14	1	1	R
+nl2432_r14	nl51	hD	14	1	1	R
+nl2435_r14	nl51	hD	14	0	1	R
+nl2436_r14	nl51	hD	14	1	1	R
+nl2437_r14	nl51	hD	14	1	1	R
+nl2439_r14	nl51	hD	14	1	1	R
+nl2441_r14	nl51	hD	14	1	1	R
+nl2442_r14	nl51	hD	14	1	1	R
+nl2443_r14	nl51	hD	14	1	1	R
+nl2444_r14	nl51	hD	14	1	1	R
+nl2450_r14	nl51	hD	14	1	1	R
+nl2451_r14	nl51	hD	14	1	1	R
+nl2495_r14	nl51	hD	14	0	1	R
+nl2496_r14	nl51	hD	14	1	1	R
+nl2497_r14	nl51	hD	14	1	1	R
+nl2500_r14	nl51	hD	14	0	1	R
+nl2503_r14	nl51	hD	14	1	1	R
+nl2508_r14	nl51	hD	14	1	1	R
+nl2512_r14	nl51	hD	14	1	1	R
+nl2562_r14	nl51	hD	14	1	1	R
+nl2563_r14	nl51	hD	14	0	1	R
+nl2570_r14	nl51	hD	14	1	1	R
+nl2571_r14	nl51	hD	14	1	1	R
+nl2618_r14	nl51	hD	14	1	1	R
+nl2831_r14	nl51	hD	14	0	1	R
+nl2832_r14	nl51	hD	14	0	1	R
+nl2951_r14	nl51	hD	14	1	1	R
+nl2971_r14	nl51	hD	14	1	1	R
+nl2973_r14	nl51	hD	14	1	1	R
+nl2977_r14	nl51	hD	14	0	1	R
+nl2979_r14	nl51	hD	14	1	0	
+nl2998_r14	nl51	hD	14	1	0	
+nl2999_r14	nl51	hD	14	0	1	R
+nl3001_r14	nl51	hD	14	1	1	R
+nl3002_r14	nl51	hD	14	1	1	R
+nl3003_r14	nl51	hD	14	0	0	
+nl3004_r14	nl51	hD	14	1	0	
+nl3005_r14	nl51	hD	14	1	1	R
+nl3007_r14	nl51	hD	14	0	1	R
+nl3008_r14	nl51	hD	14	0	0	
+nl3014_r14	nl51	hD	14	1	1	R
+nl3015_r14	nl51	hD	14	1	1	R
+nl3021_r14	nl51	hD	14	1	1	R
+nl3022_r14	nl51	hD	14	1	0	
+nl3024_r14	nl51	hD	14	1	0	
+nl3026_r14	nl51	hD	14	1	1	R
+nl3027_r14	nl51	hD	14	0	1	R
+nl3029_r14	nl51	hD	14	1	1	R
+nl3030_r14	nl51	hD	14	1	1	R
+nl3031_r14	nl51	hD	14	0	1	R
+nl3032_r14	nl51	hD	14	1	1	R
+nl3033_r14	nl51	hD	14	1	1	R
+nl3034_r14	nl51	hD	14	1	1	R
+nl3035_r14	nl51	hD	14	1	1	R
+nl3036_r14	nl51	hD	14	1	1	R
+nl3037_r14	nl51	hD	14	0	1	R
+nl3040_r14	nl51	hD	14	1	0	
+nl3049_r14	nl51	hD	14	0	1	R
+nl3051_r14	nl51	hD	14	1	0	
+nl3052_r14	nl51	hD	14	1	0	
+nl3053_r14	nl51	hD	14	1	0	
+nl3055_r14	nl51	hD	14	0	1	R
+nl3056_r14	nl51	hD	14	0	1	R
+nl3057_r14	nl51	hD	14	0	1	R
+nl3058_r14	nl51	hD	14	0	0	
+nl3062_r14	nl51	hD	14	1	0	
+nl3068_r14	nl51	hD	14	0	1	R
+nl3073_r14	nl51	hD	14	0	1	R
+nl3074_r14	nl51	hD	14	1	1	R
+nl3075_r14	nl51	hD	14	1	1	R
+nl3076_r14	nl51	hD	14	0	1	R
+nl3090_r14	nl51	hD	14	1	1	R
+nl3330_r14	nl51	hD	14	0	1	R
+nl3332_r14	nl51	hD	14	1	1	R
+nl3336_r14	nl51	hD	14	0	0	
+nl3344_r14	nl51	hD	14	1	0	
+nl3345_r14	nl51	hD	14	0	1	R
+nl3368_r14	nl51	hD	14	0	0	
+nl3370_r14	nl51	hD	14	1	1	R
+nl3382_r14	nl51	hD	14	0	0	
+nl3385_r14	nl51	hD	14	1	1	R
+nl3386_r14	nl51	hD	14	1	1	R
+nl3388_r14	nl51	hD	14	0	0	
+nl3391_r14	nl51	hD	14	0	0	
+nl3393_r14	nl51	hD	14	1	0	
+nl3395_r14	nl51	hD	14	1	1	R
+nl3398_r14	nl51	hD	14	0	1	R
+nl3401_r14	nl51	hD	14	1	0	
+nl3402_r14	nl51	hD	14	1	1	R
+nl3404_r14	nl51	hD	14	0	0	
+nl3406_r14	nl51	hD	14	1	1	R
+nl3417_r14	nl51	hD	14	1	1	R
+nl3418_r14	nl51	hD	14	1	1	R
+nl3419_r14	nl51	hD	14	1	1	R
+nl3420_r14	nl51	hD	14	1	1	R
+nl3456_r14	nl51	hD	14	0	1	R
+nl3460_r14	nl51	hD	14	1	1	R
+nl3462_r14	nl51	hD	14	0	1	R
+nl3464_r14	nl51	hD	14	1	1	KT,R
+nl3465_r14	nl51	hD	14	0	1	R
+nl3467_r14	nl51	hD	14	1	1	R
+nl3468_r14	nl51	hD	14	1	1	R
+nl3469_r14	nl51	hD	14	1	1	R
+nl3470_r14	nl51	hD	14	1	1	R
+nl3471_r14	nl51	hD	14	0	1	R
+nl3473_r14	nl51	hD	14	0	1	R
+nl3474_r14	nl51	hD	14	1	1	R
+nl3475_r14	nl51	hD	14	1	1	R
+nl3476_r14	nl51	hD	14	1	1	R
+nl3477_r14	nl51	hD	14	0	1	R
+nl3478_r14	nl51	hD	14	1	1	R
+nl3479_r14	nl51	hD	14	0	1	R
+nl3480_r14	nl51	hD	14	1	1	R
+nl3482_r14	nl51	hD	14	1	1	R
+nl3484_r14	nl51	hD	14	0	1	R
+nl3485_r14	nl51	hD	14	1	1	R
+nl3486_r14	nl51	hD	14	1	1	R
+nl3487_r14	nl51	hD	14	1	1	R
+nl3488_r14	nl51	hD	14	1	1	R
+nl3490_r14	nl51	hD	14	1	1	R
+nl3492_r14	nl51	hD	14	0	1	R
+nl3494_r14	nl51	hD	14	1	1	R
+nl3495_r14	nl51	hD	14	1	1	R
+nl3497_r14	nl51	hD	14	1	1	R
+nl3498_r14	nl51	hD	14	1	1	R
+nl3500_r14	nl51	hD	14	1	1	R
+nl3501_r14	nl51	hD	14	1	1	R
+nl3503_r14	nl51	hD	14	1	1	R
+nl3504_r14	nl51	hD	14	1	1	R
+nl3505_r14	nl51	hD	14	1	1	R
+nl3508_r14	nl51	hD	14	0	1	R
+nl3510_r14	nl51	hD	14	1	1	R
+nl3512_r14	nl51	hD	14	0	1	R
+nl3514_r14	nl51	hD	14	1	1	R
+nl3515_r14	nl51	hD	14	0	1	R
+nl3516_r14	nl51	hD	14	0	1	R
+nl3517_r14	nl51	hD	14	1	1	R
+nl3518_r14	nl51	hD	14	0	1	R
+nl3520_r14	nl51	hD	14	1	1	R
+nl3521_r14	nl51	hD	14	1	1	R
+nl3522_r14	nl51	hD	14	1	1	R
+nl3523_r14	nl51	hD	14	0	1	R
+nl3525_r14	nl51	hD	14	1	1	R
+nl3526_r14	nl51	hD	14	1	1	R
+nl3527_r14	nl51	hD	14	1	1	R
+nl3529_r14	nl51	hD	14	1	1	R
+nl3530_r14	nl51	hD	14	1	1	R
+nl3531_r14	nl51	hD	14	0	1	R
+nl3533_r14	nl51	hD	14	1	1	R
+nl3534_r14	nl51	hD	14	1	1	R
+nl3535_r14	nl51	hD	14	1	1	R
+nl3536_r14	nl51	hD	14	1	1	R
+nl3538_r14	nl51	hD	14	1	1	R
+nl3539_r14	nl51	hD	14	1	1	R
+nl3540_r14	nl51	hD	14	1	1	R
+nl3542_r14	nl51	hD	14	0	1	R
+nl3544_r14	nl51	hD	14	1	1	R
+nl3548_r14	nl51	hD	14	1	1	R
+nl3549_r14	nl51	hD	14	1	1	R
+nl3550_r14	nl51	hD	14	0	1	R
+nl3563_r14	nl51	hD	14	0	1	R
+nl3564_r14	nl51	hD	14	1	1	R
+nl3565_r14	nl51	hD	14	1	1	R
+nl3567_r14	nl51	hD	14	0	1	R
+nl3570_r14	nl51	hD	14	1	1	R
+nl3576_r14	nl51	hD	14	0	1	R
+nl3581_r14	nl51	hD	14	1	1	R
+nl3584_r14	nl51	hD	14	1	0	
+nl3585_r14	nl51	hD	14	1	1	R
+nl3587_r14	nl51	hD	14	1	1	R
+nl3588_r14	nl51	hD	14	0	0	
+nl3589_r14	nl51	hD	14	0	1	R
+nl3593_r14	nl51	hD	14	1	1	R
+nl3595_r14	nl51	hD	14	0	1	R
+nl3596_r14	nl51	hD	14	0	1	R
+nl3599_r14	nl51	hD	14	1	1	R
+nl3604_r14	nl51	hD	14	0	1	R
+nl3605_r14	nl51	hD	14	0	1	R
+nl3639_r14	nl51	hD	14	0	0	
+nl3640_r14	nl51	hD	14	0	1	R
+nl3641_r14	nl51	hD	14	0	1	R
+nl3675_r14	nl51	hD	14	0	1	R
+nl3676_r14	nl51	hD	14	1	1	R
+nl3677_r14	nl51	hD	14	1	1	R
+nl3678_r14	nl51	hD	14	1	1	R
+nl3679_r14	nl51	hD	14	1	1	R
+nl3680_r14	nl51	hD	14	1	1	R
+nl3681_r14	nl51	hD	14	1	1	R
+nl3682_r14	nl51	hD	14	0	1	R
+nl3683_r14	nl51	hD	14	0	1	R
+nl3687_r14	nl51	hD	14	1	1	R
+nl3688_r14	nl51	hD	14	1	1	R
+nl3689_r14	nl51	hD	14	0	1	R
+nl3690_r14	nl51	hD	14	1	1	R
+nl3691_r14	nl51	hD	14	1	1	R
+nl3692_r14	nl51	hD	14	1	1	R
+nl3694_r14	nl51	hD	14	1	1	KT,R
+nl3695_r14	nl51	hD	14	1	1	R
+nl3696_r14	nl51	hD	14	1	1	R
+nl3697_r14	nl51	hD	14	1	1	R
+nl3698_r14	nl51	hD	14	1	1	KT,R
+nl3700_r14	nl51	hD	14	1	1	R
+nl3701_r14	nl51	hD	14	1	1	R
+nl3702_r14	nl51	hD	14	1	1	R
+nl3704_r14	nl51	hD	14	0	1	R
+nl3705_r14	nl51	hD	14	1	1	R
+nl3706_r14	nl51	hD	14	1	1	R
+nl3707_r14	nl51	hD	14	1	1	R
+nl3723_r14	nl51	hD	14	1	1	R
+nl3725_r14	nl51	hD	14	1	1	R
+nl3730_r14	nl51	hD	14	0	1	R
+nl3732_r14	nl51	hD	14	1	1	R
+nl3733_r14	nl51	hD	14	1	1	R
+nl3735_r14	nl51	hD	14	1	1	R
+nl3737_r14	nl51	hD	14	0	1	R
+nl3740_r14	nl51	hD	14	1	1	R
+nl3741_r14	nl51	hD	14	1	1	R
+nl3742_r14	nl51	hD	14	1	1	R
+nl3744_r14	nl51	hD	14	1	1	R
+nl3746_r14	nl51	hD	14	1	1	R
+nl3747_r14	nl51	hD	14	1	1	R
+nl3749_r14	nl51	hD	14	1	1	R
+nl3751_r14	nl51	hD	14	1	1	R
+nl3842_r14	nl51	hD	14	0	1	R
+nl3938_r14	nl51	hD	14	0	0	
+nl3941_r14	nl51	hD	14	0	1	R
+nl3942_r14	nl51	hD	14	0	0	
+nl3944_r14	nl51	hD	14	0	1	R
+nl3945_r14	nl51	hD	14	0	1	R
+nl3982_r14	nl51	hD	14	1	1	R
+nl3984_r14	nl51	hD	14	1	1	R
+nl3985_r14	nl51	hD	14	1	1	R
+nl3987_r14	nl51	hD	14	0	1	R
+nl3989_r14	nl51	hD	14	1	1	R
+nl3993_r14	nl51	hD	14	1	1	R
+nl3994_r14	nl51	hD	14	1	1	R
+nl3995_r14	nl51	hD	14	1	1	R
+nl3997_r14	nl51	hD	14	1	1	R
+nl3999_r14	nl51	hD	14	1	1	R
+nl4000_r14	nl51	hD	14	0	1	R
+nl4003_r14	nl51	hD	14	1	1	R
+nl4004_r14	nl51	hD	14	1	1	R
+nl4005_r14	nl51	hD	14	1	1	R
+nl4006_r14	nl51	hD	14	0	1	R
+nl4008_r14	nl51	hD	14	0	1	R
+nl4010_r14	nl51	hD	14	1	1	R
+nl4011_r14	nl51	hD	14	1	1	R
+nl4013_r14	nl51	hD	14	0	1	R
+nl4015_r14	nl51	hD	14	1	1	R
+nl4016_r14	nl51	hD	14	1	1	R
+nl4017_r14	nl51	hD	14	1	1	R
+nl4018_r14	nl51	hD	14	1	1	R
+nl4019_r14	nl51	hD	14	1	1	R
+nl4020_r14	nl51	hD	14	1	1	R
+nl4022_r14	nl51	hD	14	1	1	R
+nl4024_r14	nl51	hD	14	1	1	R
+nl4025_r14	nl51	hD	14	1	1	R
+nl4026_r14	nl51	hD	14	1	1	R
+nl4027_r14	nl51	hD	14	1	1	R
+nl4030_r14	nl51	hD	14	1	1	R
+nl4031_r14	nl51	hD	14	1	1	R
+nl4032_r14	nl51	hD	14	1	1	R
+nl4033_r14	nl51	hD	14	0	1	R
+nl4034_r14	nl51	hD	14	1	1	R
+nl4035_r14	nl51	hD	14	1	1	R
+nl4040_r14	nl51	hD	14	1	1	R
+nl4041_r14	nl51	hD	14	0	1	R
+nl4043_r14	nl51	hD	14	1	1	R
+nl4045_r14	nl51	hD	14	1	1	R
+nl4046_r14	nl51	hD	14	1	1	R
+nl4048_r14	nl51	hD	14	1	1	R
+nl4049_r14	nl51	hD	14	0	1	R
+nl4051_r14	nl51	hD	14	0	1	R
+nl4052_r14	nl51	hD	14	0	1	R
+nl4053_r14	nl51	hD	14	1	1	R
+nl4086_r14	nl51	hD	14	1	1	R
+nl4088_r14	nl51	hD	14	0	1	R
+nl4093_r14	nl51	hD	14	0	0	
+nl4095_r14	nl51	hD	14	1	1	R
+nl4101_r14	nl51	hD	14	0	1	R
+nl4103_r14	nl51	hD	14	1	1	R
+nl4108_r14	nl51	hD	14	0	1	R
+nl4112_r14	nl51	hD	14	1	1	R
+nl4113_r14	nl51	hD	14	1	1	R
+nl4117_r14	nl51	hD	14	1	1	R
+nl4120_r14	nl51	hD	14	0	1	R
+nl4125_r14	nl51	hD	14	1	1	R
+nl4126_r14	nl51	hD	14	1	1	R
+nl4127_r14	nl51	hD	14	0	1	R
+nl4130_r14	nl51	hD	14	1	1	R
+nl4132_r14	nl51	hD	14	0	1	R
+nl4142_r14	nl51	hD	14	1	1	R
+nl4144_r14	nl51	hD	14	1	1	R
+nl4145_r14	nl51	hD	14	0	1	R
+nl4147_r14	nl51	hD	14	0	1	R
+nl4148_r14	nl51	hD	14	0	1	R
+nl4149_r14	nl51	hD	14	0	1	R
+nl4153_r14	nl51	hD	14	0	1	R
+nl4159_r14	nl51	hD	14	0	1	R
+nl4174_r14	nl51	hD	14	1	1	R
+nl4175_r14	nl51	hD	14	0	1	R
+nl4178_r14	nl51	hD	14	0	0	
+nl4181_r14	nl51	hD	14	1	1	R
+nl4203_r14	nl51	hD	14	0	1	R
+nl4206_r14	nl51	hD	14	1	1	R
+nl4207_r14	nl51	hD	14	0	1	R
+nl4208_r14	nl51	hD	14	1	1	R
+nl4210_r14	nl51	hD	14	0	1	R
+nl4211_r14	nl51	hD	14	1	1	R
+nl4212_r14	nl51	hD	14	0	1	R
+nl4213_r14	nl51	hD	14	1	1	R
+nl4214_r14	nl51	hD	14	1	1	R
+nl4215_r14	nl51	hD	14	1	1	R
+nl4217_r14	nl51	hD	14	1	1	R
+nl4221_r14	nl51	hD	14	1	1	R
+nl4223_r14	nl51	hD	14	0	1	R
+nl4225_r14	nl51	hD	14	1	1	R
+nl4226_r14	nl51	hD	14	1	1	R
+nl4238_r14	nl51	hD	14	1	1	R
+nl4241_r14	nl51	hD	14	1	1	R
+nl4247_r14	nl51	hD	14	0	1	R
+nl4250_r14	nl51	hD	14	1	1	R
+nl4251_r14	nl51	hD	14	1	1	R
+nl4252_r14	nl51	hD	14	1	1	R
+nl4253_r14	nl51	hD	14	0	1	R
+nl4254_r14	nl51	hD	14	1	1	KT,R
+nl4255_r14	nl51	hD	14	1	1	R
+nl4258_r14	nl51	hD	14	1	1	R
+nl4259_r14	nl51	hD	14	0	1	R
+nl4260_r14	nl51	hD	14	1	1	R
+nl4261_r14	nl51	hD	14	1	1	R
+nl4262_r14	nl51	hD	14	1	1	R
+nl4263_r14	nl51	hD	14	1	1	R
+nl4264_r14	nl51	hD	14	1	1	R
+nl4265_r14	nl51	hD	14	1	1	R
+nl4266_r14	nl51	hD	14	1	1	R
+nl4267_r14	nl51	hD	14	1	1	R
+nl4269_r14	nl51	hD	14	1	1	R
+nl4270_r14	nl51	hD	14	1	1	R
+nl4272_r14	nl51	hD	14	1	1	R
+nl4274_r14	nl51	hD	14	1	1	R
+nl4275_r14	nl51	hD	14	1	1	KT,R
+nl4278_r14	nl51	hD	14	0	1	R
+nl4281_r14	nl51	hD	14	1	1	R
+nl4282_r14	nl51	hD	14	0	1	R
+nl4283_r14	nl51	hD	14	0	1	R
+nl4286_r14	nl51	hD	14	0	1	R
+nl4287_r14	nl51	hD	14	1	1	R
+nl4290_r14	nl51	hD	14	1	1	R
+nl4291_r14	nl51	hD	14	0	1	R
+nl4292_r14	nl51	hD	14	1	1	R
+nl4294_r14	nl51	hD	14	0	1	R
+nl4295_r14	nl51	hD	14	1	1	R
+nl4297_r14	nl51	hD	14	1	1	R
+nl4300_r14	nl51	hD	14	0	1	R
+nl4301_r14	nl51	hD	14	1	1	R
+nl4302_r14	nl51	hD	14	1	1	R
+nl4414_r14	nl51	hD	14	1	1	R
+nl4416_r14	nl51	hD	14	0	1	R
+nl4419_r14	nl51	hD	14	1	1	R
+nl4421_r14	nl51	hD	14	0	1	R
+nl4424_r14	nl51	hD	14	1	1	R
+nl4426_r14	nl51	hD	14	1	1	R
+nl4427_r14	nl51	hD	14	1	1	R
+nl4432_r14	nl51	hD	14	0	1	R
+nl4433_r14	nl51	hD	14	1	1	R
+nl4435_r14	nl51	hD	14	1	1	R
+nl4436_r14	nl51	hD	14	0	1	R
+nl4520_r14	nl51	hD	14	1	1	R
+nl4522_r14	nl51	hD	14	1	1	R
+nl4575_r14	nl51	hD	14	0	1	R
+nl4576_r14	nl51	hD	14	1	1	R
+nl4578_r14	nl51	hD	14	1	1	R
+nl4579_r14	nl51	hD	14	1	1	R
+nl4663_r14	nl51	hD	14	1	1	R
+nl4738_r14	nl51	hD	14	1	1	R
+nl4739_r14	nl51	hD	14	0	1	R
+nl4740_r14	nl51	hD	14	1	1	R
+nl4743_r14	nl51	hD	14	1	1	R
+nl4749_r14	nl51	hD	14	1	1	R
+nl4750_r14	nl51	hD	14	1	1	R
+nl4751_r14	nl51	hD	14	1	1	R
+nl4753_r14	nl51	hD	14	1	1	R
+nl4755_r14	nl51	hD	14	1	1	R
+nl4756_r14	nl51	hD	14	1	1	R
+nl4757_r14	nl51	hD	14	1	1	R
+nl4759_r14	nl51	hD	14	0	1	R
+nl4760_r14	nl51	hD	14	1	1	R
+nl4763_r14	nl51	hD	14	1	1	R
+nl4785_r14	nl51	hD	14	0	1	R
+nl4786_r14	nl51	hD	14	0	1	R
+nl4790_r14	nl51	hD	14	0	1	R
+nl4793_r14	nl51	hD	14	1	1	R
+nl4795_r14	nl51	hD	14	0	1	R
+nl4798_r14	nl51	hD	14	1	1	R
+nl4819_r14	nl51	hD	14	1	1	R
+nl4837_r14	nl51	hD	14	0	1	R
+nl4839_r14	nl51	hD	14	1	1	R
+nl5026_r14	nl51	hD	14	1	1	R
+nl5214_r14	nl51	hD	14	1	1	R
+nl5215_r14	nl51	hD	14	1	1	R
+nl5216_r14	nl51	hD	14	1	1	R
+nl5243_r14	nl51	hD	14	1	0	
+nl5244_r14	nl51	hD	14	1	1	R
+nl5246_r14	nl51	hD	14	1	0	
+nl5247_r14	nl51	hD	14	1	0	
+nl5251_r14	nl51	hD	14	1	0	
+nl5252_r14	nl51	hD	14	1	0	
+nl5253_r14	nl51	hD	14	1	1	R
+nl5259_r14	nl51	hD	14	1	1	R
+nl5260_r14	nl51	hD	14	1	1	R
+nl5297_r14	nl51	hD	14	1	1	R
+nl5298_r14	nl51	hD	14	1	1	R
+nl5301_r14	nl51	hD	14	1	1	R
+nl5302_r14	nl51	hD	14	1	1	R
+nl5314_r14	nl51	hD	14	1	1	R
+nl5315_r14	nl51	hD	14	1	0	
+nl5317_r14	nl51	hD	14	1	1	R
+nl5321_r14	nl51	hD	14	1	0	
+nl5322_r14	nl51	hD	14	1	1	R
+nl5323_r14	nl51	hD	14	1	1	R
+nl5324_r14	nl51	hD	14	1	1	R
+nl5327_r14	nl51	hD	14	1	0	
+nl5328_r14	nl51	hD	14	1	1	R
+nl5337_r14	nl51	hD	14	1	0	
+nl5338_r14	nl51	hD	14	1	0	
+nl5340_r14	nl51	hD	14	1	0	
+nl5341_r14	nl51	hD	14	1	0	
+nl5343_r14	nl51	hD	14	1	0	
+nl5344_r14	nl51	hD	14	1	0	
+nl5347_r14	nl51	hD	14	1	0	
+nl5349_r14	nl51	hD	14	1	1	R
+nl5350_r14	nl51	hD	14	1	1	R
+nl5351_r14	nl51	hD	14	1	1	R
+nl5352_r14	nl51	hD	14	1	0	
+nl5353_r14	nl51	hD	14	1	1	R
+nl5362_r14	nl51	hD	14	1	1	R
+nl5364_r14	nl51	hD	14	1	1	R
+nl5365_r14	nl51	hD	14	1	1	R
+nl5366_r14	nl51	hD	14	1	1	R
+nl5367_r14	nl51	hD	14	1	1	R
+nl5368_r14	nl51	hD	14	1	1	R
+nl5370_r14	nl51	hD	14	1	1	R
+nl5371_r14	nl51	hD	14	1	1	R
+nl5373_r14	nl51	hD	14	1	1	R
+nl5374_r14	nl51	hD	14	1	1	R
+nl5375_r14	nl51	hD	14	1	1	R
+nl5376_r14	nl51	hD	14	1	1	R
+nl5377_r14	nl51	hD	14	1	1	R
+nl5378_r14	nl51	hD	14	1	1	R
+nl5383_r14	nl51	hD	14	1	1	R
+nl5384_r14	nl51	hD	14	1	1	R
+nl5385_r14	nl51	hD	14	0	1	R
+nl5386_r14	nl51	hD	14	1	1	R
+nl5387_r14	nl51	hD	14	1	1	R
+nl5388_r14	nl51	hD	14	1	1	R
+nl5389_r14	nl51	hD	14	1	1	R
+nl5390_r14	nl51	hD	14	0	1	R
+nl5392_r14	nl51	hD	14	1	1	R
+nl5393_r14	nl51	hD	14	0	1	R
+nl5394_r14	nl51	hD	14	1	1	R
+nl5395_r14	nl51	hD	14	1	1	R
+nl5396_r14	nl51	hD	14	0	1	R
+nl5397_r14	nl51	hD	14	1	1	R
+nl5398_r14	nl51	hD	14	1	1	R
+nl5399_r14	nl51	hD	14	1	1	R
+nl5406_r14	nl51	hD	14	1	0	
+nl5408_r14	nl51	hD	14	1	1	R
+nl5409_r14	nl51	hD	14	1	1	R
+nl5410_r14	nl51	hD	14	1	1	R
+nl5412_r14	nl51	hD	14	1	1	R
+nl5413_r14	nl51	hD	14	1	1	R
+nl5414_r14	nl51	hD	14	1	0	
+nl5426_r14	nl51	hD	14	1	1	R
+nl5427_r14	nl51	hD	14	1	1	R
+nl5655_r14	nl51	hD	14	1	1	R
+nl5657_r14	nl51	hD	14	1	0	
+nl5658_r14	nl51	hD	14	1	0	
+nl5662_r14	nl51	hD	14	1	0	
+nl5665_r14	nl51	hD	14	1	1	R
+nl5668_r14	nl51	hD	14	1	1	R
+nl5694_r14	nl51	hD	14	0	1	R
+nl5695_r14	nl51	hD	14	0	1	R
+nl5704_r14	nl51	hD	14	1	1	R
+nl5705_r14	nl51	hD	14	1	1	R
+nl5706_r14	nl51	hD	14	1	1	R
+nl5707_r14	nl51	hD	14	1	1	R
+nl5711_r14	nl51	hD	14	1	0	
+nl5714_r14	nl51	hD	14	0	1	R
+nl5719_r14	nl51	hD	14	1	1	R
+nl5720_r14	nl51	hD	14	0	0	
+nl5722_r14	nl51	hD	14	1	1	R
+nl5724_r14	nl51	hD	14	0	1	R
+nl5725_r14	nl51	hD	14	1	1	R
+nl5726_r14	nl51	hD	14	1	1	R
+nl5727_r14	nl51	hD	14	1	1	R
+nl5729_r14	nl51	hD	14	0	0	
+nl5731_r14	nl51	hD	14	0	1	R
+nl5733_r14	nl51	hD	14	0	1	R
+nl5803_r14	nl51	hD	14	1	1	R
+nl5804_r14	nl51	hD	14	1	1	R
+nl5805_r14	nl51	hD	14	1	1	R
+nl5806_r14	nl51	hD	14	1	1	R
+nl5808_r14	nl51	hD	14	1	1	R
+nl5809_r14	nl51	hD	14	1	1	R
+nl5813_r14	nl51	hD	14	1	1	R
+nl5814_r14	nl51	hD	14	1	1	R
+nl5815_r14	nl51	hD	14	1	1	R
+nl5818_r14	nl51	hD	14	1	1	R
+nl5819_r14	nl51	hD	14	1	1	R
+nl5821_r14	nl51	hD	14	1	1	R
+nl5826_r14	nl51	hD	14	1	1	R
+nl5827_r14	nl51	hD	14	1	1	R
+nl5829_r14	nl51	hD	14	1	1	R
+nl5832_r14	nl51	hD	14	1	1	R
+nl5833_r14	nl51	hD	14	1	1	R
+nl5834_r14	nl51	hD	14	0	1	R
+nl5836_r14	nl51	hD	14	1	1	R
+nl5839_r14	nl51	hD	14	1	1	R
+nl5840_r14	nl51	hD	14	1	1	R
+nl5842_r14	nl51	hD	14	1	1	R
+nl5843_r14	nl51	hD	14	0	1	R
+nl5845_r14	nl51	hD	14	1	1	R
+nl5846_r14	nl51	hD	14	1	1	R
+nl5848_r14	nl51	hD	14	1	1	R
+nl5850_r14	nl51	hD	14	1	1	R
+nl5852_r14	nl51	hD	14	1	1	R
+nl5853_r14	nl51	hD	14	0	1	R
+nl5854_r14	nl51	hD	14	1	1	R
+nl5855_r14	nl51	hD	14	1	1	R
+nl5898_r14	nl51	hD	14	1	1	R
+nl5906_r14	nl51	hD	14	1	1	R
+nl5907_r14	nl51	hD	14	1	1	R
+nl5908_r14	nl51	hD	14	1	1	R
+nl5909_r14	nl51	hD	14	1	1	R
+nl5910_r14	nl51	hD	14	1	1	R
+nl5911_r14	nl51	hD	14	1	0	
+nl5912_r14	nl51	hD	14	0	1	R
+nl5914_r14	nl51	hD	14	1	1	R
+nl5917_r14	nl51	hD	14	1	1	R
+nl5919_r14	nl51	hD	14	1	1	R
+nl5922_r14	nl51	hD	14	1	1	R
+nl5923_r14	nl51	hD	14	1	1	R
+nl5926_r14	nl51	hD	14	1	1	R
+nl5931_r14	nl51	hD	14	1	1	R
+nl5932_r14	nl51	hD	14	1	1	R
+nl5933_r14	nl51	hD	14	1	1	R
+nl5935_r14	nl51	hD	14	1	1	R
+nl5938_r14	nl51	hD	14	1	1	R
+nl5941_r14	nl51	hD	14	1	1	R
+nl5943_r14	nl51	hD	14	1	1	R
+nl5944_r14	nl51	hD	14	1	1	R
+nl5945_r14	nl51	hD	14	1	1	R
+nl5946_r14	nl51	hD	14	1	1	R
+nl5948_r14	nl51	hD	14	1	0	
+nl5968_r14	nl51	hD	14	1	1	R
+nl5969_r14	nl51	hD	14	1	0	
+nl5976_r14	nl51	hD	14	0	1	R
+nl5979_r14	nl51	hD	14	1	0	
+nl5993_r14	nl51	hD	14	1	1	R
+nl5994_r14	nl51	hD	14	1	1	R
+nl6014_r14	nl51	hD	14	1	1	R
+nl6015_r14	nl51	hD	14	1	1	R
+nl6016_r14	nl51	hD	14	0	1	R
+nl6018_r14	nl51	hD	14	1	1	R
+nl6019_r14	nl51	hD	14	1	1	R
+nl6020_r14	nl51	hD	14	1	1	R
+nl6021_r14	nl51	hD	14	1	1	R
+nl6024_r14	nl51	hD	14	1	1	R
+nl6025_r14	nl51	hD	14	1	1	R
+nl6026_r14	nl51	hD	14	1	1	R
+nl6028_r14	nl51	hD	14	1	1	R
+nl6030_r14	nl51	hD	14	1	1	R
+nl6031_r14	nl51	hD	14	1	1	R
+nl6033_r14	nl51	hD	14	1	1	R
+nl6035_r14	nl51	hD	14	1	1	R
+nl6037_r14	nl51	hD	14	1	1	R
+nl6050_r14	nl51	hD	14	1	1	R
+nl6051_r14	nl51	hD	14	1	1	R
+nl6053_r14	nl51	hD	14	1	1	R
+nl6054_r14	nl51	hD	14	1	1	R
+nl6055_r14	nl51	hD	14	1	1	R
+nl6058_r14	nl51	hD	14	1	1	R
+nl6059_r14	nl51	hD	14	1	1	R
+nl6061_r14	nl51	hD	14	1	1	R
+nl6064_r14	nl51	hD	14	1	1	R
+nl6066_r14	nl51	hD	14	1	1	R
+nl6067_r14	nl51	hD	14	1	1	R
+nl6068_r14	nl51	hD	14	0	1	R
+nl6069_r14	nl51	hD	14	1	1	R
+nl6072_r14	nl51	hD	14	1	1	R
+nl6074_r14	nl51	hD	14	1	1	R
+nl6079_r14	nl51	hD	14	1	1	R
+nl6080_r14	nl51	hD	14	1	1	R
+nl6081_r14	nl51	hD	14	1	1	R
+nl6082_r14	nl51	hD	14	1	1	R
+nl6083_r14	nl51	hD	14	1	1	R
+nl6084_r14	nl51	hD	14	1	1	R
+nl6085_r14	nl51	hD	14	1	1	R
+nl6088_r14	nl51	hD	14	1	1	R
+nl6089_r14	nl51	hD	14	1	1	R
+nl6091_r14	nl51	hD	14	1	1	R
+nl6093_r14	nl51	hD	14	0	1	R
+nl6094_r14	nl51	hD	14	1	1	R
+nl6096_r14	nl51	hD	14	0	1	R
+nl6098_r14	nl51	hD	14	1	1	R
+nl6099_r14	nl51	hD	14	1	1	R
+nl6100_r14	nl51	hD	14	1	1	R
+nl6101_r14	nl51	hD	14	1	1	R
+nl6103_r14	nl51	hD	14	1	1	R
+nl6104_r14	nl51	hD	14	1	1	R
+nl6106_r14	nl51	hD	14	1	1	R
+nl6107_r14	nl51	hD	14	1	1	R
+nl6109_r14	nl51	hD	14	0	1	R
+nl6137_r14	nl51	hD	14	1	1	R
+nl6138_r14	nl51	hD	14	1	1	R
+nl6139_r14	nl51	hD	14	1	1	R
+nl6141_r14	nl51	hD	14	1	1	R
+nl6145_r14	nl51	hD	14	1	1	R
+nl6146_r14	nl51	hD	14	1	1	R
+nl6148_r14	nl51	hD	14	1	1	R
+nl6149_r14	nl51	hD	14	1	1	R
+nl6150_r14	nl51	hD	14	0	1	R
+nl6151_r14	nl51	hD	14	1	1	R
+nl6154_r14	nl51	hD	14	1	1	R
+nl6155_r14	nl51	hD	14	1	1	R
+nl6157_r14	nl51	hD	14	1	1	R
+nl6160_r14	nl51	hD	14	1	1	R
+nl6161_r14	nl51	hD	14	1	1	R
+nl6163_r14	nl51	hD	14	1	1	R
+nl6164_r14	nl51	hD	14	1	1	R
+nl6185_r14	nl51	hD	14	1	1	R
+nl6186_r14	nl51	hD	14	1	1	R
+nl6191_r14	nl51	hD	14	1	1	R
+nl6209_r14	nl51	hD	14	1	1	R
+nl6210_r14	nl51	hD	14	1	1	R
+nl6211_r14	nl51	hD	14	1	1	R
+nl6213_r14	nl51	hD	14	1	1	R
+nl6214_r14	nl51	hD	14	1	1	R
+nl6215_r14	nl51	hD	14	1	1	R
+nl6221_r14	nl51	hD	14	1	1	R
+nl6222_r14	nl51	hD	14	1	1	R
+nl6224_r14	nl51	hD	14	1	1	R
+nl6225_r14	nl51	hD	14	1	1	R
+nl6226_r14	nl51	hD	14	1	1	R
+nl6243_r14	nl51	hD	14	1	1	R
+nl6245_r14	nl51	hD	14	1	1	R
+nl6246_r14	nl51	hD	14	1	1	R
+nl6249_r14	nl51	hD	14	1	1	R
+nl6251_r14	nl51	hD	14	1	1	R
+nl6253_r14	nl51	hD	14	1	1	R
+nl6255_r14	nl51	hD	14	1	1	R
+nl6345_r14	nl51	hD	14	1	1	R
+nl6346_r14	nl51	hD	14	0	0	
+nl6347_r14	nl51	hD	14	0	0	
+nl6348_r14	nl51	hD	14	0	1	R
+nl6351_r14	nl51	hD	14	1	1	R
+nl6377_r14	nl51	hD	14	1	1	R
+nl6378_r14	nl51	hD	14	1	1	R
+nl6379_r14	nl51	hD	14	0	1	R
+nl6380_r14	nl51	hD	14	0	1	R
+nl6381_r14	nl51	hD	14	0	1	R
+nl6382_r14	nl51	hD	14	0	1	R
+nl6383_r14	nl51	hD	14	1	1	R
+nl6385_r14	nl51	hD	14	1	1	R
+nl6386_r14	nl51	hD	14	0	1	R
+nl6387_r14	nl51	hD	14	1	1	R
+nl6389_r14	nl51	hD	14	1	1	R
+nl6395_r14	nl51	hD	14	1	1	R
+nl6397_r14	nl51	hD	14	1	1	R
+nl6398_r14	nl51	hD	14	0	1	R
+nl6399_r14	nl51	hD	14	1	1	R
+nl6400_r14	nl51	hD	14	1	1	R
+nl6403_r14	nl51	hD	14	1	1	R
+nl6405_r14	nl51	hD	14	1	1	R
+nl6406_r14	nl51	hD	14	1	1	R
+nl6408_r14	nl51	hD	14	1	1	R
+nl6409_r14	nl51	hD	14	1	1	R
+nl6411_r14	nl51	hD	14	1	1	R
+nl6412_r14	nl51	hD	14	1	1	R
+nl6413_r14	nl51	hD	14	1	1	R
+nl6414_r14	nl51	hD	14	1	1	R
+nl6416_r14	nl51	hD	14	1	1	R
+nl6417_r14	nl51	hD	14	1	1	R
+nl6418_r14	nl51	hD	14	1	1	R
+nl6419_r14	nl51	hD	14	1	1	R
+nl6420_r14	nl51	hD	14	0	1	R
+nl6421_r14	nl51	hD	14	1	1	R
+nl6422_r14	nl51	hD	14	1	1	R
+nl6454_r14	nl51	hD	14	1	1	R
+nl6456_r14	nl51	hD	14	1	1	R
+nl6457_r14	nl51	hD	14	1	1	R
+nl6459_r14	nl51	hD	14	1	1	R
+nl6460_r14	nl51	hD	14	1	1	R
+nl6463_r14	nl51	hD	14	1	1	R
+nl6464_r14	nl51	hD	14	1	1	R
+nl6465_r14	nl51	hD	14	1	1	R
+nl6469_r14	nl51	hD	14	0	1	R
+nl6471_r14	nl51	hD	14	1	1	R
+nl6475_r14	nl51	hD	14	1	1	R
+nl6486_r14	nl51	hD	14	1	1	R
+nl6491_r14	nl51	hD	14	1	1	R
+nl6492_r14	nl51	hD	14	1	1	R
+nl6493_r14	nl51	hD	14	0	0	
+nl6494_r14	nl51	hD	14	0	1	R
+nl6507_r14	nl51	hD	14	1	1	R
+nl6509_r14	nl51	hD	14	1	1	R
+nl6521_r14	nl51	hD	14	1	1	R
+nl6523_r14	nl51	hD	14	1	1	R
+nl6524_r14	nl51	hD	14	1	1	R
+nl6526_r14	nl51	hD	14	0	1	R
+nl6528_r14	nl51	hD	14	1	1	R
+nl6529_r14	nl51	hD	14	1	1	R
+nl6532_r14	nl51	hD	14	1	1	R
+nl6535_r14	nl51	hD	14	1	1	R
+nl6540_r14	nl51	hD	14	1	1	R
+nl6543_r14	nl51	hD	14	1	1	R
+nl6547_r14	nl51	hD	14	1	1	R
+nl6548_r14	nl51	hD	14	1	1	R
+nl6553_r14	nl51	hD	14	1	1	R
+nl6556_r14	nl51	hD	14	1	1	R
+nl6557_r14	nl51	hD	14	1	1	R
+nl6560_r14	nl51	hD	14	0	1	R
+nl6563_r14	nl51	hD	14	1	1	R
+nl6564_r14	nl51	hD	14	1	1	R
+nl6565_r14	nl51	hD	14	1	1	R
+nl6566_r14	nl51	hD	14	1	1	R
+nl6568_r14	nl51	hD	14	1	1	R
+nl6570_r14	nl51	hD	14	1	1	R
+nl6573_r14	nl51	hD	14	1	1	R
+nl6574_r14	nl51	hD	14	1	1	R
+nl6577_r14	nl51	hD	14	1	1	R
+nl6579_r14	nl51	hD	14	1	1	R
+nl6583_r14	nl51	hD	14	0	1	R
+nl6584_r14	nl51	hD	14	1	1	R
+nl6586_r14	nl51	hD	14	1	1	R
+nl6589_r14	nl51	hD	14	0	1	R
+nl6590_r14	nl51	hD	14	1	1	R
+nl6629_r14	nl51	hD	14	1	1	R
+nl6632_r14	nl51	hD	14	1	1	R
+nl6635_r14	nl51	hD	14	1	1	R
+nl6637_r14	nl51	hD	14	1	1	R
+nl6641_r14	nl51	hD	14	1	1	R
+nl6642_r14	nl51	hD	14	1	1	R
+nl6643_r14	nl51	hD	14	1	1	R
+nl6644_r14	nl51	hD	14	1	1	R
+nl6645_r14	nl51	hD	14	1	1	R
+nl6647_r14	nl51	hD	14	1	1	R
+nl6649_r14	nl51	hD	14	0	1	R
+nl6650_r14	nl51	hD	14	1	1	R
+nl6652_r14	nl51	hD	14	1	1	R
+nl6653_r14	nl51	hD	14	1	1	R
+nl6655_r14	nl51	hD	14	0	1	R
+nl6658_r14	nl51	hD	14	1	1	R
+nl6662_r14	nl51	hD	14	1	1	R
+nl6666_r14	nl51	hD	14	1	1	R
+nl6668_r14	nl51	hD	14	1	1	R
+nl6671_r14	nl51	hD	14	1	1	R
+nl6672_r14	nl51	hD	14	1	1	R
+nl6675_r14	nl51	hD	14	1	1	R
+nl6709_r14	nl51	hD	14	1	1	R
+nl6710_r14	nl51	hD	14	1	1	R
+nl6711_r14	nl51	hD	14	0	1	R
+nl6713_r14	nl51	hD	14	0	0	
+nl6715_r14	nl51	hD	14	1	1	R
+nl6716_r14	nl51	hD	14	1	1	R
+nl6739_r14	nl51	hD	14	1	1	R
+nl6742_r14	nl51	hD	14	1	1	R
+nl6759_r14	nl51	hD	14	1	1	R
+nl6762_r14	nl51	hD	14	1	1	R
+nl6764_r14	nl51	hD	14	1	1	R
+nl6775_r14	nl51	hD	14	1	1	R
+nl6778_r14	nl51	hD	14	1	1	R
+nl6839_r14	nl51	hD	14	1	1	R
+nl6840_r14	nl51	hD	14	1	1	R
+nl6842_r14	nl51	hD	14	1	1	R
+nl6843_r14	nl51	hD	14	1	1	R
+nl6844_r14	nl51	hD	14	1	1	R
+nl6954_r14	nl51	hD	14	1	1	R
+nl6960_r14	nl51	hD	14	1	1	R
+nl6970_r14	nl51	hD	14	1	1	R
+nl7066_r14	nl51	hD	14	1	1	R
+nl7069_r14	nl51	hD	14	1	1	R
+nl7080_r14	nl51	hD	14	1	1	R
+nl7083_r14	nl51	hD	14	1	1	R
+nl7104_r14	nl51	hD	14	1	1	R
+nl7105_r14	nl51	hD	14	1	1	R
+nl7139_r14	nl51	hD	14	1	1	R
+nl7140_r14	nl51	hD	14	1	1	R
+nl7145_r14	nl51	hD	14	1	1	R
+nl7159_r14	nl51	hD	14	1	1	R
+nl7191_r14	nl51	hD	14	1	1	R
+nl0267_r15	nl51	hD	15	1	1	R
+nl0268_r15	nl51	hD	15	0	1	R
+nl0744_r15	nl51	hD	15	0	1	R
+nl0746_r15	nl51	hD	15	1	1	R
+nl0750_r15	nl51	hD	15	1	1	R
+nl0767_r15	nl51	hD	15	1	1	R
+nl0771_r15	nl51	hD	15	1	1	R
+nl0772_r15	nl51	hD	15	1	1	R
+nl0778_r15	nl51	hD	15	0	1	R
+nl0784_r15	nl51	hD	15	1	1	R
+nl0789_r15	nl51	hD	15	1	1	R
+nl1107_r15	nl51	hD	15	0	1	R
+nl1108_r15	nl51	hD	15	1	1	R
+nl1113_r15	nl51	hD	15	0	1	R
+nl1116_r15	nl51	hD	15	0	0	
+nl1118_r15	nl51	hD	15	0	0	
+nl1135_r15	nl51	hD	15	0	1	R
+nl1172_r15	nl51	hD	15	1	1	R
+nl1173_r15	nl51	hD	15	1	1	R
+nl1174_r15	nl51	hD	15	1	1	R
+nl1176_r15	nl51	hD	15	0	1	R
+nl1177_r15	nl51	hD	15	0	1	R
+nl1182_r15	nl51	hD	15	1	1	R
+nl1184_r15	nl51	hD	15	1	1	R
+nl1185_r15	nl51	hD	15	1	1	R
+nl1186_r15	nl51	hD	15	1	1	R
+nl1187_r15	nl51	hD	15	1	1	R
+nl1188_r15	nl51	hD	15	0	1	R
+nl1189_r15	nl51	hD	15	1	1	R
+nl1190_r15	nl51	hD	15	0	1	R
+nl1191_r15	nl51	hD	15	1	1	R
+nl1192_r15	nl51	hD	15	1	1	R
+nl1193_r15	nl51	hD	15	1	1	R
+nl1224_r15	nl51	hD	15	1	1	R
+nl1228_r15	nl51	hD	15	0	1	R
+nl1230_r15	nl51	hD	15	1	1	R
+nl1232_r15	nl51	hD	15	1	1	R
+nl1233_r15	nl51	hD	15	1	1	R
+nl1235_r15	nl51	hD	15	1	1	R
+nl1236_r15	nl51	hD	15	1	1	R
+nl1238_r15	nl51	hD	15	1	1	R
+nl1241_r15	nl51	hD	15	0	1	R
+nl1242_r15	nl51	hD	15	0	1	R
+nl1243_r15	nl51	hD	15	1	1	R
+nl1244_r15	nl51	hD	15	1	1	R
+nl1258_r15	nl51	hD	15	0	1	R
+nl1266_r15	nl51	hD	15	1	1	R
+nl1269_r15	nl51	hD	15	0	1	R
+nl1270_r15	nl51	hD	15	0	1	R
+nl1271_r15	nl51	hD	15	1	1	R
+nl1272_r15	nl51	hD	15	1	1	R
+nl1274_r15	nl51	hD	15	1	1	R
+nl1275_r15	nl51	hD	15	1	1	R
+nl1320_r15	nl51	hD	15	0	1	R
+nl1322_r15	nl51	hD	15	1	1	R
+nl1323_r15	nl51	hD	15	1	1	R
+nl1325_r15	nl51	hD	15	1	1	R
+nl1326_r15	nl51	hD	15	1	1	R
+nl1327_r15	nl51	hD	15	1	1	R
+nl1332_r15	nl51	hD	15	1	1	R
+nl1333_r15	nl51	hD	15	1	1	R
+nl1334_r15	nl51	hD	15	1	1	R
+nl1341_r15	nl51	hD	15	1	1	R
+nl1370_r15	nl51	hD	15	1	1	R
+nl1371_r15	nl51	hD	15	1	1	R
+nl1436_r15	nl51	hD	15	0	0	
+nl1438_r15	nl51	hD	15	1	1	R
+nl1453_r15	nl51	hD	15	1	1	R
+nl1454_r15	nl51	hD	15	1	1	R
+nl1455_r15	nl51	hD	15	1	1	R
+nl1456_r15	nl51	hD	15	0	1	R
+nl1457_r15	nl51	hD	15	1	1	R
+nl1459_r15	nl51	hD	15	1	1	R
+nl1460_r15	nl51	hD	15	0	1	R
+nl1461_r15	nl51	hD	15	0	1	R
+nl1463_r15	nl51	hD	15	1	1	R
+nl1464_r15	nl51	hD	15	1	1	R
+nl1465_r15	nl51	hD	15	1	1	R
+nl1467_r15	nl51	hD	15	1	1	R
+nl1469_r15	nl51	hD	15	1	1	R
+nl1470_r15	nl51	hD	15	1	1	R
+nl1481_r15	nl51	hD	15	0	1	R
+nl1483_r15	nl51	hD	15	0	1	R
+nl1484_r15	nl51	hD	15	0	1	R
+nl1488_r15	nl51	hD	15	1	1	R
+nl1489_r15	nl51	hD	15	1	1	R
+nl1490_r15	nl51	hD	15	1	1	R
+nl1491_r15	nl51	hD	15	1	1	R
+nl1492_r15	nl51	hD	15	1	1	R
+nl1498_r15	nl51	hD	15	0	1	R
+nl1502_r15	nl51	hD	15	1	1	R
+nl1504_r15	nl51	hD	15	1	1	R
+nl1533_r15	nl51	hD	15	1	1	R
+nl1534_r15	nl51	hD	15	1	1	R
+nl1536_r15	nl51	hD	15	1	1	R
+nl1547_r15	nl51	hD	15	1	1	R
+nl1557_r15	nl51	hD	15	0	1	R
+nl1558_r15	nl51	hD	15	0	1	R
+nl2200_r15	nl51	hD	15	1	1	R
+nl2201_r15	nl51	hD	15	1	1	R
+nl2202_r15	nl51	hD	15	1	1	R
+nl2203_r15	nl51	hD	15	1	1	R
+nl2205_r15	nl51	hD	15	1	1	R
+nl2231_r15	nl51	hD	15	1	1	R
+nl2232_r15	nl51	hD	15	1	1	R
+nl2233_r15	nl51	hD	15	1	1	R
+nl2234_r15	nl51	hD	15	1	1	R
+nl2235_r15	nl51	hD	15	1	1	R
+nl2236_r15	nl51	hD	15	1	1	R
+nl2238_r15	nl51	hD	15	1	1	R
+nl2239_r15	nl51	hD	15	1	1	R
+nl2243_r15	nl51	hD	15	1	1	R
+nl2244_r15	nl51	hD	15	1	1	R
+nl2247_r15	nl51	hD	15	1	1	R
+nl2250_r15	nl51	hD	15	1	1	R
+nl2253_r15	nl51	hD	15	1	1	R
+nl2260_r15	nl51	hD	15	1	1	R
+nl2261_r15	nl51	hD	15	1	1	R
+nl2262_r15	nl51	hD	15	1	1	R
+nl2264_r15	nl51	hD	15	1	1	R
+nl2265_r15	nl51	hD	15	1	1	R
+nl2404_r15	nl51	hD	15	1	0	
+nl2418_r15	nl51	hD	15	1	1	R
+nl2420_r15	nl51	hD	15	1	1	R
+nl2422_r15	nl51	hD	15	1	1	R
+nl2424_r15	nl51	hD	15	1	1	R
+nl2425_r15	nl51	hD	15	1	1	R
+nl2454_r15	nl51	hD	15	1	1	R
+nl2455_r15	nl51	hD	15	1	1	R
+nl2457_r15	nl51	hD	15	1	1	R
+nl2458_r15	nl51	hD	15	1	1	R
+nl2460_r15	nl51	hD	15	1	1	R
+nl2464_r15	nl51	hD	15	0	1	R
+nl2466_r15	nl51	hD	15	1	1	R
+nl2472_r15	nl51	hD	15	1	1	R
+nl2475_r15	nl51	hD	15	1	1	R
+nl2478_r15	nl51	hD	15	0	1	R
+nl2491_r15	nl51	hD	15	1	1	R
+nl2505_r15	nl51	hD	15	1	1	R
+nl2506_r15	nl51	hD	15	1	1	R
+nl2518_r15	nl51	hD	15	0	1	R
+nl2525_r15	nl51	hD	15	1	1	R
+nl2529_r15	nl51	hD	15	1	1	R
+nl2531_r15	nl51	hD	15	1	1	R
+nl2532_r15	nl51	hD	15	1	1	R
+nl2535_r15	nl51	hD	15	1	1	R
+nl2536_r15	nl51	hD	15	1	1	R
+nl2537_r15	nl51	hD	15	0	1	R
+nl2538_r15	nl51	hD	15	0	1	R
+nl2553_r15	nl51	hD	15	0	0	
+nl2556_r15	nl51	hD	15	0	1	R
+nl2557_r15	nl51	hD	15	1	1	R
+nl2561_r15	nl51	hD	15	1	1	R
+nl2569_r15	nl51	hD	15	1	1	R
+nl2572_r15	nl51	hD	15	1	1	R
+nl2577_r15	nl51	hD	15	1	1	R
+nl2578_r15	nl51	hD	15	1	1	R
+nl2581_r15	nl51	hD	15	0	1	R
+nl2623_r15	nl51	hD	15	1	1	R
+nl2624_r15	nl51	hD	15	1	1	R
+nl2833_r15	nl51	hD	15	0	1	R
+nl3043_r15	nl51	hD	15	0	1	R
+nl3044_r15	nl51	hD	15	0	1	R
+nl3046_r15	nl51	hD	15	1	1	R
+nl3048_r15	nl51	hD	15	1	0	
+nl3066_r15	nl51	hD	15	1	1	R
+nl3069_r15	nl51	hD	15	0	1	R
+nl3070_r15	nl51	hD	15	1	1	R
+nl3077_r15	nl51	hD	15	1	1	R
+nl3078_r15	nl51	hD	15	0	1	R
+nl3079_r15	nl51	hD	15	0	1	R
+nl3080_r15	nl51	hD	15	0	1	R
+nl3081_r15	nl51	hD	15	0	1	R
+nl3551_r15	nl51	hD	15	0	1	R
+nl3552_r15	nl51	hD	15	1	0	
+nl3554_r15	nl51	hD	15	1	0	
+nl3613_r15	nl51	hD	15	0	1	R
+nl3619_r15	nl51	hD	15	0	0	
+nl3627_r15	nl51	hD	15	0	0	
+nl3630_r15	nl51	hD	15	0	1	R
+nl3635_r15	nl51	hD	15	0	0	
+nl3647_r15	nl51	hD	15	1	1	R
+nl3648_r15	nl51	hD	15	0	1	R
+nl3656_r15	nl51	hD	15	1	1	R
+nl3660_r15	nl51	hD	15	0	1	R
+nl3662_r15	nl51	hD	15	1	1	R
+nl3710_r15	nl51	hD	15	1	1	R
+nl3711_r15	nl51	hD	15	1	1	R
+nl3713_r15	nl51	hD	15	1	1	R
+nl3714_r15	nl51	hD	15	1	1	R
+nl3715_r15	nl51	hD	15	1	1	R
+nl3718_r15	nl51	hD	15	0	1	R
+nl3719_r15	nl51	hD	15	0	1	R
+nl3754_r15	nl51	hD	15	1	1	R
+nl3755_r15	nl51	hD	15	0	0	
+nl3757_r15	nl51	hD	15	0	1	R
+nl3760_r15	nl51	hD	15	0	1	R
+nl3767_r15	nl51	hD	15	1	1	R
+nl3769_r15	nl51	hD	15	1	1	R
+nl3779_r15	nl51	hD	15	0	1	R
+nl3783_r15	nl51	hD	15	0	1	R
+nl3784_r15	nl51	hD	15	0	1	R
+nl3786_r15	nl51	hD	15	1	1	R
+nl3787_r15	nl51	hD	15	0	1	R
+nl3788_r15	nl51	hD	15	1	1	R
+nl3789_r15	nl51	hD	15	1	1	R
+nl3793_r15	nl51	hD	15	0	1	R
+nl3799_r15	nl51	hD	15	0	1	R
+nl3814_r15	nl51	hD	15	1	1	R
+nl3817_r15	nl51	hD	15	0	1	R
+nl3819_r15	nl51	hD	15	0	1	R
+nl3821_r15	nl51	hD	15	0	1	R
+nl3823_r15	nl51	hD	15	1	1	R
+nl3826_r15	nl51	hD	15	0	1	R
+nl3827_r15	nl51	hD	15	1	1	R
+nl3829_r15	nl51	hD	15	1	1	R
+nl3847_r15	nl51	hD	15	1	1	R
+nl3853_r15	nl51	hD	15	0	1	R
+nl3855_r15	nl51	hD	15	0	1	R
+nl3858_r15	nl51	hD	15	1	1	R
+nl3860_r15	nl51	hD	15	1	1	R
+nl3873_r15	nl51	hD	15	1	1	R
+nl3881_r15	nl51	hD	15	1	1	R
+nl3882_r15	nl51	hD	15	1	1	R
+nl4160_r15	nl51	hD	15	0	0	
+nl4162_r15	nl51	hD	15	0	1	R
+nl4164_r15	nl51	hD	15	0	0	
+nl4168_r15	nl51	hD	15	0	1	R
+nl4183_r15	nl51	hD	15	0	1	R
+nl4191_r15	nl51	hD	15	0	0	
+nl4227_r15	nl51	hD	15	0	1	R
+nl4228_r15	nl51	hD	15	1	1	R
+nl4229_r15	nl51	hD	15	1	1	R
+nl4231_r15	nl51	hD	15	1	1	R
+nl4232_r15	nl51	hD	15	1	1	R
+nl4233_r15	nl51	hD	15	0	1	R
+nl4313_r15	nl51	hD	15	0	1	R
+nl4314_r15	nl51	hD	15	0	1	R
+nl4320_r15	nl51	hD	15	0	1	R
+nl4322_r15	nl51	hD	15	0	1	R
+nl4323_r15	nl51	hD	15	1	1	R
+nl4324_r15	nl51	hD	15	1	1	R
+nl4328_r15	nl51	hD	15	1	1	R
+nl4333_r15	nl51	hD	15	0	1	R
+nl4335_r15	nl51	hD	15	1	1	R
+nl4342_r15	nl51	hD	15	0	1	R
+nl4344_r15	nl51	hD	15	0	1	R
+nl4346_r15	nl51	hD	15	0	1	R
+nl4355_r15	nl51	hD	15	1	1	R
+nl4366_r15	nl51	hD	15	1	1	R
+nl4370_r15	nl51	hD	15	1	1	R
+nl4372_r15	nl51	hD	15	1	1	R
+nl4374_r15	nl51	hD	15	1	1	R
+nl4375_r15	nl51	hD	15	1	1	R
+nl4379_r15	nl51	hD	15	0	1	R
+nl4380_r15	nl51	hD	15	1	1	R
+nl4386_r15	nl51	hD	15	1	1	R
+nl4388_r15	nl51	hD	15	0	1	R
+nl4390_r15	nl51	hD	15	0	1	R
+nl4391_r15	nl51	hD	15	1	1	R
+nl4393_r15	nl51	hD	15	0	1	R
+nl4397_r15	nl51	hD	15	1	1	R
+nl4399_r15	nl51	hD	15	0	1	R
+nl4451_r15	nl51	hD	15	0	1	R
+nl4462_r15	nl51	hD	15	1	1	R
+nl4468_r15	nl51	hD	15	0	1	R
+nl4473_r15	nl51	hD	15	0	1	R
+nl4479_r15	nl51	hD	15	0	1	R
+nl4532_r15	nl51	hD	15	1	1	R
+nl4537_r15	nl51	hD	15	1	1	R
+nl4538_r15	nl51	hD	15	1	1	R
+nl4543_r15	nl51	hD	15	0	1	R
+nl4544_r15	nl51	hD	15	1	1	R
+nl4547_r15	nl51	hD	15	1	1	R
+nl4548_r15	nl51	hD	15	1	1	R
+nl4549_r15	nl51	hD	15	0	1	R
+nl4551_r15	nl51	hD	15	0	1	R
+nl4552_r15	nl51	hD	15	1	1	R
+nl4557_r15	nl51	hD	15	0	1	R
+nl4560_r15	nl51	hD	15	0	1	R
+nl4590_r15	nl51	hD	15	1	1	R
+nl4591_r15	nl51	hD	15	1	1	R
+nl4592_r15	nl51	hD	15	1	1	R
+nl4595_r15	nl51	hD	15	0	1	R
+nl4600_r15	nl51	hD	15	0	1	R
+nl4601_r15	nl51	hD	15	1	1	R
+nl4605_r15	nl51	hD	15	0	1	R
+nl4607_r15	nl51	hD	15	1	1	R
+nl4613_r15	nl51	hD	15	0	1	R
+nl4614_r15	nl51	hD	15	1	1	R
+nl4620_r15	nl51	hD	15	1	1	R
+nl4625_r15	nl51	hD	15	1	1	R
+nl4665_r15	nl51	hD	15	1	1	R
+nl4667_r15	nl51	hD	15	0	1	R
+nl4693_r15	nl51	hD	15	1	1	R
+nl4694_r15	nl51	hD	15	1	1	R
+nl4752_r15	nl51	hD	15	0	0	
+nl4765_r15	nl51	hD	15	1	1	R
+nl4766_r15	nl51	hD	15	1	1	R
+nl4767_r15	nl51	hD	15	0	1	R
+nl4768_r15	nl51	hD	15	1	1	R
+nl4769_r15	nl51	hD	15	1	1	R
+nl4770_r15	nl51	hD	15	0	1	R
+nl4771_r15	nl51	hD	15	0	1	R
+nl4775_r15	nl51	hD	15	0	1	R
+nl4777_r15	nl51	hD	15	1	1	R
+nl4778_r15	nl51	hD	15	0	1	R
+nl4779_r15	nl51	hD	15	1	1	R
+nl4803_r15	nl51	hD	15	0	1	R
+nl4805_r15	nl51	hD	15	0	1	R
+nl4806_r15	nl51	hD	15	0	1	R
+nl4824_r15	nl51	hD	15	1	1	R
+nl4826_r15	nl51	hD	15	0	1	R
+nl4827_r15	nl51	hD	15	0	1	R
+nl4829_r15	nl51	hD	15	1	1	R
+nl4830_r15	nl51	hD	15	0	1	R
+nl4831_r15	nl51	hD	15	0	1	R
+nl4832_r15	nl51	hD	15	1	1	R
+nl4833_r15	nl51	hD	15	1	1	R
+nl4840_r15	nl51	hD	15	1	1	R
+nl4845_r15	nl51	hD	15	0	1	R
+nl4854_r15	nl51	hD	15	1	1	R
+nl4855_r15	nl51	hD	15	0	1	R
+nl4856_r15	nl51	hD	15	0	1	R
+nl4858_r15	nl51	hD	15	1	1	R
+nl4863_r15	nl51	hD	15	1	1	R
+nl4865_r15	nl51	hD	15	1	1	R
+nl4892_r15	nl51	hD	15	0	1	R
+nl4917_r15	nl51	hD	15	0	1	R
+nl4925_r15	nl51	hD	15	1	1	R
+nl4930_r15	nl51	hD	15	1	1	R
+nl4939_r15	nl51	hD	15	1	1	R
+nl4941_r15	nl51	hD	15	1	1	R
+nl4942_r15	nl51	hD	15	1	1	R
+nl4943_r15	nl51	hD	15	1	1	R
+nl4964_r15	nl51	hD	15	1	1	R
+nl4965_r15	nl51	hD	15	1	1	R
+nl4967_r15	nl51	hD	15	1	1	R
+nl5329_r15	nl51	hD	15	1	0	
+nl5330_r15	nl51	hD	15	1	1	R
+nl5355_r15	nl51	hD	15	1	0	
+nl5357_r15	nl51	hD	15	0	0	
+nl5401_r15	nl51	hD	15	1	1	R
+nl5402_r15	nl51	hD	15	1	1	R
+nl5415_r15	nl51	hD	15	1	1	R
+nl5416_r15	nl51	hD	15	1	0	
+nl5418_r15	nl51	hD	15	1	1	R
+nl5420_r15	nl51	hD	15	0	0	
+nl5421_r15	nl51	hD	15	0	1	R
+nl5423_r15	nl51	hD	15	1	0	
+nl5430_r15	nl51	hD	15	1	1	R
+nl5431_r15	nl51	hD	15	1	1	R
+nl5436_r15	nl51	hD	15	1	0	
+nl5438_r15	nl51	hD	15	1	1	R
+nl5439_r15	nl51	hD	15	1	0	
+nl5445_r15	nl51	hD	15	0	1	R
+nl5446_r15	nl51	hD	15	1	1	R
+nl5859_r15	nl51	hD	15	1	1	R
+nl5951_r15	nl51	hD	15	1	1	R
+nl5956_r15	nl51	hD	15	1	1	R
+nl5959_r15	nl51	hD	15	1	1	R
+nl5962_r15	nl51	hD	15	1	1	R
+nl5997_r15	nl51	hD	15	0	1	R
+nl6001_r15	nl51	hD	15	1	0	
+nl6009_r15	nl51	hD	15	1	1	R
+nl6113_r15	nl51	hD	15	1	0	
+nl6117_r15	nl51	hD	15	1	1	R
+nl6118_r15	nl51	hD	15	1	1	R
+nl6120_r15	nl51	hD	15	1	1	R
+nl6121_r15	nl51	hD	15	1	1	R
+nl6123_r15	nl51	hD	15	1	1	R
+nl6171_r15	nl51	hD	15	1	1	R
+nl6172_r15	nl51	hD	15	1	1	R
+nl6178_r15	nl51	hD	15	1	1	R
+nl6180_r15	nl51	hD	15	1	1	R
+nl6182_r15	nl51	hD	15	1	0	
+nl6184_r15	nl51	hD	15	1	1	R
+nl6198_r15	nl51	hD	15	1	0	
+nl6230_r15	nl51	hD	15	1	1	R
+nl6232_r15	nl51	hD	15	1	1	R
+nl6234_r15	nl51	hD	15	1	1	R
+nl6235_r15	nl51	hD	15	0	1	R
+nl6236_r15	nl51	hD	15	1	1	R
+nl6237_r15	nl51	hD	15	1	1	R
+nl6239_r15	nl51	hD	15	1	1	R
+nl6240_r15	nl51	hD	15	1	1	R
+nl6256_r15	nl51	hD	15	1	1	R
+nl6261_r15	nl51	hD	15	1	1	R
+nl6265_r15	nl51	hD	15	1	1	R
+nl6271_r15	nl51	hD	15	1	1	R
+nl6275_r15	nl51	hD	15	1	1	R
+nl6276_r15	nl51	hD	15	1	1	R
+nl6277_r15	nl51	hD	15	1	1	R
+nl6294_r15	nl51	hD	15	0	1	R
+nl6295_r15	nl51	hD	15	0	1	R
+nl6302_r15	nl51	hD	15	0	1	R
+nl6303_r15	nl51	hD	15	1	1	R
+nl6305_r15	nl51	hD	15	1	1	R
+nl6306_r15	nl51	hD	15	1	1	R
+nl6307_r15	nl51	hD	15	1	1	R
+nl6315_r15	nl51	hD	15	1	1	R
+nl6479_r15	nl51	hD	15	1	1	R
+nl6480_r15	nl51	hD	15	1	1	R
+nl6499_r15	nl51	hD	15	0	0	
+nl6514_r15	nl51	hD	15	1	1	R
+nl6595_r15	nl51	hD	15	0	1	R
+nl6597_r15	nl51	hD	15	0	1	R
+nl6598_r15	nl51	hD	15	1	1	R
+nl6602_r15	nl51	hD	15	1	1	R
+nl6603_r15	nl51	hD	15	1	1	R
+nl6605_r15	nl51	hD	15	1	1	R
+nl6606_r15	nl51	hD	15	1	1	R
+nl6607_r15	nl51	hD	15	0	1	R
+nl6610_r15	nl51	hD	15	1	1	R
+nl6612_r15	nl51	hD	15	0	1	R
+nl6613_r15	nl51	hD	15	0	1	R
+nl6615_r15	nl51	hD	15	1	1	R
+nl6616_r15	nl51	hD	15	0	1	R
+nl6687_r15	nl51	hD	15	1	1	R
+nl6702_r15	nl51	hD	15	1	1	R
+nl6703_r15	nl51	hD	15	1	1	R
+nl6704_r15	nl51	hD	15	1	1	R
+nl6706_r15	nl51	hD	15	1	1	R
+nl6726_r15	nl51	hD	15	1	1	R
+nl6747_r15	nl51	hD	15	1	1	R
+nl6749_r15	nl51	hD	15	0	1	R
+nl6753_r15	nl51	hD	15	0	1	R
+nl6781_r15	nl51	hD	15	1	1	R
+nl6783_r15	nl51	hD	15	1	1	R
+nl6797_r15	nl51	hD	15	1	1	R
+nl6803_r15	nl51	hD	15	1	1	R
+nl6805_r15	nl51	hD	15	1	1	R
+nl6806_r15	nl51	hD	15	1	1	R
+nl6807_r15	nl51	hD	15	1	1	R
+nl6808_r15	nl51	hD	15	1	1	R
+nl6812_r15	nl51	hD	15	1	1	R
+nl6813_r15	nl51	hD	15	1	1	R
+nl6821_r15	nl51	hD	15	1	1	R
+nl6823_r15	nl51	hD	15	1	1	R
+nl6824_r15	nl51	hD	15	1	1	R
+nl6828_r15	nl51	hD	15	1	1	R
+nl6831_r15	nl51	hD	15	1	1	R
+nl6834_r15	nl51	hD	15	0	1	R
+nl6835_r15	nl51	hD	15	1	1	R
+nl6836_r15	nl51	hD	15	1	1	R
+nl6848_r15	nl51	hD	15	1	1	R
+nl6849_r15	nl51	hD	15	1	1	R
+nl6851_r15	nl51	hD	15	1	1	R
+nl6854_r15	nl51	hD	15	1	1	R
+nl6857_r15	nl51	hD	15	0	1	R
+nl6861_r15	nl51	hD	15	1	1	R
+nl6864_r15	nl51	hD	15	0	1	R
+nl6865_r15	nl51	hD	15	1	1	R
+nl6866_r15	nl51	hD	15	1	1	R
+nl6873_r15	nl51	hD	15	1	1	R
+nl6887_r15	nl51	hD	15	1	1	R
+nl6889_r15	nl51	hD	15	1	1	R
+nl6890_r15	nl51	hD	15	1	1	R
+nl6891_r15	nl51	hD	15	1	1	R
+nl6895_r15	nl51	hD	15	1	1	R
+nl6897_r15	nl51	hD	15	1	1	R
+nl6902_r15	nl51	hD	15	1	1	R
+nl6912_r15	nl51	hD	15	1	1	R
+nl6916_r15	nl51	hD	15	1	1	R
+nl6929_r15	nl51	hD	15	1	1	R
+nl6957_r15	nl51	hD	15	1	1	R
+nl7106_r15	nl51	hD	15	1	1	R
+nl7111_r15	nl51	hD	15	1	1	R
+nl7112_r15	nl51	hD	15	1	1	R
+nl7163_r15	nl51	hD	15	1	1	R
+nl7181_r15	nl51	hD	15	1	1	R
+nl7208_r15	nl51	hD	15	1	1	R
+nl7211_r15	nl51	hD	15	1	1	R
+nl0794_r16	nl51	hD	16	1	1	R
+nl0795_r16	nl51	hD	16	1	1	R
+nl0796_r16	nl51	hD	16	0	1	R
+nl1290_r16	nl51	hD	16	0	0	
+nl1311_r16	nl51	hD	16	0	1	R
+nl1356_r16	nl51	hD	16	1	1	R
+nl1357_r16	nl51	hD	16	1	1	R
+nl1384_r16	nl51	hD	16	0	1	R
+nl1387_r16	nl51	hD	16	0	1	R
+nl1392_r16	nl51	hD	16	1	1	R
+nl1399_r16	nl51	hD	16	1	1	R
+nl1402_r16	nl51	hD	16	1	1	R
+nl1403_r16	nl51	hD	16	1	1	R
+nl1404_r16	nl51	hD	16	1	1	R
+nl1408_r16	nl51	hD	16	1	1	R
+nl1409_r16	nl51	hD	16	1	1	R
+nl1411_r16	nl51	hD	16	1	1	R
+nl1412_r16	nl51	hD	16	1	1	R
+nl1417_r16	nl51	hD	16	1	1	R
+nl1494_r16	nl51	hD	16	1	1	R
+nl1496_r16	nl51	hD	16	1	1	R
+nl1497_r16	nl51	hD	16	1	1	R
+nl1514_r16	nl51	hD	16	1	1	R
+nl1518_r16	nl51	hD	16	0	1	R
+nl1522_r16	nl51	hD	16	1	1	R
+nl1524_r16	nl51	hD	16	1	1	R
+nl1525_r16	nl51	hD	16	1	1	R
+nl1539_r16	nl51	hD	16	1	1	R
+nl1540_r16	nl51	hD	16	0	1	R
+nl1541_r16	nl51	hD	16	0	1	R
+nl1542_r16	nl51	hD	16	1	1	R
+nl1553_r16	nl51	hD	16	1	1	R
+nl1554_r16	nl51	hD	16	1	1	R
+nl1559_r16	nl51	hD	16	0	1	R
+nl1564_r16	nl51	hD	16	1	1	R
+nl2267_r16	nl51	hD	16	1	1	R
+nl2507_r16	nl51	hD	16	1	1	R
+nl2526_r16	nl51	hD	16	1	1	R
+nl2527_r16	nl51	hD	16	1	1	R
+nl2543_r16	nl51	hD	16	1	1	R
+nl2544_r16	nl51	hD	16	1	1	R
+nl2545_r16	nl51	hD	16	0	1	R
+nl2550_r16	nl51	hD	16	0	1	R
+nl2559_r16	nl51	hD	16	1	1	R
+nl2560_r16	nl51	hD	16	1	1	R
+nl2574_r16	nl51	hD	16	1	1	R
+nl2575_r16	nl51	hD	16	0	1	R
+nl2579_r16	nl51	hD	16	1	1	R
+nl2582_r16	nl51	hD	16	1	1	R
+nl2584_r16	nl51	hD	16	1	1	R
+nl2585_r16	nl51	hD	16	0	1	R
+nl2587_r16	nl51	hD	16	1	1	R
+nl3082_r16	nl51	hD	16	1	1	R
+nl3091_r16	nl51	hD	16	0	1	R
+nl3092_r16	nl51	hD	16	0	1	R
+nl3801_r16	nl51	hD	16	0	1	R
+nl3805_r16	nl51	hD	16	0	1	R
+nl3834_r16	nl51	hD	16	0	1	R
+nl3835_r16	nl51	hD	16	1	1	R
+nl3874_r16	nl51	hD	16	0	1	R
+nl3875_r16	nl51	hD	16	0	1	R
+nl4571_r16	nl51	hD	16	1	1	R
+nl4636_r16	nl51	hD	16	0	1	R
+nl4639_r16	nl51	hD	16	1	1	R
+nl4659_r16	nl51	hD	16	1	1	R
+nl4711_r16	nl51	hD	16	0	1	R
+nl4725_r16	nl51	hD	16	1	1	R
+nl4809_r16	nl51	hD	16	0	1	R
+nl4867_r16	nl51	hD	16	0	1	R
+nl4869_r16	nl51	hD	16	0	1	R
+nl4870_r16	nl51	hD	16	0	1	R
+nl4873_r16	nl51	hD	16	0	1	R
+nl4877_r16	nl51	hD	16	0	1	R
+nl4880_r16	nl51	hD	16	0	1	R
+nl4882_r16	nl51	hD	16	0	1	R
+nl4903_r16	nl51	hD	16	0	1	R
+nl4910_r16	nl51	hD	16	0	1	R
+nl4937_r16	nl51	hD	16	0	1	R
+nl4950_r16	nl51	hD	16	0	1	R
+nl4987_r16	nl51	hD	16	1	1	R
+nl4988_r16	nl51	hD	16	1	1	R
+nl5028_r16	nl51	hD	16	0	1	R
+nl5031_r16	nl51	hD	16	0	1	R
+nl5038_r16	nl51	hD	16	1	1	R
+nl5039_r16	nl51	hD	16	1	1	R
+nl5404_r16	nl51	hD	16	0	1	R
+nl5422_r16	nl51	hD	16	1	1	R
+nl5432_r16	nl51	hD	16	1	0	
+nl5440_r16	nl51	hD	16	0	1	R
+nl5441_r16	nl51	hD	16	1	0	
+nl5443_r16	nl51	hD	16	1	0	
+nl6200_r16	nl51	hD	16	1	1	R
+nl6205_r16	nl51	hD	16	1	0	
+nl6299_r16	nl51	hD	16	0	0	
+nl6904_r16	nl51	hD	16	1	1	R
+nl6920_r16	nl51	hD	16	1	1	R
+nl6924_r16	nl51	hD	16	0	1	R
+nl6940_r16	nl51	hD	16	1	1	R
+nl6948_r16	nl51	hD	16	0	1	R
+nl6951_r16	nl51	hD	16	0	1	R
+nl6959_r16	nl51	hD	16	1	1	R
+nl7013_r16	nl51	hD	16	0	1	R
+nl5042_r17	nl51	hD	17	0	1	R
+nl5043_r17	nl51	hD	17	0	1	R
+nl5051_r17	nl51	hD	17	1	1	R
+nl5052_r17	nl51	hD	17	1	1	R
+nl5456_r17	nl51	hD	17	0	1	R
+nl5457_r17	nl51	hD	17	0	1	R
+nl6319_r17	nl51	hD	17	0	0	
+nl7019_r17	nl51	hD	17	1	1	R
+rsst051	RSST C	hC	11	1	1	KT,R
+rsst055	RSST C	hC	11	1	1	R
+rsst118	RSST C	hC	11	1	1	L3Q,R
+rsst241	RSST C	hC	11	1	1	R
+rsst072	RSST C	hC	12	1	1	KT,R
+rsst073	RSST C	hC	12	1	1	R
+rsst126	RSST C	hC	12	1	1	R
+rsst130	RSST C	hC	12	1	1	R
+rsst131	RSST C	hC	12	1	1	R
+rsst137	RSST C	hC	12	1	1	L3Q,R
+rsst140	RSST C	hC	12	1	1	L3Q,R
+rsst145	RSST C	hC	12	1	1	KT,R
+rsst148	RSST C	hC	12	1	1	L3Q,R
+rsst178	RSST C	hC	12	1	1	KT,R
+rsst249	RSST C	hC	12	1	1	R
+rsst250	RSST C	hC	12	1	1	R
+rsst361	RSST C	hC	12	1	1	R
+rsst412	RSST C	hC	12	1	1	R
+rsst414	RSST C	hC	12	1	1	L3Q,R
+rsst418	RSST C	hC	12	1	1	R
+rsst429	RSST C	hC	12	1	1	L3Q,R
+rsst527	RSST C	hC	12	1	1	R
+rsst095	RSST C	hC	13	1	1	R
+rsst100	RSST C	hC	13	1	1	R
+rsst101	RSST C	hC	13	1	1	R
+rsst160	RSST C	hC	13	1	1	R
+rsst162	RSST C	hC	13	1	1	R
+rsst163	RSST C	hC	13	1	1	R
+rsst166	RSST C	hC	13	1	1	R
+rsst171	RSST C	hC	13	1	1	R
+rsst177	RSST C	hC	13	1	1	R
+rsst179	RSST C	hC	13	1	1	R
+rsst180	RSST C	hC	13	1	1	L3Q,R
+rsst183	RSST C	hC	13	1	1	KT,R
+rsst184	RSST C	hC	13	1	1	R
+rsst186	RSST C	hC	13	1	1	R
+rsst187	RSST C	hC	13	1	1	L3Q,R
+rsst192	RSST C	hC	13	1	1	R
+rsst194	RSST C	hC	13	1	1	R
+rsst196	RSST C	hC	13	1	1	R
+rsst197	RSST C	hC	13	1	1	R
+rsst198	RSST C	hC	13	1	1	R
+rsst200	RSST C	hC	13	1	1	R
+rsst203	RSST C	hC	13	1	1	R
+rsst204	RSST C	hC	13	1	1	R
+rsst205	RSST C	hC	13	1	1	R
+rsst211	RSST C	hC	13	1	1	R
+rsst213	RSST C	hC	13	1	1	R
+rsst217	RSST C	hC	13	1	1	KT,R
+rsst248	RSST C	hC	13	1	1	R
+rsst251	RSST C	hC	13	1	1	R
+rsst253	RSST C	hC	13	1	1	L3Q,R
+rsst261	RSST C	hC	13	1	1	R
+rsst262	RSST C	hC	13	1	1	R
+rsst265	RSST C	hC	13	1	1	R
+rsst267	RSST C	hC	13	1	1	R
+rsst268	RSST C	hC	13	1	1	R
+rsst270	RSST C	hC	13	1	1	R
+rsst376	RSST C	hC	13	1	1	R
+rsst377	RSST C	hC	13	1	1	R
+rsst378	RSST C	hC	13	1	1	R
+rsst384	RSST C	hC	13	1	1	R
+rsst396	RSST C	hC	13	1	1	R
+rsst435	RSST C	hC	13	1	1	R
+rsst436	RSST C	hC	13	1	1	R
+rsst437	RSST C	hC	13	1	1	R
+rsst440	RSST C	hC	13	1	1	R
+rsst443	RSST C	hC	13	1	1	R
+rsst444	RSST C	hC	13	1	1	L3Q,R
+rsst446	RSST C	hC	13	1	1	R
+rsst447	RSST C	hC	13	1	1	L3Q,R
+rsst449	RSST C	hC	13	1	1	R
+rsst453	RSST C	hC	13	1	1	R
+rsst455	RSST C	hC	13	1	1	L3Q,R
+rsst456	RSST C	hC	13	1	1	L3Q,R
+rsst459	RSST C	hC	13	1	1	L3Q,R
+rsst473	RSST C	hC	13	1	1	R
+rsst474	RSST C	hC	13	1	1	R
+rsst475	RSST C	hC	13	1	1	R
+rsst478	RSST C	hC	13	1	1	R
+rsst479	RSST C	hC	13	1	1	R
+rsst523	RSST C	hC	13	1	1	R
+rsst550	RSST C	hC	13	1	1	R
+rsst212	RSST C	hC	14	1	1	R
+rsst220	RSST C	hC	14	1	1	R
+rsst226	RSST C	hC	14	1	1	R
+rsst227	RSST C	hC	14	1	1	R
+rsst228	RSST C	hC	14	1	1	R
+rsst229	RSST C	hC	14	1	1	R
+rsst230	RSST C	hC	14	1	1	R
+rsst232	RSST C	hC	14	1	1	R
+rsst236	RSST C	hC	14	1	1	R
+rsst269	RSST C	hC	14	1	1	R
+rsst280	RSST C	hC	14	1	1	R
+rsst282	RSST C	hC	14	1	1	R
+rsst285	RSST C	hC	14	1	1	R
+rsst286	RSST C	hC	14	1	1	R
+rsst290	RSST C	hC	14	1	1	R
+rsst291	RSST C	hC	14	1	1	R
+rsst292	RSST C	hC	14	1	1	R
+rsst294	RSST C	hC	14	1	1	R
+rsst295	RSST C	hC	14	1	1	R
+rsst296	RSST C	hC	14	1	1	R
+rsst297	RSST C	hC	14	1	1	R
+rsst301	RSST C	hC	14	1	1	R
+rsst307	RSST C	hC	14	1	1	R
+rsst309	RSST C	hC	14	1	1	R
+rsst317	RSST C	hC	14	1	1	R
+rsst319	RSST C	hC	14	1	1	R
+rsst398	RSST C	hC	14	1	1	R
+rsst485	RSST C	hC	14	1	1	R
+rsst487	RSST C	hC	14	1	1	R
+rsst496	RSST C	hC	14	1	1	R
+rsst498	RSST C	hC	14	1	1	R
+rsst499	RSST C	hC	14	1	1	R
+rsst501	RSST C	hC	14	1	1	R
+rsst502	RSST C	hC	14	1	1	R
+rsst505	RSST C	hC	14	1	1	R
+rsst508	RSST C	hC	14	1	1	R
+rsst509	RSST C	hC	14	1	1	R
+rsst510	RSST C	hC	14	1	1	R
+rsst515	RSST C	hC	14	1	1	R
+rsst516	RSST C	hC	14	1	1	R
+rsst518	RSST C	hC	14	1	1	R
+rsst534	RSST C	hC	14	1	1	R
+rsst540	RSST C	hC	14	1	1	R
+rsst549	RSST C	hC	14	1	1	R
+rsst551	RSST C	hC	14	1	1	R
+q7u_.556676_.5...6._::::::5	k3p C	hC	-1	1	1	R
+f7_...5565_.......	k3x C	hC	7	1	1	KT,R
+f7_...5566_.....5.	k3x C	hC	7	1	1	KT,R
+f7_...5576_...6657	k3x C	hC	7	1	1	R
+f7_...5656_.....5.	k3x C	hC	7	1	1	KT,R
+f7_...5665_.....5.	k3x C	hC	7	0	1	R
+f7_...5665_.....65	k3x C	hC	7	0	1	R
+f7_...5666_...5.5.	k3x C	hC	7	0	1	R
+f7_...5675_.....55	k3x C	hC	7	0	0	
+f7_...5676_..55.5.	k3x C	hC	7	0	1	R
+f7_...5676_..56.5.	k3x C	hC	7	0	1	R
+f7_...5766_....55.	k3x C	hC	7	1	1	KT,R
+f7_...5775_...5.55	k3x C	hC	7	1	1	R
+f7_...5775_...5.65	k3x C	hC	7	1	1	R
+f7_...6576_...5.5.	k3x C	hC	7	0	0	
+f7_...6676_...555.	k3x C	hC	7	1	1	R
+f7_..55567_..576.6	k3x C	hC	7	1	1	R
+f7_..55576_.....5.	k3x C	hC	7	1	1	R
+f7_..55675_....5..	k3x C	hC	7	1	1	R
+f7_..55675_....5.5	k3x C	hC	7	1	1	R
+f7_..55676_.....5.	k3x C	hC	7	1	1	R
+f7_..55685_....55.	k3x C	hC	7	1	1	R
+f7_..55776_....55.	k3x C	hC	7	1	1	R
+f7_..55776_..56.5.	k3x C	hC	7	1	1	R
+f7_..55785_....55.	k3x C	hC	7	1	1	R
+f7_..56575_.....5.	k3x C	hC	7	1	1	R
+f7_..56575_.....65	k3x C	hC	7	1	1	R
+f7_..56575_....5..	k3x C	hC	7	1	1	R
+f7_..56576_.....5.	k3x C	hC	7	1	1	R
+f7_..56585_....55.	k3x C	hC	7	1	1	R
+f7_..56675_.....5.	k3x C	hC	7	1	1	R
+f7_..56675_.....65	k3x C	hC	7	1	1	R
+f7_..56676_...5.5.	k3x C	hC	7	0	1	R
+f7_..56685_....555	k3x C	hC	7	1	1	R
+f7_..56756_..6.66.	k3x C	hC	7	1	1	R
+f7_..56766_...655.	k3x C	hC	7	1	1	R
+f7_..56775_...5.5.	k3x C	hC	7	1	1	R
+f7_..56776_..5.55.	k3x C	hC	7	0	1	R
+f7_..57556_...65..	k3x C	hC	7	1	1	R
+f7_..57556_...66..	k3x C	hC	7	1	1	R
+f7_..57575_...5.5.	k3x C	hC	7	1	1	R
+f7_..57575_...56..	k3x C	hC	7	1	1	R
+f7_..57576_...5.5.	k3x C	hC	7	1	1	R
+f7_..57576_...655.	k3x C	hC	7	1	1	R
+f7_..57585_...565.	k3x C	hC	7	1	1	R
+f7_..57585_...655.	k3x C	hC	7	1	1	R
+f7_..65576_...665.	k3x C	hC	7	1	1	R
+f7_.55.575_.5...5.	k3x C	hC	7	1	1	R
+f7_.5576.6_.665...	k3x C	hC	7	1	1	R
+f7_.557765_...5...	k3x C	hC	7	1	1	R
+f7_.557775_.56.5..	k3x C	hC	7	0	1	R
+f7_.56.575_.5..5..	k3x C	hC	7	1	0	
+f7_.56.575_56...5.	k3x C	hC	7	1	0	
+f7_.565775_....5..	k3x C	hC	7	1	1	R
+f7_.565776_...5.5.	k3x C	hC	7	0	1	R
+f7_.566765_....5..	k3x C	hC	7	1	1	R
+f7_.566766_...5.5.	k3x C	hC	7	0	1	R
+f7_.575775_..5.5..	k3x C	hC	7	1	1	R
+f7_.575776_..55.5.	k3x C	hC	7	0	1	R
+f7_.576556_..5...5	k3x C	hC	7	1	1	R
+f7_.586556_.55...5	k3x C	hC	7	1	1	R
+f7_.656756_....66.	k3x C	hC	7	1	1	R
+f8_...55765_....5.5.	k3x C	hC	8	1	1	R
+f8_...55865_...5656.	k3x C	hC	8	1	1	R
+f8_...56765_....5.5.	k3x C	hC	8	1	1	R
+f8_..555566_...576.6	k3x C	hC	8	1	1	R
+f8_..556856_..5655.6	k3x C	hC	8	1	1	R
+f8_..566566_....56.5	k3x C	hC	8	1	1	R
+f8_..655556_..675..6	k3x C	hC	8	1	1	R
+f8_..656656_..65...5	k3x C	hC	8	1	1	R
