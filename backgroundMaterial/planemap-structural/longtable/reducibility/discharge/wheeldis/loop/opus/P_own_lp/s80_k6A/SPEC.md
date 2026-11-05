@@ -71,3 +71,17 @@ The DFS window bounds do not use the rules. A leaf can rise above its rule-free 
 - Option `f2bx=FILE[,FILE..]` (requires f2b=). It is set by env80.sh when F2BX is set. A rule already in the base set is counted and skipped.
 - Without f2bx, the engine builds exactly the original rule lists, so it reproduces eng_orig. See test (a) in run.log.
 - Self-test: `upperR2 ... f2bx=.. f2bself=0 f2bxself=N [f2bxtries= f2bxkeep= f2bxsub= f2bxsl= f2bxtight=]`. It has parts (b), (c1), (c2) and (t); see the comment block in f2bglue.py.
+
+## 5. Effect on our stack (measured at sol_b77F_in02, route-F args, FAM=full)
+
+Coefficients are [P]. Values are [M] at fixed in02 weights.
+
+- **Feasibility.** upperR2 with f2bx=rules_ApLp.json is FEASIBLE at t = 0.029906108105, Karp 0.546518400. These are the same numbers as without the extra rules.
+- **Which rules change rows.** B3 measured its gains against KT / L3T only, not against Studio's f2b rules. On our stack most new rules are already implied:
+  - 8 of the 76 new rules changed a sampled matched row: 2 A' and 6 L'.
+  - The other 68 changed none. That is up to 1,500 tries per rule and 40 kept admissible matched rows each, so it is sampling, not proof of redundancy.
+- **Near-tight rows (slack <= 1e-3).** 2 of the 634 d=7 rows change, each with a load drop of 0.3326. 0 of the 172 d=8 rows and 0 of the 56 d=9 rows change.
+- **B3 target rows (1,054).** 24 change:
+  - 21 are A' changes from M mask 30 -> 28, with no value change at in02.
+  - 5577577/6675576 is tight and drops 1.029906 -> 0.697261, via B3's b7_u55775.._66.55.._p215 / p325 on both 7-sides.
+  - 5766767/5656665 and 7676675/6665655 drop 0.0700.
