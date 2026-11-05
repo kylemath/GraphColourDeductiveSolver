@@ -166,7 +166,9 @@ if F2B_ON:
             tries = 0
             while len(arr) < N and tries < 200 * N:
                 tries += 1
-                if 'ksforce' in FLAGS and d == 7 and len(arr) % 3 == 1:   # s78: arrangements with a planted K* payer or payee pattern
+                if 'egforce' in FLAGS and EG and len(arr) % 3 == 2:   # s78: planted generic EDGE payer (d = 7) or payee pattern
+                    w, s = eg_force(rng, d)
+                elif 'ksforce' in FLAGS and d == 7 and len(arr) % 3 == 1:   # s78: arrangements with a planted K* payer or payee pattern
                     w, s = kstar_force(rng, d)
                 elif 'q7force' in FLAGS and len(arr) % 4 == 1:   # s67: arrangements with a payer slot of the key 7665557 (7 with neighbours 7, 6 | apex 6 | apex 5 | 7), both orientations
                     i0 = rng.randrange(d); w = [rng.choice((5, 6, 7, 8, 9)) for _ in range(d)]; s = [rng.choice((5, 6, 7, 8, 9)) for _ in range(d)]
@@ -196,6 +198,11 @@ if F2B_ON:
             nm = dict(F2B_STAT); F2B_STAT.clear()
             nQ = sum(1 for lk, sv in arr if any(k[0] == 'Q' for k in recv_coef_R2(d, lk, sv, 'xon' in FLAGS))); nq = sum(1 for lk, sv in arr if d == 7 and any(k[0] == 'q' and QV.get(k[1], 0.0) > 0 for k in recv_coef_R2(d, lk, sv, 'xon' in FLAGS))) if Q7 else 0
             if Q7: log('  q7 coverage d=%d: %d arrangements with a Q payer coefficient, %d with a q payee coefficient of positive value' % (d, nQ, nq))
+            if EG:   # s78: generic EDGE coverage of the self-test arrangements
+                for key_ in EGKEYS:
+                    _c = [recv_coef_R2(d, lk, sv, 'xon' in FLAGS).get(('ks', key_['name']), 0) for lk, sv in arr]
+                    _p = sum(1 for lk, sv in arr if d == 7 and eg_payer_count(key_, [int(c_) for c_ in lk], [int(c_) for c_ in sv]))
+                    log('  edge coverage d=%d %s: amount %.9f; %d arrangements with a payer slot, %d with a nonzero coefficient (min %d max %d)' % (d, key_['name'], KSV.get(key_['name'], 0.0), _p, sum(1 for v_ in _c if v_), min(_c), max(_c)))
             if KSTAR and d == 7:   # s78: K* coverage of the self-test arrangements
                 _kc = [recv_coef_R2(d, lk, sv, 'xon' in FLAGS).get(('ks', 'K1'), 0) for lk, sv in arr]
                 _kp = sum(1 for lk, sv in arr if any(kstar_payer_slot([int(c_) for c_ in lk], [int(c_) for c_ in sv], i_, e_) for i_ in range(7) for e_ in (1, -1)))

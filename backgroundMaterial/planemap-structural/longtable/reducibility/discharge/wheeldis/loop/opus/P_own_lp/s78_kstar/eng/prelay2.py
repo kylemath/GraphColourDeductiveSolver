@@ -986,6 +986,7 @@ def cmd_solveR2():
     jt = col(('t',)); h.changeColCost(jt, 1.0)
     for r_ in ROOTS: col(('y', r_))
     if KSTAR: col(('ks', 'K1'))   # s78
+    for nm_ in EGNAMES: col(('ks', nm_))   # s78 generic EDGE keys (same column namespace and cap)
     if FEAS is not None and 'feascols' in FLAGS:   # s75: every column of the in-point exists in the LP (else the blend silently drops its value)
         for k_ in FEAS: col(k_)
         log('feascols: %d in-point columns created up front (%d LP columns now)' % (len(FEAS), len(names)))
@@ -1197,9 +1198,9 @@ def cmd_solveR2():
             log('  q7rc it %d: t=%.9f; q cols %d, with value>0 %d, sum q %.6f; Q cols %d; keys %s' % (it, t, sum(1 for k in cols if k[0] == 'q'), sum(1 for k, i in cols.items() if k[0] == 'q' and xv[i] > 1e-12), sum(xv[i] for k, i in cols.items() if k[0] == 'q'), sum(1 for k in cols if k[0] == 'Q'),
                 ' '.join('%s:%s' % (''.join(map(str, k)), ('val=%.5g rc=%.5g' % (xv[cols[('q', k)]], cdl[cols[('q', k)]])) if ('q', k) in cols else 'no-col') for k in kk3)))
         log('  rrz it %d: cols rr %d z %d zr %d; positive (>1e-9) rr %d z %d zr %d; sum rr %.4f z %.4f zr %.4f' % (it, *[sum(1 for k in cols if k[0] == f) for f in ('rr', 'z', 'zr')], *[sum(1 for k, i in cols.items() if k[0] == f and xv[i] > 1e-9) for f in ('rr', 'z', 'zr')], *[sum(xv[i] for k, i in cols.items() if k[0] == f) for f in ('rr', 'z', 'zr')]))   # s69 logging (added after the first K run started)
-        if KSTAR:   # s78: K* amount and reduced cost (col_dual, min convention) every iteration
-            cdl = h.getSolution().col_dual; jk = cols[('ks', 'K1')]
-            log('  kstar it %d: t=%.9f K1 = %.9f (cap %g) rc %.6g' % (it, t, xv[jk], KSCAP, cdl[jk]))
+        if KSTAR or EGNAMES:   # s78: K* / EDGE amounts and reduced costs (col_dual, min convention) every iteration
+            cdl = h.getSolution().col_dual
+            log('  kstar it %d: t=%.9f %s (cap %g)' % (it, t, ' '.join('%s = %.9f rc %.6g' % (k_[1], xv[i_], cdl[i_]) for k_, i_ in sorted(cols.items()) if k_[0] == 'ks'), KSCAP))
         tlp = time.time() - t1
         if 'nosep' in FLAGS: log('nosep: LP over the warm rows only, t = %.12f (a lower bound once lowerR2 checks the cert)' % t); break
         tsep = time.time(); rounds = []
@@ -1467,6 +1468,7 @@ def cmd_lowerR2():
         if k[0] == 'lq': return Fraction(OPT.get('lqcap', '3'))   # stage 28
         if ZR and k[0] in ('z', 'zr', 'rr'): return Fraction(OPT.get('zcap', '3'))   # stage 33
         if k[0] == 'z6': return Fraction(OPT.get('z6cap', '3'))   # RELAY_SPEC_s23.5
+        if k[0] == 'q' and Q7CAP is not None: return Fraction(OPT['q7cap'])   # 5 Nov (Team C): q is boxed at q7cap in solveR2, so price it there (bound is for the capped LP, like z/zr/rr)   [s78: ported from s75 18:09Z]
         if k[0] == 'ks': return Fraction(OPT.get('kscap', '3'))   # s78 K*
         return UCAP   # s33 ucap=: every other column priced at UCAP (only if the LP family had that cap)
     def evaluate(ws):
@@ -1587,9 +1589,10 @@ def cmd_upperR2():
     FV.clear(); FV.update({tuple(k): v for k, v in Sj.get('f', [])})
     if Sj.get('f') and not F5: log('SOLUTION HAS f BUT face5 FLAG OFF'); return
     KSV.clear(); KSV.update({str(k): float(v) for k, v in Sj.get('ks', [])})   # s78 K*
-    if any(v != 0.0 for v in KSV.values()) and not KSTAR: log('SOLUTION HAS ks BUT kstar FLAG OFF'); return
-    if any(k != 'K1' for k in KSV): log('SOLUTION HAS UNKNOWN ks KEYS %s' % sorted(KSV)); return
+    if KSV.get('K1', 0.0) != 0.0 and not KSTAR: log('SOLUTION HAS ks BUT kstar FLAG OFF'); return
+    if any(k != 'K1' and v != 0.0 and k not in EGNAMES for k, v in KSV.items()): log('SOLUTION HAS ks KEYS NOT IN edgekeys: %s' % sorted(KSV)); return
     if any(v < 0 or v > KSCAP + 1e-9 for v in KSV.values()) and 'ksnorange' not in FLAGS: log('ks VALUE OUTSIDE [0, kscap]: %s' % KSV); log('UPPER-R2: INFEASIBLE (ks range)'); return
+    if EGNAMES: log('edgekeys: amounts %s (cap %g)' % (' '.join('%s = %.12f' % (k_, KSV.get(k_, 0.0)) for k_ in EGNAMES), KSCAP))
     if KSTAR: log('kstar: K1 = %.12f (cap %g)%s' % (KSV.get('K1', 0.0), KSCAP, ' (CONTROL ksplant: python payee mask without f2b extra7)' if KSPLANT else ' (CONTROL ksnowin: no window bound)' if KSNOWIN else ''))
     xd = {int(k): v for k, v in Sj.get('x', {}).items()}
     XOV.clear(); XOV.update({int(k): v for k, v in Sj.get('xo', {}).items()})   # s51 51.5

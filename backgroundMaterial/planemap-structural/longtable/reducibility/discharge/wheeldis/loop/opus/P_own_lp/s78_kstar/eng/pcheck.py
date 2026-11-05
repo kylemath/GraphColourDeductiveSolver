@@ -338,12 +338,12 @@ def run_sep(d, W, thr, K, mode, pats=True):
     if F2B_ON and d in (7, 8, 9):   # s60_f2b: jsepf = jsep7 + the 2-ball leaf correction (all d = 7..9)
         l3v = bool(LQVX and L3VFILE[0] and d in (7, 8))
         extra = [NTH, SYMF, CLSFILE[0] if mode == 2 else 'none', (BONUSF[0] or 'none') if d == 7 else 'none', (L3FILE[0] or 'none') if d == 7 else 'none', 'none', L3VFILE[0] if l3v else 'none', f2b_write(d)]   # s67: q7 bonus (payee inflow) passed at d = 7; BONUSF[0] is None with q7 off
-        if KSTAR and d == 7: extra += [F2B_EVAL[0] or 'none', q7m_write(d) if Q7M else 'none', kstar_write(d)]   # s78: argv[13] = K* file
+        if (KSTAR or EG) and d == 7: extra += [F2B_EVAL[0] or 'none', q7m_write(d) if Q7M else 'none', kstar_write(d) if KSTAR else 'none'] + ([eg_write()] if EG else [])   # s78: argv[13] = K* file, argv[14] = generic EDGE keys
         elif Q7M and d in (7, 8): extra += [F2B_EVAL[0] or 'none', q7m_write(d)]
         elif F2B_EVAL[0]: extra.append(F2B_EVAL[0])
         cp_ = subprocess.run([BINF, hdr, wp] + extra, capture_output=True, text=True)   # s78: jsepf stderr summary lines are logged; a refusal is reported with its message
         for l_ in cp_.stderr.split('\n'):
-            if l_.startswith(('jsepf', 'kstar', 'f2b', 'q7m')) and ('loaded' not in l_): log('  [d=%d] %s' % (d, l_))
+            if l_.startswith(('jsepf', 'kstar', 'edge', 'f2b', 'q7m')) and ('loaded' not in l_): log('  [d=%d] %s' % (d, l_))
         if cp_.returncode != 0: log('  [d=%d] jsepf FAILED with exit %d: %s' % (d, cp_.returncode, cp_.stderr.strip().split('\n')[-1][:300])); raise subprocess.CalledProcessError(cp_.returncode, BINF)
         out = cp_.stdout.split('\n')
         return [l.split() for l in out if l], time.time() - t0, len(inst)
@@ -558,6 +558,7 @@ exec(open(os.path.join(HERE, 'prelay.py')).read())
 exec(open(os.path.join(HERE, 'prelay2.py')).read())
 exec(open(os.path.join(HERE, 'f2bglue.py')).read())   # s60_f2b
 exec(open(os.path.join(HERE, 'kstar.py')).read())   # s78_kstar: K* family (flag kstar)
+exec(open(os.path.join(HERE, 'edgefam.py')).read())   # s78_kstar: generic EDGE keys (edgekeys=<file>)
 exec(open(os.path.join(HERE, 'pinout.py')).read())   # s70: in-out separation
 log('jcheck: %d R5, %d R6, %d fans, %d RBIG; %d senders, %d rooted vars' % (len(R5), len(R6), len(FANS), len(RBIG), len(SENDERS), len(ROOTS)))
 {'xoselftest': cmd_xoselftest, 'pcellcheck': cmd_pcellcheck, 'binderR2': cmd_binderR2, 'rowR2': cmd_rowR2, 'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()

@@ -33,7 +33,7 @@ Each match gives coefficient -1. Every letter involved lies in the payer's own 2
 - w_{j-e1} in B, w_k in S, a = 5.
 
 Conditions read through a mask (credit when **possible**):
-- **S.L-3**: the payer's private vertex next to a can be 5, i.e. bit 5 of `L3T[(e1, w_k, w_{j+2e1}, w_{j+3e1}, w_{j+4e1}, a, o)] & ~extra7(j, e1)`.
+- **S.L-3**: the payer's private vertex next to a can be 5, i.e. letter 5 (bit 0) is in `L3T[(e1, w_k, w_{j+2e1}, w_{j+3e1}, w_{j+4e1}, a, o)] & ~extra7(j, e1)`.
 - **S.A-1** when c- = 5: c-'s other apex apex(k, k+e1) is in B. This letter is exact.
 - **S.A-1** when c- = 6: S.A-1 is the 6's private vertex, and `(amask(k) & ~extra6(k))` must meet B.
 
@@ -103,10 +103,60 @@ It then compares grammar.py's column for K\* with the engine's K1 coefficient on
 
 The only free choice I made is that a 9+ letter counts as B. B = {7, 8, 9+} in the grammar.
 
-## 3. Tests (logs in logs/, scripts in tests/)
+## 3. Generic EDGE family (eng/edgefam.py, 19:00Z): each key is data
 
-See REPORT.md for the numbers.
+`edgekeys=<file>` (env78: `EGK=<file>`) takes lines of the form `NAME EDGE(7->P)[POS=SYM ...]`, using grammar.py position names and symbols. The file `eng/edgekeys_r4.txt` holds W6 round 4's order:
 
-## 4. K solve (prepared, not launched)
+| name | key |
+|---|---|
+| A1 | EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S] |
+| C1 | EDGE(7->7)[S.L-2=7 S.A-1=5 R.L+2=7] |
+| E1 | EDGE(7->B)[S.L+2=6 S.L-2=5 S.L-3=5 S.A-1=7] |
 
-See REPORT.md.
+**Parameters.**
+- The amount column is `('ks', NAME)`: it shares the K\* namespace, its LP, upperR2 and lowerR2 hooks, and kscap. NAME must not be K1.
+- The payer has degree exactly 7.
+- The payee P is a subset of B. The payee is the row centre, so P selects the row degrees: 9 means every d >= 9, including d = 10..17 and the Karp tail.
+- Allowed positions are S.L+-1..3, S.A+-1 and R.L+-2: exactly those that are exact letters of the payer's own 2-ball. Any other position is refused, because its payer side would need a separated row family.
+
+**Payer row** (d = 7 centre, v = w_i, orientation e). The positions read as:
+- S.L+-k = w_{i+-ke};
+- S.A+1 = apex(i+e, i+2e) and S.A-1 = apex(i-e, i-2e);
+- R.L+2 = apex(i, i+e) and R.L-2 = apex(i-e, i).
+
+Each match gives coefficient -1. The term is applied exactly, both in `recv_coef_R2` and at the jsepf leaf (**argv[14]**), and it is ≤ 0. The binary's file layout is in the jsepf.cpp header.
+
+**Payee row** (centre of degree d in P, payer w_j = 7, orientation e). The positions read as:
+- S.L+-1 = w_{j+-e};
+- S.L+-2 = apex(j, j+-e);
+- R.L+-2 = w_{j+-2e};
+- S.L+-3 = u's private next to apex(j, j+-e), read through L3T & m at U = 7 when (w_{j+-e}, apex) is in {5,6}^2, and free otherwise;
+- S.A+-1 = the vertex across (w_k, apex(j,k)) with k = j+-e: the exact apex(k, k+-e) when w_k = 5, the private amask_U(k) & m when w_k = 6, and free when w_k >= 7.
+
+Each match gives credit +1 when every condition is **possible**. The credit is evaluated as a **window bound**:
+- the window is centred at j;
+- each condition's letters outside the window are OR-ed out;
+- the f2b extras are dropped.
+
+The Python row coefficient *is* this bound (a table lookup). So WIN, every separator (d = 7..17, and the tail through W9) and the LP rows agree exactly. The payee side has no leaf term, and nothing positive can appear outside WIN.
+
+**Mode 2.** The bound reads p and s in c = 7 windows, but the base class of such a window lacks them. The payee-bound signature is therefore folded into the class table (14 signatures for the r4 keys).
+
+**Controls.**
+- `egplant`: the C++ payer's first condition is widened to *, so the self-test must FAIL.
+- `egforce`: the self-test generator plants payer and payee patterns.
+
+## 4. Tests
+
+The numbers are in the REPORT. Scripts are in `tests/`:
+
+| script | purpose |
+|---|---|
+| `test_orient.py`, `test_edge.py` | test 0: orientation and semantics against grammar.py |
+| `seq1.sh`, `seq1b.sh`, `seqE.sh` | upperR2 tests 1, 2, 3 and 5, plus the controls |
+| `kub_gap.py` | K\* window-bound tightness |
+| `symchk78.sh` | test 4 |
+| `t5_name.py`, `t5e_name.py` | name the rows of the planted tests |
+| `seq6*.sh` | pointer LPs |
+
+Logs are in `logs/`.

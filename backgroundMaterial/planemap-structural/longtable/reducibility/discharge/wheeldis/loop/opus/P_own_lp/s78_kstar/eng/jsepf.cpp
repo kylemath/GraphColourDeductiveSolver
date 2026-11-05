@@ -8,6 +8,9 @@
 //   Requires argv[7] (l3q file: MK) and argv[10] (f2b file: KM, R6B, R7B).
 //   nc rebase (17:45Z): every K* leaf term is <= 0 (aK >= 0 refused otherwise, exact <= KUB enforced), so K* adds nothing to the nc SLACK;
 //   the K* block sits after the f2b / q7m corrections and exits on the plain cut.
+// s78 generic EDGE keys (19:00Z): optional argv[14] = edge file (eng/edgefam.py eg_write): int32 7802, int32 nkeys; per key double amount >= 0,
+//   int32 payee-letter mask, int32 ncond, ncond x (int32 kind, int32 off, int32 mask).  d = 7 leaf: the centre's exact payer outflow, -amount
+//   per (i, e) match (<= 0, plain cut, no slack); the payee credit is a window bound already in WIN (no leaf term).  Mode-2 id 1800000100+key.
 // jsepf (s60_f2b): jsep7 + argv[10] = f2b file (outside team's full-wheel 2-ball private-letter exclusions), optional argv[11] = eval file.
 //   f2b file (little endian), per degree d in 7..9: int32 d; uint8 KM[5^8] (allowed-private mask of a 6 spoke, 31 & ~kill6[U], index
 //   (w-2,w-1,w+1,w+2,s-2,s-1,s0,s+1)); double V6M[625*4*32] (M value of the 6 spoke at (b,e,q,r,ca,cf,mask), 0 if no allowed key);
@@ -69,6 +72,8 @@ struct F2BRule { uint64_t fw, fs, kill; };
 bool F2B = false; vector<uint8_t> KM; vector<double> V6M; vector<double> QMT; vector<F2BRule> R6B[25], R7B[2][25];
 atomic<long> f2bHits(0), f2bClamp(0); bool EVAL = false;
 bool KS = false; double KSA = 0; vector<uint8_t> KUB; atomic<long> ksPay(0), ksRecv(0), ksUB(0);   // s78 K*
+struct EgCond { int kind, off, mask; }; struct EgKey { double amt; int vm; vector<EgCond> cond; };   // s78 generic EDGE payer side (argv[14])
+bool EGON = false; vector<EgKey> EGK; atomic<long> egPay(0);
 vector<double> QTM; bool QM = false; atomic<long> qmHits(0), qmClamp(0);   // s67 q7m: argv[12] = QT[625][32][32] for this d (masked payer credit); QM_ = leaf correction QT[m1,m2] - QT[31,31] <= 0
 set<string> RBIG; map<string,double> BONUS;   // jsep4: d = 7 link inflow subtracted at the leaf (sound: bounds ignore it)
 struct Inst { vector<pair<int,int>> sl; };
@@ -298,6 +303,24 @@ struct Ctx {
             }
             tot += dk; if (!(tot > c)) return;
         }
+        if (EGON && d == 7) {   // s78 generic EDGE keys: exact payer outflow of the d = 7 centre (every term <= 0); payee credit is in WIN
+            double dg = 0;
+            for (size_t kk = 0; kk < EGK.size(); kk++) {
+                const EgKey &K = EGK[kk]; if (K.amt == 0) continue;
+                for (int i = 0; i < d; i++) {
+                    if (!((K.vm >> W(i)) & 1)) continue;
+                    for (int e = 1; e >= -1; e -= 2) {
+                        bool ok = true;
+                        for (const EgCond &q : K.cond) {   // kind 0: w_{i+off e}; kind 1: apex between orientation offsets off, off+1
+                            const int L = q.kind == 0 ? W(i + q.off * e) : (e > 0 ? S(i + q.off) : S(i - q.off - 1));
+                            if (!((q.mask >> L) & 1)) { ok = false; break; }
+                        }
+                        if (ok) { dg -= K.amt; egPay++; l3ids.push_back(1800000100 + (int)kk); }
+                    }
+                }
+            }
+            tot += dg; if (!(tot > c)) return;
+        }
         if (EVAL) { printf("E %.12f\n", tot); return; }
         if (FY2) {
             double corr = 0;
@@ -494,6 +517,19 @@ int main(int argc, char **argv) {
         if (!L3 || !F2B) { fprintf(stderr, "kstar needs the l3q file (argv[7]) and the f2b file (argv[10])\n"); return 90; }
         KS = true; fprintf(stderr, "jsepf: kstar table loaded, aK = %.12g\n", KSA);
     }
+    if (argc > 14 && strcmp(argv[14], "none") != 0) {   // s78 generic EDGE keys (payer side, d = 7)
+        FILE *gf = fopen(argv[14], "rb"); if (!gf) return 91;
+        int32_t mg = 0, nk = 0; if (fread(&mg, 4, 1, gf) != 1 || mg != 7802 || fread(&nk, 4, 1, gf) != 1 || nk < 0 || nk > 64) { fprintf(stderr, "edge file: bad header\n"); return 92; }
+        for (int kk = 0; kk < nk; kk++) {
+            EgKey K; int32_t vm, nc; if (fread(&K.amt, sizeof(double), 1, gf) != 1 || fread(&vm, 4, 1, gf) != 1 || fread(&nc, 4, 1, gf) != 1 || nc < 0 || nc > 16) return 93;
+            if (!(K.amt >= 0) || K.amt > 1e6) { fprintf(stderr, "edge: amount %g refused (must be >= 0)\n", K.amt); return 94; }
+            K.vm = vm; for (int q = 0; q < nc; q++) { int32_t a3[3]; if (fread(a3, 4, 3, gf) != 3 || a3[0] < 0 || a3[0] > 1 || a3[1] < -3 || a3[1] > 3) return 95; K.cond.push_back({a3[0], a3[1], a3[2]}); }
+            EGK.push_back(K);
+        }
+        fclose(gf);
+        if (d != 7) { fprintf(stderr, "edge file passed at d=%d (d = 7 only)\n", d); return 96; }
+        EGON = true; fprintf(stderr, "jsepf: edge keys loaded: %d\n", nk);
+    }
     if (argc > 11 && strcmp(argv[11], "none") != 0) {
         EVAL = true; Ctx c0; FILE *ef = fopen(argv[11], "r"); char wb[64], sb[64];
         while (ef && fscanf(ef, "%63s %63s", wb, sb) == 2) { for (int i = 0; i < d; i++) { c0.L[2 * i] = wb[i] - '5'; c0.L[2 * i + 1] = sb[i] - '5'; } c0.leaf(); }
@@ -504,6 +540,7 @@ int main(int argc, char **argv) {
     for (auto &x : th) x.join();
     long nodes = totnodes;
     if (QM) fprintf(stderr, "jsepf: q7m leaf hits %ld, clamped %ld\n", qmHits.load(), qmClamp.load());
+    if (EGON) fprintf(stderr, "jsepf: edge leaf payer firings %ld\n", egPay.load());
     if (KS) fprintf(stderr, "jsepf: kstar leaf payer firings %ld, payee firings %ld, window bounds corrected %ld\n", ksPay.load(), ksRecv.load(), ksUB.load());
     fprintf(stderr, "jsepf_nc: positive corrections kept (not clamped): f2b %ld, q7m %ld\n", f2bPos, qmPos);
     if (F2B) fprintf(stderr, "jsepf: f2b leaf hits %ld, clamped %ld\n", f2bHits.load(), f2bClamp.load());

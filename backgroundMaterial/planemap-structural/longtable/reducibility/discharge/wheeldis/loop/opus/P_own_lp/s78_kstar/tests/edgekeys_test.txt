@@ -1,0 +1,5 @@
+# test-only: the r4 keys + K* written as a generic key (KG) + mis-oriented controls (never for solves)
+A1 EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]
+C1 EDGE(7->7)[S.L-2=7 S.A-1=5 R.L+2=7]
+E1 EDGE(7->B)[S.L+2=6 S.L-2=5 S.L-3=5 S.A-1=7]
+KG EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]
