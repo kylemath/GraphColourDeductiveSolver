@@ -302,7 +302,7 @@ if F2B_ON:
             d = int(g[1]); par = 6 if '_w6' in g else 7
             sgn = 0 if par == 6 else (1 if g.endswith('_1') and not g.endswith('_-1') else -1)
             for r in XR[g]:
-                found = None; nadm = 0
+                found = None; nadm = 0; samp = []; KEEP = int(OPT.get('f2bxkeep', '40'))
                 for _ in range(TR):
                     i0 = rng.randrange(d); w = [rng.choice((5, 5, 6, 6, 7, 7, 8, 9)) for _ in range(d)]; s = [rng.choice((5, 5, 6, 6, 7, 7, 8, 9)) for _ in range(d)]
                     if sgn:   # keep the l3q side readable (c, a <= 6) when the rule leaves them free
@@ -311,15 +311,26 @@ if F2B_ON:
                     for o, al in r[1]: w[(i0 + o) % d] = rng.choice(sorted(al))
                     for o, v in r[2]: s[(i0 + o) % d] = v
                     if admissible(d, L(w), L(s)) is not None: continue
-                    nadm += 1
-                    e = _expect(g, r, d, w, s)
-                    if e: found = (i0, w, s, e); break
+                    nadm += 1; e = _expect(g, r, d, w, s)
+                    if e and found is None: found = (i0, w, s, e)
+                    if len(samp) < KEEP or (e and not any(x[3] for x in samp)): samp.append((i0, w, s, e))
+                    if found is not None and len(samp) >= KEEP: break
+                # engine diff (rule on - rule off) on every kept matched row == independent expectation (also where it is empty)
+                restore = _f2b_drop({g: {r}}); off_ = [recv_coef_R2(d, L(w), L(s), xon) for i0, w, s, e in samp]; restore()
+                nok = nch = 0
+                for (i0, w, s, e), cf_off in zip(samp, off_):
+                    dg = _cdiff(recv_coef_R2(d, L(w), L(s), xon), cf_off)
+                    if dg == e: nok += 1
+                    else: bad.append(('sample', g, r, L(w), L(s), dg, e))
+                    nch += bool(dg)
+                tot['b: sampled matched rows'] += len(samp); tot['b: sampled matched rows exact'] += nok
+                EV[d] += [(L(w), L(s)) for i0, w, s, e in samp[:5]]
                 if found is None:
-                    per.append((g, r, 'no change in %d admissible matched rows (letter already removed by kill6 / other rules there)' % nadm)); tot['b: rule with no change found'] += 1; continue
+                    per.append((g, r, 'NO CHANGE: %d admissible matched rows sampled, engine = expectation on %d/%d kept, all with no change (letter already removed by kill6 / other rules there)' % (nadm, nok, len(samp)))); tot['b: rules with no change found'] += 1; continue
                 i0, w, s, e = found
                 restore = _f2b_drop({g: {r}}); cf_off = recv_coef_R2(d, L(w), L(s), xon); restore()
                 cf_on = recv_coef_R2(d, L(w), L(s), xon); dg = _cdiff(cf_on, cf_off)
-                ok = dg == e; tot['b: match rows'] += 1; tot['b: match rows exact' if ok else 'b: match rows WRONG'] += 1
+                ok = dg == e; tot['b: rules with a change'] += 1; tot['b: match rows exact' if ok else 'b: match rows WRONG'] += 1
                 if not ok: bad.append(('match', g, r, L(w), L(s), dg, e))
                 EV[d] += [(L(w), L(s))]
                 # miss rows: each requirement slot set to a disallowed letter
@@ -337,7 +348,7 @@ if F2B_ON:
                     else: tot['b: miss rows exact'] += 1
                     if not dg: tot['b: miss rows with no change'] += 1
                     EV[d] += [(L(w2), L(s2))]
-                per.append((g, r, 'match row %s/%s spoke %d: change %s exact=%s; %d miss rows, %d with no change' % (L(w), L(s), i0, sorted(e.items(), key=str), ok, nm, nz)))
+                per.append((g, r, 'CHANGE: %d admissible matched rows sampled (%d kept: engine = expectation on %d, %d changed); match row %s/%s spoke %d: change %s exact=%s; %d miss rows (one requirement off), %d with no change' % (nadm, len(samp), nok, nch, L(w), L(s), i0, sorted(e.items(), key=str), ok, nm, nz)))
         for g, r, msg in per: log('  f2bx %s %s: %s' % (g, r, msg))
         # ---- (c1) jsepf leaf vs Python exact ----
         mx = {}
@@ -365,7 +376,8 @@ if F2B_ON:
         rng.shuffle(links); nsub = int(OPT.get('f2bxsub', '3')); c2ok = True
         for lk in links[:nsub]:
             Py = {}
-            for sv_t in itertools.product(LET, repeat=7):
+            SL_ = tuple(int(c) for c in OPT.get('f2bxsl', '56789'))   # apex letters of the sub-space (the separator gets the same restriction)
+            for sv_t in itertools.product(SL_, repeat=7):
                 sv = L(sv_t)
                 if admissible(7, lk, sv) is not None: continue
                 Py[sv] = sum(v * val(k) for k, v in recv_coef_R2(7, lk, sv, xon).items())
@@ -376,6 +388,7 @@ if F2B_ON:
             FIRE = {sv for sv in Py if any(all(int(sv[(i + o) % 7]) == v for o, v in r[2]) for r, i in cand)}
             for thr in (-1e9, vals[int(0.8 * len(vals))] if vals else 0.0):
                 inst = instances(7) + [((2 * i, 31 & ~(1 << LI[int(lk[i])])),) for i in range(7)]
+                if len(SL_) < 5: inst += [((2 * i + 1, 31 & ~sum(1 << LI[x] for x in SL_)),) for i in range(7)]
                 hdr = os.path.join(WORK, 'hdr_f2bx_sub.txt'); big = sorted(b for b in RBIG if len(b) == 7)
                 with open(hdr, 'w') as f:
                     f.write('%d %.15f %d %d\n%d\n%s\n%d\n' % (7, thr, 10 ** 7, 0, len(big), '\n'.join(big), len(inst)))
@@ -396,8 +409,8 @@ if F2B_ON:
                 miss = [sv for sv in miss if want[sv] > thr + 1e-9]; extra_ = [sv for sv in extra_ if not (sv in Py and Py[sv] > thr - 1e-9)]
                 nfire = sum(1 for sv in want if sv in FIRE)
                 ok = not miss and not extra_ and dv < 1e-9; c2ok &= ok
-                log('F2BX-SELFTEST (c2) d=7 link %s, all 5^7 apex words: %d admissible; thr %.6f: python %d rows above (%d with an extra rule firing), jsepf reported %d; missing %d, extra %d, max |dv| %.3g -> %s' % (
-                    lk, len(Py), thr, len(want), nfire, len(rep), len(miss), len(extra_), dv, 'OK' if ok else 'FAIL'))
+                log('F2BX-SELFTEST (c2) d=7 link %s, apex words over %s: %d admissible; thr %.6f: python %d rows above (%d with an extra rule firing), jsepf reported %d; missing %d, extra %d, max |dv| %.3g -> %s' % (
+                    lk, ''.join(map(str, SL_)), len(Py), thr, len(want), nfire, len(rep), len(miss), len(extra_), dv, 'OK' if ok else 'FAIL'))
                 tot['c2: subspace runs'] += 1; tot['c2: subspace runs OK' if ok else 'c2: subspace runs FAIL'] += 1
         # ---- (t) near-tight rows without the extra rules ----
         if 'f2bxtight' in OPT:
