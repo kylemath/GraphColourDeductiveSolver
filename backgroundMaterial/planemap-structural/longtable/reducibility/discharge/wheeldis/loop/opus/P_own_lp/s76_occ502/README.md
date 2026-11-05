@@ -29,3 +29,8 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 
 ## hdr5/: Studio HDR5 (out/job_HDC502/D_rsst5.tsv, md5 e6458c99, main 421efcdb; MOD HDR5, PFX hdr5)
 - HR_00..04, COccHR_00..04 and HDR5Occ for rsst001 / 004 / 006 / 024 / 026. 0 literal mismatches against lean_r5/HDR5.lean.
+
+## hdk7/: KILL7, Team B's 7 new kill6 configurations (Studio out/job_KILL7/D_kill7.tsv, md5 d2b3ad70, main 38a1440a)
+- MOD HDK7, PFX hdk7 -> HQ_00..06, COccHQ_00..06, HDK7Occ. 7 generated, 14 rotations validated, 0 literal mismatches
+  against Studio's lean/HDK7.lean.
+- These are off the main line until KILL7 (a)-(c) pass. Their use as kill6 entries also needs the pattern -> Occ step (Job 26).
