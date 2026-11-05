@@ -38,7 +38,7 @@ for b in range(0, N, B):
         t.append('theorem hD_%d : DCheck18.dReducible (%sConfs.get ⟨%d, by rw [%sConfs_length]; decide⟩) = true := by native_decide' % (i, pfx, i, pfx))
     t += ['end %sV' % mod] + ['#print axioms %sV.hD_%d' % (mod, i) for i in range(b, min(N, b + B))]
     open(os.path.join(out, mm + '.lean'), 'w').write('\n'.join(t) + '\n')
-a = ['import ' + m for m in mods] + ['open %s DCheck18' % mod, 'namespace %sV' % mod,
+a = ['import Mathlib.Tactic.FinCases', 'import Mathlib.Data.Fintype.Fin'] + ['import ' + m for m in mods] + ['open %s DCheck18' % mod, 'namespace %sV' % mod,
      'theorem hD_all (k : Fin %d) : DCheck18.dReducible (%sConfs.get (k.cast %sConfs_length.symm)) = true := by' % (N, pfx, pfx), '  fin_cases k'] + \
     ['  · exact hD_%d' % i for i in range(N)] + ['end %sV' % mod, '#print axioms %sV.hD_all' % mod]
 open(os.path.join(out, mod + 'All.lean'), 'w').write('\n'.join(a) + '\n')
