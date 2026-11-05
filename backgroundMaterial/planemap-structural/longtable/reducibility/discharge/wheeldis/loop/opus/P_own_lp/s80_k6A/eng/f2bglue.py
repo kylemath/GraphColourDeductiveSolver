@@ -204,7 +204,7 @@ if F2B_ON:
         log('F2B-SELFTEST: %s' % ('PASS' if all(v < 1e-9 for v in res.values()) else 'FAIL'))
 
     # ---- s80 (Team E): self-tests for the f2bx extra rules (B3 routes A' / L'), run inside upperR2 at a solution:
-    #   pcheck.py upperR2 ... f2bx=RULES.json f2bself=0 f2bxself=1 [f2bxtries=3000] [f2bxsub=3] [f2bxtight=1e-3]
+    #   pcheck.py upperR2 ... f2bx=RULES.json f2bself=0 f2bxself=N [f2bxtries=3000] [f2bxkeep=40] [f2bxsub=3] [f2bxsl=56789] [f2bxlinks=L,..] [f2bxtight=1e-3]
     # (b) per extra rule: a constructed admissible row the rule matches (letter still alive before it) gets exactly the stated
     #     coefficient change (engine diff 'all rules' - 'all rules but this one' == independent expectation), and the same row
     #     with any one requirement slot changed to a disallowed letter gets the expected change (none when the rule no longer fires).
@@ -376,7 +376,8 @@ if F2B_ON:
         rng.shuffle(links); ch7 = []   # links of rows where an extra rule changed the row come first
         for lk in CHL.get(7, []):
             if lk not in ch7: ch7.append(lk)
-        rng.shuffle(ch7); links = ch7 + [lk for lk in links if lk not in ch7]; nsub = int(OPT.get('f2bxsub', '3')); c2ok = True
+        rng.shuffle(ch7); fl = [x for x in OPT.get('f2bxlinks', '').split(',') if x]   # f2bxlinks=L1,L2,..: these d = 7 links first
+        links = fl + [lk for lk in ch7 if lk not in fl] + [lk for lk in links if lk not in ch7 and lk not in fl]; nsub = int(OPT.get('f2bxsub', '3')); c2ok = True
         for lk in links[:nsub]:
             Py = {}
             SL_ = tuple(int(c) for c in OPT.get('f2bxsl', '56789'))   # apex letters of the sub-space (the separator gets the same restriction)
