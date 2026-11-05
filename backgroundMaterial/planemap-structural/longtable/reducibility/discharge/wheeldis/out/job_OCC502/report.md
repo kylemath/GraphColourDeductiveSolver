@@ -1,4 +1,4 @@
-# job OCC502: Opus's occurrence glue for the 380 D of the 502 cover, compiled on Studio (interim, 5 Nov 10:50Z)
+# job OCC502: Opus's occurrence glue for the 380 D of the 502 cover, compiled on Studio (final, 5 Nov 22:18Z)
 
 ## Source
 - **Branches:** claude/project-thread-7uelj0 at 9ca16f45 (hdc/, ctrl3/, hd30/) and d9c28330 (adds hdr5/), folder s76_occ502/.
@@ -22,5 +22,16 @@
 - Only propext, Classical.choice, Quot.sound and native_decide auxiliaries appear: hD_i, *Confs_length, and DCheck.R1.check4..9
   for colorable_i.
 
-**HDCOcc:** pending. It imports HDCAll, which is built when HDC502 finishes (370 hD; 97 done now, 0 failed). It is queued
-automatically (lean/drive2.sh).
+**HDCOcc: exit 0, sorry 0** (22:18Z, after HDCAll). So all **820 / 820 modules exit 0** (HC/COccHC 740; HK/COccHK 6; H30/COccH30 60; HR/COccHR 10; the 4 Occ files). sorryAx appears 0 times.
+
+## Final count
+All **380 D of the 502 cover** now have DCheck18 hD plus occurrence glue (dEntry_i, colorable_i):
+| set | entries | hD from | glue |
+|---|---|---|---|
+| hdc | 370 | HDC502 | HDCOcc |
+| HDCtrl | rsst008, rsst012 | HD0 | HDCtrlOcc |
+| HD30 | nl2180_r13, nl2215_r14, nl1502_r15 | HD0 | HD30Occ |
+| HDR5 | rsst001, 004, 006, 024, 026 | HDR5 | HDR5Occ |
+| **total** | **380** | | |
+
+The **122 C** map to existing Lean hC: Lean531 34, CR118 87, CK108 1.
