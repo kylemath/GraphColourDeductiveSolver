@@ -9,7 +9,6 @@ from loadeng import load
 import grammar as G, gext as X
 HERE = os.path.dirname(os.path.abspath(__file__))
 ns = load(ST, 'full', ['kstar', 'edgekeys=' + os.path.join(os.path.dirname(HERE), 'eng', 'edgekeys_r4.txt')]); ns['l3q_load'](); ns['kt_load']()
-exec(open(os.path.join(HERE, 'test_edge.py')).read().split('rng = random.Random')[0].split("ns = load(")[0])   # imports only
 src = open(os.path.join(HERE, 'test_edge.py')).read()
 exec(src[src.index('def pic('):src.index('rng = random.Random')])                                              # pic, ctx_of, gcols
 KEYS = {k['name']: k for k in ns['EGKEYS']}; KEYS['K1'] = ns['eg_parse']('K1x EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]'); KEYS['K1']['name'] = 'K1'
