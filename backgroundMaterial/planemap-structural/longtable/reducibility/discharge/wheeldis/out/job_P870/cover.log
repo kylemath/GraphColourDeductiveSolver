@@ -1,0 +1,13 @@
+rules matched in provenance: 870 of 870
+items: {'rule': 870, 'kill': 231080, 'v7': 400, 'v8': 100}
+distinct justifying configurations over all items: 683; ring unknown: 0
+== greedy unweighted: 503 configurations (381 D, 122 C; forced 398)
+   D by ring: {7: 1, 8: 2, 9: 5, 10: 13, 11: 34, 12: 70, 13: 111, 14: 107, 15: 38}
+   C by source: {'C Lean531': 24, 'C Lean531 (RSST)': 10, 'C rsst118': 87, 'C k3x13': 1}
+   vs Opus 527: common 470, theirs only 57, ours only 33
+== greedy ring-weighted (ring^4): 503 configurations (381 D, 122 C; forced 398)
+   D by ring: {7: 1, 8: 2, 9: 5, 10: 13, 11: 34, 12: 70, 13: 111, 14: 107, 15: 38}
+   C by source: {'C Lean531': 24, 'C Lean531 (RSST)': 10, 'C rsst118': 87, 'C k3x13': 1}
+   vs Opus 527: common 470, theirs only 57, ours only 33
+forced (sole-justifier) configurations: 398, of which in Opus's cover: 398; forced not in theirs: []
+Opus cover names not justifying any item here: 0 []

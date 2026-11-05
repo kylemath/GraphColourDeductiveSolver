@@ -1,0 +1,67 @@
+CKEEP: R5 = c5 D only (12), R6 = c6 D + kept C 6-wheels (31); C wheels dropped: ['c5_55558', 'c5_55568', 'c5_55577', 'c5_55658', 'c5_55578', 'c5_56568', 'c5_56577', 'c5_56658', 'c5_66666', 'c5_55588', 'c5_56578', 'c5_56588']
+R5 12 (spec 24, same set: False); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 91 (spec 104)
+CKEEP: RBIG = D big wheels only: 91 (spec 104 with C)
+section 14 prime kill tables from loop/studio/opus_check/f2b041/keep95p131f/tab/kill
+l3q: lq 21 values {(5, 5, 5): 0.058190709046450496, (5, 6, 5): 0.10556649391200851, (6, 5, 5): 0.09000102270975494, (6, 6, 5): 0.10101203908008861, (6, 6, 6): 0.00761350607275052, (6, 6, 7): 0.00761350607275052, (6, 6, 8): 0.00761350607275052, (8, 5, 5, 5): 0.025860114643490608, (8, 5, 5, 6): 0.004658406357228561, (8, 5, 5, 7): 0.004658406357228561, (8, 5, 5, 8): 0.004658406357228561, (8, 5, 5, 9): 0.002160673822770158, (8, 5, 6, 5): 0.07972589163148111, (8, 6, 5, 5): 0.0645379285850185, (8, 6, 5, 6): 0.001294158602034457, (8, 6, 5, 7): 0.001294158602034457, (8, 6, 5, 8): 0.001294158602034457, (8, 6, 6, 5): 0.06190487747461977, (8, 6, 6, 6): 0.010440305111167131, (8, 6, 6, 7): 0.010440305111167131, (8, 6, 6, 8): 0.0015590279607753943}, lQ 12 values {(5, 5, 31): 0.058190709046450496, (5, 6, 31): 0.10556649391200851, (6, 5, 31): 0.09000102270975494, (6, 6, 30): 0.00761350607275052, (6, 6, 31): 0.10101203908008861, (8, 5, 5, 30): 0.004658406357228561, (8, 5, 5, 31): 0.025860114643490608, (8, 5, 6, 31): 0.07972589163148111, (8, 6, 5, 30): 0.001294158602034457, (8, 6, 5, 31): 0.0645379285850185, (8, 6, 6, 30): 0.010440305111167131, (8, 6, 6, 31): 0.06190487747461977}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 400, 31: 4600}
+l3qV8: V = 8 mask table 5000 entries, masks {30: 100, 31: 4900}
+l3q UB(c, a) over the table masks: {(5, 5): 0.058190709046, (5, 6): 0.105566493912, (6, 5): 0.09000102271, (6, 6): 0.10101203908}
+l3qV8: lq8 {(8, 5, 5, 5): 0.025860114643490608, (8, 5, 5, 6): 0.004658406357228561, (8, 5, 5, 7): 0.004658406357228561, (8, 5, 5, 8): 0.004658406357228561, (8, 5, 5, 9): 0.002160673822770158, (8, 5, 6, 5): 0.07972589163148111, (8, 6, 5, 5): 0.0645379285850185, (8, 6, 5, 6): 0.001294158602034457, (8, 6, 5, 7): 0.001294158602034457, (8, 6, 5, 8): 0.001294158602034457, (8, 6, 6, 5): 0.06190487747461977, (8, 6, 6, 6): 0.010440305111167131, (8, 6, 6, 7): 0.010440305111167131, (8, 6, 6, 8): 0.0015590279607753943}, lQ8 {(8, 5, 5, 30): 0.004658406357228561, (8, 5, 5, 31): 0.025860114643490608, (8, 5, 6, 31): 0.07972589163148111, (8, 6, 5, 30): 0.001294158602034457, (8, 6, 5, 31): 0.0645379285850185, (8, 6, 6, 30): 0.010440305111167131, (8, 6, 6, 31): 0.06190487747461977}; UB8(c, a) {(5, 5): 0.025860114643, (5, 6): 0.079725891631, (6, 5): 0.064537928585, (6, 6): 0.061904877475}
+V = 8 mrowL over every table mask and every a2 in it, at Qeff8: violated 0
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.041565000000000 (claimed 8313/200000 = 0.041565000000000), model R6x2 apex True apexcls True zh False: 942 y, 393 g, 18683 h, 1178 x, z 0.1779951100244499
+v values 0; r values 73; sol hat5 True
+bounds: 0 negative values; max x = 0.177995 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 20676 (spec 7,074), violated 0, min slack 2.07e-07; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 20676 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2: 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated 0, max |sum g2 - sum h2| 4.12e-13
+  nofive  430 words (spec 430): violated 0, max |sum g2 - sum h2| 0
+rpatN patterns from s39o_rpatN3_studio.txt: 2287, by d {7: 621, 8: 839, 9: 631, 10: 188, 11: 7, 12: 1}
+patterns distinct by kind: D 18159 (spec 15,497), C 608 (spec 1,494), RPAT 158 (spec 158); by d {7: 9251, 8: 5909, 9: 3327, 10: 1443, 11: 651, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+F2B rules out/job_P870/ctrl/drop04.json (half None): {('w6', 7): 142, ('w6', 8): 103, ('w6', 9): 27, ('w7', 7, 1): 183, ('w7', 7, -1): 166, ('w7', 8, 1): 128, ('w7', 8, -1): 120}
+lower check skipped (upper-only job)
+cert rows 0: {}; mrowR2/mrowV not in canonical orientation: 0 []
+l3qV8 lower: lq8 columns in rows 0, nonzero rc []; lQ8 columns in rows 0, nonzero rc []
+lower: tco = 0, D = 0; nonzero reduced costs: ; negative (non-x) 0
+loader excluded 0 files by name: 
+big wheels in R: 91 (+0 from w7plus)
+patterns: {('pairs_D7_k2_dfast.out', 7): 59, ('pairs_D8_k3_dfast.out', 8): 256, ('pairs_D9_k4_dfast.out', 9): 524, ('eq_D7_dfast.out', 7): 7698, ('eq_D8_k3_dfast.out', 8): 3192, ('lp_dfast.out', 7): 68, ('lp_dfast.out', 8): 224, ('lp_dfast.out', 9): 133, ('lp_dfast.out', 10): 8, ('pairs_D10_k5_dfast_partial.out', 10): 203, ('def_loop_new1_1.out', 7): 3, ('def_loop_old_1.out', 7): 3, ('def_r1.out', 7): 44, ('C:031_k2a.cfast', 7): 1, ('C:033_part00.cfast', 7): 3, ('C:034_part01.cfast', 7): 4, ('r_1.out', 7): 14, ('r_1.out', 8): 6, ('r_10.out', 7): 4, ('r_11.out', 7): 5, ('r_12.out', 7): 47, ('r_2.out', 7): 169, ('r_2.out', 8): 30, ('r_2.out', 9): 43, ('r_3.out', 10): 3, ('r_4.out', 10): 3, ('r_9.out', 7): 7, ('r_D10k5.out', 10): 353, ('r_hr1.out', 7): 8, ('C:071_r_1.cfast', 9): 1, ('b7f.out', 7): 2, ('g9_big_r1.dfast.out', 10): 212, ('g9_big_r1.dfast.out', 11): 266, ('g9_big_r1.dfast.out', 12): 19, ('g9_c8_r1.dfast.out', 8): 53, ('g9_lp10_r14.dfast.out', 10): 1, ('b1.out', 10): 6, ('b10.out', 11): 5, ('b10.out', 9): 1, ('b6.out', 10): 16, ('b6.out', 9): 1, ('b8.out', 10): 1, ('small.out', 10): 7, ('cert_bf_1.out', 7): 3, ('win14.out', 7): 178, ('win8.out', 7): 23, ('win89.out', 8): 375, ('win89.out', 9): 312, ('u1.pat', 7): 9, ('u1.pat', 8): 17, ('u1.pat', 9): 37, ('u1.pat', 10): 49, ('u1.pat', 11): 49, ('u1.pat', 12): 49, ('u1.pat', 13): 49, ('u1.pat', 14): 49, ('u1.pat', 15): 49, ('u1.pat', 16): 49, ('u1.pat', 17): 49, ('u2.pat', 7): 1, ('u2.pat', 8): 1, ('u2.pat', 9): 13, ('u2.pat', 10): 13, ('u2.pat', 11): 13, ('u2.pat', 12): 13, ('u2.pat', 13): 13, ('u2.pat', 14): 13, ('u2.pat', 15): 13, ('u2.pat', 16): 13, ('u2.pat', 17): 13, ('u10.pat', 9): 3, ('u10.pat', 10): 3, ('u10.pat', 11): 3, ('u10.pat', 12): 3, ('u10.pat', 13): 3, ('u10.pat', 14): 3, ('u10.pat', 15): 3, ('u10.pat', 16): 3, ('u10.pat', 17): 3, ('win9.out', 10): 124, ('win9.out', 9): 16, ('win25.out', 9): 10, ('win25b.out', 9): 6, ('win27.out', 7): 2, ('win27.out', 10): 4, ('win29.out', 7): 4, ('win31.out', 8): 9, ('addA_dfast18.out(full)', 7): 3, ('k3x_D_A111_minus1.out(full)', 10): 208, ('k3x_D_A111_minus1.out', 10): 3, ('k3x_D_A111_minus1.out(full)', 11): 295, ('k3x_D_A111_minus1.out', 11): 4, ('k3x_D_A111_minus1.out(full)', 7): 213, ('k3x_D_A111_minus1.out', 7): 8, ('k3x_D_A111_minus1.out(full)', 8): 917, ('k3x_D_A111_minus1.out', 8): 23, ('k3x_D_A111_minus1.out(full)', 9): 1437, ('k3x_D_A111_minus1.out', 9): 13, ('C:278_k3x_C_A111.cfast(full)', 10): 49, ('C:278_k3x_C_A111.cfast(full)', 11): 10, ('C:278_k3x_C_A111.cfast(full)', 7): 154, ('C:278_k3x_C_A111.cfast', 7): 1, ('C:278_k3x_C_A111.cfast(full)', 8): 253, ('C:278_k3x_C_A111.cfast', 8): 2, ('C:278_k3x_C_A111.cfast(full)', 9): 130, ('RSST-D raw', 7): 27, ('RSST-D raw', 8): 55, ('RSST-D raw', 9): 76}
+sep: NV=942 RBIG=91 patterns=15585 full=3669
+6-relay: 294 y56 vars, 4760 y6b vars, 1424 non-R6 link words
+sep: 6-relay on
+sep: NV=942 RBIG=91 patterns=15585 full=3669
+exact six-window table: 1171875 entries written (ex6_sol_c04.bin); min -0.000000, max 0.325862
+sep: exact six-window table loaded (/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job31/st16/ex6_sol_c04.bin)
+sep: 6-relay on
+sep: NV=942 RBIG=91 patterns=15585 full=3669
+l3q separator tables: relaxed max 0.211133, exact payee max 0.105566, payer max 0.105566 (l3q_sol_c04.bin)
+l3qV8 separator tables: relaxed max 0.159452, exact payee max 0.079726, payer max 0.079726 (l3q8_sol_c04.bin)
+f2b tables: M table vs EX6 mismatches 0; monotonicity violations (M, Qeff, Qeff8) 0
+f2b leaf table file f2bS_f2bS_c04_sol_c04.bin
+hat-channel tables: relaxed max 0.252964, exact max 0.252964 (rtab_sol_c04.bin)
+sep: exact six-window table loaded (/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job31/st16/ex6_sol_c04.bin)
+sep: hat-channel r table loaded (/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job31/st16/rtab_sol_c04.bin)
+sep: f2b leaf tables loaded, 869 rules (/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job31/st16/f2bS_f2bS_c04_sol_c04.bin)
+sep: 6-relay on
+sep: NV=942 RBIG=91 patterns=15585 full=5956
+f2b self-test: 6000 arrangements (seed 41), 3934 with a nonzero delta, 0 positive; Python vs C++ mismatches 0
+  calibration d=7: 20 heaviest compared (20 with l3q terms), max |difference| 4.66e-10
+sep3r_ak exact leaf weights vs spec rows on the heaviest 20 per d (d = 7..7): 20 compared, max |difference| 4.66e-10
+spec rows vs Studio relaxed rows: 620 arrangements, admissibility mismatches 0; 603 compared: relaxed below exact 0, x-key mismatches 0
+receiver degrees this process: [7]
+VIOLATED receiverR2 d=7 exact load 1.123533538723 link 7555865 s 7756666
+VIOLATED receiverR2 d=7 exact load 1.123533538723 link 8657555 s 6667756
+VIOLATED receiverR2 d=7 exact load 1.123533538723 link 5586575 s 5666677
+VIOLATED receiverR2 d=7 exact load 1.123533538723 link 5755586 s 6775666
+VIOLATED receiverR2 d=7 exact load 1.123533538723 link 5865755 s 6666775
+receivers d=7: relaxation reports 399 above threshold; exact violated 399 (201s)
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -0.636305
+DP d=18..30 (Studio max-plus with the relaxed r, z9 = 0.177995): clean
+Karp tail (apex relaxation): lambda = 0.633625577, covered for d >= 16.263 (needs <= 31)
+FAIL: receiver side violated or undecided
+UPPER: NOT ESTABLISHED
+VERDICT: FAIL: receiver side violated or undecided
+exit 0
