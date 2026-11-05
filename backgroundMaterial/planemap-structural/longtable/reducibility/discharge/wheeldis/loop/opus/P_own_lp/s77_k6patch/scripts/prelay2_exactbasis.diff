@@ -1,0 +1,110 @@
+--- eng/prelay2_s75orig.py	2026-11-05 15:47:05.645632466 +0000
++++ eng/prelay2.py	2026-11-05 15:59:03.060959657 +0000
+@@ -1378,6 +1378,77 @@
+     for v, pe, pr in reversed(piv):
+         x[v] = pr - sum(a * x.get(u, 0) for u, a in pe.items() if u != v)
+     return x
++def lr2_exactbasis(RW, capof):
++    """s77 (W7 exact.py method, on our own rows): dual LP over the cert's rows (weights w_j with their signs: sender >= 0, receiver/mrow <= 0,
++    cons2 free; t-normalisation sum tc_j w_j = 1; uncapped columns tot_k <= 0; capped columns priced at cap via s_k >= tot_k), solved by HiGHS
++    simplex, then its optimal basis solved EXACTLY over Fractions.  Returns exact weights (list aligned with RW) or None.  The caller rechecks
++    the result with the unchanged exact check (norepair)."""
++    import highspy
++    nW = len(RW); colk = {}
++    for j, r in enumerate(RW):
++        for k in r[3]: colk.setdefault(k, {})[j] = Fraction(r[3][k])
++    Ks = sorted(colk, key=str); Cp = [k for k in Ks if capof(k) is not None]; sidx = {k: nW + i for i, k in enumerate(Cp)}
++    nV = nW + len(Cp); inf = highspy.kHighsInf
++    MU = Fraction(OPT.get('exbmu', '1e-9'))
++    lb = np.zeros(nV); ub = np.full(nV, inf); cost = np.zeros(nV)
++    for j, r in enumerate(RW):
++        kd = r[1]
++        if kd == 'senderR2': lb[j], ub[j] = 0.0, inf
++        elif kd == 'cons2': lb[j], ub[j] = -inf, inf
++        else: lb[j], ub[j] = -inf, 0.0   # receiverR2, mrow*
++        cost[j] = -float(r[5])
++    for k in Cp: cost[sidx[k]] = float(capof(k))
++    EQ = []   # (dict var -> Fraction, lo, hi) exact rows
++    for k in Ks:
++        e = dict(colk[k])
++        if k in sidx: e[sidx[k]] = Fraction(-1)
++        EQ.append((e, None, Fraction(0) if k in sidx else -MU))   # s77: margin MU on uncapped columns (exact rc >= MU > 0 there)
++    EQ.append(({j: Fraction(r[4]) for j, r in enumerate(RW) if r[4]}, Fraction(1), Fraction(1)))
++    h = highspy.Highs(); h.setOptionValue('output_flag', False); h.setOptionValue('threads', 1)
++    h.addVars(nV, lb, ub); h.changeColsCost(nV, np.arange(nV, dtype=np.int32), cost)
++    st = []; ix = []; vl = []; lo = []; hi = []
++    for e, l_, u_ in EQ:
++        st.append(len(ix))
++        for v, a in e.items(): ix.append(v); vl.append(float(a))
++        lo.append(-inf if l_ is None else float(l_)); hi.append(inf if u_ is None else float(u_))
++    h.addRows(len(EQ), np.array(lo), np.array(hi), len(ix), np.array(st, dtype=np.int32), np.array(ix, dtype=np.int32), np.array(vl))
++    for o_ in ('primal_feasibility_tolerance', 'dual_feasibility_tolerance'): h.setOptionValue(o_, float(OPT.get('exbtol', '1e-10')))
++    h.setOptionValue('solver', 'simplex'); t0 = time.time(); h.run()
++    log('EXACTBASIS: dual LP %d vars (%d weights, %d capped s) x %d rows: %s, bound %.12f, %.1fs' % (nV, nW, len(Cp), len(EQ), h.modelStatusToString(h.getModelStatus()), -h.getInfo().objective_function_value, time.time() - t0))
++    if h.getModelStatus() != highspy.HighsModelStatus.kOptimal: return None
++    Bs = h.getBasis(); BS = highspy.HighsBasisStatus
++    basic = [v for v in range(nV) if Bs.col_status[v] == BS.kBasic]
++    nonb = [q for q in range(len(EQ)) if Bs.row_status[q] != BS.kBasic]
++    log('EXACTBASIS: basic vars %d, nonbasic rows %d' % (len(basic), len(nonb)))
++    if len(basic) != len(nonb): return None
++    bset = set(basic); eqs = []
++    for q in nonb:
++        e, l_, u_ = EQ[q]; rhs = u_ if u_ is not None else l_
++        eqs.append(({v: a for v, a in e.items() if v in bset}, rhs))
++    # singleton peeling, then Gaussian elimination on the core
++    t0 = time.time(); x = {}; live = list(range(len(eqs))); E = [dict(e) for e, _ in eqs]; R = [r for _, r in eqs]
++    byvar = collections.defaultdict(set)
++    for i, e in enumerate(E):
++        for v in e: byvar[v].add(i)
++    stack = [i for i in range(len(E)) if len(E[i]) == 1]; done = set()
++    while stack:
++        i = stack.pop()
++        if i in done or len(E[i]) != 1: continue
++        (v, a), = E[i].items(); x[v] = R[i] / a; done.add(i)
++        for i2 in byvar[v]:
++            if i2 in done: continue
++            a2 = E[i2].pop(v, None)
++            if a2 is not None:
++                R[i2] -= a2 * x[v]
++                if len(E[i2]) == 1: stack.append(i2)
++    rest = [(E[i], R[i]) for i in range(len(E)) if i not in done]
++    log('EXACTBASIS: %d unknowns by singleton peeling, %d equations left for elimination (%.1fs)' % (len(x), len(rest), time.time() - t0))
++    for e, r in rest:
++        if not e and r != 0: log('EXACTBASIS: inconsistent'); return None
++    xs = lr2_xsolve([(e, r) for e, r in rest if e])
++    if xs is None: log('EXACTBASIS: core system inconsistent'); return None
++    x.update(xs); log('EXACTBASIS: exact solve done (%.1fs)' % (time.time() - t0))
++    return [x.get(j, Fraction(0)) for j in range(nW)]
+ def cmd_lowerR2():
+     """exact check from signed duals (as lowerR): senderR2 >= (w>=0), cons2 = (any sign), mrowR2 h - M <= 0 (w<=0),
+     receiverR2 <= (w<=0); rows re-derived from labels; rescale so t's reduced cost is 0; x priced at its cap.
+@@ -1467,6 +1538,13 @@
+             for k, v in cf.items(): tot[k] += w * v
+             tco += w * tc; D += w * dc
+         return tot, tco, D
++    if 'exactbasis' in FLAGS and ok:   # s77: replace the float weights by the exact optimal-basis weights of the support dual LP, then recheck unchanged (norepair)
++        XW = lr2_exactbasis(RW, capof)
++        if XW is None: log('LOWER-R2: INVALID (exactbasis failed)'); return
++        C2 = [dict(C[r[0]], w=str(w)) for r, w in zip(RW, XW) if w != 0]
++        out = re.sub(r'\.json$', '', OPT['cert']) + '_exb.json'; json.dump(C2, open(out, 'w'))
++        log('EXACTBASIS: exact cert (%d nonzero rows) written to %s; rechecking it from the file (norepair)' % (len(C2), out))
++        OPT['cert'] = out; FLAGS.discard('exactbasis'); FLAGS.add('norepair'); cmd_lowerR2(); return
+     WS = [r[2] for r in RW]
+     tot, tco, D = evaluate(WS)
+     if tco <= 0: log('  t coefficient sum not positive'); ok = False; tco = Fraction(1)
+@@ -1496,6 +1574,7 @@
+     worst = min(rc for _, rc in neg)
+     if worst < -TOL: log('REPAIR: refused (worst rc %.3g beyond reptol %s)' % (float(worst), OPT.get('reptol', '1e-9'))); log('LOWER-R2: INVALID  t >= %s = %.9f  (%d rows)' % (Dp, float(Dp), len(C))); return
+     adj = [j for j, r in enumerate(RW) if r[1] == 'cons2' or (r[1].startswith('mrow') and r[2] < 0)]
++    if 'repall' in FLAGS: adj = [j for j, r in enumerate(RW) if r[1] == 'cons2' or ((r[1].startswith('mrow') or r[1] == 'receiverR2') and r[2] < 0) or (r[1] == 'senderR2' and r[2] > 0)]; adj = [j for j in adj if RW[j][1] == 'cons2' or abs(RW[j][2]) >= Fraction(OPT.get('repwmin', '0'))]   # s77: repall (repwmin=: only weights of at least this size move) also moves receiver (w<0) / sender (w>0) weights; signs re-checked below, final check unchanged (norepair rerun)
+     colrows = collections.defaultdict(dict)
+     for j in adj:
+         for k, v in RW[j][3].items():
+@@ -1511,6 +1590,7 @@
+         ws = list(WS)
+         for j, v in x.items(): ws[j] += v
+         if any(RW[j][1].startswith('mrow') and ws[j] > 0 for j in x): log('REPAIR: round %d: an mrow weight would change sign' % rnd); x = None; break
++        if any(((RW[j][1] == 'receiverR2' and ws[j] > 0) or (RW[j][1] == 'senderR2' and ws[j] < 0)) for j in x): log('REPAIR: round %d: a receiver/sender weight would change sign' % rnd); x = None; break   # s77 repall
+         tot, tco, D = evaluate(ws); Dr, neg = price(tot, tco, D)
+         log('REPAIR: round %d: %d columns pinned to rc 0, %d weights moved (max %.3g); %d negative columns left' % (rnd, len(E), len(x), float(big), len(neg)))
+         if not neg: break
