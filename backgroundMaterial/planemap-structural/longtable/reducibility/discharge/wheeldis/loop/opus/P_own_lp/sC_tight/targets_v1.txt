@@ -1,0 +1,26 @@
+# Team C targets v1 (5 Nov 2026, ~17:30Z) -- PRELIMINARY: ranked from tightness at the in-point + weight in the two base certificates; the dual view (v2) follows.
+# In-point: s75_teamA/cand/sol_q75B_in13_full.json, t = 0.031956956042 (newest UPPER-R2 FEASIBLE [P] on the A97 stack when Team C started; rr+z+zr, q = 0).
+# slack = d - 6 + t - load at in13 [M] (python recompute = jsepf value for every listed row). ext = load carried by rr+z+zr at in13 (negative = the new families relieve the row).
+# base shares: W7 = cert_k95f_best_0.0256781 (share of receiver |w|); b77 = s77 cert_unpatched_exact (99 rows, t >= 667/19840 [P], A97 stack).
+# format: R d LINK SWORD tag   (pcheck warm-row format; tag = rank_slack_shares)
+# rank 1-6: tight now (slack ~ 7e-8 = the in-point's blend tolerance) AND heavy in a base cert
+R 7 7557755 7575757 v1r01_sl0_b77=16.3_W7=4.4_ext-0.106
+R 7 5757575 7755777 v1r02_sl0_b77=14.3_W7=1.4_ext+0.059
+R 7 6755566 7775768 v1r03_sl0_b77=11.5_W7=12.9_ext+0.005
+R 7 5755755 7777757 v1r04_sl0_b77=3.2_W7=11.7_ext+0.009
+R 7 5556677 7576757 v1r05_sl0.0004_W7=12.4_ext+0.020
+R 7 7577575 7555755 v1r06_sl0_b77=16.3_ext-0.160_(excused_by_Studio_627C_A111_patterns_not_Lean)
+# rank 7-11: tight now, lighter in the base certs
+R 7 5557666 5776767 v1r07_sl0_W7=2.8_ext+0.005
+R 7 7676675 6665655 v1r08_sl0.0003_b77=1.5_ext-0.072
+R 7 7665557 6675775 v1r09_sl0_W7=1.1_ext+0.020
+R 7 6555766 7577776 v1r10_sl0_W7=1.1_ext+0.005
+R 10 6656665665 6555655655 v1r11_sl0_W7=0.6_ext0_(d=10,_links_5/6_only,_no_rr/z/zr_value)
+# new tight classes with no base-cert weight (largest groups of tight LP rows at in13; '.'/[..] = apex letters seen tight)
+R 7 5556696 5776657 v1g1_96rows_tight_555face_with_a_9_in_link_(sv_mask_[57][57]76[6789].[789])
+R 7 5556667 7576666 v1g2_44rows_tight_(=6755566_family;_sv_mask_7576[6789][6789][6789])
+R 7 5566966 5676567 v1g3_24rows_tight_(sv_mask_567..67)
+R 9 555575957 585668576 v1g4_18rows_tight_d9_(sv_mask_5[89]56[6789][58]5[789]6)
+R 8 55557557 58586768 v1g5_12rows_tight_d8_(sv_mask_585[89][678][78][678][89])
+# rows the new families paid off (heavy in W7, now slack > 0.003 at in13): 5757577/5577567 (W7 13.3%, slack 0.0083, ext -0.015),
+#   7767575/5665557 (W7 11.6%, slack 0.0031, ext -0.072), 7577575/7555775 (W7 2.6%, slack 0.137), 7677575/6655555 (b77 8.5%, slack 0.042), 7555667/7758675 (b77 8.5%, slack 0.013).

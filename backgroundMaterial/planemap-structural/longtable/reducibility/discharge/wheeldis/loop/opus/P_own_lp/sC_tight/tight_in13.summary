@@ -1,0 +1,33 @@
+distinct classes 3039 by d {7: 2102, 8: 834, 9: 102, 10: 1}
+python vs jsepf slack mismatches > 1e-7: 0 []
+distinct LP rows 3000 not admissible as written: 0
+slack < 1e-06 :   356 LP rows, by d {7: 300, 8: 31, 9: 24, 10: 1}; d=7 motifs {'555-face': 285, 'mixed 5-6-7': 11, '55-pair': 2, '5-7 mesh': 2}
+    d=7 rows with rr keys: 300, with a positive rr column: 87
+    d=7 rows with z keys: 300, with a positive z column: 291
+    d=7 rows with zr keys: 300, with a positive zr column: 110
+    d=7 rows with q7 keys: 300, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.001 :   618 LP rows, by d {7: 469, 8: 117, 9: 31, 10: 1}; d=7 motifs {'555-face': 430, 'mixed 5-6-7': 25, '55-pair': 7, '5-7 mesh': 6, 'lone-5': 1}
+    d=7 rows with rr keys: 469, with a positive rr column: 180
+    d=7 rows with z keys: 469, with a positive z column: 450
+    d=7 rows with zr keys: 469, with a positive zr column: 190
+    d=7 rows with q7 keys: 469, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.003 :   992 LP rows, by d {7: 657, 8: 289, 9: 45, 10: 1}; d=7 motifs {'555-face': 591, 'mixed 5-6-7': 42, '55-pair': 17, '5-7 mesh': 6, 'lone-5': 1}
+    d=7 rows with rr keys: 657, with a positive rr column: 214
+    d=7 rows with z keys: 657, with a positive z column: 577
+    d=7 rows with zr keys: 657, with a positive zr column: 307
+    d=7 rows with q7 keys: 657, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.005 :  1613 LP rows, by d {7: 1120, 8: 435, 9: 57, 10: 1}; d=7 motifs {'555-face': 1007, 'mixed 5-6-7': 70, '55-pair': 34, '5-7 mesh': 6, 'lone-5': 3}
+    d=7 rows with rr keys: 1120, with a positive rr column: 351
+    d=7 rows with z keys: 1120, with a positive z column: 988
+    d=7 rows with zr keys: 1120, with a positive zr column: 490
+    d=7 rows with q7 keys: 1120, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.01  :  3000 LP rows, by d {7: 2064, 8: 834, 9: 101, 10: 1}; d=7 motifs {'555-face': 1704, 'mixed 5-6-7': 213, '55-pair': 100, 'lone-5': 30, '5-7 mesh': 17}
+    d=7 rows with rr keys: 2064, with a positive rr column: 760
+    d=7 rows with z keys: 2064, with a positive z column: 1598
+    d=7 rows with zr keys: 2064, with a positive zr column: 932
+    d=7 rows with q7 keys: 2064, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0

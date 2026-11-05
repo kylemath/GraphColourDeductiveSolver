@@ -17,11 +17,16 @@ for l in open(sys.argv[1]):
 RMAX = int(sys.argv[2]); OUT = sys.argv[3]; FAMS = sys.argv[4]
 KTF = sys.argv[5] if len(sys.argv) > 5 else '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/tab/kill/kill6_U7.npy'
 L3F = sys.argv[6] if len(sys.argv) > 6 else '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/tab/tab_1.json,/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/tab/tab_-1.json'
-KT = np.load(KTF)
+KTS = {7: np.load(KTF), 8: np.load(KTF.replace('_U7', '_U8')), 9: np.load(KTF.replace('_U7', '_U9'))}
+MINS = {r: (3 if r <= 12 else 4) for r in range(4, 18)}
 L3T = {}
 for fn in L3F.split(','):
     for k, v in json.load(open(fn)).items():
         sg, wd, ao = k.split(); L3T[(int(sg),) + tuple(int(c) for c in wd) + tuple(int(c) for c in ao)] = v[0]
+L3T8 = {}
+for fn in L3F.replace('/tab_1.json', '/tabV8_1.json').replace('/tab_-1.json', '/tabV8_-1.json').split(','):
+    for k, v in json.load(open(fn)).items():
+        sg, wd, ao = k.split(); L3T8[(int(sg),) + tuple(int(c) for c in wd) + tuple(int(c) for c in ao)] = v[0]
 out = {}; cover = collections.defaultdict(dict)
 def add(fam, ws, rid, wt):
     for code, v in ws:
@@ -31,7 +36,7 @@ def canonkey(a, b, e, f, s0, s1, s2, s3): return min((a, b, e, f, s0, s1, s2, s3
 famseen = {}
 t0 = time.time()
 for rid, (wt, LK, SV) in enumerate(ROWS):
-    n = len(LK); assert n == 7
+    n = len(LK); U = min(n, 9); KT = KTS[U]
     w = [int(c) for c in LK]; s = [int(c) for c in SV]
     adj, rot, name, deg, Z3, inv = build(LK, SV)
     small = {k for k, v in deg.items() if v <= 8}
@@ -44,24 +49,25 @@ for rid, (wt, LK, SV) in enumerate(ROWS):
             key = (w[(j - 2) % n], w[(j - 1) % n], w[(j + 1) % n], w[(j + 2) % n], s[(j - 2) % n], s[(j - 1) % n], s[j], s[(j + 1) % n])
             ck = canonkey(*key); m = 31 & ~int(KT[tuple(x - 5 for x in key)])
             p = ('p', j, 1)
-            allowed = ({('u',), p} | {('w', (j + o) % n) for o in range(-2, 3)} | {('s', (j + o) % n) for o in range(-2, 2)})
+            allowed = ({('u',)} if U == 7 else set()) | {p} | {('w', (j + o) % n) for o in range(-2, 3)} | {('s', (j + o) % n) for o in range(-2, 2)}
             allowed = {x for x in allowed if x == p or x in small}
             for L in (5, 6):
                 if not (m >> LET.index(L)) & 1: continue
-                tag = 'A:%s:%d' % (''.join(map(str, ck)), L)
+                tag = 'A%d:%s:%d' % (U, ''.join(map(str, ck)), L)
                 if tag in famseen:   # same key: windows identical up to symmetry; only record coverage
                     for code in famseen[tag]: cover[code][rid] = wt
                     continue
                 ws = windows(LK, SV, pdeg={p: L}, RMAX=RMAX, must=[p], allowed=allowed | {p})
                 famseen[tag] = [c for c, _ in ws]; add(tag, ws, rid, wt)
-    if 'L' in FAMS:
+    if 'L' in FAMS and n in (7, 8):
+        LT = L3T if n == 7 else L3T8
         for j in range(n):
             if w[j] != 7: continue
             for sg in (1, -1):
                 c = w[(j + sg) % n]; w2, w3, w4 = (w[(j + k * sg) % n] for k in (2, 3, 4))
                 ap, o = (s[j], s[(j - 1) % n]) if sg == 1 else (s[(j - 1) % n], s[j])
                 if c > 6 or ap > 6: continue
-                m = L3T[(sg, c, w2, w3, w4, ap, o)]
+                m = LT[(sg, c, w2, w3, w4, ap, o)]
                 a2 = ('p', j, 2) if sg == 1 else ('p', j, 1)
                 apn = ('s', j) if sg == 1 else ('s', (j - 1) % n); on = ('s', (j - 1) % n) if sg == 1 else ('s', j)
                 assert inv[apn] in adj[inv[a2]], (LK, SV, j, sg)
@@ -70,20 +76,29 @@ for rid, (wt, LK, SV) in enumerate(ROWS):
                 for L in (5, 6):
                     if not (m >> LET.index(L)) & 1: continue
                     fk = (c, w2, w3, w4, ap, o)   # sigma-free family key (the table is mirror-symmetric in sigma)
-                    tag = 'L:%s:%d' % (''.join(map(str, fk)), L)
+                    tag = ('L:%s:%d' if n == 7 else 'L8:%s:%d') % (''.join(map(str, fk)), L)
                     if tag in famseen:
                         for code in famseen[tag]: cover[code][rid] = wt
                         continue
                     ws = windows(LK, SV, pdeg={a2: L}, RMAX=RMAX, must=[a2], allowed=allowed | {a2})
                     famseen[tag] = [cc for cc, _ in ws]; add(tag, ws, rid, wt)
-    if 'P' in FAMS:
-        ps = [v for v in name.values() if v[0] == 'p' and any(deg.get(name.get(y)) == 5 for y in adj[inv[v]])]
+    if 'P' in FAMS:   # every private of a parent <= 8, at letter 5 (and 6 for privates of a 6), unrestricted windows, score filter
+        ps = [v for v in name.values() if v[0] == 'p' and w[v[1]] <= 8]
         for p in ps:
-            if w[p[1]] == 6 and 'A' in FAMS: continue
-            tag = 'P:%s:%s=5' % (rtag, ''.join(map(str, p)))
-            try: ws = windows(LK, SV, pdeg={p: 5}, RMAX=RMAX, must=[p], allowed=small | {p})
-            except (AssertionError, ValueError): continue
-            add(tag, ws, rid, wt)
+            for L in ((5, 6) if w[p[1]] == 6 else (5,)):
+                tag = 'P:%s:%s=%d' % (rtag, ''.join(map(str, p)), L)
+                try: ws = windows(LK, SV, pdeg={p: L}, RMAX=RMAX, must=[p], allowed=small | {p}, minscore=MINS)
+                except (AssertionError, ValueError): continue
+                add(tag, ws, rid, wt)
+    if 'T' in FAMS:   # ring-3 vertex next to a fixed five (apex t of a 5-5-5 face included), letters 5 and 6, score filter
+        for k, nb in ring3_candidates(LK, SV):
+            if not any(x in deg and deg[x] == 5 for x in nb): continue
+            face = any(x[0] == 's' and deg[x] == 5 and w[x[1]] == 5 and w[(x[1] + 1) % n] == 5 for x in nb if x in deg)
+            for L in ((5, 6) if face else (5,)):
+                tag = 'T:%s:t%d=%d%s' % (rtag, k, L, 'f' if face else '')
+                try: ws = windows(LK, SV, tdeg={k: L}, RMAX=RMAX, must=[('t', k)], allowed=small | {('t', k)}, minscore=None if face else MINS)
+                except (AssertionError, ValueError): continue
+                add(tag, ws, rid, wt)
     if rid % 50 == 0: print(rid, rtag, len(out), '%.0fs' % (time.time() - t0), flush=True)
 with open(OUT, 'w') as f:
     for code, v in sorted(out.items(), key=lambda kv: (kv[1][0], -sum(cover[kv[0]].values()))):
