@@ -11,6 +11,7 @@ if rest and rest[0] == '--': rest = rest[1:]
 sys.argv = [os.path.join(ENG, 'pcheck.py'), 'none'] + rest
 G = {'__file__': os.path.join(ENG, 'pcheck.py'), '__name__': '__main__'}
 exec(compile(open(G['__file__']).read(), G['__file__'], 'exec'), G)
+G['load_patterns']()   # as cmd_upperR2 / solveR2 do before building rows
 rows = []
 for l in open(ROWS):
     f = l.split()
