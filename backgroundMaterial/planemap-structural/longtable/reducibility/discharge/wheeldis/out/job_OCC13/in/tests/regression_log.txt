@@ -1,0 +1,12 @@
+occ24 generators imported from backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s74_leanglue/vendor ; reference origin/main ; work dir <tmp work dir>
+T1 PASS  49 K=1 keys, ring form vs committed occ24/Kxx.lean: 49/49 byte-identical
+T2 PASS  bridge: COccK41 byte-identical=True; 49/49 equal to vendored gen_rotbridge.py: True
+T3 PASS  e66666F: kc line `66666 10 6 -;9,0,1;1,2,3;3,4,5;5,6,7;7,8,9 1,2,3,4,5;0,2,5;0,3,1;0,4,2;0,5,3;0,1,4` -> rotation literal == COccBridge rot66666: True; generated bridge `rot` = its global reversal (Occ orientation): True
+T4 PASS  walk form == vendored gen_occ_walk.py, 49 keys x {derived dinj, WALK_ASSUME=1}: 98/98
+T5a PASS  rotation: 24941 kc lines (k1_r17_19 49, k1_studioD 2855, ck108+ckq5+cr118 234, CXRing/CCover*/CR118/CKQ5 literals 270, RSST DCheckData 633, nl51 8200, XR configs.in 12700): old routine valid, independent derivation valid, equal up to reversal; interior links that are not induced cycles: 0, with several Hamiltonian cycles: 0 (so the rotation is forced)
+T5b PASS  fallback (derive_rotation only), 49 keys: 0 byte-identical as is, 49 byte-identical once each per-vertex list starts where the committed one starts (the only difference: list start)
+T6 PASS  Conf literal: 259 registry entries (CKQ5, CR118, CCover3, gen_hd.py) give the same name/r/m/ringAdj/intAdj as the generated `cf` (=> `rfl`); gen_ccover3.py EXTRAFILE regenerates the committed entry blocks: [('CKQ5.lean', True), ('CR118.lean', True)]
+T7 PASS  registry glue: 110 COcc modules (49 keys, 5 CKQ5 entries, 66666; walk and ring), 8 registry declarations each, brackets balanced, prechecks pass
+T8 PASS  syn1 generated through the fallback ({'old_rotation_raised': 2, 'links_not_induced_cycle': 2, 'links_several_ham_cycles': 0, 'rotation_derived': 2}); syn2 refused: syn2: ring positions with no interior neighbour (the ring fan would ne
+ALL PASS
+exit=0

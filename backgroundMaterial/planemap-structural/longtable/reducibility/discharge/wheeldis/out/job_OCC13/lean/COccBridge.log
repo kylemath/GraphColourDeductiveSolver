@@ -1,0 +1,27 @@
+'SimpleGraph.SphericalMap.RotOcc.occExact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.RotOcc.nbrInj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.RotOcc.apexFacts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.CGlue.occursCXF_of_rot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.CGlue.e66666F_occurs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ SimpleGraph.SphericalMap.CGlue.cf66666_fold._native.native_decide.ax_1_1,
+ SimpleGraph.SphericalMap.CGlue.cf66666_hC._native.native_decide.ax_1_1,
+ SimpleGraph.SphericalMap.CGlue.cf66666_hadm._native.native_decide.ax_1_1,
+ SimpleGraph.SphericalMap.CGlue.e66666._native.native_decide.ax_1,
+ SimpleGraph.SphericalMap.CGlue.e66666._native.native_decide.ax_2,
+ SimpleGraph.SphericalMap.CGlue.e66666._native.native_decide.ax_3,
+ SimpleGraph.SphericalMap.CGlue.rot66666_ok._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.CGlue.four_color_of_unavoidableCR' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.Meet.check4_true._native.native_decide.ax_1_1,
+ DCheck.Meet.check5_true._native.native_decide.ax_1_1,
+ DCheck.Meet.size4._native.native_decide.ax_1_1,
+ DCheck.Meet.size5._native.native_decide.ax_1_1,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
