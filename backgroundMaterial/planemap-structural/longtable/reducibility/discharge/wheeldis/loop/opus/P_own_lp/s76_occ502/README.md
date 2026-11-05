@@ -43,3 +43,15 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - HB3_00 b7_u7577575_.5.5.55 (r14 m12), HB3_01 .555.55 (r14 m13), HB3_02 .565.55 (r15 m13), HB3_03 .5.5755 (r15 m13).
 - Compile order: HB3_kk, then COccHB3_kk, then HDB3Occ (imports HDB3All). Using them as separator patterns still needs the
   pattern -> Occ step (Job 26), as for hdk7.
+
+## hcw13/: HCW13, the swarm's 3 W13 C configurations (Studio out/job_HCW13/extra_hcw13.tsv, md5 aa9dbd9b, main 76761697)
+- in/extra_hcw13.tsv and studio/{CHW13,HW13All,HW13V00..02}.lean: byte copies from main 76761697.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/hcw13/in/extra_hcw13.tsv s76_occ502/hcw13/lean HW3_` (no --hd: C side)
+  -> HW3_00..02 (Occ, face-walk form) and COccHW3_00..02 (bridge + registry glue, incl. colorable_of_occ_centry). 3 generated,
+  0 failed; 6 rotations validated; every link an induced cycle.
+- lean/HW13Occ.lean (hand template, CC3All's ccF pattern): cEntry k := (w13Entries.get k).toCEntryF w13Entries_ok (HW13V.hC_all k);
+  colorable_k / colorable_mirror_k := HW3_kk.colorable_of_(mirror_)occ_centry (cEntry k) rfl. The rfl needs toCEntryF's cf = d.cf
+  (CXRing.lean:45, cf := d.cf) and identical literals: scripts/check_literals_c.py (regex allows "{\n name") on CHW13.lean:
+  3 entries, 0 mismatches; a mutated copy (m 9 -> 8) gives 1 mismatch, exit 1. NOT compiled here (no Lean in this container).
+- Compile order: HW3_kk, COccHW3_kk, then HW13Occ (imports HW13All). HW3_00 b7_u5556677_.....5. (r13 m9), HW3_01
+  b7_u.557755_...5... (r12 m8), HW3_02 b7_u.5775.._.555... (r12 m8). Pattern -> Occ (Job 26) still open, as for hdk7/hdb3.
