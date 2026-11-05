@@ -88,6 +88,7 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 5 Nov 09:17Z: MILESTONE: the C side of the 0.0415648 upper is fully Lean-backed. CK108 is done (K108All exit 0, sorry 0), so all 757 C names in keep95p131f (531 + 118 RSST C2cons + 108) plus the 5 q7 entries have hC in Lean. Wording: 't* <= 0.0415648 [E2]; every C entry used has hC in Lean; D side two-engine (hD pending)'. Studio also confirms Opus's pruned 870-rule set FEASIBLE at 0.041565 (P870; ~503 configs: 381 D at ring <=15, 122 C). The D side has no Lean hD yet; calibration is running.
 - 4 Nov 09:47Z: Keep-filter leak CLOSED (Studio 55cfd103). A clean keep95p131f is FEASIBLE for the 0.0415648 upper without the 5 leaked entries, which are Lean-backed anyway. The C side the bound needs is 757 names: 531 Lean + 118 RSST C2cons (Lean a101df9f) + 108 (13 k3x C + core95; two-engine C f40a1cbc; Lean CK108 about half done). The bound becomes fully Lean-backed on the C side when CK108 finishes.
 - 4 Nov 08:55Z: CAVEAT. A Studio keep-filter regex missed q7-_ names, so 5 non-Lean k3p C entries also sit in keep95p131. Until Studio's re-proof of the 5 and the clean keep rebuild plus upper re-run land, the cover statement for the 0.0415648 upper reads: Lean C + core95 + 118 RSST C2cons + 13 k3x C + 5 k3p C.
 - 4 Nov 02:47Z: The 118 RSST C2cons hC is committed at main a101df9f (R118All hC_all, standard axioms plus native_decide, sorryAx 0). The 13 k3x C + core95 are queued as CK108.
