@@ -34,3 +34,12 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - MOD HDK7, PFX hdk7 -> HQ_00..06, COccHQ_00..06, HDK7Occ. 7 generated, 14 rotations validated, 0 literal mismatches
   against Studio's lean/HDK7.lean.
 - These are off the main line until KILL7 (a)-(c) pass. Their use as kill6 entries also needs the pattern -> Occ step (Job 26).
+
+## hdb3/: HDB3, B3's 4 route-F D windows (Studio out/job_HDB3/D_b3.tsv, md5 5c284e10, main 2011563a; MOD HDB3, PFX hdb3)
+- in/D_b3.tsv and studio/HDB3.lean, studio/INPUTS.md: byte copies from main 2011563a.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/hdb3/in/D_b3.tsv s76_occ502/hdb3/lean HB3_ --hd HDB3 hdb3`
+  -> HB3_00..03, COccHB3_00..03, HDB3Occ. 4 generated, 0 failed; 8 rotations validated; every link an induced cycle.
+- check_literals.py against studio/HDB3.lean: 4 entries, 0 mismatches; a mutated copy (m 13 -> 12) gives 2 mismatches, exit 1.
+- HB3_00 b7_u7577575_.5.5.55 (r14 m12), HB3_01 .555.55 (r14 m13), HB3_02 .565.55 (r15 m13), HB3_03 .5.5755 (r15 m13).
+- Compile order: HB3_kk, then COccHB3_kk, then HDB3Occ (imports HDB3All). Using them as separator patterns still needs the
+  pattern -> Occ step (Job 26), as for hdk7.
