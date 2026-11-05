@@ -1,0 +1,5 @@
+# s78: the two K-command start points, family on at amount 0, on their own stacks (after seq1).  usage: nohup bash seq1b.sh > ../logs/seq1b.out 2>&1 &
+N=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s78_kstar; cd $N
+while pgrep -x -f "bash seq1.sh" > /dev/null; do sleep 30; done
+echo "$(date -u +%H:%M:%SZ) seq1b feas75 start"; STACK=s75 KS=1 bash upper78.sh f0_s75_in14 /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/cand/sol_q75B_in14_full.json 1; echo "$(date -u +%H:%M:%SZ) seq1b feas75 done: $(tail -1 $N/run.log | grep -o 'UPPER-R2.*')"
+echo "$(date -u +%H:%M:%SZ) seq1b feas77 start"; STACK=s77 KS=1 bash upper78.sh f0_s77_b77F_in01 /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/cand/sol_b77F_in01.json 1; echo "$(date -u +%H:%M:%SZ) seq1b feas77 done: $(tail -1 $N/run.log | grep -o 'UPPER-R2.*')"

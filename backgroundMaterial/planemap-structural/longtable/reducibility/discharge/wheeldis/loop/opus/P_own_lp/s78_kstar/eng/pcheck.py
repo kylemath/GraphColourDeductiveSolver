@@ -341,7 +341,11 @@ def run_sep(d, W, thr, K, mode, pats=True):
         if KSTAR and d == 7: extra += [F2B_EVAL[0] or 'none', q7m_write(d) if Q7M else 'none', kstar_write(d)]   # s78: argv[13] = K* file
         elif Q7M and d in (7, 8): extra += [F2B_EVAL[0] or 'none', q7m_write(d)]
         elif F2B_EVAL[0]: extra.append(F2B_EVAL[0])
-        out = subprocess.run([BINF, hdr, wp] + extra, capture_output=True, text=True, check=True).stdout.split('\n')
+        cp_ = subprocess.run([BINF, hdr, wp] + extra, capture_output=True, text=True)   # s78: jsepf stderr summary lines are logged; a refusal is reported with its message
+        for l_ in cp_.stderr.split('\n'):
+            if l_.startswith(('jsepf', 'kstar', 'f2b', 'q7m')) and ('loaded' not in l_): log('  [d=%d] %s' % (d, l_))
+        if cp_.returncode != 0: log('  [d=%d] jsepf FAILED with exit %d: %s' % (d, cp_.returncode, cp_.stderr.strip().split('\n')[-1][:300])); raise subprocess.CalledProcessError(cp_.returncode, BINF)
+        out = cp_.stdout.split('\n')
         return [l.split() for l in out if l], time.time() - t0, len(inst)
     extra = [] if 'ref' in FLAGS else [NTH, SYMF]
     if mode == 2: extra.append(CLSFILE[0])

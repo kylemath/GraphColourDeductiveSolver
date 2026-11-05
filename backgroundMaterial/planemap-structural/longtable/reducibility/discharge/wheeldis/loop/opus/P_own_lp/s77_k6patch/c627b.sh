@@ -2,7 +2,7 @@
 # usage: nohup bash c627b.sh post <tag> <KT prefix> [pid to wait for] &   (post-process an L whose solveR2 already ran / is running)
 #        nohup bash c627b.sh run  <tag> <KT prefix> &                     (full: L + post-processing)
 N=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch
-B=$(dirname $N); export ARGS=$N/args/args_A97_plusStudioC_local.txt; WARM=$(cat $N/runL_b77b/warmlist.txt)
+B=$(dirname $N); export ARGS=${ARGS:-$N/args/args_A97_plusStudioC_local.txt}; WARM=$(cat $N/runL_b77b/warmlist.txt)
 MODE=$1; TAG=$2; export KT=$3; WPID=$4; . $N/env77.sh; RD=$N/runL_$TAG; mkdir -p $RD
 log() { echo "$(date -u +%H:%M:%SZ) [s77C627] $*" >> $N/run.log; }
 lowerchk() {  # <engdir> <cert> <log> [flags...]
@@ -10,7 +10,7 @@ lowerchk() {  # <engdir> <cert> <log> [flags...]
   nice -n 15 python3 pcheck.py lowerR2 $F $X cert=$CE xcap=3 $A work=$WK "$@" > $LG 2>&1; rm -rf $WK
   log "$TAG $(basename $LG): $(grep -o 'by kind {[^}]*}' $LG | head -1) | $(grep 'LOWER-R2' $LG | tail -1 | cut -c1-160)"; }
 if [ "$MODE" = run ]; then WK=$S7/wr77L_$TAG; mkdir -p $WK; echo "$WARM" > $RD/warmlist.txt
-  log "L $TAG start: FAM=base KT=$KT ARGS=$ARGS (C627) warm = runL_b77b/warmlist.txt, nosep lpmax=45, 1 thread"
+  log "L $TAG start: FAM=base KT=$KT ARGS=$ARGS warm = runL_b77b/warmlist.txt, nosep lpmax=45, 1 thread"
   cd $N/eng; nice -n 15 python3 pcheck.py solveR2 $F $X nosep tag=$TAG $A $CB warm=$WARM K=300 xcap=3 threads=1 work=$WK lpmax=45 > $RD/L.log 2>&1; rm -rf $WK
 elif [ -n "$WPID" ]; then while kill -0 $WPID 2>/dev/null; do sleep 30; done; rm -rf $S7/wr77L_$TAG; fi
 cd $N/eng; cp sol_$TAG.json cert_$TAG.json $RD/ || { log "$TAG: no sol/cert from the L (see runL_$TAG/L.log)"; exit 1; }

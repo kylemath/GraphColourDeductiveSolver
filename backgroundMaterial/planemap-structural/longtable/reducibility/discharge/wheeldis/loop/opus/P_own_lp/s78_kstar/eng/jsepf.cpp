@@ -6,6 +6,8 @@
 //   exact = the payee slot with the masks amask & ~extra6 (6-private = S.A-1 when c- = 6) and L3T & ~extra7 (payer private = S.L-3).
 //   exact > KUB would be a positive term outside WIN: refused (exit 81).  Mode-2 ids: 1800000001 per payer firing, 1800000002 per payee firing.
 //   Requires argv[7] (l3q file: MK) and argv[10] (f2b file: KM, R6B, R7B).
+//   nc rebase (17:45Z): every K* leaf term is <= 0 (aK >= 0 refused otherwise, exact <= KUB enforced), so K* adds nothing to the nc SLACK;
+//   the K* block sits after the f2b / q7m corrections and exits on the plain cut.
 // jsepf (s60_f2b): jsep7 + argv[10] = f2b file (outside team's full-wheel 2-ball private-letter exclusions), optional argv[11] = eval file.
 //   f2b file (little endian), per degree d in 7..9: int32 d; uint8 KM[5^8] (allowed-private mask of a 6 spoke, 31 & ~kill6[U], index
 //   (w-2,w-1,w+1,w+2,s-2,s-1,s0,s+1)); double V6M[625*4*32] (M value of the 6 spoke at (b,e,q,r,ca,cf,mask), 0 if no allowed key);
@@ -56,6 +58,7 @@
 #include <map>
 using namespace std;
 static const double NEG = -1e300;
+double SLACK = 0, SLACKT = 0; long f2bPos = 0, qmPos = 0;   // nc: positive-correction slack (no clamp)
 int d; double thr; long K; int mode; int SYM = 1; int NT = 1;
 vector<double> WIN; vector<int> CLS; map<vector<int>, pair<double,pair<string,string>>> TOPS; multimap<double, vector<int>> TOPV; atomic<double> gkth(NEG);            // 5^9, index a,b,c,e,f,p,q,r,s
 vector<double> H;              // 5^7, index b,c,e,f,q,r,s  (max over a, p)
@@ -156,10 +159,10 @@ struct Ctx {
         double tot = 0;
         for (int i = 0; i < d; i++) { double v = win(i); if (v <= NEG / 2) return; tot += v; }
         double c = EVAL ? NEG : cut();
-        if (!(tot > c)) return;
+        if (!(tot > c - SLACK)) return;
         if (!EVAL && (d == 7 || d == 8) && RBIG.count(canonlink())) return;
         vector<int> l3ids;
-        if (!BONUS.empty()) { string cl = canonlink(); auto it = BONUS.find(cl); if (it != BONUS.end()) { tot -= it->second; if (!(tot > c)) return; unsigned h = 2166136261u; for (char ch : cl) h = (h ^ (unsigned char)ch) * 16777619u; l3ids.push_back(1700000000 + (int)(h % 400000000u)); } }
+        if (!BONUS.empty()) { string cl = canonlink(); auto it = BONUS.find(cl); if (it != BONUS.end()) { tot -= it->second; if (!(tot > c - SLACK)) return; unsigned h = 2166136261u; for (char ch : cl) h = (h ^ (unsigned char)ch) * 16777619u; l3ids.push_back(1700000000 + (int)(h % 400000000u)); } }
         if (L3 && d == 7) {
             double corr = 0;
             for (int i = 0; i < d; i++) {
@@ -174,7 +177,7 @@ struct Ctx {
                     if (MK[qi] >= 0) l3ids.push_back(1100000000 + (cc * 5 + a) * 32 + (int)MK[qi]);
                 }
             }
-            tot += corr; if (!(tot > c)) return;
+            tot += corr; if (!(tot > c - SLACK)) return;
         }
         if (L3V && (d == 7 || d == 8)) {   // jsep7: l3qV = 8
             double corr = 0;
@@ -197,7 +200,7 @@ struct Ctx {
                     }
                 }
             }
-            tot += corr; if (!(tot > c)) return;
+            tot += corr; if (!(tot > c - SLACK)) return;
         }
         if (F2B) {
             double dl = 0;
@@ -212,7 +215,7 @@ struct Ctx {
                     int mk = m0 & ~(int)ex;
                     long ix = ((((((long)b * 5 + e) * 5 + sm1) * 5 + s0) * 4) + (a >= 2 ? 2 : 0) + (f >= 2 ? 1 : 0)) * 32;
                     double v = V6M[ix + mk] - V6M[ix + m0];
-                    if (v > 1e-15) { f2bClamp++; v = 0; }
+                    if (v > 1e-15) { f2bClamp++; f2bPos++; }
                     dl += v; f2bHits++; l3ids.push_back(1400000000 + widx(i) * 32 + mk);
                 } else if (W(i) == 2 && (d == 7 || d == 8)) {
                     for (int sg = 0; sg < 2; sg++) {
@@ -227,12 +230,12 @@ struct Ctx {
                         int m0 = (int)mkv; if (!(m0 & ex)) continue;
                         int mk = m0 & ~(int)ex;
                         double v = QMT[(cc * 5 + a) * 32 + mk] - QMT[(cc * 5 + a) * 32 + m0];
-                        if (v > 1e-15) { f2bClamp++; v = 0; }
+                        if (v > 1e-15) { f2bClamp++; f2bPos++; }
                         dl += v; f2bHits++; l3ids.push_back(1500000000 + (cc * 5 + a) * 32 + mk);
                     }
                 }
             }
-            tot += dl; if (!(tot > c)) return;
+            tot += dl; if (!(tot > c - SLACKT)) return;
         }
         if (QM && (d == 7 || d == 8)) {   // s67 q7m: payer credit Q(sig, masks) <= Q(sig) already in the window; exact masks = L3T/V8 mask & ~f2b extra7 on each side
             double dq = 0;
@@ -252,7 +255,7 @@ struct Ctx {
                 if (m[0] == 31 && m[1] == 31) continue;
                 long ix = (((long)(W(i - 1) * 5 + W(i + 1)) * 5 + sm1) * 5 + s0) * 1024;
                 double v = QTM[ix + m[0] * 32 + m[1]] - QTM[ix + 31 * 32 + 31];
-                if (v > 1e-15) { qmClamp++; v = 0; }
+                if (v > 1e-15) { qmClamp++; qmPos++; }
                 dq += v; qmHits++; l3ids.push_back(1600000000 + (int)(ix + m[0] * 32 + m[1]));
             }
             tot += dq; if (!(tot > c)) return;
@@ -363,7 +366,7 @@ struct Ctx {
                     if (p <= NEG / 2) ok = false;
                     else {
                         double bnd = p + (k >= 3 ? h1 + exactsum : 0.0);
-                        if (bnd <= cut() + (mode == 1 ? 1e-12 : -1e-12)) ok = false;   // mode 1: ties cannot raise the max
+                        if (bnd + SLACK <= cut() + (mode == 1 ? 1e-12 : -1e-12)) ok = false;   // mode 1: ties cannot raise the max
                     }
                 }
             }
@@ -468,6 +471,16 @@ int main(int argc, char **argv) {
         if (fread(QTM.data(), sizeof(double), QTM.size(), qf) != QTM.size()) return 73; fclose(qf); QM = true;
         fprintf(stderr, "jsepf: q7m table loaded for d=%d\n", d);
     }
+    {   // nc: largest positive leaf correction per kind -> slack
+        double dV = 0, dQ = 0, dT = 0;
+        if (F2B) {
+            for (int ix = 0; ix < 625 * 4; ix++) for (int m = 0; m < 32; m++) for (int sb = m; ; sb = (sb - 1) & m) { dV = max(dV, V6M[ix * 32 + sb] - V6M[ix * 32 + m]); if (!sb) break; }
+            for (int ix = 0; ix < 25; ix++) for (int m = 0; m < 32; m++) for (int sb = m; ; sb = (sb - 1) & m) { dQ = max(dQ, QMT[ix * 32 + sb] - QMT[ix * 32 + m]); if (!sb) break; }
+        }
+        if (QM) for (int ix = 0; ix < 625; ix++) for (int m = 0; m < 1024; m++) dT = max(dT, QTM[ix * 1024 + m] - QTM[ix * 1024 + 1023]);
+        SLACKT = d * dT + (dT > 0 ? 1e-12 : 0); SLACK = d * dV + 2 * d * dQ + SLACKT + ((dV > 0 || dQ > 0) ? 1e-12 : 0);
+        fprintf(stderr, "jsepf_nc: max positive deltas V6M %.6g QM %.6g QT %.6g -> slack %.6g (q7m slack %.6g)\n", dV, dQ, dT, SLACK, SLACKT);
+    }
     if (argc > 13 && strcmp(argv[13], "none") != 0) {   // s78 K*
         FILE *kf = fopen(argv[13], "rb"); if (!kf) return 83;
         int32_t mg = 0, dd = 0;
@@ -492,6 +505,7 @@ int main(int argc, char **argv) {
     long nodes = totnodes;
     if (QM) fprintf(stderr, "jsepf: q7m leaf hits %ld, clamped %ld\n", qmHits.load(), qmClamp.load());
     if (KS) fprintf(stderr, "jsepf: kstar leaf payer firings %ld, payee firings %ld, window bounds corrected %ld\n", ksPay.load(), ksRecv.load(), ksUB.load());
+    fprintf(stderr, "jsepf_nc: positive corrections kept (not clamped): f2b %ld, q7m %ld\n", f2bPos, qmPos);
     if (F2B) fprintf(stderr, "jsepf: f2b leaf hits %ld, clamped %ld\n", f2bHits.load(), f2bClamp.load());
     if (mode == 1) {
         int bi = -1; double bv = NEG;

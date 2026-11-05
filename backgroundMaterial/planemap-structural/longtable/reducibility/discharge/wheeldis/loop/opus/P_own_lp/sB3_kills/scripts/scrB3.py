@@ -20,7 +20,7 @@ def loadres(fn):
             if len(g) > 4: res[g[0]] = g[4] + ('?' if g[4] == 'D' and len(g) > 10 and 'noD' in g[10] else '')
     except (OSError, EOFError): pass
 for fn in glob.glob(WD + '/b1res/res_*.tsv') + glob.glob(WD + '/results/res_*.tsv'): loadres(fn)
-for fn in glob.glob('/mnt/project-files/swarm/round6/W13-open-row-kills/results/*.tsv*'): loadres(fn)
+for fn in glob.glob('/mnt/project-files/swarm/round6/W13-open-row-kills/results/*.tsv*') + glob.glob('/mnt/project-files/swarm/round6/W13-open-row-kills/res_*.tsv*'): loadres(fn)
 w13 = set()
 try:
     for l in gzip.open('/mnt/project-files/swarm/round6/B1-dual-kills/windows/famK2_R14.tsv.gz', 'rt'):

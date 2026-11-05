@@ -1,0 +1,97 @@
+--- jsepf_nc_base.cpp	2026-11-05 17:39:33.799495957 +0000
++++ jsepf.cpp	2026-11-05 17:40:52.871981965 +0000
+@@ -1,3 +1,13 @@
++// s78_kstar (Team D): optional argv[13] = K* file (W6 round 3 deep key K* = EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]), d = 7 only.
++//   File (little endian): int32 7801; int32 d (= 7); double aK (K* amount, >= 0); uint8 KUB[2][5^9] (0/1, window index as WIN).
++//   KUB[0][widx(k)] = 1 iff the window centred at k holds an upper bound of a K* payee slot with the payer at k-1 (c- = w_k, c+ = w_{k-2});
++//   KUB[1][widx(k)] likewise with the payer at k+1 (c- = w_k, c+ = w_{k+2}).  The Python side added aK * (KUB[0] + KUB[1]) to WIN.
++//   Leaf (after q7m, before EVAL): exact payer outflow -aK per firing (window-local, <= 0) and, per window k and side, aK * (exact - KUB) <= 0,
++//   exact = the payee slot with the masks amask & ~extra6 (6-private = S.A-1 when c- = 6) and L3T & ~extra7 (payer private = S.L-3).
++//   exact > KUB would be a positive term outside WIN: refused (exit 81).  Mode-2 ids: 1800000001 per payer firing, 1800000002 per payee firing.
++//   Requires argv[7] (l3q file: MK) and argv[10] (f2b file: KM, R6B, R7B).
++//   nc rebase (17:45Z): every K* leaf term is <= 0 (aK >= 0 refused otherwise, exact <= KUB enforced), so K* adds nothing to the nc SLACK;
++//   the K* block sits after the f2b / q7m corrections and exits on the plain cut.
+ // jsepf (s60_f2b): jsep7 + argv[10] = f2b file (outside team's full-wheel 2-ball private-letter exclusions), optional argv[11] = eval file.
+ //   f2b file (little endian), per degree d in 7..9: int32 d; uint8 KM[5^8] (allowed-private mask of a 6 spoke, 31 & ~kill6[U], index
+ //   (w-2,w-1,w+1,w+2,s-2,s-1,s0,s+1)); double V6M[625*4*32] (M value of the 6 spoke at (b,e,q,r,ca,cf,mask), 0 if no allowed key);
+@@ -58,6 +68,7 @@
+ struct F2BRule { uint64_t fw, fs, kill; };
+ bool F2B = false; vector<uint8_t> KM; vector<double> V6M; vector<double> QMT; vector<F2BRule> R6B[25], R7B[2][25];
+ atomic<long> f2bHits(0), f2bClamp(0); bool EVAL = false;
++bool KS = false; double KSA = 0; vector<uint8_t> KUB; atomic<long> ksPay(0), ksRecv(0), ksUB(0);   // s78 K*
+ vector<double> QTM; bool QM = false; atomic<long> qmHits(0), qmClamp(0);   // s67 q7m: argv[12] = QT[625][32][32] for this d (masked payer credit); QM_ = leaf correction QT[m1,m2] - QT[31,31] <= 0
+ set<string> RBIG; map<string,double> BONUS;   // jsep4: d = 7 link inflow subtracted at the leaf (sound: bounds ignore it)
+ struct Inst { vector<pair<int,int>> sl; };
+@@ -249,6 +260,44 @@
+             }
+             tot += dq; if (!(tot > c)) return;
+         }
++        if (KS && d == 7) {   // s78 K*: exact payer outflow + exact payee credit minus the window upper bound (every term <= 0)
++            double dk = 0;
++            for (int i = 0; i < d; i++) {   // centre pays its link 7 at i; c- = w_{i+e1}, c+ = w_{i-e1}, S.L-2 = w_{i+2e1}, S.L-3 = w_{i+3e1}, S.A-1 = apex(i+e1, i+2e1)
++                if (W(i) != 2) continue;
++                for (int e1 = 1; e1 >= -1; e1 -= 2)
++                    if (W(i - e1) >= 2 && W(i + e1) <= 1 && W(i + 2 * e1) == 0 && W(i + 3 * e1) == 0 && (e1 > 0 ? S(i + 1) : S(i - 2)) >= 2) {
++                        dk -= KSA; ksPay++; l3ids.push_back(1800000001);
++                    }
++            }
++            for (int k = 0; k < d; k++) {   // centre is paid by its link 7 at j = k - e1; c- = w_k
++                const long ix = widx(k);
++                for (int sgi = 0; sgi < 2; sgi++) {
++                    const int e1 = sgi == 0 ? 1 : -1, j = k - e1;
++                    const int ub = KUB[(size_t)sgi * 1953125 + ix];
++                    int ex = 0;
++                    const int a = e1 > 0 ? S(j) : S(j - 1), o = e1 > 0 ? S(j - 1) : S(j);   // a = apex(j, k) = S.L-2, o = j's other apex
++                    if (W(j) == 2 && W(j - e1) >= 2 && W(k) <= 1 && a == 0) {
++                        bool sa;
++                        if (W(k) == 0) sa = (e1 > 0 ? S(k) : S(k - 1)) >= 2;          // c- = 5: S.A-1 = c-'s other apex
++                        else {                                                          // c- = 6: S.A-1 = the 6's private
++                            long k8 = ((((((((long)W(k - 2) * 5 + W(k - 1)) * 5 + W(k + 1)) * 5 + W(k + 2)) * 5 + S(k - 2)) * 5 + S(k - 1)) * 5 + S(k)) * 5 + S(k + 1));
++                            int m6 = KM[k8]; const auto &bk6 = R6B[S(k - 1) * 5 + S(k)];
++                            if (!bk6.empty()) m6 &= ~(int)f2bExtra(bk6, k);
++                            sa = (m6 & 28) != 0;
++                        }
++                        long q = (((((long)sgi * 5 + W(j + e1)) * 5 + W(j + 2 * e1)) * 5 + W(j + 3 * e1)) * 5 + W(j + 4 * e1)) * 25 + a * 5 + o;
++                        if (MK[q] < 0) { fprintf(stderr, "kstar: l3q mask missing at q=%ld\n", q); exit(82); }
++                        int m7 = (int)MK[q]; const auto &bk7 = R7B[sgi][S(j - 1) * 5 + S(j)];
++                        if (!bk7.empty()) m7 &= ~(int)f2bExtra(bk7, j);
++                        ex = (sa && (m7 & 1)) ? 1 : 0;                                    // S.L-3 = 5 possible
++                    }
++                    if (ex > ub) { fprintf(stderr, "kstar: exact payee slot above the window bound at k=%d sg=%d (window %ld)\n", k, e1, ix); exit(81); }
++                    if (ub) { dk += KSA * (ex - ub); ksUB++; }
++                    if (ex) { ksRecv++; l3ids.push_back(1800000002); }
++                }
++            }
++            tot += dk; if (!(tot > c)) return;
++        }
+         if (EVAL) { printf("E %.12f\n", tot); return; }
+         if (FY2) {
+             double corr = 0;
+@@ -432,6 +481,19 @@
+         SLACKT = d * dT + (dT > 0 ? 1e-12 : 0); SLACK = d * dV + 2 * d * dQ + SLACKT + ((dV > 0 || dQ > 0) ? 1e-12 : 0);
+         fprintf(stderr, "jsepf_nc: max positive deltas V6M %.6g QM %.6g QT %.6g -> slack %.6g (q7m slack %.6g)\n", dV, dQ, dT, SLACK, SLACKT);
+     }
++    if (argc > 13 && strcmp(argv[13], "none") != 0) {   // s78 K*
++        FILE *kf = fopen(argv[13], "rb"); if (!kf) return 83;
++        int32_t mg = 0, dd = 0;
++        if (fread(&mg, 4, 1, kf) != 1 || mg != 7801 || fread(&dd, 4, 1, kf) != 1 || dd != d) { fprintf(stderr, "kstar file: bad magic or d\n"); return 84; }
++        if (fread(&KSA, sizeof(double), 1, kf) != 1) return 85;
++        KUB.resize((size_t)2 * 1953125); if (fread(KUB.data(), 1, KUB.size(), kf) != KUB.size()) return 86;
++        fclose(kf);
++        if (!(KSA >= 0) || KSA > 1e6) { fprintf(stderr, "kstar: amount %g refused (must be >= 0)\n", KSA); return 87; }
++        for (uint8_t u : KUB) if (u > 1) return 88;
++        if (d != 7) { fprintf(stderr, "kstar file passed at d=%d (d = 7 only)\n", d); return 89; }
++        if (!L3 || !F2B) { fprintf(stderr, "kstar needs the l3q file (argv[7]) and the f2b file (argv[10])\n"); return 90; }
++        KS = true; fprintf(stderr, "jsepf: kstar table loaded, aK = %.12g\n", KSA);
++    }
+     if (argc > 11 && strcmp(argv[11], "none") != 0) {
+         EVAL = true; Ctx c0; FILE *ef = fopen(argv[11], "r"); char wb[64], sb[64];
+         while (ef && fscanf(ef, "%63s %63s", wb, sb) == 2) { for (int i = 0; i < d; i++) { c0.L[2 * i] = wb[i] - '5'; c0.L[2 * i + 1] = sb[i] - '5'; } c0.leaf(); }
+@@ -442,6 +504,7 @@
+     for (auto &x : th) x.join();
+     long nodes = totnodes;
+     if (QM) fprintf(stderr, "jsepf: q7m leaf hits %ld, clamped %ld\n", qmHits.load(), qmClamp.load());
++    if (KS) fprintf(stderr, "jsepf: kstar leaf payer firings %ld, payee firings %ld, window bounds corrected %ld\n", ksPay.load(), ksRecv.load(), ksUB.load());
+     fprintf(stderr, "jsepf_nc: positive corrections kept (not clamped): f2b %ld, q7m %ld\n", f2bPos, qmPos);
+     if (F2B) fprintf(stderr, "jsepf: f2b leaf hits %ld, clamped %ld\n", f2bHits.load(), f2bClamp.load());
+     if (mode == 1) {

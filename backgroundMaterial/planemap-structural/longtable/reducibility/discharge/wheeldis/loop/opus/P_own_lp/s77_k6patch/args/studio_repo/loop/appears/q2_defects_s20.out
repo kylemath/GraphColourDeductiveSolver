@@ -1,0 +1,13 @@
+candidates 20928 (stride 20 offset 7), 428s; candidates with any separating <=5-cycle in patch interior: 0
+tally bf chord fill-ok w5 nosep 228201
+tally bf chord fill-ok w6 nosep 13125
+tally bf fold fill-ok wNone nosep 15852
+tally bf simple simple - - 1078423
+tally rc chord fill-ok w5 nosep 23801
+tally rc chord fill-ok w7 nosep 71907
+tally rc simple simple - - 1239893
+example bf chord fill-ok w5 nosep {"sig": "5|55667|577575577|66665766666576|6666666666666666666", "u": 5, "word": "5557756", "S": [2, 5], "walks": [[[2, 5], [8, 7], [17, 6], [16, 6], [29, 6], [28, 6], [27, 7], [26, 5], [25, 6], [24, 6], [39, 6], [22, 6], [10, 7], [3, 6], [0, 5]]], "rep": [], "chords": [[2, 3], [3, 8]], "enclosed": [], "double": []}
+example bf chord fill-ok w6 nosep {"sig": "5|55677|5766655755|676666775577|66666666666666666", "u": 5, "word": "5555577", "S": [1, 4], "walks": [[[8, 6], [18, 6], [17, 7], [16, 6], [28, 6], [44, 6], [43, 6], [42, 6], [41, 6], [25, 5], [24, 5], [12, 5], [4, 7], [3, 6]]], "rep": [], "chords": [[17, 28]], "enclosed": [], "double": []}
+example bf fold fill-ok wNone nosep {"sig": "7|5555577|57575655555|767677777|66666666666666", "u": 0, "word": "5775555", "S": [0, 4], "walks": [[[13, 6], [23, 7], [22, 6], [21, 7], [20, 6], [19, 7], [18, 5], [17, 5], [16, 5], [6, 7]]], "rep": [], "chords": [], "enclosed": [10], "double": [[10, 21]]}
+example rc chord fill-ok w5 nosep {"sig": "5|55667|577575577|66665766666576|6666666666666666666", "u": 5, "word": "5557756", "S": [2, 5], "walks": [[[2, 5], [7, 7], [16, 6], [29, 6], [28, 6], [14, 7], [13, 7], [24, 6], [39, 6], [22, 6], [10, 7], [3, 6], [0, 5]]], "rep": [], "chords": [[2, 3]], "enclosed": [], "double": []}
+example rc chord fill-ok w7 nosep {"sig": "5|55667|577575757|65755766576577|6666666666666666666", "u": 5, "word": "5557576", "S": [2, 4], "walks": [[[2, 5], [7, 7], [16, 5], [29, 6], [28, 7], [14, 7], [27, 7], [42, 6], [41, 6], [24, 7], [12, 7], [4, 6], [0, 5]]], "rep": [], "chords": [[27, 28]], "enclosed": [], "double": []}

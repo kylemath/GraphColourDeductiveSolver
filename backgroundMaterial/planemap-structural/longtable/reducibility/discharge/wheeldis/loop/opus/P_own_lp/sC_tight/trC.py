@@ -87,8 +87,21 @@ for dl in [float(x) for x in OPT.get('deltas', '1e-4').split(',')]:
         for j in grp: h.changeRowBounds(j, -inf, info[j][1] - 6.0)
         res.append({'row': r, 'share': float(-du[i] / R), 'slack_in': float(rowslack[i]), 'dt_row': None if ta is None else ta - t, 'dt_link': None if tb is None else tb - t, 'link': key[1], 'link_rows': len(grp), 'link_share': float(sum(-du[j] for j in grp) / R)})
         log('   drop %s (share %.4f, slack_in %.2g): row -> dt %s; link %s (%d rows, share %.4f) -> dt %s' % ('/'.join(map(str, r[1:4])), res[-1]['share'], rowslack[i], 'n/a' if ta is None else '%.3e' % (ta - t), key[1], len(grp), res[-1]['link_share'], 'n/a' if tb is None else '%.3e' % (tb - t)))
+    gres = {}
+    for spec in [g for g in OPT.get('groups', '').split(';') if g]:   # name=d:link,d:link,...  (links in any orientation; token 7:has9 = every d=7 row with a 9 in its link)
+        name, items = spec.split('='); idx = set()
+        for it_ in items.split(','):
+            d_, lk_ = it_.split(':'); d_ = int(d_)
+            if lk_ == 'has9': idx |= {i for i in rec if info[i][1] == d_ and '9' in info[i][2]}
+            elif lk_ == 'has8or9': idx |= {i for i in rec if info[i][1] == d_ and ('9' in info[i][2] or '8' in info[i][2])}
+            else: idx |= set(bylink.get((d_, canon_row(d_, lk_, '5' * d_)[0]), []))
+        for j in idx: h.changeRowBounds(j, -inf, inf)
+        tg, sg_ = solve()
+        for j in idx: h.changeRowBounds(j, -inf, info[j][1] - 6.0)
+        gres[name] = {'rows': len(idx), 'dt': None if tg is None else tg - t, 'status': sg_, 'share': float(sum(-du[j] for j in idx) / R)}
+        log('   group %s: %d LP rows (share %.4f) dropped -> dt %s (%s)' % (name, len(idx), gres[name]['share'], 'n/a' if tg is None else '%.3e' % (tg - t), sg_))
     solve()
-    summary.append({'delta': dl, 't': t, 'dt': t - tin, 'drops': res})
+    summary.append({'delta': dl, 't': t, 'dt': t - tin, 'drops': res, 'groups': gres})
     if 'savex' in FLAGS:
         np.save(os.path.join(OUT, 'xtr_%s_d%g.npy' % (TAG, dl)), xv)
 json.dump({'t_in': tin, 'c1': c1, 'runs': summary}, open(os.path.join(OUT, 'trsum_%s.json' % TAG), 'w'), indent=1)

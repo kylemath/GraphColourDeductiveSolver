@@ -1,0 +1,38 @@
+distinct classes 3162 by d {7: 2231, 8: 830, 9: 100, 10: 1}
+python vs jsepf slack mismatches > 1e-7: 0 []
+distinct LP rows 3122 not admissible as written: 0
+slack < 1e-06 :   356 LP rows, by d {7: 300, 8: 31, 9: 24, 10: 1}; d=7 motifs {'555-face': 285, 'mixed 5-6-7': 11, '55-pair': 2, '5-7 mesh': 2}
+    d=7 rows with rr keys: 300, with a positive rr column: 87
+    d=7 rows with z keys: 300, with a positive z column: 291
+    d=7 rows with zr keys: 300, with a positive zr column: 110
+    d=7 rows with q7 keys: 300, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.001 :   620 LP rows, by d {7: 467, 8: 121, 9: 31, 10: 1}; d=7 motifs {'555-face': 430, 'mixed 5-6-7': 28, '55-pair': 7, '5-7 mesh': 2}
+    d=7 rows with rr keys: 467, with a positive rr column: 176
+    d=7 rows with z keys: 467, with a positive z column: 453
+    d=7 rows with zr keys: 467, with a positive zr column: 187
+    d=7 rows with q7 keys: 467, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.003 :  1045 LP rows, by d {7: 685, 8: 315, 9: 44, 10: 1}; d=7 motifs {'555-face': 614, 'mixed 5-6-7': 47, '55-pair': 18, '5-7 mesh': 4, 'lone-5': 2}
+    d=7 rows with rr keys: 685, with a positive rr column: 219
+    d=7 rows with z keys: 685, with a positive z column: 600
+    d=7 rows with zr keys: 685, with a positive zr column: 317
+    d=7 rows with q7 keys: 685, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.005 :  1749 LP rows, by d {7: 1222, 8: 471, 9: 55, 10: 1}; d=7 motifs {'555-face': 1085, 'mixed 5-6-7': 85, '55-pair': 42, '5-7 mesh': 7, 'lone-5': 3}
+    d=7 rows with rr keys: 1222, with a positive rr column: 403
+    d=7 rows with z keys: 1222, with a positive z column: 1097
+    d=7 rows with zr keys: 1222, with a positive zr column: 514
+    d=7 rows with q7 keys: 1222, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+slack < 0.01  :  3122 LP rows, by d {7: 2192, 8: 830, 9: 99, 10: 1}; d=7 motifs {'555-face': 1765, 'mixed 5-6-7': 274, '55-pair': 105, 'lone-5': 33, '5-7 mesh': 15}
+    d=7 rows with rr keys: 2192, with a positive rr column: 794
+    d=7 rows with z keys: 2192, with a positive z column: 1663
+    d=7 rows with zr keys: 2192, with a positive zr column: 1004
+    d=7 rows with q7 keys: 2192, with a positive q7 column: 0
+    d=7 rows with no rr/z/zr/q7 key at all: 0
+senders with slack < 1e-06: 864
+senders with slack < 0.001: 1222
+senders with slack < 0.003: 1748
+senders with slack < 0.01: 3044
+min slack 5.8e-08

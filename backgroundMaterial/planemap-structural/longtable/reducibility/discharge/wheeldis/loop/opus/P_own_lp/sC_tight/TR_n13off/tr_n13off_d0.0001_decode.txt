@@ -1,0 +1,33 @@
+cert /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/sC_tight/TR_n13off/tr_n13off_d0.0001.json: 20 rows
+rows and |w| mass by type (share of total |w|):
+  mrowL           3 rows  0.359
+  senderR2        7 rows  0.256
+  receiverR2      6 rows  0.231
+  mrowR2          2 rows  0.103
+  cons2           2 rows  0.051
+
+SENDER contexts (word, hat bits | six-private bits), share of sender mass, top 15:
+  0.200  55757  10110|
+  0.200  55767  10000|0
+  0.200  57777  10001|
+  0.100  55777  11001|
+  0.100  55777  11111|
+  0.100  57777  00000|
+  0.100  57777  01010|
+SENDER words (share): 57777 0.400, 55757 0.200, 55767 0.200, 55777 0.200
+sender mass in contexts with every hat small (bits all 0): 0.100
+
+RECEIVER motifs (d, feature): rows, share of receiver mass
+  d=7 555-face          3  0.556
+  d=7 55-pair           1  0.222
+  d=7 5-7 mesh          2  0.222
+receiver mass in rows with an 8 or 9 in the link: 0.000; with a 6 in the link: 0.444; no 6 in the link: 0.556
+COUPLING: receiver mass share of rows that hold a link five of word X: 57777 0.889, 55767 0.444, 55757 0.444, 55777 0.333
+
+RECEIVER rows, top 15 (share of receiver mass, cumulative; base-cert shares W7 / b77 of the same class):
+  0.2222 0.222 d=7 7665557/6675775  555-face     W7 0.011 b77 -
+  0.2222 0.444 d=7 7575755/7557777  55-pair      W7 0.014 b77 0.143
+  0.2222 0.667 d=7 7555666/7757687  555-face     W7 0.129 b77 0.115
+  0.1111 0.778 d=7 7557755/7575757  555-face     W7 0.044 b77 0.163
+  0.1111 0.889 d=7 7577575/7555755  5-7 mesh     W7 - b77 0.163
+  0.1111 1.000 d=7 7577575/7565755  5-7 mesh     W7 - b77 -

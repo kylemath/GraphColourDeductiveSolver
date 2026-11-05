@@ -1,0 +1,62 @@
+graphs 14549, (u,|five-nbrs|>=2) pairs 64115, 323s; separating short cycles counted per graph where needed: {}
+tally d7 chord NOSIMPLE w5 nosep deep 274
+tally d7 chord NOSIMPLE w7 nosep deep 220
+tally d7 chord fill-ok w5 nosep shallow 725683
+tally d7 chord fill-ok w6 nosep shallow 44842
+tally d7 fold NOSIMPLE w6 nosep deep 1
+tally d7 fold fill-ok w5 nosep shallow 19208
+tally d7 fold fill-ok w6 nosep shallow 18431
+tally d7 fold fill-ok wNone nosep shallow 8188
+tally d7 simple simple - - - 681289
+tally d8 chord NOSIMPLE w5 nosep deep 730
+tally d8 chord NOSIMPLE w6 nosep deep 14
+tally d8 chord NOSIMPLE w7 nosep deep 398
+tally d8 chord fill-ok w5 nosep shallow 281220
+tally d8 chord fill-ok w6 nosep shallow 22159
+tally d8 fold NOSIMPLE w5 nosep deep 4
+tally d8 fold NOSIMPLE w6 nosep deep 12
+tally d8 fold fill-ok w5 nosep shallow 15837
+tally d8 fold fill-ok w6 nosep shallow 12113
+tally d8 fold fill-ok wNone nosep shallow 2890
+tally d8 simple simple - - - 148133
+tally d9 chord NOSIMPLE w5 nosep deep 1649
+tally d9 chord NOSIMPLE w6 nosep deep 44
+tally d9 chord NOSIMPLE w7 nosep deep 377
+tally d9 chord fill-ok w5 nosep shallow 55023
+tally d9 chord fill-ok w6 nosep shallow 3769
+tally d9 fold NOSIMPLE w5 nosep deep 101
+tally d9 fold NOSIMPLE w6 nosep deep 57
+tally d9 fold NOSIMPLE w7 nosep deep 2
+tally d9 fold fill-ok w5 nosep shallow 7579
+tally d9 fold fill-ok w6 nosep shallow 2590
+tally d9 fold fill-ok wNone nosep shallow 252
+tally d9 simple simple - - - 13234
+example d7 chord NOSIMPLE w5 nosep deep {"g": "p33.r1#1746827", "n": 33, "u": 26, "word": "6555575", "S": [1, 4], "I": 11, "RS": 13, "walks": [[[15, 6], [23, 5], [30, 7], [29, 5], [21, 6], [13, 5], [12, 6], [11, 5], [10, 6], [18, 5], [9, 5], [8, 6], [7, 6]]], "rep": [], "chords": [[9, 10], [15, 21]], "enclosed": [], "double": [], "comps": [8, 1], "seps": []}
+example d7 chord NOSIMPLE w7 nosep deep {"g": "p33.r1#1746827", "n": 33, "u": 26, "word": "6555575", "S": [1, 4, 6], "I": 14, "RS": 12, "walks": [[[8, 6], [7, 6], [15, 6], [23, 5], [30, 7], [29, 5], [21, 6], [13, 5], [12, 6], [11, 5], [3, 5], [2, 6]]], "rep": [], "chords": [[15, 21]], "enclosed": [], "double": [], "comps": [6, 1], "seps": []}
+example d7 chord fill-ok w5 nosep shallow {"g": "p33.r0#713", "n": 33, "u": 8, "word": "6565565", "S": [1, 4], "I": 11, "RS": 12, "walks": [[[5, 6], [14, 6], [24, 7], [25, 6], [32, 5], [27, 5], [28, 5], [20, 5], [10, 5], [3, 6], [2, 5], [0, 5]]], "rep": [], "chords": [[0, 3]], "enclosed": [], "double": [], "comps": [10], "seps": []}
+example d7 chord fill-ok w6 nosep shallow {"g": "p33.r0#713", "n": 33, "u": 29, "word": "5555556", "S": [1, 4], "I": 11, "RS": 11, "walks": [[[18, 5], [26, 6], [17, 5], [16, 6], [15, 5], [14, 6], [23, 6], [22, 6], [11, 7], [10, 5], [9, 6]]], "rep": [], "chords": [[17, 18]], "enclosed": [], "double": [], "comps": [11], "seps": []}
+example d7 fold NOSIMPLE w6 nosep deep {"g": "p33.r220#69016", "n": 33, "u": 27, "word": "5755557", "S": [0, 2, 5], "I": 14, "RS": 16, "walks": [[[2, 5], [10, 5], [11, 5], [25, 5], [32, 5], [23, 5], [8, 5], [1, 7], [6, 5], [18, 5], [17, 5], [16, 5], [15, 5], [4, 5], [0, 5]]], "rep": [], "chords": [[0, 1], [1, 2], [6, 17]], "enclosed": [19], "double": [[18, 19]], "comps": [2, 1], "seps": []}
+example d7 fold fill-ok w5 nosep shallow {"g": "p33.r0#713", "n": 33, "u": 19, "word": "6565555", "S": [3, 6], "I": 11, "RS": 12, "walks": [[[2, 5], [8, 7], [18, 5], [17, 5], [25, 6], [31, 5], [30, 5], [22, 6], [12, 5], [4, 6], [0, 5]]], "rep": [], "chords": [[8, 17]], "enclosed": [21], "double": [[21, 22]], "comps": [10], "seps": []}
+example d7 fold fill-ok w6 nosep shallow {"g": "p33.r0#62566", "n": 33, "u": 0, "word": "5556555", "S": [1, 5], "I": 11, "RS": 12, "walks": [[[13, 6], [24, 5], [25, 7], [26, 5], [16, 5], [17, 5], [18, 6], [19, 5], [20, 5], [11, 7], [4, 6]]], "rep": [], "chords": [[17, 26]], "enclosed": [8], "double": [[8, 16]], "comps": [10], "seps": []}
+example d7 fold fill-ok wNone nosep shallow {"g": "p33.r0#37816", "n": 33, "u": 11, "word": "6655555", "S": [3, 6], "I": 11, "RS": 11, "walks": [[[25, 5], [14, 6], [15, 5], [5, 5], [1, 7], [9, 5], [10, 6], [20, 6], [30, 7], [32, 5]]], "rep": [], "chords": [], "enclosed": [13], "double": [[13, 14]], "comps": [11], "seps": []}
+example d8 chord NOSIMPLE w5 nosep deep {"g": "p33.r6#223642", "n": 33, "u": 22, "word": "55555665", "S": [0, 4], "I": 11, "RS": 14, "walks": [[[1, 7], [8, 6], [19, 5], [20, 5], [29, 5], [28, 7], [27, 5], [17, 6], [16, 6], [25, 6], [24, 5], [12, 6], [3, 6], [0, 5]]], "rep": [], "chords": [[8, 17], [19, 28], [20, 28]], "enclosed": [], "double": [], "comps": [7, 1], "seps": []}
+example d8 chord NOSIMPLE w6 nosep deep {"g": "p33.r38#277011", "n": 33, "u": 20, "word": "75555555", "S": [1, 4, 7], "I": 15, "RS": 13, "walks": [[[6, 6], [7, 5], [17, 5], [29, 6], [30, 5], [27, 5], [26, 6], [14, 7], [4, 6], [12, 5], [11, 7], [2, 5], [0, 6]]], "rep": [], "chords": [[0, 4], [14, 27]], "enclosed": [], "double": [], "comps": [4, 1], "seps": []}
+example d8 chord NOSIMPLE w7 nosep deep {"g": "p33.r6#223642", "n": 33, "u": 22, "word": "55555665", "S": [1, 4], "I": 11, "RS": 12, "walks": [[[8, 6], [19, 5], [28, 7], [27, 5], [17, 6], [16, 6], [25, 6], [24, 5], [12, 6], [11, 5], [2, 6], [1, 7]]], "rep": [], "chords": [[8, 17]], "enclosed": [], "double": [], "comps": [9, 1], "seps": []}
+example d8 chord fill-ok w5 nosep shallow {"g": "p33.r0#62552", "n": 33, "u": 16, "word": "66555555", "S": [2, 6], "I": 11, "RS": 13, "walks": [[[27, 5], [30, 6], [31, 5], [20, 5], [10, 7], [9, 6], [8, 6], [7, 5], [6, 5], [5, 6], [13, 5], [23, 5], [32, 6]]], "rep": [], "chords": [[30, 32]], "enclosed": [], "double": [], "comps": [9], "seps": []}
+example d8 chord fill-ok w6 nosep shallow {"g": "p33.r0#62552", "n": 33, "u": 16, "word": "66555555", "S": [2, 5], "I": 11, "RS": 13, "walks": [[[22, 6], [31, 5], [20, 5], [10, 7], [18, 5], [17, 5], [8, 6], [7, 5], [6, 5], [5, 6], [13, 5], [23, 5], [32, 6]]], "rep": [], "chords": [[22, 23]], "enclosed": [], "double": [], "comps": [9], "seps": []}
+example d8 fold NOSIMPLE w5 nosep deep {"g": "p33.r162#103763", "n": 33, "u": 13, "word": "55555555", "S": [0, 1, 5], "I": 13, "RS": 15, "walks": [[[31, 5], [20, 7], [28, 5], [29, 5], [16, 5], [5, 5], [6, 5], [7, 5], [8, 5], [9, 7], [10, 5], [22, 7], [24, 5], [32, 5]]], "rep": [], "chords": [[6, 16], [9, 20], [22, 32], [22, 31]], "enclosed": [4], "double": [[4, 5]], "comps": [4, 1], "seps": []}
+example d8 fold NOSIMPLE w6 nosep deep {"g": "p33.r133#7714", "n": 33, "u": 8, "word": "65555555", "S": [1, 4, 7], "I": 15, "RS": 13, "walks": [[[5, 5], [14, 7], [15, 5], [29, 7], [32, 5], [27, 6], [25, 5], [24, 5], [23, 5], [11, 5], [3, 6], [0, 6]]], "rep": [], "chords": [[11, 24], [14, 27]], "enclosed": [22], "double": [[22, 23]], "comps": [4, 1], "seps": []}
+example d8 fold fill-ok w5 nosep shallow {"g": "p33.r0#62566", "n": 33, "u": 9, "word": "55556565", "S": [2, 3, 7], "I": 13, "RS": 12, "walks": [[[28, 6], [29, 5], [19, 5], [20, 5], [11, 7], [4, 6], [5, 5], [6, 5], [14, 6], [25, 7], [32, 5]]], "rep": [], "chords": [[5, 14], [20, 29]], "enclosed": [7], "double": [[6, 7]], "comps": [8], "seps": []}
+example d8 fold fill-ok w6 nosep shallow {"g": "p33.r0#62566", "n": 33, "u": 9, "word": "55556565", "S": [2, 7], "I": 11, "RS": 11, "walks": [[[5, 5], [6, 5], [14, 6], [25, 7], [27, 6], [18, 6], [19, 5], [20, 5], [11, 7], [4, 6]]], "rep": [], "chords": [[5, 14]], "enclosed": [7], "double": [[6, 7]], "comps": [11], "seps": []}
+example d8 fold fill-ok wNone nosep shallow {"g": "p33.r0#988825", "n": 33, "u": 30, "word": "55555755", "S": [2, 7], "I": 11, "RS": 11, "walks": [[[9, 6], [17, 6], [26, 5], [25, 7], [31, 5], [23, 7], [12, 6], [4, 5], [3, 5], [2, 6]]], "rep": [], "chords": [], "enclosed": [19], "double": [[9, 19]], "comps": [11], "seps": []}
+example d9 chord NOSIMPLE w5 nosep deep {"g": "p33.r14#397412", "n": 33, "u": 3, "word": "555555555", "S": [0, 5], "I": 11, "RS": 14, "walks": [[[28, 5], [18, 7], [27, 5], [26, 5], [15, 5], [16, 7], [6, 5], [7, 6], [8, 6], [9, 6], [10, 5], [11, 5], [23, 7], [32, 5]]], "rep": [], "chords": [[7, 18], [16, 26], [16, 27]], "enclosed": [], "double": [], "comps": [7, 1], "seps": []}
+example d9 chord NOSIMPLE w6 nosep deep {"g": "p33.r14#397412", "n": 33, "u": 3, "word": "555555555", "S": [0, 3, 6], "I": 16, "RS": 13, "walks": [[[24, 6], [28, 5], [18, 7], [27, 5], [16, 7], [6, 5], [7, 6], [8, 6], [9, 6], [21, 5], [31, 5], [30, 6], [32, 5]]], "rep": [], "chords": [[7, 18], [8, 21], [28, 32]], "enclosed": [], "double": [], "comps": [3, 1], "seps": []}
+example d9 chord NOSIMPLE w7 nosep deep {"g": "p33.r14#397412", "n": 33, "u": 3, "word": "555555555", "S": [0, 6], "I": 11, "RS": 12, "walks": [[[7, 6], [8, 6], [9, 6], [10, 5], [11, 5], [12, 5], [24, 6], [28, 5], [18, 7], [27, 5], [16, 7], [6, 5]]], "rep": [], "chords": [[7, 18]], "enclosed": [], "double": [], "comps": [9, 1], "seps": []}
+example d9 chord fill-ok w5 nosep shallow {"g": "p33.r0#4103540", "n": 33, "u": 10, "word": "555655555", "S": [0, 4], "I": 11, "RS": 13, "walks": [[[5, 5], [6, 5], [7, 7], [8, 5], [20, 5], [19, 6], [30, 5], [29, 5], [28, 6], [25, 8], [24, 5], [11, 5], [4, 8]]], "rep": [], "chords": [[7, 19], [8, 19]], "enclosed": [], "double": [], "comps": [9], "seps": []}
+example d9 chord fill-ok w6 nosep shallow {"g": "p33.r4#256632", "n": 33, "u": 10, "word": "555565555", "S": [0, 3], "I": 11, "RS": 13, "walks": [[[5, 5], [6, 5], [7, 6], [8, 6], [16, 5], [27, 5], [28, 5], [30, 6], [31, 5], [21, 5], [22, 5], [11, 5], [4, 6]]], "rep": [], "chords": [[7, 16]], "enclosed": [], "double": [], "comps": [9], "seps": []}
+example d9 fold NOSIMPLE w5 nosep deep {"g": "p33.r44#953660", "n": 33, "u": 18, "word": "556555555", "S": [0, 1, 3, 6], "I": 17, "RS": 13, "walks": [[[4, 5], [15, 5], [14, 5], [13, 6], [23, 6], [32, 7], [31, 5], [21, 5], [10, 5], [11, 7], [2, 5], [0, 6]]], "rep": [], "chords": [[4, 14], [11, 21], [11, 23]], "enclosed": [9], "double": [[9, 10]], "comps": [2, 1], "seps": []}
+example d9 fold NOSIMPLE w6 nosep deep {"g": "p33.r44#953660", "n": 33, "u": 18, "word": "556555555", "S": [0, 3, 6], "I": 16, "RS": 13, "walks": [[[5, 6], [15, 5], [14, 5], [13, 6], [23, 6], [32, 7], [31, 5], [21, 5], [10, 5], [11, 7], [2, 5], [0, 6]]], "rep": [], "chords": [[11, 21], [11, 23]], "enclosed": [9], "double": [[9, 10]], "comps": [3, 1], "seps": []}
+example d9 fold NOSIMPLE w7 nosep deep {"g": "p33.r69#520626", "n": 33, "u": 4, "word": "555555555", "S": [0, 3, 6], "I": 16, "RS": 13, "walks": [[[28, 7], [30, 5], [20, 5], [7, 6], [8, 5], [9, 5], [10, 5], [11, 5], [12, 7], [25, 5], [23, 7], [32, 6]]], "rep": [], "chords": [[9, 23], [10, 23]], "enclosed": [6], "double": [[6, 7]], "comps": [3, 1], "seps": []}
+example d9 fold fill-ok w5 nosep shallow {"g": "p33.r0#4103540", "n": 33, "u": 10, "word": "555655555", "S": [0, 5, 8], "I": 13, "RS": 14, "walks": [[[6, 5], [7, 7], [8, 5], [20, 5], [21, 6], [31, 6], [28, 6], [27, 5], [26, 5], [13, 5], [14, 5], [15, 5], [5, 5]]], "rep": [], "chords": [[6, 15], [14, 26]], "enclosed": [12], "double": [[12, 13]], "comps": [6], "seps": []}
+example d9 fold fill-ok w6 nosep shallow {"g": "p33.r0#4103540", "n": 33, "u": 10, "word": "555655555", "S": [1, 7], "I": 11, "RS": 12, "walks": [[[6, 5], [7, 7], [19, 6], [21, 6], [22, 5], [23, 5], [25, 8], [13, 5], [14, 5], [15, 5], [5, 5]]], "rep": [], "chords": [[6, 15]], "enclosed": [0], "double": [[0, 5]], "comps": [10], "seps": []}
+example d9 fold fill-ok wNone nosep shallow {"g": "p33.r9#74687", "n": 33, "u": 16, "word": "555555555", "S": [4, 7], "I": 11, "RS": 12, "walks": [[[6, 5], [15, 5], [25, 5], [24, 7], [31, 5], [30, 6], [19, 6], [20, 5], [10, 5], [2, 5], [0, 7]]], "rep": [], "chords": [], "enclosed": [18], "double": [[18, 19]], "comps": [10], "seps": []}

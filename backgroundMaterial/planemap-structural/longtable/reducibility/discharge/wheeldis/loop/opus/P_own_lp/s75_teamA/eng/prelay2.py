@@ -1460,6 +1460,7 @@ def cmd_lowerR2():
         if k[0] == 'lq': return Fraction(OPT.get('lqcap', '3'))   # stage 28
         if ZR and k[0] in ('z', 'zr', 'rr'): return Fraction(OPT.get('zcap', '3'))   # stage 33
         if k[0] == 'z6': return Fraction(OPT.get('z6cap', '3'))   # RELAY_SPEC_s23.5
+        if k[0] == 'q' and Q7CAP is not None: return Fraction(OPT['q7cap'])   # 5 Nov (Team C): q is boxed at q7cap in solveR2, so price it there (bound is for the capped LP, like z/zr/rr)
         return UCAP   # s33 ucap=: every other column priced at UCAP (only if the LP family had that cap)
     def evaluate(ws):
         tot = collections.defaultdict(Fraction); tco = Fraction(0); D = Fraction(0)

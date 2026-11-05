@@ -1,0 +1,37 @@
+# Team C targets v2 (5 Nov 2026, ~18:10Z). Supersedes targets_v1.txt (same rows on top, now ranked with dual evidence).
+# In-point: s75_teamA/cand/sol_q75B_in13_full.json, t = 0.031956956042 (UPPER-R2 FEASIBLE [P], A97 stack, rr+z+zr, q = 0).
+#   Re-listed at in14 (t = 0.031634694934, FEASIBLE [P]): the same 356 LP rows are tight (slack < 1e-6) at both points.
+# Every number below is [M] (HiGHS float; restricted or trust-region LPs are pointers, never bounds).
+# Columns in the tag: link class | W7 = share of receiver |w| in cert_k95f_best_0.0256781 | b77 = share in s77 cert_unpatched_exact (A97, t >= 667/19840 [P])
+#   | floor = share in the nosep LP over the near-tight rows (q7 off; q7 on is the same 8 rows) | TR = share in the trust-region LP at in13
+#   (q7 on, delta 1e-4, the radius where the box LP over the near-tight rows equals the box LP over all rows) | drop = extra local descent
+#   when this row's whole link class is removed from the TR LP (q7 on, delta 1e-4; base descent -9.2e-5) | ext = load the rr+z+zr columns put on the row at in13.
+# format: R d LINK SWORD tag
+#
+# Rank 1-3: in every view (both floor certs, both TR certs, b77), tight at in13 and in14, no 6 in the link (outside B1 kill6r and the W6 6-flow families).
+#   Locally each one alone unblocks the full saturated gain (dropping A, B or C gives the same dt as dropping all three).
+R 7 7557755 7575757 r1_A_link5575577_W7=4.4_b77=16.3_floor=7.7_TR=13.0_drop=-4.3e-5_ext=-0.106
+R 7 5757575 7755777 r2_C_link5575757_W7=1.4_b77=14.3_floor=7.7_TR=13.0_drop=-4.3e-5_ext=+0.059_(94_near-tight_LP_rows_in_this_link)
+R 7 7577575 7555755 r3_B_link5757577_W7=-_b77=16.3_floor=7.7_TR=13.0_drop=-4.3e-5_ext=-0.160_(Studio_627C_excuses_this_row_via_A111_C,_not_Lean)
+R 7 5757577 5577567 r3b_B_mate_W7=13.3_floor=15.4_slack0.0083
+R 7 7577575 7565755 r3c_B_mate_TR(q7,2.9e-4)=5.1
+# Rank 4: tight, heavy in W7 and in both TR certs; B1 kill6r changes these rows (M mask 30 -> 28): re-rank on the patched stack.
+R 7 7665557 6675775 r4_E_link5556677_W7=1.1_TR(off,1e-4)=22.2_TR(q7,2.9e-4)=10.3_drop=-3.1e-5_ext=+0.020
+R 7 5556677 7576757 r4b_E_mate_W7=12.4_floor=15.4_slack0.0004
+R 7 7555667 7757657 r4c_E_mate_TR(q7,1e-4)=17.4
+# Rank 5: tight, W7 11.7 %, in both floor certs; small local dual; no 6 in the link and no family relieves it at the in-point (rr/zr/q out = 0; z puts +0.009 on it).
+R 7 5755755 7777757 r5_D_link5557557_W7=11.7_b77=3.2_floor=15.4_TR=2.6-8.7_drop=-8.0e-6_ext=+0.009_(65_near-tight_LP_rows)
+# Rank 6: tight, heavy in both base certs and in the floor certs, but locally redundant (dropping its link class gains ~0 in TR); kill6r changes these rows.
+R 7 6755566 7775768 r6_F_link5556667_W7=12.9_b77=11.5_TR(off)=22.2_drop~0_ext=+0.005_(128_near-tight_LP_rows)
+R 7 7555666 7757667 r6b_F_mate_floor=15.4
+R 7 5557666 5776767 r6c_F_mate_W7=2.8
+R 7 6555766 7577776 r6d_F_mate_W7=1.1
+# Rank 7: paid off locally by rr (slack 0.0031 at in13, 0.0027 at in14) but still in both floor certs: comes back when rr runs out.
+R 7 7767575 5665557 r7_G_link5757677_W7=11.6_floor=15.4_TR=0_ext=-0.072
+# Rank 8-9: new tight rows with no base-cert weight.
+R 7 7757567 6555755 r8_H_link5677757_TR(q7,1e-4)=17.4_TR(q7,2.9e-4)=5.1_drop=-2.7e-6_ext=-0.057
+R 7 7676675 6665655 r9_I_link5766767_b77=1.5_TR(q7)=5.1_slack0.0003
+# Rank 10: the 9-link 5-5-5-face rows: 231 of the 300 tight d=7 LP rows, but 10-17 % of TR receiver mass (q7 on); dropping all 1,449 near-tight 9-link rows gains only -2.7e-6.
+R 7 9665566 6675678 r10_nine_link5566966_TR(q7)=5.1
+R 7 9665556 7677577 r10b_nine_link5556696_TR(q7)=2.6
+# Not a target (tight but zero dual in every view): R 10 6656665665 6555655655

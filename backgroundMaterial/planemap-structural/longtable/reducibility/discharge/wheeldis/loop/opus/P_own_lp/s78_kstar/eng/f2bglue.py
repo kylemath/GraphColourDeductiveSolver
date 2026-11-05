@@ -200,7 +200,14 @@ if F2B_ON:
                 _kc = [recv_coef_R2(d, lk, sv, 'xon' in FLAGS).get(('ks', 'K1'), 0) for lk, sv in arr]
                 _kp = sum(1 for lk, sv in arr if any(kstar_payer_slot([int(c_) for c_ in lk], [int(c_) for c_ in sv], i_, e_) for i_ in range(7) for e_ in (1, -1)))
                 _ke = sum(1 for lk, sv in arr if any(kstar_payee_slot([int(c_) for c_ in lk], [int(c_) for c_ in sv], i_, e_) for i_ in range(7) for e_ in (1, -1)))
-                log('  kstar coverage d=7: K1 = %.9f; %d arrangements with a payer slot, %d with an exact payee slot, %d with a nonzero K1 coefficient (min %d max %d)' % (KSV.get('K1', 0.0), _kp, _ke, sum(1 for c_ in _kc if c_), min(_kc), max(_kc)))
+                _k0, _k1 = kstar_kub(); _gap = 0
+                for lk, sv in arr:
+                    w_ = [int(c_) - 5 for c_ in lk]; s_ = [int(c_) - 5 for c_ in sv]
+                    ub_ = sum(int(_k0[np.ravel_multi_index(tuple(w_[(k_ + o_) % 7] for o_ in (-2, -1, 0, 1, 2)) + tuple(s_[(k_ + o_) % 7] for o_ in (-2, -1, 0, 1)), (5,) * 9)]) + int(_k1[np.ravel_multi_index(tuple(w_[(k_ + o_) % 7] for o_ in (-2, -1, 0, 1, 2)) + tuple(s_[(k_ + o_) % 7] for o_ in (-2, -1, 0, 1)), (5,) * 9)]) for k_ in range(7))
+                    ex_ = sum(kstar_payee_slot([int(c_) for c_ in lk], [int(c_) for c_ in sv], i_, e_) for i_ in range(7) for e_ in (1, -1))
+                    assert ex_ <= ub_, (lk, sv, ex_, ub_)
+                    _gap += ub_ > ex_
+                log('  kstar coverage d=7: K1 = %.9f; %d arrangements with a payer slot, %d with an exact payee slot, %d with a nonzero K1 coefficient (min %d max %d); %d with a window bound above the exact payee count (leaf correction < 0)' % (KSV.get('K1', 0.0), _kp, _ke, sum(1 for c_ in _kc if c_), min(_kc), max(_kc), _gap))
             _a = f2bm.ACTIVE; f2bm.ACTIVE = False
             noru = [sum(v * val(k) for k, v in recv_coef_R2(d, lk, sv, 'xon' in FLAGS).items()) for lk, sv in arr]
             f2bm.ACTIVE = _a

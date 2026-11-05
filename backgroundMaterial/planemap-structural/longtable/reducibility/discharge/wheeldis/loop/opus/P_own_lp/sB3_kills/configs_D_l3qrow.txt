@@ -1,0 +1,7 @@
+# B3 two-engine D windows (kcc + dfast + dfast18 + A_rsst dfast, all D) that kill letter 5 of the l3q a2 (private of a link 7 next to the apex a, c,a <= 6).
+# Route L' (row-level l3q mask): the window reads slots outside the RELAY_SPEC 21.4 payee window R, listed below; every one of them is read exactly by the payee receiver row, so the payee may credit Q[(c,a,m & ~1)] instead of Q[(c,a,m)] there. No new LP column (lQ is keyed by (c,a,mask)).
+# columns: kc line | side key | slots outside R | q-name (PRIVCELL grammar, not canonicalised)
+b7_u75..575_.....55_p015 11 9 0,1;8,9;0,9,10;1,2,3;3,4,5;-;6;6,7,8;5,6 1,2,3,4,5;0,2,5,6,7;0,1;0,4;0,3,5,8;0,1,4,6,8;1,5,7,8;1,6;4,5,6 | (sigma=-1, c,w2,w3,w4=575., a=5, o=.) | outside R: s5=5,w1=5 | q7u_75..575_.....55_5.::::::
+b7_u.5775.._.555..._p215 12 9 0,1,2;0,11;8;5,6;2,3;10,11;8,9,10;6,7,8;3,4,5 1,2,3,4;0,2,5;0,1,3,5,6,7;0,2,4,7,8;0,3,8;1,2,6;2,5;2,3;3,4 | (sigma=-1, c,w2,w3,w4=5..., a=5, o=5) | outside R: s3=5,w3=7,w4=5 | q7u_.5775.._.555..._::5.::::
+b7_u55576.._5..6..._p325 12 9 0,1;1,2;4;4,5;5,6;0,10,11;2,3,4;6,7,8;8,9,10 1,2,3,4,5;0,2,6;0,1,3,6;0,2,4;0,3,5,7,8;0,4,8;1,2;4,8;4,5,7 | (sigma=+1, c,w2,w3,w4=6..5, a=6, o=.) | outside R: s0=5,w1=5,w2=5 | q7u_55576.._5..6..._:::.5:::
+b7_u...6675_...5.55_p525 12 9 0,1,2;2,3,4;6,7;7,8;0;0,10,11;4,5,6;8,9,10;10 1,2,3,4;0,2,6;0,1,3,6;0,2,4,7,8;0,3,5,8;4,8;1,2;3,8;3,4,5,7 | (sigma=+1, c,w2,w3,w4=5..., a=5, o=.) | outside R: s3=5,s6=5,w3=6,w4=6 | q7u_...6675_...5.55_:::::.5:

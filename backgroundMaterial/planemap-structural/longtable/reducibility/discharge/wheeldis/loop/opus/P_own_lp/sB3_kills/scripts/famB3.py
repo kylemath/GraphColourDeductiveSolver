@@ -90,6 +90,31 @@ for rid, (wt, LK, SV) in enumerate(ROWS):
                 try: ws = windows(LK, SV, pdeg={p: L}, RMAX=RMAX, must=[p], allowed=small | {p}, minscore=MINS)
                 except (AssertionError, ValueError): continue
                 add(tag, ws, rid, wt)
+    if 'Q' in FAMS and n == 7:   # l3q a2 privates (c, a <= 6, letter 5 still in the table mask), unrestricted windows, relaxed score
+        QMIN = {r: (1 if r <= 11 else 2) for r in range(4, 18)}
+        for j in range(n):
+            if w[j] != 7: continue
+            for sg in (1, -1):
+                c = w[(j + sg) % n]; w2, w3, w4 = (w[(j + k * sg) % n] for k in (2, 3, 4))
+                ap, o = (s[j], s[(j - 1) % n]) if sg == 1 else (s[(j - 1) % n], s[j])
+                if c > 6 or ap > 6 or not (L3T[(sg, c, w2, w3, w4, ap, o)] & 1): continue
+                a2 = ('p', j, 2) if sg == 1 else ('p', j, 1)
+                tag = 'Q:%s:%s=5' % (rtag, ''.join(map(str, a2)))
+                ws = windows(LK, SV, pdeg={a2: 5}, RMAX=RMAX, must=[a2], allowed=small | {a2}, minscore=QMIN)
+                add(tag, ws, rid, wt)
+    if 'K' in FAMS:   # A': private of a link 6 at a letter the kill6 table still allows (5, 6), unrestricted windows, relaxed score
+        QMIN = {r: (1 if r <= 11 else 2) for r in range(4, 18)}
+        for j in range(n):
+            if w[j] != 6: continue
+            key = (w[(j - 2) % n], w[(j - 1) % n], w[(j + 1) % n], w[(j + 2) % n], s[(j - 2) % n], s[(j - 1) % n], s[j], s[(j + 1) % n])
+            m = 31 & ~int(KT[tuple(x - 5 for x in key)]); p = ('p', j, 1)
+            al = small | {p}
+            if U >= 9: al = al - {('u',)}
+            for L in (5, 6):
+                if not (m >> LET.index(L)) & 1: continue
+                tag = 'K:%s:p%d1=%d' % (rtag, j, L)
+                ws = windows(LK, SV, pdeg={p: L}, RMAX=RMAX, must=[p], allowed=al, minscore=QMIN)
+                add(tag, ws, rid, wt)
     if 'T' in FAMS:   # ring-3 vertex next to a fixed five (apex t of a 5-5-5 face included), letters 5 and 6, score filter
         for k, nb in ring3_candidates(LK, SV):
             if not any(x in deg and deg[x] == 5 for x in nb): continue

@@ -1,0 +1,43 @@
+cert /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/sC_tight/TR_n13off/tr_n13off_d0.001.json: 38 rows
+rows and |w| mass by type (share of total |w|):
+  mrowL           5 rows  0.371
+  senderR2       11 rows  0.234
+  receiverR2     11 rows  0.212
+  mrowR2          5 rows  0.118
+  cons2           6 rows  0.065
+
+SENDER contexts (word, hat bits | six-private bits), share of sender mass, top 15:
+  0.184  55767  10000|0
+  0.184  57777  10001|
+  0.138  55757  10110|
+  0.115  55777  11001|
+  0.115  55777  11111|
+  0.092  57777  00000|
+  0.080  57777  01010|
+  0.046  55667  10100|11
+  0.023  55757  10111|
+  0.011  55777  00000|
+  0.011  55757  00110|
+SENDER words (share): 57777 0.356, 55777 0.241, 55767 0.184, 55757 0.172, 55667 0.046
+sender mass in contexts with every hat small (bits all 0): 0.103
+
+RECEIVER motifs (d, feature): rows, share of receiver mass
+  d=7 555-face          7  0.557
+  d=7 5-7 mesh          2  0.215
+  d=7 55-pair           1  0.177
+  d=7 lone-5            1  0.051
+receiver mass in rows with an 8 or 9 in the link: 0.051; with a 6 in the link: 0.456; no 6 in the link: 0.544
+COUPLING: receiver mass share of rows that hold a link five of word X: 57777 0.772, 55777 0.418, 55767 0.405, 55757 0.380, 55667 0.051
+
+RECEIVER rows, top 15 (share of receiver mass, cumulative; base-cert shares W7 / b77 of the same class):
+  0.1772 0.177 d=7 7665557/6675775  555-face     W7 0.011 b77 -
+  0.1772 0.354 d=7 7575755/7557777  55-pair      W7 0.014 b77 0.143
+  0.1266 0.481 d=7 7557755/7575757  555-face     W7 0.044 b77 0.163
+  0.1266 0.608 d=7 7577575/7555755  5-7 mesh     W7 - b77 0.163
+  0.0886 0.696 d=7 7577575/7565755  5-7 mesh     W7 - b77 -
+  0.0759 0.772 d=7 7555666/7757689  555-face     W7 - b77 -
+  0.0506 0.823 d=7 9665566/6675679  555-face     W7 - b77 -
+  0.0506 0.873 d=7 7667576/6565566  lone-5       W7 - b77 0.015
+  0.0506 0.924 d=7 7666555/6967577  555-face     W7 - b77 -
+  0.0506 0.975 d=7 7555666/7757687  555-face     W7 0.129 b77 0.115
+  0.0253 1.000 d=7 7555755/7577777  555-face     W7 0.117 b77 0.032
