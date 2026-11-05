@@ -30,3 +30,19 @@ DCheckTEq / Conf.of18. I can add them as an HDC5 batch on request.
   (`HD30V.hD_24`, HD30V24).
 
 All HD0 modules compiled with exit 0 and sorry 0; HDCtrlAll and HD30All exit 0 (calib.md, a6ed90d5).
+
+## Update (5 Nov 10:23Z): the 5 dred_cfg RSST entries regenerated in DCheck18 form (batch HDR5)
+- **EXTRAFILE:** out/job_HDC502/D_rsst5.tsv (md5 e6458c99). These are the loop/k44/rsst.txt kc lines.
+- **Call:** gen_hd.py f743a82d with MOD **HDR5**, PFX **hdr5**, batch 1 (lean_r5/).
+- **Module split** (module_split_r5.tsv):
+
+| index | module | theorem | name |
+|---|---|---|---|
+| 0 | HDR5V00 | HDR5V.hD_0 | rsst001_2o122 |
+| 1 | HDR5V01 | HDR5V.hD_1 | rsst004_0o453962 |
+| 2 | HDR5V02 | HDR5V.hD_2 | rsst006_2o7566 |
+| 3 | HDR5V03 | HDR5V.hD_3 | rsst024_122o442802 |
+| 4 | HDR5V04 | HDR5V.hD_4 | rsst026_122o363 |
+
+- **Result:** HDR5, HDR5V00..04 and HDR5All all exit 0 with sorry 0, at about 1 s each.
+- **Axioms of `HDR5V.hD_all`:** propext, Classical.choice, Quot.sound, and native_decide aux only.
