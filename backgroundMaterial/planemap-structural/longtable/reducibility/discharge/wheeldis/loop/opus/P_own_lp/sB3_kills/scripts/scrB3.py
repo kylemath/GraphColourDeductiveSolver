@@ -10,6 +10,7 @@ KC = O + '/K_frame_kill/kcc'; DF1 = O + '/C_kc_ring17/dfast'; DF2 = O + '/K_fram
 WD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 out, rmax, famf, flist = sys.argv[1], int(sys.argv[2]), sys.argv[3], sys.argv[4]
 TO = int(os.environ.get('TO', '1800'))
+DONLY = os.environ.get('DONLY', '') == '1'   # stop a family only at a two-engine D (C hits are logged, the family goes on)
 MINSC = {int(a): int(b) for a, b in (x.split(':') for x in os.environ.get('MINSC', '').split(',') if x)}   # ring:minscore
 res = {}
 def loadres(fn):
@@ -47,7 +48,7 @@ def run(cmd, inp=None):
 state = {k: None for k in fam}
 for k, L in fam.items():
     for r, _, _, c, f in L:
-        if res.get(c) in ('D', 'C'): state[k] = ('hit-prior', f[5]); break
+        if res.get(c) == 'D' or (res.get(c) == 'C' and not DONLY): state[k] = ('hit-prior', f[5]); break
 print('families', len(fam), 'already hit', sum(1 for v in state.values() if v), 'skip-W13 codes', len(w13), flush=True)
 tmp = out + '.one'; nrun = 0
 for ring in range(4, rmax + 1):
@@ -72,9 +73,9 @@ for ring in range(4, rmax + 1):
             res[c] = v; nrun += 1
             with open(out, 'a') as g:
                 g.write('\t'.join([c, f[1], f[2], f[5], v, lo, X, rr, '%.0f' % (time.time() - t0), f[4], conf, line]) + '\n')
-            if (v == 'D' and 'noD' not in conf) or (v == 'C' and 'C-REDUCIBLE' in conf.upper()):
+            if (v == 'D' and 'noD' not in conf) or (v == 'C' and 'C-REDUCIBLE' in conf.upper() and not DONLY):
                 state[k] = ('hit', f[5]); print('HIT', k, v, f[5], conf[:80], flush=True); break
             elif v == 'D': print('kcc-D only', k, f[5], conf, flush=True)
-            elif v == 'C': print('kc-C only (check cfast)', k, f[5], conf[:120], flush=True)
+            elif v == 'C': print(('C (family goes on) ' if 'C-REDUCIBLE' in conf.upper() else 'kc-C only (check cfast) ') + k, f[5], conf[:120], flush=True)
     print('ring', ring, 'done; run so far', nrun, '; open families:', sum(1 for k in fam if not state[k]), time.strftime('%H:%M:%S'), flush=True)
 print('FINAL', {k: s for k, s in state.items() if s}, flush=True)

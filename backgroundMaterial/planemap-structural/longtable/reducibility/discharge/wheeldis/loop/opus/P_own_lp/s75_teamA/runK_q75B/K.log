@@ -117,3 +117,15 @@ iter 17 t=0.029378867174 rows 205198 cols 57375 added 142  lp 944.1s sep 410.1s 
   in-point MOVED (probe, iter 18): t_in 0.031634694934 -> 0.031374540966  [candidate only: run upperR2 on /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/eng/sol_q75B_in.json]
   in-point: t_in = 0.031374540966 (sol_q75B_in.json; moves so far 15)
 iter 18 t=0.029553463195 rows 205292 cols 57377 added 85  lp 1609.7s sep 865.3s total 26223s  rounds lam0.500(t=0.030594):85 probe0.1250(t=0.031375):0/v0  {7: (43, 0.022046, 188.8), 8: (36, 0.012925, 112.5), 9: (6, 0.018765, 57.4)}
+  lpmax: simplex hit 45s at iter 19; IPM + simplex 1286.7s, status Optimal
+  rrz it 19: cols rr 134 z 3699 zr 3699; positive (>1e-9) rr 10 z 29 zr 56; sum rr 0.4016 z 0.5822 zr 1.4022
+  in-point: t_in = 0.031374540966 (sol_q75B_in.json; moves so far 15)
+iter 19 t=0.029587501963 rows 205783 cols 57407 added 444  lp 1388.7s sep 350.5s total 27963s  rounds raw:444  {7: (153, np.float64(0.081898), 131.6), 8: (152, np.float64(0.095861), 125.3), 9: (139, np.float64(0.075017), 43.9)}
+  lpmax: simplex hit 45s at iter 20; IPM + simplex 854.4s, status Optimal
+  rrz it 20: cols rr 134 z 3699 zr 3699; positive (>1e-9) rr 10 z 31 zr 56; sum rr 0.4016 z 0.5548 zr 1.4238
+  Karp lambda 0.557579 d0 13.49
+  in-point MOVED (probe, iter 20): t_in 0.031374540966 -> 0.031151161091  [candidate only: run upperR2 on /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/eng/sol_q75B_in.json]
+  in-point: t_in = 0.031151161091 (sol_q75B_in.json; moves so far 16)
+iter 20 t=0.029587501963 rows 205843 cols 57409 added 60  lp 919.5s sep 565.3s total 29448s  rounds lam0.500(t=0.030481):60 probe0.1250(t=0.031151):0/v0  {7: (36, 0.003029, 129.1), 8: (19, 0.014562, 91.4), 9: (5, 0.013301, 28.8)}
+  lpmax: simplex hit 45s at iter 21; IPM + simplex 1297.1s, status Optimal
+  rrz it 21: cols rr 134 z 3699 zr 3699; positive (>1e-9) rr 10 z 28 zr 59; sum rr 0.3934 z 0.5948 zr 1.4308

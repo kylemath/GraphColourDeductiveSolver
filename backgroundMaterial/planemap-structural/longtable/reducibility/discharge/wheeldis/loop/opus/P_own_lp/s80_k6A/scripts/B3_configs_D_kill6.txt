@@ -1,0 +1,4 @@
+# Route A (plain kill6 entry, inside the key): k6patch-style table bits.
+# columns: kc line | route entry | extra slots | q-name (PRIVCELL grammar, not canonicalised) | rows touched (count: target rows)
+b7_-...556._...56.._p515 8 6 0,1,2;0;0,6,7;2,3;3,4;4,5,6 1,3;0,2,3,4;1,4,5;0,1,4;1,2,3,5;2,4 | kill6 U=7 w(j-2,j-1,j+1,j+2)=55.. s(j-2,j-1,j,j+1)=56.. private=5 | read outside the kill6 key: (none: plain kill6 entry) | q7-_...556._...56.._:::::5: | rows 261: 5566966/5676567[v1g3] 9665566/6675678[v2r10]  # r8 m6 P:9665566/6675678:p51=5 kcc:D+dfast:D dfast18:D
+b7_-....56._...575._p515 9 6 0,1;0,8;1,2,3;3,4,5;5,6;6,7,8 1,2,3;0,3,4,5;0,3;0,1,2,4;1,3,5;1,4 | kill6 U=7 w(j-2,j-1,j+1,j+2)=.5.. s(j-2,j-1,j,j+1)=575. private=5 | read outside the kill6 key: (none: plain kill6 entry) | q7-_....56._...575._:::::5: | rows 16: 5556696/5776657[v1g1] 7757567/6555755[v2r8]  # r9 m6 P:7757567/6555755:p51=5 kcc:D+dfast:D dfast18:D
