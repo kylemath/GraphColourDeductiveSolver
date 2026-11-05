@@ -107,3 +107,7 @@ iter 15 t=0.029198731161 rows 204833 cols 57361 added 457  lp 798.7s sep 180.3s 
 iter 16 t=0.029198731161 rows 205042 cols 57372 added 195  lp 773.6s sep 406.0s total 22394s  rounds lam0.500(t=0.030775):195 probe0.1250(t=0.031957):0/v0  {7: (148, 0.025371, 84.4), 8: (36, 0.013091, 70.9), 9: (11, 0.008097, 21.0)}
   lpmax: simplex hit 45s at iter 17; IPM + simplex 887.3s, status Optimal
   rrz it 17: cols rr 134 z 3699 zr 3699; positive (>1e-9) rr 10 z 34 zr 49; sum rr 0.4216 z 0.5893 zr 1.4550
+  Karp lambda 0.555225 d0 13.42
+  in-point MOVED (probe, iter 17): t_in 0.031956956042 -> 0.031634694934  [candidate only: run upperR2 on /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/eng/sol_q75B_in.json]
+  in-point: t_in = 0.031634694934 (sol_q75B_in.json; moves so far 14)
+iter 17 t=0.029378867174 rows 205198 cols 57375 added 142  lp 944.1s sep 410.1s total 23748s  rounds lam0.500(t=0.030668):142 probe0.1250(t=0.031635):0/v0  {7: (85, 0.03127, 74.9), 8: (56, 0.025181, 51.2), 9: (1, 0.002174, 23.8)}
