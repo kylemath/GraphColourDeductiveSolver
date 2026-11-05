@@ -24,4 +24,8 @@ Generated with s74_leanglue/gen_occ_kc.py (714ea779; compiled clean on Studio, j
 
 ## Coverage of the 380 D in cover_pb868.tsv
 370 in hdc/, rsst008 and rsst012 in ctrl3/, and nl2180_r13, nl2215_r14, nl1502_r15 in hd30/ (indices 1, 16, 24).
-The last 5 RSST (Studio batch HDR5) are still to do.
+and the 5 RSST of Studio batch HDR5 in hdr5/.
+All 380 D names are covered exactly once (checked by name, RSST by number prefix).
+
+## hdr5/: Studio HDR5 (out/job_HDC502/D_rsst5.tsv, md5 e6458c99, main 421efcdb; MOD HDR5, PFX hdr5)
+- HR_00..04, COccHR_00..04 and HDR5Occ for rsst001 / 004 / 006 / 024 / 026. 0 literal mismatches against lean_r5/HDR5.lean.
