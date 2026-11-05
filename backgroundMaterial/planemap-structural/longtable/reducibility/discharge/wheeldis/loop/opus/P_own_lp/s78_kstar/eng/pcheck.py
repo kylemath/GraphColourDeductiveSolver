@@ -559,6 +559,7 @@ exec(open(os.path.join(HERE, 'prelay2.py')).read())
 exec(open(os.path.join(HERE, 'f2bglue.py')).read())   # s60_f2b
 exec(open(os.path.join(HERE, 'kstar.py')).read())   # s78_kstar: K* family (flag kstar)
 exec(open(os.path.join(HERE, 'edgefam.py')).read())   # s78_kstar: generic EDGE keys (edgekeys=<file>)
+exec(open(os.path.join(HERE, 'ksdump.py')).read())   # s78_kstar: K* / EDGE row-value dump (upperR2 ksdump=<tsv>)
 exec(open(os.path.join(HERE, 'pinout.py')).read())   # s70: in-out separation
 log('jcheck: %d R5, %d R6, %d fans, %d RBIG; %d senders, %d rooted vars' % (len(R5), len(R6), len(FANS), len(RBIG), len(SENDERS), len(ROOTS)))
 {'xoselftest': cmd_xoselftest, 'pcellcheck': cmd_pcellcheck, 'binderR2': cmd_binderR2, 'rowR2': cmd_rowR2, 'consbasisR2': cmd_consbasisR2, 'ctxR2': cmd_ctxR2, 'solveR2': cmd_solveR2, 'lowerR2': cmd_lowerR2, 'upperR2': cmd_upperR2, 'orientR2': cmd_orientR2, 'structR2': cmd_structR2, 'solveR': cmd_solveR, 'lowerR': cmd_lowerR, 'upperR': cmd_upperR, 'orientR': cmd_orientR, 'solveS': cmd_solveS, 'upperS': cmd_upperS, 'lowerS': cmd_lowerS, 'orientS': cmd_orientS, 'lowerT': cmd_lowerT, 'solveT': cmd_solveT, 'solve2': cmd_solve2, 'upper': cmd_upper, 'lower': cmd_lower, 'solve': cmd_solve, 'maxload': cmd_maxload}.get(CMD, lambda: print(__doc__))()

@@ -1622,6 +1622,7 @@ def cmd_upperR2():
         return mcache[sg]
     F2B_MV2[0] = MV2
     if 'f2bself' in OPT: f2b_selftest(y, xd, MV2, t, int(OPT['f2bself'])); return
+    if 'ksdump' in OPT: ks_dump(y, xd, MV2, t); return   # s78: K* / EDGE row-value dump (eng/ksdump.py)
     for d in range(7, DMAX + 1):
         W = window_table_R2(min(d, 9), y, xd, MV2)
         res, dt, ni = run_sep(d, W, d - 6 + t + EPS, int(float(OPT.get('vK', '20'))), 0)   # s33z (from s30t): vK = max rows reported
