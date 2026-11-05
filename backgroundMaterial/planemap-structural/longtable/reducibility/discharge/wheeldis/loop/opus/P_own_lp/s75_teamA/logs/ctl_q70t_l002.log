@@ -1,0 +1,10 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9235, 8: 5906, 9: 3334, 10: 1435, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 598, 'RPAT': 158, 'RPATN': 2080}
+inout: feasible point /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/sol_feas.json: 21303 columns (t = 0.041565), lam None, raw check every 4, min cuts 30
+conservation basis rows added: 10539
+R6x2 (apex True): 22476 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 0 M sigs
+inoutctl lam=0.02: t_sep=0.040733700; sender rows violated 0 (worst 0) of 22476
+l3qV: V = 8 table 5000 masks (full)
+inoutctl lam=0.02: cons rows violated 0 (worst 0); receiver violations by d (count, max excess, sec): {7: (300, 0.189878, 47.1), 8: (159, 0.002801, 42.1), 9: (4, 0.000347, 19.4), 10: (0, None, 2.5), 11: (0, None, 1.5), 12: (0, None, 1.5), 13: (0, None, 1.7), 14: (0, None, 2.3), 15: (0, None, 2.0), 16: (0, None, 1.9), 17: (0, None, 2.2)}; total 463; 154s

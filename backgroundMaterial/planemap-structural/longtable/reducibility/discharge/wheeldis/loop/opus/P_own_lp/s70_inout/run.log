@@ -14,3 +14,13 @@ Full run started Wed Nov  4 ~2026 (see ps): bash runK70.sh 200 2 q70inout inout=
   Warm admission takes ~40-45 min, then ~15-17 min per iteration (LP ~850-950 s, separation 80-140 s).
 RESUME: cp eng/rows_q70inout.txt warm/rows_q70inout_resume.txt ; export WARM0=$PWD/warm/rows_q69rrz_snap2.txt,$PWD/warm/rows_q70t.txt,$PWD/warm/rows_q70inout_resume.txt, ; nohup bash runK70.sh 200 2 <newtag> inout=<current lam0>,0.8,0.1 inoutk=4 > logs/...out 2>&1 &
   (the "current lam" is printed in the iteration lines: rounds lamX.XXX(...)).  Stop: kill the python3 pcheck.py solveR2 ... tag=q70inout process (pgrep -f tag=q70inout).
+
+=== Team A (Thu Nov 5 09:12) container restart: K resumed as tag q70inoutC (warm = s69 snap2 + q70t + q70inoutB rows; lam 0.4 as B was at). [P] single engine; K LP values are pointers only.
+  started: cd s70_inout; cp eng/rows_q70inoutB.txt warm/rows_q70inoutB.txt; WARM0=$N/warm/rows_q69rrz_snap2.txt,$N/warm/rows_q70t.txt,$N/warm/rows_q70inoutB.txt, bash runK70.sh 200 2 q70inoutC inout=0.4,0.8,0.1 inoutk=4  (nice 15, threads 2; log runK_q70inoutC/K.log; checkpoint eng/rows_q70inoutC.txt rewritten+flushed every iteration)
+  row sync: sync_rows.sh q70inoutC copies eng/rows_q70inoutC.txt to /mnt/project-files/swarm/round6/W12-studio-K/from_opus/ on every change (log logs/sync_q70inoutC.log).
+RESUME (one line, run from anywhere; picks the next free tag letter by hand: replace D by the next letter if D exists):
+N=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s70_inout; cd $N && cp eng/rows_q70inoutC.txt warm/rows_q70inoutC.txt && WARM0=$N/warm/rows_q69rrz_snap2.txt,$N/warm/rows_q70t.txt,$N/warm/rows_q70inoutB.txt,$N/warm/rows_q70inoutC.txt, nohup nice -n 0 bash runK70.sh 200 2 q70inoutD inout=0.4,0.8,0.1 inoutk=4 > logs/runK_q70inoutD.out 2>&1 & (cd $N; nohup bash sync_rows.sh q70inoutD >/dev/null 2>&1 &)
+Team A 11:30Z: t = 0 plateau explained (Euler floor, lowerR2 VALID t >= 0 with 11 rows, see ../s75_teamA/run.log and runL_floor/); s70 in-out issues found: in-point values of columns not yet in the LP are dropped,
+  the in-point never moves, and 16,800 rows tight at sol_feas are mostly not in the pool.  Fixed in ../s75_teamA (engine copy).  s75 q75B (rr z zr, no q7) gave the first certified point below 0.041565:
+  ../s75_teamA/cand/sol_q75B_in01_full.json  UPPER-R2 FEASIBLE t = 0.041432320120 (full flags, q = 0).  C (this folder) keeps running as asked; its resume line is above.
+12:17:58Z C stopped by Opus coordinator (rows -> s75_teamA/warm/rows_q70inoutC_final.txt); successor = s75 q75D

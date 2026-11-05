@@ -1,0 +1,31 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
+patterns: 287 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9235, 8: 5906, 9: 3334, 10: 1435, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18097, 'C': 598, 'RPAT': 158, 'RPATN': 2080}
+inout: feasible point /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/sol_feas.json: 21303 columns (t = 0.041565), lam (0.4, 0.8, 0.1), raw check every 4, min cuts 30
+feascols: 21303 in-point columns created up front (21303 LP columns now)
+conservation basis rows added: 10539
+l3qV: V = 8 table 5000 masks (full)
+warm rows admitted: 147932
+R6x2 (apex True): 22476 sender rows, 393 g keys in senders, 1424 six-words, 11962 initial cons rows, 4190 M sigs
+  lpmax: simplex hit 45s at iter 0; IPM + simplex 760.0s, status Optimal
+  rrz it 0: cols rr 134 z 3699 zr 3699; positive (>1e-9) rr 10 z 28 zr 52; sum rr 0.5424 z 0.9380 zr 2.0394
+  Karp lambda 0.522457 d0 12.48
+  Karp lambda 0.521907 d0 12.46
+  in-point MOVED (probe, iter 0): t_in 0.041565000000 -> 0.041432320120  [candidate only: run upperR2 on /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/eng/sol_q75B_in.json]
+  in-point: t_in = 0.041432320120 (sol_q75B_in.json; moves so far 1)
+iter 0 t=0.020336219240 rows 201555 cols 57242 added 346  lp 805.1s sep 790.8s total 1596s  rounds lam0.400(t=0.033073):306 probe0.1000(t=0.039442):40/v202 probe0.0250(t=0.041034):0/v2 probe0.0063(t=0.041432):0/v0  {7: (154, 0.059867, 71.0), 8: (125, 0.037986, 52.0), 9: (27, 0.022947, 20.5), 'p07': (40, 0.00678, 82.9)}
+  lpmax: simplex hit 45s at iter 1; IPM + simplex 1067.0s, status Optimal
+  rrz it 1: cols rr 134 z 3699 zr 3699; positive (>1e-9) rr 10 z 25 zr 55; sum rr 0.5578 z 0.9146 zr 2.2382
+  Karp lambda 0.525027 d0 12.55
+  Karp lambda 0.522687 d0 12.48
+  in-point MOVED (probe, iter 1): t_in 0.041432320120 -> 0.040957096396  [candidate only: run upperR2 on /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/eng/sol_q75B_in.json]
+  in-point: t_in = 0.040957096396 (sol_q75B_in.json; moves so far 2)
+iter 1 t=0.022423371143 rows 201731 cols 57264 added 176  lp 1112.3s sep 672.6s total 3381s  rounds lam0.400(t=0.033829):176 probe0.1000(t=0.039531):0/v8 probe0.0250(t=0.040957):0/v0  {7: (153, 0.02638, 89.3), 8: (18, 0.017199, 71.7), 9: (5, 0.003563, 22.0)}
+  lpmax: simplex hit 45s at iter 2; IPM + simplex 1062.4s, status Optimal
+  rrz it 2: cols rr 134 z 3699 zr 3699; positive (>1e-9) rr 10 z 31 zr 57; sum rr 0.5579 z 0.8537 zr 2.0344
+  Karp lambda 0.525704 d0 12.57
+  Karp lambda 0.523441 d0 12.51
+  in-point MOVED (probe, iter 2): t_in 0.040957096396 -> 0.040508501324  [candidate only: run upperR2 on /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s75_teamA/eng/sol_q75B_in.json]
+  in-point: t_in = 0.040508501324 (sol_q75B_in.json; moves so far 3)
+iter 2 t=0.023013293529 rows 201893 cols 57270 added 153  lp 1162.9s sep 637.0s total 5181s  rounds lam0.400(t=0.033780):153 probe0.1000(t=0.039163):0/v16 probe0.0250(t=0.040509):0/v0  {7: (146, 0.01843, 88.9), 8: (7, 0.013915, 63.6)}
