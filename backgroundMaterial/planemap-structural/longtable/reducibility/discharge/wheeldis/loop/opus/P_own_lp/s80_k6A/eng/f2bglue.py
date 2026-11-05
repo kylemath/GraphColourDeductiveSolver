@@ -294,7 +294,7 @@ if F2B_ON:
             if k[0] == 'Q': return max([QV.get(kk, 0.0) for kk in q7keys(k[1])] or [0.0])
             if k[0] == 'lQ': return l3q_Qeff(*k[1]) if len(k[1]) == 3 else l3q_QeffV(*k[1])
             raise Exception('selftest: unsupported key %s' % (k,))
-        xon = 'xon' in FLAGS; L = lambda v: ''.join(map(str, v)); EV = collections.defaultdict(list)
+        xon = 'xon' in FLAGS; L = lambda v: ''.join(map(str, v)); EV = collections.defaultdict(list); CHL = collections.defaultdict(list)
         tot = collections.Counter(); bad = []; per = []
         # ---- (b) ----
         for g in f2bm.GROUPS:
@@ -332,7 +332,7 @@ if F2B_ON:
                 cf_on = recv_coef_R2(d, L(w), L(s), xon); dg = _cdiff(cf_on, cf_off)
                 ok = dg == e; tot['b: rules with a change'] += 1; tot['b: match rows exact' if ok else 'b: match rows WRONG'] += 1
                 if not ok: bad.append(('match', g, r, L(w), L(s), dg, e))
-                EV[d] += [(L(w), L(s))]
+                EV[d] += [(L(w), L(s))]; CHL[d].append(L(w))
                 # miss rows: each requirement slot set to a disallowed letter
                 nm = nz = 0
                 for kind, o, allowed in [('w', o, al) for o, al in r[1]] + [('s', o, {v}) for o, v in r[2]]:
@@ -373,7 +373,10 @@ if F2B_ON:
         d = 7; W = window_table_R2(7, y, xd, MV2); links = []
         for lk, sv in EV.get(7, []):
             if lk not in links: links.append(lk)
-        rng.shuffle(links); nsub = int(OPT.get('f2bxsub', '3')); c2ok = True
+        rng.shuffle(links); ch7 = []   # links of rows where an extra rule changed the row come first
+        for lk in CHL.get(7, []):
+            if lk not in ch7: ch7.append(lk)
+        rng.shuffle(ch7); links = ch7 + [lk for lk in links if lk not in ch7]; nsub = int(OPT.get('f2bxsub', '3')); c2ok = True
         for lk in links[:nsub]:
             Py = {}
             SL_ = tuple(int(c) for c in OPT.get('f2bxsl', '56789'))   # apex letters of the sub-space (the separator gets the same restriction)
