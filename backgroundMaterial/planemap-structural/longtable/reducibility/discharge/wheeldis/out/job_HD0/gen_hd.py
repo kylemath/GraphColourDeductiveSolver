@@ -22,6 +22,8 @@ open(os.path.join(out, mod + '.lean'), 'w').write("""import DCheck18
 namespace %s
 open DCheck18
 
+set_option maxRecDepth 100000
+
 def %sConfs : List DCheck18.Conf := [
 %s]
 
