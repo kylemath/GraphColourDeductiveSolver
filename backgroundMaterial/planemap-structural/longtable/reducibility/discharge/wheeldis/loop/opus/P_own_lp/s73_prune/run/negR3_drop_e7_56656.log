@@ -1,0 +1,21 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s73_prune/sets/rules_R3_2095.json: {'d7_w6': 559, 'd8_w6': 327, 'd9_w6': 239, 'd7_w7_1': 298, 'd7_w7_-1': 298, 'd8_w7_1': 187, 'd8_w7_-1': 187}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+patterns: 2 files read, 0 missing []; distinct by d {7: 261, 8: 295, 9: 252, 10: 49, 11: 17, 12: 8, 13: 7, 14: 7, 15: 7, 16: 7, 17: 7}; by kind {'D': 189, 'C': 183, 'RPAT': 132, 'RPATN': 413}
+l3qV: 14 V >= 8 q > 0 (total 0.274486819), 7 V >= 8 Q > 0
+l3qV: V = 8 table 5000 masks (full)
+l3q: 21 q > 0 (total 0.652097602); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 0
+conservation: 1424 canonical non-R6 links x 5^6 apex words; links with |in - out| > 1e-9: 0 (worst 4.12e-13)
+d=7: 10 violated (exhaustive, 8.5s)
+d=8: 0 violated (exhaustive, 9.9s)
+d=9: 0 violated (exhaustive, 7.4s)
+d=10: 0 violated (exhaustive, 1.5s)
+d=11: 0 violated (exhaustive, 1.8s)
+d=12: 0 violated (exhaustive, 2.2s)
+d=13: 0 violated (exhaustive, 2.1s)
+d=14: 0 violated (exhaustive, 2.4s)
+d=15: 0 violated (exhaustive, 2.4s)
+d=16: 0 violated (exhaustive, 2.5s)
+d=17: 0 violated (exhaustive, 2.6s)
+Karp lambda 0.521723955 d0 12.458
+UPPER-R2: INFEASIBLE (10) at t = 0.041565000000

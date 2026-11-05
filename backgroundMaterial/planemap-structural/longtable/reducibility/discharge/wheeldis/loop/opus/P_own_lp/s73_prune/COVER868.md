@@ -37,3 +37,11 @@ set cover). The joint must be re-solved with the base as a variable. Until then 
 ## Measured Lean weights (Studio job_HD0, main a6ed90d5)
 With hD medians 223 s / 1151 s / 6412 s for ring 13 / 14 / 15 (WMEAS=1), the optimum is **the same 502 set**
 (run/cover_pb868_meas.tsv). D-side hD is about 113 CPU-h, of which ring 15 (38 configs) is about 68 h.
+
+## Joint optimum check (swarm W1 round 8, joint868/) [E2 with W1's stock sep3r_f2bS]
+- run/fR3.log: rules_R3_2095.json (a6f73d2a) + k95f_patterns/R3 (D a5a8e8e6, C 8fc9245e, rpatN 9cfb7fb2, rpat 0757785d), sol_c_repaired:
+  **UPPER-R2 FEASIBLE at 0.041565**; senders 0, cons 0, d = 7..17 0 violated (exhaustive), Karp 0.5217.
+- run/fN8.log: rules_868_W1.json (a972c89a, = our final868) + k95f_patterns/N8: FEASIBLE at 0.041565, same clean lines.
+- Negative control (run/negR3_drop_e7_56656.log): R3 without D pattern e7_56656.6_6.6B..6_1111101 -> INFEASIBLE (10 at d = 7).
+- Load: R3 C_patterns.cfast lists f7_...5566_.....5. twice (184 lines, 183 unique); the loader dedups.
+- So **1,145 configurations (864 D, 281 C)** carry the fixed solution with 2,095 rules; the tables + 868 rules part is the 502.
