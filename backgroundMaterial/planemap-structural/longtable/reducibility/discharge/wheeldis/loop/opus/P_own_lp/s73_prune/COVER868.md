@@ -33,3 +33,7 @@ set cover). The joint must be re-solved with the base as a variable. Until then 
 - sets/final868.json (c69baa8f): ids into the rules_drop276 universe.
 - run/cover_pb868.tsv (8e63a7b3), run/cover_pb868_count.tsv, run/cover_pb870.tsv, run/cover_pb*.log.
 - run/cover_final868*.tsv: the old box model with 868 rules (526), kept for comparison.
+
+## Measured Lean weights (Studio job_HD0, main a6ed90d5)
+With hD medians 223 s / 1151 s / 6412 s for ring 13 / 14 / 15 (WMEAS=1), the optimum is **the same 502 set**
+(run/cover_pb868_meas.tsv). D-side hD is about 113 CPU-h, of which ring 15 (38 configs) is about 68 h.

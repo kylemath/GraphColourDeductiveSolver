@@ -34,6 +34,7 @@ def ring(n):
     return int(m.group(1)) if m else -1
 def isD(n): return cls[n].endswith('D') or cls[n] == 'nl51'
 W = {13: .1, 14: 25 / 60, 15: 1.25, 16: 4, 17: 13}
+if os.environ.get('WMEAS'): W = {13: 223 / 3600, 14: 1151 / 3600, 15: 6412 / 3600, 16: 9.8, 17: 54}   # Studio job_HD0 medians (5 Nov); 16/17 extrapolated x5.5
 def cost(n):
     if not isD(n): return .25
     r = ring(n)
