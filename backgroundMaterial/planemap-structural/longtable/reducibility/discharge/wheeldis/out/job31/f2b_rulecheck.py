@@ -97,6 +97,7 @@ if __name__ == '__main__':
             if n_ % 50 == 0: print('  %d / %d structures' % (n_, len(jobs)), flush=True)
     if os.environ.get('DERIVE'):   # job 2: Studio's own rule set from the same requirement sets (rules JSON format, offsets 0..d-1)
         DRP = collections.defaultdict(set)   # provenance: rule -> justifying configuration names
+        ZCONS = os.environ.get('DERIVE_ZCONS') == '1'   # opt-in (default off): skip requirement sets whose w letters contradict the structure Z
         DR = {'d7_w6': set(), 'd8_w6': set(), 'd9_w6': set(), 'd7_w7': {'1': set(), '-1': set()}, 'd8_w7': {'1': set(), '-1': set()}}
         for (d, w0, Z), rs in RES.items():
             for sgs, t in TG[(d, w0)].items():
@@ -104,6 +105,7 @@ if __name__ == '__main__':
                 for r in rs:
                     rd = dict(r)
                     if tt not in rd or any(v[0] == 'p' and v != tt for v in rd): continue
+                    if ZCONS and any(v[0] == 'w' and v[1] >= 1 and (g == 5) != bool((Z >> v[1]) & 1) for v, g in r): continue   # DERIVE_ZCONS: r must agree with Z (as the check mode)
                     wq = {v[1]: (g,) for v, g in r if v[0] == 'w'}; sq = {v[1]: g for v, g in r if v[0] == 's'}
                     for k in range(1, d):
                         if (k - 1) in sq and k in sq and k not in wq: wq[k] = (5,) if (Z >> k) & 1 else (6, 7, 8, 9)
