@@ -69,3 +69,13 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - HWR3_00..26 + COccHWR3_kk + HWR3Occ (imports W3VAll, w3Entries, W3V.hC_all); HWR4_00..03 + COccHWR4_kk + HWR4Occ (W4VAll, w4Entries, W4V).
   27 / 4 generated, 0 failed. Entry k = line k of the EXTRAFILE: run check_literals_c.py on CW3.lean / CW4.lean before compiling; if Studio
   reorders the rows, regenerate from its EXTRAFILE (the two commands above).
+
+## hdw13/: HDW13, swarm W13's 27 D kill windows (Studio out/job_HDW13/D_w13.tsv, md5 5e86ee15, main a9611b67; MOD HDW13, PFX hdw13)
+- in/D_w13.tsv and studio/{D_w13.tsv,INPUTS.md,module_split.tsv}: byte copies from main a9611b67.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/hdw13/in/D_w13.tsv s76_occ502/hdw13/lean HWD_ --hd HDW13 hdw13`
+  -> HWD_00..26, COccHWD_00..26, HDW13Occ (imports HDW13All, uses HDW13V.hD_k). 27 generated, 0 failed; 54 rotations validated; every link an induced cycle.
+- Names in HWD_modules.txt equal module_split.tsv's names and D_w13.tsv's order (27/27).
+- Literal check: studio/HDW13_local_gen_hd_f743a82d.lean is gen_hd.py f743a82d (main out/job_HD0) run here on in/D_w13.tsv with
+  MOD HDW13, PFX hdw13, batch 1. check_literals.py against it: 27 entries, 0 mismatches. A mutated copy (one name renamed) gives
+  11 mismatches, exit 1. Rerun check_literals against the Mac's own HDW13.lean when it lands.
+- Compile order: HWD_kk, then COccHWD_kk, then HDW13Occ.
