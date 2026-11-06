@@ -1,0 +1,105 @@
+=== mrowL: Q[(c, a, mask)] >= q[(c, a, X)], X = the payer 7's link letter at distance 3 from the payee (hidden) ===
+
+sig c=5 a=5 mask {6789}: total mrowL w -0.134208; by hidden X: 6:-0.038133, 7:-0.089443, 8:-0.006632
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.059809, 6:-0.038133, 7:-0.098468, 8:-0.006632, 9:-0.001460
+  payee rows charged Q[sig]: 148, sum w -0.134208; by window c|w2w3w4|ap o (L3T mask before f2b):
+    5|757|57  L3T {56789}  rows 3  w -0.018931
+    5|757|55  L3T {56789}  rows 11  w -0.017481
+    5|776|55  L3T {56789}  rows 7  w -0.013709
+    5|757|56  L3T {56789}  rows 13  w -0.012042
+    5|677|55  L3T {56789}  rows 2  w -0.008289
+    5|767|55  L3T {56789}  rows 4  w -0.008213
+    5|756|56  L3T {56789}  rows 2  w -0.005794
+    5|657|55  L3T {6789}  rows 4  w -0.005043
+
+sig c=6 a=6 mask {6789}: total mrowL w -0.078608; by hidden X: 6:-0.046790, 7:-0.031373, 8:-0.000445
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.062383, 6:-0.046926, 7:-0.031373, 8:-0.000445, 9:0.000000
+  payee rows charged Q[sig]: 120, sum w -0.078608; by window c|w2w3w4|ap o (L3T mask before f2b):
+    6|655|67  L3T {6789}  rows 10  w -0.011205
+    6|575|65  L3T {56789}  rows 2  w -0.008289
+    6|775|65  L3T {56789}  rows 8  w -0.007211
+    6|555|67  L3T {6789}  rows 3  w -0.007170
+    6|675|65  L3T {56789}  rows 4  w -0.005346
+    6|665|67  L3T {56789}  rows 5  w -0.004607
+    6|665|66  L3T {56789}  rows 7  w -0.003643
+    6|756|65  L3T {56789}  rows 4  w -0.003278
+
+sig c=5 a=5 mask {56789}: total mrowL w -0.070294; by hidden X: 5:-0.059809, 7:-0.009025, 9:-0.001460
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.059809, 6:-0.038133, 7:-0.098468, 8:-0.006632, 9:-0.001460
+  payee rows charged Q[sig]: 124, sum w -0.070294; by window c|w2w3w4|ap o (L3T mask before f2b):
+    5|775|56  L3T {56789}  rows 7  w -0.008953
+    5|777|55  L3T {56789}  rows 3  w -0.007834
+    5|677|55  L3T {56789}  rows 6  w -0.006543
+    5|677|56  L3T {56789}  rows 5  w -0.005413
+    5|767|55  L3T {56789}  rows 5  w -0.005288
+    5|755|56  L3T {56789}  rows 4  w -0.004859
+    5|775|55  L3T {56789}  rows 7  w -0.003056
+    5|666|56  L3T {56789}  rows 4  w -0.002720
+
+sig c=6 a=6 mask {56789}: total mrowL w -0.062518; by hidden X: 5:-0.062383, 6:-0.000136
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.062383, 6:-0.046926, 7:-0.031373, 8:-0.000445, 9:0.000000
+  payee rows charged Q[sig]: 117, sum w -0.062518; by window c|w2w3w4|ap o (L3T mask before f2b):
+    6|757|65  L3T {56789}  rows 4  w -0.005529
+    6|766|65  L3T {56789}  rows 5  w -0.005213
+    6|767|65  L3T {56789}  rows 6  w -0.004440
+    6|676|65  L3T {56789}  rows 3  w -0.004162
+    6|756|66  L3T {56789}  rows 6  w -0.002849
+    6|755|65  L3T {56789}  rows 3  w -0.002773
+    6|756|65  L3T {56789}  rows 1  w -0.002739
+    6|565|67  L3T {56789}  rows 6  w -0.002372
+
+sig c=6 a=5 mask {6789}: total mrowL w -0.052448; by hidden X: 6:-0.020502, 7:-0.030250, 8:-0.001696
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.048195, 6:-0.021408, 7:-0.030537, 8:-0.001696, 9:-0.000168
+  payee rows charged Q[sig]: 95, sum w -0.052448; by window c|w2w3w4|ap o (L3T mask before f2b):
+    6|655|57  L3T {6789}  rows 3  w -0.006627
+    6|655|56  L3T {6789}  rows 8  w -0.006382
+    6|665|57  L3T {6789}  rows 2  w -0.004058
+    6|555|56  L3T {6789}  rows 8  w -0.004003
+    6|555|57  L3T {6789}  rows 6  w -0.003864
+    6|665|56  L3T {6789}  rows 5  w -0.003561
+    6|565|57  L3T {6789}  rows 6  w -0.002567
+    6|575|57  L3T {56789}  rows 3  w -0.002528
+
+sig c=6 a=5 mask {56789}: total mrowL w -0.049269; by hidden X: 5:-0.048195, 6:-0.000906, 9:-0.000168
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.048195, 6:-0.021408, 7:-0.030537, 8:-0.001696, 9:-0.000168
+  payee rows charged Q[sig]: 96, sum w -0.049269; by window c|w2w3w4|ap o (L3T mask before f2b):
+    6|767|56  L3T {56789}  rows 5  w -0.007803
+    6|766|56  L3T {56789}  rows 9  w -0.005932
+    6|676|56  L3T {56789}  rows 7  w -0.004708
+    6|755|56  L3T {56789}  rows 1  w -0.003717
+    6|576|56  L3T {56789}  rows 2  w -0.002773
+    6|776|55  L3T {56789}  rows 3  w -0.002548
+    6|577|56  L3T {56789}  rows 2  w -0.002451
+    6|757|56  L3T {56789}  rows 2  w -0.001938
+
+sig c=5 a=6 mask {6789}: total mrowL w -0.049207; by hidden X: 6:-0.018069, 7:-0.029721, 8:-0.001416
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.026254, 6:-0.018069, 7:-0.030537, 8:-0.001416, 9:-0.000083
+  payee rows charged Q[sig]: 86, sum w -0.049207; by window c|w2w3w4|ap o (L3T mask before f2b):
+    5|566|67  L3T {56789}  rows 4  w -0.004340
+    5|557|67  L3T {6789}  rows 2  w -0.004229
+    5|575|67  L3T {56789}  rows 5  w -0.003988
+    5|657|67  L3T {6789}  rows 2  w -0.003866
+    5|575|66  L3T {56789}  rows 4  w -0.003564
+    5|557|66  L3T {6789}  rows 4  w -0.003556
+    5|556|67  L3T {6789}  rows 2  w -0.002828
+    5|566|65  L3T {56789}  rows 2  w -0.002338
+
+sig c=5 a=6 mask {56789}: total mrowL w -0.027152; by hidden X: 5:-0.026254, 7:-0.000816, 9:-0.000083
+  payer side (d = 7 rows paying q[(c,a,X)]), sum w by X: 5:-0.026254, 6:-0.018069, 7:-0.030537, 8:-0.001416, 9:-0.000083
+  payee rows charged Q[sig]: 54, sum w -0.027152; by window c|w2w3w4|ap o (L3T mask before f2b):
+    5|576|67  L3T {56789}  rows 5  w -0.005301
+    5|577|66  L3T {56789}  rows 1  w -0.004583
+    5|575|67  L3T {56789}  rows 2  w -0.003968
+    5|576|65  L3T {56789}  rows 1  w -0.002523
+    5|665|67  L3T {56789}  rows 7  w -0.002004
+    5|776|66  L3T {56789}  rows 1  w -0.001872
+    5|577|67  L3T {56789}  rows 4  w -0.001288
+    5|578|67  L3T {56789}  rows 2  w -0.001124
+Traceback (most recent call last):
+  File "/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s85_edge56/mrow_ctx.py", line 82, in <module>
+    show_L(NTOP); show_Q(NTOP)
+    ~~~~~~^^^^^^
+  File "/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s85_edge56/mrow_ctx.py", line 61, in show_L
+    c, a, m = sig; W = sum(w for _, w in ks)
+    ^^^^^^^
+ValueError: too many values to unpack (expected 3)
