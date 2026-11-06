@@ -1,0 +1,4 @@
+99a100
+>         ZCONS = os.environ.get('DERIVE_ZCONS') == '1'   # opt-in (default off): skip requirement sets whose w letters contradict the structure Z
+106a108
+>                     if ZCONS and any(v[0] == 'w' and v[1] >= 1 and (g == 5) != bool((Z >> v[1]) & 1) for v, g in r): continue   # DERIVE_ZCONS: r must agree with Z (as the check mode)
