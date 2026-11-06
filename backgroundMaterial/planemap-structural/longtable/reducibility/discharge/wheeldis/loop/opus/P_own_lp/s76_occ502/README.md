@@ -55,3 +55,17 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
   3 entries, 0 mismatches; a mutated copy (m 9 -> 8) gives 1 mismatch, exit 1. NOT compiled here (no Lean in this container).
 - Compile order: HW3_kk, COccHW3_kk, then HW13Occ (imports HW13All). HW3_00 b7_u5556677_.....5. (r13 m9), HW3_01
   b7_u.557755_...5... (r12 m8), HW3_02 b7_u.5775.._.555... (r12 m8). Pattern -> Occ (Job 26) still open, as for hdk7/hdb3.
+
+## hcw13r2/: HCW13R2, the swarm's W13 round-2 C configurations (Studio main 4327360c: extraA.tsv md5 36f52f74 (4, cover-4), extraB.tsv md5 1bb1a1a9 (41))
+- in/extra{A,B}.tsv and studio/{CW2A,CW2B,W2AV00..03,W2AVAll}.lean: byte copies from main 4327360c (W2BV* not on main yet).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/hcw13r2/in/extraA.tsv s76_occ502/hcw13r2/lean HW2A_` (C side), same for extraB with HW2B_
+  -> HW2A_00..03 + COccHW2A_00..03 (4 generated, 0 failed, 8 rotations validated) and HW2B_00..40 + COccHW2B_00..40 (41, 0 failed, 82).
+- lean/HW2AOcc.lean, lean/HW2BOcc.lean: scripts/gen_cocc_batch.py (new: the HW13Occ template as a generator; regression: it regenerates
+  hcw13/lean/HW13Occ.lean byte for byte). Imports W2AVAll / W2BVAll; cEntry k := (w2xEntries.get ..).toCEntryF w2xEntries_ok (W2xV.hC_all k).
+- check_literals_c.py: CW2A.lean 4 entries, 0 mismatches; CW2B.lean 41 entries, 0 mismatches. NOT compiled here (no Lean in this container).
+- Compile order: HW2x_kk, COccHW2x_kk, then HW2xOcc (after W2xVAll).
+
+## hcw13r3/, hcw13r4/: pre-generated for HCW13R3 (27 C, extra_hcW13r3_x1.tsv md5 a3151887, swarm 1ff3dbd3) and HCW13R4 (4 C, extra_hcW13r4.tsv md5 3ea965c5, swarm 7e96e85a)
+- HWR3_00..26 + COccHWR3_kk + HWR3Occ (imports W3VAll, w3Entries, W3V.hC_all); HWR4_00..03 + COccHWR4_kk + HWR4Occ (W4VAll, w4Entries, W4V).
+  27 / 4 generated, 0 failed. Entry k = line k of the EXTRAFILE: run check_literals_c.py on CW3.lean / CW4.lean before compiling; if Studio
+  reorders the rows, regenerate from its EXTRAFILE (the two commands above).
