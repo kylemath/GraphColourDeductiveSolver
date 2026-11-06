@@ -9,3 +9,12 @@
 - Evidence: s85_edge56/l3t7 and from_opus/s85_k85CL/README.md. The rule file's 7-side kills reproduce all 183 of our own full 2-ball kills
   (f2ball7.py, A97 donly registry minus exname) and add 176. The relief is 14.5% of the d = 7 q7 payee weight in the k85CL dual.
 - k86A = k85C + f2b7 (launch_k86A.sh), from k85C in03; points are filed by watch86/file86 to from_opus/s86_k86A/.
+
+## k86B / k86L (13:11Z)
+
+The family is f2b7 + `s85_edge56/keys/cg_keys_r12.txt` (140 keys: cg_keys_124 plus the 16 keys W6 r12 priced as improving on the k85CL dual). gkwintest and gkselftest both PASS on it. `launch_k86B.sh` starts:
+
+- k86B, the in-out upper from k85C in03;
+- k86L, a lext lower run, with `watchL86.sh` checking each phase-1 cert by lowerR2 exactbasis (f2b7 on).
+
+k86A (124 keys) and k85CL were stopped.
