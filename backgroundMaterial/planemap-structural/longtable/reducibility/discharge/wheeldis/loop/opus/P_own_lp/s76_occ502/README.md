@@ -79,3 +79,15 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
   MOD HDW13, PFX hdw13, batch 1. check_literals.py against it: 27 entries, 0 mismatches. A mutated copy (one name renamed) gives
   11 mismatches, exit 1. Rerun check_literals against the Mac's own HDW13.lean when it lands.
 - Compile order: HWD_kk, then COccHWD_kk, then HDW13Occ.
+
+## hcw13r3p/: HCW13R3P, the 9 rim-pinned W13 round-3 C configurations (|X| = 3 or 4 with an R-I edge; Studio out/job_HCW13R3P, main c06fc8da)
+
+- in/{extra.tsv (6a279607), module_split.tsv (935bd8c5)} and studio/CW3P.lean are byte copies from main c06fc8da.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/hcw13r3p/in/extra.tsv s76_occ502/hcw13r3p/lean HWR3P_` (C side).
+  This produced HWR3P_00..08 and COccHWR3P_00..08: 9 generated, 0 failed, 18 rotations validated, every link an induced cycle.
+- lean/HWR3POcc.lean comes from `scripts/gen_cocc_batch.py ... HWR3POcc W3PVAll W3PV w3pEntries HWR3P_`. It imports W3PVAll and
+  uses `W3PV.hC_all k`, `w3pEntries_ok` and `w3pEntries_length`. X, eqR and eqI stay inside the XRData. The glue reads only cf, so the
+  template is the one used for HCW13R2/R3.
+- check_literals_c.py on CW3P.lean gives 9 entries, 0 mismatches. A copy with one intAdj entry changed gives 1 mismatch and exit 1.
+- Module names and their order match module_split.tsv (9/9). Compile order: HWR3P_kk, then COccHWR3P_kk, then HWR3POcc (after W3PVAll).
+  This was not compiled here, because this container has no Lean.
