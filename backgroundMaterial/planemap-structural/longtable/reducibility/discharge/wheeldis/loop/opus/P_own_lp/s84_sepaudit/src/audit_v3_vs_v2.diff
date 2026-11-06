@@ -1,0 +1,6 @@
+403c403
+<         printf("V %.12f %s %s\n", tot, w.c_str(), s.c_str()); found++;
+---
+>         printf("V %.12f %s %s\n", tot, w.c_str(), s.c_str()); fflush(stdout); found++;   // v3: flushed (a timed-out run keeps its rows)
+448a449
+>                     fprintf(stderr, "PA tasks %ld (this thread) leaves %ld leafDone %ld shadowBr %ld shadowNodes %ld rowsShadow %ld rowsLeafShadow %ld bndViol %ld maxRawGap %.6g bndViolS %ld maxTot %.12f\n", t, A.leaves, A.leafDone, A.shadowBr, A.shadowNodes, A.rowsShadow, A.rowsLeafShadow, A.bndViol, A.maxRawGap, A.bndViolS, A.maxTot);   // v3

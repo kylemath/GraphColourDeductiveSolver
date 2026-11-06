@@ -1,0 +1,9 @@
+73c73,74
+< double LOOS = 0, LLOOS = 0; int BREAKB = 0;   // v2: LLOOS = leaf early-exit loosening (SEPA_LEAFLOOSEN, default = SEPA_LOOSEN)
+---
+> double LOOS = 0, LLOOS = 0; int BREAKB = 0; long TASKFROM = 0;   // v4: SEPA_TASKFROM=N skips tasks 1..N (resume of a killed run; tasks numbered as the progress lines)
+>    // v2: LLOOS = leaf early-exit loosening (SEPA_LEAFLOOSEN, default = SEPA_LOOSEN)
+419a421
+>                 if (TASKFROM > 0 && tasksdone.load() < TASKFROM) { ++tasksdone; continue; }   // v4: resume
+460a463
+>     if (const char *e_ = getenv("SEPA_TASKFROM")) TASKFROM = atol(e_);

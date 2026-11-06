@@ -1,0 +1,15 @@
+73c73,74
+< double LOOS = 0; int BREAKB = 0; const double AINF = 1e300;
+---
+> double LOOS = 0, LLOOS = 0; int BREAKB = 0;   // v2: LLOOS = leaf early-exit loosening (SEPA_LEAFLOOSEN, default = SEPA_LOOSEN)
+>  const double AINF = 1e300;
+182c183
+<         auto pass = [&](double v, double lim) -> bool { if (!(v > lim - LOOS)) return false; if (!(v > lim)) lsh = true; return true; };
+---
+>         auto pass = [&](double v, double lim) -> bool { if (!(v > lim - LLOOS)) return false; if (!(v > lim)) lsh = true; return true; };
+456a458
+>     LLOOS = LOOS; if (const char *e_ = getenv("SEPA_LEAFLOOSEN")) LLOOS = atof(e_);
+600c602
+<         fprintf(stderr, "jsepf_audit: d=%d mode=%d thr=%.12f LOOSEN=%.6g BREAK=%d SLACK=%.9g SLACKT=%.9g nodes=%ld\n", d, mode, thr, LOOS, BREAKB, SLACK, SLACKT, nodes);
+---
+>         fprintf(stderr, "jsepf_audit: d=%d mode=%d thr=%.12f LOOSEN=%.6g LEAFLOOSEN=%.6g BREAK=%d SLACK=%.9g SLACKT=%.9g nodes=%ld\n", d, mode, thr, LOOS, LLOOS, BREAKB, SLACK, SLACKT, nodes);

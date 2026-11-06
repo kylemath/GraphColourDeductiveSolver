@@ -1,0 +1,138 @@
+64a65,75
+> // s84_sepaudit (audit copy of s78 jsepf.cpp b1256af5; nothing else changed).  Environment knobs, all off by default (then stdout is the original's):
+> //   SEPA_LOOSEN=L : +L added to the pruning bound in rec() and to every early-exit test inside leaf(); a row is still reported only if its final
+> //                   load is above the TRUE cut (extra final test before output).  L = 1e9 disables all bound pruning (exhaustive control).
+> //   SEPA_BREAK=1  : CONTROL ONLY, Studio-bug analogue: the bound test at slot 2k omits window k-2 (resolved at this step, counted nowhere).
+> //   SEPA_ARGVLOG=f: append argv to file f.
+> // Counters (stderr, "jsepf_audit:"): shadowBr / shadowNodes = bound tests passed only thanks to L / nodes visited below them; rowsShadow /
+> //   rowsLeafShadow = reported rows that the unloosened search would have cut in rec / in a leaf early exit (must be 0); bndViol = leaves whose
+> //   window sum exceeds the smallest bound on their path by > 1e-9 (must be 0); bndViolS = leaves whose final load exceeds that bound + SLACK.
+> double LOOS = 0; int BREAKB = 0; const double AINF = 1e300;
+> struct AStat { long shadowBr = 0, shadowNodes = 0, leaves = 0, leafDone = 0, rowsShadow = 0, rowsLeafShadow = 0, bndViol = 0, bndViolS = 0, posOver = 0, posOverT = 0, nPosF = 0, nPosQ = 0;
+>     double maxRawGap = -AINF, maxTotGap = -AINF, maxPosF = 0, maxPosQ = 0, maxPosFQ = 0, maxTermF = -AINF, maxTermQ = -AINF, maxL3 = -AINF, maxL3V = -AINF, minBonus = AINF, maxKS = -AINF, maxEG = -AINF, maxFY = -AINF, maxTot = -AINF; int maxL[64]; };
+101a113
+>     int shadow = 0; double minb = AINF; AStat A;   // s84 audit
+163a176
+>         A.leaves++;
+165a179
+>         if (!EVAL && minb < AINF / 2) { double g = tot - minb; if (g > A.maxRawGap) A.maxRawGap = g; if (g > 1e-9) A.bndViol++; }   // s84: window sum vs the bounds on the path
+167c181,183
+<         if (!(tot > c - SLACK)) return;
+---
+>         bool lsh = false;   // s84: some early-exit test below passed only because of LOOS
+>         auto pass = [&](double v, double lim) -> bool { if (!(v > lim - LOOS)) return false; if (!(v > lim)) lsh = true; return true; };
+>         if (!pass(tot, c - SLACK)) return;
+170c186
+<         if (!BONUS.empty()) { string cl = canonlink(); auto it = BONUS.find(cl); if (it != BONUS.end()) { tot -= it->second; if (!(tot > c - SLACK)) return; unsigned h = 2166136261u; for (char ch : cl) h = (h ^ (unsigned char)ch) * 16777619u; l3ids.push_back(1700000000 + (int)(h % 400000000u)); } }
+---
+>         if (!BONUS.empty()) { string cl = canonlink(); auto it = BONUS.find(cl); if (it != BONUS.end()) { tot -= it->second; if (it->second < A.minBonus) A.minBonus = it->second; if (!pass(tot, c - SLACK)) return; unsigned h = 2166136261u; for (char ch : cl) h = (h ^ (unsigned char)ch) * 16777619u; l3ids.push_back(1700000000 + (int)(h % 400000000u)); } }
+185c201,202
+<             tot += corr; if (!(tot > c - SLACK)) return;
+---
+>             if (corr > A.maxL3) A.maxL3 = corr;
+>             tot += corr; if (!pass(tot, c - SLACK)) return;
+208c225,226
+<             tot += corr; if (!(tot > c - SLACK)) return;
+---
+>             if (corr > A.maxL3V) A.maxL3V = corr;
+>             tot += corr; if (!pass(tot, c - SLACK)) return;
+209a228
+>         double posF = 0, posQ = 0; bool didF = false, didQ = false;   // s84: positive parts of the f2b / q7m corrections at this leaf
+211c230
+<             double dl = 0;
+---
+>             double dl = 0; didF = true;
+222a242
+>                     if (v > A.maxTermF) A.maxTermF = v; if (v > 0) { posF += v; A.nPosF++; }
+237a258
+>                         if (v > A.maxTermF) A.maxTermF = v; if (v > 0) { posF += v; A.nPosF++; }
+243c264,265
+<             tot += dl; if (!(tot > c - SLACKT)) return;
+---
+>             if (posF > A.maxPosF) A.maxPosF = posF;
+>             tot += dl; if (!pass(tot, c - SLACKT)) return;
+246c268
+<             double dq = 0;
+---
+>             double dq = 0; didQ = true;
+262a285
+>                 if (v > A.maxTermQ) A.maxTermQ = v; if (v > 0) { posQ += v; A.nPosQ++; }
+266c289,290
+<             tot += dq; if (!(tot > c)) return;
+---
+>             if (posQ > A.maxPosQ) A.maxPosQ = posQ;
+>             tot += dq;
+267a292,297
+>         if (didF || didQ) {   // s84: the slack used by every earlier test must cover the positive corrections still to come
+>             if (posF + posQ > A.maxPosFQ) A.maxPosFQ = posF + posQ;
+>             if (posF + posQ > SLACK) A.posOver++;
+>             if (didQ && posQ > SLACKT) A.posOverT++;
+>         }
+>         if (QM && (d == 7 || d == 8)) { if (!pass(tot, c)) return; }
+304c334,335
+<             tot += dk; if (!(tot > c)) return;
+---
+>             if (dk > A.maxKS) A.maxKS = dk;
+>             tot += dk; if (!pass(tot, c)) return;
+322c353,354
+<             tot += dg; if (!(tot > c)) return;
+---
+>             if (dg > A.maxEG) A.maxEG = dg;
+>             tot += dg; if (!pass(tot, c)) return;
+338c370,371
+<             tot += corr; if (!(tot > c)) return;
+---
+>             if (corr > A.maxFY) A.maxFY = corr;
+>             tot += corr; if (!pass(tot, c)) return;
+339a373,379
+>         // s84: every correction is applied; record the final load, check it against the path bound + SLACK, then the TRUE cut
+>         A.leafDone++;
+>         if (tot > A.maxTot) { A.maxTot = tot; for (int q_ = 0; q_ < 2 * d; q_++) A.maxL[q_] = L[q_]; }
+>         if (minb < AINF / 2) { double g = tot - (minb + SLACK); if (g > A.maxTotGap) A.maxTotGap = g; if (g > 1e-9) A.bndViolS++; }
+>         if (!(tot > c)) return;
+>         if (shadow > 0) A.rowsShadow++;
+>         if (lsh) A.rowsLeafShadow++;
+370c410
+<             L[slot] = l; nodes++;
+---
+>             L[slot] = l; nodes++; if (shadow > 0) A.shadowNodes++;
+381a422
+>             double nminb = minb; bool shadowHere = false; double vjust = 0;   // s84
+384c425
+<                 if (k >= 4 && k - 2 <= d - 3) { double v = win(k - 2); if (v <= NEG / 2) ok = false; else exactsum += v; }
+---
+>                 if (k >= 4 && k - 2 <= d - 3) { double v = win(k - 2); if (v <= NEG / 2) ok = false; else { exactsum += v; vjust = v; } }
+392c433,437
+<                         if (bnd + SLACK <= cut() + (mode == 1 ? 1e-12 : -1e-12)) ok = false;   // mode 1: ties cannot raise the max
+---
+>                         if (BREAKB) bnd -= vjust;   // CONTROL ONLY (SEPA_BREAK=1): window k-2 dropped from the bound, the Studio pre-check pattern
+>                         if (bnd < nminb) nminb = bnd;
+>                         const double lim = cut() + (mode == 1 ? 1e-12 : -1e-12);
+>                         if (bnd + SLACK + LOOS <= lim) ok = false;   // mode 1: ties cannot raise the max  (s84: + LOOS)
+>                         else if (bnd + SLACK <= lim) { shadowHere = true; A.shadowBr++; }   // s84: the unloosened search prunes here
+396c441
+<             if (ok) rec(slot + 1);
+---
+>             if (ok) { const double sm = minb; minb = nminb; if (shadowHere) shadow++; rec(slot + 1); if (shadowHere) shadow--; minb = sm; }
+410a456,458
+>     if (const char *e_ = getenv("SEPA_LOOSEN")) LOOS = atof(e_);   // s84 audit knobs
+>     if (const char *e_ = getenv("SEPA_BREAK")) BREAKB = atoi(e_);
+>     if (const char *e_ = getenv("SEPA_ARGVLOG")) { FILE *lf_ = fopen(e_, "a"); if (lf_) { for (int i = 0; i < argc; i++) fprintf(lf_, "%s%s", argv[i], i + 1 < argc ? " " : "\n"); fclose(lf_); } }
+541a590,606
+>     {   // s84 audit summary (threads merged)
+>         AStat S; S.maxL[0] = -1;
+>         for (auto &cx : C) { const AStat &a = cx.A;
+>             S.shadowBr += a.shadowBr; S.shadowNodes += a.shadowNodes; S.leaves += a.leaves; S.leafDone += a.leafDone; S.rowsShadow += a.rowsShadow; S.rowsLeafShadow += a.rowsLeafShadow;
+>             S.bndViol += a.bndViol; S.bndViolS += a.bndViolS; S.posOver += a.posOver; S.posOverT += a.posOverT; S.nPosF += a.nPosF; S.nPosQ += a.nPosQ;
+>             S.maxRawGap = max(S.maxRawGap, a.maxRawGap); S.maxTotGap = max(S.maxTotGap, a.maxTotGap); S.maxPosF = max(S.maxPosF, a.maxPosF); S.maxPosQ = max(S.maxPosQ, a.maxPosQ);
+>             S.maxPosFQ = max(S.maxPosFQ, a.maxPosFQ); S.maxTermF = max(S.maxTermF, a.maxTermF); S.maxTermQ = max(S.maxTermQ, a.maxTermQ); S.maxL3 = max(S.maxL3, a.maxL3); S.maxL3V = max(S.maxL3V, a.maxL3V);
+>             S.minBonus = min(S.minBonus, a.minBonus); S.maxKS = max(S.maxKS, a.maxKS); S.maxEG = max(S.maxEG, a.maxEG); S.maxFY = max(S.maxFY, a.maxFY);
+>             if (a.maxTot > S.maxTot) { S.maxTot = a.maxTot; for (int q_ = 0; q_ < 2 * d; q_++) S.maxL[q_] = a.maxL[q_]; } }
+>         string mw(d, '-'), ms(d, '-'); if (S.maxTot > -AINF / 2) for (int i = 0; i < d; i++) { mw[i] = char('5' + S.maxL[2 * i]); ms[i] = char('5' + S.maxL[2 * i + 1]); }
+>         fprintf(stderr, "jsepf_audit: d=%d mode=%d thr=%.12f LOOSEN=%.6g BREAK=%d SLACK=%.9g SLACKT=%.9g nodes=%ld\n", d, mode, thr, LOOS, BREAKB, SLACK, SLACKT, nodes);
+>         fprintf(stderr, "jsepf_audit: shadowBr=%ld shadowNodes=%ld leaves=%ld leafDone=%ld rowsShadow=%ld rowsLeafShadow=%ld\n", S.shadowBr, S.shadowNodes, S.leaves, S.leafDone, S.rowsShadow, S.rowsLeafShadow);
+>         fprintf(stderr, "jsepf_audit: bndViol=%ld maxRawGap=%.6g bndViolS=%ld maxTotGap=%.6g\n", S.bndViol, S.maxRawGap, S.bndViolS, S.maxTotGap);
+>         fprintf(stderr, "jsepf_audit: posF: n=%ld maxTerm=%.9g maxLeaf=%.9g | posQ: n=%ld maxTerm=%.9g maxLeaf=%.9g | maxLeaf(F+Q)=%.9g posOver(>SLACK)=%ld posOverT(>SLACKT)=%ld\n", S.nPosF, S.maxTermF, S.maxPosF, S.nPosQ, S.maxTermQ, S.maxPosQ, S.maxPosFQ, S.posOver, S.posOverT);
+>         fprintf(stderr, "jsepf_audit: block maxima: L3 %.6g L3V %.6g bonusMin %.6g KS %.6g EDGE %.6g FY2 %.6g\n", S.maxL3, S.maxL3V, S.minBonus, S.maxKS, S.maxEG, S.maxFY);
+>         if (S.maxTot > -AINF / 2) fprintf(stderr, "jsepf_audit: max final load over leaves that reached the end: %.12f %s %s\n", S.maxTot, mw.c_str(), ms.c_str()); else fprintf(stderr, "jsepf_audit: max final load: no leaf reached the end\n");
+>     }
