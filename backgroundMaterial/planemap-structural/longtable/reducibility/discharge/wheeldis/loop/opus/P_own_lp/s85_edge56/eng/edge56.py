@@ -531,3 +531,53 @@ def cmd_gkdbg():
     y = np.zeros(len(ROOTS)); MV2 = lambda sg: None
     write_l3q(); F2B_EVAL[0] = ef; W = window_table_R2(7, y, {}, MV2); rr, dt, ni = run_sep(7, W, 1e9, 1, 0); F2B_EVAL[0] = None
     log('gkdbg: jsepf eval %s' % rr)
+def cmd_dualexport():
+    """s85: every dual-support row of cert= with its labels and its generic-key coefficients (W6 pricing input) -> out= (JSON).
+    Receivers: credit 'exact' (d = 7 under gkleaf: KEYSPEC picture) or 'window' (gkwin window bound, d >= 8); window rows also carry
+    ks_exact_picture (the KEYSPEC-picture coefficients) for comparison.  Senders: apex classes H (S = {5,6}, B = {7,8,9}) and the
+    class of each link 6's private.  cons2: apex classes (apexcls).  colsum[key] = sum over rows of w x coefficient (cert signs)."""
+    from fractions import Fraction as Fr
+    load_patterns(); l3q_load(); kt_load()
+    raw = open(OPT['cert'], 'rb').read(); C = json.loads(raw)
+    SR = {(wd, tuple(map(str, b))): cf for wd, cf, b in R2_sender_rows()}
+    rows = []; colsum = collections.Counter(); kinds = collections.Counter(); wk = collections.Counter(); nwin_diff = 0
+    for c in C:
+        r = c['row']; w = float(Fr(c['w'])) if isinstance(c['w'], str) else float(c['w'])
+        e = {'w': w}
+        if isinstance(c['w'], str): e['w_exact'] = c['w']
+        k = r[0]; ks = {}
+        if k == 'receiverR2':
+            d = int(r[1]); lk = [int(ch) for ch in r[2]]; sv = [int(ch) for ch in r[3]]
+            mode = 'exact' if (not GKWIN or (GKLEAF and d == 7)) else 'window'
+            e.update(type='receiver', d=d, link=r[2], apex=r[3], credit=mode,
+                     link_has_8plus=any(x >= 8 for x in lk), apex_has_8plus=any(x >= 8 for x in sv))
+            ks = {nm[1]: v for nm, v in gk_recv_terms(d, lk, sv).items()}
+            if mode == 'window':
+                ex = {nm[1]: int(v) for nm, v in _gk_recv_terms_exact(d, lk, sv).items()}
+                e['ks_exact_picture'] = ex
+                if ex != {n: int(v) for n, v in ks.items()}: nwin_diff += 1
+        elif k == 'senderR2':
+            cf = SR[(r[1], tuple(map(str, r[2])))]
+            b = list(r[2]); i = b.index('|'); H = b[:i]; Fb = b[i + 1:]; assert len(H) == 5, 'dualexport: needs hat5'
+            w5 = [int(ch) for ch in r[1]]; sixes = [j for j in range(5) if w5[j] == 6]
+            e.update(type='sender', link=r[1], apex_classes=''.join('B' if int(x) else 'S' for x in H),
+                     six_private_classes={str(j): ('B' if int(x) else 'S') for j, x in zip(sixes, Fb)}, label_bits=[str(x) for x in r[2]])
+            ks = {nm[1]: v for nm, v in cf.items() if nm[0] == 'ks'}
+        elif k == 'cons2':
+            L = tuple(int(x) for x in r[1]); s = tuple(int(x) for x in r[2])
+            e.update(type='cons2', link=''.join(map(str, L)), apex=''.join(map(str, s)))
+            if AC: e['apex_classes'] = ''.join('B' if ap(x) >= 7 else 'S' for x in s)
+            ks = {nm[1]: v for nm, v in gk_cons2_terms(L, s).items()}
+        else:
+            e.update(type=k, sig=r[1], key=r[2])
+        e['ks'] = {n: int(v) for n, v in ks.items() if v}
+        for n, v in e['ks'].items(): colsum[n] += w * v
+        kinds[e['type']] += 1; wk[e['type']] += abs(w); rows.append(e)
+    rows.sort(key=lambda e: -abs(e['w']))
+    meta = {'cert': OPT['cert'], 'cert_md5': hashlib.md5(raw).hexdigest(), 'gkeys': GKFILE, 'gkeys_md5': GKMD5, 'flags': sorted(FLAGS),
+            'sign_convention': 'receiver w <= 0 (load <= d - 6 + t), sender w >= 0 (sum >= 1 - t), cons2 w <= 0 (c6le: in - out <= t), mrow* w <= 0 (h - M <= 0 etc.)',
+            'coef_convention': 'ks coefficient: receiver / cons2 IN - OUT, sender OUT - IN (IN counts possible matches, OUT sure matches)',
+            'rows_by_type': dict(kinds), 'abs_w_by_type': {k_: round(v, 9) for k_, v in wk.items()},
+            'window_rows_where_window_differs_from_picture': nwin_diff, 'keys': GKNAMES}
+    json.dump({'meta': meta, 'colsum': {n: colsum.get(n, 0.0) for n in GKNAMES}, 'rows': rows}, open(OPT['out'], 'w'), separators=(',', ':'))
+    log('DUALEXPORT: %d rows %s -> %s; window rows differing from the KEYSPEC picture %d' % (len(rows), dict(kinds), OPT['out'], nwin_diff))
