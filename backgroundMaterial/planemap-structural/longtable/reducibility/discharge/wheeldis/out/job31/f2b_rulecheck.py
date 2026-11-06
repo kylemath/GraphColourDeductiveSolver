@@ -33,7 +33,7 @@ names = []
 for fn in (KD, KC):
     for l in open(fn):
         if re.match(r'^[epf]\d+_\S+ r=\d+ ', l): names.append(l.split()[0])
-names = list(dict.fromkeys(names)); want = set(names); kc = {}
+names = list(dict.fromkeys(names)); want = set(names); kc = {}; RAWKC = {}   # RAWKC: raw kc lines (used only by DERIVE_ROT)
 for fn in sorted(glob.glob(os.path.join(HERE, 'loop', 'k[0-9]*', '*'))):
     if not os.path.isfile(fn): continue
     try: lines = open(fn).read().splitlines()
@@ -41,7 +41,7 @@ for fn in sorted(glob.glob(os.path.join(HERE, 'loop', 'k[0-9]*', '*'))):
     for l in lines:
         f = l.split()
         if len(f) == 5 and f[0] in want and f[0] not in kc and f[1].isdigit() and f[2].isdigit() and ';' in f[3] + f[4]:
-            kc[f[0]] = G['kcline'](l, 'k3x')
+            kc[f[0]] = G['kcline'](l, 'k3x'); RAWKC[f[0]] = l
 assert not [n for n in names if n not in kc]
 FORB += [kc[n] for n in names]; _seen = {c[0] for c in FORB}
 for _fn in os.environ.get('EXTRA_KC', '').split(','):
@@ -50,9 +50,17 @@ for _fn in os.environ.get('EXTRA_KC', '').split(','):
         if not _l.strip() or _l[0].isspace() or _l.startswith('#'): continue
         _f = _l.split()
         if len(_f) >= 5 and _f[1].isdigit() and _f[2].isdigit() and ';' in _f[3] + _f[4]:
-            _c = G['kcline'](_l, 'extra')
+            _c = G['kcline'](_l, 'extra'); RAWKC.setdefault(_c[0], _l)
             if _c[0] not in _seen: _seen.add(_c[0]); FORB.append(_c)
 print('forbidden set %d configurations' % len(FORB), flush=True)
+ROT = os.environ.get('DERIVE_ROT') == '1'   # opt-in (default off): keep only rotation-preserving embeddings (ROT, ST-8)
+if ROT:
+    sys.path.insert(0, os.path.join(HERE, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+    ROTK = {n: rk for n, rk in RC.rsst_rotations(G['CONF'])}
+    for c in FORB:
+        if c[0] not in ROTK and c[0] in RAWKC: ROTK[c[0]] = RC.kc_rotation(RAWKC[c[0]])
+    print('DERIVE_ROT: rotation systems for %d / %d configurations (%d without one: never rotation-preserving)' % (
+        sum(ROTK.get(c[0]) is not None for c in FORB), len(FORB), sum(ROTK.get(c[0]) is None for c in FORB)), flush=True)
 
 def frame(d, w0, Z):
     G['D'] = d; G['LK'] = [w0] + [5 if (Z >> k) & 1 else 6 for k in range(1, d)]; G['SV'] = {}
@@ -74,11 +82,19 @@ def job(arg):
     fd = {('w', 0): w0}
     if d in (7, 8): fd[('u',)] = d
     Ps = set(P); pa2 = {x: pa[x] & Ps for x in P}; pf2 = {f for f in pf if f <= Ps}
-    T = targets(d, w0, pa); tset = set(T.values()); out = set(); PRV = {}
+    T = targets(d, w0, pa); tset = set(T.values()); out = set(); PRV = {}; RFR = {}
     for cfg in FORB:
         for e in G['embeddings'](cfg, P, pa2, pf2, fd):
             r = tuple(sorted((v, cfg[3][u]) for u, v in e if v not in fd))
             if any(v in tset for v, _ in r):
+                if ROT:
+                    rk = ROTK.get(cfg[0]); rd_ = dict(r)
+                    if rk is None: continue
+                    lk = [w0] + [rd_.get(('w', k), 5 if (Z >> k) & 1 else 6) for k in range(1, d)]
+                    fk = (tuple(lk), tuple(sorted((v, g_) for v, g_ in r if v[0] in ('s', 'p'))))
+                    if fk not in RFR: RFR[fk] = RC.frame_rotation(G, d, lk, {}, dict(fk[1]))
+                    frm = RFR[fk]; inv_ = frm[2]
+                    if any(v not in inv_ for _, v in e) or not RC.rot_ok({u: inv_[v] for u, v in e}, rk, frm): continue
                 out.add(r)
                 if PROV: PRV.setdefault(r, set()).add(cfg[0])   # provenance (logging only): every justifying configuration
     for k in range(1, d):   # structure sanity: s_{k-1} s_k adjacent iff w_k = 5

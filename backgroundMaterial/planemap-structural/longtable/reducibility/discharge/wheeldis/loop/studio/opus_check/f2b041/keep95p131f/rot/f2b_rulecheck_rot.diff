@@ -1,0 +1,34 @@
+36c36
+< names = list(dict.fromkeys(names)); want = set(names); kc = {}
+---
+> names = list(dict.fromkeys(names)); want = set(names); kc = {}; RAWKC = {}   # RAWKC: raw kc lines (used only by DERIVE_ROT)
+44c44
+<             kc[f[0]] = G['kcline'](l, 'k3x')
+---
+>             kc[f[0]] = G['kcline'](l, 'k3x'); RAWKC[f[0]] = l
+53c53
+<             _c = G['kcline'](_l, 'extra')
+---
+>             _c = G['kcline'](_l, 'extra'); RAWKC.setdefault(_c[0], _l)
+55a56,63
+> ROT = os.environ.get('DERIVE_ROT') == '1'   # opt-in (default off): keep only rotation-preserving embeddings (ROT, ST-8)
+> if ROT:
+>     sys.path.insert(0, os.path.join(HERE, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+>     ROTK = {n: rk for n, rk in RC.rsst_rotations(G['CONF'])}
+>     for c in FORB:
+>         if c[0] not in ROTK and c[0] in RAWKC: ROTK[c[0]] = RC.kc_rotation(RAWKC[c[0]])
+>     print('DERIVE_ROT: rotation systems for %d / %d configurations (%d without one: never rotation-preserving)' % (
+>         sum(ROTK.get(c[0]) is not None for c in FORB), len(FORB), sum(ROTK.get(c[0]) is None for c in FORB)), flush=True)
+77c85
+<     T = targets(d, w0, pa); tset = set(T.values()); out = set(); PRV = {}
+---
+>     T = targets(d, w0, pa); tset = set(T.values()); out = set(); PRV = {}; RFR = {}
+81a90,97
+>                 if ROT:
+>                     rk = ROTK.get(cfg[0]); rd_ = dict(r)
+>                     if rk is None: continue
+>                     lk = [w0] + [rd_.get(('w', k), 5 if (Z >> k) & 1 else 6) for k in range(1, d)]
+>                     fk = (tuple(lk), tuple(sorted((v, g_) for v, g_ in r if v[0] in ('s', 'p'))))
+>                     if fk not in RFR: RFR[fk] = RC.frame_rotation(G, d, lk, {}, dict(fk[1]))
+>                     frm = RFR[fk]; inv_ = frm[2]
+>                     if any(v not in inv_ for _, v in e) or not RC.rot_ok({u: inv_[v] for u, v in e}, rk, frm): continue

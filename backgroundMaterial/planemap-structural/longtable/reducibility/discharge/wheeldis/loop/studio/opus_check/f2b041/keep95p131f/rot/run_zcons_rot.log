@@ -1,0 +1,36 @@
+forbidden set 12268 configurations
+DERIVE_ROT: rotation systems for 12268 / 12268 configurations (0 without one: never rotation-preserving)
+structures to enumerate: 640
+forbidden set 12268 configurations
+forbidden set 12268 configurations
+forbidden set 12268 configurations
+forbidden set 12268 configurations
+forbidden set 12268 configurations
+DERIVE_ROT: rotation systems for 12268 / 12268 configurations (0 without one: never rotation-preserving)
+DERIVE_ROT: rotation systems for 12268 / 12268 configurations (0 without one: never rotation-preserving)
+DERIVE_ROT: rotation systems for 12268 / 12268 configurations (0 without one: never rotation-preserving)
+DERIVE_ROT: rotation systems for 12268 / 12268 configurations (0 without one: never rotation-preserving)
+DERIVE_ROT: rotation systems for 12268 / 12268 configurations (0 without one: never rotation-preserving)
+  0 / 640 structures
+  50 / 640 structures
+  100 / 640 structures
+  150 / 640 structures
+  200 / 640 structures
+  250 / 640 structures
+  300 / 640 structures
+  350 / 640 structures
+  400 / 640 structures
+  450 / 640 structures
+  500 / 640 structures
+  550 / 640 structures
+  600 / 640 structures
+PROVENANCE written loop/studio/opus_check/f2b041/keep95p131f/rot/rule_provenance_zcons_rot.tsv
+DERIVE: {'d7_w6': 1505, 'd8_w6': 1112, 'd9_w6': 87, 'd7_w7': {'1': 923, '-1': 923}, 'd8_w7': {'1': 712, '-1': 712}} -> loop/studio/opus_check/f2b041/keep95p131f/rot/rules_zcons_rot.json
+d7_w6 side 0: 1386 rules, target ('p', 0, 1): {'PASS': 1336, 'structures_checked': 5642, 'FAIL': 50}
+d8_w6 side 0: 1176 rules, target ('p', 0, 1): {'PASS': 1030, 'structures_checked': 6638, 'FAIL': 146}
+d9_w6 side 0: 60 rules, target ('p', 0, 1): {'FAIL': 12, 'structures_checked': 2592, 'PASS': 48}
+d7_w7 side 1: 938 rules, target ('p', 0, 2): {'PASS': 918, 'structures_checked': 3639, 'FAIL': 20}
+d7_w7 side -1: 938 rules, target ('p', 0, 1): {'PASS': 918, 'structures_checked': 3639, 'FAIL': 20}
+d8_w7 side 1: 728 rules, target ('p', 0, 2): {'PASS': 705, 'structures_checked': 3581, 'FAIL': 23}
+d8_w7 side -1: 728 rules, target ('p', 0, 1): {'PASS': 705, 'structures_checked': 3581, 'FAIL': 23}
+TOTAL: PASS 5660 FAIL 294
