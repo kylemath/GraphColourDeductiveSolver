@@ -963,7 +963,7 @@ def cmd_orientR2():
 def cmd_solveR2():
     import highspy
     load_patterns()
-    xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]
+    xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]; LEXT = []   # s85: lext phase-1 values
     p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else '', 'o' if XO else '') + (('g' + GKMD5) if GKON else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
@@ -1188,6 +1188,23 @@ def cmd_solveR2():
             os.replace(injf + '.reading', injf + '.done'); rowlog.flush(); log('  inject: %d new rows admitted from %s' % (ni_, injf))
         if 'ipm0' in FLAGS: h.setOptionValue('solver', 'ipm' if it == 0 else 'simplex')
         LPMAX = float(OPT.get('lpmax', '0'))   # s33z: per-LP time limit (s); on a stalled simplex re-run with IPM (+ simplex polish)
+        if 'lext' in FLAGS:   # s85 (swarm 05:45Z): lexicographic pure t. Phase 1: minimise t alone on the current rows (t1, a valid lower
+            # estimate of the family's t* on this stack, [M] until lowerR2 checks its cert); phase 2 (the LP below): the run's own costs
+            # (penalties) with t <= t1 + 1e-9; separation then happens at the phase-2 point.  lextcert: phase-1 cert written when t1 > 1e-9.
+            tl_ = time.time(); nC_ = h.getNumCol(); ix_ = np.arange(nC_, dtype=np.int32); C_ = np.array(h.getCols(nC_, ix_)[2], dtype=np.float64)
+            z_ = np.zeros(nC_); z_[jt] = 1.0; h.changeColsCost(nC_, ix_, z_); h.changeColBounds(jt, -highspy.kHighsInf, highspy.kHighsInf)
+            if LPMAX: h.setOptionValue('time_limit', h.getRunTime() + LPMAX)
+            h.run()
+            if LPMAX and h.getModelStatus() == highspy.HighsModelStatus.kTimeLimit:
+                h.setOptionValue('time_limit', highspy.kHighsInf); h.setOptionValue('solver', 'ipm'); h.run(); h.setOptionValue('solver', 'simplex'); h.run()
+            if LPMAX: h.setOptionValue('time_limit', highspy.kHighsInf)
+            st1_ = h.modelStatusToString(h.getModelStatus()); s1_ = h.getSolution(); t1_ = float(s1_.col_value[jt]); LEXT.append(t1_)
+            if 'lextcert' in FLAGS and t1_ > 1e-9:
+                cf_ = os.path.join(HERE, 'cert_%s_p1.json' % OPT.get('tag', 'run')); rd_ = s1_.row_dual
+                json.dump([{'w': float(dv), 'row': info[i]} for i, dv in enumerate(rd_) if abs(dv) > 1e-11], open(cf_, 'w'), indent=0)
+                dumpsol(np.array(s1_.col_value), os.path.join(HERE, 'sol_%s_p1.json' % OPT.get('tag', 'run')))
+            log('  lext it %d: phase 1 (t alone) t1 = %.12f, status %s, %.0fs; best t1 so far %.12f%s' % (it, t1_, st1_, time.time() - tl_, max(LEXT), ('; phase-1 cert written' if 'lextcert' in FLAGS and t1_ > 1e-9 else '')))
+            h.changeColsCost(nC_, ix_, C_); h.changeColBounds(jt, -highspy.kHighsInf, t1_ + 1e-9)
         if LPMAX: h.setOptionValue('time_limit', h.getRunTime() + LPMAX)
         h.run()
         if LPMAX and h.getModelStatus() == highspy.HighsModelStatus.kTimeLimit:
@@ -1198,6 +1215,7 @@ def cmd_solveR2():
         if 'ipm0' in FLAGS and it == 0 and 'polish' in FLAGS:   # stage 33: re-run simplex from the IPM crossover basis (vertex duals for lowerR2)
             t_ = time.time(); h.setOptionValue('solver', 'simplex'); h.run(); log('  polish: simplex from the IPM basis %.1fs, status %s' % (time.time() - t_, h.modelStatusToString(h.getModelStatus())))
         xv = np.array(h.getSolution().col_value); t = xv[jt]
+        if 'lext' in FLAGS: h.changeColBounds(jt, -highspy.kHighsInf, highspy.kHighsInf); log('  lext it %d: phase 2 status %s, t = %.12f' % (it, h.modelStatusToString(h.getModelStatus()), t))
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         if 'q7rc' in FLAGS:   # s67: report the three W5 keys (value, reduced cost = col_dual, min convention) and the q mass
             cdl = h.getSolution().col_dual; kk3 = [(7, 6, 6, 5, 5, 5, 7), (7, 5, 5, 5, 6, 6, 7), (7, 5, 7, 5, 5, 6, 6)]
