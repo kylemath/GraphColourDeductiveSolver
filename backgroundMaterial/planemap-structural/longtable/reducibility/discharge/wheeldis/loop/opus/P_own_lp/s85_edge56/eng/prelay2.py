@@ -1215,7 +1215,7 @@ def cmd_solveR2():
         if 'ipm0' in FLAGS and it == 0 and 'polish' in FLAGS:   # stage 33: re-run simplex from the IPM crossover basis (vertex duals for lowerR2)
             t_ = time.time(); h.setOptionValue('solver', 'simplex'); h.run(); log('  polish: simplex from the IPM basis %.1fs, status %s' % (time.time() - t_, h.modelStatusToString(h.getModelStatus())))
         xv = np.array(h.getSolution().col_value); t = xv[jt]
-        if 'lext' in FLAGS: h.changeColBounds(jt, -highspy.kHighsInf, highspy.kHighsInf); log('  lext it %d: phase 2 status %s, t = %.12f' % (it, h.modelStatusToString(h.getModelStatus()), t))
+        if 'lext' in FLAGS: st2_ = h.modelStatusToString(h.getModelStatus()); h.changeColBounds(jt, -highspy.kHighsInf, highspy.kHighsInf); log('  lext it %d: phase 2 status %s, t = %.12f' % (it, st2_, t))   # status read before the bound reset (which clears it)
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         if 'q7rc' in FLAGS:   # s67: report the three W5 keys (value, reduced cost = col_dual, min convention) and the q mass
             cdl = h.getSolution().col_dual; kk3 = [(7, 6, 6, 5, 5, 5, 7), (7, 5, 5, 5, 6, 6, 7), (7, 5, 7, 5, 5, 6, 6)]
