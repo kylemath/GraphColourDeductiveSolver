@@ -234,3 +234,279 @@ def cmd_gkselftest():
             if nm <= 3: log('  gkselftest mirror: %s %s A %s: pay %s / %s' % (kind, w, A, list(r0[0]), list(r1[0])))
     log('  gkselftest mirror: %d pictures, %d with K != mirror(K)' % (int(OPT.get('Nmir', '6000')), nm)); bad += nm
     log('GKSELFTEST: %s (%d mismatches)' % ('PASS' if bad == 0 else 'FAIL', bad))
+# ---------------- full-stack receivers: window bound of the IN (payee) side, flag gkwin ----------------
+# For the separators (jsepf / jsep3 / Karp tail all read WIN) the payee credit of a d >= 7 centre is a WINDOW BOUND: per IN slot, the
+# window centred at the payer w_j (w_{j-2..j+2}, s_{j-2..j+1}) is fixed and every letter outside it is OR-ed out position by position;
+# f2b extras are dropped.  Both only enlarge each position's set, so the bound >= the exact (KEYSPEC) IN count.  With gkwin the Python
+# receiver row uses the same bound (so rows, WIN and every separator agree exactly, as Team D's EDGE does); without it the row is exact.
+# The OUT (payer) side of a d = 7 centre is exact and is applied at the jsepf leaf (argv[14], Team D's 7802 format; payer-7 keys only).
+GKWIN = 'gkwin' in FLAGS
+GKMD5 = hashlib.md5(open(GKFILE, 'rb').read()).hexdigest()[:8] if GKON else ''
+_GKPOS = {}
+def _gk_posmasks(U):
+    """{(payer letter, sg): (10, 5^9) uint8 position masks} for the IN slot of the window centred at the payer (window bound)"""
+    if U in _GKPOS: return _GKPOS[U]
+    kt_load(); l3q_load()
+    g = np.indices((5,) * 9, dtype=np.int8).reshape(9, -1)
+    B = lambda x: (np.uint8(1) << x.astype(np.uint8)).astype(np.uint8)
+    lw = lambda r: g[r + 2]; la = lambda t: g[5 + t + 2]
+    AM = (31 & ~np.asarray(KT[U]).astype(np.int64)).astype(np.uint8)          # amask(U, w-2, w-1, w+1, w+2, s-2, s-1, s0, s+1) - 5
+    P6 = AM[g[0], g[1], g[3], g[4], g[5], g[6], g[7], g[8]]                   # the payer 6's private
+    AMm = np.bitwise_or.reduce(np.bitwise_or.reduce(AM, axis=4), axis=0)        # six at j-1: (w_{j-2}, w_j, w_{j+1}, s_{j-2}, s_{j-1}, s_j)
+    AMp = np.bitwise_or.reduce(np.bitwise_or.reduce(AM, axis=7), axis=3)        # six at j+1: (w_{j-1}, w_j, w_{j+2}, s_{j-1}, s_j, s_{j+1})
+    six_m = AMm[g[0], g[2], g[3], g[5], g[6], g[7]]; six_p = AMp[g[1], g[2], g[4], g[6], g[7], g[8]]
+    full = np.full(g.shape[1], 31, dtype=np.uint8)
+    if U == 7:
+        # L3T[(sg, c, w2, w3, w4, ap, o)] for c, ap <= 6; OR over the letters outside the window
+        L3 = {sg: np.zeros((2, 5, 5, 5, 2, 5), dtype=np.uint8) for sg in (1, -1)}
+        for (sg, c, w2, w3, w4, ap_, o_), m in L3T.items():
+            assert c <= 6 and ap_ <= 6
+            L3[sg][c - 5, w2 - 5, w3 - 5, w4 - 5, ap_ - 5, o_ - 5] |= np.uint8(m)
+        L34 = {sg: np.bitwise_or.reduce(L3[sg], axis=3) for sg in (1, -1)}             # OR over w4: [c, w2, w3, ap, o]
+        L334 = {sg: np.bitwise_or.reduce(L34[sg], axis=2) for sg in (1, -1)}           # OR over w3, w4: [c, w2, ap, o]
+        def l3(sg, c, w2, ap_, o_, w3=None):   # c, ap as letter indices; wildcard unless both <= 6
+            ok = (c <= 1) & (ap_ <= 1); c1 = np.minimum(c, 1); a1 = np.minimum(ap_, 1)
+            v = L334[sg][c1, w2, a1, o_] if w3 is None else L34[sg][c1, w2, w3, a1, o_]
+            return np.where(ok, v, 31).astype(np.uint8)
+        P7m = l3(-1, lw(-1), lw(-2), la(-1), la(0))                                 # payer 7: private next to s_{j-1}
+        P7p = l3(1, lw(1), lw(2), la(0), la(-1))                                    # payer 7: private next to s_j
+        sev_m = l3(1, lw(0), lw(1), la(-1), la(-2), w3=lw(2))                       # 7 at j-1: its private next to s_{j-1}
+        sev_p = l3(-1, lw(0), lw(-1), la(0), la(1), w3=lw(-2))                      # 7 at j+1: its private next to s_j
+    else: P7m = P7p = sev_m = sev_p = full
+    def nb(r, five, six, sev):   # the neighbour W[j+r] (r = -1 / +1)'s vertex beyond its apex next to w_j
+        x = lw(r)
+        return np.where(x == 0, five, np.where(x == 1, six, np.where(x == 2, sev, 31))).astype(np.uint8)
+    SAm = nb(-1, B(la(-2)), six_m, sev_m)                                         # pin(j-1, 1)
+    SAp = nb(1, B(la(1)), six_p, sev_p)                                           # pin(j+1, 0)
+    out = {}
+    for u, (p0, p1) in ((5, (B(la(0)), B(la(-1)))), (6, (P6, P6)), (7, (P7m, P7p))):   # pin(j, 0), pin(j, 1)
+        out[(u, 1)] = np.stack([B(lw(-1)), B(la(-1)), p0, B(lw(1)), B(la(0)), p1, SAm, SAp, B(lw(-2)), B(lw(2))])
+        out[(u, -1)] = np.stack([B(lw(1)), B(la(0)), p1, B(lw(-1)), B(la(-1)), p0, SAp, SAm, B(lw(2)), B(lw(-2))])
+        out[(u, 'payer')] = (g[2] == u - 5)
+    _GKPOS[U] = out; return out
+_GKTAB = {}
+def gk_tables(k, U):
+    """(T+, T-) uint8 over the 5^9 window index centred at the payer: window bound of key k's IN slot at a centre of degree U; None
+    if the key cannot pay a degree-U centre"""
+    ck = (k, U)
+    if ck in _GKTAB: return _GKTAB[ck]
+    key = GKEYS[k]
+    if not (key['vm'] & _gkbit(U)) or not (key['um'] & 7): _GKTAB[ck] = None; return None
+    res = []
+    for sg in (1, -1):
+        tot = np.zeros(5 ** 9, dtype=np.uint8)
+        for u in (5, 6, 7):
+            if not (key['um'] & _gkbit(u)): continue
+            PM = _gk_posmasks(U); ok = PM[(u, 'payer')].copy(); V = PM[(u, sg)]
+            for p in range(10):
+                if key['m'][p] != 31: ok &= (V[p] & key['m'][p]) != 0
+            tot += ok.astype(np.uint8)
+        res.append(tot)
+    _GKTAB[ck] = tuple(res); return _GKTAB[ck]
+def _gk_widx(w, s, j):
+    n = len(w); ix = 0
+    for v in [w[(j + o) % n] for o in (-2, -1, 0, 1, 2)] + [s[(j + o) % n] for o in (-2, -1, 0, 1)]: ix = ix * 5 + (min(v, 9) - 5)
+    return ix
+def gk_recv_terms_win(d, w, s):
+    """receiver key terms with the window-bound IN side and the exact OUT side"""
+    U = min(d, 9); A, PV = gk_recv_picture(d, w, s); pay, _ = gk_counts(d, w, A, PV); cf = collections.Counter()
+    ix = [_gk_widx(w, s, j) for j in range(d)]
+    for k, nm_ in enumerate(GKNAMES):
+        T = gk_tables(k, U); get = 0
+        if T is not None: get = sum(int(T[0][i_]) + int(T[1][i_]) for i_ in ix)
+        v = get - int(pay[k])
+        if v: cf[('ks', nm_)] = v
+    return cf
+GKLEAF = 'gkleaf' in FLAGS   # with gkwin: d = 7 rows exact (jsepf_gk corrects the window bound at the leaf, argv[15]); d >= 8 rows window bound
+assert GKWIN or not GKLEAF, 'gkleaf needs gkwin'
+if GKWIN:
+    _gk_recv_terms_exact = gk_recv_terms
+    def gk_recv_terms(d, w, s):
+        if not GKON: return collections.Counter()
+        l3q_load(); kt_load()
+        if GKLEAF and d == 7: return _gk_recv_terms_exact(d, w, s)
+        return gk_recv_terms_win(d, w, s)
+if GKLEAF: BINF = os.path.join(HERE, 'bin', 'jsepf_gk')
+_GK_INPOS = {p_: i for i, p_ in enumerate(GK_POS)}
+def gkin_write():
+    """argv[15] for jsepf_gk at d = 7 (magic 7804): the keys whose payee set contains 7 (IN slots of the d = 7 centre, exact at the leaf),
+    then UBW[5^9] = sum over those keys of amount x (T+ + T-) at U = 7 (the window bound window_table_R2 added to WIN)"""
+    fn = os.path.join(WORK, 'gkin_d7.bin'); ks = [k for k in range(len(GKEYS)) if gk_tables(k, 7) is not None]
+    b_ = [np.array([7804, len(ks)], dtype='<i4').tobytes()]; UBW = np.zeros(5 ** 9)
+    for k in ks:
+        key = GKEYS[k]; v = float(KSV.get(key['name'], 0.0)); assert v >= -1e-12, 'gkeys: negative amount %s %r' % (key['name'], v); v = max(v, 0.0)
+        assert 0 < (int(key['um']) & 7) and not (int(key['um']) & 24)
+        cl_ = [(i, int(key['m'][i])) for i in range(10) if key['m'][i] != 31]
+        b_.append(np.array([v], dtype='<f8').tobytes()); b_.append(np.array([int(key['um']) & 7, len(cl_)] + [z for c_ in cl_ for z in c_], dtype='<i4').tobytes())
+        if v != 0.0: T = gk_tables(k, 7); UBW += v * (T[0].astype(np.float64) + T[1].astype(np.float64))
+    b_.append(UBW.astype('<f8').tobytes()); open(fn, 'wb').write(b''.join(b_)); return fn
+GKWPLANT = 'gkwplant' in FLAGS
+_orig_window_table_R2_gk = window_table_R2
+def window_table_R2(U, y, x, MV2):
+    W = _orig_window_table_R2_gk(U, y, x, MV2)
+    if GKON:
+        assert GKWIN, 'gkeys: separators need gkwin (window-bound receiver rows)'
+        for k, nm_ in enumerate(GKNAMES):
+            v = KSV.get(nm_, 0.0); T = gk_tables(k, U)
+            if v != 0.0 and T is not None: W += v * (T[0].astype(np.float64) + (0 if GKWPLANT else T[1].astype(np.float64))).reshape((5,) * 9)   # GKWPLANT: CONTROL ONLY (F2B-SELFTEST must FAIL)
+    return W
+_orig_class_table_R2_gk = class_table_R2
+def class_table_R2(xon):
+    """mode-2 classes: fold every key's payee bound signature (all U, both chiralities) into the class of every window"""
+    C = _orig_class_table_R2_gk(xon)
+    if not GKON: return C
+    tabs = [(k, U) for k in range(len(GKEYS)) for U in (7, 8, 9) if gk_tables(k, U) is not None]
+    nb_ = 2 * len(tabs); P = np.zeros((5 ** 9, max(1, (2 * nb_ + 7) // 8)), dtype=np.uint8); b_ = 0
+    for k, U in tabs:
+        for T in gk_tables(k, U):
+            for bit in (1, 2):   # the table value is 0..2 (two payer letters can share a chirality only if um has several letters)
+                P[:, b_ // 8] |= (((T & bit) != 0).astype(np.uint8) << np.uint8(b_ % 8)); b_ += 1
+    u_, inv = np.unique(P, axis=0, return_inverse=True); inv = inv.reshape(-1)
+    C = C.reshape(-1).astype(np.int64); stride = int(C.max()) + 1; nz = C != 0
+    pair = C * np.int64(len(u_)) + inv.astype(np.int64); _, rn = np.unique(pair[nz], return_inverse=True)   # renumber (class, signature) pairs densely; 0 stays 0
+    C2 = np.zeros_like(C); C2[nz] = rn.reshape(-1).astype(np.int64) + 1; C = C2; assert int(C.max()) < 2 ** 31 - 1, 'gkeys: class fold overflow'
+    log('gkeys: mode-2 class fold: %d distinct payee-bound signatures over %d tables' % (len(u_), len(tabs)))
+    return C.astype(np.int32).reshape((5,) * 9)
+_GK_KIND = {'S.L+1': (0, 1), 'S.L+2': (0, 2), 'S.L+3': (0, 3), 'S.L-1': (0, -1), 'S.L-2': (0, -2), 'S.L-3': (0, -3),
+            'S.A+1': (1, 1), 'S.A-1': (1, -2), 'R.L+2': (1, 0), 'R.L-2': (1, -1)}   # OUT slot of a d = 7 centre (payer frame), as edgefam
+def gk_write():
+    """argv[14] for jsepf at d = 7 (Team D's 7802 format): the keys whose payer set contains 7 (the centre's OUT slots, exact);
+    a key with a payer set beyond {7} is written with its full payee mask: the leaf only ever sees the d = 7 centre as payer"""
+    fn = os.path.join(WORK, 'gkedge_d7.bin'); ks = [k for k, key in enumerate(GKEYS) if key['um'] & 4]
+    assert len(ks) <= 64, 'gkeys: more than 64 payer-7 keys (jsepf limit)'
+    b_ = [np.array([7802, len(ks)], dtype='<i4').tobytes()]
+    for k in ks:
+        key = GKEYS[k]; v = float(KSV.get(key['name'], 0.0)); assert v >= -1e-12, 'gkeys: negative amount %s %r' % (key['name'], v)
+        b_.append(np.array([max(v, 0.0)], dtype='<f8').tobytes())
+        cl_ = [(p_, int(key['m'][i])) for i, p_ in enumerate(GK_POS) if key['m'][i] != 31]
+        b_.append(np.array([int(key['vm']), len(cl_)] + [z for p_, m_ in cl_ for z in _GK_KIND[p_] + (m_,)], dtype='<i4').tobytes())
+    open(fn, 'wb').write(b''.join(b_)); return fn
+if GKWIN and GKON:
+    assert all(not (k['um'] & 24) for k in GKEYS), 'gkwin: a payer set beyond {5, 6, 7} (the OUT side of a d >= 8 centre has no jsepf leaf)'
+def cmd_gkwintest():
+    """gkwin: the window-bound IN count >= the exact (KEYSPEC) IN count, key by key, on random receivers d = 7, 8, 9 (and with planted
+    payer letters); the OUT side identical; reports how often the bound is strict"""
+    import random; l3q_load(); kt_load(); rng = random.Random(int(OPT.get('seed', '1'))); N = int(OPT.get('N', '4000')); bad = 0
+    for d in (7, 8, 9):
+        U = min(d, 9); strict = 0; nzx = 0; nzw = 0
+        for it in range(N):
+            w = [rng.choice((5, 6, 7, 8, 9)) for _ in range(d)]; s = [rng.choice((5, 6, 7, 8, 9)) for _ in range(d)]
+            if it % 2: w = [rng.choice((5, 6, 7)) for _ in range(d)]; s = [rng.choice((5, 6, 7)) for _ in range(d)]
+            lk = ''.join(map(str, w)); sv = ''.join(map(str, s))
+            if admissible(d, lk, sv) is not None: continue
+            A, PV = gk_recv_picture(d, w, s); pay, get = gk_counts(d, w, A, PV)
+            ix = [_gk_widx(w, s, j) for j in range(d)]
+            for k in range(len(GKEYS)):
+                T = gk_tables(k, U); gw = 0 if T is None else sum(int(T[0][i_]) + int(T[1][i_]) for i_ in ix)
+                if gw < int(get[k]):
+                    bad += 1
+                    if bad <= 5: log('  gkwintest d=%d %s %s key %s: window %d < exact %d' % (d, lk, sv, GKNAMES[k], gw, get[k]))
+                strict += gw > int(get[k]); nzx += int(get[k]) > 0; nzw += gw > 0
+            cw = gk_recv_terms_win(d, w, s)
+            for k, nm_ in enumerate(GKNAMES):
+                T = gk_tables(k, U); gw = 0 if T is None else sum(int(T[0][i_]) + int(T[1][i_]) for i_ in ix)
+                if cw.get(('ks', nm_), 0) != gw - int(pay[k]): bad += 1
+        log('  gkwintest d=%d: %d random receivers x %d keys: exact IN > 0 in %d, window IN > 0 in %d, window strictly above exact in %d' % (d, N, len(GKEYS), nzx, nzw, strict))
+    log('GKWINTEST: %s (%d failures)' % ('PASS' if bad == 0 else 'FAIL', bad))
+# ---------------- s85: exact check of a t = 0 point (W6's JSON) on the 5/6/7 world, our engine's rows ----------------
+def cmd_world0():
+    """exact (Fractions) check, at the point's t, of a W6-format point ({'t', 'rules', 'variables': [{var, key, value}]}) on our rows:
+    every receiver of rows= (our admissibility; load <= d - 6 + t), every sender row of R2_sender_rows (>= 1 - t), every cons2 class row
+    (all6_words x {5,7}^6 apex words; c6le: in - out <= t, else = 0), every bound (>= 0, caps 3).  M, Q are our engine's derived
+    values (max h over sig2_keys, max q over q7keys); lQ = max(LP lQ, max lq over the mask) as upperR2; W6's M, Q7 variables are only
+    reported (mrow closure: ours is the smallest admissible choice)"""
+    from fractions import Fraction as Fr
+    load_patterns(); xon = 'xon' in FLAGS; l3q_load(); kt_load(); assert AC, 'world0: needs apexcls ({5,7}^6 apex words are the classes)'
+    raw = open(OPT['w6sol'], 'rb').read(); P = json.loads(raw); t = Fr(P['t'])
+    log('world0: %s md5 %s, t = %s, %d variables; c6le %s' % (OPT['w6sol'], hashlib.md5(raw).hexdigest(), t, len(P['variables']), C6LE))
+    mine = {k['name']: (int(k['um']), int(k['vm']), tuple(int(z) for z in k['m'])) for k in GKEYS}; diff = []
+    for nm_, r_ in P.get('rules', []):
+        k_ = gk_parse('%s %s' % (nm_, r_)); th = (int(k_['um']), int(k_['vm']), tuple(int(z) for z in k_['m']))
+        if mine.get(nm_) != th: diff.append(nm_)
+    log('world0: rules in the point %d, gkeys loaded %d, differing or missing %d %s' % (len(P.get('rules', [])), len(GKEYS), len(diff), diff[:5]))
+    V = collections.defaultdict(dict); unk = collections.Counter()
+    for v in P['variables']:
+        q = Fr(v['value']); var = v['var']; key = v['key']
+        if var == 'y':
+            r_ = root(list(key), 0)
+            if r_ not in RIX: unk['y'] += 1; continue
+            V['y'][r_] = q
+        elif var == 'x': V['x'][int(key)] = q
+        elif var == 'E': V['ks'][str(key)] = q
+        else: V[var][tuple(key)] = q
+    log('world0: variables by kind %s; y keys not among our roots %d' % (dict((k, len(d_)) for k, d_ in V.items()), unk['y']))
+    caps = {'x': 3, 'lq': 3, 'z': 3, 'zr': 3, 'rr': 3, 'q': 3, 'ks': 3}; nb = 0
+    for var, d_ in V.items():
+        for k, q in d_.items():
+            if q < 0 or (var in caps and q > caps[var]): nb += 1; log('  bound violated %s %s = %s' % (var, k, q)) if nb <= 5 else None
+    log('world0: bound violations %d' % nb)
+    LQV.clear(); LQV.update(V['lq']); LQQ.clear(); LQQ.update(V['lQ'])
+    YV, XV, HV, GV_, KV = V['y'], V['x'], V['h'], V['g'], V['ks']
+    QVx = V['q']; RVx, RRx, ZVx, ZRx = V['r'], V['rr'], V['z'], V['zr']; mc = {}
+    def Mv(sg):
+        if sg not in mc:
+            ks = sig2_keys(sg); mc[sg] = max([HV.get(k, Fr(0)) for k in ks] or [Fr(0)])
+        return mc[sg]
+    bad_keys = collections.Counter()
+    def val(k):
+        a = k[0]
+        if a == 'y': return YV.get(k[1], Fr(0))
+        if a == 'x': return XV.get(k[1], Fr(0))
+        if a == 'M': return Mv(k[1])
+        if a == 'r': return RVx.get(k[1], Fr(0))
+        if a == 'rr': return RRx.get(k[1], Fr(0))
+        if a == 'z': return ZVx.get(k[1], Fr(0))
+        if a == 'zr': return ZRx.get(k[1], Fr(0))
+        if a == 'lq': return LQV.get(k[1], Fr(0))
+        if a == 'q': return QVx.get(k[1], Fr(0))
+        if a == 'Q': return max([QVx.get(kk, Fr(0)) for kk in q7keys(k[1])] or [Fr(0)])
+        if a == 'lQ': return Fr(l3q_Qeff(*k[1]) if len(k[1]) == 3 else l3q_QeffV(*k[1]))
+        if a == 'ks': return KV.get(k[1], Fr(0))
+        if a == 'g': return GV_.get(k[1], Fr(0))
+        if a == 'h': return HV.get(k[1], Fr(0))
+        bad_keys[a] += 1; return Fr(0)
+    def row(cf): return sum((Fr(c) * val(k) for k, c in cf.items() if c), Fr(0))
+    res = {}
+    # receivers
+    nr = nadm = 0; bad = 0; mn = None; seen = set()
+    for l in open(OPT['rows']):
+        f = l.split()
+        if len(f) != 4 or f[0] != 'R': continue
+        d = int(f[1]); lk, sv = f[2], f[3]; nr += 1
+        if admissible(d, lk, sv) is not None: nadm += 1; continue
+        sl = Fr(d - 6) + t - row(recv_coef_R2(d, lk, sv, xon))
+        if mn is None or sl < mn[0]: mn = (sl, lk, sv)
+        if sl < 0:
+            bad += 1
+            if bad <= 5: log('  receiver violated d=%d %s/%s slack %s (%.3g)' % (d, lk, sv, sl, float(sl)))
+        if nr % 20000 == 0: log('  receivers checked %d' % nr)
+    log('world0: receivers %d listed, %d not admissible in our engine (skipped), %d checked: violated %d; min slack %s (%.3g) at %s/%s' % (nr, nadm, nr - nadm, bad, mn[0], float(mn[0]), mn[1], mn[2]))
+    res['receiver'] = bad
+    # senders
+    ns = bad = 0; mn = None
+    for wd, cf, bits in R2_sender_rows():
+        ns += 1; sl = row(cf) - (1 - t)
+        if mn is None or sl < mn[0]: mn = (sl, wd, bits)
+        if sl < 0:
+            bad += 1
+            if bad <= 5: log('  sender violated %s %s slack %s' % (wd, bits, sl))
+    log('world0: sender rows %d: violated %d; min slack %s (%.3g) at %s %s' % (ns, bad, mn[0], float(mn[0]), mn[1], mn[2]))
+    res['sender'] = bad
+    # cons2
+    nc = bad = 0; mn = None; A6 = all6_words(); hi = None
+    for L in A6:
+        for s_ in itertools.product((5, 7), repeat=6):
+            v = row(cons2_coef(tuple(L), s_)); nc += 1
+            sl = (t - v) if C6LE else -abs(v)
+            if mn is None or sl < mn[0]: mn = (sl, L, s_)
+            if hi is None or v < hi[0]: hi = (v, L, s_)
+            if sl < 0:
+                bad += 1
+                if bad <= 5: log('  cons2 violated L=%s s=%s in-out %s' % (L, s_, v))
+    log('world0: cons2 rows %d (%d links x 64 class words): violated %d; min slack %s (%.3g) at %s %s; lowest in - out %s (%.3g)' % (nc, len(A6), bad, mn[0], float(mn[0]), mn[1], mn[2], hi[0], float(hi[0])))
+    res['cons2'] = bad
+    # W6's own mrow variables vs our derived values (information only)
+    gM = sum(1 for k, q in V['M'].items() if q < Mv(k)); gQ = sum(1 for k, q in V['Q7'].items() if q < max([QVx.get(kk, Fr(0)) for kk in q7keys(k)] or [Fr(0)]))
+    log('world0: W6 M variables %d (below our max h: %d), Q7 variables %d (below our max q: %d); unsupported coefficient kinds %s' % (len(V['M']), gM, len(V['Q7']), gQ, dict(bad_keys)))
+    ok = nb == 0 and not diff and not any(res.values()) and not bad_keys and unk['y'] == 0
+    log('WORLD0: %s at t = %s (receivers %d, senders %d, cons2 %d violated; bounds %d)' % ('HOLDS EXACTLY' if ok else 'FAILS', t, res['receiver'], res['sender'], res['cons2'], nb))

@@ -964,7 +964,7 @@ def cmd_solveR2():
     import highspy
     load_patterns()
     xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]
-    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else '', 'o' if XO else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else '', 'o' if XO else '') + (('g' + GKMD5) if GKON else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     K = int(OPT.get('K', '300')); MAXIT = int(OPT.get('maxit', '300')); TOL = float(OPT.get('tol', '1e-9'))
@@ -989,6 +989,7 @@ def cmd_solveR2():
     for r_ in ROOTS: col(('y', r_))
     if KSTAR: col(('ks', 'K1'))   # s78
     for nm_ in EGNAMES: col(('ks', nm_))   # s78 generic EDGE keys (same column namespace and cap)
+    for nm_ in GKNAMES: col(('ks', nm_))   # s85 generic 2-ball keys
     if FEAS is not None and 'feascols' in FLAGS:   # s75: every column of the in-point exists in the LP (else the blend silently drops its value)
         for k_ in FEAS: col(k_)
         log('feascols: %d in-point columns created up front (%d LP columns now)' % (len(FEAS), len(names)))
@@ -1641,7 +1642,7 @@ def all6_words():
 def cmd_upperR2():
     load_patterns()
     xon = 'xon' in FLAGS
-    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else '', 'o' if XO else ''))
+    p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else '', 'o' if XO else '') + (('g' + GKMD5) if GKON else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
     Sj = json.load(open(OPT['sol'])); t = Sj['t']
@@ -1691,7 +1692,7 @@ def cmd_upperR2():
     if Sj.get('f') and not F5: log('SOLUTION HAS f BUT face5 FLAG OFF'); return
     KSV.clear(); KSV.update({str(k): float(v) for k, v in Sj.get('ks', [])})   # s78 K*
     if KSV.get('K1', 0.0) != 0.0 and not KSTAR: log('SOLUTION HAS ks BUT kstar FLAG OFF'); return
-    if any(k != 'K1' and v != 0.0 and k not in EGNAMES for k, v in KSV.items()): log('SOLUTION HAS ks KEYS NOT IN edgekeys: %s' % sorted(KSV)); return
+    if any(k != 'K1' and v != 0.0 and k not in EGNAMES and k not in GKNAMES for k, v in KSV.items()): log('SOLUTION HAS ks KEYS NOT IN edgekeys: %s' % sorted(KSV)); return
     if any(v < 0 or v > KSCAP + 1e-9 for v in KSV.values()) and 'ksnorange' not in FLAGS: log('ks VALUE OUTSIDE [0, kscap]: %s' % KSV); log('UPPER-R2: INFEASIBLE (ks range)'); return
     if EGNAMES: log('edgekeys: amounts %s (cap %g)' % (' '.join('%s = %.12f' % (k_, KSV.get(k_, 0.0)) for k_ in EGNAMES), KSCAP))
     if KSTAR: log('kstar: K1 = %.12f (cap %g)%s' % (KSV.get('K1', 0.0), KSCAP, ' (CONTROL ksplant: python payee mask without f2b extra7)' if KSPLANT else ' (CONTROL ksnowin: no window bound)' if KSNOWIN else ''))
