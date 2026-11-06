@@ -1,0 +1,35 @@
+# cen51 start 11:48Z: 55769 [0,0,1,0,0|0] all-6, 13 slots, 732421875 fillings, RMAX 16, KMAX 3, TSEC 600, cap 6000 s
+registry (3317 configurations): 39 minimal requirements, covers 373716255 of 732421875 fillings (51.02%)
+  reg p21=5 | rsst025_122o126
+  reg tp21/s1=5 ts0/s1=6 | rsst006_2o7566
+  reg ts0/s1=6 ts0/s4=5 | rsst006_2o7566
+  reg tp44/s4=5 ts0/s4=6 | rsst006_2o7566
+  reg ts0/s1=5 ts0/s4=6 | rsst006_2o7566
+  reg ts0/s1=6 ts0/s4=6 | rsst018_2o79077962
+  reg p21=6 tp21/s1=5 | rsst031_122o368
+  reg p21=6 p22=5 | rsst032_122o7566
+  reg s2=7 tp31/s2=5 | rsst137_122o1031
+  reg tp31=5 tp31/s2=5 tp31/s3=5 | rsst001_2o122
+  reg p44=5 tp44/s4=5 ts0/s4=5 | rsst001_2o122
+  reg p41=5 tp31/s3=5 tp41/s3=5 | rsst001_2o122
+  reg tp44/s4=5 ts0/s1=5 ts0/s4=5 | rsst004_0o453962
+  reg tp31=5 tp31/s3=5 tp41/s3=5 | rsst004_0o453962
+  reg tp21/s1=5 ts0/s1=5 ts0/s4=5 | rsst004_0o453962
+  reg tp31=5 tp31/s3=6 tp41/s3=5 | rsst006_2o7566
+  reg p44=5 tp44/s4=6 ts0/s4=6 | rsst013_2o453966
+  reg tp44/s4=5 ts0/s1=5 ts0/s4=7 | rsst036_128o126
+  reg tp21/s1=5 ts0/s1=7 ts0/s4=5 | rsst036_128o126
+  reg p21=6 tp21/s1=6 ts0/s1=5 | rsst050_2o504366
+  reg tp21/s1=5 ts0/s1=7 ts0/s4=6 | rsst072_2o1368366
+  reg tp44/s4=5 ts0/s1=6 ts0/s4=7 | rsst072_2o1368366
+  reg p21=6 tp21/s1=6 ts0/s1=6 | rsst098_2o260517966
+  reg p22=5 s2=7 tp31/s3=5 | rsst177_2o1325780
+  reg s2=7 tp31=5 tp31/s2=6 | rsst198_486o1028
+  reg p21=7 p22=5 tp21/s1=5 | f7_..55675_....5..
+  reg tp31=6 tp31/s2=5 tp31/s3=6 tp41/s3=5 | rsst012_2o22086
+  reg p41=5 tp31=5 tp31/s3=6 tp41/s3=6 | rsst012_2o22086
+  reg tp31=5 tp31/s2=5 tp31/s3=7 tp41/s3=5 | rsst033_126o128
+  reg p41=5 tp31=5 tp31/s3=7 tp41/s3=5 | rsst033_126o128
+engine windows: 67950 (connected subsets 47281), by slots [(1, 2645), (2, 16514), (3, 48791)], by ring [(7, 21), (8, 150), (9, 495), (10, 1136), (11, 2200), (12, 3786), (13, 6454), (14, 10869), (15, 17337), (16, 25502)]
+  kill D ring 8 p5_cu.w0.w1.s0.s4_ts0/s45
+  kill D ring 8 p5_cu.w0.w1.s0.s1_ts0/s15

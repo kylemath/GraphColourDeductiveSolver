@@ -1,0 +1,29 @@
+engine kills in cache: 10
+part ts2/s3/s4=5: 1953125 fillings, registry 1953125 (100.00%), + 10 engine kills -> 1953125 (100.00%), uncovered 0
+  p01        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  p02        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  p11        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  p21        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  p51        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  p61        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  tp21/s2    uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  ts4        uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  tp51/s4    uncovered by letter {5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+  every slot >= 6: 262144, uncovered 0
+  every slot >= 7: 19683, uncovered 0
+  uncovered with exactly one slot at 5, by that slot: {'p01': 0, 'p02': 0, 'p11': 0, 'p21': 0, 'p51': 0, 'p61': 0, 'tp21/s2': 0, 'ts4': 0, 'tp51/s4': 0}
+part ts2/s3/s4=6-9: 7812500 fillings, registry 5434388 (69.56%), + 10 engine kills -> 6227348 (79.71%), uncovered 1585152
+  p01        uncovered by letter {5: 0, 6: 396288, 7: 396288, 8: 396288, 9: 396288}
+  p02        uncovered by letter {5: 0, 6: 396288, 7: 396288, 8: 396288, 9: 396288}
+  p11        uncovered by letter {5: 0, 6: 396288, 7: 396288, 8: 396288, 9: 396288}
+  p21        uncovered by letter {5: 0, 6: 322560, 7: 420864, 8: 420864, 9: 420864}
+  p51        uncovered by letter {5: 0, 6: 329472, 7: 418560, 8: 418560, 9: 418560}
+  p61        uncovered by letter {5: 0, 6: 396288, 7: 396288, 8: 396288, 9: 396288}
+  tp21/s2    uncovered by letter {5: 239616, 6: 322560, 7: 340992, 8: 340992, 9: 340992}
+  ts2/s3/s4  uncovered by letter {6: 331776, 7: 355072, 8: 441088, 9: 457216}
+  ts4        uncovered by letter {5: 161280, 6: 329472, 7: 364800, 8: 364800, 9: 364800}
+  tp51/s4    uncovered by letter {5: 226560, 6: 329472, 7: 343040, 8: 343040, 9: 343040}
+  every slot >= 6: 1048576, uncovered 1028352
+  every slot >= 7: 59049, uncovered 59049
+  uncovered with exactly one slot at 5, by that slot: {'p01': 0, 'p02': 0, 'p11': 0, 'p21': 0, 'p51': 0, 'p61': 0, 'tp21/s2': 195840, 'ts4': 122880, 'tp51/s4': 169728}
+total 8180473 of 9765625 (83.77%), uncovered 1585152
