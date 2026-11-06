@@ -1,0 +1,15 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+gkeys: 111 keys from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s85_edge56/keys/A97F_111keys.txt (md5 a5dfd233): payer/payee pairs {'4->4': 18, '4->28': 2, '4->2': 10, '2->2': 20, '4->1': 10, '1->1': 10, '1->4': 15, '2->1': 10, '2->4': 10, '1->2': 6}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+  gkselftest R 5575577 5775777 A1: pay 4 get 0 (KEYSPEC 4 0) ok
+  gkselftest R 5575577 5775777 gk00_10: pay 2 get 0 (KEYSPEC 2 0) ok
+  gkselftest R 5575577 5775777 gk01_18: pay 0 get 4 (KEYSPEC 0 4) ok
+  gkselftest R 5575577 5775777 gk02_24: pay 0 get 2 (KEYSPEC 0 2) ok
+  gkselftest R 5575577 5775777 gk02_26: pay 2 get 0 (KEYSPEC 2 0) ok
+  gkselftest S 55777 H11011 gk01_18: pay 2 get 0 (KEYSPEC 2 0) ok
+  gkselftest S 55777 H11011 gk02_26: pay 0 get 1 (KEYSPEC 0 1) ok
+  gkselftest C 567767 755555 gk04_45: pay 1 get 0 (KEYSPEC 1 0) ok
+  gkselftest C 567767 755555 gk02_82: pay 1 get 0 (KEYSPEC 1 0) ok
+  gkselftest KS vs K*: 4000 random d = 7 rows, 542 with a K* slot
+  gkselftest mirror: 2000 pictures, 0 with K != mirror(K)
+GKSELFTEST: PASS (0 mismatches)

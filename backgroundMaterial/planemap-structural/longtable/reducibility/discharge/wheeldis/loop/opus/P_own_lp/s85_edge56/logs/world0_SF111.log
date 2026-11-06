@@ -1,0 +1,19 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+gkeys: 111 keys from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s85_edge56/keys/A97F_111keys.txt (md5 a5dfd233): payer/payee pairs {'4->4': 18, '4->28': 2, '4->2': 10, '2->2': 20, '4->1': 10, '1->1': 10, '1->4': 15, '2->1': 10, '2->4': 10, '1->2': 6}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 0 C entries dropped (0 distinct names) in {}
+patterns: 280 files read, 0 missing []; distinct by d {7: 9276, 8: 5914, 9: 3334, 10: 1443, 11: 651, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18163, 'C': 627, 'RPAT': 158, 'RPATN': 2080}
+world0: /mnt/project-files/swarm/round6/W6-rule-grammar/round7/primal_t0_A97F_exact.json md5 00e1d5638ef5714973452e941fe835a4, t = 0, 7260 variables; c6le True
+world0: rules in the point 111, gkeys loaded 111, differing or missing 0 []
+world0: variables by kind {'ks': 75, 'M': 373, 'Q7': 95, 'g': 91, 'h': 5703, 'lQ': 12, 'lq': 9, 'q': 105, 'r': 92, 'rr': 54, 'x': 152, 'y': 354, 'zr': 145}; y keys not among our roots 0
+world0: bound violations 0
+  receivers checked 20000
+  receivers checked 40000
+  receivers checked 60000
+  receivers checked 80000
+  receivers checked 100000
+world0: receivers 110087 listed, 0 not admissible in our engine (skipped), 110087 checked: violated 0; min slack 0 (0) at 5575577/5775777
+world0: sender rows 22514: violated 0; min slack 0 (0) at 55777 [1, 1, 0, 1, 1, '|']
+world0: cons2 rows 91136 (1424 links x 64 class words): violated 0; min slack 0 (0) at (6, 6, 6, 6, 6, 6) (5, 5, 5, 5, 5, 5); lowest in - out -404689728769/1000000000000 (-0.405)
+world0: W6 M variables 373 (below our max h: 0), Q7 variables 95 (below our max q: 0); unsupported coefficient kinds {}
+WORLD0: HOLDS EXACTLY at t = 0 (receivers 0, senders 0, cons2 0 violated; bounds 0)
