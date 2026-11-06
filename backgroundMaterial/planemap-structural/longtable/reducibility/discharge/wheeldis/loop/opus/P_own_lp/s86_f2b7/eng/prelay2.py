@@ -964,6 +964,7 @@ def cmd_solveR2():
     import highspy
     load_patterns()
     xon = 'xon' in FLAGS; XCAP = float(OPT.get('xcap', '3')); XPEN = [float(OPT.get('xpen', '0'))]; LEXT = []   # s85: lext phase-1 values
+    HPEN = [float(OPT.get('hpen', '0'))]   # s86 (k86L binding analysis 21:00Z): optional cost on the 6-spoke h columns, so a lext phase-2 vertex does not park free h mass at large values (phase 1 is unaffected: its costs are t alone)
     p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else '', 'o' if XO else '') + (('g' + GKMD5) if GKON else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
@@ -984,6 +985,7 @@ def cmd_solveR2():
             if key[0] == 'lq' and XPEN[0]: h.changeColCost(cols[key], XPEN[0])   # stage 28: q carries the x penalty (keeppen)
             if key[0] == 'q' and Q7PEN[0]: h.changeColCost(cols[key], Q7PEN[0])   # s75: q7 columns carry their own penalty (q7pen=)
             if key[0] == 'ks' and XPEN[0]: h.changeColCost(cols[key], XPEN[0])   # s78: K* carries the x penalty (keeppen), removed with x's
+            if key[0] == 'h' and HPEN[0]: h.changeColCost(cols[key], HPEN[0])   # s86: hpen=
         return cols[key]
     jt = col(('t',)); h.changeColCost(jt, 1.0)
     for r_ in ROOTS: col(('y', r_))
@@ -1283,7 +1285,7 @@ def cmd_solveR2():
         if not added and XPEN[0]:
             XPEN[0] = 0.0
             for k, i in cols.items():
-                if k[0] in ('x', 'xo', 'D', 'lq', 'z6', 'fb', 'ks') or (ZR and k[0] in ('z', 'zr', 'rr')) or (Q7PEN[0] and k[0] == 'q'): h.changeColCost(i, 0.0)
+                if k[0] in ('x', 'xo', 'D', 'lq', 'z6', 'fb', 'ks') or (ZR and k[0] in ('z', 'zr', 'rr')) or (Q7PEN[0] and k[0] == 'q') or (HPEN[0] and k[0] == 'h'): h.changeColCost(i, 0.0)
             log('  converged with x penalty; penalty removed, continuing'); continue
         if not added: break
     sol = h.getSolution(); xv = np.array(sol.col_value); t = xv[jt]; duals = np.array(sol.row_dual)
