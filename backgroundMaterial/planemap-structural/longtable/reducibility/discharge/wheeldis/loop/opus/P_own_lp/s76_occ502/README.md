@@ -91,3 +91,4 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals_c.py on CW3P.lean gives 9 entries, 0 mismatches. A copy with one intAdj entry changed gives 1 mismatch and exit 1.
 - Module names and their order match module_split.tsv (9/9). Compile order: HWR3P_kk, then COccHWR3P_kk, then HWR3POcc (after W3PVAll).
   This was not compiled here, because this container has no Lean.
+- **Studio build (14:16Z, 6 Nov):** done on main at ff255ae2. The glue compiled unmodified and byte-identical to e1285b69 (HWR3POcc e4316ee9). All 30 modules are clean, with sorry 0. `W3PV.hC_all` has the assumed `Fin 9` form.
