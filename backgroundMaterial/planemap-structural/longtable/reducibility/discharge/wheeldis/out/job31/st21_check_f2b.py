@@ -993,7 +993,7 @@ if HAT5:
                 for fw_, fs_, m_ in F2BG[g_]: _f.write(_st.pack('<QQQ', fw_, fs_, m_))
         SEPENV['SEP_F2BS'] = F2F
         print('f2b leaf table file %s' % os.path.basename(F2F), flush=True)
-    SEPX = _sp.Popen([os.path.join(HERE, 'bin', 'sep3r_f2bS' if F2BR else ('sep3r_l3q' if L3Q else 'sep3r_ak')), NS_['SF']], stdin=_sp.PIPE, stdout=_sp.PIPE, text=True, env=SEPENV)
+    SEPX = _sp.Popen([os.path.join(HERE, 'bin', os.environ.get('SEPBIN') or ('sep3r_f2bS' if F2BR else ('sep3r_l3q' if L3Q else 'sep3r_ak'))), NS_['SF']], stdin=_sp.PIPE, stdout=_sp.PIPE, text=True, env=SEPENV)
     NS_['SEPX'] = SEPX
     print('hat-channel tables: relaxed max %.6f, exact max %.6f (%s)' % (RREL_.max(), REX_.max(), os.path.basename(RTF)), flush=True)
 def rrel_row(d, lk, sv):
@@ -1013,6 +1013,20 @@ def studio_val(d, lk, sv):
     return fbrel_row(d, lk, sv) + l3rel_row(d, lk, sv) + rrel_row(d, lk, sv) + sum(cf * (yv[k[1]] if k[0] == 'y' else xv.get(k[1], 0.0) if k[0] == 'x' else V6B[k[1]] if k[0] == 'y6b' else 0.0) for k, cf in r_.items() if k[0] != 't')
 def xk(rr): return collections.Counter({k[1]: cf for k, cf in rr.items() if k[0] == 'x'})
 tests = [(e['row'][1], e['row'][2], e['row'][3]) for e in CERT if e['row'][0] == 'receiverR2']
+if os.environ.get('SEPREG'):   # W12 regression (Studio, 5 Nov): is arrangement LK/SV found with the search restricted to each rotation's start state?
+    _lk, _sv = os.environ['SEPREG'].split('/'); _d = len(_lk); _res = []
+    for _r in range(_d):
+        for _refl in (False, True):
+            _w = [int(c) for c in _lk]; _s = [int(c) for c in _sv]
+            if _refl: _w = [_w[0]] + _w[1:][::-1]; _s = _s[::-1]   # reflection: w_i -> w_-i, s_i -> s_(-i-1)
+            _w = _w[_r:] + _w[:_r]; _s = _s[_r:] + _s[:_r]; lk_ = ''.join(map(str, _w)); sv_ = ''.join(map(str, _s))
+            a0 = (_w[-1] - 5) * 25 + (_s[-1] - 5) * 5 + (_w[0] - 5); v_ = spec_val(_d, lk_, sv_); ad_ = admissible(_d, _w, _s)
+            SEPX.stdin.write('s %d\n' % a0); SEPX.stdin.flush()
+            o_ = sepx(_d, yv, xv, v_ - 1e-7, 200000); hit = any(l2 == lk_ and s2 == sv_ for _, l2, s2 in o_)
+            SEPX.stdin.write('s -1\n'); SEPX.stdin.flush()
+            _res.append((lk_, sv_, a0, ad_, v_, hit)); print('SEPREG rot %d refl %d: %s %s start %d admissible %s exact %.12f found %s' % (_r, _refl, lk_, sv_, a0, ad_, v_, hit), flush=True)
+    print('SEPREG %s binary %s OLDPRUNE=%s: found in %d of %d (rotation, reflection) starts' % (os.environ['SEPREG'], os.environ.get('SEPBIN'), os.environ.get('SEP_OLDPRUNE'), sum(r[5] for r in _res), len(_res)), flush=True)
+    if os.environ.get('SEPREG_ONLY') == '1': sys.exit(0)
 if os.environ.get('REPLAY'):   # f2b041 job 2: per-arrangement admissibility, row value and row terms for the violators in REPLAY files
     with open(os.environ['REPLAY_OUT'], 'w') as _ro:
         for _fn in os.environ['REPLAY'].split(','):
@@ -1091,6 +1105,15 @@ for d in _DL:
                 _w = [int(c) for c in lk]; _s = [int(c) for c in sv]; _hit = [nm for nm, P in ATTR.get(d, ()) if _pm1(d, _w, _s, P)]
                 _na[len(_hit) > 0] += 1; _vf.write('%d %.12f %s %s %s\n' % (d, v_, lk, sv, ' '.join(_hit) or '-'))
         print('VIOLDUMP d=%d: %d violators; forbidden by a dropped C pattern %d, by none %d' % (d, len(exact_bad), _na[True], _na[False]), flush=True)
+    if os.environ.get('SEPCLASS'):   # W12: distinct arrangement classes (rotation + reflection) among the reported rows
+        def _cl(lk, sv):
+            w = [int(c) for c in lk]; s2 = [int(c) for c in sv]; best = None
+            for refl in (False, True):
+                ww = [w[0]] + w[1:][::-1] if refl else w; ss = s2[::-1] if refl else s2
+                for r in range(d):
+                    k = (tuple(ww[r:] + ww[:r]), tuple(ss[r:] + ss[:r])); best = k if best is None or k < best else best
+            return best
+        print('SEPCLASS d=%d: %d reported rows, %d distinct classes' % (d, len(out), len({_cl(lk, sv) for _, lk, sv in out})), flush=True)
     rbad += len(exact_bad)
     print('receivers d=%d: relaxation reports %d above threshold%s; exact violated %d (%.0fs)' % (d, len(out), '' if full else ' (CAP hit)', len(exact_bad), _tm.time() - _t0), flush=True)
 z9 = max([v for tq, v in X.items() if (tq // 15625) % 3 == 2] + [0.0])
