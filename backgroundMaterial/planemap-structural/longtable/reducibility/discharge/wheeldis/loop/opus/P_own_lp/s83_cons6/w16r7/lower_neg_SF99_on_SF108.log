@@ -1,0 +1,9 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 0 C entries dropped (0 distinct names) in {}
+patterns: 284 files read, 0 missing []; distinct by d {7: 9384, 8: 5914, 9: 3334, 10: 1443, 11: 651, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18187, 'C': 711, 'RPAT': 158, 'RPATN': 2080}
+  RECEIVER NOT ADMISSIBLE ['receiverR2', 7, '5665777', '7675565'] pattern ((0, 1), (6, 1), (7, 1), (8, 4), (9, 1), (10, 4), (12, 4), (13, 1))
+  negative reduced costs: 8 [(('y', (7, 6, 7, 5, 7)), Fraction(-71703869210, 20758652540891)), (('r', (5, 0, 7, 7)), Fraction(-71703869210, 20758652540891)), (('M', (7, 5, 7, 6, 6, 7, 5, 30)), Fraction(-71703869210, 20758652540891)), (('lQ', (5, 5, 30)), Fraction(-71703869210, 20758652540891)), (('r', (7, 7)), Fraction(-35851934605, 20758652540891))]
+  q7rc: q columns by reduced cost (min convention): [('7557755', '0'), ('7555755', '0'), ('7557656', '0'), ('7557557', '0'), ('7557757', '0'), ('7557765', '0'), ('7557565', '0'), ('7557666', '0'), ('7557766', '0'), ('7555666', '0'), ('7556667', '0'), ('7556767', '0')] | nonzero q rc: 2
+rows by type: {'senderR2': 90, 'cons2': 78, 'mrowR2': 122, 'mrowQ': 123, 'mrowL': 13, 'receiverR2': 138}
+LOWER-R2: INVALID  t >= -13390287535157/581242271144948 = -0.023037360  (564 rows)
