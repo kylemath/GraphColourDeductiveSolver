@@ -136,6 +136,7 @@ struct Ctx {
         return true;
     }
     uint64_t f2bExtra(const vector<F2BRule> &bk, int i) const {
+        i = ((i % d) + d) % d;   // s85: callers pass k - 1 = -1 (K* payer j = k - e1, gkin neighbour priv(j - 1)); (i + off) % d was then -1 at off = 0 (read before L)
         uint64_t rw = 0, rs = 0;
         for (int off = 0; off < d; off++) { int p = (i + off) % d; rw |= 1ULL << (5 * off + L[2 * p]); rs |= 1ULL << (5 * off + L[2 * p + 1]); }
         uint64_t ex = 0;
@@ -367,6 +368,7 @@ struct Ctx {
                         }
                     }
                 }
+                if (EVAL && getenv("GKDBG")) fprintf(stderr, "jsepf GKDBG j=%d u=%d ex=%.12f ub=%.12f\n", j, u, ex, ub);
                 if (ex > ub + 1e-9) { fprintf(stderr, "gkin: exact payee credit %.12g above the window bound %.12g at j=%d (window %ld)\n", ex, ub, j, ix); exit(97); }
                 if (ub != 0) { dg += ex - ub; gkInUB++; }
             }

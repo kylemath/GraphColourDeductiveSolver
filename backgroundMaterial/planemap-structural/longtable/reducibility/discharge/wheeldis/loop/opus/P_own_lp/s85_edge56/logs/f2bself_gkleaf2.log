@@ -1,0 +1,30 @@
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s77_k6patch/tab/rules_studio_keep95p131f.json: {'d7_w6': 2437, 'd8_w6': 1738, 'd9_w6': 463, 'd7_w7_1': 1440, 'd7_w7_-1': 1440, 'd8_w7_1': 904, 'd8_w7_-1': 904}
+gkeys: 87 keys from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s85_edge56/keys/relax_ceiling_87keys.txt (md5 ecb6e892): payer/payee pairs {'4->4': 14, '4->28': 2, '4->2': 8, '2->2': 14, '4->1': 8, '1->1': 8, '1->4': 11, '2->1': 8, '2->4': 8, '1->2': 6}
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
+patterns: 288 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9239, 8: 5906, 9: 3334, 10: 1435, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18101, 'C': 598, 'RPAT': 158, 'RPATN': 2080}
+gkeys: mode-2 class fold: 945 distinct payee-bound signatures over 39 tables
+bonus links: 139
+l3qV: 14 V >= 8 q > 0 (total 0.403811338), 7 V >= 8 Q > 0
+l3qV: V = 8 table 5000 masks (full)
+l3q: 21 q > 0 (total 0.724407157); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 14627
+  cons off: L=(5, 5, 6, 5, 5, 8) five=True worst 0.1538
+  cons off: L=(5, 5, 6, 5, 5, 9) five=True worst 0.1884
+  cons off: L=(5, 5, 6, 5, 6, 8) five=True worst 0.08275
+  cons off: L=(5, 5, 6, 5, 6, 9) five=True worst 0.1115
+  cons off: L=(5, 5, 6, 5, 7, 8) five=True worst 0.2112
+  cons off: L=(5, 5, 6, 5, 7, 9) five=True worst 0.2244
+  cons off: L=(5, 5, 6, 5, 8, 6) five=True worst 0.03707
+  cons off: L=(5, 5, 6, 5, 8, 7) five=True worst 0.3251
+conservation (c6le: 6 ends <= t): 1424 canonical non-R6 links x 5^6 apex words; links with in - out > t + 1e-9: 1403 (worst excess 1.1); links where some 6 ends below 0: 220 (lowest in - out -0.80572)
+  [d=7] jsepf_nc: max positive deltas V6M 0 QM 0.000690575 QT 0 -> slack 0.00966805 (q7m slack 0)
+  q7 coverage d=7: 1311 arrangements with a Q payer coefficient, 67 with a q payee coefficient of positive value
+F2B-SELFTEST d=7: 1500 arrangements, max |python exact - C++ leaf| = 4.99e-13, 739 changed by the rules (rule-fire counts {'w7d7': 874, 'w6': 777, 'q7m': 846}), worst -
+  [d=8] jsepf_nc: max positive deltas V6M 0 QM 0 QT 0 -> slack 0 (q7m slack 0)
+  q7 coverage d=8: 1320 arrangements with a Q payer coefficient, 0 with a q payee coefficient of positive value
+F2B-SELFTEST d=8: 1500 arrangements, max |python exact - C++ leaf| = 5e-13, 720 changed by the rules (rule-fire counts {'w7d8': 689, 'w6': 823, 'q7m': 628}), worst -
+  [d=9] jsepf_nc: max positive deltas V6M 0 QM 0 QT 0 -> slack 0 (q7m slack 0)
+  q7 coverage d=9: 1279 arrangements with a Q payer coefficient, 0 with a q payee coefficient of positive value
+F2B-SELFTEST d=9: 1500 arrangements, max |python exact - C++ leaf| = 5e-13, 670 changed by the rules (rule-fire counts {'w6': 1214}), worst -
+F2B-SELFTEST: PASS

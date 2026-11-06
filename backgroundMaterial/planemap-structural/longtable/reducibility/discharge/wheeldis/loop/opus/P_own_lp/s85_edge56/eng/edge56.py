@@ -510,3 +510,24 @@ def cmd_world0():
     log('world0: W6 M variables %d (below our max h: %d), Q7 variables %d (below our max q: %d); unsupported coefficient kinds %s' % (len(V['M']), gM, len(V['Q7']), gQ, dict(bad_keys)))
     ok = nb == 0 and not diff and not any(res.values()) and not bad_keys and unk['y'] == 0
     log('WORLD0: %s at t = %s (receivers %d, senders %d, cons2 %d violated; bounds %d)' % ('HOLDS EXACTLY' if ok else 'FAILS', t, res['receiver'], res['sender'], res['cons2'], nb))
+def cmd_gkdbg():
+    """debug: one d = 7 arrangement (lk=, sv=) at sol=: python exact and window-bound key credit per payer position, and jsepf_gk's
+    leaf (GKDBG lines) on the same arrangement"""
+    load_patterns(); xon = 'xon' in FLAGS; l3q_load(); kt_load()
+    Sj = json.load(open(OPT['sol'])); KSV.clear(); KSV.update({str(k): float(v) for k, v in Sj.get('ks', [])})
+    lk = OPT['lk']; sv = OPT['sv']; d = len(lk); w = [int(c) for c in lk]; s = [int(c) for c in sv]
+    A, PV = gk_recv_picture(d, w, s); log('gkdbg %s/%s: A %s PV %s' % (lk, sv, A, PV))
+    (ou, ov, oV), (iu, iv, iV) = gk_slots(d, w, A, PV)
+    for k, key in enumerate(GKEYS):
+        amt = KSV.get(key['name'], 0.0); T = gk_tables(k, 7)
+        if not amt or T is None: continue
+        for slot in range(2 * d):
+            j = slot // 2; sg = 1 if slot % 2 == 0 else -1
+            poss = bool(((iV[slot] & key['m']) != 0).all() and (iu[slot] & key['um']) and (iv[slot] & key['vm']))
+            ub = int(T[0 if sg == 1 else 1][_gk_widx(w, s, j)])
+            if poss or ub: log('  key %s amt %.6f j=%d sg=%+d exact %d bound %d  V %s m %s' % (key['name'], amt, j, sg, poss, ub, list(iV[slot]), list(key['m'])))
+    os.environ['GKDBG'] = '1'
+    ef = os.path.join(WORK, 'gkdbg_eval.txt'); open(ef, 'w').write('%s %s\n' % (lk, sv))
+    y = np.zeros(len(ROOTS)); MV2 = lambda sg: None
+    write_l3q(); F2B_EVAL[0] = ef; W = window_table_R2(7, y, {}, MV2); rr, dt, ni = run_sep(7, W, 1e9, 1, 0); F2B_EVAL[0] = None
+    log('gkdbg: jsepf eval %s' % rr)
