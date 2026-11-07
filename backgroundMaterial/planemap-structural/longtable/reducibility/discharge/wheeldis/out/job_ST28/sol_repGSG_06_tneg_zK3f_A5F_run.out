@@ -1,0 +1,96 @@
+== W17 upper check sol_repGSG_06_tneg_zK3f_A5F: /private/tmp/swarm-W17/sol/sol_repGSG_06_tneg.json (md5 5ba3832a), kill /private/tmp/swarm-W17/kill/patched298, d = 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 (DMAXP 26), 8 processes, parts 7:4,8:12,9:24,10:9,11:6,12:3,13:2, neck 1, noclamp 1, cons2 mode c6le, f2b7 1, rules /tmp/swarm-W17/tab/rules_A5final_2db75746.json, rpatN /tmp/swarm-W17/tab/rpatN3_rotation_justified.txt, GK /tmp/swarm-W17/tab/cg_keys_r13.txt, code /tmp/swarm-W17/code_gk7
+kill U7: kill6_U7.npy md5 b493a0ce45d676350f34737ac1fa0945
+kill U8: kill6_U8.npy md5 618eb3001e0119b3e116af850f95ab99
+kill U9: kill6_U9.npy md5 618eb3001e0119b3e116af850f95ab99
+  kill6_U7.npy vs MD5: OK
+  kill6_U8.npy vs MD5: OK
+  kill6_U9.npy vs MD5: OK
+kill stack: patched298 (keep95p131f U7 + 298 B1 bits; Opus s77_k6patch, md5 b493a0ce)
+KILL MD5 CHECK OK
+runtime estimate: Python step ~2 min; separator ~81 process-min (one nice-10 process at load ~10) over 8 process(es) -> ~11 min wall (+ re-check ~6 min if anything is reported); scale 0.71 for t = 0.0397
+12:05:37Z RESUME requested but step 1 is not reusable (stamp or dump differs / missing): fresh run
+12:05:37Z step 1: Python checks + query dump
+12:06:40Z step 2: separator jobs
+12:10:15Z step 3: exact re-check of reported arrangements
+12:10:57Z step 4: summary
+kill table U7: kill6_U7 md5 b493a0ce45d676350f34737ac1fa0945, 84694 killed (window, p); vs stock keep95p131: +298 new, -0 removed
+kill table U8: kill6_U8 md5 618eb3001e0119b3e116af850f95ab99, 73342 killed (window, p); vs stock keep95p131: +0 new, -0 removed
+kill table U9: kill6_U9 md5 618eb3001e0119b3e116af850f95ab99, 73342 killed (window, p); vs stock keep95p131: +0 new, -0 removed
+section 14 prime kill tables from /private/tmp/swarm-W17/kill/patched298 (U8 == U9: True)
+V = 8 mrowL over every table mask and every a2 in it, at Qeff8: violated 0
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.039720000000000 (claimed 993/25000 = 0.039720000000000), model R6x2 apex True apexcls True zh True: 942 y, 393 g, 18683 h, 1256 x, z [[[7, 5, 5, 6, 6, 0, 0], 9.440234180550964e-06], [[7, 5, 5, 6, 6, 0, 1], 0.0007779111637012112], [[7, 5, 5, 6, 7, 0, 0], 0.0007956776840019092], [[7, 5, 5, 7, 5, 0, 1], 0.0004307338555921313], [[7, 5, 5, 7, 7, 0, 1], 0.0008530930097636292], [[7, 5, 5, 
+W10 families: hatrr True zh True zr True (cap 3.0) q7 True q7m True (q7cap 3.0); values rr 4 (sum 0.0144209), z 62 (sum 0.065284), zr 78 (sum 0.105124), q 136 (sum 0.14174); out of bounds 0
+W17 GK keys: 151 from /tmp/swarm-W17/tab/cg_keys_r13.txt (md5 fe8a97a7); payer->payee {'5->5': 12, '5->6': 8, '5->7': 21, '5->8': 3, '5->9': 3, '6->5': 12, '6->6': 22, '6->7': 12, '6->8': 1, '6->9': 1, '7->5': 12, '7->6': 12, '7->7': 24, '7->8': 3, '7->9': 3, '7->B': 2}; nonzero amounts 31 (sum 0.0156772119)
+W17 GK amounts: KS=0.0025150987834 gk01_18=0.000440896952238 gk02_24=4.40183643255e-06 gk03_32=0.000454169692266 gk03_33=0.000238116086845 gk03_37=0.000530971384479 gk04_41=0.000281995484742 gk04_46=3.95932107544e-06 gk00_51=0.000160254589043 gk00_62=0.000168056445519 gk01_71=0.000440896952238 gk02_77=9.2486123555e-05 gk02_85=0.000530971384479 gk00_91=0.000134332614567 gk00_94=0.000312222637761 gk
+bounds: 0 negative values; max x = 0.162903 (cap 3)
+senderR2 rows 22514 (spec 7,074), violated 0, min slack 0.000335; g2 keys in sender rows 381 (spec 393)
+cons2 (c6le: the 6 ends <= t, in - out - t <= 0): 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated (in - out > t + 1e-9) 4, worst (in - out - t) 3.08674e-06
+  nofive  430 words (spec 430): violated (in - out > t + 1e-9) 0, worst (in - out - t) -0.00831362
+cons2 6-balance (c6le mode) over 1038096 rows (6-word x class word): in - out min -0.364327 (588988/557755), max 0.0397231 (589899/577577); rows with in - out < -1e-9 (the 6 ends below 0) 651841 in 1404 of 1424 words; rows > 1e-9 382690; rows within 1e-9 of t = 0.039720000 (tight under c6le) 0
+exname: 1758 names held out (/tmp/swarm-W17/tab/exname_keep95p131f.txt); 0 C entries dropped, by file {}
+patterns distinct by kind: D 18136 (spec 15,497), C 689 (spec 1,494), RPAT 158 (spec 158); by d {7: 9348, 8: 5899, 9: 3308, 10: 1425, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+f2b tables: M table vs EX6 mismatches 0; monotonicity violations (M, Qeff, Qeff8) 0
+f2b positive leaf deltas (max over every mask / sub-mask pair): dM+ U7/U8/U9 ['0', '0', '0'], dQeff7+ 0, dQeff8+ 0; pruning slack d*dM+ + 2d*dQ+ = {7: 0.0, 8: 0.0, 9: 0.0}
+W17 GK numpy window tables built in 0s
+W17 GK separator table: window max U7/U8/U9 ['0.00296107', '0.000899775', '8.69585e-05'], cells > 0 [400, 336, 276], windows > 0 per U [104620, 155400, 110847] (gk_sol_repGSG_06_tneg_zK3f_A5F_sol_repGSG_06_tneg.bin)
+separator binary: sep3r_gk7
+sep: W17 GK table loaded (/tmp/swarm-W17/st16/gk_sol_repGSG_06_tneg_zK3f_A5F_sol_repGSG_06_tneg.bin): 151 keys, window max 0.00296107 / 0.000899775 / 8.69585e-05; own window table vs Python's: 0 cells differ, max |diff| 1.08e-19; plant 0
+W10 self-test (C++ exact leaf vs Python spec rows): {'compared': 5430, 'window-inadmissible': 570, 'with rr': 430, 'with Q7': 573, 'with z': 123, 'with q': 131, 'with zr': 168}; max |difference| by d {7: 1.78e-12, 8: 1.96e-12, 9: 1.59e-12, 10: 1.93e-12, 11: 1.72e-12, 12: 2.66e-12}; mismatches > 1e-9: 0
+W17 GK window tables: 30000 windows, 2863 with credit > 0; numpy vs gkfam.Win mismatches 0
+W17 GK self-test (C++ leaf vs Python rows, all families on): 8797 compared, 2003 window-inadmissible; max |difference| by d {7: 2.02e-12, 8: 1.73e-12, 9: 1.9e-12, 10: 1.57e-12, 11: 1.89e-12, 12: 2.15e-12}; mismatches > 1e-9: 0
+W17 GK self-test rows with a nonzero key term (amount > 0): d7 compared with gk 2232, d7 in>0 2093, d7 out>0 2256, d8 compared with gk 1020, d8 in>0 1456, d9 compared with gk 735, d9 in>0 971, d10 compared with gk 152, d10 in>0 215, d11 compared with gk 170, d11 in>0 226, d12 compared with gk 148, d12 in>0 208
+W17 GK per-position bound check: 73690 positions, window bound == exact on 63774, exact above bound 0
+f2b self-test: 6000 arrangements (seed 41), 3864 with a nonzero delta, 0 positive; Python vs C++ mismatches 0
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -4.10305
+DP d=27..30 (Studio max-plus with the relaxed r, z9 = 0.162903): clean
+Karp tail (apex relaxation): lambda = 0.637654591, covered for d >= 16.449 (needs <= 31)
+d=7: exact violated 4 (separator reported 4, Python exact re-check: 4 violated, max excess 9.84e-06; 4 part(s), 108s CPU-wall)
+  d=7 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 4 of 4 part(s))
+  VIOLATED receiverR2 d=7 exact load 1.039729837742 link 5685786 s 5685665
+  VIOLATED receiverR2 d=7 exact load 1.039729837742 link 5685786 s 5685765
+  VIOLATED receiverR2 d=7 exact load 1.039729837742 link 5687586 s 5665865
+  VIOLATED receiverR2 d=7 exact load 1.039729837742 link 5687586 s 5675865
+d=8: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 12 part(s), 429s CPU-wall)
+  d=8 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 12 of 12 part(s))
+d=9: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 24 part(s), 584s CPU-wall)
+  d=9 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 24 of 24 part(s))
+d=10: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 9 part(s), 259s CPU-wall)
+  d=10 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 9 of 9 part(s))
+d=11: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 6 part(s), 138s CPU-wall)
+  d=11 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 6 of 6 part(s))
+d=12: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 3 part(s), 57s CPU-wall)
+  d=12 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 3 of 3 part(s))
+d=13: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 2 part(s), 22s CPU-wall)
+  d=13 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 2 of 2 part(s))
+d=14: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 8s CPU-wall)
+  d=14 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=15: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+  d=15 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=16: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 2s CPU-wall)
+  d=16 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=17: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=17 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=18: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=18 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=19: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=19 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=20: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=20 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=21: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=21 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=22: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=22 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=23: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=23 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=24: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=24 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=25: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=25 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+d=26: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 1s CPU-wall)
+  d=26 NOCLAMP counters: pruning slack 0; leaves reached with a positive f2b correction 0, of them above the threshold before the admissibility filters 0, crossing it only by the correction 0; admissible (would be reported) 0, crossing only by the correction 0 (from 1 of 1 part(s))
+FAIL: cons2 violated
+VERDICT (python part; receivers d = 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 were NOT searched here, only dumped): FAIL: cons2 violated
+violators by d: {7: 4, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0, 21: 0, 22: 0, 23: 0, 24: 0, 25: 0, 26: 0}
+RESULT: INFEASIBLE (exact receiver violators above); Python checks also FAIL
