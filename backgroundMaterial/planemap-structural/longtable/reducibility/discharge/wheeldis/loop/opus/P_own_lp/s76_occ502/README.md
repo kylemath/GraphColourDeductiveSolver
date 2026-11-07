@@ -92,3 +92,13 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - Module names and their order match module_split.tsv (9/9). Compile order: HWR3P_kk, then COccHWR3P_kk, then HWR3POcc (after W3PVAll).
   This was not compiled here, because this container has no Lean.
 - **Studio build (14:16Z, 6 Nov):** done on main at ff255ae2. The glue compiled unmodified and byte-identical to e1285b69 (HWR3POcc e4316ee9). All 30 modules are clean, with sorry 0. `W3PV.hC_all` has the assumed `Fin 9` form.
+
+## hdw18n/: HDW18N, the 15 nl51 witnesses of the W18 428 without Lean hD (Studio out/job_HDW18N/D_w18n.tsv, md5 4df706df, main 2c3559f1; MOD HDW18N, PFX hdw18n)
+- in/D_w18n.tsv and studio/{D_w18n.tsv,INPUTS.md (fe64d854),module_split.tsv (f4f07fcf)}: byte copies from main 2c3559f1. 15 rows, rings 10-14.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/hdw18n/in/D_w18n.tsv s76_occ502/hdw18n/lean HWN_ --hd HDW18N hdw18n`
+  -> HWN_00..14, COccHWN_00..14, HDW18NOcc (imports HDW18NAll, uses HDW18NV.hD_k). 15 generated, 0 failed; 30 rotations validated; every link an induced cycle.
+- Names in HWN_modules.txt equal module_split.tsv's names and rings and D_w18n.tsv's order (15/15); HDW18NOcc pairs HWN_kk with HDW18NV.hD_k for every k.
+- Literal check: studio/HDW18N_local_gen_hd_f743a82d.lean is gen_hd.py f743a82d (main out/job_HD0) run here on in/D_w18n.tsv with
+  MOD HDW18N, PFX hdw18n, batch 1. check_literals.py against it: 15 entries, 0 mismatches. A mutated copy (nl0065_r10 m 7 -> 6) gives
+  1 mismatch, exit 1. Rerun check_literals against the Mac's own HDW18N.lean when it lands. NOT compiled here (no Lean in this container).
+- Compile order: HWN_kk, then COccHWN_kk, then HDW18NOcc (after HDW18NAll). HDW18NOcc md5 d39cdcea.
