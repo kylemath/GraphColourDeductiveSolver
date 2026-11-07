@@ -77,13 +77,23 @@ def main():
     xin = os.path.abspath(sys.argv[2]); tin = json.load(open(xin))['t']; k = int(os.environ.get('REPL_K0', '0'))
     last = os.path.getmtime(LPF) if os.path.exists(LPF) and os.environ.get('REPL_SKIPCUR') else None   # skip the LP point already processed by hand
     log('start: in-point %s (md5 %s) t = %.12f; watching %s; family %s (md5 %s)' % (os.path.basename(xin), md5(xin), tin, os.path.basename(LPF), os.path.basename(ENV['ARGS']), md5(ENV['ARGS'])))
+    init = [f for f in os.environ.get('REPL_INIT', '').split(',') if f]
     while True:
+        if init:
+            src = init.pop(0); k += 1; xlp = os.path.join(R, 'lp_%02d.json' % k); open(xlp, 'wb').write(open(src, 'rb').read())
+            tl = json.load(open(xlp))['t']; log('initial LP point %d = %s (t %.9f)' % (k, src, tl))
+            xin, tin = step(xin, tin, xlp, tl, k); continue
         alive = subprocess.run(['pgrep', '-f', 'tag=%s ' % TAG], stdout=subprocess.DEVNULL).returncode == 0
         if os.path.exists(LPF) and os.path.getmtime(LPF) != last:
             time.sleep(20); last = os.path.getmtime(LPF); k += 1
             xlp = os.path.join(R, 'lp_%02d.json' % k); open(xlp, 'wb').write(open(LPF, 'rb').read())
             tl = json.load(open(xlp))['t']
-            if tl >= tin: log('LP point %d t %.9f >= t_in, skipped' % (k, tl)); continue
+            xin, tin = step(xin, tin, xlp, tl, k)
+        elif not alive:
+            log('run %s gone; stopping' % TAG); return
+        time.sleep(POLL)
+def step(xin, tin, xlp, tl, k):
+            if tl >= tin: log('LP point %d t %.9f >= t_in, skipped' % (k, tl)); return xin, tin
             lam, tr = search(xin, xlp, k)
             if tr < tin - 1e-7:
                 o = json.load(open(os.path.join(R, 'b%d_%g.json' % (k, lam)))); tb = o['t']; o['t'] = tr + 2e-9
@@ -93,13 +103,16 @@ def main():
                 if vf is not None and 'UPPER-R2: FEASIBLE' in L:
                     log('NEW IN-POINT %s (md5 %s) FEASIBLE at t = %.12f (was %.12f)' % (os.path.basename(cand), md5(cand), o['t'], tin))
                     xin, tin = cand, o['t']
+                    if os.environ.get('REPL_ARGS2'):
+                        e2 = dict(ENV, ARGS=os.environ['REPL_ARGS2']); tg2 = tg + '_sub'
+                        subprocess.run(['bash', os.path.join(N, 'U86.sh'), tg2, cand, '1'] + FAM, env=e2, cwd=N, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                        L2 = open(os.path.join(N, 'logs', 'upper_%s.log' % tg2)).read()
+                        log('  same point on %s: %s' % (os.path.basename(os.environ['REPL_ARGS2']), (re.findall(r'UPPER-R2.*', L2) or ['no verdict'])[-1]))
                     if os.path.isdir(SWARM):
                         for f in (cand, os.path.join(N, 'logs', 'upper_%s.log' % tg)): subprocess.run(['cp', f, SWARM])
                         open(os.path.join(SWARM, 'REPLADDER.txt'), 'a').write('%s %s md5 %s t %.12f FEASIBLE (OP-23 repaired blend, l = %g of LP point %d)\n' % (time.strftime('%H:%M:%SZ', time.gmtime()), os.path.basename(cand), md5(cand), tin, lam, k))
                 else: log('recheck of %s did NOT pass: %s' % (os.path.basename(cand), (re.findall(r'UPPER-R2.*', L) or ['no verdict'])[-1]))
             for f in os.listdir(R):
                 if f.startswith('b%d_' % k): os.remove(os.path.join(R, f))
-        elif not alive:
-            log('run %s gone; stopping' % TAG); return
-        time.sleep(POLL)
+            return xin, tin
 main()
