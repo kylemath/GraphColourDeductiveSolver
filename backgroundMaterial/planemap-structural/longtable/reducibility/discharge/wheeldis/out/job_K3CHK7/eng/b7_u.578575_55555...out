@@ -1,0 +1,7 @@
+== kc -C -x X
+b7_u.578575_55555.. r=14 m=12 classes=199291 ext=25714 reached=190826 D=false depth=4 passes=5 mode=gs 484ms
+  X={I0-I3} adm=yes leftover 0
+  C-REDUCIBLE X={I0-I3} size=1 (kc-C: tested 3, admissible 3, edges 47, 485ms)
+== cfast --fixed X
+b7_u.578575_55555.. r=14 m=12 classes=199291 ext=25714 reached=190826 bad=8465 D=false depth=9 (3.6s)
+  fixed X={I0-I3} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0

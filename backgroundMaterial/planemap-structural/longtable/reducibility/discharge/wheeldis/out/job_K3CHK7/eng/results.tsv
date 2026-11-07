@@ -1,0 +1,175 @@
+# name	verdict	X	ring	m	kc line parses to name/ring/m	engines	PASS
+b7_u..67755_..5.66.	C	I0-I1	14	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.56.565_.5.56..	D		12	9	yes	kc:D dfast18:D	PASS
+b7_u.56.565_.5.56.6	C	I0-I1	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.56.565_65.56..	D		13	10	yes	kc:D dfast18:D	PASS
+b7_u.56586._.5.55..	C	I0-I3	13	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.56586._.5.555.	C	I0-I3	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.56586._.5755..	C	I0-I3	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.56586._55.55..	C	I0-I1	13	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.56586._55.555.	C	I0-I1	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.56586._55755..	C	I0-I1	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.567755_..5.66.	D		14	10	yes	kc:D dfast18:D	PASS
+b7_u.567755_.55.66.	D		14	11	yes	kc:D dfast18:D	PASS
+b7_u.567755_555.66.	D		14	12	yes	kc:D dfast18:D	PASS
+b7_u.57685._..555..	C	I0-I3	14	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.57685._.5555..	D		14	10	yes	kc:D dfast18:D	PASS
+b7_u.57685._55555..	D		14	11	yes	kc:D dfast18:D	PASS
+b7_u.5785.._55555..	C	I0-I3	13	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.5785.5_55555..	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.57857._55555..	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.578575_.5555..	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u.578575_55555..	C	I0-I3	14	12	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u85...57_55..565	C	I0-I1	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u85..575_5..5566	D		14	11	yes	kc:D dfast18:D	PASS
+b7_u85..575_55..566	D		14	11	yes	kc:D dfast18:D	PASS
+b7_u85..575_55.5566	D		14	12	yes	kc:D dfast18:D	PASS
+b7_u856..67_55...55	C	I0-I1	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u856.565_.5.56..	C	I0-I1	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b7_u8565.67_55...55	C	I0-I1	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u...56556_.....66.	C	I0-I3	12	8	yes	reused: out/job_K3CHK5 (kc -x + cfast --fixed)	PASS
+b8_u...56556_...5.66.	D		12	9	yes	reused: out/job_K3CHK5 (kc -C + dfast18)	PASS
+b8_u...56556_..55.66.	D		12	10	yes	kc:D dfast18:D	PASS
+b8_u.5556.56_65.5.56.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u.56.5556_56....5.	D		13	10	yes	reused: out/job_K3CHK2 (kc -C + dfast18)	PASS
+b8_u.56.5556_56..5.5.	D		13	11	yes	kc:D dfast18:D	PASS
+b8_u.56.5556_56..585.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u.56.5656_56...55.	D		13	11	yes	reused: out/job_K3CHK (kc -C + dfast18)	PASS
+b8_u.56.5756_.5...55.	C	I0-I5	13	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.56.5756_.5..555.	D		13	11	yes	reused: out/job_K3CHK2 (kc -C + dfast18)	PASS
+b8_u.56.5756_.5.6555.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u.56.5756_55...55.	C	I0-I5	13	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.56.5756_55..555.	D		13	12	yes	kc:D dfast18:D	PASS
+b8_u.56.5756_55.6555.	D		14	13	yes	kc:D dfast18:D	PASS
+b8_u.56656.._...66...	C	I2-I3	13	8	yes	reused: out/job_K3CHK4 (kc -x + cfast --fixed)	PASS
+b8_u.56656.._..566...	D		13	9	yes	reused: out/job_K3CHK2 (kc -C + dfast18)	PASS
+b8_u.56656.._..5665..	D		14	10	yes	kc:D dfast18:D	PASS
+b8_u.56656.5_..566...	D		14	10	yes	kc:D dfast18:D	PASS
+b8_u.5665675_.....55.	D		14	10	yes	reused: out/job_K3CHK4 (kc -C + dfast18)	PASS
+b8_u.5665675_..5...5.	D		14	10	yes	kc:D dfast18:D	PASS
+b8_u.5665675_..5..5..	D		14	10	yes	kc:D dfast18:D	PASS
+b8_u.5665675_..5..55.	D		14	11	yes	kc:D dfast18:D	PASS
+b8_u.567575._...65...	C	I0-I4	14	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.567575._...655..	C	I0-I4	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.567575._...6555.	D		14	11	yes	kc:D dfast18:D	PASS
+b8_u.567575._.5.65...	C	I0-I4	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.567575._.5.655..	D		14	11	yes	kc:D dfast18:D	PASS
+b8_u.567575._.5.6555.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u.567575._55.65...	C	I0-I4	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.567575._55.655..	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u.567575._55.6555.	D		14	13	yes	kc:D dfast18:D	PASS
+b8_u.5675756_...6555.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u.5675756_.5...55.	C	I0-I6	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.5675756_.5..555.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u.5675756_.5.6555.	D		14	13	yes	kc:D dfast18:D	PASS
+b8_u.5675756_55...55.	C	I0-I6	14	12	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u.5675756_55..555.	D		14	13	yes	kc:D dfast18:D	PASS
+b8_u.5675756_55.6555.	D		14	14	yes	kc:D dfast18:D	PASS
+b8_u856.5556_56....5.	D		14	11	yes	kc:D dfast18:D	PASS
+b8_u856.5556_56..5.5.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u856.5656_56...55.	D		14	12	yes	kc:D dfast18:D	PASS
+b8_u856.5756_55...55.	C	I0-I6	14	12	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b8_u856.5756_55..555.	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u...575655_....5....	C	I0-I3	13	8	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_....5..5.	C	I0-I3	13	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_....5.65.	C	I0-I3	13	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_....5765.	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_...5...5.	C	I0-I3,I5-I6,R8-I3,R10-I5	13	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_...5..65.	D		13	10	yes	reused: out/job_K3CHK (kc -C + dfast18)	PASS
+b9_u...575655_...55....	C	I0-I3	13	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_...55..5.	C	I0-I3	13	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_...55.65.	D		13	11	yes	kc:D dfast18:D	PASS
+b9_u...575655_...557.5.	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u...575655_...55765.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u..6575655_....5..5.	C	I0-I4	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u..6575655_....5.65.	C	I0-I4	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u..6575655_...5...5.	C	I0-I4,I6-I7,R9-I4,R11-I6	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u..6575655_...5..65.	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u..6575655_...55....	C	I0-I4	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u..6575655_...55..5.	C	I0-I4	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u..6575655_...55.65.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u..676565._..5555...	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.5.575655_....5....	C	I0-I4	14	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5.575655_....5..5.	C	I0-I4	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5.575655_....5.65.	C	I0-I4	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5.575655_...5...5.	C	I0-I4,I6-I7,R5-I4,R3-I6	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5.575655_...5..65.	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.5.575655_...55....	C	I0-I4	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5.575655_...55..5.	C	I0-I4	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5.575655_...55.65.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56.56555_.5.......	C	I0-I5	13	9	yes	reused: out/job_K3CHK3 (kc -x + cfast --fixed)	PASS
+b9_u.565.5655_.5.......	C	I0-I6	13	9	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.565.5655_.5.....5.	C	I0-I6	13	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.565.5655_.5....65.	D		13	11	yes	kc:D dfast18:D	PASS
+b9_u.565.5655_.5..5....	C	I0-I6	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.565.5655_.5..5..5.	C	I0-I6	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.565.5655_.5..5.65.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.565.5655_.5.5.....	C	I0-I6	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.565.5655_.5.5...5.	C	I0-I6	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.565.5655_.5.5..65.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575.55_....5..5.	C	I0-I3	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575.55_...5...5.	C	I0-I3	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575.55_...55..5.	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575.55_.5..5..5.	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575.55_.5.5...5.	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575.55_.5.55..5.	C	I0-I3	14	12	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5657565._...55....	C	I0-I3,I0-I5	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5657565._.5..5....	C	I0-I5	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5657565._.5.5.....	C	I0-I5	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5657565._.5.55....	C	I0-I5	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575655_....5....	D		14	10	yes	kc:D dfast18:D	PASS
+b9_u.56575655_....5..5.	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.56575655_....5.65.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575655_...5.....	D		14	10	yes	kc:D dfast18:D	PASS
+b9_u.56575655_...5...5.	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.56575655_...5..65.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575655_...55....	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.56575655_...55..5.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575655_...55.65.	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5.......	C	I0-I7	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575655_.5.....5.	C	I0-I7	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.56575655_.5....65.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5..5....	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5..5..5.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5..5.65.	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5.5.....	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5.5...5.	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5.5..65.	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5.55....	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5.55..5.	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.56575655_.5.55.65.	D		14	14	yes	kc:D dfast18:D	PASS
+b9_u.567656.._..5555...	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.567656.._.5.555...	C	I2-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.567656.._.55.55...	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.567656.._.55555...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.567656.._55.555...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.567656.._555.55...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.567656.._555555...	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.5676565._...555...	C	I0-I3	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u.5676565._..5.55...	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u.5676565._..5555...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.5676565._.5.555...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.5676565._.55.55...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u.5676565._.55555...	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.5676565._55.555...	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.5676565._555.55...	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u.5676565._555555...	D		14	14	yes	kc:D dfast18:D	PASS
+b9_u655...566_66......5	C	I5-I6	14	10	yes	reused: out/job_K3CHK2 (kc -x + cfast --fixed)	PASS
+b9_u75...5656_5....5..5	C	I0-I5	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u75...5656_5...55..5	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u75...5656_55......5	C	I0-I5	14	10	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u75...5656_55...5..5	C	I0-I5	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u75...5656_55..55...	C	I0-I1,I2-I7,R9-I1,R0-I2	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u75...5656_55..55..5	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u75..65656_....55..5	D		14	11	yes	kc:D dfast18:D	PASS
+b9_u75..65656_5...55...	D		14	11	yes	reused: out/job_K3CHK3 (kc -C + dfast18)	PASS
+b9_u75..65656_5...55..5	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u75..65656_55..55...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u75..65656_55..55..5	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u756..5656_55......5	C	I0-I6	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u756..5656_55...5...	C	I0-I2	14	11	yes	kc-x:adm=yes,leftover0 cfast:C	PASS
+b9_u756..5656_55...5..5	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u756..5656_55..55...	D		14	12	yes	kc:D dfast18:D	PASS
+b9_u756..5656_55..55..5	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u756.65656_55..55...	D		14	13	yes	kc:D dfast18:D	PASS
+b9_u756.65656_55..55..5	D		14	14	yes	kc:D dfast18:D	PASS
