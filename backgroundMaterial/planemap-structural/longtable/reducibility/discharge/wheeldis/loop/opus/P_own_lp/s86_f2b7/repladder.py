@@ -10,7 +10,7 @@ TAG = sys.argv[1]; POLL = int(sys.argv[3]) if len(sys.argv) > 3 else 60
 R = os.path.join(N, 'repl_' + TAG + os.environ.get('REPL_FAM', '')); os.makedirs(R, exist_ok=True)
 SWARM = '/mnt/project-files/swarm/round6/W12-studio-K/from_opus/s86_' + TAG
 LPF = os.path.join(N, 'eng', 'sol_%s_lp.json' % TAG)
-FAM = ['c6le', 'f2b7', 'f2b=%s/rules/A5final/rules_c67fa1d1_plus_A5_twins.json' % N, 'rpatN=%s/rpat/rpatN3_rotation_justified.txt' % N]
+FAM = ['c6le', 'f2b7', 'f2b=%s/rules/A5final/rules_c67fa1d1_plus_A5_twins.json' % N, 'rpatN=' + os.environ.get('REPL_RPATN', '%s/rpat/rpatN3_rotation_justified.txt' % N)]   # s86: REPL_RPATN=A,B adds offc for GS4
 ENV = dict(os.environ, STACK='s77', ARGS=os.environ.get('REPL_ARGS', os.path.join(N, 'args_A97_F_W13K3c.txt')), KEYS=os.environ.get('REPL_KEYS', os.path.join(B, 's85_edge56', 'keys', 'cg_keys_r13.txt')))
 def log(s):
     line = '%s [s86REP-%s] %s' % (time.strftime('%H:%M:%SZ', time.gmtime()), TAG, s)
