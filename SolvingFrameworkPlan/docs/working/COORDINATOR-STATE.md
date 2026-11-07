@@ -88,6 +88,8 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 7 Nov 10:08Z: UPPER **t* <= 0.039811058 [E2]** on sound family W13 + K3f (8 K-3 kills + 2 D + 1 C from K3CHK4/5) + rules 2db75746 (Opus sol_rep2f_082, Mac W17 macpack, main 300f9bf0); control without new C fails d8. All 174 K-3/K-4 kills pass Studio engines (K3CHK7, 927cfc23); Lean for the 3 new kills queued. Supersedes 0.040446.
+- 7 Nov 09:55Z: UPPER **t* <= 0.040445649 [E2]** on sound family W13 + 8 K-3 kills + rules 2db75746 (Opus sol_rep3c_02, Mac W17 macpack, main c654135d); control t=0.04044 fails only at d8 window rows, tight. Next point 0.039811 needs K3d/K3e (D) + K3f (C), already two-engine checked.
 - 7 Nov 09:18Z: UPPER **t* <= 0.040940236 [E2]** on sound family W13 + 8 K-3 kills + W18 A-5 FINAL rules 2db75746 (ST-18: 274/274 rules, 98 witnesses two engines). Opus sol_rep2_08, Mac W17 macpack (main edae280c); control t=0.040939 fails at d8 (rows 56656757/66665576, 56657576/66667556), so tight. Lean: K-3 kills done; 99 twin witnesses (HA5+HA5b) queued after HCK63 (86/114). Supersedes 0.041565.
 - 7 Nov 05:28Z: all 8 K-3 kills behind sound 0.041565 now in Lean (hD/hC + occurrence glue exit 0, sorry 0; main 2d7ba139 for 6 D, d208ddf0+ for 2 C). Only Lean gap left for that family: 45 A-5 twin witnesses in rules 363dd708 (queued after HCK63).
 - 7 Nov 05:02Z: Lean hC done for both K-3 C kills (K3C2V.hC_0, K3C3V.hC_0; exit 0, sorry 0). hD for the 6 D kills queued after HCK63 and the A-5 twins.
