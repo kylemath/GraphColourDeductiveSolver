@@ -150,3 +150,18 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
   (its module names HDK3V00..05 equal module_split.tsv's). check_literals.py against it: 6 entries, 0 mismatches. A mutated copy
   (b9_u75..65656_5...55... m 11 -> 10) gives 1 mismatch, exit 1. Rerun check_literals against the Mac's own HDK3.lean when it lands. NOT compiled here (no Lean in this container).
 - Compile order: HK3D_kk, then COccHK3D_kk, then HDK3Occ (after HDK3All). HDK3Occ md5 2c6fae49.
+
+## k3/hc/: the two K-3 C kills, K3CHK2 (b9_u655...566_66......5, X = {I5-I6}) and K3CHK3 (b9_u.56.56555_.5......., X = {I0-I5}) (Studio main d208ddf0)
+- in/extraC_K3CHK2.tsv (6eb0ffd8) and in/extraC_K3CHK3.tsv (1fdedb3b) are the jobs' extraC.tsv; studio/{CK3C2.lean (f469e29b), K3C2V00.lean (c961c90a),
+  CK3C3.lean (21f11a08), K3C3V00.lean (2862bb8d)}: byte copies from main d208ddf0. studio/INPUTS.md is written here.
+- Two one-entry jobs, as HCW13R2 handled its separate A and B jobs (one gen_occ_kc run and one gen_cocc_batch run each; gen_cocc_batch.py takes one
+  verdict module per run):
+  `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/k3/hc/in/extraC_K3CHK2.tsv s76_occ502/k3/hc/lean HK3C2_` (C side), same for K3CHK3 with HK3C3_
+  -> HK3C2_00 + COccHK3C2_00 and HK3C3_00 + COccHK3C3_00. Each: 1 generated, 0 failed, 2 rotations validated, every link an induced cycle.
+- lean/HK3C2Occ.lean, lean/HK3C3Occ.lean: `scripts/gen_cocc_batch.py k3/hc/lean/HK3CJ_modules.txt HK3CJOcc K3CJVAll K3CJV k3cjEntries HK3CJ_ ...` (J = 2, 3; run
+  from s76_occ502, the script unchanged). They import K3CJVAll and use `K3CJV.hC_all k`, `k3cjEntries_ok` and `k3cjEntries_length`.
+  **K3C2VAll / K3C3VAll are not on main:** the Studio built only CK3CJ and K3CJV00 (`K3CJV.hC_0`). HK3CJOcc compiles only once the Studio adds
+  K3CJVAll with `theorem hC_all (k : Fin 1)` in the W3PVAll form (`fin_cases k; exact hC_0`). HK3CJ_00 and COccHK3CJ_00 do not need it.
+- check_literals_c.py: CK3C2.lean 1 entry, 0 mismatches; CK3C3.lean 1 entry, 0 mismatches. Copies with one intAdj entry changed give 1 mismatch
+  and exit 1 for each. NOT compiled here (no Lean in this container).
+- Compile order: HK3CJ_00, COccHK3CJ_00, then HK3CJOcc (after K3CJVAll). HK3C2Occ md5 a9c9c9e0, HK3C3Occ md5 44b1e377.
