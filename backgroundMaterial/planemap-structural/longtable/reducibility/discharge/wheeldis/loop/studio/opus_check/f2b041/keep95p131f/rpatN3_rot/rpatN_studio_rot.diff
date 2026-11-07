@@ -1,0 +1,25 @@
+13c13,28
+< import sys, collections
+---
+> import sys, collections, os
+> ROT = os.environ.get('RPATN_ROT') == '1'   # opt-in (default off; ST-10): keep only rotation-preserving embeddings
+> if ROT:
+>     _H = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+>     sys.path.insert(0, os.path.join(_H, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+>     GG = {'__file__': os.path.join(_H, 'loop', 'k42', 'grow.py'), '__name__': 'grow'}; exec(open(GG['__file__']).read(), GG)
+>     CUR = {}; RFR = {}; ROTSTAT = collections.Counter()
+>     def rot_pass(c, d, L, S, pos):   # RPATN_ROT_DOT=5 (diagnostic only): code free link letters as 5 instead of 6
+>         rk = CUR['rot']
+>         if rk is None: return False
+>         lk = [int(L[i]) if L[i] in '5678' else (5 if (L[i] == '.' and os.environ.get('RPATN_ROT_DOT') == '5') else 6) for i in range(d)]; r2 = {('s', i): int(S[i]) for i in range(d) if S[i] in '5678'}
+>         fk = (d, tuple(lk), tuple(sorted(r2.items())))
+>         if fk not in RFR: RFR[fk] = RC.frame_rotation(GG, d, lk, {}, r2)
+>         frm = RFR[fk]; inv = frm[2]; phi = {c: inv[('u',)]}
+>         for v, sl in pos.items(): phi[v] = inv[sl]
+>         return RC.rot_ok(phi, rk, frm)
+70a86
+>             if ROT and not rot_pass(c, d, L, S, pos): ROTSTAT['rejected'] += 1; return
+101a118
+>         if ROT: CUR['rot'] = RC.kc_rotation(line)
+116a134
+>     if ROT: print('RPATN_ROT: embeddings rejected (not rotation-preserving) %d' % ROTSTAT['rejected'])

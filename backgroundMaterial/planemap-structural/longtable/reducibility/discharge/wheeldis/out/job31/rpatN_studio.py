@@ -10,7 +10,22 @@ s slots. Pattern: image slots get their letters; a non-image w_i between image s
 s_{i-1}-s_i) or N (no edge); everything else '.'. Patterns deduped up to the 2d rotations / reflections
 (w_i -> w_{i+r}, s_i -> s_{i+r}; w_i -> w_{-i}, s_i -> s_{-i-1}); canonical form = min of LINK + SWORD.
 Usage: python3 out/job31/rpatN_studio.py KCFILE OUT  (writes 'd LINK SWORD # name c=v' lines, one per pattern)"""
-import sys, collections
+import sys, collections, os
+ROT = os.environ.get('RPATN_ROT') == '1'   # opt-in (default off; ST-10): keep only rotation-preserving embeddings
+if ROT:
+    _H = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+    sys.path.insert(0, os.path.join(_H, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+    GG = {'__file__': os.path.join(_H, 'loop', 'k42', 'grow.py'), '__name__': 'grow'}; exec(open(GG['__file__']).read(), GG)
+    CUR = {}; RFR = {}; ROTSTAT = collections.Counter()
+    def rot_pass(c, d, L, S, pos):   # RPATN_ROT_DOT=5 (diagnostic only): code free link letters as 5 instead of 6
+        rk = CUR['rot']
+        if rk is None: return False
+        lk = [int(L[i]) if L[i] in '5678' else (5 if (L[i] == '.' and os.environ.get('RPATN_ROT_DOT') == '5') else 6) for i in range(d)]; r2 = {('s', i): int(S[i]) for i in range(d) if S[i] in '5678'}
+        fk = (d, tuple(lk), tuple(sorted(r2.items())))
+        if fk not in RFR: RFR[fk] = RC.frame_rotation(GG, d, lk, {}, r2)
+        frm = RFR[fk]; inv = frm[2]; phi = {c: inv[('u',)]}
+        for v, sl in pos.items(): phi[v] = inv[sl]
+        return RC.rot_ok(phi, rk, frm)
 
 def parse(line):
     f = line.split(); nm, r, m = f[0], int(f[1]), int(f[2]); rp, ip = f[3].split(';'), f[4].split(';')
@@ -68,6 +83,7 @@ def embeddings(m, g, E, tri, c):
                 elif len(ws) == 1:   # face w_i s_{i-1} s_i with w_i = 5
                     if not (set(ss) == {(ws[0] - 1) % d, ws[0]} and L[ws[0]] == '5'): return
                 else: return
+            if ROT and not rot_pass(c, d, L, S, pos): ROTSTAT['rejected'] += 1; return
             yield (d, L, S); return
         v = order[k]; isn = v in E[c]
         for i in range(d):
@@ -99,6 +115,7 @@ if __name__ == '__main__':
     for line in open(KC):
         if not line.strip(): continue
         nm, m, g, E, tri = parse(line)
+        if ROT: CUR['rot'] = RC.kc_rotation(line)
         cents = [c for c in range(m) if 7 <= g[c] <= 17]
         nconf += 1
         if not cents: nocentre += 1; continue
@@ -114,5 +131,6 @@ if __name__ == '__main__':
         for (d, k), (nm, c) in sorted(pats.items()):
             fo.write('%d %s # %s c=%d\n' % (d, k, nm, c))
     byd = collections.Counter(d for d, _ in pats)
+    if ROT: print('RPATN_ROT: embeddings rejected (not rotation-preserving) %d' % ROTSTAT['rejected'])
     print('configurations %d; no centre %d; with >= 1 u-centred embedding %d; centres tried %d; embeddings (first neighbour at w_0) %d; '
           '(configuration, pattern) pairs %d; patterns %d; by d %s' % (nconf, nocentre, withemb, ncent, nemb, len(pairs), len(pats), dict(sorted(byd.items()))))

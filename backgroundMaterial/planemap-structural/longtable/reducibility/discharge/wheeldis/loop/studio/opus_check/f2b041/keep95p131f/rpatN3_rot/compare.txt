@@ -1,0 +1,39 @@
+flag-off patterns 2287 | e153fc41 patterns 2287 | same pattern set: True
+ROT (nl51 justifiers only) keeps 2226 drops 61
+W18: unjustified 46 kept 2241 | U+K == all: True | disjoint: True
+dropped by both 46 | only by us 15 | only by W18 0
+ONLY-US 7 .556.65 .56..65 # nl0193_r12 c=4
+ONLY-US 7 .56.575 .5.565. # nl3171_r13 c=0
+ONLY-US 7 .565N56 ..6555. # nl2861_r12 c=3
+ONLY-US 7 .575N56 .56555. # nl3185_r13 c=0
+ONLY-US 8 .5565.56 ..5..56. # nl5141_r13 c=0
+ONLY-US 8 .5565.65 ...65.5. # nl5135_r13 c=0
+ONLY-US 8 .5566.65 .565..55 # nl5255_r13 c=0
+ONLY-US 8 .56.5656 .5..5.5. # nl5130_r13 c=0
+ONLY-US 8 .565N575 .555555. # nl5526_r13 c=0
+ONLY-US 8 .575N575 .555555. # nl6352_r14 c=0
+ONLY-US 9 .55565.56 ....5.55. # nl7291_r13 c=0
+ONLY-US 9 .55655.56 ..5...55. # nl7296_r13 c=0
+ONLY-US 9 .55756.65 ..555..55 # nl7693_r14 c=0
+ONLY-US 9 .55756.65 .5655..55 # nl7801_r14 c=9
+ONLY-US 9 .56.65556 55..5.56. # nl7466_r14 c=0
+
+Keep-pool (11,891 non-RSST kc lines) rotation-preserving rebuild: 5653 patterns
+of the 15 dropped only by us (nl51 justifiers), rotation-justified by a keep-pool configuration: 1
+  7 .556.65 .56..65 -> WITNESS f7_.556.65_.56..65 c=0
+  7 .56.575 .5.565. -> no non-RSST witness
+  7 .565N56 ..6555. -> no non-RSST witness
+  7 .575N56 .56555. -> no non-RSST witness
+  8 .5565.56 ..5..56. -> no non-RSST witness
+  8 .5565.65 ...65.5. -> no non-RSST witness
+  8 .5566.65 .565..55 -> no non-RSST witness
+  8 .56.5656 .5..5.5. -> no non-RSST witness
+  8 .565N575 .555555. -> no non-RSST witness
+  8 .575N575 .555555. -> no non-RSST witness
+  9 .55565.56 ....5.55. -> no non-RSST witness
+  9 .55655.56 ..5...55. -> no non-RSST witness
+  9 .55756.65 ..555..55 -> no non-RSST witness
+  9 .55756.65 .5655..55 -> no non-RSST witness
+  9 .56.65556 55..5.56. -> no non-RSST witness
+of W18's 46: justified in the keep-pool rebuild: 0 (must be 0 to agree)
+final: rpatN3 patterns with a rotation-preserving witness (nl51 or keep pool): 2227 of 2287; without: 60; equal to W18 kept set: False
