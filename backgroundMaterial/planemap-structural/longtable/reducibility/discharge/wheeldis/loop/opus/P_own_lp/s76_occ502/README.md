@@ -139,3 +139,14 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals_c.py on CA5C.lean gives 10 entries, 0 mismatches. A copy with one intAdj entry of p515 changed gives 1 mismatch and exit 1.
   NOT compiled here (no Lean in this container).
 - Compile order: HA5C_kk, then COccHA5C_kk, then HA5COcc (after A5CVAll). HA5COcc md5 56ddb34b.
+
+## k3/hd/: HDK3, the 6 K-3 D kills (Studio out/job_HDK3/D_k3.tsv, md5 0d49071d, main ee839f4e; MOD HDK3, PFX hdk3)
+- in/D_k3.tsv and studio/{D_k3.tsv,module_split.tsv (20dc234c)}: byte copies from main ee839f4e. 6 rows, rings 13-14.
+  studio/INPUTS.md is written here (main has none for job HDK3).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/k3/hd/in/D_k3.tsv s76_occ502/k3/hd/lean HK3D_ --hd HDK3 hdk3`
+  -> HK3D_00..05, COccHK3D_00..05, HDK3Occ (imports HDK3All, uses HDK3V.hD_k). 6 generated, 0 failed; 12 rotations validated; every link an induced cycle.
+- Names in HK3D_modules.txt equal module_split.tsv's names and rings and D_k3.tsv's order (6/6); HDK3Occ pairs HK3D_kk with HDK3V.hD_k for every k.
+- Literal check: studio/HDK3_local_gen_hd_f743a82d.lean is gen_hd.py f743a82d run here on in/D_k3.tsv with MOD HDK3, PFX hdk3, batch 1
+  (its module names HDK3V00..05 equal module_split.tsv's). check_literals.py against it: 6 entries, 0 mismatches. A mutated copy
+  (b9_u75..65656_5...55... m 11 -> 10) gives 1 mismatch, exit 1. Rerun check_literals against the Mac's own HDK3.lean when it lands. NOT compiled here (no Lean in this container).
+- Compile order: HK3D_kk, then COccHK3D_kk, then HDK3Occ (after HDK3All). HDK3Occ md5 2c6fae49.
