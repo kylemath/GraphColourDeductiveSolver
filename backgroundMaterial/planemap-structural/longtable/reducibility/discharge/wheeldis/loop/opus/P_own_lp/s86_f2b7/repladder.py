@@ -1,0 +1,105 @@
+# s86 OP-23 repair ladder.  usage: python3 repladder.py <runtag> <in-point sol> [poll seconds]
+# Watches eng/sol_<runtag>_lp.json (the K run's per-iteration LP point).  For each new LP point x_LP and the best feasible point x_in
+# (t_in), evaluates the repaired blend t_rep(l) = t(blend) + max excess over every violated row (exact upperR2 + vfile, conservation
+# worst excess included; any violated sender row or Karp-tail row makes l invalid) on a lambda grid, refines around the best, and if
+# t_rep < t_in builds the point at t_rep + 2e-9, rechecks it (upperR2 must say FEASIBLE) and makes it the new x_in.
+# Raising t relaxes every window / conservation row, so the repaired blend is feasible once its own recheck passes.
+import json, os, re, subprocess, sys, time, hashlib
+N = os.path.dirname(os.path.abspath(__file__)); B = os.path.dirname(N)
+TAG = sys.argv[1]; POLL = int(sys.argv[3]) if len(sys.argv) > 3 else 60
+R = os.path.join(N, 'repl_' + TAG); os.makedirs(R, exist_ok=True)
+SWARM = '/mnt/project-files/swarm/round6/W12-studio-K/from_opus/s86_' + TAG
+LPF = os.path.join(N, 'eng', 'sol_%s_lp.json' % TAG)
+FAM = ['c6le', 'f2b7', 'f2b=%s/rules/A5final/rules_c67fa1d1_plus_A5_twins.json' % N, 'rpatN=%s/rpat/rpatN3_rotation_justified.txt' % N]
+ENV = dict(os.environ, STACK='s77', ARGS=os.path.join(N, 'args_A97_F_W13K3c.txt'), KEYS=os.path.join(B, 's85_edge56', 'keys', 'cg_keys_r13.txt'))
+def log(s):
+    line = '%s [s86REP-%s] %s' % (time.strftime('%H:%M:%SZ', time.gmtime()), TAG, s)
+    print(line, flush=True); open(os.path.join(N, 'run.log'), 'a').write(line + '\n')
+def md5(fn): return hashlib.md5(open(fn, 'rb').read()).hexdigest()[:8]
+def blend(fin, flp, lam, fout):
+    a = json.load(open(fin)); b = json.load(open(flp)); o = dict(b)
+    for k in set(a) | set(b):
+        va, vb = a.get(k), b.get(k)
+        if k == 't': o[k] = (1 - lam) * va + lam * vb; continue
+        if isinstance(va, dict) or isinstance(vb, dict):
+            va = va or {}; vb = vb or {}
+            if not all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in list(va.values()) + list(vb.values())): o[k] = vb; continue
+            o[k] = {kk: (1 - lam) * va.get(kk, 0.0) + lam * vb.get(kk, 0.0) for kk in set(va) | set(vb)}
+        elif isinstance(va, list) or isinstance(vb, list):
+            da = {json.dumps(x[0]): x[1] for x in (va or [])}; db = {json.dumps(x[0]): x[1] for x in (vb or [])}
+            o[k] = [[json.loads(kk), (1 - lam) * da.get(kk, 0.0) + lam * db.get(kk, 0.0)] for kk in sorted(set(da) | set(db))]
+    o.pop('note', None); json.dump(o, open(fout, 'w')); return o['t']
+def check(tag, sol, vfile=True, th=1):
+    vf = os.path.join(N, 'logs', 'viol_%s.txt' % tag)
+    if os.path.exists(vf): os.remove(vf)
+    subprocess.run(['bash', os.path.join(N, 'U86.sh'), tag, sol, str(th)] + FAM + (['vK=1000000', 'vfile=' + vf] if vfile else []), env=ENV, cwd=N,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    L = open(os.path.join(N, 'logs', 'upper_%s.log' % tag)).read()
+    if 'Traceback' in L or 'UPPER-R2' not in L: return None, L
+    return vf, L
+def t_rep(tag, sol):
+    vf, L = check(tag, sol)
+    if vf is None: return float('inf'), 'no verdict'
+    t = float(re.search(r'at t = ([0-9.e-]+)', L).group(1))
+    if 'UPPER-R2: FEASIBLE' in L: return t, 'feasible as is'
+    if int(re.search(r'sender rows violated: (\d+)', L).group(1)): return float('inf'), 'senders'
+    if re.search(r'exact pattern-free: [1-9]', L): return float('inf'), 'tail'
+    c = re.search(r'worst excess ([0-9.e+-]+)\)', L); ce = float(c.group(1)) if c else 0.0
+    we = max([float(l.split()[2]) for l in open(vf)] or [0.0]) if os.path.exists(vf) else 0.0
+    nv = re.search(r'INFEASIBLE \((\d+)\)', L)
+    if nv and not os.path.exists(vf) and int(nv.group(1)): return float('inf'), 'no vfile'
+    return t + max(ce, we), 'cons %.3g win %.3g' % (ce, we)
+def search(xin, xlp, k):
+    res = {}
+    def ev(lams):
+        ps = []
+        for lam in lams:
+            if lam in res: continue
+            sol = os.path.join(R, 'b%d_%g.json' % (k, lam)); blend(xin, xlp, lam, sol)
+            tg = 'REP%s_%d_%g' % (TAG, k, lam)
+            ps.append((lam, tg, sol))
+        for i in range(0, len(ps), 2):   # two checks at a time (1 thread each)
+            out = {}
+            import threading
+            def run(lam, tg, sol): out[lam] = t_rep(tg, sol)
+            th = [threading.Thread(target=run, args=p) for p in ps[i:i + 2]]
+            [x.start() for x in th]; [x.join() for x in th]
+            res.update(out)
+    ev([0.02, 0.05, 0.1, 0.2])
+    best = min(res, key=lambda l: res[l][0])
+    ev([round(best / 1.5, 5), round(min(best * 1.5, 0.95), 5)] if best < 0.2 else [0.3, 0.45])
+    best = min(res, key=lambda l: res[l][0])
+    ev([round(best / 1.2, 5), round(best * 1.2, 5)])
+    best = min(res, key=lambda l: res[l][0])
+    log('it-point %d: ' % k + ' '.join('l=%g:%s' % (l, ('%.6f' % res[l][0]) if res[l][0] < 1e9 else res[l][1]) for l in sorted(res)) + ' -> best l=%g t_rep %.9f' % (best, res[best][0]))
+    return best, res[best][0]
+def main():
+    xin = os.path.abspath(sys.argv[2]); tin = json.load(open(xin))['t']; k = int(os.environ.get('REPL_K0', '0'))
+    last = os.path.getmtime(LPF) if os.path.exists(LPF) and os.environ.get('REPL_SKIPCUR') else None   # skip the LP point already processed by hand
+    log('start: in-point %s (md5 %s) t = %.12f; watching %s' % (os.path.basename(xin), md5(xin), tin, os.path.basename(LPF)))
+    while True:
+        alive = subprocess.run(['pgrep', '-f', 'tag=%s ' % TAG], stdout=subprocess.DEVNULL).returncode == 0
+        if os.path.exists(LPF) and os.path.getmtime(LPF) != last:
+            time.sleep(20); last = os.path.getmtime(LPF); k += 1
+            xlp = os.path.join(R, 'lp_%02d.json' % k); open(xlp, 'wb').write(open(LPF, 'rb').read())
+            tl = json.load(open(xlp))['t']
+            if tl >= tin: log('LP point %d t %.9f >= t_in, skipped' % (k, tl)); continue
+            lam, tr = search(xin, xlp, k)
+            if tr < tin - 1e-7:
+                o = json.load(open(os.path.join(R, 'b%d_%g.json' % (k, lam)))); tb = o['t']; o['t'] = tr + 2e-9
+                o['note'] = 's86 OP-23 repaired blend: (1-%g) * %s (md5 %s, t %.12f) + %g * %s LP point %d (t %.9f); t = blend t %.12f + max excess, + 2e-9' % (lam, os.path.basename(xin), md5(xin), tin, lam, TAG, k, tl, tb)
+                cand = os.path.join(N, 'cand', 'sol_rep%s_%02d.json' % (TAG[-2:], k)); json.dump(o, open(cand, 'w'))
+                tg = 'F_rep%s_%02d' % (TAG[-2:], k); vf, L = check(tg, cand, vfile=False, th=2)
+                if vf is not None and 'UPPER-R2: FEASIBLE' in L:
+                    log('NEW IN-POINT %s (md5 %s) FEASIBLE at t = %.12f (was %.12f)' % (os.path.basename(cand), md5(cand), o['t'], tin))
+                    xin, tin = cand, o['t']
+                    if os.path.isdir(SWARM):
+                        for f in (cand, os.path.join(N, 'logs', 'upper_%s.log' % tg)): subprocess.run(['cp', f, SWARM])
+                        open(os.path.join(SWARM, 'REPLADDER.txt'), 'a').write('%s %s md5 %s t %.12f FEASIBLE (OP-23 repaired blend, l = %g of LP point %d)\n' % (time.strftime('%H:%M:%SZ', time.gmtime()), os.path.basename(cand), md5(cand), tin, lam, k))
+                else: log('recheck of %s did NOT pass: %s' % (os.path.basename(cand), (re.findall(r'UPPER-R2.*', L) or ['no verdict'])[-1]))
+            for f in os.listdir(R):
+                if f.startswith('b%d_' % k): os.remove(os.path.join(R, f))
+        elif not alive:
+            log('run %s gone; stopping' % TAG); return
+        time.sleep(POLL)
+main()
