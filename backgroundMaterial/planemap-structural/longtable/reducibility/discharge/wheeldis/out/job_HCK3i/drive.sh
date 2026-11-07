@@ -1,5 +1,3 @@
 #!/bin/zsh
-# HCK3i: after HDK3c (GLUEDONE), build K3IV00/01 (cReducible18 hC) and K3IVAll
-cd $(dirname $0)
-until grep -q GLUEDONE ../job_HDK3c/lean/status.txt 2>/dev/null; do sleep 60; done
-cd lean; ./run.sh K3IV00; ./run.sh K3IV01; ./run.sh K3IVAll; echo ALLDONE >> status.txt
+# HCK3i: moved up by the swarm lead (12:32Z) - build now, ahead of HA5b / HDK3b / HCK3C4 / HDK3c
+cd $(dirname $0)/lean; ./run.sh K3IV00 & ./run.sh K3IV01 & wait; ./run.sh K3IVAll; echo ALLDONE >> status.txt
