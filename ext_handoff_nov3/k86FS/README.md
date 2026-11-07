@@ -12,3 +12,6 @@ Control: sol_rep2_08_tneg.json = the same point with only "t" lowered to 0.04093
     ARGSF=/tmp/swarm-W17/args_A97F_W13K3c_x_studio.txt EXPECT_PAT=18134,688,158 TAG=sol_rep2_08_zK3c_A5F \
     bash /tmp/swarm-W17/check.sh /tmp/swarm-W17/sol/sol_rep2_08.json 8
     # control: same env, TAG=sol_rep2_08_tneg_zK3c_A5F, point sol_rep2_08_tneg.json
+
+## ST-22 (Opus calls it ST-20): sol_rep3c_02.json (232318ea, t = 0.040445649101), same family and commands as ST-19 (TAG sol_rep3c_02_zK3c_A5F).
+Control sol_rep3c_02_tneg.json: t lowered to 0.04044 only; must FAIL (Opus expects conservation rows, not window rows).
