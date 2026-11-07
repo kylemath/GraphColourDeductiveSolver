@@ -339,6 +339,7 @@ HRR = 'hatrr' in FLAGS               # stage 23 (RELAY_SPEC 15r): reverse hat ch
 assert not HRR or H5, 'hatrr needs hat5'
 RRV = {}
 C6LE = 'c6le' in FLAGS             # s83: cons2 as 'the 6 ends <= t' (cf - t <= 0, the receiver row at d = 6) instead of the equation cf = 0
+CONSK = int(OPT.get('consk', '1')); CONSFRAC = float(OPT.get('consfrac', '0.25'))   # s86: c6le cons separation adds up to CONSK violated apex words per link (excess >= CONSFRAC x the link's worst), not only the argmax; rows logged as 'C <L> <s>'
 CONSALL = 'consall' in FLAGS         # stage 24 (RELAY_SPEC 19.5): separate conservation over all 1,424 non-R6 6-words, not only five-containing ones
 DD = 'big2' in FLAGS                 # stage 24 (RELAY_SPEC 19): D[K] >= 0, big -> big apex across a diamond (both directions)
 DV = {}
@@ -1056,6 +1057,8 @@ def cmd_solveR2():
             for line in open(fn):
                 m = re.match(r'^R (\d+) (\d+) (\d+)', line)
                 if m and admissible(int(m.group(1)), m.group(2), m.group(3)) is None: nw += recv(int(m.group(1)), m.group(2), m.group(3))
+                mc_ = re.match(r'^C ([5-9]{6}) ([5-9]{6})\s*$', line)   # s86 consk: logged cons rows
+                if mc_: nw += addcons(tuple(map(int, mc_.group(1))), tuple(map(int, mc_.group(2))))
         log('warm rows admitted: %d' % nw)
     ng = sum(1 for k in cols if k[0] == 'g')
     log('R6x2 (apex %s): %d sender rows, %d g keys in senders, %d six-words, %d initial cons rows, %d M sigs' % (AP, len(SR), ng, len(RW), len(conset), len(msig)))
@@ -1090,6 +1093,18 @@ def cmd_solveR2():
         nc = 0; worst = 0.0
         for L in RW:   # conservation separation
             D = cons2_delta(L, GV, HV2)
+            if C6LE and CONSK > 1:   # s86 consk
+                ex = D - t; mx_ = float(ex.max())
+                if mx_ <= 1e-9: continue
+                NVIOL[0] += 1; worst = max(worst, abs(float(D.max()))); k_ = 0
+                vi = np.nonzero(ex >= max(1e-9, CONSFRAC * mx_))[0]
+                for idx in vi[np.argsort(-ex[vi], kind='stable')]:
+                    s_ = tuple(LET[v] for v in SALL[idx])
+                    if dry or addcons(L, s_):
+                        nc += 1; k_ += 1
+                        if not dry or 'ctlrows' in FLAGS: rowlog.write('C %s %s\n' % (''.join(map(str, L)), ''.join(map(str, s_))))
+                        if k_ >= CONSK: break
+                continue
             for idx in ((int(np.argmax(D)),) if C6LE else (int(np.argmax(D)), int(np.argmin(D)))):   # s83: under c6le only in - out > t is a violation
                 if ((D[idx] - t) > 1e-9) if C6LE else (abs(D[idx]) > 1e-9):
                     NVIOL[0] += 1
@@ -1197,6 +1212,8 @@ def cmd_solveR2():
                 m = re.match(r'^R (\d+) (\d+) (\d+)', line)
                 if m and admissible(int(m.group(1)), m.group(2), m.group(3)) is None and recv(int(m.group(1)), m.group(2), m.group(3)):
                     ni_ += 1; rowlog.write(line)
+                mc_ = re.match(r'^C ([5-9]{6}) ([5-9]{6})\s*$', line)   # s86 consk
+                if mc_ and addcons(tuple(map(int, mc_.group(1))), tuple(map(int, mc_.group(2)))): ni_ += 1; rowlog.write(line)
             os.replace(injf + '.reading', injf + '.done'); rowlog.flush(); log('  inject: %d new rows admitted from %s' % (ni_, injf))
         if 'ipm0' in FLAGS: h.setOptionValue('solver', 'ipm' if it == 0 else 'simplex')
         LPMAX = float(OPT.get('lpmax', '0'))   # s33z: per-LP time limit (s); on a stalled simplex re-run with IPM (+ simplex polish)
