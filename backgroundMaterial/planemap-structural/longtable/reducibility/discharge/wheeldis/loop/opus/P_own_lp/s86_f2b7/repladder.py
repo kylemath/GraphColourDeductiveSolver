@@ -71,6 +71,18 @@ def search(xin, xlp, k):
     best = min(res, key=lambda l: res[l][0])
     ev([round(best / 1.2, 5), round(best * 1.2, 5)])
     best = min(res, key=lambda l: res[l][0])
+    # E(l) = t_rep(l) - t_blend(l) is convex piecewise linear with E(0) = 0.  When the best is the smallest l tried, the minimum is
+    # usually the kink where E leaves 0: extend the secant through the two smallest l to E = 0 (it lies below E there, so the zero
+    # found is >= the true one); evaluate, and repeat from the new point.
+    ti = json.load(open(xin))['t']; tl = json.load(open(xlp))['t']
+    for _ in range(3):
+        ls = sorted(res)
+        if best != ls[0] or len(ls) < 2: break
+        E1 = res[ls[0]][0] - ((1 - ls[0]) * ti + ls[0] * tl); E2 = res[ls[1]][0] - ((1 - ls[1]) * ti + ls[1] * tl)
+        if not (1e-12 < E1 < E2 < 1e9): break
+        l0 = round(ls[0] - E1 * (ls[1] - ls[0]) / (E2 - E1), 6)
+        if not (1e-5 < l0 < ls[0]) or l0 in res: break
+        ev([l0]); best = min(res, key=lambda l: res[l][0])
     log('it-point %d: ' % k + ' '.join('l=%g:%s' % (l, ('%.6f' % res[l][0]) if res[l][0] < 1e9 else res[l][1]) for l in sorted(res)) + ' -> best l=%g t_rep %.9f' % (best, res[best][0]))
     return best, res[best][0]
 def main():
