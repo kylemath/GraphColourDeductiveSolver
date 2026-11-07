@@ -102,3 +102,15 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
   MOD HDW18N, PFX hdw18n, batch 1. check_literals.py against it: 15 entries, 0 mismatches. A mutated copy (nl0065_r10 m 7 -> 6) gives
   1 mismatch, exit 1. Rerun check_literals against the Mac's own HDW18N.lean when it lands. NOT compiled here (no Lean in this container).
 - Compile order: HWN_kk, then COccHWN_kk, then HDW18NOcc (after HDW18NAll). HDW18NOcc md5 d39cdcea.
+
+## hdk3p/: HDK3P, the two q7- k3p D configurations (ring 8) (Studio out/job_HDK3P/D_k3p.tsv, md5 592580c5, main 1c1ad4b6; MOD HDK3P, PFX hdk3p)
+- in/D_k3p.tsv and studio/{D_k3p.tsv,module_split.tsv (6a293bb1),HDK3P.lean (eafaf56a, from lean/)}: byte copies from main 1c1ad4b6.
+  studio/INPUTS.md is written here (main has none for this job; it records the commit, md5s and the gen_hd parameters from report.md).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/hdk3p/in/D_k3p.tsv s76_occ502/hdk3p/lean HK3P_ --hd HDK3P hdk3p`
+  -> HK3P_00..01, COccHK3P_00..01, HDK3POcc (imports HDK3PAll, uses HDK3PV.hD_k). 2 generated, 0 failed; 4 rotations validated; every link an induced cycle.
+- Names in HK3P_modules.txt equal module_split.tsv's names and rings (2/2); HDK3POcc pairs HK3P_kk with HDK3PV.hD_k. The names contain
+  `/`, `=` and `:` (`..._s5/p6L1=5`); they appear only in string literals and doc comments, with no `/-` or `-/` in them.
+- check_literals.py against studio/HDK3P.lean (Studio's own file): 2 entries, 0 mismatches. A mutated copy (entry 1 m 7 -> 6) gives
+  1 mismatch, exit 1. gen_hd.py f743a82d run here on in/D_k3p.tsv reproduces HDK3P.lean, HDK3PV00/01 and HDK3PAll byte for byte.
+  NOT compiled here (no Lean in this container).
+- Compile order: HK3P_kk, then COccHK3P_kk, then HDK3POcc (after HDK3PAll). HDK3POcc md5 9836aab5.
