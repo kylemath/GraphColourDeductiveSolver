@@ -1753,11 +1753,13 @@ def cmd_upperR2():
     if XO: log('xo: %d xo > 0 (total %.9f, max %.9f); XQ taken as max over the candidates%s' % (len(XOV), sum(XOV.values()), max(XOV.values() or [0.0]), ' (BROKEN %s CONTROL)' % XOB if XOB else ''))
     if any(v < 0 for v in list(GV.values()) + list(HV2.values()) + list(y) + list(FV.values()) + list(RV.values()) + list(RRV.values()) + list(ZV.values()) + list(ZRV.values())): log('NEGATIVE VALUE'); bad_neg = 1
     else: bad_neg = 0
-    bad = 0
+    bad = 0; SMIN = [float('inf')]
     for wd, cf, bits in R2_sender_rows():
         v = sum(c * (y[RIX[k[1]]] if k[0] == 'y' else KSV.get(k[1], 0.0) if k[0] == 'ks' else ZV.get(k[1], 0.0) if k[0] == 'z' else ZRV.get(k[1], 0.0) if k[0] == 'zr' else FV.get(k[1], 0.0) if k[0] == 'f' else RV.get(k[1], 0.0) if k[0] == 'r' else RRV.get(k[1], 0.0) if k[0] == 'rr' else GV.get(k[1], 0.0)) for k, c in cf.items())
         if v < 1 - t - EPS: bad += 1
+        SMIN[0] = min(SMIN[0], v)
     log('sender rows violated: %d' % bad); bad += bad_neg
+    log('sender rows: min value %.12f -> senders need t >= %.12f' % (SMIN[0], 1 - SMIN[0]))   # s86 tighten
     nc = 0; worst = 0.0; A6 = all6_words(); NEG6 = [0, 0.0]
     for L in A6:   # every non-R6 6-arrangement, with or without a five, every apex word
         Dl = cons2_delta(L, GV, HV2); m = max(0.0, float(Dl.max()) - t) if C6LE else float(np.abs(Dl).max()); worst = max(worst, m)
