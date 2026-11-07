@@ -132,6 +132,7 @@ def step(xin, tin, xlp, tl, k):
                 if vf is not None and 'UPPER-R2: FEASIBLE' in L:
                     log('NEW IN-POINT %s (md5 %s) FEASIBLE at t = %.12f (was %.12f)' % (os.path.basename(cand), md5(cand), o['t'], tin))
                     xin, tin = cand, o['t']
+                    ij = os.path.join(N, 'eng', 'inject_%s.json' % TAG); open(ij + '.tmp', 'wb').write(open(cand, 'rb').read()); os.replace(ij + '.tmp', ij)   # the K run (inject_in) takes it as its in-point
                     if os.environ.get('REPL_ARGS2'):
                         e2 = dict(ENV, ARGS=os.environ['REPL_ARGS2']); tg2 = tg + '_sub'
                         subprocess.run(['bash', os.path.join(N, 'U86.sh'), tg2, cand, '1'] + FAM, env=e2, cwd=N, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

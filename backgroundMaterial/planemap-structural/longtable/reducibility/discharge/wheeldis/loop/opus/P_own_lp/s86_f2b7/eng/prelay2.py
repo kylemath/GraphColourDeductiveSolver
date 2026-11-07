@@ -1158,6 +1158,16 @@ def cmd_solveR2():
         fn = os.path.join(HERE, 'sol_%s_in.json' % OPT.get('tag', 'run')); dumpsol(xb, fn)
         INMOVES.append((it, how, float(xb[jt]))); dumpsol(xb, os.path.join(HERE, 'sol_%s_in%02d.json' % (OPT.get('tag', 'run'), len(INMOVES))))
         log('  in-point MOVED (%s, iter %d): t_in %.12f -> %.12f  [candidate only: run upperR2 on %s]' % (how, it, float(xold[jt]), float(xb[jt]), fn))
+    def inject_in():   # s86: an external point that passed upperR2 on this family (repair ladder) replaces the in-point when its t is lower; file sol dir inject_<tag>.json, renamed .used
+        global FEAS
+        fn = os.path.join(HERE, 'inject_%s.json' % OPT.get('tag', 'run'))
+        if FEAS is None or not os.path.exists(fn): return
+        try: F2 = load_feas_cols(fn)
+        except Exception as e: log('  inject: cannot read %s: %s' % (fn, e)); os.replace(fn, fn + '.bad'); return
+        os.replace(fn, fn + '.used')
+        if F2[('t',)] >= FEAS[('t',)] - 1e-12: log('  inject: t %.12f not below t_in %.12f, ignored' % (F2[('t',)], FEAS[('t',)])); return
+        for k_ in F2: col(k_)
+        log('  in-point INJECTED: t_in %.12f -> %.12f (%s, %d columns)' % (FEAS[('t',)], F2[('t',)], fn + '.used', len(F2))); FEAS = F2
     if 'inoutctl' in OPT:   # s70: control -- separate at lam*raw + (1-lam)*feas without any LP (dry run, nothing added)
         lamc = float(OPT['inoutctl']); FEAS0 = load_feas_cols(OPT['feas']) if 'feasall' in FLAGS else inout_feas(OPT['feas'])
         RAWD = load_feas_cols(OPT['rawsol']) if 'rawsol' in OPT else FEAS0
@@ -1247,6 +1257,7 @@ def cmd_solveR2():
         if INOUT is None:
             added, per, nc_, worst_ = sepround(xv, t, True); rounds.append('raw:%d' % added)
         else:
+            inject_in(); xv = padv(xv)   # s86: columns an injected in-point created are 0 at x_LP
             xf = np.zeros(len(xv))
             for k_, v_ in FEAS.items():
                 i_ = cols.get(k_)
