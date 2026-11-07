@@ -83,6 +83,23 @@ def search(xin, xlp, k):
         l0 = round(ls[0] - E1 * (ls[1] - ls[0]) / (E2 - E1), 6)
         if not (1e-5 < l0 < ls[0]) or l0 in res: break
         ev([l0]); best = min(res, key=lambda l: res[l][0])
+    # interior best: t_rep is convex piecewise linear, so the secant through (left neighbour, best) and the secant through the two
+    # finite points right of best both lie below t_rep between best and its right neighbour (likewise mirrored); evaluate at their
+    # crossing, which is near the kink the grid straddles.
+    for _ in range(2):
+        ls = [l for l in sorted(res) if res[l][0] < 1e9]; i = ls.index(best) if best in ls else -1
+        if i < 1 or i + 1 >= len(ls): break
+        cands = []
+        for a, b, c, d in ((ls[i - 1], best, ls[i + 1], ls[i + 2] if i + 2 < len(ls) else None), (ls[i - 2] if i >= 2 else None, ls[i - 1], best, ls[i + 1])):
+            if a is None or d is None: continue
+            s1 = (res[b][0] - res[a][0]) / (b - a); s2 = (res[d][0] - res[c][0]) / (d - c)
+            if s2 - s1 <= 1e-12: continue
+            x = round((res[c][0] - s2 * c - res[b][0] + s1 * b) / (s1 - s2), 6)
+            if b < x < c and x not in res: cands.append(x)
+        if not cands: break
+        ev(cands[:2]); nb = min(res, key=lambda l: res[l][0])
+        if nb == best: break
+        best = nb
     log('it-point %d: ' % k + ' '.join('l=%g:%s' % (l, ('%.6f' % res[l][0]) if res[l][0] < 1e9 else res[l][1]) for l in sorted(res)) + ' -> best l=%g t_rep %.9f' % (best, res[best][0]))
     return best, res[best][0]
 def main():
