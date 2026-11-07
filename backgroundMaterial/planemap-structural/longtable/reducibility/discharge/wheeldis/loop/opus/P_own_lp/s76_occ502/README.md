@@ -242,3 +242,63 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals_c.py on CK3J.lean: 1 entry, 0 mismatches. A copy with one intAdj entry changed gives 1 mismatch, exit 1. NOT compiled here (no Lean in
   this container). At 93236129 the Studio's status.txt has CK3J exit 0 only; K3JV00 and K3JVAll are building.
 - Compile order: HK3J_00, COccHK3J_00, then HK3JOcc (after K3JVAll). HK3JOcc md5 ff2bd1f6.
+
+## offc7/ (HOFFC7): off-centre kills at d = 7. This is case 3, a lemma statement; no per-line glue was generated.
+Input: offc_K3g_2f4f0f02.txt (md5 2f4f0f02; also at s86_f2b7/offc/) and OFFC_SPEC.md (cd4f0208), from the shared
+W12-studio-K/from_opus/offc/. The file has 250 lines, 68 of them at d = 7 (66 D, 2 C).
+
+**Why there is no glue.** The existing glue cannot express the window step, at u or off-centre:
+- gen_occ_kc's modules take `<K>.Occ T ring int` as a hypothesis. That is the interior, its degrees, and T's rotation at
+  each interior vertex, with the ring vertices included.
+- `Occ` mentions no u, row or window. It is centre-free, so it serves an off-centre phi unchanged.
+- The step from a row to `Occ` is Job 26 (iii)(b), "Nx facts from an appearing 2-ball", which is still open on main.
+- That step needs K's ring vertices, which are privates and ring-3 vertices the row does not name. Extracting them from
+  T's rotation is a generic lemma, not per-key generated text.
+
+Separately, 66 of the 68 d = 7 kills have no hD module on main: their names appear in no .lean file. Only the 2 C kills
+have one, in CK108 (k108Entries[14] and [19], hC in K108All, main 0d86ecb0).
+
+Files:
+- lean/OffcOcc.lean (statement only, NOT compiled). It defines:
+  - `Window`: §1 as Nx facts, `Nx T c (w i) (w (i+1))` and `Nx T (w (i+1)) (w i) (s i)`, plus injectivity and the §1
+    adjacency rule as hypotheses;
+  - `Matches`: the line's letters, with N meaning ≥ 6;
+  - `OffcOK`, decidable, per line: phi injective, letters, induced, consecutive interior slots on window faces with one
+    orientation ε, one interior block per vertex;
+  - `RingLinked`, decidable, per key, with fan lists;
+  - `def OffcRotOcc : Prop`: from these, `∃ ρ, RotOcc (bif ε then T else T.mirror) ρ (vert ∘ φ) rot`.
+  It also gives a proof plan and templates for the per-key `occ_of_rotOcc` (the converse of `rotOcc_of_occ`) and for a
+  per-line `kill_L`.
+- d7_lines.tsv (68 rows) has these columns:
+  - the line's fields;
+  - eps_own: the orientation of the line on K's own-window rotation;
+  - lean: hD/hC status;
+  - kc_src;
+  - r, m;
+  - phi_kc: phi in the key's kc order;
+  - eps_kc: ε for gen_occ_kc's rot;
+  - RingLinked.
+- fans_d7.tsv: fan t for the 55 keys. kcmap_d7.tsv: the kc-order maps. in/kc55.tsv: the kc lines used. They are:
+  - 53 D kc lines from the working tree, one distinct line per name;
+  - the 2 C lines from main's ck108/extra108.tsv.
+- scripts/ holds four scripts, all run with `python3 -I`, run from offc7/, with P = P_own_lp:
+  - `offc_model.py OFFC [d]`: a Python model of OffcOK on K's own-window rotation (K = phi's domain, §1-§2).
+  - `kcmap.py P OFFC in/kc55.tsv kcmap_d7.tsv`: maps kc order to own-window slots by graph plus rotation isomorphism,
+    then checks OffcOK on gen_occ_kc's own rot (`G.gen_key` + `bridge_rot`, the rot of the COcc modules).
+  - `fans.py P in/kc55.tsv fans_d7.tsv`: checks RingLinked in its Lean form.
+  - `make_table.py OFFC kcmap_d7.tsv fans_d7.tsv d7_lines.tsv`.
+  - `neg.py OFFC [d]`: the controls.
+
+Results:
+- offc_model: all 250 lines pass with exactly one ε. At d = 7, 42 are + and 26 are -.
+- kc order: 55 of 68 have a kc line, and all 55 pass OffcOK (one ε each) and RingLinked. Each has one rotation-preserving
+  kc-to-slot map, except two keys with 2 and 4 automorphic maps; the first map is used.
+- Controls:
+  - Swapping two phi images breaks 68/68 at d = 7. Over all 250 lines 2 still pass: another automorphic embedding.
+  - Changing one image letter breaks 250/250.
+  - The broken window (every s-s pair adjacent) breaks 52/68 at d = 7 and 62/250 overall.
+  - Dropping a fan member breaks RingLinked on 55/55.
+- The outputs are deterministic: a rerun gives identical md5s.
+- No line uses a non-image w letter condition: there are no N letters, and every LINK letter is an image. The 5/N branch
+  of `pAdj` is stated but unused by this file.
+- Missing kc lines: the 13 e7 kills (out/eq_D7_dfast.out and lp_dfast.out record verdicts only).
