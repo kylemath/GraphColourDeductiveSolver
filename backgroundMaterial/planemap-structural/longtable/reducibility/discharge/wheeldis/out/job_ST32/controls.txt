@@ -1,0 +1,9 @@
+== control 1: spec test rows (Studio st21 rpatN semantics)
+7/7567675/6666655 killed by 1 line(s): ['f7_..55756_..5766.']; expected entry f7_..55756_..5766. present: True
+    7 757..65 55...66 # D f7_..55756_..5766. d0=7 file=out/job28/r_2.out md5=a9fff70a phi=s2>s1,s3>w2,s4>w5,s5>s5,u>w0,w2>s0,w3>w1,w4>u,w5>w6,w6>s6
+7/8567565/6678565 killed by 1 line(s): ['f8_...55756_...6666.']; expected entry f8_...55756_...6666. present: True
+    7 856..65 56...66 # D f8_...55756_...6666. d0=8 file=loop/w2/win89.out md5=82ebc23f phi=s3>s1,s4>w2,s5>w5,s6>s5,u>w0,w3>s0,w4>w1,w5>u,w6>w6,w7>s6
+== control 2: mutations (each must FAIL)
+LINK flip  -> LINK/SWORD 656...5 55...55 != expected 856...5 55...55
+phi swap   -> not induced: ('s', 3) ('w', 3) (K True, window False)
+R-failing entry e7_B55655._5B.66.._1111110 (R1: edge [('s', 0), ('w', 1)] in no triangle) -> section R: R1: edge [('s', 0), ('w', 1)] in no triangle
