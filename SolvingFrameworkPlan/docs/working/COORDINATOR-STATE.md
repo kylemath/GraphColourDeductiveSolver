@@ -88,6 +88,10 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 7 Nov 23:03Z: UPPER **t* <= 0.033402931 [E2]** (sol_repS3W_04_tight, Opus + Mac ST-36, main ab00ed72), family unchanged; tight (d7-9 senders/receivers bind; control t-5e-6 fails on those rows).
+- 7 Nov 22:42Z: UPPER **t* <= 0.035031472 [E2]** (ST-35, main 86f65595): S3W_03 weights with t tightened until sender/receiver d7-9 rows bind; control t-5e-6 fails on those rows. Family unchanged. Next: Opus repS3W_04 at 0.03366 (ST-36).
+- 7 Nov 22:20Z: UPPER **t* <= 0.035312025368 [E2]** (sol_repS3W_03, Opus + Mac ST-34, main 2eb9f15b), same family (K3j + 2db75746 + rpatN 8b90a842 + c6le + f2b7 + r13w16, no offc). Point has slack (Studio expects ~0.0350 with same weights; Opus asked for tightened point). Failure-path control at t=0.0340 running (ST-34b).
+- 7 Nov 21:35Z: UPPER **t* <= 0.036831412583 [E2]** (sol_repS3W_02, Opus + Mac ST-33, main 24fa115b), same family as 0.038043 (K3j + 2db75746 + rpatN 8b90a842 + c6le + f2b7 + 171 r13w16 keys; no offc). Control t=0.03682 fails cons2 c6le at 578999/755575. ST-32: Opus off-centre kill file offc_K3g_2f4f0f02 (250 patterns) passes 250/250 spec-only, usable for k86GL3 bounds.
 - 7 Nov 18:05Z: UPPER **t* <= 0.038043023627 [E2]** (sol_repS2W_04, Opus + Mac ST-31, main c17f2d85) on K3j + 2db75746 + rpatN 8b90a842 + c6le + keys r13w16 (171 = r13's 151 + W6b-16's 20 payer-5/6/7 EDGE keys; first bound using swarm's new keys; Studio key builder counts match). Control on 151 keys fails 16 cons2 rows on 677987. Opus LOWER t* >= 0.0016046 [E2] on K3g + r13 (that family only).
 - 7 Nov 13:33Z: K3j C kill Lean hC + occurrence glue done (HCK3j, main 9a5266e7, sorry 0); all 3 C kills added for 0.038299 (K3i, K3j) Lean-backed.
 - 7 Nov 12:57Z: UPPER **t* <= 0.038298911390 [E2]** (sol_repGSG_09, Opus + Mac ST-30, main bf714a2c) on K3j = K3i + 1 C kill (b9_u.56575.55_...5...5., r14, X={I0-I3}, not rim-pinned; admissibility in Lean, hC + glue HCK3j building) + 2db75746 + rpatN 8b90a842 + 151 keys + c6le. Control on K3i fails d9 (9 rows, class 556565757).
