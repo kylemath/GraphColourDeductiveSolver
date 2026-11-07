@@ -114,3 +114,15 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
   1 mismatch, exit 1. gen_hd.py f743a82d run here on in/D_k3p.tsv reproduces HDK3P.lean, HDK3PV00/01 and HDK3PAll byte for byte.
   NOT compiled here (no Lean in this container).
 - Compile order: HK3P_kk, then COccHK3P_kk, then HDK3POcc (after HDK3PAll). HDK3POcc md5 9836aab5.
+
+## ha5/hd/: HDA5T, the 35 D witnesses of the W18 A-5 frame twins (Studio out/job_HA5/D_a5.tsv, md5 a90ee34a, main 7c6ef625; MOD HDA5T, PFX hda5t)
+- in/D_a5.tsv and studio/{D_a5.tsv,module_split.tsv (9a38e6a1, from hd/)}: byte copies from main 7c6ef625. 35 rows, rings 11-15.
+  studio/INPUTS.md is written here (main has none for job HA5). PFX hda5t is lower-case MOD as in every earlier hD job (main does not state it);
+  it only appears in HDA5TOcc's docstring.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/ha5/hd/in/D_a5.tsv s76_occ502/ha5/hd/lean HA5D_ --hd HDA5T hda5t`
+  -> HA5D_00..34, COccHA5D_00..34, HDA5TOcc (imports HDA5TAll, uses HDA5TV.hD_k). 35 generated, 0 failed; 70 rotations validated; every link an induced cycle.
+- Names in HA5D_modules.txt equal module_split.tsv's names and rings and D_a5.tsv's order (35/35); HDA5TOcc pairs HA5D_kk with HDA5TV.hD_k for every k.
+- Literal check: studio/HDA5T_local_gen_hd_f743a82d.lean is gen_hd.py f743a82d run here on in/D_a5.tsv with MOD HDA5T, PFX hda5t, batch 1
+  (its module names HDA5TV00..34 equal module_split.tsv's). check_literals.py against it: 35 entries, 0 mismatches. A mutated copy
+  (tw_d7_w6_0_16_fx_0 m 10 -> 9) gives 1 mismatch, exit 1. Rerun check_literals against the Mac's own HDA5T.lean when it lands. NOT compiled here (no Lean in this container).
+- Compile order: HA5D_kk, then COccHA5D_kk, then HDA5TOcc (after HDA5TAll). HDA5TOcc md5 d4bfcb76.
