@@ -1,0 +1,25 @@
+rows 244, covered 144, uncovered 100; killers used 68 (by source {'K3': 68})
+work list: 17592 windows (by ring [(9, 6), (10, 30), (11, 102), (12, 474), (13, 1668), (14, 5615), (15, 9697)]); timeouts seen in rows: 0
+  d8 56568567   rows  89 covered  89  excess crep 2.7125 (cov 2.7125)  q53 1.2955 (cov 1.2955)  uncovered max 0.0000/0.0000
+  d8 56568568   rows  31 covered  31  excess crep 0.1304 (cov 0.1304)  q53 1.1785 (cov 1.1785)  uncovered max 0.0000/0.0000
+  d9 555665666  rows   2 covered   0  excess crep 0.0834 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0747/0.0000
+  d9 556665666  rows   1 covered   0  excess crep 0.0697 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0697/0.0000
+  d8 56568569   rows  14 covered  14  excess crep 0.0000 (cov 0.0000)  q53 0.4855 (cov 0.4855)  uncovered max 0.0000/0.0000
+  d8 56656758   rows   5 covered   0  excess crep 0.0000 (cov 0.0000)  q53 0.1184 (cov 0.0000)  uncovered max 0.0000/0.0499
+  d8 56757568   rows   4 covered   0  excess crep 0.0703 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0442/0.0000
+  d9 565675676  rows   1 covered   0  excess crep 0.0000 (cov 0.0000)  q53 0.0413 (cov 0.0000)  uncovered max 0.0000/0.0413
+  d8 55568568   rows   4 covered   0  excess crep 0.0000 (cov 0.0000)  q53 0.1207 (cov 0.0000)  uncovered max 0.0000/0.0376
+  d9 556575657  rows   8 covered   8  excess crep 0.2140 (cov 0.2140)  q53 0.0000 (cov 0.0000)  uncovered max 0.0000/0.0000
+  d7 5569757    rows  65 covered   0  excess crep 1.4593 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0334/0.0000
+  d7 5768578    rows   1 covered   0  excess crep 0.0273 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0273/0.0000
+  d7 5568757    rows   3 covered   0  excess crep 0.0503 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0246/0.0000
+  d7 5658678    rows   1 covered   0  excess crep 0.0238 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0238/0.0000
+  d7 5758578    rows   3 covered   0  excess crep 0.0656 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0234/0.0000
+  d9 555657658  rows   1 covered   0  excess crep 0.0219 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0219/0.0000
+  d9 556575658  rows   2 covered   2  excess crep 0.0383 (cov 0.0383)  q53 0.0000 (cov 0.0000)  uncovered max 0.0000/0.0000
+  d7 5658568    rows   3 covered   0  excess crep 0.0000 (cov 0.0000)  q53 0.0428 (cov 0.0000)  uncovered max 0.0000/0.0160
+  d8 55568567   rows   1 covered   0  excess crep 0.0000 (cov 0.0000)  q53 0.0139 (cov 0.0000)  uncovered max 0.0000/0.0139
+  d7 5577658    rows   2 covered   0  excess crep 0.0210 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0136/0.0000
+  d7 5677657    rows   1 covered   0  excess crep 0.0065 (cov 0.0000)  q53 0.0000 (cov 0.0000)  uncovered max 0.0065/0.0000
+  d7 5658569    rows   2 covered   0  excess crep 0.0000 (cov 0.0000)  q53 0.0095 (cov 0.0000)  uncovered max 0.0000/0.0047
+screened {(9, 'N'): 2, (10, 'N'): 9, (11, 'N'): 20, (12, 'N'): 138, (13, 'C'): 8, (13, 'D'): 4, (13, 'N'): 445, (14, 'C'): 29, (14, 'D'): 27, (14, 'N'): 488} | hits 68 Counter({'C': 37, 'D': 31}) | rows killed 144 of 244 | mac skip 2130 of 11827
