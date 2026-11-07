@@ -1,4 +1,4 @@
-# s86: k86AS = SEPARATE LANE (prelim, swarm W18 A-5): in-out upper ladder on W13+K3b with rule file rules/A5/rules_c67fa1d1_plus_A5_twins.json (363dd708 = c67fa1d1 + 162 face-set rules re-justified by reducible frame twins; counts only after Studio ST-15 passes)
+# s86: k86AS (rule file [E2] since Studio ST-15 main 41069d07, 04:22Z): in-out upper ladder on W13+K3b with rule file rules/A5/rules_c67fa1d1_plus_A5_twins.json (363dd708 = c67fa1d1 + 162 face-set rules re-justified by reducible frame twins; counts only after Studio ST-15 passes)
 # + pat=w13/pat_K3_D.out e72617ed: f8_.56.5656_56...55., f9_...575655_...5..65.; swarm K-3 [P-D], Studio K3CHK main a6c989e5 second engine)
 # + f2b7 rules c67fa1d1 [E2] + rpatN 8b90a842 [E2] + cg_keys_r13.txt (151 keys) + c6le.  Replaces k86KS.  In-point $1 must pass upperR2
 # under exactly this family (logs/upper_K_<point>.log).  warm = k86B warm list + its rows at it 13.  2 threads.
