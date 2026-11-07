@@ -19,3 +19,12 @@ kc interior graph + degrees isomorphic to K rebuilt from the name (OFFC_SPEC sec
 ## Lean (lean/, build root out_hoffc7, nice 20; drive.sh waits for HDK3c GLUEDONE)
 - (A) OffcOcc.lean as given (imports COccBridge, DCheckMirror from dc/).
 - (D) gen_hd f743a82d on D_offc7.tsv (52 kc lines), MOD HDOF7, PFX hdof7, batch 1: HDOF7, HDOF7V00..51, HDOF7All.
+
+## Addendum (7 Nov, 21:1x): the 13 e7 kills now have kc lines -> HDOF7 has 65 entries
+- Inputs (Opus 31501745 offc7/e7kc/, data only, e7kc.py not read): e7kc_stored.tsv 9692e13b, compare.txt 71ecc756, README.md 30526ec1 in in/e7kc/.
+- The 12 eq_D7 kc lines: extracted by us from eq_D7_k3.txt.gz (md5 2732ad76) by name (e7/extract_raw.txt); identical to e7kc_stored.tsv (sorted cmp clean;
+  names not rotated). The lp kill e7_...6556_...5B5._0001111: Opus's rebuilt line (from the relay) used as is.
+- e7/e7check.py (our code): all 13 ok — registry D entry re-found (r, m), kc r/m equal, kc interior + degrees isomorphic to K from the name.
+- Engines (e7/e*.out): dfast18 and kc -C both D=true on all 13, each reproducing the registry classes/ext/reached exactly.
+- gen_hd f743a82d rerun on D_offc7.tsv (52 + 13 = 65 lines; entries 0..51 unchanged, 52..64 the e7 kills): HDOF7, HDOF7V00..64, HDOF7All; drive.sh restarted, still waiting for HDK3c GLUEDONE.
+- With f10 covered by HDC502 and the 2 C by CK108, all 68 d7 lines will then be Lean-backed.

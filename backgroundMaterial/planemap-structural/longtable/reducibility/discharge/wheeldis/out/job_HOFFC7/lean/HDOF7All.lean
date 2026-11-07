@@ -52,9 +52,22 @@ import HDOF7V48
 import HDOF7V49
 import HDOF7V50
 import HDOF7V51
+import HDOF7V52
+import HDOF7V53
+import HDOF7V54
+import HDOF7V55
+import HDOF7V56
+import HDOF7V57
+import HDOF7V58
+import HDOF7V59
+import HDOF7V60
+import HDOF7V61
+import HDOF7V62
+import HDOF7V63
+import HDOF7V64
 open HDOF7 DCheck18
 namespace HDOF7V
-theorem hD_all (k : Fin 52) : DCheck18.dReducible (hdof7Confs.get (k.cast hdof7Confs_length.symm)) = true := by
+theorem hD_all (k : Fin 65) : DCheck18.dReducible (hdof7Confs.get (k.cast hdof7Confs_length.symm)) = true := by
   fin_cases k
   · exact hD_0
   · exact hD_1
@@ -108,5 +121,18 @@ theorem hD_all (k : Fin 52) : DCheck18.dReducible (hdof7Confs.get (k.cast hdof7C
   · exact hD_49
   · exact hD_50
   · exact hD_51
+  · exact hD_52
+  · exact hD_53
+  · exact hD_54
+  · exact hD_55
+  · exact hD_56
+  · exact hD_57
+  · exact hD_58
+  · exact hD_59
+  · exact hD_60
+  · exact hD_61
+  · exact hD_62
+  · exact hD_63
+  · exact hD_64
 end HDOF7V
 #print axioms HDOF7V.hD_all
