@@ -26,3 +26,5 @@ Copy pat_K3d_D.out pat_K3e_D.out pat_K3f_C.cfast to /tmp/swarm-W17/pat/K3/, the 
 ## ST-24 now READY: sol_rep2e_082.json (e5b72242) is in this folder.
 ## ST-27 (lower priority): sol_repFSD_03.json (ec0dfa17, t 0.040127353769) on K3d (args_A97F_W13K3d_x_studio.txt, EXPECT_PAT 18135,688,158),
    TAG sol_repFSD_03_zK3d_A5F; control: K3c args (EXPECT_PAT 18134,688,158), TAG sol_repFSD_03_zK3c_neg, must FAIL (d8 56656757 class expected).
+## ST-28: sol_repGSG_06.json (3de6a64b, t 0.039729841969) on K3f, exactly as ST-25 (args_A97F_W13K3f_x_studio.txt, EXPECT_PAT 18136,689,158), TAG sol_repGSG_06_zK3f_A5F.
+   control: sol_repGSG_06_tneg.json (t = 0.03972 only), TAG sol_repGSG_06_tneg_zK3f_A5F; must FAIL (window rows and/or cons link (5,8,9,8,9,9)); report which.
