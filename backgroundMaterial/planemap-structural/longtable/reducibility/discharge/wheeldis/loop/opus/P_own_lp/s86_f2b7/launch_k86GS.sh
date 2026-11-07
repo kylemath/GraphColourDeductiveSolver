@@ -1,4 +1,4 @@
-# s86: k86GS = upper in-out ladder on W13+K3g (args_A97_F_W13K3g.txt 4debd01e = K3c + all 173 swarm K-3 hits (k3_hits 3e129acf 97 D + 76 C incl. lead kills_d8_rep2 (a),(b)) + K-4c D f8_...56556_...5.66.) + 2db75746 + rpatN 8b90a842 + 151 keys + c6le. Warm adds k86CS it-1 and k86FS it-0..3 rows (killed rows are dropped by admissible()). In-point: a repaired blend FEASIBLE on a subfamily.
+# s86: k86GS = upper in-out ladder on W13+K3g (args_A97_F_W13K3g.txt = K3c + every hit of lead all_K3_K4_hits_kc.tsv e9fb030d (98 D + 76 C, by name)) + 2db75746 + rpatN 8b90a842 + 151 keys + c6le. Warm adds k86CS it-1 and k86FS it-0..3 rows (killed rows are dropped by admissible()). In-point: a repaired blend FEASIBLE on a subfamily.
 # + pat=w13/pat_K3_D.out e72617ed: f8_.56.5656_56...55., f9_...575655_...5..65.; swarm K-3 [P-D], Studio K3CHK main a6c989e5 second engine)
 # + f2b7 rules c67fa1d1 [E2] + rpatN 8b90a842 [E2] + cg_keys_r13.txt (151 keys) + c6le.  Replaces k86KS.  In-point $1 must pass upperR2
 # under exactly this family (logs/upper_K_<point>.log).  warm = k86B warm list + its rows at it 13.  2 threads.
