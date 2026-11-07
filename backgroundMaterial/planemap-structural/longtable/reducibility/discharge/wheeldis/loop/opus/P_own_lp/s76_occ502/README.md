@@ -126,3 +126,16 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
   (its module names HDA5TV00..34 equal module_split.tsv's). check_literals.py against it: 35 entries, 0 mismatches. A mutated copy
   (tw_d7_w6_0_16_fx_0 m 10 -> 9) gives 1 mismatch, exit 1. Rerun check_literals against the Mac's own HDA5T.lean when it lands. NOT compiled here (no Lean in this container).
 - Compile order: HA5D_kk, then COccHA5D_kk, then HDA5TOcc (after HDA5TAll). HDA5TOcc md5 d4bfcb76.
+
+## ha5/hc/: A5CV, the 10 C witnesses of W18 A-5 (9 frame twins + W13 kill6_C p515) on CA5C (Studio out/job_HA5/hc, main 7c6ef625)
+- studio/{CA5C.lean (0b2b13fb, = out/job_ST15/lean/CA5C.lean),module_split.tsv (fb3c3b1f)}: byte copies from main 7c6ef625. in/extraC.tsv (7aebd0a1) is
+  the EXTRAFILE out/job_ST15/extraC.tsv (main 41069d07, unchanged at 7c6ef625). Its names, order, rings and X equal module_split.tsv and CA5C.lean (10/10).
+  studio/INPUTS.md is written here (main has none for job HA5).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/ha5/hc/in/extraC.tsv s76_occ502/ha5/hc/lean HA5C_` (C side, as for HCW13R2/R3P)
+  -> HA5C_00..09 and COccHA5C_00..09: 10 generated, 0 failed, 20 rotations validated, every link an induced cycle.
+- lean/HA5COcc.lean comes from `scripts/gen_cocc_batch.py ha5/hc/lean/HA5C_modules.txt HA5COcc A5CVAll A5CV a5cEntries HA5C_ ...` (run from s76_occ502).
+  It imports A5CVAll and uses `A5CV.hC_all k`, `a5cEntries_ok` and `a5cEntries_length`. Regression first: the same script reproduces
+  hcw13r3p/lean/HWR3POcc.lean (e4316ee9, Studio-compiled) byte for byte. A5CVAll is not on main yet; `A5CV.hC_all : Fin 10` is assumed in the W3PVAll form.
+- check_literals_c.py on CA5C.lean gives 10 entries, 0 mismatches. A copy with one intAdj entry of p515 changed gives 1 mismatch and exit 1.
+  NOT compiled here (no Lean in this container).
+- Compile order: HA5C_kk, then COccHA5C_kk, then HA5COcc (after A5CVAll). HA5COcc md5 56ddb34b.
