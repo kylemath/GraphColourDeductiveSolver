@@ -186,3 +186,13 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals_c.py on CA5B.lean gives 9 entries, 0 mismatches. A copy with one intAdj entry of tw_d8_w7_p1_132_fx_0 changed gives 1 mismatch and exit 1.
   NOT compiled here (no Lean in this container).
 - Compile order: HA5BC_kk, then COccHA5BC_kk, then HA5BCOcc (after A5BVAll). HA5BCOcc md5 d0ab975b.
+
+## k3/hdk3b/: HDK3B, the K-3 D kill b8_u.5665675_.....55. (Studio out/job_HDK3b/D_k3b.tsv, md5 e2338150, main a02fa4af; MOD HDK3B, PFX hdk3b)
+- in/D_k3b.tsv and studio/{D_k3b.tsv,module_split.tsv (6b8d2862),HDK3B.lean (7c619ece),HDK3BAll.lean,HDK3BV00.lean}: byte copies from main a02fa4af
+  (same md5s as the shared K3/from_studio/HDK3b/ copies). 1 row, ring 14. studio/INPUTS.md is written here (main has none for this job).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/k3/hdk3b/in/D_k3b.tsv s76_occ502/k3/hdk3b/lean HK3BD_ --hd HDK3B hdk3b`
+  -> HK3BD_00, COccHK3BD_00, HDK3BOcc (imports HDK3BAll, uses HDK3BV.hD_0). 1 generated, 0 failed; 2 rotations validated; every link an induced cycle.
+- Name and ring in HK3BD_modules.txt equal module_split.tsv's (1/1).
+- check_literals.py against studio/HDK3B.lean (the Studio's own file): 1 entry, 0 mismatches. A mutated copy (m 10 -> 9) gives 1 mismatch, exit 1.
+  gen_hd.py f743a82d run here on in/D_k3b.tsv reproduces HDK3B.lean, HDK3BV00 and HDK3BAll byte for byte. NOT compiled here (no Lean in this container).
+- Compile order: HK3BD_00, then COccHK3BD_00, then HDK3BOcc (after HDK3BAll). HDK3BOcc md5 4b959797.
