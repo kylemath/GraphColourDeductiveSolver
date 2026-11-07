@@ -11,7 +11,7 @@ R = os.path.join(N, 'repl_' + TAG + os.environ.get('REPL_FAM', '')); os.makedirs
 SWARM = '/mnt/project-files/swarm/round6/W12-studio-K/from_opus/s86_' + TAG
 LPF = os.path.join(N, 'eng', 'sol_%s_lp.json' % TAG)
 FAM = ['c6le', 'f2b7', 'f2b=%s/rules/A5final/rules_c67fa1d1_plus_A5_twins.json' % N, 'rpatN=%s/rpat/rpatN3_rotation_justified.txt' % N]
-ENV = dict(os.environ, STACK='s77', ARGS=os.environ.get('REPL_ARGS', os.path.join(N, 'args_A97_F_W13K3c.txt')), KEYS=os.path.join(B, 's85_edge56', 'keys', 'cg_keys_r13.txt'))
+ENV = dict(os.environ, STACK='s77', ARGS=os.environ.get('REPL_ARGS', os.path.join(N, 'args_A97_F_W13K3c.txt')), KEYS=os.environ.get('REPL_KEYS', os.path.join(B, 's85_edge56', 'keys', 'cg_keys_r13.txt')))
 def log(s):
     line = '%s [s86REP-%s] %s' % (time.strftime('%H:%M:%SZ', time.gmtime()), TAG, s)
     print(line, flush=True); open(os.path.join(N, 'run.log'), 'a').write(line + '\n')
@@ -105,7 +105,7 @@ def search(xin, xlp, k):
 def main():
     xin = os.path.abspath(sys.argv[2]); tin = json.load(open(xin))['t']; k = int(os.environ.get('REPL_K0', '0'))
     last = os.path.getmtime(LPF) if os.path.exists(LPF) and os.environ.get('REPL_SKIPCUR') else None   # skip the LP point already processed by hand
-    log('start: in-point %s (md5 %s) t = %.12f; watching %s; family %s (md5 %s)' % (os.path.basename(xin), md5(xin), tin, os.path.basename(LPF), os.path.basename(ENV['ARGS']), md5(ENV['ARGS'])))
+    log('start: in-point %s (md5 %s) t = %.12f; watching %s; family %s (md5 %s), keys %s (md5 %s)' % (os.path.basename(xin), md5(xin), tin, os.path.basename(LPF), os.path.basename(ENV['ARGS']), md5(ENV['ARGS']), os.path.basename(ENV['KEYS']), md5(ENV['KEYS'])))
     init = [f for f in os.environ.get('REPL_INIT', '').split(',') if f]
     while True:
         if init:
