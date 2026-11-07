@@ -1,0 +1,9 @@
+b9_u655...566_66......5 r=14 m=10 classes=199291 ext=21659 reached=136629 D=false depth=6 passes=7 mode=gs 1748ms
+  C-REDUCIBLE X={I5-I6} size=1 (kc-C: tested 16, admissible 16, edges 41, 1751ms)
+// kc -x
+b9_u655...566_66......5 r=14 m=10 classes=199291 ext=21659 reached=136629 D=false depth=6 passes=7 mode=gs 1696ms
+  X={I5-I6} adm=yes leftover 0
+  C-REDUCIBLE X={I5-I6} size=1 (kc-C: tested 16, admissible 16, edges 41, 1700ms)
+// cfast
+b9_u655...566_66......5 r=14 m=10 classes=199291 ext=21659 reached=136629 bad=62662 D=false depth=11 (8.5s)
+  fixed X={I5-I6} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
