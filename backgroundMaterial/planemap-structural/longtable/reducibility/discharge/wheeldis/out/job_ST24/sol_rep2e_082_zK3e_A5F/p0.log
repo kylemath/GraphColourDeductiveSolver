@@ -1,0 +1,101 @@
+rpatN: /tmp/swarm-W17/tab/rpatN3_rotation_justified.txt (md5 8b90a842)
+R5 24 (spec 24, same set: True); R6 31 (spec 31, same: True); FANS 7 (spec 7, same: True); RBIG 104 (spec 104)
+kill table U7: kill6_U7 md5 b493a0ce45d676350f34737ac1fa0945, 84694 killed (window, p); vs stock keep95p131: +298 new, -0 removed
+kill table U8: kill6_U8 md5 618eb3001e0119b3e116af850f95ab99, 73342 killed (window, p); vs stock keep95p131: +0 new, -0 removed
+kill table U9: kill6_U9 md5 618eb3001e0119b3e116af850f95ab99, 73342 killed (window, p); vs stock keep95p131: +0 new, -0 removed
+section 14 prime kill tables from /private/tmp/swarm-W17/kill/patched298 (U8 == U9: True)
+l3q: lq 21 values {(5, 5, 5): 0.057042491118286055, (5, 6, 5): 0.1057486883743784, (6, 5, 5): 0.08884127501498042, (6, 6, 5): 0.09760170011236115, (6, 6, 6): 0.006989198574784978, (6, 6, 7): 0.006989198574784978, (6, 6, 8): 0.006989198574784978, (8, 5, 5, 5): 0.0278483475629003, (8, 5, 5, 6): 0.00427641703593582, (8, 5, 5, 7): 0.00427641703593582, (8, 5, 5, 8): 0.00427641703593582, (8, 5, 5, 9): 0.001983498569303005, (8, 5, 6, 5): 0.08213460570889725, (8, 6, 5, 5): 0.06562819500815846, (8, 6, 5, 6): 0.0011880375966676314, (8, 6, 5, 7): 0.0011880375966676314, (8, 6, 5, 8): 0.0011880375966676314, (8, 6, 6, 5): 0.06433326883923, (8, 6, 6, 6): 0.009584200092051427, (8, 6, 6, 7): 0.009584200092051427, (8, 6, 6, 8): 0.001431187667991812}, lQ 13 values {(5, 5, 31): 0.057042491118286055, (5, 6, 31): 0.1057486883743784, (6, 5, 29): 0.006220336167425389, (6, 5, 31): 0.08884127501498042, (6, 6, 30): 0.006989198574784978, (6, 6, 31): 0.09760170011236115, (8, 5, 5, 30): 0.00427641703593582, (8, 5, 5, 31): 0.0278483475629003, (8, 5, 6, 31): 0.08213460570889725, (8, 6, 5, 30): 0.0011880375966676314, (8, 6, 5, 31): 0.06562819500815846, (8, 6, 6, 30): 0.009584200092051427, (8, 6, 6, 31): 0.06433326883923}, lqcap 3.0; Studio mask table 5000 entries, masks {30: 400, 31: 4600}
+l3qV8: V = 8 mask table 5000 entries, masks {30: 100, 31: 4900}
+l3q UB(c, a) over the table masks: {(5, 5): 0.057042491118, (5, 6): 0.105748688374, (6, 5): 0.088841275015, (6, 6): 0.097601700112}
+l3qV8: lq8 {(8, 5, 5, 5): 0.0278483475629003, (8, 5, 5, 6): 0.00427641703593582, (8, 5, 5, 7): 0.00427641703593582, (8, 5, 5, 8): 0.00427641703593582, (8, 5, 5, 9): 0.001983498569303005, (8, 5, 6, 5): 0.08213460570889725, (8, 6, 5, 5): 0.06562819500815846, (8, 6, 5, 6): 0.0011880375966676314, (8, 6, 5, 7): 0.0011880375966676314, (8, 6, 5, 8): 0.0011880375966676314, (8, 6, 6, 5): 0.06433326883923, (8, 6, 6, 6): 0.009584200092051427, (8, 6, 6, 7): 0.009584200092051427, (8, 6, 6, 8): 0.001431187667991812}, lQ8 {(8, 5, 5, 30): 0.00427641703593582, (8, 5, 5, 31): 0.0278483475629003, (8, 5, 6, 31): 0.08213460570889725, (8, 6, 5, 30): 0.0011880375966676314, (8, 6, 5, 31): 0.06562819500815846, (8, 6, 6, 30): 0.009584200092051427, (8, 6, 6, 31): 0.06433326883923}; UB8(c, a) {(5, 5): 0.027848347563, (5, 6): 0.082134605709, (6, 5): 0.065628195008, (6, 6): 0.064333268839}
+V = 8 mrowL over every table mask and every a2 in it, at Qeff8: violated 0
+mrowL over every table mask and every a2 in it, at Qeff: violated 0
+solution t = 0.040254423449947 (claimed 805088468998943/20000000000000000 = 0.040254423449947), model R6x2 apex True apexcls True zh True: 942 y, 393 g, 18683 h, 1237 x, z [[[7, 5, 5, 6, 6, 0, 1], 0.0007802808767238214], [[7, 5, 5, 6, 7, 0, 0], 0.0007802808767238123], [[7, 5, 5, 7, 5, 0, 1], 0.0004138321186452522], [[7, 5, 5, 7, 7, 0, 1], 0.0007802808767238169], [[7, 5, 5, 8, 8, 0, 1], 0.000669725557977222], [[7, 5, 5, 8, 8, 1, 1], 0.0006697255579772197], [[7, 5, 7, 6, 7, 0, 0], 0.0013751853182502707], [[7, 5, 7, 7, 6, 1, 0], 0.0006168653298109323], [[7, 5, 7, 7, 7, 0, 1], 0.0007874584250235687], [[7, 5, 7, 7, 8, 0, 1], 0.0005305893798949157], [[7, 5, 8, 7, 6, 1, 0], 0.0003754362632798951], [[7, 6, 5, 5, 6, 0, 1], 0.0006370489146543283], [[7, 6, 5, 5, 7, 0, 0], 0.0030850084968033257], [[7, 6, 5, 5, 7, 1, 0], 0.0036030635357301075], [[7, 6, 5, 5, 8, 0, 1], 0.0006370489146543442], [[7, 6, 6, 5, 7, 1, 0], 1.1898704244117653e-14], [[7, 7, 5, 5, 7, 0, 0], 0.005762556340362855], [[7, 7, 5, 5, 8, 0, 0], 0.001406038117620192], [[7, 7, 5, 6, 7, 0, 0], 0.0049822754636390295], [[7, 7, 5, 6, 8, 0, 0], 0.0017838205602572514], [[7, 7, 5, 6, 8, 0, 1], 0.0003777824426370594], [[7, 7, 5, 7, 7, 0, 0], 0.002491137731819516], [[7, 7, 5, 7, 8, 0, 0], 0.001406038117620192], [[7, 7, 5, 7, 9, 0, 0], 0.0005180550389267591], [[7, 7, 5, 8, 7, 0, 0], 0.004982275463639032], [[7, 7, 5, 8, 8, 0, 0], 0.00140603811762021], [[7, 7, 5, 9, 7, 0, 0], 0.0049822754636390295], [[7, 7, 6, 5, 8, 0, 0], 0.001406038117620192], [[7, 7, 6, 7, 7, 0, 0], 0.0024911377318195147], [[7, 7, 7, 7, 7, 0, 0], 0.0024911377318195147], [[7, 7, 7, 7, 8, 0, 0], 0.0010561694190525889], [[7, 7, 7, 8, 7, 0, 0], 0.0022318323780388363], [[7, 7, 7, 8, 8, 0, 0], 0.0007206492699419007], [[7, 7, 8, 5, 8, 0, 0], 0.001406038117620192], [[7, 7, 9, 5, 8, 0, 0], 0.00038572892923530167], [[7, 8, 5, 5, 8, 0, 0], 0.001406038117620192], [[7, 8, 5, 5, 9, 0, 0], 0.0005180550389267657], [[8, 5, 5, 6, 7, 1, 0], 0.0003705300126211547], [[8, 5, 5, 6, 8, 1, 0], 7.585539033922162e-05], [[8, 5, 7, 7, 5, 1, 1], 0.0002296807735795645], [[8, 5, 7, 7, 7, 0, 1], 0.0004309930409940677], [[8, 6, 5, 5, 7, 0, 0], 0.0006710821907706127], [[8, 6, 5, 5, 7, 1, 0], 0.0006710821907706127], [[8, 6, 7, 5, 7, 0, 0], 0.00018549148759815898], [[9, 5, 5, 7, 5, 0, 1], 7.063268544193896e-07]]
+v values 0; r values 108; sol hat5 True
+W17 f2b7: F2B7=1; solution f2b7 field (absent)
+W10 families: hatrr True zh True zr True (cap 3.0) q7 True q7m True (q7cap 3.0); values rr 2 (sum 0.0139559), z 45 (sum 0.0625884), zr 61 (sum 0.100666), q 103 (sum 0.13594); out of bounds 0
+W17 GK keys: 151 from /tmp/swarm-W17/tab/cg_keys_r13.txt (md5 fe8a97a7); payer->payee {'5->5': 12, '5->6': 8, '5->7': 21, '5->8': 3, '5->9': 3, '6->5': 12, '6->6': 22, '6->7': 12, '6->8': 1, '6->9': 1, '7->5': 12, '7->6': 12, '7->7': 24, '7->8': 3, '7->9': 3, '7->B': 2}; nonzero amounts 25 (sum 0.015066553)
+W17 GK amounts: KS=0.00242735522951 gk01_18=0.000430993040994 gk03_32=0.000455553207356 gk03_33=0.000233217951208 gk03_37=0.000518055038927 gk04_41=0.00027160751967 gk00_51=0.000159140030172 gk00_62=0.000158005951965 gk01_71=0.000430993040994 gk02_77=6.33793710521e-05 gk02_85=0.000518055038927 gk00_91=0.000134741825491 gk00_94=0.000276140918529 gk00_95=0.000518055038927 gk01_103=3.26817770564e-06 cg00_4=0.000465828968144 cg00_5=0.0012412402288 cg12_56_0=0.0012403624461 cg12_57_0=0.000518055038927 cg12_57_2=8.70619979327e-05 cg12_58_0=0.000445539163423 cg12_66_0=0.0004331421804 cg12_75_0=0.000126121231874 cg12_76_0=0.00381322614295 cg12_77_2=9.74141913728e-05
+bounds: 0 negative values; max x = 0.163400 (cap 3)
+stored V entries 0: rebuilt min differs (> 1e-9) 0, max |difference| 0; LP value above the min 0 (allowed only <= min)
+sender words 342 (spec 342)
+senderR2 rows 22514 (spec 7,074), violated 0, min slack 0.000789; g2 keys in sender rows 381 (spec 393)
+senderR2 rows with all five hat classes enumerated (section 15): 22514 (section 15 states no count)
+WARN: 381 g2 keys in sender rows, spec 12.3 says 393 (a descriptive count: neither a violation nor a rebuild mismatch; see README ambiguities)
+cons2 (c6le: the 6 ends <= t, in - out - t <= 0): 1424 non-R6 6-words (spec 1,424) x 729 cv class words (= all 5^6 apex words through cv and ap)
+  five    994 words (spec 994): violated (in - out > t + 1e-9) 0, worst (in - out - t) -0.00105363
+  nofive  430 words (spec 430): violated (in - out > t + 1e-9) 0, worst (in - out - t) -0.00962186
+cons2 6-balance (c6le mode) over 1038096 rows (6-word x class word): in - out min -0.365477 (588988/557755), max 0.0392008 (589899/577577); rows with in - out < -1e-9 (the 6 ends below 0) 643831 in 1402 of 1424 words; rows > 1e-9 387384; rows within 1e-9 of t = 0.040254423 (tight under c6le) 0
+rpatN patterns from rpatN3_rotation_justified.txt: 2241, by d {7: 618, 8: 829, 9: 608, 10: 178, 11: 7, 12: 1}
+exname: 1758 names held out (/tmp/swarm-W17/tab/exname_keep95p131f.txt); 0 C entries dropped, by file {}
+patterns distinct by kind: D 18136 (spec 15,497), C 688 (spec 1,494), RPAT 158 (spec 158); by d {7: 9348, 8: 5898, 9: 3308, 10: 1425, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; chars outside the spec table {}
+F2B rules /tmp/swarm-W17/tab/rules_A5final_2db75746.json (half None): {('w6', 7): 1739, ('w6', 8): 1256, ('w6', 9): 97, ('w7', 7, 1): 1059, ('w7', 7, -1): 1059, ('w7', 8, 1): 754, ('w7', 8, -1): 754}
+lower check skipped (upper-only job)
+cert rows 0: {}; mrowR2/mrowV not in canonical orientation: 0 []
+l3qV8 lower: lq8 columns in rows 0, nonzero rc []; lQ8 columns in rows 0, nonzero rc []
+lower: tco = 0, D = 0; nonzero reduced costs: ; negative (non-x) 0
+loader excluded 0 files by name: 
+big wheels in R: 105 (+14 from w7plus)
+patterns: {('pairs_D7_k2_dfast.out', 7): 59, ('pairs_D8_k3_dfast.out', 8): 256, ('pairs_D9_k4_dfast.out', 9): 524, ('eq_D7_dfast.out', 7): 7698, ('eq_D8_k3_dfast.out', 8): 3192, ('lp_dfast.out', 7): 68, ('lp_dfast.out', 8): 224, ('lp_dfast.out', 9): 133, ('lp_dfast.out', 10): 8, ('pairs_D10_k5_dfast_partial.out', 10): 203, ('def_loop_new1_1.out', 7): 3, ('def_loop_old_1.out', 7): 3, ('def_r1.out', 7): 44, ('C:job27__k2a.exn.cfast', 7): 1, ('C:job27__part00.exn.cfast', 7): 3, ('C:job27__part01.exn.cfast', 7): 4, ('r_1.out', 7): 14, ('r_1.out', 8): 6, ('r_10.out', 7): 4, ('r_11.out', 7): 5, ('r_12.out', 7): 47, ('r_2.out', 7): 169, ('r_2.out', 8): 30, ('r_2.out', 9): 43, ('r_3.out', 10): 3, ('r_4.out', 10): 3, ('loop__opus__P_own_lp__s29__job28__r_5.out', 10): 3, ('loop__opus__P_own_lp__s29__job28__r_6.out', 10): 3, ('loop__opus__P_own_lp__s29__job28__r_7.out', 10): 3, ('loop__opus__P_own_lp__s29__job28__r_8.out', 10): 1, ('r_9.out', 7): 7, ('r_D10k5.out', 10): 353, ('r_hr1.out', 7): 8, ('C:out__job28__r_1.exn.cfast', 9): 1, ('b7f.out', 7): 2, ('g9_big_r1.dfast.out', 10): 212, ('g9_big_r1.dfast.out', 11): 266, ('g9_big_r1.dfast.out', 12): 19, ('g9_c8_r1.dfast.out', 8): 53, ('g9_lp10_r14.dfast.out', 10): 1, ('b1.out', 10): 6, ('b10.out', 11): 5, ('b10.out', 9): 1, ('b6.out', 10): 16, ('b6.out', 9): 1, ('b8.out', 10): 1, ('small.out', 10): 7, ('cert_bf_1.out', 7): 3, ('win14.out', 7): 178, ('win8.out', 7): 23, ('win89.out', 8): 375, ('win89.out', 9): 312, ('u1.pat', 7): 9, ('u1.pat', 8): 17, ('u1.pat', 9): 37, ('u1.pat', 10): 49, ('u1.pat', 11): 49, ('u1.pat', 12): 49, ('u1.pat', 13): 49, ('u1.pat', 14): 49, ('u1.pat', 15): 49, ('u1.pat', 16): 49, ('u1.pat', 17): 49, ('u2.pat', 7): 1, ('u2.pat', 8): 1, ('u2.pat', 9): 13, ('u2.pat', 10): 13, ('u2.pat', 11): 13, ('u2.pat', 12): 13, ('u2.pat', 13): 13, ('u2.pat', 14): 13, ('u2.pat', 15): 13, ('u2.pat', 16): 13, ('u2.pat', 17): 13, ('u10.pat', 9): 3, ('u10.pat', 10): 3, ('u10.pat', 11): 3, ('u10.pat', 12): 3, ('u10.pat', 13): 3, ('u10.pat', 14): 3, ('u10.pat', 15): 3, ('u10.pat', 16): 3, ('u10.pat', 17): 3, ('win9.out', 10): 124, ('win9.out', 9): 16, ('win25.out', 9): 10, ('win25b.out', 9): 6, ('win27.out', 7): 2, ('win27.out', 10): 4, ('win29.out', 7): 4, ('win31.out', 8): 9, ('addA_dfast18.out(full)', 7): 3, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out(full)', 10): 196, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out', 10): 3, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out(full)', 11): 257, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out', 11): 4, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out(full)', 7): 203, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out', 7): 7, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out(full)', 8): 912, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out', 8): 22, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out(full)', 9): 1437, ('loop__opus__P_own_lp__s33z__reg_A97__k3x_D_A97.out', 9): 13, ('C:tmp__swarm-W17__pat__A97__loop__opus__P_own_lp__s33z__reg_A97__k3x_C_A97.exn.cfast(full)', 10): 48, ('C:tmp__swarm-W17__pat__A97__loop__opus__P_own_lp__s33z__reg_A97__k3x_C_A97.exn.cfast(full)', 11): 10, ('C:tmp__swarm-W17__pat__A97__loop__opus__P_own_lp__s33z__reg_A97__k3x_C_A97.exn.cfast(full)', 7): 146, ('C:tmp__swarm-W17__pat__A97__loop__opus__P_own_lp__s33z__reg_A97__k3x_C_A97.exn.cfast', 7): 1, ('C:tmp__swarm-W17__pat__A97__loop__opus__P_own_lp__s33z__reg_A97__k3x_C_A97.exn.cfast(full)', 8): 252, ('C:tmp__swarm-W17__pat__A97__loop__opus__P_own_lp__s33z__reg_A97__k3x_C_A97.exn.cfast', 8): 2, ('C:tmp__swarm-W17__pat__A97__loop__opus__P_own_lp__s33z__reg_A97__k3x_C_A97.exn.cfast(full)', 9): 130, ('pat_B3_routeF.out(full)', 7): 4, ('RSST-D raw', 7): 27, ('RSST-D raw', 8): 55, ('RSST-D raw', 9): 76, ('pat_W13_all_D.out(full)', 7): 24, ('pat_W13_all_D.out', 7): 3, ('C:pat_W13r2_C.cfast(full)', 7): 48, ('C:pat_W13r3_C.cfast(full)', 7): 36, ('C:pat_W13r4_C.cfast(full)', 7): 4, ('pat_K3_D.out(full)', 8): 1, ('pat_K3_D.out(full)', 9): 1, ('pat_K3b_D.out(full)', 8): 3, ('C:pat_K3b_C.cfast(full)', 9): 1, ('pat_K3c_D.out(full)', 9): 1, ('C:pat_K3c_C.cfast(full)', 9): 1, ('pat_K3d_D.out(full)', 8): 1, ('pat_K3e_D.out(full)', 8): 1}
+sep: NV=942 RBIG=104 patterns=15596 full=3720
+6-relay: 294 y56 vars, 4760 y6b vars, 1424 non-R6 link words
+sep: 6-relay on
+sep: NV=942 RBIG=104 patterns=15596 full=3720
+exact six-window table: 1171875 entries written (ex6_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin); min 0.000000, max 0.396362
+sep: exact six-window table loaded (/tmp/swarm-W17/st16/ex6_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+sep: 6-relay on
+sep: NV=942 RBIG=104 patterns=15596 full=3720
+W10 z separator tables: exact min -0.006747 max 0.005763; relaxed max 0.005763 (ztab_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+W10 q7 separator tables: relaxed (unmasked) max 0.004755, payer total max 0.006055, masks on (d = 7, 8) (q7_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+l3q separator tables: relaxed max 0.211497, exact payee max 0.105749, payer max 0.105749 (l3q_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+l3qV8 separator tables: relaxed max 0.164269, exact payee max 0.082135, payer max 0.082135 (l3q8_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+f2b tables: M table vs EX6 mismatches 0; monotonicity violations (M, Qeff, Qeff8) 0
+f2b positive leaf deltas (max over every mask / sub-mask pair): dM+ U7/U8/U9 ['0', '0', '0'], dQeff7+ 0, dQeff8+ 0; pruning slack d*dM+ + 2d*dQ+ = {7: 0.0, 8: 0.0, 9: 0.0}
+f2b leaf table file f2bS_sol_rep2e_082_zK3e_A5F_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin
+W17 GK numpy window tables built in 0s
+W17 GK separator table: window max U7/U8/U9 ['0.0028581', '0.000891078', '0'], cells > 0 [363, 336, 0], windows > 0 per U [85329, 155400, 0] (gk_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+separator binary: sep3r_gk7
+hat-channel tables: relaxed max 0.233445, exact max 0.233445 (rtab_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+sep: exact six-window table loaded (/tmp/swarm-W17/st16/ex6_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+sep: hat-channel r table loaded (/tmp/swarm-W17/st16/rtab_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+sep: f2b leaf tables loaded, 6718 rules (/tmp/swarm-W17/st16/f2bS_sol_rep2e_082_zK3e_A5F_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+sep: W10 z table loaded (/tmp/swarm-W17/st16/ztab_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin)
+sep: W17 GK table loaded (/tmp/swarm-W17/st16/gk_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin): 151 keys, window max 0.0028581 / 0.000891078 / 0; own window table vs Python's: 0 cells differ, max |diff| 1.08e-19; plant 0
+sep: W17 f2b7 on: q7m 7-sides (c or apex >= 7) masked 31 & ~f2b extra7 at the leaf; window unmasked
+sep: W10 q7 table loaded (/tmp/swarm-W17/st16/q7_sol_rep2e_082_zK3e_A5F_sol_rep2e_082.bin), masks 1
+sep: 6-relay on
+sep: NV=942 RBIG=104 patterns=15596 full=5961
+W10 self-test (C++ exact leaf vs Python spec rows): {'compared': 5430, 'window-inadmissible': 570, 'with rr': 300, 'with Q7': 453, 'with z': 99, 'with q': 100, 'with zr': 141}; max |difference| by d {7: 2.02e-12, 8: 1.42e-12, 9: 1.97e-12, 10: 1.89e-12, 11: 1.92e-12, 12: 2.01e-12}; mismatches > 1e-9: 0
+W17 GK window tables: 30000 windows, 2167 with credit > 0; numpy vs gkfam.Win mismatches 0
+W17 GK self-test (C++ leaf vs Python rows, all families on): 8877 compared, 1923 window-inadmissible; max |difference| by d {7: 2.43e-12, 8: 2.51e-12, 9: 2.12e-12, 10: 1.73e-12, 11: 1.73e-12, 12: 1.82e-12}; mismatches > 1e-9: 0
+W17 GK self-test rows with a nonzero key term (amount > 0): d7 compared with gk 2205, d7 in>0 1917, d7 out>0 2240, d8 compared with gk 1028, d8 in>0 1450, d9 compared with gk 0, d9 in>0 0, d10 compared with gk 0, d10 in>0 0, d11 compared with gk 0, d11 in>0 0, d12 compared with gk 0, d12 in>0 0
+W17 GK per-position bound check: 73223 positions, window bound == exact on 66138, exact above bound 0
+f2b self-test: 6000 arrangements (seed 41), 3840 with a nonzero delta, 0 positive; Python vs C++ mismatches 0
+sep3r_ak exact leaf weights vs spec rows on the heaviest 20 per d (d = 7..6): 0 compared, max |difference| 0
+spec rows vs Studio relaxed rows: 600 arrangements, admissibility mismatches 0; 583 compared: relaxed below exact 0, x-key mismatches 0
+receiver degrees this process: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+receivers d=7: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=8: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=9: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=10: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=11: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=12: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=13: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=14: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=15: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=16: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=17: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=18: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=19: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=20: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=21: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=22: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=23: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=24: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=25: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+receivers d=26: QUERY DUMPED to /tmp/swarm-W17/q/sol_rep2e_082_zK3e_A5F (not searched here)
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -4.10996
+DP d=27..30 (Studio max-plus with the relaxed r, z9 = 0.163400): clean
+Karp tail (apex relaxation): lambda = 0.637407310, covered for d >= 16.436 (needs <= 31)
+UPPER: FEASIBLE at t = 0.040254423450
+VERDICT (python part; receivers d = 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 were NOT searched here, only dumped): PASS
