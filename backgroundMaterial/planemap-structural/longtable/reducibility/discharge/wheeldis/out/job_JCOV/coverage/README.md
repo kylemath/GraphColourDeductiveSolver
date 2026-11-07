@@ -6,8 +6,8 @@ Our own files and engines only.
 - **Every one of the 2,438 has a per-config kc record and a dfast/dfast18 record, all D (0 missing; nl51_needed_missing.txt is empty).**
   - Sources: explore round 54d (6368d2f5: loop/k5x/*_kcc.out kc, *_df.out = drive45 dfast for ring <= 16, dfast18 above) and Studio job54d / job54e
     (8fd249f6: A_kcc.out = kc -C -s 60 -t 600, A_df.out = dfast18 07cb1e0b).
-  - 251 names have a Studio dfast18 record; 2,187 have explore's dfast (ring 8..15). For a uniform dfast18 record, those 2,187 are being rerun on
-    dfast18 (07cb1e0b) at nice 20: df18/ (results appended when done).
+  - 251 names have a Studio dfast18 record; 2,187 have explore's dfast (ring 8..15). For a uniform dfast18 record, those 2,187 were rerun on
+    dfast18 (07cb1e0b) at nice 20: df18/dfast18_2187.out, ALL 2,187 D=true (last column of nl51_needed_evidence.tsv). Every one of the 2,438 now has a kc D and a dfast18 D record.
 ## (2) k3x D
 - k3x1516/k3x_D_A100.out: the registry (copy of tierA/k3x_D_A100.out).
 - The k3x D justifiers at ring 15–16 (19 names, k3x1516/names.txt) had no kc record in our files; **kc -C -s 60 -t 600 (07e79fae) rerun: 19 / 19 D=true** (kc_ring15_16.out).
