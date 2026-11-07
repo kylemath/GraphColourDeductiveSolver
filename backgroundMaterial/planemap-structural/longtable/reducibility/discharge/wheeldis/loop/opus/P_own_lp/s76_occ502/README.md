@@ -175,3 +175,14 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals.py against studio/HDA5B.lean (the Studio's own file): 45 entries, 0 mismatches. A mutated copy (tw_d7_w6_0_1978_fx_0 m 11 -> 10)
   gives 1 mismatch, exit 1. gen_hd.py f743a82d run here on in/D_a5b.tsv reproduces HDA5B.lean byte for byte. NOT compiled here (no Lean in this container).
 - Compile order: HA5BD_kk, then COccHA5BD_kk, then HDA5BOcc (after HDA5BAll). HDA5BOcc md5 fadfc64c.
+
+## ha5b/hc/: A5BV, the 9 C witnesses new in W18 A-5 FINAL on CA5B (Studio out/job_HA5b, main 59a296b2)
+- in/extraC.tsv (872ac38f) and studio/{CA5B.lean (99eec150),A5BV00..08.lean,A5BVAll.lean (fb9ce760),module_split.tsv (13fc50fc),INPUTS.md (1efaef77)}:
+  byte copies from main 59a296b2 (same md5s as the shared a5_final/HA5b/ copies). Names, order, rings and X of extraC.tsv equal module_split.tsv and CA5B.lean (9/9).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/ha5b/hc/in/extraC.tsv s76_occ502/ha5b/hc/lean HA5BC_` (C side, as for A5CV)
+  -> HA5BC_00..08 and COccHA5BC_00..08: 9 generated, 0 failed, 18 rotations validated, every link an induced cycle.
+- lean/HA5BCOcc.lean comes from `scripts/gen_cocc_batch.py ha5b/hc/lean/HA5BC_modules.txt HA5BCOcc A5BVAll A5BV a5bEntries HA5BC_ ...` (run from s76_occ502).
+  It imports A5BVAll and uses `A5BV.hC_all k`, `a5bEntries_ok` and `a5bEntries_length`. A5BVAll is on main this time, and its `hC_all (k : Fin 9)` has the W3PVAll form.
+- check_literals_c.py on CA5B.lean gives 9 entries, 0 mismatches. A copy with one intAdj entry of tw_d8_w7_p1_132_fx_0 changed gives 1 mismatch and exit 1.
+  NOT compiled here (no Lean in this container).
+- Compile order: HA5BC_kk, then COccHA5BC_kk, then HA5BCOcc (after A5BVAll). HA5BCOcc md5 d0ab975b.
