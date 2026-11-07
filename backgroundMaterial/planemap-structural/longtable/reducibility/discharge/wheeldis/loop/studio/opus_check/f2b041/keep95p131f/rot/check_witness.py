@@ -31,6 +31,7 @@ def one(row):
                 r = tuple(sorted((v, cfg[3][u]) for u, v in e if v not in fd)); rd = dict(r)
                 if rd.get(tgt) != p: continue
                 if not all((v[0] == 'w' and wd.get(v[1]) == {gg}) or (v[0] == 's' and sd.get(v[1]) == gg) for v, gg in r if v != tgt): continue
+                if any(v[0] == 'w' and v[1] >= 1 and (gg == 5) != bool((Z >> v[1]) & 1) for v, gg in r): continue   # ZCONS: requirement letters agree with Z
                 okF = True
                 lk = [w0] + [rd.get(('w', k), 5 if (Z >> k) & 1 else 6) for k in range(1, d)]
                 frm = RC.frame_rotation(G, d, lk, {}, {v: g_ for v, g_ in r if v[0] in ('s', 'p')})

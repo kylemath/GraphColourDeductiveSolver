@@ -1,0 +1,7 @@
+# ST-12: W18's 428 Z-consistent re-justified rules (c67fa1d1 = 2b362955 + 428) — Studio check, 7 Nov
+- **Inputs** (399f2451 ext_handoff_nov3/w18/): zcons_dropped428_W18witness.tsv (f0188835), rules_studio_keep95p131f_W18strict.json (c67fa1d1).
+- **Set identity:** c67fa1d1 (6,444) minus the 428 equals 2b362955 (6,016) exactly; the 428 are inside c67fa1d1 and disjoint from 2b362955.
+- **Test** (rot/check_witness.py, our own code): f2b_rulecheck CHECK semantics with the given witness only, every placement (grow.embeddings), every structure Z consistent with the rule; an embedding counts only if its requirement letters agree with Z (ZCONS condition, now explicit in the script) AND it is rotation-preserving (rot/rotcheck.py: one orientation, interior-neighbour cyclic order, consistent ring images; frame rebuilt with the requirement set's own letters).
+- **Result: 428 / 428 PASS** (per_rule.tsv: rule | group | side | witness | source | PASS/FAIL | failing condition | face-set result | in keep pool | kind | Lean).
+- **Witnesses:** all 94 distinct witnesses are in the keep95p131f pool (12,268). Lean: k3x C A100 22/22, RSST C2cons 42/42, RSST D2 7/7 Lean-backed; nl51 8 of 23 Lean (hD).
+  **15 nl51 witnesses have no Lean hD** (witness_noLean.txt); **34 of the 428 rules rest on them** (engine evidence: round-54d kc + dfast/dfast18, see out/job_JCOV/coverage/). They can go into a gen_hd batch.
