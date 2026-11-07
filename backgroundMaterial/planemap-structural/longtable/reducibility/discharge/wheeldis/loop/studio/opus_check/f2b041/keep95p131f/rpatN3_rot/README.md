@@ -22,3 +22,9 @@
 | 9 .55756.65 ..555..55 | nl7693_r14 | {'shift(at 0) / shift(at 0)': 2} |
 | 9 .55756.65 .5655..55 | nl7801_r14 | {'shift(at 9) / shift(at 9)': 2} |
 | 9 .56.65556 55..5.56. | nl7466_r14 | {'shift(at 0) / shift(at 0)': 2} |
+
+## Follow-up (W18 witnesses for the 14, 42428ec3): all 14 are case (a); our full-pool search had a comparison restriction
+- extra14_W18witness_rot.tsv (witness14.py): for every one of the 14, the W18 witness has a **rotation-preserving** embedding (every centre and placement tried) whose pattern is **more general** than the target and matches its window. It is not equal to it.
+- **Cause:** our full-pool step counted a pattern as justified only when some pool configuration produced the **identical** pattern string. The pool scan and the rotation test were fine; the comparison was too strict. A witness pattern Q justifies P when, under one of the 2d rotations / reflections, every fixed position of Q is satisfied by P (digit = digit, N = a letter in {6,7,8,N}).
+- **Fixed** (subsume_all.py, matching test over every rotation-preserving pool pattern: nl51 rebuild + non-RSST keep pool + RSST): **2,241 justified, 46 dropped; the 46 = W18's 46 exactly; 0 only-Studio, 0 only-W18.** Kept set = W18's rotation_justified (8b90a842) set. rpatN3_dropped_rot.txt is regenerated (46 lines); rpatN3_rotation_justified_studio.txt lists each kept pattern with its matching witness.
+- The earlier "60 dropped / 14 only-Studio" result above is superseded.
