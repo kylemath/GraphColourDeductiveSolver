@@ -165,3 +165,13 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals_c.py: CK3C2.lean 1 entry, 0 mismatches; CK3C3.lean 1 entry, 0 mismatches. Copies with one intAdj entry changed give 1 mismatch
   and exit 1 for each. NOT compiled here (no Lean in this container).
 - Compile order: HK3CJ_00, COccHK3CJ_00, then HK3CJOcc (after K3CJVAll). HK3C2Occ md5 a9c9c9e0, HK3C3Occ md5 44b1e377.
+
+## ha5b/hd/: HDA5B, the 45 D witnesses new in W18 A-5 FINAL (Studio out/job_HA5b/D_a5b.tsv, md5 1dcb2cef, main 59a296b2; MOD HDA5B, PFX hda5b)
+- in/D_a5b.tsv and studio/{D_a5b.tsv,HDA5B.lean (c9358df1, from hd/),module_split.tsv (531ef16c, from hd/),INPUTS.md (1efaef77)}: byte copies from
+  main 59a296b2 (same md5s as swarm/round6/W18-rule-audit/from_studio/a5_final/HA5b/). 45 rows, rings 14-16.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/ha5b/hd/in/D_a5b.tsv s76_occ502/ha5b/hd/lean HA5BD_ --hd HDA5B hda5b`
+  -> HA5BD_00..44, COccHA5BD_00..44, HDA5BOcc (imports HDA5BAll, uses HDA5BV.hD_k). 45 generated, 0 failed; 90 rotations validated; every link an induced cycle.
+- Names in HA5BD_modules.txt equal module_split.tsv's names and rings and D_a5b.tsv's and HDA5B.lean's order (45/45); HDA5BOcc pairs HA5BD_kk with HDA5BV.hD_k for every k.
+- check_literals.py against studio/HDA5B.lean (the Studio's own file): 45 entries, 0 mismatches. A mutated copy (tw_d7_w6_0_1978_fx_0 m 11 -> 10)
+  gives 1 mismatch, exit 1. gen_hd.py f743a82d run here on in/D_a5b.tsv reproduces HDA5B.lean byte for byte. NOT compiled here (no Lean in this container).
+- Compile order: HA5BD_kk, then COccHA5BD_kk, then HDA5BOcc (after HDA5BAll). HDA5BOcc md5 fadfc64c.
