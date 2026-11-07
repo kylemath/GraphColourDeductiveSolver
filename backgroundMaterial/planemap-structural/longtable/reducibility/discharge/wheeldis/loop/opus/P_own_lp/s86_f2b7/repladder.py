@@ -7,11 +7,11 @@
 import json, os, re, subprocess, sys, time, hashlib
 N = os.path.dirname(os.path.abspath(__file__)); B = os.path.dirname(N)
 TAG = sys.argv[1]; POLL = int(sys.argv[3]) if len(sys.argv) > 3 else 60
-R = os.path.join(N, 'repl_' + TAG); os.makedirs(R, exist_ok=True)
+R = os.path.join(N, 'repl_' + TAG + os.environ.get('REPL_FAM', '')); os.makedirs(R, exist_ok=True)
 SWARM = '/mnt/project-files/swarm/round6/W12-studio-K/from_opus/s86_' + TAG
 LPF = os.path.join(N, 'eng', 'sol_%s_lp.json' % TAG)
 FAM = ['c6le', 'f2b7', 'f2b=%s/rules/A5final/rules_c67fa1d1_plus_A5_twins.json' % N, 'rpatN=%s/rpat/rpatN3_rotation_justified.txt' % N]
-ENV = dict(os.environ, STACK='s77', ARGS=os.path.join(N, 'args_A97_F_W13K3c.txt'), KEYS=os.path.join(B, 's85_edge56', 'keys', 'cg_keys_r13.txt'))
+ENV = dict(os.environ, STACK='s77', ARGS=os.environ.get('REPL_ARGS', os.path.join(N, 'args_A97_F_W13K3c.txt')), KEYS=os.path.join(B, 's85_edge56', 'keys', 'cg_keys_r13.txt'))
 def log(s):
     line = '%s [s86REP-%s] %s' % (time.strftime('%H:%M:%SZ', time.gmtime()), TAG, s)
     print(line, flush=True); open(os.path.join(N, 'run.log'), 'a').write(line + '\n')
@@ -56,7 +56,7 @@ def search(xin, xlp, k):
         for lam in lams:
             if lam in res: continue
             sol = os.path.join(R, 'b%d_%g.json' % (k, lam)); blend(xin, xlp, lam, sol)
-            tg = 'REP%s_%d_%g' % (TAG, k, lam)
+            tg = 'REP%s_%s_%d_%g' % (TAG, os.environ.get('REPL_FAM', ''), k, lam)
             ps.append((lam, tg, sol))
         for i in range(0, len(ps), 2):   # two checks at a time (1 thread each)
             out = {}
@@ -76,7 +76,7 @@ def search(xin, xlp, k):
 def main():
     xin = os.path.abspath(sys.argv[2]); tin = json.load(open(xin))['t']; k = int(os.environ.get('REPL_K0', '0'))
     last = os.path.getmtime(LPF) if os.path.exists(LPF) and os.environ.get('REPL_SKIPCUR') else None   # skip the LP point already processed by hand
-    log('start: in-point %s (md5 %s) t = %.12f; watching %s' % (os.path.basename(xin), md5(xin), tin, os.path.basename(LPF)))
+    log('start: in-point %s (md5 %s) t = %.12f; watching %s; family %s (md5 %s)' % (os.path.basename(xin), md5(xin), tin, os.path.basename(LPF), os.path.basename(ENV['ARGS']), md5(ENV['ARGS'])))
     while True:
         alive = subprocess.run(['pgrep', '-f', 'tag=%s ' % TAG], stdout=subprocess.DEVNULL).returncode == 0
         if os.path.exists(LPF) and os.path.getmtime(LPF) != last:
@@ -88,8 +88,8 @@ def main():
             if tr < tin - 1e-7:
                 o = json.load(open(os.path.join(R, 'b%d_%g.json' % (k, lam)))); tb = o['t']; o['t'] = tr + 2e-9
                 o['note'] = 's86 OP-23 repaired blend: (1-%g) * %s (md5 %s, t %.12f) + %g * %s LP point %d (t %.9f); t = blend t %.12f + max excess, + 2e-9' % (lam, os.path.basename(xin), md5(xin), tin, lam, TAG, k, tl, tb)
-                cand = os.path.join(N, 'cand', 'sol_rep%s_%02d.json' % (TAG[-2:], k)); json.dump(o, open(cand, 'w'))
-                tg = 'F_rep%s_%02d' % (TAG[-2:], k); vf, L = check(tg, cand, vfile=False, th=2)
+                cand = os.path.join(N, 'cand', 'sol_rep%s%s_%02d.json' % (TAG[-2:], os.environ.get('REPL_FAM', ''), k)); json.dump(o, open(cand, 'w'))
+                tg = 'F_rep%s%s_%02d' % (TAG[-2:], os.environ.get('REPL_FAM', ''), k); vf, L = check(tg, cand, vfile=False, th=2)
                 if vf is not None and 'UPPER-R2: FEASIBLE' in L:
                     log('NEW IN-POINT %s (md5 %s) FEASIBLE at t = %.12f (was %.12f)' % (os.path.basename(cand), md5(cand), o['t'], tin))
                     xin, tin = cand, o['t']
