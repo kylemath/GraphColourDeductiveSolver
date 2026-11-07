@@ -1,0 +1,9 @@
+02:18:21Z smoke (1): PASS run d = 24..26
+  
+  (1) NOT OK: see logs/smoke_pass_run.out and logs/smoke_pass/p0.log
+grep: /tmp/swarm-W17/logs/smoke_pass/p0.log: No such file or directory
+02:18:23Z smoke (2): planted control (must FAIL)
+  VERDICT: F2B7ROWS FAIL (all FAIL lines: F2B7ROWS: receiver d=7 5776667 9567857 reported above the bound (load 1.591377316))
+  (2) OK (the control failed, as it must)
+02:19:34Z done
+SMOKE: FAIL

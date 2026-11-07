@@ -1,0 +1,9 @@
+02:21:39Z smoke (1): PASS run d = 24..26
+  RESULT: PARTIAL PASS: senders, cons2, mrowL, self-tests, DP 27..30 and Karp pass; receivers d = 24,25,26 exhaustive 0 violated; d = 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 NOT run
+  (1) OK
+F2B rules /tmp/swarm-W17/tab/rules_zcons_minus_W18rejects.json (half None): {('w6', 7): 1531, ('w6', 8): 1114, ('w6', 9): 87, ('w7', 7, 1): 928, ('w7', 7, -1): 928, ('w7', 8, 1): 714, ('w7', 8, -1): 714}
+02:23:40Z smoke (2): planted control (must FAIL)
+  VERDICT: F2B7ROWS FAIL (all FAIL lines: F2B7ROWS: receiver d=7 5776667 9567857 reported above the bound (load 1.591377316))
+  (2) OK (the control failed, as it must)
+02:24:47Z done
+SMOKE: PASS
