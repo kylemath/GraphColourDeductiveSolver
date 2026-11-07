@@ -40,7 +40,7 @@ for fn in (K3X.split(',') if K3X else (os.path.join(HERE, 'loop', 'studio', 'opu
     for l in open(fn if os.path.isabs(fn) else os.path.join(HERE, fn)):
         if re.match(r'^[epf]\d+_\S+ r=\d+ ', l): names.append(l.split()[0])
 names = list(dict.fromkeys(names))
-want = set(names); kc = {}
+want = set(names); kc = {}; RAWKC = {}   # RAWKC: raw kc lines (ST16_ROT only)
 for fn in sorted(glob.glob(os.path.join(HERE, 'loop', 'k[0-9]*', '*'))):
     if not os.path.isfile(fn): continue
     try: lines = open(fn).read().splitlines()
@@ -48,7 +48,7 @@ for fn in sorted(glob.glob(os.path.join(HERE, 'loop', 'k[0-9]*', '*'))):
     for l in lines:
         f = l.split()
         if len(f) == 5 and f[0] in want and f[0] not in kc and f[1].isdigit() and f[2].isdigit() and ';' in f[3] + f[4]:
-            kc[f[0]] = G['kcline'](l, 'twoeng')
+            kc[f[0]] = G['kcline'](l, 'twoeng'); RAWKC[f[0]] = l
 missing = [n for n in names if n not in kc]
 assert not missing, ('no kc line', missing[:5])
 FORB = R + [kc[n] for n in names]
@@ -62,10 +62,26 @@ if os.environ.get('EXTRA_KC'):   # f2b Tier A (opt-in): raw kc lines (name r m r
             if not _l.strip() or _l[0].isspace() or _l.startswith('#'): continue
             _f = _l.split()
             if len(_f) >= 5 and _f[1].isdigit() and _f[2].isdigit() and ';' in _f[3] + _f[4]:
-                _c = G['kcline'](_l, 'extra')
+                _c = G['kcline'](_l, 'extra'); RAWKC.setdefault(_c[0], _l)
                 if _c[0] not in _seen: _seen.add(_c[0]); FORB.append(_c); _nx += 1
     print('EXTRA_KC: +%d configurations from %s; forbidden set now %d' % (_nx, os.environ['EXTRA_KC'], len(FORB)), flush=True)
 
+ROT = os.environ.get('ST16_ROT') == '1'   # opt-in (default off; ROT2, ST-8): keep only rotation-preserving embeddings
+if ROT:
+    sys.path.insert(0, os.path.join(HERE, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+    ROTK = {n: rk for n, rk in RC.rsst_rotations(G['CONF'])}
+    for c in FORB:
+        if c[0] not in ROTK and c[0] in RAWKC: ROTK[c[0]] = RC.kc_rotation(RAWKC[c[0]])
+    print('ST16_ROT: rotation systems for %d / %d configurations' % (sum(ROTK.get(c[0]) is not None for c in FORB), len(FORB)), flush=True)
+    RFR = {}
+    def rot_pass(cfg, e, D_, lk, r2):
+        rk = ROTK.get(cfg[0])
+        if rk is None: return False
+        fk = (D_, tuple(lk), tuple(sorted(r2.items())))
+        if fk not in RFR: RFR[fk] = RC.frame_rotation(G, D_, lk, {}, r2)
+        frm = RFR[fk]; inv_ = frm[2]
+        return all(v in inv_ for _, v in e) and RC.rot_ok({u: inv_[v] for u, v in e}, rk, frm)
+ROTCTX = {}   # the frame letters of the current reqs() call (set by its callers when ST16_ROT)
 def frame(D, LK, SV):
     G['D'] = D; G['LK'] = LK; G['SV'] = dict(SV)
     r2 = {('s', j): v for j, v in SV.items()}
@@ -80,12 +96,17 @@ def reqs(P, pa, pf, fd):
     for c in FORB:
         for e in G['embeddings'](c, P, pa2, pf2, fd):
             r = tuple(sorted((v, c[3][u]) for u, v in e if v not in fd))
+            if ROT:   # true letters for the embedded vertices on top of the caller's frame letters
+                D_, LK_, SV_ = ROTCTX['frame']; rd_ = dict(r); lk = [rd_.get(('w', k), LK_[k]) for k in range(D_)]
+                if ('u',) in fd and fd[('u',)] != D_: pass
+                r2 = {('s', j): v for j, v in SV_.items()}; r2.update({v: g_ for v, g_ in r if v[0] in ('s', 'p')})
+                if not rot_pass(c, e, D_, lk, r2): continue
             out.add(r); who[r].add(c[0])
     return out, who
 
 # ---- 1) check 4, full test ----
 D, LK, SW = 7, [7, 6, 6, 5, 5, 6, 6], [6, 6, 7, 5, 6, 6, 6]
-pa, pf = frame(D, LK, {i: SW[i] for i in range(D)})
+pa, pf = frame(D, LK, {i: SW[i] for i in range(D)}); ROTCTX['frame'] = (D, list(LK), {i: SW[i] for i in range(D)})
 PRIV = [('p', i, k) for i in range(D) for k in range(1, LK[i] - 4)]
 fixed = {('u',): D}
 for i in range(D): fixed[('w', i)] = LK[i]; fixed[('s', i)] = SW[i]
@@ -112,7 +133,7 @@ def table(U, unk=6, strict=True, unkdeg=None):
     for c1, c2 in itertools.product((5, 6), repeat=2):          # w_{j-1}, w_{j+1}: 5 or not (only that changes the structure)
         LKf = [unk] * Dd; LKf[J] = 6; LKf[J - 1] = c1; LKf[J + 1] = c2; LKf[J - 2] = 6; LKf[J + 2] = 6
         SVf = {i: 6 for i in range(Dd)}
-        pa, pf = frame(Dd, LKf, SVf)
+        pa, pf = frame(Dd, LKf, SVf); ROTCTX['frame'] = (Dd, list(LKf), dict(SVf))
         known = ([('u',)] if U == 7 else []) + [('w', J)] + SLOTS
         fd = {('w', J): 6}
         if U == 7: fd[('u',)] = U

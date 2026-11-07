@@ -1,0 +1,43 @@
+43c43
+< want = set(names); kc = {}
+---
+> want = set(names); kc = {}; RAWKC = {}   # RAWKC: raw kc lines (ST16_ROT only)
+51c51
+<             kc[f[0]] = G['kcline'](l, 'twoeng')
+---
+>             kc[f[0]] = G['kcline'](l, 'twoeng'); RAWKC[f[0]] = l
+65c65
+<                 _c = G['kcline'](_l, 'extra')
+---
+>                 _c = G['kcline'](_l, 'extra'); RAWKC.setdefault(_c[0], _l)
+68a69,84
+> ROT = os.environ.get('ST16_ROT') == '1'   # opt-in (default off; ROT2, ST-8): keep only rotation-preserving embeddings
+> if ROT:
+>     sys.path.insert(0, os.path.join(HERE, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+>     ROTK = {n: rk for n, rk in RC.rsst_rotations(G['CONF'])}
+>     for c in FORB:
+>         if c[0] not in ROTK and c[0] in RAWKC: ROTK[c[0]] = RC.kc_rotation(RAWKC[c[0]])
+>     print('ST16_ROT: rotation systems for %d / %d configurations' % (sum(ROTK.get(c[0]) is not None for c in FORB), len(FORB)), flush=True)
+>     RFR = {}
+>     def rot_pass(cfg, e, D_, lk, r2):
+>         rk = ROTK.get(cfg[0])
+>         if rk is None: return False
+>         fk = (D_, tuple(lk), tuple(sorted(r2.items())))
+>         if fk not in RFR: RFR[fk] = RC.frame_rotation(G, D_, lk, {}, r2)
+>         frm = RFR[fk]; inv_ = frm[2]
+>         return all(v in inv_ for _, v in e) and RC.rot_ok({u: inv_[v] for u, v in e}, rk, frm)
+> ROTCTX = {}   # the frame letters of the current reqs() call (set by its callers when ST16_ROT)
+82a99,103
+>             if ROT:   # true letters for the embedded vertices on top of the caller's frame letters
+>                 D_, LK_, SV_ = ROTCTX['frame']; rd_ = dict(r); lk = [rd_.get(('w', k), LK_[k]) for k in range(D_)]
+>                 if ('u',) in fd and fd[('u',)] != D_: pass
+>                 r2 = {('s', j): v for j, v in SV_.items()}; r2.update({v: g_ for v, g_ in r if v[0] in ('s', 'p')})
+>                 if not rot_pass(c, e, D_, lk, r2): continue
+88c109
+< pa, pf = frame(D, LK, {i: SW[i] for i in range(D)})
+---
+> pa, pf = frame(D, LK, {i: SW[i] for i in range(D)}); ROTCTX['frame'] = (D, list(LK), {i: SW[i] for i in range(D)})
+115c136
+<         pa, pf = frame(Dd, LKf, SVf)
+---
+>         pa, pf = frame(Dd, LKf, SVf); ROTCTX['frame'] = (Dd, list(LKf), dict(SVf))

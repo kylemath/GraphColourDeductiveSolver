@@ -1,0 +1,37 @@
+31c31
+< names = list(dict.fromkeys(names)); want = set(names); kc = {}
+---
+> names = list(dict.fromkeys(names)); want = set(names); kc = {}; RAWKC = {}   # RAWKC: raw kc lines (L3Q_ROT only)
+39c39
+<             kc[f[0]] = G['kcline'](l, 'k3x')
+---
+>             kc[f[0]] = G['kcline'](l, 'k3x'); RAWKC[f[0]] = l
+51c51
+<                 _c = G['kcline'](_l, 'extra')
+---
+>                 _c = G['kcline'](_l, 'extra'); RAWKC.setdefault(_c[0], _l)
+53a54,68
+> ROT = os.environ.get('L3Q_ROT') == '1'   # opt-in (default off; ROT2, ST-8): keep only rotation-preserving embeddings
+> if ROT:
+>     sys.path.insert(0, os.path.join(HERE, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+>     ROTK = {n: rk for n, rk in RC.rsst_rotations(G['CONF'])}
+>     for c in FORB:
+>         if c[0] not in ROTK and c[0] in RAWKC: ROTK[c[0]] = RC.kc_rotation(RAWKC[c[0]])
+>     print('L3Q_ROT: rotation systems for %d / %d configurations' % (sum(ROTK.get(c[0]) is not None for c in FORB), len(FORB)), flush=True)
+>     RFR = {}
+>     def rot_pass(cfg, e, D_, lk, r2):
+>         rk = ROTK.get(cfg[0])
+>         if rk is None: return False
+>         fk = (D_, tuple(lk), tuple(sorted(r2.items())))
+>         if fk not in RFR: RFR[fk] = RC.frame_rotation(G, D_, lk, {}, r2)
+>         frm = RFR[fk]; inv_ = frm[2]
+>         return all(v in inv_ for _, v in e) and RC.rot_ok({u: inv_[v] for u, v in e}, rk, frm)
+74c89,94
+<             out.add(tuple(sorted((v, cfg[3][u]) for u, v in e if v not in fd)))
+---
+>             r = tuple(sorted((v, cfg[3][u]) for u, v in e if v not in fd))
+>             if ROT:   # true letters for the embedded link / ring-2 vertices; the rest as frame(6, 6)
+>                 rd_ = dict(r); lk = [7] + [rd_.get(('w', k), 6 if k <= 4 else 9) for k in range(1, D)]   # frame(6, 6) defaults; both sides' w
+>                 r2 = {('s', j): 6 for j in range(D)}; r2.update({v: g_ for v, g_ in r if v[0] in ('s', 'p')})
+>                 if not rot_pass(cfg, e, D, lk, r2): continue
+>             out.add(r)

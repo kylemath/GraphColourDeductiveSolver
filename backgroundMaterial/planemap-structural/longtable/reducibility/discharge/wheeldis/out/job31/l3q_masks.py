@@ -28,7 +28,7 @@ names = []
 for fn in (KD, KC):
     for l in open(fn):
         if re.match(r'^[epf]\d+_\S+ r=\d+ ', l): names.append(l.split()[0])
-names = list(dict.fromkeys(names)); want = set(names); kc = {}
+names = list(dict.fromkeys(names)); want = set(names); kc = {}; RAWKC = {}   # RAWKC: raw kc lines (L3Q_ROT only)
 for fn in sorted(glob.glob(os.path.join(HERE, 'loop', 'k[0-9]*', '*'))):
     if not os.path.isfile(fn): continue
     try: lines = open(fn).read().splitlines()
@@ -36,7 +36,7 @@ for fn in sorted(glob.glob(os.path.join(HERE, 'loop', 'k[0-9]*', '*'))):
     for l in lines:
         f = l.split()
         if len(f) == 5 and f[0] in want and f[0] not in kc and f[1].isdigit() and f[2].isdigit() and ';' in f[3] + f[4]:
-            kc[f[0]] = G['kcline'](l, 'k3x')
+            kc[f[0]] = G['kcline'](l, 'k3x'); RAWKC[f[0]] = l
 missing = [n for n in names if n not in kc]; assert not missing, ('no kc line', len(missing), missing[:5])
 FORB = R + [kc[n] for n in names]
 print('forbidden set: %d RSST + %d k3x (%s, %s) = %d configurations' % (len(R), len(names), os.path.basename(KD), os.path.basename(KC), len(FORB)), flush=True)
@@ -48,9 +48,24 @@ if os.environ.get('EXTRA_KC'):   # f2b Tier A (opt-in): raw kc lines (name r m r
             if not _l.strip() or _l[0].isspace() or _l.startswith('#'): continue
             _f = _l.split()
             if len(_f) >= 5 and _f[1].isdigit() and _f[2].isdigit() and ';' in _f[3] + _f[4]:
-                _c = G['kcline'](_l, 'extra')
+                _c = G['kcline'](_l, 'extra'); RAWKC.setdefault(_c[0], _l)
                 if _c[0] not in _seen: _seen.add(_c[0]); FORB.append(_c); _nx += 1
     print('EXTRA_KC: +%d configurations from %s; forbidden set now %d' % (_nx, os.environ['EXTRA_KC'], len(FORB)), flush=True)
+ROT = os.environ.get('L3Q_ROT') == '1'   # opt-in (default off; ROT2, ST-8): keep only rotation-preserving embeddings
+if ROT:
+    sys.path.insert(0, os.path.join(HERE, 'loop', 'studio', 'opus_check', 'f2b041', 'keep95p131f', 'rot')); import rotcheck as RC
+    ROTK = {n: rk for n, rk in RC.rsst_rotations(G['CONF'])}
+    for c in FORB:
+        if c[0] not in ROTK and c[0] in RAWKC: ROTK[c[0]] = RC.kc_rotation(RAWKC[c[0]])
+    print('L3Q_ROT: rotation systems for %d / %d configurations' % (sum(ROTK.get(c[0]) is not None for c in FORB), len(FORB)), flush=True)
+    RFR = {}
+    def rot_pass(cfg, e, D_, lk, r2):
+        rk = ROTK.get(cfg[0])
+        if rk is None: return False
+        fk = (D_, tuple(lk), tuple(sorted(r2.items())))
+        if fk not in RFR: RFR[fk] = RC.frame_rotation(G, D_, lk, {}, r2)
+        frm = RFR[fk]; inv_ = frm[2]
+        return all(v in inv_ for _, v in e) and RC.rot_ok({u: inv_[v] for u, v in e}, rk, frm)
 D = int(os.environ.get('L3QV', '7'))   # RELAY_SPEC s45.3: V = 8 -> link length 8, centre degree exactly 8 (V = 7 default unchanged)
 assert D in (7, 8), 'V = 9 (centre never exact, excluded from embeddings) is not built here'
 def frame(lk_fill, sv_fill):
@@ -71,7 +86,12 @@ def reqs(P, pa, pf, fd):
     Ps = set(P); pa2 = {x: pa[x] & Ps for x in P}; pf2 = {f for f in pf if f <= Ps}; out = set()
     for cfg in FORB:
         for e in G['embeddings'](cfg, P, pa2, pf2, fd):
-            out.add(tuple(sorted((v, cfg[3][u]) for u, v in e if v not in fd)))
+            r = tuple(sorted((v, cfg[3][u]) for u, v in e if v not in fd))
+            if ROT:   # true letters for the embedded link / ring-2 vertices; the rest as frame(6, 6)
+                rd_ = dict(r); lk = [7] + [rd_.get(('w', k), 6 if k <= 4 else 9) for k in range(1, D)]   # frame(6, 6) defaults; both sides' w
+                r2 = {('s', j): 6 for j in range(D)}; r2.update({v: g_ for v, g_ in r if v[0] in ('s', 'p')})
+                if not rot_pass(cfg, e, D, lk, r2): continue
+            out.add(r)
     return out
 TAB = {}; stats = collections.Counter(); REQ = {}
 for sig in (1, -1):

@@ -1,0 +1,9 @@
+# 0.041565 replays (sol_c_repaired e0ad3fcc, keep95p131f tables/masks/receivers, sep3r_f2bS_fix all rotations, SEPCLASS=1)
+zc_d10.log | receivers d=10: 0 above threshold; exact violated 0 (846s);receivers d=11: 0 above threshold; exact violated 0 (397s);receivers d=12: 0 above threshold; exact violated 0 (176s);receivers d=13: 0 above threshold; exact violated 0 (68s);receivers d=14: 0 above threshold; exact violated 0 (24s);receivers d=15: 0 above threshold; exact violated 0 (9s);receivers d=16: 0 above threshold; exact violated  | VERDICT: PASS (upper FEASIBLE at 8313/200000; lower not checked)
+zc_d7.log | receivers d=7: 0 above threshold; exact violated 0 (278s); | VERDICT: PASS (upper FEASIBLE at 8313/200000; lower not checked)
+zc_d8.log | receivers d=8: 0 above threshold; exact violated 0 (1232s); | VERDICT: PASS (upper FEASIBLE at 8313/200000; lower not checked)
+zc_d9.log | receivers d=9: 0 above threshold; exact violated 0 (1811s); | VERDICT: PASS (upper FEASIBLE at 8313/200000; lower not checked)
+w18_d7.log | receivers d=7: 1064 above threshold; exact violated 1064 (226s); | VERDICT: FAIL: receiver side violated or undecided
+w18_d8.log | receivers d=8: 0 above threshold; exact violated 0 (1068s); | VERDICT: PASS (upper FEASIBLE at 8313/200000; lower not checked)
+w18_d9.log | receivers d=9: 45 above threshold; exact violated 45 (1619s); | VERDICT: FAIL: receiver side violated or undecided
+w18_d10.log | receivers d=10: 0 above threshold; exact violated 0 (734s);receivers d=11: 0 above threshold; exact violated 0 (381s);receivers d=12: 0 above threshold; exact violated 0 (159s);receivers d=13: 0 above threshold; exact violated 0 (64s);receivers d=14: 0 above threshold; exact violated 0 (23s);receivers d=15: 0 above threshold; exact violated 0 (8s);receivers d=16: 0 above threshold; exact violated  | VERDICT: PASS (upper FEASIBLE at 8313/200000; lower not checked)
