@@ -23,3 +23,6 @@ Control sol_rep3c_02_tneg.json: t lowered to 0.04044 only; must FAIL (Opus expec
    ARGSF=/tmp/swarm-W17/args_A97F_W13K3f_x_studio.txt EXPECT_PAT=18136,689,158 TAG=sol_rep2f_082_zK3f_A5F
    control: ARGSF=.../args_A97F_W13K3e_x_studio.txt EXPECT_PAT=18136,688,158 TAG=sol_rep2f_082_zK3e_neg (no K3f C) must FAIL (d8 76566575 class expected)
 Copy pat_K3d_D.out pat_K3e_D.out pat_K3f_C.cfast to /tmp/swarm-W17/pat/K3/, the args files to /tmp/swarm-W17/, the sols to sol/. Same rules (rules_A5final_2db75746.json), RPATN 8b90a842.
+## ST-24 now READY: sol_rep2e_082.json (e5b72242) is in this folder.
+## ST-27 (lower priority): sol_repFSD_03.json (ec0dfa17, t 0.040127353769) on K3d (args_A97F_W13K3d_x_studio.txt, EXPECT_PAT 18135,688,158),
+   TAG sol_repFSD_03_zK3d_A5F; control: K3c args (EXPECT_PAT 18134,688,158), TAG sol_repFSD_03_zK3c_neg, must FAIL (d8 56656757 class expected).
