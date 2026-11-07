@@ -10,3 +10,8 @@
 - K3CHK4 (main c69e9a35, out/job_K3CHK4/): ../in/extraC_K3CHK4.tsv = extraC.tsv (24a3a8bb): b8_u.56656.._...66..., r13 m8, X I2-I3.
   CK3C4.lean (3cbe5121; k3c4Entries, k3c4Entries_ok, k3c4Entries_length), K3C4V00.lean (a00c3935; K3C4V.hC_0), K3C4VAll.lean (736c23e4; K3C4V.hC_all : Fin 1),
   module_split_hC_K3CHK4.tsv = module_split_hC.tsv (2364c901). Same md5s as the copies in K3/from_studio/K3CHK4/.
+- HCK3i (main 23782a2c; job folder added in 203b0660, out/job_HCK3i/): ../in/extraC_HCK3i.tsv = extraC.tsv (2c361133): b7_u.5785.._55555.. (r13 m10) and
+  b9_u...575655_....5.... (r13 m8), both X I0-I3. CK3I.lean (3561cf6e; k3iEntries, k3iEntries_ok, k3iEntries_length), K3IV00.lean (868a8f49; K3IV.hC_0),
+  K3IV01.lean (2cc82a73; K3IV.hC_1), K3IVAll.lean (31b8a873; K3IV.hC_all : Fin 2), module_split_HCK3i.tsv = module_split.tsv (e316f87a).
+  Same md5s as the copies in K3/from_studio/HCK3i/. The s86 cfast list s86_f2b7/w13/pat_K3i_C.cfast (44e053c2) names them f7_.5785.._55555.. and
+  f9_...575655_....5.... with these windows, the same r, m and X = {I0-I3}.
