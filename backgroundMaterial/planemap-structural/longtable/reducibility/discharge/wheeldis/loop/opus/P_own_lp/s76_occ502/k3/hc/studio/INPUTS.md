@@ -15,3 +15,7 @@
   K3IV01.lean (2cc82a73; K3IV.hC_1), K3IVAll.lean (31b8a873; K3IV.hC_all : Fin 2), module_split_HCK3i.tsv = module_split.tsv (e316f87a).
   Same md5s as the copies in K3/from_studio/HCK3i/. The s86 cfast list s86_f2b7/w13/pat_K3i_C.cfast (44e053c2) names them f7_.5785.._55555.. and
   f9_...575655_....5.... with these windows, the same r, m and X = {I0-I3}.
+- HCK3j (main 93236129, out/job_HCK3j/): ../in/extraC_HCK3j.tsv = extraC.tsv (15ad840d): b9_u.56575.55_...5...5. (r14 m10), X I0-I3, not rim-pinned.
+  CK3J.lean (6759cd9c; k3jEntries, k3jEntries_ok, k3jEntries_length), K3JV00.lean (e3e5a398; K3JV.hC_0), K3JVAll.lean (f387d3d4; K3JV.hC_all : Fin 1),
+  module_split_HCK3j.tsv = module_split.tsv (6678d6ec). Same md5s as the copies in K3/from_studio/HCK3j/. s86_f2b7/w13/pat_K3j_C.cfast (26650f73)
+  names it f9_.56575.55_...5...5. with this window, the same r, m and X = {I0-I3}.

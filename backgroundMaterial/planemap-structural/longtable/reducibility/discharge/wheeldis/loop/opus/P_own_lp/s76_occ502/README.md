@@ -230,3 +230,15 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals_c.py on CK3I.lean: 2 entries, 0 mismatches. A copy with one intAdj entry of b9_u...575655_....5.... changed gives 1 mismatch, exit 1.
   NOT compiled here (no Lean in this container). At 23782a2c the Studio's status.txt has CK3I exit 0 only; K3IV00/01 and K3IVAll are queued (drive.sh).
 - Compile order: HK3I_kk, COccHK3I_kk, then HK3IOcc (after K3IVAll). HK3IOcc md5 bc849d21.
+
+## k3/hc/ (HCK3j): the K3j C kill b9_u.56575.55_...5...5., X = {I0-I3} (Studio main 93236129, out/job_HCK3j/)
+- in/extraC_HCK3j.tsv (15ad840d) and studio/{CK3J.lean (6759cd9c),K3JV00.lean (e3e5a398),K3JVAll.lean (f387d3d4),module_split_HCK3j.tsv (6678d6ec)}:
+  byte copies from main 93236129 (same md5s as the shared K3/from_studio/HCK3j/ copies). studio/INPUTS.md updated. Name, ring and X equal module_split.tsv
+  and CK3J.lean; window, r, m and X also match s86_f2b7/w13/pat_K3j_C.cfast (26650f73; pattern f9_.56575.55_...5...5.).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/k3/hc/in/extraC_HCK3j.tsv s76_occ502/k3/hc/lean HK3J_` (C side, as for HK3I)
+  -> HK3J_00 + COccHK3J_00: 1 generated, 0 failed, 2 rotations validated, every link an induced cycle.
+- lean/HK3JOcc.lean: `scripts/gen_cocc_batch.py k3/hc/lean/HK3J_modules.txt HK3JOcc K3JVAll K3JV k3jEntries HK3J_ ...` (run from s76_occ502).
+  It imports K3JVAll (on main; `K3JV.hC_all : Fin 1`, the W3PVAll form) and uses `k3jEntries_ok` and `k3jEntries_length`.
+- check_literals_c.py on CK3J.lean: 1 entry, 0 mismatches. A copy with one intAdj entry changed gives 1 mismatch, exit 1. NOT compiled here (no Lean in
+  this container). At 93236129 the Studio's status.txt has CK3J exit 0 only; K3JV00 and K3JVAll are building.
+- Compile order: HK3J_00, COccHK3J_00, then HK3JOcc (after K3JVAll). HK3JOcc md5 ff2bd1f6.
