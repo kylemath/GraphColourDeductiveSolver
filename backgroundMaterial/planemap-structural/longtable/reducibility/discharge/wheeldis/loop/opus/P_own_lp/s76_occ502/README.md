@@ -165,6 +165,8 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals_c.py: CK3C2.lean 1 entry, 0 mismatches; CK3C3.lean 1 entry, 0 mismatches. Copies with one intAdj entry changed give 1 mismatch
   and exit 1 for each. NOT compiled here (no Lean in this container).
 - Compile order: HK3CJ_00, COccHK3CJ_00, then HK3CJOcc (after K3CJVAll). HK3C2Occ md5 a9c9c9e0, HK3C3Occ md5 44b1e377.
+- **Studio (main 55cee157):** K3C2VAll / K3C3VAll added (97a2b762 / 8c110745, the form assumed above); the Studio's commit reports the glue
+  copied byte-identical, check_literals 1/0 and 1/0, and the C glue built with all exit 0, sorry 0.
 
 ## ha5b/hd/: HDA5B, the 45 D witnesses new in W18 A-5 FINAL (Studio out/job_HA5b/D_a5b.tsv, md5 1dcb2cef, main 59a296b2; MOD HDA5B, PFX hda5b)
 - in/D_a5b.tsv and studio/{D_a5b.tsv,HDA5B.lean (c9358df1, from hd/),module_split.tsv (531ef16c, from hd/),INPUTS.md (1efaef77)}: byte copies from
@@ -196,3 +198,13 @@ All 380 D names are covered exactly once (checked by name, RSST by number prefix
 - check_literals.py against studio/HDK3B.lean (the Studio's own file): 1 entry, 0 mismatches. A mutated copy (m 10 -> 9) gives 1 mismatch, exit 1.
   gen_hd.py f743a82d run here on in/D_k3b.tsv reproduces HDK3B.lean, HDK3BV00 and HDK3BAll byte for byte. NOT compiled here (no Lean in this container).
 - Compile order: HK3BD_00, then COccHK3BD_00, then HDK3BOcc (after HDK3BAll). HDK3BOcc md5 4b959797.
+
+## k3/hc/ (K3CHK4): the K-3 C kill b8_u.56656.._...66..., X = {I2-I3} (Studio main c69e9a35, out/job_K3CHK4/)
+- in/extraC_K3CHK4.tsv (24a3a8bb) and studio/{CK3C4.lean (3cbe5121),K3C4V00.lean (a00c3935),K3C4VAll.lean (736c23e4),module_split_hC_K3CHK4.tsv (2364c901)}:
+  byte copies from main c69e9a35 (same md5s as the shared K3/from_studio/K3CHK4/ copies). studio/INPUTS.md updated.
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/k3/hc/in/extraC_K3CHK4.tsv s76_occ502/k3/hc/lean HK3C4_` (C side, as for K3C2/K3C3)
+  -> HK3C4_00 + COccHK3C4_00: 1 generated, 0 failed, 2 rotations validated, every link an induced cycle. Name and ring equal module_split_hC.tsv's.
+- lean/HK3C4Occ.lean: `scripts/gen_cocc_batch.py k3/hc/lean/HK3C4_modules.txt HK3C4Occ K3C4VAll K3C4V k3c4Entries HK3C4_ ...` (run from s76_occ502).
+  It imports K3C4VAll (on main this time; `K3C4V.hC_all : Fin 1`, the W3PVAll form) and uses `k3c4Entries_ok` and `k3c4Entries_length`.
+- check_literals_c.py on CK3C4.lean: 1 entry, 0 mismatches. A copy with one intAdj entry changed gives 1 mismatch, exit 1. NOT compiled here (no Lean in this container).
+- Compile order: HK3C4_00, COccHK3C4_00, then HK3C4Occ (after K3C4VAll). HK3C4Occ md5 e010e982.

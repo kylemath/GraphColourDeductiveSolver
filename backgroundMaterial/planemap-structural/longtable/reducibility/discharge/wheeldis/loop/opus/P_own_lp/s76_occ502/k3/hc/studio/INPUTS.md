@@ -6,3 +6,7 @@
   - CK3C3.lean (21f11a08; k3c3Entries, k3c3Entries_ok, k3c3Entries_length), K3C3V00.lean (2862bb8d; K3C3V.hC_0).
   Same md5s as the copies in swarm/round6/W13-open-row-kills/round6/K3/from_studio/K3CHK2/ and K3CHK3/; unchanged on origin/main 90e4c5c1.
 - Not on main: K3C2VAll / K3C3VAll (`hC_all : Fin 1`). The Studio built only the V00 modules for these one-entry jobs. HK3C2Occ / HK3C3Occ need them.
+- K3C2VAll / K3C3VAll were added by the Studio at main 55cee157 (97a2b762 / 8c110745), in the W3PVAll form assumed above.
+- K3CHK4 (main c69e9a35, out/job_K3CHK4/): ../in/extraC_K3CHK4.tsv = extraC.tsv (24a3a8bb): b8_u.56656.._...66..., r13 m8, X I2-I3.
+  CK3C4.lean (3cbe5121; k3c4Entries, k3c4Entries_ok, k3c4Entries_length), K3C4V00.lean (a00c3935; K3C4V.hC_0), K3C4VAll.lean (736c23e4; K3C4V.hC_all : Fin 1),
+  module_split_hC_K3CHK4.tsv = module_split_hC.tsv (2364c901). Same md5s as the copies in K3/from_studio/K3CHK4/.
