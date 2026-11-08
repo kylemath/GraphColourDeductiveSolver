@@ -313,3 +313,4 @@ Results:
   names, ring 12 / 8 interior and the docstring.
 - check_literals_c.py on CK3K.lean: 1 entry, 0 mismatches; a copy with one intAdj entry changed gives 1 mismatch, exit 1. NOT compiled here.
 - Compile order: HK3K_00, COccHK3K_00, then HK3KOcc (after K3KVAll); shared glue_hc/glue_drive.sh does that.
+- 8 Nov 01:12Z Studio main bb057100: CK3K, K3KV00, K3KVAll, HK3K_00, COccHK3K_00, HK3KOcc all exit 0, sorry 0, sorryAx 0 (glue byte-identical to 40c5cf2b). K3k is Lean-covered like K3j. glue_drive_HCK3k.sh = the shared glue_hc/glue_drive.sh (cc36ca9e).
