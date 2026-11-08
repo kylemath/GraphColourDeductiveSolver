@@ -32,6 +32,7 @@ def blend(fin, flp, lam, fout):
 def check(tag, sol, vfile=True, th=1):
     vf = os.path.join(N, 'logs', 'viol_%s.txt' % tag)
     if os.path.exists(vf): os.remove(vf)
+    while int(open('/proc/meminfo').read().split('MemAvailable:')[1].split()[0]) // 1024 < int(os.environ.get('REPL_MINMEM', '4500')): time.sleep(20)   # s86: memory gate (8 Nov crash)
     subprocess.run(['bash', os.path.join(N, 'U86.sh'), tag, sol, str(th)] + FAM + (['vK=1000000', 'vfile=' + vf] if vfile else []), env=ENV, cwd=N,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     L = open(os.path.join(N, 'logs', 'upper_%s.log' % tag)).read()
@@ -58,11 +59,12 @@ def search(xin, xlp, k):
             sol = os.path.join(R, 'b%d_%g.json' % (k, lam)); blend(xin, xlp, lam, sol)
             tg = 'REP%s_%s_%d_%g' % (TAG, os.environ.get('REPL_FAM', ''), k, lam)
             ps.append((lam, tg, sol))
-        for i in range(0, len(ps), 2):   # two checks at a time (1 thread each)
+        PAR = int(os.environ.get('REPL_PAR', '2'))
+        for i in range(0, len(ps), PAR):   # PAR checks at a time (1 thread each)
             out = {}
             import threading
             def run(lam, tg, sol): out[lam] = t_rep(tg, sol)
-            th = [threading.Thread(target=run, args=p) for p in ps[i:i + 2]]
+            th = [threading.Thread(target=run, args=p) for p in ps[i:i + PAR]]
             [x.start() for x in th]; [x.join() for x in th]
             res.update(out)
     ev([0.02, 0.05, 0.1, 0.2])

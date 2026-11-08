@@ -6,6 +6,7 @@ B=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural
 export STACK=s77 ARGS=$N/args_A97_F_W13K3g.txt XF="c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt" KEYS=$Z/keys/cg_keys_r13w16.txt FEAS=$N/cand/$1.json
 P1=${1#sol_}; grep -q "^UPPER-R2: FEASIBLE" $N/logs/upper_F_$P1.log || { echo "in-point $1 has no FEASIBLE recheck under the proof-stack family" >&2; exit 2; }
 export WARM=$(cat $N/runK_k86B/warmlist.txt),$N/warm/rows_k86B_snap_it13.txt,$N/warm/rows_k86CS_snap_it1.txt,$N/warm/rows_k86FS_snap_it3.txt,$N/warm/rows_k86GS_snap_it3.txt,$N/warm/rows_k86GS2_snap_it5.txt
+[ -s $N/warm/rows_k86GS3_snap_crash.txt ] && WARM=$WARM,$N/warm/rows_k86GS3_snap_crash.txt   # 8 Nov: GS3's own rows from before the container restart
 nohup bash $N/runK86.sh 200 2 k86GS3 inout=0.4,0.8,0.1 inoutk=4 inoutmove inoutprobe=0.25 inoutnprobe=3 q7pen=1e-3 feascols feasall consk=20 consfrac=0.25 > $N/logs/runK_k86GS3.out 2>&1 &
 sleep 5
 cd $N && nohup bash $N/watch86.sh k86GS3 > $N/logs/watch86_k86GS3.out 2>&1 &
