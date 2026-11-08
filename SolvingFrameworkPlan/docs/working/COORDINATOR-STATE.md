@@ -88,6 +88,14 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 8 Nov 08:42Z: UPPER **t* <= 0.027086414643 [E2]** (sol_repS1MW_02 d13dc92f, Opus repair ladder on Mac; Opus upperR2 + Studio W17 harness, ST-50), K3l family; tneg fails; on K3k fails by the 8 kill-B rows. Evidence round6/W17-studio-kstar/from_studio/sol_repS1MW_02/.
+- 8 Nov 08:05Z: CORRECTION: Studio's Mac session is still running (ignore 08:01Z 'stopped'). Ring-15 screen found D kill B1 for the binding 9-wheel class of the 0.028372 point [E2]. Mac W17 check of 0.027086 lane point queued.
+- 8 Nov 08:01Z: Studio's Claude session stopped ~07:55Z (owner usage limit). Unattended: Opus LP lanes, Lean queue (K5b then K5c kills), ST-49 ring 15-16 screen. Checks paused until a new session. Sound upper stays 0.028372061 [E2]; Mac-lane one-engine point 0.027086 [P] awaits check.
+- 8 Nov 06:29Z: UPPER **t* <= 0.028372061 [E2]** (sol_repS4W_09_tight 3efba61e, Opus + Mac ST-46), K3l family; tneg fails; on K3k fails on the 8 kill-B rows. Mac also runs two Opus LP lanes (ST-47, upper + lower).
+- 8 Nov 05:17Z: UPPER **t* <= 0.029510106 [E2]** (sol_k86GS4_in03_tight f4581744, Opus + Mac ST-45), K3l family; tneg control fails. Opus now sends a point every ~2-3% gain.
+- 8 Nov 05:03Z: UPPER **t* <= 0.029833246 [E2]** (sol_repS4W_07_tight 8a8a2535, Opus + Mac ST-44) on K3l family; first sound upper below 0.03. Tneg control fails; on K3k fails by 8 d7 rows. Binding now d9 receivers (one 9-wheel class). Evidence round6/W17-studio-kstar/from_studio/sol_repS4W_07_tight/.
+- 8 Nov 04:41Z: UPPER **t* <= 0.030439450 [E2]** (sol_k86GS4_in02_tight cda52df7, Opus + Mac ST-43) on K3l = K3k + kill B C f7_.666666_.5...5. (X={R0-I0}; Lean HCK3l 7e7bfca9) + 2db75746 + rpatN 8b90a842 + r13w16 + c6le + f2b7. Tneg control fails; on K3k fails by 8 d7 rows. Evidence round6/W17-studio-kstar/from_studio/sol_k86GS4_in02_tight/.
+- 8 Nov 03:06Z: UPPER **t* <= 0.031071144833 [E2]** (sol_k86GS3b_in01, Opus + Mac ST-41, main e9baf597) on K3k (feasible with or without the new row-B kill) + 2db75746 + rpatN 8b90a842 + c6le + f2b7 + r13w16; control t-5e-6 fails d7-9.
 - 8 Nov 01:25Z: UPPER **t* <= 0.031415827089 [E2]** (sol_repS3W_06, Opus + Mac ST-39, main 79cc72b6) on K3k = K3j + 1 C kill f8_...56556_.....66. (r12, X={I0-I3}, not rim-pinned; Lean hC + glue HCK3k bb057100) + 2db75746 + rpatN 8b90a842 + c6le + f2b7 + r13w16. Controls: on K3j fails 9 d8 rows; t-5e-6 fails d7-9 senders/receivers.
 - 7 Nov 23:49Z: UPPER **t* <= 0.032521353 [E2]** (sol_k86GS3_in04_tight, Opus + Mac ST-38, main 421fda79), family unchanged; tight (d7-9 senders/receivers bind; control t-5e-6 fails).
 - 7 Nov 23:17Z: UPPER **t* <= 0.033006146 [E2]** (sol_k86GS3_in03_tight, Opus + Mac ST-37, main 3e939c35), family unchanged; tight (senderR2 + d7-9 receivers bind; control t-5e-6 fails there).
