@@ -1,0 +1,17 @@
+# EXPECT for Studio K3l5 + 240-key checks (Opus upperR2 log lines, paths stripped). Family K3l5 = args_A97_F_W13K3l5.txt (2547de87) = K3l (2727d445) + w13/pat_K5h01_C.cfast (f82166d5) + w13/pat_K5b_C.cfast (e8bf75d8) + w13/pat_K5b_D.out (0348c777). Keys p1r/cg_keys_r13w16_16fik.txt (3d996dbb), standard coefficients (no p1r).
+# payer/payee masks: bit 1 = 5, 2 = 6, 4 = 7, 8 = 8, 16 = 9+ (as in the engine's gk_set)
+
+## K3l5 + 240 keys (logs/upper_F_S4W09k240.log, sol_S4W09k240 = repS4W_09_tight, FEASIBLE at 0.028372061)
+f2b: rules loaded from rules_c67fa1d1_plus_A5_twins.json: {'d7_w6': 1739, 'd8_w6': 1256, 'd9_w6': 97, 'd7_w7_1': 1059, 'd7_w7_-1': 1059, 'd8_w7_1': 754, 'd8_w7_-1': 754}
+gkeys: 240 keys from cg_keys_r13w16_16fik.txt (md5 3d996dbb): payer/payee pairs {'4->4': 38, '4->28': 10, '4->2': 13, '2->2': 27, '4->1': 19, '1->1': 19, '1->4': 29, '2->1': 18, '2->4': 19, '1->2': 9, '1->8': 8, '1->16': 9, '2->8': 2, '2->16': 2, '4->8': 3, '4->16': 4, '2->6': 5, '4->20': 2, '2->18': 1, '1->12': 1, '2->12': 1, '1->18': 1}
+gkeys: 89 payer-7 keys > 64: leaf binary jsepf_gk_k192 (7802 limit 192)
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, 'k3x_C_A97.cfast': 721, 'k42map_C_cons.cfast': 9}
+patterns: 307 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9355, 8: 5905, 9: 3319, 10: 1426, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18137, 'C': 699, 'RPAT': 158, 'RPATN': 2034}
+gkeys: mode-2 class fold: 9389 distinct payee-bound signatures over 159 tables
+bonus links: 132
+
+## K3l + 171 keys (ST-46 point, logs/upper_F_repS4W_09_tight.log), for the delta
+gkeys: 171 keys from cg_keys_r13w16.txt (md5 15c361a1): payer/payee pairs {'4->4': 26, '4->28': 2, '4->2': 13, '2->2': 23, '4->1': 13, '1->1': 13, '1->4': 24, '2->1': 13, '2->4': 13, '1->2': 9, '1->8': 6, '1->16': 5, '2->8': 2, '2->16': 2, '4->8': 3, '4->16': 4}
+patterns: 304 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9353, 8: 5904, 9: 3317, 10: 1425, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18136, 'C': 694, 'RPAT': 158, 'RPATN': 2034}
+gkeys: mode-2 class fold: 4624 distinct payee-bound signatures over 91 tables
