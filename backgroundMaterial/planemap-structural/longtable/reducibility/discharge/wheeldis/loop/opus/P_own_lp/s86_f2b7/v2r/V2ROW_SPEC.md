@@ -111,6 +111,15 @@ The masked row had, per 6 / 7, the envelope `('M', sgM)` resp. `('Q', sig) + ('l
 
 ### 4.3 keys
 
+**Scope (amended 8 Nov 07:55Z after W6r's replay note).** Payer sets are subsets of {5, 6, 7}: the engine refuses any key whose payer
+set meets {8, 9} (`assert not (um & 24)` in edge56 gk_write / gkwin), so KEYSPEC2 section 1's PAYER8SPEC case never arises and a centre of
+degree 8 has OUT(K) = 0 for every key (consistent with "OUT = the masked row's sure count, 0 at d = 8"). Payee sets may contain 8 and 9.
+Keys use only the 10 positions tabulated below. Both statements hold for the gate file cg_keys_r13w16_16fi.txt (56d144d5, 220 keys) and
+for the GV1 file cg_keys_r13w16_16fik.txt (3d996dbb, 240 keys): payer sets {5}, {6}, {7} only; positions S.L+1 204, S.L-1 215, S.L+2 198,
+S.L-2 181, S.L+3 166, S.L-3 171, S.A+1 121, S.A-1 183, R.L+2 133, R.L-2 121 occurrences in the 240-key file, no other position. A replay
+should reject (not extend) any key outside this scope.
+
+
 For every key K of the run's gkeys file (all keys, `NAME EDGE(Up->Vp)[POS=SET ...]`; letter sets as in KEYSPEC, positions not
 listed are wildcards), coefficient IN(K; rho) - OUT(K) on column `('ks', NAME)`, omitted when 0. Every letter of the picture is
 exact (link, apex, rho), so a slot either matches or not ("possible" = "sure"): a slot matches when the payer letter is in Up, the

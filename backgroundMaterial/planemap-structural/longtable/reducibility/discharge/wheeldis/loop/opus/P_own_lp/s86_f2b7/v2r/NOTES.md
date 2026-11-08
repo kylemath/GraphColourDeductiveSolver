@@ -90,3 +90,71 @@
   re-solve + ~13 min DP) per lext iteration.  The restricted LP needed 17 cutting-plane rounds, i.e. ~17 lext iterations with
   V2INNER=0 (~30-40 h) against ~4-5 with v2inner=4.  Memory ~5-5.3 GB at start like GL6, growing with the realisation rows (~7 per
   binding receiver in the restricted LP); start with MemAvailable >= 6 GB.
+
+# upperR2 under v2r: the exact v2 upper check (task 2, 8 Nov)
+
+## Build
+- Same flag `v2r`, engine eng_v2.  upperR2 with v2r: every family exactly as the standard upperR2 except d = 7 / 8 receivers:
+  jsepf mode 0 (the standard exhaustive d = 7 / 8 run) lists EVERY leaf with masked load > d - 6 + t + eps - v2umargin (default 1e-7;
+  v2uK = 1e7 is a refusal cap, never a selection) -> canonical labels (min over the 2d rotations / reflections), deduped -> per label the
+  DP max over rho (v2r_dp), the argmax row rebuilt by the row builder (gk_slots on the exact picture) and its value compared with the DP
+  (a disagreement > 1e-9 counts as a failure), superset sanity (v2 max <= masked load + max(margin, 1e-9), a break counts as a failure),
+  1-site neighbourhood of every argmax by the independent evaluator (v2unbr, default 1).  v2-violated = DP max > d - 6 + t + eps.
+  Final line `UPPER-R2: FEASIBLE at t = ... (v2r)` / `UPPER-R2: INFEASIBLE (n) at t = ... (v2r)` (+ a `v2r upper summary` line before it).
+  vfile= gets the v2-violated rows as `d value excess link apex rho` (tighten.sh reads column 3).
+- Options: v2umargin, v2uK, v2umfile= (every listed receiver: d masked v2max link apex rho), v2usym=N, v2ubrute=N (v2ubrutemax=50000),
+  v2unbr=0|1, v2bug=dpin:<key> (CONTROL: the DP drops that key's IN term; the row builder keeps it).  Command v2rupshow (worked receivers).
+- Runner v2r/U86v.sh (= U86.sh on eng_v2, nice 19, MemAvailable >= 3 GB gate, RSS watchdog); queues v2r/upper_queue1.sh / 2.
+- RSS: the python process of the STANDARD upperR2 already peaks at 1.52-1.61 GB (pattern loading, the d >= 13 / Karp end); v2r adds
+  nothing visible.  First two runs were stopped by the 1.5 GB watchdog (logs *_rsskill*.log); runs below use a 1.8 GB per-process cap.
+
+## Validation 1: sol_S4W09k240 (cand/, md5 eea14563, t = 0.028372061; K3l5 2547de87 + 240 keys 16fik 3d996dbb; standard FEASIBLE)
+- Plain v2 (v2r/logs/upper_v2F_S4W09k240.log): masked list at margin 1e-7 empty on d = 7 and 8 (40.0 s / 19.2 s, threads 2), every
+  other family as the standard log (senders 0, cons 0, d = 9..17 0, Karp 0.548356270 / d0 13.222):  UPPER-R2: FEASIBLE at t =
+  0.028372061000 (v2r).  Wall 172 s, peak RSS 1.52 GB.
+- Masked-tight check (margin 0.002, upper_v2B_S4W09k240_m002.log): d = 7 319 leaves / 145 canonical receivers, d = 8 541 / 260; DP max <=
+  masked load on all 405 (masked - v2: min -4.96e-13 (float reordering; well inside the 1e-7 margin), median -8e-14); superset breaks 0,
+  DP / row mismatches 0; sym check 20 receivers x 2d images 0 differences (max 4.4e-16); brute force 10 receivers (136,125 realisations)
+  = DP max on all; 1-site check 21,230 neighbours, none above.  Tightest v2 receiver 7 5566786 5675657 rho 75566655565577, value
+  1.0283712984 (excess -7.63e-7; the sender floor is 0.028371298868, so the senders bind first).  Still FEASIBLE (v2r).  223 s.
+
+## Validation 2: the probe (sol_S4W09k240 at t - 0.003 = 0.025372061; v2r/upper/sol_S4W09k240_probe.json md5 b04b8c26)
+- Standard (eng_v2 without v2r, vK=1e6, upper_stdD_S4W09k240_probe.log): INFEASIBLE (2367): senders 1131, cons 1 (0.000364),
+  d = 7 491, d = 8 721, d = 9 23.
+- v2 (upper_v2C_S4W09k240_probe.log): INFEASIBLE (1697): senders 1131, cons 1, d = 7: masked 491 leaves = 223 canonical, v2-violated 206;
+  d = 8: masked 721 leaves = 340 canonical, v2-violated 339; d = 9 20 (the default vK = 20 cap on d >= 9 counts, as the standard check
+  without vK; the verdict does not depend on it).  So v2 545 <= masked 563 canonical; 18 phantoms (masked-violated, v2-satisfied), the
+  masked - v2 gap up to 0.185 (7 6767677 5555555: masked 1.027600, v2 0.842618).  Worst v2 excess 0.002999237 (= the masked worst) at
+  receiverV2 7 5566786 5675657 rho 75566655565577 and 8 55558558 59567676 rho 6559955655766755 (60 receivers at that excess).
+  Every v2-violated receiver has DP max > d - 6 + t + 1e-9 by construction; brute force over the full domain product on the 20 worst
+  (7 more skipped: product > 50,000): 202,375 realisations, brute max = DP max on all 20 (and the same argmax).  sym check 320 DPs equal,
+  1-site check 29,093 neighbours none above, DP / row mismatches 0, superset breaks 0.  DP 1.8 s over 563 receivers (3.1 ms each).
+  Wall 353 s with the extras.
+
+## Validation 3: a v2-only feasible example
+- GL5 phase-1 sol (lext seed, K3g + 16fi + offc_K3g, upper_v2E_GL5p1.log): not usable: the masked d = 7 and d = 8 lists both reach
+  500,000 leaves (the refusal cap; the LP point violates everything outside its own rows: cons worst excess 36, tail and Karp fail).
+  The smoke-1 sol (t = -0.45) is worse.  Tightening the S4W / S3W candidates cannot give one either: in every probe file
+  (logs/viol_F_*probe*.txt) the d = 9 receivers (unchanged by v2) reach the same or a larger excess than d = 7 / 8.
+- The probe (validation 2) already has the counts differing: 563 masked-violated canonical receivers, 545 v2-violated, 18 phantoms.
+- Constructed point: sol_S4W09k240 with lQ[(5,5,31)] raised by 1e-5 (v2r/upper/sol_S4W09k240_lQ.json, md5 4821040c; lQ is a masked-only
+  envelope column, the v2 rows do not read it).  Standard (upper_stdH_lQ.log): INFEASIBLE (10): d = 7 10 violated, everything else 0.
+  v2 (upper_v2H_lQ.log): the same 10 leaves = 4 canonical receivers, all phantoms (masked - v2 from 1e-5 to 0.147), v2-violated 0:
+  UPPER-R2: FEASIBLE at t = 0.028372061000 (v2r).  206 s.
+
+## Validation 4: planted bug v2bug=dpin:gk03_37 (the DP drops key gk03_37's IN term; the row builder keeps it)
+- gk03_37 (amount 0.003481346) fires once at the argmax of the worst probe receiver 7 5566786 5675657.
+- F2, sol_S4W09k240 with masked list margin 0.002 (true verdict FEASIBLE): 25 DP / row mismatches on d = 7 (first: 5569577/5665567 DP
+  1.024422435 vs row 1.027903781) -> UPPER-R2: INFEASIBLE (25) (v2r).  Flips.
+- F1, the probe: 40 mismatches -> INFEASIBLE (1737) = 1697 + 40; the v2-violated counts stay 206 / 339 (a mismatch is valued at the larger
+  reading).  F3 = F1 without the 1-site check: the same 40, so the detection is the DP / row cross-check alone.
+- At the default margin 1e-7 at sol_S4W09k240 no d = 7 / 8 label is listed and the DP never runs, so no DP bug can change that verdict;
+  that is correct (the masked superset alone proves feasibility).  Blind spot of the cross-check: a DP that undervalues the max at a rho
+  where the bug is silent (here: gk03_37 not firing at the buggy argmax) agrees with the row there; the 1-site neighbourhood (default on)
+  and the brute force (v2ubrute) are the independent covers.  In F1 no such case occurred (the counts with the bug = without).
+
+## Timing / memory (threads 2, nice 19)
+- Plain v2 upperR2 on sol_S4W09k240: 172 s wall (d = 7 40 s, d = 8 19 s, DP 0 s since nothing is listed), standard on the same point
+  ~250 s with threads 1 (the reference log, 74 + 34 s).  At the probe: DP 1.8 s for 563 labels (3.1 ms each), 1-site check 11 s.
+- Peak RSS 1.50-1.61 GB, all in the standard part (pattern loading, the d >= 13 / Karp end); the v2 part adds nothing visible.
+- Worked receivers (v2rupshow): v2r/upper/V2UPPER_vectors.json (552fcb57).  Spec: v2r/V2UPPER_SPEC.md.

@@ -1878,8 +1878,14 @@ def cmd_upperR2():
     F2B_MV2[0] = MV2
     if 'f2bself' in OPT: f2b_selftest(y, xd, MV2, t, int(OPT['f2bself'])); return
     if 'ksdump' in OPT: ks_dump(y, xd, MV2, t); return   # s78: K* / EDGE row-value dump (eng/ksdump.py)
+    if V2R:   # s86 v2r upper (v2r.py): d = 7 / 8 receivers checked as the KEYSPEC v2 max-row (masked exhaustive list -> DP per receiver)
+        V2U = v2r_upper_point(Sj, y, xd); V2ST = {'rows': [], 'mismatch': [], 'viol': [], 'worst': None, 'tight': None, 'dp': 0.0, 'ndp': 0, 'nmask': 0, 'nmaskc': 0, 'nv': 0, 'capped': 0}
+        log('v2r upper: d = 7 / 8 receivers under KEYSPEC v2 (max over rho of the realisation row, exact DP; masked list margin v2umargin = %s)%s' % (
+            OPT.get('v2umargin', '1e-7'), ' [CONTROL v2bug=%s]' % V2BUG if V2BUG else ''))
     for d in range(7, DMAX + 1):
         W = window_table_R2(min(d, 9), y, xd, MV2)
+        if V2R and d in (7, 8):
+            bad += v2r_upper_d(d, W, t, V2U[0], V2U[1], V2ST); continue
         res, dt, ni = run_sep(d, W, d - 6 + t + EPS, int(float(OPT.get('vK', '20'))), 0)   # s33z (from s30t): vK = max rows reported
         v = [r for r in res if r[0] == 'V']; bad += len(v)
         log('d=%d: %d violated (exhaustive, %.1fs)' % (d, len(v), dt))
@@ -1895,7 +1901,13 @@ def cmd_upperR2():
     lam = karp(M); d0 = (6 - t) / (1 - lam) if lam < 1 else 1e9
     log('Karp lambda %.9f d0 %.3f' % (lam, d0))
     if d0 > DTAIL + 1: bad += 1
-    log('UPPER-R2: %s at t = %.12f' % ('FEASIBLE' if bad == 0 else 'INFEASIBLE (%d)' % bad, t))
+    if V2R:
+        bad += v2r_upper_extras(t, V2U[0], V2U[1], V2ST); w_ = V2ST['worst']; g_ = V2ST['tight']
+        log('v2r upper summary: masked-violated %d leaves (%d canonical receivers); v2-violated %d receivers (phantoms %d)%s; tightest v2 receiver %s; '
+            'DP %.1fs over %d receivers (%.2f ms each); DP / row mismatches %d' % (V2ST['nmask'], V2ST['nmaskc'], V2ST['nv'], V2ST.get('nph', 0),
+            ', worst excess %.9f at receiverV2 %d %s %s rho %s' % w_[:5] if w_ else '',
+            'excess %+.9f at receiverV2 %d %s %s rho %s (value %.12f)' % g_ if g_ else 'none listed', V2ST['dp'], V2ST['ndp'], 1000 * V2ST['dp'] / max(1, V2ST['ndp']), len(V2ST['mismatch'])))
+    log('UPPER-R2: %s at t = %.12f%s' % ('FEASIBLE' if bad == 0 else 'INFEASIBLE (%d)' % bad, t, ' (v2r)' if V2R else ''))
 def cmd_ctxR2():
     """sender rows of the listed words in the context 'all hats and fans big' (bits all 1): value breakdown"""
     Sj = json.load(open(OPT['sol'])); t = Sj['t']

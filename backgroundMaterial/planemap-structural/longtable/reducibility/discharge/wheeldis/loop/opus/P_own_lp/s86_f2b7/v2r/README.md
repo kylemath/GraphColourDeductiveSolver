@@ -57,3 +57,11 @@ rows added iteratively), `v2rshow v2rows=<file> v2show=<json>` (full decompositi
 | `v2r/V2ROW_vectors.json`, `V2ROW_vectors_rows.txt` | the 5 worked rows of V2ROW_SPEC.md (v2rshow output, md5 b4b3eed4) and their ids. |
 | `v2r/lx_queue.sh`, `rest_queue.sh`, `smoke_queue.sh`, `smoke2_queue.sh` | the validation step 3 and smoke queues (memory-gated, one at a time). |
 | `v2r/eng_md5_at_copy.txt` | md5s of eng_p1r at copy time. |
+
+## upperR2 under v2r (exact v2 upper check; spec `V2UPPER_SPEC.md`)
+
+`upperR2 ... v2r`: every family as the standard check except d = 7 / 8 receivers: jsepf mode 0 lists every label with masked load above
+d - 6 + t + 1e-9 - v2umargin (1e-7), canonical labels get the exact DP max over rho, plus DP / row, superset and 1-site checks; final line
+`UPPER-R2: FEASIBLE|INFEASIBLE (n) at t = ... (v2r)`.  Options v2umargin, v2uK (refusal cap 1e7), v2umfile, v2usym, v2ubrute
+(v2ubrutemax), v2unbr (default 1), v2bug=dpin:<key> (control).  Command `v2rupshow v2urows= v2ushow= sol=` (worked receivers).
+Runner `v2r/U86v.sh` (CMD=, RSSMAX=, MEMMIN=), queues `v2r/upper_queue1-4.sh`, results in `v2r/upper/`, logs `v2r/logs/upper_*.log`.

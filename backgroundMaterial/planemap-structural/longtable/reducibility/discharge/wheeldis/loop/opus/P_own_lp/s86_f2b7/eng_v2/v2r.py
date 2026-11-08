@@ -31,6 +31,9 @@ V2R = 'v2r' in FLAGS
 V2BUG = OPT.get('v2bug', '')   # CONTROL ONLY: 'p1p2' = the row builder reads every 7's two privates swapped (base terms and IN); 'h6' = every 6's h key
 # with its two outer links (w_{j+2}, w_{j-2}) swapped; a rebuild must FAIL
 V2TOL = float(OPT.get('v2tol', '1e-9'))
+_V2BUGK = None
+if V2BUG.startswith('dpin:'):   # CONTROL ONLY (upperR2 v2r): the DP ignores key <name>'s IN term (the row builder keeps it)
+    assert V2BUG[5:] in GKNAMES, ('v2bug=dpin: unknown key', V2BUG[5:]); _V2BUGK = GKNAMES.index(V2BUG[5:])
 V2STAT = collections.Counter()
 _V2XON = 'xon' in FLAGS
 _V2_NEG = -1.0e18
@@ -158,7 +161,9 @@ def v2r_dp(st, colval, xk):
         if st['keymode'] == 'exact':
             kk, mm = st['ent'][i]
             if len(kk):
-                a_ = xk[kk]; nz = a_ != 0
+                a_ = xk[kk]
+                if _V2BUGK is not None: a_ = np.where(kk == _V2BUGK, 0.0, a_)   # CONTROL v2bug=dpin:<key>: that key's IN dropped in the DP only
+                nz = a_ != 0
                 if nz.any():
                     m = mm[nz]
                     L = (((_V2_QX[None, :] & m[:, 0:1]) != 0) & ((_V2_QY[None, :] & m[:, 1:2]) != 0)).astype(np.float64)
@@ -196,6 +201,142 @@ def v2r_colval_dict(D):
     return lambda k_: D.get(k_, 0.0)
 def v2r_xk_dict(D):
     return np.array([float(D.get(('ks', nm_), 0.0)) for nm_ in GKNAMES])
+
+# ---------------- upperR2 under v2r (exact v2 feasibility of the d = 7 / 8 receivers at a solution point) ----------------
+# FEASIBLE on d = 7 / 8 iff for every receiver (d, link, apex) with a realisation, max over rho of value(rho; x) <= d - 6 + t + eps.
+# Superset: value(rho; x) <= masked value (every envelope entry M / Q / lQ is a max over a key set containing the copy's key, and the masked
+# key coefficient is >= IN(K; rho) - OUT(K) with amounts >= 0), so every v2-violated receiver has masked load > d - 6 + t + eps.  The masked
+# exhaustive enumeration (jsepf mode 0, the standard upperR2 d = 7 / 8 run) lists EVERY leaf above d - 6 + t + eps - v2umargin (no top-K:
+# v2uK, default 1e7, is a refusal cap, never a selection); each listed receiver (canonical label) gets the DP.  v2umargin (default 1e-7)
+# keeps the superset robust to float reordering between the jsepf sum and the DP sum.
+def v2r_upper_point(Sj, y, xd):
+    """(colval, xk) at a solution json: every column type a d = 7 / 8 realisation row can hold; an unknown type raises"""
+    TAB = {'h': {tuple(k): v for k, v in Sj.get('h', [])}, 'g': {tuple(k): v for k, v in Sj.get('g', [])}, 'q': {tuple(k): v for k, v in Sj.get('q', [])},
+           'lq': {tuple(k): v for k, v in Sj.get('lq', [])}, 'z': {tuple(k): v for k, v in Sj.get('z', [])}, 'zr': {tuple(k): v for k, v in Sj.get('zr', [])},
+           'r': {tuple(k): v for k, v in Sj.get('r', [])}, 'rr': {tuple(k): v for k, v in Sj.get('rr', [])}, 'f': {tuple(k): v for k, v in Sj.get('f', [])},
+           'fb': {tuple(k): v for k, v in Sj.get('fb', [])}, 'D': {eval(k): v for k, v in Sj.get('D', [])}, 'x': dict(xd),
+           'ks': {('ks', str(k)): float(v) for k, v in Sj.get('ks', [])}}
+    def colval(k_):
+        if k_[0] == 'y': return float(y[RIX[k_[1]]])
+        if k_[0] == 'ks': return TAB['ks'].get(k_, 0.0)
+        return float(TAB[k_[0]].get(k_[1], 0.0))   # KeyError on a column type the solution format does not carry
+    xk = np.array([TAB['ks'].get(('ks', nm_), 0.0) for nm_ in GKNAMES])
+    return colval, xk
+def _v2r_brute_val(st, colval, xk):
+    """an evaluator independent of the DP: value(R) = fixed + copies + sum_K x_K (IN - OUT)(R) with IN / OUT from gk_slots on the exact
+    picture of R (v2r_keycounts, the row builder's reading)"""
+    d, w, s = st['d'], st['w'], st['s']; fx = v2r_eval(st['fixed'], colval)
+    cp = [{p_: sum(c_ * colval(k_) for k_, c_ in terms) for p_, terms in st['copies'][j].items()} for j in range(d)]
+    def f(R):
+        pa, ge = v2r_keycounts(d, w, s, R)
+        return fx + sum(cp[j][R[j]] for j in range(d)) + float(np.dot(xk, ge - pa))
+    return f
+def v2r_upper_d(d, W, t, colval, xk, ST):
+    """one degree d in (7, 8): masked exhaustive list -> DP per canonical receiver; returns the number of failures added to upperR2's bad"""
+    import itertools as _it
+    thr = d - 6 + t + EPS; marg = float(OPT.get('v2umargin', '1e-7')); KU = int(float(OPT.get('v2uK', '1e7')))
+    res, dt, ni = run_sep(d, W, thr - marg, KU, 0)
+    V = [r_ for r_ in res if r_[0] == 'V']
+    if len(V) >= KU: log('d=%d: v2r: masked list hit the refusal cap v2uK = %d: cannot certify (raise v2uK)' % (d, KU)); ST['capped'] += 1; return 1
+    nmask = sum(1 for r_ in V if float(r_[1]) > thr)
+    can = collections.OrderedDict()
+    for r_ in V:
+        lk, sv = _canon_row(d, r_[2], r_[3]); ld = float(r_[1])
+        e = can.get((lk, sv))
+        if e is None: can[(lk, sv)] = [ld, 1, r_[2], r_[3]]
+        else: e[1] += 1; e[0] = max(e[0], ld)
+    nmc = sum(1 for e in can.values() if e[0] > thr)
+    t0 = time.time(); nv = 0; nemp = 0; nmis = 0; nsup = 0; nph = 0; worst = None; gap = []; out = []
+    for (lk, sv), (ld, nl, lk0, sv0) in can.items():
+        st = v2r_struct(d, lk, sv)
+        if st is None: nemp += 1; ST['rows'].append((d, ld, None, lk, sv, None)); continue
+        r = v2r_dp(st, colval, xk)
+        if r is None: nemp += 1; ST['rows'].append((d, ld, None, lk, sv, None)); continue
+        dpv, rho = r
+        cf = _v2r_assemble(d, st['w'], st['s'], st['fixed'], rho, 'exact')
+        val = v2r_eval(cf, colval); dval = v2r_eval(st['fixed'], colval) + dpv
+        if abs(val - dval) > 1e-9 * max(1.0, abs(val)):   # the DP and the row builder read the slots independently; a disagreement fails the check
+            nmis += 1; ST['mismatch'].append((d, lk, sv, v2r_rho_str(rho), dval, val))
+            if nmis <= 5: log('  d=%d v2r: DP max %.12f != row value %.12f at %s/%s rho %s: CHECK FAILS' % (d, dval, val, lk, sv, v2r_rho_str(rho)))
+        val = max(val, dval); rs = v2r_rho_str(rho); ex = val - (d - 6) - t
+        gap.append(ld - val)
+        if val > ld + max(marg, 1e-9):   # superset broken: a v2 value above the masked load
+            nsup += 1
+            if nsup <= 5: log('  d=%d v2r: SUPERSET BROKEN: v2 max %.12f > masked load %.12f at %s/%s rho %s' % (d, val, ld, lk, sv, rs))
+        ST['rows'].append((d, ld, val, lk, sv, rs))
+        if ST['tight'] is None or ex > ST['tight'][0]: ST['tight'] = (ex, d, lk, sv, rs, val)
+        if ld > thr and not val > thr: nph += 1
+        if val > thr:
+            nv += 1; out.append((d, val, ex, lk, sv, rs))
+            if worst is None or ex > worst[0]: worst = (ex, lk, sv, rs, val)
+    tdp = time.time() - t0; ST['dp'] += tdp; ST['ndp'] += len(can)
+    g_ = np.array(gap) if gap else np.zeros(1)
+    log('d=%d: v2r: masked exhaustive (%.1fs): %d leaves above d - 6 + t + eps - %g, %d of them masked-violated (%d / %d canonical receivers); '
+        'v2-violated %d (DP max > d - 6 + t + eps)%s; empty domain %d; DP %.1fs (%d calls, %.2f ms each); masked - v2 over the list: min %.3g, median %.3g, max %.6g; phantoms (masked-violated, v2-satisfied) %d; '
+        'DP / row mismatches %d; superset breaks %d' % (d, dt, len(V), marg, nmask, nmc, len(can), nv,
+        ', worst excess %.9f at receiverV2 %d %s %s rho %s (value %.12f)' % (worst[0], d, worst[1], worst[2], worst[3], worst[4]) if worst else '',
+        nemp, tdp, len(can), 1000 * tdp / max(1, len(can)), float(g_.min()), float(np.median(g_)), float(g_.max()), nph, nmis, nsup))
+    ST['nmask'] += nmask; ST['nmaskc'] += nmc; ST['nv'] += nv; ST['viol'] += out; ST['nph'] = ST.get('nph', 0) + nph
+    if worst and (ST['worst'] is None or worst[0] > ST['worst'][0]): ST['worst'] = (worst[0], d) + worst[1:]
+    if 'vfile' in OPT:   # as upperR2's vfile (d load excess link sv) + the argmax rho
+        with open(OPT['vfile'], 'a') as vf:
+            for o_ in out: vf.write('%d %.9f %.9f %s %s %s\n' % o_)
+    return nv + nmis + nsup
+def v2r_upper_extras(t, colval, xk, ST):
+    """optional checks after the d = 7 / 8 lists: v2umfile= (every listed receiver: d masked v2max link apex rho), v2usym=N (DP on all 2d
+    images of N receivers), v2ubrute=N (exhaustive max over the domain product of N receivers, v2-violated first, product <= v2ubrutemax),
+    v2unbr=1 (every 1-site change of each listed receiver's argmax, by the independent evaluator).  Returns failures."""
+    import itertools as _it
+    bad = 0
+    if 'v2umfile' in OPT:
+        with open(OPT['v2umfile'], 'w') as f_:
+            for (d, ld, val, lk, sv, rs) in ST['rows']: f_.write('%d %.12f %s %s %s %s\n' % (d, ld, 'none' if val is None else '%.12f' % val, lk, sv, rs or '-'))
+        log('v2r: %d listed receivers -> %s' % (len(ST['rows']), OPT['v2umfile']))
+    rows = [r_ for r_ in ST['rows'] if r_[2] is not None]
+    NS = int(OPT.get('v2usym', '0'))
+    if NS:
+        t_ = time.time(); n = 0; nb = 0; mx = 0.0
+        for (d, ld, val, lk, sv, rs) in sorted(rows, key=lambda r_: -r_[1])[:NS]:
+            for r in range(d):
+                for refl in (False, True):
+                    W_ = [None] * d; S_ = [None] * d
+                    for i in range(d):
+                        j = (i + r) % d if not refl else (r - i) % d; W_[j] = lk[i]
+                        j = (i + r) % d if not refl else (r - i - 1) % d; S_[j] = sv[i]
+                    st = v2r_struct(d, ''.join(W_), ''.join(S_)); dp_ = v2r_dp(st, colval, xk)
+                    v_ = v2r_eval(st['fixed'], colval) + dp_[0]; n += 1; mx = max(mx, abs(v_ - val))
+                    if abs(v_ - val) > 1e-9: nb += 1
+        log('v2r sym check: %d receivers x 2d images = %d DPs: max |image - canonical| %.3g, %d above 1e-9 (%.0fs)' % (min(NS, len(rows)), n, mx, nb, time.time() - t_)); bad += nb
+    NB = int(OPT.get('v2ubrute', '0'))
+    if NB:
+        PM = int(float(OPT.get('v2ubrutemax', '50000'))); t_ = time.time(); n = 0; nb = 0; skip = 0; tot = 0
+        cand = sorted(rows, key=lambda r_: -(r_[2] - (r_[0] - 6) - t))
+        for (d, ld, val, lk, sv, rs) in cand:
+            if n >= NB: break
+            st = v2r_struct(d, lk, sv); prod = 1
+            for D in st['dom']: prod *= len(D)
+            if prod > PM: skip += 1; continue
+            f = _v2r_brute_val(st, colval, xk); best = None; bR = None
+            for R in _it.product(*[sorted(D) for D in st['dom']]):
+                v_ = f(list(R))
+                if best is None or v_ > best + 1e-12: best = v_; bR = R
+            n += 1; tot += prod; ok = abs(best - val) <= 1e-9 * max(1.0, abs(val))
+            nb += not ok
+            log('  v2r brute %d %s %s: %d realisations, brute max %.12f at %s, DP max %.12f at %s, excess %+.9f  %s' % (d, lk, sv, prod, best, v2r_rho_str(bR), val, rs, val - (d - 6) - t, 'ok' if ok else 'MISMATCH'))
+        log('v2r brute force: %d receivers (%d skipped: product > %d), %d realisations, %d mismatches (%.0fs)' % (n, skip, PM, tot, nb, time.time() - t_)); bad += nb
+    if OPT.get('v2unbr', '1') == '1':   # default on: cheap (~20 ms per listed receiver)
+        t_ = time.time(); n = 0; nb = 0; ne = 0
+        for (d, ld, val, lk, sv, rs) in rows:
+            st = v2r_struct(d, lk, sv); f = _v2r_brute_val(st, colval, xk); R0 = v2r_rho_parse(rs, d); n += 1
+            for j in range(d):
+                for p_ in sorted(st['dom'][j]):
+                    if p_ == R0[j]: continue
+                    R = list(R0); R[j] = p_; ne += 1
+                    if f(R) > val + 1e-9 * max(1.0, abs(val)):
+                        nb += 1
+                        if nb <= 5: log('  v2r nbr: %d %s %s: changing site %d to %d%d gives %.12f > DP max %.12f: CHECK FAILS' % (d, lk, sv, j, p_[0], p_[1], f(R), val))
+        log('v2r 1-site neighbourhood check: %d receivers, %d neighbours evaluated, %d above the DP max (%.0fs)' % (n, ne, nb, time.time() - t_)); bad += nb
+    return bad
 
 # ---------------- commands ----------------
 def _v2r_cert_rows(C, mode, xon):
@@ -439,3 +580,41 @@ def cmd_v2rshow():
             d, lk, sv, rho, len(fixed), sum(len(g['terms']) for g in grp), len(keys), sum(1 for k_ in keys if k_['coef']), len(cf), e['row_md5']))
     json.dump(out, open(OPT['v2show'], 'w'), indent=1)
     log('V2R-SHOW: %d rows -> %s' % (len(out), OPT['v2show']))
+def cmd_v2rupshow():
+    """worked receivers for V2UPPER_SPEC.md: for every line 'd link apex' of v2urows= at the point sol=: domains, every site's base value per
+    pair, the keys with a nonzero amount that can fire (OUT, IN at the argmax), the DP max and argmax rho, the realisation row of the argmax
+    with every column's value, value - (d - 6) - t; and the exhaustive max with the number of maximisers when the product <= v2ubrutemax"""
+    import itertools as _it
+    load_patterns(); l3q_load(); kt_load()
+    Sj = json.load(open(OPT['sol'])); t = Sj['t']
+    y = np.zeros(len(ROOTS))
+    for k, v in Sj['y'].items():
+        u, rest = k.split('|'); r_ = root(list((int(u),) + tuple(int(c) for c in rest)), 0); y[RIX[r_]] = v
+    xd = {int(k): v for k, v in Sj.get('x', {}).items()}
+    colval, xk = v2r_upper_point(Sj, y, xd); PM = int(float(OPT.get('v2ubrutemax', '50000'))); out = []
+    for line in open(OPT['v2urows']):
+        if not line.strip() or line.lstrip().startswith('#'): continue
+        d, lk, sv = line.split()[:3]; d = int(d)
+        st = v2r_struct(d, lk, sv); dpv, R = v2r_dp(st, colval, xk); rho = v2r_rho_str(R)
+        cf = v2r_row(d, lk, sv, rho); val = v2r_eval(cf, colval); fx = v2r_eval(st['fixed'], colval)
+        assert abs(val - (fx + dpv)) <= 1e-9 * max(1.0, abs(val)), ('v2rupshow: DP != row', d, lk, sv, rho)
+        pay, get = v2r_keycounts(d, st['w'], st['s'], R)
+        sites = []
+        for j in range(d):
+            sites.append({'j': j, 'w_j': st['w'][j], 'domain_size': len(st['dom'][j]), 'argmax_pair': '%d%d' % R[j],
+                          'base_values': {'%d%d' % p_: round(sum(c_ * colval(k_) for k_, c_ in terms), 12) for p_, terms in sorted(st['copies'][j].items())} if st['w'][j] in (6, 7) else 'none (5: one pair; 8 / 9+: no base terms)'})
+        keys = [{'key': nm, 'amount': float(xk[k]), 'OUT': int(pay[k]), 'IN_at_argmax': int(get[k])} for k, nm in enumerate(GKNAMES) if xk[k] != 0 and (pay[k] or get[k] or any((kk == k).any() for kk, _ in st['ent']))]
+        e = {'id': [d, lk, sv], 't': t, 'cap': d - 6 + t, 'dp_max': val, 'excess': val - (d - 6) - t, 'argmax_rho': rho, 'fixed_value': fx, 'sites': sites, 'keys_with_amount_that_can_fire': keys,
+             'row_at_argmax': [[_v2r_jcol(k_), int(v_), colval(k_)] for k_, v_ in sorted(cf.items(), key=str)]}
+        prod = 1
+        for D in st['dom']: prod *= len(D)
+        e['realisations'] = prod
+        if prod <= PM:
+            f = _v2r_brute_val(st, colval, xk); vals = [(f(list(Rb)), Rb) for Rb in _it.product(*[sorted(D) for D in st['dom']])]
+            bm = max(v_ for v_, _ in vals); e['brute_max'] = bm; e['brute_maximisers'] = sorted(v2r_rho_str(Rb) for v_, Rb in vals if v_ >= bm - 1e-12)[:20]
+            e['brute_n_maximisers'] = sum(1 for v_, _ in vals if v_ >= bm - 1e-12); e['second_best'] = max([v_ for v_, _ in vals if v_ < bm - 1e-12] or [None])
+        out.append(e)
+        log('V2R-UPSHOW %d %s %s: DP max %.12f (cap %.12f, excess %+.12f) at rho %s; %d realisations%s' % (d, lk, sv, val, d - 6 + t, val - (d - 6) - t, rho, prod,
+            '; brute max %.12f, %d maximisers' % (e['brute_max'], e['brute_n_maximisers']) if 'brute_max' in e else ''))
+    json.dump(out, open(OPT['v2ushow'], 'w'), indent=1)
+    log('V2R-UPSHOW: %d receivers -> %s' % (len(out), OPT['v2ushow']))
