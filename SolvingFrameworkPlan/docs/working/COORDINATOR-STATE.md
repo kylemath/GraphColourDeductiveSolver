@@ -88,6 +88,11 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 8 Nov 12:30Z: UPPER **t* <= 0.023076375801 [E2]** (sol_repS1MW_14 4938b974, Mac Opus repair ladder; Opus upperR2 + Studio W17, ST-56), on K3l and K3l5 + 240 keys; tneg fails. Mac now self-checks on every >=2% lane gain. Evidence round6/W17-studio-kstar/from_studio/sol_repS1MW_14/.
+- 8 Nov 11:38Z: UPPER **t* <= 0.023563634629 [E2]** (sol_repS1MW_11 cc688e1e, Mac Opus repair ladder; Opus upperR2 + Studio W17, ST-55), on K3l and K3l5 + 240 keys; tneg fails. Evidence round6/W17-studio-kstar/from_studio/sol_repS1MW_11/.
+- 8 Nov 11:08Z: UPPER **t* <= 0.024443678243 [E2]** (sol_k86MS1_in07 d5e8c8bc, Mac Opus upper lane; Opus upperR2 + Studio W17, ST-54), on K3l and K3l5 + 240 keys; tneg fails. Evidence round6/W17-studio-kstar/from_studio/sol_k86MS1_in07/.
+- 8 Nov 10:16Z: UPPER **t* <= 0.025171803977 [E2]** (sol_repS1MW_07 e4e93b2c, Opus repair ladder on Mac; Opus upperR2 + Studio W17, ST-53), on K3l and K3l5 + 240 keys; tneg fails. Evidence round6/W17-studio-kstar/from_studio/sol_repS1MW_07/.
+- 8 Nov 09:44Z: UPPER **t* <= 0.026099192 [E2]** (sol_repS1MW_04_tight 5180d468, Opus repair ladder on Mac; Opus upperR2 + Studio W17, ST-52), on K3l (also feasible on K3l5 + 240 keys; all K3l5 kills in Lean: K5H01 + 13 K5b/K5c jobs, exit 0, no sorry). Tneg fails. Evidence round6/W17-studio-kstar/from_studio/sol_repS1MW_04_tight/.
 - 8 Nov 08:42Z: UPPER **t* <= 0.027086414643 [E2]** (sol_repS1MW_02 d13dc92f, Opus repair ladder on Mac; Opus upperR2 + Studio W17 harness, ST-50), K3l family; tneg fails; on K3k fails by the 8 kill-B rows. Evidence round6/W17-studio-kstar/from_studio/sol_repS1MW_02/.
 - 8 Nov 08:05Z: CORRECTION: Studio's Mac session is still running (ignore 08:01Z 'stopped'). Ring-15 screen found D kill B1 for the binding 9-wheel class of the 0.028372 point [E2]. Mac W17 check of 0.027086 lane point queued.
 - 8 Nov 08:01Z: Studio's Claude session stopped ~07:55Z (owner usage limit). Unattended: Opus LP lanes, Lean queue (K5b then K5c kills), ST-49 ring 15-16 screen. Checks paused until a new session. Sound upper stays 0.028372061 [E2]; Mac-lane one-engine point 0.027086 [P] awaits check.
