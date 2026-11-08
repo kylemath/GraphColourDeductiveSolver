@@ -302,3 +302,14 @@ Results:
 - No line uses a non-image w letter condition: there are no N letters, and every LINK letter is an image. The 5/N branch
   of `pAdj` is stated but unused by this file.
 - Missing kc lines: the 13 e7 kills (out/eq_D7_dfast.out and lp_dfast.out record verdicts only).
+
+## k3/hc/ (HCK3k): the K3k C kill b8_u...56556_.....66., X = {I0-I3} (Studio main 32f59ac9, out/job_HCK3k/)
+- in/extraC_HCK3k.tsv (2551b66f) and studio/{CK3K.lean (3631dfe9),K3KV00.lean (52260559),K3KVAll.lean (13bb122c),module_split_HCK3k.tsv (7609c0ed)}:
+  byte copies of the shared K3/from_studio/HCK3k/ files. Window, r, m and X match s86_f2b7/w13/pat_K3g2_C.cfast (6f6dce95; pattern f8_...56556_.....66.),
+  the one kill K3k = K3j + pat_K3g2_C.cfast adds (s86_f2b7/args_A97_F_W13K3k.txt 301ff0f9).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/k3/hc/in/extraC_HCK3k.tsv s76_occ502/k3/hc/lean HK3K_` -> HK3K_00 + COccHK3K_00: 1 generated,
+  0 failed, 2 rotations validated, every link an induced cycle.
+- lean/HK3KOcc.lean: `scripts/gen_cocc_batch.py k3/hc/lean/HK3K_modules.txt HK3KOcc K3KVAll K3KV k3kEntries HK3K_ ...`; identical to HK3JOcc up to
+  names, ring 12 / 8 interior and the docstring.
+- check_literals_c.py on CK3K.lean: 1 entry, 0 mismatches; a copy with one intAdj entry changed gives 1 mismatch, exit 1. NOT compiled here.
+- Compile order: HK3K_00, COccHK3K_00, then HK3KOcc (after K3KVAll); shared glue_hc/glue_drive.sh does that.
