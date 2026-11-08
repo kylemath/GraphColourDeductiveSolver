@@ -27,3 +27,16 @@ hshim: run 1: 311850 x 89617 (nnz 8078620; 289336 <=, 22514 >=, 0 =) highs-ipm -
 <string>:166: RuntimeWarning: divide by zero encountered in matmul
 <string>:166: RuntimeWarning: overflow encountered in matmul
 <string>:166: RuntimeWarning: invalid value encountered in matmul
+  v2inner it 0.0: t1 = -0.027777777778; DP on 127134 known d = 7 / 8 receivers: 94274 realisation rows added (355s)
+/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_v2/hshim.py:317: RuntimeWarning: divide by zero encountered in matmul
+  info.objective_function_value = float(c @ x); info.valid = True
+/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_v2/hshim.py:317: RuntimeWarning: overflow encountered in matmul
+  info.objective_function_value = float(c @ x); info.valid = True
+/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_v2/hshim.py:317: RuntimeWarning: invalid value encountered in matmul
+  info.objective_function_value = float(c @ x); info.valid = True
+hshim: run 2: 406124 x 89618 (nnz 11001157; 383610 <=, 22514 >=, 0 =) highs-ipm -> Optimal, obj -0.0277777777778, 634.5s
+  v2inner it 0.0: phase 1 re-solve t1 = -0.027777777778, status Optimal, 635s
+<string>:166: RuntimeWarning: divide by zero encountered in matmul
+<string>:166: RuntimeWarning: overflow encountered in matmul
+<string>:166: RuntimeWarning: invalid value encountered in matmul
+  v2inner it 0.1: t1 = -0.027777777778; DP on 127134 known d = 7 / 8 receivers: 90287 realisation rows added (413s)
