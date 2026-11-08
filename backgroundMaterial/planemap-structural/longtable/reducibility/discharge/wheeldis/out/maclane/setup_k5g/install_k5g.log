@@ -1,0 +1,20 @@
+add-on manifest: 22 files, 0 bad
+install_k5g: 22 files written (0 of them replacing an earlier install), 0 already identical; root /tmp/maclane-k86 -> /Users/kylemathewson/maclane/maclane-k86 in 10 files (11 occurrences)
+  family e data add-on: 4 files, 0 bad
+  OK x=e prev=d status=E2 l=args_A97_F_W13K3l5e.txt gb=args_A97_F_W13K3gB5e.txt pat=w13/pat_K5e_C.cfast expect=fam/EXPECT_K3l5e_k240.txt
+     note: lead K-5e ST-53 binder screen kills_K5e_1035.tsv 070e1f63 tag B2 id bda28f6b3d6d2cc652ef, cfast:C-REDUCIBLE; kills 3 rows (ST-53 binding d9 class 556575666); [E2] Studio K3CHK11 main fecf5c999; Lean HCK5e_B2 building
+  install_fam: family e: 1 files written, 3 already identical; FAMILIES.txt line added (status E2).  Next: bash smoke_fam.sh e
+  family f data add-on: 4 files, 0 bad
+  OK x=f prev=e status=E2 l=args_A97_F_W13K3l5f.txt gb=args_A97_F_W13K3gB5f.txt pat=w13/pat_K5f_C.cfast expect=fam/EXPECT_K3l5f_k240.txt
+     note: lead K-5f ST-42 h05 kills_K5f_1525.tsv a02e207f tag H05 id 42870d33ba3ca650ac66; kills GL5 BINDING rank-15 row 7/7676655/7657666; [E2] Studio K3CHK main 346c68988; Lean HCK5H05 building
+  install_fam: family f: 4 files written, 0 already identical; FAMILIES.txt line added (status E2).  Next: bash smoke_fam.sh f
+  family g data add-on: 4 files, 0 bad
+  OK x=g prev=f status=E2 l=args_A97_F_W13K3l5g.txt gb=args_A97_F_W13K3gB5g.txt pat=w13/pat_K5g_C.cfast expect=fam/EXPECT_K3l5g_k240.txt
+     note: lead K-5g ST-61 binder screen kills_K5g_1630.tsv 48fa0aae tag B3 id 2006f55ccda185829501, cfast:C-REDUCIBLE; kills 6 rows (ST-61 binding d9 class 555556667); [E2] Studio K3CHK12 main b77d2725f; Lean HCK5g_B3 building
+  install_fam: family g: 4 files written, 0 already identical; FAMILIES.txt line added (status E2).  Next: bash smoke_fam.sh g
+install_k5g: families in fam/FAMILIES.txt: e f g
+install_k5g: done.  Next:
+  cd /Users/kylemathewson/maclane/maclane-k86 && bash smoke_k5g.sh               # about 15 min; must end with SMOKE-K5G: PASS (SMOKE_FAMS=g: only family g, about 7 min)
+  DRY=1 bash launch_upper_fam.sh g         # the plan: lane, in-point, warm set, what stops and starts
+  bash launch_upper_fam.sh g               # stops the running upper lane (results kept), starts the next k86MS<n> on K3gB5g / K3l5g
+  bash status_fam.sh; bash recheck_fam.sh g <point>; bash stop_fam.sh

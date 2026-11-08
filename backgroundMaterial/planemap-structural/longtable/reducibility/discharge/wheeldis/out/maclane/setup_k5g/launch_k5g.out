@@ -1,0 +1,23 @@
+launch_upper_fam: family g: OK x=g prev=f status=E2 l=args_A97_F_W13K3l5g.txt gb=args_A97_F_W13K3gB5g.txt pat=w13/pat_K5g_C.cfast expect=/Users/kylemathewson/maclane/maclane-k86/fam/EXPECT_K3l5g_k240.txt
+launch_upper_fam: current lane k86MS2 (family e, running) -> new lane k86MS3 on family g
+launch_upper_fam: k86MS2's in-point sol_k86MS1_in12: checking it on K3l5g + 240 keys first (bash recheck_fam.sh, 2 threads; k86MS2 keeps running)
+recheck_fam: k86MS1_in12 on args_A97_F_W13K3l5g.txt + cg_keys_r13w16_16fik.txt, engine eng_p1r, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_k86MS1_in12_K3l5g.log
+recheck_fam: k86MS1_in12: UPPER-R2: FEASIBLE at t = 0.022144345377
+recheck_fam: outbox/upper: filed sol_k86MS1_in12__K3l5g (t = 0.022144345377)
+launch_upper_fam: stopping k86MS2 (bash stop_fam.sh k86MS2); last iteration: iter 8 t=0.015831028660 rows 374967 cols 97648 added 205  lp 851.9s sep 187.6s total 10444s  rounds 
+upper lane k86MS2 (family e):
+  stopped 1: watch86_k5e.sh k86MS2( |$)
+  stopped 2: tightwatch_k5e.sh k86MS2( |$)
+  stopped 1: repladder_k5e.py k86MS2 
+  stopped 1: runK86p.sh [0-9]+ [0-9]+ k86MS2 
+  stopped 1: outbox86_k5e.py k86MS2( |$)
+  last outbox pass: k86MS2: 0 point(s) filed (K3l5e / K3gB5e)
+processes of k86MS2 still running: 0
+launch_upper_fam: 3 newer outbox/upper point(s) with t below sol_k86MS1_in12's (newest first, at most 3)
+launch_upper_fam:   sol_repS2MW_06_tight__K3l5e (t 0.020810162000, K3l5e): rechecking on K3l5g
+recheck_fam: repS2MW_06_tight on args_A97_F_W13K3l5g.txt + cg_keys_r13w16_16fik.txt, engine eng_p1r, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_repS2MW_06_tight_K3l5g.log
+recheck_fam: repS2MW_06_tight: UPPER-R2: FEASIBLE at t = 0.020810162000
+recheck_fam: outbox/upper: filed sol_repS2MW_06_tight__K3l5g (t = 0.020810162000)
+launch_upper_fam: in-point: sol_repS2MW_06_tight__K3l5e (/Users/kylemathewson/maclane/maclane-k86/outbox/upper/sol_repS2MW_06_tight__K3l5e.json, md5 b9f6b20b)
+launch_msfam: k86MS3: LP args_A97_F_W13K3gB5g.txt (6251f38a) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5g.txt (be643743); in-point sol_repS2MW_06_tight__K3l5e.json (md5 b9f6b20b, t 0.020810162000; F_repS2MW_06_tight_K3l5g); maxit 200, threads 2, REPL_PAR 2, tightwatch 1; 44 warm files: k86MS2's warm list (runK_k86MS2/warmlist.txt) + k86MS2's rows (eng_p1r/rows_k86MS2.txt)
+launched k86MS3 (fam g): K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/runK_k86MS3/K.log, outbox /Users/kylemathewson/maclane/maclane-k86/outbox/upper/POINTS.txt (family column K3l5g / K3gB5g), status: bash /Users/kylemathewson/maclane/maclane-k86/status_fam.sh, stop: bash /Users/kylemathewson/maclane/maclane-k86/stop_fam.sh

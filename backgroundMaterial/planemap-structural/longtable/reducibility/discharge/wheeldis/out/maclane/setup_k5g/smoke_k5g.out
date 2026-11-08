@@ -1,0 +1,13 @@
+maclane k5g add-on smoke 2026-11-08T16:55:05Z on Darwin arm64
+1. installed
+   OK   k5e add-on, k5g scripts (they parse)
+2. families in fam/FAMILIES.txt
+   OK   e f g: every kill file and args file there with the listed md5s, each args = the previous one + one kill line
+        suf=e prev=d pat=w13/pat_K5e_C.cfast pat_md5=9d00aa01 l=args_A97_F_W13K3l5e.txt l_md5=2b31d32d gb=args_A97_F_W13K3gB5e.txt gb_md5=8849c09f expect=fam/EXPECT_K3l5e_k240.txt expect_md5=6a187e3e status=E2
+        suf=f prev=e pat=w13/pat_K5f_C.cfast pat_md5=011a82a2 l=args_A97_F_W13K3l5f.txt l_md5=ba8677a5 gb=args_A97_F_W13K3gB5f.txt gb_md5=8c5d5005 expect=fam/EXPECT_K3l5f_k240.txt expect_md5=0e6bc0f5 status=E2
+        suf=g prev=f pat=w13/pat_K5g_C.cfast pat_md5=7d448592 l=args_A97_F_W13K3l5g.txt l_md5=be643743 gb=args_A97_F_W13K3gB5g.txt gb_md5=6251f38a expect=fam/EXPECT_K3l5g_k240.txt expect_md5=279a0d6f status=E2
+3. the newest upper lane in run.log: k86MS2 e 2 cand/sol_k86MS1_in12.json args_A97_F_W13K3gB5e.txt
+4.g smoke_fam.sh g
+   OK   SMOKE-FAM g: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_fam_g.log)
+
+SMOKE-K5G: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_k5g.log)

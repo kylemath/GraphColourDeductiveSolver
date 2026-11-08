@@ -1,0 +1,2 @@
+# K3l5g family (Studio, 8 Nov): args_A97F_W13K3l5g_x_studio.txt (1bd9a34b) = args_A97F_W13K3l5e_x_studio.txt (d2c90952) + cpat=/tmp/swarm-W17/pat/K3/pat_K3l5g_C.cfast
+pat_K3l5g_C.cfast: ST-42 h05 (f7_7676.55_..5..66, X={I0-I4}) + K5g B3 (f9_55555..67_.......5., X={I0-I1}); built by us from our second-check kc lines. Expected counts D 18142 / C 706 / RPAT 158 (fam/EXPECT_K3l5g_k240.txt, counts compared only).

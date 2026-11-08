@@ -1,0 +1,18 @@
+maclane k5g add-on smoke 2026-11-08T16:55:05Z on Darwin arm64
+1. installed
+   OK   k5e add-on, k5g scripts (they parse)
+2. families in fam/FAMILIES.txt
+   OK   e f g: every kill file and args file there with the listed md5s, each args = the previous one + one kill line
+        suf=e prev=d pat=w13/pat_K5e_C.cfast pat_md5=9d00aa01 l=args_A97_F_W13K3l5e.txt l_md5=2b31d32d gb=args_A97_F_W13K3gB5e.txt gb_md5=8849c09f expect=fam/EXPECT_K3l5e_k240.txt expect_md5=6a187e3e status=E2
+        suf=f prev=e pat=w13/pat_K5f_C.cfast pat_md5=011a82a2 l=args_A97_F_W13K3l5f.txt l_md5=ba8677a5 gb=args_A97_F_W13K3gB5f.txt gb_md5=8c5d5005 expect=fam/EXPECT_K3l5f_k240.txt expect_md5=0e6bc0f5 status=E2
+        suf=g prev=f pat=w13/pat_K5g_C.cfast pat_md5=7d448592 l=args_A97_F_W13K3l5g.txt l_md5=be643743 gb=args_A97_F_W13K3gB5g.txt gb_md5=6251f38a expect=fam/EXPECT_K3l5g_k240.txt expect_md5=279a0d6f status=E2
+3. the newest upper lane in run.log: k86MS2 e 2 cand/sol_k86MS1_in12.json args_A97_F_W13K3gB5e.txt
+4.g smoke_fam.sh g
+   OK   SMOKE-FAM g: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_fam_g.log)
+        OK   OK x=g prev=f status=E2 l=args_A97_F_W13K3l5g.txt gb=args_A97_F_W13K3gB5g.txt pat=w13/pat_K5g_C.cfast expect=fam/EXPECT_K3l5g_k240.txt
+        OK   EXPECT section 1 re-derived (2s): counts: 313 files, distinct d9 3322, D 18142 / C 706 / RPAT 158 / RPATN 2034
+        OK   EXPECT section 2 re-derived (3s): counts: 312 files, distinct d9 3419, D 18232 / C 775 / RPAT 158 / RPATN 2034
+        OK   UPPER-R2: FEASIBLE at t = 0.025171803977, as EXPECT section 3; its first lines = section 1 (157s)
+        OK   launch_msfam: k86MS3: LP args_A97_F_W13K3gB5g.txt (6251f38a) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5g.txt (be643743); in-point sol_S1MW07k240e.json (md5 e4e93b2c, t 0.02517180397
+
+SMOKE-K5G: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_k5g.log)
