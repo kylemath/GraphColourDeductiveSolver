@@ -3,7 +3,7 @@
 # + f2b7 rules c67fa1d1 [E2] + rpatN 8b90a842 [E2] + cg_keys_r13.txt (151 keys) + c6le.  Replaces k86KS.  In-point $1 must pass upperR2
 # under exactly this family (logs/upper_K_<point>.log).  warm = k86B warm list + its rows at it 13.  2 threads.
 B=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp; Z=$B/s85_edge56; N=$B/s86_f2b7
-export STACK=s77 ARGS=$N/args_A97_F_W13K3g.txt XF="c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt" KEYS=$Z/keys/cg_keys_r13w16.txt FEAS=$N/cand/$1.json
+export STACK=s77 ARGS=${ARGS3:-$N/args_A97_F_W13K3g.txt} XF="c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt" KEYS=$Z/keys/cg_keys_r13w16.txt FEAS=$N/cand/$1.json
 P1=${1#sol_}; grep -q "^UPPER-R2: FEASIBLE" $N/logs/upper_F_$P1.log || { echo "in-point $1 has no FEASIBLE recheck under the proof-stack family" >&2; exit 2; }
 export WARM=$(cat $N/runK_k86B/warmlist.txt),$N/warm/rows_k86B_snap_it13.txt,$N/warm/rows_k86CS_snap_it1.txt,$N/warm/rows_k86FS_snap_it3.txt,$N/warm/rows_k86GS_snap_it3.txt,$N/warm/rows_k86GS2_snap_it5.txt
 [ -s $N/warm/rows_k86GS3_snap_crash.txt ] && WARM=$WARM,$N/warm/rows_k86GS3_snap_crash.txt   # 8 Nov: GS3's own rows from before the container restart
