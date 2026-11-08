@@ -1,0 +1,3 @@
+K5b glue (Opus 591fda6e9 ext_handoff_nov3/k5b_glue/<job>/<glue_hc|glue_hd>/): copied byte-identically into each job root, MD5SUMS verified, check_literals_c 1/0 (L1 L2 U1 U2), check_literals 1/0 (L3).
+Each glue_drive.sh started at 05:4x from the job root (zsh glue_drive.sh <job root>) instead of being appended to the already running drive_k5b.sh;
+it waits for "<VAll> exit=0" (HDK5BL3All for L3), so the order is unchanged: HCK5H01 glue -> 5 K5b jobs (drive_k5b.sh) -> their glue.
