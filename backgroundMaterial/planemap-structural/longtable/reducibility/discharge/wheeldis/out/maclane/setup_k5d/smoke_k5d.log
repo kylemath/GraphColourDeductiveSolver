@@ -1,0 +1,13 @@
+maclane k5d add-on smoke 2026-11-08T08:42:32Z on Darwin arm64
+1. installed
+   OK   v2 add-on, k5d files, eng_v2 and eng_p1r separators
+2. families K3gB5d and K3l5d
+   OK   K3gB5d ec9d8dbb, K3l5d 399cfc4c (container md5s); every file they name is in the pack
+3. v2rtest on the GL5 cert (the v2 smoke's step 4, with cmp_v2b; about 2 min)
+   OK   identical to the container's log (91s; matmul RuntimeWarning lines dropped: reference 0, this run 3): V2R-TEST: PASS (0 failures)
+4. upper recheck on K3l5d + 240 keys (bash recheck_k5d.sh, eng_p1r; about 5 min)
+   OK   matches the container's log (229s; 0 of 40 reference lines differ after normalising (0 only within 2e-5 relative), 0 extra lines in this run): UPPER-R2: FEASIBLE at t = 0.027086414643; by kind {'D': 18142, 'C': 703, 'RPAT': 158, 'RPATN': 2034}
+5. start of k86GV1 on K3gB5d (launch_v2d.sh's command, stopped after its patterns are loaded)
+   OK   first 8 lines as the container's GV1 smoke, patterns line as expected (3s): patterns: 309 files read, 2  ... by kind {'D': 18232, 'C': 772, 'RPAT': 158, 'RPATN': 2284}
+
+SMOKE-K5D: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_k5d.log)

@@ -1,0 +1,6 @@
+add-on manifest: 19 files, 0 bad
+install_k5d: 19 files written (0 of them replacing an earlier install), 0 already identical; root /tmp/maclane-k86 -> /Users/kylemathewson/maclane/maclane-k86 in 7 files (73 occurrences)
+install_k5d: done.  Next:
+  cd /Users/kylemathewson/maclane/maclane-k86 && bash smoke_k5d.sh        # about 10 min; must end with SMOKE-K5D: PASS
+  bash stop_v2.sh; bash stop.sh lower; bash launch_v2d.sh      # k86GV1 on K3gB5d
+  bash recheck_k5d.sh repS1MW_02    # an upper point on K3l5d + 240 keys (eng_p1r)

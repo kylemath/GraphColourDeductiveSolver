@@ -1,0 +1,40 @@
+f2b7: q7m masks on sides with c or apex >= 7 = 31 & ~extra7 (python rows + jsepf JSEPF_F2B7=1)
+f2b: rules loaded from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/rules/A5final/rules_c67fa1d1_plus_A5_twins.json: {'d7_w6': 1739, 'd8_w6': 1256, 'd9_w6': 97, 'd7_w7_1': 1059, 'd7_w7_-1': 1059, 'd8_w7_1': 754, 'd8_w7_-1': 754}
+gkeys: 240 keys from /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/p1r/cg_keys_r13w16_16fik.txt (md5 3d996dbb): payer/payee pairs {'4->4': 38, '4->28': 10, '4->2': 13, '2->2': 27, '4->1': 19, '1->1': 19, '1->4': 29, '2->1': 18, '2->4': 19, '1->2': 9, '1->8': 8, '1->16': 9, '2->8': 2, '2->16': 2, '4->8': 3, '4->16': 4, '2->6': 5, '4->20': 2, '2->18': 1, '1->12': 1, '2->12': 1, '1->18': 1}
+gkeys: 89 payer-7 keys > 64: leaf binary /home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_p1r/bin/jsepf_gk_k192 (7802 limit 192)
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
+patterns: 310 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9360, 8: 5908, 9: 3320, 10: 1426, 11: 613, 12: 85, 13: 65, 14: 65, 15: 65, 16: 65, 17: 65}; by kind {'D': 18142, 'C': 703, 'RPAT': 158, 'RPATN': 2034}
+gkeys: mode-2 class fold: 9389 distinct payee-bound signatures over 159 tables
+bonus links: 132
+l3qV: 14 V >= 8 q > 0 (total 0.299014754), 7 V >= 8 Q > 0
+l3qV: V = 8 table 5000 masks (full)
+l3q: 21 q > 0 (total 0.617832309); Q taken as max(sol, max q over mask) for every mask
+sender rows violated: 0
+conservation (c6le: 6 ends <= t): 1424 canonical non-R6 links x 5^6 apex words; links with in - out > t + 1e-9: 0 (worst excess 0); links where some 6 ends below 0: 1413 (lowest in - out -1.38312)
+  [d=7] jsepf_nc: max positive deltas V6M 0 QM 0.00523324 QT 0 -> slack 0.0732654 (q7m slack 0)
+  [d=7] jsepf: q7m leaf hits 179228, clamped 0
+  [d=7] jsepf: edge leaf payer firings 2282125
+  [d=7] jsepf: gkin leaf exact payee firings 10460, window bounds corrected 11052
+  [d=7] jsepf_nc: positive corrections kept (not clamped): f2b 0, q7m 0
+  [d=7] jsepf: f2b leaf hits 3561773, clamped 0
+d=7: 0 violated (exhaustive, 70.9s)
+  [d=8] jsepf_nc: max positive deltas V6M 0 QM 0 QT 0 -> slack 0 (q7m slack 0)
+  [d=8] jsepf: q7m leaf hits 1109, clamped 0
+  [d=8] jsepf_nc: positive corrections kept (not clamped): f2b 0, q7m 0
+  [d=8] jsepf: f2b leaf hits 207905, clamped 0
+d=8: 0 violated (exhaustive, 20.3s)
+  [d=9] jsepf_nc: max positive deltas V6M 0 QM 0 QT 0 -> slack 0 (q7m slack 0)
+  [d=9] jsepf_nc: positive corrections kept (not clamped): f2b 0, q7m 0
+  [d=9] jsepf: f2b leaf hits 323, clamped 0
+d=9: 0 violated (exhaustive, 8.3s)
+d=10: 0 violated (exhaustive, 0.6s)
+d=11: 0 violated (exhaustive, 0.5s)
+d=12: 0 violated (exhaustive, 0.5s)
+d=13: 0 violated (exhaustive, 0.6s)
+d=14: 0 violated (exhaustive, 0.6s)
+d=15: 0 violated (exhaustive, 0.7s)
+d=16: 0 violated (exhaustive, 0.7s)
+d=17: 0 violated (exhaustive, 0.8s)
+Karp lambda 0.551316702 d0 13.312
+UPPER-R2: FEASIBLE at t = 0.027086414643
