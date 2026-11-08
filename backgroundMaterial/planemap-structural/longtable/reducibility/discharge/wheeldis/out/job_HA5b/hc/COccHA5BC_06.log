@@ -1,0 +1,73 @@
+COccHA5BC_06.lean:164:4: warning: Unused tactic linter: `(cases e; dsimp only at he; subst he;
+  exact ⟨G, ρOf ring, int, rot, O, rotOcc_of_occ h, rot_ok⟩)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+COccHA5BC_06.lean:165:4: warning: Unused tactic linter: `(cases e; subst he; exact ⟨G, ρOf ring, int, rot, O, rotOcc_of_occ h, rot_ok⟩)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+COccHA5BC_06.lean:164:4: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+COccHA5BC_06.lean:165:4: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'SimpleGraph.SphericalMap.HA5BC_06.local_facts_of_occ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ SimpleGraph.SphericalMap.HA5BC_06.rot_ok._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.HA5BC_06.occursW_of_occ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.HA5BC_06.dEntryOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.HA5BC_06.colorable_of_occ_entry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.HA5BC_06.colorable_of_mirror_occ_entry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.HA5BC_06.occursCXR_of_occ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ SimpleGraph.SphericalMap.HA5BC_06.rot_ok._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.HA5BC_06.occursCXF_of_occ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ SimpleGraph.SphericalMap.HA5BC_06.rot_ok._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.HA5BC_06.colorable_of_occ_centry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.Meet.check4_true._native.native_decide.ax_1_1,
+ DCheck.Meet.check5_true._native.native_decide.ax_1_1,
+ DCheck.Meet.size4._native.native_decide.ax_1_1,
+ DCheck.Meet.size5._native.native_decide.ax_1_1,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1,
+ SimpleGraph.SphericalMap.HA5BC_06.rot_ok._native.native_decide.ax_1_1]
+'SimpleGraph.SphericalMap.HA5BC_06.colorable_of_mirror_occ_centry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ DCheck.Meet.check4_true._native.native_decide.ax_1_1,
+ DCheck.Meet.check5_true._native.native_decide.ax_1_1,
+ DCheck.Meet.size4._native.native_decide.ax_1_1,
+ DCheck.Meet.size5._native.native_decide.ax_1_1,
+ DCheck.R1.check4._native.native_decide.ax_1_1,
+ DCheck.R1.check5._native.native_decide.ax_1_1,
+ DCheck.R1.check6._native.native_decide.ax_1_1,
+ DCheck.R1.check7._native.native_decide.ax_1_1,
+ DCheck.R1.check8._native.native_decide.ax_1_1,
+ DCheck.R1.check9._native.native_decide.ax_1_1,
+ SimpleGraph.SphericalMap.HA5BC_06.rot_ok._native.native_decide.ax_1_1]
