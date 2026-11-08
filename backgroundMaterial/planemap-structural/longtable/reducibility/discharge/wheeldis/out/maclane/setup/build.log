@@ -1,0 +1,7 @@
+build: Apple clang version 17.0.0 (clang-1700.0.13.5); flags -std=c++17 -O3 -pthread -ffp-contract=off -include cstdint -mcpu=native
+  ok   eng/bin/jsep3  <- jsep3.cpp 
+  ok   eng/bin/jsepf_gk  <- jsepf_gk.cpp 
+  ok   eng_p1r/bin/jsep3  <- jsep3.cpp 
+  ok   eng_p1r/bin/jsepf_gk  <- jsepf_gk.cpp 
+  ok   eng_p1r/bin/jsepf_gk_k192  <- jsepf_gk_k192.cpp 
+build: OK in 5 s

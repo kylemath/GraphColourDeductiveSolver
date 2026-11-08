@@ -1,0 +1,18 @@
+maclane smoke 2026-11-08T06:29:08Z on Darwin arm64, 16 cores
+1. relocation
+   OK   pack root /Users/kylemathewson/maclane/maclane-k86
+2. python
+   OK   python 3.9.6 numpy 2.0.2 scipy 1.13.1
+   info no highspy: the engine uses the numpy / scipy shim hshim.py (expected)
+3. highspy shim vs reference LPs
+   OK   2 methods: [ipm] 80 solves vs highspy 1.15.1: max rel obj diff 9.32e-15; 76 nondegenerate: max |dx| 5.51e-14, max |d row_dual| 3.26e-14, max |d col_dual| 3.69e-1
+4. engine modules parse
+   OK   37 files
+5. binaries
+   OK   jsepf_gk jsep3 (eng), jsepf_gk_k192 jsepf_gk jsep3 (eng_p1r)
+6. upper lane: upperR2 of sol_k86GS4_in01 on K3l, 1 thread(s)
+   OK   matches the container log (126s; 0 of 40 reference lines differ after normalising (0 only within 2e-5 relative)): UPPER-R2: FEASIBLE at t = 0.030980300342
+7. lower lane engine: upperR2 of sol_k86GS4_in01 on K3g with eng_p1r, 240 keys, p1r, 1 thread(s)
+   OK   ran to the end (144s; no container reference to compare with): UPPER-R2: INFEASIBLE (2) at t = 0.030980300342
+
+SMOKE: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke.log)
