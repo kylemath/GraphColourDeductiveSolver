@@ -1,0 +1,40 @@
+f2b7: q7m masks on sides with c or apex >= 7 = 31 & ~extra7 (python rows + jsepf JSEPF_F2B7=1)
+f2b: rules loaded from /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/rules/A5final/rules_c67fa1d1_plus_A5_twins.json: {'d7_w6': 1739, 'd8_w6': 1256, 'd9_w6': 97, 'd7_w7_1': 1059, 'd7_w7_-1': 1059, 'd8_w7_1': 754, 'd8_w7_-1': 754}
+gkeys: 220 keys from /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/p1r/cg_keys_r13w16_16fi.txt (md5 56d144d5): payer/payee pairs {'4->4': 35, '4->28': 10, '4->2': 13, '2->2': 24, '4->1': 16, '1->1': 16, '1->4': 29, '2->1': 16, '2->4': 17, '1->2': 9, '1->8': 7, '1->16': 7, '2->8': 2, '2->16': 2, '4->8': 3, '4->16': 4, '2->6': 5, '4->20': 2, '2->18': 1, '1->12': 1, '2->12': 1}
+gkeys: 83 payer-7 keys > 64: leaf binary /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_v2/bin/jsepf_gk_k192 (7802 limit 192)
+v2r: KEYSPEC v2 receiver rows on d = 7, 8 as realisation rows (receiverV2); masked d = 7, 8 receiver rows are never built
+jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
+exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
+patterns: 302 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9447, 8: 5962, 9: 3427, 10: 1438, 11: 626, 12: 105, 13: 85, 14: 85, 15: 85, 16: 85, 17: 85}; by kind {'D': 18226, 'C': 762, 'RPAT': 158, 'RPATN': 2284}
+<string>:166: RuntimeWarning: divide by zero encountered in matmul
+<string>:166: RuntimeWarning: overflow encountered in matmul
+<string>:166: RuntimeWarning: invalid value encountered in matmul
+  (a) 7/5556668/7576677      ctlA     want OUT 0 IN 0..2 v2 2 | DP OUT 0 IN 0..2 v2 2; builder IN at the argmax 2  ok
+  (a) 7/5556668/7576677      ctlC     want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 7/5556676/5777867      gk00_56  want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 7/5556676/5777867      gk00_58  want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 7/5556676/5777867      gk01_109 want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 7/5556676/5777867      ctlA     want OUT 0 IN 0..2 v2 2 | DP OUT 0 IN 0..2 v2 2; builder IN at the argmax 2  ok
+  (a) 7/5556676/5777867      ctlB     want OUT 0 IN 0..2 v2 2 | DP OUT 0 IN 0..2 v2 2; builder IN at the argmax 2  ok
+  (a) 7/5556686/5777857      gk00_56  want OUT 0 IN 0..2 v2 2 | DP OUT 0 IN 0..2 v2 2; builder IN at the argmax 2  ok
+  (a) 7/5566777/5675656      E1       want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 7/5566777/5695656      E1       want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 7/5568577/5676657      E1       want OUT 0 IN 0..0 v2 0 | DP OUT 0 IN 0..0 v2 0; builder IN at the argmax 0  ok
+  (a) 7/5656777/5676655      E1       want OUT 0 IN 0..0 v2 0 | DP OUT 0 IN 0..0 v2 0; builder IN at the argmax 0  ok
+l3qV: V = 8 table 5000 masks (full)
+  (a) 8/55556686/57767657    ctlD     want OUT 0 IN 0..3 v2 3 | DP OUT 0 IN 0..3 v2 3; builder IN at the argmax 3  ok
+  (a) 8/55556767/59575766    ctlD     want OUT 0 IN 0..2 v2 2 | DP OUT 0 IN 0..2 v2 2; builder IN at the argmax 2  ok
+  (a) 8/55556858/59575776    ctlD     want OUT 0 IN 0..2 v2 2 | DP OUT 0 IN 0..2 v2 2; builder IN at the argmax 2  ok
+  (a) 8/55557568/58577776    cg12_78_0 want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 8/55557568/58577776    cg12_78_1 want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 8/55557568/58577776    cg12_78_2 want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 8/55557568/58577776    ctlD     want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 8/55557658/59577666    cg12_78_0 want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 8/55577658/75656557    E1       want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 8/55675757/75575666    E1       want OUT 0 IN 0..0 v2 0 | DP OUT 0 IN 0..0 v2 0; builder IN at the argmax 0  ok
+  (a) 8/55676757/66655658    E1       want OUT 0 IN 0..1 v2 1 | DP OUT 0 IN 0..1 v2 1; builder IN at the argmax 1  ok
+  (a) 8/55676757/66755658    E1       want OUT 0 IN 0..0 v2 0 | DP OUT 0 IN 0..0 v2 0; builder IN at the argmax 0  ok
+V2R-TEST (a): 24 / 24 test vectors reproduced
+V2R-TEST (b): {'rows': 692, 'key pairs': 152240, 'realisations total': 478765554, 'points': 1384, 'samples': 138400, 'exhaustive points': 108, 'exhaustive realisations': 93642}; per-key DP 8.9s, exhaustive 22.6s, total 91s
+V2R-STAT {}
+V2R-TEST: PASS (0 failures)

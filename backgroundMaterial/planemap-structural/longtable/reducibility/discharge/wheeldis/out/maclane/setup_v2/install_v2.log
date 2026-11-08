@@ -1,0 +1,11 @@
+add-on manifest: 75 files, 0 bad
+install_v2: 75 files written (0 of them replacing an earlier install), 0 already identical; root /tmp/maclane-k86 -> /Users/kylemathewson/maclane/maclane-k86 in 16 files (94 occurrences)
+install_v2: building the eng_v2 separators (bash /Users/kylemathewson/maclane/maclane-k86/build_v2.sh; log /Users/kylemathewson/maclane/maclane-k86/build_v2.log)
+build_v2: Apple clang version 17.0.0 (clang-1700.0.13.5); flags -std=c++17 -O3 -pthread -ffp-contract=off -include cstdint -mcpu=native
+  ok   eng_v2/bin/jsep3  <- jsep3.cpp 
+  ok   eng_v2/bin/jsepf_gk  <- jsepf_gk.cpp 
+  ok   eng_v2/bin/jsepf_gk_k192  <- jsepf_gk_k192.cpp 
+build_v2: OK in 4 s
+install_v2: done.  Next:
+  cd /Users/kylemathewson/maclane/maclane-k86 && bash smoke_v2.sh        # about 10 min; must end with SMOKE-V2: PASS
+  bash stop.sh lower && bash launch_v2.sh      # GV1 replaces the k86ML1 control lane

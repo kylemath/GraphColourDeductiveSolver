@@ -1,0 +1,23 @@
+maclane v2 add-on smoke 2026-11-08T08:05:23Z on Darwin arm64
+1. add-on installed
+   OK   eng_v2 (hshim-1.1), binaries jsepf_gk_k192 jsepf_gk jsep3, lane scripts, args K3gB5b, seed, gate cert
+2. eng_v2 shim
+   OK   [ipm] 80 solves vs highspy 1.15.1: max rel obj diff 9.32e-15; 76 nondegenerate: max |dx| 5.51e-14, max |d row_; [getLp / clearSolver] 40 LPs, 120 re-solves after clearSolver: max objective difference 1.35e-16, 0 failures
+3. eng_v2 modules parse
+   OK   20 files
+4. v2rtest on the GL5 cert def2afcc (about 2-3 min)
+   FAIL differs from the container's log (92s; /Users/kylemathewson/maclane/maclane-k86/smoke_v2_test_cmp.log):
+reference: V2R-TEST: PASS (0 failures)
+this run:  V2R-TEST: PASS (0 failures)
+  +<string>:166: RuntimeWarning: divide by zero encountered in matmul
+  +<string>:166: RuntimeWarning: overflow encountered in matmul
+  +<string>:166: RuntimeWarning: invalid value encountered in matmul
+0 of 37 reference lines differ after normalising (0 only within 2e-5 relative); V2R-TEST: line SAME
+5. restricted-LP gate: v2restricted v2mode=v2 on the GL5 cert (about 3-10 min)
+   OK   V2RESTRICTED v2: t = -0.076947399076 after 16 LP solves; 6963 LP rows (2343 base + 4620 realisation rows over 692 receivers; rows per receiv (87s; container t = -0.076947399076)
+6. start of a k86GV1 run (the lane's command, stopped after its patterns are loaded)
+grep: /Users/kylemathewson/maclane/maclane-k86/smoke_v2_head.log: No such file or directory
+smoke_v2.sh: line 83: 68556 Terminated: 15          PYTHONUNBUFFERED=1 nice -n 12 python3 pcheck.py solveR2 $F $X keeppen tag=v2smokehead $A $CB warm=$(cat $N/maclane_warm_v2.txt) feas=$N/cand/sol_k85C_in03.json xcap=3 xpen=1e-3 lpmax=45 threads=1 maxit=1 work=$WK gkeys=$KEYS gkwin gkleaf $XF lext lextcert q7pen=1e-3 consk=20 consfrac=0.25 > $R/smoke_v2_head.log 2>&1
+   OK   first 9 lines identical to the container's (3s): gkeys: 89 payer-7 keys > 64: leaf binary...; patterns: 306 files read, 2 missing ['out/job28/r_3.cfast', 
+
+SMOKE-V2: FAIL (1 failed steps; log /Users/kylemathewson/maclane/maclane-k86/smoke_v2.log)

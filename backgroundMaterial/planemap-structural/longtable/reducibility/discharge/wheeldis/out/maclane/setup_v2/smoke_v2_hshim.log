@@ -1,0 +1,5 @@
+[ipm] 80 solves vs highspy 1.15.1: max rel obj diff 9.32e-15; 76 nondegenerate: max |dx| 5.51e-14, max |d row_dual| 3.26e-14, max |d col_dual| 3.69e-14, row-dual signs 1018 compared, 0 wrong; 0 failures
+[simplex] 80 solves vs highspy 1.15.1: max rel obj diff 9.32e-15; 76 nondegenerate: max |dx| 5.51e-14, max |d row_dual| 3.26e-14, max |d col_dual| 3.69e-14, row-dual signs 1018 compared, 0 wrong; 0 failures
+HSHIM CHECK: PASS
+[getLp / clearSolver] 40 LPs, 120 re-solves after clearSolver: max objective difference 1.35e-16, 0 failures
+V2 SHIM CHECK: PASS
