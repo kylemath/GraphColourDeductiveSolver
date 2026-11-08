@@ -6,3 +6,16 @@ p1r: KEYSPEC v2 single-row receiver keys (p1_r) on d = 7, 8 receiver rows (pytho
 jcheck: 24 R5, 31 R6, 7 fans, 104 RBIG; 342 senders, 942 rooted vars
 exname: 1758 names held out; 1781 C entries dropped (1758 distinct names) in {'job27/k2a.cfast': 10, 'job27/k2b.cfast': 13, 'job27/part00.cfast': 508, 'job27/part01.cfast': 491, 'out/def_r1.cfast': 4, 'out/job28/r_1.cfast': 9, 'out/job28/r_12.cfast': 15, 'loop/rules/cert_bf.cfast': 1, '/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s33z/reg_A97/k3x_C_A97.cfast': 721, '/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/k42map_C_cons.cfast': 9}
 patterns: 302 files read, 2 missing ['out/job28/r_3.cfast', 'out/job28/r_4.cfast']; distinct by d {7: 9447, 8: 5962, 9: 3427, 10: 1438, 11: 626, 12: 105, 13: 85, 14: 85, 15: 85, 16: 85, 17: 85}; by kind {'D': 18226, 'C': 762, 'RPAT': 158, 'RPATN': 2284}
+gkeys: mode-2 class fold: 9389 distinct payee-bound signatures over 159 tables
+conservation basis rows added: 10539
+l3qV: V = 8 table 5000 masks (full)
+warm rows admitted: 256757
+R6x2 (apex True): 22514 sender rows, 393 g keys in senders, 1424 six-words, 26810 initial cons rows, 4283 M sigs
+/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_p1r/hshim.py:285: RuntimeWarning: divide by zero encountered in matmul
+  info.objective_function_value = float(c @ x); info.valid = True
+/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_p1r/hshim.py:285: RuntimeWarning: overflow encountered in matmul
+  info.objective_function_value = float(c @ x); info.valid = True
+/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/eng_p1r/hshim.py:285: RuntimeWarning: invalid value encountered in matmul
+  info.objective_function_value = float(c @ x); info.valid = True
+hshim: run 1: 340725 x 95446 (nnz 8092647; 318211 <=, 22514 >=, 0 =) highs-ipm -> Optimal, obj 0.000579119918702, 905.3s
+  lext it 0: phase 1 (t alone) t1 = 0.000579119919, status Optimal, 906s; best t1 so far 0.000579119919; phase-1 cert written
