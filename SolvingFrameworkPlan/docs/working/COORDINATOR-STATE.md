@@ -88,6 +88,9 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 8 Nov 01:25Z: UPPER **t* <= 0.031415827089 [E2]** (sol_repS3W_06, Opus + Mac ST-39, main 79cc72b6) on K3k = K3j + 1 C kill f8_...56556_.....66. (r12, X={I0-I3}, not rim-pinned; Lean hC + glue HCK3k bb057100) + 2db75746 + rpatN 8b90a842 + c6le + f2b7 + r13w16. Controls: on K3j fails 9 d8 rows; t-5e-6 fails d7-9 senders/receivers.
+- 7 Nov 23:49Z: UPPER **t* <= 0.032521353 [E2]** (sol_k86GS3_in04_tight, Opus + Mac ST-38, main 421fda79), family unchanged; tight (d7-9 senders/receivers bind; control t-5e-6 fails).
+- 7 Nov 23:17Z: UPPER **t* <= 0.033006146 [E2]** (sol_k86GS3_in03_tight, Opus + Mac ST-37, main 3e939c35), family unchanged; tight (senderR2 + d7-9 receivers bind; control t-5e-6 fails there).
 - 7 Nov 23:03Z: UPPER **t* <= 0.033402931 [E2]** (sol_repS3W_04_tight, Opus + Mac ST-36, main ab00ed72), family unchanged; tight (d7-9 senders/receivers bind; control t-5e-6 fails on those rows).
 - 7 Nov 22:42Z: UPPER **t* <= 0.035031472 [E2]** (ST-35, main 86f65595): S3W_03 weights with t tightened until sender/receiver d7-9 rows bind; control t-5e-6 fails on those rows. Family unchanged. Next: Opus repS3W_04 at 0.03366 (ST-36).
 - 7 Nov 22:20Z: UPPER **t* <= 0.035312025368 [E2]** (sol_repS3W_03, Opus + Mac ST-34, main 2eb9f15b), same family (K3j + 2db75746 + rpatN 8b90a842 + c6le + f2b7 + r13w16, no offc). Point has slack (Studio expects ~0.0350 with same weights; Opus asked for tightened point). Failure-path control at t=0.0340 running (ST-34b).
