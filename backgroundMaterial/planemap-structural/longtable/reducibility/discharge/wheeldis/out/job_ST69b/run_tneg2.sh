@@ -1,0 +1,8 @@
+#!/bin/bash
+# ST-69b second control: in11 at t - 1e-4 on K3gB5i + 240 keys (t - 5e-6 stayed FEASIBLE); ST-67 at 4 meanwhile
+cd /Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis; bash out/job_ST67/ctl.sh 4
+cd /tmp/swarm-W17; GK=/tmp/swarm-W17/tab/cg_keys_r13w16_16fik.txt RPATN=/tmp/swarm-W17/tab/rpatN3_rotation_justified.txt F2BRULES=/tmp/swarm-W17/tab/rules_A5final_2db75746.json ARGSF=/tmp/swarm-W17/args_A97F_W13K3gB5i_x_studio.txt EXPECT_PAT=18233,778,158 TAG=sol_k86MS3_in11_tneg2_zK3gB5i_k240 bash /tmp/swarm-W17/check.sh /tmp/swarm-W17/sol/sol_k86MS3_in11_tneg2.json 8 > /tmp/swarm-W17/st69b_tneg2.out 2>&1
+cd /Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis; L=/tmp/swarm-W17/logs/sol_k86MS3_in11_tneg2_zK3gB5i_k240; cat $L/viol_d*.txt | grep -v "^#" | sort -u > out/job_ST69b/tneg2_receiver_violators.txt; cp /tmp/swarm-W17/st69b_tneg2.out out/job_ST69b/; cp $L/p0.log out/job_ST69b/p0_tneg2.log; cp $L/summary.txt out/job_ST69b/summary_tneg2.txt
+bash out/job_ST67/ctl.sh 8
+grep -E "^RESULT|senderR2 rows|^  (five|nofive)|exact violated [1-9]" /tmp/swarm-W17/st69b_tneg2.out | cut -c1-150; awk '{print $1, $4}' out/job_ST69b/tneg2_receiver_violators.txt | sort | uniq -c | sort -k2,2n -k3,3nr | head -14; grep VIOLATED out/job_ST69b/p0_tneg2.log | head -4 | cut -c1-120
+for d in 7 8 9 10; do m=$(awk -v d=$d '$1==d{print $4}' out/job_ST69b/tneg2_receiver_violators.txt | sort -nr | head -1); [ -n "$m" ] && awk -v d=$d -v m=$m '$1==d && $4==m' out/job_ST69b/tneg2_receiver_violators.txt | head -8; done
