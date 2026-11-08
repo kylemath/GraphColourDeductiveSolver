@@ -202,3 +202,4 @@ Command: `bash p1r/p1r_run.sh upper_noflag_repS2W_04 upperR2 nomax sol=cand/sol_
    * The original `bin/jsepf_gk` (c31466c0) could not be rebuilt byte-identically from `jsepf_gk.cpp`: same size, different .text, probably a compiler or flag difference. So k192 is validated by f2bself rather than by binary identity.
 9. **dualexport** marks p1r rows `mode = 'p1r'` and adds `ks_current`. `window_rows_where_window_differs_from_picture` also counts the p1r rows whose coefficients differ from current.
 10. **Cost.** The p1r setup is about 2.1-2.5 ms per d = 7 / 8 row. At ~100k warm d = 7 / 8 rows that adds a few minutes per full row pass.
+06:39:28Z eng_p1r/prelay2.py synced to eng/prelay2.py (dde358ba: adds the 'senders need t >=' log line tighten.sh reads; logging only)
