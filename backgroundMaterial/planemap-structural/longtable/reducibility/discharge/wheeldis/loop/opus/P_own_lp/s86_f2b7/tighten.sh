@@ -6,7 +6,7 @@
 #    failure at the probe stops it (not linear-checked here).
 N=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7; B=$(dirname $N)
 SOL=$1; DROP=${2:-0.003}; X=$(basename $SOL .json); X=${X#sol_}
-export STACK=s77 ARGS=${ARGS:-$N/args_A97_F_W13K3j.txt} KEYS=${KEYS:-$B/s85_edge56/keys/cg_keys_r13w16.txt}
+export STACK=s77 ARGS=${ARGS:-$N/args_A97_F_W13K3k.txt} KEYS=${KEYS:-$B/s85_edge56/keys/cg_keys_r13w16.txt}
 FAMX="c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt"
 P=$N/cand/sol_${X}_probe.json
 T0=$(python3 -c "
