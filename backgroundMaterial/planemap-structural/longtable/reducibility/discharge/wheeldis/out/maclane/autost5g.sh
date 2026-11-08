@@ -11,8 +11,7 @@ s = open(sys.argv[1]).read(); m = re.match(r'\{"t": ([0-9.eE+-]+)', s); t = floa
 open(sys.argv[2], 'w').write('{"t": ' + repr(t - 5e-6) + s[m.end():]); print('t', t, 'tneg', t - 5e-6)
 PY
 cp $S/${P}_tneg.json $J/in/
-pkill -f runk5.sh; pkill -f "mscreen.py famK5_r1516_0"; pkill -f "mscreen.py famK5_r1516_1"; sleep 2
-for p in $(ps -Ao pid,ppid,command | awk '$2==1' | grep -E "loop/kc/kc|out/job52/dfast18|studio15/cfast" | grep -v -E "job_K5/chk|job_K3CHK|job_ST49/chk" | awk '{print $1}'); do kill $p; done
+[ -f $W/out/job_ST67/run.log ] && ! grep -q ALLDONE $W/out/job_ST67/run.log && bash $W/out/job_ST67/ctl.sh 4
 cd /tmp/swarm-W17
 R=/tmp/swarm-W17/tab/rpatN3_rotation_justified.txt; F=/tmp/swarm-W17/tab/rules_A5final_2db75746.json
 AL=/tmp/swarm-W17/args_A97F_W13K3l_x_studio.txt; A5=/tmp/swarm-W17/args_A97F_W13K3l5_x_studio.txt
@@ -22,4 +21,4 @@ GK=$G240 RPATN=$R F2BRULES=$F ARGSF=$A5E EXPECT_PAT=18142,706,158 TAG=${P}_zK3l5
 GK=$G240 RPATN=$R F2BRULES=$F ARGSF=$A5E EXPECT_PAT=18142,706,158 TAG=${P}_tneg_zK3l5g_k240 bash /tmp/swarm-W17/check.sh $S/${P}_tneg.json 8 > /tmp/swarm-W17/st${NN}_tneg.out 2>&1
 # (K3l main dropped from 15:21Z, coordinator: MS2 points depend on K3l5e kills + 240 keys)
 echo DONE > /tmp/swarm-W17/st$NN.done
-[ -f /tmp/swarm-W17/st42.hold ] || { cd $W/out/job_K5; mv run.log run_pre_st$NN.log; SKIP=$PWD/skip_K5.txt KC=$W/loop/kc/kc DF18=$W/out/job52/dfast18 CF=$W/../studio15/cfast nohup bash runk5.sh 4 > run.log 2>&1 & }
+[ -f $W/out/job_ST67/run.log ] && ! grep -q ALLDONE $W/out/job_ST67/run.log && bash $W/out/job_ST67/ctl.sh 8
