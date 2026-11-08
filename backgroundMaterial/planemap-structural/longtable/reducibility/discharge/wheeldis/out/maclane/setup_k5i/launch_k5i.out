@@ -1,0 +1,15 @@
+launch_upper_fam: family i: OK x=i prev=i1 status=E2 l=args_A97_F_W13K3l5i.txt gb=args_A97_F_W13K3gB5i.txt pat=w13/pat_K5i_C.cfast expect=/Users/kylemathewson/maclane/maclane-k86/fam/EXPECT_K3l5i_k240.txt
+launch_upper_fam: current lane k86MS3 (family g, running) -> new lane k86MS4 on family i
+launch_upper_fam: given in-point sol_repS3MW_01_tight__K3l5i: FEASIBLE on K3l5i here (F_repS3MW_01_tight_K3l5i t = 0.020497406000)
+launch_upper_fam: stopping k86MS3 (bash stop_fam.sh k86MS3); last iteration: iter 15 t=0.016002609196 rows 382595 cols 97798 added 704  lp 1431.2s sep 876.0s total 21697s  round
+upper lane k86MS3 (family g):
+  stopped 1: watch86_k5e.sh k86MS3( |$)
+  stopped 2: tightwatch_k5e.sh k86MS3( |$)
+  stopped 1: repladder_k5e.py k86MS3 
+  stopped 1: runK86p.sh [0-9]+ [0-9]+ k86MS3 
+  stopped 1: outbox86_fam.py k86MS3 
+  last outbox pass: k86MS3: 0 point(s) filed (K3l5g / K3gB5g)
+processes of k86MS3 still running: 0
+launch_upper_fam: in-point: sol_repS3MW_01_tight__K3l5i (/Users/kylemathewson/maclane/maclane-k86/outbox/upper/sol_repS3MW_01_tight__K3l5i.json, md5 586981ec)
+launch_msfam: k86MS4: LP args_A97_F_W13K3l5i.txt (6a30c035) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5i.txt (6a30c035); in-point sol_repS3MW_01_tight__K3l5i.json (md5 586981ec, t 0.020497406000; F_repS3MW_01_tight_K3l5i); maxit 200, threads 2, REPL_PAR 2, tightwatch 1; 45 warm files: k86MS3's warm list (runK_k86MS3/warmlist.txt) + k86MS3's rows (eng_p1r/rows_k86MS3.txt)
+launched k86MS4 (fam i): K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/runK_k86MS4/K.log, outbox /Users/kylemathewson/maclane/maclane-k86/outbox/upper/POINTS.txt (family column K3l5i / K3gB5i), status: bash /Users/kylemathewson/maclane/maclane-k86/status_fam.sh, stop: bash /Users/kylemathewson/maclane/maclane-k86/stop_fam.sh
