@@ -314,3 +314,13 @@ Results:
 - check_literals_c.py on CK3K.lean: 1 entry, 0 mismatches; a copy with one intAdj entry changed gives 1 mismatch, exit 1. NOT compiled here.
 - Compile order: HK3K_00, COccHK3K_00, then HK3KOcc (after K3KVAll); shared glue_hc/glue_drive.sh does that.
 - 8 Nov 01:12Z Studio main bb057100: CK3K, K3KV00, K3KVAll, HK3K_00, COccHK3K_00, HK3KOcc all exit 0, sorry 0, sorryAx 0 (glue byte-identical to 40c5cf2b). K3k is Lean-covered like K3j. glue_drive_HCK3k.sh = the shared glue_hc/glue_drive.sh (cc36ca9e).
+
+## k3/hc/ (HCK3l): the lead's kill B b7_u.666666_.5...5., X = {R0-I0}, rim-pinned (Studio K3CHK8 + job HCK3l, main f4a63957)
+- in/extraC_HCK3l.tsv (f47fe493; kc line equal to the lead's kills_AB_0215.tsv c5000391) and studio/{CK3L.lean (d35b85bc), K3LV00.lean (feee8da3),
+  K3LVAll.lean (e0c067eb), module_split_HCK3l.tsv (7faac9b6)}: byte copies of the shared K3/from_studio/HCK3l/ files. CK3L: eqR [(0,0)], eqI [].
+  Engine side: s86_f2b7/w13/pat_K3l_C.cfast (369e0e46), families K3gB (lowers) and K3l = K3k + B (uppers).
+- `python3 s74_leanglue/gen_occ_kc.py batch s76_occ502/k3/hc/in/extraC_HCK3l.tsv s76_occ502/k3/hc/lean HK3L_` -> HK3L_00 + COccHK3L_00: 1 generated,
+  0 failed, 2 rotations validated, every link an induced cycle. Rim-pinned like HCW13R3P (eqR is inside the XRData, not read by the glue).
+- lean/HK3LOcc.lean: `scripts/gen_cocc_batch.py k3/hc/lean/HK3L_modules.txt HK3LOcc K3LVAll K3LV k3lEntries HK3L_ ...`; identical to HK3KOcc up to
+  names, ring 14 / 9 interior and the docstring. check_literals_c on CK3L.lean: 1 entry, 0 mismatches; one-intAdj mutation: 1 mismatch, exit 1.
+- glue_drive_HCK3l.sh (= shared glue_hc/glue_drive.sh): after K3LVAll, HK3L_00, COccHK3L_00, HK3LOcc. NOT compiled here.
