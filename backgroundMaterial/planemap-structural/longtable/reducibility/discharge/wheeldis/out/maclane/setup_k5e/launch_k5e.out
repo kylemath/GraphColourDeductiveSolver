@@ -1,0 +1,20 @@
+launch_upper_k5e: given in-point sol_k86MS1_in12: checking it on K3l5e + 240 keys first (bash recheck_k5e.sh, 2 threads; k86MS1 keeps running)
+recheck_k5e: k86MS1_in12 on args_A97_F_W13K3l5e.txt + cg_keys_r13w16_16fik.txt, engine eng_p1r, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_k86MS1_in12_K3l5e.log
+recheck_k5e: k86MS1_in12: UPPER-R2: FEASIBLE at t = 0.022144345377
+recheck_k5e: outbox/upper: filed sol_k86MS1_in12__K3l5e (t = 0.022144345377)
+launch_upper_k5e: stopping k86MS1 (TAG_UPPER=k86MS1 bash stop.sh upper); last iteration: iter 19 t=0.017776793726 rows 371465 cols 97475 added 824  lp 840.6s sep 78.0s total 24191s  rounds 
+upper lane k86MS1:
+  stopped 1: watch86.sh k86MS1
+  stopped 2: tightwatch.sh k86MS1
+  stopped 1: outbox86.sh k86MS1
+  stopped 1: repladder.py k86MS1
+  stopped 1: runK86.sh [0-9]+ [0-9]+ k86MS1 
+processes still naming this pack's paths: 4
+76097 bash /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2
+76117 /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python pcheck.py solveR2 xon apexcls filt16 hat5 consall l3q lqca
+76137 bash /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2
+76139 bash /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2
+launch_upper_k5e: last outbox pass: k86MS1: 0 point(s) filed in the last pass
+launch_upper_k5e: in-point: sol_k86MS1_in12 (/Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/cand/sol_k86MS1_in12.json, md5 d69014dd)
+launch_k86MS2: k86MS2: LP args_A97_F_W13K3gB5e.txt (8849c09f) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5e.txt (2b31d32d); in-point sol_k86MS1_in12.json (md5 d69014dd, t 0.022144345377; F_k86MS1_in12_K3l5e); maxit 200, threads 2, REPL_PAR 2, tightwatch 1; 43 warm files: k86MS1's warm list (runK_k86MS1/warmlist.txt) + k86MS1's rows
+launched k86MS2: K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/runK_k86MS2/K.log, outbox /Users/kylemathewson/maclane/maclane-k86/outbox/upper/POINTS.txt (family column K3l5e / K3gB5e), status: bash /Users/kylemathewson/maclane/maclane-k86/status_k5e.sh, stop: bash /Users/kylemathewson/maclane/maclane-k86/stop_k5e.sh

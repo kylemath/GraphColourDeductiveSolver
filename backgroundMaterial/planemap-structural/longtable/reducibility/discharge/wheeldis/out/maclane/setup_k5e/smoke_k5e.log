@@ -1,0 +1,17 @@
+maclane k5e add-on smoke 2026-11-08T13:34:27Z on Darwin arm64
+1. installed
+   OK   v2 / k5d add-ons, k5e files (scripts parse), eng_p1r separators
+2. families K3gB5e and K3l5e
+   OK   K3gB5e 8849c09f, K3l5e 2b31d32d (container md5s), pat_K5e_C 9d00aa01; every file they name is in the pack
+3. upper recheck on K3l5e + 240 keys (RECHECK_UPPER=0 bash recheck_k5e.sh, eng_p1r; about 5 min)
+   OK   matches the container's log (177s; 0 of 40 reference lines differ after normalising (0 only within 2e-5 relative), 0 extra lines in this run): UPPER-R2: FEASIBLE at t = 0.025171803977
+   OK   EXPECT section 1 (K3l5e) re-derived: counts: 311 files, distinct d9 3321, D 18142 / C 704 / RPAT 158 / RPATN 2034
+4. tighten_k5e.sh on that point (eng_p1t; probe + final check, about 10 min; outputs in smoke_k5e_tight/)
+   OK   probe: the container's sender line; final: UPPER-R2: FEASIBLE at t = 0.025170999000 (want 0.025170999; from 0.025171803977) (441s; floor 0.025170997605)
+5. start of k86MS2's K run on K3gB5e (launch_k86MS2.sh's command, stopped once the conservation basis rows are in)
+   OK   first 11 lines as the container's k86GS9 K.log (35s): conservation basis rows added: 10539
+   OK   EXPECT section 2 (K3gB5e) re-derived: counts: 310 files, distinct d9 3418, D 18232 / C 773 / RPAT 158 / RPATN 2034
+6. DRY=1 launch_upper_k5e.sh (the plan only, with the step-3 point)
+   OK   k86MS2: LP args_A97_F_W13K3gB5e.txt (8849c09f) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5e.txt (2b31d32d); in-point sol_S1MW07k240e.json (md5 e4e93b2c, t 0.025171803977; F_S1MW07k240e_K3l5e); maxit 200, threads 2, REPL_PAR 2
+
+SMOKE-K5E: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_k5e.log)

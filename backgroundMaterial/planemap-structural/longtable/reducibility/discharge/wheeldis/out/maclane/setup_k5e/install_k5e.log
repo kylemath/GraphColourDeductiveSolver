@@ -1,0 +1,7 @@
+add-on manifest: 29 files, 0 bad
+install_k5e: 29 files written (0 of them replacing an earlier install), 0 already identical; root /tmp/maclane-k86 -> /Users/kylemathewson/maclane/maclane-k86 in 13 files (82 occurrences)
+install_k5e: done.  Next:
+  cd /Users/kylemathewson/maclane/maclane-k86 && bash smoke_k5e.sh            # about 20 min; must end with SMOKE-K5E: PASS
+  DRY=1 bash launch_upper_k5e.sh        # the plan: in-point, warm set, what stops and starts
+  bash launch_upper_k5e.sh              # stops k86MS1 (results kept), starts k86MS2 on K3gB5e / K3l5e
+  bash status_k5e.sh; bash recheck_k5e.sh <point>; bash stop_k5e.sh
