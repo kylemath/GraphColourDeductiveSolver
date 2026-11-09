@@ -88,6 +88,10 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 9 Nov 12:00Z: UPPER **t* <= 0.016910200 [E2] on K3l5j + 240 keys** (Lean-complete; ST-80 sol_repS6MW_01 45d6c79b).
+- 9 Nov 07:50Z: UPPER **t* <= 0.017392357 [E2] on K3l5j + 240 keys** (Lean-complete; ST-79 sol_k86MS5_in07 dd2fcc97).
+- 9 Nov 06:21Z: UPPER **t* <= 0.017782363 [E2] on K3l5j + 240 keys** (Lean-complete; ST-78 sol_k86MS5_in05__K3l5j 83675016, W17 FEASIBLE); ST-77 0.018282195 also counts. MS5 lane dropping ~2-3% per iteration.
+- 9 Nov 04:50Z: UPPER **t* <= 0.018674922 [E2] on K3l5j + 240 keys** (Lean-complete; tight version of ST-74 point, ST-75, md5 4e3429d7, W17 second engine).
 - 9 Nov 04:47Z: UPPER **t* <= 0.018736061 [E2] on K3l5j + 240 keys** (whole K3l5j family Lean-complete: new kills P01-P04 0 sorryAx, K5j done). Point sol_k86MS5_in03__K3l5j 0bb6e505 (Mac MS5 lane), W17 FEASIBLE (ST-74). Intermediate steps ST-70 0.020077, ST-72 0.019570, ST-73 0.019130 also count. Tight version 0.018674922 under check (ST-75). Files round6/W17-studio-kstar/from_studio/sol_k86MS5_in03__K3l5j/.
 - 9 Nov 00:36Z: UPPER **t* <= 0.020497406 [E2] on K3l5g + 240 keys** (Lean-complete kill side; sol_repS3MW_01_tight 586981ec, ST-68a); tneg fails only on six d9 rows (same pairs as ST-64a). Also feasible on K3l5i. Files round6/W17-studio-kstar/from_studio/sol_repS3MW_01_tight/.
 - 8 Nov 18:19Z: last K3l5g Lean job HCK5H05 done (no sorry, glue built); every K3l5g kill has Lean + occurrence glue on main. ST-64a upper 0.020810162 [E2] is Lean-complete on the kill side (99 rule witnesses still the open Lean item).
