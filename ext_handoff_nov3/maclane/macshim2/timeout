@@ -1,0 +1,65 @@
+#!/bin/bash
+# maclane macshim v2 (Opus 9 Nov): GNU timeout stand-in, bash 3.2 safe.
+#   timeout [-s SIG] [-k DUR] [--foreground] [--preserve-status] DURATION CMD [ARGS...]   (DUR / DURATION: seconds, optional s/m/h/d suffix)
+# Exit 124 when CMD ran too long (137 when -k had to send KILL; with --preserve-status CMD's own status), else CMD's own status.
+# v2 fixes of macshim v1 (whose watcher could outlive a killed timeout and later signal a reused PID, and which signalled only CMD so
+# its children, e.g. `lean` under `time`, survived as orphans):
+#  - the watcher polls once a second and exits as soon as this timeout process or CMD is gone; before it signals it checks that CMD's
+#    PID still has CMD's start time, so a reused PID is never signalled;
+#  - on timeout the signal goes to CMD and all its descendants (children first), as GNU timeout signals its process group;
+#  - TERM / INT / HUP sent to this timeout are passed on to CMD's tree, and the watcher is stopped.
+SIG=TERM; KA=""; PRES=0
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -s) SIG=$2; shift 2 ;;
+    -s*) SIG=${1#-s}; shift ;;
+    --signal=*) SIG=${1#--signal=}; shift ;;
+    -k) KA=$2; shift 2 ;;
+    --kill-after=*) KA=${1#--kill-after=}; shift ;;
+    --foreground) shift ;;
+    --preserve-status) PRES=1; shift ;;
+    --) shift; break ;;
+    *) break ;;
+  esac
+done
+SIG=${SIG#SIG}
+secs() { local d=$1; case "$d" in *d) d=${d%d}; d=$(( ${d%%.*} * 86400 ));; *h) d=${d%h}; d=$(( ${d%%.*} * 3600 ));; *m) d=${d%m}; d=$(( ${d%%.*} * 60 ));; *s) d=${d%s}; d=${d%%.*};; *) d=${d%%.*};; esac; echo "${d:-0}"; }
+D=$(secs "$1"); case "$1" in *[1-9]*) [ "$D" -gt 0 ] || D=1 ;; *) D=0 ;; esac; shift   # under 1 s -> 1 s; 0 = no time limit (GNU)
+[ -n "$KA" ] && KA=$(secs "$KA")
+[ $# -gt 0 ] || { echo "timeout: no command" >&2; exit 125; }
+tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do tree $c; done; echo $1; }
+sigtree() { local q; for q in $(tree $2); do kill -$1 $q 2>/dev/null; done; }
+lst() { ps -o lstart= -p "$1" 2>/dev/null; }
+[ "$D" -gt 0 ] || exec "$@"
+ME=$$; MK="${TMPDIR:-/tmp}/.mactimeout.$ME.$RANDOM"
+"$@" &
+P=$!
+ST=$(lst $P)
+(
+  n=0
+  while [ $n -lt $D ]; do
+    sleep 1; n=$((n + 1))
+    kill -0 $ME 2>/dev/null || exit 0
+    kill -0 $P 2>/dev/null || exit 0
+  done
+  [ -n "$ST" ] && [ "$(lst $P)" = "$ST" ] || exit 0
+  echo t > "$MK"; sigtree $SIG $P
+  if [ -n "$KA" ]; then
+    n=0
+    while [ $n -lt $KA ]; do sleep 1; n=$((n + 1)); kill -0 $P 2>/dev/null || exit 0; done
+    [ "$(lst $P)" = "$ST" ] || exit 0
+    echo k > "$MK"; sigtree KILL $P
+  fi
+) > /dev/null 2>&1 &
+W=$!
+fwd() { kill $W 2>/dev/null; [ "$(lst $P)" = "$ST" ] && sigtree $1 $P; wait $P 2>/dev/null; rm -f "$MK"; exit $2; }
+trap 'fwd TERM 143' TERM; trap 'fwd INT 130' INT; trap 'fwd HUP 129' HUP
+wait $P; RC=$?
+kill $W 2>/dev/null; wait $W 2>/dev/null
+if [ -e "$MK" ]; then
+  K=$(cat "$MK" 2>/dev/null); rm -f "$MK"
+  [ "$PRES" = 1 ] && exit $RC
+  [ "$K" = k ] && exit 137
+  exit 124
+fi
+exit $RC
