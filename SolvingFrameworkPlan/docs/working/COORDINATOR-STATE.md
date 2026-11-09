@@ -88,6 +88,9 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 9 Nov 19:54Z: UPPER **t* <= 0.015523694 [E2] on K3l5j + 260 keys 0470c459** (ST-89 sol_k86MK1_in08__K3l5j_k260 f3ca0aa8; W17 FEASIBLE, DP -0.97, Karp d>=24.11; tneg INFEASIBLE; main b27cdfbbc). Replaces 0.015991263 (ST-86).
+- 9 Nov 19:10Z: kill P05 in Lean (HCK5P05 GLUEDONE, sorryAx 0, main 5326b08d2); family K3l5k Lean-complete. Sound upper unchanged 0.015991263 (ST-86, K3l5j + 260 keys). P07, P08 Lean building.
+- 9 Nov 17:09Z: UPPER **t* <= 0.015991263 [E2] on K3l5j + 260 keys 0470c459** (ST-86 sol_repK1MW_04__K3l5j_k260 5edb843a; W17 FEASIBLE, DP -0.65, Karp d>=25.25; tneg INFEASIBLE; main 4c6da280d). Replaces 0.016329999 (ST-85).
 - 9 Nov 16:04Z: UPPER **t* <= 0.016329999 [E2] on K3l5j + 260 keys** (cg_keys_r13w16_16fikp.txt 0470c459 = 240 + 20 W6b EDGE keys; keys are LP data, no Lean needed). sol_repK1MW_03__K3l5j_k260 b47da528, W17 FEASIBLE d=7..26 + DP/Karp tails; tneg t-5e-6 INFEASIBLE (ST-85, main 381ecb4bb). ~1.9e-4 below the 240-key 0.016520036: first sign W6b EDGE keys lower the upper. cons2 not tight. Top tneg binder: d9 class as ST-82, killed by K5m.
 - 9 Nov 14:47Z: UPPER **t* <= 0.016520036 [E2] on K3l5j + 240 keys** (Lean-complete; ST-83 sol_repS6MW_04 cbf8dcee). Supersedes 0.0168976 (260 keys) and 0.0169102 (240).
 - 9 Nov 13:30Z: UPPER **t* <= 0.016897600 [E2] on K3l5j + 260-key file 0470c459** (ST-82 sol_repK1MW_01 aba887cd). On 240 keys the bound stays 0.016910200 (ST-80).
