@@ -1,0 +1,12 @@
+family l1 data add-on: 4 files, 0 bad
+OK x=l1 prev=k status=E2 l=args_A97_F_W13K3l5l1.txt gb=args_A97_F_W13K3gB5l1.txt pat=w13/pat_K5l1_D.out expect=fam/EXPECT_K3l5l1_k240.txt
+   note: Studio ST-76 bind75 hit P06; [E2] Mac K3CHK second check; Lean HDK5P06 GLUEDONE, 0 sorryAx, main 080177642
+install_fam: family l1: 4 files written, 0 already identical; FAMILIES.txt line added (status E2).  Next: bash smoke_fam.sh l1
+family l2 data add-on: 4 files, 0 bad
+OK x=l2 prev=l1 status=E2 l=args_A97_F_W13K3l5l2.txt gb=args_A97_F_W13K3gB5l2.txt pat=w13/pat_K5l2_C.cfast expect=fam/EXPECT_K3l5l2_k240.txt
+   note: Studio ST-76 bind75 hit P07, id 8f5774a9d8d5e0969069; kills rows 8/55667766/66656566 and 8/56677665/66565666; [E2] Mac K3CHK second check; Lean HCK5P07 building, CK5P07 clean
+install_fam: family l2: 4 files written, 0 already identical; FAMILIES.txt line added (status E2).  Next: bash smoke_fam.sh l2
+family l data add-on: 4 files, 0 bad
+OK x=l prev=l2 status=E2 l=args_A97_F_W13K3l5l.txt gb=args_A97_F_W13K3gB5l.txt pat=w13/pat_K5l_D.out expect=fam/EXPECT_K3l5l_k240.txt
+   note: Studio ST-76 bind75 hit P08, id 70804e475f1edd0e9ee2; kills rows 7/5668667/5655676 and 7/5766866/6765565; [E2] Mac K3CHK second check; Lean HDK5P08 building, HDK5P08 clean
+install_fam: family l: 4 files written, 0 already identical; FAMILIES.txt line added (status E2).  Next: bash smoke_fam.sh l

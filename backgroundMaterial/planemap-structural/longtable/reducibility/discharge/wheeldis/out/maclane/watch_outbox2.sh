@@ -1,7 +1,7 @@
 #!/bin/bash
 # exit when: P1.txt line count changes, min POINTS t drops > 2% vs start, 2 h elapsed, free mem < 25 GB, ST-42 new-row hit or batch COMPLETE
 O=~/maclane/maclane-k86/outbox; K=/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_K5
-mint(){ awk '$4=="K3l5i"||$4=="K3l5j"||$4=="K3l5k"{print $2}' $O/upper/POINTS.txt | sort -g | head -1; }
+mint(){ awk '$4=="K3l5i"||$4=="K3l5j"||$4=="K3l5k"||$4=="K3l5l"{print $2}' $O/upper/POINTS.txt | sort -g | head -1; }
 t0=${T0:-$(mint)}; p0=$(cat $O/lower/P1.txt $O/v2lower/P1.txt 2>/dev/null | grep -c .); c0=$(grep -l COMPLETE $K/results/log_*.txt | wc -l | tr -d ' '); s0=$(date +%s)
 while true; do
   p=$(cat $O/lower/P1.txt $O/v2lower/P1.txt 2>/dev/null | grep -c .); [ "$p" != "$p0" ] && { echo P1-CHANGED; tail -2 $O/v2lower/P1.txt; exit 0; }
