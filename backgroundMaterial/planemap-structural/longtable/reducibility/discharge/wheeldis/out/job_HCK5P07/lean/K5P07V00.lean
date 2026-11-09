@@ -1,0 +1,6 @@
+import CK5P07
+open SimpleGraph.SphericalMap SimpleGraph.SphericalMap.CGlue DCheck
+namespace K5P07V
+theorem hC_0 : cReducible18 (k5p07Entries.get ⟨0, by rw [k5p07Entries_length]; decide⟩).cf (k5p07Entries.get ⟨0, by rw [k5p07Entries_length]; decide⟩).eqR (k5p07Entries.get ⟨0, by rw [k5p07Entries_length]; decide⟩).eqI = true := by native_decide
+end K5P07V
+#print axioms K5P07V.hC_0
