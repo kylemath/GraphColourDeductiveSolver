@@ -88,6 +88,9 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 9 Nov 16:04Z: UPPER **t* <= 0.016329999 [E2] on K3l5j + 260 keys** (cg_keys_r13w16_16fikp.txt 0470c459 = 240 + 20 W6b EDGE keys; keys are LP data, no Lean needed). sol_repK1MW_03__K3l5j_k260 b47da528, W17 FEASIBLE d=7..26 + DP/Karp tails; tneg t-5e-6 INFEASIBLE (ST-85, main 381ecb4bb). ~1.9e-4 below the 240-key 0.016520036: first sign W6b EDGE keys lower the upper. cons2 not tight. Top tneg binder: d9 class as ST-82, killed by K5m.
+- 9 Nov 14:47Z: UPPER **t* <= 0.016520036 [E2] on K3l5j + 240 keys** (Lean-complete; ST-83 sol_repS6MW_04 cbf8dcee). Supersedes 0.0168976 (260 keys) and 0.0169102 (240).
+- 9 Nov 13:30Z: UPPER **t* <= 0.016897600 [E2] on K3l5j + 260-key file 0470c459** (ST-82 sol_repK1MW_01 aba887cd). On 240 keys the bound stays 0.016910200 (ST-80).
 - 9 Nov 12:00Z: UPPER **t* <= 0.016910200 [E2] on K3l5j + 240 keys** (Lean-complete; ST-80 sol_repS6MW_01 45d6c79b).
 - 9 Nov 07:50Z: UPPER **t* <= 0.017392357 [E2] on K3l5j + 240 keys** (Lean-complete; ST-79 sol_k86MS5_in07 dd2fcc97).
 - 9 Nov 06:21Z: UPPER **t* <= 0.017782363 [E2] on K3l5j + 240 keys** (Lean-complete; ST-78 sol_k86MS5_in05__K3l5j 83675016, W17 FEASIBLE); ST-77 0.018282195 also counts. MS5 lane dropping ~2-3% per iteration.
