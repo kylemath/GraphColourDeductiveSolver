@@ -1,0 +1,14 @@
+T3 parser: EDGE(7->7)[S.L-3=5] accepted
+T3 rows 600 (receiver d = 8, 9, 10, d = 7 with a link 8/9, senders, cons2: 100 each) x keys 440 (300 payer-8/9 W5, 80 payer-5/6/7, 60 payer-8/9 with an S.L+-3 condition: parser-refused, matcher fed raw) = 264000 pairs
+T3 nonzero reference coefficients by row type: {'cons': 11682, 'recv d=10': 17015, 'recv d=7': 10791, 'recv d=8': 16705, 'recv d=9': 16727, 'send': 9780}
+T3 negative (OUT-dominated) reference coefficients: {'recv d=8': 7623, 'recv d=9': 7665, 'recv d=10': 7936, 'recv d=7': 1168, 'send': 8910, 'cons': 773}
+T3 code_gk8 vs independent reference: mismatches 0 {}
+T4 outposs vs independent reference: mismatches 7544 {'recv d=8': 2716, 'recv d=9': 2379, 'recv d=10': 2449}
+    e.g. recv d=8 97858565/87966885 k380 EDGE(8->{68})[R.L-2={589} S.L-1={5678} S.L-3={79}]: ref 3 outposs 0
+    e.g. recv d=8 97858565/87966885 k381 EDGE(8->{5678})[S.L-3={679} S.L-1={578} S.L+3={568}]: ref 4 outposs -6
+    e.g. recv d=8 97858565/87966885 k382 EDGE(8->{78})[S.A+1={89} S.L+1={5689} S.L+3={69}]: ref 2 outposs -1
+T4 outmirror vs independent reference: mismatches 6546 {'recv d=8': 1630, 'recv d=9': 2403, 'recv d=10': 2513}
+    e.g. recv d=8 97858565/87966885 k003 EDGE(8->5)[R.L+2=B S.L-2={579} S.A-1={5789} R.L-2={689}]: ref 0 outmirror -1
+    e.g. recv d=8 97858565/87966885 k029 EDGE(8->{6789})[S.A-1={579} S.L-1={589} R.L+2={78} S.A+1={5689}]: ref -3 outmirror -2
+    e.g. recv d=8 97858565/87966885 k044 EDGE(8->{5678})[S.L+1={568} S.A-1={569} S.A+1={589}]: ref -3 outmirror -6
+T3 PASS; T4 PASS (both controls fail)

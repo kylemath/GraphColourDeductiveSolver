@@ -1,0 +1,18 @@
+TV slots slots_GS14_01 (all 1,132 rows)  28812 reference slots compared, mismatches 0
+TV coef  a receivers GS14_01            13152 (key, row) pairs, 4150 nonzero expected, mismatches 0
+TV coef  b senders+cons2 GS14_01        14016 (key, row) pairs, 3037 nonzero expected, mismatches 0
+TV slots c_A + c_B (W00..W62, W5)       2256 reference slots compared, mismatches 0
+TV slots c_C rows (400, W5)            10676 reference slots compared, mismatches 0
+TV c_C keys: 229 evaluated, 71 skipped (payer set mixing 8 / 9: K008 K013 K014 K016 K026 K029 K032 K036 K038 K041 K048 K051 K052 K053 K056 K060 K068 K074 K083 K088 K097 K106 K107 K119 K123 K130 K145 K146 K155 K163 K164 K175 K176 K179 K180 K184 K185 K187 K196 K198 K202 K206 K208 K210 K211 K213 K214 K215 K224 K226 K232 K234 K241 K250 K257 K258 K261 K263 K264 K265 K266 K268 K269 K271 K273 K275 K280 K281 K292 K294 K297), 56 of the evaluated refused by the code_gk8 parser (payer 8/9 with S.L+-3; evaluated through the matcher directly)
+TV coef  c_C W5 (all evaluated keys)    91600 (key, row) pairs, 13786 nonzero expected, mismatches 0
+TV coef  c_C W5 (parser-accepted keys)   69200 (key, row) pairs, 11935 nonzero expected, mismatches 0
+TV coef  c_C W5 (payer exactly 8 or 9)   58000 (key, row) pairs, 7494 nonzero expected, mismatches 0
+TV d outposs   ctl_outposs  R0456: correct +0 wrong -10 | code_gk8 +0, planted outposs reading -10 -> OK; key REFUSED by the parser (ctl_outposs: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outposs   ctl_outposs  R0457: correct +0 wrong -12 | code_gk8 +0, planted outposs reading -12 -> OK; key REFUSED by the parser (ctl_outposs: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outposs   ctl_outposs2 R0456: correct +0 wrong -12 | code_gk8 +0, planted outposs reading -12 -> OK; key REFUSED by the parser (ctl_outposs2: position S.L-3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outposs   ctl_outposs2 R0457: correct +0 wrong -12 | code_gk8 +0, planted outposs reading -12 -> OK; key REFUSED by the parser (ctl_outposs2: position S.L-3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outmirror w6b16s_c01   R0459: correct -2 wrong -1 | code_gk8 -2, planted outmirror reading -1 -> OK; key accepted
+TV d outmirror w6b16s_c01   R0732: correct -3 wrong -2 | code_gk8 -3, planted outmirror reading -2 -> OK; key accepted
+TV d outmirror ctl_mirror   R0463: correct -1 wrong +0 | code_gk8 -1, planted outmirror reading +0 -> OK; key accepted
+TV d outmirror ctl_mirror   R0466: correct -1 wrong -2 | code_gk8 -1, planted outmirror reading -2 -> OK; key accepted
+TV summary (mismatch counts): {'slots GS14': 0, 'a': 0, 'b': 0, 'c_A': 0, 'slots c_C': 0, 'c_C': 0, 'd': 0} -> PASS

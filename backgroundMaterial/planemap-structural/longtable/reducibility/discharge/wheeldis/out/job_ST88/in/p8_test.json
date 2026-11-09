@@ -1,0 +1,292 @@
+{
+ "A": {
+  "slots": 2256,
+  "mismatches": 0
+ },
+ "B": {
+  "slots": 1128,
+  "slots_payer89": 246,
+  "mismatches": 0
+ },
+ "C": [
+  {
+   "mode": "W5",
+   "pairs": 120000,
+   "nonzero": 20390,
+   "mismatches": 0,
+   "by_type": {},
+   "examples": []
+  },
+  {
+   "mode": "W7",
+   "pairs": 120000,
+   "nonzero": 21240,
+   "mismatches": 0,
+   "by_type": {},
+   "examples": []
+  }
+ ],
+ "E": {
+  "outposs": {
+   "mode": "W5",
+   "pairs": 120000,
+   "nonzero": 20390,
+   "mismatches": 2033,
+   "by_type": {
+    "recv d>=10": 397,
+    "recv d=9": 355,
+    "recv d=8": 1281
+   },
+   "examples": [
+    "('R10 5675755886/6585665556', \"(frozenset({9}), frozenset({5}), {'S.L+2': frozenset({5, 6, 7}), 'S.L+1': frozenset({8, 9, 5}), 'S.A+1': frozenset({5, 6}), 'S.L+3': frozenset({8, 5, 6})})\", -1, 0)",
+    "('R9 677555585/557675666', \"(frozenset({9}), frozenset({5}), {'S.L+2': frozenset({5, 6, 7}), 'S.L+1': frozenset({8, 9, 5}), 'S.A+1': frozenset({5, 6}), 'S.L+3': frozenset({8, 5, 6})})\", -4, 0)",
+    "('R9 756556695/556595557', \"(frozenset({9}), frozenset({5}), {'S.L+2': frozenset({5, 6, 7}), 'S.L+1': frozenset({8, 9, 5}), 'S.A+1': frozenset({5, 6}), 'S.L+3': frozenset({8, 5, 6})})\", -2, 0)",
+    "('R10 5587656677/8855766655', \"(frozenset({9}), frozenset({5}), {'S.L+2': frozenset({5, 6, 7}), 'S.L+1': frozenset({8, 9, 5}), 'S.A+1': frozenset({5, 6}), 'S.L+3': frozenset({8, 5, 6})})\", -2, 0)",
+    "('R10 9757877755/7587688559', \"(frozenset({9}), frozenset({5}), {'S.L+2': frozenset({5, 6, 7}), 'S.L+1': frozenset({8, 9, 5}), 'S.A+1': frozenset({5, 6}), 'S.L+3': frozenset({8, 5, 6})})\", -1, 0)"
+   ]
+  },
+  "outmirror": {
+   "mode": "W5",
+   "pairs": 120000,
+   "nonzero": 20390,
+   "mismatches": 655,
+   "by_type": {
+    "recv d>=10": 168,
+    "recv d=8": 339,
+    "recv d=9": 148
+   },
+   "examples": [
+    "('R10 5888855955/8876556675', \"(frozenset({9}), frozenset({8}), {'R.L+2': frozenset({8, 6}), 'S.A-1': frozenset({8, 9, 5, 6}), 'S.L+2': frozenset({9, 5, 6, 7}), 'S.L-2': frozenset({8, 9, 5, 7}), 'R.L-2': frozenset({8, 9, 6, 7})})\", -3, -2)",
+    "('R10 9766675686/6666755687', \"(frozenset({9}), frozenset({8}), {'R.L+2': frozenset({8, 6}), 'S.A-1': frozenset({8, 9, 5, 6}), 'S.L+2': frozenset({9, 5, 6, 7}), 'S.L-2': frozenset({8, 9, 5, 7}), 'R.L-2': frozenset({8, 9, 6, 7})})\", -2, -1)",
+    "('R8 65865558/65565875', \"(frozenset({8, 9}), frozenset({9, 6}), {'S.A-1': frozenset({8, 9, 5})})\", -2, -3)",
+    "('R9 677555585/557675666', \"(frozenset({8, 9}), frozenset({9, 6}), {'S.A-1': frozenset({8, 9, 5})})\", 1, 0)",
+    "('R9 756556695/556595557', \"(frozenset({8, 9}), frozenset({9, 6}), {'S.A-1': frozenset({8, 9, 5})})\", -7, -6)"
+   ]
+  },
+  "in7": {
+   "mode": "W5",
+   "pairs": 120400,
+   "nonzero": 20516,
+   "mismatches": 127,
+   "by_type": {
+    "recv d>=10": 33,
+    "recv d=9": 33,
+    "recv d=8": 61
+   },
+   "examples": [
+    "('R10 5675755886/6585665556', \"(frozenset({7}), frozenset({8, 9}), {'S.L+2': frozenset({5})})\", 4, 2)",
+    "('R9 677555585/557675666', \"(frozenset({7}), frozenset({8, 9}), {'S.L+2': frozenset({5})})\", 4, 3)",
+    "('R9 756556695/556595557', \"(frozenset({7}), frozenset({8, 9}), {'S.L+2': frozenset({5})})\", 2, 1)",
+    "('R9 766765986/759656765', \"(frozenset({7}), frozenset({8, 9}), {'S.L+2': frozenset({5})})\", 4, 1)",
+    "('R8 55577685/89566675', \"(frozenset({7}), frozenset({8, 9}), {'S.L+2': frozenset({5})})\", 4, 1)"
+   ]
+  }
+ },
+ "D": {
+  "pairs": 20,
+  "mismatches": 0,
+  "detail": [
+   {
+    "dual": "cert signs",
+    "pair": "8->5",
+    "patterns": 24,
+    "pricer": 3.374863955315979,
+    "brute": 3.374863955315979,
+    "ok": true,
+    "method": "mip",
+    "rule": "EDGE(8->5)[S.A+1={5678} R.L+2={5689}]"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "8->6",
+    "patterns": 18,
+    "pricer": 0.7456897081692488,
+    "brute": 0.7456897081692488,
+    "ok": true,
+    "method": "mip",
+    "rule": "EDGE(8->6)[S.L+1={579} S.L+2={5789} S.L-1={5679} S.L-2={579} S.A+1={579} S.A-1={5679} R.L+2={5679} R.L-2={589}]"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "8->7",
+    "patterns": 24,
+    "pricer": 4.026474655649572,
+    "brute": 4.026474655649572,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(8->7)[S.L+1={578} S.L+2={5678} S.L-1={5678} S.L-2={5678} S.A+1={5678} S.A-1={5678} R.L+2={578} R.L-2={578}]"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "8->8",
+    "patterns": 20,
+    "pricer": 2.2088308013716524,
+    "brute": 2.2088308013716524,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(8->8)[S.L+1={57} S.L+2=7 S.L-1={57} S.L-2=7 S.A+1={567} S.A-1={567} R.L-2={5678}]"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "8->9",
+    "patterns": 2,
+    "pricer": 0.47548563572806224,
+    "brute": 0.47548563572806224,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(8->9)"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "9->5",
+    "patterns": 12,
+    "pricer": 1.7415104433981567,
+    "brute": 1.7415104433981567,
+    "ok": true,
+    "method": "mip",
+    "rule": "EDGE(9->5)[S.L+2={5789} S.L-1={5689} S.A+1={5679} S.A-1={5679} R.L-2={5789}]"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "9->6",
+    "patterns": 4,
+    "pricer": 0.8707552216990784,
+    "brute": 0.8707552216990784,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(9->6)"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "9->7",
+    "patterns": 4,
+    "pricer": 0.4353776108495392,
+    "brute": 0.4353776108495392,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(9->7)[S.L+1={59} S.L-1={59} S.A+1={69} S.A-1={69}]"
+   },
+   {
+    "dual": "cert signs",
+    "pair": "9->8",
+    "patterns": 2,
+    "pricer": 0.0,
+    "brute": 0.0,
+    "ok": true,
+    "method": "box",
+    "rule": null
+   },
+   {
+    "dual": "cert signs",
+    "pair": "9->9",
+    "patterns": 4,
+    "pricer": 0.4353776108495392,
+    "brute": 0.4353776108495392,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(9->9)[S.L+2=5 S.L-2=5 S.A+1={67} S.A-1={67}]"
+   },
+   {
+    "dual": "random signs",
+    "pair": "8->5",
+    "patterns": 24,
+    "pricer": 3.064162094757713,
+    "brute": 3.064162094757713,
+    "ok": true,
+    "method": "mip",
+    "rule": "EDGE(8->5)[S.L+1={5679} S.L+2={579} S.L-1={5679} S.L-2={579} S.A+1={5679} S.A-1={5679}]"
+   },
+   {
+    "dual": "random signs",
+    "pair": "8->6",
+    "patterns": 18,
+    "pricer": 1.0671030064132587,
+    "brute": 1.0671030064132587,
+    "ok": true,
+    "method": "mip",
+    "rule": "EDGE(8->6)[S.L+1={5679} S.L+2={679} S.L-1={5679} S.L-2={679} S.A+1=9 S.A-1=9 R.L+2={5679} R.L-2={5679}]"
+   },
+   {
+    "dual": "random signs",
+    "pair": "8->7",
+    "patterns": 24,
+    "pricer": 2.7579328428065026,
+    "brute": 2.7579328428065026,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(8->7)[S.L+1={567} S.L+2={579} S.L-1={567} S.L-2={579} S.A+1={578} S.A-1={578} R.L+2=S R.L-2=S]"
+   },
+   {
+    "dual": "random signs",
+    "pair": "8->8",
+    "patterns": 20,
+    "pricer": 7.511102158602688,
+    "brute": 7.511102158602688,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(8->8)[S.L+3=5 S.L-3=5 S.A+1=S S.A-1=S R.L-2={5678}]"
+   },
+   {
+    "dual": "random signs",
+    "pair": "8->9",
+    "patterns": 2,
+    "pricer": 0.2494827751184845,
+    "brute": 0.2494827751184845,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(8->9)"
+   },
+   {
+    "dual": "random signs",
+    "pair": "9->5",
+    "patterns": 12,
+    "pricer": 0.0,
+    "brute": 0.0,
+    "ok": true,
+    "method": "mip",
+    "rule": "EDGE(9->5)[S.L+1={5789} S.L+2={6789} S.L+3=5 S.L-1={58} S.L-2={678} S.L-3=5 S.A+1={67} S.A-1={67} R.L+2={58} R.L-2={58}]"
+   },
+   {
+    "dual": "random signs",
+    "pair": "9->6",
+    "patterns": 4,
+    "pricer": 0.0,
+    "brute": 0.0,
+    "ok": true,
+    "method": "box",
+    "rule": null
+   },
+   {
+    "dual": "random signs",
+    "pair": "9->7",
+    "patterns": 4,
+    "pricer": 0.0,
+    "brute": 0.0,
+    "ok": true,
+    "method": "box",
+    "rule": null
+   },
+   {
+    "dual": "random signs",
+    "pair": "9->8",
+    "patterns": 2,
+    "pricer": 0.0,
+    "brute": 0.0,
+    "ok": true,
+    "method": "box",
+    "rule": null
+   },
+   {
+    "dual": "random signs",
+    "pair": "9->9",
+    "patterns": 4,
+    "pricer": 1.7662736051178372,
+    "brute": 1.7662736051178372,
+    "ok": true,
+    "method": "box",
+    "rule": "EDGE(9->9)[S.L+3=5 S.L-3=5 S.A+1=7 S.A-1=7 R.L+2=5 R.L-2=5]"
+   }
+  ]
+ },
+ "verdict": "PASS"
+}

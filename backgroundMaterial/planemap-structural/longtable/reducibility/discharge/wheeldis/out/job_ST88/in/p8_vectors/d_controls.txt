@@ -1,0 +1,12 @@
+# Planted controls (PAYER8SPEC builder bugs) that a correct harness must reject. Each line: the bug, the key, a GS14_01 row, the correct
+# coefficient (W5; IN - OUT on receivers) and the wrong one the bug produces.
+#   outposs  : an OUT slot counted on a POSSIBLE match (S.L+-3 = * then matches any key set): the payer is over-credited.
+#   outmirror: for chirality sg = -1, S.A+1 / S.A-1 of the OUT slot not mirrored (read as s_{i+1} / s_{i-2} instead of s_{i-2} / s_{i+1}).
+outposs  key ctl_outposs EDGE(8->5)[S.L+3=5]  row R0456 d=8 link=55557858 apex=58565558 w=-0.00541239903167  correct coef=+0 (IN=0 OUT=0)  control outposs gives -10  (rows of the cert where outposs changes this key: 152)
+outposs  key ctl_outposs EDGE(8->5)[S.L+3=5]  row R0457 d=8 link=55558558 apex=58567776 w=-0.00105586019891  correct coef=+0 (IN=0 OUT=0)  control outposs gives -12  (rows of the cert where outposs changes this key: 152)
+outposs  key ctl_outposs2 EDGE(8->{567})[S.L-3={67}]  row R0456 d=8 link=55557858 apex=58565558 w=-0.00541239903167  correct coef=+0 (IN=0 OUT=0)  control outposs gives -12  (rows of the cert where outposs changes this key: 152)
+outposs  key ctl_outposs2 EDGE(8->{567})[S.L-3={67}]  row R0457 d=8 link=55558558 apex=58567776 w=-0.00105586019891  correct coef=+0 (IN=0 OUT=0)  control outposs gives -12  (rows of the cert where outposs changes this key: 152)
+outmirror  key w6b16s_c01 EDGE(8->{678})[S.L+1={5789} S.L+2=S S.L-1={5789} S.L-2=S S.A+1={5678} R.L+2={6789}]  row R0459 d=8 link=55558558 apex=75765956 w=-0.000300036189944  correct coef=-2 (IN=0 OUT=2)  control outmirror gives -1  (rows of the cert where outmirror changes this key: 4)
+outmirror  key w6b16s_c01 EDGE(8->{678})[S.L+1={5789} S.L+2=S S.L-1={5789} S.L-2=S S.A+1={5678} R.L+2={6789}]  row R0732 d=8 link=76755556 apex=99658585 w=-9.14020109396e-05  correct coef=-3 (IN=0 OUT=3)  control outmirror gives -2  (rows of the cert where outmirror changes this key: 4)
+outmirror  key ctl_mirror EDGE(8->5)[S.A+1=7 S.A-1=5]  row R0463 d=8 link=55658557 apex=56567777 w=-0.000893176982863  correct coef=-1 (IN=0 OUT=1)  control outmirror gives +0  (rows of the cert where outmirror changes this key: 35)
+outmirror  key ctl_mirror EDGE(8->5)[S.A+1=7 S.A-1=5]  row R0466 d=8 link=76765555 apex=68575785 w=-0.000920838580937  correct coef=-1 (IN=0 OUT=1)  control outmirror gives -2  (rows of the cert where outmirror changes this key: 35)

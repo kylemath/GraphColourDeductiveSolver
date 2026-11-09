@@ -1,0 +1,16 @@
+outposs   R10 5675755886/6585665556    EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -1, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R9 677555585/557675666       EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -4, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R9 756556695/556595557       EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -2, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R10 5587656677/8855766655    EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -2, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R10 9757877755/7587688559    EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -1, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outmirror R10 5888855955/8876556675    EDGE(9->8)[R.L+2={68} R.L-2={6789} S.A-1={5689} S.L+2={5679} S.L-2={5789}]: listed (A -3, B -2); code_gk8 -2 -> B
+outmirror R10 9766675686/6666755687    EDGE(9->8)[R.L+2={68} R.L-2={6789} S.A-1={5689} S.L+2={5679} S.L-2={5789}]: listed (A -2, B -1); code_gk8 -1 -> B
+outmirror R8 65865558/65565875         EDGE({89}->{69})[S.A-1={589}]: listed (A -2, B -3); code_gk8 -3 -> B
+outmirror R9 677555585/557675666       EDGE({89}->{69})[S.A-1={589}]: listed (A 1, B 0); code_gk8 0 -> B
+outmirror R9 756556695/556595557       EDGE({89}->{69})[S.A-1={589}]: listed (A -7, B -6); code_gk8 -6 -> B (pmask-dependent: {'patched298': -6, 'all': -6, 'none': -7})
+in7       R10 5675755886/6585665556    EDGE(7->{89})[S.L+2=5]: listed (A 4, B 2); code_gk8 2 -> B
+in7       R9 677555585/557675666       EDGE(7->{89})[S.L+2=5]: listed (A 4, B 3); code_gk8 3 -> B
+in7       R9 756556695/556595557       EDGE(7->{89})[S.L+2=5]: listed (A 2, B 1); code_gk8 1 -> B
+in7       R9 766765986/759656765       EDGE(7->{89})[S.L+2=5]: listed (A 4, B 1); code_gk8 1 -> B
+in7       R8 55577685/89566675         EDGE(7->{89})[S.L+2=5]: listed (A 4, B 1); code_gk8 1 -> B
+T2 summary: {('in7', 'B'): 5, ('outmirror', 'B'): 5, ('outposs', 'B'): 5}

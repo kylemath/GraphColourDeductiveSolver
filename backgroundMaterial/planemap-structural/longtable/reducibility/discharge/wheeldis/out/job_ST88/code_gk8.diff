@@ -1,0 +1,373 @@
+diff -ru code_gk7/gk_blocks.py code_gk8/gk_blocks.py
+--- code_gk7/gk_blocks.py	2026-11-06 00:54:38
++++ code_gk8/gk_blocks.py	2026-11-09 11:35:24
+@@ -4,8 +4,9 @@
+     c_ = [l for l in lets if (m >> (l - 5)) & 1]
+     return rr_.choice(c_) if c_ else rr_.choice(lets)
+ def _gk_plant(rr_, d, key, role):
+-    """a random degree-d arrangement where key's IN slot (role 'in', payer = a link vertex) or OUT slot (role 'out', d = 7, the
+-    centre pays a link vertex) is set up at a random position and chirality from the key's own sets (other letters random)"""
++    """a random degree-d arrangement where key's IN slot (role 'in', payer = a link vertex) or OUT slot (role 'out', the centre pays
++    a link vertex: d = 7 payer 7, code_gk8: d = 8 payer 8, d >= 9 payer 9) is set up at a random position and chirality from the
++    key's own sets (other letters random)"""
+     n_, U_, V_, cd_ = key
+     w_ = [rr_.choice((5, 5, 6, 6, 7, 7, 7, 8, 9)) for _ in range(d)]; s_ = [rr_.choice((5, 5, 6, 6, 7, 7, 8, 9)) for _ in range(d)]
+     j = rr_.randrange(d); e = rr_.choice((1, -1))
+@@ -24,7 +25,7 @@
+             elif pi == 8: setab(j, j + e, v)
+             elif pi == 10: setab(j, j - e, v)
+     else:
+-        p_ = _gk_pick(rr_, U_, (5, 6, 7)); w_[j] = p_
++        p_ = _gk_pick(rr_, U_); w_[j] = p_   # code_gk8: payer letters 5..9
+         cdd = dict(cd_)
+         for pi, m in cd_:
+             v = _gk_pick(rr_, m)
+@@ -49,7 +50,7 @@
+         if q_ % 3 == 0 or not keys:
+             out.append(([rr_.choice((5, 5, 5, 6, 6, 7, 7, 8, 9)) for _ in range(d)], [rr_.choice((5, 5, 6, 6, 7, 7, 8, 9)) for _ in range(d)])); continue
+         key = keys[(q_ // 3) % len(keys)]
+-        role = 'out' if (d == 7 and (key[1] >> 2) & 1 and q_ % 3 == 2) else 'in'
++        role = 'out' if (q_ % 3 == 2 and ((d == 7 and (key[1] >> 2) & 1) or (d == 8 and (key[1] >> 3) & 1) or (d >= 9 and (key[1] >> 4) & 1))) else 'in'   # code_gk8
+         out.append(_gk_plant(rr_, d, key, role))
+     return out
+ def _gk_win_of(d, w_, s_, j):
+@@ -60,17 +61,20 @@
+     _rr = random.Random(int(os.environ.get('GKSEED', '4004'))); _amt = {k_[0]: KSV.get(k_[0], 0.0) for k_ in GKKEYS}
+     _nzk = [k_ for k_ in GKKEYS if _amt[k_[0]] > 0]
+     # (1) numpy gkwin table vs gkfam.Win on random windows (and windows read from planted arrangements)
+-    _wb = 0; _wn = 0; _wpos = 0
++    _wb = 0; _wn = 0; _wpos = 0; _wneg = 0
+     for _ in range(int(os.environ.get('GKSTW', '30000'))):
+         U_ = _rr.choice((7, 8, 9))
+         if _rr.random() < 0.5 and _nzk:
+-            d_ = U_ if U_ < 9 else _rr.choice((9, 10, 11)); w_, s_ = _gk_plant(_rr, d_, _rr.choice(_nzk), 'in')
++            k_ = _rr.choice(_nzk); ro_ = 'in'
++            if k_[1] in (8, 16) and _rr.random() < 0.5: ro_ = 'out'; U_ = 8 if k_[1] == 8 else 9   # code_gk8: plant a payer-8/9 OUT slot
++            d_ = U_ if U_ < 9 else _rr.choice((9, 10, 11)); w_, s_ = _gk_plant(_rr, d_, k_, ro_)
+             j_ = _rr.randrange(d_); win = _gk_win_of(d_, w_, s_, j_)
+         else: win = tuple(_rr.choice(LET) for _ in range(9))
+-        a_ = sum(_amt[GKENG.names[q]] for q in GKWIN.counts(U_, *win)); b_ = GKWNP[U_ - 7][tuple(x - 5 for x in win)]
+-        _wn += 1; _wpos += a_ > 0
++        a_ = sum(_amt[GKENG.names[q]] for q in GKWIN.counts(U_, *win)) - sum(_amt[GKENG.names[q]] for q in GKWIN.out_counts(U_, *win))   # code_gk8: IN - OUT
++        b_ = GKWNP[U_ - 7][tuple(x - 5 for x in win)]
++        _wn += 1; _wpos += a_ > 0; _wneg += a_ < 0
+         if abs(a_ - b_) > 1e-12: _wb += 1; _wb <= 5 and print('GK WINDOW TABLE MISMATCH U=%d %s scalar %.15g numpy %.15g' % (U_, win, a_, b_))
+-    print('W17 GK window tables: %d windows, %d with credit > 0; numpy vs gkfam.Win mismatches %d' % (_wn, _wpos, _wb), flush=True)
++    print('W17 GK window tables: %d windows, %d with credit > 0, %d with credit < 0 (payer-8/9 OUT); numpy vs gkfam.Win mismatches %d' % (_wn, _wpos, _wneg, _wb), flush=True)
+     if _wb: fail('W17 GK numpy window table differs from gkfam.Win')
+     # (2) C++ exact leaf ('e') vs Python rows, d = 7..GKSTD, random + planted; (3) per-position credit <= GKREL
+     _mx = {}; _bad = 0; _cmp = 0; _inadm = 0; _nz = collections.Counter(); _pb = 0; _ptot = 0; _ptight = 0
+@@ -84,16 +88,15 @@
+                 P_ = GKF.recv7_pic(w_, s_, pmask, MASK, lambda k_: _ksx(7, w_, s_, k_, ('w6', 7)), lambda k_, f_: _ksx(7, w_, s_, k_, ('w7', 7, f_)))
+                 o_, i_ = GKENG.pic_counts(P_)
+                 _nz[(d, 'out>0')] += any(o_[n] and _amt[n] > 0 for n in o_); _nz[(d, 'in>0')] += any(i_[n] and _amt[n] > 0 for n in i_)
+-                for j_ in range(d):   # per-position IN credit (exact picture) <= GKREL at that position
+-                    if w_[j_] > 7: continue
++                for j_ in range(d):   # per-position IN credit (exact picture) <= GKREL at that position (code_gk8: link 8 / 9 payers too)
+                     ex_ = sum(_amt[GKENG.names[q]] for e_ in (1, -1) for q in GKENG.in_hits(GKF.bit(w_[j_]), GKF.bit(7), P_.in_vec(j_, e_)))
+                     rel_ = GKREL_[0, (w_[(j_ - 1) % d] - 5) * 25 + (s_[(j_ - 1) % d] - 5) * 5 + w_[j_] - 5, (s_[j_] - 5) * 5 + w_[(j_ + 1) % d] - 5]
+                     _ptot += 1; _ptight += abs(ex_ - rel_) < 1e-15
+                     if ex_ > rel_ + 1e-12: _pb += 1; _pb <= 5 and print('GK BOUND BELOW EXACT d=7 %s %s j=%d exact %.12g window %.12g' % (lk, sv, j_, ex_, rel_))
+             else:
+                 _nz[(d, 'in>0')] += bool(gk_)
+-                for j_ in range(d):
+-                    if w_[j_] > 7: continue
++                _nz[(d, 'coef<0')] += any(v_ < 0 for v_ in gk_.values())   # code_gk8: rows where a payer-8/9 OUT wins
++                for j_ in range(d):   # code_gk8: every position (payer 8 / 9 IN, centre OUT)
+                     win = _gk_win_of(d, w_, s_, j_); ex_ = GKWNP[min(d, 9) - 7][tuple(x - 5 for x in win)]
+                     rel_ = GKREL_[min(d, 9) - 7, (win[1] - 5) * 25 + (win[6] - 5) * 5 + win[2] - 5, (win[7] - 5) * 5 + win[3] - 5]
+                     _ptot += 1; _ptight += abs(ex_ - rel_) < 1e-15
+diff -ru code_gk7/gkfam.py code_gk8/gkfam.py
+--- code_gk7/gkfam.py	2026-11-06 00:45:19
++++ code_gk8/gkfam.py	2026-11-09 11:34:45
+@@ -17,15 +17,20 @@
+ # Pictures: sender (w, H, F): apex S / B by H, link 6 private S / B by F, 7+ privates wildcard. cons2 (L, s): apex S (s <= 6) /
+ # B (s >= 7), every private wildcard. Receiver d = 7 (KEYSPEC 5): apex exact; link 6 private pmask(7, window) & ~f2b extra6;
+ # link 7 private on side f: l3q MASK & ~f2b extra7 when L_{k+f} <= 6 and A(k, k+f) <= 6, else wildcard.
+-# Receiver d >= 8 (DUAL_EXPORT gkwin, a bound): OUT = 0; IN per link position j (payer W[j] in {5, 6, 7}) from the window
+-# (w_{j-2..j+2}, s_{j-2..j+1}) only: payer 6 private pmask(U, window) (no extra6), payer 7 privates wildcard, neighbour 6 private
++# Receiver d >= 8 (DUAL_EXPORT gkwin, a bound): IN per link position j (payer W[j] in {5, ..., 9}) from the window
++# (w_{j-2..j+2}, s_{j-2..j+1}) only: payer 6 private pmask(U, window) (no extra6), payer 7+ privates wildcard, neighbour 6 private
+ # pmask OR-ed over its two letters outside the window, neighbour 7+ private wildcard, neighbour 5 -> the apex beyond (exact).
++# code_gk8 (W17, 9 Nov 2026, from W6b's PAYER8SPEC.md, W5 reading; no Opus code): payer letters 8 / 9 (exactly {8} or exactly {9};
++# S.L+-3 refused for them). OUT at d >= 8 (centre U = min(d, 9) pays w_i; payer-8 keys only at U = 8, payer-9 keys at U = 9): SURE
++# match on the window W_i = (w_{i-2..i+2}, s_{i-2..i+1}): sg = +1: S.L+-1 = w_{i+-1}, S.L+-2 = w_{i+-2}, S.A+1 = s_{i+1},
++# S.A-1 = s_{i-2}, R.L+2 = s_i, R.L-2 = s_{i-1}, S.L+-3 wildcard; sg = -1 mirrors. Window rows: IN - OUT.
+ import re, collections
+ LET = (5, 6, 7, 8, 9)
+ SYM = {'5': 1, '6': 2, '7': 4, '8': 8, '9': 16, 'S': 3, 'B': 28, '*': 31}
+ EPOS = ['S.L+1', 'S.L+2', 'S.L+3', 'S.L-1', 'S.L-2', 'S.L-3', 'S.A+1', 'S.A-1', 'R.L+2', 'R.L+3', 'R.L-2', 'R.L-3', 'R.A+1', 'R.A-1']
+ EMIRROR = [3, 4, 5, 0, 1, 2, 7, 6, 10, 11, 8, 9, 13, 12]
+ ALLOWED = (0, 1, 2, 3, 4, 5, 6, 7, 8, 10)
++P8BAD = (2, 5, 9, 11, 12, 13)   # code_gk8: S.L+3, S.L-3, R.L+3, R.L-3, R.A+1, R.A-1 refused for a payer 8 / 9
+ S_, B_ = 3, 28
+ def bit(l): return 1 << (min(l, 9) - 5)
+ def symmask(t):
+@@ -38,14 +43,17 @@
+     return inv.get(m, '{' + ''.join(str(l) for l in LET if m >> (l - 5) & 1) + '}')
+ def parse_key(line):
+     """'NAME EDGE(U->V)[POS=SYM ...]' -> (name, payer mask, payee mask, ((pos, mask), ...)); refuses positions outside the payer
+-    2-ball and payer letters outside {5, 6, 7} (the d >= 8 window credit has no 8+ payer: a key with one would be unsound there)"""
++    2-ball; payer letters must be a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9} (code_gk8, PAYER8SPEC); a payer-8/9
++    key may not constrain S.L+3 / S.L-3 (wildcard for a payer >= 8, W5 reading)"""
+     f = line.split(None, 1)
+     if len(f) != 2: raise ValueError('bad key line %r' % line)
+     name, rule = f[0], f[1].strip()
+     m_ = re.match(r'^EDGE\(([^-]+)->([^)]+)\)(?:\[(.*)\])?$', rule)
+     if not m_: raise ValueError('bad rule %r' % rule)
+     U, V = symmask(m_.group(1)), symmask(m_.group(2))
+-    if not U or U & ~7: raise ValueError('%s: payer letters must be a nonempty subset of {5, 6, 7} (got %s)' % (name, m_.group(1)))
++    if not U or (U & ~7 and U not in (8, 16)):
++        raise ValueError('%s: payer letters must be a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9} (got %s; split a mixed '
++                         'payer set into single-letter keys)' % (name, m_.group(1)))
+     if not V: raise ValueError('%s: empty payee set' % name)
+     conds = []
+     for t in (m_.group(3) or '').split():
+@@ -53,6 +61,7 @@
+         if p_ not in EPOS: raise ValueError('%s: unknown position %s' % (name, p_))
+         pi = EPOS.index(p_)
+         if pi not in ALLOWED: raise ValueError('%s: position %s is outside the payer 2-ball (refused)' % (name, p_))
++        if U in (8, 16) and pi in P8BAD: raise ValueError('%s: position %s is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)' % (name, p_))
+         if any(q == pi for q, _ in conds): raise ValueError('%s: position %s given twice' % (name, p_))
+         mk = symmask(s_)
+         if not mk: raise ValueError('%s: empty set at %s' % (name, p_))
+@@ -187,20 +196,38 @@
+         vm = (bit(wm1), bit(sm1), pv[-1], bit(wp1), bit(s0), pv[1], fm, fp, bit(wm2), 0, bit(wp2))
+         return vp, vm
+     def counts(self, U, *win):
+-        """tuple of key indices, with multiplicity (one entry per chirality that possibly matches)"""
++        """tuple of key indices, with multiplicity (one entry per chirality that possibly matches); code_gk8: payer w_j any letter
++        (5..9; payers 7, 8, 9 have wildcard own privates)"""
+         k_ = (U,) + win; r = self.memo.get(k_)
+         if r is None:
+-            if win[2] > 7: r = ()
+-            else:
+-                vp, vm = self.vecs(U, *win)
+-                r = self.eng.in_hits(bit(win[2]), bit(U), vp) + self.eng.in_hits(bit(win[2]), bit(U), vm)
++            vp, vm = self.vecs(U, *win)
++            r = self.eng.in_hits(bit(win[2]), bit(U), vp) + self.eng.in_hits(bit(win[2]), bit(U), vm)
+             if len(self.memo) > 3000000: self.memo.clear()
+             self.memo[k_] = r
+         return r
++    @staticmethod
++    def out_vecs(wm2, wm1, w0, wp1, wp2, sm2, sm1, s0, sp1):
++        """code_gk8 (PAYER8SPEC 3.1): the two OUT-slot vectors (sg = +1, -1) of centre -> w_i on the window W_i; S.L+-3 wildcard"""
++        op = (bit(wp1), bit(wp2), 31, bit(wm1), bit(wm2), 31, bit(sp1), bit(sm2), bit(s0), 0, bit(sm1))
++        om = (bit(wm1), bit(wm2), 31, bit(wp1), bit(wp2), 31, bit(sm2), bit(sp1), bit(sm1), 0, bit(s0))
++        return op, om
++    def out_counts(self, U, *win):
++        """code_gk8: tuple of key indices, one entry per chirality whose OUT slot (centre U pays w_i) SURELY matches; only at U >= 8
++        (a d = 7 centre's OUT is read on the exact picture, not here)"""
++        if U < 8: return ()
++        k_ = ('o', U) + win; r = self.memo.get(k_)
++        if r is None:
++            op, om = self.out_vecs(*win)
++            r = self.eng.out_hits(bit(U), bit(win[2]), op) + self.eng.out_hits(bit(U), bit(win[2]), om)
++            if len(self.memo) > 3000000: self.memo.clear()
++            self.memo[k_] = r
++        return r
+     def row(self, d, w, s):
+-        """Counter over key names: the gkwin IN count of a receiver of degree d (letters capped at 9)"""
++        """Counter over key names: the gkwin IN - OUT count of a receiver of degree d (letters capped at 9); code_gk8: every link
++        position is a possible payer (5..9), and OUT (PAYER8SPEC 3.1) is subtracted at U >= 8"""
+         U = min(d, 9); W = lambda k: min(w[k % d], 9); S = lambda k: min(s[k % d], 9); out = collections.Counter()
+         for j in range(d):
+-            if W(j) > 7: continue
+-            for q in self.counts(U, W(j - 2), W(j - 1), W(j), W(j + 1), W(j + 2), S(j - 2), S(j - 1), S(j), S(j + 1)): out[self.eng.names[q]] += 1
++            win = (W(j - 2), W(j - 1), W(j), W(j + 1), W(j + 2), S(j - 2), S(j - 1), S(j), S(j + 1))
++            for q in self.counts(U, *win): out[self.eng.names[q]] += 1
++            for q in self.out_counts(U, *win): out[self.eng.names[q]] -= 1
+         return out
+diff -ru code_gk7/run17.sh code_gk8/run17.sh
+--- code_gk7/run17.sh	2026-11-06 20:05:25
++++ code_gk8/run17.sh	2026-11-09 11:36:27
+@@ -1,4 +1,5 @@
+ # W17 Studio-path upper check (one Python process).  usage: SOL=sol.json TAG=name KILLDIR=dir [KS=1] [EGK=keys] [DLIST=7,8|none] [QDUMP_ONLY=1 SEPQDUMP=dir] bash run17.sh
++# code_gk8 (9 Nov 2026): defaults point at code_gk8 and bin/sep3r_gk8 (payer-8/9 GK keys, PAYER8SPEC W5).
+ # = W15's run15.sh (stack: rules 45a4c6d1 (k95f), Studio Tier A l3q V7/V8 tables, args ARGSF (default W15's args_k95f, D 18159, C 627, RPAT 158)
+ # + rpatN3, HAT5=1 V6=0 FB=0 XO=0; families HATRR ZH ZR ZCAP=3 Q7 Q7M Q7CAP=3 unless FAMILIES=off) with st21_w17.py and bin/sep3r_w17.
+ # code_c6 (W17 round 2): C6LE=1 (cons2 as 'the 6 ends <= t'), C6_ONLY=1 (stop after the cons2 step) also come from the caller's env.
+@@ -27,8 +28,8 @@
+ [ -n "$RPATN" ] && echo "rpatN: $RPATN (md5 $(md5sum < $_RF | cut -c1-8))" || echo "rpatN: off (no rpatN pattern loaded)"
+ : ${SOL:?SOL=} ${TAG:?TAG=} ${KILLDIR:?KILLDIR=}
+ if [ "${FAMILIES:-on}" = on ]; then FAM="HATRR=1 ZH=1 ZR=1 ZCAP=3 Q7=1 Q7M=1 Q7CAP=3"; else FAM="HATRR=0"; fi
+-cd /tmp/swarm-W17/wd && env $FAM SEPTAG=$TAG SEPBIN=${SEPBIN:-sep3r_gk7} F2B=$F2BRULES L3Q=1 L3TAB=$S/studio_l3qtab_+1.json,$S/studio_l3qtab_-1.json \
++cd /tmp/swarm-W17/wd && env $FAM SEPTAG=$TAG SEPBIN=${SEPBIN:-sep3r_gk8} F2B=$F2BRULES L3Q=1 L3TAB=$S/studio_l3qtab_+1.json,$S/studio_l3qtab_-1.json \
+   L3Q8=1 L3TAB8=$S/V8/studio_l3qtabV8_+1.json,$S/V8/studio_l3qtabV8_-1.json KILLDIR=$KILLDIR RPATN=$RPATN \
+   HAT5=1 V6=0 FB=0 XO=0 SKIP_LOWER=1 EXPECT_T=${EXPECT_T:-0.041565} EXPECT_PAT=${EXPECT_PAT:-18159,627,158} WLP3X_DEF=1 WLP_SEPF=1 DMAXP=${DMAXP:-17} \
+   W10_HERE=/tmp/swarm-W17/wd W10_ST16=/tmp/swarm-W17/st16 \
+-  nice -n 15 python3 ${W17CODE:-/tmp/swarm-W17/code_gk7}/st21_w17.py $SOL $SOL ${ARGSF:-/tmp/swarm-W17/args_k95f.txt}
++  nice -n 15 python3 ${W17CODE:-/tmp/swarm-W17/code_gk8}/st21_w17.py $SOL $SOL ${ARGSF:-/tmp/swarm-W17/args_k95f.txt}
+diff -ru code_gk7/sep3r_gk.cpp code_gk8/sep3r_gk.cpp
+--- code_gk7/sep3r_gk.cpp	2026-11-06 07:06:40
++++ code_gk8/sep3r_gk.cpp	2026-11-09 11:36:08
+@@ -1,3 +1,9 @@
++// sep3r_gk8 (W17 code_gk8, 9 Nov 2026): sep3r_gk.cpp of code_gk7 plus payer-8/9 GK keys, written from W6b's PAYER8SPEC.md (W5
++// reading; no Opus code). Key payer mask: a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9}; payer-8/9 keys may not
++// use S.L+-3 (positions 2, 5). gkWinVal: the IN gate is widened to every payer letter (7, 8, 9 own privates wildcard) and, at
++// U = 8, 9, the centre's OUT slots (centre pays w_j, SURE on the window: sg = +1 S.L+-1 = w_{j+-1}, S.L+-2 = w_{j+-2},
++// S.A+1 = s_{j+1}, S.A-1 = s_{j-2}, R.L+2 = s_j, R.L-2 = s_{j-1}; sg = -1 mirrored) are subtracted, so GKW / GKREL may be < 0.
++// gkCorr: d = 7 IN loop and d >= 8 loop run over every link position. Everything else as code_gk7.
+ // sep3r_gk7 (swarm W17 round 5, 6 Nov 2026): sep3r_gk.cpp (md5 10f952f6) plus one opt-in flag, SEP_F2B7=1 (needs SEP_Q7M), written
+ // from from_opus/f2b7/SPEC.md only: at the w10Corr leaf a q7m side whose common neighbour or apex is >= 7 gets 31 & ~f2bExtra
+ // (group d7/d8_w7 of that side) instead of 31; the window term QREL stays unmasked, so the leaf correction stays <= 0.
+@@ -340,8 +346,7 @@
+     return F2PM[((((((((long)u * 5 + a) * 5 + b) * 5 + c) * 5 + e) * 5 + f) * 5 + g) * 5 + h) * 5 + k] & 31;
+ }
+ static double gkWinVal(int u, int wm2, int wm1, int w0, int wp1, int wp2, int sm2, int sm1, int s0, int sp1) {
+-    if (w0 > 2) return 0.0;
+-    int U = u + 2, pvp, pvm, fp, fm;
++    int U = u + 2, pvp, pvm, fp, fm;   // code_gk8: no payer gate (w0 = 8, 9 take the payer-7 branch: own privates wildcard)
+     if (w0 == 0) { pvp = 1 << sm1; pvm = 1 << s0; }
+     else if (w0 == 1) { pvp = pvm = gkPM(u, wm2, wm1, wp1, wp2, sm2, sm1, s0, sp1); }
+     else { pvp = pvm = 31; }
+@@ -360,6 +365,16 @@
+         for (int t = 0; t < k.nc; t++) { op = op && (vp[k.pos[t]] & k.msk[t]); om = om && (vm[k.pos[t]] & k.msk[t]); }
+         v += k.a * ((op ? 1 : 0) + (om ? 1 : 0));
+     }
++    if (u >= 1) {   // code_gk8 (PAYER8SPEC 3.1): OUT, the centre U (8 or 9) pays w_j; SURE match on the window; S.L+-3 wildcard
++        int qp[11] = {1 << wp1, 1 << wp2, 31, 1 << wm1, 1 << wm2, 31, 1 << sp1, 1 << sm2, 1 << s0, 0, 1 << sm1};
++        int qm[11] = {1 << wm1, 1 << wm2, 31, 1 << wp1, 1 << wp2, 31, 1 << sm2, 1 << sp1, 1 << sm1, 0, 1 << s0};
++        for (auto &k : GKK) {
++            if (k.a == 0.0 || ((1 << U) & ~k.U) || ((1 << w0) & ~k.V)) continue;
++            bool op = true, om = true;
++            for (int t = 0; t < k.nc; t++) { op = op && !(qp[k.pos[t]] & ~k.msk[t]); om = om && !(qm[k.pos[t]] & ~k.msk[t]); }
++            v -= k.a * ((op ? 1 : 0) + (om ? 1 : 0));
++        }
++    }
+     return v;
+ }
+ static inline long gkIdx(int j) {
+@@ -377,8 +392,7 @@
+             if (x == 2) { int si = f == 1 ? 0 : 1; if (p7c[k][si] < 0) p7c[k][si] = ksPriv7(k, f); return p7c[k][si]; }
+             return 31;
+         };
+-        for (int j = 0; j < d; j++) {
+-            if (wl[j] > 2) continue;
++        for (int j = 0; j < d; j++) {   // code_gk8: every link position (payers 8 / 9 too)
+             int st = ksW(j - 1) * 25 + ksS(j - 1) * 5 + wl[j], c = ksS(j) * 5 + ksW(j + 1);
+             double rel = GKREL[0][st][c], ex = 0.0;
+             if (GKW[gkIdx(j)] > 0.0) {   // the d = 7 picture's sets lie inside the window's: a window count of 0 means no match
+@@ -412,8 +426,7 @@
+             }
+         }
+     } else {
+-        for (int j = 0; j < d; j++) {
+-            if (wl[j] > 2) continue;
++        for (int j = 0; j < d; j++) {   // code_gk8: every link position (payer 8 / 9 IN, centre OUT)
+             int st = ksW(j - 1) * 25 + ksS(j - 1) * 5 + wl[j], c = ksS(j) * 5 + ksW(j + 1);
+             double v = GKW[(long)ui * GKN9 + gkIdx(j)], rel = GKREL[ui][st][c];
+             if (v > rel + 1e-12) { fprintf(stderr, "sep: GK WINDOW ABOVE BOUND d=%d j=%d %.15g > %.15g\n", d, j, v, rel); fflush(stderr); exit(92); }
+@@ -819,14 +832,14 @@
+         if (fread(&nk, 4, 1, g) != 1 || nk < 0 || nk > 4096) return 96;
+         for (int q = 0; q < nk; q++) { GKKey k; int32_t U, V, nc; double a;
+             if (fread(&U, 4, 1, g) != 1 || fread(&V, 4, 1, g) != 1 || fread(&a, 8, 1, g) != 1 || fread(&nc, 4, 1, g) != 1 || nc < 0 || nc > 16) return 97;
+-            if (!(a >= 0.0) || U <= 0 || (U & ~7) || V <= 0 || V > 31) { fprintf(stderr, "sep: GK key %d refused (amount %g, payer %d, payee %d)\n", q, a, U, V); return 98; }
++            if (!(a >= 0.0) || U <= 0 || ((U & ~7) && U != 8 && U != 16) || V <= 0 || V > 31) { fprintf(stderr, "sep: GK key %d refused (amount %g, payer %d, payee %d)\n", q, a, U, V); return 98; }
+             k.U = U; k.V = V; k.a = a; k.nc = nc;
+             for (int t = 0; t < nc; t++) { int32_t pp, mm; if (fread(&pp, 4, 1, g) != 1 || fread(&mm, 4, 1, g) != 1) return 97;
+-                if (pp < 0 || pp > 10 || pp == 9 || mm <= 0 || mm > 31) { fprintf(stderr, "sep: GK position %d / mask %d refused\n", pp, mm); return 99; }
++                if (pp < 0 || pp > 10 || pp == 9 || mm <= 0 || mm > 31 || (U >= 8 && (pp == 2 || pp == 5))) { fprintf(stderr, "sep: GK position %d / mask %d refused\n", pp, mm); return 99; }
+                 k.pos[t] = pp; k.msk[t] = mm; }
+             GKK.push_back(k); }
+         if (fread(&GKREL[0][0][0], sizeof(double), 3 * 125 * 25, g) != 3 * 125 * 25) return 100; fclose(g);
+-        GKW.assign(3 * GKN9, 0.0); double own[3][125][25]; for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++) own[u][a][c] = 0.0;
++        GKW.assign(3 * GKN9, 0.0); double own[3][125][25]; for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++) own[u][a][c] = -1e300;   // code_gk8: cells may be < 0
+         for (int u = 0; u < 3; u++) for (long ix = 0; ix < GKN9; ix++) {
+             int x[9]; long r = ix; for (int t = 8; t >= 0; t--) { x[t] = r % 5; r /= 5; }   // wm2 wm1 w0 wp1 wp2 sm2 sm1 s0 sp1
+             double v = gkWinVal(u, x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8]); GKW[u * GKN9 + ix] = v;
+@@ -835,7 +848,7 @@
+         double mdiff = 0.0; long nd = 0;
+         for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++) {
+             double df = fabs(own[u][a][c] - GKREL[u][a][c]); if (df > mdiff) mdiff = df; if (df > 1e-12) nd++;
+-            GKMAXU[u] = max(GKMAXU[u], GKREL[u][a][c]); if (GKREL[u][a][c] < 0) return 100; }
++            GKMAXU[u] = max(GKMAXU[u], GKREL[u][a][c]); if (!(GKREL[u][a][c] > -1e9 && GKREL[u][a][c] < 1e9)) return 100; }   // code_gk8: negative cells allowed (payer-8/9 OUT)
+         if (const char *m = getenv("SEP_GKPLANT")) GKPLANT = string(m) == "pay" ? 1 : string(m) == "half" ? 2 : 0;
+         fprintf(stderr, "sep: W17 GK table loaded (%s): %d keys, window max %.6g / %.6g / %.6g; own window table vs Python's: %ld cells differ, max |diff| %.3g; plant %d\n",
+                 e, nk, GKMAXU[0], GKMAXU[1], GKMAXU[2], nd, mdiff, GKPLANT);
+diff -ru code_gk7/st21_w17.py code_gk8/st21_w17.py
+--- code_gk7/st21_w17.py	2026-11-06 07:11:40
++++ code_gk8/st21_w17.py	2026-11-09 11:35:09
+@@ -54,6 +54,10 @@
+ # IN - OUT on the class picture, receiver d = 7 IN - OUT on the KEYSPEC section 5 picture, receiver d >= 8 the gkwin IN bound;
+ # mrow rows have no key terms. Separator bin/sep3r_gk (SEP_GK): GKREL window bound at every link position, exact leaf; DP / Karp
+ # tail: GKREL at U = 9. GKST=1 (default with GK): C++ leaf vs Python rows, window-table checks. GKORACLE=N: W6's r9_rows.py oracle.
++# ---- code_gk8 (W17, 9 Nov 2026, from W6b's PAYER8SPEC.md, W5 reading; no Opus code): GK keys may have payer exactly {8} or {9}
++# (gkfam refuses mixed sets and S.L+-3 for them). Window rows (d >= 8): the gkwin payer gate is {5..9} and the centre's OUT slots
++# (payer-8 keys at U = 8, payer-9 keys at U = 9) are subtracted on the same window, so GKREL / GKW / the DP tail may be negative.
++# GKORACLE (W6's round-9 r9_rows.py) predates payer 8/9 and is not updated.
+ import sys, os, json, re, itertools, collections, random
+ from fractions import Fraction as Fr
+ HERE = os.environ.get('W10_HERE', '/tmp/swarm-W17/wd')
+@@ -531,7 +535,7 @@
+         o_, i_ = GKENG.pic_counts(GKF.cons2_pic(list(L), list(s)))
+         r = {('ks', n_): i_[n_] - o_[n_] for n_ in set(o_) | set(i_) if i_[n_] != o_[n_]}; _GKCMEMO[ck] = r
+     return r
+-def gk_recv_terms(d, w, s):   # receiver: d = 7 IN - OUT on the KEYSPEC picture; d >= 8 the gkwin IN bound (no OUT)
++def gk_recv_terms(d, w, s):   # receiver: d = 7 IN - OUT on the KEYSPEC picture; d >= 8 the gkwin IN bound minus the window OUT (code_gk8)
+     out = collections.Counter(); w = list(w); s = list(s)
+     if d == 7:
+         P = GKF.recv7_pic(w, s, pmask, MASK, lambda k_: _ksx(7, w, s, k_, ('w6', 7)) if F2BR else 0, lambda k_, f_: _ksx(7, w, s, k_, ('w7', 7, f_)) if F2BR else 0)
+@@ -559,14 +563,23 @@
+         fm = _np.where(wm1 == 0, bt(sm2), _np.where(wm1 == 1, ORM, _np.uint8(31)))  # priv(j-1, +1)
+         vp = {0: bt(wp1), 1: bt(s0), 2: pvp, 3: bt(wm1), 4: bt(sm1), 5: pvm, 6: fp, 7: fm, 8: bt(wp2), 10: bt(wm2)}
+         vm = {0: bt(wm1), 1: bt(sm1), 2: pvm, 3: bt(wp1), 4: bt(s0), 5: pvp, 6: fm, 7: fp, 8: bt(wm2), 10: bt(wp2)}
++        # code_gk8 (PAYER8SPEC 3.1): OUT vectors of the centre U -> w_j on the same window (S.L+-3 wildcard = 31), used at U >= 8 only
++        op = {0: bt(wp1), 1: bt(wp2), 2: _np.uint8(31), 3: bt(wm1), 4: bt(wm2), 5: _np.uint8(31), 6: bt(sp1), 7: bt(sm2), 8: bt(s0), 10: bt(sm1)}
++        om = {0: bt(wm1), 1: bt(wm2), 2: _np.uint8(31), 3: bt(wp1), 4: bt(wp2), 5: _np.uint8(31), 6: bt(sm2), 7: bt(sp1), 8: bt(sm1), 10: bt(s0)}
+         acc = _np.zeros(sh)
+         for (n_, Uk, Vk, cd), a_ in keys:
+-            if not (Vk >> (U - 5)) & 1: continue
+-            pay = _np.broadcast_to((_np.left_shift(one, w0) & _np.uint8(Uk)) != 0, sh)
+-            for vec in (vp, vm):
+-                ok = pay.copy()
+-                for p_, m_ in cd: ok &= (vec[p_] & _np.uint8(m_)) != 0
+-                acc += a_ * ok
++            if (Vk >> (U - 5)) & 1:   # IN: payer w_j (any letter 5..9; code_gk8 gate {5..9}), payee the centre U, POSSIBLE
++                pay = _np.broadcast_to((_np.left_shift(one, w0) & _np.uint8(Uk)) != 0, sh)
++                for vec in (vp, vm):
++                    ok = pay.copy()
++                    for p_, m_ in cd: ok &= (vec[p_] & _np.uint8(m_)) != 0
++                    acc += a_ * ok
++            if U >= 8 and not (_np.uint8(1 << (U - 5)) & ~_np.uint8(Uk)):   # OUT (code_gk8): the centre U pays w_j, SURE (payer {8} at U = 8, {9} at U = 9)
++                pyee = _np.broadcast_to((_np.left_shift(one, w0) & ~_np.uint8(Vk)) == 0, sh)
++                for vec in (op, om):
++                    ok = pyee.copy()
++                    for p_, m_ in cd: ok &= (_np.broadcast_to(vec[p_], sh) & ~_np.uint8(m_)) == 0
++                    acc -= a_ * ok
+         out[ui] = acc
+     return out
+ def ks_terms(d, w, s):
+diff -ru code_gk7/w17_upper.sh code_gk8/w17_upper.sh
+--- code_gk7/w17_upper.sh	2026-11-06 20:20:42
++++ code_gk8/w17_upper.sh	2026-11-09 11:36:27
+@@ -1,4 +1,5 @@
+ #!/bin/bash
++# code_gk8 (9 Nov 2026): default code dir code_gk8 (payer-8/9 GK keys, PAYER8SPEC W5); run17.sh there defaults SEPBIN=sep3r_gk8.
+ # W17 one-command Studio-path upper check: W15's w15_upper.sh (rr / z / zr / q7 masked, any kill-table stack, NOCLAMP, NECK, parts)
+ # plus K* and the generic EDGE(7->P) family (st21_w17.py + ksfam.py rows, bin/sep3r_w17 window bound + exact leaf).
+ # usage: [KS=1] [EGK=<keys file>] [ARGSF=<pattern args>] [EXPECT_PAT=D,C,RPAT] bash /tmp/swarm-W17/code_c6/w17_upper.sh SOL.json KILLDIR [TAG]
+@@ -15,7 +16,7 @@
+ #   word, the same 1,424 x 729 enumeration) instead of the equation |in - out| <= 1e-9 (Opus flag c6le, s83). The separator never
+ #   reads cons2 (its rows use h through M / V6B only), so nothing else changes.
+ set -u
+-B=/tmp/swarm-W17; C=${W17CODE:-$B/code_gk7}; export W17CODE=$C   # code_c6: run17.sh runs $C/st21_w17.py
++B=/tmp/swarm-W17; C=${W17CODE:-$B/code_gk8}; export W17CODE=$C   # code_c6: run17.sh runs $C/st21_w17.py
+ SOLF=$(readlink -f "$1"); KD=$(readlink -f "$2"); TAG=${3:-u$(date +%H%M%S)}
+ L=$B/logs/$TAG; Q=$B/q/$TAG; mkdir -p $L $Q
+ DMAXP=${DMAXP:-20}; DLIST=${DLIST:-$(seq -s, 7 $DMAXP)}; NPROC=${NPROC:-2}; NPROCMAX=${NPROCMAX:-2}; [ $NPROC -gt $NPROCMAX ] && NPROC=$NPROCMAX   # round 6: NPROCMAX (macpack: 16)
+--- check.sh	2026-11-06 16:16:52
++++ check8.sh	2026-11-09 11:36:27
+@@ -1,4 +1,5 @@
+ #!/bin/bash
++# check8.sh (9 Nov 2026): check.sh with code_gk8 (payer-8/9 GK keys, PAYER8SPEC W5) and bin/sep3r_gk8; everything else identical.
+ # W17 macpack: one full second-engine upper check (code_gk7) of one point at NPROC processes, on the proof stack's family by default.
+ # usage: bash /tmp/swarm-W17/check.sh POINT [NPROC]
+ #   POINT = a path to the sol.json Opus names FEASIBLE on the corrected rules + W13 + 151 keys (copy it into sol/), or in10 / in11
+@@ -32,5 +33,5 @@
+ cd $B && env RESUME=1 C6LE=1 NOCLAMP=1 F2B7=1 F2BRULES=${F2BRULES:-$B/tab/rules_zcons_minus_W18rejects.json} GK=${GK:-$D_GK} \
+   ARGSF=${ARGSF:-$D_ARGS} EXPECT_PAT=${EXPECT_PAT:-$D_PAT} EXNAME=$B/tab/exname_keep95p131f.txt NPROC=$NP NPROCMAX=16 DMAXP=26 \
+   DLIST=${DLIST:-7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26} PARTS=${PARTS:-7:4,8:12,9:24,10:9,11:6,12:3,13:2} \
+-  bash $B/code_gk7/w17_upper.sh "$SOL" $B/kill/patched298 $TAG 2>&1 | tee -a $B/logs/${TAG}_run.out
++  W17CODE=$B/code_gk8 SEPBIN=${SEPBIN:-sep3r_gk8} bash $B/code_gk8/w17_upper.sh "$SOL" $B/kill/patched298 $TAG 2>&1 | tee -a $B/logs/${TAG}_run.out
+ echo "summary: $B/logs/$TAG/summary.txt"

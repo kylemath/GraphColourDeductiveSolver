@@ -1,0 +1,123 @@
+== ST-88 tests, 2026-11-09T17:44:16Z, code /tmp/swarm-W17/code_gk8 (gkfam.py md5 44b1c8235c9426241a90558914e4d250)
+
+== T1 worked examples (PAYER8SPEC 3.1 / 3.2)
+T1a row R8 55558578/58585558 key EDGE(8->5)[S.L+1={5678} S.L-1=5 S.A-1=B R.L+2={5689}]: pay(OUT) 4 get(IN) 0 coefficient IN-OUT -4; OUT slots (i, sg) [(0, -1), (1, 1), (2, -1), (3, 1)]
+T1b sender S 55868 BSBBS {3: S}: pay(OUT) 0 get(IN) 2 coefficient OUT-IN -2; IN slots (payer j, spec sg) [(2, -1), (4, 1)]
+T1 PASS
+
+== T2 p8_test.json E examples
+outposs   R10 5675755886/6585665556    EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -1, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R9 677555585/557675666       EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -4, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R9 756556695/556595557       EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -2, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R10 5587656677/8855766655    EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -2, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outposs   R10 9757877755/7587688559    EDGE(9->5)[S.A+1=S S.L+1={589} S.L+2={567} S.L+3={568}]: listed (A -1, B 0); code_gk8 0 -> B; production parser refuses: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+outmirror R10 5888855955/8876556675    EDGE(9->8)[R.L+2={68} R.L-2={6789} S.A-1={5689} S.L+2={5679} S.L-2={5789}]: listed (A -3, B -2); code_gk8 -2 -> B
+outmirror R10 9766675686/6666755687    EDGE(9->8)[R.L+2={68} R.L-2={6789} S.A-1={5689} S.L+2={5679} S.L-2={5789}]: listed (A -2, B -1); code_gk8 -1 -> B
+outmirror R8 65865558/65565875         EDGE({89}->{69})[S.A-1={589}]: listed (A -2, B -3); code_gk8 -3 -> B
+outmirror R9 677555585/557675666       EDGE({89}->{69})[S.A-1={589}]: listed (A 1, B 0); code_gk8 0 -> B
+outmirror R9 756556695/556595557       EDGE({89}->{69})[S.A-1={589}]: listed (A -7, B -6); code_gk8 -6 -> B (pmask-dependent: {'patched298': -6, 'all': -6, 'none': -7})
+in7       R10 5675755886/6585665556    EDGE(7->{89})[S.L+2=5]: listed (A 4, B 2); code_gk8 2 -> B
+in7       R9 677555585/557675666       EDGE(7->{89})[S.L+2=5]: listed (A 4, B 3); code_gk8 3 -> B
+in7       R9 756556695/556595557       EDGE(7->{89})[S.L+2=5]: listed (A 2, B 1); code_gk8 1 -> B
+in7       R9 766765986/759656765       EDGE(7->{89})[S.L+2=5]: listed (A 4, B 1); code_gk8 1 -> B
+in7       R8 55577685/89566675         EDGE(7->{89})[S.L+2=5]: listed (A 4, B 1); code_gk8 1 -> B
+T2 summary: {('in7', 'B'): 5, ('outmirror', 'B'): 5, ('outposs', 'B'): 5}
+
+== T3 / T4 independent set-based reference (seed 8808; 600 rows x 440 keys)
+T3 parser: EDGE({89}->5) refused: x: payer letters must be a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9} (got {89}; split a mixed payer set into single-letter keys)
+T3 parser: EDGE({78}->5) refused: x: payer letters must be a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9} (got {78}; split a mixed payer set into single-letter keys)
+T3 parser: EDGE(B->5) refused: x: payer letters must be a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9} (got B; split a mixed payer set into single-letter keys)
+T3 parser: EDGE(*->5) refused: x: payer letters must be a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9} (got *; split a mixed payer set into single-letter keys)
+T3 parser: EDGE(8->5)[S.L+3=5] refused: x: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+T3 parser: EDGE(9->6)[S.L-3={56}] refused: x: position S.L-3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused)
+T3 parser: EDGE(8->5)[R.L+3=5] refused: x: position R.L+3 is outside the payer 2-ball (refused)
+T3 parser: EDGE(9->5)[R.A+1=5] refused: x: position R.A+1 is outside the payer 2-ball (refused)
+T3 parser: EDGE(8->5)[R.A-1=5] refused: x: position R.A-1 is outside the payer 2-ball (refused)
+T3 parser: EDGE(9->5)[R.L-3=5] refused: x: position R.L-3 is outside the payer 2-ball (refused)
+T3 parser: EDGE(8->{678})[S.L+1={57} S.L+2=S] accepted
+T3 parser: EDGE(9->B) accepted
+T3 parser: EDGE({567}->5)[S.L+3=5] accepted
+T3 parser: EDGE(7->7)[S.L-3=5] accepted
+T3 rows 600 (receiver d = 8, 9, 10, d = 7 with a link 8/9, senders, cons2: 100 each) x keys 440 (300 payer-8/9 W5, 80 payer-5/6/7, 60 payer-8/9 with an S.L+-3 condition: parser-refused, matcher fed raw) = 264000 pairs
+T3 nonzero reference coefficients by row type: {'cons': 11682, 'recv d=10': 17015, 'recv d=7': 10791, 'recv d=8': 16705, 'recv d=9': 16727, 'send': 9780}
+T3 negative (OUT-dominated) reference coefficients: {'recv d=8': 7623, 'recv d=9': 7665, 'recv d=10': 7936, 'recv d=7': 1168, 'send': 8910, 'cons': 773}
+T3 code_gk8 vs independent reference: mismatches 0 {}
+T4 outposs vs independent reference: mismatches 7544 {'recv d=8': 2716, 'recv d=9': 2379, 'recv d=10': 2449}
+    e.g. recv d=8 97858565/87966885 k380 EDGE(8->{68})[R.L-2={589} S.L-1={5678} S.L-3={79}]: ref 3 outposs 0
+    e.g. recv d=8 97858565/87966885 k381 EDGE(8->{5678})[S.L-3={679} S.L-1={578} S.L+3={568}]: ref 4 outposs -6
+    e.g. recv d=8 97858565/87966885 k382 EDGE(8->{78})[S.A+1={89} S.L+1={5689} S.L+3={69}]: ref 2 outposs -1
+T4 outmirror vs independent reference: mismatches 6546 {'recv d=8': 1630, 'recv d=9': 2403, 'recv d=10': 2513}
+    e.g. recv d=8 97858565/87966885 k003 EDGE(8->5)[R.L+2=B S.L-2={579} S.A-1={5789} R.L-2={689}]: ref 0 outmirror -1
+    e.g. recv d=8 97858565/87966885 k029 EDGE(8->{6789})[S.A-1={579} S.L-1={589} R.L+2={78} S.A+1={5689}]: ref -3 outmirror -2
+    e.g. recv d=8 97858565/87966885 k044 EDGE(8->{5678})[S.L+1={568} S.A-1={569} S.A+1={589}]: ref -3 outmirror -6
+T3 PASS; T4 PASS (both controls fail)
+
+== TV W6b p8_vectors (a, b, c, d)
+TV slots slots_GS14_01 (all 1,132 rows)  28812 reference slots compared, mismatches 0
+TV coef  a receivers GS14_01            13152 (key, row) pairs, 4150 nonzero expected, mismatches 0
+TV coef  b senders+cons2 GS14_01        14016 (key, row) pairs, 3037 nonzero expected, mismatches 0
+TV slots c_A + c_B (W00..W62, W5)       2256 reference slots compared, mismatches 0
+TV slots c_C rows (400, W5)            10676 reference slots compared, mismatches 0
+TV c_C keys: 229 evaluated, 71 skipped (payer set mixing 8 / 9: K008 K013 K014 K016 K026 K029 K032 K036 K038 K041 K048 K051 K052 K053 K056 K060 K068 K074 K083 K088 K097 K106 K107 K119 K123 K130 K145 K146 K155 K163 K164 K175 K176 K179 K180 K184 K185 K187 K196 K198 K202 K206 K208 K210 K211 K213 K214 K215 K224 K226 K232 K234 K241 K250 K257 K258 K261 K263 K264 K265 K266 K268 K269 K271 K273 K275 K280 K281 K292 K294 K297), 56 of the evaluated refused by the code_gk8 parser (payer 8/9 with S.L+-3; evaluated through the matcher directly)
+TV coef  c_C W5 (all evaluated keys)    91600 (key, row) pairs, 13786 nonzero expected, mismatches 0
+TV coef  c_C W5 (parser-accepted keys)   69200 (key, row) pairs, 11935 nonzero expected, mismatches 0
+TV coef  c_C W5 (payer exactly 8 or 9)   58000 (key, row) pairs, 7494 nonzero expected, mismatches 0
+TV d outposs   ctl_outposs  R0456: correct +0 wrong -10 | code_gk8 +0, planted outposs reading -10 -> OK; key REFUSED by the parser (ctl_outposs: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outposs   ctl_outposs  R0457: correct +0 wrong -12 | code_gk8 +0, planted outposs reading -12 -> OK; key REFUSED by the parser (ctl_outposs: position S.L+3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outposs   ctl_outposs2 R0456: correct +0 wrong -12 | code_gk8 +0, planted outposs reading -12 -> OK; key REFUSED by the parser (ctl_outposs2: position S.L-3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outposs   ctl_outposs2 R0457: correct +0 wrong -12 | code_gk8 +0, planted outposs reading -12 -> OK; key REFUSED by the parser (ctl_outposs2: position S.L-3 is the wildcard for a payer 8 / 9 (PAYER8SPEC W5: refused))
+TV d outmirror w6b16s_c01   R0459: correct -2 wrong -1 | code_gk8 -2, planted outmirror reading -1 -> OK; key accepted
+TV d outmirror w6b16s_c01   R0732: correct -3 wrong -2 | code_gk8 -3, planted outmirror reading -2 -> OK; key accepted
+TV d outmirror ctl_mirror   R0463: correct -1 wrong +0 | code_gk8 -1, planted outmirror reading +0 -> OK; key accepted
+TV d outmirror ctl_mirror   R0466: correct -1 wrong -2 | code_gk8 -1, planted outmirror reading -2 -> OK; key accepted
+TV summary (mismatch counts): {'slots GS14': 0, 'a': 0, 'b': 0, 'c_A': 0, 'slots c_C': 0, 'c_C': 0, 'd': 0} -> PASS
+
+== T5 W17 GK self-test (from tests/t5a_k260.log, tests/t5b_k260p8.log; run by tests/t5_selftest.sh)
+-- tests/t5a_k260.log
+W17 GK keys: 260 from /tmp/swarm-W17/tab/cg_keys_r13w16_16fikp.txt (md5 0470c459); payer->payee {'5->5': 22, '5->6': 9, '5->7': 31, '5->8': 9, '5->9': 9, '5->{69}': 1, '5->{78}': 2, '6->5': 21, '6->6': 30, '6->7': 20, '6->8': 3, '6->9': 2, '6->{67}': 5, '6->{69}': 1, '6->{78}': 1, '6->{89}': 1, '7->5': 20, '7->6': 13, '7->7': 38, '7->8': 3, '7->9': 4, '7->B': 11, '7->{5789}': 2, '7->{79}': 2}; nonzero amounts 108 (su
+W17 GK numpy window tables built in 2s
+sep: W17 GK table loaded (/tmp/swarm-W17/st16/gk_st88_t5a_k260_sol_repK1MW_04__K3l5j_k260.bin): 260 keys, window max 0.0948576 / 0.0441518 / 0.0410379; own window table vs Python's: 0 cells differ, max |diff| 6.94e-18; plant 0
+W17 GK window tables: 30000 windows, 7159 with credit > 0, 0 with credit < 0 (payer-8/9 OUT); numpy vs gkfam.Win mismatches 0
+W17 GK self-test (C++ leaf vs Python rows, all families on): 8807 compared, 1993 window-inadmissible; max |difference| by d {7: 2.55e-12, 8: 1.93e-12, 9: 2.5e-12, 10: 1.43e-12, 11: 2.07e-12, 12: 1.95e-12}; mismatches > 1e-9: 0
+W17 GK self-test rows with a nonzero key term (amount > 0): d7 compared with gk 2455, d7 in>0 2652, d7 out>0 2924, d8 coef<0 0, d8 compared with gk 2291, d8 in>0 2811, d9 coef<0 0, d9 compared with gk 2206, d9 in>0 2738, d10 coef<0 0, d10 compared with gk 447, d10 in>0 561, d11 coef<0 0, d11 compared with gk 428, d11 in>0 556, d12 coef<0 0, d12 compared with gk 448, d12 in>0 580
+W17 GK per-position bound check: 91800 positions, window bound == exact on 69014, exact above bound 0
+VERDICT: W17 GK SELFTEST PASS
+-- tests/t5b_k260p8.log
+W17 GK keys: 284 from /Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST88/tests/cg_keys_k260_plus_w6b16s_p8.txt (md5 71560114); payer->payee {'5->5': 22, '5->6': 9, '5->7': 31, '5->8': 9, '5->9': 9, '5->{69}': 1, '5->{78}': 2, '6->5': 21, '6->6': 30, '6->7': 20, '6->8': 3, '6->9': 2, '6
+FAIL: senderR2 violated
+FAIL: cons2 violated
+W17 GK numpy window tables built in 3s
+sep: W17 GK table loaded (/tmp/swarm-W17/st16/gk_st88_t5b_k260p8_sol_repK1MW_04__K3l5j_k260.bin): 284 keys, window max 0.24 / 0.19 / 0.0410379; own window table vs Python's: 0 cells differ, max |diff| 1.11e-16; plant 0
+W17 GK window tables: 30000 windows, 6215 with credit > 0, 9286 with credit < 0 (payer-8/9 OUT); numpy vs gkfam.Win mismatches 0
+W17 GK self-test (C++ leaf vs Python rows, all families on): 8891 compared, 1909 window-inadmissible; max |difference| by d {7: 2.18e-12, 8: 1.93e-12, 9: 1.98e-12, 10: 1.63e-12, 11: 2.07e-12, 12: 1.75e-12}; mismatches > 1e-9: 0
+W17 GK self-test rows with a nonzero key term (amount > 0): d7 compared with gk 2530, d7 in>0 2945, d7 out>0 2907, d8 coef<0 2999, d8 compared with gk 2481, d8 in>0 3000, d9 coef<0 2083, d9 compared with gk 2348, d9 in>0 2886, d10 coef<0 439, d10 compared with gk 471, d10 in>0 587, d11 coef<0 462, d11 compared with gk 451, d11 in>0 586, d12 coef<0 484, d12 compared with gk 469, d12 in>0 591
+W17 GK per-position bound check: 91800 positions, window bound == exact on 47710, exact above bound 0
+VERDICT: W17 GK SELFTEST FAIL: senderR2 violated | cons2 violated
+(t5b VERDICT FAIL comes only from senderR2 / cons2 rows: the point has no amounts for the 24 keys and the self-test gives each 0.01 via KSAMT, which makes the point infeasible; the self-test lines themselves pass)
+
+== T6 regression (regr_main.out)
+senderR2 rows 22514 (spec 7,074), violated 0, min slack 2.26e-08; g2 keys in sender rows 381 (spec 393)
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -0.651715
+Karp tail (apex relaxation): lambda = 0.763009862, covered for d >= 25.250 (needs <= 31)
+d=7: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 4 part(s), 1707s CPU-wall)
+d=8: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 12 part(s), 1794s CPU-wall)
+d=9: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 24 part(s), 2365s CPU-wall)
+d=10: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 9 part(s), 2680s CPU-wall)
+d=11: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 6 part(s), 1836s CPU-wall)
+d=12: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 3 part(s), 550s CPU-wall)
+d=13: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 2 part(s), 223s CPU-wall)
+d=14: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 75s CPU-wall)
+d=15: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 20s CPU-wall)
+d=16: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 7s CPU-wall)
+d=17: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 4s CPU-wall)
+d=18: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 5s CPU-wall)
+d=19: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 4s CPU-wall)
+d=20: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+d=21: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+d=22: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+d=23: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+d=24: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+d=25: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+d=26: exact violated 0 (separator reported 0, Python exact re-check: 0 violated; 1 part(s), 3s CPU-wall)
+RESULT: FEASIBLE (every sender row, cons2, mrowL, d = 7..26 exhaustive, DP 27..30 and Karp pass)
+nonzero amounts 108 (sum 0.374364234)
