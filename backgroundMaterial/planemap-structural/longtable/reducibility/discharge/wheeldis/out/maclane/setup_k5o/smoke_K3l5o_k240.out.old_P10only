@@ -1,0 +1,13 @@
+check.sh: point /tmp/swarm-W17/sol/sol_k86MS5_in07__K3l5j.json (dd2fcc97), stack W13, rules /tmp/swarm-W17/tab/rules_A5final_2db75746.json, tag sol_k86MS5_in07__K3l5j_zK3l5o_k240, 8 processes (log: /tmp/swarm-W17/logs/sol_k86MS5_in07__K3l5j_zK3l5o_k240_run.out; resumes if /tmp/swarm-W17/logs/sol_k86MS5_in07__K3l5j_zK3l5o_k240 exists)
+== W17 upper check sol_k86MS5_in07__K3l5j_zK3l5o_k240: /private/tmp/swarm-W17/sol/sol_k86MS5_in07__K3l5j.json (md5 dd2fcc97), kill /private/tmp/swarm-W17/kill/patched298, d = 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 (DMAXP 26), 8 processes, parts 7:4,8:12,9:24,10:9,11:6,12:3,13:2, neck 1, noclamp 1, cons2 mode c6le, f2b7 1, rules /tmp/swarm-W17/tab/rules_A5final_2db75746.json, rpatN /tmp/swarm-W17/tab/rpatN3_rotation_justified.txt, GK /tmp/swarm-W17/tab/cg_keys_r13w16_16fik.txt, code /tmp/swarm-W17/code_gk7
+kill U7: kill6_U7.npy md5 b493a0ce45d676350f34737ac1fa0945
+kill U8: kill6_U8.npy md5 618eb3001e0119b3e116af850f95ab99
+kill U9: kill6_U9.npy md5 618eb3001e0119b3e116af850f95ab99
+  kill6_U7.npy vs MD5: OK
+  kill6_U8.npy vs MD5: OK
+  kill6_U9.npy vs MD5: OK
+kill stack: patched298 (keep95p131f U7 + 298 B1 bits; Opus s77_k6patch, md5 b493a0ce)
+KILL MD5 CHECK OK
+runtime estimate: Python step ~2 min; separator ~281 process-min (one nice-10 process at load ~10) over 8 process(es) -> ~39 min wall (+ re-check ~6 min if anything is reported); scale 2.44 for t = 0.0174
+07:21:44Z RESUME requested but step 1 is not reusable (stamp or dump differs / missing): fresh run
+07:21:44Z step 1: Python checks + query dump

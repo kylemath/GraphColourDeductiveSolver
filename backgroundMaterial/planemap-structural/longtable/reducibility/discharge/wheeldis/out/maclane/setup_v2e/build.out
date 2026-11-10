@@ -1,0 +1,5 @@
+build_v2e: Apple clang version 17.0.0 (clang-1700.0.13.5); flags -std=c++17 -O3 -pthread -ffp-contract=off -include cstdint -mcpu=native
+  ok   eng_p8/bin/jsepf_gk_k192  <- jsepf_gk_k192s_p8.cpp 
+  ok   eng_p8/bin/jsepf_gk  = eng_p8/bin/jsepf_gk_k192 (one p8 build, as in the container)
+  ok   eng_p8/bin/jsep3  <- jsep3.cpp 
+build_v2e: OK in 6 s

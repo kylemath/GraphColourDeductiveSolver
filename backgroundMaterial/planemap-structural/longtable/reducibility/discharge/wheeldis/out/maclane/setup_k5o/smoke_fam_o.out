@@ -1,0 +1,11 @@
+maclane fam smoke, family o, 2026-11-10T07:55:42Z on Darwin arm64
+1. family o: fam/FAMILIES.txt line, md5s, args chain
+   OK   OK x=o prev=n status=E2 l=args_A97_F_W13K3l5o.txt gb=args_A97_F_W13K3gB5o.txt pat=w13/pat_K5o_D.out expect=fam/EXPECT_K3l5o_k240.txt
+   note: Studio ST-100 P10 (b8_u565..578_556..555, ring 15 m 13, glue 536719eb) + P11 (b8_u565765.._.56....., ring 13 m 9, glue 15b40427), both D [E2], both kill the d8 binder 56576578/55665555; Lean HDK5P10 / HDK5P11 exit 0 sorry 0, V00 building
+2. patterns of K3l5o + 240 keys (upperR2 start, eng_p1r)
+smoke_fam.sh: line 39: 99868 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 1 re-derived (2s): counts: 325 files, distinct d9 3324, D 18149 / C 712 / RPAT 158 / RPATN 2034
+3. patterns of K3gB5o + 240 keys (the LP family)
+smoke_fam.sh: line 39: 99902 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 2 re-derived (3s): counts: 324 files, distinct d9 3421, D 18239 / C 781 / RPAT 158 / RPATN 2034
+4. recheck_fam.sh o on ref/k5e/sol_S1MW07k240e.json (= repS1MW_07; RECHECK_UPPER=0; about 5 min)

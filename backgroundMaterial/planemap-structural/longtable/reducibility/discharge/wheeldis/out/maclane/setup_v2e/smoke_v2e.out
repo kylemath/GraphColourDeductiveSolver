@@ -1,0 +1,14 @@
+maclane v2e smoke, 2026-11-10T07:47:17Z on Darwin arm64
+0. installed files
+   OK   eng_p8 = ENG_P8.md5 (29 files, 0 differ [])
+   OK   OK cg_keys_r13w16_16fikp_p8bb.txt b5875bfe _k268
+   OK   keyseng: the 268 keys need eng_p8
+1. p8reftest (eng_p8 key coefficients vs W6b's p8_ref.py), 30 keys, N=1500
+   OK   P8REFTEST: PASS (0 mismatches) (9 s)
+2. gkwintest (window IN >= exact IN, W5 OUT <= exact OUT), same keys, N=1500
+   OK   GKWINTEST: PASS (0 failures) (9 s)
+3. F2B self-test on the 268 keys (this Mac's C++ leaf / WIN vs python exact), f2bself=200, 2 threads
+   OK   F2B-SELFTEST: PASS (146 s): F2B-SELFTEST d=7: 200 arrangements; worst - F2B-SELFTEST d=8: 200 arrangements; worst - F2B-SELFTEST d=9: 200 arrangements; worst - 
+4. planted control gkoplant (must FAIL)
+   OK   control fails as required: F2B-SELFTEST: FAIL (136 s)
+SMOKE-V2E: PASS

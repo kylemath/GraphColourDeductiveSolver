@@ -1,0 +1,16 @@
+07:52:54Z stop k86MS7
+  stopped 1: runK86p.sh [0-9]+ [0-9]+ k86MS7 
+  stopped 1: outbox86_fam.py k86MS7 
+  no start line of k86MS7 in run.log: no last outbox pass
+processes of k86MS7 still running: 0
+07:53:05Z recheck n (268 keys, eng_p8) on sol_repK2MW_04__K3l5n_k260
+    recheck_fam: repK2MW_04 on args_A97_F_W13K3l5n.txt + cg_keys_r13w16_16fikp_p8bb.txt (b5875bfe), engine eng_p8, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_repK2MW_04_K3l5n_k268.log
+    recheck_fam: repK2MW_04: UPPER-R2: FEASIBLE at t = 0.014021369584
+    recheck_fam: outbox/upper: filed sol_repK2MW_04__K3l5n_k268 (t = 0.014021369584)
+07:56:16Z launch k86MK3 from sol_repK2MW_04__K3l5n_k260
+launch_msfam: PARALLEL=1: k86MK2 keeps running; k86MK3 starts beside it
+launch_msfam: k86MK3: LP args_A97_F_W13K3l5n.txt (47407139) + cg_keys_r13w16_16fikp_p8bb.txt (b5875bfe) on eng_p8; checks on args_A97_F_W13K3l5n.txt (47407139); in-point sol_repK2MW_04__K3l5n_k260.jso
+launched k86MK3 (fam n): K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/l
+== UPPER k86MK3 (family ?: LP K3gB5, checks K3l5)   K run: running  repladder: running  watch: running  tightwatch: running  outbox: running  upperR2 
+== UPPER k86MK2 (family ?: LP K3gB5, checks K3l5)   K run: running  repladder: running  watch: running  tightwatch: running  outbox: running  upperR2 
+MK3DONE
