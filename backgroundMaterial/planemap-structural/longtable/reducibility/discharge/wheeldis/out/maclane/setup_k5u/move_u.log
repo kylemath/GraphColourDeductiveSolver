@@ -1,0 +1,31 @@
+14:04:35Z HCK5P17 GLUEDONE
+14:08:35Z HCK5P18 GLUEDONE
+14:16:35Z HCK5P19 GLUEDONE
+14:54:36Z HCK5P20 GLUEDONE
+14:54:36Z gate passed (4 GLUEDONE, smoke_fam u PASS, harness u 2/2 FEASIBLE)
+14:54:36Z sources: k86MK10 (K3l5t) -> k86MK12, k86MK11 (K3l5t) -> k86MK13
+14:54:36Z recheck u (cg_keys_r13w16_16fikp.txt eng_p1r) on sol_repK6MW_05__K3l5t_k260
+    recheck_fam: repK6MW_05 on args_A97_F_W13K3l5u.txt + cg_keys_r13w16_16fikp.txt (0470c459), engine eng_p1r, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_repK6MW_05_K3l5u_k260.log
+    recheck_fam: repK6MW_05: UPPER-R2: FEASIBLE at t = 0.013805127581
+    recheck_fam: outbox/upper: filed sol_repK6MW_05__K3l5u_k260 (t = 0.013805127581)
+14:57:22Z stop k86MK10
+  stopped 1: outbox86_fam.py k86MK10 
+  no start line of k86MK10 in run.log: no last outbox pass
+processes of k86MK10 still running: 0
+14:57:25Z launch k86MK12 from sol_repK6MW_05__K3l5t_k260
+launch_msfam: k86MK12: LP args_A97_F_W13K3l5u.txt (b12f65ca) + cg_keys_r13w16_16fikp.txt (0470c459) on eng_p1r; checks on args_A97_F_W13K3l5u.txt (b12f65ca); in-point sol_repK6MW_05__K3l5t_k260.json (
+launched k86MK12 (fam u): K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/
+14:57:33Z recheck u (cg_keys_r13w16_16fikp_p8bb.txt eng_p8) on sol_k86MK7_in05_tight__K3l5t_k268
+    recheck_fam: k86MK7_in05_tight on args_A97_F_W13K3l5u.txt + cg_keys_r13w16_16fikp_p8bb.txt (b5875bfe), engine eng_p8, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_k86MK7_in05_tight_K3l5u_k268.log
+    recheck_fam: k86MK7_in05_tight: UPPER-R2: FEASIBLE at t = 0.013832687000
+    recheck_fam: outbox/upper: filed sol_k86MK7_in05_tight__K3l5u_k268 (t = 0.013832687000)
+15:00:43Z stop k86MK11
+  stopped 1: outbox86_fam.py k86MK11 
+  no start line of k86MK11 in run.log: no last outbox pass
+processes of k86MK11 still running: 0
+15:00:45Z launch k86MK13 from sol_k86MK7_in05_tight__K3l5t_k268
+launch_msfam: k86MK13: LP args_A97_F_W13K3l5u.txt (b12f65ca) + cg_keys_r13w16_16fikp_p8bb.txt (b5875bfe) on eng_p8; checks on args_A97_F_W13K3l5u.txt (b12f65ca); in-point sol_k86MK7_in05_tight__K3l5t_
+launched k86MK13 (fam u): K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/
+== UPPER k86MK12 (family ?: LP K3gB5, checks K3l5)   K run: running  repladder: running  watch: running  tightwatch: running  outbox: running  upperR2
+== UPPER k86MK13 (family ?: LP K3gB5, checks K3l5)   K run: running  repladder: running  watch: running  tightwatch: running  outbox: running  upperR2
+MOVEDONE

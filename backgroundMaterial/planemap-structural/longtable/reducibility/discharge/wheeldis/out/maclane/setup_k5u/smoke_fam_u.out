@@ -1,0 +1,16 @@
+maclane fam smoke, family u, 2026-11-10T13:39:42Z on Darwin arm64
+1. family u: fam/FAMILIES.txt line, md5s, args chain
+   OK   OK x=u prev=t status=E2 l=args_A97_F_W13K3l5u.txt gb=args_A97_F_W13K3gB5u.txt pat=w13/pat_K5u_C.cfast expect=fam/EXPECT_K3l5u_k240.txt
+   note: Studio ST-111 RSST-substitute S1 = P20 C fix_63c8a193fe (r14 m11, X={I3-I9,I7-I8,R12-I8,R0-I9} rim-pinned), as two exact-row patterns 7/8565766/5557656 and /5557657; [E2] main c49702236; Lean CK5PS1 clean, HC queued, glue_hc 1778be9a. P21 (d6) NOT in this family: no d6 cons2 kill path
+2. patterns of K3l5u + 240 keys (upperR2 start, eng_p1r)
+smoke_fam.sh: line 39:  2910 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 1 re-derived (5s): counts: 331 files, distinct d9 3325, D 18154 / C 717 / RPAT 158 / RPATN 2034
+3. patterns of K3gB5u + 240 keys (the LP family)
+smoke_fam.sh: line 39:  2963 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 2 re-derived (5s): counts: 330 files, distinct d9 3422, D 18244 / C 786 / RPAT 158 / RPATN 2034
+4. recheck_fam.sh u on ref/k5e/sol_S1MW07k240e.json (= repS1MW_07; RECHECK_UPPER=0; about 5 min)
+   OK   UPPER-R2: FEASIBLE at t = 0.025171803977, as EXPECT section 3; its first lines = section 1 (251s)
+5. DRY=1 FORCE=1 launch_upper_fam.sh u <reference point> (the plan only)
+   OK   launch_msfam: k86MS8: LP args_A97_F_W13K3gB5u.txt (ea00eec1) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5u.txt (b12f65ca); in-point sol_S1MW07k240e.json (md5 e4e93b2c, t 0.025171803977; F_S1MW07k240e_K3l5u); points filed as K3
+
+SMOKE-FAM u: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_fam_u.log)

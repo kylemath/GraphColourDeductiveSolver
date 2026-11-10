@@ -1,0 +1,10 @@
+K3l5u k240 exit 0
+senderR2 rows 22514 (spec 7,074), violated 0, min slack 3.04e-05; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18154 (spec 15,497), C 717 (spec 1,494), RPAT 158 (spec 158); by d {7: 9369, 8: 5
+RESULT: FEASIBLE (every sender row, cons2, mrowL, d = 7..26 exhaustive, DP 27..30 and Karp pass)
+K3gB5u k240 exit 0
+senderR2 rows 22514 (spec 7,074), violated 0, min slack 3.04e-05; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18244 (spec 15,497), C 786 (spec 1,494), RPAT 158 (spec 158); by d {7: 9396, 8: 5
+RESULT: FEASIBLE (every sender row, cons2, mrowL, d = 7..26 exhaustive, DP 27..30 and Karp pass)
+SMOKEDONE
+smoke_fam exit 0
