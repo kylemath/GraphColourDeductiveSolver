@@ -1,0 +1,8 @@
+# ST-120 B2 cross-check: Lean RSSTCheck #eval vs spec vectors and rcore (out/job_RSST1SHOT/code/rcore.py), rcore control ''
+parts: lean 71, parts71.txt 71, rcore 71; lean == parts71.txt: True; lean == rcore: True
+all   cases     7  fits fired (Lean)    504  mismatches 0
+ext   cases    25  fits fired (Lean)    558  mismatches 0
+rnd   cases  2500  fits fired (Lean)  40855  mismatches 0
+s13   cases    20  fits fired (Lean)   1051  mismatches 0
+tv    cases    24  fits fired (Lean)    457  mismatches 0
+TOTAL cases 2576, fits fired 43425, OPEN fits (Lean) 0, mismatches 0; extra checks {'s13 37-fit list': 1}
