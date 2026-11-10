@@ -7,7 +7,7 @@ R=$HOME/maclane/maclane-k86; N=$R/fs/home/claude/GraphColourDeductiveSolver/back
 O=$R/outbox/upper; S=$W/out/maclane/setup_k5u; MS=$W/out/maclane/setup_k5s/move_s.log; MT=$W/out/maclane/setup_k5t/move_t.log; K260=cg_keys_r13w16_16fikp.txt; K268=cg_keys_r13w16_16fikp_p8bb.txt
 log(){ echo "$(date -u +%H:%M:%SZ) $*"; }; abort(){ log "ABORT: $*"; echo MOVEABORT; exit 1; }
 for j in HCK5P17 HCK5P18 HCK5P19 HCK5P20; do until grep -q GLUEDONE $W/out/job_$j/lean/status.txt 2>/dev/null; do sleep 120; done; log "$j GLUEDONE"; done
-until grep -q 'SMOKE-FAM u:' $S/smoke_fam_t.out 2>/dev/null; do sleep 60; done; grep -q 'SMOKE-FAM u: PASS' $S/smoke_fam_t.out || abort 'smoke_fam u not PASS'
+until grep -q 'SMOKE-FAM u:' $S/smoke_fam_u.out 2>/dev/null; do sleep 60; done; grep -q 'SMOKE-FAM u: PASS' $S/smoke_fam_u.out || abort 'smoke_fam u not PASS'
 [ "$(grep -c '^RESULT: FEASIBLE' $S/smoke_K3l5u_k240.out $S/smoke_K3gB5u_k240.out | awk -F: '{s+=$2} END{print s}')" = 2 ] || abort 'u harness smokes not both FEASIBLE'
 grep -qE 'exact violated [1-9]' $S/smoke_K3l5u_k240.out $S/smoke_K3gB5u_k240.out && abort 'u harness smoke violators'
 log "gate passed (4 GLUEDONE, smoke_fam u PASS, harness u 2/2 FEASIBLE)"
