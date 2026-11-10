@@ -258,3 +258,53 @@ The encoding differences, each checked:
 
 Consequence for the port: §2's conclusion stands. ¬`BothSides2` plus `BothSides` gives `triad_valid`'s one-region side
 exactly. The valid_contract port stays ON HOLD (relay 11:30Z).
+
+## Addendum B (10 Nov, ~11:55Z): the side step of Addendum A, now from snip.v
+
+Source: `snip.v` staged at `ext_handoff_nov3/rsst/adm/fourcolor_src/snip.v` (commit 8095a6831), md5 4688980d, copied to
+`in/fourcolor_src/snip.v`. Reading only; no Lean written.
+
+**Result: the step is now [read] at the level of Gonthier's definitions and lemmas, with no refutation.** The OnSide
+classes of any cycle potential `c` are exactly diskF r and diskFC r, up to swapping b ↔ 1 - b. The only remaining
+[inferred] item is the dictionary between the two formalisms (stated below). Any comparison of a hypermap with our
+SphericalMap needs it, and it is the same dictionary §2 and Addendum A use.
+
+**Dictionary [inferred, standard duality].** Gonthier's G is the plain cubic dual of our triangulation T:
+- G-faces (regions) = T-vertices;
+- G-nodes (3-orbits) = T-triangles (`T.Face`);
+- G-edges {x, edge x} = T-edges;
+- dart y of ring r is the dart at region ρ_t whose `edge y` lies in region ρ_{t+1} (`rlink x y := cface (edge x) y`,
+  geometry.v:662).
+
+Definitions and lemmas used, all [read]:
+- (D1) snip.v:81-87: `diskN := has (dconnect x) r`, `diskE := diskN \ r`, `diskF := diskN \ fband r`, and
+  `diskFC := (¬diskN) \ fband r`. So diskF and diskFC partition the darts off `fband r` by membership in diskN, which is a
+  definition and needs no proof.
+- (L1) snip.v:89 `diskN_node`: diskN is node-closed. A T-triangle is therefore wholly in or wholly out of diskN, so
+  δ(f) := [f ⊆ diskN] is well defined on `T.Face`.
+- (L2) snip.v:101 `diskN_E`: every ring dart y is in diskN.
+- (L3) revsnip.v:193 `diskN_edge_ring`: for y ∈ r, `edge y ∉ diskN` (this needs `proper_ring r`, which holds for size ≥ 3).
+- (L4) snip.v:123 `diskE_edge`: diskE is edge-closed.
+
+The argument [inferred from the read facts]:
+1. **δ is a potential for the cycle.** For adjacent T-triangles f, f' across T-edge e, δ(f) + δ(f') = cycInd(e):
+   - e a cycle edge. Its darts are y ∈ r and edge y. By (L2) and (L3), y ∈ diskN and edge y ∉ diskN, so the sum is 1.
+     That equals cycInd(e), because the r ≥ 3 cycle edges are distinct.
+   - e not a cycle edge, chords included. Neither of its darts is in r: every ring dart lies on a cycle edge, and
+     `edge y ∈ r` would force ρ_t = ρ_{t+2}. Then (L4), together with x ∈ diskN ∧ x ∉ r ⇔ x ∈ diskE (and `edge` an
+     involution), gives x ∈ diskN ⇔ edge x ∈ diskN. So the sum is 0 = cycInd(e).
+2. **Any potential is δ or δ + 1.** For `c` with `CycPotential T r ρ c`, c + δ is constant across every
+   triangle–triangle adjacency (`CycPotential` is the same equation over `faceOf d`, `faceOf d.symm`). The dual of a
+   connected triangulation is connected, so c = δ + k for a constant k. (`Internally6.connected`; Gonthier's G is
+   `connected`.)
+3. **The sides agree.** Take an off-cycle vertex x with a dart (the `T.Adj` guard). `OnSide T c b x` says every triangle
+   at x has c = b, which is δ = b + k at every triangle at x. With (L1) and (D1):
+   - b = 1 + k ⇔ region x ⊆ diskN ⇔ x ∈ diskF;
+   - b = k ⇔ x ∈ diskFC.
+
+   Hence {x : `OnSide T c (1+k) x`} = diskF r and {x : `OnSide T c k x`} = diskFC r, as region sets, and the counts are
+   equal: `fcard face (diskF r)` is the number of such x.
+
+Consequence: Addendum A's verdict moves from "confirmed, one step inferred" to **confirmed from the definitions**:
+`NoShortSepCycle` with `BothSides` / `BothSides2` is birkhoff.v:345 for sizes 3-5, through the dictionary above.
+Step 1's chord case needed no extra hypothesis, so chords are handled the same way on both sides.
