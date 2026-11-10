@@ -25,7 +25,7 @@ env $C TAG=${P}_tneg_zK3l5q_gk8 nice -n 15 bash $B/check8.sh $B/sol/${P}_tneg.js
 cat $B/logs/${P}_tneg_zK3l5q_gk8/viol_d*.txt 2>/dev/null | grep -v '^#' | sort -u > $J/tneg_receiver_violators.txt
 for f in main tneg; do echo "--$f"; grep -E "^RESULT|senderR2 rows|patterns distinct|DP margin|Karp|exact violated [1-9]|GK keys" $J/$f.out | cut -c1-150; grep -E '^cons2' $J/$f.out | grep -oE 'max [0-9.]+ \([0-9/]+\)'; done
 echo "--tneg loads"; awk '{print $1, $4}' $J/tneg_receiver_violators.txt | sort | uniq -c | sort -k3,3gr | head -6; sort -k4,4gr $J/tneg_receiver_violators.txt | head -8
-cp $0 $J/run_autost.sh; cd $J; F=$(find . -type f ! -name MD5SUMS | sed 's#^\./##' | sort); md5 -r $F > MD5SUMS; echo "MD5SUMS md5 $(md5 -q MD5SUMS)"
+cp $W/out/maclane/$(basename $0) $J/run_autost.sh; cd $J; F=$(find . -type f ! -name MD5SUMS | sed 's#^\./##' | sort); md5 -r $F > MD5SUMS; echo "MD5SUMS md5 $(md5 -q MD5SUMS)"
 cd $W; git add -f $(for f in $F MD5SUMS; do echo out/job_ST$NN/$f; done) && git commit -q -m "ST-$NN (auto, MK5 point $P): W17 gk8 main + tneg on K3l5q + nonzero 268 keys
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" && for i in 1 2 3 4 5; do git fetch -q origin main && git merge -q --no-edit origin/main && git push -q origin HEAD:main && { echo "commit $(git log -1 --format=%h --grep="ST-$NN (auto")"; break; }; sleep $((2**i)); done
