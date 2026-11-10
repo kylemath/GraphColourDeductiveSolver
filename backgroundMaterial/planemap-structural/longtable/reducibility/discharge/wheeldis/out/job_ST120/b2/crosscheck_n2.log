@@ -1,0 +1,16 @@
+# ST-120 B2 N2 cross-check: Lean RSSTCheckN2 (rsstParts79) vs rcore + independent N2 (RSSTFP_SPEC_v2 122da06a §16.2)
+N2 parts: lean 8, reference 8, identical True
+  N2_97	7	=6[*|*]  =5[=5|]  =9[*|]  =6[*|*]  =6[=5|*]  =7[*|*,*]  =5[*|]
+  N2_97m	7	=6[*|*]  =6[=5|*]  =9[*|]  =5[*|]  =6[=5|*]  =5[*|]  =7[*|*,*]
+  N2_98	7	=6[*|*]  =5[=5|]  =9[*|]  =6[*|*]  =6[=5|*]  =8[*|*,*,*]  =5[*|]
+  N2_98m	7	=6[*|*]  =6[=5|*]  =9[*|]  =5[*|]  =6[=5|*]  =5[*|]  =8[*|*,*,*]
+  N2_99	7	=6[*|*]  =5[=5|]  =9[*|]  =6[*|*]  =6[=5|*]  =9[*|]  =5[*|]
+  N2_99m	7	=6[*|*]  =6[=5|*]  =9[*|]  =5[*|]  =6[=5|*]  =5[*|]  =9[*|]
+  N2_88	7	=6[*|*]  =5[=5|]  =8[*|*,*,*]  =6[*|*]  =6[=5|*]  =8[*|*,*,*]  =5[*|]
+  N2_88m	7	=6[*|*]  =6[=5|*]  =8[*|*,*,*]  =5[*|]  =6[=5|*]  =5[*|]  =8[*|*,*,*]
+old   cases  2576  cases with an N2 fit    1  N2 fits    1  mismatches 0
+plant cases   240  cases with an N2 fit  240  N2 fits  263  mismatches 0
+near  cases   600  cases with an N2 fit   89  N2 fits   93  mismatches 0
+old windows: 79-part output = 71-part lean_out.txt + N2 fits only: 0 differ; lo/hi changed in 1
+plants: 240 of 240 fire their planted part (Lean)
+TOTAL cases 3416, mismatches 0
