@@ -1,27 +1,36 @@
 {
-  "question": "Will this project complete a correct, audited proof of the Four Colour Theorem along its routes: Lemma R* proved in the core class or in its weakest compiled form, the frame class (since 7 Oct: no frozen pi-orbit at some degree-5 vertex of every frame-class triangulation, via LPC), with the reduction to 4CT compiled in Lean?",
-  "by": "Coordination session (Claude Opus 5.5), the coordinator's own judgement, not a ledger status",
-  "updated": "2026-10-08T17:00:00-06:00",
-  "probability": 0.03,
+  "question": "Will this project complete a correct, Lean-checked proof of the Four Colour Theorem along its current main line (since 10 Nov): RSST-shaped discharging restated as our own rules, every configuration re-proved by our engines and in Lean, the discharging side (B1-B6) and the assembly compiled? Until 14 Oct the question was the frame-class R* route (3% at revision 144), now parked.",
+  "by": "Navigator revision 145 (a project thread, Claude Opus 5.5), its own judgement, not a ledger status; the coordinator may revise it",
+  "updated": "2026-11-10T16:30:00-06:00",
+  "probability": 0.45,
   "components": [
     {
-      "label": "R* is true in the frame class (some degree-5 vertex has no frozen orbit; LPC, 4CT-strength, is the stronger every-vertex form)",
-      "p": 0.8
-    },
-    {
-      "label": "We prove it (LPC or NoFrozenFrame on the sphere: NRC plus the mixed higher chain counts), given it is true",
-      "p": 0.04
-    },
-    {
-      "label": "The formal chain closes: NoFrozenFrame => RStarFrame => 4CT for spherical maps compiled and audited (J12, J14); remaining scope gap: drawing => combinatorial map (deferred)",
+      "label": "The seed certificate is right: RSST's rules as ours give t = 0 at every degree on the full world (already [E2], two engines; it re-verifies a published proof)",
       "p": 0.97
     },
     {
-      "label": "Separate meter: a worthwhile result (the chain-parity note, the VH-exists record paper with its Lean reduction, or a counterexample)",
-      "p": 0.4
+      "label": "The Lean discharging side closes: certificate replay B5, containment B6 and assembly (B1-B4 done; plan 33-55 person-days)",
+      "p": 0.65
+    },
+    {
+      "label": "Every configuration and substitute gets its Lean proof (212 configs + 119 substitutes queued; 2.126 done)",
+      "p": 0.9
+    },
+    {
+      "label": "Scope gaps closed or stated as explicit hypotheses: folded rings (appears -> Occ, Job 26), drawing -> combinatorial map",
+      "p": 0.8
+    },
+    {
+      "label": "Separate meter: the compressed, explainable account k asked for (minimal configs, simplest rules, plain-language reading of the dual)",
+      "p": 0.3
     }
   ],
   "evidence_for": [
+    "10 Nov [E2]: RSST fixed point (71 parts as our rules, RSST configurations as kills) leaves no positive charge at any degree on the full world; d >= 15 needs no kills.",
+    "10 Nov: every seed configuration has a route we control: 582 of 633 proved on our two engines, substitutes cover all but 426 leaves, N2 replaces 128.1324802, and 2.126 is proved in Lean (C2o126Final).",
+    "10 Nov: Lean discharging side B1 (charge/Euler), B2 (rules as data, 79 parts), B3 (window_induced, 0 sorry) and B4 (locality) proved in one day.",
+    "15 Oct onward: the Lean reducibility checker is sound to ring 19 with the C-glue chain; thousands of hD/hC theorems; w66666 also checked in Coq against Gonthier's fourcolor.",
+    "K <= 1 discharging closed (Lean except one ring-19 key, which is D on two engines).",
     "8 Oct, formal (audit J14 PASS: clean rebuild 91/91 modules, all axioms standard, statements checked against the paper, hypotheses shown satisfiable on the 22-vertex frame witness): no frozen orbits => R* on the frame class => 4CT for spherical maps, with frozen Mathlib-only challenge statements and proved anti-drift bridges; lock parity; N >= 8 with equality exactly at rigid states; the mod-4 chain-count formula (Conjecture F, via Tutte's identity); the chain-parity law; rigid isolation; Remark 7.",
     "8 Oct: the chain-parity law and rigid isolation are the first planarity-dependent theorems that hold at every degree-5 hole of the frame class (earlier theorems H, HP, F5, weak F6 only at diamond holes, which never occur there). They fail on the torus, Klein bottle and RP2, as a proof must. The law has two independently reviewed hand proofs (curve surgery; Tutte + Fisk) as well as the Lean proof.",
     "8 Oct, hand, independently reviewed (not formal): J1-J5 and the sigma-type lemma pin a near-rigid frozen class to 20-state cycles alternating 8, 9 chains, so LPC splits into named cases: rigid (excluded, formal), constant N (excluded, formal), alternating 8,9 (NRC, open), mixed higher counts (open).",
@@ -46,6 +55,10 @@
     "Every hard graph found so far (106 graphs, 500 radius-4/5 holes) contains the Birkhoff diamond or RSST configuration 2.122, both classically reducible; large-graph test running."
   ],
   "evidence_against": [
+    "B5 (certificate replay over the full world) and B6 (generic occurrence glue; 168 C2cons need it) are the largest unbuilt Lean pieces, and Lean work has repeatedly taken longer than planned.",
+    "Compute and usage are thin: the Mac Studio parks or reboots (k19 lost twice), and the account usage limit stopped every session for 3 h on 7 Nov.",
+    "6-7 Nov the rule-file audit withdrew every LP upper below 0.129: two engines agreeing on a shared input file did not validate the file. The seed route needs the same audit discipline.",
+    "This line proves 4CT along RSST's skeleton; it is not the simpler, interpretable route k first asked for. The own-rule LP fell ~25% a day but never reached 0 (best sound upper 0.01376), and sparse rule fits stay far from the optimum.",
     "8 Oct, the NRC wall: seven consecutive attempts on NRC (Tracks L, N, P, Q, R, S, T) produced structure but no proof; Euler counting, LP duality, Laman, monotone quantities and chord/interlace statistics are all insufficient, and T1 is false (a non-planar n = 22 law-respecting closed orbit), so NRC needs a second planar input beyond the law. New attacks are paused.",
     "The case of LPC with mixed higher chain counts (N >= 10 on cycles) is untouched and has no handle; LPC itself is Tilley's D-resolvability at every degree-5 vertex (as far as we can tell), so it is at least as strong as 4CT.",
     "Killed 7-8 Oct: a small unavoidable set of hole types (59 optimal for one-step rules, 66666 forced, no type with PureClean proved), G66 by multi-hole compensation, the Barnette signed sum, a stream function, any hole-local proof of LPC (a 28-vertex non-planar counterexample satisfies every local fact), R <= 5, N1+ (e >= 2), T1, QC.",
@@ -130,6 +143,11 @@
       "time": "2026-10-08T17:00:00-06:00",
       "p": 0.03,
       "note": "Navigator revision 144 (coordinator's estimate): the reduction NoFrozenFrame => R* => 4CT and the first planarity-dependent invariants at every frame-class hole (lock parity, chain-count formula, chain-parity law, rigid isolation) are compiled and audited (J14), and LPC is split into named cases. Prove factor 3% -> 4%. Held back by the NRC wall (seven attempts, no proof) and the untouched mixed higher counts."
+    },
+    {
+      "time": "2026-11-10T16:30:00-06:00",
+      "p": 0.45,
+      "note": "Navigator revision 145: question restated for the RSST seed route (k, 10 Nov 15:49Z: seed first, LP as compression). The seed fixed point is [E2] and B1-B4 are in Lean; the estimate is held down by B5, B6, assembly and scope gaps. Not comparable with the 3% R*-route estimate before it."
     }
   ]
 }
