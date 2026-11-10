@@ -1,0 +1,19 @@
+# W6b 16x (round 7, claim W6b-R17): 14 HAT big -> big columns (new kind HATBB, spec round7_R17/HATBB_SPEC.md; NOT EDGE keys: an engine
+# needs the HAT path, positions X Y U-1 U+1 XA YA V-1 V+1 of grammar.HPOS).  Line format as cg_keys: name rule.  Column 0 <= x <= 3, cost 0.001.
+# Priced on lpdual_k86GS16_01 (a64fd4d3, 347 keys) and lpdual_k86GS20_01 (40e359a6, 357 keys): colsum = sum w * coef, > 0.001 = negative
+# reduced cost.  relief = coefficient on the binder rows R1-R8 (bind86 rows_grouped + R8 55556859/58576556; -1 = one sure OUT slot);
+# no listed column loads any of R1-R8.  Exact branch and bound, depth <= 4 (hat16x.py).
+HB01 HAT(B->7)[X=6 Y=S U+1=5 XA=5]  # colsum GS16_01 +0.008795 GS20_01 +0.006068; relief R3-1 R4-1 R5-1 R6-1
+HB02 HAT(B->7)[X=S Y=S U+1=5 XA=5]  # colsum GS16_01 +0.001982 GS20_01 -0.000785; relief R3-1 R4-1 R5-1 R6-1
+HB03 HAT(B->7)[X=5 Y=6 U-1=S YA=S]  # colsum GS16_01 +0.001922 GS20_01 +0.001101; relief R4-1 R5-1 R6-1 R8-1
+HB04 HAT(7->B)[X=5 Y=5 U-1=B U+1=B]  # colsum GS16_01 +0.006949 GS20_01 +0.007651; relief R1-2 R2-2
+HB05 HAT(7->B)[X=5 Y=5 U-1=7 U+1=B]  # colsum GS16_01 +0.006449 GS20_01 +0.006817; relief R1-2 R2-2
+HB06 HAT(B->B)[X=5 Y=5 U-1=7 U+1=7]  # colsum GS16_01 +0.008315 GS20_01 +0.009515; relief R2-2 R7-2
+HB07 HAT(7->7)[X=6 Y=S U+1=5 XA=5]  # colsum GS16_01 +0.010174 GS20_01 +0.006692; relief R3-1
+HB08 HAT(7->7)[X=S Y=S U-1=5 YA=5]  # colsum GS16_01 +0.008840 GS20_01 +0.005050; relief R3-1
+HB09 HAT(B->7)[X=5 Y=S U-1=S YA=5]  # colsum GS16_01 +0.002946 GS20_01 +0.002237; relief R4-1 R5-1 R6-1
+HB10 HAT(B->7)[X=S Y=S XA=S YA=B]  # colsum GS16_01 +0.010963 GS20_01 +0.010226; relief R7-1
+HB11 HAT(B->B)[X=S Y=S XA=B YA=S]  # colsum GS16_01 +0.009934 GS20_01 +0.008664; relief R7-1
+HB12 HAT(B->7)[X=5 Y=6 U-1=S YA=6]  # colsum GS16_01 +0.001684 GS20_01 +0.001491; relief R8-1
+HB13 HAT(8->7)[X=6 YA=5]  # colsum GS16_01 +0.001307 GS20_01 +0.000459; relief R4-1 R5-1 R6-1 R8-1
+HB14 HAT(B->7)[X=5 Y=S XA=S V+1=B]  # colsum GS16_01 +0.001153 GS20_01 +0.004306; relief R4-1 R5-1 R6-1 R7-1
