@@ -1,0 +1,34 @@
+# RSST-1SHOT vector check, control='notinduced'
+ext d=5  max_hi    55555 69757 MATCH
+ext d=5  min_lo    65977 57659 MATCH
+ext d=5  most_fits_1 65977 57659 MATCH
+ext d=5  most_fits_2 98659 75555 MISMATCH  first diff: rsst_configs_contained (mine [['2.122', 'D2'], ['2.126', 'none'], ['7326.1306802', 'C2cons'], ['7326.460802', 'C2cons'], ['7562.126', 'C2cons']]; theirs [['2.122', 'D2'], ['2.126', 'none'], ['7562.126', 'C2cons']])
+ext d=5  max_hi_no_config 57577 68976 MATCH
+ext d=6  max_hi    556555 755955 MATCH
+ext d=6  min_lo    569558 566588 MATCH
+ext d=6  most_fits_1 556595 565675 MATCH
+ext d=6  most_fits_2 656555 585565 MATCH
+ext d=6  max_hi_no_config 685866 666599 MATCH
+ext d=9  max_hi    555576655 558855855 MATCH
+ext d=9  min_lo    998676976 779878658 MATCH
+ext d=9  most_fits_1 555576655 558855855 MATCH
+ext d=9  most_fits_2 566565555 868565986 MISMATCH  first diff: rsst_configs_contained (mine [['2.122', 'D2'], ['2.126', 'none'], ['3.1306802', 'D2']]; theirs [['2.122', 'D2'], ['2.126', 'none']])
+ext d=9  max_hi_no_config 566555755 767589658 MATCH
+ext d=10 max_hi    8555555655 6895577659 MATCH
+ext d=10 min_lo    5878989667 5886695895 MATCH
+ext d=10 most_fits_1 8555555655 6895577659 MATCH
+ext d=10 most_fits_2 6855556555 5585595586 MATCH
+ext d=10 max_hi_no_config 5559576655 9576755886 MATCH
+ext d=11 max_hi    55556555655 66755556777 MISMATCH  first diff: rsst_configs_contained (mine [['0.453962', 'D2'], ['0.7322', 'D2'], ['122.363', 'D2'], ['2.126', 'none'], ['3.3682806', 'D2']]; theirs [['0.453962', 'D2'], ['0.7322', 'D2'], ['122.363', 'D2'], ['2.126', 'none']])
+ext d=11 min_lo    97588866886 65966685566 MATCH
+ext d=11 most_fits_1 55556555655 66755556777 MISMATCH  first diff: rsst_configs_contained (mine [['0.453962', 'D2'], ['0.7322', 'D2'], ['122.363', 'D2'], ['2.126', 'none'], ['3.3682806', 'D2']]; theirs [['0.453962', 'D2'], ['0.7322', 'D2'], ['122.363', 'D2'], ['2.126', 'none']])
+ext d=11 most_fits_2 65555855555 69555697689 MATCH
+ext d=11 max_hi_no_config 95655596555 78975757856 MATCH
+all5 d=9 lo=24 hi=24 fits=54 contains=['0.7322'] MATCH
+all5 d=10 lo=20 hi=20 fits=60 contains=['0.7322'] MATCH
+all5 d=11 lo=16 hi=16 fits=66 contains=['0.7322'] MATCH
+all5 d=12 lo=12 hi=12 fits=72 contains=['0.7322'] MATCH
+all5 d=13 lo=8 hi=8 fits=78 contains=['0.7322'] MATCH
+all5 d=14 lo=4 hi=4 fits=84 contains=['0.7322'] MATCH
+all5 d=15 lo=0 hi=0 fits=90 contains=['0.7322'] MATCH
+TOTAL ext: 32 vectors, 4 mismatches

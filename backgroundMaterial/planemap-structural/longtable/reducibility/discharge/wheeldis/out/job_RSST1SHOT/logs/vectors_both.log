@@ -1,0 +1,49 @@
+# RSST-1SHOT vector check, control=''
+ext d=5  max_hi    55555 69757 MATCH
+ext d=5  min_lo    65977 57659 MATCH
+ext d=5  most_fits_1 65977 57659 MATCH
+ext d=5  most_fits_2 98659 75555 MATCH
+ext d=5  max_hi_no_config 57577 68976 MATCH
+ext d=6  max_hi    556555 755955 MATCH
+ext d=6  min_lo    569558 566588 MATCH
+ext d=6  most_fits_1 556595 565675 MATCH
+ext d=6  most_fits_2 656555 585565 MATCH
+ext d=6  max_hi_no_config 685866 666599 MATCH
+ext d=9  max_hi    555576655 558855855 MATCH
+ext d=9  min_lo    998676976 779878658 MATCH
+ext d=9  most_fits_1 555576655 558855855 MATCH
+ext d=9  most_fits_2 566565555 868565986 MATCH
+ext d=9  max_hi_no_config 566555755 767589658 MATCH
+ext d=10 max_hi    8555555655 6895577659 MATCH
+ext d=10 min_lo    5878989667 5886695895 MATCH
+ext d=10 most_fits_1 8555555655 6895577659 MATCH
+ext d=10 most_fits_2 6855556555 5585595586 MATCH
+ext d=10 max_hi_no_config 5559576655 9576755886 MATCH
+ext d=11 max_hi    55556555655 66755556777 MATCH
+ext d=11 min_lo    97588866886 65966685566 MATCH
+ext d=11 most_fits_1 55556555655 66755556777 MATCH
+ext d=11 most_fits_2 65555855555 69555697689 MATCH
+ext d=11 max_hi_no_config 95655596555 78975757856 MATCH
+all5 d=9 lo=24 hi=24 fits=54 contains=['0.7322'] MATCH
+all5 d=10 lo=20 hi=20 fits=60 contains=['0.7322'] MATCH
+all5 d=11 lo=16 hi=16 fits=66 contains=['0.7322'] MATCH
+all5 d=12 lo=12 hi=12 fits=72 contains=['0.7322'] MATCH
+all5 d=13 lo=8 hi=8 fits=78 contains=['0.7322'] MATCH
+all5 d=14 lo=4 hi=4 fits=84 contains=['0.7322'] MATCH
+all5 d=15 lo=0 hi=0 fits=90 contains=['0.7322'] MATCH
+   7 7676766 6565665 differing summary fields: ['fills_lo_pos', 'fills_hi_pos']; of which equal under the relevant-sites multiplicity convention: ['fills_lo_pos', 'fills_hi_pos']
+tv A 7 7676766 6565665      MISMATCH(count-convention only; all other fields match)  (summary fields 17; cond text identical -)  first diff: summary.fills_lo_pos (mine 20425, theirs 817)
+tv A 7 5557557 5777977      MATCH  (summary fields 17; cond text identical True)
+tv A 8 55556859 58576556    MATCH  (summary fields 17; cond text identical True)
+   8 55556858 58576557 differing summary fields: ['fills_lo_pos', 'fills_hi_pos']; of which equal under the relevant-sites multiplicity convention: ['fills_lo_pos', 'fills_hi_pos']
+tv A 8 55556858 58576557    MISMATCH(count-convention only; all other fields match)  (summary fields 17; cond text identical -)  first diff: summary.fills_lo_pos (mine 2500, theirs 5)
+   8 56765767 56655555 differing summary fields: ['fills_lo_pos', 'fills_hi_pos', 'fills_hi_pos_after_proved']; of which equal under the relevant-sites multiplicity convention: ['fills_lo_pos', 'fills_hi_pos', 'fills_hi_pos_after_proved']
+tv T 8 56765767 56655555    MISMATCH(count-convention only; all other fields match)  (summary fields 17; cond text identical -)  first diff: summary.fills_lo_pos (mine 1392, theirs 87)
+   7 5566776 5666657 differing summary fields: ['fills_lo_pos', 'fills_hi_pos']; of which equal under the relevant-sites multiplicity convention: ['fills_lo_pos', 'fills_hi_pos']
+tv C 7 5566776 5666657      MISMATCH(count-convention only; all other fields match)  (summary fields 17; cond text identical -)  first diff: summary.fills_lo_pos (mine 720, theirs 240)
+   7 7676666 6656565 differing summary fields: ['fills_lo_pos', 'fills_hi_pos']; of which equal under the relevant-sites multiplicity convention: ['fills_lo_pos', 'fills_hi_pos']
+tv B 7 7676666 6656565      MISMATCH(count-convention only; all other fields match)  (summary fields 17; cond text identical -)  first diff: summary.fills_lo_pos (mine 86880, theirs 17376)
+   8 76576756 65555556 differing summary fields: ['fills_lo_pos', 'fills_hi_pos', 'fills_hi_pos_after_proved']; of which equal under the relevant-sites multiplicity convention: ['fills_lo_pos', 'fills_hi_pos', 'fills_hi_pos_after_proved']
+tv B 8 76576756 65555556    MISMATCH(count-convention only; all other fields match)  (summary fields 17; cond text identical -)  first diff: summary.fills_lo_pos (mine 1392, theirs 87)
+TOTAL ext: 32 vectors, 0 mismatches
+TOTAL tv: 8 vectors, 6 mismatches

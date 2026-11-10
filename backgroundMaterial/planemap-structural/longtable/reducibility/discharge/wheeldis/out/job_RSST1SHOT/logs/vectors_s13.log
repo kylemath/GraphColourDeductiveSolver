@@ -1,0 +1,22 @@
+s13 d=9 all 5 (no-kill argmax, 60-4d)                 555555555 555555555 MATCH
+s13 d=10 all 5 (no-kill argmax, 60-4d)                 5555555555 5555555555 MATCH
+s13 d=11 all 5 (no-kill argmax, 60-4d)                 55555555555 55555555555 MATCH
+s13 d=12 all 5 (no-kill argmax, 60-4d)                 555555555555 555555555555 MATCH
+s13 d=13 all 5 (no-kill argmax, 60-4d)                 5555555555555 5555555555555 MATCH
+s13 d=14 all 5 (no-kill argmax, 60-4d)                 55555555555555 55555555555555 MATCH
+s13 d=9 all-5 link, apexes and privates 9+            555555555 999999999 MATCH
+s13 d=10 all-5 link, apexes and privates 9+            5555555555 9999999999 MATCH
+s13 d=11 all-5 link, apexes and privates 9+            55555555555 99999999999 MATCH
+s13 d=12 all-5 link, apexes and privates 9+            555555555555 999999999999 MATCH
+s13 d=13 all-5 link, apexes and privates 9+            5555555555555 9999999999999 MATCH
+s13 d=14 all-5 link, apexes and privates 9+            55555555555555 99999999999999 MATCH
+s13 d=9 control argmax (633 minus 2.122, 0.7322)      556655676 555555555 MATCH
+s13 d=10 582 argmax (positive; killed only by none)    5555556657 5959566556 MATCH
+s13 d=9 582 argmax (positive; killed only by none)    555665566 595565666 MATCH
+s13 fit list (37 fits) MATCH
+s13 d=10 633 exact argmax                              5555556666 5959565556 MATCH
+s13 d=11 633 exact argmax                              55555556556 59595955956 MATCH
+s13 d=12 633 exact argmax                              555555555555 595959595959 MATCH
+s13 d=13 633 exact argmax                              5555555555555 5959595959599 MATCH
+s13 d=9 633 exact argmax                              555556757 595966566 MATCH
+TOTAL s13: 21 vectors, 0 mismatches

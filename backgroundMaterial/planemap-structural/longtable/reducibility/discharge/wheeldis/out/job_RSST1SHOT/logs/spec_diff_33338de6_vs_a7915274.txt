@@ -1,0 +1,195 @@
+485a486
+> - **W6b's reporting flags on §11** (they change no verdict). (1) The `fills_*` counts multiply group multiplicities only over sites that have a relevant private. A site with no relevant private is skipped (`if sizes[j] == 1 and not cls[j][0][0]: continue` in `fp_exact.py`), so the positive-filling counts in §11 are too low by the product of those sites' option counts. `n_fill`, every maximum and every kill status are unaffected. (2) Only groups with hi > 0 are kill-checked. This is correct for the pass test, but it means `configs_used` and the coverage counts describe positive groups only. W6b argues in round16/round10_rsstfp2/DECISIONS.md that Assumption H (§7) holds.
+486a488,679
+> 
+> ## 13. Addendum A (RSST-FP9): exact check at d = 9..14
+> 
+> Files: `d9plus/` (code, results, logs, MD5SUMS). This section is enough to replicate the check. The code is a reference only.
+> 
+> ### A.1 Statement and model
+> 
+> **What is certified.** For every d ∈ {9, …, 14}, every link word and every filling, the final charge of u under all 71 parts is at most 0, once the kill model's configurations are excluded.
+> 
+> **Charge.**
+> - u has exact degree d. To the parts u reads as 9+, so its fans are never read (§6).
+> - u is never a hub, so it never sends.
+> - hi = 10(6−d) + #{fits at hubs w_i (letter 5..8) with target u that are possible}. lo uses sure fits instead.
+> - The pass test uses hi.
+> 
+> **Letters.** Every link letter, apex and private is free in 5..9+.
+> - For d ≥ 9 our pipeline has no K3gB5n / V2ROW domains; V2ROW_SPEC §3 is defined only for d = 7 and 8. So the only kills are RSST appearances, and the check is at least as strong as one that also used domains.
+> - A 9+ link vertex is drawn as an 8 (§6). Its y = p.1 and x = p.3 are free letters. Its middle is held at 9+ and never read.
+> 
+> **Hosts** (§7, with one change: u is a host).
+> - u, with its exact letter d. RSST interiors have degrees up to 11, so u can be matched for d ≤ 11.
+> - Every w, s and private whose letter is exact (≤ 8). 9+ is never a host.
+> 
+> **Host-graph edges** are the window edges among hosts:
+> - u–w_j, w_j–w_{j+1}, w_j–s_{j−1}, w_j–s_j, w_j–p_j.k;
+> - the chain s_{j−1}–p_j.1–…–p_j.k–s_j (for a 9+ site the drawn chain is s_{j−1}–y–m–x–s_j, with m never a host);
+> - s_{j−1}–s_j when w_j = 5.
+> 
+> **Containment** is induced and injective with exact degrees (§7). The face condition is implied: every interior face is a triangle of interior edges, and induced matching keeps all three of them.
+> 
+> ### A.2 The fits from hub w_i into u, as interval conditions
+> 
+> Take a hub w_i with letter n = L_i ∈ 5..8. Its rotation is rot(w_i) = u, w_{i−1}, s_{i−1}, p_i.1..p_i.k, s_i, w_{i+1} (k = n−5). The target S[a+2] = u forces the anchor a = n−2.
+> 
+> For each part with n subparts, apply §3.3 and §3.4. The subpart reads are:
+> 
+> | subpart j | spoke | hat (across xp–x) | fans |
+> |---|---|---|---|
+> | 0 | s_i | ring 3 (OPEN unless `*`) | s spoke: OPEN unless all `*` |
+> | 1 | w_{i+1} | p_{i+1}.1 if L_{i+1} ≥ 6 (y_{i+1} for 9+); s_{i+1} if L_{i+1} = 5 | if L_{i+1} is exact 6..8: p_{i+1}.2, …, p_{i+1}.(L_{i+1}−5), s_{i+1} |
+> | 2 | u (read as 9) | w_{i+2} | never read (§6) |
+> | 3 | w_{i−1} | w_{i−2} | if L_{i−1} is exact 6..8: s_{i−2}, p_{i−1}.1, …, p_{i−1}.(L_{i−1}−6) |
+> | 4 | s_{i−1} | p_{i−1}.last if L_{i−1} ≥ 6 (x_{i−1} for 9+); s_{i−2} if L_{i−1} = 5 | OPEN unless all `*` |
+> | 5..n−1 | p_i.1..p_i.k | ring 3 (OPEN unless `*`) | private spoke: OPEN unless all `*` |
+> 
+> How the tests resolve:
+> - Tests on the link letters L_{i−1}, L_i and L_{i+1} are decided from the *hub class* (L_{i−1}, L_i, L_{i+1}).
+> - Tests on W±2 = L_{i±2}, on S−2..S+1 = s_{i−2}..s_{i+1} and on the privates of w_{i−1}, w_i and w_{i+1} become interval conditions.
+> - A fit is the conjunction of its conditions, plus an OPEN flag.
+> 
+> These are the only letters a fit into u reads. In the reference code this is asserted for every class (`d9_export.py`).
+> 
+> **Checksums** (`results/hubs.txt`):
+> - Summed over the 25 neighbour classes, the number of fits that survive the class-level tests is 80 for hub letter 5, 80 for 6, 70 for 7 and 9 for 8.
+> - c⁺, the maximum number of possible fits over all non-link letters, is 6, 6, 6 and 4 for hub letters 5, 6, 7 and 8, and 0 for 9+. `results/cplus.txt` gives c⁺ for every 5-letter link window; it agrees with `../results/tail9.json`.
+> 
+> ### A.3 The exact search
+> 
+> **1. Link words.**
+> - Enumerate the link words L_0..L_{d−1} up to rotation and reflection. The parts are mirror-closed and the matcher is orientation-free, so these symmetries are safe.
+> - Run a DFS in site order, letters 5..9, that keeps only words starting with their least letter.
+> - Bound a partial word by 10(6−d) + Σ_i b_i, where:
+>   - b_i = c⁺(L_{i−2..i+2}) if the window is already assigned;
+>   - b_i = cmax(L_i) = 6, 6, 6, 4, 0 if only L_i is known;
+>   - b_i = 6 otherwise.
+> - At a full word, check that it is the dihedral minimum, then apply the cyclic c⁺ bound.
+> - **Link-level kill check**: with hosts u and the exact w's only, test every configuration of the variant. A word that is killed here is done.
+> 
+> **2. Variables of a word.**
+> - In site order: s_j, then p_j.1..p_j.k. A 9+ site contributes only y and x.
+> - The fit instances are the fits of A.2 at every hub. W±2 conditions are already decided by the word.
+> - **Domain of a variable**: {9} together with each a ∈ 5..8 whose truth pattern on that variable's conditions differs from 9's.
+>   - This is a dominance argument. A letter with the same pattern as 9 gives the same charge, and it adds a host, so by monotonicity it can only add kills. So it never beats 9.
+> - Values are tried in order of the most conditions satisfied first, with 9 first on ties.
+> 
+> **3. DFS over the variables.**
+> - Bound = 10(6−d) + the number of fit instances that no assigned value violates. This is valid because each instance is a conjunction.
+> - Prune when bound ≤ threshold.
+> - After an exact letter is assigned to vertex v, run an **anchored kill check**: is any configuration of the variant contained with some interior vertex mapped to v?
+>   - Try each configuration vertex x0 with deg x0 = letter(v), and extend in breadth-first order from x0. Interiors are connected.
+>   - Candidate hosts for the next vertex x: hosts with letter deg x that are not yet used, adjacent to the images of x's mapped neighbours, and not adjacent to the images of its mapped non-neighbours.
+>   - In the 633 variant the proved configurations are tried first.
+> - If a configuration is contained, the node is killed for every completion, by monotonicity (§7).
+> - At a leaf every condition is decided, so hi = bound exactly.
+> 
+> **4. Modes.**
+> - **max**: the threshold is the best hi found so far, starting from S. The result is the exact maximum over unkilled states when it is greater than S; otherwise the run certifies max ≤ S. S = 0 gives the pass test. Lower S gives the exact maximum.
+> - **enum**: the threshold is fixed at 0. Every leaf is a positive state that the 582 configurations do not kill. Each one is tested against the 51 none configurations, which classifies it as either killed only by proved-modulo-admissibility configurations, or genuinely positive.
+> 
+> **5. Why it is exact.** The search is complete over link words (symmetry), fillings (dominance) and pruning (valid bounds plus monotone kills).
+> - Every occurrence of a configuration is found: when its last host is assigned (anchored check), or at link level when it uses only u and w's.
+> - The leaf charge equals pubrules' ledger.
+> 
+> **Cross-checks.**
+> - 600 seeded random d = 9..14 2-balls (`results/xval.txt`): hi, lo and the full set of contained configurations agree with pubrules and rsst_rows on all 600.
+> - Every state the search reports is re-evaluated on pubrules + rsst_rows (`results/recheck.json`).
+> - The no-kill variant reproduces 60 − 4d (§8.4).
+> - A planted control (kill set minus 2.122 and 0.7322) finds positive states again.
+> 
+> ### A.4 Results
+> 
+> <!--D9TABLES-->
+> | d | no kills: max (argmax link / apexes / privates) | 582 proved: max | 633: max | 633 search: words, link-killed words, nodes, s | 582 enum: positive states left by 582 (killed only by none configs / genuine) |
+> |---|---|---|---|---|---|
+> | 9 | 24 `555555555 / 555555555 / 9..9` | 7 `555665566 / 595565666 / 999999999699599999999699699` | <= 0 certified; exact max 0 `555556757 / 595966566 / 999999999999999999659999999` | 17826, 433, 3876089, 75.7 | 31139 / 0 |
+> | 10 | 20 `5555555555 / 5555555555 / 9..9` | 3 `5555556657 / 5959566556 / 999999999999999999999699999959` | <= 0 certified; exact max 0 `5555556666 / 5959565556 / 9..9` | 15169, 351, 1559927, 18.9 | 409 / 0 |
+> | 11 | 16 `55555555555 / 55555555555 / 9..9` | <= 0  | <= 0 certified; exact max 0 `55555556556 / 59595955956 / 9..9` | 8906, 65, 340799, 2.3 | 0 / 0 |
+> | 12 | 12 `555555555555 / 555555555555 / 9..9` | <= 0  | <= 0 certified; exact max 0 `555555555555 / 595959595959 / 9..9` | 3476, 0, 31672, 0.1 | 0 / 0 |
+> | 13 | 8 `5555555555555 / 5555555555555 / 9..9` | <= 0  | <= 0 certified; exact max -6 `5555555555555 / 5959595959599 / 9..9` | 639, 0, 964, 0.0 | 0 / 0 |
+> | 14 | 4 `55555555555555 / 55555555555555 / 9..9` | <= 0  | <= 0 certified; exact max <= -10  | 46, 0, 11, 0.0 | 0 / 0 |
+> 
+> **States that only a proved-modulo-admissibility configuration kills.** These are the leaves of the 582 enumeration (positive and unkilled by the 582), grouped by the set of none configurations they contain, and counted as dominance-reduced states per d:
+> 
+> Totals: d9: 31139, d10: 409 dominance-reduced states, 238 distinct sets, 21 none configurations involved. Every state contains at least one none configuration, and none is genuinely positive.
+> 
+> | none configuration | states containing it (per d) | states where it is the ONLY none configuration (per d) |
+> |---|---|---|
+> | 439326.126 | d9: 21708 | d9: 3591 |
+> | 2.126 | d9: 21195, d10: 273 | d9: 367, d10: 60 |
+> | 453963.364 | d9: 9794 | d9: 154 |
+> | 439328.136 | d9: 4551 | d9: 219 |
+> | 453963.136 | d9: 2908 | d9: 153 |
+> | 3.1324806 | d9: 2125, d10: 16 | d9: 64, d10: 4 |
+> | 126.1306802 | d9: 2016, d10: 72 | d9: 454, d10: 32 |
+> | 453963.126 | d9: 1826 | d9: 316 |
+> | 126.442802 | d9: 1300, d10: 42 | d9: 41, d10: 9 |
+> | 439589.122 | d9: 1197 | d9: 62 |
+> | 443166.126 | d9: 1095 | d9: 22 |
+> | 3.1324802 | d9: 578, d10: 20 | d9: 31 |
+> | 26359326.126 | d10: 298 | d10: 53 |
+> | 7322.453720 | d9: 197 | - |
+> | 128.1324802 | d9: 183 | - |
+> | 7562.460920 | d9: 110 | - |
+> | 122.1324802 | d9: 90 | - |
+> | 126.1551602 | d9: 30 | - |
+> | 8.1551606 | d9: 30 | - |
+> | 126.3682802 | d9: 4 | - |
+> | 126.687602 | d9: 1 | - |
+> 
+> Configurations that are the only killer of some state, and so needed for any proof by this route (13): 126.1306802, 126.442802, 2.126, 26359326.126, 3.1324802, 3.1324806, 439326.126, 439328.136, 439589.122, 443166.126, 453963.126, 453963.136, 453963.364. Together with nothing else they hit every set, so this is a hitting set of 13 none configurations: **126.1306802, 126.442802, 2.126, 26359326.126, 3.1324802, 3.1324806, 439326.126, 439328.136, 439589.122, 443166.126, 453963.126, 453963.136, 453963.364**. The full list of sets is in `results/modadm_sets.tsv`.
+> 
+> **Kill events of the 633 search** (pruned nodes whose bound was still positive, by the first killing configuration; proved configurations are tried first), top 8 per d:
+> 
+> - d=9: 2.122:D2 250324, 0.7322:D2 140861, 2.126:none 132324, 122.122:D2 124682, 122.126:C2cons 94665, 2.7566:D2 51204, 2.22086:D2 43096, 0.453962:D2 22374; link-level: 439322.122:D2 65, 439320.439322:D2 10, 439322.126:C2cons 100, 439326.122:D2 74, 439326.126:none 96, 453722.126:C2cons 53, 439562.7326:D2 13, 453722.7566:C2cons 22
+> - d=10: 2.122:D2 134223, 0.7322:D2 99799, 2.126:none 70869, 122.122:D2 45595, 122.126:C2cons 31396, 2.7566:D2 23461, 2.22086:D2 18284, 3.1306802:D2 8394; link-level: 26359322.122:D2 65, 26359322.126:C2cons 81, 26359326.122:D2 61, 26359326.126:none 59, 26373722.126:C2cons 49, 27223322.126:C2cons 36
+> - d=11: 0.7322:D2 38939, 2.122:D2 34107, 2.126:none 16430, 122.122:D2 6486, 2.7566:D2 5073, 122.126:C2cons 3637, 3.1306802:D2 3216, 2.22086:D2 3165; link-level: 26359322.-7322:D2 65
+> - d=12: 0.7322:D2 7052, 2.122:D2 2994, 2.126:none 748, 3.460806:D2 418, 3.1306802:D2 260, 2.7566:D2 201, 122.122:D2 171, 2.1551966:D2 98; link-level: none
+> - d=13: 0.7322:D2 419, 2.122:D2 48, 3.460806:D2 5; link-level: none
+> - d=14: 0.7322:D2 5, 2.122:D2 1; link-level: none
+> 
+> **Planted control** (d = 9, 633 minus 2.122 and 0.7322): max 7, argmax `556655676 / 555555555 / 999999999999999999999599999`. The search does find positive states once kills are removed.
+> 
+> **Re-check on pubrules + rsst_rows** (`code/d9_recheck.py`): 114 reported states re-evaluated (hi, lo, no proved configuration contained, the none set as reported; for the planted control, only the dropped configurations), 0 disagreements.
+> 
+> **Test vectors** (all of them re-evaluated on pubrules + rsst_rows; the privates are listed 3 per site in site order, with 9 meaning 9+ or absent; full fit lists are in `d9plus/results/recheck.json`):
+> 
+> | d | what | link | apexes | privates | hi = lo | contained configurations |
+> |---|---|---|---|---|---|---|
+> | 9 | all 5 (no-kill argmax, 60-4d) | 555555555 | 555555555 | 9..9 | 24 | 0.7322 (D2), 439322.122 (D2), 439320.439322 (D2), 439322.442802 (D2) |
+> | 10 | all 5 (no-kill argmax, 60-4d) | 5555555555 | 5555555555 | 9..9 | 20 | 0.7322 (D2), 26359322.122 (D2) |
+> | 11 | all 5 (no-kill argmax, 60-4d) | 55555555555 | 55555555555 | 9..9 | 16 | 0.7322 (D2), 26359322.-7322 (D2) |
+> | 12 | all 5 (no-kill argmax, 60-4d) | 555555555555 | 555555555555 | 9..9 | 12 | 0.7322 (D2) |
+> | 13 | all 5 (no-kill argmax, 60-4d) | 5555555555555 | 5555555555555 | 9..9 | 8 | 0.7322 (D2) |
+> | 14 | all 5 (no-kill argmax, 60-4d) | 55555555555555 | 55555555555555 | 9..9 | 4 | 0.7322 (D2) |
+> | 9 | all-5 link, apexes and privates 9+ | 555555555 | 999999999 | 9..9 | 6 | 439322.122 (D2), 439320.439322 (D2) |
+> | 10 | all-5 link, apexes and privates 9+ | 5555555555 | 9999999999 | 9..9 | 0 | 26359322.122 (D2) |
+> | 11 | all-5 link, apexes and privates 9+ | 55555555555 | 99999999999 | 9..9 | -6 | 26359322.-7322 (D2) |
+> | 12 | all-5 link, apexes and privates 9+ | 555555555555 | 999999999999 | 9..9 | -12 | - |
+> | 13 | all-5 link, apexes and privates 9+ | 5555555555555 | 9999999999999 | 9..9 | -18 | - |
+> | 14 | all-5 link, apexes and privates 9+ | 55555555555555 | 99999999999999 | 9..9 | -24 | - |
+> | 9 | control argmax (633 minus 2.122, 0.7322) | 556655676 | 555555555 | 999999999999999999999599999 | 7 | 0.7322 (D2) |
+> | 10 | 582 argmax (positive; killed only by none) | 5555556657 | 5959566556 | 999999999999999999999699999959 | 3 | 126.442802 (none), 26359326.126 (none) |
+> | 9 | 582 argmax (positive; killed only by none) | 555665566 | 595565666 | 999999999699599999999699699 | 7 | 2.126 (none), 439326.126 (none), 453963.364 (none) |
+> | 10 | 633 exact argmax | 5555556666 | 5959565556 | 9..9 | 0 | - |
+> | 11 | 633 exact argmax | 55555556556 | 59595955956 | 9..9 | 0 | - |
+> | 12 | 633 exact argmax | 555555555555 | 595959595959 | 9..9 | 0 | - |
+> | 13 | 633 exact argmax | 5555555555555 | 5959595959599 | 9..9 | -6 | - |
+> | 9 | 633 exact argmax | 555556757 | 595966566 | 999999999999999999659999999 | 0 | - |
+> 
+> Fits for one vector, so the ledger can be checked: d = 9, 582 argmax: 555665566/595565666/999999999699599999999699699, 37 fits into u: drule1@w0, drule1#2@w0, drule2@w0, drule3@w0, drule1@w1, drule1#2@w1, drule2@w1, drule2m@w1, drule3m@w1, drule1@w2, drule1#2@w2, drule2m@w2, drule3@w2, drule2'm@w3, drule3'@w3, drule3'm@w3, drule4'@w3, drule2'@w4, drule3'm@w4, drule4@w4, drule6@w4, drule1@w5, drule1#2@w5, drule2@w5, drule3@w5, drule1@w6, drule1#2@w6, drule2m@w6, drule3m@w6, drule2'm@w7, drule4m@w7, drule6m@w7, drule7@w7, drule2'@w8, drule4@w8, drule6@w8, drule7m@w8
+> <!--/D9TABLES-->
+> 
+> **Findings (d = 9..14).**
+> - **All 633** (582 proved + 51 proved-modulo-admissibility): **every d = 9..14 is certified, with final charge ≤ 0.** Every search is complete, with no time limit and no cap hit. The exact maximum is 0 at d = 9..12, −6 at d = 13 and ≤ −10 at d = 14.
+> - **582 proved only.** d = 11..14 are certified by the proved configurations alone. d = 9 and 10 are not: the maxima are +7 and +3, and there are 31,139 and 409 positive dominance-reduced states.
+>   - None of these states is genuinely positive: each contains at least one of 21 none configurations.
+>   - 13 of them (listed above) are the only killer of some state, and those 13 already hit every state.
+>   - So at d = 9 and 10 the certification rests on the admissibility of those 13 configurations, which include 2.126.
+> - **No kills.** The maximum is exactly 60 − 4d (all-5 filling).
+> - **How the kills are found.** At d = 9..11 several kills use u itself as a host (configurations with an interior vertex of degree 9, 10 or 11). The all-5 link with 9+ apexes is killed at link level at d = 9 and 10 (439322.122 at d = 9, 26359322.122 at d = 10).
+> - **No K3gB5n domains were used** (none exist for d ≥ 9 in our pipeline). The certificate is therefore independent of them.
+> 
