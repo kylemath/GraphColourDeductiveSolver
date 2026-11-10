@@ -1,0 +1,18 @@
+CGlueMerge.lean:46:6: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+CGlueMerge.lean:46:18: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+CGlueMerge.lean:60:56: warning: This simp argument is unused:
+  beq_iff_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [admissibleXM, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, Array.all_eq_true,
+    List.mem_range, Bool.or_eq_true] at hadm
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SimpleGraph.SphericalMap.xLabelM_ring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.ConfigOccW.xGraph_labels_merge' depends on axioms: [propext, Classical.choice, Quot.sound]
