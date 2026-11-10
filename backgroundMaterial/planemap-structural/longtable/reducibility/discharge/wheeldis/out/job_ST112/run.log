@@ -1,0 +1,39 @@
+keys loaded 114 dropped 154 payer-8/9 2 missing-from-file 0 refused 0
+t 0.013911212631000001
+--main
+W17 GK keys: 114 from /tmp/swarm-W17/tab/keys_ST112.txt (md5 af873388); payer->payee {'5->5': 4, '5->6': 3, '5->7': 21, '5->8': 8, '5->9': 4, '5->{69}
+senderR2 rows 22496 (spec 7,074), violated 0, min slack 2.79e-08; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18154 (spec 15,497), C 712 (spec 1,494), RPAT 158 (spec 158); by d {7: 9364, 8: 5912, 9: 3318, 10: 1427, 11: 613, 12: 85,
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -1.43562
+Karp tail (apex relaxation): lambda = 0.734938954, covered for d >= 22.584 (needs <= 31)
+RESULT: FEASIBLE (every sender row, cons2, mrowL, d = 7..26 exhaustive, DP 27..30 and Karp pass)
+max 0.0138926 (779899/577577)
+--tneg
+W17 GK keys: 114 from /tmp/swarm-W17/tab/keys_ST112.txt (md5 af873388); payer->payee {'5->5': 4, '5->6': 3, '5->7': 21, '5->8': 8, '5->9': 4, '5->{69}
+senderR2 rows 22496 (spec 7,074), violated 172, min slack -4.97e-06; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18154 (spec 15,497), C 712 (spec 1,494), RPAT 158 (spec 158); by d {7: 9364, 8: 5912, 9: 3318, 10: 1427, 11: 613, 12: 85,
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -1.43562
+Karp tail (apex relaxation): lambda = 0.734938954, covered for d >= 22.584 (needs <= 31)
+d=7: exact violated 61 (separator reported 61, Python exact re-check: 61 violated, max excess 4.97e-06; 4 part(s), 764s CPU-wall)
+d=8: exact violated 220 (separator reported 220, Python exact re-check: 220 violated, max excess 4.99e-06; 12 part(s), 1419s CPU-wall)
+d=9: exact violated 12 (separator reported 12, Python exact re-check: 12 violated, max excess 4.98e-06; 24 part(s), 2133s CPU-wall)
+RESULT: INFEASIBLE (exact receiver violators above); Python checks also FAIL
+max 0.0138926 (779899/577577)
+--tneg loads
+   6 9 3.013911194
+   6 9 3.013908259
+   1 8 2.013911199
+  39 8 2.013911185
+   6 8 2.013911025
+  18 8 2.013911011
+9 555557557 588586778 3.013911194
+9 555557557 588587768 3.013911194
+9 555575575 885867785 3.013911194
+9 555575575 885877685 3.013911194
+9 555755755 858677858 3.013911194
+9 555755755 858776858 3.013911194
+9 555557557 588586788 3.013908259
+9 555557557 588588768 3.013908259
+cp: autost_mk7.sh: No such file or directory
+MD5SUMS md5 523b857035785b1fe9b8ba67afe4dda4
+commit 394bcfbc5
