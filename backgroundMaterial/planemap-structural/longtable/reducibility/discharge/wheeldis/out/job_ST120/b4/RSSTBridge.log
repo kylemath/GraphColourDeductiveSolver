@@ -1,0 +1,35 @@
+RSSTBridge.lean:178:18: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+RSSTBridge.lean:182:73: warning: This simp argument is unused:
+  List.singleton_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.map_append, List.map_cons, List.map_map, List.map_nil, List.cons_append, Nat.add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+RSSTBridge.lean:207:18: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+RSSTBridge.lean:230:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+RSSTBridge.lean:237:0: warning: automatically included section variable(s) unused in theorem `SimpleGraph.SphericalMap.RSSTSeed.rot_u_link`:
+  hT
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit hT in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+RSSTBridge.lean:321:44: warning: This simp argument is unused:
+  hn1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [wSpokePos, wHatPos, wFanPos, ↓reduceIte, one_ne_zero, UWin.fanCount]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+RSSTBridge.lean:307:34: warning: Unused tactic linter: `push_cast` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
