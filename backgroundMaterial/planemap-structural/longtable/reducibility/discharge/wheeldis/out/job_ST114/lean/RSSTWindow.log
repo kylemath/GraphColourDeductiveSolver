@@ -1,1 +1,10 @@
-RSSTWindow.lean:63:8: warning: declaration uses `sorry`
+RSSTWindow.lean:59:25: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+RSSTWindow.lean:61:26: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+'SimpleGraph.SphericalMap.RSSTSeed.window_induced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SimpleGraph.SphericalMap.RSSTSeed.window_facial' depends on axioms: [propext, Classical.choice, Quot.sound]
