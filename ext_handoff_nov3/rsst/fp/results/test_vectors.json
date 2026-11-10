@@ -1,0 +1,5109 @@
+[
+ {
+  "set": "A",
+  "label": "7 7676766 6565665",
+  "summary": {
+   "n_fill": 9765625,
+   "n_groups": 390625,
+   "relevant": 8,
+   "n_inst": 15,
+   "lo_max": 5,
+   "hi_max": 5,
+   "fills_lo_pos": 817,
+   "fills_hi_pos": 817,
+   "argmax_lo": "x0=5,y0=5 p1=9 x2=5,y2=5 p3=9 x4=5,y4=5 p5=5 p6=5",
+   "groups_hi_pos_killed": 817,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "x0=5,y0=5 p1=9 x2=5,y2=5 p3=9 x4=5,y4=6 p5=6 p6=7",
+   "lo_max_after_proved": 0,
+   "hi_max_after_proved": 0,
+   "argmax_hi_after_proved": "x0=5,y0=5 p1=9 x2=5,y2=5 p3=9 x4=5,y4=6 p5=6 p6=7",
+   "fills_hi_pos_after_proved": 0
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule8m",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.1=5"
+   },
+   {
+    "part": "drule20m",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.1=5 & p0.2=5"
+   },
+   {
+    "part": "drule8m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.1=5"
+   },
+   {
+    "part": "drule20m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.1=5 & p2.2=5"
+   },
+   {
+    "part": "drule8m",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "p4.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "p4.1=5"
+   },
+   {
+    "part": "drule20m",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "p4.1=5 & p4.2=5"
+   },
+   {
+    "part": "drule4'",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p6.1=5"
+   },
+   {
+    "part": "drule5",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p6.1<=6"
+   },
+   {
+    "part": "drule4'm",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "p5.1=5"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "x0=5,y0=5 p1=9 x2=5,y2=5 p3=9 x4=5,y4=5 p5=5 p6=5",
+    "privates": {
+     "p0.1": 5,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 5,
+     "p3.1": 9,
+     "p4.1": 5,
+     "p4.2": 5,
+     "p5.1": 5,
+     "p6.1": 5
+    },
+    "lo": 5,
+    "hi": 5,
+    "fits_that_fire": [
+     {
+      "part": "drule8m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule20m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule20m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule20m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'm",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.7566",
+      "D2"
+     ],
+     [
+      "122.363",
+      "D2"
+     ],
+     [
+      "122.368",
+      "C2cons"
+     ],
+     [
+      "3.1324817",
+      "none"
+     ],
+     [
+      "126.469626",
+      "D2"
+     ],
+     [
+      "497.1028",
+      "C2cons"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "x0=5,y0=5 p1=9 x2=5,y2=5 p3=9 x4=5,y4=6 p5=6 p6=7",
+    "privates": {
+     "p0.1": 5,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 5,
+     "p3.1": 9,
+     "p4.1": 6,
+     "p4.2": 5,
+     "p5.1": 6,
+     "p6.1": 7
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule8m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule20m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule20m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "497.1028",
+      "C2cons"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "x0=5,y0=5 p1=9 x2=5,y2=5 p3=9 x4=5,y4=6 p5=6 p6=7",
+    "privates": {
+     "p0.1": 5,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 5,
+     "p3.1": 9,
+     "p4.1": 6,
+     "p4.2": 5,
+     "p5.1": 6,
+     "p6.1": 7
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule8m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule20m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule20m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "497.1028",
+      "C2cons"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "set": "A",
+  "label": "7 5557557 5777977",
+  "summary": {
+   "n_fill": 500,
+   "n_groups": 1,
+   "relevant": 0,
+   "n_inst": 26,
+   "lo_max": 0,
+   "hi_max": 0,
+   "fills_lo_pos": 0,
+   "fills_hi_pos": 0,
+   "argmax_lo": "x3=9,y3=9 x6=9,y6=9",
+   "groups_hi_pos_killed": 0,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "x3=9,y3=9 x6=9,y6=9",
+   "lo_max_after_proved": 0,
+   "hi_max_after_proved": 0,
+   "argmax_hi_after_proved": "x3=9,y3=9 x6=9,y6=9",
+   "fills_hi_pos_after_proved": 0
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule8",
+    "hub": "u",
+    "target": "w3",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8m",
+    "hub": "u",
+    "target": "w3",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "u",
+    "target": "w3",
+    "conditions": "always"
+   },
+   {
+    "part": "drule10'",
+    "hub": "u",
+    "target": "w3",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8",
+    "hub": "u",
+    "target": "w6",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8m",
+    "hub": "u",
+    "target": "w6",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9m",
+    "hub": "u",
+    "target": "w6",
+    "conditions": "always"
+   },
+   {
+    "part": "drule10'",
+    "hub": "u",
+    "target": "w6",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "x3=9,y3=9 x6=9,y6=9",
+    "privates": {
+     "p3.1": 9,
+     "p3.2": 9,
+     "p6.1": 9,
+     "p6.2": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule8",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule10'",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule10'",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "x3=9,y3=9 x6=9,y6=9",
+    "privates": {
+     "p3.1": 9,
+     "p3.2": 9,
+     "p6.1": 9,
+     "p6.2": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule8",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule10'",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule10'",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "x3=9,y3=9 x6=9,y6=9",
+    "privates": {
+     "p3.1": 9,
+     "p3.2": 9,
+     "p6.1": 9,
+     "p6.2": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule8",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule10'",
+      "hub": "u",
+      "target": "w3",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule10'",
+      "hub": "u",
+      "target": "w6",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   }
+  ]
+ },
+ {
+  "set": "A",
+  "label": "8 55556859 58576556",
+  "summary": {
+   "n_fill": 62500,
+   "n_groups": 1,
+   "relevant": 0,
+   "n_inst": 22,
+   "lo_max": 0,
+   "hi_max": 0,
+   "fills_lo_pos": 0,
+   "fills_hi_pos": 0,
+   "argmax_lo": "p4=9 x5=9,m5=9,y5=9 x7=9,y7=9",
+   "groups_hi_pos_killed": 0,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "p4=9 x5=9,m5=9,y5=9 x7=9,y7=9",
+   "lo_max_after_proved": 0,
+   "hi_max_after_proved": 0,
+   "argmax_hi_after_proved": "p4=9 x5=9,m5=9,y5=9 x7=9,y7=9",
+   "fills_hi_pos_after_proved": 0
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule29m",
+    "hub": "u",
+    "target": "w7",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2'm",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "p4=9 x5=9,m5=9,y5=9 x7=9,y7=9",
+    "privates": {
+     "p4.1": 9,
+     "p5.1": 9,
+     "p5.2": 9,
+     "p5.3": 9,
+     "p7.1": 9,
+     "p7.2": 9,
+     "p7.3": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule29m",
+      "hub": "u",
+      "target": "w7",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "p4=9 x5=9,m5=9,y5=9 x7=9,y7=9",
+    "privates": {
+     "p4.1": 9,
+     "p5.1": 9,
+     "p5.2": 9,
+     "p5.3": 9,
+     "p7.1": 9,
+     "p7.2": 9,
+     "p7.3": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule29m",
+      "hub": "u",
+      "target": "w7",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "p4=9 x5=9,m5=9,y5=9 x7=9,y7=9",
+    "privates": {
+     "p4.1": 9,
+     "p5.1": 9,
+     "p5.2": 9,
+     "p5.3": 9,
+     "p7.1": 9,
+     "p7.2": 9,
+     "p7.3": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule29m",
+      "hub": "u",
+      "target": "w7",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   }
+  ]
+ },
+ {
+  "set": "A",
+  "label": "8 55556858 58576557",
+  "summary": {
+   "n_fill": 62500,
+   "n_groups": 25,
+   "relevant": 2,
+   "n_inst": 23,
+   "lo_max": 1,
+   "hi_max": 1,
+   "fills_lo_pos": 5,
+   "fills_hi_pos": 5,
+   "argmax_lo": "p4=9 x5=9,m5=9,y5=9 x7=9,m7=5,y7=5",
+   "groups_hi_pos_killed": 1,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "p4=9 x5=9,m5=9,y5=9 x7=9,m7=6,y7=5",
+   "lo_max_after_proved": 0,
+   "hi_max_after_proved": 0,
+   "argmax_hi_after_proved": "p4=9 x5=9,m5=9,y5=9 x7=9,m7=6,y7=5",
+   "fills_hi_pos_after_proved": 0
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule29m",
+    "hub": "u",
+    "target": "w7",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2'm",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule29m",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "p7.1=5 & p7.2=5"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "p4=9 x5=9,m5=9,y5=9 x7=9,m7=5,y7=5",
+    "privates": {
+     "p4.1": 9,
+     "p5.1": 9,
+     "p5.2": 9,
+     "p5.3": 9,
+     "p7.1": 5,
+     "p7.2": 5,
+     "p7.3": 9
+    },
+    "lo": 1,
+    "hi": 1,
+    "fits_that_fire": [
+     {
+      "part": "drule29m",
+      "hub": "u",
+      "target": "w7",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule29m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "7322.165",
+      "D2"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "p4=9 x5=9,m5=9,y5=9 x7=9,m7=6,y7=5",
+    "privates": {
+     "p4.1": 9,
+     "p5.1": 9,
+     "p5.2": 9,
+     "p5.3": 9,
+     "p7.1": 5,
+     "p7.2": 6,
+     "p7.3": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule29m",
+      "hub": "u",
+      "target": "w7",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "7322.165",
+      "D2"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "p4=9 x5=9,m5=9,y5=9 x7=9,m7=6,y7=5",
+    "privates": {
+     "p4.1": 9,
+     "p5.1": 9,
+     "p5.2": 9,
+     "p5.3": 9,
+     "p7.1": 5,
+     "p7.2": 6,
+     "p7.3": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule29m",
+      "hub": "u",
+      "target": "w7",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "7322.165",
+      "D2"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "set": "T",
+  "label": "8 56765767 56655555",
+  "summary": {
+   "n_fill": 640000,
+   "n_groups": 40000,
+   "relevant": 7,
+   "n_inst": 26,
+   "lo_max": 2,
+   "hi_max": 2,
+   "fills_lo_pos": 87,
+   "fills_hi_pos": 87,
+   "argmax_lo": "p1=9 x2=5,y2=5 p3=9 x5=5,y5=7 p6=6 x7=7,y7=5",
+   "groups_hi_pos_killed": 87,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "p1=9 x2=5,y2=5 p3=9 x5=5,y5=6 p6=6 x7=6,y7=5",
+   "lo_max_after_proved": 1,
+   "hi_max_after_proved": 1,
+   "argmax_hi_after_proved": "p1=9 x2=5,y2=6 p3=9 x5=5,y5=7 p6=6 x7=7,y7=5",
+   "fills_hi_pos_after_proved": 72
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule1",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2'm",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3'm",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.1=5"
+   },
+   {
+    "part": "drule2'",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3'",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8m",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.1=5"
+   },
+   {
+    "part": "drule14",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p6.1=5"
+   },
+   {
+    "part": "drule17",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.1>=7 & p5.2=5 & p6.1=6"
+   },
+   {
+    "part": "drule8",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8m",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "p7.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "p7.1=5"
+   },
+   {
+    "part": "drule14m",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "p6.1=5"
+   },
+   {
+    "part": "drule17m",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "p6.1=6 & p7.1=5 & p7.2>=7"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "p1=9 x2=5,y2=5 p3=9 x5=5,y5=7 p6=6 x7=7,y7=5",
+    "privates": {
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 5,
+     "p3.1": 9,
+     "p5.1": 7,
+     "p5.2": 5,
+     "p6.1": 6,
+     "p7.1": 5,
+     "p7.2": 7
+    },
+    "lo": 2,
+    "hi": 2,
+    "fits_that_fire": [
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.126",
+      "none"
+     ],
+     [
+      "3.3700802",
+      "C2cons"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "p1=9 x2=5,y2=5 p3=9 x5=5,y5=6 p6=6 x7=6,y7=5",
+    "privates": {
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 5,
+     "p3.1": 9,
+     "p5.1": 6,
+     "p5.2": 5,
+     "p6.1": 6,
+     "p7.1": 5,
+     "p7.2": 6
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.126",
+      "none"
+     ],
+     [
+      "122.126",
+      "C2cons"
+     ],
+     [
+      "3.3700802",
+      "C2cons"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "p1=9 x2=5,y2=6 p3=9 x5=5,y5=7 p6=6 x7=7,y7=5",
+    "privates": {
+     "p1.1": 9,
+     "p2.1": 6,
+     "p2.2": 5,
+     "p3.1": 9,
+     "p5.1": 7,
+     "p5.2": 5,
+     "p6.1": 6,
+     "p7.1": 5,
+     "p7.2": 7
+    },
+    "lo": 1,
+    "hi": 1,
+    "fits_that_fire": [
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.126",
+      "none"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "set": "C",
+  "label": "7 5566776 5666657",
+  "summary": {
+   "n_fill": 14400,
+   "n_groups": 960,
+   "relevant": 5,
+   "n_inst": 23,
+   "lo_max": 1,
+   "hi_max": 1,
+   "fills_lo_pos": 240,
+   "fills_hi_pos": 240,
+   "argmax_lo": "p2=7 p3=6 x4=9,y4=6 x5=6,y5=5 p6=9",
+   "groups_hi_pos_killed": 48,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "p2=7 p3=6 x4=9,y4=6 x5=6,y5=6 p6=9",
+   "lo_max_after_proved": 0,
+   "hi_max_after_proved": 0,
+   "argmax_hi_after_proved": "p2=7 p3=6 x4=9,y4=6 x5=6,y5=6 p6=9",
+   "fills_hi_pos_after_proved": 0
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule9",
+    "hub": "u",
+    "target": "w4",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8m",
+    "hub": "u",
+    "target": "w5",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9m",
+    "hub": "u",
+    "target": "w5",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2'm",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4'",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p3.1=5"
+   },
+   {
+    "part": "drule6m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4'm",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p2.1=5"
+   },
+   {
+    "part": "drule7m",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p2.1=6"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "p4.1=5"
+   },
+   {
+    "part": "drule8",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.2=5"
+   },
+   {
+    "part": "drule21",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.1=5 & p5.2=5"
+   },
+   {
+    "part": "drule22",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.1=5 & p5.2=6"
+   },
+   {
+    "part": "drule2'",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "p2=7 p3=6 x4=9,y4=6 x5=6,y5=5 p6=9",
+    "privates": {
+     "p2.1": 7,
+     "p3.1": 6,
+     "p4.1": 6,
+     "p4.2": 9,
+     "p5.1": 5,
+     "p5.2": 6,
+     "p6.1": 9
+    },
+    "lo": 1,
+    "hi": 1,
+    "fits_that_fire": [
+     {
+      "part": "drule9",
+      "hub": "u",
+      "target": "w4",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w5",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "u",
+      "target": "w5",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule6m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule22",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "126.61682",
+      "C2cons"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "p2=7 p3=6 x4=9,y4=6 x5=6,y5=6 p6=9",
+    "privates": {
+     "p2.1": 7,
+     "p3.1": 6,
+     "p4.1": 6,
+     "p4.2": 9,
+     "p5.1": 6,
+     "p5.2": 6,
+     "p6.1": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule9",
+      "hub": "u",
+      "target": "w4",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w5",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "u",
+      "target": "w5",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule6m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "p2=7 p3=6 x4=9,y4=6 x5=6,y5=6 p6=9",
+    "privates": {
+     "p2.1": 7,
+     "p3.1": 6,
+     "p4.1": 6,
+     "p4.2": 9,
+     "p5.1": 6,
+     "p5.2": 6,
+     "p6.1": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule9",
+      "hub": "u",
+      "target": "w4",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "u",
+      "target": "w5",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "u",
+      "target": "w5",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule6m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": []
+   }
+  ]
+ },
+ {
+  "set": "B",
+  "label": "7 7676666 6656565",
+  "summary": {
+   "n_fill": 1250000,
+   "n_groups": 250000,
+   "relevant": 8,
+   "n_inst": 20,
+   "lo_max": 6,
+   "hi_max": 6,
+   "fills_lo_pos": 17376,
+   "fills_hi_pos": 17376,
+   "argmax_lo": "x0=5,y0=6 p1=9 x2=6,y2=5 p3=5 p4=5 p5=5 p6=5",
+   "groups_hi_pos_killed": 17376,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "x0=5,y0=6 p1=9 x2=6,y2=5 p3=5 p4=6 p5=6 p6=7",
+   "lo_max_after_proved": 0,
+   "hi_max_after_proved": 0,
+   "argmax_hi_after_proved": "x0=5,y0=6 p1=9 x2=6,y2=5 p3=5 p4=6 p5=6 p6=7",
+   "fills_hi_pos_after_proved": 0
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule8m",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.1=5"
+   },
+   {
+    "part": "drule20m",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.1=5 & p0.2=5"
+   },
+   {
+    "part": "drule8",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.1=5"
+   },
+   {
+    "part": "drule20",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "p2.1=5 & p2.2=5"
+   },
+   {
+    "part": "drule4'",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p4.1=5"
+   },
+   {
+    "part": "drule5",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p4.1<=6"
+   },
+   {
+    "part": "drule3'",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4'",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "p5.1=5"
+   },
+   {
+    "part": "drule4'm",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "p3.1=5"
+   },
+   {
+    "part": "drule5m",
+    "hub": "w4",
+    "target": "u",
+    "conditions": "p3.1<=6"
+   },
+   {
+    "part": "drule3'm",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4'",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p6.1=5"
+   },
+   {
+    "part": "drule4'm",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p4.1=5"
+   },
+   {
+    "part": "drule5",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p6.1<=6"
+   },
+   {
+    "part": "drule4'm",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "p5.1=5"
+   },
+   {
+    "part": "drule5m",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "p5.1<=6"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "x0=5,y0=6 p1=9 x2=6,y2=5 p3=5 p4=5 p5=5 p6=5",
+    "privates": {
+     "p0.1": 6,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 6,
+     "p3.1": 5,
+     "p4.1": 5,
+     "p5.1": 5,
+     "p6.1": 5
+    },
+    "lo": 6,
+    "hi": 6,
+    "fits_that_fire": [
+     {
+      "part": "drule8m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'm",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'm",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5m",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "0.453962",
+      "D2"
+     ],
+     [
+      "2.7566",
+      "D2"
+     ],
+     [
+      "3.1324806",
+      "none"
+     ],
+     [
+      "126.363",
+      "C2cons"
+     ],
+     [
+      "126.469626",
+      "D2"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "x0=5,y0=6 p1=9 x2=6,y2=5 p3=5 p4=6 p5=6 p6=7",
+    "privates": {
+     "p0.1": 6,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 6,
+     "p3.1": 5,
+     "p4.1": 6,
+     "p5.1": 6,
+     "p6.1": 7
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule8m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5m",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.22086",
+      "D2"
+     ],
+     [
+      "126.363",
+      "C2cons"
+     ],
+     [
+      "126.469626",
+      "D2"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "x0=5,y0=6 p1=9 x2=6,y2=5 p3=5 p4=6 p5=6 p6=7",
+    "privates": {
+     "p0.1": 6,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p2.1": 5,
+     "p2.2": 6,
+     "p3.1": 5,
+     "p4.1": 6,
+     "p5.1": 6,
+     "p6.1": 7
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule8m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4'm",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5m",
+      "hub": "w4",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule5m",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.22086",
+      "D2"
+     ],
+     [
+      "126.363",
+      "C2cons"
+     ],
+     [
+      "126.469626",
+      "D2"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "set": "B",
+  "label": "8 76576756 65555556",
+  "summary": {
+   "n_fill": 640000,
+   "n_groups": 40000,
+   "relevant": 7,
+   "n_inst": 26,
+   "lo_max": 2,
+   "hi_max": 2,
+   "fills_lo_pos": 87,
+   "fills_hi_pos": 87,
+   "argmax_lo": "x0=5,y0=5 p1=9 x3=5,y3=7 p4=6 x5=7,y5=5 p7=9",
+   "groups_hi_pos_killed": 87,
+   "lo_max_after": 0,
+   "hi_max_after": 0,
+   "argmax_lo_after": "x0=5,y0=5 p1=9 x3=5,y3=6 p4=6 x5=6,y5=5 p7=9",
+   "lo_max_after_proved": 1,
+   "hi_max_after_proved": 1,
+   "argmax_hi_after_proved": "x0=5,y0=6 p1=9 x3=5,y3=7 p4=6 x5=7,y5=5 p7=9",
+   "fills_hi_pos_after_proved": 72
+  },
+  "fits_touching_u": [
+   {
+    "part": "drule9",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w0",
+    "target": "u",
+    "conditions": "p0.1=5"
+   },
+   {
+    "part": "drule2'",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3'",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4",
+    "hub": "w1",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3m",
+    "hub": "w2",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8m",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p3.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p3.1=5"
+   },
+   {
+    "part": "drule14",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p4.1=5"
+   },
+   {
+    "part": "drule17",
+    "hub": "w3",
+    "target": "u",
+    "conditions": "p3.1>=7 & p3.2=5 & p4.1=6"
+   },
+   {
+    "part": "drule8",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule8m",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule9",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.2=5"
+   },
+   {
+    "part": "drule9m",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p5.1=5"
+   },
+   {
+    "part": "drule14m",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p4.1=5"
+   },
+   {
+    "part": "drule17m",
+    "hub": "w5",
+    "target": "u",
+    "conditions": "p4.1=6 & p5.1=5 & p5.2>=7"
+   },
+   {
+    "part": "drule1",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule1#2",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3",
+    "hub": "w6",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule2'm",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule3'm",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "always"
+   },
+   {
+    "part": "drule4m",
+    "hub": "w7",
+    "target": "u",
+    "conditions": "always"
+   }
+  ],
+  "fillings": [
+   {
+    "which": "argmax_lo",
+    "filling": "x0=5,y0=5 p1=9 x3=5,y3=7 p4=6 x5=7,y5=5 p7=9",
+    "privates": {
+     "p0.1": 5,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p3.1": 7,
+     "p3.2": 5,
+     "p4.1": 6,
+     "p5.1": 5,
+     "p5.2": 7,
+     "p7.1": 9
+    },
+    "lo": 2,
+    "hi": 2,
+    "fits_that_fire": [
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.126",
+      "none"
+     ],
+     [
+      "3.3700802",
+      "C2cons"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_lo_after",
+    "filling": "x0=5,y0=5 p1=9 x3=5,y3=6 p4=6 x5=6,y5=5 p7=9",
+    "privates": {
+     "p0.1": 5,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p3.1": 6,
+     "p3.2": 5,
+     "p4.1": 6,
+     "p5.1": 5,
+     "p5.2": 6,
+     "p7.1": 9
+    },
+    "lo": 0,
+    "hi": 0,
+    "fits_that_fire": [
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.126",
+      "none"
+     ],
+     [
+      "122.126",
+      "C2cons"
+     ],
+     [
+      "3.3700802",
+      "C2cons"
+     ]
+    ]
+   },
+   {
+    "which": "argmax_hi_after_proved",
+    "filling": "x0=5,y0=6 p1=9 x3=5,y3=7 p4=6 x5=7,y5=5 p7=9",
+    "privates": {
+     "p0.1": 6,
+     "p0.2": 5,
+     "p1.1": 9,
+     "p3.1": 7,
+     "p3.2": 5,
+     "p4.1": 6,
+     "p5.1": 5,
+     "p5.2": 7,
+     "p7.1": 9
+    },
+    "lo": 1,
+    "hi": 1,
+    "fits_that_fire": [
+     {
+      "part": "drule9",
+      "hub": "w0",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4",
+      "hub": "w1",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3m",
+      "hub": "w2",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17",
+      "hub": "w3",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule8m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule9m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule17m",
+      "hub": "w5",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule1#2",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3",
+      "hub": "w6",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule2'm",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule3'm",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     },
+     {
+      "part": "drule4m",
+      "hub": "w7",
+      "target": "u",
+      "sure": true,
+      "possible": true
+     }
+    ],
+    "rsst_configs_contained": [
+     [
+      "2.126",
+      "none"
+     ]
+    ]
+   }
+  ]
+ }
+]

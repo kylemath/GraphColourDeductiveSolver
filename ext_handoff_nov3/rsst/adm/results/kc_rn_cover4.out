@@ -1,0 +1,27 @@
+== kc_rn 
+rsst003_2o126 r=8 m=4 classes=274 ext=81 reached=120 D=false depth=2 passes=3 mode=gs 0ms
+  X={R0-I0,R2-I0,R4-I2,R6-I2} adm=no(component holds ring vertices R0 and R2 (conservative: at most one ring vertex per X-component))
+rsst061_3o1324817 r=12 m=8 classes=22144 ext=3162 reached=10955 D=false depth=6 passes=7 mode=gs 125ms
+  X={R0-I4,R6-I3,R8-I3,R10-I4} adm=no(component holds ring vertices R6 and R8 (conservative: at most one ring vertex per X-component))
+rsst065_128o1324802 r=12 m=8 classes=22144 ext=3286 reached=9652 D=false depth=7 passes=8 mode=gs 131ms
+  X={R0-I5,R6-I4,R8-I4,R10-I5} adm=no(component holds ring vertices R6 and R8 (conservative: at most one ring vertex per X-component))
+rsst202_124o1324817 r=14 m=9 classes=199291 ext=17148 reached=65718 D=false depth=13 passes=14 mode=gs 3504ms
+  X={R0-I5,R8-I4,R10-I4,R12-I5} adm=no(component holds ring vertices R8 and R10 (conservative: at most one ring vertex per X-component))
+== kc_rn -B
+rsst003_2o126 r=8 m=4 classes=274 ext=81 reached=120 D=false depth=2 passes=3 mode=gs 0ms
+  X={R0-I0,R2-I0,R4-I2,R6-I2} adm=yes(broad) leftover 0 of 154 bad
+rsst061_3o1324817 r=12 m=8 classes=22144 ext=3162 reached=10955 D=false depth=6 passes=7 mode=gs 125ms
+  X={R0-I4,R6-I3,R8-I3,R10-I4} adm=yes(broad) leftover 0 of 11189 bad
+rsst065_128o1324802 r=12 m=8 classes=22144 ext=3286 reached=9652 D=false depth=7 passes=8 mode=gs 133ms
+  X={R0-I5,R6-I4,R8-I4,R10-I5} adm=yes(broad) leftover 0 of 12492 bad
+rsst202_124o1324817 r=14 m=9 classes=199291 ext=17148 reached=65718 D=false depth=13 passes=14 mode=gs 3500ms
+  X={R0-I5,R8-I4,R10-I4,R12-I5} adm=yes(broad) leftover 0 of 133573 bad
+== kc_rn -F
+rsst003_2o126 r=8 m=4 classes=274 ext=81 reached=120 D=false depth=2 passes=3 mode=gs 0ms
+  X={R0-I0,R2-I0,R4-I2,R6-I2} adm=yes(forced: loop check only) leftover 0 of 154 bad
+rsst061_3o1324817 r=12 m=8 classes=22144 ext=3162 reached=10955 D=false depth=6 passes=7 mode=gs 106ms
+  X={R0-I4,R6-I3,R8-I3,R10-I4} adm=yes(forced: loop check only) leftover 0 of 11189 bad
+rsst065_128o1324802 r=12 m=8 classes=22144 ext=3286 reached=9652 D=false depth=7 passes=8 mode=gs 129ms
+  X={R0-I5,R6-I4,R8-I4,R10-I5} adm=yes(forced: loop check only) leftover 0 of 12492 bad
+rsst202_124o1324817 r=14 m=9 classes=199291 ext=17148 reached=65718 D=false depth=13 passes=14 mode=gs 3160ms
+  X={R0-I5,R8-I4,R10-I4,R12-I5} adm=yes(forced: loop check only) leftover 0 of 133573 bad

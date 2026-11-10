@@ -1,0 +1,16 @@
+configs 633 with a contract 384
+genus0                   Counter({True: 384})
+nodes_cubic_plus_outer   Counter({True: 384})
+ring_scycle_rlink        Counter({True: 384})
+ring_is_outer_node       Counter({True: 384})
+off_ring                 Counter({True: 384})
+sparse                   Counter({True: 384})
+size_1to4                Counter({True: 384})
+triad_ok                 Counter({True: 384})
+valid_contract           Counter({True: 384})
+lean_admissibleX         Counter({True: 307, False: 77})
+lean_local_loopfree      Counter({True: 384})
+lean_ring_distinct       Counter({True: 307, False: 77})
+|X| sizes Counter({1: 264, 3: 61, 4: 44, 2: 15})
+valid_contract but not admissibleX: 77  admissibleX but not valid_contract: 0
+triad only outside the kernel: []

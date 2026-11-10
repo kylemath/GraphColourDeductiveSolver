@@ -1,0 +1,16 @@
+configs 51 with a contract 51
+genus0                   Counter({True: 51})
+nodes_cubic_plus_outer   Counter({True: 51})
+ring_scycle_rlink        Counter({True: 51})
+ring_is_outer_node       Counter({True: 51})
+off_ring                 Counter({True: 51})
+sparse                   Counter({True: 51})
+size_1to4                Counter({True: 51})
+triad_ok                 Counter({True: 51})
+valid_contract           Counter({True: 51})
+lean_admissibleX         Counter({False: 51})
+lean_local_loopfree      Counter({True: 51})
+lean_ring_distinct       Counter({False: 51})
+|X| sizes Counter({4: 37, 3: 14})
+valid_contract but not admissibleX: 51  admissibleX but not valid_contract: 0
+triad only outside the kernel: []
