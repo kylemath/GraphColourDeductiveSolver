@@ -209,3 +209,52 @@ Line numbers refer to `in/ADMISSIBILITY.md`.
   edge is a ring–interior edge, which `cycCertB` does not support today.
 - **The full `validContract` route** costs about 17–30 days. It is worth doing only if general 4-edge X with 5-cycle contract
   rings, or folded-ring C entries, are needed. Start with pieces E and G, the risky ones, before writing A or J.
+
+## Addendum A (10 Nov, ~11:45Z): Birkhoff clause rechecked against revsnip.v
+
+Source: `revsnip.v` staged at `ext_handoff_nov3/rsst/adm/fourcolor_src/revsnip.v` (commit 815b38bba), md5 3607bab1, copied
+to `in/fourcolor_src/revsnip.v`. Reading only; no Lean written.
+
+**Confirmed. `NoShortSepCycle` (with `BothSides` / `BothSides2`) states the same thing as birkhoff.v:345 for ring sizes 3-5.**
+
+What changed since §2:
+- **The definition is now [read], no longer from memory.** revsnip.v:66-67:
+  `Definition nontrivial_ring m (r : seq G) := (m < fcard face (diskF r)) && (m < fcard face (diskFC r)).`
+  The header (revsnip.v:15-17) says diskF r / diskFC r are the faces strictly inside / strictly outside r.
+- **Both reflection lemmas are [read]:**
+  - revsnip.v:94-95 (`nontrivial_ring 0`) says each of diskF r and diskFC r has a dart.
+  - revsnip.v:103-105 (`nontrivial_ring 1`) says each has two darts x, y with `~~ cface x y`. That means two distinct faces
+    on each side.
+
+The translation. Gonthier's faces are the regions of the map, which are our vertices.
+- `scycle rlink r` is a simple ring of regions, each consecutive pair adjacent. That is our `Cyc`: ρ injective below r,
+  cyclically adjacent, chords allowed.
+- "Strictly inside / outside" excludes `fband r`, the ring's own regions. That is our `¬ OnCyc`.
+- `fcard face (diskF r)` counts the regions strictly on one side. That is the number of off-cycle vertices with
+  `OnSide T c b`.
+- m = (size r == 5):
+  - size ≤ 4 (m = 0): Gonthier says some side has no region. Ours says ¬`BothSides`.
+  - size 5 (m = 1): Gonthier says some side has at most one region. Ours says ¬`BothSides2`; since `BothSides2.both`,
+    the extra `BothSides` hypothesis in `NoShortSepCycle` adds nothing at r = 5.
+
+The encoding differences, each checked:
+1. **`T.Adj x y` (non-isolated).** `OnSide T c b x` is `∀ d, d.fst = x → c (faceOf d) = b` (SideTriangle.lean:273). It
+   holds vacuously, for both b, at a vertex with no darts. Without the Adj clause such a vertex would satisfy `BothSides`
+   on its own. With it, only vertices that have darts count, and these are exactly Gonthier's regions. This is a needed
+   guard, not a weakening; in a connected map with n ≥ 2 it excludes nothing real.
+2. **The side split: `c` against `diskF` / `diskFC`.** [inferred]
+   - Off the cycle, `c` is constant on all darts at a vertex (`side_constC'`, DCheckPinchGeom.lean:112-115), and it flips
+     exactly across cycle edges (`CycPotential`).
+   - So along any dual path, `c` changes parity at each crossing of the cycle. Each class {x off cycle : `OnSide T c b x`}
+     is therefore exactly one Jordan side. This holds for every potential `c`; a second potential only swaps b ↔ 1 - b,
+     and both `BothSides` and `BothSides2` are symmetric in b.
+   - This step stays [inferred], not [read]: `diskN` / `diskF` are defined in snip.v, which is not staged. If an exact
+     match is wanted, staging snip.v (its `diskN` / `diskF` / `diskFC` definitions) would settle it.
+3. **Sizes 0-2.** Gonthier covers them; `Cyc` needs 3 ≤ r. In a simple-graph triangulation a 2-ring of distinct regions
+   would need a double edge, and a 0- or 1-ring has no inside. So nothing is lost.
+4. **Scope.** Both are proved for a minimal counterexample: Gonthier's `Section Birkhoff` assumes
+   `minimal_counter_example G` (birkhoff.v:172); ours is `MinimalCounterexample.noShortSep` (ClaimGlue.lean). The two
+   theorems have the same strength in the setting where the C glue uses them.
+
+Consequence for the port: §2's conclusion stands. ¬`BothSides2` plus `BothSides` gives `triad_valid`'s one-region side
+exactly. The valid_contract port stays ON HOLD (relay 11:30Z).
