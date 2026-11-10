@@ -1,0 +1,16 @@
+maclane fam smoke, family q, 2026-11-10T09:29:46Z on Darwin arm64
+1. family q: fam/FAMILIES.txt line, md5s, args chain
+   OK   OK x=q prev=p status=E2 l=args_A97_F_W13K3l5q.txt gb=args_A97_F_W13K3gB5q.txt pat=w13/pat_K5q_D.out expect=fam/EXPECT_K3l5q_k240.txt
+   note: Studio P14, container code af9a3e64, kills 9/555557577/578587566, rotation-preserving face-set 1; [E2] kc -C D depth 5 + dfast18 D depth 10, iso K, second check main dd0773a09 out/job_t98chk; Lean HDK5P14 exit 0 sorry 0, V00 building, glue_hd 46498414
+2. patterns of K3l5q + 240 keys (upperR2 start, eng_p1r)
+smoke_fam.sh: line 39: 23971 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 1 re-derived (3s): counts: 327 files, distinct d9 3325, D 18152 / C 712 / RPAT 158 / RPATN 2034
+3. patterns of K3gB5q + 240 keys (the LP family)
+smoke_fam.sh: line 39: 24039 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 2 re-derived (3s): counts: 326 files, distinct d9 3422, D 18242 / C 781 / RPAT 158 / RPATN 2034
+4. recheck_fam.sh q on ref/k5e/sol_S1MW07k240e.json (= repS1MW_07; RECHECK_UPPER=0; about 5 min)
+   OK   UPPER-R2: FEASIBLE at t = 0.025171803977, as EXPECT section 3; its first lines = section 1 (178s)
+5. DRY=1 FORCE=1 launch_upper_fam.sh q <reference point> (the plan only)
+   OK   launch_msfam: k86MS8: LP args_A97_F_W13K3gB5q.txt (d07d3cce) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5q.txt (27f127cf); in-point sol_S1MW07k240e.json (md5 e4e93b2c, t 0.025171803977; F_S1MW07k240e_K3l5q); points filed as K3
+
+SMOKE-FAM q: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_fam_q.log)
