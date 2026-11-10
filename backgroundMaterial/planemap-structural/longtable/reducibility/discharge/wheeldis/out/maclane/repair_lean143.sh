@@ -2,7 +2,7 @@
 # Rerun Lean modules whose `time` wrapper got SIGTERM (status exit=143; the lean child survives as an orphan). Kills only that module's orphan lean (ppid 1).
 W=/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis
 while true; do
-  for j in HCK3GX HDK3GX HCK5P05 HCK5P07 HDK5P08; do
+  for j in HCK3GX HDK3GX; do
     L=$W/out/job_$j/lean; [ -f $L/status.txt ] || continue
     for m in $(grep ' exit=143 ' $L/status.txt | cut -d' ' -f1 | sort -u); do
       last=$(grep "^$m exit=" $L/status.txt | tail -1)
