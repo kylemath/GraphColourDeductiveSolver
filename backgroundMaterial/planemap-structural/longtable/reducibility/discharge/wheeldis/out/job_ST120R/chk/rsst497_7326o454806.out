@@ -1,0 +1,7 @@
+== kc
+rsst497_7326o454806 r=14 m=9 classes=199291 ext=17830 reached=134069 D=false depth=9 passes=10 mode=gs 1188ms
+  X={I0-I2,I0-I4,R0-I0} adm=yes leftover 0
+  C-REDUCIBLE X={I0-I2,I0-I4,R0-I0} size=3 (kc-C: tested 1454, admissible 1157, edges 38, 1194ms)
+== second engine
+rsst497_7326o454806 r=14 m=9 classes=199291 ext=17830 reached=134069 bad=65222 D=false depth=19 (4.6s)
+  fixed X={I0-I2,I0-I4,R0-I0} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
