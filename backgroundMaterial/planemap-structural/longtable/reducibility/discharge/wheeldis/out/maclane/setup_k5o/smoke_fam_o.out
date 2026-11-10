@@ -9,3 +9,8 @@ smoke_fam.sh: line 39: 99868 Terminated: 15          nice -n 12 python3 pcheck.p
 smoke_fam.sh: line 39: 99902 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
    OK   EXPECT section 2 re-derived (3s): counts: 324 files, distinct d9 3421, D 18239 / C 781 / RPAT 158 / RPATN 2034
 4. recheck_fam.sh o on ref/k5e/sol_S1MW07k240e.json (= repS1MW_07; RECHECK_UPPER=0; about 5 min)
+   OK   UPPER-R2: FEASIBLE at t = 0.025171803977, as EXPECT section 3; its first lines = section 1 (186s)
+5. DRY=1 FORCE=1 launch_upper_fam.sh o <reference point> (the plan only)
+   OK   launch_msfam: k86MS8: LP args_A97_F_W13K3gB5o.txt (cbe19bfb) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5o.txt (1da50fc2); in-point sol_S1MW07k240e.json (md5 e4e93b2c, t 0.025171803977; F_S1MW07k240e_K3l5o); points filed as K3
+
+SMOKE-FAM o: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_fam_o.log)
