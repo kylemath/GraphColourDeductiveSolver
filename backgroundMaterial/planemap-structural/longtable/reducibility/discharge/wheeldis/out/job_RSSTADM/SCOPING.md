@@ -308,3 +308,91 @@ The argument [inferred from the read facts]:
 Consequence: Addendum A's verdict moves from "confirmed, one step inferred" to **confirmed from the definitions**:
 `NoShortSepCycle` with `BothSides` / `BothSides2` is birkhoff.v:345 for sizes 3-5, through the dictionary above.
 Step 1's chord case needed no extra hypothesis, so chords are handled the same way on both sides.
+
+## Addendum C (ST-118, 10 Nov ~15:20Z): cheapest sound Lean route for exactly 2.126 and 128.1324802
+
+Context [read]: RSST-SUB2 (sub2 REPORT.md, MD5SUMS 2db58574) covers 143,535 of the 143,961 none-only full-world leaves with our own
+admissibility. That leaves 426 leaves: 345 at d6 need 2.126, and 81 at d7 need 128.1324802. Of these, 329 are N up to ring 16
+for |X| ≤ 4. So these two configs are needed themselves.
+
+**The two configs [read, loop/k44 rsst.txt / rsst_verdicts_C2.txt]:**
+
+| config | ring, m | RSST X (kc: adm=no) | shape |
+|---|---|---|---|
+| 2.126 = rsst003_2o126 | 8, 4 | {R0-I0, R2-I0, R4-I2, R6-I2} | two X-stars; I0 pins R0 and R2 (gap 2, R1 between); I2 pins R4 and R6 (R5 between); I0 ~ I2 is an interior edge |
+| 128.1324802 = rsst065_128o1324802 | 12, 8 | {R0-I5, R10-I5, R6-I4, R8-I4} | the same shape; I5 pins R10 and R0 (R11 between); I4 pins R6 and R8 (R7 between); I4 ~ I5 is an interior edge |
+
+So both are "double ring-merge" X:
+- |X| = 4.
+- There are two X-components. Each is a star (ring, interior, ring), and each meets the ring twice, at distance 2.
+
+**Why our C path refuses them today [read, CGlue.lean:375-394].** `admissibleX` ends with "distinct ring positions have
+distinct labels". The docstring says outright that "the three registry entries with an X-component through two ring vertices
+fail this".
+- The hC computation already handles merged ring positions: `extCAux cf eqR eqI` (C66666:85) and `cReducibleT` take eqR as
+  data.
+- So what blocks these two is the **glue's label clause** together with the loop-freeness that `admissibleX` + `XRingSimple`
+  supply. It is not the colouring computation.
+
+### (i) A per-config route for just these two [inf]
+
+What has to be shown in T for an occurrence (`OccursCXF`, folds allowed) is that contracting X makes no loop and that the
+contraction is well defined. The X-components are stars of radius 1, so every "contract ring" (a cycle made of H-edges except
+one T-edge, piece B) has length 3: X-path a–I–b plus one T-edge a~b. The bad events are a finite list:
+
+1. **A chord inside a star**, e.g. R0 ~ R2 in T.
+   - The triangle R0 I0 R2 is facial by NoSep, so R0 and R2 are consecutive in rot(I0).
+   - But rot(I0) is known in full from the occurrence (I0 is interior, `RotOcc`): it has R1 between R0 and R2, and other
+     neighbours on the far side. Contradiction.
+2. **A fold inside a star**, R0 = R2 in T: excluded by `NbrInj` at I0.
+3. **A fold across stars**, e.g. R0 = R4.
+   - The two components would merge, and the interior edge I0 I2 would become a loop.
+   - Refute it with: v ~ I0, v ~ I2 and I0 ~ I2 make a triangle, facial by NoSep, so v is next to I2 in rot(I0). That is
+     false in the occurrence's rotation of I0. There are 4 such pairs per config.
+4. **A T-edge across stars** is harmless: it stays an edge after contraction.
+
+What does **not** arise for these two:
+- **Issue 1 (the Jordan step):** every bad cycle is a triangle, so NoSep alone suffices. No disc picture is needed.
+- **Issues 3 and 7 (5-cycle / triad, min degree / `fcard_adj_max`):** with only stars there is no contract ring of length 4 or 5,
+  so the triad condition is vacuous and min degree is not needed. Rotation at I0 / I2 comes from the occurrence.
+- **Issue 4 (the global no-loop fact) and issue 6 (embed.v-sized lift):** replaced by the finite check above.
+
+What remains:
+- **Issues 2 and 5 (labels by position under folds; ring–interior lift):** these become the fold cases 2–3 above. They need
+  the ring-apex form of `RotOcc` for R–I edges (piece D's 60–100 lines).
+- **Issue 8 (no hC run yet):** run `cReducible18` with these eqR. Ring 8 and ring 12 need about 0.1–0.5 CPU-h.
+- **Issue 10 (dedupe):** trivial for fixed data.
+
+**Pieces and sizes:**
+- **(i-a) Glue generalisation.** Allow an X-component to meet the ring twice in `admissibleX` / `xLabel` / the contraction
+  soundness (CGlue + CContract C4a): ring labels equal exactly on eqR-merged pairs, which must be non-adjacent and distinct in
+  T. 300–600 lines, **4–8 pd**. This is the main risk: if the distinct-label clause is used deep inside C4a, it is the upper
+  end.
+- **(i-b) Per-config certificate**, as a decidable list of the bad events above, each with its refutation (NoSep triangle +
+  rotation position, or `NbrInj`), checked by `native_decide` on the two `XRData`. 150–300 lines plus data, **2–3 pd**. This
+  is cycCertB extended to R–I edges, but only for triangles.
+- **(i-c) Integration:** a `CEntryM` (merge) variant, `OccursCXF` threading, and two hC runs. 100–200 lines, **1–2 pd**.
+
+**Total (i): about 550–1,100 lines, 7–13 pd, central ≈ 10 pd.**
+
+### (ii) The general `valid_contract` port [read, §1]
+
+About 1,500–2,600 lines, **17–30 pd, central 23**.
+- It also needs (i-a): piece I's "hadm-free contract_reducer_of" is the same label generalisation.
+- On top of that it adds E (sparse_contract_ring) and G (triad_valid). Those are the two hardest planar pieces, and these two
+  configs never need them.
+
+### Recommendation [inf]
+
+**Route (i).** It costs about 10 pd against 23, and it avoids the two riskiest pieces (E, G) entirely.
+- Its only real risk is (i-a). That work is shared with (ii), so (i) loses nothing if the general port is wanted later.
+- **Start with a ½-day read of how CContract / CGlue use the distinct-ring-label clause.** That read settles the 4- vs 8-pd
+  spread of (i-a), before any Lean is written.
+- **Order:**
+  1. that read;
+  2. (i-a);
+  3. (i-b) for 2.126 first (ring 8, small data, a quick hC);
+  4. (i-b) for 128.1324802;
+  5. (i-c).
+- Not needed if the 345 + 81 leaves get substitutes from windows above ring 16 or with |X| > 4. The report notes that 97 of the
+  426 still have 352 unscreened windows, but 329 do not.
