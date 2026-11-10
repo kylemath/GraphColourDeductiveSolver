@@ -135,3 +135,25 @@ B3 ≈ 2–3.5 k lines and 12–20 pd (ST-113).
 - The largest pieces are L1 (rotation-orbit bookkeeping), L4 (two faces per edge) and L10 (the 5-cycle side count). L10
   repeats the shape of `Sep5.side5`.
 - L5 is mostly a wrapper over DCheckPinchGeom.
+
+## 9. Review outcome (15:05Z) and notes for B4 / B6
+
+**Approved.** The strategy review approved B3 and checked the lemma plan by hand under `Internally6`. Two points are now explicit:
+- (a) `apex_unique`: the apex s_i is neither u nor any w_k. This follows from `link_chordless` and d ≥ 5.
+- (b) L10's hypothesis reads: "no representation (i, k) of the pair x, y at cyclic index distance ≤ 1". Then the short side has
+  ≥ 3 vertices and the other side d − 3 ≥ 2.
+
+**Notes for B4 / B6** (recorded, not proved in B3):
+1. **Orientation coherence.** Every B3 field is unoriented. B4 must add that rot(w_i), read from u, is
+   u, w_{i−1}, s_{i−1}, seg_i, s_i, w_{i+1} in one fixed direction for every i. Each ring-2 x must also have the matching
+   contiguous arc in rot(x). Part and mirror chirality are where bugs hide.
+2. **A locality lemma, decidable over the 71 parts:**
+   - every constrained position lies inside the target window;
+   - no ring-3 position and no 9+ middle is ever constrained;
+   - every hub has degree ≤ 8.
+3. **B6.**
+   - Confirm what `OccursW` / `OccursC` require of K's ring image when hosts sit on ring 2. That image lands on ring 3, where
+     B3 says nothing. This is fine if occurrence needs only host-level data, with ring images defined through faces.
+   - Check the rotation gap counts at cut and pendant hosts.
+   - Check whether mirror occurrences are allowed or need their own proofs.
+4. The u-is-host convention (spec §14) is not needed for soundness.
