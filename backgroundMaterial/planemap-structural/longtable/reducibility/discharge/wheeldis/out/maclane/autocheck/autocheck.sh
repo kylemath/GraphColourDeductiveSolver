@@ -6,6 +6,8 @@
 # - Each point is checked once (checked.txt). A "_tight" twin of a checked point counts as checked.
 # - PASS (main RESULT: FEASIBLE): T0 := that point's t (re-armed automatically). log.txt gets "PASS ..." / "FAIL ...".
 # - ST numbers come from next_st.txt.
+# - queue.txt: extra points from relays, one line "NN t script arg..." (own ST number and check script). Relay entries need only t < T0
+#   (not the 0.996 trigger) and run when they are the lowest candidate; entries at or above T0 wait. Done entries go to queue_done.txt.
 A=$(cd "$(dirname "$0")" && pwd); M=$(dirname "$A"); W=$(cd "$M/../.." && pwd)
 O=$HOME/maclane/maclane-k86/outbox/upper/POINTS.txt
 touch $A/checked.txt $A/log.txt
@@ -41,6 +43,20 @@ while true; do
     [ -z "$(script_for $fam)" ] && continue
     P=$name; F=$fam; T=$t; break
   done < <(awk -v tr=$TR '$2+0 < tr+0 {print $2, $1, $4}' $O | sort -g)
+  # relay queue: lowest pending entry below the trigger, if it beats the outbox candidate
+  touch $A/queue.txt $A/queue_done.txt; Q=""
+  while read qn qt qs qa; do
+    grep -qx "$qn" $A/queue_done.txt && continue
+    awk -v a=$qt -v b=$T0 'BEGIN{exit !(a+0 < b+0)}' || continue
+    if [ -z "$Q" ] || awk -v a=$qt -v b=$QT 'BEGIN{exit !(a+0 < b+0)}'; then Q=$qn; QT=$qt; QS=$qs; QA=$qa; fi
+  done < <(grep -v '^#' $A/queue.txt)
+  if [ -n "$Q" ] && { [ -z "$P" ] || awk -v a=$QT -v b=$T 'BEGIN{exit !(a+0 <= b+0)}'; }; then
+    echo $Q >> $A/queue_done.txt
+    log "RUN ST-$Q (queue) $QS $QA t=$QT (trigger $TR, T0 $T0)"
+    bash $M/$QS.sh $Q $QA > $W/out/job_ST${Q}_run.log 2>&1 < /dev/null
+    judge $Q "$(echo $QA | awk '{print $1}' | xargs basename)" $QT
+    continue
+  fi
   if [ -n "$P" ]; then
     S=$(script_for $F); NN=$(cat $A/next_st.txt); echo $((NN+1)) > $A/next_st.txt
     echo "${P/_tight/}" >> $A/checked.txt
