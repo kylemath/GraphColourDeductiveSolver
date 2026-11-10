@@ -88,6 +88,8 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 10 Nov 05:12Z: UPPER **t* <= 0.014164305 [E2] on K3l5j + 260 keys 0470c459** (ST-96 sol_k86MK1_in23__K3l5j_k260 e5231e6d; W17 FEASIBLE, DP -1.60, Karp d>=22.09; tneg INFEASIBLE; main 6bb1bb1f7). Replaces 0.014858914 (ST-94). P08 in Lean (HDK5P08 GLUEDONE, sorryAx 0); only P07 left for families l, m, n.
+- 9 Nov 23:40Z: UPPER **t* <= 0.014858914 [E2] on K3l5j + 260 keys 0470c459** (ST-94 sol_repK1MW_10__K3l5j_k260 6759b329; W17 FEASIBLE, DP -1.25, Karp d>=23.17; tneg INFEASIBLE; main 988ecce6a). Replaces 0.015175192 (ST-92).
 - 9 Nov 22:12Z: UPPER **t* <= 0.015175192 [E2] on K3l5j + 260 keys 0470c459** (ST-92 sol_repK1MW_08__K3l5j_k260 080181bf; W17 FEASIBLE, DP -1.18, Karp d>=23.39; tneg INFEASIBLE; main 2f5d9eebf). Replaces 0.015523694 (ST-89).
 - 9 Nov 21:43Z: ST-69 done: Lean for the 159 K3g-only kills complete (HDK3GX main 1a814cd18, HCK3GX 177e93f08, GLUEDONE, sorryAx 0). K3gB5k Lean-complete; K3gB5l/m/n complete once P07/P08 (+P09 for n) land. No checked K3gB5 point below current upper; sound upper stays 0.015523694 (ST-89). Copies swarm/round6/W13-open-row-kills/round6/K3/ST69_HDK3GX, ST69_HCK3GX.
 - 9 Nov 19:54Z: UPPER **t* <= 0.015523694 [E2] on K3l5j + 260 keys 0470c459** (ST-89 sol_k86MK1_in08__K3l5j_k260 f3ca0aa8; W17 FEASIBLE, DP -0.97, Karp d>=24.11; tneg INFEASIBLE; main b27cdfbbc). Replaces 0.015991263 (ST-86).
