@@ -1,13 +1,13 @@
 #!/bin/bash
 # Studio auto-check daemon (coordinator 13:59Z policy). Detached; state in files in this folder.
-# - T0.txt = current best sound upper. Trigger: t < T0 * 0.996.
+# - T0.txt = current best sound upper. Trigger: t < T0 * 0.9975.
 # - At most one auto-check at a time. Candidates are outbox/upper points of the live lane families below the trigger,
 #   lowest t first. A point is checked only if it is still below the trigger when its turn comes.
 # - Each point is checked once (checked.txt). A "_tight" twin of a checked point counts as checked.
 # - PASS (main RESULT: FEASIBLE): T0 := that point's t (re-armed automatically). log.txt gets "PASS ..." / "FAIL ...".
 # - ST numbers come from next_st.txt.
 # - queue.txt: extra points from relays, one line "NN t script arg..." (own ST number and check script). Relay entries need only t < T0
-#   (not the 0.996 trigger) and run when they are the lowest candidate; entries at or above T0 wait. Done entries go to queue_done.txt.
+#   (not the 0.9975 trigger) and run when they are the lowest candidate; entries at or above T0 wait. Done entries go to queue_done.txt.
 A=$(cd "$(dirname "$0")" && pwd); M=$(dirname "$A"); W=$(cd "$M/../.." && pwd)
 O=$HOME/maclane/maclane-k86/outbox/upper/POINTS.txt
 touch $A/checked.txt $A/log.txt
@@ -19,13 +19,13 @@ script_for(){ case "$1" in
   K3l5u_k260) echo autost_mk12nz;; K3l5u_k268) echo autost_mk13;;
   K3l5v_k260) echo autost_mk14nz;; K3l5v_k268) echo autost_mk15;;
   *) echo "";; esac; }
-log "start: T0 $(cat $A/T0.txt), trigger x0.996, next ST $(cat $A/next_st.txt)"
+log "start: T0 $(cat $A/T0.txt), trigger x0.9975, next ST $(cat $A/next_st.txt)"
 judge(){ NN=$1; P=$2; T=$3; J=$W/out/job_ST$NN
     if grep -q '^RESULT: FEASIBLE' $J/main.out 2>/dev/null; then
       tn=$(grep -E '^RESULT' $J/tneg.out 2>/dev/null | cut -c1-40)
       new=$(awk -v a=$T -v b=$(cat $A/T0.txt) 'BEGIN{print (a+0 < b+0) ? a : b}')
       echo $new > $A/T0.txt
-      log "PASS ST-$NN $P t=$T (tneg: $tn) commit $(grep -o 'commit [0-9a-f]*' $W/out/job_ST${NN}_run.log | tail -1); T0 -> $new, trigger $(awk -v a=$new 'BEGIN{printf "%.12f", a*0.996}')"
+      log "PASS ST-$NN $P t=$T (tneg: $tn) commit $(grep -o 'commit [0-9a-f]*' $W/out/job_ST${NN}_run.log | tail -1); T0 -> $new, trigger $(awk -v a=$new 'BEGIN{printf "%.12f", a*0.9975}')"
     else
       log "FAIL ST-$NN $P t=$T: $(grep -E '^RESULT|refused' $J/main.out $W/out/job_ST${NN}_run.log 2>/dev/null | head -2 | cut -c1-120 | tr '\n' ' ')"
     fi; }
@@ -34,7 +34,7 @@ if [ -n "$ADOPT" ]; then set -- $ADOPT; echo "${2/_tight/}" >> $A/checked.txt; l
   while pgrep -f "autost_.*\.sh $1 " > /dev/null; do sleep 60; done; judge $1 $2 $3; fi
 while true; do
   while pgrep -f 'maclane/autost_|bash autost_' > /dev/null; do sleep 60; done
-  T0=$(cat $A/T0.txt); TR=$(awk -v a=$T0 'BEGIN{printf "%.12f", a*0.996}')
+  T0=$(cat $A/T0.txt); TR=$(awk -v a=$T0 'BEGIN{printf "%.12f", a*0.9975}')
   # pick the lowest unchecked candidate below the trigger
   P=""; F=""; T=""
   while read t name fam; do
