@@ -1,0 +1,7 @@
+== kc
+fw_f7c75a21e2 r=13 m=10 classes=66430 ext=9046 reached=59059 D=false depth=5 passes=6 mode=gs 170ms
+  X={I1-I6} adm=yes leftover 0
+  C-REDUCIBLE X={I1-I6} size=1 (kc-C: tested 3, admissible 3, edges 40, 170ms)
+== second engine
+fw_f7c75a21e2 r=13 m=10 classes=66430 ext=9046 reached=59059 bad=7371 D=false depth=11 (1.2s)
+  fixed X={I1-I6} (1 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0
