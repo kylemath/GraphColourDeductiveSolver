@@ -1,0 +1,25 @@
+10:16:25Z recheck r (cg_keys_r13w16_16fikp.txt eng_p1r) on sol_k86MK2_in08_tight__K3l5q_k260
+    recheck_fam: k86MK2_in08_tight on args_A97_F_W13K3l5r.txt + cg_keys_r13w16_16fikp.txt (0470c459), engine eng_p1r, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_k86MK2_in08_tight_K3l5r_k260.log
+    recheck_fam: k86MK2_in08_tight: UPPER-R2: FEASIBLE at t = 0.013976966000
+    recheck_fam: outbox/upper: filed sol_k86MK2_in08_tight__K3l5r_k260 (t = 0.013976966000)
+10:19:32Z stop k86MK4
+  stopped 1: outbox86_fam.py k86MK4 
+  no start line of k86MK4 in run.log: no last outbox pass
+processes of k86MK4 still running: 0
+10:19:35Z launch k86MK6 from sol_k86MK2_in08_tight__K3l5q_k260
+launch_msfam: k86MK6: LP args_A97_F_W13K3l5r.txt (a44799f9) + cg_keys_r13w16_16fikp.txt (0470c459) on eng_p1r; checks on args_A97_F_W13K3l5r.txt (a44799f9); in-point sol_k86MK2_in08_tight__K3l5q_k260.
+launched k86MK6 (fam r): K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/l
+10:30:44Z recheck r (cg_keys_r13w16_16fikp_p8bb.txt eng_p8) on sol_repK3MW_01__K3l5q_k268
+    recheck_fam: repK3MW_01 on args_A97_F_W13K3l5r.txt + cg_keys_r13w16_16fikp_p8bb.txt (b5875bfe), engine eng_p8, 2 thread(s): log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp/s86_f2b7/logs/upper_F_repK3MW_01_K3l5r_k268.log
+    recheck_fam: repK3MW_01: UPPER-R2: FEASIBLE at t = 0.014015453920
+    recheck_fam: outbox/upper: filed sol_repK3MW_01__K3l5r_k268 (t = 0.014015453920)
+10:34:41Z stop k86MK5
+  stopped 1: outbox86_fam.py k86MK5 
+  no start line of k86MK5 in run.log: no last outbox pass
+processes of k86MK5 still running: 0
+10:34:44Z launch k86MK7 from sol_repK3MW_01__K3l5q_k268
+launch_msfam: k86MK7: LP args_A97_F_W13K3l5r.txt (a44799f9) + cg_keys_r13w16_16fikp_p8bb.txt (b5875bfe) on eng_p8; checks on args_A97_F_W13K3l5r.txt (a44799f9); in-point sol_repK3MW_01__K3l5q_k268.jso
+launched k86MK7 (fam r): K run log /Users/kylemathewson/maclane/maclane-k86/fs/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/l
+== UPPER k86MK6 (family ?: LP K3gB5, checks K3l5)   K run: running  repladder: running  watch: running  tightwatch: running  outbox: running  upperR2 
+== UPPER k86MK7 (family ?: LP K3gB5, checks K3l5)   K run: running  repladder: running  watch: running  tightwatch: running  outbox: running  upperR2 
+MOVEDONE

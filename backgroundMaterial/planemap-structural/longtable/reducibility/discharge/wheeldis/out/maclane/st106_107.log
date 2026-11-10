@@ -1,0 +1,79 @@
+=== ST-106
+keys loaded 114 dropped 154 payer-8/9 2 missing-from-file 0 refused 0
+t 0.01401545392
+--main
+W17 GK keys: 114 from /tmp/swarm-W17/tab/keys_ST106.txt (md5 dcda1e89); payer->payee {'5->5': 4, '5->6': 3, '5->7': 21, '5->8': 8, '5->9': 4, '5->{69}
+senderR2 rows 22496 (spec 7,074), violated 0, min slack 2.15e-08; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18152 (spec 15,497), C 712 (spec 1,494), RPAT 158 (spec 158); by d {7: 9364, 8: 5910, 9: 3318, 10: 1427, 11: 613, 12: 85,
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -1.2305
+Karp tail (apex relaxation): lambda = 0.742268240, covered for d >= 23.226 (needs <= 31)
+RESULT: FEASIBLE (every sender row, cons2, mrowL, d = 7..26 exhaustive, DP 27..30 and Karp pass)
+max 0.0139905 (779899/577577)
+--tneg
+W17 GK keys: 114 from /tmp/swarm-W17/tab/keys_ST106.txt (md5 dcda1e89); payer->payee {'5->5': 4, '5->6': 3, '5->7': 21, '5->8': 8, '5->9': 4, '5->{69}
+senderR2 rows 22496 (spec 7,074), violated 165, min slack -4.98e-06; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18152 (spec 15,497), C 712 (spec 1,494), RPAT 158 (spec 158); by d {7: 9364, 8: 5910, 9: 3318, 10: 1427, 11: 613, 12: 85,
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -1.2305
+Karp tail (apex relaxation): lambda = 0.742268240, covered for d >= 23.226 (needs <= 31)
+d=7: exact violated 48 (separator reported 48, Python exact re-check: 48 violated, max excess 4.98e-06; 4 part(s), 465s CPU-wall)
+d=8: exact violated 199 (separator reported 199, Python exact re-check: 199 violated, max excess 5e-06; 12 part(s), 1014s CPU-wall)
+d=9: exact violated 12 (separator reported 12, Python exact re-check: 12 violated, max excess 4.99e-06; 24 part(s), 1314s CPU-wall)
+RESULT: INFEASIBLE (exact receiver violators above); Python checks also FAIL
+max 0.0139905 (779899/577577)
+--tneg loads
+   6 9 3.014015445
+   6 9 3.014011503
+   1 8 2.014015451
+  39 8 2.014015432
+   6 8 2.014015218
+  18 8 2.014015199
+9 555557557 588586778 3.014015445
+9 555557557 588587768 3.014015445
+9 555575575 885867785 3.014015445
+9 555575575 885877685 3.014015445
+9 555755755 858677858 3.014015445
+9 555755755 858776858 3.014015445
+9 555557557 588586788 3.014011503
+9 555557557 588588768 3.014011503
+MD5SUMS md5 4f638b137a9252dbd1e2ca4acc54565f
+commit 108e4b850
+=== ST-107
+keys loaded 112 dropped 148 payer-8/9 0 missing-from-file 0 refused 0
+t 0.013976966
+--main
+W17 GK keys: 112 from /tmp/swarm-W17/tab/keys_ST107.txt (md5 a8a87e8c); payer->payee {'5->5': 4, '5->6': 3, '5->7': 21, '5->8': 8, '5->9': 4, '5->{69}
+senderR2 rows 22496 (spec 7,074), violated 0, min slack 1.48e-08; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18152 (spec 15,497), C 712 (spec 1,494), RPAT 158 (spec 158); by d {7: 9364, 8: 5910, 9: 3318, 10: 1427, 11: 613, 12: 85,
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -1.09276
+Karp tail (apex relaxation): lambda = 0.747186445, covered for d >= 23.678 (needs <= 31)
+RESULT: FEASIBLE (every sender row, cons2, mrowL, d = 7..26 exhaustive, DP 27..30 and Karp pass)
+max 0.0139586 (779899/577577)
+--tneg
+W17 GK keys: 112 from /tmp/swarm-W17/tab/keys_ST107.txt (md5 a8a87e8c); payer->payee {'5->5': 4, '5->6': 3, '5->7': 21, '5->8': 8, '5->9': 4, '5->{69}
+senderR2 rows 22496 (spec 7,074), violated 172, min slack -4.99e-06; g2 keys in sender rows 381 (spec 393)
+patterns distinct by kind: D 18152 (spec 15,497), C 712 (spec 1,494), RPAT 158 (spec 158); by d {7: 9364, 8: 5910, 9: 3318, 10: 1427, 11: 613, 12: 85,
+DP margin: max over d of (closed-walk bound - (d - 6 + t)) = -1.09275
+Karp tail (apex relaxation): lambda = 0.747186445, covered for d >= 23.678 (needs <= 31)
+d=7: exact violated 65 (separator reported 65, Python exact re-check: 65 violated, max excess 5e-06; 4 part(s), 580s CPU-wall)
+d=8: exact violated 298 (separator reported 298, Python exact re-check: 298 violated, max excess 4.99e-06; 12 part(s), 1094s CPU-wall)
+d=9: exact violated 12 (separator reported 12, Python exact re-check: 12 violated, max excess 4.99e-06; 24 part(s), 1438s CPU-wall)
+RESULT: INFEASIBLE (exact receiver violators above); Python checks also FAIL
+max 0.0139586 (779899/577577)
+--tneg loads
+   6 9 3.013976960
+   6 9 3.013974067
+   6 8 2.013976956
+  62 8 2.013976951
+   3 8 2.013976815
+   6 8 2.013976794
+9 555557557 588586778 3.013976960
+9 555557557 588587768 3.013976960
+9 555575575 885867785 3.013976960
+9 555575575 885877685 3.013976960
+9 555755755 858677858 3.013976960
+9 555755755 858776858 3.013976960
+9 555557557 588586788 3.013974067
+9 555557557 588588768 3.013974067
+MD5SUMS md5 999c139b6419e9a5a3b39d9644a90512
+commit 6c3f396d5
+ST106107DONE
