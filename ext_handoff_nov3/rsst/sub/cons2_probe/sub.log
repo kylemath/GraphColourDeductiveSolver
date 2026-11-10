@@ -1,0 +1,17 @@
+K:6 565668 575777 {'groups': 1, 'fills': 15625, 'combos': 1, 'sec': 0.0}
+K:6 565678 575755 {'groups': 1, 'fills': 78125, 'combos': 1, 'sec': 0.0}
+K:6 565678 777757 {'groups': 1, 'fills': 78125, 'combos': 1, 'sec': 0.0}
+K:6 565778 577755 {'groups': 1, 'fills': 390625, 'combos': 1, 'sec': 0.0}
+K:6 565788 577755 {'groups': 1, 'fills': 1953125, 'combos': 1, 'sec': 0.0}
+K:6 565678 575757 {'groups': 1, 'fills': 78125, 'combos': 1, 'sec': 0.0}
+K:6 565668 575777 in-every-combo: 2 ['nl0004_r8', 'nl0008_r9'] | greedy: [('nl0004_r8', 1)] | uncovered 0
+K:6 565678 575755 in-every-combo: 2 ['nl0004_r8', 'nl0008_r9'] | greedy: [('nl0004_r8', 1)] | uncovered 0
+K:6 565678 777757 in-every-combo: 0 [] | greedy: [] | uncovered 1
+K:6 565778 577755 in-every-combo: 1 ['nl0004_r8'] | greedy: [('nl0004_r8', 1)] | uncovered 0
+K:6 565788 577755 in-every-combo: 1 ['nl0004_r8'] | greedy: [('nl0004_r8', 1)] | uncovered 0
+K:6 565678 575757 in-every-combo: 2 ['nl0004_r8', 'nl0008_r9'] | greedy: [('nl0004_r8', 1)] | uncovered 0
+ALL greedy: [('nl0004_r8', 5)] uncovered 1
+
+real	0m1.102s
+user	0m0.904s
+sys	0m0.026s
