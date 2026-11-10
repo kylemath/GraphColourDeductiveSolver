@@ -1,7 +1,62 @@
 {
-  "revision": 144,
-  "updatedAt": "2026-10-08T23:00:00Z",
+  "revision": 145,
+  "updatedAt": "2026-11-10T23:30:00Z",
   "journal": [
+    {
+      "time": "2026-11-10T23:30:00Z",
+      "node": "track8",
+      "action": "Revision 145 records 8 Oct - 10 Nov: frame plan parked; track8 is the main line with the RSST seed route, own-rule LP ladder, Lean checker and K <= 1; interpretable route recorded; swarm shortcut search killed. Forecast restated for the current main line."
+    },
+    {
+      "time": "2026-11-10T21:19:00Z",
+      "node": "t8-seed-configs",
+      "action": "2.126 proved in Lean; N2 replaces 128.1324802; 191 of 403 configs already have our Lean proof, 212 queued."
+    },
+    {
+      "time": "2026-11-10T17:14:00Z",
+      "node": "t8-own-lp",
+      "action": "Sound upper t* <= 0.013759687 [E2] on K3l5u + 112 keys."
+    },
+    {
+      "time": "2026-11-10T15:49:00Z",
+      "node": "t8-rsst-seed",
+      "action": "k chose seed first, LP as compression: RSST fixed point t = 0 at every degree [E2]; Lean B1-B4 proved."
+    },
+    {
+      "time": "2026-11-07T02:30:00Z",
+      "node": "t8-lp-audit-nov",
+      "action": "Rule-file audit: derivation bug, uppers below 0.129 withdrawn, sound rule file 2db75746 [E2]."
+    },
+    {
+      "time": "2026-11-04T02:38:00Z",
+      "node": "track8",
+      "action": "Swarm decision approved by k: Track 1 finish t* -> 0 + Lean; Track 2 compress and explain; Track 3 one scout. Discharging back on."
+    },
+    {
+      "time": "2026-10-23T03:00:00Z",
+      "node": "interp-level-merge",
+      "action": "Level-merge route: bounded-R joining refuted; canonical induction parked."
+    },
+    {
+      "time": "2026-10-21T21:08:00Z",
+      "node": "interp-route",
+      "action": "Discharging line paused on Kyle's direction (t* <= 0.098789 [E2] on A97); resources to the interpretable route."
+    },
+    {
+      "time": "2026-10-18T04:20:00Z",
+      "node": "t8-k1",
+      "action": "K <= 1 discharging closed: all deferred keys D, 46/47 in Lean, k19 on two engines."
+    },
+    {
+      "time": "2026-10-14T12:00:00Z",
+      "node": "track8",
+      "action": "14 Oct: flat 66666 2-ball D-reducible; programme moves to 2-ball reducibility plus discharging. Coordination moves to the cloud project thread under Kyle's charter."
+    },
+    {
+      "time": "2026-10-13T23:00:00Z",
+      "node": "frame-plan",
+      "action": "Kyle's 13 Oct plan revision: matching-treadmill line closed (Conjecture R0 false in the plane); target re-scoped to internally 6-connected frame graphs; falsification-first rule; deadline goals set for ~27 Dec."
+    },
     {
       "time": "2026-10-08T23:00:00Z",
       "node": "frame-plan",
@@ -14111,6 +14166,458 @@
       "files": [
         "SolvingFrameworkPlan/docs/working/CoordinatorPlan.md"
       ]
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-11-10T23:30:00Z",
+          "text": "Revision 145: parked since 14 Oct. The 13 Oct plan revision closed the matching-treadmill line (A5v/T1-v/R0; Conjecture R0 false in the plane) and re-scoped to internally 6-connected frame graphs; on 14 Oct the flat 66666 2-ball proved D-reducible and the programme moved to 2-ball reducibility plus discharging (track8). NRC and the mixed higher chain counts were never resumed."
+        }
+      ],
+      "files": [
+        "SolvingFrameworkPlan/docs/working/CoordinatorPlan.md"
+      ],
+      "id": "frame-plan",
+      "revision": 145
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-11-10T23:30:00Z",
+          "text": "Revision 145: second referee round and revision done 9 Oct (N1-N6). No later record of posting; still needs Kyle's approval of disclosure and title."
+        }
+      ],
+      "id": "dissemination-chain-parity-note",
+      "revision": 145
+    },
+    {
+      "op": "move",
+      "id": "track8",
+      "parentId": "4ct",
+      "index": 1,
+      "revision": 145
+    },
+    {
+      "title": "Track 8: Discharging and reducibility (the main line since 14 Oct)",
+      "status": "in-progress",
+      "expanded": true,
+      "active": true,
+      "statement": "Classical skeleton, rebuilt with our own engines and Lean: an unavoidable set of reducible configurations (D or C, each re-proved on two engines and in Lean) plus a discharging argument that leaves no positive charge. Measured as t*, the smallest maximum final charge an LP can reach over the 'world' of local neighbourhoods; t* <= 0 on every degree means the argument closes.",
+      "approach": "14 Oct: flat 66666 2-ball D-reducible, so 2-ball reducibility + discharging (B7/B8). 14-18 Oct K <= 1 closed. 18-21 Oct own-rule LP ladder on K = 2. 21 Oct paused for the interpretable route; 3-4 Nov resumed under the swarm decision (Track 1 finish t* -> 0 + Lean, Track 2 compress and explain). 10 Nov: RSST-shaped rules allowed as a seed, then compress (k 05:57Z); 'seed first, LP as compression' (k 15:49Z).",
+      "evidence": "Seed route: RSST fixed point (71 parts as our rules, RSST configs as kills) gives t = 0 at every degree on the full world [E2, two engines]. Own-rule LP: sound upper t* <= 0.013759687 [E2] on family K3l5u + 112 keys; last positive lower 0.001233 [E2] on the older 220-key family. Lean: reducibility checker sound (r <= 19), B1-B4 of the discharging side proved; B5 certificate replay, B6 containment and assembly open. Until B5 lands, t = 0 is a computation, a re-verification of RSST's rules, not a Lean theorem.",
+      "files": [
+        "SolvingFrameworkPlan/docs/working/COORDINATOR-STATE.md",
+        "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/README.md"
+      ],
+      "notes": [
+        {
+          "time": "2026-11-10T23:30:00Z",
+          "text": "Revision 145 (10 Nov 23:30Z) records 8 Oct - 10 Nov: this track went from one Birkhoff-diamond check to the programme's main line."
+        }
+      ],
+      "id": "track8",
+      "revision": 145
+    },
+    {
+      "op": "insert",
+      "parentId": "track8",
+      "revision": 145,
+      "node": {
+        "id": "t8-lean-checker",
+        "title": "Lean reducibility checker made sound, with the classical reductions",
+        "status": "compiled",
+        "statement": "colorable_of_dReducible (D) and the C-glue chain (CGlue, admissibleX/XU, foldSafeX) turn a native_decide certificate into 4-colourability of any map containing the configuration; Birkhoff separating 3-, 4- and 5-cycle reductions.",
+        "evidence": "13 Oct: DCheck agrees with RSST on all 633 configurations (249 D, 384 not). 15 Oct (Job 19): soundness proved for r <= 15, B3 gate passed three weeks early; Job 23 extends to r <= 19; Birkhoff diamond end-to-end; Job 25 separating 4- and 5-cycles (SepAll). 14-15 Oct: w66666 C-reducible, Lean certificate (C66666.lean) and an independent Coq/Gonthier check (counts 3x ours exactly). 22 Oct admissibleXU (uncapped X). Thousands of hD/hC theorems since (kill families K3*/K5*, HDC502, CK108, R118). Open scope item: Job 26 'appears -> Occ' for folded rings (FaceGlue piece (i) proved; fallback by 20 Nov is a simple-ring hypothesis).",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/JOB19.md",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/C66666.lean",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/SepAll.lean",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/CGlueU.lean",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/FaceGlue.lean",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/JOB26.md",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/dcheck/DCheckSound.lean"
+        ],
+        "notes": [],
+        "children": []
+      },
+      "index": 0
+    },
+    {
+      "op": "move",
+      "id": "t8-birkhoff",
+      "parentId": "t8-lean-checker",
+      "revision": 145
+    },
+    {
+      "status": "compiled",
+      "notes": [
+        {
+          "time": "2026-11-10T23:30:00Z",
+          "text": "Revision 145: Birkhoff diamond now proved end to end in Lean (DiamondE2E, 15 Oct)."
+        }
+      ],
+      "id": "t8-birkhoff",
+      "revision": 145
+    },
+    {
+      "op": "insert",
+      "parentId": "track8",
+      "revision": 145,
+      "node": {
+        "id": "t8-k1",
+        "title": "K <= 1 discharging closed (14-18 Oct)",
+        "status": "computed",
+        "statement": "With every 2-ball containing at most one sender, no positive charge survives: t* <= 0.",
+        "evidence": "Job 14: all 2,848 non-66666 K = 1 keys at ring <= 16 D-reducible; the 47 deferred ring 17-19 keys all D (dfast18). 46 of 47 in Lean; the ring-19 key k19 is D on two engines (dfast18 and the independent kc), its Lean run was lost to a Mac shutdown on 23 Oct and restarted at low priority. So K <= 1 is Lean except one key at [E2].",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/COORDINATOR-STATE.md"
+        ],
+        "notes": [],
+        "children": []
+      },
+      "index": 1
+    },
+    {
+      "op": "insert",
+      "parentId": "track8",
+      "revision": 145,
+      "node": {
+        "id": "t8-own-lp",
+        "title": "Own-rule discharging LP ladder (now the compression tool)",
+        "status": "in-progress",
+        "statement": "Find our own discharging rules (LP-chosen weights, our masks, every kill re-proved) with t* <= 0 on the full world.",
+        "approach": "Row generation with exact separators; an upper bound needs the point to pass upperR2 on two engines (Opus + Studio spec-only, d = 7..26, DP and Karp tails); a lower bound needs an exact certificate. Kills added as binders appear, each two-engine then Lean. Since 10 Nov 15:49Z the ladder winds down and serves compression of the seed proof.",
+        "evidence": "Upper ladder [E2]: 7/27 (17 Oct), 1/5, 2/13 (19 Oct), 0.098789 (21 Oct, line paused), 0.041565 (3 Nov, later withdrawn), sound 0.128958 after the 6-7 Nov audit, then 0.041565 (7 Nov 04:50Z) down to 0.013759687 (10 Nov 17:14Z, K3l5u + 112 keys, Lean-complete kill side). Best single-engine point 0.013515410 [P] (GS22 in04 on K3gB5r) awaits Studio ST-124. The upper fell ~25% a day and never reached 0. Lower: 0.001233312 [E2] on the 220-key GL5 family is the last positive lower; current lower runs sit at t1 = 0 (they cannot go below 0: the empty 6-row forces t >= 0).",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/COORDINATOR-STATE.md"
+        ],
+        "notes": [],
+        "children": []
+      },
+      "index": 2
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-own-lp",
+      "revision": 145,
+      "node": {
+        "id": "t8-lp-k2-oct",
+        "title": "K = 2 ladder and gate, 16-21 Oct",
+        "status": "computed",
+        "evidence": "7/27 exact on the full 16,411-pattern registry (charge-sharing gives no gain), then 1/5, 65/406, 2/13 exact (19 Oct). 24 Oct gate wording decided 19 Oct: K <= 1 closed, K = 2 open. 18 Oct Kyle: own rules only, published rules as benchmark; l3q/z6 count as own (adapted from RSST rules 9, 3-5). Registry A111 (3,125 D, 1,339 C). Line paused 21 Oct at t* <= 0.098789 [E2] on A97.",
+        "files": [
+          "SolvingFrameworkPlan/docs/working/GATE-24OCT-DRAFT.md",
+          "SolvingFrameworkPlan/docs/working/EXPLORE-LOG.md"
+        ],
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-own-lp",
+      "revision": 145,
+      "node": {
+        "id": "t8-lp-audit-nov",
+        "title": "Soundness audit of the rule files (6-7 Nov)",
+        "status": "computed",
+        "statement": "Every rule and kill used by a bound must embed with the true rotation at cut vertices and respect the structure Z.",
+        "evidence": "6 Nov 22:04Z: Studio rule-derivation bug confirmed (w-letters not checked against Z); corrected file drops 3,036 of 9,326 rules. 0.0415648 and 0.098789 withdrawn; rpatN3 had 46 face-set-only patterns. Final rule file 2db75746 (6,718 rules) [E2, W18 + Studio]; kill tables re-audited with rotation-preserving embeddings, 0 drops. Lesson kept: two engines agreeing on a shared input file do not validate the file.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-own-lp",
+      "revision": 145,
+      "node": {
+        "id": "t8-lp-keys-567",
+        "title": "5/6/7-world obstruction and generic keys",
+        "status": "computed",
+        "evidence": "5 Nov: no existing rule family brought the 5/6/7 sub-world to 0 (floor 0.0067 [E2]); 6 Nov: 87 generic 2-ball keys bring the relaxed 5/6/7 world to exactly t = 0 [E2]. Keys priced on upper-LP duals overstate ~5x; payer-8 keys modest. Outside team (10 Nov): 16 one-sentence rules close the 5/6/7 world; package covers a sub-world only, rule set passed to compression.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "track8",
+      "revision": 145,
+      "node": {
+        "id": "t8-rsst-seed",
+        "title": "RSST seed route: the main line since 10 Nov 15:49Z",
+        "status": "in-progress",
+        "expanded": true,
+        "statement": "Restate RSST's 32-rule discharging (71 parts) as our own rules, re-prove every configuration on our engines and in Lean, prove the discharging side in Lean, then compress.",
+        "approach": "Seed first (k 15:49Z): plan SEED_PLAN.md (B2 -> B4 -> B5 -> B6 -> assembly, 33-55 person-days + 110-160 CPU-h). Compression (the LP and Opus Stage A/B/C) afterwards.",
+        "evidence": "Caveat to quote with every claim: t = 0 is a re-verification of RSST's rules on our engines and stays a computation until the Lean certificate replay (B5) and containment (B6) are done.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST113/SCOPING_SEED.md",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/SEED_PLAN.md"
+        ],
+        "notes": [],
+        "children": []
+      },
+      "index": 0
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-rsst-seed",
+      "revision": 145,
+      "node": {
+        "id": "t8-seed-fixedpoint",
+        "title": "Fixed point: t = 0 at every degree on the full world",
+        "status": "computed",
+        "evidence": "10 Nov [E2: Studio spec-only engine + swarm W6r]: with the 71 RSST parts as our rules and the RSST configurations as kills, no state with positive charge survives at any degree; d >= 15 needs no kills. Section 7 (induced window) holds. 9 Nov diagnosis that led here: RSST rules close our tight rows by big-to-big transfers; the bottleneck was rule grammar, not kills.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-rsst-seed",
+      "revision": 145,
+      "node": {
+        "id": "t8-seed-configs",
+        "title": "Every seed configuration proved our own way",
+        "status": "in-progress",
+        "evidence": "582 of 633 RSST configurations proved on our two engines (249 D2, 333 C2cons). 51 'none' fail only our conservative admissibility; substitutes (2026-set configs + 13 windows, all 119 second-checked) cover all but 426 of 143,961 leaves. Those needed 2.126 and 128.1324802: a new narrow rule part N2 replaces 128.1324802 (two engines; in the Lean rule data, 79 parts); 2.126 cannot be replaced by a rule and was proved in Lean directly (C2o126Final, 10 Nov 21:19Z). Lean coverage: 179 already in Lean; of the other 403, 191 have our own Lean proof of the same configuration (Opus cover test + Studio ST-122), 212 queued on the Mac Studio (~61 CPU-h at the original estimate), plus the substitutes (HDST119 108 hD + 11 hC).",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST123/ROUTE_I_PLAN.md",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST123/lean/C2o126Final.lean",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST122/REPORT.md"
+        ],
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-rsst-seed",
+      "revision": 145,
+      "node": {
+        "id": "t8-seed-lean",
+        "title": "Lean discharging side (B1-B6 + assembly)",
+        "status": "in-progress",
+        "statement": "Before 10 Nov our Lean had no discharging side on either route: unavoidability was only a hypothesis in ClaimGlue/CGlue.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/B6A_NOTES.md"
+        ],
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-seed-lean",
+      "revision": 145,
+      "node": {
+        "id": "t8-b1",
+        "title": "B1 charge and Euler",
+        "status": "compiled",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST114/lean/RSSTCharge.lean"
+        ],
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-seed-lean",
+      "revision": 145,
+      "node": {
+        "id": "t8-b2",
+        "title": "B2 rules as data (71 parts + N2 = 79)",
+        "status": "compiled",
+        "evidence": "Generated from RSST's rule source; 403/403 config re-check pass; N2 added 10 Nov evening.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b2/RSSTRulesN2.lean",
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b2/RSSTView.lean"
+        ],
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-seed-lean",
+      "revision": 145,
+      "node": {
+        "id": "t8-b3",
+        "title": "B3 induced-window theorem (window_induced)",
+        "status": "compiled",
+        "evidence": "Proved 10 Nov 15:22Z, 0 sorry, standard axioms; reviewed by the strategy thread.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST114/lean/RSSTWindow.lean"
+        ],
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-seed-lean",
+      "revision": 145,
+      "node": {
+        "id": "t8-b4",
+        "title": "B4 locality (eval_sound)",
+        "status": "compiled",
+        "evidence": "Done 10 Nov 16:36Z: parametric in parts, 2-ball radius, integer units.",
+        "files": [
+          "backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b4/RSSTEval.lean"
+        ],
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-seed-lean",
+      "revision": 145,
+      "node": {
+        "id": "t8-b5",
+        "title": "B5 certificate replay",
+        "status": "in-progress",
+        "statement": "A Lean checker (native_decide, the same trust class as hD/hC) replays an exported certificate of the full-world fixed point.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-seed-lean",
+      "revision": 145,
+      "node": {
+        "id": "t8-b6",
+        "title": "B6 containment (occurrence glue for every config)",
+        "status": "unstarted",
+        "evidence": "Needs a generic occurrence lemma; the 168 C2cons with our own hC need it. B6a reading notes done.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-seed-lean",
+      "revision": 145,
+      "node": {
+        "id": "t8-assembly",
+        "title": "Assembly: one Lean statement of the four colour theorem",
+        "status": "unstarted",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "t8-rsst-seed",
+      "revision": 145,
+      "node": {
+        "id": "t8-seed-compress",
+        "title": "Compression and the plain-language account",
+        "status": "exploring",
+        "evidence": "Opus Stage B cover test: every family-u kill inside an RSST config is the config itself (no smaller kill). The outside team's 16-rule 5/6/7 set and the LP ladder feed here. Goal from the 4 Nov decision: minimal configs, simplest rules, a 'what the proof says' account from the dual.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "routes-1720",
+      "revision": 145,
+      "node": {
+        "id": "route-swarm-nov",
+        "title": "Swarm search for new deductive paths (3-4 Nov)",
+        "status": "killed",
+        "evidence": "Opus-led swarms of Sonnet/Opus/Haiku workers. Round 5: no deductive shortcut smaller than 4CT survived; the key lemma of arXiv 2412.00172 ('simpler proof') refuted by an 8-vertex triangulation [E2]. The swarm now runs Track 2 (compression, audits, second engines) of the 4 Nov decision.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "expanded": false,
+      "id": "routes-1720",
+      "revision": 145
+    },
+    {
+      "op": "insert",
+      "parentId": "4ct",
+      "revision": 145,
+      "node": {
+        "id": "interp-route",
+        "title": "Interpretable route: learned models and level-merge (21-23 Oct, parked)",
+        "status": "exploring",
+        "statement": "k, 21 Oct: a simplified, interpretable, deductive understanding, not a ramped-up version of the published proof; 'let the data and the model do the work'.",
+        "approach": "Discharging line paused 21 Oct 21:06Z and all resources moved here; parked after 23 Oct; the discharging line resumed 3-4 Nov.",
+        "evidence": "Docs: Level-merge route https://claude.ai/artifact/Srs7Tg7NAHgAkJwugcuMcy, state of project https://claude.ai/artifact/QbJV2Zvx7XAbAZL7Dorzra, reducibility models https://claude.ai/artifact/WopE2zGfU9RcqhYsayMiqu. Code on branch claude/project-thread-ronnec (interp/multiscale/).",
+        "notes": [],
+        "children": []
+      },
+      "index": 2
+    },
+    {
+      "op": "insert",
+      "parentId": "interp-route",
+      "revision": 145,
+      "node": {
+        "id": "interp-models",
+        "title": "Learned reducibility models",
+        "status": "computed",
+        "evidence": "WL-star/GNN 94-99% on held-out families (~80% on the face-7 family); log(direct-extension share) additive over local stars (R^2 0.98-1.00 held out); the Kempe-closure part is not local; a sparse model rediscovered Heesch's hanging 5-5 obstruction. Measured, not proved.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "interp-route",
+      "revision": 145,
+      "node": {
+        "id": "interp-rule-fits",
+        "title": "Sparse discharging rule fits",
+        "status": "killed",
+        "evidence": "Opus, 22 Oct, each fit checked exactly: 1 parameter t = 2/3, 2 give 1/2, 6 give 7/17, ~7,000 give 0.0988. Nothing sparse within 10% of the optimum; the incompressible part is the 5 -> 6 -> big relay.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "interp-route",
+      "revision": 145,
+      "node": {
+        "id": "interp-level-merge",
+        "title": "Level-merge / multiscale recursion with bounded seam repair",
+        "status": "killed",
+        "evidence": "22-23 Oct: seam lemma refuted (tilt mismatch forces R ~ 0.45 L); band filling false (w* ~ L/3.5, 890-vertex sphere needs R >= 4); weak merge false; the Hodge pair does not exclude the counterexamples. Joining independent halves with bounded repair is dead.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "op": "insert",
+      "parentId": "interp-route",
+      "revision": 145,
+      "node": {
+        "id": "interp-canonical",
+        "title": "Canonical-order induction with vortex cuts",
+        "status": "exploring",
+        "evidence": "Colours dense-defect maps to 5k vertices at R <= 4, but active cuts grow ~n^0.65; the control lemma as stated is false (rigid stacked maps need linear repair radius). The invariant would need Kempe extendability information. Parked.",
+        "notes": [],
+        "children": []
+      }
+    },
+    {
+      "notes": [
+        {
+          "time": "2026-11-10T23:30:00Z",
+          "text": "Revision 145 (10 Nov 23:30Z): main line is track8, the RSST seed route; see t8-rsst-seed."
+        }
+      ],
+      "id": "4ct",
+      "revision": 145
     }
   ]
 }
