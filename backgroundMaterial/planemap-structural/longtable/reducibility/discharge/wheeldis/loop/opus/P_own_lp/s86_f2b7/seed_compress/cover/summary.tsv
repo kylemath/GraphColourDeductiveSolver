@@ -1,0 +1,12 @@
+lean_queue	verdict	cover_u (= cover_r)	queue_note	configs
+in Lean (179)	C2cons	not covered	-	128
+in Lean (179)	D2	covered	-	11
+in Lean (179)	D2	not covered	-	40
+none (not in the 582)	none	not covered	-	51
+to prove (403)	C2cons	covered	can leave the queue: our copy (same config, our X) has an hC theorem	168
+to prove (403)	C2cons	not covered	check: isomorphic copy listed in a Lean job input	2
+to prove (403)	C2cons	not covered	stays in the queue	35
+to prove (403)	D2	covered	can leave the queue: isomorphic copy proved in HDC502	1
+to prove (403)	D2	covered	stays in the queue	127
+to prove (403)	D2	not covered	can leave the queue: isomorphic copy proved in HDC502	20
+to prove (403)	D2	not covered	stays in the queue	50
