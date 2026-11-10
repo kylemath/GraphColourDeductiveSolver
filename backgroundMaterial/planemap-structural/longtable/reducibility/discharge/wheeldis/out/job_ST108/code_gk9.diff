@@ -1,0 +1,431 @@
+diff -ru code_gk8/gk_blocks.py code_gk9/gk_blocks.py
+--- code_gk8/gk_blocks.py	2026-11-09 11:35:24
++++ code_gk9/gk_blocks.py	2026-11-10 04:22:11
+@@ -1,5 +1,6 @@
+ # W17 round 4 test blocks, exec'd by st21_w17.py (code_gk) after the separator tables are built (needs GKKEYS, GKENG, GKWIN, GKF,
+ # gk_recv_terms, gk_send_terms, gk_cons_terms, GKREL_, GKWNP, recv_spec, spec_val, sepx, SEPX, yv, xv, KSV, pmask, MASK, f2b_extra).
++# code_gk9: with HATBB keys loaded, GKST_ONLY=1 does not exit here: hb_blocks.py (HBST) runs next and prints the verdict.
+ def _gk_pick(rr_, m, lets=LET):
+     c_ = [l for l in lets if (m >> (l - 5)) & 1]
+     return rr_.choice(c_) if c_ else rr_.choice(lets)
+@@ -114,7 +115,7 @@
+     print('W17 GK per-position bound check: %d positions, window bound == exact on %d, exact above bound %d' % (_ptot, _ptight, _pb), flush=True)
+     if _bad: fail('W17 GK self-test: C++ leaf and Python rows differ')
+     if _pb: fail('W17 GK window bound below the exact per-position credit')
+-    if os.environ.get('GKST_ONLY') == '1': print('VERDICT: W17 GK SELFTEST %s' % ('PASS' if not FAIL else 'FAIL: ' + ' | '.join(FAIL))); sys.exit(0)
++    if os.environ.get('GKST_ONLY') == '1' and not HBKEYS: print('VERDICT: W17 GK SELFTEST %s' % ('PASS' if not FAIL else 'FAIL: ' + ' | '.join(FAIL))); sys.exit(0)
+ # ---------------- GKORACLE=N: W6's r9_rows.py (round 9) as an independent oracle (copied to ORACLEDIR, shim r5lib with this
+ # checker's pmask / MASK / f2b_extra) on N random + planted receivers per d = 7..10, every sender label, and GKORC cons2 labels ----
+ if GKKEYS and os.environ.get('GKORACLE'):
+diff -ru code_gk8/gkfam.py code_gk9/gkfam.py
+--- code_gk8/gkfam.py	2026-11-09 11:34:45
++++ code_gk9/gkfam.py	2026-11-10 04:19:58
+@@ -24,6 +24,7 @@
+ # S.L+-3 refused for them). OUT at d >= 8 (centre U = min(d, 9) pays w_i; payer-8 keys only at U = 8, payer-9 keys at U = 9): SURE
+ # match on the window W_i = (w_{i-2..i+2}, s_{i-2..i+1}): sg = +1: S.L+-1 = w_{i+-1}, S.L+-2 = w_{i+-2}, S.A+1 = s_{i+1},
+ # S.A-1 = s_{i-2}, R.L+2 = s_i, R.L-2 = s_{i-1}, S.L+-3 wildcard; sg = -1 mirrors. Window rows: IN - OUT.
++# code_gk9 (10 Nov 2026): load_keys(fn, skip_hat=True) skips the HATBB lines 'NAME HAT(u->b)[...]' (module hbfam.py).
+ import re, collections
+ LET = (5, 6, 7, 8, 9)
+ SYM = {'5': 1, '6': 2, '7': 4, '8': 8, '9': 16, 'S': 3, 'B': 28, '*': 31}
+@@ -67,10 +68,15 @@
+         if not mk: raise ValueError('%s: empty set at %s' % (name, p_))
+         conds.append((pi, mk))
+     return name, U, V, tuple(sorted(conds))
+-def load_keys(fn):
++def load_keys(fn, skip_hat=False):
++    """the EDGE keys of a key file; code_gk9: skip_hat=True skips HAT(u->b) lines (HATBB keys, read by hbfam.load_keys); without it a
++    HAT line is refused as before (bad rule)"""
+     keys = []
+     for l_ in open(fn):
+         l_ = l_.split('#', 1)[0].strip()
++        if l_ and skip_hat:
++            f_ = l_.split(None, 1)
++            if len(f_) == 2 and f_[1].strip().startswith('HAT('): continue
+         if l_: keys.append(parse_key(l_))
+     names = [k[0] for k in keys]
+     if len(set(names)) != len(names): raise ValueError('duplicate key names')
+Only in code_gk9: hb_blocks.py
+Only in code_gk9: hbfam.py
+diff -ru code_gk8/run17.sh code_gk9/run17.sh
+--- code_gk8/run17.sh	2026-11-09 11:36:27
++++ code_gk9/run17.sh	2026-11-10 04:21:46
+@@ -1,5 +1,6 @@
+ # W17 Studio-path upper check (one Python process).  usage: SOL=sol.json TAG=name KILLDIR=dir [KS=1] [EGK=keys] [DLIST=7,8|none] [QDUMP_ONLY=1 SEPQDUMP=dir] bash run17.sh
+ # code_gk8 (9 Nov 2026): defaults point at code_gk8 and bin/sep3r_gk8 (payer-8/9 GK keys, PAYER8SPEC W5).
++# code_gk9 (10 Nov 2026): defaults point at code_gk9 and bin/sep3r_gk9 (code_gk8 + HATBB keys, HATBB_SPEC a36ce8d2).
+ # = W15's run15.sh (stack: rules 45a4c6d1 (k95f), Studio Tier A l3q V7/V8 tables, args ARGSF (default W15's args_k95f, D 18159, C 627, RPAT 158)
+ # + rpatN3, HAT5=1 V6=0 FB=0 XO=0; families HATRR ZH ZR ZCAP=3 Q7 Q7M Q7CAP=3 unless FAMILIES=off) with st21_w17.py and bin/sep3r_w17.
+ # code_c6 (W17 round 2): C6LE=1 (cons2 as 'the 6 ends <= t'), C6_ONLY=1 (stop after the cons2 step) also come from the caller's env.
+@@ -28,8 +29,8 @@
+ [ -n "$RPATN" ] && echo "rpatN: $RPATN (md5 $(md5sum < $_RF | cut -c1-8))" || echo "rpatN: off (no rpatN pattern loaded)"
+ : ${SOL:?SOL=} ${TAG:?TAG=} ${KILLDIR:?KILLDIR=}
+ if [ "${FAMILIES:-on}" = on ]; then FAM="HATRR=1 ZH=1 ZR=1 ZCAP=3 Q7=1 Q7M=1 Q7CAP=3"; else FAM="HATRR=0"; fi
+-cd /tmp/swarm-W17/wd && env $FAM SEPTAG=$TAG SEPBIN=${SEPBIN:-sep3r_gk8} F2B=$F2BRULES L3Q=1 L3TAB=$S/studio_l3qtab_+1.json,$S/studio_l3qtab_-1.json \
++cd /tmp/swarm-W17/wd && env $FAM SEPTAG=$TAG SEPBIN=${SEPBIN:-sep3r_gk9} F2B=$F2BRULES L3Q=1 L3TAB=$S/studio_l3qtab_+1.json,$S/studio_l3qtab_-1.json \
+   L3Q8=1 L3TAB8=$S/V8/studio_l3qtabV8_+1.json,$S/V8/studio_l3qtabV8_-1.json KILLDIR=$KILLDIR RPATN=$RPATN \
+   HAT5=1 V6=0 FB=0 XO=0 SKIP_LOWER=1 EXPECT_T=${EXPECT_T:-0.041565} EXPECT_PAT=${EXPECT_PAT:-18159,627,158} WLP3X_DEF=1 WLP_SEPF=1 DMAXP=${DMAXP:-17} \
+   W10_HERE=/tmp/swarm-W17/wd W10_ST16=/tmp/swarm-W17/st16 \
+-  nice -n 15 python3 ${W17CODE:-/tmp/swarm-W17/code_gk8}/st21_w17.py $SOL $SOL ${ARGSF:-/tmp/swarm-W17/args_k95f.txt}
++  nice -n 15 python3 ${W17CODE:-/tmp/swarm-W17/code_gk9}/st21_w17.py $SOL $SOL ${ARGSF:-/tmp/swarm-W17/args_k95f.txt}
+diff -ru code_gk8/sep3r_gk.cpp code_gk9/sep3r_gk.cpp
+--- code_gk8/sep3r_gk.cpp	2026-11-09 11:36:08
++++ code_gk9/sep3r_gk.cpp	2026-11-10 04:21:26
+@@ -1,3 +1,12 @@
++// sep3r_gk9 (W17 code_gk9, 10 Nov 2026): sep3r_gk.cpp of code_gk8 plus HATBB keys HAT(u->b)[ctx] (u, b in {7, 8, 9}), written from
++// W6b's HATBB_SPEC.md (a36ce8d2) only (no Opus / W6b code). SEP_HB=<file>: int32 nk, per key int32 U, int32 V, double amount,
++// int32 nc, nc x (int32 position 0..15 = X Y U-1 U+1 XA YA V-1 V+1 U+2 U+3 U-2 U-3 UA+2 UA+3 UA-2 UA-3, int32 mask); then
++// HBREL[3][125][25] (Python's per-edge bound at cell (w_{i-1}, s_{i-1}, w_i) x (s_i, w_{i+1})). At load the separator recomputes
++// HBREL itself (max over (w_{i+2}, s_{i+1}) of the edge term with every other position the wildcard) and refuses (exit 103) if it
++// differs from Python's by > 1e-12. Window: + HBREL at every link edge (also in anyStartR). Leaf (hbCorr): the exact edge term of
++// every edge with apex s_i >= 7 (OUT: centre pays s_i, SURE; IN: s_i pays the centre, POSSIBLE; picture sets: 6-private pmask &
++// ~extra6 at d <= 9, all at d >= 10; 7-private MASK / MASK8 & ~extra7 at d = 7, 8 when c, a <= 6) minus HBREL; an edge whose
++// exact term is above HBREL is refused at run time (exit 104). SEP_HBPLANT=inflip: planted C++ error (IN sign flipped), control only.
+ // sep3r_gk8 (W17 code_gk8, 9 Nov 2026): sep3r_gk.cpp of code_gk7 plus payer-8/9 GK keys, written from W6b's PAYER8SPEC.md (W5
+ // reading; no Opus code). Key payer mask: a nonempty subset of {5, 6, 7}, or exactly {8}, or exactly {9}; payer-8/9 keys may not
+ // use S.L+-3 (positions 2, 5). gkWinVal: the IN gate is widened to every payer letter (7, 8, 9 own privates wildcard) and, at
+@@ -435,6 +444,105 @@
+     }
+     return dw;
+ }
++// ---- code_gk9: HATBB keys (SEP_HB) ----
++struct HBKey { int U, V; double a; int nc; int pos[16]; int msk[16]; };
++static bool HASHB = false; static int HBPLANT = 0; static vector<HBKey> HBK;
++static double HBREL[3][125][25]; static double HBMAXU[3] = {0, 0, 0};
++static inline int hbPriv6(int k) {   // link 6 private: pmask & ~extra6 at d <= 9, all at d >= 10
++    if (d >= 10) return 31;
++    long idx = ((((((((long)ui * 5 + ksW(k - 2)) * 5 + ksW(k - 1)) * 5 + ksW(k + 1)) * 5 + ksW(k + 2)) * 5 + ksS(k - 2)) * 5 + ksS(k - 1)) * 5 + ksS(k)) * 5 + ksS(k + 1);
++    return F2PM[idx] & ~f2bExtra(d - 7, ((k % d) + d) % d) & 31;
++}
++static inline int hbPriv7(int k, int f) {   // link 7 private next to ab(k, k+f): MASK / MASK8 & ~extra7 at d = 7, 8 when c, a <= 6
++    if (d != 7 && d != 8) return 31;
++    int c = ksW(k + f), a = ksAB(k, k + f), o = ksAB(k, k - f);
++    if (c > 1 || a > 1) return 31;
++    int si = f == 1 ? 0 : 1;
++    long q = ((((((long)si * 5 + c) * 5 + a) * 5 + ksW(k + 2 * f)) * 5 + ksW(k + 3 * f)) * 5 + ksW(k + 4 * f)) * 5 + o;
++    return (d == 7 ? F2MK7 : F2MK8)[q] & ~f2bExtra(3 + (d - 7) * 2 + si, ((k % d) + d) % d) & 31;
++}
++static int hbP6c[32], hbP7c[32][2];
++static inline int hbPv(int k, int f) {   // the private of w_k next to ab(k, k+f) (a 5: the other apex), picture set
++    k = ((k % d) + d) % d; int x = wl[k];
++    if (x == 0) return 1 << ksAB(k, k - f);
++    if (x == 1) { if (hbP6c[k] < 0) hbP6c[k] = hbPriv6(k); return hbP6c[k]; }
++    if (x == 2) { int si = f == 1 ? 0 : 1; if (hbP7c[k][si] < 0) hbP7c[k][si] = hbPriv7(k, f); return hbP7c[k][si]; }
++    return 31;
++}
++static inline int hbFar(int k, int f) {   // x's neighbour after the private next to the payer, away from it (IN XA / YA)
++    int x = ksW(k);
++    if (x == 0) return 1 << ksW(k - f);
++    if (x == 1) return 1 << ksAB(k, k - f);
++    return hbPv(k, -f);
++}
++static double hbEdge(int i) {   // exact amount-weighted IN - OUT of the two oriented slots on the link edge (w_i, w_{i+1}), apex s_i
++    int sb = ksS(i); if (sb < 2) return 0.0;
++    int cb = 1 << (ui + 2), pb = 1 << sb; double v = 0.0;
++    for (int o = 1; o >= -1; o -= 2) {
++        int a = o == 1 ? i : i + 1, b = a + o;
++        int ov[16] = {1 << ksW(a), 1 << ksW(b), 1 << ksW(a - o), 1 << ksW(b + o), 1 << ksAB(a, a - o), 1 << ksAB(b, b + o), -1, -1,
++                      1 << ksW(b + 2 * o), 1 << ksW(b + 3 * o), 1 << ksW(a - 2 * o), 1 << ksW(a - 3 * o),
++                      1 << ksAB(b + o, b + 2 * o), 1 << ksAB(b + 2 * o, b + 3 * o), 1 << ksAB(a - o, a - 2 * o), 1 << ksAB(a - 2 * o, a - 3 * o)};
++        int iv[16] = {1 << ksW(a), 1 << ksW(b), -1, -1, -1, -1, 1 << ksW(a - o), 1 << ksW(b + o), 31, 31, 31, 31, 31, 31, 31, 31};
++        auto OV = [&](int p) { if (ov[p] < 0) ov[p] = p == 6 ? hbPv(a, o) : hbPv(b, -o); return ov[p]; };
++        auto IV = [&](int p) { if (iv[p] < 0) iv[p] = p == 2 ? hbPv(a, o) : p == 3 ? hbPv(b, -o) : p == 4 ? hbFar(a, o) : hbFar(b, -o); return iv[p]; };
++        for (auto &k : HBK) {
++            if (k.a == 0.0) continue;
++            if (!(cb & ~k.U) && !(pb & ~k.V)) {   // OUT: the centre pays s_i, SURE
++                bool ok = true;
++                for (int t = 0; t < k.nc && ok; t++) ok = !(OV(k.pos[t]) & ~k.msk[t]);
++                if (ok) v -= k.a;
++            }
++            if ((pb & k.U) && (cb & k.V)) {   // IN: s_i pays the centre, POSSIBLE
++                bool ok = true;
++                for (int t = 0; t < k.nc && ok; t++) ok = (IV(k.pos[t]) & k.msk[t]) != 0;
++                if (ok) v += HBPLANT == 1 ? -k.a : k.a;   // planted control 'inflip'
++            }
++        }
++    }
++    return v;
++}
++static double hbRelCell(int u, int wm1, int sm1, int w0, int s0, int wp1) {   // own per-edge bound (independent of Python's)
++    if (s0 < 2) return 0.0;
++    int cb = 1 << (u + 2), pb = 1 << s0; double best = -1e300;
++    for (int wp2 = 0; wp2 < 5; wp2++) for (int sp1 = 0; sp1 < 5; sp1++) {
++        int Lk[4] = {wm1, w0, wp1, wp2}, Ak[3] = {sm1, s0, sp1};   // link -1..2, apex A(m, m+1) for m = -1..1
++        auto L = [&](int k) { return (k >= -1 && k <= 2) ? 1 << Lk[k + 1] : 31; };
++        auto A = [&](int p, int q) { int m = p < q ? p : q; return (m >= -1 && m <= 1) ? 1 << Ak[m + 1] : 31; };
++        auto PV = [&](int k, int f) { if (k < -1 || k > 2) return 31; return Lk[k + 1] == 0 ? A(k, k - f) : 31; };
++        auto FAR = [&](int k, int f) { if (k < -1 || k > 2) return 31; int x = Lk[k + 1]; return x == 0 ? L(k - f) : x == 1 ? A(k, k - f) : 31; };
++        double v = 0.0;
++        for (int o = 1; o >= -1; o -= 2) {
++            int a = o == 1 ? 0 : 1, b = a + o;
++            int ov[16] = {L(a), L(b), L(a - o), L(b + o), A(a, a - o), A(b, b + o), PV(a, o), PV(b, -o), L(b + 2 * o), L(b + 3 * o), L(a - 2 * o), L(a - 3 * o),
++                          A(b + o, b + 2 * o), A(b + 2 * o, b + 3 * o), A(a - o, a - 2 * o), A(a - 2 * o, a - 3 * o)};
++            int iv[16] = {L(a), L(b), PV(a, o), PV(b, -o), FAR(a, o), FAR(b, -o), L(a - o), L(b + o), 31, 31, 31, 31, 31, 31, 31, 31};
++            for (auto &k : HBK) {
++                if (k.a == 0.0) continue;
++                if (!(cb & ~k.U) && !(pb & ~k.V)) { bool ok = true; for (int t = 0; t < k.nc && ok; t++) ok = !(ov[k.pos[t]] & ~k.msk[t]); if (ok) v -= k.a; }
++                if ((pb & k.U) && (cb & k.V)) { bool ok = true; for (int t = 0; t < k.nc && ok; t++) ok = (iv[k.pos[t]] & k.msk[t]) != 0; if (ok) v += k.a; }
++            }
++        }
++        if (v > best) best = v;
++    }
++    return best;
++}
++static double hbCorr() {   // leaf: exact HATBB edge terms minus the window bound HBREL; each edge <= 0
++    if (!HASHB) return 0.0;
++    for (int k = 0; k < d; k++) hbP6c[k] = hbP7c[k][0] = hbP7c[k][1] = -1;
++    double dw = 0.0;
++    for (int i = 0; i < d; i++) {
++        int st = ksW(i - 1) * 25 + ksS(i - 1) * 5 + wl[i], c = ksS(i) * 5 + ksW(i + 1);
++        double rel = HBREL[ui][st][c], ex = hbEdge(i);
++        if (ex > rel + 1e-12) {
++            string lk(d, '0'), sw(d, '0'); for (int q = 0; q < d; q++) { lk[q] = '5' + wl[q]; sw[q] = '5' + sl[q]; }
++            fprintf(stderr, "sep: HB BOUND VIOLATED d=%d %s %s i=%d exact %.15g > bound %.15g\n", d, lk.c_str(), sw.c_str(), i, ex, rel);
++            fflush(stderr); exit(104);
++        }
++        dw += ex - rel;
++    }
++    return dw;
++}
+ static string canonWord(const string &w) {
+     string best = w; int n = w.size();
+     for (int refl = 0; refl < 2; refl++) {
+@@ -585,13 +693,14 @@
+     w += w10Corr();    // W10 (0 when SEP_ZTAB / SEP_Q7 are unset)
+     w += ksCorr();     // W17 (0 when SEP_KS is unset)
+     w += gkCorr();     // W17 round 4 (0 when SEP_GK is unset)
++    w += hbCorr();     // code_gk9 (0 when SEP_HB is unset)
+     return w;
+ }
+ static void leaf(double w) {
+     F2POS = 0.0;
+     w += exactCorr();
+     if (F2POS > 1e-15) { POSLEAF++; if (w > thr) { POSVIOL++; if (w - F2POS <= thr) POSCROSS++; } }   // W15 NOCLAMP counters
+-    if ((HASEX6 || HASR || HASL || HASL8 || HASFB || HASF2B || HASZ || HASQ7 || HASKS || HASGK) && w <= thr) return;
++    if ((HASEX6 || HASR || HASL || HASL8 || HASFB || HASF2B || HASZ || HASQ7 || HASKS || HASGK || HASHB) && w <= thr) return;
+     if (omax > 0 && minRing() <= omax) return;
+     if (fullForbidden()) return;
+     string link(d, '0'), s(d, '0');
+@@ -854,6 +963,29 @@
+                 e, nk, GKMAXU[0], GKMAXU[1], GKMAXU[2], nd, mdiff, GKPLANT);
+         if (nd) { fprintf(stderr, "sep: GK window tables differ between C++ and Python: refused\n"); return 93; }
+         HASGK = true; }
++    if (const char *e = getenv("SEP_HB")) { FILE *g = fopen(e, "rb"); if (!g) return 101; int32_t nk;   // code_gk9
++        if (!getenv("SEP_F2BS") || F2PM.empty()) { fprintf(stderr, "sep: SEP_HB needs SEP_F2BS (pmask / MASK tables)\n"); return 102; }
++        if (fread(&nk, 4, 1, g) != 1 || nk < 0 || nk > 4096) return 101;
++        for (int q = 0; q < nk; q++) { HBKey k; int32_t U, V, nc; double a;
++            if (fread(&U, 4, 1, g) != 1 || fread(&V, 4, 1, g) != 1 || fread(&a, 8, 1, g) != 1 || fread(&nc, 4, 1, g) != 1 || nc < 0 || nc > 16) return 101;
++            if (!(a >= 0.0 && a <= 3.0) || U <= 0 || (U & ~28) || V <= 0 || (V & ~28)) { fprintf(stderr, "sep: HB key %d refused (amount %g, payer %d, payee %d)\n", q, a, U, V); return 101; }
++            k.U = U; k.V = V; k.a = a; k.nc = nc;
++            for (int t = 0; t < nc; t++) { int32_t pp, mm; if (fread(&pp, 4, 1, g) != 1 || fread(&mm, 4, 1, g) != 1) return 101;
++                if (pp < 0 || pp > 15 || mm <= 0 || mm > 31) { fprintf(stderr, "sep: HB position %d / mask %d refused\n", pp, mm); return 101; }
++                k.pos[t] = pp; k.msk[t] = mm; }
++            HBK.push_back(k); }
++        if (fread(&HBREL[0][0][0], sizeof(double), 3 * 125 * 25, g) != 3 * 125 * 25) return 101; fclose(g);
++        long nd = 0; double mdiff = 0.0; HBMAXU[0] = HBMAXU[1] = HBMAXU[2] = -1e300;
++        for (int u = 0; u < 3; u++) for (int a = 0; a < 125; a++) for (int c = 0; c < 25; c++) {
++            double own = hbRelCell(u, a / 25, a / 5 % 5, a % 5, c / 5, c % 5), df = fabs(own - HBREL[u][a][c]);
++            if (!(HBREL[u][a][c] > -1e9 && HBREL[u][a][c] < 1e9)) return 101;
++            if (df > mdiff) mdiff = df; if (df > 1e-12) nd++;
++            HBMAXU[u] = max(HBMAXU[u], HBREL[u][a][c]); }
++        if (const char *m = getenv("SEP_HBPLANT")) HBPLANT = string(m) == "inflip" ? 1 : 0;
++        fprintf(stderr, "sep: W17 HATBB table loaded (%s): %d keys, edge bound max %.6g / %.6g / %.6g; own table vs Python's: %ld cells differ, max |diff| %.3g; plant %d\n",
++                e, nk, HBMAXU[0], HBMAXU[1], HBMAXU[2], nd, mdiff, HBPLANT);
++        if (nd) { fprintf(stderr, "sep: HB edge tables differ between C++ and Python: refused\n"); return 103; }
++        HASHB = true; }
+     if (const char *e = getenv("SEP_Q7")) { FILE *g = fopen(e, "rb"); if (!g) return 73; QPAIR.assign(3L * 625 * 25, 0.0); QPAY.assign(78125, 0.0);
+         if (fread(&QREL[0][0][0], sizeof(double), 3 * 125 * 25, g) != 3 * 125 * 25) return 74;
+         if (fread(QPAIR.data(), sizeof(double), QPAIR.size(), g) != QPAIR.size()) return 75;
+@@ -983,6 +1115,7 @@
+             if (HASQ7 && AL[ui][a][c] && a % 5 == 2) W[a][c] += QREL[ui][a][c];   // W10: link 7, unmasked payee credit Q
+             if (HASKS && AL[ui][a][c] && a % 5 == 2) W[a][c] += KSREL[ui][a][c];  // W17: link 7, K* / EDGE payee window bound
+             if (HASGK && AL[ui][a][c]) W[a][c] += GKREL[ui][a][c];   // W17 round 4: generic keys, window bound at every link position
++            if (HASHB && AL[ui][a][c]) W[a][c] += HBREL[ui][a][c];   // code_gk9: HATBB per-edge bound at every link edge
+         }
+         // M[a][b] (max-plus one step), Bnd[k] = M^k
+         vector<double> M(125 * 125, -1e18);
+@@ -999,7 +1132,7 @@
+             }
+             Bnd[k] = P;
+         }
+-        anyStartR = HASX || RMAXV > 0 || HASR || (HASL && d == 7) || HASFB || (HASQ7 && QMAXU[ui] > 0) || (HASKS && KSMAXU[ui] > 0) || (HASGK && GKMAXU[ui] > 0);   // W10: Q can load a row with no five
++        anyStartR = HASX || RMAXV > 0 || HASR || (HASL && d == 7) || HASFB || (HASQ7 && QMAXU[ui] > 0) || (HASKS && KSMAXU[ui] > 0) || (HASGK && GKMAXU[ui] > 0) || (HASHB && HBMAXU[ui] > 0);   // W10: Q can load a row with no five
+         runSearch();
+     }
+ }
+diff -ru code_gk8/st21_w17.py code_gk9/st21_w17.py
+--- code_gk8/st21_w17.py	2026-11-09 11:35:09
++++ code_gk9/st21_w17.py	2026-11-10 04:23:24
+@@ -58,6 +58,13 @@
+ # (gkfam refuses mixed sets and S.L+-3 for them). Window rows (d >= 8): the gkwin payer gate is {5..9} and the centre's OUT slots
+ # (payer-8 keys at U = 8, payer-9 keys at U = 9) are subtracted on the same window, so GKREL / GKW / the DP tail may be negative.
+ # GKORACLE (W6's round-9 r9_rows.py) predates payer 8/9 and is not updated.
++# ---- code_gk9 (W17, 10 Nov 2026, from W6b's HATBB_SPEC.md (a36ce8d2); no Opus / W6b code): the GK key file may also hold HATBB keys
++# 'NAME HAT(u->b)[POS=SYM ...]' (u, b in {7, 8, 9}; module hbfam.py). Receiver rows only: IN (possible) - OUT (sure) on the exact
++# label of every d = 7..DMAXP (picture sets: 6-private pmask & ~extra6 at d <= 9, all at d >= 10; 7-private MASK / MASK8 & ~extra7
++# at d = 7, 8 when c, a <= 6). Separator bin/sep3r_gk9 (SEP_HB): HBREL[U][cell] per link edge (w_i, w_{i+1}) with apex s_i = max over
++# (w_{i+2}, s_{i+1}) of the edge term with every other position read as the wildcard (an upper bound on the exact edge term); exact
++# leaf (hbCorr). DP d = DMAXP+1..30 and Karp: HBREL at U = 9 at every transition (sound for every 9+ receiver of any degree: the
++# bound holds edge by edge). HBST=1 (default with HATBB keys): table check, C++ leaf vs Python rows with planted slots, per-edge bound.
+ import sys, os, json, re, itertools, collections, random
+ from fractions import Fraction as Fr
+ HERE = os.environ.get('W10_HERE', '/tmp/swarm-W17/wd')
+@@ -488,12 +495,16 @@
+         if _t.strip(): _n, _v = _t.split('='); KSV[_n.strip()] = float(_v)
+     print('KSAMT override: ks amounts now %s' % KSV, flush=True)
+ # ---- W17 round 4: generic 2-ball keys ----
+-import gkfam as GKF, hashlib as _hlg
++import gkfam as GKF, hbfam as HBF, hashlib as _hlg
+ GKFILE = os.environ.get('GK', '')
+-GKKEYS = GKF.load_keys(GKFILE) if GKFILE else []
++GKKEYS = GKF.load_keys(GKFILE, skip_hat=True) if GKFILE else []   # code_gk9: the EDGE lines
++HBKEYS = HBF.load_keys(GKFILE) if GKFILE else []                  # code_gk9: the HAT (HATBB) lines
++HBPLANT = os.environ.get('HBPLANT', '')                            # code_gk9: planted Python-only errors (controls)
++if os.environ.get('HBP6DMAX'): HBF.P6DMAX = int(os.environ['HBP6DMAX']); print('HBP6DMAX=%d: 6-private picture set only at d <= %d (comparison run, not the spec reading)' % (HBF.P6DMAX, HBF.P6DMAX), flush=True)
+ GKENG = GKF.Engine(GKKEYS) if GKKEYS else None
+ GKWIN = GKF.Win(GKENG, lambda *a_: pmask(*a_)) if GKKEYS else None
+-_ksnames = [k_[0] for k_ in KSKEYS] + [k_[0] for k_ in GKKEYS]
++_ksnames = [k_[0] for k_ in KSKEYS] + [k_[0] for k_ in GKKEYS] + [k_[0] for k_ in HBKEYS]
++if len(set(_ksnames)) != len(_ksnames): fail('duplicate key names across the KS / EDGE / HAT key lists')
+ _ksoff = {n_: v_ for n_, v_ in KSV.items() if n_ not in _ksnames and v_ != 0.0}
+ if _ksoff: fail('solution has ks values for families that are off or unknown: %s' % _ksoff)
+ _ksbad = {n_: v_ for n_, v_ in KSV.items() if not (0.0 <= v_ <= KSCAP + 1e-12)}
+@@ -522,6 +533,21 @@
+     print('W17 GK keys: %d from %s (md5 %s); payer->payee %s; nonzero amounts %d (sum %.9g)%s' % (len(GKKEYS), GKFILE, _hlg.md5(open(GKFILE, 'rb').read()).hexdigest()[:8],
+           dict(sorted(_gkp.items())), len(_gknz), sum(_gknz.values()), (' PLANTED ERROR %s' % W17PLANT) if W17PLANT else ''), flush=True)
+     print('W17 GK amounts: %s' % ' '.join('%s=%.12g' % kv for kv in _gknz.items()), flush=True)
++if HBKEYS:   # code_gk9
++    if KSKEYS: fail('HATBB keys together with KS / EGK are not supported')
++    if not (L3Q and L3Q8 and os.environ.get('F2B') and HAT5): fail('HATBB keys need L3Q, L3Q8 (MASK / MASK8 7-private tables), F2B (the f2b extras) and HAT5')
++    _hbnz = {k_[0]: KSV[k_[0]] for k_ in HBKEYS if KSV.get(k_[0], 0.0) != 0.0}
++    print('W17 HATBB keys: %d from %s; payer->payee %s; nonzero amounts %d (sum %.9g)%s' % (len(HBKEYS), GKFILE,
++          dict(sorted(collections.Counter('%s->%s' % (HBF.msym(k_[1]), HBF.msym(k_[2])) for k_ in HBKEYS).items())), len(_hbnz), sum(_hbnz.values()),
++          (' PLANTED ERROR HBPLANT=%s' % HBPLANT) if HBPLANT else ''), flush=True)
++    print('W17 HATBB amounts: %s' % ' '.join('%s=%.12g' % kv for kv in _hbnz.items()), flush=True)
++    print('W17 HATBB tail: DP d = DMAXP+1..30 and Karp use HBREL at U = 9 (per-edge upper bound, IN - OUT with wildcards) at every transition', flush=True)
++def hb_pic(d, w, s):   # code_gk9: HATBB_SPEC 3 receiver picture (f2b extras by _ksx, as the GK d = 7 picture)
++    return HBF.recv_pic(d, w, s, pmask, MASK, MASK8, (lambda k_: _ksx(d, w, s, k_, ('w6', d))) if F2BR else None,
++                        (lambda k_, f_: _ksx(d, w, s, k_, ('w7', d, f_))) if F2BR else None)
++def hb_recv_terms(d, w, s):   # code_gk9: HATBB receiver terms, IN (possible) - OUT (sure) on the exact label
++    w = list(w); s = list(s)
++    return {('ks', n_): c_ for n_, c_ in HBF.row_counts(HBKEYS, hb_pic(d, w, s), HBPLANT).items() if c_}
+ def gk_send_terms(w, H_, F_):   # sender row: OUT (sure) - IN (possible)
+     o_, i_ = GKENG.pic_counts(GKF.sender_pic(list(w), [H_[k] for k in range(5)], [F_.get(k, 0) for k in range(5)]))
+     out = collections.Counter()
+@@ -916,6 +942,7 @@
+     for fw_, fs_, m_ in F2BG[g]:
+         if not (rw & fw_ or rs & fs_): e_ |= m_
+     return e_
++_HBSTAGE = 'vec'; exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'hb_blocks.py')).read())   # code_gk9: HBVEC (W6b vectors), then exit
+ def q7masks(d, w, s, i, f2b7=None):   # q7m masks (m_+1, m_-1) of the link 7 at w[i]; W17 round 5: F2B7=1 (SPEC f2b7 section 1) masks a 7-side
+     if f2b7 is None: f2b7 = F2B7          # (c >= 7 or apex >= 7) with 31 & ~extra7 instead of 31; c, apex <= 6 sides unchanged
+     if not (Q7M and d in (7, 8)): return 31, 31
+@@ -1007,6 +1034,8 @@
+         for k_, cf_ in ks_terms(d, w, s).items(): r[k_] += cf_
+     if GKKEYS:   # W17 round 4: generic keys
+         for k_, cf_ in gk_recv_terms(d, w, s).items(): r[k_] += cf_
++    if HBKEYS:   # code_gk9: HATBB keys (receiver rows only)
++        for k_, cf_ in hb_recv_terms(d, w, s).items(): r[k_] += cf_
+     return {k: v for k, v in r.items() if v != 0}
+ def spec_val(d, lk, sv): return sum(cf * val(k) for k, cf in recv_spec(d, lk, sv).items())
+ 
+@@ -1435,6 +1464,25 @@
+         if os.environ.get('W17PLANT_SEP'): SEPENV['SEP_GKPLANT'] = os.environ['W17PLANT_SEP']; print('PLANTED ERROR (separator only) %s' % os.environ['W17PLANT_SEP'], flush=True)
+         print('W17 GK separator table: window max U7/U8/U9 %s, cells > 0 %s, windows > 0 per U %s (%s)' % (['%.6g' % GKREL_[u_].max() for u_ in range(3)],
+               [int((GKREL_[u_] > 0).sum()) for u_ in range(3)], [int((GKWNP[u_] > 0).sum()) for u_ in range(3)], os.path.basename(GKF_)), flush=True)
++    HBREL_ = _np.zeros((3, 125, 25))
++    _hbka = [(k_, KSV.get(k_[0], 0.0)) for k_ in HBKEYS if KSV.get(k_[0], 0.0) > 0]
++    if HBKEYS:   # code_gk9: per-edge bound at cell (w_{i-1}, s_{i-1}, w_i) x (s_i, w_{i+1}); written with the keys for bin/sep3r_gk9
++        import time as _tmh, struct as _sth; _th = _tmh.time()
++        if _hbka:
++            for _ui, _U in enumerate((7, 8, 9)):
++                for wm1, sm1, w0, s0, wp1 in itertools.product(LET, repeat=5):
++                    HBREL_[_ui, (wm1 - 5) * 25 + (sm1 - 5) * 5 + w0 - 5, (s0 - 5) * 5 + wp1 - 5] = HBF.edge_bound(_hbka, _U, wm1, sm1, w0, s0, wp1)
++        HBF_ = os.path.join(ST16, 'hb_%s.bin' % W10TAG)
++        with open(HBF_, 'wb') as _f:
++            _f.write(_sth.pack('<i', len(HBKEYS)))
++            for n_, U_, V_, cd_ in HBKEYS:
++                _f.write(_sth.pack('<iidi', U_, V_, KSV.get(n_, 0.0), len(cd_)))
++                for pi_, m_ in cd_: _f.write(_sth.pack('<ii', pi_, m_))
++            _f.write(HBREL_.astype('<f8').tobytes())
++        SEPENV['SEP_HB'] = HBF_
++        if os.environ.get('HBPLANT_SEP'): SEPENV['SEP_HBPLANT'] = os.environ['HBPLANT_SEP']; print('PLANTED ERROR (separator only) HBPLANT_SEP=%s' % os.environ['HBPLANT_SEP'], flush=True)
++        print('W17 HATBB separator table (%.0fs): edge bound max U7/U8/U9 %s, min %s, cells > 0 %s (%s)' % (_tmh.time() - _th, ['%.6g' % HBREL_[u_].max() for u_ in range(3)],
++              ['%.6g' % HBREL_[u_].min() for u_ in range(3)], [int((HBREL_[u_] > 0).sum()) for u_ in range(3)], os.path.basename(HBF_)), flush=True)
+     _BIN = os.environ.get('SEPBIN') or ('sep3r_w10' if W10ON else 'sep3r_f2bS' if F2BR else ('sep3r_l3q' if L3Q else 'sep3r_ak'))
+     print('separator binary: %s' % _BIN, flush=True)
+     SEPX = _sp.Popen([os.path.join(HERE, 'bin', _BIN), NS_['SF']], stdin=_sp.PIPE, stdout=_sp.PIPE, text=True, env=SEPENV)
+@@ -1467,9 +1515,13 @@
+     if not GKKEYS: return 0.0
+     w = [int(c_) for c_ in lk]; s_ = [int(c_) for c_ in sv]; ui_ = min(d, 9) - 7
+     return sum(GKREL_[ui_, (w[(i - 1) % d] - 5) * 25 + (s_[(i - 1) % d] - 5) * 5 + w[i] - 5, (s_[i] - 5) * 5 + w[(i + 1) % d] - 5] for i in range(d))
++def hbrel_row(d, lk, sv):   # code_gk9: HBREL at every link edge
++    if not HBKEYS: return 0.0
++    w = [int(c_) for c_ in lk]; s_ = [int(c_) for c_ in sv]; ui_ = min(d, 9) - 7
++    return sum(HBREL_[ui_, (w[(i - 1) % d] - 5) * 25 + (s_[(i - 1) % d] - 5) * 5 + w[i] - 5, (s_[i] - 5) * 5 + w[(i + 1) % d] - 5] for i in range(d))
+ def studio_val(d, lk, sv):
+     r_ = recv_row(d, lk, sv)
+-    return gkrel_row(d, lk, sv) + ksrel_row(d, lk, sv) + w10rel_row(d, lk, sv) + fbrel_row(d, lk, sv) + l3rel_row(d, lk, sv) + rrel_row(d, lk, sv) + sum(cf * (yv[k[1]] if k[0] == 'y' else xv.get(k[1], 0.0) if k[0] == 'x' else V6B[k[1]] if k[0] == 'y6b' else 0.0) for k, cf in r_.items() if k[0] != 't')
++    return hbrel_row(d, lk, sv) + gkrel_row(d, lk, sv) + ksrel_row(d, lk, sv) + w10rel_row(d, lk, sv) + fbrel_row(d, lk, sv) + l3rel_row(d, lk, sv) + rrel_row(d, lk, sv) + sum(cf * (yv[k[1]] if k[0] == 'y' else xv.get(k[1], 0.0) if k[0] == 'x' else V6B[k[1]] if k[0] == 'y6b' else 0.0) for k, cf in r_.items() if k[0] != 't')
+ def xk(rr): return collections.Counter({k[1]: cf for k, cf in rr.items() if k[0] == 'x'})
+ tests = [(e['row'][1], e['row'][2], e['row'][3]) for e in CERT if e['row'][0] == 'receiverR2']
+ if os.environ.get('REPLAY'):   # f2b041 job 2: per-arrangement admissibility, row value and row terms for the violators in REPLAY files
+@@ -1527,6 +1579,7 @@
+     if os.environ.get('W10ST_ONLY') == '1': print('VERDICT: W10 SELFTEST %s' % ('PASS' if not FAIL else 'FAIL: ' + ' | '.join(FAIL))); sys.exit(0)
+ exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'w17_blocks.py')).read())   # W17 tests (KSDUMP, W17GRAM, W17ST)
+ exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gk_blocks.py')).read())    # W17 round 4 tests (GKST, GKORACLE)
++_HBSTAGE = 'st'; exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'hb_blocks.py')).read())    # code_gk9 tests (HBST)
+ exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'f2b7_blocks.py')).read())  # W17 round 5 tests (F2B7ST, F2B7ROWS)
+ if F2BR:   # f2b041 self-test: spec delta (rules on minus rules off, spec_val) vs the C++ leaf delta ("f" command)
+     def _cdelta(d, lk, sv):
+@@ -1638,6 +1691,7 @@
+     if Q7 and wc == 7: v_ += QREL_[2, (wp - 5) * 25 + (sp - 5) * 5 + wc - 5, (sc - 5) * 5 + wn - 5]   # W10: unmasked Q at a link 7, U = 9 (no payer at d >= 18)
+     if KSKEYS and wc == 7: v_ += KSREL_[2, (wp - 5) * 25 + (sp - 5) * 5 + wc - 5, (sc - 5) * 5 + wn - 5]   # W17: K* / EDGE payee window bound, U = 9
+     if GKKEYS: v_ += GKREL_[2, (wp - 5) * 25 + (sp - 5) * 5 + wc - 5, (sc - 5) * 5 + wn - 5]   # W17 round 4: generic-key window bound, U = 9, every position
++    if HBKEYS: v_ += HBREL_[2, (wp - 5) * 25 + (sp - 5) * 5 + wc - 5, (sc - 5) * 5 + wn - 5]   # code_gk9: HATBB per-edge bound, U = 9, every link edge
+     if FB or XO: v_ += FBREL_[2, (wp - 5) * 25 + (sp - 5) * 5 + wc - 5, (sc - 5) * 5 + wn - 5]   # s44 relaxed fb at U = 9
+     Mk[a_, b_] = max(Mk[a_, b_], v_)
+ Pk = Mk.copy(); dpbad = 0
+diff -ru code_gk8/w17_upper.sh code_gk9/w17_upper.sh
+--- code_gk8/w17_upper.sh	2026-11-09 11:36:27
++++ code_gk9/w17_upper.sh	2026-11-10 04:21:46
+@@ -1,5 +1,6 @@
+ #!/bin/bash
+ # code_gk8 (9 Nov 2026): default code dir code_gk8 (payer-8/9 GK keys, PAYER8SPEC W5); run17.sh there defaults SEPBIN=sep3r_gk8.
++# code_gk9 (10 Nov 2026): default code dir code_gk9 (code_gk8 + HATBB keys, HATBB_SPEC a36ce8d2); the stamp also covers hbfam.py and hb_blocks.py.
+ # W17 one-command Studio-path upper check: W15's w15_upper.sh (rr / z / zr / q7 masked, any kill-table stack, NOCLAMP, NECK, parts)
+ # plus K* and the generic EDGE(7->P) family (st21_w17.py + ksfam.py rows, bin/sep3r_w17 window bound + exact leaf).
+ # usage: [KS=1] [EGK=<keys file>] [ARGSF=<pattern args>] [EXPECT_PAT=D,C,RPAT] bash /tmp/swarm-W17/code_c6/w17_upper.sh SOL.json KILLDIR [TAG]
+@@ -16,7 +17,7 @@
+ #   word, the same 1,424 x 729 enumeration) instead of the equation |in - out| <= 1e-9 (Opus flag c6le, s83). The separator never
+ #   reads cons2 (its rows use h through M / V6B only), so nothing else changes.
+ set -u
+-B=/tmp/swarm-W17; C=${W17CODE:-$B/code_gk8}; export W17CODE=$C   # code_c6: run17.sh runs $C/st21_w17.py
++B=/tmp/swarm-W17; C=${W17CODE:-$B/code_gk9}; export W17CODE=$C   # code_c6: run17.sh runs $C/st21_w17.py
+ SOLF=$(readlink -f "$1"); KD=$(readlink -f "$2"); TAG=${3:-u$(date +%H%M%S)}
+ L=$B/logs/$TAG; Q=$B/q/$TAG; mkdir -p $L $Q
+ DMAXP=${DMAXP:-20}; DLIST=${DLIST:-$(seq -s, 7 $DMAXP)}; NPROC=${NPROC:-2}; NPROCMAX=${NPROCMAX:-2}; [ $NPROC -gt $NPROCMAX ] && NPROC=$NPROCMAX   # round 6: NPROCMAX (macpack: 16)
+@@ -33,7 +34,7 @@
+   off|none) _RPSTAMP=off;;
+   *) _RPSTAMP=$(cd $B/wd && md5sum < $RPATN | cut -c1-8);;
+ esac
+-STAMP="$(md5sum < $SOLF | cut -c1-32) $(cat $C/st21_w17.py $C/f2b7_blocks.py $C/gk_blocks.py $C/gkfam.py $C/w17_blocks.py $C/sep3r_gk.cpp | md5sum | cut -c1-32) $(env | grep -E '^(GK|F2B7|F2BRULES|C6LE|NOCLAMP|ARGSF|EXPECT_PAT|EXNAME|DMAXP|PARTS|NECK|FAMILIES|RPATN)=' | sort | md5sum | cut -c1-32) $DLIST rpatN:$_RPSTAMP rules:$(md5sum < ${F2BRULES:-$B/tab/rules_zcons_minus_W18rejects.json} | cut -c1-8)"
++STAMP="$(md5sum < $SOLF | cut -c1-32) $(cat $C/st21_w17.py $C/f2b7_blocks.py $C/gk_blocks.py $C/gkfam.py $C/hbfam.py $C/hb_blocks.py $C/w17_blocks.py $C/sep3r_gk.cpp | md5sum | cut -c1-32) $(env | grep -E '^(GK|F2B7|F2BRULES|C6LE|NOCLAMP|ARGSF|EXPECT_PAT|EXNAME|DMAXP|PARTS|NECK|FAMILIES|RPATN)=' | sort | md5sum | cut -c1-32) $DLIST rpatN:$_RPSTAMP rules:$(md5sum < ${F2BRULES:-$B/tab/rules_zcons_minus_W18rejects.json} | cut -c1-8)"
+ KEEP1=0
+ if [ "${RESUME:-0}" = 1 ] && grep -q "^VERDICT" $L/p0.log 2>/dev/null && [ "$(cat $L/stamp.txt 2>/dev/null)" = "$STAMP" ] && [ -f $Q/env.json ] && [ -f $Q/sf.in ]; then
+   KEEP1=1; for d in ${DLIST//,/ }; do [ -f $Q/q_d$d.txt ] || KEEP1=0; done
+--- check8.sh	2026-11-09 11:36:27
++++ check9.sh	2026-11-10 04:21:47
+@@ -1,4 +1,5 @@
+ #!/bin/bash
++# check9.sh (10 Nov 2026): check8.sh with code_gk9 (code_gk8 + HATBB keys HAT(u->b), HATBB_SPEC a36ce8d2) and bin/sep3r_gk9; everything else identical.
+ # check8.sh (9 Nov 2026): check.sh with code_gk8 (payer-8/9 GK keys, PAYER8SPEC W5) and bin/sep3r_gk8; everything else identical.
+ # W17 macpack: one full second-engine upper check (code_gk7) of one point at NPROC processes, on the proof stack's family by default.
+ # usage: bash /tmp/swarm-W17/check.sh POINT [NPROC]
+@@ -33,5 +34,5 @@
+ cd $B && env RESUME=1 C6LE=1 NOCLAMP=1 F2B7=1 F2BRULES=${F2BRULES:-$B/tab/rules_zcons_minus_W18rejects.json} GK=${GK:-$D_GK} \
+   ARGSF=${ARGSF:-$D_ARGS} EXPECT_PAT=${EXPECT_PAT:-$D_PAT} EXNAME=$B/tab/exname_keep95p131f.txt NPROC=$NP NPROCMAX=16 DMAXP=26 \
+   DLIST=${DLIST:-7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26} PARTS=${PARTS:-7:4,8:12,9:24,10:9,11:6,12:3,13:2} \
+-  W17CODE=$B/code_gk8 SEPBIN=${SEPBIN:-sep3r_gk8} bash $B/code_gk8/w17_upper.sh "$SOL" $B/kill/patched298 $TAG 2>&1 | tee -a $B/logs/${TAG}_run.out
++  W17CODE=$B/code_gk9 SEPBIN=${SEPBIN:-sep3r_gk9} bash $B/code_gk9/w17_upper.sh "$SOL" $B/kill/patched298 $TAG 2>&1 | tee -a $B/logs/${TAG}_run.out
+ echo "summary: $B/logs/$TAG/summary.txt"

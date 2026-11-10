@@ -1,0 +1,21 @@
+W17 HATBB keys: 14 from /Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST108/tests/cg_keys_k260p_plus_hatbb.txt; payer->payee {'7->7': 2, '7->B': 2, '8->7': 1, 'B->7': 7, 'B->B': 2}; nonzero amounts 0 (sum 0) PLANTED ERROR HBPLANT=inmirror
+W17 HATBB amounts: 
+W17 HATBB tail: DP d = DMAXP+1..30 and Karp use HBREL at U = 9 (per-edge upper bound, IN - OUT with wildcards) at every transition
+HBVEC: 14 HAT keys ['HB01', 'HB02', 'HB03', 'HB04', 'HB05', 'HB06', 'HB07', 'HB08', 'HB09', 'HB10', 'HB11', 'HB12', 'HB13', 'HB14']; plant 'inmirror'; 6-private reading d <= 9
+HBVEC hbrows16x_GS16.json (coefj_rows 1150, dual dual_rows_GS16_01_eval42.json): rows 272 (by d {7: 178, 8: 81, 9: 11, 12: 1, 13: 1}), columns 14, (row, column) pairs 3808, nonzero coefficients: reference 1006, mine 1142; mismatches 449 (rows 130, columns 7: {'HB01': 42, 'HB02': 110, 'HB03': 54, 'HB07': 37, 'HB08': 99, 'HB09': 82, 'HB12': 25}); column sums over the listed rows vs the file: max |diff| 0.0942
+HBVEC hbrows16x_GS20.json (coefj_rows 1124, dual dual_rows_GS20_01_eval42.json): rows 271 (by d {7: 178, 8: 78, 9: 12, 10: 1, 12: 1, 13: 1}), columns 14, (row, column) pairs 3794, nonzero coefficients: reference 1028, mine 1146; mismatches 489 (rows 137, columns 7: {'HB01': 51, 'HB02': 116, 'HB03': 60, 'HB07': 46, 'HB08': 102, 'HB09': 92, 'HB12': 22}); column sums over the listed rows vs the file: max |diff| 0.0889
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556676/5776667 key HB02 HAT(B->7)[X=S Y=S U+1=5 XA=5]: mine 2 reference 0
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556676/5776667 key HB03 HAT(B->7)[X=5 Y=6 U-1=S YA=S]: mine 0 reference -1
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556676/5776667 key HB08 HAT(7->7)[X=S Y=S U-1=5 YA=5]: mine 2 reference 0
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556676/5776667 key HB09 HAT(B->7)[X=5 Y=S U-1=S YA=5]: mine 0 reference -1
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556676/5776667 key HB12 HAT(B->7)[X=5 Y=6 U-1=S YA=6]: mine 0 reference -1
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556776/7595668 key HB02 HAT(B->7)[X=S Y=S U+1=5 XA=5]: mine 3 reference 2
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556776/7595668 key HB03 HAT(B->7)[X=5 Y=6 U-1=S YA=S]: mine 2 reference 1
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556776/7595668 key HB08 HAT(7->7)[X=S Y=S U-1=5 YA=5]: mine 1 reference 0
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556776/7595668 key HB09 HAT(B->7)[X=5 Y=S U-1=S YA=5]: mine 1 reference 0
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556776/7595668 key HB12 HAT(B->7)[X=5 Y=6 U-1=S YA=6]: mine 1 reference 0
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556777/7576567 key HB02 HAT(B->7)[X=S Y=S U+1=5 XA=5]: mine 2 reference 0
+HBVEC MISMATCH hbrows16x_GS16.json row R7 5556777/7576567 key HB08 HAT(7->7)[X=S Y=S U-1=5 YA=5]: mine 2 reference 0
+HBVEC total: rows 543, pairs 7602, nonzero reference 2034, mismatches 938 (rows 267, columns 14)
+FAIL: HBVEC: 938 coefficient mismatches
+VERDICT: HBVEC FAIL: HBVEC: 938 coefficient mismatches

@@ -1,0 +1,14 @@
+W17 HATBB keys: 14 from /Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST108/tests/cg_keys_k260p_plus_hatbb.txt; payer->payee {'7->7': 2, '7->B': 2, '8->7': 1, 'B->7': 7, 'B->B': 2}; nonzero amounts 0 (sum 0)
+W17 HATBB amounts: 
+W17 HATBB tail: DP d = DMAXP+1..30 and Karp use HBREL at U = 9 (per-edge upper bound, IN - OUT with wildcards) at every transition
+HBVEC: 14 HAT keys ['HB01', 'HB02', 'HB03', 'HB04', 'HB05', 'HB06', 'HB07', 'HB08', 'HB09', 'HB10', 'HB11', 'HB12', 'HB13', 'HB14']; plant ''; 6-private reading d <= 8
+HBVEC hbrows16x_GS16.json (coefj_rows 1150, dual dual_rows_GS16_01_eval42.json): rows 272 (by d {7: 178, 8: 81, 9: 11, 12: 1, 13: 1}), columns 14, (row, column) pairs 3808, nonzero coefficients: reference 1006, mine 1004; mismatches 2 (rows 2, columns 1: {'HB14': 2}); column sums over the listed rows vs the file: max |diff| 0.000177
+HBVEC hbrows16x_GS20.json (coefj_rows 1124, dual dual_rows_GS20_01_eval42.json): rows 271 (by d {7: 178, 8: 78, 9: 12, 10: 1, 12: 1, 13: 1}), columns 14, (row, column) pairs 3794, nonzero coefficients: reference 1028, mine 1026; mismatches 3 (rows 3, columns 1: {'HB14': 3}); column sums over the listed rows vs the file: max |diff| 0.00041
+HBVEC MISMATCH hbrows16x_GS16.json row R9 756575556/657558566 key HB14 HAT(B->7)[X=5 Y=S XA=S V+1=B]: mine 0 reference -1
+HBVEC MISMATCH hbrows16x_GS16.json row R9 765555566/575859665 key HB14 HAT(B->7)[X=5 Y=S XA=S V+1=B]: mine 0 reference -1
+HBVEC MISMATCH hbrows16x_GS20.json row R9 755775655/656555756 key HB14 HAT(B->7)[X=5 Y=S XA=S V+1=B]: mine 0 reference -1
+HBVEC MISMATCH hbrows16x_GS20.json row R9 765555566/575859665 key HB14 HAT(B->7)[X=5 Y=S XA=S V+1=B]: mine 0 reference -1
+HBVEC MISMATCH hbrows16x_GS20.json row R9 766555556/566777575 key HB14 HAT(B->7)[X=5 Y=S XA=S V+1=B]: mine -2 reference -3
+HBVEC total: rows 543, pairs 7602, nonzero reference 2034, mismatches 5 (rows 5, columns 2)
+FAIL: HBVEC: 5 coefficient mismatches
+VERDICT: HBVEC FAIL: HBVEC: 5 coefficient mismatches
