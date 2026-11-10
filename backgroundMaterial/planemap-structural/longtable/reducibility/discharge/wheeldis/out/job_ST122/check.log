@@ -1,0 +1,25 @@
+rsst.txt configs: 633 ; verdicts: 633
+rows: 191 {'C2cons': 168, 'D2': 21, 'check': 2}
+scanning .lean files for occurrence glue on 191 witness names ...
+glue-type .lean files scanned: 4304
+--- controls
+control self                     382 / 382 as expected
+control relabel_rot              382 / 382 as expected
+control relabel_mirror           382 / 382 as expected
+control perturb_int              191 / 191 as expected
+control perturb_ring             191 / 191 as expected
+control perturb_int_vs_witness   191 / 191 as expected
+control perturb_ring_vs_witness  191 / 191 as expected
+control mirror_only_detected     176 / 176 as expected
+--- summary
+C2cons  rows 168  CONFIRMED 168  FAILED   0  iso yes 107  yes-mirror  61  no 0  glue yes   0  no 168  other 0
+D2      rows  21  CONFIRMED  21  FAILED   0  iso yes  14  yes-mirror   7  no 0  glue yes  21  no   0  other 0
+check   rows   2  CONFIRMED   2  FAILED   0  iso yes   0  yes-mirror   2  no 0  glue yes   2  no   0  other 0
+family ('C2cons', 'CC2V', 'no') 2
+family ('C2cons', 'CC3V', 'no') 3
+family ('C2cons', 'CCV', 'no') 6
+family ('C2cons', 'CXI', 'no') 114
+family ('C2cons', 'CXR', 'no') 27
+family ('C2cons', 'K108V', 'no') 16
+family ('D2', 'HDCV', 'yes') 21
+family ('check', 'A5CV', 'yes') 2
