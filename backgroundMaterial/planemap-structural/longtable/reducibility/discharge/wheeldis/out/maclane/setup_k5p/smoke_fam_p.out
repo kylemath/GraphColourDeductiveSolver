@@ -1,0 +1,16 @@
+maclane fam smoke, family p, 2026-11-10T08:48:57Z on Darwin arm64
+1. family p: fam/FAMILIES.txt line, md5s, args chain
+   OK   OK x=p prev=o status=E2 l=args_A97_F_W13K3l5p.txt gb=args_A97_F_W13K3gB5p.txt pat=w13/pat_K5p_D.out expect=fam/EXPECT_K3l5p_k240.txt
+   note: Studio P12 (b8_u555..577_5.....56, ring 13 m 10, kills 8/55557577/58586656, glue d6e4999c) + P13 (b8_u56.6576._5..555.., ring 14 m 11, kills 8/56765767/56655555, glue 21b2484e), both D [E2] (second check main 9a1430cae out/job_P12P13chk); Lean HDK5P12 / HDK5P13 exit 0 sorry 0, V00 building
+2. patterns of K3l5p + 240 keys (upperR2 start, eng_p1r)
+smoke_fam.sh: line 39: 14534 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 1 re-derived (4s): counts: 326 files, distinct d9 3324, D 18151 / C 712 / RPAT 158 / RPATN 2034
+3. patterns of K3gB5p + 240 keys (the LP family)
+smoke_fam.sh: line 39: 14578 Terminated: 15          nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$PT $A threads=1 work=$WK gkeys=$KEYS gkwin gkleaf c6le f2b7 f2b=$N/rules/A5final/rules_c67fa1d1_plus_A5_twins.json rpatN=$N/rpat/rpatN3_rotation_justified.txt > $2 2>&1
+   OK   EXPECT section 2 re-derived (5s): counts: 325 files, distinct d9 3421, D 18241 / C 781 / RPAT 158 / RPATN 2034
+4. recheck_fam.sh p on ref/k5e/sol_S1MW07k240e.json (= repS1MW_07; RECHECK_UPPER=0; about 5 min)
+   OK   UPPER-R2: FEASIBLE at t = 0.025171803977, as EXPECT section 3; its first lines = section 1 (226s)
+5. DRY=1 FORCE=1 launch_upper_fam.sh p <reference point> (the plan only)
+   OK   launch_msfam: k86MS8: LP args_A97_F_W13K3gB5p.txt (d87d3b96) + cg_keys_r13w16_16fik.txt (3d996dbb) on eng_p1r; checks on args_A97_F_W13K3l5p.txt (ec58e4cc); in-point sol_S1MW07k240e.json (md5 e4e93b2c, t 0.025171803977; F_S1MW07k240e_K3l5p); points filed as K3
+
+SMOKE-FAM p: PASS (log /Users/kylemathewson/maclane/maclane-k86/smoke_fam_p.log)
