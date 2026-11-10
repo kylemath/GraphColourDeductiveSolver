@@ -6,11 +6,11 @@ const Tree = (() => {
   let onSelectCallback = null;
   let onChangeCallback = null;
   const WORKING = new Set([
-    'structural-vacancy',
-    'structural-vhe-obstruction',
-    'structural-wp20',
-    'structural-math-horizon',
-    'dissemination-chain-parity-note'
+    't8-rsst-seed',
+    't8-seed-configs',
+    't8-b5',
+    't8-seed-compress',
+    't8-own-lp'
   ]);
 
   function setCallbacks(onSelect, onChange) {
