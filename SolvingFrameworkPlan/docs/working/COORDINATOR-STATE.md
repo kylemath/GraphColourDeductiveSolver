@@ -88,6 +88,8 @@ Resources moved to the learned-model route (thread "Interpretable route to four 
 
 ## Decision log (newest first; one line each, with reason)
 
+- 10 Nov 07:26Z: UPPER **t* <= 0.014094436 [E2] on K3gB5n (Lean-complete) + 357-key file cg_keys_r13w16_16fikpqrstw.txt 449bf4dd** (ST-99; Opus GS20 in03 161805f3; Opus upperR2 + Mac W17 code_gk8 FEASIBLE; tneg pass still running). First bound using payer-8/9 EDGE keys (173 nonzero keys, 18 payer-8/9). Also ST-98 confirmed 0.014137843 on K3l5n + 260 keys (main b6eb416fd); kill P11 in Lean.
+- 10 Nov 05:25Z: ALL pending kill Lean finished: P07 proved (HCK5P07 GLUEDONE, sorryAx 0, main 0480537d6). Families K3l5k/l/m/n and K3gB5k/l/m/n Lean-complete (incl. P05-P09, K5j, K5m, 159 K3g-only kills). Mac lanes moved to family n (k86MK2 260 keys, k86MS7 240 keys). Sound upper still 0.014164305 (ST-96); ST-98 (t=0.014137843, family n) queued. Open Lean item: 99 rule witnesses.
 - 10 Nov 05:12Z: UPPER **t* <= 0.014164305 [E2] on K3l5j + 260 keys 0470c459** (ST-96 sol_k86MK1_in23__K3l5j_k260 e5231e6d; W17 FEASIBLE, DP -1.60, Karp d>=22.09; tneg INFEASIBLE; main 6bb1bb1f7). Replaces 0.014858914 (ST-94). P08 in Lean (HDK5P08 GLUEDONE, sorryAx 0); only P07 left for families l, m, n.
 - 9 Nov 23:40Z: UPPER **t* <= 0.014858914 [E2] on K3l5j + 260 keys 0470c459** (ST-94 sol_repK1MW_10__K3l5j_k260 6759b329; W17 FEASIBLE, DP -1.25, Karp d>=23.17; tneg INFEASIBLE; main 988ecce6a). Replaces 0.015175192 (ST-92).
 - 9 Nov 22:12Z: UPPER **t* <= 0.015175192 [E2] on K3l5j + 260 keys 0470c459** (ST-92 sol_repK1MW_08__K3l5j_k260 080181bf; W17 FEASIBLE, DP -1.18, Karp d>=23.39; tneg INFEASIBLE; main 2f5d9eebf). Replaces 0.015523694 (ST-89).
